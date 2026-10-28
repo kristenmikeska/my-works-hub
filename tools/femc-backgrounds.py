@@ -125,6 +125,12 @@ EXTRA = {
     # batch 75 (2026-10-28): the Seaside Park winter rink, day and night (places.js today, 12/2-1/31)
     'seaside-park-rink-day': 'Added to Game/seaside-park-rink-day.jpeg',
     'seaside-park-rink-night': 'Added to Game/seaside-park-rink-night.jpeg',
+    # batch 76 (2026-10-28): Moonlight Bridge at night, the hospital treatment room and a ward at night, the riverside in snow (places.js today), Yeobo's after closing
+    'moonlightbridge-night': 'Added to Game/moonlightbridge-night.jpeg',
+    'hospital-treatment-room': 'Added to Game/hospital-treatment-room.jpeg',
+    'hospital-ward-night': 'Added to Game/hospital-ward-night.jpeg',
+    'iwatodai-riverside-night-snow': 'Added to Game/iwatodai-riverside-night-snow.jpeg',
+    'yeobos-cafe-night': 'Added to Game/yeobos-cafe-night.jpeg',
 }
 SIZE = (1920, 1072)  # Kat's New Adds backgrounds; one with another shape is cropped / scaled to fill this
 

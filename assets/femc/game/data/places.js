@@ -248,7 +248,7 @@ window.FEMC_GAME_PLACES = {
     ['Iwatodai Strip · Hagakure · Kitchen', 'hagakure-kitchen', 'hagakure-kitchen'],
     ['Iwatodai Strip · Hagakure', 'hagakure-ramen'],
     ['Iwatodai Strip · Bookworms', 'bookworms-inside', 'bookworms-inside'],
-    ["Iwatodai Strip · Yeobo's Cafe", 'yeobos-cafe'],
+    ["Iwatodai Strip · Yeobo's Cafe", 'yeobos-cafe', 'yeobos-cafe-night'],
     ['Iwatodai Strip · Supermarket', 'iwatodai-supermarket', 'iwatodai-supermarket'],
     ['Iwatodai Strip · Aohige Pharmacy', 'aohigepharmacy-outside'],
     ['Iwatodai Strip · Bathhouse · Baths', 'iwatodai-bathhouse', 'iwatodai-bathhouse'],
@@ -291,12 +291,12 @@ window.FEMC_GAME_PLACES = {
     ['Port Island', 'park'],
     ["Tatsumi Memorial Hospital · Children's Ward", 'hospital-childrens-ward'],
     ['Tatsumi Memorial Hospital · Rooftop', 'hospital-rooftop'],
-    ['Tatsumi Memorial Hospital · 3F Ward', 'hospital-room'],
-    ['Tatsumi Memorial Hospital · Treatment Room', 'hospital-room'],
+    ['Tatsumi Memorial Hospital · 3F Ward', 'hospital-room', 'hospital-ward-night'],
+    ['Tatsumi Memorial Hospital · Treatment Room', 'hospital-treatment-room', 'hospital-treatment-room'],
     ['Tatsumi Memorial Hospital · Courtyard', 'hospital-outside'],
     ['Tatsumi Memorial Hospital · Front Steps', 'hospital-outside'],
     ['Tatsumi Memorial Hospital', 'hospital-hallway-day', 'hospital-hallway-night'],
-    ['Moonlight Bridge', 'moonlightbridge', null, 'nightblue'],
+    ['Moonlight Bridge', 'moonlightbridge', 'moonlightbridge-night'],
     ['Naganaki Shrine · Night', 'naganaki-shrine-night'],
     ['Naganaki Shrine · Amulet Stall', 'naganaki-amulet-stall', 'naganaki-amulet-stall'],
     ['Naganaki Shrine', 'outside-shrine-day', 'naganaki-shrine-night'],
@@ -333,6 +333,8 @@ window.FEMC_GAME_PLACES = {
     // Christmas week in the lounge (lights on the windows); the roof on snow days (scenes that say it is snowed over set it as bg)
     'iwatodaidorm-livingroom-night': [{ dates: ['12/20', '12/21', '12/22', '12/23', '12/24', '12/25'], img: 'iwatodaidorm-livingroom-christmas' }],
     'iwatodaidorm-roof-night': [{ weather: ['snow'], img: 'iwatodaidorm-roof-night-snow' }],
+    // the riverside at night in the snow: Christmas Eve and Christmas, and any snow day
+    'iwatodai-riverside-night': [{ dates: ['12/24', '12/25'], img: 'iwatodai-riverside-night-snow' }, { weather: ['snow'], img: 'iwatodai-riverside-night-snow' }],
     // the mall atrium with its tree, December 1 to Christmas, day and evening
     'paulownia-atrium': [{ dates: ['12/1', '12/2', '12/3', '12/4', '12/5', '12/6', '12/7', '12/8', '12/9', '12/10', '12/11', '12/12', '12/13', '12/14', '12/15', '12/16', '12/17', '12/18', '12/19', '12/20', '12/21', '12/22', '12/23', '12/24', '12/25'], img: 'paulownia-atrium-christmas' }],
     'paulownia-atrium-evening': [{ dates: ['12/1', '12/2', '12/3', '12/4', '12/5', '12/6', '12/7', '12/8', '12/9', '12/10', '12/11', '12/12', '12/13', '12/14', '12/15', '12/16', '12/17', '12/18', '12/19', '12/20', '12/21', '12/22', '12/23', '12/24', '12/25'], img: 'paulownia-atrium-christmas' }],

@@ -324,7 +324,7 @@
       { n: "Solar had arranged it, in the end, the way you arrange anything with two stubborn people: badly, and by accident on purpose." },
       { n: "Genji had come back from the green on Saturday with a tear down the inside of his forearm, where the armor met the synthetic skin underneath, three inches long and leaking something that wasn't quite blood, from a Shadow on the Port Island side that had been bigger than it looked. He'd said it was nothing. He'd been planning to tape it." },
       { n: "Solar had said, in a voice she hadn't known she had, that he was not going to tape it. That she knew a doctor. That it was three in the morning and the doctor was on a night shift she wasn't being paid for, and was certainly awake, and would be furious, and would do it perfectly." },
-      { place: 'Tatsumi Memorial Hospital · Treatment Room', time: '3:00 AM', bg: 'hospital-room', soft: true },
+      { place: 'Tatsumi Memorial Hospital · Treatment Room', time: '3:00 AM', bg: 'hospital-treatment-room', soft: true },
       { n: "Angela took one look at the arm and said a word in German that Solar didn't know and could translate perfectly. Then she took his wrist in one hand, the way you take a child's, without asking, and turned it to the light, and her face went still and professional and completely calm, and her other hand was shaking very slightly, and only Solar was standing close enough to see it." },
       { s: 'mercy', f: 'serious', t: "You were going to tape this." },
       { s: 'genji', f: 'happy', t: "It was a very good tape." },
@@ -670,7 +670,7 @@
       { n: "But she leaned her shoulder against his when she said it, and stayed leaning, and the leaves came down on all three of them, the last few stragglers, gold, slow, unhurried, as if there were all the time in the world." }
     ] },
     { title: 'her own stitches', place: 'Tatsumi Memorial Hospital', scene: [
-      { place: 'Tatsumi Memorial Hospital · Treatment Room', time: 'Evening', bg: 'hospital-room' },
+      { place: 'Tatsumi Memorial Hospital · Treatment Room', time: 'Evening', bg: 'hospital-treatment-room' },
       { music: 'tender' },
       { n: "Genji had texted her at a quarter to seven, which he had never once done, three words and a room number. *She is stitching.* Then, a minute later, *her own hand.* Then, *in the mirror.*" },
       { n: "Treatment room two. Angela was standing at the sink in front of the little steel mirror with her left hand flat on the counter and a curved needle in her right, and there was a long clean cut across the heel of her left palm from a vial that had broken in her grip, and she had very clearly been about to do exactly what Genji had said she always did. Genji was in the corner, sitting on the examination bed, not interfering, with the air of a man who had sent for reinforcements and was now innocent of everything." },

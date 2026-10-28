@@ -1,6 +1,6 @@
 # Art to make
 
-**102 items:** 31 CGs · 39 places · 4 character pieces · 28 wardrobe. 98 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**97 items:** 31 CGs · 34 places · 4 character pieces · 28 wardrobe. 93 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -289,48 +289,6 @@ Persona 3 Reload style event CG, 16:9, no text. A university quad on a December 
 ---
 
 ## 2. Places (Gemini)
-
-### Iwatodai (the main game)
-
-**[ ] Moonlight Bridge at night** *(optional)*  
-The big bridge for its evening and night scenes, about 15 (walking home over it, the north-side walkway in the wind); now the day art tinted blue.  
-Attach: `bg/moonlightbridge.webp` (edit this picture)  
-Save as: `moonlightbridge-night.png`
-```
-Edit this picture. Keep the same bridge, angle and art style; change it to night: the bridge lights on in a long string out over the water, the cables and the tall north tower lit from below, a small red beacon glowing at the top of the tower, traffic light trails on the road, the pedestrian walkway with its railing along the side, the water wide and black on both sides, the whole city ahead laid out in lights. Windy, high up, huge and lonely. 16:9, no people, no readable text.
-```
-
-**[ ] Tatsumi Memorial: the treatment room** *(optional)*  
-A small treatment room at the hospital, for one link's night-shift scenes (now the patient room stands in).  
-Attach: `bg/hospital-hallway-night.webp` (for the style and light)  
-Save as: `hospital-treatment-room.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a small hospital treatment room late at night: an examination bed with a paper sheet in the corner, a steel counter with two sinks side by side and a little steel mirror above one of them, a tray with gauze, a suture kit and a small penlight, an adjustable exam lamp, glass-fronted cabinets of supplies, the blinds closed, the room lit only by the exam lamp and the cool light under the cabinets, a dark corridor glimpsed through the door's window. Calm, clinical, very late. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] Tatsumi Memorial: a ward room at night** *(optional)*  
-The third-floor ward room for its evening visits (a chair by the window, the night nurse down the hall); now the day room, darkened.  
-Attach: `bg/hospital-room.webp` (edit this picture)  
-Save as: `hospital-ward-night.png`
-```
-Edit this picture. Keep the same hospital room, bed, angle and art style; change it to evening visiting hours: the window dark with city lights far off, the overhead light off and only the small reading light over the bed on, a visitor's chair pulled up by the window, a get-well bag or two on the side table, the door ajar to a dim corridor with a faint glow from the nurses' station. Quiet, patient, a long wait. 16:9, no people, no readable text.
-```
-
-**[ ] The riverside on a snowy night** *(optional)*  
-The river path at night in snow (Christmas Eve under the flickering lamppost, January nights).  
-Attach: `bg/iwatodai-riverside-night.webp` (edit this picture)  
-Save as: `iwatodai-riverside-night-snow.png`
-```
-Edit this picture. Keep the same river path, lamppost, bench and angle, and the same art style; change it to a snowy winter night: the path empty and blue with fresh snow, a cap of snow on top of the lamppost, its tired amber light on the snow and on the black water, the bench covered in snow, big slow flakes falling through the light. Quiet, magical, cold hands. 16:9, no people, no readable text.
-```
-
-**[ ] Yeobo's Cafe after closing** *(optional)*  
-The café for its evening scenes at closing time (chairs up, one light left on); now the daytime café, darkened.  
-Attach: `bg/yeobos-cafe.webp` (edit this picture)  
-Save as: `yeobos-cafe-night.png`
-```
-Edit this picture. Keep the same café, counter, furniture and angle, and the same art style; change it to after closing at night: chairs turned up on every table but one, the only light the warm lamp over the till, the big front windows dark outside and fogged gold at the edges from the warmth inside, the glass pastry case nearly empty, a tray and two plates on the one free table, the bell above the door. Like the inside of a lantern someone forgot to blow out. 16:9, no people, no readable text.
-```
 
 ### The epilogue: Runners
 

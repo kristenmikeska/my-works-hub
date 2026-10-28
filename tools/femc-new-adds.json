@@ -15842,6 +15842,81 @@
       "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
       "outputSha256": "b3509f8a50af74f05e15b776553cd59ead15e1e2e40b8a59d53278a5ea73023a",
       "placement": "places.today 'port-island-seaside-park-sunset' (the rule's evening slot) on 12/2-1/31; Sunghoon's December evening scenes take it through the rule; outdoor via 'seaside-park-' prefix"
+    },
+    {
+      "batch": 76,
+      "source": "moonlightbridge-night.jpeg",
+      "sourceNow": "Added to Game/moonlightbridge-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "f1209306881217f2708fa865c56f41239599b9dfcd2d9479a78c8567fc036997",
+      "status": "integrated",
+      "destination": "assets/femc/bg/moonlightbridge-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "be08b00b9f3470bb361c386e5af1051474c927827b0ba9469748b258e2bde022",
+      "placement": "places.bg rule 'Moonlight Bridge' evening slot (the 'nightblue' look dropped so the night art isn't tinted again; day scenes show the plain day bridge); outdoor via the 'moonlightbridge' prefix"
+    },
+    {
+      "batch": 76,
+      "source": "hospital-treatment-room.jpeg",
+      "sourceNow": "Added to Game/hospital-treatment-room.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "b24e965021b93982565646913833515f2f27325925c571cc1ed22735adf968b3",
+      "status": "integrated",
+      "destination": "assets/femc/bg/hospital-treatment-room.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "2cffb429f75ec72771aa497e1b23c8626cb0972f25e881b7a98e5e4b0b7f7f9b",
+      "placement": "places.bg rule 'Tatsumi Memorial Hospital · Treatment Room' both slots (was hospital-room); links/mercy.js treatment-room place lines (3:00 AM, Evening) bg: 'hospital-room' -> 'hospital-treatment-room'; the hallway lead-in untouched; indoor"
+    },
+    {
+      "batch": 76,
+      "source": "hospital-ward-night.jpeg",
+      "sourceNow": "Added to Game/hospital-ward-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "d561fb903a1b2f2f302e339afc10567ed34ad478cea8b1edaa6310511aed45e0",
+      "status": "integrated",
+      "destination": "assets/femc/bg/hospital-ward-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "67432adb2908c3fa428a0898291c8758e4e794be545cb816af3913ee107ccb96",
+      "placement": "places.bg rule 'Tatsumi Memorial Hospital · 3F Ward' evening slot; explicit bg: 'hospital-room' lines are all Daytime; mercy.js hospital-hallway-night lines left as chosen; indoor"
+    },
+    {
+      "batch": 76,
+      "source": "iwatodai-riverside-night-snow.jpeg",
+      "sourceNow": "Added to Game/iwatodai-riverside-night-snow.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "7c019d3977cee7dde4ae3efc54ed13da6e7ca94d7aeb3fe3cb91e8d6bc1b1dd1",
+      "status": "integrated",
+      "destination": "assets/femc/bg/iwatodai-riverside-night-snow.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "bd503f559687c030dc00d6a2c62a51d5d51540b8eea737c73cdbef4b443a9f36",
+      "placement": "places.today 'iwatodai-riverside-night' on 12/24-12/25 and on snow weather (rule evening slot and explicit bg lines alike); outdoor via the 'iwatodai-riverside-night' prefix"
+    },
+    {
+      "batch": 76,
+      "source": "yeobos-cafe-night.jpeg",
+      "sourceNow": "Added to Game/yeobos-cafe-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "0e63f979efabb5ce956b32a80609f0c2c69683f99c2539f29a6a0c6d135658f6",
+      "status": "integrated",
+      "destination": "assets/femc/bg/yeobos-cafe-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "177677a9ba21563fc37029ace7503e957a0303c9fc005c5a669bdf8b49b146c7",
+      "placement": "places.bg rule \"Iwatodai Strip · Yeobo's Cafe\" evening slot; explicit bg: 'yeobos-cafe' lines at evening play as the rule (core.js background()); window room (not sealed, not outdoor)"
     }
   ],
   "batch1Validation": {
@@ -16869,5 +16944,19 @@
     ],
     "notTested": "no browser tests: the park in December/January by day and evening",
     "html": "femc-game.html places v54"
+  },
+  "batch76Validation": {
+    "date": "2026-10-28",
+    "scope": "Moonlight Bridge at night, the hospital treatment room, a ward room at night, the riverside on a snowy night, Yeobo's after closing",
+    "sourcesInspected": "all five checked by name, size and hash",
+    "sourcesIntegrated": 5,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold and the other New Adds files untouched",
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script"
+    ],
+    "notTested": "no browser tests: the bridge, hospital, riverside and café scenes at night",
+    "html": "femc-game.html places v56, mercy v9"
   }
 }
