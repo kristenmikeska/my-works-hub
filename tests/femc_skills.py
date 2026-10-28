@@ -48,6 +48,9 @@ SETUP = r"""(()=>{
 
 def setup(p, lvl=40, pts=200):
     p.goto(URL)
+    # This machine's Chrome can open its own chrome://settings/help tab on a raw Enter (an update waiting), which leaves the
+    # game page hidden: no frames, so a later mouseWheel is never acknowledged. Keep the game page in front.
+    p.ws.call('Page.bringToFront')
     p.eval(SETUP % {'lvl': lvl, 'pts': pts})
 
 
