@@ -1,6 +1,6 @@
 """The epilogue (FEMC-EPILOGUE-PLAN.md; batch 1, 2026-10-27: the engine, with stand-in worlds).
 
-  python3 tests/femc_epilogue.py [--only engine,saves,glitch,runners1,runners2,hoax,fights,stay,true,shots] [--screenshots /absolute/dir]
+  python3 tests/femc_epilogue.py [--only engine,saves,glitch,runners1,runners2,hoax,fights,stay,true,polish,shots] [--screenshots /absolute/dir]
 
 engine   the end screen's Epilogue button on the Runners, strangers and HOAX home endings (none on bad, true or Stay); the
          save-first offer writes the finished year to a slot; entering from each eligible ending tucks the year into the save
@@ -70,6 +70,15 @@ true     (batch 8, the true ending's coda) the button on the true end screen; th
          the whole coda through the real UI to the end card, the Equinox card and the year's end screen, saved on its second day
          and finished in a fresh page; the year untouched (no day of Iwatodai's calendar wears another date); one desktop / phone
          pair in the gym.
+polish   (batch 9, finale and polish) the Equinox card by route (each world's route line and its other-world lines; a Runners
+         act finished on Minji's route through the UI shows hers, with one desktop / phone pair); leaving records the act
+         (seen scenes, flags, closeness, open routes) and moves the CGs seen into the year's album; the epilogue stamps (one
+         per world finished, all five; none for a save that never went in); the album's epilogue page (locked tiles, one
+         unlocked), absent for a year that never entered, and its "Iwatodai" page inside an epilogue; menu.js peek answers
+         ifYear / ifEpiRoute / ifBond / ifRouteOpen / ifGlitch like G.branch without writing, false in the year; the Theater's
+         Epilogue tab inside the act and from the year after it (the world loads, a replay reads the world's places and the
+         record's route, then everything goes back; the save is byte-identical); the moon on the coda's days and Runners' last
+         days; Stay's kept things answer in its final; Shinjiro's route opens at closeness 4.
 shots    one desktop / phone pair of the end-screen button and of an epilogue day.
 No browser errors. Isolated browser profile and server; never the player's saves."""
 import base64, datetime, json, pathlib, sys, tempfile, time
@@ -77,7 +86,7 @@ from femc_browser import Page
 
 OUT = pathlib.Path(sys.argv[sys.argv.index('--screenshots') + 1]) if '--screenshots' in sys.argv else pathlib.Path(tempfile.mkdtemp(prefix='femc-epilogue-'))
 OUT.mkdir(parents=True, exist_ok=True)
-ONLY = set(sys.argv[sys.argv.index('--only') + 1].split(',')) if '--only' in sys.argv else {'engine', 'saves', 'glitch', 'runners1', 'runners2', 'hoax', 'fights', 'stay', 'true', 'shots'}
+ONLY = set(sys.argv[sys.argv.index('--only') + 1].split(',')) if '--only' in sys.argv else {'engine', 'saves', 'glitch', 'runners1', 'runners2', 'hoax', 'fights', 'stay', 'true', 'polish', 'shots'}
 checks = []
 
 
@@ -539,7 +548,7 @@ try:
           return {links:Object.keys(G.LINKS).length,cal:G.D.cal===FEMC_GAME_CALENDAR,b,epi:'epi' in G.S}})()""")
         ok(year_before['cal'] and year_before['b'] == '[["n"],["n"]]' and not year_before['epi'], f'the year: ifBond and ifRouteOpen are never true outside the epilogue ({year_before["b"]})')
         enter('route-R')
-        ok(p.eval("FEMC_EPI_WORLDS.runners._loaded===6 && !FEMC_EPI_WORLDS.runners.stub && FemcGame.world()==='runners'"), 'the Runners world loads all its files (calendar, world, glitches, people, the story files)')
+        ok(p.eval("FEMC_EPI_WORLDS.runners._loaded===7 && !FEMC_EPI_WORLDS.runners.stub && FemcGame.world()==='runners'"), 'the Runners world loads all its files (calendar, world, glitches, people, the story files)')
         # The data: dates and slots of weeks 1-2's beats (week 3 and 12/14's late pull are runners2's).
         beats = p.eval("FemcGame.D.events.filter(e=>FemcGame.dayOf(e.date)<=FemcGame.dayOf('12/14')&&e.id!=='epi-r-alone').map(e=>[e.id,e.date,e.slot,e.flag||null])")
         want_beats = {'epi-r-home': ['12/1', 'early'], 'epi-r-five-days': ['12/1', 'after'], 'epi-r-pale': ['12/1', 'late'], 'epi-r-cover': ['12/2', 'early'], 'epi-r-ask': ['12/2', 'late'],
@@ -648,7 +657,7 @@ try:
           gl:!FemcGlitch.active(),b:JSON.stringify(G.branch({ifGlitch:3,then:['y'],else:['n']}))}})()""")
         ok(base['cal'] and base['ev'] and base['world'] is None and not base['ends'] and base['gl'] and base['b'] == '["n"]', f'the year reads Iwatodai’s data; no glitch, no `ends`, ifGlitch false ({base})')
         enter('route-R')
-        ok(p.eval("FEMC_EPI_WORLDS.runners._loaded===6 && FemcEpilogue.WORLDS.runners.files.join()==='calendar,world,glitches,people,story-w1,story-w2,people-w3,story-w3'"), 'the Runners world loads eight files (week 3’s story and people files last)')
+        ok(p.eval("FEMC_EPI_WORLDS.runners._loaded===7 && FemcEpilogue.WORLDS.runners.files.join()==='calendar,world,glitches,people,story-w1,story-w2,people-w3,story-w3'"), 'the Runners world loads eight files (week 3’s story and people files last)')
         beats = p.eval("FemcGame.D.events.filter(e=>e.id==='epi-r-alone'||FemcGame.dayOf(e.date)>=FemcGame.dayOf('12/15')).map(e=>[e.id,e.date,e.slot,!!e.ends,!!e.consumes])")
         want3 = {'epi-r-alone': ['12/14', 'late'], 'epi-r-upward': ['12/15', 'early'], 'epi-r-kitchen': ['12/16', 'early'], 'epi-r-unseen': ['12/16', 'late'], 'epi-r-butterfly': ['12/17', 'evening'],
                  'epi-r-clocks': ['12/18', 'early'], 'epi-r-unheard': ['12/18', 'late'], 'epi-r-holiday': ['12/19', 'evening'], 'epi-r-footage': ['12/19', 'late'],
@@ -752,7 +761,7 @@ try:
         ok(base['cal'] and base['ev'] and base['world'] is None and not base['ends'] and base['gl'] and base['b'] == '[["n"],["n"],["n"]]', f'a HOAX year reads Iwatodai’s data; no glitch, no `ends`, ifGlitch / ifRouteOpen / ifBond false ({base})')
         enter('route-H')
         files = 'calendar,world,glitches,people,people-crew,story-w1,story-w2,story-w3,story-end'
-        ok(p.eval(f"FEMC_EPI_WORLDS.hoax._loaded===6 && !FEMC_EPI_WORLDS.hoax.stub && FemcGame.world()==='hoax' && FemcEpilogue.WORLDS.hoax.files.join()==='{files}'"), 'the HOAX world loads its nine files (no stand-in left)')
+        ok(p.eval(f"FEMC_EPI_WORLDS.hoax._loaded===7 && !FEMC_EPI_WORLDS.hoax.stub && FemcGame.world()==='hoax' && FemcEpilogue.WORLDS.hoax.files.join()==='{files}'"), 'the HOAX world loads its nine files (no stand-in left)')
         beats = p.eval("FemcGame.D.events.map(e=>[e.id,e.date,e.slot,e.flag||null,!!e.ends])")
         want = {'epi-h-home': ['12/21', 'early'], 'epi-h-part-four': ['12/21', 'after'], 'epi-h-curfew': ['12/21', 'late'], 'epi-h-emergency': ['12/22', 'after'],
                 'epi-h-study-plans': ['12/23', 'after'], 'epi-h-karaoke': ['12/23', 'evening'], 'epi-h-eve': ['12/24', 'evening'], 'epi-h-christmas': ['12/25', 'after'],
@@ -1105,7 +1114,7 @@ try:
                     'route': {'tally': {}, 'choices': {'xmas': 'akihiko'}, 'frags': {'R': 0, 'S': 0, 'H': 0}, 'doorsDue': [], 'doorsSeen': []}}
         start8({'route-stay': True, 'stay-akihiko': True, 'ending-akihiko': True}, aki_year, 'stay', 'epi-st-held', "s.flags['xmas-akihiko']=true;s.route.choices.xmas='akihiko';")
         files = 'calendar,world,glitches,people,story'
-        ok(p.eval(f"FEMC_EPI_WORLDS.stay._loaded===6 && FemcEpilogue.WORLDS.stay.files.join()==='{files}' && FemcGame.world()==='stay'"), 'the Stay world loads its five files on demand')
+        ok(p.eval(f"FEMC_EPI_WORLDS.stay._loaded===7 && FemcEpilogue.WORLDS.stay.files.join()==='{files}' && FemcGame.world()==='stay'"), 'the Stay world loads its five files on demand')
         cal = p.eval(r"""(()=>{const G=FemcGame,i=d=>G.dayInfo(G.dayOf(d));return [G.mdOf(0),G.dateOf(0).getFullYear(),i('3/24').day,G.mdOf(G.END()),i('4/6').day,G.END(),i('3/29').type,i('3/30').moon.full,i('3/31').label,G.slotsFor(i('3/29')).join(),G.money(G.S.yen),FemcGame.S.epi.lean,
           G.background("Iwatodai Dorm · Solar's Room",'Morning').url.split('/').pop(),G.background("Iwatodai Dorm · Haechan's Room",'').url.split('/').pop(),G.background('Incheon · Harbor','Midnight').url.split('/').pop()]})()""")
         ok(cal[:11] == ['3/24', 2010, 'Wed', '4/6', 'Tue', 13, 'off', True, 'Spring Break', 'early,after,evening,late', '¥20,000'], f'the calendar: Wed 3/24 to Tue 4/6/2010, spring break every day, the full moon on 3/30, yen ({cal[:11]})')
@@ -1232,7 +1241,7 @@ try:
         # The true ending's coda (batch 8): three small days, each wearing its world's date.
         start8({'route-true': True, 'true-final': True}, {}, 'true', 'epi-tr-h-held', "s.flags['xmas-haechan']=true;")
         files = 'calendar,world,glitches,story'
-        ok(p.eval(f"FEMC_EPI_WORLDS.true._loaded===6 && FemcEpilogue.WORLDS.true.files.join()==='{files}'"), 'the coda loads its four files on demand')
+        ok(p.eval(f"FEMC_EPI_WORLDS.true._loaded===7 && FemcEpilogue.WORLDS.true.files.join()==='{files}'"), 'the coda loads its four files on demand')
         cal = p.eval(r"""(()=>{const G=FemcGame;return [G.mdOf(0),G.mdOf(G.END()),[0,1,2].map(d=>{const s=G.dayInfo(d).shown;return [s.md,s.day,s.date.getFullYear(),s.place]}),G.slotsFor(G.dayInfo(0)).join(),FemcGame.S.epi.shown?Object.keys(FemcGame.S.epi.shown).length:0]})()""")
         ok(cal[0] == '3/8' and cal[1] == '3/10' and cal[2] == [['12/20', 'Sat', 2025, 'Syracuse'], ['3/16', 'Sat', 2013, 'Incheon'], ['1/12', 'Fri', 2024, 'Hanlim']] and cal[3] == 'early,late' and cal[4] == 3,
            f'three days that wear Syracuse’s, Incheon’s and Hanlim’s dates; Day and Night ({cal})')
@@ -1276,6 +1285,123 @@ try:
         aft = p.eval("(()=>{const G=FemcGame;return [G.D.events===FEMC_GAME_EVENTS,G.D.cal===FEMC_GAME_CALENDAR,FemcGlitch.active(),G.money(5),Array.from({length:G.END()+1},(_,d)=>G.dayInfo(d).shown).some(Boolean),G.dayInfo(0).md]})()")
         ok(aft == [True, True, False, '¥5', False, '4/6'], f'after the coda the year reads Iwatodai again, in yen, and no day of its calendar wears another date ({aft})')
         errs = p.console(); ok(not errs, f'no browser errors on the true coda: {errs}')
+
+    if 'polish' in ONLY:
+        # Batch 9: finale and polish.
+        p.goto('femc-game.html?debug=1'); p.eval(HELPERS); size(1000, 486)
+        snap = "JSON.stringify(FemcGame.S)"
+        # A year that never went in: no epilogue stamp, album page or Theater tab, and every epilogue condition false in peek.
+        p.eval("(()=>{EP.year({'route-R':true});localStorage.setItem(FemcGame.CLEARS_KEY,'[]')})()")
+        before = p.eval(snap)
+        never = p.eval(r"""(()=>{const M=FemcMenu,pk=l=>JSON.stringify(M.peek({...l,then:['y'],else:['n']}));return {st:FemcStamps.earned().filter(x=>/^p3s-epi/.test(x)),epi:M.albumData().epi.length,
+          th:M.theaterItems().filter(x=>x.sec==='epilogue').length,
+          pk:[pk({ifYear:'route-R'}),pk({ifEpiRoute:'cover'}),pk({ifBond:{haechan:1}}),pk({ifRouteOpen:'cover'}),pk({ifGlitch:0})]}})()""")
+        ok(not never['st'] and never['epi'] == 0 and never['th'] == 0 and never['pk'] == ['["n"]'] * 5 and p.eval(snap) == before,
+           f'a year that never went in: no epilogue stamps, album page or Theater rows; peek says no to every epilogue condition and writes nothing ({never})')
+        p.eval("FemcMenu.open('album')"); time.sleep(0.3)
+        ok(not p.eval("/Epilogue/.test(document.querySelector('.g-fm-body').textContent)"), 'its album has no Epilogue page')
+        p.eval("FemcMenu.close()")
+
+        # Every world's Equinox lines: the route's own line, and one per other world.
+        for w in ['runners', 'hoax', 'stay', 'true']:
+            p.eval("FemcEpilogue.loadWorld(%s)" % json.dumps(w), timeout=60)
+        eq = p.eval(r"""(()=>{const E=FemcEpilogue,o={};for(const w of ['runners','hoax','stay','true']){const r=FEMC_EPI_WORLDS[w];o[w]={routes:(r.routes||[]).map(x=>E.equinoxOf(r,x.id).line),def:E.equinoxOf(r,null).line,n:E.equinoxOf(r,null).echoes.length,places:E.equinoxOf(r,null).echoes.map(t=>t.split(' · ')[0])}}return o})()""")
+        ok(all(len(set(eq[w]['routes'])) == len(eq[w]['routes']) and all(eq[w]['routes']) for w in eq), f'each route has its own Equinox line ({ {w: eq[w]["routes"] for w in eq} })')
+        ok(eq['runners']['places'] == ['Incheon', 'Hanlim', 'Iwatodai'] and eq['hoax']['places'] == ['Syracuse', 'Incheon', 'Iwatodai'] and eq['stay']['places'] == ['Syracuse', 'Incheon', 'Hanlim'] and eq['true']['n'] == 1,
+           f'one line per other world ({ {w: eq[w]["places"] for w in eq} })')
+        # Loose ends: Stay's kept things answer; Shinjiro's route opens at closeness 4; the coda's moon.
+        kept = p.eval(r"""(()=>{const e=FEMC_EPI_WORLDS.stay.events.find(x=>x.id==='epi-st-held'),out=[];const f=l=>{for(const x of l||[]){if(x.ifFlag)out.push(x.ifFlag);f(x.then);f(x.else)}};f(e.scene);return {out,sh:FEMC_EPI_WORLDS.stay.routes.find(r=>r.id==='shinjiro').open.bond.shinjiro}})()""")
+        ok(all(f'epi-st-kept-{k}' in kept['out'] for k in ['haechan', 'hyein', 'hanni', 'yunjin']) and kept['sh'] == 4, f'Stay: each kept thing answers in the final; Shinjiro’s route opens at 4 ({kept})')
+
+        # Into Runners; the act's last night on Minji's route, with a CG "seen" and a hangout played.
+        enter('route-R')
+        live = p.eval(r"""(()=>{const G=FemcGame,s=G.S,M=FemcMenu,pk=l=>JSON.stringify(M.peek({...l,then:['y'],else:['n']})),br=l=>JSON.stringify(G.branch({...l,then:['y'],else:['n']}));
+          s.epi.route='minji';s.epi.locked=true;s.flags['epi-route-minji']=true;G.save();const b4=JSON.stringify(s);
+          const ls=[{ifYear:{romance:'haechan'}},{ifYear:'xmas-minji'},{ifEpiRoute:'minji'},{ifEpiRoute:['cover','haechan']},{ifBond:{minji:2}},{ifBond:{haechan:9}},{ifRouteOpen:'cover'},{ifGlitch:0},{ifGlitch:4}];
+          const a=ls.map(pk),c=JSON.stringify(s)===b4,b=ls.map(br);
+          const nb=pk({ifBond:{nobody:1}});return {a,b,same:c,nb,nobody:'nobody' in (s.epi.bonds||{})}})()""")
+        ok(live['a'] == live['b'] and live['same'] and live['nb'] == '["n"]' and not live['nobody'], f'inside the epilogue, peek answers the epilogue’s conditions as G.branch does, and writes nothing ({live["a"]})')
+        inner = p.eval(r"""(async()=>{const G=FemcGame,s=G.S,M=FemcMenu;s.year1.album={v:1,cg:['crush-two-ends','ending-hoax-home']};G.save();const d=M.albumData();
+          M.open('album');await new Promise(r=>setTimeout(r,300));const t=document.querySelector('.g-fm-body').textContent;M.close();
+          return {cgs:d.cgs.map(c=>c.id),epi:d.epi.map(c=>[c.id,c.on]),iw:/Iwatodai · /.test(t),ep:/Epilogue · Syracuse/.test(t)}})()""")
+        ok(inner['cgs'] == ['crush-two-ends', 'ending-hoax-home'] and inner['iw'] and inner['ep'] and len(inner['epi']) == 4 and not any(o for _, o in inner['epi']),
+           f'inside the epilogue the album keeps an Iwatodai page (the year’s CGs) and the world’s own, locked ({inner})')
+        # The live Theater: the act's own scenes; a replay changes nothing.
+        p.eval("(()=>{const G=FemcGame,s=G.S;['epi-r-home','epi-r-crossroads'].forEach(id=>s.events.includes(id)||s.events.push(id));G.save()})()")
+        th = p.eval("FemcMenu.theaterItems().map(x=>[x.sec,x.src.key,x.title])")
+        ok(th and all(x[0] == 'epilogue' for x in th) and {'epi-r-home', 'epi-r-crossroads'} <= {x[1] for x in th}, f'inside the epilogue the Theater lists the act’s own scenes ({len(th)})')
+        before = p.eval(snap)
+        k = [x[1] for x in th].index('epi-r-crossroads')
+        p.eval("FemcMenu.replayRow(%d)" % k)
+        p.wait("!!document.querySelector('.gs.gs-replay')", 20)
+        for _ in range(400):
+            if not p.eval("!!document.querySelector('.gs.gs-replay:not(.out)')"): break
+            p.eval("(()=>{const g=document.querySelector('.gs.gs-replay:not(.out)');if(!g)return;const t=g.querySelector('.gs-title');if(t){t.click();return}const c=g.querySelector('.gs-choices button');if(c){c.click();return}g.click()})()"); time.sleep(0.03)
+        ok(p.eval(snap) == before and p.eval("FemcGame.world()") == 'runners', 'a live replay of the crossroads plays to its end and leaves the save byte-identical')
+
+        # Finish the act: the Equinox card wears Minji's line and the other worlds' lines.
+        p.eval("(()=>{const G=FemcGame,s=G.S;s.album={v:1,cg:['epi-r-held']};const b=FemcEpilogue.bond('minji',1);s.epi.bonds.minji.seen.push('epi-r-test-hangout');s.day=G.END();s.slot='late';G.D.events.filter(e=>e.date===G.mdOf(G.END())).forEach(e=>s.events.includes(e.id)||s.events.push(e.id));G.save();EP.clear();FemcGameUI.run();document.querySelector('#g-app [data-next]').click()})()")
+        p.wait("!!document.querySelector('.g-epi-end')")
+        time.sleep(1.4); p.eval("document.querySelector('.g-epi-end').click()")
+        p.wait("!!document.querySelector('.g-epi-equinox')", 10)
+        time.sleep(3.2)
+        eqc = p.eval("(()=>{const c=document.querySelector('.g-epi-equinox');return {sub:c.querySelector('.g-ac-date').textContent,li:[...c.querySelectorAll('.g-epi-echoes li')].map(x=>x.textContent)}})()")
+        ok(eqc['sub'] == eq['runners']['routes'][1] and len(eqc['li']) == 3 and eqc['li'][0].startswith('Incheon'), f'the Equinox card: Minji’s line, then three other-world lines ({eqc["sub"]!r})')
+        shots('equinox-minji')
+        p.eval("document.querySelector('.g-epi-equinox').click()")
+        p.wait("!!document.querySelector('.g-end')", 15)
+        rec = p.eval(r"""(()=>{const s=FemcGame.S,r=s.epilogues.runners;return {route:r.route,ev:r.seen.events.includes('epi-r-crossroads'),hang:r.seen.hangouts.minji,flag:!!r.flags['epi-route-minji'],bond:r.bonds.minji,open:r.open,cg:(s.album||{}).cg||[]}})()""")
+        ok(rec['route'] == 'minji' and rec['ev'] and rec['hang'] == ['epi-r-test-hangout'] and rec['flag'] and rec['bond'] >= 1 and 'cover' in rec['open'] and 'epi-r-held' in rec['cg'],
+           f'leaving records the act in the year (seen scenes, flags, closeness, open routes) and moves its CG into the year’s album ({rec})')
+
+        # Stamps: Runners finished; all five once every world is.
+        st = p.eval(r"""(async()=>{localStorage.removeItem('kg-achievements');const G=FemcGame,s=G.S;localStorage.setItem(G.CLEARS_KEY,JSON.stringify([{run:s.runId,ending:'where it begins',epi:['runners'],at:1}]));
+          const a=FemcStamps.earned().filter(x=>/^p3s-epi/.test(x));await FemcStamps.check();const got=Object.keys(JSON.parse(localStorage.getItem('kg-achievements')||'{}')).filter(x=>/^p3s-epi/.test(x));
+          localStorage.setItem(G.CLEARS_KEY,JSON.stringify([{run:'a',epi:['runners','strangers']},{run:'b',epi:['hoax','stay','true']}]));const b=FemcStamps.earned().filter(x=>/^p3s-epi/.test(x));
+          const lib=await FemcStamps.lib();return {a,got,b,names:b.map(id=>lib.byId(id)&&lib.byId(id).name)}})()""")
+        ok(st['a'] == ['p3s-epi-runners'] and st['got'] == ['p3s-epi-runners'], f'finishing Runners earns its stamp, recorded on the passport ({st["got"]})')
+        ok(len(st['b']) == 6 and 'p3s-epi-all' in st['b'] and all(st['names']), f'every world finished (across playthroughs) earns each one and the last ({st["names"]})')
+
+        # The album in the year: the Runners page, one tile unlocked.
+        al = p.eval(r"""(async()=>{const M=FemcMenu,d=M.albumData();M.open('album');await new Promise(r=>setTimeout(r,300));const b=document.querySelector('.g-fm-body'),t=b.textContent;
+          const sec=[...b.querySelectorAll('.g-al-sec')].find(x=>/Epilogue · Syracuse/.test(x.textContent));const r={epi:d.epi.map(c=>[c.id,c.on]),sec:!!sec,lock:sec?sec.querySelectorAll('.g-al-tile.lock').length:-1,open:sec?sec.querySelectorAll('button.g-al-tile').length:-1,list:M.albumList().some(c=>c.id==='epi-r-held')};M.close();return r})()""")
+        ok(al['sec'] and al['lock'] == 3 and al['open'] == 1 and al['list'] and ['epi-r-held', True] in al['epi'], f'the year’s album gains the Runners page: three locked tiles, the one she saw ({al["epi"]})')
+        carry = p.eval("(()=>{const c=FemcMenu.albumCarry();return {cg:c.cg.includes('epi-r-held'),epi:!!(c.epi&&c.epi.runners&&c.epi.runners.seen)}})()")
+        ok(carry['cg'] and carry['epi'], 'New Game+ would carry the page and the Theater record')
+
+        # The Theater in the year: the Epilogue tab (the world loads), a replay in Syracuse on Minji's route, then back.
+        p.goto('femc-game.html?debug=1'); p.eval(HELPERS); size(1000, 486)
+        ok(p.eval("FemcGame.world()===null && !(window.FEMC_EPI_WORLDS&&FEMC_EPI_WORLDS.runners&&FEMC_EPI_WORLDS.runners._loaded) && !!FemcGame.S.epilogues.runners"), 'a fresh page from the autosave: the record is there, no epilogue data loaded yet')
+        p.eval("FemcMenu.open('theater')"); time.sleep(0.3)
+        p.wait("!!document.querySelector('[data-ths=epilogue]')", 20)
+        p.eval("document.querySelector('[data-ths=epilogue]').click()"); time.sleep(0.2)
+        tl = p.eval("[...document.querySelectorAll('.g-th-sec h3')].map(x=>x.textContent).join('|')+'#'+document.querySelectorAll('.g-th-row').length")
+        ok('Epilogue · Syracuse' in tl, f'the Theater’s Epilogue tab lists the act once its world has loaded ({tl})')
+        p.eval("FemcMenu.close()")
+        before = p.eval(snap)
+        rows = p.eval("FemcMenu.theaterItems().map(x=>x.src.key)")
+        k = rows.index('epi-r-crossroads')
+        p.eval("FemcMenu.replayRow(%d)" % k)
+        p.wait("!!document.querySelector('.gs.gs-replay')", 20)
+        during = p.eval(r"""(()=>{const G=FemcGame,M=FemcMenu,pk=l=>JSON.stringify(M.peek({...l,then:['y'],else:['n']}));return {w:G.world(),bg:(G.background('Syracuse · Language Arts Rooftop','Night')||{}).url||'',
+          pk:[pk({ifEpiRoute:'minji'}),pk({ifEpiRoute:'haechan'}),pk({ifYear:'route-R'}),pk({ifRouteOpen:'cover'}),pk({ifBond:{minji:1}}),pk({ifEvent:'epi-r-home'})],money:G.money(5)}})()""")
+        ok(during['w'] == 'runners' and during['money'] == '$5' and during['pk'] == ['["y"]', '["n"]', '["y"]', '["y"]', '["y"]', '["y"]'], f'during a replay from the year: Syracuse’s data, and the record’s route, year, open routes, closeness and scenes ({during})')
+        for _ in range(400):
+            if not p.eval("!!document.querySelector('.gs.gs-replay:not(.out)')"): break
+            p.eval("(()=>{const g=document.querySelector('.gs.gs-replay:not(.out)');if(!g)return;const t=g.querySelector('.gs-title');if(t){t.click();return}const c=g.querySelector('.gs-choices button');if(c){c.click();return}g.click()})()"); time.sleep(0.03)
+        time.sleep(0.5)
+        aft = p.eval("(()=>{const G=FemcGame;return [G.world(),G.D.cal===FEMC_GAME_CALENDAR,G.money(5),JSON.stringify(G.S)]})()")
+        ok(aft[0] is None and aft[1] and aft[2] == '¥5' and aft[3] == before, f'after the replay: Iwatodai’s data again, and the save byte-identical ({aft[:3]})')
+        pk_after = p.eval("JSON.stringify(FemcMenu.peek({ifEpiRoute:'minji',then:['y'],else:['n']}))")
+        ok(pk_after == '["n"]', 'and peek is back to no outside the replay')
+
+        # The moon: the coda's days and Runners' last days read the real sky, not a flat quarter.
+        p.eval("(()=>{EP.year({'route-true':true,'true-final':true});EP.end();document.querySelector('[data-t=epi]').click()})()")
+        p.wait("!!document.querySelector('.g-epi-offer [data-go]')"); p.eval("document.querySelector('.g-epi-offer [data-go]').click()")
+        p.wait("FemcGame.world()==='true'", 20)
+        mo = p.eval("[0,1,2].map(d=>FemcGame.dayInfo(d).moon.name)")
+        ok(mo != ['First Quarter'] * 3 and 'Full Moon' not in mo, f'the coda’s moons follow each day’s own date ({mo})')
+        errs = p.console(); ok(not errs, f'no browser errors through the polish checks: {errs}')
 
     if 'shots' in ONLY:
         p.goto('femc-game.html'); p.eval(HELPERS)
