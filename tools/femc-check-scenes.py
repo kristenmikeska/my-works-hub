@@ -173,11 +173,57 @@ for wid, w in D.get('epi', {}).items():
     mv = (w.get('variants') or {}).get('morning') or {}
     if not mv.get('school') and not mv.get('off'): problems.append(f'{k}: variants.morning needs school or off lines')
     saved_bg = bg; bg = wbg
+    saved_cast = dict(cast); cast.update(w.get('cast') or {})
+    for e in w['events'] + w.get('routines', []): cast.update(e.get('cast') or {})
     for e in w['events']:
         uid(e.get('id'), k)
         if not e.get('date') or not inr(e['date']): problems.append(f'{k}: event {e.get("id")} date {e.get("date")} outside the act')
         if e.get('place') and not wbg_ok(e['place']): problems.append(f'{k}: event {e.get("id")} place "{e["place"]}" has no background rule')
+        if e.get('slot') not in ('early', 'after', 'evening', 'late'): problems.append(f'{k}: event {e.get("id")} slot {e.get("slot")}')
         walk(e.get('scene'), f'{k}/{e.get("id")}')
+    # Batch 3: routines (daily-life format), home bonds' hangouts and the texts.
+    for r_ in w.get('routines', []):
+        uid(r_.get('id'), k)
+        for md in [r_.get('after'), r_.get('until')]:
+            if not md or not inr(md): problems.append(f'{k}: routine {r_.get("id")} needs after/until in the act ({md})')
+        if r_.get('slot') not in ('early', 'after', 'evening', 'late'): problems.append(f'{k}: routine {r_.get("id")} slot {r_.get("slot")}')
+        if not wbg_ok(r_.get('place')): problems.append(f'{k}: routine {r_.get("id")} place "{r_.get("place")}" has no background rule')
+        walk(r_.get('scene'), f'{k}/{r_.get("id")}')
+    evset = {e.get('id') for e in w['events']}; rids = {r['id'] for r in w['routes']}
+    for bid, b in (w.get('bonds') or {}).items():
+        if b.get('id') != bid or b.get('role') not in ('friend', 'rival'): problems.append(f'{k}: bond {bid} needs id = key and role friend / rival')
+        if bid not in cast and bid not in P: problems.append(f'{k}: bond {bid} has no name')
+        for h in b.get('hangouts', []):
+            hk = f'{k}/{h.get("id")}'; uid(h.get('id'), k)
+            for md in [h.get('after'), h.get('until')]:
+                if md and not inr(md): problems.append(f'{hk}: date {md} outside the act')
+            if any(x not in ('after', 'evening') for x in h.get('slots', ['after', 'evening'])): problems.append(f'{hk}: hangouts are After Class / Evening only')
+            if not wbg_ok(h.get('place')): problems.append(f'{hk}: place "{h.get("place")}" has no background rule')
+            for x in h.get('events', []):
+                if x not in evset: problems.append(f'{hk}: waits on unknown event {x}')
+            for x in [h.get('route'), h.get('noRoute')]:
+                for y in ([x] if isinstance(x, str) else x or []):
+                    if y not in rids: problems.append(f'{hk}: unknown route {y}')
+            walk(h.get('scene'), hk)
+    T = w.get('texts') or {}
+    for t in T.get('texts', []) + T.get('ambient', []):
+        uid(t.get('id'), k)
+        if t.get('thread') not in (T.get('threads') or {}): problems.append(f'{k}: text {t.get("id")} thread {t.get("thread")} has no name')
+        for md in [t.get('date'), t.get('from'), t.get('to')]:
+            if md and not inr(md): problems.append(f'{k}: text {t.get("id")} date {md} outside the act')
+        for m in t.get('msgs', []) + [x for o in t.get('reply', []) for x in o.get('then', [])]:
+            if m.get('from') not in ('solar',) and m.get('from') not in cast and m.get('from') not in P: problems.append(f'{k}: text {t.get("id")} from {m.get("from")} has no name')
+    def when_lines(lines):
+        for l in lines or []:
+            if isinstance(l, dict):
+                for kk in ('then', 'else'): when_lines(l.get(kk))
+                for o in l.get('choose') or []:
+                    wv = o.get('when')
+                    if wv is not None and (not isinstance(wv, dict) or not wv): problems.append(f'{k}: an option\'s when must be a condition object')
+                    if isinstance(wv, dict) and wv.get('ifRouteOpen') and wv['ifRouteOpen'] not in rids: problems.append(f'{k}: when ifRouteOpen names unknown route {wv["ifRouteOpen"]}')
+                    when_lines(o.get('then'))
+    for e in w['events']: when_lines(e.get('scene'))
+    cast = saved_cast
     bg = saved_bg
     # The glitch file (epilogue batch 2, glitch.js): kinds, stages, dates in the act, scene hooks, ambient pools.
     KINDS = {'tint', 'weather', 'clock', 'date', 'phone', 'map', 'face', 'sound', 'tear', 'name', 'hands'}
@@ -190,7 +236,7 @@ for wid, w in D.get('epi', {}).items():
         if int(n) not in range(1, 5): problems.append(f'{k}: ambient pool for stage {n} (1-4)')
         for x in pool:
             if x.get('kind') not in KINDS: problems.append(f'{k}: ambient kind {x.get("kind")}')
-    evids = {e.get('id') for e in w['events']} | {r.get('id') for r in w.get('routines', [])}
+    evids = {e.get('id') for e in w['events']} | {r.get('id') for r in w.get('routines', [])} | {h.get('id') for b in (w.get('bonds') or {}).values() for h in b.get('hangouts', [])}
     gids = set()
     for g in gl:
         uid(g.get('id'), f'{k}/glitches')
@@ -208,8 +254,13 @@ for wid, w in D.get('epi', {}).items():
                 if isinstance(v, str) and v not in KINDS and v not in gids: problems.append(f'{k}: scene line glitch "{v}" is neither a kind nor a glitch id')
                 for kk in ('then', 'else'): glines(l.get(kk))
                 for o in l.get('choose') or []: glines(o.get('then'))
-    for e in w['events']: glines(e.get('scene'))
-    EPI_COUNT[wid] = {'days': last + 1, 'events': len(w['events']), 'activities': len(w['places'].get('activities', [])), 'glitches': len(gl), 'stub': bool(w.get('stub'))}
+    for e in w['events'] + w.get('routines', []) + [h for b in (w.get('bonds') or {}).values() for h in b.get('hangouts', [])]: glines(e.get('scene'))
+    for g in gl:
+        if g.get('inline') and (g.get('scene') or any(g.get(x) for x in ('day', 'days', 'from', 'to', 'slot'))): problems.append(f'{k}: inline glitch {g.get("id")} carries screen gates')
+    EPI_COUNT[wid] = {'days': last + 1, 'events': len(w['events']), 'routines': len(w.get('routines', [])), 'bonds': len(w.get('bonds') or {}),
+                      'hangouts': sum(len(b.get('hangouts', [])) for b in (w.get('bonds') or {}).values()),
+                      'texts': len((w.get('texts') or {}).get('texts', [])) + len((w.get('texts') or {}).get('ambient', [])),
+                      'activities': len(w['places'].get('activities', [])), 'glitches': len(gl), 'stub': bool(w.get('stub'))}
 want = sys.argv[sys.argv.index('--links') + 1].split(',') if '--links' in sys.argv else []
 for lid in want:
     l = links.get(lid)

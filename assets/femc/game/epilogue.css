@@ -17,6 +17,14 @@
 .g-epi-act:is(:hover, :focus-visible):not(:disabled) { background: #fff; color: var(--night); outline: none; box-shadow: 5px 5px 0 var(--pink); }
 .g-epi-act:is(:hover, :focus-visible):not(:disabled) small { color: #5a2a44; }
 .g-epi-act:disabled { opacity: .45; cursor: default; }
+/* Home bonds on Go Out (batch 3): people above places, closeness pips; a rival reads as trouble. */
+.g-epi-sub { margin: 14px 0 0; font: italic 900 13px/1 var(--cond); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.g-epi-sub + .g-epi-acts { margin-top: 8px; }
+.g-epi-bond { border-color: rgba(255, 214, 120, .5); background: rgba(255, 196, 80, .07); }
+.g-epi-bond.rival { border-color: rgba(150, 160, 255, .5); background: rgba(90, 100, 220, .1); }
+.g-epi-pips { font-style: normal; font-size: 11px; letter-spacing: 2px; color: var(--gold, #ffd36a); }
+.g-epi-bond.rival .g-epi-pips { color: #a9b1ff; }
+.g-toast.k-bond { border-color: var(--gold, #ffd36a); box-shadow: 5px 5px 0 rgba(255, 196, 80, .4); }
 
 /* The end card keeps the act card's look; the Equinox card turns it toward the Dark Hour's green and the moon. */
 .g-epi-card .g-ac-title { font-size: clamp(42px, 9vw, 112px); }

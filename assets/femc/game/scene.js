@@ -2,7 +2,8 @@
    Scenes are arrays of lines (data files never contain logic):
      { n }                       narration; *word* is italic
      { s, f, t }                 a spoken line: speaker id, portrait face, text ('solar' stands on the right)
-     { choose: [{ t, notes, then, say, flag, tally, stat, needs, reverse, route }] }
+     { choose: [{ t, notes, then, say, flag, tally, stat, needs, reverse, route, ifFlag, when }] }
+                                 (when: a condition object; the option shows only while it holds)
                                  a choice; "(...)" options aren't spoken; needs: { stat: rank } locks an option
        { christmasOptions: true }  an entry in a choice list (the 12/24 story picker) that expands into one "(Text <name>.)"
                                  option per G.christmasChoices(): links whose own `christmas` scene is open (core.js) and
@@ -296,7 +297,10 @@ window.FemcScene = (() => {
       showMe(null);
       el.classList.remove('ready');
       waiting = null;
-      const shown = options.filter(o => !o.ifFlag || flagOn(o.ifFlag));
+      // An option's `when` (any condition line's test, e.g. { ifRouteOpen: 'haechan' } or { ifBond: { minji: 4 } }) shows it only
+      // while that holds; a replay shows every option.
+      const whenOk = c => { if (replay) return true; const r = G.branch({ ...c, then: [1], else: [] }); return r === null || r.length > 0; };
+      const shown = options.filter(o => (!o.ifFlag || flagOn(o.ifFlag)) && (!o.when || whenOk(o.when)));
       const offered = shown.flatMap(o => (o.flag && typeof o.flag === 'object' && !Array.isArray(o.flag) ? Object.keys(o.flag) : []).map(k => /^xmas-(.+)$/.exec(k)?.[1]).filter(Boolean));
       const list = shown.flatMap(o => (o.christmasOptions ? (replay ? [] : G.christmasChoices(offered)) : [o]));
       if (replay && !list.length) list.push({ t: '(Carry on.)' });

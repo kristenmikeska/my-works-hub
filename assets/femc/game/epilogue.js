@@ -27,17 +27,34 @@
    theirs in a later batch; the bad ending never does.
    Glitches (batch 2, glitch.js documents them): each world's data/epi/<world>/glitches.js loads with it; run() asks
    FemcGlitch.tick() on the date card ('card'), the morning, Go Out ('out', which may gain the station card) and the late
-   screen; events and routines get their scheduled { glitch } lines (inject); { ifGlitch: n } goes through cond(). */
+   screen; events and routines get their scheduled { glitch } lines (inject); { ifGlitch: n } goes through cond().
+   The world batches (batch 3, 2026-10-28: Runners weeks 1-2; data/epi/runners/world.js documents the data side):
+     - A world is several files (WORLDS[id].files), each merging into FEMC_EPI_WORLDS[id]; loadWorld marks it `_loaded`.
+     - Home bonds (raw.bonds, people.js): { id: { id, role: 'friend' | 'rival', hangouts: [{ id, title, hint, after, until, slots,
+       days, events, flags, noFlags, route, noRoute, minBond, ifYear, place, time, gain, scene }] } }. Go Out lists, above the
+       places, each person whose first unseen hangout fits now (route / noRoute read the LOCKED route only); playing one spends
+       the slot and adds closeness (gain, default 1), with a small bond toast. Closeness (S.epi.bonds[id] = { c, seen }) starts
+       from the year (startBond: rank 1+ → 1, 5+ → 2, 10+ → 3, 15 → 4; +1 romance, +1 her Christmas pick; at most 5) and tops
+       out at 10. A scene's { bond: { id: n } } adds to it (core.js bond → bond() here). A rival's closeness is how closely she's
+       watching.
+     - Practice (raw.practice: { days, slot, from, to, skip, place, bg, stats, title }): on those days that slot is practice
+       (variants.practice), not Go Out, unless a story event or routine took it first.
+     - An event's `fills: [slots]` spends those slots too (a whole day, like Regionals).
+     - Conditions: { ifBond: { id: n } } (closeness at least n), { ifRouteOpen: id } (the route's `open`: always, lean, bond,
+       noFlag), plus scene.js's option `when` for choices that show only while a condition holds (the crossroads).
+     - The lock sets the flag epi-route-<route> (even from the lean), so texts and routines can gate on the route.
+     - Entering copies parts of the year into the epilogue's flags as y-<flag> (xmas-*, arrived-*, route-*, danielle-refused /
+       -sold, mem-camp), y-romance-<id> and y-met-<id>: texts and routines can only gate on flags. */
 window.FemcEpilogue = (() => {
   const G = window.FemcGame, SC = window.FemcScene, W = window;
   if (!G) return null;
   const S = () => G.S, UI = () => W.FemcGameUI;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const clone = o => JSON.parse(JSON.stringify(o));
-  const DATA_V = 2; // data/epi/<world>/*.js ?v=
+  const DATA_V = 3; // data/epi/<world>/*.js ?v=
   // The worlds: the year's route flag that opens each, its name (the button) and place (slot labels), its data files.
   const WORLDS = {
-    runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches'] },
+    runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2'] },
     strangers: { id: 'strangers', flag: 'route-S', name: 'strangers', place: 'Incheon', files: ['calendar', 'world', 'glitches'] },
     hoax: { id: 'hoax', flag: 'route-H', name: 'HOAX', place: 'Hanlim', files: ['calendar', 'world', 'glitches'] }
   };
@@ -52,7 +69,7 @@ window.FemcEpilogue = (() => {
   /* ── World data ── */
   const loading = {};
   function loadWorld(id) {
-    if (W.FEMC_EPI_WORLDS?.[id]?.calendar && W.FEMC_EPI_WORLDS[id].places && W.FEMC_EPI_WORLDS[id].glitches) return Promise.resolve();
+    if (W.FEMC_EPI_WORLDS?.[id]?._loaded === DATA_V) return Promise.resolve();
     if (loading[id]) return loading[id];
     const one = f => new Promise((res, rej) => {
       const s = document.createElement('script');
@@ -60,7 +77,8 @@ window.FemcEpilogue = (() => {
       s.onload = res; s.onerror = () => rej(new Error(`epilogue data ${id}/${f}`));
       document.head.appendChild(s);
     });
-    loading[id] = WORLDS[id].files.reduce((p, f) => p.then(() => one(f)), Promise.resolve()).catch(e => { delete loading[id]; throw e; });
+    loading[id] = WORLDS[id].files.reduce((p, f) => p.then(() => one(f)), Promise.resolve()).then(() => { W.FEMC_EPI_WORLDS[id]._loaded = DATA_V; })
+      .catch(e => { delete loading[id]; throw e; });
     return loading[id];
   }
   // What every epilogue calendar has unless it says otherwise: nothing of Iwatodai's (no ops, trips, floor caps, exams).
@@ -79,7 +97,7 @@ window.FemcEpilogue = (() => {
       music: { ...main.music, ...(rp.music || {}) }, screens: { ...main.screens, ...(rp.screens || {}) } };
     const links = {};
     Object.values(raw.links || {}).forEach(l => { links[l.id] = l; });
-    const data = { cal, places, links, money: raw.money, events: raw.events || [], dailyLife: raw.routines || [], variants: raw.variants || {},
+    const data = { cal, places, links, cast: raw.cast || {}, money: raw.money, events: raw.events || [], dailyLife: raw.routines || [], variants: raw.variants || {},
       texts: { threads: {}, texts: [], ambient: [], groups: {}, ...(raw.texts || {}) }, q: { classes: [], exams: {}, teachers: {}, rivals: [], ambient: {} },
       jobs: [], jobScenes: {}, clubs: {}, runIns: [], trip: {}, lodging: {}, crush: { tracks: {}, moments: [], world: {} } };
     return (built[id] = { id, data, raw });
@@ -113,14 +131,19 @@ window.FemcEpilogue = (() => {
   const route = () => S().epi?.route || S().epi?.lean || null;
   function lockRoute(id) {
     const e = S().epi; if (!e || e.locked) return;
-    const pick = (worldRaw().routes || []).find(r => S().flags[`epi-route-${r.id}`]);
-    e.route = id || pick?.id || e.lean; e.locked = true; G.save();
+    const rs = worldRaw().routes || [], pick = rs.find(r => S().flags[`epi-route-${r.id}`]);
+    // No pick (the crossroads never played): the lean, if that route is still open; else the last route (the default).
+    e.route = id || pick?.id || (rs.length && !routeOpen(e.lean) ? rs[rs.length - 1].id : e.lean); e.locked = true;
+    if (e.route) S().flags[`epi-route-${e.route}`] = true;
+    G.save();
   }
   // Scene conditions (core.js branch): { ifYear } against the finished year, { ifEpiRoute } against the route.
   function cond(line) {
     const s = S();
     if (line.ifGlitch !== undefined) return !!s.epi && !!W.FemcGlitch && W.FemcGlitch.stage() >= +line.ifGlitch;
     if (line.ifEpiRoute) return !!s.epi && [].concat(line.ifEpiRoute).includes(route());
+    if (line.ifBond) return !!s.epi && Object.entries(line.ifBond).every(([id, n]) => closeness(id) >= n);
+    if (line.ifRouteOpen) return !!s.epi && routeOpen(line.ifRouteOpen);
     const Y = s.year1, q = line.ifYear;
     if (!Y || !q) return false;
     if (typeof q === 'string') return !!Y.flags?.[q];
@@ -134,6 +157,57 @@ window.FemcEpilogue = (() => {
     return Object.entries(q).every(([k, v]) => (T[k] ? T[k](v) : false));
   }
 
+  // Can the route still be picked (the world's routes[].open: always / lean / bond / noFlag)?
+  function routeOpen(id) {
+    const r = (worldRaw().routes || []).find(x => x.id === id);
+    if (!r || !S().epi) return false;
+    const o = r.open || { always: true }, f = S().flags;
+    if ((o.noFlag || []).some(k => f[k])) return false;
+    if (o.always) return true;
+    if (o.lean && S().epi.lean === id) return true;
+    return !!o.bond && Object.entries(o.bond).every(([b, n]) => closeness(b) >= n);
+  }
+
+  /* ── Home bonds (raw.bonds) ── */
+  const BONDS = () => worldRaw().bonds || {};
+  const CLOSE_MAX = 10;
+  let toasted = null;
+  function startBond(id) {
+    const c = S().epi?.carry || {}, r = (c.ranks || {})[id] || 0;
+    let n = r >= 15 ? 4 : r >= 10 ? 3 : r >= 5 ? 2 : r >= 1 ? 1 : 0;
+    if ((c.romance || []).includes(id)) n += 1;
+    if (c.xmas === id) n += 1;
+    return Math.min(n, 5);
+  }
+  function bondState(id) {
+    const all = (S().epi.bonds ||= {});
+    return (all[id] ||= { c: startBond(id), seen: [] });
+  }
+  const closeness = id => (S().epi && BONDS()[id] ? bondState(id).c : 0);
+  function bond(id, n) {
+    const b = BONDS()[id];
+    if (!S().epi || !b || !n) return 0;
+    const st = bondState(id), was = st.c;
+    st.c = Math.max(0, Math.min(CLOSE_MAX, st.c + n));
+    const key = `${S().day}-${S().slot}-${id}`; // one toast per person per slot (a scene's { bond } and the hangout's gain)
+    if (st.c > was && toasted !== key) { toasted = key; G.toast('bond', b.role === 'rival' ? `${G.name(id)} is watching more closely.` : `Bond · ${G.name(id)}`); }
+    G.save();
+    return st.c - was;
+  }
+  // The hangout a person offers now: the first unseen one whose gates fit (route / noRoute: the locked route only).
+  function hangoutFor(id, slot = S().slot, d = S().day) {
+    const b = BONDS()[id], e = S().epi, f = S().flags;
+    if (!b || !e) return null;
+    const st = bondState(id), dow = G.dateOf(d).getDay(), locked = e.locked ? e.route : null;
+    return (b.hangouts || []).find(h => !st.seen.includes(h.id)
+      && (h.slots || ['after', 'evening']).includes(slot) && (!h.days || h.days.includes(dow))
+      && (!h.after || d >= G.dayOf(h.after)) && (!h.until || d <= G.dayOf(h.until))
+      && (h.events || []).every(x => S().events.includes(x)) && (h.flags || []).every(k => f[k]) && !(h.noFlags || []).some(k => f[k])
+      && (!h.route || (locked && [].concat(h.route).includes(locked))) && !(h.noRoute && locked && [].concat(h.noRoute).includes(locked))
+      && (!h.minBond || st.c >= h.minBond) && (!h.ifYear || cond({ ifYear: h.ifYear }))) || null;
+  }
+  const people = slot => Object.keys(BONDS()).map(id => ({ id, b: BONDS()[id], h: hangoutFor(id, slot) })).filter(x => x.h);
+
   /* ── Entering and leaving ── */
   function stateFor(Y, id) {
     const w = build(id), c = w.data.cal, E = G.freshState(), carry = carryOf(Y);
@@ -144,6 +218,11 @@ window.FemcEpilogue = (() => {
     const year = clone(Y);
     year.battleSave = null; // lives in the epilogue layer while she's there; leave() puts it back
     E.year1 = year;
+    // Parts of the year as flags (y-…), for texts and routines, which only gate on flags.
+    const yf = Y.flags || {};
+    Object.keys(yf).forEach(k => { if (yf[k] && /^(xmas-|arrived-|route-|danielle-(refused|sold)$|mem-camp$)/.test(k)) E.flags[`y-${k}`] = true; });
+    carry.romance.forEach(x => { E.flags[`y-romance-${x}`] = true; });
+    (Y.met || []).forEach(x => { E.flags[`y-met-${x}`] = true; });
     E.epi = { v: 1, world: id, place: WORLDS[id].place, year: c.year, start: c.start, slots: Object.fromEntries((c.slots || []).map(x => [x.id, x.name])),
       lean: leanFor(w.raw, carry, Y), route: null, locked: false, carry, entered: Date.now(), done: false };
     return E;
@@ -230,6 +309,7 @@ window.FemcEpilogue = (() => {
     if (due && due.kind === 'event') return playEvent(due.ev);
     const daily = G.dailyLife();
     if (daily) return SC.play({ ...daily, scene: [{ bg: daily.bg }, ...(GL()?.inject(daily.id, daily.scene) || daily.scene)], label: daily.label || 'Everyday life', onDone: () => { G.finishDailyLife(daily.id); ui.run(); } });
+    if (practiceNow(info)) return practice(info);
     switch (s.slot) {
       case 'early': return morning(info);
       case 'late': return late(info);
@@ -240,7 +320,29 @@ window.FemcEpilogue = (() => {
   function playEvent(ev) {
     S().pending = null;
     return SC.play({ scene: GL()?.inject(ev.id, ev.scene) || ev.scene, place: ev.place, time: ev.time, title: ev.title, label: G.dayInfo().md, cast: ev.cast, event: true,
-      onDone: () => { G.markEvent(ev.id); if (ev.consumes) { S().spent[`${S().day}-${S().slot}`] = `ev:${ev.id}`; G.save(); return advance(); } UI().run(); } });
+      onDone: () => {
+        G.markEvent(ev.id);
+        // fills: the rest of the day's slots go with it (Regionals); consumes: this slot does.
+        (ev.fills || []).forEach(x => { S().spent[`${S().day}-${x}`] = `ev:${ev.id}`; });
+        if (ev.consumes || ev.fills) { S().spent[`${S().day}-${S().slot}`] = `ev:${ev.id}`; G.save(); return advance(); }
+        UI().run();
+      } });
+  }
+  // The team's practice (raw.practice): that slot on those days, unless something took it.
+  function practiceNow(info) {
+    const p = worldRaw().practice, s = S();
+    if (!p || s.slot !== p.slot || G.freeSlotSpent(s.slot) || info.type === 'exam') return false;
+    if (!p.days.includes(info.dow) || (p.skip || []).includes(info.md)) return false;
+    return (!p.from || s.day >= G.dayOf(p.from)) && (!p.to || s.day <= G.dayOf(p.to));
+  }
+  function practice(info) {
+    const p = worldRaw().practice, s = S();
+    s.spent[`${s.day}-${s.slot}`] = 'practice';
+    if (p.stats) G.addStats(p.stats);
+    G.save();
+    SC.Music.set(G.D.places.music['epi-r-team'] ? 'epi-r-team' : 'day');
+    UI().segment({ slot: s.slot, bg: p.bg, place: p.place, text: line('practice', 'Practice.'), next: advance });
+    GL()?.tick('out', { place: p.place });
   }
   const P = () => G.D.places;
   const GL = () => W.FemcGlitch;
@@ -267,20 +369,32 @@ window.FemcEpilogue = (() => {
     const s = S(), slot = s.slot, ui = UI(), home = P().home || {};
     ui.setBg(home.bg, slot === 'evening' ? 'night' : '');
     SC.Music.set(G.D.places.screens[slot === 'evening' ? 'evening' : 'after'] || 'day');
-    const list = acts(slot);
+    const list = acts(slot), folks = people(slot);
+    const pips = id => { const c = closeness(id); return `<i class="g-epi-pips" aria-label="closeness ${c} of ${CLOSE_MAX}">${'●'.repeat(Math.min(c, CLOSE_MAX))}${'○'.repeat(Math.max(0, CLOSE_MAX - c))}</i>`; };
     const main = ui.show(`<section class="g-seg g-epi-out"><p class="g-kicker">${esc(G.slotName(slot, info))} · ${esc(s.epi.place)}</p>
-      <div class="g-seg-box"><p class="g-seg-text">Where to?</p><div class="g-epi-acts">${list.map(a => {
+      <div class="g-seg-box"><p class="g-seg-text">Where to?</p>${folks.length ? `<p class="g-epi-sub">People</p><div class="g-epi-acts g-epi-folks">${folks.map(x =>
+        `<button type="button" class="g-epi-act g-epi-bond${x.b.role === 'rival' ? ' rival' : ''}" data-bond="${esc(x.id)}"><b>${esc(G.name(x.id))}</b><small>${esc(x.h.hint || x.h.place || '')}</small>${pips(x.id)}</button>`).join('')}</div><p class="g-epi-sub">Places</p>` : ''}<div class="g-epi-acts">${list.map(a => {
         const short = (a.cost || 0) > s.yen;
         return `<button type="button" class="g-epi-act" data-act="${esc(a.id)}"${short ? ' disabled' : ''}><b>${esc(a.name)}</b><small>${a.cost ? esc(G.money(a.cost)) : 'Free'}${a.stats ? ` · ${esc(G.gainText(a.stats))}` : ''}${short ? ' · not enough money' : ''}</small></button>`;
       }).join('') || '<p class="g-note">Nowhere to be today.</p>'}</div></div>
       <div class="g-row g-seg-next"><button type="button" class="g-btn" data-stay>Stay in ▸</button></div></section>`, 'is-seg');
     main.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => doAct(list.find(a => a.id === b.dataset.act), info)));
+    main.querySelectorAll('[data-bond]').forEach(b => b.addEventListener('click', () => hangout(b.dataset.bond)));
     main.querySelector('[data-stay]').addEventListener('click', () => {
       s.spent[`${s.day}-${slot}`] = 'stay'; G.save();
       ui.segment({ slot, bg: home.bg, place: home.place, text: line('stayIn', 'She stayed in.'), next: advance });
     });
-    GL()?.tick('out', { place: home.place, list: main.querySelector('.g-epi-acts') });
-    main.querySelector('[data-act]:not(:disabled), [data-stay]')?.focus({ preventScroll: true });
+    GL()?.tick('out', { place: home.place, list: main.querySelector('.g-epi-acts:not(.g-epi-folks)') }); // the station card joins the places, not the people
+    main.querySelector('[data-bond], [data-act]:not(:disabled), [data-stay]')?.focus({ preventScroll: true });
+  }
+  // A hangout with a home bond: spends the slot, plays the scene, then closeness (gain, default 1).
+  function hangout(id) {
+    const s = S(), h = hangoutFor(id);
+    if (!h || G.freeSlotSpent(s.slot)) return;
+    s.spent[`${s.day}-${s.slot}`] = `bond:${h.id}`;
+    G.save();
+    SC.play({ scene: [...(h.bg ? [{ bg: h.bg }] : []), ...(GL()?.inject(h.id, h.scene) || h.scene)], place: h.place, time: h.time, title: h.title, label: G.name(id), cast: h.cast,
+      onDone: () => { const st = bondState(id); if (!st.seen.includes(h.id)) st.seen.push(h.id); bond(id, h.gain ?? 1); G.save(); advance(); } });
   }
   function doAct(a, info) {
     const s = S();
@@ -320,5 +434,6 @@ window.FemcEpilogue = (() => {
   }
 
   return { WORLDS, worldFor, endingOf, loadWorld, build, ensure, carryOf, leanFor, route, lockRoute, cond, stateFor, enter, leave, endScreen, offer, run, finish, raw: worldRaw,
+    routeOpen, bond, closeness, startBond, hangoutFor, people, hangout, practiceNow, CLOSE_MAX,
     get cardDay() { return cardDay; } };
 })();

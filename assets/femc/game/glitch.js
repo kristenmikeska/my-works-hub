@@ -36,6 +36,7 @@
                   the screen's place), route (epilogue route id or ids), flag / noFlag, ifYear (epilogue.js cond)
        by stage   stage: n plays only once the stage is at least n (with no day gate: the first screen that reaches it)
        by scene   scene: '<event or routine id>', line: n inserts { glitch: id } before line n of that scene (inject)
+       inline     inline: true never plays on a screen; only a scene's { glitch: '<id>' } plays it (Runners batch 3)
      Each screen asks once per day and slot (tick): the first scheduled entry that fits, else an ambient roll for the stage
      (chance × ½ on Gentle) picked by the seed.
    In scenes (any epilogue scene; scene.js):
@@ -111,7 +112,7 @@ window.FemcGlitch = (() => {
   const whereOk = (e, where) => (e.at ? [].concat(e.at) : AT[e.kind] || SCREENS).includes(where);
   function fits(e, where, stage, ctx) {
     const s = S(), d = s.day, i = G.dayInfo();
-    if (e.scene || !KINDS.includes(e.kind) || !whereOk(e, where)) return false;
+    if (e.scene || e.inline || !KINDS.includes(e.kind) || !whereOk(e, where)) return false; // inline: only a scene's { glitch: id }
     if (e.once !== false && st().seen.includes(e.id)) return false;
     if ((e.stage || 0) > stage) return false;
     if (e.day && d !== G.dayOf(e.day)) return false;
@@ -251,7 +252,7 @@ window.FemcGlitch = (() => {
       hold(() => x.remove(), dur);
     },
     map(spec, dur, ctx) {
-      const list = ctx.list || document.querySelector('.g-epi-acts');
+      const list = ctx.list || document.querySelector('.g-epi-acts:not(.g-epi-folks)');
       if (!list || list.querySelector('.g-glx-station')) return false;
       const open = !!spec.open || stageNow() >= 4;
       const b = el('station', `<b>${esc(spec.name || 'Iwatodai Station')}</b><small>${open ? esc(spec.note || 'The doors are open.') : '—'}</small>`, 'button');

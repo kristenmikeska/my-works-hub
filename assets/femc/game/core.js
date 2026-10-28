@@ -786,6 +786,8 @@ window.FemcGame = (() => {
   /* ♪ toward a link's next rank from outside its own scenes (holiday days, the trip, late nights): only for a met link that
      isn't reversed or at MAX. The meter shows it the next time they spend time together. */
   function bond(id, n) {
+    // The epilogue's home bonds (epilogue.js): closeness, not ♪.
+    if (S.epi && W.FemcEpilogue) return W.FemcEpilogue.bond(id, n);
     const l = LINKS[id];
     if (!l || !n || !isMet(id)) return 0;
     const p = progress(id);
@@ -851,8 +853,9 @@ window.FemcGame = (() => {
     else if (line.ifAfter) ok = S.day >= dayOf(line.ifAfter);
     else if (line.ifBefore) ok = S.day < dayOf(line.ifBefore);
     // The epilogue's conditions (epilogue.js cond): ifYear reads the finished year (S.year1), ifEpiRoute the epilogue's route,
-    // ifGlitch the glitch stage (glitch.js; never true outside the epilogue).
-    else if (line.ifYear || line.ifEpiRoute || line.ifGlitch !== undefined) ok = W.FemcEpilogue ? !!W.FemcEpilogue.cond(line) : false;
+    // ifGlitch the glitch stage (glitch.js; never true outside the epilogue), ifBond a home bond's closeness, ifRouteOpen whether
+    // a route can still be picked (the world's routes[].open).
+    else if (line.ifYear || line.ifEpiRoute || line.ifGlitch !== undefined || line.ifBond || line.ifRouteOpen) ok = W.FemcEpilogue ? !!W.FemcEpilogue.cond(line) : false;
     if (ok === null) return null;
     return (ok ? line.then : line.else) || [];
   }
@@ -2330,6 +2333,7 @@ window.FemcGame = (() => {
     WORLD = w || null; CALC = null; WX = null; WXC = null;
     if (w) Object.values(w.data.links || {}).forEach(l => { CAST[l.id] = CAST[l.id] || l.short || l.name; Object.assign(CAST, l.cast || {}); });
     if (w) (w.data.events || []).forEach(e => Object.assign(CAST, e.cast || {}));
+    if (w) { Object.assign(CAST, w.data.cast || {}); (w.data.dailyLife || []).forEach(e => Object.assign(CAST, e.cast || {})); } // the world's own names (speakers with no link)
   }
   const world = () => (inWorld() ? WORLD.id : null);
   function money(n) {
