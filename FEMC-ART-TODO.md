@@ -1,6 +1,6 @@
 # Art to make
 
-**108 items:** 31 CGs · 45 places · 4 character pieces · 28 wardrobe. 104 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**106 items:** 31 CGs · 43 places · 4 character pieces · 28 wardrobe. 102 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -291,22 +291,6 @@ Persona 3 Reload style event CG, 16:9, no text. A university quad on a December 
 ## 2. Places (Gemini)
 
 ### Iwatodai (the main game)
-
-**[ ] The back streets behind Port Island Station** *(optional)*  
-The quiet streets between the station and the bay for one link's walks home, about 8 evening scenes (now a generic night street).  
-Attach: `bg/location-1.webp` (for the style only)  
-Save as: `portisland-back-streets.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a quiet residential back street behind a city station in the early evening, sloping gently down toward the bay: little old houses with lit windows, a small bakery and a dry cleaner's with their shutters half down, telephone wires overhead, a convenience store on the corner ahead glowing bright like a fish tank, a cat sitting on top of a low garden wall, the dark water of the bay just visible at the far end. Cold air, calm, a walk you'd want to take slowly. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] Port Island Station concourse in the evening** *(optional)*  
-The station concourse with the public piano, for about 15 evening scenes (now the daytime concourse, darkened).  
-Attach: `bg/station-concourse-busy.webp` (edit this picture)  
-Save as: `station-concourse-evening.png`
-```
-Edit this picture. Keep the same station concourse, ticket gates, departure board, angle and art style; remove every person; change it to six in the evening in winter: the windows dark outside, the concourse lit by warm overhead lights reflecting on the wet floor, umbrellas' drips on the tiles; add an upright public piano against the wall near the gates, painted all over with fat cartoon seagulls (one of them frowning), with a bench in front of it; a small bakery stand by the far gate and an oden kiosk with steam rising. Busy-hour atmosphere without the crowd, music waiting to happen. 16:9, no people, no readable text.
-```
 
 **[ ] Seaside Park at sunset** *(optional)*  
 Port Island's seaside park for its evening scenes (sitting on the rail at seven, a ferry crossing); now the daytime park, darkened.  

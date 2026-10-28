@@ -506,7 +506,7 @@ window.FEMC_GAME_JOB_SCENES = {
         { n: "Closing was the best part of the day, the hoses going, the concrete steaming where the hot water hit it, the gulls fighting over the scraps out back, and Solar carried the bins around behind the market to the alley where they went every Sunday, the same alley, the same wet wall, the same rusted drain." },
         { n: "There were lanterns over it." },
         { n: "Red ones, paper, strung on a wire from one roof to the other down the whole length of the alley, dozens of them, swaying in the wind off the water, and they had not been there last week, or the week before, or ever, she was sure of it, she'd have remembered. The light they made was low and warm and red on the wet ground, and the alley smelled, under the fish and the bins, of black-bean sauce and frying dough." },
-        { place: 'Port Island · Back Streets', soft: true },
+        { place: 'Port Island · Back Streets', bg: 'outside-nightdistrict', soft: true },
         { n: "At the far end, under the last lantern, somebody was waiting." },
         { n: "A man, she thought, or a boy just past being one, in a dark coat with his hands in his pockets, standing the particular way people stand when they're paid to wait, which is to say like furniture, like a lamppost, like they'd be there whether or not anyone ever came. She couldn't see his face. The lantern light was behind him. She set the bins down." },
         { choose: [

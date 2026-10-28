@@ -15767,6 +15767,36 @@
       "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
       "outputSha256": "7902c52e816776b7a64188b8dd939b3ce267f2cce3da4a9b3a6885f09f1e4df7",
       "placement": "places.bg rule 'Port Island Station · Back Alley' both slots (was 'outside-nightdistrict'); the three Evening lines with bg: 'outside-nightdistrict' (spice-others, crush-shinjiro x2) drop it, since night-lit overrides stay as chosen in core.js background(); outdoor via 'portisland' prefix; Iwatodai Strip · Back Alley unchanged"
+    },
+    {
+      "batch": 73,
+      "source": "portisland-back-streets.jpeg",
+      "sourceNow": "Added to Game/portisland-back-streets.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "631c0897cdaacfb82dd2fa53fc6411796b9b06fe79cdb1a4ff4c36116b2ae160",
+      "status": "integrated",
+      "destination": "assets/femc/bg/portisland-back-streets.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "44a44b656e21c508fdc9c89fbd2f93c63bd31c8aa2bf4e716d2e0ecac4f5156e",
+      "placement": "places.bg rule 'Port Island · Back Streets' both slots (was 'outside-nightdistrict'); Mark's four walks take the rule; the red-lantern street (story-act3 a3-lanterns, job-scenes place step) keeps bg: 'outside-nightdistrict' explicitly; the Dark Hour line keeps its own bg; outdoor via 'portisland' prefix"
+    },
+    {
+      "batch": 73,
+      "source": "station-concourse-evening.jpeg",
+      "sourceNow": "Added to Game/station-concourse-evening.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "38bfd5b9ca5766d8f3a0d4e4b1288dd191ad03c679c26f41ec65d972017b74e2",
+      "status": "integrated",
+      "destination": "assets/femc/bg/station-concourse-evening.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "7c159a6d92ac0f6245fe288acfa235dc8189bd9b4b31ff4555096769163aaf42",
+      "placement": "places.bg rule 'Port Island Station · Central Concourse' evening slot; no concourse scene sets its own bg (the Dark Hour variant keeps its own); matches no weatherFx prefix (indoor)"
     }
   ],
   "batch1Validation": {
@@ -16752,5 +16782,19 @@
     ],
     "notTested": "no browser tests: the photo booth and back alley scenes",
     "html": "femc-game.html places v51, crush-shinjiro v3, crush-haechan v4, crush-jihoon-minji v5, spice-others v4"
+  },
+  "batch73Validation": {
+    "date": "2026-10-28",
+    "scope": "the Port Island back streets and the station concourse in the evening",
+    "sourcesInspected": "both checked by name, size and hash",
+    "sourcesIntegrated": 2,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script"
+    ],
+    "notTested": "no browser tests: Mark's back-street walks, the red-lantern street, the concourse at evening",
+    "html": "femc-game.html places v52, job-scenes v7, story-act3 v15"
   }
 }

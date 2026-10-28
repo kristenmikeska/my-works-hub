@@ -118,6 +118,9 @@ EXTRA = {
     # batch 72 (2026-10-28): the mall photo booth and the alley behind Port Island Station (both slots each)
     'paulownia-photo-booth': 'Added to Game/paulownia-photo-booth.jpeg',
     'portisland-back-alley-night': 'Added to Game/portisland-back-alley-night.jpeg',
+    # batch 73 (2026-10-28): the back streets behind Port Island Station (both slots) and the concourse in the evening
+    'portisland-back-streets': 'Added to Game/portisland-back-streets.jpeg',
+    'station-concourse-evening': 'Added to Game/station-concourse-evening.jpeg',
 }
 SIZE = (1920, 1072)  # Kat's New Adds backgrounds; one with another shape is cropped / scaled to fill this
 

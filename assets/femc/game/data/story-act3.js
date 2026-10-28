@@ -378,7 +378,7 @@
     { n: "That night the dorm made more noise than it ever had. More doors, more footsteps, more water in the pipes. Somebody in the kitchen at one in the morning, very quietly, cooking something that smelled like garlic and ginger and somebody's mother. Solar lay awake listening to all of it, and it was the first night since June she didn't mind lying awake." }
   ] },
 
-  { id: 'a3-lanterns', date: '8/15', slot: 'evening', title: 'red lanterns', place: 'Port Island · Back Streets', time: 'Evening', consumes: true, scene: [
+  { id: 'a3-lanterns', date: '8/15', slot: 'evening', title: 'red lanterns', place: 'Port Island · Back Streets', bg: 'outside-nightdistrict', time: 'Evening', consumes: true, scene: [
     { music: 'night' },
     { n: "It was Obon, the three days in August when the dead come home, and Port Island had hung up its lanterns for them. Paper ones, white and pale yellow, strung along the shopping arcade and over the doors of the old houses near the harbor, and down by the water there was a dance going in circles round a drum tower, old women in cotton yukata lifting their hands in the same slow shapes their grandmothers had taught them." },
     { n: "Fuuka had wanted to come. Yukari had wanted Fuuka to stop looking so pale. Solar had come because everyone else was coming, and had lost them, somewhere between the drum and the shaved-ice stall, the way she lost people in crowds, by drifting to the edge and then a little past it." },
