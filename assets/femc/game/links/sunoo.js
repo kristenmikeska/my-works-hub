@@ -1,4 +1,4 @@
-/* Sunoo · ? Revamp social link data (femc-game.html). Format: link fields in assets/femc/game/core.js, scene lines in scene.js.
+/* Sunoo · Sun. Revamp social link data (femc-game.html). Format: link fields in assets/femc/game/core.js, scene lines in scene.js.
    Searcher (Hoax), friendship. Kim Sunoo: Jungwon's friend and council secretary, who runs Yeobo's Cafe and insists on doing
    it alone because it's his duty to his grandmother to run her business perfectly; sunshine to everyone, the group's mediator,
    the one who worries out loud about whether Jungwon has eaten, and who told Solar, as Jungwon's friend and hers, that she
@@ -272,7 +272,8 @@
         { t: "Jungwon's girl?", notes: 2, then: [
           { s: 'sunoo', f: 'flustered', t: "That's— he— Niki thought it was funny because Jungwon yelled at you about a dog. On the first day. Before anybody knew anybody. It's a long story. It's a bad story. Jungwon comes off really bad." },
           { s: 'sunoo', f: 'neutral', t: "He's not like that. He was like that that morning. He was tired. I'm not making excuses. I'm making a little excuse." },
-          { s: 'sunoo', f: 'flustered', t: "And then... a lot happened. You two are together now. At home. Officially. Since the bake sale. I helped. I'm sorry. I'm not sorry. He'd tell you himself, probably with a chart." }
+          { s: 'sunoo', f: 'flustered', t: "And then... a lot happened. I'm not allowed to say. Rule one. He made us all promise, the first night, with his hand up like a vote." },
+          { s: 'sunoo', f: 'neutral', t: "Ask him in a while. He'll tell you himself, probably with a chart." }
         ] },
         { t: "You're the only one he listens to.", notes: 3, then: [
           { s: 'sunoo', f: 'happy', t: "He listens to Jay! When Jay hits him. And to Heeseung-hyung when hyung uses his dad voice." },
@@ -381,9 +382,11 @@
       ] },
       { s: 'sunoo', f: 'neutral', t: "It's my grandmother's café. Her cups. Her name on the sign. Her croissants. I just run it." },
       { s: 'sunoo', f: 'sad', t: "Every day. Before school. It's my job to run it perfectly for her. She doesn't ask me to. I just do. If I do it perfectly, nobody has to worry about it. Nobody has to worry about anything." },
+      { s: 'sunoo', f: 'sad', t: "Jungwon's house is the opposite. Somebody's always worried there. About him. At him. ...Never mind. That one's his to tell." },
       { n: "He folded the dough in silence for a while. The radio played a song about a train station. Outside the back door the Strip was still dark, and very cold, and somewhere a shutter went up with a long iron yawn." },
       { s: 'sunoo', f: 'sad', t: "She's at home. With nobody to open. I keep thinking about it. Jungwon says it's probably still the same night there. Niki says it's been a week. Heeseung-hyung says we shouldn't guess, because guessing makes it worse." },
-      { s: 'sunoo', f: 'neutral', t: "But what if she came down this morning and the café was just gone. And there was a hole in the street. And she's standing there in her slippers." },
+      { s: 'sunoo', f: 'neutral', t: "Jungwon says this one isn't hers. That it's a copy, like the uniform you woke up in. One handle on every cup is on the wrong side. I checked. I check every morning." },
+      { s: 'sunoo', f: 'neutral', t: "But what if he's wrong. What if she came down this morning and the café was just gone. And there was a hole in the street. And she's standing there in her slippers." },
       { choose: [
         { t: "Nobody knows what time it is there. Maybe she's still asleep.", notes: 3, then: [
           { s: 'sunoo', f: 'sad', t: "...Do you really think so?" },
@@ -440,12 +443,18 @@
       { s: 'sunoo', f: 'neutral', t: "Can I confess something? Since we're looking at photos. Since you don't remember, so it doesn't count." },
       { s: 'sunoo', f: 'flustered', t: "At home, Jake and I made you go shopping with him. For decorations. For the dance. We said it was because you were both candidates and you'd make a good pair, and we said it in a very innocent voice." },
       { s: 'sunoo', f: 'happy', t: "It was not innocent. We'd planned it. Jungwon wanted to throw a chair at me. I could feel it. From across the table. It was the best day of my life." },
+      { s: 'sunoo', f: 'flustered', t: "The croissant for homecoming. The red one. That was me too. He asked. I baked." },
       { s: 'sunoo', f: 'flustered', t: "And the bake sale. The equations in the cupcakes, the chalk on the path. That was me too. And Jake. Mostly me." },
       { ifRomance: 'jungwon', then: [
         { s: 'sunoo', f: 'neutral', t: "And now he looks at you the same way here. Like he's been waiting for you all day and he's embarrassed about it. So I think it worked. I think it worked in two worlds." },
         { s: 'sunoo', f: 'serious', t: "Be gentle with him? He's so bad at being happy. He thinks it's a test he didn't study for." }
       ], else: [
-        { s: 'sunoo', f: 'neutral', t: "At home it worked. You're his. He's yours. Here he just watches you walk in, like you're the one thing in the building he's sure about, and then he waits. He's very good at waiting. He's terrible at it." },
+        { ifEvent: 'a5-call-hoax', then: [
+          { s: 'sunoo', f: 'neutral', t: "At home it worked. You're his. He's yours. You know that part now. Jihoon told you, which is so like Jihoon." }
+        ], else: [
+          { s: 'sunoo', f: 'neutral', t: "At home it worked. A little too well. That's all I'm saying. Rule one." }
+        ] },
+        { s: 'sunoo', f: 'neutral', t: "Here he just watches you walk in, like you're the one thing in the building he's sure about, and then he waits. He's very good at waiting. He's terrible at it." },
         { s: 'sunoo', f: 'sad', t: "Here it's up to you. I won't push. I pushed once, and it worked so well it scares me a little." }
       ] },
       { n: "He said it without teasing. Sunoo didn't tease, Solar had noticed. Niki teased. Jay teased. Sunoo said the true thing and then looked worried that it might have hurt someone." },

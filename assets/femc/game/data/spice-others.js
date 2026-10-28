@@ -126,9 +126,13 @@
         { s: 'solar', f: 'neutral', t: "It's very correctly tied." },
         { n: "He put the pen down. He capped it first. He squared the binders. Then he stood up and came round the long table, not quickly, the way he did everything, with his hands at his sides, and stopped in front of her chair, and looked down at her, and something in his face that was always held very carefully level began, slowly, to tilt." },
         { s: 'jungwon', f: 'serious', t: "There's a rule. I made it. When I got here. Rule one. I made everybody promise. Sunoo, Jihoon, all of them." },
-        { s: 'jungwon', f: 'serious', t: "Nobody tells you what we were. At home. Nobody puts it in your hands before you can pick it up yourself. It has to be yours. It has to come back on its own or it doesn't count." },
+        { ifEvent: 'a5-call-hoax', then: [
+          { s: 'jungwon', f: 'serious', t: "Nobody told you what we were. At home. Jihoon broke that half, on the phone, in December. I've kept the rest. Nobody tells you what it was *like*. It has to come back on its own or it doesn't count." }
+        ], else: [
+          { s: 'jungwon', f: 'serious', t: "Nobody tells you what we were. At home. Nobody puts it in your hands before you can pick it up yourself. It has to be yours. It has to come back on its own or it doesn't count." }
+        ] },
         { ifHeading: 'H', then: [
-          { s: 'jungwon', f: 'sad', t: "And I'm standing here, and there's a room like this at home with a poster in it with your face on it, and you used to sit on that table. That one. Right there. With your feet on the chair. And I'd tell you to get down, and you wouldn't." },
+          { s: 'jungwon', f: 'sad', t: "And I'm standing here, and there's a room like this at home with a poster in it with your face on it, and you used to sit on that table. That one. Right there. With your feet on the chair. And I'd tell you to get down, and you wouldn't. And there's a study room down the hall with a lock on it that I've never once reported." },
           { s: 'jungwon', f: 'flustered', t: "I've just broken rule one. I've broken it very badly. I'm going to file a report against myself." }
         ], else: [{ ifHeading: 'S', then: [
           { s: 'jungwon', f: 'sad', t: "And there's a house by the sea in the other place where you never once let me close enough to say what I wanted to say. I used to stand at doors. Very properly. I used to wait at doors for you to decide." },

@@ -1,4 +1,4 @@
-/* Junkyu · ? Revamp social link data (femc-game.html). Format: link fields in assets/femc/game/core.js, scene lines in scene.js.
+/* Junkyu · Fool. Revamp social link data (femc-game.html). Format: link fields in assets/femc/game/core.js, scene lines in scene.js.
    Searcher (Hoax), friendship. Kim Junkyu: junkyute in the PARK JIHOON HATE CLUB chat, junkyuuu online. Small, round-faced,
    the one who asks first ("are u ok solar!!! do u need some ice cream and hugs!!!"), "#teamsolar", "i care!", "i support you
    in whatever", "i wonder if jihoon is ok". From the book: he shares a class with Solar ("don't look"), blew her a kiss at the
@@ -305,9 +305,11 @@
       { s: 'asahi', f: 'neutral', t: "I can hear you." },
       { s: 'junkyu', f: 'happy', t: "He can hear me! Hyunsuk. *geniusuk.* He picked that one himself. He wants us to think he's the smart one. He's also mean, but funnier. He laughs at everything Asahi says. Even when it's about him." },
       { s: 'hyunsuk', f: 'happy', t: "It's a talent." },
+      { s: 'junkyu', f: 'happy', t: "He's also the oldest. Nobody believes it. He shows people his ID." },
       { s: 'junkyu', f: 'neutral', t: "And he asked Cherry to homecoming with signs. In the cafeteria. We all held one. She laughed for like a whole minute. They had a thing, before she started seeing Sunghoon." },
-      { s: 'hyunsuk', f: 'flustered', t: "She said yes, Junkyu. Tell the part where she said yes." },
+      { s: 'hyunsuk', f: 'sad', t: "She said yes, Junkyu. Tell the part where she said yes." },
       { s: 'asahi', f: 'neutral', t: "Eventually." },
+      { n: "Hyunsuk had said it lightly. It hadn't landed lightly. Asahi was already talking over the end of it, about nothing, about the claw machine, which Asahi never did for anyone." },
       { s: 'junkyu', f: 'neutral', t: "Jaehyuk. He's the actual smart one. And the nice one. Not like me nice. Polite nice. He's on student council. He uses full stops. In the chat. And question marks, correctly. He tells everybody to drink water. Everyone's scared of him a little." },
       { s: 'jaehyuk', f: 'neutral', t: "Nobody is scared of me, Junkyu." },
       { s: 'asahi', f: 'neutral', t: "I'm scared of you." },
@@ -542,6 +544,7 @@
         ] },
         { t: "Why so many?", notes: 2, then: [
           { s: 'junkyu', f: 'neutral', t: "We never did stuff at home. The seven of us. Dances. Anything with a sign-up sheet. We always skipped. Asahi says it's a waste of time. We went to one, finally, this year, and nobody knew what to do, and we just sat at the table." },
+          { s: 'junkyu', f: 'happy', t: "Except Jaehyuk. Jaehyuk signs up for everything. And then you ran for president, and now you're on every sheet there is." },
           { s: 'junkyu', f: 'sad', t: "I always wanted to go. I said so in the chat once. Nobody listened. So this year I'm doing Christmas. All of it. For everybody. And nobody can skip it, because it comes in an envelope." }
         ] }
       ] },
@@ -600,8 +603,8 @@
       { choose: [
         { t: "It's still the same night there.", notes: 3, then: [
           { s: 'asahi', f: 'serious', t: "You don't know that." },
-          { s: 'solar', f: 'neutral', t: "No. But your phone says so. Everyone's does. Let's believe the phones." },
-          { s: 'asahi', f: 'neutral', t: "...Fine. We believe the phones. That's stupid. Fine." }
+          { s: 'solar', f: 'neutral', t: "No. Nobody knows what time it is there. Not even the phones. So pick one. Pick the one where she's still asleep." },
+          { s: 'asahi', f: 'neutral', t: "...Fine. That one. That's stupid. Fine." }
         ] },
         { t: "(Put a coin in the game. Make him play.)", notes: 3, flag: { 'junkyu-coin': true }, then: [
           { n: "She found a coin and put it in. The machine woke up, lights and noise. Asahi looked at it, and at her, and sighed through his nose, and played. Badly. Then not badly. Junkyu cheered so loud that a maintenance man came out of the back to see what had happened." },
@@ -738,6 +741,7 @@
         { s: 'junkyu', f: 'happy', t: "When we're home I'm going to ask you to every dance. Every single one. And you're going to say it's a waste of time and Asahi's going to say it's a waste of time and we're going to GO." },
         { s: 'asahi', f: 'neutral', t: "We're not going." },
         { s: 'junkyu', f: 'happy', t: "We're going!" },
+        { s: 'junkyu', f: 'happy', t: "Prom's after break. I'm asking first. I'm calling it. Everybody heard." },
         { n: "Asahi didn't argue. That was how she knew they were going." }
       ], else: [
         { ifFlag: 'route-true', then: [
@@ -749,7 +753,7 @@
           { s: 'junkyu', f: 'happy', t: "...I learned it from you. You never said it. But I learned it from you. From watching you need it." }
         ] }
       ] },
-      { n: "They ate it on the rim of the fountain, all six of them, too close together, everybody's elbows in everybody else's ice cream, and nobody said anything about the count, or the night, or the door, and Junkyu leaned on her shoulder with his chin and asked, for the third time in ten minutes, if she was okay." },
+      { n: "They ate it on the rim of the fountain, all seven of them, too close together, everybody's elbows in everybody else's ice cream, and nobody said anything about the count, or the night, or the door, and Junkyu leaned on her shoulder with his chin and asked, for the third time in ten minutes, if she was okay." },
       { n: "She said yes. He didn't believe her. He never had. That was the whole thing about him. That was, she understood now, all the way down, the whole thing." }
     ] }
   ],

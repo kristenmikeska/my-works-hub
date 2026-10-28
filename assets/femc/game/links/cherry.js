@@ -1,4 +1,4 @@
-/* Cherry · ? Revamp social link data (femc-game.html). Format: link fields in assets/femc/game/core.js, scene lines in scene.js.
+/* Cherry · Chariot. Revamp social link data (femc-game.html). Format: link fields in assets/femc/game/core.js, scene lines in scene.js.
    Searcher (Hoax), friendship. Kat's ruling: Cherry Kim is Solar's best friend in Hoax and a key Hoax person (she's the one
    who runs to her in the Hoax ending, story-endings.js). She crosses in the story on 11/13 (story-act4.js 'a4-cherry', the
    karaoke place, yelling Jihoon's name; there is mascara all down her face by the end of it in every branch). Rank 1 is
@@ -183,8 +183,8 @@
       { n: "She pushed one of the trays of fries across the table toward Solar. Then she reached over and started eating from it." },
       { s: 'cherry', f: 'neutral', t: "Yours always taste better. Don't ask me why. It's science." },
       { n: "They ate. The Strip went by outside the fogged glass in smears of color, umbrellas and school bags and a man with a sandwich board advertising a massage parlor whom Cherry glared at through the window until he walked faster. She didn't ask Solar anything. She didn't look at her much. She just ate her fries and stole Solar's and sat with her arms in a way that looked, Solar slowly realized, less like a girl being rude and more like a girl holding herself together with both hands." },
-      { s: 'cherry', f: 'neutral', t: "Three weeks. That's how long it's been. Jihoon says one night, because his phone stopped at midnight, but Jihoon can't count. He does pilates instead of math." },
-      { s: 'cherry', f: 'serious', t: "Three weeks of nobody answering the chat. Junkyu sending crying faces at four in the morning. Me in the back row with an empty seat next to me like an idiot." },
+      { s: 'cherry', f: 'neutral', t: "Jihoon says one night, because his phone stopped at midnight, but Jihoon can't count. He does pilates instead of math. Junkyu says a month. Nobody's phone agrees. I stopped counting, which is worse than counting." },
+      { s: 'cherry', f: 'serious', t: "However long it was, it was nobody answering the chat. Junkyu sending crying faces at four in the morning. Me in the back row with an empty seat next to me like an idiot." },
       { s: 'solar', f: 'serious', t: "I've been here since April." },
       { s: 'cherry', f: 'surprised', t: "..." },
       { s: 'cherry', f: 'neutral', t: "Okay. Don't tell me things like that. I'll deal with that one later. I'm putting it in a drawer." },
@@ -307,7 +307,7 @@
       { n: "The sun on the poster smiled up at them both. Somewhere inside Solar, under her ribs, where she couldn't have pointed to it, something small ticked once, like a pin dropped on a desk in a room down the hall, and she touched the glitter in the corner of the card and it came off on her fingertip, gold, the way it had apparently been coming off on everything for months, in another school, on another girl's hands." },
       { s: 'cherry', f: 'neutral', t: "I'm going to say something and then we're never talking about it again." },
       { s: 'cherry', f: 'serious', t: "And then you lost. To HIM. Obviously. And he picked you for vice president in front of the whole school like you were a door prize, and Jihoon wouldn't let go of your hand, and I had to punch him." },
-      { s: 'cherry', f: 'neutral', t: "And then you went in a room with the preppy freak and I watched through the little window in the door like a stalker, and... you know what, you'll remember that part. I'm not narrating it." },
+      { s: 'cherry', f: 'neutral', t: "And then you made us all leave the auditorium, and I watched through the crack in the doors like a stalker, and... you know what, you'll remember that part. I'm not narrating it." },
       { s: 'cherry', f: 'sad', t: "I wanted you to destroy him. You didn't. You did something way worse. You started liking him. And I'm the one who told you to run, so technically the whole thing is my fault. I live with that." },
       { s: 'cherry', f: 'neutral', t: "He's fine. He's a frail little twirp. He's fine to you. If you ever tell him I said that I'll deny it in two universes." },
       { s: 'cherry', f: 'neutral', t: "You're not a poster. That's all. Okay. Done. Never again." },
@@ -444,7 +444,8 @@
         ] },
         { t: "Why don't you go to class?", notes: 3, then: [
           { s: 'cherry', f: 'neutral', t: "Because it's boring, and because my parents pay a fortune for that school, so nobody's ever going to kick me out. It's the one good thing about being rich and stupid." },
-          { s: 'cherry', f: 'serious', t: "I'm not stupid. I'm uninterested. There's a difference. Jaehyuk keeps telling me I won't graduate. Jaehyuk can graduate for both of us." }
+          { s: 'cherry', f: 'serious', t: "I'm not stupid. I'm uninterested. There's a difference. Jaehyuk keeps telling me I won't graduate. Jaehyuk can graduate for both of us." },
+          { s: 'cherry', f: 'neutral', t: "He also tells me to drink water. Like it's a threat. He's going to be such a scary dad." }
         ] },
         { t: "(Throw a highlighter at her.)", notes: 2, then: [
           { n: "It bounced off her forehead. She didn't flinch. She put it in her mouth like a cigarette and kept reading the notes upside down, and Yukari, across the room, made a small involuntary sound and looked back at her own work very fast." }
@@ -470,6 +471,8 @@
           { s: 'cherry', f: 'happy', t: "Okay, rude. Fair. A little bit. We were some of the idiots. I'm working on it." }
         ] }
       ] },
+      { s: 'cherry', f: 'neutral', t: "You were sitting with us again, at home. Before. Don't tell the preppy freak I said *again*." },
+      { s: 'cherry', f: 'serious', t: "And you vanished on the Monday of exam week, by the way. You hadn't opened a book. Classic." },
       { n: "They looked at the third problem together. Cherry read it out loud twice, slowly, in the voice of someone reading a ransom note, and then said she didn't understand a single word of it and that it was probably written in a curse." },
       { choose: [
         { t: "(Explain it to her until she gets it.)", notes: 3, needs: { knowledge: 3 }, then: [

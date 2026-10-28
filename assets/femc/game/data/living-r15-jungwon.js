@@ -93,7 +93,7 @@
       { s: 'jungwon', f: 'sad', t: "I started counting the nights. Until the sixth. I got to a number and stopped, because I'd have had to say it, and I don't want to have said it." },
       { n: "Behind his voice the trains were going into the depot by the station, one and then a long gap and then another, slow, the sound she'd heard behind him in November and hadn't known she'd been listening for until it came." },
       { ifHeading: 'H', then: [
-        { s: 'jungwon', f: 'happy', t: "I keep thinking about the morning. You in row three. Me pretending not to turn round. It's the first morning in my life I've wanted to get to." }
+        { s: 'jungwon', f: 'happy', t: "I keep thinking about the morning we get back. Whichever one it is. You in row three. Me pretending not to turn round. It's the first morning in my life I've wanted to get to." }
       ], else: [{ ifHeading: 'S', then: [
         { s: 'jungwon', f: 'neutral', t: "In the other house the clock starts again the minute we're back. I'd like to be the one person in it who isn't counting." }
       ], else: [{ ifHeading: 'R', then: [

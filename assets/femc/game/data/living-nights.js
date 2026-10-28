@@ -133,7 +133,7 @@
     { id: 'jw-ln-halfway', kind: 'visit', rank: 6, after: '11/21', until: '12/20', place: 'Iwatodai · Riverside', time: 'Late Night', music: 'night', scene: [
       { n: "She walked him halfway. That was the arrangement now, unspoken. Out of the dorm at curfew, down the hill, along the river to the bridge, where the lamp flickered and the guesthouse lights showed on the far side, and there he would stop and send her back, and she would go, and he would watch her go, and then he would go." },
       { n: "Tonight he stopped at the bridge and didn't send her back. He stood with his hand around the watch on his wrist, the one that had stopped, and looked at the water." },
-      { s: 'jungwon', f: 'sad', t: "At home it's still the night before the exams. It's been the night before for six weeks. I keep thinking I'll walk into the morning and it'll all be waiting." },
+      { s: 'jungwon', f: 'sad', t: "At home it's still the night before the exams. That's what I've decided. Niki says it's been weeks there too, and Sunoo says an hour, and I've stopped asking. I keep thinking I'll walk into the morning and it'll all be waiting." },
       { s: 'jungwon', f: 'neutral', t: "I'm not in a hurry. I wanted you to know that. I'm not in any hurry at all." },
       { choose: [
         { t: "(Walk him the rest of the way.)", notes: 2, then: [

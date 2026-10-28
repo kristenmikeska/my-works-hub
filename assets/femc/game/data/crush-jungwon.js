@@ -439,7 +439,7 @@
         { n: "He'd said the other one out loud, in the tower, in front of everyone, like a line in a budget. The son who was to marry her in spring because two families had shaken hands. He'd said that one easily. This one he'd carried about for two months and never said once." },
         { s: 'solar', f: 'neutral', t: "Why didn't you tell me?" },
         { s: 'jungwon', f: 'neutral', t: "The other one, somebody decided for both of us. I could tell you that. It wasn't asking anything of you. It was only true." },
-        { s: 'jungwon', f: 'sad', t: "This one you decided. At a bake sale, on a Friday, in front of everyone. If I'd told you, I'd have been telling you what you'd decided. I didn't want to decide it for you a second time." },
+        { s: 'jungwon', f: 'sad', t: "This one you decided. At a bake sale, in front of everyone. Sunoo made it an equation. You didn't solve it. You said yes anyway. If I'd told you, I'd have been telling you what you'd decided. I didn't want to decide it for you a second time." },
         by([
           { s: 'solar', f: 'happy', t: "Jihoon says you're my boyfriend." },
           { s: 'jungwon', f: 'neutral', t: "Yes. I'm aware. I was there for it." },
@@ -460,8 +460,8 @@
           { choose: [
             { t: "Were we happy?", crush: WARM(1), then: [
               { s: 'jungwon', f: 'neutral', t: "Yes." },
-              { s: 'jungwon', f: 'happy', t: "For one weekend, and most of a Monday. It was a very good weekend. Then it was exams, and then it was here." },
-              { n: "He said it with the dimples, as if it were funny, and it was funny, and she laughed, and then she stopped laughing, because one weekend was nothing, and he'd crossed a world on the strength of it." }
+              { s: 'jungwon', f: 'happy', t: "Not for long. Hallways, mostly. A study room once. Then it was exams, and then it was here." },
+              { n: "He said it with the dimples, as if it were funny, and it was funny, and she laughed, and then she stopped laughing, because not for long was nothing, a few hallways and a study room, and he'd crossed a world on the strength of it." }
             ] },
             { t: "Ask me, then. Here. Now.", crush: WARM(2), then: [
               { s: 'jungwon', f: 'surprised', t: "..." },

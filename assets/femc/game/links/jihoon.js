@@ -1,4 +1,4 @@
-/* Park Jihoon · ? Revamp social link data (femc-game.html). Format: link fields in assets/femc/game/core.js, scene lines in scene.js.
+/* Park Jihoon · Hunger. Revamp social link data (femc-game.html). Format: link fields in assets/femc/game/core.js, scene lines in scene.js.
    Searcher, canon romance (Hoax). Solar Kim's best friend since preschool, in love with her since middle school (everyone knew
    but her). Cocky, mean, mock-royal ("the almighty Hoon", "such a powerful figure like myself", "fan behavior"), does pilates,
    calls Nana "my son", always the first one at her door with ice cream. Where HOAX leaves off he has confessed (the gift bag and
@@ -8,9 +8,9 @@
    Lodging (Kat's ruling, 2026-10-20): he lives at the Kirijo guesthouse by the station. Every dorm scene here is a visit.
    His crossing (9/19, the Strip, the ice cream that won't melt) is a story event; rank 1 is a later conversation on the dorm steps,
    after dinner he wasn't invited to. He awakens on 10/17 (story); ranks 5+ come after.
-   Fragment: hoax-crane-game (rank 4, plot doc §8 H6). Romance turn at rank 8.
+   Fragment: none of his own. Rank 4 fills in hoax-crane-game, which the 9/1 story (a4-hate-club) already gave her. Romance turn at rank 8.
    Texting voice: lowercase with Capitalized Random Words, hashtags (#brocken), "Skank" / "ungrateful rug" as affection.
-   Arcana: the stub has '?' (searcher arcana are an open question for Kat, plot doc §16.6).
+   Arcana: Hunger (Kat, 2026-10-20).
    Ranks 11-15 (maxRank 15; meter ranks, 2026-10-22 batch): 2/3 the dorm's front steps (Setsubun), 2/10 Game Panic
    (Hyunsuk), 2/17 the Paulownia Mall flower stall (Mrs. Okada), 2/24 the Iwatodai Station bench, 2/28 the dorm's front
    steps. A cheap instant camera he buys in February runs through all five (the polaroid string Solar has at home stops
@@ -306,8 +306,7 @@
       { n: "The claw came down. Caught the sun by one ray. Lifted it. Swung it over the chute, wobbling, the whole case seeming to hold its breath. And let go. The sun dropped back onto the penguins and lay there, smiling at the ceiling." },
       { n: "He put another coin in. He didn't even look at her. He just put another coin in, and his jaw was set, and there was a groove between his eyebrows she'd seen before, somewhere, in a different light, over a different glass case, and her chest went tight." },
       { n: "The claw slipping. The claw slipping again. Someone beside her feeding it coins anyway, and anyway, and anyway, with the same set jaw, in a mall that smelled of caramel corn instead of pretzels, in a blazer the same navy as this one, while she stood beside him holding a cup of tokens and telling him to give up and not meaning it at all." },
-      { fragment: 'hoax-crane-game' },
-      { n: "The star on Haenim's sash ticked, a tiny sound, a pin on a desk." },
+      { n: "She knew this one. She'd had it since September, since a phone full of capital letters on her first night in the chat: a claw slipping, and someone feeding it coins anyway. She'd just never had a face to put beside it. Now it had his, set jaw and all, and the star on Haenim's sash stayed quiet, because there was nothing new to ring for. Only something old, filled in." },
       { choose: [
         { t: "You've done this before. For me.", notes: 3, then: [
           { s: 'jihoon', f: 'surprised', t: "..." },
@@ -410,9 +409,12 @@
       { s: 'jihoon', f: 'neutral', t: "He's not here for the air hockey. He's here because I'm here. He's been doing it all week. Wherever I go, there's Yang, being polite at me." },
       { s: 'solar', f: 'neutral', t: "Why do you hate him?" },
       { s: 'jihoon', f: 'neutral', t: "Because he's good at things. Because he's polite. Because he irons his tie. Because he looks at you like he's taking notes." },
+      { s: 'jihoon', f: 'serious', t: "And because you went soft for him. Yang. Honestly, Sol, it was embarrassing to watch. You laughed at his JOKES. He doesn't make jokes." },
       { s: 'jihoon', f: 'serious', t: "And because at home he won. The election, first. You ran against him because your parents wanted it and Cherry dared you, and you lost, obviously, and then he picked you as his vice president like you were a prize at a fair. And you told him you couldn't. And then you did it anyway. Which is the most you thing that's ever happened." },
-      { s: 'jihoon', f: 'neutral', t: "...And then he won the other thing too. He's your boyfriend, Sol. At home. Since some bake sale. That's the most humiliating sentence I've ever said out loud, and I've said a lot of sentences." },
-      { s: 'jihoon', f: 'neutral', t: "I wanted you to hear it from me. So it'd be told right. With contempt." },
+      { s: 'jihoon', f: 'neutral', t: "...And then he won the other thing too." },
+      { n: "He stopped there. He looked, for a second, like a man at the edge of a pool in October deciding about the cold." },
+      { s: 'jihoon', f: 'serious', t: "No. Yang made a rule. Rule one. Nobody tells you anything. It's the first rule he's ever made that I'm following, so frame it." },
+      { s: 'jihoon', f: 'neutral', t: "But when you hear it, you're hearing it from me. So it's told right. With contempt." },
       { n: "She looked past him, at Jungwon's back in the dead screen, at the careful way he was not turning around. Something in her chest tilted, very slightly, like a glass set down on a table that wasn't level." },
       { s: 'solar', f: 'neutral', t: "Why does he hate you?" },
       { s: 'jihoon', f: 'sad', t: "...Ask him." },
@@ -441,6 +443,7 @@
       { s: 'jaehyuk', f: 'serious', t: "Please don't say *LMAO* out loud, Hyunsuk." },
       { n: "She knew the chat. It had gone off on her desk in September like a smoke alarm, a whole room of strangers being loud at her in capitals. *Park Jihoon Hate Club.* Jihoon claimed he'd named it himself, to save everyone time. Asahi said that was a lie. Jihoon said Asahi was jealous of his branding." },
       { s: 'jihoon', f: 'happy', t: "Look at this. Look at all of them. All these losers, here, because of you. You're welcome, Sol. I'm the reason. I texted them all first. I'm a leader. Some would say a visionary." },
+      { s: 'jihoon', f: 'serious', t: "And look at you. Back at our table. What happened, did the preppy losers run out of chairs?" },
       { s: 'asahi', f: 'neutral', t: "He did not text us all first. He texted the group chat twenty-four times in capitals. Then he texted it about pilates." },
       { choose: [
         { t: "Thank you. All of you. For coming.", notes: 3, then: [
@@ -482,7 +485,10 @@
       { s: 'jihoon', f: 'serious', t: "That's the trick. If you say the quiet part loud enough, it stops being a part at all. It's just a bit. It's just Jihoon." },
       { s: 'jihoon', f: 'sad', t: "Except it stopped working. This year. A guy who irons his tie started looking at you, and I got so jealous I couldn't see, and I said it quiet, at your front door, like an idiot. And I gave you a bag with a letter in it. *If u wanted a clue, it's the world.* I wrote that. Me. I'm a poet. Nobody knows." },
       { s: 'jihoon', f: 'neutral', t: "And you were nice about it. You were so nice about it. You're always nice about it. And then there was a curb, outside a gym, and you kissed me. And for about a week I thought..." },
-      { s: 'jihoon', f: 'sad', t: "And then I did something stupid. Several stupid things. You found out about the first one, and you stopped looking at me like that, and you picked him. You didn't even pick him to hurt me. You just looked happier. That's worse." },
+      { s: 'jihoon', f: 'sad', t: "And then you found out I'd done something stupid, and you stopped looking at me like that, and you picked him." },
+      { n: "He said it fast, the way you'd slide a card across a table before anybody could check it. Then he stopped, and took it back, which she'd never once seen him do." },
+      { s: 'jihoon', f: 'serious', t: "No. That's the version I tell Suk. Here's the real one. I'd already done it. Before the curb. Me and Cherry. A note in your locker and a recording, *for your safety*, which is what you say when you mean *for me*. Don't blame her. Blame her a little." },
+      { s: 'jihoon', f: 'sad', t: "You found out after. After you'd already picked him. You didn't even pick him to hurt me. You just looked happier. That's worse." },
       { n: "The wind took the edge of the blanket and lifted it and dropped it. Somewhere below, a train went over the bridge, all lit up." },
       { s: 'jihoon', f: 'neutral', t: "And now you don't remember any of it. Not him. Not the curb. Not the stupid things. I could tell you anything up here. I could tell you you picked me." },
       { s: 'jihoon', f: 'serious', t: "...I thought about it. For like a week. I'm not a good person, Sol. I'm just a loud one." },
@@ -551,7 +557,7 @@
         ] },
         { t: "Why are you telling me now?", notes: 2, then: [
           { s: 'jihoon', f: 'neutral', t: "Because here I'm a guy who brings you ice cream and fights Akihiko on mats. That's it. That's all you know." },
-          { s: 'jihoon', f: 'sad', t: "I wanted you to know the other guy exists. Before you meet him. So you don't think I lied to you. I lied to everybody else. Not you. Well. Not about this." }
+          { s: 'jihoon', f: 'sad', t: "I wanted you to know the other guy exists. Before you meet him. So you don't think I lied to you. I did, though. At home. I told you I could stop whenever I wanted. You believed me, because you're an idiot, and I let you, because I'm worse." }
         ] },
         { t: "(Take his hand. Don't say anything.)", notes: 3, then: [
           { n: "She took his hand in the middle of the mall, under the silver bells, and didn't say anything, and he looked down at their hands like somebody had handed him a live bird, and then held on, and kept walking, and didn't say anything either, loudly." }
@@ -591,8 +597,8 @@
           { n: "She split it with the edge of the spoon, carefully, exactly, and fed him half, and ate half, and halfway through her half something came up through her the way the cold came up through the step, all at once, from the ground." }
         ] }
       ] },
-      { n: "A preschool, and a boy she had apparently never once been rid of since. A tub of ice cream on her doorstep and a boy shoving it into her arms and going straight past her into her kitchen for spoons, yelling about where his beloved was, taking the stairs two at a time to wake her dog. A string of polaroids, hundreds of them, their whole lives in little squares, hikes and road trips and her family's parties where every aunt asked if he was her boyfriend. A letter tied to a ribbon. *if u wanted a clue, it's the world.* A needle and a boy holding her hand through it, telling her it'd be fine, telling her she looked like a ghost. A curb, a gym full of lights, her own voice telling him not to be a dick for three seconds." },
-      { n: "And the rest. She had all of it, all at once, the way you have a song. A bedroom door she knocked on three times. A fist going into a wall beside her head, not into her, and the hole it left. An alley with smoke in it. A phone lighting up at midnight with capitals that didn't spell anything, all of them meaning *come over*, all of them meaning *sorry*." },
+      { n: "A preschool, and a boy she had apparently never once been rid of since. A tub of ice cream on her doorstep and a boy shoving it into her arms and going straight past her into her kitchen for spoons, yelling about where his beloved was, taking the stairs two at a time to wake her dog. A string of polaroids, hundreds of them, their whole lives in little squares, hikes and road trips and her family's parties where every aunt asked if he was her boyfriend. A letter tied to a ribbon. *if u wanted a clue, it's the world.* A needle and a boy holding her hand through it, telling her it'd be fine, telling her she looked like a ghost, and her hand went up to the side of her nose, where there was nothing now, and found the place anyway. A curb, a gym full of lights, her own voice telling him not to be a dick for three seconds." },
+      { n: "And the rest of him. Not everything, not the council or the campaign or whatever else was still locked behind the star, but all of him, all at once, the way you have a song. A bedroom door she knocked on three times. A fist going into a wall beside her head, not into her, and the hole it left. An alley with smoke in it, and something bitter on her tongue that hadn't been her idea. A bathroom floor, and her own hand, hard, across his face, and her own voice saying wake up. A cookie at a bake sale she shouldn't have eaten. A phone lighting up at midnight with capitals that didn't spell anything, all of them meaning *come over*, all of them meaning *sorry*." },
       { n: "His voice, under all of it. Not this one, here, careful on a cold step. The loud one. In her ear on the phone, in the group chat, across a classroom, in front of her house. Every day of her life." },
       { s: 'solar', f: 'surprised', t: "...Jihoon." },
       { n: "It wasn't how she'd been saying it for four months. Polite, careful, like a name off a list. It came out flat and tired and exactly right, the way you'd say the name of someone who'd been in your house so long he'd worn a groove in your sofa." },
@@ -609,6 +615,7 @@
           { s: 'jihoon', f: 'surprised', t: "OW. Okay. Yeah. That's fair. That's the most fair thing that's ever happened to me." }
         ] }
       ] },
+      { s: 'jihoon', f: 'serious', t: "The pill. In the alley. I did that to you. And the bathroom floor, and the cookies. That was me, all of it. Don't say it's okay. You always say it's okay. It's your worst habit, and I've been living off it since preschool." },
       { s: 'solar', f: 'happy', t: "Park Jihoon. You absolute idiot. You came through a hole in the world with a tub of ice cream." },
       { n: "He laughed. He laughed so hard he had to put his head down on his knees, and the laugh turned into something else halfway through, and then back into a laugh, and she put her arm around him and held on and let him do both." },
       { s: 'jihoon', f: 'happy', t: "Of course I did. Of course I did. As your best friend it is RIGHTFULLY MY JOB." },
@@ -699,7 +706,7 @@
           ] }
         ] }
       ], else: [
-        { s: 'jihoon', f: 'neutral', t: "You're going everywhere at once. Yang explained it. With a diagram. I asked him to stop, and he made a second diagram." },
+        { s: 'jihoon', f: 'neutral', t: "You're going everywhere at once. Yang explained it. With a diagram. I didn't ask. He did it at me, across the lobby, like a threat. I told him to stop, and he made a second diagram." },
         { s: 'jihoon', f: 'serious', t: "So that's three houses' worth of demons. Three front doors. I'm going to need a bigger bag. I'm going to need a truck." },
         { s: 'jihoon', f: 'sad', t: "And I only get one of you. The rest of you belongs to people I'm never going to meet. I don't share. I've never shared anything in my life. Ask Junkyu about the fries." },
         { choose: [
@@ -781,9 +788,10 @@
       ] },
       { n: "Hyunsuk went to buy more chips. On his way past he knocked his shoulder into Solar's, not hard, and said very quietly, with his eyes on the vending machine, that it had been two years since he'd seen Jihoon this boring, and that it was great, and that if she told anyone he'd said so he'd deny it in a voice she'd never heard before." },
       { ifHeading: 'H', then: [
-        { s: 'jihoon', f: 'neutral', t: "Eight o'clock. The morning we get back. Row three. Yang in row one not turning round, like a guy in a movie who knows there's a bomb." },
-        { s: 'jihoon', f: 'serious', t: "And before the green they were going to throw me out. You know that. The whole school knew. I was a problem with a uniform on." },
+        { s: 'jihoon', f: 'neutral', t: "Whatever morning we get back to. If the exams haven't happened, they're at eight. Row three. Yang in row one not turning round, like a guy in a movie who knows there's a bomb." },
+        { s: 'jihoon', f: 'serious', t: "If one teacher had looked up in the cafeteria, they'd have thrown me out. Everybody was whispering. I was a problem with a uniform on." },
         { s: 'jihoon', f: 'neutral', t: "So I'm walking into that hall clean, and I'm sitting down behind you, and I'm passing. Not for him. For me. And then I'm looking at the back of his head for the whole second half, very hard, until he feels it." },
+        { s: 'jihoon', f: 'happy', t: "Yang's writing the retreat story, by the way. For the school. Of course he is. I'm in it as *morale*." },
         { choose: [
           { t: "(Write *row 3* on one of his tickets. Under it, *pass.*)", notes: 3, then: [
             { n: "She wrote it on the back of the stack, small, and put the hair tie back round them, and he took them out of her hand and read it without saying anything and put the whole stack in the inside pocket of his coat, over his heart, like a passport." }
@@ -905,7 +913,7 @@
       ] },
       { n: "He paid for two pots, the almost-black one and a yellow one, and Mrs. Okada wrapped them in newspaper and told him to water them at the soil, not on the leaves, and not at night, and he nodded at every instruction like a man memorizing a phone number." },
       { n: "Then they sat on the rim of the fountain with the pots between them, and he didn't say anything for a while, and Solar knew why he'd asked which ones were toughest. She'd known since the cold step in January. There was a porch at home, and a row of pots along the front of it, and a boy who watered them every evening after school with a hose that didn't reach the end, so he had to do the last two with a cup." },
-      { n: "Everybody knew the rule. You didn't bring it up. Not the flowers, not whose they'd been, not the house. If he wanted it said, he said it. She sat with her hands in her lap and waited, the way she'd apparently waited for him for fourteen years, at doors." },
+      { n: "Everybody knew the rule. You didn't bring it up. Not the flowers, not whose they'd been, not the house. If he wanted it said, he said it. She'd broken it once, at home, in an alley, and she'd paid for it, and she didn't need to remember the whole night to remember that much. She sat with her hands in her lap and waited, the way she'd apparently waited for him for fourteen years, at doors." },
       { s: 'jihoon', f: 'neutral', t: "Nobody's watering them." },
       { s: 'jihoon', f: 'sad', t: "If it's still the same night at home, they're fine. If it's not. If it's been five months there too. They're dead, Sol. Every one. I left them. I never leave them. I didn't leave them when—" },
       { n: "He stopped. He looked at the pansies in their newspaper. He didn't finish it, and she didn't make him." },
@@ -1035,10 +1043,10 @@
         ] }
       ] },
       { n: "A train came in and went out again. Nobody got off at their end. The wind came down the tracks after it, cold enough to hurt, and he didn't button his coat, and she didn't tell him to." },
-      { s: 'jihoon', f: 'neutral', t: "Five months. I haven't gone looking here. Not once. I told you in December and it was true and it's still true. It's the longest since before sophomore year. You know what that means? It means I can. I didn't know I could." },
+      { s: 'jihoon', f: 'neutral', t: "Five months. I haven't gone looking here. Not once. I told you in December and it was true and it's still true. It's the longest since it started again. Since the wall. You know what that means? It means I can. I didn't know I could." },
       { s: 'jihoon', f: 'sad', t: "And then a guy behind some bins asks me one question and I'm right back in it, like it was waiting for me in the alley the whole five months, eating a sandwich, being patient." },
       { ifHeading: 'H', then: [
-        { s: 'jihoon', f: 'serious', t: "And at home it's not a guy behind some bins. It's everywhere. It's my drawer. It's the cafeteria. It's Hyunsuk's stupid group of— it's people I like. It's in my phone. It's in my car. I'm going home to a whole city of guys behind bins." },
+        { s: 'jihoon', f: 'serious', t: "And at home it's not a guy behind some bins. It's everywhere. It's my drawer. It's the cafeteria. It's guys I know from sophomore year. It's in my phone. It's in my car. I'm going home to a whole city of guys behind bins." },
         { s: 'jihoon', f: 'sad', t: "And you're going to be there. Which is good. Which is the worst part. Because I know exactly what I did to you, last time. I remember it. The wall. The— I remember all of it. And you'll come get me anyway. You'll come get me and I'll be the worst version of me and you'll come back anyway." },
         { choose: [
           { t: "Then be at the door before I get there.", notes: 3, then: [
@@ -1150,7 +1158,7 @@
       { n: "When it was done it was nearly as long as the steps, red string and little squares turning in the breeze, and he held one end and she held the other, and for a second neither of them said anything about where it was going." },
       { ifHeading: 'H', then: [
         { s: 'jihoon', f: 'neutral', t: "It goes home. In the gift bag. On your desk. You tie it on the end of the old one, and it goes all the way round your room, twice, and then you've got the whole thing, start to now, no holes." },
-        { s: 'jihoon', f: 'serious', t: "And then I'm taking a new one, the first morning. Exam morning. Row three. You looking like a ghost because you didn't eat breakfast, and Yang will have told you to eat breakfast. He'll have it in writing." },
+        { s: 'jihoon', f: 'serious', t: "And then I'm taking a new one, the first morning. Whatever morning it turns out to be. Exams or no exams. Row three. You looking like a ghost because you didn't eat breakfast, and Yang will have told you to eat breakfast. He'll have it in writing." },
         { choose: [
           { t: "(Coil it up. Put it in your coat, over your heart, like his flashcards.)", notes: 3, then: [
             { n: "She coiled it round her hand carefully, so the squares lay flat, and put the whole thing in the inside pocket of her coat. He watched her do it and put his hand over his own inside pocket, where the bench one was, without seeming to know he'd done it." },
@@ -1241,7 +1249,7 @@
           ] },
           { t: "You were always going to get a vote. I vote yes.", notes: 3, then: [
             { s: 'jihoon', f: 'surprised', t: "..." },
-            { n: "He went silent for four seconds. Then five. Then six, which was the longest she'd ever known him to, and in the seventh he put his forehead against hers on the warm step and held it there, and said, very quietly, *motion carried,* in an accent that was obviously Jungwon's, and then *don't ever tell him I said that,* and she laughed into his mouth." }
+            { n: "He went silent for four seconds. Then five. Then six, which was the longest she'd ever known him to, and in the seventh he put his forehead against hers on the warm step and held it there, and said, very quietly, *I'm going to be so annoying about this,* and then, *forever,* and she laughed into his mouth." }
           ] }
         ] }
       ], else: [

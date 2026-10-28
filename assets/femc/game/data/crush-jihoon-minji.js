@@ -205,7 +205,7 @@
               { ifEvent: 'a5-call-hoax', then: [
                 { s: 'jihoon', f: 'neutral', t: "In two universes. You've picked him in two separate universes. That's not a choice anymore. That's a diagnosis." }
               ], else: [{ ifRank: { jihoon: 6 }, then: [
-                { s: 'jihoon', f: 'neutral', t: "In two universes. You've picked him in two separate universes. That's not a choice anymore. That's a diagnosis." }
+                { s: 'jihoon', f: 'neutral', t: "Twice. You've picked him— no. Rule one. Forget I said twice. I'm a man of the law now. It's horrible." }
               ] }] }
             ], else: [{ ifRomance: 'haechan', then: [
               { s: 'jihoon', f: 'serious', t: "The guy from your dorm. The one with the headphones who stares at you like you're a song. He doesn't talk. You'll have to do all the talking. You'll love that. That's annoying. That's actually a good match. I hate that it's a good match." }
@@ -500,9 +500,12 @@
       { from: 'junkyu', t: 'junkyute: JIHOON IS HOLDING HANDS IN PUBLIC!!!' },
       { from: 'asahi', t: "asanoonecares: i saw. i've never wanted to go home more" },
       { from: 'hyunsuk', t: 'geniusuk: bro he waved at me with the hand. the holding hand' },
-      { from: 'jihoon', t: 'jihoney: Jealousy Is A Disease. Get Well Soon #blessed' }
+      { from: 'jihoon', t: 'jihoney: Jealousy Is A Disease. Get Well Soon #blessed' },
+      { from: 'jaehyuk', t: 'jaehyukkie: we should probably not post this anywhere.' },
+      { from: 'junkyu', t: 'junkyute: why' },
+      { from: 'jaehyuk', t: 'jaehyukkie: no reason.' }
     ], reply: [
-      { t: 'HEHEHEHE LEAVE HIM ALONE', then: [{ from: 'jihoon', t: 'jihoney: See. She Defends Me. Write It Down' }, { from: 'jaehyuk', t: 'jaehyukkie: Noted.' }] },
+      { t: 'HEHEHEHE LEAVE HIM ALONE', then: [{ from: 'jihoon', t: 'jihoney: See. She Defends Me. Write It Down' }, { from: 'jaehyuk', t: 'jaehyukkie: noted.' }] },
       { t: 'ok but he DID wave with it', then: [{ from: 'jihoon', t: 'jihoney: BETRAYAL. from my own Girlfriend. in the Hate Club of all places' }, { from: 'asahi', t: 'asanoonecares: best day of my life' }] }
     ] },
     { id: 'cr-tx-jh-list', thread: 'jihoon', from: '11/24', to: '12/20', slot: 'late', flag: 'arrived-jihoon', crush: J('faded'), msgs: [
