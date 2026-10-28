@@ -145,7 +145,15 @@ window.FemcGame = (() => {
     if (trip) type = 'trip';
     if (d < dayOf(D.cal.firstFree)) type = 'prologue';
     return { d, date: t, md, dow, day: DAYS[dow], dayName: DAY_NAMES[dow], type, holiday, brk, trip, exam, label: holiday || D.cal.events[md] || (brk ? brk.name : '') || (exam ? 'Exams' : ''),
-      weather: weather(d), wx: wx(d), moon: moon(d), ops: D.cal.ops.filter(o => o.date === md) };
+      weather: weather(d), wx: wx(d), moon: moon(d), ops: D.cal.ops.filter(o => o.date === md), shown: shownOf(md) };
+  }
+  // The true ending's coda (epilogue batch 8): a day can wear another world's date (calendar `shown[md] = { date: 'YYYY-MM-DD',
+  // place }`), for the date card and the HUD only; every rule still reads the calendar's own day. Iwatodai's calendar has none.
+  function shownOf(md) {
+    const x = D.cal.shown && D.cal.shown[md];
+    if (!x || !x.date) return null;
+    const [y, m, dd] = String(x.date).split('-').map(Number), t = new Date(y, m - 1, dd), p = new Date(y, m - 1, dd - 1);
+    return { date: t, md: `${m}/${dd}`, day: DAYS[t.getDay()], dayName: DAY_NAMES[t.getDay()], place: x.place || '', prev: { md: `${p.getMonth() + 1}/${p.getDate()}`, day: DAYS[p.getDay()] } };
   }
   const SLOT_ORDER = ['early', 'morning', 'lunch', 'afternoon', 'after', 'evening', 'late'];
   function slotsFor(info) {
@@ -956,7 +964,7 @@ window.FemcGame = (() => {
   const sub = t => String(t ?? '').replace(/\{name\}/g, 'Solar');
   let dateOverride = null;
   function setDate(md) { const d = dayOf(md); if (d >= S.day || S.phase === 'prologue') { S.day = d; save(); } }
-  const dateLabel = () => { const i = dayInfo(); return { md: i.md, day: i.day }; };
+  const dateLabel = () => { const i = dayInfo(), v = i.shown || i; return { md: v.md, day: v.day }; }; // the true coda's days wear their world's date
 
   /* ── Activities, shops, books ──
      activities(): places.js activities plus the clubs (places.js clubs: the hook for tennis, the library, band and gaming;
@@ -2352,11 +2360,14 @@ window.FemcGame = (() => {
   /* An epilogue save's slot (P3-style, labelled "Epilogue · Syracuse · Dec 9"): worked out from S.epi alone (year, start, place,
      slot names, written when it was entered), so the title and the save screen read it without loading the world. */
   function epiSlotInfo(s) {
-    const e = s.epi, [m, d] = String(e.start || '1/1').split('/').map(Number), t = new Date(e.year || 2009, m - 1, d + (s.day || 0));
+    const e = s.epi, [m, d] = String(e.start || '1/1').split('/').map(Number);
+    let t = new Date(e.year || 2009, m - 1, d + (s.day || 0)), place = e.place || e.world;
+    const sh = e.shown && e.shown[`${t.getMonth() + 1}/${t.getDate()}`]; // the true coda's days wear their world's date and place
+    if (sh && sh.date) { const [yy, mm, ddd] = String(sh.date).split('-').map(Number); t = new Date(yy, mm - 1, ddd); place = sh.place || place; }
     const b = s.battleSave, mins = Math.max(0, s.playMinutes || 0), mon = t.toLocaleString('en', { month: 'long' });
     return { md: `${t.getMonth() + 1}/${t.getDate()}`, day: DAYS[t.getDay()], slot: (e.slots || {})[s.slot] || s.slot, month: mon, mon: mon.slice(0, 3), dom: t.getDate(),
       lv: b && b.lvl ? b.lvl : null, play: `${Math.floor(mins / 60)}:${String(mins % 60).padStart(2, '0')}`, prologue: false, ngp: s.ngp || 0,
-      fight: !!(s.handoff && s.handoff.status === 'pending'), epi: e.place || e.world, world: e.world };
+      fight: !!(s.handoff && s.handoff.status === 'pending'), epi: place, world: e.world };
   }
   const hasSave = () => { try { return !!JSON.parse(lsGet(KEY) || 'null')?.started; } catch (e) { return false; } };
   function deleteSave() { lsSet(KEY, null); S = fresh(); }

@@ -238,7 +238,7 @@
   function paintHud() {
     if (S().phase !== 'play') { hud.hidden = true; return; }
     hud.hidden = false;
-    const i = G.dayInfo(), c = G.D.stats.conditions[S().condition];
+    const i0 = G.dayInfo(), i = i0.shown ? { ...i0, ...i0.shown } : i0, c = G.D.stats.conditions[S().condition];
     const m = i.moon, moonTip = m.full ? 'Full moon tonight' : m.days != null ? `${m.name} · full moon in ${m.days} day${m.days === 1 ? '' : 's'}` : m.name;
     hud.innerHTML = `<div class="g-date"><b>${esc(i.md)}</b><small>${esc(i.day)}</small></div>
       <div class="g-when"><span class="g-slot">${esc(G.slotName(S().slot, i))}</span>${i.label ? `<span class="g-label">${esc(i.label)}</span>` : ''}</div>
@@ -269,7 +269,7 @@
   /* ── Date card (P3R): yesterday rolls up, today slams in ── */
   function dateCard(done) {
     if (!G.settings().dateCard) return done();
-    const i = G.dayInfo(), prev = G.dayInfo(Math.max(0, i.d - 1));
+    const i0 = G.dayInfo(), i = i0.shown ? { ...i0, ...i0.shown } : i0, prev = i0.shown ? i0.shown.prev : G.dayInfo(Math.max(0, i0.d - 1)); // the true coda's days wear their world's date
     const el = document.createElement('div');
     el.className = 'g-datecard';
     el.setAttribute('role', 'status');

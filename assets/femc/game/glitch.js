@@ -16,12 +16,14 @@
      tint     the backdrop washes Dark Hour green (game.css .gs-bg.darkhour's filter) for a beat
      weather  snow falls upward / rain hangs in the air: weather.js glitch('rise' | 'hold'); clear days get a little of it
      clock    the HUD's slot (or a scene's place plate) reads 12:00 AM; the HUD moon goes green
-     date     the date card (or a small plate) flickers to an Iwatodai date (md, default 4/6) in the summon card's glitch letters
+     date     the date card (or a small plate) flickers to an Iwatodai date (md, default 4/6; year, default Iwatodai's: Stay
+              flickers the other way, to 2025 or 2024) in the summon card's glitch letters
      phone    a banner from a dead thread: no face, a typing bubble or msg, "Read 12:00 AM" (name, msg, read, time)
      map      Go Out gains one greyed card, Iwatodai Station; at stage 4 (or open: true) it opens (lines: its scene, or a short
               default; a schedule entry's `scene` is the scene-hook gate below, so the station's own lines are `lines`)
      face     one frame of a portrait swaps to someone from S.E.E.S. (who, f); on a screen, a ghost of one at the edge
-     sound    sound: 'p3' (two seconds of a P3 track under the home music; track) | 'piano' (a Velvet Room note) | 'static'
+     sound    sound: 'p3' (two seconds of a P3 track under the home music; track, or src: any file under the site, e.g. a world
+              song in Stay) | 'piano' (a Velvet Room note) | 'static'
      tear     cracks and glass across the screen (the Dark Hour transition's cracks), then gone
      name     Haenim's name glitching on a card (names, label)
      hands    a choice she didn't write: the next choice list gets "(Evoke.)" (t). Not pickable: it flickers and is gone.
@@ -227,7 +229,7 @@ window.FemcGlitch = (() => {
       hold(() => { if (t.classList.contains('g-glx-clock')) { t.textContent = old; t.classList.remove('g-glx-clock'); } if (moon) moon.classList.remove('g-glx-moon'); }, dur);
     },
     date(spec, dur) {
-      const md = spec.md || '4/6', [m, d] = md.split('/').map(Number), y = m <= 3 ? 2010 : 2009, dt = new Date(y, m - 1, d);
+      const md = spec.md || '4/6', [m, d] = md.split('/').map(Number), y = spec.year || (m <= 3 ? 2010 : 2009), dt = new Date(y, m - 1, d);
       const wd = dt.toLocaleString('en', { weekday: 'short' }), month = `${dt.toLocaleString('en', { month: 'long' }).toUpperCase()} ${y}`;
       const card = document.querySelector('.g-datecard:not(.out)');
       const day = card?.querySelector('.g-dc-days span:last-child'), mon = card?.querySelector('.g-dc-month');
@@ -298,7 +300,7 @@ window.FemcGlitch = (() => {
         const v = Math.max(0, Math.min(100, set.music ?? 60)) / 100 * 0.5 * 0.45 * soft;
         if (!v) return false; // music off: nothing to hear
         const f = spec.track || TRACKS[Math.floor(rnd(S().day, S().slot, 'track') * TRACKS.length)];
-        const a = new Audio(`${G.base}assets/femc/music/${f}.mp3`);
+        const a = new Audio(spec.src ? `${G.base}${spec.src}` : `${G.base}assets/femc/music/${f}.mp3`);
         a.volume = 0; a.preload = 'auto';
         let iv = null;
         const fadeTo = (to, ms, done) => { clearInterval(iv); const step = (to - a.volume) / Math.max(1, ms / 50); iv = setInterval(() => { const n = a.volume + step; if ((step >= 0 && n >= to) || (step < 0 && n <= to)) { a.volume = Math.max(0, Math.min(1, to)); clearInterval(iv); done?.(); } else a.volume = Math.max(0, Math.min(1, n)); }, 50); };

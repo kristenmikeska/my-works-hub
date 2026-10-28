@@ -23,8 +23,7 @@
    The day (run): the date card, a story event due now (core.js dueEvent, world events only), a routine, then by slot: the
    morning screen, After Class / Evening (Go Out: the world's activities, paid in its money; or stay in), the late screen and
    Sleep. Sleeping through `end` finishes the act.
-   Which endings open one (worldFor, mirrors core.js endingName): Runners, strangers and HOAX home endings. Stay and true get
-   theirs in a later batch; the bad ending never does.
+   Which endings open one (worldFor, mirrors core.js endingName): every ending but the bad one (batch 8 added Stay and true).
    Glitches (batch 2, glitch.js documents them): each world's data/epi/<world>/glitches.js loads with it; run() asks
    FemcGlitch.tick() on the date card ('card'), the morning, Go Out ('out', which may gain the station card) and the late
    screen; events and routines get their scheduled { glitch } lines (inject); { ifGlitch: n } goes through cond().
@@ -48,25 +47,38 @@
        -sold, mem-camp), y-romance-<id> and y-met-<id>: texts and routines can only gate on flags.
    The half-present fights (batch 6, 2026-10-28): events' and hangouts' { battle } lines go through fightHook (documented above
      it): the handoff with request.epi, the year's battle save (EXP lands there), nothing of the world's wallet, items or
-     condition, can't-lose fades, and resume() after a reload mid-fight. */
+     condition, can't-lose fades, and resume() after a reload mid-fight.
+   Stay and true (batch 8, 2026-10-28; data/epi/stay/world.js and data/epi/true/world.js document the data side):
+     - Stay is a world like the others whose places are Iwatodai's own (its bg rules sit in front of the main game's). The
+       reverse fights: a world's `fightParty: { n: [ids] }` is the party for fight n (partyFor), and battle.js EPI_WORLDS.stay
+       gives each fight its own Tartarus layer, rules and barks.
+     - True is a coda: three small days, one per world, on one calendar whose days wear another world's date (the calendar's
+       `shown: { 'M/D': { date: 'YYYY-MM-DD', place } }`, read by core.js dayInfo → ui.js date card and HUD, and copied into
+       S.epi.shown for the save screen). Every slot is a story event, so no Go Out or late screen appears.
+     - ifYear gained anyFlag (any of a list); the y- flags copied on entering also take ending-*, stay-* and shinji-awake. */
 window.FemcEpilogue = (() => {
   const G = window.FemcGame, SC = window.FemcScene, W = window;
   if (!G) return null;
   const S = () => G.S, UI = () => W.FemcGameUI;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const clone = o => JSON.parse(JSON.stringify(o));
-  const DATA_V = 5; // data/epi/<world>/*.js ?v=
+  const DATA_V = 6; // data/epi/<world>/*.js ?v=
   // The worlds: the year's route flag that opens each, its name (the button) and place (slot labels), its data files.
   const WORLDS = {
     runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3'] },
     strangers: { id: 'strangers', flag: 'route-S', name: 'strangers', place: 'Incheon', files: ['calendar', 'world', 'glitches'] },
-    hoax: { id: 'hoax', flag: 'route-H', name: 'HOAX', place: 'Hanlim', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-w2', 'story-w3', 'story-end'] }
+    hoax: { id: 'hoax', flag: 'route-H', name: 'HOAX', place: 'Hanlim', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-w2', 'story-w3', 'story-end'] },
+    // Batch 8: Stay's reverse epilogue (Iwatodai is home) and the true ending's coda (three small days, one per world).
+    stay: { id: 'stay', flag: 'route-stay', name: 'Iwatodai', place: 'Iwatodai', files: ['calendar', 'world', 'glitches', 'people', 'story'] },
+    true: { id: 'true', flag: 'true-final', name: 'Every world', place: 'Every world', files: ['calendar', 'world', 'glitches', 'story'] }
   };
-  // Which world a finished year's ending opens (the same order as core.js endingName): none for bad, true or Stay (yet).
+  // Which world a finished year's ending opens (the same order as core.js endingName): none for bad; the true ending's coda;
+  // Runners, strangers, HOAX; anything else is Stay ("here": route-stay, or no route at all), as the ending itself decides.
   function worldFor(s) {
     const f = s?.flags || {};
-    if (f['route-bad'] || f['true-final']) return null;
-    return Object.values(WORLDS).find(w => f[w.flag])?.id || null;
+    if (f['route-bad']) return null;
+    if (f['true-final']) return 'true';
+    return ['runners', 'strangers', 'hoax'].find(id => f[WORLDS[id].flag]) || 'stay';
   }
   const endingOf = s => { const f = s?.flags || {}; return f['route-bad'] ? 'the last stop' : f['true-final'] ? 'I am thou' : f['route-R'] ? 'where it begins' : f['route-S'] ? 'low tide' : f['route-H'] ? 'the unfated life' : 'here'; };
 
@@ -153,7 +165,7 @@ window.FemcEpilogue = (() => {
     if (typeof q === 'string') return !!Y.flags?.[q];
     const L = Y.links || {};
     const T = {
-      flag: v => [].concat(v).every(k => !!Y.flags?.[k]), noFlag: v => ![].concat(v).some(k => !!Y.flags?.[k]),
+      flag: v => [].concat(v).every(k => !!Y.flags?.[k]), noFlag: v => ![].concat(v).some(k => !!Y.flags?.[k]), anyFlag: v => [].concat(v).some(k => !!Y.flags?.[k]),
       romance: v => [].concat(v).some(id => L[id]?.route === 'romance'), xmas: v => [].concat(v).includes(carryOf(Y).xmas),
       rank: v => Object.entries(v).every(([id, n]) => (L[id]?.rank || 0) >= n), event: v => [].concat(v).every(id => (Y.events || []).includes(id)),
       met: v => [].concat(v).every(id => (Y.met || []).includes(id)), ending: v => [].concat(v).includes(endingOf(Y))
@@ -224,11 +236,11 @@ window.FemcEpilogue = (() => {
     E.year1 = year;
     // Parts of the year as flags (y-…), for texts and routines, which only gate on flags.
     const yf = Y.flags || {};
-    Object.keys(yf).forEach(k => { if (yf[k] && /^(xmas-|arrived-|route-|danielle-(refused|sold)$|mem-camp$)/.test(k)) E.flags[`y-${k}`] = true; });
+    Object.keys(yf).forEach(k => { if (yf[k] && /^(xmas-|arrived-|route-|ending-|stay-|danielle-(refused|sold)$|mem-camp$|shinji-awake$)/.test(k)) E.flags[`y-${k}`] = true; });
     carry.romance.forEach(x => { E.flags[`y-romance-${x}`] = true; });
     (Y.met || []).forEach(x => { E.flags[`y-met-${x}`] = true; });
     E.epi = { v: 1, world: id, place: WORLDS[id].place, year: c.year, start: c.start, slots: Object.fromEntries((c.slots || []).map(x => [x.id, x.name])),
-      lean: leanFor(w.raw, carry, Y), route: null, locked: false, carry, entered: Date.now(), done: false };
+      lean: leanFor(w.raw, carry, Y), route: null, locked: false, carry, entered: Date.now(), done: false, ...(c.shown ? { shown: clone(c.shown) } : {}) };
     return E;
   }
   let cardDay = null;
@@ -326,7 +338,7 @@ window.FemcEpilogue = (() => {
   // resume: a snapshot from a fight in this event (batch 6), when the scene is rebuilt after it (a reload, or the fight's own way back).
   function playEvent(ev, resume) {
     if (!resume) S().pending = null;
-    return SC.play({ scene: GL()?.inject(ev.id, ev.scene) || ev.scene, place: ev.place, time: ev.time, title: resume ? null : ev.title, label: G.dayInfo().md, cast: ev.cast, event: true, resume,
+    return SC.play({ scene: GL()?.inject(ev.id, ev.scene) || ev.scene, place: ev.place, time: ev.time, title: resume ? null : ev.title, label: (G.dayInfo().shown || G.dayInfo()).md, cast: ev.cast, event: true, resume,
       onBattle: fightHook({ type: 'epi', kind: 'event', id: ev.id }),
       onDone: () => {
         S().pending = null;
@@ -434,6 +446,8 @@ window.FemcEpilogue = (() => {
   };
   const fightOf = b => { const m = /^epi-([a-z]+)-(\d+)$/.exec((b && b.script) || ''); return m && STAGES[m[2]] ? { world: m[1], n: +m[2], stage: STAGES[m[2]] } : null; };
   function partyFor(n) {
+    const own = (worldRaw().fightParty || {})[n]; // a world's own party for that fight (Stay's reversed fights: the searchers)
+    if (own) return [...own];
     if (n <= 1) return ['solar'];
     const Y = S().year1 || {}, L = Y.links || {}, f = Y.flags || {};
     const two = SEES.filter(id => id !== 'shinjiro' || f['shinji-awake']).map((id, i) => ({ id, r: (L[id] && L[id].rank) || 0, i }))

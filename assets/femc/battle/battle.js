@@ -2361,7 +2361,8 @@
     // The epilogue's half-present fights (EPI): Fuuka reads what she can't explain.
     epiUnknown: ['Shadows ahead. And… an unknown signal, right in the middle of you. I can’t tell what it is.', 'sad'],
     epiThere: ['I can see her on the readings. I can’t hear her. But she’s there. She’s right there.', 'sad'],
-    epiContact: ['I’ve got her— I’ve GOT her! She’s here! She’s really here!', 'surprised'] };
+    epiContact: ['I’ve got her— I’ve GOT her! She’s here! She’s really here!', 'surprised'],
+    epiVisitors: ['Two more signals, right beside you! I know them— they’re the ones who went home! One second, that’s all I can hold!', 'surprised'] };
   function nav(key, vars = {}, { once = false } = {}) {
     const line = D.nav[key] || NAV_LOCAL[key];
     if (!line || !BT) return;
@@ -3461,7 +3462,7 @@
       case 'onemore': {
         const u = U(e.src);
         sfx('onemore');
-        if (u.side === 'party') { tip('onemore'); await bigWord('1 MORE!', { band: [u.mid, member(u.mid).faces.idle], ms: 950 }); log(`${u.name}: “${member(u.mid).lines.onemore}”`, 'say'); blogAdd(`${u.name} gets One More!`, 'pf'); mark('onemore'); }
+        if (u.side === 'party') { tip('onemore'); await bigWord('1 MORE!', { band: [u.mid, member(u.mid).faces.idle], ms: 950 }); { const hush = !!(curSpec && curSpec.rules && curSpec.rules.mute && u === B.leader()); if (hush) mark('epi-mute'); log(`${u.name}: “${hush ? '…' : member(u.mid).lines.onemore}”`, 'say'); } blogAdd(`${u.name} gets One More!`, 'pf'); mark('onemore'); }
         else { blogAdd(`${u.name} gets One More.`, 'ef'); banner('1 More', { enemy: true, sub: u.name }); await sleep(500); }
         break;
       }
@@ -4973,7 +4974,20 @@
       1: { group: ['tide_shadow'], at: -3, block: 'The Harbor · Midnight' },
       2: { group: ['fishmonger', 'fishmonger'], at: -2, block: 'Incheon · Midnight' },
       3: { group: ['tide_shadow', 'fishmonger'], at: -1, hpK: 0.4, block: 'Incheon · Midnight' },
-      4: { group: ['tide_shadow'], at: 0, foeHp: 0.35, block: 'The Bottom of the Tide' } } }
+      4: { group: ['tide_shadow'], at: 0, foeHp: 0.35, block: 'The Bottom of the Tide' } } },
+    /* Stay (batch 8): the reverse. Iwatodai is home, so she's pulled OUT, into the three worlds, where the people who love her
+       there can't see her; the party is theirs (epilogue.js partyFor reads the world's fightParty), with no navigator (Fuuka
+       is a world away). Fight 4 turns it round again: Iwatodai Station, Akihiko, and the two of them flickering in for one
+       round (Fuuka reads them). Per fight: `over` (that world's Tartarus layer), `rules` (merged over the stage's), `barks`
+       ({ nav: NAV_LOCAL key, open: [[mid, line]…] said when it opens, caller: [mid, line] for the unheard mark }). */
+    stay: { over: 'tartarus-monad.webp', fights: {
+      1: { group: ['flash_shadow'], at: -3, block: 'Studio 4B · Syracuse · Midnight', over: 'tartarus-tziah.webp' },
+      2: { group: ['tide_shadow', 'fishmonger'], at: -2, hpK: 0.6, block: 'The Harbor · Incheon · Midnight', over: 'tartarus-coffins.webp', rules: { noNav: true },
+        barks: { open: [['jungwon', 'Something’s standing in the middle of us.'], ['haechan', 'Then let it stand. Watch your left.']] } },
+      3: { group: ['veil_poster', 'group_chat'], at: -1, hpK: 0.45, block: 'The Gym · Hanlim · Midnight', over: 'tartarus-yabbashah.webp', rules: { noNav: true },
+        barks: { open: [['jungwon', 'Solar?!'], ['jihoon', 'I didn’t see that. I didn’t— okay. I saw that.']], caller: ['jungwon', 'The one she’s on. Follow hers. Jihoon, hers.'] } },
+      4: { group: ['party_shadow', 'tide_shadow', 'ballot_box'], at: 0, foeHp: 0.35, block: 'Iwatodai Station · Midnight', rules: { bondFloor: { akihiko: 5, haechan: 5 } },
+        barks: { nav: 'epiVisitors', open: [['akihiko', 'Lee? Yang? How are you even—'], ['haechan', 'Don’t ask. Call it, Solar.'], ['jungwon', 'One second. Make it count.']] } } } }
   };
   const EPI_ORDER = ['alone', 'unseen', 'unheard', 'contact'];
   const EPI_STAGES = {
@@ -4993,9 +5007,10 @@
     const world = ep.world || m[1], n = +(ep.n || m[2]) || 1, stage = EPI_STAGES[ep.stage] ? ep.stage : EPI_ORDER[Math.min(3, n - 1)];
     const W = EPI_WORLDS[world] || EPI_WORLDS.runners, F = W.fights[n] || W.fights[1], st = EPI_STAGES[stage], L = lvOf('solar');
     const group = F.group.map(k => `${k}@${Math.max(5, L + (F.at || 0))}`);
-    const rules = Object.assign({ protect: true, noEscape: true }, st.rules, { epi: { world, n, stage } });
+    const barks = F.barks || null, over = BGP + (F.over || W.over);
+    const rules = Object.assign({ protect: true, noEscape: true }, st.rules, F.rules || {}, { epi: { world, n, stage, barks } });
     if (F.hpK || F.foeHp) rules.setup = b => b.foes().forEach(f => { if (F.hpK) { f.maxHp = Math.max(1, Math.round(f.maxHp * F.hpK)); f.hp = f.maxHp; } if (F.foeHp) f.hp = Math.max(1, Math.round(f.maxHp * F.foeHp)); });
-    return { group, bg: ep.bg || BGP + W.over, over: BGP + W.over, home: !!ep.bg, label: R.title || EPI_CARD[stage].title, block: F.block, boss: false, music: st.music,
+    return { group, bg: ep.bg || over, over, home: !!ep.bg, label: R.title || EPI_CARD[stage].title, block: F.block, boss: false, music: st.music,
       title: R.title || F.block, solo: !!st.solo, noResults: true, epi: { world, n, stage }, rules };
   }
   async function hoEpi() {
@@ -5028,8 +5043,12 @@
   }
   function epiOpen(spec) {
     const st = spec.epi.stage, mates = B.party().filter(p => p !== B.leader() && !p.dead), aki = mates.find(p => p.mid === 'akihiko'), koro = mates.find(p => p.mid === 'koromaru');
-    const other = mates.find(p => p.mid !== 'akihiko' && p.mid !== 'koromaru') || aki;
-    if (st === 'unseen') { nav('epiUnknown'); if (koro) { say(koro, 'Arf! Arf arf!'); mark('epi-koro'); if (aki) say(aki, 'Koro? What is it? There’s nothing there.'); } }
+    const other = mates.find(p => p.mid !== 'akihiko' && p.mid !== 'koromaru') || aki, bk = spec.rules && spec.rules.epi && spec.rules.epi.barks;
+    // A world's own barks (Stay's reversed fights: the searchers, not S.E.E.S.).
+    if (bk) {
+      if (bk.nav) nav(bk.nav);
+      (bk.open || []).forEach(([mid, t]) => { const u = mates.find(p => p.mid === mid); if (u) say(u, t); });
+    } else if (st === 'unseen') { nav('epiUnknown'); if (koro) { say(koro, 'Arf! Arf arf!'); mark('epi-koro'); if (aki) say(aki, 'Koro? What is it? There’s nothing there.'); } }
     else if (st === 'unheard') { nav('epiThere'); if (other) say(other, 'Solar?!'); if (aki && aki !== other) say(aki, '…Sol?'); }
     else if (st === 'contact') { nav('epiContact'); if (aki) say(aki, 'Sol. Call it. We’re with you.'); }
     if (st === 'contact') BT.root.classList.add('epi-live');
@@ -5059,7 +5078,7 @@
     const R = epiR(), t = id && B.U(id);
     if (!R || !R.marks || u !== B.leader() || !t || t.side !== 'enemy' || t.dead) return;
     if (epiS.mark !== id) { BT.enemies.forEach((el, k) => el.classList.toggle('epi-marked', k === id)); epiS.mark = id; mark('epi-mark'); }
-    if (!epiS.called) { epiS.called = true; const aki = B.party().find(p => p.mid === 'akihiko' && !p.dead); if (aki) say(aki, 'There. The one she’s on. Everyone, follow her!'); }
+    if (!epiS.called) { epiS.called = true; const c = (R.epi.barks && R.epi.barks.caller) || ['akihiko', 'There. The one she’s on. Everyone, follow her!'], who = B.party().find(p => p.mid === c[0] && !p.dead); if (who) say(who, c[1]); }
   }
   function epiFollow(action) {
     const R = epiR(), m = epiS && epiS.mark && B.U(epiS.mark);
