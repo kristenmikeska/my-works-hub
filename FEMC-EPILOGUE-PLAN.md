@@ -155,6 +155,8 @@ Four fights per world, near the end, all at midnight, all in a version of a home
 - **True: a short three-part coda first, a braid later if there's room.** One long scene in each world, each ending on its holding-on moment. If you want more, a braided version can follow as its own batch: three small calendars, rotating by day. Memory follows your approved lean: the fade reaches only this world's people.
 - **Bad: no epilogue.** No button on its end screen.
 
+*Built in batch 8 (2026-10-28), with two changes of size you asked for: Stay runs about two weeks instead of three, and the true ending is the short three-part coda (one small day in each world); the braid stays an optional later batch. Stay's four special fights run the other way round, as planned, and the true coda has none.*
+
 ---
 
 ## 3. Runners
@@ -427,7 +429,7 @@ Nine batches, one at a time, each sized for a modest session. The tests are targ
 | **5** ✅ *(built 2026-10-28)* | **HOAX** | The whole world: calendar 12/21/2023–1/13/2024, the map, home bonds, winter break and school days, the Christmas Eve lock, the set pieces (meeting, Christmas, séance, party, hearing, gym), glitches, LE SSERAFIM's HOAX scenes (with Yunjin's approved echo in the livestream), the final (fights as placeholders). | `--only hoax`: every path on each route and carry state; the hearing's stat checks; Christmas by route; the jsc check; one calendar run through the UI. |
 | **6** ✅ *(built 2026-10-28)* | **The half-present battles** | `battle.js` scripted fights `epi-<world>-1..4` from one table; rules `ghost` (alone / unseen / unheard / contact), `flicker`, `mark`, `contactRound`; the ghost look; S.E.E.S.'s party pick; can't-lose fades; the request's `epi` field; Runners and HOAX wired. | `femc_epilogue --only fights`: each stage's rules hold in a real fight (untargetable, every-other-round, Act Freely, marks followed, the one contact round, then interrupt); a lost fight fades instead; EXP lands in the year's battle save; the handoff resumes the scene on the next line. Regression: `femc_bonds --only rules`, `femc_tartarus` quick. |
 | **7** | **strangers** | After the manuscript passes the private pickup point (re-sync first). The whole world, fights included. | `--only strangers`, plus the canon guard (no line states what the book hasn't printed), like the trio's guard. |
-| **8** | **Stay and the true coda** | The reverse epilogue in Iwatodai (the inverted fights included) and the three-part true coda. | `--only stay,true`. |
+| **8** ✅ *(built 2026-10-28)* | **Stay and the true coda** | The reverse epilogue in Iwatodai (the inverted fights included) and the three-part true coda. | `--only stay,true`. |
 | **9** | **Finale and polish** | The Equinox cards by route, stamps, the album and Theater pages for epilogue scenes, music passes, art wiring for whatever exists by then, a full playthrough per world. | `--only finale,shots`, plus one real playthrough per world from a finished year, and the whole suite once. |
 
 If you'd rather see a world sooner, batches 1–4 alone give you a complete Runners epilogue (with stand-in fights).

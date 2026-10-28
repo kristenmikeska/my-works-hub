@@ -1,6 +1,6 @@
 # Art to make
 
-**98 items:** 7 story CGs · 18 places · 26 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 84 are optional; none are ⭐.
+**100 items:** 9 story CGs · 18 places · 26 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 85 are optional; none are ⭐.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -87,6 +87,25 @@ Attach: Solar, Jungwon, `epi-h-gym-midnight.png` (once it's made; until then `bg
 Save as: `epi-h-held-cg.png`
 ```
 Persona 3 Reload style event CG, 16:9, no text. The same high-school gym as the third attached image at midnight, the lights off, only the green exit signs and moonlight through the high windows, blue and silver balloons and string lights left from a dance nobody finished. In the middle of the floor Jungwon (the second attached image's face; a dark winter coat over his navy school blazer, dark hair in his eyes, a watch on his wrist) holds Solar (the first attached image's face; long dark hair, a navy Hanlim blazer, a small gold pin) against him with both arms, leaning back as if against a pull, his face set and very calm. Solar's edges are coming apart into fine light, Dark Hour green at her edges. From somewhere above and behind them, through a seam in the air, warm gold light pours in like a song, lighting one side of both their faces. In Jungwon's hand, pulled from her coat pocket, an unopened pink-and-black energy-drink can. Desperate, quiet, informed. Keep both faces clear of the edges.
+```
+
+
+### The epilogue: Stay and the true ending
+
+**[ ] Held (Stay)**  
+The last scene of the Stay epilogue: the dorm roof at midnight.  
+Attach: Solar, Akihiko, `bg/iwatodaidorm-roof-night.webp`  
+Save as: `epi-stay-held-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The flat rooftop of the Iwatodai dormitory at midnight, the same railing, planters and view of the bay and the lit city as the third attached image, a small garden of seedlings in pots by the railing. Akihiko (the second attached image's face; silver hair, a dark coat, red gloves) holds Solar (the first attached image's face; long dark hair down, a cardigan over a spring dress) from behind with both arms, his chin over her shoulder, his weight braced back as if against a pull from every side at once. Three beams of light reach for her out of the night from three directions: warm bell-gold from the left, deep jade-green from the sea, cool star-white from above, each one pulling a few strands of her hair toward it. Her hands are held out in front of her, half turned to light. Behind her, faint and huge in the dark, her Persona's pink veil has lifted the width of a finger. Quiet, desperate, tender. Keep both faces clear of the edges.
+```
+
+**[ ] Every world** *(optional)*  
+The true ending's coda: one moment from each world, side by side.  
+Attach: `epi-r-held-cg.png`, `epi-h-held-cg.png` (once they're made), Solar  
+Save as: `epi-true-coda-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A triptych in three tall panels separated by thin bright seams of light, the same girl in all three (the third attached image's face; long dark hair down). Left panel: a snowy campus rooftop at night, a boy in black holding her with both arms, matching the first attached image. Right panel: a high-school gym at midnight with blue and silver balloons, a boy in a dark coat holding her, matching the second attached image. Middle panel: a quiet garden by the sea before dawn, the tide far out and the mudflats shining grey, two young men in dark coats standing at either side of her, each holding one of her hands, not looking at each other. In every panel her edges are coming apart into the same gold and green light, and the light runs through the seams from one panel into the next, so it reads as one pull across three worlds. Keep every face clear of the edges.
 ```
 
 ---
