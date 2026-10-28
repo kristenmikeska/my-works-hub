@@ -14020,6 +14020,258 @@
       "status": "integrated",
       "outputs": "assets/femc/bg/kirijo-guesthouse-day.webp",
       "notes": "The guesthouse lobby by day (places.js rules; Danielle 2/14)."
+    },
+    {
+      "batch": 60,
+      "source": "Sakura-sheet.png",
+      "sourceNow": "Added to Game/Sakura-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "4e358807e8be29d4d0a53be8c4fe4c164f45115d19712990bfa4c37430a9ec40",
+      "character": "sakura-runners",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/sakura-runners/neutral.webp",
+      "conversion": "same as Solar-Runners-sheet.png",
+      "outputs": {
+        "assets/femc/portraits/sakura-runners/neutral.webp": "22e7f631152b689508c6197905db01bf8e38011ad262312fc1f1342d158864f1",
+        "assets/femc/portraits/sakura-runners/happy.webp": "0fa3df1ee3a4fb2ad96dd1e528bcb5f52a1615897f3ac769efeb48b0a59944cb",
+        "assets/femc/portraits/sakura-runners/sad.webp": "e57513557fb561cf98e38f17f3202171526d75d9ecb1974e59ca683d58aab426",
+        "assets/femc/portraits/sakura-runners/serious.webp": "4cf9f7a4f4aee322c9906669c5afb13b367d6ac9b3e0566be9cfceb8f89d5233",
+        "assets/femc/portraits/sakura-runners/surprised.webp": "ae2179399a6387c57fba08924d23f3aec21c25a2871ebae1deb76a34b9c4703f",
+        "assets/femc/portraits/sakura-runners/flustered.webp": "54e4a9867975c1457fa6cc47f51d305df042a349fd9e7e2df2e63f7d172eec3c"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "Runners epilogue only: data/epi/runners/world.js faces map, read by core.js worldFace()"
+    },
+    {
+      "batch": 60,
+      "source": "Solar-Runners-sheet.png",
+      "sourceNow": "Added to Game/Solar-Runners-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d70f65e250cea83af094725187c50d021a3dcb7965038d69acd6142b10987d95",
+      "character": "solar-runners",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/solar-runners/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/solar-runners/neutral.webp": "4b3d6a5646649cce8c6893f8dff8f309d9dbe899bc7ba0744134573d22bce671",
+        "assets/femc/portraits/solar-runners/happy.webp": "5dbc53f19853a3bf99b8bf888de128056d934454d3c7f83ca7f7b4752c68942c",
+        "assets/femc/portraits/solar-runners/sad.webp": "c7fef4e495efed2a30cf0d285c00b91c3aeea826ae95532afa4bace2a464c323",
+        "assets/femc/portraits/solar-runners/serious.webp": "c8169e5e4456e54bca78fe253edf8d05da07dbe1b3eb69ecec014eaa3e2e0106",
+        "assets/femc/portraits/solar-runners/surprised.webp": "70106dfb7f3d6b28a1c5bb5f8f5a588984f7085b883190af8062e7ae29f1f6e4",
+        "assets/femc/portraits/solar-runners/flustered.webp": "d661aa611dff272cb2831bc30c5cb66135534f3c99166a4221df5fe95093b2fc"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "Runners epilogue only: data/epi/runners/world.js faces map, read by core.js worldFace()"
+    },
+    {
+      "batch": 60,
+      "source": "epi-h-hearing-cg.png",
+      "sourceNow": "Added to Game/epi-h-hearing-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "8bebf6260f8f290ae67d594702a63c1fb1859446f4e01ef9012b4873f78adc7c",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-h-hearing.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "514f797c12af9ed4b8b2428c9331c74a34dd4f529706ea09d800faf7c4aa58bf",
+      "placement": "assets/femc/game/data/epi/hoax/story-end.js epi-h-hearing: before the evoke glitch (her argument), null before the hearing glitch; cgFocus 'epi-h-hearing' in data/places.js; album: epilogue.js ALBUM"
+    },
+    {
+      "batch": 60,
+      "source": "epi-h-held-cg.png",
+      "sourceNow": "Added to Game/epi-h-held-cg.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "8b94786f76a788f75b9c1ea509438d106691e50f2d8357c668ad9350a35f5f4b",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-h-held.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "67869238cba7d6a0faae7bf7bcd955153046963e8920710d1b0a6ce9ee879a8e",
+      "placement": "assets/femc/game/data/epi/hoax/story-end.js epi-h-gym: before 'His hand slid down her back', up to the act's end; cgFocus 'epi-h-held' in data/places.js; album: epilogue.js ALBUM"
+    },
+    {
+      "batch": 60,
+      "source": "epi-h-seance-cg.png",
+      "sourceNow": "Added to Game/epi-h-seance-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "2f094a08aaee14a8609616c3d9ed8a3732bfddca6333851feb27cfb520d21bdc",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-h-seance.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "703d2436096d89d97f8d24b3b7bf1eea5d6bcc6736dd479ec860fd348b90d3a4",
+      "placement": "assets/femc/game/data/epi/hoax/story-w1.js epi-h-seance: after the planchette glitch, null when the candles turn yellow; cgFocus 'epi-h-seance' in data/places.js; album: epilogue.js ALBUM"
+    },
+    {
+      "batch": 60,
+      "source": "epi-r-footage-cg.png",
+      "sourceNow": "Added to Game/epi-r-footage-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "91990a0e08fba04c71a7c9750d38e3c261d0d75aea236d7b937160c845f3039f",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-r-footage.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "738f9485d1c83f20d222cb1d59d7d78470b9cf2b92a43e8ae2c2bbec9de7d00d",
+      "placement": "assets/femc/game/data/epi/runners/story-w3.js epi-r-footage: every route's video (cg as the phone shows it, null before 'Something impossible'); cgFocus 'epi-r-footage' in data/places.js; album: epilogue.js ALBUM"
+    },
+    {
+      "batch": 60,
+      "source": "epi-r-held-cg.png",
+      "sourceNow": "Added to Game/epi-r-held-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "73408e9379d5ad63142b523fa2d41bb72c9cf3e8d650192b39100235469b4288",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-r-held.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "ee7f6f979e9f2b2eedc92eade2b4d6732a5a20d07ee9cc4a6b66e3449fc5bdd0",
+      "placement": "assets/femc/game/data/epi/runners/story-w3.js epi-r-rooftop: before 'And he held on.', up to the act's end; cgFocus 'epi-r-held' in data/places.js; album: epilogue.js ALBUM"
+    },
+    {
+      "batch": 60,
+      "source": "epi-r-regionals-cg.png",
+      "sourceNow": "Added to Game/epi-r-regionals-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "dcac69d3baebe02c97691bc1025d5c7646794a1029965e3967f6fe92dc2d7c38",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-r-regionals.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "b08713912c78d0b96790bfccd51b0c5c14e871050624c11919d30882ca3ba3de",
+      "placement": "assets/femc/game/data/epi/runners/story-w1.js epi-r-regionals-2: the result (cg before the score line, null at the loading dock); cgFocus 'epi-r-regionals' in data/places.js; album: epilogue.js ALBUM"
+    },
+    {
+      "batch": 60,
+      "source": "epi-r-studio-cg.png",
+      "sourceNow": "Added to Game/epi-r-studio-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "1c7cacbdf88cdf5452e6a4c9de78910e97443535f2e584d5edc238e6c0f7fd4f",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-r-studio.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "46b908704c496e0e28cf28cb7d7a9bb86820b99d92752539de052493a86d84e7",
+      "placement": "assets/femc/game/data/epi/runners/story-w2.js epi-r-studio (Haechan route): the second take (cg before 'The second time through the gap', null before 'When she opened her eyes'); cgFocus 'epi-r-studio' in data/places.js; album: epilogue.js ALBUM"
+    },
+    {
+      "batch": 60,
+      "source": "epi-s-held-cg.png",
+      "sourceNow": "Added to Game/epi-s-held-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "29492ac7393195e2640d961eb565967efc1280c332aa8612df75d476fb2cfc5b",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-s-held.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "4488838001469781b77341998e57d8911d513a6cafb842ca998b79720b9bf19e",
+      "placement": "assets/femc/game/data/epi/strangers/story-end.js epi-s-held: after the pull glitch, up to the act's end; cgFocus 'epi-s-held' in data/places.js; album: epilogue.js ALBUM"
+    },
+    {
+      "batch": 60,
+      "source": "epi-s-moon-cg.png",
+      "sourceNow": "Added to Game/epi-s-moon-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "dd96208fc0a12735de67fe9b6656688d5254ae962d1064ebc602890e016df006",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-s-moon.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "b325f42bc702c152fe795c9f9d15a846e945fd881d0c13da900a13761b4f0578",
+      "placement": "assets/femc/game/data/epi/strangers/story-w2.js epi-s-moon: after the moon glitch, null when it turns back; cgFocus 'epi-s-moon' in data/places.js; album: epilogue.js ALBUM"
+    },
+    {
+      "batch": 60,
+      "source": "epi-s-tide-cg.png",
+      "sourceNow": "Added to Game/epi-s-tide-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "6b9b094887b421774a195bb03d7467d2ee52419805cd168f70bf9177db65bb1f",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-s-tide.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "121d1d8c85cd2cd4cfc27f68450b0f1ab58035ebeae17aaf1e666cb86b599f50",
+      "placement": "assets/femc/game/data/epi/strangers/story-w3.js epi-s-tide: after the tide glitch, null when the tide starts again; cgFocus 'epi-s-tide' in data/places.js; album: epilogue.js ALBUM"
+    },
+    {
+      "batch": 60,
+      "source": "epi-stay-held-cg.png",
+      "sourceNow": "Added to Game/epi-stay-held-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "b6f077c8f944b2c25241b951850d5cdac7e51ba2a6774d43a21259bfc3c106dd",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-stay-held.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "3a350d3837c4f28308678a1e94090d79a36e89165a5593092f6041d78b8af994",
+      "placement": "assets/femc/game/data/epi/stay/story.js epi-st-held: first line of the Akihiko route's branch, up to the act's end; cgFocus 'epi-stay-held' in data/places.js; album: epilogue.js ALBUM"
+    },
+    {
+      "batch": 60,
+      "source": "epi-true-coda-cg.png",
+      "sourceNow": "Added to Game/epi-true-coda-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "175bf4caed56bde888fcee5771778b076cabcd245ee40b781267839a531996de",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-true-coda.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching",
+      "outputSha256": "7e7f93d7609fe1a4077ec3a78716e16a80d50ba57519fbe5df3ac81ae9852669",
+      "placement": "assets/femc/game/data/epi/true/story.js epi-tr-h-held: before 'She was being held in three places at once.' (the bench's place line clears it); cgFocus 'epi-true-coda' in data/places.js; album: epilogue.js ALBUM"
+    },
+    {
+      "batch": 60,
+      "source": "eunchae-sheet.png",
+      "sourceNow": "Added to Game/eunchae-sheet.png",
+      "size": [
+        1084,
+        1451
+      ],
+      "sha256": "ab9c071fa4ade3d96c0dea050c2b259e741e7a88d8ade0e2f88aa09d5bab8c5f",
+      "character": "eunchae-runners",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/eunchae-runners/neutral.webp",
+      "conversion": "portrait-shaped 3x2 sheet (1084x1451) drawn to the waist: cells cut at the emptiest column/row, then each cut to head and shoulders (440 px below the top of the hair, matching the other sheets' framing); Vision lift, non-white restored, largest component kept; femc-portraits.py aligned (WebP q86)",
+      "outputs": {
+        "assets/femc/portraits/eunchae-runners/neutral.webp": "77037ecde7b0e862604ac4069e03303b9737b5fb4873e1cb39a8d6784f0383d0",
+        "assets/femc/portraits/eunchae-runners/happy.webp": "b1e1307bb5c77bbd72a1a4888f1e6782adcbfc4ac0c195fdf91e261a9e06b360",
+        "assets/femc/portraits/eunchae-runners/sad.webp": "579c7a7f022e1556511cf014301d0539c1d910db8a3c153c3f952e9f188a3997",
+        "assets/femc/portraits/eunchae-runners/serious.webp": "b53245276c96a7fae35f71a83c5724a10205099e5957a1db71fb6ac964181aff",
+        "assets/femc/portraits/eunchae-runners/surprised.webp": "21d6e9711032151e743f0774890db653b50c3d2a0e0c7d00a95653711d1a5551",
+        "assets/femc/portraits/eunchae-runners/flustered.webp": "b6e456f8e22685ac4bf927a1c4d3844a78eab17182035ac8d7164c8aa3c883dd"
+      },
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "Runners epilogue only: data/epi/runners/world.js faces map, read by core.js worldFace()"
     }
   ],
   "batch1Validation": {
@@ -14810,5 +15062,21 @@
     ],
     "notTested": "the guesthouse lobby in a live scene (no screenshot), femc_living / femc_spice / cast checks for the edited scene files, the new outfits in a real battle",
     "html": "femc-game.html places v42, living-jaemin v4, crush-jungwon v2, jungwon v15, mark v11, jaemin v4, chenle v4, ready.js v7, cosmetics.js v8"
+  },
+  "batch60Validation": {
+    "date": "2026-10-28",
+    "scope": "the epilogue's twelve CGs and three Runners face sheets (Solar's home look, Sakura, Eunchae)",
+    "sourcesInspected": "all 15 viewed; faces on a contact sheet (dark and light) and in a scale lineup against Hanni, Minji, Danielle and Solar; CG phone crops previewed at their focus points",
+    "sourcesIntegrated": 15,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched; kazuha-sheet.png and epi-r-studio-4b.jpeg arrived mid-batch and were left in New Adds",
+    "engine": "core.js worldFace(): a world's own faces map (world.js faces, passed through epilogue.js build()) in portrait() and scale(); Runners maps solar, sakura, eunchae to their -runners folders",
+    "textTweaks": "runners footage: the video opens on Solar alone at the foot of the stairs with a red cup, looking back at the lens (all three routes); hoax hearing: the tin set down and counted on the council table in front of Solar; hoax gym: the can taken out of her blazer pocket and held between them; strangers: two small structural tweaks to match the pictures (the tide's height, one man's stance)",
+    "tests": [
+      "tools/femc-check-scenes.py: OK",
+      "jsc checkSyntax on every edited script"
+    ],
+    "notTested": "no browser tests (Kat at work): tests/femc_epilogue.py runners1/runners2/hoax/strangers/stay/true/polish, femc_gallery.py, in-scene face size and CG framing at 1000x486 and 375x812",
+    "html": "femc-game.html core v54, epilogue v13, places v45, portraits/index.js v136, scale.js v145 (FEMC_PORTRAIT_V 5); epilogue DATA_V 11"
   }
 }

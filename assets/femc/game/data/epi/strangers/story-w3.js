@@ -439,8 +439,9 @@
     { n: "Completely. Her hands. Her breath. Her heart, for a second, she could have sworn. She stood in the mud to her ankles with the water running past her boots in the channels and the gray coming at her, and she didn't shake, and she didn't scream, she was the port's daughter and she had been afraid of exactly this every day of her life, and now it was here, and she was very calm about it, in the way you are calm about a thing you've always known." },
     { n: "Somewhere very far off on the seawall, a man was shouting." },
     { glitch: 'epi-s-g-tide' },
+    { cg: 'epi-s-tide' },
     { n: "The tide stopped." },
-    { n: "It stopped thirty meters from her. The whole line of it, the foam lip, the gray behind, the whole width of the bay, stopped where it was, standing up off the mud like a wall of dirty glass, a meter high, two, and didn't fall. It didn't fall. It stood there. She could see things in it. Weed hung in it mid-roll. A plastic bottle, upright, in the face of it, perfectly still, like a fly in amber. The foam on the top was frozen in the act of curling over." },
+    { n: "It stopped thirty meters from her. The whole line of it, the foam lip, the gray behind, the whole width of the bay, stopped where it was, standing up off the mud like a wall of dirty glass, higher than a house, and didn't fall. It didn't fall. It stood there. She could see things in it. Weed hung in it mid-roll. A plastic bottle, upright, in the face of it, perfectly still, like a fly in amber. The foam on the top was frozen in the act of curling over." },
     { n: "The hiss had stopped. Every sound had stopped. The channels at her feet had stopped running, mid-flow, the water sitting in them with its little ripples standing up and not moving. In the gray above it all, a gull hung with its wings out." },
     { n: "One second. Two. Longer. It went on being longer." },
     { choose: [
@@ -466,6 +467,7 @@
     { n: "Jungwon was two steps above him. His right hand was out. Not reaching. Just out, open, held there in the air over the mud the way you'd hold a hand out to someone in a dark room so they'd walk into it." },
     { n: "She walked into it." },
     { n: "Her boot came down on the bottom step. On the stone. Haechan's hand went past her shoulder and closed on the back of her collar, the exact grip, the same as the quay, two weeks and a lifetime ago, and Jungwon's right hand closed round her wrist, and she came up the step between them, and the next, and her foot was on the third step." },
+    { cg: null },
     { n: "Behind her, the tide started again." },
     { n: "It came in with a roar. All of it, at once, as if it had been holding its breath, the wall of gray coming down off its edge and across the mud where she had been standing and over it and on, the channels flooding white, the whole bay filling in a single breath, and it hit the bottom of the seawall a second later with a sound like a door slammed in a stone house, and came up the steps. The first. The second. To the edge of the third, round her boots, round Haechan's, cold as death, and stopped there, where it always stopped, and began, very gently, to slop against the stone." },
     { n: "Where she'd been standing, out there, the water was over a man's head. She could tell by the color." },

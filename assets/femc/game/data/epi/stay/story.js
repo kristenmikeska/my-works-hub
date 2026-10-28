@@ -587,6 +587,7 @@
     { n: "Three lights came up out of the dark from three directions at once. Gold from the east, low and warm, a bell's color. Green from the sea, cold and deep, jade. White from somewhere very high, sharp as a star pin catching the sun. And they all wanted her. She felt it in her feet first, the floor under her going thin, and then in her hands, which were coming apart at the edges into light, going three ways." },
     { n: "Haenim came up behind her without being called. The charms on her sash were ringing, all three, not faintly now, a sound like three cities' worth of bells." },
     { ifEpiRoute: 'akihiko', then: [
+      { cg: 'epi-stay-held' },
       { n: "Akihiko had her. Both arms, from behind, his chin over her shoulder, the boxer's weight braced back against all three directions at once like a man holding a door against weather, and his arms were going through her and he didn't care. He held on to the light." },
       { s: 'akihiko', f: 'serious', t: "I've got you. I'm right here. Look at the city. Look at it. That's where you live." }
     ] },

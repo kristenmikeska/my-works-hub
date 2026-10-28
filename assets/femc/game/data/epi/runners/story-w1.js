@@ -851,6 +851,7 @@
         { n: "She threw the Rush. The fox-fire corridor opened ahead of them and the five of them went down it together, so fast the enemy line didn't have time to understand it was over before it was, and the payload rolled the last six meters with Olivia standing on it screaming and Haerin's healing on all of them like a hand on a back, and the hall came apart." }
       ] }
     ] },
+    { cg: 'epi-r-regionals' },
     { ifFlag: 'epi-r-read-3', then: [
       { n: "Three-one. Regional champions. Through to Nationals in the spring." }
     ], else: [
@@ -864,6 +865,7 @@
     { n: "This time he was exactly where he'd let himself be seen. Third row. On the end. On his feet, now, because everyone was, but not shouting, not clapping, just standing there next to Hyein, who was screaming, with the glitter sign folded under his arm and his hands in his coat pockets, looking at her." },
     { n: "She found him in a second. Less. Like her eyes had known where to go before she'd asked them to." },
     { n: "And Minji, beside her, still close enough to touch, watched her do it." },
+    { cg: null },
     { place: 'Syracuse · Regionals', time: 'Afternoon', soft: true },
     { music: 'epi-r-closure' },
     { n: "Later. Twenty minutes, maybe more. Out of the hall, past the coat check, down a service corridor that led to the loading dock, where it was cold and quiet and smelled like cardboard and snow, and the noise of the celebration came through the walls like the sea through the side of a ship." },

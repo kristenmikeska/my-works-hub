@@ -284,11 +284,11 @@
     { n: "Jungwon stood up." },
     { n: "And his voice changed. She'd forgotten, a little, over there, how it did that, how the boy who talked like a grandmother and typed in full sentences and said *Did you eat* like it was a question on an exam could stand up in front of a room and turn into somebody bright and booming and easy, somebody you'd vote for. It was like watching somebody switch on the lights in a house." },
     { s: 'jungwon', f: 'happy', t: "Thank you, Chaewon. And thank you, Hayoon. It's a good question. It's the right question. If I'd been in the bleachers, I'd have asked it too." },
-    { n: "He nodded at Heeseung. Heeseung stood up with the ledger. Jungwon walked across the gym floor, past the folding chairs and the whole school, to the ballot box on its table, and took a small key out of his blazer pocket, and unlocked it, and lifted out a dented green cash tin with a strip of masking tape on the lid that said BAKE SALE in Sunoo's handwriting, and set it down." },
+    { n: "He nodded at Heeseung. Heeseung stood up with the ledger. Jungwon walked across the gym floor, past the folding chairs and the whole school, to the ballot box on its table, and took a small key out of his blazer pocket, and unlocked it, and lifted out a dented green cash tin with a strip of masking tape on the lid that said BAKE SALE in Sunoo's handwriting, and carried it back and set it down on the council table, in front of Solar." },
     { s: 'jungwon', f: 'neutral', t: "The bake sale raised eight hundred and twelve thousand, four hundred won." },
     { s: 'heeseung', f: 'serious', t: "Eight hundred and twelve thousand, four hundred won." },
     { n: "And Yang Jungwon counted it. In front of everybody. Out loud." },
-    { n: "It took a long time. Ten-thousand notes, then thousands, then the coins, stacked, in rows, on the folding table, his voice carrying every number to the back of the gym, and about a minute in Niki started drumming softly on the council table under the count, and Jake joined him, and then the first-years did, until the whole gym was a drumroll and Jungwon was counting over it in his speech voice like a game-show host, and Eunchae was whispering into her phone like a golf commentator, and Solar had her hand over her mouth." },
+    { n: "It took a long time. Ten-thousand notes, then thousands, then the coins, stacked, in rows, on the council table, his voice carrying every number to the back of the gym, and about a minute in Niki started drumming softly on the council table under the count, and Jake joined him, and then the first-years did, until the whole gym was a drumroll and Jungwon was counting over it in his speech voice like a game-show host, and Eunchae was whispering into her phone like a golf commentator, and Solar had her hand over her mouth." },
     { s: 'jungwon', f: 'happy', t: "...Eight hundred and twelve thousand, four hundred." },
     { s: 'heeseung', f: 'happy', t: "Matches." },
     { s: 'jungwon', f: 'neutral', t: "Every won. It was in the ballot box. In this gym. The whole time." },
@@ -301,6 +301,7 @@
     { n: "Every head in the gym turned to her." },
     { n: "Solar looked down at her index card. It had one bullet point on it, and it said *don't cry*, and under that, in Jungwon's handwriting, very small, from when she'd left it on his desk last week, *you'll be fine. eat breakfast.*" },
     { n: "She stood up. Her chair made a terrible noise on the gym floor. The gold lights hummed. Above the scoreboard the clock said 12:00, the way it had all day, and she looked at it, and something at the edge of her eyes went faintly, faintly green, like a television left on in another room." },
+    { cg: 'epi-h-hearing' },
     { glitch: 'epi-h-g-evoke' },
     { choose: [
       { t: "Make them laugh. Tell them about the temple.", needs: { charm: 3 }, flag: 'epi-h-hearing-charm', then: [
@@ -398,6 +399,7 @@
     { s: 'chaewon', t: "Does the filer wish to proceed to a vote?" },
     { n: "Hayoon opened her mouth." },
     { glitch: { stage: 4 } },
+    { cg: null },
     { glitch: 'epi-h-g-hearing' },
     { music: 'epi-h-dread' },
     { n: "It started in her hands." },
@@ -782,9 +784,10 @@
     { s: 'hcvoice', t: "Then hold on." },
     { flag: 'epi-h-held' },
     { n: "He held on." },
-    { n: "His hand slid down her back, bracing, to her waist, to the pocket of her coat, and found the can." },
-    { n: "She felt him find it. Felt his fingers stop on the shape of it through the fabric, the cold of it, the ridge at the top, and stay there. He didn't take it out. He didn't have to. Pink and black, a logo like claw marks, never opened. He knew it. She didn't know how he knew it. He didn't say, and she didn't ask, and that was the most Jungwon thing that had ever happened." },
-    { n: "He unzipped the pocket with one hand and put his hand in, over hers, over the can, and closed both their hands around it, and held that too." },
+    { cg: 'epi-h-held' },
+    { n: "His hand slid down her back, bracing, to her waist, to the pocket of her blazer, and found the can." },
+    { n: "She felt him find it. Felt his fingers stop on the shape of it through the fabric, the cold of it, the ridge at the top, and stay there. Then he took it out, slowly, and held it between them. Pink and black, a logo like claw marks, never opened. He knew it. She didn't know how he knew it. He didn't say, and she didn't ask, and that was the most Jungwon thing that had ever happened." },
+    { n: "He put it in her hand, and closed his own over hers, over the can, and held that too." },
     { n: "Up in the high windows the moon was too big. Above the scoreboard the clock said 12:00. The light came off her like snow off a roof, green and gold, going up, and the seam in the air waited, very patient, and the gold on the other side of it waited too, and didn't leave, and the gym hummed, and his arms were around her, and every hand that could reach was holding on to someone who was holding on to her—" },
     { n: "—and Yang Jungwon, who had counted every won in the tin twice, and every day toward a date he'd never told her about, and every one of her breaths since she'd come home, held on, and for the first time in his whole life, he didn't count anything at all." }
   ] }

@@ -908,7 +908,12 @@ window.FemcGame = (() => {
      (scenes, phone, Go Out, pickers: they all ask portrait(), which returns null until then). */
   const pendingFace = id => !!LINKS[id]?.portraitPending && !(PORTRAITS()[faceId(id)] || []).length;
   const silhouette = id => SILHOUETTES[id] || (pendingFace(id) ? id : null);
+  /* An epilogue world's own faces (world.js `faces`, passed through epilogue.js build()): { speaker: portrait id }, e.g.
+     Runners' solar → solar-runners (her home look, no armband) and its LE SSERAFIM outfits (sakura → sakura-runners), so a
+     look drawn for one world never shows in another. Only while that world is being read (inWorld); the year is untouched. */
+  const worldFace = id => { const m = inWorld()?.faces; return (m && id && m[id]) || id; };
   function portrait(id, face) {
+    id = worldFace(id);
     // Solar's art wears the S.E.E.S. armband, so she has no portrait until she's given one.
     if (id === 'solar' && !S.flags.armband) return null;
     // An outfit from the Wardrobe with its own portraits, when "Outfits in scene portraits" is on (cosmetics.js).
@@ -921,7 +926,7 @@ window.FemcGame = (() => {
     const pick = [face, b, ...(CLOSE[b] || []), 'neutral', have[0]].find(f => f && have.includes(f));
     return pick ? `${base}assets/femc/portraits/${id}/${pick}.webp?v=${W.FEMC_PORTRAIT_V || 1}` : null;
   }
-  const scale = id => (W.FEMC_PORTRAIT_SCALE || {})[faceId(id)] || 1;
+  const scale = id => (W.FEMC_PORTRAIT_SCALE || {})[faceId(worldFace(id))] || 1;
   const name = id => CAST[id] || (id ? id[0].toUpperCase() + id.slice(1) : '');
   const castHas = id => id in CAST;
   /* Alternate card art for an arcana two links share (FEMC-ART-TODO 6A; tools/femc-tarot.py EXTRA -> tarot/<arcana>-2.webp).

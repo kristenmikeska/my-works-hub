@@ -350,6 +350,10 @@ window.FEMC_GAME_PLACES = {
   },
   /* CG focus: which part of each CG (assets/femc/cg) to keep in view when a tall, narrow window has to crop it. */
   cgFocus: {
+    // The epilogue CGs (scene.js reads this main map in every world).
+    'epi-r-regionals': '45% 35%', 'epi-r-studio': '46% 35%', 'epi-r-footage': '45% 40%', 'epi-r-held': '40% 35%',
+    'epi-h-seance': '50% 45%', 'epi-h-hearing': '45% 30%', 'epi-h-held': '55% 35%',
+    'epi-s-moon': '80% 30%', 'epi-s-tide': '35% 50%', 'epi-s-held': '52% 40%', 'epi-stay-held': '52% 35%', 'epi-true-coda': '50% 40%',
     'story-birthday-surprise': '38% 45%', 'story-graduation': '48% 30%', 'trip-yakushima-beach': '45% 35%', 'link-akihiko-r15': '45% 32%', 'link-haechan-r15': '60% 28%', 'romance-haechan-christmas': '50% 25%', 'romance-haechan-cupboard': '32% 35%', 'link-jungwon-r15': '50% 32%', 'link-shinjiro-lounge': '42% 25%', 'ending-true': '42% 30%', 'story-wren-clock': '62% 35%', 'story-wren-cap': '45% 30%', 'link-shinjiro-r15': '55% 35%', 'romance-ann-christmas': '40% 25%', 'romance-jihoon-christmas': '45% 25%', 'romance-judy-christmas': '42% 25%', 'romance-jungwon-christmas': '38% 20%', 'romance-kasumi-christmas': '48% 55%', 'romance-minji-christmas': '42% 28%', 'romance-rio-christmas': '40% 25%', 'romance-saori-christmas': '47% 28%', 'romance-shinjiro-christmas': '50% 25%', 'link-junpei-r10': '46% 25%', 'link-mitsuru-r10': '52% 30%', 'link-yukari-r10': '50% 28%', 'link-aigis-r10': '33% 28%', 'link-fuuka-r10': '54% 35%', 'link-cherry-r10': '49% 28%', 'link-hanni-r10': '50% 25%', 'link-hyein-r10': '60% 22%', 'link-jaehyun-r10': '55% 20%', 'link-jihoon-r10': '46% 28%', 'link-jihoon-r10-romance': '45% 30%', 'link-koromaru-r10': '44% 35%', 'link-mark-r10': '45% 30%', 'link-minji-r10': '40% 32%', 'link-yunjin-r10': '61% 28%',
     'prologue-waking-in-tartarus': '24% 70%', 'prologue-akihiko-finds-solar': '42% 55%', 'prologue-first-night-dorm': '55% 45%',
     'prologue-elizabeth-blank-page': '58% 45%', 'prologue-first-day-gekkoukan': '24% 40%',

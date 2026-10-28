@@ -116,6 +116,8 @@
       yerim: 'Yerim', chungha: 'Chungha', chaeyeon: 'Chaeyeon', sakura: 'Sakura', eunchae: 'Eunchae', kazuha: 'Kazuha', chaewon: 'Chaewon',
       dad: 'Dad', mom: 'Mom', caster: 'Caster', suesports: '@SUesports'
     },
+    // This world's own faces (core.js worldFace): Solar's home look and the outfits drawn for Runners (FEMC-ART-WIRING).
+    faces: { solar: 'solar-runners', sakura: 'sakura-runners', eunchae: 'eunchae-runners' },
     variants: {
       morning: {
         school: ["Class at nine. The quad was salted into gray paths, and everyone she passed looked like they'd slept four hours, which was December's whole look.",

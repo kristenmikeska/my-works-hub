@@ -480,23 +480,26 @@
         { from: 'danielle', t: '[video · 0:41]' }
       ], contact: 'Danielle' },
       { n: "She watched it with the sound off, the brightness all the way down, his arm heavy across her." },
-      { n: "The staircase from below. The landing. The two of them, unmistakable, her dress, his shirt, his hand on her back, her hand at his collar, the kind of footage a girl like Danielle had been waiting all semester to have. She watched it with her stomach in her throat, the old sick drop, *here it is, here it finally is,* and then the timestamp in the corner turned over to 12:00:00." },
+      { cg: 'epi-r-footage' },
+      { n: "The staircase from below. Her first, alone at the foot of it with a red cup, looking back over her shoulder at the lens. Then the landing. The two of them, unmistakable, her dress, his shirt, his hand on her back, her hand at his collar, the kind of footage a girl like Danielle had been waiting all semester to have. She watched it with her stomach in her throat, the old sick drop, *here it is, here it finally is,* and then the timestamp in the corner turned over to 12:00:00." },
       { n: "And she wasn't there." },
       { n: "One second. His arms closed around a shape that was her and then was light, green light, his hands going through where her waist had been, and behind where she should have been, the wall of the Sigma stairwell was gone, and there was a tower. Then 12:00:01, and she was back in his arms, and he was holding her like he'd never let anything go in his life." }
     ], else: [
       { n: "Two in the morning. The second landing, where the house turned on itself, the light under Danielle's door on, and Danielle herself sitting on the top step of the second flight in a black dress with her heels beside her and her phone in both hands, as if she'd been waiting. She had. Solar had known she would be." },
       { s: 'danielle', f: 'neutral', t: "Sit down. Please." },
       { n: "*Please.* Solar had never heard her say it. She sat. Danielle turned the phone around and held it out, and didn't let go of it, so they were both holding it." },
+      { cg: 'epi-r-footage' },
       { ifEpiRoute: 'cover', then: [
-        { n: "The living room from the stairs. Jaemin on the coffee table. Forty glasses going up. Solar in the middle of the frame with Hanni on one side and Hyein on the other, three girls in wine, and the timestamp turning over to 12:00:00." },
+        { n: "The living room from the stairs. Jaemin on the coffee table. Forty glasses going up. Solar at the foot of the stairs with a red cup, looking back over her shoulder at the lens, Hanni and Hyein a step behind her, three girls in wine, and the timestamp turning over to 12:00:00." },
         { n: "And she wasn't there. Hanni's hand was holding a hand that was light. Through the place where Solar had been standing, the fireplace, and behind it, where a wall should have been, a tower. Green light. One second. Then 12:00:01, and she was back, and Hyein was on the arm of the couch screaming a toast, and Hanni was pulling her toward the door, and the two of them were laughing, perfectly, while their faces said something else entirely." }
       ] },
       { ifEpiRoute: 'minji', then: [
-        { n: "The living room from the stairs. Jaemin on the coffee table. Forty glasses going up. And by the fireplace, Solar and Minji, Minji's camera up and pointed at her, its little red light like an eye, and the timestamp turning over to 12:00:00." },
+        { n: "The living room from the stairs. Jaemin on the coffee table. Forty glasses going up. And at the foot of the stairs, Solar with a red cup, looking back over her shoulder, and Minji at the edge of the frame with her camera up and pointed at her, its little red light like an eye, and the timestamp turning over to 12:00:00." },
         { n: "And she wasn't there. The camera was pointed at nothing. At light, green light, at a fireplace and behind it, where a wall should have been, a tower. One second. Then 12:00:01, and she was back, and Minji hadn't moved an inch." },
         { s: 'danielle', f: 'neutral', t: "She got it too. Kim Minji. Hers will be better. She doesn't shake." }
       ] }
     ] },
+    { cg: null },
     { n: "Something impossible. On a phone, with a timestamp. Not a green frame you could call a fault on the card or a print you could call a chemical mistake. Forty-one seconds of video of a girl flickering out of the world at midnight in front of forty people who hadn't seen it, and one who had." },
     { ifEpiRoute: 'haechan', then: [
       { phone: [
@@ -667,6 +670,7 @@
       { s: 'minji', f: 'sad', t: "I've got you. I've got you, Sol, I'm getting all of it, someone's going to have it, I asked, you said yes—" }
     ] },
 
+    { cg: 'epi-r-held' },
     { n: "And he held on." },
     { n: "Both arms. Around her, from in front, pulling her into him so hard the breath went out of her, his whole weight leaning back against the pull like a boy holding a door shut against a storm, one hand flat between her shoulder blades and the other in her hair, and she could feel his arms going through her and he didn't care, he held on to the light anyway, he held on to whatever of her there was." },
     { n: "She was panicking. She knew she was. Her breath came in sobs she couldn't stop and her hands were in his coat, fisted, going through it, coming back, and she could hear herself saying his name, all of his names, *Haechan, Hyuck, Donghyuck,* over and over like she was trying to find the one that would work." },

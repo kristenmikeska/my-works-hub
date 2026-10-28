@@ -773,5 +773,29 @@ window.FEMC_PORTRAITS = {
   "sad",
   "serious",
   "surprised"
+ ],
+ "eunchae-runners": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "sakura-runners": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "solar-runners": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
  ]
 };

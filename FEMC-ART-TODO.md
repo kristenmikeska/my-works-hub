@@ -1,6 +1,6 @@
 # Art to make
 
-**112 items:** 12 story CGs · 23 places · 30 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 95 are optional; none are ⭐.
+**97 items:** 23 places · 27 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 85 are optional; none are ⭐.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -29,110 +29,7 @@ Places, expressions, outfit portraits and the items that name their own pictures
 
 ## 1. Story CGs (ChatGPT)
 
-### The epilogue: Runners
-
-**[ ] Regionals: the result** *(optional)*  
-The moment the result lands at Regionals, in the Runners epilogue.  
-Attach: Solar, Minji, `bg/screenshot-theater.webp` (for the light only)  
-Save as: `epi-r-regionals-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A college esports tournament booth at night: Solar (the first attached image's face; long dark waved hair) and Minji (the second attached image's face; a black cap worn backwards) side by side at two gaming PCs with headsets on, in matching bright orange team jerseys with navy shoulder panels, the moment the result lands: Minji half out of her chair, Solar perfectly still with one hand pressed flat on the desk and the smallest smile, the big screen behind them washing them in white light, a dark crowd beyond the glass. Warm, loud, exhausted joy. Keep both faces clear of the edges.
-```
-
-**[ ] The studio: her voice, this time** *(optional)*  
-Solar recording in Studio 4B, in the Runners epilogue.  
-Attach: Solar, Haechan  
-Save as: `epi-r-studio-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A small, ordinary college music studio at night: a mixing desk with two monitor speakers, a cheap desk lamp, one lit window. Behind a glass pane, in a little vocal booth, Solar (the first attached image's face; long dark waved hair, a navy coat over an orange Syracuse hoodie) sings into a microphone with one hand on her headphones, eyes closed. In the foreground at the desk, Haechan (the second attached image's face; dressed all in black, heavy black headphones round his neck) sits with his hands on the faders, deliberately not watching her, looking at the screen. A small orange fox keycap on the keyboard by his hand. No neon. Quiet and close.
-```
-
-**[ ] The party footage** *(optional)*  
-A phone screen showing a video from the big party, in the Runners epilogue.  
-Attach: Solar, `bg/flashback-frat-party.webp`  
-Save as: `epi-r-footage-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no readable text. A close view of a smartphone held in someone's hand in a dark room, its screen filling most of the frame and playing a video: a fraternity house's living room at a holiday party (the same wood-panelled house and staircase as the second attached image, dressed for December with string lights and tinsel, a crowd of blurred people raising glasses), and in the middle of the video Solar (the first attached image's face; long dark waved hair, a wine-red long-sleeved silk dress) only half there: her edges coming apart into fine light, the wall behind her gone thin, and a sickly Dark Hour green glowing through where she should be solid. The phone's interface is drawn simply: a thin progress bar, a play button, a small timestamp area with no legible numbers. The room around the phone is dark; the screen lights the thumb holding it. Eerie, quiet, impossible.
-```
-
-**[ ] Held**  
-The last scene of the Runners epilogue: the rooftop in the first snow.  
-Attach: Solar, Haechan, `epi-r-rooftop-night-snow.png` (once it's made; until then `bg/rooftop-citynight.webp` for the light only)  
-Save as: `epi-r-held-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The flat rooftop of an old stone campus building at night in heavy falling snow (the same concrete ledge, vent stack and view of the campus towers and domed chapel below as the third attached image), snow falling straight down. Haechan (the second attached image's face; dressed all in black, cool-toned, snow in his dark hair) holds Solar (the first attached image's face; long dark waved hair, an oversized dark jacket over her clothes) against him with both arms, one hand in her hair, his face beside hers, his whole body leaning back as if against a pull. Solar's edges are coming apart into fine light that drifts upward like snow going the wrong way, and that light is the sick green of the Dark Hour at her edges and gold nearer her heart. Behind the campus clock tower the night sky is split open like a seam, green beyond it. A half-buried pink energy-drink can stands on the ledge. Desperate, tender, cold. Keep both faces clear of the edges.
-```
-
-### The epilogue: HOAX
-
-**[ ] The séance** *(optional)*  
-The Hate Club's séance by candlelight, in the HOAX epilogue.  
-Attach: Solar, Jihoon, Cherry, Asahi, `bg/kirijo-flat.webp` (for the room only)  
-Save as: `epi-h-seance-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no readable text. A big, expensive, half-empty living room at night lit only by a ring of candles on a low glass table (the same kind of modern flat as the last attached image, but darker: pizza boxes stacked by the sofa, a long dining table nobody eats at in the background). Around a cheap paper ouija board on the floor sit teenagers in winter clothes, every face lit from below: Solar (the first attached image's face; long dark hair, a winter cardigan) with two fingers on the planchette, Jihoon (the second attached image's face; black clothes, chains, a beanie) pretending to be bored, Cherry (the third attached image's face) gripping Solar's sleeve, Asahi (the fourth attached image's face) reading the board with a flat stare, and a Japanese exchange student with a soft fringe holding the board's edge with both hands, thrilled. The candle flames lean the same way, and their light has gone faintly green. The full moon fills the window behind them. Funny until it isn't. Keep every face clear of the edges.
-```
-
-**[ ] The hearing** *(optional)*  
-The impeachment hearing in the school gym, in the HOAX epilogue.  
-Attach: Solar, Jungwon, Sunoo, `bg/flashback-hamlim-gym.webp`  
-Save as: `epi-h-hearing-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no readable text. A high-school gym by day, the same gym as the fourth attached image (the same bleachers, floor lines and high windows), packed with students in navy school blazers on the bleachers, phones held up. On the floor, a long table with a microphone; Solar (the first attached image's face; long dark hair, a navy Hanlim school blazer over a winter cardigan, a small gold vice-president pin on her lapel, a tiny nose stud) stands at it, chin up, one hand on a battered metal cash tin. Behind her chair stand the student council: Jungwon (the second attached image's face; navy blazer, dark hair falling in his eyes) at her shoulder, Sunoo (the third attached image's face) clutching a hand-drawn poster, and several more boys in blazers. At a podium to one side, a girl with a sharp bob and a debate-team blazer holds up one hand for order. Bright, loud, nervous daylight. Keep the faces clear of the edges.
-```
-
-**[ ] Held**  
-The last scene of the HOAX epilogue: the gym at midnight.  
-Attach: Solar, Jungwon, `epi-h-gym-midnight.png` (once it's made; until then `bg/flashback-hamlim-gym.webp` for the room only)  
-Save as: `epi-h-held-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The same high-school gym as the third attached image at midnight, the lights off, only the green exit signs and moonlight through the high windows, blue and silver balloons and string lights left from a dance nobody finished. In the middle of the floor Jungwon (the second attached image's face; a dark winter coat over his navy school blazer, dark hair in his eyes, a watch on his wrist) holds Solar (the first attached image's face; long dark hair, a navy Hanlim blazer, a small gold pin) against him with both arms, leaning back as if against a pull, his face set and very calm. Solar's edges are coming apart into fine light, Dark Hour green at her edges. From somewhere above and behind them, through a seam in the air, warm gold light pours in like a song, lighting one side of both their faces. In Jungwon's hand, pulled from her coat pocket, an unopened pink-and-black energy-drink can. Desperate, quiet, informed. Keep both faces clear of the edges.
-```
-
-
-### The epilogue: strangers
-
-**[ ] The first full moon** *(optional)*  
-A night out in the strangers epilogue's second week.  
-Attach: Haechan, Jungwon, `bg/port-island-pier-night.webp` (for the light only)  
-Save as: `epi-s-moon-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no readable text. A seaside promenade at night in deep winter, packed with people holding paper lanterns and phones up to the sky, a bonfire of straw and pine on the beach below the railing throwing sparks, the black sea beyond. A huge full moon hangs low over the water, and for one breath it has gone the sick green of the Dark Hour, its light turning every lantern and face in the crowd faintly green. At the far left end of the crowd, Haechan (the first attached image's face; sun-browned, a black padded work jacket, hands in his pockets) is looking up at it; at the far right end, Jungwon (the second attached image's face; a long dark coat, very straight, one wrist with a watch half-raised) is looking up at it too. Neither is looking at the other. Everyone else is looking at their phones. Keep both faces clear of the edges.
-```
-
-**[ ] The tide** *(optional)*  
-A set piece in the strangers epilogue's third week.  
-Attach: Solar, `bg/flashback-incheon-harbor.webp`  
-Save as: `epi-s-tide-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. Grey mudflats at dawn stretching away from the harbor of the attached background (the same cranes and lights far behind), the air hazy and yellow-brown with dust. Solar (the first attached image's face; long dark hair down and blowing, a dark wool coat, mud to the shins of her boots, a jade ring on her right hand) stands alone on the mud, small, looking up. In front of her the incoming tide has stopped mid-flow: a long wall of grey sea water standing upright and perfectly still, taller than she is, foam frozen on its crest, a gull hanging motionless above it, everything faintly tinted Dark Hour green at its edges. Far behind her on the seawall, tiny figures of fishermen pointing. Silent, enormous, wrong. Keep her face clear of the edges.
-```
-
-**[ ] Held (strangers)**  
-The last scene of the strangers epilogue.  
-Attach: Solar, Haechan, Jungwon, `bg/flashback-lee-house.webp`  
-Save as: `epi-s-held-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The garden of the attached traditional house by the sea before dawn, its red lanterns over the gate still lit, a small concrete annex with a steel door at the bottom of the garden, the bay below gone out to the horizon so the mudflats shine grey under the last of the night. Solar (the first attached image's face; long dark hair down, a dark wool coat over sleep clothes, barefoot) stands between two young men who are each holding one of her hands and leaning back as if against a pull: Haechan (the second attached image's face; all in black, a black padded jacket, a knife scar through one eyebrow) holds her left hand in both of his; Jungwon (the third attached image's face; a long dark coat, a watch on his wrist) holds her right hand in his right. They are not looking at each other. Her edges are coming apart into fine light, Dark Hour green at the edges, and the jade ring on her right hand catches the green. Desperate, quiet, cold. Keep all three faces clear of the edges.
-```
-
-### The epilogue: Stay and the true ending
-
-**[ ] Held (Stay)**  
-The last scene of the Stay epilogue: the dorm roof at midnight.  
-Attach: Solar, Akihiko, `bg/iwatodaidorm-roof-night.webp`  
-Save as: `epi-stay-held-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The flat rooftop of the Iwatodai dormitory at midnight, the same railing, planters and view of the bay and the lit city as the third attached image, a small garden of seedlings in pots by the railing. Akihiko (the second attached image's face; silver hair, a dark coat, red gloves) holds Solar (the first attached image's face; long dark hair down, a cardigan over a spring dress) from behind with both arms, his chin over her shoulder, his weight braced back as if against a pull from every side at once. Three beams of light reach for her out of the night from three directions: warm bell-gold from the left, deep jade-green from the sea, cool star-white from above, each one pulling a few strands of her hair toward it. Her hands are held out in front of her, half turned to light. Behind her, faint and huge in the dark, her Persona's pink veil has lifted the width of a finger. Quiet, desperate, tender. Keep both faces clear of the edges.
-```
-
-**[ ] Every world** *(optional)*  
-The true ending's coda: one moment from each world, side by side.  
-Attach: `epi-r-held-cg.png`, `epi-h-held-cg.png` (once they're made), Solar  
-Save as: `epi-true-coda-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A triptych in three tall panels separated by thin bright seams of light, the same girl in all three (the third attached image's face; long dark hair down). Left panel: a snowy campus rooftop at night, a boy in black holding her with both arms, matching the first attached image. Right panel: a high-school gym at midnight with blue and silver balloons, a boy in a dark coat holding her, matching the second attached image. Middle panel: a quiet garden by the sea before dawn, the tide far out and the mudflats shining grey, two young men in dark coats standing at either side of her, each holding one of her hands, not looking at each other. In every panel her edges are coming apart into the same gold and green light, and the light runs through the seams from one panel into the next, so it reads as one pull across three worlds. Keep every face clear of the edges.
-```
+*(Nothing left: every story CG, the epilogue's included, is in the game.)*
 
 ---
 
@@ -332,30 +229,6 @@ Persona 3 Reload style background art, 16:9, high resolution, no people, no read
 ## 3. Characters (ChatGPT)
 
 ### The epilogue: Runners
-
-**[ ] Solar's Runners look**  
-Solar's face at home in the Runners epilogue (she speaks without a portrait there now).  
-Attach: Solar  
-Save as: `Solar-Runners-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same young woman as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only her clothes: a navy wool coat open over an orange Syracuse University hoodie, no armband; long dark waved hair down. Cool tones, slight and composed. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Sakura** *(optional)*  
-The guest caster at Regionals.  
-Attach: Fuuka (for the style), a photo of Sakura  
-Save as: `Sakura-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She wears a black caster's headset with a small boom mic over her hair and a cream knit sweater with a tournament lanyard. No text.
-```
-
-**[ ] Eunchae** *(optional)*  
-The high-school senior on a campus visit.  
-Attach: Fuuka (for the style), a photo of Eunchae  
-Save as: `Eunchae-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person in six head-and-shoulders portraits facing slightly to the side, same size and framing in every cell, in the art style of the FIRST attached image. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Use the second attached image for her face and hair only. She wears a puffy white winter jacket, a striped scarf and an orange campus-tour lanyard with a visitor badge. No text.
-```
 
 **[ ] Kazuha** *(optional)*  
 A voice on the demo Haechan is mixing.  

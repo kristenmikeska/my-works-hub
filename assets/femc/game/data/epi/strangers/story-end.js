@@ -642,11 +642,12 @@
       ] }
     ] },
     { glitch: 'epi-s-g-pull' },
+    { cg: 'epi-s-held' },
     { dark: true },
     { n: "And then the pull." },
     { n: "It wasn't a door. It was a tide, going out, and she was the water. She felt the whole of herself start to go the way the sea went off the flats, all at once and slowly, from underneath, every part of her loosening toward something very far off, green and gold and patient, a tower and a moon the wrong color and a dormitory by a bay with a room made up in it, a light coming on in that room at midnight, wanting her back. It wasn't cruel. It had never been cruel. It was only the tide, and she had always known the tide." },
     { n: "Haechan took her left hand." },
-    { n: "Hard. All of it, in his, his split knuckles and the one silver ring, the way he'd grab a line going over the side. He didn't stand up to do it. He just reached and took it and closed his hand round hers and braced his boots on the frozen step and leaned back against the whole sky." },
+    { n: "Hard. All of it, in his, his split knuckles and the one silver ring, the way he'd grab a line going over the side. He just reached and took it and closed his hand round hers and braced his boots on the frozen step and leaned back against the whole sky." },
     { n: "Jungwon took her right." },
     { n: "In his right. Palm to palm, his fingers closing round the back of her hand and the jade ring under them, the way you take a man's hand across a table when you've agreed on something and you mean to keep it. The way you shake on a contract. He didn't hurry. He never hurried. He took it and held it and the watch on his wrist ticked against her wrist, and he didn't let go." },
     { n: "One hand each. Two men who would never be friends, on either side of her, at the bottom of a garden, at the bottom of the tide, holding on." },
