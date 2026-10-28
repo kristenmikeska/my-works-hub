@@ -1,6 +1,6 @@
 # Art to make
 
-**56 items:** 10 character pieces · 5 battle · 12 cards · 1 screen · 28 wardrobe. 50 are optional; none are ⭐.
+**57 items:** 10 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 51 are optional; none are ⭐.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -183,6 +183,14 @@ Attach: nothing
 Save as: `runners-lake.png`
 ```
 Soft painterly anime vignette, square, dreamy and slightly faded like a half-remembered memory, light film grain, vignetted edges, no faces. A wooden dock on a dark lake in November, frost on the boards, two towels and a pile of clothes left at the end of it, a phone face up on the planks with its screen lit and no signal bars, pine woods black behind, a thin moon on the water.
+```
+
+**[ ] Memory card: A Bucket on the Step** *(optional)*  
+A memory card for a late strangers memory; until it's in, the game shows a drawn card with the title.  
+Attach: nothing  
+Save as: `strangers-koi.png`
+```
+Soft painterly anime vignette, square, dreamy and slightly faded like a half-remembered memory, light film grain, vignetted edges, no faces, no people. A plain round plastic bucket on the stone back step of an old Korean house at first light in deep winter, two koi going round in the dark water inside it with a thin skin of new ice at the edges, snow on the bucket's rim and on the step, a pair of worn house slippers beside it, and behind it a kitchen window glowing warm and fogged from the inside.
 ```
 
 **[ ] Revelation card: Cinder Lantern** *(optional)*  

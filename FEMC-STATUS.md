@@ -44,6 +44,7 @@ Other docs, if you ever want detail:
 - ✅ Every world matches its current canon; memory moments can be half-remembered on purpose
 - ✅ The Runners side matches where Runners is now (late November): lines, texts and scenes for every Runners character brought up to date, plus one new Runners memory to find (a drawn card until your art is in)
 - ✅ The HOAX side matches where HOAX is now (exam week, Ch 99): lines, texts and scenes for Jungwon, Jihoon, Cherry, Sunoo, Junkyu, the crew and the council brought up to date, and memories now only come back through their scenes, never as random finds in Tartarus
+- ✅ The strangers side matches where strangers is now: lines, texts and scenes for Haechan, Jungwon, Yunjin, Solar's strangers parents and the strangers ending brought up to date, plus one new strangers memory to find (a drawn card until you make its art). Memories still never turn up early, but one you can't get from a scene anymore (like the one you didn't follow at a crossroads) can now be found in Tartarus later in the year
 - ✅ Haechan lives in the dorm and has met the people he knows; the Junpei walk-in is fixed
 - ✅ Akihiko and Shinjiro triangle; the girls notice the Akihiko thing
 - ✅ Haechan settles into one world as the ending nears

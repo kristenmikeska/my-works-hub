@@ -1,6 +1,6 @@
 # strangers sync audit: the game vs. strangers at the moment Solar vanished
 
-> **Status (2026-10-27): audit only.** No game file has been changed. This is the spoiler-free version for you. Claude's full notes (canon details, exact lines, proposed rewrites) are in a private file you shouldn't open.
+> **Status (2026-10-27): ✅ done.** You approved Claude's defaults on all nine decisions, and the fixes are in the game (see "What was done" at the end). This is the spoiler-free version for you. Claude's full notes (canon details, exact lines, rewrites) are in a private file you shouldn't open.
 
 **Your ruling (2026-10-26):** the game's strangers side should tie into canon without following it blow by blow. Claude privately picks the moment Solar vanished from strangers, and every strangers person and thing in the game should match the state at that moment. That covers Haechan's and Jungwon's strangers lives, Yunjin, the memory fragments and texts, Solar's strangers parents, the call home and the strangers ending.
 
@@ -60,6 +60,9 @@ These are structural descriptions; the exact lines are in the private notes.
 
 ## Decisions only you can make
 
+*All nine answered 2026-10-27: you approved Claude's defaults (8 is a separate later batch). The rulings are in the lore bible, "Kat's rulings (2026-10-27): the strangers side at Ch 65".*
+
+
 1. **How long was strangers Solar gone from her world?** The endings currently say about one night. The epilogue plan has her father covering an absence. Options:
    - (a) one night (that still needs covering at this point in the book);
    - (b) days, which would soften a line or two in each home ending.
@@ -88,3 +91,28 @@ These are structural descriptions; the exact lines are in the private notes.
 - No game line explains the war or the book's mysteries.
 
 **Memory gating, in short:** the searchers know the book's state at the pickup point and game Solar doesn't. Most proposed fixes have them hold back, hint or flinch rather than tell her.
+
+---
+
+## What was done (2026-10-27)
+
+Structural only, like the rest of this doc.
+
+| Character / area | Contradiction fixed | Outdated fixed | Could be richer, done |
+|---|---|---|---|
+| Haechan (strangers side) | 6 of 6 | 10 of 10 | 4 of 6 |
+| Jungwon (strangers side) | 6 of 6 | 6 of 6 | 2 of 4 |
+| Yunjin | 2 of 2 | 11 of 11 | 6 of 8 |
+| Solar's strangers parents | — | 1 of 1 | 2 of 2 |
+| Story events and memory fragments | 2 of 2 | — | 1 of 2 |
+| The call home | — | — | 0 of 1 |
+| The strangers ending | 1 of 1 | 1 of 1 | 1 of 1 |
+| Other strangers people and world | — | — | 0 of 1 |
+| **Total** | **17 of 17** | **29 of 29** | **16 of 25** |
+
+- **Left alone on purpose:** the could-be-richer items that would have added backstory to Solar's own narration before she remembers it, touched something the book keeps off the page, needed a new text thread, or would have been a second acknowledgment of the boys' injuries. One "keep it as is" item was kept.
+- **Code comments:** two updated; the one about a card two scenes both give was left as it is (harmless).
+- **Your nine decisions** are all in: the ending lines, the absence, the injuries, Yunjin's word, the gate, the new memory card (*A Bucket on the Step*, a drawn card until you make its art: FEMC-ART-TODO section 5), the trimmed memory image and its standing rule. The three friends wait for their own batch.
+- **Inside the game:** the triple discovery about Haechan is now one discovery and two callbacks; the puffer is drying out, not ruined.
+- **Memory cards:** cards still never turn up early. One you can't get from a scene anymore (for example the card you didn't follow at a crossroads) can now be found in Tartarus later in the year, so every memory-gated thing (links, doors, the endings, Wren, the skill nodes) stays reachable on every path, New Game+ included. Before this batch a few paths couldn't reach one world's last door.
+- Edits are minimal and in the book's voice; choices, rewards and gates are unchanged.

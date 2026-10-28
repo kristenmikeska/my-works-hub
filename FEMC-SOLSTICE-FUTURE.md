@@ -62,7 +62,7 @@ Kat's brainstorm doc. Ideas only, nothing is built. Spoiler-free about the main 
 
 ## Character wishlist (for any future batch)
 
-**Strangers trio as two-world characters.** Jay, Ni-ki and Sunghoon would come from both HOAX and strangers, the way Jungwon does, and become full links. Kat approved the idea and is waiting for her usage to reset. It needs both novels' current canon (HOAX Ch 99, strangers Ch 65).
+**Strangers trio as two-world characters.** Jay, Ni-ki and Sunghoon would come from both HOAX and strangers, the way Jungwon does, and become full links. Kat approved the idea and is waiting for her usage to reset. Confirmed in the strangers sync (2026-10-27): they become two-world, in their own later batch. It needs both novels' current canon (HOAX Ch 99, strangers Ch 65).
 
 **Other ideas:**
 - **Runners:** Haerin, if she's in current canon. Johnny, Yuta and Renjun, plus Jeno later, as a Sigma Chi cameo set.
@@ -85,7 +85,7 @@ Check every novel character against current canon before building them.
   - If it follows canon exactly, the Mark/Solar fallout has happened, which might need small edits to the main story. The game already makes Mark feel a bit estranged from everyone, which helps. Kat says we don't always have to follow canon exactly, but it's good drama.
   - Tap back into what's happening in canon then: eSports and so on.
   - A Sigma party, for sure.
-- **strangers and HOAX:** not fleshed out yet. To work out together.
+- **strangers and HOAX:** not fleshed out yet. To work out together. (Settled for strangers, 2026-10-27: she's been gone about as long as in Runners, and her father covered for her; the game's strangers ending already reflects it.)
 
 **The glitches.** Open question: does Haechan (or Jungwon in HOAX) notice? Do others see them later, or only Solar?
 - Kat envisions a scene, possibly at the very end, where Solar is being pulled between two universes and Haechan is trying to save her. She's panicking, it's deeply emotional, and he promises he'll come find her, whatever universe she ends up in.

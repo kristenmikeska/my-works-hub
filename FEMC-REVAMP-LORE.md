@@ -360,3 +360,17 @@ The game's whole HOAX side assumes HOAX canon at Ch 99, the Monday of exam week 
 - "I didn't want to win" stays as a deliberately half-true memory.
 - Jihoon's rank 8 is his spin, caught by himself in the same breath (the note and recording came first; Cherry's part is owned).
 - The cash tin in the HOAX homecoming gym is the bake-sale tin.
+
+## Kat's rulings (2026-10-27): the strangers side at Ch 65
+The game's whole strangers side assumes strangers canon at the moment Solar vanished, which Claude picked privately: deep winter, mid-crisis, close to where the manuscript is now. A searcher can know that state while Solar doesn't; her memories come back gradually, and the searchers hold back, hint or flinch rather than tell her. (Audit: `FEMC-STRANGERS-SYNC-AUDIT.md`.) Kat approved Claude's defaults:
+1. **strangers Solar was gone longer than a night,** roughly the same gap as Runners, and her father covered the absence. The strangers ending says so; the searchers' guesses about time back home still disagree.
+2. **The boys' current strangers injuries don't cross over.** They're whole in the Personaverse, and it's acknowledged once (the 11/5 breakfast), without saying what.
+3. **Yunjin's word for Haechan:** her old one only at her first breakfast with him (11/5), as his own old name for himself; her current word everywhere after.
+4. **The strangers ending's last exchange** no longer leans on an old name tell.
+5. **The strangers ending's last line** is softer, in line with where her arc in the book is heading.
+6. **Jungwon's one word at the gate** in the strangers ending stays (approved).
+7. **A late strangers memory card, *A Bucket on the Step*,** comes back like *No Service*: from Yunjin's rank 10 (flag `mem-koi`), plot-free, scene-only, a drawn card until its art is in (FEMC-ART-TODO section 5).
+8. **Jungwon's three friends** become two-world characters, in a separate later batch (with the strangers trio idea in FEMC-SOLSTICE-FUTURE).
+9. **Standing rule: no game line adds anything to the *Last Ferry* memory image.** Not who, where, why, when or what happened after. It stays exactly the image on the card and in the 11/14 floor (one word was trimmed from it).
+- *Also:* Yunjin finds out about Haechan's English once (whichever of three scenes comes first; the other two call back).
+- **Memory cards, never early but never lost** (amends the HOAX ruling's rule 7): a scene-awarded card is released to Tartarus finds only once every scene that can give it has had its chance and she still doesn't have it (the card she didn't follow at a two-way choice, or a card added after an old save passed its scene). A card a job can still give stays scene-only. `core.js dropsOk`; `tests/femc_fragments.py` counts every fragment gate on every path.
