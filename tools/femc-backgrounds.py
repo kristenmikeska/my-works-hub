@@ -121,6 +121,8 @@ EXTRA = {
     # batch 73 (2026-10-28): the back streets behind Port Island Station (both slots) and the concourse in the evening
     'portisland-back-streets': 'Added to Game/portisland-back-streets.jpeg',
     'station-concourse-evening': 'Added to Game/station-concourse-evening.jpeg',
+    # batch 74 (2026-10-28): Seaside Park at sunset (evening slot)
+    'port-island-seaside-park-sunset': 'Added to Game/port-island-seaside-park-sunset.jpeg',
 }
 SIZE = (1920, 1072)  # Kat's New Adds backgrounds; one with another shape is cropped / scaled to fill this
 

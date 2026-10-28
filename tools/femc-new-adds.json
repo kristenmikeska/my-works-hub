@@ -15797,6 +15797,21 @@
       "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
       "outputSha256": "7c159a6d92ac0f6245fe288acfa235dc8189bd9b4b31ff4555096769163aaf42",
       "placement": "places.bg rule 'Port Island Station · Central Concourse' evening slot; no concourse scene sets its own bg (the Dark Hour variant keeps its own); matches no weatherFx prefix (indoor)"
+    },
+    {
+      "batch": 74,
+      "source": "port-island-seaside-park-sunset.jpeg",
+      "sourceNow": "Added to Game/port-island-seaside-park-sunset.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "9127c93b64f59db420a2ad243d0b862a8b0a993e0398f9bf604ddfe03695ee28",
+      "status": "integrated",
+      "destination": "assets/femc/bg/port-island-seaside-park-sunset.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "76633dd728fc4e210facd9cf6a5600aa72aaac7f95deadc86ed18918dcc53a6e",
+      "placement": "places.bg rule 'Port Island · Seaside Park' evening slot; explicit bg: 'port-island-seaside-park' lines are the rule's day image so they play as the rule at night (core.js background()), no scene data edited; Beach Cleanup rule and Stay's own rule untouched; outdoor already"
     }
   ],
   "batch1Validation": {
@@ -16796,5 +16811,19 @@
     ],
     "notTested": "no browser tests: Mark's back-street walks, the red-lantern street, the concourse at evening",
     "html": "femc-game.html places v52, job-scenes v7, story-act3 v15"
+  },
+  "batch74Validation": {
+    "date": "2026-10-28",
+    "scope": "Seaside Park at sunset",
+    "sourcesInspected": "checked by name, size and hash",
+    "sourcesIntegrated": 1,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same name; sha256 checked); On Hold untouched",
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script"
+    ],
+    "notTested": "no browser tests: the seaside park evening scenes",
+    "html": "femc-game.html places v53"
   }
 }

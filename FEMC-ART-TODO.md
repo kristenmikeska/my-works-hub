@@ -1,6 +1,6 @@
 # Art to make
 
-**106 items:** 31 CGs · 43 places · 4 character pieces · 28 wardrobe. 102 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**105 items:** 31 CGs · 42 places · 4 character pieces · 28 wardrobe. 101 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -291,14 +291,6 @@ Persona 3 Reload style event CG, 16:9, no text. A university quad on a December 
 ## 2. Places (Gemini)
 
 ### Iwatodai (the main game)
-
-**[ ] Seaside Park at sunset** *(optional)*  
-Port Island's seaside park for its evening scenes (sitting on the rail at seven, a ferry crossing); now the daytime park, darkened.  
-Attach: `bg/port-island-seaside-park.webp` (edit this picture)  
-Save as: `port-island-seaside-park-sunset.png`
-```
-Edit this picture. Keep the same seaside park, railing, paths and angle, and the same art style; change it to sunset turning to dusk: the sky orange low over the water and violet higher up, the bay shining like metal, a ferry crossing in the distance with all its windows lit, the park lamps just coming on, long shadows on the grass. Windy, open, a place to breathe. 16:9, no people, no readable text.
-```
 
 **[ ] Seaside Park: the winter rink at night** *(optional)*  
 The outdoor ice rink that appears in Seaside Park in December and January, for its night-skating scenes.  

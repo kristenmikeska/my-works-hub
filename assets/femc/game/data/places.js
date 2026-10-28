@@ -284,7 +284,7 @@ window.FEMC_GAME_PLACES = {
     ['Port Island · Museum', 'port-island-museum'],
     ['Port Island · Back Streets', 'portisland-back-streets', 'portisland-back-streets'],
     ['Port Island · Seaside Park · Beach Cleanup', 'seaside-park-beach-cleanup'],
-    ['Port Island · Seaside Park', 'port-island-seaside-park'],
+    ['Port Island · Seaside Park', 'port-island-seaside-park', 'port-island-seaside-park-sunset'],
     ['Port Island · Pier', 'port-island-pier', 'port-island-pier-night'],
     ['Port Island · Harbor', 'harbor'],
     ['Port Island · Junkyard', 'junkyard-scene'],
