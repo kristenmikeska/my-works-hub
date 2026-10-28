@@ -38,7 +38,7 @@
     places: {
       bg: [
         ['Hanlim · Home · Her Room', 'pink-bedroom-2', null],
-        ['Hanlim · Home', 'iwatodaidorm-livingroom', 'iwatodaidorm-livingroom-night'],     // epi-h-kim-house (art pending)
+        ['Hanlim · Home', 'epi-h-kim-house', 'epi-h-kim-house'],                          // batch 65: lamp-lit, snowing outside; both slots until a day version exists
         ['Hanlim · School · Council Room', 'epi-h-council-room', null],
         ['Hanlim · School · Classroom', 'epi-h-classroom-exam', null],
         ['Hanlim · School · Gym at Midnight', 'epi-h-gym-midnight', 'epi-h-gym-midnight'],
@@ -49,9 +49,9 @@
         ["Hanlim · Yeobo's · After Closing", 'flashback-yeobos-cafe', null],
         ["Hanlim · Yeobo's", 'yeobos-cafe', null],
         ["Hanlim · Jihoon's House · Porch", 'outside-daytime-neighborhood', 'outside-night'],
-        ["Hanlim · Jihoon's House", 'kirijo-flat', null],                                     // epi-h-jihoon-house
+        ["Hanlim · Jihoon's House", 'epi-h-jihoon-house', 'epi-h-jihoon-house'],             // batch 65: night, one lamp (every scene there is evening or late)
         ["Hanlim · Jungwon's Street", 'outside-daytime-neighborhood', 'outside-night'],
-        ['Hanlim · Winter Street', 'port-island-konbini-night', null],                      // epi-h-winter-street
+        ['Hanlim · Winter Street', 'epi-h-winter-street', 'epi-h-winter-street'],           // batch 65: night in the snow; both slots until a day version exists
         ['Hanlim · Christmas Lights', 'portisland-christmas', null],
         ['Hanlim · Library', 'school-library', null],
         ['Hanlim · Karaoke', 'paulownia-karaoke', null],
@@ -59,12 +59,12 @@
         ['Hanlim · Ice Rink', 'park-2-winter', null],
         ['Hanlim · The Park', 'park-2-winter', null],
         ['Hanlim · The Party · Outside', 'outside-nightdistrict', null],
-        ['Hanlim · The Party', 'clubescapade', null],
+        ['Hanlim · The Party', 'epi-h-party', 'epi-h-party'],                               // batch 65: night
         ["Hanlim · Jungwon's Car", 'outside-night', null],
         ['Hanlim', 'outside-daytime-neighborhood', 'outside-night']
       ],
-      weatherFx: { outdoor: ['outside-daytime-neighborhood', 'outside-night', 'park-2-winter', 'portisland-christmas', 'port-island-konbini-night', 'rooftop-day-winter', 'gekkoukan-rooftop-night', 'outside-nightdistrict'],
-        sealed: ['paulownia-karaoke', 'clubescapade'], none: [] },
+      weatherFx: { outdoor: ['outside-daytime-neighborhood', 'outside-night', 'park-2-winter', 'portisland-christmas', 'epi-h-winter-street', 'rooftop-day-winter', 'gekkoukan-rooftop-night', 'outside-nightdistrict'],
+        sealed: ['paulownia-karaoke'], none: [] },
       home: { place: 'Hanlim · Home · Her Room', bg: 'pink-bedroom-2' },
       school: { place: 'Hanlim · School', bg: 'flashback-hamlim-hallway' },
       activities: [
@@ -72,7 +72,7 @@
           text: "Two drinks, the table by the window, and the radiator doing its best against the door every time it opened. Sunoo's grandmother put a croissant on the table she hadn't ordered and walked off before she could pay for it, which was the whole point." },
         { id: 'epi-h-study', name: "Study at Yeobo's", place: "Hanlim · Yeobo's", bg: 'yeobos-cafe', slots: ['after', 'evening'], cost: 4500, stats: { knowledge: 1 },
           text: "One americano, three hours, and a stack of calculus notes for exams she'd technically already missed. Some of it went in. She decided that counted." },
-        { id: 'epi-h-machine', name: 'The vending machine', place: 'Hanlim · Winter Street', bg: 'port-island-konbini-night', slots: ['after', 'evening'], cost: 1500, stats: { courage: 1 },
+        { id: 'epi-h-machine', name: 'The vending machine', place: 'Hanlim · Winter Street', bg: 'epi-h-winter-street', slots: ['after', 'evening'], cost: 1500, stats: { courage: 1 },
           text: "She stood in front of the row of machines outside the convenience store with a thousand-won note and a coin and pressed the button for barley tea, on principle. The third machine from the left thought about it, hummed, and dropped a can. Pink and black. Claw marks for a logo. It didn't even stock them. She put it in her other pocket and walked home with one hand on each." },
         { id: 'epi-h-nana', name: 'Walk Nana', place: 'Hanlim · The Park', bg: 'park-2-winter', slots: ['after', 'evening'], cost: 0, stats: { kindness: 1 },
           text: "Nana walked her, mostly. Forty minutes of a very large white dog deciding which snowbanks were enemies, three strangers who stopped to tell her he looked like a cloud, and one tiny dog across the park that Nana stared at with the deep personal interest of someone who had a history. She held the leash with both hands." },

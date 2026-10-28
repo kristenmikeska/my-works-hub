@@ -102,7 +102,7 @@
     { s: 'haechan', f: 'surprised', t: "You didn't say it. I'd have heard you say it." },
     { s: 'jungwon', f: 'neutral', t: "I said it under my breath. It still counts. I asked Mrs. Bang." },
     { n: "Everyone looked at Mrs. Bang. Mrs. Bang, ladling rice, after a long and terrible pause, nodded." },
-    { n: "Haechan looked at the ceiling as if the ceiling had betrayed him personally, and Yunjin put her face in her hands and screamed into them, and Solar had to turn round to the fridge and look at the calendar very hard for a moment, because if she looked at either of them she was going to laugh, and if she laughed at one of them she'd have to laugh at the other one too, and she had learned, this winter, to be very careful about what she did to both of them at once." },
+    { n: "Haechan looked at the ceiling as if the ceiling had betrayed him personally, and Yunjin put her face in her hands and screamed into them, and Solar had to turn round to the back door and look at the calendar very hard for a moment, because if she looked at either of them she was going to laugh, and if she laughed at one of them she'd have to laugh at the other one too, and she had learned, this winter, to be very careful about what she did to both of them at once." },
 
     { ifEpiRoute: 'haechan', then: [
       { n: "When she sat down there was a chair free beside Minseok and a stool free beside Haechan, and she took the stool. Nobody said anything about that either. Under the table his boot found the side of her foot and stayed there, the whole length of it, warm through her sock." },
@@ -160,7 +160,7 @@
   ] },
 
   // ───────────────────────────── 2/24 evening: the first full moon ─────────────────────────────
-  { id: 'epi-s-moon', date: '2/24', slot: 'evening', consumes: true, title: 'the first full moon', place: 'Incheon · Wolmido', time: 'Evening', scene: [
+  { id: 'epi-s-moon', date: '2/24', slot: 'evening', consumes: true, title: 'the first full moon', place: 'Incheon · Wolmido · Daeboreum', time: 'Evening', scene: [
     { music: 'epi-s-festival' },
     { n: "Wolmido on the night of the first full moon was the whole city deciding at once to stand in the cold and be lucky. The promenade was lit end to end, paper lanterns strung between the lampposts and swinging in the wind off the water, the shuttered rides along the seafront wearing strings of colored bulbs they'd been switched on for specially, children with sparklers, couples in matching scarves, old men with their hands behind their backs walking the length of the railing and back again as if they'd been sent to inspect it." },
     { n: "The tide was up. A spring tide, the biggest of the month, the full moon pulling the whole of the Yellow Sea up against the promenade wall so it slapped and sucked and threw spray up over the railing every seventh wave. She knew it would be. She'd known since she was six. She stood a full meter back from the railing with her hands in her coat pockets and let the crowd go between her and the water, the way she always had, and nobody noticed, because nobody ever did." },
@@ -322,7 +322,7 @@
     { n: "Pleased, then. Very." },
     { s: 'jungwon', f: 'neutral', t: "Would the young lady care for tea before I go? I'm told the kitchen is open to guests after eleven. I'm told that by the young lady, as a rule, so I'm assuming it's true." },
     { place: 'Incheon · The Lee House · Kitchen', time: 'Late Night', soft: true },
-    { n: "The kitchen at night was a different room. Mrs. Bang's barley tea going cold in its kettle on the back of the stove, the window black, the koi bucket brought in off the step for the frost and set by the radiator, where the two fish hung in the water side by side as if they were listening. The calendar by the fridge, turned to tomorrow already. One lamp. The big table with nobody at it." },
+    { n: "The kitchen at night was a different room. Mrs. Bang's barley tea going cold in its kettle on the back of the stove, the window black, the koi bucket brought in off the step for the frost and set by the radiator, where the two fish hung in the water side by side as if they were listening. The calendar by the back door, turned to tomorrow already. One lamp. The big table with nobody at it." },
     { n: "He made the tea properly. He'd brought it with him, in a small paper packet in his coat pocket, as if he'd known the game would end like this, and she supposed he had. He warmed the pot first with water from the kettle and poured it away. He warmed the cups. He put the leaves in and poured the first water over them and poured that away too, a short bright wash into the sink, to wake the leaves, and only then the second water, and he waited, watching the watch on his wrist, the second hand going round." },
     { s: 'solar', t: "*You're showing off.*" },
     { s: 'jungwon', f: 'neutral', t: "*I'm making tea. Properly. Your house makes barley tea in a kettle the size of a bucket. Someone has to.*" },

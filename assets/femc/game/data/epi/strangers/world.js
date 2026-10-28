@@ -45,13 +45,13 @@
     places: {
       bg: [
         ['Incheon · The Lee House · Her Room', 'elegant-bedroom', null],
-        ['Incheon · The Lee House · Kitchen', 'iwatodaidorm-kitchen', null],          // epi-s-lee-kitchen (art pending)
+        ['Incheon · The Lee House · Kitchen', 'epi-s-lee-kitchen', 'epi-s-lee-kitchen'], // batch 65: lamp-lit, blue at the windows (before light to late)
         ['Incheon · The Lee House · Stairs', 'iwatodaidorm-hallway', null],
         ['Incheon · The Lee House · Study', 'kirijo-guesthouse-lobby', null],
         ['Incheon · The Lee House · Sunroom', 'botanical-garden-greenhouse', null],
         ['Incheon · The Lee House · Dining Room', 'iwatodaidorm-diningroom', null],
         ["Incheon · The Lee House · Yunjin's Room", 'pink-bedroom-2', null],
-        ['Incheon · The Lee House · Annex', 'flashback-lee-house', null],              // epi-s-annex
+        ['Incheon · The Lee House · Annex', 'epi-s-annex', 'epi-s-annex'],              // batch 65: night; both slots until a day version exists
         ['Incheon · The Lee House · Garden', 'flashback-lee-house', null],
         ['Incheon · The Lee House · Gate', 'flashback-lee-house', null],
         ['Incheon · The Lee House at Midnight', 'flashback-lee-house', null],
@@ -61,13 +61,14 @@
         ['Incheon · The Yang House', 'hotel-lobby', null],
         ['Incheon · Harbor at Midnight', 'flashback-incheon-harbor', null],
         ['Incheon · Harbor', 'harbor', 'flashback-incheon-harbor'],
-        ['Incheon · The Mudflats at Midnight', 'flashback-incheon-harbor', null],     // epi-s-harbor-tide
-        ['Incheon · The Mudflats', 'flashback-incheon-harbor', null],
+        ['Incheon · The Mudflats at Midnight', 'epi-s-harbor-tide', 'epi-s-harbor-tide'], // batch 65: the grey low tide until a night version exists ('Midnight' reads the day slot)
+        ['Incheon · The Mudflats', 'epi-s-harbor-tide', null],                         // batch 65: grey low tide by day
         ['Incheon · Fish Market at Midnight', 'flashback-fish-market', null],
         ['Incheon · Fish Market', 'flashback-fish-market', null],
-        ['Incheon · Wolmido', 'port-island-seaside-park', 'port-island-pier-night'],  // epi-s-daeboreum (the promenade at night)
+        ['Incheon · Wolmido · Daeboreum', 'epi-s-daeboreum', 'epi-s-daeboreum'],     // batch 65: the festival night (epi-s-moon)
+        ['Incheon · Wolmido', 'port-island-seaside-park', 'port-island-pier-night'],
         ['Incheon · Chinatown', 'shopping-street', 'iwatodai-strip-night'],
-        ['Incheon · Street in the Dust', 'shopping-street', 'iwatodai-strip-night'],  // epi-s-dust
+        ['Incheon · Street in the Dust', 'epi-s-dust', null],                         // batch 65: daytime only
         ['Incheon · Songdo · Café', 'chagall-cafe-inside', null],
         ['Incheon · Songdo', 'paulownia-mall', 'paulownia-mall-night'],
         ['Incheon · Karaoke', 'paulownia-karaoke', null],
@@ -76,7 +77,7 @@
         ['Incheon · The Car', 'outside-night', null],
         ['Incheon', 'flashback-incheon-harbor', null]
       ],
-      weatherFx: { outdoor: ['flashback-incheon-harbor', 'harbor', 'flashback-fish-market', 'flashback-lee-house', 'port-island-seaside-park', 'port-island-pier-night', 'shopping-street', 'iwatodai-strip-night', 'moonlightbridge', 'outside-night'],
+      weatherFx: { outdoor: ['epi-s-annex', 'epi-s-harbor-tide', 'epi-s-daeboreum', 'epi-s-dust', 'flashback-incheon-harbor', 'harbor', 'flashback-fish-market', 'flashback-lee-house', 'port-island-seaside-park', 'port-island-pier-night', 'shopping-street', 'iwatodai-strip-night', 'moonlightbridge', 'outside-night'],
         sealed: ['paulownia-karaoke', 'iwatodai-bathhouse', 'bathhouse-night'], none: [] },
       home: { place: 'Incheon · The Lee House · Her Room', bg: 'elegant-bedroom' },
       activities: [

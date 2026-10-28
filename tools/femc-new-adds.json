@@ -15146,6 +15146,141 @@
       "placement": "same id and faces-map entry as before"
     },
     {
+      "batch": 65,
+      "source": "epi-h-jihoon-house.jpeg",
+      "sourceNow": "Added to Game/epi-h-jihoon-house.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "8301e8a2efa2b3fcb9a066f8eaffd017cfbe481341e7bd6f0ca9ebb202119596",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-h-jihoon-house.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "908ba4054e6a05ca753e733bd5eca7f0456dbd696f3a1b57961fe101b8932a32",
+      "placement": "places.bg rule \"Hanlim · Jihoon's House\" (day and evening slots: night art; every scene there is evening or late) in data/epi/hoax/world.js, replacing kirijo-flat; the Porch rule above it unchanged"
+    },
+    {
+      "batch": 65,
+      "source": "epi-h-kim-house.jpeg",
+      "sourceNow": "Added to Game/epi-h-kim-house.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "02a3052b3ab4d93e357a64ea3431cbdeec85451a2d7867996bde671c94d0cd49",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-h-kim-house.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "7b3376f6ff2e335576d51a1b1a9b843eb51fe50a4a8fa3bfd2f275afbebd18bf",
+      "placement": "places.bg rule 'Hanlim · Home' (day and evening slots: lamp-lit with snow at the window; covers the living room, kitchen, porch and front door, not Her Room) in data/epi/hoax/world.js, replacing iwatodaidorm-livingroom / -night; a daylight version is on Kat's list"
+    },
+    {
+      "batch": 65,
+      "source": "epi-h-party.jpeg",
+      "sourceNow": "Added to Game/epi-h-party.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "5f7a0c41f25d547e56f754e7f403a5dbff5c3bf2d4cb42e1098c74f64f625a5a",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-h-party.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "ae520870950b928a007317688975fe5498f059bf0e8c897b3e7c87ca3d21a157",
+      "placement": "places.bg rule 'Hanlim · The Party' (day and evening slots: night art) in data/epi/hoax/world.js, replacing clubescapade (taken out of weatherFx.sealed: the room shows the deck); the Outside rule above it unchanged"
+    },
+    {
+      "batch": 65,
+      "source": "epi-h-winter-street.jpeg",
+      "sourceNow": "Added to Game/epi-h-winter-street.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "bc3e66ca837c8ff9f899290d64019c7a1d340bc35b58001c9fc426c28ed0169c",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-h-winter-street.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "73428e3ce9d184aef53ec49219d62c15d3152ddb1d47ae8191131e993093d85d",
+      "placement": "places.bg rule 'Hanlim · Winter Street' (day and evening slots: night art; a daylight version is on Kat's list) and the epi-h-machine activity's bg in data/epi/hoax/world.js, replacing port-island-konbini-night (swapped in weatherFx.outdoor)"
+    },
+    {
+      "batch": 65,
+      "source": "epi-s-annex.jpeg",
+      "sourceNow": "Added to Game/epi-s-annex.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "81fd736b1945ed0c856c9c81845ccb94fe1e8a4a6a98ff80dbcfc58b92add125",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-annex.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "8439b187c85f41281fc3d8b2bc15218c80f81f9377f91d2f5290d697b457e57d",
+      "placement": "places.bg rule 'Incheon · The Lee House · Annex' (day and evening slots: night art; a daylight version is on Kat's list) in data/epi/strangers/world.js, replacing flashback-lee-house; weatherFx.outdoor; Garden keeps the stand-in"
+    },
+    {
+      "batch": 65,
+      "source": "epi-s-daeboreum.jpeg",
+      "sourceNow": "Added to Game/epi-s-daeboreum.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "d5207db4138449de69aebbd477bb746bd1fe5813d853d86e6a0333212c4b10c8",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-daeboreum.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "451d0c592ddd6f8857e828dee3d371663577d252c00776e0b716ec2711090641",
+      "placement": "new places.bg rule 'Incheon · Wolmido · Daeboreum' (both slots) in data/epi/strangers/world.js, and the full-moon event's place renamed to it; plain 'Incheon · Wolmido' keeps its day / night stand-ins so ordinary evenings don't show the festival; weatherFx.outdoor"
+    },
+    {
+      "batch": 65,
+      "source": "epi-s-dust.jpeg",
+      "sourceNow": "Added to Game/epi-s-dust.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "18e0bd10212d55288e9d80a9b1299fbe91b84c1ba2da331f0cb3609cde3c06bd",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-dust.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "9c07a6f655e5ab0d0a82450d27da16ed2909605a4acc02b42df2c83ba6d52668",
+      "placement": "places.bg rule 'Incheon · Street in the Dust' (day; evening null: only daytime scenes) in data/epi/strangers/world.js, replacing shopping-street / iwatodai-strip-night; weatherFx.outdoor"
+    },
+    {
+      "batch": 65,
+      "source": "epi-s-harbor-tide.jpeg",
+      "sourceNow": "Added to Game/epi-s-harbor-tide.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "14a482475bb667de01cf1139c8f85ef1119916eeb47af1d685dc996b03ddd271",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-harbor-tide.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "2547bcd930b4bc2497a3529a8a989dbc9364370d66d5e8118d75ba44104947d0",
+      "placement": "places.bg rules 'Incheon · The Mudflats' (day; evening null) and 'Incheon · The Mudflats at Midnight' (both slots; 'Midnight' reads the day slot) in data/epi/strangers/world.js, replacing flashback-incheon-harbor; weatherFx.outdoor; a midnight version is on Kat's list. Stay's harbor fight stays on the harbor (high tide there)"
+    },
+    {
+      "batch": 65,
+      "source": "epi-s-lee-kitchen.jpeg",
+      "sourceNow": "Added to Game/epi-s-lee-kitchen.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "ae582fbcedf6e9bc7308a576db3e4b8f4e715e51d385596db6af482caff5ba21",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-lee-kitchen.webp",
+      "conversion": "resized to 1920x1072 like the other backgrounds, WebP quality 88, no cropping or retouching",
+      "outputSha256": "0910e7adb39c61be459b3354c6842e8349ad244613fa102b36f546760563cdac",
+      "placement": "places.bg rule 'Incheon · The Lee House · Kitchen' (both slots: lamp-lit, blue at the windows) in data/epi/strangers/world.js, replacing iwatodaidorm-kitchen; also a new Kitchen rule in data/epi/true/world.js with the coda's kitchen event moved to that place"
+    },
+    {
       "batch": 66,
       "source": "card-persona-candle.jpeg",
       "sourceNow": "Added to Game/card-persona-candle.jpeg",
@@ -16252,6 +16387,22 @@
     ],
     "notTested": "no browser tests (Kat at work): face sizes in scenes at 1000x486 and 375x812 (Runners, HOAX)",
     "html": "femc-game.html scale.js v150 (FEMC_PORTRAIT_V 10); index.js unchanged (same ids and expressions)"
+  },
+  "batch65Validation": {
+    "date": "2026-10-28",
+    "scope": "the epilogue's last places: HOAX (the Kims' living room, Jihoon's house, the winter street, the party) and strangers (the Lee kitchen, the annex, the mudflats, Daeboreum on Wolmido, the street in the dust)",
+    "sourcesInspected": "all 9 viewed at full size (details cropped where the text names them: the calendar, the bucket, the annex window)",
+    "sourcesIntegrated": 9,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched; runners-lake.jpeg and strangers-koi.jpeg (memory cards) arrived and were left in New Adds",
+    "textTweaks": "hoax party (epi-h-party): the speaker is on the kitchen island, not the stairs (four lines); strangers kitchen: the calendar hangs by the back door, not the fridge (story-w1 epi-s-home, story-w2 twice); data only: the full-moon event's place is 'Incheon · Wolmido · Daeboreum', the true coda's kitchen event is 'Incheon · The Lee House · Kitchen'",
+    "artNotes": "the kitchen art draws the two koi on the step beside the bucket rather than in it; the text keeps them in the bucket (not changed)",
+    "tests": [
+      "tools/femc-check-scenes.py: OK",
+      "jsc checkSyntax on every edited script"
+    ],
+    "notTested": "no browser tests (Kat's Mac in use): tests/femc_epilogue.py --only hoax, strangers, true, stay; framing at 1000x486 and 375x812",
+    "html": "femc-game.html epilogue v18; epilogue DATA_V 16; tests/femc_epilogue.py _loaded checks 16 (not run)"
   },
   "batch66Validation": {
     "date": "2026-10-28",

@@ -1,6 +1,6 @@
 # Art to make
 
-**56 items:** 9 places · 14 character pieces · 5 battle · 28 wardrobe. 46 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets.
+**124 items:** 35 CGs · 57 places · 4 character pieces · 28 wardrobe. 120 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -17,8 +17,6 @@
 **"The style image" for each kind of art**
 | Art | The style image |
 |---|---|
-| Evoker close-ups | `battle/art/summon/solar-evoker.webp` |
-| Evoker sheets | `solar-evoker-animation.png` |
 | Weapon skins | `battle/art/weapons/moon-and-stars.webp` |
 | Echoes | `battle/art/personas/haenim.webp` |
 
@@ -28,86 +26,768 @@ Places, expressions, outfit portraits and the items that name their own pictures
 
 ## 1. Story CGs (ChatGPT)
 
-*(Nothing left: every story CG, the epilogue's included, is in the game.)*
+### Iwatodai (the main game)
+
+**[ ] Ken · rank 10 · the hospital steps in the snow** *(optional)*  
+For Ken's rank 10, outside on the hospital steps after school in January.  
+Attach: Ken, Solar, `bg/hospital-outside.webp` (for the place only)  
+Save as: `link-ken-r10-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The front steps of a city hospital on a January afternoon, gray snow-light, big slow snowflakes falling thickly, a thin dusting of snow on the steps, the railing and the bare trees in the parking lot below. Ken (the first attached image's face; a small fifth-grade boy in a winter coat over his school uniform, backpack on both shoulders) stands at the top of the steps, his breath going up white, one glove off and held in his other hand, holding out a tiny worn red plastic bird-head phone strap with a little visor, paint rubbed off the beak, on a short frayed cord, offering it up with total seriousness. Solar (the second attached image's face; long dark hair, winter coat and scarf) stands one step below him, a little stooped toward him, close, looking at what he's holding out. Snow settling on both their hair and shoulders. Quiet, solemn, tender, a small brave moment. Keep the faces clear of the edges.
+```
+
+**[ ] Kat & Ethan · rank 10 · the Port Island pier at night** *(optional)*  
+For Kat & Ethan's rank 10, on the pier on Port Island in the evening.  
+Attach: Kat, Ethan, Cosmo, Wanda, Solar, `bg/port-island-pier-night.webp` (for the place only)  
+Save as: `link-kat-r10-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A wooden pier on a cold autumn night, lamps along the railing making circles of warm light on the boards, the black bay behind, a lit-up ferry passing far out on the water like a birthday cake. In the circle of lamplight in the middle of the boards, two Siberian Huskies sit upright side by side with their ears up: Cosmo (the third attached image; grey and white, navy bandana), dignified, looking straight at the camera, and Wanda (the fourth attached image; black and white, paw-print bandana), the smaller, younger one, sitting up for once. Kat (the first attached image's face; alt / e-girl clothes, dark jacket) has just jumped up off a bench on the left and is crouching forward with her phone held out to take the photo, thrilled. Ethan (the second attached image's face; casual jacket) crouches beside the dogs holding both leashes, grinning. Solar (the fifth attached image's face; long dark hair, autumn coat) stands just behind Kat, laughing, hands half raised as if not to break the spell. Salt wind, warm lamplight against the dark sea. Joyful, cozy, a small victory. Keep the faces clear of the edges.
+```
+
+**[ ] Akihiko · rank 10 · the dorm lounge in December** *(optional)*  
+For Akihiko's rank 10, in the dorm lounge on a December evening.  
+Attach: Akihiko, Solar, `bg/iwatodaidorm-livingroom-night.webp` (for the room only)  
+Save as: `link-akihiko-r10-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The dorm lounge on an early December evening, the room empty except for two people, main lights low. Strings of small warm Christmas lights run across the big dark windows, one strand sagging in the middle like a smile, a second strand neatly up beside it. Outside the glass the first snow of the year is falling, fat and slow, lit by the string lights. A mug of hot chocolate on the coffee table, sheets of torn newspaper wrapping on the cushion. Solar (the second attached image's face; long dark hair, soft sweater) sits on the couch holding a pair of small, old red boxing gloves in her lap, a child's size, the leather worn pale and cracked at the knuckles, mismatched laces, both her hands resting flat on top of them, very still. Akihiko (the first attached image's face; silver hair, red vest over a shirt) sits on the arm of the couch beside her, leaning slightly toward her, watching her face, ears a little red. Close, about an arm's length apart. Hushed, warm, fragile. Keep the faces clear of the edges.
+```
+
+**[ ] Shinjiro · rank 10 · the dorm kitchen at night** *(optional)*  
+For Shinjiro's rank 10, in the dorm kitchen late at night.  
+Attach: Shinjiro, Solar, `bg/iwatodaidorm-kitchen.webp` (for the room only)  
+Save as: `link-shinjiro-r10-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The dorm kitchen late at night with the lights off, lit only by an enormous white full moon in the window over the sink; the moonlight throws the window frame across the floor tiles in hard black lines like a ruled page. The kitchen is spotless: pans on their hooks with handles out, a big pot on the back burner, spice jars in a neat row, a rice bin with its cup on top, a handwritten note taped to the fridge (scribbles, unreadable). Shinjiro (the first attached image's face; tall, long maroon coat hanging off the edge of the counter) sits up on the counter, which he never does, slightly hunched, turning his beanie around and around by the brim in his hands, not looking at the moon. Solar (the second attached image's face; long dark hair loose, a cardigan over pajamas, socks, no shoes) stands just inside the kitchen doorway, a few steps away, in the moonlight. Silver and black, very quiet, heavy and tender. Keep the faces clear of the edges.
+```
+
+**[ ] Haechan · rank 13 · the dorm kitchen at one in the morning** *(optional)*  
+For Haechan's rank 13, in the dorm kitchen at one in the morning in February.  
+Attach: Haechan, Jungwon, Solar, `bg/iwatodaidorm-kitchen.webp` (for the room only)  
+Save as: `link-haechan-r13-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The dorm kitchen at one in the morning in February, warm yellow kitchen light, the window over the sink black and fogged with steam from the hot tap. The back door stands open to the cold dark outside. In the doorway, across the threshold, a huge steel stockpot hangs between two young men, each holding one handle, neither pulling: Haechan (the first attached image's face; sleeves pushed past the elbows, a dish towel over his shoulder, damp forearms) on the kitchen side, and Jungwon (the second attached image's face; a long navy coat buttoned to the throat, a steel watch on his wrist) on the back step outside, very straight and polite. They look at each other levelly, about a pot's width apart. Solar (the third attached image's face; long dark hair, comfy late-night clothes) stands a little behind them by the sink, watching, holding her breath. Cold blue night beyond the door, warm light inside. Tense, funny, quietly charged. Keep the faces clear of the edges.
+```
+
+**[ ] Jungwon · rank 14 · the Port Island pier at dusk** *(optional)*  
+For Jungwon's rank 14, on the pier on Port Island on a February evening.  
+Attach: Jungwon, Solar, `bg/port-island-pier.webp` (for the place only)  
+Save as: `link-jungwon-r14-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The end of a pier on a February evening at dusk, the sea the dull gray of an old knife, a hard cold wind off the water, gulls standing on the bollards all facing the same way into the wind, lights just starting to come on one by one along the far shore. Jungwon (the first attached image's face; not in his school blazer: a long camel cashmere coat buttoned to the throat, black leather gloves, a steel watch showing between glove and cuff) stands at the railing, turned from the water toward Solar, holding out a can of hot corn soup in one gloved hand and keeping a second, unopened can in the other. Solar (the second attached image's face; long dark hair blowing in the wind, winter coat, gloves) reaches to take it, standing close beside him at the rail. Elegant, cold air, warm cans, a formal, slightly shy date. Keep the faces clear of the edges.
+```
+
+**[ ] Mark · rank 14 · the dorm steps at night** *(optional)*  
+For Mark's rank 14, at the front steps of the dorm at night in February.  
+Attach: Mark, Solar, `bg/iwatodaidorm-front-winter.webp` (for the place only)  
+Save as: `link-mark-r14-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The front steps of the dorm on a cold February night, a streetlight with a hazy ring around it from the cold, the dorm windows above lit warm, one window open a crack. Mark (the first attached image's face; a sweatshirt, jeans, sneakers) sits on the bottom step, knees up, looking up quickly at Solar with a half-embarrassed smile, as if checking whether she noticed. Solar (the second attached image's face; long dark hair, winter coat) stands on the pavement in front of him holding a black guitar case upright by its handle, looking down at him, surprised and soft. About two steps apart. Quiet street, breath faintly white. Gentle, understated, a small big moment. Keep the faces clear of the edges.
+```
+
+**[ ] Hyein · rank 15 · the shop mirror at Paulownia Mall** *(optional)*  
+For Hyein's rank 15, at the clothing shop in Paulownia Mall on a Saturday in late February.  
+Attach: Hyein, Solar, `bg/clothing-store.webp` (for the room only)  
+Save as: `link-hyein-r15-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. Inside a boutique in a shopping mall on the first soft, damp, warm Saturday of late February, the shop doors open, the window display behind done for March in white and green with graduation bouquets. Hyein (the first attached image's face; very tall, wearing a soft blouse in a quiet, plain Sunday color and a long cardigan over it, no coat, nothing loud) stands on a mark on the floor in front of the shop's long mirror, rigid like a mannequin, chin up, hands at her sides, one hand half rising toward a button as if she can't stop herself fixing something. Solar (the second attached image's face; long dark hair, light spring jacket) stands just behind her shoulder, reflected in the mirror too, looking at her with a small proud smile. Behind the till in the background a shop clerk watches with dawning delight. Soft daylight, gentle, funny and moving. Keep the faces clear of the edges.
+```
+
+**[ ] Jay · rank 10 · the dorm front step at night** *(optional)*  
+For Jay's rank 10, at the front step of the dorm on a January evening.  
+Attach: Jay, Solar, `bg/iwatodaidorm-front-winter.webp` (for the place only)  
+Save as: `link-jay-r10-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The front step of the dorm at eight in the evening at the end of January, hard clean cold that makes the streetlights look extra sharp, warm light from the lounge window behind. Jay (the first attached image's face; a jacket zipped all the way to the chin) stands on the step, his breath going up white, two bags of food containers at his feet, holding out a plain white index card, a little bent at one corner, covered both sides in heavy pressed-hard handwriting (unreadable scribbles), not looking quite at her. Solar (the second attached image's face; long dark hair, sweater, no coat, just stepped outside) faces him on the step, reaching for the card. About a step apart. Gruff, warm, quietly important. Keep the faces clear of the edges.
+```
+
+**[ ] Niki · rank 10 · Game Panic** *(optional)*  
+For Niki's rank 10, at the Game Panic arcade on a late-January evening.  
+Attach: Niki, Solar, `bg/gamepanic-inside.webp` (for the room only)  
+Save as: `link-niki-r10-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. Inside a loud, dim arcade on a late-January evening, a bruise-purple carpet, glowing cabinets all around, a light-gun shooter cabinet screen blazing in front of them (abstract game light, no readable text). Niki (the first attached image's face; a puffer jacket zipped to the chin with tape on the right sleeve worn pale at the corners, a scarf wound twice around his neck, a small bear charm hanging off an old phone in his pocket) and Solar (the second attached image's face; long dark hair, winter coat) stand shoulder to shoulder, each aiming a plastic light gun at the screen with both hands, totally in sync, focused, Niki's grin just breaking through. Screen glow on their faces, colored arcade light. Electric, playful, two people perfectly matched. Keep the faces clear of the edges.
+```
+
+**[ ] Sunghoon · rank 10 · Yeobo's window table** *(optional)*  
+For Sunghoon's rank 10, at Yeobo's Cafe on a late-January evening.  
+Attach: Sunghoon, Solar, Sunoo, `bg/yeobos-cafe.webp` (for the room only)  
+Save as: `link-sunghoon-r10-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A small cozy café on a late-January evening, the windows thick with steam, a few finger-drawn marks in the steam on the inside of the glass (no readable letters), warm lamplight. At the window table, a single red winter camellia in a small vase. Solar (the second attached image's face; long dark hair, winter sweater) sits in the chair that faces the room and the door with its little bell, looking across at him. Sunghoon (the first attached image's face; neat, princely, a dark coat) sits opposite her with his back to the room and the door, holding a coffee cup, very composed, his shoulders just a little too still. In the background behind the counter and the pastry case, Sunoo (the third attached image's face; café apron) pretends very hard not to watch. Warm, hushed, a quiet act of trust. Keep the faces clear of the edges.
+```
+
+**[ ] Aigis · 12/31 · the dorm roof at sunset** *(optional)*  
+For Aigis's New Year's Eve holiday scene, on the dorm roof on the last afternoon of the year.  
+Attach: Aigis, Solar, `bg/iwatodaidorm-roof-evening.webp` (for the place only)  
+Save as: `holiday-aigis-sunset-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The dorm rooftop on the last afternoon of the year, cold and very clear, the sun just touching the bay on the horizon, gold light across the water and the city, long shadows across the roof. Aigis (the first attached image's face; blonde, her usual look, with a soft scarf wound three times around her neck) stands at the railing watching the sunset with very blue, steady eyes, her hand resting on the rail. Solar (the second attached image's face; long dark hair, winter coat) stands right beside her at the rail, one step of space between them, her hand on the rail next to Aigis's. Seen slightly from behind and to the side so both faces catch the gold light. Calm, luminous, a year quietly ending. Keep the faces clear of the edges.
+```
+
+**[ ] The year · 8/15 · the back streets at Obon** *(optional)*  
+For the 8/15 story evening in the back streets of Port Island.  
+Attach: Solar, `bg/outside-nightdistrict.webp` (for the light only)  
+Save as: `story-obon-lanterns-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A narrow, old, steep street on a summer evening going down toward a harbor in shallow worn stone steps. Strung one after another all the way down it hang fat round red silk lanterns with gold tassels and black brush strokes painted on them (abstract, unreadable), swaying slightly though there is no wind, so the stones below glow deep red. A steamed-up window halfway down glows warm. At the very top of the street, behind, a glimpse of pale white and yellow paper festival lanterns and a far-off crowd. Solar (the attached image's face; long dark hair, light summer clothes) stands alone at the top of the steps, one hand lifted a little, her lips just parted as if about to sing along to something, lit red from below, looking down the street. At the bottom, under the last lantern, an empty stretch of wall, a drainpipe and a cat. Dreamlike, haunting, strangely familiar. Keep the faces clear of the edges.
+```
+
+**[ ] The year · 12/31 · the station platform at night** *(optional)*  
+For the 12/31 story night, on the Iwatodai Station platform at eleven.  
+Attach: Wren, Solar, `bg/station-platform-night.webp` (for the place only)  
+Save as: `story-new-years-eve-platform-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A monorail station platform late on New Year's Eve, around eleven at night, cold, platform lights glowing; beyond the edge of the platform a huge bright full moon hangs low over the bay, placed there almost on purpose. A train with lit windows waits at the far end. Wren (the first attached image's face; her cap, long sleeves falling over her hands) sits alone on a bench, small and still, looking up at Solar. Solar (the second attached image's face; long dark hair, winter coat and scarf) has just arrived and stands beside the bench, about to sit down next to her. Cold blue night, silver moonlight, quiet. Lonely, tender, the year about to end. Keep the faces clear of the edges.
+```
+
+**[ ] The year · 3/3 · the dorm roof in the snow** *(optional)*  
+For the 3/3 story night, on the dorm roof in the first big snow.  
+Attach: Hanni, Hyein, Solar, `bg/iwatodaidorm-roof-night.webp` (for the place only)  
+Save as: `story-first-snow-roof-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The dorm rooftop at ten at night in early March, the first big snow: big slow deliberate flakes falling one at a time out of an orange city-glow sky, the railing with a finger-thick white edge of snow along it. Three girls stand together near the railing in winter coats thrown over their pajamas, pajama legs and slippers or boots showing. Hanni (the first attached image's face) in the middle, eyes closed, making a wish with her hands together. Hyein (the second attached image's face; the tallest) on the right, face tipped up to the sky, laughing. Solar (the third attached image's face; long dark hair with snowflakes in it) on the left, holding out her coat sleeve to catch a single perfect snowflake. Shoulders almost touching. Soft, glowing, bittersweet joy. Keep the faces clear of the edges.
+```
+
+**[ ] Haechan · late night · the dorm roof in the snow** *(optional)*  
+For one of Haechan's romance late nights in winter, on the dorm roof at 2 AM.  
+Attach: Haechan, Solar, `bg/iwatodaidorm-roof-night.webp` (for the place only)  
+Save as: `romance-haechan-roof-snow-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The dorm rooftop at two in the morning in winter, snow hanging in the air in fat flakes drifting in every direction under the single light by the rooftop door, settling on the water tank, the railing and the planters of dead summer tomato plants. Haechan (the first attached image's face; a dark winter coat with a hood, snow on the hood and shoulders) stands at the railing with his coat held open and wrapped around Solar, his chin resting on top of her head, eyes half closed. Solar (the second attached image's face; long dark hair, her own winter coat, socks and boots) stands inside his coat with her back against his chest, his arms around her, snow on her hair, looking out at the city. Warm inside the coat, cold and blue all around. Romantic, quiet, intimate but gentle. Keep the faces clear of the edges.
+```
+
+**[ ] Akihiko · late night · her room on a snowy morning** *(optional)*  
+For one of Akihiko's romance late nights in January, in Solar's dorm room in the early morning.  
+Attach: Akihiko, Solar, `bg/solar-dormroom-night.webp` (for the room only)  
+Save as: `romance-akihiko-snow-morning-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. Solar's small dorm bedroom just before dawn in January, cold blue light, snow falling slow and fat past the window in the glow of a streetlight. In the bed under two thick duvets piled on top of each other, Solar (the second attached image's face; long dark hair messy on the pillow, wearing his oversized boxing-club hoodie) lies curled against Akihiko (the first attached image's face; silver hair, a T-shirt, a sports watch on his wrist), his arm around her, his face tucked into her hair, eyes closed and content, his other hand having just switched off the watch. Her eyes are just opening, surprised and soft. Tasteful, fully covered, cozy. Warm, sleepy, sweet. Keep the faces clear of the edges.
+```
+
+### The epilogue: Runners
+
+**[ ] Runners · 12/19 · the Sigma holiday party** *(optional)*  
+The holiday party at the Sigma house, the first hour (every route).  
+Attach: Solar (her Runners look), Jaemin, Jeno, `bg/epi-r-sigma-holiday.webp` (for the room only)  
+Save as: `epi-r-holiday-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The big living room of an old fraternity house at a holiday party, Friday night in December: string lights stapled along every surface and up the banister, a fireplace with a clock over it, a bedsheet on the wall with tinsel safety-pinned to it as a photo wall, red cups, a punch bowl, a crowd of college students in party clothes, snow outside the dark windows. Solar (the first attached image's face; long dark hair worn down and glossy, a wine-red silk dress cut on the bias with long sleeves and an open back, small earrings) has just come in, standing in the middle of the frame a little unsure and lovely, a hand at her collarbone. Jaemin (the second attached image's face; styled hair, a velvet blazer over a black shirt) is coming toward her through the crowd with both arms thrown open and a delighted grin, a step away. Behind them Jeno (the third attached image's face; a Christmas sweater) ladles from the punch bowl with a wink at the camera, and a younger boy stands proudly next to a big speaker. Warm, loud, glittering, the good part of the night. Keep the faces clear of the edges.
+```
+
+**[ ] Runners · Haechan · his room at the Sigma house** *(optional)*  
+Haechan's third hangout, night, his room at the Sigma house.  
+Attach: Solar (her Runners look), Haechan (his Runners look once it's made, his neutral portrait until then), `epi-r-sigma-his-room.png` (for the room only, once it exists)  
+Save as: `epi-r-his-room-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A college boy's bedroom in a fraternity house at night in winter, the desk lamp the only light, a laptop on the desk with a yellow sticky note over its camera, the blinds open on falling snow, warm lamp light on one side and blue snow light on the other. Haechan (the second attached image's face; dark hair falling into his eyes, a plain black T-shirt, silver rings) sits in his desk chair turned away from the desk, hands resting on his knees, looking up, not reaching. Solar (the first attached image's face; long dark hair with snow melting in it, a cream knit sweater under an open winter coat) stands between his knees, close, both her cold hands cupping his face, looking down at him; his breath caught at the cold of her fingers. Their faces a few inches apart. Hushed, tender, nothing hurried. Keep the faces clear of the edges.
+```
+
+**[ ] Runners · Minji · 12/10 · her room in the honors dorm** *(optional)*  
+The Minji route's 12/10 evening, her room in the honors dorm.  
+Attach: Solar (her Runners look), Minji  
+Save as: `epi-r-reel-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A very tidy college dorm room at night in December: two monitors on a desk glowing with a paused video frame of a girl standing under a lamppost in long golden afternoon light, a tower of hard drives stacked like a wedding cake, a corkboard of color-coded index cards in neat rows, a bed made with hospital corners, one small dying succulent on the windowsill, snow on the dark window. Minji (the second attached image's face; a baseball cap on backwards, an oversized hoodie) has turned her desk chair all the way round to face Solar, hands folded in her lap, serious and careful, about to ask something. Solar (the first attached image's face; long dark hair, a cream sweater, her coat still on) sits on the edge of the bed a few feet away, lit blue by the monitors, listening. Quiet, honest, the hum of the drives. Keep the faces clear of the edges.
+```
+
+**[ ] Runners · the cover · 12/10 · the girls' floor** *(optional)*  
+The cover route's 12/10, late, on Hanni and Hyein's floor.  
+Attach: Solar (her Runners look), Hanni, Hyein, `epi-r-hanni-hyein-room.png` (for the room only, once it exists)  
+Save as: `epi-r-floor-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A shared sorority-house bedroom late at night, lit only by fairy lights strung along the wall, an old radiator under a snowy window, a corkboard over a desk pinned with fashion sketches of velvet outfits, a dress form in the corner. Three girls sit on the rug on the floor with their backs against the side of a bed. Hanni (the second attached image's face; hair down, an oversized sweatshirt and pajama shorts) in the middle-left with her knees up and her arms around them, her phone face down on the rug in front of her. Hyein (the third attached image's face; hair in a messy clip, a cardigan over pajamas) leans her head on Hanni's shoulder. Solar (the first attached image's face; long dark hair, a hoodie and sweatpants) sits close on Hanni's other side, and Hanni's hand has found hers on the rug and holds it. Nobody talking. Soft, shaky, held together. Keep the faces clear of the edges.
+```
+
+### The epilogue: HOAX
+
+**[ ] HOAX · Jungwon · 12/24 · his street at night** *(optional)*  
+The Jungwon route's Christmas Eve, his street.  
+Attach: Solar (her HOAX look), Jungwon (his HOAX look once it's made, his neutral portrait until then)  
+Save as: `epi-h-eve-jungwon-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A quiet residential street in a Korean town on Christmas Eve at about nine at night: houses behind low walls and gates, every gate with the same little warm-white lights, streetlamps, snow falling slowly, the snow on the pavement untouched except for one line of slipper prints and tiny paw prints, a lit window in a house at the far end of the street. Jungwon (the second attached image's face; neat dark hair, a good dark wool coat buttoned over striped pajamas, house slippers in the snow, a watch on his wrist) walks beside Solar holding a leash with a very small fluffy white dog at the end of it, the dog sniffing a gate light. Solar (the first attached image's face; long dark hair, a padded winter coat, a scarf) walks close at his side; she has his other hand in her coat pocket with hers, both hands hidden in the pocket, and she is looking at him while he looks at the dog. Shy, cold, very sweet. Keep the faces clear of the edges.
+```
+
+**[ ] HOAX · Jihoon · 12/24 · the Christmas lights** *(optional)*  
+The Jihoon route's Christmas Eve, driving through the town's lights.  
+Attach: Solar (her HOAX look), Jihoon  
+Save as: `epi-h-eve-jihoon-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. Inside a car at night on Christmas Eve, driving slowly through a long tunnel of white Christmas lights in a park, the light coming through the windshield and windows in bright bars that slide over the inside of the car, the heater on full so the windows are a little fogged at the corners, snow outside. Jihoon (the second attached image's face; a dark puffer jacket, one hand on the wheel) drives, eyes on the tunnel ahead, his jaw tight, a bar of white light across his face. Solar (the first attached image's face; long dark hair, a winter coat and scarf, nose pink from the cold) sits in the passenger seat turned toward him, her head resting against the seat, watching him and saying nothing. Old friends in a small warm space. Nostalgic, close, a little sad. Keep the faces clear of the edges.
+```
+
+**[ ] HOAX · the council · 12/24 · Yeobo's after closing** *(optional)*  
+The council route's Christmas Eve, decorating the café after hours.  
+Attach: Solar (her HOAX look), Jay, Sunghoon, Niki, Heeseung, Jake, Sunoo  
+Save as: `epi-h-eve-council-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A small cosy Korean café after closing on Christmas Eve, every light on inside, the front window steamed up with snow falling outside in the dark, a little fake Christmas tree by the register half covered in ornaments and tinsel, a ladder in the middle of the floor, a phone propped against a sugar jar on the counter. Jay (the second attached image's face) and Sunghoon (the third attached image's face; wrapped shoulder to knee in a string of glowing fairy lights) each hold one of Solar's arms and lift her straight up beside the tree like a kid at a parade. Solar (the first attached image's face; long dark hair flying, a cardigan over a turtleneck) is shrieking with laughter and jamming a cheap gold plastic star onto the top of the tree. Niki (the fourth attached image's face) sits on top of the ladder grinning, Heeseung (the fifth attached image's face) holds the ladder with a clipboard in his teeth, Jake (the sixth attached image's face) is filming on his phone, Sunoo (the seventh attached image's face) comes out of the kitchen with two trays, beaming. An old woman behind the counter folds dumplings, smiling a little. Chaotic, warm, everyone laughing. Keep the faces clear of the edges.
+```
+
+**[ ] HOAX · 12/25 · the Kims' front door** *(optional)*  
+Christmas Day at the Kims', one o'clock, the front door (every route).  
+Attach: Solar (her HOAX look), Jungwon (his HOAX look once it's made, his neutral portrait until then), Solar's mother (`portraits/kim-mom`), `bg/epi-h-kim-house.webp` (for the house only)  
+Save as: `epi-h-christmas-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The front door of a Korean family apartment on Christmas afternoon, seen from inside the short entrance hall: a shoe rack, the door open on a snowy step and grey daylight, warm light from the living room behind with a Christmas tree just visible. On the step, Jungwon (the second attached image's face; hair actually brushed, a good dark coat buttoned to the top, snow on his shoulders, ears red) is bowing a full ninety degrees, holding a white bakery box perfectly level in both hands, a wrapped present tucked under one arm. In the doorway Solar (the first attached image's face; long dark hair, a cosy knit sweater and house socks) stands with her hand still on the door, mortified and delighted. Right behind her, Solar's mother (the third attached image's face; an apron over her clothes) has appeared holding a wooden spoon, staring at the boy. A very large fluffy white dog with half a red bow hanging off his collar pushes his head past Solar's legs. Funny, warm, a little terrifying. Keep the faces clear of the edges.
+```
+
+### The epilogue: strangers
+
+**[ ] strangers · 2/22 · the café in Songdo** *(optional)*  
+For the 2/22 afternoon scene at a café in Songdo, with Yunjin and the four girls.  
+Attach: Solar (her strangers look), Yunjin, Chaewon (her strangers look), Sakura (her strangers look), Kazuha (her strangers look), Eunchae (her strangers look)  
+Save as: `epi-s-cafe-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A bright café in a new glass city on a cold February afternoon, too many plants, a window wall looking across grey water at tall new glass towers. Six young women crowded round a corner table with slices of cake and coffee cups, coats and scarves piled on the chairs. Solar (the first attached image's face, hair and look) sits in the corner with her back to the wall, a little stiff, a small surprised smile. Yunjin (the second attached image's face) in a red puffer jacket, leaning on Solar's shoulder, grinning. Chaewon (the third attached image's face) in a long navy coat, small and neat, holding up a single laminated A4 sheet toward Solar like a teacher. Sakura (the fourth attached image's face) dry and unimpressed, a long grey scarf still half round her neck, a game console in her coat pocket. Kazuha (the fifth attached image's face), tall, sitting close on Solar's other side, gazing at her with gentle curiosity. Eunchae (the sixth attached image's face), round-faced and fearless, mid-sentence with a forkful of cake. Warm, noisy, a girls' afternoon. Keep the faces clear of the edges.
+```
+
+**[ ] strangers · 2/24 morning · the Lee kitchen** *(optional)*  
+For the 2/24 morning scene in the family kitchen (the full-moon holiday breakfast).  
+Attach: Solar (her strangers look), Yunjin, Haechan, Jungwon, `bg/epi-s-lee-kitchen.webp` (for the room only)  
+Save as: `epi-s-bureom-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The big kitchen of the attached room on a clear, bright, windy winter morning, sun on the windows, steam rising from a huge pot of purple-dark five-grain rice. Down the middle of the long wooden table: nine small dishes of dried greens, a wooden bowl of walnuts, peanuts and chestnuts in their shells, and a small black lacquer box tied with red string. Solar (the first attached image's face; hair down, a soft sweater, socks) standing by the back door with a hand over her mouth, trying not to laugh. Yunjin (the second attached image's face) in a yellow puffer over pajamas, hair in a knot on top of her head, hiding her face in her hands, laughing. Haechan (the third attached image's face) in a black jacket, cheeks red from the cold, a walnut in his hand, glaring up at the ceiling in mock betrayal. Jungwon (the fourth attached image's face) in a dark coat at the far end of the table, napkin on his knee, sitting very straight and polite, faint dimples. In the background, soft and out of focus: a short older woman in rubber boots at the stove with her back turned, a stout housekeeper ladling rice, a grey-haired driver standing in the corner with his coat on. Festive, crowded, warm. Keep the faces clear of the edges.
+```
+
+**[ ] strangers · 3/5 · the karaoke room** *(optional)*  
+For the 3/5 evening scene in a karaoke room with Yunjin and the four girls.  
+Attach: Solar (her strangers look), Yunjin, Chaewon (her strangers look), Sakura (her strangers look), Kazuha (her strangers look), Eunchae (her strangers look)  
+Save as: `epi-s-karaoke-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A small, shabby Korean karaoke room at night: a horseshoe of red vinyl couch patched with silver tape, a sticky low table with drinks and snacks, a disco ball that doesn't turn, coloured light from a big screen showing a blurry waterfall. Sakura (the fourth attached image's face) standing in front of the screen with a microphone on a curly wire, one hand in her coat pocket, singing with a flat, unbothered face. Chaewon (the third attached image's face) on the couch holding her phone up with a list on it, laying down the rules. Kazuha (the fifth attached image's face) curled in the corner with her coat pulled round her, looking around warily. Eunchae (the sixth attached image's face) shaking a tambourine that has lost half its bells. Yunjin (the second attached image's face) sprawled on the couch, laughing. Solar (the first attached image's face, hair and look) in the middle of them with a second microphone in her lap, smiling in spite of herself. Loud, silly, warm. Keep the faces clear of the edges.
+```
+
+**[ ] strangers · 3/10 · Sunday dumplings** *(optional)*  
+For the 3/10 afternoon scene in the family kitchen.  
+Attach: Solar (her strangers look), Haechan, Jungwon, Appa, `bg/epi-s-lee-kitchen.webp` (for the room only)  
+Save as: `epi-s-dumplings-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The big kitchen of the attached room on a Sunday afternoon in winter, steam on every window, flour all over the long wooden table like a light snow, trays of rows of folded dumplings, a huge steel bowl of filling, a stack of wrappers under a damp cloth, and a red plastic bucket with two orange koi brought in by the stove. Solar (the first attached image's face; hair down, sleeves pushed up past the elbow) sitting at the table folding a dumpling, laughing. Haechan (the second attached image's face) across from her in a grey sweatshirt with flour up to his elbows, a silver ring set aside on the board, frowning in deep concentration over a lumpy, misshapen dumpling. Jungwon (the third attached image's face) at the other end in a good grey sweater, holding a cup of tea and nothing else, watching Haechan's dumpling with polite amusement. Solar's father (the fourth attached image's face) at the far end with a newspaper crossword folded into quarters, reading glasses on a cord, a pencil behind his ear, his shoulders shaking with laughter behind the paper. At the head of the table, a tiny older woman standing on an upturned crate in rubber boots, rolling wrappers, her sleeves tied back with clothes pegs, mouth open in song. Homely, floury, happy. Keep the faces clear of the edges.
+```
+
+**[ ] strangers · 3/11 · dinner at the long table** *(optional)*  
+For the 3/11 evening scene in the family dining room (the whole house at dinner).  
+Attach: Solar (her strangers look), Appa, Eomma, Haechan, Jungwon, Yunjin, and `epi-s-dining-room.png` (for the room only) if it's made  
+Save as: `epi-s-dinner-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A formal dining room in an old Korean house at night, warm low lamps, a very long dark wooden table with all its leaves in, good white plates, bowls of rice and soup, a whole fish on a platter in the middle, seen from the foot of the table looking up its length. Solar's father (the second attached image's face) at the head with reading glasses on a cord, mid-laugh. Solar's mother (the third attached image's face) on his right in dark green, hair up, sitting very straight with a small reluctant smile. Solar (the first attached image's face, hair and look) on his left, looking down the table at everyone. Jungwon (the fifth attached image's face) beside her in a suit jacket, composed, a faint smile. Haechan (the fourth attached image's face) across from her, both hands raised in surrender, grinning. Yunjin (the sixth attached image's face) further down, pointing at someone and laughing. Along the rest of the table, softer and less detailed: a grey-haired driver in a jacket and a tie he keeps touching, a young guard laughing into his rice, a nervous young man at the very end, a quiet woman in a grey cardigan, a tiny older cook perched on the edge of a chair by the kitchen door, and a stout housekeeper standing with a ladle. Loud, warm, a house eating together. Keep the faces clear of the edges.
+```
+
+**[ ] strangers · Eomma · the pins** *(optional)*  
+For Eomma's second hangout (early March, daytime), in Solar's room at the dressing table.  
+Attach: Solar (her strangers look), Eomma, and `epi-s-her-room.png` (for the room only) if it's made  
+Save as: `epi-s-pins-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A young woman's bedroom in a wealthy old Korean house on a grey winter day, pale light from the window. Solar (the first attached image's face) sitting at a dressing table in a soft sweater, her long hair still damp, eyes lowered. Her mother (the second attached image's face) standing behind her in a cream cardigan and pearl stud earrings, her own hair low and smooth and perfect, twisting Solar's hair up with careful hands, a few hairpins held between her lips. In the mirror their two faces, one above the other, almost the same face. On the dressing table a small lacquer dish of hairpins, a brush, a towel, and one long black hairpin laid apart on its own. Quiet, formal, tender. Keep the faces clear of the edges.
+```
+
+### The epilogue: Stay
+
+**[ ] Stay · 3/27 · hanami at Seaside Park** *(optional)*  
+The hanami under the cherry trees at Port Island Seaside Park (every route).  
+Attach: Solar, Yukari, Junpei, Akihiko, Mitsuru, Fuuka, Aigis, Ken, Koromaru, `bg/port-island-seaside-park.webp` (for the place only)  
+Save as: `epi-st-hanami-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A warm Saturday at the end of March under a row of cherry trees in full bloom along a seawall by the bay, petals drifting down, families on blue tarps all along the path, bright soft spring sunlight. On their own blue tarp with their shoes off, a group of friends: Solar (the first attached image's face; long dark hair, a light spring cardigan over a dress) in the middle, laughing out loud, holding a paper cup of orange juice, with a dog dropping a ball into her lap; Koromaru (the ninth attached image; a white Shiba Inu) is the dog, with Ken (the eighth attached image's face; a boy of about eleven) a little way off on the grass, hands on hips. Yukari (the second attached image's face; a pink spring jacket) glances over at Solar's laugh, pleased. Junpei (the third attached image's face; a baseball cap) lies on his back groaning with a hand on his stomach. Akihiko (the fourth attached image's face; a grey hoodie) holds a bento box, looking a bit queasy. Mitsuru (the fifth attached image's face; elegant spring coat) kneels upright beside a lacquered three-tier lunch box with a small winning smile. Fuuka (the sixth attached image's face) has petals in her hair without knowing. Aigis (the seventh attached image's face) sits very straight, looking up at the blossoms. Bright, easy, a perfect ordinary day. Keep the faces clear of the edges.
+```
+
+**[ ] Stay · Akihiko · the roof garden** *(optional)*  
+Akihiko's route hangout, an April evening in the dorm's roof garden.  
+Attach: Solar, Akihiko, `bg/iwatodaidorm-roof-planters.webp` (for the place only)  
+Save as: `epi-st-roof-garden-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. The roof garden of a school dormitory on a windy April evening: planters along the railing green again with herbs and a row of little white flowers, a bench, a watering can tipped over by their feet with water spreading on the tiles, the bay and the city lights beyond the railing, the light over the stairwell door just gone off, the sky dark blue. Akihiko (the second attached image's face; silver hair, a plain T-shirt in the cold wind, scarred knuckles) holds both of Solar's wrists in his hands, having just done up the straps of her gloves. Solar (the first attached image's face; long dark hair blowing, a cardigan over a T-shirt) wears a pair of small red boxing gloves worn pale at the knuckles, and she has stepped in so her forehead rests against his collarbone; he is bending his head down toward her hair, half laughing, his arms beginning to close around her. Close, surprised, gentle. Keep the faces clear of the edges.
+```
+
+**[ ] Stay · Shinjiro · the hospital courtyard** *(optional)*  
+Shinjiro's route hangout, the courtyard at Tatsumi Memorial (the version where he goes down to it).  
+Attach: Solar, Shinjiro, `bg/hospital-outside.webp` (for the light only)  
+Save as: `epi-st-courtyard-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A small hospital courtyard on a spring afternoon: one very old cherry tree in full bloom over a bench in the middle, petals coming down through pink light, paved paths, hospital windows around the courtyard. Shinjiro (the second attached image's face; long brown hair under a dark beanie knocked a little crooked, a hospital shirt, a blanket over his knees) sits in a wheelchair under the tree, his right arm raised and trembling with effort, holding a single petal out between his thumb and forefinger. Solar (the first attached image's face; long dark hair, a light spring coat) stands just behind and beside the chair, one hand on its handle, the other lifting toward the petal, looking down at him. Quiet, hard-won, full of light. Keep the faces clear of the edges.
+```
+
+### The epilogue: the true coda
+
+**[ ] The true coda · 3/8 · the quad in the first snow** *(optional)*  
+The coda's Syracuse morning, walking to the last final.  
+Attach: Solar (her Runners look), Hanni, Hyein, `bg/epi-r-quad-day.webp` (for the place only)  
+Save as: `epi-tr-first-snow-cg.png`
+```
+Persona 3 Reload style event CG, 16:9, no text. A university quad on a December morning in the first real snow of the year, big slow flakes coming down from a white sky, the snow on the lawn untouched except for three lines of fresh boot prints, old stone college buildings and a chapel behind, a lamppost leaning a little to the right. Three girls walk toward the viewer arm in arm. Solar (the first attached image's face; long dark hair down and loose with snow in it, a long winter coat and a scarf) in the middle, laughing out loud at nothing, head tipped back. Hanni (the second attached image's face; a puffer jacket and earmuffs) on her left holding two takeaway coffees, glancing sideways at her. Hyein (the third attached image's face; a stylish coat with her scarf pulled up over her mouth) on her right with her arm through Solar's. Bright, soft, a new beginning. Keep the faces clear of the edges.
+```
 
 ---
 
 ## 2. Places (Gemini)
 
+### Iwatodai (the main game)
+
+**[ ] The dorm kitchen at night** *(optional)*  
+The dorm kitchen for its evening and late-night scenes, about 70 of them: dish duty, cooking lessons, one in the morning at the stove (now the daytime kitchen, darkened or not darkened at all).  
+Attach: `bg/iwatodaidorm-kitchen.webp` (edit this picture)  
+Save as: `iwatodaidorm-kitchen-night.png`
+```
+Edit this picture. Keep the same dorm kitchen, angle and art style; change it to late evening: the window above the sink is dark blue-black with the faint lights of the neighbourhood, the main ceiling light is off and the kitchen is lit warm by the small light over the stove and the light under the cabinets. A lidded pot on the stove, a good pot hanging on its hook, a folded tea towel on the counter, a clean spoon on the towel, a phone left on the windowsill, a few stacked food containers by the doorway, the doorway to the dark hall with tiled floor. Quiet, warm, late, a house where most people have gone to bed. 16:9, no people, no readable text.
+```
+
+**[ ] The dorm front at night** *(optional)*  
+The dorm's front steps and street after dark, about 47 scenes: people waiting on the steps, pebbles at the window, goodnights at the gate (now the daytime front, often not darkened).  
+Attach: `bg/iwotodaidorm-outside.webp` (edit this picture)  
+Save as: `iwatodaidorm-front-night.png`
+```
+Edit this picture. Keep the same dorm building, front steps, railings and angle, and the same art style; remove every person and the logo in the corner; change it to night: a deep blue sky, the porch light glowing warm above the front door, light through the glass in the door and from two or three upstairs windows, the small concrete overhang above the steps, the gate at the bottom of the path, a streetlight across the road throwing an amber pool on the pavement, the street empty and quiet, a bicycle shed across the street in shadow. Calm, late, a little lonely, the place people sit and wait. 16:9, no people, no readable text.
+```
+
+**[ ] The dorm lounge at Christmas** *(optional)*  
+The lounge in the last week before Christmas (the year-end party, Christmas Eve), when its evening scenes say lights are strung across the windows and snow is falling outside.  
+Attach: `bg/iwatodaidorm-livingroom-night.webp` (edit this picture)  
+Save as: `iwatodaidorm-livingroom-christmas.png`
+```
+Edit this picture. Keep the same dorm lounge, furniture, angle and art style; change it to Christmas week at night: three strings of warm fairy lights hung across the lounge windows, each sagging in the middle like a smile, so the room glows like the inside of a paper lantern; big slow snowflakes falling past the windows against an orange city night sky; a few paper decorations and a little tinsel, a blanket over the back of the couch, a bowl of tangerines on the coffee table. Warm, crowded-feeling even when empty, the end of the year. 16:9, no people, no readable text.
+```
+
+**[ ] The dorm rooftop on a snowy night** *(optional)*  
+The dorm roof on winter nights after snow (late December and January scenes that walk through fresh snow to the railing).  
+Attach: `bg/iwatodaidorm-roof-night.webp` (edit this picture)  
+Save as: `iwatodaidorm-roof-night-snow.png`
+```
+Edit this picture. Keep the same dorm rooftop, railing, view and art style; change it to a winter night after snowfall: the roof floor covered in clean untouched white snow, one line of footprints from the stairwell door to the railing, snow lying along the top of the railing and on the water tank, the stairwell door propped open with a brick and spilling a slice of warm light onto the snow, the city lights and the black bay below, a few flakes still drifting. Very cold, very still, beautiful. 16:9, no people, no readable text.
+```
+
+**[ ] The laundry room at 3 a.m.** *(optional)*  
+The dorm laundry room for its late-night scenes (sitting up on the dryer at three in the morning); now the daytime room.  
+Attach: `bg/iwatodaidorm-laundryroom.webp` (edit this picture)  
+Save as: `iwatodaidorm-laundryroom-night.png`
+```
+Edit this picture. Keep the same dorm laundry room, machines, angle and art style; change it to three in the morning: the only light is one humming fluorescent tube, a little cold and greenish, with deep shadows in the corners; a dryer running with its round window lit and clothes tumbling inside; a shelf above the machines with a bottle of detergent and a single lost sock; the doorway to a pitch-dark hallway. Sleepless, private, oddly cosy. 16:9, no people, no readable text.
+```
+
+**[ ] The dorm dining room at night** *(optional)*  
+The dorm dining room for its dinner and late tutoring scenes (now the daytime room).  
+Attach: `bg/iwatodaidorm-diningroom.webp` (edit this picture)  
+Save as: `iwatodaidorm-diningroom-night.png`
+```
+Edit this picture. Keep the same dorm dining room, long table, chairs, angle and art style; change it to evening: the windows dark, the room lit warm by the hanging lamp over the long table, a pool of light on the table and dimmer edges; a stack of math workbooks and a pencil case at one end of the table, the doorway through to the kitchen lit, the foot of the stairs visible past the end of the table. Homely, after-dinner quiet. 16:9, no people, no readable text.
+```
+
+**[ ] The dorm stairs at night** *(optional)*  
+The dorm's stairwell for its 3 a.m. scenes (meeting on the landing, sitting six steps up); now the plain hallway stands in.  
+Attach: `bg/iwatodaidorm-hallway.webp` (for the style only)  
+Save as: `iwatodaidorm-stairs-night.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the stairwell of an old two-storey-plus Japanese student dormitory at three in the morning, seen from the bottom of a flight looking up to a half landing where the stairs turn: worn wooden steps, a wooden handrail along the wall, the second-floor landing above lit only by a small night light in the wall and a little moonlight from a window on the turn, the rest in soft blue shadow; at the bottom of the flight, a small slant-roofed cupboard door set under the stairs; the wall beside the steps plain, good for leaning against. Hushed, the whole building asleep. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] Paulownia Mall: the central atrium** *(optional)*  
+The mall's atrium with the fountain, used by about 18 daytime and after-school scenes (now a generic mall interior).  
+Attach: `bg/paulownia-mall.webp` (for the style only)  
+Save as: `paulownia-atrium.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the central atrium of a bright Japanese shopping mall in the afternoon: a round fountain in the middle with a wide stone rim you can sit on, a tall planter at the far side of it, glass skylights high overhead letting in daylight, two storeys of shop fronts around a balcony walkway, a crêpe stand with a striped awning and a menu board, a couple of benches and a vending machine near the doors. Lively, clean, a place to meet friends after school. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] Paulownia Mall: the atrium at dusk** *(optional)*  
+The same atrium for its evening scenes (skylights turning pink, then blue); now the generic mall interior, darkened.  
+Attach: the new `paulownia-atrium.png` (edit this picture)  
+Save as: `paulownia-atrium-evening.png`
+```
+Edit this picture. Keep the same mall atrium, fountain, angle and art style; change it to early evening: the skylights overhead gone pink fading to deep blue, the shop fronts lit warm from inside, the fountain lit from under the water, the crêpe stand's shutter half down. Soft, end-of-day, a little wistful. 16:9, no people, no readable text.
+```
+
+**[ ] Paulownia Mall: the atrium at Christmas** *(optional)*  
+The atrium in December (shopping lists, a choir, Christmas Eve under the tree).  
+Attach: the new `paulownia-atrium.png` (edit this picture)  
+Save as: `paulownia-atrium-christmas.png`
+```
+Edit this picture. Keep the same mall atrium, fountain, angle and art style; change it to Christmas: a tall plastic Christmas tree standing in the middle of the fountain's water, covered in lights, with the planter rim at its base; tinsel wound around every pillar; garlands along the balcony railings; a small machine high above the tree drifting little white paper snowflakes down through the air; the skylights dusky blue, everything glowing with warm lights. Cheesy, cheerful, crowded-feeling. 16:9, no people, no readable text.
+```
+
+**[ ] Paulownia Mall: the photo booth** *(optional)*  
+The sticker-photo booth in the mall, used by several links (now a generic mall interior).  
+Attach: `bg/gamepanic-inside.webp` (for the style only)  
+Save as: `paulownia-photo-booth.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the inside of a Japanese sticker-photo booth (purikura): a tiny space with a bright pink-white backdrop, soft pink light from the ring light and flash panels, a camera lens and a touch screen counting down set into the front wall, a short curtain at the entrance pulled half open onto the mall outside, a little shelf with two stylus pens on cords. Cramped, giddy, close quarters. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The alley behind Port Island Station** *(optional)*  
+The back alley where one link spends his evenings, about 12 scenes (now a generic night street).  
+Attach: `bg/portisland-station-night.webp` (for the style only)  
+Save as: `portisland-back-alley-night.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a narrow back alley behind a city station at night, where the restaurants put out their bins: wet concrete, a row of bins and stacked plastic crates (one crate with a gap underneath where a stray cat could shelter), a lit drinks vending machine humming against one wall, one dry stretch of wall under a small overhang, a broken shop sign, a radio-lit window upstairs, and at the mouth of the alley the main street's neon smearing pink, green and the cold white of a pachinko parlour across the wet ground. Rough, lonely, but somehow safe. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The back streets behind Port Island Station** *(optional)*  
+The quiet streets between the station and the bay for one link's walks home, about 8 evening scenes (now a generic night street).  
+Attach: `bg/location-1.webp` (for the style only)  
+Save as: `portisland-back-streets.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a quiet residential back street behind a city station in the early evening, sloping gently down toward the bay: little old houses with lit windows, a small bakery and a dry cleaner's with their shutters half down, telephone wires overhead, a convenience store on the corner ahead glowing bright like a fish tank, a cat sitting on top of a low garden wall, the dark water of the bay just visible at the far end. Cold air, calm, a walk you'd want to take slowly. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] Port Island Station concourse in the evening** *(optional)*  
+The station concourse with the public piano, for about 15 evening scenes (now the daytime concourse, darkened).  
+Attach: `bg/station-concourse-busy.webp` (edit this picture)  
+Save as: `station-concourse-evening.png`
+```
+Edit this picture. Keep the same station concourse, ticket gates, departure board, angle and art style; remove every person; change it to six in the evening in winter: the windows dark outside, the concourse lit by warm overhead lights reflecting on the wet floor, umbrellas' drips on the tiles; add an upright public piano against the wall near the gates, painted all over with fat cartoon seagulls (one of them frowning), with a bench in front of it; a small bakery stand by the far gate and an oden kiosk with steam rising. Busy-hour atmosphere without the crowd, music waiting to happen. 16:9, no people, no readable text.
+```
+
+**[ ] Seaside Park at sunset** *(optional)*  
+Port Island's seaside park for its evening scenes (sitting on the rail at seven, a ferry crossing); now the daytime park, darkened.  
+Attach: `bg/port-island-seaside-park.webp` (edit this picture)  
+Save as: `port-island-seaside-park-sunset.png`
+```
+Edit this picture. Keep the same seaside park, railing, paths and angle, and the same art style; change it to sunset turning to dusk: the sky orange low over the water and violet higher up, the bay shining like metal, a ferry crossing in the distance with all its windows lit, the park lamps just coming on, long shadows on the grass. Windy, open, a place to breathe. 16:9, no people, no readable text.
+```
+
+**[ ] Seaside Park: the winter rink at night** *(optional)*  
+The outdoor ice rink that appears in Seaside Park in December and January, for its night-skating scenes.  
+Attach: `bg/port-island-seaside-park.webp` (for the place and style)  
+Save as: `seaside-park-rink-night.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a temporary outdoor ice rink in a seaside park at night after closing: a long white oval of ice on the grass by the water, a low plywood barrier around it painted with cheerful snowmen, loudspeakers on poles switched off, only half the floodlights still on so one end is bright and the far end dim, a small rental booth shuttered except for one lit window, a bench by the gate for lacing skates, and beyond the rink the bay gone black and flat. Cold, hushed, the ice hissing. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] Seaside Park: the winter rink by day** *(optional)*  
+The same rink in daylight, for its December after-school scenes (towing a beginner along the barrier).  
+Attach: the new `seaside-park-rink-night.png` (edit this picture)  
+Save as: `seaside-park-rink-day.png`
+```
+Edit this picture. Keep the same rink, snowman barrier, booth and angle, and the same art style; change it to a clear winter afternoon: pale blue sky, low sun glinting on the ice, the floodlights off, the rental booth open with skates on racks, loudspeakers on, the bay bright and grey-blue behind. Cheerful, cold, busy-feeling. 16:9, no people, no readable text.
+```
+
+**[ ] Moonlight Bridge at night** *(optional)*  
+The big bridge for its evening and night scenes, about 15 (walking home over it, the north-side walkway in the wind); now the day art tinted blue.  
+Attach: `bg/moonlightbridge.webp` (edit this picture)  
+Save as: `moonlightbridge-night.png`
+```
+Edit this picture. Keep the same bridge, angle and art style; change it to night: the bridge lights on in a long string out over the water, the cables and the tall north tower lit from below, a small red beacon glowing at the top of the tower, traffic light trails on the road, the pedestrian walkway with its railing along the side, the water wide and black on both sides, the whole city ahead laid out in lights. Windy, high up, huge and lonely. 16:9, no people, no readable text.
+```
+
+**[ ] Tatsumi Memorial: the treatment room** *(optional)*  
+A small treatment room at the hospital, for one link's night-shift scenes (now the patient room stands in).  
+Attach: `bg/hospital-hallway-night.webp` (for the style and light)  
+Save as: `hospital-treatment-room.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a small hospital treatment room late at night: an examination bed with a paper sheet in the corner, a steel counter with two sinks side by side and a little steel mirror above one of them, a tray with gauze, a suture kit and a small penlight, an adjustable exam lamp, glass-fronted cabinets of supplies, the blinds closed, the room lit only by the exam lamp and the cool light under the cabinets, a dark corridor glimpsed through the door's window. Calm, clinical, very late. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] Tatsumi Memorial: a ward room at night** *(optional)*  
+The third-floor ward room for its evening visits (a chair by the window, the night nurse down the hall); now the day room, darkened.  
+Attach: `bg/hospital-room.webp` (edit this picture)  
+Save as: `hospital-ward-night.png`
+```
+Edit this picture. Keep the same hospital room, bed, angle and art style; change it to evening visiting hours: the window dark with city lights far off, the overhead light off and only the small reading light over the bed on, a visitor's chair pulled up by the window, a get-well bag or two on the side table, the door ajar to a dim corridor with a faint glow from the nurses' station. Quiet, patient, a long wait. 16:9, no people, no readable text.
+```
+
+**[ ] The riverside on a snowy night** *(optional)*  
+The river path at night in snow (Christmas Eve under the flickering lamppost, January nights).  
+Attach: `bg/iwatodai-riverside-night.webp` (edit this picture)  
+Save as: `iwatodai-riverside-night-snow.png`
+```
+Edit this picture. Keep the same river path, lamppost, bench and angle, and the same art style; change it to a snowy winter night: the path empty and blue with fresh snow, a cap of snow on top of the lamppost, its tired amber light on the snow and on the black water, the bench covered in snow, big slow flakes falling through the light. Quiet, magical, cold hands. 16:9, no people, no readable text.
+```
+
+**[ ] Yeobo's Cafe after closing** *(optional)*  
+The café for its evening scenes at closing time (chairs up, one light left on); now the daytime café, darkened.  
+Attach: `bg/yeobos-cafe.webp` (edit this picture)  
+Save as: `yeobos-cafe-night.png`
+```
+Edit this picture. Keep the same café, counter, furniture and angle, and the same art style; change it to after closing at night: chairs turned up on every table but one, the only light the warm lamp over the till, the big front windows dark outside and fogged gold at the edges from the warmth inside, the glass pastry case nearly empty, a tray and two plates on the one free table, the bell above the door. Like the inside of a lantern someone forgot to blow out. 16:9, no people, no readable text.
+```
+
+**[ ] Kirijo Guesthouse: the front by day** *(optional)*  
+The guesthouse's front step in daylight, for its after-school scenes (now an unrelated grand building stands in).  
+Attach: `bg/kirijo-guesthouse-front-night.webp` (edit this picture)  
+Save as: `kirijo-guesthouse-front-day.png`
+```
+Edit this picture. Keep the same guesthouse entrance, front steps, door and street, the same angle and art style; change it to a cold clear afternoon: pale winter sun, soft shadows, the entrance lights off, a clean front step where someone could sit with a clipboard, the curb and the quiet street in front, the station area just visible down the road. Neat, calm, a little formal. 16:9, no people, no readable text.
+```
+
+### The epilogue: Runners
+
+**[ ] Solar's room at the Alpha Phi house** *(optional)*  
+Her own room in the Runners epilogue, every morning there (now a borrowed purple bedroom stands in).  
+Attach: `bg/epi-r-alpha-kitchen.webp` (for the style only)  
+Save as: `epi-r-her-room.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a college girl's bedroom on the second floor of an old American sorority house in winter, morning: a bed with a pink duvet, pink curtains half open on a window with snow on the sill, an old cast-iron radiator under the window, a plaster ceiling with one long thin crack in it, a desk with a desk lamp, a laptop and a stack of textbooks, a closet door ajar, fairy lights unlit over the headboard, a few photos tucked into a mirror frame. Soft grey-white snow light coming in through the pink curtains. Lived in, a little girly, quiet. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] Solar's room at the Alpha Phi house, at night** *(optional)*  
+The same room for its late-night scenes (now a tinted borrowed bedroom).  
+Attach: `epi-r-her-room.png` (the picture to edit)  
+Save as: `epi-r-her-room-night.png`
+```
+Edit this picture. Keep the same bedroom, angle and art style; change it to late night: the room dark except the desk lamp, which throws a warm pool over the desk and the laptop; the curtains open a little on black night with snow ticking against the glass; a phone face down on the desk; the radiator a dark shape under the window; the pink duvet grey-blue in the shadow. 16:9, no people, no readable text.
+```
+
+**[ ] The Alpha Phi stairs: the second landing** *(optional)*  
+The turn of the main staircase in the sorority house, for its afternoon scene (now the house's snowy outside stands in).  
+Attach: `bg/flashback-alphaphi-house.webp` (for the style only)  
+Save as: `epi-r-alpha-landing.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the second landing of the old wooden staircase inside a big American sorority house, the place where the stairs turn back on themselves so you can't see the floor above or below: a dark polished banister, worn carpet runner on the treads, a tall landing window with snow coming down slowly outside, framed composite photos of past members on the wall, and at the top of the next short flight a long upstairs hallway with doors along it, the last door at the far end. Grey four o'clock December light. Quiet, watchful, a little old-fashioned. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The Alpha Phi stairs at night** *(optional)*  
+The same landing for its midnight and evening scenes.  
+Attach: `epi-r-alpha-landing.png` (the picture to edit)  
+Save as: `epi-r-alpha-landing-night.png`
+```
+Edit this picture. Keep the same staircase, landing, angle and art style; change it to midnight: the house asleep, no lamps on, blue snow light through the landing window lying across the stairs, the banister catching a little of it, the long upstairs hallway dark, every door shut and no light under any of them. 16:9, no people, no readable text.
+```
+
+**[ ] Haechan's room at the Sigma house** *(optional)*  
+His room in the fraternity house, for its night scenes (now the Sigma party downstairs stands in).  
+Attach: `bg/epi-r-studio-4b.webp` (for the style only)  
+Save as: `epi-r-sigma-his-room.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a college boy's bedroom in an old fraternity house at night in winter: a desk with a laptop on it, a yellow sticky note stuck over the laptop's camera, studio headphones, a small keyboard controller, a soldering iron and loose cables on a tray, a desk lamp that is the only light in the room; a desk chair turned out from the desk; an unmade bed with dark sheets; the blinds open on a window with snow falling outside and a white yard below; a hoodie over the back of the chair. Warm lamp light on one side, blue snow light on the other. Private, quiet, a bit messy. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The Extracurricular Building's back stairs** *(optional)*  
+The stairwell and hallway between the eSports lab and Studio 4B (now the studio itself stands in).  
+Attach: `bg/epi-r-studio-4b.webp` (for the style only)  
+Save as: `epi-r-studio-stairs.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the back stairwell of an old university building at night: cinderblock walls painted the color of weak tea, metal handrails, a half landing between two floors with a window gone black with night, the stairs going down to a ground-floor hallway with a faint blue glow of computer screens and up to a second-floor hallway lined with music practice-room doors, one door near the top with a small square window lit warm from inside. Buzzing fluorescent light, scuffed floors, a fire extinguisher on the wall. Empty, late, a little lonely. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] Hanni and Hyein's room** *(optional)*  
+The two girls' shared room in the sorority house (now a borrowed pink bedroom stands in).  
+Attach: `bg/epi-r-alpha-kitchen.webp` (for the style only)  
+Save as: `epi-r-hanni-hyein-room.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a shared bedroom in an old sorority house, two halves: on one side a neat bed with a planner and a binder on it; on the other side a desk taken over by fabric, a sewing machine, bolts of velvet in bottle green and oxblood draped over a chair, a corkboard over the desk pinned with fashion sketches of headless figures in velvet, and a dress form standing in the corner wearing half a jacket. Fairy lights strung along the wall, a soft rug on the floor big enough to sit on, a radiator under a window with snow outside and early winter dusk. Warm, cluttered, a safe place. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
 ### The epilogue: HOAX
 
-**[ ] The Kims' living room at Christmas** *(optional)*  
-Solar's family home in the HOAX epilogue (now the dorm lounge stands in).  
-Attach: `bg/pink-bedroom-2.webp` (for the style only)  
-Save as: `epi-h-kim-house.png`
+**[ ] The Kims' living room by day** *(optional)*  
+The same family living room for its mornings and Christmas afternoon (now the lamp-lit night version shows all day).  
+Attach: `bg/epi-h-kim-house.webp` (the picture to edit)  
+Save as: `epi-h-kim-house-day.png`
 ```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the living room of an ordinary Korean family apartment at Christmas: a small decorated tree with mismatched ornaments, a sofa with a blanket thrown over it and a very large white dog bed beside it, a low table with four paper cups of hot cocoa, a shoe rack and the front door visible down a short hall, a framed family photo, a heated floor's warm glow, snow at the balcony window. Warm, a little cluttered, a busy family's house. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] Jihoon's house** *(optional)*  
-Jihoon's big, empty family house in the HOAX epilogue (now a Kirijo flat stands in).  
-Attach: `bg/kirijo-flat.webp` (for the style only)  
-Save as: `epi-h-jihoon-house.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the open living and dining room of a big, expensive family house lived in by one teenage boy: a long dining table nobody eats at with the chairs still pushed in, family photos on a sideboard, a huge sofa with a games controller on it, pizza boxes stacked by the door, an untouched coffee table book, and through glass doors a porch with frozen flower pots in the snow. Night, one lamp on. Expensive and lonely. Match the painted style of the attached image. Keep everything important away from the edges.
+Edit this picture. Keep the same living room, Christmas tree, sofa, dog bed, table, angle and art style; change it to a grey snowy winter day: flat white daylight coming in through the balcony window, snow lying on the balcony rail and roofs outside, all the lamps off, the tree's lights off, the room lit only by the daylight, a little fog at the bottom of the window glass from the heating. 16:9, no people, no readable text.
 ```
 
-**[ ] The winter street and the vending machines** *(optional)*  
-The convenience store on the town street in the HOAX epilogue (now Port Island's konbini stands in).  
-Attach: `bg/port-island-konbini-night.webp` (for the style only)  
-Save as: `epi-h-winter-street.png`
+**[ ] The winter street by day** *(optional)*  
+The convenience store and the vending machines for their daytime hangouts (now the night version shows all day).  
+Attach: `bg/epi-h-winter-street.webp` (the picture to edit)  
+Save as: `epi-h-winter-street-day.png`
 ```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a small Korean town street at night in falling snow: a convenience store with a bright window and a stack of plastic tables outside, and in front of it a row of five drink vending machines, the third from the left lit brighter than the others with a faint glow on the snow in front of it. Christmas lights strung across the street, a bus stop, footprints in the snow. Match the painted style of the attached image. Keep everything important away from the edges.
+Edit this picture. Keep the same street, convenience store, row of vending machines, plastic tables, bus stop, angle and art style; change it to a cold overcast afternoon: soft grey daylight, light snow falling, the store window lit only faintly, the Christmas lights across the street switched off, snow piled at the curb and trodden into paths on the pavement, the vending machines lit only softly in the daylight. 16:9, no people, no readable text.
 ```
 
-**[ ] The winter-break party** *(optional)*  
-A third-year's house party over winter break, in the HOAX epilogue (now a nightclub stands in).  
-Attach: `bg/flashback-frat-party.webp` (for the style only)  
-Save as: `epi-h-party.png`
+**[ ] Solar's room at the Kims'** *(optional)*  
+Her own bedroom at home in the HOAX epilogue (now a borrowed lilac bedroom stands in).  
+Attach: `bg/epi-h-kim-house.webp` (for the style only)  
+Save as: `epi-h-her-room.png`
 ```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the big living room of an expensive house whose owners are away, mid-party at night: coloured party lights, a speaker on the kitchen island, red cups on every surface, coats piled on a sofa, a staircase going up, a sliding door open onto a snowy deck. Loud and warm and a little out of control. Match the painted style of the attached image. Keep everything important away from the edges.
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a Korean high-school girl's bedroom in a family apartment on a winter morning: a single bed with a duvet and a dog-hair-covered blanket at the foot, a nightstand with a digital alarm clock with red numbers, a desk with a calculus textbook open on it and a Sanrio pencil cup, a desk chair with a school blazer thrown over it, a romantic-comedy movie poster on the wall with one corner peeling, a small radiator under the window, snow on the windowsill outside, a warm heated floor with a rug. Soft white snow light. Cosy, a little messy, a teenager's room. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] Solar's room at the Kims', at night** *(optional)*  
+The same room for its many late-night scenes.  
+Attach: `epi-h-her-room.png` (the picture to edit)  
+Save as: `epi-h-her-room-night.png`
+```
+Edit this picture. Keep the same bedroom, angle and art style; change it to late night: the main light off, only a small desk lamp on, the alarm clock's red numbers glowing on the nightstand, the window dark blue with snow falling past it and the lit windows of other apartment blocks far off, the duvet rumpled. 16:9, no people, no readable text.
+```
+
+**[ ] Hanlim's Christmas lights** *(optional)*  
+The town's Christmas lights in the square and on the main street, Christmas Eve and after (now Port Island at Christmas stands in).  
+Attach: `bg/epi-h-winter-street.webp` (for the style only)  
+Save as: `epi-h-christmas-lights.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a small Korean town's main street and square at night in winter, decorated for Christmas: a long tunnel of warm white and blinking blue lights over the street, an arch of white and gold lights over the square, a round fountain with no water in it, a bench beside it, a glowing reindeer light sculpture with one leg out, a big inflatable snowman leaning forward, snow on the ground and on the benches. A little tacky, very bright, warm against the dark. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] Jihoon's porch** *(optional)*  
+The front porch of Jihoon's family house, for its night scenes (now a generic night street stands in).  
+Attach: `bg/epi-h-jihoon-house.webp` (for the style only)  
+Save as: `epi-h-jihoon-porch.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the front porch of a big, expensive family house in a Korean town at night in winter: a wide wooden porch with a rail, six clay flowerpots lined up along the rail with frozen soil and brown dead stalks in them, a porch light on by the front door, the big front door, a path down through the snowy front garden to the gate, a full white moon over the roof. Quiet, cold, a big house with almost nobody in it. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The Hanlim gym on the hearing day** *(optional)*  
+The school gym set up for the hearing, the afternoon of 1/11 (now the gym from the year's flashback stands in).  
+Attach: `bg/flashback-hamlim-gym.webp` (the picture to edit)  
+Save as: `epi-h-gym-hearing.png`
+```
+Edit this picture. Keep the same gym, the blue and silver decorations, the string lights, the angle and art style; change it to a winter afternoon set up for a school meeting: grey daylight from the high windows, the bleachers pulled out along both sides, rows of folding chairs on the floor, a podium with a microphone in the middle, a long table with chairs on the left side of the floor, and a ballot box on its own small folding table in front of the stage. Some of the balloons have gone soft and hang low. 16:9, no people, no readable text.
 ```
 
 ### The epilogue: strangers
 
-**[ ] The Lee kitchen** *(optional)*  
-The kitchen of Solar's family home in the strangers epilogue (now the dorm kitchen stands in).  
+**[ ] The annex by day** *(optional)*  
+The annex at the bottom of the Lee garden in daylight, in the strangers epilogue (now the night picture shows by day too).  
+Attach: `bg/epi-s-annex.webp`  
+Save as: `epi-s-annex-day.png`
+```
+Edit this picture. Keep the same small concrete annex, garden, pine branches, stone wall, house above and harbor below, the same angle and the same art style; change it to a grey winter afternoon: flat pale daylight under a low overcast sky, the heavy steel door shut, the bare bulb off, the old silver transistor radio still on the window sill, frost in the shade of the wall, the red lanterns on the house above unlit, the harbor below grey and quiet with no lights. 16:9, no people, no readable text.
+```
+
+**[ ] The mudflats at midnight** *(optional)*  
+The low tide at night in the strangers epilogue (now the grey daytime tide stands in).  
+Attach: `bg/epi-s-harbor-tide.webp`  
+Save as: `epi-s-mudflats-midnight.png`
+```
+Edit this picture. Keep the same seawall, landing steps, mudflats, channels and angle in the same art style; change it to midnight: the water gone out all the way to the horizon, a huge pale moon sitting low on the horizon where the sea line would be, much larger than a normal moon, the wide wet mud ribbed and glittering under it, every channel empty and shining, a faint green tint in the moonlight, a clear dark sky, every lamp and window on the shore dark. Still and silent. 16:9, no people, no readable text.
+```
+
+**[ ] Her room** *(optional)*  
+Solar's bedroom in her family's house in the strangers epilogue (now an elegant bedroom from elsewhere stands in).  
+Attach: `bg/epi-s-lee-kitchen.webp` (for the style only)  
+Save as: `epi-s-her-room.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a young woman's bedroom upstairs in a wealthy old Korean house by the sea, on a grey winter day: a wide bed with a pale quilt, a dressing table with a mirror and a small lacquer dish of hairpins on it, a heavy wooden wardrobe, a desk with a small ticking clock and a lamp, a rug on the heated floor, warm wood and paper-screen details. A big window looks down over a garden of bare trees and onggi jars to a small concrete hut at the bottom, and past the garden wall to the grey harbor and its cranes. Quiet, tidy, expensive, a little lonely. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] Her room at night** *(optional)*  
+The same bedroom at night, in the strangers epilogue (now a tinted day picture stands in).  
+Attach: `epi-s-her-room.png` (the picture above, once it's made)  
+Save as: `epi-s-her-room-night.png`
+```
+Edit this picture. Keep the same bedroom, furniture and angle in the same art style; change it to late at night: only the desk lamp on, a small warm pool of light, the rest of the room in deep blue shadow, the window black with the room faintly reflected in it, and through it the dark garden going down to the hut at the bottom, where one tiny orange radio dial glows on a window sill, and the harbor lights beyond. Frost at the corners of the glass. 16:9, no people, no readable text.
+```
+
+**[ ] The stairs at night** *(optional)*  
+The main staircase of the family house in the strangers epilogue, used before light and late at night (now a dormitory hallway stands in).  
+Attach: `bg/epi-s-lee-kitchen.webp` (for the style only)  
+Save as: `epi-s-stairs-night.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the old dark wooden staircase of a wealthy Korean house at night, seen from the landing looking down: worn polished stairs with a wooden banister, a long yellow shape of lamplight thrown up the stairwell from a study door left open at the bottom, stopping short of the landing; on the wall across the stairwell an old framed black-and-white photograph of a harbor full of fishing boats; a landing window showing a dark road and a gate with red lanterns below. Cold, hushed, the rest of the house asleep. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The garden at night** *(optional)*  
+The garden behind the family house in the strangers epilogue (now the front gate stands in).  
+Attach: `bg/epi-s-annex.webp`  
+Save as: `epi-s-garden-night.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the garden of the same house as the attached image, at night in deep winter, seen from the back step under the kitchen eave looking down the slope: a frozen gravel path, a row of onggi jars along the wall with frost on their lids, a plain wooden bench beside them, a bare persimmon tree and old pines, a red plastic bucket on the stone step in the foreground, and at the bottom of the garden the small concrete annex with an orange radio dial glowing on its sill. Beyond the garden wall the dark harbor and its lights. Lamp light from the house windows falls on the frost. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The garden by day** *(optional)*  
+The same garden in daylight, in the strangers epilogue (now the gate at night stands in).  
+Attach: `epi-s-garden-night.png` (the picture above, once it's made)  
+Save as: `epi-s-garden-day.png`
+```
+Edit this picture. Keep the same garden, path, jars, bench, trees, annex and angle in the same art style; change it to a pale winter afternoon: thin grey-gold daylight, a hazy sky, the radio dial off, the house windows unlit, three washing lines strung across the bottom of the garden with patterned rugs hanging over them, the harbor beyond the wall grey and calm. 16:9, no people, no readable text.
+```
+
+**[ ] The gate by day** *(optional)*  
+The family house's front gate in daylight, in the strangers epilogue (now the same gate at night shows by day too).  
 Attach: `bg/flashback-lee-house.webp`  
-Save as: `epi-s-lee-kitchen.png`
+Save as: `epi-s-gate-day.png`
 ```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the big kitchen inside the same traditional house as the attached image, early on a winter morning: a long scrubbed wooden table with mismatched chairs for ten, a huge rice cooker and a steaming kettle, a stove with a worn armchair beside it, onggi jars by the back door, and through the open back door a stone step with a red plastic bucket on it holding two orange koi under a skin of ice. A paper wall calendar by the door with a number circled. Warm lamp light against blue dawn at the windows. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] The annex** *(optional)*  
-The small building at the bottom of the garden in the strangers epilogue (now the house's gate stands in).  
-Attach: `bg/flashback-lee-house.webp`  
-Save as: `epi-s-annex.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the bottom of the garden of the same traditional house as the attached image, at night: a small square concrete annex with a heavy steel door standing open, a worn granite step in front of it, an old silver transistor radio on the window sill, a crane-patterned quilt visible on an iron bed inside, a bare bulb. Pine branches, frost on the ground, the house's red lanterns glowing up the slope behind, and the dark harbor and its lights below the garden wall. Quiet and cold. Match the painted style of the attached image. Keep everything important away from the edges.
+Edit this picture. Keep the same house, wall, gate, pines, path and harbor view, the same angle and the same art style; change it to a cold, clear February morning: thin winter sun, a pale sky, the red lanterns unlit, both leaves of the big wooden gate standing wide open, a small gatehouse door beside it, a frozen herb bed along the foot of the wall, the harbor below blue-grey with cranes in the distance. 16:9, no people, no readable text.
 ```
 
-**[ ] The mudflats** *(optional)*  
-The harbor at low tide in the strangers epilogue (now the harbor itself stands in).  
-Attach: `bg/flashback-incheon-harbor.webp`  
-Save as: `epi-s-harbor-tide.png`
+**[ ] The study** *(optional)*  
+The father's study in the family house in the strangers epilogue, used in the evenings (now a guesthouse lobby stands in).  
+Attach: `bg/epi-s-lee-kitchen.webp` (for the style only)  
+Save as: `epi-s-study.png`
 ```
-Edit this picture. Keep the same harbor, cranes, lights and angle in the same art style; change it to the dead low tide of a grey winter dawn: the water gone out to the horizon, wide shining mudflats in its place with channels of left-behind water, small boats lying tilted on the mud, a stone seawall with old landing steps going down onto the flats in the foreground. Cold, wide, empty. 16:9, no people, no readable text.
-```
-
-**[ ] The first full moon** *(optional)*  
-A promenade by the sea on a festival night in the strangers epilogue (now Port Island's pier stands in).  
-Attach: `bg/port-island-pier-night.webp` (for the light only)  
-Save as: `epi-s-daeboreum.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a Korean seaside promenade at night in winter, a railing along the sea wall, shuttered amusement rides (a pirate-ship swing ride) with coloured bulbs, food carts with steam rising, strings of paper lanterns, a big straw-and-pine bonfire tower on the beach below, and a huge full moon rising over the black sea. Festive, cold, a little lonely. Keep everything important away from the edges.
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: an old man's study in a wealthy Korean house in the evening: a heavy desk with a green-shaded lamp throwing a yellow circle over a wooden baduk board with black and white stones mid-game, the rest of the room left to the dark: shelves of old books and papers, a cracked leather armchair by a radiator, a clock on the wall, an old cassette player on a shelf, an ashtray, a folded newspaper and reading glasses on a cord, and the door held open by a heavy brass boat cleat used as a doorstop. Curtains drawn over a night window. Warm, close, a little smoky. Match the painted style of the attached image. Keep everything important away from the edges.
 ```
 
-**[ ] The street in the dust** *(optional)*  
-A city street in the yellow dust in the strangers epilogue (now a shopping street stands in).  
-Attach: `bg/shopping-street.webp` (for the style only)  
-Save as: `epi-s-dust.png`
+**[ ] The dining room** *(optional)*  
+The formal dining room of the family house in the strangers epilogue (now the dormitory dining room stands in).  
+Attach: `bg/epi-s-lee-kitchen.webp` (for the style only)  
+Save as: `epi-s-dining-room.png`
 ```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a Korean port-city street in early spring under a yellow-dust haze, the sky the colour of weak tea, the far end of the street fading into brown-gold air, a pedestrian crossing with its signal lit, a pharmacy with boxes of white face masks stacked in the window, shop signs blurred by the dust, a bus stop with a shelter. Muffled, flat light, everything slightly unreal. Keep everything important away from the edges.
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the formal dining room of a wealthy old Korean house in the evening: a very long dark wooden table with all its extra leaves in, set for eleven with good white plates, cups, silver spoons and chopsticks and bowls of soup and rice, a whole fish on a platter in the middle; a fine silk rug under the table, low warm lamps, a carved sideboard, a door through to the kitchen, black windows. Formal, warm, a house sitting down together. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] Yunjin's room** *(optional)*  
+The guest room Yunjin lives in at the family house in the strangers epilogue (now a pink bedroom from elsewhere stands in).  
+Attach: `bg/epi-s-lee-kitchen.webp` (for the style only)  
+Save as: `epi-s-yunjin-room.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: an old-fashioned guest room in a wealthy Korean house taken over by a young woman: flowered wallpaper, a heavy wardrobe, a framed print of cranes over the bed, four puffer jackets in different bright colours hung on the back of the door, a dresser buried in skincare bottles, photos of painted nails tucked round its mirror, a pink camera on a strawberry strap hanging off the bedpost, three pairs of men's reading glasses in a row on the windowsill, a laptop and a magazine on the rumpled duvet, a bedside lamp switched on. Grey winter light at the window. Cosy, cluttered, loved. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The car** *(optional)*  
+The inside of the family's car in the strangers epilogue (now a night street stands in).  
+Attach: `bg/epi-s-dust.webp` (for the style only)  
+Save as: `epi-s-car.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the inside of an older, very well kept black Korean luxury sedan, seen from the back seat: soft leather seats, the empty driver's seat, a folded newspaper and a green thermos on the passenger seat, a cloth tucked by the gear stick, and through the windscreen and side windows a harbor road on a grey winter day, cranes standing over the quays, a ferry terminal, the sea. Warm inside, cold outside, a little fog at the edges of the glass. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The car at night** *(optional)*  
+The same car in the evening, in the strangers epilogue (now a night street stands in).  
+Attach: `epi-s-car.png` (the picture above, once it's made)  
+Save as: `epi-s-car-night.png`
+```
+Edit this picture. Keep the same car interior, seats and angle in the same art style; change it to a winter night: the dashboard lights glowing softly, the heater's warm glow, rain on the windscreen with the wipers parked, the coast road outside dark with streetlights smeared orange and soft through the wet glass, the harbor lights far off. 16:9, no people, no readable text.
+```
+
+**[ ] Jungwon's room** *(optional)*  
+Jungwon's room in the west wing of the Yang house in the strangers epilogue (now a flat from elsewhere stands in).  
+Attach: `bg/epi-s-lee-kitchen.webp` (for the style only)  
+Save as: `epi-s-jungwon-room.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a severe, quiet young man's room in a grand old Korean house: a narrow bed made so tight it looks painted on, books shelved strictly by height, nothing at all on the walls, and by a big window a low wooden stand holding a thick kaya baduk board with two lidded stone bowls beside it and a game laid out halfway in black and white. A cushioned window seat. Through the window the grey bay on a winter day, and the far shore with a big house on it. Spare, still, like a held breath. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] Wolmido by day** *(optional)*  
+The seaside promenade on an ordinary winter day in the strangers epilogue (now Port Island's seaside park stands in).  
+Attach: `bg/epi-s-daeboreum.webp`  
+Save as: `epi-s-wolmido.png`
+```
+Edit this picture. Keep the same promenade, railing, beach, carousel, pirate-ship ride and angle in the same art style; change it from the festival night to an ordinary grey afternoon in February: no lanterns, no bonfire tower, no moon; flat pale daylight, the sea beyond the railing flat and grey; the carousel and the pirate ship wrapped in blue tarpaulins and shut, the food carts shuttered except one fish-cake cart with steam rising, café chairs turned upside down on the tables, a few gulls standing on the railing, and at the far end a long concrete pier with one lamp. 16:9, no people, no readable text.
+```
+
+**[ ] Wolmido at night** *(optional)*  
+The same promenade on an ordinary winter night in the strangers epilogue (now Port Island's pier at night stands in).  
+Attach: `bg/epi-s-daeboreum.webp`  
+Save as: `epi-s-wolmido-night.png`
+```
+Edit this picture. Keep the same promenade, railing, beach, rides and angle in the same art style; change it to an ordinary quiet winter night: no festival lanterns, no bonfire tower, no full moon (a cloudy dark sky); the rides dark and covered, the promenade lit only by plain street lamps, one fish-cake cart lit up with steam rising, the black sea and the distant harbor lights. 16:9, no people, no readable text.
+```
+
+**[ ] Chinatown** *(optional)*  
+The red steps of Incheon's Chinatown in the strangers epilogue (now a shopping street stands in).  
+Attach: `bg/epi-s-dust.webp` (for the style only)  
+Save as: `epi-s-chinatown.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the hillside Chinatown of a Korean port city at winter dusk: a wide flight of red steps going down between old Chinese restaurants with carved red-and-gold fronts, paper lanterns strung on wires overhead and lit, a small old restaurant with a cracked sign and steamed-up windows, old snow on the steps gone to a grey crust, a narrow street at the bottom where a car could pull up, the sky going dark blue over the rooftops. Warm, crowded, a little shabby. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+### The epilogue: Stay
+
+**[ ] Seaside Park at hanami** *(optional)*  
+The cherry blossoms along the seawall, the 3/27 hanami (now the plain seaside park stands in).  
+Attach: `bg/port-island-seaside-park.webp` (the picture to edit)  
+Save as: `epi-st-seaside-hanami.png`
+```
+Edit this picture. Keep the same seaside park, seawall, water, angle and art style; change it to cherry-blossom season on a warm Saturday at the end of March: a row of cherry trees along the seawall in full pale pink bloom, petals drifting down and lying on the grass and the path, blue picnic tarps spread out under the trees with shoes left at their edges, a picnic basket and a few lunch boxes on them, soft spring sunlight, a clear blue sky over the bay. 16:9, no people, no readable text.
+```
+
+**[ ] Hyein's room in the dorm** *(optional)*  
+Hyein's empty room on the dorm's second floor, 3/25 (now a borrowed lilac bedroom stands in).  
+Attach: `bg/solar-dormroom-day.webp` (for the style and the dorm's room layout)  
+Save as: `epi-st-hyein-room.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a student dormitory room in the same building and layout as the attached room, belonging to a girl who loves sewing and is not there: a neatly made bed, a sewing kit open on the floor with pins stuck into a pincushion in a neat spiral, a skirt with a half-finished hem laid over the desk chair, fabric swatches pinned to a corkboard, a small mirror, a dress pattern folded on the desk. Bright spring daylight through the window. Still, as if someone has just stepped out. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+### The epilogue: the true coda
+
+**[ ] The last bench at Iwatodai Station** *(optional)*  
+The far end of the station concourse, its last bench under the departures board, in the coda's mornings (now the platform stands in).  
+Attach: `bg/iwatodai-station.webp` (for the style only)  
+Save as: `epi-tr-station-bench.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the inside of a Japanese commuter station concourse early in the morning at the end of winter: a long row of plain benches along the wall, and at the far end the last bench, under a big departures board with blank flip panels, standing slightly apart and lit by pale light falling from high windows; a polished floor, ticket gates in the distance, a vending machine glowing softly. Quiet, cool, early, like a seat being kept. Match the painted style of the attached image. Keep everything important away from the edges.
 ```
 
 ## 3. Characters (ChatGPT)
@@ -147,137 +827,9 @@ A character portrait sheet in the same art style as the attached sheet (clean ma
 ```
 
 
-### Evoker close-ups
-
-**[ ] Jihoon's Evoker shot** *(optional)*  
-Jihoon's summon close-up (now a face beside the Evoker prop).  
-Attach: the style image, Jihoon  
-Save as: `jihoon-evoker.png`
-```
-Match the art style of the FIRST attached image exactly; use the second attached image only for the character's face, hair and outfit. Close-up of Park Jihoon raising an ornate silver Evoker to his temple, a fierce grin, hair lifting in a rush of blue wind, glowing glass shards around him, a huge full moon behind. Persona 3 Reload style, 16:9, no text.
-```
-
-**[ ] Minji's Evoker shot** *(optional)*  
-Minji's summon close-up (now a face beside the Evoker prop).  
-Attach: the style image, Minji  
-Save as: `minji-evoker.png`
-```
-Match the art style of the FIRST attached image exactly; use the second attached image only for the character's face, hair and outfit. Close-up of Minji raising an ornate silver Evoker to her temple, focused and steady, hair lifting in a rush of blue wind, glowing glass shards around her, a huge full moon behind. Persona 3 Reload style, 16:9, no text.
-```
-
-**[ ] Evoker sheets (raise, shot, lower)** *(optional)*  
-So a summon also plays on the battlefield figure, like Solar's. One sheet each for Akihiko, Shinjiro, Yukari, Junpei, Mitsuru, Ken, Haechan, Jungwon, Jihoon and Minji.  
-Attach: the style image, that character  
-Save as: `<name>-evoke-sheet.png (e.g. akihiko-evoke-sheet.png)`
-```
-A 3-panel horizontal sheet on a plain white background showing the same character from the second attached image in three moments of summoning their Persona: (1) raising an ornate silver Evoker to their temple, (2) the shot, hair and coat lifting in blue wind and glass shards, (3) lowering it. Same face, outfit, art style and scale in every panel, matching the FIRST attached image's style, clear white space between panels, nothing overlapping. Character only, no text.
-```
-
-### New expressions
-
-**[ ] Shinjiro: serious**  
-Adds a serious face to Shinjiro's scenes.  
-Attach: Shinjiro (Shinjiro-Neutral.png)  
-Save as: `Shinjiro-Serious.png`
-```
-Edit this portrait. Keep the framing, crop, size, art style, hair and outfit exactly the same; change only the expression to serious: a hard, steady, guarded look. Transparent background.
-```
-
-**[ ] Shinjiro: blushing**  
-Adds a blushing face to Shinjiro's scenes.  
-Attach: Shinjiro (Shinjiro-Neutral.png)  
-Save as: `Shinjiro-Blushing.png`
-```
-Edit this portrait. Keep the framing, crop, size, art style, hair and outfit exactly the same; change only the expression to blushing: flustered, red across the cheeks, looking slightly away. Transparent background.
-```
-
-**[ ] Yukari: happy**  
-Adds a happy face to Yukari's scenes.  
-Attach: Yukari (Yukari-Neutral.png)  
-Save as: `Yukari-Happy.png`
-```
-Edit this portrait. Keep the framing, crop, size, art style, hair and outfit exactly the same; change only the expression to happy: a bright, open smile. Transparent background.
-```
-
-**[ ] Fuuka: serious**  
-Adds a serious face to Fuuka's scenes.  
-Attach: Fuuka (Fuuka-Neutral.png)  
-Save as: `Fuuka-Serious.png`
-```
-Edit this portrait. Keep the framing, crop, size, art style, hair and outfit exactly the same; change only the expression to serious: a quiet, determined, focused look. Transparent background.
-```
-
-**[ ] Mark: happy**  
-Adds a happy face to Mark's scenes.  
-Attach: Mark (Mark-neutral.png)  
-Save as: `Mark-Happy.png`
-```
-Edit this portrait. Keep the framing, crop, size, art style, hair and outfit exactly the same; change only the expression to happy: a big, warm, open smile. Transparent background.
-```
-
-**[ ] Elizabeth: surprised**  
-Adds a surprised face to Elizabeth's scenes.  
-Attach: Elizabeth (Elizabeth-Neutral.png)  
-Save as: `Elizabeth-Surprised.png`
-```
-Edit this portrait. Keep the framing, crop, size, art style, hair and outfit exactly the same; change only the expression to surprised: eyes wide, eyebrows raised, lips slightly parted. Transparent background.
-```
-
-**[ ] Happy faces for the busiest regulars** *(optional)*  
-A second face for Ōta, Mr. Maeda, Mrs. Kubo, Tsuji, Chiba, the Clerk and Mr. Tanabe (one image each).  
-Attach: that person's neutral portrait  
-Save as: `<name>-happy.png (e.g. ota-happy.png)`
-```
-Edit this portrait. Keep the framing, crop, size, art style, hair and outfit exactly the same; change only the expression to happy: a warm, open smile. Transparent background.
-```
-
 ---
 
 ## 4. Battle
-
-### Bosses and Shadows (ChatGPT)
-
-**[ ] Sharper Shadows (33)** *(optional)*  
-These came from tiny pictures and look soft: arcane-turret, autonomic-basalt, balance, bronze-dice, calm-pesce, change-relic, cloudgirl-pot, corrupt-tower, death-seeker, devoted-cupid, elegant-mother, intrepid-knight, kaiden-musha, laughing-table, lustful-snake, magical-magus, mighty-cyclops, minotaur-iv, nice-guy, order-giant, positive-king, rampage-drive, reaper, regent, secret-bambino, shallow-okina, slipping-hablerie, solid-castle, soul-dancer, steel-machine, trance-twins, whimsical-papillon, wildbeast.  
-Attach: that Shadow's picture, battle/art/shadows/<name>.webp  
-Save as: `<name>.png (e.g. arcane-turret.png)`
-```
-Redraw the attached Persona 3 Shadow at high resolution: the same design, pose, colours and mask, clean sharp lines, transparent background. No text.
-```
-
-### Solar's strike sheets per form (ChatGPT)
-
-**[ ] Haenim's strike sheet** *(optional)*  
-Her own wind-up and strike for Haenim (it shares one sheet now).  
-Attach: theurgy-solar-haenim.png  
-Save as: `solar-haenim-strikesheet.png`
-```
-A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, clear white space between panels, nothing overlapping. Character only, no text.
-```
-
-**[ ] Sunna's strike sheet** *(optional)*  
-Her own wind-up and strike for Sunna (it shares one sheet now).  
-Attach: theurgy-solar-sunna.png  
-Save as: `solar-sunna-strikesheet.png`
-```
-A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, clear white space between panels, nothing overlapping. Character only, no text.
-```
-
-**[ ] Mazu's strike sheet** *(optional)*  
-Her own wind-up and strike for Mazu (it shares one sheet now).  
-Attach: theurgy-solar-harbor.png  
-Save as: `solar-mazu-strikesheet.png`
-```
-A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, clear white space between panels, nothing overlapping. Character only, no text.
-```
-
-**[ ] Unveiled's strike sheet** *(optional)*  
-Her own wind-up and strike for Unveiled (it shares one sheet now).  
-Attach: theurgy-solar-haenimunveiled.png  
-Save as: `solar-unveiled-strikesheet.png`
-```
-A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, clear white space between panels, nothing overlapping. Character only, no text.
-```
 
 ### Echoes (ChatGPT)
 

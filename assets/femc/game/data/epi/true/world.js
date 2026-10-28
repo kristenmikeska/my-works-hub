@@ -25,6 +25,7 @@
         ['Syracuse · Language Arts Rooftop', 'epi-r-rooftop-night-snow', 'epi-r-rooftop-night-snow'],
         ['Syracuse · The Quad', 'epi-r-quad-day', 'flashback-syracuse-quad'],
         ['Syracuse', 'flashback-syracuse-quad', null],
+        ['Incheon · The Lee House · Kitchen', 'epi-s-lee-kitchen', 'epi-s-lee-kitchen'], // batch 65
         ['Incheon · The Lee House · Garden', 'flashback-lee-house', null],
         ['Incheon · The Lee House', 'flashback-lee-house', null],
         ['Incheon · Harbor', 'flashback-incheon-harbor', null],

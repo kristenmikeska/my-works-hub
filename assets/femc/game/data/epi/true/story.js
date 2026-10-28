@@ -89,7 +89,7 @@
   ] },
 
   // ───────────────────────────── Incheon ─────────────────────────────
-  { id: 'epi-tr-s-day', date: '3/9', slot: 'early', consumes: true, title: 'the kitchen', place: 'Incheon · The Lee House', time: 'Evening', scene: [
+  { id: 'epi-tr-s-day', date: '3/9', slot: 'early', consumes: true, title: 'the kitchen', place: 'Incheon · The Lee House · Kitchen', time: 'Evening', scene: [
     { music: 'epi-tr-kitchen' },
     { n: "The kitchen in the Lee house had been full since five, the way it was full most evenings now, ten people and a bucket of fish and nobody agreeing about the rice. Mrs. Bang at the stove with her sleeves pushed up, running the room the way a general runs a hill. Steam on the windows. Someone's radio on the counter, low, a trot song nobody admitted to liking. The smell of barley tea and sesame oil and the sea, which got into everything in this house, the walls and the linen and her hair." },
     { n: "Three weeks home. She'd come down every evening of them and sat in her chair at the end of the long table with her hair down, and nobody in the house had said a word about the hair, which in this house was the loudest thing anyone could have said." },

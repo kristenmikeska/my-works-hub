@@ -60,12 +60,12 @@
     { id: 'epi-h-party', date: '12/29', slot: 'evening', consumes: true, title: 'the party', place: 'Hanlim · The Party', time: 'Evening', scene: [
       { music: 'epi-h-party' },
       { flag: 'epi-h-party' },
-      { n: "The house belonged to some third-year on the swim team whose parents were in Jeju until the fourth, and by nine o'clock it belonged to everyone else, shoes heaped in the entryway like a landslide, a speaker on the stairs doing something violent to the bass, green bottles lined up along the windowsill catching the streetlight, and the whole kitchen island buried under convenience-store chips and somebody's mother's good fruit plate, which nobody had touched." },
+      { n: "The house belonged to some third-year on the swim team whose parents were in Jeju until the fourth, and by nine o'clock it belonged to everyone else, shoes heaped in the entryway like a landslide, a speaker on the kitchen island doing something violent to the bass, green bottles lined up along the windowsill catching the streetlight, and the rest of the island buried under convenience-store chips and somebody's mother's good fruit plate, which nobody had touched." },
       { n: "She hadn't been to one of these since sophomore year. She didn't finish that sentence, even in her own head." },
       { n: "People noticed her. That was the first thing. A girl she half knew from chemistry grabbed her friend's sleeve by the shoe pile and whispered *temple*, and somebody on the stairs said *retreat* in the voice you'd use for *witness protection*, and a boy holding two cans at once looked at her like she'd come back from the dead, which, to be fair to him, was closer than he knew." },
       { glitch: 'epi-h-g-party' },
       { n: "And under the bass, for two seconds, something else. A piano, a clean bright line of it, and a voice she knew, the music that used to be playing in a lounge with a leather couch and a dog asleep on the rug every single morning she came down the stairs." },
-      { n: "Then it was gone, and the speaker on the stairs was playing the song it had been playing all along, and nobody had looked up. Not one person. Somebody laughed in the kitchen at something that wasn't her." },
+      { n: "Then it was gone, and the speaker on the island was playing the song it had been playing all along, and nobody had looked up. Not one person. Somebody laughed in the kitchen at something that wasn't her." },
       { n: "Oh God." },
 
       { ifEpiRoute: 'jungwon', then: [
@@ -90,7 +90,7 @@
         { s: 'jihoon', f: 'happy', t: "Hilarious. Incredible. Write That On His Tombstone." },
         { n: "Then he tapped the inside of his jacket, twice, lightly, the way you'd check for your keys, and a corner of a small plastic bag showed above the pocket's edge and went back down. The guy from sophomore year was watching them over the rim of his cup." },
         { s: 'jihoon', f: 'neutral', t: "He Says It's The Good Stuff. Like Old Times. I'm Only Telling You Because I'm Generous." },
-        { n: "Cherry's grip on her hand went white at the knuckles. The speaker on the stairs thumped. Somewhere very far behind her ribs something old and patient lifted its head, and she knew it by name, and it was still there." },
+        { n: "Cherry's grip on her hand went white at the knuckles. The speaker on the island thumped. Somewhere very far behind her ribs something old and patient lifted its head, and she knew it by name, and it was still there." },
         { choose: [
           { t: "No, Jihoon.", flag: 'epi-h-party-refused', stat: { courage: 1 }, then: [
             { s: 'jihoon', f: 'neutral', t: "Suit Yourself." },
@@ -100,7 +100,7 @@
           ] },
           { t: "(Hold out your hand. Take it. Don't open it.)", flag: 'epi-h-party-flushed', stat: { courage: 1 }, then: [
             { n: "He looked at her open palm like she'd done a magic trick. Then, because he was Park Jihoon and he could never stand not knowing how a trick ended, he put the bag in it." },
-            { n: "She closed her fist, turned around and walked straight up the stairs past the speaker into the bathroom at the end of the hall, and flushed it, and stood there with her hand on the lever until the tank stopped running." },
+            { n: "She closed her fist, turned around and walked straight up the stairs past the red cups into the bathroom at the end of the hall, and flushed it, and stood there with her hand on the lever until the tank stopped running." },
             { s: 'jihoon', f: 'surprised', t: "Did You Just— Sol. That Was Not Yours To Flush." },
             { s: 'solar', t: "Now it's nobody's." },
             { n: "He was leaning in the bathroom doorway with his mouth open. Then he laughed, one ugly bark of it, and pressed the heel of his hand against his eye like it hurt." },
