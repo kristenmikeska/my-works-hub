@@ -554,7 +554,7 @@
     ] },
 
     /* ── His route: the roof in the snow. Every universe. ── */
-    { id: 'sp-hc-ln-snow', kind: 'dorm', rank: 9, route: 'romance', flag: 'year-goes-on', after: '1/10', until: '2/24', when: 'quiet', place: 'Iwatodai Dorm · Rooftop', bg: 'iwatodaidorm-roof-night', time: 'Night · 2 AM', music: 'romance', scene: [
+    { id: 'sp-hc-ln-snow', kind: 'dorm', rank: 9, route: 'romance', flag: 'year-goes-on', after: '1/10', until: '2/24', when: 'quiet', place: 'Iwatodai Dorm · Rooftop', bg: 'iwatodaidorm-roof-night-snow', time: 'Night · 2 AM', music: 'romance', scene: [
       { n: "It was snowing on the roof. Not falling so much as hanging, fat flakes moving in no particular direction under the one light by the door, settling on the water tank and the railing and the planters with the dead summer tomatoes in them, and on him, on his hood and his shoulders, where he stood at the railing waiting with his back to her." },
       { n: "He heard the door. He didn't turn round. He opened his coat instead, one side of it, the way she'd once seen someone do in another winter, and she walked across the snow in her socks and boots and stepped into it, and he closed it round both of them, and his chest was warm against her back through two layers and his chin came down on the top of her head." },
       { ifHeading: 'S', then: [

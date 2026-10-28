@@ -1,6 +1,6 @@
 # Art to make
 
-**118 items:** 31 CGs · 55 places · 4 character pieces · 28 wardrobe. 114 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**116 items:** 31 CGs · 53 places · 4 character pieces · 28 wardrobe. 112 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -291,22 +291,6 @@ Persona 3 Reload style event CG, 16:9, no text. A university quad on a December 
 ## 2. Places (Gemini)
 
 ### Iwatodai (the main game)
-
-**[ ] The dorm lounge at Christmas** *(optional)*  
-The lounge in the last week before Christmas (the year-end party, Christmas Eve), when its evening scenes say lights are strung across the windows and snow is falling outside.  
-Attach: `bg/iwatodaidorm-livingroom-night.webp` (edit this picture)  
-Save as: `iwatodaidorm-livingroom-christmas.png`
-```
-Edit this picture. Keep the same dorm lounge, furniture, angle and art style; change it to Christmas week at night: three strings of warm fairy lights hung across the lounge windows, each sagging in the middle like a smile, so the room glows like the inside of a paper lantern; big slow snowflakes falling past the windows against an orange city night sky; a few paper decorations and a little tinsel, a blanket over the back of the couch, a bowl of tangerines on the coffee table. Warm, crowded-feeling even when empty, the end of the year. 16:9, no people, no readable text.
-```
-
-**[ ] The dorm rooftop on a snowy night** *(optional)*  
-The dorm roof on winter nights after snow (late December and January scenes that walk through fresh snow to the railing).  
-Attach: `bg/iwatodaidorm-roof-night.webp` (edit this picture)  
-Save as: `iwatodaidorm-roof-night-snow.png`
-```
-Edit this picture. Keep the same dorm rooftop, railing, view and art style; change it to a winter night after snowfall: the roof floor covered in clean untouched white snow, one line of footprints from the stairwell door to the railing, snow lying along the top of the railing and on the water tank, the stairwell door propped open with a brick and spilling a slice of warm light onto the snow, the city lights and the black bay below, a few flakes still drifting. Very cold, very still, beautiful. 16:9, no people, no readable text.
-```
 
 **[ ] The laundry room at 3 a.m.** *(optional)*  
 The dorm laundry room for its late-night scenes (sitting up on the dryer at three in the morning); now the daytime room.  

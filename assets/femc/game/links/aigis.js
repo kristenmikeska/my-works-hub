@@ -695,7 +695,7 @@
       { n: "They went down together. On the stairs, Aigis counted under her breath, fifteen, including the little one, and at the bottom she stopped and looked back up at the roof door as if she had promised it something." }
     ] },
 
-    { after: '1/12', title: '10: aeon', place: 'Iwatodai Dorm · Rooftop', time: 'Evening', music: 'tender', scene: [
+    { after: '1/12', title: '10: aeon', place: 'Iwatodai Dorm · Rooftop', bg: 'iwatodaidorm-roof-night-snow', time: 'Evening', music: 'tender', scene: [
       { n: "It had snowed in the afternoon and stopped, and the roof was white and untouched except for one set of footprints from the stairwell door to the rail, very even, exactly the same distance apart, and at the end of them, Aigis, with snow on her shoulders, as if she'd been there long enough to collect it on purpose." },
       { n: "The new year had come and gone. The whole impossible household had gone to the shrine on the first in borrowed coats, more of them than anybody could count, and Aigis had drawn a fortune and read it and folded it into a perfect square and kept it in her pocket ever since and refused to tell anybody what it said. School had started again. The cold had settled in for good. Solar's breath went up white in front of her as she came across the roof, and Aigis's didn't, and she'd stopped noticing that sometime in the autumn and noticed it again now." },
       { s: 'aigis', f: 'neutral', t: "Good evening." },

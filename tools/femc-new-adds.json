@@ -15617,6 +15617,36 @@
       "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
       "outputSha256": "540ddf7caed488431b7c0b368443e20b2d9061ce128261e5aaea65969e4dc915",
       "placement": "places.bg rule 'Iwatodai Dorm · Front' evening slot; explicit bg: 'iwotodaidorm-outside' lines at night play as the rule (core.js background()); weatherFx.outdoor gains 'iwatodaidorm-front-night'; the winter day season doesn't touch evening"
+    },
+    {
+      "batch": 68,
+      "source": "iwatodaidorm-livingroom-christmas.jpeg",
+      "sourceNow": "Added to Game/iwatodaidorm-livingroom-christmas.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "ef50381c58d605e8abe04750323bfddce7ce4aa7f3fa89bea05a06aa0bf3ccb1",
+      "status": "integrated",
+      "destination": "assets/femc/bg/iwatodaidorm-livingroom-christmas.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "9a7829523b8b7eb041936ca019769126f2b8917edd49c2c070fa57a1d5925e2c",
+      "placement": "places.today 'iwatodaidorm-livingroom-night' on 12/20-12/25 (rule evening slot and explicit bg lines alike; core.js dressed); no rule or scene data edited; not outdoor"
+    },
+    {
+      "batch": 68,
+      "source": "iwatodaidorm-roof-night-snow.jpeg",
+      "sourceNow": "Added to Game/iwatodaidorm-roof-night-snow.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "206de8595e35a1ef2bd254feb32bfb1c9716da163b206b2d18813251a3ed4696",
+      "status": "integrated",
+      "destination": "assets/femc/bg/iwatodaidorm-roof-night-snow.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "19716b8f2d45c2c1b9cf32c59cf9bdfe7c070462186dcf635bd8374ca07215f0",
+      "placement": "places.today 'iwatodaidorm-roof-night' on snow weather; explicit bg: 'iwatodaidorm-roof-night-snow' on the four snowed-over roof scenes (living-nights aki-ln-snow, spice-haechan sp-hc-ln-snow, hyein rank 10, aigis rank 10); outdoor already via the 'iwatodaidorm-roof-' prefix"
     }
   ],
   "batch1Validation": {
@@ -16532,5 +16562,19 @@
     ],
     "notTested": "no browser tests (Kat's Mac in use): the four scenes' CG framing at 1000x486 and 375x812; the kitchen / front at night",
     "html": "femc-game.html places v46, akihiko v12, haechan v16, jungwon v18, mark v13"
+  },
+  "batch68Validation": {
+    "date": "2026-10-28",
+    "scope": "the dorm lounge at Christmas and the dorm roof on a snowy night",
+    "sourcesInspected": "both checked by name, size and hash",
+    "sourcesIntegrated": 2,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold and the other New Adds file untouched",
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script"
+    ],
+    "notTested": "no browser tests: the lounge in Christmas week, the roof on a snow day and the four roof scenes",
+    "html": "femc-game.html places v47, living-nights v6, spice-haechan v5, aigis v5, hyein v15"
   }
 }

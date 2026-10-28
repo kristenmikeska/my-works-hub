@@ -329,7 +329,10 @@ window.FEMC_GAME_PLACES = {
     'school-hallway': [{ dates: ['10/28', '10/29', '10/30', '10/31'], weather: ['clear', 'cloudy'], img: 'gekkoukan-culture-festival' }],
     'school-hallwaysecondfloor': [{ dates: ['10/28', '10/29', '10/30', '10/31'], weather: ['clear', 'cloudy'], img: 'gekkoukan-culture-festival' }],
     'location-2': [{ weather: ['rain', 'storm'], img: 'iwatodai-strip-rain' }],
-    'iwatodai-strip-night': [{ weather: ['rain', 'storm'], img: 'iwatodai-strip-rain' }]
+    'iwatodai-strip-night': [{ weather: ['rain', 'storm'], img: 'iwatodai-strip-rain' }],
+    // Christmas week in the lounge (lights on the windows); the roof on snow days (scenes that say it is snowed over set it as bg)
+    'iwatodaidorm-livingroom-night': [{ dates: ['12/20', '12/21', '12/22', '12/23', '12/24', '12/25'], img: 'iwatodaidorm-livingroom-christmas' }],
+    'iwatodaidorm-roof-night': [{ weather: ['snow'], img: 'iwatodaidorm-roof-night-snow' }]
   },
   /* Weather over a backdrop (weather.js), by the background image's name (prefixes). `outdoor`: rain and snow fall, fog
      drifts, lightning flashes. `sealed`: rooms with no window to it, where nothing shows and the sound is faint. `none`:

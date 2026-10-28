@@ -82,7 +82,7 @@
         ] }
       ] }
     ] },
-    { id: 'aki-ln-snow', kind: 'dorm', rank: 9, route: 'romance', after: '12/26', until: '3/5', flag: 'year-goes-on', place: 'Iwatodai Dorm · Rooftop', time: 'Late Night', music: 'romance', scene: [
+    { id: 'aki-ln-snow', kind: 'dorm', rank: 9, route: 'romance', after: '12/26', until: '3/5', flag: 'year-goes-on', place: 'Iwatodai Dorm · Rooftop', bg: 'iwatodaidorm-roof-night-snow', time: 'Late Night', music: 'romance', scene: [
       { n: "It had snowed in the afternoon and stopped at dark, and the roof at midnight was white and untouched except for one line of footprints to the rail, big ones, and at the end of them, his back, in his coat, looking at the city under the snow like it was something he'd been asked to remember." },
       { n: "He heard her on the stairs. He didn't turn around. He opened one side of his coat instead, held it out, an invitation that didn't need to be said, and she walked the length of his footprints, in them, and stepped inside it." },
       { s: 'akihiko', f: 'neutral', t: "Whatever you decide. I meant that. I still mean it. I just wanted one more night up here first. With you in it." },

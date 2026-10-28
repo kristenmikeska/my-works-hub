@@ -782,7 +782,7 @@
       { s: 'hyein', f: 'happy', t: "Because you made it. I'm just sewing it." }
     ] },
 
-    { after: '1/19', title: '10: literally stella', place: 'Iwatodai Dorm · Rooftop', time: 'Night', music: 'tender', scene: [
+    { after: '1/19', title: '10: literally stella', place: 'Iwatodai Dorm · Rooftop', bg: 'iwatodaidorm-roof-night-snow', time: 'Night', music: 'tender', scene: [
       { n: "Hyein had dragged the long mirror from the second-floor bathroom up the stairs to the roof, by herself, which nobody had asked her to do and nobody could have stopped her from doing, and propped it against the water tank, and now she was standing behind it in the January wind holding something over her arm under a sheet and refusing to explain." },
       { n: "It was so cold the railing hurt to look at. The city below was all hard white lights and black water, and the wind came straight off the bay with nothing in its way, over old snow gone hard along the rail, and Solar stood in the middle of the roof in the coat with the collar up and her hands in the pockets, waiting, the way she'd learned to wait for Hyein, which was patiently and with very low expectations of being told anything in advance." },
       { s: 'hyein', f: 'serious', t: "Close your eyes. Don't argue. You can argue after." },
