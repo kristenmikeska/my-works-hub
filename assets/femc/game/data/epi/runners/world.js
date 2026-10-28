@@ -13,7 +13,7 @@
                  noFlag: flags that close it). lockAfter: the night the route locks, P5R-style (the 12/7 crossroads)
      places      bg rules (places.js shape: [place prefix, day image, evening image]; more specific first), weatherFx, home /
                  school (the morning and late screens), activities (Go Out: { id, name, place, bg, slots, days, cost, stats,
-                 text }), music (moods for this world: the epi-r-* moods are MUSIC PLACEHOLDERS, below)
+                 text }), music (moods for this world: the epi-r-* moods, Kat's song picks, below)
      practice    the team's practice days (After Class is practice, not Go Out): { days, slot, from, to, skip, place, bg, stats }
      variants    lines for the day screens (core.js vary(): morning.school / .off / .exam, late, stayIn, practice)
      cast        names for speakers without a link of their own (scene names; no portraits yet: FEMC-ART-TODO)
@@ -78,29 +78,33 @@
         { id: 'epi-r-dining', name: 'Late dinner at the dining hall', place: 'Syracuse · Marshall Street · Café', bg: 'chagall-cafe-inside', slots: ['evening'], cost: 9, stats: { kindness: 1, charm: 1 },
           text: "A tray, a table by the window, and a freshman she half recognised who sat down across from her because every other seat was taken and then talked for forty minutes about a lab partner. She let him. It was nice to be the one listening." }
       ],
-      /* ♪ MUSIC PLACEHOLDERS (Kat picks the real songs; each epi-r-* mood plays a stand-in P3 track until then). To set one,
+      /* ♪ MUSIC: Kat's song picks (FEMC-EPILOGUE-PLAN.md, revision 1); an epi-r-* mood still marked ♪ PLACEHOLDER plays a stand-in P3 track. To set one,
          replace its value with a file in assets/femc/music/ (no extension) or an 'assets/audio/…' path, like world-runners. */
       music: {
-        'epi-r-home': 'tender-feeling',        // ♪ PLACEHOLDER: the first morning back (soft, home, snow)
+        'epi-r-home': 'ring-ring', // the first morning back (soft, home, snow)
         'epi-r-team': 'specialist',            // ♪ PLACEHOLDER: the lab, practice, the team's week
-        'epi-r-confession': 'dont',            // ♪ PLACEHOLDER: the recording confession (tension, nothing pretty)
+        'epi-r-confession': 'grey-rain', // the recording confession (tension, nothing pretty)
         'epi-r-moon': 'tranquility',           // ♪ PLACEHOLDER: the full moon that passes (12/4)
-        'epi-r-party': 'color-your-night',     // ♪ PLACEHOLDER: Sigma's Friday parties
-        'epi-r-regionals': 'time-to-make-history', // ♪ PLACEHOLDER: Regionals, arrival and the opening bracket
-        'epi-r-match': 'its-going-down-now',   // ♪ PLACEHOLDER: the hard middle and the final
-        'epi-r-closure': 'its-alright-this-way', // ♪ PLACEHOLDER: Minji's closure
-        'epi-r-studio': 'deep-breath-reload',  // ♪ PLACEHOLDER: the studio, on her terms
-        'epi-r-danielle': 'bad-feeling',       // ♪ PLACEHOLDER: Danielle (the threat)
-        'epi-r-romance': 'signs-of-love',      // ♪ PLACEHOLDER: Haechan, when it's warm
-        'epi-r-sisters': 'my-homie',           // ♪ PLACEHOLDER: the girls, the cover
+        'epi-r-party': ['heaven-and-back', 'twenty-three', 'yummy', 'self-destruct'], // Sigma's Friday parties
+        'epi-r-regionals': ['miss-the-rage', 'cashy', 'dollar-bratz', 'we-r-who-we-r'], // Regionals, arrival and the opening bracket
+        'epi-r-match': ['lights-out', 'miss-the-rage'], // the hard middle and the final
+        'epi-r-closure': 'affection', // Minji's closure
+        'epi-r-studio': 'not-enough', // the studio, on her terms
+        'epi-r-danielle': 'you-chase-atlantic', // Danielle (the threat)
+        'epi-r-romance': ['assets/audio/chanmina-ashell.mp3', 'wantchu'], // Haechan, when it's warm
+        'epi-r-sisters': 'boyfriend', // the girls, the cover
         // Week 3 (batch 4):
-        'epi-r-finals': 'exam-in-progress',    // ♪ PLACEHOLDER: finals week, the snow that goes up
-        'epi-r-verdict': 'disconnected',       // ♪ PLACEHOLDER: Mark's verdict (the Sigma kitchen, the back porch)
-        'epi-r-bleed': 'whos-there',           // ♪ PLACEHOLDER: week 3's dread: the butterfly, the stopped clocks
-        'epi-r-half': 'shadow-world',          // ♪ PLACEHOLDER: the half-present pulls (around the four fights) and the pull itself
-        'epi-r-holiday': 'heartbeat-heartbreak', // ♪ PLACEHOLDER: the Sigma holiday party (12/19)
-        'epi-r-footage': 'this-mysterious-feeling', // ♪ PLACEHOLDER: Danielle's footage, two in the morning
-        'epi-r-snow': 'want-to-be-close'       // ♪ PLACEHOLDER: the first snow, the last morning
+        'epi-r-finals': 'assets/audio/rose-3am.mp3', // finals week, the snow that goes up
+        'epi-r-verdict': 'past-life', // Mark's verdict (the Sigma kitchen, the back porch)
+        'epi-r-bleed': 'nowhere-nobody', // week 3's dread: the butterfly, the stopped clocks
+        'epi-r-half': 'nothing-could-break-me', // the half-present pulls (around the four fights) and the pull itself
+        'epi-r-holiday': ['bad-idea', 'that-way', 'tia-tamera', 'kill-the-lights'], // the Sigma holiday party (12/19)
+        'epi-r-footage': 'you-nct-dream', // Danielle's footage, two in the morning
+        'epi-r-snow': 'tip-toe', // the first snow, the last morning
+        // Revision 1's own moods:
+        'epi-r-return': 'novocaine',           // queen Solar's back: 12/1, her first afternoon on campus (epi-r-five-days)
+        'epi-r-faceoff': ['pretty-girls', 'lonely-at-the-top'], // Danielle, the face-off: the print on the second landing (12/11)
+        'epi-r-spice': ['shut-me-up', 'cyber-sex'] // the spice scenes: the side gate (Haechan 3), the studio kiss
         // The rooftop final plays world-runners (Kat's pick, the world's own song).
       }
     },

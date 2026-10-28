@@ -85,24 +85,24 @@
         { id: 'epi-h-library', name: 'The library', place: 'Hanlim · Library', bg: 'school-library', slots: ['after'], cost: 0, stats: { knowledge: 1 },
           text: "The town library's study room, four tables, a heater that clicked, and a calculus textbook she opened at chapter six with the grim determination of someone who had been told by a boy with dimples that chapter six was 'fine, actually.'" }
       ],
-      /* ♪ MUSIC PLACEHOLDERS (Kat picks the real songs; each epi-h-* mood plays a stand-in P3 track until then). To set one,
+      /* ♪ MUSIC: Kat's song picks (FEMC-EPILOGUE-PLAN.md, revision 1); an epi-h-* mood still marked ♪ PLACEHOLDER plays a stand-in P3 track. To set one,
          replace its value with a file in assets/femc/music/ (no extension) or an 'assets/audio/…' path, like world-hoax. */
       music: {
-        'epi-h-home': 'tender-feeling',          // ♪ PLACEHOLDER: home, Nana, her mom at the door (soft, a little funny)
-        'epi-h-goofy': 'my-homie',               // ♪ PLACEHOLDER: the council and the crew being idiots (the retreat story, the group chats)
-        'epi-h-forum': 'paulownia-mall',         // ♪ PLACEHOLDER: the forum, Eunchae's channel, the motion going up
-        'epi-h-romance': 'signs-of-love',        // ♪ PLACEHOLDER: Jungwon, when it's warm
-        'epi-h-eve': 'want-to-be-close',         // ♪ PLACEHOLDER: Christmas Eve (the choice)
-        'epi-h-christmas': 'like-a-dream-come-true', // ♪ PLACEHOLDER: Christmas Day at the Kims'
-        'epi-h-seance': 'this-mysterious-feeling', // ♪ PLACEHOLDER: the Hate Club séance (a joke until it isn't)
-        'epi-h-party': 'break-out-of',           // ♪ PLACEHOLDER: the winter-break party
-        'epi-h-jihoon': 'memories-of-you',       // ♪ PLACEHOLDER: Jihoon, when the act drops (the porch, the drawer)
-        'epi-h-newyear': 'new-days',             // ♪ PLACEHOLDER: New Year's Eve and the livestream
-        'epi-h-dread': 'disconnected',           // ♪ PLACEHOLDER: weeks 2-3, unsettling (the notes, the clocks)
-        'epi-h-half': 'shadow-world',            // ♪ PLACEHOLDER: the half-present pulls (around the four fights)
-        'epi-h-exam': 'exam-in-progress',        // ♪ PLACEHOLDER: make-up exams
-        'epi-h-hearing': 'living-with-determination', // ♪ PLACEHOLDER: the impeachment hearing
-        'epi-h-snow': 'tranquility'              // ♪ PLACEHOLDER: snow days, the quiet before the end
+        'epi-h-home': 'cardigan', // home, Nana, her mom at the door (soft, a little funny)
+        'epi-h-goofy': 'everybody-talks', // the council and the crew being idiots (the retreat story, the group chats)
+        'epi-h-forum': 'tongue-tied', // the forum, Eunchae's channel, the motion going up
+        'epi-h-romance': 'assets/audio/ENHYPEN-moonstruck.mp3', // Jungwon, when it's warm
+        'epi-h-eve': 'assets/audio/arianagrande-someonelikeu.mp3', // Christmas Eve (the choice)
+        'epi-h-christmas': 'touch-tank', // Christmas Day at the Kims'
+        'epi-h-seance': 'colorblind', // the Hate Club séance (a joke until it isn't)
+        'epi-h-party': ['crazy-kids', 'brooklynbloodpop', 'cha-ching', 'we-r-who-we-r'], // the winter-break party
+        'epi-h-jihoon': 'cigarette-daydreams', // Jihoon, when the act drops (the porch, the drawer)
+        'epi-h-newyear': ['i-like-you', 'everybody-talks', 'impatient'], // New Year's Eve and the livestream
+        'epi-h-dread': 'moonlight', // weeks 2-3, unsettling (the notes, the clocks)
+        'epi-h-half': 'anthems-for-a-seventeen-year-old-girl', // the half-present pulls (around the four fights)
+        'epi-h-exam': 'teenage-losers', // make-up exams
+        'epi-h-hearing': 'nail', // the impeachment hearing
+        'epi-h-snow': 'evergreen' // snow days, the quiet before the end
         // The gym at midnight plays world-hoax (Kat's pick, the world's own song).
       }
     },

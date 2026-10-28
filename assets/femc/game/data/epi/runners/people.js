@@ -146,6 +146,7 @@
       { s: 'solar', t: "You left the gate." },
       { n: "He turned around then. The desk lamp was the only light, and it did what lamps always did to him, found the line of his jaw and the tired under his eyes and left the rest to her. She'd had a whole speech, a short one, about terms, about the thing they'd said in 4B and what it meant to walk into this house through the back. She forgot it somewhere between the door and his chair, which was annoying, because she'd been proud of it." },
       { n: "He didn't reach for her. That was the thing. He sat there with his hands on his knees and let her be the one to cross the last three feet of floor, and she did, and stood between his knees, and put her cold hands on either side of his face, and felt him breathe in sharp at the cold and not move away from it." },
+      { music: 'epi-r-spice' },
       { s: 'haechan', f: 'flustered', t: "Your hands are criminal." },
       { s: 'solar', t: "Then do something about it, Hyuck." },
       { s: 'haechan', f: 'serious', t: "Say it again." },

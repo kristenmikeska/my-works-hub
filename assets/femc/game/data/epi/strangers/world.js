@@ -97,23 +97,23 @@
         { id: 'epi-s-noraebang', name: 'Noraebang', place: 'Incheon · Karaoke', bg: 'paulownia-karaoke', slots: ['evening'], cost: 15000, stats: { charm: 1, courage: 1 },
           text: "An hour in the small room with the tambourine that only had half its bells. She sang a trot song, badly and on purpose, the way someone she knew sang them well and on purpose, and laughed in the middle of the second verse by herself. Then she sang it again, properly." }
       ],
-      /* ♪ MUSIC PLACEHOLDERS (Kat picks the real songs; each epi-s-* mood plays a stand-in P3 track until then). To set one,
+      /* ♪ MUSIC: Kat's song picks (FEMC-EPILOGUE-PLAN.md, revision 1); an epi-s-* mood still marked ♪ PLACEHOLDER plays a stand-in P3 track. To set one,
          replace its value with a file in assets/femc/music/ (no extension) or an 'assets/audio/…' path, like world-strangers. */
       music: {
-        'epi-s-house': 'deep-breath-reload',    // ♪ PLACEHOLDER: the Lee house: the full kitchen, Mrs. Bang, the koi on the back step
-        'epi-s-cover': 'deep-mentality',        // ♪ PLACEHOLDER: the cover: the fever, Appa on the seventh stair, the lie held
-        'epi-s-step': 'its-alright-this-way',   // ♪ PLACEHOLDER: the annex step at night, the three of them
-        'epi-s-haechan': 'signs-of-love',       // ♪ PLACEHOLDER: Haechan, when it's warm
-        'epi-s-jungwon': 'want-to-be-close',    // ♪ PLACEHOLDER: Jungwon, when it's warm
-        'epi-s-yunjin': 'my-homie',             // ♪ PLACEHOLDER: Yunjin and the studio girls (light relief)
-        'epi-s-festival': 'full-moon-full-life', // ♪ PLACEHOLDER: Daeboreum: the nuts at breakfast, the moon over Wolmido
-        'epi-s-danger': 'whos-there',           // ♪ PLACEHOLDER: men from outside the two houses (the hammer, the gate)
-        'epi-s-dust': 'disconnected',           // ♪ PLACEHOLDER: yellow dust: masks, nobody can see faces
-        'epi-s-tide': 'this-mysterious-feeling', // ♪ PLACEHOLDER: the tide standing still
-        'epi-s-call': 'iwatodai-dorm',          // ♪ PLACEHOLDER: the call that gets through
-        'epi-s-half': 'shadow-world',           // ♪ PLACEHOLDER: the half-present pulls (around the four fights)
-        'epi-s-family': 'memories-of-you',      // ♪ PLACEHOLDER: Appa and Eomma, the family's own scenes
-        'epi-s-last': 'tranquility'             // ♪ PLACEHOLDER: the last ordinary day, the quiet before the end
+        'epi-s-house': 'nice-dream', // the Lee house: the full kitchen, Mrs. Bang, the koi on the back step
+        'epi-s-cover': 'every-breath-you-take', // the cover: the fever, Appa on the seventh stair, the lie held
+        'epi-s-step': 'linger', // the annex step at night, the three of them
+        'epi-s-haechan': 'assets/audio/EthelCain-Crush.mp3', // Haechan, when it's warm
+        'epi-s-jungwon': 'soft-spot', // Jungwon, when it's warm
+        'epi-s-yunjin': 'staying', // Yunjin and the studio girls (light relief)
+        'epi-s-festival': 'assets/audio/CocteauTwins-SeaSwallowMe.mp3', // Daeboreum: the nuts at breakfast, the moon over Wolmido
+        'epi-s-danger': ['help-im-alive', 'dont-touch', 'demons'], // men from outside the two houses (the hammer, the gate)
+        'epi-s-dust': 'in-this-darkness', // yellow dust: masks, nobody can see faces
+        'epi-s-tide': 'nothings-gonna-hurt-you-baby', // the tide standing still
+        'epi-s-call': 'somebody', // the call that gets through
+        'epi-s-half': 'i-think-my-hearts-gone-rotten', // the half-present pulls (around the four fights)
+        'epi-s-family': 'sidelines', // Appa and Eomma, the family's own scenes
+        'epi-s-last': 'forever' // the last ordinary day, the quiet before the end
         // The first morning and the bottom of the tide play world-strangers (Kat's pick, the world's own song).
       }
     },

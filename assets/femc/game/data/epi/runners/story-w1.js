@@ -168,6 +168,7 @@
 
   // ───────────────────────────── 12/1, after class: five days ─────────────────────────────
   { id: 'epi-r-five-days', date: '12/1', slot: 'after', consumes: true, title: 'five days', place: 'Syracuse · Lecture Hall', time: 'After Class', scene: [
+    { music: 'epi-r-return' }, // Novocaine: queen Solar's back on campus
     { n: "Statistics was in the big hall on the ground floor, the one with the bad heating and the good acoustics, three hundred seats bolted to the floor in a curve like a shell, and Solar sat where she always sat, two-thirds of the way up on the left, in the seat she'd picked in September for its view of the exit and nothing else." },
     { n: "The seat on her left was empty. It had a mark on the armrest where somebody's pen had gone through the laminate in October. The somebody had sat there every Monday and Wednesday since the first week, unasked, with two coffees and a running commentary about the professor's ties, and it had been easy, and she'd never once had to think about it, which was what easy cost." },
     { n: "He came in at four minutes past. Coat dusted with snow, hood down, earbuds in, the same backpack with the same frayed strap. He came up the stairs on the left the way he always came up them, two at a time, and at the row below hers he slowed, and looked at the seat with the pen mark, and looked at her." },

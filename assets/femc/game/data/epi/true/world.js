@@ -40,13 +40,13 @@
       weatherFx: { outdoor: ['flashback-syracuse-quad', 'rooftop-citynight', 'flashback-incheon-harbor', 'station-platform-day', 'outside-daytime-neighborhood', 'outside-night'], sealed: [], none: [] },
       home: { place: 'Syracuse · Alpha Phi House · Her Room', bg: 'pink-bedroom' },
       activities: [],
-      /* ♪ MUSIC PLACEHOLDERS (Kat picks the real songs). The three holding-on scenes play the world songs (world-runners,
+      /* ♪ MUSIC: Kat's song picks (FEMC-EPILOGUE-PLAN.md, revision 1). The three holding-on scenes play the world songs (world-runners,
          world-strangers, world-hoax); these four moods are stand-in P3 tracks until then. */
       music: {
-        'epi-tr-snow': 'tender-feeling',      // ♪ PLACEHOLDER: Syracuse, the first snow, the girls
-        'epi-tr-kitchen': 'deep-breath-reload', // ♪ PLACEHOLDER: Incheon, the full kitchen, the house's evening
-        'epi-tr-hanlim': 'my-homie',          // ♪ PLACEHOLDER: Hanlim, a Friday, the council and the crew
-        'epi-tr-bench': 'tranquility'         // ♪ PLACEHOLDER: Iwatodai, the bench on Akihiko's run (between the worlds)
+        'epi-tr-snow': 'sparks', // Syracuse, the first snow, the girls
+        'epi-tr-kitchen': 'ivy', // Incheon, the full kitchen, the house's evening
+        'epi-tr-hanlim': 'semi-charmed-life', // Hanlim, a Friday, the council and the crew
+        'epi-tr-bench': 'me-and-the-birds' // Iwatodai, the bench on Akihiko's run (between the worlds)
       }
     },
     cast: { mrsbang: 'Mrs. Bang', mroh: 'Mr. Oh', sunoo: 'Sunoo', heeseung: 'Heeseung' },

@@ -69,20 +69,20 @@
         { id: 'epi-st-karaoke', name: 'Karaoke at Paulownia Mall', place: 'Paulownia Mall · Karaoke', bg: 'paulownia-karaoke', slots: ['evening'], cost: 1200, stats: { charm: 1, proficiency: 1 },
           text: "One hour, alone, the room's disco ball going round for nobody. She sang the songs she knew from this world, and skipped past the ones she knew from the others, and only twice caught her thumb going back." }
       ],
-      /* ♪ MUSIC PLACEHOLDERS (Kat picks the real songs; each epi-st-* mood plays a stand-in P3 track until then). To set one,
+      /* ♪ MUSIC: Kat's song picks (FEMC-EPILOGUE-PLAN.md, revision 1); an epi-st-* mood still marked ♪ PLACEHOLDER plays a stand-in P3 track. To set one,
          replace its value with a file in assets/femc/music/ (no extension) or an 'assets/audio/…' path. The three world songs
          don't play as scene music here: they come through as two-second bleeds (glitches.js epi-st-g-camo / -tide / -hoax). */
       music: {
-        'epi-st-home': 'iwatodai-dorm',          // ♪ PLACEHOLDER: the dorm after the year, the first ordinary mornings
-        'epi-st-spring': 'new-days',             // ♪ PLACEHOLDER: spring-break days out, the hanami
-        'epi-st-rooms': 'its-alright-this-way',  // ♪ PLACEHOLDER: the searchers' rooms, still full of their things
-        'epi-st-thread': 'disconnected',         // ♪ PLACEHOLDER: dead threads from home lighting up at midnight
-        'epi-st-charms': 'this-mysterious-feeling', // ♪ PLACEHOLDER: Haenim's charms ringing on their own
-        'epi-st-residue': 'whos-there',          // ♪ PLACEHOLDER: the stopped clocks; S.E.E.S. in the command room again
-        'epi-st-half': 'shadow-world',           // ♪ PLACEHOLDER: the reverse pulls (around the four fights)
-        'epi-st-romance': 'signs-of-love',       // ♪ PLACEHOLDER: Akihiko or Shinjiro, when it's warm
-        'epi-st-witness': 'bad-feeling',         // ♪ PLACEHOLDER: it happens in front of everyone (4/5)
-        'epi-st-last': 'want-to-be-close',       // ♪ PLACEHOLDER: the last day of spring break
+        'epi-st-home': 'iwatodai-dorm', // Kat's pick: keeps the P3 dorm theme. the dorm after the year, the first ordinary mornings
+        'epi-st-spring': 'everything-is-romantic', // spring-break days out, the hanami
+        'epi-st-rooms': 'ghost-of-you', // the searchers' rooms, still full of their things
+        'epi-st-thread': 'did-i-tell-u-that-i-miss-u', // dead threads from home lighting up at midnight
+        'epi-st-charms': 'tower-of-memories', // Haenim's charms ringing on their own
+        'epi-st-residue': 'assets/audio/phoebebridgers-waitingroom.mp3', // the stopped clocks; S.E.E.S. in the command room again
+        'epi-st-half': 'black-out-days', // the reverse pulls (around the four fights)
+        'epi-st-romance': 'picture-you', // Akihiko or Shinjiro, when it's warm
+        'epi-st-witness': 'i-know-the-end', // it happens in front of everyone (4/5)
+        'epi-st-last': 'what-if-i-miss-you', // the last day of spring break
         'epi-st-held': 'memories-of-you'         // ♪ PLACEHOLDER: the final, one year to the night
       }
     },

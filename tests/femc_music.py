@@ -15,6 +15,18 @@ NEW_SONGS = ['basement', 'beneath-the-mask', 'blooming-villain', 'break-out-of',
              'time-to-make-history', 'wiping-all-out', 'skys-the-limit', 'specialist', 'its-alright-this-way', 'whos-there', 'boring',
              'memories-of-you', 'mementos', 'bad-feeling', 'school-memories', 'power-of-the-heart', 'hall-of-doors', 'deep-mentality',
              'exam-in-progress']
+# Kat's epilogue song picks (FEMC-SONGS-TO-GATHER.md), wired in data/epi/<world>/world.js; the spares are copied, not wired.
+EPI_SONGS = ['novocaine', 'ring-ring', 'not-enough', 'grey-rain', 'miss-the-rage', 'cashy', 'dollar-bratz', 'we-r-who-we-r', 'lights-out',
+             'heaven-and-back', 'twenty-three', 'yummy', 'self-destruct', 'bad-idea', 'that-way', 'tia-tamera', 'kill-the-lights', 'wantchu',
+             'shut-me-up', 'cyber-sex', 'pretty-girls', 'lonely-at-the-top', 'affection', 'boyfriend', 'you-chase-atlantic', 'past-life',
+             'you-nct-dream', 'nowhere-nobody', 'nothing-could-break-me', 'tip-toe',
+             'cardigan', 'everybody-talks', 'tongue-tied', 'touch-tank', 'colorblind', 'crazy-kids', 'brooklynbloodpop', 'cha-ching',
+             'cigarette-daydreams', 'i-like-you', 'impatient', 'moonlight', 'anthems-for-a-seventeen-year-old-girl', 'teenage-losers', 'nail', 'evergreen',
+             'soft-spot', 'staying', 'sidelines', 'nice-dream', 'every-breath-you-take', 'linger', 'somebody', 'forever', 'help-im-alive',
+             'dont-touch', 'demons', 'in-this-darkness', 'nothings-gonna-hurt-you-baby', 'i-think-my-hearts-gone-rotten',
+             'everything-is-romantic', 'picture-you', 'what-if-i-miss-you', 'ghost-of-you', 'did-i-tell-u-that-i-miss-u', 'tower-of-memories',
+             'black-out-days', 'i-know-the-end', 'sparks', 'ivy', 'semi-charmed-life', 'me-and-the-birds']
+EPI_SPARES = ['wyn', 'egirls-are-ruining-my-life', 'white-tee', 'bodybag', 'hot', 'misery']
 
 # Drives an open scene one step: title card, choices (first option), the summon card, an act card, otherwise the next line.
 SSTEP = r"""(()=>{
@@ -76,6 +88,29 @@ def main():
         ok(not unmapped, f'new songs not mapped: {unmapped}')
         for s in NEW_SONGS: ok(os.path.getsize(os.path.join(REPO, 'assets/femc/music', s + '.mp3')) < 15 * 1024 * 1024, s + ' is over 15 MB')
         print(f'{len(files)} mapped files exist and load ({len(NEW_SONGS)} new songs, every one mapped, all under 15 MB).', flush=True)
+
+        # 1b. The epilogue worlds' moods (Kat's song picks, revision 1): every value resolves to a file that loads; every
+        # gathered song is wired except the spares; the moods with no pick yet keep a P3 stand-in.
+        epi = p.eval("""Promise.all(['runners','hoax','strangers','stay','true'].map(w=>new Promise(r=>{const s=document.createElement('script');
+          s.src='assets/femc/game/data/epi/'+w+'/world.js?t='+Date.now();s.onload=s.onerror=r;document.head.appendChild(s)}))).then(()=>{
+          const out={};Object.entries(FEMC_EPI_WORLDS).forEach(([w,R])=>Object.entries(R.places?.music||{}).forEach(([k,v])=>{out[k]=[].concat(v).map(f=>f.includes('/')?f:'assets/femc/music/'+f+'.mp3')}));return out})""", timeout=60)
+        ok(len([k for k in epi if k.startswith(('epi-r-', 'epi-h-', 'epi-s-', 'epi-st-', 'epi-tr-'))]) == 66, f'epilogue moods: {len(epi)}')
+        efiles = sorted({f for v in epi.values() for f in v})
+        missing = [f for f in efiles if not os.path.isfile(os.path.join(REPO, f))]
+        ok(not missing, f'epilogue moods with missing files: {missing}')
+        loaded = p.eval("""Promise.all(%s.map(f=>new Promise(r=>{const a=new window.Audio();a.preload='metadata';const t=setTimeout(()=>r([f,0]),15000);
+          a.onloadedmetadata=()=>{clearTimeout(t);r([f,a.duration])};a.onerror=()=>{clearTimeout(t);r([f,-1])};a.src=f})))""" % json.dumps(efiles), timeout=180)
+        bad = [f for f, d in loaded if not d or d < 20]
+        ok(not bad, f'epilogue files that did not load: {bad}')
+        unwired = [s for s in EPI_SONGS if f'assets/femc/music/{s}.mp3' not in efiles]
+        ok(not unwired, f'gathered epilogue songs not wired: {unwired}')
+        for s in EPI_SONGS + EPI_SPARES:
+            ok(os.path.getsize(os.path.join(REPO, 'assets/femc/music', s + '.mp3')) < 7.5 * 1024 * 1024, s + ' is over ~7 MB')
+        stand = {k for k, v in epi.items() if all(f.startswith('assets/femc/music/') and f[18:-4] in NEW_SONGS + ['tender-feeling', 'tranquility', 'iwatodai-dorm'] for f in v)}
+        ok(stand == {'epi-r-team', 'epi-r-moon', 'epi-st-home', 'epi-st-held'}, f'moods still on a P3 track: {sorted(stand)}')
+        pools = {k: v for k, v in epi.items() if len(v) > 1}
+        ok(set(pools) == {'epi-r-party', 'epi-r-regionals', 'epi-r-match', 'epi-r-romance', 'epi-r-holiday', 'epi-r-faceoff', 'epi-r-spice', 'epi-h-party', 'epi-h-newyear', 'epi-s-danger'}, f'epilogue pools: {sorted(pools)}')
+        print(f'{len(epi)} epilogue moods: {len(efiles)} files exist and load, {len(pools)} pools, {len(EPI_SONGS)} gathered songs wired ({len(EPI_SPARES)} spares copied).', flush=True)
 
         # 2. Rotation: every pool, left and re-entered, starts a different file; a sequence of moods never starts the same file twice
         # in a row; a pooled track hands over to the next file before it ends.

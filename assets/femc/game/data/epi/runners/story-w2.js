@@ -169,7 +169,7 @@
         { n: "She laughed. She hadn't meant to. It came out of her the way the name had in the valley, without asking, and he looked at the laugh like it was something he'd been waiting on for a month." },
         { choose: [
           { t: "(Kiss him.)", flag: 'epi-r-studio-late', then: [
-            { music: 'epi-r-romance' },
+            { music: 'epi-r-spice' },
             { n: "She didn't decide it so much as stop deciding against it. She stood up from the couch with the keycap closed in her fist and crossed the four feet of carpet and he was already standing, already there, and she kissed him the way she'd wanted to since a hallway in October and a valley in November and a whole year in a city where none of this had happened yet." },
             { n: "He kissed her back carefully, at first, like somebody walking on ice he'd fallen through once, and then not carefully at all. His hand found her jaw. The chair rolled back into the desk and something on the desk fell over and neither of them looked. The room that was built to hold every sound held all of them, her breath catching, his name, *Hyuck*, said into his mouth, and the low sound he made when she said it, which she would think about in Statistics for a week." },
             { s: 'haechan', f: 'flustered', t: "...Say it again." },
@@ -291,7 +291,7 @@
         { n: "Not *nobody.* Not *a friend.* Not anything that would make her a thing on someone else's call. Chaewon nodded like that was a perfectly normal answer, and it was, and the call ended, and Solar sat in the corner with her coat still on and something warm and stupid in her chest she was choosing not to name." },
         { n: "He reached, then, to the shelf over the desk, absently, the way you reach for a light switch in your own house in the dark, his hand going up to something that should have been there at the height of his shoulder, a dial, a knob, and closing on nothing. He looked at his own hand for a second as if it belonged to somebody else. Then he put it on the mouse." },
         { s: 'haechan', f: 'neutral', t: "...Okay. Yours." },
-        { music: 'epi-r-romance' },
+        { music: 'epi-r-studio' }, // the track itself: Not Enough, her voice on it
         { n: "He didn't explain it before he played it. That was the first thing she noticed and she would think about it later more than the music: he didn't tell her what to listen for, or what it meant, or what it had cost. He pressed the space bar and leaned back and looked at the floor." },
         { n: "The bones from his room had a body now. She recognized them the way you recognize a house you lived in once from the street, the shape of it under the new paint, and then the low thing came in under everything, the thing that moved like weather, and the drums, and then, in the place where there'd been a hole yesterday, her voice." },
         { n: "Her voice. The one from Tuesday, the one she'd given him with the red light on, low and steady and hers, laid into the track so carefully it didn't sound placed there, it sounded like the song had been waiting for it, like the whole architecture of the thing had been built around a space only that shape would fit. It was the most beautiful thing anybody had ever made with her in it." },
@@ -435,7 +435,7 @@
     // ---------------------------------------------------------------- 12/11 · the print
     { id: 'epi-r-print', date: '12/11', slot: 'after', consumes: true, title: 'the print', place: 'Syracuse · Alpha Phi House · Stairs', time: 'After Class', scene: [
       { flag: 'epi-r-danielle-print' },
-      { music: 'epi-r-danielle' },
+      { music: 'epi-r-faceoff' },
       { n: "The second landing. Of course it was the second landing, the place on the stairs where the house turned on itself and you couldn't see up or down, where she'd come down at two in the morning in November in somebody else's jacket and seen a light on where it shouldn't have been." },
       { n: "It was four in the afternoon now, gray, the snow outside the landing window coming down in no hurry, and Danielle was sitting on the top step of the second flight with her back very straight and an envelope on her knee, a paper envelope with a pharmacy's photo-counter logo on it, as if she'd been waiting a while and would have waited a while longer." },
       { s: 'danielle', f: 'happy', t: "Solar. Do you have a minute? You have a minute." },
