@@ -13,7 +13,7 @@
    - Voices follow each novel's current canon: Runners (the state at about 11/22, heading home for Thanksgiving: the
      Foundation Dinner is Monday 11/24, so its text is the last ordinary one, on 11/21, and 11/27 is a text into silence), the Lee parents of Upper East Side, a father who isn't
      a talker and runs things through his office, a mother who says "dear" and dresses her for photographs; strangers
-     (Ch 65), the Lee house in Incheon, Taejoon soft and plain ("Sol" is his alone) and Miseon in full sentences with
+     (Ch 65), the Lee house in Incheon, Taejoon soft and plain ("Sol-ah" is his; Yunjin says "Sol" constantly) and Miseon in full sentences with
      her rules about hair and the jade; Hoax (Ch 99), the Kims, always at work or on the road, a warm mother who loves
      Jihoon ("honey", "alrighty") and a dad the book barely shows (his few lines here are the game's own).
    - Nothing here touches either novel's plot: dinners, dresses, soup, takeout money, holidays, exams.
@@ -57,13 +57,14 @@
       msgs: m('home-eomma', 'Solar. The fitting has moved to Thursday at three.', 'Wear your hair up. The seamstress needs to see the line of your neck.', 'Not the jade.'),
       reply: [{ t: 'yes eomma' }, { t: 'which dress' }, { t: '(Leave it on read.)', silent: true }] },
     { id: 'home-s-birthday', thread: 'home-appa', date: '9/24', slot: 'late', events: S,
-      msgs: m('home-appa', 'sol', 'happy birthday', 'appa made the seaweed soup himself. mrs bang says too much garlic', 'come down and eat it anyway. im in the kitchen'),
+      msgs: m('home-appa', 'sol', 'happy birthday', 'you came at 4am. bottom of the tide. appa remembers', 'appa made the seaweed soup himself. mrs bang says too much garlic', 'come down and eat it anyway. im in the kitchen'),
       reply: [{ t: 'coming appa' }, { t: 'save me some' }] },
     { id: 'home-s-call', thread: 'home-appa', date: '12/17', slot: 'late', events: ['a5-call-strangers'],
       msgs: m('home-appa', 'sol', 'its late', 'mr oh can come and get you. anywhere', 'just tell appa where'),
       reply: [{ t: 'im here appa' }, { t: '(Hold the phone. Don’t answer.)', silent: true }] },
+    // An old one, sent before she went missing (strangers sync, 2026-10-27): it names the day instead of saying "tomorrow".
     { id: 'home-s-seollal', thread: 'home-eomma', date: '2/9', slot: 'late', flag: 'year-goes-on', events: S,
-      msgs: m('home-eomma', 'Seollal tomorrow. Your hanbok is pressed and hanging in your room.', 'Hair up for the bows. Your father will want you beside him.', 'Your grandmother’s ring, Solar. The right hand.'),
+      msgs: m('home-eomma', 'Seollal is Sunday. Your hanbok is pressed and hanging in your room.', 'Hair up for the bows. Your father will want you beside him.', 'Your grandmother’s ring, Solar. The right hand.'),
       reply: [{ t: 'right hand. i know' }, { t: 'yes eomma' }] },
     { id: 'home-s-graduation', thread: 'home-appa', date: '3/5', slot: 'evening', flag: 'year-goes-on', heading: ['S', 'true'], events: S,
       msgs: m('home-appa', 'tides out tonight', 'appas up', 'i left the kitchen light on'),

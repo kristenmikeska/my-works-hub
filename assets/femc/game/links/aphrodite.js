@@ -294,7 +294,7 @@
       { music: 'mystery' },
       { n: "A different restaurant. On the water, a long window full of black sea and the lights of cranes. A long table, white cloth, too many glasses. Two families at it, one on each side, the way two armies sit on either side of a field, and nobody eating." },
       { n: "Her father at the head of one side, polishing his glasses with a handkerchief, slowly, over and over, which meant he was angry and would never once let it reach his voice. And across the table, in a perfect dark suit, a young man who smiled at her with two deep dimples and said something to her in a voice so polite it was like a door being closed very gently in her face, and touched the watch at his wrist, and looked at her like she was a contract." },
-      { n: "She'd understood then, very clearly, sitting very straight with her hair pinned up and every man at the table looking at her: she wasn't the bride. She was the truce. Two families at war, and somebody had to be the thing they signed it on. And it wasn't a love story. It was a war with very good lighting." },
+      { n: "She'd understood then, very clearly, sitting very straight with her hair pinned up and every man at the table looking at her: she wasn't the bride. She was the truce. Two families at war, and somebody had to be the thing they signed it on. And it wasn't a love story. It was a war with very good lighting. She had a feeling, from somewhere further on, that it hadn't stayed only that. She didn't know how she knew." },
       { n: "Something on a red cord at her throat. Green and cold. She'd turned it, under the table, like counting." },
       { bg: null },
       { music: 'city' },

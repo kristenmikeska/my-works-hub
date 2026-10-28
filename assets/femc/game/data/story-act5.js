@@ -252,7 +252,7 @@ window.FEMC_STORY_KIT.badEnding = [
     { n: "Jungwon turned his head. Not all the way. Just enough." },
     { s: 'jungwon', f: 'surprised', t: "You can hear them." },
     { s: 'haechan', f: 'serious', t: "Every night." },
-    { n: "That was all. Neither of them said anything else. But something went between the stairs and the lounge that Solar, standing by the door with her armband half on, felt go past her like a draft. Two boys who couldn't stand each other, who had both crossed twice to get here, looking at each other for one second like the only two people in the building who knew exactly what the other one was carrying." },
+    { n: "That was all. Neither of them said anything else. But something went between the stairs and the lounge that Solar, standing by the door with her armband half on, felt go past her like a draft. Two boys who were never going to be friends and had stopped being sure what they were instead, who had both crossed twice to get here, looking at each other for one second like the only two people in the building who knew exactly what the other one was carrying." },
     { n: "Then Haechan went back up the stairs. His door closed at the far end of the top floor, very quietly. Mitsuru picked up her Evoker." },
     { s: 'mitsuru', f: 'neutral', t: "Stay beside Solar." },
     { place: 'Tartarus · The Dark Hour', time: 'The Dark Hour', bg: 'tartarus-scene' },
@@ -492,7 +492,7 @@ window.FEMC_STORY_KIT.badEnding = [
   { id: 'a5-hat', date: '12/10', slot: 'evening', title: "you in a hat", place: 'Iwatodai Station', time: 'Evening', scene: [
     { music: 'joy' },
     { n: "It was Yunjin's idea. Of course it was. The oden stall at the top of the station stairs had a bench and a counter and a cauldron of daikon and eggs and fishcakes steaming in the cold, and Yunjin had decided that everybody was eating there, together, tonight, because, she said, Sol's weird bench friend had to eat sometime and nobody had ever once seen her do it, and that was medically concerning." },
-    { n: "So they were all there. Hanni and Hyein squashed onto one stool. Jihoon eating three eggs at once for no reason. Minji not filming, holding her camera in her lap with both hands. Yunjin in a new puffer, red this time, because the yellow had died in the sea. And at the far end of the counter, very small inside her coat, with a paper bowl of daikon in front of her that she hadn't touched, Wren." },
+    { n: "So they were all there. Hanni and Hyein squashed onto one stool. Jihoon eating three eggs at once for no reason. Minji not filming, holding her camera in her lap with both hands. Yunjin in a red puffer this time, because the yellow one was still drying out from the sea, and she owned four. And at the far end of the counter, very small inside her coat, with a paper bowl of daikon in front of her that she hadn't touched, Wren." },
     { n: "Wren had come. Solar still couldn't believe it. She'd come along the platform when they called her, slowly, looking at all of them the way you'd look at a large dog you've been told is friendly, and had sat down at the very end of the counter, and was smiling the careful smile, the one she'd given Jungwon, and every so often she laughed at something Jihoon said, a beat late, like someone laughing at a joke in a language she was still learning." },
     { n: "Yunjin had been watching her for twenty minutes. Solar knew. She'd felt it. Yunjin watching Wren, and then Solar, and then Wren, back and forth, with a frown getting deeper every time, the face she made reading a menu in a language she didn't trust." },
     { n: "Then she put her chopsticks down." },
@@ -642,7 +642,7 @@ window.FEMC_STORY_KIT.badEnding = [
     { s: 'yunjin', f: 'sad', t: "Come home. Whatever's waiting there. Whatever date's on the calendar. I'll be there. I'll fight them all. I said that once and I meant it. Come home and let me." },
     { n: "She drank some of her coffee. She looked out at the mud. Then, without turning her head, in the voice she used for the true things, the one that was only slightly quieter than her normal one:" },
     { s: 'yunjin', f: 'neutral', t: "And I'm not going to pretend I don't see it, babe. I'm not blind. I'm in Prada, I'm not blind." },
-    { s: 'yunjin', f: 'neutral', t: "You've got the Yang boy in a guesthouse by the station correcting people's math homework, and your dad's dog asleep at the top of your stairs with his door open, and you look at both of them like you're trying to remember a word. I know which word. It's not my word to say." },
+    { s: 'yunjin', f: 'neutral', t: "You've got the Yang boy in a guesthouse by the station correcting people's math homework, and your appa's son, apparently, he gets to say that now, don't ask, asleep at the top of the stairs here with his door open, and you look at both of them like you're trying to remember a word. I know which word. It's not my word to say." },
     { s: 'yunjin', f: 'happy', t: "I'll say this. The Yang boy still smells like nothing. Kind of hot. Like a ghost. I said it once at home and I stand by it." },
     { s: 'yunjin', f: 'serious', t: "And the other one... I've stood outside a door for you before. I'll do it again. Whichever door. That's all I'm saying. That's me being very restrained. Write it down." },
     { choose: [

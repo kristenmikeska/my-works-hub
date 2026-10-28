@@ -897,7 +897,7 @@
           ] }
         ] }
       ], else: [{ ifHeading: 'S', then: [
-        { s: 'hanni', f: 'neutral', t: "Yunjin says there's a harbor. And a big house where everyone's very polite at dinner. She said *polite* like it was a swear word." },
+        { s: 'hanni', f: 'neutral', t: "Yunjin says there's a harbor. And a big house where dinner's ten people and a bucket of fish now. She said *now* like it was a whole story she wasn't telling." },
         { s: 'hanni', f: 'sad', t: "I'm scared you'll be polite. That's all. That you'll sit at a long table being so, so polite, and nobody will tell you your jaw's doing the thing, because nobody there will know it's a thing." },
         { choose: [
           { t: "(Write *my jaw does a thing* on the receipt. For Yunjin.)", notes: 3, then: [

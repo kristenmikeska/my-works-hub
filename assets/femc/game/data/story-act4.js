@@ -1343,10 +1343,10 @@
         { n: "She ate her breakfast. She didn't ask. Across the table, very slightly, the corner of his mouth moved, the memory of where a smile would go, as if not asking were exactly what he'd known she'd do." }
       ] }
     ] },
-    { n: "Then Yunjin came down, last, in an enormous hoodie and no socks, yawning, and saw him, and stopped on the stairs above the other two, and took her round gold sunglasses off her head and put them on her face, indoors, at seven in the morning, which Solar was learning was what Yunjin did instead of screaming." },
+    { n: "Then Yunjin came down, last, in an enormous gray Yankees hoodie, a man's, the print cracked, and no socks, yawning, and saw him, and stopped on the stairs above the other two, and took her round gold sunglasses off her head and put them on her face, indoors, at seven in the morning, which Solar was learning was what Yunjin did instead of screaming." },
     { s: 'yunjin', f: 'surprised', t: "Oh my God. It's the dog." },
     { s: 'hanni', f: 'surprised', t: "The WHAT?" },
-    { s: 'yunjin', f: 'neutral', t: "The dog. Her dad's. That's what he calls himself. He sleeps ten meters from her door. It's a rule. Her mom made it. He carries my shopping bags in his left hand so his right's free." },
+    { s: 'yunjin', f: 'neutral', t: "The dog. Her dad's. That's what he calls himself. He used to sleep ten meters from her door, her mom's rule. Now he sleeps at the bottom of the garden. In theory. He carries my shopping bags in his left hand so his right's free." },
     { s: 'hyein', f: 'surprised', t: "He's the recruitment chair of a FRATERNITY." },
     { n: "Yunjin looked at Hyein. Hyein looked at Yunjin. Then both of them, slowly, looked at Haechan, who was eating his rice." },
     { s: 'haechan', f: 'neutral', t: "Two places." },
@@ -1354,7 +1354,8 @@
     { n: "The front door opened behind them, and Jungwon came in carrying a folder for Mitsuru, neat as a pin at seven in the morning, a visitor's lanyard round his neck that Mitsuru had made him wear and that he wore as if it were a council badge. He stopped when he saw who was sitting at the table." },
     { s: 'jungwon', f: 'neutral', t: "Donghyuck." },
     { s: 'haechan', f: 'neutral', t: "Yang." },
-    { n: "Neither moved toward the other. Junpei looked from one to the other with his spoon halfway to his mouth." },
+    { n: "Neither moved toward the other. Jungwon's eyes went once to Haechan's left side, under the ribs, and stayed there a beat too long, as if he expected something to come through the shirt, and Haechan's went to Jungwon's left arm the same way. Then Jungwon opened his left hand at his side and closed it again, slowly, all the way, like a man trying a door he'd been told was locked. It worked. Neither of them said a word about it, and Solar, who didn't know what she'd just watched, knew she'd watched something." },
+    { n: "Junpei looked from one to the other with his spoon halfway to his mouth." },
     { s: 'junpei', f: 'neutral', t: "You guys know each other?" },
     { s: 'jungwon', f: 'neutral', t: "We do." },
     { s: 'haechan', f: 'neutral', t: "Lucky us." },
@@ -1519,7 +1520,7 @@
     { n: "Then she stopped. She sat on the deck with her hair plastered to her face and her mascara all down her cheeks and held Solar's hand in both of hers and didn't say anything at all." },
     { music: 'night' },
     { music: 'world-strangers' },
-    { n: "And in that quiet, with the deck rocking and the diesel smell and the cold, for a second it was another ferry. Another night. A low concrete terminal painted a blue that had faded nearly to gray, a timetable board, a white ferry idling at the bottom of a concrete ramp, the last one of the night. And a photograph of that ramp, taken from behind: a woman in a camel coat with her hair up, very straight, like a teacher, standing at the top of it with a small handbag on her arm, on a Thursday. Solar had never been on that boat. She'd only ever stood at the far end of the car park and watched it idle, and never once in her life wanted to be on it." },
+    { n: "And in that quiet, with the deck rocking and the diesel smell and the cold, for a second it was another ferry. Another night. A low concrete terminal painted a blue that had faded nearly to gray, a timetable board, a white ferry idling at the bottom of a concrete ramp, the last one of the night. And a photograph of that ramp, taken from behind: a woman in a camel coat with her hair up, very straight, like a teacher, standing at the top of it with a small handbag on her arm. Solar had never been on that boat. She'd only ever stood at the far end of the car park and watched it idle, and never once in her life wanted to be on it." },
     { fragment: 'strangers-ferry' },
     { choose: [
       { t: "You jumped in.", then: [

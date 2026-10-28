@@ -628,7 +628,7 @@
         ] }
       ], else: [{ ifHeading: 'S', then: [
         { s: 'minji', f: 'neutral', t: "Me." },
-        { s: 'minji', f: 'neutral', t: "You're going somewhere I'm not. Yunjin told me a little. A big house, and people in it who've already decided things about you. I'm not going to be in that house. So I'm keeping this one. The you who lived here. I'm allowed one." },
+        { s: 'minji', f: 'neutral', t: "You're going somewhere I'm not. Yunjin told me a little. A big house, and people in it who keep deciding things about you, and lately one of them keeps saying it's your call. I'm not going to be in that house. So I'm keeping this one. The you who lived here. I'm allowed one." },
         { choose: [
           { t: "(Draw one more box on the last page. Write *all of it* beside it. Tick it.)", notes: 3, then: [
             { n: "She drew it small, in pencil, at the bottom of the last page, and Minji looked at it for a long time, and then put the notebook inside her hoodie, flat against her chest, and zipped it up over it, the way she'd once carried the camera on a windy pier." }
@@ -771,7 +771,7 @@
           ] }
         ] }
       ], else: [{ ifHeading: 'S', then: [
-        { s: 'minji', f: 'neutral', t: "Yunjin says the house you're going to is quiet at dinner. Like, nobody talks. Everybody's just very careful with their chopsticks." },
+        { s: 'minji', f: 'neutral', t: "Yunjin says the kitchen in the house you're going to is always full. Like, ten people and a bucket of fish. Everybody talks over everybody." },
         { s: 'minji', f: 'serious', t: "So I'm putting the loudest table I've ever seen in it. On purpose. So you can watch it in that house with the sound all the way up." },
         { choose: [
           { t: "All the way up, then.", notes: 3, then: [

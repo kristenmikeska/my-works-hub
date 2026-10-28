@@ -70,17 +70,17 @@
     { music: 'world-strangers' },
     { cg: 'ending-strangers-home' },
     { n: "Low tide. She knew before she opened her eyes. She could feel the sea gone out under the house, the whole bay pulled back to the horizon, the mud shining under the last of the sodium lights, the way she'd always felt it on the nights she couldn't sleep. Her room. Her ceiling. The gray Yonsei sweatshirt on the chair. The jade ring on her right hand, where it had always been." },
-    { n: "It was nearly dawn. She went down in her socks, past the onggi jars, to the front steps, with her hair down, and the sky over the harbor was going the color of the inside of a shell, and the lanterns over the gate were still lit, red, and somewhere in the kitchen behind her, Mrs. Bang was making barley tea. Nothing had moved. Nothing at all. As if she'd been gone a night, or less." },
+    { n: "It was nearly dawn. She went down in her socks, past the onggi jars, to the front steps, with her hair down, and the sky over the harbor was going the color of the inside of a shell, and the lanterns over the gate were still lit, red, and somewhere in the kitchen behind her, Mrs. Bang was making barley tea, and on the back step two fish went round in their bucket under a skin of new ice. Everything was where she'd left it. In this house that never happened by itself. Somebody had kept it that way, on purpose, for days." },
     { ifFlag: 'xmas-haechan', then: [
-      { n: "Haechan was in the sewing room. The little room under the eaves across the hall from hers, with the door open, the way it was always open. He was sitting on the narrow bed with a battered Discman in his hands, the one with the cracked lid, the same old disc still inside it and the batteries dead for years, and he had the earbuds in anyway." },
-      { n: "He took them out when she came to the door." },
+      { n: "Haechan was on the annex step at the bottom of the garden, the steel door open behind him and the old silver radio on the sill. He had a battered Discman in his hands, the one with the cracked lid, the same old disc still inside it and the batteries dead for years, and he had the earbuds in anyway." },
+      { n: "He took them out when she came down the garden." },
       { s: 'solar', f: 'sad', t: "I hate you." },
       { s: 'haechan', f: 'neutral', t: "I know, agasshi." },
-      { n: "He looked at her. Hair down. Barefoot. Back. And then his face stopped performing entirely, all of it, the way it only ever did when nobody else could see, and he said her name. Not agasshi. Not anything else." },
-      { s: 'haechan', f: 'sad', t: "...Solar." }
+      { n: "He looked at her. Hair down. Barefoot. Back. And then his face stopped performing entirely, all of it, the way it only ever did when nobody else could see, and he didn't say anything at all. He didn't have to. He'd already spent her name once, in a hall, in front of everyone, and never asked for it back. So she said his." },
+      { s: 'solar', f: 'sad', t: "...Donghyuck-ah." }
     ] },
     { ifFlag: 'xmas-jungwon', then: [
-      { n: "Jungwon was at the gate. In the cold, in his camel coat, his hands at his sides, as if he'd been standing there all night, which, she suspected, he had. His watch was running. She could hear it, in the dawn quiet, ticking." },
+      { n: "Jungwon was at the gate. In the cold, in a dark coat, his hands at his sides, as if he'd been standing there all night, which, she suspected, he had. His watch was running. She could hear it, in the dawn quiet, ticking." },
       { n: "He bowed. Formal. Correct. In the register he always used with her, polite to the point of danger, and he asked, very courteously, whether she had slept." },
       { n: "Then he said one word. In the register he had only ever used with her a handful of times, and never once at a gate, in daylight, where anyone could hear. She would keep it. She would never tell anyone what it was." }
     ] },
@@ -89,9 +89,9 @@
       { n: "She got back into bed. She didn't sleep. It was low tide. But for the first time in her life she didn't mind." }
     ] }] },
     { cg: null },
-    { n: "Downstairs, a door opened. The study. Somebody had been sitting up in the dark. She heard his slippers on the stairs, slow, and the creak of the third step, and her father's voice, humming something old and flat, the way only fathers hum, coming up to see if she was home." },
-    { n: "The date on the calendar in the hall was still the date. Nothing had moved it. She'd come home to the countdown. She'd come home to all of it. Somewhere very far away, a pink hallway and a gym full of plastic chairs went on missing her, and a dormitory by a bay kept a room made up, and she would never know." },
-    { n: "She knew exactly how to be the daughter this house needed now. Hair up. The right smile. She could do it perfectly. She did." },
+    { n: "Downstairs, a door opened. The study. Somebody had been sitting up in the dark. She heard his slippers on the stairs, slow, and the creak of the seventh stair, and her father's voice, humming something old and flat, the way only fathers hum, coming up to see if she was home, the way, she understood, he had come up every night she hadn't been." },
+    { n: "The calendar in the kitchen had moved on without her. Somebody had turned it, every morning she'd been gone, and told the house whatever the house needed to hear, and the house had agreed. Her father had covered for her. She didn't know yet with what. She'd come home to the countdown, shorter than she'd left it. She'd come home to all of it. Somewhere very far away, a pink hallway and a gym full of plastic chairs went on missing her, and a dormitory by a bay kept a room made up, and she would never know." },
+    { n: "She knew exactly how to be the daughter this house needed. Hair up. The right smile. She could still do it perfectly. She left her hair down, and went to meet him on the stairs." },
     card('low tide')
   ];
 
@@ -104,7 +104,7 @@
     { n: "There was a door in the lounge that had never been there, between the television and the stairs, and behind it, through the gap, music. A gym. Hundreds of voices. A dog barking, somewhere further off, at nothing, delighted." },
     { n: "It wasn't pulling. That was the first thing she noticed, and she noticed it with her whole body, the way you notice a sound only once it stops. All year every door had pulled at her like a tide. This one just stood there, a little ajar, with a gym on the other side of it, and waited to see what she'd do." },
     { n: "Jihoon was waiting by it, with Cherry, who had her arm through his and was pretending she didn't. The crew, all four of them, arguing about who went first. The council, all six, around a paper bag of Sunoo's. And Jungwon, a little apart, very straight, his watch running again." },
-    { n: "He was the only one of them who had stood in the other place too. She knew that now. In a house by the sea somebody had arranged him for her, at a dinner, over a white porcelain bottle, on a date that was still on a calendar in a hall. Here, she'd run against him in front of the whole school and lost, and he'd picked her anyway. Same boy. One of him was a contract. The other one she'd walked into on purpose, swearing the whole way." },
+    { n: "He was the only one of them who had stood in the other place too. She knew that now. In a house by the sea somebody had arranged him for her, at a dinner, over a white porcelain bottle, on a date that was still on a calendar in a kitchen. Here, she'd run against him in front of the whole school and lost, and he'd picked her anyway. Same boy. One of him had been arranged for her, and hadn't stayed an arrangement. The other one she'd walked into on purpose, swearing the whole way." },
     { s: 'jungwon', f: 'neutral', t: "I'd rather be the one you ran against." },
     { n: "He said it very politely, to the door, which she knew by now meant he'd been holding it in for a month. Then, because he was him, he checked his watch, and corrected himself, and said a month and nine days." },
     { n: "S.E.E.S. stood around the lounge in the green, where they'd stood a hundred times. She hugged every one of them. Akihiko last. He didn't ask. He just held on, and let go, exactly when she did." },
