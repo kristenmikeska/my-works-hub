@@ -148,6 +148,7 @@ Other docs, if you ever want detail:
 - ✅ Art batch 72: the mall's sticker-photo booth and the alley behind Port Island Station at night, each in place of a generic stand-in.
 - ✅ Art batch 73: the back streets behind Port Island Station, and the station concourse in the evening.
 - ✅ Art batch 74: Seaside Park at sunset, for its evening scenes.
+- ✅ Art batch 75: the Seaside Park winter rink by day and at night, from December 2 to the end of January.
 - ✅ Art batch 65: your nine epilogue places are in the game: four for HOAX (the Kims' living room, Jihoon's house, the winter street, the winter-break party) and five for strangers (a kitchen, the annex, the mudflats, the festival night on Wolmido, the street in the dust), with a couple of small wording fixes so the scenes match your pictures. Your art list gained 57 new place prompts and 35 new CG prompts across the year and every epilogue, and the Evoker pieces, new expressions, sharper Shadows and strike sheets moved to a new backburner list
 
 ## Music and polish

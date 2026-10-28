@@ -15812,6 +15812,36 @@
       "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
       "outputSha256": "76633dd728fc4e210facd9cf6a5600aa72aaac7f95deadc86ed18918dcc53a6e",
       "placement": "places.bg rule 'Port Island · Seaside Park' evening slot; explicit bg: 'port-island-seaside-park' lines are the rule's day image so they play as the rule at night (core.js background()), no scene data edited; Beach Cleanup rule and Stay's own rule untouched; outdoor already"
+    },
+    {
+      "batch": 75,
+      "source": "seaside-park-rink-day.jpeg",
+      "sourceNow": "Added to Game/seaside-park-rink-day.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "900514206ef945ed70ac01c2151ad9f0047cfa44d1d1ccf44b61cdf0c8294307",
+      "status": "integrated",
+      "destination": "assets/femc/bg/seaside-park-rink-day.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "45f0a188101f32d69f1f146237cbd9e89d4425172bf4771cf352f38635815eb6",
+      "placement": "places.today 'port-island-seaside-park' on 12/2-1/31 (rule day slot and explicit bg lines alike); cherry.js 12/1 scene left as is (optional in the note); outdoor via 'seaside-park-' prefix"
+    },
+    {
+      "batch": 75,
+      "source": "seaside-park-rink-night.jpeg",
+      "sourceNow": "Added to Game/seaside-park-rink-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "11e97ee874dad31f5e8c311e53832779ba9972d8df7686bb708d751bf683f933",
+      "status": "integrated",
+      "destination": "assets/femc/bg/seaside-park-rink-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "b3509f8a50af74f05e15b776553cd59ead15e1e2e40b8a59d53278a5ea73023a",
+      "placement": "places.today 'port-island-seaside-park-sunset' (the rule's evening slot) on 12/2-1/31; Sunghoon's December evening scenes take it through the rule; outdoor via 'seaside-park-' prefix"
     }
   ],
   "batch1Validation": {
@@ -16825,5 +16855,19 @@
     ],
     "notTested": "no browser tests: the seaside park evening scenes",
     "html": "femc-game.html places v53"
+  },
+  "batch75Validation": {
+    "date": "2026-10-28",
+    "scope": "the Seaside Park winter rink, day and night",
+    "sourcesInspected": "both checked by name, size and hash",
+    "sourcesIntegrated": 2,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script"
+    ],
+    "notTested": "no browser tests: the park in December/January by day and evening",
+    "html": "femc-game.html places v54"
   }
 }

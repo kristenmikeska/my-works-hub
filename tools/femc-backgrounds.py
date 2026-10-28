@@ -123,6 +123,9 @@ EXTRA = {
     'station-concourse-evening': 'Added to Game/station-concourse-evening.jpeg',
     # batch 74 (2026-10-28): Seaside Park at sunset (evening slot)
     'port-island-seaside-park-sunset': 'Added to Game/port-island-seaside-park-sunset.jpeg',
+    # batch 75 (2026-10-28): the Seaside Park winter rink, day and night (places.js today, 12/2-1/31)
+    'seaside-park-rink-day': 'Added to Game/seaside-park-rink-day.jpeg',
+    'seaside-park-rink-night': 'Added to Game/seaside-park-rink-night.jpeg',
 }
 SIZE = (1920, 1072)  # Kat's New Adds backgrounds; one with another shape is cropped / scaled to fill this
 

@@ -1,6 +1,6 @@
 # Art to make
 
-**105 items:** 31 CGs · 42 places · 4 character pieces · 28 wardrobe. 101 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**103 items:** 31 CGs · 40 places · 4 character pieces · 28 wardrobe. 99 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -291,22 +291,6 @@ Persona 3 Reload style event CG, 16:9, no text. A university quad on a December 
 ## 2. Places (Gemini)
 
 ### Iwatodai (the main game)
-
-**[ ] Seaside Park: the winter rink at night** *(optional)*  
-The outdoor ice rink that appears in Seaside Park in December and January, for its night-skating scenes.  
-Attach: `bg/port-island-seaside-park.webp` (for the place and style)  
-Save as: `seaside-park-rink-night.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a temporary outdoor ice rink in a seaside park at night after closing: a long white oval of ice on the grass by the water, a low plywood barrier around it painted with cheerful snowmen, loudspeakers on poles switched off, only half the floodlights still on so one end is bright and the far end dim, a small rental booth shuttered except for one lit window, a bench by the gate for lacing skates, and beyond the rink the bay gone black and flat. Cold, hushed, the ice hissing. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] Seaside Park: the winter rink by day** *(optional)*  
-The same rink in daylight, for its December after-school scenes (towing a beginner along the barrier).  
-Attach: the new `seaside-park-rink-night.png` (edit this picture)  
-Save as: `seaside-park-rink-day.png`
-```
-Edit this picture. Keep the same rink, snowman barrier, booth and angle, and the same art style; change it to a clear winter afternoon: pale blue sky, low sun glinting on the ice, the floodlights off, the rental booth open with skates on racks, loudspeakers on, the bay bright and grey-blue behind. Cheerful, cold, busy-feeling. 16:9, no people, no readable text.
-```
 
 **[ ] Moonlight Bridge at night** *(optional)*  
 The big bridge for its evening and night scenes, about 15 (walking home over it, the north-side walkway in the wind); now the day art tinted blue.  
