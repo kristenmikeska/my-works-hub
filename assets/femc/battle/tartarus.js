@@ -132,7 +132,7 @@ window.FemcTartarus = (() => {
 
   /* ══════════ The floor plan ══════════ */
   const fragsOpen = c => !c.HO || !!c.HO.request.fragmentsOpen;
-  const fragsLeft = c => D.memories.filter(m => !c.save.memories.includes(m.id) && !(c.HO && (c.HO.request.fragments || []).includes(m.id)));
+  const fragsLeft = c => D.memories.filter(m => !m.noDrop && !c.save.memories.includes(m.id) && !(c.HO && (c.HO.request.fragments || []).includes(m.id)));
   // Monad opens once Fortune & Strength are cleared and (story) the date has opened 176F (11/4's 204F cap).
   function monadOpen(c) {
     if (!(c.save.ops.cleared || []).includes('fortune')) return false;

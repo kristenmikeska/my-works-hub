@@ -2162,7 +2162,7 @@ window.FemcGame = (() => {
       if (seeded(S.day + 2) < 0.5) r.items.medicine = 1;
       r.fatigue = S.condition === 'tired' ? 'sick' : 'tired';
       if (S.day >= dayOf(D.cal.fragmentsFrom || '5/16') && seeded(S.day + 3) < 0.2) {
-        const all = (D.battle.memories || []).map(m => m.id).filter(id => !S.fragments.includes(id));
+        const all = (D.battle.memories || []).filter(m => !m.noDrop).map(m => m.id).filter(id => !S.fragments.includes(id));
         if (all.length) r.fragments.push(all[Math.floor(seeded(S.day + 4) * all.length)]);
       }
     } else if (outcome === 'win') {

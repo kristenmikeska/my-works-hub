@@ -1019,6 +1019,8 @@ window.FEMC_BATTLE_DATA = (() => {
   /* Memory fragments: square cards in assets/femc/memories/<id>.webp (wide: a 16:9 <id>-wide.webp exists for the big view).
      Add a new card by adding a line here. world: Runners | strangers | Hoax (which charm rings). */
   const MEM = 'assets/femc/memories/';
+  // Memories only a scene can give (Tartarus events, cracks, vaults and the simulated drops skip them).
+  const NO_DROP = ['runners-lake'];
   const memories = [
     ['runners-campus', 'Runners', 'A Campus at Dusk', 'Brick paths, cold air, a bell tower. She knows the way to a building she’s never seen.'],
     ['runners-energy-drink', 'Runners', 'An Energy Drink', 'Sweet, fizzy, way too much caffeine. Someone always handed her one without asking what she wanted.'],
@@ -1049,10 +1051,13 @@ window.FEMC_BATTLE_DATA = (() => {
     ['strangers-low-tide', 'strangers', 'Low Tide', 'Mud to the horizon under sodium lights. Bad coffee in a car, waiting for it to turn.'],
     ['hoax-group-chat', 'Hoax', 'A Group Chat', 'Two in the morning, a name changed to something stupid, and everyone still awake for her.'],
     ['hoax-math-homework', 'Hoax', 'Math Homework', 'Neat working in somebody else’s handwriting, explained twice, patiently.'],
+    // Late Runners memory (Kat's ruling 2026-10-27): camping comes back, from Mark's rank 10 or Jaehyun's (whichever is first;
+    // both set flag mem-camp). Link-only: never a random drop (NO_DROP), so it can't surface before its place in the year.
+    ['runners-lake', 'Runners', 'No Service', 'Four days in the woods and not one bar of signal. A lake so cold it stopped her heart, somebody laughing beside her in it. Then a phone held out to her in the cold, and a voice she knew.'],
     // Batch 51: the fish market's last shift (job-scenes.js) and the Hoax memory floor (story-act4.js a4-jihoon-awakens).
     ['strangers-barley-tea', 'strangers', 'Barley Tea', 'A cup on a low wooden table, steaming in the morning light. There was always some on the stove.'],
     ['hoax-ballot-box', 'Hoax', 'The Ballot Box', 'Folded slips on a gym table under string lights, all of them waiting to be counted.']
-  ].map(([id, world, title, text, wide]) => ({ id, world, title, text, img: MEM + id + '.webp', wide: wide ? MEM + id + '-wide.webp' : null }));
+  ].map(([id, world, title, text, wide]) => ({ id, world, title, text, img: MEM + id + '.webp', wide: wide ? MEM + id + '-wide.webp' : null, noDrop: NO_DROP.includes(id) }));
   /* A stand-in card for a memory whose art doesn't exist yet (an SVG data URL with the title, in the world's colors).
      battle.js and the game's journal swap it in when a memory image fails to load. */
   const memoryPlaceholder = id => {

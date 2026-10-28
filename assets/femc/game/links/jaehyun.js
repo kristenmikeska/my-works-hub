@@ -23,7 +23,8 @@
    Reads story flags route-R / route-true / route-stay (the solstice, 12/21) in rank 9, rank 10 and afterMax 'floodlights',
    and ifMet kiriko (ranks 4, 6) and wren (rank 8: his jaw does something, plot doc §7). Branches never hold choices, so a
    rank's meter (maxNotes) is the same on every path.
-   Fragment: runners-stadium (rank 3, plot doc §8 R6). Arcana: '?' (open question, plot doc §16.6). He never closes (searchers
+   Fragments: runners-stadium (rank 3, plot doc §8 R6); runners-lake (rank 10, camping: the fire, "Sit down", him not
+   asking; Mark's rank 10 can give it first; both set flag mem-camp). Arcana: '?' (open question, plot doc §16.6). He never closes (searchers
    go home on 3/6 in the story), so afterMax plays in person from 1/25 and never as traces. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'jaehyun', name: 'Jaehyun Lee', short: 'Jaehyun', arcana: 'Emperor', numeral: '', from: 'Runners',
@@ -207,6 +208,7 @@
         ] },
         { t: "You could ask how I am first.", notes: 3, then: [
           { s: 'jaehyun', f: 'surprised', t: "..." },
+          { n: "He hesitated, which he never did, like a man who'd been told the last time he saw her not to ask her anything, and had taken it seriously." },
           { s: 'jaehyun', f: 'neutral', t: "...How are you." },
           { s: 'solar', f: 'neutral', t: "Fine." },
           { s: 'jaehyun', f: 'neutral', t: "Uh huh." },
@@ -218,7 +220,7 @@
         ] }
       ] },
       { s: 'jaehyun', f: 'neutral', t: "You live in a dormitory with eight other people and a dog. You fight something at midnight, with a gun that isn't a gun, and you lead them. The redhead runs it. The man in the glasses who makes puns pays for it, or his company does. You're good at it. Better than good. Fuuka played me a recording." },
-      { s: 'jaehyun', f: 'neutral', t: "You eat badly. You sleep badly. You run at five in the morning with a boxer who thinks protein is a personality. You are, as far as I can tell, happier than I've seen you in two years." },
+      { s: 'jaehyun', f: 'neutral', t: "You eat badly. You sleep badly. You run at five in the morning with a boxer who thinks protein is a personality. You are, as far as I can tell, happier than I've seen you in two years. Happier than the last time I saw you. I'm not going to tell you about the last time." },
       { s: 'jaehyun', f: 'serious', t: "Where am I wrong." },
       { choose: [
         { t: "Nowhere. That's what's annoying.", notes: 3, then: [
@@ -457,7 +459,7 @@
         { s: 'kiriko', f: 'neutral', t: "Can's for the shoulder. Not to drink. Well. Also to drink. The paper's for the rest of you. Don't open it, it's shy." },
         { n: "She went back up before he could thank her. He sat holding the can against his shoulder and the charm in his other hand, very carefully, like a man who'd been given two things he didn't know the rules for, and Solar watched him put the charm, after a long moment, into the inside pocket of his quarter-zip, over his heart, where he'd put the paper with the number on it the first day." }
       ] },
-      { s: 'jaehyun', f: 'sad', t: "There's a game. At home. I'm supposed to be at it. I don't know if I'm missing it. I don't know which Saturday it is. My phone says it's the same night it's always said." },
+      { s: 'jaehyun', f: 'sad', t: "There's a game. At home. Notre Dame, away. I was supposed to be on the plane when— I don't know if I'm missing it. My phone says it's the same night it's always said." },
       { s: 'jaehyun', f: 'serious', t: "I've never missed a game. Not in three years. Not with a fever. Not with this." },
       { n: "He moved the shoulder again. It clicked, audibly, and he didn't wince, which was its own kind of wince." },
       { choose: [
@@ -526,7 +528,8 @@
       { s: 'solar', f: 'serious', t: "What did you say to him?" },
       { s: 'jaehyun', f: 'neutral', t: "I asked him to keep his distance from you." },
       { s: 'solar', f: 'serious', t: "You *asked?*" },
-      { s: 'jaehyun', f: 'neutral', t: "...I told him. There's history. Things you don't remember. I've already had this conversation with him at home. I'm not having it a— " },
+      { s: 'jaehyun', f: 'neutral', t: "...I told him. The last thing I saw at home, you stood behind me for two days so you wouldn't have to stand anywhere near him. I don't know why. I didn't ask you. I'm not asking now." },
+      { s: 'jaehyun', f: 'neutral', t: "There's history. Things you don't remember. I've already had this conversation with him at home. I'm not having it a— " },
       { n: "He stopped himself. She watched him do it, watched him hear where the sentence was going and pull it back like a pass he'd decided not to throw." },
       { n: "And she knew this. Not him, not the boy on the steps, not whatever the history was, she didn't know any of that and wasn't going to let him hand it to her. She knew *this.* The calm. The decision already made. A field read and a play changed and everyone else expected to run it. Her whole body knew it, hated it, like a burn knows a stove." },
       { n: "The street was very quiet. It was a holiday, she remembered, distantly. Labor Thanksgiving. The shops on the corner had their shutters half down and somebody's radio was playing old enka two houses over, and the cold had that particular November clarity that made every sound carry, so that she could hear her own pulse in her ears and the ice settling in his coffee and nothing at all from him." },
@@ -649,6 +652,9 @@
       { n: "He'd asked. He'd added it on, after, like a tag on a gift, and she could see it had cost him. She nodded." },
       { s: 'jaehyun', f: 'neutral', t: "You were right. On the steps. I called it without asking you. I do that. I'm told it every Thanksgiving. Usually by you. Usually at the table. Usually in front of Father." },
       { s: 'jaehyun', f: 'serious', t: "I'm not going to tell you I was wrong about him. I'm going to tell you I was wrong to decide for you. Those are two different things. I'm not going to pretend they're the same so you'll forgive me faster." },
+      { ifEvent: 'a4-mark', then: [
+        { s: 'jaehyun', f: 'neutral', t: "The other one, I haven't spoken to yet. Mark. I'm deciding how." }
+      ] },
       { choose: [
         { t: "That's the most annoying apology I've ever heard.", notes: 3, then: [
           { s: 'jaehyun', f: 'neutral', t: "Yes. It's the only honest one I have." }
@@ -924,6 +930,9 @@
       { n: "And she knew him." },
       { n: "All at once, standing in the doorway in the green. Not in pieces, the gloves, the alto line, the stadium, one at a time. All of it, everything, a whole childhood coming up through her like the floor of a house when you come home after years: a tall boy who was always somewhere else, at practice, at a dinner, at a table with Father, who never once came to her room and always, every single time she'd ever been somewhere frightening, a party, a gala, a camera, turned up at the edge of it, at the back, saying nothing, already there. A text at the start of a school year. *Are you settling in alright?* A hand on top of her head for half a second in front of a crowd, so fast nobody saw. *Thanks for doing this, sister.*" },
       { n: "Thirty-one stairs at the house, and her saying thirty-two. A suite with glass. A morning text with a period at the end. A table that was a schedule. Every argument they'd ever had, in the right order, the order it had happened in, the way he'd have wanted it filed." },
+      { n: "And the woods, his part of them. A fire at the end of a long cold day and a log beside it, her hands not working properly and her face not working at all, and him coming round the edge of the light and seeing her and not asking. *Sit down.* *I'm fine.* *I didn't ask.* Water in her hands. His jacket on her shoulders. And when she'd said *please don't ask*, he'd said *I won't*, and hadn't, the whole rest of the night, which she understood now, on this step, was the hardest thing she had ever watched him do." },
+      { fragment: 'runners-lake' },
+      { flag: { 'mem-camp': true } },
       { s: 'solar', f: 'surprised', t: "...Jae." },
       { n: "His hand was still raised to knock. He didn't put it down. He stood there in the green with his fist in the air like a man who'd forgotten what he'd lifted it for." },
       { s: 'solar', f: 'happy', t: "You're not wearing enough layers." },

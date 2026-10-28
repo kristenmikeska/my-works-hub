@@ -6,6 +6,10 @@
    overplays casual and rubs the back of his neck. Name dial: Marky is the default, Mark is for when he's in trouble.
    His crossing (11/18, story-act4 'a4-mark', gated on flag door-R6: four notes on the station piano and she knows the fifth)
    is a story event; rank 1 follows it. If the crossing never played, rank 1 plays the meeting itself.
+   The Runners side is the state at about 11/22 (Kat's ruling 2026-10-27): he knows what he did at camp and what she said to
+   him on 11/20; she doesn't, until rank 10 gives her camping back (fragment runners-lake, flag mem-camp; Jaehyun's rank 10
+   can give it first). Ranks 11-15 and afterMax play after that, so they assume she remembers. "Sol" (Kat): she lets him
+   keep it, and it visibly hurts; she wants to like him and can't. Never a villain.
    Branch on the recorded event, not door-R6: the door may open after the crossing's fixed date. He sleeps at the Kirijo guesthouse by the
    station (plot doc §4, 9/13), like the other searcher boys; he visits the dorm. The Mark/Haechan run-in (rank 4) is handled
    gently: grief with muscle memory, nothing new, nothing mended.
@@ -127,7 +131,7 @@
     ],
     [
       { ifMet: ['hanni'], then: [
-        { n: "Hanni had come along. She'd said it was for the station's melon soda, which was famously the worst in Port Island, and then she'd sat on the far end of the bench beside the piano drinking it with real dedication while Mark played, and watched him the way you'd watch a dog you were fond of that had once eaten a shoe." },
+        { n: "Hanni had come along. She'd said it was for the station's melon soda, which was famously the worst in Port Island, and then she'd sat on the far end of the bench beside the piano drinking it with real dedication while Mark played, and watched him the way you'd watch a dog you had once been fond of, that had since bitten somebody you loved." },
         { s: 'mark', f: 'neutral', t: "Hanni. Hanni. What was the song. The one Sol always put on in the kitchen. At home. With the— you know. The one with the whistle." },
         { s: 'hanni', f: 'neutral', t: "Ask her." },
         { s: 'mark', f: 'flustered', t: "She doesn't remember, that's why I'm asking you." },
@@ -245,11 +249,12 @@
         { n: "His hands came off the keys. He turned around on the bench and did a double take, the real kind, the kind people only do in cartoons and train stations, and then his whole face did something, opened, the way a door opens when someone's been waiting just behind it." },
         { s: 'mark', f: 'surprised', t: "...Sol?" },
         { register: 'mark' },
-        { n: "She told him she didn't know him. She watched it land. He laughed, easy, too easy, and nodded, and rubbed the back of his neck, and she had the strange impression of a boy deciding, right there on the bench, not to hear what she'd said until later, when he was alone and could afford it." },
+        { n: "She told him she didn't know him. She watched it land. He laughed, easy, too easy, and nodded, and rubbed the back of his neck, and she had the strange impression of a boy deciding, right there on the bench, not to hear what she'd said until later, when he was alone and could afford it. And under the laugh, quick, gone almost before it arrived, something she'd have called relief on anybody else's face." },
         { s: 'mark', f: 'neutral', t: "Yeah. No, yeah. Okay. I'm Mark. I've been here a few nights. They put me in a guesthouse by the station. There's a lady who makes the rice way too soft." }
       ] },
       { s: 'mark', f: 'neutral', t: "So. Uh. They told me. At the dorm. Your friend with the headphones. Fuuka. She explained it. The not-remembering thing." },
       { s: 'mark', f: 'flustered', t: "Which is, like. Wild. That's a wild thing to happen. I'm so sorry, Sol. That's not on you. None of it's on you." },
+      { n: "*Sol.* He'd said it three times already, easy, a word he'd worn smooth, and every time it went into her somewhere under the ribs, small and cold, a splinter she couldn't find to pull. She didn't know why. She let him keep saying it." },
       { choose: [
         { t: "You don't have to be careful with me.", notes: 3, flag: { 'mark-not-careful': true }, then: [
           { s: 'mark', f: 'neutral', t: "Yeah? Okay. Okay, good, because I'm really bad at careful. I'm much better at normal." },
@@ -257,7 +262,7 @@
         ] },
         { t: "Who are you to me?", notes: 3, then: [
           { s: 'mark', f: 'neutral', t: "Mark. Mark Lee. Marky, to you, mostly. Mark when I'm in trouble." },
-          { s: 'mark', f: 'neutral', t: "I'm your friend. I found you on your first day. You were barefoot under a tree holding these really expensive shoes like they'd done something to you. I gave you the tour. You spent the entire tour staring through the window of the gaming lab. Rude. But fair." }
+          { s: 'mark', f: 'neutral', t: "I'm your— friend. I'm your friend. I found you on your first day. You were barefoot under a tree holding these really expensive shoes like they'd done something to you. I gave you the tour. You spent the entire tour staring through the window of the gaming lab. Rude. But fair." }
         ] },
         { t: "Hum it again. Your song.", notes: 3, then: [
           { s: 'mark', f: 'surprised', t: "..." },
@@ -330,7 +335,7 @@
       { n: "The wind came up off the bay between two buildings and went straight down her collar, and she pulled it closed with one hand, and Mark watched her do it, and something went across his face, quick, and was gone." },
       { s: 'mark', f: 'neutral', t: "You had a scarf. At home. Navy, with two little gold suns on it. It was for the cold, I got it for you, it's not a big deal." },
       { s: 'mark', f: 'flustered', t: "I tied it really badly. Outside a ramen place. You said it was crooked and I said that was the style. ...Anyway." },
-      { n: "She didn't remember it. Her free hand went to her throat anyway, to the place a knot would have sat, and found nothing there, and stayed a second too long, and he saw that too and looked at the street." },
+      { n: "She didn't remember it. Her free hand went to her throat anyway, to the place a knot would have sat, and found nothing there, and stayed a second too long, and he saw that too and looked at the street. He didn't say what it had been for, or where she'd worn it last." },
       { n: "Halfway there the back streets opened out onto a corner with a convenience store glowing on it like a fish tank, and he said *hang on* and was inside before she could answer, and came back out with two steamed buns in a paper bag, already paid for, the receipt already balled up in his pocket." },
       { s: 'mark', f: 'neutral', t: "Pork one's yours. The other one's red bean. I'm not saying you'd hate the red bean. I'm saying I know you." },
       { choose: [
@@ -397,7 +402,7 @@
           { s: 'mark', f: 'serious', t: "And the first night, right here, at midnight, everything stopped. There was a train out on the bridge with every light dead, just sitting there over the water in the green, and it was so quiet I could hear my own watch. I want the crossing to sound like the minute after. When it started moving again." }
         ] }
       ] },
-      { n: "Before she could say anything else he'd taken the phone out of his pocket, the cracked one from home whose battery never went down, and was holding it up over the keys like a candle, playing the whole thing once more into it, start to finish, the stopwatch swinging on its cord against his chest." },
+      { n: "Before she could say anything else he'd taken the phone out of his pocket, the cracked one from home whose battery never went down, and said *just me, not you, just the piano,* quick, before she'd asked, the way you'd say a thing you'd been told to say once and now said every time, and was holding it up over the keys like a candle, playing the whole thing once more into it, start to finish, the stopwatch swinging on its cord against his chest." },
       { s: 'mark', f: 'neutral', t: "Also. Kind of related. Kind of not." },
       { n: "He rubbed the back of his neck. He looked at the departure board. He laughed, at nothing, a beat too early." },
       { s: 'mark', f: 'neutral', t: "If I finish it here, it comes with me, right? When we go. Like, if I go home and play it, it's still mine. Nobody there's heard anything like it. Nobody there's ever heard a monorail." },
@@ -434,11 +439,12 @@
       { n: "She listened. She couldn't hear the slap. She could hear water and a lot of people and a child somewhere negotiating hard for a pretzel." },
       { s: 'mark', f: 'neutral', t: "Yeah, I can't really either. Not properly. Hyuck would've had it in two seconds. He'd tell you exactly what's wrong with this room and how to fix it and why everyone who built it should be in jail." },
       { n: "He laughed, and the name sat there after the laugh was gone, heavy, like a word he'd bitten down on by accident and kept chewing anyway." },
-      { n: "*Hyuck.* It went into her strange and sideways. She knew the boy it belonged to. She'd sat beside him on a dryer at three in the morning more nights than she'd admit to. She knew it as a name for him that belonged to someone else, and she knew, without knowing how she knew, that the someone else was sitting right here, and that it hadn't always been a name that hurt." },
+      { n: "*Hyuck.* It went into her strange and sideways. She knew the boy it belonged to. She'd sat beside him on a dryer at three in the morning more nights than she'd admit to. She knew it as a name she'd said once, by accident, and been asked to say again, and she knew, without knowing how she knew, that the boy beside her on the fountain still said it like it was his, and that it hadn't always been a name that hurt." },
       { choose: [
         { t: "Haechan.", notes: 3, then: [
           { s: 'mark', f: 'neutral', t: "...Yeah." },
-          { s: 'mark', f: 'neutral', t: "He's here. I know. He lives at your dorm. I've seen him on the steps. He looked at me like I was a song he's heard too many times." },
+          { s: 'mark', f: 'neutral', t: "He's here. I know. He lives at your dorm. I've seen him on the steps. He looked at me like he knows exactly what I did." },
+          { s: 'mark', f: 'serious', t: "...Because he does." },
           { s: 'mark', f: 'serious', t: "We haven't said anything to each other. We're very good at that. We've had a lot of practice." },
           { s: 'mark', f: 'neutral', t: "Mitsuru put me at the guesthouse and him with you. I didn't ask her to. I think Hanni had a word. Hanni thinks of everything." }
         ] },
@@ -454,7 +460,9 @@
         ] }
       ] },
       { s: 'mark', f: 'neutral', t: "We used to make stuff. Together. All the time. I'd play, he'd hear what it was missing. He hears rooms. It's like a curse. He can't turn it off." },
-      { s: 'mark', f: 'serious', t: "And then we didn't. And he gets to be mad about that forever, apparently. So." },
+      { s: 'mark', f: 'serious', t: "And then we didn't. And then, recently, I—" },
+      { n: "He stopped, hard, the way you'd brake for something in the road, and started again somewhere else." },
+      { s: 'mark', f: 'serious', t: "He gets to be mad about that forever, apparently. So." },
       { n: "He let the *so* hang there, unfinished, the way the song at the station had stopped on its chord. She had the feeling that if she hummed the next part of this one, he wouldn't thank her for it." },
       { s: 'mark', f: 'sad', t: "Is he okay? Here?" },
       { n: "He asked it so quietly the fountain nearly took it. Then he heard himself, and shook his head, and put the smile back on like a cap." },
@@ -492,6 +500,7 @@
       { s: 'solar', f: 'surprised', t: "How do you know my drinks?" },
       { s: 'mark', f: 'neutral', t: "I asked. Hanni told me. A while ago. At home." },
       { s: 'mark', f: 'neutral', t: "She knows everything about you. She's like a database. A really nice database who bakes." },
+      { s: 'mark', f: 'sad', t: "...She doesn't really tell me stuff anymore. Anyway." },
       { n: "He said it easily, proudly almost, the way you'd say you'd done your homework. And it was kind. It was a kind thing to do, to go and ask someone what a girl liked so you could get it right. She knew that." },
       { n: "She also knew, somehow, standing there, that there was another way to know what someone drank. A boy who'd just put a can down beside her on a ledge one night without a word, and never said how he knew, and never asked anyone, because he'd watched. She didn't know who. She knew the difference. She held both of them in her hands at once, the asking and the watching, like two cans of different temperatures." },
       { choose: [
@@ -544,9 +553,11 @@
       { n: "Junpei got a baseball cap. Yukari got hand cream that smelled of cherry blossoms. Fuuka got a tiny screwdriver set in a leather case, which made her gasp. Ken got a book about dogs, and Koromaru got a toy shaped like a fish, and Mitsuru got a very good pen, and looked at it, and at him, and said *thank you* in a voice that suggested she was revising an opinion." },
       { ifMet: ['hanni', 'hyein'], then: [
         { n: "Hanni got a tin of the good tea from the shop by the café that she'd said once, in passing, she liked the look of, and Hyein got a measuring tape in a little leather case, which she pretended not to love for nearly three full seconds." },
-        { s: 'hyein', f: 'surprised', t: "Wait. This is actually nice. Why is this actually nice. Hanni, he got me something actually nice." },
+        { s: 'hyein', f: 'serious', t: "Wait. This is actually nice. Why is this actually nice." },
+        { n: "She turned the little leather case over in her hands like she was checking it for a wire." },
+        { s: 'hyein', f: 'serious', t: "Hanni. He got me something actually nice. Why." },
         { s: 'hanni', f: 'neutral', t: "He's good at presents." },
-        { n: "She said it warmly. She didn't look at the presents when she said it. She looked at Solar." }
+        { n: "She said it evenly. She didn't look at the presents when she said it. She looked at Solar." }
       ] },
       { s: 'mark', f: 'neutral', t: "And Sol. Last but not least. Obviously." },
       { ifFlag: 'mark-ask-me', then: [
@@ -625,7 +636,7 @@
       { s: 'mark', f: 'neutral', t: "People think I don't mean things. At home. They think I'm a guy who says the nice thing because it's the nice thing to say. I'm very good at the nice thing." },
       { s: 'mark', f: 'serious', t: "But meaning it isn't the problem. I always mean it. Every time. I meant the headphones. I meant the song. I meant every drink." },
       { s: 'mark', f: 'sad', t: "The problem's that I mean other stuff at the same time. And I can't. Get them apart. I've never been able to. It's all just in there together." },
-      { n: "He said it to his hands. He said it the way you'd say something you'd been rehearsing in the dark for a long time and had never once planned to say out loud, and when it was out he looked startled at himself, and then frightened, and then, almost immediately, he laughed." },
+      { n: "He said it to his hands. He said it like a sentence he'd already tried on somebody once, at home, and lost with, and had been rewording in the dark ever since, and had never once planned to say out loud again, and when it was out he looked startled at himself, and then frightened, and then, almost immediately, he laughed." },
       { s: 'mark', f: 'flustered', t: "That's so deep. That's way too deep for a train station. Forget I said it. It's the holidays. Everybody gets weird." },
       { choose: [
         { t: "I don't think I can forget it.", notes: 3, then: [
@@ -696,7 +707,7 @@
           { n: "She kept walking. He kept pace. After half a block he said *cool, cool,* to nobody, softly, and she thought he'd probably taken the not-answering and counted it as something, and she couldn't have said as what." }
         ] }
       ] },
-      { s: 'mark', f: 'neutral', t: "And, you know, at home, there's always something coming up with your family. Some big dinner. Press, all those people, you're always so stressed about them, you'd need someone there who isn't— I could go. I could be your plus one. Bodyguard Mark Lee, black tie edition. I'd meet everybody. I'd behave. I'd—" },
+      { s: 'mark', f: 'neutral', t: "And, you know, at home, there's always something coming up with your family. The November one. The Foundation thing. Press, all those people, you're always so stressed about them, you'd need someone there who isn't— I could go. I could be your plus one. Bodyguard Mark Lee, black tie edition. I'd meet everybody. I'd behave. I'd—" },
       { n: "He stopped. Mid-word. He heard where the sentence had gone, the same way she'd watched him hear it on the fountain's edge and at the station piano, and his hand went to the back of his neck and stayed there, and he laughed, and it was the loud one, the overplayed one, too early and too bright." },
       { s: 'mark', f: 'flustered', t: "That's— forget the dinner. I don't know why I said the dinner. I don't even own a tie. I'd have to borrow one from Jaemin and he'd make me pay rent on it." },
       { choose: [
@@ -708,7 +719,8 @@
         ] },
         { t: "Marky.", notes: 3, flag: { 'mark-handed-back': true }, then: [
           { n: "She said it lightly. Handing it back. And she watched him take it, gratefully, like a man who'd been let off a fine, and also watched him notice that it had been handed back, which wasn't the same as never being taken away." },
-          { s: 'mark', f: 'neutral', t: "...Yeah. Okay. Thanks, Sol." }
+          { s: 'mark', f: 'neutral', t: "...Yeah. Okay. Thanks, Sol." },
+          { n: "*Sol.* It went in under her ribs where it always went, a small cold place she couldn't find the bottom of, and she let him have it, the way she'd let him have it every night since the station, without knowing what she was paying for." }
         ] }
       ] },
       { ifFlag: 'mark-marky', then: [
@@ -834,6 +846,10 @@
       { n: "And then she remembered him." },
       { n: "A first day. A campus in late summer, heat coming up off the paths and everyone staring, and her under a tree on the grass with a pair of shoes she hated in one hand. A boy who'd stopped in front of her with his hands up, sorry to bother you, and sat down in the grass across from her, and asked if she was famous or something, like he didn't know, and she'd let him not know. A building with a room for everything, and her hands flat on the cold glass of a gaming lab like she could reach through it. *Do I need to tell you my name, or have you already heard?* And him, scratching the back of his head. *Well, yeah, I heard. But it'd still be nice.* And then, *like the solar system?*" },
       { n: "A boy who walked her home. Who texted *u get back ok?* Who meant it. Who was also, somewhere behind his eyes, always, doing a sum." },
+      { n: "And then the rest of it, because memory didn't come back in the order you'd have picked. November. Four days in the woods with no signal. Cabins, a fire, a lake so cold it stopped her heart and somebody laughing beside her in it. And then, the next day, a phone held out to her in the cold, a few seconds of a recording she would have given anything never to have heard, and a voice in it that she knew. Mark's face while he played it. Sorry, and sure, both at once. It had always been both." },
+      { n: "And after, at home, a walk out of a classroom, and the things she'd said to him there, every one of them true, and his face taking them one at a time, like coins." },
+      { fragment: 'runners-lake' },
+      { flag: { 'mem-camp': true } },
       { s: 'solar', f: 'surprised', t: "...You knew who I was. On the first day. Before I said a word." },
       { n: "His hands came off the keys." },
       { s: 'mark', f: 'surprised', t: "..." },
@@ -853,11 +869,19 @@
           { n: "She said nothing. He sat with it. The station went on around them, the river of umbrellas, the bakery's shutter coming down, and for once he didn't fill the silence, which she thought might have been the hardest thing she'd ever watched him do." }
         ] }
       ] },
+      { s: 'solar', f: 'serious', t: "And the woods. I remember the woods, Mark." },
+      { n: "He didn't ask which part. His hands went flat on his knees and stayed there, the way you'd hold still for something you'd known was coming since the first night at this piano and had been counting down to anyway." },
+      { s: 'mark', f: 'sad', t: "...Yeah. I figured you would. Eventually. I've been waiting for it every time you hummed." },
+      { s: 'mark', f: 'serious', t: "I'm not going to tell you I did it for you. Some of it was. Some of it wasn't. I've had two months on this bench to work out which part was which, and I still can't get them apart. That's not an excuse. That's just the problem. It's the same problem it always was." },
+      { s: 'mark', f: 'sad', t: "Everything I showed you was real. I keep landing on that. And that's the worst part, for you. I know it is. I'm sorry. I don't know if I'm sorry enough. I'm sorry." },
+      { n: "He meant it. She watched him mean it. She also watched him not say *but*, which was new, and which she suspected had cost him more than the sorry had." },
+      { s: 'mark', f: 'sad', t: "...Sol." },
+      { n: "It went in where it always went, under the ribs, and now she knew why, every single time since the first night in this station. She could take it back. One word and he'd never say it again; she could see he knew that, too. She looked at him on the bench, the boy from under the tree, and didn't. She wanted to like him. She sat there wanting it, all the way down, and couldn't, not yet, maybe not again, and let him keep the name anyway, because taking it would have cost her something too, and she was so tired of paying." },
       { ifFlag: 'mark-who', then: [
         { s: 'mark', f: 'serious', t: "You asked me who I'd play it for. On the bench, with the stopwatch. I gave you the small answer." },
         { s: 'mark', f: 'sad', t: "It wasn't that small. I'm sorry about the small answer." }
       ] },
-      { n: "She stood in front of the piano and looked at him. At the warm open face that wanted so badly to be liked, and was, and at the thing behind it that never stopped counting, and was there too. Both of them. Real. She'd known it on the first night in this station, with a can of milk tea going cold in her hands, before she'd known his name. She knew it now with his whole name, with everything, and it didn't make either of them less true." },
+      { n: "She stood in front of the piano and looked at him. At the warm open face that wanted so badly to be liked, and was, and at the thing behind it that never stopped counting, and was there too. Both of them. Real. She'd known it on the first night in this station, with a can of milk tea going cold in her hands, before she'd known his name. She knew it now with his whole name, with the first day and the woods and all of it, and it didn't make either of them less true. It only made one of them much harder to look at." },
       { ifFlag: 'mark-pencil', then: [
         { n: "She had something in her coat pocket. She'd had it since that afternoon at the mall. She took it out and held it out to him, a pencil with teeth marks on the end and MARK down the side in tiny capitals." },
         { s: 'mark', f: 'surprised', t: "...Oh my God. You kept it. I looked everywhere for that. I thought someone took it." },
@@ -869,7 +893,7 @@
           { s: 'mark', f: 'surprised', t: "..." },
           { s: 'mark', f: 'neutral', t: "...You even say it like you." },
           { ifFlag: 'mark-home', then: [
-            { s: 'mark', f: 'neutral', t: "Not bye, though. See you. See you at home. I'll be the guy by the tree. You'll be the girl with the shoes." }
+            { s: 'mark', f: 'neutral', t: "Not bye, though. See you. See you at home. I know what you said to me there. I'd have said it too. I'll be the guy by the tree anyway, if you'll let me stand that close. You'll be the girl with the shoes." }
           ], else: [
             { s: 'mark', f: 'sad', t: "Bye, Sol. Take care of yourself, okay? Text me when you get back. Wherever back is." }
           ] }
@@ -892,9 +916,10 @@
           { s: 'mark', f: 'surprised', t: "..." },
           { s: 'mark', f: 'neutral', t: "...You remember me now. Okay. So I'm asking. Would you sing it?" },
           { ifFlag: 'mark-home', then: [
+            { n: "She picked every word before she said it. A door that stayed open. Her name where she could see it, on something nobody could take it off. Nothing in that room she hadn't been asked about first." },
             { s: 'solar', f: 'serious', t: "At home. In a studio. With the door open, and my name on it where I can see it." },
             { s: 'mark', f: 'serious', t: "Door open. Your name where you can see it. Okay. Yeah. Those are the right terms. Those are exactly the right terms." },
-            { n: "He said it like he was writing it down. She thought he probably was, somewhere behind his eyes, in neat capitals, and for once she thought that might be a good thing." }
+            { n: "She watched him understand why she'd picked them, every one, and not look away from it. He said it like he was writing it down. She thought he probably was, somewhere behind his eyes, in neat capitals, and for once she thought that might be a good thing." }
           ], else: [
             { s: 'solar', f: 'sad', t: "I can't sing it where I'm going, Marky." },
             { s: 'mark', f: 'sad', t: "...Yeah. No. I figured. I think I figured." },
@@ -979,7 +1004,7 @@
           ] }
         ] }
       ], else: [{ ifHeading: 'R', then: [
-        { s: 'mark', f: 'neutral', t: "Okay, I already know where mine goes. Practice room four. The upright with the sticky D. You'll sit on the radiator, because you always sit on the radiator, and I'll tell you to get off it, and you won't." },
+        { s: 'mark', f: 'neutral', t: "Okay, I already know where mine goes. If you'll still be in a room with me there. I know what you said to me at home, I'm not pretending I don't. ...Practice room four. The upright with the sticky D. You'll sit on the radiator, because you always sit on the radiator, and I'll tell you to get off it, and you won't." },
         { s: 'mark', f: 'serious', t: "And I'll play you the crossing there and nobody else in that whole building is going to know what the middle is. A train. Over water. There's no water like that at home. It's all just lake and snow and people complaining about the lake and the snow." },
         { choose: [
           { t: "Save me the radiator.", notes: 3, then: [
@@ -1051,7 +1076,7 @@
       { s: 'solar', f: 'happy', t: "Ugh." },
       { s: 'mark', f: 'neutral', t: "There it is. You don't even think about it now. It just comes out of you. I love that for me." },
       { n: "He stopped in front of the convenience store window and looked at the pyramid of boxes with the critical squint of a man judging a talent show." },
-      { s: 'mark', f: 'neutral', t: "So. Sunday. Hanni explained the whole thing to me with a diagram. There's the real kind and the friend kind and the kind you give your boss, which is insane." },
+      { s: 'mark', f: 'neutral', t: "So. Sunday. Hanni explained the whole thing to me with a diagram. There's the real kind and the friend kind and the kind you give your boss, which is insane. And the kind for people on probation. She looked right at me for that one." },
       { s: 'mark', f: 'neutral', t: "You don't have to tell me who's getting the real kind. I've got a guess. I've had a guess since Halloween. Before Halloween, honestly. I'm not as dumb as I let people think, it's just restful." },
       { choose: [
         { t: "You don't get to guess.", notes: 3, then: [
@@ -1061,7 +1086,8 @@
         { t: "(Go in. Buy him one of the friend kind.)", notes: 3, then: [
           { n: "She came out with a small square box, the cheapest kind, a cartoon bear on the lid, the kind girls handed out by the dozen to a whole class. He held it for one second the way you'd hold the other kind, and she watched him decide, deliberately, not to." },
           { s: 'mark', f: 'neutral', t: "Friend chocolate. Okay. I know what that is. There was a diagram." },
-          { s: 'mark', f: 'neutral', t: "...Thanks, Sol. Really." }
+          { s: 'mark', f: 'neutral', t: "...Thanks, Sol. Really." },
+          { n: "*Sol.* She knew exactly where it went in now, and why, and she let him keep it anyway. Every time she got close to taking it back, the boy in front of her looked like the one from the first day, and she couldn't, and she couldn't like him either, and the two of them sat in her at once like two cans of different temperatures." }
         ] },
         { t: "Maybe nobody.", notes: 2, then: [
           { s: 'mark', f: 'neutral', t: "Okay. Sure. Nobody. Nobody's going to be really happy on Sunday." }
@@ -1069,9 +1095,11 @@
       ] },
       { n: "They walked. Somewhere between the store and the corner with the cat on the wall he pulled his hands out of his sweatshirt pocket and blew on them, and the cold made his knuckles go red, and she watched his hands, and something came loose." },
       { n: "A Saturday. November, at home, a different cold, drier, with leaves in it. A ramen place with fogged-up windows. His hands at her throat, tying something navy around her neck, badly, crooked, while she told him it was crooked and he told her that was the style, two little gold suns stitched into the end of it, and the whole of that day had been good. She remembered that it had been good. It had been easy in the way nothing else that month had been easy." },
-      { n: "And at the end of it she had taken his hand. She remembered that too, the cold of his fingers and how surprised they'd been. She remembered, a little further off, behind a kind of frosted glass, that there had been a reason, and that the reason had not been entirely him." },
+      { n: "And at the end of it she had taken his hand. She remembered that too, the cold of his fingers and how surprised they'd been. She remembered that there had been a reason, and that the reason had not been entirely him. And she remembered what came after that month, the woods and the phone in the cold, and that it sat on top of this Saturday now and didn't cancel it. Both of them were true. That was the trouble with him. It always had been." },
       { s: 'mark', f: 'neutral', t: "You're doing the face. The remembering face. Which part?" },
+      { n: "He asked it lightly, and then didn't breathe." },
       { s: 'solar', f: 'neutral', t: "The scarf. The Saturday." },
+      { n: "She watched the air go out of him, all at once, the particular relief of somebody who'd been braced for a different answer." },
       { s: 'mark', f: 'surprised', t: "..." },
       { s: 'mark', f: 'flustered', t: "Oh. Okay. Yeah. That was— you took my hand. At the end. I've thought about that like, every day. Is that weird? That's a little weird. I've never asked you about it. I didn't want to ask in case the answer was something else." },
       { choose: [
@@ -1123,6 +1151,7 @@
       ], else: [{ ifHeading: 'R', then: [
         { s: 'mark', f: 'neutral', t: "You've got the real one at home. With the suns. I know. This is a backup. Like a spare key. You don't need it till you do." },
         { s: 'mark', f: 'neutral', t: "And when we're back I'm going to tie the real one on you again, outside the ramen place, and it's going to be crooked, and you're going to tell me it's crooked." },
+        { s: 'mark', f: 'sad', t: "If you still have it. If you didn't throw it in a lake. You'd be allowed." },
         { choose: [
           { t: "Tie this one now. Practice.", notes: 3, then: [
             { n: "He tied it with enormous concentration and got it wrong anyway, the knot sliding round to sit under her ear, and stepped back, and said it was perfect, and she said it was crooked, and he said, *there it is,* like he'd been waiting all month for the line." }
@@ -1251,7 +1280,7 @@
         ] }
       ], else: [{ ifHeading: 'R', then: [
         { s: 'mark', f: 'neutral', t: "In the house kitchen. At one in the morning. Ten guys wandering in, stealing half. Jeno's going to put hot sauce on it, I can already feel it." },
-        { s: 'mark', f: 'neutral', t: "And you're going to come over and complain it's too soft, and I'm going to tell you why, and you're not going to believe me." },
+        { s: 'mark', f: 'neutral', t: "And if you ever come over again, you're going to complain it's too soft, and I'm going to tell you why, and you're not going to believe me." },
         { choose: [
           { t: "I'll believe you.", notes: 3, then: [
             { s: 'mark', f: 'surprised', t: "..." },
@@ -1349,7 +1378,7 @@
       ] },
       { s: 'mark', f: 'serious', t: "Can I say something? And you won't get weird?" },
       { s: 'mark', f: 'neutral', t: "I know. About you and him. I've known a long time. Longer than you think. I told you I had a guess. It was never really a guess." },
-      { s: 'mark', f: 'sad', t: "I'm not going to say anything about it. That's the thing I wanted to say. That I'm not going to say anything. I used to think I'd have a lot to say." },
+      { s: 'mark', f: 'sad', t: "I'm not going to say anything about it. That's the thing I wanted to say. I already said it once, at home. The worst way there is. You were there. I'm not saying it again." },
       { choose: [
         { t: "I know you're not stupid, Marky.", notes: 3, then: [
           { s: 'mark', f: 'neutral', t: "...Yeah. You always did. That was always the worst part about you." }
@@ -1392,6 +1421,7 @@
       ], else: [{ ifHeading: 'R', then: [
         { s: 'mark', f: 'neutral', t: "You're both going back. Same place. Same campus. Same everything. People are going to have so many opinions. Everybody's phone is going to be on fire." },
         { s: 'mark', f: 'serious', t: "I was going to say, be careful with him. I had it ready. I've had it ready for months." },
+        { s: 'mark', f: 'sad', t: "I said a version of it once already. You remember what it cost." },
         { s: 'mark', f: 'neutral', t: "...No. I'm not saying it. Be careful with you. That's the only one that's mine to say." },
         { choose: [
           { t: "I will.", notes: 3, then: [
@@ -1519,8 +1549,8 @@
           ] }
         ] }
       ], else: [{ ifHeading: 'R', then: [
-        { s: 'mark', f: 'neutral', t: "And at home we put it down for real. In a studio. With the door open. Your name where you can see it. Those were your terms. I wrote them on the inside of my hand once so I wouldn't forget. It came off in the shower. I remembered anyway." },
-        { s: 'mark', f: 'serious', t: "And if you still don't want to, then we don't. Then it's just a song I play in practice room four for a girl on a radiator. That's also a really good outcome. I want you to know I mean that. Both of me mean it, for once." },
+        { s: 'mark', f: 'serious', t: "If you still don't want to, then we don't. I'm saying that part first this time. Then it's just a song I play in practice room four for a girl on a radiator. That's also a really good outcome. I want you to know I mean that. Both of me mean it, for once." },
+        { s: 'mark', f: 'neutral', t: "And if you do, we put it down for real. In a studio. With the door open. Your name where you can see it. Those were your terms. I wrote them on the inside of my hand once so I wouldn't forget. It came off in the shower. I remembered anyway." },
         { choose: [
           { t: "Door open. My name where I can see it.", notes: 3, then: [
             { s: 'mark', f: 'neutral', t: "Door open. Your name where you can see it. Okay." },
@@ -1626,7 +1656,9 @@
     { title: 'out loud', place: 'Paulownia Mall · Karaoke', time: 'Evening', music: 'joy', scene: [
       { n: "Somebody had booked a karaoke room, and somebody had told somebody, and by the time Solar arrived there were too many people in a room built for four, and a tambourine with half its jingles missing, and Mark in the corner by the machine flipping through the song book with the concentration of a man defusing something." },
       { ifMet: ['hyein'], then: [
-        { s: 'hyein', f: 'happy', t: "SOL. Finally. He won't go first. He's a music major and he won't go first. That's like a chef who won't eat." },
+        { s: 'hyein', f: 'neutral', t: "SOL. Finally. He won't go first. He likes to see what everybody else does first." },
+        { n: "She said it lightly. It wasn't light. Mark heard it and laughed anyway, a beat late, and didn't look at her." },
+        { s: 'hyein', f: 'happy', t: "He's a music major and he won't go first. That's like a chef who won't eat." },
         { s: 'mark', f: 'flustered', t: "That's not the same. That's not at all the same. Chefs have to eat." }
       ], else: [
         { s: 'mark', f: 'flustered', t: "Hi. Okay. Nobody will go first and everyone keeps looking at me because I'm the music guy. Being the music guy is a burden, Sol." }
@@ -1653,6 +1685,7 @@
       ] },
       { n: "He'd written it out on a napkin from the bakery, because that was what he'd had, in his neat capitals, lined up the way the back of an album lines up. The name of the song, which he hadn't decided on and had written three of and crossed two out. And under it, the credits." },
       { n: "Her name was first. Above his. He'd gone over it twice, the way you go over a line you want to be sure of." },
+      { n: "She remembered another demo now. At home, years before her, with the wrong name on it, and whose it had really been. She thought that was why he went over hers twice. She couldn't have said whether it was an apology or a habit he'd learned from what it cost him, and she let it be both, because with him it usually was." },
       { s: 'mark', f: 'neutral', t: "That's how it goes on the real thing. I wanted you to see it before it's real. So you know it was always going to be that way. So it's not a thing I decided later." },
       { ifFlag: 'mark-home', then: [
         { choose: [

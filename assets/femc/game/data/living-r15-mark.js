@@ -19,7 +19,7 @@
 
   /* ── afterRank 11-15 ── */
   const requests = [M('22 requests today'), M('one kid asked for the cat song 3 times in a row. i played it 3 times. i respect him')];
-  const diagram = [M('hanni drew me another diagram'), M('theres a 4th kind of chocolate now. its for bodyguards. she made it up. im keeping it')];
+  const diagram = [M('hanni drew me another diagram'), M('theres a 4th kind of chocolate now. its for people on probation. she looked right at me. im keeping it anyway')];
   const rice = [M('mrs kanda says i used too much water'), M('she ate two bowls. she said it was too soft. she ate TWO bowls sol')];
   const guitar = [M('did the guitar make it home'), M('third shelf. tell me it was the third shelf')];
   const title = [M('i wrote it on the sheet music'), M('the title. then ur name. then mine')];

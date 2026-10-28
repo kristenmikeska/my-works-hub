@@ -1,6 +1,6 @@
 # Art to make
 
-**34 items:** 10 character pieces · 5 battle · 11 cards · 1 screen · 7 wardrobe. 28 are optional; none are ⭐.
+**35 items:** 10 character pieces · 5 battle · 12 cards · 1 screen · 7 wardrobe. 29 are optional; none are ⭐.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -175,6 +175,14 @@ Solar's collectible Echoes (the Personas tab, Echo Fusion, the Echo Compendium).
 
 
 ## 5. Cards, items and icons
+
+**[ ] Memory card: No Service** *(optional)*  
+A memory card for a late Runners memory; until it's in, the game shows a drawn card with the title.  
+Attach: nothing  
+Save as: `runners-lake.png`
+```
+Soft painterly anime vignette, square, dreamy and slightly faded like a half-remembered memory, light film grain, vignetted edges, no faces. A wooden dock on a dark lake in November, frost on the boards, two towels and a pile of clothes left at the end of it, a phone face up on the planks with its screen lit and no signal bars, pine woods black behind, a thin moon on the water.
+```
 
 **[ ] Revelation card: Cinder Lantern** *(optional)*  
 Art for the Cinder Lantern card set (Fire set); the card shows a drawn face until it's in.  
