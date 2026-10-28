@@ -26,7 +26,7 @@
         ['Syracuse · The Quad', 'epi-r-quad-day', 'flashback-syracuse-quad'],
         ['Syracuse', 'flashback-syracuse-quad', null],
         ['Incheon · The Lee House · Kitchen', 'epi-s-lee-kitchen', 'epi-s-lee-kitchen'], // batch 65
-        ['Incheon · The Lee House · Garden', 'flashback-lee-house', null],
+        ['Incheon · The Lee House · Garden', 'epi-s-garden-night', 'epi-s-garden-night'], // batch 78 (strangers' art): its one scene is before light
         ['Incheon · The Lee House', 'flashback-lee-house', null],
         ['Incheon · Harbor', 'flashback-incheon-harbor', null],
         ['Incheon', 'flashback-incheon-harbor', null],
@@ -38,7 +38,7 @@
         ['Iwatodai Station · Bench', 'station-platform-day', null],
         ['Iwatodai', 'iwatodai-station', null]
       ],
-      weatherFx: { outdoor: ['flashback-syracuse-quad', 'epi-r-rooftop-night-snow', 'epi-r-quad-day', 'flashback-incheon-harbor', 'station-platform-day', 'outside-daytime-neighborhood', 'outside-night'], sealed: [], none: [] },
+      weatherFx: { outdoor: ['flashback-syracuse-quad', 'epi-r-rooftop-night-snow', 'epi-r-quad-day', 'epi-s-garden', 'flashback-incheon-harbor', 'station-platform-day', 'outside-daytime-neighborhood', 'outside-night'], sealed: [], none: [] },
       home: { place: 'Syracuse · Alpha Phi House · Her Room', bg: 'epi-r-her-room' },
       activities: [],
       /* ♪ MUSIC: Kat's song picks (FEMC-EPILOGUE-PLAN.md, revision 1). The three holding-on scenes play the world songs (world-runners,

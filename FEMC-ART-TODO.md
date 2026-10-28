@@ -1,6 +1,6 @@
 # Art to make
 
-**83 items:** 31 CGs · 20 places · 4 character pieces · 28 wardrobe. 79 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**66 items:** 31 CGs · 3 places · 4 character pieces · 28 wardrobe. 62 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -236,7 +236,7 @@ Persona 3 Reload style event CG, 16:9, no text. The big kitchen of the attached 
 
 **[ ] strangers · 3/11 · dinner at the long table** *(optional)*  
 For the 3/11 evening scene in the family dining room (the whole house at dinner).  
-Attach: Solar (her strangers look), Appa, Eomma, Haechan, Jungwon, Yunjin, and `epi-s-dining-room.png` (for the room only) if it's made  
+Attach: Solar (her strangers look), Appa, Eomma, Haechan, Jungwon, Yunjin, and `bg/epi-s-dining-room.webp` (for the room only)  
 Save as: `epi-s-dinner-cg.png`
 ```
 Persona 3 Reload style event CG, 16:9, no text. A formal dining room in an old Korean house at night, warm low lamps, a very long dark wooden table with all its leaves in, good white plates, bowls of rice and soup, a whole fish on a platter in the middle, seen from the foot of the table looking up its length. Solar's father (the second attached image's face) at the head with reading glasses on a cord, mid-laugh. Solar's mother (the third attached image's face) on his right in dark green, hair up, sitting very straight with a small reluctant smile. Solar (the first attached image's face, hair and look) on his left, looking down the table at everyone. Jungwon (the fifth attached image's face) beside her in a suit jacket, composed, a faint smile. Haechan (the fourth attached image's face) across from her, both hands raised in surrender, grinning. Yunjin (the sixth attached image's face) further down, pointing at someone and laughing. Along the rest of the table, softer and less detailed: a grey-haired driver in a jacket and a tie he keeps touching, a young guard laughing into his rice, a nervous young man at the very end, a quiet woman in a grey cardigan, a tiny older cook perched on the edge of a chair by the kitchen door, and a stout housekeeper standing with a ladle. Loud, warm, a house eating together. Keep the faces clear of the edges.
@@ -244,7 +244,7 @@ Persona 3 Reload style event CG, 16:9, no text. A formal dining room in an old K
 
 **[ ] strangers · Eomma · the pins** *(optional)*  
 For Eomma's second hangout (early March, daytime), in Solar's room at the dressing table.  
-Attach: Solar (her strangers look), Eomma, and `epi-s-her-room.png` (for the room only) if it's made  
+Attach: Solar (her strangers look), Eomma, and `bg/epi-s-her-room.webp` (for the room only)  
 Save as: `epi-s-pins-cg.png`
 ```
 Persona 3 Reload style event CG, 16:9, no text. A young woman's bedroom in a wealthy old Korean house on a grey winter day, pale light from the window. Solar (the first attached image's face) sitting at a dressing table in a soft sweater, her long hair still damp, eyes lowered. Her mother (the second attached image's face) standing behind her in a cream cardigan and pearl stud earrings, her own hair low and smooth and perfect, twisting Solar's hair up with careful hands, a few hairpins held between her lips. In the mirror their two faces, one above the other, almost the same face. On the dressing table a small lacquer dish of hairpins, a brush, a towel, and one long black hairpin laid apart on its own. Quiet, formal, tender. Keep the faces clear of the edges.
@@ -289,144 +289,6 @@ Persona 3 Reload style event CG, 16:9, no text. A university quad on a December 
 ---
 
 ## 2. Places (Gemini)
-
-### The epilogue: strangers
-
-**[ ] The annex by day** *(optional)*  
-The annex at the bottom of the Lee garden in daylight, in the strangers epilogue (now the night picture shows by day too).  
-Attach: `bg/epi-s-annex.webp`  
-Save as: `epi-s-annex-day.png`
-```
-Edit this picture. Keep the same small concrete annex, garden, pine branches, stone wall, house above and harbor below, the same angle and the same art style; change it to a grey winter afternoon: flat pale daylight under a low overcast sky, the heavy steel door shut, the bare bulb off, the old silver transistor radio still on the window sill, frost in the shade of the wall, the red lanterns on the house above unlit, the harbor below grey and quiet with no lights. 16:9, no people, no readable text.
-```
-
-**[ ] The mudflats at midnight** *(optional)*  
-The low tide at night in the strangers epilogue (now the grey daytime tide stands in).  
-Attach: `bg/epi-s-harbor-tide.webp`  
-Save as: `epi-s-mudflats-midnight.png`
-```
-Edit this picture. Keep the same seawall, landing steps, mudflats, channels and angle in the same art style; change it to midnight: the water gone out all the way to the horizon, a huge pale moon sitting low on the horizon where the sea line would be, much larger than a normal moon, the wide wet mud ribbed and glittering under it, every channel empty and shining, a faint green tint in the moonlight, a clear dark sky, every lamp and window on the shore dark. Still and silent. 16:9, no people, no readable text.
-```
-
-**[ ] Her room** *(optional)*  
-Solar's bedroom in her family's house in the strangers epilogue (now an elegant bedroom from elsewhere stands in).  
-Attach: `bg/epi-s-lee-kitchen.webp` (for the style only)  
-Save as: `epi-s-her-room.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a young woman's bedroom upstairs in a wealthy old Korean house by the sea, on a grey winter day: a wide bed with a pale quilt, a dressing table with a mirror and a small lacquer dish of hairpins on it, a heavy wooden wardrobe, a desk with a small ticking clock and a lamp, a rug on the heated floor, warm wood and paper-screen details. A big window looks down over a garden of bare trees and onggi jars to a small concrete hut at the bottom, and past the garden wall to the grey harbor and its cranes. Quiet, tidy, expensive, a little lonely. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] Her room at night** *(optional)*  
-The same bedroom at night, in the strangers epilogue (now a tinted day picture stands in).  
-Attach: `epi-s-her-room.png` (the picture above, once it's made)  
-Save as: `epi-s-her-room-night.png`
-```
-Edit this picture. Keep the same bedroom, furniture and angle in the same art style; change it to late at night: only the desk lamp on, a small warm pool of light, the rest of the room in deep blue shadow, the window black with the room faintly reflected in it, and through it the dark garden going down to the hut at the bottom, where one tiny orange radio dial glows on a window sill, and the harbor lights beyond. Frost at the corners of the glass. 16:9, no people, no readable text.
-```
-
-**[ ] The stairs at night** *(optional)*  
-The main staircase of the family house in the strangers epilogue, used before light and late at night (now a dormitory hallway stands in).  
-Attach: `bg/epi-s-lee-kitchen.webp` (for the style only)  
-Save as: `epi-s-stairs-night.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the old dark wooden staircase of a wealthy Korean house at night, seen from the landing looking down: worn polished stairs with a wooden banister, a long yellow shape of lamplight thrown up the stairwell from a study door left open at the bottom, stopping short of the landing; on the wall across the stairwell an old framed black-and-white photograph of a harbor full of fishing boats; a landing window showing a dark road and a gate with red lanterns below. Cold, hushed, the rest of the house asleep. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] The garden at night** *(optional)*  
-The garden behind the family house in the strangers epilogue (now the front gate stands in).  
-Attach: `bg/epi-s-annex.webp`  
-Save as: `epi-s-garden-night.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the garden of the same house as the attached image, at night in deep winter, seen from the back step under the kitchen eave looking down the slope: a frozen gravel path, a row of onggi jars along the wall with frost on their lids, a plain wooden bench beside them, a bare persimmon tree and old pines, a red plastic bucket on the stone step in the foreground, and at the bottom of the garden the small concrete annex with an orange radio dial glowing on its sill. Beyond the garden wall the dark harbor and its lights. Lamp light from the house windows falls on the frost. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] The garden by day** *(optional)*  
-The same garden in daylight, in the strangers epilogue (now the gate at night stands in).  
-Attach: `epi-s-garden-night.png` (the picture above, once it's made)  
-Save as: `epi-s-garden-day.png`
-```
-Edit this picture. Keep the same garden, path, jars, bench, trees, annex and angle in the same art style; change it to a pale winter afternoon: thin grey-gold daylight, a hazy sky, the radio dial off, the house windows unlit, three washing lines strung across the bottom of the garden with patterned rugs hanging over them, the harbor beyond the wall grey and calm. 16:9, no people, no readable text.
-```
-
-**[ ] The gate by day** *(optional)*  
-The family house's front gate in daylight, in the strangers epilogue (now the same gate at night shows by day too).  
-Attach: `bg/flashback-lee-house.webp`  
-Save as: `epi-s-gate-day.png`
-```
-Edit this picture. Keep the same house, wall, gate, pines, path and harbor view, the same angle and the same art style; change it to a cold, clear February morning: thin winter sun, a pale sky, the red lanterns unlit, both leaves of the big wooden gate standing wide open, a small gatehouse door beside it, a frozen herb bed along the foot of the wall, the harbor below blue-grey with cranes in the distance. 16:9, no people, no readable text.
-```
-
-**[ ] The study** *(optional)*  
-The father's study in the family house in the strangers epilogue, used in the evenings (now a guesthouse lobby stands in).  
-Attach: `bg/epi-s-lee-kitchen.webp` (for the style only)  
-Save as: `epi-s-study.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: an old man's study in a wealthy Korean house in the evening: a heavy desk with a green-shaded lamp throwing a yellow circle over a wooden baduk board with black and white stones mid-game, the rest of the room left to the dark: shelves of old books and papers, a cracked leather armchair by a radiator, a clock on the wall, an old cassette player on a shelf, an ashtray, a folded newspaper and reading glasses on a cord, and the door held open by a heavy brass boat cleat used as a doorstop. Curtains drawn over a night window. Warm, close, a little smoky. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] The dining room** *(optional)*  
-The formal dining room of the family house in the strangers epilogue (now the dormitory dining room stands in).  
-Attach: `bg/epi-s-lee-kitchen.webp` (for the style only)  
-Save as: `epi-s-dining-room.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the formal dining room of a wealthy old Korean house in the evening: a very long dark wooden table with all its extra leaves in, set for eleven with good white plates, cups, silver spoons and chopsticks and bowls of soup and rice, a whole fish on a platter in the middle; a fine silk rug under the table, low warm lamps, a carved sideboard, a door through to the kitchen, black windows. Formal, warm, a house sitting down together. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] Yunjin's room** *(optional)*  
-The guest room Yunjin lives in at the family house in the strangers epilogue (now a pink bedroom from elsewhere stands in).  
-Attach: `bg/epi-s-lee-kitchen.webp` (for the style only)  
-Save as: `epi-s-yunjin-room.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: an old-fashioned guest room in a wealthy Korean house taken over by a young woman: flowered wallpaper, a heavy wardrobe, a framed print of cranes over the bed, four puffer jackets in different bright colours hung on the back of the door, a dresser buried in skincare bottles, photos of painted nails tucked round its mirror, a pink camera on a strawberry strap hanging off the bedpost, three pairs of men's reading glasses in a row on the windowsill, a laptop and a magazine on the rumpled duvet, a bedside lamp switched on. Grey winter light at the window. Cosy, cluttered, loved. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] The car** *(optional)*  
-The inside of the family's car in the strangers epilogue (now a night street stands in).  
-Attach: `bg/epi-s-dust.webp` (for the style only)  
-Save as: `epi-s-car.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the inside of an older, very well kept black Korean luxury sedan, seen from the back seat: soft leather seats, the empty driver's seat, a folded newspaper and a green thermos on the passenger seat, a cloth tucked by the gear stick, and through the windscreen and side windows a harbor road on a grey winter day, cranes standing over the quays, a ferry terminal, the sea. Warm inside, cold outside, a little fog at the edges of the glass. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] The car at night** *(optional)*  
-The same car in the evening, in the strangers epilogue (now a night street stands in).  
-Attach: `epi-s-car.png` (the picture above, once it's made)  
-Save as: `epi-s-car-night.png`
-```
-Edit this picture. Keep the same car interior, seats and angle in the same art style; change it to a winter night: the dashboard lights glowing softly, the heater's warm glow, rain on the windscreen with the wipers parked, the coast road outside dark with streetlights smeared orange and soft through the wet glass, the harbor lights far off. 16:9, no people, no readable text.
-```
-
-**[ ] Jungwon's room** *(optional)*  
-Jungwon's room in the west wing of the Yang house in the strangers epilogue (now a flat from elsewhere stands in).  
-Attach: `bg/epi-s-lee-kitchen.webp` (for the style only)  
-Save as: `epi-s-jungwon-room.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a severe, quiet young man's room in a grand old Korean house: a narrow bed made so tight it looks painted on, books shelved strictly by height, nothing at all on the walls, and by a big window a low wooden stand holding a thick kaya baduk board with two lidded stone bowls beside it and a game laid out halfway in black and white. A cushioned window seat. Through the window the grey bay on a winter day, and the far shore with a big house on it. Spare, still, like a held breath. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] Wolmido by day** *(optional)*  
-The seaside promenade on an ordinary winter day in the strangers epilogue (now Port Island's seaside park stands in).  
-Attach: `bg/epi-s-daeboreum.webp`  
-Save as: `epi-s-wolmido.png`
-```
-Edit this picture. Keep the same promenade, railing, beach, carousel, pirate-ship ride and angle in the same art style; change it from the festival night to an ordinary grey afternoon in February: no lanterns, no bonfire tower, no moon; flat pale daylight, the sea beyond the railing flat and grey; the carousel and the pirate ship wrapped in blue tarpaulins and shut, the food carts shuttered except one fish-cake cart with steam rising, café chairs turned upside down on the tables, a few gulls standing on the railing, and at the far end a long concrete pier with one lamp. 16:9, no people, no readable text.
-```
-
-**[ ] Wolmido at night** *(optional)*  
-The same promenade on an ordinary winter night in the strangers epilogue (now Port Island's pier at night stands in).  
-Attach: `bg/epi-s-daeboreum.webp`  
-Save as: `epi-s-wolmido-night.png`
-```
-Edit this picture. Keep the same promenade, railing, beach, rides and angle in the same art style; change it to an ordinary quiet winter night: no festival lanterns, no bonfire tower, no full moon (a cloudy dark sky); the rides dark and covered, the promenade lit only by plain street lamps, one fish-cake cart lit up with steam rising, the black sea and the distant harbor lights. 16:9, no people, no readable text.
-```
-
-**[ ] Chinatown** *(optional)*  
-The red steps of Incheon's Chinatown in the strangers epilogue (now a shopping street stands in).  
-Attach: `bg/epi-s-dust.webp` (for the style only)  
-Save as: `epi-s-chinatown.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the hillside Chinatown of a Korean port city at winter dusk: a wide flight of red steps going down between old Chinese restaurants with carved red-and-gold fronts, paper lanterns strung on wires overhead and lit, a small old restaurant with a cracked sign and steamed-up windows, old snow on the steps gone to a grey crust, a narrow street at the bottom where a car could pull up, the sky going dark blue over the rooftops. Warm, crowded, a little shabby. Match the painted style of the attached image. Keep everything important away from the edges.
-```
 
 ### The epilogue: Stay
 

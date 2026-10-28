@@ -146,6 +146,24 @@ EXTRA = {
     'epi-h-christmas-lights': 'Added to Game/epi-h-christmas-lights.jpeg',
     'epi-h-jihoon-porch': 'Added to Game/epi-h-jihoon-porch.jpeg',
     'epi-h-gym-hearing': 'Added to Game/epi-h-gym-hearing.jpeg',
+    # batch 78 (2026-10-28): the strangers epilogue places (data/epi/strangers/world.js; the coda's garden)
+    'epi-s-her-room': 'Added to Game/epi-s-her-room.jpeg',
+    'epi-s-her-room-night': 'Added to Game/epi-s-her-room-night.jpeg',
+    'epi-s-stairs-night': 'Added to Game/epi-s-stairs-night.jpeg',
+    'epi-s-study': 'Added to Game/epi-s-study.jpeg',
+    'epi-s-dining-room': 'Added to Game/epi-s-dining-room.jpeg',
+    'epi-s-yunjin-room': 'Added to Game/epi-s-yunjin-room.jpeg',
+    'epi-s-annex-day': 'Added to Game/epi-s-annex-day.jpeg',
+    'epi-s-garden-day': 'Added to Game/epi-s-garden-day.jpeg',
+    'epi-s-garden-night': 'Added to Game/epi-s-garden-night.jpeg',
+    'epi-s-gate-day': 'Added to Game/epi-s-gate-day.jpeg',
+    'epi-s-jungwon-room': 'Added to Game/epi-s-jungwon-room.jpeg',
+    'epi-s-mudflats-midnight': 'Added to Game/epi-s-mudflats-midnight.jpeg',
+    'epi-s-wolmido': 'Added to Game/epi-s-wolmido.jpeg',
+    'epi-s-wolmido-night': 'Added to Game/epi-s-wolmido-night.jpeg',
+    'epi-s-chinatown': 'Added to Game/epi-s-chinatown.jpeg',
+    'epi-s-car': 'Added to Game/epi-s-car.jpeg',
+    'epi-s-car-night': 'Added to Game/epi-s-car-night.jpeg',
 }
 SIZE = (1920, 1072)  # Kat's New Adds backgrounds; one with another shape is cropped / scaled to fill this
 

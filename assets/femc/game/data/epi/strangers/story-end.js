@@ -599,6 +599,7 @@
     { n: "Nobody had turned it yet. It still said twenty-nine." },
     { n: "She stood in front of it in the dark for a long time. Then she reached up and turned it herself. Twenty-eight. In somebody else's red pen, circled twice. The first time in a month she'd got there first." },
     { place: 'Incheon · The Lee House · Garden', time: 'Before Light', soft: true },
+    { bg: 'epi-s-garden-night' },
     { n: "The garden was white. Frost on every blade, on the onggi jars, on the bare persimmon, on the gravel path going down between the dead beds to the annex at the bottom, and the sky over the harbor still black, no gray in it yet, the stars hard and small and too many." },
     { n: "They were both there." },
     { n: "Of course they were. Haechan on the annex step with his elbows on his knees and no gum, for once, his jaw still. Jungwon standing at the far end of the step in his dark coat, a careful distance off, with his right hand in his pocket, looking at the sky toward the sea. Neither of them had gone off. She didn't think either of them had gone off in three nights." },

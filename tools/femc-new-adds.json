@@ -16127,6 +16127,261 @@
       "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
       "outputSha256": "9d56868ef1d67cba82912fb7bff3faf9bda8d5c1fd32093e8681276ae33eab61",
       "placement": "new hoax/world.js rule 'Hanlim · School · Gym · Hearing' (day slot) below Gym at Midnight; the epi-h-hearing event (story-end.js) moves to that place; the 1/10 evening gym scene keeps the plain gym; indoor"
+    },
+    {
+      "batch": 78,
+      "source": "epi-s-her-room.jpeg",
+      "sourceNow": "Added to Game/epi-s-her-room.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "bed71b44e239d86d4716f70f744109ff28c618994ee7f5681fa7a9e455cffe75",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-her-room.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "3e139f68df2dd392185b0aca9bb893e70d232825a5761d1a6f3f8ba52cbcf557",
+      "placement": "data/epi/strangers/world.js rule 'Incheon · The Lee House · Her Room' day slot (was elegant-bedroom) and home.bg; indoor"
+    },
+    {
+      "batch": 78,
+      "source": "epi-s-her-room-night.jpeg",
+      "sourceNow": "Added to Game/epi-s-her-room-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "212fa86bdc4bd8e12221fde5567fa61c7b31092703b339832f668e5228be1a39",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-her-room-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "5149454886dd118a70774622f806df6702a11c0dc834e2f9bf5d1e5486f0c7be",
+      "placement": "the same Her Room rule's evening slot; indoor"
+    },
+    {
+      "batch": 78,
+      "source": "epi-s-stairs-night.jpeg",
+      "sourceNow": "Added to Game/epi-s-stairs-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "c80d13a3094b7d8bac9fd2dc312dfb4f748ee9653a0b0aeb1559e4045d08c738",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-stairs-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "403ec7e571c0eea270180650c787dba491ab41add974cc567252997e4161b6ea",
+      "placement": "strangers/world.js rule 'Incheon · The Lee House · Stairs' both slots (was iwatodaidorm-hallway); indoor"
+    },
+    {
+      "batch": 78,
+      "source": "epi-s-study.jpeg",
+      "sourceNow": "Added to Game/epi-s-study.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "f2d73aa1928b67f465877559e31dbf02e99cb8bd6c34c76fe6f2e880b4063c6c",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-study.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "cf773e8ad5d84d9bb0f7ccdee0c8e8274c1246daf29ed2fd6da434a179fcb06d",
+      "placement": "strangers/world.js rule 'Incheon · The Lee House · Study' both slots (was kirijo-guesthouse-lobby); indoor"
+    },
+    {
+      "batch": 78,
+      "source": "epi-s-dining-room.jpeg",
+      "sourceNow": "Added to Game/epi-s-dining-room.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "0720f1a288c7e43c08ae90a5858f83ef3861f75293cfff6b4cca122bc575781c",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-dining-room.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "12706710e93a8bce6d9259a91b6567e4d21bb894bf44f4c23abdc5ce3220d17d",
+      "placement": "strangers/world.js rule 'Incheon · The Lee House · Dining Room' both slots (was iwatodaidorm-diningroom); indoor"
+    },
+    {
+      "batch": 78,
+      "source": "epi-s-yunjin-room.jpeg",
+      "sourceNow": "Added to Game/epi-s-yunjin-room.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "7d3902fcac95adaf97bb0af768b2ee37b60b7c734792671cb41069a4bf187802",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-yunjin-room.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "84ba002416bbec6018dd23812dd685a1176014ac38166769a5a6b5486299102a",
+      "placement": "strangers/world.js rule \"Incheon · The Lee House · Yunjin's Room\" day slot, evening null (night tint); indoor"
+    },
+    {
+      "batch": 78,
+      "source": "epi-s-annex-day.jpeg",
+      "sourceNow": "Added to Game/epi-s-annex-day.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "a329244d0fac0f285f93ab7e6eb3fc0d33407ceebc86700393c0c4d9c084e698",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-annex-day.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "c45ee17cc387cc6fbbdb25f76b53d57ce3d945612d609d4a47d3253b83657e6c",
+      "placement": "strangers/world.js rule 'Incheon · The Lee House · Annex' day slot (evening stays epi-s-annex); outdoor via the 'epi-s-annex' prefix"
+    },
+    {
+      "batch": 78,
+      "source": "epi-s-garden-day.jpeg",
+      "sourceNow": "Added to Game/epi-s-garden-day.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "758cef3c8f12d201f673958c8bfaef560e5a353e492aa3446d20d8d9d3b4226e",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-garden-day.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "fa208b26f68eef4f53c83271b53f17198a567cc457a177e37bf2ff1cd5521cd7",
+      "placement": "strangers/world.js rule 'Incheon · The Lee House · Garden' day slot (was flashback-lee-house); outdoor via 'epi-s-garden'"
+    },
+    {
+      "batch": 78,
+      "source": "epi-s-garden-night.jpeg",
+      "sourceNow": "Added to Game/epi-s-garden-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "05f4227a5edfa3a0992df488b4fea71acbe4e2cc1485f26a2a012ee78a985550",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-garden-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "2937e7a2d2d12069263577d57a9db99bc2eee3ad35ea7e04ea9b467cf3caee97",
+      "placement": "the same Garden rule's evening slot; { bg: 'epi-s-garden-night' } after the 3/16 before-light garden line in story-end.js; the true coda's Garden rule (data/epi/true/world.js) both slots, its one scene being before light; outdoor via 'epi-s-garden' in both worlds"
+    },
+    {
+      "batch": 78,
+      "source": "epi-s-gate-day.jpeg",
+      "sourceNow": "Added to Game/epi-s-gate-day.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "a364f6f25fe46a95bdf6b9d530fde50710c165e4b72e593d86a1ed4e3b01e75f",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-gate-day.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "03d960dd1f8a22285faee30689d8dea18db06bf0f1a966c05db77d57fa68a489",
+      "placement": "strangers/world.js rule 'Incheon · The Lee House · Gate' day slot (evening keeps the lantern-lit flashback-lee-house); outdoor"
+    },
+    {
+      "batch": 78,
+      "source": "epi-s-jungwon-room.jpeg",
+      "sourceNow": "Added to Game/epi-s-jungwon-room.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "2ecfffbaf81caec93f3478178fc417e42f6026330537e8c65a028200d180996d",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-jungwon-room.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "d02fb232fe9df83e5a0e7a18cbf2f6d86639f54853facd37cb24602a6fa4a4ef",
+      "placement": "strangers/world.js rule \"Incheon · The Yang House · Jungwon's Room\" day slot (was kirijo-flat), evening null (night tint); indoor"
+    },
+    {
+      "batch": 78,
+      "source": "epi-s-mudflats-midnight.jpeg",
+      "sourceNow": "Added to Game/epi-s-mudflats-midnight.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "b654c7063c5c97dcb33adcf831bab3c31dc735e8703692607e2a2b4380bf06de",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-mudflats-midnight.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "201037522df139feb70b2adb33a4c20c70a7ccdee8629a9424d74106b978c284",
+      "placement": "strangers/world.js rule 'Incheon · The Mudflats at Midnight' both slots (was epi-s-harbor-tide); outdoor"
+    },
+    {
+      "batch": 78,
+      "source": "epi-s-wolmido.jpeg",
+      "sourceNow": "Added to Game/epi-s-wolmido.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "ae77e458dbf33bedd1696f7743dd8259568132c734627528c793b9a30ba41856",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-wolmido.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "dfc213c6b688f3e9545893f62ce33351fec5499f8de1c45a1d74e123547008e3",
+      "placement": "strangers/world.js rule 'Incheon · Wolmido' day slot (was port-island-seaside-park) and the epi-s-wolmido activity bg; the Daeboreum rule untouched; outdoor via 'epi-s-wolmido'"
+    },
+    {
+      "batch": 78,
+      "source": "epi-s-wolmido-night.jpeg",
+      "sourceNow": "Added to Game/epi-s-wolmido-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "b4427054d2e6b313c0455bccb3e9037c23010551e322feadff9312eb618a4abb",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-wolmido-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "b6c1540eb166690bde778db335e18028c2a842841219c7d58490f8d629e05e95",
+      "placement": "the same Wolmido rule's evening slot (the activity's evening slot plays it); outdoor via the 'epi-s-wolmido' prefix"
+    },
+    {
+      "batch": 78,
+      "source": "epi-s-chinatown.jpeg",
+      "sourceNow": "Added to Game/epi-s-chinatown.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "2e9ab314894823e9279e411e911ecb14b18a38d557a7dcf9ac458d520e902d98",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-chinatown.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "c26ba909b18d57bdf64dea265bf0af1be16863ce2f6b1a4471c0c795e4a8670d",
+      "placement": "strangers/world.js rule 'Incheon · Chinatown' both slots (dusk art) and the epi-s-chinatown activity bg; outdoor"
+    },
+    {
+      "batch": 78,
+      "source": "epi-s-car.jpeg",
+      "sourceNow": "Added to Game/epi-s-car.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "6840b936cf27cf6e24eb46898b57b1f3c47c9db312606fd1a6e6e62cbc54b3e4",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-car.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "bd5a99bd91f1b857030f781f9c0ba97332bba97dfdc3a75dfd6aed6602eba730",
+      "placement": "strangers/world.js rule 'Incheon · The Car' day slot (was outside-night); a room with windows for weather (outside-night left weatherFx.outdoor, unused now)"
+    },
+    {
+      "batch": 78,
+      "source": "epi-s-car-night.jpeg",
+      "sourceNow": "Added to Game/epi-s-car-night.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "40b9535eeb70911f92023ea2d0eb162719bebe5b0d1b9199071b1cdadc26ce64",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-s-car-night.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "3af06cf8853584a25c8a21005a07ea3079c5d72a8910276c387b9f12a13cd313",
+      "placement": "the same Car rule's evening slot; windows for weather"
     }
   ],
   "batch1Validation": {
@@ -17183,5 +17438,20 @@
     ],
     "notTested": "no browser tests: the Runners, HOAX, Stay and coda scenes at these places; tests/femc_epilogue.py (its _loaded checks now 18) not run",
     "html": "femc-game.html epilogue v20; DATA_V 18"
+  },
+  "batch78Validation": {
+    "date": "2026-10-28",
+    "scope": "the strangers epilogue places (seventeen)",
+    "sourcesInspected": "all seventeen checked by name, size and hash",
+    "sourcesIntegrated": 17,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched; New Adds empty apart from On Hold afterwards",
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script",
+      "py_compile tests/femc_epilogue.py"
+    ],
+    "notTested": "no browser tests: the strangers and coda scenes at these places; tests/femc_epilogue.py (its _loaded checks now 19) not run",
+    "html": "femc-game.html epilogue v21; DATA_V 19"
   }
 }

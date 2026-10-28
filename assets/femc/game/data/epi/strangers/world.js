@@ -44,50 +44,50 @@
     lockAfter: '2/23',
     places: {
       bg: [
-        ['Incheon · The Lee House · Her Room', 'elegant-bedroom', null],
+        ['Incheon · The Lee House · Her Room', 'epi-s-her-room', 'epi-s-her-room-night'],  // batch 78
         ['Incheon · The Lee House · Kitchen', 'epi-s-lee-kitchen', 'epi-s-lee-kitchen'], // batch 65: lamp-lit, blue at the windows (before light to late)
-        ['Incheon · The Lee House · Stairs', 'iwatodaidorm-hallway', null],
-        ['Incheon · The Lee House · Study', 'kirijo-guesthouse-lobby', null],
+        ['Incheon · The Lee House · Stairs', 'epi-s-stairs-night', 'epi-s-stairs-night'], // batch 78: every scene is before light to late
+        ['Incheon · The Lee House · Study', 'epi-s-study', 'epi-s-study'],               // batch 78: lamp-lit evening, both slots
         ['Incheon · The Lee House · Sunroom', 'botanical-garden-greenhouse', null],
-        ['Incheon · The Lee House · Dining Room', 'iwatodaidorm-diningroom', null],
-        ["Incheon · The Lee House · Yunjin's Room", 'pink-bedroom-2', null],
-        ['Incheon · The Lee House · Annex', 'epi-s-annex', 'epi-s-annex'],              // batch 65: night; both slots until a day version exists
-        ['Incheon · The Lee House · Garden', 'flashback-lee-house', null],
-        ['Incheon · The Lee House · Gate', 'flashback-lee-house', null],
+        ['Incheon · The Lee House · Dining Room', 'epi-s-dining-room', 'epi-s-dining-room'], // batch 78: both slots
+        ["Incheon · The Lee House · Yunjin's Room", 'epi-s-yunjin-room', null],           // batch 78: the night tint over the lamp-lit room in the evening
+        ['Incheon · The Lee House · Annex', 'epi-s-annex-day', 'epi-s-annex'],          // batch 78: by day; batch 65: night
+        ['Incheon · The Lee House · Garden', 'epi-s-garden-day', 'epi-s-garden-night'],  // batch 78 (the 3/16 before-light line sets the night art)
+        ['Incheon · The Lee House · Gate', 'epi-s-gate-day', 'flashback-lee-house'],     // batch 78: by day; the lantern-lit gate at night
         ['Incheon · The Lee House at Midnight', 'flashback-lee-house', null],
         ['Incheon · The Lee House', 'flashback-lee-house', null],
-        ["Incheon · The Yang House · Jungwon's Room", 'kirijo-flat', null],
+        ["Incheon · The Yang House · Jungwon's Room", 'epi-s-jungwon-room', null],         // batch 78
         ['Incheon · The Yang House · Kitchen', 'hagakure-kitchen', null],
         ['Incheon · The Yang House', 'hotel-lobby', null],
         ['Incheon · Harbor at Midnight', 'flashback-incheon-harbor', null],
         ['Incheon · Harbor', 'harbor', 'flashback-incheon-harbor'],
-        ['Incheon · The Mudflats at Midnight', 'epi-s-harbor-tide', 'epi-s-harbor-tide'], // batch 65: the grey low tide until a night version exists ('Midnight' reads the day slot)
+        ['Incheon · The Mudflats at Midnight', 'epi-s-mudflats-midnight', 'epi-s-mudflats-midnight'], // batch 78: both slots ('Midnight' reads the day slot)
         ['Incheon · The Mudflats', 'epi-s-harbor-tide', null],                         // batch 65: grey low tide by day
         ['Incheon · Fish Market at Midnight', 'flashback-fish-market', null],
         ['Incheon · Fish Market', 'flashback-fish-market', null],
         ['Incheon · Wolmido · Daeboreum', 'epi-s-daeboreum', 'epi-s-daeboreum'],     // batch 65: the festival night (epi-s-moon)
-        ['Incheon · Wolmido', 'port-island-seaside-park', 'port-island-pier-night'],
-        ['Incheon · Chinatown', 'shopping-street', 'iwatodai-strip-night'],
+        ['Incheon · Wolmido', 'epi-s-wolmido', 'epi-s-wolmido-night'],                  // batch 78
+        ['Incheon · Chinatown', 'epi-s-chinatown', 'epi-s-chinatown'],                  // batch 78: dusk art, both slots
         ['Incheon · Street in the Dust', 'epi-s-dust', null],                         // batch 65: daytime only
         ['Incheon · Songdo · Café', 'chagall-cafe-inside', null],
         ['Incheon · Songdo', 'paulownia-mall', 'paulownia-mall-night'],
         ['Incheon · Karaoke', 'paulownia-karaoke', null],
         ['Incheon · Bathhouse', 'iwatodai-bathhouse', 'bathhouse-night'],
         ['Incheon · The Bridge', 'moonlightbridge', null],
-        ['Incheon · The Car', 'outside-night', null],
+        ['Incheon · The Car', 'epi-s-car', 'epi-s-car-night'],                          // batch 78: a room with windows for weather
         ['Incheon', 'flashback-incheon-harbor', null]
       ],
-      weatherFx: { outdoor: ['epi-s-annex', 'epi-s-harbor-tide', 'epi-s-daeboreum', 'epi-s-dust', 'flashback-incheon-harbor', 'harbor', 'flashback-fish-market', 'flashback-lee-house', 'port-island-seaside-park', 'port-island-pier-night', 'shopping-street', 'iwatodai-strip-night', 'moonlightbridge', 'outside-night'],
+      weatherFx: { outdoor: ['epi-s-annex', 'epi-s-harbor-tide', 'epi-s-mudflats-midnight', 'epi-s-garden', 'epi-s-gate-day', 'epi-s-wolmido', 'epi-s-chinatown', 'epi-s-daeboreum', 'epi-s-dust', 'flashback-incheon-harbor', 'harbor', 'flashback-fish-market', 'flashback-lee-house', 'port-island-seaside-park', 'port-island-pier-night', 'shopping-street', 'iwatodai-strip-night', 'moonlightbridge'],
         sealed: ['paulownia-karaoke', 'iwatodai-bathhouse', 'bathhouse-night'], none: [] },
-      home: { place: 'Incheon · The Lee House · Her Room', bg: 'elegant-bedroom' },
+      home: { place: 'Incheon · The Lee House · Her Room', bg: 'epi-s-her-room' },
       activities: [
         { id: 'epi-s-market', name: 'The fish market', place: 'Incheon · Fish Market', bg: 'flashback-fish-market', slots: ['after'], cost: 8000, stats: { kindness: 1 },
           text: "Ice underfoot, men shouting prices over each other, the smell of salt and diesel and cold blood, and a woman behind a flounder tank who looked at her hands, looked at her face, and put an extra one in the bag without being asked. She carried it home for Mrs. Bang like a prize." },
         { id: 'epi-s-harbor', name: 'Walk the harbor', place: 'Incheon · Harbor', bg: 'harbor', slots: ['after', 'evening'], cost: 0, stats: { courage: 1 },
           text: "Wind off the water, gulls, and the cranes standing over everything like they'd been told to wait. She walked the long way round the quay and stayed well back from the edge, the way she always had, and counted the ships at anchor without meaning to. Eleven. She counted again. Eleven." },
-        { id: 'epi-s-chinatown', name: 'Jjajangmyeon in Chinatown', place: 'Incheon · Chinatown', bg: 'shopping-street', slots: ['after', 'evening'], cost: 6000, stats: { charm: 1 },
+        { id: 'epi-s-chinatown', name: 'Jjajangmyeon in Chinatown', place: 'Incheon · Chinatown', bg: 'epi-s-chinatown', slots: ['after', 'evening'], cost: 6000, stats: { charm: 1 },
           text: "Up the red steps, past the paper lanterns, to the place with the cracked sign where the aunties still talked about her in Mandarin as if she couldn't understand it. She answered one of them in Mandarin, very politely, and the whole table laughed so hard the owner brought her dumplings she hadn't ordered." },
-        { id: 'epi-s-wolmido', name: 'The Wolmido promenade', place: 'Incheon · Wolmido', bg: 'port-island-seaside-park', slots: ['after', 'evening'], cost: 2000, stats: { kindness: 1 },
+        { id: 'epi-s-wolmido', name: 'The Wolmido promenade', place: 'Incheon · Wolmido', bg: 'epi-s-wolmido', slots: ['after', 'evening'], cost: 2000, stats: { kindness: 1 },
           text: "A paper cup of fish cake broth from the cart, the shuttered rides along the promenade, the sea grey and flat beyond the railing. A child fed the gulls a whole bag of shrimp crackers while his mother pretended not to see. She stood beside him and didn't help, which he seemed to understand was a kind of help." },
         { id: 'epi-s-songdo', name: 'Coffee in Songdo', place: 'Incheon · Songdo · Café', bg: 'chagall-cafe-inside', slots: ['after'], cost: 7500, stats: { charm: 1 },
           text: "The glass city across the water, a café with too many plants and a barista who'd been at her old school, a latte she didn't want and a window seat she did. Nobody here knew which house she was from. She stayed an extra hour for that alone." },
