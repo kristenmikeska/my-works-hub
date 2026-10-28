@@ -472,7 +472,7 @@
     ] },
 
     { after: '12/19', title: '10: to the sun', place: 'Paulownia Mall · Central Atrium', time: 'Evening', scene: [
-      { place: 'Paulownia Mall · Central Atrium', time: 'Evening', bg: 'portisland-christmas' },
+      { place: 'Paulownia Mall · Central Atrium', time: 'Evening', bg: 'paulownia-atrium-christmas' },
       { music: 'tender' },
       { n: "December. The atrium had a Christmas tree three stories tall, gold and white and pink, which the mall management swore up and down had been ordered in gold and white only, and which had arrived with pink in it, and nobody could explain the invoice." },
       { n: "She was sitting on the rim of the planter at its base, glowing in the reflected light, in white and gold, holding something in both hands in her lap, the way you'd hold a bird you'd caught that you meant to let go." },

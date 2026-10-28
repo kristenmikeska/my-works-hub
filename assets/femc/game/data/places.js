@@ -332,7 +332,10 @@ window.FEMC_GAME_PLACES = {
     'iwatodai-strip-night': [{ weather: ['rain', 'storm'], img: 'iwatodai-strip-rain' }],
     // Christmas week in the lounge (lights on the windows); the roof on snow days (scenes that say it is snowed over set it as bg)
     'iwatodaidorm-livingroom-night': [{ dates: ['12/20', '12/21', '12/22', '12/23', '12/24', '12/25'], img: 'iwatodaidorm-livingroom-christmas' }],
-    'iwatodaidorm-roof-night': [{ weather: ['snow'], img: 'iwatodaidorm-roof-night-snow' }]
+    'iwatodaidorm-roof-night': [{ weather: ['snow'], img: 'iwatodaidorm-roof-night-snow' }],
+    // the mall atrium with its tree, December 1 to Christmas, day and evening
+    'paulownia-atrium': [{ dates: ['12/1', '12/2', '12/3', '12/4', '12/5', '12/6', '12/7', '12/8', '12/9', '12/10', '12/11', '12/12', '12/13', '12/14', '12/15', '12/16', '12/17', '12/18', '12/19', '12/20', '12/21', '12/22', '12/23', '12/24', '12/25'], img: 'paulownia-atrium-christmas' }],
+    'paulownia-atrium-evening': [{ dates: ['12/1', '12/2', '12/3', '12/4', '12/5', '12/6', '12/7', '12/8', '12/9', '12/10', '12/11', '12/12', '12/13', '12/14', '12/15', '12/16', '12/17', '12/18', '12/19', '12/20', '12/21', '12/22', '12/23', '12/24', '12/25'], img: 'paulownia-atrium-christmas' }]
   },
   /* Weather over a backdrop (weather.js), by the background image's name (prefixes). `outdoor`: rain and snow fall, fog
      drifts, lightning flashes. `sealed`: rooms with no window to it, where nothing shows and the sound is faint. `none`:

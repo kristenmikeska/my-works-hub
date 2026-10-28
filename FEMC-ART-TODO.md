@@ -1,6 +1,6 @@
 # Art to make
 
-**111 items:** 31 CGs · 48 places · 4 character pieces · 28 wardrobe. 107 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**110 items:** 31 CGs · 47 places · 4 character pieces · 28 wardrobe. 106 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -291,14 +291,6 @@ Persona 3 Reload style event CG, 16:9, no text. A university quad on a December 
 ## 2. Places (Gemini)
 
 ### Iwatodai (the main game)
-
-**[ ] Paulownia Mall: the atrium at Christmas** *(optional)*  
-The atrium in December (shopping lists, a choir, Christmas Eve under the tree).  
-Attach: `bg/paulownia-atrium.webp` (edit this picture)  
-Save as: `paulownia-atrium-christmas.png`
-```
-Edit this picture. Keep the same mall atrium, fountain, angle and art style; change it to Christmas: a tall plastic Christmas tree standing in the middle of the fountain's water, covered in lights, with the planter rim at its base; tinsel wound around every pillar; garlands along the balcony railings; a small machine high above the tree drifting little white paper snowflakes down through the air; the skylights dusky blue, everything glowing with warm lights. Cheesy, cheerful, crowded-feeling. 16:9, no people, no readable text.
-```
 
 **[ ] Paulownia Mall: the photo booth** *(optional)*  
 The sticker-photo booth in the mall, used by several links (now a generic mall interior).  

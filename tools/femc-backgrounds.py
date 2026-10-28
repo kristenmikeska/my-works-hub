@@ -113,6 +113,8 @@ EXTRA = {
     # batch 70 (2026-10-28): Paulownia Mall's central atrium, day and dusk
     'paulownia-atrium': 'Added to Game/paulownia-atrium.jpeg',
     'paulownia-atrium-evening': 'Added to Game/paulownia-atrium-evening.jpeg',
+    # batch 71 (2026-10-28): the atrium at Christmas (places.js today, 12/1-12/25)
+    'paulownia-atrium-christmas': 'Added to Game/paulownia-atrium-christmas.jpeg',
 }
 SIZE = (1920, 1072)  # Kat's New Adds backgrounds; one with another shape is cropped / scaled to fill this
 

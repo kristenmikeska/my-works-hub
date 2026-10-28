@@ -205,7 +205,7 @@
   /* ── Holidays (all after the solstice; Haechan's 11/23 is in living-holidays.js) ── */
   addHol('haechan', {
     // The Emperor's Birthday. The remember-the-year party (a6-remember) is this evening.
-    '12/23': { rank: 7, flag: 'year-goes-on', slot: 'after', title: "the emperor's birthday", place: 'Paulownia Mall', time: 'Daytime', bg: 'inside-mall', music: 'city',
+    '12/23': { rank: 7, flag: 'year-goes-on', slot: 'after', title: "the emperor's birthday", place: 'Paulownia Mall', time: 'Daytime', bg: 'paulownia-atrium-christmas', music: 'city',
       ask: "mitsuru gave me the list for tonight. two pages. i don't know why she gave it to me. come carry half", yes: 'omg yes. where r u', ok: 'fountain. 1. she underlined paper cups twice',
       sorry: 'cant today, im so sorry', no: "mm. i'll buy the wrong everything. tell her it was me",
       scene: [

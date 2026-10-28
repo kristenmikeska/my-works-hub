@@ -15722,6 +15722,21 @@
       "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
       "outputSha256": "0aafda480ccd0b30bee2dac44d0a35830acfd40c56b4d493539ee0c97f0f2430",
       "placement": "places.bg rule 'Paulownia Mall · Central Atrium' evening slot; not sealed"
+    },
+    {
+      "batch": 71,
+      "source": "paulownia-atrium-christmas.jpeg",
+      "sourceNow": "Added to Game/paulownia-atrium-christmas.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "4dcf36abf9799d443e63fa9d7220bf062a80b1edc748cd97aad4ee4ddb258e8e",
+      "status": "integrated",
+      "destination": "assets/femc/bg/paulownia-atrium-christmas.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "b0c75a42e97a5a163b5add1991845930b7e7d8250bd76297c191bacd5318ca07",
+      "placement": "places.today 'paulownia-atrium' and 'paulownia-atrium-evening' on 12/1-12/25; explicit bg on links/aphrodite.js { place, bg } step (was 'portisland-christmas') and data/living-haechan-texts.js 12/23 (was 'inside-mall'); not sealed"
     }
   ],
   "batch1Validation": {
@@ -16679,5 +16694,19 @@
     ],
     "notTested": "no browser tests: the atrium scenes by day and evening",
     "html": "femc-game.html places v49, living-march v8, living-niki v3"
+  },
+  "batch71Validation": {
+    "date": "2026-10-28",
+    "scope": "Paulownia Mall's atrium at Christmas",
+    "sourcesInspected": "checked by name, size and hash",
+    "sourcesIntegrated": 1,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same name; sha256 checked); On Hold untouched",
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script"
+    ],
+    "notTested": "no browser tests: the December atrium scenes",
+    "html": "femc-game.html places v50, living-haechan-texts v5, aphrodite v6"
   }
 }
