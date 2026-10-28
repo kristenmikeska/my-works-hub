@@ -82,9 +82,9 @@
          replace its value with a file in assets/femc/music/ (no extension) or an 'assets/audio/…' path, like world-runners. */
       music: {
         'epi-r-home': 'ring-ring', // the first morning back (soft, home, snow)
-        'epi-r-team': 'specialist',            // ♪ PLACEHOLDER: the lab, practice, the team's week
+        'epi-r-team': ['cashy', 'dollar-bratz'], // the lab, practice, the team's week (Wish by Camo isn't in the folder yet)
         'epi-r-confession': 'grey-rain', // the recording confession (tension, nothing pretty)
-        'epi-r-moon': 'tranquility',           // ♪ PLACEHOLDER: the full moon that passes (12/4)
+        'epi-r-moon': 'black-out-days', // the full moon that passes (12/4)
         'epi-r-party': ['heaven-and-back', 'twenty-three', 'yummy', 'self-destruct'], // Sigma's Friday parties
         'epi-r-regionals': ['miss-the-rage', 'cashy', 'dollar-bratz', 'we-r-who-we-r'], // Regionals, arrival and the opening bracket
         'epi-r-match': ['lights-out', 'miss-the-rage'], // the hard middle and the final

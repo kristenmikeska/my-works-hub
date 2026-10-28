@@ -83,7 +83,7 @@
         'epi-st-romance': 'picture-you', // Akihiko or Shinjiro, when it's warm
         'epi-st-witness': 'i-know-the-end', // it happens in front of everyone (4/5)
         'epi-st-last': 'what-if-i-miss-you', // the last day of spring break
-        'epi-st-held': 'memories-of-you'         // ♪ PLACEHOLDER: the final, one year to the night
+        'epi-st-held': 'i-know-the-end'         // the final, one year to the night
       }
     },
     cast: { nurse: 'Night nurse', teacher: 'Teacher' },

@@ -107,9 +107,9 @@ def main():
         for s in EPI_SONGS + EPI_SPARES:
             ok(os.path.getsize(os.path.join(REPO, 'assets/femc/music', s + '.mp3')) < 7.5 * 1024 * 1024, s + ' is over ~7 MB')
         stand = {k for k, v in epi.items() if all(f.startswith('assets/femc/music/') and f[18:-4] in NEW_SONGS + ['tender-feeling', 'tranquility', 'iwatodai-dorm'] for f in v)}
-        ok(stand == {'epi-r-team', 'epi-r-moon', 'epi-st-home', 'epi-st-held'}, f'moods still on a P3 track: {sorted(stand)}')
+        ok(stand == {'epi-st-home'}, f'moods still on a P3 track: {sorted(stand)}')
         pools = {k: v for k, v in epi.items() if len(v) > 1}
-        ok(set(pools) == {'epi-r-party', 'epi-r-regionals', 'epi-r-match', 'epi-r-romance', 'epi-r-holiday', 'epi-r-faceoff', 'epi-r-spice', 'epi-h-party', 'epi-h-newyear', 'epi-s-danger'}, f'epilogue pools: {sorted(pools)}')
+        ok(set(pools) == {'epi-r-party', 'epi-r-regionals', 'epi-r-match', 'epi-r-romance', 'epi-r-holiday', 'epi-r-faceoff', 'epi-r-spice', 'epi-h-party', 'epi-h-newyear', 'epi-s-danger', 'epi-r-team'}, f'epilogue pools: {sorted(pools)}')
         print(f'{len(epi)} epilogue moods: {len(efiles)} files exist and load, {len(pools)} pools, {len(EPI_SONGS)} gathered songs wired ({len(EPI_SPARES)} spares copied).', flush=True)
 
         # 2. Rotation: every pool, left and re-entered, starts a different file; a sequence of moods never starts the same file twice
