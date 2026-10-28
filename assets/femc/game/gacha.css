@@ -256,6 +256,13 @@
 .g-wd-banner { padding: 12px; border: 2px solid var(--c); background: linear-gradient(120deg, color-mix(in srgb, var(--c) 20%, transparent), rgba(20, 7, 15, .9) 60%); box-shadow: 6px 6px 0 color-mix(in srgb, var(--c) 40%, transparent); }
 .g-wd-bhead b { display: block; color: var(--c); font: italic 900 clamp(26px, 4vw, 38px)/1 var(--cond); transform: skewX(-8deg); text-shadow: 3px 3px 0 var(--night); }
 .g-wd-bhead small { color: var(--pink-3); }
+/* The banner switcher (several banners at once, November–March). */
+.g-wd-bans { display: flex; gap: 8px; margin: 0 0 10px; overflow-x: auto; scrollbar-width: thin; }
+.g-wd-bans button { flex: 1 0 140px; display: grid; gap: 2px; padding: 8px 10px; border: 2px solid color-mix(in srgb, var(--c) 55%, transparent); background: rgba(10, 3, 8, .7); color: inherit; text-align: left; cursor: pointer; opacity: .75; transform: skewX(-6deg); }
+.g-wd-bans button b { color: var(--c); font: italic 900 16px/1 var(--cond); }
+.g-wd-bans button small { font-size: 11px; color: var(--muted); }
+.g-wd-bans button:is(:hover, :focus-visible) { opacity: 1; outline: none; border-color: #fff; }
+.g-wd-bans button.on { opacity: 1; border-color: var(--c); background: color-mix(in srgb, var(--c) 22%, rgba(10, 3, 8, .85)); box-shadow: 4px 4px 0 color-mix(in srgb, var(--c) 40%, transparent); }
 .g-wd-feat { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; padding: 0; list-style: none; }
 .g-wd-feat li { display: grid; justify-items: center; gap: 2px; min-width: 110px; padding: 6px 8px; border: 2px solid var(--rc); background: rgba(10, 3, 8, .6); text-align: center; }
 .g-wd-feat b { font: italic 800 13px/1.1 var(--cond); }

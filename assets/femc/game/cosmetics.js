@@ -19,7 +19,11 @@
    ── The Boutique banner (Menu → Wardrobe → Boutique) ──
      2 Velvet Plumes a pull (BAN.cost). Odds BAN.odds (Rare / Super Rare / Ultra), Super Rare or better within BAN.pitySR,
      an Ultra within BAN.pityUR. Featured items rotate by month (BANNERS; P5X-style rate-up: half of each rarity's pulls
-     land on that rarity's featured item, and an Ultra that wasn't featured makes the next Ultra featured). Repeats give back
+     land on that rarity's featured item, and an Ultra that wasn't featured makes the next Ultra featured).
+     Several banners at once (2026-10-27): November–March run 2–3 side by side (the month's main banner, listed first, plus
+     spotlight / seasonal / world ones); banners(d) lists the month's, hiding any whose featured list is empty (art not in, or
+     only people Solar hasn't met). The Boutique's switcher picks one (S.gacha.cos.bsel; pickBanner); pulls rate up that
+     banner's featured looks. Pity and the Ultra guarantee are shared across every banner (P5X-style), never per banner. Repeats give back
      Velvet Plumes (BAN.refund). Series rewards (gacha.js SERIES[].reward) are `pool: false`: only completing the series
      gives them.
    ── The party's looks (2026-10-27, Kat's "more skins" batch) ──
@@ -31,7 +35,7 @@
    ── The viewer ──
      An owned look's ⤢ (or the View button by Equip) opens gacha.js viewer() over every owned look on the page; ← → / swipe,
      Esc. First-got days: S.gacha.cos.got { id: day }.
-   Save: S.gacha.cos = { own: [ids], on: { slot: id }, portraits, pulls, pity: { sr, ur }, guar, last, got }. NG+ keeps own / on /
+   Save: S.gacha.cos = { own: [ids], on: { slot: id }, portraits, pulls, pity: { sr, ur } (shared by every banner), guar, last, got, bsel }. NG+ keeps own / on /
    portraits (core.js newGamePlus). Tests: FemcCosmetics.rng is replaceable; tests/femc_cosmetics.py. */
 window.FemcCosmetics = (() => {
   const G = window.FemcGame;
@@ -142,7 +146,15 @@ window.FemcCosmetics = (() => {
     { id: 'summer', name: 'Summer Nights', months: [6, 7, 8], color: '#4fd8ff', featured: ['sk-yukata', 'wp-fireworks', 'ui-mint', 'sk-haechan-runners', 'sk-minji-crew', 'sk-akihiko-hoodie', 'wpn-runners'] },
     { id: 'masquerade', name: 'Masquerade', months: [9, 10], color: '#c58bff', featured: ['sk-phantom', 'wpn-phantom', 'sk-halloween', 'bui-velvet', 'evk-jade', 'wpn-kiriko', 'wpn-emo', 'sk-yukari-pink', 'sk-jihoon-emo'] },
     { id: 'lights', name: 'Winter Lights', months: [11, 12, 1], color: '#bfe3ff', featured: ['sk-wintercoat', 'wp-xmas', 'tt-snow', 'evk-rose', 'sk-shinjiro-apron', 'sk-mitsuru-rider', 'wpn-strangers'] },
-    { id: 'sunrise', name: 'Golden Sunrise', months: [2, 3], color: '#ffd36b', featured: ['ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-jungwon-council', 'wpn-jungwon-council'] }
+    { id: 'sunrise', name: 'Golden Sunrise', months: [2, 3], color: '#ffd36b', featured: ['ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-jungwon-council', 'wpn-jungwon-council'] },
+    // Side banners, November–March (2026-10-27): they run beside the month's main banner above (always first, the default).
+    { id: 'runners', name: 'Runners World', kind: 'World', months: [11], color: '#ff9a5c', featured: ['sk-haechan-runners', 'wpn-runners', 'sk-minji-su', 'wp-rooftop'] },
+    { id: 'sees', name: 'S.E.E.S. Spotlight', kind: 'Spotlight', months: [11, 12], color: '#6ab0ff', featured: ['sk-yukari-kyudo', 'sk-yukari-pink', 'sk-junpei-baseball', 'sk-mitsuru-rider', 'sk-shinjiro-apron', 'sk-aigis-uniform', 'sk-akihiko-hoodie', 'tt-darkhour', 'wp-dorm'] },
+    { id: 'haechan', name: 'Haechan Spotlight', kind: 'Spotlight', months: [12, 1], color: '#ff6f7d', featured: ['sk-haechan-runners', 'wpn-runners', 'wpn-strangers', 'evk-midnight', 'wp-rooftop'] },
+    { id: 'hoax', name: 'HOAX World', kind: 'World', months: [1, 2], color: '#9fe06a', featured: ['sk-jungwon-council', 'wpn-jungwon-council', 'wpn-hoax', 'sk-jihoon-pilates', 'sk-jihoon-emo', 'ui-velvet'] },
+    { id: 'valentine', name: "Valentine's", kind: 'Seasonal', months: [2], color: '#ff7fb0', featured: ['sk-date', 'evk-rose', 'wpn-sakura', 'ui-sakura', 'wp-mall'] },
+    { id: 'akihiko', name: 'Akihiko Spotlight', kind: 'Spotlight', months: [3], color: '#c9d3e6', featured: ['sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-akihiko-hoodie', 'bui-moonlight'] },
+    { id: 'searchers', name: 'The Searchers', kind: 'Spotlight', months: [3], color: '#8fd0ff', featured: ['sk-minji-crew', 'sk-minji-su'] }
   ];
 
   /* ── Art ── */
@@ -165,7 +177,7 @@ window.FemcCosmetics = (() => {
   /* ── State ── */
   function cs() {
     const g = window.FemcGacha ? window.FemcGacha.gs() : (S().gacha = S().gacha || {});
-    const f = { own: [], on: {}, portraits: true, pulls: 0, pity: { sr: 0, ur: 0 }, guar: false, last: null, got: {} };
+    const f = { own: [], on: {}, portraits: true, pulls: 0, pity: { sr: 0, ur: 0 }, guar: false, last: null, got: {}, bsel: '' };
     if (!g.cos || typeof g.cos !== 'object') g.cos = f;
     const s = g.cos;
     Object.keys(f).forEach(k => { if (s[k] === undefined || (f[k] !== null && typeof s[k] !== typeof f[k])) s[k] = f[k]; });
@@ -186,9 +198,18 @@ window.FemcCosmetics = (() => {
 
   /* ── The banner ── */
   const monthOf = d => { try { return G.dateOf(d ?? S().day).getMonth() + 1; } catch (e) { return 4; } };
-  const banner = d => BANNERS.find(b => b.months.includes(monthOf(d))) || BANNERS[0];
+  const featOf = b => b.featured.map(byId).filter(x => x && x.pool !== false && ready(x) && metOk(x));
+  // The month's banners, main first; one with nothing featured is hidden (the main one stays if all are empty).
+  function banners(d) {
+    const on = BANNERS.filter(b => b.months.includes(monthOf(d))), shown = on.filter(b => featOf(b).length);
+    return shown.length ? shown : [on[0] || BANNERS[0]];
+  }
+  const banner = (d, id) => { const a = banners(d), w = id ?? cs().bsel; return a.find(b => b.id === w) || a[0]; };
+  function pickBanner(id) { const b = banners().find(x => x.id === id); if (!b) return null; cs().bsel = id; G.save(); return b; }
+  // The last day of a banner's run (its last month; the game runs April 2009 – March 2010).
+  const bannerEnd = b => { const m = b.months[b.months.length - 1]; return new Date(m >= 4 ? 2009 : 2010, m, 0); };
   const pool = () => ITEMS.filter(x => x.pool !== false && ready(x) && metOk(x));
-  const featured = d => banner(d).featured.map(byId).filter(x => x && x.pool !== false && ready(x) && metOk(x));
+  const featured = (d, id) => featOf(banner(d, id));
   const plumes = () => (window.FemcGacha ? window.FemcGacha.gs().plumes : 0);
   const canPull = (n = 1) => plumes() >= BAN.cost * n && pool().length > 0;
   const pullWhy = (n = 1) => (canPull(n) ? '' : !pool().length ? 'Nothing in the pool' : `Needs ${BAN.cost * n} plumes (${plumes()})`);
@@ -230,7 +251,7 @@ window.FemcCosmetics = (() => {
     if (dup) g.plumes += refund; else { s.own.push(item.id); s.got[item.id] = S().day; }
     s.pulls += 1; s.last = { at: S().day, id: item.id, r: rr };
     G.save();
-    return { item, r: rr, dup, refund, feat: isFeat };
+    return { item, r: rr, dup, refund, feat: isFeat, ban: banner().id };
   }
 
   /* ── Applying looks ── */
@@ -354,13 +375,14 @@ window.FemcCosmetics = (() => {
     return window.FemcGacha.viewer(list.map(viewEntry), at);
   }
   function bannerHtml() {
-    const s = cs(), b = banner(), f = featured(), p = s.pity, MON = m => new Date(2009, m - 1, 1).toLocaleString('en', { month: 'long' });
+    const s = cs(), all = banners(), b = banner(), f = featured(), p = s.pity, MON = m => new Date(2009, m - 1, 1).toLocaleString('en', { month: 'long' });
     const res = fresh || (s.last && byId(s.last.id) ? { item: byId(s.last.id), r: s.last.r, old: true } : null);
-    const n = pool().length;
-    return `<div class="g-wd-banner" style="--c:${b.color}"><div class="g-wd-bhead"><b>${esc(b.name)}</b><small>Featured ${esc(MON(b.months[0]))}${b.months.length > 1 ? `–${esc(MON(b.months[b.months.length - 1]))}` : ''}</small></div>
+    const n = pool().length, ends = x => bannerEnd(x).toLocaleString('en', { month: 'long', day: 'numeric' });
+    const tabs = all.length > 1 ? `<div class="g-wd-bans" role="tablist" aria-label="Banners">${all.map(x => `<button type="button" role="tab" aria-selected="${x === b}" class="${x === b ? 'on' : ''}" style="--c:${x.color}" data-wd-ban="${x.id}"><b>${esc(x.name)}</b><small>${x.kind ? `${esc(x.kind)} · ` : ''}until ${esc(ends(x))}</small></button>`).join('')}</div>` : '';
+    return `${tabs}<div class="g-wd-banner" data-ban="${b.id}" style="--c:${b.color}"><div class="g-wd-bhead"><b>${esc(b.name)}</b><small>Featured ${esc(MON(b.months[0]))}${b.months.length > 1 ? `–${esc(MON(b.months[b.months.length - 1]))}` : ''} · ends ${esc(ends(b))}</small></div>
       <ul class="g-wd-feat">${f.map(x => `<li style="--rc:${RAR[x.r].color}"><span class="g-wd-th">${thumb(x)}</span><b>${esc(x.name)}</b><small>${starsHtml(x.r)}${owns(x.id) ? ' · owned' : ''}</small></li>`).join('') || '<li class="g-note">Nothing featured is ready yet.</li>'}</ul>
       <ul class="g-ga-odds">${Object.entries(BAN.odds).map(([k, v]) => `<li style="--rc:${RAR[k].color}">${starsHtml(k)} ${RAR[k].name} <b>${(v * 100).toFixed(0)}%</b></li>`).join('')}</ul>
-      <p class="g-ga-pity">Super Rare or better within <b>${BAN.pitySR - p.sr}</b> pull${BAN.pitySR - p.sr === 1 ? '' : 's'} · an Ultra within <b>${BAN.pityUR - p.ur}</b>${s.guar ? ' · the next Ultra is featured' : ''}.</p>
+      <p class="g-ga-pity">Super Rare or better within <b>${BAN.pitySR - p.sr}</b> pull${BAN.pitySR - p.sr === 1 ? '' : 's'} · an Ultra within <b>${BAN.pityUR - p.ur}</b>${s.guar ? ' · the next Ultra is featured' : ''}.${all.length > 1 ? ' Pity is shared: it carries over when you switch banners.' : ''}</p>
       <p class="g-note small">Half of each rarity's pulls land on its featured item. ${n} looks are in the pool (outfits still waiting on art aren't). Repeats give Velvet Plumes back.</p>
       <div class="g-row g-ga-btns"><button type="button" class="g-btn pink" data-wd-pull${canPull() ? '' : ' disabled'}><span>Pull · ${BAN.cost} Velvet Plumes</span></button>
         <button type="button" class="g-btn g-ga-x10" data-wd-pull10${canPull(10) ? '' : ` disabled title="${esc(pullWhy(10))}"`}><span>×10 · ${BAN.cost * 10} Plumes${canPull(10) ? '' : `<small>${esc(pullWhy(10))}</small>`}</span></button><span class="g-ga-own"><span>Velvet Plumes <b>${plumes()}</b></span><span>Pulls <b>${s.pulls}</b></span></span></div>
@@ -382,12 +404,13 @@ window.FemcCosmetics = (() => {
   }
   function html() {
     gsafe();
-    return `<div class="g-wd"><div class="g-tabs g-wd-sub" role="tablist"><button type="button" role="tab" data-wd-view="wardrobe" class="${view === 'wardrobe' ? 'on' : ''}">Wardrobe</button><button type="button" role="tab" data-wd-view="banner" class="${view === 'banner' ? 'on' : ''}">Boutique · ${esc(banner().name)}</button></div>
+    return `<div class="g-wd"><div class="g-tabs g-wd-sub" role="tablist"><button type="button" role="tab" data-wd-view="wardrobe" class="${view === 'wardrobe' ? 'on' : ''}">Wardrobe</button><button type="button" role="tab" data-wd-view="banner" class="${view === 'banner' ? 'on' : ''}">Boutique · ${banners().length > 1 ? `${banners().length} banners` : esc(banner().name)}</button></div>
       ${view === 'banner' ? bannerHtml() : wardrobeHtml()}</div>`;
   }
   const gsafe = () => cs();
   function wire(el, rerender) {
     el.querySelectorAll('[data-wd-view]').forEach(b => b.addEventListener('click', () => { view = b.dataset.wdView; fresh = null; G.sfx('femc-click'); rerender(`[data-wd-view="${view}"]`); }));
+    el.querySelectorAll('[data-wd-ban]').forEach(b => b.addEventListener('click', () => { if (pickBanner(b.dataset.wdBan)) { fresh = null; G.sfx('femc-click'); rerender(`[data-wd-ban="${b.dataset.wdBan}"]`); } }));
     el.querySelectorAll('[data-wd]').forEach(b => b.addEventListener('click', () => { sel = b.dataset.wd; G.sfx('femc-hover'); rerender(`[data-wd="${sel}"]`); }));
     el.querySelectorAll('[data-wd-off]').forEach(b => b.addEventListener('click', () => { unequip(b.dataset.wdOff); sel = null; G.sfx('femc-back'); rerender(`[data-wd-off="${b.dataset.wdOff}"]`); }));
     el.querySelectorAll('[data-wd-zoom]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openViewer(b.dataset.wdZoom); }));
@@ -417,5 +440,5 @@ window.FemcCosmetics = (() => {
   G.onChange(kind => { if (kind !== 'toast') apply(); });
   applyTitleEarly();
   setTimeout(apply, 0);
-  return Object.assign(api, { KINDS, ITEMS, BANNERS, BAN, PAL, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, banner, pool, featured, canPull, pullWhy, pull, pullN, pull10, apply, battle, portrait, weaponArt, html, wire, preview, metOk, viewable, viewEntry, openViewer });
+  return Object.assign(api, { KINDS, ITEMS, BANNERS, BAN, PAL, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, banner, banners, pickBanner, bannerEnd, pool, featured, canPull, pullWhy, pull, pullN, pull10, apply, battle, portrait, weaponArt, html, wire, preview, metOk, viewable, viewEntry, openViewer });
 })();

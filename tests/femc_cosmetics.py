@@ -11,7 +11,8 @@ wallpaper, title theme kept for the title screen, battle theme and Evoker tint h
 whose art is missing staying out of the pool and unequippable, then appearing by itself once its files exist (the test
 copies Solar's own pose frames into a temporary skin folder, runs tools/femc-wardrobe.py scan, and removes both after),
 worn in a real fight and in scene portraits behind the toggle; New Game+ keeping it all; Wardrobe, Boutique reveal and a
-Secret capsule reveal at desktop and phone size; ×10 rolls on every machine (cost, pity counted per turn, the results grid with
+Secret capsule reveal at desktop and phone size; several banners at once November–March (per-banner featured looks, the
+switcher, pity shared across banners, a banner with nothing featured hidden); ×10 rolls on every machine (cost, pity counted per turn, the results grid with
 one best-rarity reveal, Skip, the disabled reason) with grids at desktop and phone size; zero console errors.
 2026-10-26: the Solchan machine only once Haechan is met, Dorm Life's months, capsule goods (met-only, Collection), and the
 hidden charms: 200,000 simulated turns near HIDDEN.rate, never touching or guaranteed by pity, none before Haechan, the
@@ -294,8 +295,49 @@ try:
         ok(r['ur'] > 60 and r['feat'] / r['ur'] > 0.6 and r['brokeGuar'] == 0, f'featured Ultras and the guarantee: {r}')
         p.eval("FemcCosmetics.rng=Math.random")
         ok(p.eval("(()=>{FemcGacha.gs().plumes=1;return FemcCosmetics.pull()===null})()"), 'no plumes, no pull')
+        # Several banners at once (November–March), each with its own featured looks; one banner earlier in the year.
+        ALL = ['akihiko', 'yukari', 'junpei', 'shinjiro', 'mitsuru', 'fuuka', 'aigis', 'koromaru', 'ken', 'haechan', 'jungwon', 'jihoon']
+        p.eval("FemcGame.S.met.push(...%s.filter(x=>!FemcGame.S.met.includes(x)));FemcGame.S.met=FemcGame.S.met.filter(x=>x!=='minji')" % json.dumps(ALL))
+        r = p.eval(r"""(()=>{const G=FemcGame,C=FemcCosmetics,at=md=>C.banners(G.dayOf(md)).map(b=>b.id);
+          return {jul:at('7/10'),oct:at('10/10'),nov:at('11/10'),dec:at('12/10'),jan:at('1/10'),feb:at('2/10'),mar:at('3/10'),
+            feat:Object.fromEntries(C.BANNERS.map(b=>[b.id,C.featured(G.dayOf(b.months[0]+'/10'),b.id).map(x=>x.id)])),end:C.bannerEnd(C.BANNERS.find(b=>b.id==='lights')).getMonth()};})()""")
+        ok(r['jul'] == ['summer'] and r['oct'] == ['masquerade'], f'one banner earlier in the year: {r}')
+        ok(r['nov'] == ['lights', 'runners', 'sees'] and r['dec'] == ['lights', 'sees', 'haechan'] and r['jan'] == ['lights', 'haechan', 'hoax']
+           and r['feb'] == ['sunrise', 'hoax', 'valentine'], f'2–3 banners November–February, main first: {r}')
+        ok(r['mar'] == ['sunrise', 'akihiko'], f'The Searchers hidden while Minji is unmet (empty featured list): {r}')
+        ok(set(r['feat']['haechan']) == {'sk-haechan-runners', 'wpn-runners', 'wpn-strangers', 'evk-midnight', 'wp-rooftop'}
+           and set(r['feat']['sees']) >= {'sk-yukari-pink', 'sk-mitsuru-rider', 'tt-darkhour'} and 'sk-date' in r['feat']['valentine']
+           and not set(r['feat']['haechan']) & set(r['feat']['lights']) - {'wpn-strangers'} and r['end'] == 0, f'featured per banner, ends January: {r}')
+        ok(p.eval("FemcGame.S.met.push('minji'),FemcCosmetics.banners(FemcGame.dayOf('3/10')).map(b=>b.id).join()") == 'sunrise,akihiko,searchers', 'The Searchers once Minji is met')
+        # Switching: the pick is saved, rates up only that banner's looks, ignores banners not running, falls back when one ends.
+        r = p.eval(QUIET + SEED + r"""(()=>{const G=FemcGame,C=FemcCosmetics,GA=FemcGacha;G.S.day=G.dayOf('12/10');GA.gs().plumes=1e5;C.cs().guar=false;
+          const a=C.pickBanner('haechan'),bad=C.pickBanner('runners'),sel=C.cs().bsel,cur=C.banner().id,f=C.featured().map(x=>x.id);C.rng=__seed(3);const got=[];
+          try{for(let i=0;i<300;i++)got.push(C.pull());}finally{""" + LOUD + r"""}const fe=got.filter(x=>x.feat);
+          G.S.day=G.dayOf('2/10');const after=C.banner().id;G.S.day=G.dayOf('12/10');
+          return {a:a&&a.id,bad,sel,cur,f,feats:fe.length,offBan:fe.filter(x=>!f.includes(x.item.id)).length,ban:[...new Set(got.map(x=>x.ban))],after};})()""")
+        ok(r['a'] == 'haechan' and r['bad'] is None and r['sel'] == 'haechan' and r['cur'] == 'haechan' and r['ban'] == ['haechan'], f'switching banners: {r}')
+        ok(r['feats'] > 30 and r['offBan'] == 0 and r['after'] == 'sunrise', f'featured pulls come from the picked banner; an ended pick falls back: {r}')
+        # Shared pity: 5 always-Rare pulls on one banner, 5 on another → the 10th is a Super Rare.
+        r = p.eval(QUIET + r"""(()=>{const C=FemcCosmetics;C.cs().pity={sr:0,ur:0};C.rng=()=>0.99;const out=[];
+          try{C.pickBanner('sees');for(let i=0;i<5;i++)out.push(C.pull().r);C.pickBanner('haechan');for(let i=0;i<5;i++)out.push(C.pull().r);}finally{""" + LOUD + r"""}
+          return {out,p:C.cs().pity};})()""")
+        ok(r['out'] == ['R'] * 9 + ['SR'] and r['p']['sr'] == 0 and r['p']['ur'] == 10, f'pity shared across banners: {r}')
+        p.eval("FemcCosmetics.rng=Math.random")
+        # The switcher in the Boutique: tabs, end dates, the shared-pity line, a click switches.
+        menu(p, 'wardrobe')
+        click(p, '[data-wd-view=banner]')
+        r = p.eval("({tab:document.querySelector('[data-wd-view=banner]').innerText,tabs:[...document.querySelectorAll('[data-wd-ban]')].map(b=>[b.dataset.wdBan,b.innerText,b.classList.contains('on')]),head:document.querySelector('.g-wd-bhead').innerText,pity:document.querySelector('.g-ga-pity').innerText})")
+        ok([t[0] for t in r['tabs']] == ['lights', 'sees', 'haechan'] and [t[2] for t in r['tabs']] == [False, False, True] and 'until January 31' in r['tabs'][0][1]
+           and 'ends January 31' in r['head'] and 'Pity is shared' in r['pity'] and '3 banners' in r['tab'].lower(), f'banner switcher: {r}')
+        click(p, '[data-wd-ban="sees"]')
+        p.wait("document.querySelector('.g-wd-banner')?.dataset.ban==='sees'")
+        r = p.eval("({sel:FemcCosmetics.cs().bsel,on:document.querySelector('[data-wd-ban].on').dataset.wdBan,feat:document.querySelector('.g-wd-feat').innerText,x10:!!document.querySelector('[data-wd-pull10]')})")
+        ok(r['sel'] == 'sees' and r['on'] == 'sees' and 'Featherman Pink' in r['feat'] and r['x10'], f'switching through the UI: {r}')
+        view(p, 390, 844); shot(p, 'banner-switcher-phone')
+        ok(p.eval("document.documentElement.scrollWidth<=window.innerWidth"), 'no sideways scroll at phone size')
+        view(p, 1280, 800); shot(p, 'banner-switcher')
         clean(p, 'banner')
-        results['banner'] = 'pool rules, featured rotation, pity 10/40, rate-up, guarantee'
+        results['banner'] = 'pool rules, featured rotation, pity 10/40, rate-up, guarantee; several banners Nov–Mar, switcher, shared pity, empty banners hidden'
 
     # ── Equipping code-only looks ──
     if want('equip'):
