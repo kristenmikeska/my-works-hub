@@ -229,7 +229,7 @@ window.FEMC_GAME_PLACES = {
     ['Iwatodai Dorm · Front', 'iwotodaidorm-outside', 'iwatodaidorm-front-night'],
     ['Iwatodai Dorm', 'iwatodaidorm-livingroom', 'iwatodaidorm-livingroom-night'],
     ['Kirijo Flat', 'kirijo-flat', 'kirijo-flat'], // the small flat by the station (Sebastian's friends); night-lit art
-    ['Kirijo Guesthouse · Front', 'elegant-buildingentrance', 'kirijo-guesthouse-front-night'],
+    ['Kirijo Guesthouse · Front', 'kirijo-guesthouse-day', 'kirijo-guesthouse-lobby'], // Kat 10/28: the lobby art stands in for the front; front-night retired
     ['Kirijo Guesthouse · Roof', 'rooftop-citynight', 'kirijo-guesthouse-roof-night'],
     ['Kirijo Guesthouse · Common Room', 'hotel-lobby', 'kirijo-guesthouse-night'], // the lounge (old night art)
     ['Kirijo Guesthouse', 'kirijo-guesthouse-day', 'kirijo-guesthouse-lobby'], // the lobby: Kat's art, day (batch 59) and night (batch 57)
@@ -348,7 +348,7 @@ window.FEMC_GAME_PLACES = {
     outdoor: ['city', 'park', 'location-', 'portisland', 'station-platform', 'hospital-outside', 'hospital-rooftop', 'outside-', 'shopping-street',
       'naganaki-', 'gekkoukanhigh', 'gekkoukan-tennis-courts', 'gekkoukan-rooftop-night', 'rooftop-', 'iwatodaidorm-roof-', 'iwotodaidorm-outside',
       'iwatodaidorm-front-winter', 'iwatodaidorm-front-night', 'iwatodai-strip-', 'iwatodai-riverside-night', 'iwatodai-station-overpass', 'harbor', 'junkyard-', 'moonlightbridge',
-      'port-island-pier', 'port-island-seaside-park', 'seaside-park-', 'kirijo-guesthouse-front-night', 'kirijo-guesthouse-roof-night',
+      'port-island-pier', 'port-island-seaside-park', 'seaside-park-', 'kirijo-guesthouse-roof-night',
       'aohigepharmacy-outside', 'policestation-outside', 'bebluev-outside', 'clubescapade-outside', 'gameparade-outside', 'mayoidoantiques-outside',
       'bathhouse-night', 'hotel-outside', 'yakushima-beach', 'yakushima-forest', 'yakushima-ferry', 'yakushima-villa-balcony', 'yakushima-villa-terrace'],
     sealed: ['gamepanic-inside', 'paulownia-photo-booth', 'clubescapade', 'screenshot-theater', 'screen', 'paulownia-karaoke', 'iwatodai-bathhouse', 'record-shop-listening-booth',

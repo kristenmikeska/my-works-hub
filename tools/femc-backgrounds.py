@@ -76,7 +76,6 @@ EXTRA = {
     # batch 35 (2026-10-23): night versions (evening slots only) and seasonal day art (places.js seasons)
     'bathhouse-night': 'Added to Game/bathhouse-night.jpeg',
     'iwatodai-strip-night': 'Added to Game/iwatodai-strip-night.jpeg',
-    'kirijo-guesthouse-front-night': 'Added to Game/kirijo-guesthouse-front-night.jpeg',
     'paulownia-mall-night': 'Added to Game/paulownia-mall-night.jpeg',
     'portisland-station-night': 'Added to Game/portisland-station-night.jpeg',
     'gekkoukanhigh-summer': 'Added to Game/gekkoukanhigh-summer.jpeg',

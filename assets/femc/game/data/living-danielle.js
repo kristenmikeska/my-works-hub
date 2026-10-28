@@ -199,7 +199,7 @@
 
     // Jaehyun: polite to her, unaware. Solar watching, and the back of her neck.
     { id: 'danielle-signature', after: '11/19', until: '12/20', slot: 'after', events: ['a4-light-on'],
-      place: 'Kirijo Guesthouse · Front', time: 'After School', bg: 'elegant-buildingentrance', scene: [
+      place: 'Kirijo Guesthouse · Front', time: 'After School', scene: [
         { n: "She'd come to the guesthouse to drop off a phone charger Minji had left at the dorm, and was still at the curb when she saw them. Danielle on the front step with a clipboard. Jaehyun coming up the street from the direction of the shrine, sleeves shoved to the elbow, steam coming off him in the cold." },
         { n: "Danielle had been there, Solar was fairly sure, for some time. She had the look of someone who'd been sitting very still for exactly as long as was needed." },
         { s: 'danielle', f: 'happy', t: "Jaehyun. Perfect timing. I've reorganized the shoe rack. By floor. You're top left, first floor. I just need your initials so nobody argues." },

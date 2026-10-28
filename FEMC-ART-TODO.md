@@ -1,6 +1,6 @@
 # Art to make
 
-**103 items:** 31 CGs · 40 places · 4 character pieces · 28 wardrobe. 99 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**102 items:** 31 CGs · 39 places · 4 character pieces · 28 wardrobe. 98 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -330,14 +330,6 @@ Attach: `bg/yeobos-cafe.webp` (edit this picture)
 Save as: `yeobos-cafe-night.png`
 ```
 Edit this picture. Keep the same café, counter, furniture and angle, and the same art style; change it to after closing at night: chairs turned up on every table but one, the only light the warm lamp over the till, the big front windows dark outside and fogged gold at the edges from the warmth inside, the glass pastry case nearly empty, a tray and two plates on the one free table, the bell above the door. Like the inside of a lantern someone forgot to blow out. 16:9, no people, no readable text.
-```
-
-**[ ] Kirijo Guesthouse: the front by day** *(optional)*  
-The guesthouse's front step in daylight, for its after-school scenes (now an unrelated grand building stands in).  
-Attach: `bg/kirijo-guesthouse-front-night.webp` (edit this picture)  
-Save as: `kirijo-guesthouse-front-day.png`
-```
-Edit this picture. Keep the same guesthouse entrance, front steps, door and street, the same angle and art style; change it to a cold clear afternoon: pale winter sun, soft shadows, the entrance lights off, a clean front step where someone could sit with a clipboard, the curb and the quiet street in front, the station area just visible down the road. Neat, calm, a little formal. 16:9, no people, no readable text.
 ```
 
 ### The epilogue: Runners
