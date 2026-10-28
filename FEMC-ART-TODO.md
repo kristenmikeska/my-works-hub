@@ -1,6 +1,6 @@
 # Art to make
 
-**95 items:** 22 places · 26 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 84 are optional; none are ⭐.
+**95 items:** 22 places · 26 character pieces · 5 battle · 13 cards · 1 screen · 28 wardrobe. 84 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets.
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -856,4 +856,472 @@ Attach: the style image
 Save as: `skin-wpn-jungwon-stage.png`
 ```
 One ornate rapier, the whole weapon from the tip of the blade to the pommel, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. A white swept-hilt guard trimmed in silver, a fine silver chain looped across the guard, a white grip, a clear crystal pommel catching the light, a slim polished blade.
+```
+
+---
+
+## Extras (optional)
+
+Do these last, after everything above. Each is a face sheet for one character in one epilogue event's outfit; the game swaps it in for that event's scenes only. Use ChatGPT.
+
+### Runners: the Sigma holiday party
+
+**[ ] Solar: the Sigma holiday party** *(optional)*  
+Solar's face at the Sigma Chi holiday party in the Runners epilogue.  
+Attach: `Solar-Runners-sheet.png`  
+Save as: `Solar-runners-holiday-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a wine-red long-sleeved silk dress, small gold hoops, a red-and-white Santa hat tilted back on her long dark hair. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Haechan: the Sigma holiday party** *(optional)*  
+Haechan's face at the Sigma Chi holiday party in the Runners epilogue.  
+Attach: Haechan  
+Save as: `Haechan-runners-holiday-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black button-up shirt open at the collar with a thin gold chain, a black Santa hat with white trim worn crooked. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Hanni: the Sigma holiday party** *(optional)*  
+Hanni's face at the Sigma Chi holiday party in the Runners epilogue.  
+Attach: Hanni  
+Save as: `Hanni-runners-holiday-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a wine-red velvet slip dress with a cropped white faux-fur jacket, tiny silver bell earrings. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Hyein: the Sigma holiday party** *(optional)*  
+Hyein's face at the Sigma Chi holiday party in the Runners epilogue.  
+Attach: Hyein  
+Save as: `Hyein-runners-holiday-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a homemade wine-red satin dress with puffed sleeves, a reindeer-antler headband with little bells. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Minji: the Sigma holiday party** *(optional)*  
+Minji's face at the Sigma Chi holiday party in the Runners epilogue.  
+Attach: Minji  
+Save as: `Minji-runners-holiday-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a cream cable-knit sweater with a navy reindeer pattern, her black cap worn backwards with a sprig of holly pinned to it. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Mark: the Sigma holiday party** *(optional)*  
+Mark's face at the Sigma Chi holiday party in the Runners epilogue.  
+Attach: Mark  
+Save as: `Mark-runners-holiday-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a loud green-and-red ugly Christmas sweater with a knitted snowman and pom-poms, a Santa hat. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Jaehyun: the Sigma holiday party** *(optional)*  
+Jaehyun's face at the Sigma Chi holiday party in the Runners epilogue.  
+Attach: Jaehyun  
+Save as: `Jaehyun-runners-holiday-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a dark green velvet blazer over a black turtleneck, a candy-cane pin on the lapel. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Chenle: the Sigma holiday party** *(optional)*  
+Chenle's face at the Sigma Chi holiday party in the Runners epilogue.  
+Attach: Chenle  
+Save as: `Chenle-runners-holiday-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a light-up ugly Christmas sweater covered in tiny LED bulbs and tinsel, an elf hat with a bell. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Jaemin: the Sigma holiday party** *(optional)*  
+Jaemin's face at the Sigma Chi holiday party in the Runners epilogue.  
+Attach: Jaemin  
+Save as: `Jaemin-runners-holiday-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a red flannel shirt over a white tee, a Santa hat pushed back, a party host's lanyard with a clipboard pen behind his ear. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Danielle: the Sigma holiday party** *(optional)*  
+Danielle's face at the Sigma Chi holiday party in the Runners epilogue.  
+Attach: Danielle  
+Save as: `Danielle-runners-holiday-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black velvet mini dress with a white faux-fur collar, small pearl earrings, a red bow clipped in her hair. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+### Runners: Regionals
+
+**[ ] Solar: Regionals** *(optional)*  
+Solar's face at Regionals in the Runners epilogue (the SU eSports team).  
+Attach: `Solar-Runners-sheet.png`  
+Save as: `Solar-runners-regionals-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a bright orange SU eSports jersey with navy shoulder panels, a black gaming headset round her neck. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Minji: Regionals** *(optional)*  
+Minji's face at Regionals in the Runners epilogue (the SU eSports team).  
+Attach: Minji  
+Save as: `Minji-runners-regionals-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: the bright orange SU eSports jersey with navy shoulder panels, her black cap worn backwards, a headset round her neck. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Chenle: Regionals** *(optional)*  
+Chenle's face at Regionals in the Runners epilogue (the SU eSports team).  
+Attach: Chenle  
+Save as: `Chenle-runners-regionals-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: the bright orange SU eSports jersey with navy shoulder panels, a headset pushed up on his head, a sweatband on one wrist. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Olivia: Regionals** *(optional)*  
+Olivia's face at Regionals in the Runners epilogue (the SU eSports team).  
+Attach: `Olivia-sheet.png` (once it's made)  
+Save as: `Olivia-runners-regionals-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: the bright orange SU eSports jersey with navy shoulder panels worn over a long-sleeved black top, a headset round her neck. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Haerin: Regionals** *(optional)*  
+Haerin's face at Regionals in the Runners epilogue (the SU eSports team).  
+Attach: `Haerin-sheet.png` (once it's made)  
+Save as: `Haerin-runners-regionals-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: the bright orange SU eSports jersey with navy shoulder panels, oversized, sleeves past her wrists, a headset round her neck. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+### HOAX: Christmas
+
+**[ ] Solar: Christmas** *(optional)*  
+Solar's face on Christmas in the HOAX epilogue.  
+Attach: `Solar-HOAX-sheet.png` (once it's made; until then Solar)  
+Save as: `Solar-hoax-christmas-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a soft oatmeal cable-knit turtleneck sweater with a thin gold necklace, a tiny nose stud. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Jungwon: Christmas** *(optional)*  
+Jungwon's face on Christmas in the HOAX epilogue.  
+Attach: Jungwon  
+Save as: `Jungwon-hoax-christmas-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a navy fair-isle Christmas sweater with a white snowflake band over a white collared shirt. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Jihoon: Christmas** *(optional)*  
+Jihoon's face on Christmas in the HOAX epilogue.  
+Attach: Jihoon  
+Save as: `Jihoon-hoax-christmas-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: an oversized black knit sweater with a small red embroidered reindeer, silver chains, a black beanie. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Cherry: Christmas** *(optional)*  
+Cherry's face on Christmas in the HOAX epilogue.  
+Attach: Cherry  
+Save as: `Cherry-hoax-christmas-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a fluffy cherry-red mohair sweater with a white bow in her hair. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Heeseung: Christmas** *(optional)*  
+Heeseung's face on Christmas in the HOAX epilogue.  
+Attach: Heeseung  
+Save as: `Heeseung-hoax-christmas-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a forest-green crewneck sweater over a white tee, a red knitted scarf. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Sunoo: Christmas** *(optional)*  
+Sunoo's face on Christmas in the HOAX epilogue.  
+Attach: Sunoo  
+Save as: `Sunoo-hoax-christmas-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a pastel pink sweater with a knitted cartoon snowman and a matching pom-pom beanie. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Sunghoon: Christmas** *(optional)*  
+Sunghoon's face on Christmas in the HOAX epilogue.  
+Attach: Sunghoon  
+Save as: `Sunghoon-hoax-christmas-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a grey ribbed turtleneck sweater under a long camel coat. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Jay: Christmas** *(optional)*  
+Jay's face on Christmas in the HOAX epilogue.  
+Attach: Jay  
+Save as: `Jay-hoax-christmas-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black-and-white fair-isle sweater with a small silver hoop earring. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Jake: Christmas** *(optional)*  
+Jake's face on Christmas in the HOAX epilogue.  
+Attach: Jake  
+Save as: `Jake-hoax-christmas-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a red-and-green striped sweater with a reindeer on the front, a Santa hat. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Niki: Christmas** *(optional)*  
+Niki's face on Christmas in the HOAX epilogue.  
+Attach: Niki  
+Save as: `Niki-hoax-christmas-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: an oversized cream hoodie with a knitted gingerbread-man patch, a red beanie. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+### HOAX: the winter-break party
+
+**[ ] Solar: the winter-break party** *(optional)*  
+Solar's face at the winter-break party in the HOAX epilogue.  
+Attach: `Solar-HOAX-sheet.png` (once it's made; until then Solar)  
+Save as: `Solar-hoax-party-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black satin slip top under a cropped white tweed jacket, small gold hoops, a tiny nose stud. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Jungwon: the winter-break party** *(optional)*  
+Jungwon's face at the winter-break party in the HOAX epilogue.  
+Attach: Jungwon  
+Save as: `Jungwon-hoax-party-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black button-up shirt tucked into dark trousers, a silver watch. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Jihoon: the winter-break party** *(optional)*  
+Jihoon's face at the winter-break party in the HOAX epilogue.  
+Attach: Jihoon  
+Save as: `Jihoon-hoax-party-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black leather jacket over a mesh top, layered silver chains, a black beanie. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Cherry: the winter-break party** *(optional)*  
+Cherry's face at the winter-break party in the HOAX epilogue.  
+Attach: Cherry  
+Save as: `Cherry-hoax-party-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a red sequinned mini dress with platform boots, glitter at the corners of her eyes. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Heeseung: the winter-break party** *(optional)*  
+Heeseung's face at the winter-break party in the HOAX epilogue.  
+Attach: Heeseung  
+Save as: `Heeseung-hoax-party-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a white shirt with the sleeves rolled up under a black vest. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Sunoo: the winter-break party** *(optional)*  
+Sunoo's face at the winter-break party in the HOAX epilogue.  
+Attach: Sunoo  
+Save as: `Sunoo-hoax-party-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a pink satin shirt with a sparkly brooch and a little glitter on his cheeks. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Sunghoon: the winter-break party** *(optional)*  
+Sunghoon's face at the winter-break party in the HOAX epilogue.  
+Attach: Sunghoon  
+Save as: `Sunghoon-hoax-party-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black turtleneck under a sharp grey blazer. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Jay: the winter-break party** *(optional)*  
+Jay's face at the winter-break party in the HOAX epilogue.  
+Attach: Jay  
+Save as: `Jay-hoax-party-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: an open black shirt over a white tank top, silver rings and a chain. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Jake: the winter-break party** *(optional)*  
+Jake's face at the winter-break party in the HOAX epilogue.  
+Attach: Jake  
+Save as: `Jake-hoax-party-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a denim jacket over a white tee, a paper party crown. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Niki: the winter-break party** *(optional)*  
+Niki's face at the winter-break party in the HOAX epilogue.  
+Attach: Niki  
+Save as: `Niki-hoax-party-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: an oversized graphic tee under a black bomber jacket, a light-up party necklace. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+### HOAX: New Year (Seollal)
+
+**[ ] Solar: New Year (Seollal)** *(optional)*  
+Solar's face at New Year in the HOAX epilogue.  
+Attach: `Solar-HOAX-sheet.png` (once it's made; until then Solar)  
+Save as: `Solar-hoax-newyear-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a Seollal hanbok: a deep navy jeogori with gold-printed trim over a rose-pink chima, a small gold hair pin. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Jungwon: New Year (Seollal)** *(optional)*  
+Jungwon's face at New Year in the HOAX epilogue.  
+Attach: Jungwon  
+Save as: `Jungwon-hoax-newyear-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a Seollal hanbok: a pale blue jeogori and navy baji under a dark grey durumagi coat. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Jihoon: New Year (Seollal)** *(optional)*  
+Jihoon's face at New Year in the HOAX epilogue.  
+Attach: Jihoon  
+Save as: `Jihoon-hoax-newyear-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a Seollal hanbok: an all-black jeogori and baji with a silver chain left on underneath. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Cherry: New Year (Seollal)** *(optional)*  
+Cherry's face at New Year in the HOAX epilogue.  
+Attach: Cherry  
+Save as: `Cherry-hoax-newyear-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a Seollal hanbok: a cherry-red jeogori over a pink chima, a red ribbon daenggi in her hair. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Heeseung: New Year (Seollal)** *(optional)*  
+Heeseung's face at New Year in the HOAX epilogue.  
+Attach: Heeseung  
+Save as: `Heeseung-hoax-newyear-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a Seollal hanbok: a sage-green jeogori and grey baji under a navy durumagi. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Sunoo: New Year (Seollal)** *(optional)*  
+Sunoo's face at New Year in the HOAX epilogue.  
+Attach: Sunoo  
+Save as: `Sunoo-hoax-newyear-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a Seollal hanbok: a saekdong jeogori with rainbow-striped sleeves, a fur-trimmed hat. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Sunghoon: New Year (Seollal)** *(optional)*  
+Sunghoon's face at New Year in the HOAX epilogue.  
+Attach: Sunghoon  
+Save as: `Sunghoon-hoax-newyear-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a Seollal hanbok: an ivory jeogori and charcoal baji under a long black durumagi. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Jay: New Year (Seollal)** *(optional)*  
+Jay's face at New Year in the HOAX epilogue.  
+Attach: Jay  
+Save as: `Jay-hoax-newyear-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a Seollal hanbok: a deep burgundy jeogori and black baji. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Jake: New Year (Seollal)** *(optional)*  
+Jake's face at New Year in the HOAX epilogue.  
+Attach: Jake  
+Save as: `Jake-hoax-newyear-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a Seollal hanbok: a sky-blue jeogori and white baji with a padded vest. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Niki: New Year (Seollal)** *(optional)*  
+Niki's face at New Year in the HOAX epilogue.  
+Attach: Niki  
+Save as: `Niki-hoax-newyear-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a Seollal hanbok: a mustard-yellow jeogori and navy baji, worn slightly too big. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+### strangers: the Daeboreum festival
+
+**[ ] Solar: the Daeboreum festival** *(optional)*  
+Solar's face at the Daeboreum festival in the strangers epilogue.  
+Attach: `Solar-strangers-sheet.png` (once it's made; until then Solar)  
+Save as: `Solar-strangers-daeboreum-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a long dark wool coat over a cream hanbok-style jeogori collar, a red knitted scarf, small silver earrings. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Haechan: the Daeboreum festival** *(optional)*  
+Haechan's face at the Daeboreum festival in the strangers epilogue.  
+Attach: Haechan  
+Save as: `Haechan-strangers-daeboreum-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black padded work jacket over a dark hoodie, a knitted black beanie. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Jungwon: the Daeboreum festival** *(optional)*  
+Jungwon's face at the Daeboreum festival in the strangers epilogue.  
+Attach: Jungwon  
+Save as: `Jungwon-strangers-daeboreum-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a long dark wool coat over a grey turtleneck, a navy cashmere scarf, a watch on his wrist. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Yunjin: the Daeboreum festival** *(optional)*  
+Yunjin's face at the Daeboreum festival in the strangers epilogue.  
+Attach: Yunjin  
+Save as: `Yunjin-strangers-daeboreum-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a white padded coat with a fur-lined hood over a red knit sweater, mittens on a string. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+### Stay: hanami
+
+**[ ] Solar: hanami** *(optional)*  
+Solar's face at the cherry-blossom viewing in the Stay epilogue.  
+Attach: Solar  
+Save as: `Solar-stay-hanami-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a light cardigan over a pale floral spring dress, a cherry-blossom petal caught in her long dark hair. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Akihiko: hanami** *(optional)*  
+Akihiko's face at the cherry-blossom viewing in the Stay epilogue.  
+Attach: Akihiko  
+Save as: `Akihiko-stay-hanami-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a light grey hoodie under an open navy spring jacket, his red gloves tucked in a pocket. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Shinjiro: hanami** *(optional)*  
+Shinjiro's face at the cherry-blossom viewing in the Stay epilogue.  
+Attach: Shinjiro  
+Save as: `Shinjiro-stay-hanami-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a long maroon coat over a black turtleneck, a black beanie, his hands in his pockets. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Yukari: hanami** *(optional)*  
+Yukari's face at the cherry-blossom viewing in the Stay epilogue.  
+Attach: Yukari  
+Save as: `Yukari-stay-hanami-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a pink spring blouse under a white cropped cardigan, a pink hair clip. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Junpei: hanami** *(optional)*  
+Junpei's face at the cherry-blossom viewing in the Stay epilogue.  
+Attach: Junpei  
+Save as: `Junpei-stay-hanami-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a blue cap and an open short-sleeved shirt over a white tee, a picnic blanket over one shoulder. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Mitsuru: hanami** *(optional)*  
+Mitsuru's face at the cherry-blossom viewing in the Stay epilogue.  
+Attach: Mitsuru  
+Save as: `Mitsuru-stay-hanami-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a cream trench coat over a dark red high-neck blouse, a pearl brooch. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Fuuka: hanami** *(optional)*  
+Fuuka's face at the cherry-blossom viewing in the Stay epilogue.  
+Attach: Fuuka  
+Save as: `Fuuka-stay-hanami-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a mint-green knit cardigan over a white blouse, a small sakura-shaped hair pin. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
 ```
