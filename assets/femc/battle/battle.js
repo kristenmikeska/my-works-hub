@@ -2548,7 +2548,8 @@
      once the shot lands and the follow-through finishes by itself. false: nothing to play (no sheet, no figure on the
      field, frames not decoded yet, reduced motion), and the caller does the plain flash. */
   let evokeTok = 0;
-  const evokeFrames = mid => { const f = ((member(mid) || {}).evoker || {}).frames; return f && f.length >= 3 ? f : null; };
+  // An outfit from the Wardrobe has its own Evoker pose (pose sheet frame 1), so the default Evoker sheet only plays without one (Kat, 2026-10-27).
+  const evokeFrames = mid => { if (LOOKS && LOOKS.pose && LOOKS.pose[mid]) return null; const f = ((member(mid) || {}).evoker || {}).frames; return f && f.length >= 3 ? f : null; };
   function endFieldEvoke() {
     evokeTok++;
     const box = BT && BT.fighter;
