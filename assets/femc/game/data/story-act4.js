@@ -1380,7 +1380,7 @@
     { s: 'sunoo', f: 'happy', t: "Oh my gosh, JUNGWON. Did you ever eat lunch?" },
     { s: 'jungwon', f: 'neutral', t: "When would I have had time to do that." },
     { n: "It came out of him automatically, like a line in a play, and then his face did something very complicated and he had to look at the ceiling." },
-    { n: "The booth emptied onto him. A tall one with sleepy eyes and an ease about him like he'd never once been in a hurry. A sharp-jawed one in a jacket who said nothing and hit Jungwon on the arm, hard, which seemed to mean a great deal. A cheerful one with an open, sunny face who hugged Jungwon off his feet and then apologized to him. The youngest, long-limbed, all elbows, already eating a croissant off a tray that was clearly meant for a customer." },
+    { n: "The booth emptied onto him. A tall one with sleepy eyes and an ease about him like he'd never once been in a hurry. A sharp-jawed one in a jacket, an unlit cigarette tucked behind one ear as if he'd forgotten it was there, who said nothing and hit Jungwon on the arm, hard, which seemed to mean a great deal. A cheerful one with an open, sunny face who hugged Jungwon off his feet and then apologized to him. The youngest, long-limbed, all elbows, a pair of big headphones round his neck, already eating a croissant off a tray that was clearly meant for a customer." },
     { n: "And the last one, the beautiful one, rising from the booth with enormous ceremony, plucking a flower from the vase on the table, and looking straight past Solar at the door behind her, as if somebody else might still come through it." },
     { s: 'sunghoon', f: 'flustered', t: "Is she here? Did Cherry come?" },
     { n: "Nobody else came through the door. He looked at it a second longer than was dignified, and then bowed to Solar instead, so deeply it was almost a threat." },
@@ -1394,6 +1394,7 @@
     { s: 'jay', f: 'serious', t: "Niki." },
     { s: 'niki', f: 'neutral', t: "What? She doesn't. Somebody had to say it out loud. She doesn't know any of us." },
     { s: 'niki', f: 'sad', t: "...She doesn't know HIM." },
+    { n: "The sleepy-eyed one and the cheerful one looked at Niki. The other two didn't. The one in the jacket and the beautiful one looked at Jungwon instead, quickly, the way you'd check a door you'd been told to watch, and Niki, still holding the croissant, looked at him too, and something went between the four of them that had nothing to do with the cafe, and that nobody else in the booth seemed to see." },
     { n: "Nobody said anything. Jungwon was looking at the counter, at the pastry case, with great concentration, the way you look at something very small and specific when there's something very large in the room." },
     { choose: [
       { t: "What do you recommend?", then: [
