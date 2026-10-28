@@ -342,7 +342,8 @@ try:
           const r=G.dailyLife();if(r){G.finishDailyLife(r.id);plays.push(r.id);}}}
       const optional=G.D.events.filter(e=>e.unlock||(e.flag&&e.flag!=='year-goes-on')).map(e=>e.id);
       // Routines behind a link's rank or route (the rank-15 batch's buzz) need that link's progress; femc_rank15.py plays them.
-      const missing=G.D.dailyLife.filter(e=>!plays.includes(e.id)&&!(e.events||[]).some(id=>optional.includes(id))&&!e.ranks&&!e.ranksBelow&&!e.route).map(e=>e.id);
+      // The hidden Kat & Ethan link's routine needs her found first; femc_kat.py plays it.
+      const missing=G.D.dailyLife.filter(e=>!plays.includes(e.id)&&!(e.events||[]).some(id=>optional.includes(id))&&!e.ranks&&!e.ranksBelow&&!e.route&&!(e.flags||[]).includes('found-kat')).map(e=>e.id);
       // Late nights: each one can be the night's scene on at least one night in its window, at the rank he has by then.
       const l=G.LINKS.haechan,all=(l.lateNights||[]).map(x=>x.id),never=[];
       for(const e of (l.lateNights||[])){let fits=false;

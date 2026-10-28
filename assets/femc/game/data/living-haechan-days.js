@@ -640,7 +640,14 @@
           { n: "Mark looked at the back of Haechan's head for a long time after that, and didn't say anything, and peeled the next tangerine very slowly." }
         ] }
       ] },
-      { n: "When he left, Mark stood up and stood there a second too long, and then put a hand on Haechan's shoulder on his way past, light, a full stop at the end of a sentence neither of them had finished. Haechan didn't move under it. He didn't shrug it off, either." },
+      { n: "When he left, Mark stood up and stood there a second too long, and then put a hand on Haechan's shoulder on his way past, light, a full stop at the end of a sentence neither of them had finished." },
+      { ifHeading: 'R', then: [
+        { n: "Haechan went still under it, halfway through reaching for the last tangerine. Then he moved out from under the hand, not fast, the way you'd step out of a doorway somebody was standing too close in." },
+        { s: 'haechan', f: 'neutral', t: "You kept it, Mark." },
+        { n: "Mark's hand stayed in the air a second where the shoulder had been. He didn't ask what. He put the hand in his pocket and went." }
+      ], else: [
+        { n: "Haechan didn't move under it. He didn't shrug it off, either." }
+      ] },
       { bond: { haechan: 1 } }
     ] },
 
@@ -718,7 +725,7 @@
         { s: 'haechan', f: 'neutral', t: "We're going home. Same place. Same cold. I'm going to be the guy with the coat. I'm qualified." },
         { s: 'hanni', f: 'happy', t: "You're so qualified. You're the most qualified person I've ever met. Don't mess it up." },
         { s: 'haechan', f: 'serious', t: "I've messed up plenty over there. I know. I'm not messing up this." },
-        { n: "Hanni didn't ask what plenty was. Solar watched her decide, right there at the railing, not to say any of it, not here, not tonight, the way you'd decide to carry something down the stairs yourself rather than wake anyone." }
+        { n: "Hanni didn't need to ask what plenty was; she'd heard it from him once, at home, in the cold. Solar watched her decide, right there at the railing, not to say any of it, not here, not tonight, the way you'd decide to carry something down the stairs yourself rather than wake anyone." }
       ], else: [{ ifHeading: 'S', then: [
         { s: 'haechan', f: 'neutral', t: "...Ask me in the other place. I'll be better at it there. I'll be loud. You won't recognize me." },
         { s: 'hanni', f: 'sad', t: "We won't be there, Haechan. That's the thing. We won't get to see it." },

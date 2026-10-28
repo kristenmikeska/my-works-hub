@@ -221,6 +221,9 @@
           { n: "Yunjin put her head round the door halfway through, in her yellow puffer, back from somewhere, and looked at the makeup on the duvet and at Solar's chin and said, in a voice like she was reading the weather off a board, *oh, the Lee house is going to have opinions*, and went away again, and came back thirty seconds later with a scarf, a thick one, gray, and dropped it on the bed without a word, and left." }
         ] },
         { s: 'hanni', f: 'neutral', t: "We're happy for you. For the record. Both of us. We've been happy about this one since before you could remember his name." },
+        { ifHeading: ['R', 'true'], then: [
+          { s: 'hanni', f: 'serious', t: "He told us the worst of it himself. At home. He didn't ask us to fix it for him. That's why." }
+        ] },
         { s: 'hyein', f: 'happy', t: "Hanni cried. On the stairs. This morning. She'll deny it." },
         { s: 'hanni', f: 'flustered', t: "I had something in my eye." },
         { s: 'hyein', f: 'happy', t: "Both eyes. For ten minutes. On the stairs." },
@@ -368,7 +371,9 @@
         { n: "He put them on her. It was the track. The one from before, from the floor, the four notes going round looking for the fifth, except it wasn't four notes anymore. It had found the fifth. It had found the sixth and the seventh and a whole bridge, and under it, low, there was a rhythm that wasn't a drum, a soft steady double beat, and it took her a full verse to understand it was a heartbeat, a real one, recorded close, slow, and then, halfway through, getting faster." },
         { s: 'haechan', f: 'neutral', t: "It's nothing. It's a thing I finished." },
         { s: 'solar', f: 'neutral', t: "Whose heartbeat is that?" },
-        { s: 'haechan', f: 'neutral', t: "Mine. Obviously. I'm not going to record anyone else's without asking. I've learned that much." },
+        { s: 'haechan', f: 'neutral', t: "Mine. Obviously. I'm not going to record anyone else's without asking. I've learned that—" },
+        { n: "He stopped. He looked at the screen, at the long bright shape of the track, somewhere in the middle of it, for a second too long." },
+        { s: 'haechan', f: 'neutral', t: "...Mostly. I'm working on it." },
         { s: 'solar', f: 'neutral', t: "Why does it speed up?" },
         { n: "He looked at her. He looked at her for a long time, his flat face, his ears scarlet, and then he said, in the flattest voice she'd ever heard him use, *it's not about anything, pretty girl*, and every single word of it was a lie he had aimed, fired, and wanted her to catch." }
       ] },
@@ -566,7 +571,8 @@
         { s: 'haechan', f: 'serious', t: "...And then it was this. Every time, after the part where you don't know me. It's always this. That's how I know it's you." }
       ], else: [
         { s: 'haechan', f: 'neutral', t: "No. In mine you thought I was the worst person you'd ever met. You were mostly right." },
-        { s: 'haechan', f: 'neutral', t: "...And then a roof. There's always a roof. I don't know what it is about us and roofs." }
+        { s: 'haechan', f: 'neutral', t: "...And then a roof. There's always a roof. I don't know what it is about us and roofs." },
+        { s: 'haechan', f: 'serious', t: "And then you find out the worst of me, and you believe me, and you're still standing there. That's as far as we got, over there." }
       ] },
       { choose: [
         { t: "(Kiss him again. Let the snow have the rest.)", notes: 2, then: [

@@ -325,7 +325,7 @@
         { s: 'haechan', f: 'serious', t: "This is where I came out. November. Middle of the night, middle of the bridge, no cars, sky gone green. I walked until I heard a dryer." },
         { ifHeading: 'R', then: [
           { s: 'haechan', f: 'sad', t: "I had my headphones on when it happened. Nothing playing. I just wanted the room to stop. Then there wasn't a room." },
-          { s: 'haechan', f: 'serious', t: "First thing I thought on this bridge wasn't where am I. It was, she's going to be cold, she's left the jacket at the back of a closet again. That's the whole of me, probably. Don't spread it around." },
+          { s: 'haechan', f: 'serious', t: "First thing I thought on this bridge wasn't where am I. It was, she's going to be cold, she's got the jacket at the bottom of a bag she can't open in front of anyone. That's the whole of me, probably. Don't spread it around." },
           { n: "He said it flat, the campus voice, every word handed over like it cost money, and leaned his forearms on the rail, and she leaned hers beside his, close enough this time that there wasn't any cold air between the sleeves at all." }
         ], else: [{ ifHeading: 'S', then: [
           { s: 'haechan', f: 'happy', t: "I had gum in my mouth. Cinnamon. I came out on this bridge still chewing the same piece. I chewed it all the way to the dorm. It was the only thing I'd brought with me. Very dignified arrival." },

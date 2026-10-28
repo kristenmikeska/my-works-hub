@@ -26,14 +26,17 @@
        once, any other route (H / stay) → he stays both and lets her go. It sets this link's own flags haechan-sure-R /
        haechan-sure-S / haechan-sure-both (none on H/stay), which rank 10 reads. christmas (12/24, before rank 9) reads route-R /
        route-S directly. Other files may read the haechan-sure-* flags.
-   Current canon (Kat's ruling 2026-10-20): Runners leaves off at Ch 66 (early November, the secret unlabelled thing),
-   strangers at Ch 65 (early February). strangers side: the Discman holds an old disc and its batteries have been dead for
+   Current canon: the Runners side assumes the state at about 11/22 (Kat's ruling 2026-10-27; FEMC-RUNNERS-SYNC-AUDIT.md):
+   after camping, after he told her everything himself on 11/19 (she believes him; they aren't reconciled), heading home for
+   Thanksgiving. His one unspoken thing is the track: her voice is in it (a stem she didn't know he kept). In the game the
+   song stays untitled (Kat: he names it in canon, later), and the beats where it's finished owe her the truth. The jacket
+   is in her bag, packed and never worn. strangers leaves off at Ch 65 (early February). strangers side: the Discman holds an old disc and its batteries have been dead for
    years (he never plays it; somebody gave it to him); he lives in the annex, ten meters from her door on paper; the
    Chairman calls him son now; he smokes Reds and is always quitting (Runners Haechan smokes too and isn't pretending to).
    Ranks 11-15 (Kat's ruling 2026-10-21: rank 15, "spread 15 story beats"): maxRank 15, all forced, late slot except 12
    (evening). 11 → 2/2 the hem (laundry room; Hyein, Hanni), 12 → 2/9 go long (riverside, evening; Jaehyun, Koromaru),
    13 → 2/16 seollal (kitchen; Jungwon, Yunjin), 14 → 2/23 the cut (lounge; Minji, Mark if a4-mark), 15 → 3/1 untitled
-   (her door, then the roof; the capstone: he names nothing, she names the song). Every one branches on the locked route
+   (her door, then the roof; the capstone: he names nothing, she says what she'd call the song and he keeps it off the file, so it stays untitled). Every one branches on the locked route
    (ifHeading R / S / H / true, else stay) and on romance / friend (ifRoute). Each path's best answers come to 9 notes.
    Between ranks and after 15, time with him plays afterMax (one entry, 'silver papers', added for February). More of
    February lives in data/living-r15-haechan.js (afterRank 11-15, a late night, the 2/14 holiday). */
@@ -237,7 +240,8 @@
         { choose: [
           { t: "You two were friends.", notes: 2, then: [
             { s: 'haechan', f: 'neutral', t: "Since we were kids. Don't." },
-            { n: "He didn't say it unkindly. He said it like a man putting his hand over a cup so nobody could pour anything else into it." }
+            { n: "He didn't say it unkindly. He said it like a man putting his hand over a cup so nobody could pour anything else into it." },
+            { s: 'haechan', f: 'serious', t: "He kept something he should've burned. I found out a few days before I came here. That's all you get tonight." }
           ] },
           { t: "Do you want me to go and get him?", notes: 2, then: [
             { s: 'haechan', f: 'neutral', t: "No." },
@@ -566,11 +570,13 @@
       { s: 'haechan', f: 'neutral', t: "It's the one thing you're the same about everywhere. The face changes. The name changes. You forget your coat." },
       { n: "She laughed, because it was absurd, and then didn't, because he wasn't joking, and because some part of her that wasn't standing on this platform was nodding, tired and exasperated, like someone who'd been told the same thing by a hundred people and had decided a long time ago that being cold was cheaper than listening." },
       { choose: [
-        { t: "There's a jacket. At the back of a closet.", notes: 3, tally: { 'haechan.R': 1 }, then: [
-          { n: "It wasn't a decision to say it. It came up the way the four notes of a song come up when someone hums the first three. A closet. A dark jacket shoved at the very back of it behind things she wore every day, hidden from somebody, kept from somebody, and the smell of it every time she opened the door." },
+        { t: "There's a jacket. At the bottom of a bag.", notes: 3, tally: { 'haechan.R': 1 }, then: [
+          { n: "It wasn't a decision to say it. It came up the way the four notes of a song come up when someone hums the first three. A bag. A dark jacket folded at the very bottom of it, under everything, packed and carried somewhere and carried back and never once worn, kept from somebody, and the smell of it every time she unzipped it." },
           { s: 'haechan', f: 'surprised', t: "..." },
           { s: 'haechan', f: 'serious', t: "Yeah." },
-          { s: 'haechan', f: 'serious', t: "...The back of a closet. I never asked where it went. Of course that's where." }
+          { s: 'haechan', f: 'serious', t: "...In a bag. You packed it. Of course you packed it." },
+          { s: 'haechan', f: 'neutral', t: "I said I'd bring you a better one. Next time. I haven't. That's still owed." },
+          { n: "She didn't know a better what. He didn't explain. He looked at the rain coming off the platform roof like he was checking how far off the next time was." }
         ] },
         { t: "Why do you keep giving me things?", notes: 3, tally: { 'haechan.S': 1 }, then: [
           { s: 'haechan', f: 'neutral', t: "Because you won't ask for them." },
@@ -729,8 +735,13 @@
         ] }
       ] },
       { n: "He drank the coffee down to the bottom like a man getting through a form, and set the empty can on the rail, and turned it a little so the tab faced the water. Then he spoke to the bay, not to her." },
-      { s: 'haechan', f: 'serious', t: "I'm not the good one. In either place. There are things over there you don't know yet, and when you do, you're going to look at me different, and you'd be right to." },
-      { s: 'haechan', f: 'serious', t: "I'm not going to tell you here. It's not mine to tell you somewhere you can't walk out of. So don't decide anything about me because I fold your socks." },
+      { ifFlag: 'xroad3-S', then: [
+        { s: 'haechan', f: 'serious', t: "I'm not the good one. In either place. There are things over there you don't know yet, and when you do, you're going to look at me different, and you'd be right to." },
+        { s: 'haechan', f: 'serious', t: "I'm not going to tell you here. It's not mine to tell you somewhere you can't walk out of. So don't decide anything about me because I fold your socks." }
+      ], else: [
+        { s: 'haechan', f: 'serious', t: "I'm not the good one. In either place. In the one with the snow you already know why. I told you myself, all of it, in order, a few days before you fell through. You believed me. That's not the same as being done, and we weren't." },
+        { s: 'haechan', f: 'serious', t: "I'm not making you hear it twice. Not here, where you can't walk out of it. There's one thing I didn't tell you, though. It's not about anybody else. It's mine, and it's yours, and I owe it to you over there. So don't decide anything about me because I fold your socks." }
+      ] },
       { n: "He said it like he was waiting to be told to leave." },
       { choose: [
         { t: "Then I'll decide when I'm home.", notes: 3, then: [
@@ -790,7 +801,7 @@
       { s: 'solar', f: 'neutral', t: "Nobody." },
       { s: 'haechan', f: 'sad', t: "Nobody calls me that." },
       { n: "His voice cracked down the middle of *nobody*, very small, so small it could have been the light flickering, and he heard it and his jaw locked." },
-      { s: 'haechan', f: 'sad', t: "In one of them it's what the people who hate me call me. In the other one it's what I gave you. Same name. You're the only one who ever said it like it was a present." },
+      { s: 'haechan', f: 'sad', t: "In one of them it's what the people who hate me call me. In the other one it's what I gave you, and then you went and took a shorter one off somebody, all on your own. Same name. You're the only one who ever said either like it was a present." },
       { s: 'haechan', f: 'serious', t: "I didn't give it to you here. I didn't. I was waiting to see if it'd come back on its own." },
       { s: 'haechan', f: 'flustered', t: "...Say it again." },
       // Honest and torn (crush batch, 2026-10-23): she's with someone else. The choice stays hers; the scene doesn't pretend.
@@ -986,6 +997,8 @@
       { n: "It was his. It had always been his. In one place it was a track on a laptop, unfinished, in a room at the top of a very loud house. In the other it was an old disc in a cracked silver case that hadn't turned in years. Here, it was finished." },
       { s: 'haechan', f: 'flustered', t: "I've been making it a long time. In both of them. It always ends up being about the same person." },
       { s: 'haechan', f: 'neutral', t: "I guess it found you before I did. That tracks." },
+      { n: "Somewhere under the middle of it, so far down in the mix it might have been a synth or a room or somebody breathing, there was something she couldn't name, and she felt him watch her not name it." },
+      { s: 'haechan', f: 'serious', t: "There's one thing in it that isn't mine. I owe you the truth about that one. I'm going to pay it. Not tonight. Not on a dryer, where you can't throw anything." },
       { choose: [
         { t: "I've been listening to you this whole time.", notes: 3, then: [
           { s: 'haechan', f: 'sad', t: "..." },
@@ -996,7 +1009,8 @@
         ] }
       ] },
       { ifFlag: 'haechan-sure-R', then: [
-        { s: 'haechan', f: 'neutral', t: "When the hour ends I know where I'm going to be. Cold. A pink house with a light on. I'll find you, and you'll have no idea who I am for about five minutes, and then you'll tell me to go to hell." }
+        { s: 'haechan', f: 'neutral', t: "When the hour ends I know where I'm going to be. Cold. A pink house with a light on. I'll find you, and you'll have no idea who I am for about five minutes, and then you'll tell me to go to hell." },
+        { s: 'haechan', f: 'serious', t: "You believed me, last time. Over there. We weren't done. We're still not." }
       ], else: [
         { ifFlag: 'haechan-sure-S', then: [
           { s: 'haechan', f: 'neutral', t: "When the hour ends I know where I'm going to be. Ten meters outside your door, low tide, too early. You'll have no idea who I am for about five minutes, and then you'll tell me to go to hell." }
@@ -1067,13 +1081,13 @@
         ] }
       ] },
       { ifHeading: 'R', then: [
-        { s: 'hyein', f: 'happy', t: "It's for Syracuse. Obviously. I looked it up, it was minus twelve on the quad last February, and you walked to the house in a blazer and told me it was *a look*." },
+        { s: 'hyein', f: 'happy', t: "It's for Syracuse. Obviously. I looked it up, it gets to minus twelve on the quad in February, and in November you walked to the house in a blazer and told me it was *a look*." },
         { s: 'hyein', f: 'serious', t: "It was not a look. It was hypothermia with a belt." },
-        { n: "Something went through her at the word, quad, a brick path under snow nobody had walked on yet and the cold of it at the back of her throat, and under that, sharper, a closet. A dark jacket shoved behind everything she wore every day, kept from somebody, and the smell of it every time she opened the door." },
-        { s: 'haechan', f: 'neutral', t: "She'll put it at the back of a closet." },
-        { s: 'hyein', f: 'surprised', t: "She will NOT. Why would she, what's at the back of her—" },
-        { s: 'hyein', f: 'flustered', t: "...Nope. Hanni rule. I'm not asking. I'm not asking about the closet." },
-        { s: 'haechan', f: 'neutral', t: "Good. It's a very boring closet." },
+        { n: "Something went through her at the word, quad, a brick path under snow nobody had walked on yet and the cold of it at the back of her throat, and under that, sharper, a bag. A dark jacket folded at the very bottom of it, under everything, packed and never worn, and the smell of it every time she unzipped it." },
+        { s: 'haechan', f: 'neutral', t: "She'll pack it and never wear it." },
+        { s: 'hyein', f: 'surprised', t: "She will NOT. Why would she, what's she packing and not—" },
+        { s: 'hyein', f: 'flustered', t: "...Nope. Hanni rule. I'm not asking. I'm not asking about the bag." },
+        { s: 'haechan', f: 'neutral', t: "Good. It's a very boring bag." },
         { choose: [
           { t: "Make the pockets deep. Deep enough for a can.", notes: 3, then: [
             { s: 'hyein', f: 'surprised', t: "A CAN?" },
@@ -1518,8 +1532,10 @@
         { s: 'mark', f: 'neutral', t: "Hey, Sol. She needed music. I said I'd try. He said I'd get it wrong." },
         { s: 'haechan', f: 'neutral', t: "You'll get it flat." },
         { s: 'mark', f: 'serious', t: "It's not flat." },
-        { s: 'haechan', f: 'neutral', t: "Your G's flat, Marky. It's been flat since eighth grade. I've been not telling you for six years." },
-        { n: "Mark tuned the G without a word. Haechan, without looking up from the screen, nodded once. It was, Solar thought, watching the two of them not look at each other over a laptop and a borrowed guitar at midnight, the most they'd said to each other in one breath since November, and neither of them was going to mention it, and both of them were going to remember it." }
+        { s: 'haechan', f: 'neutral', t: "Your G's flat, Marky." },
+        { n: "It came out of him the old way, from eighth grade, and Solar watched him hear it a second after it was out, and watched his jaw shut on it like a door." },
+        { s: 'haechan', f: 'neutral', t: "...Mark. It's been flat since eighth grade. I've been not telling you for six years." },
+        { n: "Mark tuned the G without a word. Haechan, without looking up from the screen, nodded once. It was, Solar thought, watching the two of them not look at each other over a laptop and a borrowed guitar at midnight, the most they'd said to each other in one breath since November, and it had cost them both something, and neither of them was going to mention it, and both of them were going to remember it." }
       ], else: [
         { n: "There was no music on it yet. Minji said she'd tried four songs and every one of them turned it into a music video, and she didn't want a music video, she wanted it to sound like what it had sounded like, and Haechan had said, flat, that he'd been recording what it sounded like since January, and she'd looked at him as if he'd handed her a key." }
       ] },
@@ -1695,8 +1711,9 @@
       { n: "When it ended there was one file on his screen and nothing else. She leaned to read it. *track_final_FINAL_3am*." },
       { s: 'haechan', f: 'neutral', t: "It's finished. I'm not touching it. That's not why I knocked." },
       { s: 'haechan', f: 'neutral', t: "It hasn't got a name. Nothing I make has a name. I don't name things. Names are yours. You decide what you answer to. I said that on this roof in November and I meant it." },
-      { s: 'haechan', f: 'serious', t: "So I'm asking. I don't do that. Write it down somewhere. I'm asking you to name it." },
+      { s: 'haechan', f: 'serious', t: "So I'm asking. I don't do that. Write it down somewhere. I'm asking you what you'd name it." },
       { n: "He said it plainly, to the screen, every word set down exactly where he wanted it, and she knew this one had been aimed. He'd carried it up two flights of stairs. He'd knocked." },
+      { s: 'haechan', f: 'serious', t: "I'm not putting it on the file, though. Not yet. There's still the thing in it I owe you. You don't name something before you know everything that's in it. Tell me anyway. I'll keep it till you do." },
       { ifHeading: 'R', then: [
         { n: "He'd said it in the campus voice, dry, every word handed over like it cost money, the voice from the ladder and the lab glass, and it had settled in him all the way down since January, the way snow settles on a thing until you can see its shape. She knew the room it would be in next. A roof with a ladder up the side of it, and cold, and a quad below that nobody had walked across yet." },
         { s: 'haechan', f: 'happy', t: "Over there I'm going to play it for you on a roof. You'll pretend you've never heard it. You'll be very bad at pretending, princess. I'm looking forward to it." },
@@ -1704,35 +1721,35 @@
           { t: 'Call it "pretty girl".', notes: 3, then: [
             { s: 'haechan', f: 'flustered', t: "...That's mine. That's my line. You can't name my song after my line." },
             { s: 'solar', f: 'happy', t: "Watch me." },
-            { n: "He typed it. Slowly, lowercase. He looked at the two words on the screen where the file name had been for a long time, and his ears went red all the way to the top, and he didn't change it." }
+            { n: "He didn't type it. He said it once under his breath, slowly, lowercase, the way you'd try a key in a lock, and his ears went red all the way to the top, and he didn't take it back." }
           ] },
           { t: 'Call it "three a.m."', notes: 3, then: [
             { s: 'haechan', f: 'neutral', t: "Because that's when you're up." },
             { s: 'solar', f: 'happy', t: "Because that's when you are." },
-            { n: "He typed it. He looked at it and said it was a stupid name and that it was perfect, in the same flat breath, and saved it twice." }
+            { n: "He didn't type it. He said it was a stupid name and that it was perfect, in the same flat breath, and she watched him put it away somewhere behind his eyes, twice, to be sure." }
           ] },
           { t: 'Call it "the ladder".', notes: 3, then: [
             { s: 'haechan', f: 'neutral', t: "...Of all the things." },
-            { n: "He said it quietly, like a man recognizing his own handwriting on something he didn't remember writing. He typed it, and his hand stayed on the keys after, and he didn't say anything else about it, which on him was everything." }
+            { n: "He said it quietly, like a man recognizing his own handwriting on something he didn't remember writing. His hand went to the keys and stayed there, over them, not pressing anything, and he didn't say anything else about it, which on him was everything." }
           ] }
         ] }
       ], else: [{ ifHeading: 'S', then: [
         { n: "He was loud tonight. Not the roof-at-midnight loud that made Junpei throw windows open. The other one, the warm one, the harbor in him all the way up at the surface now, the house on the hill with too many stairs and a man in an armchair who called him son. He'd settled into it the way a tide settles, all at once and then for good." },
         { n: "And there was a disc drive in the side of the laptop she'd never noticed, and a blank disc on the concrete beside him, and a marker." },
         { s: 'haechan', f: 'happy', t: "I'm burning it. Don't laugh. Where we're going, songs live on discs. I'm not having it live on a laptop in a house that hasn't got one." },
-        { s: 'haechan', f: 'neutral', t: "You name it. I write it on in marker, badly. Then it goes in a drawer in the sewing room, and I don't tell you which drawer, and one day you find it." },
+        { s: 'haechan', f: 'neutral', t: "You name it. I write it on in marker, badly, later, once you know what's in it. Then it goes in a drawer in the sewing room, and I don't tell you which drawer, and one day you find it." },
         { choose: [
           { t: 'Call it "agasshi".', notes: 3, then: [
             { s: 'haechan', f: 'happy', t: "Ha. No. Yes. No." },
-            { n: "He wrote it on in marker, big and crooked, the way you'd write a name on a lunchbox for a kid starting school, and held it up to the light, and laughed so loud a window went up somewhere below, and for once nobody yelled, because it was March, and everybody was awake anyway." }
+            { n: "He uncapped the marker, and held it over the disc, and capped it again. *Later,* he said, and wrote it on the back of his hand instead, big and crooked, the way you'd write a name on a lunchbox for a kid starting school, and held the hand up to the light, and laughed so loud a window went up somewhere below, and for once nobody yelled, because it was March, and everybody was awake anyway." }
           ] },
           { t: 'Call it "ten meters".', notes: 3, then: [
             { s: 'haechan', f: 'neutral', t: "On paper." },
-            { n: "He wrote *ten meters* on it, and then crossed out the ten, and wrote five, and looked at that, and crossed it out too, and left it like that, the number gone, just *meters*, a measurement with nothing in it. More honest, he said. Nobody's measured in a while." }
+            { n: "He wrote *ten meters* on his palm, not the disc, and then crossed out the ten, and wrote five, and looked at that, and crossed it out too, and left it like that, the number gone, just *meters*, a measurement with nothing in it. More honest, he said. Nobody's measured in a while." }
           ] },
           { t: 'Call it "the chorus".', notes: 3, then: [
             { s: 'haechan', f: 'happy', t: "He'd cry. In the car. He'd say it was the air conditioning." },
-            { n: "He wrote it. Then, under it, so small she had to lean in, *for the one who only gets the chorus right*, and didn't explain it, and didn't need to." }
+            { n: "He wrote it on the inside of the case, not the disc, where it could still come off. Then, under it, so small she had to lean in, *for the one who only gets the chorus right*, and didn't explain it, and didn't need to." }
           ] }
         ] }
       ], else: [{ ifHeading: 'H', then: [
@@ -1745,16 +1762,16 @@
         { choose: [
           { t: 'Call it "two cans".', notes: 3, then: [
             { s: 'haechan', f: 'neutral', t: "...Yeah." },
-            { n: "He typed it. He said it was a good name for a song about a girl who never once drank the right thing, and he said it flat, and then smiled, the whole of his face this time, at the screen, where she could see it." }
+            { n: "He didn't type it. He said it was a good name for a song about a girl who never once drank the right thing, and he said it flat, and then smiled, the whole of his face this time, at the screen, where she could see it." }
           ] },
           { t: 'Call it "star".', notes: 3, then: [
             { s: 'haechan', f: 'happy', t: "Ha. Of course. Of course you would." },
-            { n: "He typed it, one word, lowercase, and looked at it the way he'd looked at the star in Hyein's lining, like a level finally sitting where it should." }
+            { n: "He didn't type it. He said it once, one word, lowercase, and looked at the screen the way he'd looked at the star in Hyein's lining, like a level finally sitting where it should." }
           ] },
           { t: 'Call it "princess, agasshi". Both.', notes: 3, then: [
             { s: 'haechan', f: 'surprised', t: "That's two names." },
             { s: 'solar', f: 'serious', t: "There's two of you. I'm not picking. I didn't pick either of them for anything else." },
-            { n: "He looked at her for a long time. Then he typed both, with a comma between them, and didn't say anything, and his jaw did the small sideways thing, and he let it." }
+            { n: "He looked at her for a long time. Then he said both, with a comma between them, and typed neither, and didn't say anything else, and his jaw did the small sideways thing, and he let it." }
           ] }
         ] }
       ], else: [{ ifHeading: 'true', then: [
@@ -1764,15 +1781,15 @@
           { t: 'Call it "every universe".', notes: 3, then: [
             { s: 'haechan', f: 'surprised', t: "..." },
             { s: 'haechan', f: 'happy', t: "That's so cheesy. That's the cheesiest thing I've ever heard. In two languages." },
-            { n: "He typed it. He didn't change a letter." }
+            { n: "He didn't type it. He said that when he did, he wasn't changing a letter." }
           ] },
           { t: 'Call it "solstice".', notes: 3, then: [
             { s: 'haechan', f: 'neutral', t: "The longest night. Then it turns." },
-            { n: "He typed it, and said, in both voices, that it was the right name for a song about a girl who'd stood still all year and then hadn't, and she said it was a song about him, and he said *same thing*, and didn't explain, and didn't need to." }
+            { n: "He didn't type it. He said, in both voices, that it was the right name for a song about a girl who'd stood still all year and then hadn't, and she said it was a song about him, and he said *same thing*, and didn't explain, and didn't need to." }
           ] },
           { t: 'Call it "both".', notes: 3, then: [
             { s: 'haechan', f: 'happy', t: "Both. Neither. Ask me later. It changes." },
-            { n: "It was what he'd said since November whenever anybody asked him anything with two answers. He typed it, and laughed, and it was both laughs, and she'd have known it from a boat." }
+            { n: "It was what he'd said since November whenever anybody asked him anything with two answers. He didn't type it. He laughed, and it was both laughs, and she'd have known it from a boat." }
           ] }
         ] }
       ], else: [
@@ -1781,19 +1798,19 @@
         { choose: [
           { t: 'Call it "the laundry room".', notes: 3, then: [
             { s: 'haechan', f: 'neutral', t: "Very romantic. Very glamorous. A dryer." },
-            { n: "He typed it anyway, and looked at it, and said, quieter, that it was where he'd let himself be found, and that it was right, and that he was going to miss that room more than any room in either of his houses, and that if she told anyone he'd deny it in two languages." }
+            { n: "He didn't type it. He looked at the screen, and said, quieter, that it was where he'd let himself be found, and that it was right, and that he was going to miss that room more than any room in either of his houses, and that if she told anyone he'd deny it in two languages." }
           ] },
           { t: 'Call it "here has a dog".', notes: 3, then: [
             { s: 'haechan', f: 'happy', t: "Ha. It does. It's the best thing about it." },
-            { n: "He typed it, every word, and said Koromaru was going to be insufferable about it, and that Koromaru would be right to be, and that the dog had been the one thing in this building he'd never once had to win over." }
+            { n: "He didn't type it. He said every word of it back to her, and said Koromaru was going to be insufferable about it, and that Koromaru would be right to be, and that the dog had been the one thing in this building he'd never once had to win over." }
           ] },
           { t: 'Call it "room tone".', notes: 3, then: [
             { s: 'haechan', f: 'neutral', t: "The sound a place makes when nobody's doing anything." },
-            { n: "He typed it. He said it was the right name for a song about a building she was going to stay in, and that when it was quiet in here, next year, at three, that's what she'd be hearing, and it would be the song, and it would be fine." }
+            { n: "He didn't type it. He said it was the right name for a song about a building she was going to stay in, and that when it was quiet in here, next year, at three, that's what she'd be hearing, and it would be the song, and it would be fine." }
           ] }
         ] }
       ] }] }] }] },
-      { n: "He saved it. He closed the laptop. Then the roof was dark again, just the city and the bay and the warm wind going over them both without any teeth, and she realized she'd been out here twenty minutes in her pajamas and hadn't once been cold, and that he'd noticed, and hadn't said, and was going to let her notice it for herself." },
+      { n: "He closed the laptop. The file still said *track_final_FINAL_3am*, and it was going to, for now. Then the roof was dark again, just the city and the bay and the warm wind going over them both without any teeth, and she realized she'd been out here twenty minutes in her pajamas and hadn't once been cold, and that he'd noticed, and hadn't said, and was going to let her notice it for herself." },
       { s: 'haechan', f: 'neutral', t: "There it is. That face. No coat, not cold. I wanted to see it once." },
       { ifRoute: 'romance', then: [
         { n: "She turned on the concrete to look at him. He was already looking at her, of course, the way he had the first night in the laundry room, a second before she reached the door, as if he'd heard her thinking about it. All year he'd been the one who found her. Every staircase, every roof. *There you are.* He'd said it at the start, and again in December, and he'd been saying it, she understood now, every night in between, in towels and cans and a sleeve held up off a floor." },
@@ -1942,7 +1959,7 @@
   christmas: { place: 'Iwatodai Dorm · Lounge', time: 'Evening', scene: [
     { n: "The lounge was having a party, which meant Junpei had a Santa hat and a great many opinions, Fuuka had made a cake that had slumped gently to one side, and someone had put on a Christmas CD that skipped on the third track every single time. It was warm and loud and full of people she loved. She stayed exactly an hour." },
     { place: 'Port Island Station', time: 'Night', bg: 'portisland-christmas' },
-    { n: "Port Island had done Christmas properly. The plaza in front of the station was strung with warm white lights, wreaths with red bows on every pillar, blue snowflake banners down the stone steps, a tree as tall as the second floor with a star on top, and it was snowing on all of it, slow and fat, settling on the steps and the planters and the shoulders of his long black coat. He was waiting at the bottom of the steps with his hands in his pockets and a white shirt and a black tie under the coat, as if he'd dressed for something and wasn't going to say what. She'd come in her coat over her uniform with a scarf wound twice round her neck, and he looked at her the way he looked at a room before he decided where to stand in it." },
+    { n: "Port Island had done Christmas properly. The plaza in front of the station was strung with warm white lights, wreaths with red bows on every pillar, blue snowflake banners down the stone steps, a tree as tall as the second floor with a star on top, and it was snowing on all of it, slow and fat, settling on the steps and the planters and the shoulders of his long black coat. He was waiting at the bottom of the steps with his hands in his pockets and a white shirt and a black tie under the coat, as if he'd dressed for something and wasn't going to say what. She'd come in her coat over her uniform with a scarf wound twice round her neck, and his eyes went to the scarf first, quick, checking it for something, navy, gold, and found it grey and plain and let it go, and then he looked at her the way he looked at a room before he decided where to stand in it." },
     { s: 'haechan', f: 'neutral', t: "Last train before the crowd. Don't tell Mitsuru. She has a speech about curfew." },
     { s: 'haechan', f: 'neutral', t: "Got you something. Lower your expectations." },
     { n: "A lump, wrapped in the lounge newspaper's weather page. Inside was one can, black and pink, a logo like claw marks. The real one, again, in a world that didn't make them yet. She'd have bet anything there wasn't another one in this city, and she'd have lost." },

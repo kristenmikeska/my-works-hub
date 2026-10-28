@@ -129,19 +129,20 @@
     /* ── Mark at the gate (only if Mark crossed). He lives at the guesthouse; he leaves tonight. ── */
     { id: 'hc-ln-mark', kind: 'dorm', rank: 3, events: ['a4-mark'], after: '11/20', until: '12/20', place: 'Iwatodai Dorm · Front', time: 'Late Night', music: 'night', scene: [
       { n: "She heard the front door at quarter past eleven, the careful click of somebody who knew which way the latch stuck, and from the landing window she watched Haechan go down the path in his hoodie and unlaced sneakers to the gate, where somebody was already standing on the other side of it under the streetlight, not ringing, not coming in. By the time she had shoes on and was out on the step, the two of them were just standing there with the gate between them, like a border neither of them had drawn." },
-      { s: 'mark', f: 'flustered', t: "Sol. Hey. Sorry, I'm not, I wasn't coming in. I know the rule. Mitsuru's whiteboard. I was just walking." },
+      { s: 'mark', f: 'flustered', t: "Sol— hey. Sorry, I'm not, I wasn't coming in. I know the rule. Mitsuru's whiteboard. I was just walking." },
       { s: 'haechan', f: 'neutral', t: "He walks when he can't sleep. Uphill. He used to end up outside my building and pretend he'd been on his way somewhere else." },
       { s: 'mark', f: 'neutral', t: "I was on my way somewhere else." },
       { s: 'haechan', f: 'neutral', t: "You were on your way to a gate." },
       { n: "Mark laughed, warm and easy, the laugh he gave everybody, and then it ran out a beat too early, and he stood there with his hands in his pockets looking at Haechan through the bars, and Haechan looked back, and Solar, on the step with the warm hallway at her back, understood without knowing how that these were two people who had walked each other home for most of their lives and then stopped, and that their feet had never been told." },
       { s: 'mark', f: 'neutral', t: "...Night, Hyuck." },
-      { s: 'haechan', f: 'neutral', t: "Mark." },
       { ifHeading: 'R', then: [
-        { n: "Then Haechan opened the gate and went through it. He didn't say anything. He fell in on Mark's left, half a step behind, the way you'd walk with someone you'd been walking beside since you were small enough to be told to hold hands crossing the road, and Mark didn't look at him, and didn't speed up either." },
-        { s: 'mark', f: 'sad', t: "You don't have to." },
-        { s: 'haechan', f: 'neutral', t: "I'm going to the corner. The corner's not you. It's a corner." },
-        { n: "She watched them go down the hill to the streetlight, not talking, the exact same height. At the corner Haechan stopped like he'd walked into a wall only he could see, and Mark went on alone toward the station, and didn't look back, and Haechan stood there until there was nothing left of him to hear." }
-      ], else: [{ ifHeading: 'S', then: [
+        { s: 'haechan', f: 'neutral', t: "Don't." },
+        { n: "One word, flat, set down on the far side of the gate like something he'd carried out of the house to give back. Mark heard it. Solar watched it land, watched the easy warm face try to stay where it was and not manage it." },
+        { s: 'mark', f: 'sad', t: "...Yeah. Okay." },
+        { n: "Haechan didn't open the gate. He stood on his side of it with his hands in the pocket of his hoodie and watched Mark go down the hill to the streetlight alone, the way you'd watch somebody you'd been walking beside since you were small enough to be told to hold hands crossing the road. At the corner Mark stopped, like he'd walked into a wall only he could see, and didn't look back, and went on toward the station, and Haechan stood there until there was nothing left of him to hear." }
+      ], else: [
+      { s: 'haechan', f: 'neutral', t: "Mark." },
+      { ifHeading: 'S', then: [
         { s: 'haechan', f: 'happy', t: "Text when you're in. Or don't. Fall in the river. Free country. Not even my country." },
         { n: "He said it loud and cheerful, with his whole chest, the way you'd shout something rude and fond after a friend leaving a bar, and Mark turned around ten steps down the hill and stared at him like a man who'd come home to find all his furniture moved." },
         { s: 'mark', f: 'surprised', t: "...Since when do you talk like that?" },
@@ -151,7 +152,8 @@
         { n: "Mark went down the hill toward the station and the guesthouse, where every window was still lit and somebody's music was coming faintly out of one of them, where he lived now among a lot of loud people neither he nor Haechan had ever met in any life, and Haechan watched him walk into that light, and then turned and watched Solar watch it too." },
         { s: 'haechan', f: 'sad', t: "Half the people you came for live down that road. Neither of us is one of them. Funny." },
         { s: 'haechan', f: 'sad', t: "Not funny. Just true. Go in, you're cold." }
-      ] }] },
+      ] }
+      ] },
       { choose: [
         { t: "(Wait for him on the step.)", notes: 3, then: [
           { n: "She waited on the top step with the door pulled to behind her until he came back up the path, and he saw her there and stopped at the bottom, and for a second his face did something it hadn't done all night. Then he came up and sat one step below her with his back against her shins, and said nothing, and neither did she, until he was warm." }
@@ -597,7 +599,7 @@
     flags: ['arrived-haechan'], events: ['a4-mark'], met: ['haechan', 'mark'], after: '11/20', until: '12/20', scene: [
       { n: "When she turned away from the machine, Game Panic had arranged itself, the way rooms sometimes did, into a standoff she hadn't noticed walking into. At the rhythm cabinet by the door Mark was hitting every note of a song on the hardest setting while a crowd of middle schoolers watched him like a god. At the old two-player shooter at the very back, Haechan was picking things off the far end of a screen alone. The whole length of the arcade was between them, and neither of them was looking at the other one so hard you could hear it." },
       { s: 'mark', f: 'neutral', t: "Sol! Hey. Come here, I need a witness, these kids think I'm cheating." },
-      { n: "He called it warm and bright across the noise, and at the back of the room the shooter's gunfire paused, just for a second, one missed beat, and started again." },
+      { n: "He called it warm and bright across the noise, the old way, and then seemed to hear the name a second after it was out and hesitate on it, like a foot on a stair that wasn't there, and it went into her where it always went. At the back of the room the shooter's gunfire paused, just for a second, one missed beat, and started again." },
       { ifHeading: 'R', then: [
         { s: 'mark', f: 'neutral', t: "He used to make me play the bass line on one of these. Back home. He'd stand behind me and tell me I was late. I was never late." },
         { s: 'mark', f: 'sad', t: "...I was a little late." },
@@ -633,7 +635,7 @@
       { s: 'haechan', f: 'flustered', t: "I was walking past. I was walking past the *shop*. They came out and got me." },
       { s: 'hanni', f: 'happy', t: "We did. It was very fast. He didn't fight." },
       { ifHeading: 'R', then: [
-        { s: 'hyein', f: 'neutral', t: "January back home is going to be brutal and he owns one jacket and it's at the back of somebody's closet. We're fixing it. You're all coming home dressed." },
+        { s: 'hyein', f: 'neutral', t: "January back home is going to be brutal and he owns one jacket and it's at the bottom of somebody's bag where she can't wear it. We're fixing it. You're all coming home dressed." },
         { s: 'haechan', f: 'neutral', t: "I have a coat." },
         { s: 'hanni', f: 'neutral', t: "You gave it to her, Haechan." },
         { n: "He didn't argue with that. He looked at Solar in the mirror, past his own reflection, and she looked back, and Hanni lowered the phone very slowly, and then took one more picture." }

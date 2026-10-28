@@ -83,7 +83,7 @@
           ] },
           { t: "Okay. Keep your secrets.", then: [
             { s: 'hanni', f: 'neutral', t: "We will. For now." },
-            { s: 'hanni', f: 'sad', t: "Not because they're ours. Because you'd want to find this one yourself. Trust me." }
+            { s: 'hanni', f: 'sad', t: "Not because they're ours. Because you'd want to find this one yourself. I know how that sounds, coming from us. Trust me anyway." }
           ] }
         ] },
         { n: "Hyein bought a record with a woman in a hat on the cover. Hanni didn't stop her. On the monorail home Solar found she was listening to the carriage, the rails under it, the doors sighing a little flat at every stop, a whole train going by like a song, and had no idea whose ears she was borrowing." },
@@ -502,6 +502,7 @@
         { ifHeading: 'R', then: [
           { s: 'haechan', f: 'neutral', t: "Every one I've been in." },
           { s: 'haechan', f: 'neutral', t: "And every time it starts the same. You don't know who I am, or you do and you hate it. Then about a week later you're furious about it. Then you're on a roof." },
+          { s: 'haechan', f: 'serious', t: "Then you find out the worst of me. Then you believe me anyway. That's as far as we got." },
           { s: 'haechan', f: 'serious', t: "I'm used to it. I'm good at it now. I'm basically a professional at being forgotten by you." }
         ], else: [{ ifHeading: 'S', then: [
           { s: 'haechan', f: 'happy', t: "Every one I've been in. I've checked. In one you looked at me on a dock like something the tide left behind, and in this one you sat on a cold dryer to prove a point. Same girl. Same chin." },
