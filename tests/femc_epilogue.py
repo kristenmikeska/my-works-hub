@@ -1,6 +1,6 @@
 """The epilogue (FEMC-EPILOGUE-PLAN.md; batch 1, 2026-10-27: the engine, with stand-in worlds).
 
-  python3 tests/femc_epilogue.py [--only engine,saves,glitch,runners1,runners2,hoax,shots] [--screenshots /absolute/dir]
+  python3 tests/femc_epilogue.py [--only engine,saves,glitch,runners1,runners2,hoax,fights,shots] [--screenshots /absolute/dir]
 
 engine   the end screen's Epilogue button on the Runners, strangers and HOAX home endings (none on bad, true or Stay); the
          save-first offer writes the finished year to a slot; entering from each eligible ending tucks the year into the save
@@ -28,8 +28,8 @@ runners1 (batch 3, Runners part 1, 12/1-12/14) the twenty beats on their dates a
          (the route-only one), practice days, routines and texts; a 12/14 slot in a fresh page sleeping on to 12/15; ifBond /
          ifRouteOpen never true in the year; one desktop / phone pair of a week-2 Go Out.
 runners2 (batch 4, Runners part 2, 12/14 late-12/20) week 3's eleven beats on their dates and slots (12/14's late pull, the
-         finale `ends`), the four half-present fights as { battle } placeholders (script epi-runners-1..4, not yet in battle.js, so
-         its plain story fight; the epilogue passes over them with no handoff); a walk of every line on every branch of the whole
+         finale `ends`), the four half-present fights' { battle } lines (script epi-runners-1..4, battle.js's EPI table since batch
+         6; simulated in these runs through the ?debug=1 card, played for real in `fights`); a walk of every line on every branch of the whole
          world (73 scenes); the music placeholders; three whole acts through the real UI, one per route, 12/1 to the end card
          (Haechan: the year's Danielle refused, so she gives up the file; the cover: sold, so she has sent it; Minji: neither, so she
          keeps it), each checking week 3's beats and flags, the glitches on schedule (stage 3, then 4), the finale's own branch, the
@@ -37,13 +37,25 @@ runners2 (batch 4, Runners part 2, 12/14 late-12/20) week 3's eleven beats on th
          Game+); the Haechan act saved on 12/20's morning and finished in a fresh page from that slot; the main game untouched (a
          year save reads Iwatodai's data, no glitch, no `ends`); one desktop / phone pair of the rooftop.
 hoax     (batch 5, the whole HOAX world, 12/21/2023-1/12/2024) the 34 beats on their dates and slots (each route's three own
-         beats; only the gym `ends`), the calendar, the four fight placeholders (epi-hoax-1..4, not in battle.js yet), a walk of every
+         beats; only the gym `ends`), the calendar, the four fights (epi-hoax-1..4; simulated in these runs), a walk of every
          line on every branch (76 scenes) and every image, the music placeholders and world-hoax in the gym, the reframed line, the
          hearing's Charm / Courage / Knowledge checks (and a plain answer) against the year's stats, closeness from the year; three
          whole acts through the real UI to the end card, the Equinox card and the year's end screen, one per route (Jungwon:
          saved on 1/10 and finished in a fresh page, the hearing's locked options greyed, one desktop / phone pair in the gym;
          Jihoon; the council: Christmas Eve offers only Yeobo's), each checking the lock, every shared beat and only its own,
          the flags, every glitch on schedule to stage 4, hangouts, texts, routines and council duty; the year untouched.
+fights   (batch 6, the half-present battles) the engine's ghost (never targeted) and dmgTaken (half damage) on their own; the year's
+         own handoff unchanged; Runners' four fights for real through the UI from their scenes, each checking its stage's rules:
+         alone (Solar by herself, no Theurgy / Escape / Tactics / Bond, skills that don't answer, the name glitch, no navigator,
+         pulled back mid-fight), unseen (across a reload mid-fight: the world loads and the same fight opens again; untouched,
+         odd rounds only, allies Act Freely, no Bond / Theurgy / Shift, her heal and "who did that?", the unknown signal,
+         Koromaru; won; the scene rebuilt from the line after the fight), unheard (half damage, her mark followed, Theurgy back,
+         then at 1 HP she fades: can't lose, the fade's own line), contact (ONE SECOND, everyone on Direct for one round, the
+         Bond, then pulled); the request carries the year's yen, an empty bag and good condition, the scene's place as the
+         backdrop; the world's wallet, bag, condition and the year inside never change; EXP lands in the battle save; flags
+         <script>-win / -pulled / -faded. HOAX's gym (contact, Akihiko's bond below rank 5) to the act's end and the year's
+         end screen, the battle save's own party and items put back, the fights' EXP in the year's battle save. One desktop /
+         phone pair per stage.
 shots    one desktop / phone pair of the end-screen button and of an epilogue day.
 No browser errors. Isolated browser profile and server; never the player's saves."""
 import base64, datetime, json, pathlib, sys, tempfile, time
@@ -51,7 +63,7 @@ from femc_browser import Page
 
 OUT = pathlib.Path(sys.argv[sys.argv.index('--screenshots') + 1]) if '--screenshots' in sys.argv else pathlib.Path(tempfile.mkdtemp(prefix='femc-epilogue-'))
 OUT.mkdir(parents=True, exist_ok=True)
-ONLY = set(sys.argv[sys.argv.index('--only') + 1].split(',')) if '--only' in sys.argv else {'engine', 'saves', 'glitch', 'runners1', 'runners2', 'hoax', 'shots'}
+ONLY = set(sys.argv[sys.argv.index('--only') + 1].split(',')) if '--only' in sys.argv else {'engine', 'saves', 'glitch', 'runners1', 'runners2', 'hoax', 'fights', 'shots'}
 checks = []
 
 
@@ -116,6 +128,8 @@ window.RUN = async (until, policy, sleepOn) => {
     log.steps = i;
     if (!G.S.epi || G.S.day > stop) break;
     if (G.S.spent[G.S.day + '-after'] === 'practice' && lastPractice !== G.S.day) { lastPractice = G.S.day; log.practice++; }
+    const sim = document.querySelector('.g-battle-ov [data-b=sim]');
+    if (sim) { log.fights = (log.fights || 0) + 1; sim.click(); await S(20); continue; }
     const sc = document.querySelector('.gs:not(.out)');
     if (sc && policy.stopText && (sc.querySelector('.gs-text')?.textContent || '').includes(policy.stopText)) { log.stopped = true; break; }
     if (sc) {
@@ -193,7 +207,9 @@ def enter(world_flag):
 
 p = Page()
 try:
-    p.goto('femc-game.html'); p.eval(HELPERS); size(1000, 486)
+    # ?debug=1 (kept for the tab's session): the half-present fights in the whole-act runs below show the debug card and
+    # are simulated (RUN clicks Simulate); the fights section plays them for real (?debug=0).
+    p.goto('femc-game.html?debug=1'); p.eval(HELPERS); size(1000, 486)
 
     if 'engine' in ONLY:
         # The main game for a player who never enters: the calendar against Python's dates for the whole year.
@@ -629,7 +645,7 @@ try:
         fights = p.eval(r"""(()=>{const out=[];const f=l=>{for(const x of l||[]){if(x.battle)out.push([x.battle.script,x.battle.kind,x.battle.forced,!!x.battle.notes]);f(x.then);f(x.else);(x.choose||[]).forEach(o=>f(o.then))}};FemcGame.D.events.forEach(e=>f(e.scene));return out})()""")
         ok([x[0] for x in fights] == ['epi-runners-1', 'epi-runners-2', 'epi-runners-3', 'epi-runners-4'] and all(x[1] == 'scripted' and x[2] and x[3] for x in fights), f'the four half-present fights are scripted, forced placeholders with notes for batch 6 ({fights})')
         bjs = (pathlib.Path(__file__).resolve().parent.parent / 'assets/femc/battle/battle.js').read_text()
-        ok('epi-runners' not in bjs and 'function genericScript' in bjs and '(SCRIPTS[id] || genericScript)' in bjs, 'battle.js has no epi-runners script yet, so a handoff would get its plain story fight')
+        ok('function hoEpi' in bjs and "runners: { over:" in bjs and "if (/^epi-[a-z]+-\\d+$/.test(id)) return hoEpi();" in bjs, 'battle.js plays epi-runners-1..4 from its EPI table (batch 6)')
         walk = p.eval("WALK()")
         ok(not walk['problems'], f'every line of the whole world resolves (speakers, faces, places, music, glitches): {walk["problems"][:8]}')
         ok(walk['scenes'] == 31 + 11 + 31, f'{walk["scenes"]} scenes walked ({walk["lines"]} lines, {walk["paths"]} paths)')
@@ -650,7 +666,7 @@ try:
             ok(end['cards'] == ['EPILOGUE · Syracuse', 'PERSONA 3 · EQUINOX'], f'{tag}: the end card, then the Equinox card ({end["cards"]})')
             ok(not end['epi'] and not end['y1'] and end['e'] and end['e']['done'] and end['e']['route'] == snap['route'] and end['world'] is None and not end['gl'], f'{tag}: back to the year’s end screen ({end["e"]})')
             ok(end['yen'] == 12345 and end['bs'] == 'year-battle' and end['clear'] and 'runners' in end['clear'] and end['ngp'], f'{tag}: the year’s yen and battle save, the clear noted, the end screen’s buttons ({end["clear"]})')
-            ok(end['noBattle'] and snap['handoff'] is None, f'{tag}: the fight placeholders made no handoff inside the epilogue (batch 6 wires them)')
+            ok(snap['handoff'] is None and all(f'epi-runners-{n}-win' in snap['flags'] for n in range(1, 5)), f'{tag}: the four fights handed over (simulated here) and the scenes went on ({[f for f in snap["flags"] if f.startswith("epi-runners-")]})')
             return snap
 
         g3 = ['epi-r-g-alone', 'epi-r-g-upward', 'epi-r-g-kitchen', 'epi-r-g-butterfly', 'epi-r-g-clocks', 'epi-r-g-midnight', 'epi-r-g-pull', 'epi-r-g-hud']
@@ -744,7 +760,7 @@ try:
         fights = p.eval(r"""(()=>{const out=[];const f=l=>{for(const x of l||[]){if(x.battle)out.push([x.battle.script,x.battle.kind,x.battle.forced,!!x.battle.notes,x.battle.title]);f(x.then);f(x.else);(x.choose||[]).forEach(o=>f(o.then))}};FemcGame.D.events.forEach(e=>f(e.scene));return out})()""")
         ok([x[0] for x in fights] == ['epi-hoax-1', 'epi-hoax-2', 'epi-hoax-3', 'epi-hoax-4'] and all(x[1] == 'scripted' and x[2] and x[3] for x in fights), f'the four half-present fights are scripted, forced placeholders with notes for batch 6 ({fights})')
         bjs = (pathlib.Path(__file__).resolve().parent.parent / 'assets/femc/battle/battle.js').read_text()
-        ok('epi-hoax' not in bjs and '(SCRIPTS[id] || genericScript)' in bjs, 'battle.js has no epi-hoax script yet, so a handoff would get its plain story fight')
+        ok('function hoEpi' in bjs and "hoax: { over:" in bjs, 'battle.js plays epi-hoax-1..4 from its EPI table (batch 6)')
         walk = p.eval("WALK()")
         ok(not walk['problems'], f'every line of the HOAX world resolves (speakers, faces, places, music, glitches): {walk["problems"][:8]}')
         ok(walk['scenes'] == 34 + 8 + 34 and walk['lines'] > 3000, f'{walk["scenes"]} scenes walked ({walk["lines"]} lines, {walk["paths"]} paths by choice and branch)')
@@ -781,7 +797,7 @@ try:
             ok(end['cards'] == ['EPILOGUE · Hanlim', 'PERSONA 3 · EQUINOX'], f'{tag}: the end card, then the Equinox card ({end["cards"]})')
             ok(not end['epi'] and not end['y1'] and end['e'] and end['e']['done'] and end['e']['route'] == snap['route'] and end['world'] is None and not end['gl'], f'{tag}: back to the year’s end screen ({end["e"]})')
             ok(end['yen'] == 12345 and end['bs'] == 'year-battle' and end['clear'] and 'hoax' in end['clear'] and end['ngp'], f'{tag}: the year’s yen and battle save, the clear noted, the end screen’s buttons ({end["clear"]})')
-            ok(end['noBattle'] and snap['handoff'] is None, f'{tag}: the fight placeholders made no handoff inside the epilogue (batch 6 wires them)')
+            ok(snap['handoff'] is None and all(f'epi-hoax-{n}-win' in snap['flags'] for n in range(1, 5)), f'{tag}: the four fights handed over (simulated here) and the scenes went on ({[f for f in snap["flags"] if f.startswith("epi-hoax-")]})')
             return snap
 
         common = ['epi-h-home', 'epi-h-part-four', 'epi-h-curfew', 'epi-h-emergency', 'epi-h-study-plans', 'epi-h-karaoke', 'epi-h-eve', 'epi-h-christmas', 'epi-h-seance', 'epi-h-party',
@@ -857,6 +873,184 @@ try:
         errs = p.console(); ok(not errs, f'no browser errors on the council act: {errs}')
         aft = p.eval("(()=>{const G=FemcGame;return [G.D.events===FEMC_GAME_EVENTS,G.D.cal===FEMC_GAME_CALENDAR,FemcGlitch.active(),G.money(5)]})()")
         ok(aft == [True, True, False, '¥5'], f'after the act the year reads Iwatodai again, in yen ({aft})')
+
+    if 'fights' in ONLY:
+        # Batch 6: the half-present fights, real ones through the UI (the scene, the Dark Hour, the battle frame, back).
+        FD = r"""window.EPD = { roots: [], subs: [], step(pol) {
+          const c = FemcBattle.ctl, b = FemcBattle.B;
+          if (!b || !c) return 'wait';
+          if (c.kind === 'allout') { c.pickValue(pol.allout ? '1' : '0'); return 'allout'; }
+          if (c.kind !== 'menu' || !c.items) return 'k:' + c.kind;
+          const u = b.S.cur && b.U(b.S.cur.id), vs = c.items.map(i => i.v);
+          if (vs.includes('guard')) {
+            const want = (pol.root && pol.root(u, c.items, b)) || 'guard';
+            this.roots.push({ mid: u.mid, round: b.S.round, items: c.items.map(i => [i.v, !!i.off, i.why || '']), want, log: document.querySelector('.bt-log').textContent });
+            c.pickValue(want); return 'root';
+          }
+          const w = pol.sub ? pol.sub(u, c.items, b) : null, it = w != null ? w : (c.items.find(i => !i.off) || {}).v;
+          this.subs.push({ mid: u && u.mid, items: c.items.map(i => [i.v, !!i.off, i.why || '']), pick: it });
+          if (it != null) c.pickValue(it); return 'sub';
+        } };"""
+
+        def year_in(flag, links, world):
+            """A finished year with a real battle save (seeded at the year's end) and these S.E.E.S. ranks, then into its world."""
+            p.eval("(()=>{const G=FemcGame;EP.year(%s,{links:%s});G.S.battleSave=null;G.ensureBattleSave();G.save();EP.end()})()" % (json.dumps({flag: True}), json.dumps(links)))
+            p.eval("document.querySelector('[data-t=epi]').click()"); p.wait("!!document.querySelector('.g-epi-offer [data-go]')"); p.eval("document.querySelector('.g-epi-offer [data-go]').click()")
+            p.wait("!!FemcGame.S.epi && FemcGame.world()===%s" % json.dumps(world), 20)
+
+        def to_fight(ev_id):
+            """Jump to an event's day and slot (everything before it played), then click through its scene to the fight."""
+            p.eval("(()=>{const G=FemcGame,e=G.D.events.find(x=>x.id===%s);G.S.day=G.dayOf(e.date);G.S.slot=e.slot;G.S.events=G.D.events.filter(x=>G.dayOf(x.date)<G.S.day).map(x=>x.id);G.S.pending=null;G.save();EP.clear();FemcGameUI.run()})()" % json.dumps(ev_id))
+            for _ in range(600):
+                if p.eval("!!FemcGame.S.handoff"): break
+                p.eval("EP.step()"); time.sleep(0.04)
+            ok(p.eval("!!FemcGame.S.handoff && FemcGame.S.handoff.status==='pending'"), f'{ev_id}: its scene hands the fight over')
+            return p.eval("(()=>{const h=FemcGame.S.handoff;return {req:h.request,pend:FemcGame.S.pending&&FemcGame.S.pending.ctx,place:h.request.epi&&h.request.epi.place,bgWant:h.request.epi&&h.request.epi.place?FemcGame.background(h.request.epi.place,'Late Night').url:null}})()")
+
+        def open_frame():
+            p.frame(60); p.eval(FD); p.eval("window.__hoStay=true")
+
+        def drive(pol, timeout=240):
+            """Play the fight with a policy (root(u, items, B), sub(...), allout) until the battle side has its result."""
+            t0 = time.time()
+            while time.time() - t0 < timeout:
+                if p.eval("(()=>{const pol=%s;if(FemcBattle.screen()==='handoff')return true;EPD.step(pol);return false})()" % pol): break
+                time.sleep(0.06)
+            else:
+                raise TimeoutError('fight did not end')
+            return p.eval("(()=>{const b=FemcBattle.B,L=b.leader();return {res:window.__hoResult,marks:{...FemcBattle.marks},roots:EPD.roots,subs:EPD.subs,party:b.party().map(u=>u.mid),hp:[L.hp,L.maxHp],ghost:!!L.ghost,dmg:L.dmgTaken||1,blog:FemcBattle.blog.map(x=>x.t).join('\\n'),items:FemcBattle.save.items,bparty:FemcBattle.save.party}})()")
+
+        def release():
+            p.eval("parent.FemcBridge.finish(window.__hoResult)"); p.top()
+            p.wait("!FemcGame.S.handoff && !document.querySelector('.g-dh')", 20)
+            time.sleep(0.4)
+
+        def scene_text():
+            return p.eval("document.querySelector('.gs:not(.out) .gs-text')?.textContent||''")
+
+        p.goto('femc-game.html?debug=0&speed=8'); p.eval(HELPERS)
+        # The engine's two new unit fields, on their own: a `ghost` is never anyone's target; `dmgTaken` scales what Shadows deal.
+        eng = p.eval(r"""(()=>{const G=FemcGame,E=FemcBattleEngine;EP.year({'route-R':true});G.S.battleSave=null;const bs=G.ensureBattleSave();
+          const mk=(o)=>{const sol=Object.assign(E.buildUnit('solar',bs,{}),o);const aki=E.buildUnit('akihiko',bs,{});return E.create({party:[sol,aki],enemies:['maya','maya'],rand:E.rng(5),protect:true})};
+          const b=mk({ghost:true});let hitS=0,hitA=0,all=0;for(let i=0;i<60;i++){b.S.cur=b.foes()[i%2];b.foes().forEach(f=>{f.dead=false;f.hp=f.maxHp});const ev=b.enemyAct();ev.filter(e=>e.t==='hit').forEach(e=>{all++;if(e.tgt===b.party()[0].id)hitS++;else hitA++});b.party()[1].hp=b.party()[1].maxHp;b.party()[1].dead=false}
+          const one=k=>{const x=E.create({party:[Object.assign(E.buildUnit('solar',bs,{}),k)],enemies:['maya'],rand:E.rng(9)});x.S.cur=x.foes()[0];let n=0;for(let i=0;i<20;i++){x.S.cur=x.foes()[0];x.party()[0].hp=x.party()[0].maxHp;x.party()[0].dead=false;x.enemyAct().filter(e=>e.t==='hit').forEach(e=>{n+=e.amount})}return n};
+          return {hitS,hitA,all,full:one({}),half:one({dmgTaken:0.5})}})()""")
+        ok(eng['hitS'] == 0 and eng['hitA'] > 0, f'engine: a ghost is never hit, single or all-target; her ally takes every hit ({eng["hitA"]} of {eng["all"]})')
+        ok(eng['full'] > 0 and 0.4 <= eng['half'] / eng['full'] <= 0.6, f'engine: dmgTaken 0.5 halves what Shadows deal her ({eng["half"]} vs {eng["full"]})')
+        # The year's own handoff is the same as before: no epi field, its money and items.
+        yr = p.eval(r"""(()=>{const G=FemcGame;G.S.day=60;G.S.slot='evening';G.S.yen=5000;G.S.inventory={medicine:2};const h=G.makeHandoff('scripted',{script:'x',forced:true});const r=h.request;G.clearHandoff();return {epi:'epi' in r,yen:r.yen,items:r.items,nav:r.navigator,keys:Object.keys(r).join()}})()""")
+        ok(not yr['epi'] and yr['yen'] == 5000 and yr['items'] == {'medicine': 2}, f'the year’s handoff is unchanged (no epi field, its yen and items)')
+
+        # Runners: the four stages, the first three through the real UI from their scenes (fight 2 across a reload).
+        year_in('route-R', {'akihiko': {'rank': 6, 'xp': 0, 'seen': [], 'rankDay': {}}, 'koromaru': {'rank': 9, 'xp': 0, 'seen': [], 'rankDay': {}}, 'mitsuru': {'rank': 8, 'xp': 0, 'seen': [], 'rankDay': {}}, 'yukari': {'rank': 3, 'xp': 0, 'seen': [], 'rankDay': {}}}, 'runners')
+        ok(p.eval("JSON.stringify(FemcEpilogue.partyFor(1))+JSON.stringify(FemcEpilogue.partyFor(3))") == '["solar"]["solar","akihiko","koromaru","mitsuru"]', 'the party: Solar alone first; then Akihiko and two by the year’s highest S.E.E.S. ranks')
+        base = p.eval("(()=>{const s=FemcGame.S;return {yen:s.yen,inv:JSON.stringify(s.inventory),cond:s.condition,exp:s.battleSave.exp,lvl:s.battleSave.lvl,y1:JSON.stringify([s.year1.yen,s.year1.battleSave,s.year1.inventory])}})()")
+
+        # 1 · Alone (12/14 late, Studio 4B).
+        f1 = to_fight('epi-r-alone')
+        ok(f1['req']['party'] == ['solar'] and f1['req']['epi']['stage'] == 'alone' and f1['req']['script'] == 'epi-runners-1' and f1['req']['yen'] == 12345 and f1['req']['items'] == {} and f1['req']['condition'] == 'good',
+           'alone: the request is Solar alone, the year’s yen, an empty bag, good condition (the world’s wallet and state stay home)')
+        ok(f1['req']['epi']['bg'] and f1['req']['epi']['bg'] == f1['bgWant'] and f1['pend']['type'] == 'epi' and f1['pend']['id'] == 'epi-r-alone', f'alone: the backdrop is the scene’s own place ({f1["place"]}); the scene waits to go on')
+        open_frame()
+        p.wait("!!(FemcBattle.B && document.querySelector('.bt-cmd:not([hidden])'))", 30)
+        p.eval("FemcBattle.B.leader().th=9999;document.querySelectorAll('.bt-bark').forEach(x=>x.remove())")  # her Theurgy ready: the menus show whether it's allowed
+        p.top(); shots('fights-1-alone'); p.frame(20)
+        r1 = drive("{root:(u,it,b)=>b.S.round===1?'skill':'guard'}")
+        rt = r1['roots']
+        ok(r1['party'] == ['solar'] and all(r['mid'] == 'solar' for r in rt) and not any(v in ('theurgy', 'escape', 'tactics', 'bond') for r in rt for v, _, _ in r['items']), 'alone: Solar by herself; no Theurgy, Escape, Tactics or Bond')
+        ok(any(w == 'NO ANSWER' for s_ in r1['subs'] for _, off, w in s_['items']) and r1['marks'].get('epi-name', 0) >= 1 and r1['marks'].get('epi-card-alone') and not any(k.startswith('nav-') for k in r1['marks']),
+           'alone: some of her skills don’t answer, Haenim’s name glitches, the ALONE card, no navigator')
+        ok(r1['res']['outcome'] == 'interrupt' and r1['res']['epi']['ended'] == 'pulled' and r1['res']['exp'].get('solar', 0) > 0, f'alone: pulled back mid-fight (round 4 or half HP), with a little EXP ({r1["res"]["exp"]})')
+        release()
+        a1 = p.eval("(()=>{const s=FemcGame.S;return {f:Object.keys(s.flags).filter(k=>/^epi-runners/.test(k)),yen:s.yen,inv:JSON.stringify(s.inventory),cond:s.condition,exp:s.battleSave.exp,lvl:s.battleSave.lvl,y1:JSON.stringify([s.year1.yen,s.year1.battleSave,s.year1.inventory])}})()")
+        ok(a1['f'] == ['epi-runners-1-pulled'] and a1['yen'] == base['yen'] and a1['inv'] == base['inv'] and a1['cond'] == base['cond'] and a1['y1'] == base['y1'], f'alone: the world’s wallet, bag and condition untouched; the year inside untouched ({a1["f"]})')
+        ok((a1['lvl'], a1['exp']) > (base['lvl'], base['exp']), f'alone: the EXP is in the battle save the year gets back (Lv {base["lvl"]}/{base["exp"]} → {a1["lvl"]}/{a1["exp"]})')
+        ok(step_until("document.querySelector('.gs:not(.out) .gs-text')?.textContent.includes('bedroom floor')", 40), 'alone: the scene goes on from the line after the fight')
+
+        # 2 · Unseen (12/16 late, the Alpha Phi stairs), across a reload mid-fight.
+        f2 = to_fight('epi-r-unseen')
+        ok(f2['req']['party'] == ['solar', 'akihiko', 'koromaru', 'mitsuru'] and f2['req']['available'] == f2['req']['party'] and f2['req']['navigator'] == 'fuuka', 'unseen: Solar, Akihiko and two of S.E.E.S.; Fuuka navigates')
+        open_frame(); p.top()
+        p.goto('femc-game.html?debug=0&speed=8'); p.eval(HELPERS)
+        p.battle(60); p.eval(FD); p.eval("window.__hoStay=true")
+        p.top()
+        rl = p.eval("(()=>{const s=FemcGame.S;return {w:FemcGame.world(),epi:!!s.epi,stage:s.handoff.request.epi.stage,pend:s.pending&&s.pending.ctx.id}})()")
+        ok(rl == {'w': 'runners', 'epi': True, 'stage': 'unseen', 'pend': 'epi-r-unseen'}, f'unseen: a reload mid-fight loads the world and opens the same fight again ({rl})')
+        p.frame(20)
+        p.wait("!!(FemcBattle.B && document.querySelector('.bt-cmd:not([hidden])'))", 30)
+        p.eval("FemcBattle.B.leader().th=9999;document.querySelectorAll('.bt-bark').forEach(x=>x.remove())")  # her Theurgy ready: the menus show whether it's allowed
+        p.top(); shots('fights-2-unseen'); p.frame(20)
+        r2 = drive(r"""{root:(u,it,b)=>{const L=b.leader(),D=FEMC_BATTLE_DATA,aki=b.party().find(p=>p.mid==='akihiko');
+            if(!L.skills.some(k=>D.skills[k].type==='heal'&&D.skills[k].target==='ally'))L.skills.push('dia');
+            if(b.S.round>=4)b.foes().forEach(f=>{if(!f.dead)f.hp=1});
+            if(!window.__healed&&aki&&!aki.dead){aki.hp=Math.max(1,Math.round(aki.maxHp*0.4));window.__healed=1;return 'skill'}return 'guard'},
+          sub:(u,it,b)=>{const D=FEMC_BATTLE_DATA,h=it.find(i=>!i.off&&D.skills[i.v]&&D.skills[i.v].type==='heal'&&D.skills[i.v].target==='ally');if(h)return h.v;const a=b.party().find(p=>p.mid==='akihiko');return a&&it.some(i=>i.v===a.id)?a.id:null}}""")
+        rt = r2['roots']
+        ok(rt and all(r['mid'] == 'solar' for r in rt) and r2['marks'].get('auto-free', 0) > 0, f'unseen: allies Act Freely (no command menu but hers; {r2["marks"].get("auto-free")} free actions)')
+        ok(all(r['round'] % 2 == 1 for r in rt) and r2['marks'].get('epi-gone', 0) >= 1, f'unseen: she acts on odd rounds only and flickers out on the others ({[r["round"] for r in rt]})')
+        ok(r2['ghost'] and r2['hp'][0] == r2['hp'][1], f'unseen: nothing touched her (HP {r2["hp"]})')
+        ok(not any(v in ('theurgy', 'escape', 'tactics', 'bond', 'shift') for r in rt for v, _, _ in r['items']), 'unseen: no Theurgy, Bond, Tactics, Shift or Escape for her')
+        ok(r2['marks'].get('epi-heal-bark') and r2['marks'].get('nav-epiUnknown') and r2['marks'].get('epi-open-unseen') and r2['marks'].get('epi-koro'), 'unseen: her heal lands and they ask who did it; Fuuka’s unknown signal; Koromaru barks at her')
+        ok(r2['res']['outcome'] == 'win' and r2['res']['epi']['ended'] == 'win' and r2['marks'].get('epi-mute', 0) >= 1 and all(r['log'].endswith('“…”') for r in rt if r['log'].startswith('Solar:')), f'unseen: won with them; her lines are "…" ({[r["log"] for r in rt]})')
+        release()
+        ok(step_until("document.querySelector('.gs:not(.out) .gs-text')?.textContent.includes('She healed him')", 40), 'unseen: after the reload the scene is rebuilt from the line after the fight')
+        ok(step_until("FemcGame.S.events.includes('epi-r-unseen') && !FemcGame.S.pending && !!document.querySelector('#g-app [data-next]')", 120), 'unseen: the event is recorded and the night goes on (the late screen)')
+        ok(p.eval("FemcGame.S.flags['epi-runners-2-win'] && FemcGame.S.yen") == base['yen'], 'unseen: flagged as won, the wallet the same')
+        errs = p.console(); ok(not errs, f'no browser errors through the first two fights and the reload: {errs}')
+
+        # 3 · Unheard (12/18 late, the bell tower): marks followed, half damage, then she fades.
+        f3 = to_fight('epi-r-unheard')
+        open_frame()
+        p.wait("!!(FemcBattle.B && document.querySelector('.bt-cmd:not([hidden])'))", 30)
+        p.eval("FemcBattle.B.leader().th=9999;document.querySelectorAll('.bt-bark').forEach(x=>x.remove())")  # her Theurgy ready: the menus show whether it's allowed
+        p.top(); shots('fights-3-unheard'); p.frame(20)
+        r3 = drive(r"""{root:(u,it,b)=>{if(u.mid!=='solar')return 'guard';if(!window.__mk){window.__mk=1;return 'attack'}if(b.S.round>=3)b.leader().hp=1;return 'guard'},
+          sub:(u,it,b)=>{const f=b.foes().filter(x=>!x.dead);const t=f[f.length-1];return t&&it.some(i=>i.v===t.id)?t.id:null}}""")
+        ok(r3['dmg'] == 0.5 and not r3['ghost'] and r3['marks'].get('nav-epiThere') and r3['marks'].get('epi-open-unheard'), 'unheard: she can be hit, for half damage; Fuuka knows she’s there')
+        ok(r3['marks'].get('epi-mark') and r3['marks'].get('epi-follow', 0) >= 1 and 'follow her' in r3['blog'], f'unheard: the Shadow she hit is marked and the others follow it ({r3["marks"].get("epi-follow")})')
+        lg3 = [r['log'] for r in r3['roots'] if r['log'].startswith('Solar:')]
+        ok(any(v == 'theurgy' for r in r3['roots'] for v, _, _ in r['items']) and not any(v in ('bond', 'tactics', 'escape') for r in r3['roots'] for v, _, _ in r['items']) and r3['marks'].get('epi-mute', 0) >= 1 and all(x.endswith('“…”') for x in lg3), f'unheard: Theurgy is hers again; no Bond or Tactics; her line is "…" ({lg3})')
+        ok(r3['res']['outcome'] == 'interrupt' and r3['res']['epi']['ended'] == 'faded', f'unheard: at 1 HP she can’t lose; she fades home ({r3["res"]["epi"]})')
+        release()
+        fade = p.eval("FemcEpilogue.FADE.unheard")
+        ok(step_until("(document.querySelector('.gs:not(.out) .gs-text')?.textContent||'').includes(%s)" % json.dumps(fade[:40]), 40), 'unheard: a fade gets its own line in place of the fight’s ending')
+        ok(step_until("FemcGame.S.events.includes('epi-r-unheard')", 120) and p.eval("FemcGame.S.flags['epi-runners-3-faded'] && !FemcGame.S.flags['epi-runners-3-win']"), 'unheard: the scene finishes; flagged as faded')
+        errs = p.console(); ok(not errs, f'no browser errors through the fade: {errs}')
+
+        # 4 · Contact (12/19 at midnight, the holiday party).
+        f4 = to_fight('epi-r-holiday')
+        open_frame()
+        p.wait("!!(FemcBattle.B && document.querySelector('.bt-cmd:not([hidden])'))", 30)
+        p.eval("FemcBattle.B.leader().th=9999;document.querySelectorAll('.bt-bark').forEach(x=>x.remove())")  # her Theurgy ready: the menus show whether it's allowed
+        p.top(); shots('fights-4-contact'); p.frame(20)
+        r4 = drive(r"""{allout:true,root:(u,it,b)=>{if(u.mid==='solar'&&it.some(i=>i.v==='bond'&&!i.off))return 'bond';return 'attack'}}""")
+        mids = {r['mid'] for r in r4['roots']}
+        ok(r4['marks'].get('epi-card-contact') and r4['marks'].get('nav-epiContact') and len(mids) >= 2, f'contact: ONE SECOND, Fuuka has her, and they obey Direct for the round ({sorted(mids)})')
+        ok(any(v == 'bond' and not off for r in r4['roots'] if r['mid'] == 'solar' for v, off, _ in r['items']) and r4['marks'].get('bond-pick'), 'contact: a Bond with Akihiko is open, and she uses it')
+        ok(all(r['round'] == 1 for r in r4['roots']) and r4['res']['epi']['ended'] in ('pulled', 'win'), f'contact: exactly one round, then she’s pulled away ({r4["res"]["epi"]["ended"]})')
+        ok(not any(v in ('item', 'tactics', 'escape') for r in r1['roots'] + r2['roots'] + r3['roots'] + r4['roots'] for v, _, _ in r['items']), 'no Item (an empty bag), Tactics or Escape in any of them')
+        release()
+        a4 = p.eval("(()=>{const s=FemcGame.S;return {yen:s.yen,inv:JSON.stringify(s.inventory),cond:s.condition,y1:JSON.stringify([s.year1.yen,s.year1.battleSave,s.year1.inventory])}})()")
+        ok(a4['yen'] == base['yen'] and a4['inv'] == base['inv'] and a4['cond'] == base['cond'] and a4['y1'] == base['y1'], 'after four fights: the world’s wallet, bag and condition, and the year inside, untouched')
+        errs = p.console(); ok(not errs, f'no browser errors through the contact round: {errs}')
+
+        # HOAX: the gym at midnight (fight 4, which ends the act): Akihiko below rank 5 still has his bond for the round; the
+        # act's end gives the year back with the fights' EXP in its battle save.
+        p.goto('femc-game.html?debug=0&speed=8'); p.eval(HELPERS)
+        year_in('route-H', {'akihiko': {'rank': 2, 'xp': 0, 'seen': [], 'rankDay': {}}, 'yukari': {'rank': 7, 'xp': 0, 'seen': [], 'rankDay': {}}, 'junpei': {'rank': 5, 'xp': 0, 'seen': [], 'rankDay': {}}}, 'hoax')
+        hb = p.eval("(()=>{const s=FemcGame.S;return {won:s.yen,exp:s.battleSave.exp,lvl:s.battleSave.lvl,party:JSON.stringify(s.battleSave.party),items:JSON.stringify(s.battleSave.items)}})()")
+        fh = to_fight('epi-h-gym')
+        ok(fh['req']['party'] == ['solar', 'akihiko', 'yukari', 'junpei'] and fh['req']['epi'] == {**fh['req']['epi'], 'world': 'hoax', 'n': 4, 'stage': 'contact'} and fh['req']['yen'] == 12345, 'HOAX gym: contact, with Akihiko, Yukari and Junpei; the year’s yen, not the world’s won')
+        open_frame()
+        rh = drive(r"""{allout:true,root:(u,it,b)=>{if(u.mid==='solar'&&it.some(i=>i.v==='bond'&&!i.off))return 'bond';return 'attack'}}""")
+        ok(any(v == 'bond' and not off for r in rh['roots'] if r['mid'] == 'solar' for v, off, _ in r['items']), 'HOAX gym: Akihiko at rank 2 still has his bond for the contact round')
+        ok(rh['bparty'] == json.loads(hb['party']) and rh['items'] == json.loads(hb['items']), 'HOAX gym: the battle save’s own party and items are put back after the fight')
+        release()
+        p.eval("window.__cards=[]")
+        ok(step_until("!!document.querySelector('.g-end')", 600, 0.03), 'HOAX gym: the scene goes on to the end of the act and back to the year’s end screen')
+        yb = p.eval("(()=>{const s=FemcGame.S;return {epi:'epi' in s,yen:s.yen,exp:s.battleSave.exp,lvl:s.battleSave.lvl,flag:!!(s.year1||{}).flags,world:FemcGame.world()}})()")
+        ok(not yb['epi'] and yb['yen'] == 12345 and yb['world'] is None and (yb['lvl'], yb['exp']) > (hb['lvl'], hb['exp']), f'the year is back, its yen the same, its battle save carrying the fight’s EXP (Lv {hb["lvl"]}/{hb["exp"]} → {yb["lvl"]}/{yb["exp"]})')
+        errs = p.console(); ok(not errs, f'no browser errors through the HOAX gym fight and the act’s end: {errs}')
 
     if 'shots' in ONLY:
         p.goto('femc-game.html'); p.eval(HELPERS)
