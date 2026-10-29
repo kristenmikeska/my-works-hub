@@ -742,11 +742,13 @@
           { n: "Solar stayed by the door and didn't say anything. This one was his. She'd come to be someone who knew, and she knew, and that was the whole job, and she did it, standing very still in the gray snow-light with her hands in her coat pockets, until Ken was ready to stand up." }
         ] }
       ] },
+      { cg: 'link-ken-r10' },
       { n: "Outside, on the hospital steps, the snow was falling properly now, big slow flakes coming down through the cold like something being unpacked. Ken stood at the top of the steps with his backpack on and his breath going up white, and then he took off one glove and dug in his coat pocket and held something out to her." },
       { n: "It was the strap. The little red bird's head with the visor, the paint worn off the beak, on its short frayed cord." },
       { s: 'ken', f: 'neutral', t: "It's for you. It's Red's. It's for protecting people." },
       { s: 'ken', f: 'serious', t: "I don't need it anymore. I know how to do it myself now. I want you to have it in case you go somewhere where you need it." },
       { s: 'ken', f: 'neutral', t: "When I'm older I want to be someone like you, Solar-san. Someone who notices when your back foot turns in." },
+      { cg: null },
       { choose: [
         { t: "Be someone like you, Ken. You're already very good at it.", notes: 3, then: [
           { n: "Ken looked at her, and then at the snow, and his ears went red, all the way, and stayed that way." },

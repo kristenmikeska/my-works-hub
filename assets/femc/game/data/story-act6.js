@@ -288,9 +288,11 @@
   { id: 'a6-blue-moon', date: '12/31', slot: 'late', flag: 'year-goes-on', title: 'blue moon', place: 'Iwatodai Station · Platform', time: 'Night', scene: [
     { music: 'night' },
     { n: "New Year's Eve. A blue moon, the second full moon in a month, the radio said, very rare, and hung over the bay like something placed there on purpose. The dorm had been strange all day. Mitsuru on the phone with her door shut. Akihiko running laps of the block in the cold until Yukari went out and made him stop. Aigis at the window, watching the moon the way she'd watched the horizon on Yakushima. Nobody said anything about it. It wasn't Solar's story. She was learning to let some things not be." },
+    { cg: 'story-new-years-eve-platform' },
     { n: "She went to the station at eleven. Wren was on the bench. Of course she was." },
     { s: 'wren', f: 'neutral', t: "You came. On New Year's. You should be with your people. They've got soba. I could smell it from here." },
     { s: 'wren', f: 'sad', t: "I'm going to sit here all night, I think. Till the year's over. I'd like to see one end on purpose. Just one. To see what it's like." },
+    { cg: null },
     { choose: [
       { t: "(Sit with her all night.)", flag: { 'sat-with-wren': true }, then: [
         { n: "She sat. Wren didn't say anything, and didn't need to, and leaned against her shoulder, and they watched the last trains of the year come in and go out, full of people in paper hats and people asleep and people kissing in the doorways, and at midnight, in the green, the station went still, and the hour came and went, and somewhere a temple bell started ringing out the old year, a hundred and eight times, far off over the city, and Wren counted every one of them under her breath." },

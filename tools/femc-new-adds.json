@@ -16757,6 +16757,40 @@
         "assets/femc/portraits/jungwon-strangers/surprised.webp": "bf35278833c7c012dacae9fd59d5379de814b066b2aa0d3f87af32ef1b13749b",
         "assets/femc/portraits/jungwon-strangers/flustered.webp": "7550e4159e0a966611cc77bede41f9d272430e9e528467c805dcf506bd9735e1"
       }
+    },
+    {
+      "batch": 82,
+      "source": "link-ken-r10-cg.jpeg",
+      "sourceNow": "Added to Game/link-ken-r10-cg.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "af6e51819a7dbe86d384414c8329459efad2840ecde41ec5a1ce5bae574c5db2",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-ken-r10.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged (delivered as JPEG)",
+      "outputSha256": "b5d569f10dfa92d98495cdd6687b5134c079f4a7ae675574417eca2dc42a523d",
+      "placement": "links/ken.js rank 10 ('10: justice'): { cg } before the hospital-steps line, { cg: null } before the choice; cgFocus in data/places.js",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "55% 35%"
+    },
+    {
+      "batch": 82,
+      "source": "story-new-years-eve-platform-cg.jpeg",
+      "sourceNow": "Added to Game/story-new-years-eve-platform-cg.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "686f8efe9b661f708a3d883c90a96d2fdcdcd0f40431c1b1d21373e824214f72",
+      "status": "integrated",
+      "destination": "assets/femc/cg/story-new-years-eve-platform.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged (delivered as JPEG)",
+      "outputSha256": "5e8253bef6bd7148b5e6aa36e2315975bed66638b041e2be03eb3f435688b733",
+      "placement": "data/story-act6.js a6-blue-moon: { cg } before the station line, { cg: null } before the choice; cgFocus in data/places.js",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "32% 50%"
     }
   ],
   "batch1Validation": {
@@ -17877,5 +17911,20 @@
     ],
     "notTested": "no browser tests: in-scene face size at 1000x486 and 375x812; tests/femc_epilogue.py (its _loaded checks now 21) not run",
     "html": "femc-game.html portraits/index.js v141, scale.js v151 (FEMC_PORTRAIT_V 11), epilogue v23; DATA_V 21"
+  },
+  "batch82Validation": {
+    "date": "2026-10-28",
+    "scope": "two Iwatodai CGs that arrived during batch 81: Ken rank 10 and the New Year's Eve platform",
+    "sourcesInspected": "both viewed",
+    "sourcesIntegrated": 2,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "textTweaks": "none (both match their scenes)",
+    "tests": [
+      "tools/femc-check-scenes.py: OK",
+      "jsc checkSyntax on every edited script"
+    ],
+    "notTested": "no browser tests: CG framing at 1000x486 and 375x812 (focus points set from the images)",
+    "html": "femc-game.html places v59, ken v4, story-act6 v18"
   }
 }

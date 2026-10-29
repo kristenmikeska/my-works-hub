@@ -1,6 +1,6 @@
 # Art to make
 
-**45 items:** 17 CGs · 28 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**43 items:** 15 CGs · 28 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -28,14 +28,6 @@ Places, expressions, outfit portraits and the items that name their own pictures
 
 ### Iwatodai (the main game)
 
-**[ ] Ken · rank 10 · the hospital steps in the snow** *(optional)*  
-For Ken's rank 10, outside on the hospital steps after school in January.  
-Attach: Ken, Solar, `bg/hospital-outside.webp` (for the place only)  
-Save as: `link-ken-r10-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The front steps of a city hospital on a January afternoon, gray snow-light, big slow snowflakes falling thickly, a thin dusting of snow on the steps, the railing and the bare trees in the parking lot below. Ken (the first attached image's face; a small fifth-grade boy in a winter coat over his school uniform, backpack on both shoulders) stands at the top of the steps, his breath going up white, one glove off and held in his other hand, holding out a tiny worn red plastic bird-head phone strap with a little visor, paint rubbed off the beak, on a short frayed cord, offering it up with total seriousness. Solar (the second attached image's face; long dark hair, winter coat and scarf) stands one step below him, a little stooped toward him, close, looking at what he's holding out. Snow settling on both their hair and shoulders. Quiet, solemn, tender, a small brave moment. Keep the faces clear of the edges.
-```
-
 **[ ] Kat & Ethan · rank 10 · the Port Island pier at night** *(optional)*  
 For Kat & Ethan's rank 10, on the pier on Port Island in the evening.  
 Attach: Kat, Ethan, Cosmo, Wanda, Solar, `bg/port-island-pier-night.webp` (for the place only)  
@@ -58,14 +50,6 @@ Attach: Aigis, Solar, `bg/iwatodaidorm-roof-evening.webp` (for the place only)
 Save as: `holiday-aigis-sunset-cg.png`
 ```
 Persona 3 Reload style event CG, 16:9, no text. The dorm rooftop on the last afternoon of the year, cold and very clear, the sun just touching the bay on the horizon, gold light across the water and the city, long shadows across the roof. Aigis (the first attached image's face; blonde, her usual look, with a soft scarf wound three times around her neck) stands at the railing watching the sunset with very blue, steady eyes, her hand resting on the rail. Solar (the second attached image's face; long dark hair, winter coat) stands right beside her at the rail, one step of space between them, her hand on the rail next to Aigis's. Seen slightly from behind and to the side so both faces catch the gold light. Calm, luminous, a year quietly ending. Keep the faces clear of the edges.
-```
-
-**[ ] The year · 12/31 · the station platform at night** *(optional)*  
-For the 12/31 story night, on the Iwatodai Station platform at eleven.  
-Attach: Wren, Solar, `bg/station-platform-night.webp` (for the place only)  
-Save as: `story-new-years-eve-platform-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A monorail station platform late on New Year's Eve, around eleven at night, cold, platform lights glowing; beyond the edge of the platform a huge bright full moon hangs low over the bay, placed there almost on purpose. A train with lit windows waits at the far end. Wren (the first attached image's face; her cap, long sleeves falling over her hands) sits alone on a bench, small and still, looking up at Solar. Solar (the second attached image's face; long dark hair, winter coat and scarf) has just arrived and stands beside the bench, about to sit down next to her. Cold blue night, silver moonlight, quiet. Lonely, tender, the year about to end. Keep the faces clear of the edges.
 ```
 
 ### The epilogue: HOAX
