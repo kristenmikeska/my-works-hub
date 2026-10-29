@@ -16665,6 +16665,98 @@
       "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
       "outputSha256": "ecdec9b5185df5a133aee57653e5f2796ab176cffc39f4d9f9333633bbc9068f",
       "placement": "data/epi/true/world.js 'Iwatodai Station · Bench' day slot (was station-platform-day, which left the coda's outdoor list); the same rule added to data/epi/stay/world.js for epi-st-rt-bench; indoors"
+    },
+    {
+      "batch": 81,
+      "source": "haechan-runners-sheet.png",
+      "sourceNow": "Added to Game/haechan-runners-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ff9b2a4fa359c1bf0857cae04e942d74e59da0558bed331eb42683098e81c7ab",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/haechan-runners/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (white-shirt holes at the cell bottom); femc-portraits.py aligned (WebP q86)",
+      "placement": "data/epi/runners/world.js faces: haechan -> haechan-runners; scale.js 0.93",
+      "character": "haechan-runners",
+      "outputs": {
+        "assets/femc/portraits/haechan-runners/neutral.webp": "0f15cd23d90d1962afcbf1fb6e51c99e047f3c024bc8396083416bb6958b8361",
+        "assets/femc/portraits/haechan-runners/happy.webp": "346faa9b7a478d54aaa3cdf7ed10927e6315bdf6c4cdc9e4c2ed3ea001508fdc",
+        "assets/femc/portraits/haechan-runners/sad.webp": "030656ac5a8be24b1266c26f0486fd6f069eab1f384634122abfe1ccd4a087d4",
+        "assets/femc/portraits/haechan-runners/serious.webp": "d8ac3d4e931192069d7d9775e6eccb07089fccf54c4d0d40e49d692634b4f2c5",
+        "assets/femc/portraits/haechan-runners/surprised.webp": "f697a5fe57918752e70a724e2e5ed0b6301cd4cc6b24fbb50e9181c1bd3e62eb",
+        "assets/femc/portraits/haechan-runners/flustered.webp": "2bbd0f3a7e663c26da224039f2e32deada7254112ff71c5898da6b3892588865"
+      }
+    },
+    {
+      "batch": 81,
+      "source": "haechan-strangers-sheet.png",
+      "sourceNow": "Added to Game/haechan-strangers-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "23810e4835d270a60ccaff48bfaf8a40d30d5b11ae776ba6d11a7e6e22473165",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/haechan-strangers/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (white-shirt holes at the cell bottom); femc-portraits.py aligned (WebP q86)",
+      "placement": "data/epi/strangers/world.js faces: haechan -> haechan-strangers; scale.js 0.92",
+      "character": "haechan-strangers",
+      "outputs": {
+        "assets/femc/portraits/haechan-strangers/neutral.webp": "a9d8a49e66d5c5bc1c4f3ac1e752568cfcdc066833940847d5013f3f8f123d83",
+        "assets/femc/portraits/haechan-strangers/happy.webp": "8ca4e79a4b12c33badc949018e060851700811fef5e4b8f5181ba52592ad9e2a",
+        "assets/femc/portraits/haechan-strangers/sad.webp": "ae3f25ca3ee0a37065980c33e5a41bfa030d1b0a16a29a56a2520d198801e4f0",
+        "assets/femc/portraits/haechan-strangers/serious.webp": "65ff3f16d0eb100988354b2eb3c4da7e8123e28abf1ed0f80d72a692222c8439",
+        "assets/femc/portraits/haechan-strangers/surprised.webp": "5ac3d67288d8837f4647865c347def423031db5ea5932fb4915527d415896ec3",
+        "assets/femc/portraits/haechan-strangers/flustered.webp": "e6a9b7f38ed94e116d1c2037dccde1ad2d1c44d66f4cbbfc8a88d7c12488998c"
+      }
+    },
+    {
+      "batch": 81,
+      "source": "jungwon-hoax-sheet.png",
+      "sourceNow": "Added to Game/jungwon-hoax-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ee3f15af1189005d1e9af16e432a2f39652b1235d58c4be43c53b7780944a165",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/jungwon-hoax/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (white-shirt holes at the cell bottom); femc-portraits.py aligned (WebP q86)",
+      "placement": "data/epi/hoax/world.js faces: jungwon -> jungwon-hoax; scale.js 1.0",
+      "character": "jungwon-hoax",
+      "outputs": {
+        "assets/femc/portraits/jungwon-hoax/neutral.webp": "2177c213632c38b557be325fe0912e3a724ed8e63123bc2df68cfe3b51f8eb34",
+        "assets/femc/portraits/jungwon-hoax/happy.webp": "80bf003785d941ed216470f5d10dee0ffe1a6d8332cd757527b3d37978a262c0",
+        "assets/femc/portraits/jungwon-hoax/sad.webp": "865b0fd4d9571ecaa92d6f6b8ea0dc8f7477635eba26b50e8c163d17af90440d",
+        "assets/femc/portraits/jungwon-hoax/serious.webp": "6cfa9298093fdecc8c4eeae49222c1e3bcd62c9b055c9dd735e4024b8e7ccaf4",
+        "assets/femc/portraits/jungwon-hoax/surprised.webp": "ee5ade6456f588e55debecdc8b4061cd5aab391b61a44f82695b19758c35646d",
+        "assets/femc/portraits/jungwon-hoax/flustered.webp": "52bf5cdfe9aca9e2392ab05374c1b95cbfa95eaf400cfbdff60f85923c01b95d"
+      }
+    },
+    {
+      "batch": 81,
+      "source": "jungwon-strangers-sheet.png",
+      "sourceNow": "Added to Game/jungwon-strangers-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ed688cfd255da95d81927ec94800d414ffdb40c955a45b59a69324c103b970f3",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/jungwon-strangers/neutral.webp",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (white-shirt holes at the cell bottom); femc-portraits.py aligned (WebP q86)",
+      "placement": "data/epi/strangers/world.js faces: jungwon -> jungwon-strangers; scale.js 0.95",
+      "character": "jungwon-strangers",
+      "outputs": {
+        "assets/femc/portraits/jungwon-strangers/neutral.webp": "7f8f8c382bdaf1d49888437fd2cbb6eb032a26a9f9b8cd52f6a11b9f1ed80c08",
+        "assets/femc/portraits/jungwon-strangers/happy.webp": "3ec45a6c0930a48be617f04cf62daf20cb2f52442abc2ab3c41b71e755204695",
+        "assets/femc/portraits/jungwon-strangers/sad.webp": "4d96c520607bd287d13f3400b036a41d43812c5648faba7c063da47f62cc4e1d",
+        "assets/femc/portraits/jungwon-strangers/serious.webp": "70f2bc374332104dface33d8177cda8beb7f706f16417dd49f6ebc6c205f2b16",
+        "assets/femc/portraits/jungwon-strangers/surprised.webp": "bf35278833c7c012dacae9fd59d5379de814b066b2aa0d3f87af32ef1b13749b",
+        "assets/femc/portraits/jungwon-strangers/flustered.webp": "7550e4159e0a966611cc77bede41f9d272430e9e528467c805dcf506bd9735e1"
+      }
     }
   ],
   "batch1Validation": {
@@ -17768,5 +17860,22 @@
     ],
     "notTested": "no browser tests: the CG framing at 1000x486 and 375x812; tests/femc_epilogue.py (its _loaded checks now 20) not run",
     "html": "femc-game.html places v58, epilogue v22; DATA_V 20; kirijo-guesthouse-day.webp restored after the backgrounds run"
+  },
+  "batch81Validation": {
+    "date": "2026-10-28",
+    "scope": "the two-world boys' home-world faces: Haechan's Runners and strangers looks, Jungwon's HOAX and strangers looks",
+    "sourcesInspected": "all 4 viewed; every cut on a magenta contact sheet before and after the cleanup (bottom-row cells had sheet-margin rows and white-shirt holes at the edge: trimmed and filled; none left), the aligned WebPs checked again, and the neutrals in a scale lineup against Haechan, Jungwon and Solar (strangers)",
+    "sourcesIntegrated": 4,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "engine": "faces maps: runners haechan -> haechan-runners; hoax jungwon -> jungwon-hoax; strangers haechan -> haechan-strangers, jungwon -> jungwon-strangers",
+    "knownLimits": "haechan-strangers: a few top hair strands touch the sheet's top edge, so they end flat (barely visible)",
+    "tests": [
+      "tools/femc-check-scenes.py: OK",
+      "jsc checkSyntax on every edited script",
+      "py_compile tests/femc_epilogue.py"
+    ],
+    "notTested": "no browser tests: in-scene face size at 1000x486 and 375x812; tests/femc_epilogue.py (its _loaded checks now 21) not run",
+    "html": "femc-game.html portraits/index.js v141, scale.js v151 (FEMC_PORTRAIT_V 11), epilogue v23; DATA_V 21"
   }
 }

@@ -1,6 +1,6 @@
 # Art to make
 
-**49 items:** 17 CGs · 4 character pieces · 28 wardrobe. 45 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**45 items:** 17 CGs · 28 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -80,7 +80,7 @@ Persona 3 Reload style event CG, 16:9, no text. A small cosy Korean café after 
 
 **[ ] HOAX · 12/25 · the Kims' front door** *(optional)*  
 Christmas Day at the Kims', one o'clock, the front door (every route).  
-Attach: Solar (her HOAX look), Jungwon (his HOAX look once it's made, his neutral portrait until then), Solar's mother (`portraits/kim-mom`), `bg/epi-h-kim-house.webp` (for the house only)  
+Attach: Solar (her HOAX look), Jungwon (his HOAX look), Solar's mother (`portraits/kim-mom`), `bg/epi-h-kim-house.webp` (for the house only)  
 Save as: `epi-h-christmas-cg.png`
 ```
 Persona 3 Reload style event CG, 16:9, no text. The front door of a Korean family apartment on Christmas afternoon, seen from inside the short entrance hall: a shoe rack, the door open on a snowy step and grey daylight, warm light from the living room behind with a Christmas tree just visible. On the step, Jungwon (the second attached image's face; hair actually brushed, a good dark coat buttoned to the top, snow on his shoulders, ears red) is bowing a full ninety degrees, holding a white bakery box perfectly level in both hands, a wrapped present tucked under one arm. In the doorway Solar (the first attached image's face; long dark hair, a cosy knit sweater and house socks) stands with her hand still on the door, mortified and delighted. Right behind her, Solar's mother (the third attached image's face; an apron over her clothes) has appeared holding a wooden spoon, staring at the boy. A very large fluffy white dog with half a red bow hanging off his collar pushes his head past Solar's legs. Funny, warm, a little terrifying. Keep the faces clear of the edges.
@@ -98,7 +98,7 @@ Persona 3 Reload style event CG, 16:9, no text. A bright café in a new glass ci
 
 **[ ] strangers · 2/24 morning · the Lee kitchen** *(optional)*  
 For the 2/24 morning scene in the family kitchen (the full-moon holiday breakfast).  
-Attach: Solar (her strangers look), Yunjin, Haechan, Jungwon, `bg/epi-s-lee-kitchen.webp` (for the room only)  
+Attach: Solar (her strangers look), Yunjin, Haechan (his strangers look), Jungwon (his strangers look), `bg/epi-s-lee-kitchen.webp` (for the room only)  
 Save as: `epi-s-bureom-cg.png`
 ```
 Persona 3 Reload style event CG, 16:9, no text. The big kitchen of the attached room on a clear, bright, windy winter morning, sun on the windows, steam rising from a huge pot of purple-dark five-grain rice. Down the middle of the long wooden table: nine small dishes of dried greens, a wooden bowl of walnuts, peanuts and chestnuts in their shells, and a small black lacquer box tied with red string. Solar (the first attached image's face; hair down, a soft sweater, socks) standing by the back door with a hand over her mouth, trying not to laugh. Yunjin (the second attached image's face) in a yellow puffer over pajamas, hair in a knot on top of her head, hiding her face in her hands, laughing. Haechan (the third attached image's face) in a black jacket, cheeks red from the cold, a walnut in his hand, glaring up at the ceiling in mock betrayal. Jungwon (the fourth attached image's face) in a dark coat at the far end of the table, napkin on his knee, sitting very straight and polite, faint dimples. In the background, soft and out of focus: a short older woman in rubber boots at the stove with her back turned, a stout housekeeper ladling rice, a grey-haired driver standing in the corner with his coat on. Festive, crowded, warm. Keep the faces clear of the edges.
@@ -114,7 +114,7 @@ Persona 3 Reload style event CG, 16:9, no text. A small, shabby Korean karaoke r
 
 **[ ] strangers · 3/10 · Sunday dumplings** *(optional)*  
 For the 3/10 afternoon scene in the family kitchen.  
-Attach: Solar (her strangers look), Haechan, Jungwon, Appa, `bg/epi-s-lee-kitchen.webp` (for the room only)  
+Attach: Solar (her strangers look), Haechan (his strangers look), Jungwon (his strangers look), Appa, `bg/epi-s-lee-kitchen.webp` (for the room only)  
 Save as: `epi-s-dumplings-cg.png`
 ```
 Persona 3 Reload style event CG, 16:9, no text. The big kitchen of the attached room on a Sunday afternoon in winter, steam on every window, flour all over the long wooden table like a light snow, trays of rows of folded dumplings, a huge steel bowl of filling, a stack of wrappers under a damp cloth, and a red plastic bucket with two orange koi brought in by the stove. Solar (the first attached image's face; hair down, sleeves pushed up past the elbow) sitting at the table folding a dumpling, laughing. Haechan (the second attached image's face) across from her in a grey sweatshirt with flour up to his elbows, a silver ring set aside on the board, frowning in deep concentration over a lumpy, misshapen dumpling. Jungwon (the third attached image's face) at the other end in a good grey sweater, holding a cup of tea and nothing else, watching Haechan's dumpling with polite amusement. Solar's father (the fourth attached image's face) at the far end with a newspaper crossword folded into quarters, reading glasses on a cord, a pencil behind his ear, his shoulders shaking with laughter behind the paper. At the head of the table, a tiny older woman standing on an upturned crate in rubber boots, rolling wrappers, her sleeves tied back with clothes pegs, mouth open in song. Homely, floury, happy. Keep the faces clear of the edges.
@@ -122,7 +122,7 @@ Persona 3 Reload style event CG, 16:9, no text. The big kitchen of the attached 
 
 **[ ] strangers · 3/11 · dinner at the long table** *(optional)*  
 For the 3/11 evening scene in the family dining room (the whole house at dinner).  
-Attach: Solar (her strangers look), Appa, Eomma, Haechan, Jungwon, Yunjin, and `bg/epi-s-dining-room.webp` (for the room only)  
+Attach: Solar (her strangers look), Appa, Eomma, Haechan (his strangers look), Jungwon (his strangers look), Yunjin, and `bg/epi-s-dining-room.webp` (for the room only)  
 Save as: `epi-s-dinner-cg.png`
 ```
 Persona 3 Reload style event CG, 16:9, no text. A formal dining room in an old Korean house at night, warm low lamps, a very long dark wooden table with all its leaves in, good white plates, bowls of rice and soup, a whole fish on a platter in the middle, seen from the foot of the table looking up its length. Solar's father (the second attached image's face) at the head with reading glasses on a cord, mid-laugh. Solar's mother (the third attached image's face) on his right in dark green, hair up, sitting very straight with a small reluctant smile. Solar (the first attached image's face, hair and look) on his left, looking down the table at everyone. Jungwon (the fifth attached image's face) beside her in a suit jacket, composed, a faint smile. Haechan (the fourth attached image's face) across from her, both hands raised in surrender, grinning. Yunjin (the sixth attached image's face) further down, pointing at someone and laughing. Along the rest of the table, softer and less detailed: a grey-haired driver in a jacket and a tie he keeps touching, a young guard laughing into his rice, a nervous young man at the very end, a quiet woman in a grey cardigan, a tiny older cook perched on the edge of a chair by the kitchen door, and a stout housekeeper standing with a ladle. Loud, warm, a house eating together. Keep the faces clear of the edges.
@@ -182,40 +182,7 @@ Persona 3 Reload style event CG, 16:9, no text. A university quad on a December 
 
 ## 3. Characters (ChatGPT)
 
-### The two-world boys: home-world looks (ChatGPT)
-
-**[ ] Haechan: Runners look**  
-Haechan's face in the Runners epilogue: the campus heartthrob.  
-Attach: Haechan, and one finished home-world sheet for style (e.g. `solar-hoax-update.png`)  
-Save as: `haechan-runners-sheet.png`
-```
-A character portrait sheet in the same art style as the attached sheet (clean manhwa-style line art, soft painted shading, semi-realistic faces, plain white background): 3 columns by 2 rows, head and shoulders, the same framing in every cell. Top row: neutral, happy, sad. Bottom row: serious, surprised, flustered. Same face, hair and outfit in every cell; only the expression changes. No text. Haechan as the most wanted boy on a US college campus: put together and effortlessly cool. His infamous plain black hoodie, black over-ear headphones resting around his neck, a thin silver chain, styled dark hair with a soft middle part, clear skin, a lazy half-lidded confidence.
-```
-
-**[ ] Haechan: strangers look**  
-Haechan's face in the strangers epilogue: rougher, the world's danger on him.  
-Attach: Haechan, and one finished home-world sheet for style (e.g. `solar-hoax-update.png`)  
-Save as: `haechan-strangers-sheet.png`
-```
-A character portrait sheet in the same art style as the attached sheet (clean manhwa-style line art, soft painted shading, semi-realistic faces, plain white background): 3 columns by 2 rows, head and shoulders, the same framing in every cell. Top row: neutral, happy, sad. Bottom row: serious, surprised, flustered. Same face, hair and outfit in every cell; only the expression changes. No text. Haechan, harder and less put together: dark, slightly messy unstyled hair falling over his forehead (no neat middle part), a small healed scar across one cheekbone, faint tiredness under the eyes, a plain dark jacket over a black shirt with the collar open. Watchful, guarded, a little roughed up, still handsome.
-```
-
-**[ ] Jungwon: HOAX look**  
-Jungwon's face in the HOAX epilogue: the student-council president.  
-Attach: Jungwon, and one finished home-world sheet for style (e.g. `solar-hoax-update.png`)  
-Save as: `jungwon-hoax-sheet.png`
-```
-A character portrait sheet in the same art style as the attached sheet (clean manhwa-style line art, soft painted shading, semi-realistic faces, plain white background): 3 columns by 2 rows, head and shoulders, the same framing in every cell. Top row: neutral, happy, sad. Bottom row: serious, surprised, flustered. Same face, hair and outfit in every cell; only the expression changes. No text. Jungwon as a high-school student-council president, a little nerdy: a navy Korean school blazer with a crest, a white shirt and a neatly knotted tie, a council armband, thin wire-framed glasses, tidy dark hair. Earnest, sharp, quietly proud.
-```
-
-**[ ] Jungwon: strangers look**  
-Jungwon's face in the strangers epilogue: the heir, slightly worn by his world.  
-Attach: Jungwon, and one finished home-world sheet for style (e.g. `solar-hoax-update.png`)  
-Save as: `jungwon-strangers-sheet.png`
-```
-A character portrait sheet in the same art style as the attached sheet (clean manhwa-style line art, soft painted shading, semi-realistic faces, plain white background): 3 columns by 2 rows, head and shoulders, the same framing in every cell. Top row: neutral, happy, sad. Bottom row: serious, surprised, flustered. Same face, hair and outfit in every cell; only the expression changes. No text. Jungwon as the heir of a powerful family: fancier and composed, a tailored charcoal overcoat over a dark suit and a crisp white shirt with no tie, neat dark hair just slightly out of place, a faint healed graze at one temple, tired but controlled eyes. Elegant, guarded, quietly dangerous.
-```
-
+*(Nothing left: the two-world boys' home-world looks are in the game.)*
 
 ---
 

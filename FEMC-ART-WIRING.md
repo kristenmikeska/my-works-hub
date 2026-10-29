@@ -36,7 +36,7 @@ General: convert each to `assets/femc/cg/<slug>.webp`; insert `{ cg: '<slug>' },
 
 #### The epilogue: Runners, HOAX, Stay, the true coda
 
-Common to every item below: convert to `assets/femc/cg/<slug>.webp`; add `[slug, label]` to `ALBUM[world]` in `assets/femc/game/epilogue.js` (lines 568-574) and a phone focus point to `cgFocus` in `assets/femc/game/data/places.js` (lines 352-356; the values below are first guesses, so check them at 375×812). Then bump `places.js?v=` (femc-game.html line 37, now 58), bump `DATA_V` in epilogue.js (line 77, now 20) and the `_loaded===20` checks in `tests/femc_epilogue.py` (lines 561, 671, 775, 925, 1324, 1451), and run `tools/femc-check-scenes.py` and `tests/femc_epilogue.py --only <world>`. Line numbers are from today's files; insert from the bottom of a file up so earlier anchors don't move.
+Common to every item below: convert to `assets/femc/cg/<slug>.webp`; add `[slug, label]` to `ALBUM[world]` in `assets/femc/game/epilogue.js` (lines 568-574) and a phone focus point to `cgFocus` in `assets/femc/game/data/places.js` (lines 352-356; the values below are first guesses, so check them at 375×812). Then bump `places.js?v=` (femc-game.html line 37, now 58), bump `DATA_V` in epilogue.js (line 77, now 21) and the `_loaded===21` checks in `tests/femc_epilogue.py` (lines 561, 671, 775, 925, 1324, 1451), and run `tools/femc-check-scenes.py` and `tests/femc_epilogue.py --only <world>`. Line numbers are from today's files; insert from the bottom of a file up so earlier anchors don't move.
 
 #### The epilogue: Runners
 
@@ -60,7 +60,7 @@ Common to every item below: convert to `assets/femc/cg/<slug>.webp`; add `[slug,
 
 #### The epilogue: strangers (CGs)
 
-For each: convert to `assets/femc/cg/<slug>.webp`; add `{ cg: '<slug>' }` / `{ cg: null }` lines in the scene file below; add `['<slug>', '<title>']` to `epilogue.js` `ALBUM.strangers` (after `epi-s-held` or in date order: cafe, bureom before moon; karaoke after moon; dumplings, dinner after tide; pins wherever Kat likes); add a phone focus to `data/places.js` `cgFocus` (line ~356, beside `'epi-s-moon'`); bump `DATA_V` in `epilogue.js` (now 20; +1 once per batch) and `places.js ?v=` in `femc-game.html` for the cgFocus edit. None of these scenes has a CG yet, and none overlaps the moon / tide / held beats. Run `tests/femc_epilogue.py --only strangers` (its image walk checks every `cg`).
+For each: convert to `assets/femc/cg/<slug>.webp`; add `{ cg: '<slug>' }` / `{ cg: null }` lines in the scene file below; add `['<slug>', '<title>']` to `epilogue.js` `ALBUM.strangers` (after `epi-s-held` or in date order: cafe, bureom before moon; karaoke after moon; dumplings, dinner after tide; pins wherever Kat likes); add a phone focus to `data/places.js` `cgFocus` (line ~356, beside `'epi-s-moon'`); bump `DATA_V` in `epilogue.js` (now 21; +1 once per batch) and `places.js ?v=` in `femc-game.html` for the cgFocus edit. None of these scenes has a CG yet, and none overlaps the moon / tide / held beats. Run `tests/femc_epilogue.py --only strangers` (its image walk checks every `cg`).
 
 - **strangers · 2/22 · the café in Songdo** (`epi-s-cafe-cg.png` → `cg/epi-s-cafe.webp`): event `epi-s-girls` (story-w1.js, 2/22 after). Put `{ cg: 'epi-s-cafe' }` before the narration line that begins the `// The plan.` block (~line 796, the laminated-plan line); `{ cg: null }` before that block's `{ choose: [` (~line 804). ALBUM title 'The studio girls'. cgFocus `'epi-s-cafe': '45% 40%'` (Solar in the corner, left of centre).
 - **strangers · 2/24 morning · the Lee kitchen** (`epi-s-bureom-cg.png` → `cg/epi-s-bureom.webp`): event `epi-s-bureom` (story-w2.js, 2/24 early). Put `{ cg: 'epi-s-bureom' }` before the line that seats Jungwon at the far end of the table (~line 97); `{ cg: null }` before the first `{ ifEpiRoute: 'haechan', then: [` (~line 107), so the CG covers only the shared lines. ALBUM title 'Bureom'. cgFocus `'epi-s-bureom': '50% 40%'`.
@@ -84,7 +84,7 @@ Not needed (checked, no scenes use the day slot): `Iwatodai Station · Taxi Stan
 
 #### The epilogue: Runners, HOAX, Stay, the true coda
 
-Common to every item below: convert to `assets/femc/bg/<slug>.webp`; bump `DATA_V` in `assets/femc/game/epilogue.js` (line 77, now 20) and every `_loaded===20` check in `tests/femc_epilogue.py` (lines 561, 671, 775, 925, 1324, 1451; 1581 has no number); then `tools/femc-check-scenes.py` and `tests/femc_epilogue.py --only <world>`. None of these touch `data/places.js`, so no `places.js?v=` bump (femc-game.html line 37), except where a note says so.
+Common to every item below: convert to `assets/femc/bg/<slug>.webp`; bump `DATA_V` in `assets/femc/game/epilogue.js` (line 77, now 21) and every `_loaded===21` check in `tests/femc_epilogue.py` (lines 561, 671, 775, 925, 1324, 1451; 1581 has no number); then `tools/femc-check-scenes.py` and `tests/femc_epilogue.py --only <world>`. None of these touch `data/places.js`, so no `places.js?v=` bump (femc-game.html line 37), except where a note says so.
 
 #### The epilogue: Runners
 
@@ -104,7 +104,7 @@ Common to every item below: convert to `assets/femc/bg/<slug>.webp`; bump `DATA_
 
 #### The epilogue: strangers (places)
 
-All rules below are in `assets/femc/game/data/epi/strangers/world.js` `places.bg`; the place prefix stays, only the image slots change. Convert each save to `assets/femc/bg/<slug>.webp`. After a batch: bump `DATA_V` in `assets/femc/game/epilogue.js` (now 20; +1 once per batch), add the new outdoor slugs to `weatherFx.outdoor` (world.js line ~80), run `tools/femc-check-scenes.py` and `tests/femc_epilogue.py --only strangers`. Point the true coda's strangers rules (`data/epi/true/world.js`) at the same art where its places match.
+All rules below are in `assets/femc/game/data/epi/strangers/world.js` `places.bg`; the place prefix stays, only the image slots change. Convert each save to `assets/femc/bg/<slug>.webp`. After a batch: bump `DATA_V` in `assets/femc/game/epilogue.js` (now 21; +1 once per batch), add the new outdoor slugs to `weatherFx.outdoor` (world.js line ~80), run `tools/femc-check-scenes.py` and `tests/femc_epilogue.py --only strangers`. Point the true coda's strangers rules (`data/epi/true/world.js`) at the same art where its places match.
 Reminder of the slot rule: `time` matching /Evening|Night|PM|AM/ reads the evening slot ('Late Night' included); 'Before Light', 'Midnight', 'Morning', 'Daytime' read the day slot.
 
 - *(All seventeen strangers place items are in: her room day and night, the stairs, study, dining room, Yunjin's room, the annex by day, the garden day and night, the gate by day, Jungwon's room, the mudflats at midnight, Wolmido day and night, Chinatown, the car day and night; art batch 78. The true coda's Garden rule takes the night garden. Not done: the optional gate art on the plain `Incheon · The Lee House` rule (the piano activity in the front room and one 3/15 daytime line), left on `flashback-lee-house`.)*
@@ -321,4 +321,4 @@ The player is `battle.js playSeq` / `seqHtml` / `seqSays` (used by `bondCut`); t
 - **Portraits changed?** Bump `window.FEMC_PORTRAIT_V` at the bottom of `assets/femc/portraits/scale.js` (and its `?v=`), or browsers keep the old faces.
 
 
-- **The two-world boys' home-world looks:** `haechan-runners`, `haechan-strangers`, `jungwon-hoax` and `jungwon-strangers`. Cut them like the other home-world sheets into `portraits/<name>/`, then map them in that world's `world.js` `faces` (`haechan: 'haechan-runners'` and so on). Size them in `scale.js` and bump `FEMC_PORTRAIT_V`. The year keeps their own portraits.
+- *(The two-world boys' home-world looks are in (art batch 81): `portraits/haechan-runners/`, `haechan-strangers/`, `jungwon-hoax/`, `jungwon-strangers/`, mapped in each world's `world.js` `faces` (Runners: haechan; HOAX: jungwon; strangers: both), sized in `scale.js`. The year, Stay and the true coda keep their own portraits.)*

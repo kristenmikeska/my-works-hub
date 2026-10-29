@@ -154,6 +154,7 @@ Other docs, if you ever want detail:
 - ✅ Art batch 78: seventeen epilogue places for strangers (rooms, the stairs, the study, the dining room, the garden and gate, the annex by day, the shore at midnight, the promenade by day and night, Chinatown and the car), in place of their stand-ins.
 - ✅ Art batch 79: eight CGs for the year: four link scenes (Hyein, Jay, Niki, Sunghoon), two story evenings in summer and early spring, and two winter late nights.
 - ✅ Art batch 80: six epilogue CGs (four for Runners, two for HOAX) and three epilogue places (two for Stay, one for the true coda), in place of their stand-ins.
+- ✅ Art batch 81: Haechan's and Jungwon's home-world faces, so each of their home epilogues shows them in that world's look.
 - ✅ Art batch 65: your nine epilogue places are in the game: four for HOAX (the Kims' living room, Jihoon's house, the winter street, the winter-break party) and five for strangers (a kitchen, the annex, the mudflats, the festival night on Wolmido, the street in the dust), with a couple of small wording fixes so the scenes match your pictures. Your art list gained 57 new place prompts and 35 new CG prompts across the year and every epilogue, and the Evoker pieces, new expressions, sharper Shadows and strike sheets moved to a new backburner list
 
 ## Music and polish

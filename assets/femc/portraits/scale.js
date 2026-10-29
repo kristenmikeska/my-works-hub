@@ -101,6 +101,10 @@ window.FEMC_PORTRAIT_SCALE = {
   'sakura-strangers': 0.88,
   'lee-appa': 0.9,
   'lee-eomma': 0.9,
+  'haechan-runners': 0.93, // batch 81: the two-world boys' home-world looks (each world's faces map); eyes level with their year faces
+  'haechan-strangers': 0.92,
+  'jungwon-hoax': 1.0,
+  'jungwon-strangers': 0.95,
   sunghoon: 0.95,
   sunoo: 1.0,
   tifa: 1.03,
@@ -167,4 +171,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 10;
+window.FEMC_PORTRAIT_V = 11;
