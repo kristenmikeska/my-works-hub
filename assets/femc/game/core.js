@@ -1607,7 +1607,9 @@ window.FemcGame = (() => {
     const M = D.crush.moments || [], c = crushState(), info = dayInfo(d);
     if (!M.length || S.phase !== 'play' || ['trip', 'prologue'].includes(info.type)) return null;
     // A morning-after moment (glow, the spice batch) doesn't wait for the gap or a routine: it only has the one day.
-    const spaced = d - c.lastDay >= crushGap(d) && !((S.dailyLife?.lastDay === d || S.dailyLife?.lowDay === d) && slot !== 'late');
+    // A low routine's day (filler) doesn't count: a moment may take another slot that day. Counting it, the trio's filler took
+    // every free day of a busy window and sp-hc-first-touch (11/6-11/18) never played.
+    const spaced = d - c.lastDay >= crushGap(d) && !(S.dailyLife?.lastDay === d && slot !== 'late');
     if (!spaced && !glowing(d)) return null;
     if (D.events.some(e => e.date === info.md && S.events.includes(e.id))) return null;
     if (['after', 'evening'].includes(slot) && S.spent[`${d}-${slot}`]) return null;
