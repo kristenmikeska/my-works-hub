@@ -127,6 +127,23 @@ window.FEMC_PORTRAIT_SCALE = {
   // batch 89: Olivia's and Haerin's old faces are their Regionals jerseys (Kat); their casual sheets are the default now
   'olivia-runners-regionals': 0.85,
   'haerin-runners-regionals': 0.93,
+  // batch 90: the late event-outfit sheets (eyes level with each one's usual face in that world; Chenle and Jaemin with their drop;
+  // Akihiko by eye since Vision finds no face on his art)
+  'chenle-runners-holiday': 1.3,
+  'chenle-runners-regionals': 1.22,
+  'danielle-runners-holiday': 0.95,
+  'jaemin-runners-holiday': 1.13,
+  'cherry-hoax-christmas': 0.88,
+  'cherry-hoax-party': 0.91,
+  'cherry-hoax-newyear': 0.88,
+  'jihoon-hoax-party': 1.06,
+  'jihoon-hoax-newyear': 1.05,
+  'solar-strangers-daeboreum': 1.0,
+  'haechan-strangers-daeboreum': 0.94,
+  'jungwon-strangers-daeboreum': 0.95,
+  'yunjin-strangers-daeboreum': 0.98,
+  'solar-stay-hanami': 0.98,
+  'akihiko-stay-hanami': 1.13,
   sunghoon: 0.95,
   sunoo: 1.0,
   tifa: 1.03,
@@ -193,4 +210,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 14;
+window.FEMC_PORTRAIT_V = 15;

@@ -126,6 +126,10 @@
     },
     // This world's own faces (core.js worldFace): Solar's strangers look, the four's strangers outfits and Solar's parents (FEMC-ART-WIRING).
     faces: { solar: 'solar-strangers', chaewon: 'chaewon-strangers', sakura: 'sakura-strangers', kazuha: 'kazuha-strangers', eunchae: 'eunchae-strangers', appa: 'lee-appa', eomma: 'lee-eomma', haechan: 'haechan-strangers', jungwon: 'jungwon-strangers' },
+    // Event outfits (core.js eventFaces; FEMC-ART-WIRING "Extras"): an event's `faces: '<key>'` swaps these in for its scenes only.
+    eventFaces: {
+      'strangers-daeboreum': { solar: 'solar-strangers-daeboreum', haechan: 'haechan-strangers-daeboreum', jungwon: 'jungwon-strangers-daeboreum', yunjin: 'yunjin-strangers-daeboreum' } // epi-s-moon (2/24, Wolmido)
+    },
     variants: {
       morning: {
         school: ["Before light, the house was already moving: the kitchen first, then the stairs, then her father's slippers going down to the paper at half past four.",

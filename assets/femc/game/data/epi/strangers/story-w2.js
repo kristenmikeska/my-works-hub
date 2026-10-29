@@ -162,7 +162,7 @@
   ] },
 
   // ───────────────────────────── 2/24 evening: the first full moon ─────────────────────────────
-  { id: 'epi-s-moon', date: '2/24', slot: 'evening', consumes: true, title: 'the first full moon', place: 'Incheon · Wolmido · Daeboreum', time: 'Evening', scene: [
+  { id: 'epi-s-moon', date: '2/24', slot: 'evening', consumes: true, faces: 'strangers-daeboreum', title: 'the first full moon', place: 'Incheon · Wolmido · Daeboreum', time: 'Evening', scene: [
     { music: 'epi-s-festival' },
     { n: "Wolmido on the night of the first full moon was the whole city deciding at once to stand in the cold and be lucky. The promenade was lit end to end, paper lanterns strung between the lampposts and swinging in the wind off the water, the shuttered rides along the seafront wearing strings of colored bulbs they'd been switched on for specially, children with sparklers, couples in matching scarves, old men with their hands behind their backs walking the length of the railing and back again as if they'd been sent to inspect it." },
     { n: "The tide was up. A spring tide, the biggest of the month, the full moon pulling the whole of the Yellow Sea up against the promenade wall so it slapped and sucked and threw spray up over the railing every seventh wave. She knew it would be. She'd known since she was six. She stood a full meter back from the railing with her hands in her coat pockets and let the crowd go between her and the water, the way she always had, and nobody noticed, because nobody ever did." },

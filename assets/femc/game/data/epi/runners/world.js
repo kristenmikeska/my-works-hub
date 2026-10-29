@@ -129,9 +129,11 @@
     // Event outfits (core.js eventFaces; FEMC-ART-WIRING "Extras"): an event's `faces: '<key>'` swaps these in for its scenes only.
     eventFaces: {
       'runners-holiday': { solar: 'solar-runners-holiday', haechan: 'haechan-runners-holiday', hanni: 'hanni-runners-holiday', hyein: 'hyein-runners-holiday',
-        minji: 'minji-runners-holiday', mark: 'mark-runners-holiday', jaehyun: 'jaehyun-runners-holiday' }, // epi-r-holiday (12/19, the Sigma party)
+        minji: 'minji-runners-holiday', mark: 'mark-runners-holiday', jaehyun: 'jaehyun-runners-holiday',
+        chenle: 'chenle-runners-holiday', jaemin: 'jaemin-runners-holiday', danielle: 'danielle-runners-holiday' }, // epi-r-holiday (12/19, the Sigma party)
       // Olivia's and Haerin's first faces are their jerseys (Kat, batch 89): portraits/olivia and haerin are their casual looks now.
-      'runners-regionals': { solar: 'solar-runners-regionals', minji: 'minji-runners-regionals', olivia: 'olivia-runners-regionals', haerin: 'haerin-runners-regionals' } // epi-r-regionals-1 / -2 (12/6-12/7)
+      'runners-regionals': { solar: 'solar-runners-regionals', minji: 'minji-runners-regionals', olivia: 'olivia-runners-regionals', haerin: 'haerin-runners-regionals',
+        chenle: 'chenle-runners-regionals' } // epi-r-regionals-1 / -2 (12/6-12/7)
     },
     variants: {
       morning: {

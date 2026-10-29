@@ -163,6 +163,7 @@ Other docs, if you ever want detail:
 - ✅ Art batch 87: event outfits in the Runners epilogue. At the Sigma holiday party, Solar, Haechan, Hanni, Hyein, Minji, Mark and Jaehyun wear your holiday looks, and at Regionals Solar and Minji wear the team jersey, only in those scenes.
 - ✅ Art batch 88: event outfits in the HOAX epilogue: Christmas Day (Solar, Jungwon, Jihoon), the winter-break party (Solar, Jungwon) and New Year's Day (Solar, Jungwon), with one small wording fix so a scene matches the outfit.
 - ✅ Art batch 89: Olivia and Haerin wear their new casual looks everywhere, and their old jersey faces only at Regionals.
+- ✅ Art batch 90: the rest of your event outfits that came in: more faces for the Runners holiday party and Regionals and the HOAX holidays, plus the Daeboreum festival in strangers and the hanami in Stay.
 - ✅ Art batch 65: your nine epilogue places are in the game: four for HOAX (the Kims' living room, Jihoon's house, the winter street, the winter-break party) and five for strangers (a kitchen, the annex, the mudflats, the festival night on Wolmido, the street in the dust), with a couple of small wording fixes so the scenes match your pictures. Your art list gained 57 new place prompts and 35 new CG prompts across the year and every epilogue, and the Evoker pieces, new expressions, sharper Shadows and strike sheets moved to a new backburner list
 
 ## Music and polish

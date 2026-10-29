@@ -93,6 +93,11 @@
       }
     },
     cast: { nurse: 'Night nurse', teacher: 'Teacher' },
+    // Event outfits (core.js eventFaces; FEMC-ART-WIRING "Extras"): an event's `faces: '<key>'` swaps these in for its scenes only.
+    // Stay has no `faces` map, so everyone else keeps the year's faces (Solar's with the armband rule).
+    eventFaces: {
+      'stay-hanami': { solar: 'solar-stay-hanami', akihiko: 'akihiko-stay-hanami' } // epi-st-hanami (3/27, Seaside Park)
+    },
     variants: {
       morning: {
         off: ["Spring break. The dorm woke up in the wrong order: Akihiko first, then the kettle, then Koromaru, then everyone else, complaining.",

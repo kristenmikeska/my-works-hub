@@ -120,9 +120,9 @@
     faces: { solar: 'solar-hoax', sakura: 'sakura-hoax', eunchae: 'eunchae-hoax', kazuha: 'kazuha-hoax', chaewon: 'chaewon-hoax', mom: 'kim-mom', dad: 'kim-dad', jungwon: 'jungwon-hoax' },
     // Event outfits (core.js eventFaces; FEMC-ART-WIRING "Extras"): an event's `faces: '<key>'` swaps these in for its scenes only.
     eventFaces: {
-      'hoax-christmas': { solar: 'solar-hoax-christmas', jungwon: 'jungwon-hoax-christmas', jihoon: 'jihoon-hoax-christmas' }, // epi-h-christmas (12/25)
-      'hoax-party': { solar: 'solar-hoax-party', jungwon: 'jungwon-hoax-party' }, // epi-h-party (12/29)
-      'hoax-newyear': { solar: 'solar-hoax-newyear', jungwon: 'jungwon-hoax-newyear' } // epi-h-new-year (1/1)
+      'hoax-christmas': { solar: 'solar-hoax-christmas', jungwon: 'jungwon-hoax-christmas', jihoon: 'jihoon-hoax-christmas', cherry: 'cherry-hoax-christmas' }, // epi-h-christmas (12/25)
+      'hoax-party': { solar: 'solar-hoax-party', jungwon: 'jungwon-hoax-party', jihoon: 'jihoon-hoax-party', cherry: 'cherry-hoax-party' }, // epi-h-party (12/29)
+      'hoax-newyear': { solar: 'solar-hoax-newyear', jungwon: 'jungwon-hoax-newyear', jihoon: 'jihoon-hoax-newyear', cherry: 'cherry-hoax-newyear' } // epi-h-new-year (1/1)
     },
     variants: {
       morning: {

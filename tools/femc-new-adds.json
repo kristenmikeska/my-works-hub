@@ -17688,6 +17688,381 @@
         "assets/femc/portraits/haerin/serious.webp": "a5c47db17c4d0217fc91a22c44d93a36e95ced4c4e56ef07661e9281c21518b7",
         "assets/femc/portraits/haerin/surprised.webp": "fadd56947aea906d228e0e6513386c82171bd8ba4ab6d3ed2adec0128971a2f9"
       }
+    },
+    {
+      "batch": 90,
+      "source": "chenle-runners-holiday-sheet.png",
+      "sourceNow": "Added to Game/chenle-runners-holiday-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "807e88dab956b64cbc6bdfb2ada3d793522080d763d114d6eab18aeb62f27f3d",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/chenle-runners-holiday/neutral.webp",
+      "character": "chenle-runners-holiday",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-<World>-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.3,
+      "placement": "runners/world.js eventFaces['runners-holiday'].chenle; epi-r-holiday (no lines for him there yet)",
+      "outputs": {
+        "assets/femc/portraits/chenle-runners-holiday/flustered.webp": "94a205139eacf422fe4ab4ce7917df956c84b7da3c548be5dea79005c86913d3",
+        "assets/femc/portraits/chenle-runners-holiday/happy.webp": "f5ade09113caef46a9ab21f237fe257d4f480eaea6d74fcda5dfec5feae74928",
+        "assets/femc/portraits/chenle-runners-holiday/neutral.webp": "18068cbff27bf4eb4c7ce7a4c7f8942ba445300e3ff18e94b7e5999dee38df9c",
+        "assets/femc/portraits/chenle-runners-holiday/sad.webp": "74a59b13604b2eada883bae1b013dcd4f14490a22c12262f7d92e1aea2cf34be",
+        "assets/femc/portraits/chenle-runners-holiday/serious.webp": "cd790db4aef451ad369761270f03a9b733d5cd0263dbf6b640ec220bffe4eadd",
+        "assets/femc/portraits/chenle-runners-holiday/surprised.webp": "99e252dd2bb955b21c3a1ef7346feea777866a1e503dc8c78546ef08b24a5d04"
+      }
+    },
+    {
+      "batch": 90,
+      "source": "danielle-runners-holiday-sheet.png",
+      "sourceNow": "Added to Game/danielle-runners-holiday-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "cb88b805e256d9808c8aeb87773dce4800040fa189539c2928503caf5cae4813",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/danielle-runners-holiday/neutral.webp",
+      "character": "danielle-runners-holiday",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-<World>-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.95,
+      "placement": "runners/world.js eventFaces['runners-holiday'].danielle; epi-r-holiday (no lines for her there yet)",
+      "outputs": {
+        "assets/femc/portraits/danielle-runners-holiday/flustered.webp": "6f1daad76bd104f60a84babda0bb42d86fa1f181d5886a389d3a787bbfb580df",
+        "assets/femc/portraits/danielle-runners-holiday/happy.webp": "f01e384873c2a74709f18040bf16d4c89792dd73a882fd5706ade05850904c54",
+        "assets/femc/portraits/danielle-runners-holiday/neutral.webp": "f5a00b8c16b35cbd82670a6c8d979ddc47c4e557064e2646eba32ef85ff65c24",
+        "assets/femc/portraits/danielle-runners-holiday/sad.webp": "1273340696de9c0ee5254f7223b6a28f69be6ec40253152b2277008b542a1854",
+        "assets/femc/portraits/danielle-runners-holiday/serious.webp": "97d919fe8f0584314160c8f3bfce72aaf28f965532e860c36868a139f23a21f3",
+        "assets/femc/portraits/danielle-runners-holiday/surprised.webp": "2504c3882ab811f6b43b14e0ce6bf77d892f7907af953a9ab7643dd61527db6b"
+      }
+    },
+    {
+      "batch": 90,
+      "source": "jaemin-runners-holiday-sheet.png",
+      "sourceNow": "Added to Game/jaemin-runners-holiday-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "eaf0ec6f60cbba134ec5b0533c7e5a14992c2575dd251bed3616efc29aa22759",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/jaemin-runners-holiday/neutral.webp",
+      "character": "jaemin-runners-holiday",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-<World>-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.13,
+      "placement": "runners/world.js eventFaces['runners-holiday'].jaemin; epi-r-holiday",
+      "outputs": {
+        "assets/femc/portraits/jaemin-runners-holiday/flustered.webp": "2372b5529fab76e0f9be1b6b5efc288e915ccd399cf9e0c3084b804054e75b25",
+        "assets/femc/portraits/jaemin-runners-holiday/happy.webp": "cd28c3b5032cbda01f3287b2c6c06a4865b0f106063416551e255ef6b1b6e83f",
+        "assets/femc/portraits/jaemin-runners-holiday/neutral.webp": "7e25594d83d6d8bf991469d1833ddc96354868686506fed6cd4c9ff1cf4b4d61",
+        "assets/femc/portraits/jaemin-runners-holiday/sad.webp": "3820710f0e294ad24ecf399b02593d8fc14772f41db9acec6332ccb94f5e15b3",
+        "assets/femc/portraits/jaemin-runners-holiday/serious.webp": "8685c286ac001bf3f84ad3a0837e794b93b732db33393503fd9ccd6adac82055",
+        "assets/femc/portraits/jaemin-runners-holiday/surprised.webp": "e3259f469d3f9b654909805cf8f1f289599b5b2f23a74dff4f983e1df0c7bc54"
+      }
+    },
+    {
+      "batch": 90,
+      "source": "chenle-runners-regionals-sheet.png",
+      "sourceNow": "Added to Game/chenle-runners-regionals-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ae732a6a8f1e53ae83754d700f7310fb5bddbfdb352a1a2abaee695a3d1293ce",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/chenle-runners-regionals/neutral.webp",
+      "character": "chenle-runners-regionals",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-<World>-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.22,
+      "placement": "runners/world.js eventFaces['runners-regionals'].chenle; epi-r-regionals-1 / -2",
+      "outputs": {
+        "assets/femc/portraits/chenle-runners-regionals/flustered.webp": "1a35f947ab3622c1204e417e3eafa5f520575ccae02c7878dac129661944e22a",
+        "assets/femc/portraits/chenle-runners-regionals/happy.webp": "f1f1af1a767361113fee93a22503a1af0425e7add11bf761820bc3049bfd1bb9",
+        "assets/femc/portraits/chenle-runners-regionals/neutral.webp": "c3baf1da9f17ee8a86cb930d82cd381c0ad6c87f5dd24888a448666417ae1611",
+        "assets/femc/portraits/chenle-runners-regionals/sad.webp": "77fecadb8e8239626e3cdcb227c4159c6f06ec288c858131e22fac95b2e884be",
+        "assets/femc/portraits/chenle-runners-regionals/serious.webp": "32eb908bd15cf7ba55472a6bbd02cfa92a8fb81054c0c65f697416cada47af73",
+        "assets/femc/portraits/chenle-runners-regionals/surprised.webp": "50cf0d279a85cd63a32cac810afb0f4191eed25836d1eeae897fa5af3b8f97a1"
+      }
+    },
+    {
+      "batch": 90,
+      "source": "cherry-hoax-christmas-sheet.png",
+      "sourceNow": "Added to Game/cherry-hoax-christmas-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "dbc043ad3615be34022053b14b97fed7726bfde64bbe2d493c8820959f4d77fc",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/cherry-hoax-christmas/neutral.webp",
+      "character": "cherry-hoax-christmas",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-<World>-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.88,
+      "placement": "hoax/world.js eventFaces['hoax-christmas'].cherry; epi-h-christmas (no lines for her there yet)",
+      "outputs": {
+        "assets/femc/portraits/cherry-hoax-christmas/flustered.webp": "cb6c3a4e38dbbef1b9fe19c849e65894b64846d69a6250e8dc9041a2f2dd2c7a",
+        "assets/femc/portraits/cherry-hoax-christmas/happy.webp": "be6905a3977b291c023fe7fb603307b74f2d59d512deb8d406ac111440aaf3ef",
+        "assets/femc/portraits/cherry-hoax-christmas/neutral.webp": "4392fe9bd80f463f968b9ca4fc7799e2a402a50d168d16e1e94a7a839a67f7a2",
+        "assets/femc/portraits/cherry-hoax-christmas/sad.webp": "de8834796005d4e62b5a05aafb3a21b9bb2837ce88142c6681f64bb3c454f505",
+        "assets/femc/portraits/cherry-hoax-christmas/serious.webp": "d6e82b3a9266772711f875d2000593a291ccb8db522ab28b5974bce0eccca0a9",
+        "assets/femc/portraits/cherry-hoax-christmas/surprised.webp": "94209cb02df804d91c90b32c1c22906be1fbe266f47716c9c0267d38b574d6eb"
+      }
+    },
+    {
+      "batch": 90,
+      "source": "cherry-hoax-party-sheet.png",
+      "sourceNow": "Added to Game/cherry-hoax-party-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "38043114304e546933fb78003fc3ebdec67b8224a3935b580d9640e84efd9b8e",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/cherry-hoax-party/neutral.webp",
+      "character": "cherry-hoax-party",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-<World>-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.91,
+      "placement": "hoax/world.js eventFaces['hoax-party'].cherry; epi-h-party",
+      "outputs": {
+        "assets/femc/portraits/cherry-hoax-party/flustered.webp": "d5a290d5a5baa1d1d0b1ab70f57b44d88ec8beaddd936ddbd015e14de93a10c7",
+        "assets/femc/portraits/cherry-hoax-party/happy.webp": "619783d928618928fddaeab356904ad645dab3391b35d134472b312920838eb0",
+        "assets/femc/portraits/cherry-hoax-party/neutral.webp": "9efbaeb60149455d61b909173cb2ccf1bbc36ab60aa548e4ae9496b98c0b4a86",
+        "assets/femc/portraits/cherry-hoax-party/sad.webp": "bc9178db3233ad654980499706f298b639db01ace309993101fcfdca5119a419",
+        "assets/femc/portraits/cherry-hoax-party/serious.webp": "0b991bc610e063c492ab58d43e9dfd89dbfee4cf4abbbcf91d3237640caa8617",
+        "assets/femc/portraits/cherry-hoax-party/surprised.webp": "62e59d0bfca313d202d0ec5779f007cef1e36f75d9789def4006cc27db269d6d"
+      }
+    },
+    {
+      "batch": 90,
+      "source": "cherry-hoax-newyear-sheet.png",
+      "sourceNow": "Added to Game/cherry-hoax-newyear-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "628b45c85d457d723f246ab13503f29188921b7d62f8deef0f3334b5c07b4f60",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/cherry-hoax-newyear/neutral.webp",
+      "character": "cherry-hoax-newyear",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-<World>-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.88,
+      "placement": "hoax/world.js eventFaces['hoax-newyear'].cherry; epi-h-new-year (no lines for her there yet)",
+      "outputs": {
+        "assets/femc/portraits/cherry-hoax-newyear/flustered.webp": "d74d8f11d4c63def7751a6c7bc0e001064249eff6f1d67cf73429aac2060d942",
+        "assets/femc/portraits/cherry-hoax-newyear/happy.webp": "a36cb4f66179d4e181a12d1989dacb01658c2faa0e267f79d104cd4765c250e8",
+        "assets/femc/portraits/cherry-hoax-newyear/neutral.webp": "b15129c2870fa92083fd80c113f0332aaadd8bfeb24702828844897b0ce797b1",
+        "assets/femc/portraits/cherry-hoax-newyear/sad.webp": "f47285b29951b2eaae3d4d11b091e3e821d38f2d22b1671f279df5da0e2e403f",
+        "assets/femc/portraits/cherry-hoax-newyear/serious.webp": "4702db521dbab597be644ca15d96cbc0268951943cd7888d386f53521eee9f5a",
+        "assets/femc/portraits/cherry-hoax-newyear/surprised.webp": "7a4c9d3191d4185d6808c340fc50c2de74e0cf1b8d6cd3924a074bcc359abaee"
+      }
+    },
+    {
+      "batch": 90,
+      "source": "jihoon-hoax-party-sheet.png",
+      "sourceNow": "Added to Game/jihoon-hoax-party-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "653a24cc44aea902b23d93be63c7637607d29eeff59b207454ce49bd1bb2ab14",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/jihoon-hoax-party/neutral.webp",
+      "character": "jihoon-hoax-party",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-<World>-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.06,
+      "placement": "hoax/world.js eventFaces['hoax-party'].jihoon; epi-h-party",
+      "outputs": {
+        "assets/femc/portraits/jihoon-hoax-party/flustered.webp": "ab153a69c75aeda49c5dd5074a7f290e601643eee4002eae317e46bbd652bffe",
+        "assets/femc/portraits/jihoon-hoax-party/happy.webp": "51fd99f04e5f3378ebc933e25804c18b81bed1f538964b3a0c3590c6c4542052",
+        "assets/femc/portraits/jihoon-hoax-party/neutral.webp": "ffb432d462d6a23a21ab1ecf16acb73872b8038b58e9bc03ebe864b0815e22e6",
+        "assets/femc/portraits/jihoon-hoax-party/sad.webp": "b6759a23f69d45fd46a0a331534e0e1fc596ec0b36f44fa55be8024bd891ebfa",
+        "assets/femc/portraits/jihoon-hoax-party/serious.webp": "7ad2e7aa8e49bd220a2c59773c5cd5c86e7d53eeaf74cc5f994be17ac1c60707",
+        "assets/femc/portraits/jihoon-hoax-party/surprised.webp": "e2888b8f5b50558ea59e5e1ccfcea9ef02c61081994a0217f3ca4700b0516106"
+      }
+    },
+    {
+      "batch": 90,
+      "source": "jihoon-hoax-newyear-sheet.png",
+      "sourceNow": "Added to Game/jihoon-hoax-newyear-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e90cd4e8148ff440cf35368fe6da19ce0f8e4094830e7ce823a8ec9884522ec7",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/jihoon-hoax-newyear/neutral.webp",
+      "character": "jihoon-hoax-newyear",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-<World>-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.05,
+      "placement": "hoax/world.js eventFaces['hoax-newyear'].jihoon; epi-h-new-year (no lines for him there yet)",
+      "outputs": {
+        "assets/femc/portraits/jihoon-hoax-newyear/flustered.webp": "2c7e6a4c3b8d088e415a9f30a2c2f089021d91c67939ccdfcbbe6e617a9326e4",
+        "assets/femc/portraits/jihoon-hoax-newyear/happy.webp": "381a8f39f4965e61b666b3b0fd4b423b062ec896176ffef47f45478db60acd7d",
+        "assets/femc/portraits/jihoon-hoax-newyear/neutral.webp": "87909467d8c41eae5541b67289fb8728ae40e166d9abdbfe4a6cebf15cc5ba2c",
+        "assets/femc/portraits/jihoon-hoax-newyear/sad.webp": "03ba216c1b33f3b9cb0b8274b9c461c6e665f627da1e16a5345f5e0e8673bc5d",
+        "assets/femc/portraits/jihoon-hoax-newyear/serious.webp": "28d3e7db4be3d0688dc0128a7fa712bad04070a8209b8f474f7adb2c5ec4e682",
+        "assets/femc/portraits/jihoon-hoax-newyear/surprised.webp": "8efafc603dbb2314725cf79e0f6c040affb88d799761b269b9e002a1be2fe3e6"
+      }
+    },
+    {
+      "batch": 90,
+      "source": "solar-strangers-daeboreum-sheet.png",
+      "sourceNow": "Added to Game/solar-strangers-daeboreum-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "79d1ad7281cfc8993b04d07de89a7e0cb7a32cc6f9d5cd8e48fd34ea9e2de82d",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/solar-strangers-daeboreum/neutral.webp",
+      "character": "solar-strangers-daeboreum",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-<World>-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.0,
+      "placement": "strangers/world.js eventFaces['strangers-daeboreum'].solar; epi-s-moon",
+      "outputs": {
+        "assets/femc/portraits/solar-strangers-daeboreum/flustered.webp": "5340d80d58dc37e6074528886682e7b978c7f27f18d2414b2aaa57dd0e41ea64",
+        "assets/femc/portraits/solar-strangers-daeboreum/happy.webp": "0926b7cd4554597414b8f23cd95535c6b0f5e9d7d2fddbd1314d10ab7d2f991a",
+        "assets/femc/portraits/solar-strangers-daeboreum/neutral.webp": "2b0c64c3e5d3e056f06448b58cca3e3465206223e3658ac7fc4901f3fd641ccf",
+        "assets/femc/portraits/solar-strangers-daeboreum/sad.webp": "50c7db8acd478fc100d81eba46e6cbd6ec3d5362afb4e2cccb63f810b783c5fb",
+        "assets/femc/portraits/solar-strangers-daeboreum/serious.webp": "d8daac536eb4d2631496c5e3ec5d947dbaa57596343107ae2a8d209e376418c4",
+        "assets/femc/portraits/solar-strangers-daeboreum/surprised.webp": "15f9b30af56b5ea5d7b3bf1411666f6536201cce5e4bf35ea1d805694311b427"
+      }
+    },
+    {
+      "batch": 90,
+      "source": "haechan-strangers-daeboreum-sheet.png",
+      "sourceNow": "Added to Game/haechan-strangers-daeboreum-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "02d472adea85811df25afc114fcbc7f9241b4051f285eee4986b5396500772f4",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/haechan-strangers-daeboreum/neutral.webp",
+      "character": "haechan-strangers-daeboreum",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-<World>-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.94,
+      "placement": "strangers/world.js eventFaces['strangers-daeboreum'].haechan; epi-s-moon",
+      "outputs": {
+        "assets/femc/portraits/haechan-strangers-daeboreum/flustered.webp": "0066f1331623c2413e59a211b4bac255517f17e5465ae5c73969222d9311106b",
+        "assets/femc/portraits/haechan-strangers-daeboreum/happy.webp": "f3b813e9b60909c9825f27acfcb3ce1946e272e28f07b79b181be601ee42ff41",
+        "assets/femc/portraits/haechan-strangers-daeboreum/neutral.webp": "f59e5b1459996e38b1a780e150620bae6a40f87b21abc21dd2e5012f2e06c881",
+        "assets/femc/portraits/haechan-strangers-daeboreum/sad.webp": "52a09a730da9b62f1770d3dcc182f6d0ff4c9ac742cb9ff9246cab7a287fd16c",
+        "assets/femc/portraits/haechan-strangers-daeboreum/serious.webp": "2dbca42c1742b30b783fe384f5e40fc5c8b1e41d8fe41070ef15cb4e40803d9e",
+        "assets/femc/portraits/haechan-strangers-daeboreum/surprised.webp": "b9b74f6e1bfa02b87d1063175e33914593dc01a955afff4b14a3d251ec4f28bf"
+      }
+    },
+    {
+      "batch": 90,
+      "source": "Jungwon-strangers-daeboreum-sheet.png",
+      "sourceNow": "Added to Game/Jungwon-strangers-daeboreum-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8d822dfbce28e47e3db55e80874cfa78da071c57dbcc9992de64561e32526cb1",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/jungwon-strangers-daeboreum/neutral.webp",
+      "character": "jungwon-strangers-daeboreum",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-<World>-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.95,
+      "placement": "strangers/world.js eventFaces['strangers-daeboreum'].jungwon; epi-s-moon",
+      "outputs": {
+        "assets/femc/portraits/jungwon-strangers-daeboreum/flustered.webp": "63c32f71addc6b5f88b2492854aba37ec2515bf750a0f8d043f44f155bc2eff1",
+        "assets/femc/portraits/jungwon-strangers-daeboreum/happy.webp": "ed7402ebc371249f57aebd1721e56744ca1f6238f2e86d411dd697e020979dc1",
+        "assets/femc/portraits/jungwon-strangers-daeboreum/neutral.webp": "37218b954b4e2af55e085ddab0c8ec6c32bb1a7109c01c97d8fd916a0c78f4f9",
+        "assets/femc/portraits/jungwon-strangers-daeboreum/sad.webp": "50e78eaaa8c071c73dc4a9066fb5411faa8f8de35f36d87c6239cf4a72dac92d",
+        "assets/femc/portraits/jungwon-strangers-daeboreum/serious.webp": "76d5df69940f5cd5c42c12878da3fe6af8cb0295f36ac9f6e964f46b7cd31a66",
+        "assets/femc/portraits/jungwon-strangers-daeboreum/surprised.webp": "742d578b1226d5b72a168669de30d0b4b4ba123987f7c7e3cb4fd3fa5817d23f"
+      }
+    },
+    {
+      "batch": 90,
+      "source": "Yunjin-strangers-daeboreum-sheet.png",
+      "sourceNow": "Added to Game/Yunjin-strangers-daeboreum-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8dfd7595bf8ba3749e6e1640d2b3493dc9142a1a3ab52afc06eaf789ab18e6c4",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/yunjin-strangers-daeboreum/neutral.webp",
+      "character": "yunjin-strangers-daeboreum",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-<World>-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.98,
+      "placement": "strangers/world.js eventFaces['strangers-daeboreum'].yunjin; epi-s-moon",
+      "outputs": {
+        "assets/femc/portraits/yunjin-strangers-daeboreum/flustered.webp": "284e3507fe05b45af220c5b3e05ef63b08abd321d5dd49935c67183790b8ad40",
+        "assets/femc/portraits/yunjin-strangers-daeboreum/happy.webp": "8488d345b379dbafa7aa12af50ef5b1854f589025f3a030d2808a6492eb05a5d",
+        "assets/femc/portraits/yunjin-strangers-daeboreum/neutral.webp": "9534a8da83b4cb727f74860df20bd0ca75663997618140522968b0fbf24e1d9b",
+        "assets/femc/portraits/yunjin-strangers-daeboreum/sad.webp": "89216f30ddd108b0e3230964206deb937bbf32d13323327392a046ae0822dd47",
+        "assets/femc/portraits/yunjin-strangers-daeboreum/serious.webp": "95f5a00bf240fd4d36257b8403d454ed41023edf5cce9254a33576f078d439ed",
+        "assets/femc/portraits/yunjin-strangers-daeboreum/surprised.webp": "743dc59473020cecd7ab7e63a6426e3c71d29823f682f2cf1efd78cb719b02db"
+      }
+    },
+    {
+      "batch": 90,
+      "source": "solar-stay-hanami-sheet.png",
+      "sourceNow": "Added to Game/solar-stay-hanami-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "2cb98a2eb54e1af71a1f155ae7340ee81ea73e13f455b1f1645ca7cf02d8c666",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/solar-stay-hanami/neutral.webp",
+      "character": "solar-stay-hanami",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-<World>-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.98,
+      "placement": "stay/world.js eventFaces['stay-hanami'].solar; epi-st-hanami (no lines for her there yet)",
+      "outputs": {
+        "assets/femc/portraits/solar-stay-hanami/flustered.webp": "1d392f7db0ec61ef32975d29d26b9b6b0eefb54c2d294087ef2037d019547249",
+        "assets/femc/portraits/solar-stay-hanami/happy.webp": "f10e2a21bc61b6c4cab6b2aa86b0ab3ee70e97a4009d37a9b4d2fbc9d4b9e1af",
+        "assets/femc/portraits/solar-stay-hanami/neutral.webp": "7d812b4b178394df245f081fc6af4c853568754655191a07cccc9a7272573c0b",
+        "assets/femc/portraits/solar-stay-hanami/sad.webp": "1ae3203d29ac3c2fd94fd73bd3de6bb7e293a0c4d8561808a6195c2853f825f8",
+        "assets/femc/portraits/solar-stay-hanami/serious.webp": "6b9c2494ca42a21cbd84b60677c767799a4eec59222166c99945f1afa85ac46c",
+        "assets/femc/portraits/solar-stay-hanami/surprised.webp": "219dd9080b366784ca4e6d9510a2f6c2d55a1901d5f7b377eacfab6922cc891b"
+      }
+    },
+    {
+      "batch": 90,
+      "source": "akihiko-stay-hanami-sheet.png",
+      "sourceNow": "Added to Game/akihiko-stay-hanami-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "55ccb093332398d6ca2e9e953516d159500dc3bc0c90ae3e5f8eff1a35193c67",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/akihiko-stay-hanami/neutral.webp",
+      "character": "akihiko-stay-hanami",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-<World>-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.13,
+      "placement": "stay/world.js eventFaces['stay-hanami'].akihiko; epi-st-hanami (no lines for him there yet)",
+      "outputs": {
+        "assets/femc/portraits/akihiko-stay-hanami/flustered.webp": "11d0a9ee0a90df9560cc101f5d819b05511611b1be8ddece8f565797d02f5501",
+        "assets/femc/portraits/akihiko-stay-hanami/happy.webp": "ddb91c8e9be31950fec3bcca4855ea039f704d664f92631986853f449e19d94b",
+        "assets/femc/portraits/akihiko-stay-hanami/neutral.webp": "aa1b1a661b7545d9f6ee0570c190087ed093163e14b67b5b20dc3ccaaaabc490",
+        "assets/femc/portraits/akihiko-stay-hanami/sad.webp": "92705ed08ce25361a49b18e139623bba88f0150bae73742f56217e73fff9e756",
+        "assets/femc/portraits/akihiko-stay-hanami/serious.webp": "bb7448384f3a87b1e80ede2224b79eb908e9662f50f09ed8a38ccaaafb719ed4",
+        "assets/femc/portraits/akihiko-stay-hanami/surprised.webp": "5918d2cd912b6b7f4e1f184bbe3fb11b76204915b390ba94864b501998b08a8d"
+      }
     }
   ],
   "batch1Validation": {
@@ -18951,5 +19326,24 @@
     ],
     "notTested": "no browser tests (Kat at work): tests/femc_epilogue.py (its _loaded checks now 26; the runners1 event-outfit check now also covers Olivia at Regionals), in-scene face size at 1000x486 and 375x812",
     "html": "femc-game.html epilogue v28, portraits/index.js v144, scale.js v154 (FEMC_PORTRAIT_V 14); DATA_V 26"
+  },
+  "batch90Validation": {
+    "date": "2026-10-29",
+    "scope": "the late event-outfit sheets: Runners holiday (Chenle, Jaemin, Danielle) and Regionals (Chenle); HOAX Christmas (Cherry), party (Jihoon, Cherry), New Year (Jihoon, Cherry); strangers Daeboreum (Solar, Haechan, Jungwon, Yunjin); Stay hanami (Solar, Akihiko)",
+    "sourcesInspected": "all 15 viewed; every cut on magenta contact sheets after the cleanup; neutrals in scale lineups beside each one's usual face in that world",
+    "sourcesIntegrated": 15,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "engine": "strangers and Stay world.js gain their own eventFaces; epi-s-moon names strangers-daeboreum, epi-st-hanami names stay-hanami",
+    "mappedNotSeen": "no lines in the mapped scene: Chenle, Danielle (holiday; also Mark and Jaehyun from batch 87); Cherry (Christmas Day); Jihoon, Cherry (New Year's Day; also Jungwon from batch 88); Solar, Akihiko (hanami); Haerin (Regionals, batch 89)",
+    "scaleMethod": "as batch 87; Chenle's and Jaemin's scales allow for their FEMC_PORTRAIT_DROP (keyed by speaker, so it applies to their event faces); Akihiko's set by eye on a ruler (Vision finds no face on his art); faces 91-102% of the usual size (Haechan's Daeboreum sheet is framed wider: 91%)",
+    "textCheck": "Daeboreum narration (Solar's coat, Haechan's black padded jacket, Jungwon's dark coat) agrees with the sheets; no text changed",
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script",
+      "py_compile tests/femc_epilogue.py"
+    ],
+    "notTested": "no browser tests (Kat at work): tests/femc_epilogue.py (its _loaded checks now 27), in-scene face size at 1000x486 and 375x812",
+    "html": "femc-game.html epilogue v29, portraits/index.js v145, scale.js v155 (FEMC_PORTRAIT_V 15); DATA_V 27"
   }
 }
