@@ -1,6 +1,6 @@
 # Art to make
 
-**17 items:** 17 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 23 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**17 items:** 17 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 22 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -370,14 +370,6 @@ A 3 × 2 portrait sheet on a plain white background, clear space between cells, 
 ```
 
 ### Stay: hanami
-
-**[ ] Shinjiro: hanami** *(optional)*  
-Shinjiro's face at the cherry-blossom viewing in the Stay epilogue.  
-Attach: Shinjiro  
-Save as: `Shinjiro-stay-hanami-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a long maroon coat over a black turtleneck, a black beanie, his hands in his pockets. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
 
 **[ ] Yukari: hanami** *(optional)*  
 Yukari's face at the cherry-blossom viewing in the Stay epilogue.  

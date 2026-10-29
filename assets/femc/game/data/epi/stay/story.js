@@ -5,7 +5,8 @@
    Events (R.events):
      epi-st-morning     3/24 early    the first morning that is just a morning; the form with the surname box blank
      epi-st-rooms       3/25 after    the searchers' rooms; Mitsuru asks what to do with their things (consumes)
-     epi-st-hanami      3/27 after    hanami at Port Island Seaside Park; one frame of Hanni's face in the crowd (consumes)
+     epi-st-hanami      3/27 after    hanami at Port Island Seaside Park; Fuuka's extra box, Mitsuru's game (Akihiko's turn, Solar's);
+                                   one frame of Hanni's face in the crowd (consumes)
      epi-st-crossroads  3/28 evening  the route lock: the roof / the late bus to Tatsumi Memorial / the lounge (consumes)
      epi-st-thread      3/29 late     the Syracuse girls' thread lights up; a glass of water at the sink; she says nothing true
      epi-st-moon        3/30 late     the full moon; 4 a.m., the lounge landline; a tide, a horn, a radio, Yunjin once
@@ -145,11 +146,28 @@
     { s: 'yukari', f: 'neutral', t: "Is that a hot dog cut like an octopus or an octopus cut like a hot dog?" },
     { s: 'junpei', f: 'flustered', t: "It's an octopus! It has legs! Count the legs!" },
     { s: 'aigis', f: 'neutral', t: "It has five legs, Junpei-san. I have also counted one hundred and twelve petals on the tarp since we sat down. The rate is increasing." },
+    { n: "Fuuka set out her boxes along the edge of the tarp in a row, lacquered, borrowed from three different cupboards, the tamagoyaki in every one of them cut to the same width with a ruler. One each. Koromaru's with no salt. And one more at the very end of the row, the best one, the gold side of the egg turned up, that didn't have anyone's name on it." },
+    { s: 'fuuka', f: 'neutral', t: "That one's extra. I counted wrong." },
+    { s: 'fuuka', f: 'sad', t: "...I counted wrong on purpose. Is that okay? You can say if it's not okay." },
+    { s: 'solar', t: "It's okay, Fuuka." },
+    { n: "Nobody touched the extra box. Junpei looked at it twice and didn't. It sat at the end of the tarp with petals landing on its lid, and it wasn't empty, and it wasn't anyone's, and that was what it was for." },
     { cg: 'epi-st-hanami' },
     { n: "Ken was throwing a ball for Koromaru down the grass, and Koromaru was bringing it back to Solar every time instead of Ken, which Ken had stopped taking personally around the fifth throw. Fuuka had petals in her hair and didn't know it. Akihiko had eaten four of Junpei's octopi to be polite and was quietly regretting each one." },
     { s: 'mitsuru', f: 'neutral', t: "I propose a game. Each of us names something from this year. If anyone has heard it before, the speaker drinks. Juice. I'm not an animal." },
     { n: "It turned out Mitsuru was ruthless at it. She remembered everything everybody had ever said in that dorm and she deployed it with the face of a woman reading minutes, and by the third round Junpei had drunk four cups of orange juice and was lying on his back on the tarp groaning, and Mitsuru had not drunk once, and had the very small smile on that she only wore when she was winning." },
     { s: 'mitsuru', f: 'happy', t: "Execution." },
+    { n: "Akihiko had been quiet the whole game, sitting with his back against the trunk of the nearest tree in a grey hoodie and an open navy jacket, the red gloves stuffed in his pocket because it was too warm for them and he'd brought them anyway. When it came round to him he didn't think about it. He'd clearly had it ready." },
+    { s: 'akihiko', f: 'neutral', t: "She stayed." },
+    { n: "The tarp went quiet. Junpei sat up on his elbows. Somewhere down the seawall a radio was playing something with a lot of trumpets in it." },
+    { s: 'yukari', f: 'neutral', t: "...Senpai. Everybody's heard that one." },
+    { s: 'akihiko', f: 'serious', t: "I know." },
+    { n: "He picked up his cup and drank the whole thing, orange juice, in one go, without being told to, and put it down on the tarp, and looked at the sea instead of at her." },
+    { s: 'akihiko', f: 'happy', t: "I just wanted to hear it out loud. Once. Somewhere with people in it." },
+    { n: "Mitsuru didn't say execution. Fuuka was looking at her lap. Solar felt the back of her throat go tight and hot, and she did what she always did with a feeling she didn't have anywhere to put, which was make it somebody else's problem." },
+    { s: 'solar', t: "My turn. Akihiko-senpai ate four of Junpei's octopi to be polite and he's been sorry about every single one." },
+    { s: 'akihiko', f: 'surprised', t: "...Five. It was five." },
+    { s: 'mitsuru', f: 'neutral', t: "Nobody had heard that. Solar doesn't drink. Akihiko drinks for lying about the count." },
+    { s: 'junpei', f: 'flustered', t: "FIVE? Dude, they're good! Why are you sorry!" },
     { n: "Solar laughed. Out loud, the real one, the one that came up out of her chest before she'd decided to let it. Yukari looked over at the sound and then looked away fast, pleased about it, like she'd seen something she wasn't supposed to." },
     { cg: null },
     { n: "Then she looked up past the tarp into the crowd on the path, the hundred faces going by under the trees, and for one frame, one, the length of a blink—" },
