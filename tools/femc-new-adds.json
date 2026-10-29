@@ -18111,6 +18111,53 @@
         "assets/femc/game/art/skins/sk-harbourcoat/solar-pose-4.webp": "87cf1eefb039a60daf4fdb9e64c12430f5f6f981759ef9b68702608810df4ebc",
         "assets/femc/game/art/skins/sk-harbourcoat/solar-pose-5.webp": "a554f2f07395786153ccb45c0076ae8fdf885ccfb74c79d616bb0ddaa4704260"
       }
+    },
+    {
+      "batch": 92,
+      "source": "sk-stageidol-solar-posesheet.png",
+      "sourceNow": "Added to Game/sk-stageidol-solar-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ae9c30f536f7430c2eb91a7e126a47de79e56435a976ed98a8594e2230475e42",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-idol/solar-pose-0.webp",
+      "skin": "sk-idol",
+      "conversion": "tools/femc-wardrobe.py skin (white key and grid cut as the fighters' sheets; opaque white sheet, no alpha hardening needed); enclosed transparent areas checked one by one: all are background gaps (between hair, arms, staff and body), none in the white jacket, skirt or boots, so nothing was filled",
+      "placement": "cosmetics.js sk-idol (Stage Idol, UR, Solar; no banner yet: its only planned one, Solar Spotlight, was not built in this batch), battle pose frames via ready.js",
+      "knownLimits": "cell 4's pale gold skill burst keys out to a faint wisp, as on Harbour Night Coat and the fighters' sheets; Kat saved it as sk-stageidol-solar-posesheet.png, not the list's skin-sk-idol-posesheet.png",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-idol/solar-pose-0.webp": "01a364402047d0ef86980ffa747096a8d6307e5ec76a1d846978b0bb0a044175",
+        "assets/femc/game/art/skins/sk-idol/solar-pose-1.webp": "04f909426bc107227fcf58ec6ecf77eab1e6dfd8bf330a298d9d257ca785eff2",
+        "assets/femc/game/art/skins/sk-idol/solar-pose-2.webp": "9836b4ed3de57f4cfd5c73ead26a41998289da8cec6c17426e5a4e9822ea47f5",
+        "assets/femc/game/art/skins/sk-idol/solar-pose-3.webp": "76e1b316bd4b589ffeac2ea5a8746eec51cb7ce89fd98251d350a22538c440f8",
+        "assets/femc/game/art/skins/sk-idol/solar-pose-4.webp": "290a886147bd3467115bee7d4ae8ab52866cae6c38713b0b1f2bcdaf786ada4b",
+        "assets/femc/game/art/skins/sk-idol/solar-pose-5.webp": "270bc8f21c95bbe733394e42bc9c7440595307c6c604e4928a5a88becbdcc7b5"
+      }
+    },
+    {
+      "batch": 92,
+      "source": "skin-sk-haechan-sweater-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-haechan-sweater-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d9a4865eed83f2638d85d9f479c389dc507e8a3f080fff59342665854c928f83",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-sweater/haechan-pose-0.webp",
+      "skin": "sk-haechan-sweater",
+      "conversion": "tools/femc-wardrobe.py skin ... haechan (white key and grid cut as the fighters' sheets; opaque white sheet, no alpha hardening needed); the cream sweater and white sneakers kept solid, no keyed-out holes found",
+      "placement": "cosmetics.js sk-haechan-sweater (Sweater Date, SR, Haechan; Haechan Spotlight and Valentine's banners), battle pose frames via ready.js",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-sweater/haechan-pose-0.webp": "d2f2bba6996ab7d2c8b2a146c211ead70d478fc95a0bf4ad6d7ebd27c1470731",
+        "assets/femc/game/art/skins/sk-haechan-sweater/haechan-pose-1.webp": "86334ddd40448844fd714ae3121f8b43b224aa240c9f87ffc128ab61cd30e7e9",
+        "assets/femc/game/art/skins/sk-haechan-sweater/haechan-pose-2.webp": "7dd56181f1bad2574c73cba934c82fa89e0a5f7318fcb5958e3dd641e5924f59",
+        "assets/femc/game/art/skins/sk-haechan-sweater/haechan-pose-3.webp": "1ffe2a76cf443b30cc398d821f5c0dedcb5fa9b80a869950d6c99f40ae7f9c55",
+        "assets/femc/game/art/skins/sk-haechan-sweater/haechan-pose-4.webp": "5af007f38a5f7506e9e153e514dded1b62b4417297161d94f2c3e9753af7c2bd",
+        "assets/femc/game/art/skins/sk-haechan-sweater/haechan-pose-5.webp": "357ba11cdcffc6407b121521d7b41c73a5e47a6f1485f7e4b7ad144ad3980049"
+      }
     }
   ],
   "batch1Validation": {
@@ -19409,5 +19456,27 @@
     ],
     "notTested": "no browser tests (Kat at work): tests/femc_cosmetics.py (newpending now includes sk-harbourcoat), an outfit portrait in a scene at 1000x486 and 375x812",
     "html": "femc-game.html ready.js v9, cosmetics.js v11"
+  },
+  "batch92Validation": {
+    "date": "2026-10-29",
+    "scope": "Stage Idol and Haechan's Sweater Date (new Wardrobe items from their FEMC-ART-WIRING notes, with their pose sheets)",
+    "sourcesInspected": "every file in New Adds viewed; both pose sheets' frames on magenta, full size, with enclosed transparent areas marked",
+    "sourcesIntegrated": 2,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "sourcesLeft": {
+      "sk-halloween-solar-portraits-v2.png": "waiting on Kat (lead's instruction)",
+      "sk-harbourcoat-solar-update.png": "byte-identical (sha256 68f21fe3...) to batch 91's skin-sk-harbourcoat-posesheet.png, already in the game",
+      "sk-harbourcoat-solar-portraits.png": "no FEMC-ART-TODO item or wiring note (opaque black background)",
+      "sk-stageidol-solar-portraits.png": "no FEMC-ART-TODO item or wiring note (opaque black background)",
+      "skin-sk-haechan-sweater-portraits.png": "no FEMC-ART-TODO item or wiring note; outfit scene portraits are Solar-only so far (opaque black background)"
+    },
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script",
+      "py_compile tests/femc_cosmetics.py"
+    ],
+    "notTested": "no browser tests (Kat at work): tests/femc_cosmetics.py (newpending now includes sk-haechan-sweater; sk-idol is left out until Solar Spotlight exists), both outfits in a real battle",
+    "html": "femc-game.html ready.js v10, cosmetics.js v12"
   }
 }

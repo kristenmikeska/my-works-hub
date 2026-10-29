@@ -43,7 +43,9 @@ SKIN = SKINS_DIR / 'sk-phantom'
 PSKIN = SKINS_DIR / 'sk-akihiko-champ'
 PWPN = SKINS_DIR / 'wpn-jungwon-council'
 # Stand-ins for "a new look still waiting for art" (newpending): their real art steps aside for that section.
-NEW_SKINS = ['sk-minji-crew', 'sk-jihoon-pilates', 'sk-aigis-uniform', 'sk-alphaphi', 'sk-harbourcoat']
+# sk-idol (Stage Idol) joins once Solar Spotlight (its only planned banner, not built yet) exists: this section checks
+# every id waits in a banner.
+NEW_SKINS = ['sk-minji-crew', 'sk-jihoon-pilates', 'sk-aigis-uniform', 'sk-alphaphi', 'sk-harbourcoat', 'sk-haechan-sweater']
 NEW_WPNS = ['wpn-runners', 'wpn-strangers', 'wpn-hoax', 'wpn-akihiko-champ', 'wpn-jungwon-council']
 KEPT = {}
 

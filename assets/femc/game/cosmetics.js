@@ -73,6 +73,8 @@ window.FemcCosmetics = (() => {
     // More looks for Solar (2026-10-27 list, FEMC-ART-WIRING section 7): wired as each one's art arrives (art batch 86).
     c('sk-alphaphi', 'skin', 'Alpha Phi Formal', 'SR', 'A long dusty-rose satin gown, a silver Alpha Phi pin and silver heels. Formal night.', { who: 'solar', art: true }), // series: Runners
     c('sk-harbourcoat', 'skin', 'Harbour Night Coat', 'SR', 'A long black coat buttoned to the throat, leather gloves, a red thread tied at her wrist. The port at night.', { who: 'solar', art: true }), // series: strangers
+    c('sk-idol', 'skin', 'Stage Idol', 'UR', 'A white-and-gold stage set, sequins, a headset mic and boots made for choreography. Fearless.', { who: 'solar', art: true }), // series: Solstice
+    c('sk-haechan-sweater', 'skin', 'Sweater Date', 'SR', 'A cream cable-knit sweater, a check scarf and a coffee he will absolutely make you hold.', { who: 'haechan', art: true }), // series: Solstice
     // Weapon skins (art pending: 8C).
     c('wpn-sakura', 'weapon', 'Sakura Naginata', 'SR', 'A pale wood haft wrapped in pink silk, blossoms etched on the blade.', { who: 'solar', art: true }),
     c('wpn-phantom', 'weapon', 'Phantom Naginata', 'UR', 'Black lacquer and a red tassel, to go with the coat.', { who: 'solar', art: true }),
@@ -153,9 +155,9 @@ window.FemcCosmetics = (() => {
     // Side banners, November–March (2026-10-27): they run beside the month's main banner above (always first, the default).
     { id: 'runners', name: 'Runners World', kind: 'World', months: [11], color: '#ff9a5c', featured: ['sk-haechan-runners', 'wpn-runners', 'sk-minji-su', 'wp-rooftop', 'sk-alphaphi'] },
     { id: 'sees', name: 'S.E.E.S. Spotlight', kind: 'Spotlight', months: [11, 12], color: '#6ab0ff', featured: ['sk-yukari-kyudo', 'sk-yukari-pink', 'sk-junpei-baseball', 'sk-mitsuru-rider', 'sk-shinjiro-apron', 'sk-aigis-uniform', 'sk-akihiko-hoodie', 'tt-darkhour', 'wp-dorm'] },
-    { id: 'haechan', name: 'Haechan Spotlight', kind: 'Spotlight', months: [12, 1], color: '#ff6f7d', featured: ['sk-haechan-runners', 'wpn-runners', 'wpn-strangers', 'evk-midnight', 'wp-rooftop'] },
+    { id: 'haechan', name: 'Haechan Spotlight', kind: 'Spotlight', months: [12, 1], color: '#ff6f7d', featured: ['sk-haechan-runners', 'wpn-runners', 'wpn-strangers', 'evk-midnight', 'wp-rooftop', 'sk-haechan-sweater'] },
     { id: 'hoax', name: 'HOAX World', kind: 'World', months: [1, 2], color: '#9fe06a', featured: ['sk-jungwon-council', 'wpn-jungwon-council', 'wpn-hoax', 'sk-jihoon-pilates', 'sk-jihoon-emo', 'ui-velvet'] },
-    { id: 'valentine', name: "Valentine's", kind: 'Seasonal', months: [2], color: '#ff7fb0', featured: ['sk-date', 'evk-rose', 'wpn-sakura', 'ui-sakura', 'wp-mall'] },
+    { id: 'valentine', name: "Valentine's", kind: 'Seasonal', months: [2], color: '#ff7fb0', featured: ['sk-date', 'evk-rose', 'wpn-sakura', 'ui-sakura', 'wp-mall', 'sk-haechan-sweater'] },
     { id: 'akihiko', name: 'Akihiko Spotlight', kind: 'Spotlight', months: [3], color: '#c9d3e6', featured: ['sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-akihiko-hoodie', 'bui-moonlight'] },
     { id: 'searchers', name: 'The Searchers', kind: 'Spotlight', months: [3], color: '#8fd0ff', featured: ['sk-minji-crew', 'sk-minji-su'] }
   ];

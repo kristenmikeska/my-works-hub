@@ -1,6 +1,6 @@
 # Art to make
 
-**19 items:** 19 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 23 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**17 items:** 17 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 23 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -110,30 +110,12 @@ Character pose sheet: 3 columns × 2 rows on a plain white background, with clea
 ```
 If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
 
-**[ ] Solar: Stage Idol (pose sheet)** *(optional)*  
-Solar's battle figure in the Stage Idol outfit.  
-Attach: solar-posesheet.png, then Solar  
-Save as: `skin-sk-idol-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: a K-pop idol stage outfit: a cropped white jacket with gold embroidery and sharp shoulders over a sparkling silver top, a white pleated skirt over shorts, a gold chain belt, white platform boots, a slim headset microphone at her cheek, a little silver star clip in her hair. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
 **[ ] Haechan: Black Suit (pose sheet)** *(optional)*  
 Haechan's battle figure in the Black Suit outfit.  
 Attach: haechan-posesheet.png, then Haechan  
 Save as: `skin-sk-haechan-suit-posesheet.png`
 ```
 Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: a sharp black suit with a slim jacket, a black shirt open at the collar with no tie, black leather shoes, a silver watch, black leather gloves, the jacket unbuttoned. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Haechan: Sweater Date (pose sheet)** *(optional)*  
-Haechan's battle figure in the Sweater Date outfit.  
-Attach: haechan-posesheet.png, then Haechan  
-Save as: `skin-sk-haechan-sweater-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: a cosy date look: a chunky cream cable-knit sweater with the sleeves pushed up, a brown-and-red check scarf, dark straight jeans, white sneakers, a thin silver ring on one finger. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
 ```
 If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
 
