@@ -1531,7 +1531,7 @@ try:
         inner = p.eval(r"""(async()=>{const G=FemcGame,s=G.S,M=FemcMenu;s.year1.album={v:1,cg:['crush-two-ends','ending-hoax-home']};G.save();const d=M.albumData();
           M.open('album');await new Promise(r=>setTimeout(r,300));const t=document.querySelector('.g-fm-body').textContent;M.close();
           return {cgs:d.cgs.map(c=>c.id),epi:d.epi.map(c=>[c.id,c.on]),iw:/Iwatodai · /.test(t),ep:/Epilogue · Syracuse/.test(t)}})()""")
-        ok(inner['cgs'] == ['crush-two-ends', 'ending-hoax-home'] and inner['iw'] and inner['ep'] and len(inner['epi']) == 4 and not any(o for _, o in inner['epi']),
+        ok(inner['cgs'] == ['crush-two-ends', 'ending-hoax-home'] and inner['iw'] and inner['ep'] and len(inner['epi']) == 8 and not any(o for _, o in inner['epi']),
            f'inside the epilogue the album keeps an Iwatodai page (the year’s CGs) and the world’s own, locked ({inner})')
         # The live Theater: the act's own scenes; a replay changes nothing.
         p.eval("(()=>{const G=FemcGame,s=G.S;['epi-r-home','epi-r-crossroads'].forEach(id=>s.events.includes(id)||s.events.push(id));G.save()})()")
@@ -1572,7 +1572,7 @@ try:
         # The album in the year: the Runners page, one tile unlocked.
         al = p.eval(r"""(async()=>{const M=FemcMenu,d=M.albumData();M.open('album');await new Promise(r=>setTimeout(r,300));const b=document.querySelector('.g-fm-body'),t=b.textContent;
           const sec=[...b.querySelectorAll('.g-al-sec')].find(x=>/Epilogue · Syracuse/.test(x.textContent));const r={epi:d.epi.map(c=>[c.id,c.on]),sec:!!sec,lock:sec?sec.querySelectorAll('.g-al-tile.lock').length:-1,open:sec?sec.querySelectorAll('button.g-al-tile').length:-1,list:M.albumList().some(c=>c.id==='epi-r-held')};M.close();return r})()""")
-        ok(al['sec'] and al['lock'] == 3 and al['open'] == 1 and al['list'] and ['epi-r-held', True] in al['epi'], f'the year’s album gains the Runners page: three locked tiles, the one she saw ({al["epi"]})')
+        ok(al['sec'] and al['lock'] == 7 and al['open'] == 1 and al['list'] and ['epi-r-held', True] in al['epi'], f'the year’s album gains the Runners page: seven locked tiles, the one she saw ({al["epi"]})')
         carry = p.eval("(()=>{const c=FemcMenu.albumCarry();return {cg:c.cg.includes('epi-r-held'),epi:!!(c.epi&&c.epi.runners&&c.epi.runners.seen)}})()")
         ok(carry['cg'] and carry['epi'], 'New Game+ would carry the page and the Theater record')
 
