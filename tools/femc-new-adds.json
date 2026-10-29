@@ -16842,6 +16842,108 @@
       "placement": "data/living-holidays.js aigis 12/31 'the last sunset': { cg } before Aigis's first line, { cg: null } before the choice; cgFocus in data/places.js (Aigis)",
       "textCheck": "checked 2026-10-29 against the image: matches the scene",
       "mobileFocus": "22% 30%"
+    },
+    {
+      "batch": 84,
+      "source": "epi-h-eve-council-cg.png",
+      "sourceNow": "Added to Game/epi-h-eve-council-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "b512ae521a5cee7acb26886223ac0983ee704ec60cac7987d9b61dd418e077bc",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-h-eve-council.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "20b8ada8d44bb16b4ebd5b7b4338b2ff0ffb28ae30f2fcd2a97a63b1cd86b289",
+      "placement": "data/epi/hoax/story-w1.js epi-h-eve, the council option: { cg } before the star line, { cg: null } before the quiet line; ALBUM.hoax; cgFocus in data/places.js (Solar)",
+      "textCheck": "checked 2026-10-29 against the image: matches the scene",
+      "mobileFocus": "27% 30%"
+    },
+    {
+      "batch": 84,
+      "source": "epi-h-christmas-cg.png",
+      "sourceNow": "Added to Game/epi-h-christmas-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "1bacbb6f947f0c9b103d1926cfe0435d81322f19798f790752a5ac537ad1244b",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-h-christmas.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "9a003f0d72f6ac53a4a5435d960bb4e633a23d3e35db2a2d11456b44927ee8ef",
+      "placement": "data/epi/hoax/story-w1.js epi-h-christmas: { cg } before the bow line, { cg: null } before Mom's 'Come in'; ALBUM.hoax; cgFocus in data/places.js (Jungwon)",
+      "textCheck": "checked 2026-10-29 against the image: matches the scene",
+      "mobileFocus": "61% 40%"
+    },
+    {
+      "batch": 84,
+      "source": "epi-st-hanami-cg.png",
+      "sourceNow": "Added to Game/epi-st-hanami-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "cf6c149524546cfb06d17a272a5ac607c550d160f83263783ec1b89a6953ec37",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-st-hanami.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "be93ebb20505b53973f0aeace267cdadf5bf9bf18ee203de5059a6bb57e99298",
+      "placement": "data/epi/stay/story.js epi-st-hanami: { cg } before the Ken and Koromaru line, { cg: null } before 'Then she looked up past the tarp'; ALBUM.stay; cgFocus in data/places.js (Solar)",
+      "textCheck": "checked 2026-10-29 against the image: matches the scene",
+      "mobileFocus": "41% 40%"
+    },
+    {
+      "batch": 84,
+      "source": "epi-st-courtyard-cg.png",
+      "sourceNow": "Added to Game/epi-st-courtyard-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "558165b5579ed4159b806e641b0a8bebdf4d19abea0387edb70a0d654f9c69e2",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-st-courtyard.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "dea6a4e988068290be877a6e24e1ae4cbd82139b5c7e5d81d5b6754107eab5fd",
+      "placement": "data/epi/stay/people.js hangout epi-st-shinjiro-2, the awake branch: { cg } before the petal line, { cg: null } before the epi-st-shinji-up flag; ALBUM.stay; cgFocus in data/places.js (Shinjiro)",
+      "textCheck": "checked 2026-10-29 against the image: matches the scene",
+      "mobileFocus": "34% 35%"
+    },
+    {
+      "batch": 84,
+      "source": "epi-st-roof-garden-cg.png",
+      "sourceNow": "Added to Game/epi-st-roof-garden-cg.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "a03368c75aea8ec5453bdb0ab3d7eb3ec7f7a93f454bed40d40dbfee169a08cf",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-st-roof-garden.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "5187aad63db32848633155dc13a3f598e42965525221771ae467f6c8c509577c",
+      "placement": "data/epi/stay/people.js hangout epi-st-akihiko-3: { cg } before the wind line, { cg: null } before the bond; ALBUM.stay; cgFocus in data/places.js (Akihiko)",
+      "textCheck": "checked 2026-10-29 against the image: matches the scene",
+      "mobileFocus": "63% 30%"
+    },
+    {
+      "batch": 84,
+      "source": "epi-tr-first-snow-cg.png",
+      "sourceNow": "Added to Game/epi-tr-first-snow-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "59865c4fb5bfd1dcb3a36fa3cf22bceda39f5dd197ec524d8fecbd0764692832",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-tr-first-snow.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "40da8cb54e3505d393a97c72f8b50763ae5c0d817d831adcd5db092bca6d0471",
+      "placement": "data/epi/true/story.js epi-tr-r-day: { cg } after the Quad place line, { cg: null } before 'She didn't have an answer for that'; ALBUM.true; cgFocus in data/places.js (Solar)",
+      "textCheck": "checked 2026-10-29 against the image: matches the scene",
+      "mobileFocus": "53% 30%"
     }
   ],
   "batch1Validation": {
@@ -17992,5 +18094,21 @@
     ],
     "notTested": "no browser tests: CG framing at 1000x486 and 375x812 (focus points set from the images; two-person CGs centre the person the next lines are about)",
     "html": "femc-game.html places v61, kat v2, shinjiro v11, living-holidays v6"
+  },
+  "batch84Validation": {
+    "date": "2026-10-29",
+    "scope": "six epilogue CGs: HOAX (the council's Christmas Eve, Christmas Day), Stay (hanami, the oldest tree, the roof garden), the true coda (first snow)",
+    "sourcesInspected": "all 6 viewed",
+    "sourcesIntegrated": 6,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "textTweaks": "none (all six match their scenes)",
+    "tests": [
+      "tools/femc-check-scenes.py: OK",
+      "jsc checkSyntax on every edited script",
+      "py_compile tests/femc_epilogue.py"
+    ],
+    "notTested": "no browser tests: CG framing at 1000x486 and 375x812 (focus points set from the images); tests/femc_epilogue.py (its _loaded checks now 22) not run",
+    "html": "femc-game.html places v62, epilogue v24; DATA_V 22"
   }
 }

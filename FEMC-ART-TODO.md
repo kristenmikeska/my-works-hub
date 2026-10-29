@@ -1,6 +1,6 @@
 # Art to make
 
-**40 items:** 12 CGs · 28 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**34 items:** 6 CGs · 28 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -25,24 +25,6 @@ Places, expressions, outfit portraits and the items that name their own pictures
 ---
 
 ## 1. Story CGs (ChatGPT)
-
-### The epilogue: HOAX
-
-**[ ] HOAX · the council · 12/24 · Yeobo's after closing** *(optional)*  
-The council route's Christmas Eve, decorating the café after hours.  
-Attach: Solar (her HOAX look), Jay, Sunghoon, Niki, Heeseung, Jake, Sunoo  
-Save as: `epi-h-eve-council-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A small cosy Korean café after closing on Christmas Eve, every light on inside, the front window steamed up with snow falling outside in the dark, a little fake Christmas tree by the register half covered in ornaments and tinsel, a ladder in the middle of the floor, a phone propped against a sugar jar on the counter. Jay (the second attached image's face) and Sunghoon (the third attached image's face; wrapped shoulder to knee in a string of glowing fairy lights) each hold one of Solar's arms and lift her straight up beside the tree like a kid at a parade. Solar (the first attached image's face; long dark hair flying, a cardigan over a turtleneck) is shrieking with laughter and jamming a cheap gold plastic star onto the top of the tree. Niki (the fourth attached image's face) sits on top of the ladder grinning, Heeseung (the fifth attached image's face) holds the ladder with a clipboard in his teeth, Jake (the sixth attached image's face) is filming on his phone, Sunoo (the seventh attached image's face) comes out of the kitchen with two trays, beaming. An old woman behind the counter folds dumplings, smiling a little. Chaotic, warm, everyone laughing. Keep the faces clear of the edges.
-```
-
-**[ ] HOAX · 12/25 · the Kims' front door** *(optional)*  
-Christmas Day at the Kims', one o'clock, the front door (every route).  
-Attach: Solar (her HOAX look), Jungwon (his HOAX look), Solar's mother (`portraits/kim-mom`), `bg/epi-h-kim-house.webp` (for the house only)  
-Save as: `epi-h-christmas-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The front door of a Korean family apartment on Christmas afternoon, seen from inside the short entrance hall: a shoe rack, the door open on a snowy step and grey daylight, warm light from the living room behind with a Christmas tree just visible. On the step, Jungwon (the second attached image's face; hair actually brushed, a good dark coat buttoned to the top, snow on his shoulders, ears red) is bowing a full ninety degrees, holding a white bakery box perfectly level in both hands, a wrapped present tucked under one arm. In the doorway Solar (the first attached image's face; long dark hair, a cosy knit sweater and house socks) stands with her hand still on the door, mortified and delighted. Right behind her, Solar's mother (the third attached image's face; an apron over her clothes) has appeared holding a wooden spoon, staring at the boy. A very large fluffy white dog with half a red bow hanging off his collar pushes his head past Solar's legs. Funny, warm, a little terrifying. Keep the faces clear of the edges.
-```
 
 ### The epilogue: strangers
 
@@ -92,42 +74,6 @@ Attach: Solar (her strangers look), Eomma, and `bg/epi-s-her-room.webp` (for the
 Save as: `epi-s-pins-cg.png`
 ```
 Persona 3 Reload style event CG, 16:9, no text. A young woman's bedroom in a wealthy old Korean house on a grey winter day, pale light from the window. Solar (the first attached image's face) sitting at a dressing table in a soft sweater, her long hair still damp, eyes lowered. Her mother (the second attached image's face) standing behind her in a cream cardigan and pearl stud earrings, her own hair low and smooth and perfect, twisting Solar's hair up with careful hands, a few hairpins held between her lips. In the mirror their two faces, one above the other, almost the same face. On the dressing table a small lacquer dish of hairpins, a brush, a towel, and one long black hairpin laid apart on its own. Quiet, formal, tender. Keep the faces clear of the edges.
-```
-
-### The epilogue: Stay
-
-**[ ] Stay · 3/27 · hanami at Seaside Park** *(optional)*  
-The hanami under the cherry trees at Port Island Seaside Park (every route).  
-Attach: Solar, Yukari, Junpei, Akihiko, Mitsuru, Fuuka, Aigis, Ken, Koromaru, `bg/epi-st-seaside-hanami.webp` (for the place only)  
-Save as: `epi-st-hanami-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A warm Saturday at the end of March under a row of cherry trees in full bloom along a seawall by the bay, petals drifting down, families on blue tarps all along the path, bright soft spring sunlight. On their own blue tarp with their shoes off, a group of friends: Solar (the first attached image's face; long dark hair, a light spring cardigan over a dress) in the middle, laughing out loud, holding a paper cup of orange juice, with a dog dropping a ball into her lap; Koromaru (the ninth attached image; a white Shiba Inu) is the dog, with Ken (the eighth attached image's face; a boy of about eleven) a little way off on the grass, hands on hips. Yukari (the second attached image's face; a pink spring jacket) glances over at Solar's laugh, pleased. Junpei (the third attached image's face; a baseball cap) lies on his back groaning with a hand on his stomach. Akihiko (the fourth attached image's face; a grey hoodie) holds a bento box, looking a bit queasy. Mitsuru (the fifth attached image's face; elegant spring coat) kneels upright beside a lacquered three-tier lunch box with a small winning smile. Fuuka (the sixth attached image's face) has petals in her hair without knowing. Aigis (the seventh attached image's face) sits very straight, looking up at the blossoms. Bright, easy, a perfect ordinary day. Keep the faces clear of the edges.
-```
-
-**[ ] Stay · Akihiko · the roof garden** *(optional)*  
-Akihiko's route hangout, an April evening in the dorm's roof garden.  
-Attach: Solar, Akihiko, `bg/iwatodaidorm-roof-planters.webp` (for the place only)  
-Save as: `epi-st-roof-garden-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The roof garden of a school dormitory on a windy April evening: planters along the railing green again with herbs and a row of little white flowers, a bench, a watering can tipped over by their feet with water spreading on the tiles, the bay and the city lights beyond the railing, the light over the stairwell door just gone off, the sky dark blue. Akihiko (the second attached image's face; silver hair, a plain T-shirt in the cold wind, scarred knuckles) holds both of Solar's wrists in his hands, having just done up the straps of her gloves. Solar (the first attached image's face; long dark hair blowing, a cardigan over a T-shirt) wears a pair of small red boxing gloves worn pale at the knuckles, and she has stepped in so her forehead rests against his collarbone; he is bending his head down toward her hair, half laughing, his arms beginning to close around her. Close, surprised, gentle. Keep the faces clear of the edges.
-```
-
-**[ ] Stay · Shinjiro · the hospital courtyard** *(optional)*  
-Shinjiro's route hangout, the courtyard at Tatsumi Memorial (the version where he goes down to it).  
-Attach: Solar, Shinjiro, `bg/hospital-outside.webp` (for the light only)  
-Save as: `epi-st-courtyard-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A small hospital courtyard on a spring afternoon: one very old cherry tree in full bloom over a bench in the middle, petals coming down through pink light, paved paths, hospital windows around the courtyard. Shinjiro (the second attached image's face; long brown hair under a dark beanie knocked a little crooked, a hospital shirt, a blanket over his knees) sits in a wheelchair under the tree, his right arm raised and trembling with effort, holding a single petal out between his thumb and forefinger. Solar (the first attached image's face; long dark hair, a light spring coat) stands just behind and beside the chair, one hand on its handle, the other lifting toward the petal, looking down at him. Quiet, hard-won, full of light. Keep the faces clear of the edges.
-```
-
-### The epilogue: the true coda
-
-**[ ] The true coda · 3/8 · the quad in the first snow** *(optional)*  
-The coda's Syracuse morning, walking to the last final.  
-Attach: Solar (her Runners look), Hanni, Hyein, `bg/epi-r-quad-day.webp` (for the place only)  
-Save as: `epi-tr-first-snow-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A university quad on a December morning in the first real snow of the year, big slow flakes coming down from a white sky, the snow on the lawn untouched except for three lines of fresh boot prints, old stone college buildings and a chapel behind, a lamppost leaning a little to the right. Three girls walk toward the viewer arm in arm. Solar (the first attached image's face; long dark hair down and loose with snow in it, a long winter coat and a scarf) in the middle, laughing out loud at nothing, head tipped back. Hanni (the second attached image's face; a puffer jacket and earmuffs) on her left holding two takeaway coffees, glancing sideways at her. Hyein (the third attached image's face; a stylish coat with her scarf pulled up over her mouth) on her right with her arm through Solar's. Bright, soft, a new beginning. Keep the faces clear of the edges.
 ```
 
 ---

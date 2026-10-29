@@ -122,10 +122,12 @@
       { s: 'solar', t: "Akihiko." },
       { s: 'akihiko', f: 'blushing', t: "I'm just saying if you go, wear the gloves. That's all. That's all I'm saying." },
       { n: "It wasn't all he was saying. He'd run out of the words he had for it, that was all, and he'd brought the gloves up instead, because a pair of gloves was something you could hold out to a person. She picked them up. She put them on, one and then the other, and held her hands out to him, and he did up the straps for her the way he had in the club in May, quick and careful with his big scarred fingers, and then he didn't let go of her wrists." },
+      { cg: 'epi-st-roof-garden' },
       { n: "The wind came in off the bay and went straight through his shirt and he didn't seem to notice. She stepped in, gloves and all, until her forehead was against his collarbone and the watering can had tipped over somewhere by her foot and was soaking into her sock, and neither of them moved to fix that either." },
       { s: 'akihiko', f: 'happy', t: "You're getting water in your shoe." },
       { s: 'solar', t: "I know." },
       { n: "He laughed, a short surprised breath into her hair, and his arms went around her slowly, the way you'd close your hands around something that had landed on you of its own accord and might, if you were very still, decide to stay there. The light over the stairwell door went off on its timer. Nobody went down to turn it back on." },
+      { cg: null },
       { bond: { akihiko: 1 } }
     ] }
   ] };
@@ -170,6 +172,7 @@
         { s: 'shinjiro', f: 'neutral', t: "...They're early." },
         { s: 'solar', t: "They're right on time. You're late." },
         { s: 'shinjiro', f: 'happy', t: "...Tch." },
+        { cg: 'epi-st-courtyard' },
         { n: "A petal came down and landed on the blanket over his knees. He looked at it. Then, slowly, with his jaw set, he moved the right hand. It took a long time. The fingers closed on the petal and missed and closed again and got it, between thumb and forefinger, pinched so carefully it didn't bruise, and he held it out to her, and his whole arm was shaking with the work of holding up a thing that weighed nothing at all." },
         { choose: [
           { t: "(Take it.)", then: [
@@ -185,6 +188,7 @@
             { s: 'shinjiro', f: 'neutral', t: "...Yeah. I know you did." }
           ] }
         ] },
+        { cg: null },
         { flag: 'epi-st-shinji-up' }
       ], else: [
         { n: "He couldn't go down to the courtyard, so she brought it up. A branch the length of her forearm with six blossoms open on it and three still shut, which she'd been told off by the groundskeeper for, in a juice bottle with the label peeled off, on the windowsill where the light came in." },

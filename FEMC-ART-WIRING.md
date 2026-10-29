@@ -32,7 +32,7 @@ General: convert each to `assets/femc/cg/<slug>.webp`; insert `{ cg: '<slug>' },
 
 #### The epilogue: Runners, HOAX, Stay, the true coda
 
-Common to every item below: convert to `assets/femc/cg/<slug>.webp`; add `[slug, label]` to `ALBUM[world]` in `assets/femc/game/epilogue.js` (lines 568-574) and a phone focus point to `cgFocus` in `assets/femc/game/data/places.js` (lines 352-356; the values below are first guesses, so check them at 375×812). Then bump `places.js?v=` (femc-game.html line 37, now 58), bump `DATA_V` in epilogue.js (line 77, now 21) and the `_loaded===21` checks in `tests/femc_epilogue.py` (lines 561, 671, 775, 925, 1324, 1451), and run `tools/femc-check-scenes.py` and `tests/femc_epilogue.py --only <world>`. Line numbers are from today's files; insert from the bottom of a file up so earlier anchors don't move.
+Common to every item below: convert to `assets/femc/cg/<slug>.webp`; add `[slug, label]` to `ALBUM[world]` in `assets/femc/game/epilogue.js` (lines 568-574) and a phone focus point to `cgFocus` in `assets/femc/game/data/places.js` (lines 352-356; the values below are first guesses, so check them at 375×812). Then bump `places.js?v=` (femc-game.html line 37, now 62), bump `DATA_V` in epilogue.js (line 77, now 22) and the `_loaded===22` checks in `tests/femc_epilogue.py` (lines 561, 671, 775, 925, 1324, 1451), and run `tools/femc-check-scenes.py` and `tests/femc_epilogue.py --only <world>`. Line numbers are from today's files; insert from the bottom of a file up so earlier anchors don't move.
 
 #### The epilogue: Runners
 
@@ -41,22 +41,19 @@ Common to every item below: convert to `assets/femc/cg/<slug>.webp`; add `[slug,
 #### The epilogue: HOAX
 
 - *(The Jungwon and Jihoon Christmas Eve CGs are in: art batch 80.)*
-- **HOAX · the council · 12/24 · Yeobo's after closing** (`epi-h-eve-council-cg.png` → `cg/epi-h-eve-council.webp`): the same event, the council option (`Hanlim · Yeobo's`). `{ cg: 'epi-h-eve-council' }` before line 725 ("They put the star on last…"); `{ cg: null }` before line 728 ("Then it was quiet, the good kind…"). ALBUM.hoax: `['epi-h-eve-council', "Christmas Eve · Yeobo's"]`. cgFocus `'45% 35%'`.
-- **HOAX · 12/25 · the Kims' front door** (`epi-h-christmas-cg.png` → `cg/epi-h-christmas.webp`): event `epi-h-christmas`, `data/epi/hoax/story-w1.js`. `{ cg: 'epi-h-christmas' }` before line 750 ("Jungwon bowed. Not a nod…"); `{ cg: null }` before line 760 (Mom: "Come in, Jungwon…"). ALBUM.hoax: `['epi-h-christmas', 'Christmas']`. cgFocus `'55% 40%'`. If Kat wants Mr. Kim in it, attach `kim-dad` too (he comes into the hall at line 762).
+- *(The council's Christmas Eve and the 12/25 front-door CGs are in: art batch 84, in `ALBUM.hoax` in date order. Mr. Kim isn't in the front-door art; he comes in after the CG clears.)*
 
 #### The epilogue: Stay
 
-- **Stay · 3/27 · hanami at Seaside Park** (`epi-st-hanami-cg.png` → `cg/epi-st-hanami.webp`): event `epi-st-hanami`, `data/epi/stay/story.js`. `{ cg: 'epi-st-hanami' }` before line 148 ("Ken was throwing a ball for Koromaru…"); `{ cg: null }` before line 153 ("Then she looked up past the tarp…"), so it's gone before the glitch face. ALBUM.stay: `['epi-st-hanami', 'Hanami']`. cgFocus `'50% 40%'`.
-- **Stay · Akihiko · the roof garden** (`epi-st-roof-garden-cg.png` → `cg/epi-st-roof-garden.webp`): hangout `epi-st-akihiko-3` ('red gloves', route akihiko), `data/epi/stay/people.js`. `{ cg: 'epi-st-roof-garden' }` before line 125 ("The wind came in off the bay…"); `{ cg: null }` before line 129 (`{ bond: { akihiko: 1 } }`). ALBUM.stay: `['epi-st-roof-garden', 'The roof garden']`. cgFocus `'50% 35%'`.
-- **Stay · Shinjiro · the hospital courtyard** (`epi-st-courtyard-cg.png` → `cg/epi-st-courtyard.webp`): hangout `epi-st-shinjiro-2` ('the oldest tree', route shinjiro), `data/epi/stay/people.js`, the AWAKE branch only (the `else` ward branch keeps no CG). `{ cg: 'epi-st-courtyard' }` before line 173 ("A petal came down…"); `{ cg: null }` before line 188 (`{ flag: 'epi-st-shinji-up' }`). ALBUM.stay: `['epi-st-courtyard', 'The oldest tree']`. cgFocus `'45% 35%'`. Album slugs in Stay use `epi-st-`; the existing `epi-stay-held` keeps its name.
+- *(All three Stay CGs are in: hanami, the oldest tree (the awake branch only), the roof garden; art batch 84, in `ALBUM.stay` in date order before `epi-stay-held`.)*
 
 #### The epilogue: the true coda
 
-- **The true coda · 3/8 · the quad in the first snow** (`epi-tr-first-snow-cg.png` → `cg/epi-tr-first-snow.webp`): event `epi-tr-r-day`, `data/epi/true/story.js`. `{ cg: 'epi-tr-first-snow' }` before line 37 ("The last final was at nine…", right after the `{ place: 'Syracuse · The Quad' }` line 36); `{ cg: null }` before line 45 ("She didn't have an answer for that…"), so it's gone before the `epi-tr-g-aki` glitch (line 46). ALBUM.true: `['epi-tr-first-snow', 'First snow']` before `epi-true-coda`. cgFocus `'50% 35%'`.
+- *(The first-snow CG is in: art batch 84, in `ALBUM.true` before `epi-true-coda`.)*
 
 #### The epilogue: strangers (CGs)
 
-For each: convert to `assets/femc/cg/<slug>.webp`; add `{ cg: '<slug>' }` / `{ cg: null }` lines in the scene file below; add `['<slug>', '<title>']` to `epilogue.js` `ALBUM.strangers` (after `epi-s-held` or in date order: cafe, bureom before moon; karaoke after moon; dumplings, dinner after tide; pins wherever Kat likes); add a phone focus to `data/places.js` `cgFocus` (line ~356, beside `'epi-s-moon'`); bump `DATA_V` in `epilogue.js` (now 21; +1 once per batch) and `places.js ?v=` in `femc-game.html` for the cgFocus edit. None of these scenes has a CG yet, and none overlaps the moon / tide / held beats. Run `tests/femc_epilogue.py --only strangers` (its image walk checks every `cg`).
+For each: convert to `assets/femc/cg/<slug>.webp`; add `{ cg: '<slug>' }` / `{ cg: null }` lines in the scene file below; add `['<slug>', '<title>']` to `epilogue.js` `ALBUM.strangers` (after `epi-s-held` or in date order: cafe, bureom before moon; karaoke after moon; dumplings, dinner after tide; pins wherever Kat likes); add a phone focus to `data/places.js` `cgFocus` (line ~356, beside `'epi-s-moon'`); bump `DATA_V` in `epilogue.js` (now 22; +1 once per batch) and `places.js ?v=` in `femc-game.html` for the cgFocus edit. None of these scenes has a CG yet, and none overlaps the moon / tide / held beats. Run `tests/femc_epilogue.py --only strangers` (its image walk checks every `cg`).
 
 - **strangers · 2/22 · the café in Songdo** (`epi-s-cafe-cg.png` → `cg/epi-s-cafe.webp`): event `epi-s-girls` (story-w1.js, 2/22 after). Put `{ cg: 'epi-s-cafe' }` before the narration line that begins the `// The plan.` block (~line 796, the laminated-plan line); `{ cg: null }` before that block's `{ choose: [` (~line 804). ALBUM title 'The studio girls'. cgFocus `'epi-s-cafe': '45% 40%'` (Solar in the corner, left of centre).
 - **strangers · 2/24 morning · the Lee kitchen** (`epi-s-bureom-cg.png` → `cg/epi-s-bureom.webp`): event `epi-s-bureom` (story-w2.js, 2/24 early). Put `{ cg: 'epi-s-bureom' }` before the line that seats Jungwon at the far end of the table (~line 97); `{ cg: null }` before the first `{ ifEpiRoute: 'haechan', then: [` (~line 107), so the CG covers only the shared lines. ALBUM title 'Bureom'. cgFocus `'epi-s-bureom': '50% 40%'`.
@@ -80,7 +77,7 @@ Not needed (checked, no scenes use the day slot): `Iwatodai Station · Taxi Stan
 
 #### The epilogue: Runners, HOAX, Stay, the true coda
 
-Common to every item below: convert to `assets/femc/bg/<slug>.webp`; bump `DATA_V` in `assets/femc/game/epilogue.js` (line 77, now 21) and every `_loaded===21` check in `tests/femc_epilogue.py` (lines 561, 671, 775, 925, 1324, 1451; 1581 has no number); then `tools/femc-check-scenes.py` and `tests/femc_epilogue.py --only <world>`. None of these touch `data/places.js`, so no `places.js?v=` bump (femc-game.html line 37), except where a note says so.
+Common to every item below: convert to `assets/femc/bg/<slug>.webp`; bump `DATA_V` in `assets/femc/game/epilogue.js` (line 77, now 22) and every `_loaded===22` check in `tests/femc_epilogue.py` (lines 561, 671, 775, 925, 1324, 1451; 1581 has no number); then `tools/femc-check-scenes.py` and `tests/femc_epilogue.py --only <world>`. None of these touch `data/places.js`, so no `places.js?v=` bump (femc-game.html line 37), except where a note says so.
 
 #### The epilogue: Runners
 
@@ -100,7 +97,7 @@ Common to every item below: convert to `assets/femc/bg/<slug>.webp`; bump `DATA_
 
 #### The epilogue: strangers (places)
 
-All rules below are in `assets/femc/game/data/epi/strangers/world.js` `places.bg`; the place prefix stays, only the image slots change. Convert each save to `assets/femc/bg/<slug>.webp`. After a batch: bump `DATA_V` in `assets/femc/game/epilogue.js` (now 21; +1 once per batch), add the new outdoor slugs to `weatherFx.outdoor` (world.js line ~80), run `tools/femc-check-scenes.py` and `tests/femc_epilogue.py --only strangers`. Point the true coda's strangers rules (`data/epi/true/world.js`) at the same art where its places match.
+All rules below are in `assets/femc/game/data/epi/strangers/world.js` `places.bg`; the place prefix stays, only the image slots change. Convert each save to `assets/femc/bg/<slug>.webp`. After a batch: bump `DATA_V` in `assets/femc/game/epilogue.js` (now 22; +1 once per batch), add the new outdoor slugs to `weatherFx.outdoor` (world.js line ~80), run `tools/femc-check-scenes.py` and `tests/femc_epilogue.py --only strangers`. Point the true coda's strangers rules (`data/epi/true/world.js`) at the same art where its places match.
 Reminder of the slot rule: `time` matching /Evening|Night|PM|AM/ reads the evening slot ('Late Night' included); 'Before Light', 'Midnight', 'Morning', 'Daytime' read the day slot.
 
 - *(All seventeen strangers place items are in: her room day and night, the stairs, study, dining room, Yunjin's room, the annex by day, the garden day and night, the gate by day, Jungwon's room, the mudflats at midnight, Wolmido day and night, Chinatown, the car day and night; art batch 78. The true coda's Garden rule takes the night garden. Not done: the optional gate art on the plain `Incheon · The Lee House` rule (the piano activity in the front room and one 3/15 daytime line), left on `flashback-lee-house`.)*
