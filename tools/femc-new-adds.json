@@ -17638,6 +17638,56 @@
         "assets/femc/portraits/jungwon-hoax-newyear/serious.webp": "81ff71238798a836d116b8a2ba59778bc6d492a68468f66c42a7a34c5b3c53f5",
         "assets/femc/portraits/jungwon-hoax-newyear/surprised.webp": "3a4cb68095a2e92f442ce8f2363ba3cbeb7d640d7d0eb6803867c7d1e50a7cb8"
       }
+    },
+    {
+      "batch": 89,
+      "source": "olivia-casual-sheet.png",
+      "sourceNow": "Added to Game/olivia-casual-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7478877b39d48e25743b2be62fd5c25b5fb69c08386e6e46e61d8f82c83d8a88",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/olivia/neutral.webp",
+      "character": "olivia",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.85,
+      "placement": "olivia's default face everywhere (portraits/olivia/); her first sheet (batch 61) is now portraits/olivia-runners-regionals/, mapped in Runners eventFaces['runners-regionals']",
+      "outputs": {
+        "assets/femc/portraits/olivia/flustered.webp": "96b4b2e30e9ee62dffbbd98fc2f147ea99742022e9efa06e7270936cbfdf1664",
+        "assets/femc/portraits/olivia/happy.webp": "9268b1f999f04f5a55f76afc1471a2f635794276c75bdc2cde3fd06fe88c25bb",
+        "assets/femc/portraits/olivia/neutral.webp": "443c9c512e858e533240f463dff9bad3bd01d274e9f13ff7cdcd553ccb9d1b54",
+        "assets/femc/portraits/olivia/sad.webp": "2efb5402a40d90c9b31940bc079924a2752864fefff71d52e3dbdc6d6a8dd773",
+        "assets/femc/portraits/olivia/serious.webp": "5108dddfbfaf06be2e8646b0ca4e80553d90620a7945206dd41cf9189913f3d2",
+        "assets/femc/portraits/olivia/surprised.webp": "a3dc171c71445bec035a6e62bc8a1a137c55e012612ab6fcc47a29e7728f4426"
+      }
+    },
+    {
+      "batch": 89,
+      "source": "haerin-casual-sheet.png",
+      "sourceNow": "Added to Game/haerin-casual-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9002f66f6547f43731566adad18246d91d35695f36adc5841b4d1c5e43ec6e98",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/haerin/neutral.webp",
+      "character": "haerin",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.93,
+      "placement": "haerin's default face everywhere (portraits/haerin/); her first sheet (batch 61) is now portraits/haerin-runners-regionals/, mapped in Runners eventFaces['runners-regionals']",
+      "outputs": {
+        "assets/femc/portraits/haerin/flustered.webp": "21108f33c106a9f1cb527f3d35cb92511bab0410017df091e4045603f7bd09a0",
+        "assets/femc/portraits/haerin/happy.webp": "358bc9cecab5d7941ae8cde8be170d0128c0452fb7118bfcef2ed3655a3065da",
+        "assets/femc/portraits/haerin/neutral.webp": "04eb923c555090f0a0965473cd65f48e21adb9b6839ad167e94ad095873e087c",
+        "assets/femc/portraits/haerin/sad.webp": "d0b8cf76d60ded99ba60671209361e1be001a33cc3f6d0b94c25fe2dafe31b10",
+        "assets/femc/portraits/haerin/serious.webp": "a5c47db17c4d0217fc91a22c44d93a36e95ced4c4e56ef07661e9281c21518b7",
+        "assets/femc/portraits/haerin/surprised.webp": "fadd56947aea906d228e0e6513386c82171bd8ba4ab6d3ed2adec0128971a2f9"
+      }
     }
   ],
   "batch1Validation": {
@@ -18883,5 +18933,23 @@
     ],
     "notTested": "no browser tests (Kat at work): tests/femc_epilogue.py --only hoax (its _loaded checks now 25), in-scene face size at 1000x486 and 375x812",
     "html": "femc-game.html epilogue v27, portraits/index.js v143, scale.js v153 (FEMC_PORTRAIT_V 13); DATA_V 25"
+  },
+  "batch89Validation": {
+    "date": "2026-10-29",
+    "scope": "Olivia and Haerin: casual sheets become their default faces; their first faces (the SU eSports jerseys) only at Regionals (Kat's ruling)",
+    "sourcesInspected": "both viewed; cuts on a magenta contact sheet; neutrals in a scale lineup beside their Regionals faces",
+    "sourcesIntegrated": 2,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "kept": "the old faces are kept byte for byte: git mv portraits/olivia -> portraits/olivia-runners-regionals and portraits/haerin -> portraits/haerin-runners-regionals (the batch 61 entries' destinations now live there); their cut PNGs moved unchanged from Character Portraits/Olivia and /Haerin to Olivia-Runners-Regionals and Haerin-Runners-Regionals (sha256 checked); index.js lists both ids",
+    "engine": "Runners eventFaces['runners-regionals'] gains olivia and haerin (epi-r-regionals-1 / -2)",
+    "scaleMethod": "as batch 87; the casual sheets come out at the same scales as the old faces (olivia 0.85, haerin 0.93), so both old values stay and the -runners-regionals ids take them too",
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script",
+      "py_compile tests/femc_epilogue.py"
+    ],
+    "notTested": "no browser tests (Kat at work): tests/femc_epilogue.py (its _loaded checks now 26; the runners1 event-outfit check now also covers Olivia at Regionals), in-scene face size at 1000x486 and 375x812",
+    "html": "femc-game.html epilogue v28, portraits/index.js v144, scale.js v154 (FEMC_PORTRAIT_V 14); DATA_V 26"
   }
 }

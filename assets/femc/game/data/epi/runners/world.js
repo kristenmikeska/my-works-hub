@@ -130,7 +130,8 @@
     eventFaces: {
       'runners-holiday': { solar: 'solar-runners-holiday', haechan: 'haechan-runners-holiday', hanni: 'hanni-runners-holiday', hyein: 'hyein-runners-holiday',
         minji: 'minji-runners-holiday', mark: 'mark-runners-holiday', jaehyun: 'jaehyun-runners-holiday' }, // epi-r-holiday (12/19, the Sigma party)
-      'runners-regionals': { solar: 'solar-runners-regionals', minji: 'minji-runners-regionals' } // epi-r-regionals-1 / -2 (12/6-12/7)
+      // Olivia's and Haerin's first faces are their jerseys (Kat, batch 89): portraits/olivia and haerin are their casual looks now.
+      'runners-regionals': { solar: 'solar-runners-regionals', minji: 'minji-runners-regionals', olivia: 'olivia-runners-regionals', haerin: 'haerin-runners-regionals' } // epi-r-regionals-1 / -2 (12/6-12/7)
     },
     variants: {
       morning: {

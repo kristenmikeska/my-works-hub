@@ -1,6 +1,6 @@
 # Art to make
 
-**20 items:** 20 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 40 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**20 items:** 20 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 38 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -280,22 +280,6 @@ Attach: Chenle
 Save as: `Chenle-runners-regionals-sheet.png`
 ```
 A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: the bright orange SU eSports jersey with navy shoulder panels, a headset pushed up on his head, a sweatband on one wrist. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Olivia: Regionals** *(optional)*  
-Olivia's face at Regionals in the Runners epilogue (the SU eSports team).  
-Attach: `olivia-sheet.png`  
-Save as: `Olivia-runners-regionals-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: the bright orange SU eSports jersey with navy shoulder panels worn over a long-sleeved black top, a headset round her neck. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Haerin: Regionals** *(optional)*  
-Haerin's face at Regionals in the Runners epilogue (the SU eSports team).  
-Attach: `haerin-sheet.png`  
-Save as: `Haerin-runners-regionals-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: the bright orange SU eSports jersey with navy shoulder panels, oversized, sleeves past her wrists, a headset round her neck. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
 ```
 
 ### HOAX: Christmas

@@ -84,9 +84,9 @@ window.FEMC_PORTRAIT_SCALE = {
   'kazuha-runners': 0.88, // batch 64: Kat's remade head-and-shoulders sheet
   'chaewon-runners': 0.82, // batch 61: Runners epilogue faces, eyes-to-chin matched to Hanni, Minji and Haechan
   doyoung: 1.05, // his sheet was drawn to the chest; cut to head and shoulders
-  haerin: 0.93,
+  haerin: 0.93, // batch 89: her casual sheet (the default); eyes level with her Regionals face
   jeno: 0.97,
-  olivia: 0.85,
+  olivia: 0.85, // batch 89: her casual sheet (the default); eyes level with her Regionals face
   'solar-hoax': 0.88, // Solar's HOAX look (HOAX world faces map)
   'chaewon-hoax': 0.82, // batch 62: HOAX epilogue outfits and Solar's parents (HOAX world faces map)
   'eunchae-hoax': 0.9,
@@ -124,6 +124,9 @@ window.FEMC_PORTRAIT_SCALE = {
   'jungwon-hoax-party': 1.0,
   'solar-hoax-newyear': 0.9,
   'jungwon-hoax-newyear': 1.0,
+  // batch 89: Olivia's and Haerin's old faces are their Regionals jerseys (Kat); their casual sheets are the default now
+  'olivia-runners-regionals': 0.85,
+  'haerin-runners-regionals': 0.93,
   sunghoon: 0.95,
   sunoo: 1.0,
   tifa: 1.03,
@@ -190,4 +193,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 13;
+window.FEMC_PORTRAIT_V = 14;
