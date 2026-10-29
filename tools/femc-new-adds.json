@@ -17463,6 +17463,181 @@
         "assets/femc/portraits/minji-runners-regionals/serious.webp": "7205f488d98514deffa955622a104ab318756f07c35aa7971c1a9d2d7ddb7d32",
         "assets/femc/portraits/minji-runners-regionals/surprised.webp": "d6100365443355a9eda6360181cf8d4c9ea53ce474eabf5c4e61bb96181c0004"
       }
+    },
+    {
+      "batch": 88,
+      "source": "solar-hoax-christmas-sheet.png",
+      "sourceNow": "Added to Game/solar-hoax-christmas-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c172c6aa258ab88745ad3b97b299e2be3fda81fc74c18a50ecd4f45bab36c72e",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/solar-hoax-christmas/neutral.webp",
+      "character": "solar-hoax-christmas",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.9,
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-christmas'].solar; epi-h-christmas (story-w1.js) names the key",
+      "outputs": {
+        "assets/femc/portraits/solar-hoax-christmas/flustered.webp": "2ccc1edf983a426d9bffca20f6469d8a3bda69e8983e87383b1c4233aa8813e5",
+        "assets/femc/portraits/solar-hoax-christmas/happy.webp": "ee58a475a28b0b5265a0bf4ff515ef74692326ffa5075662668a194d1bae6e80",
+        "assets/femc/portraits/solar-hoax-christmas/neutral.webp": "69988dfbb3bc0298cab786aa6d5c4f13c95601d8d4843414b180d02940ba447e",
+        "assets/femc/portraits/solar-hoax-christmas/sad.webp": "1d93d6ed688b77cfc1a64fcb16a72c1b2594dac74beae928c56cfc592322c397",
+        "assets/femc/portraits/solar-hoax-christmas/serious.webp": "150c5228b9533b6b445fbe0ef538a9a9833f7d6d74fec18ddd3e9e4b2cd9afc3",
+        "assets/femc/portraits/solar-hoax-christmas/surprised.webp": "bab653e408e1ed114d195bcb9a9759ebc19e3d06ef170353c65870003088099b"
+      }
+    },
+    {
+      "batch": 88,
+      "source": "jungwon-hoax-christmas-sheet.png",
+      "sourceNow": "Added to Game/jungwon-hoax-christmas-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9274254513b7ee38638a201fa2abfe49896220caf287d79de3e62eb10b59330c",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/jungwon-hoax-christmas/neutral.webp",
+      "character": "jungwon-hoax-christmas",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.0,
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-christmas'].jungwon; epi-h-christmas (story-w1.js) names the key",
+      "outputs": {
+        "assets/femc/portraits/jungwon-hoax-christmas/flustered.webp": "b7d188e01f8bf0dd8c85d2c30b2f634d592703ef601fefe0373001714a1f5e32",
+        "assets/femc/portraits/jungwon-hoax-christmas/happy.webp": "d4802a7f30cc488d1f8531c62bb75c23079fedfd38df2d4992e5113eb606898c",
+        "assets/femc/portraits/jungwon-hoax-christmas/neutral.webp": "577200671c4c226418e96fe268c434d103322ff59c769c62af0332dc43ab37a8",
+        "assets/femc/portraits/jungwon-hoax-christmas/sad.webp": "e14bb569b8c092a247fcaf5180d138b4b86c26d7950b711068d4d37d29254db9",
+        "assets/femc/portraits/jungwon-hoax-christmas/serious.webp": "35a639ced70509893f00662de35a9ac99e14b7f9e81e3a4b98ffb3d022a3e85b",
+        "assets/femc/portraits/jungwon-hoax-christmas/surprised.webp": "3c48e6589eb7b025e4a87df982a2179cb8f54892d0dfd312239038cee4ce46e1"
+      }
+    },
+    {
+      "batch": 88,
+      "source": "jihoon-hoax-christmas-sheet.png",
+      "sourceNow": "Added to Game/jihoon-hoax-christmas-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "5c54e1ee46e73561fe596691a5b2a3e554d60906d196ff3be4099335bfcaa62d",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/jihoon-hoax-christmas/neutral.webp",
+      "character": "jihoon-hoax-christmas",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.08,
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-christmas'].jihoon; epi-h-christmas (story-w1.js) names the key",
+      "outputs": {
+        "assets/femc/portraits/jihoon-hoax-christmas/flustered.webp": "c6a84c4449cfd0236f4f02fa819feceabc4fb924b3afcaaaeb2480854888eb3c",
+        "assets/femc/portraits/jihoon-hoax-christmas/happy.webp": "8f572a4dbd2f07dff67b4fb3d58f4d2a2506cdcceb22968a3b3cc2217f8185ac",
+        "assets/femc/portraits/jihoon-hoax-christmas/neutral.webp": "916d4d76070333076830b378c5df0781259580374594b823a1fd108229bca752",
+        "assets/femc/portraits/jihoon-hoax-christmas/sad.webp": "323a76243a49ba6560d88c4ed127c776885c1ae5a8b5cad4c8fd3119c3cd102c",
+        "assets/femc/portraits/jihoon-hoax-christmas/serious.webp": "344d8f08c3482d7b33786071e9591b629ac8ccf227715e4f6205d6241ece5744",
+        "assets/femc/portraits/jihoon-hoax-christmas/surprised.webp": "f03f5b1abc3eea97cc0c225f890221b21c14793312d712d632dd31a20399a0f4"
+      }
+    },
+    {
+      "batch": 88,
+      "source": "solar-hoax-party-sheet.png",
+      "sourceNow": "Added to Game/solar-hoax-party-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7c9d159f05c21e898e27e4db9f8d4a3a2050e923a5e817bb0c080fbc515cc9f9",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/solar-hoax-party/neutral.webp",
+      "character": "solar-hoax-party",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.9,
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-party'].solar; epi-h-party (story-w2.js) names the key",
+      "outputs": {
+        "assets/femc/portraits/solar-hoax-party/flustered.webp": "8e034e7455e81610743df96a4ad58f60cf3cf179b93704733101d5c19759fd81",
+        "assets/femc/portraits/solar-hoax-party/happy.webp": "386b0e2c3530379f030bdaa7f77aad5041debc980999af9aae10111b680f5280",
+        "assets/femc/portraits/solar-hoax-party/neutral.webp": "8a8e26b132865da826c150ac58788a040354645825cbe83ac3de04a02046c055",
+        "assets/femc/portraits/solar-hoax-party/sad.webp": "d4cad778b7803ce5a7bba4ed71f5ae805cfdc638d0e00c55a1aafd9ea8eb075c",
+        "assets/femc/portraits/solar-hoax-party/serious.webp": "68073592715bd9b73c6f6d181a1e62da4959de787bd06dec64283024a65886bf",
+        "assets/femc/portraits/solar-hoax-party/surprised.webp": "29248ee6801333ff0b522618f8dc6be034f2b027031c58bac467d8a7fa20de0a"
+      }
+    },
+    {
+      "batch": 88,
+      "source": "jungwon-hoax-party-sheet.png",
+      "sourceNow": "Added to Game/jungwon-hoax-party-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8150dabd6ba6488584f8c020e179b8b6f181e24fb1585728ab3d7fb519706c99",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/jungwon-hoax-party/neutral.webp",
+      "character": "jungwon-hoax-party",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.0,
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-party'].jungwon; epi-h-party (story-w2.js) names the key",
+      "outputs": {
+        "assets/femc/portraits/jungwon-hoax-party/flustered.webp": "8aa85cf3be288bb2f6ce70b6db45f52fbee9d769118e583011ab87a2e49b5364",
+        "assets/femc/portraits/jungwon-hoax-party/happy.webp": "85b750233f06a5995bbefce0b6923b6fec1c10f964c0aac0b4cb9aad89bafea0",
+        "assets/femc/portraits/jungwon-hoax-party/neutral.webp": "8afaeb01fa491bfcc4eb8d358adb8d7cf2aef53dc9c253db66b81ecadc307e8c",
+        "assets/femc/portraits/jungwon-hoax-party/sad.webp": "74a8b8c396b52b9b5941603a02207ffc6493e2a7756a97058c4c6ec5a313920e",
+        "assets/femc/portraits/jungwon-hoax-party/serious.webp": "42bb7ff0944a147fa88f3cc89bc3612fb41360f19d4f4fc0c2f9e6c3b0caf0df",
+        "assets/femc/portraits/jungwon-hoax-party/surprised.webp": "a10719c2445d6e2a49821706f47f0faec22e206a8701d42d947b514bc91cb178"
+      }
+    },
+    {
+      "batch": 88,
+      "source": "solar-hoax-newyear-sheet.png",
+      "sourceNow": "Added to Game/solar-hoax-newyear-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "be9c78fe5da28a4dd933bdf5af3ddff2f8a8d79d268634a06485746e191a6b62",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/solar-hoax-newyear/neutral.webp",
+      "character": "solar-hoax-newyear",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.9,
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-newyear'].solar; epi-h-new-year (story-w2.js) names the key",
+      "outputs": {
+        "assets/femc/portraits/solar-hoax-newyear/flustered.webp": "17307c31b290b0d965ea5038b464aa579c503dd6aece2b2298b839ce614c234d",
+        "assets/femc/portraits/solar-hoax-newyear/happy.webp": "1e695b69456b97a89dbf2ac3becb9a1d2e3ed446e3ce9450cb9e5171dfb16663",
+        "assets/femc/portraits/solar-hoax-newyear/neutral.webp": "94381933d692f396ffb57a89423c883e646a386256aeda3a0ec6f05be9950877",
+        "assets/femc/portraits/solar-hoax-newyear/sad.webp": "3708c768cafb08a6fd766853442961e35c50032c3a9174eb58c7acd7e5e28797",
+        "assets/femc/portraits/solar-hoax-newyear/serious.webp": "95527116ad6d353201da7734ca5b8bc764cd8af6c82b25201a2e86bb2270b587",
+        "assets/femc/portraits/solar-hoax-newyear/surprised.webp": "d8389c8da54d9f1d5b892e5acbc0d20eaf71ebb1790ce342d018c7b1a6d4948e"
+      }
+    },
+    {
+      "batch": 88,
+      "source": "jungwon-hoax-newyear-sheet.png",
+      "sourceNow": "Added to Game/jungwon-hoax-newyear-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9d9bf5c56304ee691af0b7a2c04046f12e02c9185d54f230885c9ab7eeb5f910",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/jungwon-hoax-newyear/neutral.webp",
+      "character": "jungwon-hoax-newyear",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.0,
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-newyear'].jungwon; epi-h-new-year (story-w2.js) names the key; Jungwon has no lines in that scene yet, so it is mapped but not seen",
+      "outputs": {
+        "assets/femc/portraits/jungwon-hoax-newyear/flustered.webp": "164e88a4d8d0fcaf0be63952be86c0143d535f01213c9980edc7f4d3c7a790f8",
+        "assets/femc/portraits/jungwon-hoax-newyear/happy.webp": "5273b27e8ec7dd6ad91827761144080e7545ba5cdb390bddb752e5ab1bb69c93",
+        "assets/femc/portraits/jungwon-hoax-newyear/neutral.webp": "9b933ef0165a1443731e6692199b54e8ac4559a9bb9158358b16d0d024c04763",
+        "assets/femc/portraits/jungwon-hoax-newyear/sad.webp": "f5ed759646ad79a74426068c1aedc22ab24d494bc52cc4f810236fdb8500fc7e",
+        "assets/femc/portraits/jungwon-hoax-newyear/serious.webp": "81ff71238798a836d116b8a2ba59778bc6d492a68468f66c42a7a34c5b3c53f5",
+        "assets/femc/portraits/jungwon-hoax-newyear/surprised.webp": "3a4cb68095a2e92f442ce8f2363ba3cbeb7d640d7d0eb6803867c7d1e50a7cb8"
+      }
     }
   ],
   "batch1Validation": {
@@ -18690,5 +18865,23 @@
     ],
     "notTested": "no browser tests (Kat at work): tests/femc_epilogue.py (its _loaded checks now 24; new runners1 event-outfit check), in-scene face size at 1000x486 and 375x812",
     "html": "femc-game.html core v57, scene v19, epilogue v26, portraits/index.js v142, scale.js v152 (FEMC_PORTRAIT_V 12); DATA_V 24"
+  },
+  "batch88Validation": {
+    "date": "2026-10-29",
+    "scope": "HOAX event outfit faces: Christmas Day (Solar, Jungwon, Jihoon), the winter-break party (Solar, Jungwon), New Year's Day (Solar, Jungwon)",
+    "sourcesInspected": "all 7 viewed; every cut on magenta contact sheets after the cleanup; neutrals in a scale lineup beside solar-hoax, jungwon-hoax and Jihoon's year face",
+    "sourcesIntegrated": 7,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "engine": "HOAX world.js eventFaces hoax-christmas / hoax-party / hoax-newyear on the batch 87 hook; Christmas Eve (epi-h-eve) keeps the usual faces (its text has Jungwon in a hoodie and a coat over pyjamas)",
+    "scaleMethod": "as batch 87 (Vision eye landmarks, eyes level with the usual HOAX face); face sizes 98-105% of it",
+    "textTweaks": "epi-h-christmas: Jungwon's sofa lines say 'his good sweater' (was 'good coat'), so his sweater portrait matches once he's inside; the doorstep keeps the coat (the CG)",
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script",
+      "py_compile tests/femc_epilogue.py"
+    ],
+    "notTested": "no browser tests (Kat at work): tests/femc_epilogue.py --only hoax (its _loaded checks now 25), in-scene face size at 1000x486 and 375x812",
+    "html": "femc-game.html epilogue v27, portraits/index.js v143, scale.js v153 (FEMC_PORTRAIT_V 13); DATA_V 25"
   }
 }

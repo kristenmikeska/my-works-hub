@@ -118,6 +118,12 @@
     },
     // This world's own faces (core.js worldFace): Solar's HOAX look, the four's HOAX outfits and Solar's parents (FEMC-ART-WIRING).
     faces: { solar: 'solar-hoax', sakura: 'sakura-hoax', eunchae: 'eunchae-hoax', kazuha: 'kazuha-hoax', chaewon: 'chaewon-hoax', mom: 'kim-mom', dad: 'kim-dad', jungwon: 'jungwon-hoax' },
+    // Event outfits (core.js eventFaces; FEMC-ART-WIRING "Extras"): an event's `faces: '<key>'` swaps these in for its scenes only.
+    eventFaces: {
+      'hoax-christmas': { solar: 'solar-hoax-christmas', jungwon: 'jungwon-hoax-christmas', jihoon: 'jihoon-hoax-christmas' }, // epi-h-christmas (12/25)
+      'hoax-party': { solar: 'solar-hoax-party', jungwon: 'jungwon-hoax-party' }, // epi-h-party (12/29)
+      'hoax-newyear': { solar: 'solar-hoax-newyear', jungwon: 'jungwon-hoax-newyear' } // epi-h-new-year (1/1)
+    },
     variants: {
       morning: {
         school: ["Hanlim at eight, snow on the gate, and a whole building full of people with opinions about where the council had been.",

@@ -1,6 +1,6 @@
 # Art to make
 
-**20 items:** 20 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 47 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**20 items:** 20 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 40 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -300,30 +300,6 @@ A 3 × 2 portrait sheet on a plain white background, clear space between cells, 
 
 ### HOAX: Christmas
 
-**[ ] Solar: Christmas** *(optional)*  
-Solar's face on Christmas in the HOAX epilogue.  
-Attach: `solar-hoax-sheet.png`  
-Save as: `Solar-hoax-christmas-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a soft oatmeal cable-knit turtleneck sweater with a thin gold necklace, a tiny nose stud. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Jungwon: Christmas** *(optional)*  
-Jungwon's face on Christmas in the HOAX epilogue.  
-Attach: Jungwon  
-Save as: `Jungwon-hoax-christmas-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a navy fair-isle Christmas sweater with a white snowflake band over a white collared shirt. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Jihoon: Christmas** *(optional)*  
-Jihoon's face on Christmas in the HOAX epilogue.  
-Attach: Jihoon  
-Save as: `Jihoon-hoax-christmas-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: an oversized black knit sweater with a small red embroidered reindeer, silver chains, a black beanie. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
 **[ ] Cherry: Christmas** *(optional)*  
 Cherry's face on Christmas in the HOAX epilogue.  
 Attach: Cherry  
@@ -381,22 +357,6 @@ A 3 × 2 portrait sheet on a plain white background, clear space between cells, 
 ```
 
 ### HOAX: the winter-break party
-
-**[ ] Solar: the winter-break party** *(optional)*  
-Solar's face at the winter-break party in the HOAX epilogue.  
-Attach: `solar-hoax-sheet.png`  
-Save as: `Solar-hoax-party-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black satin slip top under a cropped white tweed jacket, small gold hoops, a tiny nose stud. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Jungwon: the winter-break party** *(optional)*  
-Jungwon's face at the winter-break party in the HOAX epilogue.  
-Attach: Jungwon  
-Save as: `Jungwon-hoax-party-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black button-up shirt tucked into dark trousers, a silver watch. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
 
 **[ ] Jihoon: the winter-break party** *(optional)*  
 Jihoon's face at the winter-break party in the HOAX epilogue.  
@@ -463,22 +423,6 @@ A 3 × 2 portrait sheet on a plain white background, clear space between cells, 
 ```
 
 ### HOAX: New Year (Seollal)
-
-**[ ] Solar: New Year (Seollal)** *(optional)*  
-Solar's face at New Year in the HOAX epilogue.  
-Attach: `solar-hoax-sheet.png`  
-Save as: `Solar-hoax-newyear-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a Seollal hanbok: a deep navy jeogori with gold-printed trim over a rose-pink chima, a small gold hair pin. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Jungwon: New Year (Seollal)** *(optional)*  
-Jungwon's face at New Year in the HOAX epilogue.  
-Attach: Jungwon  
-Save as: `Jungwon-hoax-newyear-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a Seollal hanbok: a pale blue jeogori and navy baji under a dark grey durumagi coat. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
 
 **[ ] Jihoon: New Year (Seollal)** *(optional)*  
 Jihoon's face at New Year in the HOAX epilogue.  

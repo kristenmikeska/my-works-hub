@@ -57,7 +57,7 @@
   (R.events ||= []).push(
 
     // 12/29 — the winter-break party ----------------------------------------------------------------------------------------
-    { id: 'epi-h-party', date: '12/29', slot: 'evening', consumes: true, title: 'the party', place: 'Hanlim · The Party', time: 'Evening', scene: [
+    { id: 'epi-h-party', date: '12/29', slot: 'evening', consumes: true, faces: 'hoax-party', title: 'the party', place: 'Hanlim · The Party', time: 'Evening', scene: [
       { music: 'epi-h-party' },
       { flag: 'epi-h-party' },
       { n: "The house belonged to some third-year on the swim team whose parents were in Jeju until the fourth, and by nine o'clock it belonged to everyone else, shoes heaped in the entryway like a landslide, a speaker on the kitchen island doing something violent to the bass, green bottles lined up along the windowsill catching the streetlight, and the rest of the island buried under convenience-store chips and somebody's mother's good fruit plate, which nobody had touched." },
@@ -405,7 +405,7 @@
     ] },
 
     // 1/1 — New Year's Day -------------------------------------------------------------------------------------------------
-    { id: 'epi-h-new-year', date: '1/1', slot: 'early', consumes: true, title: 'tteokguk', place: 'Hanlim · Home · Kitchen', time: 'Morning', scene: [
+    { id: 'epi-h-new-year', date: '1/1', slot: 'early', consumes: true, faces: 'hoax-newyear', title: 'tteokguk', place: 'Hanlim · Home · Kitchen', time: 'Morning', scene: [
       { music: 'epi-h-home' },
       { n: "Her mother had been up since six making tteokguk, which meant the whole house smelled of anchovy broth and sesame oil and the faint scorch of egg strips, and her father was at the table in his good cardigan reading the news on his tablet at arm's length, and Nana was under the table with his chin on her father's slipper, waiting for a miracle." },
       { s: 'dad', t: "Eat. You're a year older." },

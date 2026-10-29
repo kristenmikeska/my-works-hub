@@ -116,6 +116,14 @@ window.FEMC_PORTRAIT_SCALE = {
   'jaehyun-runners-holiday': 0.98,
   'solar-runners-regionals': 0.89,
   'minji-runners-regionals': 0.86,
+  // batch 88: HOAX event outfits, eyes level with solar-hoax, jungwon-hoax and Jihoon's year face
+  'solar-hoax-christmas': 0.9,
+  'jungwon-hoax-christmas': 1.0,
+  'jihoon-hoax-christmas': 1.08,
+  'solar-hoax-party': 0.9,
+  'jungwon-hoax-party': 1.0,
+  'solar-hoax-newyear': 0.9,
+  'jungwon-hoax-newyear': 1.0,
   sunghoon: 0.95,
   sunoo: 1.0,
   tifa: 1.03,
@@ -182,4 +190,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 12;
+window.FEMC_PORTRAIT_V = 13;

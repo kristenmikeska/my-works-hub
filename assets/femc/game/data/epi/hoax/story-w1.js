@@ -743,7 +743,7 @@
   ] },
 
   // ───────────────────────────── 12/25, afternoon: Christmas ─────────────────────────────
-  { id: 'epi-h-christmas', date: '12/25', slot: 'after', consumes: true, title: 'four cups', place: 'Hanlim · Home · Living Room', time: 'Daytime', scene: [
+  { id: 'epi-h-christmas', date: '12/25', slot: 'after', consumes: true, faces: 'hoax-christmas', title: 'four cups', place: 'Hanlim · Home · Living Room', time: 'Daytime', scene: [
     { music: 'epi-h-christmas' },
     { n: "Her parents were home on Christmas Day, both of them, at the same time, in the same room, which happened about as often as a comet, and the house felt it. Her mother had been cooking since nine. Her father had been told to stay out of the kitchen since nine and fifteen. The heating was up too high, the windows were fogged, and there was a cake from the good bakery on the counter that her mother had ordered a week ago, back when she still thought her daughter was at a retreat." },
     { n: "Nana had been given a red bow. Nana had eaten half of the red bow. The other half hung off his collar like a medal." },
@@ -781,7 +781,7 @@
     { n: "Her mother hugged him. Full arms. Spoon and all. Like he was the one who'd been gone nine days. Her father came out into the hall and clapped him on the back so hard the cocoa sloshed, and asked him about his car, and about the noise the car had been making, and Jihoon said he'd fixed it himself, and her father looked at him the way her father had never once looked at a boy holding his daughter's hand in the driveway." },
     { n: "And Nana. Nana left Jungwon's lap like he'd been fired out of it." },
     { s: 'jihoon', f: 'happy', t: "My son! My beloved! You got fat! I'm so proud of you!" },
-    { n: "Then he looked up, past her parents, past the dog, into the living room, at the boy sitting on the edge of the sofa with a cup of tea on his knee and dog hair all over his good coat." },
+    { n: "Then he looked up, past her parents, past the dog, into the living room, at the boy sitting on the edge of the sofa with a cup of tea on his knee and dog hair all over his good sweater." },
     { n: "His smile didn't go anywhere. It just got wider. That was worse." },
     { s: 'jihoon', f: 'happy', t: "Oh. Jungwon. Hi. I only brought four." },
     { n: "Jungwon stood up. He set his tea down on a coaster. He did it very carefully, very precisely, the exact centre of the coaster, and when he straightened up his face was perfectly pleasant and perfectly polite and about as warm as the inside of a freezer." },
@@ -877,7 +877,7 @@
         { s: 'sunghoon', f: 'neutral', t: "That's a Lannister." },
         { s: 'jake', f: 'happy', t: "A Jake *also* always pays his debts." },
         { n: "Behind her in the living room, Jungwon put his tea down on a coaster very slowly and closed his eyes." },
-        { n: "The council saw him. The council saw him on the sofa, with her father, with dog hair all over his good coat. There was a long silence on the step." },
+        { n: "The council saw him. The council saw him on the sofa, with her father, with dog hair all over his good sweater. There was a long silence on the step." },
         { s: 'niki', f: 'surprised', t: "Won is meeting the *parents*?" },
         { s: 'sunoo', f: 'happy', t: "On *Christmas*?" },
         { s: 'jay', f: 'neutral', t: "And Park Jihoon's here. Oh, this is *bad*. This is so bad. I'm coming in." },
