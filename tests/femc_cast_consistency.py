@@ -12,7 +12,7 @@ try:
  p.ws.call('Emulation.setEmulatedMedia',{'features':[{'name':'prefers-reduced-motion','value':'reduce'}]})
  p.goto('femc-game.html?debug=1');assert not p.console()
  p.eval((ROOT/'tests/femc_links.browser.js').read_text())
- current=p.eval('({links:FemcGame.LINKS,events:FemcGame.D.events})')
+ current=p.eval('({links:{...FemcGame.LINKS},events:FemcGame.D.events})')
  assert {k for k,v in current['links'].items() if v.get('kind')=='searcher'}==set(CAST)
  for cid,(world,romance) in CAST.items():
   link=current['links'][cid];assert (link['world'],link.get('romance'))==(world,romance),cid
