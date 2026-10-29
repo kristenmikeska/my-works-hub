@@ -164,6 +164,10 @@ EXTRA = {
     'epi-s-chinatown': 'Added to Game/epi-s-chinatown.jpeg',
     'epi-s-car': 'Added to Game/epi-s-car.jpeg',
     'epi-s-car-night': 'Added to Game/epi-s-car-night.jpeg',
+    # batch 80 (2026-10-28): Stay's hanami and Hyein's room, the true coda's station bench (also Stay's)
+    'epi-st-seaside-hanami': 'Added to Game/epi-st-seaside-hanami.jpeg',
+    'epi-st-hyein-room': 'Added to Game/epi-st-hyein-room.jpeg',
+    'epi-tr-station-bench': 'Added to Game/epi-tr-station-bench.jpeg',
 }
 SIZE = (1920, 1072)  # Kat's New Adds backgrounds; one with another shape is cropped / scaled to fill this
 

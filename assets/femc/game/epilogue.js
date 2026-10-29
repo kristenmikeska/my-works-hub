@@ -74,7 +74,7 @@ window.FemcEpilogue = (() => {
   const S = () => G.S, UI = () => W.FemcGameUI;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const clone = o => JSON.parse(JSON.stringify(o));
-  const DATA_V = 19; // data/epi/<world>/*.js ?v=
+  const DATA_V = 20; // data/epi/<world>/*.js ?v=
   // The worlds: the year's route flag that opens each, its name (the button) and place (slot labels), its data files.
   const WORLDS = {
     runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3'] },
@@ -566,9 +566,9 @@ window.FemcEpilogue = (() => {
      The album: ALBUM lists each world's CGs (all art-pending as of batch 9, so their tiles stay locked until a scene shows
      one), plus any cg a loaded world's scenes use. A section appears only for a world she has entered. */
   const ALBUM = {
-    runners: [['epi-r-regionals', 'Regionals'], ['epi-r-studio', 'The studio'], ['epi-r-footage', 'The footage'], ['epi-r-held', 'Held']],
+    runners: [['epi-r-regionals', 'Regionals'], ['epi-r-reel', "Minji's room"], ['epi-r-floor', 'The floor'], ['epi-r-studio', 'The studio'], ['epi-r-his-room', 'His room'], ['epi-r-holiday', 'The holiday party'], ['epi-r-footage', 'The footage'], ['epi-r-held', 'Held']],
     strangers: [['epi-s-moon', 'The first full moon'], ['epi-s-tide', 'The tide'], ['epi-s-held', 'Held']],
-    hoax: [['epi-h-seance', 'The séance'], ['epi-h-hearing', 'The hearing'], ['epi-h-held', 'Held']],
+    hoax: [['epi-h-eve-jungwon', 'Christmas Eve · Jungwon'], ['epi-h-eve-jihoon', 'Christmas Eve · Jihoon'], ['epi-h-seance', 'The séance'], ['epi-h-hearing', 'The hearing'], ['epi-h-held', 'Held']],
     stay: [['epi-stay-held', 'Held']],
     true: [['epi-true-coda', 'Every world']]
   };

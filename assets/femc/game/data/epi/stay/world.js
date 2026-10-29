@@ -39,7 +39,7 @@
     places: {
       bg: [
         ["Iwatodai Dorm · Haechan's Room", 'haechan-bedroom', null],
-        ["Iwatodai Dorm · Hyein's Room", 'pink-bedroom-2', null],
+        ["Iwatodai Dorm · Hyein's Room", 'epi-st-hyein-room', null], // batch 80
         ["Iwatodai Dorm · Hanni's Room", 'pink-bedroom-2', null],
         ["Iwatodai Dorm · Yunjin's Room", 'pink-bedroom', null],
         // The three worlds (the fights pull her there; stand-ins until FEMC-ART-TODO's bleed battlefields exist).
@@ -51,10 +51,13 @@
         ['Hanlim · School · Gym at Midnight', 'epi-h-gym-midnight', 'epi-h-gym-midnight'],
         ['Hanlim · School · Gym', 'flashback-hamlim-gym', null],
         ['Hanlim', 'flashback-hamlim-hallway', null],
+        ['Port Island · Seaside Park · Hanami', 'epi-st-seaside-hanami', null], // batch 80: the hanami event only; other park scenes keep the main rule
+        ['Iwatodai Station · Bench', 'epi-tr-station-bench', null], // batch 80 (the true coda's bench art): the concourse's last bench
         ...MAIN.bg
       ],
       // Stay's own copy (each list copied), so adding to it never changes the main year's weather.
-      weatherFx: Object.fromEntries(Object.entries(MAIN.weatherFx || {}).map(([k, v]) => [k, [...v]])),
+      // Stay's outdoor art is added to its copy only (the full slug: a bare 'epi-st-' would also catch the dorm room).
+      weatherFx: Object.fromEntries(Object.entries({ outdoor: [], ...(MAIN.weatherFx || {}) }).map(([k, v]) => [k, k === 'outdoor' ? [...v, 'epi-st-seaside-hanami'] : [...v]])),
       seasons: MAIN.seasons || {},
       home: { place: "Iwatodai Dorm · Solar's Room", bg: 'solar-dormroom-day' },
       school: { place: 'Iwatodai Dorm · Lounge', bg: 'iwatodaidorm-livingroom' },

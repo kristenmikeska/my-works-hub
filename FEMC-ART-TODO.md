@@ -1,6 +1,6 @@
 # Art to make
 
-**58 items:** 23 CGs · 3 places · 4 character pieces · 28 wardrobe. 54 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**49 items:** 17 CGs · 4 character pieces · 28 wardrobe. 45 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -68,57 +68,7 @@ Save as: `story-new-years-eve-platform-cg.png`
 Persona 3 Reload style event CG, 16:9, no text. A monorail station platform late on New Year's Eve, around eleven at night, cold, platform lights glowing; beyond the edge of the platform a huge bright full moon hangs low over the bay, placed there almost on purpose. A train with lit windows waits at the far end. Wren (the first attached image's face; her cap, long sleeves falling over her hands) sits alone on a bench, small and still, looking up at Solar. Solar (the second attached image's face; long dark hair, winter coat and scarf) has just arrived and stands beside the bench, about to sit down next to her. Cold blue night, silver moonlight, quiet. Lonely, tender, the year about to end. Keep the faces clear of the edges.
 ```
 
-### The epilogue: Runners
-
-**[ ] Runners · 12/19 · the Sigma holiday party** *(optional)*  
-The holiday party at the Sigma house, the first hour (every route).  
-Attach: Solar (her Runners look), Jaemin, Jeno, `bg/epi-r-sigma-holiday.webp` (for the room only)  
-Save as: `epi-r-holiday-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The big living room of an old fraternity house at a holiday party, Friday night in December: string lights stapled along every surface and up the banister, a fireplace with a clock over it, a bedsheet on the wall with tinsel safety-pinned to it as a photo wall, red cups, a punch bowl, a crowd of college students in party clothes, snow outside the dark windows. Solar (the first attached image's face; long dark hair worn down and glossy, a wine-red silk dress cut on the bias with long sleeves and an open back, small earrings) has just come in, standing in the middle of the frame a little unsure and lovely, a hand at her collarbone. Jaemin (the second attached image's face; styled hair, a velvet blazer over a black shirt) is coming toward her through the crowd with both arms thrown open and a delighted grin, a step away. Behind them Jeno (the third attached image's face; a Christmas sweater) ladles from the punch bowl with a wink at the camera, and a younger boy stands proudly next to a big speaker. Warm, loud, glittering, the good part of the night. Keep the faces clear of the edges.
-```
-
-**[ ] Runners · Haechan · his room at the Sigma house** *(optional)*  
-Haechan's third hangout, night, his room at the Sigma house.  
-Attach: Solar (her Runners look), Haechan (his Runners look once it's made, his neutral portrait until then), `bg/epi-r-sigma-his-room.webp` (for the room only)  
-Save as: `epi-r-his-room-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A college boy's bedroom in a fraternity house at night in winter, the desk lamp the only light, a laptop on the desk with a yellow sticky note over its camera, the blinds open on falling snow, warm lamp light on one side and blue snow light on the other. Haechan (the second attached image's face; dark hair falling into his eyes, a plain black T-shirt, silver rings) sits in his desk chair turned away from the desk, hands resting on his knees, looking up, not reaching. Solar (the first attached image's face; long dark hair with snow melting in it, a cream knit sweater under an open winter coat) stands between his knees, close, both her cold hands cupping his face, looking down at him; his breath caught at the cold of her fingers. Their faces a few inches apart. Hushed, tender, nothing hurried. Keep the faces clear of the edges.
-```
-
-**[ ] Runners · Minji · 12/10 · her room in the honors dorm** *(optional)*  
-The Minji route's 12/10 evening, her room in the honors dorm.  
-Attach: Solar (her Runners look), Minji  
-Save as: `epi-r-reel-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A very tidy college dorm room at night in December: two monitors on a desk glowing with a paused video frame of a girl standing under a lamppost in long golden afternoon light, a tower of hard drives stacked like a wedding cake, a corkboard of color-coded index cards in neat rows, a bed made with hospital corners, one small dying succulent on the windowsill, snow on the dark window. Minji (the second attached image's face; a baseball cap on backwards, an oversized hoodie) has turned her desk chair all the way round to face Solar, hands folded in her lap, serious and careful, about to ask something. Solar (the first attached image's face; long dark hair, a cream sweater, her coat still on) sits on the edge of the bed a few feet away, lit blue by the monitors, listening. Quiet, honest, the hum of the drives. Keep the faces clear of the edges.
-```
-
-**[ ] Runners · the cover · 12/10 · the girls' floor** *(optional)*  
-The cover route's 12/10, late, on Hanni and Hyein's floor.  
-Attach: Solar (her Runners look), Hanni, Hyein, `bg/epi-r-hanni-hyein-room.webp` (for the room only)  
-Save as: `epi-r-floor-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A shared sorority-house bedroom late at night, lit only by fairy lights strung along the wall, an old radiator under a snowy window, a corkboard over a desk pinned with fashion sketches of velvet outfits, a dress form in the corner. Three girls sit on the rug on the floor with their backs against the side of a bed. Hanni (the second attached image's face; hair down, an oversized sweatshirt and pajama shorts) in the middle-left with her knees up and her arms around them, her phone face down on the rug in front of her. Hyein (the third attached image's face; hair in a messy clip, a cardigan over pajamas) leans her head on Hanni's shoulder. Solar (the first attached image's face; long dark hair, a hoodie and sweatpants) sits close on Hanni's other side, and Hanni's hand has found hers on the rug and holds it. Nobody talking. Soft, shaky, held together. Keep the faces clear of the edges.
-```
-
 ### The epilogue: HOAX
-
-**[ ] HOAX · Jungwon · 12/24 · his street at night** *(optional)*  
-The Jungwon route's Christmas Eve, his street.  
-Attach: Solar (her HOAX look), Jungwon (his HOAX look once it's made, his neutral portrait until then)  
-Save as: `epi-h-eve-jungwon-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A quiet residential street in a Korean town on Christmas Eve at about nine at night: houses behind low walls and gates, every gate with the same little warm-white lights, streetlamps, snow falling slowly, the snow on the pavement untouched except for one line of slipper prints and tiny paw prints, a lit window in a house at the far end of the street. Jungwon (the second attached image's face; neat dark hair, a good dark wool coat buttoned over striped pajamas, house slippers in the snow, a watch on his wrist) walks beside Solar holding a leash with a very small fluffy white dog at the end of it, the dog sniffing a gate light. Solar (the first attached image's face; long dark hair, a padded winter coat, a scarf) walks close at his side; she has his other hand in her coat pocket with hers, both hands hidden in the pocket, and she is looking at him while he looks at the dog. Shy, cold, very sweet. Keep the faces clear of the edges.
-```
-
-**[ ] HOAX · Jihoon · 12/24 · the Christmas lights** *(optional)*  
-The Jihoon route's Christmas Eve, driving through the town's lights.  
-Attach: Solar (her HOAX look), Jihoon  
-Save as: `epi-h-eve-jihoon-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. Inside a car at night on Christmas Eve, driving slowly through a long tunnel of white Christmas lights in a park, the light coming through the windshield and windows in bright bars that slide over the inside of the car, the heater on full so the windows are a little fogged at the corners, snow outside. Jihoon (the second attached image's face; a dark puffer jacket, one hand on the wheel) drives, eyes on the tunnel ahead, his jaw tight, a bar of white light across his face. Solar (the first attached image's face; long dark hair, a winter coat and scarf, nose pink from the cold) sits in the passenger seat turned toward him, her head resting against the seat, watching him and saying nothing. Old friends in a small warm space. Nostalgic, close, a little sad. Keep the faces clear of the edges.
-```
 
 **[ ] HOAX · the council · 12/24 · Yeobo's after closing** *(optional)*  
 The council route's Christmas Eve, decorating the café after hours.  
@@ -190,7 +140,7 @@ Persona 3 Reload style event CG, 16:9, no text. A young woman's bedroom in a wea
 
 **[ ] Stay · 3/27 · hanami at Seaside Park** *(optional)*  
 The hanami under the cherry trees at Port Island Seaside Park (every route).  
-Attach: Solar, Yukari, Junpei, Akihiko, Mitsuru, Fuuka, Aigis, Ken, Koromaru, `bg/port-island-seaside-park.webp` (for the place only)  
+Attach: Solar, Yukari, Junpei, Akihiko, Mitsuru, Fuuka, Aigis, Ken, Koromaru, `bg/epi-st-seaside-hanami.webp` (for the place only)  
 Save as: `epi-st-hanami-cg.png`
 ```
 Persona 3 Reload style event CG, 16:9, no text. A warm Saturday at the end of March under a row of cherry trees in full bloom along a seawall by the bay, petals drifting down, families on blue tarps all along the path, bright soft spring sunlight. On their own blue tarp with their shoes off, a group of friends: Solar (the first attached image's face; long dark hair, a light spring cardigan over a dress) in the middle, laughing out loud, holding a paper cup of orange juice, with a dog dropping a ball into her lap; Koromaru (the ninth attached image; a white Shiba Inu) is the dog, with Ken (the eighth attached image's face; a boy of about eleven) a little way off on the grass, hands on hips. Yukari (the second attached image's face; a pink spring jacket) glances over at Solar's laugh, pleased. Junpei (the third attached image's face; a baseball cap) lies on his back groaning with a hand on his stomach. Akihiko (the fourth attached image's face; a grey hoodie) holds a bento box, looking a bit queasy. Mitsuru (the fifth attached image's face; elegant spring coat) kneels upright beside a lacquered three-tier lunch box with a small winning smile. Fuuka (the sixth attached image's face) has petals in her hair without knowing. Aigis (the seventh attached image's face) sits very straight, looking up at the blossoms. Bright, easy, a perfect ordinary day. Keep the faces clear of the edges.
@@ -226,33 +176,9 @@ Persona 3 Reload style event CG, 16:9, no text. A university quad on a December 
 
 ## 2. Places (Gemini)
 
-### The epilogue: Stay
+*(Nothing left: every place on the list is in the game.)*
 
-**[ ] Seaside Park at hanami** *(optional)*  
-The cherry blossoms along the seawall, the 3/27 hanami (now the plain seaside park stands in).  
-Attach: `bg/port-island-seaside-park.webp` (the picture to edit)  
-Save as: `epi-st-seaside-hanami.png`
-```
-Edit this picture. Keep the same seaside park, seawall, water, angle and art style; change it to cherry-blossom season on a warm Saturday at the end of March: a row of cherry trees along the seawall in full pale pink bloom, petals drifting down and lying on the grass and the path, blue picnic tarps spread out under the trees with shoes left at their edges, a picnic basket and a few lunch boxes on them, soft spring sunlight, a clear blue sky over the bay. 16:9, no people, no readable text.
-```
-
-**[ ] Hyein's room in the dorm** *(optional)*  
-Hyein's empty room on the dorm's second floor, 3/25 (now a borrowed lilac bedroom stands in).  
-Attach: `bg/solar-dormroom-day.webp` (for the style and the dorm's room layout)  
-Save as: `epi-st-hyein-room.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a student dormitory room in the same building and layout as the attached room, belonging to a girl who loves sewing and is not there: a neatly made bed, a sewing kit open on the floor with pins stuck into a pincushion in a neat spiral, a skirt with a half-finished hem laid over the desk chair, fabric swatches pinned to a corkboard, a small mirror, a dress pattern folded on the desk. Bright spring daylight through the window. Still, as if someone has just stepped out. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-### The epilogue: the true coda
-
-**[ ] The last bench at Iwatodai Station** *(optional)*  
-The far end of the station concourse, its last bench under the departures board, in the coda's mornings (now the platform stands in).  
-Attach: `bg/iwatodai-station.webp` (for the style only)  
-Save as: `epi-tr-station-bench.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the inside of a Japanese commuter station concourse early in the morning at the end of winter: a long row of plain benches along the wall, and at the far end the last bench, under a big departures board with blank flip panels, standing slightly apart and lit by pale light falling from high windows; a polished floor, ticket gates in the distance, a vending machine glowing softly. Quiet, cool, early, like a seat being kept. Match the painted style of the attached image. Keep everything important away from the edges.
-```
+---
 
 ## 3. Characters (ChatGPT)
 

@@ -136,7 +136,7 @@
   ] },
 
   // ───────────────────────────── 3/27, daytime: hanami ─────────────────────────────
-  { id: 'epi-st-hanami', date: '3/27', slot: 'after', consumes: true, title: 'first blossoms', place: 'Port Island · Seaside Park', time: 'Daytime', scene: [
+  { id: 'epi-st-hanami', date: '3/27', slot: 'after', consumes: true, title: 'first blossoms', place: 'Port Island · Seaside Park · Hanami', time: 'Daytime', scene: [
     { music: 'epi-st-spring' },
     { glitch: { stage: 1 } },
     { n: "The cherry trees along the seawall had opened that week all at once, the way they did, as if somebody had given an order. Saturday, warm for March, every blue tarp in Port Island spread out under them and every family and office party and couple sitting on one with their shoes off, and the petals coming down slow over all of it like the trees were tired of holding them." },

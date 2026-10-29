@@ -361,6 +361,7 @@
     { music: 'epi-r-holiday' },
     { n: "The last Friday before break, Sigma put on a jacket. That was the only way to describe it. The Friday party, the one that happened weekly without fail, had shaved and put on a tie and hung lights from every surface that would take a staple, and called itself a holiday party, and behaved, for the first hour, like it believed it." },
     { n: "Jaemin had hosted it the way some people direct films. There was a run of show on the fridge in his handwriting, doors at eight, Jeno, a speech at nine, a photo wall at ten that was just a bedsheet with tinsel safety-pinned to it, and at the bottom, underlined twice, *12:00 · the toast (EVERYONE).* Under that, smaller, in a different pen: *NO PINK PUNCH.* Under that, smaller still, in a third: *there is pink punch.*" },
+    { cg: 'epi-r-holiday' },
     { n: "Jeno handled the room. That was his job and his whole nature, an accelerant in a Christmas sweater, a hand on every back, a cup in every empty hand, pouring from a bowl he swore on his mother was eggnog. Renjun had the kitchen doorway and the face of a man at a wake he'd been looking forward to. Jisung had finally connected the speaker and was standing next to it like it was a child he'd raised." },
     { ifYear: { noFlag: 'arrived-jaemin' }, then: [
       { s: 'jaemin', f: 'happy', t: "The emergency vacationer! You made it to a party of mine in at least one universe. Growth." }
@@ -372,6 +373,7 @@
     { s: 'solar', t: "Midnight." },
     { s: 'jaemin', f: 'happy', t: "It's tradition. As of tonight." },
     { n: "She looked at the clock over the Sigma fireplace. It said 8:51. It was telling the right time. She checked her phone anyway, which also said 8:51, and put it away, and felt the evening open in front of her like a staircase in the dark, every step there, until one of them wasn't." },
+    { cg: null },
     { n: "Danielle was on the stairs. Three steps up, the way she always was, in black, a glass of something clear in her hand she wasn't drinking, her phone in the other. She'd done the budget for this party. Everyone knew she had, because she'd put *approved, D. Marsh* on the bottom of the spreadsheet in a font size that suggested she'd like it engraved. She lifted the glass an inch toward Solar. *Wear something you'd like to be remembered in,* she'd said on Tuesday. Solar had." },
     { ifFlag: 'epi-r-danielle-initial', then: [
       { n: "Solar's initials were on that spreadsheet, too, small, on a guest-list line she'd signed for the records. She thought about that now. She thought Danielle was thinking about it too." }

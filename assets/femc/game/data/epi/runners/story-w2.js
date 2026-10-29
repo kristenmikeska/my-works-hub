@@ -355,6 +355,7 @@
         ] },
         { n: "Chaeyeon, Solar noticed, never looked up from the agenda once. Not when Danielle said Ms. Han, not when Hanni stood. She sat through the rest of the meeting with her pen capped and her eyes on the same line of the same page, and when it ended she was out of her chair before the bell had finished ringing." },
         { place: "Syracuse · Alpha Phi House · Hanni and Hyein's Room", time: 'Night' },
+        { cg: 'epi-r-floor' },
         { n: "After, the three of them on Hanni and Hyein's floor, because the beds were for sleeping and the floor was for crises, a ruling Hyein had made in September and enforced ever since. Fairy lights. The radiator knocking like it wanted in on the conversation. Hyein's half-finished sketches for Jaemin's December outfits pinned to the corkboard over her desk, headless figures in velvet, judging them." },
         { s: 'hyein', f: 'sad', t: "Ms. Han called the CHAPTER LINE. Who calls a chapter line? Who even knows we have a chapter line? I didn't know we had a chapter line." },
         { s: 'hanni', f: 'serious', t: "Danielle knows. Danielle answers it. That's the point of having it." },
@@ -379,6 +380,7 @@
           ] }
         ] },
         { bond: { hanni: 1 } },
+        { cg: null },
         { n: "When she went back to her own room the hall was dark, and Danielle's door at the end of it was open, the way it was always open, a slice of lamplight on the carpet. She walked past it without turning her head. She felt the light on the side of her face the whole way, like the sun through a car window, long after she'd shut her own door." }
     ] },
 
@@ -407,6 +409,7 @@
         { n: "They sat with it for a minute, the frame frozen on the monitor, the hard drives humming, the radiator ticking, two girls who'd been somewhere neither of them could explain looking at proof of it that nobody else on earth would believe was proof of anything." },
         { s: 'minji', f: 'neutral', t: "There's a showcase in the spring. The film department. Shorts, ten minutes, a jury, a real audience. I've been cutting something since we got back." },
         { s: 'minji', f: 'flustered', t: "It's not about you. It's, it has you in it. It's about coming home and nobody knowing you went anywhere. About pretending it was a cabin." },
+        { cg: 'epi-r-reel' },
         { n: "She turned her chair to face Solar fully, and put her hands in her lap, and did the thing she'd done twenty times before and would do twenty more, which was ask." },
         { s: 'minji', f: 'serious', t: "Can I use this? You. Your face, the footage. You can say no. You can say some of it. You can say not yet. I'll ask again before it's final either way, and again before it screens." },
         { choose: [
@@ -423,6 +426,7 @@
             { n: "She was. A little block on the nineteenth that just said *ask.* Solar laughed, and Minji looked at her laughing the way she always had, for a second too long, and then made herself look back at the screen." }
           ] }
         ] },
+        { cg: null },
         { ifYear: { romance: 'minji' }, then: [
           { n: "At the door, coat on, Solar turned back for no reason, and Minji was already looking at her, the way she'd looked at her across a whole year in another city, in a dorm, on a roof, and didn't look away this time, and didn't say anything either." },
           { s: 'minji', f: 'neutral', t: "I said what I said on Sunday. I meant it. I just want you to know I didn't say it so the door would close." },

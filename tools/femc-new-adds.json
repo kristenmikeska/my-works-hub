@@ -16518,6 +16518,153 @@
       "placement": "data/spice-akihiko.js sp-aki-ln-snowed: { cg } after the watch line in the early-morning part; the Lounge place line clears it; cgFocus in data/places.js",
       "textCheck": "checked 2026-10-28 against the image: matches the scene",
       "mobileFocus": "55% 40%"
+    },
+    {
+      "batch": 80,
+      "source": "epi-r-holiday-cg.png",
+      "sourceNow": "Added to Game/epi-r-holiday-cg.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "1c8c7e48e8747094f5ce8ada6844880be13b59682856a5319bd3ec8c0cbad272",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-r-holiday.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "e4186fbf80dd1c8b72b72d9a0cd42e1afb6544826a8bbb575fcbc30f3f7c6edf",
+      "placement": "data/epi/runners/story-w3.js epi-r-holiday: { cg } before the Jeno line, { cg: null } before the stairs line; ALBUM.runners; cgFocus in data/places.js",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "50% 35%"
+    },
+    {
+      "batch": 80,
+      "source": "epi-r-his-room-cg.png",
+      "sourceNow": "Added to Game/epi-r-his-room-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "6097a2de4004af7084fea5c333ebda09bf64143f1c27af9de1482c1823fe7f55",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-r-his-room.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "7e49938c01c870b1e2145fa0854da5d4ed5e24e5f5585ebff062da5ea68b5456",
+      "placement": "data/epi/runners/people.js hangout epi-r-haechan-3: { cg } before 'He didn't reach for her', { cg: null } before the Late Night place line; ALBUM.runners; cgFocus",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "45% 35%"
+    },
+    {
+      "batch": 80,
+      "source": "epi-r-reel-cg.png",
+      "sourceNow": "Added to Game/epi-r-reel-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "77c223bc78919cfd6e8dd2739ba988f5f1ae8112e288ca6a6b779071d202fa68",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-r-reel.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "00f539a0d3f5e9a2643bb263d7b2ce11b9fa55707fb136ff912d7ab4b61741c1",
+      "placement": "data/epi/runners/story-w2.js epi-r-reel: { cg } before the chair line, { cg: null } before the romance ifYear; ALBUM.runners; cgFocus",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "50% 40%"
+    },
+    {
+      "batch": 80,
+      "source": "epi-r-floor-cg.png",
+      "sourceNow": "Added to Game/epi-r-floor-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "a82bfbffbe251c9eccc22ddc4e58694f2fb9cd919ccd2099d80e0ebb6c0a2d73",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-r-floor.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "514a5f666501aa489a3455333ae41a22a3df70f756918407c381e8e510d4f67a",
+      "placement": "data/epi/runners/story-w2.js epi-r-sisters (cover route): { cg } after the Hanni and Hyein's Room place line, { cg: null } before the walk back to her room; ALBUM.runners; cgFocus",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "50% 40%"
+    },
+    {
+      "batch": 80,
+      "source": "epi-h-eve-jungwon-cg.png",
+      "sourceNow": "Added to Game/epi-h-eve-jungwon-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "0c91fba348a0fe761d2fe49e69588b612f926c34a4515dce4bcd69f4eda09446",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-h-eve-jungwon.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "d138eb696e9579c636582635b043fce7da18fb262046c4910929f5c060f3e31f",
+      "placement": "data/epi/hoax/story-w1.js epi-h-eve, the Jungwon option: { cg } before the walk to the end of the street, { cg: null } before he goes back up the street; ALBUM.hoax; cgFocus",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "40% 35%"
+    },
+    {
+      "batch": 80,
+      "source": "epi-h-eve-jihoon-cg.png",
+      "sourceNow": "Added to Game/epi-h-eve-jihoon-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "c98fc495a1fd117191f263edb83ebb2ce0371c1d0a0e3054590811448c756d1a",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-h-eve-jihoon.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "8400555a7e28f4df5e7a66b633b4c97188b40dbc52c315d9276d526543355100",
+      "placement": "data/epi/hoax/story-w1.js epi-h-eve, the Jihoon option: { cg } before the tunnel line, { cg: null } before they come out the other end; ALBUM.hoax; cgFocus",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "50% 40%"
+    },
+    {
+      "batch": 80,
+      "source": "epi-st-seaside-hanami.jpeg",
+      "sourceNow": "Added to Game/epi-st-seaside-hanami.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "81b5e27b62bbd3d7d994cab6dace0fb39a9e21b50b0c10ef0fb2a8e84779211c",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-st-seaside-hanami.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "58ef678806223ab8ad7097ad06c534e7ebf990c8c1ae116e713f92382ea11e00",
+      "placement": "data/epi/stay/world.js new rule 'Port Island · Seaside Park · Hanami' (day slot); epi-st-hanami's place renamed to it (stay/story.js); outdoor in Stay's own weatherFx copy"
+    },
+    {
+      "batch": 80,
+      "source": "epi-st-hyein-room.jpeg",
+      "sourceNow": "Added to Game/epi-st-hyein-room.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "fd9e838c69006d320e23640db6e5de55ca7c64e5310de9a86ce6923362281662",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-st-hyein-room.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "757a2cbc427c621ce23657c56bf2d7224863fece93defa706a6866c1bb4200be",
+      "placement": "data/epi/stay/world.js \"Iwatodai Dorm · Hyein's Room\" day slot (was pink-bedroom-2); not outdoor"
+    },
+    {
+      "batch": 80,
+      "source": "epi-tr-station-bench.jpeg",
+      "sourceNow": "Added to Game/epi-tr-station-bench.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "904d9c5e2c589045f7e4817eac4de8b436604603d1d3a4c4193027be5c74e0b5",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-tr-station-bench.webp",
+      "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
+      "outputSha256": "ecdec9b5185df5a133aee57653e5f2796ab176cffc39f4d9f9333633bbc9068f",
+      "placement": "data/epi/true/world.js 'Iwatodai Station · Bench' day slot (was station-platform-day, which left the coda's outdoor list); the same rule added to data/epi/stay/world.js for epi-st-rt-bench; indoors"
     }
   ],
   "batch1Validation": {
@@ -17604,5 +17751,22 @@
     ],
     "notTested": "no browser tests: the eight scenes' CG framing at 1000x486 and 375x812 (focus points set from the images, not checked on a phone)",
     "html": "femc-game.html places v57, story-act3 v16, story-act6 v17, spice-akihiko v2, spice-haechan v7, hyein v16, jay v2, niki v2, sunghoon v2"
+  },
+  "batch80Validation": {
+    "date": "2026-10-28",
+    "scope": "six epilogue CGs (Runners: the holiday party, his room, Minji's room, the girls' floor; HOAX: Christmas Eve with Jungwon and with Jihoon) and three epilogue places (Stay's hanami and Hyein's room, the true coda's station bench)",
+    "sourcesInspected": "all 9 viewed",
+    "sourcesIntegrated": 9,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "textTweaks": "none (all six CGs match their scenes)",
+    "tests": [
+      "tools/femc-check-scenes.py: OK",
+      "jsc checkSyntax on every edited script",
+      "py_compile tests/femc_epilogue.py tools/femc-backgrounds.py",
+      "jsc: Stay's weatherFx copy gains the hanami slug, the main year's list unchanged"
+    ],
+    "notTested": "no browser tests: the CG framing at 1000x486 and 375x812; tests/femc_epilogue.py (its _loaded checks now 20) not run",
+    "html": "femc-game.html places v58, epilogue v22; DATA_V 20; kirijo-guesthouse-day.webp restored after the backgrounds run"
   }
 }

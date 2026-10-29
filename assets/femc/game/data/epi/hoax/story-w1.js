@@ -646,6 +646,7 @@
           { s: 'jungwon', f: 'neutral', t: "It's very loud." },
           { s: 'jungwon', f: 'happy', t: "I'm on five." }
         ] },
+        { cg: 'epi-h-eve-jungwon' },
         { n: "They walked to the end of the street and back. That was all. Maeumi stopped at every single gate to inspect the little warm white lights, and they let him, and the snow came down slow between the streetlamps, and Jungwon kept looking at his watch with his free hand, and then stopped looking at it, and then looked at it again like he'd caught himself doing something." },
         { glitch: { near: true } },
         { n: "He didn't say anything about the year. He didn't say anything about the radio, or the half a name on the phone two nights ago, or the can she kept touching through her coat like a pulse. He just walked next to her in his slippers, getting snow in them, not complaining, and every so often his thumb moved against her knuckles inside her pocket, and that was the whole conversation, and it was enough of one." },
@@ -657,6 +658,7 @@
         { s: 'solar', t: "*Won.*" },
         { n: "He kissed her. Quick, cold, a little crooked, in the middle of his own street, with his own front door forty metres away and the light on in the window, which was either very brave or very stupid, and he didn't seem to know which either, because when he pulled back his face was doing the thing it did before a competition. Still. Certain. Terrified." },
         { s: 'jungwon', f: 'flustered', t: "Merry Christmas. Go home. It's cold." },
+        { cg: null },
         { n: "He went back up the street with the dog, not hurrying, in his slippers, at exactly the speed of a boy walking a dog who didn't need walking. At the gate he turned around. She was still standing there. He lifted Maeumi's leash a little, like a wave. She lifted her hand." },
         { n: "The door opened. The door closed. Ten minutes, on the dot." },
         { bond: { jungwon: 1 } }
@@ -676,6 +678,7 @@
         { s: 'solar', t: "He's *bowing*. He's being *polite*." },
         { s: 'jihoon', f: 'neutral', t: "He's deflating, Sol. It's a metaphor. Look it up." },
         { n: "She laughed so hard she hit the window with her forehead. He looked pleased with himself in a way he didn't hide fast enough." },
+        { cg: 'epi-h-eve-jihoon' },
         { n: "At the far end of the loop there was a tunnel of white lights, the long one, the one they'd walked through every year since they were small, her holding his sleeve because she was scared of the dark bits between the bulbs, him pretending not to be. He slowed down even more. He didn't say anything about it. Neither did she." },
         { s: 'solar', t: "Remember the year it short-circuited and we were stuck in the dark in the middle and you—" },
         { s: 'jihoon', f: 'neutral', t: "No." },
@@ -685,6 +688,7 @@
         { n: "She opened the glovebox for napkins. Her nose was running from the cold. There were no napkins. There was a pill bottle with the label scraped off and something rattling in it, and he reached across her without looking, and closed the glovebox with one finger." },
         { s: 'jihoon', f: 'neutral', t: "Napkins are in the door." },
         { n: "They were. She took one. Neither of them said anything for the rest of the tunnel." },
+        { cg: null },
         { n: "When they came out the other end, he pulled into the empty lot by the skating pond and put the car in park and left the engine running, and for a while they just sat there with the heater roaring and the reindeer limping in the rear-view mirror." },
         { s: 'jihoon', f: 'sad', t: "You looked different. When you came through that door. In the gym. For a second you looked like—" },
         { n: "He stopped. His hand had come up off the wheel, toward her face, the side with the stud, and it stopped there in the air between them, and for one second it was the most honest thing she'd seen him do in months." },

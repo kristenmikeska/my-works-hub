@@ -35,10 +35,10 @@
         ['Hanlim · School · Council Room', 'epi-h-council-room', null],
         ['Hanlim · School', 'flashback-hamlim-hallway', null],
         ['Hanlim', 'outside-daytime-neighborhood', 'outside-night'],
-        ['Iwatodai Station · Bench', 'station-platform-day', null],
+        ['Iwatodai Station · Bench', 'epi-tr-station-bench', null], // batch 80 (indoors: the concourse)
         ['Iwatodai', 'iwatodai-station', null]
       ],
-      weatherFx: { outdoor: ['flashback-syracuse-quad', 'epi-r-rooftop-night-snow', 'epi-r-quad-day', 'epi-s-garden', 'flashback-incheon-harbor', 'station-platform-day', 'outside-daytime-neighborhood', 'outside-night'], sealed: [], none: [] },
+      weatherFx: { outdoor: ['flashback-syracuse-quad', 'epi-r-rooftop-night-snow', 'epi-r-quad-day', 'epi-s-garden', 'flashback-incheon-harbor', 'outside-daytime-neighborhood', 'outside-night'], sealed: [], none: [] },
       home: { place: 'Syracuse · Alpha Phi House · Her Room', bg: 'epi-r-her-room' },
       activities: [],
       /* ♪ MUSIC: Kat's song picks (FEMC-EPILOGUE-PLAN.md, revision 1). The three holding-on scenes play the world songs (world-runners,
