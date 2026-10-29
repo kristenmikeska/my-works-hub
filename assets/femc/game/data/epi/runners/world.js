@@ -126,6 +126,12 @@
     },
     // This world's own faces (core.js worldFace): Solar's home look and the outfits drawn for Runners (FEMC-ART-WIRING).
     faces: { solar: 'solar-runners', sakura: 'sakura-runners', eunchae: 'eunchae-runners', kazuha: 'kazuha-runners', chaewon: 'chaewon-runners', haechan: 'haechan-runners' },
+    // Event outfits (core.js eventFaces; FEMC-ART-WIRING "Extras"): an event's `faces: '<key>'` swaps these in for its scenes only.
+    eventFaces: {
+      'runners-holiday': { solar: 'solar-runners-holiday', haechan: 'haechan-runners-holiday', hanni: 'hanni-runners-holiday', hyein: 'hyein-runners-holiday',
+        minji: 'minji-runners-holiday', mark: 'mark-runners-holiday', jaehyun: 'jaehyun-runners-holiday' }, // epi-r-holiday (12/19, the Sigma party)
+      'runners-regionals': { solar: 'solar-runners-regionals', minji: 'minji-runners-regionals' } // epi-r-regionals-1 / -2 (12/6-12/7)
+    },
     variants: {
       morning: {
         school: ["Class at nine. The quad was salted into gray paths, and everyone she passed looked like they'd slept four hours, which was December's whole look.",

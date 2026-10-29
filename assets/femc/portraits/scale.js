@@ -105,6 +105,17 @@ window.FEMC_PORTRAIT_SCALE = {
   'haechan-strangers': 0.92,
   'jungwon-hoax': 1.0,
   'jungwon-strangers': 0.95,
+  // batch 87: Runners event outfits (world.js eventFaces); eyes level with each one's usual face in Runners (Vision eye
+  // landmarks, neutral / happy / serious averaged)
+  'solar-runners-holiday': 0.97,
+  'haechan-runners-holiday': 0.97,
+  'hanni-runners-holiday': 0.86,
+  'hyein-runners-holiday': 1.01,
+  'minji-runners-holiday': 0.86,
+  'mark-runners-holiday': 0.92,
+  'jaehyun-runners-holiday': 0.98,
+  'solar-runners-regionals': 0.89,
+  'minji-runners-regionals': 0.86,
   sunghoon: 0.95,
   sunoo: 1.0,
   tifa: 1.03,
@@ -171,4 +182,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 11;
+window.FEMC_PORTRAIT_V = 12;

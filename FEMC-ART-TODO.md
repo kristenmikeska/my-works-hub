@@ -1,6 +1,6 @@
 # Art to make
 
-**20 items:** 20 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**20 items:** 20 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 47 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -248,62 +248,6 @@ Do these last, after everything above. Each is a face sheet for one character in
 
 ### Runners: the Sigma holiday party
 
-**[ ] Solar: the Sigma holiday party** *(optional)*  
-Solar's face at the Sigma Chi holiday party in the Runners epilogue.  
-Attach: `Solar-Runners-sheet.png`  
-Save as: `Solar-runners-holiday-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a wine-red long-sleeved silk dress, small gold hoops, a red-and-white Santa hat tilted back on her long dark hair. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Haechan: the Sigma holiday party** *(optional)*  
-Haechan's face at the Sigma Chi holiday party in the Runners epilogue.  
-Attach: Haechan  
-Save as: `Haechan-runners-holiday-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black button-up shirt open at the collar with a thin gold chain, a black Santa hat with white trim worn crooked. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Hanni: the Sigma holiday party** *(optional)*  
-Hanni's face at the Sigma Chi holiday party in the Runners epilogue.  
-Attach: Hanni  
-Save as: `Hanni-runners-holiday-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a wine-red velvet slip dress with a cropped white faux-fur jacket, tiny silver bell earrings. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Hyein: the Sigma holiday party** *(optional)*  
-Hyein's face at the Sigma Chi holiday party in the Runners epilogue.  
-Attach: Hyein  
-Save as: `Hyein-runners-holiday-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a homemade wine-red satin dress with puffed sleeves, a reindeer-antler headband with little bells. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Minji: the Sigma holiday party** *(optional)*  
-Minji's face at the Sigma Chi holiday party in the Runners epilogue.  
-Attach: Minji  
-Save as: `Minji-runners-holiday-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a cream cable-knit sweater with a navy reindeer pattern, her black cap worn backwards with a sprig of holly pinned to it. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Mark: the Sigma holiday party** *(optional)*  
-Mark's face at the Sigma Chi holiday party in the Runners epilogue.  
-Attach: Mark  
-Save as: `Mark-runners-holiday-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a loud green-and-red ugly Christmas sweater with a knitted snowman and pom-poms, a Santa hat. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Jaehyun: the Sigma holiday party** *(optional)*  
-Jaehyun's face at the Sigma Chi holiday party in the Runners epilogue.  
-Attach: Jaehyun  
-Save as: `Jaehyun-runners-holiday-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a dark green velvet blazer over a black turtleneck, a candy-cane pin on the lapel. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
 **[ ] Chenle: the Sigma holiday party** *(optional)*  
 Chenle's face at the Sigma Chi holiday party in the Runners epilogue.  
 Attach: Chenle  
@@ -329,22 +273,6 @@ A 3 × 2 portrait sheet on a plain white background, clear space between cells, 
 ```
 
 ### Runners: Regionals
-
-**[ ] Solar: Regionals** *(optional)*  
-Solar's face at Regionals in the Runners epilogue (the SU eSports team).  
-Attach: `Solar-Runners-sheet.png`  
-Save as: `Solar-runners-regionals-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a bright orange SU eSports jersey with navy shoulder panels, a black gaming headset round her neck. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Minji: Regionals** *(optional)*  
-Minji's face at Regionals in the Runners epilogue (the SU eSports team).  
-Attach: Minji  
-Save as: `Minji-runners-regionals-sheet.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: the bright orange SU eSports jersey with navy shoulder panels, her black cap worn backwards, a headset round her neck. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
 
 **[ ] Chenle: Regionals** *(optional)*  
 Chenle's face at Regionals in the Runners epilogue (the SU eSports team).  

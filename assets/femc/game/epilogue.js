@@ -74,7 +74,7 @@ window.FemcEpilogue = (() => {
   const S = () => G.S, UI = () => W.FemcGameUI;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const clone = o => JSON.parse(JSON.stringify(o));
-  const DATA_V = 23; // data/epi/<world>/*.js ?v=
+  const DATA_V = 24; // data/epi/<world>/*.js ?v=
   // The worlds: the year's route flag that opens each, its name (the button) and place (slot labels), its data files.
   const WORLDS = {
     runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3'] },
@@ -125,7 +125,7 @@ window.FemcEpilogue = (() => {
       music: { ...main.music, ...(rp.music || {}) }, screens: { ...main.screens, ...(rp.screens || {}) } };
     const links = {};
     Object.values(raw.links || {}).forEach(l => { links[l.id] = l; });
-    const data = { cal, places, links, cast: raw.cast || {}, faces: raw.faces || {}, money: raw.money, events: raw.events || [], dailyLife: raw.routines || [], variants: raw.variants || {},
+    const data = { cal, places, links, cast: raw.cast || {}, faces: raw.faces || {}, eventFaces: raw.eventFaces || {}, money: raw.money, events: raw.events || [], dailyLife: raw.routines || [], variants: raw.variants || {},
       texts: { threads: {}, texts: [], ambient: [], groups: {}, ...(raw.texts || {}) }, q: { classes: [], exams: {}, teachers: {}, rivals: [], ambient: {} },
       jobs: [], jobScenes: {}, clubs: {}, runIns: [], trip: {}, lodging: {}, crush: { tracks: {}, moments: [], world: {} } };
     return (built[id] = { id, data, raw });
@@ -359,7 +359,7 @@ window.FemcEpilogue = (() => {
   // resume: a snapshot from a fight in this event (batch 6), when the scene is rebuilt after it (a reload, or the fight's own way back).
   function playEvent(ev, resume) {
     if (!resume) S().pending = null;
-    return SC.play({ scene: GL()?.inject(ev.id, ev.scene) || ev.scene, place: ev.place, time: ev.time, title: resume ? null : ev.title, label: (G.dayInfo().shown || G.dayInfo()).md, cast: ev.cast, event: true, resume,
+    return SC.play({ scene: GL()?.inject(ev.id, ev.scene) || ev.scene, place: ev.place, time: ev.time, title: resume ? null : ev.title, label: (G.dayInfo().shown || G.dayInfo()).md, cast: ev.cast, faces: ev.faces, event: true, resume,
       onBattle: fightHook({ type: 'epi', kind: 'event', id: ev.id }),
       onDone: () => {
         S().pending = null;
@@ -440,7 +440,7 @@ window.FemcEpilogue = (() => {
     hangoutScene(id, h);
   }
   function hangoutScene(id, h, resume) {
-    SC.play({ scene: [...(h.bg ? [{ bg: h.bg }] : []), ...(GL()?.inject(h.id, h.scene) || h.scene)], place: h.place, time: h.time, title: resume ? null : h.title, label: G.name(id), cast: h.cast, resume,
+    SC.play({ scene: [...(h.bg ? [{ bg: h.bg }] : []), ...(GL()?.inject(h.id, h.scene) || h.scene)], place: h.place, time: h.time, title: resume ? null : h.title, label: G.name(id), cast: h.cast, faces: h.faces, resume,
       onBattle: fightHook({ type: 'epi', kind: 'hangout', id, h: h.id }),
       onDone: () => { S().pending = null; const st = bondState(id); if (!st.seen.includes(h.id)) st.seen.push(h.id); bond(id, h.gain ?? 1); G.save(); advance(); } });
   }
@@ -664,13 +664,13 @@ window.FemcEpilogue = (() => {
       const end = live ? null : G.replayWorld(w);
       try {
         let v;
-        if (src.k === 'event') { const e = raw.events.find(x => x.id === src.key); v = e && { scene: e.scene, place: e.place, time: e.time, title: e.title, cast: e.cast, md: e.date, slot: e.slot }; }
-        else { const h = ((raw.bonds || {})[src.bond]?.hangouts || []).find(x => x.id === src.key); v = h && { scene: [...(h.bg ? [{ bg: h.bg }] : []), ...h.scene], place: h.place, time: h.time, title: h.title, cast: h.cast }; }
+        if (src.k === 'event') { const e = raw.events.find(x => x.id === src.key); v = e && { scene: e.scene, place: e.place, time: e.time, title: e.title, cast: e.cast, faces: e.faces, md: e.date, slot: e.slot }; }
+        else { const h = ((raw.bonds || {})[src.bond]?.hangouts || []).find(x => x.id === src.key); v = h && { scene: [...(h.bg ? [{ bg: h.bg }] : []), ...h.scene], place: h.place, time: h.time, title: h.title, cast: h.cast, faces: h.faces }; }
         if (!v) throw new Error('no scene');
         replayCtx = live ? liveCtx() : recCtx(rec, s);
         if (v.md) replayCtx.stage = floorAt(raw, v.md, v.slot);
         const di = v.md ? G.dayInfo(G.dayOf(v.md)) : null, d = di ? (di.shown || di) : null;
-        return SC.play({ scene: v.scene, place: v.place || '', time: v.time || '', title: v.title || null, label, cast: v.cast, event: src.k === 'event', replay: true,
+        return SC.play({ scene: v.scene, place: v.place || '', time: v.time || '', title: v.title || null, label, cast: v.cast, faces: v.faces, event: src.k === 'event', replay: true,
           replayFlags: live ? null : { ...(rec.flags || { [`epi-route-${rec.route}`]: true }) }, date: d ? { md: d.md, day: d.day } : null,
           branch: (line, link, flagOn) => (W.FemcMenu ? W.FemcMenu.peek(line, link, flagOn) : isEpiCond(line) ? ((peekCond(line) ? line.then : line.else) || []) : null),
           onDone: () => { replayCtx = null; end?.(); onDone?.(); } });

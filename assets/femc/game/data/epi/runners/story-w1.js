@@ -712,7 +712,7 @@
   ] },
 
   // ───────────────────────────── 12/6: Regionals, day one ─────────────────────────────
-  { id: 'epi-r-regionals-1', date: '12/6', slot: 'early', fills: ['after', 'evening'], title: 'regionals', place: 'Syracuse · Regionals', time: 'Morning', scene: [
+  { id: 'epi-r-regionals-1', date: '12/6', slot: 'early', fills: ['after', 'evening'], faces: 'runners-regionals', title: 'regionals', place: 'Syracuse · Regionals', time: 'Morning', scene: [
     { music: 'epi-r-regionals' },
     { n: "Regionals was in the convention center downtown, in a hall that hosted boat shows in the spring and bridal expos in the fall and, for one weekend in December, eight college Overwatch teams from across the Northeast, two stages, a broadcast desk, a few hundred folding chairs, and a smell like carpet glue, energy drinks and nerves." },
     { n: "It wasn't a stadium. It wasn't anything like the screens she'd seen on stream as a kid, the arenas, the confetti. It was a long cold room with black drapes over the windows and a lot of tangled cable taped to the floor, and somebody's mom selling hot chocolate at a card table by the door, and it was the most important room she'd ever walked into." },
@@ -780,7 +780,7 @@
   ] },
 
   // ───────────────────────────── 12/7: Regionals, day two ─────────────────────────────
-  { id: 'epi-r-regionals-2', date: '12/7', slot: 'early', fills: ['after'], title: 'regionals, day two', place: 'Syracuse · Regionals', time: 'Morning', scene: [
+  { id: 'epi-r-regionals-2', date: '12/7', slot: 'early', fills: ['after'], faces: 'runners-regionals', title: 'regionals, day two', place: 'Syracuse · Regionals', time: 'Morning', scene: [
     { music: 'epi-r-match' },
     { n: "Day two was a different hall. Same room, same drapes, same carpet-glue smell, but half the teams were gone, and the folding chairs had been pushed closer to the stages, and the crowd had doubled overnight, because the stream had numbers now and the numbers had told people where to be. The card-table mom had run out of hot chocolate by ten." },
     { n: "Quarterfinal, semifinal, final. Three series between nine in the morning and dinner. Doyoung had drawn it on the whiteboard in the coat-check green room in three boxes and stood back from it like an architect." },

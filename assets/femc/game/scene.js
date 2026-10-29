@@ -184,11 +184,15 @@ window.FemcScene = (() => {
   })();
 
   /* ── The player ── */
-  // opts: { scene: lines | queue, place, time, title, label, theme, music, link, resume: { queue, vis, gained },
+  // opts: { scene: lines | queue, place, time, title, label, theme, music, link, faces (an epilogue event-outfit key), resume: { queue, vis, gained },
   //         onBattle(battle, snapshot, resume), onDone({ finished, gained, choices }) }
   function play(opts) {
     const replay = !!opts.replay;
-    const vis = Object.assign({ place: opts.place || '', time: opts.time || '', bg: null, cg: null, dark: false, theme: opts.theme || '', date: replay ? opts.date || null : null }, opts.resume?.vis || {});
+    const vis = Object.assign({ place: opts.place || '', time: opts.time || '', bg: null, cg: null, dark: false, theme: opts.theme || '', date: replay ? opts.date || null : null, faces: opts.faces || null }, opts.resume?.vis || {});
+    // An epilogue event's outfits (core.js eventFaces): this scene's key while it plays (a fight's resume keeps the one it had),
+    // the previous key back when it ends.
+    const facesBefore = G.eventFaces ? G.eventFaces() : null;
+    G.eventFaces?.(vis.faces);
     let gained = opts.resume?.gained || 0;
     // Replay: the flags this scene's own lines set, over the save's (or over opts.replayFlags, which then stand alone).
     const over = {}, baseFlags = opts.replayFlags || null;
@@ -444,6 +448,7 @@ window.FemcScene = (() => {
         paintVis(); return next();
       }
       if ('dark' in line) { vis.dark = !!line.dark; paintVis(); return next(); }
+      if ('faces' in line && Object.keys(line).length === 1) { vis.faces = line.faces || null; G.eventFaces?.(vis.faces); currentFace = null; return next(); }
       if (line.setDate) { if (replay) vis.date = mdLabel(line.setDate); else G.setDate(line.setDate); paintVis(); return next(); }
       if ('asLink' in line) { curLink = line.asLink || opts.link; return next(); }
       if (line.phone) return phone(line);
@@ -545,6 +550,7 @@ window.FemcScene = (() => {
 
     function close() {
       closed = true;
+      G.eventFaces?.(facesBefore);
       window.FemcWeather?.sceneEnd(el);
       clearTimeout(titleTimer); titleGo = null;
       document.removeEventListener('keydown', keys, true);

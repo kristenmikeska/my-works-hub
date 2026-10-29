@@ -911,7 +911,17 @@ window.FemcGame = (() => {
   /* An epilogue world's own faces (world.js `faces`, passed through epilogue.js build()): { speaker: portrait id }, e.g.
      Runners' solar → solar-runners (her home look, no armband) and its LE SSERAFIM outfits (sakura → sakura-runners), so a
      look drawn for one world never shows in another. Only while that world is being read (inWorld); the year is untouched. */
-  const worldFace = id => { const m = inWorld()?.faces; return (m && id && m[id]) || id; };
+  /* An epilogue event's outfits (FEMC-ART-WIRING "Extras"): a world's `eventFaces: { '<event key>': { speaker: portrait id } }`
+     (passed through epilogue.js build() like `faces`). scene.js sets the key while a scene that names one plays (an event's,
+     hangout's or routine's `faces: '<key>'`, or a `{ faces: '<key>' | null }` line) and puts the old one back when the scene
+     ends; worldFace checks that key's map first, then the world's faces. Outside the epilogue the key does nothing. */
+  let EVENT_FACES = null;
+  function eventFaces(key) { if (arguments.length) EVENT_FACES = key || null; return EVENT_FACES; }
+  const worldFace = id => {
+    const w = inWorld(); if (!w || !id) return id;
+    const e = EVENT_FACES && w.eventFaces && w.eventFaces[EVENT_FACES];
+    return (e && e[id]) || (w.faces && w.faces[id]) || id;
+  };
   function portrait(id, face) {
     id = worldFace(id);
     // Solar's art wears the S.E.E.S. armband, so she has no portrait until she's given one.
@@ -2431,7 +2441,7 @@ window.FemcGame = (() => {
     LINKS, progress, isMet, linkStatus, linkScene, finishLink, linksAt, linkPlace, linkName, need, written, areaById, isHome,
     homeOf, leavesAtMax, maxOf, isMaxed, stretchOn, afterGap, afterList, tracesAt, nextTrace, farewellDue, farewellScene, christmasOptions, pickChristmas, christmasChoices, christmasLines,
     flag, effect, branch, applyChoice, addFragment, fragmentInfo, worldOf, fragSources, dropsOk,
-    portrait, scale, name, castHas, silhouette, pendingFace, tarot, background, moodFor, sub, setDate, dateLabel,
+    portrait, scale, eventFaces, name, castHas, silhouette, pendingFace, tarot, background, moodFor, sub, setDate, dateLabel,
     activities, actById, showing, activityOk, activityInfo, doActivity, dormActs, dormInfo, dormOk, doDorm, doStudy, studyInfo, shopStock, buy, bookById, bookArt, readTonight, matSellPrice, sellMat,
     perkOn, bondRank, dailyPerks, actCost, dozeChance, dozed, canRetryClass, useGuidance, classHint, studyBonus, weekly,
     jobVisible, jobState, jobOk, hire, shiftScene, finishShift, packs, packPick, packFits,

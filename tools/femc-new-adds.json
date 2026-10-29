@@ -17238,6 +17238,231 @@
         "assets/femc/game/art/skins/sk-alphaphi/solar-pose-4.webp": "a8913552beca3840cacc4124b24225fa46525bdb07fc5bfa0b8798e156269095",
         "assets/femc/game/art/skins/sk-alphaphi/solar-pose-5.webp": "d49fddef6fbf751b5781b6ace28cd8981d6901e52cae42a4a39bdb796d400efd"
       }
+    },
+    {
+      "batch": 87,
+      "source": "solar-runners-holiday-sheet.png",
+      "sourceNow": "Added to Game/solar-runners-holiday-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "afea6dda7ebba9f6675cd71adbb32e3fe59ac7313d8124eb9d17385ee4bfc236",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/solar-runners-holiday/neutral.webp",
+      "character": "solar-runners-holiday",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-Runners-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.97,
+      "placement": "data/epi/runners/world.js eventFaces['runners-holiday'].solar; epi-r-holiday (story-w3.js) names the key",
+      "outputs": {
+        "assets/femc/portraits/solar-runners-holiday/flustered.webp": "a9d811801586aae42b975b6fa55b3b0c721e750e0b853d9b4d054d96c72006d2",
+        "assets/femc/portraits/solar-runners-holiday/happy.webp": "411016e83899f1e14d1cfa4ff772361c818489aea937335e7da9f94a4ef76626",
+        "assets/femc/portraits/solar-runners-holiday/neutral.webp": "f880d51d77eb0ae3891bcd156dfa09f902d46e184bfd4a14f414fdce09158401",
+        "assets/femc/portraits/solar-runners-holiday/sad.webp": "a76c58aaab63ae6cb7f23fac6a8e3dbbe09cd368796b357227b97fa019f64d59",
+        "assets/femc/portraits/solar-runners-holiday/serious.webp": "f69bc90d4e438472ffd315b35fe9ac1392add5fc4537ebaa88225239e717003f",
+        "assets/femc/portraits/solar-runners-holiday/surprised.webp": "ec5d6cbe61e4fe87cc7bea77356963748c5aabc37ec4c1914d9173af96689c54"
+      }
+    },
+    {
+      "batch": 87,
+      "source": "haechan-runners-holiday-sheet.png",
+      "sourceNow": "Added to Game/haechan-runners-holiday-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d69974be56e68754e7ec15a19dd71f8764acf392fcdbe5363b6a47d5c3c39bd6",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/haechan-runners-holiday/neutral.webp",
+      "character": "haechan-runners-holiday",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-Runners-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.97,
+      "placement": "data/epi/runners/world.js eventFaces['runners-holiday'].haechan; epi-r-holiday (story-w3.js) names the key",
+      "outputs": {
+        "assets/femc/portraits/haechan-runners-holiday/flustered.webp": "e6d179c963fd2ce80e7696ae5d7568209608ab2ee0db629829b47796037b882d",
+        "assets/femc/portraits/haechan-runners-holiday/happy.webp": "7d5438ae13ffa94e87b5572e3bba905f81b74bacbd51dd77d8092ec6f0dc8f57",
+        "assets/femc/portraits/haechan-runners-holiday/neutral.webp": "905477cbae3c3bce4af6a71e7989fcee040a1979021285a3efe2e7290794e3f6",
+        "assets/femc/portraits/haechan-runners-holiday/sad.webp": "9877e887432cb40dd01742fca19e2bc2c9a748479734476fce23d182b982d195",
+        "assets/femc/portraits/haechan-runners-holiday/serious.webp": "eafc5d7ea0839559d29af416bbd606d5441b5b51a227fdc990df8e11f1682bce",
+        "assets/femc/portraits/haechan-runners-holiday/surprised.webp": "503b92c009e9962ad167f0b8516007dcd4ec7a04e9e9abe404c4f98f0d9eaf9a"
+      }
+    },
+    {
+      "batch": 87,
+      "source": "hanni-runners-holiday-sheet.png",
+      "sourceNow": "Added to Game/hanni-runners-holiday-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "72bfe68afb4a330157e3fa0f1237a42fa79141de5da056894da6da86b07dae45",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/hanni-runners-holiday/neutral.webp",
+      "character": "hanni-runners-holiday",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-Runners-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.86,
+      "placement": "data/epi/runners/world.js eventFaces['runners-holiday'].hanni; epi-r-holiday (story-w3.js) names the key",
+      "outputs": {
+        "assets/femc/portraits/hanni-runners-holiday/flustered.webp": "e2ee2d86a19fada737e5992c1a78049fa22fc58a4d7ad3031a31d1038a16593e",
+        "assets/femc/portraits/hanni-runners-holiday/happy.webp": "3b92a0114de32c438e86fd4da17597e3fcc36ffc44b7b5afdf9087c87c210a8d",
+        "assets/femc/portraits/hanni-runners-holiday/neutral.webp": "0327f9ca5173fc754ba3858c0038f2b8ed3db3cf1048e7500f5aaa9c02d04d89",
+        "assets/femc/portraits/hanni-runners-holiday/sad.webp": "f2aef173f6327eafec40a02ea34df34103ad76c771fd19855adc210252b3ac29",
+        "assets/femc/portraits/hanni-runners-holiday/serious.webp": "6004db1db069cdce8cf6e7e92acdc3114d521ebbca94fc2e38b8a8eaf1d8f31d",
+        "assets/femc/portraits/hanni-runners-holiday/surprised.webp": "31f1aab8de8a4000075fada25ade59b061fe4907bf9c9fed9e27efe97f4134ff"
+      }
+    },
+    {
+      "batch": 87,
+      "source": "hyein-runners-holiday-sheet.png",
+      "sourceNow": "Added to Game/hyein-runners-holiday-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c03f28f9f9ad7fc4887dc0b653addeec7032afb8994b5d9a3b827947608b0dbc",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/hyein-runners-holiday/neutral.webp",
+      "character": "hyein-runners-holiday",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-Runners-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.01,
+      "placement": "data/epi/runners/world.js eventFaces['runners-holiday'].hyein; epi-r-holiday (story-w3.js) names the key",
+      "outputs": {
+        "assets/femc/portraits/hyein-runners-holiday/flustered.webp": "64f0110078dea1a0162285f2fa9d2aa2ce4faa8e9a4c09893d4cc3bdca1823dd",
+        "assets/femc/portraits/hyein-runners-holiday/happy.webp": "b479ec8808330afd87d4a1add285484db0b1b94392b64247147ee295086b80f1",
+        "assets/femc/portraits/hyein-runners-holiday/neutral.webp": "92374fe7acc9b133fa02ac424e95901bf1d7b9069d1b5fb63216a812cd8ad051",
+        "assets/femc/portraits/hyein-runners-holiday/sad.webp": "4b5b698057a1e2fb12103f9ddc67fae91b5a15e422c80d1c90202d8368e371d7",
+        "assets/femc/portraits/hyein-runners-holiday/serious.webp": "6cd9b684159688e94b847dba68d8a604440c274ecb351cb6264ad40553267bb4",
+        "assets/femc/portraits/hyein-runners-holiday/surprised.webp": "0a2b5e64c28449660d4e332f92fff25090a9b0d917fead2aee4788e8eb7792e4"
+      }
+    },
+    {
+      "batch": 87,
+      "source": "jaehyun-runners-holiday-sheet.png",
+      "sourceNow": "Added to Game/jaehyun-runners-holiday-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7461964b5434bc2a22c32b5eba33774cbb9b66117a6f63c630835e09d2cff942",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/jaehyun-runners-holiday/neutral.webp",
+      "character": "jaehyun-runners-holiday",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-Runners-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.98,
+      "placement": "data/epi/runners/world.js eventFaces['runners-holiday'].jaehyun; epi-r-holiday (story-w3.js) names the key",
+      "outputs": {
+        "assets/femc/portraits/jaehyun-runners-holiday/flustered.webp": "8cb5039d9345ddbeba8b5241e5a9c9dcaba6675bf9bf2a859a5027a013861e63",
+        "assets/femc/portraits/jaehyun-runners-holiday/happy.webp": "fb16bf86f1948bdafb4eadad4729499a17133d40771c0069fc92c8a65e341020",
+        "assets/femc/portraits/jaehyun-runners-holiday/neutral.webp": "8ff85976d72ee6936fe9bee26a7b46befab3553e436e40942db18404405afaeb",
+        "assets/femc/portraits/jaehyun-runners-holiday/sad.webp": "e7d52688cbd35c83eb9eef8bb615b919fc3a7b430f1248e32bb834cd77bb6e05",
+        "assets/femc/portraits/jaehyun-runners-holiday/serious.webp": "24b2247c2374ffbb25fef205f1561dbec6531e5849c856cd16b92a80b25997f0",
+        "assets/femc/portraits/jaehyun-runners-holiday/surprised.webp": "a1976163cc7a1bf2c305e821204d69aa15314721aa66faa88400f3e5e77e70d5"
+      }
+    },
+    {
+      "batch": 87,
+      "source": "mark-runners-holiday-sheet.png",
+      "sourceNow": "Added to Game/mark-runners-holiday-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3aed0b89ca073bb8065f8a3453ceda3ede67cde3ea7244ef36fb4fa5b5b1bfa5",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/mark-runners-holiday/neutral.webp",
+      "character": "mark-runners-holiday",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-Runners-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.92,
+      "placement": "data/epi/runners/world.js eventFaces['runners-holiday'].mark; epi-r-holiday (story-w3.js) names the key",
+      "outputs": {
+        "assets/femc/portraits/mark-runners-holiday/flustered.webp": "174d392297eb413af64d2c6847b47bca8801f64767e3c688efeced16c5087668",
+        "assets/femc/portraits/mark-runners-holiday/happy.webp": "33e11033dd47ddd0c2a01c55ef15ac3c940c4b7b1541bc2c119694b0030fb140",
+        "assets/femc/portraits/mark-runners-holiday/neutral.webp": "5956d2519eed2c64e5bb636289445cea11900504aa927fb7bf155f252d773fd2",
+        "assets/femc/portraits/mark-runners-holiday/sad.webp": "c3e486541328c1489e5e6d6c5807927fa5f89df796fd4076e41b8ff503a524f0",
+        "assets/femc/portraits/mark-runners-holiday/serious.webp": "d7156eb6327f111d62cd8bb4de3ae52d782227a6a05ce564e2a0bda8494d8e28",
+        "assets/femc/portraits/mark-runners-holiday/surprised.webp": "fad14b95b1c261ddd0e3402615765fd6cb58bfe6b024a798eaeba904869010c5"
+      }
+    },
+    {
+      "batch": 87,
+      "source": "minji-runners-holiday-sheet.png",
+      "sourceNow": "Added to Game/minji-runners-holiday-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b0b6c3ad102ada7037f4e307e3edb4e25c244af2a85d93e28583abc3c11ce64a",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/minji-runners-holiday/neutral.webp",
+      "character": "minji-runners-holiday",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-Runners-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.86,
+      "placement": "data/epi/runners/world.js eventFaces['runners-holiday'].minji; epi-r-holiday (story-w3.js) names the key",
+      "outputs": {
+        "assets/femc/portraits/minji-runners-holiday/flustered.webp": "3432cd5b0ae2e2c4ce2f79af8625144c4755d614287e0aedae7b5278ef2dbbfc",
+        "assets/femc/portraits/minji-runners-holiday/happy.webp": "1e922353c37a5f22660616ad589bb8af0db3717ef11fa3b64bee8d272e1f1906",
+        "assets/femc/portraits/minji-runners-holiday/neutral.webp": "f51308c89310c3679931e814e83dd36142448e777c5cf4b9ea24392ba7df08ab",
+        "assets/femc/portraits/minji-runners-holiday/sad.webp": "5060d17d0cea7694361c8e09f999f81ef2c8664e7d3c43aecb1d9da311f2430e",
+        "assets/femc/portraits/minji-runners-holiday/serious.webp": "ce7d9941ab283ef6a9429918e9b671a246b5dc8cf1525557ed68b9ddfab5082c",
+        "assets/femc/portraits/minji-runners-holiday/surprised.webp": "9dd9ef9828d91627f2efdc494aebe2f7eba2aa5b72462b7fb715447a0f0e0377"
+      }
+    },
+    {
+      "batch": 87,
+      "source": "solar-runners-regionals-sheet.png",
+      "sourceNow": "Added to Game/solar-runners-regionals-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1c89584cee93d65e122931ed252aae23a3ce354100a64906a8e773bdeb9fad89",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/solar-runners-regionals/neutral.webp",
+      "character": "solar-runners-regionals",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-Runners-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.89,
+      "placement": "data/epi/runners/world.js eventFaces['runners-regionals'].solar; epi-r-regionals-1 / -2 (story-w1.js) name the key",
+      "outputs": {
+        "assets/femc/portraits/solar-runners-regionals/flustered.webp": "a8614643f5608fc9bc373295b6947842cca7c658be995b12ea7410d1ae741731",
+        "assets/femc/portraits/solar-runners-regionals/happy.webp": "420893487f9960a9995f0f7c718f4d756ce2cb7de518d9ca2118c29f01e1028c",
+        "assets/femc/portraits/solar-runners-regionals/neutral.webp": "b849188753faa2c7a168207f7459fcf05952931f83b11e78ebeb24922e54f01e",
+        "assets/femc/portraits/solar-runners-regionals/sad.webp": "4c28aef2a5f79da88aa0373e9b1311562c4f28c44eb92d92572fb69d0c252e2a",
+        "assets/femc/portraits/solar-runners-regionals/serious.webp": "1aa3ada036ad6cdc617a97dd0230e1fb08aaed9048377e0965072a4a8b8da133",
+        "assets/femc/portraits/solar-runners-regionals/surprised.webp": "e4afdcea7389efeeb5456d5a3fba0eb145214fd1e367aa4405ff5b5aba161c35"
+      }
+    },
+    {
+      "batch": 87,
+      "source": "minji-runners-regionals-sheet.png",
+      "sourceNow": "Added to Game/minji-runners-regionals-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9520f2075bef3db64647e74efebd22de25820b9ad6b7defdf220ef9376cb18af",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/minji-runners-regionals/neutral.webp",
+      "character": "minji-runners-regionals",
+      "conversion": "3x2 sheet cut at the emptiest column/row; macOS Vision lift (tools/femc-lift.swift), non-white pixels Vision dropped restored, largest component kept; flat-white pixels connected to the outside cleared, enclosed drawn holes and half-transparent collar pixels in the lower body made opaque (as batch 62); sheet-margin rows trimmed off the bottom edge and the lower quarter made solid between its outer edges (as batch 81); cut PNGs in Character Portraits/<Name>-Runners-<Event>/; femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.86,
+      "placement": "data/epi/runners/world.js eventFaces['runners-regionals'].minji; epi-r-regionals-1 / -2 (story-w1.js) name the key",
+      "outputs": {
+        "assets/femc/portraits/minji-runners-regionals/flustered.webp": "11c4e8853134c97094edb4d495659b18e427fa05769e29742db55f3f64f9e8ff",
+        "assets/femc/portraits/minji-runners-regionals/happy.webp": "676734fcb4133611f2725e0c3b049b133fec42f21b4a686085522672be39083f",
+        "assets/femc/portraits/minji-runners-regionals/neutral.webp": "f338710092cb737b61f992eaf9a7df3cc0dcb34a96e3a11216420498f0023701",
+        "assets/femc/portraits/minji-runners-regionals/sad.webp": "4aa86df5f519afc0ebaa818b99552c626c73f571421fdf9cf1c774cfec2c00c1",
+        "assets/femc/portraits/minji-runners-regionals/serious.webp": "7205f488d98514deffa955622a104ab318756f07c35aa7971c1a9d2d7ddb7d32",
+        "assets/femc/portraits/minji-runners-regionals/surprised.webp": "d6100365443355a9eda6360181cf8d4c9ea53ce474eabf5c4e61bb96181c0004"
+      }
     }
   ],
   "batch1Validation": {
@@ -18444,5 +18669,26 @@
     ],
     "notTested": "no browser tests (Kat at work): tests/femc_cosmetics.py (newpending now includes sk-alphaphi) and an outfit portrait in a scene at 1000x486 and 375x812",
     "html": "femc-game.html ready.js v8, cosmetics.js v10"
+  },
+  "batch87Validation": {
+    "date": "2026-10-29",
+    "scope": "Runners event outfit faces (the Sigma holiday party; Regionals) and the per-event faces hook (FEMC-ART-WIRING Extras)",
+    "sourcesInspected": "all 9 viewed; every cut on magenta contact sheets after the cleanup; neutrals in a scale lineup beside each one's usual Runners face",
+    "sourcesIntegrated": 9,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "engine": "core.js eventFaces(key) + worldFace (eventFaces[key] first, then faces); scene.js holds opts.faces / { faces } lines in vis and restores the previous key on close; epilogue.js build() passes eventFaces, playEvent / hangoutScene / replay pass faces; routines pass it through their spread",
+    "scaleMethod": "Vision face landmarks (scratchpad eyes.swift): scale so the eyes sit at the same screen height as the character's usual Runners face (solar-runners, haechan-runners, the others' year faces), neutral / happy / serious averaged; at those scales the faces are 88-102% of the usual face size (Mark's holiday sheet is framed wider: 88%)",
+    "textCheck": "holiday and Regionals narration agrees with the sheets (Solar's wine-red silk dress, Haechan's black shirt; the team jerseys); no text changed",
+    "lateArrivals": [
+      "chenle-runners-regionals-sheet.png (not wired)"
+    ],
+    "tests": [
+      "tools/femc-check-scenes.py (new: faces / eventFaces targets have portraits, every faces key exists; a bad target was caught in a dry run)",
+      "jsc checkSyntax on every edited script",
+      "py_compile tests/femc_epilogue.py"
+    ],
+    "notTested": "no browser tests (Kat at work): tests/femc_epilogue.py (its _loaded checks now 24; new runners1 event-outfit check), in-scene face size at 1000x486 and 375x812",
+    "html": "femc-game.html core v57, scene v19, epilogue v26, portraits/index.js v142, scale.js v152 (FEMC_PORTRAIT_V 12); DATA_V 24"
   }
 }

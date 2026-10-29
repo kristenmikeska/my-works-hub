@@ -160,6 +160,7 @@ Other docs, if you ever want detail:
 - ✅ Art batch 84: six epilogue CGs (two for HOAX, three for Stay, one for the true coda).
 - ✅ Art batch 85: six epilogue CGs for strangers. Every story CG on your list is now in the game; one line adjusted so a scene matches your picture.
 - ✅ Art batch 86: Solar's scene portraits for seven outfits (Summer Yukata, Winter Coat, Halloween Witch, Date Day, Emo Night, Kiriko Cosplay, Phantom Thief), and a new outfit in the Wardrobe, Alpha Phi Formal, with its battle poses. The second Halloween sheet and the Alpha Phi portrait sheet weren't used (see the report).
+- ✅ Art batch 87: event outfits in the Runners epilogue. At the Sigma holiday party, Solar, Haechan, Hanni, Hyein, Minji, Mark and Jaehyun wear your holiday looks, and at Regionals Solar and Minji wear the team jersey, only in those scenes.
 - ✅ Art batch 65: your nine epilogue places are in the game: four for HOAX (the Kims' living room, Jihoon's house, the winter street, the winter-break party) and five for strangers (a kitchen, the annex, the mudflats, the festival night on Wolmido, the street in the dust), with a couple of small wording fixes so the scenes match your pictures. Your art list gained 57 new place prompts and 35 new CG prompts across the year and every epilogue, and the Evoker pieces, new expressions, sharper Shadows and strike sheets moved to a new backburner list
 
 ## Music and polish

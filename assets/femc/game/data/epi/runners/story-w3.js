@@ -357,7 +357,7 @@
   ] },
 
   // ───────────────────────────── 12/19, evening: the Sigma holiday party (fight 4) ─────────────────────────────
-  { id: 'epi-r-holiday', date: '12/19', slot: 'evening', consumes: true, title: 'the holiday party', place: 'Syracuse · Sigma Chi House · Holiday Party', time: 'Evening', scene: [
+  { id: 'epi-r-holiday', date: '12/19', slot: 'evening', consumes: true, faces: 'runners-holiday', title: 'the holiday party', place: 'Syracuse · Sigma Chi House · Holiday Party', time: 'Evening', scene: [
     { music: 'epi-r-holiday' },
     { n: "The last Friday before break, Sigma put on a jacket. That was the only way to describe it. The Friday party, the one that happened weekly without fail, had shaved and put on a tie and hung lights from every surface that would take a staple, and called itself a holiday party, and behaved, for the first hour, like it believed it." },
     { n: "Jaemin had hosted it the way some people direct films. There was a run of show on the fridge in his handwriting, doors at eight, Jeno, a speech at nine, a photo wall at ten that was just a bedsheet with tinsel safety-pinned to it, and at the bottom, underlined twice, *12:00 · the toast (EVERYONE).* Under that, smaller, in a different pen: *NO PINK PUNCH.* Under that, smaller still, in a third: *there is pink punch.*" },

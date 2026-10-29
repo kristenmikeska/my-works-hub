@@ -172,6 +172,23 @@ for wid, w in D.get('epi', {}).items():
             if st not in D['stats']: problems.append(f'{k}: activity {a.get("id")} raises unknown stat {st}')
     mv = (w.get('variants') or {}).get('morning') or {}
     if not mv.get('school') and not mv.get('off'): problems.append(f'{k}: variants.morning needs school or off lines')
+    # Faces (core.js worldFace): every faces / eventFaces target has portraits; an event's, hangout's or routine's `faces` key
+    # and a { faces } scene line name a key in eventFaces (art batch 87).
+    EF = w.get('eventFaces') or {}
+    for sp, pid in (w.get('faces') or {}).items():
+        if pid not in P: problems.append(f'{k}: faces {sp} -> {pid} has no portraits')
+    for key, m in EF.items():
+        for sp, pid in m.items():
+            if pid not in P: problems.append(f'{k}: eventFaces {key}: {sp} -> {pid} has no portraits')
+    def face_lines(lines, where):
+        for l in lines or []:
+            if not isinstance(l, dict): continue
+            if 'faces' in l and len(l) == 1 and l['faces'] is not None and l['faces'] not in EF: problems.append(f'{where}: {{ faces: {l["faces"]} }} is not in eventFaces')
+            for kk in ('then', 'else'): face_lines(l.get(kk), where)
+            for o in (l.get('choose') or []) + (l.get('route') or []): face_lines(o.get('then'), where)
+    for x in w['events'] + w.get('routines', []) + [h for b in (w.get('bonds') or {}).values() for h in b.get('hangouts', [])]:
+        if x.get('faces') is not None and x['faces'] not in EF: problems.append(f'{k}/{x.get("id")}: faces {x["faces"]} is not in eventFaces')
+        face_lines(x.get('scene'), f'{k}/{x.get("id")}')
     saved_bg = bg; bg = wbg
     saved_cast = dict(cast); cast.update(w.get('cast') or {})
     for e in w['events'] + w.get('routines', []): cast.update(e.get('cast') or {})
