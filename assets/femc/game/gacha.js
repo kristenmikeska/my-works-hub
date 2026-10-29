@@ -17,6 +17,8 @@
      Velvet Plumes: +1 a Tartarus night, +3 a full moon won (core.js applyResult → afterFight), and +1 for every Compendium
      entry, claimed from Elizabeth (S.registered; claimed ids in S.gacha.credited), and +1 for every Echo registered (echoes.js,
      credited as 'echo:<id>'). Her room also holds Echo Fusion and the Echo Compendium (echoes-ui.js velvetButtons).
+     Since 2026-10-29 (requests.js, Kat's three new sources) also: Elizabeth's Requests, the Tartarus floor and guardian
+     milestones, and the Plume Exchange (spare cards and materials); their buttons sit beside Fusion's (requests.js velvetButtons).
    Save: S.gacha (core.js fresh; gs() fills a missing or older one): { v, plumes, stars, pulls, draws, pity: { cap: { sr, ur },
      vel: { sr, ur } }, keys: { id: copies }, cases: [ids], caseOn, credited: [ids], last }. Prizes land where the rest of the
      game keeps them: items in S.inventory, gear / materials / skill cards / Revelation cards in S.battleSave (build.js rules).
@@ -47,7 +49,10 @@
      through the list, Esc closes (only the viewer; the menu stays). Collection: tap an owned keychain, charm or good, or
      a case's ⤢ (tapping the case still puts it on); cosmetics.js gives it the Wardrobe's owned looks. Locked tiles stay ???
      and never open it. First-got days: S.gacha.got { 'key:<id>' | 'skey:<id>' | 'good:<id>' | 'case:<id>': day } (older
-     saves show only how it was got). */
+     saves show only how it was got).
+   ── Requests, milestones and the exchange (2026-10-29, requests.js) ──
+     gs() also fills req { taken, done, seen }, miles [ids], tally { kills, weak }, ex { week, n, total } and rides
+     { last, n, rain } (requests.js header), so older saves load with them empty. */
 window.FemcGacha = (() => {
   const G = window.FemcGame;
   if (!G) return null;
@@ -238,7 +243,8 @@ window.FemcGacha = (() => {
   };
 
   /* ── State ── */
-  function fresh() { return { v: 2, plumes: 0, stars: 0, pulls: 0, draws: 0, pity: { cap: { sr: 0, ur: 0 }, vel: { sr: 0, ur: 0 }, series: {} }, keys: {}, skeys: {}, goods: {}, got: {}, done: [], cases: [], caseOn: null, credited: [], last: null }; }
+  function fresh() { return { v: 2, plumes: 0, stars: 0, pulls: 0, draws: 0, pity: { cap: { sr: 0, ur: 0 }, vel: { sr: 0, ur: 0 }, series: {} }, keys: {}, skeys: {}, goods: {}, got: {}, done: [], cases: [], caseOn: null, credited: [], last: null,
+    req: { taken: {}, done: [], seen: [] }, miles: [], tally: { kills: 0, weak: {} }, ex: { week: -1, n: 0, total: 0 }, rides: { last: -1, n: 0, rain: 0 } }; }
   function gs() {
     const s = S();
     const f = fresh();
@@ -251,6 +257,17 @@ window.FemcGacha = (() => {
     if (!g.skeys || typeof g.skeys !== 'object' || Array.isArray(g.skeys)) g.skeys = {};
     if (!g.goods || typeof g.goods !== 'object' || Array.isArray(g.goods)) g.goods = {};
     if (!g.got || typeof g.got !== 'object' || Array.isArray(g.got)) g.got = {};
+    // requests.js (2026-10-29): each part rebuilt if missing or malformed; counts never negative, id lists strings only.
+    const obj = x => !!x && typeof x === 'object' && !Array.isArray(x), num = x => (x >= 0 ? Math.floor(x) : 0), ids = a => (Array.isArray(a) ? [...new Set(a.filter(x => typeof x === 'string'))] : []);
+    if (!obj(g.req)) g.req = f.req;
+    if (!obj(g.req.taken)) g.req.taken = {};
+    g.req.done = ids(g.req.done); g.req.seen = ids(g.req.seen); g.miles = ids(g.miles);
+    if (!obj(g.tally)) g.tally = f.tally;
+    g.tally.kills = num(g.tally.kills); if (!obj(g.tally.weak)) g.tally.weak = {};
+    if (!obj(g.ex)) g.ex = f.ex;
+    g.ex.week = typeof g.ex.week === 'number' ? g.ex.week : -1; g.ex.n = num(g.ex.n); g.ex.total = num(g.ex.total);
+    if (!obj(g.rides)) g.rides = f.rides;
+    g.rides.last = typeof g.rides.last === 'number' ? g.rides.last : -1; g.rides.n = num(g.rides.n); g.rides.rain = num(g.rides.rain);
     return g;
   }
   // Pity for a capsule series: the Cast machine keeps the old counters.
@@ -661,18 +678,20 @@ window.FemcGacha = (() => {
       $('.g-ga-info').innerHTML = `${oddsHtml(VEL.odds)}
         <p class="g-ga-pity">Super Rare or better within <b>${VEL.pitySR - p.sr}</b> draw${VEL.pitySR - p.sr === 1 ? '' : 's'} · an Ultra within <b>${VEL.pityUR - p.ur}</b>.</p>
         <p class="g-ga-own"><span>Velvet Plumes <b>${g.plumes}</b></span><span>Draws <b>${g.draws}</b></span>${c.credit ? '<span class="g-ga-credit">Compendium Credit: 25% off, one plume less</span>' : ''}</p>
-        <p class="g-note small">Plumes: one for every Tartarus night, three for a full moon won, one for every new Compendium page (people and Echoes).</p>`;
+        <p class="g-note small">Plumes: one for every Tartarus night, three for a full moon won, one for every new Compendium page (people and Echoes), new Tartarus blocks and guardians, Elizabeth’s Requests and the Plume Exchange.</p>`;
       $('.g-ga-btns').innerHTML = `<button type="button" class="g-btn pink" data-draw="yen"${velCan('yen') && !busy ? '' : ' disabled'}><span>Draw · ${yen(c.yen)}${c.credit ? ` <s>${yen(VEL.price)}</s>` : ''}</span></button>
         <button type="button" class="g-btn" data-draw="plumes"${velCan('plumes') && !busy ? '' : ' disabled'}><span>Draw · ${c.plumes} Plume${c.plumes === 1 ? '' : 's'}</span></button>
         ${btn10('data-draw10', 'yen', `×10 · ${yen(c.yen * 10)}`, busy ? 'Busy' : velWhy('yen', 10))}
         ${btn10('data-draw10', 'plumes', `×10 · ${c.plumes * 10} Plumes`, busy ? 'Busy' : velWhy('plumes', 10))}
         ${n ? `<button type="button" class="g-btn small" data-claim${busy ? ' disabled' : ''}><span>Show her the Compendium (+${n})</span></button>` : ''}
         ${window.FemcEchoUI ? window.FemcEchoUI.velvetButtons() : ''}
+        ${window.FemcRequests ? window.FemcRequests.velvetButtons() : ''}
         <span class="g-yen g-ga-yen">${yen(S().yen)}</span>`;
       o.el.querySelectorAll('[data-draw]').forEach(b => b.addEventListener('click', () => deal(b.dataset.draw)));
       o.el.querySelectorAll('[data-draw10]').forEach(b => b.addEventListener('click', () => deal10(b.dataset.draw10)));
       $('[data-claim]')?.addEventListener('click', () => { if (claim()) { G.sfx('femc-rankup'); say(LINES.velClaim[0]); paint(); } });
       window.FemcEchoUI?.wireVelvet(o.el, () => { if (!busy) paint(); });
+      window.FemcRequests?.wireVelvet(o.el, () => { if (!busy) paint(); });
     };
     /* Ten draws: Elizabeth turns over the best card, then the grid (no picking: she deals the ten herself). */
     async function deal10(how) {

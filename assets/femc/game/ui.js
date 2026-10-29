@@ -853,6 +853,7 @@
     const mk = ['rain', 'snow', 'cloudy', 'storm'].includes(info.weather) ? info.weather : 'clear';
     const walk = G.vary(`monorail.${mk}`, mk === 'storm' ? 'The monorail crossed the bay in a gray roar of rain, the cars swaying on the gusts, and everyone pretended not to notice.' : G.wxIn(['rain'], info.weather) ? 'Rain on the monorail windows, umbrellas everywhere.' : info.weather === 'snow' ? 'Snow on the rails. The monorail crept across the bay like it was being careful.' : 'The monorail across the bay, the city falling away behind it.');
     const chatter = ambient('morning');
+    window.FemcRequests?.rode(info.weather); // Elizabeth's monorail request counts school mornings (once a day)
     return segment({ slot: 'early', bg: 'train-car-inside', place: 'Monorail', text: walk, sub: chatter ? `<i>“${esc(chatter)}”</i>` : '', next: exam ? () => resultsBoard(exam.id, advance) : advance });
   }
   function lunch(info) {

@@ -1,4 +1,5 @@
-/* Persona 3: Solstice · the gacha (gacha.js), Menu → Collection, phone cases and the in-game stamp toast (stamps.js).
+/* Persona 3: Solstice · the gacha (gacha.js), Menu → Collection, phone cases, the in-game stamp toast (stamps.js), and
+   Elizabeth's Requests and the Plume Exchange (requests.js, at the end).
    House style: game.css tokens (--pink, --gold, --night, --cond), skewed panels, hard offset shadows. */
 
 /* ── Shared ── */
@@ -412,4 +413,46 @@
   .g-view-img { max-height: 44vh; }
   .g-view-drawn > .g-key, .g-view-drawn > .g-good { zoom: 2.6; }
   .g-view-zoom { width: 30px; height: 30px; }
+}
+
+/* ── Elizabeth's Requests and the Plume Exchange (requests.js, 2026-10-29) ── */
+.g-rq-ov .g-panel, .g-px-ov .g-panel { width: min(760px, 100%); }
+.g-rq-list { display: grid; gap: 10px; margin: 4px 0 14px; padding: 0; list-style: none; }
+.g-rq-card { display: grid; gap: 5px; padding: 10px 12px; background: rgba(8, 12, 30, .86); border: 2px solid rgba(106, 176, 255, .35); border-left-width: 4px; }
+.g-rq-card.taken { border-color: #6ab0ff; box-shadow: 5px 5px 0 rgba(43, 95, 208, .45); }
+.g-rq-card.ready { border-color: var(--gold); box-shadow: 5px 5px 0 rgba(255, 211, 107, .4); }
+.g-rq-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 0; }
+.g-rq-top b { font: italic 900 19px/1.1 var(--cond); letter-spacing: .02em; }
+.g-rq-no { color: #8fd0ff; font: italic 800 12px/1.2 var(--cond); letter-spacing: .18em; text-transform: uppercase; }
+.g-rq-ask { margin: 0; color: #cfe3ff; font-size: 14.5px; font-style: italic; }
+.g-rq-prog { color: var(--muted); font-size: 13px; }
+.g-rq-card.ready .g-rq-prog { color: var(--gold); font-weight: 700; }
+.g-rq-card .g-ec-meter i { background: #6ab0ff; }
+.g-rq-card.ready .g-ec-meter i { background: var(--gold); }
+.g-rq-pay { margin: 0; font-size: 13.5px; color: var(--pink-3); }
+.g-rq-pay b { color: var(--gold); font-weight: 700; }
+.g-rq-btns { margin-top: 4px; gap: 10px; }
+.g-rq-done { margin: 8px 0 0; color: var(--muted); font-size: 13.5px; }
+.g-rq-done summary { cursor: pointer; font: italic 800 14px/1.3 var(--cond); letter-spacing: .06em; color: #cfe3ff; }
+.g-rq-done ul { margin: 6px 0 0; padding: 0; list-style: none; columns: 2 220px; }
+.g-rq-done li { break-inside: avoid; padding: 2px 0; }
+.g-px-rows { display: grid; gap: 6px; margin: 4px 0 12px; padding: 0; list-style: none; }
+.g-px-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px; padding: 7px 10px; background: rgba(8, 12, 30, .82); border-left: 3px solid #6ab0ff; }
+.g-px-what { display: grid; gap: 2px; min-width: 0; }
+.g-px-what b { font: italic 800 15px/1.15 var(--cond); letter-spacing: .02em; }
+.g-px-what small { color: var(--muted); font-size: 12.5px; }
+.g-px-step { display: inline-flex; align-items: center; gap: 10px; }
+.g-px-step .g-btn { min-width: 40px; justify-content: center; }
+.g-px-step output { min-width: 2ch; text-align: center; color: var(--gold); font: italic 900 18px/1 var(--cond); font-variant-numeric: tabular-nums; }
+.g-px-confirm { padding: 12px; background: rgba(8, 12, 30, .88); border: 2px solid var(--gold); box-shadow: 5px 5px 0 rgba(255, 211, 107, .35); }
+.g-px-confirm > p { margin: 0 0 6px; }
+.g-px-list { max-height: 38vh; overflow-y: auto; margin: 0 0 8px; padding: 0 0 0 18px; columns: 2 230px; font-size: 14px; }
+.g-px-list li { break-inside: avoid; padding: 1px 0; }
+.g-px-list b { color: var(--gold); }
+.g-px-list small { color: var(--muted); }
+.g-px-get b { color: var(--gold); font: italic 900 18px/1 var(--cond); }
+@media (max-width: 620px) {
+  .g-rq-top b { font-size: 17px; }
+  .g-px-row { padding: 6px 8px; }
+  .g-px-step .g-btn { min-width: 36px; }
 }

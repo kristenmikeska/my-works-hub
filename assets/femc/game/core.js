@@ -2344,6 +2344,9 @@ window.FemcGame = (() => {
     W.FemcGacha?.afterFight(h.kind, r.outcome);
     // Velvet Plumes found in Tartarus (vaults, guardians, rare Shadows, hidden rooms: battle tartarus.js).
     if (r.plumes > 0 && W.FemcGacha?.gs) { W.FemcGacha.gs().plumes += r.plumes; sum.plumes = r.plumes; toast('perk', `Velvet Plume${r.plumes > 1 ? 's' : ''} +${r.plumes} (found in Tartarus)`); }
+    // Elizabeth's Requests and the Tartarus milestones (requests.js): the night's tally (Shadows beaten, weaknesses struck:
+    // battle.js hoResult `tally`), then any block, summit or guardian reached for the first time (plumes, toasts).
+    W.FemcRequests?.afterFight(h, r);
     let fat = r.fatigue;
     // Hanni's Mom Mode (Good instead of Tired) and Jaehyun's Wear Layers (Tired instead of Sick), once a week each.
     if (fat === 'sick' && perkOn('wearLayers') && weekly('wearLayers')) { fat = 'tired'; toast('perk', 'Wear Layers: Jaehyun’s jacket. She’s only Tired.'); }
