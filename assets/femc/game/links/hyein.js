@@ -1397,9 +1397,11 @@
         ] }
       ] },
       { n: "So Solar dressed her. Off the racks of the shop that had let Hyein do its window, while the clerk who'd once refused to let her fix a scarf watched from behind the till with an expression of slowly dawning delight. Not a coat. Hyein always went to coats. A soft blouse in a color that meant nothing, a color like a Sunday, and a long cardigan over it, and nothing on top, nothing loud, nothing that asked anybody to look." },
+      { cg: 'link-hyein-r15' },
       { n: "And the hard part wasn't the clothes. The hard part was that Hyein had to stand there and not say anything about it. Not narrate. Not fix the hem. Not turn and tell the woman with the stroller what was wrong with the sleeve. Solar watched her try, every few seconds, watched her mouth open and close, her hands rise toward a button and drop again, and in the long mirror the tallest girl in the mall stood in a Sunday-colored blouse being looked at, quietly, by one person, for something she hadn't made." },
       { s: 'hyein', f: 'sad', t: "...This is the hardest thing I've ever done. Harder than the window. Harder than no voice. Can I say one thing about the cuffs." },
       { s: 'solar', f: 'neutral', t: "No." },
+      { cg: null },
       { ifHeading: 'R', then: [
         { s: 'hyein', f: 'neutral', t: "...You're going to do this at home, aren't you. Now that you know how. You're going to stand me in front of a mirror in the house and tell me to hold still and I'm going to have to." },
         { s: 'hyein', f: 'happy', t: "Hanni's going to be unbearable about it. She's going to take a picture. And this time the picture's going to work, because the phones are going to work, because we're going to be home." },

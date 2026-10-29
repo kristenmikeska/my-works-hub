@@ -292,6 +292,7 @@
       ] },
       { place: "Iwatodai Dorm · Solar's Room", time: 'Early Morning', bg: 'solar-dormroom-day', music: 'tender' },
       { n: "His watch went off at four-thirty. She felt him wake up all at once, the way he always did, and she waited for the bed to tip and the cold to come in where he'd been." },
+      { cg: 'romance-akihiko-snow-morning' },
       { n: "It didn't. He reached over her, turned the watch off on his own wrist without looking at it, and put his arm back exactly where it had been, and his face back in her hair, and lay still." },
       { s: 'solar', f: 'surprised', t: "...You're not running." },
       { s: 'akihiko', f: 'neutral', t: "It's snowing." },

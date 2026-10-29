@@ -843,6 +843,7 @@
           { n: "She swapped them. He stood up, patiently, and swapped them again, like a man resetting a chessboard, and sat down with his back to the door, and waited, and after the third time she gave up and sat where he'd put her." }
         ] }
       ] },
+      { cg: 'link-sunghoon-r10' },
       { n: "The bell went behind him. His shoulders did something, a flicker, the whole of him leaning toward a door he couldn't see, and then they did nothing at all. He picked up his coffee." },
       { s: 'sunghoon', f: 'neutral', t: "Who is it?" },
       { s: 'solar', f: 'neutral', t: "A man with an umbrella. He's shaking it all over Sunoo's floor. Sunoo's going to have words with him." },
@@ -856,6 +857,7 @@
         { s: 'sunghoon', f: 'serious', t: "I've never sat like this. Back to a door. Not in either place. Not once in my life." },
         { s: 'sunghoon', f: 'neutral', t: "I am now." }
       ] },
+      { cg: null },
       { ifFlag: 'shoon-walked', then: [
         { n: "By the river, she thought, he'd let her walk beside him. Not behind. He'd been getting here for a while, an inch of not standing guard at a time, and she'd watched every inch and not known what she was watching." }
       ] },

@@ -380,7 +380,9 @@ window.FEMC_GAME_PLACES = {
     'link-sunoo-r10': '51% 28%', 'crush-akihiko-umbrella': '38% 22%', 'crush-two-ends': '60% 40%', 'holiday-summer-festival': '48% 22%', 'holiday-new-year': '36% 45%',
     'link-sebastian-r10': '42% 25%', 'link-aphrodite-r10': '48% 30%', 'link-widowmaker-r10': '45% 25%', 'link-rohan-r10': '42% 28%',
     'link-wren-r10': '38% 40%', 'holiday-valentines': '45% 25%', 'story-dorm-dinner': '35% 35%',
-    'link-akihiko-r10': '55% 30%', 'link-haechan-r13': '50% 25%', 'link-jungwon-r14': '50% 30%', 'link-mark-r14': '50% 40%'
+    'link-akihiko-r10': '55% 30%', 'link-haechan-r13': '50% 25%', 'link-jungwon-r14': '50% 30%', 'link-mark-r14': '50% 40%',
+    'link-hyein-r15': '38% 30%', 'link-jay-r10': '50% 35%', 'link-niki-r10': '45% 35%', 'link-sunghoon-r10': '40% 35%',
+    'story-obon-lanterns': '30% 40%', 'story-first-snow-roof': '50% 35%', 'romance-haechan-roof-snow': '35% 30%', 'romance-akihiko-snow-morning': '55% 40%'
   },
   /* Music (assets/femc/music/<file>.mp3) by mood. Scenes pick a mood; screens use the `screens` map.
      A mood is one file (it loops) or a pool (a list): a pool rotates, never plays the same file twice in a row, and each

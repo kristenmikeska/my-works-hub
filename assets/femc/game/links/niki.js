@@ -924,9 +924,11 @@
       ] },
       { n: "He was wearing the puffer zipped to the chin again, the tape on the right sleeve worn pale now at the corners, and a scarf he'd taken to wearing wound twice round his neck, and he had the old phone in his hand, the bear swinging off it, turning it over and over the way he did when he wasn't thinking about it, and he hadn't eaten a banana in twenty minutes, which for him was practically a fast." },
       { s: 'niki', f: 'neutral', t: "Okay. One more. Then the table. Then I have to say something and you have to not make it weird." },
+      { cg: 'link-niki-r10' },
       { n: "They played the shooter. Two guns. Her hands knew it, still, from somewhere neither of them came from, and his knew it from two months of owning it, and they went through the stages side by side without speaking, shoulder to shoulder, and she could feel him stop showing off somewhere around the third stage and just play, properly, with her, the way you only play with someone you trust to cover the left side of the screen." },
       { n: "They came out on top together. Two scores, one above the other. The table opened its three blinking letters and waited." },
       { s: 'niki', f: 'neutral', t: "You do it. The top one. It's yours this time. I'm serious. I'll take second. Look at me. I'm taking second. Write it down." },
+      { cg: null },
       { choose: [
         { t: "(Enter RKI. For him.)", notes: 3, then: [
           { s: 'niki', f: 'surprised', t: "...Hey. That's mine. I said it was yours." },

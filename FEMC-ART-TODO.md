@@ -1,6 +1,6 @@
 # Art to make
 
-**66 items:** 31 CGs · 3 places · 4 character pieces · 28 wardrobe. 62 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**58 items:** 23 CGs · 3 places · 4 character pieces · 28 wardrobe. 54 are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -52,38 +52,6 @@ Save as: `link-shinjiro-r10-cg.png`
 Persona 3 Reload style event CG, 16:9, no text. The dorm kitchen late at night with the lights off, lit only by an enormous white full moon in the window over the sink; the moonlight throws the window frame across the floor tiles in hard black lines like a ruled page. The kitchen is spotless: pans on their hooks with handles out, a big pot on the back burner, spice jars in a neat row, a rice bin with its cup on top, a handwritten note taped to the fridge (scribbles, unreadable). Shinjiro (the first attached image's face; tall, long maroon coat hanging off the edge of the counter) sits up on the counter, which he never does, slightly hunched, turning his beanie around and around by the brim in his hands, not looking at the moon. Solar (the second attached image's face; long dark hair loose, a cardigan over pajamas, socks, no shoes) stands just inside the kitchen doorway, a few steps away, in the moonlight. Silver and black, very quiet, heavy and tender. Keep the faces clear of the edges.
 ```
 
-**[ ] Hyein · rank 15 · the shop mirror at Paulownia Mall** *(optional)*  
-For Hyein's rank 15, at the clothing shop in Paulownia Mall on a Saturday in late February.  
-Attach: Hyein, Solar, `bg/clothing-store.webp` (for the room only)  
-Save as: `link-hyein-r15-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. Inside a boutique in a shopping mall on the first soft, damp, warm Saturday of late February, the shop doors open, the window display behind done for March in white and green with graduation bouquets. Hyein (the first attached image's face; very tall, wearing a soft blouse in a quiet, plain Sunday color and a long cardigan over it, no coat, nothing loud) stands on a mark on the floor in front of the shop's long mirror, rigid like a mannequin, chin up, hands at her sides, one hand half rising toward a button as if she can't stop herself fixing something. Solar (the second attached image's face; long dark hair, light spring jacket) stands just behind her shoulder, reflected in the mirror too, looking at her with a small proud smile. Behind the till in the background a shop clerk watches with dawning delight. Soft daylight, gentle, funny and moving. Keep the faces clear of the edges.
-```
-
-**[ ] Jay · rank 10 · the dorm front step at night** *(optional)*  
-For Jay's rank 10, at the front step of the dorm on a January evening.  
-Attach: Jay, Solar, `bg/iwatodaidorm-front-winter.webp` (for the place only)  
-Save as: `link-jay-r10-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The front step of the dorm at eight in the evening at the end of January, hard clean cold that makes the streetlights look extra sharp, warm light from the lounge window behind. Jay (the first attached image's face; a jacket zipped all the way to the chin) stands on the step, his breath going up white, two bags of food containers at his feet, holding out a plain white index card, a little bent at one corner, covered both sides in heavy pressed-hard handwriting (unreadable scribbles), not looking quite at her. Solar (the second attached image's face; long dark hair, sweater, no coat, just stepped outside) faces him on the step, reaching for the card. About a step apart. Gruff, warm, quietly important. Keep the faces clear of the edges.
-```
-
-**[ ] Niki · rank 10 · Game Panic** *(optional)*  
-For Niki's rank 10, at the Game Panic arcade on a late-January evening.  
-Attach: Niki, Solar, `bg/gamepanic-inside.webp` (for the room only)  
-Save as: `link-niki-r10-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. Inside a loud, dim arcade on a late-January evening, a bruise-purple carpet, glowing cabinets all around, a light-gun shooter cabinet screen blazing in front of them (abstract game light, no readable text). Niki (the first attached image's face; a puffer jacket zipped to the chin with tape on the right sleeve worn pale at the corners, a scarf wound twice around his neck, a small bear charm hanging off an old phone in his pocket) and Solar (the second attached image's face; long dark hair, winter coat) stand shoulder to shoulder, each aiming a plastic light gun at the screen with both hands, totally in sync, focused, Niki's grin just breaking through. Screen glow on their faces, colored arcade light. Electric, playful, two people perfectly matched. Keep the faces clear of the edges.
-```
-
-**[ ] Sunghoon · rank 10 · Yeobo's window table** *(optional)*  
-For Sunghoon's rank 10, at Yeobo's Cafe on a late-January evening.  
-Attach: Sunghoon, Solar, Sunoo, `bg/yeobos-cafe.webp` (for the room only)  
-Save as: `link-sunghoon-r10-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A small cozy café on a late-January evening, the windows thick with steam, a few finger-drawn marks in the steam on the inside of the glass (no readable letters), warm lamplight. At the window table, a single red winter camellia in a small vase. Solar (the second attached image's face; long dark hair, winter sweater) sits in the chair that faces the room and the door with its little bell, looking across at him. Sunghoon (the first attached image's face; neat, princely, a dark coat) sits opposite her with his back to the room and the door, holding a coffee cup, very composed, his shoulders just a little too still. In the background behind the counter and the pastry case, Sunoo (the third attached image's face; café apron) pretends very hard not to watch. Warm, hushed, a quiet act of trust. Keep the faces clear of the edges.
-```
-
 **[ ] Aigis · 12/31 · the dorm roof at sunset** *(optional)*  
 For Aigis's New Year's Eve holiday scene, on the dorm roof on the last afternoon of the year.  
 Attach: Aigis, Solar, `bg/iwatodaidorm-roof-evening.webp` (for the place only)  
@@ -92,44 +60,12 @@ Save as: `holiday-aigis-sunset-cg.png`
 Persona 3 Reload style event CG, 16:9, no text. The dorm rooftop on the last afternoon of the year, cold and very clear, the sun just touching the bay on the horizon, gold light across the water and the city, long shadows across the roof. Aigis (the first attached image's face; blonde, her usual look, with a soft scarf wound three times around her neck) stands at the railing watching the sunset with very blue, steady eyes, her hand resting on the rail. Solar (the second attached image's face; long dark hair, winter coat) stands right beside her at the rail, one step of space between them, her hand on the rail next to Aigis's. Seen slightly from behind and to the side so both faces catch the gold light. Calm, luminous, a year quietly ending. Keep the faces clear of the edges.
 ```
 
-**[ ] The year · 8/15 · the back streets at Obon** *(optional)*  
-For the 8/15 story evening in the back streets of Port Island.  
-Attach: Solar, `bg/outside-nightdistrict.webp` (for the light only)  
-Save as: `story-obon-lanterns-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A narrow, old, steep street on a summer evening going down toward a harbor in shallow worn stone steps. Strung one after another all the way down it hang fat round red silk lanterns with gold tassels and black brush strokes painted on them (abstract, unreadable), swaying slightly though there is no wind, so the stones below glow deep red. A steamed-up window halfway down glows warm. At the very top of the street, behind, a glimpse of pale white and yellow paper festival lanterns and a far-off crowd. Solar (the attached image's face; long dark hair, light summer clothes) stands alone at the top of the steps, one hand lifted a little, her lips just parted as if about to sing along to something, lit red from below, looking down the street. At the bottom, under the last lantern, an empty stretch of wall, a drainpipe and a cat. Dreamlike, haunting, strangely familiar. Keep the faces clear of the edges.
-```
-
 **[ ] The year · 12/31 · the station platform at night** *(optional)*  
 For the 12/31 story night, on the Iwatodai Station platform at eleven.  
 Attach: Wren, Solar, `bg/station-platform-night.webp` (for the place only)  
 Save as: `story-new-years-eve-platform-cg.png`
 ```
 Persona 3 Reload style event CG, 16:9, no text. A monorail station platform late on New Year's Eve, around eleven at night, cold, platform lights glowing; beyond the edge of the platform a huge bright full moon hangs low over the bay, placed there almost on purpose. A train with lit windows waits at the far end. Wren (the first attached image's face; her cap, long sleeves falling over her hands) sits alone on a bench, small and still, looking up at Solar. Solar (the second attached image's face; long dark hair, winter coat and scarf) has just arrived and stands beside the bench, about to sit down next to her. Cold blue night, silver moonlight, quiet. Lonely, tender, the year about to end. Keep the faces clear of the edges.
-```
-
-**[ ] The year · 3/3 · the dorm roof in the snow** *(optional)*  
-For the 3/3 story night, on the dorm roof in the first big snow.  
-Attach: Hanni, Hyein, Solar, `bg/iwatodaidorm-roof-night.webp` (for the place only)  
-Save as: `story-first-snow-roof-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The dorm rooftop at ten at night in early March, the first big snow: big slow deliberate flakes falling one at a time out of an orange city-glow sky, the railing with a finger-thick white edge of snow along it. Three girls stand together near the railing in winter coats thrown over their pajamas, pajama legs and slippers or boots showing. Hanni (the first attached image's face) in the middle, eyes closed, making a wish with her hands together. Hyein (the second attached image's face; the tallest) on the right, face tipped up to the sky, laughing. Solar (the third attached image's face; long dark hair with snowflakes in it) on the left, holding out her coat sleeve to catch a single perfect snowflake. Shoulders almost touching. Soft, glowing, bittersweet joy. Keep the faces clear of the edges.
-```
-
-**[ ] Haechan · late night · the dorm roof in the snow** *(optional)*  
-For one of Haechan's romance late nights in winter, on the dorm roof at 2 AM.  
-Attach: Haechan, Solar, `bg/iwatodaidorm-roof-night.webp` (for the place only)  
-Save as: `romance-haechan-roof-snow-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The dorm rooftop at two in the morning in winter, snow hanging in the air in fat flakes drifting in every direction under the single light by the rooftop door, settling on the water tank, the railing and the planters of dead summer tomato plants. Haechan (the first attached image's face; a dark winter coat with a hood, snow on the hood and shoulders) stands at the railing with his coat held open and wrapped around Solar, his chin resting on top of her head, eyes half closed. Solar (the second attached image's face; long dark hair, her own winter coat, socks and boots) stands inside his coat with her back against his chest, his arms around her, snow on her hair, looking out at the city. Warm inside the coat, cold and blue all around. Romantic, quiet, intimate but gentle. Keep the faces clear of the edges.
-```
-
-**[ ] Akihiko · late night · her room on a snowy morning** *(optional)*  
-For one of Akihiko's romance late nights in January, in Solar's dorm room in the early morning.  
-Attach: Akihiko, Solar, `bg/solar-dormroom-night.webp` (for the room only)  
-Save as: `romance-akihiko-snow-morning-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. Solar's small dorm bedroom just before dawn in January, cold blue light, snow falling slow and fat past the window in the glow of a streetlight. In the bed under two thick duvets piled on top of each other, Solar (the second attached image's face; long dark hair messy on the pillow, wearing his oversized boxing-club hoodie) lies curled against Akihiko (the first attached image's face; silver hair, a T-shirt, a sports watch on his wrist), his arm around her, his face tucked into her hair, eyes closed and content, his other hand having just switched off the watch. Her eyes are just opening, surprised and soft. Tasteful, fully covered, cozy. Warm, sleepy, sweet. Keep the faces clear of the edges.
 ```
 
 ### The epilogue: Runners

@@ -16382,6 +16382,142 @@
       "conversion": "tools/femc-backgrounds.py EXTRA (1920x1072, WebP quality 82), no cropping or retouching; source unchanged",
       "outputSha256": "3af06cf8853584a25c8a21005a07ea3079c5d72a8910276c387b9f12a13cd313",
       "placement": "the same Car rule's evening slot; windows for weather"
+    },
+    {
+      "batch": 79,
+      "source": "link-hyein-r15-cg.png",
+      "sourceNow": "Added to Game/link-hyein-r15-cg.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "f93f4f35a6fc121a398aadb17372f91cab276557c7e35ce3dac166110d4a838b",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-hyein-r15.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "bf70409b54d45c8cfd6fd8a8b41bf8ac18e8444d0baa0d6f09d8051b6db7552a",
+      "placement": "links/hyein.js rank 15 ('15: hold still'): { cg } before the 'hard part' line, { cg: null } before the heading branch; cgFocus in data/places.js",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "38% 30%"
+    },
+    {
+      "batch": 79,
+      "source": "link-jay-r10-cg.png",
+      "sourceNow": "Added to Game/link-jay-r10-cg.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "3d6b1843d52658713a7ac7f6f808d318665320c47776c9d34268e0e0c8cf0f5a",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-jay-r10.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "c8d31752e5a81eef862720cbe67b9f2397a1510b69534a807af15d5952887939",
+      "placement": "links/jay.js rank 10 ('10: the short list'): { cg } as the scene's first line, { cg: null } before the choice; cgFocus in data/places.js",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "50% 35%"
+    },
+    {
+      "batch": 79,
+      "source": "link-niki-r10-cg.png",
+      "sourceNow": "Added to Game/link-niki-r10-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "712134d22e67b567fc21ea40399f032be2ce273211b428cb0a3adcaa66076c39",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-niki-r10.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "d9e5ea98e39a88d68ee27faa9448082d75e4ee6b7e07ea5267babf59a359ebe7",
+      "placement": "links/niki.js rank 10 ('10: same thing'): { cg } before the shooter line, { cg: null } before the choice; cgFocus in data/places.js",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "45% 35%"
+    },
+    {
+      "batch": 79,
+      "source": "link-sunghoon-r10-cg.png",
+      "sourceNow": "Added to Game/link-sunghoon-r10-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "894b89a718b14d266e11a1d1e8604168b1b9a92141ea88b00f59aed70d6c4b4c",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-sunghoon-r10.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "33b4cbc790da025ba79e435080f79a98dcfb27eba157e6de3d3c229c9b287642",
+      "placement": "links/sunghoon.js rank 10 ('10: back to the door'): { cg } after the seat choice, { cg: null } before the shoon-walked branch; cgFocus in data/places.js",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "40% 35%"
+    },
+    {
+      "batch": 79,
+      "source": "story-obon-lanterns-cg.png",
+      "sourceNow": "Added to Game/story-obon-lanterns-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "ca791d29d30f453e2ade9f8e00d6364acb6f8e6bd7f9152cf4511d14b40126ed",
+      "status": "integrated",
+      "destination": "assets/femc/cg/story-obon-lanterns.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "fb648f0bc55450a33768c3fe32eaf9ea0d11f31d045bb3bbaa535d82bed37781",
+      "placement": "data/story-act3.js a3-lanterns: { cg } before the red-lanterns line, { cg: null } before the choice; cgFocus in data/places.js",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "30% 40%"
+    },
+    {
+      "batch": 79,
+      "source": "story-first-snow-roof-cg.png",
+      "sourceNow": "Added to Game/story-first-snow-roof-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "8c9a228564fab76a76c5c9bfb949d694b0ca4ce1f1bc96a3c3aae58ace1f1714",
+      "status": "integrated",
+      "destination": "assets/femc/cg/story-first-snow-roof.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "d0373d984af3aae9f178755afe500173dfbf7204cc0abfc9f987f080b3cc1017",
+      "placement": "data/story-act6.js a6-snow: { cg } before Hyein's first line, { cg: null } before the choice; cgFocus in data/places.js",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "50% 35%"
+    },
+    {
+      "batch": 79,
+      "source": "romance-haechan-roof-snow-cg.png",
+      "sourceNow": "Added to Game/romance-haechan-roof-snow-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "38603c83d3314dc6efc833d4bfb5b11e8fec050a574f1ba2f0aca935710f01e2",
+      "status": "integrated",
+      "destination": "assets/femc/cg/romance-haechan-roof-snow.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "97dc9c027a0c504da0080f0230d51c124d7eb684eaa5c429b8ab5ddd2af3b071",
+      "placement": "data/spice-haechan.js sp-hc-ln-snow: { cg } before the first heading branch, { cg: null } before the choice; cgFocus in data/places.js",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "35% 30%"
+    },
+    {
+      "batch": 79,
+      "source": "romance-akihiko-snow-morning-cg.png",
+      "sourceNow": "Added to Game/romance-akihiko-snow-morning-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "59252584cfef5afb4bf62d0672ceba4edcf19d562b6a430aa77cb40e988e9b22",
+      "status": "integrated",
+      "destination": "assets/femc/cg/romance-akihiko-snow-morning.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "715ab4f39cdeda6bd9d40274eebae668fbd5a13132ec6c03bfe1855cacdd178a",
+      "placement": "data/spice-akihiko.js sp-aki-ln-snowed: { cg } after the watch line in the early-morning part; the Lounge place line clears it; cgFocus in data/places.js",
+      "textCheck": "checked 2026-10-28 against the image: matches the scene",
+      "mobileFocus": "55% 40%"
     }
   ],
   "batch1Validation": {
@@ -17453,5 +17589,20 @@
     ],
     "notTested": "no browser tests: the strangers and coda scenes at these places; tests/femc_epilogue.py (its _loaded checks now 19) not run",
     "html": "femc-game.html epilogue v21; DATA_V 19"
+  },
+  "batch79Validation": {
+    "date": "2026-10-28",
+    "scope": "eight Iwatodai CGs (Hyein r15, Jay r10, Niki r10, Sunghoon r10, Obon lanterns, the first snow on the roof, Haechan's and Akihiko's winter late nights)",
+    "sourcesInspected": "all 8 viewed",
+    "sourcesIntegrated": 8,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "textTweaks": "none (all eight match their scenes)",
+    "tests": [
+      "tools/femc-check-scenes.py: OK",
+      "jsc checkSyntax on every edited script"
+    ],
+    "notTested": "no browser tests: the eight scenes' CG framing at 1000x486 and 375x812 (focus points set from the images, not checked on a phone)",
+    "html": "femc-game.html places v57, story-act3 v16, story-act6 v17, spice-akihiko v2, spice-haechan v7, hyein v16, jay v2, niki v2, sunghoon v2"
   }
 }

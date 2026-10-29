@@ -787,11 +787,13 @@
     ] },
 
     { after: '1/23', title: '10: the short list', place: 'Iwatodai Dorm · Front', time: 'Evening', music: 'tender', scene: [
+      { cg: 'link-jay-r10' },
       { n: "Seven fifty-seven on a Wednesday, the end of January, and the cold had a hard clean edge to it that made the streetlights look sharper than they were. The front step of the dorm. Jay with his jacket zipped to the chin and the containers in two bags at his feet, and his breath going up white, and no hurry in him at all, which was strange, because Jay had never once in two and a half months been anything but exactly on time." },
       { s: 'jay', f: 'neutral', t: "Got something for you." },
       { n: "He took it out of his inside pocket. Not the phone. An index card, plain white, a little bent at one corner where it had been in his jacket, and written on in his angry capitals, both sides, pressed hard into the card." },
       { n: "On the front, a recipe. Not the braise. His. Rice, day-old. Kimchi, sour, the older the better. Egg. Scallion. Sesame oil, a lot. Soy, a little. *For three in the morning. Any kitchen. Any life. Takes eight minutes. Don't measure anything.* And under that, underlined once, *I MEAN IT. DON'T MEASURE ANYTHING.*" },
       { s: 'jay', f: 'neutral', t: "That's the one I make for me. Nobody else gets that one. That's the whole list. Was the whole list." },
+      { cg: null },
       { choose: [
         { t: "(Turn it over. Read the back.)", notes: 3, then: [
           { n: "On the back, at the top, a heading. PEOPLE I COOK FOR. And under it, a short column, crossed out and rewritten in places, as if it had been drafted. THE KID. THE YOUNG MASTER (MAKE HIM EAT IT). THE TEAM (END OF SEASON). JAKE (DON'T TELL JAKE). A DOG." },

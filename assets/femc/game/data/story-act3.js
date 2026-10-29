@@ -383,8 +383,10 @@
     { n: "It was Obon, the three days in August when the dead come home, and Port Island had hung up its lanterns for them. Paper ones, white and pale yellow, strung along the shopping arcade and over the doors of the old houses near the harbor, and down by the water there was a dance going in circles round a drum tower, old women in cotton yukata lifting their hands in the same slow shapes their grandmothers had taught them." },
     { n: "Fuuka had wanted to come. Yukari had wanted Fuuka to stop looking so pale. Solar had come because everyone else was coming, and had lost them, somewhere between the drum and the shaved-ice stall, the way she lost people in crowds, by drifting to the edge and then a little past it." },
     { n: "The street she drifted into was narrow and old and steep and went down toward the harbor in shallow stone steps, and the lanterns hanging over it were red." },
+    { cg: 'story-obon-lanterns' },
     { n: "Not Obon lanterns. Red ones, round and fat and silk, the kind with gold tassels and black characters painted on them that weren't Japanese, swaying very slightly in a wind that wasn't blowing, strung one after another down the whole length of the street so the stones underneath were the color of the inside of a cheek. It smelled like black bean sauce and frying dough and star anise and something burnt-sweet. Somewhere behind a steamed-up window a woman was singing off-key in a language Solar shouldn't have known, a little song about a flower, jasmine, over and over, loud, like a warning." },
     { n: "Solar knew the words. She knew the next line before it came. Her mouth was already shaping it." },
+    { cg: null },
     { choose: [
       { t: "(Sing the next line under your breath.)", then: [
         { n: "It came out small and in tune and in a language she didn't speak, and the singing behind the window stopped dead, mid-word, the way someone stops when they hear their name called in an empty house." }

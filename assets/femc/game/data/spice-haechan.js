@@ -557,6 +557,7 @@
     { id: 'sp-hc-ln-snow', kind: 'dorm', rank: 9, route: 'romance', flag: 'year-goes-on', after: '1/10', until: '2/24', when: 'quiet', place: 'Iwatodai Dorm · Rooftop', bg: 'iwatodaidorm-roof-night-snow', time: 'Night · 2 AM', music: 'romance', scene: [
       { n: "It was snowing on the roof. Not falling so much as hanging, fat flakes moving in no particular direction under the one light by the door, settling on the water tank and the railing and the planters with the dead summer tomatoes in them, and on him, on his hood and his shoulders, where he stood at the railing waiting with his back to her." },
       { n: "He heard the door. He didn't turn round. He opened his coat instead, one side of it, the way she'd once seen someone do in another winter, and she walked across the snow in her socks and boots and stepped into it, and he closed it round both of them, and his chest was warm against her back through two layers and his chin came down on the top of her head." },
+      { cg: 'romance-haechan-roof-snow' },
       { ifHeading: 'S', then: [
         { s: 'haechan', f: 'neutral', t: "In the other place it snows on the harbor. On the cranes. It sits on the containers in lines. You used to count them from the office window. The containers. You'd count them with your finger on the glass." },
         { s: 'haechan', f: 'neutral', t: "I used to watch you count from the yard. You never knew. I'd stand in the snow on purpose so I'd have a reason to come up to the office and get warm." }
@@ -575,6 +576,7 @@
         { s: 'haechan', f: 'neutral', t: "...And then a roof. There's always a roof. I don't know what it is about us and roofs." },
         { s: 'haechan', f: 'serious', t: "And then you find out the worst of me, and you believe me, and you're still standing there. That's as far as we got, over there." }
       ] },
+      { cg: null },
       { choose: [
         { t: "(Kiss him again. Let the snow have the rest.)", notes: 2, then: [
           { n: "She kissed him again and let the snow have the rest of the night. They stayed up there until neither of them could feel their feet, and when they finally went in he had snow in his hair like he'd aged fifty years in an hour, and she told him, and he said *good, I want to*, and meant it, and they went down the stairs leaving wet footprints that Mitsuru would find at six and say nothing about, with tremendous restraint, at breakfast." }

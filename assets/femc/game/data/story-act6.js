@@ -408,9 +408,11 @@
   { id: 'a6-snow', date: '3/3', slot: 'late', flag: 'year-goes-on', title: 'first snow', place: 'Iwatodai Dorm · Rooftop', time: 'Night', scene: [
     { music: 'night' },
     { n: "It started a little after nine, properly, big slow deliberate flakes coming down one at a time out of the orange city sky, as if each of them had been considered first, and by ten the rooftop railing had a white edge on it as thick as a finger. Hanni and Hyein had dragged her up there in coats over their pajamas because, Hanni said, first big snow, you had to be outside for it, it was a rule." },
+    { cg: 'story-first-snow-roof' },
     { s: 'hyein', f: 'happy', t: "The lake's doing it at home right now. I can feel it. Two feet. They'll cancel classes. I can feel it in my BONES." },
     { s: 'hanni', f: 'happy', t: "Make a wish. First big snow, you have to make a wish." },
     { n: "Solar didn't know if that was a real rule or a Hanni rule. She suspected there wasn't a difference." },
+    { cg: null },
     { choose: [
       { t: "(Make a wish.)", then: [
         { n: "She closed her eyes and made one, and didn't let herself hear what it was, which was the only way she'd ever known how to keep one." }
