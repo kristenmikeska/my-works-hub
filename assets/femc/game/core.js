@@ -2020,17 +2020,19 @@ window.FemcGame = (() => {
   // Today's invitations, waiting for this slot (null once answered, or when the slot is spent).
   function holidayDue(slot = S.slot, d = S.day) {
     const h = S.holiday;
-    if (!h || h.d !== d || h.pick || S.spent[`${d}-${slot}`]) return null;
+    // One answer per slot (2026-10-29): a daytime yes no longer turns down an evening invitation. A save from before
+    // keeps its single `pick`, which still closes the whole day.
+    if (!h || h.d !== d || (h.pick && !h.picked) || h.picked?.[slot] || S.spent[`${d}-${slot}`]) return null;
     const links = h.links.map(id => LINKS[id]).filter(l => l && (holidayOf(l, h.md)?.slot || 'after') === slot);
     return links.length ? { md: h.md, links } : null;
   }
   // Yes to one link: the texts, then the scene to play (ui.js plays it in the link's context).
   function acceptHoliday(id) {
     const h = S.holiday; if (!h) return null;
-    const l = LINKS[id], e = holidayOf(l, h.md);
-    h.pick = id;
+    const l = LINKS[id], e = holidayOf(l, h.md), sl = e.slot || 'after';
+    h.pick = id; (h.picked ||= {})[sl] = id;
     appendPhone(id, [{ from: 'solar', t: e.yes || 'yes!! where' }, { from: id, t: e.ok || 'ok. see you soon' }]);
-    h.links.filter(x => x !== id).forEach(x => { const o = holidayOf(LINKS[x], h.md); appendPhone(x, [{ from: 'solar', t: o.sorry || 'cant today. im so sorry' }, { from: x, t: o.no || 'ok. next time' }]); });
+    h.links.filter(x => x !== id && (holidayOf(LINKS[x], h.md)?.slot || 'after') === sl).forEach(x => { const o = holidayOf(LINKS[x], h.md); appendPhone(x, [{ from: 'solar', t: o.sorry || 'cant today. im so sorry' }, { from: x, t: o.no || 'ok. next time' }]); });
     save();
     return { link: l, scene: e.scene || [], place: e.place || linkPlace(l), time: e.time || 'Daytime', music: e.music, bg: e.bg, title: e.title || h.md };
   }
@@ -2045,8 +2047,9 @@ window.FemcGame = (() => {
   // Your own plans: everyone who asked gets a kind no.
   function declineHolidays() {
     const h = S.holiday; if (!h) return;
-    h.pick = 'none'; (S.holidays ||= {})[h.md] = 'none';
-    h.links.forEach(x => { const o = holidayOf(LINKS[x], h.md); appendPhone(x, [{ from: 'solar', t: o.sorry || 'cant today. im so sorry' }, { from: x, t: o.no || 'ok. next time' }]); });
+    const sl = S.slot === 'evening' ? 'evening' : 'after';
+    h.pick = 'none'; (h.picked ||= {})[sl] = 'none'; (S.holidays ||= {})[h.md] ||= 'none';
+    h.links.filter(x => (holidayOf(LINKS[x], h.md)?.slot || 'after') === sl).forEach(x => { const o = holidayOf(LINKS[x], h.md); appendPhone(x, [{ from: 'solar', t: o.sorry || 'cant today. im so sorry' }, { from: x, t: o.no || 'ok. next time' }]); });
     save();
   }
 
