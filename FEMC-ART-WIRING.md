@@ -296,3 +296,8 @@ The player is `battle.js playSeq` / `seqHtml` / `seqSays` (used by `bondCut`); t
 
 
 - *(The two-world boys' home-world looks are in (art batch 81): `portraits/haechan-runners/`, `haechan-strangers/`, `jungwon-hoax/`, `jungwon-strangers/`, mapped in each world's `world.js` `faces` (Runners: haechan; HOAX: jungwon; strangers: both), sized in `scale.js`. The year, Stay and the true coda keep their own portraits.)*
+
+- **Planned skins (2026-10-29, prompts only, nothing in code yet):**
+  - **Haechan: Headphones On** (`skin-sk-haechan-headphones-posesheet.png` + `skin-sk-haechan-headphones-portraits.png`): add `c('sk-haechan-headphones', 'skin', 'Headphones On', 'SR', 'Hood up, headphones on, a white-and-blue track jacket over neon green. Do not disturb (you can disturb).', { who: 'haechan', art: true })` (series: Runners); feature it in Runners World (Nov) and Haechan Spotlight (Dec–Jan). Pose frames via `tools/femc-wardrobe.py skin`, portraits to `skins/sk-haechan-headphones/portraits/haechan/` like Sweater Date (batch 93). Add the id to `NEW_SKINS`/newpending and the banner featured-set checks in `tests/femc_cosmetics.py`.
+  - **Solar: Y2K Pop Star** (`skin-sk-y2k-posesheet.png` + `sk-y2k-solar-portraits.png`): add `c('sk-y2k', 'skin', 'Y2K Pop Star', 'UR', 'Pink streaks, butterfly clips, a rhinestone belt and a naginata in pink tape. The year 2000 called; she answered.', { who: 'solar', art: true })` (series: Solstice); feature it in Solar Spotlight (Mar) and Summer Nights (Jun–Aug). Portraits like batch 93 (opaque-background method if needed). Same test updates.
+

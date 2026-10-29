@@ -1,6 +1,6 @@
 # Art to make
 
-**12 items:** 12 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 22 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**16 items:** 16 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 22 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -169,6 +169,40 @@ One ornate rapier, the whole weapon from the tip of the blade to the pommel, sta
 ```
 
 ---
+
+**[ ] Haechan: Headphones On (pose sheet)** *(optional)*  
+Haechan's battle figure in a hood-up, headphones-on look (from Kat's inspo photo).  
+Attach: haechan-posesheet.png, then Haechan, then Kat's inspo photo if she has it saved  
+Save as: `skin-sk-haechan-headphones-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a white zip-up track jacket with royal-blue panels down the sleeves and collar, open over a neon lime-green zip hoodie with the hood pulled up over his head, a plain white tee underneath, white-and-silver over-ear headphones on over the hood, slim black pants and white sneakers. Hair: his own dark brown hair, messy and a little damp-looking, the fringe falling into his eyes under the hood (a look he has really worn). Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] Haechan: Headphones On (scene portraits)** *(optional)*  
+His scene faces for the same outfit.  
+Attach: Haechan, then Kat's inspo photo if she has it saved  
+Save as: `skin-sk-haechan-headphones-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a white track jacket with royal-blue panels, open over a neon lime-green zip hoodie with the hood up, a white tee, white-and-silver over-ear headphones on over the hood. Hair: his own dark brown hair, messy, the fringe falling into his eyes under the hood. A faint green glow on his face, like a monitor in a dark room. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Solar: Y2K Pop Star (pose sheet)** *(optional)*  
+Solar's battle figure as a Y2K pop star.  
+Attach: solar-posesheet.png, then Solar  
+Save as: `skin-sk-y2k-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a Y2K pop-star look: a baby-pink cropped zip-up and a sparkly silver tube top, a low-rise white cargo mini skirt with a rhinestone belt chain, platform sneakers, tinted pink sunglasses pushed up on her head, glossy lips. Hair: long and voluminous with chunky bubblegum-pink face-framing streaks, half up in two little twists pinned with glittery butterfly clips. Her naginata wrapped in pink tape with rhinestones along the blade's spine. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] Solar: Y2K Pop Star (scene portraits)** *(optional)*  
+Her scene faces for the same outfit.  
+Attach: Solar  
+Save as: `sk-y2k-solar-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a baby-pink cropped zip-up over a sparkly silver tube top, tinted pink sunglasses pushed up on her head, glossy lips, small silver hoops. Hair: long and voluminous with chunky bubblegum-pink face-framing streaks, half up in two little twists pinned with glittery butterfly clips. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
 
 ## Extras (optional)
 
