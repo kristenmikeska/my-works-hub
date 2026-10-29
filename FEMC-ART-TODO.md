@@ -1,6 +1,6 @@
 # Art to make
 
-**16 items:** 16 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 22 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**20 items:** 20 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 22 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -202,6 +202,40 @@ Attach: Solar
 Save as: `sk-y2k-solar-portraits.png`
 ```
 A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a baby-pink cropped zip-up over a sparkly silver tube top, tinted pink sunglasses pushed up on her head, glossy lips, small silver hoops. Hair: long and voluminous with chunky bubblegum-pink face-framing streaks, half up in two little twists pinned with glittery butterfly clips. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Solar: Oops! (red catsuit) (pose sheet)** *(optional)*  
+Solar's battle figure in an iconic red latex catsuit.  
+Attach: solar-posesheet.png, then Solar, then Kat's inspo photo if she has one  
+Save as: `skin-sk-oops-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit, hair and weapon to this look: a glossy red latex catsuit with a high collar, a zip up the front and a subtle seam down each side, red latex gloves and red platform boots, the shine catching hard white highlights like the inside of a spaceship. Hair: long, glossy and voluminous with a deep side part and honey-blonde highlights, blown out into big bouncy waves. Her naginata in glossy red with a silver blade and a tiny silver planet charm on the collar. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] Solar: Oops! (red catsuit) (scene portraits)** *(optional)*  
+Her scene faces for the same outfit.  
+Attach: Solar, then Kat's inspo photo if she has one  
+Save as: `sk-oops-solar-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a glossy red latex catsuit with a high collar and a zip at the throat, the shine catching hard white highlights. Hair: long, glossy and voluminous with a deep side part and honey-blonde highlights, blown out into big bouncy waves. Glossy nude lips, a little shimmer on the cheekbones. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] Solar: Snake Charmer (2001 VMAs) (pose sheet)** *(optional)*  
+Solar's battle figure in the jewelled awards-show look, snake included.  
+Attach: solar-posesheet.png, then Solar, then Kat's inspo photo if she has one  
+Save as: `skin-sk-snake-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit, hair and weapon to this look: a 2001-awards-show stage look: a jewelled crop top covered in tiny green and gold rhinestones, low-rise sparkling stage pants with rhinestone fringe at the hips, strappy gold heels, a body-shimmer glow, and a huge pale yellow-and-white python draped across her shoulders and around one arm (calm, curious, its head near her shoulder in every cell). Hair: long, loose and wavy, light brown with golden-blonde highlights, a little tousled. Her naginata wrapped in gold with a snakeskin-patterned haft. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] Solar: Snake Charmer (2001 VMAs) (scene portraits)** *(optional)*  
+Her scene faces for the same outfit, snake included.  
+Attach: Solar, then Kat's inspo photo if she has one  
+Save as: `sk-snake-solar-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a jewelled crop top covered in tiny green and gold rhinestones, a body-shimmer glow, and a huge pale yellow-and-white python draped across her shoulders (its head resting near her collarbone, calm). Hair: long, loose and wavy, light brown with golden-blonde highlights, a little tousled. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
 ```
 
 ## Extras (optional)
