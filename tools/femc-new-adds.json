@@ -17046,6 +17046,198 @@
       "placement": "data/epi/strangers/story-end.js epi-s-dinner: { cg } before 'It was loud, after a while', { cg: null } before the stage-4 glitch; ALBUM.strangers; cgFocus in data/places.js (Haechan, with Mr. Oh and Yunjin)",
       "textCheck": "checked 2026-10-29 against the image: matches the scene",
       "mobileFocus": "10% 35%"
+    },
+    {
+      "batch": 86,
+      "source": "sk-yukata-solar-portraits.png",
+      "sourceNow": "Added to Game/sk-yukata-solar-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d6e1397f87758893eb6f90a1aecafbe3be605a9ec512ef5d1d9cda80b9b1cde6",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukata/portraits/solar/neutral.webp",
+      "skin": "sk-yukata",
+      "conversion": "transparent 3x2 sheet (cells overlap a little): cut at the emptiest column/row, rows cropped 60 px past the gutter (0 for Summer Yukata) so a bottom-row hat or ear isn't lost; largest piece kept plus loose pieces centred in their own row; each cell scaled and placed on Solar's 862x851 base canvas by normalized cross-correlation of the face (eyes to chin) against the same expression in portraits/solar/ (scores 0.91-0.997); where the sheet's bust ends above the canvas bottom, the outline dropped and the cloth above mirrored down to the edge (0-38 px); side slivers of the next cell removed; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "Kat's file order: top row serious, flustered, neutral; bottom row sad, happy, surprised",
+      "placement": "Summer Yukata's scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-yukata/portraits/solar/flustered.webp": "479e0cf5892ed684bd0f98185faf5b3f25d7c599b3b83f68cc9aca3d4d165812",
+        "assets/femc/game/art/skins/sk-yukata/portraits/solar/happy.webp": "63195809fab89f2cea5b98abb10c5e6e7497bce69503553198753e0b8fa0f5bd",
+        "assets/femc/game/art/skins/sk-yukata/portraits/solar/neutral.webp": "5a068f4374ac386c671c34d351510133ad21930abedf13b928edcfc9c91d467d",
+        "assets/femc/game/art/skins/sk-yukata/portraits/solar/sad.webp": "22662c9378470c444a29e497e179daeed93886115fc01a2da1d198c546e65162",
+        "assets/femc/game/art/skins/sk-yukata/portraits/solar/serious.webp": "79b2f7c200c5ee523c9563b088c7ae8bd2bd1f540fea8ec310118f4a193a689c",
+        "assets/femc/game/art/skins/sk-yukata/portraits/solar/surprised.webp": "453e2fd27673ee74cdbde8b589038abefde98ba66ee7ca8b03ad49b2ed1244cd"
+      }
+    },
+    {
+      "batch": 86,
+      "source": "sk-wintercoat-solar-portraits.png",
+      "sourceNow": "Added to Game/sk-wintercoat-solar-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "f910436b33a09ce51ca0f93986936057e4475e3d3711badb5042986ca20d253f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/portraits/solar/neutral.webp",
+      "skin": "sk-wintercoat",
+      "conversion": "transparent 3x2 sheet (cells overlap a little): cut at the emptiest column/row, rows cropped 60 px past the gutter (0 for Summer Yukata) so a bottom-row hat or ear isn't lost; largest piece kept plus loose pieces centred in their own row; each cell scaled and placed on Solar's 862x851 base canvas by normalized cross-correlation of the face (eyes to chin) against the same expression in portraits/solar/ (scores 0.91-0.997); where the sheet's bust ends above the canvas bottom, the outline dropped and the cloth above mirrored down to the edge (0-38 px); side slivers of the next cell removed; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "Kat's file order: top row serious, flustered, neutral; bottom row sad, happy, surprised",
+      "placement": "Winter Coat's scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-wintercoat/portraits/solar/flustered.webp": "0ec6d73fe3e61b836201b330d2be17f014f19813963e040d05c60b523f3e1ffe",
+        "assets/femc/game/art/skins/sk-wintercoat/portraits/solar/happy.webp": "7b24a489f5d5c89e18ea560b2db8490da01f57846a1f65a517e1d89636794eda",
+        "assets/femc/game/art/skins/sk-wintercoat/portraits/solar/neutral.webp": "95c5303335c2fbd09148affa1c61ec2e65c4acaf2272af4d6c9099ec4e4d2240",
+        "assets/femc/game/art/skins/sk-wintercoat/portraits/solar/sad.webp": "c202847279d1a30b0e52dbd59f69c05e10e5bfc109ac7a1ff683ce4e4091fa75",
+        "assets/femc/game/art/skins/sk-wintercoat/portraits/solar/serious.webp": "992fda14d815acc505ff29bd757797aa89e322134bd406fa066bdbb6ec87f96e",
+        "assets/femc/game/art/skins/sk-wintercoat/portraits/solar/surprised.webp": "56a6b258b910e1da7e05ba06ecb75009aa88123761906e23f36cb83508897854"
+      }
+    },
+    {
+      "batch": 86,
+      "source": "sk-date-solar-portraits.png",
+      "sourceNow": "Added to Game/sk-date-solar-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "2e6d82f6ef4a250f4490c1a0a93a6f85c94007de0b5576482514206a13deb1e2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/portraits/solar/neutral.webp",
+      "skin": "sk-date",
+      "conversion": "transparent 3x2 sheet (cells overlap a little): cut at the emptiest column/row, rows cropped 60 px past the gutter (0 for Summer Yukata) so a bottom-row hat or ear isn't lost; largest piece kept plus loose pieces centred in their own row; each cell scaled and placed on Solar's 862x851 base canvas by normalized cross-correlation of the face (eyes to chin) against the same expression in portraits/solar/ (scores 0.91-0.997); where the sheet's bust ends above the canvas bottom, the outline dropped and the cloth above mirrored down to the edge (0-38 px); side slivers of the next cell removed; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "Kat's file order: top row serious, flustered, neutral; bottom row sad, happy, surprised",
+      "placement": "Date Day's scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/portraits/solar/flustered.webp": "07f4ada5b82c390738a4347190a5bb8aee64d41e8de47db8d6707dfc48596436",
+        "assets/femc/game/art/skins/sk-date/portraits/solar/happy.webp": "c8217ceff2297d485b8ae5bd1bbc2a5ed11d2d264a7a5fe2ad48d3eded2ae9d5",
+        "assets/femc/game/art/skins/sk-date/portraits/solar/neutral.webp": "26d465853f2a990cb637f5d87b52737f68643fede68fb38aa431694afdfb1332",
+        "assets/femc/game/art/skins/sk-date/portraits/solar/sad.webp": "6adca4276bf76f3aa4a7369b7a11e1e1c8ae3a08fce108a7d094064d9c3e7a90",
+        "assets/femc/game/art/skins/sk-date/portraits/solar/serious.webp": "2e76204df5b9b560526168f11e752d5d207fa2449ba7ea1263e5265bcd2b2df3",
+        "assets/femc/game/art/skins/sk-date/portraits/solar/surprised.webp": "0570f3a51a4b68fe17a0ccf0902c41a0e45d5fd497c53615f04fa65e7b5d8cba"
+      }
+    },
+    {
+      "batch": 86,
+      "source": "sk-emo-solar-portraits.png",
+      "sourceNow": "Added to Game/sk-emo-solar-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "2c18670baa96a6a6ba3c76aba2cbb509f452b14930fcd6fae8b77c7e95b85957",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/portraits/solar/neutral.webp",
+      "skin": "sk-emo",
+      "conversion": "transparent 3x2 sheet (cells overlap a little): cut at the emptiest column/row, rows cropped 60 px past the gutter (0 for Summer Yukata) so a bottom-row hat or ear isn't lost; largest piece kept plus loose pieces centred in their own row; each cell scaled and placed on Solar's 862x851 base canvas by normalized cross-correlation of the face (eyes to chin) against the same expression in portraits/solar/ (scores 0.91-0.997); where the sheet's bust ends above the canvas bottom, the outline dropped and the cloth above mirrored down to the edge (0-38 px); side slivers of the next cell removed; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "Kat's file order: top row serious, flustered, neutral; bottom row sad, happy, surprised",
+      "placement": "Emo Night's scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/portraits/solar/flustered.webp": "12ee3d7fd47bc07cda99d3a011631a9a6562f407b7565b3cb7a301fe354fe4f1",
+        "assets/femc/game/art/skins/sk-emo/portraits/solar/happy.webp": "b657d402fef9df4fdb41355d007c5326322725e29d15c73cea22ed136ad75678",
+        "assets/femc/game/art/skins/sk-emo/portraits/solar/neutral.webp": "6bbee23a668d4eacc63e3aa910e7b24dc764dd9037d036e0170ffd2e49ce0e6a",
+        "assets/femc/game/art/skins/sk-emo/portraits/solar/sad.webp": "6728930a539564efc2f1fc36c2730f60483b8dc2bb6ae435f214d890c50c46b3",
+        "assets/femc/game/art/skins/sk-emo/portraits/solar/serious.webp": "f1668f07aad8012d8d59710b87a54818fcb9d0f276d7f1c7da0d46989caf3812",
+        "assets/femc/game/art/skins/sk-emo/portraits/solar/surprised.webp": "4868b2f894d8bc33c4a1b55364169005cbdab1c28a1a7e4494f1af361653cc9f"
+      }
+    },
+    {
+      "batch": 86,
+      "source": "sk-kiriko-solar-portraits.png",
+      "sourceNow": "Added to Game/sk-kiriko-solar-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "5c48cdbe2ad321b60d4afc8566799f4642eb51bb3b4a7cc254e4a94656798c56",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-kiriko/portraits/solar/neutral.webp",
+      "skin": "sk-kiriko",
+      "conversion": "transparent 3x2 sheet (cells overlap a little): cut at the emptiest column/row, rows cropped 60 px past the gutter (0 for Summer Yukata) so a bottom-row hat or ear isn't lost; largest piece kept plus loose pieces centred in their own row; each cell scaled and placed on Solar's 862x851 base canvas by normalized cross-correlation of the face (eyes to chin) against the same expression in portraits/solar/ (scores 0.91-0.997); where the sheet's bust ends above the canvas bottom, the outline dropped and the cloth above mirrored down to the edge (0-38 px); side slivers of the next cell removed; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "Kat's file order: top row serious, flustered, neutral; bottom row sad, happy, surprised",
+      "placement": "Kiriko Cosplay's scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-kiriko/portraits/solar/flustered.webp": "0fd29b1b92002fc1ae692b0c89417625553215d4146fd061d470223b835be8f9",
+        "assets/femc/game/art/skins/sk-kiriko/portraits/solar/happy.webp": "1891f50fb02af4ee544dc134cf47d2826d4888577c7da6d6a2d4e8130c32607e",
+        "assets/femc/game/art/skins/sk-kiriko/portraits/solar/neutral.webp": "4cc2713961ba33f617fc3aee0f32b462e4501da61a66e382eb53f899ac0f6f43",
+        "assets/femc/game/art/skins/sk-kiriko/portraits/solar/sad.webp": "68833742fbdcfac494a3884c0e053b6b605d3efd233887609c82e7c9ac52d9ed",
+        "assets/femc/game/art/skins/sk-kiriko/portraits/solar/serious.webp": "84b3de3fc1858109aa22318949e124d3515493e4bd5e698734abceb5899fa744",
+        "assets/femc/game/art/skins/sk-kiriko/portraits/solar/surprised.webp": "9770a52c93bb28e960309051b1923d39297035fb0be7224249cd6f173704187a"
+      }
+    },
+    {
+      "batch": 86,
+      "source": "sk-phantom-solar-portraits.png",
+      "sourceNow": "Added to Game/sk-phantom-solar-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6784ea564e5da178f1a6a16baeb13f195801892319110a9556bd55763adce46b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-phantom/portraits/solar/neutral.webp",
+      "skin": "sk-phantom",
+      "conversion": "transparent 3x2 sheet (cells overlap a little): cut at the emptiest column/row, rows cropped 60 px past the gutter (0 for Summer Yukata) so a bottom-row hat or ear isn't lost; largest piece kept plus loose pieces centred in their own row; each cell scaled and placed on Solar's 862x851 base canvas by normalized cross-correlation of the face (eyes to chin) against the same expression in portraits/solar/ (scores 0.91-0.997); where the sheet's bust ends above the canvas bottom, the outline dropped and the cloth above mirrored down to the edge (0-38 px); side slivers of the next cell removed; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "Kat's file order: top row serious, flustered, neutral; bottom row sad, happy, surprised",
+      "placement": "Phantom Thief's scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-phantom/portraits/solar/flustered.webp": "d1195745a0c19d660d09b36921c99e808df1f0390bb7f78c044330bac95672db",
+        "assets/femc/game/art/skins/sk-phantom/portraits/solar/happy.webp": "bc0b722aba9d40e2c2473285e27cd5e0e5f03a177495a44d4de14c8911926100",
+        "assets/femc/game/art/skins/sk-phantom/portraits/solar/neutral.webp": "342373978a1f114a53051001341959cfd026b0ceb82e52a8d7dfd251fefb579b",
+        "assets/femc/game/art/skins/sk-phantom/portraits/solar/sad.webp": "0b4d34ba8a24b3ffe0fbc9ec06d79300d55290e485e9472b6e1d25e462b5adda",
+        "assets/femc/game/art/skins/sk-phantom/portraits/solar/serious.webp": "54a7965735eef2ad5d6fd2b4c0ff639af70f9632a519c3a4f65bf4bb7b83d878",
+        "assets/femc/game/art/skins/sk-phantom/portraits/solar/surprised.webp": "d41591baa351b9130ee31e234c4b34003f0a5e90358ba792992e217f32379a0f"
+      }
+    },
+    {
+      "batch": 86,
+      "source": "sk-halloween-solar-portraits-v1.png",
+      "sourceNow": "Added to Game/sk-halloween-solar-portraits-v1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "4daa68d1e70a5137db27d7aa222c538184dc92e823ee5c2e4820a11451f212eb",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-halloween/portraits/solar/neutral.webp",
+      "skin": "sk-halloween",
+      "conversion": "transparent 3x2 sheet (cells overlap a little): cut at the emptiest column/row, rows cropped 60 px past the gutter (0 for Summer Yukata) so a bottom-row hat or ear isn't lost; largest piece kept plus loose pieces centred in their own row; each cell scaled and placed on Solar's 862x851 base canvas by normalized cross-correlation of the face (eyes to chin) against the same expression in portraits/solar/ (scores 0.91-0.997); where the sheet's bust ends above the canvas bottom, the outline dropped and the cloth above mirrored down to the edge (0-38 px); side slivers of the next cell removed; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "Kat's file order: top row serious, flustered, neutral; bottom row sad, happy, surprised",
+      "placement": "Halloween Witch's scene portraits (cosmetics.js portrait)",
+      "note": "v1 used: sk-halloween-solar-portraits-v2.png (the big-brim hat) has its top-row hat crowns cut off by the sheet's top edge (925 px of figure on row 0) and brims running into the next cells; left in New Adds, not used",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-halloween/portraits/solar/flustered.webp": "6467f9a3352f1b15f853a8aa0d6919dd80c512aa1c93db337a57fcb13ccf0bd2",
+        "assets/femc/game/art/skins/sk-halloween/portraits/solar/happy.webp": "6956a48ca73897cadaf6b5a83a69648538397e8cfff7e10e75e4d5ee89ee16b5",
+        "assets/femc/game/art/skins/sk-halloween/portraits/solar/neutral.webp": "4b1165c0bd31add83b1b8366bde065566c1c67fe5818a6eb3661c4d070a57c52",
+        "assets/femc/game/art/skins/sk-halloween/portraits/solar/sad.webp": "d3fb3fafce4d0044ca5cddff5a87c1b6438cbdd52b2a4883089a034e575aefb0",
+        "assets/femc/game/art/skins/sk-halloween/portraits/solar/serious.webp": "8b70e6e497cc5f03071439ca404c9084a9dae978047ee09173c8a476294062fe",
+        "assets/femc/game/art/skins/sk-halloween/portraits/solar/surprised.webp": "e086086402ae0d8c1b82d39f20d1d27e3470da540c3418499c950b5c1c949db7"
+      }
+    },
+    {
+      "batch": 86,
+      "source": "skin-sk-alphaphi-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-alphaphi-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "58c5b5d48b6863013b3e61ab1e6d52b0bea62b5be6a751bba5569fb782aad160",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/solar-pose-0.webp",
+      "skin": "sk-alphaphi",
+      "conversion": "tools/femc-wardrobe.py skin (white key and grid cut as the fighters' sheets); two white glints the hole pass took on bare skin (frame 3 thigh, 30 px; frame 5 wrist, 138 px) filled with the surrounding skin colour",
+      "placement": "cosmetics.js sk-alphaphi (Alpha Phi Formal, SR, Solar; Runners World banner), battle pose frames via ready.js",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/solar-pose-0.webp": "743c6a86b73ed36dc71184fa95448c858943875a7513e207ffdef5af9cbdda93",
+        "assets/femc/game/art/skins/sk-alphaphi/solar-pose-1.webp": "8455b1d3c332bd83f7bfb21de2c01f3d1ecf71aad06dcb6d4efcf7072a77ea9c",
+        "assets/femc/game/art/skins/sk-alphaphi/solar-pose-2.webp": "fffacce838e1884b9b932cb5d6b5f211fcb99db684b2af7c2c02e4c6d5bc3cb3",
+        "assets/femc/game/art/skins/sk-alphaphi/solar-pose-3.webp": "5a2666d0c42d26ef6d853b7b4c09a5b0d2eb435be00abbcc4a50d5f7572c5eff",
+        "assets/femc/game/art/skins/sk-alphaphi/solar-pose-4.webp": "a8913552beca3840cacc4124b24225fa46525bdb07fc5bfa0b8798e156269095",
+        "assets/femc/game/art/skins/sk-alphaphi/solar-pose-5.webp": "d49fddef6fbf751b5781b6ace28cd8981d6901e52cae42a4a39bdb796d400efd"
+      }
     }
   ],
   "batch1Validation": {
@@ -18229,5 +18421,28 @@
     ],
     "notTested": "no browser tests: CG framing at 1000x486 and 375x812 (focus points set from the images); tests/femc_epilogue.py (its _loaded checks now 23) not run",
     "html": "femc-game.html places v63, epilogue v25; DATA_V 23"
+  },
+  "batch86Validation": {
+    "date": "2026-10-29",
+    "scope": "Solar's outfit scene portraits (seven outfits) and the Alpha Phi Formal outfit (new Wardrobe item from the FEMC-ART-WIRING note, with its pose sheet)",
+    "sourcesInspected": "all 10 skin sheets viewed full size; every cut on magenta contact sheets beside her base set (and full size where the cut needed a fix), the pose frames on magenta",
+    "sourcesIntegrated": 8,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "skipped": {
+      "sk-halloween-solar-portraits-v2.png": "the notes describe one Halloween Witch look, so one sheet was used; v2's top-row hat crowns are cut off by the sheet's top edge and its brims overlap the next cells, so v1 (clean) is the portraits; v2 stays in New Adds",
+      "sk-alphaphi-solar-portraits.png": "opaque near-black background with the black hair and ponytail running into the next cells: the Vision lift gives a blobby hair edge, flat cell-edge cuts and background patches; stays in New Adds (a transparent remake would cut like the others)"
+    },
+    "lateArrivals": [
+      "chenle-runners-regionals-sheet.png (not wired)"
+    ],
+    "knownLimits": "Kiriko's top-row ears and Halloween Witch's hat tips run past the canvas top (her base canvas has no headroom) and end in its top fade; Summer Yukata's bottom-row hair tops are cut 2-3 px flat at the sheet gutter (12 px below the canvas top, in the fade)",
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script",
+      "py_compile tests/femc_cosmetics.py"
+    ],
+    "notTested": "no browser tests (Kat at work): tests/femc_cosmetics.py (newpending now includes sk-alphaphi) and an outfit portrait in a scene at 1000x486 and 375x812",
+    "html": "femc-game.html ready.js v8, cosmetics.js v10"
   }
 }

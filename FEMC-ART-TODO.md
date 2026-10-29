@@ -1,6 +1,6 @@
 # Art to make
 
-**28 items:** 28 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**20 items:** 20 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -63,74 +63,7 @@ Solar's collectible Echoes (the Personas tab, Echo Fusion, the Echo Compendium).
 
 ## 7. Wardrobe and keychains
 
-### Outfits (ChatGPT)
-
-**[ ] Summer Yukata outfit portrait** *(optional)*  
-Solar's scene portrait in Summer Yukata (with the Wardrobe's "Outfits in scene portraits" on). Neutral is enough; other faces are a bonus.  
-Attach: Solar (Solar-neutral.png), then her other faces one at a time  
-Save as: `sk-yukata-solar-neutral.png (then -happy, -sad…)`
-```
-Edit this portrait. Keep the framing, crop, size, art style, face, expression and hair exactly the same; change only her clothes to a cream yukata with big sunflowers and a sunflower-yellow obi, a paper fan tucked in the obi. No S.E.E.S. armband, no weapon. Transparent background.
-```
-
-**[ ] Winter Coat outfit portrait** *(optional)*  
-Solar's scene portrait in Winter Coat (with the Wardrobe's "Outfits in scene portraits" on). Neutral is enough; other faces are a bonus.  
-Attach: Solar (Solar-neutral.png), then her other faces one at a time  
-Save as: `sk-wintercoat-solar-neutral.png (then -happy, -sad…)`
-```
-Edit this portrait. Keep the framing, crop, size, art style, face, expression and hair exactly the same; change only her clothes to a cream wool coat, a pink scarf and white earmuffs. No S.E.E.S. armband, no weapon. Transparent background.
-```
-
-**[ ] Halloween Witch outfit portrait** *(optional)*  
-Solar's scene portrait in Halloween Witch (with the Wardrobe's "Outfits in scene portraits" on). Neutral is enough; other faces are a bonus.  
-Attach: Solar (Solar-neutral.png), then her other faces one at a time  
-Save as: `sk-halloween-solar-neutral.png (then -happy, -sad…)`
-```
-Edit this portrait. Keep the framing, crop, size, art style, face, expression and hair exactly the same; change only her clothes to a little witch costume: a pointed hat, a star-lined cape and striped stockings. No S.E.E.S. armband, no weapon. Transparent background.
-```
-
-**[ ] Date Day outfit portrait** *(optional)*  
-Solar's scene portrait in Date Day (with the Wardrobe's "Outfits in scene portraits" on). Neutral is enough; other faces are a bonus.  
-Attach: Solar (Solar-neutral.png), then her other faces one at a time  
-Save as: `sk-date-solar-neutral.png (then -happy, -sad…)`
-```
-Edit this portrait. Keep the framing, crop, size, art style, face, expression and hair exactly the same; change only her clothes to an off-shoulder knit top and a pleated skirt. No S.E.E.S. armband, no weapon. Transparent background.
-```
-
-**[ ] Emo Night outfit portrait** *(optional)*  
-Solar's scene portrait in Emo Night (with the Wardrobe's "Outfits in scene portraits" on). Neutral is enough; other faces are a bonus.  
-Attach: Solar (Solar-neutral.png), then her other faces one at a time  
-Save as: `sk-emo-solar-neutral.png (then -happy, -sad…)`
-```
-Edit this portrait. Keep the framing, crop, size, art style, face, expression and hair exactly the same; change only her clothes to all black: a pleated skirt, a top with striped sleeves and a chain belt. No S.E.E.S. armband, no weapon. Transparent background.
-```
-
-**[ ] Kiriko Cosplay outfit portrait** *(optional)*  
-Solar's scene portrait in Kiriko Cosplay (with the Wardrobe's "Outfits in scene portraits" on). Neutral is enough; other faces are a bonus.  
-Attach: Solar (Solar-neutral.png), then her other faces one at a time  
-Save as: `sk-kiriko-solar-neutral.png (then -happy, -sad…)`
-```
-Edit this portrait. Keep the framing, crop, size, art style, face, expression and hair exactly the same; change only her clothes to a fox-ear headband and red and white shrine robes. No S.E.E.S. armband, no weapon. Transparent background.
-```
-
-**[ ] Phantom Thief outfit portrait** *(optional)*  
-Solar's scene portrait in Phantom Thief (with the Wardrobe's "Outfits in scene portraits" on). Neutral is enough; other faces are a bonus.  
-Attach: Solar (Solar-neutral.png), then her other faces one at a time  
-Save as: `sk-phantom-solar-neutral.png (then -happy, -sad…)`
-```
-Edit this portrait. Keep the framing, crop, size, art style, face, expression and hair exactly the same; change only her clothes to a long black tailcoat with a high collar, red gloves and a white domino mask over her eyes. No S.E.E.S. armband, no weapon. Transparent background.
-```
-
 ### More outfits (ChatGPT): pose sheets
-
-**[ ] Solar: Alpha Phi Formal (pose sheet)** *(optional)*  
-Solar's battle figure in the Alpha Phi Formal outfit.  
-Attach: solar-posesheet.png, then Solar  
-Save as: `skin-sk-alphaphi-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: a floor-length dusty-rose satin formal gown with thin straps and a slit at one side so she can move, a small silver sorority pin on the strap, a thin silver bracelet, strappy silver heels. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
 
 **[ ] Solar: SU eSports Jersey (pose sheet)** *(optional)*  
 Solar's battle figure in the SU eSports Jersey outfit.  
