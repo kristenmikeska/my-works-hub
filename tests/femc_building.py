@@ -742,7 +742,7 @@ try:
           // A save holding them survives normalize (save.js drops cards of unknown sets).
           const sv=mk('note',4);out.kept=FemcBattleSave.normalize(JSON.parse(JSON.stringify(sv))).cards.list.length;
           return out;})()''')
-        ok(not r['missing'] and r['glyphs'] == 11 and r['faces'] == 11, ('11 new sets with names, bonuses and drawn faces', r['missing'], r['glyphs'], r['faces']))
+        ok(not r['missing'] and r['glyphs'] == 0 and r['faces'] == 0, ('11 new sets with names, bonuses and Kat’s art on every face (batch 66)', r['missing'], r['glyphs'], r['faces']))
         d = r['dmg']
         def ratio(k): a, b = d[k]; return b / a if a else 0
         for k, want_r in [('lantern2agi', 1.08), ('lantern4agi', 1.15), ('globe4bufu', 1.15), ('fuse4zio', 1.15), ('kite4garu', 1.15), ('prism4zio', 1.10), ('kendo2attack', 1.06)]:
