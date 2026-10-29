@@ -20,7 +20,7 @@
      epi-r-travel-no (the clocks: Ms. Han's deadline), epi-r-footage-file / epi-r-footage-sent / epi-r-footage-kept (Danielle's
      choice), epi-r-jacket (the rooftop, Haechan route), epi-r-held (the rooftop, every route).
    Reads: the locked route (ifEpiRoute), epi-r-term-ask / -none, epi-r-public-post, epi-r-reel-yes / -cut / -think, epi-r-stem-hers,
-     epi-r-danielle-initial; ifYear: flag danielle-refused / danielle-sold, noFlag arrived-danielle / arrived-mark, xmas haechan,
+     epi-r-danielle-initial / -blank, epi-r-mark-door (the holiday party's shared hour: Danielle, Jaehyun, Mark, Chenle); ifYear: flag danielle-refused / danielle-sold, noFlag arrived-danielle / arrived-mark, xmas haechan,
      rank haechan 10.
    Glitches: floors 12/15 3 and 12/19 4 (glitches.js); inline ids epi-r-g-alone, -upward, -kitchen, -butterfly, -clocks, -midnight,
      -pull; { glitch: { stage } } on the pull days; strain on the lies that still hold the cover.
@@ -378,6 +378,45 @@
     { ifFlag: 'epi-r-danielle-initial', then: [
       { n: "Solar's initials were on that spreadsheet, too, small, on a guest-list line she'd signed for the records. She thought about that now. She thought Danielle was thinking about it too." }
     ] },
+    { n: "She went past the stairs anyway, because the kitchen was past the stairs and she wasn't going to start walking the long way round a staircase in her own life. Up close Danielle's black was velvet, short, with a white fur collar and a small red bow clipped at the back of her head, festive in the exact amount the run of show allowed and not one stitch more." },
+    { s: 'danielle', f: 'happy', t: "You listened. That's rare. Most people hear advice and then wear jeans." },
+    { s: 'danielle', f: 'neutral', t: "Midnight, Jaemin says. Everyone in one room, at one time, looking the same way. It's very good planning. I'd have done it myself." },
+    { ifFlag: 'epi-r-danielle-blank', then: [
+      { s: 'danielle', f: 'neutral', t: "You left your line blank, and you came anyway. I wrote that down too." }
+    ] },
+
+    // Everyone: the speech, her brother, Mark, Chenle (shared by every route; the routes' own hours follow)
+    { n: "At nine Jaemin did his few words, which ran eleven minutes and had a slide that was just a photograph of the fridge, and at the back of the room by the front door, in a dark green velvet blazer with a candy-cane pin on the lapel that somebody had very clearly put there without consulting him, her brother stood with his arms folded the way he stood on a sideline, listening to every word of a speech he hadn't approved." },
+    { n: "On the stairs, Danielle watched him for all eleven minutes and didn't lift her phone once." },
+    { n: "He found Solar afterward the way he found everything, without appearing to look. He took in the dress in the time it took to blink, Hyein's wine-red silk and the back that mostly wasn't there, and she watched him arrive at three things to say about it and choose the one that wasn't any of them." },
+    { s: 'jaehyun', f: 'neutral', t: "Did you eat." },
+    { s: 'solar', t: "There was a cheese board. I had the cheese board." },
+    { s: 'jaehyun', f: 'neutral', t: "That's a garnish." },
+    { s: 'jaehyun', f: 'serious', t: "Wear a coat home. A real one." },
+    { ifFlag: 'epi-r-public-post', then: [
+      { n: "His eyes went across the room once, to the kitchen doorway, and stayed there about as long as a quarterback looks at a safety before the snap, and came back. Whatever he had to say about the post, he'd decided it wasn't going to be said at a party, and in her whole life she'd never once seen him change his mind about where a conversation happened." }
+    ] },
+    { s: 'jaehyun', f: 'happy', t: "Midnight. Then bed. The car's at nine on Sunday and I'm not carrying your bag down." },
+    { n: "Then Johnny said his name from the kitchen and he went, the careful left-side-first step through the crowd, a hand on a back here and there, president of a house that was behaving tonight because he was in it." },
+    { n: "Mark came at ten." },
+    { n: "Nobody had said whether he would. Jisung had asked, at the fridge, and nobody had answered, and now here he was in the front hall in the loudest sweater in the building, a green-and-red knit with a snowman on the front whose buttons were actual pom-poms, a Santa hat pushed back on his head, which broke every rule in purple pen on the run of show and was either a joke or a white flag and on Mark Lee was probably both. Nobody stopped him at the door. Nobody made room for him either. Jisung waved, from the speaker, alone, with his whole arm." },
+    { n: "He didn't come looking for her. He ended up by the fireplace because it was the one place in the room nobody was standing, and she ended up there because the clock was over it, and they stood a person's width apart and looked at the room instead of each other." },
+    { s: 'mark', f: 'neutral', t: "Jisung asked if I was coming. Somebody told me he asked. I didn't want him to have asked for nothing." },
+    { s: 'mark', f: 'sad', t: "I'm going before the toast. It isn't my toast this year. I just didn't want to be the guy who didn't show up at all." },
+    { ifFlag: 'epi-r-mark-door', then: [
+      { s: 'mark', f: 'flustered', t: "Sixteen bars, now. Still nobody on it but me. It's so much slower than the other way. Who knew." },
+      { s: 'solar', t: "Everybody knew, Mark." },
+      { s: 'mark', f: 'neutral', t: "...Yeah. Everybody but me." }
+    ], else: [
+      { s: 'mark', f: 'neutral', t: "That's it. That's the whole thing. I'm not staying to talk. Merry Christmas, Sol." }
+    ] },
+    { n: "He left at half past eleven by the back door, the hat still on, and through the window she watched the pom-poms go down the dark yard past the frozen beer cans, and nobody in the house noticed he'd gone except Jisung, who kept looking at the back door for a while afterward like it might open again." },
+    { n: "Chenle had lost a bet. That was the only explanation anyone needed for the sweater, which was covered in tiny lights that blinked in a pattern Jisung had programmed, or for the elf hat with the bell on it, which rang every time he nodded. He was standing next to the speaker with a ring of other people's car keys hooked over one finger, sober, which he always was, with the face of a man who'd like it entered into the record that he hated every second of this and would be staying until the end." },
+    { s: 'chenle', f: 'neutral', t: "I'm the driver. I don't drink, so people give me their keys at the door like I'm a coat check. I have nine." },
+    { s: 'chenle', f: 'serious', t: "If you need to leave before midnight, I'm parked out front. You don't have to say why. I'm not going to ask." },
+    { s: 'solar', t: "Why would I need to leave before midnight?" },
+    { s: 'chenle', f: 'neutral', t: "I don't know. The snow went up on Monday. I'd just rather have the car out front." },
+    { n: "The bell on his hat rang when he nodded at the door. He looked at the ceiling about it. She didn't leave. But she knew, now, for the rest of the night, exactly where the car was, and she thought that had probably been the point." },
 
     // The Haechan route: the stairs, the sequence, the pull
     { ifEpiRoute: 'haechan', then: [
