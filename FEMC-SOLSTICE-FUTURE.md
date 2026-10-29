@@ -192,3 +192,9 @@ Equinox opens with all three moments from the Personaverse's side.
 **Kat, 2026-10-26:**
 - **strangers:** tie into canon events without following them closely. Claude picks the best pickup point (possibly later than the current manuscript) and records it privately, so Kat isn't spoiled.
 - **HOAX gap, corrected:** Jungwon carries both lives and knows exactly who Solar is reaching for. He's the one person in HOAX she doesn't have to explain it to. At the end he recognizes Haechan's voice through the bleed, so his choice to hold on, or let go, is fully informed.
+
+## Skin ideas from Kat (2026-10-29, not on the art list yet)
+- Solar: Kuromi alt / e-girl look.
+- Solar + Haechan: matching "Blingy" outfits (NCT 127 comeback vibe, neon green, bling); Haechan's based on one of his real comeback outfits (Kat picks which).
+- Kat's hair rule: have fun with Solar's hair (highlights, styling); Haechan and Jungwon only styles they've worn in real life.
+- Claude's pitched ideas awaiting Kat's picks: Y2K pop star, Night Racer, Shrine Maiden, Mermaid, Dark Hour Queen, Winter Fluff (Solar); Haechan era stage look / airport fit / couple pajamas; Jungwon ENHYPEN stage look / Boyfriend Sweater; Akihiko champ robe; S.E.E.S. swimwear set.
