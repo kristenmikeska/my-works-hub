@@ -1,6 +1,6 @@
 # Art to make
 
-**43 items:** 15 CGs · 28 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**40 items:** 12 CGs · 28 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -25,32 +25,6 @@ Places, expressions, outfit portraits and the items that name their own pictures
 ---
 
 ## 1. Story CGs (ChatGPT)
-
-### Iwatodai (the main game)
-
-**[ ] Kat & Ethan · rank 10 · the Port Island pier at night** *(optional)*  
-For Kat & Ethan's rank 10, on the pier on Port Island in the evening.  
-Attach: Kat, Ethan, Cosmo, Wanda, Solar, `bg/port-island-pier-night.webp` (for the place only)  
-Save as: `link-kat-r10-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A wooden pier on a cold autumn night, lamps along the railing making circles of warm light on the boards, the black bay behind, a lit-up ferry passing far out on the water like a birthday cake. In the circle of lamplight in the middle of the boards, two Siberian Huskies sit upright side by side with their ears up: Cosmo (the third attached image; grey and white, navy bandana), dignified, looking straight at the camera, and Wanda (the fourth attached image; black and white, paw-print bandana), the smaller, younger one, sitting up for once. Kat (the first attached image's face; alt / e-girl clothes, dark jacket) has just jumped up off a bench on the left and is crouching forward with her phone held out to take the photo, thrilled. Ethan (the second attached image's face; casual jacket) crouches beside the dogs holding both leashes, grinning. Solar (the fifth attached image's face; long dark hair, autumn coat) stands just behind Kat, laughing, hands half raised as if not to break the spell. Salt wind, warm lamplight against the dark sea. Joyful, cozy, a small victory. Keep the faces clear of the edges.
-```
-
-**[ ] Shinjiro · rank 10 · the dorm kitchen at night** *(optional)*  
-For Shinjiro's rank 10, in the dorm kitchen late at night.  
-Attach: Shinjiro, Solar, `bg/iwatodaidorm-kitchen.webp` (for the room only)  
-Save as: `link-shinjiro-r10-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The dorm kitchen late at night with the lights off, lit only by an enormous white full moon in the window over the sink; the moonlight throws the window frame across the floor tiles in hard black lines like a ruled page. The kitchen is spotless: pans on their hooks with handles out, a big pot on the back burner, spice jars in a neat row, a rice bin with its cup on top, a handwritten note taped to the fridge (scribbles, unreadable). Shinjiro (the first attached image's face; tall, long maroon coat hanging off the edge of the counter) sits up on the counter, which he never does, slightly hunched, turning his beanie around and around by the brim in his hands, not looking at the moon. Solar (the second attached image's face; long dark hair loose, a cardigan over pajamas, socks, no shoes) stands just inside the kitchen doorway, a few steps away, in the moonlight. Silver and black, very quiet, heavy and tender. Keep the faces clear of the edges.
-```
-
-**[ ] Aigis · 12/31 · the dorm roof at sunset** *(optional)*  
-For Aigis's New Year's Eve holiday scene, on the dorm roof on the last afternoon of the year.  
-Attach: Aigis, Solar, `bg/iwatodaidorm-roof-evening.webp` (for the place only)  
-Save as: `holiday-aigis-sunset-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The dorm rooftop on the last afternoon of the year, cold and very clear, the sun just touching the bay on the horizon, gold light across the water and the city, long shadows across the roof. Aigis (the first attached image's face; blonde, her usual look, with a soft scarf wound three times around her neck) stands at the railing watching the sunset with very blue, steady eyes, her hand resting on the rail. Solar (the second attached image's face; long dark hair, winter coat) stands right beside her at the rail, one step of space between them, her hand on the rail next to Aigis's. Seen slightly from behind and to the side so both faces catch the gold light. Calm, luminous, a year quietly ending. Keep the faces clear of the edges.
-```
 
 ### The epilogue: HOAX
 

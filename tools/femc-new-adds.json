@@ -16791,6 +16791,57 @@
       "placement": "data/story-act6.js a6-blue-moon: { cg } before the station line, { cg: null } before the choice; cgFocus in data/places.js",
       "textCheck": "checked 2026-10-28 against the image: matches the scene",
       "mobileFocus": "32% 50%"
+    },
+    {
+      "batch": 83,
+      "source": "link-kat-r10-cg.png",
+      "sourceNow": "Added to Game/link-kat-r10-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "1c3fb058eb189d5e55bc4f6b4ad50aae8f4b9de4f5f0a7e7023b22d114f07345",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-kat-r10.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "719f386103e74f025933055c188596f498b2658ca3cfb49733677d3e513b77f9",
+      "placement": "links/kat.js rank '10: sit': { cg } before the 'Wanda was sitting' line, kept to the end of the rank; cgFocus in data/places.js (the dogs, the subject of the next lines)",
+      "textCheck": "checked 2026-10-29 against the image: matches the scene",
+      "mobileFocus": "58% 45%"
+    },
+    {
+      "batch": 83,
+      "source": "link-shinjiro-r10-cg.png",
+      "sourceNow": "Added to Game/link-shinjiro-r10-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "bb49b4e97dfc6e885278bdf31974af04f78328861930ad89478f98d5c2f93b7b",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-shinjiro-r10.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "463092a467f4e308463024e2e5be97a7332db0e85036ea230a0bbdf2a12accc2",
+      "placement": "links/shinjiro.js rank '10: the night before': { cg } before 'He hadn't turned the lights on', { cg: null } before the choice; cgFocus in data/places.js (Shinjiro)",
+      "textCheck": "checked 2026-10-29 against the image: matches the scene",
+      "mobileFocus": "76% 35%"
+    },
+    {
+      "batch": 83,
+      "source": "holiday-aigis-sunset-cg.png",
+      "sourceNow": "Added to Game/holiday-aigis-sunset-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "ec721e17b8e4039417faaf0c22c59a2dcad65bdc367bad80e940acfb626e4ab5",
+      "status": "integrated",
+      "destination": "assets/femc/cg/holiday-aigis-sunset.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "0012eec97f180387964d9d135028b09dc5de08ae4a23de6c22ae2e6e8bf1ca8d",
+      "placement": "data/living-holidays.js aigis 12/31 'the last sunset': { cg } before Aigis's first line, { cg: null } before the choice; cgFocus in data/places.js (Aigis)",
+      "textCheck": "checked 2026-10-29 against the image: matches the scene",
+      "mobileFocus": "22% 30%"
     }
   ],
   "batch1Validation": {
@@ -17926,5 +17977,20 @@
     ],
     "notTested": "no browser tests: CG framing at 1000x486 and 375x812 (focus points set from the images)",
     "html": "femc-game.html places v59, ken v4, story-act6 v18"
+  },
+  "batch83Validation": {
+    "date": "2026-10-29",
+    "scope": "three Iwatodai CGs: Kat & Ethan rank 10, Shinjiro rank 10, Aigis's 12/31 holiday",
+    "sourcesInspected": "all 3 viewed",
+    "sourcesIntegrated": 3,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "textTweaks": "none (all three match their scenes)",
+    "tests": [
+      "tools/femc-check-scenes.py: OK",
+      "jsc checkSyntax on every edited script"
+    ],
+    "notTested": "no browser tests: CG framing at 1000x486 and 375x812 (focus points set from the images; two-person CGs centre the person the next lines are about)",
+    "html": "femc-game.html places v61, kat v2, shinjiro v11, living-holidays v6"
   }
 }

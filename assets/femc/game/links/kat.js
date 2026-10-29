@@ -430,6 +430,7 @@
         ] }
       ] },
       { s: 'ethan', f: 'surprised', t: "Kat. KAT. Phone. Now. Now now now." },
+      { cg: 'link-kat-r10' },
       { n: "Wanda was sitting. Wanda was sitting upright, beside Cosmo, both of them on the boards in the circle of light from the lamp, two grey-and-black shapes with their ears up and the bay behind them, and Cosmo, for the first time in recorded history, was looking at the camera, and Kat was up off the bench so fast the bench moved." },
       { n: "She got the picture. One. Then Wanda sneezed, and fell over sideways onto Cosmo, and Cosmo got up with the profound dignity of a dog who had been betrayed by his family, and walked to the end of the leash and sat facing the sea, and would not turn around for the rest of the night." },
       { s: 'kat', f: 'happy', t: "Number four. NUMBER FOUR. Oh my God, look at them. Look at my children." },

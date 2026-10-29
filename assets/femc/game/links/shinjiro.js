@@ -928,11 +928,13 @@
         { from: 'shinjiro', t: "kitchen" }
       ], contact: 'Aragaki' },
       { n: "Just that. No question mark, no please, nothing to tell her whether it was a favor or an order or something that didn't have a name yet. She went down in her socks with her cardigan over her pajamas, because when Shinjiro Aragaki asked anybody for anything, it was usually the first time in a long while that he'd asked." },
+      { cg: 'link-shinjiro-r10' },
       { n: "He hadn't turned the lights on. He didn't need to. The window over the sink was full of moonlight, white and enormous, so bright it laid the shape of the frame across the floor tiles in hard black lines, like a page ruled for writing, and he was sitting on the counter, which he never did, with his long coat hanging off the edge and his beanie in his hands, turning it around and around by the brim." },
       { n: "The moon was in the window. Neither of them looked at it." },
       { n: "The kitchen was clean. Not clean the way he left it every night, clean the way a room is when someone has gone all the way around it and put everything exactly where it goes. The pans on their hooks with the handles out. The good pot on the back burner. The spice jars in their order. The rice in its bin with the cup on top. A note taped to the fridge in his blocky handwriting, DOG, REAL FOOD, 1 CUP, NOT THE CANNED GARBAGE." },
       { s: 'shinjiro', f: 'neutral', t: "Hey." },
       { s: 'solar', f: 'neutral', t: "Hey." },
+      { cg: null },
       { choose: [
         { t: "(Climb up onto the counter beside him.)", notes: 3, then: [
           { n: "She climbed up beside him. It was a high counter, and she had to do it in two goes, and he didn't help, and she could feel him not helping, the way he didn't help Koromaru up the stairs. Then she was there, their shoulders not quite touching, their legs hanging off the edge like two kids on a wall, and the steel was cold through her pajamas." }

@@ -14,7 +14,7 @@ Kat's list of art to make is `FEMC-ART-TODO.md`; parked items are in `FEMC-ART-B
 
 ## Open questions for Kat
 - **Stamps:** the 29 Persona 3: Solstice stamps are line drawings like every stamp on the hub. Illustrated ones would only fit if the whole passport changed. Keep as is?
-- **Rank 10 CGs not on the list:** answered: Ken's rank 10 CG is in (art batch 82) and Kat & Ethan's is on Kat's list.
+- **Rank 10 CGs not on the list:** answered: Ken's rank 10 CG is in (art batch 82) and Kat & Ethan's too (art batch 83).
 
 ## Where each item goes (keyed by its name in FEMC-ART-TODO.md)
 
@@ -28,9 +28,7 @@ Kat's list of art to make is `FEMC-ART-TODO.md`; parked items are in `FEMC-ART-B
 
 General: convert each to `assets/femc/cg/<slug>.webp`; insert `{ cg: '<slug>' },` as its own scene line. A `{ place }` line clears the CG by itself (scene.js 337), so `{ cg: null }` is only needed mid-scene. Each touched file gets one `?v=` bump in `femc-game.html`, and so does `data/places.js` for the new `cgFocus` entries (`?v=45` → 46, line 37). Add every focus entry to the `cgFocus` map in `assets/femc/game/data/places.js` (ends at line ~371, after `'story-dorm-dinner'`). The focus values are my guesses from the prompt's layout, so check them on a phone once the art is in. The album finds new CGs by walking the scene data (menu.js ~704), so it needs no list. Line numbers are from 2026-10-28.
 
-- **Kat & Ethan · rank 10 · the Port Island pier at night** (`link-kat-r10-cg.png` → `cg/link-kat-r10.webp`): `links/kat.js`, rank `'10: sit'` (after '10/14', line 407). Put `{ cg: 'link-kat-r10' }` before line 433 (`"Wanda was sitting. Wanda was sitting upright…"`). It can stay to the end of the rank (line 437 is the last line), so no `{ cg: null }` is needed. Bump `links/kat.js?v=1` → 2 (line 139). cgFocus `'link-kat-r10': '45% 40%'` (the dogs and Kat are centre-left). The Ken item closes the same open question.
-- **Shinjiro · rank 10 · the dorm kitchen at night** (`link-shinjiro-r10-cg.png` → `cg/link-shinjiro-r10.webp`): `links/shinjiro.js`, rank `'10: the night before'` (after '10/3', line 925). Put `{ cg: 'link-shinjiro-r10' }` before line 931 (`"He hadn't turned the lights on…"`); `{ cg: null }` before the `{ choose: [` at line 936. Bump `links/shinjiro.js?v=10` → 11 (line 113). cgFocus `'link-shinjiro-r10': '45% 35%'`.
-- **Aigis · 12/31 · the dorm roof at sunset** (`holiday-aigis-sunset-cg.png` → `cg/holiday-aigis-sunset.webp`): `assets/femc/game/data/living-holidays.js`, `add('aigis', …)` holiday `'12/31'` (`'the last sunset'`, line 409). Put `{ cg: 'holiday-aigis-sunset' }` before line 413 (Aigis's first line, right after the narration at 412, `"The roof on the last afternoon of the year…"`); `{ cg: null }` before its `{ choose: [` at line 415. Bump `data/living-holidays.js?v=5` → 6 (line 62). cgFocus `'holiday-aigis-sunset': '50% 35%'`. It's a holiday invite, so it plays only if Solar spends 12/31 with Aigis.
+- *(All three Iwatodai CGs are in: Kat & Ethan's rank 10, Shinjiro's rank 10 and Aigis's 12/31 holiday; art batch 83, each with a cgFocus entry.)*
 
 #### The epilogue: Runners, HOAX, Stay, the true coda
 

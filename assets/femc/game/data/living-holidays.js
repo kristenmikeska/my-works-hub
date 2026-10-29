@@ -410,8 +410,10 @@
       ask: 'Solar-san. The last sunset of this year is at sixteen thirty-eight. I would like to observe it. I would like to observe it with you.', yes: 'ill be there at 16:34', ok: 'Confirmed. That is four minutes early. Like me.', sorry: 'i cant today aigis, im sorry', no: 'I understand. I will observe it for both of us. I will report.',
       scene: [
         { n: "The roof on the last afternoon of the year was cold and very clear, and Aigis was at the rail in a scarf someone had wound around her neck three times, Yukari's, from the look of it, and she didn't turn when Solar came up. She said the time instead, to the minute, and moved over exactly one step to make room." },
+        { cg: 'holiday-aigis-sunset' },
         { s: 'aigis', f: 'neutral', t: "I was activated in this year. I do not have another one to compare it to. I do not know whether it was a good year." },
         { s: 'aigis', f: 'neutral', t: "You have three. Three lives. Is this a good year, compared to the others?" },
+        { cg: null },
         { choose: [
           { t: "I don't remember the others well enough to say.", notes: 2, then: [
             { s: 'aigis', f: 'neutral', t: "Then we are the same. We only have this one to judge it by." },
