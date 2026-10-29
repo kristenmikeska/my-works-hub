@@ -122,7 +122,7 @@
     eventFaces: {
       'hoax-christmas': { solar: 'solar-hoax-christmas', jungwon: 'jungwon-hoax-christmas', jihoon: 'jihoon-hoax-christmas', cherry: 'cherry-hoax-christmas' }, // epi-h-christmas (12/25)
       'hoax-party': { solar: 'solar-hoax-party', jungwon: 'jungwon-hoax-party', jihoon: 'jihoon-hoax-party', cherry: 'cherry-hoax-party' }, // epi-h-party (12/29)
-      'hoax-newyear': { solar: 'solar-hoax-newyear', jungwon: 'jungwon-hoax-newyear', jihoon: 'jihoon-hoax-newyear', cherry: 'cherry-hoax-newyear' } // epi-h-new-year (1/1)
+      'hoax-newyear': { solar: 'solar-hoax-newyear', jungwon: 'jungwon-hoax-newyear', jihoon: 'jihoon-hoax-newyear', cherry: 'cherry-hoax-newyear' } // epi-h-new-year and epi-h-sebae (1/1)
     },
     variants: {
       morning: {

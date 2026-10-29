@@ -8,7 +8,8 @@
      epi-h-study-plans  12/23 after    the crew, Cherry and Jihoon descend with study plans; "What retreat." (consumes)
      epi-h-karaoke      12/23 evening  karaoke, then the haunted vending machine (consumes)
      epi-h-eve          12/24 evening  Christmas Eve: three texts, the route choice, three Christmas Eves (consumes)
-     epi-h-christmas    12/25 after    Christmas at home: Jungwon meets her parents, Jihoon brings the cocoa; then by route (consumes)
+     epi-h-christmas    12/25 after    Christmas at home: Jungwon meets her parents, Jihoon brings the cocoa, Cherry on the step
+                                       on her way to her grandmother's (every route); then by route (consumes)
      epi-h-seance       12/27 late     the Hate Club seance at Jihoon's; OKAERI, IWATODAI; Kazuha did it
    Flags set: epi-h-retreat (epi-h-emergency, always); epi-route-jungwon / epi-route-jihoon / epi-route-council (epi-h-eve);
      local: epi-h-mom-lie (epi-h-home, the lie option), epi-h-radio-hers (epi-h-emergency, she changes the station),
@@ -792,6 +793,31 @@
     { n: "He held out his own cup. The fourth one. Jungwon looked at it for exactly one second too long." },
     { s: 'jungwon', f: 'neutral', t: "That's very generous. Thank you, Jihoon." },
     { n: "He took it. He drank from it. He held eye contact the whole time, over the rim, while her mother beamed at both of them like she was watching her two sons share, and Solar stood in the hallway between them with her own cocoa going cold in her hands and wanted, very badly, to lie down on the floor with the dog." },
+    { n: "Her phone buzzed in her back pocket. Then again. Then a third time, which with Cherry meant the first two had been warnings." },
+    { phone: [
+      { from: 'cherry', t: 'outside' },
+      { from: 'cherry', t: "NOT coming in. if ur mom sees me she'll feed me and if she feeds me my grandma will kill me. lunch is at 2. she counts" },
+      { from: 'cherry', t: 'come out. i have a bear' }
+    ], contact: 'cherryblossoms' },
+    { place: 'Hanlim · Home · Front Door', time: 'Daytime', soft: true },
+    { n: "Cherry was at the bottom of the front steps in a fluffy cherry-red mohair sweater with a white bow in her hair, boots planted in the snow like the steps were lava, holding a gift bag out at arm's length the way you'd hold out something that might bite." },
+    { s: 'cherry', f: 'happy', t: "Merry Christmas, you ugly bitch. Take it. Don't open it in front of me. I'll get emotional and then I'll have to kill you, and it's a holiday." },
+    { n: "It was a Care Bear. She could feel the shape of it through the tissue paper. It was always a Care Bear." },
+    { n: "Cherry was looking past her, into the hall, at the row of shoes on the mat. Her mother's garden clogs. Jihoon's sneakers, kicked off any old way, one upside down. And beside them a pair of good black shoes set side by side with their toes exactly level, like they'd been parked." },
+    { s: 'cherry', f: 'surprised', t: "Are those the preppy freak's shoes? Lined up? He lined his shoes up in your hallway?" },
+    { s: 'solar', t: "He's meeting my parents." },
+    { s: 'cherry', f: 'serious', t: "And Park's car is in your driveway." },
+    { n: "She looked at it. Jihoon's car, parked crooked across the end of the drive the way he'd parked it every Christmas, the paper bag from the cocoa stand still on the dashboard. Cherry looked at it a second longer than a car needed looking at, and Solar didn't know yet what that second was for." },
+    { s: 'cherry', f: 'neutral', t: "Four cups?" },
+    { s: 'solar', t: "Four cups." },
+    { s: 'cherry', f: 'happy', t: "Oh, he gave him one. He made the preppy freak drink his cocoa. I'm missing a murder for my grandma's japchae. This is the worst Christmas of my life." },
+    { s: 'cherry', f: 'neutral', t: "...It's my second one this year, you know. Christmas. I'm too old for two." },
+    { s: 'solar', t: "You could skip this one." },
+    { s: 'cherry', f: 'sad', t: "No. This is the one where you're home." },
+    { n: "She said it at the snow, not at Solar, and then she heard it, and her whole face went murderous to cover it." },
+    { s: 'cherry', f: 'serious', t: "That was disgusting. Forget I said it. Go inside before Park poisons your boyfriend with kindness." },
+    { n: "She went down the path backwards so she could keep pointing at Solar the whole way, and at the gate she stopped and looked at the house for a second, the fogged window, the shape of Jungwon sitting very straight on the sofa, the dog's tail going in the hall, like she was taking a picture of it without her phone. Then she went to her grandmother's." },
+    { place: 'Hanlim · Home · Living Room', time: 'Daytime', soft: true },
     { n: "Jihoon was a dream at lunch. That was the horrible part. He set the table without being asked. He knew where everything went. He told her mother the japchae was better than last year and her mother glowed. He fixed the drip under the kitchen sink that her father had been *getting to* since August with a butter knife and a hair tie. He said *please* and *thank you* in sentences without a single capital letter in the wrong place. He was the nicest he'd been in a year." },
     { n: "Jungwon got quieter. With every nice thing Jihoon did, Jungwon got a little quieter and a little more polite, until he was sitting at the end of the table cutting his food into exact, identical squares and saying *thank you, this is wonderful* every time anyone passed him anything, in a voice so even it could've levelled a shelf. He was furious. She'd never seen him this furious. He was being so courteous about it that her father asked twice if he was feeling alright." },
     { n: "Then her mother put down her chopsticks, and smiled at Jungwon, and Solar knew exactly what was coming, because she'd watched her mother's eyes go to the window at the start of the meal and then come back, slow, like a file being reopened." },

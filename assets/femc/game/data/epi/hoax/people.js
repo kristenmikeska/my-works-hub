@@ -946,7 +946,7 @@
       { t: "(Leave it on read.)", silent: true, then: [] }
     ] },
     // ── week 2 into week 3 ──
-    { id: 'epi-h-tx-dad-newyear', thread: 'dad', date: '1/1', slot: 'after', msgs: [
+    { id: 'epi-h-tx-dad-newyear', thread: 'dad', date: '1/1', slot: 'evening', msgs: [ // evening: she's at Yeobo's for the after slot (epi-h-sebae)
       { from: 'dad', t: 'Happy New Year.' },
       { from: 'dad', t: 'Your mother says I should text you, even though you are in the next room.' }
     ], reply: [

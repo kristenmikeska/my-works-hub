@@ -5,7 +5,9 @@
      epi-h-party          12/29 Fri  evening, consumes   the winter-break party (a swim-team third-year's house); by route
      epi-h-livestream     12/31 Sun  evening, consumes   Eunchae's New Year's Eve stream: the gym-door clip, frame 214, the Yunjin cut
      epi-h-notes          12/31      late                midnight; sticky notes on her mirror in her own hand; Jungwon knows
-     epi-h-new-year       1/1 Mon    early, consumes     tteokguk, Mom softer ("Was it nice, at least?"), the study plan by route
+     epi-h-new-year       1/1 Mon    early, consumes     sebae and tteokguk, Mom softer ("Was it nice, at least?"), the study plan by route;
+                                                          Jihoon's bow in the hallway, Cherry and the curling iron
+     epi-h-sebae          1/1        after, consumes     Yeobo's: Halmeoni's sebae and blessings, the council's New Year photo (faces hoax-newyear)
      epi-h-motion         1/2 Tue    after, consumes     hanlim_accountability posts the motion; RETREAT FACTS explodes; Jihoon comments
      epi-h-alone          1/2        late                fight 1 (epi-hoax-1): the council room at midnight, half Tartarus
      epi-h-study-jw       1/3 Wed    evening, consumes   route jungwon: the town library, chapter six, the kimbap, the blister
@@ -178,6 +180,8 @@
           { s: 'jungwon', f: 'neutral', t: "Heeseung. Turn me around. I'm facing your shirt." },
           { s: 'heeseung', f: 'serious', t: "You're facing the objective." },
           { n: "So they went in. Sunoo carried the crate of water like a ring bearer and gave a bottle to everyone who looked at him, which was everyone. Jay knew every single person in the house and said *bro* to all of them in a slightly different key. Niki vanished into the crowd in under eight seconds and was later seen on a bannister. Sunghoon, who hadn't looked at another girl since Cherry, spread the word exclusively to boys, using exactly the same smile, to deeply confusing effect." },
+          { s: 'sunoo', f: 'happy', t: "Water? Happy holidays! It's free! It's just water! Stay hydrated!" },
+          { s: 'sunoo', f: 'flustered', t: "Why is everyone looking at it like that? It's sealed. Look. It's sealed! It's Evian!" },
           { n: "Then the kitchen. Then Jihoon, on the counter, the guy from sophomore year at his shoulder, a corner of a bag showing at the lip of his jacket and going back down when he saw who'd come in." },
           { s: 'jihoon', f: 'happy', t: "Oh, Look. The Temple Kids. Did You Bring Incense? Is This A Field Trip?" },
           { s: 'heeseung', f: 'neutral', t: "Water?" },
@@ -186,6 +190,7 @@
           { s: 'jihoon', f: 'neutral', t: "Ask Sol About Sophomore Year, Though. She Loves That Story. Don't You, Sol?" },
           { n: "The kitchen went quiet in a ring around them, the way a pond does." },
           { n: "Jay put the water bottle down on the counter very gently and shoved Jihoon off it with one hand, flat in the chest, not hard, just enough that Jihoon's feet hit the floor and he had to take a step. Hyunsuk, from nowhere, shoved Jay. Jake got between them with both arms out like a crossing guard saying *guys, guys, guys*. Sunghoon caught Jihoon's elbow. Cherry hit Jihoon in the arm with her bag, then hit Jay with it too for good measure, then looked around for anyone else who deserved it." },
+          { s: 'cherry', f: 'serious', t: "Anyone else? Park Jihoon, that one was for opening your mouth. You're getting another one for what came out of it." },
           { s: 'jungwon', f: 'serious', t: "Heeseung. What is that noise. Is someone hitting someone." },
           { s: 'heeseung', f: 'flustered', t: "Define hitting." },
           { choose: [
@@ -205,7 +210,9 @@
           ] },
           { flag: 'epi-h-party-scuffle' },
           { place: 'Hanlim · The Party · Outside', time: 'Evening', soft: true },
-          { n: "Afterwards they stood in a row on the curb, the whole council and her, steaming in the cold like horses. Jay's knuckles were fine. Jake's dignity was not. Sunoo still had four bottles of water and gave one to a stranger walking a dog." },
+          { n: "Afterwards they stood in a row on the curb, the whole council and her, steaming in the cold like horses. Jay's knuckles were fine. Jake's dignity was not. Sunoo still had four bottles of water." },
+          { s: 'sunoo', f: 'sad', t: "...Nobody took the last four. I'm going to be honest, that hurt." },
+          { n: "He gave one to a stranger walking a dog. The stranger said thank you. Sunoo looked like he might cry about it." },
           { s: 'niki', f: 'happy', t: "I posted Sunoo handing out water. Top comment already says 'rehab kids dont hand out evian.' We won." },
           { s: 'heeseung', f: 'neutral', t: "Objective... partially achieved." },
           { s: 'sunghoon', f: 'neutral', t: "Sunghoon was magnificent in there, for the record. Nobody said it, so Sunghoon is saying it." },
@@ -408,9 +415,12 @@
     { id: 'epi-h-new-year', date: '1/1', slot: 'early', consumes: true, faces: 'hoax-newyear', title: 'tteokguk', place: 'Hanlim · Home · Kitchen', time: 'Morning', scene: [
       { music: 'epi-h-home' },
       { n: "Her mother had been up since six making tteokguk, which meant the whole house smelled of anchovy broth and sesame oil and the faint scorch of egg strips, and her father was at the table in his good cardigan reading the news on his tablet at arm's length, and Nana was under the table with his chin on her father's slipper, waiting for a miracle." },
+      { n: "She'd been made to put the hanbok on before breakfast, because in this house sebae came before soup and always had, and you didn't bow to your parents in pajama pants, her mother said, not in the first hour of a year. Navy, with gold printed along the trim, over a rose-pink skirt, a small gold pin in her hair. It still fit. It had been pressed, too; the dry cleaner's tag was still pinned inside the collar, and the date on it was the fourteenth, three days after she'd gone, and she found it while she was doing up the ribbon and didn't say anything about it to anyone." },
+      { n: "She bowed. Knees, hands, forehead nearly to the floor, the whole slow thing, the way she'd done it on this rug every first of January since she was small enough to fall over halfway, and came back up, and her father cleared his throat like a man about to give a speech he hadn't written." },
       { s: 'dad', t: "Eat. You're a year older." },
       { s: 'solar', t: "I refuse. I'm staying eighteen. I'll have half a bowl." },
       { s: 'mom', t: "Half a bowl, half a year. Sit." },
+      { n: "There was a white envelope beside her bowl, her name on it in her mother's handwriting, the same as every year. She tucked it into her sleeve without opening it, the same as every year." },
       { n: "She sat. The rice cakes were thin coins in the broth, the way she liked them. Her mother sat across from her and didn't eat, just held her own bowl in both hands to warm them and watched her, and Solar knew that look. It was the look that came before a question her mother had been holding since the twentieth." },
       { s: 'mom', t: "So." },
       { s: 'mom', t: "The temple. Was it nice, at least?" },
@@ -461,7 +471,117 @@
           ], contact: 'RETREAT FACTS (do not leave)' }
         ] }
       ] },
-      { s: 'mom', t: "Eat your soup before it gets cold, a year older." }
+      { phone: [
+        { from: 'heeseung', t: "heeheeseung: Reminder. The New Year photo is TODAY. Yeobo's, 2pm. Hanbok. Halmeoni wants us at 1:45 for sebae, and she counts." },
+        { from: 'niki', t: "rikiniki: why does everyone keep saying she counts" },
+        { from: 'heeseung', t: "heeheeseung: Because she counts, Niki." }
+      ], contact: 'RETREAT FACTS (do not leave)' },
+      { s: 'mom', t: "Eat your soup before it gets cold, a year older." },
+      { n: "The doorbell went before she'd finished it. Two long, one short." },
+      { s: 'mom', t: "*Jihoonie!*" },
+      { n: "He was on the step in a hanbok, all of it black, jeogori and baji both, with the silver chain he never took off left on underneath and showing at the collar, because Park Jihoon would wear a hanbok for her mother and would not, under any circumstances, take the chain off for it. His hair was brushed. He'd done something to his eyebrows." },
+      { n: "He didn't come in past the mat. He bowed right there in the hallway, to her mother and then to her father, the full sebae, knees and hands and forehead, slow and correct, the way he'd done it in this hallway every first of January since he was thirteen. Nobody in the house had ever said out loud why it was this hallway. Nobody was going to start now." },
+      { s: 'jihoon', f: 'neutral', t: "Saehae bok mani badeuseyo, Eomeoni. Abeoji." },
+      { s: 'dad', t: "Happy new year, Jihoon. Get up, you'll wreck the knees on that." },
+      { n: "Her mother gave him an envelope. White, his name on it in her hand, the same size as the one in Solar's sleeve. She had never once made his smaller." },
+      { s: 'jihoon', f: 'happy', t: "Eomeoni, this is too much. I'm going to spend all of it on something irresponsible." },
+      { s: 'mom', t: "Good. Sit. You're having soup." },
+      { n: "He sat in his chair, which was the chair on the end, which had been his chair for so long that nobody else ever sat in it even when he wasn't there. He looked at Solar across the table in her navy and her gold pin, and grinned with his whole face, and she knew she was about to be punished for something." },
+      { s: 'jihoon', f: 'happy', t: "Look at you. Very traditional. Very filial. You look like a girl who's never told her mother a single lie in her life." },
+      { n: "She kicked him under the table. He'd known she would; he'd already moved his shin. Her mother, ladling, didn't look up, and the corner of her mouth did something that might have been nothing." },
+      { s: 'jihoon', f: 'neutral', t: "What? It's a compliment. It's the nicest thing I know how to say." },
+      { n: "The front door opened again without the bell, because Cherry had had a key since she was eleven and had never once in her life used the bell. She came down the hall still taking her boots off, in a cherry-red jeogori over a pink skirt, a red ribbon tied at the end of her braid, a tote bag over one shoulder with the handle of a curling iron sticking out of it like a weapon." },
+      { s: 'cherry', f: 'neutral', t: "Happy new year, Mrs. Kim, Mr. Kim, I love you both, I'm stealing your daughter. She has a photo at two and her hair is a crime against the state." },
+      { n: "She did a bow so quick it was mostly a crouch. Solar's mother gave her an envelope, too. She'd had three ready. Of course she had." },
+      { s: 'cherry', f: 'serious', t: "Park. You wore the chain." },
+      { s: 'jihoon', f: 'neutral', t: "The chain is part of me. You can't take the chain off the man." },
+      { s: 'cherry', f: 'happy', t: "I could. I have pliers in this bag." },
+      { n: "Jihoon finished his soup in four minutes and put the spoon down very straight beside the bowl and stood up." },
+      { s: 'jihoon', f: 'neutral', t: "I have to be somewhere." },
+      { n: "He didn't say where. Nobody asked. In this house, on this morning, nobody ever had." },
+      { ifEpiRoute: 'jihoon', then: [
+        { n: "At the door, shoes half on, he looked back at her down the hall." },
+        { s: 'jihoon', f: 'sad', t: "Happy new year, Sol. I'm still not making the other night a thing." },
+        { s: 'solar', t: "I know you're not." },
+        { s: 'jihoon', f: 'happy', t: "Good. New year. New man. Same face, unfortunately for everyone." }
+      ], else: [
+        { s: 'jihoon', f: 'happy', t: "Don't smile in the council photo. It's not your best look. Happy new year, Sol." }
+      ] },
+      { n: "The door shut. Through the fogged glass his shape went down the path in black with its hands in its sleeves, and Cherry was already plugging the curling iron into the wall by the sink." }
+    ] },
+
+    // 1/1 afternoon — sebae at Yeobo's, the council's New Year photo ------------------------------------------------------
+    { id: 'epi-h-sebae', date: '1/1', slot: 'after', consumes: true, faces: 'hoax-newyear', title: 'sebae', place: "Hanlim · Yeobo's", time: 'Daytime', scene: [
+      { music: 'epi-h-goofy' },
+      { n: "Yeobo's had a sign on the door that said CLOSED FOR THE NEW YEAR in Sunoo's handwriting with a heart over the O, and behind it every light was on, the radiator was going full blast against the glass, and the tables had been pushed back against the walls to make a long clear stretch of floor with a single good chair at the end of it, like a throne in a very small and very warm kingdom." },
+      { n: "Sunoo's grandmother was in the chair, in her good cardigan and a brooch, with a stack of white envelopes on her knee and the expression of a woman who had been doing this for forty years and intended to do it for forty more." },
+      { n: "The council came in in hanbok, one at a time, the way it did everything, which was badly coordinated and loud. Heeseung first, in sage green under a navy durumagi, a tripod under one arm and a clipboard under the other. Jake in sky blue with a padded vest over it, shaking snow off his hair like a dog. Jay in deep burgundy, hands in his sleeves, nodding at the room like it owed him money. Niki in mustard yellow, all of it slightly too big, the cuffs over his knuckles, because it had been Heeseung's two years ago and Heeseung had refused to hear a word about it. Sunoo was already there. Sunoo was in a saekdong jeogori with rainbow-striped sleeves and a fur-trimmed hat, because his grandmother had dressed him, and his grandmother dressed him like he was six." },
+      { s: 'sunoo', f: 'flustered', t: "Don't. Nobody say anything. She picked it. She's picked it every year since I was four. I've stopped fighting." },
+      { s: 'jay', f: 'neutral', t: "Bro, you look like a rainbow that got a job." },
+      { s: 'sunoo', f: 'happy', t: "Thank you!" },
+      { n: "Sunghoon came in after them, in ivory under a long black durumagi that went almost to his ankles, timing the door so the cold came in behind him like an entrance. He had clearly practised the entrance. Then he saw Cherry, in red, by the counter, with a curling iron still in her tote bag, and he walked straight into the edge of a pushed-back table." },
+      { s: 'sunghoon', f: 'flustered', t: "Park Sunghoon is fine. Park Sunghoon meant to do that. Park Sunghoon is going to need a moment." },
+      { s: 'cherry', f: 'neutral', t: "Take a moment, Park. Take several. Take one of them soon." },
+      { s: 'sunghoon', f: 'serious', t: "...Soon." },
+      { s: 'cherry', f: 'serious', t: "I swear to God." },
+      { n: "Outside, a dark grey sedan pulled up to the curb and didn't turn its engine off. The passenger door opened and Jungwon got out in pale blue under a long grey durumagi, buttoned to the throat, and turned and bowed to the car, and the car didn't do anything back." },
+      { s: 'jungwon', f: 'neutral', t: "Happy new year. My mother drove me. She's in the car. She's giving me an hour. She timed it from the driveway." },
+      { ifEpiRoute: 'jungwon', then: [
+        { n: "He looked at Solar for one second longer than he looked at anyone else, and his ears went pink, and she knew exactly which twenty minutes of last night he was thinking about." },
+        { s: 'jungwon', f: 'flustered', t: "She doesn't know about last night. I'd like this to be the year she doesn't find out." }
+      ] },
+      { s: 'heeseung', f: 'serious', t: "Okay. Line. By age, oldest on the left. Niki, you're on the end." },
+      { s: 'niki', f: 'happy', t: "Youngest goes last. Youngest gets the most money. That's science." },
+      { s: 'halmeoni', t: "Everyone gets the same. The youngest just waits the longest. That's life." },
+      { n: "So they lined up on the long clear stretch of floor, eight of them in a row of colours, and Cherry at the end after Niki because Halmeoni had pointed at her and then at the floor and Cherry Kim, for once in her life, had just done what an adult told her to. And they bowed. All of them at once, more or less. Jake was half a second early. Sunghoon was half a second late, on purpose, so he'd be the one still going down when everyone else was coming up." },
+      { s: 'heeseung', f: 'neutral', t: "Saehae bok mani badeuseyo, Halmeoni." },
+      { n: "Then she did what she did every year, which was give the blessing with the envelope, one at a time, down the row, and look each of them in the face while she did it, which was the part none of them had ever got used to." },
+      { s: 'halmeoni', t: "Heeseung-ah. Stop writing everything down. Some things are allowed to just happen." },
+      { s: 'heeseung', f: 'surprised', t: "...Can I write that down?" },
+      { s: 'halmeoni', t: "Jake. Feed that dog less. She's a lady, not a sofa." },
+      { s: 'jake', f: 'sad', t: "Layla's big-boned, Halmeoni." },
+      { s: 'halmeoni', t: "Jay. Rest your knees. Football is not a religion." },
+      { s: 'jay', f: 'neutral', t: "...It kind of is, though." },
+      { s: 'halmeoni', t: "Don't kind of me. Sunghoon." },
+      { n: "She looked at him for a long time. Sunghoon, who had never once in his life been looked at for too long by anybody and not enjoyed it, started to sweat." },
+      { s: 'halmeoni', t: "Say the thing. Whatever the thing is. I've been saying soon for sixty years, and look where it got me. A café." },
+      { s: 'sunghoon', f: 'flustered', t: "...Noted, Halmeoni." },
+      { n: "At the end of the row Cherry had gone the exact red of her jeogori and was staring at the ceiling." },
+      { s: 'halmeoni', t: "Niki. Be nicer on the internet." },
+      { s: 'niki', f: 'surprised', t: "That's not a blessing. That's a review." },
+      { s: 'halmeoni', t: "And the red one. You smoke. Stop it." },
+      { s: 'cherry', f: 'sad', t: "...Yes, Halmeoni." },
+      { n: "She gave Sunoo nothing out loud. She just put her hand on his face, the rainbow sleeves, the ridiculous hat, and held it there a second." },
+      { s: 'sunoo', f: 'happy', t: "Halmeoni, you have to say one for me too. In front of everyone. It's fair." },
+      { s: 'halmeoni', t: "Yours is at home. I'm not saying it in front of these hooligans." },
+      { n: "Then Jungwon. She held the envelope out and didn't let go of it when he took it, so they were both holding it, and he had to look at her." },
+      { s: 'halmeoni', t: "Eat. Three times a day. Sitting down. I'll know." },
+      { s: 'jungwon', f: 'neutral', t: "Yes, Halmeoni." },
+      { s: 'halmeoni', t: "Say it like you mean it." },
+      { s: 'jungwon', f: 'sad', t: "...I'll try, Halmeoni." },
+      { n: "She let go of the envelope. It was the most honest thing anyone had said in the room, and she seemed to like it better than a yes." },
+      { n: "Then Solar. Halmeoni didn't hold the envelope out. She took both of Solar's hands in her two dry warm ones, envelope and all, and looked up at her from the chair." },
+      { s: 'halmeoni', t: "And you. This year, stay where people can find you. You hear me? Somewhere a person can find you." },
+      { n: "Solar opened her mouth to say yes, because you said yes to a blessing, that was the whole point of one, and nothing came. Halmeoni waited. The radiator ticked against the glass. Down the row, without turning his head, Jungwon had gone completely still." },
+      { s: 'solar', t: "...I'll try, Halmeoni." },
+      { s: 'halmeoni', t: "Hm. Two of you. Fine. Trying is allowed." },
+      { music: 'epi-h-home' },
+      { n: "Heeseung set up the tripod in the middle of the floor and shouted directions at it as if it could hear him. The council's New Year photo went up on the school's page every first of January, eight of them in a row, and every year it was a fight, and this year Heeseung had made a laminated diagram of where everybody was supposed to stand, and nobody stood there." },
+      { s: 'heeseung', f: 'serious', t: "We look normal. We look rested. We look like people who went to a temple and found peace. Timer's on ten. Nobody blink. Niki." },
+      { s: 'niki', f: 'neutral', t: "I haven't done anything." },
+      { s: 'heeseung', f: 'serious', t: "Yet." },
+      { n: "Ten. Nine. Solar stood in the middle of the row with Jungwon on her left in his grey coat and Sunoo on her right in his rainbow, and at seven, without deciding to, she looked down the line, past Jake, past Niki, to the bit of plain wall at the very end of it where someone should have been standing. Someone who'd have been making a face. Ruining it on purpose. Doing a peace sign so low nobody would see it until the photo was printed." },
+      { n: "There was no one there. There had never been anyone there, in this world. Her eyes went anyway, the way your tongue goes to a tooth that isn't there anymore." },
+      { n: "Jungwon didn't look where she was looking. He'd seen her look. He'd seen her look at the end of a lot of rows, she thought, and never once asked who for, because he already knew. He just moved half a step, so his shoulder was against hers, and stayed there, warm through two layers of silk, all the way through three, two, one, and the flash." },
+      { s: 'niki', f: 'happy', t: "Posted. First comment says 'temple kids clean up nice.' Second comment says 'where is the tin.' Third one's Jake." },
+      { s: 'jake', f: 'happy', t: "I said 'hanbok-ing good.' It's a pun. It's a New Year pun. Somebody laugh." },
+      { s: 'jay', f: 'neutral', t: "No." },
+      { n: "A car horn outside. Once, short, exactly an hour after the car had pulled up. Jungwon was already standing. He bowed to Halmeoni, and to the room, and on his way past Solar he stopped, and didn't touch her, because the car could see the window." },
+      { s: 'jungwon', f: 'neutral', t: "Happy new year, Sol. Eat something. That one's Halmeoni's orders, not mine." },
+      { s: 'solar', t: "Won." },
+      { s: 'jungwon', f: 'happy', t: "...I'll try too." },
+      { n: "Then he was out in the cold, getting into the grey car, and the car pulled away from the curb the second his door shut. Halmeoni watched it go through the glass with her lips pressed together. Then she got up, and went into the kitchen, and came back with a tray of rice cakes nobody had asked for, and put it down on the floor in the middle of the eight of them that were left, and said *eat* to the whole room, the way you'd say it to a family." },
+      { n: "On Niki's phone the photo already had two hundred likes. Eight people in a row in every colour of hanbok there was, Heeseung's laminated diagram visible in the corner of the frame, Sunoo's hat slightly crooked, Sunghoon looking off to the left at something out of shot that was very obviously Cherry. And at the end of the row, past Niki, a bit of plain cream wall with nothing on it at all. It was a good photo. She saved it anyway." }
     ] },
 
     // 1/2 — the motion -----------------------------------------------------------------------------------------------------
