@@ -126,6 +126,7 @@ GAPS={'solar-posesheet.png':0.975,'yukari-posesheet.png':0.975,'mitsuru-poseshee
  'haechan-posesheet.png':0.985,'jungwon-posesheet.png':0.975,'jihoon-posesheet.png':0.975}
 
 def gaps(src,flat):
+ flat,ringmax=flat if isinstance(flat,tuple) else (flat,0.7)  # (flat, ring limit): a darker ring limit keeps blade highlights
  rgb=np.asarray(Image.open(src).convert('RGB'),np.float32)/255;minc=rgb.min(2)
  lab,n=ndimage.label(minc>0.93);hole=np.zeros(minc.shape,bool)
  if not n:return hole
@@ -134,7 +135,7 @@ def gaps(src,flat):
   if area[k-1]<6 or area[k-1]>40000 or mean[k-1]<flat:continue
   y0,y1=max(0,sl[0].start-3),sl[0].stop+3;x0,x1=max(0,sl[1].start-3),sl[1].stop+3
   mk=lab[y0:y1,x0:x1]==k;ring=ndimage.binary_dilation(mk,iterations=2)&~mk
-  if ring.any() and minc[y0:y1,x0:x1][ring].mean()<0.7:hole[y0:y1,x0:x1]|=mk
+  if ring.any() and minc[y0:y1,x0:x1][ring].mean()<ringmax:hole[y0:y1,x0:x1]|=mk
  return ndimage.binary_dilation(hole,iterations=1)
 
 # Hair gaps GAPS still leaves (2026-10-21, Kat: white between Solar's strands shows on the Tartarus floor). Paper in
@@ -147,6 +148,16 @@ def gaps(src,flat):
 # hair needs the saturation test off.
 STRANDS={'solar-posesheet.png':(0.55,0.25),'minji-posesheet.png':(0.55,0.25),'haechan-posesheet.png':(0.55,0.25),
  'mitsuru-posesheet.png':(0.55,1.0)}
+
+# Solar's outfit sheets with long loose black hair (art batch 93): her fighter sheet's HOLES, GAPS and STRANDS hair-gap
+# clean-up, GAPS and STRANDS with darker ring limits (0.45, not 0.7 and 0.55): the usual ones nicked the naginata
+# blade's bright edge. Not for outfits in
+# white (Stage Idol: the clean-up punched through her white jacket), whose sheets keep the default key.
+SOLAR_LONG_HAIR=['skin-sk-esports-posesheet.png','skin-sk-vp-posesheet.png']
+for _n in SOLAR_LONG_HAIR:
+ HOLES[_n]=HOLES['solar-posesheet.png'];GAPS[_n]=(0.975,0.45);STRANDS[_n]=(0.45,0.25)
+# Morning Roadwork: no GAPS (it took the white piping on her shorts) and STRANDS at 0.35 (0.45 nicked a blade tip).
+HOLES['sk-roadwork-solar-posesheet.png']=HOLES['solar-posesheet.png'];STRANDS['sk-roadwork-solar-posesheet.png']=(0.35,0.25)
 
 def theurgy_tool():
  spec=importlib.util.spec_from_file_location('femc_theurgy',ROOT/'tools/femc-theurgy.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m

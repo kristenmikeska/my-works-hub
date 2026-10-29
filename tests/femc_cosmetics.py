@@ -43,9 +43,7 @@ SKIN = SKINS_DIR / 'sk-phantom'
 PSKIN = SKINS_DIR / 'sk-akihiko-champ'
 PWPN = SKINS_DIR / 'wpn-jungwon-council'
 # Stand-ins for "a new look still waiting for art" (newpending): their real art steps aside for that section.
-# sk-idol (Stage Idol) joins once Solar Spotlight (its only planned banner, not built yet) exists: this section checks
-# every id waits in a banner.
-NEW_SKINS = ['sk-minji-crew', 'sk-jihoon-pilates', 'sk-aigis-uniform', 'sk-alphaphi', 'sk-harbourcoat', 'sk-haechan-sweater']
+NEW_SKINS = ['sk-minji-crew', 'sk-jihoon-pilates', 'sk-aigis-uniform', 'sk-alphaphi', 'sk-harbourcoat', 'sk-idol', 'sk-haechan-sweater', 'sk-esports', 'sk-hanbok', 'sk-vp', 'sk-velvet', 'sk-roadwork']
 NEW_WPNS = ['wpn-runners', 'wpn-strangers', 'wpn-hoax', 'wpn-akihiko-champ', 'wpn-jungwon-council']
 KEPT = {}
 
@@ -285,7 +283,7 @@ try:
           pending:C.ITEMS.filter(x=>!C.ready(x)).map(x=>x.id),rewards:C.ITEMS.filter(x=>x.pool===false).map(x=>x.id)};})()""")
         ok(not set(r['pending']) & set(r['pool']) and not set(r['rewards']) & set(r['pool']) and len(r['pool']) >= 20, f'pool: {r}')
         # Every look in it has art since batch 57.
-        ok(r['banner'] == 'sunrise' and set(r['feat']) == {'ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-jungwon-council', 'wpn-jungwon-council'}, f'featured: {r}')
+        ok(r['banner'] == 'sunrise' and set(r['feat']) == {'ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-jungwon-council', 'wpn-jungwon-council', 'sk-hanbok'}, f'featured: {r}')
         # Cost and pity: always-Rare rolls → Super Rare on every 10th, Ultra on the 40th.
         r = p.eval(QUIET + r"""(()=>{const C=FemcCosmetics,GA=FemcGacha;GA.gs().plumes=200;C.cs().pity={sr:0,ur:0};C.rng=()=>0.99;const out=[];
           try{for(let i=0;i<40;i++)out.push(C.pull().r);}finally{""" + LOUD + r"""}return {out,plumes:GA.gs().plumes,own:C.cs().own.length};})()""")
@@ -307,11 +305,12 @@ try:
         ok(r['jul'] == ['summer'] and r['oct'] == ['masquerade'], f'one banner earlier in the year: {r}')
         ok(r['nov'] == ['lights', 'runners', 'sees'] and r['dec'] == ['lights', 'sees', 'haechan'] and r['jan'] == ['lights', 'haechan', 'hoax']
            and r['feb'] == ['sunrise', 'hoax', 'valentine'], f'2–3 banners November–February, main first: {r}')
-        ok(r['mar'] == ['sunrise', 'akihiko'], f'The Searchers hidden while Minji is unmet (empty featured list): {r}')
-        ok(set(r['feat']['haechan']) == {'sk-haechan-runners', 'wpn-runners', 'wpn-strangers', 'evk-midnight', 'wp-rooftop'}
+        ok(r['mar'] == ['solar', 'akihiko'], f'The Searchers hidden while Minji is unmet (empty featured list): {r}')
+        ok(set(r['feat']['haechan']) == {'sk-haechan-runners', 'wpn-runners', 'wpn-strangers', 'evk-midnight', 'wp-rooftop', 'sk-haechan-sweater'}
+           and set(r['feat']['solar']) == {'sk-idol', 'sk-alphaphi', 'sk-hanbok', 'sk-velvet'}
            and set(r['feat']['sees']) >= {'sk-yukari-pink', 'sk-mitsuru-rider', 'tt-darkhour'} and 'sk-date' in r['feat']['valentine']
            and not set(r['feat']['haechan']) & set(r['feat']['lights']) - {'wpn-strangers'} and r['end'] == 0, f'featured per banner, ends January: {r}')
-        ok(p.eval("FemcGame.S.met.push('minji'),FemcCosmetics.banners(FemcGame.dayOf('3/10')).map(b=>b.id).join()") == 'sunrise,akihiko,searchers', 'The Searchers once Minji is met')
+        ok(p.eval("FemcGame.S.met.push('minji'),FemcCosmetics.banners(FemcGame.dayOf('3/10')).map(b=>b.id).join()") == 'solar,akihiko,searchers', 'The Searchers once Minji is met')
         # Switching: the pick is saved, rates up only that banner's looks, ignores banners not running, falls back when one ends.
         r = p.eval(QUIET + SEED + r"""(()=>{const G=FemcGame,C=FemcCosmetics,GA=FemcGacha;G.S.day=G.dayOf('12/10');GA.gs().plumes=1e5;C.cs().guar=false;
           const a=C.pickBanner('haechan'),bad=C.pickBanner('runners'),sel=C.cs().bsel,cur=C.banner().id,f=C.featured().map(x=>x.id);C.rng=__seed(3);const got=[];

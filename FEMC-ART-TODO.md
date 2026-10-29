@@ -1,6 +1,6 @@
 # Art to make
 
-**17 items:** 17 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 22 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**12 items:** 12 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 22 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -64,51 +64,6 @@ Solar's collectible Echoes (the Personas tab, Echo Fusion, the Echo Compendium).
 ## 7. Wardrobe and keychains
 
 ### More outfits (ChatGPT): pose sheets
-
-**[ ] Solar: SU eSports Jersey (pose sheet)** *(optional)*  
-Solar's battle figure in the SU eSports Jersey outfit.  
-Attach: solar-posesheet.png, then Solar  
-Save as: `skin-sk-esports-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: an esports team jersey in bright orange with navy shoulder panels and sleeve stripes, a black gaming headset with a boom mic round her neck, navy joggers with an orange side stripe, white sneakers, a lanyard with a player badge. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Solar: Moonlit Hanbok (pose sheet)** *(optional)*  
-Solar's battle figure in the Moonlit Hanbok outfit.  
-Attach: solar-posesheet.png, then Solar  
-Save as: `skin-sk-hanbok-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: an elegant formal hanbok-inspired outfit: a short pale ivory jeogori jacket with a long deep-red goreum ribbon, a full floor-length midnight-navy silk skirt embroidered with silver crescent moons, a jade-and-red norigae tassel charm at her hip, a silver binyeo hairpin. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Solar: Vice President (pose sheet)** *(optional)*  
-Solar's battle figure in the Vice President outfit.  
-Attach: solar-posesheet.png, then Solar  
-Save as: `skin-sk-vp-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: a tailored navy school blazer with a gold crest on the pocket, a crisp white shirt and a navy-and-white striped tie, a pleated grey skirt, black knee socks and loafers, a white student-council armband on the right sleeve, a navy folder of papers held at her side. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Solar: Velvet Attendant (pose sheet)** *(optional)*  
-Solar's battle figure in the Velvet Attendant outfit.  
-Attach: solar-posesheet.png, then Solar  
-Save as: `skin-sk-velvet-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: a gothic Velvet Room attendant outfit in the style of Elizabeth: a deep-blue velvet dress with a high collar and long sleeves, gold buttons down the front, a small blue cap with a gold band, white gloves, black tights and black heeled boots, a heavy blue-and-gold book held in the crook of one arm. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Solar: Morning Roadwork (pose sheet)** *(optional)*  
-Solar's battle figure in the Morning Roadwork outfit.  
-Attach: solar-posesheet.png, then Solar  
-Save as: `skin-sk-roadwork-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: a sporty running outfit: a pink zip-up track jacket half open over a white sports top, black running shorts over black leggings, bright running shoes, a white sweatband on her forehead, wired earbuds trailing to a phone strapped on her upper right arm. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
 
 **[ ] Haechan: Black Suit (pose sheet)** *(optional)*  
 Haechan's battle figure in the Black Suit outfit.  

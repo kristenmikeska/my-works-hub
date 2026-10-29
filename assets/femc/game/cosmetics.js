@@ -70,10 +70,15 @@ window.FemcCosmetics = (() => {
     // Kat's own two (2026-10-25).
     c('sk-emo', 'skin', 'Emo Night', 'SR', 'All black: a pleated skirt, striped sleeves, a chain belt and platform boots.', { who: 'solar', art: true }),
     c('sk-kiriko', 'skin', 'Kiriko Cosplay', 'UR', 'Fox-ear band, red and white shrine robes, kunai at her belt. Her main, down to the last ofuda.', { who: 'solar', art: true }),
-    // More looks for Solar (2026-10-27 list, FEMC-ART-WIRING section 7): wired as each one's art arrives (art batch 86).
+    // More looks for Solar and Haechan (2026-10-27 list, FEMC-ART-WIRING section 7): wired as each one's art arrives (art batches 86-93).
     c('sk-alphaphi', 'skin', 'Alpha Phi Formal', 'SR', 'A long dusty-rose satin gown, a silver Alpha Phi pin and silver heels. Formal night.', { who: 'solar', art: true }), // series: Runners
     c('sk-harbourcoat', 'skin', 'Harbour Night Coat', 'SR', 'A long black coat buttoned to the throat, leather gloves, a red thread tied at her wrist. The port at night.', { who: 'solar', art: true }), // series: strangers
     c('sk-idol', 'skin', 'Stage Idol', 'UR', 'A white-and-gold stage set, sequins, a headset mic and boots made for choreography. Fearless.', { who: 'solar', art: true }), // series: Solstice
+    c('sk-esports', 'skin', 'SU eSports Jersey', 'SR', 'The team jersey in orange and navy, a headset round her neck, joggers and sneakers. Match day.', { who: 'solar', art: true }), // series: Runners
+    c('sk-hanbok', 'skin', 'Moonlit Hanbok', 'UR', 'A formal hanbok in midnight silk: a pale jeogori, a deep navy skirt embroidered with silver moons, a jade norigae at her hip.', { who: 'solar', art: true }), // series: strangers
+    c('sk-vp', 'skin', 'Vice President', 'SR', 'The Hanlim blazer, pressed and buttoned, a council armband and a folder of minutes. She runs the meeting.', { who: 'solar', art: true }), // series: HOAX
+    c('sk-velvet', 'skin', 'Velvet Attendant', 'UR', 'Deep blue velvet, a little cap, gloves and a heavy book under one arm. The Velvet Room will see you now.', { who: 'solar', art: true }), // series: Persona
+    c('sk-roadwork', 'skin', 'Morning Roadwork', 'SR', 'A pink track jacket, running shorts over leggings, a sweatband and earbuds. Six a.m. with Akihiko.', { who: 'solar', art: true }), // series: Persona
     c('sk-haechan-sweater', 'skin', 'Sweater Date', 'SR', 'A cream cable-knit sweater, a check scarf and a coffee he will absolutely make you hold.', { who: 'haechan', art: true }), // series: Solstice
     // Weapon skins (art pending: 8C).
     c('wpn-sakura', 'weapon', 'Sakura Naginata', 'SR', 'A pale wood haft wrapped in pink silk, blossoms etched on the blade.', { who: 'solar', art: true }),
@@ -147,18 +152,21 @@ window.FemcCosmetics = (() => {
   // Featured rotation by the game's month (P5X-style banners).
   const BANNERS = [
     // Art-pending items wait in their banner and join its featured list by themselves once their art is in (featured()).
-    { id: 'bloom', name: 'Spring Bloom', months: [4, 5], color: '#ff8cc0', featured: ['sk-date', 'tt-sakura', 'ui-sakura', 'sk-jihoon-pilates', 'sk-junpei-baseball', 'sk-yukari-kyudo', 'sk-aigis-uniform', 'wpn-hoax', 'sk-minji-su'] },
-    { id: 'summer', name: 'Summer Nights', months: [6, 7, 8], color: '#4fd8ff', featured: ['sk-yukata', 'wp-fireworks', 'ui-mint', 'sk-haechan-runners', 'sk-minji-crew', 'sk-akihiko-hoodie', 'wpn-runners'] },
-    { id: 'masquerade', name: 'Masquerade', months: [9, 10], color: '#c58bff', featured: ['sk-phantom', 'wpn-phantom', 'sk-halloween', 'bui-velvet', 'evk-jade', 'wpn-kiriko', 'wpn-emo', 'sk-yukari-pink', 'sk-jihoon-emo'] },
+    { id: 'bloom', name: 'Spring Bloom', months: [4, 5], color: '#ff8cc0', featured: ['sk-date', 'tt-sakura', 'ui-sakura', 'sk-jihoon-pilates', 'sk-junpei-baseball', 'sk-yukari-kyudo', 'sk-aigis-uniform', 'wpn-hoax', 'sk-minji-su', 'sk-vp'] },
+    { id: 'summer', name: 'Summer Nights', months: [6, 7, 8], color: '#4fd8ff', featured: ['sk-yukata', 'wp-fireworks', 'ui-mint', 'sk-haechan-runners', 'sk-minji-crew', 'sk-akihiko-hoodie', 'wpn-runners', 'sk-esports', 'sk-roadwork'] },
+    { id: 'masquerade', name: 'Masquerade', months: [9, 10], color: '#c58bff', featured: ['sk-phantom', 'wpn-phantom', 'sk-halloween', 'bui-velvet', 'evk-jade', 'wpn-kiriko', 'wpn-emo', 'sk-yukari-pink', 'sk-jihoon-emo', 'sk-velvet'] },
     { id: 'lights', name: 'Winter Lights', months: [11, 12, 1], color: '#bfe3ff', featured: ['sk-wintercoat', 'wp-xmas', 'tt-snow', 'evk-rose', 'sk-shinjiro-apron', 'sk-mitsuru-rider', 'wpn-strangers', 'sk-harbourcoat'] },
-    { id: 'sunrise', name: 'Golden Sunrise', months: [2, 3], color: '#ffd36b', featured: ['ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-jungwon-council', 'wpn-jungwon-council'] },
+    { id: 'sunrise', name: 'Golden Sunrise', months: [2], color: '#ffd36b', featured: ['ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-jungwon-council', 'wpn-jungwon-council', 'sk-hanbok'] },
+    // March's main banner (Kat's ruling, 2026-10-29: it took Golden Sunrise's March slot). Its other planned looks (FEMC-ART-WIRING
+    // section 7: Encore Stage, Center Stage and the weapon skins) join as they're added.
+    { id: 'solar', name: 'Solar Spotlight', kind: 'Spotlight', months: [3], color: '#ffb84d', featured: ['sk-idol', 'sk-alphaphi', 'sk-hanbok', 'sk-velvet'] },
     // Side banners, November–March (2026-10-27): they run beside the month's main banner above (always first, the default).
-    { id: 'runners', name: 'Runners World', kind: 'World', months: [11], color: '#ff9a5c', featured: ['sk-haechan-runners', 'wpn-runners', 'sk-minji-su', 'wp-rooftop', 'sk-alphaphi'] },
+    { id: 'runners', name: 'Runners World', kind: 'World', months: [11], color: '#ff9a5c', featured: ['sk-haechan-runners', 'wpn-runners', 'sk-minji-su', 'wp-rooftop', 'sk-alphaphi', 'sk-esports'] },
     { id: 'sees', name: 'S.E.E.S. Spotlight', kind: 'Spotlight', months: [11, 12], color: '#6ab0ff', featured: ['sk-yukari-kyudo', 'sk-yukari-pink', 'sk-junpei-baseball', 'sk-mitsuru-rider', 'sk-shinjiro-apron', 'sk-aigis-uniform', 'sk-akihiko-hoodie', 'tt-darkhour', 'wp-dorm'] },
     { id: 'haechan', name: 'Haechan Spotlight', kind: 'Spotlight', months: [12, 1], color: '#ff6f7d', featured: ['sk-haechan-runners', 'wpn-runners', 'wpn-strangers', 'evk-midnight', 'wp-rooftop', 'sk-haechan-sweater'] },
-    { id: 'hoax', name: 'HOAX World', kind: 'World', months: [1, 2], color: '#9fe06a', featured: ['sk-jungwon-council', 'wpn-jungwon-council', 'wpn-hoax', 'sk-jihoon-pilates', 'sk-jihoon-emo', 'ui-velvet'] },
+    { id: 'hoax', name: 'HOAX World', kind: 'World', months: [1, 2], color: '#9fe06a', featured: ['sk-jungwon-council', 'wpn-jungwon-council', 'wpn-hoax', 'sk-jihoon-pilates', 'sk-jihoon-emo', 'ui-velvet', 'sk-vp'] },
     { id: 'valentine', name: "Valentine's", kind: 'Seasonal', months: [2], color: '#ff7fb0', featured: ['sk-date', 'evk-rose', 'wpn-sakura', 'ui-sakura', 'wp-mall', 'sk-haechan-sweater'] },
-    { id: 'akihiko', name: 'Akihiko Spotlight', kind: 'Spotlight', months: [3], color: '#c9d3e6', featured: ['sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-akihiko-hoodie', 'bui-moonlight'] },
+    { id: 'akihiko', name: 'Akihiko Spotlight', kind: 'Spotlight', months: [3], color: '#c9d3e6', featured: ['sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-akihiko-hoodie', 'bui-moonlight', 'sk-roadwork'] },
     { id: 'searchers', name: 'The Searchers', kind: 'Spotlight', months: [3], color: '#8fd0ff', featured: ['sk-minji-crew', 'sk-minji-su'] }
   ];
 

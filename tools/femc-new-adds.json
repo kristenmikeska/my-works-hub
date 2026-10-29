@@ -18158,6 +18158,337 @@
         "assets/femc/game/art/skins/sk-haechan-sweater/haechan-pose-4.webp": "5af007f38a5f7506e9e153e514dded1b62b4417297161d94f2c3e9753af7c2bd",
         "assets/femc/game/art/skins/sk-haechan-sweater/haechan-pose-5.webp": "357ba11cdcffc6407b121521d7b41c73a5e47a6f1485f7e4b7ad144ad3980049"
       }
+    },
+    {
+      "batch": 93,
+      "source": "skin-sk-esports-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-esports-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "5c7a2a4d74abe79ee86c1cd5d4b03c560d9f1f4ff10d439d217f2bc7fd50e435",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-esports/solar-pose-0.webp",
+      "skin": "sk-esports",
+      "conversion": "tools/femc-wardrobe.py skin with the SOLAR_LONG_HAIR key in tools/femc-shadow-poses.py (HOLES 0.8, GAPS (0.975, ring 0.45), STRANDS (0.45, 0.25): her fighter sheet's hair-gap clean-up with darker ring limits, since the usual ones nicked the blade); shirts, cuffs, badge and sneakers checked solid, blades whole",
+      "placement": "cosmetics.js sk-esports (SU eSports Jersey, SR, Solar; Runners World and Summer Nights banners), battle pose frames via ready.js",
+      "knownLimits": "a few small white flecks remain between the loosest strands of the twin tails",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-esports/solar-pose-0.webp": "c07852710bc8f6d1ff8e06e2b8385ee3eacc08256b2f7230f73bd80094d2eccf",
+        "assets/femc/game/art/skins/sk-esports/solar-pose-1.webp": "9904809387495c422aaf4ef98bdff98660d4f8417ed4fc6ee878c144c12e4235",
+        "assets/femc/game/art/skins/sk-esports/solar-pose-2.webp": "4d2f9dad0340a6844196fe2b273c82e81281800f665b555ceebcf3221723c53b",
+        "assets/femc/game/art/skins/sk-esports/solar-pose-3.webp": "c06e6ec3a458c2dd8da7fe6a625691a464326e8886bbbaa054d68edc94ad4839",
+        "assets/femc/game/art/skins/sk-esports/solar-pose-4.webp": "affd0f6303be773df3ac887cee5cedcf96d9d7863f0ef43887707878d79306a5",
+        "assets/femc/game/art/skins/sk-esports/solar-pose-5.webp": "8c7c002198422d94929d2ea7f9adc68b2642c5563109113320494291abaeac67"
+      }
+    },
+    {
+      "batch": 93,
+      "source": "skin-sk-hanbok-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-hanbok-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "736d4ab133f00d8f067ac2f183ed6e7ace7a94f5bbc1da2fc8f1b629f7b2aa39",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-hanbok/solar-pose-0.webp",
+      "skin": "sk-hanbok",
+      "conversion": "tools/femc-wardrobe.py skin (default white key; the white jeogori kept solid; enclosed transparent areas checked: all background gaps)",
+      "placement": "cosmetics.js sk-hanbok (Moonlit Hanbok, UR, Solar; Golden Sunrise and Solar Spotlight banners), battle pose frames via ready.js",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-hanbok/solar-pose-0.webp": "8c300eb62f8610fb5dc8eaf7152405e9eda4c5c0046c229f7fa4238c80b19e2e",
+        "assets/femc/game/art/skins/sk-hanbok/solar-pose-1.webp": "0c967f27b7a28c4428df3a034baf5d7746bc67c17f1784f38f51ffd70a9769e2",
+        "assets/femc/game/art/skins/sk-hanbok/solar-pose-2.webp": "19b7f508af9efc8affb79c731e3085b6132c9b69a9d26c80521e57b12a2e5682",
+        "assets/femc/game/art/skins/sk-hanbok/solar-pose-3.webp": "86cceb69929be77a06b13bf4cf18c34ee68359434629fee7062787de316a4a97",
+        "assets/femc/game/art/skins/sk-hanbok/solar-pose-4.webp": "037bf69d51764905d5068e13a358395d3f2b00a53afd966baa09709d67ee7586",
+        "assets/femc/game/art/skins/sk-hanbok/solar-pose-5.webp": "1677b0d677c2d1738f3fabc14223103a52e68c430b1c69216757c6a08b607f05"
+      }
+    },
+    {
+      "batch": 93,
+      "source": "skin-sk-vp-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-vp-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3e9e7b59b95e86f5ad34f68c436be1f6bc514e9bbd378d51be483aea5e929794",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/solar-pose-0.webp",
+      "skin": "sk-vp",
+      "conversion": "tools/femc-wardrobe.py skin with the SOLAR_LONG_HAIR key in tools/femc-shadow-poses.py (HOLES 0.8, GAPS (0.975, ring 0.45), STRANDS (0.45, 0.25): her fighter sheet's hair-gap clean-up with darker ring limits, since the usual ones nicked the blade); shirts, cuffs, badge and sneakers checked solid, blades whole",
+      "placement": "cosmetics.js sk-vp (Vice President, SR, Solar; Spring Bloom and HOAX World banners), battle pose frames via ready.js",
+      "knownLimits": "a few small white flecks remain between the loosest strands",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-vp/solar-pose-0.webp": "0f8ce549763f873309b694faa11d9d8719b8b46b65f76af22d52865198fd27e9",
+        "assets/femc/game/art/skins/sk-vp/solar-pose-1.webp": "3be97284d89e557905f385a1d0aee01a0202181842f6f82a15c04ad214064fc9",
+        "assets/femc/game/art/skins/sk-vp/solar-pose-2.webp": "8200b9e4493e93ff0f7275b5d9f46501fb3037ca528747f6d542a29aa17a7249",
+        "assets/femc/game/art/skins/sk-vp/solar-pose-3.webp": "be576cceeac27bc28a0b594c3454659571c16667ee6068253b2b966f3c3682be",
+        "assets/femc/game/art/skins/sk-vp/solar-pose-4.webp": "cc78e08d7d7cd4f68c8a7ee9d506951726639b92cf4fcf5e786240a5270c2749",
+        "assets/femc/game/art/skins/sk-vp/solar-pose-5.webp": "ed39915a578bd61e5d7e28d69f492008e098614f15fb2ad065b6e4077233ad57"
+      }
+    },
+    {
+      "batch": 93,
+      "source": "sk-velvetroom-solar-posesheet.png",
+      "sourceNow": "Added to Game/sk-velvetroom-solar-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9f08c67beedbed79148647bff603120cfc4fe0f36008fadce05a17905ee21157",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-velvet/solar-pose-0.webp",
+      "skin": "sk-velvet",
+      "conversion": "tools/femc-wardrobe.py skin (default white key; white gloves kept solid)",
+      "placement": "cosmetics.js sk-velvet (Velvet Attendant, UR, Solar; Masquerade and Solar Spotlight banners), battle pose frames via ready.js",
+      "knownLimits": "Kat saved it as sk-velvetroom-solar-posesheet.png, not the list's skin-sk-velvet-posesheet.png",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-velvet/solar-pose-0.webp": "0dae0319b44423d10ea1b38682cd63e65a2209e37d17af45a7539cc58ed8b3a3",
+        "assets/femc/game/art/skins/sk-velvet/solar-pose-1.webp": "f3993457bba034b92d6fb104b63ab6cbfe5c5d6eb483c9aa4e4e003139fa6dba",
+        "assets/femc/game/art/skins/sk-velvet/solar-pose-2.webp": "ed16d038e13ba89fe2976ed5fe7ab184490a09831fc9ac688bdfa8ced43e7c39",
+        "assets/femc/game/art/skins/sk-velvet/solar-pose-3.webp": "f1044fc5d780b7203b2479f6561549c1d1d7e48b29d319f2a7643886ab96a136",
+        "assets/femc/game/art/skins/sk-velvet/solar-pose-4.webp": "26877c08348364d5389371d595e1490f9558a9b6ddd913a4334dd73494290cae",
+        "assets/femc/game/art/skins/sk-velvet/solar-pose-5.webp": "3a776e3ae4e279ef5c890a9d459dc88a356a51960f556e51df0908c6be8af8ea"
+      }
+    },
+    {
+      "batch": 93,
+      "source": "sk-roadwork-solar-posesheet.png",
+      "sourceNow": "Added to Game/sk-roadwork-solar-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "81b2fecbe989e8a13f2d4d2d2de11fc511fea0740964d4a26790d76fa64582ff",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-roadwork/solar-pose-0.webp",
+      "skin": "sk-roadwork",
+      "conversion": "tools/femc-wardrobe.py skin with HOLES 0.8 and STRANDS (0.35, 0.25) (no GAPS: it took the white piping on her shorts; STRANDS at 0.45 nicked a blade tip)",
+      "placement": "cosmetics.js sk-roadwork (Morning Roadwork, SR, Solar; Akihiko Spotlight and Summer Nights banners), battle pose frames via ready.js",
+      "knownLimits": "some white flecks remain at the braid's loose end; Kat saved it as sk-roadwork-solar-posesheet.png, not the list's skin-sk-roadwork-posesheet.png",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-roadwork/solar-pose-0.webp": "c66012df55c8dc2c86accf769b6752d70569f6e40e59065f8bbf0eb2effc86bc",
+        "assets/femc/game/art/skins/sk-roadwork/solar-pose-1.webp": "95328f6d20cf104c1e2709eebaa9c7df8121ebbcabfe0ae6e532799bce69b1f6",
+        "assets/femc/game/art/skins/sk-roadwork/solar-pose-2.webp": "236a70d30f127ddc3354f9293351fe956e1ee22045d469caee344d378b065354",
+        "assets/femc/game/art/skins/sk-roadwork/solar-pose-3.webp": "47f3a31da8a7f218d620583a3e08ddcf0cb85323f2ddd99b48759ac4089d038f",
+        "assets/femc/game/art/skins/sk-roadwork/solar-pose-4.webp": "6f257d520df9eb39de4cc75541fb9de1e2d8272d70c200cbc1ab4c74c451dfd2",
+        "assets/femc/game/art/skins/sk-roadwork/solar-pose-5.webp": "ae8f781925e476e94ebe772d8816838c3fc4e219509819bb4f7c1d3cb0fc660c"
+      }
+    },
+    {
+      "batch": 93,
+      "source": "sk-stageidol-solar-portraits.png",
+      "sourceNow": "Added to Game/sk-stageidol-solar-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7f9c3ed599a07a23514c415315d1868c21c995f9d82b28fafdbd04746d8b7434",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-idol/portraits/solar/neutral.webp",
+      "skin": "sk-idol",
+      "conversion": "opaque near-black sheet: macOS Vision lift on the WHOLE sheet, alpha hardened with a smoothstep between 0.70 and 0.95 (batch 91), original RGB kept; cells split on the thirds along a min-cost vertical seam (cheap through background and dark hair, dear through skin, cloth and the armband) so hair or an armband that crosses a cell line stays with its owner; each cell scaled and placed on the base canvas by normalized cross-correlation of the face against the same expression (batch 86); busts that end above the canvas bottom carried down by repeating their last clean row; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "Kat's file order: top row serious, flustered, neutral; bottom row sad, happy, surprised",
+      "placement": "Stage Idol's scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "the top row's hair ran into the next cells; the seam keeps each cell's own hair, with a few straight edges at the cell lines; the armband is on, as in her school portraits",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-idol/portraits/solar/flustered.webp": "c7ebf9f8a2c92f9d127d66818ceb1d308b458e26887654a58c3b9183daab2511",
+        "assets/femc/game/art/skins/sk-idol/portraits/solar/happy.webp": "f612bddb690443a45eb59d332976b46940c17c6b372a3cd0bd43ef768f491016",
+        "assets/femc/game/art/skins/sk-idol/portraits/solar/neutral.webp": "5d2e5678ede0ef9ccd5a5e060de9b6fab02352fab824ba5ae1d3f42cad2797ba",
+        "assets/femc/game/art/skins/sk-idol/portraits/solar/sad.webp": "ecb27760f6e0de542a466459ce554a558080c10df0858aaf8f9d3eccae5e0a1a",
+        "assets/femc/game/art/skins/sk-idol/portraits/solar/serious.webp": "6235050b9243d3e3b813b3d4de3a24d657b59f985a857860642240ed3313e35c",
+        "assets/femc/game/art/skins/sk-idol/portraits/solar/surprised.webp": "7b2a8ed28c8da944264608721a50debf71f636af6ebc824a3d4585b134c626ca"
+      }
+    },
+    {
+      "batch": 93,
+      "source": "sk-harbourcoat-solar-portraits.png",
+      "sourceNow": "Added to Game/sk-harbourcoat-solar-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9d7f4152616d6e8f988e8913422e933168ff9a68a56deea5d639e2fc71b1b653",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-harbourcoat/portraits/solar/neutral.webp",
+      "skin": "sk-harbourcoat",
+      "conversion": "opaque near-black sheet: macOS Vision lift on the WHOLE sheet, alpha hardened with a smoothstep between 0.70 and 0.95 (batch 91), original RGB kept; cells split on the thirds along a min-cost vertical seam (cheap through background and dark hair, dear through skin, cloth and the armband) so hair or an armband that crosses a cell line stays with its owner; each cell scaled and placed on the base canvas by normalized cross-correlation of the face against the same expression (batch 86); busts that end above the canvas bottom carried down by repeating their last clean row; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "Kat's file order: top row serious, flustered, neutral; bottom row sad, happy, surprised",
+      "placement": "Harbour Night Coat's scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "busts end 0-24 px above the canvas bottom and are carried down (plain vertical streaks under the buttons, mostly behind the dialogue box); the armband is on. Her hairstyle (the curly updo) matches the pose frames",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-harbourcoat/portraits/solar/flustered.webp": "2d332ea68dc5f3a3fce11838f57fa1b24db1c4f485d8aa95fadd0829cd0d537f",
+        "assets/femc/game/art/skins/sk-harbourcoat/portraits/solar/happy.webp": "028f94479bc819388ad92e000975e6bbbc80f81801d4bcdc38a46bfa473eb8b8",
+        "assets/femc/game/art/skins/sk-harbourcoat/portraits/solar/neutral.webp": "e706792616656b1f99a35cc2c8630fe6267b7831908767039288dc0d2f11bed2",
+        "assets/femc/game/art/skins/sk-harbourcoat/portraits/solar/sad.webp": "6e734dcf3c7a8628ec97fc628cf94c2a4317dfc9b26bf18884b8b88a9a010fe5",
+        "assets/femc/game/art/skins/sk-harbourcoat/portraits/solar/serious.webp": "b601cf64876e9d571f22bf6eca74228e61f7ed754e22c5a067b8b94c897b6fac",
+        "assets/femc/game/art/skins/sk-harbourcoat/portraits/solar/surprised.webp": "090d5eed76985635b569534e58e44ec5b21b99fda567d9291ac567de27db9d68"
+      }
+    },
+    {
+      "batch": 93,
+      "source": "sk-solar-esports-portraits.png",
+      "sourceNow": "Added to Game/sk-solar-esports-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1856a87f0add8d5fd01ccc89c0f7be85fb64246f83bdbdbbfad8d6fa53bcf48a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-esports/portraits/solar/neutral.webp",
+      "skin": "sk-esports",
+      "conversion": "opaque near-black sheet: macOS Vision lift on the WHOLE sheet, alpha hardened with a smoothstep between 0.70 and 0.95 (batch 91), original RGB kept; cells split on the thirds along a min-cost vertical seam (cheap through background and dark hair, dear through skin, cloth and the armband) so hair or an armband that crosses a cell line stays with its owner; each cell scaled and placed on the base canvas by normalized cross-correlation of the face against the same expression (batch 86); busts that end above the canvas bottom carried down by repeating their last clean row; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "Kat's file order: top row serious, flustered, neutral; bottom row sad, happy, surprised",
+      "placement": "SU eSports Jersey's scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "the twin tails ran into the next cells: straight edges at some cell lines (flustered's left side); a dark band from the sheet's bottom edge shows at the bottom-right corner of some faces, behind the dialogue box",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-esports/portraits/solar/flustered.webp": "48fca9539745d785c7c72fe6b7d178d0784787f606a81448a4460042f75d412f",
+        "assets/femc/game/art/skins/sk-esports/portraits/solar/happy.webp": "ac9dc97697362e21dd21748eea3742916d6671e5180f7df2b2233d1057370f69",
+        "assets/femc/game/art/skins/sk-esports/portraits/solar/neutral.webp": "4ff98f902117db10addeb387292ade67a983f1280d7b47a95e81c628beea0060",
+        "assets/femc/game/art/skins/sk-esports/portraits/solar/sad.webp": "af522ebb0db83595e06a721b3f23038a2f8325010790a67605d6919034a811ee",
+        "assets/femc/game/art/skins/sk-esports/portraits/solar/serious.webp": "19ee948ff921c1ebeebde981e7a2c8ac492996d974cbbb3bc33d1522c8a75bc4",
+        "assets/femc/game/art/skins/sk-esports/portraits/solar/surprised.webp": "77509198bb45d9b8a26ed05cc683197c69bba5794b7908df45215f5b90054a62"
+      }
+    },
+    {
+      "batch": 93,
+      "source": "sk-solar-hanbok-portraits.png",
+      "sourceNow": "Added to Game/sk-solar-hanbok-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "dc7e339e8282f0f54f8f175de8f6ed4e8635df3ffcc0717afed032f5f640cb57",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-hanbok/portraits/solar/neutral.webp",
+      "skin": "sk-hanbok",
+      "conversion": "opaque near-black sheet: macOS Vision lift on the WHOLE sheet, alpha hardened with a smoothstep between 0.70 and 0.95 (batch 91), original RGB kept; cells split on the thirds along a min-cost vertical seam (cheap through background and dark hair, dear through skin, cloth and the armband) so hair or an armband that crosses a cell line stays with its owner; each cell scaled and placed on the base canvas by normalized cross-correlation of the face against the same expression (batch 86); busts that end above the canvas bottom carried down by repeating their last clean row; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "Kat's file order: top row serious, flustered, neutral; bottom row sad, happy, surprised",
+      "placement": "Moonlit Hanbok's scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "busts carried down 0-17 px",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-hanbok/portraits/solar/flustered.webp": "cfa1eba2c9bea4094b635ead4adc6d075971eea0a175a2f7fc566e4e656e95a5",
+        "assets/femc/game/art/skins/sk-hanbok/portraits/solar/happy.webp": "19efd677dd7d6fa6090eae782f0229257ca7fd86d7efcc40d0d4f4db9d23aae2",
+        "assets/femc/game/art/skins/sk-hanbok/portraits/solar/neutral.webp": "536bcd2e3ace385f200d690c3564be1d6381521e34af2a45218f46359a550244",
+        "assets/femc/game/art/skins/sk-hanbok/portraits/solar/sad.webp": "f9b8373f2a085e9355ddc2dca33c56c13720e4bd02bd115515fd285afefee120",
+        "assets/femc/game/art/skins/sk-hanbok/portraits/solar/serious.webp": "5aea4bde8ec408eef3577cd8c5adfbe511dbbbc7184f702b8b1aee0b67890e83",
+        "assets/femc/game/art/skins/sk-hanbok/portraits/solar/surprised.webp": "c4fde8519d290debbd4473ab9528bd861da9a82b8aca8d36100d650ff933d0e3"
+      }
+    },
+    {
+      "batch": 93,
+      "source": "sk-solar-vp-portraits.png",
+      "sourceNow": "Added to Game/sk-solar-vp-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7e980d875d27dd9a3c10d2e55ae6483ffd720d8e20cca963c545d077338503c5",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/portraits/solar/neutral.webp",
+      "skin": "sk-vp",
+      "conversion": "opaque near-black sheet: macOS Vision lift on the WHOLE sheet, alpha hardened with a smoothstep between 0.70 and 0.95 (batch 91), original RGB kept; cells split on the thirds along a min-cost vertical seam (cheap through background and dark hair, dear through skin, cloth and the armband) so hair or an armband that crosses a cell line stays with its owner; each cell scaled and placed on the base canvas by normalized cross-correlation of the face against the same expression (batch 86); busts that end above the canvas bottom carried down by repeating their last clean row; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "Kat's file order: top row serious, flustered, neutral; bottom row sad, happy, surprised",
+      "placement": "Vice President's scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "busts carried down 0-16 px",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-vp/portraits/solar/flustered.webp": "7ea4aaa0b1fc25d5d467d5f801c7a73da78557be9269f7b39b66e58cca667fac",
+        "assets/femc/game/art/skins/sk-vp/portraits/solar/happy.webp": "f2122f52053ff140002d4cfd34437ade011adc2a006ee914c296ecadf807e11c",
+        "assets/femc/game/art/skins/sk-vp/portraits/solar/neutral.webp": "3a45b060a2b10c75e3b26f1d0191afa4af29d0a7d58c4da791b4b0e8e605e80b",
+        "assets/femc/game/art/skins/sk-vp/portraits/solar/sad.webp": "96f9409183df75b5e278e09c71d9b31412bc6aaa1f146c0c2cb8e45ecc8a75e0",
+        "assets/femc/game/art/skins/sk-vp/portraits/solar/serious.webp": "7667d9cd9381f76221378f8751b3ee8f8a71fec85311b6f2f6b3608ae4cca2f9",
+        "assets/femc/game/art/skins/sk-vp/portraits/solar/surprised.webp": "bd382279c11af6e56ddd328322391de39090df11b1bd72b2be5dbb29bb1cd4ad"
+      }
+    },
+    {
+      "batch": 93,
+      "source": "sk-roadwork-solar-portraits.png",
+      "sourceNow": "Added to Game/sk-roadwork-solar-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "64f913d67e326bdba117ec680b750b5d0fed32d619423460b6d7adc27905a1ad",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-roadwork/portraits/solar/neutral.webp",
+      "skin": "sk-roadwork",
+      "conversion": "opaque near-black sheet: macOS Vision lift on the WHOLE sheet, alpha hardened with a smoothstep between 0.70 and 0.95 (batch 91), original RGB kept; cells split on the thirds along a min-cost vertical seam (cheap through background and dark hair, dear through skin, cloth and the armband) so hair or an armband that crosses a cell line stays with its owner; each cell scaled and placed on the base canvas by normalized cross-correlation of the face against the same expression (batch 86); busts that end above the canvas bottom carried down by repeating their last clean row; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "Kat's file order: top row serious, flustered, neutral; bottom row sad, happy, surprised",
+      "placement": "Morning Roadwork's scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "her face is drawn smaller on this sheet, so at her base scale the top of her ponytail runs 8-28 px past the canvas top; a soft see-through patch between the hair and the braid by her ear (serious), where Vision found background",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-roadwork/portraits/solar/flustered.webp": "c6f33e7eefbd069ad08b594db0cdc8888d8cbaf79045c44bcc989bd9f6c13445",
+        "assets/femc/game/art/skins/sk-roadwork/portraits/solar/happy.webp": "505f14e422fc0f20b3203aa0560b711f554c6567d8ed707e7f556c768d723756",
+        "assets/femc/game/art/skins/sk-roadwork/portraits/solar/neutral.webp": "28898225f317d5dd8f8e2510bc128b398ffb534ba248321d57a09601d354ae32",
+        "assets/femc/game/art/skins/sk-roadwork/portraits/solar/sad.webp": "130d8e2965bf858429dba9fb22b65d13094b0c187eca341ad29297f146f9f1eb",
+        "assets/femc/game/art/skins/sk-roadwork/portraits/solar/serious.webp": "cdd0185f8b46adb602366911af8211386663eb422dded41a53c6c774053667d4",
+        "assets/femc/game/art/skins/sk-roadwork/portraits/solar/surprised.webp": "efbf2270a04796a000ce4d0ea1ef71ddd168081893a75ed5ffe59daa148ad246"
+      }
+    },
+    {
+      "batch": 93,
+      "source": "sk-velvetroom-solar-portraits.png",
+      "sourceNow": "Added to Game/sk-velvetroom-solar-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "63945fce8d95dd803cb981b2d82ca596a4fb10d279188efe7d3c18edf9417d7a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-velvet/portraits/solar/neutral.webp",
+      "skin": "sk-velvet",
+      "conversion": "opaque near-black sheet: macOS Vision lift on the WHOLE sheet, alpha hardened with a smoothstep between 0.70 and 0.95 (batch 91), original RGB kept; cells split on the thirds along a min-cost vertical seam (cheap through background and dark hair, dear through skin, cloth and the armband) so hair or an armband that crosses a cell line stays with its owner; each cell scaled and placed on the base canvas by normalized cross-correlation of the face against the same expression (batch 86); busts that end above the canvas bottom carried down by repeating their last clean row; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "Kat's file order: top row serious, flustered, neutral; bottom row sad, happy, surprised",
+      "placement": "Velvet Attendant's scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "her face is drawn smaller on this sheet, so at her base scale the cap's crown runs 36-60 px past the canvas top and is cut flat there (like Halloween Witch's hat tips, batch 86)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-velvet/portraits/solar/flustered.webp": "d3219fddff4d275daa47a09fec8b7d2387d443b3d2d5154649505b487c72626d",
+        "assets/femc/game/art/skins/sk-velvet/portraits/solar/happy.webp": "f7b70fe49c4aad7f3b0f5d9fad8c3255b0e55ce5e0f90ae93c643f34f926f516",
+        "assets/femc/game/art/skins/sk-velvet/portraits/solar/neutral.webp": "8f54a3a65938e8628ae626c7e8ee170610ba0ee7c41fc32878482ac856d3536e",
+        "assets/femc/game/art/skins/sk-velvet/portraits/solar/sad.webp": "fdf317bdda212a6f5c4645bfff77ea16336fcb8492160993cb4f95fb19b493c1",
+        "assets/femc/game/art/skins/sk-velvet/portraits/solar/serious.webp": "5c5919b7a5db9be838ce8d17ddf2b73c73a769d1e8507b03b6bedf459b872ab7",
+        "assets/femc/game/art/skins/sk-velvet/portraits/solar/surprised.webp": "48228de294ef3569d96539caf2c0b2f49874ddeef035bfb2e3d36b86c234b6f6"
+      }
+    },
+    {
+      "batch": 93,
+      "source": "skin-sk-haechan-sweater-portraits.png",
+      "sourceNow": "Added to Game/skin-sk-haechan-sweater-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d48201a985c33548213cbab6bc4261b2eeacef1e6696b30fe5e9add3cb8cb89e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-sweater/portraits/haechan/neutral.webp",
+      "skin": "sk-haechan-sweater",
+      "conversion": "opaque near-black sheet: macOS Vision lift on the WHOLE sheet, alpha hardened with a smoothstep between 0.70 and 0.95 (batch 91), original RGB kept; cells split on the thirds along a min-cost vertical seam (cheap through background and dark hair, dear through skin, cloth and the armband) so hair or an armband that crosses a cell line stays with its owner; each cell scaled and placed on his base canvas (870 x 822; face box 260,250-620,580) by normalized cross-correlation of the face against the same expression (batch 86); busts that end above the canvas bottom carried down by repeating their last clean row; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "not his file order: matched by face correlation to portraits/haechan/ (0.94-0.98): top row neutral, flustered, happy; bottom row surprised, serious, sad",
+      "placement": "Haechan's Sweater Date's scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "none seen: his cells are well apart; sad's bust carried down 14 px",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-sweater/portraits/haechan/flustered.webp": "35947eab811374ca52d1b1f27369d222d16f449c0ef23557764a9bab60a73312",
+        "assets/femc/game/art/skins/sk-haechan-sweater/portraits/haechan/happy.webp": "3ab8ac47f4269aced950f579268b40756255e4dfbd8433823f24a31f2c9e9d90",
+        "assets/femc/game/art/skins/sk-haechan-sweater/portraits/haechan/neutral.webp": "66e632ede533afece73017963dba272e44f7b4527494d708974f5bd6725b2981",
+        "assets/femc/game/art/skins/sk-haechan-sweater/portraits/haechan/sad.webp": "d2017fcad23609630f1e741a00655d0752d50545b10ef9088ae28c58833df9b2",
+        "assets/femc/game/art/skins/sk-haechan-sweater/portraits/haechan/serious.webp": "b5e8f98bec6f7143f2194dc65cde1d42e4dce48552297e52eb48b7a80a1cad66",
+        "assets/femc/game/art/skins/sk-haechan-sweater/portraits/haechan/surprised.webp": "5b7302c890a48b82e8849b1a1c04aa4758b21e718765d3cfbd13931093e1221f"
+      }
+    },
+    {
+      "batch": 93,
+      "source": "sk-harbourcoat-solar-update.png",
+      "sourceNow": "Added to Game/sk-harbourcoat-solar-update.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "68f21fe34303587e66d1867d8cf7a4eed97dca199d9dcfa28d6c9c638fd08283",
+      "status": "duplicate",
+      "note": "byte-identical to batch 91's skin-sk-harbourcoat-posesheet.png (Kat's update with her new hairstyle); the batch 91 pose frames are already this sheet, so nothing was re-cut; moved unchanged"
     }
   ],
   "batch1Validation": {
@@ -19478,5 +19809,23 @@
     ],
     "notTested": "no browser tests (Kat at work): tests/femc_cosmetics.py (newpending now includes sk-haechan-sweater; sk-idol is left out until Solar Spotlight exists), both outfits in a real battle",
     "html": "femc-game.html ready.js v10, cosmetics.js v12"
+  },
+  "batch93Validation": {
+    "date": "2026-10-29",
+    "scope": "Solar Spotlight built (Kat's ruling in 72aae14); scene portraits for Stage Idol, Harbour Night Coat and Haechan's Sweater Date (the outfit portrait hook already covers every fighter); five more Solar outfits from their FEMC-ART-WIRING notes (SU eSports Jersey, Moonlit Hanbok, Vice President, Velvet Attendant, Morning Roadwork) with pose frames and scene portraits",
+    "sourcesInspected": "every sheet viewed; pose frames on a dark background full size (hair gaps, white clothing, blades) and enclosed holes marked on magenta; portrait cuts beside her (his) base set on magenta and dark, full size where needed; bottoms and cell edges cropped",
+    "sourcesIntegrated": 13,
+    "sourcesDuplicate": 1,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched; sk-halloween-solar-portraits-v2.png left in New Adds (waiting on Kat)",
+    "keyChange": "tools/femc-shadow-poses.py: gaps() takes (flat, ring limit); SOLAR_LONG_HAIR and the roadwork entry. Stage Idol was tried with the same clean-up and kept on the default key (it punched through her white jacket); its frames are unchanged from batch 92",
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script",
+      "py_compile tests/femc_cosmetics.py tools/femc-shadow-poses.py"
+    ],
+    "testEdits": "tests/femc_cosmetics.py: NEW_SKINS adds sk-idol and the five new ids; March's banners are now solar, akihiko(, searchers); Golden Sunrise's 2/10 featured set adds sk-hanbok; Haechan Spotlight's set adds sk-haechan-sweater (batch 92 left it out); Solar Spotlight's set is checked",
+    "notTested": "no browser tests (Kat at work): tests/femc_cosmetics.py (banner, newpending), the new outfits in a real battle, an outfit portrait in a scene (Solar and Haechan) at 1000x486 and 375x812",
+    "html": "femc-game.html ready.js v12, cosmetics.js v14"
   }
 }
