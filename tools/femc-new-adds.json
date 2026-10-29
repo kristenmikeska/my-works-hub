@@ -16944,6 +16944,108 @@
       "placement": "data/epi/true/story.js epi-tr-r-day: { cg } after the Quad place line, { cg: null } before 'She didn't have an answer for that'; ALBUM.true; cgFocus in data/places.js (Solar)",
       "textCheck": "checked 2026-10-29 against the image: matches the scene",
       "mobileFocus": "53% 30%"
+    },
+    {
+      "batch": 85,
+      "source": "epi-s-cafe-cg.png",
+      "sourceNow": "Added to Game/epi-s-cafe-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "47bffa0a23374d6d378fc6a1fbb28dcb0e754e3dbf20496f3faecf5a6cec8ef2",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-s-cafe.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "9020c3a322d31eb03393a7eddeb9c45fb034757a3fe44a551178a89a6403bc5c",
+      "placement": "data/epi/strangers/story-w1.js epi-s-girls: { cg } before the laminated-plan line, { cg: null } before that block's choice; ALBUM.strangers; cgFocus in data/places.js (Chaewon and the plan)",
+      "textCheck": "checked 2026-10-29 against the image: matches the scene",
+      "mobileFocus": "23% 35%"
+    },
+    {
+      "batch": 85,
+      "source": "epi-s-bureom-cg.png",
+      "sourceNow": "Added to Game/epi-s-bureom-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "f22e6c2fded89176fb5fe25cdbd573af9dc9fd8bb3fbad7cff36cf37b474a376",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-s-bureom.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "e15df01308213eca30023156f890d94d84d83df4cce843b074148595b2c56099",
+      "placement": "data/epi/strangers/story-w2.js epi-s-bureom: { cg } before Jungwon takes the far chair, { cg: null } before the first route branch; ALBUM.strangers; cgFocus in data/places.js (Jungwon)",
+      "textCheck": "checked 2026-10-29 against the image: matches the scene",
+      "mobileFocus": "95% 35%"
+    },
+    {
+      "batch": 85,
+      "source": "epi-s-pins-cg.png",
+      "sourceNow": "Added to Game/epi-s-pins-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "09a66afba9546fbf9d8c98e8601a732269e7dfb352d9b0f3e1c565d56257cd4d",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-s-pins.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "819d24dc14f74bd868d8c4b27d4e033d01ba18a2bae1517b71135841081876a0",
+      "placement": "data/epi/strangers/people.js hangout epi-s-eomma-2: { cg } before the brushing line, { cg: null } before the ifGlitch; ALBUM.strangers; cgFocus in data/places.js (Eomma)",
+      "textCheck": "checked 2026-10-29 against the image: one narration line adjusted to match the art's weather",
+      "mobileFocus": "66% 25%"
+    },
+    {
+      "batch": 85,
+      "source": "epi-s-karaoke-cg.png",
+      "sourceNow": "Added to Game/epi-s-karaoke-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "abd98587222b04f39e99b384bf1cc152a78189c2f2eb007d96080f33c44e70eb",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-s-karaoke.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "d300a67846d06e1bdc201b143285a66477d53c4f990dee6e33f36c842bfc83ff",
+      "placement": "data/epi/strangers/story-w3.js epi-s-karaoke: { cg } before Chaewon's list line, { cg: null } before the route branches; ALBUM.strangers; cgFocus in data/places.js (Chaewon)",
+      "textCheck": "checked 2026-10-29 against the image: matches the scene",
+      "mobileFocus": "5% 40%"
+    },
+    {
+      "batch": 85,
+      "source": "epi-s-dumplings-cg.png",
+      "sourceNow": "Added to Game/epi-s-dumplings-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "7804d00955d7184cde45a0ba26dfe690a9519b344112c205024cfbb2f032a888",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-s-dumplings.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "6376965d74ff3a18f6eb482188dd16d9492d0c279cf781d311c8cb15f9fc18b3",
+      "placement": "data/epi/strangers/story-end.js epi-s-sunday: { cg } before Haechan at the table, { cg: null } before the first route branch; ALBUM.strangers; cgFocus in data/places.js (Haechan)",
+      "textCheck": "checked 2026-10-29 against the image: matches the scene",
+      "mobileFocus": "42% 40%"
+    },
+    {
+      "batch": 85,
+      "source": "epi-s-dinner-cg.png",
+      "sourceNow": "Added to Game/epi-s-dinner-cg.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "062613198454f798f1ad003ac079d660b059c2729b00bbf17c2ebb840577eac3",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-s-dinner.webp",
+      "conversion": "WebP quality 90, original dimensions, no cropping or retouching; source unchanged",
+      "outputSha256": "04bfe0d47060b8ae3e5a98580c53a262f215e8f5385f016fe68f1e550d465447",
+      "placement": "data/epi/strangers/story-end.js epi-s-dinner: { cg } before 'It was loud, after a while', { cg: null } before the stage-4 glitch; ALBUM.strangers; cgFocus in data/places.js (Haechan, with Mr. Oh and Yunjin)",
+      "textCheck": "checked 2026-10-29 against the image: matches the scene",
+      "mobileFocus": "10% 35%"
     }
   ],
   "batch1Validation": {
@@ -18110,5 +18212,22 @@
     ],
     "notTested": "no browser tests: CG framing at 1000x486 and 375x812 (focus points set from the images); tests/femc_epilogue.py (its _loaded checks now 22) not run",
     "html": "femc-game.html places v62, epilogue v24; DATA_V 22"
+  },
+  "batch85Validation": {
+    "date": "2026-10-29",
+    "scope": "six strangers CGs: the café, Bureom, the pins, room six, the dumplings, dinner",
+    "sourcesInspected": "all 6 viewed",
+    "sourcesIntegrated": 6,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "textTweaks": "one narration line in strangers/people.js (epi-s-eomma-2) adjusted to match the art's weather; the other five match their scenes",
+    "lateArrivals": "sk-yukata-solar-portraits.png arrived in New Adds during this batch; listed, not wired",
+    "tests": [
+      "tools/femc-check-scenes.py: OK",
+      "jsc checkSyntax on every edited script",
+      "py_compile tests/femc_epilogue.py"
+    ],
+    "notTested": "no browser tests: CG framing at 1000x486 and 375x812 (focus points set from the images); tests/femc_epilogue.py (its _loaded checks now 23) not run",
+    "html": "femc-game.html places v63, epilogue v25; DATA_V 23"
   }
 }

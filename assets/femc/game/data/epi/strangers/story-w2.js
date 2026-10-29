@@ -94,6 +94,7 @@
     { n: "Mrs. Bang took the box as if it might go off and put it in the middle of the table, beside the nuts, where everyone could look at it. Minseok moved his elbow. Mr. Oh, in the corner, inclined his head one centimeter, which from Mr. Oh was a standing ovation." },
     { n: "Haechan stopped chewing." },
     { s: 'haechan', f: 'neutral', t: "Yang." },
+    { cg: 'epi-s-bureom' },
     { n: "Jungwon took the chair at the far end of the table and sat in it, and laid his napkin on his knee, and did not answer." },
     { s: 'haechan', f: 'neutral', t: "*Yang.*" },
     { s: 'jungwon', f: 'neutral', t: "I'm afraid there's no heat left to sell this morning, Donghyuck. It's already been sold." },
@@ -104,6 +105,7 @@
     { n: "Everyone looked at Mrs. Bang. Mrs. Bang, ladling rice, after a long and terrible pause, nodded." },
     { n: "Haechan looked at the ceiling as if the ceiling had betrayed him personally, and Yunjin put her face in her hands and screamed into them, and Solar had to turn round to the back door and look at the calendar very hard for a moment, because if she looked at either of them she was going to laugh, and if she laughed at one of them she'd have to laugh at the other one too, and she had learned, this winter, to be very careful about what she did to both of them at once." },
 
+    { cg: null },
     { ifEpiRoute: 'haechan', then: [
       { n: "When she sat down there was a chair free beside Minseok and a stool free beside Haechan, and she took the stool. Nobody said anything about that either. Under the table his boot found the side of her foot and stayed there, the whole length of it, warm through her sock." },
       { n: "He cracked a peanut, picked the nut out with his split thumbnail, and dropped it in her rice without looking at her. Then another one. Then a third, still not looking, still telling Minseok a story about the gate at six in the morning that got bigger every time Jungwon didn't react to it." },

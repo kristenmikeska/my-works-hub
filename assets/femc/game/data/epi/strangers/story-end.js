@@ -69,6 +69,7 @@
     { n: "Mrs. Bang laughed first. One bark of it, surprised out of her, and then she turned the tap off and leaned on the sink and laughed properly. Then her father's shoulders went, behind the newspaper. Then Pyo, high and frightened and helpless, and Minseok took his hand off the door and looked at it as if it belonged to somebody else, and Auntie Song picked up the song exactly where she'd left it, louder, worse, on purpose." },
     { s: 'auntie', t: "*Xiao yueliang. Sit. Fold. Your hands have forgotten everything.*" },
     { n: "She sat." },
+    { cg: 'epi-s-dumplings' },
     { n: "Haechan was already at the table, press-ganged, by the look of it, in a gray sweatshirt with flour to the elbows and his silver ring on the board beside him, folding dumplings with the deep concentration of a man defusing something. Every one he made looked like a small animal that had been in an accident." },
     { n: "Jungwon was at the other end, by her father, with a cup of tea in his right hand and nothing at all in front of him. He'd come over at eleven *for the baduk*, he'd told Mrs. Bang at the door, in his good gray sweater, and nobody in the house believed that, least of all her father, who had nodded and said the board was in the study and then not gone anywhere near the study." },
     { s: 'jungwon', f: 'neutral', t: "That one has eleven pleats." },
@@ -118,6 +119,7 @@
         { s: 'jungwon', f: 'neutral', t: "Yes. Unfortunately." }
       ] }
     ] },
+    { cg: null },
     { ifEpiRoute: 'haechan', then: [
       { n: "Under the table his knee found hers and stayed there, warm through the cotton, the whole of the second batch, and he didn't look at her once, which was how she knew he'd meant it." }
     ] },
@@ -141,6 +143,7 @@
     { n: "So here they were. Monday. All of it." },
     { n: "She counted. She always counted. Her father at the head with his glasses on the cord. Her mother on his right in dark green, her hair up, her back not touching the chair. Solar on his left. Jungwon beside her, because he was the fiancé and the house had started setting a place for him without being told. Haechan across from her, because he was Haechan, and her father had pointed at the chair. Yunjin, and her mother beside her at the far end, small and quiet in a gray cardigan, eating very slowly. Mr. Oh in a jacket and a tie he so clearly hated that he kept touching the knot as if it might go off. Minseok. Pyo at the very end, terrified of the good plates. Auntie Song on the edge of a chair by the kitchen door, refusing to sit back in it, ready to get up. Mrs. Bang on her feet with the ladle, serving, because nobody on earth could have made her sit." },
     { n: "Ten people at the table, and the eleventh standing, and two fish in a bucket in the kitchen. Eleven cups. She counted them twice." },
+    { cg: 'epi-s-dinner' },
     { n: "It was loud, after a while. That surprised her. The first ten minutes were like a funeral, everybody passing things very carefully, and then Mr. Oh said something about the car, and Haechan said the car was a disgrace, and Mr. Oh said that the car had been driven for fourteen years by a man who never once braked hard and it was the only car in the house that had never been in a ditch, and looked at Haechan, and Haechan put both hands up, and Minseok laughed into his rice." },
     { s: 'yunjin', f: 'happy', t: "Mr. Oh. Mr. Oh. Tell them about the ditch. Tell them which ditch." },
     { s: 'mroh', t: "I don't discuss other men's ditches at dinner." },
@@ -159,6 +162,7 @@
     { n: "That was the whole toast. He drank. Everybody ate. Mr. Oh nodded slowly, as if it had been a very good speech." },
     { n: "Her father didn't say much. He ate, and he watched them, all of them, down the table, the way he watched the harbor from the car, and once she saw him look at her mother and her mother look back, a whole conversation in it, and then they both looked down at their bowls." },
     { n: "Mrs. Bang came round with the seaweed soup. She ladled it for Solar first, the way she always had, since Solar was small enough to need the bowl held, and Solar put her hand flat on the tablecloth beside the bowl to make room." },
+    { cg: null },
     { glitch: { stage: 4 } },
     { n: "She saw the grain of the table through her hand." },
     { glitch: 'epi-s-g-dinner' },

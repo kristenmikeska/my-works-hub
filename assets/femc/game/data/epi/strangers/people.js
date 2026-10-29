@@ -956,7 +956,8 @@
       { s: 'eomma', t: "Sit down." },
       { n: "Solar sat at the dressing table. Her mother stood behind her. In the mirror their faces were one above the other, the same face, twenty-nine years apart, and her mother looked at the two of them in the glass for a moment without doing anything, the way she might have looked at a ledger, and then took the towel off Solar's head and began." },
       { n: "She hadn't done Solar's hair since Solar was fifteen. Not since the day Solar had said she could do it herself and done it, badly and on purpose, and gone down to breakfast with it falling out, and her mother had looked at it across the table and said nothing, and that had been that." },
-      { n: "She brushed it out first. Long strokes, from the crown all the way down to the ends, the brush catching on the knots and her mother working each one out with her fingers, patiently, without pulling. Outside the window the dust lay over the garden yellow and dim, the annex at the bottom of it nothing but a darker shape." },
+      { cg: 'epi-s-pins' },
+      { n: "She brushed it out first. Long strokes, from the crown all the way down to the ends, the brush catching on the knots and her mother working each one out with her fingers, patiently, without pulling. Outside the window old snow lay over the garden, grey and still, the annex at the bottom of it nothing but a darker shape." },
       { s: 'eomma', t: "You've lost weight." },
       { s: 'solar', t: "Everybody keeps saying that." },
       { s: 'eomma', t: "Everybody keeps being right." },
@@ -966,6 +967,7 @@
       { s: 'eomma', t: "There are always seven. Your grandmother used seven. A Lee daughter doesn't look undone." },
       { s: 'eomma', t: "Not in public. Not in front of anybody who's going to talk about it." },
       { n: "The long black pin last, through the whole of it, from one side to the other. Her mother set it, and turned Solar's head a little with her fingertips to look at it from the side in the glass, and then from the other." },
+      { cg: null },
       { ifGlitch: 3, then: [
         { n: "For a second, in the mirror, there was something on the sleeve of Solar's sweater, at the upper arm. A band. Red. She looked down at her arm. Nothing. She looked back at the mirror. Nothing. Her mother, behind her, was looking at the hair, only the hair, and her hands on Solar's shoulders hadn't moved at all. If she'd seen it, she had decided not to have." }
       ] },

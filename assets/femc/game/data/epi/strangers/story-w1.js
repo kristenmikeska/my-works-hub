@@ -793,6 +793,7 @@
     ] },
 
     // The plan.
+    { cg: 'epi-s-cafe' },
     { n: "The plan was laminated. Chaewon actually produced it, from her bag, a single A4 sheet sealed in plastic, with times on it. Six o'clock, meet at the Wolmido end. Fish-cake broth from the cart. The daljip bonfire on the beach, the big one, the moon house of straw and pine they'd burn when the moon came up. Wishes written on paper and tied to it. Rice cakes. The moon. Ten o'clock, everyone home, *no exceptions, Eunchae*." },
     { s: 'eunchae', t: "Why is my name on the plan." },
     { s: 'chaewon', t: "You know why your name is on the plan." },
@@ -801,6 +802,7 @@
     { s: 'kazuha', t: "She's usually right." },
     { s: 'chaewon', t: "Sol-ssi. You're coming too. You're on the plan." },
     { n: "She was. Chaewon turned the laminated sheet round to show her, and there it was, under Yunjin's name, in the same neat print, a little squeezed in as if it had been added this morning: *+ Sol (Yunjin's).* She'd been on the plan before they'd met her. They'd decided to absorb her sight unseen." },
+    { cg: null },
     { choose: [
       { t: "I'll come.", stat: { kindness: 1 }, then: [
         { s: 'solar', t: "I'll come." },

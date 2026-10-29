@@ -1,6 +1,6 @@
 # Art to make
 
-**34 items:** 6 CGs · 28 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**28 items:** 28 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 56 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -26,55 +26,7 @@ Places, expressions, outfit portraits and the items that name their own pictures
 
 ## 1. Story CGs (ChatGPT)
 
-### The epilogue: strangers
-
-**[ ] strangers · 2/22 · the café in Songdo** *(optional)*  
-For the 2/22 afternoon scene at a café in Songdo, with Yunjin and the four girls.  
-Attach: Solar (her strangers look), Yunjin, Chaewon (her strangers look), Sakura (her strangers look), Kazuha (her strangers look), Eunchae (her strangers look)  
-Save as: `epi-s-cafe-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A bright café in a new glass city on a cold February afternoon, too many plants, a window wall looking across grey water at tall new glass towers. Six young women crowded round a corner table with slices of cake and coffee cups, coats and scarves piled on the chairs. Solar (the first attached image's face, hair and look) sits in the corner with her back to the wall, a little stiff, a small surprised smile. Yunjin (the second attached image's face) in a red puffer jacket, leaning on Solar's shoulder, grinning. Chaewon (the third attached image's face) in a long navy coat, small and neat, holding up a single laminated A4 sheet toward Solar like a teacher. Sakura (the fourth attached image's face) dry and unimpressed, a long grey scarf still half round her neck, a game console in her coat pocket. Kazuha (the fifth attached image's face), tall, sitting close on Solar's other side, gazing at her with gentle curiosity. Eunchae (the sixth attached image's face), round-faced and fearless, mid-sentence with a forkful of cake. Warm, noisy, a girls' afternoon. Keep the faces clear of the edges.
-```
-
-**[ ] strangers · 2/24 morning · the Lee kitchen** *(optional)*  
-For the 2/24 morning scene in the family kitchen (the full-moon holiday breakfast).  
-Attach: Solar (her strangers look), Yunjin, Haechan (his strangers look), Jungwon (his strangers look), `bg/epi-s-lee-kitchen.webp` (for the room only)  
-Save as: `epi-s-bureom-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The big kitchen of the attached room on a clear, bright, windy winter morning, sun on the windows, steam rising from a huge pot of purple-dark five-grain rice. Down the middle of the long wooden table: nine small dishes of dried greens, a wooden bowl of walnuts, peanuts and chestnuts in their shells, and a small black lacquer box tied with red string. Solar (the first attached image's face; hair down, a soft sweater, socks) standing by the back door with a hand over her mouth, trying not to laugh. Yunjin (the second attached image's face) in a yellow puffer over pajamas, hair in a knot on top of her head, hiding her face in her hands, laughing. Haechan (the third attached image's face) in a black jacket, cheeks red from the cold, a walnut in his hand, glaring up at the ceiling in mock betrayal. Jungwon (the fourth attached image's face) in a dark coat at the far end of the table, napkin on his knee, sitting very straight and polite, faint dimples. In the background, soft and out of focus: a short older woman in rubber boots at the stove with her back turned, a stout housekeeper ladling rice, a grey-haired driver standing in the corner with his coat on. Festive, crowded, warm. Keep the faces clear of the edges.
-```
-
-**[ ] strangers · 3/5 · the karaoke room** *(optional)*  
-For the 3/5 evening scene in a karaoke room with Yunjin and the four girls.  
-Attach: Solar (her strangers look), Yunjin, Chaewon (her strangers look), Sakura (her strangers look), Kazuha (her strangers look), Eunchae (her strangers look)  
-Save as: `epi-s-karaoke-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A small, shabby Korean karaoke room at night: a horseshoe of red vinyl couch patched with silver tape, a sticky low table with drinks and snacks, a disco ball that doesn't turn, coloured light from a big screen showing a blurry waterfall. Sakura (the fourth attached image's face) standing in front of the screen with a microphone on a curly wire, one hand in her coat pocket, singing with a flat, unbothered face. Chaewon (the third attached image's face) on the couch holding her phone up with a list on it, laying down the rules. Kazuha (the fifth attached image's face) curled in the corner with her coat pulled round her, looking around warily. Eunchae (the sixth attached image's face) shaking a tambourine that has lost half its bells. Yunjin (the second attached image's face) sprawled on the couch, laughing. Solar (the first attached image's face, hair and look) in the middle of them with a second microphone in her lap, smiling in spite of herself. Loud, silly, warm. Keep the faces clear of the edges.
-```
-
-**[ ] strangers · 3/10 · Sunday dumplings** *(optional)*  
-For the 3/10 afternoon scene in the family kitchen.  
-Attach: Solar (her strangers look), Haechan (his strangers look), Jungwon (his strangers look), Appa, `bg/epi-s-lee-kitchen.webp` (for the room only)  
-Save as: `epi-s-dumplings-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. The big kitchen of the attached room on a Sunday afternoon in winter, steam on every window, flour all over the long wooden table like a light snow, trays of rows of folded dumplings, a huge steel bowl of filling, a stack of wrappers under a damp cloth, and a red plastic bucket with two orange koi brought in by the stove. Solar (the first attached image's face; hair down, sleeves pushed up past the elbow) sitting at the table folding a dumpling, laughing. Haechan (the second attached image's face) across from her in a grey sweatshirt with flour up to his elbows, a silver ring set aside on the board, frowning in deep concentration over a lumpy, misshapen dumpling. Jungwon (the third attached image's face) at the other end in a good grey sweater, holding a cup of tea and nothing else, watching Haechan's dumpling with polite amusement. Solar's father (the fourth attached image's face) at the far end with a newspaper crossword folded into quarters, reading glasses on a cord, a pencil behind his ear, his shoulders shaking with laughter behind the paper. At the head of the table, a tiny older woman standing on an upturned crate in rubber boots, rolling wrappers, her sleeves tied back with clothes pegs, mouth open in song. Homely, floury, happy. Keep the faces clear of the edges.
-```
-
-**[ ] strangers · 3/11 · dinner at the long table** *(optional)*  
-For the 3/11 evening scene in the family dining room (the whole house at dinner).  
-Attach: Solar (her strangers look), Appa, Eomma, Haechan (his strangers look), Jungwon (his strangers look), Yunjin, and `bg/epi-s-dining-room.webp` (for the room only)  
-Save as: `epi-s-dinner-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A formal dining room in an old Korean house at night, warm low lamps, a very long dark wooden table with all its leaves in, good white plates, bowls of rice and soup, a whole fish on a platter in the middle, seen from the foot of the table looking up its length. Solar's father (the second attached image's face) at the head with reading glasses on a cord, mid-laugh. Solar's mother (the third attached image's face) on his right in dark green, hair up, sitting very straight with a small reluctant smile. Solar (the first attached image's face, hair and look) on his left, looking down the table at everyone. Jungwon (the fifth attached image's face) beside her in a suit jacket, composed, a faint smile. Haechan (the fourth attached image's face) across from her, both hands raised in surrender, grinning. Yunjin (the sixth attached image's face) further down, pointing at someone and laughing. Along the rest of the table, softer and less detailed: a grey-haired driver in a jacket and a tie he keeps touching, a young guard laughing into his rice, a nervous young man at the very end, a quiet woman in a grey cardigan, a tiny older cook perched on the edge of a chair by the kitchen door, and a stout housekeeper standing with a ladle. Loud, warm, a house eating together. Keep the faces clear of the edges.
-```
-
-**[ ] strangers · Eomma · the pins** *(optional)*  
-For Eomma's second hangout (early March, daytime), in Solar's room at the dressing table.  
-Attach: Solar (her strangers look), Eomma, and `bg/epi-s-her-room.webp` (for the room only)  
-Save as: `epi-s-pins-cg.png`
-```
-Persona 3 Reload style event CG, 16:9, no text. A young woman's bedroom in a wealthy old Korean house on a grey winter day, pale light from the window. Solar (the first attached image's face) sitting at a dressing table in a soft sweater, her long hair still damp, eyes lowered. Her mother (the second attached image's face) standing behind her in a cream cardigan and pearl stud earrings, her own hair low and smooth and perfect, twisting Solar's hair up with careful hands, a few hairpins held between her lips. In the mirror their two faces, one above the other, almost the same face. On the dressing table a small lacquer dish of hairpins, a brush, a towel, and one long black hairpin laid apart on its own. Quiet, formal, tender. Keep the faces clear of the edges.
-```
+*(Nothing left: every story CG on the list is in the game.)*
 
 ---
 

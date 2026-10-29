@@ -74,7 +74,7 @@ window.FemcEpilogue = (() => {
   const S = () => G.S, UI = () => W.FemcGameUI;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const clone = o => JSON.parse(JSON.stringify(o));
-  const DATA_V = 22; // data/epi/<world>/*.js ?v=
+  const DATA_V = 23; // data/epi/<world>/*.js ?v=
   // The worlds: the year's route flag that opens each, its name (the button) and place (slot labels), its data files.
   const WORLDS = {
     runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3'] },
@@ -567,7 +567,7 @@ window.FemcEpilogue = (() => {
      one), plus any cg a loaded world's scenes use. A section appears only for a world she has entered. */
   const ALBUM = {
     runners: [['epi-r-regionals', 'Regionals'], ['epi-r-reel', "Minji's room"], ['epi-r-floor', 'The floor'], ['epi-r-studio', 'The studio'], ['epi-r-his-room', 'His room'], ['epi-r-holiday', 'The holiday party'], ['epi-r-footage', 'The footage'], ['epi-r-held', 'Held']],
-    strangers: [['epi-s-moon', 'The first full moon'], ['epi-s-tide', 'The tide'], ['epi-s-held', 'Held']],
+    strangers: [['epi-s-cafe', 'The studio girls'], ['epi-s-bureom', 'Bureom'], ['epi-s-moon', 'The first full moon'], ['epi-s-pins', 'The pins'], ['epi-s-karaoke', 'Room six'], ['epi-s-tide', 'The tide'], ['epi-s-dumplings', 'Thirty-four'], ['epi-s-dinner', 'Dinner'], ['epi-s-held', 'Held']],
     hoax: [['epi-h-eve-jungwon', 'Christmas Eve · Jungwon'], ['epi-h-eve-jihoon', 'Christmas Eve · Jihoon'], ['epi-h-eve-council', "Christmas Eve · Yeobo's"], ['epi-h-christmas', 'Christmas'], ['epi-h-seance', 'The séance'], ['epi-h-hearing', 'The hearing'], ['epi-h-held', 'Held']],
     stay: [['epi-st-hanami', 'Hanami'], ['epi-st-courtyard', 'The oldest tree'], ['epi-st-roof-garden', 'The roof garden'], ['epi-stay-held', 'Held']],
     true: [['epi-tr-first-snow', 'First snow'], ['epi-true-coda', 'Every world']]

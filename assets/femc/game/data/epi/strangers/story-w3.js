@@ -172,6 +172,7 @@
     { music: 'epi-s-yunjin' },
     { n: "The girls had decided, in a group chat Solar had been added to at some point without anyone asking her, that the dust was not a reason. Chaewon had made a list. Sakura had booked the room. Kazuha had sent a long message about whether the dust carried spirits from the desert and whether this was good or bad, and Eunchae had replied to it with a single picture of a dog in a hazmat suit, and that had been the end of the debate." },
     { n: "Room six. The good one, Yunjin said, though it was exactly the same as rooms one to five: a horseshoe of red vinyl couch patched with silver tape, a low table sticky with something from a previous decade, two microphones on curly wires, a disco ball that didn't turn, and a tambourine that had lost half its bells and sounded like someone shaking a bag of keys. Outside the window the neon of the street came through the dust as halos, pink and green and blue, nothing with an edge." },
+    { cg: 'epi-s-karaoke' },
     { n: "Chaewon had her phone out with the list on it before anyone had their coats off." },
     { s: 'chaewon', t: "Rules. Everyone sings one. Nobody sings a ballad before nine. If anyone cries, it has to be in the chorus, not the verse." },
     { s: 'eunchae', t: "What if it's a really sad verse." },
@@ -182,6 +183,7 @@
     { s: 'kazuha', t: "That's what they'd want you to think." },
     { n: "Sakura punched in five digits from memory without looking at the book, and the screen went to a waterfall and a couple walking on a beach in slow motion, and she sang an idol song from three years ago in a flat, perfect, unbothered voice with one hand in her coat pocket, and got a 97, and looked at the 97 like it had personally disappointed her." },
 
+    { cg: null },
     // The bodyguard in the corner, by route.
     { ifEpiRoute: 'haechan', then: [
       { n: "In the corner by the door, on the end of the couch nobody else wanted because it was the one with the spring, sat the bodyguard. The house didn't let her out after dark without one now, not this month, and tonight it had sent Haechan, who had his black padded jacket on and his arms crossed over it and was chewing cinnamon gum with the slow, deliberate rhythm of a man who intended to judge every song in this room and had already found most of them wanting." },
