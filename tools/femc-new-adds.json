@@ -18063,6 +18063,54 @@
         "assets/femc/portraits/akihiko-stay-hanami/serious.webp": "bb7448384f3a87b1e80ede2224b79eb908e9662f50f09ed8a38ccaaafb719ed4",
         "assets/femc/portraits/akihiko-stay-hanami/surprised.webp": "5918d2cd912b6b7f4e1f184bbe3fb11b76204915b390ba94864b501998b08a8d"
       }
+    },
+    {
+      "batch": 91,
+      "source": "sk-alphaphi-solar-portraits.png",
+      "sourceNow": "Added to Game/sk-alphaphi-solar-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e0298dfa63d8f016d9f0f1890a5da67ab429576bc47c88a939a6be37147b2dbb",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/portraits/solar/neutral.webp",
+      "skin": "sk-alphaphi",
+      "conversion": "opaque near-black sheet: macOS Vision lift on the WHOLE sheet (per-cell lifts merged hair with the background), its alpha hardened with a smoothstep between 0.70 and 0.95 so the hair edge is crisp instead of a smoky fringe, original RGB kept; then cut and placed as batch 86 (rows cropped at the gutter; top-row cells end 16 px above it, under the bottom row's ponytails, and their last clean row is carried down to the canvas bottom instead of mirrored, 18-24 px; the bottom row's sad face the same); tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "Kat's file order: top row serious, flustered, neutral; bottom row sad, happy, surprised",
+      "placement": "Alpha Phi Formal's scene portraits (cosmetics.js portrait)",
+      "knownLimits": "hair that ran into the next cell ends in a straight edge where the cells meet (most visible on happy's left side, about 9% in from the edge); the carried-down rows at the bottom are plain streaks, mostly behind the dialogue box; the armband is on, as in her school portraits",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/portraits/solar/flustered.webp": "1d5ebc26ca629981c6adc03cf1b910894783c3194d065afa06f4fa745d69820e",
+        "assets/femc/game/art/skins/sk-alphaphi/portraits/solar/happy.webp": "8fe8277de35d0985a68829bc7735bdea4341328f4445977f2e663a9642f540e5",
+        "assets/femc/game/art/skins/sk-alphaphi/portraits/solar/neutral.webp": "fd3c0cf7202dfb447bdcf12aa05b80b7ae3e1d119963f21725983418dbf93b9c",
+        "assets/femc/game/art/skins/sk-alphaphi/portraits/solar/sad.webp": "f6f19eba5dacb8a69ced9c21079ed7ab54d3e9c0291ee612b4f7ecf362071a0f",
+        "assets/femc/game/art/skins/sk-alphaphi/portraits/solar/serious.webp": "03011d215e3d621b0c7bdd18a02d492fab046bae96109c512fc08632fc6c3c89",
+        "assets/femc/game/art/skins/sk-alphaphi/portraits/solar/surprised.webp": "4653bbd38ff7d8c267d4500297f3506016abaab1a83acf9bdb3e55645529b804"
+      }
+    },
+    {
+      "batch": 91,
+      "source": "skin-sk-harbourcoat-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-harbourcoat-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "68f21fe34303587e66d1867d8cf7a4eed97dca199d9dcfa28d6c9c638fd08283",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-harbourcoat/solar-pose-0.webp",
+      "skin": "sk-harbourcoat",
+      "conversion": "tools/femc-wardrobe.py skin (white key and grid cut as the fighters' sheets); no keyed-out glints found",
+      "placement": "cosmetics.js sk-harbourcoat (Harbour Night Coat, SR, Solar; Winter Lights banner), battle pose frames via ready.js",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-harbourcoat/solar-pose-0.webp": "b54dff38edb3f10655702bb92cdf934f6168d5a9f8d64067b78d0dea668ad9bf",
+        "assets/femc/game/art/skins/sk-harbourcoat/solar-pose-1.webp": "2fc6598ddbe57c3d810eddd019950336550538f89a19f94ebbf0ad9190b923da",
+        "assets/femc/game/art/skins/sk-harbourcoat/solar-pose-2.webp": "bb0d680aff39bdd3ff5a0ebaed50d7a25a343f253364e36a71e81167319bdcb7",
+        "assets/femc/game/art/skins/sk-harbourcoat/solar-pose-3.webp": "1fb9b578efdacbe6ab1382078feb61c3157d766fa706c1646dff45449d12bc30",
+        "assets/femc/game/art/skins/sk-harbourcoat/solar-pose-4.webp": "87cf1eefb039a60daf4fdb9e64c12430f5f6f981759ef9b68702608810df4ebc",
+        "assets/femc/game/art/skins/sk-harbourcoat/solar-pose-5.webp": "a554f2f07395786153ccb45c0076ae8fdf885ccfb74c79d616bb0ddaa4704260"
+      }
     }
   ],
   "batch1Validation": {
@@ -19345,5 +19393,21 @@
     ],
     "notTested": "no browser tests (Kat at work): tests/femc_epilogue.py (its _loaded checks now 27), in-scene face size at 1000x486 and 375x812",
     "html": "femc-game.html epilogue v29, portraits/index.js v145, scale.js v155 (FEMC_PORTRAIT_V 15); DATA_V 27"
+  },
+  "batch91Validation": {
+    "date": "2026-10-29",
+    "scope": "Alpha Phi Formal's scene portraits (the batch 86 sheet, retried) and Harbour Night Coat (new Wardrobe item from its FEMC-ART-WIRING note, with its pose sheet)",
+    "alphaphiRetry": "tried: (1) per-cell Vision lift (batch 86: blobby hair, background patches); (2) whole-sheet Vision lift then split: clean separation, smoky dark fringe on the hair; (3) the same with the alpha hardened (0.5-0.85 and 0.7-0.95; the second used). A near-black soft key was ruled out: her hair is the same near-black as the background (5-18 per channel)",
+    "sourcesInspected": "both viewed; the Alpha Phi cuts on cyan, light and dark backgrounds full size beside her base set; the pose frames on magenta",
+    "sourcesIntegrated": 2,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked); On Hold untouched",
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script",
+      "py_compile tests/femc_cosmetics.py"
+    ],
+    "notTested": "no browser tests (Kat at work): tests/femc_cosmetics.py (newpending now includes sk-harbourcoat), an outfit portrait in a scene at 1000x486 and 375x812",
+    "html": "femc-game.html ready.js v9, cosmetics.js v11"
   }
 }

@@ -72,6 +72,7 @@ window.FemcCosmetics = (() => {
     c('sk-kiriko', 'skin', 'Kiriko Cosplay', 'UR', 'Fox-ear band, red and white shrine robes, kunai at her belt. Her main, down to the last ofuda.', { who: 'solar', art: true }),
     // More looks for Solar (2026-10-27 list, FEMC-ART-WIRING section 7): wired as each one's art arrives (art batch 86).
     c('sk-alphaphi', 'skin', 'Alpha Phi Formal', 'SR', 'A long dusty-rose satin gown, a silver Alpha Phi pin and silver heels. Formal night.', { who: 'solar', art: true }), // series: Runners
+    c('sk-harbourcoat', 'skin', 'Harbour Night Coat', 'SR', 'A long black coat buttoned to the throat, leather gloves, a red thread tied at her wrist. The port at night.', { who: 'solar', art: true }), // series: strangers
     // Weapon skins (art pending: 8C).
     c('wpn-sakura', 'weapon', 'Sakura Naginata', 'SR', 'A pale wood haft wrapped in pink silk, blossoms etched on the blade.', { who: 'solar', art: true }),
     c('wpn-phantom', 'weapon', 'Phantom Naginata', 'UR', 'Black lacquer and a red tassel, to go with the coat.', { who: 'solar', art: true }),
@@ -147,7 +148,7 @@ window.FemcCosmetics = (() => {
     { id: 'bloom', name: 'Spring Bloom', months: [4, 5], color: '#ff8cc0', featured: ['sk-date', 'tt-sakura', 'ui-sakura', 'sk-jihoon-pilates', 'sk-junpei-baseball', 'sk-yukari-kyudo', 'sk-aigis-uniform', 'wpn-hoax', 'sk-minji-su'] },
     { id: 'summer', name: 'Summer Nights', months: [6, 7, 8], color: '#4fd8ff', featured: ['sk-yukata', 'wp-fireworks', 'ui-mint', 'sk-haechan-runners', 'sk-minji-crew', 'sk-akihiko-hoodie', 'wpn-runners'] },
     { id: 'masquerade', name: 'Masquerade', months: [9, 10], color: '#c58bff', featured: ['sk-phantom', 'wpn-phantom', 'sk-halloween', 'bui-velvet', 'evk-jade', 'wpn-kiriko', 'wpn-emo', 'sk-yukari-pink', 'sk-jihoon-emo'] },
-    { id: 'lights', name: 'Winter Lights', months: [11, 12, 1], color: '#bfe3ff', featured: ['sk-wintercoat', 'wp-xmas', 'tt-snow', 'evk-rose', 'sk-shinjiro-apron', 'sk-mitsuru-rider', 'wpn-strangers'] },
+    { id: 'lights', name: 'Winter Lights', months: [11, 12, 1], color: '#bfe3ff', featured: ['sk-wintercoat', 'wp-xmas', 'tt-snow', 'evk-rose', 'sk-shinjiro-apron', 'sk-mitsuru-rider', 'wpn-strangers', 'sk-harbourcoat'] },
     { id: 'sunrise', name: 'Golden Sunrise', months: [2, 3], color: '#ffd36b', featured: ['ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-jungwon-council', 'wpn-jungwon-council'] },
     // Side banners, November–March (2026-10-27): they run beside the month's main banner above (always first, the default).
     { id: 'runners', name: 'Runners World', kind: 'World', months: [11], color: '#ff9a5c', featured: ['sk-haechan-runners', 'wpn-runners', 'sk-minji-su', 'wp-rooftop', 'sk-alphaphi'] },
