@@ -18881,6 +18881,349 @@
         "assets/femc/game/art/skins/sk-limelight/portraits/solar/serious.webp": "022500ec25c40d16d86bdd4310a2600982465a6a941e2aa060b9f995d3382b82",
         "assets/femc/game/art/skins/sk-limelight/portraits/solar/surprised.webp": "ad4cffd34941a3395ae4e0d340680a17f9700cccd460941d9daaa90b1c2f4372"
       }
+    },
+    {
+      "batch": 94,
+      "source": "skin-sk-haechan-headphones-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-haechan-headphones-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "40a5d2d3c9b65ac25a9f8a6659bc1f75a77b4f0b60c0fc636f9370e925ad8188",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-headphones/haechan-pose-0.webp",
+      "skin": "sk-haechan-headphones",
+      "conversion": "tools/femc-wardrobe.py skin (his default key: HOLES off, like his fighter sheet)",
+      "placement": "cosmetics.js sk-haechan-headphones (Headphones On, SR, Haechan; Runners World and Haechan Spotlight banners), battle pose frames via ready.js",
+      "knownLimits": "only background gaps are see-through (checked on magenta)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-headphones/haechan-pose-0.webp": "b0e94d9363fc8305c270b1227b06a958db35c949d6dcec49c4c16de5976d58c4",
+        "assets/femc/game/art/skins/sk-haechan-headphones/haechan-pose-1.webp": "68803ebb1f5b3c47d031c2ea0bdf8fc8583c93954b8ac457fa9029e64defd45a",
+        "assets/femc/game/art/skins/sk-haechan-headphones/haechan-pose-2.webp": "c21a89fef913aa4cf9349ffa4c61f13ca1b087a9b917df94295e0383d32bbfb4",
+        "assets/femc/game/art/skins/sk-haechan-headphones/haechan-pose-3.webp": "b1aa5bb9cbc079adf12242347146e32c663b384bc1b0f555eea0039b4d1f9954",
+        "assets/femc/game/art/skins/sk-haechan-headphones/haechan-pose-4.webp": "49cdd6750a98e1e9acee98197015ebe5ca0bd9b45466efa48c5697465c9e5494",
+        "assets/femc/game/art/skins/sk-haechan-headphones/haechan-pose-5.webp": "0d75a997c9ac14c4fde780a110fad223f69cc0ae8eb508d7c2161b2940212afd"
+      }
+    },
+    {
+      "batch": 94,
+      "source": "skin-sk-haechan-headphones-portraits.png",
+      "sourceNow": "Added to Game/skin-sk-haechan-headphones-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "64ed354a0f9943528279f653270308cc401dbd8959acaa37ce26eb482575a663",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-headphones/portraits/haechan/neutral.webp",
+      "skin": "sk-haechan-headphones",
+      "conversion": "opaque near-black sheet: macOS Vision lift on the WHOLE sheet, alpha hardened with a smoothstep between 0.70 and 0.95 (batch 91), original RGB kept; cells split on the thirds along a min-cost vertical seam (batch 93) and placed on his base canvas (870 x 822) by normalized cross-correlation of the face against the same expression; busts that end above the canvas bottom carried down by repeating their last clean row; slivers of the neighbouring cell at the canvas top removed; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "not his file order: matched by face correlation to portraits/haechan/: top row neutral, flustered, happy; bottom row surprised, serious, sad (as Sweater Date)",
+      "placement": "Headphones On’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "busts carried down at the bottom where they end above the canvas; straight edges at a few cell lines where hair crossed them",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-headphones/portraits/haechan/flustered.webp": "7c833991930fa8048a3036aa84ca46e624ac8eb563bdc28fc6fcbbd7246989a5",
+        "assets/femc/game/art/skins/sk-haechan-headphones/portraits/haechan/happy.webp": "f309b9f166a891210cd85a9744f042101b565c4422cf6bb2760aabc892db579a",
+        "assets/femc/game/art/skins/sk-haechan-headphones/portraits/haechan/neutral.webp": "ad2f39a8c7a9e46ec2fee58737264e98429ed2ffea122ff72b6b199f3ae49f51",
+        "assets/femc/game/art/skins/sk-haechan-headphones/portraits/haechan/sad.webp": "d696bb85c49fe03476621f15233651fc98598be582d445c073df3ef4e605d973",
+        "assets/femc/game/art/skins/sk-haechan-headphones/portraits/haechan/serious.webp": "1fa8957cfb9e8bb5ab83e256009187c3da5f326fe0cf3fde3d4c6861ccb57791",
+        "assets/femc/game/art/skins/sk-haechan-headphones/portraits/haechan/surprised.webp": "778d7bbd610a91a0df284f03348ddb28cc2c52d0aca07fe949540563e768f499"
+      }
+    },
+    {
+      "batch": 94,
+      "source": "skin-sk-haechan-arrivals-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-haechan-arrivals-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "2ba9aa83cf79e8b61caa1853dd86e20d077fe3453bce8c952f8a3ee29487dc37",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-pose-0.webp",
+      "skin": "sk-haechan-arrivals",
+      "conversion": "tools/femc-wardrobe.py skin (his default key: HOLES off, like his fighter sheet)",
+      "placement": "cosmetics.js sk-haechan-arrivals (Arrivals Gate, SR, Haechan; Winter Lights and Haechan Spotlight banners), battle pose frames via ready.js",
+      "knownLimits": "only background gaps are see-through (checked on magenta)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-pose-0.webp": "7ff3ba9969d23d632dd9edf55f1343c3bce2db46ec6affc0e67797154a1f63d7",
+        "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-pose-1.webp": "f61f8d8920e3d3830b8d2428d81c18c150331719fa6b6d855b073adc547063a4",
+        "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-pose-2.webp": "cc9b7db3db75ebe0b43fde7d32e04b410d92dbe8d56726aabed54a709265ae5e",
+        "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-pose-3.webp": "3415be04f204487fbf92033a5d7bcb826cf2b2ef273dc89000445e07b68f68f9",
+        "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-pose-4.webp": "933b1e8bb4104e95b4068b02238aae779a95a0cc5cd897d6e0db4949a4e98bec",
+        "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-pose-5.webp": "971cfa8a095cd846db5c8d97ff9f45e159ca50e068064920f5becb96aeffffb6"
+      }
+    },
+    {
+      "batch": 94,
+      "source": "skin-sk-haechan-arrivals-portraits.png",
+      "sourceNow": "Added to Game/skin-sk-haechan-arrivals-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "4eab975670f185aa92617175bc07173f0b2381f5e40570331c321f5fed1f75d7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-arrivals/portraits/haechan/neutral.webp",
+      "skin": "sk-haechan-arrivals",
+      "conversion": "opaque near-black sheet: macOS Vision lift on the WHOLE sheet, alpha hardened with a smoothstep between 0.70 and 0.95 (batch 91), original RGB kept; cells split on the thirds along a min-cost vertical seam (batch 93) and placed on his base canvas (870 x 822) by normalized cross-correlation of the face against the same expression; busts that end above the canvas bottom carried down by repeating their last clean row; slivers of the neighbouring cell at the canvas top removed; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "not his file order: matched by face correlation to portraits/haechan/: top row neutral, flustered, happy; bottom row surprised, serious, sad (as Sweater Date)",
+      "placement": "Arrivals Gate’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "busts carried down at the bottom where they end above the canvas; straight edges at a few cell lines where hair crossed them",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-arrivals/portraits/haechan/flustered.webp": "408d8e64c0d5cafb00d243e9c9864e282426a63c8b42176c7e81d094bacc31dd",
+        "assets/femc/game/art/skins/sk-haechan-arrivals/portraits/haechan/happy.webp": "3c264c62ab9416522ae658cc4f468c3e9082a8ae49184fef057c040fe9678875",
+        "assets/femc/game/art/skins/sk-haechan-arrivals/portraits/haechan/neutral.webp": "2ff79e58180482a0a80eb7e02dfac2fb6c09bb489d3e660106d699ed212108ae",
+        "assets/femc/game/art/skins/sk-haechan-arrivals/portraits/haechan/sad.webp": "ed9c308e28248a78e6ff110239d939a38def62caf169f27e73a68dd618ad2029",
+        "assets/femc/game/art/skins/sk-haechan-arrivals/portraits/haechan/serious.webp": "2775136675ad8c3cf22b84d63144ca5ce7800ff1de3423442eb2e0320a5fe884",
+        "assets/femc/game/art/skins/sk-haechan-arrivals/portraits/haechan/surprised.webp": "a774fb435da04032a8b66c510391fe1f883e9e3fa5904326c24e74ffe3fd22b8"
+      }
+    },
+    {
+      "batch": 94,
+      "source": "skin-sk-haechan-windowseat-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-haechan-windowseat-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d5f21a722f1429a4bfa9b45354440f7b6077c21a5aa29772dc6c251f9bdce752",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-pose-0.webp",
+      "skin": "sk-haechan-windowseat",
+      "conversion": "tools/femc-wardrobe.py skin (his default key: HOLES off, like his fighter sheet)",
+      "placement": "cosmetics.js sk-haechan-windowseat (Window Seat, SR, Haechan; Summer Nights and Runners World banners), battle pose frames via ready.js",
+      "knownLimits": "only background gaps are see-through (checked on magenta)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-pose-0.webp": "80fcc00babcefffa9f544d75fea48a5eca1125d8e5eb19b5621cc9c7806e60d0",
+        "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-pose-1.webp": "e6a68bb7e3b21f30d829f8d1b54625c27c2ab9ab156d77314efd88b6bbb7510c",
+        "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-pose-2.webp": "6ff8ec820ec73fbbd78211a03aef08291966671c0f78b4efe80c31ae232510d4",
+        "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-pose-3.webp": "520bf839c0d9953bd6d6a8fd00ff926e03d4cd4a1dd2d11a9d8beafab265eea2",
+        "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-pose-4.webp": "9d892585b38d1511e77389e52ad09dc9df78b5838948f1704561bbb3b3e70f30",
+        "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-pose-5.webp": "53435cae1e744a036e55b3f4f068fbeadd8978260a9f5e2bc1ef8d1b73ae7195"
+      }
+    },
+    {
+      "batch": 94,
+      "source": "skin-sk-haechan-windowseat-portraits.png",
+      "sourceNow": "Added to Game/skin-sk-haechan-windowseat-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3d1a79335d7c25dac2dfc1ca44ac52fbfffaf363eda838582514634d5b3cf423",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-windowseat/portraits/haechan/neutral.webp",
+      "skin": "sk-haechan-windowseat",
+      "conversion": "opaque near-black sheet: macOS Vision lift on the WHOLE sheet, alpha hardened with a smoothstep between 0.70 and 0.95 (batch 91), original RGB kept; cells split on the thirds along a min-cost vertical seam (batch 93) and placed on his base canvas (870 x 822) by normalized cross-correlation of the face against the same expression; busts that end above the canvas bottom carried down by repeating their last clean row; slivers of the neighbouring cell at the canvas top removed; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "not his file order: matched by face correlation to portraits/haechan/: top row neutral, flustered, happy; bottom row surprised, serious, sad (as Sweater Date)",
+      "placement": "Window Seat’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "busts carried down at the bottom where they end above the canvas; straight edges at a few cell lines where hair crossed them",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-windowseat/portraits/haechan/flustered.webp": "ff52fde26ee0b0f77e552ed77f3b00bb80e20d2d3a12d12638dc6a4a4f46cb45",
+        "assets/femc/game/art/skins/sk-haechan-windowseat/portraits/haechan/happy.webp": "c1334d5a04b410a40468e816c5d71558310d26182a49998c9baaf500df79496e",
+        "assets/femc/game/art/skins/sk-haechan-windowseat/portraits/haechan/neutral.webp": "cbbe3ce7853bc06d3af3a1bcddb65317757c381b545bbddf3b751eb779c0949b",
+        "assets/femc/game/art/skins/sk-haechan-windowseat/portraits/haechan/sad.webp": "5cd3ad70a2184c8ccd2f39ae722f07fbfb48a8bf423de95344a56ea3f9f8a123",
+        "assets/femc/game/art/skins/sk-haechan-windowseat/portraits/haechan/serious.webp": "aab1eca77ce972162cb7100515749ecd52f41b11e94581cca945b0fa4059fb25",
+        "assets/femc/game/art/skins/sk-haechan-windowseat/portraits/haechan/surprised.webp": "d56f31b71d262a173ff18ed415629c6ad09934a97268a5fd333c373daeee08d8"
+      }
+    },
+    {
+      "batch": 94,
+      "source": "skin-sk-haechan-bad-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-haechan-bad-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e2fd634788709a73ba364280e529c8eb634ee969ec770bdb6f1d3b6944a52f22",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-bad/haechan-pose-0.webp",
+      "skin": "sk-haechan-bad",
+      "conversion": "tools/femc-wardrobe.py skin (his default key: HOLES off, like his fighter sheet)",
+      "placement": "cosmetics.js sk-haechan-bad (Bad Influence, SR, Haechan; Masquerade and Valentine’s banners), battle pose frames via ready.js",
+      "knownLimits": "only background gaps are see-through (checked on magenta)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-bad/haechan-pose-0.webp": "fc30335c68542708ce4a110d3c0aca6053850b179361c3f2e8fea8cf698c455b",
+        "assets/femc/game/art/skins/sk-haechan-bad/haechan-pose-1.webp": "5ef823c61755a1a37f7fee635cc5f294af5f5d46451212333e8daf0c85ba3639",
+        "assets/femc/game/art/skins/sk-haechan-bad/haechan-pose-2.webp": "a07f33467dd66c31516500fac576b583be0f740954511a614a356eb8ac116167",
+        "assets/femc/game/art/skins/sk-haechan-bad/haechan-pose-3.webp": "238c7a1e44ed5123e42aa24bd044e754ff4cbdbd38eaa06217b0123f6c0acb58",
+        "assets/femc/game/art/skins/sk-haechan-bad/haechan-pose-4.webp": "210d1b37b4cda0465c4b45df5c8360bcbd8f6e4a090b47ef3dc77c3bbc0881fa",
+        "assets/femc/game/art/skins/sk-haechan-bad/haechan-pose-5.webp": "b6d3c284be7c933853bf1931a85161978838d04157d02da1ec8d3023b797700d"
+      }
+    },
+    {
+      "batch": 94,
+      "source": "skin-sk-haechan-bad-portraits.png",
+      "sourceNow": "Added to Game/skin-sk-haechan-bad-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "97d93cf7b21c5d921993a237b41cf137e9bf609a31b27137fd3a7eeb971f9323",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-bad/portraits/haechan/neutral.webp",
+      "skin": "sk-haechan-bad",
+      "conversion": "opaque near-black sheet: macOS Vision lift on the WHOLE sheet, alpha hardened with a smoothstep between 0.70 and 0.95 (batch 91), original RGB kept; cells split on the thirds along a min-cost vertical seam (batch 93) and placed on his base canvas (870 x 822) by normalized cross-correlation of the face against the same expression; busts that end above the canvas bottom carried down by repeating their last clean row; slivers of the neighbouring cell at the canvas top removed; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "not his file order: matched by face correlation to portraits/haechan/: top row neutral, flustered, happy; bottom row surprised, serious, sad (as Sweater Date)",
+      "placement": "Bad Influence’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "busts carried down at the bottom where they end above the canvas; straight edges at a few cell lines where hair crossed them",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-bad/portraits/haechan/flustered.webp": "01429ec0e281574a34e3b5313d50b09f5fdc56f3d2c33dc7808f7587a27c3456",
+        "assets/femc/game/art/skins/sk-haechan-bad/portraits/haechan/happy.webp": "f5f0db5d30ec7434728f2870608d6a718ddfe8c3a9d6d3a4a4ac65ec7ba15736",
+        "assets/femc/game/art/skins/sk-haechan-bad/portraits/haechan/neutral.webp": "6f53e4beece0f9359ad9ec76ff48a8a53976a04833402d24b5315808e4aaf569",
+        "assets/femc/game/art/skins/sk-haechan-bad/portraits/haechan/sad.webp": "d763684878b172f521689a619a219abec881a77985310397ec2d133e04bf4b93",
+        "assets/femc/game/art/skins/sk-haechan-bad/portraits/haechan/serious.webp": "a16dd6741fb7a37a338dde67e3feb1c3b38b3f644de42a26cf19e053ea91876d",
+        "assets/femc/game/art/skins/sk-haechan-bad/portraits/haechan/surprised.webp": "9145781340675e906aa3edce4142e15ab2a94ed58f99098bdc7b0dfde678dd3f"
+      }
+    },
+    {
+      "batch": 94,
+      "source": "skin-sk-haechan-garage-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-haechan-garage-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "0f30917059d98d94ecda8e95312ab4dc1c674bca95f6460e36b9110b97da6336",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-garage/haechan-pose-0.webp",
+      "skin": "sk-haechan-garage",
+      "conversion": "tools/femc-wardrobe.py skin (his default key; the white jeans kept solid, as the wiring note asked)",
+      "placement": "cosmetics.js sk-haechan-garage (Garage Band, SR, Haechan; Runners World and Haechan Spotlight banners), battle pose frames via ready.js",
+      "knownLimits": "only background gaps are see-through (checked on magenta)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-garage/haechan-pose-0.webp": "56fde20581d3f5e502b654f1a2a4483f25e5afe156971a457d094912a339c42a",
+        "assets/femc/game/art/skins/sk-haechan-garage/haechan-pose-1.webp": "1d20a1a6a37bc4e15936677f7ba016eb035dd80368f54f849dececffadf2ac52",
+        "assets/femc/game/art/skins/sk-haechan-garage/haechan-pose-2.webp": "41004d5b1e60d507a0f1b2c040851e8d1d1ccf69ff82bbd07c4601b58c88b9d3",
+        "assets/femc/game/art/skins/sk-haechan-garage/haechan-pose-3.webp": "5bf08c8d908e3ae19f4fccc8409dfb0253c8ae579c89f4eabef9e5ae96d51e23",
+        "assets/femc/game/art/skins/sk-haechan-garage/haechan-pose-4.webp": "7f7ce9f4f75dcba0e4840f037200244aa8403e38cdf7c978d4db82991f418339",
+        "assets/femc/game/art/skins/sk-haechan-garage/haechan-pose-5.webp": "078c33729bf95c3bfc07dbf7316d0c8f36edf1f150fa2dd0ccd5d93bbb1f6b6e"
+      }
+    },
+    {
+      "batch": 94,
+      "source": "skin-sk-haechan-garage-portraits.png",
+      "sourceNow": "Added to Game/skin-sk-haechan-garage-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "624eecb345f2f5f3613acbeada622b825e959e2c515897e368a4905762736923",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-garage/portraits/haechan/neutral.webp",
+      "skin": "sk-haechan-garage",
+      "conversion": "opaque near-black sheet: macOS Vision lift on the WHOLE sheet, alpha hardened with a smoothstep between 0.70 and 0.95 (batch 91), original RGB kept; cells split on the thirds along a min-cost vertical seam (batch 93) and placed on his base canvas (870 x 822) by normalized cross-correlation of the face against the same expression; busts that end above the canvas bottom carried down by repeating their last clean row; slivers of the neighbouring cell at the canvas top removed; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "not his file order: matched by face correlation to portraits/haechan/: top row neutral, flustered, happy; bottom row surprised, serious, sad (as Sweater Date)",
+      "placement": "Garage Band’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "busts carried down at the bottom where they end above the canvas; straight edges at a few cell lines where hair crossed them",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-garage/portraits/haechan/flustered.webp": "b780f14acc36b22287cf4444bf3e9c5b332d3a92d7ffe523f493fd1466d86fae",
+        "assets/femc/game/art/skins/sk-haechan-garage/portraits/haechan/happy.webp": "92344887a72a71eb76e2dbb01502c3a8c860eefa557150112db83eb021dfc34c",
+        "assets/femc/game/art/skins/sk-haechan-garage/portraits/haechan/neutral.webp": "2c767929a707750db8c9de55d06032a71aed66969e760dca01d1f3938c8c57da",
+        "assets/femc/game/art/skins/sk-haechan-garage/portraits/haechan/sad.webp": "d3eee2fd6c924b2c58a7c65d1f6864d333c659dc8a11c9aee6b6e09ce4b97422",
+        "assets/femc/game/art/skins/sk-haechan-garage/portraits/haechan/serious.webp": "282da2866f1bc29311576467c21f646debcf75c2745f91ee60d141492a1ea6a8",
+        "assets/femc/game/art/skins/sk-haechan-garage/portraits/haechan/surprised.webp": "c7f5f78228cac09efb3d9203879ad6337b3a68ba44c76bf5c8556e086a821ee5"
+      }
+    },
+    {
+      "batch": 94,
+      "source": "skin-sk-haechan-limelight-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-haechan-limelight-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "18e14c5124010199ca457d30917747b3402db8982c8eb619eeea309035885574",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-limelight/haechan-pose-0.webp",
+      "skin": "sk-haechan-limelight",
+      "conversion": "tools/femc-wardrobe.py skin (his default key: HOLES off, like his fighter sheet)",
+      "placement": "cosmetics.js sk-haechan-limelight (Limelight, UR, Haechan; Haechan Spotlight and Valentine’s banners), battle pose frames via ready.js",
+      "knownLimits": "only background gaps are see-through (checked on magenta)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-limelight/haechan-pose-0.webp": "867ac88efc99f05903b37a900b9deacc876b60269081938e089df52901d75183",
+        "assets/femc/game/art/skins/sk-haechan-limelight/haechan-pose-1.webp": "282a8161464c6a10b1ae792195fddf95d4603f3e0a9577fea050358740bda2c8",
+        "assets/femc/game/art/skins/sk-haechan-limelight/haechan-pose-2.webp": "d84eb1eea1148d1b9e1ff8ae43d15fb68b3ef2a9ffe71e0afee0ff46c168e258",
+        "assets/femc/game/art/skins/sk-haechan-limelight/haechan-pose-3.webp": "c486a4a2ae05fafd68bea0a5d9cb8dec46881719d99b430e9ebe69b4bdc2a23c",
+        "assets/femc/game/art/skins/sk-haechan-limelight/haechan-pose-4.webp": "10a684f6adfb418651f0003091ffc5189e68acb3475d01464198bb4aa5cca01d",
+        "assets/femc/game/art/skins/sk-haechan-limelight/haechan-pose-5.webp": "3cb39d5db9a4412bb7b620ec65fab54c525f5b8d0d4a38fa9db53a0175857715"
+      }
+    },
+    {
+      "batch": 94,
+      "source": "skin-sk-haechan-limelight-portraits.png",
+      "sourceNow": "Added to Game/skin-sk-haechan-limelight-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "18b7987237be9c00cba0ee1f14c5b4610dfa82ca26e22d6318a9cde429161545",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-limelight/portraits/haechan/neutral.webp",
+      "skin": "sk-haechan-limelight",
+      "conversion": "opaque near-black sheet: macOS Vision lift on the WHOLE sheet, alpha hardened with a smoothstep between 0.70 and 0.95 (batch 91), original RGB kept; cells split on the thirds along a min-cost vertical seam (batch 93) and placed on his base canvas (870 x 822) by normalized cross-correlation of the face against the same expression; busts that end above the canvas bottom carried down by repeating their last clean row; slivers of the neighbouring cell at the canvas top removed; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "not his file order: matched by face correlation to portraits/haechan/: top row neutral, flustered, happy; bottom row surprised, serious, sad (as Sweater Date)",
+      "placement": "Limelight’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "busts carried down at the bottom where they end above the canvas; straight edges at a few cell lines where hair crossed them",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-limelight/portraits/haechan/flustered.webp": "4ede0ff41de09cd6bb033844d000d67861ae6eb9e1bf356ebeeb683b10af7fbc",
+        "assets/femc/game/art/skins/sk-haechan-limelight/portraits/haechan/happy.webp": "bb340ca1e15871c0b9a4301254142654b4385f498d197d402df5c0172f148d4e",
+        "assets/femc/game/art/skins/sk-haechan-limelight/portraits/haechan/neutral.webp": "9cf3871383b5876745997f13e1e254791b76ac9680217b1e2e5434a16321de78",
+        "assets/femc/game/art/skins/sk-haechan-limelight/portraits/haechan/sad.webp": "99816fd3bb2d18c10a7856ece2c17d13c3484b723a0056e0c0be2f03ce6716a2",
+        "assets/femc/game/art/skins/sk-haechan-limelight/portraits/haechan/serious.webp": "6777694fab16d4f471117561b8da7439149b83d24a317650465a9b760c20d001",
+        "assets/femc/game/art/skins/sk-haechan-limelight/portraits/haechan/surprised.webp": "2c7aff926fe629ef34b4872c31d2ecefec94e4a727ebd6b62d46111bcb3a5455"
+      }
+    },
+    {
+      "batch": 94,
+      "source": "skin-sk-haechan-unravelled-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-haechan-unravelled-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "60d34949005601282558a9ae829fb3cc6082db2fd6b919b4a2b310a7747ae0f7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-pose-0.webp",
+      "skin": "sk-haechan-unravelled",
+      "conversion": "tools/femc-wardrobe.py skin (his default key: the open knit shows his tee through it, not paper, so no HOLES/GAPS clean-up was needed)",
+      "placement": "cosmetics.js sk-haechan-unravelled (Unravelled, SR, Haechan; Masquerade and Valentine’s banners), battle pose frames via ready.js",
+      "knownLimits": "only background gaps are see-through (checked on magenta)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-pose-0.webp": "f27508fbc5819fa839d5ef91ba01b2c5d13f4d85f55eb3f2974bde3c8a18c2a6",
+        "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-pose-1.webp": "d758f9d94564475d1f06c9b67adeab2d30ad153e8b283ef2ceff8087a9e7bb9c",
+        "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-pose-2.webp": "fc401ddbdf90302729ac53c1c80619a4739708f63228a0bade4ae55283d3adaf",
+        "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-pose-3.webp": "8eb1f6c5d9e311aa9ee29e8ea339a1c7a67990eb9709e6ea079705959f196dda",
+        "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-pose-4.webp": "0997e992ae947e494245010231841bc7c0105ff97f66a5d74bde5ff3138f47fe",
+        "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-pose-5.webp": "7b25ff08962baadabb4b12d5bcf4780fead71368ce88d344258599333c5a2372"
+      }
+    },
+    {
+      "batch": 94,
+      "source": "skin-sk-haechan-unravelled-portraits.png",
+      "sourceNow": "Added to Game/skin-sk-haechan-unravelled-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1df8372eca73adcaf837cad24d2db2ff11d088156c10e97360798ff3efbc5579",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-unravelled/portraits/haechan/neutral.webp",
+      "skin": "sk-haechan-unravelled",
+      "conversion": "opaque near-black sheet: macOS Vision lift on the WHOLE sheet, alpha hardened with a smoothstep between 0.70 and 0.95 (batch 91), original RGB kept; cells split on the thirds along a min-cost vertical seam (batch 93) and placed on his base canvas (870 x 822) by normalized cross-correlation of the face against the same expression; busts that end above the canvas bottom carried down by repeating their last clean row; slivers of the neighbouring cell at the canvas top removed; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "not his file order: matched by face correlation to portraits/haechan/: top row neutral, flustered, happy; bottom row surprised, serious, sad (as Sweater Date)",
+      "placement": "Unravelled’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "busts carried down at the bottom where they end above the canvas; straight edges at a few cell lines where hair crossed them",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-unravelled/portraits/haechan/flustered.webp": "65cac382db416f2dea74e8f72916e870818e17fba61e2461c661b7e0fdf14247",
+        "assets/femc/game/art/skins/sk-haechan-unravelled/portraits/haechan/happy.webp": "f6824222504fea0b6f2e7398169907e2a8e9217b612b1f1035bfecb8d8557138",
+        "assets/femc/game/art/skins/sk-haechan-unravelled/portraits/haechan/neutral.webp": "e9a9136a000f5864aedf36433224fc7ea2f8951ea563722fcb46b2293f4d7f1b",
+        "assets/femc/game/art/skins/sk-haechan-unravelled/portraits/haechan/sad.webp": "d6e664cc9447dc9eb1db3abb9b17a7f93645641ae26828d6c2c1de1933637736",
+        "assets/femc/game/art/skins/sk-haechan-unravelled/portraits/haechan/serious.webp": "51e713a484b1cd4c8b96828d79f5c86d74046b006cf1fa9f804168928a2c1d13",
+        "assets/femc/game/art/skins/sk-haechan-unravelled/portraits/haechan/surprised.webp": "a5cd5c712a8ab420beca6ec2ff0dce6d853555810e0ebaee50138f58f5af376c"
+      }
     }
   ],
   "batch1Validation": {
@@ -20236,5 +20579,22 @@
     "testEdits": "tests/femc_cosmetics.py: NEW_SKINS adds the eight ids; Solar Spotlight’s featured set adds Y2K Pop Star, Oops!, Snake Charmer, Sugar Rush and Limelight",
     "notTested": "no browser tests (lead’s instruction): tests/femc_cosmetics.py (banner, newpending), the new outfits in a real battle, an outfit portrait in a scene at 1000x486 and 375x812",
     "html": "femc-game.html ready.js v13, cosmetics.js v15"
+  },
+  "batch94HaechanValidation": {
+    "date": "2026-10-29",
+    "scope": "Haechan's seven new outfits from their FEMC-ART-WIRING notes: Headphones On, Arrivals Gate, Window Seat, Bad Influence, Garage Band, Limelight, Unravelled, each with pose frames and scene portraits; Solar's Emo Night joins Masquerade and Valentine's (the Emo Night set)",
+    "sourcesInspected": "every sheet viewed; every pose frame on magenta at full size with enclosed transparent areas marked; every portrait cut on magenta at full size, beside the base set where needed; bottoms and cell edges checked",
+    "sourcesIntegrated": 14,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names, including the leading space in “ skin-sk-summersession-posesheet.png”; sha256 checked); On Hold untouched; sk-halloween-solar-portraits-v2.png left in New Adds (waiting on Kat)",
+    "keyChange": "none: his sheets keep his default key (HOLES off)",
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script",
+      "py_compile tests/femc_cosmetics.py tools/femc-shadow-poses.py"
+    ],
+    "testEdits": "tests/femc_cosmetics.py: NEW_SKINS adds the seven ids; Haechan Spotlight’s featured set adds Headphones On, Arrivals Gate, Garage Band and Limelight; the Haechan Spotlight / Winter Lights overlap check allows Arrivals Gate (planned for both)",
+    "notTested": "no browser tests (lead’s instruction): tests/femc_cosmetics.py (banner, newpending), the new outfits in a real battle, an outfit portrait in a scene at 1000x486 and 375x812",
+    "html": "femc-game.html ready.js v14, cosmetics.js v16"
   }
 }

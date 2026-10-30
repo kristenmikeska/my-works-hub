@@ -44,7 +44,9 @@ PSKIN = SKINS_DIR / 'sk-akihiko-champ'
 PWPN = SKINS_DIR / 'wpn-jungwon-council'
 # Stand-ins for "a new look still waiting for art" (newpending): their real art steps aside for that section.
 NEW_SKINS = ['sk-minji-crew', 'sk-jihoon-pilates', 'sk-aigis-uniform', 'sk-alphaphi', 'sk-harbourcoat', 'sk-idol', 'sk-haechan-sweater', 'sk-esports', 'sk-hanbok', 'sk-vp', 'sk-velvet', 'sk-roadwork',
-             'sk-y2k', 'sk-oops', 'sk-snake', 'sk-sugarrush', 'sk-prowl', 'sk-strawberry', 'sk-summersession', 'sk-limelight']
+             'sk-y2k', 'sk-oops', 'sk-snake', 'sk-sugarrush', 'sk-prowl', 'sk-strawberry', 'sk-summersession', 'sk-limelight',
+             'sk-haechan-headphones', 'sk-haechan-arrivals', 'sk-haechan-windowseat', 'sk-haechan-bad', 'sk-haechan-garage', 'sk-haechan-limelight',
+             'sk-haechan-unravelled']
 NEW_WPNS = ['wpn-runners', 'wpn-strangers', 'wpn-hoax', 'wpn-akihiko-champ', 'wpn-jungwon-council']
 KEPT = {}
 
@@ -307,10 +309,11 @@ try:
         ok(r['nov'] == ['lights', 'runners', 'sees'] and r['dec'] == ['lights', 'sees', 'haechan'] and r['jan'] == ['lights', 'haechan', 'hoax']
            and r['feb'] == ['sunrise', 'hoax', 'valentine'], f'2–3 banners November–February, main first: {r}')
         ok(r['mar'] == ['solar', 'akihiko'], f'The Searchers hidden while Minji is unmet (empty featured list): {r}')
-        ok(set(r['feat']['haechan']) == {'sk-haechan-runners', 'wpn-runners', 'wpn-strangers', 'evk-midnight', 'wp-rooftop', 'sk-haechan-sweater'}
+        ok(set(r['feat']['haechan']) == {'sk-haechan-runners', 'wpn-runners', 'wpn-strangers', 'evk-midnight', 'wp-rooftop', 'sk-haechan-sweater',
+                                           'sk-haechan-headphones', 'sk-haechan-arrivals', 'sk-haechan-garage', 'sk-haechan-limelight'}
            and set(r['feat']['solar']) == {'sk-idol', 'sk-alphaphi', 'sk-hanbok', 'sk-velvet', 'sk-y2k', 'sk-oops', 'sk-snake', 'sk-sugarrush', 'sk-limelight'}
-           and set(r['feat']['sees']) >= {'sk-yukari-pink', 'sk-mitsuru-rider', 'tt-darkhour'} and 'sk-date' in r['feat']['valentine']
-           and not set(r['feat']['haechan']) & set(r['feat']['lights']) - {'wpn-strangers'} and r['end'] == 0, f'featured per banner, ends January: {r}')
+           and set(r['feat']['sees']) >= {'sk-yukari-pink', 'sk-mitsuru-rider', 'tt-darkhour'} and 'sk-date' in r['feat']['valentine'] and 'sk-emo' in r['feat']['valentine'] and 'sk-emo' in r['feat']['masquerade']
+           and not set(r['feat']['haechan']) & set(r['feat']['lights']) - {'wpn-strangers', 'sk-haechan-arrivals'} and r['end'] == 0, f'featured per banner, ends January: {r}')
         ok(p.eval("FemcGame.S.met.push('minji'),FemcCosmetics.banners(FemcGame.dayOf('3/10')).map(b=>b.id).join()") == 'solar,akihiko,searchers', 'The Searchers once Minji is met')
         # Switching: the pick is saved, rates up only that banner's looks, ignores banners not running, falls back when one ends.
         r = p.eval(QUIET + SEED + r"""(()=>{const G=FemcGame,C=FemcCosmetics,GA=FemcGacha;G.S.day=G.dayOf('12/10');GA.gs().plumes=1e5;C.cs().guar=false;

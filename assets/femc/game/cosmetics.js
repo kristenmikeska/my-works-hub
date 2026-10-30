@@ -89,6 +89,13 @@ window.FemcCosmetics = (() => {
     c('sk-summersession', 'skin', 'Summer Session', 'SR', 'A white track jacket, a varsity tube top and cutoffs on the quad. Matches Haechan’s Headphones On.', { who: 'solar', art: true }), // series: Runners
     c('sk-limelight', 'skin', 'Limelight', 'UR', 'Neon lime, rhinestones on everything and a chain belt that stops traffic. She matches him on purpose.', { who: 'solar', art: true }), // series: Solstice
     c('sk-haechan-sweater', 'skin', 'Sweater Date', 'SR', 'A cream cable-knit sweater, a check scarf and a coffee he will absolutely make you hold.', { who: 'haechan', art: true }), // series: Solstice
+    c('sk-haechan-headphones', 'skin', 'Headphones On', 'SR', 'Hood up, headphones on, a white-and-blue track jacket over neon green. Do not disturb (you can disturb).', { who: 'haechan', art: true }), // series: Runners
+    c('sk-haechan-arrivals', 'skin', 'Arrivals Gate', 'SR', 'Black frames, a navy overshirt and a crossbody strap. Landed at six, camera-ready by five past.', { who: 'haechan', art: true }), // series: Solstice
+    c('sk-haechan-windowseat', 'skin', 'Window Seat', 'SR', 'Honey-brown hair, clear frames, a black band tee and two silver chains. Wake him for the snacks.', { who: 'haechan', art: true }), // series: Runners
+    c('sk-haechan-bad', 'skin', 'Bad Influence', 'SR', 'Cuban chains, one fingerless glove and a jacket knotted at his hips. Matches Solar’s Night Prowl.', { who: 'haechan', art: true }), // series: strangers
+    c('sk-haechan-garage', 'skin', 'Garage Band', 'SR', 'A beat-up biker jacket, a band tee, red plaid and white jeans. Two chords and no regrets.', { who: 'haechan', art: true }), // series: Runners
+    c('sk-haechan-limelight', 'skin', 'Limelight', 'UR', 'A black chest rig striped in neon lime, chains, a dog tag and a racing helmet. Comeback season.', { who: 'haechan', art: true }), // series: Solstice
+    c('sk-haechan-unravelled', 'skin', 'Unravelled', 'SR', 'A black open-knit sweater coming apart on purpose, silver chains and ripped jeans. Goes with Solar’s Emo Night.', { who: 'haechan', art: true }), // series: Solstice
     // Weapon skins (art pending: 8C).
     c('wpn-sakura', 'weapon', 'Sakura Naginata', 'SR', 'A pale wood haft wrapped in pink silk, blossoms etched on the blade.', { who: 'solar', art: true }),
     c('wpn-phantom', 'weapon', 'Phantom Naginata', 'UR', 'Black lacquer and a red tassel, to go with the coat.', { who: 'solar', art: true }),
@@ -162,19 +169,19 @@ window.FemcCosmetics = (() => {
   const BANNERS = [
     // Art-pending items wait in their banner and join its featured list by themselves once their art is in (featured()).
     { id: 'bloom', name: 'Spring Bloom', months: [4, 5], color: '#ff8cc0', featured: ['sk-date', 'tt-sakura', 'ui-sakura', 'sk-jihoon-pilates', 'sk-junpei-baseball', 'sk-yukari-kyudo', 'sk-aigis-uniform', 'wpn-hoax', 'sk-minji-su', 'sk-vp', 'sk-sugarrush', 'sk-strawberry'] },
-    { id: 'summer', name: 'Summer Nights', months: [6, 7, 8], color: '#4fd8ff', featured: ['sk-yukata', 'wp-fireworks', 'ui-mint', 'sk-haechan-runners', 'sk-minji-crew', 'sk-akihiko-hoodie', 'wpn-runners', 'sk-esports', 'sk-roadwork', 'sk-y2k', 'sk-snake', 'sk-strawberry', 'sk-summersession'] },
-    { id: 'masquerade', name: 'Masquerade', months: [9, 10], color: '#c58bff', featured: ['sk-phantom', 'wpn-phantom', 'sk-halloween', 'bui-velvet', 'evk-jade', 'wpn-kiriko', 'wpn-emo', 'sk-yukari-pink', 'sk-jihoon-emo', 'sk-velvet', 'sk-oops', 'sk-prowl'] },
-    { id: 'lights', name: 'Winter Lights', months: [11, 12, 1], color: '#bfe3ff', featured: ['sk-wintercoat', 'wp-xmas', 'tt-snow', 'evk-rose', 'sk-shinjiro-apron', 'sk-mitsuru-rider', 'wpn-strangers', 'sk-harbourcoat'] },
+    { id: 'summer', name: 'Summer Nights', months: [6, 7, 8], color: '#4fd8ff', featured: ['sk-yukata', 'wp-fireworks', 'ui-mint', 'sk-haechan-runners', 'sk-minji-crew', 'sk-akihiko-hoodie', 'wpn-runners', 'sk-esports', 'sk-roadwork', 'sk-y2k', 'sk-snake', 'sk-strawberry', 'sk-summersession', 'sk-haechan-windowseat'] },
+    { id: 'masquerade', name: 'Masquerade', months: [9, 10], color: '#c58bff', featured: ['sk-phantom', 'wpn-phantom', 'sk-halloween', 'bui-velvet', 'evk-jade', 'wpn-kiriko', 'wpn-emo', 'sk-yukari-pink', 'sk-jihoon-emo', 'sk-velvet', 'sk-oops', 'sk-prowl', 'sk-haechan-bad', 'sk-haechan-unravelled', 'sk-emo'] },
+    { id: 'lights', name: 'Winter Lights', months: [11, 12, 1], color: '#bfe3ff', featured: ['sk-wintercoat', 'wp-xmas', 'tt-snow', 'evk-rose', 'sk-shinjiro-apron', 'sk-mitsuru-rider', 'wpn-strangers', 'sk-harbourcoat', 'sk-haechan-arrivals'] },
     { id: 'sunrise', name: 'Golden Sunrise', months: [2], color: '#ffd36b', featured: ['ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-jungwon-council', 'wpn-jungwon-council', 'sk-hanbok'] },
     // March's main banner (Kat's ruling, 2026-10-29: it took Golden Sunrise's March slot). Its other planned looks (FEMC-ART-WIRING
     // section 7: Encore Stage, Center Stage and the weapon skins) join as they're added.
     { id: 'solar', name: 'Solar Spotlight', kind: 'Spotlight', months: [3], color: '#ffb84d', featured: ['sk-idol', 'sk-alphaphi', 'sk-hanbok', 'sk-velvet', 'sk-y2k', 'sk-oops', 'sk-snake', 'sk-sugarrush', 'sk-limelight'] },
     // Side banners, November–March (2026-10-27): they run beside the month's main banner above (always first, the default).
-    { id: 'runners', name: 'Runners World', kind: 'World', months: [11], color: '#ff9a5c', featured: ['sk-haechan-runners', 'wpn-runners', 'sk-minji-su', 'wp-rooftop', 'sk-alphaphi', 'sk-esports', 'sk-summersession'] },
+    { id: 'runners', name: 'Runners World', kind: 'World', months: [11], color: '#ff9a5c', featured: ['sk-haechan-runners', 'wpn-runners', 'sk-minji-su', 'wp-rooftop', 'sk-alphaphi', 'sk-esports', 'sk-summersession', 'sk-haechan-headphones', 'sk-haechan-windowseat', 'sk-haechan-garage'] },
     { id: 'sees', name: 'S.E.E.S. Spotlight', kind: 'Spotlight', months: [11, 12], color: '#6ab0ff', featured: ['sk-yukari-kyudo', 'sk-yukari-pink', 'sk-junpei-baseball', 'sk-mitsuru-rider', 'sk-shinjiro-apron', 'sk-aigis-uniform', 'sk-akihiko-hoodie', 'tt-darkhour', 'wp-dorm'] },
-    { id: 'haechan', name: 'Haechan Spotlight', kind: 'Spotlight', months: [12, 1], color: '#ff6f7d', featured: ['sk-haechan-runners', 'wpn-runners', 'wpn-strangers', 'evk-midnight', 'wp-rooftop', 'sk-haechan-sweater'] },
+    { id: 'haechan', name: 'Haechan Spotlight', kind: 'Spotlight', months: [12, 1], color: '#ff6f7d', featured: ['sk-haechan-runners', 'wpn-runners', 'wpn-strangers', 'evk-midnight', 'wp-rooftop', 'sk-haechan-sweater', 'sk-haechan-headphones', 'sk-haechan-arrivals', 'sk-haechan-garage', 'sk-haechan-limelight'] },
     { id: 'hoax', name: 'HOAX World', kind: 'World', months: [1, 2], color: '#9fe06a', featured: ['sk-jungwon-council', 'wpn-jungwon-council', 'wpn-hoax', 'sk-jihoon-pilates', 'sk-jihoon-emo', 'ui-velvet', 'sk-vp'] },
-    { id: 'valentine', name: "Valentine's", kind: 'Seasonal', months: [2], color: '#ff7fb0', featured: ['sk-date', 'evk-rose', 'wpn-sakura', 'ui-sakura', 'wp-mall', 'sk-haechan-sweater', 'sk-prowl', 'sk-limelight'] },
+    { id: 'valentine', name: "Valentine's", kind: 'Seasonal', months: [2], color: '#ff7fb0', featured: ['sk-date', 'evk-rose', 'wpn-sakura', 'ui-sakura', 'wp-mall', 'sk-haechan-sweater', 'sk-prowl', 'sk-limelight', 'sk-haechan-bad', 'sk-haechan-limelight', 'sk-haechan-unravelled', 'sk-emo'] },
     { id: 'akihiko', name: 'Akihiko Spotlight', kind: 'Spotlight', months: [3], color: '#c9d3e6', featured: ['sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-akihiko-hoodie', 'bui-moonlight', 'sk-roadwork'] },
     { id: 'searchers', name: 'The Searchers', kind: 'Spotlight', months: [3], color: '#8fd0ff', featured: ['sk-minji-crew', 'sk-minji-su'] }
   ];

@@ -1,6 +1,6 @@
 # Art to make
 
-**38 items:** 38 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 22 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**24 items:** 24 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 22 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -168,130 +168,9 @@ Save as: `skin-wpn-jungwon-stage.png`
 One ornate rapier, the whole weapon from the tip of the blade to the pommel, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. A white swept-hilt guard trimmed in silver, a fine silver chain looped across the guard, a white grip, a clear crystal pommel catching the light, a slim polished blade.
 ```
 
----
-
-**[ ] Haechan: Headphones On (pose sheet)** *(optional)*  
-Haechan's battle figure in a hood-up, headphones-on look (from Kat's inspo photo).  
-Attach: haechan-posesheet.png, then Haechan, then Kat's inspo photo if she has it saved  
-Save as: `skin-sk-haechan-headphones-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a white zip-up track jacket with royal-blue panels down the sleeves and collar, open over a neon lime-green zip hoodie with the hood pulled up over his head, a plain white tee underneath, white-and-silver over-ear headphones on over the hood, slim black pants and white sneakers. Hair: his own dark brown hair, messy and a little damp-looking, the fringe falling into his eyes under the hood (a look he has really worn). Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Haechan: Headphones On (scene portraits)** *(optional)*  
-His scene faces for the same outfit.  
-Attach: Haechan, then Kat's inspo photo if she has it saved  
-Save as: `skin-sk-haechan-headphones-portraits.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a white track jacket with royal-blue panels, open over a neon lime-green zip hoodie with the hood up, a white tee, white-and-silver over-ear headphones on over the hood. Hair: his own dark brown hair, messy, the fringe falling into his eyes under the hood. A faint green glow on his face, like a monitor in a dark room. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
 ### From Kat's inspo photos (ChatGPT)
 
 Each look below comes from one folder in 🎨 `Femc Mode Images/Inspo/`. Attach the inspo photo last: it's only for the clothes and hair.
-
-**[ ] Haechan: Arrivals Gate (pose sheet)** *(optional)*  
-Haechan's battle figure in an airport look: black frames and a navy overshirt.  
-Attach: haechan-posesheet.png, then Haechan, then Kat's inspo photo (Inspo/Haechan-AirportGlasses/)  
-Save as: `skin-sk-haechan-arrivals-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: an airport look: a boxy navy-black button-up overshirt with a pointed collar and a triangle-flap chest pocket, worn over a plain white tee; a dark brown leather crossbody strap with silver rivets across his chest; black straight trousers and white sneakers; thick black square-framed glasses; a thin silver ring. Hair: his own black hair, full and soft, the fringe falling to the top of his glasses, the sides covering his ears (a look he has really worn). The last attached photo is only a reference for the clothes and hair. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Haechan: Arrivals Gate (scene portraits)** *(optional)*  
-His scene faces for the same outfit.  
-Attach: Haechan, then Kat's inspo photo (Inspo/Haechan-AirportGlasses/)  
-Save as: `skin-sk-haechan-arrivals-portraits.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a boxy navy-black button-up overshirt with a pointed collar, a white tee showing at the neck, a dark brown leather crossbody strap with silver rivets, thick black square-framed glasses. Hair: his own black hair, full and soft, the fringe falling to the top of his glasses, the sides covering his ears. The last attached photo is only a reference for the clothes and hair. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Haechan: Window Seat (pose sheet)** *(optional)*  
-Haechan's battle figure in honey-brown hair, clear frames and a black tee.  
-Attach: haechan-posesheet.png, then Haechan, then Kat's inspo photo (Inspo/Haechan-AirportGlasses2/)  
-Save as: `skin-sk-haechan-windowseat-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: an oversized black tee with a white grunge graphic print (no readable lettering); two silver chains at his throat, a fine rope chain and a chunky one with a silver carabiner clasp; light-wash straight blue jeans; white sneakers; a black leather backpack on one shoulder; clear champagne-tinted round-square glasses; a silver ring. Hair: his own honey-caramel brown hair, a centre-parted curtain fringe sweeping past his cheekbones, glossy and full, covering his ears (a look he has really worn). The last attached photo is only a reference for the clothes and hair. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Haechan: Window Seat (scene portraits)** *(optional)*  
-His scene faces for the same outfit.  
-Attach: Haechan, then Kat's inspo photo (Inspo/Haechan-AirportGlasses2/)  
-Save as: `skin-sk-haechan-windowseat-portraits.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: an oversized black tee with a white grunge graphic print (no readable lettering), two silver chains at his throat (a fine rope chain and a chunky one with a silver carabiner clasp), a black leather backpack strap on one shoulder, clear champagne-tinted round-square glasses. Hair: his own honey-caramel brown hair, a centre-parted curtain fringe sweeping past his cheekbones, glossy and full, covering his ears. The last attached photo is only a reference for the clothes and hair. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Haechan: Bad Influence (pose sheet)** *(optional)*  
-Haechan's battle figure in black streetwear and heavy chains. Matching set with Solar: Night Prowl.  
-Attach: haechan-posesheet.png, then Haechan, then Kat's inspo photo (Inspo/Haechan-BadBoy/)  
-Save as: `skin-sk-haechan-bad-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: an oversized faded black tee with the sleeves rolled and a white block print (no readable lettering); two chunky silver Cuban-link chains; a silver chain bracelet; black fingerless tactical leather gloves; baggy black parachute cargo pants with a black jacket knotted around his hips and a red-orange shirt hanging loose at one side; a black belt with a silver buckle; black boots. Hair: his own jet-black hair, short and textured, the fringe falling across his forehead in messy windswept strands (a look he has really worn). The last attached photo is only a reference for the clothes and hair. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Haechan: Bad Influence (scene portraits)** *(optional)*  
-His scene faces for the same outfit.  
-Attach: Haechan, then Kat's inspo photo (Inspo/Haechan-BadBoy/)  
-Save as: `skin-sk-haechan-bad-portraits.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: an oversized faded black tee with the sleeves rolled, two chunky silver Cuban-link chains. Hair: his own jet-black hair, short and textured, the fringe falling across his forehead in messy windswept strands. Bright midday light, a hard shadow under his jaw. The last attached photo is only a reference for the clothes and hair. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Haechan: Limelight (pose sheet)** *(optional)*  
-Haechan's battle figure in his neon-lime racing-crew comeback look. Matching set with Solar: Limelight.  
-Attach: haechan-posesheet.png, then Haechan, then Kat's inspo photo (Inspo/Haechan-Blingy/)  
-Save as: `skin-sk-haechan-limelight-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a racing-crew K-pop comeback look: a black ribbed knit long-sleeved top; a black tactical chest-rig vest with neon lime-green and silver reflective tape across the chest pockets, small silver stud spikes and buckled straps; a beaded silver chain choker and a long silver chain with a silver dog-tag pendant; a heavy black belt with a big square silver buckle worn low; black cargo trousers with a shredded olive-camouflage fabric overlay at one hip; black combat boots; silver rings; a white-and-electric-blue racing helmet clipped to his belt. Hair: his own dark brown, almost black hair in a shaggy layered cut, the choppy fringe falling into his eyes (a look he has really worn). The last attached photo is only a reference for the clothes and hair. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Haechan: Limelight (scene portraits)** *(optional)*  
-His scene faces for the same outfit.  
-Attach: Haechan, then Kat's inspo photo (Inspo/Haechan-Blingy/)  
-Save as: `skin-sk-haechan-limelight-portraits.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a black ribbed knit top under a black tactical chest-rig vest with neon lime-green and silver reflective tape and small silver stud spikes, a beaded silver chain choker and a long silver chain with a silver dog-tag pendant. Hair: his own dark brown, almost black hair in a shaggy layered cut, the choppy fringe falling into his eyes. Neon green light catching one cheek. The last attached photo is only a reference for the clothes and hair. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Haechan: Unravelled (pose sheet)** *(optional)*  
-Haechan's battle figure in a black open-knit sweater and silver chains. Emo Night set: goes with Solar's Emo Night and Jungwon: Sheer Nerve.  
-Attach: haechan-posesheet.png, then Haechan, then Kat's inspo photo (Inspo/Haechan-EmoBoy/)  
-Save as: `skin-sk-haechan-unravelled-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a black open-knit crochet sweater full of ladder holes and frayed gaps, worn long over a white tee with a faint red print showing through; layered fine silver chain necklaces with a small round pendant; silver rings and a thin silver bracelet; dark-wash slim flared jeans ripped at one knee; black-and-white low-top canvas sneakers with a white starburst print; a little smudged eyeliner. Hair: his own jet-black hair in a shaggy layered cut, the choppy fringe brushing his lashes, wispy at the nape (a look he has really worn). The last attached photo is only a reference for the clothes and hair. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Haechan: Unravelled (scene portraits)** *(optional)*  
-His scene faces for the same outfit.  
-Attach: Haechan, then Kat's inspo photo (Inspo/Haechan-EmoBoy/)  
-Save as: `skin-sk-haechan-unravelled-portraits.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a black open-knit crochet sweater full of ladder holes, a white tee with a faint red print showing through, layered fine silver chain necklaces with a small round pendant, a little smudged eyeliner. Hair: his own jet-black hair in a shaggy layered cut, the choppy fringe brushing his lashes, wispy at the nape. Warm afternoon sun. The last attached photo is only a reference for the clothes and hair. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Haechan: Garage Band (pose sheet)** *(optional)*  
-Haechan's battle figure in a beat-up biker jacket, a band tee and white jeans.  
-Attach: haechan-posesheet.png, then Haechan, then Kat's inspo photo (Inspo/Haechan-LeatherJacket/)  
-Save as: `skin-sk-haechan-garage-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a worn black leather biker jacket with an asymmetric zip, silver hardware and studded epaulettes; under it a black band tee with a faded grey photo print (no readable lettering) and a red-and-black plaid flannel shirt whose cuffs and hem show; white straight-leg jeans; black lace-up combat boots with beige laces; a silver chain necklace with small charms, a silver chain bracelet and chunky silver rings. Hair: his own dark brown, almost black hair swept loosely back from a soft middle part, a few strands falling over his forehead (a look he has really worn). The last attached photo is only a reference for the clothes and hair. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Haechan: Garage Band (scene portraits)** *(optional)*  
-His scene faces for the same outfit.  
-Attach: Haechan, then Kat's inspo photo (Inspo/Haechan-LeatherJacket/)  
-Save as: `skin-sk-haechan-garage-portraits.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a worn black leather biker jacket with silver zips and studded epaulettes, a black band tee with a faded grey photo print (no readable lettering), a red-and-black plaid flannel collar showing under the jacket, a silver chain necklace with small charms. Hair: his own dark brown, almost black hair swept loosely back from a soft middle part, a few strands falling over his forehead. The last attached photo is only a reference for the clothes and hair. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
 
 **[ ] Haechan: Fairground Lights (pose sheet)** *(optional)*  
 Haechan's battle figure in copper hair and a glossy red satin bomber.  
