@@ -327,8 +327,8 @@ window.FemcCosmetics = (() => {
     const x = onIn(`skin:${id}`); if (!x) return null;
     const have = ((readyArt().skins || {})[x.id]?.portraits || {})[id] || [];
     const f = [face, face && face.replace(/-\d+$/, ''), 'neutral', have[0]].find(k => k && have.includes(k));
-    // ?v= bumps when a cut is redone (5: Summer Session's strand gaps, holes inside the hair kept, after the 3rd recut of five outfits, 2026-10-30).
-    return f ? `${G.base}${skinDir(x.id)}portraits/${id}/${f}.webp?v=5` : null;
+    // ?v= bumps when a cut is redone (6: Kat's transparent sheets for eight outfits, 2026-10-30).
+    return f ? `${G.base}${skinDir(x.id)}portraits/${id}/${f}.webp?v=6` : null;
   }
   // The Equipment tab's picture for a fighter's weapon slot (a path from the site root, like a gear's `art`).
   function weaponArt(who) { const x = onIn(`weapon:${who}`); return x ? `${skinDir(x.id)}weapon.webp` : null; }
