@@ -407,7 +407,7 @@ try:
             r = p.eval(r"""(()=>{const C=FemcCosmetics;return {ready:C.ready(C.byId('sk-phantom')),inPool:C.pool().some(x=>x.id==='sk-phantom'),feat:C.featured().map(x=>x.id),eq:C.equip('sk-phantom'),
               pose:C.battle().pose,face:FemcGame.portrait('solar','happy'),sad:FemcGame.portrait('solar','sad')};})()""")
             ok(r['ready'] and r['inPool'] and 'sk-phantom' in r['feat'] and r['eq'] and r['pose'].get('solar', '').endswith('skins/sk-phantom/'), f'art arrived: {r}')
-            ok(r['face'].endswith('skins/sk-phantom/portraits/solar/happy.webp') and r['sad'].endswith('skins/sk-phantom/portraits/solar/happy.webp'), f'scene portraits: {r}')
+            ok(r['face'].split('?')[0].endswith('skins/sk-phantom/portraits/solar/happy.webp') and r['sad'].split('?')[0].endswith('skins/sk-phantom/portraits/solar/happy.webp'), f'scene portraits: {r}')
             ok(p.eval("(()=>{FemcCosmetics.setPortraits(false);const f=FemcGame.portrait('solar','happy');FemcCosmetics.setPortraits(true);return f})()").split('?')[0].endswith('/portraits/solar/happy.webp') and
                '/skins/' not in p.eval("(()=>{FemcCosmetics.setPortraits(false);const f=FemcGame.portrait('solar','happy');FemcCosmetics.setPortraits(true);return f})()"), 'the portrait toggle')
             menu(p, 'wardrobe')
