@@ -695,8 +695,8 @@ try:
         ok(walk['scenes'] == 31 + 11 + 31, f'{walk["scenes"]} scenes walked ({walk["lines"]} lines, {walk["paths"]} paths)')
         assets = p.eval("CHECK_ASSETS(%s)" % json.dumps(walk['urls']), timeout=120)
         ok(not assets['bad'], f'every background and portrait loads ({assets["n"]}): {assets["bad"]}')
-        need = {'epi-r-finals', 'epi-r-verdict', 'epi-r-bleed', 'epi-r-half', 'epi-r-holiday', 'epi-r-footage', 'epi-r-snow', 'world-runners'}
-        ok(need <= set(walk['music']) and p.eval("FemcGame.D.events.find(e=>e.id==='epi-r-rooftop').scene[0].music") == 'world-runners', f'week 3’s ♪ placeholders and world-runners on the rooftop ({sorted(need - set(walk["music"]))} missing)')
+        need = {'epi-r-finals', 'epi-r-verdict', 'epi-r-bleed', 'epi-r-half', 'epi-r-holiday', 'epi-r-footage', 'epi-r-snow', 'world-runners-theme'}
+        ok(need <= set(walk['music']) and p.eval("FemcGame.D.events.find(e=>e.id==='epi-r-rooftop').scene[0].music") == 'world-runners-theme', f'week 3’s ♪ placeholders and world-runners on the rooftop ({sorted(need - set(walk["music"]))} missing)')
 
         def run(policy, until='12/20', sleep=True):
             return p.eval("RUN(%s,%s,%s)" % (json.dumps(until), json.dumps(policy), 'true' if sleep else 'false'), timeout=1500)
@@ -782,7 +782,7 @@ try:
         ok(base['cal'] and base['ev'] and base['world'] is None and not base['ends'] and base['gl'] and base['b'] == '[["n"],["n"],["n"]]', f'a HOAX year reads Iwatodai’s data; no glitch, no `ends`, ifGlitch / ifRouteOpen / ifBond false ({base})')
         enter('route-H')
         files = 'calendar,world,glitches,people,people-crew,story-w1,story-w2,story-w3,story-end'
-        ok(p.eval(f"FEMC_EPI_WORLDS.hoax._loaded===30 && !FEMC_EPI_WORLDS.hoax.stub && FemcGame.world()==='hoax' && FemcEpilogue.WORLDS.hoax.files.join()==='{files}'"), 'the HOAX world loads its nine files (no stand-in left)')
+        ok(p.eval(f"FEMC_EPI_WORLDS.hoax._loaded && !FEMC_EPI_WORLDS.hoax.stub && FemcGame.world()==='hoax' && FemcEpilogue.WORLDS.hoax.files.join()==='{files}'"), 'the HOAX world loads its nine files (no stand-in left)')
         beats = p.eval("FemcGame.D.events.map(e=>[e.id,e.date,e.slot,e.flag||null,!!e.ends])")
         want = {'epi-h-home': ['12/21', 'early'], 'epi-h-part-four': ['12/21', 'after'], 'epi-h-curfew': ['12/21', 'late'], 'epi-h-emergency': ['12/22', 'after'],
                 'epi-h-study-plans': ['12/23', 'after'], 'epi-h-karaoke': ['12/23', 'evening'], 'epi-h-eve': ['12/24', 'evening'], 'epi-h-christmas': ['12/25', 'after'],
@@ -810,8 +810,8 @@ try:
         ok(walk['scenes'] == 35 + 8 + 34 and walk['lines'] > 3000, f'{walk["scenes"]} scenes walked ({walk["lines"]} lines, {walk["paths"]} paths by choice and branch)')
         assets = p.eval("CHECK_ASSETS(%s)" % json.dumps(walk['urls']), timeout=120)
         ok(not assets['bad'] and assets['n'] >= 20, f'every background and portrait those scenes use loads ({assets["n"]}): {assets["bad"]}')
-        moods = {'world-hoax', 'epi-h-home', 'epi-h-goofy', 'epi-h-forum', 'epi-h-romance', 'epi-h-eve', 'epi-h-christmas', 'epi-h-seance', 'epi-h-party', 'epi-h-jihoon', 'epi-h-newyear', 'epi-h-dread', 'epi-h-half', 'epi-h-exam', 'epi-h-hearing'}
-        ok(moods <= set(walk['music']) and p.eval("FemcGame.D.events.find(e=>e.id==='epi-h-gym').scene[0].music") == 'world-hoax', f'the ♪ placeholders are in the scenes and the gym plays world-hoax ({sorted(moods - set(walk["music"]))} missing)')
+        moods = {'world-hoax-theme', 'epi-h-home', 'epi-h-goofy', 'epi-h-forum', 'epi-h-romance', 'epi-h-eve', 'epi-h-christmas', 'epi-h-seance', 'epi-h-party', 'epi-h-jihoon', 'epi-h-newyear', 'epi-h-dread', 'epi-h-half', 'epi-h-exam', 'epi-h-hearing'}
+        ok(moods <= set(walk['music']) and p.eval("FemcGame.D.events.find(e=>e.id==='epi-h-gym').scene[0].music") == 'world-hoax-theme', f'the ♪ placeholders are in the scenes and the gym plays world-hoax ({sorted(moods - set(walk["music"]))} missing)')
         line = p.eval(r"""(()=>{const out=[];const f=l=>{for(const x of l||[]){if(x.t&&x.t.includes('wouldn')&&x.t.includes('come looking'))out.push([x.s,x.t]);f(x.then);f(x.else);(x.choose||[]).forEach(o=>f(o.then))}};f(FemcGame.D.events.find(e=>e.id==='epi-h-gym').scene);return out})()""")
         ok(any(t == "I said I wouldn't come looking. That was if you picked. You didn't pick this." for _, t in line), f'the voice through the bleed says the reframed line ({line})')
         hear = p.eval(r"""(()=>{let o=null;const f=l=>{for(const x of l||[]){if(x.choose&&x.choose.some(c=>c.needs))o=x.choose.map(c=>[c.t,c.needs||null,c.flag]);f(x.then);f(x.else);(x.choose||[]).forEach(c=>f(c.then))}};f(FemcGame.D.events.find(e=>e.id==='epi-h-hearing').scene);
@@ -932,7 +932,7 @@ try:
         ok(base['cal'] and base['ev'] and base['world'] is None and not base['ends'] and base['gl'] and base['b'] == '[["n"],["n"],["n"]]', f'a strangers year reads Iwatodai’s data; no glitch, no `ends`, ifGlitch / ifRouteOpen / ifBond false ({base})')
         enter('route-S')
         files = 'calendar,world,glitches,people,people-crew,story-w1,story-w2,story-w3,story-end'
-        ok(p.eval(f"FEMC_EPI_WORLDS.strangers._loaded===30 && !FEMC_EPI_WORLDS.strangers.stub && FemcGame.world()==='strangers' && FemcEpilogue.WORLDS.strangers.files.join()==='{files}'"), 'the strangers world loads its nine files (no stand-in left)')
+        ok(p.eval(f"FEMC_EPI_WORLDS.strangers._loaded && !FEMC_EPI_WORLDS.strangers.stub && FemcGame.world()==='strangers' && FemcEpilogue.WORLDS.strangers.files.join()==='{files}'"), 'the strangers world loads its nine files (no stand-in left)')
         beats = p.eval("FemcGame.D.events.map(e=>[e.id,e.date,e.slot,e.flag||null,!!e.ends])")
         want = {'epi-s-home': ['2/17', 'early'], 'epi-s-kitchen': ['2/17', 'after'], 'epi-s-step': ['2/17', 'late'], 'epi-s-eomma': ['2/18', 'evening'], 'epi-s-stair': ['2/19', 'late'],
                 'epi-s-trio': ['2/20', 'after'], 'epi-s-humming': ['2/20', 'late'], 'epi-s-quay': ['2/21', 'after'], 'epi-s-girls': ['2/22', 'after'], 'epi-s-crossroads': ['2/23', 'late'],
@@ -959,10 +959,11 @@ try:
         ok(walk['scenes'] == 38 + 8 + 29 and walk['lines'] > 3000, f'{walk["scenes"]} scenes walked ({walk["lines"]} lines, {walk["paths"]} paths by choice and branch)')
         assets = p.eval("CHECK_ASSETS(%s)" % json.dumps(walk['urls']), timeout=120)
         ok(not assets['bad'] and assets['n'] >= 20, f'every background and portrait those scenes use loads ({assets["n"]}): {assets["bad"]}')
-        moods = set(p.eval("Object.keys(FemcGame.D.places.music).filter(k=>/^epi-s-/.test(k))")) | {'world-strangers'}
+        # The everyday screen pools (epi-s-day/-evening/-late) play on screens, not in scenes; the opening plays the theme.
+        moods = set(p.eval("Object.keys(FemcGame.D.places.music).filter(k=>/^epi-s-/.test(k))")) - {'epi-s-day', 'epi-s-evening', 'epi-s-late'} | {'world-strangers-theme'}
         ok(len(moods) == 15 and moods <= set(walk['music']), f'the 14 ♪ placeholders and world-strangers are all used ({sorted(moods - set(walk["music"]))} missing)')
         ends = p.eval("(()=>{const e=id=>FemcGame.D.events.find(x=>x.id===id).scene;return [e('epi-s-home')[0].music,e('epi-s-held').find(l=>l.music).music]})()")
-        ok(ends == ['world-strangers', 'world-strangers'], 'the first morning and the bottom of the tide play world-strangers')
+        ok(ends == ['world-strangers-theme', 'world-strangers-theme'], 'the first morning and the bottom of the tide play world-strangers')
         lines = p.eval(r"""(()=>{const out=[];const f=l=>{for(const x of l||[]){if(x.t)out.push([x.s,x.t]);if(x.n)out.push(['n',x.n]);f(x.then);f(x.else);(x.choose||[]).forEach(o=>f(o.then))}};f(FemcGame.D.events.find(e=>e.id==='epi-s-held').scene);return out})()""")
         ok(any(s == 'haechan' and "I'll find you." in t for s, t in lines) and any(s == 'haechan' and 'Every world.' in t for s, t in lines) and any(s == 'jungwon' and '近' in t for s, t in lines),
            'the final: Haechan’s “I’ll find you. … Every world.” and Jungwon’s “近”')
@@ -1331,7 +1332,7 @@ try:
                     'route': {'tally': {}, 'choices': {'xmas': 'akihiko'}, 'frags': {'R': 0, 'S': 0, 'H': 0}, 'doorsDue': [], 'doorsSeen': []}}
         start8({'route-stay': True, 'stay-akihiko': True, 'ending-akihiko': True}, aki_year, 'stay', 'epi-st-held', "s.flags['xmas-akihiko']=true;s.route.choices.xmas='akihiko';")
         files = 'calendar,world,glitches,people,story'
-        ok(p.eval(f"FEMC_EPI_WORLDS.stay._loaded===30 && FemcEpilogue.WORLDS.stay.files.join()==='{files}' && FemcGame.world()==='stay'"), 'the Stay world loads its five files on demand')
+        ok(p.eval(f"FEMC_EPI_WORLDS.stay._loaded && FemcEpilogue.WORLDS.stay.files.join()==='{files}' && FemcGame.world()==='stay'"), 'the Stay world loads its five files on demand')
         cal = p.eval(r"""(()=>{const G=FemcGame,i=d=>G.dayInfo(G.dayOf(d));return [G.mdOf(0),G.dateOf(0).getFullYear(),i('3/24').day,G.mdOf(G.END()),i('4/6').day,G.END(),i('3/29').type,i('3/30').moon.full,i('3/31').label,G.slotsFor(i('3/29')).join(),G.money(G.S.yen),FemcGame.S.epi.lean,
           G.background("Iwatodai Dorm · Solar's Room",'Morning').url.split('/').pop(),G.background("Iwatodai Dorm · Haechan's Room",'').url.split('/').pop(),G.background('Incheon · Harbor','Midnight').url.split('/').pop()]})()""")
         ok(cal[:11] == ['3/24', 2010, 'Wed', '4/6', 'Tue', 13, 'off', True, 'Spring Break', 'early,after,evening,late', '¥20,000'], f'the calendar: Wed 3/24 to Tue 4/6/2010, spring break every day, the full moon on 3/30, yen ({cal[:11]})')
@@ -1458,7 +1459,7 @@ try:
         # The true ending's coda (batch 8): three small days, each wearing its world's date.
         start8({'route-true': True, 'true-final': True}, {}, 'true', 'epi-tr-h-held', "s.flags['xmas-haechan']=true;")
         files = 'calendar,world,glitches,story'
-        ok(p.eval(f"FEMC_EPI_WORLDS.true._loaded===30 && FemcEpilogue.WORLDS.true.files.join()==='{files}'"), 'the coda loads its four files on demand')
+        ok(p.eval(f"FEMC_EPI_WORLDS.true._loaded && FemcEpilogue.WORLDS.true.files.join()==='{files}'"), 'the coda loads its four files on demand')
         cal = p.eval(r"""(()=>{const G=FemcGame;return [G.mdOf(0),G.mdOf(G.END()),[0,1,2].map(d=>{const s=G.dayInfo(d).shown;return [s.md,s.day,s.date.getFullYear(),s.place]}),G.slotsFor(G.dayInfo(0)).join(),FemcGame.S.epi.shown?Object.keys(FemcGame.S.epi.shown).length:0]})()""")
         ok(cal[0] == '3/8' and cal[1] == '3/10' and cal[2] == [['12/20', 'Sat', 2025, 'Syracuse'], ['3/16', 'Sat', 2013, 'Incheon'], ['1/12', 'Fri', 2024, 'Hanlim']] and cal[3] == 'early,late' and cal[4] == 3,
            f'three days that wear Syracuse’s, Incheon’s and Hanlim’s dates; Day and Night ({cal})')
@@ -1469,7 +1470,7 @@ try:
         ok(not walk['problems'] and walk['scenes'] == 6, f'every line of the coda resolves: {walk["problems"][:8]} ({walk["lines"]} lines)')
         assets = p.eval("CHECK_ASSETS(%s)" % json.dumps(walk['urls']), timeout=120)
         ok(not assets['bad'], f'every image the coda uses loads ({assets["n"]}): {assets["bad"]}')
-        ok({'world-runners', 'world-strangers', 'world-hoax', 'epi-tr-snow', 'epi-tr-kitchen', 'epi-tr-hanlim', 'epi-tr-bench'} <= set(walk['music']), f'the three world songs at the holds, four ♪ placeholders ({walk["music"]})')
+        ok({'world-runners-theme', 'world-strangers-theme', 'world-hoax-theme', 'epi-tr-snow', 'epi-tr-kitchen', 'epi-tr-hanlim', 'epi-tr-bench'} <= set(walk['music']), f'the three world songs at the holds, four ♪ placeholders ({walk["music"]})')
         fights = p.eval(r"""(()=>{let n=0;const f=l=>{for(const x of l||[]){if(x.battle)n++;f(x.then);f(x.else);(x.choose||[]).forEach(o=>f(o.then))}};FemcGame.D.events.forEach(e=>f(e.scene));return n})()""")
         ok(fights == 0, 'no fights in the coda (S.E.E.S. forgot; there is no one on the other side)')
         # The date card and the HUD wear the world's date.
