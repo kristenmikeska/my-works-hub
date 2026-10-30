@@ -85,7 +85,9 @@ window.FemcScene = (() => {
     const keepRot = () => { try { localStorage.setItem(ROT, JSON.stringify({ rot })); } catch (e) {} };
     const vol = () => (ducked ? 0 : Math.max(0, Math.min(100, G?.settings().music ?? 60)) / 100 * 0.5);
     const wvol = () => vol() * SOFT;
-    const MAP = () => window.FEMC_GAME_PLACES.music;
+    // The active world's map (an epilogue's world.js merges its own moods over the main ones), else Iwatodai's. Reading only
+    // FEMC_GAME_PLACES left every epi-* mood to fall back to `joy` (Kat heard Persona music all through the epilogues).
+    const MAP = () => G?.D?.places?.music || window.FEMC_GAME_PLACES.music;
     const isWorld = m => /^world-/.test(m || '');
     const pool = m => [].concat(MAP()[m] ?? MAP().joy);
     const src = f => `${G.base}${f.includes('/') ? f : `assets/femc/music/${f}.mp3`}`;
