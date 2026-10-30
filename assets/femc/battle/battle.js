@@ -1656,7 +1656,8 @@
       line: l => { mapLine = l; },
       sleep, speed, setCtl: c => { ctl = c; },
       solarAg: () => memberStats(D.party[0], save.lvl, treeFx()).ag,
-      plumes: n => { if (HS) HS.plumes = (HS.plumes || 0) + n; }
+      plumes: n => { if (HS) HS.plumes = (HS.plumes || 0) + n; },
+      golden: () => { if (tallyOn()) HS.tally.rares = (HS.tally.rares || 0) + 1; } // a golden Shadow caught (the night's tally)
     };
   }
   const lootHtml = c => {
@@ -4773,7 +4774,8 @@
   let HS = null; // this handoff: what Solar brought in, and what changed since
   /* Elizabeth's Requests (game requests.js) count Shadows beaten and weaknesses struck on story Tartarus nights only: never
      practice, a full moon, the epilogue or a scripted fight (golden Shadows count; one that runs off isn't beaten). HS.tally →
-     hoResult `tally` → core.js applyResult. */
+     hoResult `tally` → core.js applyResult. Since the renewable plumes (2026-10-29) it also counts golden Shadows caught
+     (`rares`, ttCtx golden() from tartarus.js's rare room), and the night's plumes are scaled by it (game gacha.js nightPlumes). */
   const tallyOn = () => !!(HS && HO && HO.kind === 'tartarus' && !HO.request.epi && run && !run.ops && !(curSpec && curSpec.op));
   const hoAvail = () => (HO ? ['solar'].concat((HO.request.available || []).filter(id => id !== 'solar' && member(id))) : D.party.filter(m => !m.searcher).map(m => m.id));
   const hoTired = () => (HO && ['tired', 'sick'].includes(HO.request.condition) ? { solar: true } : {});
@@ -4813,7 +4815,7 @@
     delete save.forceForm;
     if (save.reached) { const i = D.floors.findIndex(f => f.id === save.reached), f = D.floors[i]; if (i < 0 || (f.secret ? !(TT && TT.floorOpen(ttCtx(f), f)) : f.bi > hoBlockCap())) save.reached = null; }
     E.formsList().forEach(f => { if (!save.forms.includes(f) && E.formUnlocked(Object.assign({}, save, { forms: [] }), f)) save.forms.push(f); });
-    HS = { items0: Object.assign({}, save.items), yen0: save.yen, exp: {}, frags: [], bosses: [], floor: 0, entered: false, scripted: false, finished: false, gifts, plumes: 0, keep, tally: { kills: 0, weak: {} } };
+    HS = { items0: Object.assign({}, save.items), yen0: save.yen, exp: {}, frags: [], bosses: [], floor: 0, entered: false, scripted: false, finished: false, gifts, plumes: 0, keep, tally: { kills: 0, weak: {}, rares: 0 } };
     // Night kits from bonds (Fuuka's bento, Ken's bead, Sunoo's soul): only good tonight, never sent back.
     // Night-only dishes the life sim packed (request.kits: Shinjiro's Kitchen Duty leftovers).
     if (HO.kind === 'tartarus' && R.kits) Object.entries(R.kits).forEach(([k, n]) => { if (D.items[k] && n > 0) { save.items[k] = (save.items[k] || 0) + n; mark('night-kit-' + k); } });
@@ -4872,7 +4874,7 @@
       r.fatigue = HS.entered ? (['tired', 'sick'].includes(R.condition) ? 'sick' : 'tired') : (R.condition || 'good');
       r.floorsReached = HS.floor || 0;
       if (HS.plumes) r.plumes = HS.plumes; // Velvet Plumes from vaults, guardians, rare Shadows and hidden rooms (core.js applyResult)
-      if (HS.tally && (HS.tally.kills || Object.keys(HS.tally.weak).length)) r.tally = { kills: HS.tally.kills, weak: Object.assign({}, HS.tally.weak) }; // Elizabeth's Requests
+      if (HS.tally && (HS.tally.kills || HS.tally.rares || Object.keys(HS.tally.weak).length)) r.tally = { kills: HS.tally.kills, weak: Object.assign({}, HS.tally.weak), rares: HS.tally.rares || 0 }; // the night's plumes (gacha.js nightPlumes) and Elizabeth's Requests
     } else if (HO.kind === 'operation' && !HS.scripted && outcome !== 'interrupt') r.fatigue = R.condition === 'sick' ? 'sick' : 'tired';
     return Object.assign(r, extra);
   }

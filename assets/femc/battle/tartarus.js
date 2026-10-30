@@ -372,7 +372,7 @@ window.FemcTartarus = (() => {
       const r = await c.fight({ group: n.group, rules: { fleeAt: 3 }, music: 'battle', nav: 'rareSpot' });
       if (r === 'over' || r === 'savepoint') return r;
       if (r === 'win') {
-        n.cleared = true; c.save.tt.rares++; c.mark('rare-win');
+        n.cleared = true; c.save.tt.rares++; c.golden?.(); c.mark('rare-win'); // golden(): the night's tally (story nights; battle.js)
         await showLoot(c, floor, loot('rare', c, floor), { title: 'CAUGHT IT', kicker: 'A rare Shadow', name: 'rare-loot', line: c.navLine('rareWin') });
         return null;
       }

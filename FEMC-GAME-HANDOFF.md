@@ -74,9 +74,11 @@ result: {
                                 //   going while already tired → 'sick' (P3). Scripted fights: omit.
   fragments: ['runners-monitor'],                  // memory fragments found (event rooms, hidden rooms), ids from data.js `memories`
   plumes: 1,                    // Tartarus only, optional: Velvet Plumes found (vaults, guardians, rare Shadows, hidden rooms); core.js adds them to S.gacha
-  tally: { kills: 14, weak: { fire: 3, ice: 1 } }, // Tartarus only, optional (2026-10-29): Shadows beaten and weaknesses struck by element,
-                                //   story nights only (not full moons, practice or the epilogue); core.js applyResult → requests.js afterFight
-                                //   adds them to S.gacha.tally for Elizabeth's Requests
+  tally: { kills: 14, weak: { fire: 3, ice: 1 }, rares: 1 }, // Tartarus only, optional (2026-10-29): Shadows beaten, weaknesses struck by
+                                //   element and golden Shadows caught (`rares`, added with the renewable plumes; older results lack it),
+                                //   story nights only (not full moons, practice or the epilogue); core.js applyResult → gacha.js afterFight
+                                //   pays the night's plumes from it (1 + 1 per 15 Shadows + 1 per golden Shadow, 5 at most), then
+                                //   requests.js afterFight adds it to S.gacha.tally for Elizabeth's Requests (counting only)
   bossesCleared: ['priestess'], // operations won (also unlocks shop tiers: 1 + bosses cleared)
   floorsReached: 25             // highest floor reached this run
 }
