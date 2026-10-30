@@ -157,7 +157,7 @@
       { music: 'epi-r-sisters' },
       { n: "Hanni was cross-legged on her bed with the formal list in her lap, Alpha's half of the nineteenth, every name and every plus-one and every allergy, and a column down the right-hand side that somebody had added in red pen and titled INITIALS. Hyein was at the machine on the other side of the room with one earbud in, feeding it something wine-colored. Gerald, the dress form, stood in the corner in half of somebody's velvet, watching all of them with his no face." },
       { n: "Hanni's phone was face down on the duvet. Hanni did not put her phone face down. Hanni slept with her phone on her chest like a cat." },
-      { s: 'hanni', f: 'neutral', t: "My mom wrote a thank-you card." },
+      { s: 'hanni', f: 'sad', t: "My mom wrote a thank-you card." },
       { s: 'hanni', f: 'flustered', t: "To the cabin. For having us. She says it's what you do when someone has your daughter for ten days and sends her back in one piece. She asked me for the address." },
       { s: 'solar', f: 'serious', t: "Which address." },
       { s: 'hanni', f: 'sad', t: "...The one I made up. In the hallway. In about one second." },
@@ -170,8 +170,8 @@
       { s: 'hanni', f: 'flustered', t: "I was looking at him! I panicked! She said *Gerald what,* and I said—" },
       { s: 'hyein', f: 'happy', t: "Lodge." },
       { s: 'hanni', f: 'flustered', t: "Gerald Lodge. Like that was a normal name. Like I'd said it a hundred times. Mr. Gerald Lodge, One Lake Road, the Adirondacks, New York." },
-      { s: 'hyein', f: 'serious', t: "There are like four hundred Lake Roads in the Adirondacks." },
-      { s: 'hanni', f: 'serious', t: "That's what I was COUNTING on." },
+      { s: 'hyein', f: 'happy', t: "There are like four hundred Lake Roads in the Adirondacks." },
+      { s: 'hanni', f: 'flustered', t: "That's what I was COUNTING on." },
       { n: "Solar laughed, she couldn't help it, it came out of her like something knocked over, and Hanni laughed too, and Hyein laughed so hard the machine ate a corner of the wine silk and she had to stop and swear at it. And then Hanni stopped laughing, about one second before Solar did. Solar heard the second." },
       { s: 'hanni', f: 'sad', t: "She mailed it on Thursday. It's going to come back. It's going to come back to her with a yellow sticker on it that says no such address, and she's going to stand in our kitchen at home holding it, and then she's going to call me." },
       { s: 'hanni', f: 'serious', t: "And I'm going to say something. I don't know what yet. Whatever it is, I'll say it really well." },
@@ -196,11 +196,11 @@
         ] }
       ] },
       { ifFlag: 'epi-r-danielle-initial', then: [
-        { s: 'hanni', f: 'neutral', t: "You initialed yours. I saw. It's very neat. I hate how neat it is." }
+        { s: 'hanni', f: 'serious', t: "You initialed yours. I saw. It's very neat. I hate how neat it is." }
       ], else: [{ ifFlag: 'epi-r-danielle-blank', then: [
         { s: 'hanni', f: 'serious', t: "Yours is the only empty box on the whole page. She circled it. In red. Just a circle, no note. I think the circle is the note." }
       ], else: [
-        { s: 'hanni', f: 'neutral', t: "Danielle wants every line initialed. Every single one. I asked her what for. She said *for the records.* I asked which records. She said *the records* again, slower, like I was a pledge." },
+        { s: 'hanni', f: 'serious', t: "Danielle wants every line initialed. Every single one. I asked her what for. She said *for the records.* I asked which records. She said *the records* again, slower, like I was a pledge." },
         { s: 'hanni', f: 'serious', t: "She's doing yours in person. She told me that like it was a favor." }
       ] }] },
       { n: "Hanni initialed her own line, *H.P.,* pressing hard enough to go through to the page underneath, and turned the list over, and turned her phone back over too, face up, the way it should be. It didn't ring. It would. Not tonight. She held it together until eleven, which was the deal she'd made with herself, and at eleven she put her head down on Solar's shoulder and let it all go a little, quietly, and Hyein kept sewing so there'd be something else to listen to." }
@@ -228,10 +228,10 @@
         { s: 'hyein', f: 'happy', t: "I put something inside his collar. Little. Gold. A sun. You'd only ever see it if you undid the top button." },
         { n: "Solar's whole face went hot so fast she felt it in her ears, and Hyein felt her go hot, and was so pleased with herself she stuck her with a pin." },
         { s: 'haechan', f: 'serious', t: "What did she put in the collar." },
-        { s: 'hyein', f: 'neutral', t: "Nothing. Structural." }
+        { s: 'hyein', f: 'happy', t: "Nothing. Structural." }
       ], else: [
         { n: "On the back of the door hung a black shirt on a hanger, with a sticky note on its shoulder in Hyein's capitals: HAECHAN (HE DOESN'T KNOW YET)." },
-        { s: 'hyein', f: 'neutral', t: "He said no. I made it anyway. Chenle says he'll wear it. Chenle's never been wrong about anything, it's disgusting." },
+        { s: 'hyein', f: 'happy', t: "He said no. I made it anyway. Chenle says he'll wear it. Chenle's never been wrong about anything, it's disgusting." },
         { s: 'hyein', f: 'happy', t: "There's a tiny pair of headphones embroidered inside the collar. So he knows I know." }
       ] },
       { ifEpiRoute: 'cover', then: [
@@ -250,7 +250,7 @@
         { t: "Is the back... legal?", then: [
           { s: 'hyein', f: 'serious', t: "It's legal in this state." },
           { s: 'jaemin', f: 'happy', t: "It's legal at MY house. I make the laws at my house." },
-          { s: 'hanni', f: 'neutral', t: "Jeno makes the laws at your house. You just write them down." },
+          { s: 'hanni', f: 'happy', t: "Jeno makes the laws at your house. You just write them down." },
           { s: 'jaemin', f: 'sad', t: "...That's fair." },
           { stat: { charm: 1 } }
         ] }
@@ -280,7 +280,7 @@
       ], else: [
         { n: "Olivia was on the bed eating Minji's snacks with the volume of a person eating somebody else's snacks, and Haerin was on the floor with her back to the radiator and a textbook open on her knees that she was not reading. Minji had texted the three of them at once. *done with my last final. come see something. you can say no.* Nobody had said no." }
       ] },
-      { s: 'minji', f: 'neutral', t: "I shot it at sixty frames. I want you to see it at sixty frames. Okay?" },
+      { s: 'minji', f: 'serious', t: "I shot it at sixty frames. I want you to see it at sixty frames. Okay?" },
       { n: "She pressed play. On the screen the snow fell the way snow fell, slant and slow across the quad, and then it stopped. All of it, every flake, hung in the air over two hundred heads like somebody had pressed pause on the world and forgotten to tell the people. And then it went up. Slowly. Back up into the gray it had come out of, and every face on the quad tipped up after it at once, and every phone came up after the faces." },
       { n: "Then it fell again, the right way, like nothing had happened, and the quad stood there in it." },
       { s: 'minji', f: 'serious', t: "Four seconds. Two hundred and forty frames. I've been through every one." },
@@ -300,7 +300,7 @@
               { bond: { minji: 1 } }
             ] },
             { t: "Yes. But not the green frame. That one's ours.", flag: 'epi-r-reel-cut', then: [
-              { s: 'minji', f: 'neutral', t: "That one was never going in." },
+              { s: 'minji', f: 'happy', t: "That one was never going in." },
               { n: "She dragged the single frame into its folder with no name, the blank one, and the four seconds of snow into the timeline in its place, and the two of them sat and watched where it landed, and it fit like it had been waiting for that exact spot." },
               { bond: { minji: 1 } }
             ] },
@@ -322,20 +322,20 @@
           ] }
         ] }
       ], else: [
-        { s: 'olivia', t: "I WAS IN THE DINING HALL. I missed it. I missed the ONE thing. Everyone in my Econ final was talking about it and I was eating a waffle." },
-        { s: 'haerin', t: "I saw it." },
-        { s: 'olivia', t: "You SAW it? You didn't SAY?" },
-        { s: 'haerin', t: "It went up." },
+        { s: 'olivia', f: 'sad', t: "I WAS IN THE DINING HALL. I missed it. I missed the ONE thing. Everyone in my Econ final was talking about it and I was eating a waffle." },
+        { s: 'haerin', f: 'neutral', t: "I saw it." },
+        { s: 'olivia', f: 'surprised', t: "You SAW it? You didn't SAY?" },
+        { s: 'haerin', f: 'neutral', t: "It went up." },
         { n: "That was the whole of Haerin's report. Olivia stared at her. Haerin turned a page of the textbook she wasn't reading. Minji laughed, the real one, the one she kept for when she'd forgotten anyone was listening, and Solar found she was laughing too, which she hadn't expected to do in front of that footage, ever." },
-        { s: 'minji', f: 'neutral', t: "Okay. Food. All of us. That's not a question, Sol, it's a team thing." },
+        { s: 'minji', f: 'happy', t: "Okay. Food. All of us. That's not a question, Sol, it's a team thing." },
         { choose: [
           { t: "Team thing.", then: [
             { n: "The four of them went down the honors dorm stairs in a clump with their hoods up, Olivia narrating the waffle, Haerin half a step behind saying nothing, Minji with her camera bag zipped shut over her shoulder the whole way, and Solar in the middle of it, where she'd always liked to be, quietly holding the line." },
             { bond: { minji: 1 } }
           ] },
           { t: "I should study.", then: [
-            { s: 'olivia', t: "You should EAT. You look like a Victorian ghost." },
-            { s: 'haerin', t: "She does." },
+            { s: 'olivia', f: 'serious', t: "You should EAT. You look like a Victorian ghost." },
+            { s: 'haerin', f: 'neutral', t: "She does." },
             { n: "Two votes from the girl who barely voted. She went." },
             { stat: { kindness: 1 } }
           ] }
@@ -360,13 +360,13 @@
         { s: 'jaehyun', f: 'neutral', t: "For two. You confirmed. She forwarded me the confirmation, which means she forwarded Dad the confirmation, which means he's already decided what we're doing on the twenty-third." }
       ], else: [{ ifFlag: 'epi-r-travel-no', then: [
         { s: 'jaehyun', f: 'serious', t: "She booked it for two anyway. She said she'd hold the second seat until the car pulls away. She said it the way she says everything." },
-        { s: 'jaehyun', f: 'neutral', t: "...I'm not going to ask you." },
+        { s: 'jaehyun', f: 'sad', t: "...I'm not going to ask you." },
         { n: "He said it to the textbook. It sounded like it had cost him something, and he'd paid it anyway, and she didn't know what to do with a brother who paid for things like that, so she ate the rest of the sandwich." }
       ], else: [
         { s: 'jaehyun', f: 'neutral', t: "She booked it for two. She's still waiting on yours. Thursday." }
       ] }] },
       { s: 'jaehyun', f: 'serious', t: "Johnny took Mark off the committee for the nineteenth. Johnny doesn't take anybody off anything without telling me first. He told me after." },
-      { s: 'jaehyun', f: 'neutral', t: "The house is cold on him. Nobody saves him a seat at dinner. I can feel it when I walk in, like somebody left a door open." },
+      { s: 'jaehyun', f: 'serious', t: "The house is cold on him. Nobody saves him a seat at dinner. I can feel it when I walk in, like somebody left a door open." },
       { s: 'jaehyun', f: 'serious', t: "Do you know why?" },
       { choose: [
         { t: "It's not mine to tell.", then: [
@@ -389,7 +389,7 @@
         ] }
       ] },
       { ifFlag: 'epi-r-public-post', then: [
-        { s: 'jaehyun', f: 'neutral', t: "I saw your post." },
+        { s: 'jaehyun', f: 'serious', t: "I saw your post." },
         { n: "Measured. Not loud. Never loud, with him; loud was for people who hadn't finished thinking yet." },
         { s: 'jaehyun', f: 'neutral', t: "Somebody sent it to me. I don't have the app. I had to make an account to see it. Then I deleted the account." },
         { s: 'jaehyun', f: 'serious', t: "We're going to talk about it. Not here. Not this week." },
@@ -415,7 +415,7 @@
       { s: 'chenle', f: 'serious', t: "Four point two seconds. On all three. Within two frames of each other." },
       { s: 'solar', f: 'serious', t: "What is it?" },
       { s: 'chenle', f: 'neutral', t: "I don't know." },
-      { s: 'chenle', f: 'neutral', t: "That's why I wrote it down. Somebody should write it down who doesn't exaggerate." },
+      { s: 'chenle', f: 'serious', t: "That's why I wrote it down. Somebody should write it down who doesn't exaggerate." },
       { n: "The folder on his desktop was named the date. Nothing else. *12-15-2025.* He'd never once in his life named a folder something it wasn't." },
       { choose: [
         { t: "Can I have a copy?", then: [
@@ -425,7 +425,7 @@
         ] },
         { t: "Delete it.", then: [
           { n: "He looked at her. Not at the screen. At her, which he did maybe twice a semester, and it went on long enough that she wished she hadn't said it." },
-          { s: 'chenle', f: 'neutral', t: "No." },
+          { s: 'chenle', f: 'serious', t: "No." },
           { s: 'chenle', f: 'serious', t: "Not because I want it. Because if it happens again, somebody's going to say it didn't happen the first time. I'd like to be able to say it did." },
           { s: 'chenle', f: 'neutral', t: "I won't show anyone. That's different from deleting it." },
           { bond: { chenle: 1 } }
@@ -455,16 +455,16 @@
       { n: "*8:00 · doors (JENO).* *8:15 · Hyein's looks arrive (EVERYONE LOOK).* *9:00 · a few words (JAEMIN, 3 min).* Somebody had crossed out the 3 and written *lol* in pencil. *10:00 · photo wall.* *12:00 · the toast (EVERYONE).* At the bottom, underlined twice: *NO PINK PUNCH. I MEAN IT. JENO.*" },
       { n: "Jaemin was standing in front of it with his arms folded like a bouncer. Jeno was at the island measuring something with his feet, heel to toe across the tile, counting under his breath. Jisung was on the floor surrounded by extension cords, untangling them with the patience of somebody who'd been told it was important." },
       { s: 'jaemin', f: 'happy', t: "Solar. Look at it. It's perfect. It's the most perfect document this house has ever produced and that includes the charter." },
-      { s: 'jeno', t: "Doors is me. Nobody gets in who isn't on the list." },
-      { s: 'jeno', t: "Unless they're fun." },
+      { s: 'jeno', f: 'serious', t: "Doors is me. Nobody gets in who isn't on the list." },
+      { s: 'jeno', f: 'happy', t: "Unless they're fun." },
       { s: 'jaemin', f: 'serious', t: "Jeno." },
-      { s: 'jeno', t: "Or they bring something." },
+      { s: 'jeno', f: 'happy', t: "Or they bring something." },
       { s: 'jaemin', f: 'serious', t: "JENO." },
       { n: "Next to the run of show, under its own magnet, a budget. Both houses, every line costed to the cent, the punch and the lights and the velvet, *velvet (retroactive),* and at the bottom in small neat print, *approved, D. Marsh.* Next to that, the committee list. Jaemin, Jeno, Jisung, Renjun *(decor, under protest).* And under Renjun, Mark." },
       { n: "Crossed off. One line, straight and clean, in blue ballpoint. Not purple. Nothing on that fridge was in blue except that one line." },
       { n: "Jaemin saw her see it. He didn't follow her eyes to it. He didn't need to." },
-      { s: 'jaemin', f: 'neutral', t: "That's not my pen." },
-      { s: 'jaemin', f: 'neutral', t: "I use purple. I don't cross people off. I just stop putting them in bold." },
+      { s: 'jaemin', f: 'serious', t: "That's not my pen." },
+      { s: 'jaemin', f: 'serious', t: "I use purple. I don't cross people off. I just stop putting them in bold." },
       { n: "That was the whole of it. He didn't say whose pen it was. He didn't say anything else at all, and on Jaemin, who could talk about a napkin for nine minutes, the not-saying was so loud it echoed off the tile." },
       { ifEvent: 'epi-r-kitchen', then: [
         { n: "She knew whose pen. Johnny's capitals were all over the house chart in the hallway, the same blue, the same straight lines. She knew why, too, now, most of it, the part Mark had been willing to put into words across an island in this same kitchen, and she stood there looking at one blue line on a fridge and thought it was the quietest sentence anyone in this house had ever written." }
@@ -475,7 +475,7 @@
       { choose: [
         { t: "Winter Formal. Keep it simple.", then: [
           { s: 'jaemin', f: 'sad', t: "Simple. In my house." },
-          { s: 'jaemin', f: 'neutral', t: "...Fine. I respect it. I'll put snowflakes on it. Tasteful snowflakes. Three." },
+          { s: 'jaemin', f: 'happy', t: "...Fine. I respect it. I'll put snowflakes on it. Tasteful snowflakes. Three." },
           { stat: { charm: 1 } }
         ] },
         { t: "Call it the emergency vacation.", then: [
@@ -506,9 +506,9 @@
       { s: 'danielle', f: 'neutral', t: "Both houses. Punch, which Jeno will ruin. Lights, which Jisung will plug in wrong. Velvet, which I approved after the fact, because Jaemin buys first and asks never, and somebody has to make a decision look like it was made on purpose." },
       { n: "She turned the formal list toward Solar with one finger. Alpha's half of the nineteenth. *Lee, Solar · +1.* And next to it, in Jaemin's purple, a question mark he'd drawn a little crown on." },
       { s: 'danielle', f: 'happy', t: "I can't budget a crown." },
-      { s: 'danielle', f: 'neutral', t: "Initial it. For the records." },
+      { s: 'danielle', f: 'happy', t: "Initial it. For the records." },
       { s: 'solar', f: 'serious', t: "Which records?" },
-      { s: 'danielle', f: 'neutral', t: "The ones I keep." },
+      { s: 'danielle', f: 'serious', t: "The ones I keep." },
       { ifEpiRoute: 'haechan', then: [
         { ifFlag: 'epi-r-public-post', then: [
           { s: 'danielle', f: 'happy', t: "I could write his name in myself. Everyone knows it. You told them, which was very brave. I'd just rather it was in your hand." }
@@ -535,7 +535,7 @@
         ] }
       ] },
       { n: "She closed the laptop. She stood, receipts and folder and calculator tape all gathered into one neat armful in a single motion, as if she'd been rehearsing standing up her whole life, and looked down at Solar with something that was very nearly warm." },
-      { s: 'danielle', f: 'neutral', t: "The nineteenth. Wear something you'd like to be remembered in." },
+      { s: 'danielle', f: 'happy', t: "The nineteenth. Wear something you'd like to be remembered in." },
       { n: "Then she was gone, through the doorway and up the stairs, third step from the top silent under her as always, and her door shut with its soft click before Solar had even put together the first word of an answer. The chandelier's dead bulb ticked as it cooled. The chair beside her was still warm, and perfectly pushed in." }
     ] }
   ]);
@@ -565,7 +565,7 @@
           { s: 'mark', f: 'neutral', t: "I wrote the first eight bars over there. It's the only thing I brought back with me that I didn't take from somebody." },
           { n: "He played it again from the top. The wrong note came back on the ninth bar, the way wrong notes do when somebody's watching, and he didn't stop this time. He played through it, and past it, and found the place where it went down instead of up, and it was better the second time than the first, which was the most honest thing she'd ever heard him do." },
           { s: 'mark', f: 'serious', t: "I'm not going to ask you if it's good." },
-          { s: 'mark', f: 'neutral', t: "That's the deal I made with myself. I don't get to use you to find out." },
+          { s: 'mark', f: 'sad', t: "That's the deal I made with myself. I don't get to use you to find out." },
           { bond: { mark: 1 } }
         ] },
         { t: "(Listen from the hall.)", then: [
@@ -577,7 +577,7 @@
         ] }
       ] },
       { n: "When she turned to go, he looked at her a beat too long. Not the old way, the measuring way, the receipt way. The way you'd glance back at a light you'd left on, to check that it was still on. He didn't say anything. He'd seen something at the island on Tuesday that he'd never say a word about, to her or to anyone, and she knew he'd seen it, and he knew she knew. It was the one thing he got right that December. She didn't thank him for it. It wasn't the kind of thing you thanked a person for." },
-      { s: 'mark', f: 'neutral', t: "Okay. Good luck with the rest of them, Sol." }
+      { s: 'mark', f: 'happy', t: "Okay. Good luck with the rest of them, Sol." }
     ] }
   ]);
 
@@ -731,9 +731,9 @@
     { id: 'epi-r-rt-allnighter', slot: 'evening', after: '12/16', until: '12/18', place: 'Syracuse · Alpha Phi House', time: 'Night', scene: [
       { music: 'epi-r-home' },
       { n: "The Alpha living room the night before a final looked like a field hospital. Girls on every cushion and most of the rug, laptops balanced on knees, a pizza box open on the coffee table with two slices left that everyone was too polite to take, and Olivia at the center of it all with six highlighters fanned out in one hand like a winning poker hand, explaining a system nobody had asked about to everyone at once." },
-      { s: 'olivia', t: "Yellow is facts. Pink is facts I'll forget. Orange is facts I've already forgotten. Green is vibes." },
+      { s: 'olivia', f: 'happy', t: "Yellow is facts. Pink is facts I'll forget. Orange is facts I've already forgotten. Green is vibes." },
       { s: 'solar', f: 'neutral', t: "What's blue?" },
-      { s: 'olivia', t: "Blue is *I'm scared.* There's a lot of blue in this one." },
+      { s: 'olivia', f: 'flustered', t: "Blue is *I'm scared.* There's a lot of blue in this one." },
       { n: "Yerim came in from the kitchen with a tray of mugs, steam rising off them, bright and pink-cheeked in her socks, and started handing them out without asking anybody what they wanted." },
       { s: 'yerim', t: "Chamomile! It's for anxiety. My mom says it's for anxiety. I don't know if it works. I just really like the word." },
       { ifEvent: 'epi-r-clocks', then: [

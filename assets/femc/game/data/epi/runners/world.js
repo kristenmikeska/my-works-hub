@@ -130,7 +130,10 @@
       dad: 'Dad', mom: 'Mom', caster: 'Caster', suesports: '@SUesports'
     },
     // This world's own faces (core.js worldFace): Solar's home look and the outfits drawn for Runners (FEMC-ART-WIRING).
-    faces: { solar: 'solar-runners', sakura: 'sakura-runners', eunchae: 'eunchae-runners', kazuha: 'kazuha-runners', chaewon: 'chaewon-runners', haechan: 'haechan-runners' },
+    faces: { solar: 'solar-runners', sakura: 'sakura-runners', eunchae: 'eunchae-runners', kazuha: 'kazuha-runners', chaewon: 'chaewon-runners', haechan: 'haechan-runners',
+      // Kat's realistic-style Runners set (batch 95): Runners-only, so the main game keeps their year faces.
+      mark: 'mark-runners', minji: 'minji-runners', hanni: 'hanni-runners', hyein: 'hyein-runners', danielle: 'danielle-runners', jaemin: 'jaemin-runners',
+      doyoung: 'doyoung-runners', olivia: 'olivia-runners', haerin: 'haerin-runners' },
     // Event outfits (core.js eventFaces; FEMC-ART-WIRING "Extras"): an event's `faces: '<key>'` swaps these in for its scenes only.
     eventFaces: {
       'runners-holiday': { solar: 'solar-runners-holiday', haechan: 'haechan-runners-holiday', hanni: 'hanni-runners-holiday', hyein: 'hyein-runners-holiday',

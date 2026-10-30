@@ -78,11 +78,11 @@ window.FEMC_PORTRAIT_SCALE = {
   shiho: 1.07,
   shinjiro: 1.1,
   solar: 0.97,
-  'solar-runners': 0.88, // epilogue batch: Solar's Runners home look (core.js worldFace); eyes-to-chin matched to her S.E.E.S. set (Kat's remade sheet, batch 64)
-  'sakura-runners': 1.05,
-  'eunchae-runners': 1.1,
-  'kazuha-runners': 0.88, // batch 64: Kat's remade head-and-shoulders sheet
-  'chaewon-runners': 0.82, // batch 61: Runners epilogue faces, eyes-to-chin matched to Hanni, Minji and Haechan
+  'solar-runners': 0.86, // batch 95: Kat's realistic Runners set
+  'sakura-runners': 0.86, // batch 95: Kat's realistic Runners set
+  'eunchae-runners': 0.82, // batch 95: Kat's realistic Runners set
+  'kazuha-runners': 0.86, // batch 95: Kat's realistic Runners set
+  'chaewon-runners': 0.86, // batch 95: Kat's realistic Runners set
   doyoung: 1.05, // his sheet was drawn to the chest; cut to head and shoulders
   haerin: 0.93, // batch 89: her casual sheet (the default); eyes level with her Regionals face
   jeno: 0.97,
@@ -102,6 +102,15 @@ window.FEMC_PORTRAIT_SCALE = {
   'lee-appa': 0.9,
   'lee-eomma': 0.9,
   'haechan-runners': 0.93, // batch 81: the two-world boys' home-world looks (each world's faces map); eyes level with their year faces
+  'mark-runners': 0.8, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
+  'minji-runners': 0.86, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
+  'hanni-runners': 0.83, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
+  'hyein-runners': 0.8, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
+  'danielle-runners': 0.78, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
+  'jaemin-runners': 0.82, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
+  'doyoung-runners': 0.95, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
+  'olivia-runners': 0.83, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
+  'haerin-runners': 0.8, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
   'haechan-strangers': 0.92,
   'jungwon-hoax': 1.0,
   'jungwon-strangers': 0.95,
@@ -210,4 +219,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 16;
+window.FEMC_PORTRAIT_V = 17;
