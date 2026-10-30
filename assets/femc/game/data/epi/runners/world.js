@@ -91,9 +91,9 @@
       // The everyday screens (morning, Go Out, evening, late) play this world's own songs, never the Persona tracks (Kat, 2026-10-30).
       screens: { school: 'epi-r-day', class: 'epi-r-day', after: 'epi-r-day', evening: 'epi-r-evening', dorm: 'epi-r-late' },
       music: {
-        'epi-r-day': ['ring-ring', 'tip-toe', 'boyfriend', 'assets/audio/Camo-Runners.mp3'], // the everyday screens by day (the theme comes round last, so it doesn't follow the opening)
-        'epi-r-evening': ['affection', 'wantchu', 'assets/audio/Camo-Runners.mp3'], // evenings
-        'epi-r-late': ['wyn', 'grey-rain', 'assets/audio/rose-3am.mp3'], // late nights
+        'epi-r-day': ['ring-ring', 'tip-toe', 'boyfriend', 'that-way', 'assets/audio/Camo-Runners.mp3'], // the everyday screens by day (the theme comes round last, so it doesn't follow the opening)
+        'epi-r-evening': ['affection', 'wantchu', 'you-nct-dream', 'past-life', 'assets/audio/Camo-Runners.mp3'], // evenings
+        'epi-r-late': ['wyn', 'grey-rain', 'assets/audio/rose-3am.mp3', 'nowhere-nobody'], // late nights
         'epi-r-home': 'ring-ring', // the first morning back (soft, home, snow)
         'epi-r-team': ['cashy', 'dollar-bratz'], // the lab, practice, the team's week (Wish by Camo isn't in the folder yet)
         'epi-r-confession': 'grey-rain', // the recording confession (tension, nothing pretty)

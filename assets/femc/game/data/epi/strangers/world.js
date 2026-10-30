@@ -103,9 +103,9 @@
       // The everyday screens (morning, Go Out, evening, late) play this world's own songs, never the Persona tracks (Kat, 2026-10-30).
       screens: { school: 'epi-s-day', class: 'epi-s-day', after: 'epi-s-day', evening: 'epi-s-evening', dorm: 'epi-s-late' },
       music: {
-        'epi-s-day': ['staying', 'nice-dream', 'assets/audio/EthelCain-Strangers.mp3'], // the everyday screens by day (the theme comes round last, so it doesn't follow the opening)
-        'epi-s-evening': ['soft-spot', 'linger', 'assets/audio/EthelCain-Strangers.mp3'], // evenings
-        'epi-s-late': ['forever', 'assets/audio/CocteauTwins-SeaSwallowMe.mp3'], // late nights
+        'epi-s-day': ['staying', 'nice-dream', 'sidelines', 'assets/audio/EthelCain-Strangers.mp3'], // the everyday screens by day (the theme comes round last, so it doesn't follow the opening)
+        'epi-s-evening': ['soft-spot', 'linger', 'somebody', 'assets/audio/EthelCain-Strangers.mp3'], // evenings
+        'epi-s-late': ['forever', 'assets/audio/CocteauTwins-SeaSwallowMe.mp3', 'assets/audio/EthelCain-Crush.mp3'], // late nights
         'epi-s-house': 'nice-dream', // the Lee house: the full kitchen, Mrs. Bang, the koi on the back step
         'epi-s-cover': 'every-breath-you-take', // the cover: the fever, Appa on the seventh stair, the lie held
         'epi-s-step': 'linger', // the annex step at night, the three of them

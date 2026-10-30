@@ -250,6 +250,9 @@ window.FemcScene = (() => {
     }
     paintVis();
     if (opts.music) Music.set(opts.music);
+    // Once a scene has chosen a song (opts.music or a { music } line), a change of place keeps it; only a scene that never
+    // picked one follows its places (Kat: Not Enough gave way to the evening rotation when the studio's background came up).
+    let picked = !!opts.music;
 
     const showMe = face => {
       const src = face !== null && G.portrait('solar', face || 'neutral');
@@ -338,7 +341,7 @@ window.FemcScene = (() => {
     }
     function sceneBreak(line) {
       currentFace = null; img.hidden = true; sil.hidden = true;
-      if (line.music) Music.set(line.music); else if (!opts.music && line.place) Music.set(G.moodFor(line.place, line.time), { under: true });
+      if (line.music) { Music.set(line.music); picked = true; } else if (!picked && line.place) Music.set(G.moodFor(line.place, line.time), { under: true });
       const apply = () => {
         vis.place = line.place; vis.time = line.time || ''; vis.bg = line.bg || null; vis.cg = null;
         if (line.date) { if (replay) vis.date = mdLabel(line.date); else { G.setDate(line.date); vis.date = null; } }
@@ -442,7 +445,7 @@ window.FemcScene = (() => {
       const line = queue.shift();
       if (!line) return end(true);
       if (line.place !== undefined && line.n === undefined && line.t === undefined) return sceneBreak(line);
-      if (line.music) { Music.set(line.music); return next(); }
+      if (line.music) { Music.set(line.music); picked = true; return next(); }
       if (line.bg !== undefined && Object.keys(line).length === 1) { vis.bg = line.bg; paintVis(); return next(); }
       if ('cg' in line) {
         vis.cg = line.cg;

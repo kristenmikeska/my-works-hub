@@ -81,8 +81,8 @@
       // The everyday screens (morning, Go Out, evening, late) play this world's own songs, never the Persona tracks (Kat, 2026-10-30).
       screens: { school: 'epi-st-day', class: 'epi-st-day', after: 'epi-st-day', evening: 'epi-st-evening', dorm: 'epi-st-home' },
       music: {
-        'epi-st-day': ['everything-is-romantic', 'picture-you'], // the everyday screens by day
-        'epi-st-evening': ['did-i-tell-u-that-i-miss-u', 'ghost-of-you'], // evenings
+        'epi-st-day': ['everything-is-romantic', 'picture-you', 'what-if-i-miss-you'], // the everyday screens by day
+        'epi-st-evening': ['did-i-tell-u-that-i-miss-u', 'ghost-of-you', 'tower-of-memories'], // evenings
         'epi-st-home': 'iwatodai-dorm', // Kat's pick: keeps the P3 dorm theme. the dorm after the year, the first ordinary mornings
         'epi-st-spring': 'everything-is-romantic', // spring-break days out, the hanami
         'epi-st-rooms': 'ghost-of-you', // the searchers' rooms, still full of their things
