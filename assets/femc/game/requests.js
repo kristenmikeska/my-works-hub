@@ -27,9 +27,25 @@
      set and slot (with nothing of that set and slot kept, the best free copy stays). Rates (EX.cards): ★3 three for a plume,
      ★4 one for a plume, ★5 one for three. Materials (EX.mats): a lot of `per` for a plume, beyond `keep` and beyond what a
      taken request still needs. Every trade is shown in full and confirmed first. Save: S.gacha.ex { week, n, total }.
+   ── Weekly requests (2026-10-29, Kat's renewable sources; openRequests, "This week") ──
+     From the first wave's date, alongside the one-time board (they never count against MAX_TAKEN and need no taking): every
+     Sunday (core.js weekOf) Elizabeth posts three from WEEKLY (20 templates; `make` scales the target by how far up the tower
+     Solar is, `reach()`, and by the days and Tartarus nights left in the week, so a save loaded mid-week gets a lighter set).
+     One from the tower side, one from the day side, one more, never two of a `group`; seeded by runId + week, so a reload
+     posts the same three. Counted from the moment they're posted (`base`, the same counters as the one-time requests, plus
+     weakAll, nights, actAny, dorm, shifts and hangs: links seen since posting, by p.lastDay); mat / item ones read the save
+     and consume on hand-in. 2–4 plumes each, WK.bonus more for all three. Hand in at the board; when the week ends, a ready
+     one is handed in for her (not mat / item ones: those, and anything unfinished, expire). Posted on the first save of the
+     week (G.onChange runs weekState synchronously, so sleep()'s save on Sunday morning posts them) and before a night's tally.
+   ── Plumes for yen (openBuy) ──
+     BUY.ladder: the price of each plume bought in a game week, cheapest first; the cap is its length, and it starts over on
+     Sunday. Elizabeth's Compendium Credit takes BUY.credit % off every rung. A confirm shows the price, the yen before and
+     after and the next rung.
    Save (gacha.js gs() fills and checks all of it): S.gacha.req { taken: { id: { at, base, told } }, done: [ids], seen: [ids] },
-     miles [ids], tally { kills, weak }, ex, rides { last, n, rain }. New Game+ starts them over (gacha.js keeps only the
-     collections). Never in the epilogue (S.epi). Balance and totals: CLAUDE.md "More Velvet Plumes". Tests: tests/femc_plumes.py. */
+     miles [ids], tally { kills, weak, rares }, ex, rides { last, n, rain }, wk { week, at, list: [{ t, n, plumes, el, act,
+     mat, item, base, at, done, told }], bonus, seen, hist { weeks, cleared, plumes } } (entries checked by wkList),
+     buy { week, n, total, spent }. New Game+ starts them over (gacha.js keeps only the collections). Never in the epilogue
+     (S.epi). Balance and totals: CLAUDE.md "More Velvet Plumes" and "Renewable plumes". Tests: tests/femc_plumes.py. */
 window.FemcRequests = (() => {
   const G = window.FemcGame;
   if (!G) return null;
@@ -141,7 +157,8 @@ window.FemcRequests = (() => {
     full: ['“Three at once is plenty. Finish one, or set one down, and then we shall talk.”'],
     taken: ['“Splendid. I shall pretend not to be waiting.”', '“Thank you. I will think about it a great deal while you are gone.”'],
     given: ['“Set aside, then. It will keep. Most curiosities do.”'],
-    none: ['“Nothing new on the board today. I am being curious about it in private.”']
+    none: ['“Nothing new on the board today. I am being curious about it in private.”'],
+    bonus: ['“All three, and before Saturday was out. I shall underline this week in my book. Here: something extra, for the underlining.”']
   };
 
   /* ── Requests: rules ── */
@@ -170,6 +187,12 @@ window.FemcRequests = (() => {
       case 'cards': return b && B() ? B().ensureCards(b).uid || 0 : 0;
       case 'rares': return (b && b.tt && b.tt.rares) || 0;
       case 'puzzles': return (b && b.tt && b.tt.puzzles) || 0;
+      // The weekly requests' extra counters (WEEKLY below).
+      case 'weakAll': return Object.values(g.tally.weak).reduce((a, n) => a + (n > 0 ? n : 0), 0);
+      case 'nights': return (S().tartarus && S().tartarus.nights) || 0;
+      case 'actAny': return Object.values(S().done || {}).reduce((a, n) => a + (n > 0 ? n : 0), 0);
+      case 'dorm': return ((G.D.places.dorm && G.D.places.dorm.acts) || []).reduce((a, x) => a + (((S().done || {})[x.id]) || 0), 0);
+      case 'shifts': return Object.values(S().jobs || {}).reduce((a, j) => a + ((j && j.shifts) || 0), 0);
     }
     return 0;
   }
@@ -244,10 +267,12 @@ window.FemcRequests = (() => {
     G.save();
     return { ok: true, got, q };
   }
-  // Taken requests that are ready and haven't been announced yet: one toast each (after a fight, an activity, a load).
+  // Taken requests (and this week's) that are ready and haven't been announced yet: one toast each (after a fight, an
+  // activity, a load).
   function tellReady() {
     const t = rqs().taken, out = [];
     takenList().forEach(q => { if (!t[q.id].told && progress(q, t[q.id]).ready) { t[q.id].told = true; out.push(q); G.toast('perk', `Elizabeth’s request ready: ${q.title}`); } });
+    if (gs().wk.week === weekNow()) wkList().forEach(e => { if (!e.done && !e.told && wkProgress(e).ready) { e.told = true; out.push(e); G.toast('perk', `Elizabeth’s weekly request is ready: ${wfill(wtpl(e.t).title, e)}`); } });
     return out;
   }
   /* A school morning on the monorail (ui.js earlyMorning). Once a day. */
@@ -302,6 +327,7 @@ window.FemcRequests = (() => {
   function afterFight(h, r) {
     if (!live() || !r) return;
     const t = r.tally, g = gs();
+    weekState(); // a week that turned over since the last save is posted before this night counts towards it
     if (h && h.kind === 'tartarus' && t && typeof t === 'object') {
       if (t.kills > 0) g.tally.kills += Math.floor(t.kills);
       if (t.rares > 0) g.tally.rares += Math.floor(t.rares);
@@ -310,10 +336,12 @@ window.FemcRequests = (() => {
     payFloors('night');
     tellReady();
   }
-  // Any other save (a load, an activity, the menu): milestones a save is already past, and newly ready requests.
+  // Any other save (a load, an activity, the menu): this week's requests at once (so Sunday's first save posts them before
+  // anything counts), then, a moment later, milestones a save is already past and newly ready requests.
   let timer = null;
   G.onChange(kind => {
     if (kind === 'toast') return;
+    try { if (live()) weekState(); } catch (e) { console.error(e); }
     clearTimeout(timer);
     timer = setTimeout(() => { try { if (!live()) return; const a = payFloors('load'), b = tellReady(); if (a.length || b.length) G.saveQuiet(); } catch (e) { console.error(e); } }, 350);
   });
@@ -344,8 +372,9 @@ window.FemcRequests = (() => {
     });
     return out.filter(c => EX.cards[c.r]).sort(weakFirst);
   }
-  // What taken requests still need of a material (kept back from the exchange).
-  const reqHold = id => takenList().filter(q => q.kind === 'mat' && q.mat === id).reduce((a, q) => a + q.n, 0);
+  // What taken requests (and this week's unfinished ones) still need of a material (kept back from the exchange).
+  const reqHold = id => takenList().filter(q => q.kind === 'mat' && q.mat === id).reduce((a, q) => a + q.n, 0)
+    + (gs().wk.week === weekNow() ? wkList().filter(e => !e.done && e.mat === id && wtpl(e.t).kind === 'mat').reduce((a, e) => a + e.n, 0) : 0);
   /* Materials with a surplus: [{ id, name, have, keep, spare, per, lots }]. */
   function spareMats(b = bs()) {
     if (!b) return [];
@@ -390,15 +419,260 @@ window.FemcRequests = (() => {
     return q;
   }
 
+  /* ── Weekly requests (header): data ── */
+  const WK = { bonus: 3, minDays: 2, n: 3 };
+  // Materials by the block they drop in (Thebel first) and how many a weekly request asks for; the errands; the elements.
+  const WK_MATS = [['shadow_ash', 15], ['mask_shard', 10], ['crimson_lacquer', 8], ['mirror_shard', 6], ['rusted_cog', 5], ['stone_heart', 4], ['moon_feather', 3]];
+  const WK_ACTS = ['hagakure', 'wildduck', 'arcade', 'karaoke', 'pray'];
+  const MAGIC = ['fire', 'ice', 'elec', 'wind', 'light', 'dark'], PHYS = ['slash', 'strike', 'pierce'];
+  const BRING = ['mat', 'item']; // read off the save and handed over; everything else is counted from the posting
+  const sc = (n, f) => Math.max(1, Math.ceil(n * f));
+  // side: 'tower' (only in a week with two or more Tartarus nights left) or 'day'. make(c) → { n, plumes, el / act / mat / item }
+  // or null (not this week). c: { P: reach() 0-7, frac: share of the week left, night: share of a week's Tartarus nights left,
+  // nights, school (mornings left), links (at rank 1+), echoes (in the stock), hired, pick }.
+  const wt = (id, kind, group, side, title, ask, thanks, make) => ({ id, kind, group, side, title, ask, thanks, make });
+  const WEEKLY = [
+    wt('w-dozens', 'kills', 'kills', 'tower', 'Shadows by the Dozen',
+      'Please defeat {n} Shadows in the tower this week. I am keeping the tally on the back of an envelope, and the envelope is beginning to look hopeful.',
+      '{n}. The envelope is quite full. I shall have to start another.',
+      c => ({ n: sc(15 + 5 * c.P, c.night), plumes: 3 })),
+    wt('w-multitude', 'kills', 'kills', 'tower', 'A Great Many',
+      'This week I should like a great many Shadows defeated: {n} of them. I chose the number by opening a book at random. It was a cookbook. Please do not let that trouble you.',
+      'All {n}. The cookbook was right after all. They so often are.',
+      c => (c.P >= 2 ? { n: sc(30 + 8 * c.P, c.night), plumes: 4 } : null)),
+    wt('w-element', 'weak', 'weak', 'tower', 'Lessons in {el}',
+      'Strike {n} Shadows with {el} where they are weak. I am learning the elements one at a time, like the notes of a scale, and this week’s note is {el}.',
+      '{n} times. I can very nearly hum it now.',
+      c => ({ el: c.pick(MAGIC), n: sc(5 + c.P, c.night), plumes: 3 })),
+    wt('w-blow', 'weak', 'weak', 'tower', 'A Well-Placed Blow',
+      '{n} weaknesses struck with {el}. No magic at all, only a blow in exactly the right place. I find the plainness of it refreshing.',
+      'Plain and true, {n} times over. Thank you.',
+      c => ({ el: c.pick(PHYS), n: sc(4 + c.P, c.night), plumes: 3 })),
+    wt('w-truths', 'weakAll', 'weak', 'tower', 'Every Kind of Honesty',
+      'Any element at all, so long as it lands where a Shadow is weak: {n} times this week. I am not particular. I am only curious.',
+      '{n} small honesties. The tower must be very embarrassed.',
+      c => ({ n: sc(12 + 3 * c.P, c.night), plumes: 2 })),
+    wt('w-gold', 'rares', 'rares', 'tower', 'Gold That Runs',
+      'A golden Shadow, caught before it gets away. I have asked before, I know. I simply cannot stop wondering whether they run because they are frightened or because they are late.',
+      'And? No, do not tell me. I should like to go on wondering a little longer.',
+      c => ({ n: 1, plumes: 3 })),
+    wt('w-riddles', 'puzzles', 'puzzles', 'tower', 'The Tower’s Little Games',
+      'Solve {n} of the tower’s puzzles this week. Lanterns, paths, switches, whatever it leaves out. I should like it to feel that someone is playing along.',
+      '{n} solved. I expect it is very pleased. It will not say so. Neither would I.',
+      c => ({ n: c.nights >= 3 ? 2 : 1, plumes: 2 })),
+    wt('w-nights', 'nights', 'nights', 'tower', 'Nights in the Tower',
+      'Go up into the tower on {n} nights this week. Not for anything in particular. I only like to know that the lights on the stairs are being used.',
+      '{n} nights. The stairs have been well lit. Thank you for that.',
+      c => { const n = c.nights >= 5 ? 3 : 2; return { n, plumes: n }; }),
+    wt('w-sweep', 'mat', 'bring', 'tower', 'Something to Sweep Up',
+      'Please bring me {n} {mat}. I have started keeping a little of everything the tower leaves behind, and this week the jar for {mat} is looking thin.',
+      '{n}. The jar is full again. It is a very satisfying jar.',
+      c => { const [mat, n] = WK_MATS[c.pick(Array.from({ length: Math.floor(Math.min(c.P, 6) / 2) + 1 }, (_, i) => i))]; return { mat, n, plumes: 2 }; }), // the lower half of the floors she has reached
+    wt('w-heights', 'mat', 'bring', 'tower', 'From the Higher Floors',
+      '{n} {mat}, if you would. The higher the floor, the stranger the things it leaves behind, and I find I have a taste for strange things.',
+      'Strange and lovely. They will have a shelf of their own.',
+      c => { if (c.P < 2) return null; const [mat, n] = WK_MATS[Math.min(c.P, 6)]; return { mat, n: Math.max(2, Math.ceil(n / 2)), plumes: 3 }; }),
+    wt('w-hand', 'cards', 'cards', 'tower', 'A Fresh Hand',
+      'Find {n} new Revelation cards this week. From the tower, from the cards’ own shuffling, from anywhere. A hand that never changes is a hand that is never surprised.',
+      '{n} new faces. You look surprised already. Good.',
+      c => ({ n: sc(3 + Math.floor(c.P / 3), c.night), plumes: 2 })),
+    wt('w-errand', 'act', 'act', 'day', 'An Errand in Town',
+      'Please do this twice before Sunday, and tell me about it: {act}. I have read about it, but I would much rather hear it from someone reliable.',
+      'Twice. You make it sound very ordinary. I envy that.',
+      c => { const a = WK_ACTS.filter(id => G.actById(id)); return a.length ? { act: c.pick(a), n: 2, plumes: 2 } : null; }),
+    wt('w-out', 'actAny', 'act', 'day', 'Time Well Spent',
+      'Spend {n} afternoons or evenings doing something: anything you like, out in town, at home or with a club. I want to know what a week looks like when someone uses all of it.',
+      '{n}. It looks full. It looks rather wonderful, in fact.',
+      c => ({ n: sc(4, c.frac), plumes: 2 })),
+    wt('w-home', 'dorm', 'act', 'day', 'Evenings In',
+      'Spend {n} evenings on something at home: cooking, the garden, your desk. The tower is not going anywhere, and neither, I suspect, are you.',
+      '{n} quiet evenings. You smell faintly of curry. It suits you.',
+      c => ({ n: c.frac >= 0.5 ? 2 : 1, plumes: 2 })),
+    wt('w-train', 'rides', 'rides', 'day', 'The Morning Train',
+      'Ride the monorail to school on {n} mornings this week, and look out of the window at least once each time. I am told almost nobody does.',
+      '{n} mornings, and the sea every time? Good. Someone ought to keep an eye on it.',
+      c => (c.school >= 3 ? { n: Math.min(4, c.school - 1), plumes: 2 } : null)),
+    wt('w-company', 'hangs', 'hangs', 'day', 'Good Company',
+      'Spend time with {n} different people this week. Not the same one twice, please. I am studying how one guest can be several people depending on who is beside her.',
+      '{n} people, and you were a little different with each. I made notes.',
+      c => (c.links >= 3 ? { n: sc(c.links >= 6 ? 3 : 2, c.frac), plumes: 3 } : null)),
+    wt('w-crowd', 'hangs', 'hangs', 'day', 'A Week Full of People',
+      'This week, {n} different people. I know it is a great deal of company. I have never had a week like that, and I should like to see one from close by.',
+      '{n}. You must be exhausted. You do not look it. How do you do it?',
+      c => (c.links >= 8 && c.frac >= 0.7 ? { n: 4, plumes: 4 } : null)),
+    wt('w-fuse', 'fused', 'fused', 'day', 'Something New from Something Old',
+      'Bring me two Echoes and let me make a third. Once this week will do. I would do it every day if I could, but I am told that would be greedy.',
+      'There. Another one. I did enjoy that.',
+      c => (c.echoes >= 2 ? { n: 1, plumes: 2 } : null)),
+    wt('w-pharmacy', 'item', 'bring', 'day', 'Something from the Pharmacy',
+      'Three bottles of Medicine, please. I tasted one again. I still do not understand it, and I have decided to keep trying until I do.',
+      'Thank you. I will not taste these. I will only look at them, sternly.',
+      c => ({ item: 'medicine', n: 3, plumes: 2 })),
+    wt('w-wage', 'shifts', 'shifts', 'day', 'An Honest Wage',
+      'Work {n} shifts this week, at any job you like. I am told humans are paid for their time. I should like to understand what an hour is worth, and you seem the person to ask.',
+      '{n} shifts. And what was an hour worth? Do not tell me in yen. Tell me another time.',
+      c => (c.hired ? { n: sc(2, c.frac), plumes: 3 } : null))
+  ];
+  const wtpl = id => WEEKLY.find(T => T.id === id) || null;
+  // How far up the tower she is: 0 (only Thebel) to 7 (Monad found), from each block's first floor.
+  const reach = () => { const top = (S().tartarus && S().tartarus.maxFloor) || 0; return Math.max(0, D().blocks.filter(b => top >= b.floors[0]).length - 1); };
+  const wfill = (s, e) => String(s).replace(/\{(\w+)\}/g, (m, k) => (k === 'n' ? String(e.n) : k === 'el' ? el(e.el) : k === 'act' ? ((G.actById(e.act) || {}).name || e.act)
+    : k === 'mat' ? ((D().materials[e.mat] || {}).name || e.mat) : k === 'item' ? ((D().items[e.item] || {}).name || e.item) : m));
+  // A small seeded generator (runId + week), so a reload posts the same three.
+  function seeded(str) {
+    let h = 2166136261;
+    for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return () => { h = (h + 0x6D2B79F5) | 0; let t = Math.imul(h ^ (h >>> 15), 1 | h); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  }
+  const weekEnd = w => Math.min(7 * w + 5, G.END()); // Saturday (core.js weekOf: week w runs 7w-1 … 7w+5), or the year's last day
+  const seenToday = () => Object.entries(S().links || {}).filter(([id, p]) => p && p.lastDay >= S().day).map(([id]) => id);
+
+  /* ── Weekly requests: rules ── */
+  // This week's entries, minus anything malformed or no longer in WEEKLY; a counter that isn't a number starts over now.
+  function wkList() {
+    const w = gs().wk;
+    w.list = w.list.filter(e => {
+      const T = e && typeof e === 'object' ? wtpl(e.t) : null;
+      if (!T || !(e.n > 0) || typeof e.plumes !== 'number') return false;
+      if ((T.kind === 'mat' && !D().materials[e.mat]) || (T.kind === 'item' && !D().items[e.item]) || (T.kind === 'weak' && !D().elements[e.el]) || (T.kind === 'act' && !G.actById(e.act))) return false;
+      if (T.kind === 'hangs') { if (!Array.isArray(e.base)) e.base = []; if (typeof e.at !== 'number') e.at = S().day; }
+      else if (!BRING.includes(T.kind) && typeof e.base !== 'number') e.base = counter({ kind: T.kind, el: e.el, act: e.act });
+      e.done = !!e.done; e.told = !!e.told;
+      return true;
+    });
+    return w.list;
+  }
+  /* Where a weekly request stands: { have, need, ready, line }. */
+  function wkProgress(e) {
+    const T = wtpl(e.t), b = bs(), S0 = S();
+    let have = 0, line = '';
+    if (T.kind === 'hangs') {
+      const skip = Array.isArray(e.base) ? e.base : [];
+      have = Object.entries(S0.links || {}).filter(([id, p]) => id !== 'elizabeth' && G.LINKS[id] && p && p.lastDay >= e.at && !skip.includes(id)).length;
+      line = `${Math.min(have, e.n)} / ${e.n} people`;
+    } else if (T.kind === 'mat') { have = (b && b.mats && b.mats[e.mat]) || 0; line = `${Math.min(have, e.n)} / ${e.n} ${D().materials[e.mat].name}`; }
+    else if (T.kind === 'item') { have = (S0.inventory || {})[e.item] || 0; line = `${Math.min(have, e.n)} / ${e.n} ${D().items[e.item].name} in the bag`; }
+    else {
+      const now = counter({ kind: T.kind, el: e.el, act: e.act });
+      if (now < (e.base || 0)) e.base = now; // a counter that went back (a new battle save): count from there
+      have = now - (e.base || 0);
+      const what = { kills: 'Shadows', weak: `${el(e.el)} weaknesses`, weakAll: 'weaknesses', rares: 'golden Shadows', puzzles: 'puzzles', nights: 'Tartarus nights', cards: 'new cards',
+        act: 'times', actAny: 'things done', dorm: 'evenings', rides: 'mornings', fused: 'fused', shifts: 'shifts' }[T.kind];
+      line = `${Math.min(have, e.n)} / ${e.n} ${what}`;
+    }
+    return { have, need: e.n, ready: have >= e.n, line };
+  }
+  // The days left in this week, its Tartarus nights (not a full moon, an exam or the night before one, a trip) and school mornings.
+  function weekCtx(rng) {
+    const d0 = S().day, z = weekEnd(weekNow()), b = bs();
+    let nights = 0, school = 0;
+    for (let d = d0; d <= z; d++) {
+      const i = G.dayInfo(d);
+      if (['school', 'exam'].includes(i.type)) school++;
+      if (!i.moon.full && !i.exam && i.type !== 'trip' && !(d + 1 <= G.END() && G.dayInfo(d + 1).exam)) nights++;
+    }
+    return { P: reach(), frac: Math.min(1, Math.max(0, z - d0 + 1) / 7), night: Math.min(1, nights / 4), nights, school,
+      links: linkRanks().filter(r => r >= 1).length, echoes: b && EC() ? EC().owned(b).length : 0, hired: Object.values(S().jobs || {}).some(j => j && j.hired),
+      pick: a => a[Math.floor(rng() * a.length)] };
+  }
+  /* Post this week's three (a tower one, a day one, one more; never two of a group). The caller saves. */
+  function postWeek(w, now) {
+    w.week = now; w.at = S().day; w.list = []; w.bonus = false; w.seen = false;
+    if (weekEnd(now) - S().day + 1 < WK.minDays) return w; // the year's last day or two: nothing new
+    const rng = seeded(`${S().runId || 'run'}:${now}`), c = weekCtx(rng), top = (S().tartarus && S().tartarus.maxFloor) || 0;
+    const tower = !!(S().unlocked && S().unlocked.tartarus) && top >= 2 && c.nights >= 2;
+    const deck = WEEKLY.filter(T => tower || T.side !== 'tower').map(T => ({ T, r: rng() })).sort((a, b) => a.r - b.r).map(x => x.T);
+    const groups = new Set();
+    const take = T => {
+      if (w.list.length >= WK.n || groups.has(T.group)) return false;
+      const m = T.make(c); if (!m || !(m.n > 0)) return false;
+      const e = { t: T.id, n: m.n, plumes: m.plumes, el: m.el || null, act: m.act || null, mat: m.mat || null, item: m.item || null, at: S().day, base: null, done: false, told: false };
+      e.base = T.kind === 'hangs' ? seenToday() : BRING.includes(T.kind) ? null : counter({ kind: T.kind, el: e.el, act: e.act });
+      groups.add(T.group); w.list.push(e);
+      return true;
+    };
+    deck.find(T => T.side === 'tower' && take(T)); deck.find(T => T.side === 'day' && take(T)); deck.forEach(take);
+    if (w.list.length) { w.hist.weeks += 1; G.toast('perk', 'Elizabeth posted this week’s requests (until Saturday night).'); }
+    return w;
+  }
+  /* Hand in one of this week's (i: its place in the list). auto: at the week's end (no save; mat / item ones are never auto).
+     Pays its plumes, then WK.bonus once all three are in. Returns { ok, why, got: [words], e, T, bonus }. */
+  function handWeekly(i, auto = false) {
+    if (!auto) weekState();
+    const w = gs().wk, e = wkList()[i];
+    if (!e) return { ok: false, why: 'That request isn’t on the board.' };
+    if (e.done) return { ok: false, why: 'Handed in already.' };
+    const T = wtpl(e.t);
+    if (!wkProgress(e).ready) return { ok: false, why: 'Not yet.' };
+    if (T.kind === 'mat') { const b = bs(); b.mats[e.mat] -= e.n; if (!(b.mats[e.mat] > 0)) delete b.mats[e.mat]; }
+    if (T.kind === 'item') { const s = S(); s.inventory[e.item] -= e.n; if (!(s.inventory[e.item] > 0)) delete s.inventory[e.item]; }
+    const g = gs(), got = [`+${e.plumes} Velvet Plumes`];
+    g.plumes += e.plumes; e.done = true; w.hist.plumes += e.plumes;
+    let bonus = 0;
+    if (!w.bonus && w.list.length >= WK.n && w.list.every(x => x.done)) {
+      w.bonus = true; bonus = WK.bonus; g.plumes += bonus; w.hist.cleared += 1; w.hist.plumes += bonus;
+      got.push(`all three this week: +${bonus} more`);
+    }
+    if (!auto) G.save();
+    return { ok: true, got, e, T, bonus };
+  }
+  // The week that just ended: ready ones are handed in for her (one toast), the rest expire with the list.
+  function settleWeek(w) {
+    let n = 0;
+    wkList().forEach((e, i) => { if (!e.done && !BRING.includes(wtpl(e.t).kind)) { const r = handWeekly(i, true); if (r.ok) n += e.plumes + r.bonus; } });
+    if (n) G.toast('perk', `Elizabeth’s weekly requests, handed in for you as the week ended: Velvet Plumes +${n}`);
+    return n;
+  }
+  /* This week's state: a new week settles the old one and posts three. Cheap when nothing changed (it runs on every save). */
+  function weekState() {
+    const w = gs().wk, now = weekNow();
+    if (w.week === now || !live() || S().day < waveDay(0)) return w;
+    if (w.week >= 0 && w.week < now && w.list.length) settleWeek(w);
+    postWeek(w, now);
+    G.saveQuiet();
+    return w;
+  }
+  const weeklyOn = () => live() && S().day >= waveDay(0);
+
+  /* ── Plumes for yen (header) ── */
+  const BUY = { ladder: [10000, 15000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000], credit: 10 };
+  const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
+  function buyState() { const x = gs().buy; if (x.week !== weekNow()) { x.week = weekNow(); x.n = 0; } return x; }
+  const buyCredit = () => !!(GA().velCost && GA().velCost().credit);
+  /* The price of the k-th plume this week (0 = the first), Compendium Credit applied; null past the cap. */
+  function buyPrice(k = buyState().n) {
+    if (k < 0 || k >= BUY.ladder.length) return null;
+    return Math.round(BUY.ladder[k] * (buyCredit() ? (100 - BUY.credit) / 100 : 1) / 100) * 100;
+  }
+  const buyLeft = () => Math.max(0, BUY.ladder.length - buyState().n);
+  function buyWhy() {
+    if (!live()) return 'Not now.';
+    const p = buyPrice();
+    if (p == null) return 'No more until Sunday';
+    if ((S().yen || 0) < p) return `Needs ${yen(p - (S().yen || 0))} more`;
+    return '';
+  }
+  /* Buy one plume at this week's next price (after the confirm). Returns { ok, why, price, next }. */
+  function buy() {
+    const why = buyWhy(); if (why) return { ok: false, why };
+    const x = buyState(), p = buyPrice();
+    S().yen -= p; gs().plumes += 1; x.n += 1; x.total += 1; x.spent += p;
+    G.save();
+    return { ok: true, price: p, next: buyPrice() };
+  }
+
   /* ── The Velvet Room's buttons (gacha.js openVelvet) ── */
   function velvetButtons() {
     if (!live()) return '';
-    const ready = takenList().filter(q => progress(q).ready).length, fresh = openList().filter(q => !rqs().seen.includes(q.id)).length;
-    return `<button type="button" class="g-btn small" data-rq-open><span>Requests${ready ? ` · ${ready} ready` : fresh ? ` · ${fresh} new` : ''}</span></button><button type="button" class="g-btn small" data-px-open><span>Plume Exchange</span></button>`;
+    const wk = weeklyOn() ? weekState() : null, wl = wk ? wkList() : [];
+    const ready = takenList().filter(q => progress(q).ready).length + wl.filter(e => !e.done && wkProgress(e).ready).length;
+    const fresh = openList().filter(q => !rqs().seen.includes(q.id)).length + (wk && !wk.seen ? wl.length : 0);
+    return `<button type="button" class="g-btn small" data-rq-open><span>Requests${ready ? ` · ${ready} ready` : fresh ? ` · ${fresh} new` : ''}</span></button><button type="button" class="g-btn small" data-px-open><span>Plume Exchange</span></button><button type="button" class="g-btn small" data-pb-open><span>Buy Plumes${buyLeft() ? '' : ' · sold out'}</span></button>`;
   }
   function wireVelvet(el, repaint) {
     el.querySelector('[data-rq-open]')?.addEventListener('click', () => { G.sfx('femc-click'); openRequests(() => repaint?.()); });
     el.querySelector('[data-px-open]')?.addEventListener('click', () => { G.sfx('femc-click'); openExchange(() => repaint?.()); });
+    el.querySelector('[data-pb-open]')?.addEventListener('click', () => { G.sfx('femc-click'); openBuy(() => repaint?.()); });
   }
   const head = (title, sub) => { const pic = G.portrait('elizabeth', 'happy'); return `<div class="g-st-head"><h2>${esc(title)}<small>${esc(sub)}</small></h2><button type="button" class="g-btn small" data-close><span>Back</span></button></div>
       <div class="g-shop-top">${pic ? `<img src="${pic}" alt="">` : ''}<p class="g-shop-say g-rq-say"></p></div>`; };
@@ -410,7 +684,8 @@ window.FemcRequests = (() => {
     const o = UI().overlay(`<div class="g-ga g-rq"${bg ? ` style="--pic:url('${bg}')"` : ''}>${head('Elizabeth’s Requests', 'The Velvet Room · written in silver')}<div class="g-rq-body"></div></div>`, 'g-ga-ov g-vel-ov g-rq-ov', () => done?.());
     const $ = q => o.el.querySelector(q);
     const say = t => { $('.g-rq-say').textContent = t; };
-    say(openList().length || takenList().length ? LINES.hi[S().day % LINES.hi.length] : LINES.none[0]);
+    if (weeklyOn()) weekState();
+    say(openList().length || takenList().length || (weeklyOn() && wkList().some(e => !e.done)) ? LINES.hi[S().day % LINES.hi.length] : LINES.none[0]);
     const card = (q, mode) => {
       const t = rqs().taken[q.id], pr = progress(q, t), w = Math.round(Math.min(1, pr.need ? pr.have / pr.need : 0) * 100);
       const fresh = mode === 'open' && !rqs().seen.includes(q.id);
@@ -422,9 +697,27 @@ window.FemcRequests = (() => {
           ? `<button type="button" class="g-btn${pr.ready ? ' pink' : ''} small" data-rq-in="${q.id}"${pr.ready ? '' : ' disabled'}><span>${pr.ready ? 'Hand it in' : 'Not yet'}</span></button><button type="button" class="g-btn small" data-rq-drop="${q.id}"><span>Set it down</span></button>`
           : `<button type="button" class="g-btn small" data-rq-take="${q.id}"${takenList().length >= MAX_TAKEN ? ' disabled' : ''}><span>Take it</span></button>`}</div></li>`;
     };
+    // This week's (weekly requests): no taking, only handing in.
+    const wcard = (e, i) => {
+      const T = wtpl(e.t), pr = wkProgress(e), w = Math.round(Math.min(1, pr.need ? pr.have / pr.need : 0) * 100), ready = pr.ready && !e.done;
+      return `<li class="g-rq-card weekly${ready ? ' ready' : ''}${e.done ? ' done' : ''}" data-wk="${i}"><p class="g-rq-top"><span class="g-rq-no">This week · ${i + 1}</span><b>${esc(wfill(T.title, e))}</b></p>
+        <p class="g-rq-ask">${esc(wfill(T.ask, e))}</p>
+        <span class="g-ec-meter"><i style="--w:${e.done ? 100 : w}%"></i></span><small class="g-rq-prog">${e.done ? 'Handed in' : esc(pr.line)}</small>
+        <p class="g-rq-pay">Reward: <b>${e.plumes} Velvet Plumes</b>${BRING.includes(T.kind) ? ' · handed over when you hand it in' : ''}</p>
+        ${e.done ? '' : `<div class="g-row g-rq-btns"><button type="button" class="g-btn${ready ? ' pink' : ''} small" data-wk-in="${i}"${ready ? '' : ' disabled'}><span>${ready ? 'Hand it in' : 'Not yet'}</span></button></div>`}</li>`;
+    };
+    const weekHtml = () => {
+      if (!weeklyOn()) return '';
+      const wk = weekState(), wl = wkList(), n = wl.filter(e => e.done).length;
+      wk.seen = true;
+      if (!wl.length) return `<p class="g-kicker">This week</p><p class="g-note">Nothing posted this week. She posts three every Sunday.</p>`;
+      return `<p class="g-kicker">This week</p><p class="g-note small g-rq-week">Posted on Sunday, gone after Saturday night: <b>${n} / ${wl.length}</b> handed in · all ${wl.length}: <b>+${WK.bonus} plumes</b>${wk.bonus ? ' (paid)' : ''}. Counts start from the posting; one that’s ready when the week ends is handed in for you, unless it asks you to bring something.</p>
+        <ul class="g-rq-list">${wl.map(wcard).join('')}</ul>`;
+    };
     const paint = (focus) => {
       const taken = takenList(), open = openList(), doneL = REQUESTS.filter(q => isDone(q.id)), nw = nextWave();
       $('.g-rq-body').innerHTML = `<p class="g-ga-own"><span>Taken <b>${taken.length} / ${MAX_TAKEN}</b></span><span>Done <b>${doneL.length} / ${REQUESTS.length}</b></span><span>Velvet Plumes <b>${gs().plumes}</b></span></p>
+        ${weekHtml()}
         ${taken.length ? `<p class="g-kicker">Taken</p><ul class="g-rq-list">${taken.map(q => card(q, 'taken')).join('')}</ul>` : ''}
         <p class="g-kicker">On the board</p>${open.length ? `<ul class="g-rq-list">${open.map(q => card(q, 'open')).join('')}</ul>` : `<p class="g-note">${nw ? 'Nothing else is posted yet.' : 'The board is empty. Every request she posted is answered or taken.'}</p>`}
         <p class="g-note small">${nw ? `More are posted as the year goes on (next on ${esc(nw)}). ` : ''}Up to ${MAX_TAKEN} at a time. Counts like “Shadows” or “mornings” start when a request is taken; floors, ranks and Echoes are read as they are.</p>
@@ -441,6 +734,12 @@ window.FemcRequests = (() => {
         const r = handIn(bt.dataset.rqIn);
         if (!r.ok) { say(r.why); return; }
         G.sfx('femc-rankup'); say(`“${r.q.thanks}”`); G.toast('perk', `${r.q.title}: ${r.got.join(', ')}`);
+        paint();
+      }));
+      o.el.querySelectorAll('[data-wk-in]').forEach(bt => bt.addEventListener('click', () => {
+        const r = handWeekly(+bt.dataset.wkIn);
+        if (!r.ok) { say(r.why); return; }
+        G.sfx('femc-rankup'); say(r.bonus ? LINES.bonus[0] : `“${wfill(r.T.thanks, r.e)}”`); G.toast('perk', `${wfill(r.T.title, r.e)}: ${r.got.join(', ')}`);
         paint();
       }));
       if (focus) o.el.querySelector(focus)?.focus({ preventScroll: true });
@@ -508,6 +807,53 @@ window.FemcRequests = (() => {
     return o;
   }
 
+  /* ── Plumes for yen ── */
+  const BUYL = {
+    hi: ['“Plumes, for yen? I keep a small drawer of them for guests in a hurry. The price goes up as the drawer empties, which I am told is how shops work. I find it very exciting.”',
+      '“You may buy a few. Not many. The drawer fills again on Sunday, and I have never once seen how.”'],
+    bought: ['“Sold. I had never sold anything before this year. I enjoy it more than is probably proper.”', '“One plume. Please do not tell my master what I charged. He would only ask why I did not charge more.”'],
+    cap: ['“The drawer is empty for this week. It fills again on Sunday. I have stopped asking how.”'],
+    broke: ['“Not quite enough yen. I would lower the price, but then it would be a gift, and gifts are a different drawer.”']
+  };
+  function openBuy(done) {
+    const bg = G.background('The Velvet Room', 'Daytime');
+    const o = UI().overlay(`<div class="g-ga g-pb"${bg ? ` style="--pic:url('${bg}')"` : ''}>${head('Velvet Plumes for Yen', 'Elizabeth · priced by the week')}<div class="g-pb-body" aria-live="polite"></div></div>`, 'g-ga-ov g-vel-ov g-pb-ov', () => done?.());
+    const $ = q => o.el.querySelector(q);
+    const say = t => { $('.g-rq-say').textContent = t; };
+    let confirm = false;
+    function paint() {
+      const x = buyState(), p = buyPrice(), why = buyWhy(), credit = buyCredit(), have = S().yen || 0;
+      if (confirm && p != null) {
+        const next = buyPrice(x.n + 1);
+        $('.g-pb-body').innerHTML = `<p class="g-kicker">Confirm the purchase</p><div class="g-px-confirm">
+          <p>One Velvet Plume for <b class="g-pb-price">${yen(p)}</b>${credit ? ` <small class="g-ga-credit">Compendium Credit: ${BUY.credit}% off</small>` : ''}</p>
+          <p>Solar’s yen: <b>${yen(have)}</b> → <b>${yen(have - p)}</b></p>
+          <p class="g-note small">${next != null ? `The next one this week costs ${yen(next)}.` : 'That is the last one this week.'} Prices start over on Sunday.</p></div>
+          <div class="g-row"><button type="button" class="g-btn pink" data-pb-go><span>Buy for ${yen(p)}</span></button><button type="button" class="g-btn small" data-pb-back><span>Back</span></button></div>`;
+        $('[data-pb-go]').addEventListener('click', () => {
+          const r = buy(); confirm = false;
+          if (!r.ok) { say(r.why.startsWith('Needs') ? BUYL.broke[0] : BUYL.cap[0]); return paint(); }
+          G.sfx('femc-rankup'); say(r.next == null ? BUYL.cap[0] : pickLine(BUYL.bought)); G.toast('perk', `Velvet Plume +1 (bought for ${yen(r.price)})`); paint();
+        });
+        $('[data-pb-back]').addEventListener('click', () => { confirm = false; G.sfx('femc-hover'); paint(); });
+        $('[data-pb-go]').focus({ preventScroll: true });
+        return;
+      }
+      confirm = false;
+      const rung = (k) => { const pr = buyPrice(k), cls = k < x.n ? 'got' : k === x.n ? 'next' : '';
+        return `<li${cls ? ` class="${cls}"` : ''}><small>No. ${k + 1}${k < x.n ? ' · bought' : ''}</small><b>${yen(pr)}</b>${credit ? `<s>${yen(BUY.ladder[k])}</s>` : ''}</li>`; };
+      $('.g-pb-body').innerHTML = `<p class="g-ga-own"><span>This week <b>${x.n} / ${BUY.ladder.length}</b></span><span>Velvet Plumes <b>${gs().plumes}</b></span><span>Yen <b>${yen(have)}</b></span>${credit ? `<span class="g-ga-credit">Compendium Credit: ${BUY.credit}% off</span>` : ''}</p>
+        <p class="g-kicker">This week’s prices</p><ol class="g-pb-ladder">${BUY.ladder.map((_, k) => rung(k)).join('')}</ol>
+        <p class="g-note small">One plume at a time; each costs more than the last, up to ${BUY.ladder.length} a game week. Prices start over on Sunday.</p>
+        <div class="g-row"><button type="button" class="g-btn pink" data-pb-ask${why ? ' disabled' : ''}><span>${why ? esc(why) : `Buy one for ${yen(p)}…`}</span></button></div>`;
+      $('[data-pb-ask]')?.addEventListener('click', () => { if (buyWhy()) return; confirm = true; G.sfx('femc-click'); paint(); });
+    }
+    say(!buyLeft() ? BUYL.cap[0] : buyWhy() ? BUYL.broke[0] : BUYL.hi[S().day % BUYL.hi.length]);
+    paint();
+    return o;
+  }
+
   return { REQUESTS, WAVES, MAX_TAKEN, SINCE, EX, ENTER, TOP, GUARD, MONAD, MONAD_GUARD, byId, posted, openList, takenList, progress, payLine, accept, giveUp, handIn, tellReady, rode, counter, nextWave,
-    milestones, dueMiles, payFloors, afterFight, spareCards, spareMats, quote, trade, weekLeft, exState, velvetButtons, wireVelvet, openRequests, openExchange };
+    milestones, dueMiles, payFloors, afterFight, spareCards, spareMats, quote, trade, weekLeft, exState, velvetButtons, wireVelvet, openRequests, openExchange,
+    WK, WEEKLY, wtpl, wfill, reach, wkList, wkProgress, weekState, handWeekly, settleWeek, BUY, buyState, buyPrice, buyLeft, buyWhy, buy, openBuy };
 })();

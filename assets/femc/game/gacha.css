@@ -1,5 +1,5 @@
 /* Persona 3: Solstice · the gacha (gacha.js), Menu → Collection, phone cases, the in-game stamp toast (stamps.js), and
-   Elizabeth's Requests and the Plume Exchange (requests.js, at the end).
+   Elizabeth's Requests, her weekly ones, the Plume Exchange and plumes for yen (requests.js, at the end).
    House style: game.css tokens (--pink, --gold, --night, --cond), skewed panels, hard offset shadows. */
 
 /* ── Shared ── */
@@ -451,8 +451,27 @@
 .g-px-list b { color: var(--gold); }
 .g-px-list small { color: var(--muted); }
 .g-px-get b { color: var(--gold); font: italic 900 18px/1 var(--cond); }
+/* ── Weekly requests and plumes for yen (requests.js, renewable sources, 2026-10-29) ── */
+.g-pb-ov .g-panel { width: min(760px, 100%); }
+.g-rq-card.weekly { border-color: rgba(192, 150, 255, .5); }
+.g-rq-card.weekly .g-rq-no { color: #d3b8ff; }
+.g-rq-card.weekly.ready { border-color: var(--gold); }
+.g-rq-card.weekly.done { opacity: .62; box-shadow: none; }
+.g-rq-card.weekly.done .g-ec-meter i { background: #9c7bff; }
+.g-rq-week b { color: var(--gold); }
+.g-pb-ladder { display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 6px; margin: 4px 0 12px; padding: 0; list-style: none; }
+.g-pb-ladder li { display: grid; gap: 2px; padding: 6px 9px; background: rgba(8, 12, 30, .82); border-left: 3px solid rgba(106, 176, 255, .35); }
+.g-pb-ladder small { color: var(--muted); font: italic 800 11.5px/1.2 var(--cond); letter-spacing: .14em; text-transform: uppercase; }
+.g-pb-ladder b { font: italic 900 17px/1.1 var(--cond); font-variant-numeric: tabular-nums; }
+.g-pb-ladder s { color: var(--muted); font-size: 12px; }
+.g-pb-ladder li.got { opacity: .45; }
+.g-pb-ladder li.got b { text-decoration: line-through; }
+.g-pb-ladder li.next { border-left-color: var(--gold); box-shadow: 4px 4px 0 rgba(255, 211, 107, .35); }
+.g-pb-ladder li.next b { color: var(--gold); }
+.g-pb-price { color: var(--gold); font: italic 900 20px/1 var(--cond); font-variant-numeric: tabular-nums; }
 @media (max-width: 620px) {
   .g-rq-top b { font-size: 17px; }
+  .g-pb-ladder { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
   .g-px-row { padding: 6px 8px; }
   .g-px-step .g-btn { min-width: 36px; }
 }
