@@ -1,6 +1,6 @@
 /* FEMC revamp: game state and rules (calendar, stats, links, jobs, exams, the battle handoff, saves).
    No content lives here; it reads the data files in assets/femc/game/data and links/.
-   One save holds the whole game: localStorage 'kg-femc-revamp' (autosave) + 'kg-femc-revamp-slot1..3', each the life sim's
+   One save holds the whole game: localStorage 'kg-femc-revamp' (autosave) + 'kg-femc-revamp-slot1..10', each the life sim's
    state S, which also carries the battle game's progress for this playthrough (S.battleSave: levels, EXP, Haenim's tree,
    Personas, equipment, materials, the access point; its shape is assets/femc/battle/save.js), New Game+'s carried battle
    save until the first fight uses it (S.battleCarry), and the fight in progress (S.handoff). Settings, for the whole game
@@ -29,6 +29,7 @@ window.FemcGame = (() => {
   const KEY = 'kg-femc-revamp', SETTINGS_KEY = 'kg-femc-revamp-settings', HANDOFF_KEY = 'kg-femc-handoff';
   const LEGACY_BATTLE_KEY = 'kg-femc-revamp-battle', PREMERGE_KEY = 'kg-femc-revamp-premerge', MERGE_V = 2, STATS_V = 2, YEAR_V = 2;
   const SLOT_KEY = n => `${KEY}-slot${n}`;
+  const SLOTS = Array.from({ length: 10 }, (_, i) => i + 1); // manual save slots (three until 2026-10-30; Kat asked for more)
   // Links removed from the revamp (2026-10-21; migrateRemoved). Declared up here: load() runs before the rest of the file.
   const REMOVED_LINKS = ['leon', 'cloud', 'noctis', 'astarion', 'shadowheart'];
   const VERSION = 1;
@@ -2465,7 +2466,7 @@ window.FemcGame = (() => {
     lateNightDue, finishLateNight, tripPlan, finishTrip, unread, markAllRead, isGroupThread, freeSlotSpent, nextSlot, sleep,
     available, navigator, tartarusOk, floorCap, makeHandoff, readHandoff, clearHandoff, finishHandoff, simulate, applyResult,
     setBattleSave, ensureBattleSave,
-    saveSlot, readSlot, loadSlot, slotLabel, slotInfo, exportCode, importCode, hasSave, deleteSave,
+    SLOTS, saveSlot, readSlot, loadSlot, slotLabel, slotInfo, exportCode, importCode, hasSave, deleteSave,
     setWorld, world, money, freshState, adoptState, noWorld, replayWorld, CLEARS_KEY
   };
 })();

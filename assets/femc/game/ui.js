@@ -1526,7 +1526,7 @@
     render();
   }
 
-  /* ── Saves: the autosave and three slots, each the whole game (life sim + battle progress), and a backup code ── */
+  /* ── Saves: the autosave and ten slots (G.SLOTS), each the whole game (life sim + battle progress), and a backup code ── */
   function openSaves(fromTitle) {
     const canSave = !fromTitle && S().phase === 'play' && !S().handoff;
     let armed = null;
@@ -1542,7 +1542,7 @@
     const render = () => {
       let auto = null; try { auto = JSON.parse(localStorage.getItem(G.KEY)); } catch (e) {}
       const autoInfo = G.slotInfo(auto);
-      o.el.querySelector('.g-slots').innerHTML = card(0, null, autoInfo).replace(/<button[^>]*data-load="0"[^>]*>[^<]*<\/button>/, '') + [1, 2, 3].map(n => { const x = G.readSlot(n); return card(n, x, x ? G.slotInfo(x.state) : null); }).join('');
+      o.el.querySelector('.g-slots').innerHTML = card(0, null, autoInfo).replace(/<button[^>]*data-load="0"[^>]*>[^<]*<\/button>/, '') + G.SLOTS.map(n => { const x = G.readSlot(n); return card(n, x, x ? G.slotInfo(x.state) : null); }).join('');
       o.el.querySelectorAll('[data-save]').forEach(b => b.addEventListener('click', () => {
         const n = +b.dataset.save;
         if (G.readSlot(n) && armed !== `s${n}`) { armed = `s${n}`; render(); o.el.querySelector(`[data-save="${n}"]`)?.focus(); return; }

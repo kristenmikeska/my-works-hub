@@ -314,7 +314,7 @@ window.FemcEpilogue = (() => {
       <div class="g-row"><button type="button" class="g-btn pink" data-go>Go without saving ▸</button><button type="button" class="g-btn" data-close>Cancel</button></div></div>`, 'g-epi-ov');
     let armed = null;
     const render = () => {
-      ov.el.querySelector('.g-epi-slots').innerHTML = [1, 2, 3].map(n => {
+      ov.el.querySelector('.g-epi-slots').innerHTML = G.SLOTS.map(n => {
         const x = G.readSlot(n), lab = x ? (x.label || G.slotLabel(x.state)) : 'Empty';
         return `<button type="button" class="g-btn g-epi-slot${armed === n ? ' pink' : ''}" data-slot="${n}"><b>${String(n).padStart(2, '0')}</b><span>${armed === n ? 'Overwrite this slot?' : esc(lab)}</span></button>`;
       }).join('');

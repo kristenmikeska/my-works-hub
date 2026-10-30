@@ -5,6 +5,7 @@
 .g-epi-ov .g-panel { width: min(560px, calc(100vw - 32px)); }
 .g-epi-offer h2 { margin: 0 0 6px; font: italic 900 28px/1.1 var(--cond); letter-spacing: .04em; text-transform: uppercase; }
 .g-epi-slots { display: grid; gap: 10px; margin-top: 14px; }
+@media (min-width: 640px) { .g-epi-ov .g-panel { width: min(680px, calc(100vw - 32px)); } .g-epi-slots { grid-template-columns: 1fr 1fr; } } /* ten slots */
 .g-epi-slot { justify-content: flex-start; width: 100%; text-align: left; text-transform: none; font: 600 15px/1.25 var(--sans); letter-spacing: 0; }
 .g-epi-slot b { font: italic 900 20px/1 var(--cond); color: var(--pink-2); }
 .g-epi-slot.pink b { color: var(--night); }
