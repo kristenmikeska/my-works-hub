@@ -167,4 +167,4 @@ eventFaces: {
     }
 ```
 
-**Also still in the old style (everyday faces, not parked):** Jaehyun, Chenle, Jeno. **To remake from scratch:** Chaewon, Eunchae, Sakura (Kat plans to rebuild them from a modern portrait plus real photos). **To strengthen:** Mark's expressions.
+**Everyday Runners faces:** all redone in the new style as of Oct 30 2026 (batch 96).
