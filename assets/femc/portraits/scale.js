@@ -106,14 +106,14 @@ window.FEMC_PORTRAIT_SCALE = {
   'minji-runners': 0.86, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
   'hanni-runners': 0.83, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
   'hyein-runners': 0.8, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
-  'danielle-runners': 0.78, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
+  'danielle-runners': 0.76, // batch 97: Kat's remake, eyes-to-chin matched to Haechan's
   'jaemin-runners': 0.82, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
-  'doyoung-runners': 0.95, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
+  'doyoung-runners': 0.76, // batch 97: Kat's remake, eyes-to-chin matched to Haechan's
   'olivia-runners': 0.83, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
   'haerin-runners': 0.8, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
   'chenle-runners': 0.8, // batch 96: Kat's realistic set, eyes-to-chin matched to Haechan's
-  'jaehyun-runners': 0.78, // batch 96: Kat's realistic set, eyes-to-chin matched to Haechan's
-  'jeno-runners': 0.78, // batch 96: Kat's realistic set, eyes-to-chin matched to Haechan's
+  'jaehyun-runners': 0.76, // batch 97: Kat's remake, eyes-to-chin matched to Haechan's
+  'jeno-runners': 0.8, // batch 97: Kat's remake, eyes-to-chin matched to Haechan's
   'yunjin-strangers': 0.86, // batch 96: Kat's realistic set, eyes-to-chin matched to Haechan's
   'taesang-strangers': 0.84, // batch 96: Kat's realistic set, eyes-to-chin matched to Haechan's
   'miyeon-strangers': 0.9, // batch 96: Kat's realistic set, eyes-to-chin matched to Haechan's
@@ -225,4 +225,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 18;
+window.FEMC_PORTRAIT_V = 19;
