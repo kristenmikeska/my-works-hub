@@ -987,6 +987,9 @@ window.FemcGame = (() => {
     if (/Velvet/.test(place)) return 'velvet';
     if (/Tartarus/.test(place)) return 'mystery';
     if (/Dark Hour/.test(place + time)) return 'darkhour'; // Shadow World: the Dark Hour streets
+    // In an epilogue a scene with no song of its own plays that world's everyday rotation (world.js `screens`), never the
+    // Persona tracks (Kat, 2026-10-30).
+    if (S.epi) { const sc = D.places.screens || {}; return (/Late|Midnight|Before Light/.test(time) ? sc.dorm : /Evening|Night/.test(time) ? sc.evening : sc.after) || sc.after || 'joy'; }
     if (/^Gekkoukan/.test(place)) return 'school';
     if (/^(Paulownia Mall|Iwatodai Strip|Port Island Station)/.test(place)) return 'city';
     if (/Evening|Night/.test(time)) return 'night';
