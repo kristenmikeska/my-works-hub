@@ -109,7 +109,7 @@
   // others' height (their canvases are wide for the weapon), Aigis about 85%; they were raised to match (tests/femc_bonds.py --only poses).
   /* Sideways nudge (share of the image width) for a pose that reaches toward the Shadows: Haechan's knife lunge stood too close (2026-10-30). */
   const FIGHTER_SHIFT = { haechan: '-9%' };
-  const FIGHTER_POSES = { solar: 1.2, akihiko: 1, yukari: 1.04, junpei: 1.42, mitsuru: 1.4, aigis: 1.18, koromaru: 0.87, shinjiro: 1.51, haechan: 1.26, jungwon: 1.28, jihoon: 1.05, minji: 1.07 };
+  const FIGHTER_POSES = { solar: 1.25, akihiko: 1, yukari: 1.04, junpei: 1.42, mitsuru: 1.4, aigis: 1.18, koromaru: 0.87, shinjiro: 1.51, haechan: 1.26, jungwon: 1.28, jihoon: 1.05, minji: 1.07 };
   const FIGHTER_STATES = { attack: [2], cast: [3], hurt: [4], evoke: [1], win: [5] };
   /* Wardrobe looks from the life sim (game/cosmetics.js battle(), read once per frame): an outfit's pose folder per member
      (same six frames and canvas as the member's own sheet) and CSS for the battle theme and Evoker tint. Practice: none. */
