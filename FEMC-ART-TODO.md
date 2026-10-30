@@ -1,6 +1,6 @@
 # Art to make
 
-**24 items:** 24 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 22 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**22 items:** 22 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 22 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -221,23 +221,6 @@ Attach: Jungwon, then Kat's inspo photo (Inspo/Jungwon-ElegantHeir/)
 Save as: `skin-sk-jungwon-pinstripe-portraits.png`
 ```
 A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a grey chalk-stripe suit jacket with wide notched lapels over a matching waistcoat, a pale blue-and-white striped shirt with a white collar, a silver-grey satin tie, a silver chain brooch on the lapel, small silver hoop earrings. Hair: his own dark brown hair, a soft wavy fringe parted off-centre and swept to the sides, ear-length. Soft window light from one side. The last attached photo is only a reference for the clothes and hair. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Jungwon: Sheer Nerve (pose sheet)** *(optional)*  
-Jungwon's battle figure in sheer black sleeves and a cropped waistcoat. Emo Night set: goes with Solar's Emo Night and Haechan: Unravelled.  
-Attach: jungwon-posesheet.png, then Jungwon, then Kat's inspo photo (Inspo/Jungwon-EmoBoy/)  
-Save as: `skin-sk-jungwon-sheer-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a sheer black long-sleeved mesh top with one shoulder cut out and long flared cuffs past his wrists; a cropped black single-breasted waistcoat buttoned low over a black button-up shirt; a silver chain choker and a fine silver chain with a small squiggly silver pendant; silver drop earrings and silver rings; a black leather belt with a big chunky silver buckle; faded black acid-wash wide-leg jeans; black boots; a pink-red flush around his eyes and a little gloss on his lips. Hair: his own jet-black hair, sleek and rounded, a centre-parted curtain fringe falling to his lashes, tapered at the nape (a look he has really worn). The last attached photo is only a reference for the clothes and hair. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Jungwon: Sheer Nerve (scene portraits)** *(optional)*  
-His scene faces for the same outfit.  
-Attach: Jungwon, then Kat's inspo photo (Inspo/Jungwon-EmoBoy/)  
-Save as: `skin-sk-jungwon-sheer-portraits.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a sheer black mesh top with one shoulder cut out under a cropped black waistcoat, a silver chain choker and a fine silver chain with a small squiggly silver pendant, silver drop earrings, a pink-red flush around his eyes and a little gloss on his lips. Hair: his own jet-black hair, sleek and rounded, a centre-parted curtain fringe falling to his lashes, tapered at the nape. The last attached photo is only a reference for the clothes and hair. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
 ```
 
 **[ ] Jungwon: Soundcheck (pose sheet)** *(optional)*  

@@ -19224,6 +19224,55 @@
         "assets/femc/game/art/skins/sk-haechan-unravelled/portraits/haechan/serious.webp": "51e713a484b1cd4c8b96828d79f5c86d74046b006cf1fa9f804168928a2c1d13",
         "assets/femc/game/art/skins/sk-haechan-unravelled/portraits/haechan/surprised.webp": "a5cd5c712a8ab420beca6ec2ff0dce6d853555810e0ebaee50138f58f5af376c"
       }
+    },
+    {
+      "batch": 94,
+      "source": "skin-sk-jungwon-sheer-posesheet.png",
+      "sourceNow": "Added to Game/skin-sk-jungwon-sheer-posesheet.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "da282fc10ef38d394981f001b2135c6db1d57482ba8142ad6ea72c3436937546",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-pose-0.webp",
+      "skin": "sk-jungwon-sheer",
+      "conversion": "tools/femc-wardrobe.py skin jungwon (his fighter sheet’s key); the sheet is portrait-format (1024 x 1536) with the 3 x 2 grid intact; the sheer sleeves kept half-see-through as drawn",
+      "placement": "cosmetics.js sk-jungwon-sheer (Sheer Nerve, SR, Jungwon; Masquerade and Valentine’s banners), battle pose frames via ready.js",
+      "knownLimits": "only background gaps are see-through (checked on magenta)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-pose-0.webp": "4ba46dc350ef5e4f789a2ef62a44c8f25f9cec76695af762466890ff9b006ae7",
+        "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-pose-1.webp": "5aaf5e61476d60c1a0283044f1a7e45a808c9345f827c797b53f37f06d792fdb",
+        "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-pose-2.webp": "b5beba9a26c829eb1e8bbfaa3a2857d75532368e9426d7c9c35a8c8c205e27ec",
+        "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-pose-3.webp": "17fa62bd71894cdcf0014234b1013f52e589d2b9b69687a0cb5afe6e77715749",
+        "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-pose-4.webp": "dccd9dbdee13650c7005bd7a3574983258f07253bc83c0c4a8ec53da862f043c",
+        "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-pose-5.webp": "4c1a10a38de2bf4e3c9bfc8155db7347f17aa93f666fd484f6eb64d45fa62e48"
+      }
+    },
+    {
+      "batch": 94,
+      "source": "skin-sk-jungwon-sheer-portraits.png",
+      "sourceNow": "Added to Game/skin-sk-jungwon-sheer-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "26ba4dba1756d7abf82e1075f5cf61368cc0b0067134fbd1112811c89e042aaa",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-sheer/portraits/jungwon/neutral.webp",
+      "skin": "sk-jungwon-sheer",
+      "conversion": "opaque near-black sheet: macOS Vision lift on the WHOLE sheet, alpha hardened with a smoothstep between 0.70 and 0.95 (batch 91), original RGB kept; small enclosed dropouts in skin refilled; cells split on the thirds along a min-cost vertical seam (batch 93) and placed on his base canvas (873 x 862) by normalized cross-correlation of the face against the same expression; busts that end above the canvas bottom carried down by repeating their last clean row; slivers of the neighbouring cell at the canvas top removed; tools/femc-wardrobe.py portraits (WebP q90)",
+      "sheetOrder": "matched by face correlation to portraits/jungwon/ (0.97-0.98): top row flustered, serious, neutral; bottom row sad, happy, surprised",
+      "placement": "Sheer Nerve’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "his first outfit scene portraits; a faint pinkish patch on the bare shoulder in happy (Vision dropped it; refilled from the sheet’s own colour)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-sheer/portraits/jungwon/flustered.webp": "4e2dc3a44c5515e03a1d2577ac63023906c472589a608f276e9646a64a44cabc",
+        "assets/femc/game/art/skins/sk-jungwon-sheer/portraits/jungwon/happy.webp": "e7df1bb9a64ce72c8420c21d151703ad5ec97d5f8f6e05b8d1b90323c2b73ef2",
+        "assets/femc/game/art/skins/sk-jungwon-sheer/portraits/jungwon/neutral.webp": "51a88a83f837f6f1ca98ed71610b8f2f7926cafd1d3bb2ae8407577fb7f8ea9a",
+        "assets/femc/game/art/skins/sk-jungwon-sheer/portraits/jungwon/sad.webp": "384d5533c1770cd889e5d1ef1008acd5f88703418bf7e2476814eb200f3b9e8b",
+        "assets/femc/game/art/skins/sk-jungwon-sheer/portraits/jungwon/serious.webp": "d3f68fecfdbb2ff348bbc1ca374a19ceac024c1047c969a7dc1690d90b8d08d8",
+        "assets/femc/game/art/skins/sk-jungwon-sheer/portraits/jungwon/surprised.webp": "9dac4e75b6aa3be29b809a72ade44c7f0f75cc89dcbd72b58a0bcef91fc6001f"
+      }
     }
   ],
   "batch1Validation": {
@@ -20596,5 +20645,22 @@
     "testEdits": "tests/femc_cosmetics.py: NEW_SKINS adds the seven ids; Haechan Spotlight’s featured set adds Headphones On, Arrivals Gate, Garage Band and Limelight; the Haechan Spotlight / Winter Lights overlap check allows Arrivals Gate (planned for both)",
     "notTested": "no browser tests (lead’s instruction): tests/femc_cosmetics.py (banner, newpending), the new outfits in a real battle, an outfit portrait in a scene at 1000x486 and 375x812",
     "html": "femc-game.html ready.js v14, cosmetics.js v16"
+  },
+  "batch94JungwonValidation": {
+    "date": "2026-10-29",
+    "scope": "Jungwon's Sheer Nerve (FEMC-ART-WIRING note) with pose frames and his first outfit scene portraits (on his 873 x 862 base canvas; cosmetics.js portrait() already reads portraits/<who>/, no code change)",
+    "sourcesInspected": "every sheet viewed; every pose frame on magenta at full size with enclosed transparent areas marked; every portrait cut on magenta at full size, beside the base set where needed; bottoms and cell edges checked",
+    "sourcesIntegrated": 2,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (same names, including the leading space in “ skin-sk-summersession-posesheet.png”; sha256 checked); On Hold untouched; sk-halloween-solar-portraits-v2.png left in New Adds (waiting on Kat)",
+    "keyChange": "none",
+    "tests": [
+      "tools/femc-check-scenes.py",
+      "jsc checkSyntax on every edited script",
+      "py_compile tests/femc_cosmetics.py tools/femc-shadow-poses.py"
+    ],
+    "testEdits": "tests/femc_cosmetics.py: NEW_SKINS adds sk-jungwon-sheer",
+    "notTested": "no browser tests (lead’s instruction): tests/femc_cosmetics.py (banner, newpending), the new outfits in a real battle, an outfit portrait in a scene at 1000x486 and 375x812",
+    "html": "femc-game.html ready.js v15, cosmetics.js v17"
   }
 }

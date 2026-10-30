@@ -46,7 +46,7 @@ PWPN = SKINS_DIR / 'wpn-jungwon-council'
 NEW_SKINS = ['sk-minji-crew', 'sk-jihoon-pilates', 'sk-aigis-uniform', 'sk-alphaphi', 'sk-harbourcoat', 'sk-idol', 'sk-haechan-sweater', 'sk-esports', 'sk-hanbok', 'sk-vp', 'sk-velvet', 'sk-roadwork',
              'sk-y2k', 'sk-oops', 'sk-snake', 'sk-sugarrush', 'sk-prowl', 'sk-strawberry', 'sk-summersession', 'sk-limelight',
              'sk-haechan-headphones', 'sk-haechan-arrivals', 'sk-haechan-windowseat', 'sk-haechan-bad', 'sk-haechan-garage', 'sk-haechan-limelight',
-             'sk-haechan-unravelled']
+             'sk-haechan-unravelled', 'sk-jungwon-sheer']
 NEW_WPNS = ['wpn-runners', 'wpn-strangers', 'wpn-hoax', 'wpn-akihiko-champ', 'wpn-jungwon-council']
 KEPT = {}
 
