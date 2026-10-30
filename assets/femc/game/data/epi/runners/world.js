@@ -135,14 +135,9 @@
       mark: 'mark-runners', minji: 'minji-runners', hanni: 'hanni-runners', hyein: 'hyein-runners', danielle: 'danielle-runners', jaemin: 'jaemin-runners',
       doyoung: 'doyoung-runners', olivia: 'olivia-runners', haerin: 'haerin-runners' },
     // Event outfits (core.js eventFaces; FEMC-ART-WIRING "Extras"): an event's `faces: '<key>'` swaps these in for its scenes only.
-    eventFaces: {
-      'runners-holiday': { solar: 'solar-runners-holiday', haechan: 'haechan-runners-holiday', hanni: 'hanni-runners-holiday', hyein: 'hyein-runners-holiday',
-        minji: 'minji-runners-holiday', mark: 'mark-runners-holiday', jaehyun: 'jaehyun-runners-holiday',
-        chenle: 'chenle-runners-holiday', jaemin: 'jaemin-runners-holiday', danielle: 'danielle-runners-holiday' }, // epi-r-holiday (12/19, the Sigma party)
-      // Olivia's and Haerin's first faces are their jerseys (Kat, batch 89): portraits/olivia and haerin are their casual looks now.
-      'runners-regionals': { solar: 'solar-runners-regionals', minji: 'minji-runners-regionals', olivia: 'olivia-runners-regionals', haerin: 'haerin-runners-regionals',
-        chenle: 'chenle-runners-regionals' } // epi-r-regionals-1 / -2 (12/6-12/7)
-    },
+    // Event outfits are parked until Kat redraws them in the new style (FEMC-ART-BACKBURNER "Runners outfits"); the
+    // holiday party and Regionals show everyone's everyday Runners face meanwhile. The old map is kept there to restore.
+    eventFaces: {},
     variants: {
       morning: {
         school: ["Class at nine. The quad was salted into gray paths, and everyone she passed looked like they'd slept four hours, which was December's whole look.",

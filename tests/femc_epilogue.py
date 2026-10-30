@@ -558,16 +558,17 @@ try:
           return {links:Object.keys(G.LINKS).length,cal:G.D.cal===FEMC_GAME_CALENDAR,b,epi:'epi' in G.S}})()""")
         ok(year_before['cal'] and year_before['b'] == '[["n"],["n"]]' and not year_before['epi'], f'the year: ifBond and ifRouteOpen are never true outside the epilogue ({year_before["b"]})')
         enter('route-R')
-        ok(p.eval("FEMC_EPI_WORLDS.runners._loaded===30 && !FEMC_EPI_WORLDS.runners.stub && FemcGame.world()==='runners'"), 'the Runners world loads all its files (calendar, world, glitches, people, the story files)')
+        ok(p.eval("FEMC_EPI_WORLDS.runners._loaded && !FEMC_EPI_WORLDS.runners.stub && FemcGame.world()==='runners'"), 'the Runners world loads all its files (calendar, world, glitches, people, the story files)')
         # Event outfits (art batch 87, core.js eventFaces): a scene that names a key wears its faces while it plays, and only then.
         ef = p.eval(r"""(()=>{const G=FemcGame,pf=()=>[G.portrait('hanni','neutral'),G.portrait('solar','neutral'),G.portrait('minji','neutral')].map(u=>String(u).split('/').slice(-2,-1)[0]);
           const before=pf();const r=FemcScene.play({scene:[{n:'a'},{n:'b'}],faces:'runners-holiday',label:'t',onDone:()=>{}});const during=pf(),key=G.eventFaces();r.close();const after=pf();
           const ev=['epi-r-holiday','epi-r-regionals-1','epi-r-regionals-2'].map(id=>(G.D.events.find(e=>e.id===id)||{}).faces);
           const ol=()=>String(G.portrait('olivia','neutral')).split('/').slice(-2,-1)[0];const ol0=ol();const r2=FemcScene.play({scene:[{n:'a'}],faces:'runners-regionals',label:'t',onDone:()=>{}});const ol1=ol();r2.close();
           return {before,during,key,after,keyAfter:G.eventFaces(),ev,olivia:[ol0,ol1,ol()]}})()""")
-        ok(ef['before'] == ['hanni', 'solar-runners', 'minji'] and ef['during'] == ['hanni-runners-holiday', 'solar-runners-holiday', 'minji-runners-holiday'] and ef['key'] == 'runners-holiday'
+        # The Runners outfits are parked (Kat, Oct 30 2026: FEMC-ART-BACKBURNER): the scenes keep their keys, but everyone wears the everyday Runners face.
+        ok(ef['before'] == ['hanni-runners', 'solar-runners', 'minji-runners'] and ef['during'] == ef['before'] and ef['key'] == 'runners-holiday'
            and ef['after'] == ef['before'] and ef['keyAfter'] is None and ef['ev'] == ['runners-holiday', 'runners-regionals', 'runners-regionals']
-           and ef['olivia'] == ['olivia', 'olivia-runners-regionals', 'olivia'], f'event outfits only inside their scene (Olivia casual, her jersey at Regionals): {ef}')
+           and ef['olivia'] == ['olivia-runners'] * 3, f'Runners event outfits parked; everyday Runners faces throughout: {ef}')
         # The data: dates and slots of weeks 1-2's beats (week 3 and 12/14's late pull are runners2's).
         beats = p.eval("FemcGame.D.events.filter(e=>FemcGame.dayOf(e.date)<=FemcGame.dayOf('12/14')&&e.id!=='epi-r-alone').map(e=>[e.id,e.date,e.slot,e.flag||null])")
         want_beats = {'epi-r-home': ['12/1', 'early'], 'epi-r-five-days': ['12/1', 'after'], 'epi-r-pale': ['12/1', 'late'], 'epi-r-cover': ['12/2', 'early'], 'epi-r-ask': ['12/2', 'late'],
@@ -587,7 +588,7 @@ try:
         assets = p.eval("CHECK_ASSETS(%s)" % json.dumps(walk['urls']), timeout=120)
         ok(not assets['bad'] and assets['n'] >= 15, f'every background and portrait those scenes use loads ({assets["n"]}): {assets["bad"]}')
         mus = walk['music']
-        ok({'world-runners', 'epi-r-confession', 'epi-r-regionals', 'epi-r-closure', 'epi-r-studio', 'epi-r-return', 'epi-r-faceoff', 'epi-r-spice'} <= set(mus), f'the world theme and the song moods are in the scenes ({sorted(mus)})')
+        ok({'world-runners-theme', 'epi-r-confession', 'epi-r-regionals', 'epi-r-closure', 'epi-r-studio', 'epi-r-return', 'epi-r-faceoff', 'epi-r-spice'} <= set(mus), f'the world theme and the song moods are in the scenes ({sorted(mus)})')
         ok(p.eval("(()=>{const m=e=>FemcGame.D.events.find(x=>x.id===e).scene.filter(l=>l.music).map(l=>l.music);const M=FemcGame.D.places.music;return m('epi-r-five-days')[0]==='epi-r-return'&&M['epi-r-return']==='novocaine'&&m('epi-r-playback').includes('epi-r-studio')&&M['epi-r-studio']==='not-enough'&&m('epi-r-print')[0]==='epi-r-faceoff'})()"), 'Kat’s picks: Novocaine on the return, Not Enough in the studio and as the track at the playback, the face-off on the stairs')
         # Home bonds: closeness from the year (romance + Christmas pick for Haechan at rank 15; Minji at rank 8; nobody else).
         start = p.eval("(()=>{const E=FemcEpilogue;return ['haechan','minji','hanni','danielle'].map(id=>E.closeness(id))})()")
@@ -677,7 +678,7 @@ try:
           gl:!FemcGlitch.active(),b:JSON.stringify(G.branch({ifGlitch:3,then:['y'],else:['n']}))}})()""")
         ok(base['cal'] and base['ev'] and base['world'] is None and not base['ends'] and base['gl'] and base['b'] == '["n"]', f'the year reads Iwatodai’s data; no glitch, no `ends`, ifGlitch false ({base})')
         enter('route-R')
-        ok(p.eval("FEMC_EPI_WORLDS.runners._loaded===30 && FemcEpilogue.WORLDS.runners.files.join()==='calendar,world,glitches,people,story-w1,story-w2,people-w3,story-w3'"), 'the Runners world loads eight files (week 3’s story and people files last)')
+        ok(p.eval("FEMC_EPI_WORLDS.runners._loaded && FemcEpilogue.WORLDS.runners.files.join()==='calendar,world,glitches,people,story-w1,story-w2,people-w3,story-w3'"), 'the Runners world loads eight files (week 3’s story and people files last)')
         beats = p.eval("FemcGame.D.events.filter(e=>e.id==='epi-r-alone'||FemcGame.dayOf(e.date)>=FemcGame.dayOf('12/15')).map(e=>[e.id,e.date,e.slot,!!e.ends,!!e.consumes])")
         want3 = {'epi-r-alone': ['12/14', 'late'], 'epi-r-upward': ['12/15', 'early'], 'epi-r-kitchen': ['12/16', 'early'], 'epi-r-unseen': ['12/16', 'late'], 'epi-r-butterfly': ['12/17', 'evening'],
                  'epi-r-clocks': ['12/18', 'early'], 'epi-r-unheard': ['12/18', 'late'], 'epi-r-holiday': ['12/19', 'evening'], 'epi-r-footage': ['12/19', 'late'],
