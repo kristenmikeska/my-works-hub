@@ -134,7 +134,8 @@
       // Kat's realistic-style Runners set (batch 95): Runners-only, so the main game keeps their year faces.
       mark: 'mark-runners', minji: 'minji-runners', hanni: 'hanni-runners', hyein: 'hyein-runners', danielle: 'danielle-runners', jaemin: 'jaemin-runners',
       doyoung: 'doyoung-runners', olivia: 'olivia-runners', haerin: 'haerin-runners', chenle: 'chenle-runners', jaehyun: 'jaehyun-runners', jeno: 'jeno-runners',
-      dad: 'jaesang-runners', mom: 'solji-runners' }, // Solar's parents, Jaesang and Solji
+      dad: 'jaesang-runners', mom: 'solji-runners',
+      jisung: 'jisung-runners', renjun: 'renjun-runners', yerim: 'yerim-runners' }, // Solar's parents, Jaesang and Solji
     // Event outfits (core.js eventFaces; FEMC-ART-WIRING "Extras"): an event's `faces: '<key>'` swaps these in for its scenes only.
     // Event outfits are parked until Kat redraws them in the new style (FEMC-ART-BACKBURNER "Runners outfits"); the
     // holiday party and Regionals show everyone's everyday Runners face meanwhile. The old map is kept there to restore.

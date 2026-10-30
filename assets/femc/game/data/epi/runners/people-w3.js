@@ -485,10 +485,10 @@
         ] }
       ] },
       { n: "Jisung looked up from the extension cords. He had the face he always had before a question, open and pink-eared and completely without strategy." },
-      { s: 'jisung', t: "Is Mark coming to the party?" },
+      { s: 'jisung', f: 'neutral', t: "Is Mark coming to the party?" },
       { n: "Nobody answered. Jeno stopped counting tiles. Jaemin looked at the run of show like it had suddenly developed a typo." },
       { s: 'jaemin', f: 'neutral', t: "Everyone's invited to my parties, Jisungie." },
-      { s: 'jisung', t: "...But is he coming." },
+      { s: 'jisung', f: 'serious', t: "...But is he coming." },
       { s: 'jaemin', f: 'neutral', t: "Go find the long cord, baby. The orange one." },
       { n: "Jisung went. The kitchen went back to being a kitchen, the fridge hummed, Jeno resumed measuring, and the blue line stayed exactly where it was, the only thing on that whole fridge that nobody was going to talk about." }
     ] }
@@ -735,7 +735,7 @@
       { s: 'solar', f: 'neutral', t: "What's blue?" },
       { s: 'olivia', f: 'flustered', t: "Blue is *I'm scared.* There's a lot of blue in this one." },
       { n: "Yerim came in from the kitchen with a tray of mugs, steam rising off them, bright and pink-cheeked in her socks, and started handing them out without asking anybody what they wanted." },
-      { s: 'yerim', t: "Chamomile! It's for anxiety. My mom says it's for anxiety. I don't know if it works. I just really like the word." },
+      { s: 'yerim', f: 'happy', t: "Chamomile! It's for anxiety. My mom says it's for anxiety. I don't know if it works. I just really like the word." },
       { ifEvent: 'epi-r-clocks', then: [
         { n: "The clock on the mantel said 9:14. That morning it had said twelve, like every clock in the house had, all of them at once, and everyone had seen it. Now it said 9:14, and then 9:15, and kept on saying the right thing minute after minute, carefully, like it was apologizing. Nobody in the living room looked at it. Everybody in the living room knew exactly where it was." }
       ], else: [

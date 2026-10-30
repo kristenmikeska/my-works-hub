@@ -104,6 +104,9 @@ window.FEMC_PORTRAIT_SCALE = {
   'haechan-runners': 0.8, // batch 98: Kat's realistic remake, eyes-to-chin matched to the cast
   'jaesang-runners': 0.8, // batch 98: Solar's Runners dad (the Runners faces map: dad)
   'solji-runners': 0.78, // batch 98: Solar's Runners mom (the Runners faces map: mom)
+  'jisung-runners': 0.8, // batch 99: Kat's realistic Runners set
+  'renjun-runners': 0.8, // batch 99: Kat's realistic Runners set
+  'yerim-runners': 0.8, // batch 99: Kat's realistic Runners set
   'mark-runners': 0.82, // batch 96: Kat's realistic remake
   'minji-runners': 0.86, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
   'hanni-runners': 0.83, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
@@ -227,4 +230,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 20;
+window.FEMC_PORTRAIT_V = 21;

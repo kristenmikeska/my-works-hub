@@ -136,9 +136,9 @@
       place: 'Syracuse · Sigma Chi House · His Room', time: 'Night', scene: [
       { music: 'epi-r-romance' },
       { n: "The side gate was the one Mark used to let her in through, back when Mark letting her in had been a favor with a receipt stapled to it. Tonight it was off the latch, and nobody was standing at it, and nobody was going to ask her for anything for walking through it. She went up the back way. Renjun was in the kitchen window with the sash pushed up two inches and his morning smoke happening at ten at night, which was the most Renjun thing she'd ever seen, and he watched her cross the yard and lifted the joint an inch, like a toast." },
-      { s: 'renjun', t: "I didn't see you." },
+      { s: 'renjun', f: 'neutral', t: "I didn't see you." },
       { s: 'solar', f: 'neutral', t: "Thanks, Renjun." },
-      { s: 'renjun', t: "Didn't see that either." },
+      { s: 'renjun', f: 'neutral', t: "Didn't see that either." },
       { n: "His room smelled like vanilla and solder and the cold coming off the window. He was at the desk with the track paused on the screen, the long untitled block of it sitting there in gray with no name on the session, and when she came in he didn't turn around right away. He reached over and turned his phone face down. Then he picked it back up and held the button down until the screen went black, all the way off, while she watched. There was a Post-it stuck over the laptop's camera in his terrible handwriting. It said *off.*" },
       { s: 'haechan', f: 'neutral', t: "You're early." },
       { s: 'solar', f: 'happy', t: "You didn't say a time." },
@@ -246,16 +246,16 @@
         ] }
       ] },
       { n: "Yerim came in in her socks, following the smell, bright and pink-cheeked and completely without bad intent anywhere in her body, and stole a pancake off the top of the stack." },
-      { s: 'yerim', t: "Was it so cold? The lodge thing? Chungha said there was no signal at all, I would literally die." },
+      { s: 'yerim', f: 'surprised', t: "Was it so cold? The lodge thing? Chungha said there was no signal at all, I would literally die." },
       { choose: [
         { t: "Freezing. No signal, no heat after ten. Hyein cried twice.", then: [
           { glitch: { strain: 1 } },
-          { s: 'yerim', t: "Oh my god. Iconic." },
+          { s: 'yerim', f: 'happy', t: "Oh my god. Iconic." },
           { n: "It came out of her mouth finished, with a detail on it and a little laugh at the end, the way her father's sentences came out at dinner parties, and Yerim believed every word because Yerim was not someone who looked at a person and thought about a bad thing. Hanni stared down into the pan. Solar felt it land somewhere under her sternum and sit there, heavy and warm, like something swallowed too fast." }
         ] },
         { t: "(Let Hanni answer.)", then: [
           { s: 'hanni', f: 'happy', t: "So cold. Don't ever go to the Adirondacks, Yerim. Promise me." },
-          { s: 'yerim', t: "Noted!!" }
+          { s: 'yerim', f: 'happy', t: "Noted!!" }
         ] }
       ] },
       { n: "Yerim left with three pancakes and a fork. The kitchen went quiet. Hanni turned the burner off." },
@@ -686,16 +686,16 @@
         { s: 'jaemin', f: 'happy', t: "You came to mine over there. So you owe me one here. That's how it works. I don't make the rules. I make *all* the rules, actually, but I don't make that one." }
       ] },
       { n: "Jisung came over from the counter with a hot chocolate, sincere and pink-eared, and stood by the table the way Jisung stood by tables, like he'd been raised to wait to be asked to sit." },
-      { s: 'jisung', t: "Was it actually no signal, though? Like none? My mom would have called the police." },
+      { s: 'jisung', f: 'surprised', t: "Was it actually no signal, though? Like none? My mom would have called the police." },
       { choose: [
         { t: "None. Not one bar the whole time.", then: [
           { glitch: { strain: 1 } },
-          { s: 'jisung', t: "That's insane. I'd die." },
+          { s: 'jisung', f: 'surprised', t: "That's insane. I'd die." },
           { n: "He believed her. Of course he believed her. She'd said it in the voice, and Jisung was a person who asked questions because he wanted the answers, not because he wanted to catch anyone in them. She smiled at him. It felt like a coat that didn't fit." }
         ] },
         { t: "(Let Jaemin take it.)", then: [
           { s: 'jaemin', f: 'serious', t: "Jisung. Jisungie. Some things are sacred. Some things are invite only. Some things you have to be *chosen* for." },
-          { s: 'jisung', t: "...So there was signal?" },
+          { s: 'jisung', f: 'neutral', t: "...So there was signal?" },
           { s: 'jaemin', f: 'happy', t: "Go sit down, baby." }
         ] }
       ] },
