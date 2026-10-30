@@ -43,7 +43,8 @@ SKIN = SKINS_DIR / 'sk-phantom'
 PSKIN = SKINS_DIR / 'sk-akihiko-champ'
 PWPN = SKINS_DIR / 'wpn-jungwon-council'
 # Stand-ins for "a new look still waiting for art" (newpending): their real art steps aside for that section.
-NEW_SKINS = ['sk-minji-crew', 'sk-jihoon-pilates', 'sk-aigis-uniform', 'sk-alphaphi', 'sk-harbourcoat', 'sk-idol', 'sk-haechan-sweater', 'sk-esports', 'sk-hanbok', 'sk-vp', 'sk-velvet', 'sk-roadwork']
+NEW_SKINS = ['sk-minji-crew', 'sk-jihoon-pilates', 'sk-aigis-uniform', 'sk-alphaphi', 'sk-harbourcoat', 'sk-idol', 'sk-haechan-sweater', 'sk-esports', 'sk-hanbok', 'sk-vp', 'sk-velvet', 'sk-roadwork',
+             'sk-y2k', 'sk-oops', 'sk-snake', 'sk-sugarrush', 'sk-prowl', 'sk-strawberry', 'sk-summersession', 'sk-limelight']
 NEW_WPNS = ['wpn-runners', 'wpn-strangers', 'wpn-hoax', 'wpn-akihiko-champ', 'wpn-jungwon-council']
 KEPT = {}
 
@@ -307,7 +308,7 @@ try:
            and r['feb'] == ['sunrise', 'hoax', 'valentine'], f'2–3 banners November–February, main first: {r}')
         ok(r['mar'] == ['solar', 'akihiko'], f'The Searchers hidden while Minji is unmet (empty featured list): {r}')
         ok(set(r['feat']['haechan']) == {'sk-haechan-runners', 'wpn-runners', 'wpn-strangers', 'evk-midnight', 'wp-rooftop', 'sk-haechan-sweater'}
-           and set(r['feat']['solar']) == {'sk-idol', 'sk-alphaphi', 'sk-hanbok', 'sk-velvet'}
+           and set(r['feat']['solar']) == {'sk-idol', 'sk-alphaphi', 'sk-hanbok', 'sk-velvet', 'sk-y2k', 'sk-oops', 'sk-snake', 'sk-sugarrush', 'sk-limelight'}
            and set(r['feat']['sees']) >= {'sk-yukari-pink', 'sk-mitsuru-rider', 'tt-darkhour'} and 'sk-date' in r['feat']['valentine']
            and not set(r['feat']['haechan']) & set(r['feat']['lights']) - {'wpn-strangers'} and r['end'] == 0, f'featured per banner, ends January: {r}')
         ok(p.eval("FemcGame.S.met.push('minji'),FemcCosmetics.banners(FemcGame.dayOf('3/10')).map(b=>b.id).join()") == 'solar,akihiko,searchers', 'The Searchers once Minji is met')

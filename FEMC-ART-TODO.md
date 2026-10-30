@@ -1,6 +1,6 @@
 # Art to make
 
-**54 items:** 54 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 22 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**38 items:** 38 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 22 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -187,145 +187,9 @@ Save as: `skin-sk-haechan-headphones-portraits.png`
 A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a white track jacket with royal-blue panels, open over a neon lime-green zip hoodie with the hood up, a white tee, white-and-silver over-ear headphones on over the hood. Hair: his own dark brown hair, messy, the fringe falling into his eyes under the hood. A faint green glow on his face, like a monitor in a dark room. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
 ```
 
-**[ ] Solar: Y2K Pop Star (pose sheet)** *(optional)*  
-Solar's battle figure as a Y2K pop star.  
-Attach: solar-posesheet.png, then Solar  
-Save as: `skin-sk-y2k-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a Y2K pop-star look: a baby-pink cropped zip-up and a sparkly silver tube top, a low-rise white cargo mini skirt with a rhinestone belt chain, platform sneakers, tinted pink sunglasses pushed up on her head, glossy lips. Hair: long and voluminous with chunky bubblegum-pink face-framing streaks, half up in two little twists pinned with glittery butterfly clips. Her naginata wrapped in pink tape with rhinestones along the blade's spine. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Solar: Y2K Pop Star (scene portraits)** *(optional)*  
-Her scene faces for the same outfit.  
-Attach: Solar  
-Save as: `sk-y2k-solar-portraits.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a baby-pink cropped zip-up over a sparkly silver tube top, tinted pink sunglasses pushed up on her head, glossy lips, small silver hoops. Hair: long and voluminous with chunky bubblegum-pink face-framing streaks, half up in two little twists pinned with glittery butterfly clips. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Solar: Oops! (red catsuit) (pose sheet)** *(optional)*  
-Solar's battle figure in an iconic red latex catsuit.  
-Attach: solar-posesheet.png, then Solar, then Kat's inspo photo if she has one  
-Save as: `skin-sk-oops-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit, hair and weapon to this look: a glossy red latex catsuit with a high collar, a zip up the front and a subtle seam down each side, red latex gloves and red platform boots, the shine catching hard white highlights like the inside of a spaceship. Hair: long, glossy and voluminous with a deep side part and honey-blonde highlights, blown out into big bouncy waves. Her naginata in glossy red with a silver blade and a tiny silver planet charm on the collar. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Solar: Oops! (red catsuit) (scene portraits)** *(optional)*  
-Her scene faces for the same outfit.  
-Attach: Solar, then Kat's inspo photo if she has one  
-Save as: `sk-oops-solar-portraits.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a glossy red latex catsuit with a high collar and a zip at the throat, the shine catching hard white highlights. Hair: long, glossy and voluminous with a deep side part and honey-blonde highlights, blown out into big bouncy waves. Glossy nude lips, a little shimmer on the cheekbones. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Solar: Snake Charmer (2001 VMAs) (pose sheet)** *(optional)*  
-Solar's battle figure in the jewelled awards-show look, snake included.  
-Attach: solar-posesheet.png, then Solar, then Kat's inspo photo if she has one  
-Save as: `skin-sk-snake-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit, hair and weapon to this look: a 2001-awards-show stage look: a jewelled crop top covered in tiny green and gold rhinestones, low-rise sparkling stage pants with rhinestone fringe at the hips, strappy gold heels, a body-shimmer glow, and a huge pale yellow-and-white python draped across her shoulders and around one arm (calm, curious, its head near her shoulder in every cell). Hair: long, loose and wavy, light brown with golden-blonde highlights, a little tousled. Her naginata wrapped in gold with a snakeskin-patterned haft. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Solar: Snake Charmer (2001 VMAs) (scene portraits)** *(optional)*  
-Her scene faces for the same outfit, snake included.  
-Attach: Solar, then Kat's inspo photo if she has one  
-Save as: `sk-snake-solar-portraits.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a jewelled crop top covered in tiny green and gold rhinestones, a body-shimmer glow, and a huge pale yellow-and-white python draped across her shoulders (its head resting near her collarbone, calm). Hair: long, loose and wavy, light brown with golden-blonde highlights, a little tousled. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
 ### From Kat's inspo photos (ChatGPT)
 
 Each look below comes from one folder in 🎨 `Femc Mode Images/Inspo/`. Attach the inspo photo last: it's only for the clothes and hair.
-
-**[ ] Solar: Sugar Rush (pose sheet)** *(optional)*  
-Solar's battle figure as a kawaii-grunge doll: twin tails, a winged teddy bear and fluffy boots.  
-Attach: solar-posesheet.png, then Solar, then Kat's inspo photo (Inspo/Solar-Dollhouse/)  
-Save as: `skin-sk-sugarrush-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit, hair and weapon to this look: a kawaii-grunge doll look: a black velvet corset cami with tiny white polka dots, pink lace trim and a little pink bow, printed with a cute brown teddy bear with white angel wings hugging a pink heart; a short tiered, ruffled cream eyelet-lace skirt with tiny polka dots; a pearl choker with a big emerald-green heart pendant; sheer tights wrapped criss-cross with pale ribbon; fluffy white faux-fur leg warmers with white buckled straps over chunky white platform boots; a black fuzzy wrist cuff with a pink plaid band; stacks of sparkly rings and small silver drop earrings. Hair: jet black with a candy-pink underlayer that flashes when she moves, in two long high pigtails, one pinned with a little plush teddy-bear clip and the other with a fuzzy dark green bow, a little glitter along the centre part. Her naginata's haft wrapped in pink glitter tape with silver flame decals, a tiny winged teddy-bear charm at the collar. The last attached photo is only a reference for the clothes; keep her own face. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Solar: Sugar Rush (scene portraits)** *(optional)*  
-Her scene faces for the same outfit.  
-Attach: Solar, then Kat's inspo photo (Inspo/Solar-Dollhouse/)  
-Save as: `sk-sugarrush-solar-portraits.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a black velvet corset cami with tiny white polka dots, pink lace trim, a little pink bow and a winged teddy-bear print, a pearl choker with a big emerald-green heart pendant, small silver drop earrings, glossy rosy lips. Hair: jet black with a candy-pink underlayer, in two long high pigtails, one pinned with a little plush teddy-bear clip and the other with a fuzzy dark green bow, a little glitter along the centre part. The last attached photo is only a reference for the clothes; keep her own face. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Solar: Night Prowl (pose sheet)** *(optional)*  
-Solar's battle figure in leopard print and black, under a velvet cap. Matching set with Haechan: Bad Influence.  
-Attach: solar-posesheet.png, then Solar, then Kat's inspo photo (Inspo/Solar-NotEnoughFit/)  
-Save as: `skin-sk-prowl-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit, hair and weapon to this look: a leopard-print cropped cami top; a slim cropped black zip-up jacket worn open, with thumbhole cuffs; high-waisted black jeans with a crossover wrap waistband (a second waistband strap buttoned on the diagonal); black platform ankle boots; a black velvet baseball cap; a long black cord necklace with a pointed dark crystal pendant; silver ear cuffs, silver rings and long black-and-white graphic nails. Makeup: sharp black winged liner with white inner liner, matte nude-brown lips. Hair: long, layered and tousled, dark chocolate brown with chunky caramel face-framing streaks and a few black lowlights, blown out with volume under the cap. Her naginata in matte black with a leopard-print grip wrap and a dark crystal set in the collar. The last attached photo is only a reference for the clothes; keep her own face. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Solar: Night Prowl (scene portraits)** *(optional)*  
-Her scene faces for the same outfit.  
-Attach: Solar, then Kat's inspo photo (Inspo/Solar-NotEnoughFit/)  
-Save as: `sk-prowl-solar-portraits.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a leopard-print cropped cami under a slim black zip-up jacket worn open, a long black cord necklace with a pointed dark crystal pendant, silver ear cuffs, a black velvet baseball cap. Makeup: sharp black winged liner with white inner liner, matte nude-brown lips. Hair: long, layered and tousled, dark chocolate brown with chunky caramel face-framing streaks and a few black lowlights, full of volume under the cap. The last attached photo is only a reference for the clothes; keep her own face. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Solar: Strawberry Milk (pose sheet)** *(optional)*  
-Solar's battle figure in pastel pink: strawberry hair, bead necklaces and charm nails.  
-Attach: solar-posesheet.png, then Solar, then Kat's inspo photo (Inspo/Solar-Pink/)  
-Save as: `skin-sk-strawberry-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit, hair and weapon to this look: a lilac-pink one-shoulder ribbed knit tank top; short white drawstring shorts with lavender metallic satin panels; white platform sneakers; a long white beaded strand necklace hanging to her hip with tiny pastel charms; a beaded pastel choker with a pink flower charm; a blank hot-pink nameplate necklace; a white shell-bead necklace; little silver star ear cuffs; a silver watch on a black-bead bracelet and a white bangle; long 3D charm nails in pink and silver with tiny bows; a small butterfly temporary tattoo on one forearm; rosy blush and glossy peach lips. Hair: waist-length soft waves, pastel strawberry pink all over with fine white-blonde and lilac streaks and a few tiny silver star clips. Her naginata's haft in pastel pink, strung with white bead strands and little pastel charms, a sparkly silver blade. The last attached photo is only a reference for the clothes; keep her own face. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Solar: Strawberry Milk (scene portraits)** *(optional)*  
-Her scene faces for the same outfit.  
-Attach: Solar, then Kat's inspo photo (Inspo/Solar-Pink/)  
-Save as: `sk-strawberry-solar-portraits.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a lilac-pink one-shoulder ribbed knit tank top, a beaded pastel choker with a pink flower charm, a long white beaded strand necklace with tiny pastel charms, a blank hot-pink nameplate necklace, little silver star ear cuffs, rosy blush and glossy peach lips. Hair: waist-length soft waves, pastel strawberry pink all over with fine white-blonde and lilac streaks and a few tiny silver star clips. The last attached photo is only a reference for the clothes; keep her own face. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Solar: Summer Session (pose sheet)** *(optional)*  
-Solar's battle figure in a campus-summer look: a white track jacket, a varsity tube top and cutoffs. Matching set with Haechan: Headphones On.  
-Attach: solar-posesheet.png, then Solar, then Kat's inspo photo (Inspo/Solar-RunnersSummer/)  
-Save as: `skin-sk-summersession-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit, hair and weapon to this look: a sporty campus-summer look: an oversized white zip-up track jacket with a gold zip, navy stripes down the sleeves, gathered elastic cuffs and hem and a tiny navy emblem on the chest, worn open; a strapless white mesh tube top with big blocky royal-blue varsity-number shapes outlined in black (no readable digits); light-wash distressed denim cutoff shorts with frayed hems and the white pocket linings peeking out, little pink star charms clipped to the belt loops; white chunky sneakers and white crew socks with colourful doodles; a dainty silver heart pendant necklace, silver heart stud earrings, stacked rings and long glossy chrome nails with blue-and-pink accents; a few freckles. Hair: black, piled in a messy high bun tied with a navy satin ribbon, with loose face-framing wisps that have cobalt-blue peekaboo streaks. Her naginata with navy-and-white grip tape and a tiny silver heart charm at the collar. The last attached photo is only a reference for the clothes; keep her own face. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Solar: Summer Session (scene portraits)** *(optional)*  
-Her scene faces for the same outfit.  
-Attach: Solar, then Kat's inspo photo (Inspo/Solar-RunnersSummer/)  
-Save as: `sk-summersession-solar-portraits.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: an oversized white zip-up track jacket with a gold zip and navy sleeve stripes, open over a strapless white mesh tube top with blocky royal-blue varsity-number shapes (no readable digits), a dainty silver heart pendant necklace, silver heart stud earrings, a few freckles, sun on her cheeks. Hair: black, piled in a messy high bun tied with a navy satin ribbon, with loose face-framing wisps that have cobalt-blue peekaboo streaks. The last attached photo is only a reference for the clothes; keep her own face. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] Solar: Limelight (pose sheet)** *(optional)*  
-Solar's battle figure in neon green and bling, a comeback-stage look. Matching set with Haechan: Limelight (no inspo folder of her own; made to match his).  
-Attach: solar-posesheet.png, then Solar  
-Save as: `skin-sk-limelight-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit, hair and weapon to this look: a K-pop comeback look in neon green and bling: a cropped neon lime-green racing jacket with silver studs on the shoulders and black-and-white checkered panels down the sleeves, open over a black rhinestone-studded corset top crossed by a black chest harness with neon lime reflective strips on the straps; a black pleated mini skirt with a heavy silver chain belt and a big square silver buckle; neon green fishnet tights and black platform combat boots with silver hardware; black fingerless gloves sparkling with rhinestones; layered silver and rhinestone chains with a silver dog-tag pendant; big rhinestone hoop earrings. Hair: a long, sleek high ponytail, black with two chunky neon lime-green face-framing streaks and a line of crystal clips along the part. Her naginata's haft wrapped in neon lime reflective tape, rhinestones along the blade's spine, a little silver dog tag hanging from the collar. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Solar: Limelight (scene portraits)** *(optional)*  
-Her scene faces for the same outfit.  
-Attach: Solar  
-Save as: `sk-limelight-solar-portraits.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a cropped neon lime-green racing jacket with silver studs on the shoulders, open over a black rhinestone-studded corset top, layered silver and rhinestone chains with a silver dog-tag pendant, big rhinestone hoop earrings, a little silver glitter on her cheekbones, neon green light catching one cheek. Hair: a long, sleek high ponytail, black with two chunky neon lime-green face-framing streaks and a line of crystal clips along the part. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
 
 **[ ] Haechan: Arrivals Gate (pose sheet)** *(optional)*  
 Haechan's battle figure in an airport look: black frames and a navy overshirt.  

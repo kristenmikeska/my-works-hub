@@ -169,6 +169,7 @@ Other docs, if you ever want detail:
 - ✅ Art batch 91: Alpha Phi Formal now has its scene portraits too, and a new outfit is in the Wardrobe: Harbour Night Coat, with its battle poses.
 - ✅ Art batch 92: two new outfits are in the Wardrobe with their battle poses: Stage Idol for Solar and Sweater Date for Haechan.
 - ✅ Art batch 93: the Solar Spotlight banner is open in March (Golden Sunrise now runs in February); five more outfits for Solar are in the Wardrobe with battle poses and scene portraits (SU eSports Jersey, Moonlit Hanbok, Vice President, Velvet Attendant, Morning Roadwork); and Stage Idol, Harbour Night Coat and Haechan's Sweater Date now have scene portraits too.
+- ✅ Art batch 94 (Solar): eight more outfits for Solar are in the Wardrobe with battle poses and scene portraits: Y2K Pop Star, Oops!, Snake Charmer, Sugar Rush, Night Prowl, Strawberry Milk, Summer Session and Limelight.
 - ✅ Art batch 65: your nine epilogue places are in the game: four for HOAX (the Kims' living room, Jihoon's house, the winter street, the winter-break party) and five for strangers (a kitchen, the annex, the mudflats, the festival night on Wolmido, the street in the dust), with a couple of small wording fixes so the scenes match your pictures. Your art list gained 57 new place prompts and 35 new CG prompts across the year and every epilogue, and the Evoker pieces, new expressions, sharper Shadows and strike sheets moved to a new backburner list
 
 ## Music and polish

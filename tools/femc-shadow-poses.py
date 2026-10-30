@@ -159,6 +159,58 @@ for _n in SOLAR_LONG_HAIR:
 # Morning Roadwork: no GAPS (it took the white piping on her shorts) and STRANDS at 0.35 (0.45 nicked a blade tip).
 HOLES['sk-roadwork-solar-posesheet.png']=HOLES['solar-posesheet.png'];STRANDS['sk-roadwork-solar-posesheet.png']=(0.35,0.25)
 
+# Paper pockets (art batch 94): flat white the key keeps where long hair fans out from the body, too big and too
+# loosely ringed for GAPS and not open to the paper for STRANDS. HOLES 0.8 clears them but punches white clothing and
+# shine (a white skirt, platform sneakers, red latex highlights). pockets() clears an opaque near-white patch only when
+# the art around it is hair-like: darker than `ring_max` on average and at least `lowsat` of it unsaturated (black or
+# ash hair, not a pink jacket, red latex or a pale yellow python). Values: (ring_max, lowsat[, skin_max]): with skin_max,
+# a patch whose ring is more than that share skin-coloured (warm and light: a sock against a leg) stays.
+POCKETS={}
+
+def pockets(src,a,ring_max,lowsat,skin_max=1.0):
+ rgb=np.asarray(Image.open(src).convert('RGB'),np.float32)/255;minc=rgb.min(2);sat=rgb.max(2)-minc
+ lab,_=ndimage.label(ndimage.binary_opening((a[...,3]>0.5)&(minc>0.95),iterations=1));hole=np.zeros(minc.shape,bool)
+ for k,sl in enumerate(ndimage.find_objects(lab),1):
+  if sl is None:continue
+  y0,y1=max(0,sl[0].start-6),sl[0].stop+6;x0,x1=max(0,sl[1].start-6),sl[1].stop+6
+  mk=lab[y0:y1,x0:x1]==k
+  if mk.sum()<40:continue
+  ring=ndimage.binary_dilation(mk,iterations=4)&~mk&(a[y0:y1,x0:x1,3]>0.5)
+  if not ring.any():continue
+  r_=rgb[y0:y1,x0:x1][ring];skin=((r_[:,0]-r_[:,2])>0.15)&(r_.min(1)>0.45)
+  if minc[y0:y1,x0:x1][ring].mean()<ring_max and (sat[y0:y1,x0:x1][ring]<0.3).mean()>=lowsat and skin.mean()<=skin_max:hole[y0:y1,x0:x1]|=mk
+ hole=ndimage.binary_dilation(hole,iterations=1)
+ aw=np.clip((1-minc-0.02)/0.98,0,1);aw[aw<0.05]=0
+ unmixed=np.clip((rgb-(1-aw[...,None]))/np.maximum(aw,1e-3)[...,None],0,1)
+ a[...,3]=np.where(hole,np.minimum(a[...,3],aw),a[...,3]);a[...,:3]=np.where(hole[...,None],unmixed,a[...,:3])
+
+# Dark art Vision leaves out (art batch 94: Night Prowl's victory-pose shaft came out half see-through from the
+# un-mix alone). Where Vision found nothing, pieces of dark, unsaturated art (darkest channel under the value, over 400 px)
+# are made opaque, their pale highlights by a ramp, so a shaft with a light stripe stays whole. Values: the darkness limit.
+SOLID_DARK={}
+
+def solid_dark(src,a,limit):
+ TH=theurgy_tool();rgb=np.asarray(Image.open(src).convert('RGB'),np.float32)/255;minc=rgb.min(2)
+ av=TH.vision_alpha(str(src));miss=(av<0.35) if av is not None and av.shape==minc.shape else np.ones(minc.shape,bool)
+ dark=miss&(minc<limit)&(rgb.max(2)-minc<0.35)
+ lab,n=ndimage.label(ndimage.binary_closing(dark,iterations=3)&miss&(minc<0.85))
+ if not n:return
+ sz=ndimage.sum(np.ones_like(minc),lab,range(1,n+1));keep=np.isin(lab,1+np.nonzero(sz>400)[0])
+ ramp=np.clip((0.85-minc)/0.35,0,1)
+ a[...,:3]=np.where(keep[...,None],rgb,a[...,:3]);a[...,3]=np.where(keep,np.maximum(a[...,3],ramp),a[...,3])
+
+# Art batch 94 (Solar's inspo outfits). Long loose hair fanned wide: STRANDS at the batch 93 ring (0.45) plus POCKETS, no
+# HOLES or GAPS (they punched white skirts, sneakers, the python's pale scales and latex shine). Night Prowl also gets
+# SOLID_DARK for her victory pose's black shaft. Summer Session (white jacket, a blue-and-white shaft that STRANDS
+# nicks): POCKETS only. Strawberry Milk (pastel pink hair on white): POCKETS can't tell her hair from socks and
+# sneakers, so HOLES at 0.75 (0.8 punched the centre of her spell burst).
+for _n in ['skin-sk-y2k-posesheet.png','skin-sk-oops-posesheet.png','skin-sk-snake-posesheet.png','sk-skin-prowl-posesheet.png',
+ 'skin-sk-sugarrush-posesheet.png','skin-sk-limelight-posesheet.png']:
+ STRANDS[_n]=(0.45,0.25);POCKETS[_n]=(0.6,0.4)
+SOLID_DARK['sk-skin-prowl-posesheet.png']=0.45
+POCKETS[' skin-sk-summersession-posesheet.png']=(0.6,0.4)
+HOLES['skin-sk-strawberry-posesheet.png']=0.75
+
 def theurgy_tool():
  spec=importlib.util.spec_from_file_location('femc_theurgy',ROOT/'tools/femc-theurgy.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
 
@@ -206,6 +258,10 @@ def white_frames(src,rim=False):
   h=gaps(src,GAPS[src.name]);a[...,3]*=~h
  if src.name in STRANDS:
   TH.strands(src,a,*STRANDS[src.name])
+ if src.name in POCKETS:
+  pockets(src,a,*POCKETS[src.name])
+ if src.name in SOLID_DARK:
+  solid_dark(src,a,SOLID_DARK[src.name])
  if src.name in AURA or src.name in SPELL_GLOW:
   rgb=np.asarray(Image.open(src).convert('RGB'),np.float32)/255;minc=rgb.min(2)
   lab,n=ndimage.label(ndimage.binary_closing((minc<0.6)&(a[...,3]>0.5),iterations=3));sizes=np.bincount(lab.ravel());sizes[0]=0
