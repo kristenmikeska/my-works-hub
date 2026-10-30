@@ -2343,8 +2343,9 @@ window.FemcGame = (() => {
     // Courage from the Dark Hour: +1 for a Tartarus night that went in, +3 for a full-moon operation won.
     if (h.kind === 'tartarus' && r.outcome !== 'interrupt') addStat('courage', 1, true);
     else if (h.kind === 'operation' && r.outcome === 'win') addStat('courage', 3, true);
-    // Velvet Plumes for Elizabeth's draws (gacha.js): a Tartarus night, a full moon won.
-    W.FemcGacha?.afterFight(h.kind, r.outcome);
+    // Velvet Plumes for Elizabeth's draws (gacha.js): a Tartarus night (1 to 5, scaled by its tally: Shadows beaten, golden
+    // Shadows caught), a full moon won.
+    W.FemcGacha?.afterFight(h.kind, r.outcome, r.tally);
     // Velvet Plumes found in Tartarus (vaults, guardians, rare Shadows, hidden rooms: battle tartarus.js).
     if (r.plumes > 0 && W.FemcGacha?.gs) { W.FemcGacha.gs().plumes += r.plumes; sum.plumes = r.plumes; toast('perk', `Velvet Plume${r.plumes > 1 ? 's' : ''} +${r.plumes} (found in Tartarus)`); }
     // Elizabeth's Requests and the Tartarus milestones (requests.js): the night's tally (Shadows beaten, weaknesses struck:

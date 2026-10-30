@@ -14,7 +14,8 @@
      25% less yen and one plume less). Odds VEL.odds; Super Rare or better every VEL.pitySR draws, Ultra every VEL.pityUR.
      Prizes: skill cards (build.js SKILL_CARDS, by how far the year has gone), Velvet Thread, ★4/★5 Revelation cards and
      Elizabeth's rare gear (build.js, `gacha: 'velvet'`).
-     Velvet Plumes: +1 a Tartarus night, +3 a full moon won (core.js applyResult → afterFight), and +1 for every Compendium
+     Velvet Plumes: 1 to 5 a Tartarus night (NIGHT: 1, +1 per 15 Shadows, +1 per golden Shadow; nightPlumes), +3 a full moon
+     won (core.js applyResult → afterFight), and +1 for every Compendium
      entry, claimed from Elizabeth (S.registered; claimed ids in S.gacha.credited), and +1 for every Echo registered (echoes.js,
      credited as 'echo:<id>'). Her room also holds Echo Fusion and the Echo Compendium (echoes-ui.js velvetButtons).
      Since 2026-10-29 (requests.js, Kat's three new sources) also: Elizabeth's Requests, the Tartarus floor and guardian
@@ -244,7 +245,7 @@ window.FemcGacha = (() => {
 
   /* ── State ── */
   function fresh() { return { v: 2, plumes: 0, stars: 0, pulls: 0, draws: 0, pity: { cap: { sr: 0, ur: 0 }, vel: { sr: 0, ur: 0 }, series: {} }, keys: {}, skeys: {}, goods: {}, got: {}, done: [], cases: [], caseOn: null, credited: [], last: null,
-    req: { taken: {}, done: [], seen: [] }, miles: [], tally: { kills: 0, weak: {} }, ex: { week: -1, n: 0, total: 0 }, rides: { last: -1, n: 0, rain: 0 } }; }
+    req: { taken: {}, done: [], seen: [] }, miles: [], tally: { kills: 0, weak: {}, rares: 0 }, ex: { week: -1, n: 0, total: 0 }, rides: { last: -1, n: 0, rain: 0 } }; }
   function gs() {
     const s = S();
     const f = fresh();
@@ -263,7 +264,7 @@ window.FemcGacha = (() => {
     if (!obj(g.req.taken)) g.req.taken = {};
     g.req.done = ids(g.req.done); g.req.seen = ids(g.req.seen); g.miles = ids(g.miles);
     if (!obj(g.tally)) g.tally = f.tally;
-    g.tally.kills = num(g.tally.kills); if (!obj(g.tally.weak)) g.tally.weak = {};
+    g.tally.kills = num(g.tally.kills); g.tally.rares = num(g.tally.rares); if (!obj(g.tally.weak)) g.tally.weak = {};
     if (!obj(g.ex)) g.ex = f.ex;
     g.ex.week = typeof g.ex.week === 'number' ? g.ex.week : -1; g.ex.n = num(g.ex.n); g.ex.total = num(g.ex.total);
     if (!obj(g.rides)) g.rides = f.rides;
@@ -486,12 +487,32 @@ window.FemcGacha = (() => {
   // Compendium pages: people (S.registered) and Echoes (echoes.js, ids 'echo:<id>'), a plume each.
   const unclaimed = () => (S().registered || []).concat(window.FemcEchoes && S().battleSave ? window.FemcEchoes.creditIds(S().battleSave) : []).filter(id => !gs().credited.includes(id));
   function claim() { const g = gs(), n = unclaimed(); n.forEach(id => g.credited.push(id)); g.plumes += n.length; if (n.length) { G.toast('perk', `Velvet Plumes +${n.length} (Compendium pages)`); G.save(); } return n.length; }
-  /* Plumes from the Dark Hour (core.js applyResult). */
-  function afterFight(kind, outcome) {
-    const n = kind === 'tartarus' && ['win', 'retreat'].includes(outcome) ? 1 : kind === 'operation' && outcome === 'win' ? 3 : 0;
-    if (!n) return 0;
-    gs().plumes += n; G.toast('perk', `Velvet Plume${n > 1 ? 's' : ''} +${n}`);
-    return n;
+  /* A Tartarus night's plumes, from its tally (battle.js hoResult `tally`: Shadows beaten, golden Shadows caught; story nights
+     only): NIGHT.base, +1 for every NIGHT.per Shadows, +NIGHT.golden for each golden one, NIGHT.cap at most. A full moon won
+     is NIGHT.moon. Returns { n, raw, capped, kills, golden, parts: { base, kills, golden } }. requests.js counts the same tally
+     for Elizabeth's Requests; the plumes are paid only here (afterFight). */
+  const NIGHT = { base: 1, per: 15, golden: 1, cap: 5, moon: 3 };
+  function nightPlumes(tally) {
+    const t = tally && typeof tally === 'object' ? tally : {};
+    const kills = t.kills > 0 ? Math.floor(t.kills) : 0, golden = t.rares > 0 ? Math.min(NIGHT.cap, Math.floor(t.rares)) : 0;
+    const parts = { base: NIGHT.base, kills: Math.floor(kills / NIGHT.per), golden: golden * NIGHT.golden }, raw = parts.base + parts.kills + parts.golden;
+    return { n: Math.min(NIGHT.cap, raw), raw, capped: raw > NIGHT.cap, kills, golden, parts };
+  }
+  /* Plumes from the Dark Hour (core.js applyResult): a Tartarus night that went in (won or retreated), scaled by its tally,
+     with the breakdown in the toast; a full moon won. Returns the plumes paid. */
+  function afterFight(kind, outcome, tally) {
+    if (kind === 'operation') {
+      if (outcome !== 'win') return 0;
+      gs().plumes += NIGHT.moon; G.toast('perk', `Velvet Plumes +${NIGHT.moon} (a full moon won)`);
+      return NIGHT.moon;
+    }
+    if (kind !== 'tartarus' || !['win', 'retreat'].includes(outcome)) return 0;
+    const p = nightPlumes(tally), bits = [`the night +${p.parts.base}`];
+    if (p.parts.kills) bits.push(`${p.kills} Shadows +${p.parts.kills}`);
+    if (p.parts.golden) bits.push(`${p.golden === 1 ? 'a golden Shadow' : `${p.golden} golden Shadows`} +${p.parts.golden}`);
+    gs().plumes += p.n;
+    G.toast('perk', p.raw === 1 ? 'Velvet Plume +1 (a night in Tartarus)' : `Velvet Plumes +${p.n}: ${bits.join(' · ')}${p.capped ? ` (${NIGHT.cap} a night at most)` : ''}`);
+    return p.n;
   }
 
   /* ── Drawing things ── */
@@ -857,6 +878,6 @@ window.FemcGacha = (() => {
   /* From the Go Out list (ui.js doActivity). */
   function open(kind, done) { return kind === 'velvet' ? openVelvet(done) : openCapsule(done); }
 
-  return Object.assign(api, { pullN, pull10, drawN, draw10, best, capCan, velCan, capWhy, velWhy, gridHtml, RARITY, CAP, VEL, SETS, CASES, SERIES, TOKEN_PRICE, fresh, gs, pull, draw, claim, unclaimed, tradeStars, afterFight, velCost, rarity, setCount, setDone, keyEligible, tickets, open, openCapsule, openVelvet, collectionHtml, wireCollection, phoneCase, keychain, skeychain, halloween,
+  return Object.assign(api, { pullN, pull10, drawN, draw10, best, capCan, velCan, capWhy, velWhy, gridHtml, RARITY, CAP, VEL, SETS, CASES, SERIES, TOKEN_PRICE, fresh, gs, pull, draw, claim, unclaimed, tradeStars, afterFight, NIGHT, nightPlumes, velCost, rarity, setCount, setDone, keyEligible, tickets, open, openCapsule, openVelvet, collectionHtml, wireCollection, phoneCase, keychain, skeychain, halloween,
     activeSeries, seriesPity, seriesDone, itemEligible, itemById, shopList, buy, completeSeries, GOODS, GOOD_KINDS, HIDDEN, hiddenOn, goodArt, viewer, viewEntry, bigArt, fmtDay });
 })();

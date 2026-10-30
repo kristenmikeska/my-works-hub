@@ -14,7 +14,8 @@
          · echo (that Echo in Solar's stock: fused, summoned or found) · item (in the bag) · mat (in the battle save)
      Hand in: item and mat requests consume what they ask for. Rewards (`pay`): plumes, plus sometimes an item, a material, a
      Capsule Ticket or a Revelation card of rarity `card`. Battle-side counts come through the handoff: battle.js hoResult
-     `tally` { kills, weak: { el: n } } (story Tartarus nights only) → core.js applyResult → afterFight → S.gacha.tally.
+     `tally` { kills, weak: { el: n }, rares } (story Tartarus nights only) → core.js applyResult → afterFight → S.gacha.tally.
+     The same tally sets the night's own plumes (gacha.js nightPlumes, paid once in gacha.js afterFight); this file only counts.
    ── Tartarus milestones (payFloors) ──
      Once per playthrough each: the first floor of each block and its summit (Monad: its first floor and the top of each date
      section, the floorCaps inside it), and each block guardian beaten (battle save tt.guardians). Amounts ENTER / TOP / GUARD /
@@ -303,6 +304,7 @@ window.FemcRequests = (() => {
     const t = r.tally, g = gs();
     if (h && h.kind === 'tartarus' && t && typeof t === 'object') {
       if (t.kills > 0) g.tally.kills += Math.floor(t.kills);
+      if (t.rares > 0) g.tally.rares += Math.floor(t.rares);
       Object.entries(t.weak && typeof t.weak === 'object' ? t.weak : {}).forEach(([k, n]) => { if (D().elements[k] && n > 0) g.tally.weak[k] = (g.tally.weak[k] || 0) + Math.floor(n); });
     }
     payFloors('night');
