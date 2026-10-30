@@ -107,7 +107,9 @@
      Members without a sheet keep their static stance (or nothing, like Ken). */
   // Measured 2026-10-24 (figure height on the field, head to feet, idle frame): Junpei, Mitsuru and Shinjiro drew about 60% of the
   // others' height (their canvases are wide for the weapon), Aigis about 85%; they were raised to match (tests/femc_bonds.py --only poses).
-  const FIGHTER_POSES = { solar: 1.3, akihiko: 1, yukari: 1.04, junpei: 1.42, mitsuru: 1.4, aigis: 1.18, koromaru: 0.87, shinjiro: 1.51, haechan: 1.16, jungwon: 1.15, jihoon: 1.05, minji: 1.07 };
+  /* Sideways nudge (share of the image width) for a pose that reaches toward the Shadows: Haechan's knife lunge stood too close (2026-10-30). */
+  const FIGHTER_SHIFT = { haechan: '-9%' };
+  const FIGHTER_POSES = { solar: 1.2, akihiko: 1, yukari: 1.04, junpei: 1.42, mitsuru: 1.4, aigis: 1.18, koromaru: 0.87, shinjiro: 1.51, haechan: 1.26, jungwon: 1.28, jihoon: 1.05, minji: 1.07 };
   const FIGHTER_STATES = { attack: [2], cast: [3], hurt: [4], evoke: [1], win: [5] };
   /* Wardrobe looks from the life sim (game/cosmetics.js battle(), read once per frame): an outfit's pose folder per member
      (same six frames and canvas as the member's own sheet) and CSS for the battle theme and Evoker tint. Practice: none. */
@@ -2333,6 +2335,7 @@
       box._shadowPoses = FIGHTER_POSES[u.mid] ? { src: true, frames: posedFrames(u.mid), states: FIGHTER_STATES } : null;
       img.classList.toggle('posed', !!box._shadowPoses);
       box.style.setProperty('--pz', FIGHTER_POSES[u.mid] || 1);
+      box.style.setProperty('--pdx', FIGHTER_SHIFT[u.mid] || '0%');
       delete box.dataset.pose;
       img.style.visibility = 'hidden';
       img.onload = () => { img.style.visibility = 'visible'; };
