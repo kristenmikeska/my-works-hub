@@ -1,7 +1,7 @@
 """More Velvet Plumes (2026-10-29, requests.js): Elizabeth's Requests, the Tartarus floor and guardian milestones, and the
 Plume Exchange, played in headless Chrome (femc-game.html, isolated profile, localhost; no player saves).
 
-Run: python3 tests/femc_plumes.py [--only data,requests,ui,milestones,retro,exchange,saves,shots] [--screenshots DIR]
+Run: python3 tests/femc_plumes.py [--only data,requests,ui,milestones,retro,exchange,saves,night,buy,weekly,shots] [--screenshots DIR]
 
 Covers: the request list (count, waves, kinds, rewards, every id it names exists), waves posting by date, three taken at a
 time, counted requests starting from the moment they're taken (a save with a big tally doesn't finish one), the battle tally
@@ -12,7 +12,13 @@ milestones (a block's first floor and summit, a guardian, the totals, paid once 
 the retroactive grant for a save already high in the tower (once, with a toast, not again after a reload); the exchange (never
 the last copy, an equipped, locked, levelled or refined card; the exact payout; reserves and taken requests kept back; the
 weekly cap and its reset; the confirm screen through the UI); older and malformed saves loading; zero console errors;
-screenshots of the board and the exchange at 1280x850 and 375x812."""
+screenshots of the board and the exchange at 1280x850 and 375x812.
+Renewable sources (2026-10-29): the night's scaled plumes (the formula, the breakdown toast, the cap, golden Shadows counted
+for the requests too, no second payment, full moons +3); plumes for yen (the price ladder, the cap, the Sunday reset, not
+enough yen, Compendium Credit's discount, the confirm through the UI); weekly requests (three posted from the pool, distinct
+groups, scaled for a far-along save loaded mid-week, counted from the posting, seeded, handed in once, the all-three bonus,
+the Sunday refresh, expiry with ready ones handed in for her but never a bring-something one, the year's last day, older and
+malformed saves, the board through the UI). Not run yet when written (Kat runs the browser suite herself)."""
 import argparse, base64, json, pathlib, time
 from femc_browser import Page
 
@@ -379,6 +385,165 @@ try:
         clean(p, 'saves')
         results['saves'] = 'missing and malformed parts rebuilt by gs(); unknown request ids dropped; an older backup code loads'
         print('saves OK', results['saves'], flush=True)
+
+    # ── The night's plumes: scaled by its tally ──
+    if want('night'):
+        setup(p, day='9/14', maxFloor=30)
+        f = p.eval("[FemcGacha.nightPlumes({kills:0}).n,FemcGacha.nightPlumes(null).n,FemcGacha.nightPlumes({kills:14}).n,FemcGacha.nightPlumes({kills:15}).n,FemcGacha.nightPlumes({kills:34,rares:1}).n,FemcGacha.nightPlumes({kills:200,rares:3})]")
+        ok(f[:5] == [1, 1, 1, 2, 4], ('1, +1 per 15 Shadows, +1 per golden Shadow', f))
+        ok(f[5]['n'] == 5 and f[5]['raw'] == 1 + 13 + 3 and f[5]['capped'], ('five a night at most', f[5]))
+        ok(p.eval("FemcGacha.NIGHT.cap") == 5 and p.eval("FemcGacha.NIGHT.moon") == 3, 'cap 5, full moon 3')
+        toasts(p)
+        pl = lambda: p.eval(f"{G}.plumes")
+        r0, k0 = pl(), p.eval(f"{G}.tally.rares")
+        night(p, tally={'kills': 34, 'rares': 1, 'weak': {'fire': 2}})
+        ok(pl() == r0 + 4, ('a 34-Shadow night with a golden one: +4, paid once', pl() - r0))
+        t = [x for x in toasts(p) if 'Velvet Plume' in x]
+        ok(len(t) == 1 and '34 Shadows +2' in t[0] and 'golden Shadow +1' in t[0] and 'the night +1' in t[0], ('the breakdown in one toast', t))
+        ok(p.eval(f"{G}.tally.rares") == k0 + 1 and p.eval(f"{G}.tally.kills") >= 34, 'the same tally counted for the requests')
+        night(p, tally={'kills': 200, 'rares': 3})
+        ok(pl() == r0 + 4 + 5, 'capped at five')
+        ok(any('5 a night at most' in x for x in toasts(p)), 'the toast says so')
+        night(p)
+        ok(pl() == r0 + 10 and any('a night in Tartarus' in x for x in toasts(p)), 'a night with no tally: +1')
+        night(p, outcome='retreat', tally={'kills': 16})
+        ok(pl() == r0 + 12, 'a retreat pays too')
+        night(p, outcome='lose', tally={'kills': 40})
+        ok(pl() == r0 + 12, 'a loss pays nothing')
+        ok(p.eval("FemcGacha.afterFight('operation','win')") == 3 and pl() == r0 + 15, 'a full moon won: +3')
+        clean(p, 'night')
+        results['night'] = '1 + 1 per 15 Shadows + 1 per golden Shadow, 5 at most; breakdown toast; retreat pays, a loss not; full moon +3'
+        print('night OK', results['night'], flush=True)
+
+    # ── Plumes for yen ──
+    if want('buy'):
+        setup(p, day='9/15', yen=600000)
+        lad = p.eval(f"{RQ}.BUY.ladder")
+        ok(lad == [10000, 15000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000], lad)
+        ok(p.eval(f"Array.from({{length:11}},(_,k)=>{RQ}.buyPrice(k))") == lad + [None], 'each rung, then nothing')
+        pl0, y0 = p.eval(f"{G}.plumes"), p.eval("FemcGame.S.yen")
+        got = [p.eval(f"{RQ}.buy()") for _ in range(3)]
+        ok(all(g['ok'] for g in got) and [g['price'] for g in got] == lad[:3] and got[2]['next'] == lad[3], got)
+        ok(p.eval(f"{G}.plumes") == pl0 + 3 and p.eval("FemcGame.S.yen") == y0 - 45000 and p.eval(f"{RQ}.buyState().n") == 3, 'three bought, the price rising')
+        for _ in range(7): ok(p.eval(f"{RQ}.buy().ok"), 'up to the cap')
+        r = p.eval(f"{RQ}.buy()")
+        ok(not r['ok'] and 'Sunday' in r['why'] and p.eval(f"{RQ}.buyLeft()") == 0, ('the eleventh is refused', r))
+        ok(p.eval("FemcGame.S.yen") == y0 - sum(lad) and p.eval(f"{G}.plumes") == pl0 + 10, ('a whole week: ten plumes for ¥465,000', p.eval("FemcGame.S.yen")))
+        ok(p.eval(f"{G}.buy.total") == 10 and p.eval(f"{G}.buy.spent") == sum(lad), 'totals kept')
+        # A new week (from Sunday): back to the first rung.
+        p.eval("(()=>{const G=FemcGame;G.S.day=7*(Math.floor((G.S.day+1)/7)+1)-1;})()")
+        ok(p.eval(f"{RQ}.buyPrice()") == 10000 and p.eval(f"{RQ}.buyLeft()") == 10, 'Sunday: prices start over')
+        # Not enough yen: nothing changes.
+        p.eval("FemcGame.S.yen=9999")
+        pl1 = p.eval(f"{G}.plumes")
+        r = p.eval(f"{RQ}.buy()")
+        ok(not r['ok'] and r['why'].startswith('Needs') and p.eval("FemcGame.S.yen") == 9999 and p.eval(f"{G}.plumes") == pl1 and p.eval(f"{RQ}.buyState().n") == 0, ('not enough yen', r))
+        # Compendium Credit: 10% off every rung.
+        c = p.eval(f"(()=>{{const v=FemcGacha.velCost;FemcGacha.velCost=()=>({{yen:2250,plumes:2,credit:true}});try{{return [{RQ}.buyPrice(0),{RQ}.buyPrice(9)]}}finally{{FemcGacha.velCost=v}}}})()")
+        ok(c == [9000, 81000], ('Compendium Credit discount', c))
+        # Through the UI: the ladder, the confirm with the price, the purchase.
+        p.eval("FemcGame.S.day=FemcGame.dayOf('9/15');FemcGame.S.yen=50000;FemcGame.save()")  # back to a weekday (a new week again: the ladder starts over)
+        open_velvet(p)
+        click(p, '.g-vel-ov [data-pb-open]')
+        p.wait("!!document.querySelector('.g-pb-ov:not(.out) [data-pb-ask]')")
+        ok(p.eval("document.querySelectorAll('.g-pb-ov .g-pb-ladder li').length") == 10 and p.eval("!!document.querySelector('.g-pb-ov .g-pb-ladder li.next')"), 'the ladder, the next rung marked')
+        click(p, '.g-pb-ov [data-pb-ask]')
+        p.wait("!!document.querySelector('.g-pb-ov .g-px-confirm')")
+        txt = p.eval("document.querySelector('.g-pb-ov .g-px-confirm').textContent")
+        ok('¥10,000' in txt and '¥50,000' in txt and '¥40,000' in txt and '¥15,000' in txt, ('the confirm: price, yen before and after, the next one', txt))
+        pl2 = p.eval(f"{G}.plumes")
+        click(p, '.g-pb-ov [data-pb-go]')
+        p.wait("!document.querySelector('.g-pb-ov .g-px-confirm')")
+        ok(p.eval(f"{G}.plumes") == pl2 + 1 and p.eval("FemcGame.S.yen") == 40000 and p.eval("document.querySelectorAll('.g-pb-ov .g-pb-ladder li.got').length") == 1, 'bought through the confirm')
+        p.eval("document.querySelector('.g-pb-ov [data-close]').click()")
+        p.eval("FemcGame.S.yen=0")
+        p.wait("!!document.querySelector('.g-vel-ov:not(.out) [data-pb-open]')")
+        click(p, '.g-vel-ov [data-pb-open]')
+        p.wait("!!document.querySelector('.g-pb-ov:not(.out) [data-pb-ask]')")
+        ok(p.eval("(()=>{const b=document.querySelector('.g-pb-ov:not(.out) [data-pb-ask]');return b.disabled&&/Needs/.test(b.textContent)})()"), 'no yen: the button says what it needs')
+        p.eval("document.querySelectorAll('.g-overlay').forEach(x=>x.remove())")
+        clean(p, 'buy')
+        results['buy'] = f'ladder {lad} (¥{sum(lad):,} a week), cap 10, Sunday reset, not enough yen, Credit 10% off, confirm UI'
+        print('buy OK', results['buy'], flush=True)
+
+    # ── Weekly requests ──
+    if want('weekly'):
+        # A far-along save loaded mid-week (Wednesday 2/17): Monad found, most links met.
+        ranks = {k: 6 for k in ['akihiko', 'junpei', 'yukari', 'mitsuru', 'fuuka', 'haechan', 'jungwon', 'jihoon', 'minji', 'hanni']}
+        setup(p, day='2/17', maxFloor=230, lvl=80, ranks=ranks, guardians=['f11', 'f29', 'f52', 'f80', 'f109', 'f135', 'f160', 'f204'], echoes=[['gumiho', 30], ['kaguya', 40]])
+        w = p.eval(f"(()=>{{const X={RQ},w=X.weekState();return {{week:w.week,now:Math.floor((FemcGame.S.day+1)/7),list:X.wkList().map(e=>Object.assign({{}},e,{{T:X.wtpl(e.t)}})),reach:X.reach(),pool:X.WEEKLY.length}}}})()")
+        ok(w['pool'] == 20 and w['reach'] == 7, ('20 templates; Monad found = reach 7', w['pool'], w['reach']))
+        ok(w['week'] == w['now'] and len(w['list']) == 3, ('three posted on the first save of a loaded save', w))
+        ok(len({e['T']['group'] for e in w['list']}) == 3 and all(2 <= e['plumes'] <= 4 and e['n'] > 0 for e in w['list']), ('distinct groups, 2-4 plumes', w['list']))
+        ok(any(e['T']['side'] == 'tower' for e in w['list']) and any(e['T']['side'] == 'day' for e in w['list']), 'a tower one and a day one')
+        # Scaled: a full week's kill target at reach 7 is 50; posted on a Wednesday it is lighter.
+        full = p.eval(f"{RQ}.WEEKLY.find(T=>T.id==='w-dozens').make({{P:7,frac:1,night:1,nights:6,school:5,links:10,echoes:2,hired:true,pick:a=>a[0]}}).n")
+        part = p.eval(f"{RQ}.WEEKLY.find(T=>T.id==='w-dozens').make({{P:7,frac:4/7,night:0.5,nights:2,school:3,links:10,echoes:2,hired:true,pick:a=>a[0]}}).n")
+        ok(full == 50 and part == 25, ('scaled by progress and the nights left', full, part))
+        # A big old tally never finishes one: counts start from the posting (and a repost on the same day is the same three).
+        ids = [e['t'] for e in w['list']]
+        p.eval(f"(()=>{{const g={G};g.tally.kills=9000;g.tally.weak.fire=900;g.tally.rares=50;g.wk.week=-1;{RQ}.weekState()}})()")
+        again = p.eval(f"{RQ}.wkList().map(e=>[e.t,{RQ}.wkProgress(e).have,{RQ}.wkProgress(e).ready,{RQ}.wtpl(e.t).kind])")
+        ok([a[0] for a in again] == ids, ('seeded: the same three', ids, again))
+        ok(all(a[1] == 0 and not a[2] for a in again if a[3] not in ('mat', 'item')), ('counted from the posting', again))
+        # A crafted week: Shadows, things done, three Medicine (mat / item ones are handed over).
+        CRAFT = r"""((list)=>{const X=FemcRequests,G=FemcGame,w=X.weekState();w.list=list.map(e=>{const T=X.wtpl(e.t),o=Object.assign({n:1,plumes:2,el:null,act:null,mat:null,item:null,at:G.S.day,base:null,done:false,told:false},e);
+          o.base=T.kind==='hangs'?[]:['mat','item'].includes(T.kind)?null:X.counter({kind:T.kind,el:o.el,act:o.act});return o});w.bonus=false;G.save();return X.wkList().length})(%s)"""
+        craft = lambda lst: p.eval(CRAFT % json.dumps(lst))
+        ok(craft([{'t': 'w-dozens', 'n': 10, 'plumes': 3}, {'t': 'w-out', 'n': 2, 'plumes': 2}, {'t': 'w-pharmacy', 'n': 3, 'plumes': 2, 'item': 'medicine'}]) == 3, 'crafted')
+        p.eval("FemcGame.S.inventory.medicine=0")
+        toasts(p)
+        pl = lambda: p.eval(f"{G}.plumes")
+        pl0 = pl()
+        night(p, tally={'kills': 12})
+        ok(pl() == pl0 + 1, ('the night pays only its own plume; the weekly request just counts', pl() - pl0))
+        ok(p.eval(f"{RQ}.wkProgress({RQ}.wkList()[0]).ready") and any('weekly request is ready' in x for x in toasts(p)), 'Shadows ready, with a toast')
+        ok(not p.eval(f"{RQ}.handWeekly(1).ok"), 'not yet')
+        p.eval("FemcGame.doActivity(FemcGame.actById('hagakure'));FemcGame.doActivity(FemcGame.actById('hagakure'))")
+        p.eval("FemcGame.S.inventory.medicine=4")
+        pl1 = pl()
+        r = [p.eval(f"{RQ}.handWeekly(0)"), p.eval(f"{RQ}.handWeekly(0)"), p.eval(f"{RQ}.handWeekly(1)")]
+        ok(r[0]['ok'] and not r[1]['ok'] and r[2]['ok'] and pl() == pl1 + 3 + 2 and not p.eval(f"{G}.wk.bonus"), ('handed in once each; no bonus yet', r))
+        r = p.eval(f"{RQ}.handWeekly(2)")
+        ok(r['ok'] and r['bonus'] == 3 and pl() == pl1 + 3 + 2 + 2 + 3 and p.eval(f"{G}.wk.bonus") and p.eval("FemcGame.S.inventory.medicine") == 1, ('all three: +3 bonus; three Medicine handed over', r))
+        ok(p.eval(f"{G}.wk.hist.cleared") == 1, 'a cleared week counted')
+        # Expiry: a ready one is handed in for her when the week ends, a ready bring-something one is not, the rest expire.
+        craft([{'t': 'w-dozens', 'n': 5, 'plumes': 3}, {'t': 'w-sweep', 'n': 5, 'plumes': 2, 'mat': 'shadow_ash'}, {'t': 'w-truths', 'n': 99, 'plumes': 2}])
+        p.eval("FemcGame.S.battleSave.mats.shadow_ash=40;FemcGame.save()")
+        night(p, tally={'kills': 6})
+        toasts(p)
+        pl2, wk0 = pl(), p.eval(f"{G}.wk.week")
+        p.eval("(()=>{const G=FemcGame;G.S.day=7*(Math.floor((G.S.day+1)/7)+1)-1;G.save();})()")  # Sunday morning's save
+        ok(pl() == pl2 + 3, ('only the ready Shadow one, handed in for her', pl() - pl2))
+        ok(p.eval("FemcGame.S.battleSave.mats.shadow_ash") == 40, 'a bring-something one is never handed over by itself')
+        t = toasts(p)
+        ok(any('handed in for you' in x for x in t) and any('posted this week' in x for x in t), t)
+        nw = p.eval(f"(()=>{{const w={G}.wk;return {{week:w.week,n:{RQ}.wkList().length,done:w.list.filter(e=>e.done).length,bonus:w.bonus}}}})()")
+        ok(nw['week'] == wk0 + 1 and nw['n'] == 3 and nw['done'] == 0 and not nw['bonus'], ('Sunday: three fresh ones', nw))
+        # The board through the UI: three weekly cards; a ready one handed in with the button.
+        craft([{'t': 'w-dozens', 'n': 1, 'plumes': 3}, {'t': 'w-out', 'n': 9, 'plumes': 2}, {'t': 'w-nights', 'n': 3, 'plumes': 3}])
+        night(p, tally={'kills': 2})
+        open_velvet(p)
+        ok('ready' in p.eval("document.querySelector('[data-rq-open]').textContent"), 'the board button counts the ready weekly one')
+        click(p, '.g-vel-ov [data-rq-open]')
+        p.wait("!!document.querySelector('.g-rq-ov:not(.out) .g-rq-card.weekly')")
+        ok(p.eval("document.querySelectorAll('.g-rq-ov .g-rq-card.weekly').length") == 3, 'three weekly cards')
+        pl3 = pl()
+        click(p, '.g-rq-ov [data-wk-in="0"]')
+        p.wait("!!document.querySelector('.g-rq-ov .g-rq-card.weekly.done')")
+        ok(pl() == pl3 + 3 and 'envelope' in p.eval("document.querySelector('.g-rq-say').textContent"), 'handed in through the board; her thanks')
+        p.eval("document.querySelectorAll('.g-overlay').forEach(x=>x.remove())")
+        # The year's last day: nothing new.
+        p.eval(f"(()=>{{const G=FemcGame;G.S.day=G.END();{G}.wk.week=-1;{RQ}.weekState()}})()")
+        ok(p.eval(f"{RQ}.wkList().length") == 0, 'nothing posted for the last day of the year')
+        # Older and malformed saves.
+        r = p.eval(r"""(()=>{const S=FemcGame.S;delete S.gacha.wk;delete S.gacha.buy;delete S.gacha.tally.rares;const g=FemcGacha.gs();const out={old:[g.wk.week,g.wk.list.length,g.buy.n,g.tally.rares]};
+          S.gacha.wk={week:'x',list:[{t:'nope',n:3,plumes:2},{t:'w-dozens',n:5,plumes:3,base:'x'},null,{t:'w-element',n:4,plumes:3,el:'bogus'}],hist:5};S.gacha.buy={week:null,n:-3};
+          const h=FemcGacha.gs();out.bad=[h.wk.week,h.wk.hist.weeks,h.buy.week,h.buy.n];out.list=FemcRequests.wkList().map(e=>[e.t,typeof e.base]);return out})()""")
+        ok(r['old'] == [-1, 0, 0, 0] and r['bad'] == [-1, 0, -1, 0] and r['list'] == [['w-dozens', 'number']], r)
+        clean(p, 'weekly')
+        results['weekly'] = f"{w['pool']} templates; far-along save mid-week gets {ids}; counted from posting, seeded, bonus, Sunday refresh, expiry, UI, saves"
+        print('weekly OK', results['weekly'], flush=True)
 
     # ── Screenshots ──
     if want('shots'):
