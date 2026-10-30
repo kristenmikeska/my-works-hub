@@ -123,12 +123,9 @@
     },
     // This world's own faces (core.js worldFace): Solar's HOAX look, the four's HOAX outfits and Solar's parents (FEMC-ART-WIRING).
     faces: { solar: 'solar-hoax', sakura: 'sakura-hoax', eunchae: 'eunchae-hoax', kazuha: 'kazuha-hoax', chaewon: 'chaewon-hoax', mom: 'kim-mom', dad: 'kim-dad', jungwon: 'jungwon-hoax' },
-    // Event outfits (core.js eventFaces; FEMC-ART-WIRING "Extras"): an event's `faces: '<key>'` swaps these in for its scenes only.
-    eventFaces: {
-      'hoax-christmas': { solar: 'solar-hoax-christmas', jungwon: 'jungwon-hoax-christmas', jihoon: 'jihoon-hoax-christmas', cherry: 'cherry-hoax-christmas' }, // epi-h-christmas (12/25)
-      'hoax-party': { solar: 'solar-hoax-party', jungwon: 'jungwon-hoax-party', jihoon: 'jihoon-hoax-party', cherry: 'cherry-hoax-party' }, // epi-h-party (12/29)
-      'hoax-newyear': { solar: 'solar-hoax-newyear', jungwon: 'jungwon-hoax-newyear', jihoon: 'jihoon-hoax-newyear', cherry: 'cherry-hoax-newyear' } // epi-h-new-year and epi-h-sebae (1/1)
-    },
+    // Event outfits are parked until Kat redraws them in the new style (FEMC-ART-BACKBURNER "HOAX outfits"); those scenes show
+    // everyone's everyday hoax face meanwhile. The old map is kept there to restore.
+    eventFaces: {},
     variants: {
       morning: {
         school: ["Hanlim at eight, snow on the gate, and a whole building full of people with opinions about where the council had been.",

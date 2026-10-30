@@ -168,3 +168,27 @@ eventFaces: {
 ```
 
 **Everyday Runners faces:** all redone in the new style as of Oct 30 2026 (batch 96).
+
+## Strangers outfits (ChatGPT): parked Oct 30 2026
+
+Kat's call, as with Runners: the strangers event outfits come out until everyone's everyday strangers face is redone in the new realistic style, then get redrawn to match. Until then the Daeboreum night (2/24, Wolmido) show each person's everyday face. The old art is still in `assets/femc/portraits/`; to bring a set back, restore it in `data/epi/strangers/world.js` `eventFaces`.
+
+Old wiring, to restore:
+```js
+eventFaces: {
+  'strangers-daeboreum': { solar: 'solar-strangers-daeboreum', haechan: 'haechan-strangers-daeboreum', jungwon: 'jungwon-strangers-daeboreum', yunjin: 'yunjin-strangers-daeboreum' } // epi-s-moon (2/24, Wolmido)
+},
+```
+
+## HOAX outfits (ChatGPT): parked Oct 30 2026
+
+Kat's call, as with Runners: the hoax event outfits come out until everyone's everyday hoax face is redone in the new realistic style, then get redrawn to match. Until then Christmas (12/25), the winter-break party (12/29) and New Year (1/1) show each person's everyday face. The old art is still in `assets/femc/portraits/`; to bring a set back, restore it in `data/epi/hoax/world.js` `eventFaces`.
+
+Old wiring, to restore:
+```js
+eventFaces: {
+  'hoax-christmas': { solar: 'solar-hoax-christmas', jungwon: 'jungwon-hoax-christmas', jihoon: 'jihoon-hoax-christmas', cherry: 'cherry-hoax-christmas' }, // epi-h-christmas (12/25)
+      'hoax-party': { solar: 'solar-hoax-party', jungwon: 'jungwon-hoax-party', jihoon: 'jihoon-hoax-party', cherry: 'cherry-hoax-party' }, // epi-h-party (12/29)
+      'hoax-newyear': { solar: 'solar-hoax-newyear', jungwon: 'jungwon-hoax-newyear', jihoon: 'jihoon-hoax-newyear', cherry: 'cherry-hoax-newyear' } // epi-h-new-year and epi-h-sebae (1/1)
+},
+```
