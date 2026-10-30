@@ -647,7 +647,7 @@
 
   // ───────────────────────────── 12/20, late: the rooftop (the final) ─────────────────────────────
   { id: 'epi-r-rooftop', date: '12/20', slot: 'late', ends: true, title: 'every world', place: 'Syracuse · Language Arts Rooftop · Snow', time: 'Late Night', scene: [
-    { music: 'world-runners' },
+    { music: 'world-runners-theme' },
     { n: "The ladder was cold enough to burn. She went up it in gloves, rung over rung, the way she'd gone up it in October with her heart going for a completely different reason, and swung her leg over the parapet onto the roof of the Language Arts building, and stood up into the snow." },
     { n: "It was falling slow and thick and straight down, no wind, every flake taking its time. The whole campus below was white, the quad and the paths and the bell tower and the dome of the chapel, every lamppost wearing a little white cap, and beyond it the city's lights going soft and gold through the snow like they were very far away. The ledge had six inches on it. There was a can of Monster Pink Punch on the ledge, already open, half buried, with snow on its lid." },
     { glitch: { stage: 4 } },

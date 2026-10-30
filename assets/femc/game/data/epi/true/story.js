@@ -57,7 +57,7 @@
   ] },
 
   { id: 'epi-tr-r-held', date: '3/8', slot: 'late', consumes: true, title: 'every world', place: 'Syracuse · Language Arts Rooftop', time: 'Late Night', scene: [
-    { music: 'world-runners' },
+    { music: 'world-runners-theme' },
     { glitch: { stage: 4 } },
     { n: "The Language Arts roof at a quarter to twelve, the city below them gone quiet under the snow, every streetlamp wearing a little halo of it. The ledge, the vent stack, the fire escape they'd both stopped pretending was the only way up. A can of Monster Pink Punch on the ledge beside them, sweating in the cold, unopened, because some things were for looking at." },
     { n: "She'd brought a coat. He noticed. He didn't say anything about it, which was how she knew he'd noticed." },
@@ -116,7 +116,7 @@
   ] },
 
   { id: 'epi-tr-s-held', date: '3/9', slot: 'late', consumes: true, title: 'the bottom of the tide', place: 'Incheon · The Lee House · Garden', time: 'Before Light', scene: [
-    { music: 'world-strangers' },
+    { music: 'world-strangers-theme' },
     { glitch: { stage: 4 } },
     { n: "Before light. She knew the tide before she opened the back door: all the way out, the bay pulled back to the horizon, the mud shining under the last of the sodium lights, the bottom of it, the place the water went to think. She'd been born at four in the morning at the bottom of a tide. She'd always been able to feel one, the way other people could feel rain coming." },
     { n: "Haechan was on the annex step, where he always was by now, his back against the steel door and the Discman in his hands, the old one with the cracked lid, the earbuds in. It hadn't played in years. He wore it anyway. Some things weren't for listening to." },
@@ -174,7 +174,7 @@
   ] },
 
   { id: 'epi-tr-h-held', date: '3/10', slot: 'late', title: 'the gym at midnight', place: 'Hanlim · School · Gym at Midnight', time: 'Midnight', ends: true, scene: [
-    { music: 'world-hoax' },
+    { music: 'world-hoax-theme' },
     { glitch: { stage: 4 } },
     { n: "They finished it. At eleven the others went home in a heap, Sunoo crying because it looked so good, Jihoon saying it looked like a dentist's office, Cherry dragging Junkyu out by the hood, and then it was the two of them in the gym with the lights off and only the strings over the bleachers lit, blue and silver, the exit signs green over every door." },
     { n: "Jungwon sat down beside her on the bottom bleacher. Not touching. Then, after he'd checked his watch, touching." },

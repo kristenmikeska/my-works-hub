@@ -32,7 +32,7 @@
 
   // ───────────────────────────── 12/21, morning: home ─────────────────────────────
   { id: 'epi-h-home', date: '12/21', slot: 'early', consumes: true, title: 'home', place: 'Hanlim · Home · Her Room', time: 'Morning', scene: [
-    { music: 'world-hoax' },
+    { music: 'world-hoax-theme' },
     { n: "Something enormous and white was lying across her legs, and it was breathing, and it smelled like a dog that had been let out in the snow and then let back in without anybody drying his feet, and Solar lay there under the weight of it with her eyes shut and didn't move, because the last time she'd woken up somewhere it had been a dorm in Iwatodai with a radiator that hissed like it had opinions." },
     { n: "This radiator didn't hiss. This radiator ticked, twice, then gave up, the way it had ticked every winter morning since she was eleven." },
     { n: "She opened her eyes." },

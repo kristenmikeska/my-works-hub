@@ -28,7 +28,7 @@
 
   // ───────────────────────────── 12/1, morning: home ─────────────────────────────
   { id: 'epi-r-home', date: '12/1', slot: 'early', title: 'home', place: 'Syracuse · Alpha Phi House · Her Room', time: 'Morning', scene: [
-    { music: 'world-runners' },
+    { music: 'world-runners-theme' },
     { n: "The radiator under the window knocked twice, the way it had knocked every morning since August, like somebody downstairs had a complaint and was too polite to come up and make it, and Solar lay there under the pink duvet and listened to it the way you'd listen to a voice on the phone you hadn't heard in a year." },
     { n: "It hadn't been a year. That was the thing. Her phone said Monday, the first of December, and her phone had never once lied to her about the date, and if she did the math, which she did, twice, lying on her back with her eyes on the ceiling, she'd been gone nine days." },
     { glitch: 'epi-r-g-wake' },
@@ -975,7 +975,7 @@
 
   // ───────────────────────────── 12/7, late night: after (the route choice) ─────────────────────────────
   { id: 'epi-r-crossroads', date: '12/7', slot: 'late', title: 'after', place: 'Syracuse · The Quad', time: 'Late Night', scene: [
-    { music: 'world-runners' },
+    { music: 'world-runners-theme' },
     { n: "The van dropped them on the quad at twenty to midnight, because Doyoung said it was the closest point to everyone's bed and he'd done the math. Snow coming down slow and fat and straight, no wind, every path a gray line through white, the bell tower lit from below and the lamps along the walks making little rooms of light in the dark." },
     { n: "The trophy went with Olivia, by vote, and Olivia carried it across the quad toward South Campus in both arms like a baby, singing to it. Haerin went with her. Chenle said goodnight to each of them by name, which he'd never done before, and went off toward the Sigma house with his hood up, walking fast. Doyoung got back in the van and drove it away, and the quad was very quiet, and very white, and all hers." },
     { n: "Not quite all. Hanni and Hyein were at the shuttle stop at the bottom of the hill, stamping their feet, the last loop of the night coming round the corner with its lights on. Minji was on a bench under a lamp with her camera bag open on her knees, packing lenses into their foam one at a time, slow, careful, the way she did everything she cared about. And past the far side of the quad, past the dark bulk of the Language Arts building, the long way back to Alpha ran along a path nobody used after dark." },

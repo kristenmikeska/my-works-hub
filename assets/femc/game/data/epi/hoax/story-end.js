@@ -615,7 +615,7 @@
 
   // ───────────────────────────────── 1/12, the final ─────────────────────────────────
   { id: 'epi-h-gym', date: '1/12', slot: 'late', ends: true, title: 'hold on', place: 'Hanlim · School · Gym at Midnight', time: 'Late Night', scene: [
-    { music: 'world-hoax' },
+    { music: 'world-hoax-theme' },
     { n: "She woke up at eleven-forty knowing. Not dreaming it, not fearing it, just knowing, the way you know there's a test in the morning before you remember which one; it was tonight, and it was the gym, because the gym was where the door had opened, and doors, she'd learned, liked to be used both ways." },
     { n: "She got dressed in the dark. Jeans, two sweaters, her coat off the back of the door, the left pocket heavy. Nana watched her from the bed and didn't follow her to the door, which he always did, and she stood in the doorway and looked at him for a long time, and he thumped his tail on the duvet, once, and put his head down." },
     { n: "She didn't tell Cherry. Cherry would have come. Cherry would have stood in the middle of a gym at midnight with her hands out, and Solar didn't think she could watch Cherry's hands go through her. That was the only reason. It was a good enough one." },
@@ -751,7 +751,7 @@
       { n: "So they held him. Heeseung's hand on his shoulder, then Jay's arm across his back, then all of them, Sunoo and Jake and Niki and Sunghoon, every hand that couldn't hold her holding on to the one boy who could, seven people braced on a gym floor under string lights, leaning back against the sky." }
     ] },
 
-    { music: 'world-hoax' },
+    { music: 'world-hoax-theme' },
     { dark: false },
     { n: "Then the gold came." },
     { n: "Through the green. Not from the seam. From somewhere else, from behind it, from beside it, warm, the colour of a hallway light someone had left on for you, and it came through the bleed in the air like light under a door, and with it, so faint she thought for a second she'd made it up, a voice." },

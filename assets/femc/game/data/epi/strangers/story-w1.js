@@ -43,7 +43,7 @@
 
   // ───────────────────────────── 2/17, before light: home ─────────────────────────────
   { id: 'epi-s-home', date: '2/17', slot: 'early', consumes: true, title: 'home', place: 'Incheon · The Lee House · Stairs', time: 'Before Light', scene: [
-    { music: 'world-strangers' },
+    { music: 'world-strangers-theme' },
     { n: "The seventh stair creaked the way it had creaked her whole life, a long low complaint in the wood like an old man getting up out of a chair he'd been told not to sit in, and her father stopped on it." },
     { n: "He always stopped there. She'd known that the way she knew the tide, without anybody ever having told her, from twenty-one years of lying awake on the other side of her door listening to him do it: the study door, the slippers, the humming, slow and flat, and then the creak, and then nothing, while he stood on the seventh stair and looked up at the line of light under her door, or the dark, and decided whether to come the rest of the way. He never came the rest of the way. He went back down." },
     { n: "This time she was on the landing above him in her socks with her hair down past her shoulders, and there was no door between them at all." },

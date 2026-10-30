@@ -419,7 +419,11 @@ window.FEMC_GAME_PLACES = {
     // Solar's world songs (soft, over the scene)
     'world-runners': ['assets/audio/Camo-Runners.mp3', 'assets/audio/chanmina-ashell.mp3', 'assets/audio/rose-3am.mp3'],
     'world-strangers': ['assets/audio/EthelCain-Strangers.mp3', 'assets/audio/EthelCain-Crush.mp3', 'assets/audio/CocteauTwins-SeaSwallowMe.mp3'],
-    'world-hoax': ['assets/audio/TaylorSwift-Hoax.mp3', 'assets/audio/arianagrande-someonelikeu.mp3']
+    'world-hoax': ['assets/audio/TaylorSwift-Hoax.mp3', 'assets/audio/arianagrande-someonelikeu.mp3'],
+    // Each world's theme alone (Kat, 2026-10-30): the epilogues open on it, end on it, and slip it into their day rotations.
+    'world-runners-theme': 'assets/audio/Camo-Runners.mp3',
+    'world-strangers-theme': 'assets/audio/EthelCain-Strangers.mp3',
+    'world-hoax-theme': 'assets/audio/TaylorSwift-Hoax.mp3'
   },
   // A memory fragment's world (core.js worldOf: R / S / H) → its song.
   worldMusic: { R: 'world-runners', S: 'world-strangers', H: 'world-hoax' },

@@ -594,7 +594,7 @@
 
   // ───────────────────────────────── 3/16, the final ─────────────────────────────────
   { id: 'epi-s-held', date: '3/16', slot: 'early', consumes: true, ends: true, title: 'hold on', place: 'Incheon · The Lee House · Garden', time: 'Before Light', scene: [
-    { music: 'world-strangers' },
+    { music: 'world-strangers-theme' },
     { glitch: { stage: 4 } },
     { place: 'Incheon · The Lee House · Kitchen', time: 'Before Light' },
     { n: "She woke at twenty to four knowing. Not dreaming it, not afraid of it, just knowing, the way she'd always known when the tide had gone out under the house, in her back teeth, in the soles of her feet; it was tonight, and it was the bottom of the tide, and it was soon." },
