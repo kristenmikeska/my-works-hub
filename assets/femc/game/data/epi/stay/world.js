@@ -78,7 +78,11 @@
       /* ♪ MUSIC: Kat's song picks (FEMC-EPILOGUE-PLAN.md, revision 1); an epi-st-* mood still marked ♪ PLACEHOLDER plays a stand-in P3 track. To set one,
          replace its value with a file in assets/femc/music/ (no extension) or an 'assets/audio/…' path. The three world songs
          don't play as scene music here: they come through as two-second bleeds (glitches.js epi-st-g-camo / -tide / -hoax). */
+      // The everyday screens (morning, Go Out, evening, late) play this world's own songs, never the Persona tracks (Kat, 2026-10-30).
+      screens: { school: 'epi-st-day', class: 'epi-st-day', after: 'epi-st-day', evening: 'epi-st-evening', dorm: 'epi-st-home' },
       music: {
+        'epi-st-day': ['everything-is-romantic', 'picture-you'], // the everyday screens by day
+        'epi-st-evening': ['did-i-tell-u-that-i-miss-u', 'ghost-of-you'], // evenings
         'epi-st-home': 'iwatodai-dorm', // Kat's pick: keeps the P3 dorm theme. the dorm after the year, the first ordinary mornings
         'epi-st-spring': 'everything-is-romantic', // spring-break days out, the hanami
         'epi-st-rooms': 'ghost-of-you', // the searchers' rooms, still full of their things

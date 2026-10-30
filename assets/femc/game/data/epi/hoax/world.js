@@ -88,7 +88,12 @@
       ],
       /* ♪ MUSIC: Kat's song picks (FEMC-EPILOGUE-PLAN.md, revision 1); an epi-h-* mood still marked ♪ PLACEHOLDER plays a stand-in P3 track. To set one,
          replace its value with a file in assets/femc/music/ (no extension) or an 'assets/audio/…' path, like world-hoax. */
+      // The everyday screens (morning, Go Out, evening, late) play this world's own songs, never the Persona tracks (Kat, 2026-10-30).
+      screens: { school: 'epi-h-day', class: 'epi-h-day', after: 'epi-h-day', evening: 'epi-h-evening', dorm: 'epi-h-late' },
       music: {
+        'epi-h-day': ['tongue-tied', 'everybody-talks', 'touch-tank'], // the everyday screens by day
+        'epi-h-evening': ['cigarette-daydreams', 'i-like-you'], // evenings
+        'epi-h-late': ['evergreen', 'assets/audio/arianagrande-someonelikeu.mp3'], // late nights
         'epi-h-home': 'cardigan', // home, Nana, her mom at the door (soft, a little funny)
         'epi-h-goofy': 'everybody-talks', // the council and the crew being idiots (the retreat story, the group chats)
         'epi-h-forum': 'tongue-tied', // the forum, Eunchae's channel, the motion going up

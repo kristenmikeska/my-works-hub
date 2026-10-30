@@ -100,7 +100,12 @@
       ],
       /* ♪ MUSIC: Kat's song picks (FEMC-EPILOGUE-PLAN.md, revision 1); an epi-s-* mood still marked ♪ PLACEHOLDER plays a stand-in P3 track. To set one,
          replace its value with a file in assets/femc/music/ (no extension) or an 'assets/audio/…' path, like world-strangers. */
+      // The everyday screens (morning, Go Out, evening, late) play this world's own songs, never the Persona tracks (Kat, 2026-10-30).
+      screens: { school: 'epi-s-day', class: 'epi-s-day', after: 'epi-s-day', evening: 'epi-s-evening', dorm: 'epi-s-late' },
       music: {
+        'epi-s-day': ['staying', 'nice-dream'], // the everyday screens by day
+        'epi-s-evening': ['soft-spot', 'linger'], // evenings
+        'epi-s-late': ['forever', 'assets/audio/CocteauTwins-SeaSwallowMe.mp3'], // late nights
         'epi-s-house': 'nice-dream', // the Lee house: the full kitchen, Mrs. Bang, the koi on the back step
         'epi-s-cover': 'every-breath-you-take', // the cover: the fever, Appa on the seventh stair, the lie held
         'epi-s-step': 'linger', // the annex step at night, the three of them

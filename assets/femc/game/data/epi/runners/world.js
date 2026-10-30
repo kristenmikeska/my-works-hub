@@ -88,7 +88,12 @@
       ],
       /* ♪ MUSIC: Kat's song picks (FEMC-EPILOGUE-PLAN.md, revision 1); an epi-r-* mood still marked ♪ PLACEHOLDER plays a stand-in P3 track. To set one,
          replace its value with a file in assets/femc/music/ (no extension) or an 'assets/audio/…' path, like world-runners. */
+      // The everyday screens (morning, Go Out, evening, late) play this world's own songs, never the Persona tracks (Kat, 2026-10-30).
+      screens: { school: 'epi-r-day', class: 'epi-r-day', after: 'epi-r-day', evening: 'epi-r-evening', dorm: 'epi-r-late' },
       music: {
+        'epi-r-day': ['ring-ring', 'tip-toe', 'boyfriend'], // the everyday screens by day
+        'epi-r-evening': ['affection', 'wantchu'], // evenings
+        'epi-r-late': ['wyn', 'grey-rain', 'assets/audio/rose-3am.mp3'], // late nights
         'epi-r-home': 'ring-ring', // the first morning back (soft, home, snow)
         'epi-r-team': ['cashy', 'dollar-bratz'], // the lab, practice, the team's week (Wish by Camo isn't in the folder yet)
         'epi-r-confession': 'grey-rain', // the recording confession (tension, nothing pretty)

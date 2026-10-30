@@ -57,6 +57,7 @@
   function screenMood(key) {
     const base = G.D.places.screens[key];
     if (!base || !['school', 'class', 'after', 'evening'].includes(key)) return base;
+    if (S().epi) return base;   // an epilogue's screens play its own songs (its world.js `screens`), never Iwatodai's seasons
     const i = G.dayInfo(), d = i.d;
     if (i.type === 'trip' || i.label === 'Culture Festival') return 'trip';
     if (key === 'evening') return G.wxIn(['rain'], i.weather) ? 'rain' : base;
