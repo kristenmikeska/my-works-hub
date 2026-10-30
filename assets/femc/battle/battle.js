@@ -107,7 +107,7 @@
      Members without a sheet keep their static stance (or nothing, like Ken). */
   // Measured 2026-10-24 (figure height on the field, head to feet, idle frame): Junpei, Mitsuru and Shinjiro drew about 60% of the
   // others' height (their canvases are wide for the weapon), Aigis about 85%; they were raised to match (tests/femc_bonds.py --only poses).
-  const FIGHTER_POSES = { solar: 1.3, akihiko: 1, yukari: 1.04, junpei: 1.42, mitsuru: 1.4, aigis: 1.18, koromaru: 0.87, shinjiro: 1.51, haechan: 1, jungwon: 1, jihoon: 0.92, minji: 0.97 };
+  const FIGHTER_POSES = { solar: 1.3, akihiko: 1, yukari: 1.04, junpei: 1.42, mitsuru: 1.4, aigis: 1.18, koromaru: 0.87, shinjiro: 1.51, haechan: 1.16, jungwon: 1.15, jihoon: 1.05, minji: 1.07 };
   const FIGHTER_STATES = { attack: [2], cast: [3], hurt: [4], evoke: [1], win: [5] };
   /* Wardrobe looks from the life sim (game/cosmetics.js battle(), read once per frame): an outfit's pose folder per member
      (same six frames and canvas as the member's own sheet) and CSS for the battle theme and Evoker tint. Practice: none. */
