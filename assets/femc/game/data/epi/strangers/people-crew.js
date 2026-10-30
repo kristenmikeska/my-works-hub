@@ -63,7 +63,7 @@
       { n: "Park Sunghoon was at the wheel, looking straight ahead through the windscreen as though the car had come by itself and he'd only been put in it to keep it company." },
       { n: "He leaned across and opened the passenger door from inside, which was the most effort she had ever seen him spend on her, and sat back again." },
       { s: 'sunghoon', f: 'neutral', t: "Mr. Oh's taken your mother to the restaurant. Jungwon asked." },
-      { s: 'solar', t: "Asked who?" },
+      { s: 'solar', f: 'surprised', t: "Asked who?" },
       { s: 'sunghoon', f: 'neutral', t: "Me." },
       { n: "That was the whole of it, apparently. Nobody rang anybody in either house any more if they could help it, because the phones were listened to, and so things arrived instead, by car, by runner, by a man who could stand at the bottom of a flight of steps for forty minutes without once looking at his watch. She got in the back. He didn't comment on it. He didn't comment on anything." },
       { place: 'Incheon · The Car', time: 'Evening', soft: true },
@@ -72,7 +72,7 @@
       { choose: [
         { t: "You can put the radio on, you know.", stat: { charm: 1 }, then: [
           { s: 'sunghoon', f: 'neutral', t: "No." },
-          { s: 'solar', t: "Okay." },
+          { s: 'solar', f: 'neutral', t: "Okay." },
           { s: 'sunghoon', f: 'neutral', t: "Jungwon-ah doesn't like it either." },
           { n: "He heard it a second after she did, the *-ah*, the private name set down in front of her like a cup he hadn't meant to pour, and his jaw did something small and annoyed and was still again. She looked out of the window so he wouldn't have to watch her not smile." }
         ] },
@@ -82,7 +82,7 @@
       ] },
       { n: "At the light on the harbor road he spoke without turning his head, in the same flat, bored voice he used for car parks and weather." },
       { s: 'sunghoon', f: 'neutral', t: "You've started counting again." },
-      { s: 'solar', t: "What?" },
+      { s: 'solar', f: 'surprised', t: "What?" },
       { s: 'sunghoon', f: 'serious', t: "Mirrors. Under your breath. Doors, in rooms." },
       { n: "A pause, the red light on the wet road, the indicator ticking for nobody." },
       { s: 'sunghoon', f: 'serious', t: "You'd stopped. Where we were." },
@@ -92,7 +92,7 @@
       { s: 'sunghoon', f: 'neutral', t: "Your dog's out." },
       { glitch: { near: true } },
       { n: "Haechan didn't come off the wall. Sunghoon didn't look at him. They had never once, she was fairly sure, looked at each other in the same second, and it was the only thing in the world the two of them agreed on." },
-      { s: 'solar', t: "Thank you for the ride, Sunghoon-ssi." },
+      { s: 'solar', f: 'neutral', t: "Thank you for the ride, Sunghoon-ssi." },
       { s: 'sunghoon', f: 'neutral', t: "Thank him." },
       { n: "She got out. The car pulled away at the limit, its tail lights going down the hill in no hurry at all, and Haechan spat his gum into the paper and fell into step beside her without a word, which in him was a whole speech." }
     ] },
@@ -105,13 +105,13 @@
       { s: 'mrsbang', t: "Forty minutes. I've offered him a chair three times." },
       { n: "Mrs. Bang was at the sink with her sleeves pushed up, glaring at his shoulder blades as if they'd tracked mud in. Pyo was flattened against the far counter peeling garlic at a speed that suggested he believed Sunghoon could hear fear. Auntie Song, on her armchair by the stove, didn't look up from her mending." },
       { s: 'auntie', t: "*Leave him. Some men are furniture.*" },
-      { s: 'solar', t: "*He understands Mandarin, Auntie.*" },
+      { s: 'solar', f: 'happy', t: "*He understands Mandarin, Auntie.*" },
       { s: 'auntie', t: "*Good. Then he knows he's furniture.*" },
       { n: "If Sunghoon understood, his back didn't say so. Then the back door opened, and the yellow light of the dusty afternoon came in, and Haechan came in with it, stamping grit off his boots, his jacket over one shoulder, gum going, and stopped dead one step inside the door. Because the doorway he needed was the doorway Sunghoon was standing in, and Sunghoon was facing him." },
       { n: "Nobody moved. Pyo stopped peeling. The tap ran. Somewhere upstairs a baduk stone clicked onto the board, small and final." },
-      { s: 'haechan', f: 'neutral', t: "Figure skater." },
+      { s: 'haechan', f: 'happy', t: "Figure skater." },
       { s: 'sunghoon', f: 'neutral', t: "Dog." },
-      { s: 'haechan', f: 'neutral', t: "You're in my door." },
+      { s: 'haechan', f: 'serious', t: "You're in my door." },
       { s: 'sunghoon', f: 'neutral', t: "It's the Chairman's door." },
       { s: 'haechan', f: 'happy', t: "I live here." },
       { s: 'sunghoon', f: 'neutral', t: "In a shed." },
@@ -124,7 +124,7 @@
         ] },
         { t: "Haechan. Go round by the front.", needs: { courage: 2 }, then: [
           { s: 'haechan', f: 'surprised', t: "Agasshi." },
-          { s: 'solar', t: "It's forty steps. I've counted." },
+          { s: 'solar', f: 'happy', t: "It's forty steps. I've counted." },
           { n: "He looked at her for a long, wounded second. Then he went back out into the dust and the door banged and they all listened to his boots go round the whole side of the house, the gravel, the front steps, the hall, and then he came in through the other kitchen door, the one from the dining room, which put him directly behind Sunghoon's back." },
           { n: "Sunghoon did not turn round. That was the point. A man who faces the door does not turn round for a dog, and the dog knew it, and stood eighteen inches behind him eating a mandarin out of the fruit bowl as loudly as it is possible to eat a mandarin, which is surprisingly loud." }
         ] },
@@ -142,8 +142,8 @@
       ], else: [
         { ifEpiRoute: 'haechan', then: [
           { n: "Down at the annex Haechan was sitting on his step with the radio on low, and when she came down the garden he didn't look up." },
-          { s: 'haechan', f: 'neutral', t: "Don't tell the young master I gave his man tea." },
-          { s: 'solar', t: "He'll know. He counts the cups." },
+          { s: 'haechan', f: 'happy', t: "Don't tell the young master I gave his man tea." },
+          { s: 'solar', f: 'happy', t: "He'll know. He counts the cups." },
           { s: 'haechan', f: 'happy', t: "Then tell him it was poisoned." }
         ], else: [
           { n: "From the top of the stairs, her father's soft voice came down into the hall, the voice nobody interrupted, mild as milk." },
@@ -163,12 +163,12 @@
       { n: "One plate had gone across to the Yang house, and so a dish had to come back, and so a jar had to go across, and so on, presumably forever, which was apparently how two houses that had spent years trying to ruin each other became neighbors. Mrs. Bang's jar was the size of a small child and had to be carried with both arms. Mr. Oh carried it to the Yangs' kitchen door and set it down and went back to the car without a word, which left Solar holding the lid." },
       { n: "The Yang kitchen was bigger than theirs and quieter, steel counters and a window full of white sky, and it smelled of sesame oil and steam and the cold coming off the window. Mrs. Moon, who ran it, was at the stove. Jay was not at the stove. Jay was standing a respectful distance from the stove in a Tyvek suit tied off at the hips over a faded SEATTLE tee, goggles pushed up in his hair, an unlit cigarette behind his ear, supervising." },
       { s: 'jay', f: 'neutral', t: "Don't stir it. If you stir it you're just making it anxious." },
-      { s: 'solar', t: "Is he always like this, Mrs. Moon?" },
+      { s: 'solar', f: 'happy', t: "Is he always like this, Mrs. Moon?" },
       { n: "Mrs. Moon, who was sixty and had stirred things for forty years, stirred it, looking Jay dead in the eye." },
       { s: 'jay', f: 'sad', t: "Fine. Fine. It's your pot." },
       { n: "He saw the jar. He saw her. Something went across his tired face, quick, the same thing that had gone across it when she came in with the plate, and he put it away again where he kept things and nodded at the jar instead." },
       { s: 'jay', f: 'neutral', t: "Mrs. Bang's? Good. That's real fermentation. That's a living thing. Lactobacillus doing the actual work while everybody else takes the credit." },
-      { s: 'solar', t: "That's the most romantic thing anyone's said about kimchi." },
+      { s: 'solar', f: 'happy', t: "That's the most romantic thing anyone's said about kimchi." },
       { s: 'jay', f: 'happy', t: "Everything's chemistry. Salt's not a flavor, salt's a door. It lets the water out of things. Caramel's just sugar giving up. Rice is a reaction with a rice cooker standing guard over it." },
       { s: 'jay', f: 'neutral', t: "And a reaction's just a recipe that doesn't forgive you. Same rules. You weigh it. You don't rush it. You skim it and you skim it and you skim it, and the guy who gets bored of skimming is the guy whose stock goes cloudy." },
       { n: "He said *stock* in exactly the voice another man might have said something else, and she let him, because she'd grown up in a house where everybody talked about one thing in the words for another, and she'd learned early which words to leave lying where they fell." },
@@ -176,7 +176,7 @@
         { t: "So what are you making?", stat: { courage: 1 }, then: [
           { n: "The kitchen went quiet in a way that had nothing to do with the stove. Mrs. Moon's spoon stopped. Jay looked at her for a moment, dry, tired, almost fond." },
           { s: 'jay', f: 'neutral', t: "Lunch." },
-          { s: 'solar', t: "For who?" },
+          { s: 'solar', f: 'neutral', t: "For who?" },
           { s: 'jay', f: 'happy', t: "The legitimate squid. It's having a very strong quarter. Honestly, record numbers. You should see the squid." },
           { n: "Mrs. Moon started stirring again. That was the end of that, and Solar had known it would be, and asked anyway, because her father had always said you could tell a great deal about a man by how he said no." }
         ] },
@@ -184,7 +184,7 @@
           { n: "There was a flounder on the board by the sink, waiting for somebody to care about it. She rolled up her sleeves, took the knife from the block, and did it the way the Chinatown aunties had taught her at eleven, one long pass behind the head and the fillet lifting off the bone clean as a page, the old white scar across her palm pale under the cold tap." },
           { n: "Mrs. Moon stopped stirring. Jay took the cigarette from behind his ear, looked at it, and put it back." },
           { s: 'jay', f: 'surprised', t: "Huh." },
-          { s: 'solar', t: "Chinatown." },
+          { s: 'solar', f: 'happy', t: "Chinatown." },
           { s: 'jay', f: 'neutral', t: "Respect. Most people saw at it. You didn't saw. That's the whole trick, not sawing. Nobody believes you." }
         ] },
         { t: "(Ask Mrs. Moon what she's making instead.)", stat: { kindness: 1 }, then: [
@@ -195,7 +195,7 @@
       ] },
       { n: "On the way out he walked her to the kitchen door, which he didn't need to do. The empty jar from last time was waiting there for her to take back, washed, with something already in it, wrapped in a cloth." },
       { s: 'jay', f: 'neutral', t: "Tell Mrs. Bang it's not as good as hers. She'll want to hear that." },
-      { s: 'solar', t: "Is it?" },
+      { s: 'solar', f: 'happy', t: "Is it?" },
       { s: 'jay', f: 'happy', t: "God, no. It's better. Don't tell her that." }
     ] },
 
@@ -206,7 +206,7 @@
       { n: "The jar had gone back again, of course. It was always going back. She took the lane way round to the Yang kitchen so she wouldn't have to go through the front of the house, past the bins and the steam vents and the high wall with the broken glass along the top that somebody's grandfather had set in the cement, and the dust was in, the whole sky the color of weak tea, the streetlamp at the end of the lane wearing a dirty yellow halo, everything with the edges rubbed off." },
       { n: "Jay was sitting on an upturned crate by the kitchen's back step with his goggles down over his eyes for once, for the dust, and a paper mask hooked under his chin, and the cigarette behind his ear, unlit. He pushed the goggles up when he saw her. Two pale rings round his eyes where they'd been, like a raccoon who'd had a long week." },
       { s: 'jay', f: 'neutral', t: "You came back." },
-      { s: 'solar', t: "You said that already. Last month. In there." },
+      { s: 'solar', f: 'serious', t: "You said that already. Last month. In there." },
       { s: 'jay', f: 'neutral', t: "Yeah." },
       { n: "He kicked the other crate toward her with one boot. The lane was quiet except for the vents and, far off, a ship's horn going long and low under the dust." },
       { s: 'jay', f: 'serious', t: "Last month it was a question. Now I'm just checking." },
@@ -216,7 +216,7 @@
       { n: "He didn't say where he'd quit, and he didn't say back from where. He didn't need to. The dust moved in the lamplight like something breathing slowly." },
       { ifFlag: 'epi-s-clocks', then: [
         { s: 'jay', f: 'serious', t: "Riki says every clock in your house stopped at twelve. Same minute. Microwave too." },
-        { s: 'solar', t: "Riki says a lot of things." },
+        { s: 'solar', f: 'serious', t: "Riki says a lot of things." },
         { s: 'jay', f: 'neutral', t: "Riki's sixteen. He mostly says things that happened, and then he says them louder." },
         { n: "She didn't answer. He didn't push. He turned the cigarette end over end between them, and she watched it instead of his face." }
       ] },
@@ -229,7 +229,7 @@
         { t: "What even is this stuff?", stat: { knowledge: 1 }, then: [
           { n: "He brightened, which in Jay meant one eyebrow went up a millimeter." },
           { s: 'jay', f: 'happy', t: "Loess. Silt off the Gobi. Calcium carbonate, quartz, a bit of everything they burn in between, and bad luck. Comes two thousand kilometers to get in your teeth. Every spring. Like a relative." },
-          { s: 'solar', t: "You make everything sound like it's on a menu." },
+          { s: 'solar', f: 'happy', t: "You make everything sound like it's on a menu." },
           { s: 'jay', f: 'neutral', t: "Everything's on a menu. You just haven't read far enough down." }
         ] },
         { t: "(Take the cigarette. Hold it for him for a while.)", stat: { kindness: 1 }, then: [
@@ -254,11 +254,11 @@
       { n: "Minseok closed his eyes for a moment in the way of a man counting to ten in a language he didn't really believe in, and went back inside." },
       { n: "Riki had brought the jar back, which was why he was here, officially. It was in a cloth bag over his shoulder and had swung into the wall on the way over. It was fine. He showed her it was fine, very seriously, and handed it over, and then he stood there peeling the banana with tremendous concentration, and didn't go." },
       { s: 'niki', f: 'neutral', t: "So." },
-      { s: 'solar', t: "So." },
+      { s: 'solar', f: 'happy', t: "So." },
       { s: 'niki', f: 'neutral', t: "Those girls. At the café. With Yunjin-noona." },
-      { s: 'solar', t: "Which ones?" },
+      { s: 'solar', f: 'neutral', t: "Which ones?" },
       { s: 'niki', f: 'flustered', t: "...You know which ones." },
-      { s: 'solar', t: "There were four of them, Riki." },
+      { s: 'solar', f: 'happy', t: "There were four of them, Riki." },
       { s: 'niki', f: 'flustered', t: "The Japanese ones. Obviously. Not, I'm not, it's not a thing. I'm just asking. As a, as a professional. I like to know who's on the street. That's my job." },
       { n: "He took a large bite of banana to stop himself from saying anything else, and she watched him chew a sixteen-year-old's whole pride into it, and was very, very kind, and didn't laugh." },
       { s: 'niki', f: 'neutral', t: "The one who talked to me. Her Japanese is Kyoto. Soft. It goes up at the ends. Nobody here talks like that, nobody, I haven't heard anybody talk like that since—" },
@@ -270,12 +270,12 @@
           { s: 'niki', f: 'surprised', t: "Kazuha." },
           { n: "He said it the way you'd test ice with one foot. Then again, under his breath, the Japanese way, the vowels all the right length. Then he went bright red from the collar of the puffer to the roots of his hair, all at once, like a kettle." },
           { s: 'niki', f: 'flustered', t: "Okay. Cool. That's, cool. Useful. For the street." },
-          { s: 'solar', t: "For the street." },
+          { s: 'solar', f: 'happy', t: "For the street." },
           { s: 'niki', f: 'flustered', t: "Noona." }
         ] },
         { t: "She thinks you're a ghost, by the way.", stat: { charm: 1 }, then: [
           { s: 'niki', f: 'surprised', t: "A *what?*" },
-          { s: 'solar', t: "You came out of nowhere, said one sentence in perfect Japanese, and vanished at a sprint. She told the whole table. Sakura's not convinced. Eunchae wants to set a trap." },
+          { s: 'solar', f: 'happy', t: "You came out of nowhere, said one sentence in perfect Japanese, and vanished at a sprint. She told the whole table. Sakura's not convinced. Eunchae wants to set a trap." },
           { s: 'niki', f: 'serious', t: "I'm not a ghost. I'm *fast*. That's completely different. Tell her that. No, don't tell her that. Tell her—" },
           { n: "He thought about it so hard his ears moved." },
           { s: 'niki', f: 'neutral', t: "Don't tell her anything. It's better if she thinks I'm a ghost. Ghosts are cool." }
@@ -307,13 +307,13 @@
       { glitch: { near: true } },
       { n: "He didn't say anything. He took a banana out of the fruit bowl on his way past, set it down beside Riki's elbow without looking at him, and went out through the hall door, and they heard the front door, and his boots on the steps, going round the long way to the annex in the dust rather than back across the kitchen." },
       { s: 'niki', f: 'sad', t: "Why does he do that?" },
-      { s: 'solar', t: "Do what?" },
+      { s: 'solar', f: 'neutral', t: "Do what?" },
       { s: 'niki', f: 'neutral', t: "Not look at me. He does it every time. I haven't even done anything to him. Recently." },
       { choose: [
         { t: "You remind him of somebody he used to be.", stat: { kindness: 1 }, then: [
           { n: "Riki stopped eating. He looked at the banana. He looked at the door Haechan had gone out of." },
           { s: 'niki', f: 'neutral', t: "...Was he cool?" },
-          { s: 'solar', t: "He was fast. He went over walls." },
+          { s: 'solar', f: 'neutral', t: "He was fast. He went over walls." },
           { n: "Riki thought about that for a long moment. Then he picked up the banana, and didn't eat it, and put it carefully into the inside pocket of his puffer, next to wherever the note had been, as if it was a thing that needed to get somewhere by hand." }
         ] },
         { t: "He doesn't look at anybody. Don't take it personally.", then: [
@@ -323,7 +323,7 @@
       ] },
       { ifFlag: 'epi-s-niki-name', then: [
         { s: 'niki', f: 'flustered', t: "Did you, um. Tell her I asked. Kazuha-san. You didn't tell her, right." },
-        { s: 'solar', t: "I didn't tell her." },
+        { s: 'solar', f: 'happy', t: "I didn't tell her." },
         { s: 'niki', f: 'sad', t: "Oh. Good. Great." },
         { n: "He looked so profoundly disappointed that Mrs. Bang gave him a fifth side dish." }
       ] },
@@ -341,7 +341,7 @@
       { s: 'auntie', t: "*Xiao yueliang. Sit. Fold. Your pleats used to be fourteen. Let me see if you've gone soft.*" },
       { n: "She sat, and folded, and her hands knew it before she did, the wrapper in her left palm across the scar and the little pinches walking along the edge one after another. Fourteen. Auntie Song took it off the board, held it up to the window like a jeweler, grunted, and put it back, which was the highest praise available in this kitchen." },
       { s: 'mrsbang', t: "She's talking about me. I can always tell." },
-      { s: 'solar', t: "She's talking about Mr. Oh's aftershave." },
+      { s: 'solar', f: 'happy', t: "She's talking about Mr. Oh's aftershave." },
       { s: 'auntie', t: "*I'm talking about Mr. Oh's aftershave. He puts it on for the woman in the toll booth on the bridge. Twice a week he has business across the bridge. Twice a week. What business has a driver got across a bridge.*" },
       { s: 'mrsbang', t: "She's talking about me." },
       { n: "The gossip went on like that in long Mandarin loops while the pile of dumplings grew, the fish man's new wife and her terrible perm, the Yang kitchen auntie who used too much garlic in everything, a shocking story about a cousin in Qingdao and a refrigerator, and Mrs. Bang folded at the other end of the table with her mouth set, convinced every word of it was about her, and occasionally it was." },
@@ -366,7 +366,7 @@
           { n: "The old woman said it back to her the way you'd repeat a price at the market that you didn't believe but were prepared, today, to pay. Then she put another wrapper on the pile. That was all. The lie had held, and something in the room let go of its breath." }
         ] },
         { t: "(Answer in Korean, loud enough for Mrs. Bang.)", stat: { charm: 1 }, then: [
-          { s: 'solar', t: "Auntie wants to know how high my fever went, Mrs. Bang." },
+          { s: 'solar', f: 'happy', t: "Auntie wants to know how high my fever went, Mrs. Bang." },
           { s: 'mrsbang', t: "Thirty-nine point four. She couldn't keep rice down. I was up three nights with the cloths. Tell her that in her language, and tell her I'll thank her to keep her nose in her own wrappers." },
           { glitch: { strain: 1 } },
           { n: "Auntie Song understood not one word of that and every word of it. She smiled, very small, at her rolling pin, the smile of a woman who'd been listening at doors for nineteen years and knew exactly which ones to stop listening at." }
@@ -395,7 +395,7 @@
       { n: "He'd started wearing his watch on the inside of his wrist, she noticed, face in, so he wouldn't have to look at it by accident. Auntie Song split the mandarin and ate a segment and spoke in Mandarin to the garden in general." },
       { s: 'auntie', t: "*In my mother's village, twelve o'clock is the hour the ghosts come to the table. You leave a chair out. You don't look at it.*" },
       { s: 'mrsbang', t: "She's talking about the clocks." },
-      { s: 'solar', t: "She's talking about her mother's village." },
+      { s: 'solar', f: 'serious', t: "She's talking about her mother's village." },
       { s: 'mrsbang', t: "She's talking about the clocks." },
       { n: "*Thwack.* The silk rug, which would never be the same, gave up a cloud of something that had been in it since before Solar was born." },
       { ifGlitch: 3, then: [
@@ -415,7 +415,7 @@
           { n: "She sat on the cold step beside the bucket and Auntie Song, without looking, handed her half the mandarin." },
           { s: 'auntie', t: "*You've been gone a long time, little moon. Somewhere.*" },
           { n: "Not a question. Auntie Song never asked questions. She only ever said things in a kitchen and waited to see who flinched." },
-          { s: 'solar', t: "*I had a fever.*" },
+          { s: 'solar', f: 'serious', t: "*I had a fever.*" },
           { s: 'auntie', t: "*Mm. And now the clocks have one.*" }
         ] }
       ] },
@@ -433,25 +433,25 @@
       place: 'Incheon · The Car', time: 'Evening', scene: [
       { music: 'epi-s-cover' },
       { n: "The car was warm. It was always warm. Mr. Oh had been warming it at the foot of the front steps every evening since she came home, whether or not she went anywhere, and tonight she came down the steps in her coat and got into the back and sat there with her hands in her lap, and he looked at her once in the mirror, menthol aftershave and the gray at his temples and his hands at ten and two, and didn't ask." },
-      { s: 'solar', t: "Anywhere. Just drive." },
+      { s: 'solar', f: 'sad', t: "Anywhere. Just drive." },
       { s: 'mroh', t: "Seatbelt." },
       { n: "He drove the harbor road. Down past the cranes standing over the quays like something told to wait, past the ferry terminal and the bright windows of the sashimi places, round the Wolmido loop, never braking hard, never once in fourteen years braking hard, the car taking every corner like water taking the shape of a cup. The tide was going out. She could feel it in her teeth." },
       { n: "Halfway round the loop he spoke, which he didn't do, not on drives, not unless the sentence had a destination in it." },
       { s: 'mroh', t: "You were eight." },
-      { s: 'solar', t: "What?" },
+      { s: 'solar', f: 'surprised', t: "What?" },
       { s: 'mroh', t: "Two in the morning. The Chairman rang me. You wouldn't sleep. Low tide. You were sitting on the stairs in your coat over your pajamas and you wouldn't go back up." },
       { n: "His eyes on the road. His hands at ten and two." },
       { s: 'mroh', t: "So I drove you round. This road. You counted the cranes out loud. Every time round. Twenty-three. Every time, twenty-three, like you were checking nobody had taken one." },
       { s: 'mroh', t: "Fourth time round, you were asleep against that window. The Chairman carried you in." },
       { n: "She didn't remember. She looked at the window, at the cold glass where an eight-year-old's face would have pressed, and at the cranes going by beyond it, and found she was counting them. Nine, ten. She made herself stop." },
-      { s: 'solar', t: "I don't remember that." },
+      { s: 'solar', f: 'sad', t: "I don't remember that." },
       { s: 'mroh', t: "You were asleep for most of it." },
       { n: "The car came round the bottom of the loop and the lights of the Lee house showed on the hill. He signalled for home, the way he always did, though there was nobody on the road to see, and then he spoke again without taking his eyes off it, flat, the way a man reads out an address." },
       { s: 'mroh', t: "Your aunt's driver asked me how you were. At Seollal." },
       { choose: [
         { t: "And what did you tell him?", then: [
           { s: 'mroh', t: "That you had a fever." },
-          { s: 'solar', t: "Thirty-nine point four." },
+          { s: 'solar', f: 'serious', t: "Thirty-nine point four." },
           { s: 'mroh', t: "That's what I told him." },
           { glitch: { strain: 1 } },
           { n: "He didn't look in the mirror. That was the kindness. He'd handed her the lie like a coat at a door and let her put it on without watching." }
@@ -474,16 +474,16 @@
       { n: "She walked past the back door. She opened the front one." },
       { n: "He looked at the door. At her. At the road. He took the folded newspaper off the passenger seat, and his green thermos, and the cloth he cleaned the mirrors with, and put them all on the back seat, in that order, without a word, and she got in beside him." },
       { n: "It was a completely different car from the front. She'd never seen the dashboard from here. There was a paper pine tree hanging from the mirror that had stopped smelling of anything years ago, and a pair of cotton gloves folded on the dashboard, and a mint tin, and none of it had ever been visible from the back, and she sat among it feeling like she'd walked into somebody's kitchen without knocking." },
-      { s: 'solar', t: "Do you ever get bored? Waiting?" },
+      { s: 'solar', f: 'neutral', t: "Do you ever get bored? Waiting?" },
       { s: 'mroh', t: "No." },
       { n: "He pulled out. Ten and two. The wipers took one long pass at the dust on the windscreen." },
       { s: 'mroh', t: "The policewoman. The one with the ice." },
-      { s: 'solar', t: "Inspector Seo." },
+      { s: 'solar', f: 'neutral', t: "Inspector Seo." },
       { s: 'mroh', t: "She asked me how long I'd driven you. I said since you were seven. She asked if you'd been ill at Seollal." },
       { s: 'mroh', t: "I said you had a fever." },
       { n: "He said it to the windscreen, plainly, the way he'd tell her it was raining. Then he drove for a while, through the yellow streetlights, before he said the other thing." },
       { s: 'mroh', t: "I sat at the gate, those nights. Engine on." },
-      { s: 'solar', t: "Which nights?" },
+      { s: 'solar', f: 'serious', t: "Which nights?" },
       { n: "He didn't answer. That was the answer. Ten nights, then, at the gate, at the bottom of the hill, with the heater running and the newspaper folded into a square, waiting for a girl who had a fever upstairs to come down the steps and need driving somewhere." },
       { choose: [
         { t: "(Put the radio on. Trot.)", stat: { charm: 1 }, then: [
@@ -574,7 +574,7 @@
       ] },
       { glitch: { near: true } },
       { s: 'eunchae', t: "You always stand where you can see the stairs. Did you know that? Every place we go. The café. The booth. Here. You go straight to where you can see the way in." },
-      { s: 'solar', t: "I like stairs." },
+      { s: 'solar', f: 'happy', t: "I like stairs." },
       { s: 'eunchae', t: "Nobody likes stairs." },
       { n: "Then Kazuha drifted over from the photo-sticker machines with her strip in her hand and the soft unfocused look she had when she'd been thinking about something unreasonable, and stood beside Solar and looked, not at Solar, but just past her. Over her shoulder. For a long time." },
       { s: 'kazuha', t: "You have people standing behind you." },
@@ -591,7 +591,7 @@
         { t: "(Sit down across from Sakura. Lose with dignity.)", then: [
           { n: "She picked a character because it had a nice coat. Sakura picked the same character, out of what Solar could only assume was contempt. It took eleven seconds." },
           { s: 'sakura', t: "You held block the whole time." },
-          { s: 'solar', t: "I was being careful." },
+          { s: 'solar', f: 'happy', t: "I was being careful." },
           { s: 'sakura', t: "You can't win being careful." },
           { n: "Sakura put another token in for her without being asked, which from Sakura was practically an embrace." }
         ] },
@@ -618,7 +618,7 @@
       { n: "Half past four. She heard him on the stairs before she was properly awake, his slippers and the seventh stair's creak, and when she went down in her socks with her hair down he was at the kitchen table under the one light, the paper open, the reading glasses on their cord, an Esse Light unlit in the ashtray like a promise he'd made to somebody and was keeping for now." },
       { n: "The calendar on the wall beside him had already been turned. The number was one smaller than yesterday. He didn't look at it. He didn't look at her either, for a moment. Then he moved the second chair out from the table with his foot." },
       { s: 'appa', t: "Tides. Inner harbor. Low water at—" },
-      { s: 'solar', t: "Five forty-one." },
+      { s: 'solar', f: 'neutral', t: "Five forty-one." },
       { s: 'appa', t: "Five forty-one." },
       { n: "He read it off the paper as if he were checking her, and turned the page, and that was all he said, and he didn't ask her anything, not one thing, and the not-asking sat on the table between them as solid as the teapot." },
       { choose: [

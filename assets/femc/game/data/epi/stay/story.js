@@ -74,7 +74,7 @@
     { ifEpiRoute: 'akihiko', then: [
       { n: "Akihiko came in the front door in his track jacket with the cold still on him, red in the face, a towel round his neck, and stopped at the bottom of the stairs when he saw her, as if he'd been waiting there for her in his head the whole loop of the river and was a little surprised to find her real." },
       { s: 'akihiko', f: 'happy', t: "You slept in." },
-      { s: 'solar', t: "It's seven." },
+      { s: 'solar', f: 'happy', t: "It's seven." },
       { s: 'akihiko', f: 'neutral', t: "Like I said. Tomorrow. Five a.m. I'll be on your left." },
       { n: "His gloves were hanging out of his jacket pocket, the red ones, for no reason at all on a run. She didn't ask. He sat down next to her and ate three bowls of rice and didn't look at her more than twice, which for him was a lot." }
     ] },
@@ -131,7 +131,7 @@
           ] }
         ] },
         { s: 'mitsuru', f: 'neutral', t: "And the rest?" },
-        { s: 'solar', t: "Leave it. For now." }
+        { s: 'solar', f: 'serious', t: "Leave it. For now." }
       ] }
     ] }
   ] },
@@ -149,7 +149,7 @@
     { n: "Fuuka set out her boxes along the edge of the tarp in a row, lacquered, borrowed from three different cupboards, the tamagoyaki in every one of them cut to the same width with a ruler. One each. Koromaru's with no salt. And one more at the very end of the row, the best one, the gold side of the egg turned up, that didn't have anyone's name on it." },
     { s: 'fuuka', f: 'neutral', t: "That one's extra. I counted wrong." },
     { s: 'fuuka', f: 'sad', t: "...I counted wrong on purpose. Is that okay? You can say if it's not okay." },
-    { s: 'solar', t: "It's okay, Fuuka." },
+    { s: 'solar', f: 'happy', t: "It's okay, Fuuka." },
     { n: "Nobody touched the extra box. Junpei looked at it twice and didn't. It sat at the end of the tarp with petals landing on its lid, and it wasn't empty, and it wasn't anyone's, and that was what it was for." },
     { cg: 'epi-st-hanami' },
     { n: "Ken was throwing a ball for Koromaru down the grass, and Koromaru was bringing it back to Solar every time instead of Ken, which Ken had stopped taking personally around the fifth throw. Fuuka had petals in her hair and didn't know it. Akihiko had eaten four of Junpei's octopi to be polite and was quietly regretting each one." },
@@ -164,7 +164,7 @@
     { n: "He picked up his cup and drank the whole thing, orange juice, in one go, without being told to, and put it down on the tarp, and looked at the sea instead of at her." },
     { s: 'akihiko', f: 'happy', t: "I just wanted to hear it out loud. Once. Somewhere with people in it." },
     { n: "Mitsuru didn't say execution. Fuuka was looking at her lap. Solar felt the back of her throat go tight and hot, and she did what she always did with a feeling she didn't have anywhere to put, which was make it somebody else's problem." },
-    { s: 'solar', t: "My turn. Akihiko-senpai ate four of Junpei's octopi to be polite and he's been sorry about every single one." },
+    { s: 'solar', f: 'happy', t: "My turn. Akihiko-senpai ate four of Junpei's octopi to be polite and he's been sorry about every single one." },
     { s: 'akihiko', f: 'surprised', t: "...Five. It was five." },
     { s: 'mitsuru', f: 'neutral', t: "Nobody had heard that. Solar doesn't drink. Akihiko drinks for lying about the count." },
     { s: 'junpei', f: 'flustered', t: "FIVE? Dude, they're good! Why are you sorry!" },
@@ -186,7 +186,7 @@
         { place: 'Iwatodai Dorm · Rooftop', time: 'Evening' },
         { n: "His door was open and his room was empty and the light was on, and she knew where he was. He was on the roof by the garden in his coat, not doing anything, which was the rarest thing he ever did." },
         { s: 'akihiko', f: 'surprised', t: "Hey. ...I was going to come down." },
-        { s: 'solar', t: "You were going to stand up here for another hour and then come down." },
+        { s: 'solar', f: 'happy', t: "You were going to stand up here for another hour and then come down." },
         { s: 'akihiko', f: 'blushing', t: "...Maybe forty minutes." },
         { n: "She stood next to him at the railing and he moved half a step closer, not touching, close enough to feel the warmth come off his sleeve in the cold, and they watched the city light up a window at a time until it was too dark to count." }
       ] },
@@ -197,7 +197,7 @@
         { s: 'nurse', t: "Fifteen minutes. I mean it this time." },
         { ifYear: awake, then: [
           { s: 'shinjiro', f: 'neutral', t: "...Visiting hours are over." },
-          { s: 'solar', t: "I know." },
+          { s: 'solar', f: 'neutral', t: "I know." },
           { s: 'shinjiro', f: 'neutral', t: "...Sit down, then." },
           { n: "He held out the bad hand on the blanket, palm up, without looking at her, and waited. It shook a little. She put hers in it and it stopped." }
         ], else: [
@@ -229,7 +229,7 @@
     { ifEpiRoute: 'akihiko', then: [
       { n: "The light came on. Akihiko in the doorway in a T-shirt, hair flat on one side, squinting." },
       { s: 'akihiko', f: 'neutral', t: "Heard you on the stairs. ...You okay?" },
-      { s: 'solar', t: "Thirsty." },
+      { s: 'solar', f: 'neutral', t: "Thirsty." },
       { glitch: { strain: 1 } },
       { n: "He looked at the empty glass in the rack and at her hands on the sink and didn't say anything, and filled the glass again, and gave it to her, and stood there while she drank it, which was worse." }
     ] },
@@ -242,7 +242,7 @@
       ], else: [
         { n: "The light came on. Akihiko in the doorway, squinting." },
         { s: 'akihiko', f: 'neutral', t: "...You okay?" },
-        { s: 'solar', t: "Thirsty." },
+        { s: 'solar', f: 'neutral', t: "Thirsty." },
         { glitch: { strain: 1 } },
         { n: "He nodded like he believed her. He was a bad liar about believing people." }
       ] }
@@ -250,7 +250,7 @@
     { ifEpiRoute: 'sees', then: [
       { n: "Mitsuru was at the dining table in the dark in a dressing gown, with a cup of tea gone cold in front of her and her hands round it, and Solar hadn't seen her until she moved." },
       { s: 'mitsuru', f: 'neutral', t: "You couldn't sleep either." },
-      { s: 'solar', t: "Just thirsty." },
+      { s: 'solar', f: 'serious', t: "Just thirsty." },
       { glitch: { strain: 1 } },
       { s: 'mitsuru', f: 'sad', t: "...Of course. So am I." },
       { n: "Neither of them got up. They sat in the dark kitchen together and were both very thirsty until one." }
@@ -296,7 +296,7 @@
     { n: "Then *where is she* went back to *SOLAR SYSTEM,* like somebody else had reached over and changed it back, fast, before anyone could see. Like you'd pull a sleeve down over a bruise." },
     { s: 'fuuka', f: 'surprised', t: "...Solar? You've gone pale." },
     { n: "Fuuka was looking at her. Not at the phone. At her face, with the soft careful attention she'd once used to find people in the dark from a long way off." },
-    { s: 'solar', t: "Too much cream. I'm fine. What's next on your list?" },
+    { s: 'solar', f: 'serious', t: "Too much cream. I'm fine. What's next on your list?" },
     { n: "She put the phone back face down and smiled the bright one, the one that had worked on student councils and fraternity houses and her father, and Fuuka looked at it for one second too long, and then read the next thing off her list, which was *favorite season,* and Yukari said spring, obviously, and Solar said spring too, and meant it more than either of them knew." }
   ] },
 
@@ -356,7 +356,7 @@
       { s: 'akihiko', f: 'serious', t: "...That was a bell." },
       { n: "He said it slowly, like a man setting something heavy down because he couldn't carry it any further. He didn't say *pipes*. He didn't say *wind.* A week ago he would have. He looked at her across the kitchen, and she watched him run out of explanations in real time, and arrive at the place where there was only her face." }
     ] },
-    { s: 'solar', t: "...April Fool's?" },
+    { s: 'solar', f: 'surprised', t: "...April Fool's?" },
     { n: "Nobody laughed. Junpei put the sugar bowl down. It was full of salt, and nobody ever found out." }
   ] },
 
@@ -376,7 +376,7 @@
     { s: 'jungwon', f: 'serious', t: "Donghyuck. The steps." },
     { s: 'haechan', f: 'neutral', t: "*I see the steps.*" },
     { n: "That was all they said to each other. They didn't look at each other to say it. She was standing between them, close enough to touch either of them, and neither of them turned his head." },
-    { s: 'solar', t: "...Hey. I'm here. I'm right here." },
+    { s: 'solar', f: 'sad', t: "...Hey. I'm here. I'm right here." },
     { n: "Nothing. The tide breathed. Haechan's eyes went across the place where she was standing to the water, through her, the way you look through a window to the street. She waved a hand in front of Jungwon's face, and felt stupid, and felt worse than stupid, and he didn't blink." },
     { battle: { id: 'epi-stay-2', kind: 'scripted', script: 'epi-stay-2', title: 'Unseen', forced: true,
       desc: 'The harbor in Incheon at midnight. Haechan and Jungwon fight; neither of them can see her.',
@@ -411,14 +411,14 @@
     { n: "Everyone was looking at her. They'd been looking at her since the kitchen on Thursday. They'd been very polite about it." },
     { choose: [
       { t: "Tell them. Some of it.", flag: 'epi-st-told', then: [
-        { s: 'solar', t: "It's not the Dark Hour. It's them. The ones who went home. At midnight I'm... there. Their places. They can't see me." },
-        { s: 'solar', t: "The bell on Thursday was them. The phone at four was them. I think they're looking for me. I don't think they know they are." },
+        { s: 'solar', f: 'sad', t: "It's not the Dark Hour. It's them. The ones who went home. At midnight I'm... there. Their places. They can't see me." },
+        { s: 'solar', f: 'serious', t: "The bell on Thursday was them. The phone at four was them. I think they're looking for me. I don't think they know they are." },
         { n: "Nobody said anything for a long time. Then Mitsuru sat down, which she never did in that room, and folded her hands on the table." },
         { s: 'mitsuru', f: 'neutral', t: "Thank you. ...Then at midnight, from now on, you won't be alone in your room. That's not a request." },
         { s: 'koromaru', f: 'serious', t: "Arf." }
       ] },
       { t: "Keep it. \"It's probably nothing. Leftovers.\"", flag: 'epi-st-kept', then: [
-        { s: 'solar', t: "It's probably leftovers. The end of something. It'll stop." },
+        { s: 'solar', f: 'serious', t: "It's probably leftovers. The end of something. It'll stop." },
         { glitch: { strain: 1 } },
         { n: "Mitsuru looked at her the way she looked at a report she knew had been edited. Akihiko didn't take his gloves off. Fuuka looked at her hands." },
         { s: 'mitsuru', f: 'sad', t: "...Very well. If it doesn't stop, I'd like to be the first to know. Not the last." }
@@ -443,7 +443,7 @@
     { s: 'jihoon', f: 'surprised', t: "Nope. No. Didn't see that. The almighty Hoon saw absolutely nothing just now, and if anyone asks—" },
     { s: 'jungwon', f: 'surprised', t: "...Sol." },
     { n: "He said it quietly. Not a question. He was looking straight at her across the court, the dimpled boy, the president, with his deadpan gone somewhere she'd never seen it go." },
-    { s: 'solar', t: "Jungwon. Jungwon, I'm here, I'm— can you hear me? Jihoon. Park Jihoon, look at me—" },
+    { s: 'solar', f: 'surprised', t: "Jungwon. Jungwon, I'm here, I'm— can you hear me? Jihoon. Park Jihoon, look at me—" },
     { n: "Her mouth moved. She felt it move. Nothing came out into that gym, not a sound, like shouting through glass. Jungwon watched her lips. She watched him try to read them and fail and keep trying, the way he never stopped at a problem until it was done." },
     { s: 'jungwon', f: 'serious', t: "I can't hear you. ...Stay where I can see you. Please." },
     { s: 'jihoon', f: 'sad', t: "Don't look at her, Yang. That's how they get you. You look, and then she's gone again, and you've—" },
@@ -479,7 +479,7 @@
     { glitch: 'epi-st-g-home' },
     { choose: [
       { t: "I'm fine. Eat.", then: [
-        { s: 'solar', t: "I'm fine. Eat." },
+        { s: 'solar', f: 'serious', t: "I'm fine. Eat." },
         { glitch: { strain: 1 } },
         { n: "Her voice came out of somewhere a long way away. Nobody ate." }
       ] },
@@ -505,7 +505,7 @@
     { n: "It worked, mostly. People will believe almost anything if you buy them ramen. The girls in the corner kept looking. The wrist stayed held under the counter until they paid, and on the walk home, and up the stairs, and nobody asked whose idea that was." },
     { ifFlag: 'epi-st-told', then: [
       { s: 'yukari', f: 'sad', t: "...You said midnight. That wasn't midnight." },
-      { s: 'solar', t: "I know." }
+      { s: 'solar', f: 'sad', t: "I know." }
     ] }
   ] },
 
@@ -530,7 +530,7 @@
     { n: "In the one second, after the first hit, when the things had fallen back off the rails, Haechan turned his head." },
     { n: "He looked at her. Right at her. Not through. His eyes did the thing they always did, went still and filed it away, and then didn't, and she watched him not." },
     { s: 'haechan', f: 'neutral', t: "There you are." },
-    { s: 'solar', t: "...Hi." },
+    { s: 'solar', f: 'happy', t: "...Hi." },
     { n: "That was all she had. A year of it and that was all she had. He almost laughed, the flat one, the one that scraped." },
     { s: 'jungwon', f: 'neutral', t: "...You look well. You're eating. Good." },
     { n: "He said it to her and not to Haechan, and Haechan didn't look at him, and Jungwon didn't look back, ten steps, even here, even now, and it was so exactly them that she laughed out loud on the platform with her eyes stinging." },
@@ -557,7 +557,7 @@
     { ifEpiRoute: 'akihiko', then: [
       { n: "She'd gone running with him at five. Along the river in the gray, the cherry petals coming down in the wet, his stopwatch on a string round his neck. At the bridge he'd stopped it, looked at it, and showed her." },
       { s: 'akihiko', f: 'happy', t: "Best time. You're getting faster." },
-      { s: 'solar', t: "Or you're getting slower." },
+      { s: 'solar', f: 'happy', t: "Or you're getting slower." },
       { s: 'akihiko', f: 'blushing', t: "...I'm staying at your pace. Don't tell anyone." }
     ] },
     { ifEpiRoute: 'shinjiro', then: [

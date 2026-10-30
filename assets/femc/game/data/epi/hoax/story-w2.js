@@ -80,7 +80,7 @@
           { from: 'jungwon', t: "text me when you leave. and if anything happens. i'm not trying to be controlling. i just can't be there." }
         ], contact: 'Won' },
         { s: 'cherry', f: 'surprised', t: "'I'm not trying to be controlling.' Oh my God. He put a period after controlling. Is he being held hostage? Blink twice, Yang." },
-        { s: 'solar', t: "He's kept home, Cher. He's basically a princess in a tower." },
+        { s: 'solar', f: 'happy', t: "He's kept home, Cher. He's basically a princess in a tower." },
         { s: 'cherry', f: 'serious', t: "A princess in a tower who made me pinky swear in the Yeobo's bathroom, so you know what that means. You're not going within ten feet of the kitchen. I will physically sit on you." },
         { n: "The kitchen was where Jihoon was. Of course it was. He was up on the counter in a black jacket and the beanie Cherry had once chosen for him as a joke and he'd kept as a personality, holding court over a ring of people who laughed a half second before he finished anything, and beside him, leaning on the fridge, was the guy from sophomore year." },
         { n: "She hadn't seen him in two years. She recognized him from the back of his head, which was its own kind of answer." },
@@ -88,7 +88,7 @@
         { s: 'jihoon', f: 'happy', t: "Sol. The Prodigal Monk Returns. Did They Shave Your Head? Turn Around, Let Me See." },
         { s: 'cherry', f: 'serious', t: "Ten feet, Park." },
         { s: 'jihoon', f: 'neutral', t: "Cherry, Light Of My Life, Thorn In My Side, I Am Simply Greeting My Oldest Friend. Where's Your Little President, Sol? Does He Have A Bedtime?" },
-        { s: 'solar', t: "He has a curfew." },
+        { s: 'solar', f: 'happy', t: "He has a curfew." },
         { s: 'jihoon', f: 'happy', t: "Hilarious. Incredible. Write That On His Tombstone." },
         { n: "Then he tapped the inside of his jacket, twice, lightly, the way you'd check for your keys, and a corner of a small plastic bag showed above the pocket's edge and went back down. The guy from sophomore year was watching them over the rim of his cup." },
         { s: 'jihoon', f: 'neutral', t: "He Says It's The Good Stuff. Like Old Times. I'm Only Telling You Because I'm Generous." },
@@ -96,7 +96,7 @@
         { choose: [
           { t: "No, Jihoon.", flag: 'epi-h-party-refused', stat: { courage: 1 }, then: [
             { s: 'jihoon', f: 'neutral', t: "Suit Yourself." },
-            { s: 'solar', t: "You always say that." },
+            { s: 'solar', f: 'happy', t: "You always say that." },
             { s: 'jihoon', f: 'happy', t: "Because It Always Fits." },
             { n: "He went back to the counter. She watched him go, the back of the black jacket, the beanie, the shoulders that had carried her home on a piggyback in the seventh grade when she twisted her ankle at the river, and she didn't follow him, and that was the whole fight. It didn't feel like winning anything." }
           ] },
@@ -104,13 +104,13 @@
             { n: "He looked at her open palm like she'd done a magic trick. Then, because he was Park Jihoon and he could never stand not knowing how a trick ended, he put the bag in it." },
             { n: "She closed her fist, turned around and walked straight up the stairs past the red cups into the bathroom at the end of the hall, and flushed it, and stood there with her hand on the lever until the tank stopped running." },
             { s: 'jihoon', f: 'surprised', t: "Did You Just— Sol. That Was Not Yours To Flush." },
-            { s: 'solar', t: "Now it's nobody's." },
+            { s: 'solar', f: 'happy', t: "Now it's nobody's." },
             { n: "He was leaning in the bathroom doorway with his mouth open. Then he laughed, one ugly bark of it, and pressed the heel of his hand against his eye like it hurt." },
             { s: 'jihoon', f: 'neutral', t: "You're A Menace. You Know That? A Grave Sin. I'm Telling Everyone." },
             { n: "He didn't tell anyone. He went back downstairs and talked to the guy by the fridge with his back to her for the rest of the night, and she knew what that meant too." }
           ] },
           { t: "(Find Cherry's other hand. Leave.)", flag: 'epi-h-party-left', stat: { kindness: 1 }, then: [
-            { s: 'solar', t: "Cher. Let's go." },
+            { s: 'solar', f: 'serious', t: "Cher. Let's go." },
             { s: 'cherry', f: 'happy', t: "Oh, thank God, I was about to commit a crime in front of a fruit plate." },
             { n: "They went. Jihoon called after them over the music, \"Bye, Bitch! Love You! Tell The Princess I Said Hi!\", and half the room laughed, and she didn't turn around, because if she turned around she'd see his face, and his face was the whole problem." }
           ] }
@@ -135,7 +135,7 @@
           { s: 'jihoon', f: 'happy', t: "Your Chariot, Ungrateful Rug. Get In. The Heat Works Now. I Paid A Man." },
           { n: "Inside, he was in his element and she wasn't, and he knew it and liked it. He did a lap of the kitchen like a mayor, Hyunsuk trailing after him with his hands in his pockets and the face of someone who'd already decided to be disappointed and was just waiting for the paperwork. Then the guy from sophomore year by the fridge lifted his chin at Jihoon, and Jihoon lifted his back." },
           { s: 'hyunsuk', f: 'serious', t: "You came with him? Man. Sol." },
-          { s: 'solar', t: "I know." },
+          { s: 'solar', f: 'sad', t: "I know." },
           { s: 'hyunsuk', f: 'sad', t: "Do you, though." },
           { n: "She didn't answer that. She sat on the third stair with her coat still on and watched Jihoon talk to the guy by the fridge, the little hand thing they used to do, the laugh that came too early. When he came back across the room his hand was already in his jacket." },
           { s: 'jihoon', f: 'neutral', t: "Sol. You Want—" },
@@ -148,7 +148,7 @@
               { s: 'jihoon', f: 'neutral', t: "Flush It Before I Change My Mind. Quickly. I'm Very Changeable. It's Part Of My Charm." },
               { n: "She went up the stairs two at a time and flushed it in the bathroom at the end of the hall, and when she turned around he was in the doorway with his arms crossed, watching the water like it had personally insulted him." },
               { s: 'jihoon', f: 'sad', t: "That Was A Grave Sin. Against Me, Specifically. I Want That On Record." },
-              { s: 'solar', t: "Noted." }
+              { s: 'solar', f: 'sad', t: "Noted." }
             ] },
             { t: "Take me home, Jihoon.", flag: 'epi-h-party-jh-walked', stat: { kindness: 1 }, then: [
               { n: "He turned around and left the guy from sophomore year mid-sentence, a hand still raised in the middle of a story, and walked her out through the shoe landslide with his palm flat on the back of her coat, steering, the way he'd steered her through every crowd since they were four and she was the smallest person at every party." },
@@ -163,7 +163,7 @@
           { s: 'jihoon', f: 'neutral', t: "You Said It With Your Face. Your Face Is Very Loud, Suk. Go Inside Before You Die Of Exposure, I'm Not Carrying You." },
           { n: "In the car the heater roared and the windshield fogged and he drove with one hand at the top of the wheel, talking the whole way about nothing, the party, the fruit plate, the swim-team guy's tragic haircut, and he didn't look at her once." },
           { s: 'jihoon', f: 'neutral', t: "Do Not Make This A Thing. If You Make This A Thing I Will Do Twice As Much Tomorrow To Make A Point. I'm Petty Like That." },
-          { s: 'solar', t: "I'm not making it a thing." },
+          { s: 'solar', f: 'serious', t: "I'm not making it a thing." },
           { s: 'jihoon', f: 'sad', t: "Good. Because You'd Only Been Back A Week, And I Just—" },
           { n: "The wipers went across once. Twice." },
           { s: 'jihoon', f: 'happy', t: "—Wanted To See If You'd Gotten Uglier. You Have. Congratulations." },
@@ -177,7 +177,7 @@
           { s: 'jay', f: 'neutral', t: "Bro, that's exactly what people who did rehab would do." },
           { s: 'jake', f: 'surprised', t: "...Okay, nobody say that inside." },
           { n: "Jungwon was not there, because Jungwon had a curfew and a mother. Jungwon was on speakerphone in Heeseung's breast pocket, a small square glow over his heart, contributing." },
-          { s: 'jungwon', f: 'neutral', t: "Heeseung. Turn me around. I'm facing your shirt." },
+          { s: 'jungwon', f: 'happy', t: "Heeseung. Turn me around. I'm facing your shirt." },
           { s: 'heeseung', f: 'serious', t: "You're facing the objective." },
           { n: "So they went in. Sunoo carried the crate of water like a ring bearer and gave a bottle to everyone who looked at him, which was everyone. Jay knew every single person in the house and said *bro* to all of them in a slightly different key. Niki vanished into the crowd in under eight seconds and was later seen on a bannister. Sunghoon, who hadn't looked at another girl since Cherry, spread the word exclusively to boys, using exactly the same smile, to deeply confusing effect." },
           { s: 'sunoo', f: 'happy', t: "Water? Happy holidays! It's free! It's just water! Stay hydrated!" },
@@ -196,14 +196,14 @@
           { choose: [
             { t: "(Get between them.)", stat: { courage: 1 }, then: [
               { n: "She was the smallest person in the kitchen by a head, and she planted herself in the exact middle of it anyway, one hand flat on Jay's chest and the other on Jihoon's." },
-              { s: 'solar', t: "Park Jihoon." },
+              { s: 'solar', f: 'serious', t: "Park Jihoon." },
               { n: "The full name did what it always did. He stopped. He looked down at her hand on his jacket, right over the pocket, and something went across his face too fast to read, and then he put both his hands up like a man in a film." },
               { s: 'jihoon', f: 'neutral', t: "Fine. Fine. Go Be Hydrated, Temple Girl." }
             ] },
             { t: "(Take the phone out of Heeseung's pocket.)", stat: { kindness: 1 }, then: [
               { n: "She plucked the phone out of Heeseung's pocket like a pen and walked straight out of the kitchen with it held to her ear." },
-              { s: 'jungwon', f: 'neutral', t: "Sol." },
-              { s: 'solar', t: "Hi." },
+              { s: 'jungwon', f: 'happy', t: "Sol." },
+              { s: 'solar', f: 'happy', t: "Hi." },
               { s: 'jungwon', f: 'neutral', t: "Walk outside. Tell me what the snow looks like." },
               { n: "She did. By the time she'd described the snow, badly, twice, the shouting behind her had stopped, which she suspected had been the point." }
             ] }
@@ -217,7 +217,7 @@
           { s: 'heeseung', f: 'neutral', t: "Objective... partially achieved." },
           { s: 'sunghoon', f: 'neutral', t: "Sunghoon was magnificent in there, for the record. Nobody said it, so Sunghoon is saying it." },
           { s: 'jungwon', f: 'neutral', t: "Is everyone alright. Sol. Are you alright." },
-          { s: 'solar', t: "I'm alright, Won." },
+          { s: 'solar', f: 'sad', t: "I'm alright, Won." },
           { bond: { council: 1 } },
           { n: "Through the front window she could see the kitchen, Jihoon back up on the counter, laughing at something, the guy by the fridge, the bag still in the jacket. Nobody had won anything. They'd just been loud about it." }
         ] }
@@ -230,8 +230,8 @@
       { ifEpiRoute: 'jungwon', then: [
         { n: "New Year's Eve, and her boyfriend was on her pillow. On FaceTime, propped against her stuffed rabbit, lit from one side by his desk lamp, a textbook open under his chin, because his parents had allowed him New Year's Eve in the sense that they hadn't technically forbidden it." },
         { s: 'jungwon', f: 'neutral', t: "Are you watching it." },
-        { s: 'solar', t: "Obviously I'm watching it, the whole school's watching it. Are YOU watching it?" },
-        { s: 'jungwon', f: 'neutral', t: "I have it open in another tab. For research." }
+        { s: 'solar', f: 'happy', t: "Obviously I'm watching it, the whole school's watching it. Are YOU watching it?" },
+        { s: 'jungwon', f: 'happy', t: "I have it open in another tab. For research." }
       ], else: [
         { ifEpiRoute: 'jihoon', then: [
           { place: "Hanlim · Jihoon's House", time: 'Evening', soft: true },
@@ -283,21 +283,21 @@
 
       { ifEpiRoute: 'jungwon', then: [
         { n: "On her pillow, Jungwon had stopped pretending to study. He was looking at her through the phone, not at the stream." },
-        { s: 'jungwon', f: 'neutral', t: "You looked nice in it. The uniform." },
-        { s: 'solar', t: "Won. I'm on the forum in a costume." },
+        { s: 'jungwon', f: 'happy', t: "You looked nice in it. The uniform." },
+        { s: 'solar', f: 'flustered', t: "Won. I'm on the forum in a costume." },
         { s: 'jungwon', f: 'serious', t: "What did you see. Just now. Your face did something." },
-        { s: 'solar', t: "Nothing. Compression." },
+        { s: 'solar', f: 'serious', t: "Nothing. Compression." },
         { n: "He didn't believe her. She watched him not believe her, his eyes on hers through two screens and four streets, and then decide not to say so, which was somehow worse and also the kindest thing anyone had done for her all week." },
         { s: 'jungwon', f: 'neutral', t: "Okay." },
         { n: "A knock somewhere on his side, two knuckles on a door. His eyes went to it and came back." },
         { s: 'jungwon', f: 'sad', t: "I have to go. Happy new year, Sol. In case I don't—" },
-        { s: 'solar', t: "You'll call at midnight." },
-        { s: 'jungwon', f: 'neutral', t: "...I'll try." },
+        { s: 'solar', f: 'sad', t: "You'll call at midnight." },
+        { s: 'jungwon', f: 'sad', t: "...I'll try." },
         { bond: { jungwon: 1 } }
       ], else: [
         { ifEpiRoute: 'jihoon', then: [
           { n: "Jihoon had been typing on his phone with both thumbs through the whole tin part, grinning at the screen like it had told him a secret, and when she looked over he angled it away from her without even looking up, smooth as anything." },
-          { s: 'solar', t: "What are you doing." },
+          { s: 'solar', f: 'serious', t: "What are you doing." },
           { s: 'jihoon', f: 'happy', t: "Texting My Many Admirers. Mind Your Business." },
           { s: 'junkyu', f: 'happy', t: "Sol, you looked so pretty in the clip!!! Even blurry!!!" },
           { s: 'asahi', f: 'neutral', t: "The temple. Sure. Temples famously have armbands." },
@@ -337,7 +337,7 @@
         { n: "He was on her front step in his coat with no hat, snow in his hair, his mom's car keys in his fist like he'd been squeezing them the whole way. Her dad was asleep in the armchair in front of the countdown on TV and her mom was asleep upstairs and Nana was asleep across the bottom stair like a draft excluder, and Jungwon stepped over him with enormous care, and Nana opened one eye, saw who it was, and closed it again, which was the highest honor Nana gave anyone." },
         { n: "They went up to her room because the TV was too loud and her father snored like a man being chased. 11:59. Fireworks starting somewhere toward the river, small and far away, like someone popping bubble wrap in another apartment." },
         { s: 'jungwon', f: 'flustered', t: "I've never snuck out before. Of anything. I think my heart is in my teeth." },
-        { s: 'solar', t: "Won~. My little criminal." },
+        { s: 'solar', f: 'happy', t: "Won~. My little criminal." },
         { n: "At midnight he kissed her, carefully, like he'd planned it, which he probably had, and then not carefully at all, and then she reached past him and turned on her desk lamp." }
       ], else: [
         { n: "Home at eleven-thirty. Her dad asleep in the armchair in front of the countdown on TV with his reading glasses pushed up into his hair, her mom upstairs already, Nana asleep across the bottom stair. She stepped over him. He grumbled at her in his sleep." },
@@ -360,7 +360,7 @@
         { s: 'jungwon', f: 'serious', t: "Heal before the stairs." },
         { n: "He said it the way you'd say a word in a language you'd studied for a year and never expected to hear again, at home, in a girl's bedroom, on New Year's." },
         { s: 'jungwon', f: 'serious', t: "That's the floor before the guardian. You always said it. Every time. Even when nobody was hurt." },
-        { s: 'solar', t: "I didn't write these, Won." },
+        { s: 'solar', f: 'serious', t: "I didn't write these, Won." },
         { s: 'jungwon', f: 'neutral', t: "I know you didn't." },
         { n: "He knew. He knew what all of them were, Koromaru and the red book and the curfew, he'd been there for some of them, she'd forgotten that for one stupid second, that he'd been there. Then his eyes got to the last one, the H, the roof, *he will be*, and stopped on it, and stayed." },
         { glitch: { near: true } },
@@ -382,17 +382,17 @@
         { n: "She took a picture of the mirror. Her hands were steady. She noticed that, distantly, that they were steady, that a year of the Dark Hour had done that to her hands. She sent it to him with no caption." },
         { n: "He called in eleven seconds." },
         { s: 'jungwon', f: 'serious', t: "Is that your handwriting." },
-        { s: 'solar', t: "Yes." },
+        { s: 'solar', f: 'serious', t: "Yes." },
         { s: 'jungwon', f: 'serious', t: "Did you write them." },
-        { s: 'solar', t: "No." },
+        { s: 'solar', f: 'serious', t: "No." },
         { n: "A pause on the line, his breath, a door somewhere on his side, his voice dropping to the low flat thing he used in his room at night so his parents wouldn't hear." },
         { s: 'jungwon', f: 'serious', t: "Heal before the stairs." },
-        { s: 'solar', t: "...Yeah." },
-        { s: 'jungwon', f: 'neutral', t: "Sol. I know what that is." },
-        { s: 'solar', t: "I know you do." },
-        { s: 'jungwon', f: 'neutral', t: "Do you want me to come over." },
-        { s: 'solar', t: "Your mom would kill you." },
-        { s: 'jungwon', f: 'neutral', t: "Yes." },
+        { s: 'solar', f: 'sad', t: "...Yeah." },
+        { s: 'jungwon', f: 'serious', t: "Sol. I know what that is." },
+        { s: 'solar', f: 'sad', t: "I know you do." },
+        { s: 'jungwon', f: 'serious', t: "Do you want me to come over." },
+        { s: 'solar', f: 'happy', t: "Your mom would kill you." },
+        { s: 'jungwon', f: 'happy', t: "Yes." },
         { n: "He said it like that settled it, like it was only a fact on a list, and she laughed for the first time since the lamp went on." },
         { choose: [
           { t: "Stay on the phone. That's enough.", stat: { kindness: 1 }, then: [
@@ -401,10 +401,10 @@
           ] },
           { t: "(Pull them off the mirror while he listens.)", flag: 'epi-h-notes-kept', stat: { courage: 1 }, then: [
             { n: "She peeled them off one at a time with the phone pinched between her ear and her shoulder, and he listened to the little sticky sound of each one like it was a heartbeat on a monitor, and didn't say anything until she'd stacked them all and put them in her drawer. Not the trash. She noticed that about herself." },
-            { s: 'jungwon', f: 'neutral', t: "Good. Keep them. You'll want them." }
+            { s: 'jungwon', f: 'happy', t: "Good. Keep them. You'll want them." }
           ] }
         ] },
-        { s: 'jungwon', f: 'neutral', t: "Happy new year, Sol." },
+        { s: 'jungwon', f: 'happy', t: "Happy new year, Sol." },
         { bond: { jungwon: 1 } }
       ] },
       { flag: 'epi-h-notes' },
@@ -418,7 +418,7 @@
       { n: "She'd been made to put the hanbok on before breakfast, because in this house sebae came before soup and always had, and you didn't bow to your parents in pajama pants, her mother said, not in the first hour of a year. Navy, with gold printed along the trim, over a rose-pink skirt, a small gold pin in her hair. It still fit. It had been pressed, too; the dry cleaner's tag was still pinned inside the collar, and the date on it was the fourteenth, three days after she'd gone, and she found it while she was doing up the ribbon and didn't say anything about it to anyone." },
       { n: "She bowed. Knees, hands, forehead nearly to the floor, the whole slow thing, the way she'd done it on this rug every first of January since she was small enough to fall over halfway, and came back up, and her father cleared his throat like a man about to give a speech he hadn't written." },
       { s: 'dad', t: "Eat. You're a year older." },
-      { s: 'solar', t: "I refuse. I'm staying eighteen. I'll have half a bowl." },
+      { s: 'solar', f: 'happy', t: "I refuse. I'm staying eighteen. I'll have half a bowl." },
       { s: 'mom', t: "Half a bowl, half a year. Sit." },
       { n: "There was a white envelope beside her bowl, her name on it in her mother's handwriting, the same as every year. She tucked it into her sleeve without opening it, the same as every year." },
       { n: "She sat. The rice cakes were thin coins in the broth, the way she liked them. Her mother sat across from her and didn't eat, just held her own bowl in both hands to warm them and watched her, and Solar knew that look. It was the look that came before a question her mother had been holding since the twentieth." },
@@ -427,14 +427,14 @@
       { n: "It was softer than the last time. That was the worst part. The last time had been *A retreat? In exam week?* at full volume in a doorway, and this was just her mom, at the kitchen table, with a bowl in her hands, wanting it to have been nice." },
       { choose: [
         { t: "It was so nice. We woke up at four and swept things.", stat: { charm: 1 }, then: [
-          { s: 'solar', t: "We woke up at four every morning and swept things. Leaves. Steps. I swept a step for an hour once. There was a monk who never said anything, he just pointed at stuff. It was very peaceful. Bad food, though." },
+          { s: 'solar', f: 'happy', t: "We woke up at four every morning and swept things. Leaves. Steps. I swept a step for an hour once. There was a monk who never said anything, he just pointed at stuff. It was very peaceful. Bad food, though." },
           { glitch: { strain: 1 } },
           { s: 'mom', t: "You swept? You? You don't sweep here." },
-          { s: 'solar', t: "It was a spiritual broom, Mom." },
+          { s: 'solar', f: 'happy', t: "It was a spiritual broom, Mom." },
           { n: "Her mom laughed despite herself, and it was easy, and it was a lie, and somewhere under her ribs something small and patient pressed its thumb against the place where the lie had gone in." }
         ] },
         { t: "It was... I missed you guys.", stat: { kindness: 1 }, then: [
-          { s: 'solar', t: "It was okay. I missed you guys. I missed this. I missed the soup." },
+          { s: 'solar', f: 'sad', t: "It was okay. I missed you guys. I missed this. I missed the soup." },
           { n: "It wasn't the temple's answer. It was the true one, a year's worth of true, and her mom heard something in it she couldn't have named and reached across the table and pushed Solar's bangs out of her eyes the way she used to when Solar was small." },
           { s: 'mom', t: "Next time I'll pack you soup." }
         ] }
@@ -443,7 +443,7 @@
       { s: 'mom', t: "Five." },
       { s: 'dad', t: "Five times. And the office said *a council retreat* five times, like a recording." },
       { s: 'dad', t: "Next time you go somewhere with no phones, you tell us yourself. Before. Not the office." },
-      { s: 'solar', t: "I will. I promise." },
+      { s: 'solar', f: 'serious', t: "I will. I promise." },
       { n: "Her dad nodded once and went back to his tablet, and that was all he was going to say, and it was a lot, for him. Nana sighed under the table like the miracle had been postponed again." },
       { n: "Her phone buzzed against the table. Her mother looked at it, and then pointedly didn't." },
       { ifEpiRoute: 'jungwon', then: [
@@ -502,7 +502,7 @@
       { ifEpiRoute: 'jihoon', then: [
         { n: "At the door, shoes half on, he looked back at her down the hall." },
         { s: 'jihoon', f: 'sad', t: "Happy new year, Sol. I'm still not making the other night a thing." },
-        { s: 'solar', t: "I know you're not." },
+        { s: 'solar', f: 'sad', t: "I know you're not." },
         { s: 'jihoon', f: 'happy', t: "Good. New year. New man. Same face, unfortunately for everyone." }
       ], else: [
         { s: 'jihoon', f: 'happy', t: "Don't smile in the council photo. It's not your best look. Happy new year, Sol." }
@@ -525,7 +525,7 @@
       { s: 'sunghoon', f: 'serious', t: "...Soon." },
       { s: 'cherry', f: 'serious', t: "I swear to God." },
       { n: "Outside, a dark grey sedan pulled up to the curb and didn't turn its engine off. The passenger door opened and Jungwon got out in pale blue under a long grey durumagi, buttoned to the throat, and turned and bowed to the car, and the car didn't do anything back." },
-      { s: 'jungwon', f: 'neutral', t: "Happy new year. My mother drove me. She's in the car. She's giving me an hour. She timed it from the driveway." },
+      { s: 'jungwon', f: 'happy', t: "Happy new year. My mother drove me. She's in the car. She's giving me an hour. She timed it from the driveway." },
       { ifEpiRoute: 'jungwon', then: [
         { n: "He looked at Solar for one second longer than he looked at anyone else, and his ears went pink, and she knew exactly which twenty minutes of last night he was thinking about." },
         { s: 'jungwon', f: 'flustered', t: "She doesn't know about last night. I'd like this to be the year she doesn't find out." }
@@ -563,7 +563,7 @@
       { n: "Then Solar. Halmeoni didn't hold the envelope out. She took both of Solar's hands in her two dry warm ones, envelope and all, and looked up at her from the chair." },
       { s: 'halmeoni', t: "And you. This year, stay where people can find you. You hear me? Somewhere a person can find you." },
       { n: "Solar opened her mouth to say yes, because you said yes to a blessing, that was the whole point of one, and nothing came. Halmeoni waited. The radiator ticked against the glass. Down the row, without turning his head, Jungwon had gone completely still." },
-      { s: 'solar', t: "...I'll try, Halmeoni." },
+      { s: 'solar', f: 'sad', t: "...I'll try, Halmeoni." },
       { s: 'halmeoni', t: "Hm. Two of you. Fine. Trying is allowed." },
       { music: 'epi-h-home' },
       { n: "Heeseung set up the tripod in the middle of the floor and shouted directions at it as if it could hear him. The council's New Year photo went up on the school's page every first of January, eight of them in a row, and every year it was a fight, and this year Heeseung had made a laminated diagram of where everybody was supposed to stand, and nobody stood there." },
@@ -577,8 +577,8 @@
       { s: 'jake', f: 'happy', t: "I said 'hanbok-ing good.' It's a pun. It's a New Year pun. Somebody laugh." },
       { s: 'jay', f: 'neutral', t: "No." },
       { n: "A car horn outside. Once, short, exactly an hour after the car had pulled up. Jungwon was already standing. He bowed to Halmeoni, and to the room, and on his way past Solar he stopped, and didn't touch her, because the car could see the window." },
-      { s: 'jungwon', f: 'neutral', t: "Happy new year, Sol. Eat something. That one's Halmeoni's orders, not mine." },
-      { s: 'solar', t: "Won." },
+      { s: 'jungwon', f: 'happy', t: "Happy new year, Sol. Eat something. That one's Halmeoni's orders, not mine." },
+      { s: 'solar', f: 'sad', t: "Won." },
       { s: 'jungwon', f: 'happy', t: "...I'll try too." },
       { n: "Then he was out in the cold, getting into the grey car, and the car pulled away from the curb the second his door shut. Halmeoni watched it go through the glass with her lips pressed together. Then she got up, and went into the kitchen, and came back with a tray of rice cakes nobody had asked for, and put it down on the floor in the middle of the eight of them that were left, and said *eat* to the whole room, the way you'd say it to a family." },
       { n: "On Niki's phone the photo already had two hundred likes. Eight people in a row in every colour of hanbok there was, Heeseung's laminated diagram visible in the corner of the frame, Sunoo's hat slightly crooked, Sunghoon looking off to the left at something out of shot that was very obviously Cherry. And at the end of the row, past Niki, a bit of plain cream wall with nothing on it at all. It was a good photo. She saved it anyway." }
@@ -693,25 +693,25 @@
       { n: "The town library's second floor in January was radiators clanking under the windows, an old man asleep over a newspaper at the end table with his reading glasses in his hand, the smell of carpet and dust and somebody's orange peel, and Jungwon at the corner table by the window with chapter six open and two pencils already sharpened and lined up beside it like scalpels." },
       { n: "His parents had approved it as a study group. She was the group. She'd decided not to bring that up." },
       { s: 'jungwon', f: 'happy', t: "You came." },
-      { s: 'solar', t: "You color-coded me a schedule, Won. I was scared not to." },
+      { s: 'solar', f: 'happy', t: "You color-coded me a schedule, Won. I was scared not to." },
       { n: "He pulled her chair out for her without getting up, just a hand reaching over and dragging it back across the carpet, and she sat in it, and he slid the book between them and tapped problem one." },
       { n: "He was good at this. He was good at it in a way that went past math, patient in a way that didn't look like patience, just a boy who'd decided she was going to understand chain rule if it took all night, writing each step under the last in his tiny neat print and then turning the pencil around to her and waiting. And when he was concentrating, when she got something almost right and he was looking for exactly where it went wrong, his dimples came out, both of them, deep enough to lose a pencil in, and he had no idea." },
       { n: "She got problem four right on her own. He looked up. The dimples didn't go anywhere." },
       { s: 'jungwon', f: 'happy', t: "That's correct." },
-      { s: 'solar', t: "Say it again." },
+      { s: 'solar', f: 'happy', t: "Say it again." },
       { s: 'jungwon', f: 'flustered', t: "...That's correct, Sol." },
       { n: "Then he rubbed his temple with two fingers, which he did when he thought she wasn't looking, and she was always looking." },
-      { s: 'solar', t: "When did you last eat." },
+      { s: 'solar', f: 'serious', t: "When did you last eat." },
       { s: 'jungwon', f: 'neutral', t: "That's not on the schedule." },
-      { s: 'solar', t: "Won." },
-      { s: 'jungwon', f: 'neutral', t: "Lunch. Probably. There was a lunch-shaped event." },
+      { s: 'solar', f: 'serious', t: "Won." },
+      { s: 'jungwon', f: 'happy', t: "Lunch. Probably. There was a lunch-shaped event." },
       { n: "She'd come prepared. She reached into her coat pocket, past the cold unopened can she always kept there, and came out with a triangle kimbap from the convenience store, tuna mayo, slightly squashed." },
       { s: 'jungwon', f: 'surprised', t: "There's no food in the library. There's a sign." },
       { choose: [
         { t: "Eat it or I'll scream. I'll scream so loud that man wakes up.", stat: { charm: 1 }, then: [
           { n: "He looked at the old man asleep over the newspaper. He looked at her. He knew she would. He took the kimbap and peeled it, sides first, the right way, the way most people get wrong, and ate it hunched behind the textbook like a fugitive." },
           { s: 'jungwon', f: 'flustered', t: "This is your fault if we get banned." },
-          { s: 'solar', t: "We'll go to a different library. I'll follow you anywhere. Chew." }
+          { s: 'solar', f: 'happy', t: "We'll go to a different library. I'll follow you anywhere. Chew." }
         ] },
         { t: "(Unwrap it for him and hold it out.)", stat: { kindness: 1 }, then: [
           { n: "She peeled it for him, sides first, without the seaweed tearing, and held it out across chapter six, and didn't say anything at all." },
@@ -723,12 +723,12 @@
       { glitch: { near: true } },
       { n: "His thumb went along the edge of it, not touching it, the way you'd trace a word on a page." },
       { s: 'jungwon', f: 'serious', t: "You were holding something." },
-      { s: 'solar', t: "...Yeah." },
+      { s: 'solar', f: 'sad', t: "...Yeah." },
       { n: "He didn't ask what. He didn't ask where. He opened his pencil case, because of course Yang Jungwon carried bandages in his pencil case, and took one out, and put it across her palm, smoothing the edges down with his thumb one at a time." },
       { s: 'jungwon', f: 'neutral', t: "Problem five." },
       { n: "His phone lit up on the table. *Mom: 9:00.* Nothing else. Just the time, like a sentence." },
       { s: 'jungwon', f: 'neutral', t: "I have forty minutes. Chapter six has forty minutes of problems left." },
-      { s: 'solar', t: "Won." },
+      { s: 'solar', f: 'happy', t: "Won." },
       { s: 'jungwon', f: 'happy', t: "Thirty-nine." },
       { stat: { knowledge: 1 } },
       { bond: { jungwon: 1 } },
@@ -738,12 +738,12 @@
     { id: 'epi-h-study-jh', date: '1/3', slot: 'evening', consumes: true, flag: 'epi-route-jihoon', title: 'wrong drawer', place: "Hanlim · Jihoon's House", time: 'Evening', scene: [
       { music: 'epi-h-jihoon' },
       { n: "Jihoon's idea of a study session turned out to be four bags of chips, two family-size bottles of soda, the TV on a racing game paused mid-crash, and her calculus textbook sitting on the coffee table under his can, being used, very specifically, as a coaster." },
-      { s: 'solar', t: "That's my textbook." },
+      { s: 'solar', f: 'serious', t: "That's my textbook." },
       { s: 'jihoon', f: 'happy', t: "And It Has Never Been More Useful. Look At It. Serving A Purpose. Unlike You." },
-      { s: 'solar', t: "Jihoon, I have make-ups on Monday. I'm actually going to fail. Like, for real." },
+      { s: 'solar', f: 'sad', t: "Jihoon, I have make-ups on Monday. I'm actually going to fail. Like, for real." },
       { s: 'jihoon', f: 'neutral', t: "And Whose Fault Is That? Who Went To A Temple In Exam Week? Not Me. I Was Home. I'm Always Home." },
       { n: "He said it every time now, *I was home*, like a password, like if he said it enough times the year he'd spent on the other side of a door in a dorm with a dog and a redhead with a rapier would fold itself up and fit back in the drawer of things that hadn't happened. She'd stopped arguing. Arguing just made him say it louder." },
-      { s: 'solar', t: "You were not home. You were in the gym. You're in Eunchae's video, you idiot. You're the tall blur." },
+      { s: 'solar', f: 'serious', t: "You were not home. You were in the gym. You're in Eunchae's video, you idiot. You're the tall blur." },
       { s: 'jihoon', f: 'happy', t: "Many Tall Blurs In This World, Sol. Pass Me The Shrimp Ones." },
       { n: "She went looking for a pen instead, because one of them should at least look like they were studying, and opened the little drawer in the coffee table where he kept pens and takeout menus and dead batteries." },
       { n: "There was a pen. There was also a small plastic bag tucked against the side of the drawer, folded over twice, and a lighter, and a receipt from a pharmacy, and she looked at it for exactly as long as it took him to put his foot against the drawer and push it shut." },
@@ -752,7 +752,7 @@
       { choose: [
         { t: "Jihoon. The drawer.", stat: { courage: 1 }, then: [
           { s: 'jihoon', f: 'neutral', t: "Is This An Intervention? Should I Call Hyunsuk? He Loves A Circle. He'll Bring A Talking Stick." },
-          { s: 'solar', t: "I'm serious." },
+          { s: 'solar', f: 'serious', t: "I'm serious." },
           { s: 'jihoon', f: 'serious', t: "So Am I. Don't Look At Me Like That, Sol. It's Unflattering. For Both Of Us." },
           { n: "He didn't open the drawer. He didn't promise anything either. But he moved his foot, after a minute, off the front of it, like it cost him something to leave it there and something more to take it away." }
         ] },
@@ -768,7 +768,7 @@
       { n: "His voice was so low she almost didn't catch it. It wasn't any voice she'd heard him use since sophomore year." },
       { n: "She opened her eyes. He was looking at her. Then he wasn't." },
       { s: 'jihoon', f: 'happy', t: "You Drool. Did You Know That? It's Disgusting. I'm Telling Cherry. I'm Telling The Whole Chat. I'm Putting It On The Forum." },
-      { s: 'solar', t: "Jihoon." },
+      { s: 'solar', f: 'sad', t: "Jihoon." },
       { s: 'jihoon', f: 'neutral', t: "What. I Didn't Say Anything. You Were Dreaming. Go Back To Sleep, I'll Drive You Home In Twenty." },
       { bond: { jihoon: 1 } },
       { n: "She didn't go back to sleep. She lay there with her eyes closed anyway, so he could have it, and listened to him start the race over from the beginning, and crash into the same wall, and start it over again." }
@@ -783,7 +783,7 @@
       { s: 'jake', f: 'happy', t: "Okay, I'm calling us the Tin Men. Because of the tin. And because we have no hearts. Because they've been broken by democracy." },
       { s: 'jay', f: 'neutral', t: "Bro, nobody's calling us that." },
       { s: 'niki', f: 'happy', t: "I'm calling us that." },
-      { s: 'jungwon', f: 'neutral', t: "The count matches the ledger. To the won. I'd like that noted before anyone says anything stupid." },
+      { s: 'jungwon', f: 'serious', t: "The count matches the ledger. To the won. I'd like that noted before anyone says anything stupid." },
       { s: 'niki', f: 'neutral', t: "Okay but who IS hanlim_accountability. I can find out. Give me one night and Jay's mutuals." },
       { s: 'heeseung', f: 'serious', t: "No. Absolutely not. We are not doxxing a student. We are the student council." },
       { s: 'jay', f: 'neutral', t: "My mutuals say second-year. That's all I'm saying. I'm not doxxing. I'm just saying second-year." },
@@ -796,7 +796,7 @@
       { s: 'heeseung', f: 'serious', t: "Then on the eighth we go and get it. In front of witnesses. And on the eleventh we put it on a table in front of the whole school and Jungwon counts it out loud." },
       { s: 'jungwon', f: 'neutral', t: "I can do that." },
       { s: 'jake', f: 'happy', t: "He's gonna love that. Look at his face. That's his happy face." },
-      { s: 'jungwon', f: 'neutral', t: "This is my face." },
+      { s: 'jungwon', f: 'happy', t: "This is my face." },
       { n: "Between agenda items Jungwon had her calculus open on the corner of the ledger and was walking her through chain rule in a murmur, one step at a time, without looking up from Heeseung's columns, which should have been impossible and wasn't, for him." },
       { s: 'heeseung', f: 'neutral', t: "Solar. Vice President. Your thoughts." },
       { choose: [
@@ -812,7 +812,7 @@
         { t: "We pass the make-ups first. They can't impeach people who aced their finals.", stat: { courage: 1 }, then: [
           { s: 'jungwon', f: 'happy', t: "That's correct." },
           { s: 'niki', f: 'neutral', t: "You're literally failing calculus, noona." },
-          { s: 'solar', t: "THAT'S WHY I SAID IT OUT LOUD, NIKI." }
+          { s: 'solar', f: 'happy', t: "THAT'S WHY I SAID IT OUT LOUD, NIKI." }
         ] }
       ] },
       { n: "Sunoo's grandmother came by with more croissants and put a hand on Sunoo's head as she passed and said something to him in a low voice that made him go even pinker, and Jay laughed so hard he had to put his forehead on his textbook." },
@@ -828,7 +828,7 @@
     { id: 'epi-h-rt-nana', slot: 'early', after: '12/22', until: '12/27', events: ['epi-h-home'], place: 'Hanlim · Home · Her Room', time: 'Morning', scene: [
       { n: "Nana woke her at six the way he always had, by lying on her. All of her. All of him, a hundred pounds of white fluff and silly legs arranged across her body like a fallen cloud, his nose an inch from her ear, breathing hot dog breath into it with total devotion." },
       { n: "For a year she'd woken up to a different dog. A smaller, sharper, white one with a red collar who sat by the bed in perfect silence until she opened her eyes, then went to the door, and waited." },
-      { s: 'solar', t: "Koro— ...Nana. Nana. Good morning. Get off me, you giant." },
+      { s: 'solar', f: 'happy', t: "Koro— ...Nana. Nana. Good morning. Get off me, you giant." },
       { n: "Nana didn't know who Koro was. Nana didn't care. Nana licked the side of her face in a long, slow, offended stripe." },
       { ifYear: { xmas: 'jihoon' }, then: [
         { n: "Then he noticed the plush on her pillow, the little dog from the crane game with his exact face, and growled at it, low and betrayed, like he'd caught her with another man." }
@@ -868,20 +868,20 @@
     { id: 'epi-h-rt-mom-breakfast', slot: 'early', after: '12/26', until: '12/30', events: ['epi-h-christmas'], place: 'Hanlim · Home · Kitchen', time: 'Morning', scene: [
       { n: "Breakfast was rice and leftover galbi from Christmas and an interrogation, served in that order, her mother across the table in her robe with her coffee held like a gavel." },
       { s: 'mom', t: "What did they feed you at the temple?" },
-      { s: 'solar', t: "Rice. Soup. ...Silence." },
+      { s: 'solar', f: 'happy', t: "Rice. Soup. ...Silence." },
       { s: 'mom', t: "Which temple?" },
-      { s: 'solar', t: "The one in Gangwon-do." },
+      { s: 'solar', f: 'neutral', t: "The one in Gangwon-do." },
       { s: 'mom', t: "There are a hundred temples in Gangwon-do, Solar." },
       { s: 'dad', t: "Let her eat." },
       { choose: [
         { t: "(Describe it. Make it so boring she stops asking.)", stat: { charm: 1 }, then: [
-          { s: 'solar', t: "It was on a mountain. There were a lot of steps. There was a bell. They rang it at four. Then we sat. Then we sat more. Then lunch, which was the soup. Then, and this is my favorite part, we sat." },
+          { s: 'solar', f: 'happy', t: "It was on a mountain. There were a lot of steps. There was a bell. They rang it at four. Then we sat. Then we sat more. Then lunch, which was the soup. Then, and this is my favorite part, we sat." },
           { glitch: { strain: 1 } },
           { s: 'mom', t: "...Eat your rice." },
           { n: "It worked. It worked so well that her mother's face went soft around the edges, and that sat in her stomach next to the galbi for the rest of the morning." }
         ] },
         { t: "(Ask Dad about his tie.)", then: [
-          { s: 'solar', t: "Dad, is that a new tie? It's a holiday. Why are you wearing a tie?" },
+          { s: 'solar', f: 'flustered', t: "Dad, is that a new tie? It's a holiday. Why are you wearing a tie?" },
           { s: 'dad', t: "...Your mother bought it." },
           { s: 'mom', t: "Don't think I don't know what you're doing." },
           { n: "She did know. She let it go anyway, for now, and Solar could feel the question folded up and put away in her mother's robe pocket for later, like a receipt." }
@@ -925,14 +925,14 @@
     { id: 'epi-h-rt-jw-call', slot: 'late', after: '12/26', until: '1/5', flags: ['epi-route-jungwon'], place: 'Hanlim · Home · Her Room', time: 'Late Night', scene: [
       { n: "He called at eleven-thirty in the whisper he used from the floor of his room, his back against the door so he'd feel it if anyone tried to open it, and quizzed her on derivatives in the dark like a radio host on the world's worst late-night show." },
       { s: 'jungwon', f: 'neutral', t: "x squared." },
-      { s: 'solar', t: "Two x." },
-      { s: 'jungwon', f: 'neutral', t: "Good. Sine x." },
-      { s: 'solar', t: "Cosine x." },
+      { s: 'solar', f: 'happy', t: "Two x." },
+      { s: 'jungwon', f: 'happy', t: "Good. Sine x." },
+      { s: 'solar', f: 'happy', t: "Cosine x." },
       { s: 'jungwon', f: 'happy', t: "Good. You're better at this lying down." },
       { n: "Then she didn't say anything for a while, and he let her not, and she lay there with the phone on the pillow listening to him breathe on the floor of a room four streets away." },
-      { s: 'solar', t: "He would've hated this. Calculus. He would've—" },
+      { s: 'solar', f: 'sad', t: "He would've hated this. Calculus. He would've—" },
       { n: "She stopped. She heard herself stop. On the other end of the line, Jungwon didn't ask who." },
-      { s: 'jungwon', f: 'neutral', t: "He would've made fun of both of us." },
+      { s: 'jungwon', f: 'sad', t: "He would've made fun of both of us." },
       { n: "She laughed into her pillow so her parents wouldn't hear, and her eyes went hot, and he read her the next one, *cosine x*, and waited, and she said *minus sine x*, and he said *good*, like nothing had happened, which was how she knew that it had." },
       { bond: { jungwon: 1 } }
     ] },
@@ -945,7 +945,7 @@
       ], contact: 'jihoney' },
       { n: "He was on her front step in the snow with two melon bars from the convenience store, the green ones she liked, in January, at one in the morning, because he was insane and also because she'd once, years ago, at the top of her lungs in a group chat, demanded to know where the fuck her ice cream was, and he had never once let it go." },
       { s: 'jihoon', f: 'happy', t: "Your Ice Cream, Madam. As Is Tradition. Eat It Quickly, It's Cold Out Here And I'm Fragile." },
-      { s: 'solar', t: "It's literally colder than the ice cream out here, Jihoon." },
+      { s: 'solar', f: 'happy', t: "It's literally colder than the ice cream out here, Jihoon." },
       { s: 'jihoon', f: 'neutral', t: "Then It'll Last Longer. Science. Sit." },
       { n: "They sat on the step with their knees up eating melon bars in the snow, and he talked about nothing, the party, the forum, a video of a cat he'd seen, and then he stopped talking with the stick in his mouth and looked at the street." },
       { s: 'jihoon', f: 'neutral', t: "Nine Days. Without Me. Must Have Been Hell." },
@@ -957,7 +957,7 @@
     { id: 'epi-h-rt-council-facts', slot: 'early', after: '12/26', until: '1/7', flags: ['epi-route-council'], place: 'Hanlim · Home · Her Room', time: 'Morning', scene: [
       { n: "Heeseung called at eight in the morning on a holiday, a conference call, three faces in little boxes on her phone and her own face in the corner looking like it had been dug up." },
       { s: 'heeseung', f: 'serious', t: "Retreat facts. Pop quiz. What did we eat on day three." },
-      { s: 'solar', t: "Rice?" },
+      { s: 'solar', f: 'serious', t: "Rice?" },
       { s: 'heeseung', f: 'serious', t: "Rice AND radish. Sunoo. What time was the bell." },
       { s: 'sunoo', f: 'flustered', t: "Uh! Four! Four-ish! Was it four? I think there was a bell— Heeseung, I wasn't AT the— I mean I was, I was at the bell, I love that bell—" },
       { s: 'jake', f: 'surprised', t: "Is this a pop quiz on a lie? Is that what's happening right now?" },

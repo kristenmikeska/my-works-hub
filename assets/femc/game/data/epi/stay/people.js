@@ -60,9 +60,9 @@
       { n: "So they ran the river. The same path, the same rail, the same stretch past the rowing club where the gravel gave and you had to shorten your stride, and on the far bank the plum trees had gone over and dropped their petals into the slow brown water, and the cherry buds above them were swollen and pink at the tips and holding out, like they were waiting to be asked." },
       { n: "He ran half a step behind her shoulder, where she couldn't see him, and called the splits out loud in the flat voice he kept for numbers that mattered." },
       { s: 'akihiko', f: 'neutral', t: "Four-eleven. You're dropping your left arm." },
-      { s: 'solar', t: "I'm not dropping anything." },
+      { s: 'solar', f: 'happy', t: "I'm not dropping anything." },
       { s: 'akihiko', f: 'neutral', t: "You've been dropping it since November. I didn't say anything in November." },
-      { s: 'solar', t: "Why not?" },
+      { s: 'solar', f: 'neutral', t: "Why not?" },
       { s: 'akihiko', f: 'serious', t: "You had other things to carry." },
       { n: "She ran the next stretch with her left arm where it should have been, and it cost her more than it should have, and at the bridge she stopped with her hands on her knees and her lungs full of something hot and the river going past like it had somewhere to be." },
       { s: 'akihiko', f: 'happy', t: "Four-oh-two." },
@@ -87,9 +87,9 @@
       { n: "The boxing club was at the end of the ground floor, past the trophy case with his name on four things in it. He unlocked it the way you'd unlock your own front door. The ring, the mats, the heavy bag on its chain in the corner, a whiteboard with the spring schedule on it in a hand that wasn't his anymore, and on the bench by the door a cardboard box with SANADA on the side in marker, half full." },
       { s: 'akihiko', f: 'neutral', t: "Captain's stuff. Twenty minutes." },
       { n: "It took him an hour. A jump rope, a roll of tape, a framed photo of the club from his first year with every face in it squinting into the sun, and then a pair of old wraps, gray with washing, that he stood holding for a long time like they'd asked him something and he was being polite about not answering." },
-      { s: 'solar', t: "What are you doing in April?" },
+      { s: 'solar', f: 'neutral', t: "What are you doing in April?" },
       { s: 'akihiko', f: 'serious', t: "There's a university that's asked. There's a gym in Port Island that's asked. There's a man who keeps calling Mitsuru about me, and she won't tell me who, and she thinks that's funny." },
-      { s: 'solar', t: "That's not an answer." },
+      { s: 'solar', f: 'serious', t: "That's not an answer." },
       { s: 'akihiko', f: 'neutral', t: "No." },
       { ifGlitch: 3, then: [
         { glitch: 'clock' },
@@ -113,19 +113,19 @@
       { music: 'epi-st-romance' },
       { n: "Mitsuru's garden had come through the winter better than anybody. The planters along the railing were green again, herbs and a row of something with white flowers that smelled faintly of honey, and Akihiko was watering them in a T-shirt in an April wind with the grim focus of a man doing roadwork, because Mitsuru had left a list, and the list was in ink." },
       { n: "The red gloves were on the bench. Hers, the small ones, worn pale at the knuckles, the ones he'd given her in December. She'd left them on her desk that morning. She had not brought them up here." },
-      { s: 'solar', t: "Were you in my room?" },
+      { s: 'solar', f: 'surprised', t: "Were you in my room?" },
       { s: 'akihiko', f: 'blushing', t: "Your door was open. They were on the desk. I thought you'd want them. If." },
-      { s: 'solar', t: "If what?" },
+      { s: 'solar', f: 'flustered', t: "If what?" },
       { s: 'akihiko', f: 'serious-3', t: "If something comes. You'd want your hands covered." },
       { n: "He'd heard the bell in the kitchen on the first, the same as everyone, and he hadn't asked her about it once, not at breakfast and not since, which she'd thought at first meant he hadn't noticed and had understood by lunch meant the opposite." },
       { s: 'akihiko', f: 'serious', t: "I'm not going to ask where you go at night. I know you go somewhere. Your hair was wet the other night and it hadn't rained." },
-      { s: 'solar', t: "Akihiko." },
+      { s: 'solar', f: 'flustered', t: "Akihiko." },
       { s: 'akihiko', f: 'blushing', t: "I'm just saying if you go, wear the gloves. That's all. That's all I'm saying." },
       { n: "It wasn't all he was saying. He'd run out of the words he had for it, that was all, and he'd brought the gloves up instead, because a pair of gloves was something you could hold out to a person. She picked them up. She put them on, one and then the other, and held her hands out to him, and he did up the straps for her the way he had in the club in May, quick and careful with his big scarred fingers, and then he didn't let go of her wrists." },
       { cg: 'epi-st-roof-garden' },
       { n: "The wind came in off the bay and went straight through his shirt and he didn't seem to notice. She stepped in, gloves and all, until her forehead was against his collarbone and the watering can had tipped over somewhere by her foot and was soaking into her sock, and neither of them moved to fix that either." },
       { s: 'akihiko', f: 'happy', t: "You're getting water in your shoe." },
-      { s: 'solar', t: "I know." },
+      { s: 'solar', f: 'happy', t: "I know." },
       { n: "He laughed, a short surprised breath into her hair, and his arms went around her slowly, the way you'd close your hands around something that had landed on you of its own accord and might, if you were very still, decide to stay there. The light over the stairwell door went off on its timer. Nobody went down to turn it back on." },
       { cg: null },
       { bond: { akihiko: 1 } }
@@ -141,13 +141,13 @@
         { n: "He was sitting up. That still landed somewhere under her ribs every time, the plain fact of it, a man sitting up in a bed with the beanie on crooked and a tray table across his lap, a bowl of rice on it and a spoon in his left hand, because the right one wasn't ready yet." },
         { n: "Physio had him doing it with the right twice a day. Grains of rice from one bowl to another, one at a time. She'd seen him at it once through the gap in the door, the bad hand curled around the spoon like it belonged to somebody he didn't trust, and his jaw, and she'd gone back down to the lobby and bought a juice she didn't want and come up again ten minutes later so it could be the first time she'd seen anything." },
         { s: 'shinjiro', f: 'neutral', t: "...You eat yet?" },
-        { s: 'solar', t: "I had breakfast." },
+        { s: 'solar', f: 'neutral', t: "I had breakfast." },
         { s: 'shinjiro', f: 'neutral', t: "Junpei made breakfast." },
-        { s: 'solar', t: "Yes." },
+        { s: 'solar', f: 'happy', t: "Yes." },
         { s: 'shinjiro', f: 'neutral', t: "...So no." },
         { n: "He pushed the bowl an inch toward her with the back of his good hand. Hospital rice, the kind that kept the shape of the scoop. She ate half of it in the plastic chair, and he watched her do it with the same grim attention he'd once given a pot on a low flame, and every time she slowed down he looked at the bowl until she didn't." },
         { s: 'shinjiro', f: 'sad', t: "...Aki says you're still here. Like, here here." },
-        { s: 'solar', t: "I told you that myself." },
+        { s: 'solar', f: 'neutral', t: "I told you that myself." },
         { s: 'shinjiro', f: 'neutral', t: "...Wanted to hear somebody else say it. So I'd know you weren't just being nice to a guy in a bed." },
         { flag: 'epi-st-shinji-up' }
       ], else: [
@@ -155,7 +155,7 @@
         { n: "She pulled the chair up and talked. She'd stopped feeling stupid about it around Christmas. She told him about spring break, about Junpei's notebook, about Koromaru eating a whole rice ball off Ken's plate while Ken was saying grace, about the rooms upstairs that nobody was sleeping in and the things still on the shelves in them." },
         { n: "Under her hand his fingers moved. A twitch, then nothing, then again, the forefinger drawing a short line across her knuckle and stopping, like someone writing a word in the dark and losing the pen halfway through." },
         { s: 'nurse', t: "He does that when you talk. Only when you talk. I've been writing it down." },
-        { s: 'solar', t: "What else do you write down?" },
+        { s: 'solar', f: 'sad', t: "What else do you write down?" },
         { s: 'nurse', t: "That you came. Every day. It's on the chart, under visitors. It's a long list now." }
       ] },
       { n: "On the way out she stopped at the window at the end of the corridor, where you could see the bay and the bridge and, if you knew where to look, the roof of the dorm. She looked. She always looked. Then she went down in the elevator with her hands in her pockets, and one of them was warm, and she kept it in there all the way to the bus." },
@@ -170,7 +170,7 @@
         { n: "It had taken one wheelchair, two orderlies, a blanket he refused and then didn't, and twenty minutes of paperwork at the nurses' station, to get him down to the courtyard, where a single old cherry tree had come out all at once over the bench in the middle like it had been waiting for him in particular and was a little annoyed about how long he'd taken." },
         { n: "She pushed. He let her, which was its own small miracle. He sat with his hands in his lap, the right resting on the left like the left was holding it in place, and looked up into the blossoms with the face of a man who suspected them of something." },
         { s: 'shinjiro', f: 'neutral', t: "...They're early." },
-        { s: 'solar', t: "They're right on time. You're late." },
+        { s: 'solar', f: 'happy', t: "They're right on time. You're late." },
         { s: 'shinjiro', f: 'happy', t: "...Tch." },
         { cg: 'epi-st-courtyard' },
         { n: "A petal came down and landed on the blanket over his knees. He looked at it. Then, slowly, with his jaw set, he moved the right hand. It took a long time. The fingers closed on the petal and missed and closed again and got it, between thumb and forefinger, pinched so carefully it didn't bruise, and he held it out to her, and his whole arm was shaking with the work of holding up a thing that weighed nothing at all." },
@@ -178,13 +178,13 @@
           { t: "(Take it.)", then: [
             { n: "She took it, and his hand with it, and held on, and he let his weight go back into the chair and back into her where she stood behind him, his head tipping against her stomach, the beanie knocked crooked, his eyes shut against the light coming down pink through the branches." },
             { s: 'shinjiro', f: 'neutral', t: "...Don't tell Aki I did that." },
-            { s: 'solar', t: "Did what?" },
+            { s: 'solar', f: 'neutral', t: "Did what?" },
             { s: 'shinjiro', f: 'happy', t: "...Good." }
           ] },
           { t: "(Let him keep holding it.)", then: [
             { n: "She didn't take it. She let him hold it, the way you let somebody finish a sentence that's costing them, and counted under her breath, and he heard her counting and didn't tell her to stop. Forty. Then his fingers opened and the petal dropped and he caught it on the blanket with the left hand and put it in the pocket of his hospital shirt, and didn't say why." },
             { s: 'shinjiro', f: 'sad', t: "...Physio wants forty. Did forty." },
-            { s: 'solar', t: "I know. I counted." },
+            { s: 'solar', f: 'sad', t: "I know. I counted." },
             { s: 'shinjiro', f: 'neutral', t: "...Yeah. I know you did." }
           ] }
         ] },
@@ -206,11 +206,11 @@
       after: '3/24', until: '3/30', slots: BOTH, place: 'Paulownia Mall · Fountain', time: 'Daytime', scene: [
       { n: "The fountain had come back on in March, and the light came down through the mall's glass roof warm and slanted for the first time since autumn, and Yukari was sitting on the rim with her legs crossed and a crêpe in each hand, holding the strawberry one out without looking, because she'd known Solar would take strawberry since about May." },
       { s: 'yukari', f: 'neutral', t: "Third year. Wednesday. I'm going to be a senpai. Junpei's going to be a senpai. Somebody should really stop this." },
-      { s: 'solar', t: "You'll be good at it." },
+      { s: 'solar', f: 'happy', t: "You'll be good at it." },
       { s: 'yukari', f: 'serious', t: "I'll be scary at it. That's a different thing." },
       { n: "She ate. She picked at the paper around her crêpe, too casually, folding the corner down and down again, which was how Yukari asked things she'd already decided to ask." },
       { s: 'yukari', f: 'neutral', t: "Mitsuru-senpai says there's a form. For whatever you do next. University, a job, anything. There's always a form." },
-      { s: 'solar', t: "There's a form." },
+      { s: 'solar', f: 'neutral', t: "There's a form." },
       { s: 'yukari', f: 'serious', t: "And it's got a box." },
       { n: "Solar looked at the fountain. Everybody in the dorm knew about the box by now, the way everybody in a family knows which chair you don't sit in, and nobody had said the word out loud since graduation, and Yukari was saying it now to a crêpe." },
       { s: 'yukari', f: 'blushing', t: "You could borrow mine. Takeba. It's not doing much. My mom barely uses it either." },
@@ -232,7 +232,7 @@
       { n: "April, and the evenings were almost warm enough to sit out in if you didn't mind your hands. Yukari had the step. When the door opened behind her she moved over half a width without turning round, which meant she'd been waiting for somebody, and that it was Solar." },
       { n: "Nobody had said the word *bell* at dinner. Everybody at the table had been thinking it so hard it was practically a guest." },
       { s: 'yukari', f: 'neutral', t: "So. The bell." },
-      { s: 'solar', t: "Yukari." },
+      { s: 'solar', f: 'serious', t: "Yukari." },
       { s: 'yukari', f: 'serious', t: "I'm not asking what it was. I'm asking something else." },
       { n: "She took a long time about it. A car went by on the street below with its windows down and a radio playing something bright, and the sound of it went all the way to the corner and turned and was gone." },
       { s: 'yukari', f: 'sad', t: "Are you going somewhere?" },
@@ -258,7 +258,7 @@
       after: '3/24', until: '3/30', slots: BOTH, place: 'Iwatodai Dorm · Lounge', time: 'Daytime', scene: [
       { n: "Junpei had taken over the big couch with the notebook on his knees, cap backwards, pen behind his ear, a plan for every day of spring break down the left side of the page and a column of crossings-out down the right, and a logo at the top of a bird wearing sunglasses that might have been an eagle and might have been Koromaru." },
       { s: 'junpei', f: 'happy', t: "Okay so. Day one, nap. Day two, nap, but outside. Day four, hanami. Fuuka's on bento, I'm on morale. Day nine, karaoke. No opera from Mitsuru-senpai. That's a rule now, I wrote it down." },
-      { s: 'solar', t: "What's day three?" },
+      { s: 'solar', f: 'happy', t: "What's day three?" },
       { s: 'junpei', f: 'serious', t: "Recovery from day two. You gotta pace yourself, Sol. You're new at this." },
       { n: "New at what, she nearly asked, and didn't, because she knew. A week with nothing in it. No operation, no full moon, no train to catch home, no exam, no tournament, nobody who needed her at midnight. She had never once had one. Not here, not in any of the others." },
       { n: "On the inside cover of the notebook, upside down, there was a column of names in his blocky capitals, crossed out very neatly, one ruler-straight line through each. She knew whose they were before she'd read them." },
@@ -281,7 +281,7 @@
       after: '4/1', until: '4/5', slots: BOTH, events: ['epi-st-charms'], place: 'Iwatodai Strip · Wild-Duck Burger', time: 'Daytime', scene: [
       { n: "He'd bought her a milkshake. Chocolate, large, the expensive one, which from Junpei was a formal apology on letterhead." },
       { s: 'junpei', f: 'flustered', t: "So the prank. I want it on the record the prank was good. Salt in the sugar bowl. It's a classic. My grandpa did it to me when I was six and I cried." },
-      { s: 'solar', t: "It was a good prank." },
+      { s: 'solar', f: 'happy', t: "It was a good prank." },
       { s: 'junpei', f: 'serious', t: "It was a GREAT prank. And nobody even got to taste their coffee, 'cause there was a bell. In the kitchen. And Aigis said the frequency out loud, and Mitsuru-senpai dropped a cup. Mitsuru-senpai doesn't drop stuff." },
       { n: "He stirred the milkshake with the straw, around and around, not drinking it. He'd been working up to this since breakfast. She could see it on him the way you could see weather on the bay, a long way off and coming." },
       { s: 'junpei', f: 'sad', t: "Was it them? Like. Your guys. Saying hi." },
@@ -306,17 +306,17 @@
       after: '3/25', until: '3/31', slots: ['evening'], events: ['epi-st-rooms'], place: 'Iwatodai Dorm · Command Room', time: 'Evening', scene: [
       { n: "The command room was coming apart in an orderly fashion. The monitors were off and wrapped in sheeting, the cables coiled and twist-tied and sorted into labeled boxes, and Mitsuru stood in the middle of it with her hair up and a clipboard, ticking things off in fountain pen, and for the first time in a year the room looked like what it had been all along, a room on the fourth floor of a dormitory with too many outlets." },
       { s: 'mitsuru', f: 'neutral', t: "Thank you for today. The rooms. I know it was not a small thing to ask." },
-      { s: 'solar', t: "You didn't ask. You told me there was a deadline." },
+      { s: 'solar', f: 'serious', t: "You didn't ask. You told me there was a deadline." },
       { s: 'mitsuru', f: 'serious', t: "That is how I ask. I'm told it needs work." },
       { n: "She set the clipboard down on a box marked FRAGILE · SENSORS · DO NOT LET JUNPEI CARRY, and squared it to the edge, and then squared it again." },
       { s: 'mitsuru', f: 'neutral', t: "The dorm passes to the school's housing office after the term begins. The rooms will be assigned to new students. Yours will not. I've arranged it." },
-      { s: 'solar', t: "Mitsuru." },
+      { s: 'solar', f: 'serious', t: "Mitsuru." },
       { s: 'mitsuru', f: 'serious', t: "The Group owns the building. The housing office owed the Group a number of favors, and as of this morning it owes one fewer. You'll have the room for as long as you want it. If you want it." },
       { n: "She said it the way she said everything, clear and level and finished, and only the fountain pen said anything else, rolling slowly off the edge of the clipboard where she'd set it down crooked after all and dropping onto the carpet, where neither of them picked it up." },
       { choose: [
         { t: "Thank you.", then: [
           { s: 'mitsuru', f: 'happy', t: "...You're welcome. That was easier than I'd planned for. I had three further arguments prepared." },
-          { s: 'solar', t: "Can I hear them anyway?" },
+          { s: 'solar', f: 'happy', t: "Can I hear them anyway?" },
           { s: 'mitsuru', f: 'happy', t: "Certainly not." }
         ] },
         { t: "And you? Where are you going?", then: [
@@ -334,7 +334,7 @@
       { n: "The wind. The cables overhead humming in it, one long low note going on and on like something tuning. The lights of Port Island laid out on the water. Mitsuru took her helmet off and shook her hair out and did not look at her." },
       { s: 'mitsuru', f: 'serious', t: "Akihiko tells me your hair was wet the other night. Fuuka tells me Juno is hearing something she can't place. Aigis has logged a signal. And there was a bell in my kitchen." },
       { s: 'mitsuru', f: 'neutral', t: "I'm not asking you to explain. I'm informing you of something." },
-      { s: 'solar', t: "Okay." },
+      { s: 'solar', f: 'sad', t: "Okay." },
       { s: 'mitsuru', f: 'serious', t: "If something is trying to take you, it will have to go through me. And then through the Kirijo Group. In that order. I'd like that understood. By you, and by it." },
       { n: "She said *it* to the bridge, to the dark water, to the city across the bay, in the clear carrying voice she'd once used to end things that crawled, and the wind took the word and carried it off east, and Solar found she was holding her breath to see if anything would answer." },
       { choose: [
@@ -361,7 +361,7 @@
       { s: 'fuuka', f: 'neutral', t: "I'm doing one for everyone. Seven. Eight, with Koromaru's. His has no salt." },
       { n: "She counted the boxes out along the counter, lacquered and borrowed from three different cupboards, and stopped at eight, and looked at the counter beside them where there was room for more, a lot more, and her hand did a small thing in the air over the empty space, like it was setting something down that wasn't there." },
       { s: 'fuuka', f: 'sad', t: "...I keep counting too many. Every time. I get to eight and my hands keep going." },
-      { s: 'solar', t: "Mine too." },
+      { s: 'solar', f: 'sad', t: "Mine too." },
       { choose: [
         { t: "Make one extra. For whoever's hungry.", then: [
           { s: 'fuuka', f: 'happy', t: "...Okay. One extra. Junpei will eat it, probably." },
@@ -431,9 +431,9 @@
       after: '3/30', until: '4/5', slots: BOTH, place: 'Port Island · Seaside Park', time: 'Evening', scene: [
       { n: "The sea had gone flat and gold with the evening, and the gulls were working the end of the pier, and the ferry to the mainland was a white shape halfway across with its lights just coming on. Aigis stood at the railing with her hands at her sides and her face turned to the water, and she didn't turn when Solar came up beside her. She'd known for some time that Solar was coming. She always did." },
       { s: 'aigis', f: 'neutral', t: "Solar-san. You are here." },
-      { s: 'solar', t: "Junpei said you've been standing here since lunch." },
+      { s: 'solar', f: 'happy', t: "Junpei said you've been standing here since lunch." },
       { s: 'aigis', f: 'neutral', t: "Since twelve-oh-four. I am triangulating." },
-      { s: 'solar', t: "Triangulating what?" },
+      { s: 'solar', f: 'happy', t: "Triangulating what?" },
       { s: 'aigis', f: 'serious', t: "You." },
       { n: "She said it the way she said everything, as a fact, laid down plainly on the railing between them for Solar to pick up or not." },
       { s: 'aigis', f: 'neutral', t: "Your signal has always been unusual. In April it was one, and very strong. At the end, in March, it was four. Then it was one again. Since Monday it has begun to be four again. One here. Three elsewhere, at bearings that do not correspond to anything on the globe." },
@@ -529,7 +529,7 @@
     { id: 'epi-st-rt-wall', slot: 'late', after: '3/29', until: '4/5', place: "Iwatodai Dorm · Solar's Room", time: 'Late Night', scene: [
       { n: "One in the morning. The dorm making its night sounds, the pipes ticking, the fridge downstairs cycling on, somebody's door, Junpei's snoring coming faintly up through the floor like the sea. She was lying on top of the covers with the light off and her eyes open, not sleeping, very thoroughly." },
       { phone: [{ from: 'akihiko', t: 'you up' }, { from: 'akihiko', t: "dont answer that. i can see your light under the door from the stairs" }], contact: 'Akihiko' },
-      { s: 'solar', t: "My light's off." },
+      { s: 'solar', f: 'serious', t: "My light's off." },
       { n: "She said it out loud to the ceiling. Then she looked at the lamp. It was on. She hadn't turned it on." },
       { ifEpiRoute: 'shinjiro', then: [
         { phone: [{ from: 'akihiko', t: 'went to see shinji today' }, { from: 'akihiko', t: 'he asked about you. thats what i came up to say. thats all' }], contact: 'Akihiko' }

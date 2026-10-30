@@ -39,11 +39,11 @@
         { place: 'Syracuse · Studio 4B', time: 'Evening' },
         { n: "He had his headphones round his neck and a pencil behind his ear and the look of someone who'd been sitting in the same position for three hours, and for one second, before the face went back on, he looked exactly as surprised as he was." },
         { s: 'haechan', f: 'surprised', t: "...Hey." },
-        { s: 'solar', t: "You didn't ask me to come." },
+        { s: 'solar', f: 'serious', t: "You didn't ask me to come." },
         { s: 'haechan', f: 'neutral', t: "No." },
-        { s: 'solar', t: "Good. That's why I'm here." },
+        { s: 'solar', f: 'serious', t: "Good. That's why I'm here." },
         { n: "He stepped back to let her in, and didn't touch her on the way past, and she noticed that the way you notice a step that isn't there. The room was the room. Carpet, the monitors, the cheap couch with the arm that had been glued, the smell of warm electronics and, under it, vanilla, which she had decided weeks ago she wasn't going to think about and thought about immediately." },
-        { s: 'solar', t: "Before anything. Show me what there is." },
+        { s: 'solar', f: 'serious', t: "Before anything. Show me what there is." },
         { ifFlag: 'epi-r-stem-file', then: [
           { n: "She had the file. It had been on her laptop since Wednesday, in a folder she'd named something boring on purpose, and she'd opened it once, at two in the morning, and closed it again before it loaded, which was its own sentence." },
           { n: "He didn't argue. He rolled the chair aside so she could see and opened everything, the session, the bounce folder, the backup drive with the masking tape label, his phone's voice memos, the cloud account he swore he never used, and went through them one at a time while she watched, and there was nothing. Where her voice had been in the session there was a gap, a clean rectangle of nothing on the timeline, like the pale square on a wall where a frame used to hang." },
@@ -66,7 +66,7 @@
           ] }
         ] },
         { n: "Then there was nothing left to settle, and the room got very quiet in the specific way a studio got quiet, which was more quiet than a room was supposed to be, as if the walls were holding their breath for you." },
-        { s: 'solar', t: "Play me the part where I was." },
+        { s: 'solar', f: 'serious', t: "Play me the part where I was." },
         { n: "He looked at her. Not flat. Just looked, for a beat too long, the way he did when something landed and he hadn't decided yet what to do with it. Then he pulled the mic stand out of the corner and set it at her height without asking what her height was, and handed her the headphones, and went back behind the glass." },
         { n: "The track came up in her ears with a hole in it. She could hear exactly where she had been. The bones from that night in his room with a body on them now, drums and something low that moved under everything like a tide, and then the place where her voice should have come in, and didn't, and the music went on through the gap pretending it didn't notice." },
         { n: "She'd sung in a choir once. She'd been good at it. She'd stood in the second row of a chapel in a navy blazer and felt a whole room tune itself to the note she was holding, and then her father had said something about priorities at dinner and she'd let it go so quietly she couldn't have said which week it happened. She thought about that girl now, the one in the blazer. She thought the girl would have liked this. Being asked." },
@@ -103,9 +103,9 @@
         { s: 'haechan', f: 'serious', t: "...Bleed. Somebody's tracking down the hall, it gets into the conduit. Happens in winter, something about the heat." },
         { n: "He said it with total confidence. He was very good at total confidence. He also didn't take his hand off the space bar for a long time after, and he didn't look at her while he didn't." },
         { n: "She didn't correct him. She sat with her hands between her knees and let him have it, the conduit and the heat, because she understood suddenly that he needed it to be a conduit, and that she'd have given a great deal for it to be one too." },
-        { s: 'solar', t: "Terms." },
-        { s: 'haechan', f: 'neutral', t: "...What?" },
-        { s: 'solar', t: "Before anything else happens in this room. We're doing terms." },
+        { s: 'solar', f: 'happy', t: "Terms." },
+        { s: 'haechan', f: 'surprised', t: "...What?" },
+        { s: 'solar', f: 'serious', t: "Before anything else happens in this room. We're doing terms." },
         { n: "He turned the chair to face her properly, and put both feet flat on the floor, and his elbows on his knees, and gave her his entire attention, which he so rarely did in daylight that it felt like standing too close to a heater." },
         { s: 'haechan', f: 'neutral', t: "Okay. Go." },
         { choose: [
@@ -118,10 +118,10 @@
             { n: "He didn't ask *for how long.* She watched him not ask it, and gave him one point, privately, in a ledger she would never admit she kept." }
           ] }
         ] },
-        { s: 'solar', t: "And it's just us. If this is a thing." },
+        { s: 'solar', f: 'flustered', t: "And it's just us. If this is a thing." },
         { choose: [
           { t: "Nobody else. Me neither.", flag: 'epi-r-term-exclusive', then: [
-            { s: 'haechan', f: 'neutral', t: "I'm not looking at anybody else, princess. I haven't been for a while. I'm just saying it out loud now." }
+            { s: 'haechan', f: 'flustered', t: "I'm not looking at anybody else, princess. I haven't been for a while. I'm just saying it out loud now." }
           ] },
           { t: "Just us. And I'm not saying boyfriend, so don't make me.", flag: ['epi-r-term-exclusive', 'epi-r-term-no-word'], then: [
             { n: "Something happened at the corner of his mouth that nobody else on campus would have believed her about." },
@@ -131,14 +131,14 @@
         { s: 'haechan', f: 'neutral', t: "Who knows." },
         { choose: [
           { t: "Hanni. Hyein. Minji. Chenle. That's the list.", flag: 'epi-r-term-circle', then: [
-            { s: 'haechan', f: 'neutral', t: "Chenle already knows. Chenle knows everything. He just waits for you to say it so he doesn't have to." }
+            { s: 'haechan', f: 'happy', t: "Chenle already knows. Chenle knows everything. He just waits for you to say it so he doesn't have to." }
           ] },
           { t: "Nobody yet. I want a week where it's just ours.", flag: 'epi-r-term-quiet', then: [
-            { s: 'haechan', f: 'neutral', t: "A week. Okay. I've kept bigger things quieter than that." },
+            { s: 'haechan', f: 'happy', t: "A week. Okay. I've kept bigger things quieter than that." },
             { n: "She looked at him. He heard it as soon as it was out, and didn't take it back, and didn't decorate it either." }
           ] }
         ] },
-        { s: 'solar', t: "And when SUnews gets a picture. Because she will." },
+        { s: 'solar', f: 'serious', t: "And when SUnews gets a picture. Because she will." },
         { choose: [
           { t: "Then we say it first. Our picture, our words.", flag: 'epi-r-term-first', then: [
             { s: 'haechan', f: 'serious', t: "Then it's yours before it's hers. Fine. Better, actually." }
@@ -148,7 +148,7 @@
           ] }
         ] },
         { n: "The last two were the hard ones, and she'd known they would be since Sunday, and she said them anyway, looking at him and not at the floor, which cost her something." },
-        { s: 'solar', t: "If you want to disappear. Or use. Anything. I want to know before, not after. I'm not asking you to never. I'm asking you not to lie about it." },
+        { s: 'solar', f: 'serious', t: "If you want to disappear. Or use. Anything. I want to know before, not after. I'm not asking you to never. I'm asking you not to lie about it." },
         { n: "He didn't answer fast. That was how she knew he'd heard it." },
         { choose: [
           { t: "Tell me. That's all. Just me.", flag: 'epi-r-term-tell', then: [
@@ -160,14 +160,14 @@
             { n: "He said it like it embarrassed him. It probably did. He said it anyway." }
           ] }
         ] },
-        { s: 'solar', t: "And if it's ever bad. Really bad. I call for help first. Then Chenle. Then I deal with you." },
+        { s: 'solar', f: 'serious', t: "And if it's ever bad. Really bad. I call for help first. Then Chenle. Then I deal with you." },
         { flag: 'epi-r-term-safety' },
         { n: "He nodded once, slowly. Then he did something she wasn't ready for: he took his phone out and put Chenle's number in hers himself, under a contact name she didn't see until later, and handed it back, and that was the whole speech." },
         { s: 'haechan', f: 'neutral', t: "In that order. Help, him, me. Don't let me talk you out of the order." },
         { bond: { haechan: 1 } },
         { n: "Then, because he couldn't stand it, she could see him not being able to stand it, he reached behind the monitor and came back with a small paper bag, folded over twice at the top, the kind of bag a store gives you when what you bought is small enough to lose." },
         { n: "A keycap. One single keycap, white, with a fox on it, a tiny red-and-white kitsune mask painted so carefully she could see each whisker. It would fit her board. She knew without trying it that it would fit her board exactly, because she knew exactly which board he'd been looking at across a convention hall on Saturday when he'd told everybody he was only there for Chenle." },
-        { s: 'haechan', f: 'neutral', t: "Your setup looked boring." },
+        { s: 'haechan', f: 'happy', t: "Your setup looked boring." },
         { n: "She laughed. She hadn't meant to. It came out of her the way the name had in the valley, without asking, and he looked at the laugh like it was something he'd been waiting on for a month." },
         { choose: [
           { t: "(Kiss him.)", flag: 'epi-r-studio-late', then: [
@@ -180,7 +180,7 @@
           ] },
           { t: "(Not tonight. Take the keycap home.)", then: [
             { n: "She didn't kiss him. She thought about it so hard it was nearly the same thing, and he could see her think about it, and he let her not do it without a single word, which was its own answer to the terms." },
-            { s: 'haechan', f: 'neutral', t: "Go home, princess. Text me you got there." },
+            { s: 'haechan', f: 'happy', t: "Go home, princess. Text me you got there." },
             { n: "She walked back across the quad with the paper bag in her coat pocket and her hand closed around it the whole way, the snow coming down slow and ordinary, and she texted him from the porch, *home,* and he texted back *good,* and she stood on the porch longer than the cold allowed." }
           ] }
         ] }
@@ -200,17 +200,17 @@
         { place: 'Syracuse · Studio 4B', time: 'Evening' },
         { s: 'haechan', f: 'neutral', t: "Hey." },
         { ifFlag: 'epi-r-stem-deleted', then: [
-          { s: 'solar', t: "I'm not here to settle anything. There's nothing to settle. You did it last Wednesday. I know you did." },
+          { s: 'solar', f: 'serious', t: "I'm not here to settle anything. There's nothing to settle. You did it last Wednesday. I know you did." },
           { s: 'haechan', f: 'neutral', t: "I did." },
           { n: "He didn't add anything. He didn't tell her what it had cost, or how the track sounded now with a hole in it, or that it was better or worse. She'd asked for a thing and the thing was done, and he let it stay done, which she'd half expected him to be bad at." }
         ] },
         { ifFlag: 'epi-r-stem-file', then: [
-          { s: 'solar', t: "I've got the file. I want to see that you don't." },
+          { s: 'solar', f: 'serious', t: "I've got the file. I want to see that you don't." },
           { n: "He rolled the chair aside without a word and opened everything, the session, the bounces, the backup drive with the masking tape label, his phone, and went through them one at a time while she watched. Where her voice had been there was a gap. Clean. Like the pale square on a wall where a frame had hung." },
           { s: 'haechan', f: 'neutral', t: "You've got the only one." }
         ] },
         { ifFlag: 'epi-r-stem-wait', then: [
-          { s: 'solar', t: "I've decided. Show me everything there is." },
+          { s: 'solar', f: 'serious', t: "I've decided. Show me everything there is." },
           { n: "He showed her. Five files, read out flat, one at a time, the original take and two working copies and a bounce and the one on the backup drive with masking tape on it, and his phone, which had nothing on it, and which he showed her anyway." },
           { choose: [
             { t: "(Delete all of it. Watch him do it.)", flag: 'epi-r-stem-cleared', then: [
@@ -221,7 +221,7 @@
             ] }
           ] }
         ] },
-        { s: 'solar', t: "I want to hear what I sound like when I've said yes first." },
+        { s: 'solar', f: 'flustered', t: "I want to hear what I sound like when I've said yes first." },
         { n: "He looked at her for a second longer than was comfortable. Then he set up the mic at her height without asking what her height was, and pulled a fresh session up, empty, a gray grid with nothing on it, and turned the screen so she could see that it was empty." },
         { s: 'haechan', f: 'neutral', t: "It records to your phone, not mine. I'll show you how. When you're done you take it with you and I never had it." },
         { n: "She didn't sing his track. She sang the thing she'd sung in the second row of a chapel in a navy blazer when she was fifteen, the descant from the winter concert, which she hadn't sung out loud in three years and found she knew down to the breath marks. Her hands shook. Her voice didn't. It came out lower than she remembered and steadier than she'd expected and entirely hers, and through the glass he didn't look at the meters once." },
@@ -232,7 +232,7 @@
         { n: "Her throat closed so fast on a name that it hurt." },
         { n: "He hadn't moved. He was writing something on the back of his hand with the pencil from behind his ear, frowning at it, the playback running on without him, and when she said *did you hear that* he looked up at her, mildly, from very far inside his own work." },
         { s: 'haechan', f: 'neutral', t: "Hear what?" },
-        { s: 'solar', t: "...Nothing. The heater." },
+        { s: 'solar', f: 'flustered', t: "...Nothing. The heater." },
         { n: "He nodded and went back to his hand. She sat on the glued couch with her own voice going round in the speakers and the knowledge, very cold and very clear, that this one was hers alone." },
         { place: 'Syracuse · Studio 4B · Hallway', time: 'Evening' },
         { n: "There was a girl in the hallway when she came out, a high-school senior with a campus-tour lanyard and a folded map, standing in front of the bulletin board with the look of someone who'd stopped walking on purpose." },
@@ -267,7 +267,7 @@
         { s: 'haechan', f: 'neutral', t: "It's hiding on purpose. The first one gives it all away, so the second one has to take something back. I'll bring it up a dB and you'll hear why it was down." },
         { n: "He did, there on the call, and played it, and the girls on the screen looked at each other and Kazuha laughed and put her hand over her mouth, and Chaewon said *okay, okay, leave it down,* and he wrote something on the back of his hand, and it was the flattest, kindest, most competent five minutes she had ever watched anybody spend." },
         { n: "Chaewon's eyes went past him once, to the corner of the frame where Solar was sitting with her coat in her lap. She didn't ask. He didn't explain. He said *Thursday,* and they said *Thursday,* and the screen went dark." },
-        { s: 'haechan', f: 'neutral', t: "Told you. Not interesting." },
+        { s: 'haechan', f: 'happy', t: "Told you. Not interesting." },
         { n: "It had been very interesting. She didn't tell him so. She went out to the hallway where somebody was waiting for her, with her own voice in her pocket, on her own phone, and for once in her life she didn't check it on the stairs." }
       ] }
     ] },
@@ -285,7 +285,7 @@
         { s: 'haechan', f: 'neutral', t: "Sit. They're calling in a minute and then it's yours." },
         { n: "The call came. He took it with her right there on the couch in the corner of the frame, and he didn't angle the laptop away and he didn't introduce her, and she watched him do his job: flat, quick, entirely sure of himself, telling two strangers exactly why the bridge was sitting where it sat and offering to move it anyway if they wanted to hear it wrong first." },
         { s: 'kazuha', t: "Can we hear it wrong first?" },
-        { s: 'haechan', f: 'neutral', t: "Yeah. That's the right answer." },
+        { s: 'haechan', f: 'happy', t: "Yeah. That's the right answer." },
         { n: "He moved it. It was wrong. They all heard it at once and Chaewon actually groaned and he moved it back without saying *told you,* which Solar happened to know cost him enormously." },
         { s: 'chaewon', t: "Okay. Okay, you win. Who's that?" },
         { n: "Her eyes had gone past him to the corner of the frame. To Solar." },
@@ -306,12 +306,12 @@
             { n: "It wasn't a question. She didn't answer it." }
           ] },
           { t: "It's good. You know it's good.", then: [
-            { s: 'haechan', f: 'neutral', t: "It's good because you said yes to it." },
+            { s: 'haechan', f: 'happy', t: "It's good because you said yes to it." },
             { n: "He said it to the floor. Then, because he'd heard how it sounded, he looked up and said it again to her, flatter, so she'd know he meant it and wasn't performing meaning it." }
           ] },
           { t: "It's still mine. The part with me. That doesn't change because it's beautiful.", then: [
             { s: 'haechan', f: 'serious', t: "I know. That's why I didn't play it for you until it was." },
-            { s: 'haechan', f: 'neutral', t: "Yours, I mean. Not beautiful. It was always beautiful. That was the problem." }
+            { s: 'haechan', f: 'flustered', t: "Yours, I mean. Not beautiful. It was always beautiful. That was the problem." }
           ] }
         ] },
         { bond: { haechan: 1 } },
@@ -370,7 +370,7 @@
         { choose: [
           { t: "It's not on you. It was never on you.", then: [
             { s: 'hanni', f: 'sad', t: "It's a little on me." },
-            { s: 'solar', t: "Okay. A little. Then we split it. Three ways. That's what the floor's for." },
+            { s: 'solar', f: 'neutral', t: "Okay. A little. Then we split it. Three ways. That's what the floor's for." },
             { n: "Hyein made a sound that was half laugh and half something else and put her head on Hanni's shoulder, and Hanni let her, and after a while Hanni's hand found Solar's on the carpet and held it, and nobody said anything for a long time, and the radiator knocked." }
           ] },
           { t: "You kept it because you were scared. I know what that's like. I'm doing it right now.", then: [
@@ -390,7 +390,7 @@
       { n: "Minji's room in the honors dorm was the cleanest room Solar had ever been in that belonged to someone under thirty. Two monitors, a hard drive tower stacked like a wedding cake, a corkboard with index cards in color-coded rows, the bed made with hospital corners, and on the windowsill a single dying succulent Minji refused to give up on, which explained most things about her." },
         { n: "She'd asked Solar to come. Asked properly, a text at noon with a time and an out: *you can say no, it's just footage.* Nothing with Minji was ever just footage. That was the whole point of Minji." },
         { s: 'minji', f: 'neutral', t: "I want to show you something before I show anyone else. And then I want to ask you something. In that order. Okay?" },
-        { s: 'solar', t: "Okay." },
+        { s: 'solar', f: 'neutral', t: "Okay." },
         { ifYear: { xmas: 'minji' }, then: [
           { n: "It was the lamppost. Of course it was. The first afternoon back, the snow just stopped, the light gone long and gold, the lamp outside this building that had flickered since September, and Solar walking into frame across the quad without deciding to, and stopping under it, and the lamp holding steady for once, and Solar looking straight into the lens." },
           { n: "She'd never seen her own face do that. Not in a mirror, not in a photo. She looked like someone who'd been allowed to stop for a second. She looked like herself, which was a stranger to look at than she'd expected." },
@@ -511,7 +511,7 @@
         { n: "He was warmer with them than he had any right to be. A whole year over there had done that, a year of the same dorm and the same kitchen and Hyein measuring him for things he never asked to be measured for. It was strange to watch it show up here, in a pink room in Syracuse, and see the girls not quite know what to do with it." }
       ] },
       { n: "Solar had told them about the print. All of it, the stairs, the green, the shapes, the envelope, the folder. Then she'd stood up, which was a mistake, because once she was standing she wanted to be walking, and she wanted to be walking down the hall." },
-      { s: 'solar', t: "I'm going to her room. Right now. I'm going to tell her I know it's her, all of it, SUnews, SUanon, the posts, the captions, the chapter line, everything, and I'm going to say it loud enough that the whole hall hears, and then I'm going to—" },
+      { s: 'solar', f: 'serious', t: "I'm going to her room. Right now. I'm going to tell her I know it's her, all of it, SUnews, SUanon, the posts, the captions, the chapter line, everything, and I'm going to say it loud enough that the whole hall hears, and then I'm going to—" },
       { ifEpiRoute: 'haechan', then: [
         { s: 'haechan', f: 'serious', t: "No." },
         { n: "He didn't get up. He didn't raise his voice. He said it from the floor with his back against the door, and the whole room turned to look at him, and he let it." },
@@ -543,11 +543,11 @@
       ], else: [
         { s: 'hanni', f: 'neutral', t: "Chungha and Chaeyeon know something. I've watched Chaeyeon at every meeting since September. Every time Danielle opens that folder, she reads the agenda like it owes her money." }
       ] },
-      { s: 'solar', t: "So we go to them." },
+      { s: 'solar', f: 'serious', t: "So we go to them." },
       { s: 'hanni', f: 'serious', t: "Carefully. Not as a group. Not with a list. One of us, one of them, somewhere boring, and we ask a question, not an accusation. They've been quiet a year. You don't get somebody to stop being quiet by shouting at them." },
-      { s: 'solar', t: "And not Jaehyun." },
+      { s: 'solar', f: 'serious', t: "And not Jaehyun." },
       { s: 'hanni', f: 'neutral', t: "Not Jaehyun yet. Not till it's strong enough that him knowing doesn't just cost you." },
-      { s: 'solar', t: "And no fresh scene. Nothing public. Nothing she can photograph." },
+      { s: 'solar', f: 'serious', t: "And no fresh scene. Nothing public. Nothing she can photograph." },
       { ifEpiRoute: 'haechan', then: [
         { s: 'haechan', f: 'neutral', t: "That includes me, by the way. Don't let me be the scene." }
       ] },
@@ -555,7 +555,7 @@
         { s: 'chenle', f: 'neutral', t: "I was in the back row over there, too. The whole time. Back rows are good for this. You see who's watching." }
       ] },
       { n: "Then, because it had to go somewhere, Solar said the last thing. The one that didn't fit in either column." },
-      { s: 'solar', t: "And she has a picture none of us can explain." },
+      { s: 'solar', f: 'serious', t: "And she has a picture none of us can explain." },
       { n: "Nobody wrote that down. Hyein's pen hovered over the page for a long second, between the two columns, and came down on neither, and she capped it. Five people who'd been somewhere none of them could put on a map sat on a pink floor in Syracuse and looked at the space between PROOF and INFERENCE where the green street went, and the radiator knocked, and outside the window the snow came down on the quad, slow, ordinary, falling the right way, for now." },
       { s: 'chenle', f: 'neutral', t: "...We'll need a third column." },
       { stat: { knowledge: 1 } }
@@ -577,11 +577,11 @@
       { ifEpiRoute: 'haechan', then: [
         { n: "They'd come in together. Not touching. Not not touching. The terms sat between them in the doorway like a third person: what they'd said in 4B, what they'd decided, the list of who knew, which was short, and the rest of this house, which wasn't on it." },
         { n: "It was the first time. That was the thing she kept feeling in her stomach, a step dropping under her. The first party where they'd walked in through the same door on purpose, and every person in the hallway who looked up looked at both of them, and then at each other, and then away, in that order." },
-        { s: 'haechan', f: 'neutral', t: "...She's on the stairs." },
-        { s: 'solar', t: "I know. I can feel her on the stairs." },
+        { s: 'haechan', f: 'serious', t: "...She's on the stairs." },
+        { s: 'solar', f: 'serious', t: "I know. I can feel her on the stairs." },
         { ifFlag: 'epi-r-term-none', then: [
           { n: "Her phone was in her hand. She didn't remember taking it out. There were no pictures of them; that had been the deal, *nothing, not for now,* her own rule. She looked at the stairs. Then she held the phone up between them and asked him, out loud, the way she'd made him promise to ask her, whether she could take one. Just one. Here." },
-          { s: 'haechan', f: 'neutral', t: "...Yeah. You can." },
+          { s: 'haechan', f: 'serious', t: "...Yeah. You can." },
           { n: "So she took it, in the front hall of Sigma Chi with the bass in the floor: his face half turned away from the lens and hers looking straight into it, a pink can in her hand, nothing much." }
         ], else: [
           { n: "Her phone was in her hand. She didn't remember taking it out. On it, a photo from Tuesday, which he'd asked for, out loud, before: the two of them in 4B, nothing much, his face half turned away from the lens and hers looking straight into it, and the kitsune keycap catching the light on the desk at the edge of the frame." }
@@ -595,23 +595,23 @@
         { choose: [
           { t: "(Post it. Our picture, our words.)", flag: 'epi-r-public-post', then: [
             { n: "She held it up so he could see it, so he could say no. He looked at it, and at her, and didn't say no." },
-            { s: 'haechan', f: 'neutral', t: "Your caption, princess. Not mine. I'd make it weird." },
+            { s: 'haechan', f: 'happy', t: "Your caption, princess. Not mine. I'd make it weird." },
             { n: "She typed one word. *hi.* Lowercase. She looked at it for a full five seconds, which was four and a half seconds longer than she'd ever looked at anything before posting it, and then she posted it, standing in the front hall of Sigma Chi with the bass coming up through the floor, and put the phone in her pocket, and didn't look at it again." },
             { n: "On the stairs, three steps up, a phone lit in a cream sweater's hand. Danielle looked at the screen. Then she looked up, across the hall, straight at Solar, and something moved behind her eyes, a chart being updated, a draft being deleted, a whole caption she'd been saving folded in half and put away. She didn't smile. That was how Solar knew it had worked." },
             { s: 'haechan', f: 'neutral', t: "...Somebody's going to send that to your brother before midnight." },
-            { s: 'solar', t: "I know." },
+            { s: 'solar', f: 'serious', t: "I know." },
             { s: 'haechan', f: 'neutral', t: "Okay. Just so we both know." },
             { stat: { courage: 1 } }
           ] },
           { t: "(Put it away. The people who need to know already do.)", flag: 'epi-r-public-inner', then: [
             { n: "She put it away. The photo was theirs. The four people on the list knew, and they were the four people whose knowing she'd chosen, and the rest of this house could guess, and would, and could keep guessing." },
-            { s: 'haechan', f: 'neutral', t: "...Good. Means it's still ours." },
+            { s: 'haechan', f: 'happy', t: "...Good. Means it's still ours." },
             { n: "He said it without looking at her, to the hallway at large, and his little finger brushed the side of her hand once on the way past, nobody in the room could have seen it, and she felt it all the way up her arm." }
           ] }
         ] },
         { n: "Mark was in the kitchen doorway. She saw him see her, and see Haechan, and see the space between them that was exactly the width of two people who'd decided where to stand. He didn't come over. He stood there with a cup of water in his hand, actual water, and waited to be allowed." },
         { n: "Haechan saw him too. He saw him before she did, actually; she watched it happen, his jaw doing the thing, the half second where he decided something, and then decided against it." },
-        { s: 'haechan', f: 'neutral', t: "I'm getting you a drink that isn't Jeno's. Take your time." },
+        { s: 'haechan', f: 'happy', t: "I'm getting you a drink that isn't Jeno's. Take your time." },
         { n: "He went. He didn't look back to see whether she went to Mark. That was the whole thing. He let her go do it and didn't watch her do it, and she understood that it cost him exactly as much as it looked like it cost him, which was a lot." }
       ] },
       { ifEpiRoute: 'cover', then: [
@@ -650,7 +650,7 @@
       { ifEpiRoute: 'haechan', then: [
         { ifFlag: 'epi-r-public-post', then: [
           { s: 'mark', f: 'neutral', t: "Saw your post." },
-          { s: 'solar', t: "Everyone did." },
+          { s: 'solar', f: 'neutral', t: "Everyone did." },
           { s: 'mark', f: 'sad', t: "...It's a good picture, Sol. You look like you." },
           { n: "That was the worst thing he could have said, because he meant it, and it was true, and it was the kind thing, and it still hurt to hear it from him. He'd never once in his life been able to be kind to her without it costing her something. She didn't think he was trying to, now. That was almost worse." }
         ], else: [
@@ -706,18 +706,18 @@
         { n: "Six people at a table for four. Hanni and Hyein on the bench, Minji on the end with her laptop closed for once, Chenle with a pancake he was cutting into a perfect grid, and Haechan in the chair next to Solar, which he'd pulled from another table without asking anybody, and which nobody had said anything about, and which Hyein had looked at for a full three seconds before deciding not to." },
         { n: "He was eating her fries. Not asking, not hiding it, just reaching over every so often and taking one, the way you'd take one from your own plate, and the first time he did it she slapped his hand and the second time she didn't, and by the fourth Hanni was watching with an expression of deep, private, scientific delight." },
         { s: 'hyein', f: 'serious', t: "Okay. Haechan. I have questions. I have eleven questions. This is a safe space and I'm going to ask all of them." },
-        { s: 'haechan', f: 'neutral', t: "You can have three." },
+        { s: 'haechan', f: 'happy', t: "You can have three." },
         { s: 'hyein', f: 'happy', t: "FIVE." },
-        { s: 'haechan', f: 'neutral', t: "Two now. You argued." },
+        { s: 'haechan', f: 'happy', t: "Two now. You argued." },
         { n: "Hyein used both of them on whether he'd let her make him something for the holiday party, and he said no twice, and somewhere in the second no it turned into a yes, and he looked as surprised about it as anyone. Chenle didn't look up from his pancake. He just said, to the grid, *she gets everyone eventually,* in the tone of a man reading a weather report." },
         { n: "It was close to a couple. Close enough that the waitress said *you two* when she brought the check, and neither of them corrected her, and Solar felt it land somewhere under her ribs and decided to let it stay there, just for the afternoon." }
       ] },
       { ifEpiRoute: 'cover', then: [
         { n: "Three of them at the back table, Hanni and Hyein on the bench and Solar across from them, which was how it had been since September, which was how it had been in another city for a whole year, and was how it was going to be, she'd decided, in any world that had a back table in it." },
         { s: 'hyein', f: 'happy', t: "Pop quiz. Whose cabin." },
-        { s: 'solar', t: "Someone's uncle's." },
+        { s: 'solar', f: 'happy', t: "Someone's uncle's." },
         { s: 'hanni', f: 'neutral', t: "Which road." },
-        { s: 'solar', t: "Dirt. Nobody remembers. That's the whole point of the dirt." },
+        { s: 'solar', f: 'happy', t: "Dirt. Nobody remembers. That's the whole point of the dirt." },
         { s: 'hyein', f: 'happy', t: "A plus. Honor roll. Hanni, she's ready for Thanksgiving next year." },
         { n: "They laughed until the waitress looked over. It was a terrible joke, about the worst thing that had ever happened to the three of them, and it was the funniest thing in the world, and Hanni paid for everything before anyone could stop her and said it was a Social Chair expense, which it absolutely was not." }
       ] },
@@ -846,7 +846,7 @@
       { n: "She waited for him at the player exit, the way she'd learned to, outside the gate, in the cold, because you didn't wander into a varsity building like you owned it even when your last name was on the donor wall. Film day. The season was over and they still had film, because the season was never really over, it just changed what it hurt." },
       { n: "He came out with a bag over one shoulder and his hood up and his good-player face on, the one he wore for the reporters and their father and anyone who might want something, and it softened about a quarter of an inch when he saw her, which for Jaehyun was a hug." },
       { s: 'jaehyun', f: 'neutral', t: "You didn't have to wait out here. It's eleven degrees." },
-      { s: 'solar', t: "You'd have walked right past me." },
+      { s: 'solar', f: 'serious', t: "You'd have walked right past me." },
       { s: 'jaehyun', f: 'neutral', t: "I'd have seen you." },
       { n: "He pulled his sleeve down when he reached for the door handle behind her. Fast, smooth, the way a quarterback moves a ball from one hand to the other so the defense never sees which. But she saw it anyway: a bruise on the inside of his wrist, purple going yellow, the size and shape of somebody else's helmet." },
       { choose: [
