@@ -1,6 +1,6 @@
 # Party skill trees, redesigned: the design sheet
 
-For Kat's sign-off before anything is built (roadmap section 4). Spoiler-free.
+Signed off by Kat on Oct 31 2026: the crowns as written, respec stays yen at the Velvet Room, classes and builds unchanged (roadmap section 4). Spoiler-free.
 
 ## How every tree works
 
@@ -147,8 +147,3 @@ Six new effects; each member's Solar ray uses two or three of them.
   - **Ambush:** first-turn damage and crits.
 - **Solar ray:** Assist (his strongest single hit), Baton, Kindling.
 - **Crown:** *Every Single Universe.* When Solar lands a critical, he strikes the same Shadow at once.
-
-## Questions for Kat
-1. Do the crowns feel right for each character?
-2. Should a respec stay yen at the Velvet Room, or become free once per in-game month?
-3. Anyone whose class or builds you'd change?

@@ -21,7 +21,8 @@ Kat's decisions:
 - Each member has a fixed class (as in P5X), not Solar's switchable forms; their tree offers versatile builds inside that class.
 - Approved Oct 31: classes Akihiko Striker, Yukari Medic, Junpei Guardian, Mitsuru Saboteur, Aigis Gunner, Ken Cleric, Koromaru Trickster, Shinjiro Berserker, Jihoon Hype-man, Minji Spotter, Jungwon Strategist, Haechan Assassin; three builds each.
 - Approved: 8 tiers, about 40 nodes each, points for roughly two of three builds (respec for the rest); drawn radially like Solar's sun, smaller orbits around her; top nodes need high link ranks and many boost Solar.
-- [ ] Design sheet per member for Kat's sign-off, then build
+- [x] Design sheet signed off Oct 31 (`FEMC-SKILL-TREES-DESIGN.md`)
+- [ ] Build it
 - [ ] Late-game branches so nobody maxes out early
 
 ## 5. Tartarus
