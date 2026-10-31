@@ -154,16 +154,9 @@ Redrawn in the realistic style and back in `data/epi/runners/world.js` `eventFac
 
 **Everyday Runners faces:** all redone in the new style as of Oct 30 2026 (batch 96).
 
-## Strangers outfits (ChatGPT): parked Oct 30 2026
+## Strangers outfits: done Oct 30 2026 (batch 103)
 
-Kat's call, as with Runners: the strangers event outfits come out until everyone's everyday strangers face is redone in the new realistic style, then get redrawn to match. Until then the Daeboreum night (2/24, Wolmido) show each person's everyday face. The old art is still in `assets/femc/portraits/`; to bring a set back, restore it in `data/epi/strangers/world.js` `eventFaces`.
-
-Old wiring, to restore:
-```js
-eventFaces: {
-  'strangers-daeboreum': { solar: 'solar-strangers-daeboreum', haechan: 'haechan-strangers-daeboreum', jungwon: 'jungwon-strangers-daeboreum', yunjin: 'yunjin-strangers-daeboreum' } // epi-s-moon (2/24, Wolmido)
-},
-```
+Redrawn in the realistic style and back in `data/epi/strangers/world.js` `eventFaces`: the Daeboreum night (Solar, Haechan, Jungwon, Yunjin, plus Chaewon and Kazuha, new).
 
 ## HOAX outfits (ChatGPT): parked Oct 30 2026
 

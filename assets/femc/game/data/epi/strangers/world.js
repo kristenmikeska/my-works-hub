@@ -134,9 +134,11 @@
       // batch 101: Kat's realistic Strangers set adds the boys and the household (Strangers-only folders).
       jay: 'jay-strangers', niki: 'niki-strangers', sunghoon: 'sunghoon-strangers', mrsbang: 'mrsbang-strangers', mroh: 'mroh-strangers',
       auntie: 'auntsong-strangers', pyo: 'pyo-strangers', seo: 'seo-strangers', minseok: 'minseok-strangers', aunt: 'hyesun-strangers' },
-    // Event outfits are parked until Kat redraws them in the new style (FEMC-ART-BACKBURNER "Strangers outfits"); those scenes show
-    // everyone's everyday strangers face meanwhile. The old map is kept there to restore.
-    eventFaces: {},
+    // Kat's realistic Daeboreum outfits (batch 103), back from the parked list; Chaewon and Kazuha are new.
+    eventFaces: {
+      'strangers-daeboreum': { solar: 'solar-strangers-daeboreum', haechan: 'haechan-strangers-daeboreum', jungwon: 'jungwon-strangers-daeboreum',
+        yunjin: 'yunjin-strangers-daeboreum', chaewon: 'chaewon-strangers-daeboreum', kazuha: 'kazuha-strangers-daeboreum' } // epi-s-moon (2/24, Wolmido)
+    },
     variants: {
       morning: {
         school: ["Before light, the house was already moving: the kitchen first, then the stairs, then her father's slippers going down to the paper at half past four.",

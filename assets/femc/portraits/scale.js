@@ -171,6 +171,8 @@ window.FEMC_PORTRAIT_SCALE = {
   'halmeoni-hoax': 0.8,
   'hayoon-hoax': 0.8,
   'jisung-runners-holiday': 0.93, // batch 102: Kat's realistic Runners outfit
+  'chaewon-strangers-daeboreum': 0.77, // batch 103: Kat's realistic Daeboreum outfit
+  'kazuha-strangers-daeboreum': 0.8, // batch 103: Kat's realistic Daeboreum outfit
   // batch 88: HOAX event outfits, eyes level with solar-hoax, jungwon-hoax and Jihoon's year face
   'solar-hoax-christmas': 0.9,
   'jungwon-hoax-christmas': 1.0,
@@ -193,10 +195,10 @@ window.FEMC_PORTRAIT_SCALE = {
   'cherry-hoax-newyear': 0.88,
   'jihoon-hoax-party': 1.06,
   'jihoon-hoax-newyear': 1.05,
-  'solar-strangers-daeboreum': 1.0,
-  'haechan-strangers-daeboreum': 0.94,
-  'jungwon-strangers-daeboreum': 0.95,
-  'yunjin-strangers-daeboreum': 0.98,
+  'solar-strangers-daeboreum': 0.8, // batch 103: Kat's realistic Daeboreum outfit
+  'haechan-strangers-daeboreum': 0.77, // batch 103: Kat's realistic Daeboreum outfit
+  'jungwon-strangers-daeboreum': 0.83, // batch 103: Kat's realistic Daeboreum outfit
+  'yunjin-strangers-daeboreum': 0.8, // batch 103: Kat's realistic Daeboreum outfit
   'solar-stay-hanami': 0.98,
   'akihiko-stay-hanami': 1.13,
   sunghoon: 0.95,
@@ -265,4 +267,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 25;
+window.FEMC_PORTRAIT_V = 26;
