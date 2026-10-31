@@ -174,3 +174,98 @@ eventFaces: {
       'hoax-newyear': { solar: 'solar-hoax-newyear', jungwon: 'jungwon-hoax-newyear', jihoon: 'jihoon-hoax-newyear', cherry: 'cherry-hoax-newyear' } // epi-h-new-year and epi-h-sebae (1/1)
 },
 ```
+
+
+## HOAX: the council's Christmas and party outfits (parked Oct 31 2026)
+
+Kat made the HOAX holiday set she wanted (batch 104); the council's Christmas and party sheets weren't part of it, so those scenes show their everyday HOAX faces. The prompts are kept here in case she wants them later.
+
+### HOAX: Christmas
+**[ ] Heeseung: Christmas** *(optional)*  
+Heeseung's face on Christmas in the HOAX epilogue.  
+Attach: Heeseung  
+Save as: `Heeseung-hoax-christmas-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a forest-green crewneck sweater over a white tee, a red knitted scarf. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+**[ ] Sunoo: Christmas** *(optional)*  
+Sunoo's face on Christmas in the HOAX epilogue.  
+Attach: Sunoo  
+Save as: `Sunoo-hoax-christmas-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a pastel pink sweater with a knitted cartoon snowman and a matching pom-pom beanie. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+**[ ] Sunghoon: Christmas** *(optional)*  
+Sunghoon's face on Christmas in the HOAX epilogue.  
+Attach: Sunghoon  
+Save as: `Sunghoon-hoax-christmas-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a grey ribbed turtleneck sweater under a long camel coat. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+**[ ] Jay: Christmas** *(optional)*  
+Jay's face on Christmas in the HOAX epilogue.  
+Attach: Jay  
+Save as: `Jay-hoax-christmas-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black-and-white fair-isle sweater with a small silver hoop earring. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+**[ ] Jake: Christmas** *(optional)*  
+Jake's face on Christmas in the HOAX epilogue.  
+Attach: Jake  
+Save as: `Jake-hoax-christmas-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a red-and-green striped sweater with a reindeer on the front, a Santa hat. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+**[ ] Niki: Christmas** *(optional)*  
+Niki's face on Christmas in the HOAX epilogue.  
+Attach: Niki  
+Save as: `Niki-hoax-christmas-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: an oversized cream hoodie with a knitted gingerbread-man patch, a red beanie. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+### HOAX: the winter-break party
+**[ ] Heeseung: the winter-break party** *(optional)*  
+Heeseung's face at the winter-break party in the HOAX epilogue.  
+Attach: Heeseung  
+Save as: `Heeseung-hoax-party-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a white shirt with the sleeves rolled up under a black vest. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+**[ ] Sunoo: the winter-break party** *(optional)*  
+Sunoo's face at the winter-break party in the HOAX epilogue.  
+Attach: Sunoo  
+Save as: `Sunoo-hoax-party-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a pink satin shirt with a sparkly brooch and a little glitter on his cheeks. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+**[ ] Sunghoon: the winter-break party** *(optional)*  
+Sunghoon's face at the winter-break party in the HOAX epilogue.  
+Attach: Sunghoon  
+Save as: `Sunghoon-hoax-party-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black turtleneck under a sharp grey blazer. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+**[ ] Jay: the winter-break party** *(optional)*  
+Jay's face at the winter-break party in the HOAX epilogue.  
+Attach: Jay  
+Save as: `Jay-hoax-party-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: an open black shirt over a white tank top, silver rings and a chain. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+**[ ] Jake: the winter-break party** *(optional)*  
+Jake's face at the winter-break party in the HOAX epilogue.  
+Attach: Jake  
+Save as: `Jake-hoax-party-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a denim jacket over a white tee, a paper party crown. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+**[ ] Niki: the winter-break party** *(optional)*  
+Niki's face at the winter-break party in the HOAX epilogue.  
+Attach: Niki  
+Save as: `Niki-hoax-party-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: an oversized graphic tee under a black bomber jacket, a light-up party necklace. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+### HOAX: New Year (Seollal)

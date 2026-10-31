@@ -30,7 +30,7 @@ Kat's fiction archive (13 worlds) plus FEMC mode, a Persona 3 Portable FeMC-styl
   - `FEMC-ART-LIST.md` is the art checklist.
   - `FEMC-ART-TODO.md` is Kat's list of art still to make: only art not yet made, each item with what it's for, a plain Attach list, a Save as name and a full paste-ready prompt. No technical notes in it.
   - `FEMC-ART-WIRING.md` holds the technical side of that list (where each item goes, tools, code hooks, the old appendix), keyed by item name. **When wiring art, use FEMC-ART-WIRING.md. After every art batch, remove the finished items from FEMC-ART-TODO.md (and their wiring entries), then re-verify the whole list against `assets/femc/` and `tools/femc-new-adds.json`, name by name for per-character lists, and fix its count.** Stale items have made Kat redo finished art.
-  - `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` are the image prompts Kat runs.
+  - `FEMC-ART-TODO.md` is the one image-prompt list Kat runs (cleaned Oct 31 2026; attachments copied into `Femc Mode Images/Place Prompt Attachments/`). The old `FEMC-CG-PROMPTS.md` and `FEMC-GEMINI-PROMPTS.md` are in `_archive/`.
 - **Cache-busting:** after editing a script, bump its `?v=` in the HTML.
   - Battle art uses `ART_V` in `battle.js`.
   - Story fights open `femc-battle.html` at a fresh URL every time (`ui.js battleSrc`, `&fresh=`), so the frame's page never comes from the browser cache; its scripts and styles still need their `?v=` bumps.
