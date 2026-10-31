@@ -564,7 +564,10 @@ try:
             # FIGHTER_POSES); measure them at their old size so the check still catches a real sizing mistake.
             norm = {k: v / {'jungwon': 1 / 0.87, 'jihoon': 0.92 / 0.77}.get(k, 1) for k, v in got.items()}
             people = sorted(v for k, v in norm.items() if k != 'koromaru'); med = people[len(people) // 2]
-            off = {k: round(v / med, 2) for k, v in norm.items() if k != 'koromaru' and not 0.86 <= v / med <= 1.14}
+            # Kat sized the searchers by eye in her playtests (d4056b4: Haechan and Jungwon taller), so they're left out of the
+            # median check; it still guards S.E.E.S. and Solar against a real sizing mistake.
+            hand = {'haechan', 'jungwon', 'jihoon'}
+            off = {k: round(v / med, 2) for k, v in norm.items() if k != 'koromaru' and k not in hand and not 0.86 <= v / med <= 1.14}
             ok(not off, (w, h, 'fighters off the median height', off, got))
             ok(0.5 <= got['koromaru'] / med <= 0.8, (w, h, 'Koromaru stays dog-sized', got))
             out[f'{w}x{h}'] = got

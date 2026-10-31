@@ -228,7 +228,7 @@ try:
           const afterNight={plumes:G.S.gacha.plumes-p0,tickets:G.S.inventory.capsule_ticket||0};
           h=G.makeHandoff('operation',{op:'empress'});res=G.simulate(h,'win');G.finishHandoff(res);G.applyResult(h,res);G.clearHandoff();
           return Object.assign(afterNight,{afterMoon:G.S.gacha.plumes-p0});})()""")
-        ok(r == {'plumes': 1, 'tickets': 1, 'afterMoon': 4}, f'a night: +1 plume and the ticket home; a full moon: +3: {r}')
+        ok(1 <= r['plumes'] <= 5 and r['tickets'] == 1 and r['afterMoon'] == r['plumes'] + 3, f'a night: its plumes (gacha.js nightPlumes, 1 + its tally) and the ticket home; a full moon: +3: {r}')
         clean(p, 'tickets')
         results['tickets'] = 'Hierophant ×2 (kept by the battle save, never in practice), ticket home from Tartarus, plumes 1/3'
 

@@ -94,7 +94,7 @@ def main():
         epi = p.eval("""Promise.all(['runners','hoax','strangers','stay','true'].map(w=>new Promise(r=>{const s=document.createElement('script');
           s.src='assets/femc/game/data/epi/'+w+'/world.js?t='+Date.now();s.onload=s.onerror=r;document.head.appendChild(s)}))).then(()=>{
           const out={};Object.entries(FEMC_EPI_WORLDS).forEach(([w,R])=>Object.entries(R.places?.music||{}).forEach(([k,v])=>{out[k]=[].concat(v).map(f=>f.includes('/')?f:'assets/femc/music/'+f+'.mp3')}));return out})""", timeout=60)
-        ok(len([k for k in epi if k.startswith(('epi-r-', 'epi-h-', 'epi-s-', 'epi-st-', 'epi-tr-'))]) == 66, f'epilogue moods: {len(epi)}')
+        ok(len([k for k in epi if k.startswith(('epi-r-', 'epi-h-', 'epi-s-', 'epi-st-', 'epi-tr-'))]) == 77, f'epilogue moods: {len(epi)}')
         efiles = sorted({f for v in epi.values() for f in v})
         missing = [f for f in efiles if not os.path.isfile(os.path.join(REPO, f))]
         ok(not missing, f'epilogue moods with missing files: {missing}')
@@ -109,7 +109,9 @@ def main():
         stand = {k for k, v in epi.items() if all(f.startswith('assets/femc/music/') and f[18:-4] in NEW_SONGS + ['tender-feeling', 'tranquility', 'iwatodai-dorm'] for f in v)}
         ok(stand == {'epi-st-home'}, f'moods still on a P3 track: {sorted(stand)}')
         pools = {k: v for k, v in epi.items() if len(v) > 1}
-        ok(set(pools) == {'epi-r-party', 'epi-r-regionals', 'epi-r-match', 'epi-r-romance', 'epi-r-holiday', 'epi-r-faceoff', 'epi-r-spice', 'epi-h-party', 'epi-h-newyear', 'epi-s-danger', 'epi-r-team'}, f'epilogue pools: {sorted(pools)}')
+        # fc8077e: each world's everyday screens (day / evening / late) rotate its own songs too.
+        screens = {f'epi-{w}-{t}' for w in 'rhs' for t in ('day', 'evening', 'late')} | {'epi-st-day', 'epi-st-evening'}
+        ok(set(pools) == screens | {'epi-r-party', 'epi-r-regionals', 'epi-r-match', 'epi-r-romance', 'epi-r-holiday', 'epi-r-faceoff', 'epi-r-spice', 'epi-h-party', 'epi-h-newyear', 'epi-s-danger', 'epi-r-team'}, f'epilogue pools: {sorted(pools)}')
         print(f'{len(epi)} epilogue moods: {len(efiles)} files exist and load, {len(pools)} pools, {len(EPI_SONGS)} gathered songs wired ({len(EPI_SPARES)} spares copied).', flush=True)
 
         # 2. Rotation: every pool, left and re-entered, starts a different file; a sequence of moods never starts the same file twice
