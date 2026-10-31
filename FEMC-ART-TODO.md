@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make:** the cover in pink and black ⭐ · 1 HOAX picture fix (4C). **Optional:** 15 wardrobe items · 4 Stay hanami face sheets. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make:** 1 HOAX picture fix (4C). **Optional:** 15 wardrobe items · 4 Stay hanami face sheets. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
@@ -12,13 +12,8 @@ Cleaned Oct 31 2026: only what's still to make. **Every attachment is in `Femc M
 
 ---
 
-## 1. ⭐ The cover in pink and black (ChatGPT)
-Kat kept the C3 style but went back to the game's original pink and black, and C3's blue and yellow now clash with the title screen. This is an edit: same picture, new colours.
-Attach: `Cover pink - picture to edit.png`
-Save as: `solstice-c3-pink.png`
-```
-Edit this image. Keep everything exactly the same: the composition, both characters, their faces, poses, hair, clothes and the art style. Change only the colours of the background and the light: the night sky becomes a deep black-plum instead of navy blue, the big diagonal slash and the sunrise become hot pink and rose with soft white light, the sun rays and clouds become pale pink and white, and the moon becomes pure white. Haenim's robes stay white and her ribbons become pale pink and white, with only tiny touches of gold on her crown and jewellery. Keep Solar's red bow and red armband as they are. The whole picture should read as pink, black and white, with just a few small gold accents. No text.
-```
+## 1. The cover
+*(Done Oct 31: the pink and black edit of C3 is the title art.)*
 
 ---
 
