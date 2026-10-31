@@ -119,8 +119,8 @@ button, input, select { font: inherit; color: inherit; }
 (() => {
   const A = '../../assets/femc/', $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const SETS = window.FEMC_PORTRAITS || {}, SCALE = window.FEMC_PORTRAIT_SCALE || {}, DROP = window.FEMC_PORTRAIT_DROP || {}, FACES = window.SOLSTICE_FACES || {};
-  /* Held back until Kat remakes them: the HOAX Christmas and party outfits */
-  for (const id of Object.keys(FACES)) if (/-hoax-(christmas|party)$/.test(id)) delete FACES[id];
+  /* Held back until Kat remakes them: the HOAX Christmas, party and New Year hanbok outfits */
+  for (const id of Object.keys(FACES)) if (/-hoax-(christmas|party|newyear)$/.test(id)) delete FACES[id];
   const KEY = 'solstice-placements';
   /* Starting nudges agreed with Kat (x and y in % of the screen, s = size multiplier on top of scale.js) */
   const SEED = { yukari: { x: -4.5 } };
