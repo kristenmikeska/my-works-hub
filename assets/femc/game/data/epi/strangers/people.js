@@ -183,9 +183,9 @@
       { n: "Once. Then nothing. Then once more." },
       { s: 'haechan', f: 'happy', t: "It's a different drip. That's progress." },
       { n: "Mrs. Bang took the hall rug out into the yard and beat it, hard, for some time. Her father appeared in the doorway with his reading glasses on their cord, looked at the ceiling, looked at the floor, looked at Haechan dripping in the middle of it." },
-      { s: 'appa', t: "Son." },
+      { s: 'appa', f: 'serious', t: "Son." },
       { s: 'haechan', f: 'neutral', t: "Chairman." },
-      { s: 'appa', t: "Leave it for the plumber." },
+      { s: 'appa', f: 'neutral', t: "Leave it for the plumber." },
       { s: 'haechan', f: 'neutral', t: "Yes, Chairman." },
       { n: "When he'd gone Haechan wiped his face on his sleeve and leaned on the counter beside her, close enough that his wet shoulder was nearly against hers, and lowered his voice under the sound of the rug." },
       { s: 'haechan', f: 'happy', t: "Seven seconds now. I timed it." },
@@ -386,15 +386,15 @@
       { n: "The study smelled of Esse Lights and old paper and the radiator, which was on too high, the way her father liked it, and the lamp on the desk made a yellow circle over the board and left the rest of the room to the dark: the shelves, Dal's cracked leather chair by the radiator, the clock on the wall that ticked like it had somewhere better to be." },
       { n: "Her father played the way he did everything, slowly, with his glasses down his nose on their cord, humming a trot song under his breath that stopped whenever he was about to do something cruel on the board. Jungwon played the way he did everything too. Quietly. Exactly. Taking each stone out of the bowl with his right hand and setting it down with the small clean click of a man who had never once in his life put a stone down and then wished he hadn't." },
       { n: "She sat on the arm of Dal's chair with her feet tucked under her and watched them not speak to each other. It was very loud." },
-      { s: 'appa', t: "Sol-ah. Who's winning." },
+      { s: 'appa', f: 'happy', t: "Sol-ah. Who's winning." },
       { s: 'solar', f: 'happy', t: "You are, Appa." },
-      { s: 'appa', t: "Wrong. Look again." },
+      { s: 'appa', f: 'happy', t: "Wrong. Look again." },
       { n: "She looked again. She didn't know how to look at a baduk board. She knew how to count, so she counted: the white stones and the black, the empty places, the little groups huddled in the corners like men on a quay in the rain. She couldn't make it mean anything. Jungwon, very politely, didn't look at her." },
       { n: "Minseok put his head round the door." },
       { s: 'minseok', f: 'neutral', t: "Chairman. The fruit man's at the gate. He says one of the boxes for the agasshi's fever went on the house account." },
-      { s: 'appa', t: "My sisters-in-law sent eleven boxes of fruit to a girl with a fever, and one of them sent it on my account." },
+      { s: 'appa', f: 'happy', t: "My sisters-in-law sent eleven boxes of fruit to a girl with a fever, and one of them sent it on my account." },
       { n: "He took his glasses off and polished them on his cardigan, slowly, which meant he was annoyed, and put them back on, and stood." },
-      { s: 'appa', t: "Don't touch my stones, Jungwon-ah." },
+      { s: 'appa', f: 'serious', t: "Don't touch my stones, Jungwon-ah." },
       { s: 'jungwon', f: 'neutral', t: "I wouldn't dream of it, Chairman." },
       { n: "The door shut behind him. His slippers went off down the hall. Jungwon looked at the board for a long moment. Then he looked at her, and the dimples came, and they were not polite ones." },
       { s: 'jungwon', f: 'happy', t: "Would you like to learn?" },
@@ -429,9 +429,9 @@
         ] }
       ] },
       { n: "Her father's slippers came back down the hall. They were both sitting exactly where they'd been, a very correct distance apart, when the door opened. He looked at the board. He looked at the white stone. He looked at his daughter in his chair." },
-      { s: 'appa', t: "Sol-ah. That's my game." },
+      { s: 'appa', f: 'happy', t: "Sol-ah. That's my game." },
       { s: 'jungwon', f: 'happy', t: "She's playing it very well, Chairman." },
-      { s: 'appa', t: "Then she's losing mine." },
+      { s: 'appa', f: 'happy', t: "Then she's losing mine." },
       { n: "But he sat down in Dal's chair instead of his own, and let her keep the seat, and leaned forward with his glasses down his nose to see what she'd done, and after a while, very quietly, he started to hum again." },
       { ifEpiRoute: 'haechan', then: [
         { n: "At ten Haechan put his head round the door on his way down the garden, looked at the board, looked at Jungwon, looked at her in her father's chair, and said nothing at all, which from him was a whole speech. Jungwon put a black stone down with a click that was perhaps very slightly louder than necessary." }
@@ -771,21 +771,21 @@
       { music: 'epi-s-family' },
       { n: "The study door was open a hand's width, which in this house was an invitation, and her father was at his desk under the lamp with the evening paper folded to the crossword and his reading glasses down his nose on their cord, and an Esse Light lying unlit in the ashtray beside him, because he didn't smoke in front of her and never had, though she'd been able to smell it on his cardigan since she was three." },
       { n: "He was humming. Something old and flat, a trot song from before she was born, the tune going round and round on the same four bars the way it did when he was thinking." },
-      { s: 'appa', t: "Sol-ah. Come and be clever." },
+      { s: 'appa', f: 'happy', t: "Sol-ah. Come and be clever." },
       { n: "She came. She sat on the arm of Dal's chair by the radiator, the cracked leather one, where Dal used to do the Sunday crossword with a pencil behind his ear and say every answer out loud whether he was right or not. Nobody sat in it properly unless her father pointed at it. She and her father sat on the arms." },
-      { s: 'appa', t: "Seven down. Two syllables." },
-      { s: 'appa', t: "'Comes twice a month, at the full moon and the dark. Also what you add to the pot.'" },
+      { s: 'appa', f: 'neutral', t: "Seven down. Two syllables." },
+      { s: 'appa', f: 'neutral', t: "'Comes twice a month, at the full moon and the dark. Also what you add to the pot.'" },
       { n: "He read it out in the voice he used for everything, soft, unhurried, the voice nobody in the port had interrupted in thirty years, and then looked at her over his glasses and waited." },
       { choose: [
         { t: "Sari.", stat: { knowledge: 1 }, then: [
           { n: "Spring tide. The big tides, the ones that came with the full moon and the new, when the water came highest and went out furthest and the mud ran out to the horizon. And sari, the noodles you dropped into the pot at the end, when the soup was nearly gone and nobody wanted to stop." },
           { n: "He looked at the puzzle. He looked at her. He wrote it in, in his small square blue capitals, very carefully, the way he wrote everything." },
-          { s: 'appa', t: "Your mother's daughter." },
+          { s: 'appa', f: 'happy', t: "Your mother's daughter." },
           { s: 'solar', f: 'happy', t: "Eomma doesn't know the tides." },
-          { s: 'appa', t: "No. But she'd have got the noodles first." }
+          { s: 'appa', f: 'happy', t: "No. But she'd have got the noodles first." }
         ] },
         { t: "Is it a tide?", then: [
-          { s: 'appa', t: "You tell me. You're the one who can't sleep at low water." },
+          { s: 'appa', f: 'neutral', t: "You tell me. You're the one who can't sleep at low water." },
           { n: "She thought. The full moon and the dark. The big tides, highest in and furthest out. And then the pot, and the noodles at the end of the soup, and it clicked, and she laughed out loud." },
           { s: 'solar', f: 'happy', t: "Sari." },
           { n: "He wrote it in, square and blue, and hummed the four bars again, pleased." }
@@ -794,24 +794,24 @@
       { flag: 'epi-s-sari' },
       { n: "They did the rest of it together. Or he did it, and read her the clues he already knew the answers to, so that she could say them, and pretended to write them in a moment after she did. She saw him do it. She let him. It was the oldest game in this study. He'd played it with her since she could read, at this desk, under this lamp, with her doing her homework under it and listening to everything." },
       { n: "When it was done he folded the paper and laid his glasses on top of it and looked at her for a while, the way he'd looked at her on the seventh stair, as if he were testing a board to see if it would hold his weight." },
-      { s: 'appa', t: "The fever suited you. You look rested." },
+      { s: 'appa', f: 'happy', t: "The fever suited you. You look rested." },
       { n: "There it was. Gently. Very gently. A man laying his palm flat on a board." },
       { choose: [
         { t: "I slept a lot.", then: [
           { n: "Light, a little rueful, with a shrug, the daughter's voice for parents and church. It was true, in a way. In another bed, in another country, for a year." },
-          { s: 'appa', t: "Good." },
+          { s: 'appa', f: 'neutral', t: "Good." },
           { n: "He said it as if he believed her. He polished his glasses on his cardigan, not slowly, not angrily, just polishing them, and put them back on." }
         ] },
         { t: "Mrs. Bang wouldn't let me out of bed.", stat: { charm: 1 }, then: [
-          { s: 'appa', t: "No. She wouldn't." },
+          { s: 'appa', f: 'sad', t: "No. She wouldn't." },
           { n: "He smiled a little at the paper. Mrs. Bang hadn't had the chance to keep her in bed or out of it. They both knew that. He let her say it anyway, the way he'd let her say the crossword answers he already knew." }
         ] }
       ] },
       { glitch: { strain: 1 } },
       { n: "He didn't ask anything else. He picked up the unlit Esse Light and turned it over in his fingers and put it down again." },
-      { s: 'appa', t: "Your mother says you're too thin." },
+      { s: 'appa', f: 'neutral', t: "Your mother says you're too thin." },
       { s: 'solar', f: 'happy', t: "Eomma says that every day." },
-      { s: 'appa', t: "She's right every day. Mrs. Bang's made soup. Go and eat some, Sol-ah, and then go to bed." },
+      { s: 'appa', f: 'neutral', t: "She's right every day. Mrs. Bang's made soup. Go and eat some, Sol-ah, and then go to bed." },
       { n: "At the door she looked back. He'd unfolded the paper again, to the back page, where there was a second crossword, the hard one, that he never finished and always started, and he was humming the four bars, and he didn't look up, and she knew from the back of his neck that he'd been listening to her go all the way to the door." }
     ] },
 
@@ -824,29 +824,29 @@
       { n: "Her father was at the board under the lamp, waiting for her, with the bowls set out and the black ones on his side because he always took black, he said, so that she'd have the advantage, and she'd never once in her life been able to use it. And in Dal's chair by the radiator, in his socks, with his feet up on the coal scuttle and his arms folded and his head back, Haechan was singing." },
       { n: "He was singing very well. He was singing so well that the man on the tape sounded tired. He did the little catch in the long notes and the slide down at the end of each line, and on the chorus her father joined in under his breath, without seeming to know he was doing it, humming the harmony an octave down." },
       { s: 'solar', f: 'surprised', t: "Appa. Is he allowed in here?" },
-      { s: 'appa', t: "He came to tell me the gate's fixed." },
+      { s: 'appa', f: 'neutral', t: "He came to tell me the gate's fixed." },
       { s: 'solar', f: 'happy', t: "The gate wasn't broken." },
-      { s: 'appa', t: "That's what I said. He's been telling me for an hour." },
+      { s: 'appa', f: 'happy', t: "That's what I said. He's been telling me for an hour." },
       { s: 'haechan', f: 'happy', t: "Evening, agasshi. Your father cheats." },
-      { s: 'appa', t: "Your father plays black, son. That's not cheating, that's generosity." },
+      { s: 'appa', f: 'happy', t: "Your father plays black, son. That's not cheating, that's generosity." },
       { n: "She sat down. They played. She was terrible, the way she was always terrible, counting every stone and then not trusting the count. Her father took one corner from her and then the next, slowly, with his glasses down his nose and the trot going, and every time he did, Haechan, from Dal's chair, sucked his teeth like an old man at a cockfight." },
       { s: 'haechan', f: 'neutral', t: "Not there, agasshi." },
       { s: 'solar', f: 'happy', t: "You don't know how to play." },
       { s: 'haechan', f: 'neutral', t: "I know how to lose. Dal taught me. That's the bit I'm good at." },
-      { s: 'appa', t: "Son. If you know so much, sit here." },
+      { s: 'appa', f: 'happy', t: "Son. If you know so much, sit here." },
       { s: 'haechan', f: 'neutral', t: "I'd beat you, Chairman. And then where would I sleep." },
       { n: "Her father laughed. A real one, short, surprised out of him, his shoulders going. She hadn't heard it since she got back. She hadn't, she realized, heard it since before Christmas." },
       { choose: [
         { t: "(Sing the chorus with them.)", stat: { charm: 1 }, then: [
           { n: "The chorus came round. She sang it. Flat, on purpose, the way her father did at weddings, and her father looked up from the board at her over his glasses, and then put his head back and sang it properly, full voice, the way she'd only ever heard him sing it in the car with the windows up. Haechan stopped singing entirely to listen to the Chairman of Haesong Shipping do the high bit." },
           { s: 'haechan', f: 'surprised', t: "Hoejangnim. You've been holding out on me for seven years." },
-          { s: 'appa', t: "Seven. And I'll hold out for seven more." }
+          { s: 'appa', f: 'happy', t: "Seven. And I'll hold out for seven more." }
         ] },
         { t: "(Put a stone down where Haechan says not to.)", stat: { courage: 1 }, then: [
           { n: "She put it down exactly where Haechan had said not there. Haechan put his hand over his eyes. Her father looked at the stone for a long time, polishing his glasses, slowly." },
-          { s: 'appa', t: "...Who taught you that?" },
+          { s: 'appa', f: 'surprised', t: "...Who taught you that?" },
           { s: 'solar', f: 'serious', t: "Nobody." },
-          { s: 'appa', t: "Then nobody's a better teacher than me. Again." }
+          { s: 'appa', f: 'happy', t: "Then nobody's a better teacher than me. Again." }
         ] },
         { t: "(Watch them instead of the board.)", stat: { kindness: 1 }, then: [
           { n: "She watched them. Her father with his glasses on their cord, humming. Haechan in Dal's chair with his feet on the scuttle, singing at the ceiling. They didn't look at each other. They didn't need to. Haechan knew every word of every song on side B because he'd learned them in the car with her father, at seventeen, eighteen, nineteen, all the long nights driving him home, and her father knew Haechan knew, and that was all. That was a whole conversation." }
@@ -859,9 +859,9 @@
         { n: "When her father went to turn the tape over, Haechan reached over from Dal's chair without getting up and moved one of her white stones half an inch, to a better place, with one finger, and was back in the chair with his arms folded before her father turned round. She looked at him. He looked at the ceiling and sang." }
       ] },
       { n: "She lost. Of course she lost. Her father counted it out for her, stone by stone, and wrote the score on the margin of his crossword in small square blue figures, and then, under it, as if it were nothing, the date. He did that. She'd only just noticed. Every game, the date." },
-      { s: 'appa', t: "Same time tomorrow, Sol-ah." },
+      { s: 'appa', f: 'neutral', t: "Same time tomorrow, Sol-ah." },
       { s: 'haechan', f: 'happy', t: "I'll be here, Chairman." },
-      { s: 'appa', t: "You weren't asked, son." },
+      { s: 'appa', f: 'serious', t: "You weren't asked, son." },
       { s: 'haechan', f: 'neutral', t: "I know. I'll be here anyway." }
     ] },
 
@@ -871,31 +871,31 @@
       { music: 'epi-s-family' },
       { n: "The doorstop in the study had been a cleat off her grandfather's first boat. Brass, two horns and a heavy base, worn bright in the middle where the rope had run over it for twenty years before the boat went for scrap and her grandfather unscrewed it from the deck with his own hands and carried it home on the bus. It had held the study door open her whole life. She'd never once seen anybody move it." },
       { n: "Tonight it was in her father's lap. And across his knees, coiled, there was a length of old rope, thick, tarred, grey with age, that smelled even from the door of salt and diesel and the bottom of a boat." },
-      { s: 'appa', t: "Shut the door, Sol-ah." },
+      { s: 'appa', f: 'serious', t: "Shut the door, Sol-ah." },
       { n: "She shut it. Without the cleat it swung, and she had to put her back against it. He watched her do that and nodded, as if that were the first part of the lesson." },
       { n: "He hadn't said anything at dinner, on Monday. When she'd flickered, when the light had gone through her, when Mrs. Bang's ladle hit the floor and her mother's hand went to her mouth and both boys were on their feet, her father had put his glasses down on the tablecloth, very slowly, the way he put them down when something had happened that he would have to think about for a long time. And then he'd picked up his spoon. And so had everybody else." },
       { n: "He hadn't said anything since. He didn't say anything now. He set the cleat on the desk under the lamp, screwed down to nothing, and held out the end of the rope." },
-      { s: 'appa', t: "Come here. Give me your hands." },
+      { s: 'appa', f: 'serious', t: "Come here. Give me your hands." },
       { s: 'solar', f: 'surprised', t: "Appa?" },
-      { s: 'appa', t: "Every Lee boy learns this on the quay before he's ten. I never let you near the ropes. Your mother would have had my head off, and she'd have been right." },
-      { s: 'appa', t: "You're not a boy and you're not ten. Give me your hands." },
+      { s: 'appa', f: 'serious', t: "Every Lee boy learns this on the quay before he's ten. I never let you near the ropes. Your mother would have had my head off, and she'd have been right." },
+      { s: 'appa', f: 'serious', t: "You're not a boy and you're not ten. Give me your hands." },
       { n: "She gave him her hands. He put the rope into them. It was heavier than it looked, and rougher, and colder, and he put his own hands over hers, the big square backs of them, the old ring, and showed her." },
       { n: "Round the far horn first. Then across the middle, over the top, and round the near horn, so it made a figure eight. Then again. Then a turn underneath, the rope folded back on itself so it locked, so that the harder the boat pulled the tighter it held." },
-      { s: 'appa', t: "Again." },
+      { s: 'appa', f: 'neutral', t: "Again." },
       { n: "She did it again. She got the locking turn wrong and the whole thing slid off the horn. He took it off and gave her the end." },
-      { s: 'appa', t: "Again." },
+      { s: 'appa', f: 'neutral', t: "Again." },
       { choose: [
         { t: "(Do it again. Slowly. Count the turns.)", stat: { proficiency: 1 }, then: [
           { n: "She counted. Round, one. Across, two. Round, three. Across, four. Under. Lock. She pulled, and it held, and she pulled harder, and it held harder." },
-          { s: 'appa', t: "You counted." },
+          { s: 'appa', f: 'surprised', t: "You counted." },
           { s: 'solar', f: 'happy', t: "You count money with your lips moving. I've seen you." },
           { n: "He looked, for a second, as if she'd hit him. Then he laughed, very quietly, through his nose." }
         ] },
         { t: "(Do it again with your eyes shut.)", stat: { courage: 1 }, then: [
           { n: "She shut her eyes. Round, across, round, across, under. She felt the rope bite and lock under her fingers in the dark, and opened her eyes, and it was right." },
-          { s: 'appa', t: "Who taught you to do things with your eyes shut." },
+          { s: 'appa', f: 'surprised', t: "Who taught you to do things with your eyes shut." },
           { s: 'solar', f: 'neutral', t: "You did. You used to make me find the light switch in the hall without turning anything on." },
-          { s: 'appa', t: "That was so you wouldn't wake your mother." },
+          { s: 'appa', f: 'neutral', t: "That was so you wouldn't wake your mother." },
           { s: 'solar', f: 'serious', t: "It was so I'd know where everything was in the dark." },
           { n: "He didn't argue. He looked at the knot." }
         ] }
@@ -906,8 +906,8 @@
       { n: "She asked anyway." },
       { s: 'solar', f: 'serious', t: "Appa. Why now?" },
       { n: "He looked at the cleat for a long time. At the knot she'd made on it. Under the lamp, his face had gone very old and very plain, the way it only did at four-thirty in the morning with the paper, when he thought there was nobody on the stairs." },
-      { s: 'appa', t: "So you can tie up." },
-      { s: 'appa', t: "Wherever you come in." },
+      { s: 'appa', f: 'serious', t: "So you can tie up." },
+      { s: 'appa', f: 'serious', t: "Wherever you come in." },
       { n: "That was all. That was the whole of it. He put his glasses back on, and picked up the paper, and found the crossword, and uncapped the blue ballpoint, and began, very quietly, to hum." },
       { n: "She didn't move for a while. Then she untied the knot, and coiled the old rope the way he'd coiled it, and put it back across the cleat, and set the cleat back on the floor against the door, where it had always been. He didn't look up. But when she let herself out, and the door stayed open behind her on its own, held, he stopped humming. Just for a second. Then he went on." }
     ] }
@@ -921,15 +921,15 @@
       { music: 'epi-s-family' },
       { n: "The sunroom in February was the only warm room in the house that didn't smell of food. It smelled of wet soil and the jasmine tea in the tin on the side table and, very faintly, her mother's perfume. The glass ran with condensation on the inside, so the garden outside was only green and grey shapes, and on every shelf the orchids stood in their pots with their long stems tied to bamboo canes, white and violet and a pale spotted yellow, the only things in the house her mother had ever been seen to talk to." },
       { n: "Her mother was in the tapestry chair with a cup in both hands. Not drinking. Holding it. Her hair was up, perfectly, the long black pin through it, and she wore a cream cardigan, and she looked, Solar thought, as if she had been sitting exactly like that, holding the cup exactly like that, for some time before anybody came." },
-      { s: 'eomma', t: "Sit down, Solar. There are cards to write." },
+      { s: 'eomma', f: 'serious', t: "Sit down, Solar. There are cards to write." },
       { n: "On the little table beside the chair there was a stack of thick cream cards with a single printed crane in the corner, and her mother's fountain pen, and a list in her mother's beautiful handwriting. Eleven names. Aunts, great-aunts, her father's cousin in Busan, the wife of the man who owned the fruit shop on the hill road." },
-      { s: 'eomma', t: "They sent fruit. While you were ill. One thanks people for fruit." },
+      { s: 'eomma', f: 'neutral', t: "They sent fruit. While you were ill. One thanks people for fruit." },
       { s: 'solar', f: 'neutral', t: "Eleven boxes." },
-      { s: 'eomma', t: "Eleven. Your aunt Hyesun sent three. She has always overcompensated." },
+      { s: 'eomma', f: 'happy', t: "Eleven. Your aunt Hyesun sent three. She has always overcompensated." },
       { n: "Solar sat on the low stool by the table and uncapped the pen. It was heavy and cold and very good and wrote like a wet brush. She wrote *Dear Aunt Hyesun* in her best hand, the hand her mother had made her practice at this table at eight years old, and stopped." },
-      { s: 'eomma', t: "'Thank you for the pears.'" },
+      { s: 'eomma', f: 'neutral', t: "'Thank you for the pears.'" },
       { n: "Solar wrote it." },
-      { s: 'eomma', t: "'They were the only thing I could eat.'" },
+      { s: 'eomma', f: 'neutral', t: "'They were the only thing I could eat.'" },
       { n: "Her mother said it without any change in her voice at all, looking at the orchids. Solar wrote it. Her hand was perfectly steady. She'd always been good at this. Her mother had made her good at this." },
       { choose: [
         { t: "(Write it exactly the way she says.)", then: [
@@ -939,22 +939,22 @@
         { t: "(Add something of your own to Aunt Hyesun's.)", stat: { kindness: 1 }, then: [
           { n: "Under *the only thing I could eat* she added, in a smaller hand, *I thought of you when I ate them. I hope your knee is better in the cold.* It wasn't a lie. It was the only line on the card that wasn't." },
           { n: "Her mother read it. Her eyes stayed on that last line a moment longer than on the others. Then she laid it on the pile face down, very gently, as if it might bruise." },
-          { s: 'eomma', t: "She'll cry. She'll ring me and cry." },
+          { s: 'eomma', f: 'happy', t: "She'll cry. She'll ring me and cry." },
           { s: 'solar', f: 'neutral', t: "Is that bad?" },
-          { s: 'eomma', t: "No. It's what she likes best." }
+          { s: 'eomma', f: 'happy', t: "No. It's what she likes best." }
         ] }
       ] },
       { flag: 'epi-s-cards' },
       { glitch: { strain: 1 } },
       { n: "Eleven cards. Eleven envelopes, which her mother addressed herself, because her hand was the one the aunts knew, and stamped with stamps from a little lacquer box, all straight, all the same distance from the corner." },
       { n: "When it was done, her mother turned the cup round in her hands, still not drinking it, and looked at the orchids." },
-      { s: 'eomma', t: "They sulk when you move them." },
+      { s: 'eomma', f: 'neutral', t: "They sulk when you move them." },
       { s: 'solar', f: 'neutral', t: "The orchids?" },
-      { s: 'eomma', t: "If you move them from one room to another. Or one window to the next. They drop every bud. They sulk for a month, sometimes two, and you think you've killed them." },
-      { s: 'eomma', t: "And then they bloom. Out of spite. Twice as hard as before." },
+      { s: 'eomma', f: 'neutral', t: "If you move them from one room to another. Or one window to the next. They drop every bud. They sulk for a month, sometimes two, and you think you've killed them." },
+      { s: 'eomma', f: 'happy', t: "And then they bloom. Out of spite. Twice as hard as before." },
       { n: "She said it to the orchids. Solar looked at the nearest one, the white one, with its long stem tied to the cane and a row of fat green buds along it, closed tight, and didn't say anything, and neither did her mother." },
       { n: "Then her mother put the cup down at last, untouched, and reached across and turned Solar's collar down where it had folded under, with two fingers, the way she'd done every morning before school for twelve years, and smoothed it flat, and left her hand there a moment on Solar's shoulder." },
-      { s: 'eomma', t: "Post them on your way out. Mr. Oh will take you." },
+      { s: 'eomma', f: 'neutral', t: "Post them on your way out. Mr. Oh will take you." },
       { n: "She didn't ask anything. She never had. She picked up a little brass mister from the shelf and began, one by one, to mist the orchids, and Solar went out with eleven lies in her coat pocket, written in the most beautiful hand in the family." }
     ] },
 
@@ -963,19 +963,19 @@
       place: 'Incheon · The Lee House · Her Room', time: 'Daytime', scene: [
       { music: 'epi-s-family' },
       { n: "Her mother was sitting on the end of Solar's bed when she came back from the bathroom with a towel round her wet hair, and there was a little lacquer dish of hairpins on the dressing table that hadn't been there before, and a brush that wasn't Solar's, and her mother's long black pin laid beside them on its own." },
-      { s: 'eomma', t: "Sit down." },
+      { s: 'eomma', f: 'serious', t: "Sit down." },
       { n: "Solar sat at the dressing table. Her mother stood behind her. In the mirror their faces were one above the other, the same face, twenty-nine years apart, and her mother looked at the two of them in the glass for a moment without doing anything, the way she might have looked at a ledger, and then took the towel off Solar's head and began." },
       { n: "She hadn't done Solar's hair since Solar was fifteen. Not since the day Solar had said she could do it herself and done it, badly and on purpose, and gone down to breakfast with it falling out, and her mother had looked at it across the table and said nothing, and that had been that." },
       { cg: 'epi-s-pins' },
       { n: "She brushed it out first. Long strokes, from the crown all the way down to the ends, the brush catching on the knots and her mother working each one out with her fingers, patiently, without pulling. Outside the window old snow lay over the garden, grey and still, the annex at the bottom of it nothing but a darker shape." },
-      { s: 'eomma', t: "You've lost weight." },
+      { s: 'eomma', f: 'serious', t: "You've lost weight." },
       { s: 'solar', f: 'serious', t: "Everybody keeps saying that." },
-      { s: 'eomma', t: "Everybody keeps being right." },
+      { s: 'eomma', f: 'sad', t: "Everybody keeps being right." },
       { n: "She twisted it up. She did it the way she did her own, the long rope of it turned over and over on itself and lifted, pinned close against the back of the head, every pin going in at the same angle, sliding home along the scalp without catching. Her hands were cool. They were very quick. Solar watched them in the mirror and counted the pins without meaning to." },
-      { s: 'eomma', t: "You're counting." },
+      { s: 'eomma', f: 'neutral', t: "You're counting." },
       { s: 'solar', f: 'serious', t: "Seven." },
-      { s: 'eomma', t: "There are always seven. Your grandmother used seven. A Lee daughter doesn't look undone." },
-      { s: 'eomma', t: "Not in public. Not in front of anybody who's going to talk about it." },
+      { s: 'eomma', f: 'serious', t: "There are always seven. Your grandmother used seven. A Lee daughter doesn't look undone." },
+      { s: 'eomma', f: 'serious', t: "Not in public. Not in front of anybody who's going to talk about it." },
       { n: "The long black pin last, through the whole of it, from one side to the other. Her mother set it, and turned Solar's head a little with her fingertips to look at it from the side in the glass, and then from the other." },
       { cg: null },
       { ifGlitch: 3, then: [
@@ -986,22 +986,22 @@
           { n: "Her mother didn't answer. She put her hands on Solar's shoulders, both of them, light, the way she'd done it before recitals, and left them there, and looked at the two faces in the mirror, one above the other." }
         ] },
         { t: "Can you leave it down? Just today?", stat: { courage: 1 }, then: [
-          { s: 'eomma', t: "Not in public." },
+          { s: 'eomma', f: 'serious', t: "Not in public." },
           { s: 'solar', f: 'serious', t: "I'm not going anywhere." },
           { n: "Her mother looked at her in the glass for a long moment. Then she reached up and drew out one pin, only one, from just behind Solar's ear, so that a single piece of hair came loose and lay against her neck. She put the pin in the dish." },
-          { s: 'eomma', t: "Then you're not in public." }
+          { s: 'eomma', f: 'neutral', t: "Then you're not in public." }
         ] },
         { t: "Teach me how you do the twist.", stat: { proficiency: 1 }, then: [
-          { s: 'eomma', t: "You know how." },
+          { s: 'eomma', f: 'neutral', t: "You know how." },
           { s: 'solar', f: 'sad', t: "I know how to do mine. I don't know how to do yours." },
           { n: "So her mother took it all down again, every pin, and did it again, slowly, with Solar's hands under hers, showing her the turn and the lift and where the thumb went to hold it, the way you'd show somebody how to fold a thing that had to be folded one way only." },
-          { s: 'eomma', t: "There. Now you know two ways." }
+          { s: 'eomma', f: 'happy', t: "There. Now you know two ways." }
         ] }
       ] },
       { n: "She picked up the dish of pins and the brush that wasn't Solar's and went to the door. At the door she stopped, and turned, and looked back at her daughter sitting at the dressing table with her hair up in the dust light." },
-      { s: 'eomma', t: "Tonight, take them out yourself. Don't sleep in them. You'll have a headache in the morning and you'll blame me." },
+      { s: 'eomma', f: 'neutral', t: "Tonight, take them out yourself. Don't sleep in them. You'll have a headache in the morning and you'll blame me." },
       { s: 'solar', f: 'happy', t: "I always blame you." },
-      { s: 'eomma', t: "Yes. You get that from your father." },
+      { s: 'eomma', f: 'happy', t: "Yes. You get that from your father." },
       { n: "She went out. Solar sat at the dressing table and looked at her own head in the glass, her mother's work on it, seven pins and the long black one, and touched it, very lightly, the way you'd touch something you'd been lent and would have to give back." }
     ] }
   ]);

@@ -147,7 +147,7 @@
           { s: 'haechan', f: 'happy', t: "Then tell him it was poisoned." }
         ], else: [
           { n: "From the top of the stairs, her father's soft voice came down into the hall, the voice nobody interrupted, mild as milk." },
-          { s: 'appa', t: "Sol-ah. Tell them they're both very frightening, and to stop it. I'm losing." }
+          { s: 'appa', f: 'happy', t: "Sol-ah. Tell them they're both very frightening, and to stop it. I'm losing." }
         ] }
       ] },
       { n: "When Sunghoon left with Jungwon at dusk the cup was on the shelf by the doorway, empty, rinsed, and turned upside down on a folded towel, the way Mrs. Bang turned them. Mrs. Bang looked at it and said nothing for the rest of the evening, and gave Pyo the good end of the fish." }
@@ -617,9 +617,9 @@
     { id: 'epi-s-rt-paper', slot: 'early', after: '2/18', until: '2/24', events: ['epi-s-home'], place: 'Incheon · The Lee House · Kitchen', time: 'Before Light', scene: [
       { n: "Half past four. She heard him on the stairs before she was properly awake, his slippers and the seventh stair's creak, and when she went down in her socks with her hair down he was at the kitchen table under the one light, the paper open, the reading glasses on their cord, an Esse Light unlit in the ashtray like a promise he'd made to somebody and was keeping for now." },
       { n: "The calendar on the wall beside him had already been turned. The number was one smaller than yesterday. He didn't look at it. He didn't look at her either, for a moment. Then he moved the second chair out from the table with his foot." },
-      { s: 'appa', t: "Tides. Inner harbor. Low water at—" },
+      { s: 'appa', f: 'neutral', t: "Tides. Inner harbor. Low water at—" },
       { s: 'solar', f: 'neutral', t: "Five forty-one." },
-      { s: 'appa', t: "Five forty-one." },
+      { s: 'appa', f: 'neutral', t: "Five forty-one." },
       { n: "He read it off the paper as if he were checking her, and turned the page, and that was all he said, and he didn't ask her anything, not one thing, and the not-asking sat on the table between them as solid as the teapot." },
       { choose: [
         { t: "(Sit with him till it gets light.)", stat: { kindness: 1 }, then: [

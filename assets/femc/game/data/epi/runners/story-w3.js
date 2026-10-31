@@ -696,7 +696,11 @@
       { n: "He said it to the snow. Aimed, fired, and then a look sideways to make sure she'd caught that he'd aimed it, and she had, and it went in somewhere under the jacket and stayed." },
       { n: "Once, when the wind came up off the quad and threw snow sideways across the ledge, he said something under his breath, a word she didn't know in a language she half did, low and automatic, the way you'd say *careful* to somebody on a boat. When she looked at him he was watching the bell tower, and his face said he hadn't heard himself at all. She didn't ask. She put it with the knob that wasn't on the shelf, and the hand that reached for a dial that wasn't there, and let the snow cover it." },
       { ifYear: { rank: { haechan: 10 } }, then: [
-        { n: "*You'll have no idea who I am for about five minutes,* he'd told her once, in another life, and he'd been right; on the first morning back she'd looked at him in a hallway and not known him for the longest five minutes of her life, and he'd stood there and timed it on his phone, and waited." }
+        { ifYear: { xmas: 'haechan' }, then: [
+          { n: "*You'll have no idea who I am for about five minutes,* he'd told her once, in another life, and he'd been right; on the first morning back she'd looked at him in a hallway and not known him for the longest five minutes of her life, and he'd stood there and timed it on his phone, and waited." }
+        ], else: [
+          { n: "*You'll have no idea who I am for about five minutes,* he'd told her once, in another life. He hadn't been standing in front of her when she came back, so nobody had timed anything; he'd kept the rule anyway, from across campus, the way he kept most of his promises to her, quietly and at a distance she was only now learning to measure." }
+        ] }
       ] },
       { n: "At five to midnight he took her hand. Not her wrist. Her hand, his glove off, his fingers cold and then not cold, laced through hers." }
     ] },

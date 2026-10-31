@@ -132,33 +132,33 @@
     { n: "Her father came in last. He'd been up since half past four, the way he always was, and he'd already read the paper, but he carried it in under his arm anyway, his reading glasses swinging on their cord, and he stopped by the stove to hum something at Auntie Song that made her flap a dish towel at him." },
     { n: "Then he went to the cupboard over the sink, the high one, and took down the little white kettle with the blue crane on it, and a cup so small it was really a thimble, and he came and stood beside her chair and poured." },
     { n: "Cold cheongju. Clear as water. It shivered in the cup when he set it down by her hand." },
-    { s: 'appa', t: "Gwibalgisul. So you'll hear good news all year." },
+    { s: 'appa', f: 'happy', t: "Gwibalgisul. So you'll hear good news all year." },
     { n: "He'd done it every Daeboreum since she was three. She knew because her mother had a photograph of it, a fat-cheeked girl in a red jacket making a face at a thimble, and the same white kettle, and the same hand pouring, younger." },
     { choose: [
       { t: "(Drink it.)", then: [
         { n: "She drank it in one go, the way you were supposed to, cold, so cold it hurt her teeth, and then a slow warmth behind it, all the way down." },
         { n: "He watched her do it. He watched the whole of it, the cup going up and the cup coming down, as if he were reading something written very small." },
-        { s: 'appa', t: "Good." },
+        { s: 'appa', f: 'neutral', t: "Good." },
         { n: "That was all. He put the kettle back in the cupboard. His hand rested on the top of her head for exactly as long as it took to walk past her chair." }
       ] },
       { t: "What good news, Appa?", stat: { kindness: 1 }, flag: 'epi-s-wine-asked', then: [
         { n: "He thought about it. He actually stopped, kettle in hand, and thought about it, and the people nearest them at the table went quiet to hear what he'd say." },
-        { s: 'appa', t: "Any. I'm not fussy this year." },
+        { s: 'appa', f: 'happy', t: "Any. I'm not fussy this year." },
         { n: "She drank it. It was very cold. It took a long time to go down." }
       ] },
       { t: "(Pour one for him too.)", stat: { charm: 1 }, then: [
         { n: "She took the kettle out of his hand before he could put it away and poured a second thimble and held it up to him, both hands, the way you hand an elder anything, and he looked at it as if no one had ever once thought of that." },
         { n: "He drank it. He made a face, a small one, because it was seven in the morning." },
-        { s: 'eomma', t: "It's too early for him." },
+        { s: 'eomma', f: 'neutral', t: "It's too early for him." },
         { n: "Her mother had come in behind them without a sound, in a cream cardigan, her hair already pinned. She said it to the room, not to either of them. On her way past Solar's chair her fingers brushed the back of Solar's right hand, once, lightly, over the jade ring, as if checking it was still on, and then she went to the stove and asked Auntie Song about the rice." }
       ] }
     ] },
     { n: "She'd forgotten about the game. That was the only excuse she had afterwards." },
-    { s: 'appa', t: "Sol-ah." },
+    { s: 'appa', f: 'neutral', t: "Sol-ah." },
     { s: 'solar', f: 'neutral', t: "Yes?" },
     { n: "The whole kitchen stopped. Yunjin's hands came down off her face. Haechan, mid-walnut, went still. At the far end of the table Jungwon put his spoon down with no sound at all." },
     { n: "Her father looked at her. Over the top of his glasses, with the paper under his arm and the morning coming in behind him off the sea, he looked at her for a long time, and she watched him decide." },
-    { s: 'appa', t: "...Nothing. Eat your rice." },
+    { s: 'appa', f: 'sad', t: "...Nothing. Eat your rice." },
     { s: 'yunjin', f: 'surprised', t: "He's supposed to say it. Isn't he supposed to say it? Mrs. Bang. He's supposed to say it." },
     { s: 'mrsbang', f: 'neutral', t: "Aigoo. He'd sooner sweat." },
     { n: "Her father went to his chair and sat down in it and opened the paper he'd already read and held it up in front of his face, and behind it, very quietly, he began to hum." },
@@ -341,10 +341,10 @@
     { n: "The baduk board in her father's study was older than she was, a slab of kaya wood gone the color of strong tea, the grid lines worn to a whisper at the corners where her grandfather's sleeves had rubbed them, and Jungwon sat at it across from her father with his coat folded over the arm of Dal's old chair and lost." },
     { n: "He lost slowly. That was what she noticed, from the window seat where she'd been told she could sit as long as she didn't talk. He lost so slowly and so gracefully, a stone at a time, over an hour and forty minutes, defending the wrong corner with tremendous care, that anyone who didn't know him would have thought he was fighting for his life." },
     { n: "Her father counted it out at the end the old way, filling in the territories with his thick fingers, his glasses on the end of his nose, humming." },
-    { s: 'appa', t: "One and a half." },
+    { s: 'appa', f: 'neutral', t: "One and a half." },
     { s: 'jungwon', f: 'happy', t: "Thank you for the lesson, Chairman. I learned a great deal." },
     { n: "Her father looked at him over his glasses for a long moment. Then he took them off and polished them on the end of his cardigan, not slowly, which meant he wasn't angry. He was trying not to laugh." },
-    { s: 'appa', t: "Next time lose by more. Then I'll believe it." },
+    { s: 'appa', f: 'happy', t: "Next time lose by more. Then I'll believe it." },
     { n: "He stood up and put a hand on the top of Solar's head on his way past the window seat, and went out, and they heard him on the stairs, humming, and the creak of the seventh, and his door." },
     { n: "Jungwon didn't move until the door had shut. Then he looked at her across the board, and his face went completely still." },
     { n: "Pleased, then. Very." },
@@ -444,15 +444,15 @@
     { n: "Her father looked at it. In eighteen years she'd never seen him take anything from anybody in a car. He took it. He unwrapped it with great care, folded the paper into a small square and put it in his breast pocket beside the glasses, and put the gum in his mouth, and chewed, slowly, looking straight ahead, with the expression of a man doing something for the first time in his life and not intending to discuss it." },
     { n: "In the rear-view mirror Mr. Oh's eyes went to the back seat, and stayed there a fraction too long, and went back to the road." },
     { n: "Her father opened his eyes. He looked out of his own window for a while at the sea going by. The coast road ran along the top of the seawall here, and below it, on the left, the water had gone a long way out, and the mud was shining under the moon, two nights past full, and it went on shining all the way to the horizon." },
-    { s: 'appa', t: "Sol-ah." },
+    { s: 'appa', f: 'neutral', t: "Sol-ah." },
     { s: 'solar', f: 'neutral', t: "Mm." },
-    { s: 'appa', t: "When you were—" },
+    { s: 'appa', f: 'serious', t: "When you were—" },
     { n: "He stopped." },
     { n: "She waited. She knew how to wait for him. She'd been waiting for him on stairs and in doorways and outside his study her whole life, and she knew the difference between him pausing and him stopping, and she sat very still and didn't breathe and waited to find out which one this was." },
     { n: "His hand moved on the seat between them. It came to rest on top of hers. Big, dry, warm, the knuckles thick, a hand that had held this whole city by the back of the neck for thirty years and held hers now as if it might come apart if he squeezed." },
-    { s: 'appa', t: "...The tide's out." },
+    { s: 'appa', f: 'sad', t: "...The tide's out." },
     { s: 'solar', f: 'neutral', t: "Since nine-forty. It'll turn at four." },
-    { s: 'appa', t: "Good." },
+    { s: 'appa', f: 'neutral', t: "Good." },
     { choose: [
       { t: "(Turn your hand over under his. Palm up.)", stat: { kindness: 1 }, then: [
         { n: "She turned her hand over under his, slowly, so that it wasn't under his any more but against it, palm to palm, the way she'd held it crossing roads when she was small enough for him to have to bend. His fingers didn't close. They didn't need to. They lay there along hers, heavy and warm, and she felt the pulse in his wrist going steadily against the heel of her hand, and counted it, because she counted, and lost count somewhere past the cranes, and didn't start again." }

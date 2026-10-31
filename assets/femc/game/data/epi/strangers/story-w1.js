@@ -74,27 +74,27 @@
     { n: "Her father looked up." },
     { n: "His reading glasses were hanging on their cord against his cardigan, and his face, without them, without the paper in front of it, was older than she'd left it, or she was only seeing it properly, the way you only see a room properly when you've been gone from it. There was grey at his temples she didn't remember being that grey. There was a crease down one cheek from the arm of the study chair. He'd been asleep in it, then. Or not asleep. Sitting." },
     { n: "He looked at her hair. Down, in the hall, before light, in this house where a Lee daughter did not look undone. He looked at it for a long moment, and his mouth did something small, and he didn't say anything about it." },
-    { s: 'appa', t: "Sol-ah." },
+    { s: 'appa', f: 'neutral', t: "Sol-ah." },
     { s: 'solar', f: 'neutral', t: "Appa." },
     { n: "He didn't come up. She came down, one stair, two, and sat on the eighth so that their heads were level, the way she'd sat on it when she was small and wanted to be told a story she'd already heard, and the wood was cold under her through the boat pajamas and she didn't care." },
     { n: "She waited for it. Her whole body arranged itself around the question the way you brace on a deck when you can feel the swell coming under the hull, her hands flat on her knees, the ring on her right hand turning under her thumb without her telling it to. Where. Where were you. Ten days. She had an answer. She'd had it ready since the dorm kitchen, smooth, true in the places that could be checked." },
     { n: "It didn't come." },
     { n: "He put his glasses on, as if he needed them to look at her, and then took them off again, and let them fall back against his chest on the cord." },
-    { s: 'appa', t: "Mrs. Bang's up. She'll want to feed you." },
-    { s: 'appa', t: "She's been up since three. She says it's the fish. It isn't the fish." },
+    { s: 'appa', f: 'neutral', t: "Mrs. Bang's up. She'll want to feed you." },
+    { s: 'appa', f: 'sad', t: "She's been up since three. She says it's the fish. It isn't the fish." },
     { n: "On the back step, she knew without looking, two koi were going round and round in their bucket under a skin of new ice. She'd heard Mrs. Bang breaking it with the ladle handle. A small sound, very careful, every few minutes, all night." },
-    { s: 'appa', t: "You had a fever." },
+    { s: 'appa', f: 'serious', t: "You had a fever." },
     { n: "He said it the way he read out the coastal forecast at breakfast to nobody in particular, the wind and the swell height and the visibility off Deokjeok, flat, factual, a thing that had happened to the weather." },
-    { s: 'appa', t: "Over Seollal. Thirty-nine point something. You couldn't come down for the bows." },
-    { s: 'appa', t: "Your aunts sent fruit. Pears, from Naju. Your aunt Hyesun sent hallabong, which you don't like, so I've been eating them." },
+    { s: 'appa', f: 'serious', t: "Over Seollal. Thirty-nine point something. You couldn't come down for the bows." },
+    { s: 'appa', f: 'happy', t: "Your aunts sent fruit. Pears, from Naju. Your aunt Hyesun sent hallabong, which you don't like, so I've been eating them." },
     { n: "She understood about halfway through the pears that it wasn't news." },
     { n: "It was a coat. He was standing on the seventh stair in his slippers at five in the morning, holding it out, open, at exactly the height of her shoulders, the way he'd held her school coat for her every winter morning until she was twelve and told him to stop, and he was waiting for her to put her arms in it. He'd had it ready a long time. Ten days, at least. Long enough to choose the number." },
     { n: "He didn't ask where she'd been. He wasn't going to. He knew she'd lie, and he'd decided, somewhere in those ten days, in that chair, that he would rather hand her the lie himself than make her build one in front of him. That was the gift. She could see the size of it. She could see what it had cost him not to ask, sitting there in the lamp-shape on the stairs with his glasses on their cord, and it nearly undid her, and she sat very still on the eighth stair, because when she was rattled she went stiller, and the shaking could come later, behind a door." },
     { choose: [
       { t: "...Thirty-nine point what?", stat: { charm: 1 }, then: [
         { s: 'solar', f: 'surprised', t: "Thirty-nine point what?" },
-        { s: 'appa', t: "Four." },
-        { s: 'appa', t: "Mrs. Bang will tell you. Mrs. Bang has told everybody. She told the man who reads the gas meter." },
+        { s: 'appa', f: 'neutral', t: "Four." },
+        { s: 'appa', f: 'happy', t: "Mrs. Bang will tell you. Mrs. Bang has told everybody. She told the man who reads the gas meter." },
         { n: "Something went at the corner of his mouth. Not a smile. The place a smile would have been in a less tired man." }
       ] },
       { t: "(Nod.)", then: [
@@ -103,15 +103,15 @@
       ] },
       { t: "I'm sorry, Appa.", stat: { kindness: 1 }, then: [
         { s: 'solar', f: 'sad', t: "I'm sorry, Appa." },
-        { s: 'appa', t: "For a fever?" },
+        { s: 'appa', f: 'neutral', t: "For a fever?" },
         { n: "He looked at her. For a moment something stood up behind his face, all of it, ten days of it, the chair and the lamp and the seventh stair every single night, and she watched him take hold of it and sit it back down." },
-        { s: 'appa', t: "People get fevers, Sol-ah." }
+        { s: 'appa', f: 'neutral', t: "People get fevers, Sol-ah." }
       ] }
     ] },
     { glitch: { strain: 1 } },
     { n: "Somewhere at the back of her head something thin went tight, like a line paid out too far and caught on a cleat. She noticed it. She put it away. She'd been putting things away in this house since she was eleven." },
     { flag: 'epi-s-fever' },
-    { s: 'appa', t: "Come down. It's cold up here." },
+    { s: 'appa', f: 'neutral', t: "Come down. It's cold up here." },
     { n: "He stood up first. He did it with a hand on the banister, slowly, and she heard his knee go, and he heard her hear it, and neither of them said anything about that either. On the way past the hall table he stopped and squared the comb against the edge of it with one finger, as if that were the thing that had been out of place all this time, and switched off the lamp in the study, and went down into the dark in his slippers." },
     { n: "She followed him three stairs behind, the way she'd followed him at five years old when she couldn't sleep and he'd pretended all the way to the kitchen not to know he had company. The seventh stair creaked under her. He didn't turn round. His shoulders did something small, under the cardigan, and went on down." },
 
@@ -345,10 +345,10 @@
     { s: 'solar', f: 'neutral', t: "Come in." },
     { n: "She came in. Cream cardigan, the pearl studs, her hair done the way it was always done, low and smooth and not one strand out of place at six in the evening on a Monday, which had always seemed to Solar like a kind of magic trick, or a threat. She closed the door behind her without a sound." },
     { n: "She looked at the hanbok before she looked at Solar. A long look. The kind she gave a ledger with a number in it she hadn't put there." },
-    { s: 'eomma', t: "It was pressed on the eighth." },
-    { s: 'eomma', t: "Mrs. Bang wanted to put it back in the paper. I told her to leave it where it was." },
+    { s: 'eomma', f: 'neutral', t: "It was pressed on the eighth." },
+    { s: 'eomma', f: 'neutral', t: "Mrs. Bang wanted to put it back in the paper. I told her to leave it where it was." },
     { n: "She didn't say why. Solar didn't ask. It hung between them in its plastic, pale green and deep rose, and both of them looked at it for a while like it was the third person in the room and had just said something neither of them wanted to answer." },
-    { s: 'eomma', t: "Sit down. Your hair's coming out at the back." },
+    { s: 'eomma', f: 'serious', t: "Sit down. Your hair's coming out at the back." },
 
     // The mirror.
     { n: "She sat at the dressing table. Her mother stood behind her and took the pins out, one at a time, and laid them in a row on the glass in the order they'd come out, the way she'd taught Solar to do it when she was seven and couldn't reach the mirror without kneeling on the stool. Then the brush. Long, slow strokes from the crown, the bristles dragging a little at the ends where the wave was." },
@@ -357,12 +357,12 @@
     { n: "Forty. Fifty-one. Sixty." },
     { n: "At sixty-three her mother put the brush down and picked up Solar's right hand from her lap, and turned it over, and back." },
     { n: "The jade ring had slipped round on her finger. The carving was facing her palm, the plain side out, the way it never sat, because it never moved, because it had fitted exactly since the day her grandmother's hands had put it there. Her mother turned it back with one finger so the carving faced out again, and held it there a moment, and let go. It slid round again almost at once." },
-    { s: 'eomma', t: "It's loose." },
+    { s: 'eomma', f: 'neutral', t: "It's loose." },
     { s: 'solar', f: 'neutral', t: "It's cold. My hands shrink in the cold." },
-    { s: 'eomma', t: "You've lost weight." },
+    { s: 'eomma', f: 'serious', t: "You've lost weight." },
     { n: "It wasn't a question. It was a figure entered in a column. Her mother looked at the ring a moment longer and then picked the brush back up." },
     { n: "Sixty-four. Sixty-five." },
-    { s: 'eomma', t: "Your father hasn't slept." },
+    { s: 'eomma', f: 'serious', t: "Your father hasn't slept." },
     { n: "She said it to the mirror. To the Solar in the mirror, not the one in the chair, very evenly, while the brush went down and down, and Solar watched her mother's face say it and didn't see one single thing move in it, and knew from that exactly how much it had cost." },
     { n: "Where. Now. This would be when. She felt it come up through the brush strokes, the question, the way you feel a boat's engine through the deck before you hear it." },
     { n: "It didn't come. Her mother went on brushing." },
@@ -373,8 +373,8 @@
       ] },
       { t: "He hasn't?", then: [
         { s: 'solar', f: 'surprised', t: "He hasn't?" },
-        { s: 'eomma', t: "He sits in the study. He says he's reading." },
-        { s: 'eomma', t: "Your father hasn't read a book since nineteen eighty-eight." },
+        { s: 'eomma', f: 'neutral', t: "He sits in the study. He says he's reading." },
+        { s: 'eomma', f: 'happy', t: "Your father hasn't read a book since nineteen eighty-eight." },
         { n: "Something happened at the corner of her mother's mouth in the mirror. It could have been the start of a smile, on another woman. Then it was gone, filed, and the brush went on." }
       ] },
       { t: "(Put your hand over hers on the brush.)", stat: { kindness: 1 }, then: [
@@ -387,8 +387,8 @@
 
     // Aunt Hyesun.
     { n: "Her mother's phone went in her cardigan pocket. She took it out, looked at the name, and something about her face set, the way plaster sets." },
-    { s: 'eomma', t: "Hyesun." },
-    { s: 'eomma', t: "She's rung every day. She wants to hear it from you." },
+    { s: 'eomma', f: 'neutral', t: "Hyesun." },
+    { s: 'eomma', f: 'neutral', t: "She's rung every day. She wants to hear it from you." },
     { n: "She held the phone out over Solar's shoulder. Not urging. Just holding it, at the height of her ear, the way her father had held out the fever on the stairs, so that all Solar had to do was turn her head." },
     { n: "Everybody knew the phones were listened to. Her mother knew it better than anyone. Whatever she said into this one she'd be saying to the room on the other end of it as well, whoever was sitting in it. The best lies were the ones you told to two people at once and both of them believed." },
     { s: 'solar', f: 'happy', t: "Gomo." },
@@ -423,7 +423,7 @@
     { s: 'aunt', f: 'happy', t: "I knew it. Rest! Eat! Don't talk! Put your mother on." },
     { n: "Her mother took the phone. She said *yes* four times, and *the pears were lovely*, and *she's tired, Hyesun*, and *yes*, and then she ended the call and put the phone back in her cardigan pocket and picked up the first of the pins from the glass." },
     { n: "She put Solar's hair back up. All of it, properly, the way it was supposed to go, every pin in the order it had come out. It wasn't late yet. A Lee daughter did not look undone before midnight, not even in her own room, not even this week." },
-    { s: 'eomma', t: "There." },
+    { s: 'eomma', f: 'neutral', t: "There." },
     { n: "She didn't ask where. She hadn't. She wasn't going to. Solar understood, watching her in the mirror tuck the last pin in with one precise push, that her mother had come up here to do exactly this, the pins and the brush and the ring and the phone, and nothing else, and had done it." },
     { n: "On her way out her mother stopped by the wardrobe and put her hand flat on the hanbok's plastic, smoothing it, from the shoulder down, once. Then she left it hanging where it was and went out, and closed the door without a sound." }
   ] },
@@ -441,14 +441,14 @@
     { place: 'Incheon · The Lee House · Stairs', time: 'Late Night', soft: true },
     { n: "He was sitting on the seventh stair in his cardigan with his reading glasses hanging on their cord, and on the stair beside him were two cups of barley tea, the old brown ones from the back of the cupboard, steam coming off both of them in the cold of the stairwell." },
     { n: "Two. He hadn't come up to see if she was awake. He'd come up knowing." },
-    { s: 'appa', t: "Mrs. Bang leaves the pot on the back of the stove. She thinks I don't know." },
+    { s: 'appa', f: 'neutral', t: "Mrs. Bang leaves the pot on the back of the stove. She thinks I don't know." },
     { n: "He held one up. She came down and took it and sat on the eighth stair, above him, where she'd sat on Sunday, and wrapped both hands round the cup. It was too hot to hold, nearly. She held it." },
     { n: "Neither of them said anything for a while." },
     { n: "Her father was very good at saying nothing. It was the loudest thing he did. In a room full of men shouting about money he could say nothing in a way that made every single one of them stop and look round to see what they'd done, and he was doing it now, on the stairs, at midnight, to her, gently, without seeming to try, and she sat in it the way you sit in a bath that's slightly too hot and you're not going to be the one to get out first." },
     { n: "The hall clock ticked at the bottom of the stairs. The tide was going out. She could feel it." },
-    { s: 'appa', t: "Thirty-nine point four is high, Sol-ah." },
+    { s: 'appa', f: 'serious', t: "Thirty-nine point four is high, Sol-ah." },
     { n: "He said it to the hall below them, not to her. Mildly. The way he'd step onto the deck of a boat he didn't trust and put his weight down on one board, slowly, and stand there, and listen to see what it said." },
-    { s: 'appa', t: "When you were small your fevers broke in the night. Always the night. You'd wake up wet through and ask for watermelon. In January. Your mother sent Mr. Oh to four markets once." },
+    { s: 'appa', f: 'sad', t: "When you were small your fevers broke in the night. Always the night. You'd wake up wet through and ask for watermelon. In January. Your mother sent Mr. Oh to four markets once." },
     { n: "The board. He was standing on it. Waiting to hear it creak." },
     { choose: [
       { t: "It broke on the third night. I asked for watermelon.", flag: 'epi-s-appa-lie', then: [
@@ -456,25 +456,25 @@
         { s: 'solar', f: 'happy', t: "I asked for watermelon." },
         { n: "It came out easily. That was the worst of it. Smooth and small and in exactly the right voice, a little sheepish, the voice of a girl who'd asked for watermelon in February and knew it was stupid, and she heard it come out of her own mouth and land on the stair between them, and hold." },
         { glitch: { strain: 1 } },
-        { s: 'appa', t: "There's no watermelon in February." },
+        { s: 'appa', f: 'sad', t: "There's no watermelon in February." },
         { s: 'solar', f: 'happy', t: "Mrs. Bang found one." },
         { n: "He looked at his tea. He nodded, slowly, as if that was exactly what Mrs. Bang would have done, which it was." },
-        { s: 'appa', t: "She would." },
+        { s: 'appa', f: 'sad', t: "She would." },
         { n: "The board held. He took his weight off it. Somewhere at the back of her head the cold wire went tight again, a notch further than before, and she felt it the way you feel the first ache in a tooth, and drank her tea round it." }
       ] },
       { t: "(Say nothing at all.)", flag: 'epi-s-appa-quiet', then: [
         { n: "She said nothing." },
         { n: "She held the cup and looked at the hall and gave him nothing back at all, not a lie and not the other thing, just the quiet, the same quiet he'd taught her, and she watched him hear it." },
         { n: "He nodded. Slowly. Like a man at a table who's been shown a hand he can't read and has decided he respects it." },
-        { s: 'appa', t: "No." },
+        { s: 'appa', f: 'neutral', t: "No." },
         { n: "That was all. *No.* As if she'd answered a question and he was agreeing with her." }
       ] },
       { t: "Appa. I wasn't sick.", needs: { courage: 2 }, then: [
         { s: 'solar', f: 'serious', t: "Appa. I wasn't—" },
         { n: "He put his hand up. Not fast. He just lifted it off his knee, palm out, the way he lifted it at the long table at Haesong when a man was about to say a number he'd regret, and she stopped." },
-        { s: 'appa', t: "Not yet, Sol-ah." },
+        { s: 'appa', f: 'serious', t: "Not yet, Sol-ah." },
         { n: "He didn't look at her. He looked at the hall, and the clock, and the front door at the end of it, with the bolt across." },
-        { s: 'appa', t: "When you tell me, I'd like to be sitting in a chair. A good one. And I'd like to have slept." },
+        { s: 'appa', f: 'serious', t: "When you tell me, I'd like to be sitting in a chair. A good one. And I'd like to have slept." },
         { n: "It was the closest thing to a joke he'd made since she was home, and it wasn't one. She closed her mouth. Her heart was going hard enough that the tea moved in the cup." }
       ] }
     ] },
@@ -491,13 +491,13 @@
     { n: "She looked at the clock. Both hands were straight up. Twelve. And the second hand, the thin brass one she'd watched sweep round its face her whole life, wasn't sweeping. It was stopped, standing on the twelve with the other two, all three of them pointing at the ceiling together like they'd been told to wait there." },
     { n: "The hall was very quiet. No tick. She could hear the house, and the sea under it, and her own heart, and nothing else." },
     { n: "Her father lifted his cup and drank from it. Steam came off it. It went past his glasses and fogged the bottom of one lens." },
-    { s: 'appa', t: "Still hot. She makes it too strong. I've told her." },
+    { s: 'appa', f: 'neutral', t: "Still hot. She makes it too strong. I've told her." },
     { n: "He hadn't noticed. Nothing in his face. He sat on the seventh stair with his hot tea and his fogged lens, a foot below her, in a different temperature, in a different minute, and the clock stood at twelve over both of them, and he didn't look round." },
     { n: "Then the second hand moved. One tick, loud as a dropped pin. Then another. The clock went on. The house went on." },
     { n: "Her tea didn't come back. It stayed cold in her hands, with its skin on it, and she held it anyway, very carefully, and didn't put it down, because putting it down would mean she'd have to explain why she wasn't drinking it." },
     { bond: { appa: 1 } },
     { n: "He finished his. He stood up, a hand on the banister, and his knees said something about it that he ignored." },
-    { s: 'appa', t: "Go to bed, Sol-ah. Leave the cup. I'll take it down." },
+    { s: 'appa', f: 'neutral', t: "Go to bed, Sol-ah. Leave the cup. I'll take it down." },
     { n: "She gave it to him. He took it without looking into it, and their fingers touched on the china, and he didn't say anything about her hands being warmer than her tea." },
     { n: "Then he went back down. The seventh stair creaked under him, the long low note, the other way. He always went back down." }
   ] },
@@ -969,13 +969,13 @@
         { n: "Her father was at the kitchen table with the paper." },
         { n: "At midnight. Which he never did. The paper was a half past four thing, a dawn thing, his glasses on and his lips moving over the shipping notices and the kettle going, and in twenty-one years she had never once come into this kitchen at night and found him at the table with the paper open in front of him under the long light, in his cardigan, with his glasses on, as if it were morning and he'd come down early to wait for something." },
         { n: "He looked up when she came in. He didn't seem surprised. He moved the basket of nuts six inches along the table, so there was room across from him." },
-        { s: 'appa', t: "Sol-ah. Sit." },
+        { s: 'appa', f: 'serious', t: "Sol-ah. Sit." },
         { n: "She sat. He went on reading. He'd folded the paper back to the inside page, she saw, the one with the tide tables for the week in small grey columns, and he was running one finger down Sunday's." },
         { ifFlag: 'epi-s-tables', then: [
-          { s: 'appa', t: "Low water tomorrow evening, ten to seven. High water just after one in the morning. Eight point nine meters. Big. It's the moon." },
+          { s: 'appa', f: 'neutral', t: "Low water tomorrow evening, ten to seven. High water just after one in the morning. Eight point nine meters. Big. It's the moon." },
           { n: "He read it out to her. He'd never once in her life read her a tide; she was the one who read tides, she'd been reading them to him since she was nine. She didn't correct him. She didn't check it in her head. She let him read it, and sat there in the long light and listened to her father tell her what the water would do, and believed him." }
         ], else: [
-          { s: 'appa', t: "Low water tomorrow evening, ten to seven. High water just after one in the morning. Eight point nine meters. Big. It's the moon." },
+          { s: 'appa', f: 'neutral', t: "Low water tomorrow evening, ten to seven. High water just after one in the morning. Eight point nine meters. Big. It's the moon." },
           { n: "He read it out to her. He'd never once in her life read her a tide; she'd been reading them to him since she was nine. She knew he was right. She let him read it anyway." }
         ] },
         { ifFlag: 'epi-s-appa-lie', then: [
@@ -987,9 +987,9 @@
         { n: "There was a pot of barley tea on the table between them, under a folded cloth to keep it warm, and two cups, and one of them was already poured. He hadn't been drinking from it. It was on her side." },
         { n: "She put her hands round it. It was still hot. He'd poured it a few minutes ago, then, not an hour ago; he'd heard her door, or her window, or nothing at all and poured it anyway, on the chance, and she held it and didn't ask which, and the steam came up into her face and smelled of every winter morning of her life." },
         { n: "He took a walnut out of the basket and turned it in his fingers. Then he put it down in front of her, very precisely, in the middle of the table, the way you'd lay a piece on a board." },
-        { s: 'appa', t: "For the morning. First bite. Your mother doesn't do it any more. She says it's for children and fishermen." },
+        { s: 'appa', f: 'happy', t: "For the morning. First bite. Your mother doesn't do it any more. She says it's for children and fishermen." },
         { s: 'solar', f: 'happy', t: "We're fishermen." },
-        { s: 'appa', t: "We move fish. It's not the same." },
+        { s: 'appa', f: 'neutral', t: "We move fish. It's not the same." },
         { choose: [
           { t: "(Crack it now. In your teeth.)", stat: { courage: 1 }, then: [
             { n: "She picked it up and put it between her back teeth and bit, before he could tell her it was for the morning, and it didn't crack. It sat there like a stone. She bit harder and something in her jaw made a small offended sound and the walnut didn't care at all." },
@@ -1004,7 +1004,7 @@
           ] }
         ] },
         { n: "Something went at the corner of his mouth. The place a smile would have been. He went back to the paper, and she sat across from him in the kitchen with the walnut in front of her and the koi going round in their bucket outside the door and the calendar saying 49 on its nail, and neither of them went to bed." },
-        { s: 'appa', t: "Go to bed, Sol-ah." },
+        { s: 'appa', f: 'neutral', t: "Go to bed, Sol-ah." },
         { s: 'solar', f: 'neutral', t: "In a minute." },
         { n: "He turned the page. He didn't make her go. It was midnight, and the paper was a dawn thing, and he'd brought it down at midnight anyway, and sat under the long light with it open at the tides, and she understood, watching him not read it, that he'd been waiting to see which door she'd come through, and that he'd hoped, without letting himself hope, that it would be this one." },
         { bond: { appa: 1 } }
