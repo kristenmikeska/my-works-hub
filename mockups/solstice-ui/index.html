@@ -198,7 +198,7 @@ html[data-pal="dawn"] .tt .sl-logo text[fill] { fill: #ffd36b; }
 .dl .art { --ph: min(78vh, 38vw); top: 22vh; height: var(--ph); }
 .dl .art img { width: auto; height: 100%; }
 /* The speaker hangs from the face, not the picture's edge: their face centre lands at --fcx whatever the framing */
-.dl .art.left { --fcx: 12.5vw; left: calc(var(--fcx) - var(--ph) * var(--ar, .914) * var(--cx, .66)); }
+.dl .art.left { --fcx: 17vw; left: calc(var(--fcx) + var(--nx, 0vw) - var(--ph) * var(--ar, .914) * var(--cx, .66)); }
 .dl .art.left img { filter: drop-shadow(-14px 4px 0 var(--indigo)) drop-shadow(8px 0 0 var(--gold)); }
 .dl .art.right { right: 0; transform: scaleX(-1); opacity: .96; }
 .dl .art.right img { filter: drop-shadow(-14px 4px 0 var(--indigo)) brightness(.86) saturate(.9); }
@@ -542,6 +542,8 @@ html[data-pal="dawn"] .tt .sl-logo text[fill] { fill: #ffd36b; }
   }
   $$('[data-fig="solar"]').forEach(el => figure(el, 'solar', 'Solar'));
   /* Party icons: each neutral portrait's face centre and eye-to-chin height, so every face fills its box the same way */
+  /* Per-character nudge for the dialogue speaker, for art whose hair or shoulders sit wide of the face */
+  const NUDGE = { yukari: '-4.5vw' };
   const FACE = { solar: [1.013, .46, .51, .22], junpei: [.914, .66, .515, .23], yukari: [.883, .39, .535, .21], akihiko: [.982, .32, .54, .22] };
 
   /* Slanted list builder: zig-zag stagger like Reload */
@@ -623,6 +625,7 @@ html[data-pal="dawn"] .tt .sl-logo text[fill] { fill: #ffd36b; }
     const art = $('.art.left', talk), img = $('img', art), src = `${A}portraits/${s.face}.webp`;
     if (!img.src.endsWith(src.replace('../../', ''))) img.src = src;
     const [ar, cx] = FACE[s.face.split('/')[0]]; art.style.setProperty('--ar', ar); art.style.setProperty('--cx', cx);
+    art.style.setProperty('--nx', NUDGE[s.face.split('/')[0]] || '0vw');
     art.classList.remove('speaking'); void art.offsetWidth; art.classList.add('speaking');
     type(Array.isArray(s.text) ? s.text[pick] : s.text);
   }
