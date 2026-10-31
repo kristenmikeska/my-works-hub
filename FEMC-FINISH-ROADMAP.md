@@ -19,7 +19,9 @@ Places that still borrow a Persona 3 or main-game background:
 Kat's decisions:
 - Every party member gets a deep tree like Solar's, with a twist so Solar stays the strongest; the others should keep up, not match her.
 - Each member has a fixed class (as in P5X), not Solar's switchable forms; their tree offers versatile builds inside that class.
-- [ ] Assign classes and design the trees (proposal below, to talk through)
+- Approved Oct 31: classes Akihiko Striker, Yukari Medic, Junpei Guardian, Mitsuru Saboteur, Aigis Gunner, Ken Cleric, Koromaru Trickster, Shinjiro Berserker, Jihoon Hype-man, Minji Spotter, Jungwon Strategist, Haechan Assassin; three builds each.
+- Approved: 8 tiers, about 40 nodes each, points for roughly two of three builds (respec for the rest); drawn radially like Solar's sun, smaller orbits around her; top nodes need high link ranks and many boost Solar.
+- [ ] Design sheet per member for Kat's sign-off, then build
 - [ ] Late-game branches so nobody maxes out early
 
 ## 5. Tartarus
@@ -28,12 +30,13 @@ Kat's decisions:
 - [ ] More bosses: a guardian per block, plus optional superbosses up top
 - [ ] Better rewards: Velvet Plumes from guardians and rare events
 - [ ] Random events every few floors (funny, scary, lore, romantic)
-- [ ] The climb past 254 to 350-400, with its own story and lore as in P3; brutal past ~300, meant for NG+ and high levels
+- [ ] The climb past 254 to 400, New Game+ only (approved Oct 31): three blocks above the Monad built from Syracuse (255-300), Incheon (301-350) and Hanlim (351-399), floor 400 tied to Solstice's heart with the final superboss; a scene on arrival and at each summit, a guardian, its own events, Fuuka. Claude names the blocks and writes the story (Kat approves structure, not plot).
 - Difficulty stays set by floor, not by the player's level.
 
 ## 6. Epilogue depth
 - [ ] Longer, deeper scenes, paired with the new backgrounds from 3
 
 ## 7. UI revamp (last)
-- Close to P3 Reload, with its own Solstice identity. Kat is gathering reference screenshots from Reload.
+- Close to P3 Reload, with its own Solstice identity. Kat's references: `Femc Mode Images/Inspo` (not `Skin Inspo`). Approved direction: giant ghost words, bold italic slanted lists, art bleeding off the edge, angular text box with an arrow name tag; indigo-to-gold by day, green and black in the Dark Hour, gold selection slash, a sun and moon in the date box.
+- [ ] Mock up one screen for Kat first
 - [ ] Brainstorm the Solstice style from Kat's references, then restyle one area at a time: menus, battle HUD, Tartarus, dialogue
