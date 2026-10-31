@@ -22,7 +22,7 @@ Kat's decisions:
 - Approved Oct 31: classes Akihiko Striker, Yukari Medic, Junpei Guardian, Mitsuru Saboteur, Aigis Gunner, Ken Cleric, Koromaru Trickster, Shinjiro Berserker, Jihoon Hype-man, Minji Spotter, Jungwon Strategist, Haechan Assassin; three builds each.
 - Approved: 8 tiers, about 40 nodes each, points for roughly two of three builds (respec for the rest); drawn radially like Solar's sun, smaller orbits around her; top nodes need high link ranks and many boost Solar.
 - [x] Design sheet signed off Oct 31 (`FEMC-SKILL-TREES-DESIGN.md`)
-- [ ] Build it
+- [x] Build it (Oct 31: the orbits are in; CLAUDE.md "Party skill trees, redesigned: built")
 - [ ] Late-game branches so nobody maxes out early
 
 ## 5. Tartarus
