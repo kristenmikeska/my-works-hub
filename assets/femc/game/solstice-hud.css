@@ -1,0 +1,198 @@
+/* Solstice restyle, part 4: the field HUD and the home screens (the dorm's "Tonight", the Go Out map and area headings, the
+   epilogue worlds' Where-to list), in the P3 Reload language of the new main menu (solstice-menu.css) and Kat's mockup
+   (mockups/solstice-ui screens 1 and 2). The game's pink and black only (Kat, Oct 31: no gold-heavy, lilac, navy or green UI;
+   the Dark Hour is the same pink and black, darker). Loaded after solstice-menu.css. Layout and looks only: every class the
+   scripts and tests read (.g-date, .g-slot, .g-yen, .g-moon, .g-wx, [data-ui], [data-n]) is still there with the same text. */
+
+.g-hud, .g-main { --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; }
+
+/* ── The HUD: no bar. Buttons and wallet top left, the date box top right, a dark fade behind ── */
+.g-hud { display: flex; flex-wrap: nowrap; align-items: flex-start; justify-content: space-between; gap: 10px 24px;
+  padding: clamp(10px, 1.9vh, 18px) var(--pad) clamp(4px, 1vh, 10px); border: 0;
+  background: linear-gradient(180deg, rgba(10, 3, 8, .92), rgba(10, 3, 8, .62) 62%, rgba(10, 3, 8, 0)); }
+.g-hud.dark { background: linear-gradient(180deg, rgba(0, 0, 0, .96), rgba(0, 0, 0, .7) 62%, rgba(0, 0, 0, 0)); }
+.g-hud-l { display: grid; gap: 10px; justify-items: start; min-width: 0; }
+
+/* Menu / Phone / Save / settings: compact slanted P3R buttons */
+.g-hud .g-menu { display: flex; flex-wrap: nowrap; gap: 7px; margin: 0; }
+.g-hud .g-menu button { padding: 7px 15px 7px 14px; border: 0; border-left: 3px solid var(--pink); background: rgba(12, 3, 9, .88); color: var(--paper);
+  font: italic 900 15px/1 var(--cond); letter-spacing: .1em; text-transform: uppercase; transform: skewX(-14deg); box-shadow: 3px 3px 0 rgba(255, 79, 158, .5);
+  transition: background .12s, color .12s, transform .14s cubic-bezier(.2, .9, .3, 1.4), box-shadow .12s; }
+.g-hud .g-menu .g-menu-main { border-left-color: var(--paper); background: var(--pink); color: #fff; box-shadow: 3px 3px 0 var(--deep); }
+.g-hud .g-menu button:is(:hover, :focus-visible) { background: var(--paper); color: var(--deep); border-left-color: var(--pink); outline: none;
+  transform: skewX(-14deg) translateY(-2px); box-shadow: 5px 5px 0 var(--pink); }
+.g-hud .g-menu button:focus-visible { outline: 2px solid var(--pink-3); outline-offset: 3px; }
+.g-hud .g-menu em { top: -9px; right: -8px; background: var(--paper); color: var(--deep); box-shadow: 2px 2px 0 var(--pink); }
+
+/* Condition and wallet: a slanted chip and a paper tag */
+.g-hud .g-me { display: flex; gap: 10px; align-items: center; }
+.g-hud .g-cond { padding: 5px 11px; border: 1.5px solid var(--pink-2); background: rgba(12, 3, 9, .85); color: var(--paper); font: italic 900 13px/1 var(--cond); letter-spacing: .14em; transform: skewX(-12deg); }
+.g-hud .g-cond.c-great { border-color: var(--paper); background: var(--pink); color: #fff; }
+.g-hud .g-cond.c-tired { border-color: var(--pink-2); color: var(--pink-2); border-style: dashed; }
+.g-hud .g-cond.c-sick { border-color: #ff5c7a; background: rgba(60, 4, 18, .9); color: #ffd0da; }
+.g-hud .g-yen { padding: 4px 18px 5px 10px; border: 0; background: var(--paper); color: var(--deep); font: italic 900 clamp(20px, 1.8vw, 24px)/1 var(--cond); letter-spacing: .01em;
+  transform: skewX(-12deg); box-shadow: 4px 4px 0 var(--pink); }
+
+/* The date box: big italic digits, the paper weekday tag, the weather and moon, the time of day under it, a ghost word behind */
+.g-hud-day { position: relative; z-index: 0; display: grid; justify-items: end; flex: none; padding: 4px 2px 0 0; text-align: right; }
+.g-hud-ghost { position: absolute; z-index: -1; right: -10px; top: -8px; font: italic 900 clamp(50px, 6.4vw, 88px)/.8 var(--cond); letter-spacing: -.01em;
+  color: transparent; white-space: nowrap; text-transform: uppercase; pointer-events: none; user-select: none;
+  -webkit-text-stroke: 1.5px rgba(255, 140, 192, .5); background: linear-gradient(90deg, rgba(255, 79, 158, 0), rgba(255, 79, 158, .26)); -webkit-background-clip: text; background-clip: text; }
+.g-hud.dark .g-hud-ghost { -webkit-text-stroke-color: rgba(255, 140, 192, .3); }
+.g-hud-row { display: flex; align-items: center; gap: 12px; }
+.g-hud .g-date { display: flex; align-items: flex-start; gap: 0; padding: 0; background: none; box-shadow: none; transform: none; }
+.g-hud .g-date > * { transform: none; }
+.g-hud .g-date b { font: italic 900 clamp(40px, 4.4vw, 58px)/.88 var(--cond); letter-spacing: -.01em; color: var(--paper); text-shadow: 3px 3px 0 var(--deep), 0 0 16px rgba(12, 3, 9, .9); }
+.g-hud .g-date small { margin: 3px 0 0 8px; padding: 3px 12px 3px 8px; background: var(--paper); color: var(--deep); font: italic 800 clamp(14px, 1.4vw, 18px)/1 var(--cond);
+  letter-spacing: .05em; text-transform: uppercase; clip-path: polygon(0 0, 100% 0, 86% 100%, 0 100%); }
+.g-hud .g-sky { gap: 6px; }
+.g-hud .g-sky span, .g-hud .g-sky button.g-wx { width: 36px; height: 36px; border: 1.5px solid rgba(255, 140, 192, .55); background: rgba(12, 3, 9, .82); transform: skewX(-10deg); }
+.g-hud .g-sky button.g-wx:is(:hover, :focus-visible) { border-color: var(--paper); background: var(--violet); outline: none; }
+.g-hud .g-sky button.g-wx:focus-visible { outline: 2px solid var(--pink-3); outline-offset: 2px; }
+.g-hud .g-when { display: flex; align-items: baseline; justify-content: flex-end; gap: 8px; margin: 5px 0 0; min-width: 0; max-width: 100%; }
+/* (.g-slot is also the save list's card class: undo that here) */
+.g-hud .g-slot { display: block; padding: 0; border: 0; background: none; box-shadow: none; opacity: 1; transform: none; white-space: nowrap;
+  font: italic 500 clamp(18px, 1.7vw, 22px)/1.1 var(--serif); letter-spacing: .02em; text-transform: none; color: var(--pink-2); text-shadow: 2px 2px 0 var(--deep), 0 0 12px rgba(12, 3, 9, .9); }
+.g-hud .g-label { min-width: 0; padding: 3px 10px 3px 7px; background: var(--pink); color: #fff; font: italic 800 11px/1 var(--cond); letter-spacing: .16em; clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%); }
+.g-hud.dark .g-slot { color: var(--pink); }
+.g-hud.dark .g-date b { text-shadow: 3px 3px 0 #000, 0 0 18px rgba(255, 79, 158, .35); }
+
+/* Toasts start under the date box */
+.g-toasts { top: clamp(108px, 15vh, 128px); }
+
+/* ── Headings: a big slanted word over a ghost word, the kicker with a pink slash ── */
+.g-map-head { position: relative; z-index: 0; }
+.g-map-head[data-ghost]::before { content: attr(data-ghost); position: absolute; z-index: -1; left: -.04em; top: -.1em; font: italic 900 clamp(84px, 12vw, 180px)/.8 var(--cond);
+  right: 0; overflow: hidden; letter-spacing: -.02em; text-transform: uppercase; white-space: nowrap; color: rgba(255, 140, 192, .09); transform: rotate(-4deg); transform-origin: 0 100%; pointer-events: none; }
+.g-map-head .g-kicker { display: flex; align-items: center; gap: 10px; color: var(--pink-2); text-shadow: 2px 2px 0 rgba(12, 3, 9, .8); }
+.g-map-head .g-kicker::before { content: ""; flex: none; width: 34px; height: 5px; background: var(--pink); transform: skewX(-30deg); }
+.g-map-head h1 { margin-top: .14em; padding-right: .12em; font: italic 900 clamp(52px, 7.2vw, 100px)/.86 var(--cond); letter-spacing: -.005em; text-transform: uppercase; color: var(--paper);
+  transform: rotate(-3deg) skewX(-4deg); transform-origin: 0 100%; text-shadow: .05em .05em 0 var(--pink), 0 0 26px rgba(12, 3, 9, .6); }
+.g-map-sub { font: italic 500 clamp(16px, 1.5vw, 19px)/1.3 var(--serif); color: var(--pink-3); text-shadow: 0 0 10px rgba(12, 3, 9, .9), 2px 2px 0 rgba(12, 3, 9, .7); }
+
+.g-areaview .g-map-head h1 { font-size: clamp(44px, 5.4vw, 78px); }
+
+/* ── The dorm at night: angular cards, big italic names, a pink slash and a paper bar on the chosen one ── */
+.g-nights { grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); gap: 16px 24px; padding: 6px 14px 12px 6px; }
+.g-dorm .g-night, .g-epi-act:not(.g-glx-station) { position: relative; z-index: 0; overflow: visible; min-height: 84px; margin: 0; padding: 12px 22px 12px 20px; border: 0; border-radius: 0;
+  background: none; box-shadow: none; color: var(--paper); text-align: left; transform: skewX(-10deg); transition: transform .16s cubic-bezier(.2, .9, .3, 1.4), color .12s; }
+.g-dorm .g-night > *, .g-epi-act:not(.g-glx-station) > * { transform: skewX(10deg); }
+/* ::after is the card, ::before the slash behind it (both under the text) */
+.g-dorm .g-night::after, .g-epi-act:not(.g-glx-station)::after { content: ""; position: absolute; z-index: -1; inset: 0; border-left: 4px solid var(--pink);
+  background: linear-gradient(100deg, rgba(12, 3, 9, .93), rgba(28, 9, 22, .9)); box-shadow: 5px 5px 0 rgba(255, 79, 158, .42); transition: background .12s, box-shadow .12s; }
+.g-dorm .g-night::before, .g-epi-act:not(.g-glx-station)::before { content: ""; position: absolute; z-index: -1; left: -22px; right: -30px; top: -11px; bottom: -13px; opacity: 0; pointer-events: none;
+  background: linear-gradient(100deg, var(--pink) 0%, var(--pink-2) 55%, var(--pink) 100%); clip-path: polygon(0 66%, 100% 0, 100% 30%, 3% 100%); }
+.g-dorm .g-night b, .g-epi-act:not(.g-glx-station) b { display: block; font: italic 900 clamp(23px, 2.1vw, 29px)/.98 var(--cond); letter-spacing: .005em; text-transform: uppercase;
+  text-shadow: 2px 2px 0 rgba(12, 3, 9, .75); }
+.g-dorm .g-night small, .g-epi-act:not(.g-glx-station) small { display: block; margin-top: 6px; color: var(--pink-3); font: 600 13px/1.35 var(--sans); letter-spacing: .01em; }
+.g-dorm .g-night:is(:hover, :focus-visible):not(:disabled), .g-epi-act:not(.g-glx-station):is(:hover, :focus-visible):not(:disabled) {
+  background: none; box-shadow: none; color: var(--deep); outline: none; transform: skewX(-10deg) translateX(6px); }
+:is(.g-dorm .g-night, .g-epi-act:not(.g-glx-station)):is(:hover, :focus-visible):not(:disabled)::after { background: var(--paper); box-shadow: 7px 7px 0 var(--pink); }
+:is(.g-dorm .g-night, .g-epi-act:not(.g-glx-station)):is(:hover, :focus-visible):not(:disabled)::before { opacity: 1; animation: g-hm-slash .28s cubic-bezier(.2, .9, .2, 1) both; }
+:is(.g-dorm .g-night, .g-epi-act:not(.g-glx-station)):is(:hover, :focus-visible):not(:disabled) b { text-shadow: none; }
+:is(.g-dorm .g-night, .g-epi-act:not(.g-glx-station)):is(:hover, :focus-visible):not(:disabled) small { color: var(--violet); }
+:is(.g-dorm .g-night, .g-epi-act:not(.g-glx-station)):focus-visible::after { outline: 2px solid var(--pink); outline-offset: 3px; }
+:is(.g-dorm .g-night, .g-epi-act:not(.g-glx-station)):disabled { opacity: .5; cursor: default; }
+@keyframes g-hm-slash { from { clip-path: polygon(0 66%, 0 62%, 0 94%, 0 100%); } to { clip-path: polygon(0 66%, 100% 0, 100% 30%, 3% 100%); } }
+
+/* The kinds, all in pink and black: Tartarus is the blackest (the Dark Hour), a bond's perk carries a tiny gold star,
+   people have a paper edge, traces and secrets are fainter */
+.g-dorm .g-night.tt::after { border-left-color: var(--pink); background: linear-gradient(100deg, #000 0%, #0c0309 50%, #3a1230 100%); box-shadow: 5px 5px 0 rgba(255, 79, 158, .6); }
+.g-dorm .g-night.tt small { color: var(--pink-2); }
+.g-dorm .g-night.tt b { color: var(--paper); }
+.g-dorm .g-night.tt:is(:hover, :focus-visible):not(:disabled) b { color: var(--deep); }
+.g-dorm .g-night.perk::after { border-left-color: var(--pink-2); background: linear-gradient(100deg, rgba(74, 24, 56, .95), rgba(12, 3, 9, .92)); }
+.g-dorm .g-night.perk b::before { content: "★"; margin-right: 7px; color: var(--gold); font-size: .55em; vertical-align: .3em; text-shadow: none; }
+.g-dorm .g-night.perk small { color: var(--pink-3); }
+.g-dorm .g-night.who::after { border-left-color: var(--paper); }
+.g-dorm .g-night.trace::after { border-left: 4px dotted var(--pink-2); background: linear-gradient(100deg, rgba(12, 3, 9, .8), rgba(28, 9, 22, .7)); box-shadow: 5px 5px 0 rgba(255, 79, 158, .25); }
+.g-dorm .g-night.trace small, .g-dorm .g-night.secret small { font-style: italic; }
+.g-dorm .g-night.secret::after { border-left-color: var(--pink-3); background: linear-gradient(100deg, rgba(255, 140, 192, .2), rgba(12, 3, 9, .92) 60%); box-shadow: 5px 5px 0 rgba(255, 214, 232, .3); }
+
+/* The rows come in from the right, one after another */
+.g-dorm .g-night { animation: g-hm-row .34s cubic-bezier(.15, .9, .25, 1) both; }
+.g-dorm .g-night:nth-child(2) { animation-delay: 30ms; } .g-dorm .g-night:nth-child(3) { animation-delay: 60ms; } .g-dorm .g-night:nth-child(4) { animation-delay: 90ms; }
+.g-dorm .g-night:nth-child(5) { animation-delay: 120ms; } .g-dorm .g-night:nth-child(6) { animation-delay: 150ms; } .g-dorm .g-night:nth-child(7) { animation-delay: 180ms; }
+.g-dorm .g-night:nth-child(n+8) { animation-delay: 210ms; }
+@keyframes g-hm-row { from { opacity: 0; translate: 80px 0; } }
+
+/* Solar at the right edge on wide screens, with the menu's pink offset; the list keeps clear of her */
+.g-home-fig { display: none; }
+@media (min-width: 1100px) and (min-aspect-ratio: 13/10) {
+  .g-home-fig { display: block; position: absolute; z-index: 0; right: clamp(0px, 2vw, 40px); bottom: 0; height: min(100%, 800px); pointer-events: none;
+    animation: g-hm-fig .5s cubic-bezier(.15, .9, .25, 1) both; }
+  .g-home-fig img { display: block; height: 100%; width: auto; transform: rotate(-3deg); transform-origin: 50% 100%;
+    filter: drop-shadow(14px 6px 0 var(--pink)) drop-shadow(0 0 30px rgba(0, 0, 0, .45)); }
+  .g-home-fig img.sil { filter: brightness(0) drop-shadow(14px 6px 0 var(--pink)); }
+  .g-main.is-dorm .g-dorm { position: relative; z-index: 1; width: auto; max-width: 1240px; margin: 0; padding-right: clamp(230px, 22vw, 380px); }
+}
+@keyframes g-hm-fig { from { opacity: 0; translate: 60px 0; } }
+
+/* ── The epilogue worlds' Where-to list: the same cards (their colours were gold and blue) ── */
+.g-epi-acts { gap: 14px 22px; padding: 4px 12px 8px 4px; }
+.g-epi-act:not(.g-glx-station) { min-height: 72px; padding: 10px 20px 10px 18px; }
+.g-epi-act:not(.g-glx-station) b { font-size: clamp(19px, 1.7vw, 23px); }
+.g-epi-bond::after { border-left-color: var(--paper) !important; }
+.g-epi-bond.rival::after { border-left-style: dashed !important; }
+.g-epi-pips { color: var(--pink-2); }
+.g-epi-bond.rival .g-epi-pips { color: var(--pink-3); }
+.g-epi-act:is(:hover, :focus-visible):not(:disabled) .g-epi-pips { color: var(--pink); }
+
+/* ── Short landscape windows ── */
+@media (max-height: 760px) and (min-width: 701px) {
+  .g-hud { padding-top: 8px; }
+  .g-hud .g-date b { font-size: clamp(34px, 3.8vw, 46px); }
+  .g-hud-ghost { font-size: clamp(44px, 5.4vw, 70px); }
+  .g-hud .g-menu button { padding: 6px 13px; font-size: 14px; }
+  .g-dorm .g-night { min-height: 74px; padding-top: 10px; padding-bottom: 10px; }
+  .g-map-head h1 { font-size: clamp(46px, 9vh, 80px); }
+}
+
+/* ── Phones and portrait windows: wallet and condition left, the date box right, the buttons a full row under them ── */
+@media (max-width: 700px), (max-aspect-ratio: 13/10) {
+  .g-hud { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "me day" "menu menu"; align-items: start; gap: 10px 12px; padding: 10px 12px 8px; }
+  .g-hud-l { display: contents; }
+  .g-hud .g-me { grid-area: me; flex-wrap: wrap; gap: 8px; padding-top: 4px; }
+  .g-hud-day { grid-area: day; }
+  .g-hud .g-menu { grid-area: menu; width: 100%; gap: 8px; justify-content: space-between; }
+  .g-hud .g-menu button { flex: 1 1 0; padding: 8px 6px; font-size: 13px; text-align: center; }
+  .g-hud .g-menu button[data-ui=settings] { flex: 0 0 48px; display: grid; place-items: center; }
+  .g-hud .g-date b { font-size: 34px; }
+  .g-hud .g-date small { margin-left: 6px; padding: 2px 9px 2px 6px; font-size: 13px; }
+  .g-hud-ghost { font-size: 46px; top: -6px; right: -6px; }
+  .g-hud-row { gap: 8px; }
+  .g-hud .g-sky span, .g-hud .g-sky button.g-wx { width: 30px; height: 30px; }
+  .g-hud .g-sky svg { width: 20px; height: 20px; }
+  .g-hud .g-when { margin-top: 4px; flex-wrap: wrap; row-gap: 3px; }
+  .g-hud .g-slot { font-size: 17px; }
+  .g-hud .g-label { max-width: 46vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .g-hud .g-yen { font-size: 19px; padding: 3px 14px 4px 9px; }
+  .g-hud .g-cond { padding: 4px 9px; font-size: 12px; }
+  .g-toasts { top: 132px; }
+  .g-nights { grid-template-columns: 1fr; gap: 12px; padding-right: 16px; }
+  .g-dorm .g-night { min-height: 68px; padding: 10px 18px 10px 16px; }
+  .g-dorm .g-night::before, .g-epi-act:not(.g-glx-station)::before { right: -14px; }
+  .g-dorm .g-night b { font-size: 23px; }
+  .g-map-head[data-ghost]::before { font-size: 84px; top: -.02em; }
+  .g-map-head h1 { font-size: clamp(44px, 12vw, 64px); }
+  .g-epi-acts { grid-template-columns: 1fr; }
+}
+/* Wide but short phones (landscape): one HUD row, no ghost word */
+@media (orientation: landscape) and (max-height: 500px) {
+  .g-hud { display: flex; align-items: center; padding: 6px 12px; }
+  .g-hud-l { display: flex; align-items: center; gap: 10px; }
+  .g-hud .g-menu { width: auto; }
+  .g-hud .g-menu button { flex: none; padding: 6px 10px; }
+  .g-hud-ghost, .g-hud .g-label { display: none; }
+  .g-hud-day { display: flex; align-items: center; gap: 10px; padding: 0; }
+  .g-hud .g-when { margin: 0; }
+  .g-hud .g-date b { font-size: 26px; }
+  .g-toasts { top: 64px; }
+}
+
+/* Reduced motion: no slides, sweeps or nudges */
+@media (prefers-reduced-motion: reduce) {
+  .g-hud *, .g-dorm .g-night, .g-dorm .g-night::before, .g-epi-act, .g-epi-act::before, .g-home-fig { animation: none !important; transition: none !important; }
+  .g-dorm .g-night:is(:hover, :focus-visible):not(:disabled), .g-epi-act:not(.g-glx-station):is(:hover, :focus-visible):not(:disabled) { transform: skewX(-10deg); }
+  .g-hud .g-menu button:is(:hover, :focus-visible) { transform: skewX(-14deg); }
+}

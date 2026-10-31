@@ -241,11 +241,17 @@
     hud.hidden = false;
     const i0 = G.dayInfo(), i = i0.shown ? { ...i0, ...i0.shown } : i0, c = G.D.stats.conditions[S().condition];
     const m = i.moon, moonTip = m.full ? 'Full moon tonight' : m.days != null ? `${m.name} · full moon in ${m.days} day${m.days === 1 ? '' : 's'}` : m.name;
-    hud.innerHTML = `<div class="g-date"><b>${esc(i.md)}</b><small>${esc(i.day)}</small></div>
-      <div class="g-when"><span class="g-slot">${esc(G.slotName(S().slot, i))}</span>${i.label ? `<span class="g-label">${esc(i.label)}</span>` : ''}</div>
-      <div class="g-sky"><button type="button" class="g-wx" data-ui="forecast" title="${esc(i.wx.name)} · forecast" aria-label="${esc(i.wx.name)}. Open the forecast">${wxIcon(i.wx)}</button><span class="g-moon" title="${esc(moonTip)}" aria-label="${esc(moonTip)}">${moonSvg(m.phase)}</span></div>
-      <div class="g-me"><span class="g-cond" style="--c:${c.color}" title="${esc(c.desc)}">${esc(c.name)}</span><span class="g-yen">${esc(G.money(S().yen))}</span></div>
-      <nav class="g-menu" aria-label="Menu"><button type="button" data-ui="menu" class="g-menu-main" title="Menu (M)">Menu</button><button type="button" data-ui="phone">Phone${G.unread() ? `<em>${G.unread()}</em>` : ''}</button><button type="button" data-ui="save">Save</button><button type="button" data-ui="settings" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" style="display:block;transform:skewX(14deg)"><path fill="currentColor" d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3.3h-4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.4 7.4 0 0 0 1.7 1l.4 2.6h4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z" transform="translate(-1 0)"/></svg></button></nav>`;
+    // P3 Reload layout (solstice-hud.css): the buttons and wallet on the left, the date box on the right with its ghost word;
+    // the late slot (the Dark Hour) darkens it. Class names and text stay as they were (tests and glitch.js read them).
+    const late = S().slot === 'late', when = G.slotName(S().slot, i);
+    const ghost = late ? 'Dark Hour' : ({ school: 'Weekday', prologue: 'Weekday', off: 'Day Off', exam: 'Exams', trip: 'Trip' })[i.type] || 'Today';
+    hud.classList.toggle('dark', late);
+    hud.innerHTML = `<div class="g-hud-l"><nav class="g-menu" aria-label="Menu"><button type="button" data-ui="menu" class="g-menu-main" title="Menu (M)">Menu</button><button type="button" data-ui="phone">Phone${G.unread() ? `<em>${G.unread()}</em>` : ''}</button><button type="button" data-ui="save">Save</button><button type="button" data-ui="settings" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" style="display:block;transform:skewX(14deg)"><path fill="currentColor" d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3.3h-4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.4 7.4 0 0 0 1.7 1l.4 2.6h4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z" transform="translate(-1 0)"/></svg></button></nav>
+      <div class="g-me"><span class="g-cond c-${esc(S().condition)}" style="--c:${c.color}" title="${esc(c.desc)}">${esc(c.name)}</span><span class="g-yen">${esc(G.money(S().yen))}</span></div></div>
+      <div class="g-hud-day"><span class="g-hud-ghost" aria-hidden="true">${esc(ghost)}</span>
+        <div class="g-hud-row"><div class="g-date"><b>${esc(i.md)}</b><small>${esc(i.day)}</small></div>
+        <div class="g-sky"><button type="button" class="g-wx" data-ui="forecast" title="${esc(i.wx.name)} · forecast" aria-label="${esc(i.wx.name)}. Open the forecast">${wxIcon(i.wx)}</button><span class="g-moon" title="${esc(moonTip)}" aria-label="${esc(moonTip)}">${moonSvg(m.phase)}</span></div></div>
+        <div class="g-when"><span class="g-slot">${esc(when)}</span>${i.label ? `<span class="g-label">${esc(i.label)}</span>` : ''}</div></div>`;
   }
   hud.addEventListener('click', e => {
     const b = e.target.closest('[data-ui]'); if (!b) return;
@@ -995,7 +1001,7 @@
       const people = G.linksAt(a.id, slot).filter(l => G.linkStatus(l, S().day, slot).ok), traces = G.tracesAt(a.id, slot);
       return { people, traces, met: people.filter(l => G.isMet(l.id)), unmet: people.filter(l => !G.isMet(l.id)).length, n: people.length + traces.length };
     };
-    show(`<section class="g-map g-px"><div class="g-map-head"><p class="g-kicker">Iwatodai · ${esc(G.slotName(slot, info))}</p><h1>${night ? 'Out tonight' : 'Go out'}</h1>
+    show(`<section class="g-map g-px"><div class="g-map-head" data-ghost="${esc(G.slotName(slot, info))}"><p class="g-kicker">Iwatodai · ${esc(G.slotName(slot, info))}</p><h1>${night ? 'Out tonight' : 'Go out'}</h1>
       <p class="g-map-sub">${night ? 'Where to tonight?' : 'Where do you want to spend this time?'} People keep their own schedules.</p>${night ? '<button type="button" class="g-btn small" data-back>‹ Back to the dorm</button>' : ''}</div>
       <div class="g-px-wrap"><div class="g-px-grid">${areas.map((a, k) => {
         const h = here(a), img = night && a.bgEvening ? a.bgEvening : a.bg;
@@ -1062,7 +1068,7 @@
         `<span class="g-pc-txt"><small class="g-pc-kick">Part-time job</small><b>${esc(j.name)}</b><small>${esc(j.role)}${off ? ` · ${esc(ok.why)}` : ''}</small></span>`, `<em>${esc(st.hired ? `Shift · ¥${j.pay.toLocaleString()}` : 'Ask about work')}</em>`);
     };
     const spent = G.freeSlotSpent(slot);
-    show(`<section class="g-areaview g-px"><div class="g-map-head"><button type="button" class="g-btn small" data-back>‹ Map</button><p class="g-kicker">${esc(G.slotName(slot, info))}</p><h1>${esc(a.name)}</h1>
+    show(`<section class="g-areaview g-px"><div class="g-map-head" data-ghost="${esc(G.slotName(slot, info))}"><button type="button" class="g-btn small" data-back>‹ Map</button><p class="g-kicker">${esc(G.slotName(slot, info))}</p><h1>${esc(a.name)}</h1>
       <p class="g-map-sub">${esc(a.about || a.blurb)}</p></div>
       ${spent ? '<p class="g-note">You’ve already spent this time.</p>' : ''}
       <div class="g-px-wrap"><div class="g-px-places">
@@ -1212,7 +1218,9 @@
     const dorm = G.dormActs(), desk = dorm.filter(a => a.desk);
     const secrets = s.spent[`${s.day}-evening`] ? [] : G.secretsDue(); // a hidden link's quiet option (My Melody)
     const opt = (id, label, sub, ok = true, cls = '') => `<button type="button" class="g-night ${cls}" data-n="${id}"${ok ? '' : ' disabled'}><b>${label}</b><small>${esc(sub)}</small></button>`;
-    show(`<section class="g-dorm"><div class="g-map-head"><p class="g-kicker">Evening · Iwatodai Dorm</p><h1>Tonight</h1>
+    // Solar at the right edge on wide screens (solstice-hud.css hides her on phones); a silhouette before the armband, as in the menu.
+    const fig = `<div class="g-home-fig" aria-hidden="true"><img class="${(s.flags || {}).armband ? '' : 'sil'}" src="${G.base}assets/femc/profile/solar-poses/thinking.webp" alt=""></div>`;
+    show(`${fig}<section class="g-dorm"><div class="g-map-head" data-ghost="Evening"><p class="g-kicker">Evening · Iwatodai Dorm</p><h1>Tonight</h1>
       <p class="g-map-sub">${info.moon.days != null && info.moon.days <= 3 && !info.moon.full ? `The moon is almost full. ${info.moon.days} day${info.moon.days === 1 ? '' : 's'} to go.` : esc(G.crushLine('evening.sub') || 'The lounge smells like instant ramen. What now?')}</p></div>
       <div class="g-nights">
         ${s.unlocked.tartarus ? opt('tartarus', 'Tartarus', tt.ok ? `Climb tonight. Solar will be tired tomorrow.${s.condition === 'tired' ? ' She’s already tired.' : ''}` : tt.why, tt.ok, 'tt') : ''}
