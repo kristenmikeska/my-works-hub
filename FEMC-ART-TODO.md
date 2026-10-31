@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make:** the title background (optional now that the cover is the title) · 3 HOAX picture fixes. **Optional:** 15 wardrobe items · 4 Stay hanami face sheets. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make:** 1 HOAX picture fix (4C). **Optional:** 15 wardrobe items · 4 Stay hanami face sheets. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
@@ -17,14 +17,8 @@ Cleaned Oct 31 2026: only what's still to make. **Every attachment is in `Femc M
 
 ---
 
-## 2. Title screen background (Gemini)
-No people: the game draws Solar over it. Leave the **right third** as open sky, because the logo and menu sit there. Nothing to attach for 2A.
-
-**2A. Title screen: the longest night turning to dawn** (no reference)
-> Persona 3 Reload style key-art background, 16:9, the largest size, no people, no readable text. A wide view from a seaside rooftop of a Japanese city at the exact moment night turns to dawn. Left and centre: the city skyline and the sea with a long suspension bridge. Far behind, a huge dark tower rises into the clouds, faint and ominous. The sky makes one sweep from deep indigo night, with stars and a pale full moon at the top right, down to a thin band of gold and rose sunrise on the horizon, with the first sunbeams spilling across the water. Keep the right third of the image mostly open sky, darker and calm. Clean lineart, flat cel shading, crisp highlights, indigo, violet, rose and gold palette, hopeful and a little melancholy.
-
-**2B. The same, Dark Hour variant** (optional, for a night title) 📎 attach your result from 2A, as an edit
-> Edit this image. Keep the composition exactly the same, but change it to the Dark Hour from Persona 3: the sky a sickly green-black, the full moon huge and yellow-green, the sunrise band gone, the city lights dead, the tower glowing faintly green, the sea dark and still. No people.
+## 2. Title screen background
+*(Done Oct 31: saved as `bg/city-dawn` and `bg/city-dawn-darkhour`.)*
 
 ---
 
@@ -36,19 +30,9 @@ No people: the game draws Solar over it. Leave the **right third** as open sky, 
 ## 4. HOAX picture fixes (ChatGPT)
 Three HOAX pictures still show the old looks (Jihoon blond, Cherry with black hair). Each one is an edit: one try each, nothing else changes.
 
-**[ ] 4A. Christmas Eve drive (Jihoon's route)**
-Attach: `Fix 1 - picture to edit (Christmas Eve drive).png`, then `Fix - Jihoon.png`
-Save as: `epi-h-eve-jihoon.png`
-```
-Edit the FIRST image. Keep everything exactly the same: the composition, the car, the tunnel of lights, the girl, the colours and the art style. Change only the young man driving: give him the face and hair of the person in the SECOND image (black, tousled hair with a fringe falling over his forehead, small silver earrings). Keep his black puffer jacket, his pose and his expression.
-```
+**[x] 4A. Christmas Eve drive** *(done Oct 31, in the game)*
 
-**[ ] 4B. The séance**
-Attach: `Fix 2 - picture to edit (seance).png`, then `Fix - Jihoon.png`, then `Fix - Cherry.png`
-Save as: `epi-h-seance.png`
-```
-Edit the FIRST image. Keep everything exactly the same: the composition, the room, the green candles, the board, the poses, the colours and the art style. Change only two people. 1) The blond young man at the top left: give him the face and hair of the person in the SECOND image (black, tousled hair with a fringe). Keep his clothes and pose. 2) The girl with wavy hair, sitting on the right of the two girls: give her the face and hair of the person in the THIRD image (long, wavy auburn-red hair). Keep her sweater and pose. The other girl, with long straight black hair, stays exactly as she is.
-```
+**[x] 4B. The séance** *(done Oct 31, in the game)*
 
 **[ ] 4C. The HOAX ending (the gym)**
 Attach: `Fix 3 - picture to edit (HOAX ending).png`, then `Fix - Jihoon.png`, then `Fix - Cherry.png`, then `Fix - Jungwon.png`

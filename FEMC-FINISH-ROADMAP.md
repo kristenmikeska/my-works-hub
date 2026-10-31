@@ -3,17 +3,18 @@
 Kat's list of what to do before calling Persona 3: Solstice finished (Oct 30 2026), in the agreed order. Tick items off as they land.
 
 ## 1. Art clean-up (waits on ChatGPT usage)
-- [ ] HOAX outfit portraits: Christmas, the winter-break party, New Year in hanbok (outfit notes are in the Oct 30 chat; the hanbok row can grow to the whole council)
+- [x] HOAX outfit portraits (Oct 31, batch 104): Christmas, the winter-break party, New Year in hanbok (outfit notes are in the Oct 30 chat; the hanbok row can grow to the whole council)
 - [ ] Transparent versions of the remaining skin portraits and battle sheets (Claude lists which files still have backgrounds)
 
 ## 2. Pictures for the Runners social posts
 - [ ] Claude lists every post with what it shows; Kat makes the images in batches
 
 ## 3. Epilogue backgrounds (Gemini, can start now)
+(Checked Oct 31: every background the game names exists.)
 Places that still borrow a Persona 3 or main-game background:
-- [ ] Runners: Bird Library, Hall of Languages (classroom), Honors Dorm room, Marshall Street café, Football Complex
-- [ ] Strangers: the Lee house sunroom, the Yang house (hall and kitchen), Songdo (street and café), noraebang, bathhouse, the bridge
-- [ ] HOAX: Hanlim rooftop, Hanlim library, karaoke, arcade, ice rink, the party (outside), Hanlim street
+- [x] Runners: Bird Library, Hall of Languages (classroom), Honors Dorm room, Marshall Street café, Football Complex
+- [x] Strangers: the Lee house sunroom, the Yang house (hall and kitchen), Songdo (street and café), noraebang, bathhouse, the bridge
+- [x] HOAX: Hanlim rooftop, Hanlim library, karaoke, arcade, ice rink, the party (outside), Hanlim street
 
 ## 4. Skill trees: classes
 Kat's decisions:
