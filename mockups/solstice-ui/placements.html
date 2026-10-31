@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portrait Placements</title>
+<!-- DESIGN TOOL (not wired to the game). Every character as the dialogue speaker beside Solar, placed the Solstice way:
+     sized by scale.js, dropped by FEMC_PORTRAIT_DROP, the face centre at a fixed line, plus a per-character nudge.
+     Click a scene to open it large; arrows nudge, [ ] resize, R resets. Adjustments stay in this browser until copied. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Barlow+Semi+Condensed:wght@500;600&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cond: "Barlow Condensed", "Arial Narrow", sans-serif; --body: "Barlow Semi Condensed", "Helvetica Neue", sans-serif; --serif: "Cormorant Garamond", Georgia, serif;
+  --deep: #120d3a; --indigo: #26207a; --violet: #5a3a9e; --gold: #ffc53d; --gold-2: #ffe08a; --paper: #fffaf0;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #07051a; color: var(--paper); font-family: var(--body); -webkit-font-smoothing: antialiased; }
+button, input, select { font: inherit; color: inherit; }
+
+/* Top bar */
+.top { position: sticky; top: 0; z-index: 20; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding: 12px 16px; background: rgba(7, 5, 26, .92);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255, 224, 138, .18); }
+.top h1 { margin: 0; font: italic 800 26px/1 var(--cond); text-transform: uppercase; letter-spacing: .01em; }
+.top h1 span { color: var(--gold); }
+.top .help { flex: 1 1 320px; margin: 0; font: italic 500 15px/1.3 var(--serif); color: var(--gold-2); }
+.top input[type=search], .top select { background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .2); border-radius: 6px; padding: 7px 10px; min-width: 0; }
+.top input[type=search] { width: 170px; }
+.top label { font-size: 13px; display: flex; gap: 6px; align-items: center; }
+.btn { background: var(--gold); color: var(--deep); border: 0; border-radius: 6px; padding: 8px 14px; font-weight: 600; cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--paper); border: 1px solid rgba(255, 255, 255, .3); }
+.count { font-size: 13px; color: rgba(255, 255, 255, .65); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); gap: 14px; padding: 16px; }
+.card { position: relative; cursor: pointer; border: 0; padding: 0; background: none; text-align: left; border-radius: 6px; outline-offset: 3px; }
+.card .meta { display: flex; justify-content: space-between; gap: 8px; padding: 6px 2px 0; font-size: 13px; }
+.card .meta b { font-weight: 600; }
+.card .meta i { font-style: normal; color: var(--gold); }
+
+/* One scene, drawn in container units so it looks the same in a thumbnail and full size (cqw/cqh stand in for vw/vh) */
+.scene { position: relative; aspect-ratio: 16 / 9; container-type: size; overflow: hidden; border-radius: 6px; background: var(--deep); }
+.scene .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.scene .bg-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18, 13, 58, 0) 55%, rgba(18, 13, 58, .55) 100%), linear-gradient(200deg, rgba(255, 197, 61, .22), rgba(38, 32, 122, .1) 50%); }
+.scene .p { position: absolute; width: calc(var(--ph) * var(--ar)); max-width: none; --base: min(78cqh, 38cqw); --ph: calc(var(--base) * var(--ps, 1));
+  height: var(--ph); top: calc(22cqh + var(--base) - var(--ph) + var(--ph) * var(--pd, 0) + var(--ny, 0) * 1cqh); }
+/* On screens narrower than the mockup's, the picture can end above the bottom: fade its last stretch instead of a hard edge */
+.scene .p { -webkit-mask-image: linear-gradient(180deg, #000 86%, transparent); mask-image: linear-gradient(180deg, #000 86%, transparent); }
+.scene .p.speaker { left: calc(17cqw + var(--nx, 0) * 1cqw - var(--ph) * var(--ar) * var(--cx)); filter: drop-shadow(-1cqw .3cqw 0 var(--indigo)) drop-shadow(.55cqw 0 0 var(--gold)); }
+.scene .p.solar { right: 0; transform: scaleX(-1); filter: drop-shadow(-1cqw .3cqw 0 var(--indigo)) brightness(.86) saturate(.9); }
+.scene .box { position: absolute; z-index: 3; left: 49.5%; bottom: 5cqh; width: 58cqw; translate: -46% 0; }
+.scene .shell { min-height: 15.6cqh; padding: 3.4cqh 3.6cqw 3cqh 4.3cqw; background: linear-gradient(100deg, rgba(18, 13, 58, .94), rgba(38, 32, 122, .9) 70%, rgba(90, 58, 158, .86));
+  clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%); font: 500 1.7cqw/1.42 var(--body); color: #fff; }
+.scene .shell::before { content: ""; position: absolute; left: 3%; right: 0; top: 0; height: .3cqh; background: linear-gradient(90deg, var(--gold), var(--gold-2) 40%, transparent); }
+.scene .tag { position: absolute; left: -2.6cqw; top: -3.8cqh; padding: .6cqh 2.4cqw .7cqh 2.9cqw; background: var(--paper); color: var(--deep); font: italic 800 2cqw/1 var(--cond);
+  clip-path: polygon(0 50%, 1.8cqw 0, 100% 0, calc(100% - .8cqw) 100%, 1.8cqw 100%); white-space: nowrap; }
+.card.adj .scene { box-shadow: 0 0 0 2px var(--gold); }
+.card:focus-visible .scene { box-shadow: 0 0 0 3px #fff; }
+
+/* Full-size view */
+.big { position: fixed; inset: 0; z-index: 40; display: grid; place-items: center; background: rgba(4, 3, 16, .94); padding: 64px 12px 96px; }
+.big[hidden] { display: none; }
+.big [data-stage] { width: 100%; }
+.big .scene { width: min(100%, calc((100dvh - 170px) * 16 / 9)); margin: 0 auto; }
+.big .bar { position: fixed; left: 0; right: 0; top: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 12px 16px; }
+.big .bar h2 { margin: 0; font: italic 800 24px/1 var(--cond); text-transform: uppercase; flex: 1 1 auto; }
+.big .bar .vals { font-size: 13px; color: var(--gold-2); }
+.big .pad { position: fixed; left: 0; right: 0; bottom: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 12px 16px 16px; }
+.big .pad button { min-width: 44px; min-height: 40px; }
+.big .keys { width: 100%; text-align: center; font-size: 12px; color: rgba(255, 255, 255, .6); }
+
+.out { position: fixed; z-index: 50; inset: auto 16px 16px auto; width: min(420px, calc(100% - 32px)); background: #140f3d; border: 1px solid var(--gold); border-radius: 8px; padding: 12px; }
+.out[hidden] { display: none; }
+.out textarea { width: 100%; height: 140px; background: #07051a; color: var(--paper); border: 1px solid rgba(255, 255, 255, .2); border-radius: 6px; font: 12px/1.4 ui-monospace, Menlo, monospace; }
+.out p { margin: 0 0 8px; font-size: 13px; }
+@media (max-width: 600px) { .top .help { order: 9; } .top input[type=search] { width: 120px; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>Portrait <span>placements</span></h1>
+  <p class="help">Everyone as the speaker beside Solar. Click anyone who looks off, nudge them, then press <b>Copy for Claude</b>.</p>
+  <input type="search" placeholder="Find…" aria-label="Find a character" data-q>
+  <label>Face <select data-face><option>neutral</option><option>happy</option><option>sad</option><option>serious</option><option>surprised</option><option>flustered</option></select></label>
+  <label><input type="checkbox" data-only> Adjusted only</label>
+  <span class="count" data-count></span>
+  <button class="btn" type="button" data-copy>Copy for Claude</button>
+</header>
+<main class="grid" data-grid></main>
+
+<div class="big" hidden data-big>
+  <div class="bar"><h2 data-name></h2><span class="vals" data-vals></span>
+    <button class="btn ghost" type="button" data-prev>‹ Prev</button><button class="btn ghost" type="button" data-next>Next ›</button>
+    <button class="btn ghost" type="button" data-close>Close</button></div>
+  <div data-stage></div>
+  <div class="pad">
+    <button class="btn ghost" type="button" data-n="x,-1" aria-label="Move left">←</button><button class="btn ghost" type="button" data-n="x,1" aria-label="Move right">→</button>
+    <button class="btn ghost" type="button" data-n="y,-1" aria-label="Move up">↑</button><button class="btn ghost" type="button" data-n="y,1" aria-label="Move down">↓</button>
+    <button class="btn ghost" type="button" data-n="s,-1" aria-label="Smaller">Smaller</button><button class="btn ghost" type="button" data-n="s,1" aria-label="Bigger">Bigger</button>
+    <button class="btn ghost" type="button" data-reset>Reset</button>
+    <div class="keys">Keys: arrows move (Shift for big steps) · [ ] size · R reset · , . previous/next · Esc close</div>
+  </div>
+</div>
+
+<div class="out" hidden data-out><p>Copied. Paste this to Claude (if the copy didn't work, select it here):</p><textarea readonly data-text></textarea>
+  <button class="btn ghost" type="button" data-outclose>Close</button></div>
+
+<script src="../../assets/femc/portraits/index.js"></script>
+<script src="../../assets/femc/portraits/scale.js"></script>
+<script src="placements-data.js"></script>
+<script>
+(() => {
+  const A = '../../assets/femc/', $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const SETS = window.FEMC_PORTRAITS || {}, SCALE = window.FEMC_PORTRAIT_SCALE || {}, DROP = window.FEMC_PORTRAIT_DROP || {}, FACES = window.SOLSTICE_FACES || {};
+  const KEY = 'solstice-placements';
+  /* Starting nudges agreed with Kat (x and y in % of the screen, s = size multiplier on top of scale.js) */
+  const SEED = { yukari: { x: -4.5 } };
+  let adj = {};
+  try { adj = JSON.parse(localStorage.getItem(KEY) || 'null') || structuredClone(SEED); } catch (e) { adj = structuredClone(SEED); }
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(adj)); } catch (e) {} };
+  const ids = Object.keys(SETS).filter(id => id !== 'solar' && FACES[id]).sort();
+  const nice = id => id.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ').replace(/^(\S+) /, '$1 · ');
+  const face = id => { const want = $('[data-face]').value; return (SETS[id] || []).includes(want) ? want : (SETS[id] || []).includes('neutral') ? 'neutral' : SETS[id][0]; };
+  const LINES = ['So. Are we doing this, or are you going to keep staring at me?', 'You’re late again. I saved you a seat anyway.', 'Hey. Got a minute? There’s something I wanted to ask you.'];
+
+  function scene(id) {
+    const a = adj[id] || {}, [ar, cx] = FACES[id], [sar] = FACES.solar || [1.013];
+    const ps = (SCALE[id] || 1) * (a.s || 1), pd = DROP[id] || 0;
+    return `<div class="scene"><img class="bg" src="${A}bg/gekkoukan-classroom-day.webp" alt="" loading="lazy"><div class="bg-veil"></div>
+      <img class="p solar" src="${A}portraits/solar/happy.webp" alt="" loading="lazy" style="--ps:${SCALE.solar || 1};--ar:${sar}">
+      <img class="p speaker" src="${A}portraits/${id}/${face(id)}.webp" alt="${nice(id)}" loading="lazy" style="--ps:${ps};--pd:${pd};--ar:${ar};--cx:${cx};--nx:${a.x || 0};--ny:${a.y || 0}">
+      <div class="box"><div class="tag">${nice(id).split(' · ')[0]}</div><div class="shell">${LINES[id.length % LINES.length]}</div></div></div>`;
+  }
+  const isAdj = id => { const a = adj[id]; return !!a && Object.values(a).some(v => v && v !== 1); };
+  const tag = id => { const a = adj[id] || {}; return isAdj(id) ? `x ${a.x || 0} · y ${a.y || 0} · size ${(a.s || 1).toFixed(2)}` : ''; };
+
+  const grid = $('[data-grid]');
+  function render() {
+    const q = $('[data-q]').value.trim().toLowerCase(), only = $('[data-only]').checked;
+    const list = ids.filter(id => (!q || id.includes(q)) && (!only || isAdj(id)));
+    grid.innerHTML = list.map(id => `<button type="button" class="card${isAdj(id) ? ' adj' : ''}" data-id="${id}">${scene(id)}<span class="meta"><b>${nice(id)}</b><i>${tag(id)}</i></span></button>`).join('');
+    $('[data-count]').textContent = `${list.length} shown · ${ids.filter(isAdj).length} adjusted`;
+  }
+  ['input', 'change'].forEach(ev => { $('[data-q]').addEventListener(ev, render); $('[data-only]').addEventListener(ev, render); $('[data-face]').addEventListener(ev, render); });
+
+  /* Full-size view with nudging */
+  const big = $('[data-big]'); let cur = null;
+  const order = () => $$('.card', grid).map(c => c.dataset.id);
+  function open(id) { cur = id; big.hidden = false; draw(); }
+  function draw() { $('[data-stage]', big).innerHTML = scene(cur); $('[data-name]', big).textContent = nice(cur); $('[data-vals]', big).textContent = tag(cur) || 'not adjusted'; }
+  function close() { big.hidden = true; const id = cur; cur = null; render(); $(`.card[data-id="${id}"]`)?.focus(); }
+  function step(d) { const o = order(), i = o.indexOf(cur); if (o.length) { cur = o[(i + d + o.length) % o.length]; draw(); } }
+  function nudge(k, d) {
+    const a = adj[cur] = adj[cur] || {};
+    if (k === 's') a.s = Math.round(((a.s || 1) + d * .02) * 100) / 100;
+    else a[k] = Math.round(((a[k] || 0) + d * .5) * 10) / 10;
+    for (const key of Object.keys(a)) if (!a[key] || (key === 's' && a[key] === 1)) delete a[key];
+    if (!Object.keys(a).length) delete adj[cur];
+    save(); draw();
+  }
+  grid.addEventListener('click', e => { const c = e.target.closest('.card'); if (c) open(c.dataset.id); });
+  $$('[data-n]', big).forEach(b => b.addEventListener('click', () => { const [k, d] = b.dataset.n.split(','); nudge(k, +d); }));
+  $('[data-reset]', big).addEventListener('click', () => { delete adj[cur]; save(); draw(); });
+  $('[data-close]', big).addEventListener('click', close);
+  $('[data-prev]', big).addEventListener('click', () => step(-1)); $('[data-next]', big).addEventListener('click', () => step(1));
+  addEventListener('keydown', e => {
+    if (big.hidden || e.metaKey || e.ctrlKey || e.altKey) return;
+    const m = e.shiftKey ? 4 : 1, k = e.key;
+    const map = { ArrowLeft: ['x', -m], ArrowRight: ['x', m], ArrowUp: ['y', -m], ArrowDown: ['y', m], '[': ['s', -1], ']': ['s', 1] };
+    if (map[k]) { nudge(...map[k]); e.preventDefault(); }
+    else if (k === 'r' || k === 'R') { delete adj[cur]; save(); draw(); }
+    else if (k === ',' || k === '<') step(-1); else if (k === '.' || k === '>') step(1);
+    else if (k === 'Escape') close();
+  });
+
+  /* Hand-off: the adjustments as one line of JSON */
+  $('[data-copy]').addEventListener('click', async () => {
+    const text = 'Portrait placements: ' + JSON.stringify(adj);
+    $('[data-text]').value = text; $('[data-out]').hidden = false;
+    try { await navigator.clipboard.writeText(text); } catch (e) { $('[data-text]').select(); }
+  });
+  $('[data-outclose]').addEventListener('click', () => { $('[data-out]').hidden = true; });
+  render();
+})();
+</script>
+</body>
+</html>
