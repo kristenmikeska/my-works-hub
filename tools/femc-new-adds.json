@@ -935,8 +935,8 @@
       ],
       "uses": [],
       "conversion": "Twelve separate rectangular WebP design cards, quality 90; each original background and complete weapon preserved",
-      "intendedUse": "Solar weapon artwork; on hold at Kat\u2019s request",
-      "placementNote": "Kat explicitly requested \u201cWait on those.\u201d Keep the twelve prepared design cards aside; do not map them to gear or add collectibles/cosmetics until she asks to resume. No gear, shops, equipment UI or combat rules changed."
+      "intendedUse": "Solar weapon artwork; on hold at Kat’s request",
+      "placementNote": "Kat explicitly requested “Wait on those.” Keep the twelve prepared design cards aside; do not map them to gear or add collectibles/cosmetics until she asks to resume. No gear, shops, equipment UI or combat rules changed."
     },
     {
       "source": "TrueEnding-Unveiled.png",
@@ -1983,7 +1983,7 @@
         941
       ],
       "character": "ken",
-      "intendedUse": "Theurgy cut-in still: Kala\u2019s Judgment",
+      "intendedUse": "Theurgy cut-in still: Kala’s Judgment",
       "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
       "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
       "destination": "assets/femc/battle/art/theurgy/ken.webp",
@@ -2017,7 +2017,7 @@
         941
       ],
       "character": "shinjiro",
-      "intendedUse": "Theurgy cut-in still: Castor\u2019s Charge",
+      "intendedUse": "Theurgy cut-in still: Castor’s Charge",
       "conversion": "tools/femc-theurgy.py cutin: resized to 1600x900 (framing kept), WebP q86",
       "placement": "battle.js theurgyCut: the finished cut-in (diagonal mask, pan/zoom, light sweep, impact)",
       "destination": "assets/femc/battle/art/theurgy/shinjiro.webp",
@@ -3271,7 +3271,7 @@
         "cc5602f6eea9280c5993ab9ff23211cb25e4189e413ab03da85b7605a217ca40",
         "ca71dcc49e7f4ccfea897ca89a049f52a1c60ffb791530fb22169ca5dcbeac14"
       ],
-      "conversion": "tools/femc-cards.py weapons: card frames found from their grey lines, the printed names blanked, each knife turned 45\u00b0 upright on white and centred on the naginata cards' tall shape (WebP q88)",
+      "conversion": "tools/femc-cards.py weapons: card frames found from their grey lines, the printed names blanked, each knife turned 45° upright on white and centred on the naginata cards' tall shape (WebP q88)",
       "placement": "build.js HK: hk_starter, hk_mixdown, hk_widow, hk_harbor, hk_disc, hk_sunlight (owner haechan; menu.js g-eq-art, battle.css .bt-loot.art)"
     },
     {
@@ -3344,7 +3344,7 @@
         "5f50255e2592f73d0300ba3c8a8a9ba0a80d049e82415dcded7c120e4c8bbc04",
         "d5cae70aa2f9a561fea831eefc01a4efd3c5eb0a5121906eb54466d04a71fba2"
       ],
-      "conversion": "tools/femc-cards.py weapons --labels auto: card frames found from their grey lines, only the printed names blanked (found in the bottom strip), turned 45\u00b0 upright on the tall card shape (WebP q88)",
+      "conversion": "tools/femc-cards.py weapons --labels auto: card frames found from their grey lines, only the printed names blanked (found in the bottom strip), turned 45° upright on the tall card shape (WebP q88)",
       "placement": "build.js JW: jw_starter, jw_mandate, jw_maeumi, jw_jade, jw_tortoise, jw_hyphen (owner jungwon); menu.js g-eq-art, ui.js g-shop-art, battle.css .bt-loot.art"
     },
     {
@@ -3406,7 +3406,7 @@
         "d58e5966c761de63cd76623689c783ddff8fd1907cf94f7e545324fbb525d961",
         "314f013c8c81ce238d9d10684bb88bc409d4298d3af32228f9137c1e40f5e93e"
       ],
-      "conversion": "tools/femc-cards.py weapons --labels auto: card frames found from their grey lines, only the printed names blanked (found in the bottom strip), turned 37\u00b0 upright on the tall card shape (WebP q88)",
+      "conversion": "tools/femc-cards.py weapons --labels auto: card frames found from their grey lines, only the printed names blanked (found in the bottom strip), turned 37° upright on the tall card shape (WebP q88)",
       "placement": "build.js MJ: mj_starter, mj_finalcut, mj_hitscan, mj_muse, mj_theia, mj_bunny (owner minji); menu.js g-eq-art, ui.js g-shop-art, battle.css .bt-loot.art"
     },
     {
@@ -3783,7 +3783,7 @@
         "c947cd4f13f071b889f8d8c99e2d6ef00594cddd6bb12a609b7995ca9831229e",
         "0aaab92d9d75ca50b9b7bfd445a25914f4d94386d878cb5a081c12793b5115b0"
       ],
-      "conversion": "tools/femc-cards.py weapons (BUILD options {\"grid\": 6, \"pick\": [0, 1, 3, 7, 8, 11], \"rotate\": 18, \"labels\": \"none\"}): fixed card grid (the sheets' soft frame lines defeat card_boxes), turned 18\u00b0 upright on the tall card shape (WebP q88)",
+      "conversion": "tools/femc-cards.py weapons (BUILD options {\"grid\": 6, \"pick\": [0, 1, 3, 7, 8, 11], \"rotate\": 18, \"labels\": \"none\"}): fixed card grid (the sheets' soft frame lines defeat card_boxes), turned 18° upright on the tall card shape (WebP q88)",
       "placement": "build.js YK: yk_starter, yk_heart, yk_feather, yk_sakura, yk_moon, yk_angel (owner yukari); menu.js g-eq-art, ui.js g-shop-art, battle.css .bt-loot.art"
     },
     {
@@ -3814,7 +3814,7 @@
         "77e2fbce86911bf77e7c5306e0cfb79876d6afb13429e98e1a99d68efc346c09",
         "80bd813bc2f4b2a091fc1db927cc16697e168fb69adfb80191c680170ef3e1e0"
       ],
-      "conversion": "tools/femc-cards.py weapons (BUILD options {\"grid\": 3, \"rotate\": 43, \"labels\": \"none\"}): fixed card grid (the sheets' soft frame lines defeat card_boxes), turned 43\u00b0 upright on the tall card shape (WebP q88)",
+      "conversion": "tools/femc-cards.py weapons (BUILD options {\"grid\": 3, \"rotate\": 43, \"labels\": \"none\"}): fixed card grid (the sheets' soft frame lines defeat card_boxes), turned 43° upright on the tall card shape (WebP q88)",
       "placement": "build.js JP: jp_starter, jp_bat, jp_katana, jp_flame, jp_neon, jp_cleaver (owner junpei); menu.js g-eq-art, ui.js g-shop-art, battle.css .bt-loot.art"
     },
     {
@@ -3845,7 +3845,7 @@
         "321df81195a45131d52c17810334509addf6a3a78211d0619687bfe3fe0a09c4",
         "10717f185c6310f396410a46b976b4e14852084983252ffc9518a8dc8dd4e7a9"
       ],
-      "conversion": "tools/femc-cards.py weapons (BUILD options {\"grid\": 6, \"pick\": [0, 2, 3, 6, 9, 10], \"rotate\": 17, \"labels\": \"none\"}): fixed card grid (the sheets' soft frame lines defeat card_boxes), turned 17\u00b0 upright on the tall card shape (WebP q88)",
+      "conversion": "tools/femc-cards.py weapons (BUILD options {\"grid\": 6, \"pick\": [0, 2, 3, 6, 9, 10], \"rotate\": 17, \"labels\": \"none\"}): fixed card grid (the sheets' soft frame lines defeat card_boxes), turned 17° upright on the tall card shape (WebP q88)",
       "placement": "build.js MT: mt_starter, mt_ice, mt_rose, mt_gold, mt_queen, mt_crest (owner mitsuru); menu.js g-eq-art, ui.js g-shop-art, battle.css .bt-loot.art"
     },
     {
@@ -3907,7 +3907,7 @@
         "477022542a645079cdaefa39f161aebb641052318ecb3f2e561c6712373a2bdb",
         "e5463553efea9c27592436b4906f7a804417fcaeedb1e130883f1d96efaee5cd"
       ],
-      "conversion": "tools/femc-cards.py weapons (BUILD options {\"grid\": 6, \"pick\": [0, 1, 3, 6, 7, 5], \"rotate\": 18, \"labels\": \"none\"}): fixed card grid (the sheets' soft frame lines defeat card_boxes), turned 18\u00b0 upright on the tall card shape (WebP q88)",
+      "conversion": "tools/femc-cards.py weapons (BUILD options {\"grid\": 6, \"pick\": [0, 1, 3, 6, 7, 5], \"rotate\": 18, \"labels\": \"none\"}): fixed card grid (the sheets' soft frame lines defeat card_boxes), turned 18° upright on the tall card shape (WebP q88)",
       "placement": "build.js KM: km_starter, km_bone, km_shrine, km_flame, km_tag, km_kunai (owner koromaru); menu.js g-eq-art, ui.js g-shop-art, battle.css .bt-loot.art"
     },
     {
@@ -3938,7 +3938,7 @@
         "46432e93d2d5f09208a32bcb72e109f3a0389ecafd0fe362018abffa47c3ebe1",
         "5e13eb332115a06a9e2741490bfce3fd29a00bf8f5fa477d097634aafea291a2"
       ],
-      "conversion": "tools/femc-cards.py weapons (BUILD options {\"grid\": 3, \"rotate\": 40, \"labels\": \"none\"}): fixed card grid (the sheets' soft frame lines defeat card_boxes), turned 40\u00b0 upright on the tall card shape (WebP q88)",
+      "conversion": "tools/femc-cards.py weapons (BUILD options {\"grid\": 3, \"rotate\": 40, \"labels\": \"none\"}): fixed card grid (the sheets' soft frame lines defeat card_boxes), turned 40° upright on the tall card shape (WebP q88)",
       "placement": "build.js SJ: sj_starter, sj_steel, sj_chain, sj_cleaver, sj_ember, sj_moonlit (owner shinjiro); menu.js g-eq-art, ui.js g-shop-art, battle.css .bt-loot.art"
     },
     {
@@ -4184,7 +4184,7 @@
         1536
       ],
       "sha256": "4a64eb2becb37c0f0596079455676758e45ff03b8d086c8a9eaae1a90eda9bd2",
-      "place": "Gekkoukan High \u00b7 Tennis Courts",
+      "place": "Gekkoukan High · Tennis Courts",
       "status": "integrated",
       "destination": "assets/femc/bg/gekkoukan-tennis-courts.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -4199,7 +4199,7 @@
         1536
       ],
       "sha256": "7557b060d2cfd7552d32a0466bb6593cf2ff175058c9172c23b8034fc7f391bc",
-      "place": "Gekkoukan High \u00b7 Music Room",
+      "place": "Gekkoukan High · Music Room",
       "status": "integrated",
       "destination": "assets/femc/bg/gekkoukan-music-room.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -4214,7 +4214,7 @@
         1536
       ],
       "sha256": "5f454686e2c1fc34e81f184d499f3200581fdfacbebdf7cd4dec2f435470aa88",
-      "place": "Gekkoukan High \u00b7 Computer Room",
+      "place": "Gekkoukan High · Computer Room",
       "status": "integrated",
       "destination": "assets/femc/bg/gekkoukan-computer-room.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -4229,7 +4229,7 @@
         1536
       ],
       "sha256": "0c2be1a62f39b8a6efc23825e0c29a435264707f676e752b6a81c81c4ae32a35",
-      "place": "Yakushima \u00b7 Kirijo Villa",
+      "place": "Yakushima · Kirijo Villa",
       "status": "integrated",
       "destination": "assets/femc/bg/yakushima-villa.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -4244,7 +4244,7 @@
         1536
       ],
       "sha256": "85fbdd7844787c45fc7ae1c4428b24b693c7ba17b447455958fb8bd9210306d9",
-      "place": "Yakushima \u00b7 Forest",
+      "place": "Yakushima · Forest",
       "status": "integrated",
       "destination": "assets/femc/bg/yakushima-forest.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -4274,7 +4274,7 @@
         1536
       ],
       "sha256": "dbe3ebe95551a2f902ffe9750f7a0cc5b49ae2efebdaea6231278c48267a3e27",
-      "place": "Iwatodai Strip \u00b7 Bathhouse \u00b7 Baths (the bathhouse and electric bath activities)",
+      "place": "Iwatodai Strip · Bathhouse · Baths (the bathhouse and electric bath activities)",
       "status": "integrated",
       "destination": "assets/femc/bg/iwatodai-bathhouse.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -4289,7 +4289,7 @@
         1536
       ],
       "sha256": "831bfbe2fc7709556d9f4ce70a955105147c4dff8846f7322b475553171b0801",
-      "place": "Port Island \u00b7 Seaside Park \u00b7 Beach Cleanup (the beach cleanup activity)",
+      "place": "Port Island · Seaside Park · Beach Cleanup (the beach cleanup activity)",
       "status": "integrated",
       "destination": "assets/femc/bg/seaside-park-beach-cleanup.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -4319,7 +4319,7 @@
         1536
       ],
       "sha256": "d89d6937ed7e1145137b64f96f691cbc8a0a95d5c8f2e466a1c4a3adb4412787",
-      "place": "Iwatodai Dorm \u00b7 Rooftop \u00b7 Garden (dorm act: water the roof garden)",
+      "place": "Iwatodai Dorm · Rooftop · Garden (dorm act: water the roof garden)",
       "status": "integrated",
       "destination": "assets/femc/bg/iwatodaidorm-roof-planters.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -4334,7 +4334,7 @@
         1536
       ],
       "sha256": "77397a868877fd939fd0de84c791e0557b702492b0d1eda70b104ad6576e590c",
-      "place": "Paulownia Mall \u00b7 Game Panic and Paulownia Mall \u00b7 Arcade (day and evening)",
+      "place": "Paulownia Mall · Game Panic and Paulownia Mall · Arcade (day and evening)",
       "status": "integrated",
       "destination": "assets/femc/bg/gamepanic-inside.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -4349,7 +4349,7 @@
         1536
       ],
       "sha256": "d2b7a51591752ae5f195c3367dfc5bd479ca546bf303704e1e277e6dc18bbb9c",
-      "place": "Gekkoukan High \u00b7 Classroom \u00b7 Study Group (the first-years' study group activity)",
+      "place": "Gekkoukan High · Classroom · Study Group (the first-years' study group activity)",
       "status": "integrated",
       "destination": "assets/femc/bg/gekkoukan-study-group.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -4364,7 +4364,7 @@
         1536
       ],
       "sha256": "7f52ba139ddaf5c867b9fab9828d980195c9b978d4c8e622ace52a9d60805715",
-      "place": "Iwatodai Strip \u00b7 Hagakure \u00b7 Challenge Bowl (the Mega Bowl activity); job-scenes-more-b.js hg-arc-1 place line bg",
+      "place": "Iwatodai Strip · Hagakure · Challenge Bowl (the Mega Bowl activity); job-scenes-more-b.js hg-arc-1 place line bg",
       "status": "integrated",
       "destination": "assets/femc/bg/hagakure-challenge-bowl.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -4379,7 +4379,7 @@
         1536
       ],
       "sha256": "cb097e01a5e69276d7432c19d0c8db6ff2d7276753e7a46c5ff1e2152deb0ee7",
-      "place": "Iwatodai Strip \u00b7 Hagakure and Hagakure (replaces hagakureramen, which stays on disk for v1)",
+      "place": "Iwatodai Strip · Hagakure and Hagakure (replaces hagakureramen, which stays on disk for v1)",
       "status": "integrated",
       "destination": "assets/femc/bg/hagakure-ramen.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -4394,7 +4394,7 @@
         1536
       ],
       "sha256": "e0ec7c2e005ecd4d0dfe4b0115147cedd78da98974faa970fcb1b13324e2bf98",
-      "place": "Tatsumi Memorial Hospital \u00b7 Children's Ward (the ward volunteering activity)",
+      "place": "Tatsumi Memorial Hospital · Children's Ward (the ward volunteering activity)",
       "status": "integrated",
       "destination": "assets/femc/bg/hospital-childrens-ward.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -4409,7 +4409,7 @@
         1536
       ],
       "sha256": "574f330bd90ec6658bc2d46bf925195f4d65f69a95ff9bf9f146a4b0402a826f",
-      "place": "Paulownia Mall \u00b7 Screen Shot (day and evening)",
+      "place": "Paulownia Mall · Screen Shot (day and evening)",
       "status": "integrated",
       "destination": "assets/femc/bg/screenshot-theater.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -4424,7 +4424,7 @@
         1536
       ],
       "sha256": "a989cc3ad5e86d63f77d5bed7e846febc06eeceb1cb30245f76dc2f0ad3031a7",
-      "place": "Port Island \u00b7 Museum; living-holidays.js 11/3 bg",
+      "place": "Port Island · Museum; living-holidays.js 11/3 bg",
       "status": "integrated",
       "destination": "assets/femc/bg/port-island-museum.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, centre-cropped to 1920x1072 (SIZE), WebP q82; source unchanged",
@@ -4454,7 +4454,7 @@
         941
       ],
       "sha256": "9acfcbc81cce73f47889e892a310045da2143c73cf4c6ecfe9e1295c3b29fb6b",
-      "place": "Paulownia Mall \u00b7 Flower Stall (the flower stall job and its scenes)",
+      "place": "Paulownia Mall · Flower Stall (the flower stall job and its scenes)",
       "status": "integrated",
       "destination": "assets/femc/bg/paulownia-flower-shop.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), scaled up and centre-cropped to 1920x1072 (SIZE), WebP q82; source unchanged",
@@ -4469,7 +4469,7 @@
         1536
       ],
       "sha256": "53664f8b5280362b13d1d6da63a002cb5295785b5f1af8702861835e5e58a9ba",
-      "place": "Paulownia Mall \u00b7 Record Shop; living-holidays.js 11/23 bg",
+      "place": "Paulownia Mall · Record Shop; living-holidays.js 11/23 bg",
       "status": "integrated",
       "destination": "assets/femc/bg/record-shop-listening-booth.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -4484,7 +4484,7 @@
         1536
       ],
       "sha256": "a09a0cfcb91949abcb98d1f60491c2a397786fda65514ee232aa8775414c4975",
-      "place": "Iwatodai \u00b7 Riverside evening/night image (day keeps park-2); living-holidays.js 1/1 bg",
+      "place": "Iwatodai · Riverside evening/night image (day keeps park-2); living-holidays.js 1/1 bg",
       "status": "integrated",
       "destination": "assets/femc/bg/iwatodai-riverside-night.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -4499,7 +4499,7 @@
         1536
       ],
       "sha256": "ce3e17aa8611a84d0ae128008188de2a6e3e559666d07a48281e1c9dd14be98a",
-      "place": "Iwatodai Dorm \u00b7 Solar's Room \u00b7 Desk (the five desk acts)",
+      "place": "Iwatodai Dorm · Solar's Room · Desk (the five desk acts)",
       "status": "integrated",
       "destination": "assets/femc/bg/solar-desk-night.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -4514,7 +4514,7 @@
         1536
       ],
       "sha256": "c0b589366c88b8eb796605cfec20f4032fec30c3a33d08efdb53730f704cef3a",
-      "place": "Yakushima \u00b7 Ferry; yakushima.js 7/23 ferry pick screen bg",
+      "place": "Yakushima · Ferry; yakushima.js 7/23 ferry pick screen bg",
       "status": "integrated",
       "destination": "assets/femc/bg/yakushima-ferry.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -4529,7 +4529,7 @@
         1536
       ],
       "sha256": "ff73dcfaae72f168a520e8e119b052438af9c5b5492cbf4811734aec63518d8e",
-      "place": "Yakushima \u00b7 Villa Balcony",
+      "place": "Yakushima · Villa Balcony",
       "status": "integrated",
       "destination": "assets/femc/bg/yakushima-villa-balcony.webp",
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, WebP q82; source unchanged",
@@ -5011,7 +5011,7 @@
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
       "destination": "assets/femc/bg/bookworms-inside.webp",
       "outputSha256": "1db9611e3c110270c948100954c44a70f08ebe81af87de6f917688ea38ff0aae",
-      "place": "Iwatodai Strip \u00b7 Bookworms (day and evening; the job, Rohan's and other Bookworms scenes, the books shop), replacing shopping-street",
+      "place": "Iwatodai Strip · Bookworms (day and evening; the job, Rohan's and other Bookworms scenes, the books shop), replacing shopping-street",
       "sha256": "334cc1b44a3ba1da97cac8cac6c34726c9c7d210afb8a361c58d3d8cf4415b36",
       "size": [
         2752,
@@ -5026,7 +5026,7 @@
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
       "destination": "assets/femc/bg/gekkoukan-archery-range.webp",
       "outputSha256": "a404900e8f47b15bdf30cedf32fcaaac656ecd5ecf81c4bb44c9b5fd21a31b43",
-      "place": "Gekkoukan High \u00b7 Archery Range (Yukari's link; day image, evening dims it), replacing outside-school-2",
+      "place": "Gekkoukan High · Archery Range (Yukari's link; day image, evening dims it), replacing outside-school-2",
       "sha256": "f6b21363c4bf455187b7e9a08a672cdc59138117510bce5d911e46e39f3eff36",
       "size": [
         2752,
@@ -5041,7 +5041,7 @@
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
       "destination": "assets/femc/bg/gekkoukan-gym.webp",
       "outputSha256": "94ff471feb7f3f578d73ca6b06d4f3379a1ccf459dcc15282ea069a95a94a1be",
-      "place": "Gekkoukan High \u00b7 Gym / Gymnasium rule (graduation) and a { bg } step in story-act4's Saturday gym scene once she reaches the gym (the walk there keeps school-hallway)",
+      "place": "Gekkoukan High · Gym / Gymnasium rule (graduation) and a { bg } step in story-act4's Saturday gym scene once she reaches the gym (the walk there keeps school-hallway)",
       "sha256": "fc156bfe37f1ecfeefb982e94f0207ccce1731d5c765177833890195c59adcf0",
       "size": [
         2752,
@@ -5056,7 +5056,7 @@
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
       "destination": "assets/femc/bg/hagakure-kitchen.webp",
       "outputSha256": "24572ba59a88cad43f9967dd8936fcdf98c3adeb68e8001702aaf7f68f29c968",
-      "place": "Iwatodai Strip \u00b7 Hagakure \u00b7 Kitchen (new place for the Hagakure job: jobs.js place and its job-scenes-more-b shift lines; the Mega Bowl shift keeps its challenge-bowl bg; customers' Hagakure scenes keep hagakure-ramen)",
+      "place": "Iwatodai Strip · Hagakure · Kitchen (new place for the Hagakure job: jobs.js place and its job-scenes-more-b shift lines; the Mega Bowl shift keeps its challenge-bowl bg; customers' Hagakure scenes keep hagakure-ramen)",
       "sha256": "6007a8b3b1de166f11e8c118d6cd1dd29e1a69a2d6d798a20374593c56863ffb",
       "size": [
         2752,
@@ -5071,7 +5071,7 @@
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
       "destination": "assets/femc/bg/hospital-rooftop.webp",
       "outputSha256": "546eb2d96c5f8fb7d33d2684a80d0eacae007450d9faeb2c26bf5f0a65a0b1d7",
-      "place": "Tatsumi Memorial Hospital \u00b7 Rooftop rule, and Mercy's four Daytime rooftop scenes (ranks 2, 9, 10 and one mid-scene step), replacing rooftop-day / rooftop-evening; her Dawn step keeps rooftop-evening (no dawn art)",
+      "place": "Tatsumi Memorial Hospital · Rooftop rule, and Mercy's four Daytime rooftop scenes (ranks 2, 9, 10 and one mid-scene step), replacing rooftop-day / rooftop-evening; her Dawn step keeps rooftop-evening (no dawn art)",
       "sha256": "467a6b3b07f9f0faf4f484cb1fc141925d591c69187827c307eaa8f2eee8a90d",
       "size": [
         2752,
@@ -5101,7 +5101,7 @@
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
       "destination": "assets/femc/bg/iwatodai-station-overpass.webp",
       "outputSha256": "12049ef01938ea4444b91b0712ea06ec62af4fd79bab678c6e40280e700cbd8a",
-      "place": "Iwatodai Station \u00b7 Overpass (Danielle's after-school spot, rank 10 included); the Dark Hour stairs keep the Dark Hour street",
+      "place": "Iwatodai Station · Overpass (Danielle's after-school spot, rank 10 included); the Dark Hour stairs keep the Dark Hour street",
       "sha256": "29af0b9d470f1eb7597e76d97413a982f08b7455bb62bfd4366cf44b389916ee",
       "size": [
         2752,
@@ -5116,7 +5116,7 @@
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
       "destination": "assets/femc/bg/station-concourse-busy.webp",
       "outputSha256": "b997bba1efe5776e1342a13e8a48e0ea0df0b00a424b99741f09cbc23927d4c4",
-      "place": "Port Island Station \u00b7 Central Concourse (Mark's and Aphrodite's concourse scenes; evening dims it), replacing the screenshot. living-r15-mark.js's morning concourse scene still names the screenshot as its bg (another helper's uncommitted file; not edited)",
+      "place": "Port Island Station · Central Concourse (Mark's and Aphrodite's concourse scenes; evening dims it), replacing the screenshot. living-r15-mark.js's morning concourse scene still names the screenshot as its bg (another helper's uncommitted file; not edited)",
       "sha256": "97281fb7b07b090cc83251d0df6a5011d0113320816bdd2633c14115c6a788e4",
       "size": [
         2752,
@@ -5131,7 +5131,7 @@
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
       "destination": "assets/femc/bg/kirijo-guesthouse-night.webp",
       "outputSha256": "35429e7159cbe064e8ad743024571e7bbc4f372a7bd9f3dd4f58080d862c0345",
-      "place": "Night-lit (moon in the window): evening image of the Kirijo Guesthouse and Iwatodai Station \u00b7 Kirijo Guesthouse rules, and living-jaemin.js's two Evening guesthouse bgs; daytime keeps hotel-lobby",
+      "place": "Night-lit (moon in the window): evening image of the Kirijo Guesthouse and Iwatodai Station · Kirijo Guesthouse rules, and living-jaemin.js's two Evening guesthouse bgs; daytime keeps hotel-lobby",
       "sha256": "7d4b4aac0e5454b78879a65644755e95d6930b143d6cb480d7bb5e7c2b814d9c",
       "size": [
         2752,
@@ -5146,7 +5146,7 @@
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
       "destination": "assets/femc/bg/kirijo-guesthouse-roof-night.webp",
       "outputSha256": "efe57400eba09aa5f96f942a02b1728970f95cc1bc97fb9145117e363082464f",
-      "place": "Night: Kirijo Guesthouse \u00b7 Roof rule (evening image) and living-jaemin.js 12/31 evening bg, replacing rooftop-citynight",
+      "place": "Night: Kirijo Guesthouse · Roof rule (evening image) and living-jaemin.js 12/31 evening bg, replacing rooftop-citynight",
       "sha256": "3dc34b07e1e0f3a59d2ab15733c5020e75505507e3808b6de2c3bb1fa28bad0a",
       "size": [
         2752,
@@ -5161,7 +5161,7 @@
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
       "destination": "assets/femc/bg/paulownia-karaoke.webp",
       "outputSha256": "6b1841b81ca735c49edf0d7e4acb1d9438d667f6687a8ecc2e426aaa806f6e6f",
-      "place": "Paulownia Mall \u00b7 Karaoke (day and evening; windowless) and story-act4's Dark Hour karaoke step, replacing clubescapade (Club Escapade keeps it)",
+      "place": "Paulownia Mall · Karaoke (day and evening; windowless) and story-act4's Dark Hour karaoke step, replacing clubescapade (Club Escapade keeps it)",
       "sha256": "277a8b93f837d69da92caa769fb6dd51d6491a315b76c91a01ad9655fe9a7626",
       "size": [
         2752,
@@ -5176,7 +5176,7 @@
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
       "destination": "assets/femc/bg/port-island-konbini-night.webp",
       "outputSha256": "ddc716d0f80f46f20f40a3b089e3f5be787b4208c86e95d3e1d547a833d5dd3a",
-      "place": "Night outside the glass: evening image of Port Island \u00b7 Convenience Store (the evening job and Mitsuru's evening scene); day keeps city (no day scenes)",
+      "place": "Night outside the glass: evening image of Port Island · Convenience Store (the evening job and Mitsuru's evening scene); day keeps city (no day scenes)",
       "sha256": "ae2a9f533a6e5de5b5734b83ce73dae3f69610fe1afc3d21dbbbd45fc8adcddc",
       "size": [
         2752,
@@ -5191,7 +5191,7 @@
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
       "destination": "assets/femc/bg/port-island-pier.webp",
       "outputSha256": "198a57c526ecc75b09247000a4a38e45a2a153008c428c2135bfe1fdea54017a",
-      "place": "Port Island \u00b7 Pier day image (the pier activity, a2-pier, links), and the Daytime bgs in living-holidays.js 9/22 and living-persona.js 5/4, plus a { bg } step once the sun is up in living-persona.js 1/1, replacing park-2",
+      "place": "Port Island · Pier day image (the pier activity, a2-pier, links), and the Daytime bgs in living-holidays.js 9/22 and living-persona.js 5/4, plus a { bg } step once the sun is up in living-persona.js 1/1, replacing park-2",
       "sha256": "0f400a85fecf0ffd86b35ef0b40a318715e73932c54ef60e1c893415cc6fbda7",
       "size": [
         2752,
@@ -5206,7 +5206,7 @@
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
       "destination": "assets/femc/bg/port-island-pier-night.webp",
       "outputSha256": "99b44c5d3dc097b0652fd439ea92706c34a4dfe51ee034f4bf430d8d130aa22f",
-      "place": "Port Island \u00b7 Pier evening image (replacing outside-night), and living-persona.js 1/1's pre-dawn opening bg",
+      "place": "Port Island · Pier evening image (replacing outside-night), and living-persona.js 1/1's pre-dawn opening bg",
       "sha256": "168727465ba9119d0c6158dba424e13d3fddaecbf91a6f1649fedd42b5cd0a1a",
       "size": [
         2752,
@@ -5221,7 +5221,7 @@
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
       "destination": "assets/femc/bg/port-island-seaside-park.webp",
       "outputSha256": "8c1766f7193f613dc3052653531f45e42a32eced37ecdf1309545e97e9767a42",
-      "place": "Port Island \u00b7 Seaside Park (day; evening dims it) and the Daytime bgs in living-holidays.js and living-visitors.js, replacing park-2",
+      "place": "Port Island · Seaside Park (day; evening dims it) and the Daytime bgs in living-holidays.js and living-visitors.js, replacing park-2",
       "sha256": "9a18239ea4aee66e7e0d0ff3d1e0ff8b01c99841ebbcf2e50b8a400f522c1e50",
       "size": [
         2752,
@@ -5236,7 +5236,7 @@
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
       "destination": "assets/femc/bg/respawn-cafe-evening.webp",
       "outputSha256": "3cd364ae045106bcc42235577eea044aac7d6e391df05c462d9e5a3edc0180ca",
-      "place": "Dusk outside the window: evening image of Port Island Station \u00b7 Respawn (every Respawn scene is evening); day keeps inside-mall",
+      "place": "Dusk outside the window: evening image of Port Island Station · Respawn (every Respawn scene is evening); day keeps inside-mall",
       "sha256": "bdb45ac1ea8a6cbe2194122501c485307f2ac878a9438544c54c16f10d508cf2",
       "size": [
         2752,
@@ -5266,7 +5266,7 @@
       "conversion": "tools/femc-backgrounds.py EXTRA: letterbox trim (none found), 1920px wide, fit to 1920x1072, WebP q82; source unchanged",
       "destination": "assets/femc/bg/station-platform-day.webp",
       "outputSha256": "f5e5bb857eafcfe625f49ac89374bda0ed783b84d650f8648b8e3df9b2775091",
-      "place": "Iwatodai Station \u00b7 Platform / Bench / Photo Booth / Vending Machines day image (Wren, Elizabeth, Jihoon, Yunjin and others; evenings keep station-platform-night, now for the vending machines too) and living-chenle.js's after-school platform bg, replacing subway",
+      "place": "Iwatodai Station · Platform / Bench / Photo Booth / Vending Machines day image (Wren, Elizabeth, Jihoon, Yunjin and others; evenings keep station-platform-night, now for the vending machines too) and living-chenle.js's after-school platform bg, replacing subway",
       "sha256": "295d08df706530285f1f550a30f3c41195610f0fc4c8ad6c77ae2b9b8c409502",
       "size": [
         2752,
@@ -6620,7 +6620,7 @@
       },
       "outputSha256": "68646166a36337f6517da87dfad34ea8033a1ff0802226708534cb6ed88d0a0d",
       "scale": 0.84,
-      "note": "Ms. Kagami (Chagall Caf\u00e9 manager); scale.js matched by eye-to-chin height against Fuuka, Mitsuru, Junpei and Ikutsuki"
+      "note": "Ms. Kagami (Chagall Café manager); scale.js matched by eye-to-chin height against Fuuka, Mitsuru, Junpei and Ikutsuki"
     },
     {
       "batch": 37,
@@ -7633,7 +7633,7 @@
       },
       "outputSha256": "5392ad4365e8194b24062870f127d8bd32a844ea75394ce6c93a872aed57fdbd",
       "scale": 0.82,
-      "note": "\u014cta (Akihiko's fan club)"
+      "note": "Ōta (Akihiko's fan club)"
     },
     {
       "batch": 40,
@@ -8555,7 +8555,7 @@
       ],
       "sha256": "50850437f9688314cacea58678f62b69e3f029ef5c51e553885846da4cd8c17a",
       "character": "solar + akihiko",
-      "intendedUse": "Akihiko friendship Showtime \"Roadwork\" (bonds.js akihiko.sequence, every tier; borrowed by his romance versions), panel 2: the stopwatch: \"New drill. I\u2019m timing you.\"",
+      "intendedUse": "Akihiko friendship Showtime \"Roadwork\" (bonds.js akihiko.sequence, every tier; borrowed by his romance versions), panel 2: the stopwatch: \"New drill. I’m timing you.\"",
       "status": "integrated",
       "destination": [
         "assets/femc/battle/art/theurgy/bond-akihiko-show-2.webp"
@@ -8681,7 +8681,7 @@
       ],
       "sha256": "526fd3d64f83978f242c2a4d3469bc4be70d8ef06e3f10b2f323af65f6119b68",
       "character": "solar + shinjiro",
-      "intendedUse": "Shinjiro friendship Showtime \"Seconds\" (bonds.js shinjiro.sequence), panel 3: the strike: Castor\u2019s charge; the strike panel (hit)",
+      "intendedUse": "Shinjiro friendship Showtime \"Seconds\" (bonds.js shinjiro.sequence), panel 3: the strike: Castor’s charge; the strike panel (hit)",
       "status": "integrated",
       "destination": [
         "assets/femc/battle/art/theurgy/bond-shinjiro-show-3.webp"
@@ -8807,7 +8807,7 @@
       ],
       "sha256": "6da9e0192fe5a598b2af5a55689fd6284249ee094d5ea2ea16c87ab860d22107",
       "character": "solar + haechan",
-      "intendedUse": "Haechan romance Showtime on Corona (bonds.js haechan.love.sequence; Kat\u2019s revised take on the Universe beats), panel 1: solar prepares",
+      "intendedUse": "Haechan romance Showtime on Corona (bonds.js haechan.love.sequence; Kat’s revised take on the Universe beats), panel 1: solar prepares",
       "status": "integrated",
       "destination": [
         "assets/femc/battle/art/theurgy/bond-haechan-love-show-1.webp"
@@ -8828,7 +8828,7 @@
       ],
       "sha256": "e643e8de2cfdadacc0263367af8d3cc24e01ef659df2fb5c1c5462b114b87522",
       "character": "solar + haechan",
-      "intendedUse": "Haechan romance Showtime on Corona (bonds.js haechan.love.sequence; Kat\u2019s revised take on the Universe beats), panel 2: haechan shields",
+      "intendedUse": "Haechan romance Showtime on Corona (bonds.js haechan.love.sequence; Kat’s revised take on the Universe beats), panel 2: haechan shields",
       "status": "integrated",
       "destination": [
         "assets/femc/battle/art/theurgy/bond-haechan-love-show-2.webp"
@@ -8849,7 +8849,7 @@
       ],
       "sha256": "836b4235f8636122413c6e675c42d00ae87a9fa36bf183e1bcad334504820b7e",
       "character": "solar + haechan",
-      "intendedUse": "Haechan romance Showtime on Corona (bonds.js haechan.love.sequence; Kat\u2019s revised take on the Universe beats), panel 3: knife throw; the strike panel (hit)",
+      "intendedUse": "Haechan romance Showtime on Corona (bonds.js haechan.love.sequence; Kat’s revised take on the Universe beats), panel 3: knife throw; the strike panel (hit)",
       "status": "integrated",
       "destination": [
         "assets/femc/battle/art/theurgy/bond-haechan-love-show-3.webp"
@@ -8870,7 +8870,7 @@
       ],
       "sha256": "2ca75ff9f170be9cc09d42998eb1997f0032db520e0c881f94d5f33b7e0f4610",
       "character": "solar + haechan",
-      "intendedUse": "Haechan romance Showtime on Corona (bonds.js haechan.love.sequence; Kat\u2019s revised take on the Universe beats), panel 4: turns to solar",
+      "intendedUse": "Haechan romance Showtime on Corona (bonds.js haechan.love.sequence; Kat’s revised take on the Universe beats), panel 4: turns to solar",
       "status": "integrated",
       "destination": [
         "assets/femc/battle/art/theurgy/bond-haechan-love-show-4.webp"
@@ -8891,7 +8891,7 @@
       ],
       "sha256": "697fd9d1e4dbc35f89f5edd6ea3412c69ad27909cc09cd886af876515af7c98d",
       "character": "solar + haechan",
-      "intendedUse": "Haechan romance Showtime on Corona (bonds.js haechan.love.sequence; Kat\u2019s revised take on the Universe beats), panel 5: kiss",
+      "intendedUse": "Haechan romance Showtime on Corona (bonds.js haechan.love.sequence; Kat’s revised take on the Universe beats), panel 5: kiss",
       "status": "integrated",
       "destination": [
         "assets/femc/battle/art/theurgy/bond-haechan-love-show-5.webp"
@@ -9907,7 +9907,7 @@
       "sha256": "9bccb2383626fa5a67bd728bf5a441abe81385ba57903de6ccc72b3a34f0b72e",
       "status": "integrated",
       "destination": "assets/femc/battle/art/gear/",
-      "intendedUse": "Velvet Room gear (Contract Key, Pocket Compendium, Attendant\u2019s Coat), build.js GEAR_ART",
+      "intendedUse": "Velvet Room gear (Contract Key, Pocket Compendium, Attendant’s Coat), build.js GEAR_ART",
       "conversion": "tools/femc-cards.py gear (BUILD), white keyed, upright on the wide canvas; source unchanged (cards 0-2; three empty cards skipped)",
       "outputs": {
         "assets/femc/battle/art/gear/vel_key.webp": "58d5c061370368023a9adc11e289cf628297255aba39c41b821aae3bf96d4d0e",
@@ -11408,7 +11408,7 @@
       "sourceNow": "Added to Game/LOVE-jungwon-showtime/generation-notes.txt",
       "sha256": "3d8962101b08b248636f971a1ed476a8e655606cad474dc28e5edd3dbb19a68e",
       "status": "reference",
-      "note": "Kat\u2019s generation notes; read for the panel order (panel 5 is Signed in Full only)"
+      "note": "Kat’s generation notes; read for the panel order (panel 5 is Signed in Full only)"
     },
     {
       "batch": 50,
@@ -12331,7 +12331,7 @@
       "sha256": "52ef938d3eaa922f65e4c6d32e8dbe3cad871c09999148141c035543b342808d",
       "status": "integrated",
       "destination": "assets/femc/bg/yeobos-cafe.webp",
-      "intendedUse": "Yeobo's Cafe today (FEMC-ART-TODO 2): places.js rule \"Iwatodai Strip \u00b7 Yeobo's Cafe\" (was flashback-yeobos-cafe) for the job shifts, Sunoo's link and the rest; Jungwon's 2/14 (living-march.js) bg",
+      "intendedUse": "Yeobo's Cafe today (FEMC-ART-TODO 2): places.js rule \"Iwatodai Strip · Yeobo's Cafe\" (was flashback-yeobos-cafe) for the job shifts, Sunoo's link and the rest; Jungwon's 2/14 (living-march.js) bg",
       "conversion": "Gemini background, tools/femc-backgrounds.py EXTRA (batch 51): fit to 1920x1072 (from 2752x1536, LANCZOS), WebP q82; source unchanged",
       "outputs": {
         "assets/femc/bg/yeobos-cafe.webp": "7a2907b3412f9d7f90fb863c204c7cc89adfa28bc313a1fd72ce3902e8b98e59"
@@ -12348,7 +12348,7 @@
       "sha256": "3f92ef13ffafd929f83ea8f4db8a67965ba8d51ffb1729744a47b25b2a95b731",
       "status": "integrated",
       "destination": "assets/femc/bg/port-island-fish-market.webp",
-      "intendedUse": "The fish market today: places.js rule 'Port Island \u00b7 Fish Market' (was flashback-fish-market) for the job shifts; Shinjiro's 7/20 (living-holidays.js) bg",
+      "intendedUse": "The fish market today: places.js rule 'Port Island · Fish Market' (was flashback-fish-market) for the job shifts; Shinjiro's 7/20 (living-holidays.js) bg",
       "textCheck": "job-scenes.js: 'white light' -> 'hanging bulbs' (shift 1) and 'the bulbs over the stalls' (shift 6), as drawn",
       "conversion": "Gemini background, tools/femc-backgrounds.py EXTRA (batch 51): fit to 1920x1072 (from 2752x1536, LANCZOS), WebP q82; source unchanged",
       "outputs": {
@@ -12383,7 +12383,7 @@
       "sha256": "a52c5719d979652c6811610648cd1577457c63b612ec905f4499a61c5b96c02d",
       "status": "integrated",
       "destination": "assets/femc/bg/iwatodai-supermarket.webp",
-      "intendedUse": "places.js rule 'Iwatodai Strip \u00b7 Supermarket' (day and evening; Shinjiro rank 3)",
+      "intendedUse": "places.js rule 'Iwatodai Strip · Supermarket' (day and evening; Shinjiro rank 3)",
       "conversion": "Gemini background, tools/femc-backgrounds.py EXTRA (batch 51): fit to 1920x1072 (from 2752x1536, LANCZOS), WebP q82; source unchanged",
       "outputs": {
         "assets/femc/bg/iwatodai-supermarket.webp": "0009bf0596a5df71fb83dee87708cf904ed492f9a6ff636c399c0d3f2a45c2f6"
@@ -12400,7 +12400,7 @@
       "sha256": "138033813df2d5f4be04ba1deb4a68078f844cb39564f52977636e77f7e40a57",
       "status": "integrated",
       "destination": "assets/femc/bg/gekkoukan-stairwell.webp",
-      "intendedUse": "places.js rule 'Gekkoukan High \u00b7 Stairwell' (Saori's after-school stairwell)",
+      "intendedUse": "places.js rule 'Gekkoukan High · Stairwell' (Saori's after-school stairwell)",
       "conversion": "Gemini background, tools/femc-backgrounds.py EXTRA (batch 51): fit to 1920x1072 (from 2752x1536, LANCZOS), WebP q82; source unchanged",
       "outputs": {
         "assets/femc/bg/gekkoukan-stairwell.webp": "7b4d9268473e0b62aad15337d137dc7638ffbf8d95bfd5bc06730539a6848bdb"
@@ -12417,7 +12417,7 @@
       "sha256": "8763d9d1eb18a8f7946010cfba4eebf63488114de30111fdea6ca7613e7d2094",
       "status": "integrated",
       "destination": "assets/femc/bg/paulownia-canal.webp",
-      "intendedUse": "places.js rule 'Paulownia Mall \u00b7 Behind the Canal' (day and evening, dusk art); Sebastian's 'frogs in winter' bg (was park-2)",
+      "intendedUse": "places.js rule 'Paulownia Mall · Behind the Canal' (day and evening, dusk art); Sebastian's 'frogs in winter' bg (was park-2)",
       "textCheck": "the art is at dusk: that scene's time Daytime -> Evening",
       "conversion": "Gemini background, tools/femc-backgrounds.py EXTRA (batch 51): fit to 1920x1072 (from 2752x1536, LANCZOS), WebP q82; source unchanged",
       "outputs": {
@@ -19385,6 +19385,446 @@
       "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-jungwon-stage (white keyed by femc-theurgy key: un-mix from white + Vision lift, despeckle, defringe; opaque JPEG read as is); source unchanged; then stray near-invisible specks (alpha under 90, at most 15 px) removed",
       "placement": "Wardrobe weapon skin wpn-jungwon-stage: listed in game/art/ready.js weapons; menu.js Equipment weapon slot (weaponArt)",
       "outputSha256": "f9d278b6d46b36fe5a72b231d78f4c7622f00721a87caaa90d35decd3dfd05f1"
+    },
+    {
+      "batch": 104,
+      "source": "hoax-cherry-christmas.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ea00bcd5ba528b95ce435ea521ec31340f16dedc8124df147220d98be35cb2af",
+      "status": "integrated",
+      "character": "cherry-hoax-christmas",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-christmas'].cherry",
+      "outputs": {
+        "assets/femc/portraits/cherry-hoax-christmas/flustered.webp": "4089a492731a9e04cb7abb59fdc083e925d513614d9ec40cee5b43b81c423cae",
+        "assets/femc/portraits/cherry-hoax-christmas/happy.webp": "a9d419dfd66cb28dd6449e564309f0d7e0017c83456f8f2a483347909b4b398e",
+        "assets/femc/portraits/cherry-hoax-christmas/neutral.webp": "d1c1e7bc0f6fc1060579c30a5c7799b6cfdf644ee4a1ab27a452aa5a92a23b68",
+        "assets/femc/portraits/cherry-hoax-christmas/sad.webp": "c7d43ac389ddc62531af7a474b150353b49be475e12855aaeaf90f8b5fa9df21",
+        "assets/femc/portraits/cherry-hoax-christmas/serious.webp": "17994f900adca81c163b4355ae7757a893c016106b08858b39c946b5b23f9780",
+        "assets/femc/portraits/cherry-hoax-christmas/surprised.webp": "07a9a04b50aed51151d246723d3b1cbb7e909f4ee73810e76045af54df74f946"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-cherry-newyear.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "0a55eb74f057c84509e2ad4d7df560174f78539d7455b84dd4986540834fde5d",
+      "status": "integrated",
+      "character": "cherry-hoax-newyear",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-newyear'].cherry",
+      "outputs": {
+        "assets/femc/portraits/cherry-hoax-newyear/flustered.webp": "e42a2f9fca2d058b179863efaf2e9f3e789c696860149569412caea6f5d706d9",
+        "assets/femc/portraits/cherry-hoax-newyear/happy.webp": "9ac80eace7141da659e2811750c439362680671031ac44ad966b3fc640e094a6",
+        "assets/femc/portraits/cherry-hoax-newyear/neutral.webp": "46fe1bdcf27af7efc54b92d849f3d2955c962670131318f3d2b574e67db91a1e",
+        "assets/femc/portraits/cherry-hoax-newyear/sad.webp": "ae3ee6eb3caca5deeda4e6562cb797d4a5820b05f9fadfff62923b18e4f418e8",
+        "assets/femc/portraits/cherry-hoax-newyear/serious.webp": "9cafc408397fb1b380344de5952f86bf5722af7421a557cd67926706ceddf459",
+        "assets/femc/portraits/cherry-hoax-newyear/surprised.webp": "1858f427cf2274e77bb6fe2d731ebc0ca4eab29e72a0c2425cb96ac2485022c8"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-cherry-party.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "467cbaaadadbd8e24d8d9b35b68b69bf3d4531bceb7048a0f1cb114e2b21544e",
+      "status": "integrated",
+      "character": "cherry-hoax-party",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-party'].cherry",
+      "outputs": {
+        "assets/femc/portraits/cherry-hoax-party/flustered.webp": "edc24d5b74e734042ca0020948e3e3eead7bbf928c2dfbfc67d5b7299e50b327",
+        "assets/femc/portraits/cherry-hoax-party/happy.webp": "f31fa1168a711cf3e2de932c09c9e3a3ae8818a8a987cacb1f64fec096ad90d6",
+        "assets/femc/portraits/cherry-hoax-party/neutral.webp": "72a63cca0d93365a61a81db03e348becfb4c71c123c791917561058f4e484b2d",
+        "assets/femc/portraits/cherry-hoax-party/sad.webp": "2dc94ed0fe32a0de0c1921ff11afac0b98c7c796abb93c582f0f68c584711e47",
+        "assets/femc/portraits/cherry-hoax-party/serious.webp": "3d1f1f719fe687e0d00b6fb2c74394a79e5994ca0290e4581f753e5b49df7a3e",
+        "assets/femc/portraits/cherry-hoax-party/surprised.webp": "36128cd9ebddeedc35cf33f22124dddba0031b4ee244fe658e87ab4d16efc7aa"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-halmeoni-newyear.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1d2920fdef0d81ead55702de0ed7ca7d49532c9b90d54cdf320fcd9a1e655dff",
+      "status": "integrated",
+      "character": "halmeoni-hoax-newyear",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-newyear'].halmeoni",
+      "outputs": {
+        "assets/femc/portraits/halmeoni-hoax-newyear/flustered.webp": "209a148a9dafd1f33bb8f974fc22e9ba7ca5c5ca904286227dbfa44b57afc597",
+        "assets/femc/portraits/halmeoni-hoax-newyear/happy.webp": "08e264d119cee8eefab1f3f0bed063e360d6a9ab3de1fb40ca2c94799f003b39",
+        "assets/femc/portraits/halmeoni-hoax-newyear/neutral.webp": "2c177418c522c5d697e740c4e4f8fd53cab614f10b490eb50f2093917a315ab7",
+        "assets/femc/portraits/halmeoni-hoax-newyear/sad.webp": "7b2ccf3794150da087dca2121fa3e10b65da8b00583e3779b3e20c4a02d54d12",
+        "assets/femc/portraits/halmeoni-hoax-newyear/serious.webp": "b99aa49146e387cf3da3647506056a57b142fac910a57ded703b9da3da696be7",
+        "assets/femc/portraits/halmeoni-hoax-newyear/surprised.webp": "270b4d32ce40a3ad54ad77995cc907ef0969e420f6c0e319038e8b7d957b6afe"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-heeseung-newyear.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1cd7646041e810564e7ce4e24340be8699bdd153521f2a0e7636c97ec3d10765",
+      "status": "integrated",
+      "character": "heeseung-hoax-newyear",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-newyear'].heeseung",
+      "outputs": {
+        "assets/femc/portraits/heeseung-hoax-newyear/flustered.webp": "cd871dc4f1e9c4abe818d27ba2eeb9b23cc677172ba7cc1822426ec333645d49",
+        "assets/femc/portraits/heeseung-hoax-newyear/happy.webp": "2afdd05809fe1439a5e5d552f54c39a6b3e94de7e5637bba3559d4ba135c1535",
+        "assets/femc/portraits/heeseung-hoax-newyear/neutral.webp": "60f011fa543255d77ba45354d0ebeb52c79fe040bbff1fbd03aa0017bf3b0c97",
+        "assets/femc/portraits/heeseung-hoax-newyear/sad.webp": "fd4070532fc1af372578c729cd599d6520ddfed4c8dffc91d8b111cb58da251d",
+        "assets/femc/portraits/heeseung-hoax-newyear/serious.webp": "e5a5f9b303bf4804f13175487fb03358d0595e69aa4a83bcc9e911c2aafc027f",
+        "assets/femc/portraits/heeseung-hoax-newyear/surprised.webp": "b77a91c85a6adf45fd337a1a864541e54726d0158c6280db54fa5bfe1d0d616c"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-jake-newyear.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "816425a42d336e80383a016283f2564046c4f49f0922b9d1cf4ef708913a607e",
+      "status": "integrated",
+      "character": "jake-hoax-newyear",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-newyear'].jake",
+      "outputs": {
+        "assets/femc/portraits/jake-hoax-newyear/flustered.webp": "63ee3156f6e5b28ec3bbd235fc292b4c8466b430e60f96f1cfb2270e07d5ae15",
+        "assets/femc/portraits/jake-hoax-newyear/happy.webp": "4c0b070f73a321126af970108db3e862bcc7460715625c972510d94fbd23f352",
+        "assets/femc/portraits/jake-hoax-newyear/neutral.webp": "2cb0ef00ed5ab2a47e5f6c4a857bb8142cd366274d17a36b1876c2d97cd8ca22",
+        "assets/femc/portraits/jake-hoax-newyear/sad.webp": "b6979f0861bdfd1fe0da307d513c27ec1d752762946be7c8129edee5b4e47ade",
+        "assets/femc/portraits/jake-hoax-newyear/serious.webp": "bd1fee34000a69e61fb21301ee8effadb17a65d4e73dde29ab2f4357b71ccf64",
+        "assets/femc/portraits/jake-hoax-newyear/surprised.webp": "ae6bac10ebbc3da50557022134ad1f95fabc1825faaaffd47c83ffa4ba7748a8"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-jay-newyear.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b318d5ecc08bbb68f4ca5a5afe8caf01a06ab5f2717aee6e5359e52e771cf6f5",
+      "status": "integrated",
+      "character": "jay-hoax-newyear",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-newyear'].jay",
+      "outputs": {
+        "assets/femc/portraits/jay-hoax-newyear/flustered.webp": "93dc3914766f7aa7795dc4c098879cbd96de8f83665b1f31667e275c2cffbe96",
+        "assets/femc/portraits/jay-hoax-newyear/happy.webp": "533aa22126c0a92b2353f99ad2bd6228213351a66f4050867efdacdc10e3ed1d",
+        "assets/femc/portraits/jay-hoax-newyear/neutral.webp": "422ec25b28ed397dc1b04e538a6fc5435dc3e7e1b8ef80af9c1a3831d3d981ad",
+        "assets/femc/portraits/jay-hoax-newyear/sad.webp": "d94e1c4dab6e08665c71a1e13c5979922be6d89d375d6583e06d9fc27870e36b",
+        "assets/femc/portraits/jay-hoax-newyear/serious.webp": "3a240c1d218ee21175ce347dccc1b6d6d0eeb731c28d14548b3784a37727a602",
+        "assets/femc/portraits/jay-hoax-newyear/surprised.webp": "1fbe7df0c98111b27c51c506353e028a90cccc8813d6cad3206f7eca3e3af8d8"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-jihoon-christmas.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "161cfb9df82ba0f62e119ff981cbf46347fa9a220dd3cae74d29afdc0a9f9226",
+      "status": "integrated",
+      "character": "jihoon-hoax-christmas",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-christmas'].jihoon",
+      "outputs": {
+        "assets/femc/portraits/jihoon-hoax-christmas/flustered.webp": "62161efc7a3c491d72d4e271c75b5416365bb1474841b05c8e290ae7da147697",
+        "assets/femc/portraits/jihoon-hoax-christmas/happy.webp": "b53bf574b869041c21055562cca19aea353936963371134b9ca4b09652cd8095",
+        "assets/femc/portraits/jihoon-hoax-christmas/neutral.webp": "a531a8a341e1f5ece9365b7865b10e2ec52fc8f286e95647cc0c8c2c971c0908",
+        "assets/femc/portraits/jihoon-hoax-christmas/sad.webp": "b7adbdd042a5de7a647394e2c7edbbf738e1785204533a226e3bccb08e963ca1",
+        "assets/femc/portraits/jihoon-hoax-christmas/serious.webp": "0d51ad4a49ef81a209daac9f9f0f94a79fd15325e4c2b099b5d953a7d01e600b",
+        "assets/femc/portraits/jihoon-hoax-christmas/surprised.webp": "8ce925a2d1205d186561c981e40cc564ce7db73de98347fc9c93ad4cdacd7225"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-jihoon-newyear.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e2b22541f2f0cb9b54f53c2503df5ec9d5704b03f61f539eca898326072ce0f5",
+      "status": "integrated",
+      "character": "jihoon-hoax-newyear",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-newyear'].jihoon",
+      "outputs": {
+        "assets/femc/portraits/jihoon-hoax-newyear/flustered.webp": "26454f205782ca3012ff295247510dda24775ed9a7725c647c6035590dad22bd",
+        "assets/femc/portraits/jihoon-hoax-newyear/happy.webp": "9968aad2767053ba512a78bfd827bac464462e16b04e86520e7aa11c629e2779",
+        "assets/femc/portraits/jihoon-hoax-newyear/neutral.webp": "08ca514c0872971d00e55b1db3d5f67374380a36bdb02ee50bffb417943d6f48",
+        "assets/femc/portraits/jihoon-hoax-newyear/sad.webp": "3250213663c561eba3c8aec0da6f6237bc8fd38151d8002ae7cc9878251dac9d",
+        "assets/femc/portraits/jihoon-hoax-newyear/serious.webp": "e34817e9f7a39ac1a70eafeaf3fd20e28dc929fea4b641d5ae10378f0f1cbe85",
+        "assets/femc/portraits/jihoon-hoax-newyear/surprised.webp": "a10778662b48db1ccb5210ca877db0639f1650ef718fdee90a83567f3199f313"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-jihoon-party.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "447e4c6da717bc7001efebe2dbbf3acf695c20719f21278fbf64fb1331cd0aca",
+      "status": "integrated",
+      "character": "jihoon-hoax-party",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-party'].jihoon",
+      "outputs": {
+        "assets/femc/portraits/jihoon-hoax-party/flustered.webp": "e31fce4564e2c0987e88e3692df3fe5d49811372f55bc042ff50646692e10e8e",
+        "assets/femc/portraits/jihoon-hoax-party/happy.webp": "165bef6b3abe2ace6b773a7d9cfd06595a88763da20e31753ae818cca7d9c459",
+        "assets/femc/portraits/jihoon-hoax-party/neutral.webp": "720c57815ff458ef51c14baa5c0a15371f7b1dcbe026d0f30793aeb6cb4a4858",
+        "assets/femc/portraits/jihoon-hoax-party/sad.webp": "3877ed4e54669b8159627a5031ee68d6495a91c0502c6bb4ecfd3bd25fb10799",
+        "assets/femc/portraits/jihoon-hoax-party/serious.webp": "1e1f03f1fea579948fa69b2e62d20cd2d3547ac3b3a08900bf7c2034f13dffb8",
+        "assets/femc/portraits/jihoon-hoax-party/surprised.webp": "c9c6f5c634d83984417b98c8b3aae4a05771384d5c83f1db61bf8e54a65f0c2a"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-jungwon-christmas.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ea0b93cf0b707cadf6856e55cfdb615d6a5c7b35ae7e7e48b998f66218cb189e",
+      "status": "integrated",
+      "character": "jungwon-hoax-christmas",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-christmas'].jungwon",
+      "outputs": {
+        "assets/femc/portraits/jungwon-hoax-christmas/flustered.webp": "c6cf402d029cd620fec52a5477bb297713fb31fd9b7a86a3deded3ec9ada804f",
+        "assets/femc/portraits/jungwon-hoax-christmas/happy.webp": "7165ea3fe35768941f134bbce30b740058b67bc1c842d74f5d6f068550f5d479",
+        "assets/femc/portraits/jungwon-hoax-christmas/neutral.webp": "39a068e01d6169ba5afe9d53802156020b1fab8850fcdbd92a03cc8a73cf3676",
+        "assets/femc/portraits/jungwon-hoax-christmas/sad.webp": "c6d082da62680153a1ca68e61a43faa36326d1339f3101e583b69de4b1775ef1",
+        "assets/femc/portraits/jungwon-hoax-christmas/serious.webp": "2d43ba08d91ef7b4aed3c8fcfe04b9979c9aff093eed218f9de6cc789a2c2792",
+        "assets/femc/portraits/jungwon-hoax-christmas/surprised.webp": "c4d640a9ff3b950cd1184e422ff9c3eba7eaeb45d57cf63b75105135d19bc5de"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-jungwon-newyear.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "f5e7dc10f579c3bb740de22ac29ec2dcc9a74e491bb7e4493eabaeaf49946835",
+      "status": "integrated",
+      "character": "jungwon-hoax-newyear",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-newyear'].jungwon",
+      "outputs": {
+        "assets/femc/portraits/jungwon-hoax-newyear/flustered.webp": "4740657154a760e0eb99694f3f1636ee72e24ce6387fad574233a228030e0a54",
+        "assets/femc/portraits/jungwon-hoax-newyear/happy.webp": "0b53ab50230e5d2430bbb34b19b93589aa56de6b7f1818b9c2fed2250acf0256",
+        "assets/femc/portraits/jungwon-hoax-newyear/neutral.webp": "9783ea0186de175ef51c0799344a0a0a8c47beb68016bb7bf6d3ecf7f3822659",
+        "assets/femc/portraits/jungwon-hoax-newyear/sad.webp": "1e5b864f997486269703deac3b2f9ca42f9913a294d64c98a3707a976d306603",
+        "assets/femc/portraits/jungwon-hoax-newyear/serious.webp": "b2c862b2f5de356cae856af45424a7d663dfa3ac00619f94cc6985beab19cdd3",
+        "assets/femc/portraits/jungwon-hoax-newyear/surprised.webp": "68fd25facb6fe7b5b55a9506185d49029bceafeff394ba3bfe1ff109b7b97e60"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-jungwon-party.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8674210506a918fec60718ceea93415e6ea0b69a1441d99c71cc06737dd1b096",
+      "status": "integrated",
+      "character": "jungwon-hoax-party",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-party'].jungwon",
+      "outputs": {
+        "assets/femc/portraits/jungwon-hoax-party/flustered.webp": "09aa6b5cf4dc7fad68cc4f17b324657b840d5aa2855d95cdabcdad7c15ad6656",
+        "assets/femc/portraits/jungwon-hoax-party/happy.webp": "932e8b6493d450de892d2e24d0c18a18cf5145a51ee7cea47a24680b7d0dea89",
+        "assets/femc/portraits/jungwon-hoax-party/neutral.webp": "e253612371bf63a991983da53abbbaffed57593633f2b4d8a848f48d610ab808",
+        "assets/femc/portraits/jungwon-hoax-party/sad.webp": "f481076763fbbd1590f46d5e643e538a1979c3eae055cc72bf3c2e223bc7f846",
+        "assets/femc/portraits/jungwon-hoax-party/serious.webp": "3f778d27eaa4745ff356b7f607556664dae9f7b6260544254e00cc489d072dfd",
+        "assets/femc/portraits/jungwon-hoax-party/surprised.webp": "de7ee17e07b3f7f20e058d3feca611d1f9feff5d355a4b364281a24be6e1f873"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-kazuha-christmas.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "db4354bc191e49fda9a6801919e5ee1ed52ca4f463eaa5de5939330e5855bb95",
+      "status": "integrated",
+      "character": "kazuha-hoax-christmas",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-christmas'].kazuha",
+      "outputs": {
+        "assets/femc/portraits/kazuha-hoax-christmas/flustered.webp": "59e5e66759fc8591d71803aa6a97604415fc3bed4c8a91acfb8c32d3938ff941",
+        "assets/femc/portraits/kazuha-hoax-christmas/happy.webp": "86790ff421945caf57f2216510ecb81af14a0e36961d5c9f96a6d3e747a7f216",
+        "assets/femc/portraits/kazuha-hoax-christmas/neutral.webp": "ed26fa97374128c7dd4e980e991b6add1ccab8303a25ef07a86c31bb4f61a6b1",
+        "assets/femc/portraits/kazuha-hoax-christmas/sad.webp": "64e0a594740b77e1052a26a9ae74cd3b6d8213135c80cdbb3dd18649f5c15788",
+        "assets/femc/portraits/kazuha-hoax-christmas/serious.webp": "4c3e32e86006a6c246ea7d389147dddc192955056571cb5e7ce55e0515a40382",
+        "assets/femc/portraits/kazuha-hoax-christmas/surprised.webp": "6f96adf2d17be8cc3112f21b205ef305811a0b10b80d0ef56ad69f801ea0eceb"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-niki-newyear.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d90d6474b8ab399aa78586b4fdb66dd206d54e9dd19aae4c3cdfd4984eb18df7",
+      "status": "integrated",
+      "character": "niki-hoax-newyear",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-newyear'].niki",
+      "outputs": {
+        "assets/femc/portraits/niki-hoax-newyear/flustered.webp": "e1846a065cda60098c5c94317f963b656851da80e1902e74e954ad5f4f10654a",
+        "assets/femc/portraits/niki-hoax-newyear/happy.webp": "580211ed40e38ac86e133de64d28563d6152d91835944443852f7f6bc3bf759a",
+        "assets/femc/portraits/niki-hoax-newyear/neutral.webp": "64a3ad6184e4f8b7e2fe8cdaae50cc0b6f61d25fe0ab2077ff6aab691d944538",
+        "assets/femc/portraits/niki-hoax-newyear/sad.webp": "8c2a75613c713bb64462203e3480e12a8c349e5bcef67397ebaaa234832f144d",
+        "assets/femc/portraits/niki-hoax-newyear/serious.webp": "9223e6ef742f889ee9e4c02221eb8b21a750b8ddc741a6a5133734719bf053e6",
+        "assets/femc/portraits/niki-hoax-newyear/surprised.webp": "0bea3e6f49d4bb94d80dbf4cda960c6e78335b51a664a5b8b1e9325ca15cf58e"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-solar-christmas.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "03ca7b86e8e895658094aaedc572c6a88840c2c9f01b8e511ae36a27be4282c5",
+      "status": "integrated",
+      "character": "solar-hoax-christmas",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-christmas'].solar",
+      "outputs": {
+        "assets/femc/portraits/solar-hoax-christmas/flustered.webp": "f8359b3689f3446523bb1cfb56807969332fd57759da66c1d06403b09ddad3e6",
+        "assets/femc/portraits/solar-hoax-christmas/happy.webp": "f1b28eca5305081a9554cf30f1020e2b1385ea2966221b12b53c3e4906e36507",
+        "assets/femc/portraits/solar-hoax-christmas/neutral.webp": "163e4e163de43e8163c0f880fbcb2d053b92b127147793e9df7e59c68ca51833",
+        "assets/femc/portraits/solar-hoax-christmas/sad.webp": "02f25f5bb073f225710dc7a62b5c274fb5fb984a6203ac547febc693a63e8ee7",
+        "assets/femc/portraits/solar-hoax-christmas/serious.webp": "7cd34d66c5cca41ab3ddfd69ee7335f2e204cb5df9fe6c0c1cb533fd9d024216",
+        "assets/femc/portraits/solar-hoax-christmas/surprised.webp": "857b3216e12c1849b564c0a3ca44e691a2476be2c59d294c042e3447fddce8e2"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-solar-newyear.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "adfa67e1ed37dec84b7c3a54f215b34e4cb682b8191b0e6968d0281ea3a50940",
+      "status": "integrated",
+      "character": "solar-hoax-newyear",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-newyear'].solar",
+      "outputs": {
+        "assets/femc/portraits/solar-hoax-newyear/flustered.webp": "a26cf205405bae1fc37b4d4b3656b52768d5d7b78fcc8ca648a29c031ebddf92",
+        "assets/femc/portraits/solar-hoax-newyear/happy.webp": "1f8c81bd2a67ed2e9f90ba7daa90f64f239a5f1ce6e1a0b09f81502f9de4d203",
+        "assets/femc/portraits/solar-hoax-newyear/neutral.webp": "c3e9ca01235a6454cbbeeaa9b5abe0736f9d7760ce05335c2a102b7b4c4e386e",
+        "assets/femc/portraits/solar-hoax-newyear/sad.webp": "da58de042b22cc8626a529d094c6eb916f41f218448747e21ea19772fb04fb46",
+        "assets/femc/portraits/solar-hoax-newyear/serious.webp": "5f9095e92ea4804ff309a0c53cb0cfd09f6bee227d7847cca2cb0f6bc179a71c",
+        "assets/femc/portraits/solar-hoax-newyear/surprised.webp": "51c1962107b419bcd2b4d58dfdb87c9873612af7a7db5fd41a4a4cdb6666e0bd"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-solar-party.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "44b26ec39c261fce00bf2a6774dd2d53aaa100e9ee8c709a9b7615439e205ca9",
+      "status": "integrated",
+      "character": "solar-hoax-party",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-party'].solar",
+      "outputs": {
+        "assets/femc/portraits/solar-hoax-party/flustered.webp": "5cc7324f1d32f5fec27685403a9021248b72d86833e406814c517162f87f96c2",
+        "assets/femc/portraits/solar-hoax-party/happy.webp": "81846e05ebf3e172432355d9dfc282bd33ffb8c8e4d57c6a160d791aa565c6d3",
+        "assets/femc/portraits/solar-hoax-party/neutral.webp": "a6b1b432cc6c8b2a54788043773915394734dae2fcb5f5f3822b4487f4c78707",
+        "assets/femc/portraits/solar-hoax-party/sad.webp": "94cc475d02871dc78b976c42ba5d9da9959f170b64f627f0b7b129134981a92d",
+        "assets/femc/portraits/solar-hoax-party/serious.webp": "fc91497939ed45fee76734360c44c25d9c0db57afdcb7d64ac4b0ad57c584165",
+        "assets/femc/portraits/solar-hoax-party/surprised.webp": "f9dba7988144a54a725a84d81536abd92b5ebd74cf68ac40aecab2ccc496a853"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-sunghoon-newyear.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "61a7a54e659ce007287f97349dc8164cae0d0126748e85d7f90454e2d707eeac",
+      "status": "integrated",
+      "character": "sunghoon-hoax-newyear",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-newyear'].sunghoon",
+      "outputs": {
+        "assets/femc/portraits/sunghoon-hoax-newyear/flustered.webp": "1d8cc626163058afb45ced8502e0457e5678f68bc2080a371acc6473170778e0",
+        "assets/femc/portraits/sunghoon-hoax-newyear/happy.webp": "9e0fbfb39aae967e7ec4fe09091e3956513280827837bc5e1797ca94107a8151",
+        "assets/femc/portraits/sunghoon-hoax-newyear/neutral.webp": "77deeda25d51f365598d8351583341aa44f6589e29c1c1c5c04ecd61c15ff597",
+        "assets/femc/portraits/sunghoon-hoax-newyear/sad.webp": "82446e4bcc3d4a1c51ee8051b8be3081e02e7bd47f71f6f391ad7723298640fa",
+        "assets/femc/portraits/sunghoon-hoax-newyear/serious.webp": "5b2accc9af729f927b0874538660781878e7b09998abe8b6eca476b2af86b16e",
+        "assets/femc/portraits/sunghoon-hoax-newyear/surprised.webp": "b802278785abef847882e97028c5415030e249f0baf973b2d1f6f82751cebb7c"
+      }
+    },
+    {
+      "batch": 104,
+      "source": "hoax-sunoo-newyear.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1cd6c5c1f5ffa6f63f4d9f3223a0704fc2415a80c8b9776045e5022635504ef2",
+      "status": "integrated",
+      "character": "sunoo-hoax-newyear",
+      "conversion": "already transparent 3x2 sheet: tools/femc-sheet-alpha.py (cut at the emptiest column/row, largest piece kept) into Character Portraits/<Name>-HOAX-<Event>/; femc-portraits.py aligned (WebP q86). The batch 88 cuts were moved to Femc Mode Images/Replaced Cuts (Oct 31 2026)/.",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "placement": "data/epi/hoax/world.js eventFaces['hoax-newyear'].sunoo",
+      "outputs": {
+        "assets/femc/portraits/sunoo-hoax-newyear/flustered.webp": "939f4991d96bfb8fb2025cd22423eb12ab689248703d0967df477c214fab13f6",
+        "assets/femc/portraits/sunoo-hoax-newyear/happy.webp": "87f8b704e23871935b1b63bbf84c0f42d64e61563186fe94c498458049f55e94",
+        "assets/femc/portraits/sunoo-hoax-newyear/neutral.webp": "842aa0f40684b237b74a21162e67d94c92f77c2edfb9dc184e46bb59af938a6c",
+        "assets/femc/portraits/sunoo-hoax-newyear/sad.webp": "d4c8ea3eb641df4beae7260287c2fe8ef212f8c5c18cb47d327c48561d6c5475",
+        "assets/femc/portraits/sunoo-hoax-newyear/serious.webp": "e9a3821a5478b154a50c46d88b7c1c65246d368037fd36dc83f5f2c2ddaf7a25",
+        "assets/femc/portraits/sunoo-hoax-newyear/surprised.webp": "1aacb027576f1fefce01123bc7b422a391a35a94b8bc39de74c0017bb41522cc"
+      }
     }
   ],
   "batch1Validation": {
@@ -19568,7 +20008,7 @@
     "integrated": false,
     "pendingDecision": null,
     "status": "on_hold_by_user",
-    "decision": "Kat requested \u201cWait on those.\u201d Prepared cards retained without game integration."
+    "decision": "Kat requested “Wait on those.” Prepared cards retained without game integration."
   },
   "remainingDuplicateReview": {
     "sources": [
@@ -20035,7 +20475,7 @@
     "sourcesIntegrated": 17,
     "sourcesUnchanged": true,
     "sourcesMoved": "New Adds -> Added to Game (same names; sha256 checked after the move); On Hold untouched",
-    "textTweaks": "rio.js: one line (her hand on Solar\u2019s blazer, breath clouds) and coat -> blazer; saori.js: one clause (her hand catches Solar\u2019s blazer) and the kiss line\u2019s hand tightens instead; build.js: Koro-chan Charm and Contract Key descriptions match the art",
+    "textTweaks": "rio.js: one line (her hand on Solar’s blazer, breath clouds) and coat -> blazer; saori.js: one clause (her hand catches Solar’s blazer) and the kiss line’s hand tightens instead; build.js: Koro-chan Charm and Contract Key descriptions match the art",
     "tests": [
       "femc_building --only menu,shots",
       "femc_extras",

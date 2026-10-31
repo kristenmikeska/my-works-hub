@@ -131,9 +131,14 @@
     // At school (any place under 'Hanlim · School', core.js worldFace): the Hanlim uniform for everyone Kat drew one for.
     placeFaces: [['Hanlim · School', { solar: 'solar-hoax-school', jungwon: 'jungwon-hoax-school', jihoon: 'jihoon-hoax-school', cherry: 'cherry-hoax-school',
       asahi: 'asahi-hoax-school', hyunsuk: 'hyunsuk-hoax-school', jaehyuk: 'jaehyuk-hoax-school', junkyu: 'junkyu-hoax-school' }]],
-    // Event outfits are parked until Kat redraws them in the new style (FEMC-ART-BACKBURNER "HOAX outfits"); those scenes show
-    // everyone's everyday hoax face meanwhile. The old map is kept there to restore.
-    eventFaces: {},
+    // Event outfits (core.js eventFaces): Kat's realistic holiday sheets, Oct 31 2026. A scene's `faces: '<key>'` swaps these in.
+    eventFaces: {
+      'hoax-christmas': { solar: 'solar-hoax-christmas', jungwon: 'jungwon-hoax-christmas', jihoon: 'jihoon-hoax-christmas', cherry: 'cherry-hoax-christmas', kazuha: 'kazuha-hoax-christmas' }, // epi-h-christmas (12/25)
+      'hoax-party': { solar: 'solar-hoax-party', jungwon: 'jungwon-hoax-party', jihoon: 'jihoon-hoax-party', cherry: 'cherry-hoax-party' }, // epi-h-party (12/29)
+      // epi-h-new-year and epi-h-sebae (1/1): the hanbok, for the whole council
+      'hoax-newyear': { solar: 'solar-hoax-newyear', jungwon: 'jungwon-hoax-newyear', jihoon: 'jihoon-hoax-newyear', cherry: 'cherry-hoax-newyear', halmeoni: 'halmeoni-hoax-newyear',
+        heeseung: 'heeseung-hoax-newyear', jake: 'jake-hoax-newyear', jay: 'jay-hoax-newyear', niki: 'niki-hoax-newyear', sunghoon: 'sunghoon-hoax-newyear', sunoo: 'sunoo-hoax-newyear' }
+    },
     variants: {
       morning: {
         school: ["Hanlim at eight, snow on the gate, and a whole building full of people with opinions about where the council had been.",

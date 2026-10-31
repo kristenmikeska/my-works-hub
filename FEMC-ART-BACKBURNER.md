@@ -158,7 +158,11 @@ Redrawn in the realistic style and back in `data/epi/runners/world.js` `eventFac
 
 Redrawn in the realistic style and back in `data/epi/strangers/world.js` `eventFaces`: the Daeboreum night (Solar, Haechan, Jungwon, Yunjin, plus Chaewon and Kazuha, new).
 
-## HOAX outfits (ChatGPT): parked Oct 30 2026
+## HOAX outfits (ChatGPT): back in the game Oct 31 2026
+
+Kat redrew them in the realistic style (batch 104): Christmas (Solar, Jungwon, Jihoon, Cherry, plus Kazuha), the party (Solar, Jungwon, Jihoon, Cherry) and New Year in hanbok (those four plus Halmeoni and the whole council). Wired in `data/epi/hoax/world.js` `eventFaces`. The note below is the old parking record.
+
+### Parked Oct 30 2026
 
 Kat's call, as with Runners: the hoax event outfits come out until everyone's everyday hoax face is redone in the new realistic style, then get redrawn to match. Until then Christmas (12/25), the winter-break party (12/29) and New Year (1/1) show each person's everyday face. The old art is still in `assets/femc/portraits/`; to bring a set back, restore it in `data/epi/hoax/world.js` `eventFaces`.
 

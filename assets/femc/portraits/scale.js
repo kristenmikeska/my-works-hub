@@ -173,14 +173,6 @@ window.FEMC_PORTRAIT_SCALE = {
   'jisung-runners-holiday': 0.93, // batch 102: Kat's realistic Runners outfit
   'chaewon-strangers-daeboreum': 0.77, // batch 103: Kat's realistic Daeboreum outfit
   'kazuha-strangers-daeboreum': 0.8, // batch 103: Kat's realistic Daeboreum outfit
-  // batch 88: HOAX event outfits, eyes level with solar-hoax, jungwon-hoax and Jihoon's year face
-  'solar-hoax-christmas': 0.9,
-  'jungwon-hoax-christmas': 1.0,
-  'jihoon-hoax-christmas': 1.08,
-  'solar-hoax-party': 0.9,
-  'jungwon-hoax-party': 1.0,
-  'solar-hoax-newyear': 0.9,
-  'jungwon-hoax-newyear': 1.0,
   // batch 89: Olivia's and Haerin's old faces are their Regionals jerseys (Kat); their casual sheets are the default now
   'olivia-runners-regionals': 0.8, // batch 102: Kat's realistic Runners outfit
   'haerin-runners-regionals': 0.8, // batch 102: Kat's realistic Runners outfit
@@ -190,11 +182,6 @@ window.FEMC_PORTRAIT_SCALE = {
   'chenle-runners-regionals': 0.9, // batch 102: Kat's realistic Runners outfit
   'danielle-runners-holiday': 0.77, // batch 102: Kat's realistic Runners outfit
   'jaemin-runners-holiday': 0.83, // batch 102: Kat's realistic Runners outfit
-  'cherry-hoax-christmas': 0.88,
-  'cherry-hoax-party': 0.91,
-  'cherry-hoax-newyear': 0.88,
-  'jihoon-hoax-party': 1.06,
-  'jihoon-hoax-newyear': 1.05,
   'solar-strangers-daeboreum': 0.8, // batch 103: Kat's realistic Daeboreum outfit
   'haechan-strangers-daeboreum': 0.77, // batch 103: Kat's realistic Daeboreum outfit
   'jungwon-strangers-daeboreum': 0.83, // batch 103: Kat's realistic Daeboreum outfit
@@ -260,11 +247,32 @@ window.FEMC_PORTRAIT_SCALE = {
   tanabe: 0.81,
   tsuji: 0.82,
   ueda: 0.82,
-  yuzu: 0.81
+  yuzu: 0.81,
+  // Oct 31 2026: Kat's realistic HOAX holiday sheets, sized like each one's everyday HOAX face (same framing)
+  'solar-hoax-christmas': 0.78,
+  'jungwon-hoax-christmas': 0.8,
+  'jihoon-hoax-christmas': 0.83,
+  'cherry-hoax-christmas': 0.85,
+  'kazuha-hoax-christmas': 0.84,
+  'solar-hoax-party': 0.78,
+  'jungwon-hoax-party': 0.8,
+  'jihoon-hoax-party': 0.83,
+  'cherry-hoax-party': 0.85,
+  'solar-hoax-newyear': 0.78,
+  'jungwon-hoax-newyear': 0.8,
+  'jihoon-hoax-newyear': 0.83,
+  'cherry-hoax-newyear': 0.85,
+  'halmeoni-hoax-newyear': 0.8,
+  'heeseung-hoax-newyear': 0.9,
+  'jake-hoax-newyear': 0.86,
+  'jay-hoax-newyear': 0.83,
+  'niki-hoax-newyear': 0.8,
+  'sunghoon-hoax-newyear': 0.83,
+  'sunoo-hoax-newyear': 0.83
 };
 
 /* Per-character drop: moves a portrait down by this share of its height, cropping the bottom (Kat, 2026-10-25). */
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 26;
+window.FEMC_PORTRAIT_V = 27;

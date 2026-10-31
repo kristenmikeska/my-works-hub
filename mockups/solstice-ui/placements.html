@@ -119,8 +119,6 @@ button, input, select { font: inherit; color: inherit; }
 (() => {
   const A = '../../assets/femc/', $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const SETS = window.FEMC_PORTRAITS || {}, SCALE = window.FEMC_PORTRAIT_SCALE || {}, DROP = window.FEMC_PORTRAIT_DROP || {}, FACES = window.SOLSTICE_FACES || {};
-  /* Held back until Kat remakes them: the HOAX Christmas, party and New Year hanbok outfits */
-  for (const id of Object.keys(FACES)) if (/-hoax-(christmas|party|newyear)$/.test(id)) delete FACES[id];
   const KEY = 'solstice-placements';
   /* Starting nudges agreed with Kat (x and y in % of the screen, s = size multiplier on top of scale.js) */
   const SEED = { yukari: { x: -4.5 } };
@@ -149,7 +147,7 @@ button, input, select { font: inherit; color: inherit; }
 
   /* One portrait's style: size from scale.js × nudge, drop, measurements, nudge (nudges are kept per version, shared by its expressions) */
   /* m = mirrored: drawn flipped (every expression of that version), so the face centre flips too */
-  const look = v => { const a = adj[v] || {}, [ar, cx] = FACES[v]; return `--ps:${(SCALE[v] || 1) * (a.s || 1)};--pd:${DROP[v] || 0};--ar:${ar};--cx:${a.m ? 1 - cx : cx};--flip:${a.m ? -1 : 1};--nx:${a.x || 0};--ny:${a.y || 0}`; };
+  const look = v => { const b = v.replace(/-[^-]+$/, ''), a = adj[v] || (FACES[b] && adj[b]) || {}, [ar, cx] = FACES[v]; return `--ps:${(SCALE[v] || 1) * (a.s || 1)};--pd:${DROP[v] || 0};--ar:${ar};--cx:${a.m ? 1 - cx : cx};--flip:${a.m ? -1 : 1};--nx:${a.x || 0};--ny:${a.y || 0}`; };
   function scene(card) {
     const c = parse(card), want = $('[data-face]').value;
     const sv = c.solar ? c.id : solarFor(c.id, c.w), sface = c.solar ? c.ex : ((SETS[sv] || []).includes(want) ? want : 'happy');
