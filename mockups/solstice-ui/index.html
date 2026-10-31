@@ -6,7 +6,7 @@
 <title>Solstice UI Mockup</title>
 <!-- DESIGN MOCKUP ONLY (not wired to the game). Persona 3: Solstice UI in a Reload-style restyle.
      Screens: 1 field menu (day) · 2 field menu (Dark Hour) · 3 dialogue · 4 Social Link list · 5 title.
-     Keys: 1-5 or [ ] switch screens · ↑↓ move · Enter advance/choose. -->
+     Keys: 1-5 or [ ] switch screens · ↑↓ move · Enter advance/choose · P palette. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,700;1,600;1,700;1,800;1,900&family=Barlow+Semi+Condensed:ital,wght@0,500;0,600;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500;1,600&display=swap" rel="stylesheet">
@@ -28,6 +28,18 @@ html, body { margin: 0; height: 100%; background: #07051a; color: var(--paper); 
 body { font-family: var(--body); -webkit-font-smoothing: antialiased; }
 img { display: block; }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+
+/* Palette trial (P key): Dawn is the indigo-and-gold plan; Rose brings P3P's pink back as the accent; Blend keeps the gold
+   highlights and lets pink carry the silhouettes, the list text and the dawn's horizon. Dark Hour screens stay green. */
+html[data-pal="rose"] .scr:not(.dark) { --gold: #ff5fa8; --gold-2: #ffb3d6; --sil: #ff5fa8; --panel-edge: #ff5fa8; --list: #ffd3e8; --rim: #ff5fa8; --violet: #6a3492;
+  --wash: linear-gradient(165deg, #120a2e 0%, #33196a 34%, #74307e 56%, #d24b8f 76%, #ff8fbf 90%, #ffd0e4 100%); }
+html[data-pal="blend"] .scr:not(.dark) { --sil: #ff5fa8; --panel-edge: #ff5fa8; --list: #ffd3e8; --dusk: #e04f94;
+  --wash: linear-gradient(165deg, #0f0b33 0%, #241e78 32%, #6a3492 52%, #e04f94 72%, #ff9fb8 86%, #ffd36b 100%); }
+/* The logo follows the palette: gold letters at Dawn, P3P pink for Blend and Rose */
+html[data-pal="dawn"] .tt .sl-word { stroke: url(#sl-gold); }
+html[data-pal="dawn"] .tt .sl-logo text[fill] { fill: #ffd36b; }
+.mk .pal { margin-left: 6px; border-left: 1px solid rgba(255, 255, 255, .18); border-radius: 0 999px 999px 0; }
+.mk .pal i { font-style: normal; color: var(--gold); }
 
 /* ───────── mockup chrome: the screen switcher ───────── */
 .mk { position: fixed; z-index: 50; top: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 2px; padding: 3px;
@@ -80,6 +92,12 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .art.fade { -webkit-mask-image: linear-gradient(174deg, #000 74%, transparent 95%); mask-image: linear-gradient(174deg, #000 74%, transparent 95%); }
 .art img { width: 100%; height: auto; filter: drop-shadow(16px 6px 0 var(--sil)) drop-shadow(0 0 30px rgba(0, 0, 0, .35)); }
 .dark .art img { filter: drop-shadow(16px 6px 0 var(--sil)) drop-shadow(0 0 40px rgba(43, 255, 116, .35)) saturate(.85); }
+/* Full-body figures, zoomed by head size so everyone comes out the same size: .fig marks the top centre of the head,
+   and each image carries its own measurements (--ht head top, --hf head-to-chin, --hx head centre, --ar width/height) */
+.art.figs { inset: 0; }
+.fig { position: absolute; width: 0; height: 0; left: var(--fx); top: var(--fy); }
+.art .fig img { position: absolute; max-width: none; width: auto; --H: calc(var(--head) / var(--hf));
+  height: var(--H); top: calc(var(--H) * var(--ht) * -1); left: calc(var(--H) * var(--ar) * var(--hx) * -1); }
 
 /* Date box: WEEKDAY / DARK HOUR ghost, big date, the sun and the moon together */
 .date { position: absolute; top: clamp(44px, 6vh, 56px); right: clamp(14px, 2.4vw, 34px); z-index: 6; text-align: right; }
@@ -136,7 +154,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 /* ───────── 1/2 FIELD MENU ───────── */
 .fm .ghost.side { left: -2vw; top: 50%; transform: translateY(-50%) rotate(-90deg) translateX(-0%); transform-origin: center; left: -26vh; font-size: clamp(130px, 28vh, 230px); width: 100vh; text-align: center; }
 .fm .ghost.back { right: -4vw; bottom: -4vh; font-size: clamp(140px, 22vw, 300px); transform: rotate(-7deg); }
-.fm .art { left: -10vw; top: 2vh; width: min(84vh, 50vw); transform: rotate(-8deg); }
+.fm .fig { --fx: min(21vw, 40vh); --fy: 8vh; --head: 22vh; transform: rotate(-6deg); }
 .fm .wallet { position: absolute; z-index: 5; top: clamp(48px, 7vh, 64px); left: clamp(16px, 3vw, 40px); background: var(--paper); color: var(--deep);
   padding: 6px 30px 7px 14px; clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%); box-shadow: 6px 6px 0 var(--gold); }
 .fm .wallet b { display: block; font: italic 800 clamp(24px, 2.3vw, 30px)/1 var(--cond); }
@@ -149,8 +167,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .pm { position: relative; display: grid; grid-template-columns: 58px 1fr; gap: 10px; align-items: center; padding: 6px 16px 6px 6px; background: var(--panel);
   clip-path: polygon(0 0, 100% 0, 94% 100%, 0 100%); border-left: 3px solid var(--panel-edge); }
 .pm:nth-child(2) { margin-right: 12px; } .pm:nth-child(3) { margin-right: 24px; } .pm:nth-child(4) { margin-right: 36px; }
-.pm .face { width: 58px; height: 58px; overflow: hidden; background: linear-gradient(160deg, var(--violet), var(--deep)); clip-path: polygon(14% 0, 100% 0, 86% 100%, 0 100%); }
-.pm .face img { width: 150%; margin: -6% 0 0 -25%; }
+.pm .face { --box: 58px; position: relative; width: var(--box); height: var(--box); overflow: hidden; background: linear-gradient(160deg, var(--violet), var(--deep)); clip-path: polygon(14% 0, 100% 0, 86% 100%, 0 100%); }
+.pm .face img { position: absolute; max-width: none; width: auto; --H: calc(var(--box) * .5 / var(--fs));
+  height: var(--H); left: calc(var(--box) * .5 - var(--H) * var(--ar) * var(--cx)); top: calc(var(--box) * .56 - var(--H) * var(--cy)); }
 .pm .nm { font: italic 500 17px/1 var(--serif); color: var(--paper); display: flex; justify-content: space-between; align-items: baseline; }
 .pm .nm small { font: italic 700 12px/1 var(--cond); color: var(--gold); letter-spacing: .04em; }
 .pm .gauge { display: grid; grid-template-columns: 22px 1fr 30px; align-items: center; gap: 5px; margin-top: 5px; font: 700 10px/1 var(--cond); letter-spacing: .06em; color: rgba(255, 255, 255, .7); }
@@ -176,7 +195,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 /* ───────── 3 DIALOGUE ───────── */
 .dl .art.left { left: -6vw; bottom: -12vh; width: min(66vh, 40vw); }
 .dl .art.left img { filter: drop-shadow(-14px 4px 0 var(--indigo)) drop-shadow(8px 0 0 var(--gold)); }
-.dl .art.right { right: -7vw; bottom: -18vh; width: min(62vh, 36vw); transform: scaleX(-1); opacity: .96; }
+.dl .art.right { right: 0; bottom: -6vh; width: min(70vh, 34vw); transform: scaleX(-1); opacity: .96; }
 .dl .art.right img { filter: drop-shadow(-14px 4px 0 var(--indigo)) brightness(.86) saturate(.9); }
 .dl .art.speaking img { animation: bob .5s ease-out; }
 @keyframes bob { 40% { transform: translateY(-8px); } }
@@ -192,10 +211,10 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .tag { position: absolute; z-index: 2; left: -38px; top: -26px; display: flex; align-items: center; gap: 12px; padding: 7px 34px 8px 42px; background: var(--paper); color: var(--deep);
   clip-path: polygon(0 50%, 26px 0, 100% 0, calc(100% - 12px) 100%, 26px 100%); filter: drop-shadow(0 0 0 #000); }
 .tag::after { content: ""; position: absolute; left: 0; bottom: -8px; width: 70%; height: 4px; }
-.tag b { font: italic 600 clamp(20px, 2vw, 25px)/1 var(--serif); letter-spacing: .01em; }
+.tag b { font: italic 800 clamp(23px, 2.2vw, 29px)/1 var(--cond); letter-spacing: .015em; }
 .tag small { font: 700 9px/1 var(--body); letter-spacing: .3em; color: var(--violet); padding-left: 10px; border-left: 1px solid rgba(18, 13, 58, .3); }
 .tag-slash { position: absolute; z-index: 1; left: -60px; top: -34px; width: 300px; height: 52px; background: var(--gold); clip-path: polygon(0 80%, 100% 0, 100% 22%, 6% 100%); }
-.choices { position: absolute; z-index: 6; right: 12vw; bottom: calc(clamp(18px, 5vh, 46px) + 200px); padding: 18px 26px 18px 22px; min-width: 300px;
+.choices { position: absolute; z-index: 6; right: 30vw; bottom: calc(clamp(18px, 5vh, 46px) + 200px); padding: 18px 26px 18px 22px; min-width: 300px;
   background: linear-gradient(110deg, rgba(18, 13, 58, .94), rgba(38, 32, 122, .92)); clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%); }
 .choices .list { position: relative; transform: rotate(-3deg); --fs: clamp(22px, 2.3vw, 28px); }
 .choices .list li { margin: 4px 0 4px var(--x); }
@@ -247,11 +266,12 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .cards li.sel .card .rk { position: relative; z-index: 1; }
 @keyframes cslash { from { clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%); } }
 .scr.enter .cards li { animation: rowIn .38s cubic-bezier(.15, .9, .25, 1) both; animation-delay: calc(var(--i) * 40ms + 120ms); }
-.sl .art { z-index: 2; right: -4vw; bottom: -14vh; width: min(84vh, 50vw); }
+.sl .art { z-index: 2; -webkit-mask-image: linear-gradient(90deg, transparent 42%, #000 56%); mask-image: linear-gradient(90deg, transparent 42%, #000 56%); }
+.sl .fig { --fx: 70vw; --fy: 15vh; --head: 21vh; }
 .sl .art img { transition: none; }
 .sl .art.swap img { animation: artSwap .42s cubic-bezier(.15, .9, .25, 1) both; }
 @keyframes artSwap { from { transform: translateX(80px); opacity: 0; } }
-.sl .tarot { position: absolute; z-index: 3; right: min(40vw, 74vh); top: 16vh; width: clamp(96px, 10vw, 136px); transform: rotate(9deg); box-shadow: 8px 8px 0 var(--gold), 0 18px 40px rgba(0, 0, 0, .5); }
+.sl .tarot { position: absolute; z-index: 3; right: min(46vw, 86vh); top: 16vh; width: clamp(96px, 10vw, 136px); transform: rotate(9deg); box-shadow: 8px 8px 0 var(--gold), 0 18px 40px rgba(0, 0, 0, .5); }
 .sl .tarot img { width: 100%; }
 .sl .tarot.swap { animation: cardFlip .45s cubic-bezier(.2, .9, .3, 1.2) both; }
 @keyframes cardFlip { from { transform: rotate(9deg) rotateY(90deg); } }
@@ -261,12 +281,16 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 /* ───────── 5 TITLE ───────── */
 .tt .bg img { filter: saturate(.9) brightness(.82); object-position: 40% 30%; }
+.tt .fig { --fx: 27vw; --fy: 11vh; --head: 21vh; }
+.tt .art img { filter: drop-shadow(12px 4px 0 var(--sil)) drop-shadow(0 0 40px rgba(255, 197, 61, .35)); }
+.scr.enter.tt .art { animation: slideL .6s cubic-bezier(.15, .9, .25, 1) both; }
 .tt .bg::after { background: linear-gradient(90deg, rgba(15, 11, 51, .2) 0%, rgba(15, 11, 51, .1) 40%, rgba(15, 11, 51, .82) 75%, rgba(15, 11, 51, .95) 100%),
   linear-gradient(0deg, rgba(242, 154, 74, .35), rgba(38, 32, 122, 0) 45%); mix-blend-mode: normal; }
 .tt .bg::before { background: radial-gradient(60% 80% at 80% 110%, rgba(255, 197, 61, .5), transparent 70%); opacity: 1; z-index: 1; mix-blend-mode: screen; }
-.tt .logo { position: absolute; z-index: 5; right: clamp(16px, 4vw, 60px); top: clamp(56px, 12vh, 110px); width: min(560px, 44vw); }
+.tt .logo { position: absolute; z-index: 5; isolation: isolate; right: clamp(16px, 4vw, 60px); top: clamp(56px, 12vh, 110px); width: min(560px, 44vw); }
 .tt .logo svg { width: 100%; height: auto; display: block; }
-.tt .logo .corona { width: 46%; aspect-ratio: 1; left: 3%; top: 50%; translate: 0 -50%; opacity: .5; }
+.tt .logo::before { content: ""; position: absolute; z-index: -1; inset: -30% -12% -34% -14%; background: radial-gradient(closest-side, rgba(10, 7, 38, .78), rgba(10, 7, 38, .5) 60%, transparent); }
+.tt .logo .corona { width: 19%; aspect-ratio: 1; left: 23.6%; top: 51.5%; translate: -50% -50%; opacity: .6; }
 .tt .tmenu { position: absolute; z-index: 5; right: clamp(16px, 4vw, 60px); bottom: clamp(70px, 14vh, 120px); margin: 0; padding: 0; list-style: none; text-align: right; }
 .tt .tmenu li { position: relative; }
 .tt .tmenu button { position: relative; font: italic 800 clamp(34px, 4.4vw, 54px)/.98 var(--cond); text-transform: uppercase; color: #fff; padding: 0 6px; letter-spacing: -.005em; text-shadow: 3px 3px 0 rgba(15, 11, 51, .7); }
@@ -312,7 +336,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .guide .g1 { font-size: 17px; }
   .keys { gap: 10px; font-size: 11px; }
 
-  .fm .art { left: -26vw; top: 86px; width: 82vw; transform: rotate(-9deg); }
+  .fm .fig { --fx: 22vw; --fy: 92px; --head: 15vh; }
   .fm .ghost.side { display: none; }
   .fm .ghost.back { font-size: 150px; right: -20px; top: 96px; bottom: auto; transform: rotate(-7deg); }
   .fm .wallet { top: auto; bottom: 76px; left: 16px; }
@@ -322,15 +346,14 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .fm .party h3 { display: none; }
   .dh-clock, .dark .dh-clock { display: none; }
   .pm { grid-template-columns: 1fr; gap: 3px; padding: 3px 8px 5px 3px; }
-  .pm .face { width: 100%; height: 38px; }
-  .pm .face img { width: 120%; margin: -12% 0 0 -10%; }
+  .pm .face { --box: 40px; margin: 0 auto; }
   .pm .nm { display: none; } .pm .nm small, .pm.lead::after { display: none; }
   .pm .gauge { grid-template-columns: 1fr; margin-top: 3px; } .pm .gauge span, .pm .gauge em { display: none; } .pm .gauge + .gauge { margin-top: 2px; }
   .pm:nth-child(n) { margin-right: 0; }
   .fm .guide .g2 { width: 200px; }
 
   .dl .art.left { left: -14vw; bottom: 250px; width: 70vw; }
-  .dl .art.right { right: -22vw; bottom: 270px; width: 56vw; }
+  .dl .art.right { right: -10vw; bottom: 270px; width: 52vw; }
   .box { left: 10px; right: 10px; width: auto; translate: 0 0; bottom: 54px; }
   .box .shell { padding: 30px 26px 26px 26px; min-height: 140px; clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%); }
   .box .line { font-size: 17px; }
@@ -346,7 +369,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .sl .head p { font-size: 14px; }
   .sl .detail { top: 60px; right: 14px; }
   .sl .detail .an { font-size: 34px; } .sl .detail .fn { font-size: 19px; }
-  .sl .art { right: -20vw; top: 150px; bottom: auto; width: 86vw; }
+  .sl .art { -webkit-mask-image: none; mask-image: none; }
+  .sl .fig { --fx: 66vw; --fy: 150px; --head: 13vh; }
   .sl .tarot { right: auto; left: 18px; top: 150px; width: 72px; }
   .sl .ghost.diag { font-size: 170px; right: -40vw; top: 34%; }
   .cards { top: auto; bottom: 120px; left: 12px; width: calc(100% - 30px); }
@@ -358,6 +382,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .card .pips { display: none; }
 
   .tt .bg img { object-position: 38% 50%; }
+  .tt .fig { --fx: 34vw; --fy: 210px; --head: 13vh; }
   .tt .bg::after { background: linear-gradient(180deg, rgba(15, 11, 51, .7) 0%, rgba(15, 11, 51, .05) 34%, rgba(15, 11, 51, .3) 55%, rgba(15, 11, 51, .95) 82%); }
   .tt .logo { width: auto; left: 18px; right: 18px; top: 74px; }
   .tt .tmenu { bottom: 96px; right: 22px; }
@@ -384,6 +409,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   <button role="tab" data-go="2"><b>3</b>Dialogue</button>
   <button role="tab" data-go="3"><b>4</b>Social Links</button>
   <button role="tab" data-go="4"><b>5</b>Title</button>
+  <button type="button" class="pal" data-pal><b>P</b>Palette: <i>Dawn</i></button>
 </nav>
 
 <main class="stage">
@@ -393,7 +419,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     <div class="rays"></div>
     <div class="ghost side">After School</div>
     <div class="ghost back outline">Solstice</div>
-    <div class="art fade"><img src="../../assets/femc/portraits/solar/neutral.webp" alt="Solar"></div>
+    <div class="art figs"><div class="fig" data-fig="solar"></div></div>
     <div class="wallet"><b>¥12,480</b><small>current wallet</small></div>
     <ul class="list" data-list="menu"></ul>
     <div class="date" data-date="day"></div>
@@ -408,7 +434,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     <div class="rays"></div>
     <div class="ghost side">Dark Hour</div>
     <div class="ghost back outline">00:00</div>
-    <div class="art fade"><img src="../../assets/femc/portraits/solar/serious.webp" alt="Solar"></div>
+    <div class="art figs"><div class="fig" data-fig="solar"></div></div>
     <div class="wallet"><b>¥12,480</b><small>current wallet</small></div>
     <ul class="list" data-list="menu"></ul>
     <div class="date" data-date="dark"></div>
@@ -438,7 +464,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     <div class="bg"><img src="../../assets/femc/bg/school-hallway.webp" alt=""></div>
     <div class="rays"></div>
     <div class="ghost diag">Commu</div>
-    <div class="art"><img alt=""></div>
+    <div class="art figs"><div class="fig" data-fig></div></div>
     <div class="tarot"><img alt=""></div>
     <div class="head"><h2>LIST</h2><p>Bonds · 7 of 23 met</p></div>
     <ul class="cards" data-cards></ul>
@@ -449,7 +475,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
   <!-- 5. TITLE -->
   <section class="scr tt" id="s-title" aria-label="Title screen">
-    <div class="bg"><img src="../../assets/femc/title/keyart.webp" alt=""></div>
+    <div class="bg"><img src="../../assets/femc/bg/moonlightbridge-night.webp" alt=""></div>
+    <div class="art figs"><div class="fig" data-fig="solar"></div></div>
     <div class="logo"><div class="corona"></div><img src="../../assets/femc/title/solstice-logo.svg" alt="Persona 3: Solstice"></div>
     <ul class="tmenu" data-tmenu></ul>
     <div class="ver"><b>THE LONGEST NIGHT</b>turns back toward the sun</div>
@@ -480,7 +507,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   /* The title logo, inlined so its dark variant (sl-dark) applies */
   fetch(A + 'title/solstice-logo.svg').then(r => r.ok ? r.text() : Promise.reject()).then(t => {
     const host = $('.tt .logo'), img = $('img', host); img.insertAdjacentHTML('afterend', t); img.remove();
-    $('svg', host).classList.add('sl-dark');
+    $('svg.sl-logo', host).classList.add('sl-dark');
   }).catch(() => {});
 
   /* Sun and moon together: Haenim's small sun with the night's moon phase tucked over its shoulder (phase 0 new … .5 full … 1 new) */
@@ -497,6 +524,19 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   const DATES = { day: ['5/14', 'Thu', 'Evening', 'Weekday', .38, false], dark: ['5/14', 'Thu', 'Dark Hour', 'Dark Hour', .38, true], talk: ['5/14', 'Thu', 'Lunchtime', 'Weekday', .38, false] };
   $$('[data-date]').forEach(el => { const [d, wd, tod, ghost, ph, dark] = DATES[el.dataset.date];
     el.innerHTML = `<div class="dg">${ghost}</div><div class="row"><div class="d">${d}<span class="wd">${wd}</span></div>${sunMoon(ph, dark)}</div><div class="tod">${tod}</div>`; });
+
+  /* Full-body art, measured once: [file, width/height, head top, head-to-chin, head centre x], as fractions of the image */
+  const FIG = { solar: ['profile/femc.webp', .477, .01, .20, .54], rohan: ['profile/rohan.webp', .671, .03, .24, .52],
+    jungwon: ['profile/searchers/jungwon.webp', .349, 0, .13, .37], rio: ['profile/rio.webp', .522, .03, .25, .44],
+    saori: ['profile/saori.webp', .432, .01, .24, .44], akihiko: ['profile/sees/akihiko.webp', .405, 0, .107, .62],
+    shinjiro: ['battle/art/poses/shinjiro.webp', 1.657, .01, .19, .61], haechan: ['profile/haechan.webp', .505, .01, .21, .576] };
+  function figure(el, id, alt) {
+    const [f, ar, ht, hf, hx] = FIG[id];
+    el.innerHTML = `<img src="${A}${f}" alt="${alt || ''}" style="--ar:${ar};--ht:${ht};--hf:${hf};--hx:${hx}">`;
+  }
+  $$('[data-fig="solar"]').forEach(el => figure(el, 'solar', 'Solar'));
+  /* Party icons: each neutral portrait's face centre and eye-to-chin height, so every face fills its box the same way */
+  const FACE = { solar: [1.013, .46, .51, .22], junpei: [.914, .66, .515, .23], yukari: [.883, .39, .535, .21], akihiko: [.982, .32, .54, .22] };
 
   /* Slanted list builder: zig-zag stagger like Reload */
   const stagger = i => Math.round(Math.sin(i * 1.15) * 22 + i * 4);
@@ -515,7 +555,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     ['Album', 'The memories you’ve kept'], ['Theater', 'Watch a scene again'], ['Calendar', 'The days ahead'], ['Compendium', 'Every persona registered']];
   const PARTY = [['solar', 'Solar', 24, [.86, .62]], ['junpei', 'Junpei', 22, [.71, .44]], ['yukari', 'Yukari', 23, [.94, .80]], ['akihiko', 'Akihiko', 25, [.58, .91]]];
   $$('[data-party]').forEach(el => {
-    el.innerHTML = `<h3>Party <span>·</span> 4</h3>` + PARTY.map(([id, nm, lv, [hp, sp]], i) => `<div class="pm${i ? '' : ' lead'}"><div class="face"><img src="${A}portraits/${id}/neutral.webp" alt=""></div><div>
+    el.innerHTML = `<h3>Party <span>·</span> 4</h3>` + PARTY.map(([id, nm, lv, [hp, sp]], i) => `<div class="pm${i ? '' : ' lead'}"><div class="face"><img src="${A}portraits/${id}/neutral.webp" alt="" style="--ar:${FACE[id][0]};--cx:${FACE[id][1]};--cy:${FACE[id][2]};--fs:${FACE[id][3]}"></div><div>
       <div class="nm">${nm}<small>Lv ${lv}</small></div>
       <div class="gauge"><span>HP</span><i style="--v:${hp * 100}%;--c:linear-gradient(90deg,#ffc53d,#ffe08a)"></i><em>${Math.round(hp * 260)}</em></div>
       <div class="gauge"><span>SP</span><i style="--v:${sp * 100}%;--c:linear-gradient(90deg,#8a7bff,#c9b8ff)"></i><em>${Math.round(sp * 140)}</em></div></div></div>`).join('');
@@ -543,8 +583,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     <span class="pips">${Array.from({ length: 10 }, (_, k) => `<i class="${k < rk ? 'on' : ''}"></i>`).join('')}</span></button></li>`).join('');
   cards._on = i => {
     const [id, , ar, nm, , , tarot] = LINKS[i], art = $('.art', slScr), tc = $('.tarot', slScr);
-    const pose = { rohan: 'neutral', jungwon: 'happy', rio: 'happy', saori: 'happy', akihiko: 'happy', shinjiro: 'neutral', haechan: 'happy' }[id];
-    $('img', art).src = `${A}portraits/${id}/${pose}.webp`; $('img', art).alt = nm; $('img', tc).src = `${A}tarot/${tarot}.webp`; $('img', tc).alt = `${ar} arcana`;
+    figure($('.fig', art), id, nm); $('img', tc).src = `${A}tarot/${tarot}.webp`; $('img', tc).alt = `${ar} arcana`;
     $('.an', slScr).textContent = ar; $('.fn', slScr).textContent = nm;
     [art, tc].forEach(e => { e.classList.remove('swap'); void e.offsetWidth; e.classList.add('swap'); });
   };
@@ -629,6 +668,12 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
       else if (k === 'Enter' || k === ' ') { advance(); e.preventDefault(); }
     }
   });
+  const PALS = [['dawn', 'Dawn'], ['blend', 'Blend'], ['rose', 'Rose']], palBtn = $('[data-pal]');
+  let pal = 0; try { pal = Math.max(0, PALS.findIndex(p => p[0] === localStorage.getItem('solstice-mock-pal'))); } catch (e) {}
+  const setPal = i => { pal = (i + PALS.length) % PALS.length; document.documentElement.dataset.pal = PALS[pal][0]; $('i', palBtn).textContent = PALS[pal][1];
+    try { localStorage.setItem('solstice-mock-pal', PALS[pal][0]); } catch (e) {} };
+  setPal(pal); palBtn.addEventListener('click', () => setPal(pal + 1));
+  addEventListener('keydown', e => { if (!e.metaKey && !e.ctrlKey && !e.altKey && (e.key === 'p' || e.key === 'P')) setPal(pal + 1); });
   const start = parseInt((location.hash || '#1').slice(1), 10) - 1;
   show(isNaN(start) ? 0 : start, true);
 })();

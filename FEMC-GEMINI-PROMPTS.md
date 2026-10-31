@@ -95,3 +95,14 @@ No reference needed. Start each with this line, then add the scene:
 - **28.** A "PRESIDENT" student council pin on a navy school blazer lapel. *(If Gemini mangles the word, use "a small gold student council pin" instead.)*
 - **29.** An arcade crane game full of plush dogs, colorful lights.
 - **30.** A ballot box with folded ballots, on a school gym table, string lights behind.
+
+---
+
+## E. New title screen (no people: the game draws Solar over it)
+The old painting stays in the game as the **Solstice Key Art** wallpaper. Leave the **right third** as open sky, because the logo and menu sit there.
+
+**31. Title screen: the longest night turning to dawn** (no reference)
+> Persona 3 Reload style key-art background, 16:9, the largest size, no people, no readable text. A wide view from a seaside rooftop of a Japanese city at the exact moment night turns to dawn. Left and centre: the city skyline and the sea with a long suspension bridge. Far behind, a huge dark tower rises into the clouds, faint and ominous. The sky makes one sweep from deep indigo night, with stars and a pale full moon at the top right, down to a thin band of gold and rose sunrise on the horizon, with the first sunbeams spilling across the water. Keep the right third of the image mostly open sky, darker and calm. Clean lineart, flat cel shading, crisp highlights, indigo, violet, rose and gold palette, hopeful and a little melancholy.
+
+**32. The same, Dark Hour variant** (optional, for a night title) 📎 attach #31's result, as an edit
+> Edit this image. Keep the composition exactly the same, but change it to the Dark Hour from Persona 3: the sky a sickly green-black, the full moon huge and yellow-green, the sunrise band gone, the city lights dead, the tower glowing faintly green, the sea dark and still. No people.
