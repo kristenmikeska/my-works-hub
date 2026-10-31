@@ -39,5 +39,6 @@ Kat's decisions:
 
 ## 7. UI revamp (last)
 - Close to P3 Reload, with its own Solstice identity. Kat's references: `Femc Mode Images/Inspo` (not `Skin Inspo`). Approved direction: giant ghost words, bold italic slanted lists, art bleeding off the edge, angular text box with an arrow name tag; indigo-to-gold by day, green and black in the Dark Hour, gold selection slash, a sun and moon in the date box.
-- [ ] Mock up one screen for Kat first
+- [x] Mock up one screen for Kat first (`mockups/solstice-ui/`; first-pass notes done Oct 31)
+- Kat's mockup decisions (Oct 31): **Dawn palette** (indigo and gold; the logo goes gold); full-body art zoomed to a shared head size for Solar on menus, Social Links and the title; dialogue portraits hang from a shared eye line and the speaker is placed by face centre; the old title painting stays as the Solstice Key Art wallpaper, and the new title background is Gemini prompt #31.
 - [ ] Brainstorm the Solstice style from Kat's references, then restyle one area at a time: menus, battle HUD, Tartarus, dialogue

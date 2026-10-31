@@ -197,7 +197,8 @@ html[data-pal="dawn"] .tt .sl-logo text[fill] { fill: #ffd36b; }
 /* ───────── 3 DIALOGUE ───────── */
 .dl .art { --ph: min(78vh, 38vw); top: 22vh; height: var(--ph); }
 .dl .art img { width: auto; height: 100%; }
-.dl .art.left { left: -7vw; }
+/* The speaker hangs from the face, not the picture's edge: their face centre lands at --fcx whatever the framing */
+.dl .art.left { --fcx: 17vw; left: calc(var(--fcx) - var(--ph) * var(--ar, .914) * var(--cx, .66)); }
 .dl .art.left img { filter: drop-shadow(-14px 4px 0 var(--indigo)) drop-shadow(8px 0 0 var(--gold)); }
 .dl .art.right { right: 0; transform: scaleX(-1); opacity: .96; }
 .dl .art.right img { filter: drop-shadow(-14px 4px 0 var(--indigo)) brightness(.86) saturate(.9); }
@@ -357,7 +358,7 @@ html[data-pal="dawn"] .tt .sl-logo text[fill] { fill: #ffd36b; }
   .fm .guide .g2 { width: 200px; }
 
   .dl .art { --ph: 34vh; top: auto; bottom: 260px; }
-  .dl .art.left { left: -14vw; }
+  .dl .art.left { --fcx: 24vw; }
   .dl .art.right { right: -10vw; }
   .box { left: 10px; right: 10px; width: auto; translate: 0 0; bottom: 54px; }
   .box .shell { padding: 30px 26px 26px 26px; min-height: 140px; clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%); }
@@ -621,6 +622,7 @@ html[data-pal="dawn"] .tt .sl-logo text[fill] { fill: #ffd36b; }
     $('.tag b', talk).textContent = s.who;
     const art = $('.art.left', talk), img = $('img', art), src = `${A}portraits/${s.face}.webp`;
     if (!img.src.endsWith(src.replace('../../', ''))) img.src = src;
+    const [ar, cx] = FACE[s.face.split('/')[0]]; art.style.setProperty('--ar', ar); art.style.setProperty('--cx', cx);
     art.classList.remove('speaking'); void art.offsetWidth; art.classList.add('speaking');
     type(Array.isArray(s.text) ? s.text[pick] : s.text);
   }
