@@ -1,16 +1,11 @@
 /* Solstice restyle, part 1: dialogue scenes (Kat's approved mockup, mockups/solstice-ui, Oct 31 2026).
-   Dawn by day (indigo to gold), green and black in the Dark Hour. Loaded after game.css, so these win.
+   Colours: the original pink and black (Kat, Oct 31); the shapes are the mockup's. Loaded after game.css, so these win.
    Portraits stand where Kat placed them in the placement review: sized by screen height (scale.js × her size), the speaker's
    face centre 17% in from the left, Solar's 17% in from the right, both standing on the bottom edge (portraits/place.js). */
-.gs { --deep: #120d3a; --indigo: #26207a; --violet: #5a3a9e; --gold: #c552c9; --gold-2: #f2b0e6; --paper: #fffaf0;
-  --shell: linear-gradient(100deg, rgba(18, 13, 58, .94), rgba(38, 32, 122, .9) 70%, rgba(90, 58, 158, .86));
-  background: radial-gradient(ellipse at 70% 30%, #2a2270, #0b0826 70%); }
-.gs.gs-dark { --deep: #020805; --indigo: #062114; --violet: #0e3b1f; --gold-2: #b6ffc8; --paper: #eafff0;
-  --shell: linear-gradient(100deg, rgba(2, 10, 5, .95), rgba(6, 33, 20, .92) 70%, rgba(14, 59, 31, .88)); }
+.gs { --deep: #14070f; --indigo: #2a0f22; --violet: #4a1838; --gold: #ff4f9e; --gold-2: #ff8cc0; --paper: #fff4f9;
+  --shell: linear-gradient(100deg, rgba(20, 7, 15, .94), rgba(42, 15, 34, .9) 70%, rgba(74, 24, 56, .86)); }
 .gs.gs-velvet { --deep: #050b26; --indigo: #1b3a8a; --violet: #2f5bd8; --gold: #8fb0ff; --gold-2: #c7d6ff;
-  --shell: linear-gradient(100deg, rgba(5, 11, 38, .95), rgba(27, 58, 138, .9)); }
-.gs-bg::after { background: linear-gradient(180deg, rgba(18, 13, 58, 0) 50%, rgba(18, 13, 58, .55)), linear-gradient(200deg, rgba(255, 197, 61, .16), rgba(38, 32, 122, .08) 50%); }
-.gs-bg::before { background: repeating-linear-gradient(-58deg, rgba(255, 224, 138, .06) 0 1px, transparent 1px 34px); }
+  --shell: linear-gradient(100deg, rgba(28, 11, 21, .95), rgba(27, 58, 138, .9)); }
 
 /* The place tag, the tools and the replay tag */
 .gs-place { background: var(--paper); color: var(--deep); box-shadow: 5px 5px 0 var(--gold); }
@@ -30,14 +25,13 @@
   clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%); box-shadow: none; font-size: clamp(17px, 1.7vw, 23px); line-height: 1.42; font-weight: 500; }
 .gs-text::before { content: ""; display: block !important; position: absolute; inset: 0 0 auto 3%; height: 3px; border: 0; background: linear-gradient(90deg, var(--gold), var(--gold-2) 40%, transparent); filter: none; }
 .gs.me-talking .gs-box .gs-text::before { left: 3%; right: 0; border: 0; }
-.gs-text.narration { color: #e8e4ff; }
-.gs-dark .gs-text.narration { color: #d3f5dc; }
+.gs-text.narration { color: #f5d9e7; }
 .gs-text::after, .gs-velvet .gs-text::after { content: ""; right: 7%; bottom: 14px; width: 22px; height: 13px; background: var(--gold); clip-path: polygon(0 0, 100% 0, 50% 100%); color: transparent; }
 .gs.ready .gs-text::after { animation: gs-nudge 1s ease-in-out infinite; }
 @keyframes gs-nudge { 50% { transform: translateY(5px); } }
 
 /* Choices: dark slanted buttons with a gold edge; the picked one goes paper on gold */
-.gs-choices button, .gs-velvet .gs-choices button { background: rgba(18, 13, 58, .94); background: color-mix(in srgb, var(--deep) 94%, transparent); box-shadow: 5px 5px 0 var(--gold); font-family: var(--sans); font-weight: 600; }
+.gs-choices button, .gs-velvet .gs-choices button { background: rgba(20, 7, 15, .94); background: color-mix(in srgb, var(--deep) 94%, transparent); box-shadow: 5px 5px 0 var(--gold); font-family: var(--sans); font-weight: 600; }
 .gs-choices button small { color: var(--gold-2); }
 .gs-choices button:is(:hover, :focus-visible):not(:disabled) { background: var(--paper); color: var(--deep); box-shadow: 7px 7px 0 var(--gold); }
 

@@ -3,6 +3,10 @@
    changes shapes where the mockup asks for more than a colour: the gold slash behind the picked command, paper name tags,
    angular green-black panels, deep ink on gold. Loaded last on femc-battle.html. Battle UI cosmetics still work: they set
    --pink / --pink-2 / --pink-3 / --night, which --acc / --acc-2 / --acc-3 / --deep read first. */
+/* Kat, Oct 31: back to the original pink and black; battle.css keeps the old colours and these name them for the Solstice shapes. */
+:root { --acc: var(--pink); --acc-hi: var(--pink-2); --acc-2: var(--pink-2); --acc-3: var(--pink-3); --deep: var(--night); --indigo: #2a0f22; --violet: #4a1838; --paper: #fff4f9;
+  --acc-dk: color-mix(in srgb, var(--acc) 62%, #000); --acc-sh: color-mix(in srgb, var(--acc) 30%, #000); }
+
 
 /* ── Text that sits on the accent reads in deep ink, not white ── */
 .bt-btn.pink, .bt-tag.down, .bt-card .st i.dw, .bt-op.done .moon, .bt-set-row .ar:hover, .bt-card .st i.aggro { color: var(--deep); }
@@ -12,7 +16,7 @@
 
 /* ── Command menu: a paper bar with a gold slash behind it, deep ink (P3 Reload) ── */
 .bt-menu li { position: relative; }
-.bt-mi { background: linear-gradient(100deg, rgba(7, 5, 17, .94), rgba(18, 14, 43, .92)); box-shadow: 4px 4px 0 color-mix(in srgb, var(--acc-2) 30%, transparent); }
+.bt-mi { background: linear-gradient(100deg, rgba(13, 5, 9, .94), rgba(32, 12, 24, .92)); box-shadow: 4px 4px 0 color-mix(in srgb, var(--acc-2) 30%, transparent); }
 .bt-mi.sel { background: var(--paper); color: var(--deep); box-shadow: 6px 6px 0 var(--deep); }
 .bt-mi.sel .bt-ico { color: var(--deep); }
 .bt-mi.sel .r { color: var(--acc-dk); }
@@ -26,7 +30,7 @@
 .bt-mi.sel.off { background: #c4d2c8; color: #56625a; }
 .bt-mi.shift { background: var(--gold); color: var(--deep); }
 .bt-mi.shift.sel { background: var(--paper); box-shadow: 6px 6px 0 var(--deep); }
-.bt-desc { background: linear-gradient(100deg, rgba(6, 4, 14, .94), rgba(18, 14, 43, .9)); border-left-color: var(--acc-2); clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%); color: var(--acc-3); }
+.bt-desc { background: linear-gradient(100deg, rgba(10, 4, 8, .94), rgba(32, 12, 24, .9)); border-left-color: var(--acc-2); clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%); color: var(--acc-3); }
 .bt-desc b { color: var(--acc); }
 .bt-hint { color: color-mix(in srgb, var(--acc-2) 70%, #fff); opacity: .8; }
 
@@ -36,12 +40,12 @@
 .bt-who img { filter: drop-shadow(-8px 6px 0 color-mix(in srgb, var(--acc-2) 45%, transparent)); }
 
 /* ── Party cards: green-black panels with a green rim; the active one goes gold with deep ink ── */
-.bt-card { background: linear-gradient(110deg, rgba(6, 4, 14, .95) 55%, rgba(32, 25, 76, .94)); box-shadow: 5px 5px 0 color-mix(in srgb, var(--acc-2) 40%, transparent), inset 0 3px 0 color-mix(in srgb, var(--acc-2) 55%, transparent); }
+.bt-card { background: linear-gradient(110deg, rgba(10, 4, 8, .95) 55%, rgba(57, 21, 42, .94)); box-shadow: 5px 5px 0 color-mix(in srgb, var(--acc-2) 40%, transparent), inset 0 3px 0 color-mix(in srgb, var(--acc-2) 55%, transparent); }
 .bt-card .nm small { color: var(--acc-2); }
 .bt-card.active { color: var(--deep); background: linear-gradient(110deg, var(--acc) 0%, var(--acc-hi) 70%, var(--acc) 100%); box-shadow: 7px 7px 0 var(--paper), inset 0 3px 0 var(--paper); }
 .bt-card.active .nm small { color: var(--acc-sh); }
 .bt-card.active .bt-bar b, .bt-card.active .bt-bar.sp b { color: var(--deep); }
-.bt-card.active .bt-bar .track { background: rgba(4, 3, 12, .35); }
+.bt-card.active .bt-bar .track { background: rgba(9, 3, 7, .35); }
 .bt-card.active .bt-bar.hp .track i.f { background: linear-gradient(90deg, #0c8a50, #1fbf74); }
 .bt-card.active .bt-bar.hp.low .track i.f { background: linear-gradient(90deg, #c61f1f, #ff5a3a); }
 .bt-card.active .bt-bar.sp .track i.f { background: linear-gradient(90deg, #b8236f, #e0569e); }
@@ -52,7 +56,7 @@
 .bt-floorlabel { background: var(--deep); box-shadow: 5px 5px 0 color-mix(in srgb, var(--acc-2) 50%, transparent); }
 .bt-floorlabel b { color: var(--paper); }
 .bt-order li.now { box-shadow: 3px 3px 0 var(--acc); border-color: var(--acc); }
-.bt-plate { background: linear-gradient(100deg, rgba(6, 4, 14, .95), rgba(18, 14, 43, .93)); border-color: var(--acc-2); }
+.bt-plate { background: linear-gradient(100deg, rgba(10, 4, 8, .95), rgba(32, 12, 24, .93)); border-color: var(--acc-2); }
 .bt-plate b { color: var(--paper); }
 .bt-plate b small { color: var(--acc); }
 .bt-banner { background: var(--deep); border-color: var(--paper); box-shadow: 6px 6px 0 var(--acc); }
@@ -62,7 +66,7 @@
 .bt-enemy.targeted::before { border-top-color: var(--acc); filter: drop-shadow(3px 3px 0 var(--deep)); }
 
 /* The field: the Dark Hour's green wash and stripes instead of pink */
-.bt-bg::after { background: linear-gradient(180deg, rgba(7, 5, 17, .5), rgba(6, 4, 14, .58)); }
+.bt-bg::after { background: linear-gradient(180deg, rgba(13, 5, 9, .5), rgba(10, 4, 8, .58)); }
 
 /* ── Results: a gold band, paper and green-black rows ── */
 .bt-results::before { background: linear-gradient(170deg, var(--acc-hi), var(--acc) 45%, color-mix(in srgb, var(--acc) 80%, #000)); }
@@ -72,9 +76,9 @@
 .bt-hub-fig .band { background: linear-gradient(100deg, color-mix(in srgb, var(--acc-2) 30%, transparent), color-mix(in srgb, var(--acc-2) 5%, transparent)); box-shadow: 0 0 0 2px color-mix(in srgb, var(--acc-2) 40%, transparent); }
 
 /* ── Tartarus: the map's side panel and the rooms, angular green-black panels with a gold or green edge ── */
-.bt-map-info { background: linear-gradient(100deg, rgba(6, 4, 14, .95), rgba(18, 14, 43, .92)); border-left-color: var(--acc); }
+.bt-map-info { background: linear-gradient(100deg, rgba(10, 4, 8, .95), rgba(32, 12, 24, .92)); border-left-color: var(--acc); }
 .bt-map-info b { color: var(--paper); }
-.bt-room-shade { background: radial-gradient(ellipse 60% 70% at 50% 55%, rgba(6, 4, 14, .25), rgba(4, 3, 12, .88)), linear-gradient(transparent 50%, rgba(4, 3, 12, .8)), repeating-linear-gradient(115deg, transparent 0 180px, rgba(229, 155, 224, .04) 180px 186px, transparent 186px 330px); }
+.bt-room-shade { background: radial-gradient(ellipse 60% 70% at 50% 55%, rgba(10, 4, 8, .25), rgba(9, 3, 7, .88)), linear-gradient(transparent 50%, rgba(9, 3, 7, .8)), repeating-linear-gradient(115deg, transparent 0 180px, rgba(255, 140, 192, .04) 180px 186px, transparent 186px 330px); }
 .bt-room-in h1 { color: var(--paper); }
-.bt-room-body > p { background: linear-gradient(100deg, rgba(6, 4, 14, .94), rgba(18, 14, 43, .9)); border-top: 3px solid var(--acc-2); clip-path: polygon(2% 0, 100% 0, 98% 100%, 0 100%); padding: 12px 30px; }
-.tt-pz-board { background: linear-gradient(160deg, rgba(6, 4, 14, .94), rgba(18, 14, 43, .9)); border-color: color-mix(in srgb, var(--acc) 55%, transparent); clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%); padding-left: 34px; padding-right: 34px; }
+.bt-room-body > p { background: linear-gradient(100deg, rgba(10, 4, 8, .94), rgba(32, 12, 24, .9)); border-top: 3px solid var(--acc-2); clip-path: polygon(2% 0, 100% 0, 98% 100%, 0 100%); padding: 12px 30px; }
+.tt-pz-board { background: linear-gradient(160deg, rgba(10, 4, 8, .94), rgba(32, 12, 24, .9)); border-color: color-mix(in srgb, var(--acc) 55%, transparent); clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%); padding-left: 34px; padding-right: 34px; }
