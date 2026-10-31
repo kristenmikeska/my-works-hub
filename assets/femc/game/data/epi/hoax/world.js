@@ -122,7 +122,14 @@
       bleed: 'A voice', hcvoice: 'Haechan'
     },
     // This world's own faces (core.js worldFace): Solar's HOAX look, the four's HOAX outfits and Solar's parents (FEMC-ART-WIRING).
-    faces: { solar: 'solar-hoax', sakura: 'sakura-hoax', eunchae: 'eunchae-hoax', kazuha: 'kazuha-hoax', chaewon: 'chaewon-hoax', mom: 'kim-mom', dad: 'kim-dad', jungwon: 'jungwon-hoax' },
+    faces: { solar: 'solar-hoax', sakura: 'sakura-hoax', eunchae: 'eunchae-hoax', kazuha: 'kazuha-hoax', chaewon: 'chaewon-hoax', mom: 'kim-mom', dad: 'kim-dad', jungwon: 'jungwon-hoax',
+      // Kat's realistic HOAX set (batch 100): HOAX-only, so the main game keeps their year faces. The ENHYPEN boys were drawn in
+      // uniform only, so they wear it everywhere.
+      jihoon: 'jihoon-hoax', cherry: 'cherry-hoax', asahi: 'asahi-hoax', hyunsuk: 'hyunsuk-hoax', jaehyuk: 'jaehyuk-hoax', junkyu: 'junkyu-hoax',
+      heeseung: 'heeseung-hoax', jay: 'jay-hoax', niki: 'niki-hoax', sunghoon: 'sunghoon-hoax', jake: 'jake-hoax', sunoo: 'sunoo-hoax' },
+    // At school (any place under 'Hanlim · School', core.js worldFace): the Hanlim uniform for everyone Kat drew one for.
+    placeFaces: [['Hanlim · School', { solar: 'solar-hoax-school', jungwon: 'jungwon-hoax-school', jihoon: 'jihoon-hoax-school', cherry: 'cherry-hoax-school',
+      asahi: 'asahi-hoax-school', hyunsuk: 'hyunsuk-hoax-school', jaehyuk: 'jaehyuk-hoax-school', junkyu: 'junkyu-hoax-school' }]],
     // Event outfits are parked until Kat redraws them in the new style (FEMC-ART-BACKBURNER "HOAX outfits"); those scenes show
     // everyone's everyday hoax face meanwhile. The old map is kept there to restore.
     eventFaces: {},

@@ -195,6 +195,8 @@ window.FemcScene = (() => {
     // the previous key back when it ends.
     const facesBefore = G.eventFaces ? G.eventFaces() : null;
     G.eventFaces?.(vis.faces);
+    const placeBefore = G.facePlace ? G.facePlace() : '';
+    G.facePlace?.(vis.place);
     let gained = opts.resume?.gained || 0;
     // Replay: the flags this scene's own lines set, over the save's (or over opts.replayFlags, which then stand alone).
     const over = {}, baseFlags = opts.replayFlags || null;
@@ -343,7 +345,7 @@ window.FemcScene = (() => {
       currentFace = null; img.hidden = true; sil.hidden = true;
       if (line.music) { Music.set(line.music); picked = true; } else if (!picked && line.place) Music.set(G.moodFor(line.place, line.time), { under: true });
       const apply = () => {
-        vis.place = line.place; vis.time = line.time || ''; vis.bg = line.bg || null; vis.cg = null;
+        vis.place = line.place; vis.time = line.time || ''; vis.bg = line.bg || null; vis.cg = null; G.facePlace?.(vis.place);
         if (line.date) { if (replay) vis.date = mdLabel(line.date); else { G.setDate(line.date); vis.date = null; } }
         paintVis();
       };
@@ -556,6 +558,7 @@ window.FemcScene = (() => {
     function close() {
       closed = true;
       G.eventFaces?.(facesBefore);
+      G.facePlace?.(placeBefore);
       window.FemcWeather?.sceneEnd(el);
       clearTimeout(titleTimer); titleGo = null;
       document.removeEventListener('keydown', keys, true);

@@ -918,10 +918,16 @@ window.FemcGame = (() => {
      ends; worldFace checks that key's map first, then the world's faces. Outside the epilogue the key does nothing. */
   let EVENT_FACES = null;
   function eventFaces(key) { if (arguments.length) EVENT_FACES = key || null; return EVENT_FACES; }
+  /* A place's outfits (HOAX's school uniforms, batch 100): a world's `placeFaces: [['<place prefix>', { speaker: portrait id }]]`.
+     scene.js passes the scene's current place here as it changes and puts the old one back when the scene ends; the first
+     prefix the place starts with wins, after an event's outfits and before the world's everyday faces. */
+  let FACE_PLACE = '';
+  function facePlace(place) { if (arguments.length) FACE_PLACE = place || ''; return FACE_PLACE; }
   const worldFace = id => {
     const w = inWorld(); if (!w || !id) return id;
     const e = EVENT_FACES && w.eventFaces && w.eventFaces[EVENT_FACES];
-    return (e && e[id]) || (w.faces && w.faces[id]) || id;
+    const p = FACE_PLACE && (w.placeFaces || []).find(([pre]) => FACE_PLACE.startsWith(pre));
+    return (e && e[id]) || (p && p[1][id]) || (w.faces && w.faces[id]) || id;
   };
   function portrait(id, face) {
     id = worldFace(id);
@@ -2452,7 +2458,7 @@ window.FemcGame = (() => {
     LINKS, progress, isMet, linkStatus, linkScene, finishLink, linksAt, linkPlace, linkName, need, written, areaById, isHome,
     homeOf, leavesAtMax, maxOf, isMaxed, stretchOn, afterGap, afterList, tracesAt, nextTrace, farewellDue, farewellScene, christmasOptions, pickChristmas, christmasChoices, christmasLines,
     flag, effect, branch, applyChoice, addFragment, fragmentInfo, worldOf, fragSources, dropsOk,
-    portrait, scale, eventFaces, name, castHas, silhouette, pendingFace, tarot, background, moodFor, sub, setDate, dateLabel,
+    portrait, scale, eventFaces, facePlace, name, castHas, silhouette, pendingFace, tarot, background, moodFor, sub, setDate, dateLabel,
     activities, actById, showing, activityOk, activityInfo, doActivity, dormActs, dormInfo, dormOk, doDorm, doStudy, studyInfo, shopStock, buy, bookById, bookArt, readTonight, matSellPrice, sellMat,
     perkOn, bondRank, dailyPerks, actCost, dozeChance, dozed, canRetryClass, useGuidance, classHint, studyBonus, weekly,
     jobVisible, jobState, jobOk, hire, shiftScene, finishShift, packs, packPick, packFits,
