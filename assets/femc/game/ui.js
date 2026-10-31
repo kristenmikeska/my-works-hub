@@ -712,7 +712,7 @@
     const splash = !titleWoke && !navigator.userActivation?.hasBeenActive;
     const tap = matchMedia('(hover: none)').matches;
     show(`<section class="g-title${splash ? ' is-splash' : ''}">
-      <div class="g-title-stage"><img class="g-title-art" src="${G.base}assets/femc/title/keyart.webp" alt=""></div>
+      <div class="g-title-stage"><img class="g-title-art" src="${G.base}assets/femc/title/cover.webp" alt=""></div>
       <div class="g-title-moon" aria-hidden="true"></div><div class="g-title-fx" aria-hidden="true"></div>
       <div class="g-title-copy"><h1 class="g-logo" aria-label="Persona 3: Solstice"><span class="g-logo-text" aria-hidden="true">Solstice<small>Persona 3 · Every Universe</small></span></h1>
       <button type="button" class="g-title-press">${tap ? 'Tap to start' : 'Press any key'}</button>
