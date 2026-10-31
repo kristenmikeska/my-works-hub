@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make:** 1 HOAX picture fix (4C). **Optional:** 15 wardrobe items · 4 Stay hanami face sheets. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make:** 1 HOAX picture fix (4C) · 5 Social Link full-body sheets (section 8). **Optional:** 15 wardrobe items · 4 Stay hanami face sheets. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
@@ -221,4 +221,49 @@ Attach: `Fuuka.png`
 Save as: `Fuuka-stay-hanami-sheet.png`
 ```
 A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a mint-green knit cardigan over a white blouse, a small sakura-shaped hair pin. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+---
+
+## 8. Social Link full-body pictures (ChatGPT)
+The new Social Link screen shows each person standing tall beside the list. These five only have a face picture, so for now the screen shows them from the chest up. One pose sheet each, like Solar's: six full-body poses on white.
+
+**[ ] 8A. Ken: full body (pose sheet)**  
+Ken on the Social Link screen (S.E.E.S.).  
+Attach: `Body - Ken.png`  
+Save as: `Ken-fullbody-sheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME boy as the attached image in all six cells, full body, head to toe, with a little space above the head and below the feet, same face, same hair, same size in every cell, nothing overlapping. He is a ten-year-old boy, small and slim. Keep his face, his brown hair and the clothes from the attached image: the dark school blazer with the small ribbon tie and the orange hoodie under it, then dark shorts, white socks and sneakers. Cell 1: standing relaxed, facing the viewer. Cell 2: arms crossed, a small confident look. Cell 3: a friendly wave. Cell 4: hands in pockets, weight on one leg. Cell 5: thinking, one hand at the chin. Cell 6: a happy pose, laughing. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
+```
+
+**[ ] 8B. Jay: full body (pose sheet)**  
+Jay on the Social Link screen.  
+Attach: `Body - Jay.png`  
+Save as: `Jay-fullbody-sheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME young man as the attached image in all six cells, full body, head to toe, with a little space above the head and below the feet, same face, same hair, same size in every cell, nothing overlapping. He is tall and slim. Keep his face, his black hair and the clothes from the attached image: a black suit jacket, a white shirt and a black tie, then black trousers and black leather shoes. Cell 1: standing relaxed, facing the viewer. Cell 2: arms crossed, a small confident look. Cell 3: a friendly wave. Cell 4: hands in pockets, weight on one leg. Cell 5: thinking, one hand at the chin. Cell 6: a happy pose, laughing. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
+```
+
+**[ ] 8C. Niki: full body (pose sheet)**  
+Niki on the Social Link screen.  
+Attach: `Body - Niki.png`  
+Save as: `Niki-fullbody-sheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME young man as the attached image in all six cells, full body, head to toe, with a little space above the head and below the feet, same face, same hair, same size in every cell, nothing overlapping. He is tall and lanky. Keep his face, his black hair with the blond streaks, his earring and the clothes from the attached image: an open white jacket over a black tee, then black slim trousers and white sneakers. Cell 1: standing relaxed, facing the viewer. Cell 2: arms crossed, a small confident look. Cell 3: a friendly wave. Cell 4: hands in pockets, weight on one leg. Cell 5: thinking, one hand at the chin. Cell 6: a happy pose, laughing. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
+```
+
+**[ ] 8D. Sunghoon: full body (pose sheet)**  
+Sunghoon on the Social Link screen.  
+Attach: `Body - Sunghoon.png`  
+Save as: `Sunghoon-fullbody-sheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME young man as the attached image in all six cells, full body, head to toe, with a little space above the head and below the feet, same face, same hair, same size in every cell, nothing overlapping. He is tall with a skater's build. Keep his face, his black hair and the clothes from the attached image: a black suit jacket, a white shirt and a black tie, then black trousers and black leather shoes. Cell 1: standing relaxed, facing the viewer. Cell 2: arms crossed, a small confident look. Cell 3: a friendly wave. Cell 4: hands in pockets, weight on one leg. Cell 5: thinking, one hand at the chin. Cell 6: a happy pose, laughing. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
+```
+
+**[ ] 8E. Kat & Ethan: full body (pose sheet)**  
+Kat & Ethan on the Social Link screen (they share one link, so they stand together).  
+Attach: `Body - Kat.png`, then `Body - Ethan.png`  
+Save as: `Kat-Ethan-fullbody-sheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell. In every cell the SAME couple stands side by side: the young woman from the FIRST attached image on the left and the young man from the SECOND attached image on the right, both full body, head to toe, with a little space above their heads and below their feet, same faces, same hair, same size in every cell, nothing overlapping between cells. Keep her long wavy dark brown hair, her hoop earrings and necklace, and the black dress with small red strawberries from the first image, with black ankle boots. Keep his shoulder-length messy brown hair from the second image, with a dark shirt, dark jeans and boots. Cell 1: standing relaxed, facing the viewer. Cell 2: her arm through his. Cell 3: both waving. Cell 4: his arm around her shoulders. Cell 5: she laughs, he looks at her. Cell 6: back to back, arms crossed. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
 ```

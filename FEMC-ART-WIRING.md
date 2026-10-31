@@ -118,6 +118,8 @@ Still on stand-ins after this list (not covered, for a later batch): Sunroom (`b
 - **Elizabeth: surprised** (save as `Elizabeth-Surprised.png`): `portraits/elizabeth/surprised.webp` via `tools/femc-portraits.py`; check `portraits/scale.js` and the face in a scene.
 - **Happy faces for the busiest regulars** (save as `<name>-happy.png (e.g. ota-happy.png)`): `portraits/<id>/happy.webp` (ids: ota, maeda, kubo, tsuji, chiba, clerk, tanabe); `femc-portraits.py`, check scale.js.
 
+- **8A–8E. Social Link full-body sheets** (save as `Ken-fullbody-sheet.png`, `Jay-…`, `Niki-…`, `Sunghoon-…`, `Kat-Ethan-fullbody-sheet.png`): cut the 3 × 2 sheet like Solar's (`profile/solar-poses/`) and keep the best standing pose as `assets/femc/profile/<id>.webp` (Kat & Ethan: `profile/kat.webp`). Then add the link to `menu.js LINK_FIG` (`[file, width/height, head top, head-to-chin, head centre x]`, measured as for the others) and take it out of `LINK_BUST`. Check the Social Link screen at 1440×810 and 390×844 (scratchpad `shootlinks.py` pattern; `tests/femc_building.py --only menu`).
+
 ### 4. Battle
 - *Parked on `FEMC-ART-BACKBURNER.md` (2026-10-28): Sharper Shadows and Solar's four strike sheets. Their wiring entries stay below.*
 - **Sharper Shadows (33)** (save as `<name>.png (e.g. arcane-turret.png)`): the same `battle/art/shadows/<name>.webp` via `tools/femc-shadows.py`; set `small: false` in `art/shadows/index.js`.
