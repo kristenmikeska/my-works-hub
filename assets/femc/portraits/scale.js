@@ -90,11 +90,6 @@ window.FEMC_PORTRAIT_SCALE = {
   'chaewon-hoax': 0.78, // batch 100: Kat's realistic HOAX remake
   'eunchae-hoax': 0.84, // batch 100: Kat's realistic HOAX remake
   'kazuha-hoax': 0.84, // batch 100: Kat's realistic HOAX remake
-  'solar-strangers': 1.0, // batch 63: strangers epilogue looks and Solar's parents there (strangers world faces map)
-  'chaewon-strangers': 0.95,
-  'eunchae-strangers': 0.95,
-  'kazuha-strangers': 0.86, // batch 96: Kat's realistic remake
-  'sakura-strangers': 0.88,
   'lee-appa': 0.9,
   'lee-eomma': 0.9,
   'haechan-runners': 0.8, // batch 98: Kat's realistic remake, eyes-to-chin matched to the cast
@@ -115,11 +110,6 @@ window.FEMC_PORTRAIT_SCALE = {
   'chenle-runners': 0.8, // batch 96: Kat's realistic set, eyes-to-chin matched to Haechan's
   'jaehyun-runners': 0.76, // batch 97: Kat's remake, eyes-to-chin matched to Haechan's
   'jeno-runners': 0.8, // batch 97: Kat's remake, eyes-to-chin matched to Haechan's
-  'yunjin-strangers': 0.86, // batch 96: Kat's realistic set, eyes-to-chin matched to Haechan's
-  'taesang-strangers': 0.84, // batch 96: Kat's realistic set, eyes-to-chin matched to Haechan's
-  'miyeon-strangers': 0.9, // batch 96: Kat's realistic set, eyes-to-chin matched to Haechan's
-  'haechan-strangers': 0.92,
-  'jungwon-strangers': 0.95,
   // batch 87: Runners event outfits (world.js eventFaces); eyes level with each one's usual face in Runners (Vision eye
   // landmarks, neutral / happy / serious averaged)
   'solar-runners-holiday': 0.97,
@@ -157,6 +147,29 @@ window.FEMC_PORTRAIT_SCALE = {
   'sakura-hoax': 0.81,
   'kim-mom': 0.81,
   'kim-dad': 0.86,
+  // batch 101: Kat's realistic Strangers set + the household, Halmeoni and Hayoon; eyes-to-chin matched to haechan-runners
+  'solar-strangers': 0.84,
+  'haechan-strangers': 0.77,
+  'jungwon-strangers': 0.83,
+  'chaewon-strangers': 0.8,
+  'eunchae-strangers': 0.8,
+  'kazuha-strangers': 0.8,
+  'sakura-strangers': 0.8,
+  'jay-strangers': 0.8,
+  'niki-strangers': 0.77,
+  'sunghoon-strangers': 0.77,
+  'taesang-strangers': 0.8,
+  'miyeon-strangers': 0.77,
+  'yunjin-strangers': 0.88,
+  'mrsbang-strangers': 0.77,
+  'mroh-strangers': 0.9,
+  'auntsong-strangers': 0.84,
+  'pyo-strangers': 0.9,
+  'seo-strangers': 0.84,
+  'minseok-strangers': 0.8,
+  'hyesun-strangers': 0.8,
+  'halmeoni-hoax': 0.8,
+  'hayoon-hoax': 0.8,
   // batch 88: HOAX event outfits, eyes level with solar-hoax, jungwon-hoax and Jihoon's year face
   'solar-hoax-christmas': 0.9,
   'jungwon-hoax-christmas': 1.0,
@@ -251,4 +264,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 23;
+window.FEMC_PORTRAIT_V = 24;

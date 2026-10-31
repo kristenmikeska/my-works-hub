@@ -1573,5 +1573,101 @@ window.FEMC_PORTRAITS = {
   "sad",
   "serious",
   "surprised"
+ ],
+ "jay-strangers": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "niki-strangers": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "sunghoon-strangers": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "mrsbang-strangers": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "mroh-strangers": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "auntsong-strangers": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "pyo-strangers": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "seo-strangers": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "minseok-strangers": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "hyesun-strangers": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "halmeoni-hoax": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "hayoon-hoax": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
  ]
 };

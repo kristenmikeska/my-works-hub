@@ -102,11 +102,11 @@
       place: 'Incheon · The Lee House · Kitchen', time: 'Daytime', scene: [
       { music: 'epi-s-house' },
       { n: "Jungwon was upstairs in the study with her father and a baduk board, which meant the house had gone quiet in the particular way it went quiet when two men were being polite to each other over stones, and it meant Park Sunghoon was in the kitchen. Standing. In the doorway between the kitchen and the back hall, his back to the room and his face to the back door, the way he stood in every room he'd ever been put in." },
-      { s: 'mrsbang', t: "Forty minutes. I've offered him a chair three times." },
+      { s: 'mrsbang', f: 'serious', t: "Forty minutes. I've offered him a chair three times." },
       { n: "Mrs. Bang was at the sink with her sleeves pushed up, glaring at his shoulder blades as if they'd tracked mud in. Pyo was flattened against the far counter peeling garlic at a speed that suggested he believed Sunghoon could hear fear. Auntie Song, on her armchair by the stove, didn't look up from her mending." },
-      { s: 'auntie', t: "*Leave him. Some men are furniture.*" },
+      { s: 'auntie', f: 'neutral', t: "*Leave him. Some men are furniture.*" },
       { s: 'solar', f: 'happy', t: "*He understands Mandarin, Auntie.*" },
-      { s: 'auntie', t: "*Good. Then he knows he's furniture.*" },
+      { s: 'auntie', f: 'neutral', t: "*Good. Then he knows he's furniture.*" },
       { n: "If Sunghoon understood, his back didn't say so. Then the back door opened, and the yellow light of the dusty afternoon came in, and Haechan came in with it, stamping grit off his boots, his jacket over one shoulder, gum going, and stopped dead one step inside the door. Because the doorway he needed was the doorway Sunghoon was standing in, and Sunghoon was facing him." },
       { n: "Nobody moved. Pyo stopped peeling. The tap ran. Somewhere upstairs a baduk stone clicked onto the board, small and final." },
       { s: 'haechan', f: 'happy', t: "Figure skater." },
@@ -130,7 +130,7 @@
         ] },
         { t: "(Say nothing. Let Mrs. Bang handle it.)", then: [
           { n: "Mrs. Bang turned off the tap. She dried her hands on her apron, one finger at a time. She picked up the wooden rug-beater from where it leaned by the back step like a rifle." },
-          { s: 'mrsbang', t: "Out. Both of you. Out of my door." },
+          { s: 'mrsbang', f: 'serious', t: "Out. Both of you. Out of my door." },
           { n: "And they went, both of them, through the same doorway at the same moment, because neither would let the other go first, and for one terrible second they were wedged in it shoulder to shoulder, the Yang heir's right hand and the Chairman's dog, before the frame let go of them and they spilled out into the back hall in a silence so total that Pyo laughed out loud and then put a garlic clove in his mouth to stop himself." }
         ] }
       ] },
@@ -249,7 +249,7 @@
       place: 'Incheon · The Lee House · Gate', time: 'Daytime', scene: [
       { music: 'epi-s-yunjin' },
       { n: "The gate was open. It was standing wide open in the thin February sun, both leaves, with Minseok in the gatehouse door drinking a can of coffee and looking straight at it, and Riki came over the wall three meters to the left of it anyway, one hand on the coping and both long legs swinging over sideways in his thin silver puffer, and landed in Mrs. Bang's frozen herb bed with a crunch, headphones round his neck, a banana in his other hand." },
-      { s: 'minseok', t: "The gate's open." },
+      { s: 'minseok', f: 'neutral', t: "The gate's open." },
       { s: 'niki', f: 'happy', t: "I know." },
       { n: "Minseok closed his eyes for a moment in the way of a man counting to ten in a language he didn't really believe in, and went back inside." },
       { n: "Riki had brought the jar back, which was why he was here, officially. It was in a cloth bag over his shoulder and had swung into the wall on the way over. It was fine. He showed her it was fine, very seriously, and handed it over, and then he stood there peeling the banana with tremendous concentration, and didn't go." },
@@ -286,7 +286,7 @@
         ] }
       ] },
       { n: "When he left, the gate was still open. Both leaves. Minseok came out of the gatehouse to watch. Riki looked at the gate, considered it, took a run of four steps and went over the wall again, three meters to the left of it, and was gone down the hill before the herb bed had finished crunching." },
-      { s: 'minseok', t: "Every time." }
+      { s: 'minseok', f: 'neutral', t: "Every time." }
     ] },
 
     { id: 'epi-s-niki-2', title: 'a message', hint: "Riki has run a message across town in the dust. He hasn't left yet.",
@@ -298,9 +298,9 @@
       { n: "A square of paper folded four times, warm from the inside pocket. She unfolded it at the kitchen table. Jungwon's small, exact characters, in Mandarin, which nobody in this house but her and Auntie Song could read and Auntie Song was asleep in her chair." },
       { n: "*The dust is worse tomorrow. I'd be grateful if you didn't go near the water. That's all. I wanted it to arrive in something other than a voice.* And under it, smaller, not signed with his name, a single character. 远." },
       { n: "She folded it again along the same lines and put it in her sleeve, and when she looked up Riki was looking very hard at the fridge to give her privacy, which he'd plainly been told to do by someone, and was doing with enormous effort." },
-      { s: 'mrsbang', t: "Sit. You walked across the whole city in that. Sit." },
+      { s: 'mrsbang', f: 'serious', t: "Sit. You walked across the whole city in that. Sit." },
       { s: 'niki', f: 'surprised', t: "I'm fine, I have to—" },
-      { s: 'mrsbang', t: "Sit *down*." },
+      { s: 'mrsbang', f: 'serious', t: "Sit *down*." },
       { n: "He sat. Mrs. Bang put rice in front of him, and soup, and three side dishes, and then a fourth because the third had looked lonely, and Riki ate the way only sixteen-year-old boys eat, as if the food had personally insulted his family, and Mrs. Bang watched him do it with her arms folded and an expression Solar hadn't seen on her face since the house was full of men who came home late and hungry." },
       { n: "Then the back door opened again, and Haechan came in out of the yellow, and stopped." },
       { n: "He looked at the boy at the table. One second. Long legs folded under the chair, puffer, headphones, rice on his chin, too thin, all elbows and appetite, a kid pretending to be a hard man and mostly pulling it off. Then he looked at the fridge. Then at the clock. Then at anything else in the kitchen that wasn't Riki, for slightly too long, like a man looking away from the sun." },
@@ -338,42 +338,42 @@
       place: 'Incheon · The Lee House · Kitchen', time: 'Daytime', scene: [
       { music: 'epi-s-house' },
       { n: "Ten people and a bucket of fish meant dumplings for the freezer, three hundred of them, and so the long table had been floured end to end and the whole kitchen had gone white at the edges, the window steamed, the radio on the shelf murmuring the shipping forecast to nobody. Auntie Song stood on her upturned crate at the head of the table in her rubber boots, five feet tall on it, rolling wrappers faster than anyone could fill them. She wasn't singing. It wasn't Sunday." },
-      { s: 'auntie', t: "*Xiao yueliang. Sit. Fold. Your pleats used to be fourteen. Let me see if you've gone soft.*" },
+      { s: 'auntie', f: 'neutral', t: "*Xiao yueliang. Sit. Fold. Your pleats used to be fourteen. Let me see if you've gone soft.*" },
       { n: "She sat, and folded, and her hands knew it before she did, the wrapper in her left palm across the scar and the little pinches walking along the edge one after another. Fourteen. Auntie Song took it off the board, held it up to the window like a jeweler, grunted, and put it back, which was the highest praise available in this kitchen." },
-      { s: 'mrsbang', t: "She's talking about me. I can always tell." },
+      { s: 'mrsbang', f: 'neutral', t: "She's talking about me. I can always tell." },
       { s: 'solar', f: 'happy', t: "She's talking about Mr. Oh's aftershave." },
-      { s: 'auntie', t: "*I'm talking about Mr. Oh's aftershave. He puts it on for the woman in the toll booth on the bridge. Twice a week he has business across the bridge. Twice a week. What business has a driver got across a bridge.*" },
-      { s: 'mrsbang', t: "She's talking about me." },
+      { s: 'auntie', f: 'happy', t: "*I'm talking about Mr. Oh's aftershave. He puts it on for the woman in the toll booth on the bridge. Twice a week he has business across the bridge. Twice a week. What business has a driver got across a bridge.*" },
+      { s: 'mrsbang', f: 'serious', t: "She's talking about me." },
       { n: "The gossip went on like that in long Mandarin loops while the pile of dumplings grew, the fish man's new wife and her terrible perm, the Yang kitchen auntie who used too much garlic in everything, a shocking story about a cousin in Qingdao and a refrigerator, and Mrs. Bang folded at the other end of the table with her mouth set, convinced every word of it was about her, and occasionally it was." },
       { n: "Pyo, nineteen and permanently terrified, was sent to the storeroom for more flour and came back without it." },
-      { s: 'pyo', t: "It's breathing." },
-      { s: 'mrsbang', t: "That's the boiler." },
-      { s: 'pyo', t: "The boiler doesn't *sigh*, Mrs. Bang." },
+      { s: 'pyo', f: 'surprised', t: "It's breathing." },
+      { s: 'mrsbang', f: 'neutral', t: "That's the boiler." },
+      { s: 'pyo', f: 'flustered', t: "The boiler doesn't *sigh*, Mrs. Bang." },
       { n: "He'd brought his ghost with him from the restaurant, apparently, the one that had kept him off the storeroom stairs there for months. It lived in storerooms generally, he'd decided. It went where storerooms went." },
       { ifGlitch: 1, then: [
         { n: "She went for the flour herself. The storeroom light buzzed and caught. And for one breath, between the sacks of rice and the shelf of old onggi lids, the air smelled of curry. Not Auntie Song's. A packet curry, sweet, out of a box, the kind somebody made for a whole dormitory on a Sunday when nobody else would cook." },
         { n: "Then it was flour and cold concrete and the boiler, sighing. She came back out with the sack on her hip and her face exactly as it always was. Pyo looked at her face. Pyo, who noticed nothing, looked at her face for a long time." }
       ] },
       { n: "Auntie Song rolled a wrapper, slapped it down, and didn't look up." },
-      { s: 'auntie', t: "*A fever. Ten days in your bed with a fever. Your whole family brought fruit.*" },
-      { s: 'auntie', t: "*Next time you have a fever, little moon, take a coat.*" },
+      { s: 'auntie', f: 'serious', t: "*A fever. Ten days in your bed with a fever. Your whole family brought fruit.*" },
+      { s: 'auntie', f: 'serious', t: "*Next time you have a fever, little moon, take a coat.*" },
       { n: "The kitchen didn't stop, exactly. Mrs. Bang's hands kept folding. But the radio seemed louder, suddenly, and Pyo had gone still with a spoonful of filling halfway to a wrapper." },
       { choose: [
         { t: "*Thirty-nine point four, Auntie. I couldn't keep rice down.*", then: [
           { n: "She said it in Mandarin, evenly, folding, fourteen pleats, and didn't look up either." },
           { glitch: { strain: 1 } },
-          { s: 'auntie', t: "*Mm. Thirty-nine point four.*" },
+          { s: 'auntie', f: 'neutral', t: "*Mm. Thirty-nine point four.*" },
           { n: "The old woman said it back to her the way you'd repeat a price at the market that you didn't believe but were prepared, today, to pay. Then she put another wrapper on the pile. That was all. The lie had held, and something in the room let go of its breath." }
         ] },
         { t: "(Answer in Korean, loud enough for Mrs. Bang.)", stat: { charm: 1 }, then: [
           { s: 'solar', f: 'happy', t: "Auntie wants to know how high my fever went, Mrs. Bang." },
-          { s: 'mrsbang', t: "Thirty-nine point four. She couldn't keep rice down. I was up three nights with the cloths. Tell her that in her language, and tell her I'll thank her to keep her nose in her own wrappers." },
+          { s: 'mrsbang', f: 'serious', t: "Thirty-nine point four. She couldn't keep rice down. I was up three nights with the cloths. Tell her that in her language, and tell her I'll thank her to keep her nose in her own wrappers." },
           { glitch: { strain: 1 } },
           { n: "Auntie Song understood not one word of that and every word of it. She smiled, very small, at her rolling pin, the smile of a woman who'd been listening at doors for nineteen years and knew exactly which ones to stop listening at." }
         ] },
         { t: "(Say nothing. Keep folding.)", stat: { kindness: 1 }, then: [
           { n: "She said nothing. She folded. Fourteen pleats. Fourteen pleats. Auntie Song watched her hands for a while, not her face, never her face, and then reached across the flour and pressed one floury thumb, once, to the back of Solar's wrist, the way you'd press down the edge of a dumpling to make sure it held." },
-          { s: 'auntie', t: "*Good. Fourteen.*" }
+          { s: 'auntie', f: 'happy', t: "*Good. Fourteen.*" }
         ] }
       ] },
       { n: "Three hundred and six, in the end. Pyo counted. Mrs. Bang made him count again. Auntie Song had already gone back to her chair by the stove, boots up on the fender, eyes shut, pretending to sleep, which in this house meant she was listening to everything." }
@@ -386,17 +386,17 @@
       { n: "Mrs. Bang beat rugs when she was upset. Everybody in the house knew it. You could tell how upset by the number of rugs, and today she had all of them out, every rug in the house, the hall runner and the study rug and the good silk one from the dining room that wasn't supposed to be beaten at all, slung over three washing lines across the bottom of the garden in a sky still faintly yellow at the edges, and she was going at them with the wooden beater like they owed her money." },
       { n: "*Thwack.* A cloud of dust, the house's and the sky's, indistinguishable. *Thwack.*" },
       { n: "Pyo held the corners. Auntie Song sat on an upturned bucket by the back step in her rubber boots, peeling a mandarin and supervising nobody. In the kitchen window behind them, Solar could see the kitchen clock. Someone, she suspected Mrs. Bang, had hung a clean dish towel over it." },
-      { s: 'pyo', t: "I'm not going to say anything about the—" },
-      { s: 'mrsbang', t: "Then don't." },
+      { s: 'pyo', f: 'flustered', t: "I'm not going to say anything about the—" },
+      { s: 'mrsbang', f: 'serious', t: "Then don't." },
       { n: "*Thwack.*" },
-      { s: 'pyo', t: "I'm just saying, if there was a time when, say, everything in a house all said the same—" },
-      { s: 'mrsbang', t: "Pyo." },
-      { s: 'pyo', t: "I'm not saying anything." },
+      { s: 'pyo', f: 'flustered', t: "I'm just saying, if there was a time when, say, everything in a house all said the same—" },
+      { s: 'mrsbang', f: 'serious', t: "Pyo." },
+      { s: 'pyo', f: 'flustered', t: "I'm not saying anything." },
       { n: "He'd started wearing his watch on the inside of his wrist, she noticed, face in, so he wouldn't have to look at it by accident. Auntie Song split the mandarin and ate a segment and spoke in Mandarin to the garden in general." },
-      { s: 'auntie', t: "*In my mother's village, twelve o'clock is the hour the ghosts come to the table. You leave a chair out. You don't look at it.*" },
-      { s: 'mrsbang', t: "She's talking about the clocks." },
+      { s: 'auntie', f: 'serious', t: "*In my mother's village, twelve o'clock is the hour the ghosts come to the table. You leave a chair out. You don't look at it.*" },
+      { s: 'mrsbang', f: 'neutral', t: "She's talking about the clocks." },
       { s: 'solar', f: 'serious', t: "She's talking about her mother's village." },
-      { s: 'mrsbang', t: "She's talking about the clocks." },
+      { s: 'mrsbang', f: 'neutral', t: "She's talking about the clocks." },
       { n: "*Thwack.* The silk rug, which would never be the same, gave up a cloud of something that had been in it since before Solar was born." },
       { ifGlitch: 3, then: [
         { n: "Up at the house, the hall clock, which Pyo had stopped winding, which nobody had touched in days, struck once. One. Clear, through the shut windows, across the garden. Nobody turned round. Pyo's hands went white on the corners of the rug. Auntie Song put a segment of mandarin in her mouth and chewed it very slowly. Mrs. Bang raised the beater and brought it down so hard the line sang." }
@@ -404,7 +404,7 @@
       { choose: [
         { t: "(Take the beater. Have a go.)", stat: { courage: 1 }, then: [
           { n: "Mrs. Bang looked at her for a moment and then handed it over without a word, and Solar stood in front of the hall runner with her feet apart the way she'd seen Mrs. Bang stand all her life and hit it, and hit it again, and it turned out it helped, it turned out it helped a great deal, the jolt going up both arms and the dust going up into the yellow and something in her chest going with it." },
-          { s: 'mrsbang', t: "Not from the shoulder. From the back. Like you mean it." },
+          { s: 'mrsbang', f: 'serious', t: "Not from the shoulder. From the back. Like you mean it." },
           { n: "She meant it. Mrs. Bang nodded, once, with something that on another woman might have been pride and on Mrs. Bang was a sniff." }
         ] },
         { t: "(Go in and take the towel off the clock.)", stat: { knowledge: 1 }, then: [
@@ -413,16 +413,16 @@
         ] },
         { t: "(Sit on the step with Auntie Song.)", stat: { kindness: 1 }, then: [
           { n: "She sat on the cold step beside the bucket and Auntie Song, without looking, handed her half the mandarin." },
-          { s: 'auntie', t: "*You've been gone a long time, little moon. Somewhere.*" },
+          { s: 'auntie', f: 'sad', t: "*You've been gone a long time, little moon. Somewhere.*" },
           { n: "Not a question. Auntie Song never asked questions. She only ever said things in a kitchen and waited to see who flinched." },
           { s: 'solar', f: 'serious', t: "*I had a fever.*" },
-          { s: 'auntie', t: "*Mm. And now the clocks have one.*" }
+          { s: 'auntie', f: 'serious', t: "*Mm. And now the clocks have one.*" }
         ] }
       ] },
       { n: "When the last rug was done Mrs. Bang stood with the beater hanging at her side and her breath coming white and the sweat at her temples gone gray with dust, and she looked up at the house, at the windows, at all of it, and then at Solar." },
-      { s: 'mrsbang', t: "Whatever it is, it's not coming in my kitchen." },
+      { s: 'mrsbang', f: 'serious', t: "Whatever it is, it's not coming in my kitchen." },
       { n: "Then she wiped her face on her sleeve and said the only thing anyone in the house had agreed to say, the way other people said grace." },
-      { s: 'mrsbang', t: "Thirty-nine point four. Aigoo. Go and wash your hands." }
+      { s: 'mrsbang', f: 'happy', t: "Thirty-nine point four. Aigoo. Go and wash your hands." }
     ] }
   ]);
 
@@ -434,25 +434,25 @@
       { music: 'epi-s-cover' },
       { n: "The car was warm. It was always warm. Mr. Oh had been warming it at the foot of the front steps every evening since she came home, whether or not she went anywhere, and tonight she came down the steps in her coat and got into the back and sat there with her hands in her lap, and he looked at her once in the mirror, menthol aftershave and the gray at his temples and his hands at ten and two, and didn't ask." },
       { s: 'solar', f: 'sad', t: "Anywhere. Just drive." },
-      { s: 'mroh', t: "Seatbelt." },
+      { s: 'mroh', f: 'neutral', t: "Seatbelt." },
       { n: "He drove the harbor road. Down past the cranes standing over the quays like something told to wait, past the ferry terminal and the bright windows of the sashimi places, round the Wolmido loop, never braking hard, never once in fourteen years braking hard, the car taking every corner like water taking the shape of a cup. The tide was going out. She could feel it in her teeth." },
       { n: "Halfway round the loop he spoke, which he didn't do, not on drives, not unless the sentence had a destination in it." },
-      { s: 'mroh', t: "You were eight." },
+      { s: 'mroh', f: 'neutral', t: "You were eight." },
       { s: 'solar', f: 'surprised', t: "What?" },
-      { s: 'mroh', t: "Two in the morning. The Chairman rang me. You wouldn't sleep. Low tide. You were sitting on the stairs in your coat over your pajamas and you wouldn't go back up." },
+      { s: 'mroh', f: 'neutral', t: "Two in the morning. The Chairman rang me. You wouldn't sleep. Low tide. You were sitting on the stairs in your coat over your pajamas and you wouldn't go back up." },
       { n: "His eyes on the road. His hands at ten and two." },
-      { s: 'mroh', t: "So I drove you round. This road. You counted the cranes out loud. Every time round. Twenty-three. Every time, twenty-three, like you were checking nobody had taken one." },
-      { s: 'mroh', t: "Fourth time round, you were asleep against that window. The Chairman carried you in." },
+      { s: 'mroh', f: 'happy', t: "So I drove you round. This road. You counted the cranes out loud. Every time round. Twenty-three. Every time, twenty-three, like you were checking nobody had taken one." },
+      { s: 'mroh', f: 'neutral', t: "Fourth time round, you were asleep against that window. The Chairman carried you in." },
       { n: "She didn't remember. She looked at the window, at the cold glass where an eight-year-old's face would have pressed, and at the cranes going by beyond it, and found she was counting them. Nine, ten. She made herself stop." },
       { s: 'solar', f: 'sad', t: "I don't remember that." },
-      { s: 'mroh', t: "You were asleep for most of it." },
+      { s: 'mroh', f: 'neutral', t: "You were asleep for most of it." },
       { n: "The car came round the bottom of the loop and the lights of the Lee house showed on the hill. He signalled for home, the way he always did, though there was nobody on the road to see, and then he spoke again without taking his eyes off it, flat, the way a man reads out an address." },
-      { s: 'mroh', t: "Your aunt's driver asked me how you were. At Seollal." },
+      { s: 'mroh', f: 'serious', t: "Your aunt's driver asked me how you were. At Seollal." },
       { choose: [
         { t: "And what did you tell him?", then: [
-          { s: 'mroh', t: "That you had a fever." },
+          { s: 'mroh', f: 'serious', t: "That you had a fever." },
           { s: 'solar', f: 'serious', t: "Thirty-nine point four." },
-          { s: 'mroh', t: "That's what I told him." },
+          { s: 'mroh', f: 'neutral', t: "That's what I told him." },
           { glitch: { strain: 1 } },
           { n: "He didn't look in the mirror. That was the kindness. He'd handed her the lie like a coat at a door and let her put it on without watching." }
         ] },
@@ -462,7 +462,7 @@
         ] }
       ] },
       { n: "At the foot of the steps he got out and opened her door, as he had done since she was seven, and stood beside it with the cold coming off the harbor, and she got out, and he shut it." },
-      { s: 'mroh', t: "Home now." }
+      { s: 'mroh', f: 'neutral', t: "Home now." }
     ] },
 
     { id: 'epi-s-mroh-2', title: 'the front seat', hint: "Mr. Oh is waiting outside the bathhouse with the engine running, the way he waits everywhere.",
@@ -475,14 +475,14 @@
       { n: "He looked at the door. At her. At the road. He took the folded newspaper off the passenger seat, and his green thermos, and the cloth he cleaned the mirrors with, and put them all on the back seat, in that order, without a word, and she got in beside him." },
       { n: "It was a completely different car from the front. She'd never seen the dashboard from here. There was a paper pine tree hanging from the mirror that had stopped smelling of anything years ago, and a pair of cotton gloves folded on the dashboard, and a mint tin, and none of it had ever been visible from the back, and she sat among it feeling like she'd walked into somebody's kitchen without knocking." },
       { s: 'solar', f: 'neutral', t: "Do you ever get bored? Waiting?" },
-      { s: 'mroh', t: "No." },
+      { s: 'mroh', f: 'neutral', t: "No." },
       { n: "He pulled out. Ten and two. The wipers took one long pass at the dust on the windscreen." },
-      { s: 'mroh', t: "The policewoman. The one with the ice." },
+      { s: 'mroh', f: 'serious', t: "The policewoman. The one with the ice." },
       { s: 'solar', f: 'neutral', t: "Inspector Seo." },
-      { s: 'mroh', t: "She asked me how long I'd driven you. I said since you were seven. She asked if you'd been ill at Seollal." },
-      { s: 'mroh', t: "I said you had a fever." },
+      { s: 'mroh', f: 'serious', t: "She asked me how long I'd driven you. I said since you were seven. She asked if you'd been ill at Seollal." },
+      { s: 'mroh', f: 'neutral', t: "I said you had a fever." },
       { n: "He said it to the windscreen, plainly, the way he'd tell her it was raining. Then he drove for a while, through the yellow streetlights, before he said the other thing." },
-      { s: 'mroh', t: "I sat at the gate, those nights. Engine on." },
+      { s: 'mroh', f: 'sad', t: "I sat at the gate, those nights. Engine on." },
       { s: 'solar', f: 'serious', t: "Which nights?" },
       { n: "He didn't answer. That was the answer. Ten nights, then, at the gate, at the bottom of the hill, with the heater running and the newspaper folded into a square, waiting for a girl who had a fever upstairs to come down the steps and need driving somewhere." },
       { choose: [
@@ -491,7 +491,7 @@
           { n: "In fourteen years she had never once seen his hand leave ten and two. She didn't say anything about it. She'd have sooner died." }
         ] },
         { t: "Thank you, Mr. Oh.", stat: { kindness: 1 }, then: [
-          { s: 'mroh', t: "Seatbelt." },
+          { s: 'mroh', f: 'neutral', t: "Seatbelt." },
           { n: "She already had it on. He knew she had it on. She looked at him, and his face did nothing at all, and his ears, under the gray at the temples, went very slightly red." }
         ] },
         { t: "(Lean your head on the window.)", ifFlag: 'epi-s-oh-cranes', then: [
@@ -500,7 +500,7 @@
         ] }
       ] },
       { n: "At the steps he got out and came round and opened her door, the front one, as if it was the door he'd been opening all his life." },
-      { s: 'mroh', t: "Home now." }
+      { s: 'mroh', f: 'neutral', t: "Home now." }
     ] }
   ]);
 
@@ -634,7 +634,7 @@
     { id: 'epi-s-rt-koi', slot: 'early', after: '2/18', until: '3/9', events: ['epi-s-kitchen'], place: 'Incheon · The Lee House · Kitchen', time: 'Morning', scene: [
       { n: "Mrs. Bang fed the koi before she fed anybody else. Every morning, on the back step, in her quilted vest with her breath coming white, a tin of pellets in one hand and the other breaking the skin of ice on the bucket with the back of a spoon." },
       { n: "Mr. and Mrs. Kim came up to the spoon, orange and white, slow with cold, mouths opening and closing like they had something important to say and had forgotten it. Yunjin's father's fish. He had named them. Nobody in the house had ever once called them anything else." },
-      { s: 'mrsbang', t: "Mrs. Kim's the greedy one. Look at her. Pushing him out the way. Aigoo, she's no better than she should be." },
+      { s: 'mrsbang', f: 'happy', t: "Mrs. Kim's the greedy one. Look at her. Pushing him out the way. Aigoo, she's no better than she should be." },
       { choose: [
         { t: "(Take the tin and feed them yourself.)", stat: { kindness: 1 }, then: [
           { n: "Mrs. Bang gave her the tin and stood over her like an examiner. Solar scattered a few pellets on the black water and Mr. Kim, who was shy, didn't come up for them, so she put the next ones down near the side of the bucket where Mrs. Kim couldn't reach, and he came. Mrs. Bang made a sound that was nearly approval and took the tin back." }

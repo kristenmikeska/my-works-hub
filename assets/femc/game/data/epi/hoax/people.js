@@ -684,9 +684,9 @@
         ] }
       ] },
       { n: "Sunoo's grandmother came out from behind the counter with a fresh tray and put it in the middle of the table. She looked around at all of them, at the flashcards, at the boy in the napkin holder, at Solar with Heeseung's phone still in her hand." },
-      { s: 'halmeoni', t: "You children went to a temple." },
+      { s: 'halmeoni', f: 'neutral', t: "You children went to a temple." },
       { n: "Nobody breathed." },
-      { s: 'halmeoni', t: "Mm. Very good. Eat." }
+      { s: 'halmeoni', f: 'happy', t: "Mm. Very good. Eat." }
     ] },
 
     { id: 'epi-h-council-2', title: 'the count', hint: "The council is in the council room after hours, watching Jungwon count the tin. Again.",

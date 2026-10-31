@@ -55,9 +55,9 @@
       place: "Hanlim · Yeobo's", time: 'Daytime', scene: [
       { music: 'epi-h-home' },
       { n: "Yeobo's smelled the way it always had, butter and burnt sugar and the radiator's dusty first-week-of-winter smell, the bell over the door giving its little cough, and Sunoo's grandmother was out from behind the counter before it had finished, wiping her hands on her apron, small and quick and exactly as tall as Solar remembered, which was not very." },
-      { s: 'halmeoni', t: "There she is. Sit. You're thin." },
+      { s: 'halmeoni', f: 'happy', t: "There she is. Sit. You're thin." },
       { s: 'solar', f: 'happy', t: "I've been back like three days." },
-      { s: 'halmeoni', t: "Three days is nothing. Sunoo-ya. The good ones." },
+      { s: 'halmeoni', f: 'happy', t: "Three days is nothing. Sunoo-ya. The good ones." },
       { n: "Sunoo is already plating croissants, four of them on a plate meant for one, his ears pink to the tips, and he sets them down in front of her and slides into the other side of the booth and folds his hands and stares at her like she might evaporate if he blinks." },
       { s: 'sunoo', f: 'happy', t: "Hi." },
       { s: 'solar', f: 'happy', t: "Hi, Sunoo." },
@@ -66,12 +66,12 @@
       { ifYear: { rank: { sunoo: 7 } }, then: [
         { n: "Over there, at the end, he'd been the one who knew her order before she did. He pushed the plate an inch closer to her now without thinking about it. He still did." }
       ] },
-      { s: 'halmeoni', t: "So. The temple. Sunoo says there were monks." },
+      { s: 'halmeoni', f: 'neutral', t: "So. The temple. Sunoo says there were monks." },
       { s: 'sunoo', f: 'surprised', t: "Halmeoni—" },
-      { s: 'halmeoni', t: "Did they feed you? Monks don't believe in butter. I've read about it." },
+      { s: 'halmeoni', f: 'neutral', t: "Did they feed you? Monks don't believe in butter. I've read about it." },
       { choose: [
         { t: "Rice. So much rice. And soup at four in the morning.", stat: { charm: 1 }, then: [
-          { s: 'halmeoni', t: "Hm. Barbaric." },
+          { s: 'halmeoni', f: 'serious', t: "Hm. Barbaric." },
           { glitch: { strain: 1 } },
           { n: "She went back to the register satisfied, and Sunoo deflated across the table like someone had let the air out of him." },
           { s: 'sunoo', f: 'sad', t: "You're so good at that. It's scary. I told her the monks had a goat." },
@@ -80,17 +80,17 @@
         ] },
         { t: "(Let Sunoo take this one.)", flag: 'epi-h-temple-goat', then: [
           { s: 'sunoo', f: 'flustered', t: "They had a goat!" },
-          { s: 'halmeoni', t: "A goat." },
+          { s: 'halmeoni', f: 'neutral', t: "A goat." },
           { s: 'sunoo', f: 'flustered', t: "A temple goat. For... peace. It was very peaceful. The goat." },
           { n: "His grandmother looked at him for a long moment, and then at Solar, and then back at him, with the face of a woman who had raised one boy already and was not about to be outwitted by his son." },
-          { s: 'halmeoni', t: "Eat your croissant, Solar." },
+          { s: 'halmeoni', f: 'serious', t: "Eat your croissant, Solar." },
           { n: "Which, in this house, meant the matter was closed. It also meant she knew. Sunoo put his forehead on the table." }
         ] }
       ] },
       { n: "Before she left his grandmother pressed a paper bag into her hands, still warm through the bottom, the top folded twice." },
-      { s: 'halmeoni', t: "For the president. His mother doesn't feed him." },
+      { s: 'halmeoni', f: 'neutral', t: "For the president. His mother doesn't feed him." },
       { s: 'solar', f: 'sad', t: "He's not allowed out." },
-      { s: 'halmeoni', t: "Then it goes through a window. You're young. Figure it out." },
+      { s: 'halmeoni', f: 'serious', t: "Then it goes through a window. You're young. Figure it out." },
       { s: 'sunoo', f: 'sad', t: "I cried for like an hour when we got back. In the walk-in. She thought I failed something." },
       { s: 'solar', f: 'serious', t: "Did you tell her—" },
       { s: 'sunoo', f: 'neutral', t: "- I told her I failed something." },
@@ -107,9 +107,9 @@
       { s: 'solar', f: 'happy', t: "Sunoo. You can't write *a real one*." },
       { s: 'sunoo', f: 'neutral', t: "It makes it more believable." },
       { s: 'solar', f: 'happy', t: "It makes it so much less believable." },
-      { s: 'halmeoni', t: "I read the forum. This hanlim accountability person. Their spelling is good. I'll give them that." },
+      { s: 'halmeoni', f: 'neutral', t: "I read the forum. This hanlim accountability person. Their spelling is good. I'll give them that." },
       { s: 'sunoo', f: 'surprised', t: "Halmeoni, you're not supposed to be on the forum!" },
-      { s: 'halmeoni', t: "I'm on everything. Who do you think taught you to lie badly?" },
+      { s: 'halmeoni', f: 'happy', t: "I'm on everything. Who do you think taught you to lie badly?" },
       { ifGlitch: 3, then: [
         { n: "Outside the window the snow stopped. Not slowed, stopped, every flake on the street hanging where it was like somebody had paused the town, and then all of it went up, gently, past the streetlight and the sign and the second-floor windows, for one long breath, before it remembered itself and came back down." },
         { n: "Sunoo's glitter pen had stopped too, mid-letter. Behind the counter his grandmother set a cup down very carefully." },
@@ -122,7 +122,7 @@
       { choose: [
         { t: "Keep *a real one*.", stat: { kindness: 1 }, flag: 'epi-h-poster-real-one', then: [
           { s: 'sunoo', f: 'happy', t: "YES. Halmeoni, she said keep it!" },
-          { s: 'halmeoni', t: "Then you're both going to be impeached." }
+          { s: 'halmeoni', f: 'neutral', t: "Then you're both going to be impeached." }
         ] },
         { t: "Cross it out. Lovingly.", stat: { charm: 1 }, then: [
           { n: "She took the pen from him and drew one small line through it, and he watched like she was putting down a pet." },

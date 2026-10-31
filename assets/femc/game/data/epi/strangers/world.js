@@ -130,7 +130,10 @@
       fkvoice: 'Fuuka'
     },
     // This world's own faces (core.js worldFace): Solar's strangers look, the four's strangers outfits and Solar's parents (FEMC-ART-WIRING).
-    faces: { solar: 'solar-strangers', chaewon: 'chaewon-strangers', sakura: 'sakura-strangers', kazuha: 'kazuha-strangers', eunchae: 'eunchae-strangers', appa: 'taesang-strangers', eomma: 'miyeon-strangers', yunjin: 'yunjin-strangers', haechan: 'haechan-strangers', jungwon: 'jungwon-strangers' },
+    faces: { solar: 'solar-strangers', chaewon: 'chaewon-strangers', sakura: 'sakura-strangers', kazuha: 'kazuha-strangers', eunchae: 'eunchae-strangers', appa: 'taesang-strangers', eomma: 'miyeon-strangers', yunjin: 'yunjin-strangers', haechan: 'haechan-strangers', jungwon: 'jungwon-strangers',
+      // batch 101: Kat's realistic Strangers set adds the boys and the household (Strangers-only folders).
+      jay: 'jay-strangers', niki: 'niki-strangers', sunghoon: 'sunghoon-strangers', mrsbang: 'mrsbang-strangers', mroh: 'mroh-strangers',
+      auntie: 'auntsong-strangers', pyo: 'pyo-strangers', seo: 'seo-strangers', minseok: 'minseok-strangers', aunt: 'hyesun-strangers' },
     // Event outfits are parked until Kat redraws them in the new style (FEMC-ART-BACKBURNER "Strangers outfits"); those scenes show
     // everyone's everyday strangers face meanwhile. The old map is kept there to restore.
     eventFaces: {},

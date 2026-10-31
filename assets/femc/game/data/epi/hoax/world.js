@@ -126,7 +126,8 @@
       // Kat's realistic HOAX set (batch 100): HOAX-only, so the main game keeps their year faces. The ENHYPEN boys were drawn in
       // uniform only, so they wear it everywhere.
       jihoon: 'jihoon-hoax', cherry: 'cherry-hoax', asahi: 'asahi-hoax', hyunsuk: 'hyunsuk-hoax', jaehyuk: 'jaehyuk-hoax', junkyu: 'junkyu-hoax',
-      heeseung: 'heeseung-hoax', jay: 'jay-hoax', niki: 'niki-hoax', sunghoon: 'sunghoon-hoax', jake: 'jake-hoax', sunoo: 'sunoo-hoax' },
+      heeseung: 'heeseung-hoax', jay: 'jay-hoax', niki: 'niki-hoax', sunghoon: 'sunghoon-hoax', jake: 'jake-hoax', sunoo: 'sunoo-hoax',
+      halmeoni: 'halmeoni-hoax', hayoon: 'hayoon-hoax' },
     // At school (any place under 'Hanlim · School', core.js worldFace): the Hanlim uniform for everyone Kat drew one for.
     placeFaces: [['Hanlim · School', { solar: 'solar-hoax-school', jungwon: 'jungwon-hoax-school', jihoon: 'jihoon-hoax-school', cherry: 'cherry-hoax-school',
       asahi: 'asahi-hoax-school', hyunsuk: 'hyunsuk-hoax-school', jaehyuk: 'jaehyuk-hoax-school', junkyu: 'junkyu-hoax-school' }]],

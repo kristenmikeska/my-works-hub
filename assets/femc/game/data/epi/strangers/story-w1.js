@@ -110,7 +110,7 @@
     { place: 'Incheon · The Lee House · Kitchen', time: 'Morning', soft: true },
     { n: "The kitchen smelled of barley tea and lemon oil and the gas ring, and Mrs. Bang was at the stove with her back to the door, stirring a pot of rice porridge with abalone in it, the pale green kind she made for people who were sick, which nobody in the house was." },
     { n: "She didn't turn round. Her shoulders did. They went up once, under the cardigan, and came down, and stayed down." },
-    { s: 'mrsbang', t: "Aigoo." },
+    { s: 'mrsbang', f: 'sad', t: "Aigoo." },
     { n: "That was all. She went on stirring. She didn't turn round for a long time, and when she finally did, with the bowl, her face was perfectly normal and her eyes were red at the rims, and she put the bowl down in front of Solar at the end of the long table with a spoon already in it and said nothing whatsoever about anything, which in Mrs. Bang was a speech." },
     { n: "Her father sat at the other end with the paper. He opened it. He didn't read it. She could tell, because she'd watched him read the paper at this table at half past four every morning of her life, and when he read it he moved his lips over the shipping notices, and he wasn't moving his lips." },
     { n: "The calendar hung where it had always hung, on the nail by the back door, the free one from the rice shop with a picture of a mountain for every month and big red numbers. Since New Year somebody had been writing a second number in the top corner of every square in black pen, small and square, counting down. Somebody had turned the page to February while she was gone, and kept writing." },
@@ -126,14 +126,14 @@
     { n: "By noon the kitchen had filled up the way the harbor filled on a flood, from every side at once and faster than you'd think, until there wasn't a stretch of counter left that didn't have somebody's elbow on it." },
     { n: "It was Sunday, which in this house meant dumplings, which meant Auntie Song, five feet tall in her rubber boots, in from Chinatown since ten with a bowl of pork and chives the size of a bathtub, folding at the end of the long table with the speed of a woman dealing cards. Pyo, beside her, was peeling garlic with the expression of a boy defusing it. Mr. Oh sat at the far corner with a cup of instant coffee held in both hands, at ten and two, as if the cup might pull to the left if he let it. Minseok was eating rice standing up by the back door with his coat still on, because he'd come in off the gate and was going back out to it, and the cold came in round him every time the door moved." },
     { n: "Mrs. Bang was everywhere. That was her gift. She was at the stove and the sink and the rice cooker and the back step all inside the same minute, and every time she passed the back step she bent and dropped a pinch of something into the bucket out there, where two koi went round and round under the snow, orange and white, slow, like they'd decided the winter was somebody else's problem." },
-    { s: 'mrsbang', t: "Ten people and a bucket of fish in my kitchen, and not one of you can find the sesame oil." },
+    { s: 'mrsbang', f: 'serious', t: "Ten people and a bucket of fish in my kitchen, and not one of you can find the sesame oil." },
     { n: "Solar counted, because she counted. Mrs. Bang, Auntie Song, Pyo, Mr. Oh, Minseok, herself. Her father in the study with the door open an inch. Yunjin and Yunjin's mother in the room next to hers upstairs. Haechan, out since nine in the Rexton on some errand of her father's that nobody had named in front of her. That made ten, if you were generous, and Mrs. Bang was generous, and the fish didn't count, Mrs. Bang said, though she fed them first." },
     { n: "It was the loudest the kitchen had ever been, and she sat in the middle of it at the end of the long table with her hair pinned up again, properly, the long black pin, and let it go on round her like weather." },
-    { s: 'auntie', t: "*Little moon.*" },
+    { s: 'auntie', f: 'neutral', t: "*Little moon.*" },
     { n: "Auntie Song said it in Mandarin without looking up from the dumplings, the way she'd said it since Solar was nine and standing on a crate at her elbow with a fish knife too big for her hand. *Xiao yueliang.* Then a dumpling arrived on the table in front of her, pleated, perfect, raw, as if it had been flicked there." },
-    { s: 'auntie', t: "*You're thin. Eat that when it's cooked. Not before. I know you.*" },
+    { s: 'auntie', f: 'serious', t: "*You're thin. Eat that when it's cooked. Not before. I know you.*" },
     { s: 'solar', f: 'happy', t: "*I haven't eaten a raw one since I was ten.*" },
-    { s: 'auntie', t: "*Eleven. You were sick on my boots.*" },
+    { s: 'auntie', f: 'neutral', t: "*Eleven. You were sick on my boots.*" },
     { n: "Pyo, who only knew his own name in Mandarin, looked from one of them to the other with the face of a boy who was sure, absolutely sure, that he was being discussed, and peeled faster." },
 
     // Eomma, passing.
@@ -147,7 +147,7 @@
     { s: 'yunjin', f: 'happy', t: "SOL." },
     { n: "Yunjin came through it in socks and the red puffer zipped to her chin over her pajamas, with her hair in a claw clip that had given up halfway, and the whole kitchen flinched in a single motion except Auntie Song, who had been flinched at by better." },
     { s: 'yunjin', f: 'happy', t: "You're downstairs. You're *vertical*. Mrs. Bang, she's vertical, you said she'd be in bed till Tuesday." },
-    { s: 'mrsbang', t: "I said she *should* be in bed till Tuesday." },
+    { s: 'mrsbang', f: 'serious', t: "I said she *should* be in bed till Tuesday." },
     { s: 'yunjin', f: 'happy', t: "Pyo. Pyo, buddy. Garlic? On a Sunday? Bold. I respect it. Mr. Oh, you look incredible, have you done something with your coffee. Minseok, shut the door, I'm from New York, I'll die." },
     { n: "She said everything. She said everything about the snow and the puffer and the claw clip and the koi, who she leaned out of the back door to address personally as Mr. and Mrs. Kim, in the gravel voice she had now, the one that came up from somewhere lower than it used to since December, and she said everything about the dumplings, and she put her chin on top of Solar's head from behind and left it there, heavy, and narrated the room like a nature documentary." },
     { n: "She didn't say one single word about Japan." },
@@ -158,29 +158,29 @@
 
     // Mrs. Bang drills the fever.
     { n: "Mrs. Bang put a plate of cooked dumplings in the middle of the table, steam coming off it in a sheet, and wiped her hands on her apron, and looked round the kitchen once, slowly, at all of them, like a schoolteacher checking that the whole class was looking at the board." },
-    { s: 'mrsbang', t: "Thirty-nine point four." },
+    { s: 'mrsbang', f: 'serious', t: "Thirty-nine point four." },
     { n: "Nobody had asked. The kitchen went quiet anyway." },
-    { s: 'mrsbang', t: "Thirty-nine point four, on Seollal morning. She couldn't keep rice down. Not even the water off the rice. Three days, she didn't come down those stairs. I took her a basin every two hours." },
+    { s: 'mrsbang', f: 'serious', t: "Thirty-nine point four, on Seollal morning. She couldn't keep rice down. Not even the water off the rice. Three days, she didn't come down those stairs. I took her a basin every two hours." },
     { n: "She said it to the room. Not to Solar. To Pyo, and Minseok, and Mr. Oh, and the open inch of the study door, and Auntie Song's quick hands, in the voice she used to tell the fish man how much his flounder was actually worth, and Solar understood, sitting there with a dumpling halfway to her mouth, that this wasn't a story. It was a drill. Mrs. Bang was walking the whole kitchen through it, once, out loud, so that every single person in it would tell it the same way if anybody ever asked them, down to the basin." },
     { n: "And now it was her turn. Mrs. Bang was looking at her. Everybody was looking at her. It was her own fever. She'd have to have it." },
     { choose: [
       { t: "(Perform it properly.) I don't remember most of it.", stat: { charm: 1 }, then: [
         { s: 'solar', f: 'neutral', t: "I don't remember most of it. I remember the ceiling." },
-        { s: 'mrsbang', t: "You were talking nonsense. About tides. The whole second night, the tides, what time, what height." },
+        { s: 'mrsbang', f: 'serious', t: "You were talking nonsense. About tides. The whole second night, the tides, what time, what height." },
         { n: "It was such a good detail that for a second Solar nearly believed it herself, and she had to look down at her plate so nobody would see her face doing something about it." },
-        { s: 'pyo', t: "I heard her coughing! Through the floor! Like a seal!" },
-        { s: 'mrsbang', t: "Nobody asked you, Pyo." },
-        { s: 'pyo', t: "...Like a small seal." }
+        { s: 'pyo', f: 'surprised', t: "I heard her coughing! Through the floor! Like a seal!" },
+        { s: 'mrsbang', f: 'serious', t: "Nobody asked you, Pyo." },
+        { s: 'pyo', f: 'sad', t: "...Like a small seal." }
       ] },
       { t: "(Keep it short.) It was just a fever.", then: [
         { s: 'solar', f: 'serious', t: "It was just a fever." },
-        { s: 'mrsbang', t: "*Just.* Thirty-nine point four is not *just*. You listen to her. *Just.*" },
+        { s: 'mrsbang', f: 'serious', t: "*Just.* Thirty-nine point four is not *just*. You listen to her. *Just.*" },
         { n: "Mrs. Bang said it to the room, outraged, as if Solar had insulted the fever personally, and Minseok nodded at the floor with great seriousness, and the story was, if anything, stronger than before for having been argued with." }
       ] },
       { t: "You sat with me?", stat: { kindness: 1 }, then: [
         { s: 'solar', f: 'surprised', t: "You sat with me?" },
         { n: "Mrs. Bang looked at her. Something went across her face too fast to see, and then her hand came out and did a thing it hadn't done since Solar was small, which was to tuck a loose bit of hair back behind her ear, roughly, as if it had personally offended her." },
-        { s: 'mrsbang', t: "Every night." },
+        { s: 'mrsbang', f: 'sad', t: "Every night." },
         { n: "It was true. Solar could hear that it was true. Somewhere upstairs there was a chair outside her bedroom door that hadn't been there before, she'd walked past it this morning without seeing it, and she saw it now, in her head, very clearly, and she put her dumpling down." }
       ] }
     ] },
@@ -367,35 +367,35 @@
     { n: "She held the phone out over Solar's shoulder. Not urging. Just holding it, at the height of her ear, the way her father had held out the fever on the stairs, so that all Solar had to do was turn her head." },
     { n: "Everybody knew the phones were listened to. Her mother knew it better than anyone. Whatever she said into this one she'd be saying to the room on the other end of it as well, whoever was sitting in it. The best lies were the ones you told to two people at once and both of them believed." },
     { s: 'solar', f: 'happy', t: "Gomo." },
-    { s: 'aunt', t: "*Sol-ah!* There she is! Is that her? Is it you? You sound terrible. You sound like a crow. Thirty-nine point four, your father said, *thirty-nine*, I nearly drove down, I said to your uncle, I'm driving down, and he said Hyesun, there's ice on the expressway, and I said she's my only niece, and he said she's got a whole house full of people, and I said—" },
+    { s: 'aunt', f: 'happy', t: "*Sol-ah!* There she is! Is that her? Is it you? You sound terrible. You sound like a crow. Thirty-nine point four, your father said, *thirty-nine*, I nearly drove down, I said to your uncle, I'm driving down, and he said Hyesun, there's ice on the expressway, and I said she's my only niece, and he said she's got a whole house full of people, and I said—" },
     { n: "Aunt Hyesun didn't need anyone else on a phone call. She'd never needed anyone else. She could have run a call on her own, both halves, and been thrilled with how it went." },
-    { s: 'aunt', t: "Did they take you to the hospital? Which hospital? Not the big one by the station, I hope, your uncle had his knee done there and they left him in a corridor for four hours, I said to the nurse—" },
+    { s: 'aunt', f: 'neutral', t: "Did they take you to the hospital? Which hospital? Not the big one by the station, I hope, your uncle had his knee done there and they left him in a corridor for four hours, I said to the nurse—" },
     { n: "Which hospital. There it was. A plain question, from a woman who meant nothing by it, with a hole in the bottom of it you could put your foot straight through." },
     { choose: [
       { t: "Appa had the doctor come to the house.", stat: { knowledge: 1 }, then: [
         { s: 'solar', f: 'neutral', t: "No hospital. Appa had the doctor come to the house." },
-        { s: 'aunt', t: "Of course he did. Of course he did, your father, he'd have a surgeon come to the house for a splinter. Did he give you the injection? The one in the—" },
+        { s: 'aunt', f: 'happy', t: "Of course he did. Of course he did, your father, he'd have a surgeon come to the house for a splinter. Did he give you the injection? The one in the—" },
         { s: 'solar', f: 'flustered', t: "Gomo." },
-        { s: 'aunt', t: "Fine, fine, I won't say where. Your mother's listening, isn't she. Hello, Miseon." },
+        { s: 'aunt', f: 'neutral', t: "Fine, fine, I won't say where. Your mother's listening, isn't she. Hello, Miseon." },
         { n: "Behind her, in the mirror, her mother didn't move a muscle." }
       ] },
       { t: "(Cough. Convincingly.)", stat: { charm: 1 }, then: [
         { n: "She coughed. It came up out of her chest the way she'd heard Pyo describe it, small and barking, and she let it go on a beat longer than was dignified, and at the end of it she let her voice crack." },
-        { s: 'aunt', t: "*Aigoo*, listen to that. Listen to that! No, don't talk. Don't talk, you'll make it worse. Drink something hot. Is there ginger? Tell Mrs. Bang ginger. Jujube and ginger. Don't talk." },
+        { s: 'aunt', f: 'neutral', t: "*Aigoo*, listen to that. Listen to that! No, don't talk. Don't talk, you'll make it worse. Drink something hot. Is there ginger? Tell Mrs. Bang ginger. Jujube and ginger. Don't talk." },
         { n: "In the mirror her mother's eyebrows went up a quarter of a centimetre, which from her was a standing ovation." }
       ] },
       { t: "I don't remember much. Eomma sat with me.", then: [
         { s: 'solar', f: 'neutral', t: "I don't remember much of it. Eomma sat with me." },
         { n: "She felt her mother hear it. Behind her. Felt the brush, which had been resting against her shoulder, stop being a brush and become a thing her mother was holding very still." },
-        { s: 'aunt', t: "Did she! Miseon? Sat up with you? Well. Well, good. Good for her. I always said she had it in her, under all the—well. Good." },
+        { s: 'aunt', f: 'happy', t: "Did she! Miseon? Sat up with you? Well. Well, good. Good for her. I always said she had it in her, under all the—well. Good." },
         { n: "In the mirror her mother's face did nothing at all. But she didn't correct it. She stood there and let it be true, out loud, on a line that somebody else was listening to, and Solar would think about that later more than she wanted to." }
       ] }
     ] },
     { glitch: { strain: 1 } },
     { n: "It held. She could feel it hold the way you feel a knot hold when the line goes taut, the little jump of it through your hands. Somewhere behind her eyes the thin cold wire pulled again, and she let it, and went on smiling at a phone." },
-    { s: 'aunt', t: "Well, I won't keep you. The pears were all right? I told them Naju, I said only Naju, you can't send a sick girl pears from just anywhere. And your father liked the hallabong? He said he liked the hallabong." },
+    { s: 'aunt', f: 'neutral', t: "Well, I won't keep you. The pears were all right? I told them Naju, I said only Naju, you can't send a sick girl pears from just anywhere. And your father liked the hallabong? He said he liked the hallabong." },
     { s: 'solar', f: 'happy', t: "He loved the hallabong." },
-    { s: 'aunt', t: "I knew it. Rest! Eat! Don't talk! Put your mother on." },
+    { s: 'aunt', f: 'happy', t: "I knew it. Rest! Eat! Don't talk! Put your mother on." },
     { n: "Her mother took the phone. She said *yes* four times, and *the pears were lovely*, and *she's tired, Hyesun*, and *yes*, and then she ended the call and put the phone back in her cardigan pocket and picked up the first of the pins from the glass." },
     { n: "She put Solar's hair back up. All of it, properly, the way it was supposed to go, every pin in the order it had come out. It wasn't late yet. A Lee daughter did not look undone before midnight, not even in her own room, not even this week." },
     { s: 'eomma', t: "There." },
@@ -482,15 +482,15 @@
     { music: 'epi-s-house' },
     { n: "The plate had come over from the Yang house at Seollal, piled with jeon, under a cloth, with the compliments of the Yang kitchen, and in Mrs. Bang's kitchen you did not send a plate back empty. That wasn't a rule. It was older than a rule. It was simply a thing that would not happen while Mrs. Bang was alive." },
     { n: "So the plate went back full of yakgwa, honey-dark and glossy, wrapped in a blue bojagi with the corners knotted on top like rabbit ears, and Mrs. Bang put it into Solar's hands at the back door at two o'clock with the air of a woman handing over a hostage." },
-    { s: 'mrsbang', t: "You take it. You need air. You've been in that room so long you're going the colour of the wallpaper." },
+    { s: 'mrsbang', f: 'neutral', t: "You take it. You need air. You've been in that room so long you're going the colour of the wallpaper." },
     { s: 'solar', f: 'serious', t: "Mr. Oh could take it." },
-    { s: 'mrsbang', t: "Mr. Oh is taking *you*. That's different." },
+    { s: 'mrsbang', f: 'serious', t: "Mr. Oh is taking *you*. That's different." },
     { n: "Mr. Oh had the car warm. He always had the car warm. He held the back door open for her and closed it behind her without a sound and went round, and got in, and adjusted the mirror one millimetre, and put his hands at ten and two." },
-    { s: 'mroh', t: "Seatbelt." },
+    { s: 'mroh', f: 'neutral', t: "Seatbelt." },
     { n: "Mr. Oh had never in his life said please. Not to her, not to her father, not to anybody. He said what needed doing and then waited for it to be done, and it always was, because there was something about Mr. Oh that made the word unnecessary. She put her seatbelt on." },
     { n: "The car smelled of his menthol aftershave and the leather and, faintly, the yakgwa on her knee. He took the harbor road the long way, the way he'd always taken it, and never once braked hard, and the cranes went past the window one after another against a sky the colour of dishwater, and across the water the Yang house came slowly round to meet them." },
     { n: "She counted the cranes. Eleven. She counted them again. Mr. Oh, in the mirror, watched her count and said nothing, the way he'd watched her count things in the back of this car since she was seven and swinging her legs." },
-    { s: 'mroh', t: "Kitchen door or front." },
+    { s: 'mroh', f: 'neutral', t: "Kitchen door or front." },
     { s: 'solar', f: 'neutral', t: "Kitchen. It's a plate." },
     { n: "He nodded. A plate went to the kitchen door. Of course it did. He'd only asked so she'd have decided it." },
 
@@ -570,7 +570,7 @@
     { n: "He opened the car door a little wider for her with his right hand, the correct gesture, and she got in, and he closed it, and stepped back exactly one pace, and stood there on the gravel in the cold." },
     { bond: { jungwon: 1 } },
     { n: "Mr. Oh pulled away without braking once. In the mirror the Yang house turned slowly back round across the water, and on the front step a man in a dark coat stood with his hands at his sides and watched the car all the way to the harbor road, and in the doorway behind him another man faced the drive, and somewhere round the side of the house a boy in a silver puffer was sitting on a wall, eating a banana, not looking." },
-    { s: 'mroh', t: "Home now." },
+    { s: 'mroh', f: 'neutral', t: "Home now." },
     { n: "She sat back. The seat was warm. Mr. Oh had left the heat on the whole time, for nobody, in case." }
   ] },
 
