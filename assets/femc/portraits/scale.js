@@ -87,9 +87,9 @@ window.FEMC_PORTRAIT_SCALE = {
   haerin: 0.93, // batch 89: her casual sheet (the default); eyes level with her Regionals face
   jeno: 0.97,
   olivia: 0.85, // batch 89: her casual sheet (the default); eyes level with her Regionals face
-  'chaewon-hoax': 0.82, // batch 62: HOAX epilogue outfits and Solar's parents (HOAX world faces map)
-  'eunchae-hoax': 0.9,
-  'kazuha-hoax': 0.9,
+  'chaewon-hoax': 0.78, // batch 100: Kat's realistic HOAX remake
+  'eunchae-hoax': 0.84, // batch 100: Kat's realistic HOAX remake
+  'kazuha-hoax': 0.84, // batch 100: Kat's realistic HOAX remake
   'solar-strangers': 1.0, // batch 63: strangers epilogue looks and Solar's parents there (strangers world faces map)
   'chaewon-strangers': 0.95,
   'eunchae-strangers': 0.95,
@@ -251,4 +251,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 22;
+window.FEMC_PORTRAIT_V = 23;
