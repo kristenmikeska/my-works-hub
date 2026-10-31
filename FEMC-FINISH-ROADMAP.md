@@ -26,11 +26,11 @@ Kat's decisions:
 - [ ] Late-game branches so nobody maxes out early
 
 ## 5. Tartarus
-- [ ] Fill in the gaps between floors (now 8 blocks, 68 stopping floors, top at 254)
-- [ ] Teleport to the start of each block from the Tartarus screen
-- [ ] More bosses: a guardian per block, plus optional superbosses up top
-- [ ] Better rewards: Velvet Plumes from guardians and rare events
-- [ ] Random events every few floors (funny, scary, lore, romantic)
+- [x] Fill in the gaps between floors (now 8 blocks, 68 stopping floors, top at 254) (Oct 31: 113 floors; CLAUDE.md "Tartarus, phase 1 of the finish roadmap: built")
+- [x] Teleport to the start of each block from the Tartarus screen
+- [x] More bosses: a guardian per block, plus optional superbosses up top
+- [x] Better rewards: Velvet Plumes from guardians and rare events
+- [x] Random events every few floors (funny, scary, lore, romantic)
 - [ ] The climb past 254 to 400, New Game+ only (approved Oct 31): three blocks above the Monad built from Syracuse (255-300), Incheon (301-350) and Hanlim (351-399), floor 400 tied to Solstice's heart with the final superboss; a scene on arrival and at each summit, a guardian, its own events, Fuuka. Claude names the blocks and writes the story (Kat approves structure, not plot).
 - Difficulty stays set by floor, not by the player's level.
 
