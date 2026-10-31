@@ -565,10 +565,10 @@ try:
           const ev=['epi-r-holiday','epi-r-regionals-1','epi-r-regionals-2'].map(id=>(G.D.events.find(e=>e.id===id)||{}).faces);
           const ol=()=>String(G.portrait('olivia','neutral')).split('/').slice(-2,-1)[0];const ol0=ol();const r2=FemcScene.play({scene:[{n:'a'}],faces:'runners-regionals',label:'t',onDone:()=>{}});const ol1=ol();r2.close();
           return {before,during,key,after,keyAfter:G.eventFaces(),ev,olivia:[ol0,ol1,ol()]}})()""")
-        # The Runners outfits are parked (Kat, Oct 30 2026: FEMC-ART-BACKBURNER): the scenes keep their keys, but everyone wears the everyday Runners face.
-        ok(ef['before'] == ['hanni-runners', 'solar-runners', 'minji-runners'] and ef['during'] == ef['before'] and ef['key'] == 'runners-holiday'
-           and ef['after'] == ef['before'] and ef['keyAfter'] is None and ef['ev'] == ['runners-holiday', 'runners-regionals', 'runners-regionals']
-           and ef['olivia'] == ['olivia-runners'] * 3, f'Runners event outfits parked; everyday Runners faces throughout: {ef}')
+        # The Runners outfits, redrawn in the realistic style (batch 102): worn only while a scene names the key.
+        ok(ef['before'] == ['hanni-runners', 'solar-runners', 'minji-runners'] and ef['during'] == ['hanni-runners-holiday', 'solar-runners-holiday', 'minji-runners-holiday']
+           and ef['key'] == 'runners-holiday' and ef['after'] == ef['before'] and ef['keyAfter'] is None and ef['ev'] == ['runners-holiday', 'runners-regionals', 'runners-regionals']
+           and ef['olivia'] == ['olivia-runners', 'olivia-runners-regionals', 'olivia-runners'], f'Runners event outfits only during their scenes: {ef}')
         # The data: dates and slots of weeks 1-2's beats (week 3 and 12/14's late pull are runners2's).
         beats = p.eval("FemcGame.D.events.filter(e=>FemcGame.dayOf(e.date)<=FemcGame.dayOf('12/14')&&e.id!=='epi-r-alone').map(e=>[e.id,e.date,e.slot,e.flag||null])")
         want_beats = {'epi-r-home': ['12/1', 'early'], 'epi-r-five-days': ['12/1', 'after'], 'epi-r-pale': ['12/1', 'late'], 'epi-r-cover': ['12/2', 'early'], 'epi-r-ask': ['12/2', 'late'],

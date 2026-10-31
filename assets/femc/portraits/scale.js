@@ -112,15 +112,15 @@ window.FEMC_PORTRAIT_SCALE = {
   'jeno-runners': 0.8, // batch 97: Kat's remake, eyes-to-chin matched to Haechan's
   // batch 87: Runners event outfits (world.js eventFaces); eyes level with each one's usual face in Runners (Vision eye
   // landmarks, neutral / happy / serious averaged)
-  'solar-runners-holiday': 0.97,
-  'haechan-runners-holiday': 0.97,
-  'hanni-runners-holiday': 0.86,
-  'hyein-runners-holiday': 1.01,
-  'minji-runners-holiday': 0.86,
-  'mark-runners-holiday': 0.92,
-  'jaehyun-runners-holiday': 0.98,
-  'solar-runners-regionals': 0.89,
-  'minji-runners-regionals': 0.86,
+  'solar-runners-holiday': 0.88, // batch 102: Kat's realistic Runners outfit
+  'haechan-runners-holiday': 0.86, // batch 102: Kat's realistic Runners outfit
+  'hanni-runners-holiday': 0.84, // batch 102: Kat's realistic Runners outfit
+  'hyein-runners-holiday': 0.84, // batch 102: Kat's realistic Runners outfit
+  'minji-runners-holiday': 0.84, // batch 102: Kat's realistic Runners outfit
+  'mark-runners-holiday': 0.86, // batch 102: Kat's realistic Runners outfit
+  'jaehyun-runners-holiday': 0.9, // batch 102: Kat's realistic Runners outfit
+  'solar-runners-regionals': 0.88, // batch 102: Kat's realistic Runners outfit
+  'minji-runners-regionals': 0.77, // batch 102: Kat's realistic Runners outfit
   // batch 100: Kat's realistic HOAX set (casual + Hanlim uniform via world.js placeFaces), eyes-to-chin matched to haechan-runners
   'solar-hoax': 0.78,
   'solar-hoax-school': 0.78,
@@ -170,6 +170,7 @@ window.FEMC_PORTRAIT_SCALE = {
   'hyesun-strangers': 0.8,
   'halmeoni-hoax': 0.8,
   'hayoon-hoax': 0.8,
+  'jisung-runners-holiday': 0.93, // batch 102: Kat's realistic Runners outfit
   // batch 88: HOAX event outfits, eyes level with solar-hoax, jungwon-hoax and Jihoon's year face
   'solar-hoax-christmas': 0.9,
   'jungwon-hoax-christmas': 1.0,
@@ -179,14 +180,14 @@ window.FEMC_PORTRAIT_SCALE = {
   'solar-hoax-newyear': 0.9,
   'jungwon-hoax-newyear': 1.0,
   // batch 89: Olivia's and Haerin's old faces are their Regionals jerseys (Kat); their casual sheets are the default now
-  'olivia-runners-regionals': 0.85,
-  'haerin-runners-regionals': 0.93,
+  'olivia-runners-regionals': 0.8, // batch 102: Kat's realistic Runners outfit
+  'haerin-runners-regionals': 0.8, // batch 102: Kat's realistic Runners outfit
   // batch 90: the late event-outfit sheets (eyes level with each one's usual face in that world; Chenle and Jaemin with their drop;
   // Akihiko by eye since Vision finds no face on his art)
-  'chenle-runners-holiday': 1.3,
-  'chenle-runners-regionals': 1.22,
-  'danielle-runners-holiday': 0.95,
-  'jaemin-runners-holiday': 1.13,
+  'chenle-runners-holiday': 0.9, // batch 102: Kat's realistic Runners outfit
+  'chenle-runners-regionals': 0.9, // batch 102: Kat's realistic Runners outfit
+  'danielle-runners-holiday': 0.77, // batch 102: Kat's realistic Runners outfit
+  'jaemin-runners-holiday': 0.83, // batch 102: Kat's realistic Runners outfit
   'cherry-hoax-christmas': 0.88,
   'cherry-hoax-party': 0.91,
   'cherry-hoax-newyear': 0.88,
@@ -264,4 +265,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 24;
+window.FEMC_PORTRAIT_V = 25;

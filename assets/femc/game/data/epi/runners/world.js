@@ -137,9 +137,14 @@
       dad: 'jaesang-runners', mom: 'solji-runners',
       jisung: 'jisung-runners', renjun: 'renjun-runners', yerim: 'yerim-runners' }, // Solar's parents, Jaesang and Solji
     // Event outfits (core.js eventFaces; FEMC-ART-WIRING "Extras"): an event's `faces: '<key>'` swaps these in for its scenes only.
-    // Event outfits are parked until Kat redraws them in the new style (FEMC-ART-BACKBURNER "Runners outfits"); the
-    // holiday party and Regionals show everyone's everyday Runners face meanwhile. The old map is kept there to restore.
-    eventFaces: {},
+    // Kat's realistic Runners outfits (batch 102), back from the parked list in the new style; Jisung's sweater is new.
+    eventFaces: {
+      'runners-holiday': { solar: 'solar-runners-holiday', haechan: 'haechan-runners-holiday', hanni: 'hanni-runners-holiday', hyein: 'hyein-runners-holiday',
+        minji: 'minji-runners-holiday', mark: 'mark-runners-holiday', jaehyun: 'jaehyun-runners-holiday', chenle: 'chenle-runners-holiday',
+        jaemin: 'jaemin-runners-holiday', danielle: 'danielle-runners-holiday', jisung: 'jisung-runners-holiday' }, // epi-r-holiday (12/19, the Sigma party)
+      'runners-regionals': { solar: 'solar-runners-regionals', minji: 'minji-runners-regionals', olivia: 'olivia-runners-regionals', haerin: 'haerin-runners-regionals',
+        chenle: 'chenle-runners-regionals' } // epi-r-regionals-1 / -2 (12/6-12/7)
+    },
     variants: {
       morning: {
         school: ["Class at nine. The quad was salted into gray paths, and everyone she passed looked like they'd slept four hours, which was December's whole look.",

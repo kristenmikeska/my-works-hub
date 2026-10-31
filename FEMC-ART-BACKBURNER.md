@@ -148,24 +148,9 @@ Save as: `solar-unveiled-strikesheet.png`
 A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, clear white space between panels, nothing overlapping. Character only, no text.
 ```
 
-## Runners outfits (ChatGPT): parked Oct 30 2026
+## Runners outfits: done Oct 30 2026 (batch 102)
 
-Kat's call: the Runners event outfits come out of the game until everyone's everyday face is redone in the new realistic style, then get redrawn to match. Until then the holiday party (12/19) and Regionals (12/6-12/7) show each person's everyday Runners face. The old art is still in `assets/femc/portraits/`; to bring a set back, restore its line in `data/epi/runners/world.js` `eventFaces`.
-
-- **Holiday party (`runners-holiday`):** Solar, Haechan, Hanni, Hyein, Minji, Mark, Jaehyun, Chenle, Jaemin, Danielle
-- **Regionals jerseys (`runners-regionals`):** Solar, Minji, Olivia, Haerin, Chenle
-
-Old wiring, to restore:
-```js
-eventFaces: {
-      'runners-holiday': { solar: 'solar-runners-holiday', haechan: 'haechan-runners-holiday', hanni: 'hanni-runners-holiday', hyein: 'hyein-runners-holiday',
-        minji: 'minji-runners-holiday', mark: 'mark-runners-holiday', jaehyun: 'jaehyun-runners-holiday',
-        chenle: 'chenle-runners-holiday', jaemin: 'jaemin-runners-holiday', danielle: 'danielle-runners-holiday' }, // epi-r-holiday (12/19, the Sigma party)
-      // Olivia's and Haerin's first faces are their jerseys (Kat, batch 89): portraits/olivia and haerin are their casual looks now.
-      'runners-regionals': { solar: 'solar-runners-regionals', minji: 'minji-runners-regionals', olivia: 'olivia-runners-regionals', haerin: 'haerin-runners-regionals',
-        chenle: 'chenle-runners-regionals' } // epi-r-regionals-1 / -2 (12/6-12/7)
-    }
-```
+Redrawn in the realistic style and back in `data/epi/runners/world.js` `eventFaces`: the holiday party (Solar, Haechan, Hanni, Hyein, Minji, Mark, Jaehyun, Chenle, Jaemin, Danielle, plus Jisung, new) and the Regionals jerseys (Solar, Minji, Olivia, Haerin, Chenle).
 
 **Everyday Runners faces:** all redone in the new style as of Oct 30 2026 (batch 96).
 
