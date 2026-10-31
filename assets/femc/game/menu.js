@@ -1263,7 +1263,7 @@ window.FemcMenu = (() => {
   function goHome() {
     if (!o || !homeOk) return;
     const at = tabList().findIndex(([k]) => k === tab); if (at >= 0) homeSel = at;
-    view = 'home'; o.el.classList.remove('is-links'); o.el.classList.add('is-home'); paintHome(false); G.sfx('femc-hover');
+    view = 'home'; o.el.classList.remove('is-links', 'is-page'); o.el.classList.add('is-home'); paintHome(false); G.sfx('femc-hover');
     homeSelect(homeSel, true);
   }
   // Esc on a panel opened from the list goes back to it. Window capture runs before the overlay's own Esc (document capture);
@@ -1272,6 +1272,34 @@ window.FemcMenu = (() => {
     if (e.key !== 'Escape' || !o || view !== 'panel' || !homeOk || e.defaultPrevented || o.el.classList.contains('out')) return;
     if ([...document.querySelectorAll('.g-overlay:not(.out)')].pop() !== o.el) return;
     e.preventDefault(); e.stopPropagation(); goHome();
+  }
+
+  /* ── The page frame (solstice-pages.css): every page opened from the list is a full screen like the Links page. Kat's
+     backdrop (the Dark Hour's over a fight or in the late slot, darker over a fight), the page name big and slanted with a
+     line under it, a ghost word, the compact tab strip ([ ] still switch), the content in angular panels, the key footer. ── */
+  const PAGE_GHOST = { party: 'Team', personas: 'Persona', skills: 'Skill', cards: 'Arcana', equip: 'Gear', items: 'Items', collection: 'Collect', wardrobe: 'Style',
+    status: 'Status', bonds: 'Bonds', journal: 'Memory', album: 'Album', theater: 'Theater', calendar: 'Days' };
+  function pageSub() {
+    try {
+      const n = roster().length, inP = ['solar', ...(bsave().party || [])].filter(id => roster().some(m => m.id === id)).length;
+      if (tab === 'party') return opts.solo ? 'Team · Solar alone' : `Team · ${inP} fighting · ${n} on hand`;
+      if (tab === 'personas' || tab === 'equip' || tab === 'skills') return `${{ personas: 'Personas', equip: 'Equipment', skills: 'Skills' }[tab]} · ${n} member${n === 1 ? '' : 's'}`;
+      if (tab === 'items') { const k = Object.values(opts.items || S().inventory).filter(v => v > 0).length; return `${opts.useItem ? 'Tonight’s bag' : 'Inventory'} · ${k} kind${k === 1 ? '' : 's'}`; }
+      if (tab === 'status') return `Solar · ${G.D.stats.conditions[S().condition]?.name || ''}`;
+      if (tab === 'bonds') { const m = Object.values(G.LINKS).filter(l => G.isMet(l.id)).length; return `Perks · ${m} bond${m === 1 ? '' : 's'}`; }
+      if (tab === 'journal') { const f = (S().fragments || []).length; return `Fragments · ${f} so far`; }
+    } catch (e) {}
+    return HOME_TIP[tab] || '';
+  }
+  function pageFrame() {
+    const on = view !== 'home' && tab !== 'links', label = (TABS.find(([k]) => k === tab) || [])[1] || 'Menu';
+    o.el.classList.toggle('is-page', on);
+    o.el.classList.toggle('is-dark', !!opts.inBattle || S().slot === 'late');
+    if (!on) return;
+    o.el.querySelector('.g-pg-h').textContent = label;
+    o.el.querySelector('.g-pg-sub').textContent = pageSub();
+    o.el.querySelector('.g-pg-ghost span').textContent = PAGE_GHOST[tab] || label;
+    o.el.querySelector('.g-pg-foot .g1').textContent = HOME_TIP[tab] || '';
   }
 
   /* ── The panel ── */
@@ -1299,6 +1327,7 @@ window.FemcMenu = (() => {
     const top = body.scrollTop;
     // The Links page is a screen of its own (solstice-links.css): the panel goes full screen while it shows.
     o.el.classList.toggle('is-links', tab === 'links' && view !== 'home');
+    pageFrame();
     body.innerHTML = html;
     body.scrollTop = top;
     if (tab === 'party') wireParty(body); else if (tab === 'personas') wirePersonas(body); else if (tab === 'equip') wireEquip(body); else if (tab === 'items') wireItems(body); else if (tab === 'skills') wireSkills(body);
@@ -1322,12 +1351,15 @@ window.FemcMenu = (() => {
     homeOk = !opts.inBattle && !startTab; view = homeOk ? 'home' : 'panel';
     if (homeOk) { const at = tabList().findIndex(([k]) => k === tab); homeSel = at >= 0 ? at : 0; }
     const shut = homeOk ? '<button type="button" class="g-btn small" data-fm-back>Back</button>' : `<button type="button" class="g-btn small" data-close>${opts.inBattle ? 'Back' : 'Close'}</button>`;
-    o = UI().overlay(`<div class="g-fm${opts.inBattle ? ' dark' : ''}"><div class="g-fm-head"><div><p class="g-kicker">${esc(i.md)} ${esc(i.day)} · ${esc(when)}</p><h2>Menu</h2></div><span class="g-yen">${yen(opts.yen ?? s.yen)}</span>${shut}</div>
+    o = UI().overlay(`<div class="g-fm${opts.inBattle ? ' dark' : ''}"><div class="g-pg-bg" aria-hidden="true"></div><div class="g-pg-ghost" aria-hidden="true"><span></span></div>
+      <div class="g-fm-head"><div class="g-pg-title"><p class="g-kicker">${esc(i.md)} ${esc(i.day)} · ${esc(when)}</p><h2 class="g-pg-h">Menu</h2><p class="g-pg-sub"></p></div><span class="g-yen">${yen(opts.yen ?? s.yen)}</span>${shut}</div>
       <nav class="g-tabs g-fm-tabs" role="tablist">${tabList().map(([k, n]) => (k === 'compendium' ? `<a role="tab" href="${G.base}compendium.html" target="_blank" rel="noopener">${tabIco(k)}${n} ↗</a>` : `<button type="button" role="tab" data-tab="${k}">${tabIco(k)}${n}</button>`)).join('')}</nav>
       <div class="g-fm-body" tabindex="-1"></div>
-      <p class="g-hint g-fm-hint">[ ] or ←→ on the tabs · Esc ${opts.inBattle || homeOk ? 'back' : 'close'}</p></div>`, `g-fm-ov${opts.inBattle ? ' g-over-battle' : ''}${homeOk ? ' is-home' : ''}`, () => { o = null; view = 'panel'; homeOk = false; removeEventListener('keydown', escKey, true); sel.slot = null; G.save(); const done = opts.onClose; opts = {}; done?.(); });
+      <p class="g-hint g-fm-hint">[ ] or ←→ on the tabs · Esc ${opts.inBattle || homeOk ? 'back' : 'close'}</p>
+      <div class="g-pg-foot"><p class="g1"></p><div class="g-fmh-keys"><span><kbd>[ ]</kbd>Switch</span><span><kbd>↑↓</kbd>Choose</span><span><kbd>↵</kbd>Open</span><button type="button" data-pg-esc><kbd>Esc</kbd>${opts.inBattle || homeOk ? 'Back' : 'Close'}</button></div></div></div>`, `g-fm-ov${opts.inBattle ? ' g-over-battle' : ''}${homeOk ? ' is-home' : ''}`, () => { o = null; view = 'panel'; homeOk = false; removeEventListener('keydown', escKey, true); sel.slot = null; G.save(); const done = opts.onClose; opts = {}; done?.(); });
     o.el.setAttribute('aria-label', 'Menu');
     if (homeOk) { addEventListener('keydown', escKey, true); o.el.querySelector('[data-fm-back]').addEventListener('click', goHome); }
+    o.el.querySelector('[data-pg-esc]').addEventListener('click', () => { if (homeOk) goHome(); else o?.close(); });
     sel.use = null; sel.velvet = null; sel.armed = null; sel.armedCard = null; sel.teach = null;
     try { syncLife(); } catch (e) {}
     // Someone waiting on a "forget which?" choice: the Skills tab opens on it.
