@@ -44,6 +44,13 @@
        spring tide and he'd never seen the mud go out so far. In the final she turns the kitchen calendar herself (28), the first
        time she has got there first.
      - At the end Jungwon takes her right hand the way you shake on a contract (right in right); Haechan has her left.
+   Depth pass (2026-10-31): epi-s-dinner, epi-s-jw-window and epi-s-fam-staying deepened (the final, epi-s-held, untouched).
+     New flag: epi-s-stair-sat (fam-staying, the "Sit a minute more. Please." option; read in people.js epi-s-eomma-3). New
+     choice in fam-staying (sit a minute more / let him go up). Small inventions: Solar lays the table herself, the brass
+     fish chopstick rests (one bent); Jungwon brings his mother's pears (right arm); the soy dish at dinner; a memory of the
+     dorm table; Jay in the Yang kitchen salutes with a knife and sends a warm container home; the Yang stairs don't creak;
+     a second chair by Jungwon's window with a blanket; the sugar question ("I still don't know"); the 1971 harbor photo's
+     third boat is Appa's father's, the one the study cleat came off.
 */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).strangers ||= {});
@@ -140,9 +147,12 @@
   { id: 'epi-s-dinner', date: '3/11', slot: 'evening', consumes: true, title: 'dinner', place: 'Incheon · The Lee House · Dining Room', time: 'Evening', scene: [
     { music: 'epi-s-family' },
     { n: "The long table had all its leaves in. It only got all its leaves at Chuseok and at funerals, and it wasn't Chuseok, and the week after the clocks stopped her father had come into the kitchen and said, to nobody, that this house would eat together on Monday, all of it, at the table, and gone back out again, and Mrs. Bang had stood there with a dishcloth for a full minute before she started counting chairs." },
+    { n: "Solar had laid the table herself. Nobody had asked her to. She'd come down at five and found Mrs. Bang standing in the dining room with the good spoons in a roll of green felt, looking at the long empty table like a woman looking at the sea, and taken the roll out of her hands, and Mrs. Bang had let her, which was its own small event." },
+    { n: "Spoon on the right, chopsticks on the spoon's right, the rests her grandmother had bought in Chinatown, little brass fish, eleven of them, one with its tail bent where Solar had dropped it at seven and cried. She put that one at her own place. She put the rice bowls down upside down so the steam wouldn't spot them and squared every one to the edge of the cloth, and when she straightened up her father was in the doorway in his cardigan, watching, and he looked down the whole length of the table at the eleven places, and went away again without a word." },
     { n: "So here they were. Monday. All of it." },
     { n: "She counted. She always counted. Her father at the head with his glasses on the cord. Her mother on his right in dark green, her hair up, her back not touching the chair. Solar on his left. Jungwon beside her, because he was the fiancé and the house had started setting a place for him without being told. Haechan across from her, because he was Haechan, and her father had pointed at the chair. Yunjin, and her mother beside her at the far end, small and quiet in a gray cardigan, eating very slowly. Mr. Oh in a jacket and a tie he so clearly hated that he kept touching the knot as if it might go off. Minseok. Pyo at the very end, terrified of the good plates. Auntie Song on the edge of a chair by the kitchen door, refusing to sit back in it, ready to get up. Mrs. Bang on her feet with the ladle, serving, because nobody on earth could have made her sit." },
     { n: "Ten people at the table, and the eleventh standing, and two fish in a bucket in the kitchen. Eleven cups. She counted them twice." },
+    { n: "The two boys had come in from opposite doors. Haechan from the kitchen, in a clean black shirt with the creases from the packet still in it, his hair wet, smelling of Mrs. Bang's soap; Jungwon from the hall, in grey, with a box of pears from his mother held against him in the crook of his right arm, correctly, the way you carry something to a house, which he gave to Mrs. Bang with a bow and which she took into the kitchen and would, Solar knew, put on the very top shelf where the good fruit went to be admired until it was too late to eat. They'd sat down across the table from each other without looking at each other once, so carefully that it was louder than any look." },
     { cg: 'epi-s-dinner' },
     { n: "It was loud, after a while. That surprised her. The first ten minutes were like a funeral, everybody passing things very carefully, and then Mr. Oh said something about the car, and Haechan said the car was a disgrace, and Mr. Oh said that the car had been driven for fourteen years by a man who never once braked hard and it was the only car in the house that had never been in a ditch, and looked at Haechan, and Haechan put both hands up, and Minseok laughed into his rice." },
     { s: 'yunjin', f: 'happy', t: "Mr. Oh. Mr. Oh. Tell them about the ditch. Tell them which ditch." },
@@ -150,6 +160,8 @@
     { s: 'haechan', f: 'happy', t: "It was ONE ditch. It was ice. The ditch came out of nowhere." },
     { s: 'jungwon', f: 'happy', t: "Ditches are famously stationary." },
     { s: 'haechan', f: 'serious', t: "Eat your soup, young master." },
+    { s: 'jungwon', f: 'happy', t: "I am eating it. I'm also listening. I can do both. It's a family skill." },
+    { n: "Minseok put his face very nearly into his rice. Yunjin's mother, at the far end, who had not said a word since she sat down that wasn't *thank you*, made a small sound behind her hand that was so like Yunjin's laugh that Yunjin turned and stared at her, and then looked down at her own bowl very fast, and Solar saw her blink twice and decide not to have seen anything." },
     { n: "At the far end Pyo was eating plain rice, nothing on it, because the fish was in the middle of the table in front of the Chairman and he would rather have starved than reach across the Chairman for it. Haechan saw. He didn't say anything about it. He just picked the cheek out of the grilled croaker with his chopsticks, the best piece, the piece that went to her father every time, and leaned all the way down the table and put it on top of Pyo's rice." },
     { s: 'pyo', f: 'flustered', t: "I— that's— that's the—" },
     { s: 'haechan', f: 'happy', t: "Eat. You're nineteen. You're still growing." },
@@ -158,9 +170,11 @@
     { n: "Her father watched the cheek go down the table, and said nothing, and picked the other one out for himself, and that was the end of that." },
     { n: "Her mother asked Jungwon whether his mother was well, across the table, in the voice she used for other men's wives at weddings, and Jungwon put his chopsticks down square to his bowl to answer her, and said that she was very well, thank you, and sent her regards, and Yunjin kicked Solar under the table at *regards*, hard, and Solar kicked her back, and neither of them looked up from their soup." },
     { n: "Her father lifted his cup. Barley tea, not soju; there was no soju on the table tonight, which nobody mentioned either. He held it up for a second over the table, over all of them, and everybody stopped." },
-    { s: 'appa', t: "Eat." },
+    { s: 'appa', f: 'neutral', t: "Eat." },
     { n: "That was the whole toast. He drank. Everybody ate. Mr. Oh nodded slowly, as if it had been a very good speech." },
     { n: "Her father didn't say much. He ate, and he watched them, all of them, down the table, the way he watched the harbor from the car, and once she saw him look at her mother and her mother look back, a whole conversation in it, and then they both looked down at their bowls." },
+    { n: "Halfway through, reaching for the soy at the same moment from opposite sides of the table, Haechan's chopsticks and Jungwon's spoon met over the little dish with a click. Both of them stopped. Neither of them let go. The whole table stopped with them for a second, eleven people watching two utensils touching over a saucer of soy sauce like the last two pieces on a board, and then Jungwon withdrew his spoon by exactly one inch and inclined his head, and Haechan took the soy, and poured it, and set it down on Jungwon's side, very precisely, and neither of them looked up, and Yunjin made a noise into her napkin that she turned, not well, into a cough." },
+    { n: "Solar looked down the table at all of it, the steam and the lamp and the good plates and Pyo with his cheek, and for a second it was another table. A long one, in a dormitory by a bay, with a kitchen at one end and somebody burning the rice and somebody else blaming the rice cooker, and a dog under it waiting for anything to fall. She'd sat at the end of that one too. She'd counted the cups at that one too. She put her chopsticks down so nobody would see what her hand wanted to do with them, and picked them up again, and the table was this one, and her father was looking at her." },
     { n: "Mrs. Bang came round with the seaweed soup. She ladled it for Solar first, the way she always had, since Solar was small enough to need the bowl held, and Solar put her hand flat on the tablecloth beside the bowl to make room." },
     { cg: null },
     { glitch: { stage: 4 } },
@@ -195,9 +209,11 @@
     { n: "Mrs. Bang went down on her knees and fished the ladle out from under the sideboard and took it into the kitchen and rinsed it. They all heard the tap. She came back with it dripping and filled Solar's bowl to the brim, first, before anybody else's, and then went round the table filling every single bowl that didn't need filling, and nobody stopped her." },
     { s: 'auntie', f: 'serious', t: "*Eat. Ghosts don't eat. Eat and they'll know you're not one.*" },
     { n: "Auntie Song said it in Mandarin, to the room, to nobody, and sat back down on the edge of her chair. Solar was the only one at the table who understood it except Jungwon, and Jungwon didn't look at her, and she didn't look at him." },
+    { n: "Under the table, Yunjin's foot found hers. Not a kick this time. It just came and rested against her ankle, the rabbit sock on her shin, warm, and stayed there, pressing a little, every few seconds, the way you press a bruise to make sure it's still there and still yours." },
     { n: "Haechan picked up his chair. He set it on its legs and sat down on it and picked up his chopsticks, and Jungwon sat, and neither of them said a word, to her or to each other or to anybody, for the rest of dinner. They didn't need to. She could feel them, one on each side of the table, watching the hand she ate with." },
     { glitch: { near: true } },
     { n: "Nobody said anything about it. Not at the table. Not when the plates went out. Not in the hall, putting coats on. She watched them decide it, one by one, round the table, without anybody saying a word, the same way the house had decided about the fever: Mr. Oh telling the ditch story again, properly this time, with the ice and the farmer; Pyo laughing in the wrong place; her mother asking Mrs. Park about her piano pupils in a perfectly level voice; Minseok taking the pot out to the kitchen without being asked." },
+    { n: "In the kitchen, while the plates went out, she heard Mrs. Bang say something to Auntie Song by the sink, low, and Auntie Song answer in Mandarin, and then the two of them laugh, quietly, at something, the way women laugh at a wake when somebody remembers the dead man's terrible singing. Pyo dried. Mr. Oh loosened his tie by half an inch, finally, standing by the back door looking out at the bucket, and looked very much as if he'd like to go and sit in the car." },
     { n: "Ten people and a bucket of fish. Not one of them was going to say it. She'd never loved anything so much in her life as that table, that night, being quiet about her." },
     { flag: 'epi-s-flickered' },
     { ifEpiRoute: 'haechan', then: [
@@ -287,9 +303,15 @@
     { music: 'epi-s-jungwon' },
     { n: "Her father had sent her across with a crossword dictionary. That was the reason. It was an old one with a broken spine and his name inside the cover in blue ballpoint, and Jungwon had asked on Sunday, very politely, whether he might borrow it, and her father had looked at him over his glasses for a long time and then said Solar would bring it round, and that was how she knew her father knew exactly what the dictionary was for." },
     { n: "Sunghoon let her in. He was at the door when Mr. Oh pulled up, as if he'd been there since lunch, in a black coat, facing the door, and he looked at her for exactly one second longer than he needed to and then said Jungwon was upstairs, and stepped aside, and didn't follow her up." },
-    { n: "His room was at the end of the west wing. She'd been in it before. It never changed. A narrow bed made so tight you could have bounced a coin on it. A kaya board on a low stand by the window with a game half played on it, black and white, against himself, the way he played. No pictures. Nothing on the walls at all. A room like a held breath." },
+    { n: "The Yang house was quiet in the way of houses where nobody raises their voice because nobody needs to. Long dark floors, polished till the lamps lay in them. A smell of ginger and soy from somewhere at the back, and the clean tick of a good clock, and through a half-open door on the left the kitchen, bright, and Jay at the counter in an apron over a black sweater, slicing something very thin with great concentration. He didn't look up. He lifted the knife an inch off the board, in her direction, a sort of salute, and went back to it, and she heard him start to hum under his breath, badly, something that wasn't a song yet." },
+    { n: "She went up. The stairs here didn't creak. She'd noticed that the first time, months ago, and it had bothered her in a way she couldn't explain, a house where you couldn't hear anybody coming, and then she'd understood that it was the point." },
+    { n: "His room was at the end of the west wing. She'd been in it before. It never changed, except for one thing: a second chair. A plain wooden one, from some dining room downstairs, set by the window at an angle to the glass, with a folded blanket over its back. She'd never seen it there before. She knew at once, without being told, that he sat in it at night, and that the blanket was for after two, when the house's heating went down." },
+    { n: "Apart from that it never changed. A narrow bed made so tight you could have bounced a coin on it. A kaya board on a low stand by the window with a game half played on it, black and white, against himself, the way he played. No pictures. Nothing on the walls at all. A room like a held breath." },
     { n: "And the window." },
     { n: "He was standing at it when she came in, with his back to the door and his right hand in his trouser pocket, looking out, and he didn't turn round. Out past the dark garden and the wall and the black water, all the way across, the lights of the other shore, small and yellow and steady, and among them, she realized slowly, the Lee house. Her house. The long roof. The garden going down to the annex. The windows." },
+    { n: "She put the dictionary down on the corner of the kaya board, carefully, off the grid, and looked at the game while he didn't turn round. Black had the corners. White had a long brave line through the middle that was going to die, she could see it, three moves from now, four at the most, and had been left there anyway, as if whoever was playing white couldn't quite bring himself to take it off the board." },
+    { s: 'solar', f: 'neutral', t: "White's dead." },
+    { s: 'jungwon', f: 'neutral', t: "White doesn't know that yet. I'm giving it the evening." },
     { s: 'jungwon', f: 'neutral', t: "Thank you for the dictionary. Please thank your father." },
     { s: 'solar', f: 'happy', t: "You don't need a crossword dictionary." },
     { s: 'jungwon', f: 'happy', t: "No. I don't." },
@@ -302,6 +324,7 @@
     { s: 'jungwon', f: 'flustered', t: "Always." },
     { n: "That was all he said. Always. She looked at the little gold window across the water and thought about every night of her life she'd stood at it, not sleeping, watching the tide go out, and somebody on this side of the water standing at this one, watching the light." },
     { n: "He switched to Mandarin. He did that when things were going to be said that weren't for the walls." },
+    { n: "Across the water a car went along the coast road under her house, its lights moving over the seawall, slowly, and was gone. The tide was in. She could tell from here, even at this distance, by how high the lights sat on the black, by the way her window doubled itself, small and gold, on the water below it. He was watching it double too. She thought he had probably learned to read the tide from her window long before she'd ever told him she could." },
     { s: 'jungwon', f: 'serious', t: "*May I ask you again?*" },
     { s: 'solar', f: 'happy', t: "*You're going to anyway.*" },
     { s: 'jungwon', f: 'serious', t: "*Thirty-one days. The thirteenth. Do you want it?*" },
@@ -333,12 +356,22 @@
     ] },
     { bond: { jungwon: 1 } },
     { n: "He turned her round by the waist with one hand. Slowly, as if asking permission and being very sure of the answer. The window was cold against her back through her coat and he wasn't, and he kissed her the way he did everything, carefully, precisely, without hurrying, as if he'd read about it and then improved on what he'd read, and his watch ticked against her hip, and she put her hand flat on his chest, over his heart, and felt it going hard and fast under the good gray wool, nothing like his face." },
+    { n: "When he lifted his head his watch had caught on the wool of her sleeve, a thread pulled up in a small loop between them, and he looked down at it with real dismay, as if of everything that had just happened that was the part he'd have to answer for, and worked it free with his thumb, one-handed, very carefully, and smoothed the wool flat over it." },
+    { s: 'jungwon', f: 'flustered', t: "I'm sorry. Your sleeve." },
+    { s: 'solar', f: 'happy', t: "It's a sleeve." },
+    { s: 'jungwon', f: 'flustered', t: "It's your sleeve." },
+    { n: "He smoothed it once more anyway, as if the wool might remember, and she let him, and watched the tips of his ears go a colour his face would never have allowed, with the glass cold at her back and her own house somewhere behind her, small and gold, across the water." },
     { n: "Somebody knocked on the door. Twice." },
     { s: 'sunghoon', f: 'neutral', t: "Mr. Oh is at the gate." },
     { n: "Sunghoon's voice, flat, through the wood. He didn't open the door. She could tell from the voice that he was standing with his back to it." },
     { s: 'sunghoon', f: 'neutral', t: "He says the car is getting cold. He hasn't said please." },
     { n: "Jungwon put his forehead against hers, for one second, and shut his eyes." },
     { s: 'jungwon', f: 'happy', t: "He never does." },
+    { n: "He straightened her collar where it had turned under against the glass, with one finger, the way a man straightens a document before he signs it, and looked at her for a second longer than the collar needed, and stepped back." },
+    { s: 'jungwon', f: 'neutral', t: "*Next time I'll ask you something easier.*" },
+    { s: 'solar', f: 'happy', t: "*Like what?*" },
+    { s: 'jungwon', f: 'happy', t: "*Whether you take sugar. I still don't know. It's been bothering me for months.*" },
+    { n: "Downstairs, as they passed the kitchen, Jay came out with a lidded container in a cloth bundle, still warm, and held it out to her without a word. She took it. He nodded at it, then at the door, then at nothing, and went back in. Sunghoon, by the front door, was standing exactly where he'd stood when she arrived, facing it, as if he hadn't moved at all, and perhaps he hadn't." },
     { n: "He walked her down. Through the west wing and the long dark hall and out to the gate, his hand at her back the whole way, and bowed to Mr. Oh, correctly, and opened the car door for her, and shut it. When the car pulled away she turned round in the back seat, and he was still at the gate, and then, by the time they reached the corner, he wasn't. He was upstairs. She knew where. She knew which window." }
   ] },
 
@@ -346,6 +379,7 @@
   { id: 'epi-s-fam-staying', date: '3/13', slot: 'evening', consumes: true, flag: 'epi-route-family', title: 'are you staying', place: 'Incheon · The Lee House · Stairs', time: 'Evening', scene: [
     { music: 'epi-s-family' },
     { n: "Ten o'clock. The house had gone quiet early, the way it had every night since dinner on Monday, as if everybody had agreed to go to bed before anything else could happen. Down in the kitchen the tap dripped. Out on the back step the koi went round. Yunjin's light was on next door, under the door, a thin gold line on the hall floor." },
+    { n: "She'd been lying on her bed with her shoes on and the lamp off, listening. She'd heard the study door at a quarter to. The slippers. The kitchen, the kettle, two cups taken down off the shelf, not one, and then the slippers on the stairs, slow, and the creak, and then nothing at all, for so long that she'd sat up in the dark and put her feet on the floor without deciding to." },
     { n: "He was on the seventh stair." },
     { n: "Sitting on it, in his brown cardigan, with his slippers on the sixth and his glasses on their cord and two cups of barley tea beside him on the stair, steaming. Waiting. He didn't look up when she came out of her room. He knew which board in the hall she'd step on. He'd been listening to that board for twenty-one years." },
     { n: "Down in the hall Mrs. Bang came round the corner from the laundry with a stack of folded towels to her chin, and looked up the stairs, and saw the two of them, and stopped. Then she turned round and went straight back the way she'd come, towels and all, treading much louder than she needed to on every board so they'd know exactly how far away she'd gone." },
@@ -359,6 +393,12 @@
     { n: "She sat down beside him. On the seventh stair, which creaked, which had always creaked, which he'd never once let anyone fix." },
     { n: "He handed her a cup. It was hot. She held it in both hands and checked it, without meaning to, the heat of it against her palms, and he saw her do it, and didn't say anything." },
     { n: "They sat there. The hall clock ticked downstairs. Somebody had set it going again." },
+    { n: "Below them, on the wall of the stairwell, the harbor photograph hung its degree off true. Eleven boats in 1971, tied up three deep at the old wall, their names painted on their bows in a hand nobody wrote in any more. Her father lifted his cup an inch, toward it, the way you'd point with a cup at a table." },
+    { s: 'appa', f: 'neutral', t: "Third from the left. With the bad paint." },
+    { s: 'solar', f: 'neutral', t: "Grandfather's." },
+    { s: 'appa', f: 'neutral', t: "The cleat in my study is off that one. He always said she was a bad boat. Every time he said it." },
+    { s: 'appa', f: 'neutral', t: "He kept the cleat." },
+    { n: "That was all he said about it. He drank his tea. She looked at the third boat from the left with its bad paint, a small dark shape on a grey sea forty years ago, and at the brass cleat she couldn't see, downstairs, holding the study door open on nothing, and understood that she'd just been told something, and that she wasn't going to be told what." },
     { n: "He didn't ask about the fever. He didn't ask where. He'd stopped asking that before he'd ever started; she knew him well enough to know it had never been his question. He sat there with his tea going cold and his glasses in his hand, and he polished them on the hem of his cardigan, slowly, not because he was angry but because his hands needed somewhere to be." },
     { s: 'appa', t: "Sol-ah." },
     { s: 'solar', f: 'sad', t: "Appa." },
@@ -382,7 +422,20 @@
     { n: "Slowly. Once. As if she'd answered him. As if she'd said a whole sentence and he'd heard every word of it and it was the one he'd expected, and he'd already made his peace with it somewhere, on some other stair, on some other night, in the study with the light off." },
     { bond: { appa: 1 } },
     { s: 'appa', t: "Drink your tea while it's hot." },
+    { s: 'solar', f: 'sad', t: "It's not hot any more, Appa." },
+    { s: 'appa', f: 'neutral', t: "Then drink it while it's cold. It's still tea." },
     { n: "She drank it. It was hot. She drank all of it, and he watched her drink it, and when she'd finished he took the cup off her and stacked it in his, and stood up, one hand on the banister, slowly, the way he'd started standing up this winter." },
+    { choose: [
+      { t: "Sit a minute more. Please.", stat: { kindness: 1 }, flag: 'epi-s-stair-sat', then: [
+        { s: 'solar', f: 'sad', t: "Sit a minute more. Please." },
+        { n: "He looked down at her. At the word, she thought. Nobody in this family said it. Mr. Oh had never once said it in his life and her father had built a whole house where nobody had to." },
+        { n: "He sat back down. On the seventh stair, with the two cups stacked in his hand, his knee cracking on the way down, and didn't say anything else at all, and neither did she. The clock ticked. The tap dripped. Out in the dark the koi went round. After a while he put his free hand flat on the stair between them, on the old wood, the way you put a hand on the flank of an animal to let it know where you are, and she put hers beside it, not touching, an inch away, and they sat like that for the rest of the minute, which was a great deal longer than a minute." },
+        { n: "Then he got up again." }
+      ] },
+      { t: "(Let him go up.)", then: [
+        { n: "She let him go. It was what he'd taught her. You didn't hold a man on a stair; you let him go up, and listened to how he went." }
+      ] }
+    ] },
     { n: "He put his hand on top of her head. Just for a second. The way he had when she was small enough to come up only as far as the newel post." },
     { n: "Then he went up. Humming. Something old and flat and full of harbors, a trot song from before she was born, under his breath, all the way up the stairs and along the hall to his own door, and she sat on the seventh stair with her hands round nothing and listened to him hum it until the door shut and the song went on, faintly, behind it." },
     { n: "She stayed there a long time. The seventh stair creaked whenever she moved. She didn't move much." }

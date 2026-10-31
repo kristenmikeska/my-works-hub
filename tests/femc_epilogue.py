@@ -692,7 +692,7 @@ try:
         ok('function hoEpi' in bjs and "runners: { over:" in bjs and "if (/^epi-[a-z]+-\\d+$/.test(id)) return hoEpi();" in bjs, 'battle.js plays epi-runners-1..4 from its EPI table (batch 6)')
         walk = p.eval("WALK()")
         ok(not walk['problems'], f'every line of the whole world resolves (speakers, faces, places, music, glitches): {walk["problems"][:8]}')
-        ok(walk['scenes'] == 31 + 11 + 31, f'{walk["scenes"]} scenes walked ({walk["lines"]} lines, {walk["paths"]} paths)')
+        ok(walk["scenes"] == 31 + 11 + 35, f'{walk["scenes"]} scenes walked ({walk["lines"]} lines, {walk["paths"]} paths)')
         assets = p.eval("CHECK_ASSETS(%s)" % json.dumps(walk['urls']), timeout=120)
         ok(not assets['bad'], f'every background and portrait loads ({assets["n"]}): {assets["bad"]}')
         need = {'epi-r-finals', 'epi-r-verdict', 'epi-r-bleed', 'epi-r-half', 'epi-r-holiday', 'epi-r-footage', 'epi-r-snow', 'world-runners-theme'}
@@ -807,7 +807,7 @@ try:
         ok('function hoEpi' in bjs and "hoax: { over:" in bjs, 'battle.js plays epi-hoax-1..4 from its EPI table (batch 6)')
         walk = p.eval("WALK()")
         ok(not walk['problems'], f'every line of the HOAX world resolves (speakers, faces, places, music, glitches): {walk["problems"][:8]}')
-        ok(walk['scenes'] == 35 + 8 + 34 and walk['lines'] > 3000, f'{walk["scenes"]} scenes walked ({walk["lines"]} lines, {walk["paths"]} paths by choice and branch)')
+        ok(walk["scenes"] == 35 + 8 + 38 and walk['lines'] > 3000, f'{walk["scenes"]} scenes walked ({walk["lines"]} lines, {walk["paths"]} paths by choice and branch)')
         assets = p.eval("CHECK_ASSETS(%s)" % json.dumps(walk['urls']), timeout=120)
         ok(not assets['bad'] and assets['n'] >= 20, f'every background and portrait those scenes use loads ({assets["n"]}): {assets["bad"]}')
         moods = {'world-hoax-theme', 'epi-h-home', 'epi-h-goofy', 'epi-h-forum', 'epi-h-romance', 'epi-h-eve', 'epi-h-christmas', 'epi-h-seance', 'epi-h-party', 'epi-h-jihoon', 'epi-h-newyear', 'epi-h-dread', 'epi-h-half', 'epi-h-exam', 'epi-h-hearing'}
@@ -956,7 +956,7 @@ try:
         ok("'The Lee House · Midnight'" in bjs and "'The Fish Market · Midnight'" in bjs, 'battle.js’s EPI table has the strangers row (the act’s four places)')
         walk = p.eval("WALK()")
         ok(not walk['problems'], f'every line of the strangers world resolves (speakers, faces, places, music, glitches): {walk["problems"][:8]}')
-        ok(walk['scenes'] == 38 + 8 + 29 and walk['lines'] > 3000, f'{walk["scenes"]} scenes walked ({walk["lines"]} lines, {walk["paths"]} paths by choice and branch)')
+        ok(walk["scenes"] == 38 + 8 + 33 and walk['lines'] > 3000, f'{walk["scenes"]} scenes walked ({walk["lines"]} lines, {walk["paths"]} paths by choice and branch)')
         assets = p.eval("CHECK_ASSETS(%s)" % json.dumps(walk['urls']), timeout=120)
         ok(not assets['bad'] and assets['n'] >= 20, f'every background and portrait those scenes use loads ({assets["n"]}): {assets["bad"]}')
         # The everyday screen pools (epi-s-day/-evening/-late) play on screens, not in scenes; the opening plays the theme.

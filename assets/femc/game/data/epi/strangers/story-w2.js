@@ -53,6 +53,11 @@
      Minseok lets him in because the Chairman said to; the kitchen door is left on the latch. Thursday 2/28 is Haechan's on
      the haechan and family routes, Jungwon's on his.
    - Seo drinks iced coffee in March ("Ice is the only thing in it I trust"); she heard the market story as market gossip.
+   Depth pass (2026-10-31): epi-s-hc-annex and epi-s-fam-trot deepened (gates, bond lines, glitch lines unchanged). New choice
+   in fam-trot (turn your hand over / keep still), no flag. Small inventions: Mrs. Bang sends the green thermos down the garden;
+   the annex holds a hot plate on a crate, a shoebox of trot tapes, a fish-market calendar still on December; Dal kept the
+   coast-weather on in the car; Haechan bolts the steel door (cut away as before); Eomma gives Solar her grey cashmere scarf on
+   the top step (one Eomma line set: care only); Appa takes a stick of Haechan's cinnamon gum; "Good song." / "I meant me."
 */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).strangers ||= {});
@@ -263,9 +268,13 @@
   // ───────────────────────────── 2/26 evening, route haechan: the annex ─────────────────────────────
   { id: 'epi-s-hc-annex', date: '2/26', slot: 'evening', consumes: true, flag: 'epi-route-haechan', title: 'the annex', place: 'Incheon · The Lee House · Annex', time: 'Evening', scene: [
     { music: 'epi-s-haechan' },
+    { n: "Mrs. Bang gave her the thermos at the back door without a word. The green one, the old one with the dent in the lid, barley tea, hot, the way she gave it to the men on the night shift at the quay office. She put it in Solar's hands and turned her by the shoulders toward the garden and went back to the sink, and didn't say who it was for, and didn't need to, and Solar stood on the back step for a second holding it against her chest like a hot-water bottle with the whole lit kitchen at her back, deciding not to be embarrassed, and then went down." },
+    { n: "Four terraces. The frost had gone off them in the afternoon and come back at dusk, so the gravel was wet underneath and crisp on top, and the bare persimmon on the second one dripped on her as she passed it. Below the garden wall the water was coming in, black and flat and in no hurry. The annex window was the only light at the bottom of anything." },
     { n: "The annex at the bottom of the garden had a steel door that stuck in the cold and had to be shouldered on the second push, and when she shouldered it the warmth came out at her all at once, the little oil heater in the corner ticking on its highest setting, the window over the bed fogged from the inside, and the smell of the place, diesel and cinnamon and Mrs. Bang's soap on the pillowcase, which was the smell of nowhere else on earth." },
     { n: "He was on the iron bed with his back to the wall and his boots still on, which Mrs. Bang would kill him for, Mrs. Bang's crane quilt rucked up under him, the old silver radio on the sill murmuring a weather forecast nobody was listening to. The cracked silver Discman sat on his knee. The earbuds were in. Both of them." },
     { n: "She knew the batteries were dead. They'd been dead since 2006. She'd known that since the first time she'd come down here and found him exactly like this." },
+    { n: "The room was the size of a good cupboard and he had lived in it for seven years and you could tell that only by the things he'd never bothered to put away: a hot plate on an upturned crate with a dented ramyeon pot on it, a shoebox of trot tapes with their spines labelled in somebody else's handwriting, a row of boots by the door, toes to the wall, the way the house did it, which meant Mrs. Bang. A paper calendar from the fish market on a nail, two months behind, still on December. Nothing on the walls. A jacket on the hook with the shape of him still in the shoulders." },
+    { n: "She put the thermos on the crate beside the hot plate. He looked at it. He looked at it for a while, the dent in the lid, and she watched him know exactly whose it was and exactly what it meant that it had come down the garden in her hands, and decide not to mention that either." },
     { s: 'solar', f: 'neutral', t: "What are you listening to." },
     { s: 'haechan', f: 'neutral', t: "Track four." },
     { s: 'solar', f: 'sad', t: "It doesn't play, Donghyuck-ah." },
@@ -287,10 +296,21 @@
         { n: "It didn't annoy her. That was the problem with him. It never had." }
       ] }
     ] },
+    { n: "The radio on the sill finished the weather and went on to the shipping, the long slow list of it, wind and sea state for every area out to the edge of the chart, and he mouthed the names along with it without seeming to know he was doing it, the way a boy in church mouths a prayer he's had beaten into him." },
+    { s: 'solar', f: 'neutral', t: "You know them all." },
+    { s: 'haechan', f: 'neutral', t: "Dal had it on in the car. Every night. Years of that woman telling me the sea state off Socheong. I could do it in my sleep." },
+    { s: 'haechan', f: 'happy', t: "I did do it in my sleep. A whole year. Over there. There was a boy down the hall used to bang on the wall." },
+    { n: "He said it as a joke, the way he said everything about over there, the dorm with its one kind of gum and the shop that sold it and the country where nobody understood a word, and she laughed because he wanted her to, and then they were both quiet, because underneath it was a boy in a strange bed reading out the Yellow Sea to the dark, island by island, to make sure it was still there." },
     { n: "She didn't know who moved. She'd tell herself later it was him and know it was a lie." },
     { n: "His hand came up and found the pins in her hair, the long black one her mother had put in that morning, and pulled it, and her hair came down over both of them, and he made a sound low in his chest like a man setting something heavy down. The Discman slid off his knee into the quilt. The wire pulled the earbud out of her ear. Neither of them went after it." },
     { n: "He kissed her the way he did everything that mattered, which was without making a joke of it first, hard and then not, his split knuckles along her jaw, cinnamon and cold air and the heater ticking. She got her hands in his jacket and he let her. He let her push him back against the wall and climb into his lap on Mrs. Bang's cranes with her hair hanging down round both their faces like a curtain, and he held her there, his hands spread wide on her back under her sweater, as if he were holding her up out of deep water." },
     { n: "The radio went on with the weather. Wind from the northwest, it said, and a hard frost on the coast, and a tide at eleven fifty, and he laughed into her mouth at the tide, because he knew she'd heard it, because he knew she'd already known." },
+    { n: "He stopped once. Pulled back an inch, his forehead against hers, breathing, his eyes open and very dark and very close, the way he stopped at a junction he'd been through a thousand times and looked both ways anyway because one night he'd forgotten to and the night had nearly cost him." },
+    { s: 'haechan', f: 'serious', t: "Agasshi." },
+    { s: 'solar', f: 'serious', t: "Don't." },
+    { s: 'haechan', f: 'flustered', t: "I was going to say the door's not locked." },
+    { s: 'solar', f: 'happy', t: "Then lock it." },
+    { n: "He looked at her for one more second as if she'd said something in a language he'd been waiting his whole life to hear somebody speak, and reached behind him without looking and shot the bolt on the steel door, and it went home with a sound like a full stop." },
     { n: "What happened after that was nobody's business but the cranes'." },
     { place: 'Incheon · The Lee House · Annex', time: 'Late Night', soft: true },
     { n: "Later, the window over the bed had cleared in one corner where her hand had been, and through it she could see the whole of the house at the top of the garden, dark except for the kitchen and, two floors up, the window of her own room, where the lamp was still on because she'd left it on, because she always did, so that anybody looking up from the garden would think she was there." },
@@ -306,6 +326,12 @@
     { n: "She didn't answer. She couldn't have, not then, and he knew that too, and that was why he'd said it in the dark with his face turned away, so she wouldn't have to." },
     { n: "She took the Discman out of his hand instead, and opened the lid, and looked at the disc inside it, and closed it again, very gently, and put it back on his chest with her hand over it, and his hand over hers." },
     { bond: { haechan: 1 } },
+    { n: "On the crate by the bed the thermos had gone cold without either of them touching it. He reached over her for it anyway, and unscrewed the dented lid, and poured, and drank Mrs. Bang's cold barley tea out of the cap like it was the best thing he'd ever been given, and passed it to her, and she drank the rest." },
+    { s: 'haechan', f: 'neutral', t: "She knows." },
+    { s: 'solar', f: 'neutral', t: "She gave me the thermos, Donghyuck-ah. Of course she knows." },
+    { s: 'haechan', f: 'flustered', t: "She's going to look at me at breakfast." },
+    { s: 'solar', f: 'happy', t: "She's going to give you the biggest piece of fish and not look at you at all." },
+    { n: "He thought about that, with the cap in his hand, and she watched it frighten him far more than anything else had all winter, and she put her face in his shoulder so he wouldn't see her laughing, and he knew anyway." },
     { n: "Up the garden, in the house, the kitchen light went out. Then, a moment later, on the stairs, another one, the small one on the landing, the one her father always switched off on his way up, last, after the seventh stair." }
   ] },
 
@@ -382,6 +408,11 @@
   { id: 'epi-s-fam-trot', date: '2/26', slot: 'evening', consumes: true, flag: 'epi-route-family', title: 'trot', place: 'Incheon · The Car', time: 'Evening', scene: [
     { music: 'epi-s-family' },
     { n: "Her father wanted the coast road. He said it at dinner to nobody, the way he said things he'd already decided, *I want the coast road tonight*, and by nine Mr. Oh had the black car at the foot of the front steps with the engine running and the heater on, and her father was in the back with his coat buttoned to the neck, and he patted the seat beside him without looking at her, and she got in." },
+    { n: "Her mother came out onto the top step as she went down, in her house slippers, in the cold, which she never did, and took the scarf from round her own neck, the grey cashmere one, and put it round Solar's, and tucked the ends inside her coat with two fingers, as if Solar were nine and going to a recital." },
+    { s: 'eomma', f: 'neutral', t: "The sea road is cold. Your father won't notice. He never notices." },
+    { s: 'solar', f: 'neutral', t: "You'll be cold." },
+    { s: 'eomma', f: 'neutral', t: "I'm going inside. That's what the inside is for." },
+    { n: "She went inside. She didn't wave from the door. She stood behind the glass of it, Solar knew without looking back, until the car had gone down the hill." },
     { n: "Haechan was in the front passenger seat. He was always in the front passenger seat when her father went out after dark. Nobody had ever explained that to her and nobody needed to." },
     { n: "Mr. Oh drove the way he'd driven since she was seven: hands at ten and two, menthol aftershave filling the car like a cold room, never once braking hard, so that the whole black city slid past the windows as smoothly as if somebody were pulling it on a cloth. Out past the port, past the cranes standing over the fourth quay with their floodlights on, past the last of the warehouses, and then the road bent to the sea and there was nothing on the left but the black water and the lights of fishing boats very far out, small and orange, like somebody had dropped a handful of embers." },
     { n: "Haechan turned on the radio. Of course he did. Trot." },
@@ -407,7 +438,11 @@
     { n: "He had a soft voice. Everyone said so. A voice nobody interrupted, a voice that made men at long tables stop chewing. She'd heard it give orders and she'd heard it say *Sol-ah* on the stairs at four in the morning and she had never once, not in her whole life, heard it sing in front of anybody but her mother." },
     { n: "He sang the chorus with his eyes shut, low, a little flat, under Haechan's perfect tenor, the two of them, the old man and the dog, filling Mr. Oh's car with a song about a man coming home to a station where nobody is waiting, and Mr. Oh kept his hands at ten and two and his eyes on the road and did not brake, and the boats burned on the black water, and Solar sat with her arms folded and her face to the window so none of them would see it." },
     { n: "She hated it. She made very sure she looked like she hated it. Her throat hurt." },
+    { n: "Mr. Oh, at the second chorus, took one hand off the wheel, which nobody in the car had seen him do at speed in fourteen years, and turned the heater up a notch, and put it back at ten. That was all. It was, Solar understood, as near as Mr. Oh would ever come to joining in." },
     { n: "The song ended. The radio, if it was on, went on to something else. Haechan, in the front seat, went quiet, the good quiet, and slid down a little against the window, and chewed his gum, and let them have the back of the car." },
+    { n: "Haechan's hand came back over the seat with a stick of gum in it. Cinnamon. He held it there, between her father and her, without turning round, the way you'd hold out a match in a wind." },
+    { n: "Her father looked at it. In eighteen years she'd never seen him take anything from anybody in a car. He took it. He unwrapped it with great care, folded the paper into a small square and put it in his breast pocket beside the glasses, and put the gum in his mouth, and chewed, slowly, looking straight ahead, with the expression of a man doing something for the first time in his life and not intending to discuss it." },
+    { n: "In the rear-view mirror Mr. Oh's eyes went to the back seat, and stayed there a fraction too long, and went back to the road." },
     { n: "Her father opened his eyes. He looked out of his own window for a while at the sea going by. The coast road ran along the top of the seawall here, and below it, on the left, the water had gone a long way out, and the mud was shining under the moon, two nights past full, and it went on shining all the way to the horizon." },
     { s: 'appa', t: "Sol-ah." },
     { s: 'solar', f: 'neutral', t: "Mm." },
@@ -418,9 +453,23 @@
     { s: 'appa', t: "...The tide's out." },
     { s: 'solar', f: 'neutral', t: "Since nine-forty. It'll turn at four." },
     { s: 'appa', t: "Good." },
+    { choose: [
+      { t: "(Turn your hand over under his. Palm up.)", stat: { kindness: 1 }, then: [
+        { n: "She turned her hand over under his, slowly, so that it wasn't under his any more but against it, palm to palm, the way she'd held it crossing roads when she was small enough for him to have to bend. His fingers didn't close. They didn't need to. They lay there along hers, heavy and warm, and she felt the pulse in his wrist going steadily against the heel of her hand, and counted it, because she counted, and lost count somewhere past the cranes, and didn't start again." }
+      ] },
+      { t: "(Keep very still. Let him decide.)", then: [
+        { n: "She kept still. Her hand stayed under his like something asleep that you don't want to wake, and she watched the boats on the black water and didn't move a finger, and after a while his thumb moved once across her knuckles, back and forth, the way he smoothed the paper flat at breakfast, and stopped, and stayed." }
+      ] }
+    ] },
     { n: "That was all. That was all he said, all the way back along the coast road and through the port and up the hill, and he didn't take his hand off hers once, and in the front seat Haechan didn't turn round once, and Mr. Oh didn't brake once, and she didn't ask him what it was that he'd almost said, because she was her father's daughter, and in this family you didn't ask the thing. You sat beside it in the dark, with your hand under its hand, and you let it decide." },
     { n: "At the foot of the front steps Mr. Oh put the car in park and looked at the two of them in the mirror." },
-    { s: 'mroh', f: 'neutral', t: "Home now." }
+    { s: 'mroh', f: 'neutral', t: "Home now." },
+    { n: "Nobody moved for a moment. The engine ticked. Haechan got out first, and came round, and opened her father's door, and stood beside it in the cold with his hand on top of the frame so her father wouldn't hit his head, which her father had not once in his life done, and her father got out, and stood on the bottom step with the gum still going, and looked up at the house." },
+    { s: 'appa', f: 'neutral', t: "Good song." },
+    { s: 'haechan', f: 'happy', t: "Good singer, Chairman." },
+    { s: 'appa', f: 'neutral', t: "I meant me." },
+    { n: "He went up the steps. At the top, the door opened before he reached it, and her mother was behind it, and took his coat, and looked past him down the steps at Solar still in the back of the car with the grey scarf round her neck, and the door closed." },
+    { n: "Solar sat there in the back seat with her hand on the warm leather where his had been until Mr. Oh, very politely, without turning round, switched the engine off, and the heater with it, and the cold started coming in at the windows, which was Mr. Oh's way of saying please." }
   ] },
 
   // ───────────────────────────── 2/27 daytime: the hammer ─────────────────────────────

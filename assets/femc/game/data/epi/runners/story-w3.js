@@ -24,6 +24,9 @@
      rank haechan 10.
    Glitches: floors 12/15 3 and 12/19 4 (glitches.js); inline ids epi-r-g-alone, -upward, -kitchen, -butterfly, -clocks, -midnight,
      -pull; { glitch: { stage } } on the pull days; strain on the lies that still hold the cover.
+   Depth pass (2026-10-31): epi-r-kitchen and epi-r-rooftop deepened (narration and beats; no new choices or flags). Small
+     inventions: Johnny's pen crossed Mark off; Solar once heard Mark play in the other world and never told him; her last final was
+     Friday at two; Haechan's sampling-ethics essay; on the roof a word in a language she half knows (dread, never staged).
    Canon held: the track stays untitled; the valley promise stays unpaid; the jacket comes out of the bag only on the roof (his
    route); Haechan never asks anyone about her; Jaehyun learns nothing of camp; Mark is complicated, not a villain, and gets
    no clean reconciliation; the prior girl's file is hers to decide. Wren is never literal. */
@@ -121,10 +124,22 @@
     { s: 'jisung', f: 'flustered', t: "I didn't say a sign. I said it could be, like, an indication." },
     { s: 'renjun', f: 'neutral', t: "Of what." },
     { s: 'jisung', f: 'flustered', t: "...I didn't get that far." },
+    { s: 'renjun', f: 'neutral', t: "Indication the weather's broken. Eat something, Jisung, you've been on *mitochondria* for twenty minutes." },
+    { s: 'jisung', f: 'happy', t: "It's the powerhouse of the cell." },
+    { s: 'renjun', f: 'neutral', t: "It's the powerhouse of your GPA dropping." },
+    { s: 'jisung', f: 'happy', t: "Oh, hey. Congrats on Regionals, Solar. Chenle showed us the clip. Like eleven times." },
+    { s: 'solar', f: 'surprised', t: "Chenle showed you a clip?" },
+    { s: 'renjun', f: 'happy', t: "Chenle showed the dishwasher a clip." },
+    { n: "She laughed, and it surprised her, how easily it came, in this kitchen of all kitchens, where she'd once stood with her back to the counter while two boys she couldn't stop thinking about said every unforgivable thing to each other over her head. The counter was the same counter. Somebody had put a sticker of a frog on it since." },
     { n: "Jaehyun put a plate in front of her. Eggs, toast, a banana, two strips of bacon arranged with a quarterback's sense of field position. He stood across the island from her with his own plate and ate standing up, the way he did when he was already mentally somewhere else, and watched her eat the way their mother would have, which was a thing she'd never tell him." },
+    { n: "A banana. She thought, before she could stop herself, of another banana, nearly black, from beside a register at two in the morning, handed over without a word under a tree that leaned too far to the right. She put the thought somewhere she wouldn't trip over it, and peeled this one, and ate it, because Jaehyun was watching and because she was, it turned out, hungry." },
     { s: 'jaehyun', f: 'neutral', t: "Finance at nine. Then I'm done. The car's Sunday." },
     { s: 'jaehyun', f: 'serious', t: "You're coming home. For Christmas. I'm not asking, I'm telling you what Dad's office booked." },
     { s: 'solar', f: 'serious', t: "I know what Dad's office booked." },
+    { s: 'jaehyun', f: 'neutral', t: "Ms. Han says you haven't answered her." },
+    { s: 'solar', f: 'serious', t: "I'll answer her." },
+    { s: 'jaehyun', f: 'serious', t: "By the eighteenth. Or she calls the house. You know what happens when she calls the house." },
+    { n: "She knew. Everybody at the island knew, from the way he said it, and the island developed a sudden collective interest in its breakfast. Jaehyun didn't raise his voice when it counted. He didn't need to; the calm was the threat, and the calm was also, she'd only lately started to understand, the closest thing he had to worrying out loud." },
     { n: "He looked at the Band-Aid on her knuckles. He looked at it for exactly as long as it took to decide not to ask, which was half a second, which was very fast for Jaehyun, and then he rinsed his plate and put on his coat and squeezed the back of her neck once on his way past, hard, the way he used to when she was nine and he was leaving for something important." },
     { s: 'jaehyun', f: 'neutral', t: "Eat the banana." },
     { n: "Then he was gone, the front door, the cold, a slice of white light across the hall floor and then not. And the kitchen, which had been six people pretending not to be awake, became six people pretending not to notice who'd just come down the stairs." },
@@ -134,6 +149,8 @@
     { s: 'mark', f: 'serious', t: "...Can we do it out back?" },
     { place: 'Syracuse · Sigma Chi House · Back Porch', time: 'Morning', soft: true },
     { n: "The back porch, the cold, the yard white and stamped flat with a weekend's worth of boots, beer cans frozen into the snow by the fence like fossils. He set his mug on the railing and didn't drink from it. His phone was in his hand, and he turned it so she could see the timer running, 9:58, 9:57, and put it face up on the railing next to the mug, as if that settled something." },
+    { n: "He looked like he hadn't slept. Not finals-week tired, which was everyone; the other kind, the kind that sat under the eyes like a bruise and made a person stand very straight because standing loosely would mean something might fall out. The inside-out hoodie had a tag at the throat with his name on it in laundry marker, *MARK L.*, in somebody's careful mother handwriting from years ago. He hadn't noticed. She didn't tell him." },
+    { s: 'mark', f: 'neutral', t: "I'm not going to ask you anything. About over there. Or about him. I just need to say a thing and I need you to have heard it from me." },
     { s: 'mark', f: 'serious', t: "I kept it. You know I kept it. The original. From last year. You heard it at camp, because I played it for you, and I told myself that was for you, and it wasn't." },
     { s: 'mark', f: 'serious', t: "It isn't mine. It was never mine. It isn't Hyuck's either, and it isn't yours. It's hers." },
     { n: "Something went tight and cold in her chest, a whole year's worth of things she'd decided not to think about at once. She didn't say anything. She'd learned that from Danielle, of all people: you didn't help someone get through a confession. You let them carry it the whole way." },
@@ -142,14 +159,19 @@
     { s: 'solar', f: 'serious', t: "And Danielle's." },
     { s: 'mark', f: 'sad', t: "...Danielle's is the one I gave her. The one with no sound. I can't get it back. I'm not going to stand here and tell you I can. I put it in the letter. That she has it. That I gave it to her." },
     { n: "So that was every copy. He'd counted them out loud, like a man reading a receipt back at a register, and the number was larger than zero and it would always be larger than zero, and he knew that, and so did she." },
+    { s: 'solar', f: 'serious', t: "And yours. The one in your head." },
+    { n: "He actually flinched. Small, there and gone, a man touching a stove he'd known was hot." },
+    { s: 'mark', f: 'sad', t: "...That one I don't get to give anybody." },
     { s: 'mark', f: 'sad', t: "I told Johnny. Thursday, after the Dean. All of it. He didn't tell anyone. That's why everyone knows." },
     { n: "That was almost funny. It was the most Sigma sentence she'd ever heard, and he said it without a trace of a joke, and behind them, through the kitchen window, she could see Johnny's back at the island not moving at all." },
+    { n: "So the blue line through his name on the fridge had been Johnny's pen. Not a vote. Not a meeting. Just a VP with a ballpoint, quietly taking a man off a party committee, and the whole house reading the correction and understanding it, and not one of them saying a word to her about it, because in this house the loudest thing you could do to someone was nothing at all. She'd learned that here. She'd learned it from both of them." },
     { s: 'mark', f: 'sad', t: "I'm not telling you so you'll say it's okay. It's not okay. I just didn't want you to hear I'd done it from somebody who'd make it sound better than it was." },
     { s: 'solar', f: 'serious', t: "Why now." },
     { n: "He looked at the yard for a long time. The timer on the railing said 4:12." },
     { s: 'mark', f: 'sad', t: "Over there nobody had heard of me. Nobody knew what I'd done, and I wasn't the guy who'd done it. I was just. Some guy who could play piano in a dorm lounge at two in the morning. And I liked him. I really liked him, Sol." },
     { s: 'mark', f: 'serious', t: "I want to be him here. I don't get to just decide that. I have to, like. Pay for it first. This is the first payment. It's not the last one." },
     { n: "*Sol.* It went in the way it always went in, small and exact, a splinter she'd stopped trying to dig out. He heard himself say it. She watched him hear it, and not take it back, because he had no other name for her and they both knew it." },
+    { n: "She'd heard him play over there. Once. From a hallway at two in the morning, through a door that wasn't shut all the way: something slow and plain that didn't want anybody to clap, the kind of thing you only play when you're sure the room is empty. She'd stood in the dark and listened to the whole of it, and gone back to bed, and never told him. She didn't tell him now either. It wasn't hers to hand back to him. He'd have to find his way back to it on his own." },
     { choose: [
       { t: "Then make music honestly. Your own. Then we'll see.", flag: 'epi-r-mark-door', then: [
         { n: "He didn't smile. She was grateful for that. He nodded slowly, like she'd handed him a weight rather than a door, which was what it was, and he understood that it was what it was." },
@@ -166,6 +188,7 @@
       ] }
     ] },
     { place: 'Syracuse · Sigma Chi House · Kitchen', time: 'Morning', soft: true },
+    { n: "The kitchen had changed while they were gone, the way a room changes when it's been talking about you. Jeno was awake now, sitting up on the counter with the highlighter cap in his teeth, and he looked at Mark coming in behind her with an expression she'd never seen on Jeno's face before, which was no expression at all. Johnny typed. Jisung turned a card. Renjun ashed out the window. Nobody said anything, and the nothing had a shape, and Mark walked into it with his mug and stood in it, and didn't ask anybody to move." },
     { n: "Haechan was in the kitchen when they came back in. Hoodie, headphones round his neck, pouring coffee from the burnt pot into a mug that said WORLD'S OKAYEST BROTHER, which belonged to Jaehyun and which nobody had ever had the nerve to tell him about." },
     { ifEpiRoute: 'haechan', then: [
       { n: "His eyes found hers first. Then the Band-Aid. Then Mark, behind her. He went still in the way only she'd ever learned to read, the jaw, the half second of nothing, the filing away." }
@@ -184,7 +207,9 @@
     { n: "Then she was solid again, rinsing a plate, her back to the room. The tap ran. Jisung turned a flashcard. Haechan, at the coffee pot, hadn't been looking her way. Nobody else had seen a thing." },
     { n: "Mark put his mug down on the counter very carefully, as if it might go off." },
     { n: "He could have said it. He knew exactly what he could have said, and who to, and what it would have bought him: Jaehyun, a conversation, a *you need to know something about your sister,* the kind of currency he'd been spending his whole life. He could feel the shape of it in his mouth." },
+    { n: "It would have been so easy. That was the thing nobody had ever understood about him, not his mother, not Hyuck, not the girl whose name he'd written on a letter to a Dean on Thursday: that it was always easy. The right sentence for the right person was always sitting right there in his mouth like a coin, and he'd spent so many of them, and this one would have bought so much. *I'm worried about her.* It was even true. That was what made it such good currency." },
     { n: "He said nothing. He picked his bag up off the floor and went out the back door into the cold without his coat, and stood in the yard with his hands in his armpits until his Statistics final, not telling anyone. It was the one thing he got right that December. He'd never know it was." },
+    { n: "Out in the yard, with the cold getting into his fingers, he took his phone out. The timer had run to zero on the railing and was blinking at him, a little red bell. He reset it to ten minutes, for no reason, and stood in the snow and watched it count down, and thought about a lounge and a piano and a guy nobody had heard of, and how long it was going to take to be him here, and whether ten minutes at a time was a way to do it. He let it run." },
     { stat: { courage: 1 } }
   ] },
 
@@ -650,6 +675,8 @@
     { music: 'world-runners-theme' },
     { n: "The ladder was cold enough to burn. She went up it in gloves, rung over rung, the way she'd gone up it in October with her heart going for a completely different reason, and swung her leg over the parapet onto the roof of the Language Arts building, and stood up into the snow." },
     { n: "It was falling slow and thick and straight down, no wind, every flake taking its time. The whole campus below was white, the quad and the paths and the bell tower and the dome of the chapel, every lamppost wearing a little white cap, and beyond it the city's lights going soft and gold through the snow like they were very far away. The ledge had six inches on it. There was a can of Monster Pink Punch on the ledge, already open, half buried, with snow on its lid." },
+    { n: "Finals were over. Her last one had been yesterday at two, Intro to Business, in a gym full of folding desks, and she'd written the essay in forty minutes and spent the other eighty watching the clock over the scoreboard, watching the second hand go round, making sure. It had gone round every time. She'd counted. Tonight the first real snow of the year had come down on a campus already half empty, suitcases bumping down steps all afternoon, and she'd walked out into it with her hands in her pockets and her heart going for no reason she'd let herself name, and come here, because there was nowhere else on this campus she'd have gone." },
+    { n: "Her breath went up white. The cold had the clean metal taste it only got when the snow was serious. Somewhere below, on the quad, a group of freshmen were having a snowball fight in the dark and shrieking about it, small and far away, the most ordinary sound in the world, and she stood at the parapet and listened to it like it was music, because tonight it was." },
     { glitch: { stage: 4 } },
 
     // ── Haechan ──
@@ -660,7 +687,14 @@
       { flag: 'epi-r-jacket' },
       { n: "He didn't say anything about the jacket. He looked at it, at her in it, for one long second, the jaw, the nothing, the filing away, and then he looked at the snow, which was how she knew exactly what it had done to him." },
       { s: 'haechan', f: 'flustered', t: "It fits you better." },
+      { n: "He'd said it before. A jersey in the bleachers, a jacket at the edge of a valley, a ruling about what belonged to her, every time, because he'd never once been able to say a warm thing that wasn't shaped like one. She heard it this time for what it was. She didn't say so. She pulled the collar up round her chin instead, and let him see her do it, and that was her answer." },
       { n: "They stood at the ledge. They didn't say much. She drank half the Monster even though it was mostly ice. He told her the bell tower was a quarter-tone flat on the hour and had been since September and nobody had ever fixed it, and she said she'd never noticed, and he said that was because she'd never stood on a roof waiting for it, and she said she was standing on one now, and he didn't have anything to say to that." },
+      { s: 'solar', f: 'neutral', t: "Did you finish your final." },
+      { s: 'haechan', f: 'neutral', t: "Allegedly." },
+      { s: 'solar', f: 'happy', t: "Allegedly." },
+      { s: 'haechan', f: 'happy', t: "There was an essay question about the ethics of sampling. I wrote four pages. I think I wrote them to you." },
+      { n: "He said it to the snow. Aimed, fired, and then a look sideways to make sure she'd caught that he'd aimed it, and she had, and it went in somewhere under the jacket and stayed." },
+      { n: "Once, when the wind came up off the quad and threw snow sideways across the ledge, he said something under his breath, a word she didn't know in a language she half did, low and automatic, the way you'd say *careful* to somebody on a boat. When she looked at him he was watching the bell tower, and his face said he hadn't heard himself at all. She didn't ask. She put it with the knob that wasn't on the shelf, and the hand that reached for a dial that wasn't there, and let the snow cover it." },
       { ifYear: { rank: { haechan: 10 } }, then: [
         { n: "*You'll have no idea who I am for about five minutes,* he'd told her once, in another life, and he'd been right; on the first morning back she'd looked at him in a hallway and not known him for the longest five minutes of her life, and he'd stood there and timed it on his phone, and waited." }
       ] },
@@ -676,6 +710,10 @@
       { s: 'haechan', f: 'surprised', t: "...You brought backup." },
       { s: 'solar', f: 'happy', t: "They brought me." },
       { s: 'haechan', f: 'happy', t: "Good." },
+      { s: 'hyein', f: 'serious', t: "Is this where you two—" },
+      { s: 'hanni', f: 'serious', t: "Hyein." },
+      { s: 'hyein', f: 'flustered', t: "—come to look at the VIEW, is what I was going to say, Hanni, God." },
+      { n: "Haechan looked at Hyein, and then at the view, and then at Hyein again, with the flat patient face of a man deciding a heckler wasn't worth the mic, and Solar watched it crack, very slightly, at the corner of his mouth." },
       { n: "Hyein looked at him for a long time. Then she held out her mittened hand, and he looked at it, and took it, and shook it once, very formally, like two people signing something, and Hanni laughed so suddenly she had to put her face in her scarf." },
       { n: "At five to midnight Hanni took her left hand. Hyein took her right. Nobody said why. Nobody needed to." }
     ] },
@@ -689,6 +727,10 @@
       { n: "He was by the vent stack, in black, with snow on his shoulders. He looked at Minji and the camera and the little red light, and then at Solar, and he didn't say anything about any of it. He just nodded at Minji, once, the way one person who makes things nods at another." },
       { s: 'haechan', f: 'happy', t: "Frame's a little left. The tower wants to be in it." },
       { s: 'minji', f: 'happy', t: "I know where the tower wants to be." },
+      { n: "She checked the battery, twice, and the card, once, and then took a spare battery out of her coat and put it in her glove where she could get it with one hand, and Solar watched her do all of it and understood that Minji had packed for this the way you'd pack for a long night in a hospital waiting room: everything you'd need to keep doing the one thing, for as long as it took." },
+      { s: 'minji', f: 'neutral', t: "Ninety minutes on this one. Ninety on the spare. I'm not running out." },
+      { s: 'solar', f: 'neutral', t: "It's going to be less than ninety minutes." },
+      { s: 'minji', f: 'serious', t: "I know. I'm not running out." },
       { n: "At five to midnight the red light was still on. Minji had stopped looking at the campus. The lens was on Solar, steady, and Minji's face above it was very still." }
     ] },
 
@@ -700,6 +742,8 @@
     { n: "On the third stroke it started, and it wasn't like the other times. The other times had been a door opening and closing. This was a tide going out." },
     { n: "She felt it in her feet first, the roof under her boots going thin, like ice in March, and then her hands, the snow falling *through* them, and she looked down and her edges were coming apart into light, green and gold, fine as the snow and going the other way, up, like the snow on the quad on Monday, every flake of her going home. Behind the bell tower the sky had split like a seam. Through it, so close she could have touched it, a tower, and a moon the wrong color, and a city where every clock had stopped." },
     { n: "It wanted her back. She could feel it want her. It didn't feel cruel. It felt like being called in for dinner by someone who'd been calling a long time." },
+    { n: "And under the bells, under the wind, she heard a train. Which was impossible. There were no trains on this side of campus, or the other side, or in this part of the state at this hour, and she heard one anyway, far off and coming closer, the long low note of a horn at a crossing, the sound a platform makes when it's been empty for a very long time and something has finally pulled in." },
+    { n: "Part of her, a small honest part she didn't like, wanted to go. That was the worst of it. Not the pull. The part of her that leaned into it like a girl leaning toward a window on a long drive home, half asleep, sure that whoever was waiting at the other end would know her face." },
     { s: 'solar', f: 'surprised', t: "No— no, no, I don't— I'm not—" },
 
     { ifEpiRoute: 'cover', then: [
@@ -715,12 +759,15 @@
     { n: "And he held on." },
     { n: "Both arms. Around her, from in front, pulling her into him so hard the breath went out of her, his whole weight leaning back against the pull like a boy holding a door shut against a storm, one hand flat between her shoulder blades and the other in her hair, and she could feel his arms going through her and he didn't care, he held on to the light anyway, he held on to whatever of her there was." },
     { n: "She was panicking. She knew she was. Her breath came in sobs she couldn't stop and her hands were in his coat, fisted, going through it, coming back, and she could hear herself saying his name, all of his names, *Haechan, Hyuck, Donghyuck,* over and over like she was trying to find the one that would work." },
+    { n: "In the middle of it, absurdly, she thought of the valley. A tree that leaned too far to the right, an ugly blanket, a boy who'd been going whether she came or not. He'd been there first, that night. He'd been there first every time, on the steps, by the stairs, at the vent stack in the snow. It had never once been about whether she came. It had been about being there when she did." },
     { s: 'haechan', f: 'serious', t: "Solar. Look at me. Look at me." },
     { n: "She looked at him. His face was an inch from hers, snow in his hair, and for once in his entire life he wasn't flat. Every single thing he'd ever filed away was on it, all at once, and he let her see all of it." },
     { s: 'haechan', f: 'sad', t: "I'll find you." },
     { s: 'haechan', f: 'sad', t: "Wherever it takes you. Whatever you are there. Whoever I am. I'll find you." },
     { s: 'haechan', f: 'sad', t: "Every world." },
     { flag: 'epi-r-held' },
+    { n: "She heard it. Through the bells and the train and her own breath going in sobs, she heard it, every word, flat and sure the way he said the things he'd decided were true, and something in her that had been leaning toward the window stopped leaning." },
+    { n: "She held on back. That was the only thing she could do, so she did it with everything: her fists in his coat, her forehead against his collarbone, her whole weight thrown the other way, the way you'd throw it against a door. If her hands went through him she closed them again. If they went through again she closed them again. She was very good, it turned out, at doing a thing over and over until it worked. She'd had a whole year of practice." },
     { n: "The bell rang. Seven. Eight. The light came off her like snow off a roof, and the sky behind the tower opened wider, and his arms were around her, and everyone who loved her on that roof was holding on, and the snow fell through all of them and up, and the tower in the seam of the sky waited, very patient, very green, and the last thing she felt was his hand in her hair, and the last thing she heard was the bell, a quarter-tone flat, ringing nine, ten—" },
     { n: "—and on the ledge, half buried in the snow, the can of Monster Pink Punch stood where she'd left it, and somewhere a long way off, in a city where it was always midnight, every clock began, very slowly, to move." }
   ] }

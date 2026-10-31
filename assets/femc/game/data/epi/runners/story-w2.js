@@ -16,11 +16,16 @@
      epi-r-term-safety                      the safety plan: she gets help first, then calls Chenle (always set with the terms)
      epi-r-studio-late                      studio, Haechan route: she stayed
      epi-r-reel-yes / epi-r-reel-cut / epi-r-reel-think   Minji's showcase: yes / yes without the green frame / not yet
+     epi-r-minji-told                       reel (depth pass): she told Minji the green isn't the card, it's following her home
+                                            (read by people-w3.js epi-r-minji-4)
      epi-r-danielle-print                   she has seen Danielle's frame (12/11)
      epi-r-public-inner / epi-r-public-post going public (12/12, Haechan route)
    Reads: epi-r-stem-wait / -file / -deleted, the locked route (ifEpiRoute), epi-r-term-*, epi-r-danielle-print,
      epi-r-public-post; ifYear: met wren, flag danielle-refused / danielle-sold, rank danielle 6, noFlag arrived-danielle /
      arrived-jaemin / arrived-mark / arrived-chenle, xmas minji, romance minji. Routine epi-r-rt-jeno gates on events: ['epi-r-sigma'].
+   Depth pass (2026-10-31): epi-r-playback, epi-r-sisters and epi-r-reel deepened (narration and beats added; nothing that sets or
+     reads anything moved). Small inventions: the session's vocal lane is labelled SOLAR LEE and the file carries two sets of initials
+     (still untitled); Ms. Han has been her father's assistant for eleven years; Danielle's "Welcome home, by the way."
    Glitches: { glitch: { stage: 2 } } + epi-r-g-room (studio playback), epi-r-g-freeze + tint (the party), epi-r-g-yunjin
      (the quad), strain on the lying choices (sisters, print, the party's cover). The track stays untitled. */
 (() => {
@@ -280,6 +285,8 @@
         { from: 'solar', t: 'after dinner' },
         { from: 'haechan', t: 'eat first then. actually eat' }
       ], contact: 'haechanah' },
+      { n: "She ate first. She actually ate, in the dining hall, a bowl of something orange with a spoon that bent, and sent him a photo of the empty bowl with no caption, and he left it on read for four minutes and then sent back a single thumbs-up, which from him was a standing ovation." },
+      { n: "The Extracurricular Building at eight on a Wednesday was two buildings stacked on top of each other. Downstairs the lab was dark, the RGB on every keyboard still cycling slowly for nobody, the glass where he'd once stood outside a practice with his hands in his pockets reflecting her back at herself as she passed. Upstairs one door had light under it. She went up. Every step on the stairs between the two floors felt like crossing a border nobody else could see." },
       { n: "There was music already playing when she got there, and it wasn't his, or it wasn't only his. Two girls' voices on a demo, close-miked, one warm and breathy and one with an edge on it like a cut glass, trading lines over a beat he'd clearly built, the hook going up where you didn't expect it to and staying there a beat longer than was polite." },
         { s: 'haechan', f: 'neutral', t: "Client. Kazuha and Chaewon. They pay on time and they know what they want, which makes them the best people I've ever worked for." },
         { s: 'haechan', f: 'neutral', t: "Sit. They're calling in a minute and then it's yours." },
@@ -291,13 +298,22 @@
         { n: "Her eyes had gone past him to the corner of the frame. To Solar." },
         { s: 'haechan', f: 'neutral', t: "She's not on this session." },
         { n: "Not *nobody.* Not *a friend.* Not anything that would make her a thing on someone else's call. Chaewon nodded like that was a perfectly normal answer, and it was, and the call ended, and Solar sat in the corner with her coat still on and something warm and stupid in her chest she was choosing not to name." },
+        { s: 'solar', f: 'neutral', t: "'She's not on this session.'" },
+        { s: 'haechan', f: 'neutral', t: "You're not." },
+        { s: 'solar', f: 'happy', t: "That's a very lawyer way of putting it." },
+        { s: 'haechan', f: 'happy', t: "Lawyers get paid on time too." },
         { n: "He reached, then, to the shelf over the desk, absently, the way you reach for a light switch in your own house in the dark, his hand going up to something that should have been there at the height of his shoulder, a dial, a knob, and closing on nothing. He looked at his own hand for a second as if it belonged to somebody else. Then he put it on the mouse." },
+        { s: 'solar', f: 'neutral', t: "What were you reaching for?" },
+        { s: 'haechan', f: 'neutral', t: "...Nothing. Thought there was a knob there." },
+        { n: "There had never been a knob there. She knew that shelf; she'd looked at it for a whole evening on Tuesday while he set levels, a row of hard drives and a dead plant and a mug of pens. She didn't say so. She filed it, the way he filed things, somewhere she'd be able to find it again." },
         { s: 'haechan', f: 'neutral', t: "...Okay. Yours." },
         { music: 'epi-r-studio' }, // the track itself: Not Enough, her voice on it
         { n: "He didn't explain it before he played it. That was the first thing she noticed and she would think about it later more than the music: he didn't tell her what to listen for, or what it meant, or what it had cost. He pressed the space bar and leaned back and looked at the floor." },
         { n: "The bones from his room had a body now. She recognized them the way you recognize a house you lived in once from the street, the shape of it under the new paint, and then the low thing came in under everything, the thing that moved like weather, and the drums, and then, in the place where there'd been a hole yesterday, her voice." },
         { n: "Her voice. The one from Tuesday, the one she'd given him with the red light on, low and steady and hers, laid into the track so carefully it didn't sound placed there, it sounded like the song had been waiting for it, like the whole architecture of the thing had been built around a space only that shape would fit. It was the most beautiful thing anybody had ever made with her in it." },
         { n: "And it had still been taken, the first time. Both of those were true at once. She sat with both of them on the glued couch with her coat still on and didn't let either one win, because the minute the beauty won, it would become an explanation, and she had decided on Sunday that nothing was going to explain it away. Not even this. Especially not this." },
+        { n: "She'd never heard herself from the outside like that. On voicemails, in the background of Minji's footage, her voice always sounded thin and strange and a little younger than she was, a girl doing an impression of her. This didn't. This sounded like someone she'd want to know. She sat very still and listened to a stranger who was her, and her throat did something on the second chorus that she didn't let reach her face." },
+        { n: "He didn't look at her once the whole time it played. She noticed that around the bridge. He was giving her the one thing he'd taken from her the first time, which was being alone with it." },
         { n: "He didn't say the name of it. It had a name; she could tell from how he held his mouth at the end, the way you hold a word you've decided not to spend. The session file just said a date and a number. She didn't ask. Some things you let a person keep, and some things you make them hand over, and she'd done the second kind of thing yesterday, and today she could afford the first." },
         { choose: [
           { t: "(Say nothing. Stay till it ends.)", then: [
@@ -315,6 +331,11 @@
           ] }
         ] },
         { bond: { haechan: 1 } },
+        { n: "Before he closed the session he scrolled up through the track list, without comment, slowly enough that she could read it. The vocal lane didn't say VOX or STEM or a number, the way every other lane said a number. It said SOLAR LEE, both names, in the plain gray type the program used for everything. In the corner, where his tag sat on every file he'd ever made, there were two sets of initials instead of one." },
+        { s: 'solar', f: 'surprised', t: "You put my name on it." },
+        { s: 'haechan', f: 'serious', t: "It's your voice." },
+        { s: 'haechan', f: 'neutral', t: "I know what it does to a person when the name's wrong." },
+        { n: "He said it to the screen, flat, and closed the session before she could ask what he meant, and she didn't ask, because she was nearly sure she already knew, from a roof in October and a sentence about the wrong person getting to tell the story first. Some things you let a person keep. She let him keep that one too." },
         { n: "The snow had started again by the time she left. He walked her to the bottom of the stairs, which was as far as he walked anybody, and she looked back from the door and he was still standing there with his hands in his pockets, watching her the way he'd watched the far path in the valley, reading her off the dark, and for once she didn't mind being read." }
     ] },
 
@@ -322,21 +343,28 @@
     { id: 'epi-r-sisters', date: '12/10', slot: 'evening', consumes: true, flag: 'epi-route-cover', title: 'the emergency vacation, again', place: 'Syracuse · Alpha Phi House', time: 'Evening', scene: [
       { music: 'epi-r-sisters' },
       { n: "Wednesday chapter meeting, seven o'clock, the living room with the good couches pushed back and the folding chairs out, forty girls in sweatpants and pearls in various ratios, somebody's candle making the whole room smell like a cookie someone had set on fire, and Chungha at the front with the laptop and the little bell she rang when people talked over each other, which was always." },
+        { n: "Solar sat on the arm of the couch at the back, because the arm of the couch at the back was where you sat when you wanted to be technically present, and Hyein sat on the floor at her feet with a bag of pretzels she'd been told twice to put away. Hanni was in the second row with the Social Chair binder on her knees. Danielle was in the first row. Danielle was always in the first row." },
         { n: "Danielle had the treasurer's report. She always had the treasurer's report. It was usually four minutes long and nobody listened to it, and tonight it was four minutes long and then she turned a page in the folder she kept on her knee, unhurried, and kept going." },
         { s: 'danielle', f: 'happy', t: "One more thing. Just for the records." },
         { s: 'danielle', f: 'happy', t: "I'm reconciling November, and there's a line I can't close. The retreat over the break. The joint one. I've had three people mention it to me as a chapter trip, and it isn't in the budget, and it isn't on the risk forms, and nobody filed a headcount with Chungha, which I know, because I asked her." },
         { n: "Chungha's bell hand went very still on the table. Chaeyeon, beside her, found something deeply interesting on the agenda." },
+        { n: "Forty girls did the arithmetic at once. Solar watched it happen across the room, the way you watch wind move over a field: a head turning here, two girls looking at each other over there, Olivia's mouth coming open and then, astonishingly, closing again. At her feet Hyein had stopped chewing." },
+        { s: 'hyein', f: 'flustered', t: "(She's doing the folder thing.)" },
         { s: 'danielle', f: 'neutral', t: "So I'm just asking. If it was a chapter event, I need to know who went and who paid for it, so we're covered. Insurance. That's all. And if it wasn't, then it's a private trip, and I'll stop calling it one." },
         { s: 'danielle', f: 'happy', t: "Only it's a little awkward, because a Ms. Han called the chapter line on the twenty-sixth. Very polite. Very formal. Asking about the dates of the chapter trip, so her office could make arrangements. I told her I'd look into it." },
         { n: "Solar felt it in her stomach first, the way you feel an elevator go before the floor numbers change. Ms. Han. On the chapter line. On the twenty-sixth, while Solar was somewhere none of these girls had a word for, and Danielle had been sitting on it for two weeks like a coin she was saving." },
+        { n: "Ms. Han. Her father's assistant for eleven years, who sent flowers on Solar's birthday every year on the right day and had never once been told what kind Solar liked. Ms. Han didn't call chapter lines because she was curious. Ms. Han called chapter lines because somebody on the forty-first floor had said, in a perfectly level voice, *find out where my daughter is,* and then gone back to his meeting." },
         { glitch: 'tint' },
         { n: "Hanni stood up. Not dramatically. Social Chair stood up at every meeting, it was practically in the bylaws, and she stood with her phone in her hand and her calendar open on it like she'd been waiting all evening to be asked." },
         { s: 'hanni', f: 'serious', t: "It wasn't a chapter event. It was a private trip. Some of us and some of Sigma, over the break, on our own money. Nobody filed anything because there was nothing to file." },
         { s: 'hyein', f: 'happy', t: "Friendsgiving! It was a Friendsgiving situation! With, like, a cabin component." },
         { s: 'hanni', f: 'serious', t: "So you can stop calling it one. Thanks, Danielle." },
         { s: 'danielle', f: 'happy', t: "Of course. Then I'll let Ms. Han know it wasn't the chapter. She'll want to know." },
+        { n: "Of course. Pleasant, helpful, a treasurer closing a line. She hadn't said a single thing that wasn't true. That was Danielle's whole gift: she never needed to lie. She only needed to know which true thing to say in which room, and wait." },
         { n: "She turned to Solar. Not all the way. Just her eyes, over the folder, the gold in them catching the bad overhead light, and the room did what rooms did, which was follow her look to the end of it." },
         { s: 'chungha', t: "...Solar? Just so we have it straight. Was it the chapter?" },
+        { n: "Forty faces. The candle. Hanni still standing, very straight, her thumb pressed white against the edge of her phone. Hyein's hand had found Solar's ankle at some point and was holding it, which was not a thing ankles were usually held for, and which helped more than it had any right to." },
+        { n: "And Danielle, in the first row, waiting, with the pleasant face of somebody who would be equally happy with any answer, because she'd already written all of them down." },
         { choose: [
           { t: "(Lie.) It was a Sigma thing. We tagged along. Nothing to do with Alpha.", then: [
             { glitch: { strain: 1 } },
@@ -354,6 +382,9 @@
           ] }
         ] },
         { n: "Chaeyeon, Solar noticed, never looked up from the agenda once. Not when Danielle said Ms. Han, not when Hanni stood. She sat through the rest of the meeting with her pen capped and her eyes on the same line of the same page, and when it ended she was out of her chair before the bell had finished ringing." },
+        { n: "On the way out, in the crush at the door, Danielle passed close enough that Solar could smell her perfume, something expensive and green, and said without slowing, without turning her head, in a voice so pleasant it could have been a compliment:" },
+        { s: 'danielle', f: 'happy', t: "Welcome home, by the way. I don't think anyone said." },
+        { n: "Then she was gone up the stairs, the folder under her arm, and Solar stood in the doorway with forty girls flowing round her like water round a post, and didn't move until Hyein took her by the sleeve and towed her." },
         { place: "Syracuse · Alpha Phi House · Hanni and Hyein's Room", time: 'Night' },
         { cg: 'epi-r-floor' },
         { n: "After, the three of them on Hanni and Hyein's floor, because the beds were for sleeping and the floor was for crises, a ruling Hyein had made in September and enforced ever since. Fairy lights. The radiator knocking like it wanted in on the conversation. Hyein's half-finished sketches for Jaemin's December outfits pinned to the corkboard over her desk, headless figures in velvet, judging them." },
@@ -365,6 +396,11 @@
         { n: "It was getting harder to hold. All three of them could feel it, the way you can feel a stack of books start to lean before it goes. Every person who believed the story asked one more question, and every question needed one more answer, and every answer was a little brick they'd have to remember the exact shape of forever." },
         { s: 'hanni', f: 'serious', t: "Okay. Okay. We tighten it. One cabin. Upstate. Someone's uncle's. No names, nobody posts, nobody remembers the address because it was a dirt road. We say less. Less is harder to check." },
         { s: 'hyein', f: 'serious', t: "And we say it the same. All of us. Word for word. Memorize it." },
+        { s: 'hyein', f: 'serious', t: "I'm making flashcards." },
+        { s: 'hanni', f: 'serious', t: "Do not make flashcards." },
+        { s: 'hyein', f: 'flustered', t: "Physical flashcards can't be screenshotted. And if anyone finds them, I eat them." },
+        { s: 'hanni', f: 'neutral', t: "You're going to eat a cabin." },
+        { s: 'hyein', f: 'serious', t: "I'll eat a whole Friendsgiving if I have to." },
         { n: "Solar laughed, and it came out wrong, wet at the edges. *Memorize it.* The first morning, the snow on the sill, the girls saying exactly that. It felt like a year ago. It had been nine days." },
         { s: 'hanni', f: 'sad', t: "...Sol. I'm sorry. It's my fault she has this much rope. I should have said something at the door. In November. I keep thinking about it." },
         { choose: [
@@ -381,6 +417,11 @@
         ] },
         { bond: { hanni: 1 } },
         { cg: null },
+        { n: "Later, Hyein fell asleep sitting up against the bed frame with a pencil in her hand and a flashcard in her lap that said, in her best handwriting, *DIRT ROAD — NO ADDRESS — WHO REMEMBERS ADDRESSES.* Hanni put a blanket over her without waking her and sat back down next to Solar, close, shoulder to shoulder, the way they used to sit in another dorm, on another floor, watching another door." },
+        { s: 'hanni', f: 'neutral', t: "We just have to be boring. Ten more days. Then everyone goes home and it's somebody else's problem till January." },
+        { s: 'solar', f: 'happy', t: "I've never been boring a day in my life." },
+        { s: 'hanni', f: 'happy', t: "I know. It's the worst thing about you." },
+        { n: "Solar laughed, very quietly so Hyein wouldn't wake, and Hanni leaned her head on her shoulder, and they sat like that until the fairy lights came on by themselves on their little timer, which they'd both forgotten about, and made the whole room gold for no reason at all." },
         { n: "When she went back to her own room the hall was dark, and Danielle's door at the end of it was open, the way it was always open, a slice of lamplight on the carpet. She walked past it without turning her head. She felt the light on the side of her face the whole way, like the sun through a car window, long after she'd shut her own door." }
     ] },
 
@@ -389,6 +430,8 @@
       { music: 'epi-r-closure' },
       { n: "Minji's room in the honors dorm was the cleanest room Solar had ever been in that belonged to someone under thirty. Two monitors, a hard drive tower stacked like a wedding cake, a corkboard with index cards in color-coded rows, the bed made with hospital corners, and on the windowsill a single dying succulent Minji refused to give up on, which explained most things about her." },
         { n: "She'd asked Solar to come. Asked properly, a text at noon with a time and an out: *you can say no, it's just footage.* Nothing with Minji was ever just footage. That was the whole point of Minji." },
+        { n: "The honors dorm made you sign in at the front desk after seven, a binder and a pen on a string and an RA with a calculus textbook who didn't look up, and Minji came down to get her in socks, which was the most undefended Solar had ever seen her. On the stairs she said *sorry, it's a mess,* about a room that turned out to have its pens sorted by color. Solar didn't say anything. She'd learned a long time ago not to argue with Minji about Minji." },
+        { n: "There was tea. Of course there was tea; there was a kettle on the desk that was definitely against the rules and a box of something with chamomile in it, and Minji made two cups without asking whether Solar wanted one, which was the only thing Solar had ever seen her do without asking, and set one at Solar's elbow on a coaster shaped like a film reel. Solar looked at the coaster. Minji looked at the monitor very hard." },
         { s: 'minji', f: 'neutral', t: "I want to show you something before I show anyone else. And then I want to ask you something. In that order. Okay?" },
         { s: 'solar', f: 'neutral', t: "Okay." },
         { ifYear: { xmas: 'minji' }, then: [
@@ -407,6 +450,22 @@
           { s: 'minji', f: 'serious', t: "You know who that is. I can see you know. You don't have to tell me. I think I know too. I saw him at the dorm once. Over there." }
         ] },
         { n: "They sat with it for a minute, the frame frozen on the monitor, the hard drives humming, the radiator ticking, two girls who'd been somewhere neither of them could explain looking at proof of it that nobody else on earth would believe was proof of anything." },
+        { n: "Solar's tea had gone cold in her hands. She hadn't drunk any of it. She could feel the shape of the thing she wasn't saying sitting in her mouth like a stone, the thing about the moon on Thursday, and her thumbs on Monday typing a word that wasn't English or Korean, and a dorm she sometimes smelled in the stairwell of the Alpha house for no reason at all." },
+        { choose: [
+          { t: "(Tell her it isn't the card.)", flag: 'epi-r-minji-told', then: [
+            { s: 'solar', f: 'serious', t: "It isn't the card. It isn't the camera. It's the same thing as over there, Minji. It's following me home. A little more every day." },
+            { n: "She'd never said it out loud. Not to the girls, not to anyone. It came out flatter than she'd meant, a weather report, and Minji didn't flinch at it, and didn't reach for her, and didn't say *you're tired.* She just looked at Solar the way she looked at a frame she was deciding whether to keep, all the way through, and believed her." },
+            { s: 'minji', f: 'serious', t: "Following you." },
+            { s: 'solar', f: 'sad', t: "Following me." },
+            { s: 'minji', f: 'neutral', t: "Okay. Then I'll keep a camera on you. Not for the reel. Not for anything. Just so somebody's watching who knows what they're looking at." },
+            { n: "It should have sounded like surveillance. Coming from anybody else on this campus it would have. From Minji it sounded like somebody offering to sit up with you in a hospital, and Solar had to look at the succulent on the windowsill for a while before she trusted her face again." }
+          ] },
+          { t: "(Not here. Not with an RA down the hall.)", then: [
+            { n: "She shook her head. Just once. Minji watched her do it and nodded, like Solar had answered a question about a lens, and closed the frame, and the quad came back on the monitor, ordinary and gray." },
+            { s: 'minji', f: 'neutral', t: "Okay. Not here." },
+            { n: "She didn't push. She never pushed. She just moved the file into a folder and named it with the date and nothing else, and Solar watched her do it and understood that *not here* had been heard as exactly that, not *never,* and that the door would be standing open whenever she came back to it." }
+          ] }
+        ] },
         { s: 'minji', f: 'neutral', t: "There's a showcase in the spring. The film department. Shorts, ten minutes, a jury, a real audience. I've been cutting something since we got back." },
         { s: 'minji', f: 'flustered', t: "It's not about you. It's, it has you in it. It's about coming home and nobody knowing you went anywhere. About pretending it was a cabin." },
         { cg: 'epi-r-reel' },
@@ -427,6 +486,14 @@
           ] }
         ] },
         { cg: null },
+        { n: "Minji turned the monitor off. Not to sleep: off, the button on the front, so the room went down to the desk lamp and the little blue eye of the hard drive tower. Solar had never seen her turn a screen off with footage on it. It was, she thought, the same as somebody putting a book face down instead of closing it." },
+        { s: 'minji', f: 'neutral', t: "Can I tell you something that isn't about the reel?" },
+        { s: 'solar', f: 'neutral', t: "You're asking again." },
+        { s: 'minji', f: 'happy', t: "I'm always going to be asking again. Get used to it." },
+        { s: 'minji', f: 'serious', t: "Doyoung asked me today if I was okay. Just that. He's never asked me that. I said yes, and he said *okay* and wrote something down, and I've been thinking about it all day, because it was true. I am. Mostly. I didn't expect to be." },
+        { n: "It wasn't about Solar. Minji had been careful, all evening, to make sure the things she said weren't about Solar, the way you'd be careful carrying something full across a room. Solar heard it anyway. She heard the *mostly,* too, and didn't touch it, because it wasn't hers to touch." },
+        { s: 'solar', f: 'happy', t: "Good. I'm glad. I mean it." },
+        { s: 'minji', f: 'happy', t: "I know you mean it. That's the annoying part." },
         { ifYear: { romance: 'minji' }, then: [
           { n: "At the door, coat on, Solar turned back for no reason, and Minji was already looking at her, the way she'd looked at her across a whole year in another city, in a dorm, on a roof, and didn't look away this time, and didn't say anything either." },
           { s: 'minji', f: 'serious', t: "I said what I said on Sunday. I meant it. I just want you to know I didn't say it so the door would close." },

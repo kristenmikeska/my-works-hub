@@ -21,7 +21,8 @@
    Flags set     epi-h-unseen, epi-h-said-name, epi-h-jihoon-remembers, epi-h-gym-plan, epi-h-filed, epi-h-unheard
                  local (choice detail, free for later files to read): epi-h-snow-truth / epi-h-snow-nothing / epi-h-snow-kiss
                  (1/4 walk home), epi-h-window-first / epi-h-window-waited (who said the name first), epi-h-porch-stay /
-                 epi-h-porch-joke (1/6 porch), epi-h-war-sol-post / -sol-receipts / -sol-gym (her forum-war job),
+                 epi-h-porch-joke (1/6 porch), epi-h-porch-pot (1/6 porch, depth pass: she holds the white one's pot while he
+                 pours; read by epi-h-jihoon-6 in people.js), epi-h-war-sol-post / -sol-receipts / -sol-gym (her forum-war job),
                  epi-h-eunchae-quote / -smile / -nocomment (1/8 lunch).
    Flags read    epi-route-jungwon / -jihoon / -council (event gates and ifEpiRoute), epi-h-notes, epi-h-alone, epi-h-unseen,
                  epi-h-jihoon-chose, epi-h-said-name, epi-h-jihoon-remembers, epi-h-gym-plan, epi-h-retreat
@@ -43,6 +44,10 @@
        reply a side; questions from the floor; Eunchae may stream from the back row only; no phones raised; the tin comes
        to the hearing. Who speaks for the council is left open ("tell me by Wednesday").
      - Jihoon's Persona memory: "a goblin with a club came out of my head" (Dokkaebi) and arm-wrestling Akihiko.
+     - Depth pass (2026-10-31): the window walk (she counts the gates, seven to his), he comes down in untied school shoes with no
+       socks, the recycling-bin plan, his texts from inside; the porch: the lamp left on in the front room, the dented kettle,
+       Jihoon on the dorm's front step at 3 a.m. from the guesthouse with Koromaru on his feet, "same time tomorrow"
+       until the pots are green.
 */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).hoax ||= {});
@@ -240,6 +245,8 @@
       { from: 'jungwon', t: "solar it's been four minutes, are you walking here right now." }
     ], contact: 'jungwon' },
     { n: "She was. Down the road and round the corner in her biggest coat and her pyjama bottoms tucked into her boots, the snow from Thursday still banked up waist-high along the kerbs and frozen hard on top, Jungwon's street lit orange and empty and so quiet she could hear the streetlight hum. His mother's car sat in the driveway under a white crust. The whole house was dark except one window over the garage." },
+    { n: "She'd walked this street a hundred times since September and never once at night by herself, and it was different at night, the gates all shut and their little lights all the same warm white, the houses set back behind them like people standing politely at the back of a room. She caught herself counting the gates. Seven to his. She'd never counted them before. She'd caught it off him, the counting, the way you catch a cold off someone you sit too close to, and she didn't mind." },
+    { n: "Somebody's television flickered blue behind a curtain. Somebody's boiler kicked on with a cough. Her breath went up in front of her face and kept going up, past the streetlight, which she didn't look at, because it had been doing that since Thursday and she'd decided not to give it the satisfaction." },
     { n: "The curtain moved. Then the window opened, and Yang Jungwon, student council president of two years, a boy who had never in his life been outside after curfew without a typed reason, looked down at her in a hoodie with an expression like she'd personally asked him to commit a felony." },
     { s: 'jungwon', f: 'surprised', t: "Go home. You'll get frostbite." },
     { s: 'solar', f: 'happy', t: "Come down, then." },
@@ -248,6 +255,7 @@
     { n: "He looked at the garage roof. He looked at her. He looked at the garage roof again with the specific face of somebody running the numbers and not liking any of them." },
     { n: "It took him four minutes. He got one leg over the sill, then the other, then sat on the edge of the roof in the snow for a long time with both hands flat beside him like the roof might buck him off, and then he slid, not on purpose, the last metre, and landed in the drift by the drainpipe up to his hips, and somewhere in the house next door a dog started barking, and from inside his own house, faint and furious, Maeumi joined in." },
     { n: "They both froze. Solar had both hands over her mouth. A light came on two houses down, stayed on for an endless ten seconds, and went off again." },
+    { n: "He was in his school shoes. Untied. No socks, she found out later, because socks would've meant opening the drawer that stuck, and the drawer that stuck was directly over his parents' bedroom. There was snow in the left one. He stood in the drift like he'd been planted there and looked down at himself with the face of a man reading his own autopsy." },
     { s: 'jungwon', f: 'flustered', t: "Don't." },
     { s: 'solar', f: 'happy', t: "I didn't say anything." },
     { s: 'jungwon', f: 'flustered', t: "You're going to say noodle arms. Niki already says noodle arms." },
@@ -290,11 +298,27 @@
     { s: 'solar', f: 'serious', t: "You know who he is." },
     { s: 'jungwon', f: 'serious', t: "I know who he is." },
     { s: 'jungwon', f: 'serious', t: "Not here." },
+    { n: "She waited for more and there wasn't any. His fingers had started again on his knee, small and steady, and this time he noticed, and stopped them, and then, slowly, on purpose, let them go on. Like he'd decided it was alright for her to see him do it." },
+    { n: "She put her hand over his. Not to stop him. Just to be on top of the counting, so that whatever he was counting toward, wherever it was, he'd be counting with her hand on it." },
     { n: "That was as much as he would say about it, then or ever, probably, and it was more than enough. She put her face into his shoulder. He let her. His hoodie smelled like his room, like laundry and pencil shavings and the inside of the car." },
     { s: 'jungwon', f: 'happy', t: "You can say it whenever you want. To me. I'm not going anywhere because of it." },
     { s: 'solar', f: 'happy', t: "That's such a president thing to say." },
     { s: 'jungwon', f: 'happy', t: "I'm a president. I say president things." },
+    { n: "They sat a while longer than either of them should have. A car went by on the main road. The streetlight hummed. His shoulder was warm through two coats and a hoodie and she could feel him breathing, slow, the way he breathed when he'd finished a paper early and was going back over it for mistakes he wasn't going to find." },
+    { s: 'jungwon', f: 'neutral', t: "I'm going to have to go back up." },
+    { s: 'solar', f: 'happy', t: "Via the roof." },
+    { s: 'jungwon', f: 'serious', t: "I've been thinking about it the whole time. I have a plan. It involves the recycling bin." },
+    { s: 'solar', f: 'happy', t: "The whole time? Even during the—" },
+    { s: 'jungwon', f: 'flustered', t: "Not during. Before and after. I'm not a monster." },
     { n: "Getting him back up onto the garage roof took both of them, the recycling bin, and a boost from her laced hands that she would be bringing up at every council meeting until the day she died, and when the window finally slid shut behind him and the light went off, she stood under it in the snow for another minute anyway, in case." },
+    { phone: [
+      { from: 'jungwon', t: "i'm in." },
+      { from: 'jungwon', t: "there's snow in my bed. i don't know how. i came in through the window, not the bed." },
+      { from: 'jungwon', t: "maeumi is looking at me like he knows." },
+      { from: 'solar', t: "he does know" },
+      { from: 'jungwon', t: "he won't tell. we have an understanding." },
+      { from: 'jungwon', t: "go home, sol. text me when you're inside." }
+    ], contact: 'Won' },
     { bond: { jungwon: 1 } },
     { flag: 'epi-h-said-name' },
     { n: "She said it once more on the walk home, to nobody, to the snowbanks. Nothing answered. She'd have been more scared if something had." }
@@ -310,6 +334,24 @@
     { s: 'solar', f: 'surprised', t: "It's minus eight." },
     { s: 'jihoon', f: 'happy', t: "And these are the toughest plants in Hanlim. They've survived five winters of me. They can survive one more, with the proper royal treatment." },
     { n: "He moved on to the next pot. She sat down on the top step with her knees up inside her coat, the way she'd sat on this step since before she could tie her shoes, and didn't say anything about whose flowers they were. Nobody ever did. It was the one rule all seven of them had kept since they were thirteen without anybody ever having to say it out loud." },
+    { n: "Behind him the house was dark except for one lamp in the front room, the one by the window, which he left on every night so the house looked like somebody was in it besides him. Through the glass she could see the edge of the shelf with the photographs on it, the frames all facing the room, dusted, straight. She looked at them the way you look at a thing in a museum you've been told not to touch, and then she looked at the kettle." },
+    { n: "It was the old one, dented on one side, with the whistle that had stopped whistling sometime in middle school. He'd refilled it at least once already. There was a ring of wet on the porch boards where he'd set it down, already going white at the edges, and a second ring next to it, and his hands were red to the wrist because he wouldn't wear gloves to do it. He never had. She'd asked once, in eighth grade, and he'd said gloves were for people who didn't respect the soil, and she hadn't asked again." },
+    { s: 'jihoon', f: 'neutral', t: "Don't look at me like that. You've got your gremlin face on." },
+    { s: 'solar', f: 'happy', t: "I don't have a gremlin face." },
+    { s: 'jihoon', f: 'happy', t: "You have a gremlin face and a pre-gremlin face, and that's the pre-gremlin face. I've studied it. For years. I could draw it from memory, which I won't, because it would scare children." },
+    { n: "He got to the last pot, the white one, the one that trailed down over the rail every June so far you could see it from the end of the street, and stopped, and looked at the frozen stalks, and didn't pour." },
+    { choose: [
+      { t: "(Get up. Hold the pot steady for him.)", flag: 'epi-h-porch-pot', stat: { kindness: 1 }, then: [
+        { n: "She got up off the step. She didn't ask. She put both her gloved hands round the cold clay, one on each side, and held it still against the rail, and after a second he tipped the kettle and poured, slowly, so slowly the steam came up between them like a curtain." },
+        { s: 'solar', f: 'neutral', t: "It's not dead." },
+        { s: 'jihoon', f: 'neutral', t: "It's brown, Sol." },
+        { s: 'solar', f: 'happy', t: "It's thawing. Different verb. Look it up." },
+        { n: "He looked at her over the kettle for a second with his whole face very still. Then he snorted, and poured the rest, every drop, and when the kettle was empty he kept it tipped for a while anyway, like he didn't want to be the one who stopped." }
+      ] },
+      { t: "(Stay on the step. Let him do it his way.)", then: [
+        { n: "She stayed where she was. After a while he poured, the way he'd poured the others, careful, the steam going up into the porch light, and he talked to the pot the whole time under his breath, too low for her to hear, which she understood was the point." }
+      ] }
+    ] },
     { ifFlag: 'epi-h-jihoon-chose', then: [
       { s: 'jihoon', f: 'neutral', t: "Haven't opened the drawer since the party, by the way." },
       { n: "He said it to the third flowerpot, apropos of nothing, like announcing the weather. She didn't look at him, because she knew he couldn't have said it if she had." },
@@ -339,6 +381,10 @@
     { s: 'jihoon', f: 'neutral', t: "I remember the dorm. And the stupid red armband. And the monorail. And the dog, who liked me better than you, by the way, that's in the record now." },
     { s: 'jihoon', f: 'happy', t: "I arm-wrestled a guy called Akihiko eleven times. He won eleven times. I've told nobody that. You tell anyone, I'll deny it in court." },
     { s: 'jihoon', f: 'neutral', t: "And a goblin came out of my head, Sol. With a club. A goblin with a club came out of my actual head and I thought, sure. Yeah. This is my life now." },
+    { n: "He said it all in the voice he used for the forum, the mock-royal one, the one that made everything sound like a decree, and it almost worked. It would have worked on anyone who hadn't known him since preschool. She'd been there for the goblin. She'd been there the night he'd turned up on the dorm's front step at three in the morning from the guesthouse, grey in the face, and sat on it in the cold and wouldn't say why, and Koromaru had come out past her and lain down on his feet, and he'd let him." },
+    { s: 'solar', f: 'sad', t: "You used to sit on our step. At night. Koromaru used to find you." },
+    { n: "His jaw did the thing. Once." },
+    { s: 'jihoon', f: 'neutral', t: "He had good instincts. For a dog who ate curry." },
     { s: 'solar', f: 'sad', t: "Then why'd you pretend?" },
     { n: "He didn't answer right away. He picked at the frost on the step between his boots." },
     { s: 'jihoon', f: 'sad', t: "Because if it happened, then I went into a whole other world looking for you, and you had a whole life over there. A whole year. People. That guy. And you came home anyway." },
@@ -360,8 +406,13 @@
         { bond: { jihoon: 1 } }
       ] }
     ] },
+    { n: "They sat there until the step went through her coat and his hands stopped shaking, or until he'd decided they had. The lamp in the front window hummed. The pots had stopped steaming one by one, the first one first, in the order he'd poured them, and the water in the white one had already gone to a skin of ice on top, and he looked at it like it had betrayed him personally and he'd expected nothing less." },
+    { s: 'jihoon', f: 'neutral', t: "Same time tomorrow. I'll need an assistant. The pay is terrible. You get a cup of instant coffee and my company, which is priceless, so technically you're overpaid." },
+    { s: 'solar', f: 'happy', t: "You're going to do this every night until spring?" },
+    { s: 'jihoon', f: 'neutral', t: "Every night until they're green. Or until I'm dead. Whichever's more dramatic." },
     { s: 'jihoon', f: 'neutral', t: "Go home, Sol. Go home to your Prime Minister before he files a missing persons report in full sentences." },
-    { n: "But he walked her to the end of his path, and stood there in his parka and pyjamas until she reached the corner, and when she turned round to wave he was already back on the porch, picking up the kettle, pouring what was left of the warm water very slowly into the last pot." }
+    { n: "But he walked her to the end of his path, and stood there in his parka and pyjamas until she reached the corner, and when she turned round to wave he was already back on the porch, picking up the kettle, pouring what was left of the warm water very slowly into the last pot." },
+    { n: "There couldn't have been anything left in it. She'd watched him empty it. She stood at the corner with her hands in her sleeves and watched him pour it anyway, the empty kettle tipped over the white one in the porch light, and didn't go back, because that was his, and some things you let people have." }
   ] },
 
   // ───────────────────────────── 1/6, evening (route council): the war room ─────────────────────────────

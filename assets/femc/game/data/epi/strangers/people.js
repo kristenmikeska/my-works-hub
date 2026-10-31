@@ -40,7 +40,17 @@
      Jungwon's 'two syllables' is 가지 마 (don't go), his one banmal of the act; Haechan's stray English word is "No problem."
    Canon held: nothing past what the book has printed; Eomma appears only as care; the pressure from outside is never named;
      nobody's health is described (Jungwon holds with his right hand; Haechan lifts nothing); the Discman never plays; the radio
-     on the annex sill only ever plays the shipping forecast and trot; Seo isn't in this file. */
+     on the annex sill only ever plays the shipping forecast and trot; Seo isn't in this file.
+   Depth pass (2026-10-31): four more hangouts, appended after each bond's own list (a second add() call per bond):
+     haechan  epi-s-haechan-5 'room two'               3/10-3/14 after, route haechan, after epi-s-hc-bridge (Karaoke, daytime)
+     jungwon  epi-s-jungwon-5 'the glass city, by day' 3/10-3/14 after, route jungwon, after epi-s-jw-blackout (Songdo · Café)
+     yunjin   epi-s-yunjin-5  'lamb'                   3/10-3/14 evening, after epi-s-dinner (Bathhouse; on the family route
+                                                       it comes after yunjin-4, which shares the window)
+     eomma    epi-s-eomma-3   'out of spite'           3/13-3/14 after, after epi-s-dinner (Sunroom; the orchid blooms)
+     Flag read: epi-s-stair-sat (story-end.js fam-staying) in eomma-3 ("Your father slept" / "Your father hasn't slept").
+     No new flags set; { glitch: { near: true } } in haechan-5 and jungwon-5. Inventions: room two at the noraebang, the desk
+     man's ten thousand won; Solar takes two sugars (Jungwon won't look, so he can be told); the hill-road jjimjilbang, the
+     lamb towels and egg on the forehead; the white orchid Eomma moved from the study in January blooms (eleven flowers). */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).strangers ||= {});
   const B = (R.bonds ||= {});
@@ -993,6 +1003,132 @@
       { s: 'solar', f: 'happy', t: "I always blame you." },
       { s: 'eomma', t: "Yes. You get that from your father." },
       { n: "She went out. Solar sat at the dressing table and looked at her own head in the glass, her mother's work on it, seven pins and the long black one, and touched it, very lightly, the way you'd touch something you'd been lent and would have to give back." }
+    ] }
+  ]);
+
+  /* ── Epilogue depth pass (2026-10-31): one more each for Haechan, Jungwon, Yunjin and Eomma, in the act's new places.
+     Appended after each bond's own list (add() pushes), so every earlier hangout is offered exactly as before. ── */
+  add('haechan', 'friend', [
+    { id: 'epi-s-haechan-5', title: 'room two', hint: "Haechan has booked a noraebang room for one o'clock in the afternoon, which is not a time anybody books a noraebang room.",
+      after: '3/10', until: '3/14', slots: ['after'], events: ['epi-s-hc-bridge'], noFlags: [], route: 'haechan', noRoute: null,
+      place: 'Incheon · Karaoke', time: 'Daytime', scene: [
+      { music: 'epi-s-haechan' },
+      { n: "At one in the afternoon the noraebang was a different animal. The neon over the door was off, the stairs down smelled of floor cleaner instead of beer, and the man at the desk was eating jjamppong out of a delivery bowl with the television on and looked at Haechan the way you look at weather you've lived with for years. He pushed a key across the counter without being asked. Room two. Not room six. Haechan didn't want room six, he said, room six had the girls in it now, in his head, and Sakura's ninety-seven." },
+      { n: "Room two was smaller. The couch was green instead of red and had been patched with the same silver tape. The disco ball worked, which was worse. The window looked out on the bottom half of a wall and a strip of yellow sky where the dust had thinned to something like daylight." },
+      { s: 'haechan', f: 'happy', t: "One hour. Nobody listening. Nobody scoring." },
+      { s: 'solar', f: 'neutral', t: "The machine scores." },
+      { s: 'haechan', f: 'happy', t: "The machine's been paid off. I gave the man ten thousand won and he said it'd be gentle." },
+      { n: "He sang first, because he always sang first, a trot song so old the video was a woman in a hanbok walking along a railway platform in a picture that had faded to orange, and he sang it sitting down, with his elbows on his knees and the microphone hanging loose from two fingers, not performing it for once. Just singing it. Low. Like a man singing to himself in a car with the windows up." },
+      { n: "The machine gave him a 100 and played a fanfare and threw confetti across the screen. He didn't look at it. He was looking at her." },
+      { choose: [
+        { t: "(Sing the next one. Badly. On purpose.)", stat: { charm: 1 }, then: [
+          { n: "She took the other microphone and punched in the number of the worst song she knew, a cheerful thing about a fishing village, and sang it a quarter tone flat all the way through, the way her father sang at weddings, and halfway through the second verse he was lying full length on the green couch with his arm over his eyes, wheezing." },
+          { s: 'haechan', f: 'happy', t: "Seventy-one. It gave you seventy-one. The machine's on my side." },
+          { s: 'solar', f: 'happy', t: "You paid it off." },
+          { s: 'haechan', f: 'happy', t: "Not enough, agasshi. Nobody could pay it enough for that." }
+        ] },
+        { t: "(Don't sing. Ask him for another.)", stat: { kindness: 1 }, then: [
+          { s: 'solar', f: 'neutral', t: "Another one. Any one." },
+          { n: "He looked at her as if she'd asked him for something much larger, and then he picked up the book and didn't open it, and punched in a number from memory, and sang her the hometown-station song, the one from the coast road, the one every man over fifty in Korea sang at weddings, with his eyes shut and the disco ball going round over both of them throwing little squares of light across his face." },
+          { n: "He didn't look at the score. Neither did she." }
+        ] }
+      ] },
+      { n: "With ten minutes left on the clock he put the microphone down on the table, carefully, the way you put down something that's not yours, and sat back beside her on the green couch with his shoulder against hers, and let the screen run its waterfall and its beach and its couple walking in slow motion toward a sea that never came any closer." },
+      { glitch: { near: true } },
+      { n: "He didn't say anything. She'd learned the difference between his quiets this winter. This was the one where he'd brought her somewhere with a door that locked and a clock that told you exactly how much was left, and was sitting very still in the middle of it, using every minute." },
+      { n: "When the man knocked on the door to say time, Haechan said *ten more* through it without moving, and paid him through the gap, and the man went away, and didn't come back." }
+    ] }
+  ]);
+  add('jungwon', 'friend', [
+    { id: 'epi-s-jungwon-5', title: 'the glass city, by day', hint: "Jungwon is at a window table in the Songdo café with two cups and a sugar bowl, and he isn't looking at the sugar bowl.",
+      after: '3/10', until: '3/14', slots: ['after'], events: ['epi-s-jw-blackout'], noFlags: [], route: 'jungwon', noRoute: null,
+      place: 'Incheon · Songdo · Café', time: 'Daytime', scene: [
+      { music: 'epi-s-jungwon' },
+      { n: "By day the glass city looked as if it had never once gone dark in its life. The towers stood up out of the reclaimed land in the thin yellow light with their windows all lit and all blank, the café's plants dripping in their pots, the barista who'd been at her old school steaming milk with the absolute calm of a girl whose building had never once lost power with Solar Lee inside it. Solar had checked, coming in, where the doors were. She'd counted them. Three." },
+      { n: "He was at the window table. Two cups in front of him already, one black, one not yet anything, and a little steel bowl of sugar sticks between them, and he was looking out at the street with his right hand flat on the table beside his cup, as if he were keeping it still." },
+      { s: 'jungwon', f: 'neutral', t: "I ordered for you. I hope that's all right. I didn't know what you'd want, so I ordered what you had last time and asked them not to finish it." },
+      { s: 'solar', f: 'happy', t: "Not to finish it." },
+      { s: 'jungwon', f: 'neutral', t: "The sugar. That's yours to do." },
+      { n: "She tore two sticks and tipped them in and stirred, and the whole time she did it he looked out of the window, deliberately, with great concentration, at a man walking a very small dog along the far pavement, as if the man and the dog were a matter of state." },
+      { s: 'solar', f: 'happy', t: "You're not looking." },
+      { s: 'jungwon', f: 'happy', t: "No. I'd like to be told. Some things I'd rather be told than find out." },
+      { n: "He said it lightly. It didn't land lightly. She looked at her coffee and he looked at the dog, and between them on the table the steel bowl caught the yellow light and threw it on the ceiling in a small trembling coin." },
+      { choose: [
+        { t: "Two. I take two.", stat: { charm: 1 }, then: [
+          { s: 'solar', f: 'flustered', t: "Two. I take two. I've always taken two." },
+          { n: "He turned back from the window. The dimples, the real ones, for one second, and then he put them away, and took a sugar stick out of the bowl and laid it beside her saucer, very precisely, square to the edge, a third one, for later, the way you'd leave a piece on a board." },
+          { s: 'jungwon', f: 'happy', t: "Thank you. I'll remember." }
+        ] },
+        { t: "(Don't tell him. Let him keep asking.)", stat: { kindness: 1 }, then: [
+          { n: "She didn't tell him. She drank her coffee and let him go on not knowing, because it was something he could still ask, and there weren't very many of those left between them that she could answer." },
+          { n: "He understood. She watched him understand it, in the window glass, where his reflection sat over the street with the towers going up through it, and he didn't ask again, and he didn't stop wanting to, and he let her see both." }
+        ] }
+      ] },
+      { glitch: { near: true } },
+      { n: "When they went out the lights in the lobby flickered, once, the way lights do in any building, and his right hand was round hers before she'd seen it move. He didn't look at the lights. He didn't say anything. He held on until the doors had closed behind them and they were out in the dust on the pavement, where nothing could go out, and then he let go, and bowed, slightly, to her, as if to apologise for something nobody had seen." }
+    ] }
+  ]);
+  add('yunjin', 'friend', [
+    { id: 'epi-s-yunjin-5', title: 'lamb', hint: "Yunjin has two bathhouse tickets, two towels and a plan, and the plan is to lie on a hot floor until neither of you can move.",
+      after: '3/10', until: '3/14', slots: ['evening'], events: ['epi-s-dinner'], noFlags: [], route: null, noRoute: null,
+      place: 'Incheon · Bathhouse', time: 'Evening', scene: [
+      { music: 'epi-s-yunjin' },
+      { n: "The jjimjilbang on the hill road had been the same since they were twelve: the orange uniforms that came in two sizes, too big and much too big, the heated floor of the big hall like lying on the back of something alive, the television in the corner showing a quiz to a row of sleeping ajusshis under towels, and the smell, eggs and steam and the cedar of the dry room and somebody's dried squid. Mr. Oh had parked across the road with the engine running. He'd said he'd be there. He would be." },
+      { n: "Yunjin rolled two towels into lamb's ears with the speed of long practice and put one on Solar's head before she could stop her, and one on her own, and lay down flat on the hot floor with her arms out like someone who'd been shot from a great height." },
+      { s: 'yunjin', f: 'happy', t: "This is it. This is where I live now. Tell my mother." },
+      { s: 'solar', f: 'happy', t: "Your mother's asleep in the room next to yours." },
+      { s: 'yunjin', f: 'happy', t: "Then tell her in the morning. Tell her I'm a lamb now and I'm not coming back." },
+      { n: "She'd bought eggs from the counter, the brown roasted ones, and sikhye in two tall cups with ice in. She cracked the first egg on her own forehead, which was the rule, and the second she held up over Solar's face and waited with her eyebrows up." },
+      { choose: [
+        { t: "(Let her.)", then: [
+          { n: "Solar shut her eyes. The egg cracked on her forehead, lightly, with a small dry sound, and Yunjin peeled it for her with her nails and put the whole thing in Solar's open mouth like feeding a baby bird, and Solar nearly choked laughing, and the ajusshi nearest them lifted his towel off his face to look and put it back." }
+        ] },
+        { t: "(Crack it on hers first.)", stat: { courage: 1 }, then: [
+          { n: "She took the egg out of Yunjin's hand and cracked it on Yunjin's forehead before she could duck, *tok*, and Yunjin shrieked so loud that half the hall lifted its towels, and lay there clutching her head with both hands, outraged, delighted, saying that was assault, that was an egg assault, she was going to tell Mr. Oh." },
+          { s: 'yunjin', f: 'happy', t: "First I crack a walnut on the delivery boy and now this. It's karma. You're karma, Sol." }
+        ] }
+      ] },
+      { n: "Later the hall went dim for the night, the big lights off and the little ones on, and the quiz on the television went to the news with the sound down, and they lay side by side on the hot floor with the lamb ears gone flat and the sikhye cups empty between them, and Yunjin turned her head on the floor and looked at Solar for a while without saying anything at all." },
+      { s: 'yunjin', f: 'neutral', t: "Sol." },
+      { s: 'solar', f: 'neutral', t: "Mm." },
+      { s: 'yunjin', f: 'sad', t: "Nothing. I just wanted to say it to you and have you go mm." },
+      { n: "She found Solar's hand on the floor between them, on the warm boards, and held it, not looking at it, not checking it, just holding it, the way she'd held it across the aisle of every school bus on every school trip they'd ever been on, as if somebody might come along and try to sit between them. She held it until she fell asleep. It took about four minutes. Yunjin had always been able to sleep anywhere that was warm." },
+      { n: "Solar lay awake with the hand in hers and watched the news go by without its sound, a weather map with the dust in it, yellow, blowing in over the sea from somewhere very far away, and across the road Mr. Oh's engine ran and ran, and didn't stop." }
+    ] }
+  ]);
+  add('eomma', 'friend', [
+    { id: 'epi-s-eomma-3', title: 'out of spite', hint: "Your mother has asked for you in the sunroom. She says it's about the orchids, which means it's about the orchids.",
+      after: '3/13', until: '3/14', slots: ['after'], events: ['epi-s-dinner'], noFlags: [], route: null, noRoute: null,
+      place: 'Incheon · The Lee House · Sunroom', time: 'Daytime', scene: [
+      { music: 'epi-s-family' },
+      { n: "The white orchid had opened." },
+      { n: "All of it. The whole row of fat green buds along the cane that had sat there closed since February, sulking, had come out in the night, eleven flowers, white with a blush of rose at the throat, each one turned the same way, toward the glass and the garden and the grey water beyond it, so that the long stem bowed under them like a branch with snow on it. The sunroom smelled of wet soil and, very faintly, something that might have been the flowers or might have been her mother's perfume. The dust on the outside of the glass had made the light the colour of weak tea." },
+      { n: "Her mother was standing in front of it with the little brass mister in her hand, not misting. Just looking." },
+      { s: 'eomma', f: 'neutral', t: "It's the one I moved. In January. From the study." },
+      { s: 'solar', f: 'neutral', t: "Out of spite." },
+      { s: 'eomma', f: 'happy', t: "Twice as hard. I told you." },
+      { n: "It was the nearest thing to a smile Solar had seen on her mother since she came home, and it was given to the orchid, not to her, and that was all right. That was how it had always been done in this room." },
+      { ifFlag: 'epi-s-stair-sat', then: [
+        { s: 'eomma', f: 'neutral', t: "Your father slept, last night. Four hours. I counted." },
+        { n: "She said it to the orchid, misting it now, one leaf and then the next, and didn't say what had changed, and didn't ask. She knew there had been two cups taken up the stairs and two cups brought back down. She knew everything that happened in this house that involved a cup." }
+      ], else: [
+        { s: 'eomma', f: 'serious', t: "Your father hasn't slept." },
+        { n: "She said it to the orchid, misting it now, one leaf and then the next, the way she might have mentioned the weather on the coast. Not a reproach. Not a question. A fact, set down in front of Solar the way you set down a cup, to be picked up or not." }
+      ] },
+      { choose: [
+        { t: "(Stand beside her and look at it.)", stat: { kindness: 1 }, then: [
+          { n: "She stood beside her mother in front of the orchid, close, not touching, the two of them the same height now, which Solar had only noticed this winter, and looked at the eleven white flowers bowing their stem toward the window, and neither of them said anything for a long time, and it was one of the best conversations they had ever had." }
+        ] },
+        { t: "Can I take one up to Appa's study?", stat: { charm: 1 }, then: [
+          { s: 'eomma', f: 'surprised', t: "You can't move it. It'll drop everything." },
+          { s: 'solar', f: 'neutral', t: "Then it'll bloom again. Out of spite." },
+          { n: "Her mother looked at her for a long moment over the brass mister. Then she put the mister down, and took a pair of small silver scissors from the shelf, and cut one flower, only one, from the very end of the stem, and laid it in Solar's open palm like a thing that might bruise." },
+          { s: 'eomma', f: 'neutral', t: "Put it in a saucer of water. Not a vase. He'll knock a vase over." }
+        ] }
+      ] },
+      { n: "On the way out her mother turned her collar down where it had folded under, with two fingers, the way she had every morning for twelve years, and smoothed it flat, and left her hand on Solar's shoulder one second longer than the collar needed." },
+      { s: 'eomma', f: 'neutral', t: "You're too thin. Eat something. Mrs. Bang's made too much of everything, she always does when she's frightened." },
+      { n: "Then she went back to the orchids. She never asked. She never once had. Solar went out with the smell of the sunroom on her sleeves and understood, somewhere halfway along the hall, that her mother had just told her Mrs. Bang was frightened in the same voice she'd have used to say it might rain, and that it was the closest she would ever come to saying who else was." }
     ] }
   ]);
 

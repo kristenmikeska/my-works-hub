@@ -15,12 +15,21 @@
      jaemin    epi-r-jaemin-3    'run of show'      12/15-12/18 after/evening (the Sigma fridge; Mark crossed off)
      danielle  epi-r-danielle-3  'for the records'  12/15-12/18 after/evening (the Alpha dining room; initial the line)
      mark      epi-r-mark-3      'honestly'         12/17-12/19 after/evening, after epi-r-kitchen (the Hall of Languages piano)
+   Epilogue depth pass (2026-10-31): four more, appended at the END of their bonds' lists (each in a window where that bond's
+   earlier hangouts are done or out of window, so it actually gets offered; none for Haechan):
+     hanni     epi-r-hanni-4     'trays'             12/8-12/10 after, after epi-r-regionals-2 (The Valley by day; the leaning tree stays hers)
+     hyein     epi-r-hyein-4     'the quote'         12/8 after/evening, after epi-r-regionals-2 (Marshall Street café; Jaemin's quote,
+                                                     his reply "cash tomorrow" fits people.js's 12/9 deposit)
+     minji     epi-r-minji-4     'lens cap'          12/11-12/14 evening, after epi-r-regionals-2 (the Honors Dorm, studying; reads
+                                                     epi-r-minji-told; in practice 12/13-12/14, after minji-2)
+     chenle    epi-r-chenle-4    'terminal velocity' 12/15-12/16 after/evening, after epi-r-upward (Bird Library; reads epi-r-hc-thursday;
+                                                     "He doesn't ask me about you. Ever.")
    Routines: epi-r-rt-suanon (after, 12/15-12/16, after epi-r-upward), epi-r-rt-allnighter (evening, 12/16-12/18),
      epi-r-rt-packing (after, 12/19-12/20; routines don't spend the slot, so Saturday's practice still follows on the 20th).
    Flags set: epi-r-reel-yes / epi-r-reel-cut (minji-3, Minji's route, only when epi-r-reel-think was set: reel-think then stays
      set beside the answer, so readers should check yes / cut first); epi-r-danielle-initial / epi-r-danielle-blank (danielle-3:
      she initialed her guest-list line / left it blank; read by hanni-3).
-   Flags read: epi-route-* (texts), epi-r-reel-think, epi-r-mark-door / -closed, epi-r-travel-yes / -no, epi-r-said-it,
+   Flags read: epi-r-minji-told (minji-4; set in story-w2.js epi-r-reel), epi-r-hc-thursday (chenle-4; people.js chenle-2), epi-route-* (texts), epi-r-reel-think, epi-r-mark-door / -closed, epi-r-travel-yes / -no, epi-r-said-it,
      epi-r-public-post, epi-r-danielle-initial / -blank. ifEpiRoute: haechan, minji, cover. ifEvent: epi-r-kitchen (jaemin-3),
      epi-r-clocks (allnighter). ifYear: noFlag arrived-mark (mark-3).
    Texts: 11 dated (12/15-12/19), 4 ambient (girls; haechan off-route twice, by epi-route-cover / epi-route-minji; team).
@@ -204,6 +213,36 @@
         { s: 'hanni', f: 'serious', t: "She's doing yours in person. She told me that like it was a favor." }
       ] }] },
       { n: "Hanni initialed her own line, *H.P.,* pressing hard enough to go through to the page underneath, and turned the list over, and turned her phone back over too, face up, the way it should be. It didn't ring. It would. Not tonight. She held it together until eleven, which was the deal she'd made with herself, and at eleven she put her head down on Solar's shoulder and let it all go a little, quietly, and Hyein kept sewing so there'd be something else to listen to." }
+    ] },
+    { id: 'epi-r-hanni-4', title: 'trays', hint: 'Hanni has liberated two dining hall trays and is looking at the valley like it owes her something.',
+      after: '12/8', until: '12/10', slots: ['after'], events: ['epi-r-regionals-2'],
+      place: 'Syracuse · The Valley', time: 'After Class', scene: [
+      { music: 'epi-r-sisters' },
+      { n: "By daylight the valley was what it always was: a wide shallow bowl of white in the middle of everything, crossed and recrossed by a hundred lines of footprints, people cutting across it to class with their heads down and their hoods up, nobody looking at it, because it was the most-used ground on campus and so it was nowhere. And at the top of the near slope, Hanni, with two orange plastic trays from the dining hall under one arm and the expression of a woman who had committed a crime and would like some credit for it." },
+      { s: 'hanni', f: 'happy', t: "We didn't get Thanksgiving. We didn't get the parade or the pie or my uncle explaining crypto at the table. So we're getting this." },
+      { s: 'solar', f: 'neutral', t: "Hanni. It's a bowl. It's maybe a six-foot drop." },
+      { s: 'hanni', f: 'serious', t: "It's a six-foot drop with commitment." },
+      { n: "It was not a good sled. A dining hall tray turned out to have no opinions about direction at all. Solar went down the first time backwards, spinning slowly, like a plate on a lazy Susan, and arrived at the bottom of the valley in a long gentle skid that ended with her flat on her back in the snow, and Hanni came down after her shrieking and landed mostly on top of her, and for a minute neither of them could breathe for laughing." },
+      { n: "She lay there with snow down the back of her collar and the sky white and enormous overhead. At the edge of her vision, upside down, was the big tree on the far side, the one that leaned too far to the right. The side that wasn't wet. Somebody had walked a path right past it this morning without looking at it once." },
+      { s: 'hanni', f: 'neutral', t: "That tree's going to fall over one day." },
+      { choose: [
+        { t: "(Say nothing.)", then: [
+          { n: "She didn't say anything. She looked at it, upside down from the snow, for exactly as long as it would take anyone to look at a tree, and then looked at the sky instead. It wasn't hers to tell. It wasn't even, exactly, hers to know. She'd been handed it at two in the morning without a word of explanation, and she was going to keep it the way you keep a key somebody gave you without saying which door." }
+        ] },
+        { t: "It's been leaning like that forever. It's fine.", then: [
+          { s: 'hanni', f: 'happy', t: "You say that about everything." },
+          { s: 'solar', f: 'happy', t: "And everything's fine." },
+          { s: 'hanni', f: 'serious', t: "Everything is absolutely not fine, Sol, we're lying on a lawn in December." },
+          { n: "But she was laughing, and so was Solar, and neither of them looked at the tree again, and only one of them knew there was a reason not to." }
+        ] }
+      ] },
+      { n: "They went down eleven more times. Hyein would have filmed it; Hyein was stuck in a studio critique and had sent three crying emojis and a knife about it. Hanni's phone buzzed in her pocket on the fourth run, and the fifth, and the sixth, and she didn't take it out once, which for Hanni was a declaration of war on the entire concept of a family group chat." },
+      { s: 'hanni', f: 'sad', t: "I just wanted one normal afternoon. Before Danielle does whatever Danielle's going to do." },
+      { s: 'solar', f: 'neutral', t: "This is normal?" },
+      { s: 'hanni', f: 'happy', t: "This is the most normal thing I've done since November. Look at us. We're idiots on a tray." },
+      { n: "They returned the trays to the dining hall with the straight faces of two girls returning library books, wet to the knees, and the woman at the dish window looked at the trays and at them and said nothing, in a way that suggested she'd been saying nothing about trays every December for twenty years." },
+      { n: "On the way out of the valley Solar looked back once. By daylight it was only a tree. There was nobody under it. That was the whole point of it, she thought; that was the gift. A place that was nowhere, to everyone but two people." },
+      { stat: { charm: 1 } }
     ] }
   ]);
 
@@ -265,6 +304,38 @@
         { s: 'jaemin', f: 'happy', t: "I didn't see that. But if I had, I'd say it's going to ruin my party, and I'd say it with love." }
       ] },
       { n: "Hyein stepped back, took the last pin out of her mouth, and looked at all of it, the velvet and the silk and the black shirt, her whole first commission standing around her bedroom on people and furniture and a dress form named Gerald, and for one second she didn't say anything at all, which for Hyein was a speech." }
+    ] },
+    { id: 'epi-r-hyein-4', title: 'the quote', hint: 'Hyein is at the café on Marshall Street, doing math on a napkin and visibly suffering.',
+      after: '12/8', until: '12/8', slots: BOTH, events: ['epi-r-regionals-2'],
+      place: 'Syracuse · Marshall Street · Café', time: 'After Class', scene: [
+      { music: 'epi-r-day' },
+      { n: "Hyein had the window table and three napkins in front of her, and a sketchbook open to a page of headless figures in velvet, and a pen she'd chewed flat at the end. The top napkin had numbers on it. The numbers had been crossed out. Eighty, crossed out. A hundred and fifty, crossed out so hard it had torn. A hundred and twenty, with a question mark, and the question mark circled, and next to the circle a very small drawing of a skull." },
+      { s: 'hyein', f: 'flustered', t: "Jaemin asked for a QUOTE. Like a contractor. Like I'm going to come and redo his kitchen. He wants the whole look for the nineteenth, the oxblood velvet, the shirt, he said *the works,* Sol, he said it like a man ordering a pizza." },
+      { s: 'hyein', f: 'sad', t: "I've never charged anyone anything. I made my cousin's prom dress for a sandwich. It was a good sandwich. That's not the point." },
+      { s: 'solar', f: 'neutral', t: "What's the fabric?" },
+      { s: 'hyein', f: 'neutral', t: "Ninety. If the velvet's on sale. Which it won't be, because I've already touched it and now I'm in love with it." },
+      { s: 'solar', f: 'neutral', t: "And how many hours?" },
+      { s: 'hyein', f: 'flustered', t: "...I don't count hours. Hours are for people with free will." },
+      { n: "Solar pulled the napkin across the table and looked at it, and felt the thing come up in her that always came up at tables, the part of her that had grown up listening to her father close deals over dinner without once raising his voice. She knew exactly what to say. She knew how to say it so it sounded like it had been true all along. She'd spent a year not wanting to be good at this. For once it was for somebody else, and that turned out to change how it tasted." },
+      { choose: [
+        { t: "Count the hours. Charge for them. Add the fabric. Then add twenty percent, because he'll ask for changes.", then: [
+          { s: 'hyein', f: 'surprised', t: "TWENTY PERCENT." },
+          { s: 'solar', f: 'neutral', t: "He'll ask for changes. He'll ask for the collar higher and then lower and then the way it was. You're charging for the collar." },
+          { n: "She heard her father in her own mouth, the exact cadence, the little pause before the number, and for the first time she could remember it didn't make her want to wash it out. Hyein wrote it all down with her tongue between her teeth, like a girl copying a spell." }
+        ] },
+        { t: "Say a number that embarrasses you. Then don't apologize after it.", then: [
+          { s: 'hyein', f: 'sad', t: "What if he laughs." },
+          { s: 'solar', f: 'happy', t: "Then he laughs and pays it. Jaemin pays for things. It's his whole personality." },
+          { n: "Hyein looked at her for a long second, and then wrote a number on a clean napkin that made her own eyes go wide as she wrote it, and didn't cross it out." }
+        ] }
+      ] },
+      { n: "She typed it to him with both thumbs and her eyes shut, and hit send, and put the phone face down on the table and both hands flat on top of it like it might try to escape." },
+      { n: "It buzzed in under a minute. Hyein turned it over a millimetre at a time. Jaemin had sent three words and an emoji: *done. cash tomorrow.* and a little bag of money with wings on it." },
+      { n: "Hyein screamed into her scarf. Silently, mostly. The barista looked over. Solar raised a hand to say *it's fine, she's an artist,* and the barista nodded like that explained everything, which on Marshall Street it generally did." },
+      { s: 'hyein', f: 'happy', t: "I'm a professional. Sol. I'm a PROFESSIONAL." },
+      { s: 'solar', f: 'happy', t: "You were always a professional. Now you're an invoiced one." },
+      { n: "Hyein folded the napkin with the number on it into a very small square and put it in her wallet, behind her ID, where she kept the things she meant to keep. Solar pretended not to see. It was, she thought, the nicest thing she'd watched anybody do all week." },
+      { stat: { charm: 1 } }
     ] }
   ]);
 
@@ -341,6 +412,31 @@
           ] }
         ] }
       ] }
+    ] },
+    { id: 'epi-r-minji-4', title: 'lens cap', hint: "Minji's light is on at the honors dorm. Her text says *study session* and then *(actual studying)*.",
+      after: '12/11', until: '12/14', slots: ['evening'], events: ['epi-r-regionals-2'],
+      place: 'Syracuse · Honors Dorm', time: 'Evening', scene: [
+      { music: 'epi-r-late' },
+      { n: "Minji's room at nine on a weekend night of finals season was index cards. Index cards on the bed, on the desk, on the floor in color-coded drifts, a whole semester of film theory taken apart into three-by-five pieces, and Minji in the middle of them cross-legged in a hoodie with her hair up in a pen, mouthing the word *diegetic* at the ceiling." },
+      { n: "The camera was on the shelf over the desk, in its bag, with the lens cap on. Solar noticed that before she noticed anything else. She'd never once been in this room when the camera wasn't somewhere within reach of Minji's hand." },
+      { s: 'minji', f: 'happy', t: "Sit anywhere that isn't Eisenstein. That pile. Yes. Thank you." },
+      { n: "So they studied. Actually studied, which surprised them both: Solar on the floor with her back against the bed and her Business notes on her knees, Minji quizzing herself under her breath, the radiator ticking, the kettle that was definitely against the rules boiling twice and being ignored twice. At ten Minji quizzed Solar on opportunity cost and Solar quizzed Minji on the Kuleshov effect, and they both got everything right and were both a little insulted by it." },
+      { ifFlag: 'epi-r-minji-told', then: [
+        { s: 'minji', f: 'neutral', t: "I've been keeping it on. Like I said. At practice, on the quad, the walk home. Not for anything." },
+        { s: 'minji', f: 'neutral', t: "Nothing yet. Not one frame. That's good, right? Nothing's good." },
+        { s: 'solar', f: 'neutral', t: "Nothing's good." },
+        { n: "Minji nodded, and looked at the camera on the shelf, and then at Solar, and didn't say *yet* again, and the not-saying it sat in the room with them for a while like a third person who'd been polite enough to bring snacks." }
+      ], else: [
+        { s: 'minji', f: 'neutral', t: "I'm not filming this week. At all. I decided. Finals, and also I think I needed to look at things with just my eyes for a bit." },
+        { s: 'solar', f: 'happy', t: "How's that going?" },
+        { s: 'minji', f: 'flustered', t: "Badly. Everything's in the wrong aspect ratio." }
+      ] },
+      { n: "Somewhere around half past eleven Minji stopped answering. Solar looked up from a definition of sunk cost and Minji was asleep sitting up against the wall, her chin on her chest, a card that said MISE-EN-SCÈNE still pinched between two fingers." },
+      { n: "Solar got up quietly. She took the blanket off the end of the bed, the hospital-cornered one, and untucked it with some guilt, and put it over Minji's knees. She slid the card out of her fingers and put it back on the right pile, which she knew was the right pile because the piles had labels." },
+      { n: "She looked at the camera on the shelf. It would have been the easiest shot in the world: the desk lamp, the drifts of cards, Minji asleep in the middle of her whole semester with her hair falling out of the pen. Minji would have taken it. Minji would have asked first, twenty times, and then taken it." },
+      { n: "Solar didn't touch the camera. You didn't touch Minji's gear without asking, and there was nobody awake to ask. She turned the lamp down instead, and let herself out, and texted from the stairs so it would be there when Minji woke up." },
+      { phone: [{ from: 'solar', t: "u fell asleep on eisenstein. blanket is from me. the card u were holding is on the right pile" }, { from: 'solar', t: "u got everything right btw. annoyingly" }], contact: 'minji' },
+      { stat: { kindness: 1 } }
     ] }
   ]);
 
@@ -442,6 +538,32 @@
         { s: 'chenle', f: 'serious', t: "That's all I'm going to say about it. It isn't mine to say." }
       ] },
       { n: "He went back to the spreadsheet. She stayed in the second chair while he color-coded something that didn't need it, the three windows of snow paused on his screen in the blue light, and he didn't ask her a single thing. Not about Monday, not about the quad, not about why she'd watched the clip with her hand pressed flat on the desk like she was holding it down. He just made room, and kept the light on, and let her sit in it." }
+    ] },
+    { id: 'epi-r-chenle-4', title: 'terminal velocity', hint: 'Chenle has a group study room at Bird and a whiteboard full of something that is not Overwatch.',
+      after: '12/15', until: '12/16', slots: BOTH, events: ['epi-r-upward'],
+      place: 'Syracuse · Bird Library', time: 'After Class', scene: [
+      { music: 'epi-r-finals' },
+      { n: "Bird in finals week was a building holding its breath. Every carrel taken, every outlet claimed, a girl asleep upright in the stairwell with a highlighter uncapped in her hand, and on the fourth floor, in a glass group room booked under ZHONG, C. for six consecutive hours, Chenle, alone, in front of a whiteboard covered edge to edge in boxes and arrows and numbers in a hand so small and neat it looked typed." },
+      { n: "He saw her through the glass. He didn't wave. He reached out with one foot, without looking away from the board, and pushed the chair across from him an inch back from the table, which was, she understood, an invitation, and also the most words he intended to spend on one." },
+      { s: 'chenle', f: 'neutral', t: "Shortest path. Final's tomorrow. You can sit if you don't talk about the sky." },
+      { s: 'solar', f: 'neutral', t: "Everyone's talking about the sky." },
+      { s: 'chenle', f: 'neutral', t: "I know. I have a theory. It's not ready. I don't say things that aren't ready." },
+      { s: 'chenle', f: 'neutral', t: "Snow falls at about one meter a second. Yesterday it was negative. That's the only part I'm sure of." },
+      { n: "He said it in exactly the voice he used for a callout, flat and fast, *Ana sleep on cooldown,* and went back to his arrows. She sat. She opened her own notes, a semester of Business she'd half lived in another place, and for an hour the only sounds in the room were his marker squeaking and her pages turning and, outside the glass, the whole library breathing in and not breathing out." },
+      { n: "It was the most restful hour she'd had all week. She hadn't expected that. Chenle didn't want anything from her, didn't watch her, didn't ask. He just let her be in a room, the way he'd let her be in the lab on Monday the first, three callouts in two hours and all of them right." },
+      { s: 'solar', f: 'neutral', t: "How is he." },
+      { n: "The marker stopped. Chenle looked at the board for a long moment, as if the answer were up there somewhere among the arrows, and she watched him decide how much of it was his to give." },
+      { s: 'chenle', f: 'neutral', t: "He's eating. He's sleeping more than five hours. He hasn't missed a Thursday." },
+      { s: 'chenle', f: 'happy', t: "He's boring. Boring is the goal. I'd put it on a T-shirt if he wouldn't kill me." },
+      { ifFlag: 'epi-r-hc-thursday', then: [
+        { s: 'chenle', f: 'neutral', t: "I drive. He picks the music. It's terrible music. That's the deal." }
+      ], else: [
+        { s: 'chenle', f: 'serious', t: "If you don't know what Thursday is, that's his to tell. I've already said more than I meant to." }
+      ] },
+      { n: "He uncapped the marker again. Then, without turning round, as if it were part of the algorithm:" },
+      { s: 'chenle', f: 'neutral', t: "He doesn't ask me about you. Ever. I thought you should know that. Most people ask me things." },
+      { n: "She didn't know what to do with that, so she wrote it down in the margin of her Business notes, small, next to a definition of opportunity cost, where nobody would ever find it but her." },
+      { stat: { knowledge: 1 } }
     ] }
   ]);
 

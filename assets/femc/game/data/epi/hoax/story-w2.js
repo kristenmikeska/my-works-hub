@@ -52,6 +52,9 @@
      On the other routes she is home by 11:30 (Mom's one condition for New Year's Eve).
    - Jungwon's line in the jw-call routine, "He would've made fun of both of us." (no name; the name is 1/6, writer C).
    - The one allowed vague line about the unfinished Monday is used here, in epi-h-alone (the council room).
+   - Depth pass (2026-10-31), the party: the swim-team boy's goggles photo; her body remembering rooms like this (nothing of
+     sophomore year filled in); Cherry's "You did good" on the curb (jungwon route); Hyunsuk's knuckles on Jihoon's shoulder and
+     the green light (jihoon route; branches on epi-h-party-jh-flushed); Sunghoon's scarf for Cherry, wordless (council route).
 */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).hoax ||= {});
@@ -69,6 +72,8 @@
       { n: "And under the bass, for two seconds, something else. A piano, a clean bright line of it, and a voice she knew, the music that used to be playing in a lounge with a leather couch and a dog asleep on the rug every single morning she came down the stairs." },
       { n: "Then it was gone, and the speaker on the island was playing the song it had been playing all along, and nobody had looked up. Not one person. Somebody laughed in the kitchen at something that wasn't her." },
       { n: "Oh God." },
+      { n: "She stood in the hallway with her coat still on and let it go past her, the party, the way you let a wave go past when you're standing in the shallows and don't want to get your hair wet. A framed photo of the swim-team boy at about six, in goggles, holding a medal bigger than his face, hung crooked by the stairs where somebody had already knocked it. Somebody's lip gloss smelled like fake watermelon. The floor was sticky by the kitchen door in a way that meant somebody had spilled something sweet an hour ago and nobody was going to deal with it until the fourth." },
+      { n: "Her body knew this room. That was the part she hadn't been ready for. Not this house, she'd never been in this house, but this room, any room like it, the heat and the bass and the way everybody's eyes went a little shiny after ten, and her body went through it like a dog walking a route it used to know, checking the corners, the kitchen, the stairs, who was standing where and with what in their hand. She hadn't asked it to. It had just remembered, the way you remember the words to a song you hate." },
 
       { ifEpiRoute: 'jungwon', then: [
         { phone: [
@@ -117,6 +122,12 @@
         ] },
         { place: 'Hanlim · The Party · Outside', time: 'Evening', soft: true },
         { n: "Outside it was snowing in the slow, fat way that made streetlights look like they were being lowered on strings. Cherry lit a cigarette and held it away from Solar's face out of courtesy, and they stood on the curb in a fog of cold and smoke and somebody else's bass." },
+        { n: "The house was louder from out here, somehow. Every window was lit and every window was shaking a little in its frame, and through the front one she could see the kitchen counter, and the back of a black jacket, and a beanie, and she made herself turn round and look at the street instead, at the parked cars wearing their little hats of snow, at a cat on a wall that looked at her like it had seen everything and been impressed by none of it." },
+        { s: 'cherry', f: 'neutral', t: "You did good." },
+        { s: 'solar', f: 'sad', t: "Did I?" },
+        { s: 'cherry', f: 'serious', t: "Sol. Two years ago you'd have been on that counter next to him and I'd have been under it. You did *good*. Don't argue with me on a holiday, I'll push you into the road." },
+        { n: "She didn't argue. Cherry smoked, and flicked the ash into the snow, and looked at the house the way she'd looked at Solar's house on Christmas, like she was taking a picture of it without her phone, except this time the picture was of something she didn't want to keep." },
+        { s: 'cherry', f: 'sad', t: "He's going to be fine. He's always fine. That's the worst thing about him." },
         { n: "She typed *jihoon was there* and deleted it. Typed *im fine* and deleted that too, because she knew exactly how he'd read it. Then she typed the truth and sent it before she could think." },
         { phone: [
           { from: 'solar', t: "leaving now. jihoon was there. im ok. i promise" },
@@ -124,6 +135,7 @@
           { from: 'jungwon', t: "thank you for telling me." },
           { from: 'jungwon', t: "please text me when you're inside your house. i'll be awake." }
         ], contact: 'Won' },
+        { n: "She read it twice. *I believe you.* No question mark, no *are you sure*, no *what do you mean was there*. Just the period, the way he ended everything, like a door being shut gently so it wouldn't wake anyone. Her eyes stung in the cold. She blamed the cigarette." },
         { s: 'cherry', f: 'neutral', t: "He texts like a hostage negotiator. I love that for you. Genuinely. Disgusting." },
         { bond: { cherry: 1 } },
         { n: "She put the phone back in her coat pocket. Her fingers brushed the can, cold and unopened, the one she carried everywhere and never opened. She didn't think about the two seconds of music. She thought about it the whole way home." }
@@ -161,12 +173,25 @@
           { s: 'jihoon', f: 'serious', t: "Don't." },
           { s: 'hyunsuk', f: 'neutral', t: "I didn't say anything, man." },
           { s: 'jihoon', f: 'neutral', t: "You Said It With Your Face. Your Face Is Very Loud, Suk. Go Inside Before You Die Of Exposure, I'm Not Carrying You." },
+          { n: "Hyunsuk didn't go inside. He stood there a second longer with his arms round himself and his breath going up, and then he did something she hadn't seen him do in two years: he reached out and knocked his knuckles once against Jihoon's shoulder, light, the way they used to after a game, and went back in without saying anything, and shut the door." },
+          { n: "Jihoon stood on the step looking at the shut door. Then at the snow. Then at his own shoulder, like there was something on it." },
+          { s: 'jihoon', f: 'neutral', t: "...He's Always Been Dramatic." },
+          { s: 'solar', f: 'happy', t: "Sure, Jihoon." },
           { n: "In the car the heater roared and the windshield fogged and he drove with one hand at the top of the wheel, talking the whole way about nothing, the party, the fruit plate, the swim-team guy's tragic haircut, and he didn't look at her once." },
           { s: 'jihoon', f: 'neutral', t: "Do Not Make This A Thing. If You Make This A Thing I Will Do Twice As Much Tomorrow To Make A Point. I'm Petty Like That." },
           { s: 'solar', f: 'serious', t: "I'm not making it a thing." },
           { s: 'jihoon', f: 'sad', t: "Good. Because You'd Only Been Back A Week, And I Just—" },
           { n: "The wipers went across once. Twice." },
           { s: 'jihoon', f: 'happy', t: "—Wanted To See If You'd Gotten Uglier. You Have. Congratulations." },
+          { n: "At the light by the convenience store he stopped, though it was green, and sat there with the indicator ticking for a second, and she looked over at him. His hand had gone to his jacket. Not into it. Just there, flat, over the pocket, the way you'd put your hand over a bruise to see if it still hurt." },
+          { ifFlag: 'epi-h-party-jh-flushed', then: [
+            { n: "It was empty. She knew it was empty, because she'd watched where it went. He knew she knew. He took his hand back and put it on the wheel, ten and two, like a driving test, like a boy who'd been told to keep his hands where somebody could see them." }
+          ], else: [
+            { n: "It wasn't empty. She knew it wasn't, and he knew she knew, and he'd walked out of that house anyway with it still in there and her beside him, which was a different thing from throwing it away and also not nothing. He took his hand back and put it on the wheel, ten and two, like a driving test, like a boy who'd been told to keep his hands where somebody could see them." }
+          ] },
+          { s: 'jihoon', f: 'neutral', t: "Light's Green." },
+          { s: 'solar', f: 'neutral', t: "It's been green." },
+          { s: 'jihoon', f: 'neutral', t: "I Know. I Was Giving It A Moment. It's A Holiday." },
           { bond: { jihoon: 1 } },
           { n: "She looked out the window so he wouldn't have to see her face, and he turned the radio up so she wouldn't have to hear his, and they drove the rest of the way like that, both of them pretending, the snow coming down on the hood like something being decided very slowly." }
         ], else: [
@@ -214,6 +239,10 @@
           { s: 'sunoo', f: 'sad', t: "...Nobody took the last four. I'm going to be honest, that hurt." },
           { n: "He gave one to a stranger walking a dog. The stranger said thank you. Sunoo looked like he might cry about it." },
           { s: 'niki', f: 'happy', t: "I posted Sunoo handing out water. Top comment already says 'rehab kids dont hand out evian.' We won." },
+          { s: 'jake', f: 'happy', t: "Operation Normal Teenagers: complete. Mostly. Partially. I'm putting it on my college applications." },
+          { s: 'jay', f: 'neutral', t: "You're putting a fistfight on your college applications." },
+          { s: 'jake', f: 'happy', t: "*Conflict resolution*, Jay. I resolved a conflict. With my arms." },
+          { n: "Cherry was a little way down the curb on her own, smoking, her bag on her shoulder with something in it that had hit two boys tonight, and Sunghoon drifted down the curb towards her the way snow drifts, gradually and as if by accident, and stood next to her, not looking at her, and offered her his scarf without a word, and she took it without a word, and that was apparently the whole of it, and Solar decided not to look at it any harder, because it wasn't hers to look at." },
           { s: 'heeseung', f: 'neutral', t: "Objective... partially achieved." },
           { s: 'sunghoon', f: 'neutral', t: "Sunghoon was magnificent in there, for the record. Nobody said it, so Sunghoon is saying it." },
           { s: 'jungwon', f: 'neutral', t: "Is everyone alright. Sol. Are you alright." },
