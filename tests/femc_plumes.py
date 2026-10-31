@@ -250,8 +250,8 @@ try:
     if want('milestones'):
         setup(p, day='5/12', miles=True)
         r = p.eval(f"(()=>{{const m={RQ}.milestones();return {{n:m.length,total:m.reduce((a,x)=>a+x.plumes,0),guards:m.filter(x=>x.kind==='guardian').length,ids:new Set(m.map(x=>x.id)).size}}}})()")
-        ok(r['n'] == 27 and r['ids'] == 27 and r['guards'] == 9, r)
-        ok(r['total'] == 106, ('106 plumes in all', r))
+        ok(r['n'] == 28 and r['ids'] == 28 and r['guards'] == 10, r)
+        ok(r['total'] == 111, ('111 plumes in all (Monad’s three section guardians)', r))
         ok(p.eval(f"{G}.plumes") == 0 and p.eval(f"{G}.miles.length") == 0, 'nothing for a new climber')
         toasts(p)
         pl = lambda: p.eval(f"{G}.plumes")
@@ -294,11 +294,11 @@ try:
         p.eval("FemcGame.S.phase='play';FemcGame.save()"); p.eval("new Promise(r=>setTimeout(r,600))")
         ok(p.eval(f"{G}.plumes") == 37 and p.eval(f"{G}.miles.length") == 12, 'not again after a reload')
         # A save at the very top (Monad's end, every guardian): everything, once.
-        p.eval(SETUP % {'cfg': json.dumps({'day': '1/20', 'maxFloor': 254, 'guardians': ['f11', 'f29', 'f52', 'f80', 'f109', 'f135', 'f160', 'f204', 'f246'], 'miles': True})})
+        p.eval(SETUP % {'cfg': json.dumps({'day': '1/20', 'maxFloor': 254, 'guardians': ['f11', 'f29', 'f52', 'f80', 'f109', 'f135', 'f160', 'f204', 'f222', 'f246'], 'miles': True})})
         p.eval("new Promise(r=>setTimeout(r,700))")
-        ok(p.eval(f"{G}.plumes") == 106, ('everything at the top', p.eval(f"{G}.plumes")))
+        ok(p.eval(f"{G}.plumes") == 111, ('everything at the top', p.eval(f"{G}.plumes")))
         clean(p, 'retro')
-        results['retro'] = 'mid-game save (92F, four guardians) gets 37 once, a finished tower 106; never again after saves or a reload'
+        results['retro'] = 'mid-game save (92F, four guardians) gets 37 once, a finished tower 111; never again after saves or a reload'
         print('retro OK', results['retro'], flush=True)
 
     # ── The Plume Exchange ──

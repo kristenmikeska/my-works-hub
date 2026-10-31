@@ -1,22 +1,34 @@
 """Tartarus, deeper (2026-10-25): more floors per block, the newer room types, puzzles, secret floors and Monad, rewards,
 old-save migration and a real Tartarus night. Isolated Chrome profile, a local server on a random port; never the player's saves.
 
-  python3 tests/femc_tartarus.py [--only gen,puzzles,rooms,secret,migration,night,shots] [--screenshots DIR]
+  python3 tests/femc_tartarus.py [--only gen,puzzles,rooms,secret,teleport,migration,night,shots] [--screenshots DIR]
+
+Since the finish roadmap's phase 1 (2026-10-31): 113 stopping floors (the main floors plus short landings between them),
+teleporting from the entrance, Monad's three section guardians, four superbosses, more events (and arrival events), stairs
+that skip mapped landings, guardian / superboss plumes.
 
 gen        floors per block (real P3 numbers, the calendar's caps at each block's top), 20 maps of every floor: the stairs
            always reachable, guardians on their floors and the only way to the stairs, every room type turns up, the block
            biases show (traps in Yabbashah, puzzles in Arqa, golden Shadows in Adamah, cracked walls in Tziah), hidden rooms
-           out of reach until found, Monad's door on 172F only once it's open.
+           out of reach until found, Monad's door on 172F only once it's open. Phase 1: floors per block, landings (3 layers,
+           never a guardian), a superboss door on exactly its four floors, distinct guardian names, the gates, the pool's
+           level ramp.
 puzzles    the three puzzles' generators over 900 seeds and every block: solvable, inside their budgets; then each solved
            through the real UI with keys, and one given up.
 rooms      every room type entered through the map in practice mode: guardian, vault (key, guards), puzzle, rest, rare
            (caught and fled), trap (dodge, brace, spotted), moon shrine, events (each one), cracked walls (loot, memory).
+           Phase 1: a superboss (left shut, beaten, its loot, then a rematch), the plume rewards (guardian 2, superboss 5,
+           a rematch none, practice none), the romance gate on events, arrival events (cadence, a forced one through the UI).
 secret     a cracked wall's stairwell to a hidden floor and out onto the next floor; Monad's door at 172F into 176F, its
            access point, and a Monad floor's sealed stairs in the story.
+teleport   the entrance's Teleport list (practice: blocks reached; story: tonight's open blocks and Monad's sections by date)
+           and a teleport through the UI; stairs that skip mapped landings (and stop at an unbeaten superboss's floor).
 migration  old battle saves (three floors a block, a v2 save with a number, Sketch the Floor's list) move their access point to
            the same game floor; a new save is left alone; a story slot with an old battle save continues from the right floor.
+           Phase 1: tt.gates / tt.supers default and are cleaned; an access point on a landing loads.
 night      a real Tartarus night from the dorm: the new floors' numbers, rooms on the way, leaving at an access point, the result
-           back in the life sim (best floor, Velvet Plumes found), the next morning.
+           back in the life sim (best floor, Velvet Plumes found), the next morning. Phase 1: a landing on the way, a forced
+           arrival event (the blue feather: a plume).
 shots      the map (rooms revealed, a party line), a puzzle of each kind, a guardian and a golden Shadow at 1440x900 and 375x812."""
 import argparse, base64, json, pathlib, tempfile, time
 from femc_browser import Page
@@ -137,7 +149,26 @@ try:
             // each pair: a block of the same map size without the bias, then the block with it
             bias:{trap:[pct('tziah','trap'),pct('yabbashah','trap')],puzzle:[pct('thebel','puzzle'),pct('arqa','puzzle')],rare:[pct('harabah','rare'),pct('adamah','rare')],crack:[pct('thebel','crack'),pct('tziah','crack')],vault:[pct('adamah','vault'),pct('harabah','vault')]},
             floors:D.floors.length,monad:D.floors.filter(f=>f.secret).map(f=>f.gameFloor)}})()""")
-        ok(r['per'] == {'thebel': 7, 'arqa': 8, 'yabbashah': 9, 'tziah': 9, 'harabah': 8, 'adamah': 8, 'empyrean': 9, 'monad': 10}, r['per'])
+        ok(r['per'] == {'thebel': 7, 'arqa': 8, 'yabbashah': 9, 'tziah': 9, 'harabah': 8, 'adamah': 8, 'empyrean': 9, 'monad': 10}, r['per'])  # main floors
+        # Phase 1: the landings between them, their short maps, superboss doors, guardians, gates, the level ramp.
+        q = p.eval(r"""(()=>{const D=FEMC_BATTLE_DATA,M=FemcTartarusMap,T=FemcTartarus,E=FemcBattleEngine,bad=[],per={},doors={};
+          D.floors.forEach(f=>{per[f.blockId]=(per[f.blockId]||0)+1});
+          D.blocks.forEach(b=>{const fl=D.floors.filter(f=>f.blockId===b.id).map(f=>f.gameFloor);for(let i=1;i<fl.length;i++)if(fl[i]-fl[i-1]>(b.secret?4:fl[0]<93?2:3))bad.push('gap '+fl[i])});
+          D.floors.forEach(f=>{if(f.landing&&(f.guardian||f.top||f.fi===0||f.layers!==3))bad.push('landing '+f.id);
+            for(let i=0;i<12;i++){const R=E.rng(i*77+f.gameFloor),c=FemcBattle.tt(f);c.rand=R;const m=M.generate(f,{rand:R,plan:T.plan(f,c)});T.dress(m,f,c);
+              const s=m.nodes.filter(n=>n.type==='super');if(s.length!==(f.superboss?1:0))bad.push('door '+f.id);
+              if(s.length){doors[f.id]=s[0].group;if(s[0].group[0]!==f.superboss||s[0].group.length<2)bad.push('door group '+f.id)}
+              if(f.landing&&m.layers!==3)bad.push('layers '+f.id)}});
+          const gk=D.floors.filter(f=>f.guardian).map(f=>f.guardian),gn=gk.map(k=>D.enemies[k].name);
+          const sup=D.floors.filter(f=>f.superboss).map(f=>[f.id,f.superboss,D.enemies[f.superboss].lvl,D.enemies[f.superboss].acts]);
+          const ramp=[D.floors.find(f=>f.id==='f2').pool.flat().some(k=>k.includes('@')),D.floors.find(f=>f.id==='f16').pool.flat().every(k=>k.includes('@'))];
+          return {n:D.floors.length,per,bad:bad.slice(0,8),guards:gk.length,names:new Set(gn).size,sup,doors,ramp,gates:D.floors.filter(f=>f.gate).map(f=>f.id)}})()""")
+        ok(q['n'] == 113 and q['per'] == {'thebel': 9, 'arqa': 13, 'yabbashah': 17, 'tziah': 17, 'harabah': 12, 'adamah': 12, 'empyrean': 12, 'monad': 21}, q)
+        ok(not q['bad'], q['bad'])
+        ok(q['guards'] == 10 and q['names'] == 10, ('a guardian per block and per Monad section, each its own name', q))
+        ok([x[0] for x in q['sup']] == ['f61', 'f115', 'f169', 'f250'] and all(x[3] == 2 for x in q['sup']), q['sup'])
+        ok(q['ramp'] == [False, True], ('pool levels ramp up within a block', q['ramp']))
+        ok(q['gates'] == ['f2', 'f17', 'f37', 'f65', 'f93', 'f119', 'f145', 'f176', 'f208', 'f234'], q['gates'])
         ok(r['tops'] == r['caps'], ('block tops are the calendar caps', r['tops']))
         ok(not r['bad'], r['bad'])
         ok(r['guardOk'] and r['hidOk'], (r['guardOk'], r['hidOk']))
@@ -145,7 +176,7 @@ try:
             ok(r['types'].get(t, 0) > 0, f'{t} never turns up')
         for k, (lo, hi) in r['bias'].items(): ok(hi > lo, ('bias', k, lo, hi))
         ok(r['monadDoor']['open'] > 0 and r['monadDoor']['shut'] > 0, r['monadDoor'])
-        results['gen'] = {'floors': r['floors'], 'per block': r['per'], 'maps': r['n'], 'bias %': r['bias'], 'monad': r['monad']}
+        results['gen'] = {'floors': r['floors'], 'per block': q['per'], 'maps': r['n'], 'bias %': r['bias'], 'monad': r['monad'], 'supers': q['sup']}
         print('gen', json.dumps(results['gen']), flush=True)
 
     # ── Puzzles ────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -311,7 +342,63 @@ try:
             settle("FemcBattle.ctl?.kind==='map'", 60)
             done.append(eid)
         p.eval("window.__ttEvent=null;FemcBattle.save.party=['yukari','junpei','akihiko']")
-        out['events'] = done
+        out['events'] = len(done)
+        ok(len(done) >= 50, ('events in all', len(done)))
+        # Romance events: only on that link's romance route at its rank, never reversed.
+        lv = p.eval(r"""(()=>{const T=FemcTartarus,f=FEMC_BATTLE_DATA.floors[0],e=T.EVENTS.find(x=>x.id==='love-hc'),s=FemcBattle.save,c=FemcBattle.tt(f);
+          const t=(love,bonds,rev)=>{s.bondsLove=love;s.bonds=bonds;s.bondsRev=rev;return T.fits(c,f,e)};s.party=['haechan','yukari','junpei'];
+          const r=[t([],{haechan:9},[]),t(['haechan'],{haechan:4},[]),t(['haechan'],{haechan:5},[]),t(['haechan'],{haechan:9},['haechan'])];
+          s.party=['yukari','junpei','akihiko'];r.push(t(['haechan'],{haechan:9},[]));s.bondsLove=[];s.bonds={};s.bondsRev=[];
+          return {r,n:T.EVENTS.filter(x=>x.love).length,all:T.EVENTS.length}})()""")
+        ok(lv['r'] == [False, False, True, False, False] and lv['n'] == 6, lv)
+        out['romance gate'] = lv
+        # Plumes (story only): a guardian 2, a superboss 5 the first time, a rematch none; practice none.
+        pl = p.eval(r"""(()=>{const T=FemcTartarus,f=FEMC_BATTLE_DATA.floors.find(x=>x.id==='f61'),base=FemcBattle.tt(f);
+          const story=Object.assign({},base,{HO:{request:{}},save:base.save}),out={};
+          ['guardian','super','super2'].forEach(k=>{out[k]=[T.loot(k,story,f).plumes||0,T.loot(k,base,f).plumes||0]});return out})()""")
+        ok(pl == {'guardian': [2, 0], 'super': [5, 0], 'super2': [0, 0]}, pl)
+        out['plumes'] = pl
+        # A superboss: its door asks (leaving it shut keeps the party there), the fight, its first-win loot, then a rematch.
+        p.eval("FemcBattle.save.party=['akihiko','yukari','junpei']")
+        p.eval("window.__ttReveal=true"); climb('f61'); p.eval("window.__ttReveal=false")
+        door = p.eval("FemcBattle.run.map.nodes.find(n=>n.type==='super').id")
+        def to_door():
+            snap(); p.eval("(()=>{const m=FemcBattle.run.map,d=FemcTartarusMap.get(m,%s);m.pos=d.links[0];FemcTartarusMap.visit(m,m.pos);FemcBattle.ctl.go(d.id)})()" % json.dumps(door))
+        to_door(); room_open('super'); click('back'); settle("FemcBattle.ctl?.kind==='map'")
+        ok(p.eval("FemcBattle.run.map.pos") == door and not node(door, 'n.cleared'), 'left shut, standing in the doorway')
+        cards0 = p.eval("FemcBattle.save.cards.list.length")
+        snap(); p.eval("(()=>{const m=FemcBattle.run.map,d=FemcTartarusMap.get(m,%s);m.pos=d.links.find(id=>id!==d.id);FemcTartarusMap.visit(m,m.pos);FemcBattle.ctl.go(d.id)})()" % json.dumps(door))
+        room_open('super'); ok(p.eval("document.querySelector('.bt-room h1').textContent") == 'A SEALED DOOR', 'door title')
+        click('fight')
+        p.wait("FemcBattle.screen()==='battle' && !!document.querySelector('.bt-enemy.superboss')", 30)
+        ok(p.eval("getComputedStyle(document.querySelector('.bt-enemy.superboss')).getPropertyValue('--sb-tint').includes('hue-rotate')"), 'tinted')
+        room_open('super-loot', 240)
+        ok(p.eval("FemcBattle.save.tt.supers") == ['super_abbess'] and p.eval("FemcBattle.save.cards.list.length") > cards0 and p.eval("FemcBattle.marks['super-first']") == 1, 'superboss rewards')
+        click('ok'); settle("FemcBattle.ctl?.kind==='map'")
+        p.eval("window.__ttReveal=true"); climb('f61'); p.eval("window.__ttReveal=false")
+        door = p.eval("FemcBattle.run.map.nodes.find(n=>n.type==='super').id"); to_door(); room_open('super')
+        ok(p.eval("document.querySelector('.bt-room h1').textContent") == 'THE LACQUERED ABBESS', 'rematch door names it')
+        click('fight'); room_open('super-loot', 240)
+        ok(p.eval("FemcBattle.save.tt.supers") == ['super_abbess'] and p.eval("FemcBattle.marks['super-win']") == 2, 'rematch')
+        click('ok'); settle("FemcBattle.ctl?.kind==='map'")
+        out['superboss'] = 'left shut, beaten (tinted, loot), rematch'
+        # Arrival events: never on a run's first three floors, then a chance a floor; a forced one through the UI.
+        climb('f2')
+        cad = p.eval(r"""(async()=>{const f=FEMC_BATTLE_DATA.floors[0],c=window.__arc=FemcBattle.tt(f);c.rand=()=>0;const r=FemcBattle.run;r.ttSince=null;const out=[];
+          for(let i=0;i<3;i++)out.push(await FemcTartarus.arrive(c,f));return {out,since:r.ttSince}})()""")
+        ok(cad['out'] == [None] * 3 and cad['since'] == 2, cad)
+        snap(); p.eval("(FemcTartarus.arrive(window.__arc,FEMC_BATTLE_DATA.floors[0]), 0)")
+        room_open('arrive', 20)  # the fourth floor of a run: now it can happen
+        p.eval("[...document.querySelectorAll('.bt-room [data-v]')].pop().click()"); time.sleep(0.5)
+        if p.eval("FemcBattle.screen()==='room'"): p.eval("document.querySelector('.bt-room [data-v]').click()")
+        p.eval("window.__ttArrive='quiet'")
+        snap(); p.eval("(FemcBattle.climb('f4'), 0)")
+        room_open('arrive', 30)
+        ok('At the top of the stairs' in p.eval("document.querySelector('.bt-room .bt-kicker').textContent"), 'arrival kicker')
+        p.eval("window.__ttArrive=null"); click('tiptoe'); room_open('event-out'); click('ok')
+        settle("FemcBattle.ctl?.kind==='map'")
+        ok(p.eval("FemcBattle.marks['arrive-event']") >= 1 and p.eval("FEMC_BATTLE_DATA.floors[FemcBattle.run.fi].id") == 'f4', 'arrival event then the map')
+        out['arrival'] = 'none in the first floors, forced one through the UI'
         ok(not p.console(), p.console())
         results['rooms'] = out
         print('rooms', json.dumps(out), flush=True)
@@ -329,7 +416,7 @@ try:
         ok(hid['label'] == '8F·B' and hid['crack'] and not hid['access'], hid)
         if want('shots') or True:
             pass
-        # Walk to its stairs (fights on the way), out onto 11F.
+        # Walk to its stairs (fights on the way), out onto 10F (the landing above 8F).
         snap(); p.eval("(()=>{const m=FemcBattle.run.map,{prev}=FemcTartarusMap.bfs(m,m.stairs);window.__path=[];let k=m.pos;while(k&&k!==m.stairs){k=prev[k];window.__path.push(k)}})()")
         t0 = time.time()
         while not p.eval("(FemcBattle.marks['room-stairs']||0)>0") and time.time() - t0 < 240:
@@ -340,7 +427,7 @@ try:
             else: p.eval(DRIVE)
             time.sleep(0.05)
         room_open('stairs', 60); click('up')
-        settle("FemcBattle.ctl?.kind==='map' && FemcBattle.run.fi===FEMC_BATTLE_DATA.floors.findIndex(f=>f.id==='f11')", 30)
+        settle("FemcBattle.ctl?.kind==='map' && FemcBattle.run.fi===FEMC_BATTLE_DATA.floors.findIndex(f=>f.id==='f10')", 30)
         ok(p.eval("FemcBattle.save.tt.secrets").count('f8-h') == 1, 'secret floor recorded')
         # Monad: shut before Fortune, open after; through the wall to 176F; its access point; Continue from there.
         climb('f172')
@@ -366,8 +453,45 @@ try:
         gate = p.eval("""(()=>{const T=FemcTartarus,F=id=>FEMC_BATTLE_DATA.floors.find(f=>f.id===id),c=mf=>({save:{ops:{cleared:['fortune']}},HO:{request:{maxFloor:mf}}});
           return [T.floorOpen(c(172),F('f176')),T.floorOpen(c(204),F('f204')),T.floorOpen(c(204),F('f212')),T.floorOpen(c(254),F('f254')),T.floorOpen({save:{ops:{cleared:[]}},HO:{request:{maxFloor:254}}},F('f176'))]})()""")
         ok(gate == [False, True, False, True, False], gate)
-        results['secret'] = {'monad by date': gate, 'hidden floor': hid, 'out onto': '11F', 'monad': 'found at 172F → 176F, access point, continue'}
+        results['secret'] = {'monad by date': gate, 'hidden floor': hid, 'out onto': '10F', 'monad': 'found at 172F → 176F, access point, continue'}
         print('secret', json.dumps(results['secret']), flush=True)
+
+    # ── Teleport and stairs that skip ─────────────────────────────────────────────────────────────────────────────────
+    if want('teleport'):
+        practice(extra="s.floorsMapped=[];FemcBattle.hub()")
+        ok(not p.eval("!!document.querySelector('[data-go=warp]')"), 'no Teleport on a fresh save')
+        # Practice: a block reached (a floor mapped in Yabbashah, Arqa's door from the Priestess) shows its first floor.
+        p.eval("FemcBattle.save.floorsMapped=['f45'];FemcBattle.save.ops.cleared=['priestess'];FemcBattle.hub()")
+        snap(); p.eval("document.querySelector('[data-go=warp]').click()")
+        p.wait("FemcBattle.screen()==='warp'", 10)
+        lst = p.eval("[...document.querySelectorAll('[data-warp]')].map(b=>b.dataset.warp)")
+        ok(lst == ['f17', 'f37', ''], lst)
+        p.eval("document.querySelector('[data-warp=f37]').click()")
+        settle("FemcBattle.ctl?.kind==='map'", 30)
+        ok(p.eval("FEMC_BATTLE_DATA.floors[FemcBattle.run.fi].id") == 'f37' and 'f37' in p.eval("FemcBattle.save.tt.gates"), 'teleported to 37F')
+        # The rules: the story keeps to tonight's open blocks; Monad's sections by date once it's found.
+        g = p.eval(r"""(()=>{const T=FemcTartarus,ids=l=>l.map(f=>f.id);
+          const st=(o,hoMax,maxBi)=>ids(T.gates({save:Object.assign({floorsMapped:[],reached:null,ops:{cleared:['priestess','empress','hierophant','lovers','chariot','hermit','fortune']},tt:{guardians:[],gates:[],monad:false}},o),HO:hoMax?{request:{maxFloor:hoMax}}:null},maxBi));
+          return {open4:st({},92,3),monad204:st({tt:{monad:true,gates:[],guardians:[]}},204,6),monad230:st({floorsMapped:['f212'],tt:{monad:true,gates:[],guardians:[]}},230,6),
+            notFound:st({},254,6),practice:st({floorsMapped:['f242'],tt:{monad:true,gates:[],guardians:[]}},0,Infinity),fresh:ids(T.gates({save:{floorsMapped:[],reached:null,ops:{cleared:[]},tt:{gates:[],guardians:[]}},HO:null}))}})()""")
+        ok(g['open4'] == ['f2', 'f17', 'f37', 'f65'], g)
+        ok(g['monad204'][-1] == 'f176' and g['monad230'][-2:] == ['f176', 'f208'] and 'f176' not in g['notFound'] and g['practice'][-3:] == ['f176', 'f208', 'f234'] and g['fresh'] == ['f2'], g)
+        # Stairs past mapped landings: 37F → 41F with 39F mapped; never past an unbeaten superboss's floor.
+        p.eval("FemcBattle.save.floorsMapped=['f39']")
+        climb('f37')
+        snap(); p.eval("(()=>{const m=FemcBattle.run.map,st=FemcTartarusMap.get(m,m.stairs),n=FemcTartarusMap.get(m,st.links[0]);n.cleared=true;n.type='empty';m.pos=n.id;FemcTartarusMap.visit(m,n.id);FemcBattle.ctl.go(st.id)})()")
+        room_open('stairs')
+        ok(p.eval("document.querySelector('.bt-room [data-v=skip]').textContent").startswith('Climb on to 41F'), 'skip offered')
+        click('skip'); settle("FemcBattle.ctl?.kind==='map'", 30)
+        ok(p.eval("FEMC_BATTLE_DATA.floors[FemcBattle.run.fi].id") == 'f41' and p.eval("FemcBattle.marks['stairs-skip']") == 1, 'skipped to 41F')
+        sk = p.eval(r"""(()=>{const T=FemcTartarus,F=FEMC_BATTLE_DATA.floors,i=id=>F.findIndex(f=>f.id===id),c=(m,sup)=>({save:{floorsMapped:m,tt:{supers:sup},ops:{cleared:['fortune']}},HO:null});
+          const at=k=>k<0?null:F[k].id;
+          return [at(T.skipTo(c([],[]),i('f37'))),at(T.skipTo(c(['f39'],[]),i('f37'))),at(T.skipTo(c(['f47','f50'],[]),i('f45'))),at(T.skipTo(c(['f250'],[]),i('f246'))),at(T.skipTo(c(['f250'],['super_eclipse']),i('f246'))),
+            at(T.skipTo({save:{floorsMapped:['f208'],tt:{supers:[]},ops:{cleared:['fortune']}},HO:{request:{maxFloor:204}}},i('f204')))]})()""")
+        ok(sk == [None, 'f41', 'f48', None, 'f254', None], sk)
+        ok(not p.console(), p.console())
+        results['teleport'] = {'practice list': lst, 'rules': g, 'skips': sk}
+        print('teleport', json.dumps(results['teleport']), flush=True)
 
     # ── Old saves ──────────────────────────────────────────────────────────────────────────────────────────────────
     if want('migration'):
@@ -380,6 +504,12 @@ try:
           return {out,v2:v2.reached,mapped,fresh:fresh.reached,tt:fresh.tt,moved:BS.moveFloor('f60')}})()""")
         ok(all(v[0] == v[1] for v in r['out'].values()), r['out'])
         ok(r['v2'] == 'f16' and r['mapped'] == ['f6', 'f11', 'f23', 'f172'] and r['fresh'] == 'f23', r)
+        # Phase 1: tt.gates / tt.supers default to empty and are cleaned; an access point on a landing loads as it is.
+        m2 = p.eval(r"""(()=>{const BS=FemcBattleSave,s=JSON.parse(JSON.stringify(FemcBattle.save));
+          const a=BS.fromRaw(Object.assign({},s,{tv:2,tt:{guardians:['f11'],monad:true,secrets:[],puzzles:1,rares:0}})).tt;
+          const b=BS.fromRaw(Object.assign({},s,{tv:2,reached:'f39',tt:{guardians:[],gates:['f17','f18','nope',3],supers:['super_abbess','guard_thebel',null]}}));
+          return {a:[a.gates,a.supers,a.guardians,a.monad],b:[b.reached,b.tt.gates,b.tt.supers],ng:BS.carry(b).tt}})()""")
+        ok(m2['a'] == [[], [], ['f11'], True] and m2['b'] == ['f39', ['f17'], ['super_abbess']] and m2['ng']['gates'] == [] and m2['ng']['supers'] == [], m2)
         # A story slot whose battle save is from before: the night's hub offers the same game floor.
         p.goto('femc-game.html?speed=10&seed=3')
         p.eval("""(()=>{FemcGame.newGame();const S=FemcGame.S;S.phase='play';S.day=FemcGame.dayOf('6/20');S.slot='evening';S.unlocked.tartarus=true;S.flags.armband=true;
@@ -409,8 +539,14 @@ try:
         settle("FemcBattle.screen()==='hub' && FemcBattle.ctl?.kind==='buttons'", 60)
         entry = p.eval("document.querySelector('[data-go=run] span').textContent")
         ok('37F' in entry, entry)
+        p.eval("window.__ttArrive='feather'")  # the blue feather at the top of the first stairs: a Velvet Plume (story only)
         p.eval("document.querySelector('[data-go=run]').click()")
+        settle("(FemcBattle.marks['room-arrive']||0)>0", 30)
+        p.eval("window.__ttArrive=null")
+        ok(p.eval("FemcBattle.marks['event-feather']") == 1, 'feather')
+        p.eval("document.querySelector('.bt-room [data-v]').click()"); time.sleep(0.3); p.eval("document.querySelector('.bt-room [data-v]')?.click()")
         p.wait("FemcBattle.ctl?.kind==='map'", 30)
+        ok(p.eval("FemcBattle.hs.plumes") >= 1, ('the feather’s plume', p.eval("FemcBattle.hs.plumes")))
         floors, seen_rooms, t0 = set(), {}, time.time()
         # Climb: unvisited rooms first, the stairs when there; take every room the way a player would (first choice).
         while time.time() - t0 < 240 and len(floors) < 3:
@@ -428,7 +564,7 @@ try:
                 p.eval("document.querySelector('[data-pz=quit]')?.click()")
             else: p.eval(DRIVE)
             time.sleep(0.04)
-        ok(len(floors) >= 3, ('climbed', floors))
+        ok(len(floors) >= 3 and 'f39' in floors, ('climbed, a landing on the way', floors))
         # Velvet Plumes found tonight travel back with the result.
         p.eval("FemcBattle.hs.plumes=(FemcBattle.hs.plumes||0)+2")
         best = p.eval("FemcBattle.hs.floor")
@@ -436,7 +572,7 @@ try:
         res = p.eval("window.__hoResult")
         p.top(); p.wait("!document.querySelector('.g-dh') && !!document.querySelector('.g-results')", 30)
         S = p.eval("({f:FemcGame.S.tartarus.maxFloor,n:FemcGame.S.tartarus.nights,pl:FemcGacha.gs().plumes})")
-        ok(res['floorsReached'] == best >= 41 and S['f'] == best and S['n'] == 1 and S['pl'] == pl0 + 1 + res.get('plumes', 0) and res.get('plumes', 0) >= 2, (res, S, pl0))
+        ok(res['floorsReached'] == best >= 41 and S['f'] == best and S['n'] == 1 and S['pl'] - pl0 >= 1 + res.get('plumes', 0) and res.get('plumes', 0) >= 3, (res, S, pl0))
         p.eval("document.querySelector('.g-results-ov [data-close]').click()")
         results['night'] = {'entered at': entry, 'floors': sorted(floors), 'rooms': seen_rooms, 'best floor': S['f'], 'plumes': [pl0, S['pl']], 'result plumes': res.get('plumes')}
         print('night', json.dumps(results['night']), flush=True)
