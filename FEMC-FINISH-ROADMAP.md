@@ -35,7 +35,7 @@ Kat's decisions:
 - Difficulty stays set by floor, not by the player's level.
 
 ## 6. Epilogue depth
-- [ ] Longer, deeper scenes, paired with the new backgrounds from 3
+- [x] Longer, deeper scenes, paired with the new backgrounds from 3 (Oct 31: CLAUDE.md "Epilogue depth: built")
 
 ## 7. UI revamp (last)
 - Close to P3 Reload, with its own Solstice identity. Kat's references: `Femc Mode Images/Inspo` (not `Skin Inspo`). Approved direction: giant ghost words, bold italic slanted lists, art bleeding off the edge, angular text box with an arrow name tag; indigo-to-gold by day, green and black in the Dark Hour, gold selection slash, a sun and moon in the date box.
