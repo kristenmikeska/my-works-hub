@@ -205,7 +205,10 @@ button, input, select { font: inherit; color: inherit; }
     try { await navigator.clipboard.writeText(text); } catch (e) { $('[data-text]').select(); }
   });
   $('[data-outclose]').addEventListener('click', () => { $('[data-out]').hidden = true; });
-  render();
+  /* With nothing stored in this browser, start from the batches Kat has already handed over (placements-kat.json) */
+  let stored = null; try { stored = localStorage.getItem(KEY); } catch (e) {}
+  if (stored) render();
+  else fetch('placements-kat.json').then(r => r.ok ? r.json() : null).then(d => { if (d) { adj = d; save(); } render(); }).catch(render);
 })();
 </script>
 </body>
