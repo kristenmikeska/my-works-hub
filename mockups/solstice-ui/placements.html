@@ -28,6 +28,7 @@ button, input, select { font: inherit; color: inherit; }
 .top input[type=search], .top select { background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .2); border-radius: 6px; padding: 7px 10px; min-width: 0; }
 .top input[type=search] { width: 170px; }
 .top label { font-size: 13px; display: flex; gap: 6px; align-items: center; }
+.top label[hidden] { display: none; }
 .btn { background: var(--gold); color: var(--deep); border: 0; border-radius: 6px; padding: 8px 14px; font-weight: 600; cursor: pointer; }
 .btn.ghost { background: transparent; color: var(--paper); border: 1px solid rgba(255, 255, 255, .3); }
 .count { font-size: 13px; color: rgba(255, 255, 255, .65); }
@@ -47,7 +48,8 @@ button, input, select { font: inherit; color: inherit; }
 /* On screens narrower than the mockup's, the picture can end above the bottom: fade its last stretch instead of a hard edge */
 .scene .p { -webkit-mask-image: linear-gradient(180deg, #000 86%, transparent); mask-image: linear-gradient(180deg, #000 86%, transparent); }
 .scene .p.speaker { left: calc(17cqw + var(--nx, 0) * 1cqw - var(--ph) * var(--ar) * var(--cx)); filter: drop-shadow(-1cqw .3cqw 0 var(--indigo)) drop-shadow(.55cqw 0 0 var(--gold)); }
-.scene .p.solar { right: 0; transform: scaleX(-1); filter: drop-shadow(-1cqw .3cqw 0 var(--indigo)) brightness(.86) saturate(.9); }
+/* Solar is mirrored, so her face centre sits cx of the picture's width in from its right edge: hang it 17% in from the screen's right */
+.scene .p.solar { right: calc(17cqw - var(--nx, 0) * 1cqw - var(--ph) * var(--ar) * var(--cx)); transform: scaleX(-1); filter: drop-shadow(-1cqw .3cqw 0 var(--indigo)) brightness(.86) saturate(.9); }
 .scene .box { position: absolute; z-index: 3; left: 49.5%; bottom: 5cqh; width: 58cqw; translate: -46% 0; }
 .scene .shell { min-height: 15.6cqh; padding: 3.4cqh 3.6cqw 3cqh 4.3cqw; background: linear-gradient(100deg, rgba(18, 13, 58, .94), rgba(38, 32, 122, .9) 70%, rgba(90, 58, 158, .86));
   clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%); font: 500 1.7cqw/1.42 var(--body); color: #fff; }
@@ -79,8 +81,9 @@ button, input, select { font: inherit; color: inherit; }
 <body>
 <header class="top">
   <h1>Portrait <span>placements</span></h1>
-  <p class="help">Everyone as the speaker beside Solar. Click anyone who looks off, nudge them, then press <b>Copy for Claude</b>.</p>
+  <p class="help">Everyone as the speaker beside their world’s Solar; switch Review to check Solar’s own versions and faces. Click anyone who looks off, nudge them, then press <b>Copy for Claude</b>.</p>
   <input type="search" placeholder="Find…" aria-label="Find a character" data-q>
+  <label>Review <select data-mode><option value="speakers">Speakers (left)</option><option value="solar">Solar (right)</option></select></label>
   <label>Face <select data-face><option>neutral</option><option>happy</option><option>sad</option><option>serious</option><option>surprised</option><option>flustered</option></select></label>
   <label><input type="checkbox" data-only> Adjusted only</label>
   <span class="count" data-count></span>
@@ -118,49 +121,67 @@ button, input, select { font: inherit; color: inherit; }
   let adj = {};
   try { adj = JSON.parse(localStorage.getItem(KEY) || 'null') || structuredClone(SEED); } catch (e) { adj = structuredClone(SEED); }
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(adj)); } catch (e) {} };
-  const ids = Object.keys(SETS).filter(id => id !== 'solar' && FACES[id]).sort();
+  const ids = Object.keys(SETS).filter(id => !/^solar(-|$)/.test(id) && FACES[id]).sort();
+  const SOLARS = Object.keys(SETS).filter(id => /^solar(-|$)/.test(id) && FACES[id]).sort();
+  const EXPR = ['neutral', 'happy', 'sad', 'serious', 'surprised', 'flustered'];
+  /* Solar mode reviews every version in every expression: one card per "version/expression" */
+  const solarCards = SOLARS.flatMap(v => EXPR.filter(e => SETS[v].includes(e)).map(e => v + '/' + e));
+  const mode = () => $('[data-mode]').value;
+  /* The Solar who stands beside a speaker: her matching world version (haechan-runners-holiday → solar-runners-holiday), else plain Solar */
+  const solarFor = id => { const parts = id.split('-'); for (let n = parts.length - 1; n >= 1; n--) { const v = 'solar-' + parts.slice(1, n + 1).join('-'); if (SETS[v]) return v; } return 'solar'; };
   const nice = id => id.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ').replace(/^(\S+) /, '$1 · ');
-  const face = id => { const want = $('[data-face]').value; return (SETS[id] || []).includes(want) ? want : (SETS[id] || []).includes('neutral') ? 'neutral' : SETS[id][0]; };
+  const face = (id, want = $('[data-face]').value) => {
+    if (id.includes('/')) return id.split('/')[1];
+    return (SETS[id] || []).includes(want) ? want : (SETS[id] || []).includes('neutral') ? 'neutral' : SETS[id][0]; };
   const LINES = ['So. Are we doing this, or are you going to keep staring at me?', 'You’re late again. I saved you a seat anyway.', 'Hey. Got a minute? There’s something I wanted to ask you.'];
 
-  function scene(id) {
-    const a = adj[id] || {}, [ar, cx] = FACES[id], [sar] = FACES.solar || [1.013];
-    const ps = (SCALE[id] || 1) * (a.s || 1), pd = DROP[id] || 0;
+  /* One portrait's style: size from scale.js × nudge, drop, measurements, nudge (nudges are kept per version, shared by its expressions) */
+  const look = v => { const a = adj[v] || {}, [ar, cx] = FACES[v]; return `--ps:${(SCALE[v] || 1) * (a.s || 1)};--pd:${DROP[v] || 0};--ar:${ar};--cx:${cx};--nx:${a.x || 0};--ny:${a.y || 0}`; };
+  function scene(card) {
+    const solarMode = card.includes('/');
+    const sv = solarMode ? card.split('/')[0] : solarFor(card), sface = solarMode ? card.split('/')[1] : ((SETS[sv] || []).includes($('[data-face]').value) ? $('[data-face]').value : 'happy');
+    const sp = solarMode ? 'junpei' : card, spFace = solarMode ? 'neutral' : face(card);
+    const who = solarMode ? 'Junpei' : nice(card).split(' · ')[0];
     return `<div class="scene"><img class="bg" src="${A}bg/gekkoukan-classroom-day.webp" alt="" loading="lazy"><div class="bg-veil"></div>
-      <img class="p solar" src="${A}portraits/solar/happy.webp" alt="" loading="lazy" style="--ps:${SCALE.solar || 1};--ar:${sar}">
-      <img class="p speaker" src="${A}portraits/${id}/${face(id)}.webp" alt="${nice(id)}" loading="lazy" style="--ps:${ps};--pd:${pd};--ar:${ar};--cx:${cx};--nx:${a.x || 0};--ny:${a.y || 0}">
-      <div class="box"><div class="tag">${nice(id).split(' · ')[0]}</div><div class="shell">${LINES[id.length % LINES.length]}</div></div></div>`;
+      <img class="p solar" src="${A}portraits/${sv}/${sface}.webp" alt="${nice(sv)}" loading="lazy" style="${look(sv)}">
+      <img class="p speaker" src="${A}portraits/${sp}/${spFace}.webp" alt="${nice(sp)}" loading="lazy" style="${look(sp)}">
+      <div class="box"><div class="tag">${who}</div><div class="shell">${LINES[card.length % LINES.length]}</div></div></div>`;
   }
-  const isAdj = id => { const a = adj[id]; return !!a && Object.values(a).some(v => v && v !== 1); };
-  const tag = id => { const a = adj[id] || {}; return isAdj(id) ? `x ${a.x || 0} · y ${a.y || 0} · size ${(a.s || 1).toFixed(2)}` : ''; };
+  /* The portrait a card's nudges belong to: the speaker, or in Solar mode that Solar version */
+  const target = card => card.split('/')[0];
+  const isAdj = card => { const a = adj[target(card)]; return !!a && Object.values(a).some(v => v && v !== 1); };
+  const tag = card => { const a = adj[target(card)] || {}; return isAdj(card) ? `x ${a.x || 0} · y ${a.y || 0} · size ${(a.s || 1).toFixed(2)}` : ''; };
+  const label = card => card.includes('/') ? `${nice(card.split('/')[0])} — ${card.split('/')[1]}` : nice(card);
 
   const grid = $('[data-grid]');
   function render() {
     const q = $('[data-q]').value.trim().toLowerCase(), only = $('[data-only]').checked;
-    const list = ids.filter(id => (!q || id.includes(q)) && (!only || isAdj(id)));
-    grid.innerHTML = list.map(id => `<button type="button" class="card${isAdj(id) ? ' adj' : ''}" data-id="${id}">${scene(id)}<span class="meta"><b>${nice(id)}</b><i>${tag(id)}</i></span></button>`).join('');
-    $('[data-count]').textContent = `${list.length} shown · ${ids.filter(isAdj).length} adjusted`;
+    const pool = mode() === 'solar' ? solarCards : ids;
+    const list = pool.filter(id => (!q || id.includes(q)) && (!only || isAdj(id)));
+    grid.innerHTML = list.map(id => `<button type="button" class="card${isAdj(id) ? ' adj' : ''}" data-id="${id}">${scene(id)}<span class="meta"><b>${label(id)}</b><i>${tag(id)}</i></span></button>`).join('');
+    $('[data-count]').textContent = `${list.length} shown · ${Object.keys(adj).length} adjusted`;
+    $('[data-face]').closest('label').hidden = mode() === 'solar';
   }
-  ['input', 'change'].forEach(ev => { $('[data-q]').addEventListener(ev, render); $('[data-only]').addEventListener(ev, render); $('[data-face]').addEventListener(ev, render); });
+  ['input', 'change'].forEach(ev => { $('[data-q]').addEventListener(ev, render); $('[data-only]').addEventListener(ev, render); $('[data-face]').addEventListener(ev, render); $('[data-mode]').addEventListener(ev, render); });
 
   /* Full-size view with nudging */
   const big = $('[data-big]'); let cur = null;
   const order = () => $$('.card', grid).map(c => c.dataset.id);
   function open(id) { cur = id; big.hidden = false; draw(); }
-  function draw() { $('[data-stage]', big).innerHTML = scene(cur); $('[data-name]', big).textContent = nice(cur); $('[data-vals]', big).textContent = tag(cur) || 'not adjusted'; }
+  function draw() { $('[data-stage]', big).innerHTML = scene(cur); $('[data-name]', big).textContent = label(cur); $('[data-vals]', big).textContent = tag(cur) || 'not adjusted'; }
   function close() { big.hidden = true; const id = cur; cur = null; render(); $(`.card[data-id="${id}"]`)?.focus(); }
   function step(d) { const o = order(), i = o.indexOf(cur); if (o.length) { cur = o[(i + d + o.length) % o.length]; draw(); } }
   function nudge(k, d) {
-    const a = adj[cur] = adj[cur] || {};
+    const t = target(cur), a = adj[t] = adj[t] || {};
     if (k === 's') a.s = Math.round(((a.s || 1) + d * .02) * 100) / 100;
     else a[k] = Math.round(((a[k] || 0) + d * .5) * 10) / 10;
     for (const key of Object.keys(a)) if (!a[key] || (key === 's' && a[key] === 1)) delete a[key];
-    if (!Object.keys(a).length) delete adj[cur];
+    if (!Object.keys(a).length) delete adj[t];
     save(); draw();
   }
   grid.addEventListener('click', e => { const c = e.target.closest('.card'); if (c) open(c.dataset.id); });
   $$('[data-n]', big).forEach(b => b.addEventListener('click', () => { const [k, d] = b.dataset.n.split(','); nudge(k, +d); }));
-  $('[data-reset]', big).addEventListener('click', () => { delete adj[cur]; save(); draw(); });
+  $('[data-reset]', big).addEventListener('click', () => { delete adj[target(cur)]; save(); draw(); });
   $('[data-close]', big).addEventListener('click', close);
   $('[data-prev]', big).addEventListener('click', () => step(-1)); $('[data-next]', big).addEventListener('click', () => step(1));
   addEventListener('keydown', e => {
@@ -168,7 +189,7 @@ button, input, select { font: inherit; color: inherit; }
     const m = e.shiftKey ? 4 : 1, k = e.key;
     const map = { ArrowLeft: ['x', -m], ArrowRight: ['x', m], ArrowUp: ['y', -m], ArrowDown: ['y', m], '[': ['s', -1], ']': ['s', 1] };
     if (map[k]) { nudge(...map[k]); e.preventDefault(); }
-    else if (k === 'r' || k === 'R') { delete adj[cur]; save(); draw(); }
+    else if (k === 'r' || k === 'R') { delete adj[target(cur)]; save(); draw(); }
     else if (k === ',' || k === '<') step(-1); else if (k === '.' || k === '>') step(1);
     else if (k === 'Escape') close();
   });
