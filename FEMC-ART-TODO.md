@@ -1,6 +1,6 @@
 # Art to make
 
-**22 items:** 22 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 22 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**43 items:** 21 places, 22 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 22 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -32,7 +32,181 @@ Places, expressions, outfit portraits and the items that name their own pictures
 
 ## 2. Places (Gemini)
 
-*(Nothing left: every place on the list is in the game.)*
+*Backgrounds for places in the three epilogues that still borrow a Persona 3 or main-game background. Each is optional: the stand-in keeps working until the new one is in.*
+
+### The epilogue: Runners (Syracuse, December, snow)
+
+**[ ] Bird Library in finals week** *(optional)*  
+Where Solar studies and the campus watches its phones in the Runners epilogue (now Gekkoukan's library stands in).  
+Attach: `bg/epi-r-lecture-hall.webp` (for the style only)  
+Save as: `epi-r-bird-library.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the busy main reading floor of a big modern American university library during finals week in December: long tables crowded with laptops, textbooks, coffee cups and phones lying face up, every outlet taken, tall windows with snow and grey winter light outside, and along one side a row of glass-walled group study rooms with half-erased whiteboards. Concrete and warm wood, a little brutalist, crowded and tired. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The forgotten music room** *(optional)*  
+An old practice room on the empty top floor of the Hall of Languages in the Runners epilogue (now a Gekkoukan classroom stands in).  
+Attach: `bg/epi-r-studio-4b.webp` (for the style only)  
+Save as: `epi-r-music-room.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a small forgotten practice room on the top floor of an old 1870s stone university building: an out-of-tune upright piano against the wall, a long scarred wooden table with mismatched chairs, an old cast-iron radiator under a tall arched window, late-afternoon winter light going gold and blue, snow on the sill outside, dust in the light. Quiet, old, a little abandoned. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] Minji's dorm room** *(optional)*  
+Minji's room in the honors dorm in the Runners epilogue (now a green bedroom stands in).  
+Attach: `bg/epi-r-her-room.webp` (for the style only)  
+Save as: `epi-r-minji-room.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a spotless single dorm room belonging to a film student: a desk with two monitors and a stack of external hard drives like a little tower, a corkboard with index cards pinned in colour-coded rows, a camera bag on the chair, the bed made with perfect hospital corners, and on the windowsill a single small succulent that is clearly struggling. Snow outside the window, a lamppost glowing below. Neat, precise, a little lonely. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The café on Marshall Street** *(optional)*  
+The steamy café on the college strip in the Runners epilogue (now Chagall Café stands in).  
+Attach: `bg/epi-r-marshall-st.webp` (for the style only)  
+Save as: `epi-r-marshall-cafe.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the inside of a small, well-worn coffee shop on a snowy college street in upstate New York in December: wooden booths, a chalkboard menu (no readable text), a back table by the wall, big front windows steamed up to head height so the street outside is a blur of coats and snow, mugs, a pastry case, string lights. Cosy, cheap, crowded with students. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The football building** *(optional)*  
+Outside the varsity football building where Solar waits for her brother in the Runners epilogue (now the quad stands in).  
+Attach: `bg/flashback-syracuse-quad.webp` (for the style only)  
+Save as: `epi-r-football.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the outside of a modern college football training complex at dusk in winter: a players' exit with glass doors and a metal security gate, orange and navy accents on the building, a wall of donor plaques inside the glass (no readable text), packed snow along the path, floodlights coming on over a practice field behind a fence. Cold, big and expensive. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+### The epilogue: strangers (Incheon, late winter 2013)
+
+**[ ] The Lee house sunroom** *(optional)*  
+The glass sunroom of Solar's family house in the strangers epilogue (now a botanical greenhouse stands in).  
+Attach: `bg/flashback-lee-house.webp` (for the style only)  
+Save as: `epi-s-sunroom.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a glass sunroom off a wealthy, traditional Korean family house in late winter: a tapestry armchair and a low lacquered table set with a celadon tea set, potted orchids and a small bonsai, a heated stone floor with a silk rug, bare winter garden and a frozen stone pond visible through the glass. Elegant, very still, pale morning light. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The Yang house** *(optional)*  
+The front hall of Jungwon's family house in the strangers epilogue (now a hotel lobby stands in).  
+Attach: `bg/epi-s-jungwon-room.webp` (for the style only)  
+Save as: `epi-s-yang-house.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the grand front hall of a cold, modern, very wealthy Korean family house: polished dark stone floors, a wide staircase going up to a west wing, a long bench for shoes by the door, one ink-brush landscape painting, tall windows facing the sea, almost no clutter at all. Expensive, quiet and formal. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The Yang kitchen** *(optional)*  
+The kitchen of Jungwon's family house in the strangers epilogue (now Hagakure's kitchen stands in).  
+Attach: `bg/epi-s-lee-kitchen.webp` (for the style only)  
+Save as: `epi-s-yang-kitchen.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a big, cold, professional kitchen in a wealthy Korean house: steel counters and white tile, a long window over the sinks looking out at grey sea water, a rice cooker, a bowl of fresh squid and garlic on a cutting board, copper pots hanging, everything spotless. Bigger and colder than a home kitchen should be. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] Songdo by day** *(optional)*  
+The new glass city of Songdo in the strangers epilogue (now Paulownia Mall stands in).  
+Attach: `bg/epi-s-wolmido.webp` (for the style only)  
+Save as: `epi-s-songdo.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a street in Songdo, Incheon's brand-new glass city built on reclaimed land, in late winter 2013: tall glass towers in every direction, a wide clean boulevard, a canal with a footbridge, new trees still staked, a few shopfronts at street level, pale hazy sky. Futuristic, a little empty, everything shiny and new. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] Songdo at night** *(optional)*  
+The same glass city after dark, seen from a high restaurant window, in the strangers epilogue.  
+Attach: `bg/epi-s-wolmido-night.webp` (for the style only)  
+Save as: `epi-s-songdo-night.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the view from a table by the window of a restaurant on the thirty-fourth floor of a glass tower in Songdo, Incheon, at night: a white tablecloth and two water glasses in the foreground, and beyond the glass a whole new city of towers lit from inside like aquariums, floor after floor, the dark sea beyond them. Glamorous and cold. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] A café in Songdo** *(optional)*  
+A café in the new city in the strangers epilogue (now Chagall Café stands in).  
+Attach: `bg/epi-s-dining-room.webp` (for the style only)  
+Save as: `epi-s-songdo-cafe.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a sleek, minimalist café on the ground floor of a glass tower in Songdo, Incheon: white marble counter, an espresso machine, pale wood tables, floor-to-ceiling windows onto a cold canal-side street with young trees, a few designer chairs, a vase of white flowers. Clean, new and a little too quiet. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The noraebang (strangers)** *(optional)*  
+A karaoke room in Incheon in the strangers epilogue (now Paulownia Mall's karaoke stands in).  
+Attach: `bg/epi-s-dust.webp` (for the style only)  
+Save as: `epi-s-noraebang.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a private karaoke room in an Incheon noraebang in 2013: a U-shaped vinyl sofa around a low table with snacks, shrimp crackers and drinks, two wired microphones and a tambourine, a big screen showing a blank lyric background, coloured lights and a slow disco ball, padded walls, a speaker on the wall, the door's little window glowing from the hall. Cheerful and a bit worn. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The bathhouse at night** *(optional)*  
+Outside the neighbourhood bathhouse in the strangers epilogue (now Iwatodai's bathhouse stands in).  
+Attach: `bg/epi-s-car-night.webp` (for the style only)  
+Save as: `epi-s-bathhouse.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the outside of a small neighbourhood Korean bathhouse (mogyoktang) at night in late winter: the traditional hot-spring symbol on a glowing sign, steam rising from a vent into the cold air, a narrow street with a curb, an idling dark car with its lights on low, a vending machine glowing, frost on the pavement. Warm light against cold dark. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The bridge at night** *(optional)*  
+The long sea bridge out of Incheon at night in the strangers epilogue (now the Moonlight Bridge stands in).  
+Attach: `bg/epi-s-car-night.webp` (for the style only)  
+Save as: `epi-s-bridge.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the Incheon Bridge at night: a huge cable-stayed bridge over a black sea, its lights strung out ahead into the distance, the road lamps coming past in a long line, a few red tail-lights far ahead, the city glow behind and nothing but dark water on either side. Fast, lonely, beautiful. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+### The epilogue: HOAX (Hanlim, winter break 2023-24)
+
+**[ ] Hanlim's rooftop at night** *(optional)*  
+The school roof in the HOAX epilogue (now Gekkoukan's roof stands in).  
+Attach: `bg/epi-h-council-room.webp` (for the style only)  
+Save as: `epi-h-rooftop.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the flat rooftop of an ordinary Korean high school at night in winter: a chain-link safety fence, a water tank and the stairwell door (meant to be locked) with a light over it, snow on the ground and on the benches, a small town's lights spread out below and hills beyond. Cold, quiet and secret. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The town library** *(optional)*  
+The small-town public library where Jungwon studies in the HOAX epilogue (now Gekkoukan's library stands in).  
+Attach: `bg/epi-h-classroom-exam.webp` (for the style only)  
+Save as: `epi-h-library.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the quiet upper floor of a small Korean town's public library in January: rows of wooden tables, a corner table by a big window with three open textbooks fanned out and a little desk timer, clanking radiators under the windows, tall shelves, an old newspaper left on an end table, snow outside. Warm, hushed, a bit shabby. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The cheap noraebang (HOAX)** *(optional)*  
+Room six at the town's karaoke place in the HOAX epilogue (now Paulownia Mall's karaoke stands in).  
+Attach: `bg/epi-h-party.webp` (for the style only)  
+Save as: `epi-h-noraebang.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the cheapest private room at a small-town Korean karaoke place: a sticky low table with snacks and soda cans, a tambourine missing half its jingles, two microphones, a big screen with a blank lyric background, a tired disco ball, vinyl sofas, neon lights, the door's little window glowing from the hall. Shabby and fun. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The arcade** *(optional)*  
+The town arcade in the HOAX epilogue (now Game Panic stands in).  
+Attach: `bg/epi-h-winter-street.webp` (for the style only)  
+Save as: `epi-h-arcade.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a small-town Korean arcade at night: a row of claw machines along the wall glowing pink like an aquarium full of plush toys, a loud rhythm game in the corner, a coin changer, sticker photo booths, dark floor with neon reflections, snow visible through the front window. Noisy, bright and cheap. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The ice rink** *(optional)*  
+The town's ice rink in the HOAX epilogue (now a park in the snow stands in).  
+Attach: `bg/epi-h-winter-street-day.webp` (for the style only)  
+Save as: `epi-h-ice-rink.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a small public ice rink in a Korean town in winter, almost empty: clean white ice with long carved arcs on it, low boards around the edge, rental skates hanging by the counter, benches, big windows with snow and pale winter daylight outside, a few strings of leftover Christmas lights. Calm and bright. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] The park in the snow** *(optional)*  
+The town park where Solar walks Nana in the HOAX epilogue (now Iwatodai's park stands in).  
+Attach: `bg/epi-h-winter-street-day.webp` (for the style only)  
+Save as: `epi-h-park.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a small Korean neighbourhood park in deep snow on a winter afternoon: a path through bare trees, snowbanks along the edges, a frozen pond with a little wooden bridge, benches with snow on them, outdoor exercise equipment, a playground half buried, apartment blocks beyond the trees. Bright, cold and peaceful. Match the painted style of the attached image. Keep everything important away from the edges.
+```
+
+**[ ] Outside the party** *(optional)*  
+The street outside the winter-break party in the HOAX epilogue (now Iwatodai's night district stands in).  
+Attach: `bg/epi-h-party.webp` (for the style only)  
+Save as: `epi-h-party-outside.png`
+```
+Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the snowy street outside a big expensive house mid-party at night: coloured party light spilling from the windows and the open front door, a few steps down to the curb, slow fat snowflakes falling under the streetlights, cars parked along the street, footprints in the snow, the glow of the town beyond. Cold outside, loud inside. Match the painted style of the attached image. Keep everything important away from the edges.
+```
 
 ---
 

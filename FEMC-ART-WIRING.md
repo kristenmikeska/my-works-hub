@@ -59,6 +59,28 @@ For each: convert to `assets/femc/cg/<slug>.webp`; add `{ cg: '<slug>' }` / `{ c
 
 ### 2. Places (Gemini)
 - *(All Runners epilogue places are in, and HOAX's gym at midnight, council room and make-up exam (art batch 61), and HOAX's living room, Jihoon's house, winter street and party plus strangers' kitchen, annex, mudflats, Daeboreum and street in the dust (art batch 65, `tools/femc-new-adds.json`). Night-only art fills both slots of its rule, so evening scenes don't darken it again; day art leaves the evening slot null. Batch 65 put the Daeboreum art on its own rule, `Incheon · Wolmido · Daeboreum` (the full-moon event's place), so ordinary Wolmido evenings keep the stand-in.)*
+- **Epilogue place prompts (2026-10-31):** each replaces its rule's stand-in in `data/epi/<world>/world.js places.bg` (and `weatherFx` as noted); bump `DATA_V`.
+  - `epi-r-bird-library.png` → runners `Syracuse · Bird Library`
+  - `epi-r-music-room.png` → runners `Syracuse · Hall of Languages` (both slots)
+  - `epi-r-minji-room.png` → runners `Syracuse · Honors Dorm`
+  - `epi-r-marshall-cafe.png` → runners `Syracuse · Marshall Street · Café`
+  - `epi-r-football.png` → runners `Syracuse · Football Complex` (outdoor in weatherFx)
+  - `epi-s-sunroom.png` → strangers `Incheon · The Lee House · Sunroom`
+  - `epi-s-yang-house.png` → strangers `Incheon · The Yang House`
+  - `epi-s-yang-kitchen.png` → strangers `Incheon · The Yang House · Kitchen`
+  - `epi-s-songdo.png` → strangers `Incheon · Songdo` day slot (outdoor)
+  - `epi-s-songdo-night.png` → strangers `Incheon · Songdo` evening slot
+  - `epi-s-songdo-cafe.png` → strangers `Incheon · Songdo · Café`
+  - `epi-s-noraebang.png` → strangers `Incheon · Karaoke` (sealed)
+  - `epi-s-bathhouse.png` → strangers `Incheon · Bathhouse` (night art: both slots; outdoor)
+  - `epi-s-bridge.png` → strangers `Incheon · The Bridge` (both slots; outdoor)
+  - `epi-h-rooftop.png` → hoax `Hanlim · School · Rooftop` (both slots; outdoor)
+  - `epi-h-library.png` → hoax `Hanlim · Library` and `Hanlim · School · Library`
+  - `epi-h-noraebang.png` → hoax `Hanlim · Karaoke` (sealed)
+  - `epi-h-arcade.png` → hoax `Hanlim · Arcade`
+  - `epi-h-ice-rink.png` → hoax `Hanlim · Ice Rink`
+  - `epi-h-park.png` → hoax `Hanlim · The Park` (outdoor; add a rule above `Hanlim`)
+  - `epi-h-party-outside.png` → hoax `Hanlim · The Party · Outside` (both slots; outdoor)
 - **New place prompts (2026-10-28):** Kat's list section 2, keyed by item name below. Line numbers are from 2026-10-28.
 
 #### Iwatodai (the main game)
