@@ -18,7 +18,14 @@
 .g-fmh.dark { --ghost: rgba(255, 140, 192, .08); --panel: rgba(8, 3, 6, .88); --list-shadow: rgba(0, 0, 0, .8);
   --wash: linear-gradient(165deg, #000 0%, #0c0309 42%, #22091a 72%, #4a1838 100%); }
 
-/* The room behind, monochrome through the wash */
+/* Kat's menu backdrops (Oct 31 2026): the pink sun by day, the moon in the Dark Hour; they replace the washed-out room */
+.g-fmh .g-fmh-bg { background: #0c0309 url("../title/menu-backdrop-day.webp?v=1") center / cover no-repeat !important; filter: none; }
+.g-fmh.dark .g-fmh-bg { background-image: url("../title/menu-backdrop-darkhour.webp?v=1") !important; }
+.g-fmh::before, .g-fmh-rays { display: none; }
+.g-fmh::after, .g-fmh.dark::after { opacity: 1; mix-blend-mode: normal;
+  background: linear-gradient(100deg, rgba(12, 3, 9, .35) 0, rgba(12, 3, 9, .82) 22%, rgba(12, 3, 9, .82) 42%, rgba(12, 3, 9, .2) 58%, rgba(12, 3, 9, .45) 78%, rgba(12, 3, 9, .7)); }
+.g-fmh .g-fmh-it, .g-fmh-date, .g-fmh-date *, .g-fmh-guide, .g-fmh-party h3 { text-shadow: 3px 3px 0 rgba(12, 3, 9, .85), 0 0 14px rgba(12, 3, 9, .9); }
+/* (Before the backdrops: the room behind, monochrome through the wash) */
 .g-fmh-bg { position: absolute; inset: 0; z-index: -2; background: var(--deep) center / cover no-repeat; filter: grayscale(1) contrast(1.15) brightness(1.05); }
 .g-fmh::before, .g-fmh::after { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--wash); pointer-events: none; }
 .g-fmh::before { mix-blend-mode: multiply; }

@@ -405,8 +405,9 @@
     const kicker = kind === 'operation' || (R.op && kind !== 'tartarus') ? 'Full Moon · The Dark Hour' : 'The Dark Hour';
     const title = R.title || (kind === 'tartarus' ? 'Tartarus' : 'Battle');
     // Loading stills by fight type (batch 66): a Tartarus night shows Tartarus over the gate (loading-1); every other fight
-    // (full-moon operations, story and epilogue fights) shows the dorm lounge at midnight (loading-2).
-    const still = kind === 'tartarus' ? 'loading-1' : 'loading-2';
+    // (full-moon operations and story fights) shows the dorm lounge at midnight (loading-2). An epilogue world's fights show
+    // that world at midnight (Kat's loading-<world> stills, Oct 31 2026).
+    const ew = G.world?.(), still = kind === 'tartarus' ? 'loading-1' : ['runners', 'strangers', 'hoax', 'stay'].includes(ew) ? `loading-${ew}` : 'loading-2';
     document.querySelectorAll('.g-overlay').forEach(x => x.remove());
     SC.Music.duck(true);
     window.FemcWeather?.pause(true);
