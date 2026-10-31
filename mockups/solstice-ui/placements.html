@@ -164,6 +164,8 @@ button, input, select { font: inherit; color: inherit; }
   const tag = card => { const a = adj[target(card)] || {}; return isAdj(card) ? `x ${a.x || 0} · y ${a.y || 0} · size ${(a.s || 1).toFixed(2)}${a.m ? ' · mirrored' : ''}` : ''; };
   const label = card => { const c = parse(card); return c.solar ? `${nice(c.id)} — ${c.ex}` : nice(c.id); };
 
+  /* Expressions can be cut a little wider or narrower than the neutral face: once a picture loads, use its own shape so nothing stretches */
+  document.addEventListener('load', e => { const i = e.target; if (i.matches?.('.scene .p') && i.naturalHeight) i.style.setProperty('--ar', i.naturalWidth / i.naturalHeight); }, true);
   const grid = $('[data-grid]');
   function render() {
     const q = $('[data-q]').value.trim().toLowerCase(), only = $('[data-only]').checked;
