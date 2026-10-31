@@ -256,9 +256,16 @@ window.FemcScene = (() => {
     // picked one follows its places (Kat: Not Enough gave way to the evening rotation when the studio's background came up).
     let picked = !!opts.music;
 
+    /* Where a portrait stands (portraits/place.js, Kat's placement review): its face centre, her nudge, size and mirroring,
+       keyed by the picture's folder so a world's or outfit's version keeps its own. --ar is the picture's own shape, once loaded. */
+    const place = (pic, src) => {
+      const id = (/portraits\/([^/]+)\//.exec(src || '') || [])[1], [cx, x, y, s, m] = (window.FEMC_PORTRAIT_PLACE || {})[id] || [.5, 0, 0, 1, 0];
+      for (const [k, v] of [['--cx', m ? 1 - cx : cx], ['--nx', x], ['--ny', y], ['--s', s], ['--flip', m ? -1 : 1]]) pic.style.setProperty(k, v);
+    };
+    for (const pic of [img, meEl]) pic.addEventListener('load', () => { if (pic.naturalHeight) pic.style.setProperty('--ar', pic.naturalWidth / pic.naturalHeight); });
     const showMe = face => {
       const src = face !== null && G.portrait('solar', face || 'neutral');
-      if (src) { meEl.style.setProperty('--ps', G.scale('solar')); if (meEl.getAttribute('src') !== src) meEl.src = src; meEl.hidden = false; }
+      if (src) { meEl.style.setProperty('--ps', G.scale('solar')); place(meEl, src); if (meEl.getAttribute('src') !== src) meEl.src = src; meEl.hidden = false; }
       el.classList.toggle('me-talking', !!src);
     };
     function showPortrait(who, face) {
@@ -274,7 +281,7 @@ window.FemcScene = (() => {
       if (key === currentFace) { img.classList.remove('dim'); return; }
       const swap = currentFace && currentFace.split('/')[0] !== who;
       currentFace = key;
-      const apply = () => { img.style.setProperty('--ps', G.scale(who)); img.style.setProperty('--pd', (window.FEMC_PORTRAIT_DROP || {})[String(who).toLowerCase()] || 0); if (src) { img.src = src; img.hidden = false; } else img.hidden = true; img.alt = G.name(who); img.classList.remove('swap', 'dim'); };
+      const apply = () => { img.style.setProperty('--ps', G.scale(who)); img.style.setProperty('--pd', (window.FEMC_PORTRAIT_DROP || {})[String(who).toLowerCase()] || 0); place(img, src); if (src) { img.src = src; img.hidden = false; } else img.hidden = true; img.alt = G.name(who); img.classList.remove('swap', 'dim'); };
       if (swap && !reduced.matches) { img.classList.add('swap'); setTimeout(apply, 180); } else apply();
     }
     function say(text, done) {

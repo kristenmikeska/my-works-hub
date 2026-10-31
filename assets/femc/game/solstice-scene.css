@@ -1,0 +1,71 @@
+/* Solstice restyle, part 1: dialogue scenes (Kat's approved mockup, mockups/solstice-ui, Oct 31 2026).
+   Dawn by day (indigo to gold), green and black in the Dark Hour. Loaded after game.css, so these win.
+   Portraits stand where Kat placed them in the placement review: sized by screen height (scale.js × her size), the speaker's
+   face centre 17% in from the left, Solar's 17% in from the right, both standing on the bottom edge (portraits/place.js). */
+.gs { --deep: #120d3a; --indigo: #26207a; --violet: #5a3a9e; --gold: #ffc53d; --gold-2: #ffe08a; --paper: #fffaf0;
+  --shell: linear-gradient(100deg, rgba(18, 13, 58, .94), rgba(38, 32, 122, .9) 70%, rgba(90, 58, 158, .86));
+  background: radial-gradient(ellipse at 70% 30%, #2a2270, #0b0826 70%); }
+.gs.gs-dark { --deep: #020805; --indigo: #062114; --violet: #0e3b1f; --gold-2: #b6ffc8; --paper: #eafff0;
+  --shell: linear-gradient(100deg, rgba(2, 10, 5, .95), rgba(6, 33, 20, .92) 70%, rgba(14, 59, 31, .88)); }
+.gs.gs-velvet { --deep: #050b26; --indigo: #1b3a8a; --violet: #2f5bd8; --gold: #8fb0ff; --gold-2: #c7d6ff;
+  --shell: linear-gradient(100deg, rgba(5, 11, 38, .95), rgba(27, 58, 138, .9)); }
+.gs-bg::after { background: linear-gradient(180deg, rgba(18, 13, 58, 0) 50%, rgba(18, 13, 58, .55)), linear-gradient(200deg, rgba(255, 197, 61, .16), rgba(38, 32, 122, .08) 50%); }
+.gs-bg::before { background: repeating-linear-gradient(-58deg, rgba(255, 224, 138, .06) 0 1px, transparent 1px 34px); }
+
+/* The place tag, the tools and the replay tag */
+.gs-place { background: var(--paper); color: var(--deep); box-shadow: 5px 5px 0 var(--gold); }
+.gs-place b small, .gs-place span, .gs-velvet .gs-place span { color: var(--violet); }
+.gs-velvet .gs-place { background: var(--paper); box-shadow: 5px 5px 0 var(--gold); }
+.gs-tools button { background: var(--deep); box-shadow: 3px 3px 0 var(--gold); }
+.gs-tools button:is(:hover, :focus-visible) { background: var(--paper); color: var(--deep); }
+.gs-tools button[aria-pressed="true"] { background: var(--gold); color: var(--deep); box-shadow: 3px 3px 0 var(--paper); }
+.gs-replay-tag { background: var(--gold); color: var(--deep); }
+
+/* The text box: an angular indigo shell with a gold top edge, and a paper name tag that points at the box */
+.gs-name { position: relative; z-index: 1; margin: 0 0 -14px -30px; padding: 7px 34px 8px 40px; min-height: 0; background: var(--paper); color: var(--deep);
+  font: italic 800 clamp(20px, 2vw, 27px)/1 var(--cond); letter-spacing: .015em; text-transform: none; transform: none; box-shadow: none;
+  clip-path: polygon(0 50%, 24px 0, 100% 0, calc(100% - 12px) 100%, 24px 100%); }
+.gs.me-talking .gs-name, .gs-velvet .gs-name { margin: 0 0 -14px -30px; background: var(--paper); }
+.gs-text, .gs-velvet .gs-text { position: relative; min-height: 6.4em; margin: 0; padding: 32px 54px 28px 60px; border: 0; border-radius: 0; background: var(--shell);
+  clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%); box-shadow: none; font-size: clamp(17px, 1.7vw, 23px); line-height: 1.42; font-weight: 500; }
+.gs-text::before { content: ""; display: block !important; position: absolute; inset: 0 0 auto 3%; height: 3px; border: 0; background: linear-gradient(90deg, var(--gold), var(--gold-2) 40%, transparent); filter: none; }
+.gs.me-talking .gs-box .gs-text::before { left: 3%; right: 0; border: 0; }
+.gs-text.narration { color: #e8e4ff; }
+.gs-dark .gs-text.narration { color: #d3f5dc; }
+.gs-text::after, .gs-velvet .gs-text::after { content: ""; right: 7%; bottom: 14px; width: 22px; height: 13px; background: var(--gold); clip-path: polygon(0 0, 100% 0, 50% 100%); color: transparent; }
+.gs.ready .gs-text::after { animation: gs-nudge 1s ease-in-out infinite; }
+@keyframes gs-nudge { 50% { transform: translateY(5px); } }
+
+/* Choices: dark slanted buttons with a gold edge; the picked one goes paper on gold */
+.gs-choices button, .gs-velvet .gs-choices button { background: rgba(18, 13, 58, .94); background: color-mix(in srgb, var(--deep) 94%, transparent); box-shadow: 5px 5px 0 var(--gold); font-family: var(--sans); font-weight: 600; }
+.gs-choices button small { color: var(--gold-2); }
+.gs-choices button:is(:hover, :focus-visible):not(:disabled) { background: var(--paper); color: var(--deep); box-shadow: 7px 7px 0 var(--gold); }
+
+/* Portraits: indigo and gold rims instead of pink */
+.gs-portrait, .gs-velvet .gs-portrait { filter: drop-shadow(-12px 4px 0 var(--indigo)) drop-shadow(7px 0 0 var(--gold)); }
+.gs-portrait.dim { filter: brightness(.55) drop-shadow(-12px 4px 0 var(--indigo)); }
+.gs-solar { filter: drop-shadow(-12px 4px 0 var(--indigo)) drop-shadow(7px 0 0 var(--gold)); }
+
+/* Wide screens: the placement-review layout */
+@media (min-width: 701px) and (min-aspect-ratio: 13/10) {
+  .gs-portrait, .gs-solar { --ph: calc(78vh * var(--ps, 1) * var(--s, 1)); top: auto; bottom: calc(-1 * (var(--ph) * var(--pd, 0) + var(--ny, 0) * 1vh));
+    height: var(--ph); width: calc(var(--ph) * var(--ar, .9)); max-width: none; object-fit: fill; translate: none;
+    -webkit-mask-image: none; mask-image: none; }
+  /* The face lands 17% in from its side whatever the framing (cx is already flipped for a mirrored picture) */
+  .gs-portrait { left: calc(17vw + var(--nx, 0) * 1vw - var(--ph) * var(--ar, .9) * var(--cx, .5)); scale: var(--flip, 1) 1; transform: none; }
+  .gs-portrait.swap { transform: none; translate: -30px 0; }
+  .gs-solar { right: calc(17vw - var(--nx, 0) * 1vw - var(--ph) * var(--ar, .9) * var(--cx, .5)); scale: calc(-1 * var(--flip, 1)) 1; transform: none; translate: 30px 0; }
+  .gs.me-talking .gs-solar { translate: none; }
+  /* One box for both sides, a little left of centre */
+  .gs-box, .gs.me-talking .gs-box { left: 49.5%; right: auto; bottom: clamp(18px, 5vh, 46px); width: min(780px, 58vw); max-width: none; translate: -46% 0; text-align: left; }
+  .gs.gs-cg-on .gs-box, .gs.me-talking.gs-cg-on .gs-box { left: 50%; right: auto; width: min(980px, calc(100vw - 12vw)); translate: -50% 0; margin: 0; }
+  .gs-choices { right: 30vw; }
+}
+@media (min-width: 701px) and (min-aspect-ratio: 13/10) and (max-height: 760px) {
+  .gs-text, .gs-velvet .gs-text { min-height: 5.6em; padding: 24px 44px 22px 52px; font-size: 17px; }
+}
+@media (max-width: 700px), (max-aspect-ratio: 13/10) {
+  .gs-name { margin-left: 8px; }
+  .gs.me-talking .gs-name { margin: 0 0 -14px 8px; }
+  .gs-text, .gs-velvet .gs-text { padding: 22px 22px 26px; clip-path: polygon(2% 0, 100% 0, 98% 100%, 0 100%); font-size: 16px; }
+}
