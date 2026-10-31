@@ -31,9 +31,11 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 /* Palette trial (P key): Dawn is the indigo-and-gold plan; Rose brings P3P's pink back as the accent; Blend keeps the gold
    highlights and lets pink carry the silhouettes, the list text and the dawn's horizon. Dark Hour screens stay green. */
-html[data-pal="rose"] .scr:not(.dark) { --gold: #ff5fa8; --gold-2: #ffb3d6; --sil: #ff5fa8; --panel-edge: #ff5fa8; --list: #ffd3e8; --rim: #ff5fa8; --violet: #6a3492;
+html[data-pal="rose"] .tt { --tbar-a: #d24b8f; }
+html[data-pal="blend"] .tt { --tbar-a: #b2437f; }
+html[data-pal="rose"] .scr:not(.dark) { --glow: rgba(255, 95, 168, .55); --horizon: rgba(255, 120, 180, .45); --gold: #ff5fa8; --gold-2: #ffb3d6; --sil: #ff5fa8; --panel-edge: #ff5fa8; --list: #ffd3e8; --rim: #ff5fa8; --violet: #6a3492;
   --wash: linear-gradient(165deg, #120a2e 0%, #33196a 34%, #74307e 56%, #d24b8f 76%, #ff8fbf 90%, #ffd0e4 100%); }
-html[data-pal="blend"] .scr:not(.dark) { --sil: #ff5fa8; --panel-edge: #ff5fa8; --list: #ffd3e8; --dusk: #e04f94;
+html[data-pal="blend"] .scr:not(.dark) { --glow: rgba(255, 197, 61, .45); --horizon: rgba(255, 95, 168, .45); --sil: #ff5fa8; --panel-edge: #ff5fa8; --list: #ffd3e8; --dusk: #e04f94;
   --wash: linear-gradient(165deg, #0f0b33 0%, #241e78 32%, #6a3492 52%, #e04f94 72%, #ff9fb8 86%, #ffd36b 100%); }
 /* The logo follows the palette: gold letters at Dawn, P3P pink for Blend and Rose */
 html[data-pal="dawn"] .tt .sl-word { stroke: url(#sl-gold); }
@@ -193,13 +195,15 @@ html[data-pal="dawn"] .tt .sl-logo text[fill] { fill: #ffd36b; }
 @keyframes ghostIn { from { opacity: 0; translate: 80px 0; } }
 
 /* ───────── 3 DIALOGUE ───────── */
-.dl .art.left { left: -6vw; bottom: -12vh; width: min(66vh, 40vw); }
+.dl .art { --ph: min(78vh, 38vw); top: 22vh; height: var(--ph); }
+.dl .art img { width: auto; height: 100%; }
+.dl .art.left { left: -7vw; }
 .dl .art.left img { filter: drop-shadow(-14px 4px 0 var(--indigo)) drop-shadow(8px 0 0 var(--gold)); }
-.dl .art.right { right: 0; bottom: -6vh; width: min(70vh, 34vw); transform: scaleX(-1); opacity: .96; }
+.dl .art.right { right: 0; transform: scaleX(-1); opacity: .96; }
 .dl .art.right img { filter: drop-shadow(-14px 4px 0 var(--indigo)) brightness(.86) saturate(.9); }
 .dl .art.speaking img { animation: bob .5s ease-out; }
 @keyframes bob { 40% { transform: translateY(-8px); } }
-.box { position: absolute; z-index: 5; left: 53%; bottom: clamp(18px, 5vh, 46px); width: min(780px, 58vw); translate: -46% 0; }
+.box { position: absolute; z-index: 5; left: 49.5%; bottom: clamp(18px, 5vh, 46px); width: min(780px, 58vw); translate: -46% 0; }
 .box .shell { position: relative; min-height: 150px; padding: 34px 54px 30px 64px; background: linear-gradient(100deg, rgba(18, 13, 58, .94), rgba(38, 32, 122, .9) 70%, rgba(90, 58, 158, .86));
   clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%); box-shadow: inset 0 0 0 1px rgba(255, 224, 138, .18); }
 .box .shell::before { content: ""; position: absolute; left: 3%; right: 0; top: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-2) 40%, transparent); }
@@ -285,17 +289,17 @@ html[data-pal="dawn"] .tt .sl-logo text[fill] { fill: #ffd36b; }
 .tt .art img { filter: drop-shadow(12px 4px 0 var(--sil)) drop-shadow(0 0 40px rgba(255, 197, 61, .35)); }
 .scr.enter.tt .art { animation: slideL .6s cubic-bezier(.15, .9, .25, 1) both; }
 .tt .bg::after { background: linear-gradient(90deg, rgba(15, 11, 51, .2) 0%, rgba(15, 11, 51, .1) 40%, rgba(15, 11, 51, .82) 75%, rgba(15, 11, 51, .95) 100%),
-  linear-gradient(0deg, rgba(242, 154, 74, .35), rgba(38, 32, 122, 0) 45%); mix-blend-mode: normal; }
-.tt .bg::before { background: radial-gradient(60% 80% at 80% 110%, rgba(255, 197, 61, .5), transparent 70%); opacity: 1; z-index: 1; mix-blend-mode: screen; }
+  linear-gradient(0deg, var(--horizon, rgba(242, 154, 74, .35)), rgba(38, 32, 122, 0) 45%); mix-blend-mode: normal; }
+.tt .bg::before { background: radial-gradient(60% 80% at 80% 110%, var(--glow, rgba(255, 197, 61, .5)), transparent 70%); opacity: 1; z-index: 1; mix-blend-mode: screen; }
 .tt .logo { position: absolute; z-index: 5; isolation: isolate; right: clamp(16px, 4vw, 60px); top: clamp(56px, 12vh, 110px); width: min(560px, 44vw); }
 .tt .logo svg { width: 100%; height: auto; display: block; }
 .tt .logo::before { content: ""; position: absolute; z-index: -1; inset: -30% -12% -34% -14%; background: radial-gradient(closest-side, rgba(10, 7, 38, .78), rgba(10, 7, 38, .5) 60%, transparent); }
-.tt .logo .corona { width: 19%; aspect-ratio: 1; left: 23.6%; top: 51.5%; translate: -50% -50%; opacity: .6; }
+.tt .logo .corona { width: 13%; aspect-ratio: 1; left: 23.6%; top: 51.5%; translate: -50% -50%; opacity: .6; }
 .tt .tmenu { position: absolute; z-index: 5; right: clamp(16px, 4vw, 60px); bottom: clamp(70px, 14vh, 120px); margin: 0; padding: 0; list-style: none; text-align: right; }
 .tt .tmenu li { position: relative; }
 .tt .tmenu button { position: relative; font: italic 800 clamp(34px, 4.4vw, 54px)/.98 var(--cond); text-transform: uppercase; color: #fff; padding: 0 6px; letter-spacing: -.005em; text-shadow: 3px 3px 0 rgba(15, 11, 51, .7); }
 .tt .tmenu button span { position: relative; z-index: 2; transition: color .1s; }
-.tt .tmenu .tbar { position: absolute; z-index: 1; right: -60vw; left: -18px; top: 4px; bottom: 4px; background: linear-gradient(90deg, var(--violet), var(--indigo) 30%, var(--indigo)); opacity: 0;
+.tt .tmenu .tbar { position: absolute; z-index: 1; right: -60vw; left: -18px; top: 4px; bottom: 4px; background: linear-gradient(90deg, var(--tbar-a, var(--violet)), var(--indigo) 30%, var(--indigo)); opacity: 0;
   clip-path: polygon(14px 0, 100% 0, 100% 100%, 0 100%); }
 .tt .tmenu .tbar::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 7px; background: var(--gold); transform: skewX(-12deg); }
 .tt .tmenu li.sel button span { color: var(--gold-2); }
@@ -352,8 +356,9 @@ html[data-pal="dawn"] .tt .sl-logo text[fill] { fill: #ffd36b; }
   .pm:nth-child(n) { margin-right: 0; }
   .fm .guide .g2 { width: 200px; }
 
-  .dl .art.left { left: -14vw; bottom: 250px; width: 70vw; }
-  .dl .art.right { right: -10vw; bottom: 270px; width: 52vw; }
+  .dl .art { --ph: 34vh; top: auto; bottom: 260px; }
+  .dl .art.left { left: -14vw; }
+  .dl .art.right { right: -10vw; }
   .box { left: 10px; right: 10px; width: auto; translate: 0 0; bottom: 54px; }
   .box .shell { padding: 30px 26px 26px 26px; min-height: 140px; clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%); }
   .box .line { font-size: 17px; }
