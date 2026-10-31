@@ -20,6 +20,25 @@ Everything still to make, in one place: the earlier art list plus the new scenes
 
 ---
 
+## ★ New cover art (Oct 31 2026)
+A fresh cover for the revamp, replacing the old painting (which stays in the game as the Solstice Key Art wallpaper). Pick one of the three ideas. All three match the new look: indigo night turning to gold, with Solar as the sun.
+**Tool:** ChatGPT. **Attach these three, in order.** They're in `Femc Mode Images/Place Prompt Attachments/`:
+📎 `Cover 1 - style.png` · 📎 `Cover 2 - Solar.png` · 📎 `Cover 3 - Haenim.png`
+
+**Start every cover prompt with this:**
+> *Create a NEW illustration that matches the art style of the FIRST attached image: clean lineart, flat cel shading with hard-edged shadows, the same face style and proportions. The SECOND image is Solar: copy her face, eyes and very long straight black hair exactly. The THIRD image is her Persona, Haenim: copy its look exactly. 16:9, the largest size, Persona 3 Reload key art, no text, no logo, no watermark. Keep the upper-right area fairly calm and dark so a logo can sit there.*
+
+**C1. Sunrise over Tartarus** (closest to the old cover, but new)
+> Low camera angle. Solar stands on the broken top edge of a colossal dark tower at the exact moment of dawn, the city, the sea and a long suspension bridge far below her. She is turning to look back over her shoulder at the viewer, calm and sure of herself. Her right hand holds a silver gun-shaped Evoker loosely at her side. She wears the black Gekkoukan High uniform with a red bow, a red S.E.E.S. armband on her left arm, white knee socks and white earbuds around her neck. The wind whips her long hair and the armband sideways. Behind her, Haenim rises out of the sunrise, enormous, half see-through, arms open, her gold ribbons curling into a ring of light around Solar's head like a sun's corona. The sky is split on a diagonal: the upper left is deep indigo night with stars and a pale moon, and the lower right is a blaze of gold and rose sunrise. Gold rim light on Solar's hair and shoulders, cool indigo shadows on the rest of her. Palette: indigo, violet, rose and gold.
+
+**C2. Every universe** (the worlds around her like the sun's rays)
+> Solar floats in the centre of the picture, slightly tilted, as if falling slowly backward through the sky, eyes open, one hand reaching up. She wears the black Gekkoukan High uniform with a red bow, a red S.E.E.S. armband, white knee socks and white earbuds around her neck, and her very long black hair spreads out around her like ink in water. Around her, a ring of tall, thin glass shards fans out like the rays of a sun. Each shard shows a different place: a Japanese high school gate in spring with cherry blossoms; a snowy American college campus at night with a stone clock tower; a grey Korean harbor at dawn with red cranes; a Korean school gym hung with string lights; a dark twisted tower under a huge green moon. Haenim's gold ribbons weave between the shards and around Solar. Behind everything, the sky goes from deep indigo at the edges to a bright gold sunrise right behind her. Palette: indigo, violet and gold, with small touches of the green moon.
+
+**C3. Poster** (the boldest, most graphic one)
+> A bold graphic poster. Solar's upper body in three-quarter profile on the left half, chin raised, looking up and to the right with a small confident smile. Her hair is pulled into a sleek, very long high ponytail tied with a gold ribbon, with loose strands falling around her face. She wears the black Gekkoukan High uniform jacket with a red bow and a red S.E.E.S. armband, and holds a silver gun-shaped Evoker against her temple, finger off the trigger. One huge diagonal gold slash cuts across the whole picture behind her. Above the slash is deep indigo night with a pale full moon. Below it is a gold sunrise with sunbeams fanning out. Haenim fills the background on the right, huge and faint, her face hidden behind her mask, gold ribbons curling over the slash. Strong flat shapes, a halftone dot texture in the shadows, high contrast. Palette: indigo, gold and white, with red only on the bow and armband.
+
+---
+
 ## 0. Quick fixes to finished art
 1. **Elizabeth's blank page:** edit `prologue-elizabeth-blank-page`.
    > *Edit this image, keeping everything else the same: remove the red armband from the black-haired girl's left arm.*

@@ -1,7 +1,7 @@
 # Gemini prompt pack: backgrounds and memory cards
 
 No characters, so Gemini handles all of these. Every prompt is complete, so paste it as-is.
-**📎 = attach a reference.** All references are in `Femc Mode Images/Background Images/` unless noted.
+**📎 = attach a reference.** References for prompts still to make are copied into `Femc Mode Images/Place Prompt Attachments/`. Right now none of the remaining Gemini prompts need one, except #32, which uses #31's result.
 Ask for the **largest 16:9 size** for backgrounds and **square** for memory cards.
 
 ✅ Done: everything in sections A–C (Dark Hour street, gate, monorail, dorm lounge, train car, station platform, Wren's bench at night, boxing club, student council room, nurse's office, school rooftop at night, shrine at night, summer festival, Port Island Christmas, Yakushima, the Velvet door, Yabbashah, Tziah, access point, treasure room) and memory cards 19–24 and 26–29. **Still to make: #25 barley tea and #30 ballot box.**
