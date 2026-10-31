@@ -48,6 +48,9 @@ HELPERS = r"""(()=>{
         // The cleared full moon earns the Echoes starter gift; its one-time news becomes a toast on the next change, so take it
         // now (as the toast would) to keep the live state equal to the saved one.
         if (window.FemcEchoes && S.battleSave) FemcEchoes.takeNews(S.battleSave);
+        // Likewise the Tartarus milestones the fixture is already past and the weekly requests it already meets (requests.js
+        // pays and announces them just after the next save): take them now, so a save made from this state doesn't change the live state a moment later.
+        if (window.FemcRequests) { FemcRequests.payFloors('load'); FemcRequests.tellReady(); }
         return saveSnapshot(S);
     };
 })()"""
@@ -106,7 +109,8 @@ def main():
         close_saves(p)
         open_saves(p)
         click(p,'[data-load="1"]')
-        assert p.eval('saveSnapshot(FemcGame.S)')==expected[3]
+        live=p.eval('saveSnapshot(FemcGame.S)')
+        assert live==expected[3], [k for k in set(live)|set(expected[3]) if live.get(k)!=expected[3].get(k)] + ['gacha:'+k for k in set(live.get('gacha',{}))|set(expected[3].get('gacha',{})) if live.get('gacha',{}).get(k)!=expected[3].get('gacha',{}).get(k)]
         close_saves(p)
 
         for n in (1,3,2):
