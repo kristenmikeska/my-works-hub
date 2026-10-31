@@ -17,7 +17,7 @@
 .g-title-menu { justify-items: stretch; gap: 6px; }
 .g-title-menu button { min-width: 0; width: 100%; background: transparent; font-size: clamp(22px, 2.3vw, 30px); text-shadow: 3px 3px 0 rgba(15, 11, 51, .7); }
 .g-title-menu button:is(.is-on, :focus-visible) { background: linear-gradient(90deg, var(--violet), var(--indigo) 45%, var(--indigo)); color: var(--pink-2);
-  box-shadow: inset 7px 0 0 var(--pink), 6px 6px 0 rgba(123, 92, 232, .45); }
+  box-shadow: inset 7px 0 0 var(--pink), 6px 6px 0 rgba(197, 82, 201, .45); }
 .g-title-menu button:is(.is-on, :focus-visible)::after { color: var(--pink); }
 @keyframes g-title-go { 0%, 100% { background: var(--indigo); } 50% { background: var(--pink); color: var(--deep); } }
 .g-title-press { text-shadow: 3px 3px 0 var(--deep); }
@@ -37,7 +37,7 @@
 @media (max-width: 700px) and (max-height: 700px) { .g-title-menu button { padding-top: 8px; padding-bottom: 8px; } }
 
 /* ── HUD: the date as paper digits with a paper weekday tag, the wallet as a paper tag with a gold block ── */
-.g-hud { border-bottom-color: rgba(123, 92, 232, .5); }
+.g-hud { border-bottom-color: rgba(197, 82, 201, .5); }
 .g-date { background: linear-gradient(100deg, var(--indigo), var(--violet)); box-shadow: 4px 4px 0 var(--pink); }
 .g-date b { color: var(--paper); text-shadow: 2px 2px 0 var(--deep); }
 .g-date small { padding: 3px 10px 3px 6px; background: var(--paper); color: var(--deep); clip-path: polygon(0 0, 100% 0, 86% 100%, 0 100%); }
@@ -60,7 +60,7 @@
 .g-btn:is(:hover, :focus-visible):not(:disabled) { background: var(--paper); }
 
 /* ── Panels: deep indigo gradients with a gold edge on the left and an indigo offset block ── */
-.g-panel { border: 1.5px solid rgba(196, 180, 255, .3); border-left: 5px solid var(--pink); border-radius: 2px 22px 2px 22px;
+.g-panel { border: 1.5px solid rgba(242, 176, 230, .3); border-left: 5px solid var(--pink); border-radius: 2px 22px 2px 22px;
   background: linear-gradient(160deg, rgba(18, 13, 58, .97), rgba(32, 26, 104, .96) 65%, rgba(70, 46, 130, .95)); box-shadow: 10px 10px 0 rgba(90, 58, 158, .6); }
 .g-panel h2 { text-shadow: .06em .06em 0 var(--violet); }
 .g-fm-head h2 { text-shadow: .06em .06em 0 var(--violet); }
@@ -73,20 +73,20 @@
 /* ── The phone is its own device: a violet accent instead of the gold ── */
 .g-phone-ov, .gs-phone { --pink: #5a3a9e; --pink-2: #8f74d6; --pink-3: #e4dcf7; }
 
-/* ── Tartarus and the Dark Hour menus: indigo-black with lilac (Kat, Oct 31: no green with the purple) ── */
+/* ── Tartarus and the Dark Hour menus: indigo-black with the orchid accent (Kat, Oct 31: no green with it) ── */
 .g-tt-ov, .g-battle-ov, .g-fm-ov.g-over-battle, .g-fm.dark, .g-dh {
-  --deep: #07061a; --indigo: #16123f; --violet: #2a1f63; --night: #07061a; --paper: #f4f0ff;
-  --pink: #b9a6ff; --pink-2: #d9ceff; --pink-3: #ece6ff; --muted: #c8c0ea; }
+  --deep: #07061a; --indigo: #16123f; --violet: #2a1f63; --night: #07061a; --paper: #fff3fb;
+  --pink: #e59be0; --pink-2: #f6c9ee; --pink-3: #fde8f7; --muted: #c8c0ea; }
 .g-tt-ov, .g-fm-ov.g-over-battle { background: rgba(3, 3, 10, .76); }
-:is(.g-tt-ov, .g-battle-ov, .g-fm-ov.g-over-battle) .g-panel { border-color: rgba(217, 206, 255, .3); border-left-color: #b9a6ff;
+:is(.g-tt-ov, .g-battle-ov, .g-fm-ov.g-over-battle) .g-panel { border-color: rgba(246, 201, 238, .3); border-left-color: #e59be0;
   background: linear-gradient(160deg, rgba(6, 4, 14, .97), rgba(18, 14, 43, .96) 65%, rgba(32, 25, 76, .95)); box-shadow: 10px 10px 0 rgba(32, 25, 76, .75); }
 :is(.g-tt-ov, .g-battle-ov, .g-fm-ov.g-over-battle) :is(.g-btn:not(.pink), .g-chip:not(.on), .g-pm, .g-pm-tac, .g-who-mini:not(.on)) { background-color: rgba(7, 5, 17, .92); }
 :is(.g-tt-ov, .g-battle-ov, .g-fm-ov.g-over-battle) .g-btn:is(:hover, :focus-visible):not(:disabled) { background: var(--paper); color: var(--deep); }
-.g-fm-ov.g-over-battle .g-panel::before { color: rgba(200, 185, 255, .07); }
+.g-fm-ov.g-over-battle .g-panel::before { color: rgba(236, 170, 228, .07); }
 
 /* Solar's own colour in the menus was the old theme pink (battle data); in the field it takes the Dawn gold */
-.g-pm.lead, .g-pm-wrap:has(> .g-pm.lead) { --c: #7b5ce8 !important; }
-:is(.g-tt-ov, .g-battle-ov, .g-fm-ov.g-over-battle) .g-btn:not(.pink) { box-shadow: 5px 5px 0 rgba(185, 166, 255, .4); }
-:is(.g-tt-ov, .g-battle-ov, .g-fm-ov.g-over-battle) .g-btn.small:not(.pink) { box-shadow: 3px 3px 0 rgba(185, 166, 255, .45); }
-:is(.g-tt-ov, .g-battle-ov, .g-fm-ov.g-over-battle) .g-btn:is(:hover, :focus-visible):not(:disabled) { box-shadow: 7px 7px 0 #b9a6ff; }
+.g-pm.lead, .g-pm-wrap:has(> .g-pm.lead) { --c: #c552c9 !important; }
+:is(.g-tt-ov, .g-battle-ov, .g-fm-ov.g-over-battle) .g-btn:not(.pink) { box-shadow: 5px 5px 0 rgba(229, 155, 224, .4); }
+:is(.g-tt-ov, .g-battle-ov, .g-fm-ov.g-over-battle) .g-btn.small:not(.pink) { box-shadow: 3px 3px 0 rgba(229, 155, 224, .45); }
+:is(.g-tt-ov, .g-battle-ov, .g-fm-ov.g-over-battle) .g-btn:is(:hover, :focus-visible):not(:disabled) { box-shadow: 7px 7px 0 #e59be0; }
 @media (max-width: 700px) { .g-date small { padding: 2px 7px 2px 4px; } }

@@ -74,7 +74,7 @@
 /* ── Tartarus: the map's side panel and the rooms, angular green-black panels with a gold or green edge ── */
 .bt-map-info { background: linear-gradient(100deg, rgba(6, 4, 14, .95), rgba(18, 14, 43, .92)); border-left-color: var(--acc); }
 .bt-map-info b { color: var(--paper); }
-.bt-room-shade { background: radial-gradient(ellipse 60% 70% at 50% 55%, rgba(6, 4, 14, .25), rgba(4, 3, 12, .88)), linear-gradient(transparent 50%, rgba(4, 3, 12, .8)), repeating-linear-gradient(115deg, transparent 0 180px, rgba(185, 166, 255, .04) 180px 186px, transparent 186px 330px); }
+.bt-room-shade { background: radial-gradient(ellipse 60% 70% at 50% 55%, rgba(6, 4, 14, .25), rgba(4, 3, 12, .88)), linear-gradient(transparent 50%, rgba(4, 3, 12, .8)), repeating-linear-gradient(115deg, transparent 0 180px, rgba(229, 155, 224, .04) 180px 186px, transparent 186px 330px); }
 .bt-room-in h1 { color: var(--paper); }
 .bt-room-body > p { background: linear-gradient(100deg, rgba(6, 4, 14, .94), rgba(18, 14, 43, .9)); border-top: 3px solid var(--acc-2); clip-path: polygon(2% 0, 100% 0, 98% 100%, 0 100%); padding: 12px 30px; }
 .tt-pz-board { background: linear-gradient(160deg, rgba(6, 4, 14, .94), rgba(18, 14, 43, .9)); border-color: color-mix(in srgb, var(--acc) 55%, transparent); clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%); padding-left: 34px; padding-right: 34px; }

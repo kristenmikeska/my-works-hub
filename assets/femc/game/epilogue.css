@@ -12,7 +12,7 @@
 .g-epi-slot span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 .g-epi-acts { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 10px; margin-top: 12px; }
-.g-epi-act { display: grid; gap: 4px; padding: 12px 14px; border: 1px solid rgba(196, 180, 255, .45); border-radius: 3px 14px 3px 14px; background: rgba(123, 92, 232, .08); color: var(--ink); text-align: left; }
+.g-epi-act { display: grid; gap: 4px; padding: 12px 14px; border: 1px solid rgba(242, 176, 230, .45); border-radius: 3px 14px 3px 14px; background: rgba(197, 82, 201, .08); color: var(--ink); text-align: left; }
 .g-epi-act b { font: italic 900 19px/1.1 var(--cond); letter-spacing: .03em; }
 .g-epi-act small { color: var(--muted); font-size: 13px; }
 .g-epi-act:is(:hover, :focus-visible):not(:disabled) { background: #fff; color: var(--night); outline: none; box-shadow: 5px 5px 0 var(--pink); }
