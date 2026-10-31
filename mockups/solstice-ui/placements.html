@@ -34,6 +34,9 @@ button, input, select { font: inherit; color: inherit; }
 .count { font-size: 13px; color: rgba(255, 255, 255, .65); }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); gap: 14px; padding: 16px; }
+.sec { grid-column: 1 / -1; margin: 14px 0 0; font: italic 800 28px/1 var(--cond); text-transform: uppercase; color: var(--paper); border-bottom: 2px solid var(--gold); padding-bottom: 6px; }
+.sec small { font: italic 500 16px/1 var(--serif); text-transform: none; color: var(--gold-2); margin-left: 10px; }
+.sec:first-child { margin-top: 0; }
 .card { position: relative; cursor: pointer; border: 0; padding: 0; background: none; text-align: left; border-radius: 6px; outline-offset: 3px; }
 .card .meta { display: flex; justify-content: space-between; gap: 8px; padding: 6px 2px 0; font-size: 13px; }
 .card .meta b { font-weight: 600; }
@@ -80,9 +83,10 @@ button, input, select { font: inherit; color: inherit; }
 <body>
 <header class="top">
   <h1>Portrait <span>placements</span></h1>
-  <p class="help">Everyone as the speaker beside their world’s Solar; switch Review to check Solar’s own versions and faces. Click anyone who looks off, nudge them, then press <b>Copy for Claude</b>.</p>
+  <p class="help">Everyone as the speaker beside their world’s Solar. Use Show to see one world at a time, with its Solar first. Click anyone who looks off, nudge them, then press <b>Copy for Claude</b>.</p>
   <input type="search" placeholder="Find…" aria-label="Find a character" data-q>
-  <label>Review <select data-mode><option value="speakers">Speakers (left)</option><option value="solar">Solar (right)</option></select></label>
+  <label>Show <select data-mode><option value="speakers">Everyone, A–Z</option><option value="solar">Solar, every version</option>
+    <option value="main">World: Main game</option><option value="runners">World: Runners</option><option value="strangers">World: Strangers</option><option value="hoax">World: HOAX</option><option value="stay">World: Stay</option></select></label>
   <label>Face <select data-face><option>neutral</option><option>happy</option><option>sad</option><option>serious</option><option>surprised</option><option>flustered</option></select></label>
   <label><input type="checkbox" data-only> Adjusted only</label>
   <span class="count" data-count></span>
@@ -127,11 +131,17 @@ button, input, select { font: inherit; color: inherit; }
   /* Solar mode reviews every version in every expression: one card per "version/expression" */
   const solarCards = SOLARS.flatMap(v => EXPR.filter(e => SETS[v].includes(e)).map(e => v + '/' + e));
   const mode = () => $('[data-mode]').value;
-  /* The Solar who stands beside a speaker: her matching world version (haechan-runners-holiday → solar-runners-holiday), else plain Solar */
-  const solarFor = id => { const parts = id.split('-'); for (let n = parts.length - 1; n >= 1; n--) { const v = 'solar-' + parts.slice(1, n + 1).join('-'); if (SETS[v]) return v; } return 'solar'; };
+  /* Worlds: their names, Solar's base version there, and who stands opposite Solar when her own cards are reviewed in that world */
+  const WORLDS = window.SOLSTICE_WORLDS || {};
+  const WORLD = { main: ['Main game', 'solar', 'junpei'], runners: ['Runners', 'solar-runners', 'haechan-runners'], strangers: ['Strangers', 'solar-strangers', 'haechan-strangers'],
+    hoax: ['HOAX', 'solar-hoax', 'jungwon-hoax'], stay: ['Stay', 'solar', 'akihiko-stay-hanami'] };
+  /* The Solar who stands beside a speaker: her matching outfit (haechan-runners-holiday → solar-runners-holiday), else that world's Solar */
+  const solarFor = (id, w) => { const parts = id.split('-'); for (let n = parts.length - 1; n >= 1; n--) { const v = 'solar-' + parts.slice(1, n + 1).join('-'); if (SETS[v]) return v; } return (WORLD[w] || WORLD.main)[1]; };
+  /* Card keys: "id" (a speaker), "version/expression" (a Solar card), either with "@world" when shown inside a world */
+  const parse = card => { const [base, w] = card.split('@'); const [id, ex] = base.split('/'); return { id, ex, w, solar: !!ex }; };
   const nice = id => id.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ').replace(/^(\S+) /, '$1 · ');
   const face = (id, want = $('[data-face]').value) => {
-    if (id.includes('/')) return id.split('/')[1];
+    if (id.includes('/')) return id.split('/')[1].split('@')[0];
     return (SETS[id] || []).includes(want) ? want : (SETS[id] || []).includes('neutral') ? 'neutral' : SETS[id][0]; };
   const LINES = ['So. Are we doing this, or are you going to keep staring at me?', 'You’re late again. I saved you a seat anyway.', 'Hey. Got a minute? There’s something I wanted to ask you.'];
 
@@ -139,28 +149,34 @@ button, input, select { font: inherit; color: inherit; }
   /* m = mirrored: drawn flipped (every expression of that version), so the face centre flips too */
   const look = v => { const a = adj[v] || {}, [ar, cx] = FACES[v]; return `--ps:${(SCALE[v] || 1) * (a.s || 1)};--pd:${DROP[v] || 0};--ar:${ar};--cx:${a.m ? 1 - cx : cx};--flip:${a.m ? -1 : 1};--nx:${a.x || 0};--ny:${a.y || 0}`; };
   function scene(card) {
-    const solarMode = card.includes('/');
-    const sv = solarMode ? card.split('/')[0] : solarFor(card), sface = solarMode ? card.split('/')[1] : ((SETS[sv] || []).includes($('[data-face]').value) ? $('[data-face]').value : 'happy');
-    const sp = solarMode ? 'junpei' : card, spFace = solarMode ? 'neutral' : face(card);
-    const who = solarMode ? 'Junpei' : nice(card).split(' · ')[0];
+    const c = parse(card), want = $('[data-face]').value;
+    const sv = c.solar ? c.id : solarFor(c.id, c.w), sface = c.solar ? c.ex : ((SETS[sv] || []).includes(want) ? want : 'happy');
+    const sp = c.solar ? (WORLD[c.w] || WORLD.main)[2] : c.id, spFace = c.solar ? face(sp, 'neutral') : face(c.id);
+    const who = nice(sp).split(' · ')[0];
     return `<div class="scene"><img class="bg" src="${A}bg/gekkoukan-classroom-day.webp" alt="" loading="lazy"><div class="bg-veil"></div>
       <img class="p solar" src="${A}portraits/${sv}/${sface}.webp" alt="${nice(sv)}" loading="lazy" style="${look(sv)}">
       <img class="p speaker" src="${A}portraits/${sp}/${spFace}.webp" alt="${nice(sp)}" loading="lazy" style="${look(sp)}">
       <div class="box"><div class="tag">${who}</div><div class="shell">${LINES[card.length % LINES.length]}</div></div></div>`;
   }
   /* The portrait a card's nudges belong to: the speaker, or in Solar mode that Solar version */
-  const target = card => card.split('/')[0];
+  const target = card => parse(card).id;
   const isAdj = card => { const a = adj[target(card)]; return !!a && (!!a.m || Object.entries(a).some(([k, v]) => k !== 'm' && v && v !== 1)); };
   const tag = card => { const a = adj[target(card)] || {}; return isAdj(card) ? `x ${a.x || 0} · y ${a.y || 0} · size ${(a.s || 1).toFixed(2)}${a.m ? ' · mirrored' : ''}` : ''; };
-  const label = card => card.includes('/') ? `${nice(card.split('/')[0])} — ${card.split('/')[1]}` : nice(card);
+  const label = card => { const c = parse(card); return c.solar ? `${nice(c.id)} — ${c.ex}` : nice(c.id); };
 
   const grid = $('[data-grid]');
   function render() {
     const q = $('[data-q]').value.trim().toLowerCase(), only = $('[data-only]').checked;
-    const pool = mode() === 'solar' ? solarCards : ids;
-    const list = pool.filter(id => (!q || id.includes(q)) && (!only || isAdj(id)));
-    grid.innerHTML = list.map(id => `<button type="button" class="card${isAdj(id) ? ' adj' : ''}" data-id="${id}">${scene(id)}<span class="meta"><b>${label(id)}</b><i>${tag(id)}</i></span></button>`).join('');
-    $('[data-count]').textContent = `${list.length} shown · ${Object.keys(adj).length} adjusted`;
+    const w = mode(), keep = card => (!q || card.includes(q)) && (!only || isAdj(card));
+    /* A world shows its Solar versions first (every expression, opposite someone from that world), then its cast */
+    const sections = WORLD[w] && WORLDS[w]
+      ? [[`Solar <small>in ${WORLD[w][0]}, every expression</small>`, solarCards.filter(c => WORLDS[w].includes(c.split('/')[0])).map(c => c + '@' + w)],
+         [`${WORLD[w][0]} <small>the cast beside her</small>`, WORLDS[w].filter(id => ids.includes(id)).map(id => id + '@' + w)]]
+      : [[null, w === 'solar' ? solarCards : ids]];
+    let shown = 0;
+    grid.innerHTML = sections.map(([title, cards]) => { const list = cards.filter(keep); shown += list.length;
+      return (title && list.length ? `<h2 class="sec">${title}</h2>` : '') + list.map(id => `<button type="button" class="card${isAdj(id) ? ' adj' : ''}" data-id="${id}">${scene(id)}<span class="meta"><b>${label(id)}</b><i>${tag(id)}</i></span></button>`).join(''); }).join('');
+    $('[data-count]').textContent = `${shown} shown · ${Object.keys(adj).length} adjusted`;
     $('[data-face]').closest('label').hidden = mode() === 'solar';
   }
   ['input', 'change'].forEach(ev => { $('[data-q]').addEventListener(ev, render); $('[data-only]').addEventListener(ev, render); $('[data-face]').addEventListener(ev, render); $('[data-mode]').addEventListener(ev, render); });
