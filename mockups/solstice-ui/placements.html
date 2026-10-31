@@ -46,9 +46,9 @@ button, input, select { font: inherit; color: inherit; }
 /* Portraits stand on the bottom edge, sized by screen height (scale.js on top), so nobody floats */
 .scene .p { position: absolute; width: calc(var(--ph) * var(--ar)); max-width: none; --ph: calc(78cqh * var(--ps, 1));
   height: var(--ph); top: calc(100cqh - var(--ph) + var(--ph) * var(--pd, 0) + var(--ny, 0) * 1cqh); }
-.scene .p.speaker { left: calc(17cqw + var(--nx, 0) * 1cqw - var(--ph) * var(--ar) * var(--cx)); filter: drop-shadow(-1cqw .3cqw 0 var(--indigo)) drop-shadow(.55cqw 0 0 var(--gold)); }
+.scene .p.speaker { left: calc(17cqw + var(--nx, 0) * 1cqw - var(--ph) * var(--ar) * var(--cx)); transform: scaleX(var(--flip, 1)); filter: drop-shadow(-1cqw .3cqw 0 var(--indigo)) drop-shadow(.55cqw 0 0 var(--gold)); }
 /* Solar is mirrored, so her face centre sits cx of the picture's width in from its right edge: hang it 17% in from the screen's right */
-.scene .p.solar { right: calc(17cqw - var(--nx, 0) * 1cqw - var(--ph) * var(--ar) * var(--cx)); transform: scaleX(-1); filter: drop-shadow(-1cqw .3cqw 0 var(--indigo)) brightness(.86) saturate(.9); }
+.scene .p.solar { right: calc(17cqw - var(--nx, 0) * 1cqw - var(--ph) * var(--ar) * var(--cx)); transform: scaleX(calc(-1 * var(--flip, 1))); filter: drop-shadow(-1cqw .3cqw 0 var(--indigo)) brightness(.86) saturate(.9); }
 .scene .box { position: absolute; z-index: 3; left: 49.5%; bottom: 5cqh; width: 58cqw; translate: -46% 0; }
 .scene .shell { min-height: 15.6cqh; padding: 3.4cqh 3.6cqw 3cqh 4.3cqw; background: linear-gradient(100deg, rgba(18, 13, 58, .94), rgba(38, 32, 122, .9) 70%, rgba(90, 58, 158, .86));
   clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%); font: 500 1.7cqw/1.42 var(--body); color: #fff; }
@@ -99,8 +99,9 @@ button, input, select { font: inherit; color: inherit; }
     <button class="btn ghost" type="button" data-n="x,-1" aria-label="Move left">←</button><button class="btn ghost" type="button" data-n="x,1" aria-label="Move right">→</button>
     <button class="btn ghost" type="button" data-n="y,-1" aria-label="Move up">↑</button><button class="btn ghost" type="button" data-n="y,1" aria-label="Move down">↓</button>
     <button class="btn ghost" type="button" data-n="s,-1" aria-label="Smaller">Smaller</button><button class="btn ghost" type="button" data-n="s,1" aria-label="Bigger">Bigger</button>
+    <button class="btn ghost" type="button" data-mirror>Mirror</button>
     <button class="btn ghost" type="button" data-reset>Reset</button>
-    <div class="keys">Keys: arrows move (Shift for big steps) · [ ] size · R reset · , . previous/next · Esc close</div>
+    <div class="keys">Keys: arrows move (Shift for big steps) · [ ] size · F mirror · R reset · , . previous/next · Esc close</div>
   </div>
 </div>
 
@@ -135,7 +136,8 @@ button, input, select { font: inherit; color: inherit; }
   const LINES = ['So. Are we doing this, or are you going to keep staring at me?', 'You’re late again. I saved you a seat anyway.', 'Hey. Got a minute? There’s something I wanted to ask you.'];
 
   /* One portrait's style: size from scale.js × nudge, drop, measurements, nudge (nudges are kept per version, shared by its expressions) */
-  const look = v => { const a = adj[v] || {}, [ar, cx] = FACES[v]; return `--ps:${(SCALE[v] || 1) * (a.s || 1)};--pd:${DROP[v] || 0};--ar:${ar};--cx:${cx};--nx:${a.x || 0};--ny:${a.y || 0}`; };
+  /* m = mirrored: drawn flipped (every expression of that version), so the face centre flips too */
+  const look = v => { const a = adj[v] || {}, [ar, cx] = FACES[v]; return `--ps:${(SCALE[v] || 1) * (a.s || 1)};--pd:${DROP[v] || 0};--ar:${ar};--cx:${a.m ? 1 - cx : cx};--flip:${a.m ? -1 : 1};--nx:${a.x || 0};--ny:${a.y || 0}`; };
   function scene(card) {
     const solarMode = card.includes('/');
     const sv = solarMode ? card.split('/')[0] : solarFor(card), sface = solarMode ? card.split('/')[1] : ((SETS[sv] || []).includes($('[data-face]').value) ? $('[data-face]').value : 'happy');
@@ -148,8 +150,8 @@ button, input, select { font: inherit; color: inherit; }
   }
   /* The portrait a card's nudges belong to: the speaker, or in Solar mode that Solar version */
   const target = card => card.split('/')[0];
-  const isAdj = card => { const a = adj[target(card)]; return !!a && Object.values(a).some(v => v && v !== 1); };
-  const tag = card => { const a = adj[target(card)] || {}; return isAdj(card) ? `x ${a.x || 0} · y ${a.y || 0} · size ${(a.s || 1).toFixed(2)}` : ''; };
+  const isAdj = card => { const a = adj[target(card)]; return !!a && (!!a.m || Object.entries(a).some(([k, v]) => k !== 'm' && v && v !== 1)); };
+  const tag = card => { const a = adj[target(card)] || {}; return isAdj(card) ? `x ${a.x || 0} · y ${a.y || 0} · size ${(a.s || 1).toFixed(2)}${a.m ? ' · mirrored' : ''}` : ''; };
   const label = card => card.includes('/') ? `${nice(card.split('/')[0])} — ${card.split('/')[1]}` : nice(card);
 
   const grid = $('[data-grid]');
@@ -180,6 +182,8 @@ button, input, select { font: inherit; color: inherit; }
   }
   grid.addEventListener('click', e => { const c = e.target.closest('.card'); if (c) open(c.dataset.id); });
   $$('[data-n]', big).forEach(b => b.addEventListener('click', () => { const [k, d] = b.dataset.n.split(','); nudge(k, +d); }));
+  function mirror() { const t = target(cur), a = adj[t] = adj[t] || {}; if (a.m) delete a.m; else a.m = 1; if (!Object.keys(a).length) delete adj[t]; save(); draw(); }
+  $('[data-mirror]', big).addEventListener('click', mirror);
   $('[data-reset]', big).addEventListener('click', () => { delete adj[target(cur)]; save(); draw(); });
   $('[data-close]', big).addEventListener('click', close);
   $('[data-prev]', big).addEventListener('click', () => step(-1)); $('[data-next]', big).addEventListener('click', () => step(1));
@@ -188,6 +192,7 @@ button, input, select { font: inherit; color: inherit; }
     const m = e.shiftKey ? 4 : 1, k = e.key;
     const map = { ArrowLeft: ['x', -m], ArrowRight: ['x', m], ArrowUp: ['y', -m], ArrowDown: ['y', m], '[': ['s', -1], ']': ['s', 1] };
     if (map[k]) { nudge(...map[k]); e.preventDefault(); }
+    else if (k === 'f' || k === 'F') mirror();
     else if (k === 'r' || k === 'R') { delete adj[target(cur)]; save(); draw(); }
     else if (k === ',' || k === '<') step(-1); else if (k === '.' || k === '>') step(1);
     else if (k === 'Escape') close();
