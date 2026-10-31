@@ -950,7 +950,7 @@
         <p class="bt-kicker">The Tartarus entrance · ${esc(NAVI.name)} can send you up</p>
         <h1>TELEPORT<small>To the start of a block</small></h1>
         <div class="bt-hub-menu">
-          ${list.map(f => `<button type="button" class="bt-btn" data-warp="${esc(f.id)}"><span>${esc(f.label)} · ${esc(f.block)}</span><small>${esc(`${f.secret ? 'A date section · ' : ''}up to ${topOf(f).label}${(save.tt.guardians || []).some(id => { const g = D.floors.find(x => x.id === id); return g && g.bi === f.bi; }) ? ' · guardian beaten' : ''}`)}</small></button>`).join('')}
+          ${list.map(f => `<button type="button" class="bt-btn" data-warp="${esc(f.id)}"><span>${esc(f.label)} · ${esc(f.block)}</span><small>${esc(`${f.ngp ? 'New Game+ · ' : f.secret ? 'A date section · ' : ''}up to ${topOf(f).label}${(save.tt.guardians || []).some(id => { const g = D.floors.find(x => x.id === id); return g && g.bi === f.bi; }) ? ' · guardian beaten' : ''}`)}</small></button>`).join('')}
           <button type="button" class="bt-btn" data-warp=""><span>Back</span><small>To the entrance</small></button>
         </div>
         <p class="bt-hub-hint">Blocks you’ve reached, from their first floor. Access points still save where you got to.</p>
@@ -3538,8 +3538,10 @@
         break;
       }
       case 'summon': {
-        nav(e.kind === 'hanged' ? 'effigies' : 'summon');
-        await bigWord(e.kind === 'hanged' ? 'THE EFFIGIES' : 'CALL OF THE MIRROR', { sub: e.kind === 'hanged' ? 'Puppets hang from the halo' : 'Mirror Maidens appear', ms: 900 });
+        // The Zenith's superboss (climb.js) calls the next hill on the road home at each new phase.
+        const zen = D.enemies[e.kind] && D.enemies[e.kind].gimmick === 'zenith', hillName = zen && e.ids.length ? B.U(e.ids[0]).name.toUpperCase() : '';
+        nav(e.kind === 'hanged' ? 'effigies' : zen ? 'superboss' : 'summon');
+        await bigWord(e.kind === 'hanged' ? 'THE EFFIGIES' : zen ? hillName : 'CALL OF THE MIRROR', { sub: e.kind === 'hanged' ? 'Puppets hang from the halo' : zen ? 'Another hill on the road home' : 'Mirror Maidens appear', ms: 900 });
         e.ids.forEach(id => addEnemy(B.U(id)));
         sizeField();
         mark('summon-adds');

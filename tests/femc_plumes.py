@@ -249,9 +249,11 @@ try:
     # ── Milestones: first reach, the summit, a guardian, never twice ──
     if want('milestones'):
         setup(p, day='5/12', miles=True)
-        r = p.eval(f"(()=>{{const m={RQ}.milestones();return {{n:m.length,total:m.reduce((a,x)=>a+x.plumes,0),guards:m.filter(x=>x.kind==='guardian').length,ids:new Set(m.map(x=>x.id)).size}}}})()")
-        ok(r['n'] == 28 and r['ids'] == 28 and r['guards'] == 10, r)
-        ok(r['total'] == 111, ('111 plumes in all (Monad’s three section guardians)', r))
+        # Since the New Game+ climb (2026-10-31): 11 more (Raqia, Zebul, Araboth: first floor, summit, guardian; the Zenith reached
+        # and its superboss), only reachable in New Game+; a first playthrough's own are still 28 / 111.
+        r = p.eval(f"(()=>{{const m={RQ}.milestones(),D=FEMC_BATTLE_DATA,ng=x=>(x.kind==='floor'?x.at>254:x.kind==='super'?true:+x.fid.slice(1)>254),y=m.filter(x=>!ng(x));return {{n:m.length,total:m.reduce((a,x)=>a+x.plumes,0),guards:m.filter(x=>x.kind==='guardian').length,ids:new Set(m.map(x=>x.id)).size,year:y.length,yearTotal:y.reduce((a,x)=>a+x.plumes,0)}}}})()")
+        ok(r['n'] == 39 and r['ids'] == 39 and r['guards'] == 13, r)
+        ok(r['total'] == 182 and r['year'] == 28 and r['yearTotal'] == 111, ('111 plumes in a first playthrough (Monad’s three section guardians), 182 with New Game+', r))
         ok(p.eval(f"{G}.plumes") == 0 and p.eval(f"{G}.miles.length") == 0, 'nothing for a new climber')
         toasts(p)
         pl = lambda: p.eval(f"{G}.plumes")

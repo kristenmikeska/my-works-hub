@@ -22,6 +22,9 @@
    - Finish roadmap, phase 1 (2026-10-31): gates(c, maxBi) (the entrance's teleport points), skipTo(c, fi) (stairs past mapped
      landings), arrive(c, floor) (an event at the top of the stairs every few floors), 33 more EVENTS (romance ones gated on
      the route and rank: `love`), a Velvet Plume now and then from any event (EVENT_PLUME), Monad's three section guardians.
+   - The New Game+ climb (2026-10-31): floorOpen asks climb.js open() for `ngp` floors; a block's top leads on into the next
+     block only when that's an open `ngp` floor (Monad's last door → Raqia; the Zenith's stairs go nowhere); arrive() lets
+     climb.js play its scenes first; guardians up there pay a ★5 card and 3 plumes; the Zenith's superboss pays double.
    - plan(floor, c) / dress(map, floor, c): what map.js should build on a floor, and each new room's contents.
    - Chatter: Fuuka's block lines and the party's own (only members in the party, so searchers only once they've arrived),
      a line every few moves at most.
@@ -179,8 +182,13 @@ window.FemcTartarus = (() => {
     if (!(c.save.ops.cleared || []).includes('fortune')) return false;
     return !c.HO || (+c.HO.request.maxFloor || 0) >= D.floors.find(f => f.secret).gameFloor;
   }
-  // Can the party stand on this floor tonight? Main blocks are gated by battle.js (block caps); Monad floor by floor.
-  function floorOpen(c, f) { return !f || !f.secret || (monadOpen(c) && (!c.HO || f.gameFloor <= (+c.HO.request.maxFloor || 0))); }
+  // Can the party stand on this floor tonight? Main blocks are gated by battle.js (block caps); Monad floor by floor. The New
+  // Game+ blocks above it (floor.ngp, 2026-10-31) also need climb.js open(): New Game+ in the story, a finished game in practice.
+  function floorOpen(c, f) {
+    if (!f || !f.secret) return true;
+    if (f.ngp && !(window.FemcClimb && window.FemcClimb.open(c))) return false;
+    return monadOpen(c) && (!c.HO || f.gameFloor <= (+c.HO.request.maxFloor || 0));
+  }
   /* Teleport points (2026-10-31; data.js floor.gate: each block's first floor, Monad's date sections) the entrance can send the
      party to. Reached: stood on (save.tt.gates, battle.js startRun), or a floor at or above it in the same block mapped, an
      access point there or its guardian beaten (older saves), or the full moon below the block cleared (Monad's door: found);
@@ -190,8 +198,8 @@ window.FemcTartarus = (() => {
     const s = c.save, tt = s.tt || {}, known = tt.gates || [], cleared = (s.ops && s.ops.cleared) || [];
     const seen = [].concat(s.floorsMapped || [], s.reached ? [s.reached] : [], tt.guardians || []).map(id => D.floors.find(f => f.id === id)).filter(Boolean);
     return D.floors.filter(g => g.gate && (known.includes(g.id) || g.bi === 0 || seen.some(f => f.bi === g.bi && f.gameFloor >= g.gameFloor)
-      || (g.fi === 0 && (g.secret ? !!tt.monad : D.blocks[g.bi - 1] && cleared.includes(D.blocks[g.bi - 1].op))))
-      && (g.secret ? !!tt.monad && floorOpen(c, g) : g.bi <= maxBi));
+      || (g.fi === 0 && (g.secret ? !g.ngp && !!tt.monad : D.blocks[g.bi - 1] && cleared.includes(D.blocks[g.bi - 1].op))))
+      && (g.secret ? (g.ngp || !!tt.monad) && floorOpen(c, g) : g.bi <= maxBi)); // the New Game+ blocks: only once stood on or climbed past
   }
   /* Stairs that skip (2026-10-31): landings above this floor already mapped (Sketch the Floor's list: their stairs were taken
      before) are passed straight through, up to the next main floor, the first landing not mapped yet, or a superboss's floor
@@ -277,11 +285,13 @@ window.FemcTartarus = (() => {
       if (story && R() < 0.35) out.plumes = 1;
       if (story && R() < 0.2) out.items.capsule_ticket = (out.items.capsule_ticket || 0) + 1;
     }
-    if (kind === 'guardian') { out.yen = roll(R, yenRange(bi, 2)); out.gear = gearPick(R, bi, c.save, false); card(4); mat('velvet_thread'); if (story) out.plumes = 2; }
+    if (kind === 'guardian') { out.yen = roll(R, yenRange(bi, 2)); out.gear = gearPick(R, bi, c.save, false); card(floor.ngp ? 5 : 4); mat('velvet_thread'); if (story) out.plumes = floor.ngp ? 3 : 2; }
     if (kind === 'super') {
       out.yen = roll(R, yenRange(bi, 5)); item(2); item(2); mat('velvet_thread', 2); out.gear = gearPick(R, bi, c.save, true); card(5);
       out.items.tartarus_key = (out.items.tartarus_key || 0) + 1;
       if (story) { out.plumes = 5; out.items.capsule_ticket = (out.items.capsule_ticket || 0) + 1; }
+      // The Zenith's superboss (the top of the New Game+ climb): twice the plumes and more of everything.
+      if (floor.blockId === 'zenith') { mat('velvet_thread', 2); out.items.tartarus_key++; if (story) { out.plumes = 10; out.items.capsule_ticket++; } }
     }
     if (kind === 'super2') { out.yen = roll(R, yenRange(bi, 2.5)); item(1); mat('velvet_thread'); if (R() < 0.5) card(4); }
     if (kind === 'rare') {
@@ -294,7 +304,7 @@ window.FemcTartarus = (() => {
     if (kind === 'stash') { out.yen = roll(R, yenRange(bi, 0.6)); item(0); }
     if (floor.secret && kind !== 'stash') mat('monad_sand', 1 + (R() < 0.5 ? 1 : 0));
     // A rare Echo for Solar (echoes.js; story only): golden Shadows 30%, vaults 15%, hidden rooms 20%.
-    const echoOdds = { rare: 0.3, vault: 0.15, hidden: 0.2, super: 0.5 }[kind];
+    const echoOdds = kind === 'super' && floor.blockId === 'zenith' ? 1 : { rare: 0.3, vault: 0.15, hidden: 0.2, super: 0.5 }[kind];
     if (story && echoOdds && window.FemcEchoes && R() < echoOdds) out.echo = window.FemcEchoes.dropPick(R, c.save);
     if (!out.echo) delete out.echo;
     if (!story && out.items.capsule_ticket) { delete out.items.capsule_ticket; out.yen += 500; } // practice has no capsule machine
@@ -418,6 +428,7 @@ window.FemcTartarus = (() => {
       if (first) { (c.save.tt.supers || (c.save.tt.supers = [])).push(k); c.mark('super-first'); }
       c.mark('super-win'); c.persist();
       await showLoot(c, floor, loot(first ? 'super' : 'super2', c, floor), { title: first ? 'SUPERBOSS DOWN' : 'DOWN AGAIN', kicker: `${d.name} · beaten`, name: 'super-loot', line: c.navLine('superWin') });
+      if (window.FemcClimb) await window.FemcClimb.afterSuper(c, floor, k, first); // the Zenith's closing scene (climb.js), once
       return null;
     },
     async vault(c, floor, n) {
@@ -548,12 +559,23 @@ window.FemcTartarus = (() => {
           buttons: [{ v: 'up', label: 'Go up', pink: true }, { v: 'no', label: 'Not yet' }], fuuka: c.navLine('stairs') });
         return v === 'up' ? 'up' : null;
       }
-      if (floor.top || !next || !floorOpen(c, next)) {
-        const v = await panel(c, floor, { cls: 'barrier', bg: floor.bg, title: floor.top ? 'THE LAST DOOR' : 'SEALED', name: 'monad-sealed',
-          body: floor.top ? '<p>The stairs end at a door with no handle. Whatever is past it isn’t for tonight.</p>' : '<p>The way up is sealed. Monad hasn’t opened any higher yet.</p>',
-          buttons: [{ v: 'no', label: 'Back to the map', pink: true }, { v: 'leave', label: 'Leave Tartarus' }], fuuka: c.navLine('sealed') });
+      // A block's top leads on only into the New Game+ climb (Monad's last door → Raqia, each summit → the next block).
+      const onward = !!next && floorOpen(c, next) && (!floor.top || !!next.ngp);
+      if (!onward) {
+        const zen = floor.blockId === 'zenith', wait = floor.top && next && next.ngp && window.FemcClimb && window.FemcClimb.open(c);
+        const v = await panel(c, floor, { cls: 'barrier', bg: floor.bg, title: zen ? 'THE ZENITH' : floor.top ? 'THE LAST DOOR' : 'SEALED', name: zen ? 'zenith-top' : 'monad-sealed',
+          body: zen ? '<p>There are no more stairs. Above the last floor there’s only sky, and the sun in it, very close.</p>'
+            : wait ? '<p>The door at the top is warm now, and it gives a little under your hand. Not tonight.</p>'
+            : floor.top ? '<p>The stairs end at a door with no handle. Whatever is past it isn’t for tonight.</p>' : `<p>The way up is sealed. ${esc(floor.block)} hasn’t opened any higher yet.</p>`,
+          buttons: [{ v: 'no', label: 'Back to the map', pink: true }, { v: 'leave', label: 'Leave Tartarus' }], fuuka: c.navLine(zen ? 'zenithTop' : wait ? 'climbWait' : 'sealed') });
         if (v === 'leave') { c.mark('leave'); return 'leave'; }
         return null;
+      }
+      if (floor.top) {
+        const v = await panel(c, floor, { cls: 'stairs', title: 'THE LAST DOOR', name: 'climb-door', body: `<p>The door at the top of ${esc(floor.block)} stands open. The stairs go on up to <b>${esc(next.label)}</b>, into a light that isn’t this block’s.</p>`,
+          buttons: [{ v: 'up', label: `Go up to ${next.label}`, pink: true, small: next.block }, { v: 'no', label: 'Not yet' }], fuuka: c.navLine('climbDoor') });
+        if (v === 'up') c.mark('climb-door');
+        return v === 'up' ? 'up' : null;
       }
       const sk = skipTo(c, c.run.fi), far = sk >= 0 ? c.D.floors[sk] : null;
       const v = await panel(c, floor, { cls: 'stairs', title: 'STAIRS', name: 'stairs', body: `<p>The stairs lead up to <b>${esc(next.label)}</b>.</p>`,
@@ -784,6 +806,8 @@ window.FemcTartarus = (() => {
   const ARRIVE = 0.3;
   async function arrive(c, floor) {
     const r = c.run;
+    // The New Game+ climb's scenes (climb.js): a block's first floor and its summit, once a playthrough; no event after one.
+    if (r && window.FemcClimb && await window.FemcClimb.onArrive(c, floor)) { r.ttSince = 0; return null; }
     if (!r || floor.hiddenFloor || window.__ttArrive === false) return null;
     r.ttSince = r.ttSince == null ? 0 : r.ttSince + 1;
     const forced = typeof window.__ttArrive === 'string' && EVENTS.find(e => e.id === window.__ttArrive);

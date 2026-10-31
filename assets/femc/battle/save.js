@@ -39,6 +39,7 @@ window.FemcBattleSave = (() => {
 //          Since 2026-10-31 (finish roadmap phase 1; defaults, so no tv bump: every floor id saves knew still exists, the new
 //          landings only add ids): tt.gates [teleport points stood on (data.js floor.gate)], tt.supers [superboss kinds beaten
 //          (tartarus.js; their first win pays once a playthrough)]. New Game+ resets both with the rest of tt.
+//          Since the New Game+ climb (2026-10-31): tt.climb [climb.js scene ids played; once a playthrough, reset by New Game+].
   const SETTINGS = { textSpeed: 'normal', musicVol: 100, sfxVol: 100, remember: true, rushWhere: 'normal', rushStop: 30, difficulty: 'normal', shake: true, calm: false, numbers: true, pad: 'auto', tips: true, showtimes: 'on' };
   const SETTING_OK = { textSpeed: ['slow', 'normal', 'fast', 'instant'], rushWhere: ['normal', 'strong', 'all'], rushStop: [30, 50], difficulty: ['story', 'normal', 'hard', 'expert', 'merciless'], pad: ['auto', 'xbox', 'ps'], showtimes: ['on', 'still'] };
   const PREFS = ['settings', 'tipsSeen', 'cursor', 'music', 'sfx', 'speed', 'cutins', 'perf']; // device preferences: kept when a slot or backup is loaded
@@ -47,7 +48,7 @@ window.FemcBattleSave = (() => {
     yen: D.startYen, items: Object.assign({}, D.startItems), gear: { owned: {}, eq: {} }, mats: {}, memories: [], evo: {}, form: 'haenim', forms: [], ops: { cleared: [] }, th: {}, perf: false,
     ptree: {}, ranks: {}, forgot: {}, order: {}, equip: {}, seen: {}, fresh: {}, // treeV is set by normalize (an older save without one is migrated)
     cards: { list: [], eq: {}, uid: 0 }, wref: {}, pboost: {}, skillCards: {}, taught: {}, bonds: {}, bondsRev: [], bondGifts: [], floorsMapped: [], shuffles: 0, bondsLove: [], bondDate: null,
-    tv: 2, tt: { guardians: [], monad: false, secrets: [], puzzles: 0, rares: 0, gates: [], supers: [] } });
+    tv: 2, tt: { guardians: [], monad: false, secrets: [], puzzles: 0, rares: 0, gates: [], supers: [], climb: [] } });
   /* The first Haenim tree (three branches of five, before the skill system): its node costs, and the form each branch gave. */
   const OLD_TREE = { bell: { form: 'haenim-sunna', cost: [1, 1, 2, 2, 3] }, jade: { form: 'haenim-mazu', cost: [1, 1, 2, 2, 3] }, star: { form: 'haenim-nike', cost: [1, 1, 2, 2, 3] } };
   function migrateTree(s) {
@@ -163,7 +164,8 @@ window.FemcBattleSave = (() => {
     s.tt = { guardians: [...new Set((Array.isArray(tt.guardians) ? tt.guardians : []).filter(id => D.floors.some(f => f.id === id)))], monad: !!tt.monad,
       secrets: [...new Set((Array.isArray(tt.secrets) ? tt.secrets : []).filter(x => typeof x === 'string'))], puzzles: tt.puzzles >= 0 ? Math.floor(tt.puzzles) : 0, rares: tt.rares >= 0 ? Math.floor(tt.rares) : 0,
       gates: [...new Set((Array.isArray(tt.gates) ? tt.gates : []).filter(id => D.floors.some(f => f.id === id && f.gate)))],
-      supers: [...new Set((Array.isArray(tt.supers) ? tt.supers : []).filter(k => typeof k === 'string' && D.floors.some(f => f.superboss === k)))] };
+      supers: [...new Set((Array.isArray(tt.supers) ? tt.supers : []).filter(k => typeof k === 'string' && D.floors.some(f => f.superboss === k)))],
+      climb: [...new Set((Array.isArray(tt.climb) ? tt.climb : []).filter(k => typeof k === 'string' && (!window.FemcClimb || window.FemcClimb.SCENES[k])))] };
     s.ops.cleared = s.ops.cleared.filter(id => D.ops.some(o => o.id === id));
     if (!(s.cycle >= 0)) s.cycle = 0;
     if (!(s.yen >= 0)) s.yen = D.startYen;
@@ -243,7 +245,7 @@ window.FemcBattleSave = (() => {
   function carry(old) {
     const s = fromRaw(old);
     if (!s) return null;
-    s.reached = null; s.ops = { cleared: [] }; s.tt = { guardians: [], monad: false, secrets: [], puzzles: 0, rares: 0, gates: [], supers: [] }; s.memories = []; s.ngp = (s.ngp || 0) + 1;
+    s.reached = null; s.ops = { cleared: [] }; s.tt = { guardians: [], monad: false, secrets: [], puzzles: 0, rares: 0, gates: [], supers: [], climb: [] }; s.memories = []; s.ngp = (s.ngp || 0) + 1;
     return s;
   }
   /* The battle save for a story playthrough: { save, made } (made: true when it was carried over or seeded just now). */

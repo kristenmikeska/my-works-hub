@@ -1029,6 +1029,24 @@ window.FemcBattleEngine = (() => {
           ev.push({ t: 'hit', src: u.id, tgt: t.id, el: 'none', aff: 'normal', amount: cut, hp: t.hp, maxHp: t.maxHp, quiet: true });
         }
       },
+      /* The Zenith's superboss (climb.js, 2026-10-31): `phases` [{ at (HP share), aff, skills, acts, summon, line }]. At the start
+         of its turn, each threshold it has fallen under changes it once: new affinities (forgotten, so Analyze again), skills,
+         actions a turn (unit `acts`, read by enemyAct), and an escort called in. */
+      zenith: {
+        turn(u, ev) {
+          const ph = D.enemies[u.kind].phases || [];
+          while ((u.phase || 0) < ph.length && u.hp <= u.maxHp * ph[u.phase || 0].at) {
+            const p = ph[u.phase || 0];
+            u.phase = (u.phase || 0) + 1;
+            if (p.aff) { u.aff = Object.assign({}, p.aff); forget(u); }
+            if (p.skills) u.skills = p.skills.slice();
+            if (p.acts) u.acts = p.acts;
+            const ids = (p.summon || []).map(k => { const e = makeEnemy(k, 'e' + S.uid++, 0); S.units.push(e); return e.id; });
+            if (ids.length) ev.push({ t: 'summon', src: u.id, ids, kind: u.kind });
+            if (p.line) ev.push({ t: 'msg', text: p.line, src: u.id });
+          }
+        }
+      },
       hanged: {
         init(u) { u.effT = 0; summonAdds(u, null); },
         turn(u) { if (!alive(foes()).some(f => f.effigy)) u.effT = (u.effT || 0) + 1; else u.effT = 0; }
@@ -2161,7 +2179,7 @@ window.FemcBattleEngine = (() => {
       if (move.skill === 'e_sermon_down') ev.push({ t: 'penance', src: u.id });
       afterAction(u, downs, ev);
       // Some full-moon Shadows act more than once per turn (data: acts).
-      const acts = D.enemies[u.kind].acts || 1;
+      const acts = u.acts || D.enemies[u.kind].acts || 1; // u.acts: a phase can change it (GIMMICKS.zenith)
       if (++u.acted < acts && !S.outcome && !u.dead && !S.oneMore && !u.down) S.oneMore = true;
       return ev;
     }

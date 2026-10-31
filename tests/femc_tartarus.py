@@ -149,7 +149,8 @@ try:
             // each pair: a block of the same map size without the bias, then the block with it
             bias:{trap:[pct('tziah','trap'),pct('yabbashah','trap')],puzzle:[pct('thebel','puzzle'),pct('arqa','puzzle')],rare:[pct('harabah','rare'),pct('adamah','rare')],crack:[pct('thebel','crack'),pct('tziah','crack')],vault:[pct('adamah','vault'),pct('harabah','vault')]},
             floors:D.floors.length,monad:D.floors.filter(f=>f.secret).map(f=>f.gameFloor)}})()""")
-        ok(r['per'] == {'thebel': 7, 'arqa': 8, 'yabbashah': 9, 'tziah': 9, 'harabah': 8, 'adamah': 8, 'empyrean': 9, 'monad': 10}, r['per'])  # main floors
+        # main floors (the New Game+ climb's blocks since 2026-10-31: tests/femc_ngclimb.py)
+        ok(r['per'] == {'thebel': 7, 'arqa': 8, 'yabbashah': 9, 'tziah': 9, 'harabah': 8, 'adamah': 8, 'empyrean': 9, 'monad': 10, 'raqia': 8, 'zebul': 8, 'araboth': 8, 'zenith': 1}, r['per'])
         # Phase 1: the landings between them, their short maps, superboss doors, guardians, gates, the level ramp.
         q = p.eval(r"""(()=>{const D=FEMC_BATTLE_DATA,M=FemcTartarusMap,T=FemcTartarus,E=FemcBattleEngine,bad=[],per={},doors={};
           D.floors.forEach(f=>{per[f.blockId]=(per[f.blockId]||0)+1});
@@ -163,12 +164,12 @@ try:
           const sup=D.floors.filter(f=>f.superboss).map(f=>[f.id,f.superboss,D.enemies[f.superboss].lvl,D.enemies[f.superboss].acts]);
           const ramp=[D.floors.find(f=>f.id==='f2').pool.flat().some(k=>k.includes('@')),D.floors.find(f=>f.id==='f16').pool.flat().every(k=>k.includes('@'))];
           return {n:D.floors.length,per,bad:bad.slice(0,8),guards:gk.length,names:new Set(gn).size,sup,doors,ramp,gates:D.floors.filter(f=>f.gate).map(f=>f.id)}})()""")
-        ok(q['n'] == 113 and q['per'] == {'thebel': 9, 'arqa': 13, 'yabbashah': 17, 'tziah': 17, 'harabah': 12, 'adamah': 12, 'empyrean': 12, 'monad': 21}, q)
+        ok(q['n'] == 158 and q['per'] == {'thebel': 9, 'arqa': 13, 'yabbashah': 17, 'tziah': 17, 'harabah': 12, 'adamah': 12, 'empyrean': 12, 'monad': 21, 'raqia': 14, 'zebul': 15, 'araboth': 15, 'zenith': 1}, q)
         ok(not q['bad'], q['bad'])
-        ok(q['guards'] == 10 and q['names'] == 10, ('a guardian per block and per Monad section, each its own name', q))
-        ok([x[0] for x in q['sup']] == ['f61', 'f115', 'f169', 'f250'] and all(x[3] == 2 for x in q['sup']), q['sup'])
+        ok(q['guards'] == 13 and q['names'] == 13, ('a guardian per block and per Monad section, each its own name', q))
+        ok([x[0] for x in q['sup']] == ['f61', 'f115', 'f169', 'f250', 'f400'] and all(x[3] == 2 for x in q['sup']), q['sup'])
         ok(q['ramp'] == [False, True], ('pool levels ramp up within a block', q['ramp']))
-        ok(q['gates'] == ['f2', 'f17', 'f37', 'f65', 'f93', 'f119', 'f145', 'f176', 'f208', 'f234'], q['gates'])
+        ok(q['gates'] == ['f2', 'f17', 'f37', 'f65', 'f93', 'f119', 'f145', 'f176', 'f208', 'f234', 'f255', 'f276', 'f301', 'f322', 'f351', 'f372', 'f400'], q['gates'])
         ok(r['tops'] == r['caps'], ('block tops are the calendar caps', r['tops']))
         ok(not r['bad'], r['bad'])
         ok(r['guardOk'] and r['hidOk'], (r['guardOk'], r['hidOk']))

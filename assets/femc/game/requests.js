@@ -20,7 +20,9 @@
      Once per playthrough each: the first floor of each block and its summit (Monad: its first floor and the top of each date
      section, the floorCaps inside it), and each block guardian beaten (battle save tt.guardians). Amounts ENTER / TOP / GUARD /
      MONAD (by block); since 2026-10-31 Monad has a guardian in each date section (204F, 222F, 246F): 28 milestones, 111
-     plumes in all (the landings added between floors are never milestones). Paid after every Tartarus night (core.js applyResult) and, for a save already past them, once after the
+     plumes in a first playthrough (the landings added between floors are never milestones). New Game+ adds the climb past
+     Monad (NGP): Raqia, Zebul, Araboth (first floor 5, summit 6, guardian 6 each) and the Zenith (reached 8; its superboss's
+     first fall 12 and the Zenith title, kind 'super' read off battle save tt.supers): 39 milestones, 182 plumes. Paid after every Tartarus night (core.js applyResult) and, for a save already past them, once after the
      first save from a load (G.onChange, like stamps.js), with a toast. Claimed ids: S.gacha.miles, so they never repeat.
    ── The Plume Exchange (openExchange) ──
      Spare Revelation cards and surplus materials for plumes, at most EX.week plumes a game week (core.js weekOf: weeks start
@@ -286,6 +288,9 @@ window.FemcRequests = (() => {
 
   /* ── Tartarus milestones ── */
   const ENTER = [2, 2, 2, 3, 3, 3, 4], TOP = [3, 3, 4, 4, 5, 5, 6], GUARD = [3, 3, 4, 4, 4, 5, 5], MONAD = [4, 4, 5, 6], MONAD_GUARD = 5;
+  // The New Game+ climb (2026-10-31; data.js blocks with `ngp`, reachable only in New Game+): each block's first floor, summit
+  // and guardian; the Zenith reached, and its superboss's first fall (plumes and the Zenith title, cosmetics.js tt-zenith).
+  const NGP = { enter: 5, top: 6, guard: 6, zenith: 8, tiger: 12, tigerCos: 'tt-zenith' };
   let milesCache = null;
   /* Every milestone: { id, kind: 'floor' (at: a game floor) | 'guardian' (fid), plumes, name }. Built from data.js blocks. */
   function milestones() {
@@ -294,6 +299,17 @@ window.FemcRequests = (() => {
     let bi = 0;
     D().blocks.forEach(b => {
       const f = b.floors, top = f[f.length - 1];
+      if (b.ngp) {
+        if (b.id === 'zenith') {
+          out.push({ id: `in-${b.id}`, kind: 'floor', at: f[0], plumes: NGP.zenith, name: `${b.name} reached (${f[0]}F)` });
+          (b.supers || []).forEach(x => out.push({ id: `super-${x.kind}`, kind: 'super', sid: x.kind, plumes: NGP.tiger, cos: NGP.tigerCos, name: `${b.name}: the last door opened` }));
+        } else {
+          out.push({ id: `in-${b.id}`, kind: 'floor', at: f[0], plumes: NGP.enter, name: `${b.name} reached (${f[0]}F)` });
+          out.push({ id: `top-${b.id}`, kind: 'floor', at: top, plumes: NGP.top, name: `${b.name}’s summit (${top}F)` });
+        }
+        ((b.guardian && b.guardian.at) || []).forEach(n => out.push({ id: `guard-f${n}`, kind: 'guardian', fid: `f${n}`, plumes: NGP.guard, name: `${b.name}’s guardian beaten (${n}F)` }));
+        return;
+      }
       if (!b.secret) {
         out.push({ id: `in-${b.id}`, kind: 'floor', at: f[0], plumes: ENTER[bi] || ENTER[ENTER.length - 1], name: `${b.name} reached (${f[0]}F)` });
         out.push({ id: `top-${b.id}`, kind: 'floor', at: top, plumes: TOP[bi] || TOP[TOP.length - 1], name: `${b.name}’s summit (${top}F)` });
@@ -308,8 +324,8 @@ window.FemcRequests = (() => {
     return (milesCache = out);
   }
   function dueMiles() {
-    const g = gs(), s = S(), top = (s.tartarus && s.tartarus.maxFloor) || 0, gd = (bs() && bs().tt && bs().tt.guardians) || [];
-    return milestones().filter(m => !g.miles.includes(m.id) && (m.kind === 'floor' ? top >= m.at : gd.includes(m.fid)));
+    const g = gs(), s = S(), top = (s.tartarus && s.tartarus.maxFloor) || 0, gd = (bs() && bs().tt && bs().tt.guardians) || [], sp = (bs() && bs().tt && bs().tt.supers) || [];
+    return milestones().filter(m => !g.miles.includes(m.id) && (m.kind === 'floor' ? top >= m.at : m.kind === 'super' ? sp.includes(m.sid) : gd.includes(m.fid)));
   }
   /* Pay every milestone that's due, once. how: 'night' (after a Tartarus night: a toast per milestone, three at most) or 'load'
      (a save already past them: one toast for the lot). Returns the milestones paid. The caller saves. */
@@ -317,7 +333,7 @@ window.FemcRequests = (() => {
     if (!live()) return [];
     const due = dueMiles(); if (!due.length) return [];
     const g = gs(); let n = 0;
-    due.forEach(m => { g.miles.push(m.id); n += m.plumes; });
+    due.forEach(m => { g.miles.push(m.id); n += m.plumes; if (m.cos && window.FemcCosmetics) window.FemcCosmetics.grantItem(m.cos); });
     g.plumes += n;
     if (how === 'night' && due.length <= 3) due.forEach(m => G.toast('perk', `Tartarus milestone · ${m.name}: Velvet Plumes +${m.plumes}`));
     else G.toast('perk', `Tartarus milestones${how === 'night' ? '' : ' for floors already climbed'} (${due.length}): Velvet Plumes +${n}`);
@@ -516,7 +532,8 @@ window.FemcRequests = (() => {
   ];
   const wtpl = id => WEEKLY.find(T => T.id === id) || null;
   // How far up the tower she is: 0 (only Thebel) to 7 (Monad found), from each block's first floor.
-  const reach = () => { const top = (S().tartarus && S().tartarus.maxFloor) || 0; return Math.max(0, D().blocks.filter(b => top >= b.floors[0]).length - 1); };
+  // Capped at Monad's index: the New Game+ blocks above it don't raise the weekly targets past the year's tuning.
+  const reach = () => { const top = (S().tartarus && S().tartarus.maxFloor) || 0, B = D().blocks.filter(b => !b.ngp); return Math.max(0, B.filter(b => top >= b.floors[0]).length - 1); };
   const wfill = (s, e) => String(s).replace(/\{(\w+)\}/g, (m, k) => (k === 'n' ? String(e.n) : k === 'el' ? el(e.el) : k === 'act' ? ((G.actById(e.act) || {}).name || e.act)
     : k === 'mat' ? ((D().materials[e.mat] || {}).name || e.mat) : k === 'item' ? ((D().items[e.item] || {}).name || e.item) : m));
   // A small seeded generator (runId + week), so a reload posts the same three.

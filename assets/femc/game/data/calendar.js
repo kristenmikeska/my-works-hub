@@ -74,6 +74,10 @@ window.FEMC_GAME_CALENDAR = {
   ],
   // Tartarus floors the battle game should allow by date (P3 opens blocks as the year goes on). Passed in the handoff.
   floorCaps: [['4/18', 16], ['5/10', 36], ['6/9', 64], ['7/8', 92], ['8/7', 118], ['9/6', 144], ['10/5', 172], ['11/4', 204], ['12/3', 230], ['1/1', 254]],
+  // New Game+ only (core.js floorCap; 2026-10-31): the climb past Monad opens in the year's last stretch. Raqia (to 300F) after
+  // Elizabeth's visit, Zebul (350F) the day after the quiet full moon, Araboth and the Zenith (400F) on 2/14, three weeks
+  // before the last train. Kept apart from floorCaps so a first playthrough (and requests.js's milestones) never sees them.
+  ngpFloorCaps: [['1/9', 300], ['1/31', 350], ['2/14', 400]],
   // Fixed weather (kinds: clear, cloudy, rain, storm, snow). The culture festival (10/30-10/31) is held through the storm
   // and ends in rain, as the story has it; its hallway art shows on the sunny prep days before (places.js today).
   weather: { '4/6': 'clear', '4/7': 'clear', '4/8': 'clear', '12/24': 'snow', '12/25': 'snow', '10/30': 'storm', '10/31': 'rain',

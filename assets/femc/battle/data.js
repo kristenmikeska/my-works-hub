@@ -953,7 +953,37 @@ window.FEMC_BATTLE_DATA = (() => {
       floors: [176, 184, 192, 204, 212, 222, 230, 238, 246, 254], landings: [180, 188, 196, 200, 208, 215, 219, 226, 234, 242, 250], gates: [176, 208, 234], supers: [{ at: 250, kind: 'super_eclipse' }], guardian: { at: [204, 222, 246], kind: ['guard_monad', 'guard_monad_deep', 'guard_monad_waltz'] },
       rooms: { strong: 1.8, vault: 1.5, crack: 1.4, rare: 1.4, trap: 1.3, rest: 1.2, altar: 1.2, chest: 0.8 },
       pool: [['seeker@44', 'knight@45'], ['castle@45', 'tower@46'], ['giant@46', 'basalt@46', 'machine@45'], ['seeker@47', 'seeker@46'], ['dancer@47', 'pot@47', 'turret@46'], ['tower@48', 'castle@48'], ['beast@48', 'drive@48', 'niceguy@48'], ['seeker@50', 'tower@49', 'knight@49']],
-      strong: [['seeker@52', 'seeker@51'], ['castle@52', 'tower@52', 'knight@51']] }
+      strong: [['seeker@52', 'seeker@51'], ['castle@52', 'tower@52', 'knight@51']] },
+    /* The New Game+ climb (2026-10-31, finish roadmap section 5): three blocks above Monad, each built from one of Solar's worlds,
+       and the Zenith on 400F. `ngp`: New Game+ only (climb.js open(): the story's maxFloor reaches them only in New Game+,
+       calendar.js ngpFloorCaps; practice once this browser has a finished playthrough). Like Monad they're `secret` (opened floor
+       by floor, no full moon, their own stairs); Monad's last door leads on into Raqia, each summit's stairs into the next block.
+       Their Shadows (the worlds' memory-floor Shadows grown into regulars, the guardians, the Zenith's superboss) are climb.js's,
+       so every pool entry carries its level. */
+    { id: 'raqia', name: 'Raqia', bg: BG + 'tartarus-raqia.webp', color: '#ff9a3c', tint: '#5a2a0c', op: null, lvl: 64, secret: true, ngp: true,
+      floors: [255, 262, 269, 276, 283, 290, 296, 300], landings: [258, 265, 272, 279, 286, 293], gates: [255, 276], guardian: { at: [290], kind: 'guard_raqia' },
+      rooms: { event: 1.5, rest: 1.2, puzzle: 1.2, rare: 1.2, strong: 1.5, altar: 1.1, trap: 0.9 },
+      pool: [['rq_strobe@60', 'rq_strobe@60', 'venus@60'], ['rq_encore@61', 'papillon@61'], ['rq_bellfox@63', 'dancer@62', 'rq_strobe@62'], ['rq_encore@64', 'rq_bellfox@64'],
+        ['rq_strobe@66', 'rq_encore@66', 'cupid@66'], ['rq_bellfox@68', 'rq_bellfox@67'], ['rq_encore@70', 'rq_strobe@70', 'dancer@69'], ['rq_bellfox@72', 'rq_encore@71', 'rq_strobe@71']],
+      strong: [['rq_encore@74', 'rq_bellfox@73'], ['rq_strobe@74', 'rq_strobe@73', 'rq_bellfox@73']] },
+    { id: 'zebul', name: 'Zebul', bg: BG + 'tartarus-zebul.webp', color: '#5fe0c8', tint: '#0c4a44', op: null, lvl: 78, secret: true, ngp: true,
+      floors: [301, 308, 315, 322, 329, 336, 343, 350], landings: [304, 311, 318, 325, 332, 339, 346], gates: [301, 322], guardian: { at: [343], kind: 'guard_zebul' },
+      rooms: { trap: 1.5, vault: 1.4, crack: 1.3, strong: 1.7, rest: 0.9, event: 1.2 },
+      pool: [['zb_undertow@73', 'pesce@73'], ['zb_crate@74', 'zb_undertow@74'], ['zb_veil@75', 'pot@75', 'zb_crate@75'], ['zb_undertow@77', 'zb_veil@77'],
+        ['zb_crate@79', 'zb_crate@79', 'mother@79'], ['zb_veil@81', 'zb_undertow@80'], ['zb_undertow@83', 'zb_crate@83', 'zb_veil@82'], ['zb_veil@85', 'zb_veil@84', 'zb_crate@85']],
+      strong: [['zb_undertow@87', 'zb_veil@86'], ['zb_crate@87', 'zb_crate@86', 'zb_undertow@86']] },
+    { id: 'araboth', name: 'Araboth', bg: BG + 'tartarus-araboth.webp', color: '#ff7ad9', tint: '#4a1048', op: null, lvl: 90, secret: true, ngp: true,
+      floors: [351, 358, 365, 372, 379, 386, 393, 399], landings: [354, 361, 368, 375, 382, 389, 396], gates: [351, 372], guardian: { at: [393], kind: 'guard_araboth' },
+      rooms: { puzzle: 1.6, altar: 1.4, event: 1.3, strong: 1.8, vault: 1.3, rare: 1.1 },
+      pool: [['ab_receipt@86', 'ab_receipt@86', 'magus@86'], ['ab_recount@87', 'dice@87'], ['ab_poster@88', 'ab_receipt@88', 'king@88'], ['ab_recount@90', 'ab_poster@90'],
+        ['ab_receipt@92', 'ab_receipt@92', 'ab_recount@92'], ['ab_poster@93', 'ab_recount@93'], ['ab_recount@95', 'ab_poster@95', 'ab_receipt@95'], ['ab_poster@97', 'ab_recount@97', 'ab_receipt@96']],
+      strong: [['ab_recount@99', 'ab_poster@98'], ['ab_receipt@99', 'ab_receipt@98', 'ab_poster@98']] },
+    // The Zenith: one floor, the top of everything, its superboss behind the last sealed door. No stairs lead on.
+    { id: 'zenith', name: 'The Zenith', bg: BG + 'tartarus-zenith.webp', color: '#ffe27a', tint: '#7a4a00', op: null, lvl: 99, secret: true, ngp: true,
+      floors: [400], supers: [{ at: 400, kind: 'super_tiger' }],
+      rooms: { rest: 2, altar: 2, chest: 1.3, vault: 1.2, shadow: 0.6, strong: 1.2, trap: 0.3, puzzle: 0.5 },
+      pool: [['ab_poster@97', 'zb_veil@97', 'rq_bellfox@97'], ['ab_recount@98', 'zb_undertow@98', 'rq_encore@98']],
+      strong: [['ab_recount@99', 'zb_crate@99', 'rq_strobe@99']] }
   ];
   /* Floors, in climbing order (Monad last). id: f + number (16F → f16). access: chance of an access point (the first floor of a
      block, and a gate, always has one). top: the block's last floor (its barrier). last: the top of the climb (172F).
@@ -972,7 +1002,7 @@ window.FEMC_BATTLE_DATA = (() => {
       floors.push({ id: 'f' + n, label: n + 'F', gameFloor: n, block: b.name, blockId: b.id, bi, fi, t, bg: b.bg, color: b.color, tint: b.tint,
         pool, strong: b.strong, nav: fi === 0 ? 'block_' + b.id : 'floor', top, op: top ? b.op : null, landing, gate,
         access: fi === 0 || gate ? 1 : landing ? 0.3 : 0.55, layers: landing ? 3 : b.secret ? 7 : 5 + Math.min(2, Math.floor(bi / 2)), rooms: b.rooms || {}, lvl: b.lvl,
-        guardian: kindAt(b.guardian, n), superboss: sup ? sup.kind : null, secret: !!b.secret, last: !b.secret && top && bi === lastClimb });
+        guardian: kindAt(b.guardian, n), superboss: sup ? sup.kind : null, secret: !!b.secret, ngp: !!b.ngp, last: !b.secret && top && bi === lastClimb });
     });
   });
   /* Saves from before 2026-10-25 (three floors a block: f2 f4 f6 · f9 f12 f15 · … · f54 f57 f60). The life sim showed them as

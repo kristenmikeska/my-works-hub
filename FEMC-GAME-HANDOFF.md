@@ -48,6 +48,8 @@ Until the battle side is wired up, every fight shows a placeholder card ("Battle
     maxFloor: 36,                // highest Tartarus floor allowed today (P3-style blocks open by date). Since 2026-10-25 the battle
                                  //   game's floors carry these real numbers (data.js blocks[].floors); Monad's open floor by floor
     bestFloor: 22,               // highest floor reached so far
+    ngp: 0,                      // New Game+ count (core.js S.ngp; 2026-10-31): the climb past Monad (255-400F, battle climb.js) opens
+                                 //   only when it's above 0; maxFloor then follows calendar.js ngpFloorCaps too (300 / 350 / 400)
     bossesCleared: ['magician', 'priestess'],
     fragments: ['strangers-harbor'],   // memory fragments Solar already has (don't award these again)
     fragmentsOpen: true,         // false before 5/16: no memory fragments may drop yet

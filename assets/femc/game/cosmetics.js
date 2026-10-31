@@ -152,6 +152,7 @@ window.FemcCosmetics = (() => {
     c('tt-sunburst', 'title', 'Sunburst Title', 'UR', 'Gold on gold. The Cast Keychains reward.', { title: ['#ffd36b', '#2a1400'], pool: false }),
     c('tt-twosuns', 'title', 'Two Suns Title', 'UR', 'Amber and rose, two lights at once. The Solchan Series reward.', { title: ['#ffb84d', '#2a0d14'], pool: false }),
     c('tt-eclipse', 'title', 'Eclipse Title', 'UR', 'A sun and a moon sharing the sky. The Hidden Charms reward.', { title: ['#fff0a8', '#070a1c'], pool: false }),
+    c('tt-zenith', 'title', 'Zenith Title', 'UR', 'Noon, straight overhead, and no shadow under anyone. For the top of the tower.', { title: ['#fff6cf', '#7a4a00'], pool: false }),
     // Code-only: menu wallpapers (place backgrounds and the key art; nothing from the story's CGs).
     c('wp-dorm', 'wallpaper', 'Dorm Lounge', 'R', 'The lounge at night.', { bg: BG('iwatodaidorm-livingroom-night') }),
     c('wp-mall', 'wallpaper', 'Paulownia Mall', 'R', 'The mall after dark.', { bg: BG('paulownia-mall-night') }),

@@ -31,7 +31,7 @@ Kat's decisions:
 - [x] More bosses: a guardian per block, plus optional superbosses up top
 - [x] Better rewards: Velvet Plumes from guardians and rare events
 - [x] Random events every few floors (funny, scary, lore, romantic)
-- [ ] The climb past 254 to 400, New Game+ only (approved Oct 31): three blocks above the Monad built from Syracuse (255-300), Incheon (301-350) and Hanlim (351-399), floor 400 tied to Solstice's heart with the final superboss; a scene on arrival and at each summit, a guardian, its own events, Fuuka. Claude names the blocks and writes the story (Kat approves structure, not plot).
+- [x] The climb past 254 to 400, New Game+ only (approved Oct 31; built Oct 31: CLAUDE.md "Tartarus, the New Game+ climb: built"): three blocks above the Monad built from Syracuse (255-300), Incheon (301-350) and Hanlim (351-399), floor 400 tied to Solstice's heart with the final superboss; a scene on arrival and at each summit, a guardian, its own events, Fuuka. Claude names the blocks and writes the story (Kat approves structure, not plot).
 - Difficulty stays set by floor, not by the player's level.
 
 ## 6. Epilogue depth

@@ -2218,7 +2218,8 @@ window.FemcGame = (() => {
     if (S.spent[`${S.day}-evening`]) return { ok: false, why: 'No time left' };
     return { ok: true };
   }
-  function floorCap(d = S.day) { let cap = 0; D.cal.floorCaps.forEach(([md, f]) => { if (d >= dayOf(md)) cap = f; }); return cap; }
+  // New Game+ adds calendar.js ngpFloorCaps (the climb past Monad, 255-400F; battle climb.js).
+  function floorCap(d = S.day) { let cap = 0; D.cal.floorCaps.concat(S.ngp > 0 ? D.cal.ngpFloorCaps || [] : []).forEach(([md, f]) => { if (d >= dayOf(md)) cap = Math.max(cap, f); }); return cap; }
   function makeHandoff(kind, req) {
     const info = dayInfo();
     const id = `h${S.day}-${Date.now().toString(36)}`;
@@ -2267,7 +2268,7 @@ window.FemcGame = (() => {
       yen: S.yen, items: { ...S.inventory }, gear: [...S.gear],
       maxFloor: floorCap(), bestFloor: S.tartarus.maxFloor, bossesCleared: [...S.tartarus.bosses],
       fragments: [...S.fragments], fragmentsOpen: S.day >= dayOf(D.cal.fragmentsFrom || '5/16'), dropsOk: dropsOk(),
-      run: S.runId, carryFrom: S.ngFrom || null, route: S.route.choices.solstice ?? null, trueReady: !!(S.flags['true-final'] || S.flags['true-path']),
+      run: S.runId, carryFrom: S.ngFrom || null, ngp: S.ngp || 0, route: S.route.choices.solstice ?? null, trueReady: !!(S.flags['true-final'] || S.flags['true-path']),
       routeFlags: ['route-R', 'route-S', 'route-H', 'route-stay', 'route-true', 'route-bad', 'true-final', 'true-fallback'].filter(flag),
       // Night-only items from the life sim (Shinjiro's Kitchen Duty leftovers); battle.js adds them on a Tartarus night.
       kits: kind === 'tartarus' && S.leftovers ? { night_leftovers: 1 } : null,
