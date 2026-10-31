@@ -2,10 +2,10 @@
    The card face itself (.ec-pic) is styled by assets/femc/battle/echoes.js, so the battle frame can draw it too. */
 
 /* ── The Personas tab ── */
-.g-ec-sec { margin-top: 18px; padding-top: 12px; border-top: 1px solid rgba(255, 224, 138, .25); }
+.g-ec-sec { margin-top: 18px; padding-top: 12px; border-top: 1px solid rgba(196, 180, 255, .25); }
 .g-ec-sec > h3 { margin: 0 0 8px; font: italic 900 20px/1.1 var(--cond); letter-spacing: .04em; }
 .g-ec-sec > h3 small, .g-ec h2 small { display: block; color: var(--pink-2); font: italic 700 13px/1.3 var(--cond); letter-spacing: .14em; text-transform: uppercase; }
-.g-ec-slot { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 14px; align-items: start; padding: 10px; background: rgba(18, 13, 58, .85); border: 2px solid color-mix(in srgb, var(--ec, #ffe08a) 60%, transparent); box-shadow: 6px 6px 0 color-mix(in srgb, var(--ec, #ffc53d) 35%, transparent); }
+.g-ec-slot { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 14px; align-items: start; padding: 10px; background: rgba(18, 13, 58, .85); border: 2px solid color-mix(in srgb, var(--ec, #c4b4ff) 60%, transparent); box-shadow: 6px 6px 0 color-mix(in srgb, var(--ec, #7b5ce8) 35%, transparent); }
 .g-ec-slot.empty { display: block; border-style: dashed; box-shadow: none; }
 .g-ec-none { font: italic 900 18px/1 var(--cond); color: var(--muted); letter-spacing: .06em; }
 .g-ec-slotpic { width: 96px; }
@@ -17,7 +17,7 @@
 .g-ec-passive { margin: 8px 0 2px; font-size: 14px; color: var(--pink-3); }
 .g-ec-passive b { color: var(--gold); font: italic 800 14px/1 var(--cond); letter-spacing: .05em; margin-right: 4px; }
 .g-ec-stock { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 8px; margin-top: 10px; }
-.g-ec-mini { position: relative; display: grid; justify-items: center; gap: 2px; padding: 6px 4px 7px; border: 2px solid rgba(255, 224, 138, .25); background: rgba(18, 13, 58, .9); color: var(--ink); text-align: center; }
+.g-ec-mini { position: relative; display: grid; justify-items: center; gap: 2px; padding: 6px 4px 7px; border: 2px solid rgba(196, 180, 255, .25); background: rgba(18, 13, 58, .9); color: var(--ink); text-align: center; }
 .g-ec-mini .g-ec-thumb { width: 64px; }
 .g-ec-mini b { font: italic 800 13px/1.1 var(--cond); letter-spacing: .02em; }
 .g-ec-mini small { color: var(--muted); font-size: 11px; }
@@ -66,7 +66,7 @@
 .g-ec-artnote { color: var(--gold); }
 .g-ec-miles { margin: 4px 0 12px; padding: 0; list-style: none; display: grid; gap: 6px; }
 .g-ec-miles.cols { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
-.g-ec-mile { display: grid; gap: 3px; padding: 7px 10px; background: rgba(18, 13, 58, .8); border-left: 3px solid rgba(255, 224, 138, .4); }
+.g-ec-mile { display: grid; gap: 3px; padding: 7px 10px; background: rgba(18, 13, 58, .8); border-left: 3px solid rgba(196, 180, 255, .4); }
 .g-ec-mile b { font: italic 800 14px/1.1 var(--cond); letter-spacing: .03em; }
 .g-ec-mile small { color: var(--muted); font-size: 12px; }
 .g-ec-mile.done { border-left-color: var(--gold); }

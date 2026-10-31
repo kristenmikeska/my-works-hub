@@ -9,19 +9,19 @@
 .g-title::before { left: auto; right: 0; top: 0; width: 40vw; height: 100%; transform: none; clip-path: polygon(24% 0, 100% 0, 100% 100%, 0 100%);
   background: linear-gradient(100deg, rgba(18, 13, 58, .55), rgba(18, 13, 58, .9) 22%, rgba(12, 9, 40, .96)); animation: g-in .8s .1s both; }
 /* The thin gold edge (the moonlight layer, which the cover doesn't need) */
-.g-title-moon { z-index: 1; inset: 0 0 0 auto; width: 40vw; background: linear-gradient(180deg, var(--gold-2), var(--gold)); mix-blend-mode: normal;
+.g-title-moon { z-index: 1; inset: 0 0 0 auto; width: 40vw; background: linear-gradient(180deg, var(--pink-2), var(--pink)); mix-blend-mode: normal;
   clip-path: polygon(24% 0, calc(24% + 6px) 0, 6px 100%, 0 100%); animation: g-in .8s .1s both; }
 .g-title-moon::after { display: none; }
 .g-title-fx { z-index: 2; }
 .g-title-copy { left: auto; right: clamp(16px, 3.4vw, 54px); width: min(440px, 28vw); max-width: none; }
 .g-title-menu { justify-items: stretch; gap: 6px; }
 .g-title-menu button { min-width: 0; width: 100%; background: transparent; font-size: clamp(22px, 2.3vw, 30px); text-shadow: 3px 3px 0 rgba(15, 11, 51, .7); }
-.g-title-menu button:is(.is-on, :focus-visible) { background: linear-gradient(90deg, var(--violet), var(--indigo) 45%, var(--indigo)); color: var(--gold-2);
-  box-shadow: inset 7px 0 0 var(--gold), 6px 6px 0 rgba(255, 197, 61, .45); }
-.g-title-menu button:is(.is-on, :focus-visible)::after { color: var(--gold); }
-@keyframes g-title-go { 0%, 100% { background: var(--indigo); } 50% { background: var(--gold); color: var(--deep); } }
+.g-title-menu button:is(.is-on, :focus-visible) { background: linear-gradient(90deg, var(--violet), var(--indigo) 45%, var(--indigo)); color: var(--pink-2);
+  box-shadow: inset 7px 0 0 var(--pink), 6px 6px 0 rgba(123, 92, 232, .45); }
+.g-title-menu button:is(.is-on, :focus-visible)::after { color: var(--pink); }
+@keyframes g-title-go { 0%, 100% { background: var(--indigo); } 50% { background: var(--pink); color: var(--deep); } }
 .g-title-press { text-shadow: 3px 3px 0 var(--deep); }
-.g-title-foot { color: var(--gold-2); }
+.g-title-foot { color: var(--pink-2); }
 /* The logo turns gold at Dawn, as in the mockup */
 .g-logo .sl-logo.sl-dark { --sl-ink: #fffaf0; --sl-sub: #ffe08a; --sl-shade: #120d3a; --sl-rule: #ffc53d; }
 .g-logo .sl-word { stroke: url(#sl-gold); }
@@ -37,20 +37,22 @@
 @media (max-width: 700px) and (max-height: 700px) { .g-title-menu button { padding-top: 8px; padding-bottom: 8px; } }
 
 /* ── HUD: the date as paper digits with a paper weekday tag, the wallet as a paper tag with a gold block ── */
-.g-hud { border-bottom-color: rgba(255, 197, 61, .5); }
-.g-date { background: linear-gradient(100deg, var(--indigo), var(--violet)); box-shadow: 4px 4px 0 var(--gold); }
+.g-hud { border-bottom-color: rgba(123, 92, 232, .5); }
+.g-date { background: linear-gradient(100deg, var(--indigo), var(--violet)); box-shadow: 4px 4px 0 var(--pink); }
 .g-date b { color: var(--paper); text-shadow: 2px 2px 0 var(--deep); }
 .g-date small { padding: 3px 10px 3px 6px; background: var(--paper); color: var(--deep); clip-path: polygon(0 0, 100% 0, 86% 100%, 0 100%); }
 .g-slot { color: var(--paper); }
-.g-yen { background: var(--paper); color: var(--deep); box-shadow: 4px 4px 0 var(--gold); }
-.g-toast.k-yen { color: var(--gold); }
+.g-yen { background: var(--paper); color: var(--deep); box-shadow: 4px 4px 0 var(--pink); }
+.g-toast.k-yen { color: var(--pink); }
 
-/* ── Gold fills read in deep ink (the gold selection slash) ── */
+/* ── Accent fills (violet by day) read in white ── */
 .g-btn.pink, .g-chip.on, .g-menu em, .g-menu .g-menu-main, .g-toast.k-statrank, .g-board-list li.me, .g-area em, .g-who i, .g-tabs button.on,
 .g-gains li.boss, .g-who-mini.on, .g-cal-grid i.today, .g-slot-n, .g-cbox-card em, .g-px-card em, .g-pcard em, .g-px-face.q, .g-pcard .g-pc-pic,
-.gs-log > button, .g-view-zoom:is(:hover, :focus-visible), .g-epi-slot.pink { color: var(--deep); }
+.gs-log > button, .g-view-zoom:is(:hover, :focus-visible), .g-epi-slot.pink { color: #fff; }
+/* In the Dark Hour those fills are green, so they keep the dark ink */
+:is(.g-tt-ov, .g-battle-ov, .g-fm-ov.g-over-battle, .g-fm.dark, .g-dh) :is(.g-btn.pink, .g-chip.on, .g-menu em, .g-menu .g-menu-main, .g-tabs button.on, .g-who-mini.on, .g-slot-n) { color: var(--deep); }
 .g-btn.pink { box-shadow: 5px 5px 0 var(--violet); }
-.g-btn.pink:is(:hover, :focus-visible):not(:disabled) { background: var(--paper); box-shadow: 7px 7px 0 var(--gold); }
+.g-btn.pink:is(:hover, :focus-visible):not(:disabled) { background: var(--paper); box-shadow: 7px 7px 0 var(--pink); }
 .g-menu .g-menu-main { box-shadow: 3px 3px 0 var(--violet); }
 .g-tabs button.on { box-shadow: 4px 4px 0 var(--paper); }
 .g-chip.on { border-color: var(--paper); }
@@ -58,7 +60,7 @@
 .g-btn:is(:hover, :focus-visible):not(:disabled) { background: var(--paper); }
 
 /* ── Panels: deep indigo gradients with a gold edge on the left and an indigo offset block ── */
-.g-panel { border: 1.5px solid rgba(255, 224, 138, .3); border-left: 5px solid var(--gold); border-radius: 2px 22px 2px 22px;
+.g-panel { border: 1.5px solid rgba(196, 180, 255, .3); border-left: 5px solid var(--pink); border-radius: 2px 22px 2px 22px;
   background: linear-gradient(160deg, rgba(18, 13, 58, .97), rgba(32, 26, 104, .96) 65%, rgba(70, 46, 130, .95)); box-shadow: 10px 10px 0 rgba(90, 58, 158, .6); }
 .g-panel h2 { text-shadow: .06em .06em 0 var(--violet); }
 .g-fm-head h2 { text-shadow: .06em .06em 0 var(--violet); }
@@ -83,7 +85,7 @@
 .g-fm-ov.g-over-battle .g-panel::before { color: rgba(120, 255, 150, .07); }
 
 /* Solar's own colour in the menus was the old theme pink (battle data); in the field it takes the Dawn gold */
-.g-pm.lead, .g-pm-wrap:has(> .g-pm.lead) { --c: #ffc53d !important; }
+.g-pm.lead, .g-pm-wrap:has(> .g-pm.lead) { --c: #7b5ce8 !important; }
 :is(.g-tt-ov, .g-battle-ov, .g-fm-ov.g-over-battle) .g-btn:not(.pink) { box-shadow: 5px 5px 0 rgba(77, 255, 138, .4); }
 :is(.g-tt-ov, .g-battle-ov, .g-fm-ov.g-over-battle) .g-btn.small:not(.pink) { box-shadow: 3px 3px 0 rgba(77, 255, 138, .45); }
 :is(.g-tt-ov, .g-battle-ov, .g-fm-ov.g-over-battle) .g-btn:is(:hover, :focus-visible):not(:disabled) { box-shadow: 7px 7px 0 #4dff8a; }

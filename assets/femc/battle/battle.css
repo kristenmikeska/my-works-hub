@@ -3,7 +3,7 @@
    --pink-2, --pink-3 and --night on :root; with none on, those stay unset and the Solstice fallbacks below are used. */
 :root {
   color-scheme: dark;
-  --acc: var(--pink, #ffc53d); --acc-hi: var(--pink-2, #ffe08a); --acc-2: var(--pink-2, #6dff9c); --acc-3: var(--pink-3, #d3f5dc);
+  --acc: var(--pink, #9b7bff); --acc-hi: var(--pink-2, #cdbcff); --acc-2: var(--pink-2, #6dff9c); --acc-3: var(--pink-3, #d3f5dc);
   --deep: var(--night, #020805); --indigo: #062114; --violet: #0e3b1f; --green: #4dff8a; --green-2: #9dffb4; --paper: #fffaf0;
   --acc-dk: color-mix(in srgb, var(--acc) 62%, #000); --acc-sh: color-mix(in srgb, var(--acc) 30%, #000);
   --ink: #f2fff5; --muted: #9cc2a8;

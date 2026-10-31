@@ -34,7 +34,7 @@
 @keyframes g-ga-prize { from { opacity: 0; transform: translateY(16px) scale(.94); } }
 
 /* ── The capsule machine ── */
-.g-cap-ov .g-panel { background: linear-gradient(180deg, rgba(38, 32, 122, .92), rgba(18, 13, 58, .98) 55%), radial-gradient(circle at 20% 0, rgba(255, 197, 61, .3), transparent 60%), #120d3a; }
+.g-cap-ov .g-panel { background: linear-gradient(180deg, rgba(38, 32, 122, .92), rgba(18, 13, 58, .98) 55%), radial-gradient(circle at 20% 0, rgba(123, 92, 232, .3), transparent 60%), #120d3a; }
 .g-cap-stage { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 16px; align-items: start; }
 .g-cap-machine { position: relative; width: 190px; height: 300px; margin: 0 auto; --rc: #fff; }
 .g-cap-dome { position: absolute; left: 15px; top: 0; width: 160px; height: 150px; border: 4px solid #fff; border-radius: 80px 80px 14px 14px; background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, .45), rgba(255, 255, 255, .06) 45%), rgba(150, 200, 255, .12); overflow: hidden; box-shadow: inset 0 -10px 20px rgba(0, 0, 0, .3); }
@@ -137,7 +137,7 @@
 .g-case-art img { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(3px 3px 0 var(--night)); }
 .g-case-art img + i { display: none; }
 [data-case="none"] { --case: #2a2a33; --case-2: #15151b; }
-[data-case="sakura"] { --case: #ffc4dc; --case-2: #ffe08a; }
+[data-case="sakura"] { --case: #ffc4dc; --case-2: #c4b4ff; }
 [data-case="featherman"] { --case: #e8322f; --case-2: #ffd36b; }
 [data-case="koro"] { --case: #ffffff; --case-2: #d9c9b8; }
 [data-case="moonlight"] { --case: #1b2a6b; --case-2: #c9d0dc; }
@@ -213,7 +213,7 @@
 .g-wd-sub { margin: 0 0 10px; }
 .g-wd-grid { display: grid; grid-template-columns: minmax(220px, 300px) minmax(0, 1fr); gap: 16px; align-items: start; }
 .g-wd-side { position: sticky; top: 0; display: grid; gap: 8px; }
-.g-wd-stage { position: relative; height: 300px; overflow: hidden; border: 2px solid var(--pink-2); background: var(--wall, linear-gradient(160deg, #26207a, #07051a)); background-size: cover; background-position: center; box-shadow: 6px 6px 0 rgba(255, 197, 61, .35); }
+.g-wd-stage { position: relative; height: 300px; overflow: hidden; border: 2px solid var(--pink-2); background: var(--wall, linear-gradient(160deg, #26207a, #07051a)); background-size: cover; background-position: center; box-shadow: 6px 6px 0 rgba(123, 92, 232, .35); }
 .g-wd-stage::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(10, 7, 38, .7)); }
 .g-wd-pv-solar { position: absolute; left: 50%; bottom: 4px; height: 92%; max-width: 95%; object-fit: contain; transform: translateX(-50%); filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, .45)); }
 .g-wd-pv-solar.pending { filter: brightness(0) drop-shadow(0 0 1px #fff) opacity(.55); }
@@ -246,7 +246,7 @@
 .g-wd-item small { color: var(--muted); font-size: 11px; }
 .g-wd-item .g-ga-stars { font-size: 10px; }
 .g-wd-item.on { border-color: var(--gold); box-shadow: 3px 3px 0 rgba(255, 211, 107, .4); }
-.g-wd-item.sel { border-color: var(--pink-2); background: rgba(255, 197, 61, .12); opacity: 1; }
+.g-wd-item.sel { border-color: var(--pink-2); background: rgba(123, 92, 232, .12); opacity: 1; }
 .g-wd-item.pending small { color: var(--gold); }
 .g-wd-item:is(:hover, :focus-visible) { border-color: #fff; outline: none; opacity: 1; }
 .g-wd-th { display: grid; place-items: center; width: 64px; height: 48px; overflow: hidden; }
@@ -361,7 +361,7 @@
 .g-goods li { display: grid; justify-items: center; gap: 2px; padding: 4px 0; }
 .g-goods li small { max-width: 100%; overflow: hidden; color: var(--muted); font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
 .g-goods li.own small { color: #fff; }
-.g-good { position: relative; display: inline-grid; place-items: center; width: 80px; height: 88px; --gc: #ffe08a; }
+.g-good { position: relative; display: inline-grid; place-items: center; width: 80px; height: 88px; --gc: #c4b4ff; }
 .g-good[data-r="SR"] { --gc: #c58bff; }
 .g-good-in { display: flex; flex-wrap: wrap; justify-content: center; align-content: center; gap: 2px; }
 .g-good .g-key-face { position: relative; left: auto; top: auto; width: 46px; height: 46px; border-width: 3px; border-color: var(--gc); }

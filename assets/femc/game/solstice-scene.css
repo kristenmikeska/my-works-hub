@@ -2,7 +2,7 @@
    Dawn by day (indigo to gold), green and black in the Dark Hour. Loaded after game.css, so these win.
    Portraits stand where Kat placed them in the placement review: sized by screen height (scale.js × her size), the speaker's
    face centre 17% in from the left, Solar's 17% in from the right, both standing on the bottom edge (portraits/place.js). */
-.gs { --deep: #120d3a; --indigo: #26207a; --violet: #5a3a9e; --gold: #ffc53d; --gold-2: #ffe08a; --paper: #fffaf0;
+.gs { --deep: #120d3a; --indigo: #26207a; --violet: #5a3a9e; --gold: #9b7bff; --gold-2: #c4b4ff; --paper: #fffaf0;
   --shell: linear-gradient(100deg, rgba(18, 13, 58, .94), rgba(38, 32, 122, .9) 70%, rgba(90, 58, 158, .86));
   background: radial-gradient(ellipse at 70% 30%, #2a2270, #0b0826 70%); }
 .gs.gs-dark { --deep: #020805; --indigo: #062114; --violet: #0e3b1f; --gold-2: #b6ffc8; --paper: #eafff0;
