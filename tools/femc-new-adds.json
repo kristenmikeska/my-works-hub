@@ -19273,6 +19273,118 @@
         "assets/femc/game/art/skins/sk-jungwon-sheer/portraits/jungwon/serious.webp": "d3f68fecfdbb2ff348bbc1ca374a19ceac024c1047c969a7dc1690d90b8d08d8",
         "assets/femc/game/art/skins/sk-jungwon-sheer/portraits/jungwon/surprised.webp": "9dac4e75b6aa3be29b809a72ade44c7f0f75cc89dcbd72b58a0bcef91fc6001f"
       }
+    },
+    {
+      "batch": 95,
+      "source": "skin-wpn-velvet.jpeg",
+      "sourceNow": "Added to Game/skin-wpn-velvet.jpeg",
+      "size": [
+        1536,
+        2752
+      ],
+      "sha256": "f6c8ef05e5d64fae4dd3f4ad06ce8002f694ff9e2ff6c045c4a07f0a212ad5cc",
+      "status": "integrated",
+      "character": "solar",
+      "destination": "assets/femc/game/art/skins/wpn-velvet/weapon.webp",
+      "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-velvet (white keyed by femc-theurgy key: un-mix from white + Vision lift, despeckle, defringe; opaque JPEG read as is); source unchanged",
+      "placement": "Wardrobe weapon skin wpn-velvet: listed in game/art/ready.js weapons; menu.js Equipment weapon slot (weaponArt)",
+      "outputSha256": "028116c8522cced3c2985e786a9267fa2275c55d9ebb71a902781b2f069f5d43"
+    },
+    {
+      "batch": 95,
+      "source": "skin-wpn-idol.jpeg",
+      "sourceNow": "Added to Game/skin-wpn-idol.jpeg",
+      "size": [
+        1536,
+        2752
+      ],
+      "sha256": "054b38b8b00fdb3827f1e875abf65a5024b1e19c0a7cc71a0da8b1ab2f41dd69",
+      "status": "integrated",
+      "character": "solar",
+      "destination": "assets/femc/game/art/skins/wpn-idol/weapon.webp",
+      "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-idol (white keyed by femc-theurgy key: un-mix from white + Vision lift, despeckle, defringe; opaque JPEG read as is); source unchanged; then stray near-invisible specks (alpha under 90, at most 15 px) removed",
+      "placement": "Wardrobe weapon skin wpn-idol: listed in game/art/ready.js weapons; menu.js Equipment weapon slot (weaponArt)",
+      "outputSha256": "599c6dec0961e2e778fe19815f33e686f10bf2edb74215c6898438d6c7c9947d"
+    },
+    {
+      "batch": 95,
+      "source": "skin-wpn-hanbok.jpeg",
+      "sourceNow": "Added to Game/skin-wpn-hanbok.jpeg",
+      "size": [
+        1792,
+        2400
+      ],
+      "sha256": "3d1b2b91e88f0c86fb0de6ff6fd149243928b1f8eaba4d05b3e760107c086bc1",
+      "status": "integrated",
+      "character": "solar",
+      "destination": "assets/femc/game/art/skins/wpn-hanbok/weapon.webp",
+      "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-hanbok (white keyed by femc-theurgy key: un-mix from white + Vision lift, despeckle, defringe; opaque JPEG read as is); source unchanged",
+      "placement": "Wardrobe weapon skin wpn-hanbok: listed in game/art/ready.js weapons; menu.js Equipment weapon slot (weaponArt)",
+      "outputSha256": "e39552361d0f06709dde8352a893c9608c1acbb8ae2ced842532b8f3f3d4e86b"
+    },
+    {
+      "batch": 95,
+      "source": "skin-wpn-haechan-suit.jpeg",
+      "sourceNow": "Added to Game/skin-wpn-haechan-suit.jpeg",
+      "size": [
+        1376,
+        3066
+      ],
+      "sha256": "964487e7445159f3fd2ab521180deefd583d30ad372ab8a156667733478f6f16",
+      "status": "integrated",
+      "character": "haechan",
+      "destination": "assets/femc/game/art/skins/wpn-haechan-suit/weapon.webp",
+      "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-haechan-suit (white keyed by femc-theurgy key: un-mix from white + Vision lift, despeckle, defringe; opaque JPEG read as is); source unchanged; then stray near-invisible specks (alpha under 90, at most 15 px) removed",
+      "placement": "Wardrobe weapon skin wpn-haechan-suit: listed in game/art/ready.js weapons; menu.js Equipment weapon slot (weaponArt)",
+      "outputSha256": "1b3575e89444bd283dfb99bf3f37309e6249eb14139aa6c45dd5565593080597"
+    },
+    {
+      "batch": 95,
+      "source": "skin-wpn-haechan-stage.jpeg",
+      "sourceNow": "Added to Game/skin-wpn-haechan-stage.jpeg",
+      "size": [
+        1600,
+        2656
+      ],
+      "sha256": "c18ed4385c916c0457a1c186019fe38c4c4959b9a4d099f3506e8804562e0bfe",
+      "status": "integrated",
+      "character": "haechan",
+      "destination": "assets/femc/game/art/skins/wpn-haechan-stage/weapon.webp",
+      "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-haechan-stage (white keyed by femc-theurgy key: un-mix from white + Vision lift, despeckle, defringe; opaque JPEG read as is); source unchanged; then the soft grey drop shadow under the pommel (a separate component, alpha under 90) removed and the image re-trimmed",
+      "placement": "Wardrobe weapon skin wpn-haechan-stage: listed in game/art/ready.js weapons; menu.js Equipment weapon slot (weaponArt)",
+      "outputSha256": "95673dc6d1e072c3a0b0217a8919ab7d90c75647c19b73ad587bd88672846c75"
+    },
+    {
+      "batch": 95,
+      "source": "skin-wpn-jungwon-heir.jpeg",
+      "sourceNow": "Added to Game/skin-wpn-jungwon-heir.jpeg",
+      "size": [
+        1536,
+        2752
+      ],
+      "sha256": "43e38d58fcaaa8cd435253de44fac15240694103244ff4a59ba535cd31d23f7f",
+      "status": "integrated",
+      "character": "jungwon",
+      "destination": "assets/femc/game/art/skins/wpn-jungwon-heir/weapon.webp",
+      "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-jungwon-heir (white keyed by femc-theurgy key: un-mix from white + Vision lift, despeckle, defringe; opaque JPEG read as is); source unchanged",
+      "placement": "Wardrobe weapon skin wpn-jungwon-heir: listed in game/art/ready.js weapons; menu.js Equipment weapon slot (weaponArt)",
+      "outputSha256": "2009398c0dd480d73425705919d0cfa7049c674b82fe99010f83fc600c65e7b8"
+    },
+    {
+      "batch": 95,
+      "source": "skin-wpn-jungwon-stage.jpeg",
+      "sourceNow": "Added to Game/skin-wpn-jungwon-stage.jpeg",
+      "size": [
+        1536,
+        2752
+      ],
+      "sha256": "e397b70066928ca6236cbc833da8fe39d8c613e7aa86ae510d9346c8ece52c37",
+      "status": "integrated",
+      "character": "jungwon",
+      "destination": "assets/femc/game/art/skins/wpn-jungwon-stage/weapon.webp",
+      "conversion": "python3 tools/femc-wardrobe.py weapon <image> wpn-jungwon-stage (white keyed by femc-theurgy key: un-mix from white + Vision lift, despeckle, defringe; opaque JPEG read as is); source unchanged; then stray near-invisible specks (alpha under 90, at most 15 px) removed",
+      "placement": "Wardrobe weapon skin wpn-jungwon-stage: listed in game/art/ready.js weapons; menu.js Equipment weapon slot (weaponArt)",
+      "outputSha256": "f9d278b6d46b36fe5a72b231d78f4c7622f00721a87caaa90d35decd3dfd05f1"
     }
   ],
   "batch1Validation": {
@@ -20662,5 +20774,18 @@
     "testEdits": "tests/femc_cosmetics.py: NEW_SKINS adds sk-jungwon-sheer",
     "notTested": "no browser tests (lead’s instruction): tests/femc_cosmetics.py (banner, newpending), the new outfits in a real battle, an outfit portrait in a scene at 1000x486 and 375x812",
     "html": "femc-game.html ready.js v15, cosmetics.js v17"
+  },
+  "batch95Validation": {
+    "date": "2026-10-31",
+    "scope": "seven weapon skins (FEMC-ART-WIRING section 7 recipes): wpn-velvet, wpn-idol, wpn-hanbok, wpn-haechan-suit, wpn-haechan-stage, wpn-jungwon-heir, wpn-jungwon-stage",
+    "sourcesInspected": "every result viewed on a dark and a light background beside wpn-runners",
+    "sourcesIntegrated": 7,
+    "sourcesUnchanged": true,
+    "sourcesMoved": "New Adds -> Added to Game (sha256 checked); On Hold untouched",
+    "tests": [
+      "tests/femc_cosmetics.py --only newpending,banner,party,rotation"
+    ],
+    "testEdits": "tests/femc_cosmetics.py: NEW_WPNS adds the seven ids; Golden Sunrise, Haechan Spotlight and Solar Spotlight featured sets add their new weapons; the Haechan Spotlight / Winter Lights overlap check allows Black Tie Knife (planned for both)",
+    "html": "femc-game.html ready.js v16, cosmetics.js v24"
   }
 }

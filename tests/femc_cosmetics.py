@@ -47,7 +47,8 @@ NEW_SKINS = ['sk-minji-crew', 'sk-jihoon-pilates', 'sk-aigis-uniform', 'sk-alpha
              'sk-y2k', 'sk-oops', 'sk-snake', 'sk-sugarrush', 'sk-prowl', 'sk-strawberry', 'sk-summersession', 'sk-limelight',
              'sk-haechan-headphones', 'sk-haechan-arrivals', 'sk-haechan-windowseat', 'sk-haechan-bad', 'sk-haechan-garage', 'sk-haechan-limelight',
              'sk-haechan-unravelled', 'sk-jungwon-sheer']
-NEW_WPNS = ['wpn-runners', 'wpn-strangers', 'wpn-hoax', 'wpn-akihiko-champ', 'wpn-jungwon-council']
+NEW_WPNS = ['wpn-runners', 'wpn-strangers', 'wpn-hoax', 'wpn-akihiko-champ', 'wpn-jungwon-council',
+            'wpn-velvet', 'wpn-idol', 'wpn-hanbok', 'wpn-haechan-suit', 'wpn-haechan-stage', 'wpn-jungwon-heir', 'wpn-jungwon-stage']
 KEPT = {}
 
 
@@ -286,7 +287,7 @@ try:
           pending:C.ITEMS.filter(x=>!C.ready(x)).map(x=>x.id),rewards:C.ITEMS.filter(x=>x.pool===false).map(x=>x.id)};})()""")
         ok(not set(r['pending']) & set(r['pool']) and not set(r['rewards']) & set(r['pool']) and len(r['pool']) >= 20, f'pool: {r}')
         # Every look in it has art since batch 57.
-        ok(r['banner'] == 'sunrise' and set(r['feat']) == {'ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-jungwon-council', 'wpn-jungwon-council', 'sk-hanbok'}, f'featured: {r}')
+        ok(r['banner'] == 'sunrise' and set(r['feat']) == {'ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-jungwon-council', 'wpn-jungwon-council', 'sk-hanbok', 'wpn-hanbok'}, f'featured: {r}')
         # Cost and pity: always-Rare rolls → Super Rare on every 10th, Ultra on the 40th.
         r = p.eval(QUIET + r"""(()=>{const C=FemcCosmetics,GA=FemcGacha;GA.gs().plumes=200;C.cs().pity={sr:0,ur:0};C.rng=()=>0.99;const out=[];
           try{for(let i=0;i<40;i++)out.push(C.pull().r);}finally{""" + LOUD + r"""}return {out,plumes:GA.gs().plumes,own:C.cs().own.length};})()""")
@@ -310,10 +311,11 @@ try:
            and r['feb'] == ['sunrise', 'hoax', 'valentine'], f'2–3 banners November–February, main first: {r}')
         ok(r['mar'] == ['solar', 'akihiko'], f'The Searchers hidden while Minji is unmet (empty featured list): {r}')
         ok(set(r['feat']['haechan']) == {'sk-haechan-runners', 'wpn-runners', 'wpn-strangers', 'evk-midnight', 'wp-rooftop', 'sk-haechan-sweater',
-                                           'sk-haechan-headphones', 'sk-haechan-arrivals', 'sk-haechan-garage', 'sk-haechan-limelight'}
-           and set(r['feat']['solar']) == {'sk-idol', 'sk-alphaphi', 'sk-hanbok', 'sk-velvet', 'sk-y2k', 'sk-oops', 'sk-snake', 'sk-sugarrush', 'sk-limelight'}
+                                           'sk-haechan-headphones', 'sk-haechan-arrivals', 'sk-haechan-garage', 'sk-haechan-limelight', 'wpn-haechan-suit', 'wpn-haechan-stage'}
+           and set(r['feat']['solar']) == {'sk-idol', 'sk-alphaphi', 'sk-hanbok', 'sk-velvet', 'sk-y2k', 'sk-oops', 'sk-snake', 'sk-sugarrush', 'sk-limelight',
+                                         'wpn-velvet', 'wpn-idol', 'wpn-hanbok', 'wpn-haechan-stage', 'wpn-jungwon-stage'}
            and set(r['feat']['sees']) >= {'sk-yukari-pink', 'sk-mitsuru-rider', 'tt-darkhour'} and 'sk-date' in r['feat']['valentine'] and 'sk-emo' in r['feat']['valentine'] and 'sk-emo' in r['feat']['masquerade']
-           and not set(r['feat']['haechan']) & set(r['feat']['lights']) - {'wpn-strangers', 'sk-haechan-arrivals'} and r['end'] == 0, f'featured per banner, ends January: {r}')
+           and not set(r['feat']['haechan']) & set(r['feat']['lights']) - {'wpn-strangers', 'sk-haechan-arrivals', 'wpn-haechan-suit'} and r['end'] == 0, f'featured per banner, ends January: {r}')
         ok(p.eval("FemcGame.S.met.push('minji'),FemcCosmetics.banners(FemcGame.dayOf('3/10')).map(b=>b.id).join()") == 'solar,akihiko,searchers', 'The Searchers once Minji is met')
         # Switching: the pick is saved, rates up only that banner's looks, ignores banners not running, falls back when one ends.
         r = p.eval(QUIET + SEED + r"""(()=>{const G=FemcGame,C=FemcCosmetics,GA=FemcGacha;G.S.day=G.dayOf('12/10');GA.gs().plumes=1e5;C.cs().guar=false;

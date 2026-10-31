@@ -106,6 +106,10 @@ window.FemcCosmetics = (() => {
     c('wpn-runners', 'weapon', 'Runners Naginata', 'SR', 'Orange and navy grip tape, a tiny gaming-headset charm, a rooftop at golden hour etched on the blade. From Runners.', { who: 'solar', art: true }),
     c('wpn-strangers', 'weapon', 'Harbour Night Naginata', 'SR', 'Gunmetal and wet black, a harbour-light amber edge and a red thread knotted under the blade. From strangers.', { who: 'solar', art: true }),
     c('wpn-hoax', 'weapon', 'Council Naginata', 'SR', 'Navy and white, a student-council armband tied at the collar and a laminated hall pass. From HOAX.', { who: 'solar', art: true }),
+    // Matches for her new outfits (art batch 95).
+    c('wpn-velvet', 'weapon', 'Velvet Naginata', 'UR', 'Blue velvet wrap, gold fittings and a little silver key on a chain. Goes with Velvet Attendant.', { who: 'solar', art: true }), // series: Persona
+    c('wpn-idol', 'weapon', 'Lightstick Naginata', 'UR', 'A white haft that glows like a lightstick and a star at the collar. Goes with Stage Idol.', { who: 'solar', art: true }), // series: Solstice
+    c('wpn-hanbok', 'weapon', 'Norigae Naginata', 'SR', 'Black lacquer inlaid with mother-of-pearl moons, a jade norigae tassel at the collar. Goes with Moonlit Hanbok.', { who: 'solar', art: true }), // series: strangers
     // The party's outfits (2026-10-27, Kat's picks; art pending: section 7). Worn on their battle pose sheets.
     c('sk-akihiko-champ', 'skin', 'Champion’s Robe', 'UR', 'A red satin boxing robe with gold trim, SANADA across the back and a title belt over one shoulder.', { who: 'akihiko', art: true }),
     c('sk-akihiko-hoodie', 'skin', 'Off-Day Hoodie', 'SR', 'A grey zip hoodie, track pants and running shoes. His day off still has roadwork in it.', { who: 'akihiko', art: true }),
@@ -125,6 +129,10 @@ window.FemcCosmetics = (() => {
     // The party's weapon skins (2026-10-27; art pending).
     c('wpn-akihiko-champ', 'weapon', 'Champion Gloves', 'UR', 'Gold leather, red trim, laced cuffs. Title-fight gloves.', { who: 'akihiko', art: true }),
     c('wpn-jungwon-council', 'weapon', 'Council Rapier', 'SR', 'A gold swept guard with the council crest, a navy-and-white ribbon on the hilt.', { who: 'jungwon', art: true }),
+    c('wpn-haechan-suit', 'weapon', 'Black Tie Knife', 'SR', 'Matte black, a gunmetal guard and a silver cufflink set in the pommel. Goes with Black Suit.', { who: 'haechan', art: true }), // series: strangers
+    c('wpn-haechan-stage', 'weapon', 'Encore Knife', 'UR', 'Mirror chrome, a red grip and a gold sun on the pommel. Goes with Encore Stage.', { who: 'haechan', art: true }), // series: Solstice
+    c('wpn-jungwon-heir', 'weapon', 'Signet Rapier', 'UR', 'Black steel and gold, a family signet on the guard. Goes with Heir’s Suit.', { who: 'jungwon', art: true }), // series: strangers
+    c('wpn-jungwon-stage', 'weapon', 'Spotlight Rapier', 'SR', 'White and silver, a chain on the guard and a crystal pommel. Goes with Center Stage.', { who: 'jungwon', art: true }), // series: Solstice
     // Code-only: Evokers.
     c('evk-rose', 'evoker', 'Rose Gold Evoker', 'R', 'Warm rose-gold plating.', { filter: 'sepia(.8) saturate(2.4) hue-rotate(-28deg) brightness(1.05)' }),
     c('evk-midnight', 'evoker', 'Midnight Evoker', 'R', 'Gunmetal blue, nearly black.', { filter: 'brightness(.6) sepia(.6) hue-rotate(185deg) saturate(3)' }),
@@ -171,17 +179,17 @@ window.FemcCosmetics = (() => {
     // Art-pending items wait in their banner and join its featured list by themselves once their art is in (featured()).
     { id: 'bloom', name: 'Spring Bloom', months: [4, 5], color: '#ff8cc0', featured: ['sk-date', 'tt-sakura', 'ui-sakura', 'sk-jihoon-pilates', 'sk-junpei-baseball', 'sk-yukari-kyudo', 'sk-aigis-uniform', 'wpn-hoax', 'sk-minji-su', 'sk-vp', 'sk-sugarrush', 'sk-strawberry'] },
     { id: 'summer', name: 'Summer Nights', months: [6, 7, 8], color: '#4fd8ff', featured: ['sk-yukata', 'wp-fireworks', 'ui-mint', 'sk-haechan-runners', 'sk-minji-crew', 'sk-akihiko-hoodie', 'wpn-runners', 'sk-esports', 'sk-roadwork', 'sk-y2k', 'sk-snake', 'sk-strawberry', 'sk-summersession', 'sk-haechan-windowseat'] },
-    { id: 'masquerade', name: 'Masquerade', months: [9, 10], color: '#c58bff', featured: ['sk-phantom', 'wpn-phantom', 'sk-halloween', 'bui-velvet', 'evk-jade', 'wpn-kiriko', 'wpn-emo', 'sk-yukari-pink', 'sk-jihoon-emo', 'sk-velvet', 'sk-oops', 'sk-prowl', 'sk-haechan-bad', 'sk-haechan-unravelled', 'sk-emo', 'sk-jungwon-sheer'] },
-    { id: 'lights', name: 'Winter Lights', months: [11, 12, 1], color: '#bfe3ff', featured: ['sk-wintercoat', 'wp-xmas', 'tt-snow', 'evk-rose', 'sk-shinjiro-apron', 'sk-mitsuru-rider', 'wpn-strangers', 'sk-harbourcoat', 'sk-haechan-arrivals'] },
-    { id: 'sunrise', name: 'Golden Sunrise', months: [2], color: '#ffd36b', featured: ['ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-jungwon-council', 'wpn-jungwon-council', 'sk-hanbok'] },
+    { id: 'masquerade', name: 'Masquerade', months: [9, 10], color: '#c58bff', featured: ['sk-phantom', 'wpn-phantom', 'sk-halloween', 'bui-velvet', 'evk-jade', 'wpn-kiriko', 'wpn-emo', 'sk-yukari-pink', 'sk-jihoon-emo', 'sk-velvet', 'sk-oops', 'sk-prowl', 'sk-haechan-bad', 'sk-haechan-unravelled', 'sk-emo', 'sk-jungwon-sheer', 'wpn-velvet'] },
+    { id: 'lights', name: 'Winter Lights', months: [11, 12, 1], color: '#bfe3ff', featured: ['sk-wintercoat', 'wp-xmas', 'tt-snow', 'evk-rose', 'sk-shinjiro-apron', 'sk-mitsuru-rider', 'wpn-strangers', 'sk-harbourcoat', 'sk-haechan-arrivals', 'wpn-haechan-suit', 'wpn-jungwon-heir'] },
+    { id: 'sunrise', name: 'Golden Sunrise', months: [2], color: '#ffd36b', featured: ['ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-jungwon-council', 'wpn-jungwon-council', 'sk-hanbok', 'wpn-hanbok'] },
     // March's main banner (Kat's ruling, 2026-10-29: it took Golden Sunrise's March slot). Its other planned looks (FEMC-ART-WIRING
     // section 7: Encore Stage, Center Stage and the weapon skins) join as they're added.
-    { id: 'solar', name: 'Solar Spotlight', kind: 'Spotlight', months: [3], color: '#ffb84d', featured: ['sk-idol', 'sk-alphaphi', 'sk-hanbok', 'sk-velvet', 'sk-y2k', 'sk-oops', 'sk-snake', 'sk-sugarrush', 'sk-limelight'] },
+    { id: 'solar', name: 'Solar Spotlight', kind: 'Spotlight', months: [3], color: '#ffb84d', featured: ['sk-idol', 'sk-alphaphi', 'sk-hanbok', 'sk-velvet', 'sk-y2k', 'sk-oops', 'sk-snake', 'sk-sugarrush', 'sk-limelight', 'wpn-velvet', 'wpn-idol', 'wpn-hanbok', 'wpn-haechan-stage', 'wpn-jungwon-stage'] },
     // Side banners, November–March (2026-10-27): they run beside the month's main banner above (always first, the default).
     { id: 'runners', name: 'Runners World', kind: 'World', months: [11], color: '#ff9a5c', featured: ['sk-haechan-runners', 'wpn-runners', 'sk-minji-su', 'wp-rooftop', 'sk-alphaphi', 'sk-esports', 'sk-summersession', 'sk-haechan-headphones', 'sk-haechan-windowseat', 'sk-haechan-garage'] },
     { id: 'sees', name: 'S.E.E.S. Spotlight', kind: 'Spotlight', months: [11, 12], color: '#6ab0ff', featured: ['sk-yukari-kyudo', 'sk-yukari-pink', 'sk-junpei-baseball', 'sk-mitsuru-rider', 'sk-shinjiro-apron', 'sk-aigis-uniform', 'sk-akihiko-hoodie', 'tt-darkhour', 'wp-dorm'] },
-    { id: 'haechan', name: 'Haechan Spotlight', kind: 'Spotlight', months: [12, 1], color: '#ff6f7d', featured: ['sk-haechan-runners', 'wpn-runners', 'wpn-strangers', 'evk-midnight', 'wp-rooftop', 'sk-haechan-sweater', 'sk-haechan-headphones', 'sk-haechan-arrivals', 'sk-haechan-garage', 'sk-haechan-limelight'] },
-    { id: 'hoax', name: 'HOAX World', kind: 'World', months: [1, 2], color: '#9fe06a', featured: ['sk-jungwon-council', 'wpn-jungwon-council', 'wpn-hoax', 'sk-jihoon-pilates', 'sk-jihoon-emo', 'ui-velvet', 'sk-vp'] },
+    { id: 'haechan', name: 'Haechan Spotlight', kind: 'Spotlight', months: [12, 1], color: '#ff6f7d', featured: ['sk-haechan-runners', 'wpn-runners', 'wpn-strangers', 'evk-midnight', 'wp-rooftop', 'sk-haechan-sweater', 'sk-haechan-headphones', 'sk-haechan-arrivals', 'sk-haechan-garage', 'sk-haechan-limelight', 'wpn-haechan-suit', 'wpn-haechan-stage'] },
+    { id: 'hoax', name: 'HOAX World', kind: 'World', months: [1, 2], color: '#9fe06a', featured: ['sk-jungwon-council', 'wpn-jungwon-council', 'wpn-hoax', 'sk-jihoon-pilates', 'sk-jihoon-emo', 'ui-velvet', 'sk-vp', 'wpn-jungwon-heir'] },
     { id: 'valentine', name: "Valentine's", kind: 'Seasonal', months: [2], color: '#ff7fb0', featured: ['sk-date', 'evk-rose', 'wpn-sakura', 'ui-sakura', 'wp-mall', 'sk-haechan-sweater', 'sk-prowl', 'sk-limelight', 'sk-haechan-bad', 'sk-haechan-limelight', 'sk-haechan-unravelled', 'sk-emo', 'sk-jungwon-sheer'] },
     { id: 'akihiko', name: 'Akihiko Spotlight', kind: 'Spotlight', months: [3], color: '#c9d3e6', featured: ['sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-akihiko-hoodie', 'bui-moonlight', 'sk-roadwork'] },
     { id: 'searchers', name: 'The Searchers', kind: 'Spotlight', months: [3], color: '#8fd0ff', featured: ['sk-minji-crew', 'sk-minji-su'] }
