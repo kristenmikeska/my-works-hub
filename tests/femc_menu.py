@@ -131,6 +131,30 @@ def main():
         leave(p)
         print('Solo party selection reaches battle unchanged.',flush=True)
 
+        # The HUD's Menu button lands on the menu screen (the list); arrows move the slash, Enter opens the panel,
+        # Esc goes back to the list on the same entry, Esc again closes. A tab asked for still opens its panel directly.
+        def key(k, code):
+            ev={'type':'keyDown','key':k,'code':k,'windowsVirtualKeyCode':code}
+            if k=='Enter': ev['text']='\r'
+            p.ws.call('Input.dispatchKeyEvent',ev)
+            p.ws.call('Input.dispatchKeyEvent',{'type':'keyUp','key':k,'code':k,'windowsVirtualKeyCode':code})
+        click(p,'[data-ui=menu]')
+        p.wait("!!document.querySelector('.g-fm-ov.is-home') && document.activeElement?.dataset?.home==='party'")
+        assert p.eval("document.querySelectorAll('.g-fm-ov [role=menu] [role=menuitem]').length")==16
+        assert p.eval("document.querySelectorAll('.g-fmh-pm').length")==1+len(p.eval('FemcGame.S.battleSave.party'))
+        key('ArrowDown',40); key('ArrowDown',40)
+        assert p.eval("document.activeElement.dataset.home")=='skills' and p.eval("document.querySelector('.g-fmh-list li.sel [data-home]').dataset.home")=='skills'
+        key('ArrowUp',38); key('Enter',13)
+        p.wait("!document.querySelector('.g-fm-ov.is-home') && document.querySelector('.g-fm-ov [data-tab].on')?.dataset.tab==='personas'")
+        key(']',221); p.wait("document.querySelector('.g-fm-ov [data-tab].on')?.dataset.tab==='skills'")
+        key('Escape',27)
+        p.wait("!!document.querySelector('.g-fm-ov.is-home:not(.out)') && document.activeElement?.dataset?.home==='skills'")
+        click(p,'.g-fmh [data-home=equip]'); p.wait("!!document.querySelector('.g-fm-ov:not(.is-home) [data-eq]')")
+        click(p,'.g-fm-ov [data-fm-back]'); p.wait("!!document.querySelector('.g-fm-ov.is-home')")
+        key('Escape',27); p.wait("!document.querySelector('.g-fm-ov')")
+        open_menu(p,'party'); assert not p.eval("!!document.querySelector('.g-fm-ov.is-home')"); close_menu(p)
+        print('The menu screen: the list, keys, Back / Esc to the list, Esc to close; a tab asked for opens directly.',flush=True)
+
         # Visual/layout check without exposing any story content.
         shots=pathlib.Path('/private/tmp/femc-menu-check'); shots.mkdir(exist_ok=True)
         for width,height,name in [(1280,850,'desktop'),(390,844,'mobile')]:

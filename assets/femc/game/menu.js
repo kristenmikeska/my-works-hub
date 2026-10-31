@@ -1054,6 +1054,104 @@ window.FemcMenu = (() => {
     return x;
   }
 
+  /* ── HOME: the menu screen (Kat's approved mockup, mockups/solstice-ui screens 1 and 2, in the game's pink and black) ──
+     Opening the menu in the field with no tab lands here: Solar standing on the left, the big slanted list of the tabs with a
+     pink slash on the chosen one, the date box (top right), the wallet (top left), the party stack (right) and a line about the
+     chosen entry (bottom right). Choosing an entry opens its panel as before; Back / Esc there comes back here; Esc here closes.
+     Over a fight (opts.inBattle) or with a tab asked for (open(tab)) the menu opens straight on that panel, as it always did.
+     The late slot wears the Dark Hour look (darker, same colours). Styles: solstice-menu.css. */
+  const HOME_TIP = { party: 'Check on everyone’s condition', personas: 'The Personas you carry', skills: 'Grow Haenim’s sun', cards: 'Your Revelation cards',
+    equip: 'Weapons, armor and accessories', items: 'Use or look over your items', collection: 'Everything you’ve gathered', wardrobe: 'Change your look',
+    status: 'Social stats at a glance', links: 'Look in on your bonds', bonds: 'What your bonds have taught you', journal: 'Requests and memory fragments',
+    album: 'The memories you’ve kept', theater: 'Watch a scene again', calendar: 'The days ahead', compendium: 'Every Persona registered · opens in a new tab' };
+  const DAY_WORD = { school: 'Weekday', prologue: 'Weekday', off: 'Day Off', exam: 'Exams', trip: 'Trip' };
+  // Solar's full-body pose, measured once: width/height, head top, head-to-chin, head centre x (fractions of the image).
+  const HOME_FIG = { src: 'assets/femc/profile/solar-poses/arms-crossed.webp', ar: .306, ht: .01, hf: .14, hx: .47 };
+  let view = 'panel', homeOk = false, homeSel = 0;
+  const stagger = i => Math.round(Math.sin(i * 1.15) * 22 + i * 4);
+  function sunMoon(phase) {
+    const k = Math.cos(phase * 2 * Math.PI), waxing = phase < .5, r = 13, cx = 44, cy = 40, rx = Math.abs(k) * r, so = waxing ? 1 : 0;
+    const lit = `M${cx},${cy - r} A${r},${r} 0 0 ${so} ${cx},${cy + r} A${rx},${r} 0 0 ${(k > 0) === waxing ? 1 - so : so} ${cx},${cy - r}Z`;
+    let rays = ''; for (let n = 0; n < 12; n++) rays += `<polygon points="-1.6,-14 1.6,-14 0,-${n % 2 ? 18 : 21}" transform="rotate(${n * 30})"/>`;
+    return `<svg class="g-fmh-sm" viewBox="0 0 68 68" aria-hidden="true"><g transform="translate(24 26)"><g class="g-fmh-rays-sun">${rays}</g><circle r="11"/></g>
+      <circle cx="${cx}" cy="${cy}" r="${r + 2.5}" fill="var(--deep)"/><circle cx="${cx}" cy="${cy}" r="${r}" fill="var(--violet)"/><path d="${lit}" fill="#fff4f9"/>
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="var(--pink-2)" stroke-width="1.2"/></svg>`;
+  }
+  function homeParty() {
+    const ids = ['solar', ...(bsave().party || [])].filter(id => roster().some(m => m.id === id));
+    return `<h3>Party <span>·</span> ${ids.length}</h3>` + ids.map(id => {
+      const m = member(id), u = unit(id); if (!m) return '';
+      const h = (opts.hp || {})[id] || {}, mh = h.maxHp || u?.maxHp || 1, ms = h.maxSp || u?.maxSp || 1, hp = h.hp ?? mh, sp = h.sp ?? ms;
+      const g = (k, v, max) => `<span class="g-fmh-gauge ${k}"><small>${k.toUpperCase()}</small><i style="--v:${Math.round(v / max * 100)}%"></i><em>${v}</em></span>`;
+      return `<div class="g-fmh-pm${id === 'solar' ? ' lead' : ''}"><i class="g-fmh-face">${face(id, m.faces?.idle || 'serious')}</i><span class="g-fmh-pmi">
+        <b>${esc(m.name)}<small>Lv ${lvOf(id)}</small></b>${u ? g('hp', hp, mh) + g('sp', sp, ms) : ''}</span></div>`;
+    }).join('');
+  }
+  function homeHtml(enter) {
+    const s = S(), i0 = G.dayInfo(), i = i0.shown ? { ...i0, ...i0.shown } : i0, dark = s.slot === 'late', when = G.slotName(s.slot, i0);
+    const list = tabList(), silhouette = !(s.flags || {}).armband;
+    const items = list.map(([k, n], x) => {
+      const inner = `<i class="g-fmh-slash" aria-hidden="true"></i><i class="g-fmh-bar" aria-hidden="true"></i><span>${esc(n)}</span>`;
+      const a = `class="g-fmh-it" role="menuitem" data-home="${k}" tabindex="${x === homeSel ? 0 : -1}" aria-describedby="g-fmh-g1"`;
+      return `<li role="none" style="--i:${x};--x:${stagger(x)}px"${x === homeSel ? ' class="sel"' : ''}>${k === 'compendium' ? `<a ${a} href="${G.base}compendium.html" target="_blank" rel="noopener">${inner}</a>` : `<button type="button" ${a}>${inner}</button>`}</li>`;
+    }).join('');
+    const f = HOME_FIG;
+    return `<div class="g-fmh${dark ? ' dark' : ''}${enter ? ' enter' : ''}">
+      <div class="g-fmh-bg" aria-hidden="true"></div><div class="g-fmh-rays" aria-hidden="true"></div>
+      <div class="g-fmh-ghost side" aria-hidden="true">${esc(dark ? 'Dark Hour' : when)}</div><div class="g-fmh-ghost back" aria-hidden="true">${dark ? '00:00' : 'Solstice'}</div>
+      <div class="g-fmh-art" aria-hidden="true"><div class="g-fmh-fig"><img class="${silhouette ? 'sil' : ''}" src="${G.base}${f.src}" alt="" style="--ar:${f.ar};--ht:${f.ht};--hf:${f.hf};--hx:${f.hx}"></div></div>
+      <div class="g-fmh-wallet"><b>${yen(opts.yen ?? s.yen)}</b><small>current wallet</small></div>
+      <h2 class="g-fmh-h" id="g-fmh-h">Menu</h2>
+      <ul class="g-fmh-list" role="menu" aria-labelledby="g-fmh-h">${items}</ul>
+      <div class="g-fmh-date"><div class="dg" aria-hidden="true">${esc(dark ? 'Dark Hour' : DAY_WORD[i.type] || 'Today')}</div>
+        <div class="row"><div class="d">${esc(i.md)}<span class="wd">${esc(i.day)}</span></div>${sunMoon(i.moon?.phase ?? .5)}</div><div class="tod">${esc(when)}${i.label ? ` · ${esc(i.label)}` : ''}</div></div>
+      <div class="g-fmh-party" role="group" aria-label="Party">${homeParty()}</div>
+      <div class="g-fmh-guide"><p class="g1" id="g-fmh-g1">${esc(HOME_TIP[list[homeSel]?.[0]] || '')}</p><span class="g2">Command</span>
+        <div class="g-fmh-keys"><span><kbd>↑↓</kbd>Choose</span><button type="button" data-home-go><kbd>↵</kbd>Open</button><button type="button" data-close><kbd>Esc</kbd>Close</button></div></div>
+    </div>`;
+  }
+  const homeItems = () => [...o.el.querySelectorAll('[data-home]')];
+  function homeSelect(n, focus) {
+    const its = homeItems(); if (!its.length) return;
+    homeSel = (n + its.length) % its.length;
+    its.forEach((b, x) => { b.parentElement.classList.toggle('sel', x === homeSel); b.tabIndex = x === homeSel ? 0 : -1; });
+    const g1 = o.el.querySelector('#g-fmh-g1'); if (g1) g1.textContent = HOME_TIP[its[homeSel].dataset.home] || '';
+    if (focus) its[homeSel].focus({ preventScroll: true });
+  }
+  function paintHome(enter) {
+    const old = o.el.querySelector('.g-fmh'), wrap = document.createElement('div');
+    wrap.innerHTML = homeHtml(enter);
+    const h = wrap.firstElementChild;
+    old ? old.replaceWith(h) : o.el.querySelector('.g-fm').prepend(h);
+    // The room behind, in the wash: whatever the field is showing now.
+    const bg = document.querySelector('.g-stage .g-bg'), img = bg && getComputedStyle(bg).backgroundImage;
+    if (img && img !== 'none') h.querySelector('.g-fmh-bg').style.backgroundImage = img;
+    h.querySelectorAll('[data-home]').forEach((b, x) => {
+      b.addEventListener('pointerover', () => { if (x !== homeSel) { homeSelect(x, true); G.sfx('femc-hover'); } });
+      b.addEventListener('focus', () => { if (x !== homeSel) homeSelect(x); });
+      if (b.tagName === 'BUTTON') b.addEventListener('click', () => choose(b.dataset.home));
+    });
+    h.querySelector('[data-home-go]').addEventListener('click', () => homeItems()[homeSel]?.click());
+  }
+  function choose(k) {
+    tab = k; sel.slot = null; sel.use = null; sel.velvet = null;
+    view = 'panel'; o.el.classList.remove('is-home'); G.sfx('femc-click'); render();
+    setTimeout(() => o?.el.querySelector(`[data-tab="${tab}"]`)?.focus({ preventScroll: true }), 30);
+  }
+  function goHome() {
+    if (!o || !homeOk) return;
+    const at = tabList().findIndex(([k]) => k === tab); if (at >= 0) homeSel = at;
+    view = 'home'; o.el.classList.add('is-home'); paintHome(false); G.sfx('femc-hover');
+    homeSelect(homeSel, true);
+  }
+  // Esc on a panel opened from the list goes back to it. Window capture runs before the overlay's own Esc (document capture);
+  // a menu or prompt opened over the panel is on top, so it closes first as before.
+  function escKey(e) {
+    if (e.key !== 'Escape' || !o || view !== 'panel' || !homeOk || e.defaultPrevented || o.el.classList.contains('out')) return;
+    if ([...document.querySelectorAll('.g-overlay:not(.out)')].pop() !== o.el) return;
+    e.preventDefault(); e.stopPropagation(); goHome();
+  }
+
   /* ── The panel ── */
   // The Album and the Theater stay out of the Dark Hour (a replay can't play over a fight).
   const tabList = () => TABS.filter(([k]) => !(opts.inBattle && EXTRA_TABS.includes(k)));
@@ -1096,16 +1194,30 @@ window.FemcMenu = (() => {
     if (startTab && TABS.some(([k]) => k === startTab)) tab = startTab;
     if (tab === 'compendium' || (opts.inBattle && EXTRA_TABS.includes(tab))) tab = 'party';
     const s = S(), i = G.dayInfo(), when = opts.inBattle ? 'The Dark Hour' : G.slotName(s.slot, i);
-    o = UI().overlay(`<div class="g-fm${opts.inBattle ? ' dark' : ''}"><div class="g-fm-head"><div><p class="g-kicker">${esc(i.md)} ${esc(i.day)} · ${esc(when)}</p><h2>Menu</h2></div><span class="g-yen">${yen(opts.yen ?? s.yen)}</span><button type="button" class="g-btn small" data-close>${opts.inBattle ? 'Back' : 'Close'}</button></div>
+    // The menu screen (HOME above) when the field opens the menu with no tab; a tab asked for, or a fight's menu, opens on its panel.
+    homeOk = !opts.inBattle && !startTab; view = homeOk ? 'home' : 'panel';
+    if (homeOk) { const at = tabList().findIndex(([k]) => k === tab); homeSel = at >= 0 ? at : 0; }
+    const shut = homeOk ? '<button type="button" class="g-btn small" data-fm-back>Back</button>' : `<button type="button" class="g-btn small" data-close>${opts.inBattle ? 'Back' : 'Close'}</button>`;
+    o = UI().overlay(`<div class="g-fm${opts.inBattle ? ' dark' : ''}"><div class="g-fm-head"><div><p class="g-kicker">${esc(i.md)} ${esc(i.day)} · ${esc(when)}</p><h2>Menu</h2></div><span class="g-yen">${yen(opts.yen ?? s.yen)}</span>${shut}</div>
       <nav class="g-tabs g-fm-tabs" role="tablist">${tabList().map(([k, n]) => (k === 'compendium' ? `<a role="tab" href="${G.base}compendium.html" target="_blank" rel="noopener">${tabIco(k)}${n} ↗</a>` : `<button type="button" role="tab" data-tab="${k}">${tabIco(k)}${n}</button>`)).join('')}</nav>
       <div class="g-fm-body" tabindex="-1"></div>
-      <p class="g-hint g-fm-hint">[ ] or ←→ on the tabs · Esc ${opts.inBattle ? 'back' : 'close'}</p></div>`, `g-fm-ov${opts.inBattle ? ' g-over-battle' : ''}`, () => { o = null; sel.slot = null; G.save(); const done = opts.onClose; opts = {}; done?.(); });
+      <p class="g-hint g-fm-hint">[ ] or ←→ on the tabs · Esc ${opts.inBattle || homeOk ? 'back' : 'close'}</p></div>`, `g-fm-ov${opts.inBattle ? ' g-over-battle' : ''}${homeOk ? ' is-home' : ''}`, () => { o = null; view = 'panel'; homeOk = false; removeEventListener('keydown', escKey, true); sel.slot = null; G.save(); const done = opts.onClose; opts = {}; done?.(); });
+    o.el.setAttribute('aria-label', 'Menu');
+    if (homeOk) { addEventListener('keydown', escKey, true); o.el.querySelector('[data-fm-back]').addEventListener('click', goHome); }
     sel.use = null; sel.velvet = null; sel.armed = null; sel.armedCard = null; sel.teach = null;
     try { syncLife(); } catch (e) {}
     // Someone waiting on a "forget which?" choice: the Skills tab opens on it.
     sel.forget = skMembers().find(m => kitOf(m.id).pending.length)?.id || null;
     o.el.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { tab = b.dataset.tab; sel.slot = null; sel.use = null; sel.velvet = null; G.sfx('femc-click'); render(); }));
     o.el.addEventListener('keydown', e => {
+      if (view === 'home') {
+        // The list: up / down (keyboard or a pad's D-pad) move the slash; Enter / A press the item itself (a button).
+        const k = e.key, n = homeItems().length;
+        if (k === 'ArrowDown' || k === 'ArrowUp') { e.preventDefault(); e.stopPropagation(); homeSelect(homeSel + (k === 'ArrowDown' ? 1 : -1), true); G.sfx('femc-hover'); }
+        else if (k === 'Home' || k === 'End') { e.preventDefault(); homeSelect(k === 'Home' ? 0 : n - 1, true); G.sfx('femc-hover'); }
+        else if (k === 'ArrowLeft' || k === 'ArrowRight' || k === '[' || k === ']') e.preventDefault();
+        return;
+      }
       const keys = tabList().filter(([k]) => k !== 'compendium').map(([k]) => k);
       const onTab = e.target.closest?.('[data-tab]');
       // Down from the tabs (keyboard or a pad's D-pad) steps into the Skills tab's tree, or its open prompt.
@@ -1120,8 +1232,8 @@ window.FemcMenu = (() => {
         o.el.querySelector(`[data-tab="${tab}"]`)?.focus();
       }
     });
-    render();
-    setTimeout(() => o?.el.querySelector(`[data-tab="${tab}"]`)?.focus({ preventScroll: true }), 40);
+    if (homeOk) { paintHome(true); setTimeout(() => { if (o && view === 'home') homeSelect(homeSel, true); }, 40); }
+    else { render(); setTimeout(() => o?.el.querySelector(`[data-tab="${tab}"]`)?.focus({ preventScroll: true }), 40); }
     G.sfx('femc-click');
     return true;
   }

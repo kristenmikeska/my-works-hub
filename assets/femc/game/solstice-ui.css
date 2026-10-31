@@ -62,7 +62,7 @@
 
 /* ── Panels: deep indigo gradients with a gold edge on the left and an indigo offset block ── */
 .g-panel { border: 1.5px solid rgba(255, 140, 192, .3); border-left: 5px solid var(--pink); border-radius: 2px 22px 2px 22px;
-  background: linear-gradient(160deg, rgba(20, 7, 15, .97), rgba(32, 26, 104, .96) 65%, rgba(70, 46, 130, .95)); box-shadow: 10px 10px 0 rgba(74, 24, 56, .6); }
+  background: linear-gradient(160deg, rgba(20, 7, 15, .97), rgba(42, 15, 34, .96) 65%, rgba(74, 24, 56, .95)); box-shadow: 10px 10px 0 rgba(74, 24, 56, .6); }
 .g-panel h2 { text-shadow: .06em .06em 0 var(--violet); }
 .g-fm-head h2 { text-shadow: .06em .06em 0 var(--violet); }
 /* A giant ghost word behind the field menu, slanted like the mockup's */
