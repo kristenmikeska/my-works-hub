@@ -74,7 +74,7 @@
 
 /* The list: big, slanted, staggered, a pink slash and a paper bar behind the chosen one */
 .g-fmh-list { position: absolute; z-index: 4; left: 41%; top: 50%; margin: 0; padding: 0; list-style: none; translate: 0 -50%; transform: rotate(-7deg); transform-origin: 0 50%;
-  --fs: clamp(26px, 5.1vh, 46px); }
+  --fs: clamp(28px, 5.7vh, 52px); }
 .g-fmh-list li { position: relative; margin-left: var(--x, 0); }
 .g-fmh-it { position: relative; display: inline-block; padding: 2px 14px 2px 8px; border: 0; background: none; color: var(--list); text-decoration: none; cursor: pointer;
   font: italic 900 var(--fs)/.86 var(--cond); text-transform: uppercase; letter-spacing: -.005em; white-space: nowrap; text-shadow: 3px 3px 0 var(--list-shadow);
@@ -157,7 +157,7 @@
   .g-fmh-ghost.back { font-size: 150px; right: -20px; top: 96px; bottom: auto; }
   .g-fmh-wallet { top: auto; bottom: 76px; left: 16px; padding: 4px 22px 5px 10px; }
   .g-fmh-wallet b { font-size: 22px; }
-  .g-fmh-list { left: 34%; top: auto; bottom: 150px; translate: 0 0; --fs: clamp(20px, 3.1vh, 30px); }
+  .g-fmh-list { left: 34%; top: auto; bottom: 150px; translate: 0 0; --fs: clamp(22px, 3.5vh, 34px); }
   .g-fmh-party { top: 112px; left: 40%; right: 12px; translate: 0 0; width: auto; gap: 6px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .g-fmh-party h3 { display: none; }
   .g-fmh-pm { grid-template-columns: 1fr; gap: 3px; padding: 3px 8px 5px 3px; }
