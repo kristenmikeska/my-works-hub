@@ -43,10 +43,9 @@ button, input, select { font: inherit; color: inherit; }
 .scene { position: relative; aspect-ratio: 16 / 9; container-type: size; overflow: hidden; border-radius: 6px; background: var(--deep); }
 .scene .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .scene .bg-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18, 13, 58, 0) 55%, rgba(18, 13, 58, .55) 100%), linear-gradient(200deg, rgba(255, 197, 61, .22), rgba(38, 32, 122, .1) 50%); }
-.scene .p { position: absolute; width: calc(var(--ph) * var(--ar)); max-width: none; --base: min(78cqh, 38cqw); --ph: calc(var(--base) * var(--ps, 1));
-  height: var(--ph); top: calc(22cqh + var(--base) - var(--ph) + var(--ph) * var(--pd, 0) + var(--ny, 0) * 1cqh); }
-/* On screens narrower than the mockup's, the picture can end above the bottom: fade its last stretch instead of a hard edge */
-.scene .p { -webkit-mask-image: linear-gradient(180deg, #000 86%, transparent); mask-image: linear-gradient(180deg, #000 86%, transparent); }
+/* Portraits stand on the bottom edge, sized by screen height (scale.js on top), so nobody floats */
+.scene .p { position: absolute; width: calc(var(--ph) * var(--ar)); max-width: none; --ph: calc(78cqh * var(--ps, 1));
+  height: var(--ph); top: calc(100cqh - var(--ph) + var(--ph) * var(--pd, 0) + var(--ny, 0) * 1cqh); }
 .scene .p.speaker { left: calc(17cqw + var(--nx, 0) * 1cqw - var(--ph) * var(--ar) * var(--cx)); filter: drop-shadow(-1cqw .3cqw 0 var(--indigo)) drop-shadow(.55cqw 0 0 var(--gold)); }
 /* Solar is mirrored, so her face centre sits cx of the picture's width in from its right edge: hang it 17% in from the screen's right */
 .scene .p.solar { right: calc(17cqw - var(--nx, 0) * 1cqw - var(--ph) * var(--ar) * var(--cx)); transform: scaleX(-1); filter: drop-shadow(-1cqw .3cqw 0 var(--indigo)) brightness(.86) saturate(.9); }
