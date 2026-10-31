@@ -2475,3 +2475,7 @@ html.bt-calm .bt-epi-card h2 { animation: bt-epi-calm .9s .4s ease both; }
   .bt-epi .bt-card.bt-ghost, .bt-epi-card h2 { animation: none !important; }
   .bt-epi-card { animation: none; opacity: 1; }
 }
+/* The party's orbits in practice's tree screen (2026-10-31): whose tree. */
+.bt-tree-who { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
+.bt-tree-who .bt-tool.on { background: var(--pink); color: var(--night); box-shadow: 3px 3px 0 #fff; }
+@media (max-width: 700px) { .bt-tree-who { gap: 5px; } .bt-tree-who .bt-tool { padding: 5px 9px; font-size: 11px; } }

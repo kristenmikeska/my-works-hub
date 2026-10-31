@@ -3741,7 +3741,7 @@
     else if (t === 'allies') items = [{ v: 'all', label: 'Whole party', desc: party.filter(p => !p.dead).map(p => p.name).join(', ') }];
     else if (t === 'ally') items = party.filter(p => !p.dead).map(allyItem);
     else if (t === 'dead') items = party.filter(p => p.dead).map(allyItem);
-    else if (t === 'shift') items = party.filter(p => B.canShiftTo(p)).map(p => Object.assign(allyItem(p), { desc: `<b>${esc(p.name)}</b>takes the One More with ×${B.S.mods.shiftMult} power.` }));
+    else if (t === 'shift') items = party.filter(p => B.canShiftTo(p)).map(p => Object.assign(allyItem(p), { desc: `<b>${esc(p.name)}</b>takes the One More with ×${Math.round((B.S.mods.shiftMult + (p === B.leader() && u.baton > 0 ? u.baton : 0)) * 100) / 100} power${p === B.leader() && u.baton > 0 ? ' (Baton)' : ''}.` }));
     if (!items.length) return Promise.resolve(null);
     const memo = ['one', 'scan'].includes(t) ? u.mid : ['ally', 'dead'].includes(t) ? u.mid + ':ally' : null;
     const start = memo && ST().remember ? Math.max(0, items.findIndex(x => x.v === lastTgt[memo])) : 0;
@@ -4153,9 +4153,10 @@
   }
 
   /* ════════════════════════════════════════════════════
-     HAENIM'S SKILL TREE
+     HAENIM'S SKILL TREE (and the party's orbits)
      Story fights: the field menu's Skills tab (menu.js) is the sun. Practice mode keeps this screen: the same sun (sun.js draws
-     it), the same rules (engine.js treeState / treeBuy), a free Refund all, and the party trees left to the story.
+     it), the same rules (engine.js treeState / treeBuy), a free Refund all. Since 2026-10-31 the chips under the title switch to
+     a party member's orbit (FemcSun.orbit, engine.js ptreeState / ptreeBuy; practice has no links, so the rank rings stay shut).
      ════════════════════════════════════════════════════ */
   function treeScreen(onClose) {
     if (BR) { fieldMenu('skills').then(() => { save = loadSaveFromBridge() || save; onClose(); }); return; }
@@ -4163,42 +4164,77 @@
     root.classList.remove('bt-in-battle');
     if (onClose === hub) music.play('title'); else music.play('floor');
     const SUN = window.FemcSun, all = E.treeNodes();
-    let cur = null, just = null, formBusy = false;
+    let cur = null, just = null, formBusy = false, who = 'solar';
     const frags = () => E.fragSet(save);
     const st = n => E.treeState(save, n.id, frags());
+    const fighters = () => D.party.filter(m => m.id !== 'solar' && D.ptrees[m.id]);
+    const pst = id => E.ptreeState(save, who, id);
     // Start on the first node you can buy.
     cur = (all.find(n => st(n) === 'avail') || all[0]).id;
     const label = n => (st(n) === 'hidden' ? '? ? ?' : n.name);
     const rayOf = n => (n.center ? { name: 'Unveiled', world: 'The crown' } : SUN.groupOf(n.id) || {});
+    const rings = () => { const L = E.lvlOf(save, who), rk = E.linkRank(save, who); return D.ptreeRings.map((g, i) => ({ ring: i + 1, open: L >= g.lvl && rk >= (g.rank || 0), label: i === 0 ? '' : [i < 4 && g.lvl > 1 ? `Lv ${g.lvl}` : '', g.rank ? `Rank ${g.rank}` : ''].filter(Boolean).join(' · ') })); };
+    const whoRow = () => `<div class="bt-chips bt-tree-who" role="toolbar" aria-label="Whose tree">${[{ id: 'solar', name: 'Haenim' }].concat(fighters()).map(m => `<button type="button" class="bt-tool${who === m.id ? ' on' : ''}" data-who="${m.id}"><span>${esc(m.name)}</span></button>`).join('')}</div>`;
     const render = () => {
       screen = 'tree';
+      if (who !== 'solar') return renderOrbit();
       const fx = treeFx();
       const node = E.treeNode(cur), s0 = st(node), afford = save.pts >= node.cost, why = E.treeWhy(save, node.id, frags()), ray = rayOf(node);
       const btn = s0 === 'own' ? 'Unlocked' : s0 === 'avail' ? (afford ? `Unlock · ${node.cost} SP` : `Need ${node.cost} SP`) : s0 === 'taken' ? 'Not chosen' : s0 === 'hidden' ? 'A memory first' : 'Locked';
       const el = show(`${ART.defs()}<img class="bt-tree-art" src="${D.personas.haenim.art}" alt="">
         <div class="bt-tree-head"><button type="button" class="bt-tool" data-act="back"><span>‹ Back</span></button>
           <h1>HAENIM<small>해님 · Fool</small></h1>
-          <div class="bt-pts"><span><small>Skill Points</small>${save.pts}</span></div></div>
+          <div class="bt-pts"><span><small>Skill Points</small>${save.pts}</span></div>${whoRow()}</div>
         <div class="bt-sun sun-vp">${SUN.html({ state: id => E.treeState(save, id, frags()), sel: cur, base: 'bt-sn' })}</div>
         <div class="bt-tree-foot"><div><h3>${esc(label(node))}<small>${esc(ray.name || '')} · ${esc(ray.world || '')} · ${node.cost} SP${node.choice ? ' · choose one' : ''}${node.memory ? ' · memory' : ''}${node.keystone ? ' · keystone' : ''}</small></h3><p>${s0 === 'hidden' ? '' : esc(node.desc)}${why ? ` <em>${esc(why)}</em>` : ''}</p></div>
           <div class="btns"><button type="button" class="bt-btn pink" data-act="buy"${s0 !== 'avail' || !afford ? ' disabled' : ''}><span>${btn}</span></button>
           <button type="button" class="bt-btn" data-act="refund"${E.treeSpent(save) ? '' : ' disabled'}><span>Refund all</span><small>Practice: free</small></button></div>
           <ul class="bt-chips bt-tree-skills"><li class="lbl"><span>Haenim knows</span></li>${solarSkills(fx).map(id => `<li>${skIcon(id)}<span>${esc(D.skills[id].name)}</span></li>`).join('')}</ul></div>`, 'bt-tree');
       SUN.mount(el.querySelector('.bt-sun'), cur);
+      wire(el, () => E.treeRespec(save), id => SUN.move(cur, id));
+    };
+    // A party member's orbit: the same screen, their points, their nodes.
+    function renderOrbit() {
+      const spec = SUN.orbit(who), list = E.ptreeNodes(who), m = member(who), t = D.ptrees[who], pts = E.ptreePts(save, who);
+      if (!list.some(n => n.id === cur)) cur = (list.find(n => pst(n.id) === 'avail') || list[0]).id;
+      const node = list.find(n => n.id === cur), s0 = pst(cur), why = E.ptreeWhy(save, who, cur), afford = pts >= node.cost;
+      const grp = node.crown ? 'Crown' : node.ray === 'core' ? 'Core' : node.ray === 'solar' ? 'Solar ray' : (t.builds.find(b => b.id === node.ray) || {}).name;
+      const btn = s0 === 'own' ? 'Unlocked' : s0 === 'avail' ? (afford ? `Unlock · ${node.cost} pt${node.cost === 1 ? '' : 's'}` : `Need ${node.cost}`) : 'Locked';
+      const kit = E.kitFor(who, save).slots;
+      const el = show(`${ART.defs()}
+        <div class="bt-tree-head"><button type="button" class="bt-tool" data-act="back"><span>‹ Back</span></button>
+          <h1>${esc(m.name.toUpperCase())}<small>Lv ${E.lvlOf(save, who)} · orbit</small></h1>
+          <div class="bt-pts"><span><small>Points</small>${pts}</span></div>${whoRow()}</div>
+        <div class="bt-sun bt-orbit sun-vp" style="--c:${m.color}">${SUN.html({ spec, state: pst, sel: cur, base: 'bt-sn', rings: rings() })}</div>
+        <div class="bt-tree-foot"><div><h3>${esc(node.name)}<small>${esc(grp || '')} · ring ${node.ring} · ${node.cost} pt${node.cost === 1 ? '' : 's'}</small></h3><p>${esc(node.desc)}${why ? ` <em>${esc(why)}</em>` : ''}</p></div>
+          <div class="btns"><button type="button" class="bt-btn pink" data-act="buy"${s0 !== 'avail' || !afford ? ' disabled' : ''}><span>${btn}</span></button>
+          <button type="button" class="bt-btn" data-act="refund"${E.ptreeSpent(save, who) ? '' : ' disabled'}><span>Refund all</span><small>Practice: free</small></button></div>
+          <ul class="bt-chips bt-tree-skills"><li class="lbl"><span>${esc(m.name)} knows</span></li>${kit.map(id => `<li>${skIcon(id)}<span>${esc(D.skills[id].name)}</span></li>`).join('')}</ul></div>`, 'bt-tree');
+      SUN.mount(el.querySelector('.bt-sun'), cur, spec);
+      wire(el, () => E.ptreeRespec(save, who), key => SUN.move(cur, key, spec));
+      mark('tree-orbit'); mark('tree-orbit-' + who);
+    }
+    function wire(el, refund, step) {
       el.querySelectorAll('[data-hn]').forEach(b => {
         b.addEventListener('click', () => {
           const id = b.dataset.hn;
           if (id === cur) buy(); else { cur = id; sfx('move'); just = null; render(); }
         });
       });
+      el.querySelectorAll('[data-who]').forEach(b => b.addEventListener('click', () => {
+        if (who === b.dataset.who) return;
+        who = b.dataset.who; sfx('move'); just = null;
+        cur = who === 'solar' ? (all.find(n => st(n) === 'avail') || all[0]).id : null;
+        render();
+      }));
       el.querySelector('[data-act="back"]').addEventListener('click', close);
       el.querySelector('[data-act="buy"]').addEventListener('click', buy);
-      el.querySelector('[data-act="refund"]').addEventListener('click', () => { E.treeRespec(save); persist(); sfx('back'); just = null; mark('tree-refund'); render(); });
+      el.querySelector('[data-act="refund"]').addEventListener('click', () => { refund(); persist(); sfx('back'); just = null; mark('tree-refund'); render(); });
       ctl = {
         kind: 'tree',
         key(e) {
           if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return false;
-          const nx = SUN.move(cur, e.key);
+          const nx = step(e.key);
           if (nx !== cur) { cur = nx; sfx('move'); just = null; render(); }
           return true;
         },
@@ -4206,9 +4242,17 @@
       };
       if (just) el.querySelector(`[data-hn="${just}"]`)?.classList.add('just');
       mark('tree');
-    };
+    }
     function buy() {
       if (formBusy) return;
+      if (who !== 'solar') {
+        const r = E.ptreeBuy(save, who, cur);
+        if (!r.ok) { sfx('back'); return; }
+        persist(); sfx('unlock'); just = cur; mark('tree-buy'); mark('tree-pbuy');
+        render();
+        (async () => { formBusy = true; ctl = null; await resolvePending([who]); formBusy = false; render(); })();
+        return;
+      }
       const n = E.treeNode(cur);
       const r = E.treeBuy(save, n.id, frags());
       if (!r.ok) { sfx('back'); return; }

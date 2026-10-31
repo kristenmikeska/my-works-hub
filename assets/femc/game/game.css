@@ -917,18 +917,10 @@ button.g-pm-tac:is(:hover, :focus-visible) b { color: var(--night); }
 .g-sk-kit li.sig { background: rgba(255, 211, 107, .14); }
 .g-sk-kit .bt-ico { width: 18px; height: 18px; }
 .g-chips .bt-icon.bt-ico.sk { width: 1.2em; height: 1.2em; }
-.g-pt { --c: var(--pink); display: grid; gap: 10px; }
-.g-pt-tier { padding: 8px 10px; border-left: 4px solid var(--c); background: rgba(20, 7, 15, .7); }
-.g-pt-tier.shut { opacity: .7; }
-.g-pt-h { margin: 0 0 6px; color: var(--c); font: italic 900 15px/1 var(--cond); letter-spacing: .12em; text-transform: uppercase; }
-.g-pt-h small { margin-left: 8px; color: var(--muted); font-size: 11px; letter-spacing: .08em; }
-.g-pt-tier .g-hn-row { grid-template-columns: 1fr 1fr; }
-.g-pt-tier .g-hn-row > :nth-child(3):last-child { grid-column: 1 / -1; } /* a tier's third node (the signature skill) takes its own row */
-.g-pt-tier .g-hn { min-height: 40px; }
-.g-pt-tier .g-hn b { font-size: 14px; }
-.g-pt-max { border-left-color: var(--gold); }
-.g-pt-max.done { background: rgba(255, 211, 107, .12); }
-.g-pt-maxline { margin: 0; font-size: 13.5px; }
+/* A party member's orbit (2026-10-31): sun.js draws it in .g-sunvp.g-orbit; the MAX line sits in the detail. */
+.g-pt-maxline { margin: 8px 0 0; padding: 6px 8px; border-left: 3px solid var(--gold); font-size: 13px; background: rgba(20, 7, 15, .6); }
+.g-pt-maxline small { margin-right: 6px; color: var(--gold); font: italic 900 12px/1 var(--cond); letter-spacing: .1em; text-transform: uppercase; }
+.g-pt-maxline.done { background: rgba(255, 211, 107, .12); }
 .g-sk-forget, .g-sk-velvet { padding: 14px 16px; border: 2px solid var(--pink-2); border-radius: 4px 22px 4px 22px; background: rgba(20, 7, 15, .97); box-shadow: 8px 8px 0 rgba(255, 79, 158, .4); }
 .g-sk-forget h2, .g-sk-velvet h2 { margin: 0 0 8px; font: italic 900 clamp(26px, 3.4vw, 36px)/1 var(--cond); transform: skewX(-6deg); text-shadow: .06em .06em 0 var(--pink); }
 .g-sk-forget p, .g-sk-velvet p { margin: 0 0 10px; font-size: 14px; }

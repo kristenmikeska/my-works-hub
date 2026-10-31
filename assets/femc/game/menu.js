@@ -22,8 +22,10 @@
        six rays (Striker, Trickster, Mage, Healer, Guard, Support) with keystones at the tips, hybrids where rays meet, choice
        nodes, hidden memory nodes, Unveiled as the crown. Owned ids: S.battleSave.nodes; points: S.battleSave.pts.
      - Solar's skill list: every skill she knows; she picks her eight slots freely (engine.js solarKit / equipSkill).
-     - Party trees (data.js ptrees): five tiers each, opened at link ranks 0 / 2 / 4 / 7 / 9, points from levels; MAX (rank 10) evolves
-       a signature skill (rank 10 for every link, the ones that go to 15 too; their label says Rank 10). Owned ids: S.battleSave.ptree[mid]; ranks are copied into S.battleSave.ranks (syncLife).
+     - Party trees (data.js ptrees, since 2026-10-31 the orbits): each member's tree drawn radially by sun.js (FemcSun.orbit: pan,
+       zoom, Fit, arrow keys like the sun); rings open by level and link rank (data.js ptreeRings, labelled on the rings), points
+       from levels; MAX (rank 10) evolves a signature skill (rank 10 for every link, the ones that go to 15 too; their label says
+       Rank 10). Owned ids: S.battleSave.ptree[mid]; ranks are copied into S.battleSave.ranks (syncLife).
      - Eight skill slots and "forget which?" (engine.js kitFor / forgetSkill), upgrades in place (data.js chains).
      - Respec at the Velvet Room for yen (progression.respecFee), from the field only (not in the Dark Hour).
      Rules are engine.js's (treeState / treeBuy / ptreeState / ptreeBuy / kitFor); this file only draws them and writes
@@ -146,8 +148,8 @@ window.FemcMenu = (() => {
      The who-bar picks Solar or a party member. Solar has two views: the Sun (Haenim's radial tree, drawn by sun.js: drag to pan,
      wheel / pinch / + − to zoom, ◎ for the whole sun, the ray chips jump to a ray) and her Skill list (every skill she knows;
      pick which eight sit in her slots, any time outside a fight). A node is selected with a click, a tap or the arrow keys
-     (pad: the D-pad); clicking / Enter on the selected node buys it (so does the Unlock button). A party member's tree is five
-     tiers; their ninth skill opens "forget which?" right here (Solar never forgets: her extras wait in her list). Respec is
+     (pad: the D-pad); clicking / Enter on the selected node buys it (so does the Unlock button). A party member's tree is their
+     orbit (the same interaction; the build chips jump to a build); their ninth skill opens "forget which?" right here (Solar never forgets: her extras wait in her list). Respec is
      the Velvet Room's (a yen fee, outside the Dark Hour). Forms awaken from the keystones and are switched on the Personas tab. */
   const skMembers = () => roster().filter(m => m.id === 'solar' || D().ptrees[m.id]);
   const frags = () => E().fragSet(bsave(), S().fragments || []);
@@ -155,20 +157,11 @@ window.FemcMenu = (() => {
   const skIcon = id => { const sk = D().skills[id] || {}; return sk.icon && window.FemcIcons ? window.FemcIcons.svg(sk.icon, null, 'bt-ico sk') : (elIcon(sk.el) || (window.FemcSun ? window.FemcSun.glyph({ fx: { learn: id } }, 'own') : '')); };
   const kitOf = id => E().kitFor(id, bsave());
   const fee = (who, spent) => { const f = D().progression.respecFee; return Math.max(f.min, Math.round(spent * (who === 'solar' ? f.solar : f.party))); };
-  function partyGrid(mid) { return E().ptreeNodes(mid).map(n => ({ n, x: D().ptrees[mid].tiers[n.tier].findIndex(z => z.id === n.id), y: n.tier })); }
-  // Arrow keys in a party tree: the nearest node in that direction (the other axis counts double).
-  function gridMove(grid, id, key) {
-    const cur = grid.find(g => g.n.id === id) || grid[0];
-    const d = { ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowRight: [1, 0] }[key];
-    let best = null;
-    grid.forEach(g => {
-      if (g === cur) return;
-      const dx = g.x - cur.x, dy = g.y - cur.y, along = dx * d[0] + dy * d[1];
-      if (along <= 0) return;
-      const score = along + 2.2 * Math.abs(d[0] ? dy : dx);
-      if (!best || score < best.s) best = { g, s: score };
-    });
-    return best ? best.g.n.id : cur.n.id;
+  /* An orbit's rings for sun.js: what opens each (level, link rank), and whether it's open for this member now. */
+  function orbitRings(mid) {
+    const L = lvOf(mid), rank = rankOf(mid);
+    return D().ptreeRings.map((g, i) => ({ ring: i + 1, open: L >= g.lvl && rank >= (g.rank || 0),
+      label: i === 0 ? '' : [g.lvl > 1 && !(i > 3) ? `Lv ${g.lvl}` : '', g.rank ? `Rank ${g.rank}` : ''].filter(Boolean).join(' · ') }));
   }
   const hState = id => E().treeState(bsave(), id, frags());
   function nodeBtn(g, st, on) {
@@ -260,22 +253,25 @@ window.FemcMenu = (() => {
     return true;
   }
   function partyView(mid) {
-    const b = bsave(), m = member(mid), t = D().ptrees[mid], rank = rankOf(mid), grid = partyGrid(mid), pts = E().ptreePts(b, mid);
-    if (!grid.some(g => g.n.id === sel.pn)) sel.pn = (grid.find(g => E().ptreeState(b, mid, g.n.id, rank) === 'avail') || grid[0]).n.id;
-    const n = grid.find(g => g.n.id === sel.pn).n, st = E().ptreeState(b, mid, n.id, rank);
-    const R = D().ptreeRanks, C = D().ptreeChoice || [], link = G.LINKS[mid];
-    const why = st === 'rank' ? `Opens at link rank ${R[n.tier]} (now ${rank}).` : st === 'lock' ? 'Buy something in the tier before it first.' : st === 'taken' ? 'The other choice is taken.' : st === 'avail' && pts < n.cost ? `Needs ${n.cost} point${n.cost === 1 ? '' : 's'}; more come with levels.` : '';
-    const tier = (nodes, k) => `<div class="g-pt-tier${rank >= R[k] ? '' : ' shut'}"><p class="g-pt-h">Tier ${k + 1}<small>${R[k] ? `link rank ${R[k]}` : 'open'}${C[k] ? ' · choose one' : ''}</small></p>
-      <div class="g-hn-row${C[k] ? ' pair' : ''}">${nodes.map(x => nodeBtn({ n: x, b: { color: m.color } }, E().ptreeState(b, mid, x.id, rank), x.id === sel.pn)).join('')}</div></div>`;
+    const b = bsave(), m = member(mid), t = D().ptrees[mid], rank = rankOf(mid), list = E().ptreeNodes(mid), pts = E().ptreePts(b, mid), spec = window.FemcSun.orbit(mid);
+    const stOf = id => E().ptreeState(b, mid, id, rank);
+    if (!list.some(n => n.id === sel.pn)) sel.pn = (list.find(n => stOf(n.id) === 'avail') || list[0]).id;
+    const n = list.find(x => x.id === sel.pn), st = stOf(n.id), why = E().ptreeWhy(b, mid, n.id, rank), link = G.LINKS[mid];
+    const grp = n.crown ? { name: 'Crown', note: 'the capstone' } : n.ray === 'core' ? { name: 'Core', note: '' } : n.ray === 'solar' ? { name: 'Solar ray', note: 'makes her shine' } : t.builds.find(x => x.id === n.ray);
+    const gate = D().ptreeRings[n.ring - 1] || {}, need = n.rank || (n.crown ? 10 : gate.rank || 0);
     const maxed = rank >= 10, from = D().skills[t.max.from], to = D().skills[t.max.to];
-    const btn = st === 'own' ? 'Unlocked' : st !== 'avail' ? (st === 'rank' ? `Link rank ${R[n.tier]}` : st === 'taken' ? 'Not chosen' : 'Locked') : pts >= n.cost ? `Unlock · ${n.cost} pt${n.cost === 1 ? '' : 's'}` : `Need ${n.cost}`;
+    const btn = st === 'own' ? 'Unlocked' : st !== 'avail' ? (st === 'rank' ? `Link rank ${need}` : st === 'lvl' ? `Lv ${gate.lvl}` : 'Locked') : pts >= n.cost ? `Unlock · ${n.cost} pt${n.cost === 1 ? '' : 's'}` : `Need ${n.cost}`;
+    const chips = t.builds.map(x => `<button type="button" class="g-chip${n.ray === x.id ? ' on' : ''}" data-pray="${x.id}" style="--c:${m.color}">${esc(x.name)}<small>${esc(x.note || '')}</small></button>`).join('')
+      + `<button type="button" class="g-chip${n.ray === 'solar' ? ' on' : ''}" data-pray="solar" style="--c:#ffd36b">Solar ray<small>for her</small></button>`;
+    const kicker = [grp.name + (grp.note ? ' · ' + grp.note : ''), n.crown ? 'link rank 10' : `ring ${n.ring}` + (gate.lvl > 1 ? ` · Lv ${gate.lvl}` : '') + (need ? ` · rank ${need}` : '')].join(' · ');
     return `<div class="g-sk-top"><p><b>${esc(m.name)}</b> · Lv ${lvOf(mid)} · ${link ? `${esc(link.arcana || '')} · rank ${rank}` : 'no link yet'} · <span class="g-sk-pts">${pts} point${pts === 1 ? '' : 's'}</span><small>from levels</small></p>
         <button type="button" class="g-btn small" data-velvet="${mid}"${opts.inBattle ? ' disabled title="The Velvet Room’s door is in town, not in the Dark Hour."' : ''}>Velvet Room · Respec</button></div>
-      <div class="g-sk-main"><div class="g-pt" style="--c:${m.color}">${t.tiers.map(tier).join('')}
-          <div class="g-pt-tier g-pt-max${maxed ? ' done' : ' shut'}"><p class="g-pt-h">${link && G.maxOf(link) > 10 ? 'Rank 10' : 'MAX'}<small>link rank 10</small></p><p class="g-pt-maxline">${maxed ? '✓ ' : ''}<b>${esc(from ? from.name : t.max.from)}</b> evolves into <b>${esc(to.name)}</b>. ${esc(to.desc)}</p></div></div>
-        <aside class="g-sk-detail" style="--c:${m.color}"><p class="g-kicker">${esc(m.name)} · tier ${n.tier + 1}${n.choice ? ' · choose one' : ''}</p>
+      <div class="g-sun-rays" role="toolbar" aria-label="Builds">${chips}</div>
+      <div class="g-sk-main g-sun-main"><div class="g-sunvp g-orbit sun-vp" aria-label="${esc(m.name)}’s orbit" style="--c:${m.color}">${window.FemcSun.html({ spec, state: stOf, sel: sel.pn, glyph: sunGlyph, base: 'g-sn', rings: orbitRings(mid) })}</div>
+        <aside class="g-sk-detail" style="--c:${n.ray === 'solar' ? '#ffd36b' : m.color}"><p class="g-kicker">${esc(kicker)}</p>
           <h3 class="g-sk-name">${esc(n.name)}</h3><p>${esc(n.desc)}</p>${why ? `<p class="g-sk-why">${esc(why)}</p>` : ''}
           <button type="button" class="g-btn pink" data-pt-buy${st !== 'avail' || pts < n.cost ? ' disabled' : ''}>${btn}</button>
+          <p class="g-pt-maxline g-pt-max${maxed ? ' done' : ''}"><small>${link && G.maxOf(link) > 10 ? 'Rank 10' : 'MAX'}</small> ${maxed ? '✓ ' : ''}<b>${esc(from ? from.name : t.max.from)}</b> evolves into <b>${esc(to.name)}</b>.</p>
           ${kitHtml(mid)}</aside></div>`;
   }
   function skillsTab() {
@@ -289,6 +285,10 @@ window.FemcMenu = (() => {
     const again = f => render(f);
     el.querySelectorAll('[data-sk]').forEach(bt => bt.addEventListener('click', () => { sel.sk = bt.dataset.sk; sel.velvet = null; G.sfx('femc-hover'); again(`[data-sk="${sel.sk}"]`); }));
     el.querySelectorAll('[data-skmode]').forEach(bt => bt.addEventListener('click', () => { sel.skmode = bt.dataset.skmode; sel.pick = null; sel.libSlot = null; G.sfx('femc-hover'); again(`[data-skmode="${sel.skmode}"]`); }));
+    el.querySelectorAll('[data-pray]').forEach(bt => bt.addEventListener('click', () => {
+      const mid = sel.sk, b = bsave(), ns = E().ptreeNodes(mid).filter(x => x.ray === bt.dataset.pray);
+      sel.pn = (ns.find(x => E().ptreeState(b, mid, x.id, rankOf(mid)) === 'avail') || ns[0]).id; G.sfx('femc-hover'); again(`[data-hn="${sel.pn}"]`);
+    }));
     el.querySelectorAll('[data-ray]').forEach(bt => bt.addEventListener('click', () => {
       const g = D().tree.find(x => x.id === bt.dataset.ray);
       sel.hn = (g.nodes.find(x => hState(x.id) === 'avail') || g.nodes[0]).id; G.sfx('femc-hover'); again(`[data-hn="${sel.hn}"]`);
@@ -357,13 +357,13 @@ window.FemcMenu = (() => {
       again(`[data-sk="${sel.sk}"]`);
     });
     // The sun: pan / zoom / keep the selection in view. Arrows walk the sun or a party tree (the menu's [ ] still switch tabs).
-    const vp = el.querySelector('.g-sunvp');
-    if (vp && window.FemcSun) window.FemcSun.mount(vp, sel.hn);
-    el.querySelector('.g-sunvp, .g-pt')?.addEventListener('keydown', e => {
+    const vp = el.querySelector('.g-sunvp'), orbit = sel.sk !== 'solar' && window.FemcSun ? window.FemcSun.orbit(sel.sk) : null;
+    if (vp && window.FemcSun) window.FemcSun.mount(vp, orbit ? sel.pn : sel.hn, orbit || undefined);
+    el.querySelector('.g-sunvp')?.addEventListener('keydown', e => {
       if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) return;
       e.preventDefault(); e.stopPropagation();
       if (sel.sk === 'solar') { sel.hn = window.FemcSun.move(sel.hn, e.key); again(`[data-hn="${sel.hn}"]`); }
-      else { sel.pn = gridMove(partyGrid(sel.sk), sel.pn, e.key); again(`[data-hn="${sel.pn}"]`); }
+      else { sel.pn = window.FemcSun.move(sel.pn, e.key, orbit); again(`[data-hn="${sel.pn}"]`); }
       G.sfx('femc-hover');
     });
   }
