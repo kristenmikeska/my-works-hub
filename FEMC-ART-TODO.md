@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make:** 1 HOAX picture fix (4C). **Optional:** 15 wardrobe items · 4 Stay hanami face sheets. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make:** 1 HOAX picture fix (4C) · the UI art (section 5: two menu backdrops and four loading screens). **Optional:** 15 wardrobe items · 4 Stay hanami face sheets. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
@@ -43,7 +43,42 @@ Edit the FIRST image. Keep everything exactly the same: the composition, the gym
 
 ---
 
-## 5. Wardrobe and keychains (optional)
+## 5. ⭐ Make the UI pop (Gemini)
+Places and backdrops only, no people. All in the pink cover's style, so the whole game matches.
+
+**[ ] 5A. Menu backdrop: day**
+Behind the new main menu (Solar stands in front of it, the list sits in the middle, the party on the right), in place of a blurred room.
+Attach: `UI - style (pink cover).png`
+Save as: `menu-backdrop-day.png`
+```
+Using the attached image only as a reference for its art style and colours, create a NEW abstract background, 16:9, the largest size, with no people and no text. A deep black-plum sky. Low on the right, a huge pale pink sun, half below the horizon, with sharp pink and white sunbeams fanning out of it in a halftone dot texture. Two or three long pink and white silk ribbons drifting diagonally across the picture from lower left to upper right. Along the bottom edge, a faint broken skyline of ruined towers and arches in black silhouette. Lots of calm, dark, empty space on the left and in the middle. Flat graphic shapes, halftone dots in the shadows, high contrast. Colours: black, plum, hot pink, pale pink and white, with only a tiny touch of gold on the sun's rim.
+```
+
+**[ ] 5B. Menu backdrop: Dark Hour**
+The same backdrop for the menu during the Dark Hour.
+Attach: your result from 5A
+Save as: `menu-backdrop-darkhour.png`
+```
+Edit this image. Keep the composition, the ribbons and the skyline exactly the same. Change it to night: the sun becomes a huge pale full moon with a faint pink glow, the sunbeams become thin pale pink moonbeams, the sky becomes almost black, and a few small coffin-shaped silhouettes stand on the skyline. Still only black, plum, pink and white. No text.
+```
+
+**[ ] 5C–5F. Loading screens for the epilogue worlds**
+Shown while a fight loads. Right now every epilogue fight shows the Iwatodai dorm lounge, which is the wrong world. One per world:
+Attach: `UI - style (pink cover).png`
+Save as: `loading-runners.png`, `loading-strangers.png`, `loading-hoax.png`, `loading-stay.png`
+Start each with:
+```
+Using the attached image only as a reference for its colours (black, deep plum, hot pink, pale pink and white, a few tiny gold lights), create a NEW Persona 3 Reload style background, 16:9, the largest size, no people, no readable text, clean lineart and flat cel shading, with a huge pale full moon and a faint pink glow:
+```
+then add one scene:
+- **5C Runners:** `an American college campus at midnight in deep winter: a stone building with a clock tower, snow on the quad, old lampposts, every window dark.`
+- **5D Strangers:** `a Korean harbor at midnight: red cranes and stacked shipping containers, black water with the moon on it, a ferry tied up, a long bridge in the distance.`
+- **5E HOAX:** `a Korean high school at midnight in winter: the front gate and a long brick building, snow on the courtyard, one lit window on the top floor.`
+- **5F Stay:** `a seaside park in early spring at midnight: cherry trees in bloom along a railing, petals blowing over the sea, a quiet city across the bay.`
+
+---
+
+## 6. Wardrobe and keychains (optional)
 
 ### More outfits (ChatGPT): pose sheets
 
@@ -183,7 +218,7 @@ A 3 × 2 portrait sheet on a plain white background, clear space between cells, 
 
 ---
 
-## 6. Extras (optional): Stay hanami face sheets
+## 7. Extras (optional): Stay hanami face sheets
 Each is a face sheet for one character in the hanami outfit; the game swaps it in for that scene only. Use ChatGPT.
 
 **[ ] Yukari: hanami** *(optional)*  
