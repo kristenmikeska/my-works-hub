@@ -17,11 +17,17 @@
        crack     a cracked wall (hidden until found by a scan or by walking past it): a hidden room with rare loot or a
                  memory fragment, or a stairwell to a secret floor, or (172F, once open) the way into Monad.
        event     a short scene: a choice, a lost item, a memory echo, a party member's moment (or, as before, a fragment).
+       super     (2026-10-31) a superboss's sealed door on its floor (data.js blocks[].supers): optional, two actions a turn,
+                 escorts; the first win (save.tt.supers) pays five Velvet Plumes in the story, a ★5 card and more; then rematches.
+   - Finish roadmap, phase 1 (2026-10-31): gates(c, maxBi) (the entrance's teleport points), skipTo(c, fi) (stairs past mapped
+     landings), arrive(c, floor) (an event at the top of the stairs every few floors), 33 more EVENTS (romance ones gated on
+     the route and rank: `love`), a Velvet Plume now and then from any event (EVENT_PLUME), Monad's three section guardians.
    - plan(floor, c) / dress(map, floor, c): what map.js should build on a floor, and each new room's contents.
    - Chatter: Fuuka's block lines and the party's own (only members in the party, so searchers only once they've arrived),
      a line every few moves at most.
    c (the battle page's helpers): see battle.js ttCtx. Test hooks: FemcTartarus.state (the puzzle on screen and its
-   solution), FemcTartarus.puzzles (generators and solvers), window.__ttForce (room types next to the arrival point). */
+   solution), FemcTartarus.puzzles (generators and solvers), window.__ttForce (room types next to the arrival point),
+   window.__ttArrive (an event id forces an arrival event; false: none). */
 window.FemcTartarus = (() => {
   const D = window.FEMC_BATTLE_DATA;
   if (!D) return null;
@@ -74,7 +80,34 @@ window.FemcTartarus = (() => {
     guard_harabah: guard('drive', 30, 'Juggernaut Drive', 'A Rampage Drive with nowhere left to go but through you.'),
     guard_adamah: guard('castle', 35, 'Bastion', 'A Solid Castle that stopped walking and became a wall.'),
     guard_empyrean: guard('seeker', 40, 'Pale Seeker', 'A Death Seeker gone white at the edges. Its eyes follow you even when it doesn’t turn.'),
-    guard_monad: guard('tower', 50, 'Monad Warden', 'A Corrupt Tower that has stood in the dark so long it forgot there was a tower below it.')
+    guard_monad: guard('tower', 50, 'Monad Warden', 'A Corrupt Tower that has stood in the dark so long it forgot there was a tower below it.'),
+    // Monad's later sections (2026-10-31): each date section has its own warden.
+    guard_monad_deep: guard('machine', 52, 'The Deep Engine', 'A Steel Machine left running between floors for years. It hums at the same pitch as the stairs.'),
+    guard_monad_waltz: guard('dancer', 54, 'The Last Waltz', 'A Soul Dancer whose partner let go a long time ago. It still counts the steps, and it makes you dance them.')
+  });
+  /* Superbosses (2026-10-31): optional fights behind a sealed door near the top of four blocks (data.js blocks[].supers).
+     An existing Shadow's art, half again as big, tinted (`tint`: a CSS filter, battle.js sets it on the enemy as --sb-tint;
+     tartarus.css .superboss) with a violet glow. Two actions a turn, Light and Dark shrugged off (no instant kills), statuses
+     shrugged off, a hard All-Out; escorts (`escort`) fight beside them. Tuned about ten levels above the block's full moon, so
+     a party climbing on schedule should come back later; on Merciless they're a real fight at any level. First win: save.tt.supers
+     (once per playthrough, like guardians), five Velvet Plumes in the story; after that the door stays for rematches. */
+  const superb = (base, lvl, name, note, o) => {
+    const b = D.enemies[base];
+    return Object.assign(S(lvl, Object.assign({ hp: 7.5, st: 1.22, ma: 1.22, en: 1.3, ag: 1.15, lu: 1.2 }, o.k || {})), {
+      name, arcana: o.arcana || b.arcana, aff: Object.assign({}, b.aff, { light: 'null', dark: 'null' }, o.aff || {}), skills: o.skills, ai: 'exploit', acts: 2,
+      img: b.img, svg: b.svg, idle: b.idle, h: Math.round((b.h || 220) * 1.45), tint: o.tint, escort: o.escort,
+      exp: Math.round(P.expFor(lvl) * 10), yen: P.yenFor(lvl) * 15, drop: 'guardian_crest', dropChance: 1, cls: 'superboss', superboss: true,
+      ailImmune: IMMUNE, alloutResist: 0.6, note });
+  };
+  Object.assign(D.enemies, {
+    super_abbess: superb('mother', 30, 'The Lacquered Abbess', 'An Elegant Mother who kept vigil in Yabbashah until the lacquer grew over her. Her healers rise as fast as you put them down.',
+      { aff: { fire: 'weak', ice: 'drain' }, skills: ['e_mabufula', 'e_bufudyne', 'e_marin_karin', 'e_mediarama', 'e_matarunda'], escort: ['relic@27', 'relic@27'], tint: 'hue-rotate(150deg) saturate(1.5)' }),
+    super_procession: superb('giant', 41, 'The Iron Procession', 'An Order Giant at the head of a parade nobody asked for. It hands out sentences two at a time.',
+      { aff: { dark: 'weak' }, skills: ['e_herculean', 'e_vorpal', 'e_heat_wave', 'e_tarukaja', 'e_rakunda'], escort: ['drive@38', 'niceguy@38'], tint: 'hue-rotate(200deg) brightness(.9) saturate(1.4)' }),
+    super_cavalier: superb('knight', 52, 'The Last Cavalier', 'An Intrepid Knight still riding for a war that ended. Its dragon remembers every road up the tower.',
+      { aff: { ice: 'weak' }, skills: ['e_vorpal', 'e_power_slash', 'e_bufudyne', 'e_tarukaja', 'e_matarunda', 'e_megidola'], escort: ['machine@49', 'castle@49'], tint: 'hue-rotate(-60deg) saturate(1.6)' }),
+    super_eclipse: superb('twins', 66, 'The Twin Eclipse', 'Two Trance Twins grown together under Monad’s blue light. One casts a shadow, the other casts the moon.',
+      { aff: { fire: 'weak', strike: 'resist' }, skills: ['e_megidolaon', 'e_megidola', 'e_ziodyne', 'e_bufudyne', 'e_evil_smile', 'e_marakunda'], escort: ['seeker@62', 'seeker@62'], k: { hp: 8.5 }, tint: 'hue-rotate(180deg) brightness(1.1) saturate(1.8)' })
   });
 
   /* ══════════ Fuuka's lines for the new rooms, a tip, Monad's music ══════════ */
@@ -104,11 +137,17 @@ window.FemcTartarus = (() => {
     shortcut: ['That passage cuts straight through. But something’s waiting at the other end.', 'neutral'],
     scanNothing: ['Nothing new nearby.', 'neutral'],
     sealed: ['The way up is sealed for now. Tartarus hasn’t opened any higher.', 'neutral'],
-    stairsNear: ['The stairs are right ahead.', 'happy']
+    stairsNear: ['The stairs are right ahead.', 'happy'],
+    superDoor: ['There’s a door here that isn’t on any of my maps. What’s behind it is… a lot stronger than this floor.', 'surprised'],
+    superboss: ['This one’s different. Two moves a turn, maybe more. Don’t hold anything back!', 'surprised'],
+    superWin: [['You actually did it… I can’t believe it.', 'It’s down! That was incredible!'], 'happy'],
+    arrive: ['Something’s waiting right at the top of the stairs.', 'neutral'],
+    skip: ['I remember these floors. We can go straight through.', 'happy']
   });
   if (D.tips) Object.assign(D.tips, {
     rooms: ['room-event', 'Rooms aren’t all fights now: treasure vaults, puzzles, rest spots, traps, golden Shadows that run, shrines, and walls that hide things. A scan shows more.'],
-    guardian: ['room-shadow', 'A guardian blocks the stairs on some floors. Beat it once and it’s gone for good.']
+    guardian: ['room-shadow', 'A guardian blocks the stairs on some floors. Beat it once and it’s gone for good.'],
+    superboss: ['room-shadow', 'A sealed door near the top of some blocks hides a superboss: optional, far stronger than its floor, and generous the first time it falls.']
   });
   if (D.music) D.music.monad = 'assets/femc/music/deep-mentality.mp3';
 
@@ -122,12 +161,13 @@ window.FemcTartarus = (() => {
     rare: { name: 'Rare Shadow', icon: 'room-rare', color: '#ffd36b' },
     trap: { name: 'Trap', icon: 'room-trap', color: '#ff7a3d' },
     altar: { name: 'Moon shrine', icon: 'room-altar', color: '#c9b8ff' },
-    crack: { name: 'Cracked wall', icon: 'room-crack', color: '#d0c0e0' }
+    crack: { name: 'Cracked wall', icon: 'room-crack', color: '#d0c0e0' },
+    super: { name: 'Sealed door', icon: 'room-guardian', color: '#b06bff' }
   };
   // A trap no one has spotted looks like any corridor.
   const look = n => (n.type === 'trap' && !n.spotted && !n.used ? 'empty' : n.type);
   // Rooms off the way to the stairs (the floor's side rooms, counted on the map).
-  const SIDE = ['chest', 'locked', 'vault', 'puzzle', 'rest', 'rare', 'event', 'altar', 'crack', 'clock', 'shrine'];
+  const SIDE = ['chest', 'locked', 'vault', 'puzzle', 'rest', 'rare', 'event', 'altar', 'crack', 'clock', 'shrine', 'super'];
   const sideDone = n => !!(n.opened || n.used || n.cleared || n.gone);
 
   /* ══════════ The floor plan ══════════ */
@@ -141,12 +181,35 @@ window.FemcTartarus = (() => {
   }
   // Can the party stand on this floor tonight? Main blocks are gated by battle.js (block caps); Monad floor by floor.
   function floorOpen(c, f) { return !f || !f.secret || (monadOpen(c) && (!c.HO || f.gameFloor <= (+c.HO.request.maxFloor || 0))); }
+  /* Teleport points (2026-10-31; data.js floor.gate: each block's first floor, Monad's date sections) the entrance can send the
+     party to. Reached: stood on (save.tt.gates, battle.js startRun), or a floor at or above it in the same block mapped, an
+     access point there or its guardian beaten (older saves), or the full moon below the block cleared (Monad's door: found);
+     Thebel always. Open:
+     a climbable block at or below maxBi (the story's newest open block; practice: any), Monad's once found and open tonight. */
+  function gates(c, maxBi = Infinity) {
+    const s = c.save, tt = s.tt || {}, known = tt.gates || [], cleared = (s.ops && s.ops.cleared) || [];
+    const seen = [].concat(s.floorsMapped || [], s.reached ? [s.reached] : [], tt.guardians || []).map(id => D.floors.find(f => f.id === id)).filter(Boolean);
+    return D.floors.filter(g => g.gate && (known.includes(g.id) || g.bi === 0 || seen.some(f => f.bi === g.bi && f.gameFloor >= g.gameFloor)
+      || (g.fi === 0 && (g.secret ? !!tt.monad : D.blocks[g.bi - 1] && cleared.includes(D.blocks[g.bi - 1].op))))
+      && (g.secret ? !!tt.monad && floorOpen(c, g) : g.bi <= maxBi));
+  }
+  /* Stairs that skip (2026-10-31): landings above this floor already mapped (Sketch the Floor's list: their stairs were taken
+     before) are passed straight through, up to the next main floor, the first landing not mapped yet, or a superboss's floor
+     not beaten yet. Returns that floor's index, or -1 when there's nothing to skip. */
+  function skipTo(c, fi) {
+    const F = D.floors, s = c.save, base = F[fi];
+    let k = fi + 1;
+    const pass = f => f && f.landing && f.bi === base.bi && (s.floorsMapped || []).includes(f.id) && floorOpen(c, f) && !(f.superboss && !(s.tt.supers || []).includes(f.superboss));
+    while (pass(F[k]) && F[k + 1] && floorOpen(c, F[k + 1])) k++;
+    return k > fi + 1 ? k : -1;
+  }
   /* What map.js builds: the guardian (until beaten), and a cracked wall (by chance; on 172F it's Monad's door once open). */
   function plan(floor, c) {
     const p = {};
     if (floor.guardian && !c.save.tt.guardians.includes(floor.id)) p.guardian = floor.guardian;
     if (Array.isArray(window.__ttForce)) p.force = window.__ttForce.slice();
     if (floor.hiddenFloor) return p;
+    if (floor.superboss) p.superboss = floor.superboss; // its sealed door, beaten or not (rematches)
     if (floor.last) { if (monadOpen(c)) p.crack = 'monad'; return p; }
     if (floor.top) return p;
     const ch = clamp(D.map.crackChance * (floor.rooms.crack || 1), 0, 0.9);
@@ -159,16 +222,17 @@ window.FemcTartarus = (() => {
   }
   /* A hidden floor (behind a cracked wall's stairwell): smaller, richer, no access point; its stairs come out on the next floor. */
   function hiddenFloor(base) {
-    return Object.assign({}, base, { id: base.id + '-h', label: `${base.gameFloor}F·B`, hiddenFloor: true, top: false, op: null, last: false, access: 0, layers: 4, guardian: null,
+    return Object.assign({}, base, { id: base.id + '-h', label: `${base.gameFloor}F·B`, hiddenFloor: true, top: false, op: null, last: false, access: 0, layers: 4, guardian: null, superboss: null, landing: false, gate: false,
       nav: 'secretFloor', rooms: { chest: 2.6, vault: 4, rare: 3, puzzle: 2, rest: 1.5, event: 1.6, altar: 1.5, shadow: 0.55, trap: 0.6, empty: 0.3 } });
   }
   /* Each new room's contents, once the map exists. */
   function dress(map, floor, c) {
     const R = c.rand, bi = Math.min(floor.bi || 0, RARE_BY_BLOCK.length - 1);
-    const rareLvl = Math.max(D.enemies[RARE_BY_BLOCK[bi]].lvl, (floor.lvl || 6) + 2 + (floor.fi || 0));
+    const rareLvl = Math.max(D.enemies[RARE_BY_BLOCK[bi]].lvl, (floor.lvl || 6) + 2 + Math.round((floor.t || 0) * 8));
     const K = ['lantern', 'slide', 'switch'];
     map.nodes.forEach(n => {
-      if (n.type === 'guardian') { const k = n.kind || floor.guardian; const extra = floor.secret && floor.gameFloor > 220 ? 4 : 0; n.group = [extra ? `${k}@${D.enemies[k].lvl + extra}` : k]; }
+      if (n.type === 'guardian') n.group = [n.kind || floor.guardian];
+      if (n.type === 'super') { const k = n.kind || floor.superboss; n.kind = k; n.group = [k].concat(D.enemies[k].escort || []); }
       if (n.type === 'vault') n.guard = (floor.strong && floor.strong.length ? pick(R, floor.strong) : pick(R, floor.pool)).slice();
       if (n.type === 'puzzle') { n.puzzle = window.__ttPuzzle || (floor.blockId === 'arqa' || floor.blockId === 'tziah' ? pick(R, K.concat('lantern')) : pick(R, K)); n.seed = 1 + Math.floor(R() * 1e9); }
       if (n.type === 'rare') n.group = [`${RARE_BY_BLOCK[bi]}@${rareLvl}`];
@@ -196,7 +260,9 @@ window.FemcTartarus = (() => {
     const fresh = pool.filter(id => !owned(id));
     return (fresh.length ? pick(R, fresh) : pool.length ? pick(R, pool) : rare.length ? pick(R, rare) : null);
   }
-  /* A room's reward. kind: puzzle | vault | guardian | rare | hidden | stash. Returns { yen, items, mats, gear, card, plumes, echo }. */
+  /* A room's reward. kind: puzzle | vault | guardian | rare | hidden | stash | super (a superboss's first fall) | super2 (a
+     rematch). Returns { yen, items, mats, gear, card, plumes, echo }. Velvet Plumes (story only): a guardian 2 (guaranteed, and
+     guardians fall once a playthrough), a superboss 5 the first time; vaults, golden Shadows and hidden rooms sometimes 1. */
   function loot(kind, c, floor) {
     const R = c.rand, bi = floor.bi || 0, T = D.map.chest.items, tier = Math.min(7, bi + 1), out = { yen: 0, items: {}, mats: {}, gear: null, card: null, plumes: 0 };
     const item = k => { const t = T[Math.min(bi + k, T.length - 1)]; const id = pick(R, t); out.items[id] = (out.items[id] || 0) + 1; };
@@ -211,7 +277,13 @@ window.FemcTartarus = (() => {
       if (story && R() < 0.35) out.plumes = 1;
       if (story && R() < 0.2) out.items.capsule_ticket = (out.items.capsule_ticket || 0) + 1;
     }
-    if (kind === 'guardian') { out.yen = roll(R, yenRange(bi, 2)); out.gear = gearPick(R, bi, c.save, false); card(4); mat('velvet_thread'); if (story) out.plumes = 1; }
+    if (kind === 'guardian') { out.yen = roll(R, yenRange(bi, 2)); out.gear = gearPick(R, bi, c.save, false); card(4); mat('velvet_thread'); if (story) out.plumes = 2; }
+    if (kind === 'super') {
+      out.yen = roll(R, yenRange(bi, 5)); item(2); item(2); mat('velvet_thread', 2); out.gear = gearPick(R, bi, c.save, true); card(5);
+      out.items.tartarus_key = (out.items.tartarus_key || 0) + 1;
+      if (story) { out.plumes = 5; out.items.capsule_ticket = (out.items.capsule_ticket || 0) + 1; }
+    }
+    if (kind === 'super2') { out.yen = roll(R, yenRange(bi, 2.5)); item(1); mat('velvet_thread'); if (R() < 0.5) card(4); }
     if (kind === 'rare') {
       out.yen = roll(R, yenRange(bi, 3)); mat('gilded_scale');
       if (story && R() < 0.35) out.items.capsule_ticket = 1;
@@ -222,7 +294,7 @@ window.FemcTartarus = (() => {
     if (kind === 'stash') { out.yen = roll(R, yenRange(bi, 0.6)); item(0); }
     if (floor.secret && kind !== 'stash') mat('monad_sand', 1 + (R() < 0.5 ? 1 : 0));
     // A rare Echo for Solar (echoes.js; story only): golden Shadows 30%, vaults 15%, hidden rooms 20%.
-    const echoOdds = { rare: 0.3, vault: 0.15, hidden: 0.2 }[kind];
+    const echoOdds = { rare: 0.3, vault: 0.15, hidden: 0.2, super: 0.5 }[kind];
     if (story && echoOdds && window.FemcEchoes && R() < echoOdds) out.echo = window.FemcEchoes.dropPick(R, c.save);
     if (!out.echo) delete out.echo;
     if (!story && out.items.capsule_ticket) { delete out.items.capsule_ticket; out.yen += 500; } // practice has no capsule machine
@@ -326,6 +398,26 @@ window.FemcTartarus = (() => {
       if (!floor.hiddenFloor && !c.save.tt.guardians.includes(floor.id)) c.save.tt.guardians.push(floor.id);
       c.mark('guardian-win'); c.say('guardianWin');
       await showLoot(c, floor, loot('guardian', c, floor), { title: 'GUARDIAN DOWN', kicker: `${d.name} · beaten`, name: 'guardian-loot', line: c.navLine('guardianWin') });
+      return null;
+    },
+    // A superboss's sealed door (2026-10-31). Stepping in only asks; "Leave it shut" leaves the party standing in the doorway.
+    async super(c, floor, n) {
+      if (n.cleared) return null;
+      const k = n.kind || floor.superboss, d = D.enemies[k], beat = (c.save.tt.supers || []).includes(k);
+      c.tip('superboss');
+      const v = await panel(c, floor, { cls: 'event tt-guardian tt-super', kicker: `${kick(floor)} · ${beat ? 'Superboss' : 'A sealed door'}`, title: esc((beat ? d.name : 'A sealed door').toUpperCase()), name: 'super',
+        body: beat ? `<p>${esc(d.note)}</p><p class="tt-note">You beat it once. The door opens for a rematch any time (no plumes this time).</p>`
+          : `<p>A door of black lacquer with no handle, cold to the touch, a seal across it the size of a hand. Something on the other side breathes slower than anything should.</p><p class="tt-note">${esc(d.name)} · Lv ${d.lvl}. Optional, far stronger than this floor, and generous the first time it falls.</p>`,
+        buttons: [{ v: 'fight', label: beat ? 'Fight it again' : 'Break the seal', pink: true, small: 'A superboss · two actions a turn' }, { v: 'back', label: 'Leave it shut', small: 'It will wait' }], fuuka: c.navLine('superDoor') });
+      if (v !== 'fight') return null;
+      const r = await c.fight({ group: n.group, strong: true, music: 'villain', nav: 'superboss' });
+      if (r === 'over' || r === 'savepoint') return r;
+      if (r !== 'win') { c.MAP.retreat(c.run.map); c.say('escape'); return null; }
+      n.cleared = true;
+      const first = !beat;
+      if (first) { (c.save.tt.supers || (c.save.tt.supers = [])).push(k); c.mark('super-first'); }
+      c.mark('super-win'); c.persist();
+      await showLoot(c, floor, loot(first ? 'super' : 'super2', c, floor), { title: first ? 'SUPERBOSS DOWN' : 'DOWN AGAIN', kicker: `${d.name} · beaten`, name: 'super-loot', line: c.navLine('superWin') });
       return null;
     },
     async vault(c, floor, n) {
@@ -437,14 +529,14 @@ window.FemcTartarus = (() => {
       const left = fragsLeft(c);
       if (fragsOpen(c) && left.length && c.rand() < D.events.memoryChance && !window.__ttEvent) { await c.memoryFound(pick(c.rand, left)); return null; }
       const seen = c.run.ttSeen || (c.run.ttSeen = []);
-      const fit = EVENTS.filter(e => (!e.who || team(c).includes(e.who)) && (!e.when || e.when(c, floor)) && !seen.includes(e.id));
+      const fit = EVENTS.filter(e => fits(c, floor, e) && !seen.includes(e.id));
       const forced = window.__ttEvent && EVENTS.find(e => e.id === window.__ttEvent);
       if (!forced && (!fit.length || c.rand() < 0.15)) {
         c.mark('event-line');
         await panel(c, floor, { cls: 'event', title: '…', body: '', fuuka: D.events.lines[Math.floor(c.rand() * D.events.lines.length)], name: 'event' });
         return null;
       }
-      const e = forced || fit[Math.floor(c.rand() * fit.length)];
+      const e = forced || pickEvent(c, fit);
       seen.push(e.id);
       return runEvent(c, floor, e);
     },
@@ -463,8 +555,10 @@ window.FemcTartarus = (() => {
         if (v === 'leave') { c.mark('leave'); return 'leave'; }
         return null;
       }
+      const sk = skipTo(c, c.run.fi), far = sk >= 0 ? c.D.floors[sk] : null;
       const v = await panel(c, floor, { cls: 'stairs', title: 'STAIRS', name: 'stairs', body: `<p>The stairs lead up to <b>${esc(next.label)}</b>.</p>`,
-        buttons: [{ v: 'up', label: `Go up to ${next.label}`, pink: true }, { v: 'no', label: 'Not yet' }], fuuka: c.navLine('stairs') });
+        buttons: [{ v: 'up', label: `Go up to ${next.label}`, pink: true }].concat(far ? [{ v: 'skip', label: `Climb on to ${far.label}`, small: `Past ${sk - c.run.fi - 1} mapped landing${sk - c.run.fi - 1 === 1 ? '' : 's'}` }] : [], [{ v: 'no', label: 'Not yet' }]), fuuka: c.navLine(far ? 'skip' : 'stairs') });
+      if (v === 'skip' && far) { c.run.skipTo = sk; c.mark('stairs-skip'); return 'up'; }
       return v === 'up' ? 'up' : null;
     }
   };
@@ -549,20 +643,174 @@ window.FemcTartarus = (() => {
     { id: 'jh-capsule', who: 'jihoon', title: 'A CAPSULE', body: 'A gacha capsule rolls across the floor and stops at Jihoon’s foot.', say: ['Sol. Sol. It’s a sign. The universe wants me to win.', 'win'],
       choices: [{ v: 'ok', label: 'Open it', run: c => { if (c.HO && D.items.capsule_ticket) { c.addItem('capsule_ticket', 1); c.persist(); return 'Inside: a Capsule Ticket. Jihoon is unbearable about it.'; } c.save.yen += 500; c.persist(); return `Inside: ${c.yen(500)}, folded very small.`; } }] },
     { id: 'mj-frame', who: 'minji', title: 'A FRAME', body: 'Minji stops and frames the corridor between her fingers.', say: ['Hold on. The light up ahead is weird. Like something’s there.', 'idle'],
-      choices: [{ v: 'ok', label: 'Look where she’s looking', run: c => { const f = lookAround(c, 2); return f ? 'She’s right: there’s a hollow behind the wall up ahead.' : 'The rooms ahead come into focus on the map.'; } }] }
+      choices: [{ v: 'ok', label: 'Look where she’s looking', run: c => { const f = lookAround(c, 2); return f ? 'She’s right: there’s a hollow behind the wall up ahead.' : 'The rooms ahead come into focus on the map.'; } }] },
+
+    /* ── Phase 1 of the finish roadmap (2026-10-31): 33 more, funny, scary, lore-ish and (gated on the romance route and rank)
+       romantic. They play in event rooms and as arrival events (arrive() below). `love: n`: only with that member on the romance
+       route at rank n or more (save.bondsLove / bonds, from the life sim; never while the link is reversed). `weight`: how often
+       it's picked against the rest (1 when not given). ── */
+    { id: 'phone', title: 'A PHONE, RINGING', body: 'A flip phone on the floor, ringing. The screen says MOM.',
+      choices: [
+        { v: 'answer', label: 'Answer it', run: c => { heal(c, 0.1, 0); return 'Static, then a woman asking if you’ve eaten. Solar says yes. She sounds relieved and hangs up. Everyone feels oddly looked after: 10% HP back.'; } },
+        { v: 'no', label: 'Let it ring', run: () => 'It rings eleven more times. Then, very faintly, the beep of a voicemail nobody leaves.' }] },
+    { id: 'tiny', title: 'A VERY SMALL SHADOW', body: 'A Maya no bigger than a teacup is trying to climb the stairs, one step at a time. It is not going well.',
+      choices: [
+        { v: 'help', label: 'Help it up', run: c => { c.run.ttExp = { n: 1, v: 0.25 }; return 'You set it on the top step. It looks back once, then wobbles off into the dark. Fuuka says her readings went soft for a second. The next fight gives 25% more EXP.'; } },
+        { v: 'shoo', label: 'Shoo it', run: (c, f) => `It squeaks and drops something as it runs: ${c.yen(yenGift(c, f, 40))}.` }] },
+    { id: 'desk', title: 'A SCHOOL DESK', body: 'A school desk alone in the corridor, a name carved into the lid and scratched out. In the drawer, a test paper: every answer right, no name.',
+      choices: [
+        { v: 'keep', label: 'Look in the drawer again', run: (c, f) => `Under the test, a ${giveItem(c, f)}, and a pencil worn down to nothing.` },
+        { v: 'no', label: 'Close the drawer', run: () => 'Somebody earned that score. You leave it where they can find it.' }] },
+    { id: 'backwards', title: 'A CLOCK RUNNING BACKWARDS', body: 'A wall clock, its hands spinning the wrong way. Every time they pass twelve, the lights dim.',
+      choices: [
+        { v: 'stop', label: 'Pull the battery', run: c => { hush(c, 4); return 'Silence. The lights stay on. Whatever was counting along loses its place: the Reaper is 4 steps further off.'; } },
+        { v: 'watch', label: 'Watch it pass twelve', run: c => { steps(c, 2); c.run.ttEdge = (c.run.ttEdge || 0) + 1; return 'It passes twelve. Somewhere far off, something laughs. Everyone’s nerves are up: the next fight starts with Attack up, and the Reaper comes 2 steps sooner.'; } }] },
+    { id: 'prints', title: 'FOOTPRINTS', body: 'Wet footprints on a dry floor, small and bare, going the way you’re going. They stop in the middle of the corridor, as if whoever made them was lifted.',
+      choices: [
+        { v: 'follow', label: 'Follow them', run: c => { routeToStairs(c); return 'You follow them as far as they go, and a little further. The way to the stairs is marked on the map. Nobody says anything for a while.'; } },
+        { v: 'no', label: 'Walk around them', run: () => 'Everyone steps around them, carefully, without agreeing to.' }] },
+    { id: 'tally', title: 'WRITING ON THE WALL', body: 'Chalk on the wall in a careful hand: a tally of days, hundreds of marks. Under them: “If you’re reading this, it’s still the same night.”',
+      choices: [
+        { v: 'mark', label: 'Add a mark', run: c => { heal(c, 0, 0.2, 'solar'); return 'Solar adds one mark. It feels important to. Haenim hums, low: Solar gets 20% SP back.'; } },
+        { v: 'no', label: 'Leave it', run: () => 'You leave it. On the way out, Solar counts. She loses count.' }] },
+    { id: 'lift', title: 'AN ELEVATOR', body: 'Elevator doors set into the wall, one button, lit. Tartarus doesn’t have elevators.',
+      choices: [
+        { v: 'press', label: 'Press it', run: (c, f) => { if (c.rand() < 0.55) return `It dings. Inside: a mirror, a potted fern and ${c.yen(yenGift(c, f, 90))} in the corner. Nobody asks.`; steps(c, 2); return 'The doors open on nothing: a long drop and a breeze coming up. You let them close. Something below heard the ding: the Reaper comes 2 steps sooner.'; } },
+        { v: 'no', label: 'Take the stairs like a normal person', run: () => 'Junpei, if he were here, would have pressed it.' }] },
+    { id: 'musicbox', title: 'A MUSIC BOX', body: 'A music box on a little stand, playing a tune that sounds a lot like the monorail chime.',
+      choices: [
+        { v: 'wind', label: 'Wind it', run: c => { heal(c, 0, 0.1); return 'It plays all the way through, slower each time. Everyone gets 10% SP back.'; } },
+        { v: 'close', label: 'Close the lid', run: (c, f) => `The tune stops. Under the felt: ${c.yen(yenGift(c, f, 50))}.` }] },
+    { id: 'masks', title: 'A PILE OF MASKS', body: 'A heap of white masks, the kind the Shadows wear, all face down. One of them is face up. It is looking at Solar.',
+      choices: [
+        { v: 'turn', label: 'Turn it over', run: c => { c.run.ttWard = (c.run.ttWard || 0) + 2; return 'It’s warm. Fuuka says the floor went quieter. The next two fights start with Defense up.'; } },
+        { v: 'go', label: 'Leave. Fast.', run: c => { hush(c, 2); return 'Nobody runs. Everybody walks very quickly. The Reaper is 2 steps further off.'; } }] },
+    { id: 'omikuji', title: 'A FORTUNE SLIP', body: 'A paper fortune tied to a rail, the kind from the shrine on the hill, addressed to nobody.',
+      choices: [
+        { v: 'read', label: 'Read it', run: (c, f) => { const r = c.rand(); if (r < 0.35) { c.run.ttExp = { n: 2, v: 0.25 }; return 'Great blessing. The next two fights give 25% more EXP.'; } if (r < 0.6) { c.run.ttSnare = true; return 'Curse. Of course it is. The next fight starts with everyone slowed (Agility down).'; } return `Small blessing. Folded inside: ${c.yen(yenGift(c, f, 60))}.`; } },
+        { v: 'no', label: 'Tie it back', run: () => 'You knot it back on the rail. It flutters like it’s relieved.' }] },
+    { id: 'quiet', title: 'A SIGN', body: 'A hand-lettered sign taped to the wall: “QUIET HOURS IN EFFECT. THE MANAGEMENT.” The Shadows nearby seem to be respecting it.',
+      choices: [
+        { v: 'tiptoe', label: 'Tiptoe', run: c => { hush(c, 3); return 'Everyone tiptoes. It’s ridiculous. It works: the Reaper is 3 steps further off.'; } },
+        { v: 'knock', label: 'Knock on the wall', run: async (c, f) => ambush(c, f) }] },
+    { id: 'feather', weight: 0.3, when: c => !!c.HO, title: 'A BLUE FEATHER', body: 'A single blue feather turning slowly in the air, never landing. It smells faintly of old velvet and piano wire.',
+      choices: [{ v: 'catch', label: 'Catch it', run: c => { c.plumes(1); return 'It settles into Solar’s palm like it was waiting for her: a Velvet Plume.'; } }] },
+    { id: 'radio', title: 'A RADIO', body: 'A transistor radio tuned between stations. Under the static, a voice is reading out floor numbers, counting up. It is a few floors ahead of you.',
+      choices: [
+        { v: 'off', label: 'Turn it off', run: c => { lookAround(c, 2); return 'Click. In the quiet, Fuuka’s reading sharpens: the rooms nearby show on the map.'; } },
+        { v: 'listen', label: 'Keep listening', run: c => { steps(c, 2); c.carryEach(u => { u.th = Math.min(100, (u.th || 0) + 10); }); return 'It reaches this floor’s number and stops. Then it says Solar’s name, once, politely. Everyone’s Theurgy gauge rises a little, and the Reaper comes 2 steps sooner.'; } }] },
+    { id: 'booth', title: 'A PHOTO STRIP', body: 'A photo booth strip pinned to the wall: four frames, four strangers laughing. In the last frame, everyone is looking at something just out of shot.',
+      choices: [
+        { v: 'keep', label: 'Keep it', run: c => { c.run.ttEdge = (c.run.ttEdge || 0) + 1; return 'Solar tucks it in her pocket. They look like they had a good night. The next fight starts with Attack up.'; } },
+        { v: 'no', label: 'Leave it pinned', run: () => 'You leave it for whoever comes looking.' }] },
+    { id: 'hum', title: 'HUMMING', body: 'Fuuka has been humming over the comms for a whole floor without noticing.',
+      choices: [
+        { v: 'tell', label: 'Tell her', run: c => { heal(c, 0, 0.1); return '“Was I? I was. Oh no.” Everyone laughs, which helps: 10% SP back.'; } },
+        { v: 'let', label: 'Let her', run: c => { c.run.ttWard = (c.run.ttWard || 0) + 1; return 'Nobody says anything. It’s nice. The next fight starts with Defense up.'; } }] },
+    { id: 'jun-caps', who: 'junpei', title: 'A SECOND CAP', body: 'Junpei finds a baseball cap on a hook, puts it on over his own, and turns around slowly.', say: ['Double cap. Double luck. That’s just math.', 'win'],
+      choices: [{ v: 'ok', label: '“That’s not math.”', run: c => { c.run.ttEdge = (c.run.ttEdge || 0) + 1; return '“It’s Junpei math.” It is, somehow, working: the next fight starts with Attack up.'; } }] },
+    { id: 'yuka-arrow', who: 'yukari', title: 'AN ARROW IN THE WALL', body: 'An arrow is buried in the plaster, pink fletching. Yukari stares at it.', say: ['That’s mine. From weeks ago. Floors and floors down. How is it up here?', 'hurt'],
+      choices: [
+        { v: 'take', label: 'Pull it out for her', run: c => { c.run.ttEdge = (c.run.ttEdge || 0) + 1; return 'It comes out clean. Yukari puts it back in her quiver like she’s making a point to the tower. The next fight starts with Attack up.'; } },
+        { v: 'no', label: 'Leave it', run: () => '“Yeah. Leave it. I don’t want to know.”' }] },
+    { id: 'aki-watch', who: 'akihiko', title: 'A STOPWATCH', body: 'Akihiko has had his stopwatch running since the stairs.', say: ['Two minutes forty on this floor so far. We can beat that. Race you.', 'win'],
+      choices: [
+        { v: 'race', label: 'Race him', run: c => { routeToStairs(c); hush(c, 2); return 'Solar wins by half a step. He demands a rematch on the next floor. The way to the stairs is marked, and the Reaper is 2 steps further off.'; } },
+        { v: 'no', label: '“It’s not a track meet.”', run: () => '“Everything’s a track meet.”' }] },
+    { id: 'mit-tea', who: 'mitsuru', title: 'A TEA SET', body: 'A tea set laid out on a low table, the pot still warm. Mitsuru lifts the lid and breathes in.', say: ['Earl Grey, properly steeped. Whatever lives here has standards.', 'idle'],
+      choices: [{ v: 'ok', label: 'Pour a cup each', run: c => { heal(c, 0, 0.15); return 'It is, unfairly, excellent. Everyone gets 15% SP back.'; } }] },
+    { id: 'aig-cat', who: 'aigis', title: 'A STONE CAT', body: 'Aigis kneels in front of a small stone cat on the floor and waits.', say: ['I am attempting friendship. It has not responded. I will be patient.', 'idle'],
+      choices: [
+        { v: 'wait', label: 'Wait with her', run: c => { c.carryEach(u => { u.th = Math.min(100, (u.th || 0) + 10); }); return 'After a while she nods, satisfied. “We have an understanding.” Everyone’s Theurgy gauge rises a little.'; } },
+        { v: 'go', label: '“Aigis, it’s a statue.”', run: () => '“Statues are very good listeners.” She stands. “Let us continue.”' }] },
+    { id: 'koro-ball', who: 'koromaru', title: 'A TENNIS BALL', body: 'A tennis ball bounces down the corridor out of nowhere. Koromaru is already gone after it.', say: ['*a single, delighted bark from very far away*', 'win'],
+      choices: [{ v: 'ok', label: 'Wait for him', run: (c, f) => `He comes back with the ball, and something else in his mouth: a ${giveItem(c, f)}. Good boy.` }] },
+    { id: 'ken-stance', who: 'ken', title: 'A STANCE', body: 'Ken stops to run through a spear stance, then glances at Solar.', say: ['Is my grip right? Don’t go easy on me.', 'idle'],
+      choices: [{ v: 'ok', label: 'Fix his grip', run: c => { c.run.ttEdge = (c.run.ttEdge || 0) + 1; return 'Two fingers lower. He tries it, and his whole face changes. The next fight starts with Attack up.'; } }] },
+    { id: 'shin-stray', who: 'shinjiro', title: 'A STRAY', body: 'Shinjiro is crouched by the wall with an open can of something he definitely didn’t bring for this. In front of him, a tiny Shadow is eating.', say: ['It’s a Shadow. I know. …It’s small.', 'idle'],
+      choices: [
+        { v: 'wait', label: 'Give him a minute', run: c => { c.run.ttWard = (c.run.ttWard || 0) + 1; heal(c, 0.1, 0); return 'When it’s done it melts into the floor, full. He stands up like nothing happened. Everyone gets 10% HP back, and the next fight starts with Defense up.'; } },
+        { v: 'tease', label: '“You’re a softie.”', run: () => '“Say that again and you’re carryin’ the bags.”' }] },
+    { id: 'hc-mirror', who: 'haechan', title: 'A MIRROR', body: 'A mirror on the wall. Haechan is fixing his hair in it, very seriously.', say: ['Is my hair okay. Don’t lie to me. We could die in here.', 'idle'],
+      choices: [
+        { v: 'yes', label: '“It’s perfect.”', run: c => { c.run.ttEdge = (c.run.ttEdge || 0) + 1; return '“I know. I just wanted to hear it.” The next fight starts with Attack up.'; } },
+        { v: 'prank', label: '“There’s a Shadow on your head.”', run: c => { heal(c, 0, 0.1); steps(c, 1); return 'He screams. Everyone else laughs so hard it echoes. 10% SP back, and the Reaper heard all of it (1 step sooner).'; } }] },
+    { id: 'jw-notes', who: 'jungwon', title: 'A NOTEBOOK', body: 'Jungwon has been drawing the floor in a small notebook as you walk, in very neat pencil.', say: ['I think the stairs are this way. I could be wrong. I’m usually not.', 'idle'],
+      choices: [{ v: 'ok', label: 'Look at his map', run: c => { routeToStairs(c); return 'He’s not wrong. The way to the stairs is marked on the map.'; } }] },
+    { id: 'jh-selfie', who: 'jihoon', title: 'A SELFIE', body: 'Jihoon has his phone out. Behind him, at the end of the corridor, a Shadow is minding its own business.', say: ['Sol. Sol. One selfie. For the culture. It won’t notice.', 'win'],
+      choices: [
+        { v: 'ok', label: '“Fine. One.”', run: async (c, f) => { if (c.rand() < 0.6) { heal(c, 0, 0.1); return 'It’s a great picture. Jihoon is unbearable about it. Everyone gets 10% SP back from laughing at him.'; } return ambush(c, f); } },
+        { v: 'no', label: 'Take his phone', run: () => '“Wow. Censorship. In this economy.”' }] },
+    { id: 'mj-flash', who: 'minji', title: 'THE FLASH', body: 'Minji’s camera flash goes off by accident. For an instant, at the end of the corridor, something tall flinches away from the light.', say: ['Okay. I didn’t like that. Do I do it again?', 'hurt'],
+      choices: [
+        { v: 'again', label: '“Do it again.”', run: c => { const n = lookAround(c, 3); return n ? 'Flash. Nothing tall this time, but a hollow behind the wall shows up white. The rooms nearby show on the map.' : 'Flash. Nothing there now. The rooms nearby show on the map.'; } },
+        { v: 'no', label: '“Please don’t.”', run: c => { hush(c, 2); return 'She doesn’t. Everyone moves on a little faster: the Reaper is 2 steps further off.'; } }] },
+    { id: 'love-aki', who: 'akihiko', love: 5, title: 'THIRTY SECONDS', body: 'Fuuka’s signal drops out for thirty seconds. Akihiko notices before Solar does, and doesn’t waste any of them: her back to the cool wall, his forehead against hers, his breathing not quite steady for once.', say: ['Thirty seconds. I’ve done worse with less.', 'idle'],
+      choices: [
+        { v: 'kiss', label: 'Close the distance', run: c => { heal(c, 0.25, 0.25, 'solar'); return 'Then the comms crackle back, and he’s three steps away, very interested in a wall. Solar’s face stays warm all floor: 25% HP and SP back.'; } },
+        { v: 'later', label: '“Not here, partner.”', run: c => { c.run.ttEdge = (c.run.ttEdge || 0) + 1; return 'He grins like he already won. “Later, then.” The next fight starts with Attack up.'; } }] },
+    { id: 'love-shin', who: 'shinjiro', love: 5, title: 'HIS COAT', body: 'Solar shivers once. Shinjiro’s coat is around her shoulders before she can say she’s fine. It smells like him: cold air, something simmering, the smoke he says he quit.', say: ['Don’t. Just keep it on.', 'idle'],
+      choices: [
+        { v: 'keep', label: 'Keep it on', run: c => { heal(c, 0.2, 0.2, 'solar'); return 'It’s too big and she doesn’t care. Solar gets 20% HP and SP back.'; } },
+        { v: 'pull', label: 'Pull him in by the collar', run: c => { c.run.ttWard = (c.run.ttWard || 0) + 2; return 'For a second he forgets to scowl. “Tch. Not in front of the Shadows.” He doesn’t step back, though. The next two fights start with Defense up.'; } }] },
+    { id: 'love-hc', who: 'haechan', love: 5, title: 'LIGHTS OUT', body: 'The lights on this floor go out. In the dark a hand finds Solar’s waist, and a voice she’d know anywhere says, very close to her ear, “Relax. It’s me. Unless you wanted it to be someone else.”', say: ['Princess. Fuuka can’t see us for like a minute. Just saying.', 'win'],
+      choices: [
+        { v: 'use', label: 'Use the minute', run: c => { heal(c, 0, 0.25, 'solar'); return 'When the lights come back his hair is a mess and he looks extremely pleased with himself. Solar gets 25% SP back. Fuuka asks why everyone’s so quiet.'; } },
+        { v: 'push', label: 'Push him off, laughing', run: c => { c.run.ttEdge = (c.run.ttEdge || 0) + 1; return '“Rejected. Again. I live for this.” The next fight starts with Attack up.'; } }] },
+    { id: 'love-jw', who: 'jungwon', love: 5, title: 'A NARROW LEDGE', body: 'The floor narrows to a ledge over nothing. Jungwon goes first, turns, holds out his hand, and doesn’t let go on the other side, even once there’s room.', say: ['It’s still narrow here. Probably.', 'idle'],
+      choices: [
+        { v: 'hold', label: 'Don’t let go either', run: c => { heal(c, 0.15, 0.15, 'solar'); c.run.ttWard = (c.run.ttWard || 0) + 1; return 'Neither of you mentions it. His thumb moves over her knuckles, once. Solar gets 15% HP and SP back, and the next fight starts with Defense up.'; } },
+        { v: 'thanks', label: '“Thank you.”', run: () => '“Of course.” He sounds like he means more than that, and lets go a second late.' }] },
+    { id: 'love-jh', who: 'jihoon', love: 5, title: 'A SLOW SONG', body: 'Somewhere on this floor a speaker is playing a ballad, badly. Jihoon bows, very formally, and holds out a hand.', say: ['May I have this dance, Sol? The almighty Hoon is a phenomenal dancer.', 'win'],
+      choices: [
+        { v: 'dance', label: 'Dance with him', run: c => { heal(c, 0, 0.15); return 'He is a terrible dancer. He’s also warm, and holding her like she might go somewhere. For one song, she doesn’t. Everyone gets 15% SP back.'; } },
+        { v: 'foot', label: 'Step on his foot', run: c => { c.run.ttEdge = (c.run.ttEdge || 0) + 1; return '“Okay, that was on purpose.” He’s laughing anyway. The next fight starts with Attack up.'; } }] },
+    { id: 'love-mj', who: 'minji', love: 5, title: 'ONE MORE TAKE', body: 'Minji lowers her camera and just looks at Solar for a second, like the lens was in the way.', say: ['Don’t move. The light’s good. …You’re good.', 'idle'],
+      choices: [
+        { v: 'still', label: 'Stay still for her', run: c => { heal(c, 0.2, 0.2, 'solar'); return 'She tucks Solar’s hair behind her ear first, says “okay, now it’s perfect,” and only then takes the picture. Solar gets 20% HP and SP back.'; } },
+        { v: 'steal', label: 'Steal the camera', run: c => { c.run.ttEdge = (c.run.ttEdge || 0) + 1; return 'Now Minji’s the one in frame, laughing and grabbing for it. Solar keeps that shot. The next fight starts with Attack up.'; } }] }
   ];
-  async function runEvent(c, floor, e) {
+  const hush = (c, n) => { if (c.run.map) c.run.map.steps = Math.max(0, c.run.map.steps - n); };
+  const yenGift = (c, f, base) => { const y = Math.round(base * (1 + (f.bi || 0)) * (1 + c.rand()) / 10) * 10; c.save.yen += y; c.persist(); return y; };
+  // On the romance route at rank `min` or more, and not reversed (save.bondsLove / bonds / bondsRev; battle.js loveRank).
+  const love = (c, id, min) => (c.save.bondsLove || []).includes(id) && !(c.save.bondsRev || []).includes(id) && (+((c.save.bonds || {})[id]) || 0) >= min;
+  const fits = (c, floor, e) => (!e.who || team(c).includes(e.who)) && (!e.love || love(c, e.who, e.love)) && (!e.when || e.when(c, floor));
+  const pickEvent = (c, list) => { const w = {}; list.forEach((e, i) => { w[i] = e.weight != null ? e.weight : 1; }); return list[+pickW(c.rand, w)]; };
+  // A small chance of a Velvet Plume from any event (story only), on top of what the event gives.
+  const EVENT_PLUME = 0.04;
+  /* Arrival events (2026-10-31): now and then, stepping off the stairs, an event plays before the map. Never on a run's first
+     three floors or within three floors of the last one; then ARRIVE a floor (about one every five or six floors). Not on hidden
+     floors. Test hook: window.__ttArrive (an event id forces one, false never). */
+  const ARRIVE = 0.3;
+  async function arrive(c, floor) {
+    const r = c.run;
+    if (!r || floor.hiddenFloor || window.__ttArrive === false) return null;
+    r.ttSince = r.ttSince == null ? 0 : r.ttSince + 1;
+    const forced = typeof window.__ttArrive === 'string' && EVENTS.find(e => e.id === window.__ttArrive);
+    if (!forced && (r.ttSince < 3 || c.rand() >= ARRIVE)) return null;
+    const seen = r.ttSeen || (r.ttSeen = []);
+    const fit = EVENTS.filter(e => fits(c, floor, e) && !seen.includes(e.id));
+    if (!forced && !fit.length) return null;
+    const e = forced || pickEvent(c, fit);
+    r.ttSince = 0; seen.push(e.id); c.mark('arrive-event');
+    return runEvent(c, floor, e, { arrive: true });
+  }
+  async function runEvent(c, floor, e, o = {}) {
     c.mark('event'); c.mark('event-' + e.id);
     const body = typeof e.body === 'function' ? e.body(c, floor) : e.body;
     const ch = e.choices.filter(x => !x.need || team(c).includes(x.need));
-    const v = await panel(c, floor, { cls: 'event tt-event', title: e.title, name: 'event', body: `<p>${esc(body)}</p>${e.who && e.say ? sayHtml(c, e.who, e.say[0], e.say[1]) : ''}`,
-      buttons: ch.map((x, i) => ({ v: x.v, label: x.label, small: x.small, pink: i === 0, off: x.off ? x.off(c) : false })) });
+    const v = await panel(c, floor, { cls: 'event tt-event', kicker: o.arrive ? `${kick(floor)} · At the top of the stairs` : kick(floor), title: e.title, name: o.arrive ? 'arrive' : 'event', body: `<p>${esc(body)}</p>${e.who && e.say ? sayHtml(c, e.who, e.say[0], e.say[1]) : ''}`,
+      buttons: ch.map((x, i) => ({ v: x.v, label: x.label, small: x.small, pink: i === 0, off: x.off ? x.off(c) : false })), fuuka: o.arrive && !e.who ? c.navLine('arrive') : null });
     const x = ch.find(y => y.v === v) || ch[ch.length - 1];
     const out = await x.run(c, floor);
     if (out === 'over' || out === 'savepoint') return out;
-    if (['win', 'escaped', 'fled'].includes(out)) { if (out === 'escaped') { c.MAP.retreat(c.run.map); c.say('escape'); } return null; }
+    if (['win', 'escaped', 'fled'].includes(out)) { if (out === 'escaped' && !o.arrive) { c.MAP.retreat(c.run.map); c.say('escape'); } return null; }
+    // Now and then a Velvet Plume turns up too (story only; the feather event is its own).
+    const plume = !!c.HO && e.id !== 'feather' && c.rand() < EVENT_PLUME;
+    if (plume) { c.plumes(1); c.mark('event-plume'); }
     c.persist();
-    if (out) await panel(c, floor, { cls: 'event tt-event', title: e.title, name: 'event-out', body: `<p>${esc(out)}</p>` });
+    const text = [out, plume ? 'Tucked in among it all: a Velvet Plume.' : null].filter(Boolean);
+    if (text.length) await panel(c, floor, { cls: 'event tt-event', title: e.title, name: 'event-out', body: text.map(t => `<p>${esc(t)}</p>`).join('') });
     return null;
   }
   function routeToStairs(c) { const map = c.run.map, { prev } = c.MAP.bfs(map, map.stairs); let k = map.pos, i = 0; while (k && k !== map.stairs && i++ < 40) { const n = c.MAP.get(map, k); n.seen = n.known = true; n.route = true; k = prev[k]; } }
@@ -749,6 +997,7 @@ window.FemcTartarus = (() => {
   function info(n, c) {
     const t = look(n);
     if (t === 'guardian') { const d = D.enemies[(n.group || [n.kind || ''])[0].split('@')[0]] || {}; return n.cleared ? '<b>Guardian</b><span>Beaten. The way to the stairs is clear.</span>' : `<b>Guardian</b><span>${esc(d.name || 'Guardian')} · it blocks the stairs. Strong; beat it once.</span>`; }
+    if (t === 'super') { const d = D.enemies[n.kind || ''] || {}; return n.cleared ? '<b>Sealed door</b><span>Beaten. Its seal is broken.</span>' : `<b>Sealed door</b><span>${esc(d.name || 'Something')} · Lv ${d.lvl || '?'}. Optional and far stronger than this floor.</span>`; }
     if (t === 'vault') return `<b>Vault</b><span>${n.opened ? 'Opened.' : 'Sealed. A Tartarus Key opens it, or beat its guards.'}</span>`;
     if (t === 'puzzle') return `<b>Puzzle</b><span>${n.used ? 'Done here.' : `A ${esc((PUZZLES[n.puzzle] || PUZZLES.lantern).name)}. Solve it for a chest.`}</span>`;
     if (t === 'rest') return `<b>Rest spot</b><span>${n.used ? 'You rested here.' : 'Recover 35% HP and SP. Once.'}</span>`;
@@ -765,7 +1014,7 @@ window.FemcTartarus = (() => {
     return { side: side.length, done, stairs: map.nodes.find(n => n.id === map.stairs).visited };
   }
 
-  return { ROOMS, look, SIDE, sideDone, plan, dress, hiddenFloor, rooms, ownsStairs, monadOpen, floorOpen, afterMove, afterScan, chatter, info, goal,
-    loot, grant, lootHtml, battleMods, expBoost, TRAPS, OFFERS, EVENTS, BANTER, BLOCK_LINES, REST, puzzles: PUZZLES, slideSolve, rng,
+  return { ROOMS, look, SIDE, sideDone, plan, dress, hiddenFloor, rooms, ownsStairs, monadOpen, floorOpen, gates, skipTo, arrive, afterMove, afterScan, chatter, info, goal,
+    loot, grant, lootHtml, battleMods, expBoost, TRAPS, OFFERS, EVENTS, fits, love, BANTER, BLOCK_LINES, REST, puzzles: PUZZLES, slideSolve, rng,
     get state() { return state; } };
 })();

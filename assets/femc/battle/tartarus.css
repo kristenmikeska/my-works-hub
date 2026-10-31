@@ -14,6 +14,8 @@
 .bt-mapsvg .node.t-rare:not(.done) .tile { stroke-width: 4; animation: tt-gold 1.1s ease-in-out infinite alternate; }
 @keyframes tt-gold { from { filter: drop-shadow(0 0 6px rgba(255, 211, 107, .6)); } to { filter: drop-shadow(0 0 16px rgba(255, 211, 107, 1)); } }
 .bt-mapsvg .node.t-vault:not(.done) .tile { stroke-width: 4; }
+.bt-mapsvg .node.t-super:not(.done) .tile { stroke-width: 4.5; animation: tt-sb 1.6s ease-in-out infinite alternate; }
+@keyframes tt-sb { from { filter: drop-shadow(0 0 6px rgba(176, 107, 255, .55)); } to { filter: drop-shadow(0 0 18px rgba(176, 107, 255, 1)); } }
 
 /* The floor goal: find the stairs; the side rooms found and done. */
 .tt-goal { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -42,6 +44,9 @@
 /* ── Golden and guardian Shadows ── */
 .bt-enemy.golden .sh img, .bt-enemy.golden svg.sh { filter: sepia(1) saturate(4.6) hue-rotate(-10deg) brightness(1.15) drop-shadow(0 0 14px rgba(255, 211, 107, .85)); }
 .bt-enemy.guardian .sh img, .bt-enemy.guardian svg.sh { filter: drop-shadow(0 0 18px rgba(255, 59, 107, .75)) saturate(1.15); }
+/* Superbosses (2026-10-31): borrowed art, its own tint (--sb-tint, from the Shadow's data), a slow violet glow. */
+.bt-enemy.superboss .sh img, .bt-enemy.superboss svg.sh { filter: var(--sb-tint, none) drop-shadow(0 0 22px rgba(176, 107, 255, .85)) saturate(1.15); }
+.bt-room.tt-super .bt-room-in h1 { text-shadow: .05em .05em 0 #4a1a7a; }
 .bt-enemy.tt-fleeing { transition: translate .9s cubic-bezier(.5, 0, .9, .4), opacity .9s; translate: 60vw -6vh; opacity: 0; }
 
 /* ── Puzzles ── */
@@ -85,6 +90,7 @@
 @media (prefers-reduced-motion: reduce) {
   .bt-mapsvg .node.t-rare .tile { animation: none; }
   .tt-stone { transition: none; }
+  .bt-mapsvg .node.t-super .tile { animation: none; }
   .bt-enemy.tt-fleeing { transition: opacity .3s; translate: none; }
 }
 /* An Echo in the loot (echoes.js cardHtml: its art, a stand-in or its tarot card). */

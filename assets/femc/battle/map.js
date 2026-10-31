@@ -7,7 +7,8 @@
    type: start | shadow | chest | locked | clock | access | stairs | event | empty, and since 2026-10-25 (tartarus.js):
          guardian (a mini-boss between the stairs and the rest of the floor) | vault | puzzle | rest | rare | trap | altar | crack
    generate(floor, { rand, strongChance, plan }): plan (tartarus.js plan()) = { guardian: kind, crack: 'loot' | 'memory' |
-   'floor' | 'monad', force: [types next to the start] (tests) }. */
+   'floor' | 'monad', superboss: kind (2026-10-31: a sealed door off the way to the stairs, type 'super'), force: [types next to
+   the start] (tests) }. A landing (data.js floor.landing) is a short floor: one row of three rooms, one Shadow among them. */
 window.FemcTartarusMap = (() => {
   const D = () => window.FEMC_BATTLE_DATA;
 
@@ -55,7 +56,7 @@ window.FemcTartarusMap = (() => {
     const link = (a, b) => { if (a === b || a.links.includes(b.id)) return; a.links.push(b.id); b.links.push(a.id); };
     const unlink = (a, b) => { a.links = a.links.filter(x => x !== b.id); b.links = b.links.filter(x => x !== a.id); };
     for (let l = 0; l < L; l++) {
-      const n = l === 0 || l === L - 1 ? 1 : (R() < 0.55 ? 3 : 2);
+      const n = l === 0 || l === L - 1 ? 1 : floor.landing ? 3 : (R() < 0.55 ? 3 : 2);
       for (let r = 0; r < n; r++) add(l, r, n);
     }
     // Edges between neighbouring layers, by relative height; then make sure every room can be entered.
@@ -88,6 +89,9 @@ window.FemcTartarusMap = (() => {
       const g = place('guardian', n => n.layer === L - 2);
       if (g) { stairs.links.slice().forEach(id => { const o = nodes.find(x => x.id === id); if (o !== g) unlink(o, stairs); }); link(g, stairs); g.kind = plan.guardian; }
     }
+    // A superboss's door: deep in the floor but never the guardian's room (stepping in only asks; it never blocks the way).
+    if (plan.superboss) { const d = place('super', n => n.layer >= Math.max(1, L - 3) && n.layer < L - 1) || place('super'); if (d) d.kind = plan.superboss; }
+    if (floor.landing) place('shadow', n => n.layer === L - 2); // a landing's one Shadow comes first, so it's always there
     if (R() < (floor.access != null ? floor.access : 0.6)) place('access', n => n.layer <= Math.max(1, Math.floor(L / 2)));
     if (R() < M.clockChance) place('clock', n => n.layer >= 2);
     if (R() < M.lockedChance) place('locked', n => n.layer >= 2);
@@ -96,8 +100,7 @@ window.FemcTartarusMap = (() => {
     Object.keys(bias).filter(k => bias[k] >= 1.4 && M.weights[k] != null && !['shadow', 'empty', 'chest'].includes(k)).forEach(k => { if (R() < 0.45) place(k); });
     if (R() < 0.6) place('event');
     // Two Shadows at least, one of them guarding the way to the stairs.
-    place('shadow', n => n.layer === L - 2);
-    place('shadow', n => n.layer <= 2);
+    if (!floor.landing) { place('shadow', n => n.layer === L - 2); place('shadow', n => n.layer <= 2); }
     // The rest by weight: the block's `rooms` bias times the base weights, each type capped per floor.
     const W = {};
     Object.keys(M.weights).forEach(k => { W[k] = M.weights[k] * (bias[k] != null ? bias[k] : 1); });

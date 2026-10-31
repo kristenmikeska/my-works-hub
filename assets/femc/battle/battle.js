@@ -904,6 +904,7 @@
         <div class="bt-hub-menu">
           ${cont ? `<button type="button" class="bt-btn pink" data-go="cont"><span>Continue from ${esc(cont.label)}</span><small>Access point · ${esc(cont.block)}</small></button>` : ''}
           <button type="button" class="bt-btn${cont ? '' : ' pink'}" data-go="run"><span>${cont ? 'Start from the bottom' : 'Enter Tartarus'}</span><small>${save.cycle ? `Climbed ×${save.cycle}` : `${D.blocks.filter(b => !b.secret).length} blocks`}</small></button>
+          ${warpBtn(D.floors[0].id)}
           <button type="button" class="bt-btn" data-go="ops"><span>Full Moon Operations</span><small>${opsDone} / ${D.ops.length}</small></button>
           <button type="button" class="bt-btn" data-go="mall"><span>Paulownia Mall</span><small>${yen(save.yen)}</small></button>
           <div class="bt-hub-row"><button type="button" class="bt-btn" data-go="party"><span>Party</span><small>${save.party.length + 1} / 4</small></button><button type="button" class="bt-btn" data-go="equip"><span>Equip</span></button></div>
@@ -920,6 +921,7 @@
       const go = b.dataset.go;
       if (go === 'run') { sfx('ok'); startRun(null); }
       else if (go === 'cont') { sfx('ok'); startRun(save.reached); }
+      else if (go === 'warp') { sfx('ok'); warpScreen(D.floors[0].id); }
       else if (go === 'tree') { sfx('ok'); treeScreen(hub); }
       else if (go === 'party') { sfx('ok'); partyScreen(hub); }
       else if (go === 'personas') { sfx('ok'); personaScreen(hub); }
@@ -931,6 +933,35 @@
     }));
     buttonNav(el, { back: () => openSettings() });
     mark('hub');
+  }
+  /* Teleport (2026-10-31, finish roadmap phase 1): from the entrance to the first floor of any block already reached, or one of
+     Monad's date sections once it's found (tartarus.js gates). The story keeps to tonight's open blocks (hoStartFi) and Monad's
+     floors open tonight; practice to the blocks reached. `skip`: the floor the hub's own Enter button already starts on. */
+  const warpList = skip => (TT ? TT.gates(ttCtx(D.floors[0]), HO ? D.floors[hoStartFi()].bi : Infinity).filter(f => f.id !== skip) : []);
+  function warpBtn(skip) {
+    const n = warpList(skip).length;
+    return n ? `<button type="button" class="bt-btn" data-go="warp"><span>Teleport</span><small>${n} block start${n === 1 ? '' : 's'} reached</small></button>` : '';
+  }
+  function warpScreen(skip) {
+    screen = 'warp';
+    root.classList.remove('bt-in-battle');
+    const list = warpList(skip), topOf = f => { const fl = D.floors.filter(x => x.bi === f.bi), g = fl.filter(x => x.gate && x.gameFloor > f.gameFloor)[0]; return g ? fl[fl.indexOf(g) - 1] : fl[fl.length - 1]; };
+    const el = show(`<div class="bt-hub-copy">
+        <p class="bt-kicker">The Tartarus entrance · ${esc(NAVI.name)} can send you up</p>
+        <h1>TELEPORT<small>To the start of a block</small></h1>
+        <div class="bt-hub-menu">
+          ${list.map(f => `<button type="button" class="bt-btn" data-warp="${esc(f.id)}"><span>${esc(f.label)} · ${esc(f.block)}</span><small>${esc(`${f.secret ? 'A date section · ' : ''}up to ${topOf(f).label}${(save.tt.guardians || []).some(id => { const g = D.floors.find(x => x.id === id); return g && g.bi === f.bi; }) ? ' · guardian beaten' : ''}`)}</small></button>`).join('')}
+          <button type="button" class="bt-btn" data-warp=""><span>Back</span><small>To the entrance</small></button>
+        </div>
+        <p class="bt-hub-hint">Blocks you’ve reached, from their first floor. Access points still save where you got to.</p>
+      </div>`, 'bt-hub bt-warp');
+    el.querySelectorAll('[data-warp]').forEach(b => b.addEventListener('click', () => {
+      const id = b.dataset.warp;
+      if (!id) { sfx('back'); hub(); return; }
+      sfx('ok'); mark('warp'); mark('warp-' + id); startRun(id);
+    }));
+    buttonNav(el, { back: () => { sfx('back'); hub(); } });
+    mark('warp-screen');
   }
   function ctlFocus(sel) { const b = app.querySelector(sel); if (!b || !ctl) return; for (let i = 0; i < 8; i++) { if (document.activeElement === b) break; ctl.move(1); } }
 
@@ -1067,7 +1098,9 @@
       if (TT) TT.dress(run.map, floor, ttCtx(floor));
       mapPerks(floor, run.map);
       if (TT && !floor.hiddenFloor) tip('rooms');
-      const r = await explore(floor);
+      // A teleport point stood on (tartarus.js gates); now and then an event at the top of the stairs (TT.arrive) before the map.
+      if (floor.gate && !floor.hiddenFloor) { const g = save.tt.gates || (save.tt.gates = []); if (!g.includes(floor.id)) { g.push(floor.id); persist(); } }
+      const r = (TT && await TT.arrive(ttCtx(floor), floor)) || await explore(floor);
       if (r === 'secret') { run.hiddenOf = base.id; continue; }
       if (r === 'monad') { run.hiddenOf = null; run.fi = D.floors.findIndex(f => f.secret); continue; }
       // Sebastian's Save Point: the party wakes at the last access point instead of a Game Over (once a night).
@@ -1091,7 +1124,8 @@
           run = null; if (HO) return hoFinish('win'); hub(); return;
         }
       }
-      run.fi++;
+      // Stairs that skip mapped landings (tartarus.js skipTo) land on the floor they chose.
+      if (run.skipTo > run.fi) { run.fi = run.skipTo; run.skipTo = null; } else run.fi++;
     }
   }
   /* Rest: a Clock room, or before a full moon. Full HP/SP and no more fatigue. */
@@ -1792,9 +1826,12 @@
         return v === 'up' ? 'up' : null;
       }
       const next = D.floors[run.fi + 1];
+      // Landings above already mapped can be climbed straight past (tartarus.js skipTo).
+      const sk = TT ? TT.skipTo(ttCtx(floor), run.fi) : -1, far = sk >= 0 ? D.floors[sk] : null, nskip = sk - run.fi - 1;
       const v = await roomPanel({ bg: floor.bg, cls: 'stairs', kicker: `${floor.label} · ${floor.block}`, title: 'STAIRS', name: 'stairs',
         body: `<p>The stairs lead up to <b>${esc(next.label)}</b>${next.block !== floor.block ? `, into <b>${esc(next.block)}</b>` : ''}.</p>`,
-        buttons: [{ v: 'up', label: `Go up to ${next.label}`, pink: true }, { v: 'no', label: 'Not yet' }], fuuka: navLine('stairs') });
+        buttons: [{ v: 'up', label: `Go up to ${next.label}`, pink: true }].concat(far ? [{ v: 'skip', label: `Climb on to ${far.label}`, small: `Past ${nskip} mapped landing${nskip === 1 ? '' : 's'}` }] : [], [{ v: 'no', label: 'Not yet' }]), fuuka: navLine(far ? 'skip' : 'stairs') });
+      if (v === 'skip' && far) { run.skipTo = sk; mark('stairs-skip'); return 'up'; }
       return v === 'up' ? 'up' : null;
     }
     if (n.type === 'event' && !n.used) {
@@ -2148,7 +2185,8 @@
     const d = D.enemies[u.kind];
     const el = document.createElement('div');
     el.className = 'bt-enemy';
-    if (d.cls) el.classList.add(d.cls); // tartarus.js: 'golden' rare Shadows, 'guardian' block guardians
+    if (d.cls) el.classList.add(d.cls); // tartarus.js: 'golden' rare Shadows, 'guardian' block guardians, 'superboss'
+    if (d.tint) el.style.setProperty('--sb-tint', d.tint); // a superboss's tint over its borrowed art (tartarus.css)
     el.dataset.id = u.id;
     let body;
     const art = d.img && (window.FEMC_SHADOW_ART || {})[d.img];
@@ -4884,6 +4922,7 @@
         <div class="bt-hub-menu">
           ${cont ? `<button type="button" class="bt-btn pink" data-go="cont"><span>Continue from ${esc(cont.label)}</span><small>Access point · ${esc(cont.block)}</small></button>` : ''}
           <button type="button" class="bt-btn${cont ? '' : ' pink'}" data-go="run"><span>${start.fi === 0 && start.bi === 0 ? 'Enter Tartarus' : `Enter at ${esc(start.label)}`}</span><small>${esc(start.block)} · open up to ${esc(top.label)}</small></button>
+          ${warpBtn(start.id)}
           <button type="button" class="bt-btn bt-menu-btn" data-go="menu"><span>Menu</span><small>${mates ? `Party ${save.party.length + 1}/4 · ` : ''}Personas · Equipment · Items</small></button>
           <div class="bt-hub-row"><button type="button" class="bt-btn" data-go="tree"><span>Skills</span><small>Haenim · ${save.pts} SP</small></button><button type="button" class="bt-btn" data-go="dorm"><span>Return to the dorm</span><small>Not tonight</small></button></div>
         </div>
@@ -4897,6 +4936,7 @@
       const go = b.dataset.go;
       if (go === 'run') { sfx('ok'); startRun(start.id); }
       else if (go === 'cont') { sfx('ok'); startRun(save.reached); }
+      else if (go === 'warp') { sfx('ok'); warpScreen(start.id); }
       else if (go === 'tree') { sfx('ok'); treeScreen(hub); }
       else if (go === 'party') { sfx('ok'); partyScreen(hub); }
       else if (go === 'personas') { sfx('ok'); personaScreen(hub); }
@@ -5332,7 +5372,7 @@
     openSettings: k => openSettings(k), openHelp: t => openHelp(t), openLog, toggleRush, exportCode, parseCode, diff,
     screen: () => screen, marks, freeze() { frozen = true; if (FX) FX.pause(); }, unfreeze() { frozen = false; if (FX) FX.resume(); },
     awakening: () => awakening(app.firstElementChild || app),
-    get handoff() { return HO; }, get hs() { return HS; }, hoFinish: (o, x) => hoFinish(o, x), tt: f => ttCtx(f || D.floors[0]), climb: id => startRun(id || null), get mapLine() { return mapLine; }, // tests
+    get handoff() { return HO; }, get hs() { return HS; }, hoFinish: (o, x) => hoFinish(o, x), tt: f => ttCtx(f || D.floors[0]), climb: id => startRun(id || null), hub: () => hub(), get mapLine() { return mapLine; }, // tests
     reloadSave() { save = loadSave(); }, settingsChanged, get embedded() { return !!BR; },
     playEvents: evs => play(evs), // tests: play engine-shaped events through the real presentation (battle lines, cut-ins)
     music: { state: () => music.state(), play: (k, o) => music.play(k, o), world: n => music.world(n), endWorld: () => music.endWorld() }

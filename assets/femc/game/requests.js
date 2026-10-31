@@ -19,7 +19,8 @@
    ── Tartarus milestones (payFloors) ──
      Once per playthrough each: the first floor of each block and its summit (Monad: its first floor and the top of each date
      section, the floorCaps inside it), and each block guardian beaten (battle save tt.guardians). Amounts ENTER / TOP / GUARD /
-     MONAD (by block). Paid after every Tartarus night (core.js applyResult) and, for a save already past them, once after the
+     MONAD (by block); since 2026-10-31 Monad has a guardian in each date section (204F, 222F, 246F): 28 milestones, 111
+     plumes in all (the landings added between floors are never milestones). Paid after every Tartarus night (core.js applyResult) and, for a save already past them, once after the
      first save from a load (G.onChange, like stamps.js), with a toast. Claimed ids: S.gacha.miles, so they never repeat.
    ── The Plume Exchange (openExchange) ──
      Spare Revelation cards and surplus materials for plumes, at most EX.week plumes a game week (core.js weekOf: weeks start
