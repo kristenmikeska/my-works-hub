@@ -1,0 +1,72 @@
+/* Solstice restyle, part 2: the battle HUD and Tartarus (Kat's approved mockup, mockups/solstice-ui, Oct 31 2026).
+   battle.css and tartarus.css already carry the Dark Hour tokens (--acc gold, --acc-2 green, --deep green-black); this file
+   changes shapes where the mockup asks for more than a colour: the gold slash behind the picked command, paper name tags,
+   angular green-black panels, deep ink on gold. Loaded last on femc-battle.html. Battle UI cosmetics still work: they set
+   --pink / --pink-2 / --pink-3 / --night, which --acc / --acc-2 / --acc-3 / --deep read first. */
+
+/* ── Text that sits on the accent reads in deep ink, not white ── */
+.bt-btn.pink, .bt-tag.down, .bt-card .st i.dw, .bt-op.done .moon, .bt-set-row .ar:hover, .bt-card .st i.aggro { color: var(--deep); }
+.bt-btn.pink small { color: var(--acc-sh); }
+.bt-btn:is(:hover, :focus-visible, .on):not(:disabled) { background: var(--paper); }
+.bt-btn:is(:hover, :focus-visible, .on) small { color: var(--acc-dk); }
+
+/* ── Command menu: a paper bar with a gold slash behind it, deep ink (P3 Reload) ── */
+.bt-menu li { position: relative; }
+.bt-mi { background: linear-gradient(100deg, rgba(2, 12, 7, .94), rgba(6, 33, 20, .92)); box-shadow: 4px 4px 0 color-mix(in srgb, var(--acc-2) 30%, transparent); }
+.bt-mi.sel { background: var(--paper); color: var(--deep); box-shadow: 6px 6px 0 var(--deep); }
+.bt-mi.sel .bt-ico { color: var(--deep); }
+.bt-mi.sel .r { color: var(--acc-dk); }
+.bt-mi.sel .r.hp { color: #0c6a40; }
+.bt-mi.sel::after { border-right-color: var(--acc); filter: drop-shadow(2px 2px 0 var(--deep)); }
+.bt-menu li:has(> .bt-mi.sel)::before { content: ""; position: absolute; z-index: 0; left: -26px; right: -34px; top: -11px; bottom: -13px; pointer-events: none;
+  background: linear-gradient(100deg, var(--acc) 0%, var(--acc-hi) 55%, var(--acc) 100%); clip-path: polygon(0 66%, 100% 0, 100% 30%, 3% 100%);
+  animation: sb-slash .26s cubic-bezier(.2, .9, .2, 1) both; }
+.bt-menu li > .bt-mi { position: relative; z-index: 1; }
+@keyframes sb-slash { from { clip-path: polygon(0 66%, 0 62%, 0 94%, 0 100%); } to { clip-path: polygon(0 66%, 100% 0, 100% 30%, 3% 100%); } }
+.bt-mi.sel.off { background: #c4d2c8; color: #56625a; }
+.bt-mi.shift { background: var(--gold); color: var(--deep); }
+.bt-mi.shift.sel { background: var(--paper); box-shadow: 6px 6px 0 var(--deep); }
+.bt-desc { background: linear-gradient(100deg, rgba(2, 10, 5, .94), rgba(6, 33, 20, .9)); border-left-color: var(--acc-2); clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%); color: var(--acc-3); }
+.bt-desc b { color: var(--acc); }
+.bt-hint { color: color-mix(in srgb, var(--acc-2) 70%, #fff); opacity: .8; }
+
+/* The acting member's name: a paper tag with a gold edge; the Persona line on deep green */
+.bt-who .tag b { background: var(--paper); color: var(--deep); box-shadow: 4px 4px 0 var(--acc); }
+.bt-who .tag span { background: var(--deep); color: var(--acc-2); }
+.bt-who img { filter: drop-shadow(-8px 6px 0 color-mix(in srgb, var(--acc-2) 45%, transparent)); }
+
+/* ── Party cards: green-black panels with a green rim; the active one goes gold with deep ink ── */
+.bt-card { background: linear-gradient(110deg, rgba(2, 10, 5, .95) 55%, rgba(14, 59, 31, .94)); box-shadow: 5px 5px 0 color-mix(in srgb, var(--acc-2) 40%, transparent), inset 0 3px 0 color-mix(in srgb, var(--acc-2) 55%, transparent); }
+.bt-card .nm small { color: var(--acc-2); }
+.bt-card.active { color: var(--deep); background: linear-gradient(110deg, var(--acc) 0%, var(--acc-hi) 70%, var(--acc) 100%); box-shadow: 7px 7px 0 var(--paper), inset 0 3px 0 var(--paper); }
+.bt-card.active .nm small { color: var(--acc-sh); }
+.bt-card.active .bt-bar b, .bt-card.active .bt-bar.sp b { color: var(--deep); }
+.bt-card.active .bt-bar .track { background: rgba(2, 8, 5, .35); }
+.bt-card.active .bt-bar.hp .track i.f { background: linear-gradient(90deg, #0c8a50, #1fbf74); }
+.bt-card.active .bt-bar.hp.low .track i.f { background: linear-gradient(90deg, #c61f1f, #ff5a3a); }
+.bt-card.active .bt-bar.sp .track i.f { background: linear-gradient(90deg, #b8236f, #e0569e); }
+.bt-card.active .bt-bar .track i.g { background: var(--paper); }
+.bt-pop.sp .n { color: var(--sp); }
+
+/* ── Top bar and plates: angular panels ── */
+.bt-floorlabel { background: var(--deep); box-shadow: 5px 5px 0 color-mix(in srgb, var(--acc-2) 50%, transparent); }
+.bt-floorlabel b { color: var(--paper); }
+.bt-order li.now { box-shadow: 3px 3px 0 var(--acc); border-color: var(--acc); }
+.bt-plate { background: linear-gradient(100deg, rgba(2, 10, 5, .95), rgba(6, 33, 20, .93)); border-color: var(--acc-2); }
+.bt-plate b { color: var(--paper); }
+.bt-plate b small { color: var(--acc); }
+.bt-banner { background: var(--deep); border-color: var(--paper); box-shadow: 6px 6px 0 var(--acc); }
+.bt-tool { background: var(--deep); box-shadow: 3px 3px 0 var(--acc); }
+.bt-tool:is(:hover, :focus-visible) { background: var(--paper); color: var(--deep); }
+.bt-enemy.targeted .sh-pic img, .bt-enemy.targeted svg.sh { filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 14px color-mix(in srgb, var(--acc) 90%, transparent)); }
+.bt-enemy.targeted::before { border-top-color: var(--acc); filter: drop-shadow(3px 3px 0 var(--deep)); }
+
+/* The field: the Dark Hour's green wash and stripes instead of pink */
+.bt-bg::after { background: linear-gradient(180deg, rgba(2, 12, 6, .5), rgba(2, 10, 5, .58)); }
+
+/* ── Results: a gold band, paper and green-black rows ── */
+.bt-results::before { background: linear-gradient(170deg, var(--acc-hi), var(--acc) 45%, color-mix(in srgb, var(--acc) 80%, #000)); }
+.bt-res-row { border-color: color-mix(in srgb, var(--acc-2) 35%, transparent); }
+
+/* ── Hub (the practice page's own title screen) ── */
+.bt-hub-fig .band { background: linear-gradient(100deg, color-mix(in srgb, var(--acc-2) 30%, transparent), color-mix(in srgb, var(--acc-2) 5%, transparent)); box-shadow: 0 0 0 2px color-mix(in srgb, var(--acc-2) 40%, transparent); }
