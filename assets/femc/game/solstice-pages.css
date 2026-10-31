@@ -119,7 +119,7 @@
 @media (max-width: 700px), (max-aspect-ratio: 13/10) {
   .g-fm-ov.is-page .g-panel { --side: 14px; padding-top: 16px; padding-bottom: 10px; gap: 6px; }
   .g-fm-ov.is-page .g-fm-head { flex-wrap: wrap; row-gap: 8px; gap: 8px 10px; }
-  .g-fm-ov.is-page .g-pg-title { flex: 1 1 auto; min-width: 0; }
+  .g-fm-ov.is-page .g-pg-title { flex: 1 1 0; min-width: min-content; }
   .g-fm-ov.is-page .g-pg-h { font-size: clamp(30px, 9.6vw, 42px); }
   .g-fm-ov.is-page .g-fm-head .g-btn.small { padding: 6px 11px; font-size: 13px; }
   .g-pg-sub { margin-top: 6px; font-size: 14px; }
@@ -298,6 +298,7 @@
   .g-fm-ov.is-page .g-pm:is(:hover:not(.lead), :focus-visible) { transform: translateX(5px); }
   .g-fm-ov.is-page .g-pv-main { grid-template-columns: minmax(0, 1fr); }
   .g-fm-ov.is-page .g-pv-art img { max-height: 220px; }
+  .g-fm-ov.is-page .g-pv-art::before { left: 24%; right: 24%; }
   .g-fm-ov.is-page .g-pv-card { padding: 12px 26px 14px 14px; clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 100%, 0 100%); }
   .g-fm-ov.is-page .g-pv-card h2 { font-size: 40px; }
   .g-fm-ov.is-page .g-who-mini { padding-right: 12px; }
