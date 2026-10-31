@@ -666,15 +666,131 @@ window.FemcMenu = (() => {
       ${statsScreen()}
       ${Object.keys(s.exams).filter(k => s.exams[k].posted).length ? `<div class="g-st-party"><h3>Exams</h3><p>${Object.entries(s.exams).filter(([, x]) => x.posted).map(([k, x]) => `<span class="g-chip">${esc(G.D.q.exams[k]?.name || k)} · #${x.place}</span>`).join('')}</p></div>` : ''}`;
   }
-  function linksTab() {
-    const met = Object.values(G.LINKS).filter(l => G.isMet(l.id));
-    const B = BLD(), ctx = B ? perkCtx() : null, cur = sel.link && met.find(l => l.id === sel.link);
-    const detail = cur && B ? `<div class="g-link-perks"><p class="g-kicker">${esc(cur.short)} · ${esc(cur.arcana)} · bond perks</p>${perkList(cur.id, ctx)}<button type="button" class="g-btn small" data-link-close>Close</button></div>` : '';
-    return met.length ? `${detail}<div class="g-st-links">${met.map(l => { const p = G.progress(l.id), art = G.tarot(l), n = B ? B.perksOf(l.id).filter(x => ['own', 'party', 'assist'].includes(B.perkState(x, ctx))).length : 0; return `<button type="button" class="g-st-link${p.reversed ? ' rev' : ''}${cur === l ? ' on' : ''}" data-link="${l.id}"><div class="g-tarot"${art ? ` style="background-image:url('${art}')"` : ''}><span>${esc(l.numeral || '✦')}</span></div><div><b>${esc(l.short)}</b><small>${esc(l.arcana)}${p.reversed ? ' · Reversed' : ''}</small><p class="g-pips${G.maxOf(l) > 10 ? ' long' : ''}" aria-label="Rank ${p.rank} of ${G.maxOf(l)}">${Array.from({ length: G.maxOf(l) }, (_, k) => `<i class="${k < p.rank ? 'on' : ''}${k >= 10 ? ' ext' : ''}"></i>`).join('')}</p><small class="g-hint">${esc(G.isMaxed(l) ? 'MAX' : l.closes && S().day > G.dayOf(l.closes) && !G.stretchOn(l) ? 'Gone' : G.homeOf(l).hint || '')}</small>${B && B.perksOf(l.id).length ? `<small class="g-perkn">${n} perk${n === 1 ? '' : 's'} earned</small>` : ''}</div></button>`; }).join('')}</div>` : '<p class="g-note">No bonds yet. Go out after school and meet people.</p>';
+  /* ── LINKS: the Social Link screen (Kat's approved mockup, mockups/solstice-ui screen 4, in the game's pink and black) ──
+     Full screen like the menu screen: the slanted list of link cards on the left (arcana number, arcana, name, rank, pips),
+     the chosen one in paper with a pink slash; their tarot card tilted beside the list; the character standing large on the
+     right, fading out to the left; the arcana and full name top right with where to find them; a ghost word. Hover / focus
+     choose a card; a click / Enter opens that link's bond perks beside it (again closes them); Back / Esc go to the menu list.
+     Styles: solstice-links.css. Cards keep the old hooks ([data-link], .g-pips, .g-hint) the tests and other screens use. */
+  // Full-body art, measured once: [file, width/height, head top, head-to-chin, head centre x] (fractions of the image),
+  // as the mockup's FIG. Everyone is zoomed so their head comes out the same size.
+  const LINK_FIG = {
+    akihiko: ['profile/sees/akihiko.webp', .405, 0, .107, .62], yukari: ['profile/sees/yukari.webp', .286, .001, .135, .451],
+    junpei: ['profile/sees/junpei.webp', .351, .001, .135, .524], mitsuru: ['profile/sees/mitsuru.webp', .628, .05, .155, .43],
+    fuuka: ['profile/sees/fuuka.webp', .258, 0, .135, .411], aigis: ['profile/sees/aigis.webp', .694, .015, .11, .355],
+    koromaru: ['profile/sees/koromaru.webp', .529, .02, .19, .25], shinjiro: ['battle/art/poses/shinjiro.webp', 1.657, .01, .19, .61],
+    wren: ['profile/wren.webp', .259, 0, .135, .51], rio: ['profile/rio.webp', .522, .03, .25, .44], ann: ['profile/ann.webp', .954, .13, .22, .62],
+    saori: ['profile/saori.webp', .432, .01, .24, .44], kasumi: ['profile/kasumi.webp', .433, .19, .16, .45], haru: ['profile/haru.webp', .431, 0, .135, .441],
+    elizabeth: ['profile/elizabeth.webp', .26, 0, .135, .548], kiriko: ['profile/kiriko.webp', .541, .1, .2, .42], kuromi: ['profile/kuromi.webp', .652, .07, .24, .5],
+    mymelody: ['profile/mymelody.webp', .401, .04, .16, .43], mercy: ['profile/mercy.webp', .591, .03, .25, .42], sebastian: ['profile/sebastian.webp', .551, .019, .133, .373],
+    aphrodite: ['profile/aphrodite.webp', .603, .009, .134, .397], judy: ['profile/judy.webp', .522, .001, .135, .437], rohan: ['profile/rohan.webp', .671, .03, .24, .52],
+    widowmaker: ['profile/widowmaker.webp', .593, .004, .135, .48], haechan: ['profile/haechan.webp', .505, .01, .21, .576],
+    jungwon: ['profile/searchers/jungwon.webp', .349, 0, .13, .37], jihoon: ['profile/searchers/jihoon.webp', .339, .001, .135, .361],
+    minji: ['profile/searchers/minji.webp', .329, .001, .135, .604], hanni: ['profile/searchers/hanni.webp', .348, .001, .135, .433],
+    hyein: ['profile/searchers/hyein.webp', .278, .001, .135, .431], yunjin: ['profile/searchers/yunjin.webp', .41, .001, .135, .414],
+    mark: ['profile/searchers/mark.webp', .309, 0, .135, .322], jaehyun: ['profile/searchers/jaehyun.webp', .331, .001, .135, .328],
+    cherry: ['profile/searchers/cherry.webp', .306, .001, .135, .529], sunoo: ['profile/searchers/sunoo.webp', .36, .001, .135, .515],
+    junkyu: ['profile/searchers/junkyu.webp', .336, .002, .135, .408], danielle: ['profile/searchers/danielle.webp', .345, .001, .135, .489],
+    jaemin: ['profile/searchers/jaemin.webp', .296, .002, .135, .402], chenle: ['profile/searchers/chenle.webp', .289, 0, .135, .469] };
+  // No full-body art yet (FEMC-ART-TODO "Social Link full-body art"): their neutral portrait, bust-up, the head the same size.
+  // [width/height, head top, head-to-chin, head centre x] of portraits/<id>/neutral.webp; anyone else gets the middle values.
+  const LINK_BUST = { ken: [.913, .06, .52, .5], kat: [.978, .03, .62, .5], jay: [.956, .06, .66, .45], niki: [1.019, .08, .66, .5], sunghoon: [.994, .04, .66, .5] };
+  let linkAt = null; // the chosen card (hover / focus), kept across repaints
+  function linkFigure(l) {
+    const f = LINK_FIG[l.id];
+    if (f) return `<img src="${G.base}assets/femc/${f[0]}" alt="${esc(l.name)}" style="--ar:${f[1]};--ht:${f[2]};--hf:${f[3]};--hx:${f[4]}">`;
+    const src = G.portrait(l.id, 'neutral'), b = LINK_BUST[l.id] || [1, .05, .62, .5];
+    return src ? `<img class="bust" src="${src}" alt="${esc(l.name)}" style="--ar:${b[0]};--ht:${b[1]};--hf:${b[2]};--hx:${b[3]}">` : '';
   }
+  const linkGone = l => !!(l.closes && S().day > G.dayOf(l.closes) && !G.stretchOn(l));
+  function linkInfo(l, B, ctx) {
+    const p = G.progress(l.id), max = G.maxOf(l), n = B ? B.perksOf(l.id).filter(x => ['own', 'party', 'assist'].includes(B.perkState(x, ctx))).length : 0;
+    const where = G.isMaxed(l) ? 'MAX' : linkGone(l) ? 'Gone' : G.homeOf(l).hint || '';
+    return { p, max, n, has: !!(B && B.perksOf(l.id).length), where };
+  }
+  function linkDetail(l, B, ctx) {
+    const x = linkInfo(l, B, ctx);
+    const tags = [G.isMaxed(l) ? 'MAX' : `Rank ${x.p.rank} of ${x.max}`, x.p.reversed ? 'Reversed' : '', x.where === 'Gone' ? 'Gone' : '', x.p.route === 'romance' ? 'Romance' : '', x.has ? `${x.n} perk${x.n === 1 ? '' : 's'} earned` : ''].filter(Boolean);
+    return `<p class="an">${esc(l.arcana)}</p><p class="fn">${esc(l.name)}</p><p class="g-sl-tags">${tags.map(t => `<span${t === 'Reversed' || t === 'Gone' ? ' class="warn"' : ''}>${esc(t)}</span>`).join('')}</p>`;
+  }
+  function linkGuide(l) {
+    if (!l) return 'Go out after school and meet people.';
+    const x = linkInfo(l);
+    return x.where === 'MAX' ? 'Your bond is at its fullest.' : x.where === 'Gone' ? 'They’ve gone for now.' : x.where || 'Whose bond will you look in on?';
+  }
+  function linksTab(enter) {
+    const met = Object.values(G.LINKS).filter(l => G.isMet(l.id)), all = Object.keys(G.LINKS).length;
+    const B = BLD(), ctx = B ? perkCtx() : null, cur = sel.link && met.find(l => l.id === sel.link);
+    if (cur) linkAt = cur.id;
+    const at = met.find(l => l.id === linkAt) || met[0];
+    linkAt = at?.id || null;
+    const dark = opts.inBattle || S().slot === 'late';
+    const zig = i => Math.round(Math.abs(Math.sin(i * .42)) * 50);
+    const cards = met.map((l, i) => {
+      const x = linkInfo(l, B, ctx), num = l.numeral || '✦', on = l === at;
+      return `<li style="--i:${Math.min(i, 12)};--x:${zig(i)}px"${on ? ' class="sel"' : ''}><button type="button" class="g-st-link g-sl-card${x.p.reversed ? ' rev' : ''}${linkGone(l) ? ' gone' : ''}${cur === l ? ' on' : ''}" data-link="${l.id}" tabindex="${on ? 0 : -1}" aria-pressed="${cur === l}">
+        <i class="g-sl-cslash" aria-hidden="true"></i><span class="g-sl-num" style="--nfs:${num.length > 3 ? 15 : num.length > 2 ? 18 : 22}px">${esc(num)}</span>
+        <span class="g-sl-mid"><b class="g-sl-ar">${esc(l.arcana)}</b><span class="g-sl-who">${esc(l.short)}${x.p.reversed ? '<small class="rv">Reversed</small>' : linkGone(l) ? '<small class="rv">Gone</small>' : ''}${x.has ? `<small class="g-perkn">${x.n} perk${x.n === 1 ? '' : 's'}</small>` : ''}</span></span>
+        <span class="g-sl-rk">${G.isMaxed(l) ? '<b class="max">MAX</b>' : `RANK<b>${x.p.rank}</b>`}</span>
+        <span class="g-pips${x.max > 10 ? ' long' : ''}" role="img" aria-label="Rank ${x.p.rank} of ${x.max}">${Array.from({ length: x.max }, (_, k) => `<i class="${k < x.p.rank ? 'on' : ''}${k >= 10 ? ' ext' : ''}"></i>`).join('')}</span>
+        <small class="g-hint">${esc(x.where)}</small></button></li>`;
+    }).join('');
+    const art = at && G.tarot(at);
+    const perks = cur && B ? `<div class="g-link-perks g-sl-perks" role="region" aria-label="${esc(cur.short)}’s bond perks"><div class="g-sl-perks-top"><p class="g-kicker">${esc(cur.short)} · ${esc(cur.arcana)} · bond perks</p><button type="button" class="g-btn small" data-link-close>Close</button></div>${perkList(cur.id, ctx)}</div>` : '';
+    return `<div class="g-sl${dark ? ' dark' : ''}${enter ? ' enter' : ''}${met.length ? '' : ' none'}">
+      <div class="g-sl-bg" aria-hidden="true"></div>
+      <div class="g-sl-ghost" aria-hidden="true">Commu</div>
+      <div class="g-sl-art" aria-hidden="true"><div class="g-sl-fig">${at ? linkFigure(at) : ''}</div></div>
+      ${at ? `<div class="g-sl-tarot" aria-hidden="true">${art ? `<img src="${art}" alt="">` : `<span>${esc(at.numeral || '✦')}</span>`}</div>` : ''}
+      <div class="g-sl-head"><h2>Links</h2><p>Bonds · ${met.length} of ${all} met</p></div>
+      ${met.length ? `<ul class="g-st-links g-sl-cards" aria-label="Social links">${cards}</ul>` : '<p class="g-note g-sl-empty">No bonds yet. Go out after school and meet people.</p>'}
+      ${at ? `<div class="g-sl-detail" aria-live="polite">${linkDetail(at, B, ctx)}</div>` : ''}
+      ${perks}
+      <div class="g-sl-guide"><p class="g1">${esc(linkGuide(at))}</p><span class="g2">Social Link</span>
+        <div class="g-fmh-keys"><span><kbd>↑↓</kbd>Choose</span>${at && B ? `<button type="button" data-sl-go><kbd>↵</kbd>${cur ? 'Close perks' : 'Perks'}</button>` : ''}<button type="button" data-sl-back><kbd>Esc</kbd>${homeOk || opts.inBattle ? 'Back' : 'Close'}</button></div></div>
+    </div>`;
+  }
+  // Move the slash to a card without repainting: the figure, the tarot, the name and the guide swap.
+  function linkSelect(el, id, focus) {
+    const l = G.LINKS[id], root = el.querySelector('.g-sl'); if (!l || !root) return;
+    const B = BLD(), ctx = B ? perkCtx() : null, same = linkAt === id;
+    linkAt = id;
+    root.querySelectorAll('[data-link]').forEach(b => { const on = b.dataset.link === id; b.parentElement.classList.toggle('sel', on); b.tabIndex = on ? 0 : -1; });
+    const card = root.querySelector(`[data-link="${id}"]`);
+    if (focus && card) card.focus({ preventScroll: true });
+    card?.scrollIntoView?.({ block: 'nearest' });
+    if (same) return;
+    const fig = root.querySelector('.g-sl-fig'), tc = root.querySelector('.g-sl-tarot'), art = G.tarot(l);
+    fig.innerHTML = linkFigure(l);
+    if (tc) tc.innerHTML = art ? `<img src="${art}" alt="">` : `<span>${esc(l.numeral || '✦')}</span>`;
+    root.querySelector('.g-sl-detail').innerHTML = linkDetail(l, B, ctx);
+    root.querySelector('.g-sl-guide .g1').textContent = linkGuide(l);
+    [root.querySelector('.g-sl-art'), tc].forEach(e => { if (!e) return; e.classList.remove('swap'); void e.offsetWidth; e.classList.add('swap'); });
+    // With the perks open they follow the chosen card.
+    if (sel.link && sel.link !== id) { sel.link = id; const pk = root.querySelector('.g-sl-perks'); if (pk && B) { pk.querySelector('.g-kicker').textContent = `${l.short} · ${l.arcana} · bond perks`; pk.querySelector('.g-perks').outerHTML = perkList(id, ctx); pk.setAttribute('aria-label', `${l.short}’s bond perks`); } root.querySelectorAll('[data-link]').forEach(b => { b.classList.toggle('on', b.dataset.link === id); b.setAttribute('aria-pressed', b.dataset.link === id); }); }
+  }
+  let linksTop = 0; // the list's scroll, kept across repaints
   function wireLinks(el) {
-    el.querySelectorAll('[data-link]').forEach(bt => bt.addEventListener('click', () => { sel.link = sel.link === bt.dataset.link ? null : bt.dataset.link; G.sfx('femc-hover'); render(sel.link ? '[data-link-close]' : `[data-link="${bt.dataset.link}"]`); }));
+    const cards = [...el.querySelectorAll('[data-link]')], list = el.querySelector('.g-sl-cards');
+    if (list) { if (!el.querySelector('.g-sl.enter')) list.scrollTop = linksTop; else linksTop = 0; list.addEventListener('scroll', () => { linksTop = list.scrollTop; }, { passive: true }); list.querySelector('li.sel')?.scrollIntoView?.({ block: 'nearest' }); }
+    let pre; // which perks were open when the pointer went down (focus moves them before the click lands)
+    cards.forEach((bt, i) => {
+      const id = bt.dataset.link;
+      bt.addEventListener('pointerover', () => { if (linkAt !== id && !sel.link) { linkSelect(el, id); G.sfx('femc-hover'); } });
+      bt.addEventListener('focus', () => { if (linkAt !== id) linkSelect(el, id); });
+      bt.addEventListener('pointerdown', () => { pre = sel.link || null; });
+      bt.addEventListener('click', () => { const was = pre !== undefined ? pre : sel.link; pre = undefined; linkAt = id; sel.link = was === id ? null : id; G.sfx('femc-hover'); render(sel.link ? '[data-link-close]' : `[data-link="${id}"]`); });
+      bt.addEventListener('keydown', e => {
+        const k = e.key, n = cards.length;
+        const to = k === 'ArrowDown' ? i + 1 : k === 'ArrowUp' ? i - 1 : k === 'Home' ? 0 : k === 'End' ? n - 1 : null;
+        if (to == null) return;
+        e.preventDefault(); e.stopPropagation();
+        const j = (to + n) % n; linkSelect(el, cards[j].dataset.link, true); G.sfx('femc-hover');
+      });
+    });
     el.querySelector('[data-link-close]')?.addEventListener('click', () => { const id = sel.link; sel.link = null; render(`[data-link="${id}"]`); });
+    el.querySelector('[data-sl-go]')?.addEventListener('click', () => { if (sel.link) { const id = sel.link; sel.link = null; render(`[data-link="${id}"]`); } else el.querySelector(`[data-link="${linkAt}"]`)?.click(); });
+    el.querySelector('[data-sl-back]')?.addEventListener('click', () => { if (homeOk) goHome(); else o?.close(); });
   }
   function journalTab() {
     const fr = S().fragments.map(G.fragmentInfo);
@@ -1133,15 +1249,21 @@ window.FemcMenu = (() => {
     });
     h.querySelector('[data-home-go]').addEventListener('click', () => homeItems()[homeSel]?.click());
   }
+  // The open tab's button, or on the Links screen (no tab strip) its chosen card.
+  function focusTab() {
+    if (!o) return;
+    const f = tab === 'links' ? o.el.querySelector('.g-sl-cards li.sel [data-link], [data-sl-back]') : o.el.querySelector(`[data-tab="${tab}"]`);
+    f?.focus({ preventScroll: true });
+  }
   function choose(k) {
     tab = k; sel.slot = null; sel.use = null; sel.velvet = null;
     view = 'panel'; o.el.classList.remove('is-home'); G.sfx('femc-click'); render();
-    setTimeout(() => o?.el.querySelector(`[data-tab="${tab}"]`)?.focus({ preventScroll: true }), 30);
+    focusTab(); setTimeout(focusTab, 30); // at once, so a key pressed straight after lands in the panel
   }
   function goHome() {
     if (!o || !homeOk) return;
     const at = tabList().findIndex(([k]) => k === tab); if (at >= 0) homeSel = at;
-    view = 'home'; o.el.classList.add('is-home'); paintHome(false); G.sfx('femc-hover');
+    view = 'home'; o.el.classList.remove('is-links'); o.el.classList.add('is-home'); paintHome(false); G.sfx('femc-hover');
     homeSelect(homeSel, true);
   }
   // Esc on a panel opened from the list goes back to it. Window capture runs before the overlay's own Esc (document capture);
@@ -1169,12 +1291,14 @@ window.FemcMenu = (() => {
     else if (tab === 'collection') html = window.FemcGacha ? window.FemcGacha.collectionHtml() : '<p class="g-note">Nothing collected yet.</p>';
     else if (tab === 'wardrobe') html = window.FemcCosmetics ? window.FemcCosmetics.html() : '<p class="g-note">Nothing to wear yet.</p>';
     else if (tab === 'status') html = statusTab();
-    else if (tab === 'links') html = linksTab();
+    else if (tab === 'links') html = linksTab(!o.el.classList.contains('is-links'));
     else if (tab === 'journal') html = journalTab();
     else if (tab === 'album') html = albumHtml();
     else if (tab === 'theater') html = theaterHtml();
     else if (tab === 'calendar') html = calendarTab();
     const top = body.scrollTop;
+    // The Links page is a screen of its own (solstice-links.css): the panel goes full screen while it shows.
+    o.el.classList.toggle('is-links', tab === 'links' && view !== 'home');
     body.innerHTML = html;
     body.scrollTop = top;
     if (tab === 'party') wireParty(body); else if (tab === 'personas') wirePersonas(body); else if (tab === 'equip') wireEquip(body); else if (tab === 'items') wireItems(body); else if (tab === 'skills') wireSkills(body);
@@ -1229,11 +1353,11 @@ window.FemcMenu = (() => {
         e.preventDefault(); e.stopPropagation();
         tab = keys[(keys.indexOf(tab) + (e.key === '[' || e.key === 'ArrowLeft' ? -1 : 1) + keys.length) % keys.length];
         sel.slot = null; G.sfx('femc-hover'); render();
-        o.el.querySelector(`[data-tab="${tab}"]`)?.focus();
+        focusTab();
       }
     });
     if (homeOk) { paintHome(true); setTimeout(() => { if (o && view === 'home') homeSelect(homeSel, true); }, 40); }
-    else { render(); setTimeout(() => o?.el.querySelector(`[data-tab="${tab}"]`)?.focus({ preventScroll: true }), 40); }
+    else { render(); setTimeout(focusTab, 40); }
     G.sfx('femc-click');
     return true;
   }

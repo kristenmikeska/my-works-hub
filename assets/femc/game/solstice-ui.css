@@ -67,7 +67,8 @@
 .g-fm-head h2 { text-shadow: .06em .06em 0 var(--violet); }
 /* A giant ghost word behind the field menu, slanted like the mockup's */
 .g-fm-ov .g-panel { isolation: isolate; }
-.g-fm-ov .g-panel::before { content: "MENU"; position: absolute; z-index: -1; right: -2%; bottom: -4%; font: italic 900 clamp(120px, 20vw, 260px)/.78 var(--cond);
+/* Pinned inside the panel and tilted about its own bottom-left corner, so it never widens the panel (a scrollable overflow: femc_stats) */
+.g-fm-ov .g-panel::before { content: "MENU"; position: absolute; z-index: -1; right: 3%; bottom: 0; transform-origin: 0 100%; font: italic 900 clamp(120px, 20vw, 260px)/.78 var(--cond);
   letter-spacing: -.02em; color: rgba(255, 236, 190, .055); transform: rotate(-7deg); pointer-events: none; user-select: none; white-space: nowrap; }
 .g-fm-ov.g-xt-ov .g-panel::before { content: "EXTRAS"; }
 

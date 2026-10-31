@@ -1,0 +1,194 @@
+/* Solstice restyle, part 5: the Social Link screen (menu.js linksTab), from Kat's approved mockup (mockups/solstice-ui screen 4)
+   in the game's pink and black (Kat, Oct 31: no gold-heavy, purple, navy or green UI). The slanted list of link cards with a
+   pink slash on the chosen one, their tarot card tilted beside it, the character standing large on the right and fading out,
+   the arcana and full name top right, the ghost word, the guide. Loaded after solstice-hud.css. */
+
+/* The panel goes full screen while the Links page shows; its head, tab strip and hint step aside ([ ] still switch tabs). */
+.g-fm-ov.is-links { padding: 0; background: #07030a; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.g-fm-ov.is-links .g-panel { width: 100%; height: 100%; max-height: none; padding: 0; border: 0; border-radius: 0; box-shadow: none; background: var(--deep); overflow: hidden; display: block; }
+.g-fm-ov.is-links .g-panel::before { display: none; }
+.g-fm-ov.is-links :is(.g-fm-head, .g-fm-tabs, .g-fm-hint) { display: none !important; }
+.g-fm-ov.is-links .g-fm-body { position: absolute; inset: 0; padding: 0; overflow: hidden; }
+
+.g-sl { --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; --top: clamp(20px, 5vh, 48px);
+  position: absolute; inset: 0; overflow: hidden; isolation: isolate; color: var(--paper); }
+/* Kat's menu backdrop (the pink sun; the moon in the Dark Hour), darkened on the left under the list */
+.g-sl-bg { position: absolute; inset: 0; z-index: -2; background: #0c0309 url("../title/menu-backdrop-day.webp?v=1") center / cover no-repeat; }
+.g-sl.dark .g-sl-bg { background-image: url("../title/menu-backdrop-darkhour.webp?v=1"); }
+.g-sl::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(100deg, rgba(12, 3, 9, .9) 0, rgba(12, 3, 9, .84) 34%, rgba(12, 3, 9, .45) 56%, rgba(12, 3, 9, .3) 76%, rgba(12, 3, 9, .62)); }
+.g-sl.dark::after { background: linear-gradient(100deg, rgba(0, 0, 0, .92) 0, rgba(0, 0, 0, .86) 34%, rgba(0, 0, 0, .55) 56%, rgba(0, 0, 0, .4) 76%, rgba(0, 0, 0, .7)); }
+
+/* The ghost word, slanted steeply down the right edge */
+.g-sl-ghost { position: absolute; z-index: 3; opacity: .85; right: -8vw; top: 50%; translate: 0 -50%; transform: rotate(-62deg); pointer-events: none; user-select: none; white-space: nowrap;
+  font: italic 900 clamp(160px, 30vh, 280px)/.78 var(--cond); letter-spacing: -.02em; text-transform: uppercase; color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 140, 192, .4); background: linear-gradient(90deg, rgba(255, 140, 192, .1), rgba(255, 140, 192, .34)); -webkit-background-clip: text; background-clip: text; }
+
+/* The character, full body, zoomed by head size (.g-sl-fig marks the top centre of the head); fades out to the left */
+.g-sl-art { position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 40%, #000 56%); mask-image: linear-gradient(90deg, transparent 40%, #000 56%); }
+.g-sl-fig { position: absolute; width: 0; height: 0; --fx: 72vw; --fy: 15vh; --head: 21vh; left: var(--fx); top: var(--fy); }
+.g-sl-fig img { position: absolute; max-width: none; width: auto; --H: calc(var(--head) / var(--hf)); height: var(--H);
+  top: calc(var(--H) * var(--ht) * -1); left: calc(var(--H) * var(--ar) * var(--hx) * -1);
+  filter: drop-shadow(16px 6px 0 var(--pink)) drop-shadow(0 0 30px rgba(0, 0, 0, .35)); }
+/* A portrait standing in for full-body art: bust-up, fading out at the chest */
+.g-sl-fig img.bust { filter: drop-shadow(12px 4px 0 var(--pink));
+  -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 98%); mask-image: linear-gradient(180deg, #000 72%, transparent 98%); }
+.g-sl.dark .g-sl-fig img { filter: drop-shadow(16px 6px 0 var(--pink)) drop-shadow(0 0 40px rgba(255, 79, 158, .3)) saturate(.85) brightness(.92); }
+.g-sl-art.swap img { animation: g-sl-art .42s cubic-bezier(.15, .9, .25, 1) both; }
+@keyframes g-sl-art { from { transform: translateX(80px); opacity: 0; } }
+
+/* Their tarot card, tilted beside the list, with a pink block behind */
+.g-sl-tarot { position: absolute; z-index: 3; right: min(44vw, 84vh); top: 17vh; width: clamp(96px, 10vw, 136px); aspect-ratio: 3 / 5; transform: rotate(9deg);
+  display: grid; place-items: center; background: linear-gradient(160deg, var(--pink), #7a0b3e); box-shadow: 8px 8px 0 var(--pink), 0 18px 40px rgba(0, 0, 0, .5); }
+.g-sl-tarot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.g-sl-tarot span { font: italic 900 40px/1 var(--cond); color: var(--paper); }
+.g-sl-tarot.swap { animation: g-sl-card .45s cubic-bezier(.2, .9, .3, 1.2) both; }
+@keyframes g-sl-card { from { transform: rotate(9deg) rotateY(90deg); } }
+
+/* The heading (top left) */
+.g-sl-head { position: absolute; z-index: 5; left: clamp(16px, 4vw, 54px); top: var(--top); }
+.g-sl-head h2 { margin: 0; font: italic 900 clamp(46px, 6vw, 72px)/.8 var(--cond); letter-spacing: -.01em; text-transform: uppercase; color: var(--paper); text-shadow: 4px 4px 0 var(--deep); transform: none; }
+.g-sl-head h2::after { content: ""; display: block; width: 130%; height: 7px; margin-top: 4px; background: var(--pink); clip-path: polygon(0 40%, 100% 0, 100% 50%, 0 100%); }
+.g-sl-head p { margin: 8px 0 0; font: italic 500 16px/1.2 var(--serif); color: var(--pink-2); }
+
+/* The cards: a slanted, staggered list that scrolls when the bonds outgrow the screen */
+.g-sl-cards.g-st-links { position: absolute; z-index: 4; display: block; left: clamp(6px, 3vw, 44px); top: calc(var(--top) + clamp(96px, 13vh, 112px)); bottom: clamp(64px, 12vh, 104px);
+  width: min(600px, 47vw); margin: 0; padding: 6px 46px 10px 10px; list-style: none; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain;
+  scrollbar-width: thin; scrollbar-color: var(--pink) transparent; }
+.g-sl-cards li { margin: 0 0 6px var(--x); }
+.g-sl-card.g-st-link { position: relative; display: grid; grid-template-columns: 50px minmax(0, 1fr) auto; grid-template-rows: auto auto; gap: 0 14px; align-items: center;
+  width: calc(100% - 50px); padding: 4px 30px 5px 8px; border: 0; color: var(--paper); text-align: left; cursor: pointer;
+  background: linear-gradient(100deg, rgba(20, 7, 15, .95), rgba(74, 24, 56, .9)); clip-path: polygon(2.5% 0, 100% 0, 97.5% 100%, 0 100%); box-shadow: none;
+  transition: transform .18s cubic-bezier(.2, .9, .3, 1.3); }
+.g-sl-card.g-st-link:is(:hover, :focus-visible) { outline: none; background: linear-gradient(100deg, rgba(42, 15, 34, .98), rgba(122, 11, 62, .9)); border: 0; }
+.g-sl-num { grid-column: 1; grid-row: 1 / 3; display: grid; place-items: center; width: 44px; height: 50px; font: italic 600 var(--nfs, 22px)/1 var(--serif); color: var(--deep); background: var(--pink-3);
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 78% 100%, 0 100%); }
+.g-sl-mid { grid-column: 2; grid-row: 1; min-width: 0; }
+.g-sl-ar { display: block; font: italic 800 clamp(22px, 2.3vw, 30px)/.9 var(--cond); text-transform: uppercase; color: var(--pink-3); letter-spacing: .005em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.g-sl-card .g-sl-who { display: block; margin-top: 2px; font: italic 500 clamp(15px, 1.4vw, 17px)/1.15 var(--serif); color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.g-sl-card .g-sl-who small { display: inline; margin-left: 8px; font: 700 10px/1 var(--sans); font-style: normal; letter-spacing: .14em; text-transform: uppercase; color: var(--pink-2); }
+.g-sl-card .g-sl-who small.rv { color: #ff9b9b; }
+.g-sl-rk { grid-column: 3; grid-row: 1; text-align: right; white-space: nowrap; font: italic 700 11px/1 var(--cond); letter-spacing: .14em; color: var(--pink-2); position: relative; z-index: 1; }
+.g-sl-rk b { margin-left: 4px; font: italic 900 clamp(32px, 3.3vw, 42px)/.8 var(--cond); letter-spacing: -.02em; color: #fff; }
+.g-sl-rk b.max { color: var(--pink); letter-spacing: 0; }
+.g-sl-card .g-pips { grid-column: 2 / 4; grid-row: 2; display: flex; flex-wrap: nowrap; gap: 3px; margin: 3px 0 1px; }
+.g-sl-card .g-pips i { width: 11px; height: 4px; border: 0; background: rgba(255, 255, 255, .18); transform: skewX(-30deg); }
+.g-sl-card .g-pips i.on { background: var(--pink); }
+.g-sl-card .g-pips.long i { width: 8px; }
+.g-sl-card .g-pips i.ext { background: rgba(255, 214, 232, .14); }
+.g-sl-card .g-pips i.ext.on { background: var(--pink-3); }
+/* Where to find them: read in the detail and the guide; kept on the card for screen readers */
+.g-sl-card .g-hint { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.g-sl-card .g-perkn { color: var(--pink-2); }
+.g-sl-cslash { position: absolute; right: -10px; top: 0; bottom: 0; width: 120px; background: linear-gradient(100deg, var(--pink), var(--pink-2)); clip-path: polygon(62% 0, 100% 0, 100% 100%, 22% 100%); opacity: 0; pointer-events: none; }
+/* Reversed: the colour drains and a red edge; gone for now: dimmed */
+.g-sl-card.rev { filter: grayscale(.55); box-shadow: inset 4px 0 0 #ff6b6b; }
+.g-sl-card.gone { opacity: .62; }
+/* The chosen card: paper, pushed out, the pink slash on its end */
+.g-sl-cards li.sel .g-sl-card { background: var(--paper); color: var(--deep); transform: translateX(14px) scale(1.04); }
+.g-sl-cards li.sel :is(.g-sl-ar, .g-sl-rk, .g-sl-rk b) { color: var(--deep); }
+.g-sl-cards li.sel .g-sl-rk b.max { color: var(--deep); }
+.g-sl-cards li.sel .g-sl-who { color: var(--violet); }
+.g-sl-cards li.sel .g-sl-who small { color: #a8326f; }
+.g-sl-cards li.sel .g-sl-num { background: var(--deep); color: var(--pink-2); }
+.g-sl-cards li.sel .g-pips i { background: rgba(20, 7, 15, .15); }
+.g-sl-cards li.sel .g-pips i.on { background: var(--deep); }
+.g-sl-cards li.sel .g-pips i.ext.on { background: var(--pink); }
+.g-sl-cards li.sel .g-sl-cslash { opacity: 1; animation: g-sl-slash .3s cubic-bezier(.2, .9, .2, 1) both; }
+.g-sl-cards li.sel .g-sl-card:focus-visible { box-shadow: inset 0 -3px 0 var(--pink); }
+.g-sl-card.on .g-sl-num { box-shadow: inset 0 0 0 3px var(--pink); }
+@keyframes g-sl-slash { from { clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%); } }
+
+/* The chosen one's arcana, full name and state (top right) */
+.g-sl-detail { position: absolute; z-index: 5; right: clamp(14px, 2.4vw, 34px); top: var(--top); max-width: min(46vw, 560px); text-align: right; }
+.g-sl-detail p { margin: 0; }
+.g-sl-detail .an { font: italic 900 clamp(40px, 4.4vw, 58px)/.85 var(--cond); text-transform: uppercase; color: var(--paper); text-shadow: 3px 3px 0 var(--deep); }
+.g-sl-detail .fn { margin-top: 6px; font: italic 500 clamp(22px, 2.1vw, 28px)/1 var(--serif); color: var(--pink-2); text-shadow: 2px 2px 0 var(--deep), 0 0 12px rgba(12, 3, 9, .9); }
+.g-sl-tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; margin-top: 10px !important; }
+.g-sl-tags span { padding: 3px 12px 3px 8px; background: var(--paper); color: var(--deep); font: italic 800 13px/1 var(--cond); letter-spacing: .06em; text-transform: uppercase;
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%); }
+.g-sl-tags span.warn { background: #ff9b9b; }
+
+/* A link's bond perks, opened beside the list */
+.g-sl-perks.g-link-perks { position: absolute; z-index: 6; right: clamp(14px, 2.4vw, 34px); top: calc(var(--top) + clamp(130px, 22vh, 190px)); bottom: clamp(110px, 18vh, 150px);
+  width: min(440px, 36vw); margin: 0; overflow-y: auto; overscroll-behavior: contain; border: 0; border-left: 5px solid var(--pink); background: rgba(20, 7, 15, .94);
+  box-shadow: 8px 8px 0 rgba(255, 79, 158, .45); animation: g-sl-perks .3s cubic-bezier(.15, .9, .25, 1) both; scrollbar-width: thin; scrollbar-color: var(--pink) transparent; }
+.g-sl-perks .g-perk.own { border-left-color: var(--pink); background: rgba(255, 79, 158, .14); }
+.g-sl-perks .g-perk.own .g-perk-st { color: var(--pink-2); }
+.g-sl-perks-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+.g-sl-perks-top .g-kicker { margin: 0; }
+@keyframes g-sl-perks { from { transform: translateX(40px); opacity: 0; } }
+
+.g-sl-empty { position: absolute; z-index: 4; left: clamp(16px, 4vw, 54px); top: calc(var(--top) + 120px); max-width: 420px; }
+
+/* The guide (bottom right), as on the menu screen */
+.g-sl-guide { position: absolute; z-index: 6; right: clamp(14px, 2.4vw, 34px); bottom: clamp(14px, 3vh, 26px); max-width: min(560px, 50vw); text-align: right; }
+.g-sl-guide::before { content: ""; position: absolute; z-index: -1; inset: -12px -60px -40px -70px; clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+  background: linear-gradient(90deg, rgba(20, 7, 15, 0), rgba(20, 7, 15, .86) 30%); }
+.g-sl-guide .g1 { margin: 0; font: italic 600 clamp(16px, 1.6vw, 21px)/1.2 var(--serif); color: var(--paper); text-shadow: 2px 2px 0 rgba(12, 3, 9, .85); }
+.g-sl-guide .g2 { display: block; width: min(280px, 60vw); margin: 4px 0 8px auto; padding-top: 4px; border-top: 1px solid currentColor; text-align: left;
+  font: 700 10px/1 var(--sans); letter-spacing: .26em; text-transform: uppercase; color: var(--pink-2); }
+
+/* Entry: the cards in from the right, staggered; the character slides in */
+.g-sl.enter .g-sl-cards li { animation: g-fmh-row .38s cubic-bezier(.15, .9, .25, 1) both; animation-delay: calc(var(--i) * 30ms + 100ms); }
+.g-sl.enter .g-sl-art img { animation: g-sl-art .55s cubic-bezier(.15, .9, .25, 1) both; }
+.g-sl.enter .g-sl-ghost { animation: g-fmh-ghost .9s cubic-bezier(.15, .9, .25, 1) both; }
+.g-sl.enter .g-sl-tarot { animation: g-sl-card .5s .15s cubic-bezier(.2, .9, .3, 1.2) both; }
+
+/* Short landscape screens */
+@media (min-width: 701px) and (max-height: 640px) {
+  .g-sl { --top: 16px; }
+  .g-sl-head h2 { font-size: 44px; }
+  .g-sl-head p { font-size: 14px; margin-top: 4px; }
+  .g-sl-cards.g-st-links { top: 86px; bottom: 56px; }
+  .g-sl-card.g-st-link { padding-top: 2px; padding-bottom: 3px; }
+  .g-sl-num { height: 42px; }
+  .g-sl-guide .g2 { display: none; }
+  .g-sl-perks.g-link-perks { top: 130px; bottom: 76px; }
+}
+
+/* Phones and portrait screens: the character behind on the right, the tarot small on the left, the cards low and full width */
+@media (max-width: 700px), (max-aspect-ratio: 13/10) {
+  .g-sl { --top: 18px; }
+  .g-sl::after { background: linear-gradient(180deg, rgba(12, 3, 9, .55) 0, rgba(12, 3, 9, .2) 22%, rgba(12, 3, 9, .55) 42%, rgba(12, 3, 9, .9) 62%); }
+  .g-sl-head { left: 16px; }
+  .g-sl-head h2 { font-size: 46px; }
+  .g-sl-head p { font-size: 14px; }
+  .g-sl-detail { top: 20px; right: 14px; max-width: 58vw; }
+  .g-sl-detail .an { font-size: 32px; }
+  .g-sl-detail .fn { font-size: 18px; }
+  .g-sl-tags span { font-size: 11px; }
+  .g-sl-art { -webkit-mask-image: linear-gradient(180deg, #000 50%, transparent 75%); mask-image: linear-gradient(180deg, #000 50%, transparent 75%); }
+  .g-sl-fig { --fx: 64vw; --fy: max(150px, 17vh); --head: 12vh; }
+  .g-sl-tarot { right: auto; left: 20px; top: 130px; width: 72px; box-shadow: 5px 5px 0 var(--pink), 0 10px 24px rgba(0, 0, 0, .5); }
+  .g-sl-ghost { font-size: 170px; right: -40vw; top: 30%; }
+  .g-sl-cards.g-st-links { left: 6px; right: 6px; width: auto; top: max(44vh, 260px); bottom: 70px; padding-right: 30px; }
+  .g-sl-cards li { margin-left: calc(var(--x) * .4); margin-bottom: 5px; }
+  .g-sl-card.g-st-link { grid-template-columns: 38px minmax(0, 1fr) auto; gap: 0 10px; width: calc(100% - 26px); padding: 3px 22px 3px 6px; }
+  .g-sl-num { width: 36px; height: 40px; font-size: min(var(--nfs, 22px), 18px); }
+  .g-sl-ar { font-size: 21px; }
+  .g-sl-card .g-sl-who { font-size: 14px; }
+  .g-sl-rk b { font-size: 28px; }
+  .g-sl-card .g-pips { display: none; }
+  .g-sl-cards li.sel .g-sl-card { transform: translateX(8px) scale(1.02); }
+  .g-sl-perks.g-link-perks { left: 12px; right: 12px; width: auto; top: max(30vh, 200px); bottom: 74px; }
+  .g-sl-guide { left: 14px; right: 14px; max-width: none; bottom: 12px; }
+  .g-sl-guide .g1 { font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .g-sl-guide .g2 { display: none; }
+  .g-sl-guide .g-fmh-keys { margin-top: 6px; gap: 10px; font-size: 11px; }
+  .g-sl-guide .g-fmh-keys > span { display: none; }
+}
+/* Landscape phones: the list beside the character again, compact */
+@media (orientation: landscape) and (max-height: 500px) {
+  .g-sl-cards.g-st-links { top: 74px; bottom: 44px; right: auto; width: 56vw; }
+  .g-sl-fig { --fx: 80vw; --fy: 60px; --head: 20vh; }
+  .g-sl-tarot { display: none; }
+  .g-sl-perks.g-link-perks { left: auto; width: 40vw; top: 100px; bottom: 50px; }
+  .g-sl-guide .g1 { display: none; }
+}
+
+/* Reduced motion: no slides, flips or sweeps */
+@media (prefers-reduced-motion: reduce) {
+  .g-sl *, .g-sl *::before, .g-sl *::after { animation: none !important; transition: none !important; }
+}
