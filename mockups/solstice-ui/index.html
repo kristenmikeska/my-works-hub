@@ -295,6 +295,24 @@ html[data-pal="dawn"] .tt .sl-logo text[fill] { fill: #ffd36b; }
 .tt .logo { position: absolute; z-index: 5; isolation: isolate; right: clamp(16px, 4vw, 60px); top: clamp(56px, 12vh, 110px); width: min(560px, 44vw); }
 .tt .logo svg { width: 100%; height: auto; display: block; }
 .tt .logo::before { content: ""; position: absolute; z-index: -1; inset: -30% -12% -34% -14%; background: radial-gradient(closest-side, rgba(10, 7, 38, .78), rgba(10, 7, 38, .5) 60%, transparent); }
+
+/* Kat's C3 cover (Oct 31): Solar is in the art, so no figure; the logo and menu sit on an indigo panel slanted like the cover's gold slash */
+.tt.cover .bg img { filter: none; object-position: 30% 40%; }
+.tt.cover .bg::before, .tt.cover .bg::after { display: none; }
+.tt .tpanel { position: absolute; z-index: 4; top: 0; bottom: 0; right: 0; width: 40vw; clip-path: polygon(24% 0, 100% 0, 100% 100%, 0 100%);
+  background: linear-gradient(100deg, rgba(18, 13, 58, .55), rgba(18, 13, 58, .9) 22%, rgba(12, 9, 40, .96)); }
+.tt .tpanel::before { content: ""; position: absolute; inset: 0; clip-path: polygon(24% 0, calc(24% + 6px) 0, 6px 100%, 0 100%); background: linear-gradient(180deg, var(--gold-2), var(--gold)); }
+.tt.cover .logo { width: min(440px, 28vw); right: clamp(16px, 3.4vw, 54px); top: clamp(40px, 9vh, 90px); }
+.tt.cover .logo::before { display: none; }
+.tt.cover .tmenu button { font-size: clamp(30px, 3.6vw, 48px); }
+.tt.cover .ver { left: auto; right: clamp(16px, 3.4vw, 54px); top: calc(clamp(40px, 9vh, 90px) + min(150px, 9.6vw)); bottom: auto; text-align: right; color: rgba(255, 250, 240, .85); }
+@media (max-width: 700px), (max-aspect-ratio: 13/10) {
+  .tt.cover .bg img { object-position: 37% 50%; }
+  .tt .tpanel { top: auto; height: 50%; width: 100%; clip-path: polygon(0 14%, 100% 0, 100% 100%, 0 100%); }
+  .tt .tpanel::before { clip-path: polygon(0 14%, 100% 0, 100% 5px, 0 calc(14% + 5px)); }
+  .tt.cover .logo { width: auto; left: 18px; right: 18px; top: calc(50% + 5vh); bottom: auto; }
+  .tt.cover .ver { top: auto; right: auto; left: 18px; bottom: 22px; text-align: left; }
+}
 .tt .tmenu { position: absolute; z-index: 5; right: clamp(16px, 4vw, 60px); bottom: clamp(70px, 14vh, 120px); margin: 0; padding: 0; list-style: none; text-align: right; }
 .tt .tmenu li { position: relative; }
 .tt .tmenu button { position: relative; font: italic 800 clamp(34px, 4.4vw, 54px)/.98 var(--cond); text-transform: uppercase; color: #fff; padding: 0 6px; letter-spacing: -.005em; text-shadow: 3px 3px 0 rgba(15, 11, 51, .7); }
@@ -479,9 +497,9 @@ html[data-pal="dawn"] .tt .sl-logo text[fill] { fill: #ffd36b; }
   </section>
 
   <!-- 5. TITLE -->
-  <section class="scr tt" id="s-title" aria-label="Title screen">
-    <div class="bg"><img src="../../assets/femc/bg/moonlightbridge-night.webp" alt=""></div>
-    <div class="art figs"><div class="fig" data-fig="solar"></div></div>
+  <section class="scr tt cover" id="s-title" aria-label="Title screen">
+    <div class="bg"><img src="../../assets/femc/title/cover.webp" alt=""></div>
+    <div class="tpanel" aria-hidden="true"></div>
     <div class="logo"><img src="../../assets/femc/title/solstice-logo.svg" alt="Persona 3: Solstice"></div>
     <ul class="tmenu" data-tmenu></ul>
     <div class="ver"><b>THE LONGEST NIGHT</b>turns back toward the sun</div>
@@ -531,7 +549,7 @@ html[data-pal="dawn"] .tt .sl-logo text[fill] { fill: #ffd36b; }
     el.innerHTML = `<div class="dg">${ghost}</div><div class="row"><div class="d">${d}<span class="wd">${wd}</span></div>${sunMoon(ph, dark)}</div><div class="tod">${tod}</div>`; });
 
   /* Full-body art, measured once: [file, width/height, head top, head-to-chin, head centre x], as fractions of the image */
-  const FIG = { solar: ['profile/femc.webp', .477, .01, .20, .54], rohan: ['profile/rohan.webp', .671, .03, .24, .52],
+  const FIG = { solar: ['profile/solar-poses/arms-crossed.webp', .306, .01, .14, .47], rohan: ['profile/rohan.webp', .671, .03, .24, .52],
     jungwon: ['profile/searchers/jungwon.webp', .349, 0, .13, .37], rio: ['profile/rio.webp', .522, .03, .25, .44],
     saori: ['profile/saori.webp', .432, .01, .24, .44], akihiko: ['profile/sees/akihiko.webp', .405, 0, .107, .62],
     shinjiro: ['battle/art/poses/shinjiro.webp', 1.657, .01, .19, .61], haechan: ['profile/haechan.webp', .505, .01, .21, .576] };
