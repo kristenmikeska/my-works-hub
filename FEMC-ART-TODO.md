@@ -1,6 +1,6 @@
 # Art to make
 
-**30 items:** 8 places, 22 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 22 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
+**15 items:** 15 wardrobe. All are optional; none are ⭐. **Extras (optional), at the bottom:** 22 event outfit face sheets. **Parked:** 15 items in `FEMC-ART-BACKBURNER.md` (Evoker pieces, new expressions, sharper Shadows, Solar's strike sheets).
 
 **How to use this list**
 - Every item has a ready prompt: attach the pictures on its **Attach** line, paste the prompt, and save the result in **New Adds** under its **Save as** name.
@@ -17,7 +17,6 @@
 **"The style image" for each kind of art**
 | Art | The style image |
 |---|---|
-| Weapon skins | `battle/art/weapons/moon-and-stars.webp` |
 | Echoes | `battle/art/personas/haenim.webp` |
 
 Places, expressions, outfit portraits and the items that name their own pictures need no style image.
@@ -32,77 +31,7 @@ Places, expressions, outfit portraits and the items that name their own pictures
 
 ## 2. Places (Gemini)
 
-*Backgrounds still to make. Each is optional: the stand-in keeps working until the new one is in.*
-
-### The epilogue: Runners (Syracuse, December, snow)
-
-**[ ] The Valley** *(optional)*  
-The walk through the snowy residential side of campus in the Runners epilogue (now the quad stands in).  
-Attach: `bg/epi-r-quad-day.webp` (for the style only)  
-Save as: `epi-r-valley.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a winding path through the residential side of a big hilly university campus in December: brick dorm buildings with lit windows up the slope, old trees heavy with snow, lampposts along the path, a wooden stair cut into the hillside, students' footprints, a grey afternoon sky. Quiet, cold and pretty. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-### The epilogue: HOAX (Hanlim, winter break 2023-24)
-
-**[ ] Jungwon's street by day** *(optional)*  
-The quiet street where Jungwon lives in the HOAX epilogue (now Iwatodai's neighbourhood stands in).  
-Attach: `bg/epi-h-winter-street-day.webp` (for the style only)  
-Save as: `epi-h-jungwon-street-day.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a quiet, well-off residential street in a small Korean town in winter daylight: neat two-storey houses behind low walls and gates, a few bare trees, snow cleared into tidy banks along the curb, a parked grey car, a bus stop at the corner, the hills beyond. Calm, orderly and a little strict. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] Jungwon's street at night** *(optional)*  
-The same street after dark in the HOAX epilogue.  
-Attach: `bg/epi-h-winter-street.webp` (for the style only)  
-Save as: `epi-h-jungwon-street.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the same quiet, well-off residential street in a small Korean town at night in winter: neat houses behind low walls with one or two windows lit, a single streetlamp making a circle on the snow, snow falling, tidy snowbanks, a parked grey car with frost on it, footprints leading to one gate. Still and private. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] Jungwon's mother's car** *(optional)*  
-Inside the family car at night in the HOAX epilogue (now Iwatodai's night street stands in).  
-Attach: `bg/epi-s-car-night.webp` (for the style only)  
-Save as: `epi-h-car.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the back seat of a sleek grey family sedan at night, seen from inside: leather seats, a folded scarf on the seat, the glow of the dashboard ahead, streetlights sliding past the window, snow on the glass, a small town's lights outside. Warm inside, cold outside, very quiet. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-### Tartarus: the New Game+ climb
-
-**[ ] Raqia (floors 255-300)** *(optional)*  
-The first New Game+ block above the Monad, built from Syracuse (roadmap section 5; not in the game yet).  
-Attach: `bg/tartarus-monad.webp` (for the style only)  
-Save as: `tartarus-raqia.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a floor of a surreal, impossible tower in the Dark Hour, built from fragments of a snowy American college campus: gothic stone archways, library stacks rising into darkness, a frat-house staircase that loops back on itself, lecture-hall seats bent into a spiral, orange and navy banners hanging torn, snow drifting upward, a checkerboard floor, eerie green light and deep shadows. Beautiful, strange and dangerous. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] Zebul (floors 301-350)** *(optional)*  
-The second New Game+ block, built from Incheon (roadmap section 5; not in the game yet).  
-Attach: `bg/tartarus-monad.webp` (for the style only)  
-Save as: `tartarus-zebul.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a floor of a surreal, impossible tower in the Dark Hour, built from fragments of a Korean harbour city: harbour cranes leaning inward like a cathedral, glowing fish-market tanks stacked into walls, a traditional tiled roof floating upside down, red paper lanterns, shallow black tide water across the floor reflecting a huge yellow moon, mudflat ripples, eerie green light. Beautiful, strange and dangerous. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] Araboth (floors 351-399)** *(optional)*  
-The third New Game+ block, built from Hanlim (roadmap section 5; not in the game yet).  
-Attach: `bg/tartarus-monad.webp` (for the style only)  
-Save as: `tartarus-araboth.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a floor of a surreal, impossible tower in the Dark Hour, built from fragments of a small-town Korean high school: corridors of lockers stretching into fog, gym bleachers climbing into the dark, school desks stacked to an impossible ceiling, a row of drink vending machines glowing in the gloom, Christmas lights strung through it all, snow falling indoors, eerie green light. Beautiful, strange and dangerous. Match the painted style of the attached image. Keep everything important away from the edges.
-```
-
-**[ ] The Zenith (floor 400)** *(optional)*  
-The very top of the tower in New Game+ (roadmap section 5; not in the game yet).  
-Attach: `bg/tartarus-monad.webp` (for the style only)  
-Save as: `tartarus-zenith.png`
-```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the very top of an impossible tower, above the clouds: a single round platform of pale stone open to the sky, the green Dark Hour sky breaking apart at the horizon into gold, a huge sun and a full moon side by side touching at the edges like an eclipse, light pouring across the platform, broken pieces of the tower floating far below. Awe-inspiring, quiet, final. Match the painted style of the attached image. Keep everything important away from the edges.
-```
+*(Nothing left: every place on the list is in the game or made and saved.)*
 
 ---
 
@@ -179,64 +108,6 @@ Save as: `skin-sk-jungwon-stage-posesheet.png`
 Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: a K-pop stage outfit: a white cropped stage jacket with silver chain details and sharp shoulders, a black shirt, white slim trousers, white boots, a slim headset microphone at his cheek, a silver ear cuff. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
 ```
 If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-### More weapon skins (Gemini or ChatGPT)
-
-**[ ] Velvet Naginata** *(optional)*  
-Solar's Persona weapon skin, to go with the outfit.  
-Attach: the style image  
-Save as: `skin-wpn-velvet.png`
-```
-One ornate naginata, the whole weapon from the tip of the blade to the end of the haft, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. A haft wrapped in deep-blue velvet with gold bands, a gold collar shaped like a butterfly, a small silver key hanging from it on a fine chain, a polished silver blade with a blue sheen.
-```
-
-**[ ] Lightstick Naginata** *(optional)*  
-Solar's Solstice weapon skin, to go with the outfit.  
-Attach: the style image  
-Save as: `skin-wpn-idol.png`
-```
-One ornate naginata, the whole weapon from the tip of the blade to the end of the haft, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. A glossy white haft with a soft glowing pink-and-gold light strip running up it like a concert lightstick, a gold star at the collar, a silver blade with a sparkle along the edge, a small pink ribbon tied below the star.
-```
-
-**[ ] Norigae Naginata** *(optional)*  
-Solar's strangers weapon skin, to go with the outfit.  
-Attach: the style image  
-Save as: `skin-wpn-hanbok.png`
-```
-One ornate naginata, the whole weapon from the tip of the blade to the end of the haft, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. A black lacquered haft inlaid with mother-of-pearl crescent moons, a red-and-jade norigae tassel knotted at the collar, a silver blade with a moon and clouds etched near the base.
-```
-
-**[ ] Black Tie Knife** *(optional)*  
-Haechan's strangers weapon skin, to go with the outfit.  
-Attach: the style image  
-Save as: `skin-wpn-haechan-suit.png`
-```
-One ornate combat knife, the whole weapon from the tip of the blade to the end of the pommel, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. A matte black blade with a thin silver edge, a gunmetal guard, a black leather-wrapped grip, a round silver cufflink set into the pommel.
-```
-
-**[ ] Encore Knife** *(optional)*  
-Haechan's Solstice weapon skin, to go with the outfit.  
-Attach: the style image  
-Save as: `skin-wpn-haechan-stage.png`
-```
-One ornate combat knife, the whole weapon from the tip of the blade to the end of the pommel, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. A mirror-chrome blade with a rainbow stage-light sheen, a red grip wrapped in black tape, a gold guard, a small gold sun on the pommel.
-```
-
-**[ ] Signet Rapier** *(optional)*  
-Jungwon's strangers weapon skin, to go with the outfit.  
-Attach: the style image  
-Save as: `skin-wpn-jungwon-heir.png`
-```
-One ornate rapier, the whole weapon from the tip of the blade to the pommel, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. A black steel swept-hilt guard with gold edges, a gold signet seal set in the centre of the guard, a dark green grip wrapped in gold wire, a slim bright steel blade.
-```
-
-**[ ] Spotlight Rapier** *(optional)*  
-Jungwon's Solstice weapon skin, to go with the outfit.  
-Attach: the style image  
-Save as: `skin-wpn-jungwon-stage.png`
-```
-One ornate rapier, the whole weapon from the tip of the blade to the pommel, standing upright and centred on a plain white background, nothing touching the edges. Persona 3 Reload game-asset style, crisp cel shading, matching the attached weapon's style. No hands, no text. A white swept-hilt guard trimmed in silver, a fine silver chain looped across the guard, a white grip, a clear crystal pommel catching the light, a slim polished blade.
-```
 
 ### From Kat's inspo photos (ChatGPT)
 
