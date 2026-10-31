@@ -20,6 +20,9 @@ window.FemcBattleSave = (() => {
   //          lost; points and nodes carry over as they are. equip / seen / fresh { solar: [chain roots] }: Solar's skill list
   //          (engine.js solarKit). Her slots start as her old kit; skills she had forgotten come back into her list (forgot.solar
   //          is cleared). The party trees kept their ids too (they gained tiers 2 and 5 and more points per level).
+  // treeV 4 (the party orbits, 2026-10-31): each member's tree is a radial orbit (data.js ptrees); every old node id sits in it at
+  //          its old cost, so nothing is refunded or lost. ptreeFrom: 3 on a save that had party nodes. bonds (up to 15) also
+  //          count as link ranks for the trees (engine.js linkRank), for the rank-15 Solar-ray nodes.
   // The building systems (build.js, 2026-10-20; every field defaults, so older saves load as they were):
   //          cards { list: [card], eq: { mid: { slot: uid } }, uid } (Revelation cards), wref { gearId: 0-5 } (weapon refines),
   //          pboost { mid: { stat: n } } (Persona boosts), skillCards { skillId: n }, taught { mid: [skillIds] },
@@ -169,6 +172,9 @@ window.FemcBattleSave = (() => {
     // The skill system: an older tree is refunded once (migrateTree), then the new tree's fields are cleaned.
     if (!(s.treeV >= 2)) migrateTree(s);
     if (s.treeV === 2) { if ((s.nodes || []).length) s.sunFrom = 2; s.treeV = 3; } // the sun keeps every old node id: nothing to refund
+    // treeV 4 (the party orbits): every party node id is still in its member's orbit at its old cost, so owned nodes and spent
+    // points carry over as they are (and partyPts gives more per level). ptreeFrom marks a save that had bought some.
+    if (s.treeV === 3) { if (s.ptree && typeof s.ptree === 'object' && Object.values(s.ptree).some(l => Array.isArray(l) && l.length)) s.ptreeFrom = 3; s.treeV = 4; }
     const nodeIds = new Set(E.treeNodes().map(n => n.id));
     s.nodes = [...new Set((Array.isArray(s.nodes) ? s.nodes : []).filter(id => nodeIds.has(id)))];
     if (!(s.pts >= 0)) s.pts = 0;
