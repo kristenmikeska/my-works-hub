@@ -53,7 +53,7 @@
         ['Syracuse · Sigma Chi House · His Room', 'epi-r-sigma-his-room', 'epi-r-sigma-his-room'], // batch 77: night art, both slots
         ['Syracuse · Sigma Chi House', 'flashback-frat-party', null],
         ['Syracuse · The Quad', 'epi-r-quad-day', 'flashback-syracuse-quad'],
-        ['Syracuse · The Valley', 'flashback-syracuse-quad', null],
+        ['Syracuse · The Valley', 'epi-r-valley', null],
         ['Syracuse · Football Complex', 'epi-r-football', 'epi-r-football'],
         ['Syracuse · Marshall Street · Café', 'epi-r-marshall-cafe', null],
         ['Syracuse · Marshall Street', 'epi-r-marshall-st', 'epi-r-marshall-st'],
@@ -69,7 +69,7 @@
         ['Syracuse · Regionals', 'epi-r-regionals', null],
         ['Syracuse', 'flashback-syracuse-quad', null]
       ],
-      weatherFx: { outdoor: ['epi-r-football', 'flashback-syracuse-quad', 'flashback-alphaphi-house', 'epi-r-rooftop-night', 'epi-r-rooftop-night-snow', 'epi-r-quad-day', 'epi-r-marshall-st'], sealed: [], none: ['epi-r-regionals'] },
+      weatherFx: { outdoor: ['epi-r-valley', 'epi-r-football', 'flashback-syracuse-quad', 'flashback-alphaphi-house', 'epi-r-rooftop-night', 'epi-r-rooftop-night-snow', 'epi-r-quad-day', 'epi-r-marshall-st'], sealed: [], none: ['epi-r-regionals'] },
       home: { place: 'Syracuse · Alpha Phi House · Her Room', bg: 'epi-r-her-room' },
       school: { place: 'Syracuse · The Quad', bg: 'epi-r-quad-day' },
       activities: [
@@ -81,7 +81,7 @@
           text: "Headphones on, the lab empty except for the hum, her own Kiriko on the screen at quarter speed, every cleanse she'd been half a second late on. There were fewer than there used to be. A year of reading a room in the dark did that." },
         { id: 'epi-r-books', name: 'The used bookstore', place: 'Syracuse · Marshall Street', bg: 'epi-r-marshall-st', slots: ['after'], cost: 12, stats: { knowledge: 1, kindness: 1 },
           text: "The bookstore on Marshall Street smelled like radiator heat and old paper. She came out with a paperback nobody had assigned her and a bag she'd let the man behind the counter talk her into, because he'd seemed so sure." },
-        { id: 'epi-r-valley', name: 'Walk through the valley', place: 'Syracuse · The Valley', bg: 'flashback-syracuse-quad', slots: ['after'], cost: 0, stats: { courage: 1 },
+        { id: 'epi-r-valley', name: 'Walk through the valley', place: 'Syracuse · The Valley', bg: 'epi-r-valley', slots: ['after'], cost: 0, stats: { courage: 1 },
           text: "By daylight the valley was just grass under snow, crossed and recrossed by a thousand people on their way to somewhere else. She walked it anyway, slow, all the way past the tree that leaned too far to the right, and didn't stop." },
         { id: 'epi-r-dining', name: 'Late dinner at the dining hall', place: 'Syracuse · Marshall Street · Café', bg: 'epi-r-marshall-cafe', slots: ['evening'], cost: 9, stats: { kindness: 1, charm: 1 },
           text: "A tray, a table by the window, and a freshman she half recognised who sat down across from her because every other seat was taken and then talked for forty minutes about a lab partner. She let him. It was nice to be the one listening." }

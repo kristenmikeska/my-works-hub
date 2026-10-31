@@ -51,7 +51,7 @@
         ["Hanlim · Yeobo's", 'yeobos-cafe', null],
         ["Hanlim · Jihoon's House · Porch", 'epi-h-jihoon-porch', 'epi-h-jihoon-porch'],     // batch 77: night, both slots
         ["Hanlim · Jihoon's House", 'epi-h-jihoon-house', 'epi-h-jihoon-house'],             // batch 65: night, one lamp (every scene there is evening or late)
-        ["Hanlim · Jungwon's Street", 'outside-daytime-neighborhood', 'outside-night'],
+        ["Hanlim · Jungwon's Street", 'epi-h-jungwon-street-day', 'epi-h-jungwon-street'],
         ['Hanlim · Winter Street', 'epi-h-winter-street-day', 'epi-h-winter-street'],       // batch 77: by day; batch 65: night in the snow
         ['Hanlim · Christmas Lights', 'epi-h-christmas-lights', 'epi-h-christmas-lights'], // batch 77: every scene is evening
         ['Hanlim · Library', 'epi-h-library', null],
@@ -61,11 +61,11 @@
         ['Hanlim · The Park', 'epi-h-park', null],
         ['Hanlim · The Party · Outside', 'epi-h-party-outside', 'epi-h-party-outside'],
         ['Hanlim · The Party', 'epi-h-party', 'epi-h-party'],                               // batch 65: night
-        ["Hanlim · Jungwon's Car", 'outside-night', null],
-        ['Hanlim', 'outside-daytime-neighborhood', 'outside-night']
+        ["Hanlim · Jungwon's Car", 'epi-h-car', 'epi-h-car'],
+        ['Hanlim', 'epi-h-jungwon-street-day', 'epi-h-jungwon-street']
       ],
-      weatherFx: { outdoor: ['epi-h-rooftop', 'epi-h-park', 'epi-h-party-outside', 'outside-daytime-neighborhood', 'outside-night', 'park-2-winter', 'epi-h-christmas-lights', 'epi-h-jihoon-porch', 'epi-h-winter-street', 'rooftop-day-winter', 'gekkoukan-rooftop-night', 'outside-nightdistrict'],
-        sealed: ['epi-h-noraebang', 'paulownia-karaoke'], none: [] },
+      weatherFx: { outdoor: ['epi-h-jungwon-street-day', 'epi-h-jungwon-street', 'epi-h-rooftop', 'epi-h-park', 'epi-h-party-outside', 'outside-daytime-neighborhood', 'outside-night', 'park-2-winter', 'epi-h-christmas-lights', 'epi-h-jihoon-porch', 'epi-h-winter-street', 'rooftop-day-winter', 'gekkoukan-rooftop-night', 'outside-nightdistrict'],
+        sealed: ['epi-h-car', 'epi-h-noraebang', 'paulownia-karaoke'], none: [] },
       home: { place: 'Hanlim · Home · Her Room', bg: 'epi-h-her-room' },
       school: { place: 'Hanlim · School', bg: 'flashback-hamlim-hallway' },
       activities: [
