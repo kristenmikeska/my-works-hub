@@ -257,26 +257,57 @@ button.g-chip:is(:hover, :focus-visible) { outline: none; box-shadow: 3px 3px 0 
 .g-credits { margin-top: 18px; color: var(--muted, #e8dce4); font-size: 14px; line-height: 1.7; }
 .g-credits p { margin: 0; }
 .g-credits b { font: italic 900 18px/1 var(--cond); margin-right: 8px; }
-/* The credits roll (ui.js creditsRoll): stills crossfading with a slow drift behind the rolling lines; .calm = reduced motion. */
-.g-roll { position: fixed; inset: 0; z-index: 1500; overflow: hidden; background: #07030a; cursor: pointer; outline: none; transition: opacity .9s ease; }
+/* The credits roll (ui.js creditsRoll, made cinematic 2026-11-01): letterboxed stills crossfading with a slow drift under a
+   dark vignette; the title card (.opening), the roll (.go: --roll long, starts after the card), the closing card (.closing).
+   Desktop: the roll in a column on the left. Phones: the still up top, the roll below it. .calm = reduced motion. */
+.g-roll { --open: 6500ms; --serif-ish: "Avenir Next", "Helvetica Neue", Arial, sans-serif; position: fixed; inset: 0; z-index: 1500; overflow: hidden; background: #050206; color: var(--ink); cursor: pointer; outline: none; transition: opacity 1.2s ease; }
 .g-roll.out { opacity: 0; pointer-events: none; }
 .g-roll-stills { position: absolute; inset: 0; }
-.g-roll-stills img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.4s ease; transform: scale(1.06); }
-.g-roll-stills img.on { opacity: 1; animation: g-roll-drift 6.4s linear both; }
-@keyframes g-roll-drift { from { transform: scale(1.06) translate3d(-1.2%, .6%, 0); } to { transform: scale(1.12) translate3d(1.2%, -.6%, 0); } }
-.g-roll::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(7, 3, 10, .82) 0, rgba(7, 3, 10, .5) 32%, transparent 58%); }
-.g-roll-lines { position: absolute; z-index: 1; top: 0; bottom: 0; left: var(--pad); width: min(420px, calc(100vw - 2 * var(--pad))); overflow: hidden; -webkit-mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent); mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent); }
-.g-roll-in { padding: 100vh 0 0; color: var(--ink); text-shadow: 0 2px 10px rgba(0, 0, 0, .8); }
-.g-roll.go .g-roll-in { animation: g-roll-up var(--roll, 30s) linear both; }
-@keyframes g-roll-up { from { transform: translateY(0); } to { transform: translateY(calc(-100% + 20vh)); } }
-.g-roll-in p { margin: 0 0 9vh; font-size: 18px; line-height: 1.5; }
-.g-roll-in small { display: block; margin-bottom: 4px; color: var(--pink-2); font: italic 800 13px/1.2 var(--cond); letter-spacing: .14em; text-transform: uppercase; }
-.g-roll-title b { display: block; font: italic 900 clamp(28px, 4vw, 40px)/1.05 var(--cond); }
-.g-roll-skip { position: absolute; z-index: 2; right: var(--pad); bottom: calc(18px + env(safe-area-inset-bottom)); padding: 6px 14px; background: #14070f; border: 1px solid rgba(255, 79, 158, .6); color: var(--pink-3); font: italic 800 13px/1 var(--cond); letter-spacing: .1em; transform: skewX(-12deg); }
+.g-roll-stills img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 2.4s ease; transform: scale(1.05); filter: saturate(.86) brightness(.9); }
+.g-roll-stills img.on { opacity: 1; animation: g-roll-drift var(--still, 9s) linear both; }
+@keyframes g-roll-drift { from { transform: scale(1.05) translate3d(-1%, .5%, 0); } to { transform: scale(1.1) translate3d(1%, -.5%, 0); } }
+.g-roll-vig { position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 7vh 0 #050206, inset 0 -7vh 0 #050206;
+  background: radial-gradient(ellipse 80% 90% at 68% 50%, transparent 45%, rgba(5, 2, 6, .78) 100%), linear-gradient(90deg, rgba(5, 2, 6, .9) 0, rgba(5, 2, 6, .66) 28%, rgba(5, 2, 6, .14) 48%, transparent 58%); }
+.g-roll-scrim { position: absolute; inset: 0; background: #050206; opacity: .8; transition: opacity 2.6s ease; pointer-events: none; }
+.g-roll.rolling .g-roll-scrim { opacity: 0; }
+.g-roll.closing .g-roll-scrim { opacity: .4; }
+.g-roll-card { position: absolute; z-index: 2; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 0 var(--pad); text-align: center; opacity: 0; transition: opacity 1.8s ease; pointer-events: none; }
+.g-roll.opening .g-roll-card.open, .g-roll.closing .g-roll-card.close { opacity: 1; }
+.g-roll-card.close { justify-content: flex-end; padding-bottom: calc(7vh + 10vh); }
+.g-roll-logo { margin: 0; }
+.g-roll-logo svg { display: block; width: min(640px, 84vw); height: auto; filter: drop-shadow(0 4px 24px rgba(0, 0, 0, .7)); }
+.g-roll-logo.is-svg .g-roll-logo-text { display: none; }
+.g-roll-logo-text { display: block; font: italic 800 15px/1 var(--cond); letter-spacing: .5em; text-transform: uppercase; color: var(--pink-3); }
+.g-roll-logo-text b { display: block; margin-top: 8px; color: #fff; font: italic 900 clamp(54px, 9vw, 110px)/.9 var(--cond); letter-spacing: .04em; text-shadow: .05em .05em 0 var(--pink); }
+.g-roll-logo-text i { display: block; margin-top: 14px; font-style: normal; letter-spacing: .4em; color: var(--pink-2); }
+.g-roll-tag { margin: 0; color: var(--pink-2); font: italic 800 13px/1.2 var(--cond); letter-spacing: .42em; text-transform: uppercase; }
+.g-roll-thanks { margin: 0; font: 500 clamp(22px, 2.6vw, 32px)/1.3 var(--serif-ish); letter-spacing: .18em; text-transform: uppercase; text-shadow: 0 2px 18px rgba(0, 0, 0, .85); }
+.g-roll-lines { position: absolute; z-index: 1; top: 7vh; bottom: 7vh; left: max(var(--pad), 5vw); width: min(480px, 38vw); overflow: hidden;
+  -webkit-mask-image: linear-gradient(transparent, #000 16%, #000 84%, transparent); mask-image: linear-gradient(transparent, #000 16%, #000 84%, transparent); }
+.g-roll-in { position: absolute; left: 0; right: 0; top: 100%; text-align: center; text-shadow: 0 2px 14px rgba(0, 0, 0, .9); }
+.g-roll.go .g-roll-in { animation: g-roll-up var(--roll, 90s) linear var(--open) both; }
+@keyframes g-roll-up { from { transform: translateY(0); } to { transform: translateY(var(--dist, -300vh)); } }
+.g-roll-sec { margin: 0 0 clamp(110px, 19vh, 210px); }
+.g-roll-sec h3 { margin: 0 0 16px; color: var(--pink-2); font: 600 12px/1.3 var(--serif-ish); letter-spacing: .44em; text-transform: uppercase; }
+.g-roll-sec h3::after { content: ""; display: block; width: 28px; height: 1px; margin: 12px auto 0; background: var(--pink); opacity: .8; }
+.g-roll-sec p { margin: 0 0 6px; font: 500 clamp(19px, 1.7vw, 24px)/1.4 var(--serif-ish); letter-spacing: .05em; }
+.g-roll-sec.lead p { font-size: clamp(26px, 2.6vw, 36px); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.g-roll-sec small { display: block; max-width: 36ch; margin: 12px auto 0; color: var(--muted); font: 400 13px/1.6 var(--serif-ish); letter-spacing: .04em; }
+.g-roll-skip { position: absolute; z-index: 3; right: var(--pad); bottom: calc(7vh + 14px + env(safe-area-inset-bottom)); padding: 6px 4px; color: var(--pink-3); font: italic 800 12px/1 var(--cond); letter-spacing: .24em; text-transform: uppercase; opacity: .62; }
 .g-roll.calm .g-roll-stills img, .g-roll.calm .g-roll-stills img.on { animation: none; transform: none; }
-.g-roll.calm .g-roll-in, .g-roll.calm.go .g-roll-in { animation: none; padding: 0; position: absolute; top: 50%; transform: translateY(-50%); }
-.g-roll.calm .g-roll-in p { margin-bottom: 3vh; }
-@media (max-width: 640px) { .g-roll::after { background: linear-gradient(0deg, rgba(7, 3, 10, .88) 0, rgba(7, 3, 10, .45) 45%, transparent 70%); } .g-roll-lines { width: auto; right: var(--pad); } .g-roll-in p { font-size: 16px; } }
+.g-roll.calm .g-roll-in, .g-roll.calm.go .g-roll-in { animation: none; top: 0; bottom: 0; }
+.g-roll.calm .g-roll-lines { -webkit-mask-image: none; mask-image: none; }
+.g-roll.calm .g-roll-sec { position: absolute; left: 0; right: 0; top: 50%; margin: 0; transform: translateY(-50%); opacity: 0; transition: opacity 1.2s ease; }
+.g-roll.calm .g-roll-sec.on { opacity: 1; }
+@media (max-width: 640px) {
+  .g-roll-stills { bottom: auto; height: 50%; -webkit-mask-image: linear-gradient(#000 60%, transparent); mask-image: linear-gradient(#000 60%, transparent); }
+  .g-roll-vig { box-shadow: inset 0 5vh 0 #050206; background: linear-gradient(180deg, transparent 28%, rgba(5, 2, 6, .55) 42%, #050206 52%), radial-gradient(ellipse 100% 55% at 50% 25%, transparent 50%, rgba(5, 2, 6, .7) 100%); }
+  .g-roll-lines { top: 44%; bottom: 0; left: var(--pad); right: var(--pad); width: auto; }
+  .g-roll-sec { margin-bottom: clamp(90px, 15vh, 140px); }
+  .g-roll-sec h3 { letter-spacing: .34em; font-size: 11px; }
+  .g-roll-sec.lead p { font-size: 24px; }
+  .g-roll-skip { bottom: calc(14px + env(safe-area-inset-bottom)); }
+}
 @media (prefers-reduced-motion: reduce) { .g-roll-stills img.on, .g-roll.go .g-roll-in { animation: none; } }
 .g-xmas-pic img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; transform: scale(1.6); transform-origin: 50% 12%; }
 .g-tt-ov .g-panel { border-color: #8fffc0; }

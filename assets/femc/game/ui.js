@@ -944,7 +944,7 @@
     show(`<section class="g-seg g-end"><p class="g-kicker">${esc(G.dayInfo(G.END()).md)} · the last minutes of the last Dark Hour</p>
       <div class="g-seg-box"><p class="g-end-name">ENDING · ${esc(name)}</p>
         <p class="g-seg-sub">${frags} memory fragment${frags === 1 ? '' : 's'} · ${maxed} bond${maxed === 1 ? '' : 's'} at MAX · ${met} people met${S().ngp ? ` · New Game+ ${S().ngp}` : ''}</p>
-        <div class="g-credits"><p><b>Persona 3: Solstice</b> Every Universe</p><p>Story, characters and worlds · Kat</p><p>Persona 3 · ATLUS (the year it borrows)</p><p>Endings seen · ${seen.map(esc).join(' · ')}</p></div></div>
+        <div class="g-credits"><p><b>Persona 3: Solstice</b> Every Universe</p><p>Created by Katarina Grande</p><p>Based on Persona 3 · ATLUS</p><p>Endings seen · ${seen.map(esc).join(' · ')}</p></div></div>
       <div class="g-row"><button type="button" class="g-btn pink" data-t="ngp">New Game+</button><button type="button" class="g-btn" data-t="title">Back to title</button></div></section>`, 'is-seg');
     // The album and the Theater come along into New Game+ (menu.js albumCarry: everything seen so far, in one list).
     main.querySelector('[data-t=ngp]').addEventListener('click', () => { const keep = window.FemcMenu?.albumCarry?.(); G.newGamePlus(); if (keep) { S().album = keep; G.saveQuiet(); } cardDay = null; run(); });
@@ -956,9 +956,9 @@
   /* ── The credits roll (FEMC-ART-TODO 18, 2026-11-01). CREDITS_STILLS: quiet "after" pictures (assets/femc/cg/<id>.webp),
      in this order; one plays only if Solar has met everyone in its `who` (G.isMet); `always` ones always play (Solar's is
      last). `art: false` = not made yet (Ken's): drop it when the file arrives (a file that fails to load is skipped too). Over the end
-     screen, before its buttons: the stills crossfade one by one (STILL_MS each, a slow drift like the Showtime panels) behind
-     the rolling credit lines, then the roll fades out. A tap, or Enter / Space / Esc, skips to the buttons. Reduced motion:
-     plain crossfades, no drift, the lines still. Each still shown goes into the album (bridge.seeCg; menu.js's Credits row).
+     screen, before its buttons: the stills crossfade one by one (sharing the roll's length, a slow drift like the Showtime panels)
+     behind the title card, the rolling CREDITS and the closing card, then the roll fades out. A tap, or Enter / Space / Esc,
+     skips to the buttons. Reduced motion: plain crossfades, no drift, the credit sections one at a time, held still. Each still shown goes into the album (bridge.seeCg; menu.js's Credits row).
      Nothing here reads the ending: the same stills for every ending. ── */
   const CREDITS_STILLS = [
     { id: 'credits-sees', who: ['yukari', 'junpei', 'fuuka'] }, { id: 'credits-akihiko', who: ['akihiko'] },
@@ -966,26 +966,48 @@
     { id: 'credits-shinjiro', who: ['shinjiro'] }, { id: 'credits-haechan', who: ['haechan'] }, { id: 'credits-jungwon', who: ['jungwon'] },
     { id: 'credits-minji-jihoon', who: ['minji', 'jihoon'] }, { id: 'credits-hanni-hyein', who: ['hanni', 'hyein'] },
     { id: 'credits-kat-ethan', who: ['kat'] }, { id: 'credits-solar', always: true }];
-  const STILL_MS = 5000;
+  /* The credits themselves (2026-11-01, Kat: "fancier and more serious, like a real game's"): a title card, the roll, a closing
+     card. The same for every ending (no route names, no people met). [role, names (· breaks the line), small print]. */
+  const CREDITS = [
+    ['Created by', 'Katarina Grande'],
+    ['Story & Direction', 'Katarina Grande'],
+    ['Writing', 'Katarina Grande'],
+    ['Art Direction', 'Katarina Grande'],
+    ['Characters & Worlds', 'Katarina Grande'],
+    ['Music', 'Shoji Meguro · Atsushi Kitajoh · ATLUS Sound Team', 'From the Persona series by ATLUS'],
+    ['Vocals', 'Yumi Kawamura · Lotus Juice · Azumi Takahashi · Shihoko Hirata · Lyn'],
+    ['Songs', 'By their original artists', 'chosen by Katarina Grande'],
+    ['Based on', 'Persona 3 · ATLUS', 'Persona is a trademark of ATLUS. A fan work, made with love; not affiliated with ATLUS or SEGA.'],
+    ['Code & Assistance', 'Claude · Anthropic'],
+    ['Special Thanks', 'The people who made Persona 3 · Everyone who walked through the Dark Hour with her'],
+  ];
+  const ROLL_OPEN = 6500, ROLL_CLOSE = 5200, STILL_MIN = 5000, STILL_MAX = 11000;
   function creditsRoll(main) {
     const want = CREDITS_STILLS.filter(c => c.art !== false && (c.always || c.who.every(id => G.isMet(id))));
     const src = c => `${G.base}assets/femc/cg/${c.id}.webp`;
-    const names = [...new Set(want.flatMap(c => c.who || []))].map(id => esc(G.name(id)));
+    const calm = reduced.matches;
+    const block = ([role, names, note], k) => `<section class="g-roll-sec${k === 0 ? ' lead' : ''}"><h3>${esc(role)}</h3>${names.split(' · ').map(n => `<p>${esc(n)}</p>`).join('')}${note ? `<small>${esc(note)}</small>` : ''}</section>`;
     const roll = document.createElement('div');
-    roll.className = `g-roll${reduced.matches ? ' calm' : ''}`;
+    roll.className = `g-roll${calm ? ' calm' : ''}`;
     roll.tabIndex = -1; roll.setAttribute('role', 'button'); roll.setAttribute('aria-label', 'Credits. Press to skip.');
-    roll.innerHTML = `<div class="g-roll-stills"></div><div class="g-roll-lines"><div class="g-roll-in">
-      <p class="g-roll-title"><b>Persona 3: Solstice</b> Every Universe</p><p><small>Story, characters and worlds</small>Kat</p>
-      ${names.length ? `<p><small>With</small>${names.join('<br>')}</p>` : ''}<p><small>Persona 3</small>ATLUS (the year it borrows)</p>
-      <p><small>And</small>Solar</p></div></div><span class="g-roll-skip">Skip ▸▸</span>`;
+    roll.innerHTML = `<div class="g-roll-stills"></div><div class="g-roll-vig"></div><div class="g-roll-scrim"></div>
+      <div class="g-roll-card open"><h2 class="g-roll-logo" aria-label="Persona 3: Solstice"><span class="g-roll-logo-text">Persona 3<b>Solstice</b><i>Every Universe</i></span></h2></div>
+      <div class="g-roll-lines"><div class="g-roll-in">${CREDITS.map(block).join('')}</div></div>
+      <div class="g-roll-card close"><p class="g-roll-tag">Persona 3: Solstice</p><p class="g-roll-thanks">Thank you for playing</p></div>
+      <span class="g-roll-skip">Skip ▸▸</span>`;
+    // The title logo, inlined as on the title screen (plain text until it arrives).
+    const logo = roll.querySelector('.g-roll-logo');
+    const putRollLogo = t => { if (!/^\s*<svg[\s>]/.test(t || '')) return; logo.insertAdjacentHTML('afterbegin', t.replace('class="sl-logo"', 'class="sl-logo sl-dark" aria-hidden="true" focusable="false"').replace(/<title[^>]*>.*?<\/title>/, '')); logo.classList.add('is-svg'); };
+    if (logoSvg !== null) putRollLogo(logoSvg); else logoLoad.then(putRollLogo);
     // On the page itself (over the HUD); it goes as soon as the end screen does (New Game+, the title).
     const sec = main.querySelector('.g-end');
     document.body.append(roll);
-    const box = roll.querySelector('.g-roll-stills'), timers = [], watch = setInterval(() => { if (!sec?.isConnected) end(); }, 300);
+    const box = roll.querySelector('.g-roll-stills'), lines = roll.querySelector('.g-roll-lines'), inner = roll.querySelector('.g-roll-in');
+    const timers = [], later = (fn, ms) => timers.push(setTimeout(fn, ms)), watch = setInterval(() => { if (!sec?.isConnected) end(); }, 300);
     let done = false;
     const end = () => {
       if (done) return; done = true; timers.forEach(clearTimeout); clearInterval(watch);
-      roll.classList.add('out'); setTimeout(() => roll.remove(), sec?.isConnected ? 900 : 0);
+      roll.classList.add('out'); setTimeout(() => roll.remove(), sec?.isConnected ? 1200 : 0);
       setTimeout(() => main.querySelector('.g-end .g-btn')?.focus({ preventScroll: true }), 60);
     };
     roll.addEventListener('click', end);
@@ -995,15 +1017,26 @@
     Promise.all(want.map(c => new Promise(res => { const im = new Image(); im.onload = () => res(c); im.onerror = () => res(null); im.src = src(c); }))).then(list => {
       list = list.filter(Boolean);
       if (done) return;
-      roll.style.setProperty('--roll', `${Math.max(1, list.length) * STILL_MS}ms`);
-      roll.classList.add('go');
-      list.forEach((c, k) => timers.push(setTimeout(() => {
+      // The roll: one screenful of the lines area about every 20 s (about a minute and a half on a laptop); reduced motion
+      // shows the sections one at a time instead, each held still.
+      const secs = [...inner.children], hold = 4600;
+      const rollMs = calm ? secs.length * hold : Math.min(150000, Math.max(50000, (inner.scrollHeight + lines.clientHeight) / (lines.clientHeight / 20) * 1000));
+      roll.style.setProperty('--roll', `${rollMs}ms`);
+      roll.style.setProperty('--dist', `${-(inner.scrollHeight + lines.clientHeight)}px`);
+      roll.classList.add('go', 'opening');
+      later(() => { roll.classList.remove('opening'); roll.classList.add('rolling'); }, ROLL_OPEN);
+      if (calm) secs.forEach((s, k) => { later(() => { secs.forEach(x => x.classList.toggle('on', x === s)); }, ROLL_OPEN + k * hold); });
+      later(() => { roll.classList.remove('rolling'); roll.classList.add('closing'); secs.forEach(x => x.classList.remove('on')); }, ROLL_OPEN + rollMs);
+      later(end, ROLL_OPEN + rollMs + ROLL_CLOSE);
+      // The stills share the whole length; the last one (Solar's) stays up under the closing card.
+      const each = Math.max(STILL_MIN, Math.min(STILL_MAX, (ROLL_OPEN + rollMs) / Math.max(1, list.length)));
+      roll.style.setProperty('--still', `${each + 2000}ms`);
+      list.forEach((c, k) => later(() => {
         const img = document.createElement('img'); img.src = src(c); img.alt = '';
         box.append(img); requestAnimationFrame(() => img.classList.add('on'));
         bridge.seeCg(c.id);
         [...box.children].slice(0, -2).forEach(x => x.remove());
-      }, k * STILL_MS)));
-      timers.push(setTimeout(end, list.length * STILL_MS + 400));
+      }, k * each));
     });
   }
 
