@@ -15,6 +15,10 @@ Run: python3 tests/femc_skins_battle.py [--only data,tools,fallback,art,settings
   art       the same with test art files in each art path: Kat's pictures replace every drawn version.
   settings  Outfit effects Off (no frame or burst), Entrance cards Off, a second fight of the night,
             Persona cut-ins Off (the old band), reduced motion (strip and card fade), practice (none of it).
+  tryon     S3, the Wardrobe's "Try it on" (game/tryon.js): the button on an owned and an unowned outfit and the Boutique's
+            ▶, every beat in order, Enter / click skip to the victory pose, Esc closes only it (focus back), the hand
+            charge only for a clean look, Outfit effects Off, reduced motion, every ready look's frames loading, a party
+            member's look; no sideways scroll at 1440x900, 1280x720 and 390x844; screenshots mid-showcase.
 """
 import argparse, base64, json, pathlib, shutil, subprocess, sys, time
 from femc_browser import Page, REPO
@@ -361,6 +365,110 @@ try:
         p.wait("document.readyState==='complete' && !!window.FemcBattle", 30)
         ok(p.eval("FemcBattle.looks===null"), 'practice: no looks')
         results['settings'] = 'skinFx Off, chain, Entrance Off, cut-ins Off, reduced motion, practice'
+
+    if want('tryon'):
+        TO = "FemcTryOn.state()"
+        def wmenu():
+            p.eval("document.querySelectorAll('.g-overlay').forEach(x=>x.remove());FemcMenu.close&&FemcMenu.close();")
+            p.eval("new Promise(r=>setTimeout(r,250))")
+            p.eval("FemcMenu.open('wardrobe')")
+            p.wait("!!document.querySelector('.g-fm-ov:not(.out) .g-fm-body')")
+        def pick(id):
+            p.eval("document.querySelector('[data-wd-view=wardrobe]')?.click()")
+            p.wait("!!document.querySelector('[data-wd=\"%s\"]')" % id)
+            p.eval("document.querySelector('[data-wd=\"%s\"]').click()" % id)
+            p.wait("!!document.querySelector('.g-wd-acts [data-wd-try=\"%s\"]')" % id)
+        def key(k):
+            p.eval("document.activeElement.dispatchEvent(new KeyboardEvent('keydown',{key:%s,bubbles:true,cancelable:true}))" % json.dumps(k))
+        def at_beat(b, t=12):
+            p.wait("FemcTryOn.state()?.beat===%s" % json.dumps(b), t)
+        def gone():
+            p.wait("!document.querySelector('.g-to-ov')", 5)
+            return p.eval("({menu:!!document.querySelector('.g-fm-ov:not(.out)'),focus:document.activeElement?.dataset?.wdTry||null,state:FemcTryOn.state()})")
+        view(p, 1440, 900); motion(p, False)
+        setup(wear=['sk-date'])
+        p.eval("FemcGame.setSettings({skinFx:true,perf:false,calm:false})")
+        wmenu(); pick('sk-date')
+        # Plays every beat in order, ends on the victory pose with Replay / Done.
+        p.eval("document.querySelector('.g-wd-acts [data-wd-try=\"sk-date\"]').click()")
+        at_beat('entrance'); ok(p.eval("document.querySelector('.g-to-ov').getAttribute('role')==='dialog'"), 'a dialog')
+        p.wait("FemcTryOn.state()?.done===true", 12)
+        r = p.eval(TO)
+        ok(r['seen'] == ['entrance', 'idle', 'attack', 'skill', 'onemore', 'win'], f'every beat in order: {r}')
+        ok(set(['entrance-code', 'onemore-code', 'burst', 'sparkle']) <= set(r['fx']) and 'charge' not in r['fx'], f'built-in card and strip, theme burst and sparkle, no charge (not clean): {r}')
+        ok(p.eval("document.querySelector('.g-to-fig.on').src.includes('skins/sk-date/solar-pose-5.webp') && document.activeElement.dataset.toAct==='done' && !!document.querySelector('[data-to-act=replay]')"), 'ends on the victory pose, Done focused, Replay')
+        # Replay, then Enter skips; a click skips too; Esc closes only the showcase and gives focus back.
+        key('ArrowLeft'); ok(p.eval("document.activeElement.dataset.toAct") == 'replay', 'arrows move between the buttons')
+        key('Enter'); at_beat('entrance')
+        key('Enter'); r = p.eval(TO)
+        ok(r['beat'] == 'win' and r['done'] and r['seen'][-1] == 'win' and len(r['seen']) == 2, f'Enter skips to the victory pose: {r}')
+        p.eval("FemcTryOn.replay()"); at_beat('idle')
+        p.eval("document.querySelector('[data-to-stage]').click()"); ok(p.eval(TO)['done'], 'a click skips')
+        key('Escape'); r = gone()
+        ok(r['menu'] and r['focus'] == 'sk-date' and r['state'] is None, f'Esc closes only it, focus back on the button: {r}')
+        ok(p.eval("FemcTryOn.skip()===null||FemcTryOn.skip()===undefined"), 'nothing left playing')
+        # Mid-showcase stills, desktop: the skill beat (burst) and the One More strip.
+        p.eval("FemcCosmetics.byId('sk-date').clean=true")
+        p.eval("document.querySelector('.g-wd-acts [data-wd-try=\"sk-date\"]').click()")
+        p.wait("(FemcTryOn.state()?.fx||[]).includes('burst')", 12); p.eval("FemcTryOn.freeze()")
+        r = p.eval(TO); ok('charge' in r['fx'], f'a clean look: the hand charge: {r}')
+        c = p.eval("(()=>{const c=document.querySelector('.g-to-charge'),s=document.querySelector('[data-to-stage]').getBoundingClientRect();return {x:parseFloat(c.style.left),y:parseFloat(c.style.top),w:s.width,h:s.height}})()")
+        ok(0 < c['x'] < c['w'] and 0 < c['y'] < c['h'], f'the charge sits on the stage: {c}')
+        hold(p, '.g-to', 0.5); ok(fits(p), '1440: no sideways scroll'); shots = [shot(p, 'tryon-skill-1440')]
+        p.eval("FemcTryOn.close()"); gone()
+        p.eval("FemcCosmetics.byId('sk-date').clean=false")
+        p.eval("document.querySelector('.g-wd-acts [data-wd-try=\"sk-date\"]').click()")
+        at_beat('onemore'); p.eval("FemcTryOn.freeze()"); hold(p, '.g-to', 0.45); shots.append(shot(p, 'tryon-onemore-1440'))
+        p.eval("FemcTryOn.close()"); gone()
+        # Outfit effects Off: no charge, burst or sparkle (the pose and the strip still play).
+        p.eval("FemcGame.setSettings({skinFx:false});FemcCosmetics.byId('sk-date').clean=true;FemcTryOn.play('sk-date')")
+        p.wait("FemcTryOn.state()?.done===true", 12)
+        r = p.eval("({fx:FemcTryOn.state().fx,els:document.querySelectorAll('.g-to-charge,.g-to-burst,.g-to-sparkle,.g-to-en svg').length})")
+        ok(r['els'] == 0 and not ({'charge', 'burst', 'sparkle'} & set(r['fx'])), f'Outfit effects Off: {r}')
+        p.eval("FemcTryOn.close();FemcGame.setSettings({skinFx:true});FemcCosmetics.byId('sk-date').clean=false"); gone()
+        # Performance mode and Reduce flashes: fewer motifs, calm class.
+        p.eval("FemcGame.setSettings({perf:true,calm:true});FemcTryOn.play('sk-date')")
+        r = p.eval("({perf:document.querySelector('.g-to').classList.contains('perf'),calm:document.querySelector('.g-to').classList.contains('calm'),n:document.querySelectorAll('.g-to-burst svg').length})")
+        ok(r['perf'] and r['calm'] and r['n'] == 5, f'Performance / Reduce flashes: {r}')
+        p.eval("FemcTryOn.close();FemcGame.setSettings({perf:false,calm:false})"); gone()
+        # Reduced motion: still frames with crossfades.
+        motion(p, True); p.eval("FemcTryOn.play('sk-date')"); at_beat('attack')
+        r = p.eval("({fig:getComputedStyle(document.querySelector('.g-to-figw')).animationName,tr:getComputedStyle(document.querySelector('.g-to-fig')).transitionDuration,red:document.querySelector('.g-to').classList.contains('reduced')})")
+        ok(r['red'] and r['fig'] == 'none' and r['tr'] == '0.3s', f'reduced motion: {r}')
+        p.wait("FemcTryOn.state()?.done===true", 12); p.eval("FemcTryOn.close()"); gone(); motion(p, False)
+        # Every ready look: its showcase opens and its victory frame loads.
+        ids = p.eval("FemcCosmetics.ITEMS.filter(x=>x.kind==='skin'&&FemcCosmetics.ready(x)).map(x=>x.id)")
+        bad = []
+        for i in ids:
+            p.eval("FemcTryOn.play(%s);FemcTryOn.skip()" % json.dumps(i))
+            try: p.wait("(()=>{const s=FemcTryOn.state();if(!s||!s.done)return false;const im=document.querySelector('.g-to-fig.on');return im.complete&&im.naturalWidth>0})()", 8)
+            except Exception: bad.append(i)
+            p.eval("FemcTryOn.close(true)")
+        ok(not bad and len(ids) > 40, f'every ready look plays ({len(ids)}): failed {bad}')
+        # A party member's look, not owned: the button is there (the Boutique's preview), plays, phone and 1280 fit.
+        hid = p.eval("(FemcCosmetics.ITEMS.find(x=>x.kind==='skin'&&x.who==='haechan'&&FemcCosmetics.ready(x)&&!FemcCosmetics.owns(x.id))||{}).id")
+        ok(hid, 'a ready Haechan look not owned')
+        view(p, 390, 844); wmenu(); pick(hid)
+        p.eval("document.querySelector('.g-wd-acts [data-wd-try=\"%s\"]').click()" % hid)
+        p.wait("(FemcTryOn.state()?.fx||[]).includes('burst')", 12); p.eval("FemcTryOn.freeze()")
+        ok(p.eval("document.querySelector('.g-to-fig.on').src.includes('%s/haechan-pose-3.webp')" % hid), "a party member's skill frame")
+        hold(p, '.g-to', 0.5); ok(fits(p), '390: no sideways scroll'); shots.append(shot(p, 'tryon-skill-390'))
+        p.eval("FemcTryOn.close()"); gone()
+        p.eval("FemcTryOn.play(%s)" % json.dumps(hid)); at_beat('entrance'); time.sleep(0.35); p.eval("FemcTryOn.freeze()"); hold(p, '.g-to', 0.6); shots.append(shot(p, 'tryon-entrance-390'))
+        p.eval("FemcTryOn.close()"); gone()
+        view(p, 1280, 720); p.eval("FemcTryOn.play(%s)" % json.dumps(hid)); at_beat('win', 12)
+        sz = p.eval("(()=>{const r=document.querySelector('.g-to').getBoundingClientRect();return {b:r.bottom,r:r.right,h:innerHeight,w:innerWidth}})()")
+        ok(fits(p) and sz['b'] <= sz['h'] and sz['r'] <= sz['w'], f'1280x720 fits: {sz}'); shots.append(shot(p, 'tryon-win-1280'))
+        p.eval("FemcTryOn.close()"); gone()
+        # The Boutique's ▶ on a featured outfit.
+        view(p, 1440, 900); p.eval("document.querySelector('[data-wd-view=banner]').click()")
+        p.wait("!!document.querySelector('.g-wd-banner')")
+        f = p.eval("(document.querySelector('.g-wd-feat [data-wd-try]')||{}).dataset?.wdTry||null")
+        ok(f, 'a featured outfit has ▶')
+        p.eval("document.querySelector('.g-wd-feat [data-wd-try]').click()"); at_beat('entrance')
+        key('Escape'); r = gone(); ok(r['focus'] == f, f'Boutique: focus back on ▶: {r}')
+        clean(p, 'tryon')
+        results['tryon'] = {'looks': len(ids), 'shots': shots}
 
     print(json.dumps(results, indent=1))
     print('femc_skins_battle: all checks passed')

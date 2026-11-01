@@ -14,6 +14,7 @@
                (the battle-start card, 16:9); a fighter's own look: game/art/onemore/<who>.webp, game/art/entrance/<who>.webp;
                a couple set's Showtime game/art/couples/<set>-showtime.webp; a theme's frame game/art/frames/<theme>.webp
                (tools/femc-wardrobe.py onemore / entrance / showtime / frame; scan lists them in ready.js).
+               S3 (Nov 1 2026): "Try it on" ([data-wd-try] in the Wardrobe and the Boutique) plays game/tryon.js from tryOnSpec().
      weapon    a weapon look for a fighter: game/art/skins/<id>/weapon.webp (the Equipment tab shows it for her weapon slot).
      evoker    a tint on the Evoker prop in summons (CSS filter; code only).
      battleui  battle colours (CSS variables injected into the battle frame; code only).
@@ -437,6 +438,27 @@ window.FemcCosmetics = (() => {
     if (evk) out.css += `.bt-evk-band .gun{filter:${evk.filter}}`;
     return out;
   }
+  /* "Try it on" (FEMC-SKINS-BATTLE-DESIGN S3, Nov 1 2026; game/tryon.js plays it): everything the showcase draws for a ready
+     outfit, owned or not: its pose frames, theme, clean flag and hand, Kat's entrance / One More art when ready.js lists it,
+     the face for the built-in eye strip (the look's portrait, else the fighter's own) and a sample spell (the fighter's
+     first non-physical attack skill in data.js, for its name and element colour). */
+  function tryOnSpec(id) {
+    const x = byId(id); if (!x || x.kind !== 'skin' || !ready(x)) return null;
+    const w = x.who, R = (readyArt().skins || {})[x.id] || {}, have = (R.portraits || {})[w] || [];
+    const D = window.FEMC_BATTLE_DATA || {}, m = (D.party || []).find(p => p.id === w) || {}, face0 = (m.faces && m.faces.idle) || 'neutral';
+    const f = [face0, 'neutral', have[0]].find(k => k && have.includes(k));
+    const art8 = n => `${G.base}${skinDir(x.id)}${n}?v=${ART_V8}`, EL = D.elements || {}, SK = D.skills || {};
+    const sid = (m.skills || []).find(k => SK[k] && SK[k].el && EL[SK[k].el] && !EL[SK[k].el].phys && SK[k].type === 'dmg')
+      || (m.skills || []).find(k => SK[k] && SK[k].el && EL[SK[k].el] && !EL[SK[k].el].phys);
+    const sk = sid ? SK[sid] : { name: 'Megido', el: 'almighty' }, el = EL[sk.el] || { name: 'Almighty', color: '#ff8cc0' };
+    const V = (window.FemcMode && window.FemcMode.v) || 1;
+    return { id: x.id, who: w, name: x.name, whoName: whoName(w), theme: x.theme || null, clean: isClean(x, w), color: m.color || '#ff4f9e',
+      hand: Array.isArray(x.hand) ? x.hand.slice(0, 2) : ((window.FemcLooksArt || {}).FIGHTER_HAND || {})[w] || ((window.FemcLooksArt || {}).HAND_DEFAULT || [0.5, 0.3]),
+      frames: [0, 1, 2, 3, 4, 5].map(i => `${G.base}${skinDir(x.id)}${w}-pose-${i}.webp?v=${SKIN_V}`),
+      entrance: (R.entrance || []).includes(w) ? art8(`${w}-entrance.webp`) : null, onemore: (R.onemore || []).includes(w) ? art8(`${w}-onemore.webp`) : null,
+      face: f ? `${G.base}${skinDir(x.id)}portraits/${w}/${f}.webp?v=8` : `${G.base}${D.portraits || 'assets/femc/portraits/'}${w}/${face0}.webp?v=${V}`, faceKey: f || face0,
+      skill: { name: sk.name, el: sk.el, elName: el.name, color: el.color } };
+  }
   /* For scenes (core.js portrait): an outfit's portrait, when it has one and the toggle is on. */
   function portrait(id, face) {
     const s = S() && S().gacha && S().gacha.cos;
@@ -494,11 +516,11 @@ window.FemcCosmetics = (() => {
           ${items.filter(i => slotOf(i) === slot).map(i => { const own = owns(i.id), rd = ready(i), on = worn && worn.id === i.id; const st = !rd ? 'Art coming' : on ? 'Wearing' : own ? 'Owned' : i.pool === false ? 'Series reward' : 'Boutique'; return `<li class="g-wd-li">${own && rd ? `<button type="button" class="g-view-zoom" data-wd-zoom="${i.id}" aria-label="View ${esc(i.name)}" title="View">⤢</button>` : ''}<button type="button" class="g-wd-item${own ? ' own' : ''}${on ? ' on' : ''}${rd ? '' : ' pending'}${sel === i.id ? ' sel' : ''}" data-wd="${i.id}" style="--rc:${RAR[i.r].color}"><span class="g-wd-th">${thumb(i)}</span><b>${esc(i.name)}</b><small>${starsHtml(i.r)} ${st}</small></button></li>`; }).join('')}</ul></section>`;
       }).join('');
     }).join('');
-    const can = x && owns(x.id) && ready(x), wearing = x && onIn(slotOf(x))?.id === x.id;
+    const can = x && owns(x.id) && ready(x), tryable = x && x.kind === 'skin' && ready(x) && window.FemcTryOn, wearing = x && onIn(slotOf(x))?.id === x.id;
     return `<div class="g-wd-grid"><div class="g-wd-side">${preview(x)}
         <div class="g-wd-info">${x ? `<b>${esc(x.name)}</b><small>${starsHtml(x.r)} ${esc(RAR[x.r].name)} · ${esc(KINDS[x.kind].name)}${x.who ? ` · ${esc(whoName(x.who))}` : ''}</small><p>${esc(x.desc)}</p>
           ${!ready(x) ? '<p class="g-note small">Art coming: it joins the Boutique once its pictures are in.</p>' : !owns(x.id) ? `<p class="g-note small">${x.pool === false ? 'Complete its capsule series to get it.' : 'Pull for it in the Boutique.'}</p>` : ''}
-          ${can ? `<span class="g-row g-wd-acts"><button type="button" class="g-btn pink small" data-wd-equip="${x.id}"${wearing ? ' disabled' : ''}><span>${wearing ? 'Wearing' : 'Equip'}</span></button><button type="button" class="g-btn small" data-wd-zoom="${x.id}"><span>View</span></button></span>` : ''}` : '<b>Wardrobe</b><p>Pick something to preview it. Looks only: nothing here changes a fight.</p>'}</div>
+          ${can || tryable ? `<span class="g-row g-wd-acts">${can ? `<button type="button" class="g-btn pink small" data-wd-equip="${x.id}"${wearing ? ' disabled' : ''}><span>${wearing ? 'Wearing' : 'Equip'}</span></button><button type="button" class="g-btn small" data-wd-zoom="${x.id}"><span>View</span></button>` : ''}${tryable ? `<button type="button" class="g-btn small g-wd-try" data-wd-try="${x.id}"><span>▶ Try it on</span></button>` : ''}</span>` : ''}` : '<b>Wardrobe</b><p>Pick something to preview it. Looks only: nothing here changes a fight.</p>'}</div>
         <label class="g-wd-toggle"><input type="checkbox" data-wd-portraits${s.portraits ? ' checked' : ''}> Outfits in scene portraits</label></div>
       <div class="g-wd-list">${lists}</div></div>`;
   }
@@ -528,7 +550,7 @@ window.FemcCosmetics = (() => {
     const n = pool().length, ends = x => bannerEnd(x).toLocaleString('en', { month: 'long', day: 'numeric' });
     const tabs = all.length > 1 ? `<div class="g-wd-bans" role="tablist" aria-label="Banners">${all.map(x => `<button type="button" role="tab" aria-selected="${x === b}" class="${x === b ? 'on' : ''}" style="--c:${x.color}" data-wd-ban="${x.id}"><b>${esc(x.name)}</b><small>${x.kind ? `${esc(x.kind)} · ` : ''}until ${esc(ends(x))}</small></button>`).join('')}</div>` : '';
     return `${tabs}<div class="g-wd-banner" data-ban="${b.id}" style="--c:${b.color}"><div class="g-wd-bhead"><b>${esc(b.name)}</b><small>Featured ${esc(MON(b.months[0]))}${b.months.length > 1 ? `–${esc(MON(b.months[b.months.length - 1]))}` : ''} · ends ${esc(ends(b))}</small></div>
-      <ul class="g-wd-feat">${f.map(x => `<li style="--rc:${RAR[x.r].color}"><span class="g-wd-th">${thumb(x)}</span><b>${esc(x.name)}</b><small>${starsHtml(x.r)}${owns(x.id) ? ' · owned' : ''}</small></li>`).join('') || '<li class="g-note">Nothing featured is ready yet.</li>'}</ul>
+      <ul class="g-wd-feat">${f.map(x => `<li style="--rc:${RAR[x.r].color}">${x.kind === 'skin' && ready(x) && window.FemcTryOn ? `<button type="button" class="g-wd-ftry" data-wd-try="${x.id}" aria-label="Try on ${esc(x.name)}" title="Try it on">▶</button>` : ''}<span class="g-wd-th">${thumb(x)}</span><b>${esc(x.name)}</b><small>${starsHtml(x.r)}${owns(x.id) ? ' · owned' : ''}</small></li>`).join('') || '<li class="g-note">Nothing featured is ready yet.</li>'}</ul>
       <ul class="g-ga-odds">${Object.entries(BAN.odds).map(([k, v]) => `<li style="--rc:${RAR[k].color}">${starsHtml(k)} ${RAR[k].name} <b>${(v * 100).toFixed(0)}%</b></li>`).join('')}</ul>
       <p class="g-ga-pity">Super Rare or better within <b>${BAN.pitySR - p.sr}</b> pull${BAN.pitySR - p.sr === 1 ? '' : 's'} · an Ultra within <b>${BAN.pityUR - p.ur}</b>${s.guar ? ' · the next Ultra is featured' : ''}.${all.length > 1 ? ' Pity is shared: it carries over when you switch banners.' : ''}</p>
       <p class="g-note small">Half of each rarity's pulls land on its featured item. ${n} looks are in the pool (outfits still waiting on art aren't). Repeats give Velvet Plumes back.</p>
@@ -562,6 +584,7 @@ window.FemcCosmetics = (() => {
     el.querySelectorAll('[data-wd]').forEach(b => b.addEventListener('click', () => { sel = b.dataset.wd; G.sfx('femc-hover'); rerender(`[data-wd="${sel}"]`); }));
     el.querySelectorAll('[data-wd-off]').forEach(b => b.addEventListener('click', () => { unequip(b.dataset.wdOff); sel = null; G.sfx('femc-back'); rerender(`[data-wd-off="${b.dataset.wdOff}"]`); }));
     el.querySelectorAll('[data-wd-zoom]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openViewer(b.dataset.wdZoom); }));
+    el.querySelectorAll('[data-wd-try]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); if (window.FemcTryOn) window.FemcTryOn.play(b.dataset.wdTry, b); }));
     el.querySelector('[data-wd-equip]')?.addEventListener('click', e => { if (equip(e.currentTarget.dataset.wdEquip)) { G.sfx('femc-on'); rerender('[data-wd-equip]'); } });
     el.querySelector('[data-wd-portraits]')?.addEventListener('change', e => { setPortraits(e.target.checked); G.sfx('femc-click'); });
     el.querySelector('[data-wd-pull10]')?.addEventListener('click', () => {
@@ -588,5 +611,5 @@ window.FemcCosmetics = (() => {
   G.onChange(kind => { if (kind !== 'toast') apply(); });
   applyTitleEarly();
   setTimeout(apply, 0);
-  return Object.assign(api, { KINDS, ITEMS, BANNERS, BAN, PAL, THEMES, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, banner, banners, pickBanner, bannerEnd, pool, featured, canPull, pullWhy, pull, pullN, pull10, apply, battle, portrait, weaponArt, html, wire, preview, metOk, viewable, viewEntry, openViewer });
+  return Object.assign(api, { KINDS, ITEMS, BANNERS, BAN, PAL, THEMES, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, banner, banners, pickBanner, bannerEnd, pool, featured, canPull, pullWhy, pull, pullN, pull10, apply, battle, tryOnSpec, portrait, weaponArt, html, wire, preview, metOk, viewable, viewEntry, openViewer });
 })();

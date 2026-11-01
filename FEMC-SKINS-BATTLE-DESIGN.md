@@ -1,6 +1,6 @@
 # Skins in battle: design sheet
 
-*Persona 3: Solstice · drafted Nov 1 2026 from Kat's decisions of the same day · status: **B, C and A's code built Nov 1 2026** (see 7.9); A switches on per look once its cleaned sheet is wired and marked; **H–L built Nov 1 2026 with built-in versions until their art arrives** (see 8.6); D–G and S1–S5 not built.*
+*Persona 3: Solstice · drafted Nov 1 2026 from Kat's decisions of the same day · status: **B, C and A's code built Nov 1 2026** (see 7.9); A switches on per look once its cleaned sheet is wired and marked; **H–L built Nov 1 2026 with built-in versions until their art arrives** (see 8.6); **S3 (Try it on) built Nov 1 2026** (see 8.7); D–G, S1, S2, S4 and S5 not built.*
 
 The idea: when a fighter wears a Wardrobe look, the whole fight should know it. Not just the figure on the field, but the faces on the party cards, the win screen, the Theurgy cut-in, the skill effects and the All-Out finish card. Looks stay looks: **no stats, ever.**
 
@@ -29,7 +29,7 @@ Parts 1–5 are for Kat (plain language). Part 6 has the paste-ready prompts. Pa
 **Suggestions (Claude's extras, Kat to approve or drop):**
 - **S1. Couple sets in battle.** When both halves of a couple set fight together: the win screen shows both victory poses side by side (this is the "Matching" idea already waiting for approval), and their Bond skill gets their shared theme.
 - **S2. The theme in the All-Out cloud.** A few hearts / petals / stars puff out of the All-Out dust cloud when the leader wears a themed look. Uses the theme sheet, no new art.
-- **S3. "Try it on" in the Wardrobe.** A small button on an owned outfit plays its poses with its effect, so you can see a look in action before a fight.
+- **S3. "Try it on" in the Wardrobe.** A small button on an owned outfit plays its poses with its effect, so you can see a look in action before a fight. *Built Nov 1 2026 (8.7).*
 - **S4. A victory line per look.** One short line a look says on the win screen ("Didn't even wrinkle it."). Writing only.
 - **S5. Outfit chibis for the All-Out.** The brawl cloud's chibi frames per look. Lots of art for a tiny on-screen moment: parked unless Kat loves it.
 
@@ -343,3 +343,7 @@ Every piece plays today with a built-in version and switches to Kat's picture th
 - **Data:** cosmetics.js `battle()` also returns `theme`, `name`, `couple`, `onemore`, `entrance` per fighter and `showtime`, `frames`; ready.js gains per-skin `onemore` / `entrance` and top-level `own`, `couples`, `frames`.
 - **Tests:** `python3 tests/femc_skins_battle.py` (data, tools, fallback, art, settings: every built-in version and every art path in real fights, screenshots at 1440 × 900 and 390 × 844).
 
+### 8.7 S3, Try it on: built (Nov 1 2026)
+- **What it is:** a ▶ Try it on button in the Wardrobe's detail panel (any outfit whose art is in, owned or not) and on each featured outfit in the Boutique. It plays about four seconds over the Wardrobe: the entrance card (Kat's `entrance` art when cut, else the built-in card), the ready pose, a strike with a slash, the skill pose with the fighter's first spell name, the hand charge (only for a look marked clean) and the theme burst, the "1 MORE!" eye strip (Kat's `onemore` art when cut), then the victory pose with the theme sparkle, held with Replay / Done. Click, Enter or Space skips to the victory pose; Esc closes; keys and a pad move between Replay and Done.
+- **Settings:** Outfit effects Off drops the charge, burst, sparkle and the entrance motifs; Performance mode fewer motifs and no moving lines; Reduce flashes no white cores or slash; reduced motion still frames with crossfades.
+- **Code:** `assets/femc/game/tryon.js` (player), `cosmetics.js tryOnSpec`, CSS `.g-to*` at the end of gacha.css; the motifs and hand points now live in `assets/femc/battle/looks-art.js`, shared with battle.js. Test: `python3 tests/femc_skins_battle.py --only tryon`.
