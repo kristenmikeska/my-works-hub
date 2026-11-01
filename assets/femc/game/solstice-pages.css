@@ -277,6 +277,7 @@
 .g-fm-ov.is-page .g-sk-mode .g-chip { border-color: rgba(255, 140, 192, .45); }
 .g-fm-ov.is-page .g-sk-mode .g-chip.on { background: var(--paper); color: var(--deep); }
 .g-fm-ov.is-page .g-sun-rays .g-chip { background: var(--plate); }
+.g-fm-ov.is-page .g-sun-rays .g-chip.on { background: var(--paper); } /* the picked ray chip (it read dark on dark: the plate above won) */
 .g-fm-ov.is-page :is(.g-lib-slot, .g-lib-sk) { border: 0; border-left: 3px solid var(--pink-2); border-radius: 0; background: var(--plate); clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%); }
 .g-fm-ov.is-page .g-lib-slot.sig { border-left-color: var(--pink); background: var(--plate-hi); }
 .g-fm-ov.is-page .g-sk-velvet { border-color: var(--pink-2); box-shadow: 8px 8px 0 rgba(255, 79, 158, .4); background: var(--plate); }

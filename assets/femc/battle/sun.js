@@ -10,7 +10,13 @@
    The party's orbits (2026-10-31): every call above takes an optional spec (the last argument; html's `o.spec`), and
      FemcSun.orbit(mid) builds one from engine.js ptreeNodes: a smaller stage, the core round the heart, three build rays and
      the Solar ray, the crown at the center, and `o.rings` [{ ring, label, open }] drawn as circles that say what opens them.
-     Each spec has its own remembered view (spec.key). Without a spec it's Haenim's sun, as before. */
+     Each spec has its own remembered view (spec.key). Without a spec it's Haenim's sun, as before.
+   The late-game branches (2026-10-31, FEMC-LATE-BRANCHES-DESIGN.md): the sun's stage grows to hold the Eclipse band
+     (a dark ring with a pink rim past the ray tips; a sealed segment is covered by an eclipse shadow, `sealed` state) with
+     Radiance past it and Total Eclipse at the top; each epilogue branch gets its name between its rays. An orbit gains a
+     `late` group (the second crown beside the crown, the duet on the rim with a little bridge to the partner's name).
+     o.badge(n, st) (optional) replaces the cost badge (Radiance shows "n/10"). Kat's own icons for these nodes: each node's
+     `art` (`<sheet>-<cell>`, FEMC-ART-TODO section 7) → art/sun/late/<art>.webp once LATE_ART is true (FEMC-ART-WIRING). */
 window.FemcSun = (() => {
   const D = () => window.FEMC_BATTLE_DATA;
   const U0 = 50, LANE0 = 44, HALF0 = 560;
@@ -22,26 +28,32 @@ window.FemcSun = (() => {
   let cache = null;
   const specCache = new WeakMap();
   // Haenim's sun as a spec (data.js tree / treeCenter); an orbit passes its own.
-  const sunSpec = () => ({ key: 'sun', U: U0, LANE: LANE0, HALF: HALF0, sky: true, groups: D().tree,
+  const sunSpec = () => ({ key: 'sun', U: U0, LANE: 54, HALF: HALF0, sky: true, groups: D().tree,
     center: D().treeCenter || null, centerGroup: { id: 'center', name: 'Unveiled', world: 'The crown', color: '#fff2b0' } });
   function layout(spec) {
     if (!spec && cache && cache.data === D()) return cache;
     if (spec && specCache.has(spec)) return specCache.get(spec);
     const S = spec || sunSpec(), U = S.U, LANE = S.LANE, pos = {}, nodes = [], groups = {};
+    // Haenim's sun is spread wider than its data (Kat, Oct 31: "a little jumbled"): rings step 1.0 instead of 0.9 from a wider
+    // start, and every polar `at` is moved the same way (FR), so data, ids and saves are untouched. Orbits keep R as they were.
+    const RR = S.orbit ? R : (ring => 1.75 + 1.02 * ring), FR = S.orbit ? (r => r) : (r => (r < 1.5 ? r * 1.3 : RR((r - 1.5) / 0.9)));
     S.groups.forEach(g => {
       groups[g.id] = g;
       g.nodes.forEach(n => {
         let x, y;
         if (Array.isArray(n.at) && g.ray) {
-          const a = rad(g.angle), r = R(n.at[0]) * U, l = (n.at[1] || 0) * LANE;
+          const a = rad(g.angle), r = RR(n.at[0]) * U, l = (n.at[1] || 0) * LANE;
           x = Math.cos(a) * r - Math.sin(a) * l; y = Math.sin(a) * r + Math.cos(a) * l;
-        } else { const at = n.at || { a: 0, r: 0 }; x = Math.cos(rad(at.a)) * at.r * U; y = Math.sin(rad(at.a)) * at.r * U; }
+        } else { const at = n.at || { a: 0, r: 0 }; x = Math.cos(rad(at.a)) * FR(at.r) * U; y = Math.sin(rad(at.a)) * FR(at.r) * U; }
         pos[n.id] = { x, y }; nodes.push({ n, g });
       });
     });
     const c = S.center;
-    if (c) { const at = c.at || { a: 270, r: 9.9 }; pos[c.id] = { x: Math.cos(rad(at.a)) * at.r * U, y: Math.sin(rad(at.a)) * at.r * U }; nodes.push({ n: c, g: S.centerGroup, crown: true }); }
-    const L = { data: D(), spec: S, U, HALF: S.HALF, SIZE: S.HALF * 2, pos, nodes, groups };
+    if (c) { const at = c.at || { a: 270, r: 9.9 }; pos[c.id] = { x: Math.cos(rad(at.a)) * FR(at.r) * U, y: Math.sin(rad(at.a)) * FR(at.r) * U }; nodes.push({ n: c, g: S.centerGroup, crown: true }); }
+    // The stage grows to hold the farthest node (plus room for its name).
+    const far = Math.max(0, ...Object.values(pos).map(p => Math.hypot(p.x, p.y)));
+    const HALF = S.orbit ? S.HALF : Math.max(S.HALF, Math.ceil(far + 90));
+    const L = { data: D(), spec: S, U, HALF, SIZE: HALF * 2, pos, nodes, groups, R: RR, F: FR };
     if (spec) specCache.set(spec, L); else cache = L;
     return L;
   }
@@ -58,7 +70,8 @@ window.FemcSun = (() => {
     const of = ray => list.filter(n => n.ray === ray);
     const groups = [{ id: 'core', name: 'Core', world: m.name || '', color: col, core: true, nodes: of('core') }]
       .concat(t.builds.map((b, k) => ({ id: b.id, name: b.name, world: b.note || '', color: col, ray: true, angle: SH.angles[k], nodes: of(b.id) })))
-      .concat([{ id: 'solar', name: 'Solar', world: 'for her', color: '#ffd36b', ray: true, angle: SH.solarAngle, nodes: of('solar') }]);
+      .concat([{ id: 'solar', name: 'Solar', world: 'for her', color: '#ffd36b', ray: true, angle: SH.solarAngle, nodes: of('solar') }])
+      .concat(of('crown2').length || of('duet').length ? [{ id: 'late', name: 'New Game+', world: m.name || '', color: '#ff4f9e', late: true, nodes: of('crown2').concat(of('duet')) }] : []);
     const spec = { key: 'orbit:' + mid, U: 42, LANE: 40, HALF: 470, sky: false, orbit: true, groups, center: of('crown')[0] || null,
       centerGroup: { id: 'crown', name: 'Crown', world: m.name || '', color: '#fff2b0' } };
     orbits[mid] = { t, spec };
@@ -76,6 +89,10 @@ window.FemcSun = (() => {
      Skills keep their drawn glyph (the menu shows the skill's own icon). The drawn glyph stays under the picture, so a
      file that fails to load just leaves it. */
   const ICON_DIR = 'assets/femc/battle/art/sun/', ICON_V = 1;
+  // Kat's late-game icons (FEMC-ART-TODO section 7, sheets skillicons-eclipse / -runners / -strangers / -hoax / -stay / -crowns-1 /
+  // -crowns-2 / -duets): cut to art/sun/late/<sheet>-<cell>.webp (FEMC-ART-WIRING), then set LATE_ART = true. Until then each
+  // late node shows its `icon` (an art/sun one) or the drawn glyph.
+  const LATE_ART = true; // Kat's sheets are in (2026-10-31, tools/femc-greens.py skillicons-*)
   const ICONS = new Set(['crit', 'speed', 'evade', 'counter', 'autobuff', 'firstcut', 'hpregen', 'spregen', 'weak', 'followup', 'ailment', 'ailturns',
     'lowhp', 'physup', 'magicup', 'healup', 'corona', 'bell', 'momentum', 'buffturns', 'theurgy', 'nullail', 'stat', 'keystone', 'memory']);
   const PASSIVE_ICON = { critUp: 'crit', critAdd: 'crit', critIf: 'crit', critMult: 'crit', crit: 'crit', ropeCrit: 'crit', haste: 'speed', quick: 'speed',
@@ -88,6 +105,7 @@ window.FemcSun = (() => {
   const STATS = ['st', 'ma', 'en', 'ag', 'lu', 'hp', 'sp'];
   function iconFor(n, st) {
     if (st === 'hidden') return 'memory';
+    if (LATE_ART && n.art) return 'late/' + (st === 'sealed' && n.seg ? 'eclipse-9' : n.art);
     if (n.icon && ICONS.has(n.icon)) return n.icon;
     if (n.id === 'sun1') return null;
     if (n.keystone) return 'keystone';
@@ -127,16 +145,16 @@ window.FemcSun = (() => {
       if (!L.pos[from]) return;
       const a = P(from), b = P(n.id), cls = own(from) && own(n.id) ? 'lit' : own(from) && st(n.id) === 'avail' ? 'next' : '';
       const ra = Math.hypot(a.x, a.y), rb = Math.hypot(b.x, b.y);
-      const ring = !orb && Math.abs(ra - rb) < 2 && ra > 20 && ra < 100;
+      const ring = !orb && Math.abs(ra - rb) < 2 && ra > 20 && ra < 120;
       const d = ring ? `M${a.x.toFixed(1)} ${a.y.toFixed(1)}A${ra.toFixed(1)} ${ra.toFixed(1)} 0 0 ${(Math.atan2(a.x * b.y - a.y * b.x, a.x * b.x + a.y * b.y) > 0 ? 1 : 0)} ${b.x.toFixed(1)} ${b.y.toFixed(1)}`
         : `M${a.x.toFixed(1)} ${a.y.toFixed(1)}L${b.x.toFixed(1)} ${b.y.toFixed(1)}`;
       edges.push(`<path class="sun-e ${cls}${kind === 'any' ? ' any' : ''}" d="${d}"/>`);
     }));
     const rays = L.spec.groups.filter(g => g.ray);
     const beams = rays.map(g => {
-      const a = rad(g.angle), r0 = orb ? 70 : 95, r1 = R(8.4) * U, w0 = 10, w1 = 30;
+      const a = rad(g.angle), r0 = orb ? 70 : 95, r1 = L.R(8.4) * U, w0 = 10, w1 = orb ? 30 : 36;
       const pt = (r, w) => `${(Math.cos(a) * r - Math.sin(a) * w).toFixed(1)},${(Math.sin(a) * r + Math.cos(a) * w).toFixed(1)}`;
-      const lr = R(orb ? 9.5 : 9.35) * U, lx = Math.cos(a) * lr, ly = Math.sin(a) * lr;
+      const lr = L.R(orb ? 9.5 : 9.35) * U, lx = Math.cos(a) * lr, ly = Math.sin(a) * lr;
       return `<polygon class="sun-beam" points="${pt(r0, -w0)} ${pt(r1, -w1)} ${pt(r1, w1)} ${pt(r0, w0)}" style="--c:${g.color}"/>
         <g class="sun-raylbl" transform="translate(${lx.toFixed(1)} ${ly.toFixed(1)})" style="--c:${g.color}"><text class="r" y="-2">${esc(g.name.toUpperCase())}</text><text class="w" y="13">${esc(g.world)}${g.who ? ' · ' + esc(g.who) : ''}</text></g>`;
     }).join('');
@@ -145,25 +163,56 @@ window.FemcSun = (() => {
       const cls = [base, s, 'sun-n', n.keystone ? 'key' : '', n.memory ? 'mem' : '', n.choice ? 'choice' : '', crown ? 'crown center' : '', g.core ? 'core' : '', g.hybrid ? 'hyb' : '', n.id === 'sun1' ? 'heart' : '', g.id === 'solar' && orb ? 'sol' : '', n.id === o.sel ? 'sel' : ''].filter(Boolean).join(' ');
       const color = g.hybrid ? '#ffe9a8' : g.color;
       const name = hid ? '? ? ?' : (o.label ? o.label(n, s) : n.name);
-      return `<button type="button" class="${cls}" data-hn="${n.id}" style="left:${(HALF + p.x).toFixed(1)}px;top:${(HALF + p.y).toFixed(1)}px;--c:${color}" aria-pressed="${s === 'own'}" aria-label="${esc(hid ? 'Hidden memory node' : n.name)}: ${s}">
-        <i class="gem" aria-hidden="true">${(o.glyph || glyph)(n, s)}</i><b>${esc(name)}</b><small>${s === 'own' ? '✓' : n.cost}</small></button>`;
+      const badge = o.badge ? o.badge(n, s) : null;
+      return `<button type="button" class="${cls}${n.rad ? ' rad' : ''}${n.seg || n.solstice ? ' ecl' : ''}${n.crown2 ? ' crown2' : ''}${n.duet ? ' duet' : ''}" data-hn="${n.id}" style="left:${(HALF + p.x).toFixed(1)}px;top:${(HALF + p.y).toFixed(1)}px;--c:${color}" aria-pressed="${s === 'own'}" aria-label="${esc(hid ? 'Hidden memory node' : n.name)}: ${s}">
+        <i class="gem" aria-hidden="true">${(o.glyph || glyph)(n, s)}</i><b>${esc(name)}</b><small>${badge != null ? esc(badge) : s === 'own' ? '✓' : n.cost}</small></button>`;
     }).join('');
     // An orbit's rings: a circle each, labelled with what opens it (dim once open, pink while shut).
     const rings = (o.rings || []).map(r => { const rr = R(r.ring) * U, a = rad(r.at != null ? r.at : 300), lx = Math.cos(a) * rr, ly = Math.sin(a) * rr;
       return `<circle class="sun-ring${r.open ? '' : ' shut'}" r="${rr.toFixed(1)}"/>${r.label ? `<text class="sun-ringlbl${r.open ? '' : ' shut'}" x="${lx.toFixed(1)}" y="${ly.toFixed(1)}">${esc(r.label)}</text>` : ''}`; }).join('');
-    const sky = L.spec.sky ? `<image class="sun-sky" href="${SKY}" x="${-HALF}" y="${-HALF}" width="${SIZE}" height="${SIZE}" mask="url(#sunSkyFade)" preserveAspectRatio="xMidYMid slice"/>` : '';
-    const orbits = orb ? rings : `<circle class="sun-orbit" r="${(R(8) * U).toFixed(1)}"/><circle class="sun-orbit thin" r="${(R(4.5) * U).toFixed(1)}"/><circle class="sun-orbit thin" r="${(9.9 * U).toFixed(1)}"/>`;
+    const SK = L.spec.sky ? Math.round(L.F(11.2) * U) : HALF; // the painted sky keeps its own size; the Eclipse band sits outside it
+    const sky = L.spec.sky ? `<image class="sun-sky" href="${SKY}" x="${-SK}" y="${-SK}" width="${SK * 2}" height="${SK * 2}" mask="url(#sunSkyFade)" preserveAspectRatio="xMidYMid slice"/>` : '';
+    // The Eclipse band: dark, a pink rim each side; a sealed segment wears an eclipse shadow (its first node is `sealed`).
+    let late = '';
+    const eg = L.spec.groups.find(g => g.eclipse);
+    if (eg) {
+      const r0 = L.F(10.3) * U, r1 = L.F(13.75) * U, rm = (r0 + r1) / 2, arc = (a0, a1, ra, rb) => { const P2 = (a, r) => `${(Math.cos(rad(a)) * r).toFixed(1)} ${(Math.sin(rad(a)) * r).toFixed(1)}`; return `M${P2(a0, ra)}A${ra} ${ra} 0 0 1 ${P2(a1, ra)}L${P2(a1, rb)}A${rb} ${rb} 0 0 0 ${P2(a0, rb)}Z`; };
+      late += `<circle class="sun-ecl-band" r="${rm.toFixed(1)}" stroke-width="${(r1 - r0).toFixed(1)}"/><circle class="sun-ecl-rim" r="${r0.toFixed(1)}"/><circle class="sun-ecl-rim" r="${r1.toFixed(1)}"/>`;
+      const segs = {}; eg.nodes.forEach(n => { if (n.seg && !segs[n.seg]) segs[n.seg] = n; });
+      Object.entries(segs).forEach(([ray, n]) => {
+        const g = L.spec.groups.find(x => x.id === ray), a = g ? g.angle : 0, shut = st(n.id) === 'sealed';
+        late += `<path class="sun-ecl-seg${shut ? ' shut' : ''}" d="${arc(a - 21, a + 21, r1 - 2, r0 + 2)}"/>`;
+        if (shut) { const lx = Math.cos(rad(a)) * (rm + 0.15 * U), ly = Math.sin(rad(a)) * (rm + 0.15 * U); late += `<circle class="sun-ecl-moon" cx="${lx.toFixed(1)}" cy="${ly.toFixed(1)}" r="${(1.15 * U).toFixed(1)}"/>`; }
+      });
+      const tot = eg.nodes.find(n => n.id === 'ec-total');
+      if (tot && st(tot.id) === 'sealed') { const p = P(tot.id); late += `<circle class="sun-ecl-moon" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${(0.75 * U).toFixed(1)}"/>`; }
+      late += `<text class="sun-ecl-lbl" x="0" y="${(r1 + 1.1 * U).toFixed(1)}">ECLIPSE</text>`;
+    }
+    // Epilogue branches: the world's name between its rays (dim while sealed).
+    L.spec.groups.filter(g => g.epi && g.angle != null).forEach(g => {
+      const shut = g.nodes.every(n => st(n.id) === 'sealed'), lr = L.F(7.72) * U, a = rad(g.angle);
+      late += `<text class="sun-epi-lbl${shut ? ' shut' : ''}" x="${(Math.cos(a) * lr).toFixed(1)}" y="${(Math.sin(a) * lr + 4).toFixed(1)}" style="fill:${g.color}">${esc(g.name.toUpperCase())}</text>`;
+    });
+    // An orbit's duet: a little bridge from the node off the edge, toward the partner.
+    L.nodes.forEach(({ n }) => {
+      if (!n.duet || !L.pos[n.id]) return;
+      const p = P(n.id), a = Math.atan2(p.y, p.x), r = Math.hypot(p.x, p.y), e = HALF - 14, pm = (D().party.find(m => m.id === n.partner) || {}).name || '';
+      const bx = Math.cos(a) * e, by = Math.sin(a) * e;
+      late += `<path class="sun-bridge${st(n.id) === 'own' ? ' lit' : ''}" d="M${(p.x + Math.cos(a) * 20).toFixed(1)} ${(p.y + Math.sin(a) * 20).toFixed(1)}L${bx.toFixed(1)} ${by.toFixed(1)}"/><text class="sun-bridge-lbl" x="${(Math.cos(a - 0.17) * (r + 34)).toFixed(1)}" y="${(Math.sin(a - 0.17) * (r + 34)).toFixed(1)}">↔ ${esc(pm)}</text>`;
+    });
+    const orbits = orb ? rings : `<circle class="sun-orbit" r="${(L.R(8) * U).toFixed(1)}"/><circle class="sun-orbit thin" r="${(L.R(4.5) * U).toFixed(1)}"/><circle class="sun-orbit thin" r="${(L.F(9.9) * U).toFixed(1)}"/>`;
     return `<div class="sun-stage${orb ? ' orbit' : ''}" style="width:${SIZE}px;height:${SIZE}px">
       <svg class="sun-svg" viewBox="${-HALF} ${-HALF} ${SIZE} ${SIZE}" width="${SIZE}" height="${SIZE}" aria-hidden="true">
         <defs><radialGradient id="sunCore"><stop offset="0" stop-color="#fff6c8"/><stop offset=".35" stop-color="#ffd36b" stop-opacity=".9"/><stop offset=".7" stop-color="#ff8c4a" stop-opacity=".25"/><stop offset="1" stop-color="#ff4f9e" stop-opacity="0"/></radialGradient>
           <radialGradient id="sunSky"><stop offset="0" stop-color="#1b2c6b" stop-opacity=".95"/><stop offset=".6" stop-color="#0d1640" stop-opacity=".85"/><stop offset="1" stop-color="#070b22" stop-opacity="0"/></radialGradient>
           <radialGradient id="sunSkyEdge"><stop offset=".72" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
-          <mask id="sunSkyFade"><rect x="${-HALF}" y="${-HALF}" width="${SIZE}" height="${SIZE}" fill="url(#sunSkyEdge)"/></mask></defs>
-        <circle r="${HALF - 4}" fill="url(#sunSky)"/>
+          <mask id="sunSkyFade"><rect x="${-SK}" y="${-SK}" width="${SK * 2}" height="${SK * 2}" fill="url(#sunSkyEdge)"/></mask></defs>
+        <circle r="${SK - 4}" fill="url(#sunSky)"/>
         ${sky}
+        ${late}
         ${orbits}
         ${beams}
-        <circle r="${orb ? 90 : 150}" fill="url(#sunCore)" class="sun-glow${orb ? ' small' : ''}"/>${orb ? '' : `<circle class="sun-corona" r="${(1.3 * U).toFixed(1)}"/>`}
+        <circle r="${orb ? 90 : 150}" fill="url(#sunCore)" class="sun-glow${orb ? ' small' : ''}"/>${orb ? '' : `<circle class="sun-corona" r="${(L.F(1.3) * U).toFixed(1)}"/>`}
         ${edges.join('')}
       </svg>${btns}</div>
       <div class="sun-tools" role="group" aria-label="Zoom"><button type="button" data-sun-zoom="in" aria-label="Zoom in">+</button><button type="button" data-sun-zoom="out" aria-label="Zoom out">−</button><button type="button" data-sun-zoom="fit" aria-label="See the whole sun">◎</button></div>`;
@@ -311,6 +360,27 @@ window.FemcSun = (() => {
   .sun-tools { position: absolute; right: 8px; bottom: 8px; z-index: 4; display: flex; gap: 6px; }
   .sun-tools button { width: 36px; height: 36px; border-radius: 50%; border: 0; background: rgba(10, 18, 51, .92); color: #fff; font: 800 18px/1 "Avenir Next", sans-serif; box-shadow: 0 0 0 1.5px rgba(111, 200, 255, .6); cursor: pointer; }
   .sun-tools button:hover, .sun-tools button:focus-visible { background: #ff4f9e; box-shadow: 0 0 0 2px #fff; outline: none; }
+  .sun-ecl-band { fill: none; stroke: #14070f; opacity: .9; }
+  .sun-ecl-rim { fill: none; stroke: #ff4f9e; stroke-width: 2.4; opacity: .85; filter: drop-shadow(0 0 5px rgba(255, 79, 158, .7)); }
+  .sun-ecl-seg { fill: rgba(255, 79, 158, .07); stroke: rgba(255, 140, 192, .35); stroke-width: 1.2; }
+  .sun-ecl-seg.shut { fill: #050207; stroke: rgba(255, 79, 158, .5); stroke-dasharray: 6 6; opacity: .92; }
+  .sun-ecl-moon { fill: #050207; stroke: #ff4f9e; stroke-width: 2; filter: drop-shadow(0 0 10px rgba(255, 79, 158, .85)); opacity: .9; }
+  .sun-ecl-lbl { fill: #ff8cc0; font: italic 900 22px/1 "Avenir Next Condensed", "Arial Narrow", sans-serif; letter-spacing: .3em; text-anchor: middle; paint-order: stroke; stroke: #060920; stroke-width: 4px; }
+  .sun-epi-lbl { font: italic 900 14px/1 "Avenir Next Condensed", "Arial Narrow", sans-serif; letter-spacing: .12em; text-anchor: middle; paint-order: stroke; stroke: #060920; stroke-width: 4px; }
+  .sun-epi-lbl.shut { opacity: .45; }
+  .sun-bridge { fill: none; stroke: rgba(255, 140, 192, .55); stroke-width: 3; stroke-dasharray: 3 6; stroke-linecap: round; }
+  .sun-bridge.lit { stroke: #ffd36b; stroke-dasharray: none; filter: drop-shadow(0 0 4px rgba(255, 211, 107, .9)); }
+  .sun-bridge-lbl { fill: #ff8cc0; font: 800 12px/1 "Avenir Next", sans-serif; text-anchor: middle; paint-order: stroke; stroke: #060920; stroke-width: 4px; }
+  .sun-n.sealed .gem { background: radial-gradient(circle at 60% 40%, #2a0f22 0 38%, #050207 40%); box-shadow: 0 0 0 2px rgba(255, 79, 158, .55), 0 0 10px rgba(255, 79, 158, .35); }
+  .sun-n.sealed .gem svg, .sun-n.sealed .gem img.sun-ico { opacity: .25; filter: grayscale(1); }
+  .sun-n.sealed.ecl .gem img.sun-ico { opacity: .85; filter: none; }
+  .sun-n.sealed small { background: #14070f; color: #ff8cc0; box-shadow: 0 0 0 1.5px rgba(255, 79, 158, .6); }
+  .sun-n.rad .gem { box-shadow: 0 0 0 2px #fff2b0, 0 0 14px rgba(255, 242, 176, .55); }
+  .sun-n.rad.sealed .gem { box-shadow: 0 0 0 2px rgba(255, 79, 158, .5); }
+  .sun-n.rad small { min-width: 26px; }
+  .sun-n.ecl.key .gem, .sun-n.crown2 .gem { box-shadow: 0 0 0 2.5px #ff4f9e, 0 0 16px rgba(255, 79, 158, .6); }
+  .sun-n.duet .gem { border-radius: 10px; transform: rotate(45deg); } .sun-n.duet .gem > * { transform: rotate(-45deg); }
+  .sun-n.duet.sel .gem, .sun-n.duet:hover .gem { transform: rotate(45deg) scale(1.15); }
   @media (prefers-reduced-motion: reduce) { .sun-n .gem { transition: none; } }`;
   if (!document.getElementById('femc-sun-css')) { const s = document.createElement('style'); s.id = 'femc-sun-css'; s.textContent = CSS; document.head.appendChild(s); }
 

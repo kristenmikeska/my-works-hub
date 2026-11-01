@@ -68,10 +68,15 @@ window.FemcBattleEngine = (() => {
     physUp: 0.4, magicUp: 0.4, bossUp: 0.3, downUp: 0.3, ailUp: 0.3, freezeUp: 0.3, ailTurns: 1, followUp: 0.4, thStart: 30, buffTurns: 1, debuffTurns: 1,
     weakSp: 5, critAdd: 0.5, critIf: 25, guardHeal: 0.1, corona: 0.15, momentum: 5,
     followMax: 1, overShield: 0.3, tauntDef: 0.4, tauntShield: 0.2, guardCounter: 0.5, lowHpCrit: 25, multiUp: 0.4, sapHit: 0.3, partyRegen: 0.05, instaUp: 20,
-    execute: 0.4, ambush: 0.5, swing: 0.3, assist: 0.5, assistPow: 1, kindle: 8, cover: 0.5, baton: 0.5, sunlit: 2, sunShield: 0.25, resonance: 0.25 };
-  const PASSIVE_FLAGS = ['quick', 'firstFree', 'endure', 'guardianBell', 'tauntBuff', 'scanAll', 'scanSight'];
-  const PASSIVE_LISTS = ['openBuff', 'partyOpen', 'nullAil', 'resist', 'pierceEl', 'sunOpen'];
-  const PASSIVE_STR = ['resEl', 'assistOn', 'crown'];
+    execute: 0.4, ambush: 0.5, swing: 0.3, assist: 0.5, assistPow: 1, kindle: 8, cover: 0.5, baton: 0.5, sunlit: 2, sunShield: 0.25, resonance: 0.25,
+    clutch: 0.4, iceSlow: 0.5, guardDef: 0.5, moonHeal: 0.08, ttAmbush: 0.5, rebuttal: 0.5 };
+  /* The late-game branches (2026-10-31) add: clutch (last one standing), iceSlow (ice hits may slow), guardDef (less while guarding),
+     moonHeal (HP a turn under a full moon), ttAmbush (first-round hits in Tartarus), rebuttal (a counter after being debuffed);
+     flags respawn, overtime, pointOfOrder, petal, stayCover, totalEclipse; string crown2 (second crowns); list duets.
+     See "Late-game hooks" in create. */
+  const PASSIVE_FLAGS = ['quick', 'firstFree', 'endure', 'guardianBell', 'tauntBuff', 'scanAll', 'scanSight', 'respawn', 'overtime', 'pointOfOrder', 'petal', 'stayCover', 'totalEclipse'];
+  const PASSIVE_LISTS = ['openBuff', 'partyOpen', 'nullAil', 'resist', 'pierceEl', 'sunOpen', 'duets'];
+  const PASSIVE_STR = ['resEl', 'assistOn', 'crown', 'crown2'];
   function passives() {
     const p = { boost: {} };
     Object.keys(PASSIVE_CAP).forEach(k => { p[k] = 0; });
@@ -94,23 +99,31 @@ window.FemcBattleEngine = (() => {
   let nodeCache = null;
   const treeNodes = () => nodeCache || (nodeCache = DATA().tree.flatMap(b => b.nodes.map(n => Object.assign({ branch: b.id }, n))).concat(DATA().treeCenter ? [Object.assign({ branch: 'center' }, DATA().treeCenter)] : []));
   const treeNode = id => treeNodes().find(n => n.id === id) || null;
-  function treeFx(nodes = []) {
+  /* rad: save.rad ({ ray: buys }, Radiance); each buy adds data.js radiance.solar[ray] once more. */
+  function treeFx(nodes = [], rad = null) {
     const fx = { st: 0, ma: 0, en: 0, ag: 0, lu: 0, hp: 0, sp: 0, mods: {}, learn: [], healMult: 1, openBuff: null, autoAnalyze: false, unit: passives() };
+    const RA = DATA().radiance || { solar: {} };
     treeNodes().forEach(n => {
-      if (!nodes.includes(n.id)) return;
-      const e = n.fx || {};
+      if (!nodes.includes(n.id) && !(n.rad && rad && rad[n.rad] > 0)) return;
+      const reps = n.rad ? Math.min(RA.max || 10, Math.max(0, Math.floor(+((rad || {})[n.rad]) || 0))) : 1;
+      for (let i = 0; i < reps; i++) addNodeFx(fx, n.rad ? (RA.solar[n.rad] || {}) : (n.fx || {}));
+    });
+    capPassives(fx.unit);
+    return fx;
+  }
+  function addNodeFx(fx, e) {
+    {
       ['st', 'ma', 'en', 'ag', 'lu', 'hp', 'sp'].forEach(k => { if (e[k]) fx[k] += e[k]; });
       if (e.healMult) fx.healMult *= e.healMult;
       if (e.learn) fx.learn.push(e.learn);
       ['crit', 'bind', 'ropeCrit'].forEach(k => { if (e[k]) fx.mods[k] = (fx.mods[k] || 0) + e[k]; });
-      ['weakMult', 'critMult', 'shiftMult', 'alloutMult', 'regen', 'shiftSp', 'shiftTh', 'bindTurns'].forEach(k => { if (e[k]) fx.mods[k] = e[k]; });
+      ['weakMult', 'critMult', 'shiftMult', 'alloutMult', 'regen', 'shiftSp', 'shiftTh', 'bindTurns'].forEach(k => { if (e[k]) fx.mods[k] = Math.max(fx.mods[k] || 0, e[k]); }); // the best one counts (a Solstice raises it)
       if (e.flank) fx.mods.flank = true;
       if (e.autoAnalyze) fx.autoAnalyze = true;
       if (typeof e.openBuff === 'string') fx.openBuff = e.openBuff; // the party's opening buff (Opening Statement)
+      if (e.promise) fx.promise = true; // Promise (the Stay branch): statsFor
       addPassives(fx.unit, Object.assign({}, e, { openBuff: Array.isArray(e.openBuff) ? e.openBuff : null }));
-    });
-    capPassives(fx.unit);
-    return fx;
+    }
   }
   /* A keystone counts as owned once its form has awakened (forms are permanent, and survive a respec or an old save). */
   function treeOwned(save, id) {
@@ -120,11 +133,52 @@ window.FemcBattleEngine = (() => {
   }
   /* Fragments found (the battle save's, plus any the life sim knows about: extra). */
   const fragSet = (save, extra = []) => new Set((save.memories || []).concat(extra || []));
-  /* own | avail | lock (a node before it) | lvl (Solar's level) | story (a full moon not cleared yet) | hidden (a memory not found) | taken (the other choice) */
+  /* ── The late-game gates (2026-10-31, FEMC-LATE-BRANCHES-DESIGN.md). What the battle save knows:
+       climbTop(save): the highest New Game+ climb floor ever reached: the climb scenes played (tt.climb), the access point
+         (reached), the gates stood on, and save.late.top, the high-water mark kept across New Game+ (carry() resets tt, so
+         syncLate, called by save.js normalize, writes it down first). save.late.zenith: the Zenith's superboss beaten once.
+       eclipseOpen(save): how many Eclipse segments are open (2 at 300F, 4 at 350F, 6 at 399F), in data.js ECLIPSE_ORDER;
+         eclipseCrownOpen: the superboss beaten. epiDone(save, world): save.epis (finished epilogue worlds; menu.js syncLife,
+         battle.js hoBegin from request.epis, practice from the clears list). */
+  const CLIMB_SCENE = { 'raqia-arrive': 255, 'raqia-summit': 300, 'zebul-arrive': 301, 'zebul-summit': 350, 'araboth-arrive': 351, 'araboth-summit': 399, 'zenith-arrive': 400, 'zenith-summit': 400 };
+  const floorNum = id => { const f = (DATA().floors || []).find(x => x.id === id); return f && f.ngp ? (f.gameFloor || 0) : 0; };
+  function climbTop(save) {
+    const tt = save.tt || {};
+    let top = +((save.late || {}).top) || 0;
+    (tt.climb || []).forEach(k => { top = Math.max(top, CLIMB_SCENE[k] || 0); });
+    [save.reached].concat(tt.gates || [], tt.guardians || []).forEach(id => { top = Math.max(top, floorNum(id)); });
+    return top;
+  }
+  const zenithBeaten = save => !!((save.late || {}).zenith || ((save.tt || {}).supers || []).includes('super_tiger'));
+  function syncLate(save) { const t = climbTop(save), z = zenithBeaten(save); save.late = { top: t, zenith: z }; return save.late; }
+  const eclipseOpen = save => { const t = climbTop(save); return t >= 399 ? 6 : t >= 350 ? 4 : t >= 300 ? 2 : 0; };
+  const segOpen = (save, ray) => DATA().ECLIPSE_ORDER.indexOf(ray) < eclipseOpen(save) && DATA().ECLIPSE_ORDER.includes(ray);
+  const segFloor = ray => [300, 350, 399][Math.floor(DATA().ECLIPSE_ORDER.indexOf(ray) / 2)] || 399;
+  const epiDone = (save, world) => (save.epis || []).includes(world);
+  const ngpOf = save => +save.ngp || 0;
+  const RAD_MAX = () => (DATA().radiance || {}).max || 10;
+  const radOf = (save, ray) => Math.min(RAD_MAX(), Math.max(0, Math.floor(+((save.rad || {})[ray]) || 0)));
+  /* A ray is full when every node on it is owned or set aside (the other choice), and its Eclipse segment too once open. */
+  function rayFull(save, ray, frags = fragSet(save)) {
+    const g = DATA().tree.find(x => x.id === ray);
+    if (!g) return false;
+    const ok = id => { const s = treeOwned(save, id) ? 'own' : null; return s || treeState(save, id, frags) === 'taken'; };
+    if (!g.nodes.every(n => ok(n.id))) return false;
+    return !segOpen(save, ray) || treeNodes().filter(n => n.seg === ray).every(n => treeOwned(save, n.id));
+  }
+  const groupOfNode = n => DATA().tree.find(g => g.id === n.branch) || {};
+  /* own | avail | lock (a node before it) | lvl (Solar's level) | story (a full moon not cleared yet) | hidden (a memory not found) | taken (the other choice)
+     | sealed (a late-game gate: an Eclipse segment, an epilogue branch, or Radiance before its ray is full) */
   function treeState(save, id, frags = fragSet(save)) {
     const n = treeNode(id);
     if (!n) return 'lock';
+    if (n.rad) return radOf(save, n.rad) >= RAD_MAX() ? 'own' : rayFull(save, n.rad, frags) ? 'avail' : 'sealed';
     if (treeOwned(save, id)) return 'own';
+    if (n.seg && !segOpen(save, n.seg)) return 'sealed';
+    if (n.id === 'ec-total' && !zenithBeaten(save)) return 'sealed';
+    const g = groupOfNode(n);
+    if (g.epi && !epiDone(save, g.epi)) return 'sealed';
+    if ((n.req || []).some(x => !treeOwned(save, x)) || (n.reqAny && !n.reqAny.some(x => treeOwned(save, x)))) return 'lock';
     if (n.memory && !frags.has(n.memory)) return 'hidden';
     if (n.choice && treeNodes().some(x => x.choice === n.choice && x.id !== id && treeOwned(save, x.id))) return 'taken';
     if ((n.needs || []).some(x => !treeOwned(save, x)) || (n.any && !n.any.some(x => treeOwned(save, x)))) return 'lock';
@@ -138,8 +192,12 @@ window.FemcBattleEngine = (() => {
     if (!n) return '';
     if (st === 'hidden') { const m = DATA().memories.find(x => x.id === n.memory); return `Opens when a memory from ${m ? m.world : 'another life'} surfaces.`; }
     if (st === 'taken') return `You chose ${nodeName(treeNodes().find(x => x.choice === n.choice && x.id !== id && treeOwned(save, x.id)).id)} here.`;
+    if (st === 'sealed') return lateHint(save, n);
+    if (n.rad && st === 'avail') { const k = radOf(save, n.rad); return (save.pts || 0) < n.cost ? `Bought ${k} of ${RAD_MAX()}. Needs ${n.cost} skill points.` : `Bought ${k} of ${RAD_MAX()}.`; }
+    if (n.rad && st === 'own') return `Bought ${RAD_MAX()} of ${RAD_MAX()}: all the light this ray can take.`;
     if (st === 'lock') {
-      const miss = (n.needs || []).filter(x => !treeOwned(save, x)).map(nodeName);
+      const miss = (n.needs || []).concat(n.req || []).filter(x => !treeOwned(save, x)).map(nodeName);
+      if (n.reqAny && !n.reqAny.some(x => treeOwned(save, x))) miss.push('one Solstice');
       if (n.any && !n.any.some(x => treeOwned(save, x))) miss.push(n.any.map(nodeName).join(' or '));
       return `Needs ${miss.join(' and ')}.`;
     }
@@ -148,10 +206,20 @@ window.FemcBattleEngine = (() => {
     if (st === 'avail' && (save.pts || 0) < n.cost) return `Needs ${n.cost} skill points.`;
     return '';
   }
+  /* The one-line, spoiler-free "how to open" for a sealed node. */
+  function lateHint(save, n) {
+    const g = groupOfNode(n);
+    if (n.rad) return `Opens once every node on the ${(DATA().tree.find(x => x.id === n.rad) || {}).name || ''} ray is owned${segOpen(save, n.rad) ? ', its Eclipse segment too' : ''}.`;
+    if (n.seg) return `Sealed. Opens when the New Game+ climb reaches ${segFloor(n.seg)}F.`;
+    if (n.id === 'ec-total') return 'Sealed. Opens when the top of the New Game+ climb is won.';
+    if (g.epi) return `Opens after finishing the ${g.world} epilogue.`;
+    return '';
+  }
   function treeBuy(save, id, frags = fragSet(save)) {
     const n = treeNode(id);
     if (!n || treeState(save, id, frags) !== 'avail') return { ok: false, why: treeWhy(save, id, frags) || 'Not yet.' };
     if ((save.pts || 0) < n.cost) return { ok: false, why: `Needs ${n.cost} skill points.` };
+    if (n.rad) { save.pts -= n.cost; save.rad = save.rad || {}; save.rad[n.rad] = radOf(save, n.rad) + 1; return { ok: true, learned: [], form: null, cost: n.cost, rad: save.rad[n.rad] }; }
     save.pts -= n.cost;
     (save.nodes || (save.nodes = [])).push(id);
     const learned = n.fx && n.fx.learn ? [n.fx.learn] : [];
@@ -163,11 +231,13 @@ window.FemcBattleEngine = (() => {
   /* Respec: every bought node comes back as points, except the keystones that awakened a form (forms are permanent, so they stay). */
   const keeps = n => !!(n && n.keystone && n.form);
   const treeRefundable = save => (save.nodes || []).filter(id => { const n = treeNode(id); return n && !keeps(n); });
-  const treeSpent = save => treeRefundable(save).reduce((s, id) => s + treeNode(id).cost, 0);
+  const radSpent = save => Object.keys(save.rad || {}).reduce((s, r) => s + radOf(save, r) * ((DATA().radiance || {}).cost || 2), 0);
+  const treeSpent = save => treeRefundable(save).reduce((s, id) => s + treeNode(id).cost, 0) + radSpent(save);
   function treeRespec(save) {
     const back = treeSpent(save);
     save.pts = (save.pts || 0) + back;
     save.nodes = (save.nodes || []).filter(id => keeps(treeNode(id)));
+    save.rad = {};
     return back;
   }
 
@@ -188,13 +258,21 @@ window.FemcBattleEngine = (() => {
     t.builds.forEach((b, k) => b.nodes.forEach((n, i) => { const [ring, lane] = SH.build[i]; list.push(mk(n, b.id, ring, lane, { at: [ring, lane], build: k })); }));
     t.solar.forEach((n, i) => { const [ring, lane] = SH.solar[i]; list.push(mk(n, 'solar', ring, lane, { at: [ring, lane] })); });
     if (t.crown) list.push(mk(t.crown, 'crown', 8, 0, { at: SH.crown, cost: t.crown.cost || C.crown, crown: true }));
+    // The late game (2026-10-31): Radiance at the end of each build, the second crown beside the crown, the duet on the rim.
+    const RA = D.radiance || {}, c2 = (D.crown2 || {})[mid], du = (D.duets || []).find(d => d.pair.includes(mid));
+    t.builds.forEach((b, k) => list.push(Object.assign({ id: `${mid}-rad-${b.id}`, name: 'Radiance', icon: 'keystone', art: 'eclipse-8', ray: b.id, ring: 8, lane: 1.25, at: [8.6, 1.25], build: k, rad: b.id, cost: RA.cost || 2,
+      desc: `Radiance (${b.name}): ${RA.cost || 2} points a buy, up to ${RA.max || 10} buys. Each buy: ${(RA.partyText || {})[b.id] || 'a little more'} (the usual caps still hold). Opens once the whole ${b.name} build is owned.` })));
+    if (c2) list.push(Object.assign({}, c2, { ray: 'crown2', ring: 8, lane: 0, at: { a: 0, r: 1.35 }, cost: c2.cost || 10, crown2: true, rank: 10 }));
+    if (du) { const other = du.pair.find(x => x !== mid); list.push(Object.assign({}, du, { ray: 'duet', ring: 8, lane: 0, at: { a: 330, r: 9.55 }, cost: du.cost || 5, duet: true, partner: other, rank: 10 })); }
     list.forEach(n => { n.link = ptreePrev(list, n).map(x => x.id); });
     ptCache[mid] = { t, list };
     return list;
   }
   /* The nodes a node hangs from: the ring before it on its ray (a ray's first node: the nearest core node, for drawing). */
   function ptreePrev(list, n) {
-    if (n.ray === 'core' || n.crown) return [];
+    if (n.ray === 'core' || n.crown || n.duet) return [];
+    if (n.crown2) return list.filter(x => x.crown);
+    if (n.rad) return list.filter(x => x.ray === n.ray && !x.rad && x.ring === 8);
     const prev = list.filter(x => x.ray === n.ray && x.ring < n.ring);
     if (prev.length) { const r = Math.max(...prev.map(x => x.ring)); return prev.filter(x => x.ring === r); }
     const ang = (DATA().ptreeShape.angles[n.build] != null && n.build != null) ? DATA().ptreeShape.angles[n.build] : DATA().ptreeShape.solarAngle;
@@ -215,17 +293,29 @@ window.FemcBattleEngine = (() => {
   const linkRank = (save, mid) => Math.min(15, Math.max(+((save.ranks || {})[mid]) || 0, +((save.bonds || {})[mid]) || 0));
   const ptreeOwn = (save, mid) => ((save.ptree || {})[mid]) || [];
   const ptreeEarned = (save, mid) => DATA().progression.partyPts(lvlOf(save, mid));
-  const ptreeSpent = (save, mid) => ptreeNodes(mid).filter(n => ptreeOwn(save, mid).includes(n.id)).reduce((s, n) => s + n.cost, 0);
+  // Radiance buys for a member's build (save.prad { mid: { build: n } }).
+  const pradOf = (save, mid, b) => Math.min(RAD_MAX(), Math.max(0, Math.floor(+(((save.prad || {})[mid] || {})[b]) || 0)));
+  const pradSpent = (save, mid) => Object.keys((save.prad || {})[mid] || {}).reduce((s, b) => s + pradOf(save, mid, b) * ((DATA().radiance || {}).cost || 2), 0);
+  const ptreeSpent = (save, mid) => ptreeNodes(mid).filter(n => !n.rad && ptreeOwn(save, mid).includes(n.id)).reduce((s, n) => s + n.cost, 0) + pradSpent(save, mid);
   const ptreePts = (save, mid) => ptreeEarned(save, mid) - ptreeSpent(save, mid);
-  /* own | avail | lvl (the member's level) | rank (the link isn't high enough) | lock (its path isn't bought yet) */
+  // A duet is owned once either member bought it (the one who paid keeps it in their own list).
+  const duetOwned = (save, n) => n.pair.some(m => ptreeOwn(save, m).includes(n.id));
+  const buildFull = (save, mid, b) => ptreeNodes(mid).filter(x => x.ray === b && !x.rad).every(x => ptreeOwn(save, mid).includes(x.id));
+  const crown2Open = save => ngpOf(save) > 0 && climbTop(save) > 300;
+  /* own | avail | lvl (the member's level) | rank (the link isn't high enough) | lock (its path isn't bought yet) | sealed (a late gate) */
   function ptreeState(save, mid, id, rank = linkRank(save, mid)) {
     const list = ptreeNodes(mid), n = list.find(x => x.id === id);
     if (!n) return 'lock';
     const own = ptreeOwn(save, mid);
-    if (own.includes(id)) return 'own';
+    if (n.rad) return pradOf(save, mid, n.rad) >= RAD_MAX() ? 'own' : buildFull(save, mid, n.rad) ? 'avail' : 'sealed';
+    if (own.includes(id) || (n.duet && duetOwned(save, n))) return 'own';
+    if (n.crown2 && !crown2Open(save)) return 'sealed';
+    if (n.duet && (rank < 10 || linkRank(save, n.partner) < 10)) return 'rank';
     const g = ptreeGate(n);
     if (lvlOf(save, mid) < g.lvl) return 'lvl';
     if (rank < g.rank) return 'rank';
+    if (n.crown2) return list.some(x => x.crown && own.includes(x.id)) ? 'avail' : 'lock';
+    if (n.duet) return 'avail';
     if (!ptreePathOk(own, list, n)) return 'lock';
     return 'avail';
   }
@@ -233,6 +323,16 @@ window.FemcBattleEngine = (() => {
     const list = ptreeNodes(mid), n = list.find(x => x.id === id);
     if (!n) return '';
     const st = ptreeState(save, mid, id, rank), g = ptreeGate(n);
+    const nm = m => (member(m) || {}).name || m;
+    if (n.rad) {
+      if (st === 'sealed') return `Opens once the whole ${((ptreeOf(mid).builds || [])[n.build] || {}).name || ''} build is owned.`;
+      const k = pradOf(save, mid, n.rad);
+      return st === 'own' ? `Bought ${k} of ${RAD_MAX()}.` : ptreePts(save, mid) < n.cost ? `Bought ${k} of ${RAD_MAX()}. Needs ${n.cost} points.` : `Bought ${k} of ${RAD_MAX()}.`;
+    }
+    if (n.crown2 && st === 'sealed') return 'Awakens in New Game+, once the climb passes 300F.';
+    if (n.crown2 && st === 'lock') return 'Needs the crown first.';
+    if (n.duet && st === 'rank') return `Opens when both links are at MAX (${nm(mid)} ${Math.min(10, rank)}/10, ${nm(n.partner)} ${Math.min(10, linkRank(save, n.partner))}/10).`;
+    if (n.duet && st === 'own' && !ptreeOwn(save, mid).includes(n.id)) return `Shared: ${nm(n.partner)} already learned it.`;
     if (st === 'lvl') return `Opens at Lv ${g.lvl} (now ${lvlOf(save, mid)}).`;
     if (st === 'rank') return `Opens at link rank ${g.rank} (now ${rank}).`;
     if (st === 'lock') return n.crown ? 'Needs the last node of one build first.' : `Needs ${ptreePrev(list, n).map(x => x.name).join(' or ')} first.`;
@@ -244,19 +344,23 @@ window.FemcBattleEngine = (() => {
     const st = ptreeState(save, mid, id, rank);
     if (!n || st !== 'avail') return { ok: false, why: ptreeWhy(save, mid, id, rank) || 'Not yet.' };
     if (ptreePts(save, mid) < n.cost) return { ok: false, why: `Needs ${n.cost} points (they come from levels).` };
+    if (n.rad) { save.prad = save.prad || {}; const r = save.prad[mid] || (save.prad[mid] = {}); r[n.rad] = pradOf(save, mid, n.rad) + 1; return { ok: true, learned: [], cost: n.cost, rad: r[n.rad] }; }
     save.ptree = save.ptree || {};
     (save.ptree[mid] || (save.ptree[mid] = [])).push(id);
     const learned = n.fx && n.fx.learn ? [n.fx.learn] : [];
     learned.forEach(s => unforget(save, mid, s));
     return { ok: true, learned, cost: n.cost };
   }
-  function ptreeRespec(save, mid) { const back = ptreeSpent(save, mid); if (save.ptree) save.ptree[mid] = []; return back; }
+  function ptreeRespec(save, mid) { const back = ptreeSpent(save, mid); if (save.ptree) save.ptree[mid] = []; if (save.prad) delete save.prad[mid]; return back; }
   function ptreeFx(save, mid) {
     const fx = Object.assign(passives(), { st: 0, ma: 0, en: 0, ag: 0, lu: 0, hp: 0, sp: 0, learn: [], crit: 0, acc: 0, healMult: 1, aff: {} });
-    const own = ptreeOwn(save, mid);
+    const own = ptreeOwn(save, mid), RA = DATA().radiance || { party: {} };
+    const each = [];
     ptreeNodes(mid).forEach(n => {
-      if (!own.includes(n.id)) return;
-      const e = n.fx || {};
+      if (n.rad) { for (let i = pradOf(save, mid, n.rad); i > 0; i--) each.push((RA.party || {})[n.rad] || {}); return; }
+      if (own.includes(n.id) || (n.duet && duetOwned(save, n))) each.push(n.fx || {});
+    });
+    each.forEach(e => {
       ['st', 'ma', 'en', 'ag', 'lu', 'hp', 'sp', 'crit', 'acc'].forEach(k => { if (e[k]) fx[k] += e[k]; });
       if (e.learn) fx.learn.push(e.learn);
       if (e.healMult) fx.healMult *= e.healMult;
@@ -328,7 +432,7 @@ window.FemcBattleEngine = (() => {
   const bonusOf = (save, mid) => (BLD() ? BLD().unitBonus(save, mid, gearOf(save, mid).wid) : null);
   /* Every skill a member knows at a level: base list, level learns, the evolved Persona's learns, then Haenim's tree (Solar) or
      the member's own tree and MAX evolution. Later tiers upgrade earlier ones in place. Forms' signatures are separate (kitFor). */
-  function skillsFor(mid, save, lvl = lvlOf(save, mid), fx = treeFx(save.nodes)) {
+  function skillsFor(mid, save, lvl = lvlOf(save, mid), fx = treeFx(save.nodes, save.rad)) {
     const D = DATA(), m = member(mid);
     let list = [];
     m.skills.forEach(id => learnInto(list, id));
@@ -352,7 +456,7 @@ window.FemcBattleEngine = (() => {
   }
   /* The eight slots: skills in the order they were learned, minus forgotten ones. slots: what the Persona uses; pending: learned
      but waiting for a "forget which?" choice; sig: a form's signature (its own slot). Keeps save.order up to date. */
-  function kitFor(mid, save, lvl = lvlOf(save, mid), fx = treeFx(save.nodes)) {
+  function kitFor(mid, save, lvl = lvlOf(save, mid), fx = treeFx(save.nodes, save.rad)) {
     const D = DATA(), pool = skillsFor(mid, save, lvl, fx);
     if (mid === 'solar') return solarKit(save, pool);
     const forgot = new Set(((save.forgot || {})[mid]) || []);
@@ -423,11 +527,14 @@ window.FemcBattleEngine = (() => {
   }
   /* The list's NEW mark goes once she's looked at it. */
   function seenSkill(save, id) { if (save.fresh && Array.isArray(save.fresh.solar)) save.fresh.solar = save.fresh.solar.filter(r => r !== rootOf(id)); }
-  function statsFor(mid, save, lvl = lvlOf(save, mid), fx = treeFx(save.nodes), opts = {}) {
+  const SEES = ['akihiko', 'yukari', 'junpei', 'mitsuru', 'aigis', 'ken', 'koromaru', 'shinjiro'];
+  function statsFor(mid, save, lvl = lvlOf(save, mid), fx = treeFx(save.nodes, save.rad), opts = {}) {
     const D = DATA(), m = member(mid), L = lvl - D.progression.startLevel, s = {};
     Object.keys(m.base).forEach(k => { s[k] = Math.round(m.base[k] + m.growth[k] * L); });
     const add = src => ['st', 'ma', 'en', 'ag', 'lu', 'hp', 'sp'].forEach(k => { if (src[k]) s[k] = (s[k] || 0) + src[k]; });
     if (mid === 'solar') add(fx); else add(ptreeFx(save, mid));
+    // Promise (the Stay branch on Haenim's sun): S.E.E.S. members +1 to every stat per 5 link ranks (+2 at MAX).
+    if (mid !== 'solar' && fx.promise && SEES.includes(mid)) { const v = Math.floor(Math.min(10, linkRank(save, mid)) / 5); if (v) ['st', 'ma', 'en', 'ag', 'lu'].forEach(k => { s[k] += v; }); }
     const per = D.personas[personaId(mid, save)];
     [per.bonus, per.lean].forEach(b => b && Object.keys(b).forEach(k => { s[k] = (s[k] || 0) + b[k]; }));
     if (!opts.noGear) {
@@ -443,7 +550,7 @@ window.FemcBattleEngine = (() => {
     return s;
   }
   /* The battle unit for a member. carry: { hp, sp, th } from the last fight; tired: true if fatigued. */
-  function buildUnit(mid, save, { carry = null, tired = false, fx = treeFx(save.nodes) } = {}) {
+  function buildUnit(mid, save, { carry = null, tired = false, fx = treeFx(save.nodes, save.rad) } = {}) {
     const D = DATA(), m = member(mid), L = lvlOf(save, mid), bx = bonusOf(save, mid), s = statsFor(mid, save, L, fx, { tired, bx }), pid = personaId(mid, save), per = D.personas[pid], g = gearOf(save, mid);
     const aff = Object.assign({}, per.aff);
     [g.armor, g.acc].forEach(x => x && x.aff && Object.entries(x.aff).forEach(([el, a]) => { if (!['null', 'repel', 'drain'].includes(aff[el])) aff[el] = a; }));
@@ -492,11 +599,11 @@ window.FemcBattleEngine = (() => {
     unit.guardianBell = pv.guardianBell;
     // The party orbits' passives and Solar-ray hooks (zero for Solar), the crown, and instant-kill odds on top of the cards'.
     ['followMax', 'overShield', 'tauntDef', 'tauntShield', 'guardCounter', 'lowHpCrit', 'multiUp', 'sapHit', 'partyRegen', 'execute', 'ambush', 'swing',
-      'assist', 'assistPow', 'kindle', 'cover', 'baton', 'sunlit', 'sunShield', 'resonance'].forEach(k => { unit[k] = pv[k] || 0; });
+      'assist', 'assistPow', 'kindle', 'cover', 'baton', 'sunlit', 'sunShield', 'resonance', 'clutch', 'iceSlow', 'guardDef', 'moonHeal', 'ttAmbush', 'rebuttal'].forEach(k => { unit[k] = pv[k] || 0; });
     unit.instaUp = (unit.instaUp || 0) + (pv.instaUp || 0);
-    ['tauntBuff', 'scanAll', 'scanSight'].forEach(k => { unit[k] = !!pv[k]; });
-    unit.pierceEl = pv.pierceEl.slice(); unit.sunOpen = pv.sunOpen.slice();
-    unit.resEl = pv.resEl || null; unit.assistOn = pv.assistOn || null; unit.crown = pv.crown || null;
+    ['tauntBuff', 'scanAll', 'scanSight', 'respawn', 'overtime', 'pointOfOrder', 'petal', 'stayCover', 'totalEclipse'].forEach(k => { unit[k] = !!pv[k]; });
+    unit.pierceEl = pv.pierceEl.slice(); unit.sunOpen = pv.sunOpen.slice(); unit.duets = (pv.duets || []).slice();
+    unit.resEl = pv.resEl || null; unit.assistOn = pv.assistOn || null; unit.crown = pv.crown || null; unit.crown2 = pv.crown2 || null;
     unit.openBuff = [...new Set((unit.openBuff || []).concat(pv.openBuff))];
     unit.partyOpen = [...new Set((unit.partyOpen || []).concat(pv.partyOpen))];
     return unit;
@@ -511,7 +618,7 @@ window.FemcBattleEngine = (() => {
     const save = { lvl: c.lvl, nodes: c.nodes || [], mem: Object.fromEntries(ids.map(id => [id, { lvl: c.lvl }])), gear: { eq }, form: c.form || 'haenim', forms: c.form ? [c.form] : [], evo: c.evo || {}, ops: { cleared: c.cleared || [] }, th: {},
       ptree: c.ptree || {}, ranks: c.ranks || {}, forgot: {}, order: {} };
     if (c.evoAuto) evolutionsDue(save, id => c.lvl).forEach(e => { save.evo[e.mid] = true; });
-    const fx = treeFx(save.nodes);
+    const fx = treeFx(save.nodes, save.rad);
     return { units: ids.map(id => buildUnit(id, save, { fx, tired: !!(c.tired && c.tired.includes(id)) })), mods: fx.mods, fx, save };
   }
 
@@ -564,6 +671,8 @@ window.FemcBattleEngine = (() => {
     setup.party.forEach((p, i) => S.units.push(Object.assign({ id: 'p' + i, side: 'party', down: false, guard: false, ail: null, dead: p.hp <= 0, buffs: { atk: 0, def: 0, agi: 0 }, buffT: { atk: 0, def: 0, agi: 0 }, boost: 1, turns: 0, th: 0, orgia: 0, nullAil: [],
       taunt: 0, veneer: 0, ward: false, endured: false, usedFree: false, counter: 0, evade: 0 }, p)));
     setup.enemies.forEach(kind => { const e = makeEnemy(kind, 'e' + S.uid++, S.heat); S.units.push(e); if (e.boss) S.boss = true; if (e.reaper) S.reaper = true; });
+    // A duet attack (data.js skills `duo`) is only there while both of its members are in the party.
+    { const mids = S.units.filter(u => u.side === 'party').map(u => u.mid); S.units.forEach(u => { if (u.side === 'party' && Array.isArray(u.skills)) u.skills = u.skills.filter(id => { const k = D.skills[id]; return !k || !k.duo || k.duo.every(m => mids.includes(m)); }); }); }
 
     const U = id => S.units.find(u => u.id === id) || Object.values(S.assists).find(a => a.id === id) || null;
     const party = () => S.units.filter(u => u.side === 'party');
@@ -614,6 +723,24 @@ window.FemcBattleEngine = (() => {
        three levels), cutPrint (once a battle, Solar's landed skill plays again free), appointed (start: the strongest Shadow
        takes ×1.35 from Solar), everyUniverse (Solar's crit: he strikes the same Shadow at once). */
     const crownBy = id => alive(party()).find(p => p.crown === id && p !== leader()) || null;
+    /* ── Late-game hooks (2026-10-31, FEMC-LATE-BRANCHES-DESIGN.md). Second crowns (unit.crown2, NG+): champion (Undisputed's jab
+         may Down, 50%), guardianArrow (Second Wind also catches the first other member who would fall), encore (while Junpei
+         stands, Solar takes 25% less from all-target hits), execution2 (Execution twice), overdrive (Orgia 5 turns), justice
+         (a party Light kill: Solar +8 SP), faithful (Loyal's counter also guards her), unbroken (Last Stand twice), mce (his first
+         buff lasts twice as long on Solar), finalCut (Cut. Print. replays anyone's skill), mandate (the Appointed foe takes ×1.2
+         from the rest of the party, inside PARTY_HIT), everyTime (his Every Universe strike +40 crit).
+       Duets (unit.duets, both members alive in the party; duetOn): oldFriends (a counter by one sets off the other's),
+         iceWind (the pair attack, skills `duo` / `els`), pinch (one falls: the other's attack +2), shieldSpear (Aigis's Cover hit
+         lands on a 15% shield and Solar gets 10%), twoUniverses (Solar's crit lowers defense), hypeSpotlight (Minji's first scan:
+         party attack up, once).
+       Solar's late passives: clutch, respawn (15% HP, once), overtime (her buffs +1 turn from round 5), iceSlow, guardDef,
+         moonHeal (setup.ctx.moon), ttAmbush (setup.ctx.tartarus), pointOfOrder, rebuttal, petal (start: 10% shields), stayCover
+         (party[1] takes half while she guards), totalEclipse (her first damaging skill counts as every weakness the foe has). */
+    const crown2By = id => alive(party()).find(p => p.crown2 === id && p !== leader()) || null;
+    const DUET_PAIR = Object.fromEntries((D.duets || []).map(d => [d.fx.duets[0], d.pair]));
+    const duetOn = id => { const pr = DUET_PAIR[id]; if (!pr) return false; const us = pr.map(m => alive(party()).find(p => p.mid === m)); return us.every(Boolean) && us.some(u => (u.duets || []).includes(id)); };
+    const timesUsed = k => S.crownUsed.has(k + '#2') ? 2 : S.crownUsed.has(k) ? 1 : 0;
+    const useTime = k => { if (S.crownUsed.has(k)) S.crownUsed.add(k + '#2'); else S.crownUsed.add(k); };
     function kindleFrom(src, tgt, amount, ev) {
       const L = leader(), orgia = src.crown === 'orgia' && src.orgia > 0;
       if (!L || L.dead || L.th >= 100 || (!src.kindle && !orgia) || (src.kindled && !orgia)) return;
@@ -654,6 +781,7 @@ window.FemcBattleEngine = (() => {
        into src.actBoost once per action (useSkill). */
     function hitMult(src, tgt, sk, aff) {
       let m = src.actBoost || 1;
+      if (sk.perFoe && sk.foeN > 1) m *= 1 + sk.perFoe * (sk.foeN - 1); // Landslide
       // Signature skills: Fastball / Moonlit Static hit a Down foe harder; Haymaker hits harder the more hurt Shinjiro is.
       if (sk.downBonus && tgt.down) m *= 1 + sk.downBonus;
       if (sk.lowHpBonus && src.maxHp) m *= 1 + sk.lowHpBonus * (1 - Math.max(0, Math.min(1, src.hp / src.maxHp)));
@@ -680,7 +808,12 @@ window.FemcBattleEngine = (() => {
         if (src.execute && hpPct(tgt) < 1 / 3) m *= 1 + src.execute;
         if (src.ambush && S.round <= 1) m *= 1 + src.ambush;
         if (src.swing && R() < src.swing) m *= 1.6;
+        if (!isLead(src) && tgt.appointed && crownBy('appointed') && crown2By('mandate')) m *= 1.2; // Mandate
         if (!isLead(src)) m = Math.min(m, (src.actBoost || 1) * PARTY_HIT); // a member's bonuses stop at PARTY_HIT (Solar's don't)
+        if (isLead(src)) {
+          if (src.clutch && party().length > 1 && alive(party()).length === 1) m *= 1 + src.clutch; // Clutch Play
+          if (src.ttAmbush && S.round <= 1 && S.ctx.tartarus) m *= 1 + src.ttAmbush; // Nightwalk
+        }
         if (isLead(src)) {
           const res = alive(party()).filter(u => u !== src && u.resEl === sk.el && u.resonance > 0).reduce((a, u) => Math.max(a, u.resonance), 0);
           if (res) m *= 1 + res;
@@ -788,8 +921,13 @@ window.FemcBattleEngine = (() => {
       if (h.aff === 'weak' && src.weakSp && !src.wspGot && src.sp < src.maxSp) { src.wspGot = true; src.sp = Math.min(src.maxSp, src.sp + src.weakSp); ev.push({ t: 'heal', src: src.id, tgt: src.id, amount: 0, sp: src.weakSp, hp: src.hp, maxHp: src.maxHp, spNow: src.sp }); }
       // Sap (Tracer Rounds, Exposed Flank, Agenda): a hit may lower the foe's defense, once an action.
       if (src.sapHit && h.amount > 0 && !tgt.dead && !src.sapped && tgt.buffs.def > -CAP && R() < src.sapHit) { src.sapped = true; buff(tgt, 'def', -1, ev, false, 1, src); }
+      // Undertow (the strangers branch): ice hits may lower agility, once an action.
+      if (src.iceSlow && sk.el === 'ice' && h.amount > 0 && !tgt.dead && !src.slowed && tgt.buffs.agi > -CAP && R() < src.iceSlow) { src.slowed = true; buff(tgt, 'agi', -1, ev, false, 1, src); }
       src.lastTgt = tgt.id;
       if (!isLead(src)) return;
+      // Point of Order: a weakness strikes off the Shadow's buffs. Two Universes: her crits lower defense.
+      if (src.pointOfOrder && h.aff === 'weak' && !tgt.dead && ['atk', 'def', 'agi'].some(st => tgt.buffs[st] > 0)) { ev.push({ t: 'status', tgt: tgt.id, label: 'POINT OF ORDER', cls: 'debuff', late: 'pointOfOrder' }); dispel([tgt], 'buffs', ev); }
+      if (h.crit && !tgt.dead && tgt.buffs.def > -CAP && duetOn('twoUniverses')) { ev.push({ t: 'status', tgt: tgt.id, label: 'TWO UNIVERSES', cls: 'debuff', duet: 'twoUniverses' }); buff(tgt, 'def', -1, ev, false, 1, src); }
       // Solar-ray hooks: Assist; crowns: Every Single Universe.
       if (!S.inFollow && !tgt.dead && h.amount > 0) {
         alive(party()).forEach(u => {
@@ -802,7 +940,7 @@ window.FemcBattleEngine = (() => {
           if (R() < ch) S.follow.push({ unit: u.id, tgt: tgt.id, o: { assist: true, label: 'ASSIST', name: 'Assist', id: 'assist', skill: assistHit(u) } });
         });
         const hc = h.crit && crownBy('everyUniverse');
-        if (hc && !helpless(hc) && !S.follow.some(f => f.unit === hc.id && f.o.crown)) S.follow.push({ unit: hc.id, tgt: tgt.id, o: { crown: true, label: 'EVERY UNIVERSE', name: 'Every Single Universe', id: 'every_universe', skill: assistHit(hc, 1.1, { crit: 10 }) } });
+        if (hc && !helpless(hc) && !S.follow.some(f => f.unit === hc.id && f.o.crown)) S.follow.push({ unit: hc.id, tgt: tgt.id, o: { crown: true, label: 'EVERY UNIVERSE', name: 'Every Single Universe', id: 'every_universe', skill: assistHit(hc, 1.1, { crit: hc.crown2 === 'everyTime' ? 50 : 10 }) } });
       }
       if ((h.aff === 'weak' || h.crit) && (p = perkOn('feelEverything')) && src.sp < src.maxSp) { src.sp = Math.min(src.maxSp, src.sp + p.sp); ev.push({ t: 'heal', src: src.id, tgt: src.id, amount: 0, sp: p.sp, hp: src.hp, maxHp: src.maxHp, spNow: src.sp }); }
       if (h.aff === 'weak' && !tgt.dead && (p = perkOn('jab', true)) && byUnit('akihiko') && !S.follow.some(f => f.k === 'jab') && R() < (p.rank >= p.hiRank ? p.hi : p.chance)) follow('jab', tgt, { skill: { el: 'strike', power: p.power } });
@@ -823,8 +961,8 @@ window.FemcBattleEngine = (() => {
       const L = leader(), phys = PHYS.has(sk.el);
       if (tgt.thOnHit && tgt.taunt > 0) { tgt.th = Math.min(100, (tgt.th || 0) + tgt.thOnHit); ev.push({ t: 'thGain', tgt: tgt.id, n: tgt.thOnHit }); }
       // Crown: Last Stand (Shinjiro below a third, once a battle).
-      if (tgt.crown === 'lastStand' && !tgt.dead && hpPct(tgt) < 1 / 3 && !S.crownUsed.has('lastStand')) {
-        S.crownUsed.add('lastStand'); tgt.sureHit = true; if (L && !L.dead && L !== tgt) L.standBoost = 1.3;
+      if (tgt.crown === 'lastStand' && !tgt.dead && hpPct(tgt) < 1 / 3 && !tgt.sureHit && timesUsed('lastStand') < (tgt.crown2 === 'unbroken' ? 2 : 1)) {
+        useTime('lastStand'); tgt.sureHit = true; if (L && !L.dead && L !== tgt) L.standBoost = 1.3;
         ev.push({ t: 'status', tgt: tgt.id, label: 'LAST STAND', cls: 'buff', crown: 'lastStand' });
       }
       if (!isLead(tgt)) {
@@ -833,7 +971,10 @@ window.FemcBattleEngine = (() => {
       }
       // Crown: Loyal to the End (Koromaru may counter whoever hit Solar).
       const ko = crownBy('loyal');
-      if (ko && !helpless(ko) && !src.dead && src.side === 'enemy' && R() < 0.35) { ev.push({ t: 'status', tgt: ko.id, label: 'LOYAL', cls: 'buff', crown: 'loyal' }); counterHit(ko, src, ev); }
+      if (ko && !helpless(ko) && !src.dead && src.side === 'enemy' && R() < 0.35) {
+        ev.push({ t: 'status', tgt: ko.id, label: 'LOYAL', cls: 'buff', crown: 'loyal' }); counterHit(ko, src, ev);
+        if (ko.crown2 === 'faithful' && !tgt.dead && !tgt.guard) { tgt.guard = true; ev.push({ t: 'status', tgt: tgt.id, label: 'FAITHFUL', cls: 'buff', crown2: 'faithful' }); } // Faithful: he guards her till her turn
+      }
       if ((p = perkOn('limitBreak')) && tgt.th < 100) { tgt.th = Math.min(100, tgt.th + p.th); if (tgt.th >= 100) ev.push({ t: 'thReady', tgt: tgt.id }); }
       if ((h.crit || h.aff === 'weak') && (p = perkOn('payback'))) { tgt.th = Math.min(100, tgt.th + p.th); tgt.payback = 1 + p.dmg; ev.push({ t: 'thGain', tgt: tgt.id, n: p.th }); }
       if (h.crit) {
@@ -877,6 +1018,11 @@ window.FemcBattleEngine = (() => {
         if (src.charged && (PHYS.has(sk.el))) d *= 2.4;
       }
       if (tgt.guard) d *= 0.5;
+      if (src.side === 'enemy' && tgt.side === 'party') {
+        if (tgt.guard && tgt.guardDef) d *= 1 - tgt.guardDef; // Low Tide
+        const L = leader();
+        if (!tgt.guard && L && L !== tgt && L.guard && L.stayCover && !L.dead && party()[1] === tgt) d *= 0.5; // Stay
+      }
       return d;
     }
     const helpless = u => !!(u.down || (u.ail && D.ailments[u.ail.id].noAct));
@@ -1079,6 +1225,16 @@ window.FemcBattleEngine = (() => {
       let aff = sk.el === 'almighty' ? 'normal' : (tgt.aff[sk.el] || 'normal');
       if (sk.el === 'almighty' && tgt.gimmick === 'empress' && !sk.theurgy) aff = 'null';
       if (sk.weakEl && tgt.aff[sk.weakEl] === 'weak') aff = 'weak';
+      // Total Eclipse: the skill also counts as a hit of every element the target is weak to.
+      let eclipseN = 0;
+      if (src.eclipseNow && tgt.side === 'enemy') {
+        const ws = D.affinityOrder.filter(el => tgt.aff[el] === 'weak');
+        if (ws.length) {
+          eclipseN = ws.length; aff = 'weak';
+          ws.forEach(el => { if (learn(tgt, el)) ev.push({ t: 'reveal', tgt: tgt.id, kind: tgt.kind, el, aff: 'weak' }); });
+          if (!S.eclipseShown) { S.eclipseShown = true; ev.push({ t: 'status', tgt: tgt.id, label: 'TOTAL ECLIPSE', cls: 'debuff', eclipse: ws.slice() }); }
+        }
+      }
       if (tgt.guard && aff === 'weak') aff = 'normal';
       if (src.side === 'party' && sk.el !== 'almighty' && learn(tgt, sk.el)) ev.push({ t: 'reveal', tgt: tgt.id, kind: tgt.kind, el: sk.el, aff: tgt.aff[sk.el] || 'normal' });
       if (aff === 'repel') {
@@ -1095,6 +1251,7 @@ window.FemcBattleEngine = (() => {
       if (sk.noResist && aff === 'resist') aff = 'normal'; // Widow's Kiss
       if (aff === 'resist' && src.side === 'party' && (src.pierceEl || []).includes(sk.el)) aff = 'normal'; // Conductor, Piercing Light, Lens Flare
       let d = rawDamage(src, tgt, sk) * hitMult(src, tgt, sk, aff);
+      if (eclipseN > 1) d *= 1 + 0.2 * (eclipseN - 1);
       if (src.crown === 'lance' && sk.el === 'light' && leader()) d += leader().lvl * 2.5; // Lance of Justice, Refined
       if (spread && tgt.gimmick === 'hermit') d *= 0.5;
       if (aff === 'drain') {
@@ -1107,11 +1264,12 @@ window.FemcBattleEngine = (() => {
       const shatter = PHYS.has(sk.el) && tgt.ail && tgt.ail.id === 'freeze';
       const keen = !!(sk.critX && sk.critIf && src.side === 'party' && critCond(tgt, sk, aff)); // Kunai Flick's opening
       // Crown: Execution (once a battle, Solar's hit on an ailing Shadow is a sure critical).
-      const exec = isLead(src) && tgt.side === 'enemy' && !!tgt.ail && !S.crownUsed.has('execution') && !!crownBy('execution');
-      if (exec) { S.crownUsed.add('execution'); ev.push({ t: 'status', tgt: tgt.id, label: 'EXECUTION', cls: 'debuff', crown: 'execution' }); }
+      const exec = isLead(src) && tgt.side === 'enemy' && !!tgt.ail && timesUsed('execution') < (crown2By('execution2') ? 2 : 1) && !!crownBy('execution');
+      if (exec) { useTime('execution'); ev.push({ t: 'status', tgt: tgt.id, label: 'EXECUTION', cls: 'debuff', crown: 'execution' }); }
       const crit = exec || shatter || (sk.crit >= 100) || R() * 100 < critChance(src, tgt, sk);
       if (aff === 'weak') d *= 1.5 * (src.side === 'party' ? mods.weakMult * (1 + (src.weakUp || 0)) : 1);
       if (src.side === 'enemy' && tgt.side === 'party') d *= 1 - corona();
+      if (src.side === 'enemy' && isLead(tgt) && spread && crown2By('encore')) d *= 0.75; // Grand Slam Encore
       if (src.side === 'enemy' && tgt.dmgTaken) d *= tgt.dmgTaken; // the epilogue's half-present Solar (battle.js EPI: half damage)
       if (src.side === 'enemy' && tgt.taunt > 0 && tgt.tauntDef) d *= 1 - tgt.tauntDef; // Catcher's Gear, Hard Shell, Shell Game
       if (aff === 'resist') d *= 0.5;
@@ -1136,6 +1294,12 @@ window.FemcBattleEngine = (() => {
       // Crown: Second Wind (Yukari brings Solar back from her first fall, once a battle).
       const wind = tgt.hp <= 0 && isLead(tgt) && !S.crownUsed.has('secondWind') && crownBy('secondWind');
       if (wind) { S.crownUsed.add('secondWind'); tgt.hp = 1; }
+      // Guardian Arrow: Second Wind also catches the first other member who would fall (once a battle).
+      const arrow = tgt.hp <= 0 && tgt.side === 'party' && !isLead(tgt) && !tgt.assistOf && !S.crownUsed.has('guardianArrow') && crownBy('secondWind') && crown2By('guardianArrow');
+      if (arrow) { S.crownUsed.add('guardianArrow'); tgt.hp = 1; }
+      // Respawn (the Runners branch): once a battle, a blow that would end Solar leaves her at 15% HP.
+      const respawn = tgt.hp <= 0 && isLead(tgt) && tgt.respawn && !S.crownUsed.has('respawn');
+      if (respawn) { S.crownUsed.add('respawn'); tgt.hp = Math.max(1, Math.round(tgt.maxHp * 0.15)); }
       let downed = false, killed = false;
       const noDown = isLead(tgt) && ((hpPct(tgt) < ((PK('hardWay') || {}).below || 0) && perkOn('hardWay')) || !!crownBy('homePlate')); // Hard Way Home, Home Plate
       if (tgt.hp <= 0) { kill(tgt, ev); killed = true; }
@@ -1144,6 +1308,10 @@ window.FemcBattleEngine = (() => {
       ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff, crit, amount, hp: tgt.hp, maxHp: tgt.maxHp, killed, downed, shatter, skill: sk.id, theurgy: !!sk.theurgy, keen: keen && crit, flank: crit && flanking(src) });
       if (endured) ev.push({ t: 'endure', tgt: tgt.id });
       if (wind) { ev.push({ t: 'status', tgt: tgt.id, label: 'SECOND WIND', cls: 'buff', crown: 'secondWind' }); heal(wind, tgt, tgt.maxHp * 0.5, ev); }
+      if (arrow) { ev.push({ t: 'status', tgt: tgt.id, label: 'GUARDIAN ARROW', cls: 'buff', crown2: 'guardianArrow' }); heal(arrow, tgt, tgt.maxHp * 0.5, ev); }
+      if (respawn) ev.push({ t: 'status', tgt: tgt.id, label: 'RESPAWN', cls: 'buff', late: 'respawn' });
+      // Justice Served: a party Light kill gives Solar 8 SP back.
+      if (killed && src.side === 'party' && sk.el === 'light' && tgt.side === 'enemy' && crown2By('justice')) { const L = leader(); if (L && !L.dead && L.sp < L.maxSp) heal(null, L, 0, ev, 8); }
       if (src.side === 'party' && !isLead(src) && !src.assistOf && amount > 0) kindleFrom(src, tgt, amount, ev);
       if (src.side === 'party') {
         // Follow-ups, assists and crown strikes (S.inFollow) don't fill their striker's own gauge: no Theurgy snowball.
@@ -1183,6 +1351,12 @@ window.FemcBattleEngine = (() => {
       if (tgt.down) ch += 10;
       if (tgt === leader()) ch *= 0.5; // Solar falling ends the run, so Shadows' instant kills land on her less
       if (R() * 100 >= ch) { ev.push({ t: 'miss', src: src.id, tgt: tgt.id, insta: true }); return false; }
+      if (isLead(tgt) && tgt.respawn && !S.crownUsed.has('respawn')) {
+        S.crownUsed.add('respawn'); const keep = Math.max(1, Math.round(tgt.maxHp * 0.15)), amt = Math.max(0, tgt.hp - keep); tgt.hp = Math.min(tgt.hp, keep);
+        ev.push({ t: 'hit', src: src.id, tgt: tgt.id, el: sk.el, aff: 'normal', amount: amt, hp: tgt.hp, maxHp: tgt.maxHp, insta: true });
+        ev.push({ t: 'status', tgt: tgt.id, label: 'RESPAWN', cls: 'buff', late: 'respawn' });
+        return false;
+      }
       const amount = tgt.hp, wind = isLead(tgt) && !S.crownUsed.has('secondWind') && crownBy('secondWind');
       if (wind) {
         S.crownUsed.add('secondWind'); tgt.hp = 1;
@@ -1201,6 +1375,8 @@ window.FemcBattleEngine = (() => {
         const L = leader();
         if (L && !L.dead && perkOn('rideOrDie') && onceOk('rideOrDie')) { useOnce('rideOrDie'); L.rideRevive = true; S.queue = [L.id].concat(S.queue.filter(x => x !== L.id)); if (ev) perkEv(ev, 'rideOrDie'); }
         if (S.cur && S.cur.side === 'enemy' && perkOn('grudge')) S.cur.grudged = true;
+        // Pinch Hitters: one of the pair falls, the other's attack goes up two levels.
+        if (['junpei', 'koromaru'].includes(u.mid) && duetOn('pinch')) { const o = alive(party()).find(p => p.mid === (u.mid === 'junpei' ? 'koromaru' : 'junpei')); if (o && ev) { ev.push({ t: 'status', tgt: o.id, label: 'PINCH HITTERS', cls: 'buff', duet: 'pinch' }); buff(o, 'atk', 1, ev, false, 2, o); } }
       }
       u.dead = true; u.hp = 0; u.down = false; u.ail = null; u.guard = false; u.hidden = false; u.orgia = 0; u.taunt = 0; u.ward = false;
       u.buffs = { atk: 0, def: 0, agi: 0 }; u.buffT = { atk: 0, def: 0, agi: 0 };
@@ -1230,12 +1406,17 @@ window.FemcBattleEngine = (() => {
         let p;
         // Long Speech / Spotlight Hog / Order: a caster's buffs on her side or debuffs on the other last longer.
         if (dir > 0 && src.buffTurns && tgt.side === src.side) tgt.buffT[stat] += src.buffTurns;
+        if (dir > 0 && src.overtime && S.round >= 5 && tgt.side === src.side) tgt.buffT[stat] += 1; // Overtime
         if (dir > 0 && src.sunlit && isLead(tgt) && src !== tgt) tgt.buffT[stat] += src.sunlit; // Sunlit: a member's buffs on Solar
         if (dir < 0 && src.debuffTurns && tgt.side !== src.side) tgt.buffT[stat] += src.debuffTurns;
         if (dir < 0 && tgt.side === 'enemy' && (isLead(src) || src.mid === 'jungwon') && (p = perkOn('orderBiz'))) tgt.buffT[stat] += p.turns;
         if (dir > 0 && isLead(tgt) && src.mid === 'jihoon' && (p = perkOn('hypeMan'))) tgt.buffT[stat] += p.turns;
       }
       ev.push({ t: 'buff', tgt: tgt.id, stat, dir, v, lasting: tgt.buffT[stat] >= 90, turns: tgt.buffT[stat], capped: v === old });
+      // Rebuttal (the HOAX branch): a Shadow lowers her stats, and she may hit back.
+      if (dir < 0 && src && src.side === 'enemy' && isLead(tgt) && tgt.rebuttal && !S.inRebut && !src.dead && R() < tgt.rebuttal) {
+        S.inRebut = true; ev.push({ t: 'status', tgt: tgt.id, label: 'REBUTTAL', cls: 'buff', late: 'rebuttal' }); counterHit(tgt, src, ev); S.inRebut = false;
+      }
     }
     function dispel(tgts, kind, ev) {
       let n = 0;
@@ -1299,6 +1480,11 @@ window.FemcBattleEngine = (() => {
       u.counterHit = true;
       strike(u, foe, attackSkill(u), ev);
       u.counterHit = false;
+      // Old Friends: one of them counters, and the other hits back too (never a chain).
+      if (!S.inFriends && ['akihiko', 'shinjiro'].includes(u.mid) && duetOn('oldFriends') && !foe.dead) {
+        const o = alive(party()).find(p => p.mid === (u.mid === 'akihiko' ? 'shinjiro' : 'akihiko'));
+        if (o && !helpless(o)) { S.inFriends = true; ev.push({ t: 'status', tgt: o.id, label: 'OLD FRIENDS', cls: 'buff', duet: 'oldFriends' }); counterHit(o, foe, ev); S.inFriends = false; }
+      }
     }
     function useSkill(src, skId, target, ev, { flip = false } = {}) {
       const sk = skId === 'attack' ? attackSkill(src) : Object.assign({ id: skId }, skillOf(skId));
@@ -1315,7 +1501,9 @@ window.FemcBattleEngine = (() => {
         if (sk.type === 'dmg' && src.charge2 && skId !== 'attack' && !PHYS.has(sk.el)) { b *= src.charge2; src.charge2 = 0; }
         if (sk.type === 'dmg' && src.chargeP && PHYS.has(sk.el)) { b *= src.chargeP; src.chargeP = 0; } // Gather Light
         if (lead && sk.type === 'dmg' && src.standBoost) { b *= src.standBoost; src.standBoost = 0; } // Last Stand
-        src.wspGot = false; src.kindled = false; src.sapped = false;
+        src.wspGot = false; src.kindled = false; src.sapped = false; src.slowed = false;
+        // Total Eclipse: once a battle, her first damaging skill also counts as every weakness the target has.
+        if (lead && src.totalEclipse && sk.type === 'dmg' && skId !== 'attack' && !S.crownUsed.has('totalEclipse')) { S.crownUsed.add('totalEclipse'); src.eclipseNow = true; }
         src.actBoost = b;
       }
       // Aggro: a Shadow's single-target attack goes to whoever is drawing it (Public Veneer, Provoke).
@@ -1340,12 +1528,16 @@ window.FemcBattleEngine = (() => {
           else if (t0 === L && src.noSolar > 0 && others().length) { to = pick(others()); perkEv(ev, 'heavensDoor', { tgt: src.id, quiet: true }); }
           else if (t0 === L && hpPct(L) < ((PK('mainChar') || {}).below || 0) && (pk = perkOn('mainChar', true)) && byUnit('jihoon')) { to = byUnit('jihoon'); perkEv(ev, 'mainChar'); }
           else if (t0 === L && (pk = perkOn('bodyguard', true)) && byUnit('aigis') && R() < pk.chance) { to = byUnit('aigis'); perkEv(ev, 'bodyguard'); }
-          else if (t0 === L && (pk = coverFor(L))) { to = pk; S.covered = pk.id; } // Cover (the Solar ray)
+          else if (t0 === L && (pk = coverFor(L))) { // Cover (the Solar ray); Shield and Spear: Aigis takes it behind Ken's barrier
+            to = pk; S.covered = pk.id;
+            if (pk.mid === 'aigis' && duetOn('shieldSpear')) { pk.shield = Math.max(pk.shield || 0, Math.round(pk.maxHp * 0.15)); L.shield = Math.max(L.shield || 0, Math.round(L.maxHp * 0.1)); ev.push({ t: 'status', tgt: pk.id, label: 'SHIELD AND SPEAR', cls: 'buff', duet: 'shieldSpear', left: pk.shield }); }
+          }
           else if (t0 === L && (pk = perkOn('spotlight')) && others().length && R() < pk.chance) { to = pick(others()); perkEv(ev, 'spotlight', { quiet: true }); }
           if (to && to !== t0) { drawn = to; target = to.id; }
         }
       }
       let tgts = targetsFor(src, sk, target, flip);
+      if (sk.perFoe) sk.foeN = tgts.length;
       // Valkyrie: Solar's single-target heals reach the whole party.
       if (lead && src.valkyrie > 0 && sk.type === 'heal' && sk.target === 'ally') tgts = alive(party());
       const hp0 = new Map(tgts.map(t => [t.id, t.hp]));
@@ -1361,7 +1553,8 @@ window.FemcBattleEngine = (() => {
       const hidden = t => { if (t.hidden && src.side === 'party' && !spread) { ev.push({ t: 'miss', src: src.id, tgt: t.id, hidden: true }); return true; } return false; };
       if (sk.type === 'dmg' && sk.target === 'rand') {
         for (let i = 0; i < n; i++) { const pool = tgts.filter(t => !t.dead); if (!pool.length) break; const t = pick(pool); if (strike(src, t, sk, ev, { spread })) downs++; }
-      } else if (sk.type === 'dmg') tgts.forEach(t => { for (let i = 0; i < n && !t.dead; i++) if (strike(src, t, sk, ev, { spread })) downs++; });
+      } else if (sk.type === 'dmg' && sk.els) sk.els.forEach(el => tgts.forEach(t => { if (!t.dead && strike(src, t, Object.assign({}, sk, { el }), ev, { spread })) downs++; })); // a duet: one pass per element
+      else if (sk.type === 'dmg') tgts.forEach(t => { for (let i = 0; i < n && !t.dead; i++) if (strike(src, t, sk, ev, { spread })) downs++; });
       else if (sk.type === 'insta') tgts.forEach(t => { if (!t.dead && hits(src, t, sk)) instaKill(src, t, sk, ev); else if (!t.dead) ev.push({ t: 'miss', src: src.id, tgt: t.id }); });
       else if (sk.type === 'ailment') tgts.forEach(t => {
         if (t.dead || hidden(t)) return;
@@ -1385,7 +1578,9 @@ window.FemcBattleEngine = (() => {
         // Crown: Light of Your Life (Jihoon's first buff each battle: the whole party, three levels).
         let bt = tgts, lv = 1;
         if (src.crown === 'lightOfLife' && !flip && !S.crownUsed.has('lightOfLife')) { S.crownUsed.add('lightOfLife'); bt = alive(party()); lv = 3; ev.push({ t: 'status', tgt: src.id, label: 'LIGHT OF YOUR LIFE', cls: 'buff', crown: 'lightOfLife' }); }
-        bt.forEach(t => { [].concat(sk.stat).forEach(s => buff(t, s, 1, ev, sk.lasting, lv, src)); if (sk.sp) heal(null, t, 0, ev, sk.sp); if (lead && t !== src) keepCount(ev); });
+        const mce = src.crown2 === 'mce' && !flip && !S.crownUsed.has('mce');
+        if (mce) S.crownUsed.add('mce');
+        bt.forEach(t => { [].concat(sk.stat).forEach(s => { buff(t, s, 1, ev, sk.lasting, lv, src); if (mce && isLead(t) && t.buffT[s] < 90) t.buffT[s] *= 2; }); if (sk.sp) heal(null, t, 0, ev, sk.sp); if (lead && t !== src) keepCount(ev); }); // Main Character Energy
         if (sk.thGain) tgts.forEach(t => { if (t.side === 'party' && !t.dead && t.th < 100) { t.th = Math.min(100, t.th + sk.thGain); ev.push({ t: 'thGain', tgt: t.id, n: sk.thGain }); if (t.th >= 100) ev.push({ t: 'thReady', tgt: t.id }); } });
         if (src.side === 'party') gain(src, 'buff', ev);
         // Jungwon's Motion Denied: a foe that buffs itself has it stripped at once (once per battle).
@@ -1460,6 +1655,7 @@ window.FemcBattleEngine = (() => {
         if (scanning && t.side === 'enemy') {
           (src.scanAll ? alive(foes()) : [t]).forEach(f => { const k = S.known[f.kind] || (S.known[f.kind] = {}); D.affinityOrder.forEach(el => { k[el] = true; }); f.scannedBy = src.mid; });
           ev.push({ t: 'status', tgt: t.id, label: 'IN FOCUS', cls: 'buff', scan: true, all: !!src.scanAll });
+          if (src.mid === 'minji' && !S.crownUsed.has('hypeSpotlight') && duetOn('hypeSpotlight')) { S.crownUsed.add('hypeSpotlight'); ev.push({ t: 'status', tgt: src.id, label: 'HYPE AND SPOTLIGHT', cls: 'buff', duet: 'hypeSpotlight' }); alive(party()).forEach(p => buff(p, 'atk', 1, ev)); }
         }
       });
       if (sk.type === 'taunt' && sk.thOnHit) tgts.forEach(t => { t.thOnHit = sk.thOnHit; });
@@ -1481,7 +1677,7 @@ window.FemcBattleEngine = (() => {
         }
         if (lead) S.warp = false;
         // Crown: Cut. Print. (once a battle, Minji calls back Solar's landed skill: it plays again, free).
-        const mj = lead && skId !== 'attack' && sk.type === 'dmg' && total > 0 && !S.crownUsed.has('cutPrint') && crownBy('cutPrint');
+        const mj = (lead || (!flip && crown2By('finalCut') && crownBy('cutPrint') !== src)) && skId !== 'attack' && sk.type === 'dmg' && total > 0 && !S.crownUsed.has('cutPrint') && !S.inFollow && crownBy('cutPrint');
         if (mj && !helpless(mj) && alive(foes()).length) {
           S.crownUsed.add('cutPrint');
           ev.push({ t: 'status', tgt: mj.id, label: 'CUT. PRINT.', cls: 'buff', crown: 'cutPrint' });
@@ -1490,7 +1686,7 @@ window.FemcBattleEngine = (() => {
         }
       }
       if (src.loudUsed) { src.loudAt = null; src.loudUsed = false; }
-      src.actBoost = 1;
+      src.actBoost = 1; src.eclipseNow = false;
       runFollows(ev);
       if (src.sureHit && src.side === 'party' && ['dmg', 'insta'].includes(sk.type)) src.sureHit = false; // Last Stand's sure hit is spent
       if (src.side === 'party' && !flip && skId !== 'attack' && ((member(src.mid) || {}).sig || []).includes(skId)) gain(src, 'sig', ev);
@@ -1556,7 +1752,7 @@ window.FemcBattleEngine = (() => {
           const tg = T.target === 'one' ? [pool.filter(f => !f.hidden && !shieldUp(f)).sort((a, b) => ((S.known[b.kind] || {})[T.el] && b.aff[T.el] === 'weak') - ((S.known[a.kind] || {})[T.el] && a.aff[T.el] === 'weak') || b.hp - a.hp)[0] || pool[0]] : pool;
           tg.forEach(t => { for (let i = 0; i < n && !t.dead; i++) if (strike(u, t, sk, ev, { spread })) downs++; });
         }
-        if (T.type === 'orgia') { u.orgia = T.turns || 3; buff(u, 'atk', 1, ev); u.buffT.atk = (T.turns || 3) + 1; ev.push({ t: 'orgia', tgt: u.id, turns: u.orgia }); }
+        if (T.type === 'orgia') { const ot = u.crown2 === 'overdrive' ? 5 : (T.turns || 3); u.orgia = ot; buff(u, 'atk', 1, ev); u.buffT.atk = ot + 1; ev.push({ t: 'orgia', tgt: u.id, turns: u.orgia }); }
       }
       if (T.type === 'support') {
         alive(party()).forEach(p => { heal(u, p, p.maxHp * (T.heal || 1), ev); if (T.cure && p.ail) cure(p, Object.keys(D.ailments), ev, u); });
@@ -1685,6 +1881,7 @@ window.FemcBattleEngine = (() => {
         if (u.orgia > 0 && --u.orgia === 0) ev.push({ t: 'orgiaEnd', tgt: u.id });
         if (u.spRegen && u.sp < u.maxSp) { u.sp = Math.min(u.maxSp, u.sp + u.spRegen); }
         if (u.hpRegen && u.hp < u.maxHp) heal(null, u, u.maxHp * u.hpRegen, ev);
+        if (u.moonHeal && S.ctx.moon && u.hp < u.maxHp) heal(null, u, u.maxHp * u.moonHeal, ev); // Daeboreum Moon
         if (u.partyRegen) alive(party()).forEach(p => { if (p !== u && p.hp < p.maxHp) heal(u, p, p.maxHp * u.partyRegen, ev); }); // Rest Stop, Warm Tone
       }
       let canAct = true;
@@ -1769,7 +1966,7 @@ window.FemcBattleEngine = (() => {
           // Crown: Undisputed (Akihiko's free jab after each One More he earns; a follow-up, so it never earns one itself).
           const jt = u.crown === 'undisputed' && !helpless(u) && U(u.lastTgt);
           if (jt && !jt.dead) {
-            S.follow.push({ unit: u.id, tgt: jt.id, o: { crown: true, label: 'UNDISPUTED', name: 'Undisputed', id: 'undisputed', skill: { el: 'strike', power: Math.max(20, Math.round((u.atk || D.attack.power) * 0.7)), crit: 6 } } });
+            S.follow.push({ unit: u.id, tgt: jt.id, o: { crown: true, label: 'UNDISPUTED', name: 'Undisputed', id: 'undisputed', down: u.crown2 === 'champion' ? 0.5 : 0, skill: { el: 'strike', power: Math.max(20, Math.round((u.atk || D.attack.power) * 0.7)), crit: 6 } } });
             runFollows(ev); flushDeaths(ev);
             if (check()) return;
           }
@@ -1957,6 +2154,8 @@ window.FemcBattleEngine = (() => {
         const sh = alive(party()).reduce((m, u) => (u !== L ? Math.max(m, u.sunShield || 0) : m), 0);
         if (sh) { L.shield = Math.max(L.shield || 0, Math.round(L.maxHp * sh)); ev.push({ t: 'status', tgt: L.id, label: 'SHIELD', cls: 'buff', left: L.shield }); }
       }
+      // Petal Shield (the Stay branch): every one of the party starts behind a 10% shield.
+      if (L && L.petal) alive(party()).forEach(u => { u.shield = Math.max(u.shield || 0, Math.round(u.maxHp * 0.1)); ev.push({ t: 'status', tgt: u.id, label: 'PETAL SHIELD', cls: 'buff', left: u.shield, late: 'petal' }); });
       if (crownBy('appointed')) {
         const f = alive(foes()).filter(x => !x.unreachable && !x.scenery).sort((a, b) => (b.boss - a.boss) || (b.maxHp * Math.max(b.st, b.ma)) - (a.maxHp * Math.max(a.st, a.ma)))[0];
         if (f) { f.appointed = true; ev.push({ t: 'status', tgt: f.id, label: 'APPOINTED', cls: 'debuff', crown: 'appointed' }); }
@@ -2371,5 +2570,6 @@ window.FemcBattleEngine = (() => {
 
   return { create, rng, PHYS, MAGIC, treeFx, mastered, formUnlocked, formsList, personaId, evolutionsDue, lvlOf, gearOf, skillsFor, kitFor, statsFor, buildUnit, simParty, enemyBase, rewards,
     rootOf, tierOf, learnInto, treeNodes, passives, equipSkill, unequipSkill, seenSkill, treeNode, treeOwned, treeState, treeWhy, treeBuy, treeSpent, treeRespec, fragSet,
-    ptreeOf, ptreeNodes, ptreeState, ptreeWhy, ptreeGate, ptreeBuy, ptreeRespec, ptreeFx, ptreeEarned, ptreeSpent, ptreePts, linkRank, forgetSkill, unforget };
+    ptreeOf, ptreeNodes, ptreeState, ptreeWhy, ptreeGate, ptreeBuy, ptreeRespec, ptreeFx, ptreeEarned, ptreeSpent, ptreePts, linkRank, forgetSkill, unforget,
+    climbTop, syncLate, eclipseOpen, segOpen, epiDone, rayFull, radOf, pradOf, buildFull, crown2Open, lateHint, SEES };
 })();

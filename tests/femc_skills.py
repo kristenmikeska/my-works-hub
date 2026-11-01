@@ -1,6 +1,6 @@
 """The skill system, played for real in headless Chrome (femc-game.html, isolated profile, localhost; no player saves).
 
-Run: python3 tests/femc_skills.py [--only menu,party,library,sun,fight,passives,rush,flash,migrate,practice,shots] [--screenshots DIR]
+Run: python3 tests/femc_skills.py [--only menu,party,late,library,sun,fight,passives,rush,flash,migrate,practice,shots] [--screenshots DIR]
 
 Party section (since 2026-10-31, the orbits): node counts and ring gates for all twelve, points, the menu's orbit (click, keys, build
 chips, ring labels, MAX, respec), an old save's migration, every Solar-ray hook and crown in fights, the party caps, Solar against a
@@ -561,6 +561,300 @@ try:
         print('All orbits draw at 1280x850 and 375x812 OK', flush=True)
 
     # ── Solar's skill list: every learned skill, free swapping outside battle, the swap in a real fight ──
+    # ── The late-game branches (2026-10-31, FEMC-LATE-BRANCHES-DESIGN.md): the Eclipse ring, Radiance, the epilogue branches,
+    #    second crowns and duets: data, every gate, caps, save migration, each new active and hook in a fight, the late-game
+    #    balance, the menu and practice screens, and screenshots at 1440x810 and 390x844 ──
+    if want('late'):
+        setup(p, lvl=99, pts=0)
+        # 1) Data: 25 Eclipse nodes for 135 points, six Radiance nodes, four five-node epilogue branches at 2 points; every member
+        #    has three Radiance nodes, a second crown and one duet; six duets cover all twelve; every late node names its art.
+        L = p.eval(r"""(()=>{const E=FemcBattleEngine,D=FEMC_BATTLE_DATA,out={};const ns=E.treeNodes(),g=id=>(D.tree.find(x=>x.id===id)||{}).nodes||[];
+          out.total=ns.length;out.ecl=g('eclipse').length;out.eclPts=g('eclipse').reduce((s,n)=>s+n.cost,0);out.rad=g('radiance').length;
+          out.epi=D.tree.filter(x=>x.epi).map(x=>x.id+':'+x.nodes.length+':'+x.nodes.reduce((s,n)=>s+n.cost,0)).join(' ');
+          out.segs=D.ECLIPSE_ORDER.map(r=>ns.filter(n=>n.seg===r).map(n=>n.cost).join('/')).join(' ');
+          out.uniq=new Set(ns.map(n=>n.id)).size===ns.length;
+          out.art=ns.filter(n=>(n.seg||n.rad||n.id==='ec-total'||(D.tree.find(x=>x.id===n.branch)||{}).epi)&&!n.art).map(n=>n.id);
+          out.party={};Object.keys(D.ptrees).forEach(m=>{const l=E.ptreeNodes(m);out.party[m]=[l.filter(n=>n.rad).length,l.filter(n=>n.crown2).length,l.filter(n=>n.duet).length,l.filter(n=>(n.rad||n.crown2||n.duet)&&!n.art).length].join('/')});
+          out.duets=D.duets.flatMap(d=>d.pair).sort().join(',')===Object.keys(D.ptrees).sort().join(',');
+          out.learn=['grandmaster','red_crane','motion_carried','landslide','spring_again','ice_and_wind'].every(id=>D.skills[id]&&D.skills[id].name&&D.skills[id].desc&&D.skills[id].cost);
+          return out})()""")
+        ok(L['ecl'] == 25 and L['eclPts'] == 135 and L['rad'] == 6 and L['total'] == 148 and L['uniq'], ('eclipse data', L))
+        ok(L['segs'] == ' '.join(['3/4/5/8'] * 6), ('segments 3/4/5 + Solstice 8', L['segs']))
+        ok(L['epi'] == 'epi-runners:5:10 epi-strangers:5:10 epi-hoax:5:10 epi-stay:5:10', ('epilogue branches', L['epi']))
+        ok(not L['art'] and all(v == '3/1/1/0' for v in L['party'].values()) and L['duets'] and L['learn'], ('late nodes, art names, actives', L))
+        results['late data'] = {k: L[k] for k in ('total', 'ecl', 'eclPts', 'rad', 'epi')}
+        # 2) Gates, in the engine: the Eclipse ring by the New Game+ climb (sealed before, two segments a block, the crown at the
+        #    Zenith), New Game+ keeping it open, the epilogue branches by world, duets by both links at MAX, second crowns by
+        #    New Game+ and 300F, Radiance only on a full ray.
+        G = p.eval(r"""(()=>{const E=FemcBattleEngine,D=FEMC_BATTLE_DATA,BS=FemcBattleSave,out={};
+          const s=BS.normalize(BS.fresh());s.lvl=99;s.pts=500;s.ngp=1;
+          s.nodes=E.treeNodes().filter(n=>!n.rad&&!n.seg&&n.id!=='ec-total'&&!(D.tree.find(g=>g.id===n.branch)||{}).epi&&!n.choice).map(n=>n.id).concat(['st4a','tr3a','jade4a','bell4a','veil4a','star4a']);
+          const st=id=>E.treeState(s,id),firsts=()=>D.ECLIPSE_ORDER.map(r=>st(E.treeNodes().find(n=>n.seg===r).id)).join(',');
+          out.before=[firsts(),st('ec-total'),E.treeWhy(s,'ec-hl1'),E.treeWhy(s,'ec-total')];
+          s.tt.climb=['raqia-arrive','raqia-summit'];out.raqia=firsts();
+          s.tt.climb.push('zebul-summit');out.zebul=firsts();
+          s.tt.climb.push('araboth-summit');out.araboth=[firsts(),st('ec-total')];
+          s.tt.supers=['super_tiger'];out.zenith=st('ec-total');
+          // New Game+ again: tt resets, the ring stays open (late.top / late.zenith).
+          const c=BS.carry(s);out.carry=[c.tt.climb.length,c.ngp,E.eclipseOpen(c),E.treeState(c,'ec-total'),c.late.top];
+          // An owned Eclipse node before its segment opens (never happens, but a hand-edited save): it stays owned.
+          // Radiance: sealed on a ray that isn't full, open once it is (and the open segment owned too).
+          const t=BS.normalize(BS.fresh());t.lvl=99;t.pts=200;out.radEmpty=E.treeState(t,'rad-striker');
+          out.radStriker=[st('rad-striker'),E.treeWhy(s,'rad-striker')];
+          s.nodes.push(...E.treeNodes().filter(n=>n.seg==='striker').map(n=>n.id));out.radStriker2=st('rad-striker');
+          // Epilogue branches: sealed until that world is finished.
+          out.epi0=[st('ep-ru1'),E.treeWhy(s,'ep-ru1'),st('ep-hx1')];
+          s.epis=['runners'];out.epi1=[st('ep-ru1'),st('ep-ru2'),st('ep-hx1')];
+          const u=BS.normalize(BS.fresh());u.lvl=99;u.epis=['runners'];out.epiReq=[E.treeState(u,'ep-ru1'),E.treeWhy(u,'ep-ru1')];
+          // Duets: both links at MAX; 5 points from either; shared once one buys it.
+          const q=BS.normalize(BS.fresh());q.lvl=99;q.ngp=0;['akihiko','shinjiro'].forEach(m=>{q.mem[m]={lvl:99,exp:0}});
+          q.ranks={akihiko:10,shinjiro:6};out.duet0=[E.ptreeState(q,'akihiko','duet-old-friends'),E.ptreeWhy(q,'akihiko','duet-old-friends')];
+          q.ranks.shinjiro=10;out.duet1=E.ptreeState(q,'akihiko','duet-old-friends');
+          const p0=E.ptreePts(q,'akihiko'),p1=E.ptreePts(q,'shinjiro');out.duetBuy=E.ptreeBuy(q,'akihiko','duet-old-friends').ok;
+          out.duet2=[E.ptreeState(q,'shinjiro','duet-old-friends'),p0-E.ptreePts(q,'akihiko'),p1-E.ptreePts(q,'shinjiro'),E.ptreeFx(q,'shinjiro').duets.join()];
+          // Second crowns: New Game+ only, once the climb passes 300F, after the crown.
+          const crown=E.ptreeNodes('akihiko').find(n=>n.crown).id;q.ptree.akihiko.push(crown);
+          out.c2=[E.ptreeState(q,'akihiko','ak-crown2'),E.ptreeWhy(q,'akihiko','ak-crown2')];q.ngp=1;q.tt.climb=['raqia-summit'];
+          out.c2b=E.ptreeState(q,'akihiko','ak-crown2');q.tt.climb.push('zebul-arrive');out.c2c=E.ptreeState(q,'akihiko','ak-crown2');
+          q.ptree.akihiko=q.ptree.akihiko.filter(x=>x!==crown);out.c2d=E.ptreeState(q,'akihiko','ak-crown2');
+          return out})()""")
+        ok(G['before'][0] == ','.join(['sealed'] * 6) and G['before'][1] == 'sealed' and '300F' in G['before'][2] and 'top' in G['before'][3], ('eclipse sealed before the climb', G['before']))
+        ok(G['raqia'] == 'avail,avail,sealed,sealed,sealed,sealed' and G['zebul'] == 'avail,avail,avail,avail,sealed,sealed', ('two segments a block', G['raqia'], G['zebul']))
+        ok(G['araboth'] == [','.join(['avail'] * 6), 'sealed'] and G['zenith'] == 'lock', ('third block, then the crown (needs one Solstice)', G['araboth'], G['zenith']))
+        ok(G['carry'][0] == 0 and G['carry'][1] == 2 and G['carry'][2] == 6 and G['carry'][3] == 'lock' and G['carry'][4] == 399, ('New Game+ keeps the ring open', G['carry']))
+        ok(G['radEmpty'] == 'sealed' and G['radStriker'][0] == 'sealed' and 'Eclipse' in G['radStriker'][1] and G['radStriker2'] == 'avail', ('Radiance on a full ray (and its open segment)', G))
+        ok(G['epi0'][0] == 'sealed' and 'Runners epilogue' in G['epi0'][1] and G['epi1'] == ['avail', 'lock', 'sealed'] and G['epiReq'][0] == 'lock', ('epilogue branches by world', G['epi0'], G['epi1'], G['epiReq']))
+        ok(G['duet0'][0] == 'rank' and 'both links' in G['duet0'][1] and G['duet1'] == 'avail' and G['duetBuy'], ('duet needs both at MAX', G['duet0'], G['duet1']))
+        ok(G['duet2'][0] == 'own' and G['duet2'][1] == 5 and G['duet2'][2] == 0 and G['duet2'][3] == 'oldFriends', ('duet shared, paid by one', G['duet2']))
+        ok(G['c2'][0] == 'sealed' and 'New Game+' in G['c2'][1] and G['c2b'] == 'sealed' and G['c2c'] == 'avail' and G['c2d'] == 'lock', ('second crown: NG+, past 300F, after the crown', G))
+        results['late gates'] = 'eclipse 0/2/4/6 + crown, NG+ keeps it, epilogues, duets, second crowns, radiance'
+        print('Late-game gates OK', flush=True)
+
+        # 3) Radiance: ten buys at 2 points, the caps still hold, a respec refunds it; the party's by build, under the party caps.
+        RA = p.eval(r"""(()=>{const E=FemcBattleEngine,D=FEMC_BATTLE_DATA,BS=FemcBattleSave,out={};
+          const s=BS.normalize(BS.fresh());s.lvl=99;s.pts=100;s.nodes=D.tree.find(g=>g.id==='striker').nodes.filter(n=>n.id!=='st4b').map(n=>n.id).concat(['sun1']);
+          let n=0;while(E.treeBuy(s,'rad-striker').ok)n++;out.buys=[n,s.rad.striker,s.pts,E.treeState(s,'rad-striker'),E.treeWhy(s,'rad-striker')];
+          out.crit=E.treeFx(s.nodes,s.rad).unit.critUp;s.rad.striker=50;out.capRad=E.treeFx(s.nodes,s.rad).unit.critUp;
+          s.rad.striker=10;s.nodes.push('st4b','hy-st-tr1');const big=Object.assign({},s,{rad:{striker:10}});
+          const all=E.treeNodes().filter(x=>!x.rad).map(x=>x.id);const fx=E.treeFx(all,{striker:10,trickster:10,mage:10,healer:10,guard:10,support:10});
+          out.caps=Object.entries({critUp:30,counter:0.5,ailUp:0.3,magicUp:0.4,thStart:30,physUp:0.4,followUp:0.4,corona:0.15}).filter(([k,c])=>fx.unit[k]>c+1e-9).map(([k])=>k);
+          const spent=E.treeSpent(s),pts0=s.pts;E.treeRespec(s);out.respec=[Object.keys(s.rad).length,s.pts-pts0===spent,spent>=20];
+          // Party: a full build opens its Radiance; ten buys; party caps hold.
+          const q=BS.normalize(BS.fresh());q.lvl=99;q.mem.akihiko={lvl:99,exp:0};q.ranks={akihiko:10};
+          const ns=E.ptreeNodes('akihiko');q.ptree.akihiko=ns.filter(x=>x.ray==='champion'&&!x.rad).map(x=>x.id);
+          out.p0=E.ptreeState(q,'akihiko','akihiko-rad-combo');out.p1=E.ptreeState(q,'akihiko','akihiko-rad-champion');
+          q.ptree.akihiko=ns.filter(x=>!x.rad&&!x.duet&&!x.crown2).map(x=>x.id);q.prad={akihiko:{champion:10,combo:10,thunder:10}};
+          const pf=E.ptreeFx(q,'akihiko');out.pcap=[pf.crit<=15,pf.followUp<=0.3,(pf.boost.elec||1)<=1.4];
+          out.pspent=E.ptreeSpent(q,'akihiko')-ns.filter(x=>q.ptree.akihiko.includes(x.id)).reduce((a,x)=>a+x.cost,0);
+          E.ptreeRespec(q,'akihiko');out.prespec=[!q.prad.akihiko,(q.ptree.akihiko||[]).length];
+          return out})()""")
+        ok(RA['buys'][:4] == [10, 10, 80, 'own'] and '10 of 10' in RA['buys'][4], ('ten Radiance buys at 2 points', RA['buys']))
+        ok(RA['crit'] == 10 and RA['capRad'] == 10 and not RA['caps'], ('Radiance adds +1 crit a buy, stops at 10, caps hold', RA))
+        ok(RA['respec'] == [0, True, True] and RA['p0'] == 'sealed' and RA['p1'] == 'avail' and all(RA['pcap']) and RA['pspent'] == 60 and RA['prespec'] == [True, 0], ('Radiance respec and party', RA))
+        results['radiance'] = {'buys': RA['buys'][:3], 'crit after 10': RA['crit']}
+
+        # 4) Save migration: a save from before this batch (no rad / prad / epis / late) loads unchanged: same nodes, points,
+        #    orbits; the new fields come in empty; junk in them is cleaned.
+        MG = p.eval(r"""(()=>{const BS=FemcBattleSave,E=FemcBattleEngine;
+          const old={v:4,treeV:4,tv:2,lvl:62,pts:17,nodes:['sun1','st1','st2','bell1'],ptree:{akihiko:['ak1','ak7']},ranks:{akihiko:6},mem:{akihiko:{lvl:60,exp:0}},party:['akihiko'],gear:{owned:{},eq:{}},tt:{guardians:[],climb:[]}};
+          const s=BS.fromRaw(old);const junk=BS.fromRaw(Object.assign({},old,{rad:{striker:99,nope:3},prad:{akihiko:{champion:4,zzz:2},nobody:{a:1}},epis:['runners','x'],late:{top:'abc'}}));
+          return {nodes:s.nodes.join(),pts:s.pts,ptree:s.ptree.akihiko.join(),rad:JSON.stringify(s.rad),prad:JSON.stringify(s.prad),epis:s.epis.length,late:JSON.stringify(s.late),
+            spent:E.treeSpent(s),junk:[JSON.stringify(junk.rad),JSON.stringify(junk.prad),junk.epis.join(),junk.late.top]}})()""")
+        ok(MG['nodes'] == 'sun1,st1,st2,bell1' and MG['pts'] == 17 and MG['ptree'] == 'ak1,ak7' and MG['rad'] == '{}' and MG['prad'] == '{}' and MG['epis'] == 0 and MG['late'] == '{"top":0,"zenith":false}', ('old save loads unchanged', MG))
+        ok(MG['junk'] == ['{"striker":10}', '{"akihiko":{"champion":4}}', 'runners', 0], ('junk cleaned', MG['junk']))
+        results['late migration'] = 'old saves load unchanged'
+
+        # 5) Every new active in a fight, and each late hook (engine fights, as in the party section).
+        F = p.eval(r"""(()=>{const E=FemcBattleEngine,D=FEMC_BATTLE_DATA,BS=FemcBattleSave,out={};
+          const save=BS.normalize(BS.fresh());save.lvl=80;Object.keys(D.ptrees).forEach(m=>{save.mem[m]={lvl:80,exp:0}});
+          const fight=(ids,foes,seed,f,o={})=>{const units=ids.map(id=>E.buildUnit(id,save));const b=E.create(Object.assign({party:units,enemies:foes,rand:E.rng(seed),known:{}},o));if(f)f(b);return b};
+          const has=(ev,l)=>ev.some(e=>e.t==='status'&&e.label===l);
+          const use=(b,u,sk,t)=>{u.skills.includes(sk)||u.skills.push(sk);u.sp=u.maxSp=999;b.S.cur=u;return b.act({type:'skill',skill:sk,target:t})};
+          // Grandmaster never misses, even against a dodging Shadow.
+          {let hit=0;for(let s=1;s<=20;s++){const b=fight(['solar'],['pesce'],s,b=>{const f=b.foes()[0];f.ag=9999;f.maxHp=f.hp=1e7;});const ev=use(b,b.party()[0],'grandmaster',b.foes()[0].id);if(ev.some(e=>e.t==='hit'&&e.amount>0))hit++;}out.grandmaster=hit;}
+          // Red Crane: the Shadow loses its turn (Bind).
+          {let n=0;for(let s=1;s<=20;s++){const b=fight(['solar'],['pesce'],s);const ev=use(b,b.party()[0],'red_crane',b.foes()[0].id);if(ev.some(e=>e.t==='ail'&&e.id==='bind'))n++;}out.crane=n;}
+          // Motion Carried: party attack and defense up.
+          {const b=fight(['solar','akihiko'],['pesce'],3);use(b,b.party()[0],'motion_carried',b.party()[0].id);out.motion=b.party().map(u=>u.buffs.atk+'/'+u.buffs.def).join(' ');}
+          // Landslide: harder with more foes.
+          {const per=k=>{let t=0;for(let s=1;s<=12;s++){const b=fight(['solar'],Array(k).fill('pesce'),s,b=>{b.foes().forEach(f=>{f.maxHp=f.hp=1e7;f.aff={}})});const ev=use(b,b.party()[0],'landslide',b.foes()[0].id);t+=ev.filter(e=>e.t==='hit'&&e.amount>0).reduce((a,e)=>a+e.amount,0)/k;}return t};out.landslide=+(per(3)/per(1)).toFixed(2);}
+          // Spring Again: revives with all HP, once a battle.
+          {const b=fight(['solar','akihiko'],['pesce'],2);const a=b.party()[1];a.hp=0;a.dead=true;const L=b.party()[0];use(b,L,'spring_again',a.id);out.spring=[a.dead,a.hp===a.maxHp];a.hp=0;a.dead=true;b.S.cur=L;out.springAgain=b.act({type:'skill',skill:'spring_again',target:a.id}).some(e=>e.t==='msg'&&/once/.test(e.text));}
+          // Ice and Wind: wind then ice on every foe; only with both in the party.
+          {save.ptree.yukari=['duet-ice-wind'];const b=fight(['solar','yukari','mitsuru'],['pesce','pesce'],4,b=>{b.foes().forEach(f=>{f.maxHp=f.hp=1e7;f.aff={}})});const y=b.party()[1];
+           out.iwKnown=y.skills.includes('ice_and_wind')&&b.party()[2].skills.includes('ice_and_wind');const ev=use(b,y,'ice_and_wind',b.foes()[0].id);
+           out.iw=[...new Set(ev.filter(e=>e.t==='hit').map(e=>e.el))].sort().join()+':'+ev.filter(e=>e.t==='hit').length;
+           const c=fight(['solar','yukari','akihiko'],['pesce'],4);out.iwAlone=c.party()[1].skills.includes('ice_and_wind');save.ptree={};}
+          // Total Eclipse: her first damaging skill lands as a weakness on a foe weak to something else, once.
+          {save.nodes=['ec-total'];const b=fight(['solar'],['pesce'],5,b=>{const f=b.foes()[0];f.maxHp=f.hp=1e7;f.aff={fire:'weak',ice:'weak',pierce:'null'};f.ag=-999;});const L=b.party()[0];L.sp=999;
+           L.skills.push('grandmaster');const ev=b.act((b.S.cur=L,{type:'skill',skill:'grandmaster',target:b.foes()[0].id}));
+           out.eclipse=[has(ev,'TOTAL ECLIPSE'),ev.some(e=>e.t==='hit'&&e.aff==='weak')];b.foes()[0].down=false;b.S.cur=L;const ev2=b.act({type:'skill',skill:'grandmaster',target:b.foes()[0].id});out.eclipse2=ev2.some(e=>e.t==='hit'&&e.aff==='weak');save.nodes=[];}
+          // Solar's branch passives: Respawn, Petal Shield, Point of Order, Clutch Play, Low Tide.
+          {save.nodes=['ep-ru2','ep-sy2','ep-hx1','ep-ru1','ep-st2'];
+           const b=fight(['solar','akihiko'],['pesce@60'],2,b=>{const f=b.foes()[0];f.st=f.ma=9999;f.ag=999;});const ev=b.start();out.petal=has(ev,'PETAL SHIELD')&&b.party().every(u=>u.shield>0);
+           const L=b.party()[0];L.shield=0;L.hp=5;const f=b.foes()[0];b.S.cur=f;const e2=b.act({type:'attack',target:L.id});out.respawn=[has(e2,'RESPAWN'),!L.dead,L.hp>1];
+           const c=fight(['solar'],['pesce'],3,b=>{const f=b.foes()[0];f.maxHp=f.hp=1e7;f.aff={pierce:'weak'};f.buffs.atk=2;f.buffT.atk=3;f.ag=-999});const L2=c.party()[0];c.S.cur=L2;const e3=c.act({type:'attack',target:c.foes()[0].id});out.order=[has(e3,'POINT OF ORDER'),c.foes()[0].buffs.atk];
+           const dmg=alone=>{let t=0;for(let s=1;s<=12;s++){const d=fight(['solar','akihiko'],['pesce'],s,b=>{const f=b.foes()[0];f.maxHp=f.hp=1e7;f.aff={};f.ag=-999;if(alone){b.party()[1].dead=true;b.party()[1].hp=0}});const u=d.party()[0];d.S.cur=u;t+=d.act({type:'attack',target:d.foes()[0].id}).filter(e=>e.t==='hit'&&e.src===u.id).reduce((a,e)=>a+e.amount,0);}return t};out.clutch=+(dmg(true)/dmg(false)).toFixed(2);
+           const g=on=>{let t=0;for(let s=1;s<=12;s++){if(!on)save.nodes=[];const d=fight(['solar'],['pesce@40'],s);const u=d.party()[0];u.maxHp=u.hp=1e6;u.guard=true;u.evade=0;const f=d.foes()[0];f.ag=999;d.S.cur=f;t+=d.act({type:'attack',target:u.id}).filter(e=>e.t==='hit'&&e.tgt===u.id).reduce((a,e)=>a+e.amount,0);save.nodes=['ep-st2'];}return t};out.lowTide=+(g(true)/g(false)).toFixed(2);save.nodes=[];}
+          // Second crowns and duets in fights.
+          {save.ptree={akihiko:['ak-crown','ak-crown2']};save.ngp=1;const b=fight(['solar','akihiko'],['pesce','pesce'],6,b=>{b.foes().forEach(f=>{f.maxHp=f.hp=1e7;f.aff={elec:'weak'};f.ag=-999})});const a=b.party()[1];out.champion=a.crown2;}
+          {save.ptree={junpei:['duet-pinch']};const b=fight(['solar','junpei','koromaru'],['pesce@60'],2,b=>{b.foes()[0].st=9999;b.foes()[0].ag=999;});const j=b.party()[1];j.hp=1;j.endure=false;j.shield=0;j.evade=0;b.party().forEach(u=>u.guardianBell=false);const f=b.foes()[0];b.S.cur=f;
+           let ev=[];for(let i=0;i<8&&!j.dead;i++){b.S.cur=f;ev=ev.concat(b.act({type:'attack',target:j.id}));}out.pinch=[j.dead,has(ev,'PINCH HITTERS'),b.party()[2].buffs.atk];}
+          {save.ptree={haechan:['duet-two-universes']};const b=fight(['solar','haechan','jungwon'],['pesce'],7,b=>{const f=b.foes()[0];f.maxHp=f.hp=1e7;f.ag=-999;});const L=b.party()[0];L.critBonus=500;let got=false;for(let i=0;i<6&&!got;i++){b.foes()[0].down=false;b.S.cur=L;got=has(b.act({type:'attack',target:b.foes()[0].id}),'TWO UNIVERSES');}out.two=[got,b.foes()[0].buffs.def];}
+          {save.ptree={shinjiro:['sh-crown','sh-crown2']};let n=0;const b=fight(['solar','shinjiro'],['pesce@60'],3,b=>{b.foes()[0].ag=999;});const sh=b.party()[1];sh.evade=0;sh.endure=false;
+           for(let k=0;k<2;k++){sh.hp=Math.round(sh.maxHp*0.3);sh.sureHit=false;const f=b.foes()[0];f.st=4;b.S.cur=f;if(has(b.act({type:'attack',target:sh.id}),'LAST STAND'))n++;sh.sureHit=false;sh.hp=sh.maxHp;}out.unbroken=n;save.ptree={};}
+          save.ngp=0;
+          return out})()""")
+        ok(F['grandmaster'] == 20, ('Grandmaster never misses', F['grandmaster']))
+        ok(F['crane'] >= 17 and F['motion'] == '1/1 1/1' and F['landslide'] >= 1.25, ('Red Crane, Motion Carried, Landslide', F))
+        ok(F['spring'] == [False, True] and F['springAgain'], ('Spring Again once', F))
+        ok(F['iwKnown'] and F['iw'] == 'ice,wind:4' and not F['iwAlone'], ('Ice and Wind', F))
+        ok(F['eclipse'] == [True, True] and not F['eclipse2'], ('Total Eclipse once', F))
+        ok(F['petal'] and F['respawn'] == [True, True, True] and F['order'] == [True, 0] and F['clutch'] >= 1.15 and F['lowTide'] <= 0.8, ('branch passives', F))
+        ok(F['champion'] == 'champion' and F['pinch'][1] and F['pinch'][2] == 2 and F['two'][0] and F['two'][1] < 0 and F['unbroken'] == 2, ('second crowns and duets', F))
+        results['late actives and hooks'] = {k: F[k] for k in ('grandmaster', 'crane', 'landslide', 'clutch', 'lowTide', 'iw')}
+        print('Late-game actives and hooks in fights OK', flush=True)
+
+        # 6) Every new active in a real battle frame: a story fight driven through the battle menus (Solar's five, then the duet).
+        setup(p, lvl=90, pts=0)
+        p.eval("""(()=>{const b=FemcGame.S.battleSave;b.nodes=['sun1','bell1','st1','tr1','jade1','star1','veil1','ep-ru1','ep-ru3','ep-ru5','ep-st1','ep-st3','ep-hx1','ep-hx3','ep-hx5','ep-sy1','ep-sy2','ep-sy4'];
+          b.epis=['runners','strangers','hoax','stay'];b.equip={solar:['grandmaster','red_crane','motion_carried','landslide','spring_again','dia']};
+          b.party=['yukari','mitsuru','akihiko'];b.ptree={yukari:['duet-ice-wind']};b.ranks={yukari:10,mitsuru:10};
+          FemcGame.progress('yukari').rank=10;FemcGame.progress('mitsuru').rank=10;
+          FemcGame.makeHandoff('scripted',{script:'skills-test',forced:true,party:['solar','yukari','mitsuru','akihiko']});FemcGame.save();})()""")
+        k5 = kit(p); ok(all(x in k5 for x in ['grandmaster', 'red_crane', 'motion_carried', 'landslide', 'spring_again']), k5)
+        p.battle()
+        p.eval("window.__hoStay=true")
+        p.wait('!!FemcBattle.B && FemcBattle.B.party().length===4', 60)
+        p.eval("""(()=>{const B=FemcBattle.B;B.foes().forEach(f=>{f.maxHp=f.hp=999999;f.aff={};f.st=f.ma=1;});B.party().forEach(u=>{u.maxHp=u.hp=99999;u.sp=u.maxSp=999});
+          window.log=[];const act=B.act;B.act=a=>{const mid=B.S.cur.mid,ev=act(a);log.push({mid,a,ev});return ev};
+          window.plan=[{mid:'solar',skill:'grandmaster',target:'e0'},{mid:'yukari',skill:'ice_and_wind',target:'e0'},{mid:'solar',skill:'red_crane',target:'e0'},{mid:'solar',skill:'motion_carried',target:'all'},
+            {mid:'solar',skill:'landslide',target:'e0'},{mid:'solar',skill:'spring_again',target:'p3',kill:'p3'}];window.done=[];return true})()""")
+        STEP2 = r"""(()=>{const F=FemcBattle,B=F.B,c=F.ctl;if(!B||B.outcome())return 'over';
+          if(c?.kind==='allout'){c.pickValue('0');return 'allout'}
+          if(c?.kind!=='menu')return null;const u=B.S.cur,v=c.items.map(i=>i.v);u.sp=u.maxSp;
+          const st=plan.find(x=>x.mid===u.mid);
+          if(!plan.length)return 'plan-done';
+          if(!st){ if(v.includes('guard'))c.pickValue('guard'); else c.back&&c.back(); return 'guard'}
+          if(v.includes('skill')&&v.includes('guard')){if(st.kill){const t=B.U(st.kill);t.hp=0;t.dead=true;}c.pickValue('skill');return 'root'}
+          if(v.includes(st.skill)){ if(FEMC_BATTLE_DATA.skills[st.skill].target==='self'){done.push(st.skill);plan.splice(plan.indexOf(st),1)} c.pickValue(st.skill);return 'skill'}
+          const pickT=v.includes(st.target)?st.target:v.includes('all')?'all':v.find(x=>x!=='back');
+          if(pickT){c.pickValue(pickT);done.push(st.skill);plan.splice(plan.indexOf(st),1);return 'target'}
+          return 'wait'})()"""
+        t0 = time.time(); r = None
+        while time.time() - t0 < 300:
+            r = p.eval(STEP2)
+            if r in ('over', 'plan-done'): break
+            time.sleep(0.02)
+        ok(r == 'plan-done', (r, p.eval('done'), p.eval('plan')))
+        p.wait("['grandmaster','ice_and_wind','red_crane','motion_carried','landslide','spring_again'].every(s=>log.some(x=>x.a.skill===s))", 60)
+        used = p.eval("""(()=>{const out={};log.forEach(x=>{if(!x.a.skill)return;const ev=x.ev;out[x.a.skill]=x.a.skill==='spring_again'?ev.some(e=>e.t==='revive'):x.a.skill==='red_crane'?ev.some(e=>e.t==='ail'||e.t==='miss'):x.a.skill==='motion_carried'?ev.some(e=>e.t==='buff'):ev.some(e=>e.t==='hit'&&e.amount>0)});
+          out.iwEls=[...new Set((log.find(x=>x.a.skill==='ice_and_wind')||{ev:[]}).ev.filter(e=>e.t==='hit').map(e=>e.el))].sort().join();out.marks=Object.keys(FemcBattle.marks).filter(k=>/use|skill/.test(k)).length;return out})()""")
+        ok(all(used.get(w) is True for w in ['grandmaster', 'red_crane', 'motion_carried', 'landslide', 'spring_again', 'ice_and_wind']) and used['iwEls'] == 'ice,wind', ('every new active in a real battle frame', used))
+        p.top()
+        errs = p.console(); ok(not errs, errs)
+        results['late actives in a real fight'] = sorted(k for k in used if used[k] is True)
+        print('Every new active used in a real battle frame OK', flush=True)
+
+        # 7) Balance, late game: Solar with every node of the sun (Eclipse ring, epilogue branches, Total Eclipse) and Radiance x10
+        #    on every ray, against each member with every orbit node, the second crown, the duet and Radiance x10 on every build
+        #    (more than any save can hold), both at Lv 99, Rush, two Shadows with a weakness she can reach. Solar stays ahead.
+        BAL2 = p.eval(r"""(()=>{const E=FemcBattleEngine,D=FEMC_BATTLE_DATA,mids=Object.keys(D.ptrees),out={};
+          const base=who=>{const s={lvl:99,ngp:1,form:'haenim-unveiled',forms:['haenim-sunna','haenim-mazu','haenim-nike','haenim-unveiled'],nodes:E.treeNodes().filter(n=>!n.rad).map(n=>n.id),
+            rad:{striker:10,trickster:10,mage:10,healer:10,guard:10,support:10},epis:['runners','strangers','hoax','stay'],late:{top:400,zenith:true},mem:{},ptree:{},prad:{},ranks:{},bonds:{},forgot:{},order:{},ops:{cleared:['priestess']},evo:{},gear:{eq:{},owned:{}},th:{},tt:{climb:[],supers:['super_tiger']}};
+            mids.forEach(m=>{s.mem[m]={lvl:99};s.ranks[m]=10;s.bonds[m]=15;});
+            s.ptree[who]=E.ptreeNodes(who).filter(n=>!n.rad).map(n=>n.id);s.prad[who]=Object.fromEntries(D.ptrees[who].builds.map(b=>[b.id,10]));return s};
+          const duel=(s,who)=>{const fx=E.treeFx(s.nodes,s.rad),tot={solar:0,[who]:0};const du=D.duets.find(d=>d.pair.includes(who)),other=du.pair.find(x=>x!==who);
+            for(let seed=1;seed<=6;seed++){const b=E.create({party:['solar',who].map(id=>E.buildUnit(id,s,{fx})),enemies:['pesce@60','pesce@60'],rand:E.rng(seed*7+1),known:{}});
+              b.foes().forEach(f=>{f.maxHp=f.hp=25000;f.aff={light:'weak',pierce:'resist'};f.st*=0.4;f.ma*=0.4});let ev=b.start();
+              for(let i=0;i<300&&!b.outcome();i++){const nt=b.nextTurn();ev=ev.concat(nt.events);let u=b.S.cur;if(!nt.canAct)continue;if(u.side==='enemy'){ev=ev.concat(b.enemyAct());continue}
+                for(let k=0;k<6&&!b.outcome();k++){let a=b.autoAction(u,'rush');if(a.type==='skill'&&D.skills[a.skill].type==='insta')a={type:'attack',target:b.foes().find(f=>!f.dead).id};
+                  ev=ev.concat(b.act(a));if(b.S.alloutReady){ev=ev.concat(b.allOut());break}if(b.S.shifted){b.S.shifted=false;u=b.S.cur;continue}if(!(b.S.oneMore&&b.S.cur===u))break;}}
+              ev.forEach(e=>{const su=b.U(e.src);if(e.t==='hit'&&su&&su.side==='party'&&e.amount>0&&!e.insta&&e.tgt!==e.src)tot[su.mid]+=e.amount;});}
+            return +(tot[who]/Math.max(1,tot.solar)).toFixed(2)};
+          mids.forEach(m=>{out[m]=duel(base(m),m);});
+          // The duet pair together (both maxed, both in the party) against Solar.
+          return out})()""", 600)
+        ok(all(v < 0.8 for v in BAL2.values()), ('Solar out-damages every late-game maxed member', BAL2))
+        results['solar vs late-game maxed member'] = BAL2
+        print('Solar still out-damages every late-game maxed member:', BAL2, flush=True)
+
+        # 8) The menu: the sun with the Eclipse ring sealed (shadow, hint), opened by the climb, a buy and a Radiance buy by click;
+        #    an epilogue branch sealed then opened through the life sim's finished world; an orbit with its second crown, duet and
+        #    Radiance; screenshots at 1440x810 and 390x844.
+        setup(p, lvl=99, pts=300)
+        p.eval("""(()=>{const b=FemcGame.S.battleSave,E=FemcBattleEngine,D=FEMC_BATTLE_DATA;b.ngp=1;FemcGame.S.ngp=1;
+          b.nodes=E.treeNodes().filter(n=>!n.rad&&!n.seg&&n.id!=='ec-total'&&!(D.tree.find(g=>g.id===n.branch)||{}).epi&&!n.choice).map(n=>n.id).concat(['st4a','tr3a','jade4a','bell4a','veil4a','star4a']);
+          b.forms=['haenim-sunna','haenim-mazu','haenim-nike','haenim-unveiled'];b.ops={cleared:['priestess']};FemcGame.saveQuiet()})()""")
+        for w, h, tag, mob in [(1440, 810, '1440x810', False), (390, 844, '390x844', True)]:
+            p.ws.call('Emulation.setDeviceMetricsOverride', {'width': w, 'height': h, 'deviceScaleFactor': 1, 'mobile': mob})
+            p.eval("(()=>{const b=FemcGame.S.battleSave,E=FemcBattleEngine;b.tt.climb=[];b.tt.supers=[];b.late={top:0,zenith:false};b.epis=[];b.rad={};b.nodes=b.nodes.filter(id=>{const n=E.treeNode(id);return !n.seg&&!/^ep-/.test(id)});FemcGame.S.epilogues={};FemcGame.saveQuiet()})()")
+            menu(p); click(p, '[data-sk=solar]'); click(p, '[data-skmode=sun]'); click(p, '[data-ray=eclipse]')
+            no_scroll(p)
+            ok(p.eval("document.querySelectorAll('.sun-ecl-seg.shut').length") == 6 and state(p, 'ec-hl1') == 'sealed', ('Eclipse shadows while sealed', tag, p.eval("document.querySelectorAll('.sun-ecl-seg.shut').length"), state(p, 'ec-hl1'), p.eval("JSON.stringify([FemcGame.S.battleSave.late,FemcGame.S.battleSave.tt,FemcGame.S.battleSave.reached])")))
+            click(p, '[data-hn=ec-hl1]')
+            ok('300F' in p.eval("document.querySelector('.g-sk-why').textContent") and p.eval("document.querySelector('[data-sk-buy]').disabled"), 'sealed hint and no buy')
+            shot(p, f'late-sun-sealed-{tag}')
+            p.eval("(()=>{const b=FemcGame.S.battleSave;b.tt.climb=['raqia-summit','zebul-summit','araboth-summit'];b.tt.supers=['super_tiger'];FemcGame.saveQuiet()})()")
+            menu(p); click(p, '[data-sk=solar]'); click(p, '[data-skmode=sun]'); click(p, '[data-ray=eclipse]')
+            ok(p.eval("document.querySelectorAll('.sun-ecl-seg.shut').length") == 0 and state(p, 'ec-hl1') == 'avail', 'Eclipse open after the climb')
+            if tag == '1440x810':
+                pts0 = p.eval(B + '.pts'); buy(p, 'ec-hl1')
+                ok(state(p, 'ec-hl1') == 'own' and p.eval(B + '.pts') == pts0 - 3, 'an Eclipse node bought by click')
+                p.eval("(()=>{const b=FemcGame.S.battleSave,E=FemcBattleEngine;b.nodes.push(...E.treeNodes().filter(n=>n.seg==='healer'&&!b.nodes.includes(n.id)).map(n=>n.id));FemcGame.saveQuiet()})()")
+                menu(p); click(p, '[data-sk=solar]'); click(p, '[data-skmode=sun]')
+                click(p, '[data-hn=rad-healer]'); r0 = p.eval(B + '.rad.healer||0'); click(p, '[data-hn=rad-healer]'); click(p, '[data-sk-buy]')
+                ok(p.eval(B + '.rad.healer') == r0 + 2 and p.eval("document.querySelector('[data-hn=rad-healer] small').textContent") == f'{r0 + 2}/10', 'Radiance bought twice by click, badge counts')
+                click(p, '[data-hn=ec-hl-sol]')
+            shot(p, f'late-sun-open-{tag}')
+            # An epilogue branch: sealed, then the life sim's finished world opens it (menu.js syncLife).
+            menu(p); click(p, '[data-sk=solar]'); click(p, '[data-skmode=sun]'); click(p, '[data-ray=epilogues]')
+            ok(state(p, 'ep-ru1') == 'sealed' and 'Runners epilogue' in p.eval("document.querySelector('.g-sk-why').textContent"), 'epilogue branch sealed with its hint')
+            p.eval("(()=>{FemcGame.S.epilogues={runners:{done:true,route:'haechan',at:1}};FemcGame.saveQuiet()})()")
+            menu(p); click(p, '[data-sk=solar]'); click(p, '[data-skmode=sun]'); click(p, '[data-ray=epilogues]')
+            ok(p.eval(B + '.epis.includes("runners")') and state(p, 'ep-ru1') == 'avail' and state(p, 'ep-hx1') == 'sealed', 'finishing the world opens its branch')
+            if tag == '1440x810':
+                buy(p, 'ep-ru1'); ok(state(p, 'ep-ru1') == 'own', 'an epilogue node bought')
+            click(p, '[data-hn=ep-ru2]')
+            shot(p, f'late-epilogue-{tag}')
+            # A party orbit with the second crown, the duet and Radiance.
+            p.eval("""(()=>{const b=FemcGame.S.battleSave,E=FemcBattleEngine;['akihiko','shinjiro'].forEach(m=>{FemcGame.progress(m).rank=10;b.mem[m]={lvl:99,exp:0}});
+              b.ptree.akihiko=E.ptreeNodes('akihiko').filter(n=>n.ray==='core'||n.ray==='champion'||n.crown).filter(n=>!n.rad).map(n=>n.id);b.prad={akihiko:{champion:3}};b.ptree.shinjiro=[];FemcGame.saveQuiet()})()""")
+            menu(p); click(p, '[data-sk=akihiko]')
+            ok(p.eval("!!document.querySelector('[data-hn=ak-crown2]') && !!document.querySelector('[data-hn=duet-old-friends]') && !!document.querySelector('.sun-bridge')"), 'orbit shows the second crown, the duet and its bridge')
+            ok(state(p, 'ak-crown2') == 'avail' and state(p, 'akihiko-rad-champion') == 'avail' and state(p, 'akihiko-rad-combo') == 'sealed', ('orbit states', state(p, 'ak-crown2'), state(p, 'akihiko-rad-champion')))
+            if tag == '1440x810':
+                p.eval("FemcGame.S.battleSave.mem.akihiko.lvl=99;FemcGame.saveQuiet()")
+                pts = p.eval("FemcBattleEngine.ptreePts(FemcGame.S.battleSave,'akihiko')")
+                if pts >= 15:
+                    buy(p, 'duet-old-friends'); ok(state(p, 'duet-old-friends') == 'own', 'duet bought by click')
+                    ok(p.eval("FemcBattleEngine.ptreeState(FemcGame.S.battleSave,'shinjiro','duet-old-friends')") == 'own', 'the duet is owned on the partner too')
+            click(p, '[data-hn=akihiko-rad-champion]')
+            ok(p.eval("document.querySelector('[data-hn=akihiko-rad-champion] small').textContent").endswith('/10'), 'party Radiance badge')
+            shot(p, f'late-orbit-{tag}')
+            click(p, '[data-hn=ak-crown2]'); shot(p, f'late-orbit-crown2-{tag}')
+        p.ws.call('Emulation.setDeviceMetricsOverride', {'width': 1280, 'height': 850, 'deviceScaleFactor': 1, 'mobile': False})
+        errs = p.console(); ok(not errs, errs)
+        results['late menu'] = 'sealed and open ring, buys, Radiance, epilogue branch via the life sim, orbit late nodes'
+        print('Late-game menu OK; screenshots in', SHOTS, flush=True)
+
+        # 9) Practice: the same sun (148 nodes) with the sealed hints; the orbit's late nodes; a practice save with a finished
+        #    world in this browser's clears opens its branch there.
+        p.goto(URL)
+        p.eval("localStorage.setItem('kg-femc-revamp-clears',JSON.stringify([{run:'r1',ending:'R',at:1,ngp:0,epi:['hoax']}]));localStorage.setItem('kg-femc-battle-proto',JSON.stringify({v:4,treeV:4,tv:2,lvl:99,exp:0,pts:40,nodes:['sun1','star1','bell1'],party:['akihiko'],mem:{akihiko:{lvl:99,exp:0}},evo:Object.fromEntries(FEMC_BATTLE_DATA.party.map(m=>[m.id,true]).concat([['fuuka',true]])),tipsSeen:Object.keys(FEMC_BATTLE_DATA.tips),gear:{owned:{},eq:{}}}))")
+        p.ws.call('Page.navigate', {'url': f'http://127.0.0.1:{p.srv.server_port}/femc-battle.html?practice=1&speed=10&seed=4'})
+        p.wait("!!window.FemcBattle && FemcBattle.screen()==='hub'", 60)
+        p.eval("document.querySelector('[data-go=tree]').click()"); p.wait("FemcBattle.screen()==='tree'")
+        PR = p.eval("""(()=>{const q=s=>document.querySelector(s),cls=id=>q(`.bt-sun [data-hn="${id}"]`).className.split(' ')[1];
+          q('.bt-sun [data-hn="ec-st1"]').click();const hint=q('.bt-tree-foot em').textContent;
+          return {n:document.querySelectorAll('.bt-sun [data-hn]').length,ec:cls('ec-st1'),hx:cls('ep-hx1'),ru:cls('ep-ru1'),hint,shadows:document.querySelectorAll('.bt-sun .sun-ecl-seg.shut').length}})()""")
+        ok(PR['n'] == 148 and PR['ec'] == 'sealed' and PR['hx'] == 'avail' and PR['ru'] == 'sealed' and '300F' in PR['hint'] and PR['shadows'] == 6, ('practice sun', PR))
+        p.eval("document.querySelector('[data-who=akihiko]').click()")
+        ok(p.eval("!!document.querySelector('.bt-sun [data-hn=ak-crown2]') && document.querySelector('.bt-sun [data-hn=ak-crown2]').className.split(' ')[1]==='sealed'"), 'practice orbit shows the sealed second crown')
+        errs = p.console(); ok(not errs, errs)
+        results['late practice'] = PR
+        print('Late-game practice screens OK', flush=True)
+
     if want('library'):
         setup(p, lvl=40, pts=200)
         p.eval("""(()=>{const b=FemcGame.S.battleSave,E=FemcBattleEngine;

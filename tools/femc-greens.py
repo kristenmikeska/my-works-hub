@@ -30,6 +30,11 @@ SHEETS = {
     'sun-icons': ('assets/femc/battle/art/sun', 5, 5, ['crit', 'speed', 'evade', 'counter', 'autobuff', 'firstcut', 'hpregen', 'spregen', 'weak',
         'followup', 'ailment', 'ailturns', 'lowhp', 'physup', 'magicup', 'healup', 'corona', 'bell', 'momentum', 'buffturns', 'theurgy',
         'nullail', 'stat', 'keystone', 'memory'], 96, True),
+    # The late-game skill icons (FEMC-ART-TODO 7A-7H, 2026-10-31): art/sun/late/<sheet>-<cell>.webp, the names on the nodes' `art`
+    # (data.js tree / crown2 / duets; engine.js ptreeNodes for party Radiance); sun.js LATE_ART turns them on. Cell 6 of 7B-7E is
+    # each branch's emblem (not on a node yet).
+    'skillicons-eclipse': ('assets/femc/battle/art/sun/late', 3, 3, [f'eclipse-{i}' for i in range(1, 10)], 96, True),
+    **{f'skillicons-{w}': ('assets/femc/battle/art/sun/late', 3, 2, [f'{w}-{i}' for i in range(1, 7)], 96, True) for w in ('runners', 'strangers', 'hoax', 'stay', 'crowns-1', 'crowns-2', 'duets')},
     # Batch 54: the last two menu tab icons (menu.js TAB_ICONS), 2 x 1, sized like batch 43's tab icons.
     'menu-icons-2': ('assets/femc/game/art/icons', 2, 1, ['calendar', 'compendium'], 128, True),
 }

@@ -207,11 +207,18 @@ window.FemcMenu = (() => {
     if (!all.some(n => n.id === sel.hn)) sel.hn = (all.find(n => hState(n.id) === 'avail') || all[0]).id;
     const n = E().treeNode(sel.hn), st = hState(n.id), why = E().treeWhy(b, n.id, fr), afford = b.pts >= n.cost, ray = rayOf(n);
     const between = n.between ? n.between.map(r => (D().tree.find(g => g.id === r) || {}).name).join(' × ') : '';
-    const btn = st === 'own' ? 'Unlocked' : st !== 'avail' ? (st === 'taken' ? 'Not chosen' : st === 'hidden' ? 'A memory first' : 'Locked') : afford ? `Unlock · ${n.cost} SP` : `Need ${n.cost} SP`;
-    const rays = D().tree.filter(g => g.ray).map(g => `<button type="button" class="g-chip${ray.id === g.id ? ' on' : ''}" data-ray="${g.id}" style="--c:${g.color}">${esc(g.name)}<small>${esc(g.world)}</small></button>`).join('');
-    const kicker = [ray.hybrid ? `Hybrid · ${between}` : `${ray.name}${ray.world ? ' · ' + ray.world : ''}`, n.choice ? 'choose one' : '', n.memory ? 'memory' : '', n.keystone ? 'keystone' : ''].filter(Boolean).join(' · ');
+    const rk = n.rad ? E().radOf(b, n.rad) : 0, rayName = id => (D().tree.find(g => g.id === id) || {}).name || '';
+    const btn = n.rad ? (st === 'own' ? `Radiance ${rk}/${D().radiance.max}` : st === 'sealed' ? 'Sealed' : afford ? `Buy · ${n.cost} SP · ${rk}/${D().radiance.max}` : `Need ${n.cost} SP`)
+      : st === 'own' ? 'Unlocked' : st !== 'avail' ? (st === 'taken' ? 'Not chosen' : st === 'hidden' ? 'A memory first' : st === 'sealed' ? 'Sealed' : 'Locked') : afford ? `Unlock · ${n.cost} SP` : `Need ${n.cost} SP`;
+    // Rays, then the late-game chips: the Eclipse ring and the epilogue branches.
+    const epiOn = ray.epi ? ' on' : '';
+    const rays = D().tree.filter(g => g.ray).map(g => `<button type="button" class="g-chip${ray.id === g.id ? ' on' : ''}" data-ray="${g.id}" style="--c:${g.color}">${esc(g.name)}<small>${esc(g.world)}</small></button>`).join('')
+      + `<button type="button" class="g-chip${ray.eclipse || ray.radiance ? ' on' : ''}" data-ray="eclipse" style="--c:#ff4f9e">Eclipse<small>New Game+</small></button>`
+      + `<button type="button" class="g-chip${epiOn}" data-ray="epilogues" style="--c:#ffc0d8">Epilogues<small>after each world</small></button>`;
+    const kicker = [ray.hybrid ? `Hybrid · ${between}` : ray.eclipse ? (n.seg ? `Eclipse · ${rayName(n.seg)}${n.solstice ? ' · Solstice' : ''}` : 'Eclipse · the crown') : ray.radiance ? `Radiance · ${rayName(n.rad)} · repeatable`
+      : ray.epi ? `${ray.name} · epilogue branch · ${between}` : `${ray.name}${ray.world ? ' · ' + ray.world : ''}`, n.choice ? 'choose one' : '', n.memory ? 'memory' : '', n.keystone && !n.solstice ? 'keystone' : ''].filter(Boolean).join(' · ');
     return `${solarTop(b)}<div class="g-sun-rays" role="toolbar" aria-label="Rays">${rays}</div>
-      <div class="g-sk-main g-sun-main"><div class="g-sunvp sun-vp" aria-label="Haenim’s sun">${window.FemcSun.html({ state: hState, sel: sel.hn, glyph: sunGlyph, base: 'g-sn' })}</div>
+      <div class="g-sk-main g-sun-main"><div class="g-sunvp sun-vp" aria-label="Haenim’s sun">${window.FemcSun.html({ state: hState, sel: sel.hn, glyph: sunGlyph, base: 'g-sn', badge: n0 => (n0.rad ? `${E().radOf(b, n0.rad)}/${D().radiance.max}` : null) })}</div>
         <aside class="g-sk-detail" style="--c:${ray.color || 'var(--pink)'}"><p class="g-kicker">${esc(kicker)}</p>
           <h3 class="g-sk-name">${esc(st === 'hidden' ? '? ? ?' : n.name)}</h3><p>${st === 'hidden' ? 'Something from another life is still hiding here.' : esc(n.desc)}</p>
           ${why ? `<p class="g-sk-why">${esc(why)}</p>` : ''}
@@ -257,17 +264,20 @@ window.FemcMenu = (() => {
     const stOf = id => E().ptreeState(b, mid, id, rank);
     if (!list.some(n => n.id === sel.pn)) sel.pn = (list.find(n => stOf(n.id) === 'avail') || list[0]).id;
     const n = list.find(x => x.id === sel.pn), st = stOf(n.id), why = E().ptreeWhy(b, mid, n.id, rank), link = G.LINKS[mid];
-    const grp = n.crown ? { name: 'Crown', note: 'the capstone' } : n.ray === 'core' ? { name: 'Core', note: '' } : n.ray === 'solar' ? { name: 'Solar ray', note: 'makes her shine' } : t.builds.find(x => x.id === n.ray);
+    const grp = n.crown ? { name: 'Crown', note: 'the capstone' } : n.crown2 ? { name: 'Second crown', note: 'New Game+' } : n.duet ? { name: 'Duet', note: `with ${member(n.partner).name}` }
+      : n.rad ? { name: 'Radiance', note: `${(t.builds.find(x => x.id === n.rad) || {}).name} · repeatable` } : n.ray === 'core' ? { name: 'Core', note: '' } : n.ray === 'solar' ? { name: 'Solar ray', note: 'makes her shine' } : t.builds.find(x => x.id === n.ray);
     const gate = D().ptreeRings[n.ring - 1] || {}, need = n.rank || (n.crown ? 10 : gate.rank || 0);
     const maxed = rank >= 10, from = D().skills[t.max.from], to = D().skills[t.max.to];
-    const btn = st === 'own' ? 'Unlocked' : st !== 'avail' ? (st === 'rank' ? `Link rank ${need}` : st === 'lvl' ? `Lv ${gate.lvl}` : 'Locked') : pts >= n.cost ? `Unlock · ${n.cost} pt${n.cost === 1 ? '' : 's'}` : `Need ${n.cost}`;
+    const rk = n.rad ? E().pradOf(b, mid, n.rad) : 0, RM = D().radiance.max;
+    const btn = n.rad ? (st === 'own' ? `Radiance ${rk}/${RM}` : st === 'sealed' ? 'Sealed' : pts >= n.cost ? `Buy · ${n.cost} pts · ${rk}/${RM}` : `Need ${n.cost}`)
+      : st === 'own' ? 'Unlocked' : st !== 'avail' ? (st === 'rank' ? (n.duet ? 'Both at MAX' : `Link rank ${need}`) : st === 'lvl' ? `Lv ${gate.lvl}` : st === 'sealed' ? 'Sealed' : 'Locked') : pts >= n.cost ? `Unlock · ${n.cost} pt${n.cost === 1 ? '' : 's'}` : `Need ${n.cost}`;
     const chips = t.builds.map(x => `<button type="button" class="g-chip${n.ray === x.id ? ' on' : ''}" data-pray="${x.id}" style="--c:${m.color}">${esc(x.name)}<small>${esc(x.note || '')}</small></button>`).join('')
       + `<button type="button" class="g-chip${n.ray === 'solar' ? ' on' : ''}" data-pray="solar" style="--c:#ffd36b">Solar ray<small>for her</small></button>`;
-    const kicker = [grp.name + (grp.note ? ' · ' + grp.note : ''), n.crown ? 'link rank 10' : `ring ${n.ring}` + (gate.lvl > 1 ? ` · Lv ${gate.lvl}` : '') + (need ? ` · rank ${need}` : '')].join(' · ');
+    const kicker = [grp.name + (grp.note ? ' · ' + grp.note : ''), n.crown ? 'link rank 10' : n.crown2 || n.duet || n.rad ? '' : `ring ${n.ring}` + (gate.lvl > 1 ? ` · Lv ${gate.lvl}` : '') + (need ? ` · rank ${need}` : '')].filter(Boolean).join(' · ');
     return `<div class="g-sk-top"><p><b>${esc(m.name)}</b> · Lv ${lvOf(mid)} · ${link ? `${esc(link.arcana || '')} · rank ${rank}` : 'no link yet'} · <span class="g-sk-pts">${pts} point${pts === 1 ? '' : 's'}</span><small>from levels</small></p>
         <button type="button" class="g-btn small" data-velvet="${mid}"${opts.inBattle ? ' disabled title="The Velvet Room’s door is in town, not in the Dark Hour."' : ''}>Velvet Room · Respec</button></div>
       <div class="g-sun-rays" role="toolbar" aria-label="Builds">${chips}</div>
-      <div class="g-sk-main g-sun-main"><div class="g-sunvp g-orbit sun-vp" aria-label="${esc(m.name)}’s orbit" style="--c:${m.color}">${window.FemcSun.html({ spec, state: stOf, sel: sel.pn, glyph: sunGlyph, base: 'g-sn', rings: orbitRings(mid) })}</div>
+      <div class="g-sk-main g-sun-main"><div class="g-sunvp g-orbit sun-vp" aria-label="${esc(m.name)}’s orbit" style="--c:${m.color}">${window.FemcSun.html({ spec, state: stOf, sel: sel.pn, glyph: sunGlyph, base: 'g-sn', rings: orbitRings(mid), badge: n0 => (n0.rad ? `${E().pradOf(b, mid, n0.rad)}/${D().radiance.max}` : null) })}</div>
         <aside class="g-sk-detail" style="--c:${n.ray === 'solar' ? '#ffd36b' : m.color}"><p class="g-kicker">${esc(kicker)}</p>
           <h3 class="g-sk-name">${esc(n.name)}</h3><p>${esc(n.desc)}</p>${why ? `<p class="g-sk-why">${esc(why)}</p>` : ''}
           <button type="button" class="g-btn pink" data-pt-buy${st !== 'avail' || pts < n.cost ? ' disabled' : ''}>${btn}</button>
@@ -290,8 +300,8 @@ window.FemcMenu = (() => {
       sel.pn = (ns.find(x => E().ptreeState(b, mid, x.id, rankOf(mid)) === 'avail') || ns[0]).id; G.sfx('femc-hover'); again(`[data-hn="${sel.pn}"]`);
     }));
     el.querySelectorAll('[data-ray]').forEach(bt => bt.addEventListener('click', () => {
-      const g = D().tree.find(x => x.id === bt.dataset.ray);
-      sel.hn = (g.nodes.find(x => hState(x.id) === 'avail') || g.nodes[0]).id; G.sfx('femc-hover'); again(`[data-hn="${sel.hn}"]`);
+      const id = bt.dataset.ray, ns = id === 'epilogues' ? D().tree.filter(x => x.epi).flatMap(x => x.nodes) : (D().tree.find(x => x.id === id) || { nodes: [] }).nodes;
+      sel.hn = (ns.find(x => hState(x.id) === 'avail') || ns[0]).id; G.sfx('femc-hover'); again(`[data-hn="${sel.hn}"]`);
     }));
     el.querySelectorAll('[data-hn]').forEach(bt => bt.addEventListener('click', () => {
       const id = bt.dataset.hn;
@@ -374,6 +384,7 @@ window.FemcMenu = (() => {
     if (!r.ok) { G.toast('note', r.why); G.sfx('femc-hover'); return; }
     G.sfx('femc-rankup');
     const n = E().treeNode(sel.hn);
+    if (r.rad) { G.toast('note', `Radiance: ${r.rad} of ${D().radiance.max} on the ${(D().tree.find(g => g.id === n.rad) || {}).name} ray.`); G.saveQuiet(); render(`[data-hn="${sel.hn}"]`); return; }
     const into = r.learned.length ? kitOf('solar').slots.some(id => E().rootOf(id) === E().rootOf(r.learned[0])) : true;
     G.toast('note', r.form ? `${n.name}: ${D().personas[r.form].name} has awakened. Switch forms on the Personas tab.` : r.learned.length ? `Haenim learned ${D().skills[r.learned[0]].name}${into ? '' : ' (in her Skill list: her slots are full)'}.` : `${n.name} unlocked.`);
     afterLearn('solar');
@@ -387,6 +398,7 @@ window.FemcMenu = (() => {
     if (!r.ok) { G.toast('note', r.why); G.sfx('femc-hover'); return; }
     G.sfx('femc-rankup');
     const n = E().ptreeNodes(mid).find(x => x.id === sel.pn);
+    if (r.rad) { G.toast('note', `${member(mid).name}: Radiance ${r.rad} of ${D().radiance.max}.`); G.saveQuiet(); render(`[data-hn="${sel.pn}"]`); return; }
     G.toast('note', r.learned.length ? `${member(mid).name} learned ${D().skills[r.learned[0]].name}.` : `${member(mid).name}: ${n.name} unlocked.`);
     afterLearn(mid);
     G.saveQuiet();
@@ -398,6 +410,10 @@ window.FemcMenu = (() => {
     const b = bsave(), D0 = D();
     let changed = false;
     (S().fragments || []).forEach(f => { if (D0.memories.some(m => m.id === f) && !b.memories.includes(f)) { b.memories.push(f); b.pts += D0.progression.memoryPoints; changed = true; } });
+    // Finished epilogue worlds open Haenim's epilogue branches (engine.js epiDone; the battle save keeps them through New Game+).
+    const epis = new Set(b.epis || []);
+    [S().epilogues, S().year1 && S().year1.epilogues].forEach(r => Object.entries(r || {}).forEach(([w, x]) => { if (x && x.done) epis.add(w); }));
+    if (epis.size !== (b.epis || []).length) { b.epis = [...epis]; changed = true; }
     b.ranks = b.ranks || {};
     D0.party.forEach(m => { if (m.id === 'solar' || !G.LINKS[m.id]) return; const r = Math.min(10, rankOf(m.id)); if ((b.ranks[m.id] || 0) !== r) { b.ranks[m.id] = r; changed = true; } });
     // Every link's rank for the bond perks (and the gifts some ranks give: a naginata, a skill point).

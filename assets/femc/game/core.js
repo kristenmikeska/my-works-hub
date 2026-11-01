@@ -2257,6 +2257,8 @@ window.FemcGame = (() => {
       difficulty: null, epi: req.epi ? { ...req.epi } : { world: S.epi.world }
     };
   }
+  // Epilogue worlds finished (S.epilogues, or the year's inside an epilogue): the battle save's epilogue branches (request.epis).
+  const episDone = () => { const out = new Set(); [S.epilogues, S.year1 && S.year1.epilogues].forEach(r => Object.entries(r || {}).forEach(([w, x]) => { if (x && x.done) out.add(w); })); return [...out]; };
   function yearRequest(kind, req) {
     const party = (req.party || S.tartarus.lastParty || ['solar', ...available().filter(x => x !== 'solar').slice(0, 3)]).filter(x => available().includes(x));
     return {
@@ -2268,7 +2270,7 @@ window.FemcGame = (() => {
       yen: S.yen, items: { ...S.inventory }, gear: [...S.gear],
       maxFloor: floorCap(), bestFloor: S.tartarus.maxFloor, bossesCleared: [...S.tartarus.bosses],
       fragments: [...S.fragments], fragmentsOpen: S.day >= dayOf(D.cal.fragmentsFrom || '5/16'), dropsOk: dropsOk(),
-      run: S.runId, carryFrom: S.ngFrom || null, ngp: S.ngp || 0, route: S.route.choices.solstice ?? null, trueReady: !!(S.flags['true-final'] || S.flags['true-path']),
+      run: S.runId, carryFrom: S.ngFrom || null, ngp: S.ngp || 0, epis: episDone(), route: S.route.choices.solstice ?? null, trueReady: !!(S.flags['true-final'] || S.flags['true-path']),
       routeFlags: ['route-R', 'route-S', 'route-H', 'route-stay', 'route-true', 'route-bad', 'true-final', 'true-fallback'].filter(flag),
       // Night-only items from the life sim (Shinjiro's Kitchen Duty leftovers); battle.js adds them on a Tartarus night.
       kits: kind === 'tartarus' && S.leftovers ? { night_leftovers: 1 } : null,

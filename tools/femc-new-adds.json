@@ -20347,6 +20347,193 @@
         "assets/femc/game/art/skins/sk-jungwon-stage/portraits/jungwon/serious.webp": "d6d3db00dc7fd92d6922334e6f1c1868cd816bac04dfdf721add8ba2395d8189",
         "assets/femc/game/art/skins/sk-jungwon-stage/portraits/jungwon/surprised.webp": "4717c412d59c28a69ea30e64fd6ca2489c2eaa27aee5e8b8f0f5de35a70c7909"
       }
+    },
+    {
+      "batch": 107,
+      "source": "skillicons-eclipse.png",
+      "sourceNow": "New Adds/skillicons-eclipse.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "a630bde1c8086c4c04ba9a9076f1f4cd1a179ea4c7dcd3b2478237db322d11a9",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/sun/late/",
+      "conversion": "green-screen sheet 3 x 3: tools/femc-greens.py all skillicons-eclipse (flat #00ff00 keyed out with a soft edge and the spill taken off, each cell trimmed onto a transparent 96 x 96 square, WebP); source unchanged",
+      "sheetOrder": "FEMC-ART-TODO 7 cell order, left to right, top to bottom",
+      "placement": "sun.js iconFor (LATE_ART): each late node's `art` name in data.js / engine.js ptreeNodes",
+      "outputs": [
+        "assets/femc/battle/art/sun/late/eclipse-1.webp",
+        "assets/femc/battle/art/sun/late/eclipse-2.webp",
+        "assets/femc/battle/art/sun/late/eclipse-3.webp",
+        "assets/femc/battle/art/sun/late/eclipse-4.webp",
+        "assets/femc/battle/art/sun/late/eclipse-5.webp",
+        "assets/femc/battle/art/sun/late/eclipse-6.webp",
+        "assets/femc/battle/art/sun/late/eclipse-7.webp",
+        "assets/femc/battle/art/sun/late/eclipse-8.webp",
+        "assets/femc/battle/art/sun/late/eclipse-9.webp"
+      ]
+    },
+    {
+      "batch": 107,
+      "source": "skillicons-runners.png",
+      "sourceNow": "New Adds/skillicons-runners.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "4fbd357d1fa41bb5a7c94769b50a5633d98531b95fa1bbf67a16b751e3675d12",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/sun/late/",
+      "conversion": "green-screen sheet 3 x 2: tools/femc-greens.py all skillicons-runners (flat #00ff00 keyed out with a soft edge and the spill taken off, each cell trimmed onto a transparent 96 x 96 square, WebP); source unchanged",
+      "sheetOrder": "FEMC-ART-TODO 7 cell order, left to right, top to bottom",
+      "placement": "sun.js iconFor (LATE_ART): each late node's `art` name in data.js / engine.js ptreeNodes",
+      "outputs": [
+        "assets/femc/battle/art/sun/late/runners-1.webp",
+        "assets/femc/battle/art/sun/late/runners-2.webp",
+        "assets/femc/battle/art/sun/late/runners-3.webp",
+        "assets/femc/battle/art/sun/late/runners-4.webp",
+        "assets/femc/battle/art/sun/late/runners-5.webp",
+        "assets/femc/battle/art/sun/late/runners-6.webp"
+      ]
+    },
+    {
+      "batch": 107,
+      "source": "skillicons-strangers.png",
+      "sourceNow": "New Adds/skillicons-strangers.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "2cd9818b139dec290eac21fe3e49dc3b87bba35466ea1003634402fc9d898e02",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/sun/late/",
+      "conversion": "green-screen sheet 3 x 2: tools/femc-greens.py all skillicons-strangers (flat #00ff00 keyed out with a soft edge and the spill taken off, each cell trimmed onto a transparent 96 x 96 square, WebP); source unchanged",
+      "sheetOrder": "FEMC-ART-TODO 7 cell order, left to right, top to bottom",
+      "placement": "sun.js iconFor (LATE_ART): each late node's `art` name in data.js / engine.js ptreeNodes",
+      "outputs": [
+        "assets/femc/battle/art/sun/late/strangers-1.webp",
+        "assets/femc/battle/art/sun/late/strangers-2.webp",
+        "assets/femc/battle/art/sun/late/strangers-3.webp",
+        "assets/femc/battle/art/sun/late/strangers-4.webp",
+        "assets/femc/battle/art/sun/late/strangers-5.webp",
+        "assets/femc/battle/art/sun/late/strangers-6.webp"
+      ]
+    },
+    {
+      "batch": 107,
+      "source": "skillicons-hoax.png",
+      "sourceNow": "New Adds/skillicons-hoax.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e59fe906be8b2dffe65eee8a1be48d2acffb47a07d2e77ffd88f982a270767bc",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/sun/late/",
+      "conversion": "green-screen sheet 3 x 2: tools/femc-greens.py all skillicons-hoax (flat #00ff00 keyed out with a soft edge and the spill taken off, each cell trimmed onto a transparent 96 x 96 square, WebP); source unchanged",
+      "sheetOrder": "FEMC-ART-TODO 7 cell order, left to right, top to bottom",
+      "placement": "sun.js iconFor (LATE_ART): each late node's `art` name in data.js / engine.js ptreeNodes",
+      "outputs": [
+        "assets/femc/battle/art/sun/late/hoax-1.webp",
+        "assets/femc/battle/art/sun/late/hoax-2.webp",
+        "assets/femc/battle/art/sun/late/hoax-3.webp",
+        "assets/femc/battle/art/sun/late/hoax-4.webp",
+        "assets/femc/battle/art/sun/late/hoax-5.webp",
+        "assets/femc/battle/art/sun/late/hoax-6.webp"
+      ]
+    },
+    {
+      "batch": 107,
+      "source": "skillicons-stay.png",
+      "sourceNow": "New Adds/skillicons-stay.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e8cc67dbf481aef6e4158b62f49e9228fe4c2a3f2785892ffb2f887860b231f2",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/sun/late/",
+      "conversion": "green-screen sheet 3 x 2: tools/femc-greens.py all skillicons-stay (flat #00ff00 keyed out with a soft edge and the spill taken off, each cell trimmed onto a transparent 96 x 96 square, WebP); source unchanged",
+      "sheetOrder": "FEMC-ART-TODO 7 cell order, left to right, top to bottom",
+      "placement": "sun.js iconFor (LATE_ART): each late node's `art` name in data.js / engine.js ptreeNodes",
+      "outputs": [
+        "assets/femc/battle/art/sun/late/stay-1.webp",
+        "assets/femc/battle/art/sun/late/stay-2.webp",
+        "assets/femc/battle/art/sun/late/stay-3.webp",
+        "assets/femc/battle/art/sun/late/stay-4.webp",
+        "assets/femc/battle/art/sun/late/stay-5.webp",
+        "assets/femc/battle/art/sun/late/stay-6.webp"
+      ]
+    },
+    {
+      "batch": 107,
+      "source": "skillicons-crowns-1.png",
+      "sourceNow": "New Adds/skillicons-crowns-1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "60f676d4019e4c719b99dea608be6536f7384894f1a620a2bcf313c288129649",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/sun/late/",
+      "conversion": "green-screen sheet 3 x 2: tools/femc-greens.py all skillicons-crowns-1 (flat #00ff00 keyed out with a soft edge and the spill taken off, each cell trimmed onto a transparent 96 x 96 square, WebP); source unchanged",
+      "sheetOrder": "FEMC-ART-TODO 7 cell order, left to right, top to bottom",
+      "placement": "sun.js iconFor (LATE_ART): each late node's `art` name in data.js / engine.js ptreeNodes",
+      "outputs": [
+        "assets/femc/battle/art/sun/late/crowns-1-1.webp",
+        "assets/femc/battle/art/sun/late/crowns-1-2.webp",
+        "assets/femc/battle/art/sun/late/crowns-1-3.webp",
+        "assets/femc/battle/art/sun/late/crowns-1-4.webp",
+        "assets/femc/battle/art/sun/late/crowns-1-5.webp",
+        "assets/femc/battle/art/sun/late/crowns-1-6.webp"
+      ]
+    },
+    {
+      "batch": 107,
+      "source": "skillicons-crowns-2.png",
+      "sourceNow": "New Adds/skillicons-crowns-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "0b5ea5560e9e7dbd9e721379c933e4e889582b6d42e7ad4cdbd01e3b9255a266",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/sun/late/",
+      "conversion": "green-screen sheet 3 x 2: tools/femc-greens.py all skillicons-crowns-2 (flat #00ff00 keyed out with a soft edge and the spill taken off, each cell trimmed onto a transparent 96 x 96 square, WebP); source unchanged",
+      "sheetOrder": "FEMC-ART-TODO 7 cell order, left to right, top to bottom",
+      "placement": "sun.js iconFor (LATE_ART): each late node's `art` name in data.js / engine.js ptreeNodes",
+      "outputs": [
+        "assets/femc/battle/art/sun/late/crowns-2-1.webp",
+        "assets/femc/battle/art/sun/late/crowns-2-2.webp",
+        "assets/femc/battle/art/sun/late/crowns-2-3.webp",
+        "assets/femc/battle/art/sun/late/crowns-2-4.webp",
+        "assets/femc/battle/art/sun/late/crowns-2-5.webp",
+        "assets/femc/battle/art/sun/late/crowns-2-6.webp"
+      ]
+    },
+    {
+      "batch": 107,
+      "source": "skillicons-duets.png",
+      "sourceNow": "New Adds/skillicons-duets.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3c430be9ce33a3473151353bb8f3b3f47d8f8f66e94155a7987d53bd9a031838",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/sun/late/",
+      "conversion": "green-screen sheet 3 x 2: tools/femc-greens.py all skillicons-duets (flat #00ff00 keyed out with a soft edge and the spill taken off, each cell trimmed onto a transparent 96 x 96 square, WebP); source unchanged",
+      "sheetOrder": "FEMC-ART-TODO 7 cell order, left to right, top to bottom",
+      "placement": "sun.js iconFor (LATE_ART): each late node's `art` name in data.js / engine.js ptreeNodes",
+      "outputs": [
+        "assets/femc/battle/art/sun/late/duets-1.webp",
+        "assets/femc/battle/art/sun/late/duets-2.webp",
+        "assets/femc/battle/art/sun/late/duets-3.webp",
+        "assets/femc/battle/art/sun/late/duets-4.webp",
+        "assets/femc/battle/art/sun/late/duets-5.webp",
+        "assets/femc/battle/art/sun/late/duets-6.webp"
+      ]
     }
   ],
   "batch1Validation": {

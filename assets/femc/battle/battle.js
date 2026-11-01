@@ -179,6 +179,14 @@
     return normalize(fresh());
   }
   let save = loadSave();
+  /* Practice: epilogue worlds finished in this browser (the clears list's `epi`) open Haenim's epilogue branches here too. */
+  function practiceEpis() {
+    if (HO || BR) return;
+    let list = []; try { list = JSON.parse(localStorage.getItem('kg-femc-revamp-clears') || '[]') || []; } catch (e) {}
+    const add = [].concat(...list.map(x => (x && Array.isArray(x.epi) ? x.epi : []))).filter(w => typeof w === 'string');
+    save.epis = [...new Set((save.epis || []).concat(add))];
+  }
+  practiceEpis();
   /* Settings: the game's one store. Story fights read it from the life sim; practice reads the same key directly. */
   const readUni = () => { if (BR) { try { return JSON.parse(JSON.stringify(BR.settings() || {})); } catch (e) { return {}; } } try { return JSON.parse(localStorage.getItem(UNI_KEY) || '{}') || {}; } catch (e) { return {}; } };
   // battle setting (save.settings.<k>) → the store's key
@@ -455,7 +463,7 @@
 
   /* ── Party, levels and Haenim's tree (the math lives in engine.js) ── */
   const need = lvl => D.progression.expToNext(lvl);
-  const treeFx = (nodes = save.nodes) => E.treeFx(nodes);
+  const treeFx = (nodes = save.nodes) => E.treeFx(nodes, save.rad);
   const memberStats = (m, lvl, fx) => E.statsFor(m.id, save, lvl, fx);
   // Solar's eight slots (plus her form's signature), the skill system's kit (engine.js kitFor).
   const solarSkills = fx => { const k = E.kitFor('solar', save, save.lvl, fx); return k.slots.concat(k.sig ? [k.sig] : []); };
@@ -1955,7 +1963,7 @@
     if (spec.op && perks.missionBriefing) startBuffs.push({ stat: 'atk', turns: perks.missionBriefing.v });
     const foeHpMult = run && run.curse ? 1 + run.curse : 1;
     if (run) run.curse = 0;
-    B = E.create({ party: spec.solo ? partyUnits.slice(0, 1) : partyUnits, enemies: group, mods, known: save.known, rand, items: save.items, heat: spec.heat || 0, ctx: { op: spec.op && spec.op.id },
+    B = E.create({ party: spec.solo ? partyUnits.slice(0, 1) : partyUnits, enemies: group, mods, known: save.known, rand, items: save.items, heat: spec.heat || 0, ctx: { op: spec.op && spec.op.id, tartarus: !!(run && !spec.op && !RL), moon: !!((HO && HO.date && HO.date.fullMoon) || spec.op) },
       diff: RL && RL.edmg ? () => Object.assign({}, diff(), { edmg: diff().edmg * RL.edmg }) : diff, protect: !!(RL && RL.protect),
       perks, names: BLD ? BLD.names() : {}, startBuffs, foeHpMult, bondArts: BDS && HO && !(RL && RL.noPerks) ? BDS.arts(save) : [] });
     if (RL && RL.setup) RL.setup(B);
@@ -4220,12 +4228,14 @@
       if (who !== 'solar') return renderOrbit();
       const fx = treeFx();
       const node = E.treeNode(cur), s0 = st(node), afford = save.pts >= node.cost, why = E.treeWhy(save, node.id, frags()), ray = rayOf(node);
-      const btn = s0 === 'own' ? 'Unlocked' : s0 === 'avail' ? (afford ? `Unlock · ${node.cost} SP` : `Need ${node.cost} SP`) : s0 === 'taken' ? 'Not chosen' : s0 === 'hidden' ? 'A memory first' : 'Locked';
+      const RM = D.radiance.max, rk = node.rad ? E.radOf(save, node.rad) : 0;
+      const btn = node.rad ? (s0 === 'own' ? `Radiance ${rk}/${RM}` : s0 === 'avail' ? (afford ? `Buy · ${node.cost} SP · ${rk}/${RM}` : `Need ${node.cost} SP`) : 'Sealed')
+        : s0 === 'own' ? 'Unlocked' : s0 === 'avail' ? (afford ? `Unlock · ${node.cost} SP` : `Need ${node.cost} SP`) : s0 === 'taken' ? 'Not chosen' : s0 === 'hidden' ? 'A memory first' : s0 === 'sealed' ? 'Sealed' : 'Locked';
       const el = show(`${ART.defs()}<img class="bt-tree-art" src="${D.personas.haenim.art}" alt="">
         <div class="bt-tree-head"><button type="button" class="bt-tool" data-act="back"><span>‹ Back</span></button>
           <h1>HAENIM<small>해님 · Fool</small></h1>
           <div class="bt-pts"><span><small>Skill Points</small>${save.pts}</span></div>${whoRow()}</div>
-        <div class="bt-sun sun-vp">${SUN.html({ state: id => E.treeState(save, id, frags()), sel: cur, base: 'bt-sn' })}</div>
+        <div class="bt-sun sun-vp">${SUN.html({ state: id => E.treeState(save, id, frags()), sel: cur, base: 'bt-sn', badge: n => (n.rad ? `${E.radOf(save, n.rad)}/${D.radiance.max}` : null) })}</div>
         <div class="bt-tree-foot"><div><h3>${esc(label(node))}<small>${esc(ray.name || '')} · ${esc(ray.world || '')} · ${node.cost} SP${node.choice ? ' · choose one' : ''}${node.memory ? ' · memory' : ''}${node.keystone ? ' · keystone' : ''}</small></h3><p>${s0 === 'hidden' ? '' : esc(node.desc)}${why ? ` <em>${esc(why)}</em>` : ''}</p></div>
           <div class="btns"><button type="button" class="bt-btn pink" data-act="buy"${s0 !== 'avail' || !afford ? ' disabled' : ''}><span>${btn}</span></button>
           <button type="button" class="bt-btn" data-act="refund"${E.treeSpent(save) ? '' : ' disabled'}><span>Refund all</span><small>Practice: free</small></button></div>
@@ -4238,14 +4248,16 @@
       const spec = SUN.orbit(who), list = E.ptreeNodes(who), m = member(who), t = D.ptrees[who], pts = E.ptreePts(save, who);
       if (!list.some(n => n.id === cur)) cur = (list.find(n => pst(n.id) === 'avail') || list[0]).id;
       const node = list.find(n => n.id === cur), s0 = pst(cur), why = E.ptreeWhy(save, who, cur), afford = pts >= node.cost;
-      const grp = node.crown ? 'Crown' : node.ray === 'core' ? 'Core' : node.ray === 'solar' ? 'Solar ray' : (t.builds.find(b => b.id === node.ray) || {}).name;
-      const btn = s0 === 'own' ? 'Unlocked' : s0 === 'avail' ? (afford ? `Unlock · ${node.cost} pt${node.cost === 1 ? '' : 's'}` : `Need ${node.cost}`) : 'Locked';
+      const grp = node.crown ? 'Crown' : node.crown2 ? 'Second crown · New Game+' : node.duet ? `Duet with ${member(node.partner).name}` : node.rad ? 'Radiance · repeatable' : node.ray === 'core' ? 'Core' : node.ray === 'solar' ? 'Solar ray' : (t.builds.find(b => b.id === node.ray) || {}).name;
+      const prk = node.rad ? E.pradOf(save, who, node.rad) : 0;
+      const btn = node.rad && s0 !== 'sealed' ? (s0 === 'own' ? `Radiance ${prk}/${D.radiance.max}` : afford ? `Buy · ${node.cost} pts · ${prk}/${D.radiance.max}` : `Need ${node.cost}`)
+        : s0 === 'own' ? 'Unlocked' : s0 === 'avail' ? (afford ? `Unlock · ${node.cost} pt${node.cost === 1 ? '' : 's'}` : `Need ${node.cost}`) : s0 === 'sealed' ? 'Sealed' : 'Locked';
       const kit = E.kitFor(who, save).slots;
       const el = show(`${ART.defs()}
         <div class="bt-tree-head"><button type="button" class="bt-tool" data-act="back"><span>‹ Back</span></button>
           <h1>${esc(m.name.toUpperCase())}<small>Lv ${E.lvlOf(save, who)} · orbit</small></h1>
           <div class="bt-pts"><span><small>Points</small>${pts}</span></div>${whoRow()}</div>
-        <div class="bt-sun bt-orbit sun-vp" style="--c:${m.color}">${SUN.html({ spec, state: pst, sel: cur, base: 'bt-sn', rings: rings() })}</div>
+        <div class="bt-sun bt-orbit sun-vp" style="--c:${m.color}">${SUN.html({ spec, state: pst, sel: cur, base: 'bt-sn', rings: rings(), badge: n => (n.rad ? `${E.pradOf(save, who, n.rad)}/${D.radiance.max}` : null) })}</div>
         <div class="bt-tree-foot"><div><h3>${esc(node.name)}<small>${esc(grp || '')} · ring ${node.ring} · ${node.cost} pt${node.cost === 1 ? '' : 's'}</small></h3><p>${esc(node.desc)}${why ? ` <em>${esc(why)}</em>` : ''}</p></div>
           <div class="btns"><button type="button" class="bt-btn pink" data-act="buy"${s0 !== 'avail' || !afford ? ' disabled' : ''}><span>${btn}</span></button>
           <button type="button" class="bt-btn" data-act="refund"${E.ptreeSpent(save, who) ? '' : ' disabled'}><span>Refund all</span><small>Practice: free</small></button></div>
@@ -4893,6 +4905,8 @@
     save.ops.cleared = (R.bossesCleared || []).filter(id => D.ops.some(o => o.id === id));
     // Fragments Solar found in the life sim feed Haenim's tree here too (a skill point each, once).
     (R.fragments || []).forEach(f => { if (D.memories.some(m => m.id === f) && !save.memories.includes(f)) { save.memories.push(f); save.pts += D.progression.memoryPoints; } });
+    // Finished epilogue worlds open Haenim's epilogue branches (engine.js epiDone; kept in the battle save, so New Game+ keeps them).
+    if (Array.isArray(R.epis)) save.epis = [...new Set((save.epis || []).concat(R.epis.filter(w => typeof w === 'string')))];
     // Link ranks open the party trees' tiers and, at MAX, evolve a signature skill (engine.js linkRank).
     const ranks = (R.social && R.social.ranks) || null;
     if (ranks) D.party.forEach(m => { if (m.id !== 'solar' && ranks[m.id] != null) save.ranks[m.id] = Math.min(10, +ranks[m.id] || 0); });
@@ -5375,7 +5389,7 @@
     screen: () => screen, marks, freeze() { frozen = true; if (FX) FX.pause(); }, unfreeze() { frozen = false; if (FX) FX.resume(); },
     awakening: () => awakening(app.firstElementChild || app),
     get handoff() { return HO; }, get hs() { return HS; }, hoFinish: (o, x) => hoFinish(o, x), tt: f => ttCtx(f || D.floors[0]), climb: id => startRun(id || null), hub: () => hub(), get mapLine() { return mapLine; }, // tests
-    reloadSave() { save = loadSave(); }, settingsChanged, get embedded() { return !!BR; },
+    reloadSave() { save = loadSave(); practiceEpis(); }, settingsChanged, get embedded() { return !!BR; },
     playEvents: evs => play(evs), // tests: play engine-shaped events through the real presentation (battle lines, cut-ins)
     music: { state: () => music.state(), play: (k, o) => music.play(k, o), world: n => music.world(n), endWorld: () => music.endWorld() }
   };

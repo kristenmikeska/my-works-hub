@@ -79,7 +79,7 @@ window.FemcClimb = (() => {
   const guard = (base, lvl, name, note, o) => {
     const b = D.enemies[base];
     return Object.assign(scale(S(lvl, Object.assign({ hp: 3.6, st: 1.15, ma: 1.15, en: 1.22, ag: 1.06 }, o.k || {})), NG.guardHp, NG.guardAtk), {
-      name, arcana: b.arcana, aff: Object.assign({}, b.aff, { light: 'null', dark: 'null' }, o.aff || {}), skills: o.skills, ai: o.ai || 'exploit', // no instant kills img: b.img, svg: b.svg, idle: b.idle, h: Math.round((b.h || 240) * 1.15),
+      name, arcana: b.arcana, aff: Object.assign({}, b.aff, { light: 'null', dark: 'null' }, o.aff || {}), skills: o.skills, ai: o.ai || 'exploit', img: b.img, svg: b.svg, idle: b.idle, h: Math.round((b.h || 240) * 1.15), // no instant kills (ailImmune below)
       exp: Math.round(P.expFor(lvl) * 10), yen: P.yenFor(lvl) * 12, drop: 'guardian_crest', dropChance: 1, cls: 'guardian', guardian: true,
       ailImmune: ['charm', 'fear', 'bind', 'freeze'], alloutResist: 0.6, note });
   };

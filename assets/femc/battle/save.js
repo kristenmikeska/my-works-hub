@@ -40,6 +40,10 @@ window.FemcBattleSave = (() => {
 //          landings only add ids): tt.gates [teleport points stood on (data.js floor.gate)], tt.supers [superboss kinds beaten
 //          (tartarus.js; their first win pays once a playthrough)]. New Game+ resets both with the rest of tt.
 //          Since the New Game+ climb (2026-10-31): tt.climb [climb.js scene ids played; once a playthrough, reset by New Game+].
+// The late-game branches (2026-10-31, FEMC-LATE-BRANCHES-DESIGN.md; defaults, so older saves load unchanged, no treeV bump):
+//          rad { ray: buys } (Haenim's Radiance, 0-10), prad { mid: { buildId: buys } } (the party's), epis [finished epilogue
+//          worlds, from the life sim], late { top, zenith } (the New Game+ climb's high-water floor and the Zenith's superboss
+//          beaten, kept across New Game+; engine.js syncLate on every normalize, so carry() writes it down before tt resets).
   const SETTINGS = { textSpeed: 'normal', musicVol: 100, sfxVol: 100, remember: true, rushWhere: 'normal', rushStop: 30, difficulty: 'normal', shake: true, calm: false, numbers: true, pad: 'auto', tips: true, showtimes: 'on' };
   const SETTING_OK = { textSpeed: ['slow', 'normal', 'fast', 'instant'], rushWhere: ['normal', 'strong', 'all'], rushStop: [30, 50], difficulty: ['story', 'normal', 'hard', 'expert', 'merciless'], pad: ['auto', 'xbox', 'ps'], showtimes: ['on', 'still'] };
   const PREFS = ['settings', 'tipsSeen', 'cursor', 'music', 'sfx', 'speed', 'cutins', 'perf']; // device preferences: kept when a slot or backup is loaded
@@ -116,6 +120,25 @@ window.FemcBattleSave = (() => {
     ['bondsRev', 'bondGifts', 'floorsMapped', 'bondsLove'].forEach(k => { if (!Array.isArray(s[k])) s[k] = []; s[k] = [...new Set(s[k].filter(x => typeof x === 'string'))]; });
     if (!(s.shuffles >= 0)) s.shuffles = 0;
   }
+  /* The late-game branches' fields (all default to empty; unknown rays, members, builds and worlds are dropped). */
+  const EPI_WORLDS = ['runners', 'strangers', 'hoax', 'stay', 'true'];
+  function normalizeLate(s) {
+    const cnt = v => Math.max(0, Math.min((D.radiance || {}).max || 10, Math.floor(+v) || 0));
+    const rays = new Set(D.tree.filter(g => g.ray).map(g => g.id));
+    if (!obj(s.rad)) s.rad = {};
+    Object.keys(s.rad).forEach(k => { const v = cnt(s.rad[k]); if (!rays.has(k) || !v) delete s.rad[k]; else s.rad[k] = v; });
+    if (!obj(s.prad)) s.prad = {};
+    Object.keys(s.prad).forEach(mid => {
+      const t = D.ptrees[mid], r = s.prad[mid];
+      if (!t || !obj(r)) { delete s.prad[mid]; return; }
+      Object.keys(r).forEach(b => { const v = cnt(r[b]); if (!t.builds.some(x => x.id === b) || !v) delete r[b]; else r[b] = v; });
+      if (!Object.keys(r).length) delete s.prad[mid];
+    });
+    s.epis = [...new Set((Array.isArray(s.epis) ? s.epis : []).filter(w => EPI_WORLDS.includes(w)))];
+    if (!obj(s.late)) s.late = { top: 0, zenith: false };
+    s.late = { top: Math.max(0, Math.min(400, Math.floor(+s.late.top) || 0)), zenith: !!s.late.zenith };
+    if (E.syncLate) E.syncLate(s);
+  }
   /* Fills in anything missing, so v1/v2 saves (and hand-edited ones) load cleanly. Members who were already fighting
      keep Solar's level; new recruits join one level behind her. */
   const OLD_FLOORS = ['f2', 'f4', 'f6']; // batch-1 floors 2F/5F/9F → the first three floors of Thebel
@@ -190,6 +213,7 @@ window.FemcBattleSave = (() => {
     Object.keys(s.ranks).forEach(mid => { const r = +s.ranks[mid]; if (!member(mid) || !(r >= 0)) delete s.ranks[mid]; else s.ranks[mid] = Math.min(10, Math.floor(r)); });
     ['forgot', 'order'].forEach(k => Object.keys(s[k]).forEach(mid => { if (!member(mid) || !Array.isArray(s[k][mid])) delete s[k][mid]; else s[k][mid] = [...new Set(s[k][mid].filter(x => typeof x === 'string'))]; }));
     normalizeBuild(s);
+    normalizeLate(s);
     if (!Array.isArray(s.memories)) s.memories = [];
     s.memories = s.memories.filter(id => D.memories.some(m => m.id === id));
     if (!s.evo || typeof s.evo !== 'object') s.evo = {};

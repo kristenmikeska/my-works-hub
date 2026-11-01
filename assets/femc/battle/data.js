@@ -221,6 +221,21 @@ window.FEMC_BATTLE_DATA = (() => {
       desc: 'Fox lights over the field. Medium fire damage to all foes; each may be Disoriented.' },
     spring_rain: { name: 'Spring Rain', el: 'ice', type: 'dmg', target: 'all', power: 48, cost: { sp: 18 }, partyHeal: 0.08,
       desc: 'Cold rain, warm afterward. Medium ice damage to all foes, then the party heals 8%.' },
+    // ── The late-game branches (2026-10-31, FEMC-LATE-BRANCHES-DESIGN.md): the epilogue branches' actives and the one duet attack.
+    //    Effects reuse fx.js kinds; icons fall back to the element. `sure` never misses; `perFoe` grows with the foes it hits
+    //    (engine.js hitMult); `els` strikes once per element (useSkill); `duo` needs both members in the party (engine.js create).
+    grandmaster: { name: 'Grandmaster', el: 'pierce', type: 'dmg', target: 'one', power: 118, cost: { hp: 14 }, crit: 12, sure: true, fx: 'fleche',
+      desc: 'One clean, practiced line through the guard. Heavy pierce damage to one foe; it never misses.' },
+    red_crane: { name: 'Red Crane', el: 'support', type: 'ailment', target: 'one', ail: { id: 'bind', chance: 0.95 }, cost: { sp: 14 },
+      desc: 'A paper crane folds around one Shadow and lifts it out of the fight: it loses its next turn (some bosses shrug it off).' },
+    motion_carried: { name: 'Motion Carried', el: 'support', type: 'buff', target: 'allies', stat: ['atk', 'def'], cost: { sp: 18 }, fx: 'buff',
+      desc: 'All in favor. The party’s attack and defense up a level each (Matarukaja and Marakukaja at once).' },
+    landslide: { name: 'Landslide', el: 'almighty', type: 'dmg', target: 'all', power: 46, perFoe: 0.15, cost: { sp: 24 },
+      desc: 'Every vote at once. Almighty damage to all foes, 15% harder for each foe past the first.' },
+    spring_again: { name: 'Spring Again', el: 'heal', type: 'revive', target: 'dead', power: 100, once: true, cost: { sp: 20 },
+      desc: 'Once per battle: revives one fallen ally with all their HP.' },
+    ice_and_wind: { name: 'Ice and Wind', el: 'wind', els: ['wind', 'ice'], type: 'dmg', target: 'all', power: 72, cost: { sp: 30 }, duo: ['yukari', 'mitsuru'],
+      desc: 'A duet: Yukari’s gale, then Mitsuru’s frost. Heavy wind damage and then heavy ice damage to every foe. Only with both of them in the party.' },
 
     // ── Shadows
     bash: { name: 'Bash', el: 'strike', type: 'dmg', target: 'one', power: 30, desc: '' },
@@ -1478,6 +1493,137 @@ window.FEMC_BATTLE_DATA = (() => {
   const treeCenter = { id: 'unveiled', name: 'Unveiled', cost: 5, needs: ['bell-key', 'jade-key', 'star-key'], op: true, keystone: true, form: 'haenim-unveiled', center: true, at: { a: 270, r: 9.9 },
     desc: 'The sun you can look at. Needs Sunna, Mazu and Nike, and a full moon cleared. Unlocks Haenim, Unveiled.', fx: {} };
 
+  /* ── The late-game branches (2026-10-31, FEMC-LATE-BRANCHES-DESIGN.md, Kat's sign-off). Pushed onto `tree` below, so every
+     tree rule and sun.js see them; all placed by polar `at` (sun.js draws the Eclipse band and the branch labels).
+     - The Eclipse ring (group `eclipse`): one segment per ray (`seg`: 3 nodes at 3 / 4 / 5 points and a Solstice capstone at 8,
+       a stronger keystone or signature), then Total Eclipse (15) at the top. Opened by the New Game+ climb's floors (engine.js
+       eclipseOpen: the first block's summit opens the first two segments of ECLIPSE_ORDER, the second the next two, the third
+       the last two; the Zenith's superboss the crown). A segment's first node also needs that ray's keystone.
+     - Radiance (group `radiance`, `rad: <ray>`): at the end of each ray once the whole ray is owned (and its Eclipse segment,
+       once that's open); bought up to `radiance.max` times at `radiance.cost` (save.rad { ray: n }); each buy adds `fx` once
+       (passives, so PASSIVE_CAP still holds). `radiance.party[buildId]` is the same for a party build (save.prad { mid: { build: n } }).
+     - The epilogue branches (groups with `epi: <world>`): five nodes at 2 points between two rays, opened once that epilogue world
+       is finished (save.epis, synced from the life sim; engine.js epiDone). `req` (all of, not drawn): a node on each of the two rays.
+     Node fields used here: `seg`, `rad`, `req` / `reqAny` (hidden requirements), `link` (an edge drawn without a requirement),
+     `art` (Kat's late-game icon, FEMC-ART-TODO section 7: `<sheet>-<cell>`, wired by sun.js LATE_ART), `icon` (today's art/sun icon). */
+  const ECLIPSE_ORDER = ['healer', 'striker', 'mage', 'trickster', 'support', 'guard']; // two per climb block (Raqia, Zebul, Araboth)
+  const ECL = { striker: [0, 'st-key', 1], trickster: [60, 'tr-key', 2], mage: [120, 'jade-key', 3], healer: [180, 'bell-key', 4], guard: [240, 'gd-key', 5], support: [300, 'star-key', 6] };
+  const eseg = (ray, nodes) => {
+    const [a, key, cell] = ECL[ray], art = 'eclipse-' + cell, ids = nodes.map(n => n.id);
+    return nodes.map((n, i) => Object.assign({ seg: ray, cost: [3, 4, 5, 8][i], needs: [i ? ids[i - 1] : key], at: { a: a + [0, -3.2, 3.2, 0][i], r: [10.75, 11.55, 12.35, 13.25][i] }, art }, i === 3 ? { keystone: true, solstice: true } : {}, n));
+  };
+  const late = [
+    { id: 'eclipse', eclipse: true, name: 'Eclipse', world: 'New Game+', color: '#ff4f9e', theme: 'Past the tip of every ray',
+      blurb: 'A dark ring past the sun’s edge, with a pink rim. It opens a little at a time as the tower goes on above the top.',
+      nodes: [].concat(
+        eseg('striker', [
+          { id: 'ec-st1', name: 'Corona Edge', icon: 'crit', desc: 'Her critical rate rises by 5%.', fx: { critUp: 5 } },
+          { id: 'ec-st2', name: 'Sunspot', icon: 'crit', desc: 'Her critical hits deal 15% more.', fx: { critAdd: 0.15 } },
+          { id: 'ec-st3', name: 'Penumbra', icon: 'followup', desc: '+3 St, and her follow-up chance rises by 10%.', fx: { st: 3, followUp: 0.1 } },
+          { id: 'ec-st-sol', name: 'Solstice Daystar', desc: 'Solstice: Daystar, stronger. Her physical skills hit 10% harder, her follow-up chance rises by 10%, her crits deal 15% more, and she starts every battle with agility up too.', fx: { physUp: 0.1, followUp: 0.1, critAdd: 0.15, openBuff: ['agi'] } }]),
+        eseg('trickster', [
+          { id: 'ec-tr1', name: 'Black Fox', icon: 'ailment', desc: '+3 Lu, and her ailments land 5% more often.', fx: { lu: 3, ailUp: 0.05 } },
+          { id: 'ec-tr2', name: 'Foxfire Ring', icon: 'crit', desc: 'Her critical rate rises by 8% against a Down or ailing foe.', fx: { critIf: 8 } },
+          { id: 'ec-tr3', name: 'Shadow Dance', icon: 'speed', desc: 'She moves 8% sooner in the turn order, and a little evasion (+5).', fx: { haste: 0.08, evade: 5 } },
+          { id: 'ec-tr-sol', name: 'Solstice Sunshower', desc: 'Solstice: Sunshower, stronger. Her ailments land 10% more often, she hits ailing foes 15% harder, and her critical rate against a Down or ailing foe rises by 10%.', fx: { ailUp: 0.1, ailDmg: 0.15, critIf: 10 } }]),
+        eseg('mage', [
+          { id: 'ec-mg1', name: 'Jade Corona', icon: 'stat', desc: '+3 Ma and +15 max SP.', fx: { ma: 3, sp: 15 } },
+          { id: 'ec-mg2', name: 'Cold Sun', icon: 'magicup', desc: 'Her magic skills hit 8% harder.', fx: { magicUp: 0.08 } },
+          { id: 'ec-mg3', name: 'Black Ice', icon: 'weak', desc: 'Her weakness damage is 10% higher, and a weakness gives her 1 more SP back.', fx: { weakUp: 0.1, weakSp: 1 } },
+          { id: 'ec-mg-sol', name: 'Solstice Tide', desc: 'Solstice: Bufudyne becomes Niflheim (same slot): severe ice damage to one foe. Her magic hits 10% harder.', fx: { learn: 'niflheim', magicUp: 0.1 } }]),
+        eseg('healer', [
+          { id: 'ec-hl1', name: 'Silver Bell', icon: 'healup', desc: '+10 max SP; her healing is 10% stronger.', fx: { sp: 10, healMult: 1.1 } },
+          { id: 'ec-hl2', name: 'Eclipse Lap', icon: 'hpregen', desc: 'She regains 2% more of her HP at the start of each of her turns.', fx: { hpRegen: 0.02 } },
+          { id: 'ec-hl3', name: 'Night Run', icon: 'spregen', desc: 'She regains 2 more SP at the start of each of her turns.', fx: { spRegen: 2 } },
+          { id: 'ec-hl-sol', name: 'Solstice Encore', desc: 'Solstice: Mediarama becomes Mediarahan (same slot): fully heals the party. Her healing is 15% stronger.', fx: { learn: 'mediarahan', healMult: 1.15 } }]),
+        eseg('guard', [
+          { id: 'ec-gd1', name: 'Umbra', icon: 'stat', desc: '+3 En and +30 max HP.', fx: { en: 3, hp: 30 } },
+          { id: 'ec-gd2', name: 'Veil of Night', icon: 'evade', desc: 'A little more evasion (+6).', fx: { evade: 6 } },
+          { id: 'ec-gd3', name: 'Iron Corona', icon: 'counter', desc: 'Her counter chance rises by 8%, and guarding heals 2% more.', fx: { counter: 0.08, guardHeal: 0.02 } },
+          { id: 'ec-gd-sol', name: 'Solstice Corona', desc: 'Solstice: Corona, stronger. While she stands the party takes 5% less again (15% in all), her counter chance rises by 10%, and she takes 20% less while drawing attacks.', fx: { corona: 0.05, counter: 0.1, tauntDef: 0.2 } }]),
+        eseg('support', [
+          { id: 'ec-sp1', name: 'Star Chart', icon: 'stat', desc: '+3 Ag and +2 Lu.', fx: { ag: 3, lu: 2 } },
+          { id: 'ec-sp2', name: 'Campaign Night', icon: 'firstcut', desc: 'The first skill on each of her turns costs 10% less again.', fx: { firstCut: 0.1 } },
+          { id: 'ec-sp3', name: 'Exit Poll', icon: 'theurgy', desc: 'Her Theurgy gauge starts every battle 10% fuller.', fx: { thStart: 10 } },
+          { id: 'ec-sp-sol', name: 'Solstice Write-In', desc: 'Solstice: Nike, stronger. All-Out Attacks hit 80% harder (instead of 50%), a Shift’s boost rises to ×1.6, and the party starts every battle with agility up.', fx: { alloutMult: 1.8, shiftMult: 1.6, partyOpen: ['agi'] } }]),
+        [{ id: 'ec-total', name: 'Total Eclipse', cost: 15, keystone: true, needs: ['unveiled'], reqAny: ['ec-st-sol', 'ec-tr-sol', 'ec-mg-sol', 'ec-hl-sol', 'ec-gd-sol', 'ec-sp-sol'], at: { a: 270, r: 14.5 }, art: 'eclipse-7',
+          desc: 'Once per battle, her first damaging skill also counts as a hit of every element the target is weak to: it lands as a weakness (and 20% harder for each weakness past the first). Needs Unveiled and one Solstice.', fx: { totalEclipse: true } }]) },
+    { id: 'radiance', radiance: true, name: 'Radiance', world: 'The safety net', color: '#fff2b0', theme: 'Spare points, never wasted',
+      blurb: 'At the end of a finished ray. Each buy adds a little; the caps still hold.',
+      nodes: Object.entries(ECL).map(([ray, [a, , cell]]) => ({ id: 'rad-' + ray, rad: ray, cost: 2, at: { a, r: 14.25 }, link: [{ striker: 'ec-st-sol', trickster: 'ec-tr-sol', mage: 'ec-mg-sol', healer: 'ec-hl-sol', guard: 'ec-gd-sol', support: 'ec-sp-sol' }[ray]], art: 'eclipse-8', icon: 'keystone',
+        name: 'Radiance', desc: '' })) },
+    { id: 'epi-runners', epi: 'runners', world: 'Runners', name: 'Runners', between: ['trickster', 'striker'], angle: 30, color: '#ffb35c', theme: 'After the Runners epilogue',
+      nodes: [
+        { id: 'ep-ru1', name: 'Clutch Play', cost: 2, req: ['tr1', 'st1'], at: { a: 30, r: 8.3 }, icon: 'lowhp', art: 'runners-1', desc: 'When she’s the last one standing, Solar hits 25% harder.', fx: { clutch: 0.25 } },
+        { id: 'ep-ru2', name: 'Respawn', cost: 2, needs: ['ep-ru1'], at: { a: 23, r: 9.1 }, icon: 'bell', art: 'runners-2', desc: 'Once per battle, a blow that would end her leaves her standing with 15% of her HP.', fx: { respawn: true } },
+        { id: 'ep-ru3', name: 'Overtime', cost: 2, needs: ['ep-ru1'], at: { a: 37, r: 9.1 }, icon: 'buffturns', art: 'runners-3', desc: 'From the fifth round on, buffs she casts last a turn longer.', fx: { overtime: true } },
+        { id: 'ep-ru4', name: 'Team Comms', cost: 2, needs: ['ep-ru2'], at: { a: 20, r: 9.95 }, icon: 'speed', art: 'runners-4', desc: 'The party starts every battle with agility up, so their first moves come sooner.', fx: { partyOpen: ['agi'] } },
+        { id: 'ep-ru5', name: 'Grandmaster', cost: 2, needs: ['ep-ru3'], at: { a: 40, r: 9.95 }, art: 'runners-5', desc: 'Learn Grandmaster: a precise heavy pierce hit to one foe that never misses.', fx: { learn: 'grandmaster' } }] },
+    { id: 'epi-strangers', epi: 'strangers', world: 'strangers', name: 'Strangers', between: ['mage', 'guard'], angle: 150, color: '#6fc8ff', theme: 'After the strangers epilogue',
+      nodes: [
+        { id: 'ep-st1', name: 'Undertow', cost: 2, req: ['jade1', 'veil1'], at: { a: 150, r: 8.3 }, icon: 'ailment', art: 'strangers-1', desc: 'Her ice hits have a 30% chance to lower the target’s agility.', fx: { iceSlow: 0.3 } },
+        { id: 'ep-st2', name: 'Low Tide', cost: 2, needs: ['ep-st1'], at: { a: 143, r: 9.1 }, icon: 'corona', art: 'strangers-2', desc: 'While guarding she takes 30% less on top of the guard.', fx: { guardDef: 0.3 } },
+        { id: 'ep-st3', name: 'Red Crane', cost: 2, needs: ['ep-st1'], at: { a: 157, r: 9.1 }, art: 'strangers-3', desc: 'Learn Red Crane: lifts one Shadow out of the fight, so it loses its next turn.', fx: { learn: 'red_crane' } },
+        { id: 'ep-st4', name: 'Daeboreum Moon', cost: 2, needs: ['ep-st2'], at: { a: 140, r: 9.95 }, icon: 'nullail', art: 'strangers-4', desc: 'Solar resists Dark, and under a full moon she regains 5% of her HP each turn.', fx: { resist: 'dark', moonHeal: 0.05 } },
+        { id: 'ep-st5', name: 'Nightwalk', cost: 2, needs: ['ep-st3'], at: { a: 160, r: 9.95 }, icon: 'speed', art: 'strangers-5', desc: 'In Tartarus, her first-round hits land 20% harder.', fx: { ttAmbush: 0.2 } }] },
+    { id: 'epi-hoax', epi: 'hoax', world: 'HOAX', name: 'HOAX', between: ['support', 'healer'], angle: 330, color: '#ff8cc0', theme: 'After the HOAX epilogue',
+      nodes: [
+        { id: 'ep-hx1', name: 'Point of Order', cost: 2, req: ['star1', 'bell1'], at: { a: 330, r: 8.3 }, icon: 'weak', art: 'hoax-1', desc: 'When she hits a weakness, the Shadow’s buffs are struck off.', fx: { pointOfOrder: true } },
+        { id: 'ep-hx2', name: 'Rebuttal', cost: 2, needs: ['ep-hx1'], at: { a: 323, r: 9.1 }, icon: 'counter', art: 'hoax-2', desc: 'When a Shadow lowers her stats, a 40% chance she hits back.', fx: { rebuttal: 0.4 } },
+        { id: 'ep-hx3', name: 'Motion Carried', cost: 2, needs: ['ep-hx1'], at: { a: 337, r: 9.1 }, art: 'hoax-3', desc: 'Learn Motion Carried: the party’s attack and defense up a level each.', fx: { learn: 'motion_carried' } },
+        { id: 'ep-hx4', name: 'Recess', cost: 2, needs: ['ep-hx2'], at: { a: 320, r: 9.95 }, icon: 'spregen', art: 'hoax-4', desc: 'She regains 2 SP at the start of each of her turns.', fx: { spRegen: 2 } },
+        { id: 'ep-hx5', name: 'Landslide', cost: 2, needs: ['ep-hx3'], at: { a: 340, r: 9.95 }, art: 'hoax-5', desc: 'Learn Landslide: Almighty damage to every foe, harder the more foes there are.', fx: { learn: 'landslide' } }] },
+    { id: 'epi-stay', epi: 'stay', world: 'Stay', name: 'Stay', between: ['healer', 'guard'], angle: 210, color: '#ffc0d8', theme: 'After the Stay epilogue',
+      nodes: [
+        { id: 'ep-sy1', name: 'Hanami', cost: 2, req: ['bell1', 'veil1'], at: { a: 210, r: 8.3 }, icon: 'hpregen', art: 'stay-1', desc: 'At the start of her turns the rest of the party regains 3% of their HP.', fx: { partyRegen: 0.03 } },
+        { id: 'ep-sy2', name: 'Petal Shield', cost: 2, needs: ['ep-sy1'], at: { a: 203, r: 9.1 }, icon: 'corona', art: 'stay-2', desc: 'Every battle starts with a petal shield on each of the party (10% of their max HP) that takes the first blow.', fx: { petal: true } },
+        { id: 'ep-sy3', name: 'Promise', cost: 2, needs: ['ep-sy1'], at: { a: 217, r: 9.1 }, icon: 'stat', art: 'stay-3', desc: 'Every S.E.E.S. member gains +1 to every stat for each 5 link ranks (+2 at MAX).', fx: { promise: true } },
+        { id: 'ep-sy4', name: 'Spring Again', cost: 2, needs: ['ep-sy2'], at: { a: 200, r: 9.95 }, art: 'stay-4', desc: 'Learn Spring Again: once per battle, revive one ally with all their HP.', fx: { learn: 'spring_again' } },
+        { id: 'ep-sy5', name: 'Stay', cost: 2, needs: ['ep-sy3'], at: { a: 220, r: 9.95 }, icon: 'counter', art: 'stay-5', desc: 'While she guards, the one beside her (second in the party) takes half damage too.', fx: { stayCover: true } }] }
+  ];
+  tree.push(...late);
+  // Radiance: what each buy adds (Solar's by ray, a party build's by build id), at most `max` buys of `cost` points.
+  const radiance = { cost: 2, max: 10,
+    solar: { striker: { critUp: 1 }, trickster: { ailUp: 0.01 }, mage: { magicUp: 0.02 }, healer: { healMult: 1.01 }, guard: { counter: 0.01 }, support: { thStart: 2 } },
+    solarText: { striker: '+1% critical rate', trickster: '+1% ailment chance', mage: '+2% magic damage', healer: '+1% healing', guard: '+1% counter chance', support: '+2 Theurgy at the start of a battle' },
+    party: { champion: { crit: 1 }, combo: { followUp: 0.01 }, thunder: { boost: { elec: 1.01 } }, healer: { healMult: 1.01 }, lifeline: { hpRegen: 0.003 }, gale: { boost: { wind: 1.01 } },
+      wall: { tauntDef: 0.01 }, slugger: { boost: { fire: 1.01 } }, clutch: { lowHpUp: 0.01 }, freeze: { freezeUp: 0.01 }, charm: { ailUp: 0.01 }, debuff: { sapHit: 0.01 },
+      spread: { multiUp: 0.01 }, precision: { crit: 1 }, support: { sapHit: 0.01 }, light: { boost: { light: 1.01 } }, protection: { corona: 0.005 }, swift: { evade: 1 },
+      reaper: { instaUp: 1 }, mischief: { ailUp: 0.01 }, power: { physUp: 0.01 }, bloodlust: { lowHpUp: 0.01 }, retaliation: { counter: 0.01 }, hype: { thStart: 1 },
+      chaos: { swing: 0.01 }, intel: { weakUp: 0.01 }, defense: { corona: 0.005 }, execute: { execute: 0.01 }, ambush: { ambush: 0.01 } },
+    partyText: { champion: '+1% critical rate', combo: '+1% follow-up chance', thunder: '+1% electric damage', healer: '+1% healing', lifeline: '+0.3% HP a turn', gale: '+1% wind damage',
+      wall: '1% less damage while drawing attacks', slugger: '+1% fire damage', clutch: '+1% damage below a third of HP', freeze: '+1% Freeze chance', charm: '+1% ailment chance',
+      debuff: '+1% chance a hit lowers defense', spread: '+1% chance of an extra hit', precision: '+1% critical rate', support: '+1% chance a hit lowers defense', light: '+1% light damage',
+      protection: 'the party takes 0.5% less', swift: '+1 evasion', reaper: '+1% instant-kill chance', mischief: '+1% ailment chance', power: '+1% physical damage',
+      bloodlust: '+1% damage below a third of HP', retaliation: '+1% counter chance', hype: '+1 Theurgy at the start of a battle', chaos: '+1% chance of a wild swing',
+      intel: '+1% weakness damage', defense: 'the party takes 0.5% less', execute: '+1% damage on low foes', ambush: '+1% first-round damage' } };
+  late[1].nodes.forEach(n => { n.desc = `Radiance (${n.rad}): ${radiance.cost} points a buy, up to ${radiance.max} buys. Each buy: ${radiance.solarText[n.rad]} (the usual caps still hold). Opens once every node on the ray is owned (and its Eclipse segment, once that is open).`; });
+  /* The party's late game (FEMC-LATE-BRANCHES-DESIGN.md section 4): a second crown per member (10 points, New Game+ once the
+     climb passes 300F; fx crown2, engine.js "Second crowns") and the duets (a shared node between two orbits, 5 points from
+     either member, both links at MAX; fx duets, engine.js "Duets"). `art`: FEMC-ART-TODO 7F-7H. */
+  const crown2 = {
+    akihiko: { id: 'ak-crown2', name: 'Undisputed Champion', art: 'crowns-1-1', desc: 'His free jab after a One More can also knock the Shadow Down (50%).', fx: { crown2: 'champion' } },
+    yukari: { id: 'yu-crown2', name: 'Guardian Arrow', art: 'crowns-1-2', desc: 'Second Wind also catches one other party member: the first of them who would fall is back at once with half their HP.', fx: { crown2: 'guardianArrow' } },
+    junpei: { id: 'jp-crown2', name: 'Grand Slam Encore', art: 'crowns-1-3', desc: 'While he’s standing, Solar takes 25% less from all-target attacks.', fx: { crown2: 'encore' } },
+    mitsuru: { id: 'mi-crown2', name: 'Execution, perfected', art: 'crowns-1-4', desc: 'Execution’s guaranteed critical works twice per battle.', fx: { crown2: 'execution2' } },
+    aigis: { id: 'ai-crown2', name: 'Orgia Overdrive', art: 'crowns-1-5', desc: 'Orgia Mode lasts five turns.', fx: { crown2: 'overdrive' } },
+    ken: { id: 'ke-crown2', name: 'Justice Served', art: 'crowns-1-6', desc: 'Whenever the party finishes a Shadow with Light, Solar gets 8 SP back.', fx: { crown2: 'justice' } },
+    koromaru: { id: 'ko-crown2', name: 'Faithful', art: 'crowns-2-1', desc: 'When he counters for Solar, he also guards her until her next turn.', fx: { crown2: 'faithful' } },
+    shinjiro: { id: 'sh-crown2', name: 'Last Stand, unbroken', art: 'crowns-2-2', desc: 'Last Stand can trigger twice per battle.', fx: { crown2: 'unbroken' } },
+    jihoon: { id: 'jh-crown2', name: 'Main Character Energy', art: 'crowns-2-3', desc: 'His first buff each battle also lasts twice as long on Solar.', fx: { crown2: 'mce' } },
+    minji: { id: 'mj-crown2', name: 'Final Cut', art: 'crowns-2-4', desc: 'Cut. Print. can replay any party member’s landed skill, not just Solar’s.', fx: { crown2: 'finalCut' } },
+    jungwon: { id: 'jw-crown2', name: 'Mandate', art: 'crowns-2-5', desc: 'His Appointed target also takes 20% more from the rest of the party.', fx: { crown2: 'mandate' } },
+    haechan: { id: 'hc-crown2', name: 'Every Universe, Every Time', art: 'crowns-2-6', desc: 'His strike after Solar’s critical is much more likely to crit too.', fx: { crown2: 'everyTime' } }
+  };
+  const duets = [
+    { id: 'duet-old-friends', pair: ['akihiko', 'shinjiro'], name: 'Old Friends', art: 'duets-1', desc: 'With both in the party, when one of them counters, the other hits back too.', fx: { duets: ['oldFriends'] } },
+    { id: 'duet-ice-wind', pair: ['yukari', 'mitsuru'], name: 'Ice and Wind', art: 'duets-2', desc: 'Both learn Ice and Wind, a two-person attack: heavy wind, then heavy ice, on every foe. Only with both in the party.', fx: { duets: ['iceWind'], learn: 'ice_and_wind' } },
+    { id: 'duet-pinch', pair: ['junpei', 'koromaru'], name: 'Pinch Hitters', art: 'duets-3', desc: 'With both in the party, when one is knocked out the other’s attack goes up two levels.', fx: { duets: ['pinch'] } },
+    { id: 'duet-shield-spear', pair: ['aigis', 'ken'], name: 'Shield and Spear', art: 'duets-4', desc: 'With both in the party, when Aigis covers Solar she takes the hit behind Ken’s barrier (a shield of 15% of her HP), and Solar gets a 10% shield too.', fx: { duets: ['shieldSpear'] } },
+    { id: 'duet-two-universes', pair: ['haechan', 'jungwon'], name: 'Two Universes', art: 'duets-5', desc: 'With both in the party, Solar’s critical hits also lower the target’s defense.', fx: { duets: ['twoUniverses'] } },
+    { id: 'duet-hype-spotlight', pair: ['jihoon', 'minji'], name: 'Hype and Spotlight', art: 'duets-6', desc: 'With both in the party, the first time Minji scans a Shadow each battle the whole party’s attack goes up a level.', fx: { duets: ['hypeSpotlight'] } }
+  ];
+
   /* ── Party trees, redesigned (2026-10-31, FEMC-SKILL-TREES-DESIGN.md, Kat's sign-off): a small radial "orbit" for each of the
      twelve fighters, drawn by sun.js like Solar's sun. A core of 4 in the middle, three builds of 10 going outward and a Solar ray
      of 5 (6 for the links that reach rank 15) pointing back toward her, plus a crown: about 40 nodes in 8 rings.
@@ -1990,5 +2136,5 @@ window.FEMC_BATTLE_DATA = (() => {
   };
 
   return { portraits: P, faceFocus, elements, affinityOrder, skills, ailments, tactics, attack, personas, party, defaultParty, theurgyGain, items, startItems, startYen, materials,
-    gear, startGear, shops, enemies, blocks, floors, oldFloors, ops, map, events, memories, memoryPlaceholder, music, clips, navigator, nav, tree, treeCenter, ptrees, ptreeRings, ptreeShape, ptreeCost, chains, buffRules, skillSlots, progression, difficulty, glossary, tips };
+    gear, startGear, shops, enemies, blocks, floors, oldFloors, ops, map, events, memories, memoryPlaceholder, music, clips, navigator, nav, tree, treeCenter, ptrees, ptreeRings, ptreeShape, ptreeCost, ECLIPSE_ORDER, radiance, crown2, duets, chains, buffRules, skillSlots, progression, difficulty, glossary, tips };
 })();
