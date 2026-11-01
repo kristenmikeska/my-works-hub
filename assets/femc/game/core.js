@@ -1904,6 +1904,7 @@ window.FemcGame = (() => {
        ambient: { id, from: 'M/D', to: 'M/D', thread, slot, flag(s), met, rank, events, msgs, reply }, random daytime texts
          and group chats: one may arrive on a random day inside its window (at most one a day), and surely by its last day
          or two; past `to` it's dropped.
+     Any message, or a reply option, may carry `sticker: '<pack>-<n>'` (ui.js stickerSrc draws it; `t` is its fallback).
      A text's id goes into phone.done once it's sent or dropped. textById() finds any of them (for replies). */
   const AR_ID = (l, n) => `ar-${l.id}-${n}`;
   function afterRankTexts() {
@@ -1937,7 +1938,7 @@ window.FemcGame = (() => {
     appendPhone(t.thread, t.msgs);
     S.phone.unread[t.thread] = (S.phone.unread[t.thread] || 0) + t.msgs.length;
     if (t.reply) S.phone.pending[t.thread] = t.id;
-    toast('text', `${D.texts.threads[t.thread] || name(t.thread)}: ${t.msgs[0].t}`, { thread: t.thread, from: t.msgs[0].from, msg: t.msgs[0].t, count: t.msgs.length });
+    toast('text', `${D.texts.threads[t.thread] || name(t.thread)}: ${t.msgs[0].sticker ? '[sticker]' : t.msgs[0].t}`, { thread: t.thread, from: t.msgs[0].from, msg: t.msgs[0].t, sticker: t.msgs[0].sticker, count: t.msgs.length });
   }
   function nextDated() {
     for (const t of D.texts.texts) {
@@ -1985,7 +1986,7 @@ window.FemcGame = (() => {
     const t = textById(S.phone.pending[thread]);
     if (!t) return;
     const o = t.reply[i];
-    appendPhone(thread, [...(!o.silent ? [{ from: 'solar', t: o.t }] : []), ...(o.then || [])]);
+    appendPhone(thread, [...(!o.silent ? [{ from: 'solar', t: o.t, ...(o.sticker ? { sticker: o.sticker } : {}) }] : []), ...(o.then || [])]);
     if (o.link && o.notes && isMet(o.link)) progress(o.link).xp += o.notes;
     if (o.crush) crushApply(o.crush);
     if (o.stat) addStats(o.stat);

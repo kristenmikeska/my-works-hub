@@ -116,7 +116,7 @@
   });
   add('yukari', {
     2: { slot: 'evening', msgs: [{ from: 'yukari', t: 'did you wear the rabbit thing yet' }],
-      reply: [{ t: 'tomorrow', link: 'yukari', notes: 2, then: [{ from: 'yukari', t: "ok good. don't send a pic. i'll see it" }] },
+      reply: [{ t: 'tomorrow', link: 'yukari', notes: 2, then: [{ from: 'yukari', t: "ok good. don't send a pic. i'll see it" }, { from: 'yukari', t: '(bunny)', sticker: 'yukari-9' }] },
         { t: 'no its too cute to wear', link: 'yukari', notes: 1, then: [{ from: 'yukari', t: "that's literally what it's for" }] }] },
     5: { slot: 'late', msgs: [{ from: 'yukari', t: 'thanks for today. for the other table' }, { from: 'yukari', t: "i'm not crying. i'm just saying thanks" }],
       reply: [{ t: 'anytime. pick a new word for next time', link: 'yukari', notes: 3, then: [{ from: 'yukari', t: 'ok. next time it’s "umbrella"' }] },
@@ -124,7 +124,7 @@
   });
   add('junpei', {
     2: { slot: 'evening', msgs: [{ from: 'junpei', t: 'same time next week!! PITCHER!!' }],
-      reply: [{ t: 'lifetime appointment', link: 'junpei', notes: 2, then: [{ from: 'junpei', t: 'NO TAKE BACKS' }] },
+      reply: [{ t: 'lifetime appointment', link: 'junpei', notes: 2, then: [{ from: 'junpei', t: 'NO TAKE BACKS' }, { from: 'junpei', t: '(hype)', sticker: 'junpei-1' }] },
         { t: 'only if u buy new balls', link: 'junpei', notes: 2, then: [{ from: 'junpei', t: 'deal. 100 yen shop. only the finest' }] }] },
     5: { slot: 'late', msgs: [{ from: 'junpei', t: 'hey' }, { from: 'junpei', t: 'thanks for pulling us out. even me. esp me' }],
       reply: [{ t: 'always', link: 'junpei', notes: 3, then: [{ from: 'junpei', t: '...ok' }, { from: 'junpei', t: 'cool. cool cool' }] },
@@ -132,7 +132,7 @@
   });
   add('mitsuru', {
     2: { slot: 'evening', msgs: [{ from: 'mitsuru', t: 'Thank you for this evening. The broth was instructive.' }, { from: 'mitsuru', t: 'Akihiko is not to be informed.' }],
-      reply: [{ t: 'my lips are sealed', link: 'mitsuru', notes: 2, then: [{ from: 'mitsuru', t: 'Good.' }] },
+      reply: [{ t: 'my lips are sealed', link: 'mitsuru', notes: 2, then: [{ from: 'mitsuru', t: 'Good.', sticker: 'mitsuru-6' }] },
         { t: 'same time next week?', link: 'mitsuru', notes: 3, then: [{ from: 'mitsuru', t: "I've already written it in my planner. Not with the shop. They don't seem to take reservations." }] }] },
     6: { slot: 'late', msgs: [{ from: 'mitsuru', t: 'Thank you for the long way.' }],
       reply: [{ t: 'anytime', link: 'mitsuru', notes: 3, then: [{ from: 'mitsuru', t: 'I may hold you to that.' }] },
@@ -141,7 +141,7 @@
   add('fuuka', {
     1: { slot: 'evening', msgs: [{ from: 'fuuka', t: 'senpai, thank you for tasting attempt 2!!' }, { from: 'fuuka', t: "attempt 3 is tomorrow. i'm sorry in advance" }],
       reply: [{ t: 'ill be there', link: 'fuuka', notes: 2, then: [{ from: 'fuuka', t: 'thank you!! please bring water' }] },
-        { t: 'retire the ruler', link: 'fuuka', notes: 1, then: [{ from: 'fuuka', t: 'the ruler stays :(' }] }] },
+        { t: 'retire the ruler', link: 'fuuka', notes: 1, then: [{ from: 'fuuka', t: 'the ruler stays :(' }, { from: 'fuuka', t: '(stirring, with the ruler)', sticker: 'fuuka-2' }] }] },
     4: { slot: 'late', msgs: [{ from: 'fuuka', t: 'seconds: 5. i crossed it out and wrote 6' }, { from: 'fuuka', t: "i'm counting mitsuru-senpai twice" }],
       reply: [{ t: 'she deserves to count twice', link: 'fuuka', notes: 2, then: [{ from: 'fuuka', t: 'that’s what i thought!!' }] },
         { t: 'ur allowed to be proud', link: 'fuuka', notes: 3, then: [{ from: 'fuuka', t: 'i am. a little' }, { from: 'fuuka', t: 'is that allowed?' }] }] }
@@ -215,20 +215,20 @@
       { from: 'junpei', t: 'WHO ATE MY PUDDING' }, { from: 'junpei', t: 'it had my NAME on it' }, { from: 'yukari', t: 'it had "junp" on it. the rest rubbed off' }, { from: 'junpei', t: 'SO U ADMIT IT' }
     ], reply: [{ t: 'it was akihiko', then: [{ from: 'junpei', t: 'he would NEVER. he only eats protein' }, { from: 'yukari', t: 'he ate it' }] }, { t: '(Leave it on read.)', silent: true, then: [{ from: 'junpei', t: 'the silence is so loud rn' }] }] },
     { id: 'am-akihiko-rain', thread: 'akihiko', from: '5/12', to: '6/1', msgs: [{ from: 'akihiko', t: 'rain tomorrow' }, { from: 'akihiko', t: 'we run anyway' }],
-      reply: [{ t: 'obviously', link: 'akihiko', notes: 2, then: [{ from: 'akihiko', t: 'good answer' }] }, { t: 'we do NOT', link: 'akihiko', notes: 1, then: [{ from: 'akihiko', t: 'we do though' }] }] },
+      reply: [{ t: 'obviously', link: 'akihiko', notes: 2, then: [{ from: 'akihiko', t: 'good answer' }, { from: 'akihiko', t: '(thumbs up)', sticker: 'akihiko-5' }] }, { t: 'we do NOT', link: 'akihiko', notes: 1, then: [{ from: 'akihiko', t: 'we do though' }] }] },
     { id: 'am-sees-midterms', thread: 'sees', from: '5/22', to: '6/6', flag: 'joined-junpei', msgs: [
       { from: 'junpei', t: 'results are up who wants to see a man ranked 200-something' }, { from: 'yukari', t: 'out of how many' }, { from: 'junpei', t: 'we dont talk about that' }
-    ], reply: [{ t: 'proud of u', then: [{ from: 'junpei', t: 'THANK U. finally someone with taste' }] }, { t: 'lol', then: [{ from: 'junpei', t: 'the lol hurt more than the ranking' }] }] },
+    ], reply: [{ t: 'proud of u', then: [{ from: 'junpei', t: 'THANK U. finally someone with taste' }] }, { t: 'lol', then: [{ from: 'junpei', t: 'the lol hurt more than the ranking' }, { from: 'junpei', t: '...ok', sticker: 'junpei-9' }] }] },
     { id: 'am-sees-fuuka', thread: 'sees', from: '6/14', to: '6/30', events: ['a3-radios'], msgs: [
       { from: 'junpei', t: 'junpei added fuuka to the group' }, { from: 'fuuka', t: 'hi everyone!! thank you for having me :)' }, { from: 'junpei', t: 'welcome to the official S.E.E.S. group chat (seniors not invited)' }, { from: 'fuuka', t: "but solar-senpai's a senior?" }, { from: 'yukari', t: "she's honorary. don't ask" }
     ], reply: [{ t: 'welcome fuuka!!', then: [{ from: 'fuuka', t: 'thank you senpai!! (honorary)' }] }, { t: 'i am an honorary junior. its a whole thing', then: [{ from: 'fuuka', t: 'i see!! i will write that down' }] }] },
     { id: 'am-fuuka-data', thread: 'fuuka', from: '6/20', to: '7/10', events: ['a3-radios'], msgs: [{ from: 'fuuka', t: 'senpai, quick question. strawberry or chocolate?' }, { from: 'fuuka', t: "it's for data" }],
-      reply: [{ t: 'strawberry', link: 'fuuka', notes: 2, then: [{ from: 'fuuka', t: 'noted!!' }] }, { t: 'data for what', link: 'fuuka', notes: 1, then: [{ from: 'fuuka', t: "i can't say. it's classified" }, { from: 'fuuka', t: 'mitsuru-senpai taught me that word' }] }] },
+      reply: [{ t: 'strawberry', link: 'fuuka', notes: 2, then: [{ from: 'fuuka', t: 'noted!!' }, { from: 'fuuka', t: '(typing it up)', sticker: 'fuuka-8' }] }, { t: 'data for what', link: 'fuuka', notes: 1, then: [{ from: 'fuuka', t: "i can't say. it's classified" }, { from: 'fuuka', t: 'mitsuru-senpai taught me that word' }] }] },
     { id: 'am-sees-heat', thread: 'sees', from: '7/26', to: '8/16', events: ['a3-yakushima'], msgs: [
       { from: 'junpei', t: 'the AC is a LIAR' }, { from: 'yukari', t: "it's not lying. it's just not doing anything" }, { from: 'fuuka', t: 'aigis says the lounge is 34 degrees' }, { from: 'junpei', t: 'aigis is a thermometer now??' }
     ], reply: [{ t: 'roof is cooler. come up', then: [{ from: 'junpei', t: 'OMW' }, { from: 'yukari', t: 'omw' }] }, { t: 'im lying on the kitchen floor', then: [{ from: 'junpei', t: 'genius. coming' }] }] },
     { id: 'am-akihiko-roof', thread: 'akihiko', from: '8/1', to: '8/22', events: ['a3-yakushima'], msgs: [{ from: 'akihiko', t: "roof. 6am. it's the only cool hour" }, { from: 'akihiko', t: 'bring water' }],
-      reply: [{ t: 'ok', link: 'akihiko', notes: 2, then: [{ from: 'akihiko', t: 'good' }] }, { t: 'its summer break', link: 'akihiko', notes: 1, then: [{ from: 'akihiko', t: "shadows don't take summer break" }] }] },
+      reply: [{ t: 'ok', sticker: 'solar-2', link: 'akihiko', notes: 2, then: [{ from: 'akihiko', t: 'good' }] }, { t: 'its summer break', link: 'akihiko', notes: 1, then: [{ from: 'akihiko', t: "shadows don't take summer break" }] }] },
     { id: 'am-ken-rota', thread: 'ken', from: '8/10', to: '8/31', events: ['a3-full-house'], msgs: [{ from: 'ken', t: 'Solar-san. Koromaru prefers the river route on Thursdays.' }, { from: 'ken', t: 'I have updated the rota.' }],
       reply: [{ t: 'river route it is', link: 'ken', notes: 2, then: [{ from: 'ken', t: 'Thank you. He will be pleased.' }] }, { t: 'how do u know what he prefers', link: 'ken', notes: 2, then: [{ from: 'ken', t: 'He told me.' }, { from: 'ken', t: '...He pulled.' }] }] },
     { id: 'am-yukari-phone', thread: 'yukari', from: '8/26', to: '9/10', events: ['a4-first-text'], msgs: [{ from: 'yukari', t: "you've been on your phone a lot" }, { from: 'yukari', t: 'everything ok?' }],
@@ -240,13 +240,13 @@
       { from: 'jihoon', t: 'jihoney: Who Has The Dorm Wifi Password' }, { from: 'hyein', t: 'hyein: u dont live here' }, { from: 'jihoon', t: 'jihoney: I Am Here Constantly. I Am Basically Furniture' }
     ], reply: [{ t: 'HEHEHE its on the fridge', then: [{ from: 'jihoon', t: 'jihoney: Bless You' }] }, { t: 'furniture doesnt need wifi', then: [{ from: 'jihoon', t: 'jihoney: Discrimination' }, { from: 'hanni', t: "hanni: it's on the fridge jihoon" }] }] },
     { id: 'am-minji-light', thread: 'minji', from: '9/28', to: '10/22', flag: 'arrived-minji', msgs: [{ from: 'minji', t: "the light's good at the river at 5" }, { from: 'minji', t: "not asking you to come. just telling you the light's good" }],
-      reply: [{ t: 'see u at 5', link: 'minji', notes: 3, then: [{ from: 'minji', t: 'ok' }, { from: 'minji', t: 'ok :)' }] }, { t: 'film it for me', link: 'minji', notes: 2, then: [{ from: 'minji', t: 'already am' }] }] },
+      reply: [{ t: 'see u at 5', link: 'minji', notes: 3, then: [{ from: 'minji', t: 'ok' }, { from: 'minji', t: 'ok :)' }] }, { t: 'film it for me', link: 'minji', notes: 2, then: [{ from: 'minji', t: 'already am' }, { from: 'minji', t: '(filming)', sticker: 'minji-3' }] }] },
     { id: 'am-yunjin-natto', thread: 'yunjin', from: '10/12', to: '11/6', flag: 'arrived-yunjin', msgs: [{ from: 'yunjin', t: 'babe what is natto' }, { from: 'yunjin', t: 'and why did fuuka look at me like that when i said it smelled like a crime' }],
       reply: [{ t: 'its fermented beans lol. its good', link: 'yunjin', notes: 2, then: [{ from: 'yunjin', t: 'u LIE' }] }, { t: 'bc u hurt her feelings', link: 'yunjin', notes: 2, then: [{ from: 'yunjin', t: "oh no. i'm buying her flowers" }, { from: 'yunjin', t: "i'm buying her ALL the flowers" }] }] },
     { id: 'am-jungwon-budget', thread: 'jungwon', from: '10/17', to: '11/10', flag: 'arrived-jungwon', msgs: [{ from: 'jungwon', t: "i've been asked to proofread the athletic budget again." }, { from: 'jungwon', t: 'i said yes. why do i keep saying yes.' }],
-      reply: [{ t: 'bc ur a nerd :D', link: 'jungwon', notes: 2, then: [{ from: 'jungwon', t: "that's not an explanation." }, { from: 'jungwon', t: "it's a diagnosis." }] }, { t: 'say no next time', link: 'jungwon', notes: 3, then: [{ from: 'jungwon', t: "i'll practice." }, { from: 'jungwon', t: 'no.' }, { from: 'jungwon', t: 'that felt terrible.' }] }] },
+      reply: [{ t: 'bc ur a nerd :D', link: 'jungwon', notes: 2, then: [{ from: 'jungwon', t: "that's not an explanation." }, { from: 'jungwon', t: "it's a diagnosis." }, { from: 'jungwon', t: '...', sticker: 'jungwon-1' }] }, { t: 'say no next time', link: 'jungwon', notes: 3, then: [{ from: 'jungwon', t: "i'll practice." }, { from: 'jungwon', t: 'no.' }, { from: 'jungwon', t: 'that felt terrible.' }] }] },
     { id: 'am-jihoon-pilates', thread: 'jihoon', from: '10/18', to: '11/12', flag: 'arrived-jihoon', msgs: [{ from: 'jihoon', t: 'pilates at the guesthouse at 7. akihiko said he would come' }, { from: 'jihoon', t: 'he is Late. Weak' }],
-      reply: [{ t: 'HEHEHE hes on a run', link: 'jihoon', notes: 2, then: [{ from: 'jihoon', t: 'Running Is For Cowards' }] }, { t: 'he will destroy u', link: 'jihoon', notes: 2, then: [{ from: 'jihoon', t: 'He Will Try' }] }] },
+      reply: [{ t: 'HEHEHE hes on a run', link: 'jihoon', notes: 2, then: [{ from: 'jihoon', t: 'Running Is For Cowards' }] }, { t: 'he will destroy u', link: 'jihoon', notes: 2, then: [{ from: 'jihoon', t: 'He Will Try' }, { from: 'jihoon', t: '(on his throne)', sticker: 'jihoon-1' }] }] },
     { id: 'am-jaehyun-fridge', thread: 'jaehyun', from: '10/27', to: '11/20', flag: 'arrived-jaehyun', msgs: [{ from: 'jaehyun', t: 'The schedule on the fridge is wrong.' }, { from: 'jaehyun', t: 'Recycling is Wednesday, not Tuesday.' }],
       reply: [{ t: 'how do u even know that', link: 'jaehyun', notes: 2, then: [{ from: 'jaehyun', t: 'I read the city notice.' }, { from: 'jaehyun', t: "Someone has to." }] }, { t: 'tell mitsuru not me lol', link: 'jaehyun', notes: 1, then: [{ from: 'jaehyun', t: "I'd rather you did." }] }] },
     { id: 'am-hateclub-worksheets', thread: 'hateclub', from: '11/3', to: '11/26', flag: 'arrived-crew', msgs: [
@@ -258,17 +258,17 @@
     { id: 'am-sunoo-cat', thread: 'sunoo', from: '11/9', to: '12/6', flag: 'arrived-sunoo', msgs: [{ from: 'sunoo', t: 'first customer today was a cat' }, { from: 'sunoo', t: "it didn't pay but it was very polite" }],
       reply: [{ t: 'HEHEHE what did it order', link: 'sunoo', notes: 2, then: [{ from: 'sunoo', t: 'a saucer of milk. on the house' }] }, { t: 'u spoil everyone', link: 'sunoo', notes: 2, then: [{ from: 'sunoo', t: "that's the business model!!" }] }] },
     { id: 'am-haechan-window', thread: 'haechan', from: '11/12', to: '12/8', flag: 'arrived-haechan', msgs: [{ from: 'haechan', t: "your window's open" }, { from: 'haechan', t: "it's 4 degrees" }],
-      reply: [{ t: 'how do u know my window is open', link: 'haechan', notes: 2, then: [{ from: 'haechan', t: 'draft under your door' }, { from: 'haechan', t: 'close it' }] }, { t: 'i like the cold', link: 'haechan', notes: 2, then: [{ from: 'haechan', t: 'you like being stubborn' }, { from: 'haechan', t: 'close it, agasshi' }] }] },
+      reply: [{ t: 'how do u know my window is open', link: 'haechan', notes: 2, then: [{ from: 'haechan', t: 'draft under your door' }, { from: 'haechan', t: 'close it' }] }, { t: 'i like the cold', link: 'haechan', notes: 2, then: [{ from: 'haechan', t: 'you like being stubborn' }, { from: 'haechan', t: 'close it, agasshi' }, { from: 'haechan', t: 'liar', sticker: 'haechan-2' }] }] },
     { id: 'am-cherry-fanclub', thread: 'cherry', from: '11/15', to: '12/10', flag: 'arrived-cherry', msgs: [{ from: 'cherry', t: 'why does sunghoon have a FAN CLUB here' }, { from: 'cherry', t: "its been like two days" }],
       reply: [{ t: 'HEHEHE jealous', link: 'cherry', notes: 2, then: [{ from: 'cherry', t: 'i will end u' }, { from: 'cherry', t: 'ok a little' }] }, { t: 'join it', link: 'cherry', notes: 1, then: [{ from: 'cherry', t: 'over my dead body' }, { from: 'cherry', t: '...whats the membership fee' }] }] },
     { id: 'am-mark-piano', thread: 'mark', from: '11/21', to: '12/14', flag: 'arrived-mark', msgs: [{ from: 'mark', t: "found a piano at the mall nobody plays" }, { from: 'mark', t: "it's so out of tune. i love it" }, { from: 'mark', t: "nobody really comes with me anymore. anyway" }],
       reply: [{ t: 'play me something on it', link: 'mark', notes: 2, then: [{ from: 'mark', t: 'ofc!! tmrw?' }] }, { t: 'lol only u would love that', link: 'mark', notes: 1, then: [{ from: 'mark', t: 'haha guilty' }] }] },
     { id: 'am-searchparty-finals', thread: 'searchparty', from: '12/10', to: '12/17', flag: 'arrived-jihoon', msgs: [
       { from: 'hanni', t: 'hanni: good luck on finals sol!!!! ur gonna do so good' }, { from: 'hyein', t: 'hyein: i made u a playlist for studying. its all sad songs. sorry' }, { from: 'jihoon', t: 'jihoney: Remember Who Copied Off Jaehyuk For Three Years. Not You. Never You' }, { from: 'jihoon', t: 'jihoney: u didnt study for ours either. i Checked' }, { from: 'jihoon', t: "jihoney: Last Time We Had Exams You Didn't Show Up. Show Up This Time" }
-    ], reply: [{ t: 'thank u guys omg', then: [{ from: 'hanni', t: 'hanni: <3' }] }, { t: 'HEHEHE i never copied', then: [{ from: 'jihoon', t: 'jihoney: Lies. Slander. Beautiful' }] }] },
+    ], reply: [{ t: 'thank u guys omg', then: [{ from: 'hanni', t: 'hanni: <3' }] }, { t: '<3', sticker: 'solar-6', then: [{ from: 'hanni', t: 'hanni: <3' }] }, { t: 'HEHEHE i never copied', then: [{ from: 'jihoon', t: 'jihoney: Lies. Slander. Beautiful' }] }] },
     { id: 'am-sees-break', thread: 'sees', from: '12/25', to: '1/6', flag: 'year-goes-on', msgs: [
       { from: 'junpei', t: 'WINTER BREAK' }, { from: 'junpei', t: 'nobody wake me up til january' }, { from: 'yukari', t: 'it IS january in a week junpei' }, { from: 'junpei', t: 'then nobody wake me up for a week' }
-    ], reply: [{ t: 'see u in a week', then: [{ from: 'junpei', t: 'goodnight forever' }] }, { t: 'akihiko is going to wake u at 5', then: [{ from: 'junpei', t: 'NOT IF I MOVE ROOMS' }] }] },
+    ], reply: [{ t: 'see u in a week', then: [{ from: 'junpei', t: 'goodnight forever' }, { from: 'junpei', t: '(asleep in a pile)', sticker: 'sees-4' }] }, { t: 'akihiko is going to wake u at 5', then: [{ from: 'junpei', t: 'NOT IF I MOVE ROOMS' }] }] },
     { id: 'am-akihiko-snow', thread: 'akihiko', from: '12/27', to: '1/12', flag: 'year-goes-on', msgs: [{ from: 'akihiko', t: 'snow' }, { from: 'akihiko', t: 'we run anyway' }],
       reply: [{ t: 'obviously', link: 'akihiko', notes: 2, then: [{ from: 'akihiko', t: "there she is" }] }, { t: 'we walk. carefully', link: 'akihiko', notes: 2, then: [{ from: 'akihiko', t: 'fine. we walk fast. carefully' }] }] },
     { id: 'am-sisters-luckybags', thread: 'sisters', from: '1/2', to: '1/14', flag: 'year-goes-on', msgs: [
@@ -278,7 +278,7 @@
       { from: 'hyunsuk', t: 'geniusuk: jihoon fell asleep in the guesthouse bath' }, { from: 'jaehyuk', t: 'jaehyukkie: is he breathing. someone answer me.' }, { from: 'hyunsuk', t: 'geniusuk: hes SNORING. hes fine. i checked twice' }, { from: 'asahi', t: "asanoonecares: we're leaving him. snoring" }, { from: 'junkyu', t: 'junkyute: im putting a towel on him!!!' }
     ], reply: [{ t: 'HEHEHEHE take a pic', then: [{ from: 'asahi', t: 'asanoonecares: already did' }, { from: 'jihoon', t: 'jihoney: DELETE IT' }] }, { t: 'kyu ur a saint', then: [{ from: 'junkyu', t: 'junkyute: :D' }] }] },
     { id: 'am-yukari-graduation', thread: 'yukari', from: '1/12', to: '3/3', flag: 'year-goes-on', msgs: [{ from: 'yukari', t: 'the third years are all crying in the hallway about graduation' }, { from: 'yukari', t: "you're not allowed to graduate. i decided" }],
-      reply: [{ t: 'i accept ur ruling', link: 'yukari', notes: 2, then: [{ from: 'yukari', t: 'good' }] }, { t: 'ill visit', link: 'yukari', notes: 3, then: [{ from: 'yukari', t: "you'd better" }] }] },
+      reply: [{ t: 'i accept ur ruling', link: 'yukari', notes: 2, then: [{ from: 'yukari', t: 'good' }, { from: 'yukari', t: 'ok good', sticker: 'yukari-3' }] }, { t: 'ill visit', link: 'yukari', notes: 3, then: [{ from: 'yukari', t: "you'd better" }] }] },
     { id: 'am-minji-editing', thread: 'minji', from: '1/18', to: '3/5', flag: 'year-goes-on', msgs: [{ from: 'minji', t: "i'm editing all of it. everything i shot here" }, { from: 'minji', t: "it's going to take forever. i don't want it to be done" }],
       reply: [{ t: 'then dont finish it', link: 'minji', notes: 3, then: [{ from: 'minji', t: 'ok' }, { from: 'minji', t: "i'll leave one frame out. so it's never done" }] }, { t: 'can i see it when it is', link: 'minji', notes: 2, then: [{ from: 'minji', t: "you'll be the first. you're always the first" }] }] }
   );

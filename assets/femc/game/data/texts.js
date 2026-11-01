@@ -1,7 +1,9 @@
 /* Phone texts for femc-game.html. A text arrives the first time the day reaches its `date` (and `slot`, if given)
    while its conditions hold: flag (a story flag is set), rank ({ link: n }), met ([ids]).
    thread: conversation id; threads: display names. reply: Solar's answer options ({ t, notes, link } gives that link ♪).
-   Link invitations ("free right now?") come from each link's `invite` data, not from here. */
+   Link invitations ("free right now?") come from each link's `invite` data, not from here.
+   Stickers (2026-11-01): any message or reply option may carry `sticker: '<pack>-<n>'` (art/stickers; ui.js stickerSrc); its `t`
+   is the alt text and the fallback. Sparingly: about one thread in five, mostly the last word; `sees-*` only in the sees group. */
 window.FEMC_GAME_TEXTS = {
   // Group threads (`groups`, plus any thread where two or more people besides Solar write) show each sender's name over their
   // bubble (ui.js openPhone). The searchers' groups also start each line with the sender's handle ("hyein: ", "jihoney: "),
@@ -24,7 +26,7 @@ window.FEMC_GAME_TEXTS = {
       { from: 'junpei', t: 'ok so nobody believes me about the coffins. like NOBODY. my own homeroom laughed at me' },
       { from: 'junpei', t: 'u saw it right?? tell me u saw it' }
     ], reply: [
-      { t: 'i saw it', then: [{ from: 'junpei', t: 'THANK you. ur my only witness. we’re like. bonded now' }] },
+      { t: 'i saw it', then: [{ from: 'junpei', t: 'THANK you. ur my only witness. we’re like. bonded now' }, { from: 'junpei', t: '(finger guns)', sticker: 'junpei-4' }] },
       { t: 'saw what', then: [{ from: 'junpei', t: 'SOLAR' }, { from: 'junpei', t: 'ok that was cold. respect' }] }
     ] },
     { id: 't-0419-sees', thread: 'sees', date: '4/19', flag: 'joined-junpei', msgs: [
@@ -47,7 +49,8 @@ window.FEMC_GAME_TEXTS = {
     { id: 't-0502-sees', thread: 'sees', date: '5/2', msgs: [
       { from: 'junpei', t: 'GOLDEN WEEK BABY' },
       { from: 'junpei', t: 'movie night at the dorm. i’m picking' },
-      { from: 'yukari', t: 'absolutely not' }
+      { from: 'yukari', t: 'absolutely not' },
+      { from: 'junpei', t: 'please', sticker: 'junpei-7' }
     ] },
     { id: 't-0510-yukari', thread: 'yukari', date: '5/10', msgs: [
       { from: 'yukari', t: 'you ok after last night?' },
@@ -99,7 +102,7 @@ window.FEMC_GAME_TEXTS = {
       { from: 'minji', t: "(asking 20 times. that was 1)" }
     ], reply: [
       { t: 'u can film me. 2 through 20 approved', link: 'minji', notes: 3, then: [{ from: 'minji', t: 'ok' }, { from: 'minji', t: 'ok. noted. thank you' }] },
-      { t: 'only if u buy me a melon soda', link: 'minji', notes: 2, then: [{ from: 'minji', t: 'deal. two.' }] }
+      { t: 'only if u buy me a melon soda', link: 'minji', notes: 2, then: [{ from: 'minji', t: 'deal. two.' }, { from: 'minji', t: '(sipping)', sticker: 'minji-8' }] }
     ] },
     { id: 't-1003-sees', thread: 'sees', date: '10/3', flag: 'arrived-jihoon', msgs: [
       { from: 'junpei', t: 'ok so i added some people. house is FULL. its basically a dorm now' },

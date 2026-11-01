@@ -1154,6 +1154,12 @@ button.g-st-link:is(:hover, :focus-visible) { outline: none; border-color: #fff;
 .g-ph-msg.group b { display: flex; align-items: baseline; gap: 5px; margin-bottom: 2px; color: #b0185e; font-size: 11.5px; opacity: 1; }
 .g-ph-msg.group b small { color: #8a7080; font-weight: 500; font-size: 10.5px; }
 .g-ph-notice { align-self: center; max-width: 90%; margin: 2px 0; color: #8a7080; font-size: 12px; text-align: center; }
+/* Chat stickers (ui.js stickerSrc): the picture alone, no bubble; a reply option that's a sticker is the picture too. */
+.g-ph-msg.stk { padding: 0; background: none !important; }
+.g-ph-msg.stk.group b { padding: 0 4px; }
+.g-sticker { display: block; width: clamp(96px, 30vw, 124px); height: auto; filter: drop-shadow(0 2px 3px rgba(20, 7, 15, .22)); }
+.g-ph-reply button.g-ph-stk { justify-self: start; padding: 4px 10px; border-style: dashed; }
+.g-ph-reply button.g-ph-stk img { display: block; width: 64px; height: 64px; object-fit: contain; }
 .g-ph-msg.in { animation: g-ph-in .28s cubic-bezier(.2, 1.3, .4, 1) both; transform-origin: 0 100%; }
 .g-ph-msg.me.in { transform-origin: 100% 100%; }
 .g-ph-msg.me.sent { animation: g-ph-send .32s cubic-bezier(.2, 1.1, .4, 1) both; }

@@ -20864,6 +20864,589 @@
         }
       ],
       "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 110,
+      "source": "stickers-solar.png",
+      "sourceNow": "New Adds/stickers-solar.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "f5dd89d9cf5106cff23cb4427b1ae1565a087c905289a8b4c6e8144b03cea70b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/stickers/",
+      "conversion": "tools/femc-greens.py all stickers-solar: #00FF00 keyed, 3 x 3 cells trimmed onto transparent 200 px squares, white sticker border kept, WebP q90; source unchanged (left in New Adds)",
+      "placement": "art/stickers/index.js FEMC_STICKERS; ui.js stickerSrc (phone threads, reply buttons); lines in data/texts.js and living-texts.js",
+      "outputs": [
+        {
+          "path": "assets/femc/game/art/stickers/solar-1.webp",
+          "sha256": "2ba29341657d9ddf302dba1c270c53309913f1659e6253adb38b71e3cd81c591"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/solar-2.webp",
+          "sha256": "fc2afb7d60b71b60a9b9a99564ac9a21a29618ce9869612c50fc1d7947f4f9df"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/solar-3.webp",
+          "sha256": "bc78c5c25285353d71a7f23489d1abae35134914eb478bf5b1d930522dfac25e"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/solar-4.webp",
+          "sha256": "bd8af90f7582c3750f90616feb665891fd9262062d1885c15063aa8679b78652"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/solar-5.webp",
+          "sha256": "f91fc47c27cefd16985271aee61b0b8e96d5e0fc54537aaa110ad93b272f165f"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/solar-6.webp",
+          "sha256": "35c3e69e88fe612acfa4daa9e78599eabdf05ba1c38cf196dcf85d0d15742a72"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/solar-7.webp",
+          "sha256": "a304dd900a270fae4a9013d30d9aba7b3d822850b10a5c15d6f88be84502fa17"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/solar-8.webp",
+          "sha256": "e397d9984aa19a6876e58656a364ff58fdd0d920c74e2d8b65b8bff32cb5330e"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/solar-9.webp",
+          "sha256": "4367bb183affb23d1a8d2627ba80619f52015b76f323dd53e01ab23e48eee944"
+        }
+      ],
+      "section": "FEMC-ART-TODO 14"
+    },
+    {
+      "batch": 110,
+      "source": "stickers-junpei.png",
+      "sourceNow": "New Adds/stickers-junpei.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "4826b74305d9dcd4f585ba08c30177cfdb6531e47ae9e946cb284177191ba42d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/stickers/",
+      "conversion": "tools/femc-greens.py all stickers-junpei: #00FF00 keyed, 3 x 3 cells trimmed onto transparent 200 px squares, white sticker border kept, WebP q90; source unchanged (left in New Adds)",
+      "placement": "art/stickers/index.js FEMC_STICKERS; ui.js stickerSrc (phone threads, reply buttons); lines in data/texts.js and living-texts.js",
+      "outputs": [
+        {
+          "path": "assets/femc/game/art/stickers/junpei-1.webp",
+          "sha256": "d467cab187caca75b1f1d868bc4b1eaac885496934ed1433d296e260a795d305"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/junpei-2.webp",
+          "sha256": "eb61916046f6c7904c4722db22a0638d6afecf3669352a6fba4ad716d54459d0"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/junpei-3.webp",
+          "sha256": "26bf60eca7517772b2590cae5389b762b4eb0609fb36cd1290ae57ef1b679864"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/junpei-4.webp",
+          "sha256": "65203382e9d8a9a536cdc60dd003c2968380cd7aedf0125c2a76dfe011d5fdbd"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/junpei-5.webp",
+          "sha256": "59a1ef5044d972997d2687591f0b37811408e7e5262c02b2556e94b7015ebdef"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/junpei-6.webp",
+          "sha256": "91a4020074928f3042a5b488fa42e02dd6065da2cd4ebc4c0b4213ad7fe2007d"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/junpei-7.webp",
+          "sha256": "5af79254ed7657ca539a288c467e0fc6f0cf282c854e5d08866dbc3500694f8a"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/junpei-8.webp",
+          "sha256": "7c20a5a7e3f9cd345e54a93b754328efd6efc44b03d463d86055b07b8d528964"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/junpei-9.webp",
+          "sha256": "781daae1e525d951de6195d2394d772f0fb9279be4a7377d7b44936d9d687551"
+        }
+      ],
+      "section": "FEMC-ART-TODO 14"
+    },
+    {
+      "batch": 110,
+      "source": "stickers-yukari.png",
+      "sourceNow": "New Adds/stickers-yukari.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "e3c385ba9478bfcdaf4ee4c2f3e8a2e5c2a628989feb457e000318928da879c2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/stickers/",
+      "conversion": "tools/femc-greens.py all stickers-yukari: #00FF00 keyed, 3 x 3 cells trimmed onto transparent 200 px squares, white sticker border kept, WebP q90; source unchanged (left in New Adds)",
+      "placement": "art/stickers/index.js FEMC_STICKERS; ui.js stickerSrc (phone threads, reply buttons); lines in data/texts.js and living-texts.js",
+      "outputs": [
+        {
+          "path": "assets/femc/game/art/stickers/yukari-1.webp",
+          "sha256": "8e7ff0dbf5a1929e6f70a037f793b00b24bbb55feb96b8f066af85057bff4b3b"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/yukari-2.webp",
+          "sha256": "4f03b226373f5c7f068e80dae164a256e1b986690de3abaee4ab23f242f224c9"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/yukari-3.webp",
+          "sha256": "aa38fa865de08c3e06339d825111af3eb71dd94f4c67f8b1e67a1624597abb1f"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/yukari-4.webp",
+          "sha256": "1fbdac529ddb31e40f496b5c462be9026f0b8d03e2a784045ba2c20e3b48a81d"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/yukari-5.webp",
+          "sha256": "3ee385ddb59e8710502b9dc3782b60688921646edfe8ba950f4dbf456938403c"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/yukari-6.webp",
+          "sha256": "196645c205e0bd4392fbbea1902dbe42ffdad18f4f325541b55813a422d002a5"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/yukari-7.webp",
+          "sha256": "746ce3437ad85dcf6dc632410af5c0a9e4f6ec8bb753e5bb84c9d5672b19bc68"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/yukari-8.webp",
+          "sha256": "217edf39872f477a4251f8c5b435611296d554fbd17693ef20d0301e22177de5"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/yukari-9.webp",
+          "sha256": "85a5c5ffa445f6e1da1d92922d540fba291971d30630303d543326690ecc7552"
+        }
+      ],
+      "section": "FEMC-ART-TODO 14"
+    },
+    {
+      "batch": 110,
+      "source": "stickers-akihiko.png",
+      "sourceNow": "New Adds/stickers-akihiko.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "50b214e8ade4f8c2ad049d503dc667ea30678205e4d28304ecd8abea8749a2b1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/stickers/",
+      "conversion": "tools/femc-greens.py all stickers-akihiko: #00FF00 keyed, 3 x 3 cells trimmed onto transparent 200 px squares, white sticker border kept, WebP q90; source unchanged (left in New Adds)",
+      "placement": "art/stickers/index.js FEMC_STICKERS; ui.js stickerSrc (phone threads, reply buttons); lines in data/texts.js and living-texts.js",
+      "outputs": [
+        {
+          "path": "assets/femc/game/art/stickers/akihiko-1.webp",
+          "sha256": "f4321adab03738b29cc252da1eda50ca10c2212ed68d462c682e50bce3e2a677"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/akihiko-2.webp",
+          "sha256": "b707a00ed69625b33e47cef93735510afad8bf9f9150503b2d104d1736a54875"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/akihiko-3.webp",
+          "sha256": "324135dac2a5244d57ed44bd86439b70c3aafbb00de54f7949de9965ff283121"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/akihiko-4.webp",
+          "sha256": "4da6876ee6f04057112b7e29756384d27fc69ff76c7d4df1e5eabfed694caeb1"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/akihiko-5.webp",
+          "sha256": "04f783aef1d8c250f369ea544c2d8a78174a11698f8bfc1ead09ce5efa37bbcc"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/akihiko-6.webp",
+          "sha256": "8f9fa9c23534566138b7e4f13d8bc47fbc2b96660bc88172b1bcfa289929d26a"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/akihiko-7.webp",
+          "sha256": "592f508898841a2f97ae11492cb2e0f673a1493564d31a816bb6d36b26d4ab8a"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/akihiko-8.webp",
+          "sha256": "33945cb7cd5da797055fc27381757415d77e444a0fa9428145145ebfdf3138c7"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/akihiko-9.webp",
+          "sha256": "e27cc866ba3c916faecc5e129bfdae9f9f0961cc72641ef126e3318d1bd77631"
+        }
+      ],
+      "section": "FEMC-ART-TODO 14"
+    },
+    {
+      "batch": 110,
+      "source": "stickers-mitsuru.png",
+      "sourceNow": "New Adds/stickers-mitsuru.png",
+      "size": [
+        1295,
+        1214
+      ],
+      "sha256": "0a83f50f15a58b67a76b688a8827237d6f4b3c7e39f0460cbc7c3831d95c010b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/stickers/",
+      "conversion": "tools/femc-greens.py all stickers-mitsuru: #00FF00 keyed, 3 x 3 cells trimmed onto transparent 200 px squares, white sticker border kept, WebP q90; source unchanged (left in New Adds)",
+      "placement": "art/stickers/index.js FEMC_STICKERS; ui.js stickerSrc (phone threads, reply buttons); lines in data/texts.js and living-texts.js",
+      "outputs": [
+        {
+          "path": "assets/femc/game/art/stickers/mitsuru-1.webp",
+          "sha256": "cf34be01cc34765237a9622968075fa04d9f7ecb067440c94375d34c55fabec1"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/mitsuru-2.webp",
+          "sha256": "f8e82eed93268caad19ea7a2285b980d789fdccc96663655e1b0d8e0de9618dc"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/mitsuru-3.webp",
+          "sha256": "caabf1c16772533a49432578135b11d6a34963b9956269b68f4fcc9a1f515b01"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/mitsuru-4.webp",
+          "sha256": "233c1d9997144d6ab3e1453e4c075ad889474de9d2b12da36b338ab92830147c"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/mitsuru-5.webp",
+          "sha256": "3d873026ee8f42941801413eb80b4bcfdb2a5a1dcb74b06a972e80315b97e3d8"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/mitsuru-6.webp",
+          "sha256": "33fe5df158bbdfa672f13a50031094062ba50d4de7f0a3bb555ecb422427f707"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/mitsuru-7.webp",
+          "sha256": "bacd25ec37b9402fb0f0ef09b0fd662f004f48104dba256548388f5646d64dc9"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/mitsuru-8.webp",
+          "sha256": "5b6b5d9a0c1273de11d54c93ccdfe84ddc0d8cccd5882d8727b0d5f7cd9fe0a1"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/mitsuru-9.webp",
+          "sha256": "cd8902da3f41aa8468052c8b441d6a7b3bb89a86f5a21ddc04b29c3b543b7a56"
+        }
+      ],
+      "section": "FEMC-ART-TODO 14"
+    },
+    {
+      "batch": 110,
+      "source": "stickers-fuuka.png",
+      "sourceNow": "New Adds/stickers-fuuka.png",
+      "size": [
+        1295,
+        1214
+      ],
+      "sha256": "1947710aee8ff452cb8dcc406c91c3c523e949c69c3d6b26c4ec13ef0d5ac01e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/stickers/",
+      "conversion": "tools/femc-greens.py all stickers-fuuka: #00FF00 keyed, 3 x 3 cells trimmed onto transparent 200 px squares, white sticker border kept, WebP q90; source unchanged (left in New Adds)",
+      "placement": "art/stickers/index.js FEMC_STICKERS; ui.js stickerSrc (phone threads, reply buttons); lines in data/texts.js and living-texts.js",
+      "outputs": [
+        {
+          "path": "assets/femc/game/art/stickers/fuuka-1.webp",
+          "sha256": "44f356bdd06bc0519955c8aeb6bf85954043286929aaee0e15a7ba026fffb629"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/fuuka-2.webp",
+          "sha256": "7a9209b22b656a7494307072bda330416d77458de7fcdb75e7fd9ed34ed22dda"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/fuuka-3.webp",
+          "sha256": "68e302fa7ee51dfd8d2ea74f0c2bf32e41ad89640a7223dae55ecc49cee960be"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/fuuka-4.webp",
+          "sha256": "ab688fe0f5dd1cb004d1cb1555880f46fa07e50e2ae6e1f49318e6c57b218039"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/fuuka-5.webp",
+          "sha256": "2e092cead26ec8b49c4c70f540e293213d069dc6f7bb9ee8b34be1afc06b627a"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/fuuka-6.webp",
+          "sha256": "00dfffb45a94a9541eef4c305b0f334e3f945df29f97b202816d50bea5fb62f4"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/fuuka-7.webp",
+          "sha256": "cc25166759e551d5d2374fcb65b29349b4b538990661f548f3b21d6538fdcd7d"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/fuuka-8.webp",
+          "sha256": "7a2cb9119544e574fb8c8d1576c33fd5deb4a6b32eee9e9c70dcf142b7724991"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/fuuka-9.webp",
+          "sha256": "ef3906fddcc36d2c6a26d7de1cfdc17313a6acfa5f114b9ffa18bedb9b385561"
+        }
+      ],
+      "section": "FEMC-ART-TODO 14"
+    },
+    {
+      "batch": 110,
+      "source": "stickers-haechan.png",
+      "sourceNow": "New Adds/stickers-haechan.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "887c1661f98810723ca7ba29694b99d0faa8cc1f80c71302ebd0e770cc77fef1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/stickers/",
+      "conversion": "tools/femc-greens.py all stickers-haechan: #00FF00 keyed, 3 x 3 cells trimmed onto transparent 200 px squares, white sticker border kept, WebP q90; source unchanged (left in New Adds)",
+      "placement": "art/stickers/index.js FEMC_STICKERS; ui.js stickerSrc (phone threads, reply buttons); lines in data/texts.js and living-texts.js",
+      "outputs": [
+        {
+          "path": "assets/femc/game/art/stickers/haechan-1.webp",
+          "sha256": "9ada8ee89f9c5458647845b18446051796e462fa03288d37f23d139f5a087b45"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/haechan-2.webp",
+          "sha256": "67bc86eb27e824640b1e5b330a9632fb9b62a001e55b174d81251d579e90002c"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/haechan-3.webp",
+          "sha256": "12bc0c655edb838babe5fd20eace743a140751b348815ac46f82dc234f3c1f63"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/haechan-4.webp",
+          "sha256": "7767c2a9bac303b6efd00c644250daa43d704f3e1af885286bf86e60726cc3f0"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/haechan-5.webp",
+          "sha256": "2cf0a71c6a0f4f98a815befb0cdbe0f3ac1c60fe168bb30c4ddb475f5b9ae907"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/haechan-6.webp",
+          "sha256": "d2eb237946b681cf1527196afbdf7c0ebaa237046fe730c2889119c434bb3d73"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/haechan-7.webp",
+          "sha256": "38e4fef7e03d43c33806da1bf1e27761cdbadeebbc91429a8493b9350638f670"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/haechan-8.webp",
+          "sha256": "81631fe6b64454e053f97b106f662e2dca1c36a2b462758b74ee4db9fadc0527"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/haechan-9.webp",
+          "sha256": "55558f66807405944f8038d8a1b8ef9bbcf6d76279a83a34e7649bb7d092c809"
+        }
+      ],
+      "section": "FEMC-ART-TODO 14"
+    },
+    {
+      "batch": 110,
+      "source": "stickers-jungwon.png",
+      "sourceNow": "New Adds/stickers-jungwon.png",
+      "size": [
+        1272,
+        1237
+      ],
+      "sha256": "84417e3425c1343928d214e565a7c9c7db1236be8363f162917a5cc1fc29a721",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/stickers/",
+      "conversion": "tools/femc-greens.py all stickers-jungwon: #00FF00 keyed, 3 x 3 cells trimmed onto transparent 200 px squares, white sticker border kept, WebP q90; source unchanged (left in New Adds)",
+      "placement": "art/stickers/index.js FEMC_STICKERS; ui.js stickerSrc (phone threads, reply buttons); lines in data/texts.js and living-texts.js",
+      "outputs": [
+        {
+          "path": "assets/femc/game/art/stickers/jungwon-1.webp",
+          "sha256": "5cfa4665407d23293eb60c04abdee05fd44a2046eb4c995380cf8b0b48dd7040"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/jungwon-2.webp",
+          "sha256": "f3076783b288bdb48cb7832c2dda8753c7aac6f7f53b9e72d7dd7f32ff0cbbd4"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/jungwon-3.webp",
+          "sha256": "45c861cea038b8e9949d994169df981548bb677bb0bffdb875a46b0b8168a02b"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/jungwon-4.webp",
+          "sha256": "a809484118098cd2a6d18bdbe1ef433fc2ea83f5cdb253194100cb8f19ea57dc"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/jungwon-5.webp",
+          "sha256": "3fd635024417bbdbc4777408eec27f2460fb45eca7ac9da07d1401b21bf1a2f7"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/jungwon-6.webp",
+          "sha256": "676ed675bc74a4346b6d71f422074e609c722f1685fc7b5b8ff502e63c1c1892"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/jungwon-7.webp",
+          "sha256": "5aa8f03b3cf8a28c75cbe943348a28932f3d57fcd3e673b2ced906c8d8fd2880"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/jungwon-8.webp",
+          "sha256": "4c9689c6973680fb8280c4aaa18ecaa1b792a53885b4a06657c5dc4069e42067"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/jungwon-9.webp",
+          "sha256": "6f5d2187a3be2dd07e25e563ae4975b62f6bd6467fea9e2049348bc37e728de5"
+        }
+      ],
+      "section": "FEMC-ART-TODO 14"
+    },
+    {
+      "batch": 110,
+      "source": "stickers-jihoon.png",
+      "sourceNow": "New Adds/stickers-jihoon.png",
+      "size": [
+        1224,
+        1285
+      ],
+      "sha256": "19cde017e6bf1de52b21bad7e99173baf6e2036cb34564caea44303663c76d2c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/stickers/",
+      "conversion": "tools/femc-greens.py all stickers-jihoon: #00FF00 keyed, 3 x 3 cells trimmed onto transparent 200 px squares, white sticker border kept, WebP q90; source unchanged (left in New Adds)",
+      "placement": "art/stickers/index.js FEMC_STICKERS; ui.js stickerSrc (phone threads, reply buttons); lines in data/texts.js and living-texts.js",
+      "outputs": [
+        {
+          "path": "assets/femc/game/art/stickers/jihoon-1.webp",
+          "sha256": "1f28d41056f80a9b5ce2d7978fb6e0f523da679e8f43d253b50366cfba2840cb"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/jihoon-2.webp",
+          "sha256": "7866406fb1ba7f736c3194a3189befecb01699f552c131e94d149ca7453f2a91"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/jihoon-3.webp",
+          "sha256": "b8b468f76900e0c4e0bcc260eda8ab011ec9584193bd9fc66d48337d2a24c83b"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/jihoon-4.webp",
+          "sha256": "b746fafadd83c276c7a9ac7373e265c3e3bdd9466fe39ed1d0503afb81795ba2"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/jihoon-5.webp",
+          "sha256": "6781574e003f765c14738ec020914377107daabf856f98da898ecbf36ef98d43"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/jihoon-6.webp",
+          "sha256": "7f2cbcede042432d9eb5e9a04a6efa453c89c9938db671a66485bc7b2b891a12"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/jihoon-7.webp",
+          "sha256": "d321e7bbd46fbb7101bb79d6944e6fbd85d35ef5dc9fc5b9c5cd4adfa09edc2a"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/jihoon-8.webp",
+          "sha256": "09dd0f7118c6b25a087c7bfd2890d6cd81826288d336ee3aa7249d4d595e5289"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/jihoon-9.webp",
+          "sha256": "e51127049c84c3708c1a939847207d98f71e4d3eb1a342d5025a9ca345156604"
+        }
+      ],
+      "section": "FEMC-ART-TODO 14"
+    },
+    {
+      "batch": 110,
+      "source": "stickers-minji.png",
+      "sourceNow": "New Adds/stickers-minji.png",
+      "size": [
+        1230,
+        1278
+      ],
+      "sha256": "1c618fb956ae767bd0b9c0c21ddfeed3d16268534f7ec3747518da4c5dbe4a37",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/stickers/",
+      "conversion": "tools/femc-greens.py all stickers-minji: #00FF00 keyed, 3 x 3 cells trimmed onto transparent 200 px squares, white sticker border kept, WebP q90; source unchanged (left in New Adds)",
+      "placement": "art/stickers/index.js FEMC_STICKERS; ui.js stickerSrc (phone threads, reply buttons); lines in data/texts.js and living-texts.js",
+      "outputs": [
+        {
+          "path": "assets/femc/game/art/stickers/minji-1.webp",
+          "sha256": "2c69dea6f2ffb69b6bb7e583d7d729eee6794d64f282c822d53ebbe6f746d7af"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/minji-2.webp",
+          "sha256": "04c2e360311d275f85f3079903cd3dc024cc45d240ae895d2001be6fedbd1816"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/minji-3.webp",
+          "sha256": "04bdd0f480a9aba78da58597015c92b6d578cc249542486e6e3df678576e47d9"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/minji-4.webp",
+          "sha256": "3c12ae9e28161b4af323200ef9ac3248aa1b66c3a22b8811088921b533a11368"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/minji-5.webp",
+          "sha256": "d2925949c7b42c5aaec2f6f32e20b7f8cf0226c6afa05e54f975cb9671145576"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/minji-6.webp",
+          "sha256": "edb31835a69548058f1e239ce6e919b0a3baf3e68a9107001958f8a44c105a85"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/minji-7.webp",
+          "sha256": "f2265cbc84f24b9c873a7a650456ae4a9d7654871abd8bb437428430da6bcdaa"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/minji-8.webp",
+          "sha256": "2a77bcc8ee41d6385441716fa9f27686ee4015a16f9fdcf7a7a2c20a25e86bf0"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/minji-9.webp",
+          "sha256": "39ac86ad5556ad48442a7c6eb2ac566e720a070cb1e658d65d037c563030c6af"
+        }
+      ],
+      "section": "FEMC-ART-TODO 14"
+    },
+    {
+      "batch": 110,
+      "source": "stickers-sees.png",
+      "sourceNow": "New Adds/stickers-sees.png",
+      "size": [
+        1312,
+        1199
+      ],
+      "sha256": "fea81f9ce884bad2d81a2bd44483ca38a8bc4ee0cff55282455442f56b062586",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/stickers/",
+      "conversion": "tools/femc-greens.py all stickers-sees: #00FF00 keyed, 3 x 3 cells trimmed onto transparent 200 px squares, white sticker border kept, WebP q90; source unchanged (left in New Adds)",
+      "placement": "art/stickers/index.js FEMC_STICKERS; ui.js stickerSrc (phone threads, reply buttons); lines in data/texts.js and living-texts.js",
+      "outputs": [
+        {
+          "path": "assets/femc/game/art/stickers/sees-1.webp",
+          "sha256": "0c76a5aed0f04aab7c9e6884da5d50ebebeb4b20313b9941447203a5cfbc8e2f"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/sees-2.webp",
+          "sha256": "d731d929575dda01011606bc99b59ab3723b93bbd857d5ea18ae5b563112a79b"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/sees-3.webp",
+          "sha256": "d2506da65eaf0100f2e00addb7271dcdfe558676ca60bd90c6ea75c005584165"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/sees-4.webp",
+          "sha256": "dc9854a332a9599984fd779eb627538f3f47716e1161d50df5b97a83c40607d2"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/sees-5.webp",
+          "sha256": "437a675b74d5a184ba6455edd8985fff3264a026e2de94fb15964987622afc4a"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/sees-6.webp",
+          "sha256": "96104658631a27078de2e8a97723cce8c10f09588406d78e469e5ed29e37363c"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/sees-7.webp",
+          "sha256": "18334260d21893f1bb124b3db330683c6cf2cb391ceda2e0c52082f973c37580"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/sees-8.webp",
+          "sha256": "b4f0547fecb1e66823b2c282985ce8298447c28704fffb0142e6a4219d154694"
+        },
+        {
+          "path": "assets/femc/game/art/stickers/sees-9.webp",
+          "sha256": "5357f1849a911fdc4fce94227081216bd53b9174c93ef777bfbe0a942d65b505"
+        }
+      ],
+      "section": "FEMC-ART-TODO 14"
     }
   ],
   "batch1Validation": {
@@ -22274,5 +22857,13 @@
     "headless": "tests/femc_browser.Page: each outfit equipped in Menu → Wardrobe (preview wears it), Jungwon in Heir's Suit and Haechan in Encore Stage on the battlefield of a real fight in the game's battle frame (and Pinstripe / Fairground in an earlier run), Soundcheck and Fairground Lights scene portraits with Outfits in scene portraits on, his own faces with it off; no console errors",
     "tests": "femc_cosmetics (all sections; newpending now 38 outfits; Haechan Spotlight and Solar Spotlight featured sets updated), femc_menu, femc_gallery passed; femc_field_poses not run (it plays the members' own pose sheets, which this batch doesn't touch)",
     "html": "femc-game.html ready.js v17, cosmetics.js v26"
+  },
+  "batch110Validation": {
+    "date": "2026-11-01",
+    "sources": "11 sticker sheets (3 x 3, all cells cut; left in New Adds unchanged)",
+    "looked_at": "every cut on dark and light (scratchpad contact sheets): clean key, border intact, no stray pieces",
+    "headless": "tests/femc_browser.Page: Akihiko's thread with his sticker and Solar's sticker reply at 1440x900 and 390x844; reply sends her sticker; fallback to t when a pack isn't listed; no console errors",
+    "tests": "femc_polish",
+    "html": "femc-game.html stickers/index.js v1, texts v6, living-texts v5, core v66, ui v46, game.css v31"
   }
 }

@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make:** 5 Social Link full-body sheets (section 8) · 5 new event CGs (section 11) · Solar's evening poses (section 20) · new projects: 14 swimwear pieces (section 12), 24 couple-outfit pieces (section 13), 11 sticker packs (section 14), 10 photo booth sheets (section 15), 14 seasonal face sheets (section 16), 4 climb bosses (section 17), 12 credits stills (section 18) · 24 skin-series pieces for Solar (section 19: Tarot Arcana, Midnight Chapel, Wildflower Cottage) · 26 collab-outfit pieces (section 21: Winx Club, Sailor Moon, Monster High and more). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make:** 5 Social Link full-body sheets (section 8) · 5 new event CGs (section 11) · Solar's evening poses (section 20) · new projects: 14 swimwear pieces (section 12), 24 couple-outfit pieces (section 13), 10 photo booth sheets (section 15), 14 seasonal face sheets (section 16), 4 climb bosses (section 17), 12 credits stills (section 18) · 24 skin-series pieces for Solar (section 19: Tarot Arcana, Midnight Chapel, Wildflower Cottage) · 26 collab-outfit pieces (section 21: Winx Club, Sailor Moon, Monster High and more). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
@@ -601,99 +601,6 @@ Attach: `Akihiko.png`
 Save as: `skin-sk-akihiko-cp-festival-portraits.png`
 ```
 A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a light grey striped yukata with a red obi, warm paper-lantern light. Hair: his own short silver hair. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
----
-
-## 14. Chibi sticker packs for texts (ChatGPT)
-Reaction stickers for the phone chats, in the same chibi style as the All-Out Attack chibis. Each pack is a 3 × 3 green sheet: nine stickers, one character, their own personality. The game cuts each sticker out.
-
-**[ ] 14A. Solar: sticker pack**  
-Calm, lowercase, a little dry, soft with her people.  
-Attach: `Stickers - style.png`, then `Solar.png`  
-Save as: `stickers-solar.png`
-```
-A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, in her black Gekkoukan uniform with the red bow and the red S.E.E.S. armband. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 a small calm wave; 2 a thumbs up with a tiny smile; 3 curled up under a blanket, face lit by her phone; 4 a side-eye over a mug of tea; 5 shouldering her naginata, ready to go; 6 making a heart with both hands; 7 a teary pout, hugging a pillow; 8 flustered, hiding her face behind her phone; 9 asleep with her earbuds in, little sleep bubbles.
-```
-
-**[ ] 14B. Junpei: sticker pack**  
-ALL CAPS hype, "NO TAKE BACKS", then a quiet "...ok".  
-Attach: `Stickers - style.png`, then `Junpei.png`  
-Save as: `stickers-junpei.png`
-```
-A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, his blue cap, the open uniform jacket and the blue shirt. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 both arms up, shouting with joy; 2 crying huge anime tears; 3 swinging a baseball bat, sparkles behind; 4 finger guns and a wink; 5 a facepalm; 6 pointing hard at the viewer, fired up; 7 hands pressed together, begging; 8 slurping a giant bowl of ramen; 9 a tiny embarrassed "..." face, cap pulled low.
-```
-
-**[ ] 14C. Yukari: sticker pack**  
-Teasing but caring: "i KNOW", "ok good".  
-Attach: `Stickers - style.png`, then `Yukari.png`  
-Save as: `stickers-yukari.png`
-```
-A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, her pink cardigan, the uniform and the choker. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 an eye roll, hands on hips; 2 a big pink heart held up; 3 an "ok good" thumbs up and a wink; 4 shooting a heart-tipped arrow from her bow; 5 a facepalm; 6 cheeks puffed, angry; 7 giggling behind one hand; 8 slumped over, exhausted; 9 holding up a cute pink rabbit plush, proud.
-```
-
-**[ ] 14D. Akihiko: sticker pack**  
-Short lowercase lines, training, "not a coach. just faster than you".  
-Attach: `Stickers - style.png`, then `Akihiko.png`  
-Save as: `stickers-akihiko.png`
-```
-A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, his red vest, the white shirt and his red boxing gloves. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 flexing one arm, confident; 2 jogging, holding up a stopwatch; 3 a straight punch with a red glove, speed lines; 4 chugging a protein shake; 5 a serious thumbs up; 6 about to eat a huge beef bowl, chopsticks ready; 7 determined, fire in his eyes; 8 a small rare smile and a nod; 9 asleep sitting up, a towel over his head.
-```
-
-**[ ] 14E. Mitsuru: sticker pack**  
-Formal and exact: "Good.", "I may hold you to that."  
-Attach: `Stickers - style.png`, then `Mitsuru.png`  
-Save as: `stickers-mitsuru.png`
-```
-A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, the clothes from the image. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 an elegant small nod; 2 one raised eyebrow; 3 sipping tea from a fine cup; 4 snapping her fingers, sparkles of ice; 5 holding a motorcycle helmet under one arm; 6 an approving small smile; 7 arms crossed, stern; 8 blushing and looking away; 9 reading a document, a single frost crystal on its corner.
-```
-
-**[ ] 14F. Fuuka: sticker pack**  
-Polite and sweet, lots of "!!", the cooking attempts and the ruler.  
-Attach: `Stickers - style.png`, then `Fuuka.png`  
-Save as: `stickers-fuuka.png`
-```
-A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, the clothes from the image. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 a polite bow, a sparkle of thanks; 2 holding a ruler over a pot, measuring; 3 a pot puffing black smoke, her face sooty; 4 wearing her navigation headset, pointing ahead; 5 both hands up, happy "!!" sparkles; 6 a sad ":(" face holding the ruler; 7 offering a bento box with both hands; 8 typing fast on a laptop; 9 holding out a bottle of water, worried.
-```
-
-**[ ] 14G. Haechan: sticker pack**  
-A tease: "liar", "i can hear it from here".  
-Attach: `Stickers - style.png`, then `Haechan.png`  
-Save as: `stickers-haechan.png`
-```
-A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, his usual clothes from the image. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 a smirk with his tongue out; 2 a squinting "liar" look, arms crossed; 3 laughing so hard he is bent over; 4 pointing at the viewer, grinning; 5 blowing a kiss; 6 a big dramatic pout; 7 spinning his two knives, cool; 8 eyes closed, vibing in headphones; 9 lying flat on the floor, dramatically defeated.
-```
-
-**[ ] 14H. Jungwon: sticker pack**  
-Dry and precise: "i was being thorough.", "...".  
-Attach: `Stickers - style.png`, then `Jungwon.png`  
-Save as: `stickers-jungwon.png`
-```
-A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, his usual clothes from the image. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 a deadpan stare with a "..." bubble; 2 checking a clipboard with a pen; 3 holding up a pencil case, unimpressed; 4 a small real smile; 5 one cheek puffed out; 6 one raised eyebrow; 7 asleep with his head on a desk; 8 a rapier salute; 9 a tiny thumbs up.
-```
-
-**[ ] 14I. Jihoon: sticker pack**  
-Grand and dramatic, Capital Letters, "Loyal Subject".  
-Attach: `Stickers - style.png`, then `Jihoon.png`  
-Save as: `stickers-jihoon.png`
-```
-A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, his usual clothes from the image. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 sitting on a little throne with a paper crown; 2 hugging an ice-cream tub like treasure; 3 clutching his heart, wounded; 4 singing into a microphone, sparkles; 5 pointing dramatically into the distance; 6 crying dramatically on his knees; 7 posing in sunglasses; 8 a finger to his lips, shushing; 9 a royal wave.
-```
-
-**[ ] 14J. Minji: sticker pack**  
-Quiet and practical, always filming, folders inside folders.  
-Attach: `Stickers - style.png`, then `Minji.png`  
-Save as: `stickers-minji.png`
-```
-A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, her usual clothes from the image. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 snapping a film clapperboard; 2 framing the viewer with her fingers; 3 holding a video camera to her eye; 4 hugging a stack of folders; 5 adjusting a desk lamp; 6 thinking, one finger on her chin; 7 a calm small nod; 8 a deadpan sip from a drink; 9 eating popcorn, eyes wide.
-```
-
-**[ ] 14K. S.E.E.S. group chat: sticker pack**  
-For the S.E.E.S. group chat: the dorm together.  
-Attach: `Stickers - style.png`, then `Solar.png`, `Fuuka.png`, `Mitsuru.png`, `Aigis.png`, `Koromaru.png`  
-Save as: `stickers-sees.png`
-```
-A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big heads, small bodies, thick dark outlines, flat cel shading with glossy highlights, bright clean colours. The characters are the members of the Persona 3 dorm: Solar (the girl with very long straight black hair in the second attached image), Fuuka, Mitsuru, Aigis and Koromaru (the other attached images), Yukari, Junpei and Akihiko (as in the first image), Ken and Shinjiro, each with their own face, hair and clothes. Each sticker has a thick white sticker border around the whole group. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 everyone piled into a group hug; 2 Koromaru holding up one paw, proud; 3 Junpei and Akihiko arm-wrestling, sweat flying; 4 Yukari, Junpei and Fuuka asleep on one sofa; 5 Mitsuru and Fuuka sharing tea; 6 Aigis waving stiffly; 7 Ken and Koromaru saluting; 8 Solar and Yukari taking a selfie, peace signs; 9 Shinjiro stirring a big pot, steam rising.
 ```
 
 ---

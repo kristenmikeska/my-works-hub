@@ -133,8 +133,19 @@
   // How a text reads on the phone: group chats name the sender (their handle, when the line starts with one, moves out of
   // the bubble), and "hanni added jihoon and you to a group" lines are the chat's own notices.
   const HANDLE = /^([a-z0-9_.]{2,24}):\s+/i, NOTICE = /^[a-z0-9_.]+ (added|named|removed|left|renamed|changed|created) /i;
+  /* Chat stickers (FEMC-ART-TODO 14, 2026-11-01). A text's message (texts.js, living-texts.js, a link's afterRank, a group
+     thread) or a reply option may carry `sticker: '<pack>-<n>'` (n = the cell, 1-9, in Kat's sheet), with or without `t`.
+     art/stickers/index.js (window.FEMC_STICKERS = { pack: count }, tools/femc-greens.py cuts them) lists what exists: a listed
+     sticker draws as the picture alone, no bubble behind it (`t` is only its alt text); one not listed falls back to `t`, so lines
+     can be written before the art. The thread list and banners read "[sticker]". Solar's own reply options use her pack
+     (`solar-*`); the S.E.E.S. pack (`sees-*`) only in the sees group. Sparingly: about one thread in five, mostly the last word. */
+  const stickerSrc = id => {
+    const m = /^([a-z]+)-(\d+)$/.exec(id || ''), n = m && (window.FEMC_STICKERS || {})[m[1]];
+    return n && +m[2] >= 1 && +m[2] <= n ? `${G.base}assets/femc/game/art/stickers/${id}.webp` : null;
+  };
   function msgParts(id, m) {
-    const group = G.isGroupThread(id), me = m.from === 'solar', name = me ? 'Solar' : G.name(m.from);
+    const group = G.isGroupThread(id), me = m.from === 'solar', name = me ? 'Solar' : G.name(m.from), sticker = stickerSrc(m.sticker);
+    if (sticker) return { group, me, name, handle: null, sticker, alt: G.sub(m.t) || 'Sticker', text: '[sticker]' };
     let text = G.sub(m.t), handle = null;
     if (group && !me) {
       const h = HANDLE.exec(text);
@@ -151,7 +162,7 @@
   // A text arriving: the notification chime and a banner from the top. Tap / Enter opens the conversation.
   function textBanner(t, i, chime) {
     const th = S().phone.threads[t.thread] || [], last = th[th.length - (t.count || 1)] || { from: t.from, t: t.msg || t.text };
-    const m = msgParts(t.thread, { from: t.from || last.from, t: t.msg || last.t });
+    const m = msgParts(t.thread, { from: t.from || last.from, t: t.msg || last.t, sticker: t.from ? t.sticker : last.sticker });
     const picId = threadPic(t.thread) ? t.thread : t.from || last.from, pic = threadPic(picId);
     const el = document.createElement('div');
     el.className = `g-banner${reduced.matches ? ' calm' : ''}${t.invite ? ' invite' : ''}`;
@@ -1585,7 +1596,8 @@
       else {
         p.className = `g-ph-msg ${x.me ? 'me' : 'them'}${x.group && !x.me ? ' group' : ''}`;
         if (x.group && !x.me && lastFrom !== m.from) { const b = document.createElement('b'); b.textContent = x.name; if (x.handle) { const h = document.createElement('small'); h.textContent = x.handle; b.append(' ', h); } p.append(b); }
-        p.append(x.text);
+        if (x.sticker) { p.classList.add('stk'); const im = document.createElement('img'); im.className = 'g-sticker'; im.src = x.sticker; im.alt = x.alt; p.append(im); }
+        else p.append(x.text);
         lastFrom = m.from;
       }
       if (animate) p.classList.add('in');
@@ -1618,7 +1630,7 @@
       const step = () => {
         if (!alive()) return;
         if (i >= queue.length) return finish();
-        const m = queue[i], text = G.sub(m.t);
+        const m = queue[i], text = stickerSrc(m.sticker) ? '' : G.sub(m.t); // a sticker sends at once
         if (m.from === 'solar') {
           // Solar's answer types out in the compose bar, then sends.
           compose.hidden = false; draft.textContent = '';
@@ -1654,7 +1666,9 @@
       bar.innerHTML = ''; bar.hidden = true;
       const t = s.phone.pending[id] && G.textById(s.phone.pending[id]);
       if (t) t.reply.forEach((r, i) => {
-        const b = document.createElement('button'); b.type = 'button'; b.textContent = G.sub(r.t);
+        const b = document.createElement('button'); b.type = 'button';
+        const stk = stickerSrc(r.sticker);
+        if (stk) { b.className = 'g-ph-stk'; b.setAttribute('aria-label', `Send a sticker: ${G.sub(r.t) || 'sticker'}`); b.innerHTML = `<img src="${stk}" alt="">`; } else b.textContent = G.sub(r.t);
         b.addEventListener('click', () => { const from = (s.phone.threads[id] || []).length; G.replyText(id, i); reply.replaceChildren(); G.sfx('femc-click'); play(id, from, () => replies(id)); });
         reply.append(b);
       });

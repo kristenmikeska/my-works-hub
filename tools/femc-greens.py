@@ -1,4 +1,4 @@
-"""Kat's green-screen sheets for items, phone cases and group-chat pictures (batch 48, 2026-10-25). Sources are only read.
+"""Kat's green-screen sheets for items, phone cases, group-chat pictures and chat stickers (batch 48, 2026-10-25). Sources are only read.
 
   python3 tools/femc-greens.py all [stem ...]
         Every sheet (or just the named ones) in SHEETS (from New Adds/ or Added to Game/) -> its folder, one transparent WebP per cell.
@@ -37,6 +37,10 @@ SHEETS = {
     **{f'skillicons-{w}': ('assets/femc/battle/art/sun/late', 3, 2, [f'{w}-{i}' for i in range(1, 7)], 96, True) for w in ('runners', 'strangers', 'hoax', 'stay', 'crowns-1', 'crowns-2', 'duets')},
     # Batch 54: the last two menu tab icons (menu.js TAB_ICONS), 2 x 1, sized like batch 43's tab icons.
     'menu-icons-2': ('assets/femc/game/art/icons', 2, 1, ['calendar', 'compendium'], 128, True),
+    # Chibi sticker packs for the phone chats (FEMC-ART-TODO 14, 2026-11-01): 3 x 3, white sticker border kept,
+    # art/stickers/<pack>-<1..9>.webp; stickers/index.js lists the packs (ui.js stickerSrc reads it).
+    **{f'stickers-{w}': ('assets/femc/game/art/stickers', 3, 3, [f'{w}-{i}' for i in range(1, 10)], 200, True)
+       for w in ('solar', 'junpei', 'yukari', 'akihiko', 'mitsuru', 'fuuka', 'haechan', 'jungwon', 'jihoon', 'minji', 'sees')},
 }
 
 
