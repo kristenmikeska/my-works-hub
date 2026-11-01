@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make:** icons for the late-game skills (section 7) · 5 Social Link full-body sheets (section 8) · 20 new event CGs (section 11) · new projects: 14 swimwear pieces (section 12), 24 couple-outfit pieces (section 13), 11 sticker packs (section 14), 10 photo booth sheets (section 15), 14 seasonal face sheets (section 16), 4 climb bosses (section 17), 12 credits stills (section 18) · **pick a theme** for Solar's next skin series (section 19). **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make:** icons for the late-game skills (section 7) · 5 Social Link full-body sheets (section 8) · 20 new event CGs (section 11) · Solar's evening poses (section 20) · new projects: 14 swimwear pieces (section 12), 24 couple-outfit pieces (section 13), 11 sticker packs (section 14), 10 photo booth sheets (section 15), 14 seasonal face sheets (section 16), 4 climb bosses (section 17), 12 credits stills (section 18) · **pick a theme** for Solar's next skin series (section 19). **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
@@ -1205,3 +1205,22 @@ Kat hasn't picked a theme for Solar's next skin series. Four ideas, three or fou
 - **Bakery Morning:** a pink gingham apron over a cream blouse, flour on her cheek; hair in a messy bun with a pink kerchief.
 - **Rainy Greenhouse:** a cream knit cardigan, rain boots and a clear umbrella; hair half-up with a butterfly clip and pink sun-kissed ends.
 - **Harvest Festival:** a corset-laced bodice over a long tiered skirt with a flower crown; hair in a long waterfall braid.
+
+---
+
+## 20. ⭐ More poses for Solar's evening screen (ChatGPT)
+She stands at the right of the evening screen and changes pose as you scroll, and reacts to the activity you point at. More poses mean smoother scrolling and a reaction for every activity. Each sheet is six more poses in the same outfit and framing as her current sheet.
+
+**[ ] 20A. Evening poses, sheet 1: the activities**
+Attach: `Body 2 - Solar now.png`, then `Pose - Solar sheet.png`
+Save as: `solar-poses-2.png`
+```
+A 3 × 2 sheet of six full-body poses of the girl in the attached images, on a plain transparent (or plain white) background, head to toe, clear space between the figures and nothing overlapping. Copy her face, eyes and very long straight black hair exactly from the FIRST image, and match the SECOND image's art style, outfit, proportions, size and framing exactly, so these look like more poses from the same sheet: the black Gekkoukan High blazer with white piping, white shirt, red bow, white earbuds around her neck, red S.E.E.S. armband, short black pleated skirt, white knee socks, brown loafers. Persona 3 Reload style: clean lineart, flat cel shading, hard-edged shadows. No text. Poses, left to right, top to bottom: 1 holding an open book in both hands, reading with a small focused frown (Study); 2 holding a bowl of ramen and chopsticks, about to take a bite (Cook dinner); 3 holding a small watering can, tipping it, smiling softly (the roof garden); 4 gripping a silver gun-shaped Evoker at her side, determined, chin up (Tartarus); 5 stretching with both arms over her head, mid-yawn, eyes half closed (Rest); 6 looking down at her phone in one hand, thumb on the screen, a tiny smile (Go out).
+```
+
+**[ ] 20B. Evening poses, sheet 2: the fun ones**
+Attach: `Body 2 - Solar now.png`, then `Pose - Solar sheet.png`
+Save as: `solar-poses-3.png`
+```
+A 3 × 2 sheet of six full-body poses of the girl in the attached images, on a plain transparent (or plain white) background, head to toe, clear space between the figures and nothing overlapping. Copy her face, eyes and very long straight black hair exactly from the FIRST image, and match the SECOND image's art style, outfit, proportions, size and framing exactly, so these look like more poses from the same sheet: the black Gekkoukan High blazer with white piping, white shirt, red bow, white earbuds around her neck, red S.E.E.S. armband, short black pleated skirt, white knee socks, brown loafers. Persona 3 Reload style: clean lineart, flat cel shading, hard-edged shadows. No text. Poses, left to right, top to bottom: 1 a fist pump, cheering, one knee up; 2 a little jump with both feet off the ground, arms out, laughing; 3 hands on her hips, leaning forward with a teasing grin; 4 both hands making a heart shape in front of her chest; 5 looking back over her shoulder at the viewer, hair swinging; 6 holding a sewing needle and thread up to the light, one eye shut (Your desk).
+```
