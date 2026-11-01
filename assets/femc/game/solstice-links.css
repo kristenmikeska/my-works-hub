@@ -59,9 +59,9 @@
 .g-sl-cards li { margin: 0 0 6px var(--x); }
 .g-sl-card.g-st-link { position: relative; display: grid; grid-template-columns: 50px minmax(0, 1fr) auto; grid-template-rows: auto auto; gap: 0 14px; align-items: center;
   width: calc(100% - 50px); padding: 4px 30px 5px 8px; border: 0; color: var(--paper); text-align: left; cursor: pointer;
-  background: linear-gradient(100deg, rgba(20, 7, 15, .95), rgba(74, 24, 56, .9)); clip-path: polygon(2.5% 0, 100% 0, 97.5% 100%, 0 100%); box-shadow: none;
+  background: linear-gradient(100deg, rgba(20, 7, 15, .95), rgba(30, 9, 22, .9)); clip-path: polygon(2.5% 0, 100% 0, 97.5% 100%, 0 100%); box-shadow: none;
   transition: transform .18s cubic-bezier(.2, .9, .3, 1.3); }
-.g-sl-card.g-st-link:is(:hover, :focus-visible) { outline: none; background: linear-gradient(100deg, rgba(42, 15, 34, .98), rgba(122, 11, 62, .9)); border: 0; }
+.g-sl-card.g-st-link:is(:hover, :focus-visible) { outline: none; background: linear-gradient(100deg, rgba(18, 5, 13, .98), rgba(122, 11, 62, .9)); border: 0; }
 .g-sl-num { grid-column: 1; grid-row: 1 / 3; display: grid; place-items: center; width: 44px; height: 50px; font: italic 600 var(--nfs, 22px)/1 var(--serif); color: var(--deep); background: var(--pink-3);
   clip-path: polygon(0 0, 100% 0, 100% 78%, 78% 100%, 0 100%); }
 .g-sl-mid { grid-column: 2; grid-row: 1; min-width: 0; }

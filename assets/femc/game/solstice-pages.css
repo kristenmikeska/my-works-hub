@@ -8,8 +8,8 @@
 /* ── The frame ── */
 .g-fm-ov.is-page { padding: 0; background: #07030a; -webkit-backdrop-filter: none; backdrop-filter: none; }
 .g-fm-ov.is-page .g-panel { --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; --side: clamp(16px, 4vw, 54px);
-  --plate: linear-gradient(100deg, rgba(20, 7, 15, .94), rgba(42, 15, 34, .9) 60%, rgba(74, 24, 56, .86));
-  --plate-hi: linear-gradient(100deg, rgba(42, 15, 34, .98), rgba(122, 11, 62, .9));
+  --plate: linear-gradient(100deg, rgba(20, 7, 15, .94), rgba(18, 5, 13, .9) 60%, rgba(30, 9, 22, .86));
+  --plate-hi: linear-gradient(100deg, rgba(18, 5, 13, .98), rgba(122, 11, 62, .9));
   width: 100%; height: 100%; max-height: none; padding: clamp(16px, 4.4vh, 44px) var(--side) clamp(10px, 2vh, 20px); border: 0; border-radius: 0; box-shadow: none;
   background: var(--deep); overflow: hidden; color: var(--paper); grid-template-rows: auto auto minmax(0, 1fr) auto; gap: clamp(6px, 1.3vh, 12px); }
 .g-fm-ov.is-page .g-panel::before { display: none; }
@@ -20,7 +20,7 @@
 .g-pg-bg { position: absolute; inset: 0; z-index: -2; background: #0c0309 url("../title/menu-backdrop-day.webp?v=1") center / cover no-repeat; pointer-events: none; }
 .g-fm-ov.is-dark .g-pg-bg { background-image: url("../title/menu-backdrop-darkhour.webp?v=1"); }
 .g-pg-bg::after { content: ""; position: absolute; inset: 0;
-  background: linear-gradient(100deg, rgba(12, 3, 9, .93) 0, rgba(12, 3, 9, .86) 38%, rgba(12, 3, 9, .66) 68%, rgba(12, 3, 9, .5) 84%, rgba(12, 3, 9, .74)); }
+  background: linear-gradient(100deg, rgba(8, 2, 6, .95) 0, rgba(8, 2, 6, .92) 45%, rgba(8, 2, 6, .82) 75%, rgba(8, 2, 6, .72) 88%, rgba(8, 2, 6, .85)); }
 .g-fm-ov.is-dark .g-pg-bg::after { background: linear-gradient(100deg, rgba(0, 0, 0, .94) 0, rgba(0, 0, 0, .88) 38%, rgba(0, 0, 0, .7) 68%, rgba(0, 0, 0, .58) 84%, rgba(0, 0, 0, .8)); }
 /* Over a fight: darker still, the colour drained a little */
 .g-fm-ov.g-over-battle .g-pg-bg { filter: saturate(.7) brightness(.8); }
@@ -324,3 +324,8 @@
   .g-fm-ov.is-page :is(.g-pm, .g-eq-slot, .g-eq-item) { transition: none !important; }
   .g-fm-ov.is-page :is(.g-pm, .g-eq-slot, .g-eq-item)::after { animation: none !important; }
 }
+
+/* Readability (Kat, Oct 31): text sits on near-black, never on the bright backdrop. Cards and rows are black-plum (the old plum
+   read pink under pale text); every line of page text carries a dark shadow; the selected item keeps its paper bar or pink plate. */
+.g-fm-ov.is-page .g-fm-body, .g-fm-ov.is-page .g-pg-head, .g-fm-ov.is-page .g-fm-body :is(p, small, span, b, em, li, h3, h4, label) { text-shadow: 0 1px 2px rgba(0, 0, 0, .95), 0 0 8px rgba(0, 0, 0, .7); }
+.g-fm-ov.is-page .g-fm-body > .g-note, .g-fm-ov.is-page .g-fm-body > p { display: inline-block; padding: 4px 12px; background: rgba(8, 2, 6, .82); clip-path: polygon(0 0, 100% 0, 99% 100%, 0 100%); }
