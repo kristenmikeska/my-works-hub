@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make:** 5 Social Link full-body sheets (section 8) · Solar's evening poses (section 20) · new projects: 14 swimwear pieces (section 12), 24 couple-outfit pieces (section 13), 10 photo booth sheets (section 15), 14 seasonal face sheets (section 16), 4 climb bosses (section 17), 1 credits still (section 18: Ken) · 24 skin-series pieces for Solar (section 19: Tarot Arcana, Midnight Chapel, Wildflower Cottage) · 26 collab-outfit pieces (section 21: Winx Club, Sailor Moon, Monster High and more). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make:** 5 Social Link full-body sheets (section 8) · Solar's evening poses (section 20) · new projects: 14 swimwear pieces (section 12), 24 couple-outfit pieces (section 13), 10 photo booth sheets (section 15), 14 seasonal face sheets (section 16), 1 credits still (section 18: Ken) · 24 skin-series pieces for Solar (section 19: Tarot Arcana, Midnight Chapel, Wildflower Cottage) · 26 collab-outfit pieces (section 21: Winx Club, Sailor Moon, Monster High and more). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
@@ -708,43 +708,6 @@ Attach: `Ken.png`
 Save as: `Ken-winter-sheet.png`
 ```
 A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: an orange puffer jacket over his blazer, a grey knit scarf. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
----
-
-## 17. Climb bosses (ChatGPT)
-The New Game+ climb's three block guardians and the superboss at the top still borrow other Shadows' pictures (the guardians are the memory-floor bosses made bigger; the superboss is the Wild Beast, a lion, tinted gold). Each gets its own pose sheet, like the full-moon boss sheets.
-
-**[ ] 17A. The Last Song (Raqia guardian)**  
-The guardian of the Syracuse block (255–300F): a college party that never ends.  
-Attach: `Shadow - boss sheet style.png`, then `Shadow - The First Party.png`  
-Save as: `guard-raqia-attack.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. Use the FIRST attached image only for the format: one boss monster, six poses, the same size in every cell. The SECOND attached image is a smaller Shadow from the same place: keep its colours and materials so they look related. Draw a NEW, bigger and grander Persona 3 Shadow: a towering party monster whose body is a stack of black loudspeakers, a glittering disco ball for a heart, strings of fairy lights and red party cups wound around its arms like a mane, a long scarf of confetti trailing behind it, a black liquid body leaking through the gaps. It wears the iconic blue Persona 3 Shadow mask. The SAME monster in all six cells, same design, colors, size and lighting, nothing overlapping. Cell 1: idle, hovering menacingly. Cell 2: winding up, gathering power. Cell 3: lunging forward to attack. Cell 4: casting a spell, surrounded by fire and swirling confetti effects. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Persona 3 Reload official art style. No text.
-```
-
-**[ ] 17B. The Spring Tide (Zebul guardian)**  
-The guardian of the Incheon block (301–350F): the harbor's highest water.  
-Attach: `Shadow - boss sheet style.png`, then `Shadow - The Tide.png`  
-Save as: `guard-zebul-attack.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. Use the FIRST attached image only for the format: one boss monster, six poses, the same size in every cell. The SECOND attached image is a smaller Shadow from the same place: keep its colours and materials so they look related. Draw a NEW, bigger and grander Persona 3 Shadow: a hunched giant made of a standing wall of black seawater, harbor lights glowing deep inside it, a small sunken fishing boat caught in its chest, mooring ropes and red buoys tangled around its arms, mud and shells dripping from its hands. It wears the iconic blue Persona 3 Shadow mask. The SAME monster in all six cells, same design, colors, size and lighting, nothing overlapping. Cell 1: idle, hovering menacingly. Cell 2: winding up, gathering power. Cell 3: lunging forward to attack. Cell 4: casting a spell, surrounded by freezing seawater and ice effects. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Persona 3 Reload official art style. No text.
-```
-
-**[ ] 17C. The Landslide (Araboth guardian)**  
-The guardian of the Hanlim block (351–399F): a school election that buries everyone.  
-Attach: `Shadow - boss sheet style.png`, then `Shadow - The Ballot Box.png`  
-Save as: `guard-araboth-attack.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. Use the FIRST attached image only for the format: one boss monster, six poses, the same size in every cell. The SECOND attached image is a smaller Shadow from the same place: keep its colours and materials so they look related. Draw a NEW, bigger and grander Persona 3 Shadow: a giant made of thousands of folded white ballot papers pouring down its body like a landslide, a huge ballot box for a chest with a slot for a mouth, a wooden gavel for one hand, campaign rosettes and torn posters pinned across it, a school bell hanging at its neck. It wears the iconic blue Persona 3 Shadow mask. The SAME monster in all six cells, same design, colors, size and lighting, nothing overlapping. Cell 1: idle, hovering menacingly. Cell 2: winding up, gathering power. Cell 3: lunging forward to attack. Cell 4: casting a spell, surrounded by crackling lightning and fire effects. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Persona 3 Reload official art style. No text.
-```
-
-**[ ] 17D. Horangi (the Zenith)**  
-The superboss at 400F: the tiger from the Korean folk tale of the sun and the moon.  
-Attach: `Shadow - boss sheet style.png`  
-Save as: `super-tiger-attack.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. Use the FIRST attached image only for the format: one boss monster, six poses, the same size in every cell. Draw a NEW, bigger and grander Persona 3 Shadow: a huge tiger drawn like a Korean folk painting (minhwa): a black liquid body with bold gold and burnt-orange stripes, round staring eyes, a wide grin of white teeth, a frayed straw rope hanging from one paw, a pale sun and a pale moon floating behind its shoulders. It wears the iconic blue Persona 3 Shadow mask. The SAME monster in all six cells, same design, colors, size and lighting, nothing overlapping. Cell 1: idle, hovering menacingly. Cell 2: winding up, gathering power. Cell 3: lunging forward to attack. Cell 4: casting a spell, surrounded by blinding white-and-black almighty energy effects. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Persona 3 Reload official art style. No text.
 ```
 
 ---

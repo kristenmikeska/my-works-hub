@@ -21788,6 +21788,186 @@
         }
       ],
       "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 113,
+      "source": "guard-raqia-attack.png",
+      "sourceNow": "New Adds/guard-raqia-attack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "20b71f400f7bc83dc7fb67538b4d94c4b0ace875d600148d8a903dc0696fd90a",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/shadows/climb-last-song-pose-0..5.webp",
+      "conversion": "transparent 3 x 2 boss sheet: tools/femc-shadow-poses.py guard-raqia-attack.png (ALPHA_GRIDS: alpha scaled by 255/250 so the ~252 bodies are solid, cells split, one canvas, baseline, rim; the idle frame also written as climb-last-song.webp); WebP q90; source unchanged (left in New Adds)",
+      "placement": "climb.js guard_raqia (The Last Song, 290F): img climb-last-song (art/shadows/index.js, poses BOSS_STATES: 0 idle, 1 wind-up, 2 attack, 3 cast, 4 hurt, 5 down/defeat)",
+      "outputs": [
+        {
+          "path": "assets/femc/battle/art/shadows/climb-last-song.webp",
+          "sha256": "a3ca63163ac88bbba5f94ff8291ef1ab06f533490eccb913bd8af10ec7440428"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-last-song-pose-0.webp",
+          "sha256": "a3ca63163ac88bbba5f94ff8291ef1ab06f533490eccb913bd8af10ec7440428"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-last-song-pose-1.webp",
+          "sha256": "c12b14f63c9d0a72fb8c57816a42f8385752e76342941e79b2e5f597ea269301"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-last-song-pose-2.webp",
+          "sha256": "3c6e7142c84e8a2e3e8f97cb240920bdbd47a0832c0036db196f61f5f5cb923a"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-last-song-pose-3.webp",
+          "sha256": "855dcc009d6fc1b10fef7bc85c9d2da9c7a97d7859a84f332207b7ce2e939bd2"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-last-song-pose-4.webp",
+          "sha256": "5fad965abedb24eeb66eb7cda739c71f23a761c6831c4dcc221ba580b73c0d5b"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-last-song-pose-5.webp",
+          "sha256": "67c5f28219e2a45c5ea680300faf8e8a5081eac389ab98cf6fb2c2bbca00e36e"
+        }
+      ],
+      "section": "FEMC-ART-TODO 17"
+    },
+    {
+      "batch": 113,
+      "source": "guard-zebul-attack.png",
+      "sourceNow": "New Adds/guard-zebul-attack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "629ad8de84c5f0107cf0c304f33bf9bcef9fe09cf3e438dd6452ddb6deb4c376",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/shadows/climb-spring-tide-pose-0..5.webp",
+      "conversion": "transparent 3 x 2 boss sheet: tools/femc-shadow-poses.py guard-zebul-attack.png (ALPHA_GRIDS: alpha scaled by 255/250 so the ~252 bodies are solid, cells split, one canvas, baseline, rim; the idle frame also written as climb-spring-tide.webp); WebP q90; source unchanged (left in New Adds)",
+      "placement": "climb.js guard_zebul (The Spring Tide, 343F): img climb-spring-tide (art/shadows/index.js, poses BOSS_STATES: 0 idle, 1 wind-up, 2 attack, 3 cast, 4 hurt, 5 down/defeat)",
+      "outputs": [
+        {
+          "path": "assets/femc/battle/art/shadows/climb-spring-tide.webp",
+          "sha256": "70564d513e5c3a3ef3605343e0efbe82853e0ae4d0157022caa4319a2b8093cc"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-spring-tide-pose-0.webp",
+          "sha256": "70564d513e5c3a3ef3605343e0efbe82853e0ae4d0157022caa4319a2b8093cc"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-spring-tide-pose-1.webp",
+          "sha256": "39db8c25f126f9e5ef08854bda9719d3d6e636420468bbcadb3c2759c4d8936b"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-spring-tide-pose-2.webp",
+          "sha256": "b73d2ea15ec9bd0ce1708b2dc4a2c3fe1608b01d6d10e0a9b073576f64a2456f"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-spring-tide-pose-3.webp",
+          "sha256": "f670fdf9b1bec7a42c12b27ecf419fc082fd9face9ec2900488901c4ae7ecc19"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-spring-tide-pose-4.webp",
+          "sha256": "09d3e5f2d2699b3b12be7f08e3e75389dbef751fbd0bd315b05fd4c1bfe42033"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-spring-tide-pose-5.webp",
+          "sha256": "e232ae711e6782f4dae7e9c218aab0f1ee375e3e03adbebed3e5a42bb6a808b9"
+        }
+      ],
+      "section": "FEMC-ART-TODO 17"
+    },
+    {
+      "batch": 113,
+      "source": "guard-araboth-attack.png",
+      "sourceNow": "New Adds/guard-araboth-attack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "256c8e5dc172364a69297cf18240f1dc063015d7d134c2e2f6b77209d3ace376",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/shadows/climb-landslide-pose-0..5.webp",
+      "conversion": "transparent 3 x 2 boss sheet: tools/femc-shadow-poses.py guard-araboth-attack.png (ALPHA_GRIDS: alpha scaled by 255/250 so the ~252 bodies are solid, cells split, one canvas, baseline, rim; the idle frame also written as climb-landslide.webp); WebP q90; source unchanged (left in New Adds)",
+      "placement": "climb.js guard_araboth (The Landslide, 393F): img climb-landslide (art/shadows/index.js, poses BOSS_STATES: 0 idle, 1 wind-up, 2 attack, 3 cast, 4 hurt, 5 down/defeat)",
+      "outputs": [
+        {
+          "path": "assets/femc/battle/art/shadows/climb-landslide.webp",
+          "sha256": "7eea04eaa5cab0753d0b40352f2f1d11b551d50c3cca1f21c97e770f10045ca6"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-landslide-pose-0.webp",
+          "sha256": "7eea04eaa5cab0753d0b40352f2f1d11b551d50c3cca1f21c97e770f10045ca6"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-landslide-pose-1.webp",
+          "sha256": "d1d4a39296e58e8d1ec2c2dfb5822db4310e666c895ed73ec61f75876a82b8e3"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-landslide-pose-2.webp",
+          "sha256": "9312c1c7d0136d6f3b7547d9fc6c2c39a821a944b7e53c7d1dad19e5162ad2c8"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-landslide-pose-3.webp",
+          "sha256": "a8a511e5527547577fcf95c5bc92fd719a219d1c469234ab320944b2be3d9648"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-landslide-pose-4.webp",
+          "sha256": "ac4c850353d1e183d5301dba26d58faba550c66ab6f9375dc006e087a509b373"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-landslide-pose-5.webp",
+          "sha256": "7d37b49a6b55fc0faee992f46aa8727317c9a0d28711cdaf57fc8147d0b90240"
+        }
+      ],
+      "section": "FEMC-ART-TODO 17"
+    },
+    {
+      "batch": 113,
+      "source": "super-tiger-attack.png",
+      "sourceNow": "New Adds/super-tiger-attack.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "45df7975f30f53051e3b322ffa39608123b8d6f6baa7d92020a15fc4213cdfc2",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/shadows/climb-horangi-pose-0..5.webp",
+      "conversion": "transparent 3 x 2 boss sheet: tools/femc-shadow-poses.py super-tiger-attack.png (ALPHA_GRIDS: alpha scaled by 255/250 so the ~252 bodies are solid, cells split, one canvas, baseline, rim; the idle frame also written as climb-horangi.webp); WebP q90; source unchanged (left in New Adds)",
+      "placement": "climb.js super_tiger (Horangi, 400F): img climb-horangi (art/shadows/index.js, poses BOSS_STATES: 0 idle, 1 wind-up, 2 attack, 3 cast, 4 hurt, 5 down/defeat)",
+      "outputs": [
+        {
+          "path": "assets/femc/battle/art/shadows/climb-horangi.webp",
+          "sha256": "a87e5ebf51feb51e3d820366d0ea6e70a55c5c811f5c94a8067d1e83e061e918"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-horangi-pose-0.webp",
+          "sha256": "a87e5ebf51feb51e3d820366d0ea6e70a55c5c811f5c94a8067d1e83e061e918"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-horangi-pose-1.webp",
+          "sha256": "36d7a6f9c6f3ded8178f036b1175e1c588045e1f9c23b8ee7771162a8f8553ed"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-horangi-pose-2.webp",
+          "sha256": "d2487b55f15784af04746ba42e7898c8f86bd005eb30990be8c3cd8b2a64b26a"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-horangi-pose-3.webp",
+          "sha256": "240d0f01cded5f47d7314297e24f4f91ed38dad8e7c4f8d4f716c3ff8c6f7b29"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-horangi-pose-4.webp",
+          "sha256": "bed7c7ae47e52af65a00314e19e9f1e4f679d51bfda30f6ba5133e67def5fbdc"
+        },
+        {
+          "path": "assets/femc/battle/art/shadows/climb-horangi-pose-5.webp",
+          "sha256": "62822fcb8d9fb7b412b321a4d8cdbc8ca05e772158366919395b3777d0307ab0"
+        }
+      ],
+      "section": "FEMC-ART-TODO 17"
     }
   ],
   "batch1Validation": {

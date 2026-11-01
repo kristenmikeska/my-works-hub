@@ -155,6 +155,146 @@ window.FEMC_SHADOW_ART = {
   "small": false,
   "w": 578
  },
+ "climb-horangi": {
+  "h": 550,
+  "poses": {
+   "frames": [
+    "climb-horangi-pose-0",
+    "climb-horangi-pose-1",
+    "climb-horangi-pose-2",
+    "climb-horangi-pose-3",
+    "climb-horangi-pose-4",
+    "climb-horangi-pose-5"
+   ],
+   "scale": 1.1411,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 600
+ },
+ "climb-landslide": {
+  "h": 544,
+  "poses": {
+   "frames": [
+    "climb-landslide-pose-0",
+    "climb-landslide-pose-1",
+    "climb-landslide-pose-2",
+    "climb-landslide-pose-3",
+    "climb-landslide-pose-4",
+    "climb-landslide-pose-5"
+   ],
+   "scale": 1.1216,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 580
+ },
+ "climb-last-song": {
+  "h": 558,
+  "poses": {
+   "frames": [
+    "climb-last-song-pose-0",
+    "climb-last-song-pose-1",
+    "climb-last-song-pose-2",
+    "climb-last-song-pose-3",
+    "climb-last-song-pose-4",
+    "climb-last-song-pose-5"
+   ],
+   "scale": 1.1529,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 556
+ },
+ "climb-spring-tide": {
+  "h": 524,
+  "poses": {
+   "frames": [
+    "climb-spring-tide-pose-0",
+    "climb-spring-tide-pose-1",
+    "climb-spring-tide-pose-2",
+    "climb-spring-tide-pose-3",
+    "climb-spring-tide-pose-4",
+    "climb-spring-tide-pose-5"
+   ],
+   "scale": 1.0849,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 550
+ },
  "cloudgirl-pot": {
   "h": 639,
   "small": true,

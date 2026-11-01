@@ -403,6 +403,11 @@ def build_quads(only=()):
 # written whole as <slug>.webp (trimmed, rimmed, at most 900 tall). STATICS: single transparent pictures, static art only.
 ALPHA_GRIDS={'sleeper-car-poses.png':{'slug':'memory-sleeper-car','static':'memory-sleeper-car.png','cols':3,'rows':3,
  'states':{'attack':[1,3,4],'cast':[2,5],'hurt':[6],'down':[7],'defeat':[8]}}}
+# The NG+ climb's bosses (2026-11-01): transparent 3x2 boss sheets (BOSS_STATES order). No separate static: the idle
+# frame is written as <slug>.webp. Their bodies came a hair see-through (alpha ~252), so `opaque` scales alpha up to it.
+for _src,_slug in (('guard-raqia-attack.png','climb-last-song'),('guard-zebul-attack.png','climb-spring-tide'),
+  ('guard-araboth-attack.png','climb-landslide'),('super-tiger-attack.png','climb-horangi')):
+ ALPHA_GRIDS[_src]={'slug':_slug,'static':None,'cols':3,'rows':2,'opaque':250/255,'states':BOSS_STATES}
 # Wren's last phase (batch 51): Kat made two versions; ver2 (true-black hair, no green cast) is used, ver1 is the alternate.
 STATICS={'wren-shadow-phase3-ver2.png':'wren-shadow-phase3',
  'wren-shadow-phase1.png':'wren-shadow-phase1',  # batch 56: her phase 1 (the bench), real transparency
@@ -458,10 +463,12 @@ def build_alpha(only=()):
  for name,g in ALPHA_GRIDS.items():
   if only and name not in only:continue
   slug=g['slug'];a=np.asarray(Image.open(find(name)).convert('RGBA'),np.float32)/255
+  if g.get('opaque'):a[...,3]=np.clip(a[...,3]/g['opaque'],0,1)
   masks=alpha_figures(a,g['cols'],g['rows'])
   frames,idle_h=place(TH,[a[...,3]*ndimage.binary_dilation(mk,iterations=2) for mk in masks],[a]*len(masks),rim=True)
   for i,f in enumerate(frames):f.save(ROOT/f'assets/femc/battle/art/shadows/{slug}-pose-{i}.webp','WEBP',quality=90,method=5)
-  im=write_static(TH,np.asarray(Image.open(find(g['static'])).convert('RGBA'),np.float32)/255,slug)
+  if g['static']:im=write_static(TH,np.asarray(Image.open(find(g['static'])).convert('RGBA'),np.float32)/255,slug)
+  else:im=frames[0];im.save(ROOT/f'assets/femc/battle/art/shadows/{slug}.webp','WEBP',quality=90,method=5)
   w,h=frames[0].size
   index[slug]={'w':w,'h':h,'small':False,'poses':{'scale':round(h/idle_h,4),'frames':[f'{slug}-pose-{i}' for i in range(len(frames))],'states':g['states']}}
   print(name,'->',slug,(w,h),'idle',idle_h,'static',im.size)

@@ -75,21 +75,21 @@ window.FemcClimb = (() => {
     ab_poster: kin('veil_poster', 88, 'Campaign Poster', 'A campaign poster with a smile stapled on. Vote for her. It isn’t asking.',
       { aff: { pierce: 'weak', fire: 'resist', elec: 'resist' }, skills: ['e_agilao', 'e_marin_karin', 'e_tarukaja', 'e_megidola'], k: { ma: 1.25 } })
   });
-  // The block guardians: a world's own memory Shadow at the size of the floor.
+  // The block guardians: a world's own memory Shadow at the size of the floor, in its own art (o.img, art batch 2026-11-01).
   const guard = (base, lvl, name, note, o) => {
     const b = D.enemies[base];
     return Object.assign(scale(S(lvl, Object.assign({ hp: 3.6, st: 1.15, ma: 1.15, en: 1.22, ag: 1.06 }, o.k || {})), NG.guardHp, NG.guardAtk), {
-      name, arcana: b.arcana, aff: Object.assign({}, b.aff, { light: 'null', dark: 'null' }, o.aff || {}), skills: o.skills, ai: o.ai || 'exploit', img: b.img, svg: b.svg, idle: b.idle, h: Math.round((b.h || 240) * 1.15), // no instant kills (ailImmune below)
+      name, arcana: b.arcana, aff: Object.assign({}, b.aff, { light: 'null', dark: 'null' }, o.aff || {}), skills: o.skills, ai: o.ai || 'exploit', img: o.img || b.img, svg: b.svg, idle: b.idle, h: Math.round((b.h || 240) * 1.15), phoneK: 0.65, // phoneK: their own art fits beside the fighter on phones; no instant kills (ailImmune below)
       exp: Math.round(P.expFor(lvl) * 10), yen: P.yenFor(lvl) * 12, drop: 'guardian_crest', dropChance: 1, cls: 'guardian', guardian: true,
       ailImmune: ['charm', 'fear', 'bind', 'freeze'], alloutResist: 0.6, note });
   };
   Object.assign(D.enemies, {
     guard_raqia: guard('party_shadow', 75, 'The Last Song', 'A party grown to the size of the quad. The chorus never comes, so it never ends.',
-      { skills: ['e_maragion', 'e_sexy_dance', 'e_herculean', 'e_heat_wave', 'e_tarukaja'] }),
+      { img: 'climb-last-song', skills: ['e_maragion', 'e_sexy_dance', 'e_herculean', 'e_heat_wave', 'e_tarukaja'] }),
     guard_zebul: guard('tide_shadow', 88, 'The Spring Tide', 'The highest water of the month, standing up in the middle of the floor. The harbor lights are under it somewhere.',
-      { skills: ['e_bufudyne', 'e_mabufula', 'e_marakunda', 'e_megidola', 'e_rakunda'] }),
+      { img: 'climb-spring-tide', skills: ['e_bufudyne', 'e_mabufula', 'e_marakunda', 'e_megidola', 'e_rakunda'] }),
     guard_araboth: guard('ballot_box', 99, 'The Landslide', 'Every vote in the school, cast at once, for the same name. It isn’t yours.',
-      { skills: ['e_mazionga', 'e_maragion', 'e_ominous', 'e_megidola', 'e_matarunda'] })
+      { img: 'climb-landslide', skills: ['e_mazionga', 'e_maragion', 'e_ominous', 'e_megidola', 'e_matarunda'] })
   });
   /* The Zenith's superboss: the tiger from the tale Haenim is named for (the sister and brother who climbed the golden rope and
      became the sun and the moon; the tiger got the rotten rope). Three hills on the road home, one for each of her worlds, are
@@ -114,7 +114,7 @@ window.FemcClimb = (() => {
           skills: ['e_herculean', 'e_kill_rush', 'e_megidolaon', 'e_vorpal', 'e_evil_smile', 'e_matarunda'],
           line: 'Horangi takes hold of a rope that isn’t there and starts to climb. It moves faster now. It has no weakness left to hide.' }
       ],
-      img: b.img, svg: b.svg, idle: b.idle, h: Math.round((b.h || 170) * 1.7), tint: 'sepia(1) saturate(3.2) hue-rotate(-14deg) brightness(1.08)', escort: ['zn_hill_r'],
+      img: 'climb-horangi', svg: b.svg, idle: 'breathe', h: 380, escort: ['zn_hill_r'], // its own art (2026-11-01; was the Wild Beast tinted gold)
       exp: Math.round(P.expFor(lvl) * 14), yen: P.yenFor(lvl) * 20, drop: 'guardian_crest', dropChance: 1, cls: 'superboss', superboss: true,
       ailImmune: IMMUNE, alloutResist: 0.7,
       note: 'The tiger from the tale Haenim is named for. It asked for one rice cake on every hill, and then for everything. It climbed the wrong rope once. It has had a long time to look for the right one.' });
