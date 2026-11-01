@@ -129,6 +129,20 @@
 .g-fm-ov.is-page .g-wd-item.on:is(.sel, :hover, :focus-visible) small { color: #fff; }
 .g-fm-ov.is-page .g-wd-item:is(.sel, :hover, :focus-visible)::after { opacity: 1; animation: g-sl-slash .3s cubic-bezier(.2, .9, .2, 1) both; }
 .g-fm-ov.is-page .g-wd-li .g-view-zoom { z-index: 2; }
+/* The detail panel always fits the page (Kat, Nov 1: at 2000×957 its Equip button sat below the frame): the side is capped at
+   the page body's height (100dvh less the heading, the sub-tabs and the key footer), the preview art gives way first, and the side scrolls
+   only if it still can't fit. The looks' figures bigger; rows snap to the top of the list as it scrolls (no card cut mid-name). */
+@media (min-width: 621px) {
+  .g-fm-ov.is-page .g-wd-side { display: flex; flex-direction: column; max-height: calc(100dvh - 300px); overflow-y: auto; scrollbar-width: none; }
+  .g-fm-ov.is-page .g-wd-side > * { flex: none; }
+  .g-fm-ov.is-page .g-wd-side > .g-wd-stage { flex: 0 1 300px; height: auto; min-height: 130px; }
+  .g-fm-ov.is-page .g-wd-item .g-wd-th { width: 100%; height: 78px; }
+}
+@media (min-width: 621px) { /* rows snap on desktop only (on phones the preview sits above the list) */
+  .g-fm-ov.is-page .g-fm-body:has(.g-wd-items) { scroll-snap-type: y proximity; scroll-padding-top: 6px; }
+  .g-fm-ov.is-page :is(.g-wd-sub, .g-wd-li, .g-wd-kind h3) { scroll-snap-align: start; }
+}
+@media (max-width: 620px) { .g-fm-ov.is-page .g-wd-item .g-wd-th { width: 100%; height: 64px; } }
 /* The Boutique (checked by eye Nov 1): the banner in pink and black (each banner's own colour dropped: several were blue,
    green or gold); the switcher's picked banner on the paper bar; rarity colours on the tiles are kept (they say the rarity). */
 .g-fm-ov.is-page .g-wd-banner { border: 0; border-left: 5px solid var(--pink); background: var(--plate); box-shadow: 8px 8px 0 rgba(255, 79, 158, .3);
