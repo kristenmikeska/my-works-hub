@@ -22991,6 +22991,28 @@
       "outputs": {
         "assets/femc/battle/art/fx/theme-hearts.webp": "8003cb677f960d726e260cfa5c33eee44f0d04ec9a7dfce5303926bedc01c1a7"
       }
+    },
+    {
+      "batch": 119,
+      "source": "booth-frames-1.png",
+      "sourceNow": "New Adds/booth-frames-1.png",
+      "size": [
+        1086,
+        1448
+      ],
+      "sha256": "0fa72647d2738d90c568f6bad7981c2178977f2d86a4d86d15d6759d677e4e7e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/booth/frame-1..4.webp",
+      "conversion": "2 x 2 sheet on flat green, RGB: python3 tools/femc-booth.py frames booth-frames-1.png 1 (femc-greens.py key_outer_green plus any remaining green, spill taken off; each frame cut to its box and set to 600 x 800, WebP q90); source unchanged",
+      "sheetOrder": "reading order: hearts, stars, lace & bows, sun & moon",
+      "placement": "the photo booth (game/booth.js) frames 1-4; booth/index.js lists them",
+      "knownLimits": "boxes were 0.735-0.761 wide:high, set to exactly 3:4 (a slight stretch)",
+      "outputs": {
+        "assets/femc/game/art/booth/frame-1.webp": "ff94079a46747e3bbe694be8cc534a210972b9263c11ab310c6b90b7668b6510",
+        "assets/femc/game/art/booth/frame-2.webp": "70693a1e488ad69fd5a3aff80e2b900f8a7e55f7a09467b453b97d2eeaa55290",
+        "assets/femc/game/art/booth/frame-3.webp": "cdb0bd7efd882eea2f88287015038f5b14e52ba3ff9c561f3a79a87655a23461",
+        "assets/femc/game/art/booth/frame-4.webp": "b5fa757014d7f279da2945efea7538ed806d183ea11185908ca6f27de0116af5"
+      }
     }
   ],
   "batch1Validation": {
@@ -24431,5 +24453,10 @@
     "tests": "femc_skins_battle --only sheet2 (new), data,tools,fallback,art,tryon; femc_fx_art (its practice charge check updated for the Nov 1 own-sheet recuts); femc_cosmetics --only inbattle; femc_building --only fight: all passed",
     "framing": "every sheet-2 frame on sheet 1’s box at 1440 x 900 and 390 x 844 (image rect identical to the idle frame within 1 px); contact sheets checked by eye",
     "html": "battle.js v83 (ART_V 40), fx.js v13, fx/index.js hash; femc-game.html ready.js v21, cosmetics.js v35, tryon.js v2, gacha.css v19"
+  },
+  "batch119Validation": {
+    "tests": "python3 tests/femc_booth.py (art, flow at 1440 x 900 and 390 x 844, album, gates, settings): all passed; femc_gallery passed",
+    "framing": "every booth step, the Album row and the strip viewer checked by eye at 1440 x 900 and 390 x 844",
+    "html": "femc-game.html places v67, core v73, menu v38, ui v55; new booth.js, booth.css, art/booth/index.js (v1)"
   }
 }

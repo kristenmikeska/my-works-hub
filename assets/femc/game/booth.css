@@ -1,0 +1,113 @@
+/* Persona 3: Solstice · the photo booth (game/booth.js) and its Album row. Pink and black (Kat's palette rule). */
+.g-booth-ov .g-panel.g-booth { width: min(1060px, 100%); padding: clamp(14px, 2.4vw, 26px); }
+.g-booth h2 { font-size: clamp(26px, 3.6vw, 40px); }
+.bs-cols { display: grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr); gap: clamp(14px, 2.6vw, 30px); align-items: start; }
+.bs-stage { position: relative; justify-self: center; }
+.bs-side { min-width: 0; }
+.bs-nav { margin-top: 14px; flex-wrap: wrap; }
+.bs-h3 { margin: 12px 0 6px; color: var(--pink-2); font: italic 900 15px/1 var(--cond); letter-spacing: .14em; text-transform: uppercase; }
+.bs-tip { margin: 10px 0 0; }
+
+/* One shot: 3:4, the two of them, the frame on top. Stand-in poses: the scene portrait, faded at the waist, with a badge. */
+.bs-shot { position: relative; aspect-ratio: 3 / 4; overflow: hidden; background: #2a0f22; }
+.bs-shot.big { width: min(400px, 52vh); }
+.bs-bg { position: absolute; inset: 0; background: radial-gradient(120% 80% at 50% 18%, #ffe3ee 0, #ffb3d4 46%, #ff8cc0 100%); }
+.bs-bg::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-35deg, rgba(255, 255, 255, .18) 0 6px, transparent 6px 22px); }
+.bs-p { position: absolute; bottom: 0; width: 54%; height: 70%; }
+.bs-p.l { left: 2%; } .bs-p.r { right: 2%; }
+.bs-p > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent); mask-image: linear-gradient(to bottom, #000 78%, transparent); }
+img.bs-p.art { object-fit: contain; object-position: 50% 100%; -webkit-mask-image: none; mask-image: none; }
+.bs-badge { position: absolute; top: -4%; width: 24%; height: auto; aspect-ratio: 1; color: #ff4f9e; filter: drop-shadow(0 0 0 #fff) drop-shadow(1.5px 1.5px 0 #fff) drop-shadow(-1.5px -1.5px 0 #fff) drop-shadow(2px 3px 0 rgba(20, 7, 15, .55)); }
+.bs-p.l .bs-badge { left: 4%; } .bs-p.r .bs-badge { right: 4%; }
+.bs-heart { position: absolute; left: 50%; top: 13%; width: 24%; height: auto; translate: -50% 0; color: #ff4f9e; opacity: .92; filter: drop-shadow(0 0 6px #fff) drop-shadow(2px 3px 0 rgba(20, 7, 15, .5)); }
+.bs-frame { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.bs-shot, .bs-fr-pic { container-type: size; }
+.bs-frame.drawn { box-sizing: border-box; border: 10cqw solid #14070f; box-shadow: inset 0 0 0 2px #ff8cc0; }
+.bs-frame.drawn .bs-fm { position: absolute; width: 11cqw; height: auto; aspect-ratio: 1; translate: -50% -50%; transform: rotate(var(--r, 0deg)); }
+.bs-frame.drawn .bs-fm:nth-child(odd) { width: 8cqw; }
+
+/* The whole strip (stamp step, print, Album): three shots on pale pink paper; stamps over it in % of the strip. */
+.bs-strip { position: relative; display: grid; gap: 3.2%; padding: 4.5%; width: var(--sw, min(220px, 22vh)); background: #fff4f9; box-shadow: 6px 6px 0 rgba(255, 79, 158, .5); }
+.bs-stage.strip .bs-strip { --sw: min(230px, 19vh); }
+.bs-strip .bs-shot.empty { background: #2a0f22; }
+.bs-stamps { position: absolute; inset: 0; pointer-events: none; }
+.bs-st { position: absolute; width: 22%; aspect-ratio: 1; padding: 0; border: 0; background: none; translate: -50% -50%; pointer-events: auto; cursor: grab; touch-action: none; }
+span.bs-st { pointer-events: none; cursor: default; }
+.bs-st svg, .bs-st img { width: 100%; height: 100%; display: block; filter: drop-shadow(1.5px 2px 0 rgba(20, 7, 15, .45)); }
+.bs-st:focus-visible, .bs-st.drag { outline: 2px dashed #ff4f9e; outline-offset: 2px; }
+.bs-st.drag { cursor: grabbing; }
+.bs-strip.print { animation: bs-print .6s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes bs-print { from { transform: translateY(-14%); opacity: 0; } }
+
+/* Step 1: the partner list. */
+.bs-who { display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 12px; margin: 14px 0 4px; }
+.bs-pick { position: relative; display: grid; gap: 6px; padding: 0 0 10px; overflow: hidden; border: 2px solid rgba(255, 140, 192, .4); background: #1a0a13; color: #fff; cursor: pointer; text-align: center; transition: transform .12s, border-color .12s, box-shadow .12s; }
+.bs-pick img { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: 50% 14%; background: linear-gradient(#ffb3d4, #ff8cc0); }
+.bs-pick b { font: italic 900 18px/1 var(--cond); letter-spacing: .04em; text-transform: uppercase; }
+.bs-pick:is(:hover, :focus-visible) { outline: none; border-color: #fff; transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--pink); }
+
+/* Step 2: frames. */
+.bs-frames { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 12px 0 4px; }
+.bs-fr { display: grid; gap: 4px; padding: 6px; border: 2px solid rgba(255, 140, 192, .3); background: #1a0a13; color: #fff; cursor: pointer; }
+.bs-fr-pic { position: relative; display: block; aspect-ratio: 3 / 4; background: linear-gradient(#ffe3ee, #ffb3d4); }
+.bs-fr small { font: italic 800 12px/1.1 var(--cond); letter-spacing: .08em; text-transform: uppercase; color: var(--pink-2); }
+.bs-fr.on { border-color: #ff4f9e; box-shadow: 4px 4px 0 #ff4f9e; }
+.bs-fr:is(:hover, :focus-visible) { outline: none; border-color: #fff; }
+
+/* Step 3: poses, the countdown and the flash. */
+.bs-poses { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.bs-pose { display: flex; align-items: center; gap: 6px; min-height: 40px; padding: 6px 8px; border: 1.5px solid rgba(255, 140, 192, .3); background: #1a0a13; color: #fff; font: 700 13px/1.15 var(--body, inherit); text-align: left; cursor: pointer; }
+.bs-pose svg { flex: none; width: 20px; height: 20px; color: var(--pink-2); }
+.bs-pose.on { border-color: #ff4f9e; background: #ff4f9e; color: #14070f; }
+.bs-pose.on svg { color: #fff; }
+.bs-pose:is(:hover, :focus-visible) { outline: none; border-color: #fff; }
+.bs-flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+.bs-flash.go { animation: bs-flash .4s ease-out both; }
+@keyframes bs-flash { 0% { opacity: .95; } 100% { opacity: 0; } }
+.calm .bs-flash { background: #ffe3ee; }
+.calm .bs-flash.go { animation: bs-soft .4s ease both; }
+@keyframes bs-soft { 0% { opacity: 0; } 40% { opacity: .55; } 100% { opacity: 0; } }
+.bs-count { position: absolute; left: 50%; top: 42%; translate: -50% -50%; color: #fff; font: italic 900 clamp(70px, 12vw, 130px)/1 var(--cond); text-shadow: 5px 5px 0 #ff4f9e, -2px -2px 0 #14070f; pointer-events: none; }
+.bs-count.go { animation: bs-count .26s cubic-bezier(.2, 1.4, .4, 1) both; }
+@keyframes bs-count { from { transform: scale(1.8); opacity: 0; } }
+.reduced .bs-count.go, .reduced .bs-strip.print { animation: none; }
+.bs-stage:has(.bs-dots) { margin-bottom: 22px; }
+.bs-dots { position: absolute; left: 50%; bottom: -22px; translate: -50% 0; display: flex; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.bs-dots li { width: 10px; height: 10px; border: 2px solid #ff8cc0; transform: rotate(45deg); }
+.bs-dots li.done { background: #ff4f9e; border-color: #ff4f9e; }
+.bs-dots li.now { border-color: #fff; }
+
+/* Step 4: stamps. */
+.bs-stampset { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin: 12px 0 4px; }
+.bs-stamp { padding: 6px; border: 1.5px solid rgba(255, 140, 192, .3); background: #1a0a13; cursor: pointer; }
+.bs-stamp span { display: block; aspect-ratio: 1; }
+.bs-stamp svg, .bs-stamp img { width: 100%; height: 100%; display: block; }
+.bs-stamp:is(:hover, :focus-visible):not(:disabled) { outline: none; border-color: #fff; }
+.bs-stamp:disabled { opacity: .35; cursor: default; }
+
+/* The Album's row. */
+.bs-al-grid { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 6px; }
+.bs-al-tile { position: relative; padding: 0 0 22px; border: 0; background: none; cursor: pointer; }
+.bs-al-tile .bs-strip { --sw: 96px; box-shadow: 4px 4px 0 rgba(255, 79, 158, .45); transition: transform .14s; }
+.bs-al-tile .g-al-cap { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; }
+.bs-al-tile:is(:hover, :focus-visible) { outline: none; }
+.bs-al-tile:is(:hover, :focus-visible) .bs-strip { transform: translate(-2px, -2px) rotate(-1.5deg); box-shadow: 6px 6px 0 var(--pink); }
+.g-booth-ov.view .bs-stage.strip .bs-strip { --sw: min(230px, 19vh); }
+
+@media (max-width: 760px) {
+  .bs-cols { grid-template-columns: 1fr; gap: 12px; }
+  .bs-shot.big { width: min(240px, 34vh); }
+  .bs-stage.strip .bs-strip, .g-booth-ov.view .bs-stage.strip .bs-strip { --sw: min(170px, 21vh); }
+  .bs-who { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .bs-pick b { font-size: 14px; }
+  .bs-frames { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+  .bs-fr { padding: 4px; }
+  .bs-fr small { font-size: 10px; }
+  .bs-poses { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bs-pose { min-height: 36px; font-size: 12px; }
+  .bs-stampset { grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 4px; }
+  .bs-stamp { padding: 3px; }
+  .bs-side .g-kicker { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) { .bs-count.go, .bs-strip.print, .bs-flash.go { animation-duration: .01s; } }
+.g-booth-ov.view .g-panel.g-booth { width: min(600px, 100%); }

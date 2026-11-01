@@ -57,6 +57,10 @@ window.FEMC_GAME_PLACES = {
       lines: ['The arcade was loud enough to think in. She lost three times to a middle-schooler and won the fourth, and did not let it show on her face, and let it show everywhere else.', 'A rhythm game in the back corner ate four hundred yen and gave her, in return, hands that knew where the notes would be before they came.'] },
     { id: 'crane', area: 'mall', spot: 'Game Panic', name: 'Crane game', about: 'A wall of crane machines full of plushies. The claws are weak. The trick is patience, angles and a steady hand.', icon: 'game', slots: ['after', 'evening'], cost: 300, stats: { proficiency: 2 },
       lines: ['She studied the claw for three tries before she touched it, then nudged a plush cat by its tag until it tipped into the chute. The kid next to her asked if she did this for a living.', 'Six hundred yen, one near miss, and then a small stuffed rabbit dropped into the chute like it had decided to come home with her.'] },
+    // The photo booth (FEMC-ART-TODO 15; game/booth.js): pick a partner she has met, a frame, three poses and stamps; the strip
+    // goes into the Album. `booth` opens it (ui.js doActivity); `daily`: once a day (core.js activityOk / doActivity).
+    { id: 'booth', area: 'mall', spot: 'Game Panic', name: 'Photo booth', about: 'A purikura booth by the arcade door: frames, poses, stamps, and a strip of three to keep.', icon: 'game', slots: ['after', 'evening'], cost: 400, booth: true, daily: true,
+      lines: ['The booth counted down in a voice far too cheerful for the mall.'] },
     { id: 'cinema', area: 'mall', spot: 'Screen Shot', name: 'See a movie', about: "A small theater with weekend showings. The bill changes every week, and every film leaves you a little different.", icon: 'film', slots: ['after'], days: [0, 6], cost: 1200,
       showings: [
         { title: 'The Ninth Floor (horror)', stats: { courage: 3 }, lines: ['The Ninth Floor was about an elevator, and it was the worst two hours of her life, and she did not look away once. The boy two rows ahead screamed. She did not. She was a little proud of that.'] },

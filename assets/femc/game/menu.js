@@ -852,7 +852,8 @@ window.FemcMenu = (() => {
      runs in scene.js's read-only mode (opts.replay, conditions through peek), so it never writes the save; the menu (or the
      Extras panel) steps out of the page meanwhile and comes back after. Not in the Dark Hour.
      A Credits row (2026-11-01) holds the end-credits stills already shown (ui.js creditsRoll → S.album.cg; no locked tiles).
-     New Game+ keeps all of it (albumCarry → the new S.album: cg, frags, events, doors, ranks, prologue). */
+     New Game+ keeps all of it (albumCarry → the new S.album: cg, frags, events, doors, ranks, prologue, booth).
+     A Photo Booth row (2026-11-01, booth.js albumSection / wireAlbum) draws S.album.booth's strips live from their layers. */
   const ALB_V = 1, END_ID = 'end-ending', CLEARS_KEY = 'kg-femc-revamp-clears';
   const EPI = () => window.FemcEpilogue || null;
   /* The epilogue (batch 9): inside one (S.epi), core.js reads that world's data, so the album shows the year as an "Iwatodai"
@@ -1027,7 +1028,7 @@ window.FemcMenu = (() => {
     const recs = { ...(a.epi || {}), ...(s.epilogues || {}) }; // the epilogues' Theater records (batch 9)
     return { v: ALB_V, cg: uniq([...cgs.filter(c => c.on).map(c => c.id), ...epi.filter(c => c.on).map(c => c.id), ...(a.cg || []).filter(id => /^epi-/.test(id))]),
       frags: uniq([...(a.frags || []), ...s.fragments]), events: uniq([...(a.events || []), ...s.events.filter(id => id !== END_ID)]),
-      doors: uniq([...(a.doors || []), ...(s.route.doorsSeen || [])]), ranks, prologue: !!a.prologue || !!(s.started && s.day > 0), ...(Object.keys(recs).length ? { epi: recs } : {}) };
+      doors: uniq([...(a.doors || []), ...(s.route.doorsSeen || [])]), ranks, ...((a.booth || []).length ? { booth: a.booth.map(r => JSON.parse(JSON.stringify(r))) } : {}), prologue: !!a.prologue || !!(s.started && s.day > 0), ...(Object.keys(recs).length ? { epi: recs } : {}) };
   }
 
   /* The album's page. Tiles open the viewer; locked tiles are blank and can't be focused. */
@@ -1043,13 +1044,15 @@ window.FemcMenu = (() => {
       ${n(cgs) + n(frags) + n(epi) ? '' : '<p class="g-note">Nothing here yet. Scenes and memories she lives through will be kept here.</p>'}
       ${CG_GROUPS.map(([g, name]) => sec(yr + name, cgs.filter(c => c.group === g))).join('')}
       ${epiGroups(epi).map(([g, name]) => sec(name, epi.filter(c => c.group === g))).join('')}
-      ${WORLDS.map(([w, name]) => sec(`Memory cards · ${name}`, frags.filter(c => c.group === w), true)).join('')}</div>`;
+      ${WORLDS.map(([w, name]) => sec(`Memory cards · ${name}`, frags.filter(c => c.group === w), true)).join('')}
+      ${window.FemcBooth ? window.FemcBooth.albumSection(esc) : ''}</div>`;
   }
   // The unlocked entries in page order (data-al indexes this).
   // The epilogue's sections, in order: [group, heading] (one per world entered).
   const epiGroups = epi => uniq(epi.map(c => c.group)).map(g => [g, epi.find(c => c.group === g).kicker]);
   function albumList() { const { cgs, frags, epi } = albumData(); return [...CG_GROUPS.flatMap(([g]) => cgs.filter(c => c.group === g)), ...epiGroups(epi).flatMap(([g]) => epi.filter(c => c.group === g)), ...WORLDS.flatMap(([w]) => frags.filter(c => c.group === w))].filter(c => c.on); }
   function wireAlbum(el) {
+    if (window.FemcBooth) window.FemcBooth.wireAlbum(el); // the Photo Booth row (booth.js): strips drawn live, its own viewer
     el.querySelectorAll('[data-al]').forEach(bt => bt.addEventListener('click', () => {
       G.sfx('femc-click');
       viewer(albumList(), +bt.dataset.al, i => el.querySelector(`[data-al="${i}"]`)?.focus({ preventScroll: true }));

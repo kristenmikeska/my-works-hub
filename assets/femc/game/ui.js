@@ -1412,7 +1412,7 @@
     const o = overlay(`<p class="g-kicker">${esc(a.name)} · ${esc(x.spot)}</p><h2>${esc(x.name)}</h2>
       ${x.about ? `<p class="g-note">${esc(x.about)}</p>` : ''}<p>${esc(preview.benefit)}</p><ul class="g-gains"><li>${esc(preview.cost)}</li><li>${esc(preview.time)}</li></ul>
       ${ok.ok ? '' : `<p class="g-warn">${esc(ok.why)}</p>`}
-      <div class="g-row"><button type="button" class="g-btn pink" data-confirm${ok.ok ? '' : ' disabled'}>${x.gacha === 'velvet' ? 'Open the door' : x.gacha ? 'Walk over' : x.shop ? 'Browse shop' : 'Spend time here'}</button><button type="button" class="g-btn" data-close>Back</button></div>`, 'g-activity-preview');
+      <div class="g-row"><button type="button" class="g-btn pink" data-confirm${ok.ok ? '' : ' disabled'}>${x.booth ? 'Step inside' : x.gacha === 'velvet' ? 'Open the door' : x.gacha ? 'Walk over' : x.shop ? 'Browse shop' : 'Spend time here'}</button><button type="button" class="g-btn" data-close>Back</button></div>`, 'g-activity-preview');
     o.el.querySelector('[data-confirm]').addEventListener('click', () => {
       o.close();
       if (!G.activityOk(x, slot).ok) return areaView(slot, a);
@@ -1424,6 +1424,12 @@
     if (x.gacha && window.FemcGacha) return window.FemcGacha.open(x.gacha, () => areaView(slot, a));
     if (x.shop) return openShop(x.shop, () => areaView(slot, a));
     if (x.club) return playClub(x, slot, a);
+    // The photo booth (booth.js): its own panel; Print pays and spends the slot, then its line plays here. Leaving costs nothing.
+    if (x.booth && window.FemcBooth) {
+      const bo = window.FemcBooth.open({ act: x, slot, onCancel: () => areaView(slot, a),
+        onDone: r => SC.play({ scene: [{ n: r.text }], place: r.place, time: slot === 'evening' ? 'Evening' : G.slotName(slot), label: `${x.name} · ${G.name(r.rec.who)}`, onDone: () => advance() }) });
+      if (bo) return;
+    }
     const r = G.doActivity(x);
     // Sometimes someone turns up (data/living-runins.js): their scene plays on the end of this one.
     const ri = G.runInDue({ act: x.id, area: a.id, slot });

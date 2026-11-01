@@ -1030,6 +1030,9 @@ window.FemcGame = (() => {
     if (a.closedIn && wxIn(a.closedIn, info.weather)) return { ok: false, why: `Closed: ${(D.cal.weatherNames[info.weather] || info.weather).toLowerCase()}` };
     if (actCost(a) && S.yen < actCost(a)) return { ok: false, why: 'Not enough yen' };
     if (S.spent[`${S.day}-${slot}`] && !a.shop) return { ok: false, why: 'No time left' };
+    // daily: once a day (the photo booth); booth: someone to take it with (booth.js partners).
+    if (a.daily && (S.doneDay || {})[a.id] === S.day) return { ok: false, why: 'Once a day' };
+    if (a.booth && W.FemcBooth && !W.FemcBooth.partners().length) return { ok: false, why: 'Nobody to squeeze in with yet' };
     return { ok: true };
   }
   // Preview the same weather and condition-adjusted gains the activity will award.
@@ -1073,6 +1076,7 @@ window.FemcGame = (() => {
     addStats(sumStats(stats, actPerkStats(a)));
     if (a.cures?.includes(S.condition)) { S.condition = 'good'; toast('cond', 'She feels better.'); }
     (S.done ||= {})[a.id] = (S.done[a.id] || 0) + 1;
+    if (a.daily) (S.doneDay ||= {})[a.id] = S.day;
     // Yunjin's Taxi Driver Coffee: once a week the vending machine's coffee clears Tired.
     perkVal('weeklyCure').forEach(o => { if (o.act === a.id && S.condition === o.cond && weekly('cure-' + a.id)) { S.condition = 'good'; toast('cond', 'Yunjin’s coffee. She’s awake now.'); } });
     // Jaehyun's It's a Schedule: once a week, two activities fit in one After School slot.

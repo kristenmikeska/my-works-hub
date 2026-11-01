@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 1):** 2 evening poses for Solar (section 20) · 10 photo booth sheets (section 15) · 14 seasonal face sheets (section 16) · 1 credits still (section 18: Ken) · 23 skin-series pieces for Solar (section 19: The Sun's portraits, Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, couple Showtimes, theme sheets and frames, cut-ins, finish cards, second pose sheets): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`, not here. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make (updated Nov 1):** 2 evening poses for Solar (section 20) · 9 photo booth sheets (section 15) · 14 seasonal face sheets (section 16) · 1 credits still (section 18: Ken) · 23 skin-series pieces for Solar (section 19: The Sun's portraits, Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, couple Showtimes, theme sheets and frames, cut-ins, finish cards, second pose sheets): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`, not here. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
@@ -14,15 +14,7 @@ Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make.
 ---
 
 ## 15. Photo booth: purikura (Gemini for frames and stamps, ChatGPT for poses)
-A photo booth at the mall: Solar picks a partner, a frame and poses, and the strip goes into her Album. Frames and stamps have no people, so they're Gemini; the pose sheets are ChatGPT. Every pose sheet is waist up and facing the camera, so two people fit side by side in a frame (Solar on the left, her partner on the right).
-
-**[ ] 15A. Photo booth frames, part 1**  
-Four everyday frames for the booth.  
-Attach: `UI - style (pink cover).png`  
-Save as: `booth-frames-1.png`
-```
-Using the attached image only as a reference for its colours and graphic style (black, deep plum, hot pink, pale pink and white), create a 2 × 2 sheet of four cute Japanese purikura photo-booth frames on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Each frame is an upright 3:4 rectangle: a thick decorative border with a big EMPTY window in the middle filled with the same flat pure green, wide enough for two people side by side from the waist up. Sparkly and cute, crisp clean edges, flat graphic shapes. No people, no text, no letters, no numbers. Frame 1 (top left): hot-pink hearts and small white sparkles on black. Frame 2 (top right): pink and white stars with a dotted pale pink border. Frame 3 (bottom left): a black lace border with pink ribbon bows in the corners. Frame 4 (bottom right): a sun in the top left corner and a crescent moon in the bottom right, pink rays around a black border.
-```
+A photo booth at the mall: Solar picks a partner, a frame and poses, and the strip goes into her Album. **The booth is in the game (Nov 1)** with your first four frames; the rest is drawn in for now and switches to your art as each sheet arrives. Frames and stamps have no people, so they're Gemini; the pose sheets are ChatGPT. Every pose sheet is waist up and facing the camera, so two people fit side by side in a frame (Solar on the left, her partner on the right).
 
 **[ ] 15B. Photo booth frames, part 2**  
 Four seasonal frames.  
