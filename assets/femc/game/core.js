@@ -822,6 +822,7 @@ window.FemcGame = (() => {
     if (line.item) { Object.entries(line.item).forEach(([k, v]) => addItem(k, v)); did = true; }
     if (line.gift) { gift(line.gift); did = true; }
     if (line.bond) { Object.entries(line.bond).forEach(([k, v]) => bond(k, v)); did = true; }
+    if (line.giftReact) { noteGift(line.giftReact); did = true; }
     if (line.later) { laterText(line.later); did = true; }
     if (line.crush) { crushApply(line.crush); did = true; }
     if (line.glow) { setGlow(line.glow); did = true; }
@@ -2250,6 +2251,26 @@ window.FemcGame = (() => {
     return out;
   }
   const goneLinks = () => Object.values(LINKS).filter(l => isMet(l.id) && !l.storyOnly && !l.hidden && goneLink(l));
+  // A contact card: what Solar knows of a met link (see the block header). Gifts: noteGift.
+  function contactCard(l) {
+    if (!l || !isMet(l.id)) return null;
+    const c = (W.FEMC_GAME_CONTACTS || {})[l.id] || {}, p = progress(l.id), r = p.rank || 0, rom = p.route === 'romance';
+    const field = v => (!v ? null : typeof v === 'string' ? v : r >= (v.rank || 1) ? v.t : null);
+    const learned = Object.entries(c.learned || {}).map(([k, v]) => ({ rank: +k, t: typeof v === 'string' ? v : (rom && v.romance) || v.t })).sort((a, b) => a.rank - b.rank);
+    const g = life().gifts[l.id] || {};
+    return { link: l, rank: r, max: maxOf(l), romance: rom, birthday: field(c.birthday), food: field(c.food), hobbies: field(c.hobbies), where: homeOf(l).hint || linkPlace(l),
+      gone: goneLink(l), hint: rankHint(l), known: learned.filter(x => r >= x.rank), locked: learned.filter(x => r < x.rank).length,
+      gifts: { loved: g.loved || [], liked: g.liked || [], meh: g.meh || [] } };
+  }
+  /* Gift reactions, recorded from now on: a scene line { giftReact: { link, item, tier: 'loved' | 'liked' | 'meh' } } (or a
+     call to FemcGame.noteGift) files the item under that reaction on their card. The card shows "?" until one is learned. */
+  function noteGift(g) {
+    if (!g || !g.link || !g.item || !['loved', 'liked', 'meh'].includes(g.tier)) return false;
+    const box = (life().gifts[g.link] ||= {});
+    ['loved', 'liked', 'meh'].forEach(k => { box[k] = (box[k] || []).filter(x => x !== g.item); });
+    (box[g.tier] ||= []).push(g.item);
+    return true;
+  }
 
   /* ── Time ── */
   function freeSlotSpent(slot = S.slot) { return !!S.spent[`${S.day}-${slot}`]; }
@@ -2552,7 +2573,7 @@ window.FemcGame = (() => {
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
     deliverTexts, replyText, textById, answerInvite, gift, bond,
-    rankHint, whoFree, goneLinks, storyDay,
+    rankHint, whoFree, goneLinks, contactCard, noteGift, storyDay,
     holidayInvites, sendHolidayInvites, holidayDue, acceptHoliday, finishHoliday, declineHolidays,
     lateNightDue, finishLateNight, tripPlan, finishTrip, unread, markAllRead, isGroupThread, freeSlotSpent, nextSlot, sleep,
     available, navigator, tartarusOk, floorCap, makeHandoff, readHandoff, clearHandoff, finishHandoff, simulate, applyResult,

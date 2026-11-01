@@ -387,6 +387,16 @@ try:
         size(w, h, name == 'phone'); shot(f'phone-{name}')
         ok(p.eval("document.documentElement.scrollWidth<=innerWidth"), f'phone fits at {w}x{h}')
     size(1440, 900)
+    # The phone's apps (2026-11-01; tests/femc_life.py has the full checks): three tabs on top, Who's free and Contacts open.
+    ok(p.eval("document.querySelectorAll('.g-phone-ov:not(.out) [data-tab]').length===0"), 'a conversation has no app tabs')
+    p.eval("document.querySelector('.g-phone-ov:not(.out) .g-ph-back').click();true")
+    ok(p.eval("[...document.querySelectorAll('.g-phone-ov:not(.out) [data-tab]')].map(b=>b.textContent).join('|')==='Messages|Who’s free|Contacts'"), 'the message list shows the phone apps')
+    p.eval("document.querySelector('.g-phone-ov:not(.out) [data-tab=free]').click();true")
+    ok(p.eval("document.querySelectorAll('.g-phone-ov:not(.out) .g-ph-day').length>=1"), 'Who’s free opens from the phone')
+    p.eval("document.querySelector('.g-phone-ov:not(.out) [data-tab=people]').click();true")
+    ok(p.eval("document.querySelector('.g-phone-ov:not(.out) .g-ph-top b').textContent==='Contacts'"), 'Contacts opens from the phone')
+    p.eval("document.querySelector('.g-phone-ov:not(.out) [data-tab=msgs]').click();true")
+    ok(p.eval("!!document.querySelector('.g-phone-ov:not(.out) .g-ph-row[data-th]')"), 'and back to Messages')
 
     errors = p.console()
     ok(not errors, f'no browser errors: {errors}')

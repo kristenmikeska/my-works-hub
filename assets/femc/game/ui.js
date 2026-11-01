@@ -1654,12 +1654,12 @@
     const stop = () => { anim.token += 1; clearTimeout(anim.timer); anim.skip = null; o.el.classList.remove('g-ph-playing'); };
     const focusIn = el => setTimeout(() => el?.isConnected && el.focus({ preventScroll: true }), 40);
     const pending = id => !!(s.phone.pending[id] && G.textById(s.phone.pending[id])) || s.phone.invite?.link === id;
-    /* The phone's apps (2026-11-01): Messages and Who's Free (P5X-style: who's at their spot today and the next few days),
-       more apps to come. The tab strip sits at the top of each list. */
+    /* The phone's apps (2026-11-01): Messages, Who's Free (P5X-style: who's at their spot today and the next few days) and
+       Contacts (a card per met link). The tab strip sits at the top of each list; a contact card's ‹ goes back to Contacts. */
     let tab = 'msgs';
-    const tabsHtml = () => `<nav class="g-ph-tabs" aria-label="Phone apps">${[['msgs', 'Messages'], ['free', 'Who’s free']].map(([k, t]) => `<button type="button" data-tab="${k}"${tab === k ? ' class="on" aria-current="page"' : ''}>${t}</button>`).join('')}</nav>`;
+    const tabsHtml = () => `<nav class="g-ph-tabs" aria-label="Phone apps">${[['msgs', 'Messages'], ['free', 'Who’s free'], ['people', 'Contacts']].map(([k, t]) => `<button type="button" data-tab="${k}"${tab === k ? ' class="on" aria-current="page"' : ''}>${t}</button>`).join('')}</nav>`;
     const wireTabs = () => body.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { if (b.dataset.tab === tab) return; tab = b.dataset.tab; G.sfx('femc-click'); home(); focusIn(body.querySelector(`[data-tab="${tab}"]`)); }));
-    const home = () => (tab === 'free' ? freeApp() : list());
+    const home = () => (tab === 'free' ? freeApp() : tab === 'people' ? peopleApp() : list());
     const face = id => { const pic = G.portrait(id, 'neutral'); return `<i>${pic ? `<img src="${pic}" alt="">` : esc((G.LINKS[id]?.short || '?')[0])}</i>`; };
     const rkChip = l => { const p = G.progress(l.id); return `<em class="g-ph-rk">${G.isMaxed(l) ? 'MAX' : `R${p.rank}`}${p.route === 'romance' ? ' <span class="g-ph-heart" aria-label="romance">♥</span>' : ''}</em>`; };
     const hintChip = h => (h && h.label && h.key !== 'max' ? `<small class="g-ph-hint k-${h.key}">${esc(h.label)}</small>` : '');
@@ -1684,7 +1684,37 @@
       body.querySelectorAll('[data-fr]').forEach(b => b.addEventListener('click', () => {
         G.sfx('femc-click');
         if (b.dataset.go) { const [slot, area] = b.dataset.go.split('|'); goArea = { slot, area }; o.close(); return; }
+        card(b.dataset.fr, 'free');
       }));
+    };
+    const peopleApp = () => {
+      stop();
+      title.textContent = 'Contacts'; back.hidden = true; reply.replaceChildren(); compose.hidden = true; bar.innerHTML = ''; bar.hidden = true;
+      const met = Object.values(G.LINKS).filter(l => G.isMet(l.id) && !l.hidden && l.status !== 'stub' && !(l.secret && !G.flag(l.secret.flag)));
+      body.innerHTML = tabsHtml() + (met.length ? met.map(l => `<button type="button" class="g-ph-row g-ph-ct" data-ct="${l.id}">${face(l.id)}<span><b>${esc(l.short)} ${rkChip(l)}</b><small>${esc(l.arcana)}</small>${hintChip(G.rankHint(l))}</span></button>`).join('') : '<p class="g-note">No contacts yet.</p>');
+      wireTabs();
+      body.querySelectorAll('[data-ct]').forEach(b => b.addEventListener('click', () => { G.sfx('femc-click'); card(b.dataset.ct, 'people'); }));
+    };
+    let cardFrom = 'people';
+    const card = (id, from) => {
+      stop();
+      const l = G.LINKS[id], c = G.contactCard(l); if (!c) return;
+      cardFrom = from || 'people';
+      title.textContent = l.short; title.dataset.card = '1'; back.hidden = false; reply.replaceChildren(); compose.hidden = true; bar.innerHTML = ''; bar.hidden = true;
+      const pic = G.portrait(id, 'happy') || G.portrait(id, 'neutral');
+      const gift = (k, label) => `<li><b>${label}</b><span>${c.gifts[k].length ? c.gifts[k].map(esc).join(', ') : '?'}</span></li>`;
+      const facts = [c.birthday ? ['Birthday', c.birthday] : null, ['Find them', c.gone ? 'Not around anymore.' : c.where], c.food ? ['Food', c.food] : null, c.hobbies ? ['Likes doing', c.hobbies] : null].filter(Boolean);
+      body.innerHTML = `<article class="g-ph-card"><header>${pic ? `<img src="${pic}" alt="">` : `<i>${esc(l.short[0])}</i>`}<div><p class="an">${esc(l.numeral ? `${l.numeral} · ` : '')}${esc(l.arcana)}</p><h3>${esc(l.name)}</h3>
+          <p class="rk">${G.isMaxed(l) ? 'MAX' : `Rank ${c.rank} of ${c.max}`}${c.romance ? ' · <span class="g-ph-heart">♥</span> Romance' : ''}</p>${c.hint && c.hint.label && c.hint.key !== 'max' ? `<p class="g-ph-hint k-${c.hint.key}">${esc(c.hint.label)}</p>` : ''}</div></header>
+        ${c.hint && c.hint.note ? `<p class="g-ph-note">${esc(c.hint.note)}</p>` : ''}
+        <dl>${facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
+        <h4>Gifts</h4><ul class="g-ph-gifts">${gift('loved', 'Loved')}${gift('liked', 'Liked')}${gift('meh', 'Shrugged')}</ul>
+        <h4>Things Solar has learned</h4>${c.known.length ? `<ul class="g-ph-learned">${c.known.map(x => `<li><small>Rank ${x.rank}</small>${esc(x.t)}</li>`).join('')}</ul>` : '<p class="g-ph-empty">Nothing yet. Spend time together.</p>'}
+        ${c.locked ? `<p class="g-ph-empty">More to learn as you get closer.</p>` : ''}
+        <button type="button" class="g-ph-msgbtn" data-msg="${id}"${(s.phone.threads[id] || []).length ? '' : ' hidden'}>Messages ▸</button></article>`;
+      body.querySelector('[data-msg]')?.addEventListener('click', () => { G.sfx('femc-click'); tab = 'msgs'; open(id); });
+      body.scrollTop = 0;
+      focusIn(back);
     };
 
     const list = () => {
@@ -1815,7 +1845,7 @@
       if (reply.firstChild) focusIn(reply.firstChild);
     };
     const open = id => {
-      title.textContent = threadName(id); back.hidden = false;
+      title.textContent = threadName(id); back.hidden = false; delete title.dataset.card;
       const th = s.phone.threads[id] || [], fresh = Math.min(th.length, s.phone.unread[id] || 0);
       delete s.phone.unread[id]; G.save(); paintHud();
       body.replaceChildren(); reply.replaceChildren(); lastFrom = null;
@@ -1825,7 +1855,7 @@
       play(id, th.length - fresh, () => replies(id));
       if (!o.el.classList.contains('g-ph-playing') && !reply.firstChild) focusIn(back);
     };
-    back.addEventListener('click', () => { tab = 'msgs'; home(); focusIn(body.querySelector('.g-ph-row') || body.querySelector('[data-tab]')); });
+    back.addEventListener('click', () => { if (title.dataset.card) { delete title.dataset.card; tab = cardFrom; } else tab = 'msgs'; home(); focusIn(body.querySelector('.g-ph-row') || body.querySelector('[data-tab]')); });
     // A tap on the conversation, or Enter / Space on it, fast-forwards what's still arriving.
     body.addEventListener('click', () => anim.skip?.());
     o.el.addEventListener('keydown', e => { if (anim.skip && (e.key === 'Enter' || e.key === ' ') && !e.target.closest?.('button:not([data-skip])')) { e.preventDefault(); anim.skip(); } });

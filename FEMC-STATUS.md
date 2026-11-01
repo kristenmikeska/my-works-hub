@@ -87,6 +87,7 @@ Other docs, if you ever want detail:
 - ✅ Yakushima trip gameplay (three days, and who you spend them with)
 - ✅ Clubs: tennis (Rio, with extra scenes on her romance route), the library committee, the light music club and the gaming club; Rio's Practice Swing works
 - ✅ **Who's free:** a new app on the phone shows who you know is free today and the next few days, where and when, with their rank and a heart on a romance; tap someone free right now to go straight there
+- ✅ **Contacts:** a card on the phone for everyone you've met: their arcana and rank, where to find them, a birthday or favourites once you've learned them, gifts (a ? until you know), and a line about them for every two ranks
 
 ## Battle and building
 - ✅ One merged game (battles inside the story, one save, one menu)
