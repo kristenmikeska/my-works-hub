@@ -188,6 +188,11 @@ window.FEMC_PORTRAIT_SCALE = {
   'yunjin-strangers-daeboreum': 0.8, // batch 103: Kat's realistic Daeboreum outfit
   'solar-stay-hanami': 0.98,
   'akihiko-stay-hanami': 1.13,
+  // Oct 31 2026: Kat's hanami sheets, sized like each one's year face (fine-tune in the placement review)
+  'yukari-stay-hanami': 1.04,
+  'junpei-stay-hanami': 0.97,
+  'mitsuru-stay-hanami': 0.96,
+  'fuuka-stay-hanami': 1.08,
   sunghoon: 0.95,
   sunoo: 1.0,
   tifa: 1.03,
@@ -275,4 +280,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 27;
+window.FEMC_PORTRAIT_V = 28;

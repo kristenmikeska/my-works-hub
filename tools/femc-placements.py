@@ -17,8 +17,12 @@ rows = []
 for pid in sorted(faces):
     cx = faces[pid][1]
     # An outfit Kat hasn't placed yet borrows that world's everyday placement (sunoo-hoax-newyear -> sunoo-hoax)
-    base = pid.rsplit('-', 1)[0]
-    a = kat.get(pid) or (kat.get(base, {}) if base in faces else {})
+    a = kat.get(pid)
+    base = pid
+    while not a and '-' in base:
+        base = base.rsplit('-', 1)[0]
+        a = kat.get(base) if base in faces else None
+    a = a or {}
     rows.append('  %s: [%s, %s, %s, %s, %d]' % (json.dumps(pid), num(cx), num(a.get('x', 0)), num(a.get('y', 0)), num(a.get('s', 1)), 1 if a.get('m') else 0))
 
 out = os.path.join(ROOT, 'assets', 'femc', 'portraits', 'place.js')

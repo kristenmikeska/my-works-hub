@@ -100,7 +100,7 @@
     // Event outfits (core.js eventFaces; FEMC-ART-WIRING "Extras"): an event's `faces: '<key>'` swaps these in for its scenes only.
     // Stay has no `faces` map, so everyone else keeps the year's faces (Solar's with the armband rule).
     eventFaces: {
-      'stay-hanami': { solar: 'solar-stay-hanami', akihiko: 'akihiko-stay-hanami' } // epi-st-hanami (3/27, Seaside Park)
+      'stay-hanami': { solar: 'solar-stay-hanami', akihiko: 'akihiko-stay-hanami', yukari: 'yukari-stay-hanami', junpei: 'junpei-stay-hanami', mitsuru: 'mitsuru-stay-hanami', fuuka: 'fuuka-stay-hanami' } // epi-st-hanami (3/27, Seaside Park); Kat's hanami sheets for the four, Oct 31
     },
     variants: {
       morning: {
