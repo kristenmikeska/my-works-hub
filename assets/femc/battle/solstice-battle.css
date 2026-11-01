@@ -1,7 +1,7 @@
 /* Solstice restyle, part 2: the battle HUD and Tartarus (Kat's approved mockup, mockups/solstice-ui, Oct 31 2026).
-   battle.css and tartarus.css already carry the Dark Hour tokens (--acc gold, --acc-2 green, --deep green-black); this file
-   changes shapes where the mockup asks for more than a colour: the gold slash behind the picked command, paper name tags,
-   angular green-black panels, deep ink on gold. Loaded last on femc-battle.html. Battle UI cosmetics still work: they set
+   battle.css and tartarus.css keep the ORIGINAL pink and black (Kat's call); the :root block below names them for the
+   shapes (--acc = --pink, --deep = --night). This file changes shapes where the mockup asks for more than a colour: the
+   slash behind the picked command, paper name tags, angular plum-black panels, ink on the pink fills. Loaded last on femc-battle.html. Battle UI cosmetics still work: they set
    --pink / --pink-2 / --pink-3 / --night, which --acc / --acc-2 / --acc-3 / --deep read first. */
 /* Kat, Oct 31: back to the original pink and black; battle.css keeps the old colours and these name them for the Solstice shapes. */
 :root { --acc: var(--pink); --acc-hi: var(--pink-2); --acc-2: var(--pink-2); --acc-3: var(--pink-3); --deep: var(--night); --indigo: #2a0f22; --violet: #4a1838; --paper: #fff4f9;

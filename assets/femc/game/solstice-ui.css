@@ -1,7 +1,8 @@
 /* Solstice restyle, part 2: the field and menu screens (Kat's approved mockup, mockups/solstice-ui, Oct 31 2026).
-   game.css now carries the Dawn tokens (its old --pink names hold the gold; --night is the deep indigo). This file adds what
-   a token swap can't: ink on the gold fills, the paper and gold tags, the angular indigo panels, the title on Kat's C3 cover,
-   the phone's own violet accent and the green-and-black Dark Hour. Loaded after game.css and before solstice-scene.css. */
+   Colours: game.css keeps the ORIGINAL pink and black (Kat's call after trying Dawn gold, purple and orchid). This file adds
+   the shapes on top: the title on Kat's pink C3 cover, paper tags, angular plum panels, the phone's own accent. Its :root
+   tokens keep the mockup's names (--deep, --indigo, --violet, --paper) but hold pink-and-black values. No gold, purple,
+   navy or green UI. Loaded after game.css and before solstice-scene.css. */
 
 /* Kat, Oct 31: back to the original pink and black; the Solstice shapes stay. These are the shape tokens in that palette. */
 :root { --deep: #14070f; --indigo: #2a0f22; --violet: #4a1838; --paper: #fff4f9; --gold-2: #ffe7a8; }
