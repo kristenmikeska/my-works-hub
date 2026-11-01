@@ -5,6 +5,7 @@ Kat's list of what to do before calling Persona 3: Solstice finished (Oct 30 202
 ## 1. Art clean-up (waits on ChatGPT usage)
 - [x] HOAX outfit portraits (Oct 31, batch 104): Christmas, the winter-break party, New Year in hanbok (outfit notes are in the Oct 30 chat; the hanbok row can grow to the whole council)
 - [ ] Transparent versions of the remaining skin portraits and battle sheets (Claude lists which files still have backgrounds)
+- [ ] Skins in battle (cut cell-4 effects, layered effects, second pose sheets, outfit cut-ins / effects / finish cards): design sheet `FEMC-SKINS-BATTLE-DESIGN.md` (Nov 1, waiting on Kat's sign-off)
 
 ## 2. Pictures for the Runners social posts
 - [ ] Claude lists every post with what it shows; Kat makes the images in batches
