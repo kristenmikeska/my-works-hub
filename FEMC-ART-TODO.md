@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make:** icons for the late-game skills (section 7) · 5 Social Link full-body sheets (section 8) · 20 new event CGs (section 11) · Solar's evening poses (section 20) · new projects: 14 swimwear pieces (section 12), 24 couple-outfit pieces (section 13), 11 sticker packs (section 14), 10 photo booth sheets (section 15), 14 seasonal face sheets (section 16), 4 climb bosses (section 17), 12 credits stills (section 18) · **pick a theme** for Solar's next skin series (section 19). **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make:** 5 Social Link full-body sheets (section 8) · 20 new event CGs (section 11) · Solar's evening poses (section 20) · new projects: 14 swimwear pieces (section 12), 24 couple-outfit pieces (section 13), 11 sticker packs (section 14), 10 photo booth sheets (section 15), 14 seasonal face sheets (section 16), 4 climb bosses (section 17), 12 credits stills (section 18) · **pick a theme** for Solar's next skin series (section 19). **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
@@ -51,6 +51,8 @@ Three HOAX pictures still show the old looks (Jihoon blond, Cherry with black ha
 ---
 
 ## 7. Icons for the late-game skills (ChatGPT)
+**Done Oct 31:** all eight sheets (7A-7H) are in the game; every new skill node shows its own icon. Nothing left to make here.
+
 The new skill nodes from `FEMC-LATE-BRANCHES-DESIGN.md`. Each sheet is cut into separate icons, so keep the order.
 
 **[ ] 7A. The Eclipse ring**
