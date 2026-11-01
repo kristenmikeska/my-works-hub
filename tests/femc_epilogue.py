@@ -1149,6 +1149,10 @@ try:
             return p.eval("(()=>{const h=FemcGame.S.handoff;return {req:h.request,pend:FemcGame.S.pending&&FemcGame.S.pending.ctx,place:h.request.epi&&h.request.epi.place,bgWant:h.request.epi&&h.request.epi.place?FemcGame.background(h.request.epi.place,'Late Night').url:null}})()")
 
         def open_frame():
+            # The Dark Hour layer loads over the world's own still (ui.js openBattle, loading-<world>), not the dorm's.
+            p.top(); p.wait("!!document.querySelector('.g-dh-still')", 30)
+            st = p.eval("[FemcGame.world(),getComputedStyle(document.querySelector('.g-dh-still')).backgroundImage]")
+            ok(f"/title/loading-{st[0]}.webp" in st[1], f"{st[0]}: the fight loads over loading-{st[0]} ({st[1][-60:]})")
             p.frame(60); p.eval(FD); p.eval("window.__hoStay=true")
 
         def drive(pol, timeout=240):
