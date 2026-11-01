@@ -50,7 +50,12 @@ def key(k, code=None):
 
 
 def center(sel):
-    return p.eval(f"(()=>{{const r=document.querySelector({json.dumps(sel)}).getBoundingClientRect();return [r.left+r.width/2,r.top+r.height/2]}})()")
+    # A Go Out map pin is a 0×0 anchor whose dot and label are its children: aim at the first child with a box that's really
+    # the pin's under the pointer (the dot), else the element's own centre.
+    return p.eval(f"""(()=>{{const el=document.querySelector({json.dumps(sel)});
+      for(const c of [el,...el.querySelectorAll('*')]){{const r=c.getBoundingClientRect();if(r.width<2||r.height<2)continue;
+        const x=r.left+r.width/2,y=r.top+r.height/2;if(el.contains(document.elementFromPoint(x,y)))return [x,y]}}
+      const r=el.getBoundingClientRect();return [r.left+r.width/2,r.top+r.height/2]}})()""")
 
 
 def hover(sel):
