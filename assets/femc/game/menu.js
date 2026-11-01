@@ -707,10 +707,13 @@ window.FemcMenu = (() => {
     mark: ['profile/searchers/mark.webp', .309, 0, .135, .322], jaehyun: ['profile/searchers/jaehyun.webp', .331, .001, .135, .328],
     cherry: ['profile/searchers/cherry.webp', .306, .001, .135, .529], sunoo: ['profile/searchers/sunoo.webp', .36, .001, .135, .515],
     junkyu: ['profile/searchers/junkyu.webp', .336, .002, .135, .408], danielle: ['profile/searchers/danielle.webp', .345, .001, .135, .489],
-    jaemin: ['profile/searchers/jaemin.webp', .296, .002, .135, .402], chenle: ['profile/searchers/chenle.webp', .289, 0, .135, .469] };
-  // No full-body art yet (FEMC-ART-TODO "Social Link full-body art"): their neutral portrait, bust-up, the head the same size.
+    jaemin: ['profile/searchers/jaemin.webp', .296, .002, .135, .402], chenle: ['profile/searchers/chenle.webp', .289, 0, .135, .469],
+    ken: ['profile/links/ken/stand.webp', .302, 0, .165, .532], kat: ['profile/links/kat/stand.webp', .486, .04, .12, .48],
+    jay: ['profile/links/jay/stand.webp', .292, 0, .135, .465], niki: ['profile/links/niki/stand.webp', .34, 0, .135, .595],
+    sunghoon: ['profile/links/sunghoon/stand.webp', .318, 0, .135, .471] };
+  // Anyone without full-body art: their neutral portrait, bust-up, the head the same size.
   // [width/height, head top, head-to-chin, head centre x] of portraits/<id>/neutral.webp; anyone else gets the middle values.
-  const LINK_BUST = { ken: [.913, .06, .52, .5], kat: [.978, .03, .62, .5], jay: [.956, .06, .66, .45], niki: [1.019, .08, .66, .5], sunghoon: [.994, .04, .66, .5] };
+  const LINK_BUST = {};
   let linkAt = null; // the chosen card (hover / focus), kept across repaints
   function linkFigure(l) {
     const f = LINK_FIG[l.id];
