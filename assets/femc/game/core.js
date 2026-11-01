@@ -2342,6 +2342,27 @@ window.FemcGame = (() => {
     }
     L.inv = null; L.booked = null;
   }
+  /* The morning commute (school mornings, about two a week, not every day): a small choice on the monorail. commuteDue gives
+     the options for today (a classmate who'd ride it, met and in the dorm or a local, joins the list); pickCommute applies one. */
+  const COMMUTE_RIDERS = ['yukari', 'junpei', 'fuuka', 'mitsuru', 'aigis', 'akihiko', 'rio', 'saori'];
+  function commuteDue(d = S.day) {
+    const info = dayInfo(d), L = life();
+    if (S.phase !== 'play' || S.epi || info.type !== 'school' || L.commute?.d === d) return null;
+    if (d - (L.commute?.last ?? -9) < 2 || seeded(d * 23 + 5) > 0.42) return null;
+    const riders = COMMUTE_RIDERS.map(id => LINKS[id]).filter(l => l && isMet(l.id) && !progress(l.id).reversed && (progress(l.id).rank || 0) >= 1 && !goneLink(l, d) && d >= dayOf(l.starts || '4/8'));
+    const who = riders.length ? riders[Math.floor(seeded(d * 29 + 3) * riders.length) % riders.length] : null;
+    return { who, weather: info.weather };
+  }
+  function pickCommute(kind, whoId) {
+    const L = life(), out = { kind, stat: null, bond: 0 };
+    L.commute = { d: S.day, last: S.day, kind };
+    if (kind === 'study') { addStats({ knowledge: 1 }); out.stat = 'knowledge'; }
+    else if (kind === 'music') { if (seeded(S.day * 3 + 9) < 0.5) { addStats({ charm: 1 }); out.stat = 'charm'; } }
+    else if (kind === 'nap') { const was = S.condition; S.condition = was === 'sick' ? 'tired' : was === 'tired' ? 'good' : was; out.from = was; out.to = S.condition; }
+    else if (kind === 'sit' && whoId && isMet(whoId)) { out.bond = bond(whoId, 1); out.who = whoId; }
+    save();
+    return out;
+  }
 
   /* ── Time ── */
   function freeSlotSpent(slot = S.slot) { return !!S.spent[`${S.day}-${slot}`]; }
@@ -2645,7 +2666,7 @@ window.FemcGame = (() => {
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
     deliverTexts, replyText, textById, answerInvite, gift, bond,
-    rankHint, whoFree, goneLinks, contactCard, noteGift, dayInvitePending, answerDayInvite, bookedDue, clearBooked, storyDay,
+    rankHint, whoFree, goneLinks, contactCard, noteGift, dayInvitePending, answerDayInvite, bookedDue, clearBooked, commuteDue, pickCommute, storyDay,
     holidayInvites, sendHolidayInvites, holidayDue, acceptHoliday, finishHoliday, declineHolidays,
     lateNightDue, finishLateNight, tripPlan, finishTrip, unread, markAllRead, isGroupThread, freeSlotSpent, nextSlot, sleep,
     available, navigator, tartarusOk, floorCap, makeHandoff, readHandoff, clearHandoff, finishHandoff, simulate, applyResult,

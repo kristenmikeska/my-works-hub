@@ -46,3 +46,15 @@
 .g-ph-msgbtn { justify-self: start; margin-top: 4px; padding: 7px 14px; border: 1.5px solid #ff4f9e; border-radius: 99px; background: #fff; color: #b0185e; font: 700 13px/1 -apple-system, sans-serif; }
 .g-ph-msgbtn:is(:hover, :focus-visible) { background: #ff4f9e; color: #fff; outline: none; }
 .g-ph-reply .g-ph-hint { justify-self: start; margin: 0; }
+
+/* ── The commute ── */
+.g-commute { display: grid; gap: 8px; margin-top: 12px; }
+.g-commute .g-kicker { margin: 0; }
+.g-cm-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+.g-cm-opt { display: grid !important; gap: 3px; justify-items: start; text-align: left; padding: 10px 14px !important; }
+.g-cm-opt b { font-size: 15px; }
+.g-cm-opt small { opacity: .75; font-size: 12px; font-weight: 500; text-transform: none; letter-spacing: 0; }
+.g-cm-opt.on { background: #ff4f9e !important; color: #fff !important; }
+.g-cm-opt:disabled:not(.on) { opacity: .4; }
+.g-cm-r { margin: 2px 0 0; padding: 8px 12px; border-left: 3px solid #ff4f9e; background: rgba(20, 7, 15, .55); color: #fff; line-height: 1.45; }
+.g-cm-r b { color: #ff8cc0; white-space: nowrap; }

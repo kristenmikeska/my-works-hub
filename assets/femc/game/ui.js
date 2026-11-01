@@ -878,7 +878,36 @@
     const walk = G.vary(`monorail.${mk}`, mk === 'storm' ? 'The monorail crossed the bay in a gray roar of rain, the cars swaying on the gusts, and everyone pretended not to notice.' : G.wxIn(['rain'], info.weather) ? 'Rain on the monorail windows, umbrellas everywhere.' : info.weather === 'snow' ? 'Snow on the rails. The monorail crept across the bay like it was being careful.' : 'The monorail across the bay, the city falling away behind it.');
     const chatter = ambient('morning');
     window.FemcRequests?.rode(info.weather); // Elizabeth's monorail request counts school mornings (once a day)
+    const cm = !exam && G.commuteDue();
+    if (cm) return commute(info, walk, chatter, cm);
     return segment({ slot: 'early', bg: 'train-car-inside', place: 'Monorail', text: walk, sub: chatter ? `<i>“${esc(chatter)}”</i>` : '', next: exam ? () => resultsBoard(exam.id, advance) : advance });
+  }
+  /* The morning commute (core.js commuteDue / pickCommute, 2026-11-01): on about two school mornings a week the monorail is
+     a small choice. The weather line stays on top; the choice's own line answers the weather too. */
+  const COMMUTE = {
+    study: { label: 'Study', sub: 'Knowledge, a little.', lines: { clear: 'She did the reading for second period with the sun on the page, and for once it went in.', rain: 'Rain on the glass, a highlighter, the reading for second period. It went in better than it had any right to.', snow: 'She read with her gloves on, turning pages with her teeth twice, and got through all of it.' } },
+    music: { label: 'Listen to music', sub: 'Maybe Charm. Maybe just a good song.', lines: { clear: 'One earbud, the bay going by, a song she played twice. Port Island looked like a music video for about forty seconds.', rain: 'Rain on the window and a slow song in her ears, and for one stop the whole car felt like the end of a film.', snow: 'Snow over the water and the right song for it, which almost never happens. She didn’t tell anyone.' } },
+    nap: { label: 'Nap', sub: 'Rest a bit before class.', lines: { clear: 'She slept against the window the whole way and woke up one stop early, which was perfect, which never happens.', rain: 'The rain did the work. She was asleep before the doors closed and woke up with the strap’s pattern on her cheek.', snow: 'The heaters under the seats were going full blast. She was gone in a minute.' } },
+    sit: { label: 'Sit with someone', sub: '', lines: { clear: '{who} saved her the seat by the door without being asked, and they talked about nothing all the way across the bay.', rain: '{who} shook out an umbrella onto both of them, apologised, and then they were laughing too hard to sit down properly.', snow: '{who} drew a face in the fogged window. Solar added hair. They argued about the hair until the station.' } }
+  };
+  function commute(info, walk, chatter, cm) {
+    const wk = info.weather === 'snow' ? 'snow' : ['rain', 'storm'].includes(info.weather) ? 'rain' : 'clear';
+    const who = cm.who;
+    const opts = ['study', 'music', 'nap', ...(who ? ['sit'] : [])];
+    const btn = k => { const c = COMMUTE[k]; return `<button type="button" class="g-btn g-cm-opt" data-cm="${k}"><b>${esc(k === 'sit' ? `Sit with ${who.short}` : c.label)}</b><small>${esc(k === 'sit' ? `${who.short} is on this train.` : c.sub)}</small></button>`; };
+    const box = segment({ slot: 'early', bg: 'train-car-inside', place: 'Monorail', text: walk, sub: chatter ? `<i>“${esc(chatter)}”</i>` : '',
+      extra: `<div class="g-commute"><p class="g-kicker">The ride in</p><div class="g-cm-opts">${opts.map(btn).join('')}</div><p class="g-cm-r" hidden></p></div>` });
+    const next = box.querySelector('[data-next]'); next.hidden = true;
+    box.querySelector('[data-cm]')?.focus({ preventScroll: true });
+    box.querySelectorAll('[data-cm]').forEach(b => b.addEventListener('click', () => {
+      const k = b.dataset.cm, out = G.pickCommute(k, who?.id);
+      box.querySelectorAll('[data-cm]').forEach(x => { x.disabled = true; x.classList.toggle('on', x === b); });
+      const r = box.querySelector('.g-cm-r'); r.hidden = false;
+      const extra = out.stat ? ` <b>+1 ${esc(G.D.stats.stats[out.stat]?.name || out.stat)}</b>` : k === 'nap' && out.from !== out.to ? ` <b>${esc(G.D.stats.conditions[out.to]?.name || out.to)}</b>` : k === 'sit' && out.bond ? ' <b>+1 ♪</b>' : '';
+      r.innerHTML = esc(COMMUTE[k].lines[wk].replace(/\{who\}/g, who?.short || '')) + extra;
+      G.sfx('femc-click'); paintHud();
+      next.hidden = false; next.focus({ preventScroll: true });
+    }));
   }
   function lunch(info) {
     const line = ambient('lunch');
