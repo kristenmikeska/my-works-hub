@@ -182,9 +182,15 @@ def part8(cmd, a):
         out, im = ART / 'couples' / f'{st}-showtime.webp', fit(src, 1600, 900)
     else:  # frame
         import numpy as np
-        GR = tool('femc_greens', 'femc-greens.py')
-        rgb, alpha = GR.key_outer_green(np.asarray(fit(src, 1000, 400).convert('RGB')))
-        out, im = ART / 'frames' / f'{a[2]}.webp', Image.fromarray(np.dstack([rgb, alpha]), 'RGBA')
+        out = ART / 'frames' / f'{a[2]}.webp'
+        raw = Image.open(src)
+        # A frame that already came transparent (Nov 1: the prompts ask for it) is used as is; green still gets keyed.
+        if raw.mode in ('RGBA', 'LA', 'P') and raw.convert('RGBA').getchannel('A').getextrema()[0] < 250:
+            im = fit(src, 1000, 400).convert('RGBA')
+        else:
+            GR = tool('femc_greens', 'femc-greens.py')
+            rgb, alpha = GR.key_outer_green(np.asarray(fit(src, 1000, 400).convert('RGB')))
+            im = Image.fromarray(np.dstack([rgb, alpha]), 'RGBA')
     out.parent.mkdir(parents=True, exist_ok=True)
     im.save(out, 'WEBP', quality=90, method=5)
     print(src.name, '->', out.relative_to(ROOT), im.size)
