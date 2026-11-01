@@ -1,6 +1,6 @@
-# Late-game skill branches: the design sheet (draft for Kat)
+# Late-game skill branches: the design sheet
 
-Roadmap section 4, "late-game branches so nobody maxes out early". Kat picked ideas 1, 4, 5 and 6 on Oct 31 2026, with idea 2 underneath everything. This sheet shapes them so she can sign off before anything is built. Spoiler-free: names and mechanics only.
+Roadmap section 4, "late-game branches so nobody maxes out early". Kat picked ideas 1, 4, 5 and 6 on Oct 31 2026, with idea 2 underneath everything. Signed off by Kat on Oct 31 2026 ("everything else sounds great"): New Game+ keeps levels and points, the Eclipse ring opens by the climb's floors, the duets start with S.E.E.S. and the love interests, and the new nodes get their own icon art (FEMC-ART-TODO section 7; until it arrives they use the existing node icons). Spoiler-free: names and mechanics only.
 
 ## Why it's needed
 - **Solar** earns 2 points a level plus boss and memory points, so she has well over 200 by level 99. Haenim's sun costs about 200, so she can finish it before the end.
@@ -96,4 +96,4 @@ More duets can come later, for the other S.E.E.S. pairs and the love interests' 
 1. The pieces and their gates as written. Change any opening condition you like.
 2. The names: every one is a placeholder you can rename.
 3. The first six duet pairs.
-4. Whether the epilogue branches need their own art icons (Claude would write the prompts) or can use the existing node icons.
+4. Icons: decided, own art (FEMC-ART-TODO section 7).

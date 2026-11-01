@@ -48,7 +48,140 @@ Edit the FIRST image. Keep everything exactly the same: the composition, the gym
 
 ---
 
-## 6. Wardrobe and keychains (optional)
+## 6. ⭐ The Go Out map (Gemini)
+Kat picked the city-map Go Out (option C of `mockups/solstice-ui/goout.html`), to be polished toward Persona 3 Reload's map. These are the illustrated maps the pins sit on. No people, no text: the game draws the labels and pins itself.
+
+**[ ] 6A. The map of Iwatodai and Port Island: day**
+Attach: `UI - style (pink cover).png`
+Save as: `goout-map-day.png`
+```
+Using the attached image only as a reference for its art style and colours (black, deep plum, hot pink, pale pink and white, a few tiny gold lights), create a NEW illustrated city map seen from high above at a slight angle, like the world map in Persona 3 Reload, 16:9, the largest size, no people, no text, no labels. Two parts of a Japanese seaside city on either side of a calm bay. On the LEFT shore, a residential town: a small dormitory building near the top left, a train station in the middle with a shopping street of small shops next to it, a hill with a shrine and torii gate on the right of the town, and a hospital near the bottom. On the RIGHT, an island district: a large modern high school with a sports field near the top right, a second station in the middle, a big shopping mall with a fountain plaza below it, and a seaside park along the bottom edge. A monorail line on a raised track runs across the bay between the two stations, and a long suspension bridge crosses further down. Clean lineart, flat graphic shapes, halftone dots in the shadows, buildings simplified so each landmark is easy to spot, lots of dark space on the far right for a side panel.
+```
+
+**[ ] 6B. The same map: evening**
+Attach: your result from 6A
+Save as: `goout-map-evening.png`
+```
+Edit this image. Keep the map exactly the same. Change it to evening: a pink and violet sunset sky reflected in the bay, warm lit windows and street lamps, longer shadows. Still only black, plum, pink, white and a few warm lights. No text.
+```
+
+---
+
+## 7. Icons for the late-game skills (ChatGPT)
+The new skill nodes from `FEMC-LATE-BRANCHES-DESIGN.md`. Each sheet is cut into separate icons, so keep the order.
+
+**[ ] 7A. The Eclipse ring**
+Solar's New Game+ ring around the sun.
+Attach: `Icons - style.png`
+Save as: `skillicons-eclipse.png`
+```
+A 3 × 3 sheet of round game icons on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the style of the attached icons exactly: a bold cartoon symbol with a thick dark outline and glossy highlights inside a round badge with a white rim, but make each badge a dark plum circle with a thin pink inner ring. Same size and framing in every cell. No text, no letters, no numbers. Cells, left to right, top to bottom: 1 a naginata blade crossed with a burst of sunlight; 2 a white fox mask in front of an eclipsed sun; 3 a jade orb ringed by a sun's corona; 4 a golden bell inside an eclipse ring; 5 a sheer veil shaped like a shield with a corona behind it; 6 a five-pointed star with a corona behind it; 7 a black sun with a blazing pink corona (Total Eclipse); 8 a sunburst with a small plus sign (Radiance); 9 a dark moon sliding over a pale sun (a locked Eclipse segment).
+```
+
+**[ ] 7B. Runners branch**
+Opens after finishing Runners.
+Attach: `Icons - style.png`
+Save as: `skillicons-runners.png`
+```
+A 3 × 2 sheet of round game icons on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the style of the attached icons exactly: a bold cartoon symbol with a thick dark outline and glossy highlights inside a round badge with a white rim, but make each badge a dark plum circle with a thin pink inner ring. Same size and framing in every cell. No text, no letters, no numbers. Cells, left to right, top to bottom: 1 a game controller with a small heart (Clutch Play); 2 a heart with an arrow rising out of it (Respawn); 3 a stopwatch (Overtime); 4 a gaming headset (Team Comms); 5 a small crown over a crosshair (Grandmaster); 6 a stone clock tower in the snow (the branch's emblem).
+```
+
+**[ ] 7C. Strangers branch**
+Opens after finishing Strangers.
+Attach: `Icons - style.png`
+Save as: `skillicons-strangers.png`
+```
+A 3 × 2 sheet of round game icons on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the style of the attached icons exactly: a bold cartoon symbol with a thick dark outline and glossy highlights inside a round badge with a white rim, but make each badge a dark plum circle with a thin pink inner ring. Same size and framing in every cell. No text, no letters, no numbers. Cells, left to right, top to bottom: 1 a wave curling down and under (Undertow); 2 a shield over shallow water (Low Tide); 3 a red harbor crane (Red Crane); 4 a full moon with a paper lantern (Daeboreum Moon); 5 footprints under a crescent moon (Nightwalk); 6 a long bridge over dark water (the branch's emblem).
+```
+
+**[ ] 7D. HOAX branch**
+Opens after finishing HOAX.
+Attach: `Icons - style.png`
+Save as: `skillicons-hoax.png`
+```
+A 3 × 2 sheet of round game icons on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the style of the attached icons exactly: a bold cartoon symbol with a thick dark outline and glossy highlights inside a round badge with a white rim, but make each badge a dark plum circle with a thin pink inner ring. Same size and framing in every cell. No text, no letters, no numbers. Cells, left to right, top to bottom: 1 a wooden gavel (Point of Order); 2 a speech bubble with a lightning bolt (Rebuttal); 3 a ballot paper with a big tick (Motion Carried); 4 a school bell (Recess); 5 a tall stack of ballot papers (Landslide); 6 a small student council pin (the branch's emblem).
+```
+
+**[ ] 7E. Stay branch**
+Opens after finishing Stay.
+Attach: `Icons - style.png`
+Save as: `skillicons-stay.png`
+```
+A 3 × 2 sheet of round game icons on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the style of the attached icons exactly: a bold cartoon symbol with a thick dark outline and glossy highlights inside a round badge with a white rim, but make each badge a dark plum circle with a thin pink inner ring. Same size and framing in every cell. No text, no letters, no numbers. Cells, left to right, top to bottom: 1 a cherry blossom (Hanami); 2 a shield made of petals (Petal Shield); 3 two hands linking little fingers (Promise); 4 a small flower sprouting from a heart (Spring Again); 5 two hands holding each other (Stay); 6 a red armband (the branch's emblem).
+```
+
+**[ ] 7F. Second crowns, part 1**
+Each party member's New Game+ crown. Every icon has a small crown on top.
+Attach: `Icons - style.png`
+Save as: `skillicons-crowns-1.png`
+```
+A 3 × 2 sheet of round game icons on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the style of the attached icons exactly: a bold cartoon symbol with a thick dark outline and glossy highlights inside a round badge with a white rim, but make each badge a dark plum circle with a thin pink inner ring. Same size and framing in every cell. No text, no letters, no numbers. Cells, left to right, top to bottom: 1 a red boxing glove (Akihiko); 2 an arrow through a heart (Yukari); 3 a baseball bat over home plate (Junpei); 4 a rapier with an ice crystal (Mitsuru); 5 a glowing robotic eye with a gun barrel (Aigis); 6 a spear with a star (Ken).
+```
+
+**[ ] 7G. Second crowns, part 2**
+The other six crowns. Every icon has a small crown on top.
+Attach: `Icons - style.png`
+Save as: `skillicons-crowns-2.png`
+```
+A 3 × 2 sheet of round game icons on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the style of the attached icons exactly: a bold cartoon symbol with a thick dark outline and glossy highlights inside a round badge with a white rim, but make each badge a dark plum circle with a thin pink inner ring. Same size and framing in every cell. No text, no letters, no numbers. Cells, left to right, top to bottom: 1 a dog's paw print over a shield (Koromaru); 2 a battle axe with a knit beanie (Shinjiro); 3 a microphone with sparkles (Jihoon); 4 a film clapperboard (Minji); 5 a black tortoise shell with a snake coiled around it (Jungwon); 6 two crossed daggers with an infinity sign (Haechan).
+```
+
+**[ ] 7H. Duets**
+The shared nodes between two party members.
+Attach: `Icons - style.png`
+Save as: `skillicons-duets.png`
+```
+A 3 × 2 sheet of round game icons on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the style of the attached icons exactly: a bold cartoon symbol with a thick dark outline and glossy highlights inside a round badge with a white rim, but make each badge a dark plum circle with a thin pink inner ring. Same size and framing in every cell. No text, no letters, no numbers. Cells, left to right, top to bottom: 1 two fists bumping (Old Friends); 2 a snowflake and a wind swirl twisted together (Ice and Wind); 3 a baseball bat and a paw print (Pinch Hitters); 4 a shield and a spear crossed (Shield and Spear); 5 two overlapping circles like planets (Two Universes); 6 a microphone under a spotlight (Hype and Spotlight).
+```
+
+---
+
+## 8. Social Link full-body pictures (ChatGPT)
+The new Social Link screen shows each person standing tall beside the list. These five only have a face picture, so for now the screen shows them from the chest up. One pose sheet each, like Solar's: six full-body poses on white.
+
+**[ ] 8A. Ken: full body (pose sheet)**  
+Ken on the Social Link screen (S.E.E.S.).  
+Attach: `Body - Ken.png`  
+Save as: `Ken-fullbody-sheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME boy as the attached image in all six cells, full body, head to toe, with a little space above the head and below the feet, same face, same hair, same size in every cell, nothing overlapping. He is a ten-year-old boy, small and slim. Keep his face, his brown hair and the clothes from the attached image: the dark school blazer with the small ribbon tie and the orange hoodie under it, then dark shorts, white socks and sneakers. Cell 1: standing relaxed, facing the viewer. Cell 2: arms crossed, a small confident look. Cell 3: a friendly wave. Cell 4: hands in pockets, weight on one leg. Cell 5: thinking, one hand at the chin. Cell 6: a happy pose, laughing. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
+```
+
+**[ ] 8B. Jay: full body (pose sheet)**  
+Jay on the Social Link screen.  
+Attach: `Body - Jay.png`  
+Save as: `Jay-fullbody-sheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME young man as the attached image in all six cells, full body, head to toe, with a little space above the head and below the feet, same face, same hair, same size in every cell, nothing overlapping. He is tall and slim. Keep his face, his black hair and the clothes from the attached image: a black suit jacket, a white shirt and a black tie, then black trousers and black leather shoes. Cell 1: standing relaxed, facing the viewer. Cell 2: arms crossed, a small confident look. Cell 3: a friendly wave. Cell 4: hands in pockets, weight on one leg. Cell 5: thinking, one hand at the chin. Cell 6: a happy pose, laughing. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
+```
+
+**[ ] 8C. Niki: full body (pose sheet)**  
+Niki on the Social Link screen.  
+Attach: `Body - Niki.png`  
+Save as: `Niki-fullbody-sheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME young man as the attached image in all six cells, full body, head to toe, with a little space above the head and below the feet, same face, same hair, same size in every cell, nothing overlapping. He is tall and lanky. Keep his face, his black hair with the blond streaks, his earring and the clothes from the attached image: an open white jacket over a black tee, then black slim trousers and white sneakers. Cell 1: standing relaxed, facing the viewer. Cell 2: arms crossed, a small confident look. Cell 3: a friendly wave. Cell 4: hands in pockets, weight on one leg. Cell 5: thinking, one hand at the chin. Cell 6: a happy pose, laughing. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
+```
+
+**[ ] 8D. Sunghoon: full body (pose sheet)**  
+Sunghoon on the Social Link screen.  
+Attach: `Body - Sunghoon.png`  
+Save as: `Sunghoon-fullbody-sheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME young man as the attached image in all six cells, full body, head to toe, with a little space above the head and below the feet, same face, same hair, same size in every cell, nothing overlapping. He is tall with a skater's build. Keep his face, his black hair and the clothes from the attached image: a black suit jacket, a white shirt and a black tie, then black trousers and black leather shoes. Cell 1: standing relaxed, facing the viewer. Cell 2: arms crossed, a small confident look. Cell 3: a friendly wave. Cell 4: hands in pockets, weight on one leg. Cell 5: thinking, one hand at the chin. Cell 6: a happy pose, laughing. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
+```
+
+**[ ] 8E. Kat & Ethan: full body (pose sheet)**  
+Kat & Ethan on the Social Link screen (they share one link, so they stand together).  
+Attach: `Body - Kat.png`, then `Body - Ethan.png`  
+Save as: `Kat-Ethan-fullbody-sheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell. In every cell the SAME couple stands side by side: the young woman from the FIRST attached image on the left and the young man from the SECOND attached image on the right, both full body, head to toe, with a little space above their heads and below their feet, same faces, same hair, same size in every cell, nothing overlapping between cells. Keep her long wavy dark brown hair, her hoop earrings and necklace, and the black dress with small red strawberries from the first image, with black ankle boots. Keep his shoulder-length messy brown hair from the second image, with a dark shirt, dark jeans and boots. Cell 1: standing relaxed, facing the viewer. Cell 2: her arm through his. Cell 3: both waving. Cell 4: his arm around her shoulders. Cell 5: she laughs, he looks at her. Cell 6: back to back, arms crossed. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
+```
+
+---
+
+## 9. Wardrobe and keychains (optional)
 
 ### More outfits (ChatGPT): pose sheets
 
@@ -188,7 +321,7 @@ A 3 × 2 portrait sheet on a plain white background, clear space between cells, 
 
 ---
 
-## 7. Extras (optional): Stay hanami face sheets
+## 10. Extras (optional): Stay hanami face sheets
 Each is a face sheet for one character in the hanami outfit; the game swaps it in for that scene only. Use ChatGPT.
 
 **[ ] Yukari: hanami** *(optional)*  
@@ -221,49 +354,4 @@ Attach: `Fuuka.png`
 Save as: `Fuuka-stay-hanami-sheet.png`
 ```
 A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a mint-green knit cardigan over a white blouse, a small sakura-shaped hair pin. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
----
-
-## 8. Social Link full-body pictures (ChatGPT)
-The new Social Link screen shows each person standing tall beside the list. These five only have a face picture, so for now the screen shows them from the chest up. One pose sheet each, like Solar's: six full-body poses on white.
-
-**[ ] 8A. Ken: full body (pose sheet)**  
-Ken on the Social Link screen (S.E.E.S.).  
-Attach: `Body - Ken.png`  
-Save as: `Ken-fullbody-sheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME boy as the attached image in all six cells, full body, head to toe, with a little space above the head and below the feet, same face, same hair, same size in every cell, nothing overlapping. He is a ten-year-old boy, small and slim. Keep his face, his brown hair and the clothes from the attached image: the dark school blazer with the small ribbon tie and the orange hoodie under it, then dark shorts, white socks and sneakers. Cell 1: standing relaxed, facing the viewer. Cell 2: arms crossed, a small confident look. Cell 3: a friendly wave. Cell 4: hands in pockets, weight on one leg. Cell 5: thinking, one hand at the chin. Cell 6: a happy pose, laughing. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
-```
-
-**[ ] 8B. Jay: full body (pose sheet)**  
-Jay on the Social Link screen.  
-Attach: `Body - Jay.png`  
-Save as: `Jay-fullbody-sheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME young man as the attached image in all six cells, full body, head to toe, with a little space above the head and below the feet, same face, same hair, same size in every cell, nothing overlapping. He is tall and slim. Keep his face, his black hair and the clothes from the attached image: a black suit jacket, a white shirt and a black tie, then black trousers and black leather shoes. Cell 1: standing relaxed, facing the viewer. Cell 2: arms crossed, a small confident look. Cell 3: a friendly wave. Cell 4: hands in pockets, weight on one leg. Cell 5: thinking, one hand at the chin. Cell 6: a happy pose, laughing. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
-```
-
-**[ ] 8C. Niki: full body (pose sheet)**  
-Niki on the Social Link screen.  
-Attach: `Body - Niki.png`  
-Save as: `Niki-fullbody-sheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME young man as the attached image in all six cells, full body, head to toe, with a little space above the head and below the feet, same face, same hair, same size in every cell, nothing overlapping. He is tall and lanky. Keep his face, his black hair with the blond streaks, his earring and the clothes from the attached image: an open white jacket over a black tee, then black slim trousers and white sneakers. Cell 1: standing relaxed, facing the viewer. Cell 2: arms crossed, a small confident look. Cell 3: a friendly wave. Cell 4: hands in pockets, weight on one leg. Cell 5: thinking, one hand at the chin. Cell 6: a happy pose, laughing. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
-```
-
-**[ ] 8D. Sunghoon: full body (pose sheet)**  
-Sunghoon on the Social Link screen.  
-Attach: `Body - Sunghoon.png`  
-Save as: `Sunghoon-fullbody-sheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME young man as the attached image in all six cells, full body, head to toe, with a little space above the head and below the feet, same face, same hair, same size in every cell, nothing overlapping. He is tall with a skater's build. Keep his face, his black hair and the clothes from the attached image: a black suit jacket, a white shirt and a black tie, then black trousers and black leather shoes. Cell 1: standing relaxed, facing the viewer. Cell 2: arms crossed, a small confident look. Cell 3: a friendly wave. Cell 4: hands in pockets, weight on one leg. Cell 5: thinking, one hand at the chin. Cell 6: a happy pose, laughing. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
-```
-
-**[ ] 8E. Kat & Ethan: full body (pose sheet)**  
-Kat & Ethan on the Social Link screen (they share one link, so they stand together).  
-Attach: `Body - Kat.png`, then `Body - Ethan.png`  
-Save as: `Kat-Ethan-fullbody-sheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell. In every cell the SAME couple stands side by side: the young woman from the FIRST attached image on the left and the young man from the SECOND attached image on the right, both full body, head to toe, with a little space above their heads and below their feet, same faces, same hair, same size in every cell, nothing overlapping between cells. Keep her long wavy dark brown hair, her hoop earrings and necklace, and the black dress with small red strawberries from the first image, with black ankle boots. Keep his shoulder-length messy brown hair from the second image, with a dark shirt, dark jeans and boots. Cell 1: standing relaxed, facing the viewer. Cell 2: her arm through his. Cell 3: both waving. Cell 4: his arm around her shoulders. Cell 5: she laughs, he looks at her. Cell 6: back to back, arms crossed. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
 ```
