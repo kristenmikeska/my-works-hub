@@ -56,7 +56,7 @@ window.FemcTryOn = (() => {
         <div class="g-to-figw"><img class="g-to-fig a on" src="${esc(sp.frames[0])}" alt="" draggable="false"><img class="g-to-fig b" alt="" draggable="false"></div>
         <i class="g-to-slash"></i>
         ${sp.clean && o.fx ? `<div class="g-to-charge" aria-hidden="true">${o.reduced ? '' : motes}<b></b></div>` : ''}
-        ${burst ? `<div class="g-to-burst" aria-hidden="true">${burst}</div>` : ''}
+        ${th && sp.themeSheet ? `<div class="g-to-burst art" aria-hidden="true" style="background-image:url('${esc(sp.themeSheet)}')"></div>` : burst ? `<div class="g-to-burst" aria-hidden="true">${burst}</div>` : ''}
         <div class="g-to-skill"><small>${esc(sp.skill.elName)}</small><b>${esc(sp.skill.name)}</b></div>
         ${sparkle ? `<div class="g-to-sparkle" aria-hidden="true">${sparkle}</div>` : ''}
         <div class="g-to-om" aria-hidden="true"><div class="om-band">${om}</div><b class="om-word">1 MORE!</b></div>
@@ -106,7 +106,7 @@ window.FemcTryOn = (() => {
       if (b.k === 'entrance') me.fx.push('entrance-' + (sp.entrance ? 'art' : 'code'));
       if (b.k === 'skill') {
         if (sp.clean && o.fx) later(o.reduced ? 60 : 120, charge);
-        if (el.querySelector('.g-to-burst')) later(o.reduced ? 200 : 480, () => { el.querySelector('.g-to-burst').classList.add('go'); me.fx.push('burst'); });
+        if (el.querySelector('.g-to-burst')) later(o.reduced ? 200 : 480, () => { const bu = el.querySelector('.g-to-burst'); bu.classList.add('go'); me.fx.push(bu.classList.contains('art') ? 'burst-art' : 'burst'); });
       }
       if (b.k === 'onemore') me.fx.push('onemore-' + (sp.onemore ? 'art' : 'code'));
       if (b.k === 'win') return finish();

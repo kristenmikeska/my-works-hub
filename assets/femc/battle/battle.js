@@ -85,7 +85,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 39;
+  const ART_V = 40;
   /* Status art (tools/femc-icons.py): sticker icons for the ailments and the buff / debuff arrows, and the Tartarus map's room
      glyphs. A status chip shows its icon in place of the old name or ATK / DEF / AGI text (the name stays in its title). */
   const ICON_DIR = 'assets/femc/battle/art/icons/';
@@ -149,7 +149,26 @@
      `currentColor`), shared by the frames, the cloud burst and the Showtime sparkle. */
   const skinFxOn = () => !!LOOKS && ST().skinFx !== false;
   const themeOf = mid => (skinFxOn() && LOOKS.theme && LOOKS.theme[mid] && THEME_ART[LOOKS.theme[mid]] ? LOOKS.theme[mid] : null);
-  const posedFrames = mid => [0, 1, 2, 3, 4, 5].map(i => (LOOKS && LOOKS.pose[mid] ? `${LOOKS.pose[mid]}${mid}-pose-${i}.webp?v=${ART_V}` : `assets/femc/battle/art/poses/${mid}-pose-${i}.webp?v=${ART_V}`));
+  /* Second pose sheet (FEMC-SKINS-BATTLE-DESIGN D, Nov 1 2026; tools/femc-wardrobe.py skin2 cuts it onto sheet 1's canvas):
+     <who>-pose2-0..5 = support cast, guard, dodge, knocked down, badly hurt, dash-in, as frames 6..11. A fighter's own look:
+     FIGHTER_POSES2; a worn look: LOOKS.pose2 (cosmetics.js battle(), from ready.js `poses2`). Never a look's sheet 1 with
+     the fighter's own sheet 2. Without one, every state below plays exactly as before (STATES2 only adds frames when the
+     sheet exists). Where they play: support on a party heal / buff / cure / revive / support cast (SUPPORT_TYPES), with the
+     hand charge at HAND2; guard while the unit guards; dodge on a missed attack; down while knocked down (sheet 1 hides the
+     figure); wounded replaces idle at 30% HP or less; dash at the All-Out's start and for the fighter coming in on a baton
+     pass (shift). FIGHTER_HAND2 / LOOK_HAND2: the support pose's open hand, measured from each pose2-0 frame. */
+  const FIGHTER_POSES2 = new Set(['solar']);
+  const STATES2 = { support: [6], guard: [7], dodge: [8], down: [9], wounded: [10], dash: [11] };
+  const SUPPORT_TYPES = new Set(['heal', 'buff', 'cure', 'revive', 'support', 'charge', 'ward', 'sp']);
+  const FIGHTER_HAND2 = { solar: [0.136, 0.23] }, LOOK_HAND2 = { 'sk-yukata': [0.55, 0.46] };
+  const wornPose = mid => !!(LOOKS && LOOKS.pose && LOOKS.pose[mid]);
+  const has2 = mid => (wornPose(mid) ? !!(LOOKS.pose2 && LOOKS.pose2[mid]) : FIGHTER_POSES2.has(mid));
+  const hand2Of = mid => (wornPose(mid) ? LOOK_HAND2[LOOKS.look && LOOKS.look[mid]] : FIGHTER_HAND2[mid]) || handOf(mid);
+  const statesOf = mid => (has2(mid) ? Object.assign({}, FIGHTER_STATES, STATES2) : FIGHTER_STATES);
+  const posedFrames = mid => {
+    const dir = wornPose(mid) ? LOOKS.pose[mid] : 'assets/femc/battle/art/poses/';
+    return [0, 1, 2, 3, 4, 5].map(i => `${dir}${mid}-pose-${i}.webp?v=${ART_V}`).concat(has2(mid) ? [0, 1, 2, 3, 4, 5].map(i => `${dir}${mid}-pose2-${i}.webp?v=${ART_V}`) : []);
+  };
   const fieldPose = mid => (FIGHTER_POSES[mid] ? posedFrames(mid)[0] : `assets/femc/battle/art/poses/${mid}.webp?v=${ART_V}`);
   const hasField = mid => FIELD_POSES.has(mid) || !!FIGHTER_POSES[mid];
   /* Chibi brawl sheets (Kat's <name>-chibi-alloutattack.png, cut by tools/femc-chibi.py into chibi/<mid>-<i>.webp, one
@@ -2171,7 +2190,7 @@
   function restShadow(el) {
     if (!el._shadowPoses || el._shadowAction) return;
     const states = el._shadowPoses.states;
-    const state = el.classList.contains('dead') ? 'defeat' : el.classList.contains('down') ? 'down' : el.classList.contains('won') ? 'win' : 'idle';
+    const state = el._rest ? el._rest() : el.classList.contains('dead') ? 'defeat' : el.classList.contains('down') ? 'down' : el.classList.contains('won') ? 'win' : 'idle';
     setShadowFrame(el, (states[state] || [0])[0]);
   }
   /* Hold one pose until the next action or rest (the fighter's Evoker frame while the summon plays). */
@@ -2420,14 +2439,15 @@
   }
   function paintFighter() {
     const box = BT.fighter, u = B.U(box.dataset.id);
-    const visible = !!u && hasField(u.mid) && !u.dead && !u.down;
+    const visible = !!u && hasField(u.mid) && !u.dead && (!u.down || (!!FIGHTER_POSES[u.mid] && has2(u.mid)));
     box.hidden = !visible;
     if (!visible) return;
     const img = box.querySelector('img:not(.evk)');
     if (img.dataset.mid !== u.mid) {
       img.dataset.mid = u.mid;
       box._shadowToken = (box._shadowToken || 0) + 1; box._shadowAction = false; box.classList.remove('won');
-      box._shadowPoses = FIGHTER_POSES[u.mid] ? { src: true, frames: posedFrames(u.mid), states: FIGHTER_STATES } : null;
+      box._shadowPoses = FIGHTER_POSES[u.mid] ? { src: true, frames: posedFrames(u.mid), states: statesOf(u.mid) } : null;
+      box._rest = fighterRest;
       img.classList.toggle('posed', !!box._shadowPoses);
       box.style.setProperty('--pz', FIGHTER_POSES[u.mid] || 1);
       box.style.setProperty('--pdx', FIGHTER_SHIFT[u.mid] || '0%');
@@ -2439,6 +2459,14 @@
       img.src = fieldPose(u.mid);
       if (box._shadowPoses) box.dataset.pose = '0';
     }
+    if (box._shadowPoses && !box._shadowAction) restShadow(box); // sheet 2: guarding, down or badly hurt holds that pose
+  }
+  /* The field fighter's resting pose: win, then (sheet 2 only; statesOf has no such state otherwise) down, guard, wounded. */
+  function fighterRest() {
+    const box = BT.fighter, u = B.U(box.dataset.id);
+    if (box.classList.contains('won')) return 'win';
+    if (!u) return 'idle';
+    return u.down ? 'down' : u.guard ? 'guard' : u.hp > 0 && u.hp <= u.maxHp * 0.3 ? 'wounded' : 'idle';
   }
   /* A won fight: the last fighter on the field (or the first one standing who has field art) strikes the victory pose. */
   let winMid = null; // who struck the victory pose (the win screen's hero, design C)
@@ -2531,16 +2559,17 @@
   }
   /* The casting hand's point on the field (FX canvas coordinates): the pose frame is drawn object-fit: contain at the bottom
      centre of its <img> (whose rect already includes the --pz / --pdx transform), so map the share onto the drawn picture. */
-  function handAt(fp, mid) {
+  function handAt(fp, mid, h2) {
     const img = fp && fp.querySelector('img.posed'); if (!img || !BT) return null;
     const r = img.getBoundingClientRect(), R = BT.root.getBoundingClientRect(), nw = img.naturalWidth, nh = img.naturalHeight;
     if (!r.width || !r.height || !nw || !nh) return null;
-    const k = Math.min(r.width / nw, r.height / nh), dw = nw * k, dh = nh * k, [hx, hy] = handOf(mid);
+    const k = Math.min(r.width / nw, r.height / nh), dw = nw * k, dh = nh * k, [hx, hy] = h2 ? hand2Of(mid) : handOf(mid);
     return { x: r.left + (r.width - dw) / 2 + hx * dw - R.left, y: r.bottom - dh + hy * dh - R.top, r: Math.max(14, dh * 0.07) };
   }
-  async function castCharge(u, fp, e) {
-    if (!FX || !FX.charge || !fp || E.PHYS.has(e.el) || !castClean(u.mid) || ST().skinFx === false) return;
-    const at = handAt(fp, u.mid); if (!at) return;
+  async function castCharge(u, fp, e, sup) {
+    // sup: the support pose from sheet 2 (drawn with no effect, so always clean), its open hand from HAND2.
+    if (!FX || !FX.charge || !fp || E.PHYS.has(e.el) || !(sup || castClean(u.mid)) || ST().skinFx === false) return;
+    const at = handAt(fp, u.mid, sup); if (!at) return;
     const ms = FX.charge(e.el, at);
     mark('fighter-charge');
     if (ms > 0) await sleep(ms);
@@ -2558,6 +2587,9 @@
   /* A hit's effect; a crit also gets the crit sheet over the target when it exists, its peak on the hit's own impact. */
   function fxHit(e) {
     const t = fxHitKind(e);
+    // F: a themed look's skill hit gets the theme's sheet (Kat's theme-<id>, art/fx) small on top, a frame later. Sheet only.
+    const src = B.U(e.src), th = src && src.side === 'party' && D.skills[e.skill] && !e.theurgy ? themeOf(src.mid) : null;
+    if (th && FX && FX.hasArt && FX.hasArt('theme-' + th)) { fxPlay('theme-' + th, e.tgt, { small: true, delay: 0.07 + Math.max(0, t - 120) / 1000 }); mark('fx-theme-' + th); }
     if (e.crit && !e.insta && FX && FX.hasArt && FX.hasArt('crit')) fxPlay('crit', e.tgt, { delay: Math.max(0, t - 140) / 1000 });
     return t;
   }
@@ -3410,8 +3442,9 @@
           await Promise.all([sleep(ms), animateShadow(el, E.PHYS.has(e.el) ? 'attack' : 'cast', ms)]);
         } else {
           paintCard(u);
-          const fp = posedFighter(u), act = E.PHYS.has(e.el) ? 'attack' : 'cast';
-          if (e.summon && !e.charmed) { if (fp) { holdPose(fp, 'evoke'); mark('fighter-evoke'); } await summonCut(u, e.name); if (fp) { animateShadow(fp, act, SPELL_HOLD); mark('fighter-' + act); if (act === 'cast') await castCharge(u, fp, e); } banner(e.name, { el: e.el, sub: u.persona }); const sg = D.skills[e.skill]; if (sg && sg.fx && sg.type !== 'dmg' && SIG_FX.has(sg.fx)) e.tgts.forEach(id => fxPlay(sg.fx, id)); }
+          const fp = posedFighter(u), act0 = E.PHYS.has(e.el) ? 'attack' : 'cast', sk = D.skills[e.skill];
+          const act = act0 === 'cast' && sk && SUPPORT_TYPES.has(sk.type) && has2(u.mid) ? 'support' : act0; // sheet 2's support pose
+          if (e.summon && !e.charmed) { if (fp) { holdPose(fp, 'evoke'); mark('fighter-evoke'); } await summonCut(u, e.name); if (fp) { animateShadow(fp, act, SPELL_HOLD); mark('fighter-' + act); if (act !== 'attack') await castCharge(u, fp, e, act === 'support'); } banner(e.name, { el: e.el, sub: u.persona }); const sg = D.skills[e.skill]; if (sg && sg.fx && sg.type !== 'dmg' && SIG_FX.has(sg.fx)) e.tgts.forEach(id => fxPlay(sg.fx, id)); }
           else if (e.charmed) { banner(e.name, { el: 'charm', sub: `${u.name} · Charmed` }); await sleep(300); }
           else { const c = BT.cards.get(u.id); c.classList.remove('hit'); banner('Attack', { el: e.el, sub: u.name }); if (fp) { animateShadow(fp, 'attack', 700); mark('fighter-attack'); } await sleep(260); }
           log(`${u.name}: ${e.name}`, 'pu');
@@ -3455,7 +3488,7 @@
         if (e.crit) { shake(true); flash(false, FX && FX.hasArt && FX.hasArt('crit') ? 1 / 3 : 1); sfx('crit'); }
         else if (e.aff === 'weak') { shake(false); flash(true); sfx('weak'); }
         else if (e.amount) sfx('hit');
-        if (e.downed) { sfx('down'); if (onEnemy) { const en = BT.enemies.get(e.tgt); en.classList.add('down'); tip('down'); } }
+        if (e.downed) { sfx('down'); if (onEnemy) { const en = BT.enemies.get(e.tgt); en.classList.add('down'); tip('down'); } else { const fp = posedFighter(t); if (fp && has2(t.mid) && !e.killed) { setTimeout(() => { if (fp._shadowPoses && !fp._shadowAction) restShadow(fp); }, 440); mark('fighter-down'); } } }
         if (e.shatter) { popup(e.tgt, { label: 'SHATTER!', lcls: 'crit' }); fxPlay('shatter', e.tgt); sfx('shatter'); nav('shatter'); mark('shatter'); }
         if (src && src.side === 'party' && onEnemy) {
           if (e.crit) nav('crit'); else if (e.aff === 'weak') { nav('weak'); mark('weak'); }
@@ -3473,7 +3506,9 @@
       case 'miss':
         blogAdd(`${U(e.tgt).name}: ${e.hidden ? 'can’t be seen' : e.immune ? 'immune' : e.ail && e.has ? 'no effect' : 'miss'}`, 'miss');
         if (e.hidden) { popup(e.tgt, { label: 'CAN’T SEE IT', lcls: 'miss' }); nav('hidden', {}, { once: true }); sfx('miss'); mark('hidden-miss'); await sleep(420); break; }
-        popup(e.tgt, { label: e.immune ? 'IMMUNE' : e.ail ? (e.has ? 'NO EFFECT' : 'MISS') : 'MISS', lcls: 'miss' }); sfx('miss'); if (e.insta) mark('insta-miss'); await sleep(420); break;
+        popup(e.tgt, { label: e.immune ? 'IMMUNE' : e.ail ? (e.has ? 'NO EFFECT' : 'MISS') : 'MISS', lcls: 'miss' }); sfx('miss'); if (e.insta) mark('insta-miss');
+        { const t = U(e.tgt), fp = t && t.side === 'party' && !e.ail && !e.immune ? posedFighter(t) : null; if (fp && has2(t.mid)) { animateShadow(fp, 'dodge', 420); mark('fighter-dodge'); } }
+        await sleep(420); break;
       case 'thReady': {
         // The gauge just filled: a gold sweep and a chime on the card (once), Fuuka's line the first time in a battle.
         const t = U(e.tgt), c = BT.cards.get(t.id);
@@ -3622,6 +3657,8 @@
       case 'shift': {
         const a = U(e.src), b = U(e.tgt);
         sfx('summon');
+        // Sheet 2: the fighter taking the baton dashes onto the field.
+        if (FIGHTER_POSES[b.mid] && has2(b.mid) && !b.dead) { BT.fighter.dataset.id = b.id; paintFighter(); const fp = posedFighter(b); if (fp) { animateShadow(fp, 'dash', 900); mark('fighter-dash'); } }
         await bigWord('SHIFT', { sub: `${a.name} → ${b.name} · ×${e.boost} power`, gold: true, band: [b.mid, member(b.mid).faces.idle], ms: 900 });
         if (e.sp) popup(e.tgt, { n: `+${e.sp} SP`, cls: 'sp' });
         log(`${a.name}: “${member(a.mid).lines.shift}”`, 'say'); blogAdd(`Shift: ${a.name} → ${b.name}`, 'pf');
@@ -3629,7 +3666,7 @@
         mark('shift');
         break;
       }
-      case 'guard': { const u = U(e.src); log(`${u.name} guards.`); paintCard(u); popup(e.src, { label: 'GUARD', lcls: 'buff' }); sfx('guard'); await sleep(360); break; }
+      case 'guard': { const u = U(e.src); log(`${u.name} guards.`); paintCard(u); { const fp = posedFighter(u); if (fp && has2(u.mid)) { releasePose(fp); mark('fighter-guard'); } } popup(e.src, { label: 'GUARD', lcls: 'buff' }); sfx('guard'); await sleep(360); break; }
       case 'item': { const u = U(e.src); banner(e.name, { el: 'item', sub: u.name }); log(`${u.name} used ${e.name}.`); await sleep(420); break; }
       case 'escape': if (e.ok) { blogAdd('Escaped!', 'sys'); sfx('escape'); nav('escape'); await bigWord('ESCAPED', { ms: 800 }); } else { nav('escapeFail'); log('Couldn’t escape!'); await sleep(500); } break;
       case 'telegraph': { const u = U(e.src); paintEnemy(u); BT.enemies.get(u.id).classList.add('charging'); nav(e.charge ? 'charge' : 'telegraph'); log(e.charge ? `${u.name} is powering up…` : `${u.name} is gathering moonlight…`); sfx('summon'); await sleep(900); mark('telegraph'); break; }
@@ -3675,6 +3712,8 @@
   }
   async function allOutSequence(e) {
     const actor = B.U(e.src);
+    // Sheet 2: the one who starts it dashes in first (a short beat; reduced motion / Performance: the held frame).
+    { const fp = posedFighter(actor); if (fp && has2(actor.mid)) { mark('fighter-dash'); await animateShadow(fp, 'dash', 380); } }
     await stills([finishArt(actor.mid)], 600);
     hideMenu();
     const parts = e.parts.map(B.U);
@@ -5550,6 +5589,7 @@
     get handoff() { return HO; }, get hs() { return HS; }, hoFinish: (o, x) => hoFinish(o, x), tt: f => ttCtx(f || D.floors[0]), climb: id => startRun(id || null), hub: () => hub(), get mapLine() { return mapLine; }, // tests
     reloadSave() { save = loadSave(); practiceEpis(); }, settingsChanged, get embedded() { return !!BR; },
     get looks() { return LOOKS; }, handAt: mid => handAt(BT && BT.fighter, mid || (BT && BT.fighter && BT.fighter.dataset.id && B.U(BT.fighter.dataset.id)?.mid)), // tests: the worn looks, the cast hand point
+    poses2: mid => ({ has: has2(mid), frames: posedFrames(mid), states: statesOf(mid), hand2: hand2Of(mid) }), // tests: sheet 2 for a fighter (D)
     playEvents: evs => play(evs), // tests: play engine-shaped events through the real presentation (battle lines, cut-ins)
     music: { state: () => music.state(), play: (k, o) => music.play(k, o), world: n => music.world(n), endWorld: () => music.endWorld() }
   };

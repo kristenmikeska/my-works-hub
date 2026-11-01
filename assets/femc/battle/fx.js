@@ -1185,7 +1185,7 @@ window.FemcFX = (() => {
   const BORROWED = { fear: 0.6, freeze: 0.7, shock: 0.6 }; // a borrowed sheet plays at the code effect's small size
   /* The sheet a play(kind, at, o) would use right now, or null (the code effect plays). */
   function artFor(kind, o = {}) {
-    if (reduced() || !ART_OK.has(kind)) return null;
+    if (reduced() || !(ART_OK.has(kind) || /^theme-/.test(kind))) return null; // theme-<id>: an outfit theme's sheet (battle.js fxHit, F)
     let names = ART_KINDS[kind] || [kind];
     if (kind === 'buff') names = [(o.dir || 1) < 0 ? 'debuff' : 'buff'];
     if (o.insta) names = kind === 'light' ? ['hama', 'light'] : ['mudo', 'dark'];
@@ -1262,7 +1262,7 @@ window.FemcFX = (() => {
     if (reduced()) return simple(at, COLORS[kind] || '#fff');
     const art = artFor(kind, o);
     if (art) return sheet(art, at, o, kind);
-    if (kind === 'crit' || kind === 'weak' || kind === 'theurgy-burst') return 0; // sheet-only kinds: callers check hasArt first
+    if (kind === 'crit' || kind === 'weak' || kind === 'theurgy-burst' || /^theme-/.test(kind)) return 0; // sheet-only kinds: callers check hasArt first
     switch (kind) {
       case 'fire': return fire(at, o);
       case 'ice': return ice(at, o);

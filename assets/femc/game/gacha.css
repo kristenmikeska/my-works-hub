@@ -525,6 +525,11 @@
 .g-to-burst svg.tm, .g-to-sparkle svg.tm, .g-to-en svg.tm { position: absolute; width: clamp(18px, 2.4vw, 34px); height: auto; aspect-ratio: 1; filter: drop-shadow(2px 2px 0 rgba(20, 7, 15, .6)); }
 .g-to-burst svg.tm { left: 0; top: 0; opacity: 0; translate: -50% -50%; }
 .g-to-burst.go svg.tm { animation: g-to-burst .95s cubic-bezier(.15, .8, .3, 1) both; }
+/* Kat's theme sheet (battle/art/fx/theme-<id>.webp, 3 x 2 frames, light on transparent) instead of the drawn motifs. */
+.g-to-burst.art { width: clamp(150px, 22vw, 300px); height: auto; aspect-ratio: 1; translate: -50% -50%; background-size: 300% 200%; background-repeat: no-repeat; background-position: 0 0; opacity: 0; mix-blend-mode: screen; }
+.g-to-burst.art.go { animation: g-to-sheet .7s steps(1, end) both; }
+@keyframes g-to-sheet { 0% { opacity: 1; background-position: 0 0; } 16.6% { background-position: 50% 0; } 33.3% { background-position: 100% 0; } 50% { background-position: 0 100%; } 66.6% { background-position: 50% 100%; } 83.3% { opacity: 1; background-position: 100% 100%; } 100% { opacity: 0; background-position: 100% 100%; } }
+.g-to.reduced .g-to-burst.art.go { animation: none; background-position: 100% 0; opacity: .9; transition: opacity .3s; }
 @keyframes g-to-burst { 0% { opacity: 0; transform: scale(.3); } 25% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.1) rotate(var(--r)); } }
 .g-to-sparkle { z-index: 4; left: 36%; right: 0; top: 0; bottom: 12%; pointer-events: none; opacity: 0; }
 .g-to-sparkle svg.tm { transform: rotate(var(--r)); animation: g-to-twinkle 1.6s ease-in-out infinite; }

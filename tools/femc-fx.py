@@ -251,6 +251,9 @@ def build(src, name, dst=DST):
         raise SystemExit(f'unknown effect name {name!r}; one of: {", ".join(NAMES)}')
     im = Image.open(src)
     im = im.convert('RGBA')
+    if name not in SOLID and im.getchannel('A').getextrema()[0] < 250:
+        # Light drawn on transparent instead of black (theme-hearts, Nov 1 2026): put it on black first, as the prompt asked.
+        bg = Image.new('RGBA', im.size, (0, 0, 0, 255)); bg.alpha_composite(im); im = bg
     cs = cells(im)
     side = cs[0].shape[0]
     if name in SOLID:

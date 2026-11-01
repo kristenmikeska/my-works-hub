@@ -418,6 +418,13 @@ window.FEMC_FX_ART = {
   "peak": 2,
   "v": "59105889"
  },
+ "theme-hearts": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "5533725c"
+ },
  "theurgy-burst": {
   "blend": "lighter",
   "cell": 384,

@@ -22927,6 +22927,70 @@
         "assets/femc/game/art/skins/sk-akihiko-cp-festival/portraits/akihiko/serious.webp": "460424ba4f6070f2ebcf27ef493d72e8ba34c56a619ccd177e8263bcbcd38331",
         "assets/femc/game/art/skins/sk-akihiko-cp-festival/portraits/akihiko/surprised.webp": "03c4fe92fa0f501a5cd87f7ce5e38161d7240fb0a0aca1fe66edb7a575d8baea"
       }
+    },
+    {
+      "batch": 118,
+      "source": "solar-posesheet-2.png",
+      "sourceNow": "New Adds/solar-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6c9db2cb0a737faa893141cf12bd21cd28ef5365595fa1a072aec11cd4937c9a",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/poses/solar-pose2-0..5.webp",
+      "conversion": "transparent 3 x 2 sheet: python3 tools/femc-wardrobe.py skin2 solar-posesheet-2.png own solar (sheet 1 canvas 546 x 522, its centre line and baseline, scale 0.99); source unchanged",
+      "sheetOrder": "support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "placement": "battle.js sheet 2 states for Solar’s own look (FIGHTER_POSES2)",
+      "outputs": {
+        "assets/femc/battle/art/poses/solar-pose2-0.webp": "e2d5fcb6ea8559c5e9e944de90f7711e471fb247bddfe7159f0e6671b0d026c8",
+        "assets/femc/battle/art/poses/solar-pose2-1.webp": "639733248bf8d7170b8a7b2b595de7f20b1fc822a9a8f1819a5ec5150ecfdbab",
+        "assets/femc/battle/art/poses/solar-pose2-2.webp": "1e953ce1c2503c4679d1dddb269fcb9174c95c8877a60d4ca0463e28b39d8718",
+        "assets/femc/battle/art/poses/solar-pose2-3.webp": "88746b42b9a0e780e2fd6988428815f970ba661b31a192897dc6bae5560c3c10",
+        "assets/femc/battle/art/poses/solar-pose2-4.webp": "0184ac49acf8f5d4ce82e3de48b2b637fc65106d14fe76682a358f5d9a6b60a4",
+        "assets/femc/battle/art/poses/solar-pose2-5.webp": "f307119ec9f7767f61f5123ace3819deea3ef6c7645cc0e0ccf9bbb574c4b7e3"
+      }
+    },
+    {
+      "batch": 118,
+      "source": "skin-sk-yukata-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-yukata-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ce92df87d53a3603480c346aa3c37773a6b3a0953a3e729a6d7926d7fef04ce3",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukata/solar-pose2-0..5.webp",
+      "skin": "sk-yukata",
+      "conversion": "transparent 3 x 2 sheet: python3 tools/femc-wardrobe.py skin2 skin-sk-yukata-posesheet-2.png sk-yukata (sheet 1 canvas 536 x 526, scale 0.846); source unchanged",
+      "sheetOrder": "support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "placement": "Summer Yukata’s sheet 2 states in battle (ready.js poses2 -> cosmetics.js battle() pose2)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-yukata/solar-pose2-0.webp": "c570095af759af3beb02c0bd7e53fb1d1eec44e48c6c280c32604b4885f77627",
+        "assets/femc/game/art/skins/sk-yukata/solar-pose2-1.webp": "c06f5135acce827ac6d53d97e1f1b5bc33d594f7d387c171bafa9e24d3eb8d08",
+        "assets/femc/game/art/skins/sk-yukata/solar-pose2-2.webp": "2cc8eff0514b456f42965c97503aa3c04a7fdaf1e47e6b18f6f005aa758fc825",
+        "assets/femc/game/art/skins/sk-yukata/solar-pose2-3.webp": "ce23f23cdadc22349999f66ac387dbef55db706202df8dd4579bf12e32044b0c",
+        "assets/femc/game/art/skins/sk-yukata/solar-pose2-4.webp": "e875a04c7ff7aad7c375db641962312cbda411fcf76f4a9052ddd103ce7ba2b7",
+        "assets/femc/game/art/skins/sk-yukata/solar-pose2-5.webp": "fcf2301fd12871fa93d684532c99b42e95de0dd2168aeb17da7cc230a56f1437"
+      }
+    },
+    {
+      "batch": 118,
+      "source": "theme-hearts.png",
+      "sourceNow": "New Adds/theme-hearts.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "664b0f0d6e0a67ef237bd08a643ff6548c96eb76c5327745462ec790571e7b1b",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/theme-hearts.webp",
+      "conversion": "light on transparent, put on black, then tools/femc-fx.py add (light alpha, 256 px frames, shift (0, -5)); frames 2 and 3 touch their cell edge slightly",
+      "placement": "hearts-theme looks: skill hit sparkle (battle.js fxHit), the All-Out cloud burst, the Wardrobe’s Try it on",
+      "outputs": {
+        "assets/femc/battle/art/fx/theme-hearts.webp": "8003cb677f960d726e260cfa5c33eee44f0d04ec9a7dfce5303926bedc01c1a7"
+      }
     }
   ],
   "batch1Validation": {
@@ -24362,5 +24426,10 @@
     "headless": "scratchpad verify (tests/femc_browser.Page): all 20 looks ready, in the pool and in their banners; each equipped in Menu → Wardrobe (preview wears it), desktop and phone (no sideways scroll); scene portraits with the toggle on (Yukari's swim happy, Akihiko's festival blushing, Haechan's Midnight Drive, Solar's Pink Lagoon), The Sun falling back to her own face, toggle off back to their own; a real fight with Solar and Akihiko in Summer Festival, Yukari in Beach Volley and Haechan in Midnight Drive on the battlefield; no console errors",
     "tests": "femc_cosmetics --only banner,equip,pending,newpending,party,viewer passed (newpending now 58 outfits; Swim Season in July and August, Tarot Arcana in January, the couple sets' met-only partner halves)",
     "html": "femc-game.html ready.js v18, cosmetics.js v27"
+  },
+  "batch118Validation": {
+    "tests": "femc_skins_battle --only sheet2 (new), data,tools,fallback,art,tryon; femc_fx_art (its practice charge check updated for the Nov 1 own-sheet recuts); femc_cosmetics --only inbattle; femc_building --only fight: all passed",
+    "framing": "every sheet-2 frame on sheet 1’s box at 1440 x 900 and 390 x 844 (image rect identical to the idle frame within 1 px); contact sheets checked by eye",
+    "html": "battle.js v83 (ART_V 40), fx.js v13, fx/index.js hash; femc-game.html ready.js v21, cosmetics.js v35, tryon.js v2, gacha.css v19"
   }
 }

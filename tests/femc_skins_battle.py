@@ -15,6 +15,12 @@ Run: python3 tests/femc_skins_battle.py [--only data,tools,fallback,art,settings
   art       the same with test art files in each art path: Kat's pictures replace every drawn version.
   settings  Outfit effects Off (no frame or burst), Entrance cards Off, a second fight of the night,
             Persona cut-ins Off (the old band), reduced motion (strip and card fade), practice (none of it).
+  sheet2    D, the second pose sheet (Nov 1 2026): in a real Tartarus fight Solar's own look plays pose2-0 on a support
+            cast (with the hand charge at its open hand), pose2-1 guarding, pose2-2 on a dodge, pose2-3 knocked down,
+            pose2-4 at 30% HP or less, pose2-5 on a baton pass and the All-Out run-in; each on sheet 1's exact box (no
+            jump in size or place), screenshots at 1440x900 and 390x844. Akihiko (no sheet 2) keeps sheet 1 exactly
+            (no pose2 frame, hidden when down); the Summer Yukata uses its own sheet 2; Date Day (sheet 1 only) never
+            borrows Solar's own sheet 2. A themed look's skill hit plays Kat's theme-hearts sheet small on top.
   tryon     S3, the Wardrobe's "Try it on" (game/tryon.js): the button on an owned and an unowned outfit and the Boutique's
             ▶, every beat in order, Enter / click skip to the victory pose, Esc closes only it (focus back), the hand
             charge only for a clean look, Outfit effects Off, reduced motion, every ready look's frames loading, a party
@@ -211,7 +217,7 @@ try:
         ok(fa.getpixel((500, 200))[3] == 0 and fa.getpixel((16, 200))[3] > 200 and fa.getpixel((5, 200))[3] == 0, 'the frame\'s green keyed out, its border kept')
         rj = READY.read_text()
         data = json.loads(rj.split('window.FEMC_ART_READY = ')[1].rstrip().rstrip(';'))
-        ok(data['skins']['sk-date'].get('onemore') == ['solar'] and data['skins']['sk-date'].get('entrance') == ['solar'] and data['own'] == {'onemore': ['solar'], 'entrance': []}
+        ok(data['skins']['sk-date'].get('onemore') == ['solar'] and data['skins']['sk-date'].get('entrance') == ['solar'] and data['own'] == {'onemore': ['solar'], 'entrance': [], 'poses2': ['solar']}
            and data['couples'] == ['cp-sunmoon'] and data['frames'] == ['hearts'], f'scan lists them: {data["own"]}, {data["couples"]}, {data["frames"]}')
         cleanup()
         ok(READY.read_text() == READY0 and not any(f.exists() for f in outs.values()), 'test files gone, ready.js restored')
@@ -226,7 +232,7 @@ try:
         if art:  # test art in each path, listed in the page's ready.js (as scan would)
             p.eval("(()=>{const A=FEMC_ART_READY;A.skins['sk-date'].onemore=['solar'];A.skins['sk-date'].entrance=['solar'];A.frames=['hearts'];A.couples=['cp-sunmoon'];return true})()")
         p.eval("FemcGame.S.battleSave.settings&&(FemcGame.S.battleSave.settings.entrance=true);FemcGame.save()")
-        night(['solar', 'akihiko', 'yukari', 'junpei'], "window.__btFreezeAt='entrance';" + ("FEMC_FX_ART['theme-hearts']={blend:'lighter',cell:256,frames:6,peak:2,v:'test'};FemcFX.preloadArt();" if art else ''))
+        night(['solar', 'akihiko', 'yukari', 'junpei'], "window.__btFreezeAt='entrance';" + ("" if art else "delete FEMC_FX_ART['theme-hearts'];"))
         enter()
         frozen_at('entrance', 60)
         time.sleep(0.25)
@@ -305,8 +311,8 @@ try:
     if want('art'):
         from PIL import Image, ImageDraw
         test_art = {ART / 'skins/sk-date/solar-onemore.webp': (1800, 300), ART / 'skins/sk-date/solar-entrance.webp': (1600, 900),
-                    ART / 'couples/cp-sunmoon-showtime.webp': (1600, 900), ART / 'frames/hearts.webp': (1000, 400),
-                    pathlib.Path(REPO, 'assets/femc/battle/art/fx/theme-hearts.webp'): (768, 512)}
+                    ART / 'couples/cp-sunmoon-showtime.webp': (1600, 900), ART / 'frames/hearts.webp': (1000, 400)}
+        # theme-hearts is Kat's own sheet since Nov 1 (art/fx/theme-hearts.webp): the burst plays it, nothing faked.
         for f, (w, h) in test_art.items():
             ok(not f.exists(), f'{f} exists already: not overwriting it'); f.parent.mkdir(parents=True, exist_ok=True); MADE.append(f)
             im = Image.new('RGBA', (w, h), (255, 79, 158, 255) if 'frames' not in str(f) and 'theme-' not in str(f) else (0, 0, 0, 0))
@@ -397,7 +403,9 @@ try:
         p.wait("FemcTryOn.state()?.done===true", 12)
         r = p.eval(TO)
         ok(r['seen'] == ['entrance', 'idle', 'attack', 'skill', 'onemore', 'win'], f'every beat in order: {r}')
-        ok(set(['entrance-code', 'onemore-code', 'burst', 'sparkle']) <= set(r['fx']) and 'charge' not in r['fx'], f'built-in card and strip, theme burst and sparkle, no charge (not clean): {r}')
+        ok(set(['entrance-code', 'onemore-code', 'burst-art', 'sparkle']) <= set(r['fx']) and 'charge' not in r['fx'], f'built-in card and strip, Kat\'s hearts sheet as the burst, sparkle, no charge (not clean): {r}')
+        bu = p.eval("(()=>{const b=document.querySelector('.g-to-burst');return b&&{cls:b.className,bg:b.style.backgroundImage}})()")
+        ok(bu and 'art' in bu['cls'] and 'fx/theme-hearts.webp' in bu['bg'], f'try-on burst plays theme-hearts: {bu}')
         ok(p.eval("document.querySelector('.g-to-fig.on').src.includes('skins/sk-date/solar-pose-5.webp') && document.activeElement.dataset.toAct==='done' && !!document.querySelector('[data-to-act=replay]')"), 'ends on the victory pose, Done focused, Replay')
         # Replay, then Enter skips; a click skips too; Esc closes only the showcase and gives focus back.
         key('ArrowLeft'); ok(p.eval("document.activeElement.dataset.toAct") == 'replay', 'arrows move between the buttons')
@@ -412,7 +420,7 @@ try:
         # Mid-showcase stills, desktop: the skill beat (burst) and the One More strip.
         p.eval("FemcCosmetics.byId('sk-date').clean=true")
         p.eval("document.querySelector('.g-wd-acts [data-wd-try=\"sk-date\"]').click()")
-        p.wait("(FemcTryOn.state()?.fx||[]).includes('burst')", 12); p.eval("FemcTryOn.freeze()")
+        p.wait("(FemcTryOn.state()?.fx||[]).some(x=>/^burst/.test(x))", 12); p.eval("FemcTryOn.freeze()")
         r = p.eval(TO); ok('charge' in r['fx'], f'a clean look: the hand charge: {r}')
         c = p.eval("(()=>{const c=document.querySelector('.g-to-charge'),s=document.querySelector('[data-to-stage]').getBoundingClientRect();return {x:parseFloat(c.style.left),y:parseFloat(c.style.top),w:s.width,h:s.height}})()")
         ok(0 < c['x'] < c['w'] and 0 < c['y'] < c['h'], f'the charge sits on the stage: {c}')
@@ -426,12 +434,12 @@ try:
         p.eval("FemcGame.setSettings({skinFx:false});FemcCosmetics.byId('sk-date').clean=true;FemcTryOn.play('sk-date')")
         p.wait("FemcTryOn.state()?.done===true", 12)
         r = p.eval("({fx:FemcTryOn.state().fx,els:document.querySelectorAll('.g-to-charge,.g-to-burst,.g-to-sparkle,.g-to-en svg').length})")
-        ok(r['els'] == 0 and not ({'charge', 'burst', 'sparkle'} & set(r['fx'])), f'Outfit effects Off: {r}')
+        ok(r['els'] == 0 and not ({'charge', 'burst', 'burst-art', 'sparkle'} & set(r['fx'])), f'Outfit effects Off: {r}')
         p.eval("FemcTryOn.close();FemcGame.setSettings({skinFx:true});FemcCosmetics.byId('sk-date').clean=false"); gone()
         # Performance mode and Reduce flashes: fewer motifs, calm class.
         p.eval("FemcGame.setSettings({perf:true,calm:true});FemcTryOn.play('sk-date')")
-        r = p.eval("({perf:document.querySelector('.g-to').classList.contains('perf'),calm:document.querySelector('.g-to').classList.contains('calm'),n:document.querySelectorAll('.g-to-burst svg').length})")
-        ok(r['perf'] and r['calm'] and r['n'] == 5, f'Performance / Reduce flashes: {r}')
+        r = p.eval("({perf:document.querySelector('.g-to').classList.contains('perf'),calm:document.querySelector('.g-to').classList.contains('calm'),n:document.querySelectorAll('.g-to-burst svg').length,art:!!document.querySelector('.g-to-burst.art')})")
+        ok(r['perf'] and r['calm'] and (r['n'] == 5 or (r['art'] and r['n'] == 0)), f'Performance / Reduce flashes: {r}')
         p.eval("FemcTryOn.close();FemcGame.setSettings({perf:false,calm:false})"); gone()
         # Reduced motion: still frames with crossfades.
         motion(p, True); p.eval("FemcTryOn.play('sk-date')"); at_beat('attack')
@@ -452,7 +460,7 @@ try:
         ok(hid, 'a ready Haechan look not owned')
         view(p, 390, 844); wmenu(); pick(hid)
         p.eval("document.querySelector('.g-wd-acts [data-wd-try=\"%s\"]').click()" % hid)
-        p.wait("(FemcTryOn.state()?.fx||[]).includes('burst')", 12); p.eval("FemcTryOn.freeze()")
+        p.wait("(FemcTryOn.state()?.fx||[]).some(x=>/^burst/.test(x))", 12); p.eval("FemcTryOn.freeze()")
         ok(p.eval("document.querySelector('.g-to-fig.on').src.includes('%s/haechan-pose-3.webp')" % hid), "a party member's skill frame")
         hold(p, '.g-to', 0.5); ok(fits(p), '390: no sideways scroll'); shots.append(shot(p, 'tryon-skill-390'))
         p.eval("FemcTryOn.close()"); gone()
@@ -471,6 +479,125 @@ try:
         key('Escape'); r = gone(); ok(r['focus'] == f, f'Boutique: focus back on ▶: {r}')
         clean(p, 'tryon')
         results['tryon'] = {'looks': len(ids), 'shots': shots}
+
+
+    # ── D: the second pose sheet in a real fight ──
+    if want('sheet2'):
+        POSELOG = r"""(()=>{const b=document.querySelector('.bt-fighter');window.__poseLog=[];new MutationObserver(()=>{const i=b.querySelector('img.posed');window.__poseLog.push([b.dataset.id,b.dataset.pose,i&&i.getAttribute('src')])}).observe(b,{attributes:true,subtree:true,attributeFilter:['data-pose','src','hidden']});return true})()"""
+        BOX = r"""(()=>{const b=document.querySelector('.bt-fighter'),i=b.querySelector('img.posed'),r=i&&i.getBoundingClientRect();return {hidden:b.hidden,id:b.dataset.id,pose:b.dataset.pose,src:i&&i.getAttribute('src'),nw:i&&i.naturalWidth,nh:i&&i.naturalHeight,r:r&&[Math.round(r.left),Math.round(r.top),Math.round(r.width),Math.round(r.height)]}})()"""
+        shots2, boxes = [], {}
+        def unit(mid): return p.eval("FemcBattle.B.party().find(u=>u.mid===%s).id" % json.dumps(mid))
+        def freeze_ev(markname, evs, pre=''):
+            p.eval("window.__btFreezeAt=%s;%s;FemcBattle.playEvents(%s);true" % (json.dumps(markname), pre, evs))
+            frozen_at(markname, 20); time.sleep(0.25)
+        def snap(tag):
+            out = {}
+            for w, h in [(1440, 900), (390, 844)]:
+                view(p, w, h); time.sleep(0.35)
+                out[w] = p.eval(BOX); ok(fits(p), f'{tag} {w}: no sideways scroll')
+                shots2.append(shot(p, f'sheet2-{tag}-{w}x{h}'))
+            view(p, 1440, 900); time.sleep(0.2)
+            return out
+        setup()
+        night(['solar', 'akihiko', 'yukari', 'junpei'], "window.__holdAllout=true;FemcBattle.save.cutins='off';")
+        enter(); bdrive(SOLAR_MENU, 120)
+        info = p.eval("FemcBattle.poses2('solar')"); aki = p.eval("FemcBattle.poses2('akihiko')")
+        ok(info['has'] and len(info['frames']) == 12 and all('poses/solar-pose2-%d.webp' % i in info['frames'][6 + i] for i in range(6))
+           and info['states']['support'] == [6] and info['states']['dash'] == [11], f'Solar: sheet 2 as frames 6-11: {info}')
+        ok(not aki['has'] and len(aki['frames']) == 6 and 'support' not in aki['states'], f'Akihiko: sheet 1 only: {aki}')
+        p.eval("FemcBattle.B.party().forEach(u=>{u.maxHp=u.hp=99999;u.sp=999});FemcBattle.B.foes().forEach(f=>{f.maxHp=f.hp=99999});" + POSELOG)
+        sid, aid = unit('solar'), unit('akihiko'); foe = p.eval("FemcBattle.B.foes()[0].id")
+        boxes['idle'] = snap('idle')
+        ok(boxes['idle'][1440]['pose'] == '0' and 'solar-pose-0' in boxes['idle'][1440]['src'], f'idle: {boxes["idle"][1440]}')
+        # support: a Dia from Solar (a Persona skill), the charge at pose2-0's open hand
+        ev = json.dumps([{'t': 'use', 'src': sid, 'skill': 'dia', 'name': 'Dia', 'el': 'heal', 'summon': True, 'tgts': [sid]}])
+        freeze_ev('fighter-support', ev)
+        boxes['support'] = snap('support')
+        p.eval("FemcBattle.unfreeze()"); p.wait("(FemcBattle.marks['fighter-charge']||0)>0", 10)
+        h2 = p.eval("FemcBattle.poses2('solar').hand2")
+        ok(h2 == [0.136, 0.23], f'support hand point: {h2}')
+        go_on(); time.sleep(0.6)
+        # guard (held), then a dodge
+        p.eval("FemcBattle.B.U(%s).guard=true" % json.dumps(sid))
+        freeze_ev('fighter-guard', json.dumps([{'t': 'guard', 'src': sid}])); go_on(); time.sleep(0.4)
+        boxes['guard'] = snap('guard')
+        p.eval("FemcBattle.B.U(%s).guard=false" % json.dumps(sid))
+        freeze_ev('fighter-dodge', json.dumps([{'t': 'miss', 'src': foe, 'tgt': sid}]))
+        boxes['dodge'] = snap('dodge'); go_on(); time.sleep(0.6)
+        # badly hurt: 30% HP rests on pose2-4
+        p.eval("(()=>{const u=FemcBattle.B.U(%s);u.hp=Math.floor(u.maxHp*0.3);return true})()" % json.dumps(sid))
+        p.eval("FemcBattle.playEvents(%s)" % json.dumps([{'t': 'miss', 'src': foe, 'tgt': sid}])); time.sleep(1.2)
+        boxes['wounded'] = snap('wounded')
+        p.eval("(()=>{const u=FemcBattle.B.U(%s);u.hp=u.maxHp;return true})()" % json.dumps(sid))
+        # knocked down: a weakness hit Downs her; she stays on the field in pose2-3
+        p.eval("(()=>{const u=FemcBattle.B.U(%s);u.down=true;return true})()" % json.dumps(sid))
+        p.eval("FemcBattle.playEvents(%s)" % json.dumps([{'t': 'hit', 'src': foe, 'tgt': sid, 'el': 'strike', 'aff': 'weak', 'amount': 1, 'hp': 99998, 'maxHp': 99999, 'downed': True}]))
+        p.wait("(FemcBattle.marks['fighter-down']||0)>0", 10); time.sleep(1.2)
+        boxes['down'] = snap('down')
+        p.eval("FemcBattle.B.U(%s).down=false" % json.dumps(sid))
+        # dash: a baton pass from Akihiko to Solar
+        freeze_ev('fighter-dash', json.dumps([{'t': 'shift', 'src': aid, 'tgt': sid, 'boost': 1.5}]))
+        boxes['dash'] = snap('dash'); go_on(); time.sleep(0.8)
+        want_pose = {'support': ('6', 'pose2-0'), 'guard': ('7', 'pose2-1'), 'dodge': ('8', 'pose2-2'), 'down': ('9', 'pose2-3'), 'wounded': ('10', 'pose2-4'), 'dash': ('11', 'pose2-5')}
+        for k, (n, f) in want_pose.items():
+            for w in (1440, 390):
+                b, i0 = boxes[k][w], boxes['idle'][w]
+                ok(not b['hidden'] and b['id'] == sid and b['pose'] == n and f'solar-{f}.webp' in b['src'], f'{k} {w}: {b}')
+                ok((b['nw'], b['nh']) == (i0['nw'], i0['nh']) and all(abs(x - y) <= 1 for x, y in zip(b['r'], i0['r'])), f'{k} {w}: same box as sheet 1 (no jump): {b} vs {i0}')
+        # The All-Out run-in, for real: Solar's fire on two weak Mayas, then go.
+        p.eval("FemcBattle.B.foes().forEach(f=>{f.maxHp=f.hp=99999;f.down=false})")
+        bdrive(SOLAR_MENU, 30); cast_fire(); bdrive(SOLAR_MENU, 30); cast_fire()
+        bdrive("FemcBattle.ctl?.kind==='allout'", 30)
+        p.eval("window.__btFreezeAt='fighter-dash#2';window.__holdAllout=false;FemcBattle.B.foes().forEach(f=>{f.hp=Math.min(f.hp,50)});FemcBattle.ctl.pickValue('1')")
+        bdrive("(FemcBattle.marks['fighter-dash']||0)>=2", 30); time.sleep(0.25)
+        b = p.eval(BOX); ok(b['pose'] == '11' and 'solar-pose2-5' in b['src'], f'All-Out run-in: {b}')
+        shots2.append(shot(p, 'sheet2-allout-dash-1440x900'))
+        go_on(); p.eval("window.__holdSolar=false;window.__stopResults=true")
+        bdrive("FemcBattle.screen()==='results'", 60)
+        log = p.eval("window.__poseLog")
+        ok(not any(e[2] and 'pose2' in e[2] and 'solar' not in e[2] for e in log), 'no other fighter ever shows a pose2 frame')
+        clean(p, 'sheet2 solar')
+        # Fallback: Akihiko leads; guard / dodge / down keep sheet 1 exactly (no pose2, hidden when Down).
+        p.top(); setup()
+        night(['akihiko', 'solar', 'yukari', 'junpei'], "window.__holdSolar=false;FemcBattle.save.cutins='off';")
+        enter(); bdrive("FemcBattle.screen()==='battle'&&FemcBattle.ctl?.kind==='menu'&&FemcBattle.B.S.cur.mid==='akihiko'", 120)
+        p.eval("FemcBattle.B.party().forEach(u=>{u.maxHp=u.hp=99999});FemcBattle.B.foes().forEach(f=>{f.maxHp=f.hp=99999});" + POSELOG)
+        aid = unit('akihiko'); foe = p.eval("FemcBattle.B.foes()[0].id")
+        p.eval("FemcBattle.B.U(%s).guard=true;FemcBattle.playEvents(%s)" % (json.dumps(aid), json.dumps([{'t': 'guard', 'src': aid}, {'t': 'miss', 'src': foe, 'tgt': aid}]))); time.sleep(1.5)
+        g = p.eval(BOX); ok(g['pose'] == '0' and 'akihiko-pose-0' in g['src'], f'Akihiko guarding / dodging: sheet 1 idle as before: {g}')
+        p.eval("(()=>{const u=FemcBattle.B.U(%s);u.guard=false;u.hp=Math.floor(u.maxHp*0.2);u.down=true;return true})()" % json.dumps(aid))
+        p.eval("FemcBattle.playEvents(%s)" % json.dumps([{'t': 'hit', 'src': foe, 'tgt': aid, 'el': 'strike', 'aff': 'weak', 'amount': 1, 'hp': 19999, 'maxHp': 99999, 'downed': True}])); time.sleep(1.5)
+        ok(not p.eval("FemcBattle.marks['fighter-down']") and not any('pose2' in (e[2] or '') for e in p.eval("window.__poseLog")), 'Akihiko: no sheet-2 state, no pose2 frame')
+        ok(p.eval("FemcBattle.poses2('akihiko').frames.length") == 6, 'Akihiko: six frames')
+        clean(p, 'sheet2 fallback')
+        # Looks: the Summer Yukata has its own sheet 2; Date Day (sheet 1 only) never borrows Solar's own.
+        p.top(); setup(wear=['sk-yukata'])
+        r = p.eval("(()=>{const b=FemcCosmetics.battle();return {pose2:b.pose2,look:b.look}})()")
+        ok(r['pose2'] == {'solar': True} and r['look'].get('solar') == 'sk-yukata', f'cosmetics battle(): Yukata sheet 2: {r}')
+        night(['solar', 'akihiko', 'yukari', 'junpei'], "FemcBattle.save.cutins='off';")
+        enter(); bdrive(SOLAR_MENU, 120)
+        y = p.eval("FemcBattle.poses2('solar')")
+        ok(y['has'] and all('skins/sk-yukata/solar-pose2-%d.webp' % i in y['frames'][6 + i] for i in range(6)) and y['hand2'] == [0.55, 0.46], f'Yukata frames: {y}')
+        p.eval("FemcBattle.B.party().forEach(u=>{u.maxHp=u.hp=99999;u.sp=999});FemcBattle.B.foes().forEach(f=>{f.maxHp=f.hp=99999})")
+        sid = unit('solar'); foe = p.eval("FemcBattle.B.foes()[0].id")
+        y0 = p.eval(BOX)
+        freeze_ev('fighter-dodge', json.dumps([{'t': 'miss', 'src': foe, 'tgt': sid}]))
+        yb = p.eval(BOX); ok(yb['pose'] == '8' and 'sk-yukata/solar-pose2-2' in yb['src'] and all(abs(a - b) <= 1 for a, b in zip(yb['r'], y0['r'])), f'Yukata dodge on sheet 1\'s box: {yb} vs {y0}')
+        for w, h in [(1440, 900), (390, 844)]:
+            view(p, w, h); time.sleep(0.35); shots2.append(shot(p, f'sheet2-yukata-dodge-{w}x{h}'))
+        view(p, 1440, 900); go_on(); time.sleep(0.5)
+        clean(p, 'sheet2 yukata')
+        p.top(); setup(wear=['sk-date'])
+        night(['solar', 'akihiko', 'yukari', 'junpei'], "FemcBattle.save.cutins='off';")
+        enter(); bdrive(SOLAR_MENU, 120)
+        d = p.eval("FemcBattle.poses2('solar')")
+        ok(not d['has'] and len(d['frames']) == 6 and not any('pose2' in f for f in d['frames']), f'Date Day: sheet 1 only: {d}')
+        # F: Date Day is hearts; a skill hit plays Kat's theme-hearts sheet small on top
+        p.eval("FemcBattle.B.foes().forEach(f=>{f.maxHp=f.hp=99999})"); cast_fire()
+        p.wait("(FemcBattle.marks['fx-theme-hearts']||0)>0 && (FemcBattle.marks['fx-art-theme-hearts']||0)>0", 20)
+        clean(p, 'sheet2 date')
+        p.top(); p.eval("document.querySelectorAll('.g-dh').forEach(x=>x.remove())")
+        results['sheet2'] = {'states': list(want_pose), 'shots': shots2}
 
     print(json.dumps(results, indent=1))
     print('femc_skins_battle: all checks passed')

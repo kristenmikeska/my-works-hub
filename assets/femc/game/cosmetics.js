@@ -414,13 +414,14 @@ window.FemcCosmetics = (() => {
   const ART_V8 = 1; // bump when one of these files is replaced in place
   function battle() {
     if (!S()) return null;
-    const pose = {}, face = {}, clean = {}, hand = {}, look = {}, theme = {}, name = {}, couple = {}, onemore = {}, entrance = {}, showtime = {}, frames = {};
-    const out = { pose, face, clean, hand, look, theme, name, couple, onemore, entrance, showtime, frames, css: '' };
+    const pose = {}, pose2 = {}, face = {}, clean = {}, hand = {}, look = {}, theme = {}, name = {}, couple = {}, onemore = {}, entrance = {}, showtime = {}, frames = {};
+    const out = { pose, pose2, face, clean, hand, look, theme, name, couple, onemore, entrance, showtime, frames, css: '' };
     const A = readyArt(), art = (dir, f) => `${G.base}${dir}${f}?v=${ART_V8}`;
     ITEMS.filter(x => x.kind === 'skin').forEach(x => {
       const o = onIn(slotOf(x)); if (!o || pose[o.who]) return;
       const w = o.who, R = (A.skins || {})[o.id] || {}, have = (R.portraits || {})[w] || [];
       pose[w] = G.base + skinDir(o.id); look[w] = o.id; name[w] = o.name;
+      if ((R.poses2 || []).includes(w)) pose2[w] = true; // D: the look's second pose sheet (<who>-pose2-0..5, femc-wardrobe.py skin2)
       if (have.length) face[w] = { dir: `${G.base}${skinDir(o.id)}portraits/${w}/`, have: have.slice(), v: 9 };
       if (isClean(o, w)) clean[w] = true;
       if (Array.isArray(o.hand)) hand[w] = o.hand.slice(0, 2);
@@ -456,6 +457,8 @@ window.FemcCosmetics = (() => {
     return { id: x.id, who: w, name: x.name, whoName: whoName(w), theme: x.theme || null, clean: isClean(x, w), color: m.color || '#ff4f9e',
       hand: Array.isArray(x.hand) ? x.hand.slice(0, 2) : ((window.FemcLooksArt || {}).FIGHTER_HAND || {})[w] || ((window.FemcLooksArt || {}).HAND_DEFAULT || [0.5, 0.3]),
       frames: [0, 1, 2, 3, 4, 5].map(i => `${G.base}${skinDir(x.id)}${w}-pose-${i}.webp?v=${SKIN_V}`),
+      // Kat's theme effect sheet (battle/art/fx/theme-<id>.webp; ready.js `themes`, femc-wardrobe.py scan) for the burst.
+      themeSheet: x.theme && (readyArt().themes || []).includes(x.theme) ? `${G.base}assets/femc/battle/art/fx/theme-${x.theme}.webp?v=${ART_V8}` : null,
       entrance: (R.entrance || []).includes(w) ? art8(`${w}-entrance.webp`) : null, onemore: (R.onemore || []).includes(w) ? art8(`${w}-onemore.webp`) : null,
       face: f ? `${G.base}${skinDir(x.id)}portraits/${w}/${f}.webp?v=9` : `${G.base}${D.portraits || 'assets/femc/portraits/'}${w}/${face0}.webp?v=${V}`, faceKey: f || face0,
       skill: { name: sk.name, el: sk.el, elName: el.name, color: el.color } };

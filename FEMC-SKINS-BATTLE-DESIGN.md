@@ -8,10 +8,10 @@ The technical side (code, file paths, tools, tests) is in `FEMC-SKINS-BATTLE-TEC
 
 > **Start here: the five best things to make next**
 > 1. **Solar's "One More!" eye strip:** part 6.3, *Filled: Solar*.
-> 2. **The hearts theme sheet:** part 6.1, *Filled: Hearts*.
-> 3. **The Sun & Moon couple Showtime** (Solar and Haechan in the hoodies): part 6.5, *Filled: Sun & Moon*.
-> 4. **Solar's entrance card:** part 6.4, *Filled: Solar*.
-> 5. **Solar's own second pose sheet:** part 8, the first item under *Solar*.
+> 2. **The Sun & Moon couple Showtime** (Solar and Haechan in the hoodies): part 6.5, *Filled: Sun & Moon*.
+> 3. **Solar's entrance card:** part 6.4, *Filled: Solar*.
+> 4. **The petals theme sheet:** part 6.1, *The other themes*.
+> 5. **Haechan's own second pose sheet:** part 8, the first item under *Haechan*.
 >
 > Save everything into **New Adds** under its Save-as name, and tell Claude.
 
@@ -26,9 +26,9 @@ Every piece works one look at a time. A look without its art quietly uses the fi
 | A | Clean skill pose + hand glow | Her hand glows in the skill's element as she casts, then the hit lands. | No: you cut the old effect out of cell 4 (part 4) | Yes. Switches on for each look Claude marks clean. |
 | B | Outfit faces in battle | Party cards and turn order show the look's scene portraits. | No | Yes |
 | C | Victory pose on the win screen | The Results screen shows the victory pose big, in the look worn. | No | Yes |
-| D | Second pose sheet | Six more poses: support cast, guard, dodge, knocked down, badly hurt, dash-in. | One sheet per look (part 8) | Not yet |
+| D | Second pose sheet | Six more poses: support cast, guard, dodge, knocked down, badly hurt, dash-in. | One sheet per look (part 8) | Yes. Plays for every look whose sheet 2 is in (so far: Solar's own, Summer Yukata); the rest keep their usual poses. |
 | E | Outfit Theurgy cut-in | The Theurgy cut-in shows the fighter in the look. | One picture per look (part 9) | Not yet |
-| F | Theme effects | Skills sprinkle the look's theme (hearts, petals, stars…) over the normal effect. | One sheet per theme (part 6.1) | Not yet |
+| F | Theme effects | Skills sprinkle the look's theme (hearts, petals, stars…) over the normal effect. | One sheet per theme (part 6.1) | Yes, for each theme whose sheet is in (so far: Hearts) |
 | G | Outfit finish card | The All-Out finish card shows the look. | One card per look (part 6.2) | Not yet |
 | H | "One More!" eye strip | Hit a weakness: a thin strip of the fighter's eyes slams across the screen. | One strip per look (part 6.3) | Yes, with a built-in version until your art arrives |
 | I | Entrance card | As a fight opens, the leader's look flashes on in a slanted card. | One card per look (part 6.4) | Yes, built-in version for now |
@@ -47,7 +47,7 @@ Every piece works one look at a time. A look without its art quietly uses the fi
 
 | Piece | Full count | Start with |
 |---|---|---|
-| Cell-4 clean-up | 43 left (part 4) | Solar's own sheet |
+| Cell-4 clean-up | 2 left (part 4) | Yukari's Beach Volley |
 | D. Second pose sheet | 87 (12 own + 75 looks) | Solar's own, then the other fighters, then favourite looks |
 | E. Outfit Theurgy cut-in | 75 | Favourite looks |
 | F. Theme sheets | 13 | Hearts |
@@ -81,22 +81,12 @@ Every look has a theme already. To move a look to another theme, or leave it pla
 
 ## 4. Cell-4 clean-up checklist
 
-44 looks are done (thank you!). These are the ones left: every fighter's own sheet and the looks below. Each one is already copied into **`Femc Mode Images/Skins Battle Design/<Fighter>/`**.
+Nearly all done (thank you!): your recuts of eleven fighters' own sheets and 74 looks are in. **Two left**, each already copied into **`Femc Mode Images/Skins Battle Design/<Fighter>/`**:
 
-How: open the sheet from that folder, take the effect out of cell 4 only (leave the figure and the other five cells as they are; a transparent background is welcome), and save it into **`RECUTS - PHOTOSHOP EDITS`**. Any name that says pose sheet and the look is fine (e.g. `Solar - own look - pose sheet.png`). Claude wires each one; you don't need to check anything. If a cell 4 can't be cleaned (the effect covers the face or hand), skip it.
-
-- **Solar:** `Solar - own look - pose sheet.png` · `After Hours [sk-cp-afterhours] - pose sheet.png` · `Lifeguard on Duty [sk-swim-lifeguard] - pose sheet.png` · `Midnight Drive [sk-cp-drive] - pose sheet.png` · `Movie Date [sk-cp-moviedate] - pose sheet.png` · `Night Swim [sk-swim-night] - pose sheet.png` · `Pink Lagoon [sk-swim-lagoon] - pose sheet.png` · `Ringside [sk-cp-ringside] - pose sheet.png` · `Summer Festival [sk-cp-festival] - pose sheet.png` · `Sun Hoodie [sk-cp-sunmoon] - pose sheet.png` · `The Sun [sk-arcana-sun] - pose sheet.png`
-- **Haechan:** `Haechan - own look - pose sheet.png` · `Black Suit [sk-haechan-suit] - pose sheet.png` · `Boardwalk [sk-haechan-swim] - pose sheet.png` · `Encore Stage [sk-haechan-stage] - pose sheet.png` · `Fairground Lights [sk-haechan-fairground] - pose sheet.png` · `Midnight Drive [sk-haechan-cp-drive] - pose sheet.png` · `Moon Hoodie [sk-haechan-cp-sunmoon] - pose sheet.png` · `Sweet Tooth [sk-haechan-sweettooth] - pose sheet.png`
-- **Jungwon:** `Jungwon - own look - pose sheet.png` · `After Hours [sk-jungwon-cp-afterhours] - pose sheet.png` · `Cell Block Angel [sk-jungwon-angel] - pose sheet.png` · `Center Stage [sk-jungwon-stage] - pose sheet.png` · `Heir’s Suit [sk-jungwon-heir] - pose sheet.png` · `Movie Date [sk-jungwon-cp-moviedate] - pose sheet.png` · `Pinstripe Detective [sk-jungwon-pinstripe] - pose sheet.png` · `Pool Day [sk-jungwon-swim] - pose sheet.png` · `Soundcheck [sk-jungwon-soundcheck] - pose sheet.png` · `Sweater Weather [sk-jungwon-sweater] - pose sheet.png`
-- **Akihiko:** `Akihiko - own look - pose sheet.png` · `Lifeguard Captain [sk-akihiko-swim] - pose sheet.png` · `Ringside [sk-akihiko-cp-ringside] - pose sheet.png` · `Summer Festival [sk-akihiko-cp-festival] - pose sheet.png`
-- **Yukari:** `Yukari - own look - pose sheet.png` · `Beach Volley [sk-yukari-swim] - pose sheet.png` · `Featherman Pink [sk-yukari-pink] - pose sheet.png`
-- **Junpei:** `Junpei - own look - pose sheet.png`
-- **Mitsuru:** `Mitsuru - own look - pose sheet.png`
-- **Aigis:** `Aigis - own look - pose sheet.png`
-- **Koromaru:** `Koromaru - own look - pose sheet.png`
-- **Shinjiro:** `Shinjiro - own look - pose sheet.png`
-- **Jihoon:** `Jihoon - own look - pose sheet.png`
+- **Yukari:** `Beach Volley [sk-yukari-swim] - pose sheet.png`
 - **Minji:** `Minji - own look - pose sheet.png`
+
+How: open the sheet from that folder, take the effect out of cell 4 only (leave the figure and the other five cells as they are; a transparent background is welcome), and save it into **`RECUTS - PHOTOSHOP EDITS`**. Any name that says pose sheet and the look is fine. Claude wires each one. If a cell 4 can't be cleaned (the effect covers the face or hand), skip it.
 
 *(Kiriko Cosplay is retired, so it isn't on the list.)*
 
@@ -120,7 +110,7 @@ House rules: ChatGPT unless noted; one picture per chat message; attach in the o
 
 A light, airy sheet that plays on top of a skill's normal effect.
 
-**Filled: Hearts.**  
+**Filled: Hearts.** ✓ Made (Nov 1): in the game (over hearts-look skills, in the All-Out cloud, in Try it on).  
 Attach: `Added to Game/heal.jpeg` (format and spacing only)  
 Save as: `theme-hearts.png`
 ```
@@ -222,14 +212,14 @@ The pose sheet to attach is the one in `Current Skins/<Fighter>/` (your cleaned 
 
 ### Solar
 
-**Solar: own look**  
+**Solar: own look** ✓ Made (Nov 1): in the game.  
 Attach: `Current Skins/Base Game/Solar/Solar - battle pose sheet.png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `solar-posesheet-2.png`
 ```
 Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: the black Gekkoukan uniform with the red bow, a short black pleated skirt, white knee socks and brown loafers, her naginata. Hair: her long straight jet-black hair, loose. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, the naginata held loosely in the other hand. Cell 2: guarding: braced low, the naginata held across her body like a shield, forearm raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, her hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping the naginata. Cell 5: badly hurt: standing but hunched, one hand pressed to her side, breathing hard, the naginata lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, the naginata ready, her hair and clothes streaming back. Persona 3 Reload official art style. No text.
 ```
 
-**Solar: Summer Yukata** (`sk-yukata`)  
+**Solar: Summer Yukata** (`sk-yukata`) ✓ Made (Nov 1): in the game.  
 Attach: `Current Skins/Solar/Summer Yukata [sk-yukata] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-yukata-posesheet-2.png`
 ```

@@ -147,7 +147,7 @@ try:
     p.wait("FemcFX.hasArt('dark')", 20)
     ok(p.eval("FemcFX.artFor('dark')") == 'dark', 'dark uses its sheet')
     p.wait("!!(FemcBattle.ctl && FemcBattle.ctl.items && FemcBattle.ctl.items.some(i => i.v === 'skill'))", 60)
-    p.eval("(() => { const b = FemcBattle.B, u = b.U(b.S.cur.id); FEMC_BATTLE_DATA.skills.t_dark = { name: 'Test Dark', el: 'dark', type: 'dmg', target: 'one', power: 30, cost: { sp: 4 }, desc: '' }; u.skills.unshift('t_dark'); u.sp = Math.max(u.sp, 99); FemcBattle.ctl.pickValue('skill'); })()")
+    p.eval("(() => { const b = FemcBattle.B, u = b.U(b.S.cur.id); window.__caster = u.mid; FEMC_BATTLE_DATA.skills.t_dark = { name: 'Test Dark', el: 'dark', type: 'dmg', target: 'one', power: 30, cost: { sp: 4 }, desc: '' }; u.skills.unshift('t_dark'); u.sp = Math.max(u.sp, 99); FemcBattle.ctl.pickValue('skill'); })()")
     p.wait("FemcBattle.ctl && FemcBattle.ctl.items && FemcBattle.ctl.items.some(i => i.v === 't_dark')", 10)
     before = p.eval("FemcBattle.marks['fx-art-dark'] || 0")
     p.eval("FemcBattle.ctl.pickValue('t_dark')")
@@ -163,7 +163,10 @@ try:
     #    own sheet is cleaned yet, so the real Dark cast above played none; fx.js charge itself: ~300 ms, the element's sheet
     #    small on top, half the motes and no sheet in Performance mode, no white core with Reduce flashes, one soft glow under
     #    reduced motion, a support skill's colour and no sheet.
-    ok(not p.eval("FemcBattle.marks['fighter-charge']"), 'practice: an uncleaned own sheet gets no hand charge')
+    # Kat's recuts of the fighters' own sheets came in Nov 1 (battle.js FIGHTER_CLEAN: everyone but Minji), so the charge plays
+    # for a cleaned own sheet and only for one.
+    cast = p.eval("window.__caster"); charged = bool(p.eval("FemcBattle.marks['fighter-charge']"))
+    ok(charged == (cast != 'minji'), f'practice: the hand charge only for a cleaned own sheet ({cast}: {charged})')
     ch = lambda k='fire': (p.eval(f"FemcFX.charge({json.dumps(k)}, {{ x: 300, y: 300, r: 26 }})"), p.eval("FemcFX.chargeLog[FemcFX.chargeLog.length - 1]"))
     t, lg = ch()
     ok(t == 300 and lg['mode'] == 'full' and lg['motes'] == 14 and lg['sheet'] == 'fire' and not lg['calm'], ('charge, full', t, lg))

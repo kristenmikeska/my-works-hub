@@ -4,6 +4,13 @@
         A 3 x 2 pose sheet on white (the fighters' format: idle, Evoker, attack, spell, hurt, victory), cut exactly like
         tools/femc-shadow-poses.py cuts fighters -> assets/femc/game/art/skins/<skin>/<who>-pose-0..5.webp. A sheet that
         already has a transparent background (Oct 31 2026) skips the white key and is split on its own alpha.
+  python3 tools/femc-wardrobe.py skin2 <sheet.png> <skin id | own> [fighter id]
+        FEMC-SKINS-BATTLE-DESIGN D (Nov 1 2026): a SECOND 3 x 2 pose sheet (support cast, guard, dodge, knocked down, badly
+        hurt, dash-in), transparent (or white), cut onto sheet 1's exact canvas: same canvas size, the body mass on sheet 1's
+        centre line, the lowest solid row on sheet 1's baseline, and scaled so the standing support pose (cell 1) matches
+        sheet 1's standing cast pose (frame 3), so the figure never jumps between the two sheets. Writes
+        <who>-pose2-0..5.webp next to sheet 1: battle/art/poses/ for `own` (the fighter's own look; the fighter defaults to
+        solar), game/art/skins/<skin>/ for an outfit (scan lists it as the skin's `poses2`).
   python3 tools/femc-wardrobe.py portraits <skin id> <who> <folder of face PNGs>
         Copies already-cut portrait PNGs (named <face>.png, e.g. from tools/femc-portraits.py) to
         assets/femc/game/art/skins/<skin>/portraits/<who>/<face>.webp.
@@ -130,6 +137,47 @@ def alpha_frames(SP, src):
     return SP.place(SP.theurgy_tool(), [a[..., 3] * ndimage.binary_dilation(mk, iterations=2) for mk in masks], [a] * 6)
 
 
+def sheet2(src, skin, who):
+    """Sheet 2 on sheet 1's canvas (see skin2 in the header). Returns the six frames and the scale used."""
+    import numpy as np
+    from scipy import ndimage
+    SP = tool('femc_shadow_poses', 'femc-shadow-poses.py'); TH = SP.theurgy_tool()
+    d = ROOT / 'assets/femc/battle/art/poses' if skin == 'own' else ART / 'skins' / skin
+    if not (d / f'{who}-pose-0.webp').exists(): raise SystemExit(f'{d / who}-pose-0.webp: no sheet 1 to match')
+
+    def body(al):  # the biggest solid piece, its lowest row (+1) and its weighted centre
+        lab, _ = ndimage.label(al > 0.8); sz = np.bincount(lab.ravel()); sz[0] = 0; b = lab == sz.argmax()
+        w = al * b; return np.nonzero(b.any(1))[0].max() + 1, float((w.sum(0) * np.arange(al.shape[1])).sum() / w.sum())
+
+    def stand(al):  # the figure's height without thin things (a raised naginata): top of the opened body to its feet
+        o = ndimage.binary_opening(al > 0.5, structure=np.ones((3, 3)), iterations=7)
+        lab, _ = ndimage.label(o); sz = np.bincount(lab.ravel()); sz[0] = 0; ys = np.nonzero(lab == sz.argmax())[0]
+        return ys.max() - ys.min()
+    ref = [np.asarray(Image.open(d / f'{who}-pose-{i}.webp').convert('RGBA'), np.float32) / 255 for i in (0, 3)]
+    CH, CW = ref[0].shape[:2]; base, cx0 = body(ref[0][..., 3])
+    if transparent(src):
+        a = np.asarray(Image.open(src).convert('RGBA'), np.float32) / 255
+        a[..., 3] *= a[..., 3] > 0.03
+        masks = regroup(SP.alpha_figures(a, 3, 2), a)
+    else:
+        a = TH.key(str(src), holes=True); masks = SP.grid_figures(a)
+    alphas = [a[..., 3] * ndimage.binary_dilation(mk, iterations=2) for mk in masks]
+    k = float(np.clip(stand(ref[1][..., 3]) / stand(alphas[0]), 0.8, 1.25))
+    frames = []
+    for al in alphas:
+        b = a.copy(); b[..., 3] = al; b = TH.AC.bleed(b)
+        ys, xs = np.nonzero(al > 0.02); y0, y1, x0, x1 = ys.min(), ys.max() + 1, xs.min(), xs.max() + 1
+        im = TH.to_img(b[y0:y1, x0:x1])
+        if abs(k - 1) > 0.005: im = im.resize((max(1, round(im.width * k)), max(1, round(im.height * k))), Image.LANCZOS)
+        p = np.asarray(im, np.float32) / 255; by, cx = body(p[..., 3])
+        canvas = Image.new('RGBA', (CW, CH))
+        # Centre line and baseline as sheet 1; a figure wider than the canvas (a long dash) is nudged in, never shrunk.
+        ox = int(round(cx0 - cx)); ox = max(min(ox, CW - im.width), 0) if im.width <= CW else (CW - im.width) // 2
+        canvas.paste(im, (ox, int(round(base - by))), im)
+        frames.append(canvas)
+    return frames, k
+
+
 def scan():
     keys = sorted(f.stem for f in (ART / 'keys/series').glob('*.webp')) if (ART / 'keys/series').exists() else []
     goods = sorted(f.stem for f in (ART / 'goods').glob('*.webp')) if (ART / 'goods').exists() else []
@@ -140,17 +188,24 @@ def scan():
         ports = {w.name: sorted(f.stem for f in w.glob('*.webp')) for w in sorted((d / 'portraits').glob('*/'))} if (d / 'portraits').exists() else {}
         ports = {k: v for k, v in ports.items() if v}
         if poses or ports: skins[d.name] = {'poses': poses, 'portraits': ports}
+        poses2 = sorted({f.name.split('-pose2-')[0] for f in d.glob('*-pose2-0.webp')
+                         if all((d / f'{f.name.split("-pose2-")[0]}-pose2-{i}.webp').exists() for i in range(6))})
+        if poses2 and d.name in skins: skins[d.name]['poses2'] = poses2  # D: a second pose sheet
         for k in ('onemore', 'entrance'):  # part 8 art, listed only when present
             got = sorted(f.name[:-len(f'-{k}.webp')] for f in d.glob(f'*-{k}.webp'))
             if got and d.name in skins: skins[d.name][k] = got
         if (d / 'weapon.webp').exists(): weapons.append(d.name)
     stems = lambda sub, cut='': sorted(f.stem[:len(f.stem) - len(cut)] if cut else f.stem for f in (ART / sub).glob(f'*{cut}.webp')) if (ART / sub).exists() else []
     own = {k: stems(k) for k in ('onemore', 'entrance')}
-    data = {'keys': keys, 'goods': goods, 'skins': skins, 'weapons': weapons, 'own': own, 'couples': stems('couples', '-showtime'), 'frames': stems('frames')}
+    P = ROOT / 'assets/femc/battle/art/poses'  # D: fighters' own second sheets (battle.js reads own.poses2)
+    own['poses2'] = sorted(f.name[:-len('-pose2-0.webp')] for f in P.glob('*-pose2-0.webp') if all((P / f.name.replace('-pose2-0', f'-pose2-{i}')).exists() for i in range(6)))
+    FXD = ROOT / 'assets/femc/battle/art/fx'  # Kat's theme effect sheets (tools/femc-fx.py), for the Wardrobe's Try it on
+    themes = sorted(f.stem[len('theme-'):] for f in FXD.glob('theme-*.webp'))
+    data = {'keys': keys, 'goods': goods, 'skins': skins, 'weapons': weapons, 'own': own, 'couples': stems('couples', '-showtime'), 'frames': stems('frames'), 'themes': themes}
     head = (ART / 'ready.js').read_text().split('window.FEMC_ART_READY')[0]
     (ART / 'ready.js').write_text(head + 'window.FEMC_ART_READY = ' + json.dumps(data) + ';\n')
     print('ready.js:', len(keys), 'keychains,', len(goods), 'goods,', len(skins), 'outfits,', len(weapons), 'weapons,',
-          sum(map(len, own.values())), 'own-look strips/cards,', len(data['couples']), 'showtimes,', len(data['frames']), 'frames')
+          sum(len(v) for k, v in own.items() if k != 'poses2'), 'own-look strips/cards,', len(own['poses2']), 'own sheet 2s,', len(data['couples']), 'showtimes,', len(data['frames']), 'frames')
 
 
 def look_who(skin):
@@ -207,6 +262,12 @@ def main(a):
         frames = [stray_top(f) for f in frames]
         for i, f in enumerate(frames): f.save(out / f'{who}-pose-{i}.webp', 'WEBP', quality=90, method=5)
         print(src.name, '->', skin, who, frames[0].size, 'idle', idle_h)
+    elif cmd == 'skin2':
+        src, skin = find(a[1]), a[2]; who = a[3] if len(a) > 3 else ('solar' if skin == 'own' else look_who(skin))
+        frames, k = sheet2(src, skin, who)
+        out = ROOT / 'assets/femc/battle/art/poses' if skin == 'own' else ART / 'skins' / skin
+        for i, f in enumerate(frames): f.save(out / f'{who}-pose2-{i}.webp', 'WEBP', quality=90, method=5)
+        print(src.name, '->', skin, who, 'sheet 2', frames[0].size, 'scale', round(k, 3))
     elif cmd == 'portraits':
         skin, who, folder = a[1], a[2], Path(a[3])
         out = ART / 'skins' / skin / 'portraits' / who; out.mkdir(parents=True, exist_ok=True)
