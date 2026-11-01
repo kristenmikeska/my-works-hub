@@ -1509,7 +1509,8 @@
     const secrets = s.spent[`${s.day}-evening`] ? [] : G.secretsDue(); // a hidden link's quiet option (My Melody)
     const opt = (id, label, sub, ok = true, cls = '') => `<button type="button" class="g-night ${cls}" data-n="${id}"${ok ? '' : ' disabled'}><b>${label}</b><small>${esc(sub)}</small></button>`;
     // Solar at the right edge on wide screens (solstice-hud.css hides her on phones).
-    const fig = `<div class="g-home-fig" aria-hidden="true"><i class="g-hf-slash"></i><img src="${G.base}assets/femc/profile/solar-poses/thinking.webp" alt=""></div>`;
+    const look = homeLook();
+    const fig = `<div class="g-home-fig${look ? ' look' : ''}" aria-hidden="true"${look ? ` data-look="${look.id}"` : ''}><i class="g-hf-slash"></i><img src="${look ? look.src(5) : `${G.base}assets/femc/profile/solar-poses/thinking.webp`}" alt=""></div>`;
     show(`${fig}<section class="g-dorm"><div class="g-map-head" data-ghost="Evening"><p class="g-kicker">Evening · Iwatodai Dorm</p><h1>Tonight</h1>
       <p class="g-map-sub">${info.moon.days != null && info.moon.days <= 3 && !info.moon.full ? `The moon is almost full. ${info.moon.days} day${info.moon.days === 1 ? '' : 's'} to go.` : esc(G.crushLine('evening.sub') || 'The lounge smells like instant ramen. What now?')}</p></div>
       <div class="g-nights">
@@ -1534,12 +1535,25 @@
   const HOME_POSES = ['thinking', 'wave', 'peace', 'hair', 'arms-crossed', 'shy'];
   const HOME_REACT = [[/^tartarus$/, 'arms-crossed'], [/^rest$/, 'shy'], [/^(study|read)$/, 'thinking'], [/^(link|trace|secret):/, 'wave'],
     [/^out$/, 'peace'], [/^job:/, 'peace'], [/^(desk|dorm:)/, 'hair']];
+  /* Her look on the evening screen (2026-11-01): the outfit she wears in the Wardrobe (while "Outfits in scene portraits" is
+     on), else the season's (Dec–Feb the Winter Coat, Jul–Aug Summer Session), else the usual poses. Outfit art is the
+     battle pose sheet: 5 (standing) and 4 while the list scrolls, 0 (her stance) on Tartarus. */
+  const HOME_SEASON = { 12: 'sk-wintercoat', 1: 'sk-wintercoat', 2: 'sk-wintercoat', 7: 'sk-summersession', 8: 'sk-summersession' };
+  function homeLook() {
+    const C = window.FemcCosmetics;
+    if (!C || C.cs().portraits === false) return null;
+    const worn = C.onIn('skin:solar'), x = worn || C.byId(HOME_SEASON[G.dayInfo().date.getMonth() + 1]);
+    if (!x || !C.ready(x)) return null;
+    return { id: x.id, src: k => `${G.base}assets/femc/game/art/skins/${x.id}/solar-pose-${k}.webp?v=2` };
+  }
   function homeFig() {
     const fig = main.querySelector('.g-home-fig'), img = fig?.querySelector('img');
     if (!img) return;
-    const src = p => `${G.base}assets/femc/profile/solar-poses/${p}.webp`;
-    HOME_POSES.forEach(p => { const i = new Image(); i.src = src(p); });
-    let pose = 'thinking', hover = null, lastY = main.scrollTop, lean = 0, raf = 0;
+    const lk = fig.dataset.look ? homeLook() : null;
+    const POSES = lk ? ['5', '4'] : HOME_POSES, REACT = lk ? [[/^tartarus$/, '0']] : HOME_REACT;
+    const src = p => (lk ? lk.src(p) : `${G.base}assets/femc/profile/solar-poses/${p}.webp`);
+    POSES.forEach(p => { const i = new Image(); i.src = src(p); });
+    let pose = POSES[0], hover = null, lastY = main.scrollTop, lean = 0, raf = 0;
     const set = p => {
       if (!p || p === pose) return;
       pose = p; img.src = src(p);
@@ -1548,8 +1562,8 @@
     };
     const byScroll = () => {
       const max = Math.max(1, main.scrollHeight - main.clientHeight);
-      const step = Math.min(HOME_POSES.length - 1, Math.floor((main.scrollTop / max) * HOME_POSES.length * .999));
-      return main.scrollHeight - main.clientHeight < 40 ? 'thinking' : HOME_POSES[Math.max(0, step)];
+      const step = Math.min(POSES.length - 1, Math.floor((main.scrollTop / max) * POSES.length * .999));
+      return main.scrollHeight - main.clientHeight < 40 ? POSES[0] : POSES[Math.max(0, step)];
     };
     const tick = () => { raf = 0; lean *= .82; fig.style.setProperty('--lean', lean.toFixed(2)); if (Math.abs(lean) > .05) raf = requestAnimationFrame(tick); };
     main.addEventListener('scroll', () => {
@@ -1558,7 +1572,7 @@
       if (!reduced.matches) { lean = Math.max(-6, Math.min(6, lean + dy * .08)); if (!raf) raf = requestAnimationFrame(tick); }
       if (!hover) set(byScroll());
     }, { passive: true });
-    const react = b => { const m = HOME_REACT.find(([re]) => re.test(b.dataset.n)); hover = m ? m[1] : null; set(hover || byScroll()); };
+    const react = b => { const m = REACT.find(([re]) => re.test(b.dataset.n)); hover = m ? m[1] : null; set(hover || byScroll()); };
     main.querySelectorAll('.g-dorm [data-n]').forEach(b => {
       b.addEventListener('pointerenter', () => react(b)); b.addEventListener('focus', () => react(b));
       const off = () => { hover = null; set(byScroll()); };

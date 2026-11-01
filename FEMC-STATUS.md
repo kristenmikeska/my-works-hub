@@ -90,6 +90,7 @@ Other docs, if you ever want detail:
 - ✅ **Contacts:** a card on the phone for everyone you've met: their arcana and rank, where to find them, a birthday or favourites once you've learned them, gifts (a ? until you know), and a line about them for every two ranks
 - ✅ **Plans by text:** on ordinary days people you're close to sometimes text in the morning to ask if you're free later (yes books it, with a small bonus; leave a few on read and someone gets a little sad), and six more late-night phone calls
 - ✅ **The ride in:** some school mornings the monorail is a small choice: study, music, a nap, or sitting with a friend
+- ✅ **Seasonal look:** Solar wears her winter coat on the evening screen in winter and her summer look in summer, or whatever you've dressed her in
 
 ## Battle and building
 - ✅ One merged game (battles inside the story, one save, one menu)

@@ -58,3 +58,8 @@
 .g-cm-opt:disabled:not(.on) { opacity: .4; }
 .g-cm-r { margin: 2px 0 0; padding: 8px 12px; border-left: 3px solid #ff4f9e; background: rgba(20, 7, 15, .55); color: #fff; line-height: 1.45; }
 .g-cm-r b { color: #ff8cc0; white-space: nowrap; }
+
+/* ── The evening figure in an outfit (battle pose frames, wider than the home poses) ── */
+@media (min-width: 1100px) and (min-aspect-ratio: 13/10) {
+  .g-home-fig.look { top: 12vh; height: 132vh; right: clamp(-420px, -24vw, -120px); }
+}
