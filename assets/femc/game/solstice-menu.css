@@ -182,3 +182,6 @@
 }
 /* On phones the list crosses Solar: dim her a little so the words stay readable */
 @media (max-width: 700px), (max-aspect-ratio: 13/10) { .g-fmh-fig img:not(.sil) { filter: drop-shadow(10px 4px 0 var(--pink)) brightness(.72) saturate(.9); } }
+/* Toasts (ui.js .g-toasts, top right) start under the date box while the menu screen is open, so they never cover it
+   (checked at 1440×900, 1000×486 and 390×844; with the menu closed solstice-hud.css keeps them under the HUD's date). */
+body:has(.g-fm-ov.is-home) .g-toasts { top: calc(clamp(30px, 6vh, 56px) + clamp(84px, 9vw, 112px)); }
