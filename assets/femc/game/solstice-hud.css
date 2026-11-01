@@ -139,6 +139,11 @@
 
 /* ── The epilogue worlds' Where-to list: the same cards (their colours were gold and blue) ── */
 .g-epi-acts { gap: 14px 22px; padding: 4px 12px 8px 4px; }
+/* Kat, Nov 1: with many people out the box ran off the top with no way to scroll. Wider (four cards a row on wide screens),
+   and the box scrolls inside the screen so the kicker and Stay In always show. */
+.g-epi-out { width: min(1280px, 100%); }
+.g-epi-out .g-seg-box { max-height: calc(100vh - 250px); max-height: calc(100dvh - 250px); overflow-y: auto; overscroll-behavior: contain;
+  scrollbar-width: thin; scrollbar-color: var(--pink) transparent; }
 .g-epi-act:not(.g-glx-station) { min-height: 72px; padding: 10px 20px 10px 18px; }
 .g-epi-act:not(.g-glx-station) b { font-size: clamp(19px, 1.7vw, 23px); }
 .g-epi-bond::after { border-left-color: var(--paper) !important; }
