@@ -57,23 +57,9 @@ For each: convert to `assets/femc/cg/<slug>.webp`; add `{ cg: '<slug>' }` / `{ c
 
 - *(All six strangers CGs are in: the café, Bureom, the pins, room six, the dumplings, dinner; art batch 85, in `ALBUM.strangers` in date order (the pins after the moon). The pins hangout's window line now has old snow in place of the dust, to match the art.)*
 
-#### Planned CGs (section 11, 2026-10-31: prompts only, nothing in code yet)
+#### Planned CGs (section 11, 2026-10-31: prompts only until each art arrives)
 Wire each only once Kat has made it. Convert to `assets/femc/cg/<slug>.webp`, insert `{ cg: '<slug>' },` as its own scene line right after the anchor line below (quoted by its opening words; find with grep), add `{ cg: null },` where the scene moves on mid-place, add a `cgFocus` entry in `data/places.js`, bump `?v=`. Epilogue ones also go in `ALBUM[world]` in `epilogue.js` (+ `DATA_V` bump, see "The epilogue" above). Where the anchor sits inside a choice or branch, the CG goes in only the branches named.
-- `story-magician-roof` (11A): `data/story-act1.js` a1-magician, after "The green held for another forty minutes." (before `{ dark: false }`).
-- `story-cherry-karaoke` (11B): `data/story-act4.js` a4-cherry, in two of the three choices: after "Cherry stared at her. Then she burst into tears" (choice "Say something mean? To you?") and after "She didn't decide to. Her arms just went." (choice "(Hug her.)"). Not in "I'm sorry. I don't remember you." Clear at `{ dark: false }`.
-- `story-ferry-yunjin` (11C): `data/story-act4.js` a4-ferry, after "Then she stopped. She sat on the deck with her hair plastered"; clear before the strangers flashback ("And in that quiet, with the deck rocking").
-- `story-seagull-piano` (11D): `data/story-act4.js` a4-mark, after "He turned round. His face did something complicated."; clear at `{ dark: false }`. (Mark's rank 1 replays this meeting when the crossing never played: optional second insert there.)
-- `story-twelve-gate` (11E): `data/story-runners-arrivals.js` a4-twelve, after "Then he did. It came back up over him like a stage light" (the bow); clear at `{ dark: false }`.
-- `story-three-cans` (11F): `data/story-act5.js` a5-call-runners, after "They opened them. They drank them in the cold"; cleared by the 3F Hallway `{ place }`.
-- `link-haechan-r10` (11G): `links/haechan.js` rank 10, after "He handed her one side of the headphones."
-- `link-jungwon-r10` (11H): `links/jungwon.js` rank 10, after "She took the pin out of her pocket."
-- `link-jihoon-r15` (11I): `links/jihoon.js` rank 15, after "When it was done it was nearly as long as the steps".
-- `link-hanni-r15` (11J): `links/hanni.js` rank 15, after "The last page was a list."
-- `link-haechan-r9` (11K): `links/haechan.js` rank 9, after "He was on the roof. He'd been there since dinner."
-- `crush-haechan-umbrella` (11L): `data/crush-haechan.js` cr-hc-gate-umbrella, only in the last (default) branch, after "She went down the steps and across the road with Maki saying". Not in the Akihiko-dating or meeting-someone branches.
-- `crush-jungwon-blazer` (11M): `data/crush-jungwon.js` cr-jw-blazer, after "He looked at her. Then he looked at the poster."
-- `crush-jihoon-fountain` (11N): `data/crush-jihoon-minji.js` cr-jh-fountain, after the opening "The mall had put its winter lights up early" (before the dating/faded branches).
-- `epi-r-breakfast` (11O): `data/epi/runners/story-w3.js` epi-r-kitchen, after "Jaehyun put a plate in front of her."; clear before "Mark had a mug in his hand" (or at the Back Porch `{ place }`). Album: `ALBUM.runners`.
+- *(Art batch 108: 11A–11O are in (`story-magician-roof`, `story-cherry-karaoke`, `story-ferry-yunjin`, `story-seagull-piano`, `story-twelve-gate`, `story-three-cans`, `link-haechan-r10`, `link-jungwon-r10`, `link-jihoon-r15`, `link-hanni-r15`, `link-haechan-r9`, `crush-haechan-umbrella`, `crush-jungwon-blazer`, `crush-jihoon-fountain`, `epi-r-breakfast`; WebP q86 at full size, cgFocus each, `epi-r-breakfast` in `ALBUM.runners` after His room; placements in `tools/femc-new-adds.json`). Where the anchor was the last line before a clear (the magician roof, the ferry, Cherry's hug), the `{ cg }` goes just before the anchor instead, or it would never be on screen with a line. Clears added at a natural break (before the choice / branch) for the link and crush ones; `crush-jihoon-fountain` runs to the scene's end. Mark's optional rank-1 replay of the seagull CG is not done.)*
 - `epi-s-seventh-stair` (11P): `data/epi/strangers/story-w1.js` epi-s-home, after "He didn't come up. She came down, one stair, two". Album: `ALBUM.strangers`.
 - `epi-s-step` (11Q): `data/epi/strangers/story-w1.js` epi-s-step, after "Jungwon was standing by the bare persimmon tree" (before her choice). Album: `ALBUM.strangers`.
 - `epi-h-window` (11R): `data/epi/hoax/story-w3.js` epi-h-window, after "They both froze. Solar had both hands over her mouth."; clear at "Afterwards they sat on the low wall". Album: `ALBUM.hoax`.

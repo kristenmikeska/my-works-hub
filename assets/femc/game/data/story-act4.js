@@ -1485,12 +1485,15 @@
         { n: "Solar looked at her. At the eyeliner, which was, if she was honest, extremely good, and a little uneven on the left." },
         { s: 'solar', f: 'neutral', t: "...Your left wing is lower than your right." },
         { n: "Cherry stared at her. Then she burst into tears, all at once, loud, hideous, in the middle of the green hall of a karaoke bar full of coffins holding microphones, and grabbed Solar and held on." },
+        { cg: 'story-cherry-karaoke' },
         { s: 'cherry', f: 'sad', t: "Thank you. Thank you. You BITCH. Thank you." }
       ] },
       { t: "(Hug her.)", then: [
+        { cg: 'story-cherry-karaoke' },
         { n: "She didn't decide to. Her arms just went. Cherry went stiff as a board, outraged, for about two seconds, and then she was holding on so hard it hurt, with her face in Solar's shoulder, saying something muffled and furious that Solar was fairly sure was a list of everything she'd done wrong since kindergarten." }
       ] }
     ] },
+    { cg: null },
     { dark: false },
     { n: "The hour ended. Every coffin in every booth became a person with a microphone and went straight back into the chorus of whatever they'd been singing at midnight, all at once, forty different songs in forty different keys, and Cherry stood in the middle of it with mascara all down her face and said, very calmly, that this was the worst place she had ever been, and asked where the food was." },
     { s: 'cherry', f: 'neutral', t: "Is Sunghoon here?" },
@@ -1518,9 +1521,11 @@
     { n: "Hands. On her collar, on her arm. Somebody who couldn't swim much better than she could, by the feel of it, kicking furiously, swearing in two languages into the black water, and hauling. Hauling her up by the coat, by the hair, by anything, and Solar's face broke the surface and she was choking and the somebody had an arm around her chest from behind and was shouting in her ear." },
     { s: 'yunjin', f: 'serious', t: "I'VE GOT YOU. I've got you, I've got you, don't fight me, babe, DON'T FIGHT ME, I'm in Prada, we are BOTH going to die if you fight me." },
     { n: "Yunjin. Yunjin, who had no Persona, and no Evoker, and no training, who had gone over the rail of a ferry in a tower full of monsters into black water without a second's thought. She didn't stop talking the whole time. She talked them both to the side of the ship and she talked while Akihiko and Jihoon hauled them up by the arms and she talked while Solar lay on the wet deck on her side coughing up the sea, and she didn't stop talking until Solar reached out, blind, and found her hand, and held it." },
+    { cg: 'story-ferry-yunjin' },
     { n: "Then she stopped. She sat on the deck with her hair plastered to her face and her mascara all down her cheeks and held Solar's hand in both of hers and didn't say anything at all." },
     { music: 'night' },
     { music: 'world-strangers' },
+    { cg: null },
     { n: "And in that quiet, with the deck rocking and the diesel smell and the cold, for a second it was another ferry. Another night. A low concrete terminal painted a blue that had faded nearly to gray, a timetable board, a white ferry idling at the bottom of a concrete ramp, the last one of the night. And a photograph of that ramp, taken from behind: a woman in a camel coat with her hair up, very straight, like a teacher, standing at the top of it with a small handbag on her arm. Solar had never been on that boat. She'd only ever stood at the far end of the car park and watched it idle, and never once in her life wanted to be on it." },
     { fragment: 'strangers-ferry' },
     { choose: [
@@ -1555,6 +1560,7 @@
     { s: 'mark', f: 'surprised', t: "Wait. Do that again, that's..." },
     { music: 'world-runners' },
     { n: "He turned round. His face did something complicated. A double take, the real kind, eyes on her and away and back again, like his brain had sent the picture twice to be sure." },
+    { cg: 'story-seagull-piano' },
     { s: 'mark', f: 'surprised', t: "Sol?" },
     { n: "And then, as she watched, he did what nobody else had done. He didn't wait for her to recognize him. He didn't look for it in her face. He just knew who she was, entirely, all at once, the way he'd known it once on a first day somewhere, before she'd said her name. And he smiled, warm and easy, like she'd walked into a room he'd been keeping a seat in." },
     { s: 'mark', f: 'flustered', t: "Hey. Hi. It's you. Oh, man. It's really you." },
@@ -1575,6 +1581,7 @@
         { s: 'mark', f: 'flustered', t: "We used to do this, sort of. Sit somewhere and not talk about stuff. You're good at it." }
       ] }
     ] },
+    { cg: null },
     { dark: false },
     { n: "The hour ended. The concourse came back all at once, announcements and footsteps and the bakery's last bread, and a little girl with a balloon stopped to stare at the two of them at the piano, and Mark played her a bit of something silly with one hand until she laughed and was pulled away." },
     { n: "He was warm. He was easy to be next to. He asked her nothing she couldn't answer and he laughed at the right times and he walked her to the monorail and said he'd find the others, he knew they were here, Hanni had texted him, and he'd see her soon, and his hand touched her elbow once at the gate, light, like a period at the end of a sentence." },

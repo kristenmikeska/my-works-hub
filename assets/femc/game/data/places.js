@@ -387,7 +387,10 @@ window.FEMC_GAME_PLACES = {
     'link-hyein-r15': '38% 30%', 'link-jay-r10': '50% 35%', 'link-niki-r10': '45% 35%', 'link-sunghoon-r10': '40% 35%',
     'story-obon-lanterns': '30% 40%', 'story-first-snow-roof': '50% 35%', 'romance-haechan-roof-snow': '35% 30%', 'romance-akihiko-snow-morning': '55% 40%',
     'link-ken-r10': '55% 35%', 'story-new-years-eve-platform': '32% 50%',
-    'link-kat-r10': '58% 45%', 'link-shinjiro-r10': '76% 35%', 'holiday-aigis-sunset': '22% 30%'
+    'link-kat-r10': '58% 45%', 'link-shinjiro-r10': '76% 35%', 'holiday-aigis-sunset': '22% 30%',
+    'story-magician-roof': '43% 30%', 'story-cherry-karaoke': '27% 30%', 'story-ferry-yunjin': '43% 40%', 'story-seagull-piano': '57% 40%', 'story-twelve-gate': '64% 20%', 'story-three-cans': '43% 25%',
+    'link-haechan-r10': '46% 30%', 'link-jungwon-r10': '46% 30%', 'link-jihoon-r15': '43% 40%', 'link-hanni-r15': '46% 40%', 'link-haechan-r9': '41% 35%',
+    'crush-haechan-umbrella': '15% 30%', 'crush-jungwon-blazer': '43% 25%', 'crush-jihoon-fountain': '47% 30%', 'epi-r-breakfast': '45% 40%'
   },
   /* Music (assets/femc/music/<file>.mp3) by mood. Scenes pick a mood; screens use the `screens` map.
      A mood is one file (it loops) or a pool (a list): a pool rotates, never plays the same file twice in a row, and each

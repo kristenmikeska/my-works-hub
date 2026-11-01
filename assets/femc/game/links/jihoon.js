@@ -1156,6 +1156,7 @@
         ] }
       ] },
       { n: "When it was done it was nearly as long as the steps, red string and little squares turning in the breeze, and he held one end and she held the other, and for a second neither of them said anything about where it was going." },
+      { cg: 'link-jihoon-r15' },
       { ifHeading: 'H', then: [
         { s: 'jihoon', f: 'neutral', t: "It goes home. In the gift bag. On your desk. You tie it on the end of the old one, and it goes all the way round your room, twice, and then you've got the whole thing, start to now, no holes." },
         { s: 'jihoon', f: 'serious', t: "And then I'm taking a new one, the first morning. Whatever morning it turns out to be. Exams or no exams. Row three. You looking like a ghost because you didn't eat breakfast, and Yang will have told you to eat breakfast. He'll have it in writing." },
@@ -1224,6 +1225,7 @@
           ] }
         ] }
       ] }] }] },
+      { cg: null },
       { n: "The ice cream had gone soft all the way through. He held the tub out to her, spoon first, the way he had on the step in January, and she took a spoonful, and it was cookies and cream and it was melting, the ordinary way, down the side of the spoon and onto her fingers." },
       { s: 'jihoon', f: 'neutral', t: "X reason. You never told me. In January. What size." },
       { s: 'jihoon', f: 'neutral', t: "I bought family size. Just so you know. Family size. I didn't ask. I just knew." },

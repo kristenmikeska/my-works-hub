@@ -20534,6 +20534,336 @@
         "assets/femc/battle/art/sun/late/duets-5.webp",
         "assets/femc/battle/art/sun/late/duets-6.webp"
       ]
+    },
+    {
+      "batch": 108,
+      "source": "story-magician-roof.png",
+      "sourceNow": "New Adds/story-magician-roof.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "025a1ef3e63ab0e929796ded96dbd4f9feffde2056dc086c53de1ae75f82133a",
+      "status": "integrated",
+      "destination": "assets/femc/cg/story-magician-roof.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "data/story-act1.js a1-magician: { cg } just before 'The green held for another forty minutes.' (the anchor is the scene's last line before { dark: false }, so after it the CG would never be on screen); runs to the scene's end; cgFocus in data/places.js",
+      "mobileFocus": "43% 30%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/story-magician-roof.webp",
+          "sha256": "5c6023ee9044128cfc00cba6a53cdabb28e36a8ab6d678a14ef139a3185a258d"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 108,
+      "source": "story-cherry-karaoke.png",
+      "sourceNow": "New Adds/story-cherry-karaoke.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "3e2062a19b27a393ed2c8ca93a8db2c7a1d806af6b4b75964bbb032f94724ebe",
+      "status": "integrated",
+      "destination": "assets/femc/cg/story-cherry-karaoke.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "data/story-act4.js a4-cherry: choice 'Say something mean? To you?' { cg } after 'Cherry stared at her. Then she burst into tears'; choice '(Hug her.)' { cg } just before 'She didn't decide to. Her arms just went.' (the branch's only line); not in 'I'm sorry. I don't remember you.'; { cg: null } before { dark: false }; cgFocus in data/places.js",
+      "mobileFocus": "27% 30%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/story-cherry-karaoke.webp",
+          "sha256": "9489e827c734a155221f0458b73eb91f9760d16bf09f450b1bf9e2ca29a7494d"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 108,
+      "source": "story-ferry-yunjin.png",
+      "sourceNow": "New Adds/story-ferry-yunjin.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "8a77a2b9e86f7806c34e9316ce71705bffa47bdda3312f007c7590d8530e17ae",
+      "status": "integrated",
+      "destination": "assets/femc/cg/story-ferry-yunjin.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "data/story-act4.js a4-ferry: { cg } just before 'Then she stopped. She sat on the deck with her hair plastered' (only music lines follow it before the clear); { cg: null } before the strangers flashback ('And in that quiet, with the deck rocking'); cgFocus in data/places.js",
+      "mobileFocus": "43% 40%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/story-ferry-yunjin.webp",
+          "sha256": "6c7a113ed0417f80b3a6aa5a8ca24ffef21e1ab404434eba04d38468a0d51ba5"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 108,
+      "source": "story-seagull-piano.png",
+      "sourceNow": "New Adds/story-seagull-piano.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "ac84aa98244eee21665c2824e9907138468bc4d1d4992cc45cafee6f8f52f134",
+      "status": "integrated",
+      "destination": "assets/femc/cg/story-seagull-piano.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "data/story-act4.js a4-mark: { cg } after 'He turned round. His face did something complicated.'; { cg: null } before { dark: false } (Mark's rank-1 replay insert not done); cgFocus in data/places.js",
+      "mobileFocus": "57% 40%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/story-seagull-piano.webp",
+          "sha256": "5df419f5df14216c7dc77136ca7daa36010784e7e57dabbfe6a3b424087ffde9"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 108,
+      "source": "story-twelve-gate.png",
+      "sourceNow": "New Adds/story-twelve-gate.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "8c8431530dcee8e0e05a3fad1aebdb28c99dc6c38c17d5fc163bbc3f2a509e6e",
+      "status": "integrated",
+      "destination": "assets/femc/cg/story-twelve-gate.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "data/story-runners-arrivals.js a4-twelve: { cg } after the bow ('Then he did. It came back up over him like a stage light'); { cg: null } before { dark: false }; cgFocus in data/places.js",
+      "mobileFocus": "64% 20%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/story-twelve-gate.webp",
+          "sha256": "0d8bba6c746fdd2782e5881aaa899b8088d96a7e4cd5982fd39f4b4d02897f41"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 108,
+      "source": "story-three-cans.png",
+      "sourceNow": "New Adds/story-three-cans.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e021806122675dd639876f9bc295427e9e9471e4bf82c07b8c0104b6b0d772b1",
+      "status": "integrated",
+      "destination": "assets/femc/cg/story-three-cans.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "data/story-act5.js a5-call-runners: { cg } after 'They opened them. They drank them in the cold'; cleared by the 3F Hallway { place }; cgFocus in data/places.js",
+      "mobileFocus": "43% 25%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/story-three-cans.webp",
+          "sha256": "72aab30b62abf00c90d013dfdfae7d35108c29a6ecfb48f58e760764a49bfc88"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 108,
+      "source": "link-haechan-r10.png",
+      "sourceNow": "New Adds/link-haechan-r10.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "0c2f2a0f4e9d2a4b444bcecb7949298fad19b342623b5b057798771214abcb90",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-haechan-r10.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "links/haechan.js rank 10 ('10: the universe'): { cg } after 'He handed her one side of the headphones.', { cg: null } before the choice; cgFocus in data/places.js",
+      "mobileFocus": "46% 30%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/link-haechan-r10.webp",
+          "sha256": "f909a140348a21717f8266c0690878db8b813bd59142a5a536cfc26b30a07408"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 108,
+      "source": "link-jungwon-r10.png",
+      "sourceNow": "New Adds/link-jungwon-r10.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "2821cc112f632161c44fc50417336b0ba4ec1be8b3c29f434d2adf1ef250672f",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-jungwon-r10.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "links/jungwon.js rank 10 ('10: you look like you'): { cg } after 'She took the pin out of her pocket.', { cg: null } before the choice; cgFocus in data/places.js",
+      "mobileFocus": "46% 30%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/link-jungwon-r10.webp",
+          "sha256": "02fc1d36fe77b98b6752f4f1061c64217c8b4c0dbe002a0128065669f64e8b86"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 108,
+      "source": "link-jihoon-r15.png",
+      "sourceNow": "New Adds/link-jihoon-r15.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "d1361b634e8f6ed9f0dfdffd72a9a5af2d611e14dbfe0f6cf296c23ccd92ab5f",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-jihoon-r15.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "links/jihoon.js rank 15: { cg } after 'When it was done it was nearly as long as the steps', { cg: null } after the heading branches (before 'The ice cream had gone soft'); cgFocus in data/places.js",
+      "mobileFocus": "43% 40%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/link-jihoon-r15.webp",
+          "sha256": "e4e2cb8dc95740b450e5a1795bcbe1d182d93c0f473741348e9ca1a6b727eb13"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 108,
+      "source": "link-hanni-r15.png",
+      "sourceNow": "New Adds/link-hanni-r15.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "0242d52a3f3748d97aaaf5d01be18d4204db49c8c5992c9a04459388f68c9e55",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-hanni-r15.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "links/hanni.js rank 15: { cg } after 'The last page was a list.', { cg: null } before the heading branch; cgFocus in data/places.js",
+      "mobileFocus": "46% 40%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/link-hanni-r15.webp",
+          "sha256": "bf7df210f1cc19d999b0ed1156b70c423992fc3dbb60a48a88722de0c2ad42f0"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 108,
+      "source": "link-haechan-r9.png",
+      "sourceNow": "New Adds/link-haechan-r9.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "c8012e3d6cf1641d9c278002e0ba513fd1d675cae2d2c09c2d1f39c5435603db",
+      "status": "integrated",
+      "destination": "assets/femc/cg/link-haechan-r9.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "links/haechan.js rank 9 ('9: one place'): { cg } after 'He was on the roof. He'd been there since dinner.', { cg: null } before the route-R branch; cgFocus in data/places.js",
+      "mobileFocus": "41% 35%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/link-haechan-r9.webp",
+          "sha256": "46562996d3667540bcdff25eb81215e367ad1fc35aae1a65ab7d2c02c3b2f7eb"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 108,
+      "source": "crush-haechan-umbrella.png",
+      "sourceNow": "New Adds/crush-haechan-umbrella.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "04ba0ffb6725e2deaaf033f57f71d9ccced110fa6da21add79016681ce930884",
+      "status": "integrated",
+      "destination": "assets/femc/cg/crush-haechan-umbrella.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "data/crush-haechan.js cr-hc-gate-umbrella: only the default (free) branch of torn(): { cg } after 'She went down the steps and across the road with Maki saying', { cg: null } before Maki at the gate; not in the Akihiko-dating or meeting-someone branches; cgFocus in data/places.js",
+      "mobileFocus": "15% 30%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/crush-haechan-umbrella.webp",
+          "sha256": "07b88044265bab01641e919fed341aa2674eeac86579ba762d69e40e846d495a"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 108,
+      "source": "crush-jungwon-blazer.png",
+      "sourceNow": "New Adds/crush-jungwon-blazer.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "26f6460f78cfc66c9dae8e6087fdd29694fce9748cb27b5cf415054709aeec78",
+      "status": "integrated",
+      "destination": "assets/femc/cg/crush-jungwon-blazer.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "data/crush-jungwon.js cr-jw-blazer: { cg } after 'He looked at her. Then he looked at the poster.', { cg: null } before the choice; cgFocus in data/places.js",
+      "mobileFocus": "43% 25%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/crush-jungwon-blazer.webp",
+          "sha256": "c414d66873c05dc8faf60806a5b9388f677d0912b1dab267f0ff925ef505f33b"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 108,
+      "source": "crush-jihoon-fountain.png",
+      "sourceNow": "New Adds/crush-jihoon-fountain.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "f6ad878d18378e38efa692d525048b92854822d75c838fe2bf811a21c765acd8",
+      "status": "integrated",
+      "destination": "assets/femc/cg/crush-jihoon-fountain.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "data/crush-jihoon-minji.js cr-jh-fountain: { cg } after the opening 'The mall had put its winter lights up early' (before the dating/faded branches); runs to the scene's end; cgFocus in data/places.js",
+      "mobileFocus": "47% 30%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/crush-jihoon-fountain.webp",
+          "sha256": "8830cdd1d11366a6023fe73deca04341f13364411bc75d9d375d43333ed341d0"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 108,
+      "source": "epi-r-breakfast.png",
+      "sourceNow": "New Adds/epi-r-breakfast.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "71b916cce9293d3c4ee1a4e0327f7e1ec3fc0c12f539573c8bd7254f10e2d6f3",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-r-breakfast.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "data/epi/runners/story-w3.js epi-r-kitchen: { cg } after 'Jaehyun put a plate in front of her.', { cg: null } before 'Mark had a mug in his hand'; ALBUM.runners after His room (epilogue.js, DATA_V 51); cgFocus in data/places.js",
+      "mobileFocus": "45% 40%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/epi-r-breakfast.webp",
+          "sha256": "312c49f157efa218af0cf2bbfc970b4ec6163e54d17b4e51b22d3b4c4a6578b4"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
     }
   ],
   "batch1Validation": {

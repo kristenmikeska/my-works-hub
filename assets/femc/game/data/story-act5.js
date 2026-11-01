@@ -574,6 +574,7 @@ window.FEMC_STORY_KIT.badEnding = [
     { s: 'hyein', f: 'neutral', t: "Don't ask. I don't know. I went to the machine at the station for water and these were in it. Three of them. Bottom row. Nobody in this whole country sells these yet, I checked, I asked the guy at the convenience store and he looked at me like I'd asked for a unicorn." },
     { s: 'hanni', f: 'neutral', t: "I think the station wanted us to have them. I think the station's on our side." },
     { n: "They opened them. They drank them in the cold, the three of them, leaning on the railing, too sweet and too fizzy and much too much caffeine for eleven at night, and Hyein made a face, and Hanni laughed at the face, and for about five minutes it was easy. It was the easiest five minutes Solar had had in a month." },
+    { cg: 'story-three-cans' },
     { n: "Then Hanni put her can down on the railing very carefully, lined up with the others." },
     { music: 'world-runners' },
     { s: 'hanni', f: 'neutral', t: "Sol. We need to say something. And we need you to just let us say it. Don't fix it. Don't say you're fine." },

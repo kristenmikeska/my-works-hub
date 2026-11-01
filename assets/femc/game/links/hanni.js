@@ -1348,8 +1348,10 @@
         ] }
       ] },
       { n: "The last page was a list. Of course it was. Hanni's whole year was lists. At the top, in round careful letters, *Solar Lee,* and then it went down, line by line, all the way to the bottom and over onto the back, in blue and then black and then a pink gel pen that had clearly been Hyein's." },
+      { cg: 'link-hanni-r15' },
       { n: "*Iced coffee. Straw in the paper. Sparkling water mornings, refresher nights. Never coffee after dark.* *Her jaw goes tight when she's upset and she smiles.* *Walks on the street side.* *Brings you a drink halfway through.* *Hates the strings.* *Laughs one beat after everyone else, to check she's allowed.* *Picked sweet peas.* And further down, in a different pen, a different month: *Stood in front of all of us for a year and never once said so.* And at the very bottom, in the pink gel, small, *I'm so proud of her I could die. Don't tell her. — H.*" },
       { s: 'hanni', f: 'flustered', t: "Hyein wrote the last one. She stole the notebook. I let her." },
+      { cg: null },
       { ifHeading: 'R', then: [
         { s: 'hanni', f: 'happy', t: "I'm keeping it. Is that okay? I'm keeping the notebook. At home, when you're being *fine* at me, I'm going to open it to this page and read it out loud at the counter until you stop." },
         { s: 'hanni', f: 'neutral', t: "And when you're a mess and you can't remember a single good thing about yourself, I'll read it then, too. Quietly. You won't have to say anything." },

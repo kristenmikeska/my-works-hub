@@ -398,6 +398,7 @@
         { n: "He stood up, and took off his blazer, the navy one with the crest that wasn't anyone's here, and held it out to her without looking at her, the way he did things that cost him something." },
         { n: "It came down to her knuckles. It smelled of almost nothing, of pressed cotton and the terrible council-room tea, as though he'd been careful not to leave anything of himself in it, and it was very warm, and on the cabinet above her, propped where Mitsuru had left it in October, was the poster. VOTE SOLAR KIM. Glitter and a yellow sun and her own practiced smile, looking down at her sitting there in his school's crest." },
         { n: "He looked at her. Then he looked at the poster. Then at her again, and something happened to his face that she'd never seen happen to it, something with no courtesy in it at all, and he stood up so fast his chair scraped." },
+        { cg: 'crush-jungwon-blazer' },
         { s: 'jungwon', f: 'flustered', t: "Excuse me. I need to see to the kettle." },
         { n: "The kettle was on the table in front of him. He saw to it anyway, with great care, and then sat down and opened the minutes book and uncapped the red pen, because when he didn't know what to do with his hands he took minutes." },
         { s: 'jungwon', f: 'neutral', t: "Item four. The vice president is cold." },
@@ -405,6 +406,7 @@
         { s: 'jungwon', f: 'neutral', t: "No." },
         { n: "He crossed it out. Neatly, one line, so it could still be read." },
         { s: 'jungwon', f: 'neutral', t: "Item four. A guest is cold." },
+        { cg: null },
         { choose: [
           { t: "(Say his name. The short one. You don't know where you got it.)", crush: WARM(2), then: [
             { s: 'solar', f: 'neutral', t: "Won." },

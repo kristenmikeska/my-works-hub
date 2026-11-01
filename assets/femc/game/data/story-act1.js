@@ -68,6 +68,7 @@
     { n: "Mitsuru came up behind him, a little out of breath, which Solar suspected was rare. She looked at the railing, and the ash, and Yukari's white face, and Solar's steady hand, for a long time, and filed every bit of it." },
     { s: 'mitsuru', f: 'neutral', t: "Tomorrow, after school. The fourth floor. The Chairman would like to speak with you." },
     { s: 'mitsuru', f: 'neutral', t: "So would I." },
+    { cg: 'story-magician-roof' },
     { n: "The green held for another forty minutes. They spent it on the roof, the four of them, not talking much, Akihiko with a folded towel pressed to his head and Yukari with her knees pulled up, until the light drained out of the sky and the streetlights came back on, orange and ordinary, one by one, all the way down to the water." },
     { dark: false }
   ] },

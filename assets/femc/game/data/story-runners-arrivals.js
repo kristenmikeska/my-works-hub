@@ -178,6 +178,7 @@
     { s: 'chenle', f: 'serious', t: "Jaemin. Look at her." },
     { n: "Jaemin looked at her. Properly, for the first time, with the light lowered. And Solar watched a boy who knew exactly which way to turn his face for any camera on earth find out that there was a face he hadn't prepared one for, and for a second, just one, he didn't have an angle at all." },
     { n: "Then he did. It came back up over him like a stage light, warm and wide and a little too bright, and he took the cap off, and swept it across his chest, and bowed, right there in the green, to her, to a girl in a school uniform at a high school gate at midnight, as if she'd just come down the stairs at a party he'd thrown." },
+    { cg: 'story-twelve-gate' },
     { s: 'jaemin', f: 'happy', t: "Okay. Okay! Then hi. Hello. Na Jaemin. Social Chair. I've thrown every party you've ever been to, and you loved them, and you don't remember a single one." },
     { s: 'jaemin', f: 'happy', t: "Which, honestly? Best review I've ever gotten." },
     { choose: [
@@ -201,6 +202,7 @@
     { s: 'haechan', f: 'neutral', t: "...I'm not hungry." },
     { s: 'chenle', f: 'neutral', t: "That's not what I asked." },
     { n: "Haechan took the bag. He took it the way you'd take a parking ticket, irritated, without thanks, and didn't open it, and held on to it. Chenle nodded, once, as if a hypothesis had been confirmed, and put his hands back in his hoodie pocket and turned around to look at the school." },
+    { cg: null },
     { dark: false },
     { music: 'city' },
     { n: "The hour ended. The floodlights over the gate came on all at once with a heavy electrical clunk, and the road was suddenly full of ordinary midnight, a bicycle, a taxi, and from the security hut beside the gate a man in a uniform jacket came out with a flashlight of his own, squinting." },

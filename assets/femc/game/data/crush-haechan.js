@@ -364,6 +364,7 @@
           ] }
         ], [
           { n: "She went down the steps and across the road with Maki saying *oh my god* behind her, and he put the umbrella up and held it over her without a word, the whole of it over her, his own left shoulder out in the rain going dark." },
+          { cg: 'crush-haechan-umbrella' },
           { s: 'haechan', f: 'neutral', t: "You left it in the stand. You always leave it in the stand." },
           { s: 'solar', f: 'neutral', t: "How did you know which one was mine?" },
           { s: 'haechan', f: 'neutral', t: "It's the one nobody else would buy." },
@@ -380,6 +381,7 @@
               { n: "She took the handle out of his hand and walked ahead, dry, and he walked behind her in the rain with his hood up and didn't complain once, and at the station she held it over him at the ticket gate by reaching up, and he looked at it over his head for a long time." }
             ] }
           ] },
+          { cg: null },
           { n: "Behind them, at the gate, Maki was telling the whole third-year floor that the transfer student had a *man*, an *older* man, a *foreign* man, with an *umbrella*, and Sonoda was writing it down." }
         ])
       ] },

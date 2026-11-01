@@ -742,6 +742,7 @@
     { after: '1/22', title: '10: you look like you', place: 'Gekkoukan High · Rooftop', time: 'After School', music: 'sun', scene: [
       { n: "The roof of Gekkoukan in late January was all wind and white sky, the snow from last week gone gray in the corners, and the whole of Port Island laid out across the water like a model somebody had built to scale and then left out in the cold. He was at the fence with his blazer buttoned and his hands in his coat pockets, and he heard the door and didn't turn around, and she understood that he'd been waiting to hear it." },
       { n: "She took the pin out of her pocket. She'd carried it every day since November. The enamel had gone warm and the catch had worn a little groove in the lining of her blazer, and she held it out on her flat palm the way you'd hold out something for a horse." },
+      { cg: 'link-jungwon-r10' },
       { n: "He looked at it. He didn't take it." },
       { s: 'jungwon', f: 'neutral', t: "I decided something. About the morning. Whichever morning I wake up in." },
       { s: 'jungwon', f: 'neutral', t: "I'm going to eat breakfast. Before the exam, before my phone, before my mother says a single word through the door. Sitting down. At a table. All of it." },
@@ -749,6 +750,7 @@
       { s: 'jungwon', f: 'neutral', t: "You held it." },
       { s: 'solar', f: 'neutral', t: "You said to." },
       { s: 'jungwon', f: 'neutral', t: "I said to decide." },
+      { cg: null },
       { choose: [
         { t: "I decided. It's yours. You can want it now, if you want.", notes: 3, tally: { 'jungwon.H': 1 }, then: [
           { s: 'jungwon', f: 'surprised', t: "..." },

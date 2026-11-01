@@ -843,9 +843,11 @@
     { after: '1/9', title: '9: one place', place: 'Iwatodai Dorm · Rooftop', time: 'Night', music: 'night', scene: [
       { n: "January, and the coldest night of the year so far. The new year had come and gone at the shrine with everyone she'd somehow collected crammed onto the steps in borrowed scarves, and now the year planner on the lounge wall, the big school one with April to March on a single sheet, had a red ring around the first weekend of March that nobody had drawn and nobody would admit to." },
       { n: "He was on the roof. He'd been there since dinner. She brought two blankets this time, because she'd learned, and he took one without saying thank you, and they stood wrapped up at the railing with the city glittering below them like something spilled." },
+      { cg: 'link-haechan-r9' },
       { n: "Something about him was different, and she saw it from the door before she could have said what it was. He was standing the way he always stood, forearms on the rail, hood up, but all the weight had gone out of it. Like a man who'd been carrying two bags up a long flight of stairs since November and had, somewhere between dinner and now, set one of them down on a landing. Not thrown it away. Set it down, where he'd know where it was." },
       { s: 'haechan', f: 'neutral', t: "I dreamed one place last night." },
       { s: 'haechan', f: 'neutral', t: "First time since I got here. Every other night it's both. I fall asleep in one and wake up in the other and spend breakfast working out which I'm in. Last night it was one place, start to finish. I woke up knowing which." },
+      { cg: null },
       { ifFlag: 'route-R', then: [
         { flag: { 'haechan-sure-R': true } },
         { s: 'haechan', f: 'neutral', t: "Snow. On a quad nobody had walked across yet. A pink house with one light on at three in the morning, because you're always up at three." },
@@ -1000,6 +1002,7 @@
       { n: "She'd stood in the lounge doorway too long. She'd counted them. She did that now. Every night, a little before she went down, she counted everyone, the way you count the things in a bag before you leave a hotel." },
       { s: 'haechan', f: 'neutral', t: "Sit. Don't say anything for four minutes. I'll know." },
       { n: "He handed her one side of the headphones. The heavy black ones. They were warm from his neck." },
+      { cg: 'link-haechan-r10' },
       { n: "It was a song. She'd known it would be. She hadn't known it would be this song." },
       { n: "The gate chime at Iwatodai Station. The hiss of the monorail doors. The laundry room's light, flat, an E, humming under everything like a floor. Rain on the platform roof. The rooftop door's long iron sigh, and the scrape of the brick that held it open. A dryer turning. And over all of it, laid in so carefully she almost didn't hear the seam, the four minutes of the song she'd been humming since April without knowing where she'd first heard it, the one that had always felt like it belonged to some other version of her life." },
       { n: "It was his. It had always been his. In one place it was a track on a laptop, unfinished, in a room at the top of a very loud house. In the other there was no track at all, only a cracked silver Discman with somebody else's songs in it, and a boy who sang trot badly so he wouldn't have to think. Here, it was finished." },
@@ -1007,6 +1010,7 @@
       { s: 'haechan', f: 'neutral', t: "I guess it found you before I did. That tracks." },
       { n: "Somewhere under the middle of it, so far down in the mix it might have been a synth or a room or somebody breathing, there was something she couldn't name, and she felt him watch her not name it." },
       { s: 'haechan', f: 'serious', t: "There's one thing in it that isn't mine. I owe you the truth about that one. I'm going to pay it. Not tonight. Not on a dryer, where you can't throw anything." },
+      { cg: null },
       { choose: [
         { t: "I've been listening to you this whole time.", notes: 3, then: [
           { s: 'haechan', f: 'sad', t: "..." },
