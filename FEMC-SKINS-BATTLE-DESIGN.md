@@ -267,3 +267,59 @@ Every piece checks for its file and silently uses the old behaviour: no sheet 2 
 2. Solar's outfit cut-ins: one picture with Haenim for every form (proposed), or per form for favourites?
 3. Finish-card words: always the fighter's own line, or a line per look?
 4. Do suggestions S1–S5 go in?
+
+---
+
+## 8. More pieces Kat approved (Nov 1): One More eyes, entrance card, couple Showtime, theme frames, the All-Out cloud
+
+Same rules as part 6: ChatGPT unless noted, one picture per message, attach in order, save into **New Adds**. Every piece falls back to today's behaviour for a look without its art.
+
+| # | Piece | What the player sees | Art |
+|---|---|---|---|
+| H | **"One More!" eye cut-in** | Hit a weakness: a thin strip slams across the screen showing the fighter's eyes and brow in their look (the P3 Reload "One More" cut-in), then slides off. | One wide strip per look (and one per fighter's own look) |
+| I | **Battle-start entrance card** | As a fight opens, the leader's look flashes on in a quick slanted card (Persona 5 style) before the HUD settles. | One card per look; Solar's looks first |
+| J | **Couple Showtime** | Both halves of a couple set in the party: their Bond skill plays a special cut-in of the two of them in the matching outfits. | One picture per couple set (six sets) |
+| K | **Theme frame on the HUD card** | A fighter wearing a themed look gets a faint frame of that theme (hearts, stars, petals…) around their HUD card. | One small frame per theme (13; Gemini or ChatGPT) |
+| L | **Theme in the All-Out cloud** | Hearts / petals / stars burst out of the All-Out dust cloud when the leader's look has a theme. | None: reuses the theme sheets (part 6.3) |
+
+### 8.1 "One More!" eye cut-in (H)
+Attach: the look's scene portrait sheet (`skin-<look id>-portraits.png`; a fighter's own look: their `Character Portraits/<Name>/` neutral face), then the fighter's portrait
+Save as: `skin-<look id>-onemore.png` (own look: `<who>-onemore.png`)
+```
+A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. Hair and any hair accessories exactly as in the FIRST attached image, strands falling across the frame. Behind the face: bold flat diagonal stripes and speed lines in hot pink and black. No text, no letters, no logos, no border.
+```
+If the eyes come back too small, say: "Zoom in much closer: only the eyes and eyebrows should fill the banner."
+*Start with:* Solar's own look, then her favourite outfits, then Haechan and Jungwon.
+
+### 8.2 Battle-start entrance card (I)
+Attach: the look's pose sheet, then the fighter's portrait
+Save as: `skin-<look id>-entrance.png` (own look: `<who>-entrance.png`)
+```
+A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image, shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, the weapon swung over one shoulder, coat or hair whipping back, a cool, ready look straight at the viewer. Background: flat graphic shards of hot pink, black and white breaking apart diagonally, a few speed lines. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
+```
+If the outfit changes, say: "Keep the outfit exactly as in the first image."
+
+### 8.3 Couple Showtime (J)
+Attach: her half's pose sheet, then his half's pose sheet, then `Solar.png`, then his portrait (`Character Portraits/<Name>/`)
+Save as: `couple-<set id>-showtime.png` (set ids: `sunmoon`, `drive`, `afterhours`, `moviedate`, `ringside`, `festival`)
+```
+A 16:9 duo ultimate-attack cut-in in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout, speed lines. Two characters back to back in a dramatic finishing pose: on the left Solar, exactly as in the FIRST and THIRD attached images (same outfit, hair and naginata); on the right the young man exactly as in the SECOND and FOURTH attached images (same outfit, hair and weapon). Their matching outfits clearly visible, both turned toward the viewer, a confident shared look, their free hands almost touching between them. Behind them: a swirl of hot pink and black energy with [THEME: e.g. little suns and crescent moons / hearts / petals] streaming across. No text, no letters, no logos.
+```
+Fill the bracket with the set's theme. If either outfit drifts, say: "Keep both outfits exactly as in their attached images."
+
+### 8.4 Theme frame for the HUD card (K)
+Gemini works well for this one (flat graphic art). One frame per theme.
+Attach: nothing
+Save as: `frame-<theme>.png` (e.g. `frame-hearts.png`)
+```
+A decorative rectangular frame border for a game HUD card, landscape 5:2, on a pure solid green (#00FF00) background. Only the border is drawn: a thin elegant outline with small [THEME: hearts] clustered in the four corners and a few tiny ones scattered along the edges; the whole middle is empty solid green. Flat graphic style, crisp clean edges, hot pink, soft pink and white. No text, no characters, no shadows, no gradients on the green.
+```
+Swap the theme words and colours from the part 6.3 list.
+
+### 8.5 Technical notes (for Claude)
+- **H:** `battle.js` weakness hook (where the `weak` sheet plays): if `art/skins/<look>/onemore.webp` (or `art/onemore/<who>.webp`) exists, slide a `.bt-onemore` strip across (CSS, ~550 ms at 1x, battle speed applies; reduced motion: a fade; Off with Persona cut-ins Off / Rush: skip). Cut with a new `femc-wardrobe.py onemore SRC LOOK` (crop to 6:1, WebP).
+- **I:** `intro` in battle.js: after the encounter flash, before the HUD, a 700 ms `.bt-entrance` card of the leader's look; skipped on Rush, auto-battle chains and the second fight of a chain; a setting "Entrance cards" (On / Off).
+- **J:** `bonds.js` versions: a bond whose two members both wear halves of one couple set (`couple` field) plays `couple-<set>-showtime.webp` as its still / first panel (`playSeq` single panel), else its normal version.
+- **K:** `.bt-card` gets `--frame: url(frame-<theme>.webp)` as a border-image overlay at 0.6 opacity when the look has a `theme` and the frame exists; green keyed by `femc-greens.py`.
+- **L:** `allOutSequence`: two small `theme-<leader theme>` plays at the cloud's edges (needs the part 6.3 sheets).
+- **Tests:** extend femc_cosmetics (fallbacks, ready flags) and a real fight in femc_building for each hook.
