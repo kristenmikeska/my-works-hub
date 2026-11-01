@@ -82,3 +82,56 @@
 .bt-room-in h1 { color: var(--paper); }
 .bt-room-body > p { background: linear-gradient(100deg, rgba(10, 4, 8, .94), rgba(32, 12, 24, .9)); border-top: 3px solid var(--acc-2); clip-path: polygon(2% 0, 100% 0, 98% 100%, 0 100%); padding: 12px 30px; }
 .tt-pz-board { background: linear-gradient(160deg, rgba(10, 4, 8, .94), rgba(32, 12, 24, .9)); border-color: color-mix(in srgb, var(--acc) 55%, transparent); clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%); padding-left: 34px; padding-right: 34px; }
+
+/* ── Practice's sub-screens, checked by eye Nov 1: no gold, blue or green left from the old look ── */
+/* The header tags (Money, Skill Points, Members, Party Lv): a paper tag with the pink shadow instead of the gold block. */
+.bt-pts { background: var(--paper); color: var(--deep); box-shadow: 5px 5px 0 var(--acc); }
+.bt-pts small { color: #a8326f; }
+/* Party: members in the party edged in pink (each member's own colour kept on the bench edge only). */
+.bt-pm.in { background: linear-gradient(120deg, color-mix(in srgb, var(--acc) 26%, #14070f), #14070f 70%); border-color: color-mix(in srgb, var(--acc) 70%, #fff); border-left-color: var(--acc); }
+.bt-pm.in .slot { background: var(--acc); color: #fff; box-shadow: 3px 3px 0 var(--deep); }
+/* Save data: the autosave card pink (it was green); the note under the slots on its own dark strip, so the list scrolls under it. */
+.bt-slot.auto { border-color: var(--acc); box-shadow: 5px 5px 0 color-mix(in srgb, var(--acc) 40%, transparent); }
+.bt-slot-msg { background: linear-gradient(rgba(10, 3, 8, .82), rgba(10, 3, 8, .96)); border-top: 1px solid color-mix(in srgb, var(--acc) 35%, transparent); }
+/* Full Moon operations: the next operation's moon pink, not green. */
+.bt-op .moon { background: radial-gradient(circle at 40% 35%, #fff4f9, var(--acc-2) 60%, #7a0b3e); }
+/* Haenim's tree (practice): the sun in pink and black, as on the menu's Skills page (solstice-pages2.css; the sky art filtered, never edited). */
+.bt-sun.sun-vp { background: radial-gradient(ellipse at 50% 45%, #4a1838 0%, #22091a 55%, #0c0309 100%); box-shadow: inset 0 0 0 1px rgba(255, 140, 192, .25), inset 0 0 60px rgba(0, 0, 0, .55);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 18px) 100%, 0 100%); border-radius: 0; }
+.bt-sun.sun-vp #sunSky stop:nth-child(1) { stop-color: #5a1e46; } .bt-sun.sun-vp #sunSky stop:nth-child(2) { stop-color: #2a0f22; } .bt-sun.sun-vp #sunSky stop:nth-child(3) { stop-color: #0c0309; }
+.bt-sun.sun-vp .sun-orbit { stroke: rgba(255, 180, 215, .26); } .bt-sun.sun-vp .sun-orbit.thin { stroke: rgba(255, 180, 215, .13); }
+.bt-sun.sun-vp .sun-e { stroke: rgba(255, 180, 215, .2); }
+.bt-sun.sun-vp .sun-n:not(.own, .avail, .heart, .hidden) .gem { background: radial-gradient(circle at 35% 30%, #5a2048, #1e0816 70%); box-shadow: 0 0 0 2px rgba(255, 180, 215, .4), 0 3px 8px rgba(0, 0, 0, .55); }
+.bt-sun.sun-vp .sun-n.avail .gem { background: radial-gradient(circle at 35% 30%, #7a2a5e, #2a0f22 70%); }
+.bt-sun.sun-vp .sun-n.hidden .gem { background: #1a0814; }
+.bt-sun.sun-vp .sun-n:not(.own, .avail) small { background: #22091a; color: var(--pink-3); box-shadow: 0 0 0 1.5px rgba(255, 180, 215, .55); }
+.bt-sun.sun-vp .sun-n b { background: rgba(20, 7, 15, .9); }
+.bt-sun.sun-vp .sun-sky { filter: grayscale(1) sepia(1) hue-rotate(285deg) saturate(2.4) brightness(.62) contrast(1.05); }
+.bt-sun.sun-vp #sunCore stop:nth-child(1) { stop-color: #fff4f9; } .bt-sun.sun-vp #sunCore stop:nth-child(2) { stop-color: #ffb3d6; }
+.bt-sun.sun-vp #sunCore stop:nth-child(3) { stop-color: #ff4f9e; } .bt-sun.sun-vp #sunCore stop:nth-child(4) { stop-color: #7a0b3e; }
+.bt-sun.sun-vp .sun-corona { stroke: #ffb3d6; filter: drop-shadow(0 0 6px #ff4f9e); }
+.bt-sun.sun-vp .sun-beam { fill: #ff4f9e; opacity: .1; }
+.bt-sun.sun-vp .sun-e.next { stroke: #ff8cc0; }
+.bt-sun.sun-vp .sun-e.lit { stroke: #fff4f9; filter: drop-shadow(0 0 4px rgba(255, 79, 158, .95)); }
+.bt-sun.sun-vp .sun-raylbl text { stroke: #14070f; }
+.bt-sun.sun-vp .sun-raylbl .r { fill: #fff4f9; }
+.bt-sun.sun-vp .sun-raylbl .w { fill: #ffb3d6; }
+.bt-sun.sun-vp .sun-ring { stroke: rgba(255, 180, 215, .2); }
+.bt-sun.sun-vp .sun-ringlbl { fill: #ffd6e8; stroke: #14070f; }
+.bt-sun.sun-vp .sun-ringlbl.shut { fill: #ff8cc0; }
+.bt-sun.sun-vp .sun-n b { background: rgba(20, 7, 15, .92); box-shadow: 0 0 0 1px #ff8cc0; }
+.bt-sun.sun-vp .sun-n.key b { background: rgba(20, 7, 15, .8); }
+.bt-sun.sun-vp .sun-n.sel b { background: #fff4f9; color: #14070f; box-shadow: 3px 3px 0 #ff4f9e; }
+/* available: a plum gem with the pink ring and glow */
+.bt-sun.sun-vp .sun-n.avail .gem { background: radial-gradient(circle at 35% 30%, #8a2a62, #2a0f22 72%); box-shadow: 0 0 0 2.5px #ff4f9e, 0 0 14px rgba(255, 79, 158, .7); }
+.bt-sun.sun-vp .sun-n.avail small { background: #ff4f9e; color: #fff; }
+/* owned: lit pink with a white ring and a white tick */
+.bt-sun.sun-vp .sun-n.own .gem { background: radial-gradient(circle at 35% 30%, #fff4f9, #ff8cc0 45%, #c0156a 100%); box-shadow: 0 0 0 2.5px #fff, 0 0 16px rgba(255, 79, 158, .9); }
+.bt-sun.sun-vp .sun-n.own small { background: #fff4f9; color: #c0156a; box-shadow: 0 0 0 1.5px #ff4f9e; }
+.bt-sun.sun-vp .sun-n.crown.center .gem { background: radial-gradient(circle at 40% 35%, #fff4f9, #ff8cc0 55%, #7a0b3e 120%); }
+.bt-sun.sun-vp .sun-n.crown.center:not(.own) .gem { background: radial-gradient(circle at 40% 35%, #5a2048, #1e0816 72%); }
+.bt-sun.sun-vp .sun-n.heart .gem { background: radial-gradient(circle at 40% 35%, #fff, #ffd6e8 45%, #ff4f9e 85%); box-shadow: 0 0 0 3px #fff4f9, 0 0 30px #ff4f9e; }
+.bt-sun.sun-vp .sun-n.sel .gem { box-shadow: 0 0 0 3px #fff, 0 0 0 6px #ff4f9e, 0 0 24px #ff4f9e; }
+.bt-sun.sun-vp .sun-n.hidden .gem { box-shadow: 0 0 0 2px rgba(255, 180, 215, .3), inset 0 0 0 2px rgba(255, 180, 215, .12); }
+.bt-sun.sun-vp .sun-tools button { background: rgba(20, 7, 15, .92); box-shadow: 0 0 0 1.5px #ff8cc0; }
+.bt-sun.sun-vp .sun-tools button:is(:hover, :focus-visible) { background: #ff4f9e; box-shadow: 0 0 0 2px #fff; }

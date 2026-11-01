@@ -280,6 +280,15 @@
 .g-fm-ov.is-page .g-sun-rays .g-chip.on { background: var(--paper); } /* the picked ray chip (it read dark on dark: the plate above won) */
 .g-fm-ov.is-page :is(.g-lib-slot, .g-lib-sk) { border: 0; border-left: 3px solid var(--pink-2); border-radius: 0; background: var(--plate); clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%); }
 .g-fm-ov.is-page .g-lib-slot.sig { border-left-color: var(--pink); background: var(--plate-hi); }
+/* The skill list (checked by eye Nov 1): no blue or gold left over from the old look; the picked row on the paper bar. */
+.g-fm-ov.is-page .g-lib-sk small { color: var(--pink-3); }
+.g-fm-ov.is-page .g-lib-slot em { color: var(--pink-2); }
+.g-fm-ov.is-page .g-lib-sk em { padding: 2px 9px 2px 6px; background: var(--pink); color: #fff; font: italic 800 10.5px/1.2 var(--cond); letter-spacing: .06em; clip-path: polygon(0 0, 100% 0, 86% 100%, 0 100%); }
+.g-fm-ov.is-page .g-lib-sk.eq { border-left-color: var(--pink); }
+.g-fm-ov.is-page :is(.g-lib-slot, .g-lib-sk):is(.on, .pick) { background: var(--paper); color: var(--deep); box-shadow: none; }
+.g-fm-ov.is-page :is(.g-lib-slot, .g-lib-sk):is(.on, .pick) :is(small, .empty) { color: #a8326f; }
+.g-fm-ov.is-page .g-lib-slot.cur { background: rgba(255, 79, 158, .3); }
+.g-fm-ov.is-page :is(.g-lib-slot, .g-lib-sk):is(:hover, :focus-visible):not(.on, .pick) { outline: none; background: var(--plate-hi); box-shadow: none; color: #fff; }
 .g-fm-ov.is-page .g-sk-velvet { border-color: var(--pink-2); box-shadow: 8px 8px 0 rgba(255, 79, 158, .4); background: var(--plate); }
 .g-fm-ov.is-page .g-sk-forget { background: var(--plate); }
 

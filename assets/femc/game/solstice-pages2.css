@@ -129,6 +129,20 @@
 .g-fm-ov.is-page .g-wd-item.on:is(.sel, :hover, :focus-visible) small { color: #fff; }
 .g-fm-ov.is-page .g-wd-item:is(.sel, :hover, :focus-visible)::after { opacity: 1; animation: g-sl-slash .3s cubic-bezier(.2, .9, .2, 1) both; }
 .g-fm-ov.is-page .g-wd-li .g-view-zoom { z-index: 2; }
+/* The Boutique (checked by eye Nov 1): the banner in pink and black (each banner's own colour dropped: several were blue,
+   green or gold); the switcher's picked banner on the paper bar; rarity colours on the tiles are kept (they say the rarity). */
+.g-fm-ov.is-page .g-wd-banner { border: 0; border-left: 5px solid var(--pink); background: var(--plate); box-shadow: 8px 8px 0 rgba(255, 79, 158, .3);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%); }
+.g-fm-ov.is-page .g-wd-bhead b { color: var(--paper); text-transform: uppercase; text-shadow: 3px 3px 0 var(--pink); }
+.g-fm-ov.is-page .g-wd-bans button { border: 0; border-left: 3px solid rgba(255, 140, 192, .45); background: var(--plate); opacity: .85; }
+.g-fm-ov.is-page .g-wd-bans button b { color: var(--pink-3); text-transform: uppercase; }
+.g-fm-ov.is-page .g-wd-bans button.on { background: var(--paper); border-left-color: var(--pink); box-shadow: 5px 5px 0 var(--pink); }
+.g-fm-ov.is-page .g-wd-bans button.on b { color: var(--deep); }
+.g-fm-ov.is-page .g-wd-bans button.on small { color: #a8326f; }
+.g-fm-ov.is-page .g-wd-bans button:is(:hover, :focus-visible):not(.on) { background: var(--plate-hi); opacity: 1; }
+.g-fm-ov.is-page .g-wd-feat li { background: rgba(12, 3, 9, .7); }
+.g-fm-ov.is-page :is(.g-ga-own b, .g-wd-banner p b) { color: var(--pink-2); }
+.g-fm-ov.is-page .g-ga-done { color: var(--pink-3); font-weight: 800; }
 
 /* ══ Bonds: each bond an angular plum card with its name big and italic; perks as rows, earned ones pink-edged (no green) ══ */
 .g-fm-ov.is-page .g-bondsk-h { color: var(--paper); }
