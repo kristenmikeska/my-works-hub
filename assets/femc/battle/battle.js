@@ -85,7 +85,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 38;
+  const ART_V = 39;
   /* Status art (tools/femc-icons.py): sticker icons for the ailments and the buff / debuff arrows, and the Tartarus map's room
      glyphs. A status chip shows its icon in place of the old name or ATK / DEF / AGI text (the name stays in its title). */
   const ICON_DIR = 'assets/femc/battle/art/icons/';
@@ -138,7 +138,7 @@
      its recut is in (tools/femc-shadow-poses.py). Setting `skinFx` (default on) switches it off.
      FIGHTER_HAND: the casting hand as [x, y] shares of the pose frame canvas, measured by eye from each pose-3 frame (Nov 1
      2026); a look uses its fighter's unless its item has `hand`; anyone else HAND_DEFAULT (about the chest). */
-  const FIGHTER_CLEAN = new Set([]);
+  const FIGHTER_CLEAN = new Set(['aigis', 'akihiko', 'haechan', 'jihoon', 'jungwon', 'junpei', 'koromaru', 'mitsuru', 'shinjiro', 'solar', 'yukari']); // Kat's recuts of their own sheets (Nov 1); Minji's still to come
   const { FIGHTER_HAND, HAND_DEFAULT, THEME_SVG, THEME_ART, motif } = window.FemcLooksArt; // looks-art.js (shared with the Wardrobe's Try it on)
   const castClean = mid => (LOOKS && LOOKS.pose && LOOKS.pose[mid] ? !!(LOOKS.clean && LOOKS.clean[mid]) : FIGHTER_CLEAN.has(mid));
   const handOf = mid => (LOOKS && LOOKS.pose && LOOKS.pose[mid] && LOOKS.hand && LOOKS.hand[mid]) || FIGHTER_HAND[mid] || HAND_DEFAULT;

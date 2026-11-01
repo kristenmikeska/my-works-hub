@@ -388,6 +388,8 @@ try:
         view(p, 1440, 900); motion(p, False)
         setup(wear=['sk-date'])
         p.eval("FemcGame.setSettings({skinFx:true,perf:false,calm:false})")
+        # Kat's recuts put sk-date in cosmetics.js CLEAN: take it out in the page so the first plays are an uncleaned look.
+        p.eval("(()=>{const C=FemcCosmetics.CLEAN,i=C.indexOf('sk-date');if(i>=0)C.splice(i,1);return true})()")
         wmenu(); pick('sk-date')
         # Plays every beat in order, ends on the victory pose with Replay / Done.
         p.eval("document.querySelector('.g-wd-acts [data-wd-try=\"sk-date\"]').click()")

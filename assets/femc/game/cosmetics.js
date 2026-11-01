@@ -286,7 +286,7 @@ window.FemcCosmetics = (() => {
   const metOk = x => !x.who || x.who === 'solar' || !!(G.isMet && G.isMet(x.who));
   const whoName = id => (id === 'solar' ? 'Solar' : (G.LINKS && G.LINKS[id] && G.LINKS[id].short) || (G.name ? G.name(id) : id));
   // Bump SKIN_V when outfit pose frames are re-cut in place (Kat's Photoshop recuts, Nov 1 2026); battle.js uses ART_V.
-  const SKIN_V = 3;
+  const SKIN_V = 4;
   const posePath = (who, skin) => (skin && ready(skin) ? `${G.base}${skinDir(skin.id)}${who}-pose-0.webp?v=${SKIN_V}` : `${G.base}assets/femc/battle/art/poses/${who}-pose-0.webp`);
 
   /* ── State ── */
@@ -405,7 +405,7 @@ window.FemcCosmetics = (() => {
        python3 tools/femc-wardrobe.py skin "<…/RECUTS - PHOTOSHOP EDITS/<sheet>.png>" <look id> <who>   (transparent sheets are fine)
      then add `clean: true` to its ITEMS entry (or list it in CLEAN below). */
   // Kat's Photoshop recuts (Nov 1 2026): every look below has its painted-in skill effect cut out, so the game draws the hand charge.
-  const CLEAN = ['sk-aigis-uniform', 'sk-akihiko-champ', 'sk-akihiko-hoodie', 'sk-alphaphi', 'sk-date', 'sk-emo', 'sk-esports', 'sk-haechan-arrivals', 'sk-haechan-bad', 'sk-haechan-garage', 'sk-haechan-headphones', 'sk-haechan-limelight', 'sk-haechan-runners', 'sk-haechan-sweater', 'sk-haechan-unravelled', 'sk-haechan-windowseat', 'sk-halloween', 'sk-hanbok', 'sk-harbourcoat', 'sk-idol', 'sk-jihoon-emo', 'sk-jihoon-pilates', 'sk-jungwon-council', 'sk-jungwon-sheer', 'sk-junpei-baseball', 'sk-limelight', 'sk-minji-crew', 'sk-minji-su', 'sk-mitsuru-rider', 'sk-oops', 'sk-phantom', 'sk-prowl', 'sk-roadwork', 'sk-shinjiro-apron', 'sk-snake', 'sk-strawberry', 'sk-sugarrush', 'sk-summersession', 'sk-velvet', 'sk-vp', 'sk-wintercoat', 'sk-y2k', 'sk-yukari-kyudo', 'sk-yukata']; // look ids whose cast frame is clean (same as an ITEMS `clean: true`)
+  const CLEAN = ['sk-aigis-uniform', 'sk-akihiko-champ', 'sk-akihiko-cp-festival', 'sk-akihiko-cp-ringside', 'sk-akihiko-hoodie', 'sk-akihiko-swim', 'sk-alphaphi', 'sk-arcana-sun', 'sk-cp-afterhours', 'sk-cp-drive', 'sk-cp-festival', 'sk-cp-moviedate', 'sk-cp-ringside', 'sk-cp-sunmoon', 'sk-date', 'sk-emo', 'sk-esports', 'sk-haechan-arrivals', 'sk-haechan-bad', 'sk-haechan-cp-drive', 'sk-haechan-cp-sunmoon', 'sk-haechan-fairground', 'sk-haechan-garage', 'sk-haechan-headphones', 'sk-haechan-limelight', 'sk-haechan-runners', 'sk-haechan-stage', 'sk-haechan-suit', 'sk-haechan-sweater', 'sk-haechan-sweettooth', 'sk-haechan-swim', 'sk-haechan-unravelled', 'sk-haechan-windowseat', 'sk-halloween', 'sk-hanbok', 'sk-harbourcoat', 'sk-idol', 'sk-jihoon-emo', 'sk-jihoon-pilates', 'sk-jungwon-angel', 'sk-jungwon-council', 'sk-jungwon-cp-afterhours', 'sk-jungwon-cp-moviedate', 'sk-jungwon-heir', 'sk-jungwon-pinstripe', 'sk-jungwon-sheer', 'sk-jungwon-soundcheck', 'sk-jungwon-stage', 'sk-jungwon-sweater', 'sk-jungwon-swim', 'sk-junpei-baseball', 'sk-limelight', 'sk-minji-crew', 'sk-minji-su', 'sk-mitsuru-rider', 'sk-oops', 'sk-phantom', 'sk-prowl', 'sk-roadwork', 'sk-shinjiro-apron', 'sk-snake', 'sk-strawberry', 'sk-sugarrush', 'sk-summersession', 'sk-swim-lagoon', 'sk-swim-lifeguard', 'sk-swim-night', 'sk-velvet', 'sk-vp', 'sk-wintercoat', 'sk-y2k', 'sk-yukari-kyudo', 'sk-yukari-pink', 'sk-yukata']; // look ids whose cast frame is clean (same as an ITEMS `clean: true`)
   const isClean = (x, who) => !!(x.clean || CLEAN.includes(x.id) || (((readyArt().skins || {})[x.id] || {}).clean || []).includes(who));
   /* Part 8 (FEMC-SKINS-BATTLE-DESIGN H-L, Nov 1 2026), also per fighter: theme (the look's theme id), name (the look's name),
      couple (its couple set id), onemore / entrance (the art's path, when ready.js lists it: the worn look's, else for a
@@ -612,5 +612,5 @@ window.FemcCosmetics = (() => {
   G.onChange(kind => { if (kind !== 'toast') apply(); });
   applyTitleEarly();
   setTimeout(apply, 0);
-  return Object.assign(api, { KINDS, ITEMS, BANNERS, BAN, PAL, THEMES, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, banner, banners, pickBanner, bannerEnd, pool, featured, canPull, pullWhy, pull, pullN, pull10, apply, battle, tryOnSpec, portrait, weaponArt, html, wire, preview, metOk, viewable, viewEntry, openViewer });
+  return Object.assign(api, { CLEAN, KINDS, ITEMS, BANNERS, BAN, PAL, THEMES, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, banner, banners, pickBanner, bannerEnd, pool, featured, canPull, pullWhy, pull, pullN, pull10, apply, battle, tryOnSpec, portrait, weaponArt, html, wire, preview, metOk, viewable, viewEntry, openViewer });
 })();

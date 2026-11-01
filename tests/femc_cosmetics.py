@@ -733,16 +733,16 @@ try:
     # ── Skins in battle (FEMC-SKINS-BATTLE-DESIGN B, C, A; 2026-11-01): outfit faces on the HUD cards and turn order, the
     #    win screen's victory pose, and the cast charge at the hand only for a look marked clean (forced here, in the page) ──
     if want('inbattle'):
-        LOOK = 'sk-swim-lagoon'  # not in cosmetics.js CLEAN (Kat's recuts are)
+        LOOK = 'sk-swim-lagoon'  # taken out of cosmetics.js CLEAN in the page below, so it plays an uncleaned look
         motion(p, False)
         view(p, 1440, 900)
         setup(p, day='8/3')
         p.eval("(()=>{const G=FemcGame,b=G.S.battleSave,E=FemcBattleEngine;G.S.slot='evening';E.evolutionsDue(b,id=>E.lvlOf(b,id)).forEach(e=>{b.evo[e.mid]=true});G.save()})()")
-        r = p.eval(r"""(()=>{const C=FemcCosmetics;const marked=C.ITEMS.filter(x=>x.clean).map(x=>x.id);
+        r = p.eval(r"""(()=>{const C=FemcCosmetics;const ci=C.CLEAN.indexOf('%s');if(ci>=0)C.CLEAN.splice(ci,1);const marked=C.ITEMS.filter(x=>x.clean).map(x=>x.id);
           C.grantItem('%s');C.equip('%s');const b=C.battle();
           const it=C.byId('%s');it.clean=true;it.hand=[0.4,0.3];const b2=C.battle();delete it.clean;delete it.hand;
-          return {marked,pose:Object.keys(b.pose),face:b.face.solar,akiFace:b.face.akihiko||null,clean:b.clean,look:b.look.solar,clean2:b2.clean,hand2:b2.hand,after:C.battle().clean};})()""" % (LOOK, LOOK, LOOK))
-        ok(r['marked'] == [], f'no look is marked clean yet: {r["marked"]}')
+          return {marked,pose:Object.keys(b.pose),face:b.face.solar,akiFace:b.face.akihiko||null,clean:b.clean,look:b.look.solar,clean2:b2.clean,hand2:b2.hand,after:C.battle().clean};})()""" % (LOOK, LOOK, LOOK, LOOK))
+        ok(r['marked'] == [], f'no ITEMS entry carries clean (the recuts are listed in CLEAN): {r["marked"]}')
         ok(r['pose'] == ['solar'] and r['face'] and r['face']['dir'].endswith(f'skins/{LOOK}/portraits/solar/') and 'neutral' in r['face']['have']
            and r['akiFace'] is None and r['clean'] == {} and r['look'] == LOOK, f'battle(): face for the worn look, nothing for the unworn: {r}')
         ok(r['clean2'] == {'solar': True} and r['hand2'] == {'solar': [0.4, 0.3]} and r['after'] == {}, f'battle(): clean / hand when marked: {r}')
