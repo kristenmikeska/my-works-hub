@@ -39,6 +39,7 @@
 .gs-portrait, .gs-velvet .gs-portrait { filter: drop-shadow(-12px 4px 0 var(--indigo)) drop-shadow(7px 0 0 var(--gold)); }
 .gs-portrait.dim { filter: brightness(.55) drop-shadow(-12px 4px 0 var(--indigo)); }
 .gs-solar { filter: drop-shadow(-12px 4px 0 var(--indigo)) drop-shadow(7px 0 0 var(--gold)); }
+.gs-solar.dim { filter: brightness(.55) drop-shadow(-12px 4px 0 var(--indigo)); }
 
 /* Wide screens: the placement-review layout */
 @media (min-width: 701px) and (min-aspect-ratio: 13/10) {
@@ -50,6 +51,9 @@
   .gs-portrait.swap { transform: none; translate: -30px 0; }
   .gs-solar { right: calc(17vw - var(--nx, 0) * 1vw - var(--ph) * var(--ar, .9) * var(--cx, .5)); scale: calc(-1 * var(--flip, 1)) 1; transform: none; translate: 30px 0; }
   .gs.me-talking .gs-solar { translate: none; }
+  /* She stays on screen between her lines, dimmed (scene.js showMe); the speaker dims the same way on her turn */
+  .gs.me-on .gs-solar { opacity: 1; }
+  .gs-solar { transition: opacity .25s, translate .25s, filter .25s; }
   /* One box for both sides, a little left of centre */
   .gs-box, .gs.me-talking .gs-box { left: 49.5%; right: auto; bottom: clamp(18px, 5vh, 46px); width: min(780px, 58vw); max-width: none; translate: -46% 0; text-align: left; }
   .gs.gs-cg-on .gs-box, .gs.me-talking.gs-cg-on .gs-box { left: 50%; right: auto; width: min(980px, calc(100vw - 12vw)); translate: -50% 0; margin: 0; }

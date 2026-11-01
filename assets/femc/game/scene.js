@@ -263,10 +263,17 @@ window.FemcScene = (() => {
       for (const [k, v] of [['--cx', m ? 1 - cx : cx], ['--nx', x], ['--ny', y], ['--s', s], ['--flip', m ? -1 : 1]]) pic.style.setProperty(k, v);
     };
     for (const pic of [img, meEl]) pic.addEventListener('load', () => { if (pic.naturalHeight) pic.style.setProperty('--ar', pic.naturalWidth / pic.naturalHeight); });
+    // Solar on the right. Talking: her face for the line, full light. Anyone else talking (or narration, a choice): she stays,
+    // dimmed, keeping the face she last made (Kat, Nov 1: she shouldn't vanish between her lines); before her first line she
+    // stands there neutral. `me-on` keeps her shown (wide screens; phones still show her only while she talks, solstice-scene.css).
+    const putMe = src => { meEl.style.setProperty('--ps', G.scale('solar')); place(meEl, src); if (meEl.getAttribute('src') !== src) meEl.src = src; meEl.hidden = false; };
     const showMe = face => {
       const src = face !== null && G.portrait('solar', face || 'neutral');
-      if (src) { meEl.style.setProperty('--ps', G.scale('solar')); place(meEl, src); if (meEl.getAttribute('src') !== src) meEl.src = src; meEl.hidden = false; }
+      if (src) putMe(src);
+      else if (meEl.hidden) { const n = G.portrait('solar', 'neutral'); if (n) putMe(n); }
       el.classList.toggle('me-talking', !!src);
+      el.classList.toggle('me-on', !meEl.hidden);
+      meEl.classList.toggle('dim', !src);
     };
     function showPortrait(who, face) {
       if (G.silhouette(who)) {
