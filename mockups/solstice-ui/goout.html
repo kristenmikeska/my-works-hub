@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Go Out Restyles</title>
+<!-- DESIGN MOCKUP ONLY (not wired to the game). Three restyles of the Go Out map and the area view, in the game's pink and black.
+     A "P3R list" · B "Cards on a slant" · C "City map". Keys: 1-3 switch style · arrows move · Enter opens a place · Esc back to the map.
+     URL: ?o=a|b|c&s=map|area&i=<highlighted index> -->
+<style>
+:root {
+  --pink: #ff4f9e; --pink-2: #ff8cc0; --pink-3: #ffd6e8; --deep: #14070f; --night: #0c0309; --indigo: #2a0f22; --violet: #4a1838;
+  --paper: #fff4f9; --muted: #d9a9c0; --gold: #ffd36b;
+  --cond: "Avenir Next Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --body: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --ease: cubic-bezier(.2, .9, .3, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--night); color: var(--paper); overflow: hidden; }
+body { font-family: var(--body); -webkit-font-smoothing: antialiased; }
+img { display: block; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: left; }
+button:focus { outline: none; }
+button:focus-visible { outline: 2px dashed var(--pink-2); outline-offset: 4px; }
+h1, h2, h3, p, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+
+/* ───────── mockup chrome ───────── */
+.mk { position: fixed; z-index: 60; top: 10px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 2px; padding: 3px;
+  background: rgba(12, 3, 9, .62); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); border: 1px solid rgba(255, 140, 192, .25); border-radius: 999px;
+  opacity: .6; transition: opacity .2s; }
+.mk:hover, .mk:focus-within { opacity: 1; }
+.mk button { font: 600 12px/1 var(--body); letter-spacing: .04em; padding: 7px 11px; border-radius: 999px; color: rgba(255, 244, 249, .8); white-space: nowrap; }
+.mk button b { color: var(--pink); margin-right: 4px; }
+.mk button[aria-pressed="true"] { background: var(--paper); color: var(--deep); }
+.mk-tag { font: 700 10px/1 var(--body); letter-spacing: .2em; color: var(--pink-2); padding: 0 8px 0 10px; }
+.mk-sep { width: 1px; align-self: stretch; margin: 4px 4px; background: rgba(255, 140, 192, .25); }
+
+/* A pretend HUD so the screens sit in the game's frame */
+.hud { position: fixed; z-index: 40; inset: 0 0 auto 0; height: 0; pointer-events: none; }
+.hud-wal { position: absolute; left: 28px; top: 22px; padding: 6px 26px 7px 12px; background: var(--paper); color: var(--deep); font: italic 900 24px/1 var(--cond);
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%); filter: drop-shadow(5px 5px 0 var(--pink)); }
+.hud-date { position: absolute; right: 30px; top: 16px; text-align: right; }
+.hud-date b { font: italic 900 54px/.9 var(--cond); color: var(--paper); text-shadow: 3px 3px 0 var(--pink); letter-spacing: -.01em; }
+.hud-date i { display: inline-block; margin-left: 6px; padding: 3px 12px 3px 8px; vertical-align: 22px; background: var(--paper); color: var(--deep); font: italic 900 15px/1 var(--cond);
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%); }
+.hud-date small { display: block; font: italic 400 21px/1.1 var(--serif); color: var(--pink-2); }
+
+/* ───────── shared screen bits ───────── */
+.scr { position: fixed; inset: 0; overflow: hidden; isolation: isolate; background: var(--night); --pic: none; --back: url("../../assets/femc/title/menu-backdrop-day.webp"); }
+.kick { font: italic 800 13px/1 var(--cond); letter-spacing: .32em; text-transform: uppercase; color: var(--pink-2); text-shadow: 2px 2px 0 rgba(12, 3, 9, .8); }
+.kick::before { content: ""; display: inline-block; width: 30px; height: 4px; margin-right: 12px; vertical-align: 3px; background: var(--pink); transform: skewX(-30deg); }
+.h1 { font: italic 900 clamp(48px, 9.5vh, 84px)/.84 var(--cond); text-transform: uppercase; letter-spacing: -.01em; color: var(--paper); text-shadow: 5px 5px 0 var(--pink); white-space: nowrap; }
+.sub { font: italic 400 19px/1.35 var(--serif); color: var(--pink-3); text-shadow: 0 1px 8px rgba(12, 3, 9, .9); }
+.back { display: inline-block; margin-bottom: 10px; padding: 5px 16px 5px 10px; background: var(--deep); color: var(--paper); font: italic 900 14px/1 var(--cond); letter-spacing: .12em;
+  text-transform: uppercase; clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%); box-shadow: inset 4px 0 0 var(--pink); pointer-events: auto; }
+.back:hover { background: var(--pink); color: var(--deep); }
+.tag { display: inline-block; padding: 4px 13px 4px 9px; background: var(--pink); color: var(--deep); font: italic 900 12px/1 var(--cond); letter-spacing: .14em; text-transform: uppercase;
+  clip-path: polygon(9% 0, 100% 0, 91% 100%, 0 100%); white-space: nowrap; }
+.tag.join { background: var(--paper); color: var(--deep); box-shadow: inset -5px 0 0 var(--pink); }
+.tag.off { background: var(--violet); color: var(--muted); }
+.tag.ppl { background: var(--pink); }
+.tag.home { background: var(--paper); }
+.face { flex: none; display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; overflow: hidden; background: var(--violet); border: 2px solid var(--paper);
+  box-shadow: 2px 2px 0 var(--pink); font: italic 900 17px/1 var(--cond); color: var(--paper); }
+.face img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }
+.face.q { background: var(--pink); color: var(--deep); }
+.faces { display: inline-flex; }
+.faces .face + .face { margin-left: -8px; }
+
+/* Detail contents (each style dresses its own box) */
+.det-in > div + div { margin-top: 14px; }
+.d-kick { margin-bottom: 8px; font: italic 800 12px/1.25 var(--cond); letter-spacing: .26em; text-transform: uppercase; color: var(--pink-2); }
+.d-name { margin-bottom: 10px; font: italic 900 clamp(28px, 4.6vh, 40px)/.9 var(--cond); text-transform: uppercase; letter-spacing: -.005em; color: var(--paper); text-shadow: 3px 3px 0 var(--pink); }
+.d-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: -2px 0 10px; }
+.d-about { font: 15px/1.5 var(--body); color: #f6dfea; }
+.d-h { margin-bottom: 8px; font: italic 900 12px/1 var(--cond); letter-spacing: .3em; text-transform: uppercase; color: var(--pink); }
+.d-who { display: flex; align-items: center; gap: 10px; font: 14px/1.3 var(--body); color: var(--muted); }
+.d-gets { display: grid; gap: 5px; }
+.d-gets li { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 6px 10px 6px 12px; background: rgba(255, 79, 158, .09); box-shadow: inset 3px 0 0 var(--pink);
+  font: 13px/1.25 var(--body); color: var(--muted); }
+.d-gets li b { display: block; font: italic 800 16px/1.1 var(--cond); color: var(--paper); }
+.d-gets li .tag { flex: none; }
+.d-warn { margin-top: 10px; padding: 6px 12px; background: var(--violet); color: var(--pink-3); font: italic 800 14px/1 var(--cond); letter-spacing: .1em; text-transform: uppercase; display: inline-block; }
+.d-go { margin-top: 16px; font: italic 900 13px/1 var(--cond); letter-spacing: .18em; text-transform: uppercase; color: var(--paper); }
+.d-go .k { display: inline-block; margin-right: 8px; padding: 4px 10px 4px 7px; background: var(--pink); color: var(--deep); clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%); }
+.det-in { animation: det-in .26s var(--ease) both; }
+@keyframes det-in { from { opacity: 0; transform: translateX(14px); } }
+
+/* Portraits and pictures follow the highlighted card (stage classes k-por / k-unk / k-place) */
+.js-por { opacity: 0; transition: opacity .2s, transform .3s var(--ease); }
+.k-por .js-por { opacity: 1; }
+.js-unk { opacity: 0; transition: opacity .2s; }
+.k-unk .js-unk { opacity: 1; }
+.js-plc { opacity: 0; transition: opacity .2s; }
+.k-place .js-plc { opacity: 1; }
+
+/* ═════════════════ A · P3R list ═════════════════ */
+.oa .a-bg { position: absolute; inset: 0; z-index: -3; background: var(--night) var(--pic) center / cover no-repeat; filter: saturate(.85) contrast(1.05); transition: background-image .35s; }
+.oa .a-veil { position: absolute; inset: 0; z-index: -2; background:
+  linear-gradient(100deg, rgba(12, 3, 9, .94) 0, rgba(12, 3, 9, .8) 30%, rgba(12, 3, 9, .3) 56%, rgba(12, 3, 9, .45) 70%, rgba(12, 3, 9, .86) 86%),
+  linear-gradient(0deg, rgba(74, 24, 56, .75), transparent 45%); }
+.oa .a-rays { position: absolute; inset: -20%; z-index: -1; pointer-events: none; mix-blend-mode: screen;
+  background: repeating-linear-gradient(115deg, transparent 0 140px, rgba(255, 140, 192, .07) 140px 150px, transparent 150px 260px, rgba(255, 255, 255, .04) 260px 262px); }
+.oa .a-ghost { position: absolute; z-index: -1; right: -3vw; bottom: -6vh; font: italic 900 clamp(120px, 21vw, 300px)/.8 var(--cond); text-transform: uppercase; white-space: nowrap;
+  color: transparent; -webkit-text-stroke: 2px rgba(255, 140, 192, .2); transform: rotate(-7deg); pointer-events: none; }
+.oa .a-head { position: absolute; left: 5vw; top: 96px; }
+.oa .a-head .h1 { margin-top: 10px; }
+.oa .a-head .sub { margin-top: 12px; max-width: 34vw; }
+.oa .a-list { position: absolute; left: 6vw; top: 300px; transform: rotate(-6deg); transform-origin: 0 0; --fs: clamp(26px, 5.3vh, 44px); }
+.oa .s-area .a-list { left: 33vw; top: 252px; --fs: clamp(22px, 4vh, 33px); }
+.oa .a-list li { margin-left: var(--x, 0); padding: 2px 0; }
+.oa .a-list .lab { margin: 10px 0 4px 6px; font: italic 900 13px/1 var(--cond); letter-spacing: .34em; color: var(--pink); text-transform: uppercase; }
+.oa .a-list .lab:first-child { margin-top: 0; }
+.oa .a-it { position: relative; display: inline-flex; align-items: center; gap: 12px; padding: 3px 14px 3px 8px; color: var(--pink-3); white-space: nowrap;
+  font: italic 900 var(--fs)/.92 var(--cond); text-transform: uppercase; letter-spacing: -.005em; text-shadow: 3px 3px 0 rgba(12, 3, 9, .85), 0 0 14px rgba(12, 3, 9, .9);
+  transition: color .12s, transform .16s cubic-bezier(.2, .9, .3, 1.4); transform-origin: 0 50%; }
+.oa .a-it > span, .oa .a-it > em { position: relative; z-index: 2; }
+.oa .a-it > em { font-style: normal; text-shadow: none; transform: translateY(-2px); }
+.oa .a-it.off { color: rgba(255, 214, 232, .45); }
+.oa .a-it:hover { color: var(--paper); }
+.oa .a-it .bar, .oa .a-it .slash { position: absolute; pointer-events: none; opacity: 0; }
+.oa .a-it .bar { inset: -3px -16px -3px -10px; z-index: 1; background: var(--paper); clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%); transform-origin: 0 50%; }
+.oa .a-it .slash { z-index: 0; left: -34px; right: -46px; top: -12px; bottom: -14px; background: linear-gradient(100deg, var(--pink) 0%, var(--pink-2) 55%, var(--pink) 100%);
+  clip-path: polygon(0 62%, 100% 0, 100% 34%, 4% 100%); }
+.oa .a-it.on { color: var(--deep); text-shadow: none; transform: translateX(10px) scale(1.1); }
+.oa .a-it.on :is(.bar, .slash) { opacity: 1; }
+.oa .a-it.on .bar { animation: a-bar .16s var(--ease) both; }
+.oa .a-it.on .slash { animation: a-slash .3s var(--ease) both; }
+@keyframes a-bar { from { transform: scaleX(.15); } }
+@keyframes a-slash { from { clip-path: polygon(0 62%, 0 58%, 0 92%, 0 100%); } }
+/* The person stands large on the left; a place shows as a slanted postcard; someone new is a giant question mark */
+.oa .a-fig { position: absolute; left: 0; bottom: 0; width: 31vw; height: calc(100% - 210px); pointer-events: none; }
+.oa .a-fig img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: 50% 100%;
+  filter: drop-shadow(14px 6px 0 var(--pink)) drop-shadow(0 0 30px rgba(0, 0, 0, .5)); transform: translateX(-24px); }
+.oa .k-por .a-fig img { transform: none; }
+.oa .a-unk { position: absolute; left: 3vw; bottom: 2vh; font: italic 900 min(54vh, 30vw)/.8 var(--cond); color: transparent; -webkit-text-stroke: 4px var(--pink);
+  text-shadow: 14px 10px 0 rgba(255, 79, 158, .25); transform: rotate(-6deg); }
+.oa .a-post { position: absolute; left: 3vw; top: 300px; width: 27vw; height: 36vh; transform: rotate(-6deg); }
+.oa .a-post::before, .oa .a-post::after { content: ""; position: absolute; inset: 0; clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%); }
+.oa .a-post::before { background: var(--pink); transform: translate(12px, 12px); }
+.oa .a-post::after { background: var(--pic) center / cover; box-shadow: inset 0 0 0 4px var(--paper); transition: background-image .3s; }
+/* Detail: a slanted plum box with the name on a paper bar */
+.oa .det { position: absolute; right: 3vw; top: 128px; width: min(410px, 28vw); transform: rotate(-2deg); }
+.oa .det::before { content: ""; position: absolute; inset: 0; background: var(--pink); clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%); transform: translate(10px, 10px); }
+.oa .det-box { position: absolute; inset: 0; background: rgba(20, 7, 15, .93); clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%); }
+.oa .det-in { position: relative; padding: 26px 46px 28px 40px; }
+.oa .d-name { display: inline-block; padding: 4px 22px 2px 10px; margin-left: -12px; background: var(--paper); color: var(--deep); text-shadow: none;
+  clip-path: polygon(3% 0, 100% 0, 96% 100%, 0 100%); box-shadow: inset -8px 0 0 var(--pink); }
+.oa .d-c .d-gets li:nth-child(n+5) { display: none; }
+
+/* ═════════════════ B · Cards on a slant ═════════════════ */
+.ob { background: var(--night) var(--back) center / cover no-repeat; }
+.ob .b-veil { position: absolute; inset: 0; z-index: -1; background: linear-gradient(100deg, rgba(12, 3, 9, .93) 0, rgba(12, 3, 9, .84) 55%, rgba(12, 3, 9, .62) 82%, rgba(12, 3, 9, .85)); }
+.ob .b-ghost { position: absolute; z-index: -1; left: -2vw; bottom: -4vh; font: italic 900 clamp(110px, 19vw, 270px)/.8 var(--cond); text-transform: uppercase; white-space: nowrap;
+  color: rgba(255, 140, 192, .07); transform: rotate(-4deg); pointer-events: none; }
+.ob .b-head { position: absolute; left: 5vw; top: 96px; right: 34vw; }
+.ob .b-head .h1 { margin-top: 10px; }
+.ob .b-head .sub { margin-top: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ob .s-map .b-head { right: 6vw; }
+/* Map: slanted photo strips; the chosen one opens wide */
+.ob .b-strips { position: absolute; left: 5.5vw; right: 4.5vw; top: 250px; height: min(300px, 37vh); display: flex; gap: 10px; }
+.ob .b-strip { position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; transform: skewX(-10deg); background: var(--indigo);
+  box-shadow: inset 0 0 0 2px rgba(255, 140, 192, .22); transition: flex-grow .32s var(--ease), transform .2s var(--ease), box-shadow .2s; }
+.ob .b-strip .ph { position: absolute; inset: 0 -60px; background: var(--img) center / cover; transform: skewX(10deg); filter: saturate(.6) brightness(.5); transition: filter .25s; }
+.ob .b-strip::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(12, 3, 9, .95), rgba(12, 3, 9, .15) 55%, rgba(12, 3, 9, .3)); pointer-events: none; }
+.ob .b-strip .in { position: absolute; inset: 0; z-index: 2; transform: skewX(10deg); }
+.ob .b-strip .no { position: absolute; left: 14px; top: 10px; font: italic 900 36px/1 var(--cond); color: transparent; -webkit-text-stroke: 1.5px rgba(255, 214, 232, .7); }
+.ob .b-strip .tag { position: absolute; right: 12px; top: 12px; transition: opacity .15s; }
+.ob .b-strip:not(.on) .tag { right: auto; left: 50%; top: 52px; transform: translateX(-50%); padding: 4px 8px; clip-path: none; border-radius: 50%; min-width: 24px; text-align: center; }
+.ob .b-strip:not(.on) .tag .w { display: none; }
+.ob .b-strip .vn { position: absolute; left: 50%; bottom: 16px; writing-mode: vertical-rl; transform: translateX(-50%) rotate(180deg); white-space: nowrap;
+  font: italic 900 24px/1 var(--cond); text-transform: uppercase; color: var(--pink-3); text-shadow: 2px 2px 0 rgba(12, 3, 9, .9); transition: opacity .15s; }
+.ob .b-strip .hn { position: absolute; left: 26px; right: 26px; bottom: 22px; opacity: 0; transition: opacity .2s .08s; }
+.ob .b-strip .hn b { position: relative; display: inline-block; padding: 4px 20px 2px 10px; background: var(--paper); color: var(--deep); white-space: nowrap;
+  font: italic 900 38px/.92 var(--cond); text-transform: uppercase; clip-path: polygon(3% 0, 100% 0, 96% 100%, 0 100%); box-shadow: inset -8px 0 0 var(--pink); }
+.ob .b-strip .hn small { display: block; margin-top: 10px; font: 15px/1.35 var(--body); color: #f6dfea; text-shadow: 0 1px 6px #000; }
+.ob .b-strip .hn .faces { margin-top: 10px; }
+.ob .b-strip.on { flex-grow: 5.2; transform: skewX(-10deg) translateY(-10px); box-shadow: inset 0 0 0 3px var(--paper), 12px 12px 0 var(--pink); }
+.ob .b-strip.on .ph, .ob .b-strip:hover .ph { filter: saturate(1) brightness(.92); }
+.ob .b-strip.on .vn { opacity: 0; }
+.ob .b-strip.on .hn { opacity: 1; }
+.ob .b-strip.on .no { -webkit-text-stroke-color: var(--pink); }
+.ob .s-map .det { position: absolute; left: 5.5vw; right: 4.5vw; top: calc(250px + min(300px, 37vh) + 34px); bottom: 26px; }
+.ob .s-map .det-box { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(42, 15, 34, .94), rgba(20, 7, 15, .94));
+  clip-path: polygon(0 0, 97% 0, 100% 22%, 100% 100%, 3% 100%, 0 78%); box-shadow: inset 5px 0 0 var(--pink); }
+.ob .s-map .det-in { position: absolute; inset: 20px 34px 16px 40px; display: grid; grid-template-columns: 1.2fr .75fr 1.15fr; gap: 0 34px; align-items: start; }
+.ob .s-map .det-in > div + div { margin-top: 0; }
+.ob .s-map .d-go { grid-column: 1; grid-row: 2; margin-top: 12px; }
+.ob .s-map .d-about { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.ob .s-map .d-c .d-gets li { padding: 4px 10px 4px 12px; }
+.ob .s-map .d-c .d-gets li:nth-child(n+4) { display: none; }
+.ob .s-map .d-c { grid-row: 1 / span 2; }
+/* Area: people as a fanned hand of tall cards; places as a row of slanted photo cards */
+.ob .b-lab { position: absolute; left: 6vw; font: italic 900 13px/1 var(--cond); letter-spacing: .34em; color: var(--pink); text-transform: uppercase; }
+.ob .b-fan { position: absolute; left: 6.5vw; top: 314px; display: flex; }
+.ob .b-pc { position: relative; width: 150px; height: 206px; margin-right: -4px; transform: translateY(var(--y)) rotate(var(--r)); transform-origin: 50% 100%;
+  filter: drop-shadow(5px 6px 0 rgba(255, 79, 158, .45)); transition: transform .22s var(--ease), filter .2s; isolation: isolate; }
+.ob .b-pc .cd { position: absolute; inset: 0; overflow: hidden; background: var(--img) center / cover; clip-path: polygon(0 0, 100% 0, 100% 90%, 86% 100%, 0 100%); }
+.ob .b-pc .cd::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(42, 15, 34, .55), rgba(12, 3, 9, .2) 50%, rgba(12, 3, 9, .9)); }
+.ob .b-pc .cd img { position: absolute; left: -10%; bottom: 30px; width: 120%; height: 82%; object-fit: cover; object-position: 50% 0; }
+.ob .b-pc .ar { position: absolute; left: 10px; top: 8px; z-index: 2; font: italic 900 26px/1 var(--cond); color: var(--paper); text-shadow: 2px 2px 0 var(--pink); }
+.ob .b-pc .ar small { display: block; font: italic 800 10px/1.2 var(--cond); letter-spacing: .2em; text-transform: uppercase; color: var(--pink-3); text-shadow: 1px 1px 0 #000; }
+.ob .b-pc .nm { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 7px 10px 8px; background: rgba(20, 7, 15, .92); box-shadow: inset 0 3px 0 var(--pink);
+  font: italic 900 19px/1 var(--cond); text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ob .b-pc.unmet .cd { background: repeating-linear-gradient(135deg, var(--indigo) 0 12px, var(--violet) 12px 24px); }
+.ob .b-pc.unmet .cd::before { background: radial-gradient(circle at 50% 42%, rgba(255, 79, 158, .35), transparent 60%); }
+.ob .b-pc .qm { position: absolute; left: 0; right: 0; top: 18px; text-align: center; font: italic 900 150px/1 var(--cond); color: transparent; -webkit-text-stroke: 3px var(--pink); }
+.ob .b-pc::before { content: ""; position: absolute; z-index: -1; left: -30px; right: -36px; top: 50%; height: 34px; background: linear-gradient(100deg, var(--pink), var(--pink-2));
+  clip-path: polygon(0 70%, 100% 0, 100% 30%, 0 100%); opacity: 0; transform: rotate(-12deg) scaleX(.3); transition: opacity .15s, transform .25s var(--ease); }
+.ob .b-pc.on { z-index: 5; transform: translateY(-18px) rotate(0) scale(1.08); filter: drop-shadow(8px 8px 0 var(--pink)); }
+.ob .b-pc.on::before { opacity: 1; transform: rotate(-12deg); }
+.ob .b-pc.on .nm { background: var(--paper); color: var(--deep); box-shadow: inset 0 3px 0 var(--pink); }
+.ob .b-pc:hover:not(.on) { transform: translateY(calc(var(--y) - 8px)) rotate(var(--r)); }
+.ob .b-row { position: absolute; left: 6.5vw; top: 554px; display: flex; gap: 16px; }
+.ob .b-ac { position: relative; width: 160px; height: 172px; transform: translateY(var(--y)) rotate(var(--r)) skewX(-8deg); background: rgba(20, 7, 15, .92);
+  box-shadow: inset 0 0 0 2px rgba(255, 140, 192, .25), 5px 5px 0 rgba(255, 79, 158, .35); transition: transform .22s var(--ease), box-shadow .2s; }
+.ob .b-ac .ph { position: absolute; inset: 0 0 auto 0; height: 84px; overflow: hidden; }
+.ob .b-ac .ph i { position: absolute; inset: 0 -20px; background: var(--img) center / cover; transform: skewX(8deg); filter: saturate(.75) brightness(.75); transition: filter .2s; }
+.ob .b-ac .tag { position: absolute; right: -6px; top: 8px; z-index: 2; transform: skewX(8deg); }
+.ob .b-ac .tx { position: absolute; inset: 92px 10px 8px 14px; transform: skewX(8deg); }
+.ob .b-ac .tx small { display: block; font: italic 800 10px/1 var(--cond); letter-spacing: .2em; text-transform: uppercase; color: var(--pink-2); }
+.ob .b-ac .tx b { position: relative; display: block; margin-top: 4px; font: italic 900 19px/.95 var(--cond); text-transform: uppercase; }
+.ob .b-ac .tx span { display: block; margin-top: 5px; font: 11.5px/1.25 var(--body); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ob .b-ac .faces { position: absolute; left: 8px; top: 50px; z-index: 2; transform: skewX(8deg); }
+.ob .b-ac.off { opacity: .55; }
+.ob .b-ac.on { z-index: 4; transform: translateY(-12px) skewX(-8deg); background: var(--paper); box-shadow: inset 0 0 0 3px var(--paper), 10px 10px 0 var(--pink); }
+.ob .b-ac.on .ph i, .ob .b-ac:hover .ph i { filter: none; }
+.ob .b-ac.on .tx b, .ob .b-ac.on .tx span { color: var(--deep); }
+.ob .b-ac.on .tx small { color: #c2266f; }
+.ob .b-ac.on::after { content: ""; position: absolute; left: -14px; right: -14px; bottom: -12px; height: 9px; background: var(--pink); transform: skewX(8deg) rotate(-3deg); }
+/* Tall angular plum card on the right */
+.ob .s-area .det { position: absolute; right: 2.5vw; top: 96px; bottom: 24px; width: min(390px, 27vw); filter: drop-shadow(10px 10px 0 rgba(255, 79, 158, .55)); }
+.ob .s-area .det-box { position: absolute; inset: 0; background: var(--pink); clip-path: polygon(0 0, 88% 0, 100% 7%, 100% 100%, 12% 100%, 0 93%); }
+.ob .s-area .det-box::before { content: ""; position: absolute; inset: 3px; background: linear-gradient(170deg, var(--indigo), var(--deep) 60%); clip-path: inherit; }
+.ob .det-pic { position: absolute; inset: 3px 3px auto 3px; height: 36%; overflow: hidden; background: var(--pic) center / cover; clip-path: polygon(0 0, 88% 0, 100% 19%, 100% 78%, 0 100%); transition: background-image .3s; }
+.ob .det-pic::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12, 3, 9, .1), rgba(12, 3, 9, .55)); }
+.ob .det-pic img { position: absolute; left: 50%; bottom: -6%; height: 112%; width: auto; max-width: none; transform: translateX(-50%); filter: drop-shadow(8px 0 0 var(--pink)); z-index: 1; }
+.ob .det-pic .q { position: absolute; inset: 0; z-index: 1; display: grid; place-items: center; font: italic 900 170px/1 var(--cond); color: transparent; -webkit-text-stroke: 3px var(--pink);
+  background: repeating-linear-gradient(135deg, var(--indigo) 0 12px, var(--violet) 12px 24px); }
+.ob .s-area .det-in { position: absolute; inset: calc(36% + 4px) 26px 20px 30px; overflow: hidden; }
+
+/* ═════════════════ C · City map ═════════════════ */
+.oc { background: var(--night); }
+.oc .c-ghost { position: absolute; z-index: -1; right: -2vw; top: 70px; font: italic 900 clamp(100px, 15vw, 220px)/.8 var(--cond); text-transform: uppercase; white-space: nowrap;
+  color: transparent; -webkit-text-stroke: 2px rgba(255, 140, 192, .12); pointer-events: none; }
+.oc .c-head { position: absolute; left: 4vw; top: 96px; }
+.oc .c-head .h1 { margin-top: 8px; font-size: clamp(44px, 8vh, 70px); }
+.oc .c-mapbox { position: absolute; left: 4vw; top: 208px; width: min(62vw, calc((100vh - 238px) * 1000 / 600)); aspect-ratio: 1000 / 600;
+  background-color: #1d0a17;
+  background-image: linear-gradient(rgba(255, 140, 192, .06) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 140, 192, .06) 1px, transparent 1px),
+    repeating-linear-gradient(135deg, transparent 0 7px, rgba(255, 79, 158, .05) 7px 8px);
+  background-size: 40px 40px, 40px 40px, auto; box-shadow: 0 0 0 2px rgba(255, 140, 192, .35), 12px 12px 0 rgba(255, 79, 158, .35); }
+.oc .c-mapbox svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.oc .c-land { fill: #0b0308; stroke: var(--pink); stroke-width: 1.6; }
+.oc .c-road { fill: none; stroke: rgba(255, 140, 192, .22); stroke-width: 1.2; }
+.oc .c-rail { fill: none; stroke: var(--pink-2); stroke-width: 3; stroke-dasharray: 10 6; }
+.oc .c-river { fill: none; stroke: #1d0a17; stroke-width: 9; }
+.oc .c-ml { position: absolute; font: italic 900 clamp(26px, 4vw, 54px)/.8 var(--cond); color: transparent; -webkit-text-stroke: 1.5px rgba(255, 140, 192, .3); text-transform: uppercase;
+  letter-spacing: .02em; pointer-events: none; white-space: nowrap; }
+.oc .c-ml.sm { font: italic 400 15px/1 var(--serif); color: rgba(255, 140, 192, .55); -webkit-text-stroke: 0; letter-spacing: .3em; }
+.oc .c-ttl { position: absolute; left: -8px; top: -16px; z-index: 3; padding: 6px 22px 6px 12px; background: var(--paper); color: var(--deep); font: italic 900 14px/1 var(--cond);
+  letter-spacing: .2em; text-transform: uppercase; clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%); }
+.oc .c-ttl b { color: #c2266f; }
+.oc .c-compass { position: absolute; right: 14px; bottom: 12px; font: italic 900 14px/1 var(--cond); color: var(--pink-2); text-align: center; letter-spacing: .1em; }
+.oc .c-compass::before { content: ""; display: block; width: 12px; height: 26px; margin: 0 auto 4px; background: linear-gradient(var(--pink) 50%, var(--paper) 50%); clip-path: polygon(50% 0, 100% 100%, 50% 80%, 0 100%); }
+.oc .c-pin { position: absolute; left: calc(var(--x) * 1%); top: calc(var(--y) * 1%); z-index: 2; width: 0; height: 0; }
+.oc .c-pin.on { z-index: 5; }
+.oc .c-pin .pt { position: absolute; left: -10px; top: -10px; width: 20px; height: 20px; background: var(--violet); border: 2px solid var(--pink-2); transform: rotate(45deg);
+  transition: transform .2s var(--ease), background .15s; }
+.oc .c-pin.busy .pt { background: var(--pink); border-color: var(--paper); }
+.oc .c-pin.home .pt { background: var(--paper); border-color: var(--pink); }
+.oc .c-pin .ct { position: absolute; left: -26px; top: -30px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px; background: var(--paper); color: var(--deep);
+  font: italic 900 13px/20px var(--cond); text-align: center; box-shadow: 2px 2px 0 var(--pink); }
+.oc .c-pin .lb { position: absolute; left: 16px; top: -12px; padding: 4px 14px 4px 10px; background: rgba(20, 7, 15, .92); white-space: nowrap; color: var(--pink-3);
+  font: italic 900 17px/1 var(--cond); text-transform: uppercase; letter-spacing: .01em; clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%); box-shadow: inset 3px 0 0 var(--pink);
+  transition: transform .18s var(--ease); transform-origin: 0 50%; }
+.oc .c-pin.lft .lb { left: auto; right: 16px; }
+.oc .c-pin .ring { position: absolute; left: -22px; top: -22px; width: 44px; height: 44px; border: 2px solid var(--pink); transform: rotate(45deg); opacity: 0; }
+.oc .c-pin .th { position: absolute; left: 14px; bottom: 18px; width: 172px; height: 96px; opacity: 0; transform: translateY(8px); pointer-events: none;
+  transition: opacity .18s, transform .22s var(--ease); }
+.oc .c-pin.lft .th { left: auto; right: 14px; }
+.oc .c-pin .th::before, .oc .c-pin .th::after { content: ""; position: absolute; inset: 0; clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%); }
+.oc .c-pin .th::before { background: var(--pink); transform: translate(7px, 7px); }
+.oc .c-pin .th::after { background: var(--img) center / cover; box-shadow: inset 0 0 0 3px var(--paper); }
+.oc .c-pin.on .th { opacity: 1; transform: none; }
+.oc .c-pin.on .pt { transform: rotate(45deg) scale(1.35); background: var(--pink); border-color: var(--paper); }
+.oc .c-pin.on .ring { animation: c-ping 1.4s ease-out infinite; }
+@keyframes c-ping { 0% { opacity: .9; transform: rotate(45deg) scale(.5); } 100% { opacity: 0; transform: rotate(45deg) scale(1.5); } }
+.oc .c-pin.on .lb { background: var(--paper); color: var(--deep); transform: scale(1.12); box-shadow: inset -6px 0 0 var(--pink); }
+.oc .c-pin:hover .lb { color: var(--paper); }
+.oc .c-pin.on:hover .lb { color: var(--deep); }
+/* The ticket: photo on top with a diagonal cut, a perforated line, the details */
+.oc .det { position: absolute; right: 3vw; top: 120px; bottom: 26px; width: min(390px, 27vw); filter: drop-shadow(10px 10px 0 rgba(255, 79, 158, .5)); }
+.oc .det-box { position: absolute; inset: 0; background: linear-gradient(175deg, var(--indigo), var(--deep) 70%);
+  -webkit-mask: radial-gradient(circle 13px at 0 calc(34% + 6px), transparent 12px, #000 13px) left / 51% 100% no-repeat, radial-gradient(circle 13px at 100% calc(34% + 6px), transparent 12px, #000 13px) right / 51% 100% no-repeat;
+  mask: radial-gradient(circle 13px at 0 calc(34% + 6px), transparent 12px, #000 13px) left / 51% 100% no-repeat, radial-gradient(circle 13px at 100% calc(34% + 6px), transparent 12px, #000 13px) right / 51% 100% no-repeat; }
+.oc .det-pic { position: absolute; inset: 0 0 auto 0; height: 34%; overflow: hidden; background: var(--pic) center / cover; clip-path: polygon(0 0, 100% 0, 100% 74%, 0 100%); transition: background-image .3s; }
+.oc .s-area .k-por .det-pic, .oc .s-area .k-unk .det-pic { background-image: var(--back); }
+.oc .det-pic img { position: absolute; left: 50%; bottom: -4%; height: 108%; width: auto; max-width: none; transform: translateX(-50%); filter: drop-shadow(8px 0 0 var(--deep)); }
+.oc .det-pic .q { position: absolute; inset: 0; display: grid; place-items: center; font: italic 900 150px/1 var(--cond); color: var(--deep); text-shadow: 6px 6px 0 var(--pink); }
+.oc .det-perf { position: absolute; left: 18px; right: 18px; top: calc(34% + 5px); height: 2px; background: repeating-linear-gradient(90deg, var(--pink) 0 8px, transparent 8px 14px); }
+.oc .det-in { position: absolute; inset: calc(34% + 22px) 26px 20px 28px; overflow: hidden; }
+.oc .s-map .d-c .d-gets li:nth-child(n+3) { display: none; }
+/* Area: a split screen — the place photo up top with a diagonal cut, hex portraits on the cut, activities as slanted rows */
+.oc .c-photo { position: absolute; inset: 0 0 auto 0; height: 52vh; z-index: -1; background: var(--pic) center 40% / cover; clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%); transition: background-image .35s; }
+.oc .c-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, rgba(12, 3, 9, .85), rgba(12, 3, 9, .35) 50%, rgba(12, 3, 9, .2)), linear-gradient(0deg, rgba(74, 24, 56, .5), transparent 50%); }
+.oc .c-cut { position: absolute; inset: 0 0 auto 0; height: calc(52vh + 10px); z-index: -1; background: var(--pink);
+  clip-path: polygon(0 calc(100% - 10px), 100% calc(36.4vh), 100% calc(36.4vh + 10px), 0 100%); }
+.oc .s-area .c-head { top: 92px; }
+.oc .s-area .c-head .sub { margin-top: 10px; max-width: 46vw; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.oc .c-lab { font: italic 900 13px/1 var(--cond); letter-spacing: .34em; color: var(--pink); text-transform: uppercase; }
+.oc .c-hexes { position: absolute; left: 4vw; top: calc(52vh - 106px); display: flex; gap: 14px; }
+.oc .c-hx { position: relative; width: 104px; display: block; text-align: center; transition: transform .2s var(--ease); }
+.oc .c-hx .hx { position: relative; display: block; width: 92px; height: 104px; margin: 0 auto; background: var(--paper); clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); transition: background .15s; }
+.oc .c-hx .hx i { position: absolute; inset: 4px; background: var(--violet) var(--img) center / cover; clip-path: inherit; }
+.oc .c-hx .hx i::before { content: ""; position: absolute; inset: 0; background: rgba(42, 15, 34, .55); }
+.oc .c-hx .hx img { position: absolute; left: -12%; top: 4%; width: 124%; height: auto; }
+.oc .c-hx.unmet .hx i { display: grid; place-items: center; background: repeating-linear-gradient(135deg, var(--indigo) 0 9px, var(--violet) 9px 18px); font: italic 900 66px/1 var(--cond); color: var(--pink); font-style: italic; }
+.oc .c-hx.unmet .hx i::before { display: none; }
+.oc .c-hx .nm { display: inline-block; margin-top: 8px; padding: 3px 12px 3px 8px; font: italic 900 16px/1 var(--cond); text-transform: uppercase; white-space: nowrap; color: var(--paper);
+  text-shadow: 2px 2px 0 var(--deep); clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%); }
+.oc .c-hx small { display: block; margin-top: 3px; font: italic 800 10px/1 var(--cond); letter-spacing: .2em; text-transform: uppercase; color: var(--pink-2); }
+.oc .c-hx.on { transform: translateY(-8px) scale(1.1); z-index: 2; }
+.oc .c-hx.on .hx { background: var(--pink); filter: drop-shadow(0 0 0 var(--pink)); }
+.oc .c-hx.on .hx::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 0 4px var(--pink); }
+.oc .c-hx.on .nm { background: var(--paper); color: var(--deep); text-shadow: none; box-shadow: inset -5px 0 0 var(--pink); }
+.oc .c-hx:hover:not(.on) .hx { background: var(--pink-2); }
+.oc .c-rows { position: absolute; left: 4vw; top: calc(52vh + 72px); width: min(58vw, 860px); display: grid; gap: 6px; }
+.oc .c-rows .c-lab { margin: 0; }
+.oc .c-row { position: relative; display: grid; grid-template-columns: 104px minmax(0, 1fr) auto; align-items: center; gap: 18px; height: min(46px, 5.8vh); padding-right: 16px;
+  transform: skewX(-14deg); background: rgba(20, 7, 15, .9); box-shadow: inset 4px 0 0 var(--pink), inset 0 0 0 1px rgba(255, 140, 192, .2); transition: transform .18s var(--ease), background .15s, box-shadow .15s; }
+.oc .c-row .th { align-self: stretch; background: var(--img) center / cover; filter: saturate(.8) brightness(.8); }
+.oc .c-row .tx { display: flex; align-items: baseline; gap: 14px; min-width: 0; transform: skewX(14deg); white-space: nowrap; }
+.oc .c-row .tx b { font: italic 900 clamp(18px, 3vh, 24px)/1 var(--cond); text-transform: uppercase; }
+.oc .c-row .tx span { overflow: hidden; text-overflow: ellipsis; font: 13px/1 var(--body); color: var(--muted); }
+.oc .c-row .end { display: flex; align-items: center; gap: 10px; transform: skewX(14deg); }
+.oc .c-row.off { opacity: .5; }
+.oc .c-row.on { background: var(--paper); transform: skewX(-14deg) translateX(16px); box-shadow: inset 6px 0 0 var(--pink), 9px 9px 0 var(--pink); }
+.oc .c-row.on .th { filter: none; }
+.oc .c-row.on .tx b { color: var(--deep); }
+.oc .c-row.on .tx span { color: var(--violet); }
+.oc .c-row:hover:not(.on) { background: rgba(74, 24, 56, .95); }
+
+/* ───────── phones ───────── */
+@media (max-width: 700px) {
+  .hud { display: none; }
+  .mk { top: 6px; padding: 2px; }
+  .mk button { padding: 6px 9px; font-size: 11px; }
+  .mk button span, .mk-tag, .mk-keys { display: none; }
+  .h1 { font-size: 46px; text-shadow: 4px 4px 0 var(--pink); }
+  .kick { font-size: 11px; letter-spacing: .26em; }
+  .kick::before { width: 18px; margin-right: 8px; }
+  .back { font-size: 12px; margin-bottom: 6px; }
+  .d-name { font-size: 28px; }
+  .d-about { font-size: 13.5px; line-height: 1.42; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .d-gets li { padding: 4px 8px 4px 10px; }
+  .d-gets li b { font-size: 14.5px; }
+  .det-in > div + div { margin-top: 10px; }
+  .d-go { margin-top: 10px; }
+  /* Every style's detail becomes a sheet along the bottom */
+  .scr .det, .ob .s-map .det, .ob .s-area .det { position: fixed; z-index: 30; left: 0; right: 0; top: auto; bottom: 0; width: auto; height: 300px; transform: none; filter: none; }
+  .scr .det::before { display: none; }
+  .scr .det-box { position: absolute; inset: 0; height: auto; padding: 0; clip-path: polygon(0 22px, 100% 0, 100% 100%, 0 100%) !important;
+    background: linear-gradient(175deg, var(--indigo), var(--deep) 60%) !important; box-shadow: none; -webkit-mask: none; mask: none; }
+  .scr .det-box::before { display: none; }
+  .scr .det::after { content: ""; position: absolute; z-index: 1; left: 0; right: 0; top: -1px; height: 26px; background: var(--pink); clip-path: polygon(0 22px, 100% 0, 100% 4px, 0 26px); }
+  .scr .det-in, .ob .s-map .det-in, .ob .s-area .det-in, .oc .det-in { position: absolute; inset: 36px 18px 14px 20px; display: block; overflow: auto; }
+  .scr .det-in > div + div { margin-top: 10px; }
+  .det-pic, .det-perf { display: none; }
+  .scr .d-c .d-gets li:nth-child(n+3) { display: none; }
+  .ob .s-map .d-c .d-gets { grid-template-columns: 1fr; }
+
+  /* A */
+  .oa .a-head { left: 18px; top: 52px; }
+  .oa .a-head .sub { display: none; }
+  .oa .a-veil { background: linear-gradient(180deg, rgba(12, 3, 9, .55), rgba(12, 3, 9, .75) 40%, rgba(12, 3, 9, .9)); }
+  .oa .a-list { left: 22px; top: 172px; transform: rotate(-5deg); --fs: 24px; }
+  .oa .s-area .a-list { left: 18px; top: 168px; --fs: 20px; }
+  .oa .a-list .lab { font-size: 11px; margin-top: 6px; }
+  .oa .a-list li { margin-left: calc(var(--x, 0px) * .4); }
+  .oa .a-it { gap: 8px; }
+  .oa .a-it .tag { font-size: 10px; padding: 3px 10px 3px 7px; }
+  .oa .a-it.on { transform: translateX(6px) scale(1.06); }
+  .oa .a-ghost { display: none; }
+  .oa .a-fig { left: auto; right: -14vw; bottom: auto; top: 108px; width: 62vw; height: 40vh; opacity: .9; }
+  .oa .a-unk { left: auto; right: 4vw; top: 120px; bottom: auto; font-size: 200px; opacity: .6; }
+  .oa .a-post { left: auto; right: -6vw; top: 120px; width: 50vw; height: 22vh; opacity: .75; }
+  .oa .d-name { margin-left: -4px; }
+  .oa .det-in { padding: 0; }
+
+  /* B */
+  .ob .b-head { left: 18px; right: 18px; top: 52px; }
+  .ob .b-head .sub { display: none; }
+  .ob .b-strips { left: 0; right: 0; top: 160px; bottom: 300px; height: auto; flex-direction: column; gap: 6px; overflow-y: auto; padding: 4px 36px 14px 28px; scroll-padding: 20px; }
+  .ob .b-strip { flex: 0 0 38px; transform: skewX(-8deg); transition: flex-basis .3s var(--ease), box-shadow .2s; }
+  .ob .b-strip .ph { transform: skewX(8deg); }
+  .ob .b-strip .in { transform: skewX(8deg); }
+  .ob .b-strip .no { font-size: 20px; top: 8px; left: 12px; }
+  .ob .b-strip .vn { writing-mode: horizontal-tb; transform: none; left: 50px; bottom: auto; top: 9px; font-size: 21px; }
+  .ob .b-strip .tag { top: 9px; font-size: 10px; }
+  .ob .b-strip .hn { left: 16px; right: 16px; bottom: 12px; }
+  .ob .b-strip .hn b { font-size: 26px; }
+  .ob .b-strip .hn small { font-size: 13px; margin-top: 6px; }
+  .ob .b-strip.on { flex-basis: 150px; flex-grow: 0; transform: skewX(-8deg); box-shadow: inset 0 0 0 3px var(--paper), 7px 7px 0 var(--pink); }
+  .ob .b-lab { left: 18px; top: 158px !important; }
+  .ob .b-lab2 { top: 360px !important; }
+  .ob .b-fan { left: 50%; top: 194px; transform: translateX(-50%); padding-left: 10px; }
+  .ob .b-pc { width: 92px; height: 132px; margin-right: -10px; }
+  .ob .b-pc .ar { font-size: 18px; left: 7px; top: 6px; }
+  .ob .b-pc .ar small { font-size: 8px; }
+  .ob .b-pc .nm { font-size: 13px; padding: 5px 7px 6px; }
+  .ob .b-pc .cd img { bottom: 22px; }
+  .ob .b-pc .qm { font-size: 92px; top: 10px; }
+  .ob .b-pc.on { transform: translateY(-10px) scale(1.06); }
+  .ob .b-row { left: 0; right: 0; top: 372px; gap: 12px; overflow-x: auto; padding: 14px 24px 18px; scroll-padding: 24px; }
+  .ob .b-ac { flex: none; width: 132px; height: 148px; }
+  .ob .b-ac .ph { height: 70px; }
+  .ob .b-ac .tx { inset: 76px 8px 6px 12px; }
+  .ob .b-ac .tx b { font-size: 16px; }
+  .ob .b-ac .tx span { display: none; }
+  .ob .b-ac .faces { top: 36px; }
+  .ob .b-ac.on { transform: translateY(-8px) skewX(-8deg); box-shadow: inset 0 0 0 3px var(--paper), 6px 6px 0 var(--pink); }
+
+  /* C */
+  .oc .c-head { left: 18px; top: 52px; }
+  .oc .c-head .h1 { font-size: 44px; }
+  .oc .c-ghost { display: none; }
+  .oc .c-mapbox { left: 12px; right: 12px; top: 160px; width: auto; height: 360px; aspect-ratio: auto; }
+  .oc .c-ttl .w { display: none; }
+  .oc .c-pin .lb { display: none; font-size: 14px; }
+  .oc .c-pin.on .lb, .oc .c-pin.busy .lb { display: block; }
+  .oc .c-pin .th { width: 120px; height: 66px; }
+  .oc .c-ml { font-size: 30px; }
+  .oc .c-ml.sm { font-size: 12px; }
+  .oc .c-photo { height: 250px; clip-path: polygon(0 0, 100% 0, 100% 72%, 0 100%); }
+  .oc .c-cut { height: 260px; clip-path: polygon(0 250px, 100% 180px, 100% 190px, 0 260px); }
+  .oc .s-area .c-head { top: 50px; }
+  .oc .s-area .c-head .sub { display: none; }
+  .oc .c-hexes { left: 0; right: 0; top: 176px; justify-content: center; gap: 10px; }
+  .oc .c-hx { width: 74px; }
+  .oc .c-hx .hx { width: 74px; height: 84px; }
+  .oc .c-hx.unmet .hx i { font-size: 46px; }
+  .oc .c-hx .nm { font-size: 12px; padding: 3px 8px 3px 6px; margin-top: 6px; }
+  .oc .c-hx small { font-size: 8px; }
+  .oc .c-rows { left: 22px; right: 22px; top: 318px; width: auto; gap: 6px; }
+  .oc .c-row { grid-template-columns: 54px minmax(0, 1fr) auto; height: 36px; gap: 10px; padding-right: 10px; }
+  .oc .c-row .tx b { font-size: 16px; }
+  .oc .c-row .tx span, .oc .c-row .end .faces { display: none; }
+  .oc .c-row .tag { font-size: 10px; padding: 3px 10px 3px 7px; }
+  .oc .c-row.on { transform: skewX(-14deg) translateX(8px); box-shadow: inset 6px 0 0 var(--pink), 6px 6px 0 var(--pink); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+<nav class="mk" aria-label="Mockup controls">
+  <span class="mk-tag">GO OUT</span>
+  <button type="button" data-opt="a"><b>1</b><span>A · </span>P3R list</button>
+  <button type="button" data-opt="b"><b>2</b><span>B · </span>Cards</button>
+  <button type="button" data-opt="c"><b>3</b><span>C · </span>City map</button>
+  <i class="mk-sep"></i>
+  <button type="button" data-scr="map">Map</button>
+  <button type="button" data-scr="area">Area</button>
+</nav>
+<div class="hud" aria-hidden="true"><div class="hud-wal">¥6,123</div><div class="hud-date"><b>5/13</b><i>WED</i><small>After School</small></div></div>
+<main id="stage" class="scr"></main>
+
+<script>
+(() => {
+  const ART = '../../assets/femc/', bg = n => `${ART}bg/${n}.webp`, por = id => `${ART}portraits/${id}/neutral.webp`;
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const yen = n => `¥${n.toLocaleString()}`;
+
+  // Real places, blurbs and activities from the game (after school, May 13). x/y: where each sits on style C's city map.
+  const AREAS = [
+    { id: 'gekkoukan', name: 'Gekkoukan High', bg: 'outside-school', x: 80, y: 22, met: ['yukari', 'akihiko', 'haru'], q: 1, blurb: 'Clubs, the library, and whoever is still around.',
+      about: "School after the last bell: the library's quiet tables, the rooftop garden, a study group for first-years, the club rooms, and whoever hasn't gone home yet.",
+      acts: [['Study in the library', 'Rainy-day quiet · Knowledge +4'], ['Help the first-years study', 'Kindness +2, Knowledge +1'], ['Help in the rooftop garden', 'Kindness +1, Proficiency +1'], ['Tennis club', 'Courage +2, Proficiency +1', 'Join'], ['Library committee', 'Knowledge +2, Kindness +1', 'Join'], ['Light music club', 'Charm +2, Proficiency +1', 'Join'], ['Gaming club', 'Proficiency +2, Courage +1', 'Join']] },
+    { id: 'strip', name: 'Iwatodai Strip', bg: 'iwatodai-strip-rain', x: 30, y: 46, blurb: 'Ramen, burgers, used books and the bathhouse.',
+      about: 'The narrow street by the station. Cheap food that fixes a bad day (and one bowl that dares you), a pharmacy, used books, and the bathhouse after dark.',
+      acts: [['Hagakure Bowl', 'Rainy-day special · Knowledge +4', 800], ['Wild-Duck Burger', 'Courage +2', 500], ['Browse books', 'Books to read at the dorm', 'Shop'], ['Aohige Pharmacy', 'Medicine', 'Shop']] },
+    { id: 'mall', name: 'Paulownia Mall', bg: 'paulownia-mall', x: 70, y: 56, q: 1, blurb: 'Shops, karaoke, the arcade and the police box.',
+      about: 'Coffee, boutiques, karaoke, the arcade and its crane games, and a small cinema, plus the Police Box, Be Blue V and Mayoido for gear and rare goods.',
+      acts: [['Pheromone Coffee', 'Charm +2', 600], ['Study over coffee', 'Knowledge +2', 400], ['Try on outfits', 'Charm +3', 1500], ['Play the cabinets', 'Proficiency +1, Courage +1', 200], ['Crane game', 'Proficiency +2', 300], ['See a movie', 'The Ninth Floor · Courage +3', 1200]] },
+    { id: 'station', name: 'Iwatodai Station', bg: 'iwatodai-station', x: 38, y: 30, blurb: 'Benches, vending machines, the last train.',
+      about: 'Benches, a row of vending machines, and people waiting for trains with somewhere to be.', acts: [['Something from the vending machine', 'Courage +1', 150]] },
+    { id: 'portisland', name: 'Port Island Station', bg: 'location-1', x: 63, y: 36, blurb: 'The busy side of the bay. Some of it is less busy.',
+      about: 'The busy side of the bay: crowds on the concourse, and a back alley most people walk around.', acts: [] },
+    { id: 'port', name: 'Port Island', bg: 'park', x: 86, y: 78, blurb: 'The pier, the park and the harbor.',
+      about: 'The pier, the seaside park and the harbor. Wind off the bay, room to think, and a beach cleanup on weekend mornings.', acts: [['Walk the pier', 'Charm +1, Courage +1'], ['Volunteer: the beach cleanup', 'Kindness +2']] },
+    { id: 'shrine', name: 'Naganaki Shrine', bg: 'naganaki-shrine-spring', x: 12, y: 58, blurb: 'Quiet steps, a fortune box, a playground.',
+      about: 'Stone steps, an offering box, fortunes tied to the tree and the playground behind it. Quiet most days; the neighbors take turns sweeping.',
+      acts: [['Make a wish', 'Courage +1', 10], ['Draw a fortune', 'A random fortune', 100], ['Volunteer: sweep the grounds', 'Kindness +2']] },
+    { id: 'hospital', name: 'Tatsumi Memorial Hospital', bg: 'hospital-outside', x: 24, y: 80, blurb: 'If she isn’t feeling well.',
+      about: 'Tatsumi Memorial. The clinic can fix being tired or sick, for a price, and the children’s ward always wants volunteers.', acts: [['See a doctor', 'Relieves Tired or Sick', 1000], ['Volunteer: read on the children’s ward', 'Kindness +2, Charm +1']] },
+    { id: 'dorm', name: 'Iwatodai Dorm', bg: 'iwotodaidorm-outside', x: 14, y: 20, home: true, blurb: 'Go home and let the day wind down.',
+      about: 'Head straight home. The rest of this time passes quietly; nothing else happens.', acts: [] },
+  ];
+  const AREA = AREAS[0];
+  const PEOPLE = [
+    { id: 'yukari', name: 'Yukari Takeba', short: 'Yukari', arc: 'Lovers', num: 'VI', spot: 'Archery Range', bg: 'gekkoukan-archery-range', met: true,
+      line: "Yukari is at the archery range after school, stringing her bow with her back to the gate. She's told you twice this week that you don't have to wait for her, and both times she looked relieved when you did." },
+    { id: 'akihiko', name: 'Akihiko Sanada', short: 'Akihiko', arc: 'Star', num: 'XVII', spot: 'Boxing Club', bg: 'gekkoukan-boxing-club', met: true,
+      line: "Akihiko is on the bench by the boxing club ring with his ribs taped under his shirt, glaring at a heavy bag he isn't allowed to touch, and he sits up straighter when he sees you in the doorway." },
+    { id: 'haru', name: 'Haru Okumura', short: 'Haru', arc: 'Empress', num: 'III', spot: 'Rooftop Garden', bg: 'rooftop-day', met: true,
+      line: "Someone has brought the dead planters along the Gekkoukan roof back to life, and she's kneeling among them now with a trowel, a thermos and a sunhat the wind keeps trying to steal." },
+    { id: 'saori', spot: 'Library', bg: 'school-library', met: false,
+      line: 'At the library desk, a second-year with a committee armband pinned on crooked is stamping due dates with great care, and lowering her eyes every time someone walks past and lowers their voice.' },
+  ];
+  const PLACES = [
+    { id: 'library', name: 'Study in the library', spot: 'Library', bg: 'school-library', tag: 'Free', benefit: 'Rainy-day quiet · Knowledge +4', about: 'Quiet tables by the window and the smell of old paper.' },
+    { id: 'tutoring', name: 'Help the first-years study', spot: 'Classroom', bg: 'gekkoukan-study-group', tag: 'Free', benefit: 'Kindness +2, Knowledge +1', about: 'A volunteer study group for first-years who are falling behind. Nobody gets paid; everybody gets snacks.' },
+    { id: 'garden', name: 'Help in the rooftop garden', spot: 'Rooftop Garden', bg: 'rooftop-day', tag: 'Free', benefit: 'Kindness +1, Proficiency +1', who: ['haru'], about: 'Raised beds on the school roof. Someone keeps them alive; there is always weeding, watering and something to carry.' },
+    { id: 'tennis', name: 'Tennis club', spot: 'Tennis Courts', bg: 'gekkoukan-tennis-courts', tag: 'Join', benefit: 'Courage +2, Proficiency +1', about: 'Gekkoukan’s tennis club: drills, a ball cart with one bad wheel, a captain who stays late, and a team that is mostly there for the team.' },
+    { id: 'band', name: 'Light music club', spot: 'Music Room', bg: 'gekkoukan-music-room', tag: 'Join', off: 'Not today', benefit: 'Charm +2, Proficiency +1', about: 'A band of four, a borrowed amp and a practice room on the third floor. They need a keyboard. They would settle for anybody who can count to four.' },
+  ];
+  const ITEMS = [...PEOPLE.map(p => ({ k: 'p', ...p })), ...PLACES.map(p => ({ k: 'a', ...p }))];
+  const pname = p => p.met ? p.name : '???';
+  const face = id => id === '?' ? '<i class="face q">?</i>' : `<i class="face"><img src="${por(id)}" alt=""></i>`;
+  const count = a => (a.met || []).length + (a.q || 0);
+  const tagOf = x => `<span class="tag${x.off ? ' off' : x.tag === 'Join' ? ' join' : ''}">${esc(x.off || x.tag)}</span>`;
+  const actTag = t => t === undefined ? '<span class="tag">Free</span>' : typeof t === 'number' ? `<span class="tag join">${yen(t)}</span>` : `<span class="tag join">${esc(t)}</span>`;
+
+  /* ── detail contents ── */
+  const go = t => `<p class="d-go"><span class="k">Enter</span>${esc(t)}</p>`;
+  function mapDet(a) {
+    const n = count(a);
+    const who = a.home ? '<p class="d-who">Uses this time slot.</p>' : n ? `<p class="d-who"><span class="faces">${(a.met || []).map(face).join('')}${a.q ? face('?') : ''}</span><span>${
+      (a.met || []).length ? (a.met.map(id => PEOPLE.find(p => p.id === id).short).join(', ') + (a.q ? ', and someone new' : '')) : 'Someone you haven’t met'}</span></p>` : '<p class="d-who">Nobody you know is free here right now.</p>';
+    const acts = a.acts.length ? `<ul class="d-gets">${a.acts.map(([nm, b, t]) => `<li><span><b>${esc(nm)}</b>${esc(b)}</span>${actTag(t)}</li>`).join('')}</ul>` : '<p class="d-who">Just a place to be.</p>';
+    return `<div class="d-a"><p class="d-kick">Iwatodai · After School</p><h2 class="d-name">${esc(a.name)}</h2><p class="d-about">${esc(a.about)}</p></div>
+      <div class="d-b"><h3 class="d-h">${a.home ? 'Go home' : 'Here today'}</h3>${who}</div>
+      ${a.home ? '' : `<div class="d-c"><h3 class="d-h">Things to do</h3>${acts}</div>`}${go(a.home ? 'go home' : `go to ${a.name}`)}`;
+  }
+  function areaDet(x) {
+    if (x.k === 'p') return x.met
+      ? `<div class="d-a"><p class="d-kick">Gekkoukan High · ${esc(x.spot)}</p><h2 class="d-name">${esc(x.name)}</h2><div class="d-tags"><span class="tag">${esc(x.arc)}</span><span class="tag join">${x.num}</span></div><p class="d-about">${esc(x.line)}</p></div>
+         <div class="d-b"><ul class="d-gets"><li><span><b>Deepen your bond</b>Uses this time slot.</span></li></ul></div>${go('spend time together')}`
+      : `<div class="d-a"><p class="d-kick">Gekkoukan High · ${esc(x.spot)}</p><h2 class="d-name">???</h2><div class="d-tags"><span class="tag join">Someone new</span></div><p class="d-about">${esc(x.line)}</p></div>
+         <div class="d-b"><ul class="d-gets"><li><span><b>Say hello</b>Uses this time slot.</span></li></ul></div>${go('spend time together')}`;
+    const who = (x.who || []).map(id => PEOPLE.find(p => p.id === id));
+    return `<div class="d-a"><p class="d-kick">Gekkoukan High · ${esc(x.spot)}${x.tag === 'Join' ? ' · club' : ''}</p><h2 class="d-name">${esc(x.name)}</h2><p class="d-about">${esc(x.about)}</p></div>
+      <div class="d-b"><h3 class="d-h">You’d get</h3><ul class="d-gets"><li><span><b>${esc(x.benefit)}</b>Uses this time slot.</span>${tagOf(x)}</li></ul>${x.off ? `<p class="d-warn">${esc(x.off)}</p>` : ''}</div>
+      ${who.length ? `<div class="d-c"><h3 class="d-h">Who’s there</h3><p class="d-who"><span class="faces">${who.map(p => face(p.id)).join('')}</span><span>${who.map(p => p.short).join(', ')}</span></p></div>` : ''}
+      ${go(x.tag === 'Join' ? 'review the club' : 'review before spending time')}`;
+  }
+  const detBox = (extra = '') => `<aside class="det" aria-live="polite"><div class="det-box"></div>${extra}<div class="det-in"></div></aside>`;
+  const picBits = '<div class="det-pic"><img class="js-por" alt=""><span class="q js-unk">?</span></div>';
+
+  /* ── A · P3R list ── */
+  const STAG = [0, 26, 10, 38, 18, 46, 24, 52, 30, 12, 40, 20];
+  const A = {
+    map: () => `<div class="s-map"><div class="a-bg"></div><div class="a-veil"></div><div class="a-rays"></div><div class="a-ghost">After School</div>
+      <header class="a-head"><p class="kick">Iwatodai · After School</p><h1 class="h1">Go Out</h1><p class="sub">Where do you want to spend this time? People keep their own schedules.</p></header>
+      <ul class="a-list">${AREAS.map((a, i) => `<li style="--x:${STAG[i]}px"><button type="button" class="a-it" data-i="${i}"><i class="slash"></i><i class="bar"></i><span>${esc(a.name)}</span>${
+        a.home ? '<em class="tag home">Home</em>' : count(a) ? `<em class="tag">${count(a)}</em>` : ''}</button></li>`).join('')}</ul>${detBox()}</div>`,
+    area: () => { let r = 0; const row = (x, i) => `<li style="--x:${STAG[r++]}px"><button type="button" class="a-it${x.off ? ' off' : ''}" data-i="${i}"><i class="slash"></i><i class="bar"></i><span>${esc(x.k === 'p' ? pname(x) : x.name)}</span>${
+        x.k === 'p' ? (x.met ? `<em class="tag join">${esc(x.arc)}</em>` : '<em class="tag">New</em>') : `<em>${tagOf(x)}</em>`}</button></li>`;
+      return `<div class="s-area"><div class="a-bg"></div><div class="a-veil"></div><div class="a-rays"></div><div class="a-ghost">Gekkoukan</div>
+      <div class="a-fig"><img class="js-por" alt=""></div><div class="a-unk js-unk">?</div><div class="a-post js-plc"></div>
+      <header class="a-head"><button type="button" class="back" data-back>‹ Map</button><p class="kick">After School</p><h1 class="h1">${esc(AREA.name)}</h1></header>
+      <ul class="a-list"><li class="lab">People</li>${PEOPLE.map((p, i) => row(ITEMS[i], i)).join('')}<li class="lab">Places</li>${PLACES.map((p, i) => row(ITEMS[i + PEOPLE.length], i + PEOPLE.length)).join('')}</ul>${detBox()}</div>`; },
+  };
+
+  /* ── B · Cards on a slant ── */
+  const FAN = [[-7, 14], [-2.5, 3], [2.5, 3], [7, 14]], TILT = [[-1.5, 4], [1, 0], [-1, 6], [1.5, 2], [-1, 5]];
+  const B = {
+    map: () => `<div class="s-map"><div class="b-veil"></div><div class="b-ghost">Iwatodai</div>
+      <header class="b-head"><p class="kick">Iwatodai · After School</p><h1 class="h1">Go Out</h1><p class="sub">Where do you want to spend this time? People keep their own schedules.</p></header>
+      <div class="b-strips">${AREAS.map((a, i) => `<button type="button" class="b-strip" data-i="${i}" style="--img:url('${bg(a.bg)}')"><i class="ph"></i><span class="in">
+        <span class="no">${String(i + 1).padStart(2, '0')}</span>${a.home ? '<span class="tag home">⌂<span class="w"> Home</span></span>' : count(a) ? `<span class="tag">${count(a)}<span class="w"> ${count(a) === 1 ? 'person' : 'people'}</span></span>` : ''}
+        <span class="vn">${esc(a.name)}</span><span class="hn"><b>${esc(a.name)}</b><small>${esc(a.blurb)}</small>${count(a) ? `<span class="faces">${(a.met || []).map(face).join('')}${a.q ? face('?') : ''}</span>` : ''}</span></span></button>`).join('')}</div>
+      ${detBox()}</div>`,
+    area: () => `<div class="s-area"><div class="b-veil"></div><div class="b-ghost">Gekkoukan</div>
+      <header class="b-head"><button type="button" class="back" data-back>‹ Map</button><p class="kick">After School</p><h1 class="h1">${esc(AREA.name)}</h1><p class="sub">${esc(AREA.about)}</p></header>
+      <p class="b-lab" style="top:284px">People</p>
+      <div class="b-fan">${PEOPLE.map((p, i) => `<button type="button" class="b-pc${p.met ? '' : ' unmet'}" data-i="${i}" style="--r:${FAN[i][0]}deg;--y:${FAN[i][1]}px;--img:url('${bg(p.bg)}')">
+        <span class="cd">${p.met ? `<img src="${por(p.id)}" alt="">` : '<span class="qm">?</span>'}</span>${p.met ? `<span class="ar">${p.num}<small>${esc(p.arc)}</small></span>` : ''}<span class="nm">${esc(p.met ? p.short : '???')}</span></button>`).join('')}</div>
+      <p class="b-lab b-lab2" style="top:528px">Places</p>
+      <div class="b-row">${PLACES.map((x, i) => `<button type="button" class="b-ac${x.off ? ' off' : ''}" data-i="${i + PEOPLE.length}" style="--r:${TILT[i][0]}deg;--y:${TILT[i][1]}px;--img:url('${bg(x.bg)}')">
+        <span class="ph"><i></i></span>${tagOf(x)}${x.who ? `<span class="faces">${x.who.map(face).join('')}</span>` : ''}<span class="tx"><small>${esc(x.spot)}</small><b>${esc(x.name)}</b><span>${esc(x.benefit)}</span></span></button>`).join('')}</div>
+      ${detBox(picBits)}</div>`,
+  };
+
+  /* ── C · City map ── */
+  const LAND = `<svg viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
+      <path class="c-land" d="M0 0 H470 L455 70 L490 120 L452 190 L470 250 L430 300 L455 360 L410 420 L440 480 L395 540 L420 600 H0 Z"/>
+      <path class="c-river" d="M0 250 C80 240 150 300 210 290 S330 330 420 300"/>
+      <path class="c-land" d="M560 40 L930 30 L975 90 L960 200 L990 300 L955 420 L985 520 L930 575 L640 570 L600 500 L625 420 L575 330 L610 250 L570 160 Z"/>
+      <path class="c-road" d="M60 130 L380 170 M120 360 L380 260 M230 480 L300 270 M380 170 L300 270 M620 210 L900 140 M640 220 L700 340 L860 470 M700 340 L930 300 M150 120 L120 360"/>
+      <path class="c-rail" d="M0 175 L380 182 L470 196 C520 205 560 212 630 216 L990 196"/>
+    </svg>`;
+  const C = {
+    map: () => `<div class="s-map"><div class="c-ghost">Iwatodai</div>
+      <header class="c-head"><p class="kick">Iwatodai · After School</p><h1 class="h1">Go Out</h1></header>
+      <div class="c-mapbox"><span class="c-ttl"><b>◆</b> Iwatodai ⇄ Port Island<span class="w"> · after school</span></span>${LAND}
+        <span class="c-ml" style="left:4%;bottom:5%">Iwatodai</span><span class="c-ml" style="right:4%;bottom:5%">Port Island</span>
+        <span class="c-ml sm" style="left:45%;top:66%">the bay</span><span class="c-ml sm" style="left:44%;top:40%">monorail</span><span class="c-compass">N</span>
+        ${AREAS.map((a, i) => `<button type="button" class="c-pin${count(a) ? ' busy' : ''}${a.home ? ' home' : ''}${a.x > 62 ? ' lft' : ''}" data-i="${i}" style="--x:${a.x};--y:${a.y};--img:url('${bg(a.bg)}')" aria-label="${esc(a.name)}">
+          <i class="th"></i><i class="ring"></i><i class="pt"></i>${count(a) ? `<i class="ct">${count(a)}</i>` : ''}<span class="lb">${esc(a.name)}</span></button>`).join('')}</div>
+      ${detBox('<div class="det-pic"></div><i class="det-perf"></i>')}</div>`,
+    area: () => `<div class="s-area"><div class="c-photo"></div><div class="c-cut"></div>
+      <header class="c-head"><button type="button" class="back" data-back>‹ Map</button><p class="kick">After School</p><h1 class="h1">${esc(AREA.name)}</h1><p class="sub">${esc(AREA.about)}</p></header>
+      <div class="c-hexes">${PEOPLE.map((p, i) => `<button type="button" class="c-hx${p.met ? '' : ' unmet'}" data-i="${i}" style="--img:url('${bg(p.bg)}')"><span class="hx"><i>${p.met ? `<img src="${por(p.id)}" alt="">` : '?'}</i></span>
+        <span class="nm">${esc(p.met ? p.short : '???')}</span><small>${esc(p.met ? p.arc : p.spot)}</small></button>`).join('')}</div>
+      <div class="c-rows"><p class="c-lab">Places</p>${PLACES.map((x, i) => `<button type="button" class="c-row${x.off ? ' off' : ''}" data-i="${i + PEOPLE.length}" style="--img:url('${bg(x.bg)}')"><i class="th"></i>
+        <span class="tx"><b>${esc(x.name)}</b><span>${esc(x.benefit)}</span></span><span class="end">${x.who ? `<span class="faces">${x.who.map(face).join('')}</span>` : ''}${tagOf(x)}</span></button>`).join('')}</div>
+      ${detBox('<div class="det-pic"><img class="js-por" alt=""><span class="q js-unk">?</span></div><i class="det-perf"></i>')}</div>`,
+  };
+  const OPT = { a: A, b: B, c: C };
+
+  /* ── state, rendering, highlight ── */
+  const q = new URLSearchParams(location.search);
+  const st = { o: OPT[q.get('o')] ? q.get('o') : 'a', s: q.get('s') === 'area' ? 'area' : 'map', mi: 0, ai: 0 };
+  if (q.has('i')) st[st.s === 'map' ? 'mi' : 'ai'] = +q.get('i') || 0;
+  const stage = document.getElementById('stage');
+  const items = () => [...stage.querySelectorAll('[data-i]')];
+  const sel = () => st.s === 'map' ? st.mi : st.ai;
+  const hoverOk = matchMedia('(hover: hover)').matches;
+
+  function render() {
+    stage.className = `scr o${st.o}`;
+    stage.innerHTML = OPT[st.o][st.s]();
+    document.querySelectorAll('[data-opt]').forEach(b => b.setAttribute('aria-pressed', b.dataset.opt === st.o));
+    document.querySelectorAll('[data-scr]').forEach(b => b.setAttribute('aria-pressed', b.dataset.scr === st.s));
+    history.replaceState(null, '', `?o=${st.o}&s=${st.s}`);
+    items().forEach(el => {
+      if (hoverOk) el.addEventListener('mouseenter', () => paint(+el.dataset.i));
+      el.addEventListener('focus', () => paint(+el.dataset.i));
+      el.addEventListener('click', () => { if (st.s === 'map') open(+el.dataset.i); else paint(+el.dataset.i); });
+    });
+    stage.querySelector('[data-back]')?.addEventListener('click', () => setScr('map'));
+    paint(sel(), true);
+  }
+  function paint(i, first) {
+    if (!first && i === sel()) return;
+    st[st.s === 'map' ? 'mi' : 'ai'] = i;
+    let on;
+    items().forEach(el => { const y = +el.dataset.i === i; el.classList.toggle('on', y); if (y) on = el; });
+    const root = stage.firstElementChild;
+    if (st.s === 'map') {
+      const a = AREAS[i];
+      stage.style.setProperty('--pic', `url('${bg(a.bg)}')`);
+      root.classList.remove('k-por', 'k-unk'); root.classList.add('k-place');
+      stage.querySelector('.det-in').innerHTML = mapDet(a);
+    } else {
+      const x = ITEMS[i];
+      stage.style.setProperty('--pic', `url('${bg(x.bg)}')`);
+      root.classList.toggle('k-por', x.k === 'p' && x.met); root.classList.toggle('k-unk', x.k === 'p' && !x.met); root.classList.toggle('k-place', x.k === 'a');
+      stage.querySelectorAll('.js-por').forEach(img => { if (x.k === 'p' && x.met) img.src = por(x.id); });
+      stage.querySelector('.det-in').innerHTML = areaDet(x);
+    }
+    const d = stage.querySelector('.det-in'); d.style.animation = 'none'; void d.offsetWidth; d.style.animation = '';
+    if (on) { if (document.activeElement !== on) on.focus({ preventScroll: true }); on.scrollIntoView({ block: 'nearest', inline: 'nearest' }); }
+  }
+  function open(i) {
+    if (i !== sel()) paint(i);
+    if (AREAS[i].home) { const g = stage.querySelector('.d-go'); g?.animate?.([{ transform: 'translateX(0)' }, { transform: 'translateX(8px)' }, { transform: 'translateX(0)' }], 220); return; }
+    setScr('area'); // every place opens the Gekkoukan example in this mockup
+  }
+  function setScr(s) { st.s = s; render(); }
+  function setOpt(o) { st.o = o; render(); }
+
+  // Arrow keys move to the nearest card in that direction; with none there, up/left and down/right step through the list.
+  function move(key) {
+    let els = items(); const cur = els.find(e => +e.dataset.i === sel()); if (!cur) return;
+    const r = cur.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    let best = null, bs = Infinity;
+    // The lists (A, and B's strips) just step through in order
+    if (st.o === 'a' || (st.o === 'b' && st.s === 'map')) els.length = 0;
+    for (const e of els) {
+      if (e === cur) continue;
+      const b = e.getBoundingClientRect(), x = b.left + b.width / 2 - cx, y = b.top + b.height / 2 - cy;
+      const [p, s] = key === 'ArrowRight' ? [x, y] : key === 'ArrowLeft' ? [-x, y] : key === 'ArrowDown' ? [y, x] : [-y, x];
+      if (p < 8 || Math.abs(s) > p * 2.4) continue;
+      const sc = p + Math.abs(s) * 2.2; if (sc < bs) { bs = sc; best = e; }
+    }
+    if (!best) { const all = items(), n = all.length, step = key === 'ArrowUp' || key === 'ArrowLeft' ? -1 : 1; best = all.find(e => +e.dataset.i === (sel() + step + n) % n); }
+    paint(+best.dataset.i);
+  }
+  addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const k = e.key;
+    if (k === '1' || k === '2' || k === '3') return setOpt('abc'[+k - 1]);
+    if (k.startsWith('Arrow')) { e.preventDefault(); return move(k); }
+    if (k === 'Enter' || k === ' ') { e.preventDefault(); if (st.s === 'map') open(sel()); else stage.querySelector('.d-go')?.animate?.([{ opacity: .3 }, { opacity: 1 }], 260); return; }
+    if ((k === 'Escape' || k === 'Backspace') && st.s === 'area') { e.preventDefault(); setScr('map'); }
+  });
+  document.querySelectorAll('[data-opt]').forEach(b => b.addEventListener('click', () => setOpt(b.dataset.opt)));
+  document.querySelectorAll('[data-scr]').forEach(b => b.addEventListener('click', () => setScr(b.dataset.scr)));
+  [...AREAS.map(a => bg(a.bg)), ...ITEMS.map(x => bg(x.bg)), ...PEOPLE.filter(p => p.met).map(p => por(p.id))].forEach(u => { new Image().src = u; });
+  render();
+})();
+</script>
+</body>
+</html>
