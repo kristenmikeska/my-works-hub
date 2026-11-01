@@ -103,7 +103,9 @@
 .g-fm-ov.is-page .g-who-mini.on:focus-visible { box-shadow: 5px 5px 0 var(--pink), inset 0 -3px 0 var(--pink); }
 
 /* Entry: the content in from the right; the ghost word drifts in */
-.g-fm-ov.is-page .g-fm-body > * { animation: g-fmh-row .36s cubic-bezier(.15, .9, .25, 1) both; }
+/* Rows slide in from the left: a slide from the right pokes past the page edge mid-way and briefly widens it */
+.g-fm-ov.is-page .g-fm-body > * { animation: g-page-row .36s cubic-bezier(.15, .9, .25, 1) both; }
+@keyframes g-page-row { from { transform: translateX(-40px); opacity: 0; } to { transform: none; opacity: 1; } }
 .g-fm-ov.is-page .g-pg-ghost span { animation: g-fmh-ghost .9s cubic-bezier(.15, .9, .25, 1) both; }
 
 /* Short landscape screens: a smaller heading, no guide line */
