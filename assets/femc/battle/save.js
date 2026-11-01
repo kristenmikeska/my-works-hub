@@ -44,7 +44,7 @@ window.FemcBattleSave = (() => {
 //          rad { ray: buys } (Haenim's Radiance, 0-10), prad { mid: { buildId: buys } } (the party's), epis [finished epilogue
 //          worlds, from the life sim], late { top, zenith } (the New Game+ climb's high-water floor and the Zenith's superboss
 //          beaten, kept across New Game+; engine.js syncLate on every normalize, so carry() writes it down before tt resets).
-  const SETTINGS = { textSpeed: 'normal', musicVol: 100, sfxVol: 100, remember: true, rushWhere: 'normal', rushStop: 30, difficulty: 'normal', shake: true, calm: false, numbers: true, pad: 'auto', tips: true, showtimes: 'on' };
+  const SETTINGS = { textSpeed: 'normal', musicVol: 100, sfxVol: 100, remember: true, rushWhere: 'normal', rushStop: 30, difficulty: 'normal', shake: true, calm: false, numbers: true, pad: 'auto', tips: true, showtimes: 'on', skinFaces: true, skinFx: true };
   const SETTING_OK = { textSpeed: ['slow', 'normal', 'fast', 'instant'], rushWhere: ['normal', 'strong', 'all'], rushStop: [30, 50], difficulty: ['story', 'normal', 'hard', 'expert', 'merciless'], pad: ['auto', 'xbox', 'ps'], showtimes: ['on', 'still'] };
   const PREFS = ['settings', 'tipsSeen', 'cursor', 'music', 'sfx', 'speed', 'cutins', 'perf']; // device preferences: kept when a slot or backup is loaded
   const fresh = () => ({ v: 4, settings: Object.assign({}, SETTINGS), tipsSeen: [], cursor: {}, lvl: D.progression.startLevel, exp: 0, pts: 0, nodes: [], known: {}, clears: 0, cycle: 0, runs: 0, reached: null, music: null, sfx: true, speed: 1,

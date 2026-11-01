@@ -1,7 +1,7 @@
 """The capsule series, rarities and tokens (gacha.js) and the Wardrobe / Boutique cosmetics (cosmetics.js), 2026-10-25.
 Headless Chrome, isolated profile, localhost; no player saves.
 
-Run: python3 tests/femc_cosmetics.py [--only odds,rotation,solchan,hidden,tokens,banner,equip,pending,ui,x10,shots,viewer,party,newpending] [--screenshots DIR]
+Run: python3 tests/femc_cosmetics.py [--only odds,rotation,solchan,hidden,tokens,banner,equip,pending,ui,x10,shots,viewer,party,newpending,retired,inbattle] [--screenshots DIR]
 
 Covers: five rarities over many turns (Secret included) and pity kept per series; which machines stand in the Corner by
 date (each season, and a turn on a series that isn't on falls back to the Cast machine); only people Solar has met;
@@ -22,7 +22,11 @@ a swipe step and wrap, Esc closes only the viewer, locked tiles never open it, f
 scroll, screenshots); the party's looks (a temporary sk-akihiko-champ folder of Akihiko's own frames and a temporary
 wpn-jungwon-council weapon, both removed after: worn by Akihiko in a real battle, his Wardrobe preview, Jungwon's Equipment
 weapon art; Minji's outfit hidden until she's met); every new outfit and weapon skin staying out of the pool and every
-month's featured list until its art exists, and each having a prompt in FEMC-ART-TODO.md."""
+month's featured list until its art exists, and each having a prompt in FEMC-ART-TODO.md.
+2026-11-01 (inbattle, FEMC-SKINS-BATTLE-DESIGN): battle() hands the frame a worn look's faces / clean / hand (no look marked
+clean yet); in a real Tartarus night Solar's HUD card and turn order wear the look's portraits (Off restores hers), the win
+screen shows its victory pose, an uncleaned look's fire cast plays no hand charge and one marked clean (in the page only)
+plays it inside the fighter's frame; screenshots at 1440x900 and 390x844."""
 import argparse, base64, json, pathlib, shutil, subprocess, sys, time
 from femc_browser import Page, REPO
 
@@ -706,6 +710,136 @@ try:
         ok(('"sk-akihiko-champ"' in rj) == PSKIN.exists() and ('"wpn-jungwon-council"' in rj) == PWPN.exists(), 'ready.js restored')
         results['party'] = 'Akihiko in a temporary outfit in a real battle (only him), his preview and viewer; Jungwon\'s weapon skin art; unmet members hidden'
 
+    # ── Retired looks (Kat, Nov 1 2026: Kiriko Cosplay, to be remade): never offered, listed, viewed or worn; a save that
+    #    wears it loads back on Default with the ownership record kept; its art stays on disk; the Kitsune Naginata stays ──
+    if want('retired'):
+        setup(p, day='10/12')
+        r = p.eval(r"""(()=>{const C=FemcCosmetics,G=FemcGame,x=C.byId('sk-kiriko'),s=C.cs();s.own.push('sk-kiriko');s.on['skin:solar']='sk-kiriko';
+          const months=[1,2,3,4,5,6,7,8,9,10,11,12],feat=[];months.forEach(m=>{const d=G.dayOf(m+'/15');C.banners(d).forEach(b=>{C.featured(d,b.id).forEach(i=>feat.push(i.id))})});
+          G.save();const raw=JSON.parse(JSON.stringify(G.S.gacha.cos));
+          return {retired:x.retired,ready:C.ready(x),pool:C.pool().some(i=>i.id==='sk-kiriko'),feat:feat.includes('sk-kiriko'),equip:C.equip('sk-kiriko'),
+            worn:C.onIn('skin:solar'),on:raw.on['skin:solar']||null,own:raw.own.includes('sk-kiriko'),view:C.viewable().some(i=>i.id==='sk-kiriko'),pose:C.battle().pose.solar||null,
+            wpn:C.ready(C.byId('wpn-kiriko')),wdesc:C.byId('wpn-kiriko').desc}})()""")
+        ok(r['retired'] and not r['ready'] and not r['pool'] and not r['feat'] and not r['equip'] and r['worn'] is None and r['on'] is None and r['own']
+           and not r['view'] and r['pose'] is None, f'Kiriko Cosplay retired everywhere, ownership kept: {r}')
+        ok(r['wpn'] and 'Kiriko Cosplay' not in r['wdesc'], f'the Kitsune Naginata stays, reworded: {r["wdesc"]}')
+        ok(pathlib.Path(REPO, 'assets/femc/game/art/skins/sk-kiriko/solar-pose-0.webp').exists(), 'its art stays on disk')
+        menu(p, 'wardrobe')
+        ok(p.eval("!document.querySelector('[data-wd=\"sk-kiriko\"]') && !!document.querySelector('[data-wd=\"wpn-kiriko\"]')"), 'not in the Wardrobe (the weapon skin is)')
+        p.eval("FemcMenu.close()")
+        clean(p, 'retired')
+        results['retired'] = 'sk-kiriko: no pool, featured, Wardrobe, viewer, equip or battle; unequipped on load; owned record kept'
+
+    # ── Skins in battle (FEMC-SKINS-BATTLE-DESIGN B, C, A; 2026-11-01): outfit faces on the HUD cards and turn order, the
+    #    win screen's victory pose, and the cast charge at the hand only for a look marked clean (forced here, in the page) ──
+    if want('inbattle'):
+        LOOK = 'sk-date'
+        motion(p, False)
+        view(p, 1440, 900)
+        setup(p, day='8/3')
+        p.eval("(()=>{const G=FemcGame,b=G.S.battleSave,E=FemcBattleEngine;G.S.slot='evening';E.evolutionsDue(b,id=>E.lvlOf(b,id)).forEach(e=>{b.evo[e.mid]=true});G.save()})()")
+        r = p.eval(r"""(()=>{const C=FemcCosmetics;const marked=C.ITEMS.filter(x=>x.clean).map(x=>x.id);
+          C.grantItem('%s');C.equip('%s');const b=C.battle();
+          const it=C.byId('%s');it.clean=true;it.hand=[0.4,0.3];const b2=C.battle();delete it.clean;delete it.hand;
+          return {marked,pose:Object.keys(b.pose),face:b.face.solar,akiFace:b.face.akihiko||null,clean:b.clean,look:b.look.solar,clean2:b2.clean,hand2:b2.hand,after:C.battle().clean};})()""" % (LOOK, LOOK, LOOK))
+        ok(r['marked'] == [], f'no look is marked clean yet: {r["marked"]}')
+        ok(r['pose'] == ['solar'] and r['face'] and r['face']['dir'].endswith(f'skins/{LOOK}/portraits/solar/') and 'neutral' in r['face']['have']
+           and r['akiFace'] is None and r['clean'] == {} and r['look'] == LOOK, f'battle(): face for the worn look, nothing for the unworn: {r}')
+        ok(r['clean2'] == {'solar': True} and r['hand2'] == {'solar': [0.4, 0.3]} and r['after'] == {}, f'battle(): clean / hand when marked: {r}')
+        BSTEP = r"""(()=>{const F=FemcBattle,c=F.ctl,d=document;
+          const tip=d.querySelector('.bt-tip [data-ok]');if(tip){tip.click();return 'tip'}
+          if(F.screen()==='results'&&window.__stopResults)return 'results';
+          if(F.screen()==='shuffle'){if(c&&c.kind==='shuffle'){c.pickValue(0);return 'sh'}const k=d.querySelector('[data-sh-ok]');if(k)k.click();return 'shuffle'}
+          if(d.querySelector('.bt-room.stairs [data-v=no], .bt-room.barrier [data-v=no]')){d.querySelector('.bt-room [data-v=no]').click();return 'no'}
+          if(c?.kind==='map'){const o=c.opts||[];const n=o.find(x=>x.type==='shadow'&&!x.cleared&&!x.used)||o.find(x=>!x.visited)||o[0];if(n)c.go(n.id);return 'map'}
+          if(c?.kind==='allout'){c.pickValue('1');return 'allout'}
+          if(c?.kind==='menu'){const B=F.B,u=B&&B.S.cur;if(window.__holdSolar&&u&&u.mid==='solar')return 'solar';const v=c.items.map(i=>i.v);c.pickValue(v.includes('attack')?'attack':v.includes('guard')?'guard':v[0]);return 'pick'}
+          if(c?.kind==='buttons'){const b=d.querySelector('.bt-btn.pink:not(:disabled)')||d.querySelector('.bt-btn:not(:disabled)');b&&b.click();return 'btn'}
+          return null})()"""
+
+        def bdrive(until, limit=90):
+            t0 = time.time()
+            while time.time() - t0 < limit:
+                if p.eval(until): return True
+                p.eval(BSTEP); time.sleep(0.04)
+            raise TimeoutError(until + ' :: ' + str(p.eval("JSON.stringify({s:FemcBattle.screen(),c:FemcBattle.ctl&&FemcBattle.ctl.kind})")))
+        SOLAR_MENU = "FemcBattle.screen()==='battle'&&FemcBattle.ctl?.kind==='menu'&&FemcBattle.ctl.items.some(i=>i.v==='skill')&&FemcBattle.B.S.cur.mid==='solar'"
+        CAST = r"""(()=>{const F=FemcBattle,D=FEMC_BATTLE_DATA,u=F.B.U(F.B.S.cur.id);D.skills.t_fire=D.skills.t_fire||{name:'Test Fire',el:'fire',type:'dmg',target:'one',power:1,cost:{sp:1},desc:''};
+          if(!u.skills.includes('t_fire'))u.skills.unshift('t_fire');u.sp=Math.max(u.sp,99);F.ctl.pickValue('skill');return true})()"""
+
+        def cast():
+            p.eval(CAST)
+            p.wait("FemcBattle.ctl&&FemcBattle.ctl.items&&FemcBattle.ctl.items.some(i=>i.v==='t_fire')", 10)
+            n = p.eval("FemcBattle.marks['use-t_fire']||0")
+            p.eval("FemcBattle.ctl.pickValue('t_fire')"); time.sleep(0.15)
+            p.eval("(()=>{const c=FemcBattle.ctl,f=FemcBattle.B.foes().find(f=>!f.dead);if(c&&c.pickValue)c.pickValue(f.id)})()")
+            try: p.wait(f"(FemcBattle.marks['use-t_fire']||0)>{n} && ['menu','allout'].includes(FemcBattle.ctl?.kind)", 30)
+            except TimeoutError: print('DEBUG', p.eval("JSON.stringify({s:FemcBattle.screen(),c:FemcBattle.ctl&&FemcBattle.ctl.kind,it:FemcBattle.ctl&&FemcBattle.ctl.items&&FemcBattle.ctl.items.map(i=>i.v),cur:FemcBattle.B.S.cur&&FemcBattle.B.S.cur.mid,m:Object.keys(FemcBattle.marks).filter(k=>/use|fighter|summon/.test(k))})")); raise
+
+        p.eval("FemcGame.makeHandoff('tartarus',{party:['solar','akihiko','yukari','junpei']});FemcGame.save()")
+        p.battle(); p.eval("window.__hoStay=true")
+        for _ in range(300):  # past any Persona evolution cinematics the save's levels bring
+            if p.eval("FemcBattle.screen()==='hub' && FemcBattle.ctl?.kind==='buttons'"): break
+            p.eval("(()=>{if(FemcBattle.screen()!=='evolution')return;const b=[...document.querySelectorAll('button')].find(x=>/skip|continue/i.test(x.textContent));b&&b.click()})()"); time.sleep(0.1)
+        ok(p.eval("FemcBattle.screen()==='hub'"), 'the night\'s hub')
+        p.eval("FemcBattle.save.cutins='off';window.__btGroup=['maya'];window.__holdSolar=true;document.querySelector('[data-go=run],[data-go=cont]').click()")
+        bdrive(SOLAR_MENU, 120)
+        p.eval("FemcBattle.B.foes().forEach(f=>{f.maxHp=f.hp=99999})")
+        time.sleep(0.6)
+        faces = p.eval(r"""(()=>{const im=[...document.images].filter(i=>i.classList.contains('fc')).map(i=>i.getAttribute('src'));
+          return {skin:im.filter(s=>s.includes('skins/%s/portraits/solar/')).length,base:im.filter(s=>/portraits\/solar\//.test(s)&&!s.includes('skins/')).length,
+            aki:im.filter(s=>/portraits\/akihiko\//.test(s)&&!s.includes('skins/')).length,order:!!document.querySelector('.bt-order li.party img[src*="skins/%s/portraits/solar/"]')}})()""" % (LOOK, LOOK))
+        ok(faces['skin'] >= 2 and faces['base'] == 0 and faces['aki'] >= 1 and faces['order'], f'outfit faces on Solar\'s card and turn order only: {faces}')
+        shot(p, 'inbattle-hud-1440x900')
+        # Not clean: a fire cast plays no charge at the hand (the painted effect stays the only one).
+        c0 = p.eval("FemcFX.chargeLog.length")
+        cast()
+        ok(not p.eval("FemcBattle.marks['fighter-charge']") and p.eval("FemcFX.chargeLog.length") == c0, 'an uncleaned look gets no hand charge')
+        # Outfit faces Off: the next turn order is drawn with her own faces.
+        p.eval("FemcBattle.save.settings.skinFaces=false")
+        bdrive(SOLAR_MENU, 60)
+        ok(p.eval("!document.querySelector('.bt-order li.party img[src*=\"skins/\"]')"), 'Outfit faces in battle: Off')
+        p.eval("FemcBattle.save.settings.skinFaces=true")
+        # Win (Solar lands it, so she strikes the victory pose): the results show her look's victory pose.
+        p.eval("window.__stopResults=true;FemcBattle.B.foes().forEach(f=>{f.hp=1});FemcBattle.ctl.pickValue('attack')"); time.sleep(0.15)
+        p.eval("(()=>{const c=FemcBattle.ctl,f=FemcBattle.B.foes().find(f=>!f.dead);if(c&&c.pickValue&&f)c.pickValue(f.id)})()")
+        p.eval("window.__holdSolar=false")
+        bdrive("FemcBattle.screen()==='results'", 60)
+        hero = p.eval("(()=>{const h=document.querySelector('.bt-res-hero');return h&&{src:h.getAttribute('src'),ok:h.complete&&h.naturalWidth>0,mid:h.dataset.mid}})()")
+        ok(hero and f'skins/{LOOK}/' in hero['src'] and '-pose-5.webp' in hero['src'] and hero['ok'], f'win screen: the look\'s victory pose: {hero}')
+        ok(p.eval('document.documentElement.scrollWidth <= innerWidth + 1'), 'results: no sideways scroll')
+        time.sleep(0.8); shot(p, 'inbattle-win-1440x900')
+        view(p, 390, 844); time.sleep(0.8)
+        ok(p.eval('document.documentElement.scrollWidth <= innerWidth + 1'), 'results phone: no sideways scroll')
+        shot(p, 'inbattle-win-390x844')
+        # Marked clean (in the page only): the next fight's fire cast charges at her hand first.
+        p.top(); p.eval(f"FemcCosmetics.byId('{LOOK}').clean=true"); p.battle()
+        p.eval("window.__stopResults=false;window.__holdSolar=true")
+        bdrive(SOLAR_MENU, 120)
+        ok(p.eval("FemcBattle.looks.clean.solar===true"), 'the frame read the clean mark')
+        p.eval("FemcBattle.B.foes().forEach(f=>{f.maxHp=f.hp=99999})")
+        time.sleep(0.5)
+        shot(p, 'inbattle-hud-390x844')
+        cast()
+        lg = p.eval("FemcFX.chargeLog[FemcFX.chargeLog.length-1]")
+        box = p.eval("(()=>{const r=document.querySelector('.bt-fighter img.posed').getBoundingClientRect(),R=document.querySelector('.bt-fxc').getBoundingClientRect();return {l:r.left-R.left,t:r.top-R.top,r:r.right-R.left,b:r.bottom-R.top}})()")
+        ok(p.eval("FemcBattle.marks['fighter-charge']>0") and lg and lg['kind'] == 'fire' and lg['mode'] == 'full' and lg['motes'] == 8
+           and box['l'] <= lg['x'] <= box['r'] and box['t'] <= lg['y'] <= box['b'], f'a clean look charges at the hand: {lg} in {box}')
+        # Screenshots of the charge (the cast frame shown, the effect paused at its middle) at both sizes.
+        bdrive(SOLAR_MENU, 60)  # past the All-Out prompt (Maya is weak to fire), back on her menu
+        p.eval("FemcFX.setSpeed(()=>1);true")  # the page runs at ?speed=10; the stills want the charge at 1x
+        for w, h in [(390, 844), (1440, 900)]:
+            view(p, w, h); time.sleep(0.7)
+            p.eval("(()=>{const im=document.querySelector('.bt-fighter img.posed');im.src=im.src.replace(/pose-\\d/,'pose-3');return true})()"); time.sleep(0.4)
+            p.eval("FemcFX.resize();FemcFX.charge('fire',FemcBattle.handAt('solar'));true"); time.sleep(0.2)
+            p.eval("FemcFX.pause();true"); shot(p, f'inbattle-charge-{w}x{h}'); p.eval("FemcFX.resume();true")
+            time.sleep(0.5)
+        p.top(); p.eval(f"delete FemcCosmetics.byId('{LOOK}').clean")
+        p.eval("document.querySelectorAll('.g-dh').forEach(x=>x.remove())")
+        clean(p, 'inbattle')
+        view(p, 1280, 850); motion(p, True)
+        results['inbattle'] = {'faces': faces, 'hero': hero['src'].split('?')[0], 'charge': lg}
+
     # ── Screens ──
     if want('shots'):
         setup(p, day='10/12')
@@ -741,14 +875,14 @@ try:
             ok(p.eval('document.documentElement.scrollWidth <= innerWidth + 1'), tag + ': capsule, no sideways scroll')
             shot(p, f'capsule-secret-{tag}')
             p.eval("FemcGacha.rng=Math.random;FemcGacha.HIDDEN.rate=0.0015;document.querySelector('.g-cap-ov [data-close]').click()")
-        # Kat's outfits (batch 47): Kiriko Cosplay in the Wardrobe and worn on the battlefield.
+        # Kat's outfits (batch 47): Emo Night in the Wardrobe and worn on the battlefield (Kiriko Cosplay is retired, Nov 1).
         view(p, 1280, 800)
-        p.eval("(()=>{const C=FemcCosmetics;['sk-kiriko','sk-emo'].forEach(C.grantItem);C.equip('sk-kiriko');FemcGame.save();})()")
+        p.eval("(()=>{const C=FemcCosmetics;['sk-emo'].forEach(C.grantItem);C.equip('sk-emo');FemcGame.save();})()")
         menu(p, 'wardrobe')
         click(p, '[data-wd-view=wardrobe]')
-        click(p, '[data-wd="sk-kiriko"]')
-        ok(p.eval("document.querySelector('.g-wd-pv-solar').src.includes('skins/sk-kiriko/solar-pose-0.webp')"), 'the preview wears Kiriko Cosplay')
-        shot(p, 'wardrobe-kiriko')
+        click(p, '[data-wd="sk-emo"]')
+        ok(p.eval("document.querySelector('.g-wd-pv-solar').src.includes('skins/sk-emo/solar-pose-0.webp')"), 'the preview wears Emo Night')
+        shot(p, 'wardrobe-emo')
         p.eval("FemcMenu.close()")
         p.eval("(()=>{const G=FemcGame;G.S.joined=['akihiko','yukari','junpei'];G.S.day=G.dayOf('9/15');G.makeHandoff('scripted',{script:'looks-check',notes:'interrupt turn 6',segment:1,forced:true,party:['solar','akihiko','yukari','junpei']});})()")
         p.battle()
@@ -759,8 +893,8 @@ try:
             src = p.eval("(()=>{const b=FemcBattle.B,f=document.querySelector('.bt-fighter'),im=f&&f.querySelector('img:not(.evk)');if(!b.S.cur)return null;const u=b.U(b.S.cur.id);return u&&u.mid==='solar'&&im&&!f.hidden&&im.complete?im.src:null})()")
             if src: break
             time.sleep(0.05)
-        ok(src and 'skins/sk-kiriko/solar-pose-' in src, f'Kiriko Cosplay on the battlefield: {src}')
-        p.top(); shot(p, 'battle-kiriko')
+        ok(src and 'skins/sk-emo/solar-pose-' in src, f'Emo Night on the battlefield: {src}')
+        p.top(); shot(p, 'battle-emo')
         p.eval("document.querySelectorAll('.g-dh').forEach(x=>x.remove())")
         p.console()
         view(p, 1280, 850)

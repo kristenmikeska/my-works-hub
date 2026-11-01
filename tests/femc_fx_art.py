@@ -10,6 +10,7 @@ Checks:
   - Reduce flashes: peak frames at 0.45, crit drawn at 0.75 size;
   - reduced motion: no sheet, the single soft flash;
   - Kat's shipped Dark sheet plays on a real Dark skill hit  through the menu;
+  - the cast charge (fx.js charge, 2026-11-01): timing, sheet, Performance / Reduce flashes / reduced motion, none in practice;
   - no browser errors; screenshots of a sheet mid-play at 1000x486, 375x812 and 1440x900.
 Run: python3 tests/femc_fx_art.py [--shots DIR]
 """
@@ -157,6 +158,27 @@ try:
     lg = p.eval("FemcFX.sheetLog.filter(l => l.name === 'dark').pop()")
     ok(lg and lg['frames'] == [0, 1, 2, 3, 4, 5], lg)
     results['dark (shipped)'] = {'real hit': 'fx-art-dark', 'frames': lg['frames']}
+
+    # 6. The cast charge at a caster's hand (FEMC-SKINS-BATTLE-DESIGN A, 2026-11-01). Practice has no Wardrobe and no fighter's
+    #    own sheet is cleaned yet, so the real Dark cast above played none; fx.js charge itself: ~300 ms, the element's sheet
+    #    small on top, half the motes and no sheet in Performance mode, no white core with Reduce flashes, one soft glow under
+    #    reduced motion, a support skill's colour and no sheet.
+    ok(not p.eval("FemcBattle.marks['fighter-charge']"), 'practice: an uncleaned own sheet gets no hand charge')
+    ch = lambda k='fire': (p.eval(f"FemcFX.charge({json.dumps(k)}, {{ x: 300, y: 300, r: 26 }})"), p.eval("FemcFX.chargeLog[FemcFX.chargeLog.length - 1]"))
+    t, lg = ch()
+    ok(t == 300 and lg['mode'] == 'full' and lg['motes'] == 14 and lg['sheet'] == 'fire' and not lg['calm'], ('charge, full', t, lg))
+    time.sleep(0.6)
+    t, lg = ch('support'); ok(lg['kind'] == 'buff' and lg['sheet'] is None, ('support: the buff colour, no sheet', lg))
+    p.eval("FemcFX.setCalm(true); true"); t, lg = ch(); p.eval("FemcFX.setCalm(false); true")
+    ok(lg['calm'] and lg['mode'] == 'full', ('Reduce flashes', lg))
+    p.eval("FemcFX.setQuality('low'); true"); t, lg = ch(); p.eval("FemcFX.setQuality('auto'); true")
+    ok(lg['mode'] == 'perf' and lg['motes'] == 7 and lg['sheet'] is None, ('Performance mode', lg))
+    p.ws.call('Emulation.setEmulatedMedia', {'features': [{'name': 'prefers-reduced-motion', 'value': 'reduce'}]})
+    p.wait("FemcFX.reduced()", 5)
+    t, lg = ch(); ok(t == 300 and lg['mode'] == 'reduced' and lg['motes'] == 0 and lg['sheet'] is None, ('reduced motion', lg))
+    p.ws.call('Emulation.setEmulatedMedia', {'features': [{'name': 'prefers-reduced-motion', 'value': 'no-preference'}]})
+    time.sleep(0.5)
+    results['charge'] = 'full / support / calm / performance / reduced; none in practice'
 
     errs = p.console(); ok(not errs, errs)
     print(json.dumps({'ok': True, 'results': results, 'screenshots': str(OUT)}, indent=1))

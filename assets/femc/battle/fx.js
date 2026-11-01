@@ -6,7 +6,8 @@
    - Adaptive quality: while effects run, the real frame time is measured; if it averages over ~20ms the canvas DPR and the
      particle budget step down (and back up when frames are fast again). setQuality('low') pins it low (Performance mode).
    - One requestAnimationFrame loop drives everything, including the glass shatter (via loop hooks).
-   battle.js: FemcFX.attach(root, { speed }) after building a battle, then FemcFX.play(kind, at, opts),
+   battle.js: FemcFX.attach(root, { speed }) after building a battle, then FemcFX.play(kind, at, opts), FemcFX.charge(kind, at) (a cast
+   charge-up at a caster's hand, only for cleaned cast frames),
    FemcFX.ash(rect, img), FemcFX.snapshot(root, extras) + FemcFX.shatter(layer, snap, point). */
 window.FemcFX = (() => {
   const RM = matchMedia('(prefers-reduced-motion: reduce)');
@@ -1312,6 +1313,40 @@ window.FemcFX = (() => {
     }
   }
 
+  /* charge(kind, at, o) → ms (at 1x): a short charge-up at a caster's hand before the hit (FEMC-SKINS-BATTLE-DESIGN part 2 A;
+     battle.js castCharge calls it only for a cleaned cast frame). Motes in the element's colour pulled into the point and a
+     growing glow (~0.3 s; the loop's dt carries battle speed), with the element's own sheet (artFor) played small on top when
+     one exists. Reduced motion: one soft glow. Performance mode: half the motes, no sheet. Reduce flashes: no white core. */
+  const CHARGE_KIND = { support: 'buff', buffs: 'buff', debuffs: 'debuff', none: 'almighty' };
+  const CHARGE_SHEETS = new Set(['fire', 'ice', 'elec', 'wind', 'light', 'dark', 'almighty', 'heal']);
+  const chargeLog = []; // test hook: { kind, x, y, mode, motes, sheet }
+  function charge(kind0, at, o = {}) {
+    if (!ctx || !at) return 0;
+    const kind = CHARGE_KIND[kind0] || kind0, col = COLORS[kind] || COLORS.almighty, R = Math.max(12, at.r || (phone() ? 18 : 26)), dur = 0.3;
+    const log = { kind, x: Math.round(at.x), y: Math.round(at.y), mode: reduced() ? 'reduced' : pinned != null ? 'perf' : 'full', motes: 0, sheet: null, calm };
+    chargeLog.push(log); if (chargeLog.length > 20) chargeLog.shift();
+    const spr = c => (calm ? soft(c) : glow(c));
+    if (reduced()) {
+      add({ dur, draw(c, t) { c.globalCompositeOperation = 'lighter'; c.globalAlpha = 0.6 * Math.sin(Math.PI * c01(t / dur)); c.drawImage(soft(col), at.x - R, at.y - R, R * 2, R * 2); } });
+      return dur * 1000;
+    }
+    const n = Math.max(3, Math.round((phone() ? 8 : 14) * (pinned != null ? 0.5 : 1)));
+    log.motes = n;
+    for (let i = 0; i < n; i++) {
+      const an = rnd(0, TAU), d = R * rnd(1.6, 2.6), life = dur * rnd(0.7, 1), delay = rnd(0, dur * 0.25);
+      emit({ shape: calm ? 'soft' : 'glow', x: at.x + Math.cos(an) * d, y: at.y + Math.sin(an) * d, vx: -Math.cos(an) * d / life, vy: -Math.sin(an) * d / life, life, delay, size: rnd(2.5, 4.5), size1: 1, color: col, fadeIn: 0.06 });
+    }
+    add({ dur: dur + 0.08, draw(c, t) {
+      const u = c01(t / dur), a = t > dur ? Math.max(0, 1 - (t - dur) / 0.08) : E.out(u);
+      c.globalCompositeOperation = 'lighter'; c.globalAlpha = 0.85 * a;
+      const r = R * (0.35 + 0.65 * u);
+      c.drawImage(spr(col), at.x - r, at.y - r, r * 2, r * 2);
+    } });
+    const art = pinned == null && CHARGE_SHEETS.has(kind) ? artFor(kind, {}) : null;
+    if (art) { log.sheet = art; sheet(art, { x: at.x, y: at.y, w: R * 2.2, h: R * 2.2 }, { small: true }, kind); }
+    return dur * 1000;
+  }
+
   /* ── Shadow death: black ash drifting up, the mask falls last ── */
   function sample(img, rect, n) {
     try {
@@ -1498,7 +1533,7 @@ window.FemcFX = (() => {
   }
 
   return {
-    attach, detach, resize, play, stream, setSpeed(fn) { speedFn = fn; }, ash, snapshot, shatter, preload, reduced,
+    attach, detach, resize, play, charge, chargeLog, stream, setSpeed(fn) { speedFn = fn; }, ash, snapshot, shatter, preload, reduced,
     pause() { paused = true; }, resume() { paused = false; last = performance.now(); kick(); }, get paused() { return paused; },
     setCalm(b) { calm = !!b; },
     // Skill-effect sheets: hasArt(name) once loaded; artFor(kind, o) = the sheet play() would use; artSrc for DOM sprites.

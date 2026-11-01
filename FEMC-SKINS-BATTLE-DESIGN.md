@@ -1,6 +1,6 @@
 # Skins in battle: design sheet
 
-*Persona 3: Solstice · drafted Nov 1 2026 from Kat's decisions of the same day · status: **waiting for Kat's sign-off** (nothing is built yet).*
+*Persona 3: Solstice · drafted Nov 1 2026 from Kat's decisions of the same day · status: **B, C and A's code built Nov 1 2026** (see 7.9); A switches on per look once its cleaned sheet is wired and marked; D–G and S1–S5 not built.*
 
 The idea: when a fighter wears a Wardrobe look, the whole fight should know it. Not just the figure on the field, but the faces on the party cards, the win screen, the Theurgy cut-in, the skill effects and the All-Out finish card. Looks stay looks: **no stats, ever.**
 
@@ -261,6 +261,13 @@ Every piece checks for its file and silently uses the old behaviour: no sheet 2 
 - `tests/femc_building.py --only searchers`: an outfit finish card in a real All-Out.
 - Results screen: the hero pose, by MVP and with a worn look (add to `femc_field_poses.py`, desktop and phone shots).
 - Bumps when built: `ART_V`, battle.js, fx.js, cosmetics.js, ready.js `?v=` (both pages where loaded).
+
+### 7.9 Built (Nov 1 2026)
+- **B, outfit faces:** `battle.js skinFace` inside `pimg` (party cards, turn order, results, the All-Out portraits, Theurgy band, perk cut-ins); `cosmetics.js battle()` returns `face`, `look`, `clean`, `hand` per worn look. Setting `skinFaces` (On / Off), both settings panels.
+- **C, win screen:** `resultsScreen` shows `.bt-res-heroW > .bt-res-hero` (pose 5 of the look worn by the fighter `fighterWin` picked, Solar if none; `battle.css`, phones top right, no slide-in under reduced motion). Only with a worn look: a fighter in their own clothes keeps the old results screen.
+- **A, hand charge:** `fx.js charge(kind, at)` (motes pulled in, a glow, the element's sheet small; Performance half the motes and no sheet, Reduce flashes no white core, reduced motion one soft glow; `chargeLog` test hook) called by `battle.js castCharge` after the cast pose starts, only for non-physical skills and only when `castClean(mid)`: a worn look marked clean (`cosmetics.js` ITEMS `clean: true`, or its `CLEAN` list, or a ready.js `skins[id].clean` list), or a fighter's own sheet in `FIGHTER_CLEAN`. Hand points: `FIGHTER_HAND` (measured from each pose-3 frame; an item's `hand: [x, y]` overrides; `HAND_DEFAULT` [0.5, 0.3]). Setting `skinFx` (On / Off) gates it. **No look is marked clean yet.** To switch one on once Kat's recut is final: `python3 tools/femc-wardrobe.py skin "<…/RECUTS - PHOTOSHOP EDITS/<sheet>.png>" <look id> <who>` (transparent sheets fine), then add `clean: true` to that look's ITEMS entry.
+- **Retired looks:** `retired: true` on an item (Kiriko Cosplay, Nov 1) hides it everywhere and takes it off a save that wears it (cosmetics.js header).
+- Tests: `femc_cosmetics.py --only inbattle,retired`, `femc_fx_art.py` (section 6, the charge).
 
 ### 7.8 Open questions for Kat
 1. The 13 themes and who gets which (part 4): move, rename or add any.

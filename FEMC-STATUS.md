@@ -185,6 +185,7 @@ Other docs, if you ever want detail:
 - ✅ Art batch 112: five more epilogue pictures (two for strangers, two for HOAX, one for Stay), each in its world's album.
 - ✅ Art batch 113: the New Game+ climb's three guardians and its last boss now have their own pictures and poses.
 - ✅ Art batch 114: a Swim Season banner in July and August (seven swimwear looks for Solar, Haechan, Jungwon, Yukari and Akihiko), six couple outfits for Solar with Haechan, Jungwon and Akihiko (his half shows once she's met him), and The Sun, the first Tarot Arcana look, with its own January banner; all with battle poses, and scene portraits for all but The Sun.
+- ✅ **Outfits in battle (first part):** a fighter wearing a Wardrobe outfit with its own portraits now wears them on the party card and turn order too (Settings → Battle: Outfit faces), and the win screen shows that outfit's victory pose big. A glow at the hand as a spell leaves it is ready for outfits whose skill pose has been cleaned; none is switched on yet (Settings → Battle: Outfit effects). Kiriko Cosplay is put away until its remake
 
 ## Music and polish
 - ✅ 57 songs, rotating with no repeats, plus world songs in memories, arrivals, calls and endings

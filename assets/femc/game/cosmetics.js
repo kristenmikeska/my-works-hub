@@ -6,12 +6,19 @@
                and, with "Outfits in scene portraits" on, their scene portraits (core.js portrait asks portrait()).
                Art: game/art/skins/<id>/<who>-pose-0..5.webp (the pose-sheet format: idle, Evoker, attack, spell, hurt,
                victory) and optional game/art/skins/<id>/portraits/<who>/<face>.webp.
+               In battle (FEMC-SKINS-BATTLE-DESIGN, 2026-11-01): the portraits also wear the HUD card and turn-order faces, the
+               victory pose stands on the win screen, and a look with `clean: true` (its cast frame re-cut without the painted
+               effect) gets the layered hand charge; see battle() below.
      weapon    a weapon look for a fighter: game/art/skins/<id>/weapon.webp (the Equipment tab shows it for her weapon slot).
      evoker    a tint on the Evoker prop in summons (CSS filter; code only).
      battleui  battle colours (CSS variables injected into the battle frame; code only).
      title     the title screen's colours (also kept in localStorage, since the title shows before a save loads; code only).
      wallpaper the menu's backdrop: a place background, the key art or a CSS pattern (code only).
      uitheme   the field UI's colours (CSS variables on :root; code only).
+   ── Retired items (`retired: true`, e.g. sk-kiriko, Nov 1 2026) ──
+     Gone for players: ready() is false (so never in the pool, a featured list, the viewer, equip or battle), the Wardrobe
+     skips it (not even "Art coming"), and cs() takes it off if a save wears it (back to Default). Ownership in the save
+     stays, harmless; the art stays on disk. A remake: re-cut the art and drop the flag.
    ── Art-pending items ──
      An item with `art: true` exists in the Wardrobe as "Art coming" and is never in the banner pool until its files are
      listed in game/art/ready.js (FEMC_ART_READY; tools/femc-wardrobe.py cuts sheets and rewrites it). The moment they're
@@ -69,7 +76,8 @@ window.FemcCosmetics = (() => {
     c('sk-phantom', 'skin', 'Phantom Thief', 'UR', 'A long black coat, red gloves and a white domino mask. Take your heart.', { who: 'solar', art: true }),
     // Kat's own two (2026-10-25).
     c('sk-emo', 'skin', 'Emo Night', 'SR', 'All black: a pleated skirt, striped sleeves, a chain belt and platform boots.', { who: 'solar', art: true }),
-    c('sk-kiriko', 'skin', 'Kiriko Cosplay', 'UR', 'Fox-ear band, red and white shrine robes, kunai at her belt. Her main, down to the last ofuda.', { who: 'solar', art: true }),
+    // Retired (Kat, 2026-11-01: she'll remake it); its art stays on disk. Drop `retired` when the remake is in.
+    c('sk-kiriko', 'skin', 'Kiriko Cosplay', 'UR', 'Fox-ear band, red and white shrine robes, kunai at her belt. Her main, down to the last ofuda.', { who: 'solar', art: true, retired: true }),
     // More looks for Solar, Haechan and Jungwon (FEMC-ART-WIRING section 7): wired as each one's art arrives (art batches 86-94).
     c('sk-alphaphi', 'skin', 'Alpha Phi Formal', 'SR', 'A long dusty-rose satin gown, a silver Alpha Phi pin and silver heels. Formal night.', { who: 'solar', art: true }), // series: Runners
     c('sk-harbourcoat', 'skin', 'Harbour Night Coat', 'SR', 'A long black coat buttoned to the throat, leather gloves, a red thread tied at her wrist. The port at night.', { who: 'solar', art: true }), // series: strangers
@@ -135,7 +143,7 @@ window.FemcCosmetics = (() => {
     c('wpn-sakura', 'weapon', 'Sakura Naginata', 'SR', 'A pale wood haft wrapped in pink silk, blossoms etched on the blade.', { who: 'solar', art: true }),
     c('wpn-phantom', 'weapon', 'Phantom Naginata', 'UR', 'Black lacquer and a red tassel, to go with the coat.', { who: 'solar', art: true }),
     // More for Solar (2026-10-27): her two outfits' matches and one from each of Kat's universes (art pending: section 7).
-    c('wpn-kiriko', 'weapon', 'Kitsune Naginata', 'UR', 'Red lacquer and a fox-mask charm, kunai strapped along the haft, ofuda streaming from the collar. Goes with the Kiriko Cosplay.', { who: 'solar', art: true }),
+    c('wpn-kiriko', 'weapon', 'Kitsune Naginata', 'UR', 'Red lacquer and a fox-mask charm, kunai strapped along the haft, ofuda streaming from the collar. A fox spirit’s blade.', { who: 'solar', art: true }),
     c('wpn-emo', 'weapon', 'Emo Night Naginata', 'SR', 'Matte black, a chain wrap, safety pins and a little broken-heart charm. Goes with Emo Night.', { who: 'solar', art: true }),
     c('wpn-runners', 'weapon', 'Runners Naginata', 'SR', 'Orange and navy grip tape, a tiny gaming-headset charm, a rooftop at golden hour etched on the blade. From Runners.', { who: 'solar', art: true }),
     c('wpn-strangers', 'weapon', 'Harbour Night Naginata', 'SR', 'Gunmetal and wet black, a harbour-light amber edge and a red thread knotted under the blade. From strangers.', { who: 'solar', art: true }),
@@ -238,7 +246,7 @@ window.FemcCosmetics = (() => {
   const readyArt = () => window.FEMC_ART_READY || {};
   // Is an item usable: code-only always; an art item once ready.js lists its files.
   function ready(x) {
-    if (!x) return false;
+    if (!x || x.retired) return false;
     if (!x.art) return true;
     const A = readyArt();
     if (x.kind === 'skin') return ((A.skins || {})[x.id]?.poses || []).includes(x.who);
@@ -249,7 +257,9 @@ window.FemcCosmetics = (() => {
   // A party look only once Solar has met them (no spoilers from the Boutique).
   const metOk = x => !x.who || x.who === 'solar' || !!(G.isMet && G.isMet(x.who));
   const whoName = id => (id === 'solar' ? 'Solar' : (G.LINKS && G.LINKS[id] && G.LINKS[id].short) || (G.name ? G.name(id) : id));
-  const posePath = (who, skin) => (skin && ready(skin) ? `${G.base}${skinDir(skin.id)}${who}-pose-0.webp` : `${G.base}assets/femc/battle/art/poses/${who}-pose-0.webp`);
+  // Bump SKIN_V when outfit pose frames are re-cut in place (Kat's Photoshop recuts, Nov 1 2026); battle.js uses ART_V.
+  const SKIN_V = 2;
+  const posePath = (who, skin) => (skin && ready(skin) ? `${G.base}${skinDir(skin.id)}${who}-pose-0.webp?v=${SKIN_V}` : `${G.base}assets/femc/battle/art/poses/${who}-pose-0.webp`);
 
   /* ── State ── */
   function cs() {
@@ -258,6 +268,7 @@ window.FemcCosmetics = (() => {
     if (!g.cos || typeof g.cos !== 'object') g.cos = f;
     const s = g.cos;
     Object.keys(f).forEach(k => { if (s[k] === undefined || (f[k] !== null && typeof s[k] !== typeof f[k])) s[k] = f[k]; });
+    if (s.on && typeof s.on === 'object') Object.keys(s.on).forEach(k => { const x = byId(s.on[k]); if (x && x.retired) delete s.on[k]; }); // a retired look comes off (Default)
     if (!Array.isArray(s.own)) s.own = []; if (!s.got || Array.isArray(s.got)) s.got = {}; s.pity = Object.assign({ sr: 0, ur: 0 }, s.pity || {});
     return s;
   }
@@ -357,11 +368,27 @@ window.FemcCosmetics = (() => {
   }
   // The title shows before a save loads: use the last theme this browser saw.
   function applyTitleEarly() { styleSheet(); try { const t = localStorage.getItem(TITLE_KEY); if (t && byId(t)) document.documentElement.dataset.titletheme = t; } catch (e) {} }
-  /* For the battle frame (battle.js reads parent.FemcCosmetics.battle() once at load): pose folders for skins, and CSS. */
+  /* For the battle frame (battle.js reads parent.FemcCosmetics.battle() at load and when the Wardrobe changes): per worn look's
+     fighter (`who`): pose (the pose folder), face ({ dir, have }: the look's scene portraits, for the HUD cards and turn order,
+     FEMC-SKINS-BATTLE-DESIGN B), clean (true once the look's cast frame, pose 3, is re-cut without its painted effect: the
+     layered hand charge plays only then, design A), hand ([x, y] share of the frame when an ITEMS `hand` overrides the
+     fighter's default), look (the item id); plus CSS for the battle theme and Evoker tint.
+     Marking a look clean (only after Kat's recut is wired): re-cut it with
+       python3 tools/femc-wardrobe.py skin "<…/RECUTS - PHOTOSHOP EDITS/<sheet>.png>" <look id> <who>   (transparent sheets are fine)
+     then add `clean: true` to its ITEMS entry (or list it in CLEAN below). */
+  const CLEAN = []; // look ids whose cast frame is clean (same as an ITEMS `clean: true`)
+  const isClean = (x, who) => !!(x.clean || CLEAN.includes(x.id) || (((readyArt().skins || {})[x.id] || {}).clean || []).includes(who));
   function battle() {
     if (!S()) return null;
-    const pose = {}, out = { pose, css: '' };
-    ITEMS.filter(x => x.kind === 'skin').forEach(x => { const o = onIn(slotOf(x)); if (o && !pose[o.who]) pose[o.who] = G.base + skinDir(o.id); });
+    const pose = {}, face = {}, clean = {}, hand = {}, look = {}, out = { pose, face, clean, hand, look, css: '' };
+    ITEMS.filter(x => x.kind === 'skin').forEach(x => {
+      const o = onIn(slotOf(x)); if (!o || pose[o.who]) return;
+      const w = o.who, have = ((readyArt().skins || {})[o.id]?.portraits || {})[w] || [];
+      pose[w] = G.base + skinDir(o.id); look[w] = o.id;
+      if (have.length) face[w] = { dir: `${G.base}${skinDir(o.id)}portraits/${w}/`, have: have.slice(), v: 7 };
+      if (isClean(o, w)) clean[w] = true;
+      if (Array.isArray(o.hand)) hand[w] = o.hand.slice(0, 2);
+    });
     const bui = onIn('battleui'), evk = onIn('evoker');
     if (bui) out.css += `:root{${varsCss(bui.pal)}}`;
     if (evk) out.css += `.bt-evk-band .gun{filter:${evk.filter}}`;
@@ -386,7 +413,7 @@ window.FemcCosmetics = (() => {
   const DEFAULT_POSE = 'assets/femc/battle/art/poses/solar-pose-0.webp';
   const EVOKER = 'assets/femc/battle/art/summon/evoker-prop.webp';
   function thumb(x) {
-    if (x.kind === 'skin') return ready(x) ? `<img src="${G.base}${skinDir(x.id)}${x.who}-pose-0.webp" alt="">` : `<span class="g-wd-ico">👗</span>`;
+    if (x.kind === 'skin') return ready(x) ? `<img src="${G.base}${skinDir(x.id)}${x.who}-pose-0.webp?v=${SKIN_V}" alt="">` : `<span class="g-wd-ico">👗</span>`;
     if (x.kind === 'weapon') return ready(x) ? `<img src="${G.base}${skinDir(x.id)}weapon.webp" alt="">` : `<span class="g-wd-ico">⚔</span>`;
     if (x.kind === 'evoker') return `<img src="${G.base}${EVOKER}" alt="" style="filter:${x.filter}">`;
     if (x.kind === 'wallpaper') return `<span class="g-wd-sw" style="background:${wallCss(x)}"></span>`;
@@ -415,7 +442,7 @@ window.FemcCosmetics = (() => {
     const s = cs(), x = byId(sel);
     const kinds = Object.keys(KINDS).sort((a, b) => KINDS[a].order - KINDS[b].order);
     const lists = kinds.map(k => {
-      const items = ITEMS.filter(i => i.kind === k && (metOk(i) || owns(i.id)));
+      const items = ITEMS.filter(i => i.kind === k && !i.retired && (metOk(i) || owns(i.id)));
       const slots = [...new Set(items.map(slotOf))];
       return slots.map(slot => {
         const worn = onIn(slot), one = items.find(i => slotOf(i) === slot);

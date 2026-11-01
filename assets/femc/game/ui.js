@@ -1895,6 +1895,8 @@
       { k: 'battleSpeed', label: 'Battle speed', opts: [[1, '1x'], [2, '2x'], [3, '3x']], desc: () => 'How fast battle animations play. Rush doubles it.' },
       { k: 'cutins', label: 'Persona cut-ins', opts: [['always', 'Always'], ['first', '1st per battle'], ['off', 'Off']], desc: () => 'The Evoker summon before a Persona skill and the full Theurgy cut-in: every time, the first time per member each battle, or never (Theurgy then plays a short version, as it does in Rush).' },
       { k: 'showtimes', label: 'Bond Showtimes', opts: [['on', 'On'], ['still', 'Still only']], desc: () => 'A bond with a Showtime plays its little scene before the strike (tap or Enter skips to the strike). Still only shows the bond’s single picture instead.' },
+      { k: 'skinFaces', label: 'Outfit faces in battle', opts: ONOFF, desc: () => 'A fighter wearing a Wardrobe outfit with its own portraits shows them on the party cards and turn order.' },
+      { k: 'skinFx', label: 'Outfit effects', opts: ONOFF, desc: () => 'Extra effects for Wardrobe outfits, like the glow at the hand as a spell leaves it. Off keeps the normal element effects only.' },
       { k: 'rushWhere', label: 'Rush allowed in', opts: [['normal', 'Normal rooms'], ['strong', '+ Strong rooms'], ['all', 'Every fight']], desc: () => 'Where Rush (auto-battle) may run.' },
       { k: 'rushStop', label: 'Rush stops below', opts: [[30, '30% HP'], [50, '50% HP']], desc: v => `Rush hands control back when anyone drops below ${v}% HP, or Solar below 50%.` },
       { k: 'remember', label: 'Remember cursor', opts: ONOFF, desc: () => 'Each member’s battle menu reopens on their last command, skill, item and target.' },

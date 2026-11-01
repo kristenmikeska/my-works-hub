@@ -57,7 +57,19 @@
   const rand = params.has('seed') ? E.rng(+params.get('seed') || 1) : Math.random;
   const testSpeed = +params.get('speed') || 0;
   const V = () => (window.FemcMode && window.FemcMode.v) || 1;
-  const pimg = (id, face) => `${D.portraits}${id}/${face}.webp?v=${V()}`;
+  /* Outfit faces in battle (FEMC-SKINS-BATTLE-DESIGN B): a party member wearing a Wardrobe look with scene portraits shows
+     them on every face this page draws for them (HUD cards, turn order, results, Theurgy band, perk cut-ins), with the same
+     face fallback as cosmetics.portrait (the face, its base mood, neutral, the first one there). Skin portraits sit on the
+     fighter's base canvas, so the face-focus table works unchanged. Setting `skinFaces` (default on); practice has no looks. */
+  const skinFace = (id, face) => {
+    try {
+      const L = LOOKS && LOOKS.face && LOOKS.face[id];
+      if (!L || !L.have || !L.have.length || (save && save.settings && save.settings.skinFaces === false)) return null;
+      const f = [face, face && String(face).replace(/-\d+$/, ''), 'neutral', L.have[0]].find(k => k && L.have.includes(k));
+      return f ? `${L.dir}${f}.webp?v=${L.v || 7}` : null;
+    } catch (e) { return null; } // before LOOKS / save exist
+  };
+  const pimg = (id, face) => skinFace(id, face) || `${D.portraits}${id}/${face}.webp?v=${V()}`;
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const member = mid => D.party.find(m => m.id === mid);
   // Who this page deals with: the prototype leaves the searchers out (they only fight in the life sim, once awake).
@@ -73,7 +85,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 36;
+  const ART_V = 37;
   /* Status art (tools/femc-icons.py): sticker icons for the ailments and the buff / debuff arrows, and the Tartarus map's room
      glyphs. A status chip shows its icon in place of the old name or ATK / DEF / AGI text (the name stays in its title). */
   const ICON_DIR = 'assets/femc/battle/art/icons/';
@@ -118,6 +130,20 @@
   let LOOKS = readLooks();
   function applyLooks() { LOOKS = readLooks(); let st = document.getElementById('bt-looks'); if (LOOKS && LOOKS.css) { if (!st) { st = document.createElement('style'); st.id = 'bt-looks'; document.head.appendChild(st); } st.textContent = LOOKS.css; } else if (st) st.remove(); }
   applyLooks();
+  /* Layered cast effects (FEMC-SKINS-BATTLE-DESIGN A): when a party member casts a non-physical skill, a short charge-up in
+     the skill's element plays at the hand of their cast pose (pose 3) before the hit lands as now (fx.js charge, which reuses
+     the element's effect sheet small). ONLY for a cleaned cast frame: every current cell 4 still has its effect painted in,
+     so an uncleaned sheet gets no charge (the two never double up). A look is clean through cosmetics.js (ITEMS
+     `clean: true` / CLEAN / ready.js `clean`, read as LOOKS.clean); a fighter's own sheet through FIGHTER_CLEAN below once
+     its recut is in (tools/femc-shadow-poses.py). Setting `skinFx` (default on) switches it off.
+     FIGHTER_HAND: the casting hand as [x, y] shares of the pose frame canvas, measured by eye from each pose-3 frame (Nov 1
+     2026); a look uses its fighter's unless its item has `hand`; anyone else HAND_DEFAULT (about the chest). */
+  const FIGHTER_CLEAN = new Set([]);
+  const FIGHTER_HAND = { solar: [0.22, 0.17], akihiko: [0.25, 0.25], yukari: [0.35, 0.17], junpei: [0.75, 0.23], mitsuru: [0.73, 0.31], aigis: [0.33, 0.19],
+    koromaru: [0.32, 0.41], shinjiro: [0.73, 0.16], haechan: [0.32, 0.2], jungwon: [0.2, 0.22], jihoon: [0.16, 0.12], minji: [0.21, 0.2] };
+  const HAND_DEFAULT = [0.5, 0.3];
+  const castClean = mid => (LOOKS && LOOKS.pose && LOOKS.pose[mid] ? !!(LOOKS.clean && LOOKS.clean[mid]) : FIGHTER_CLEAN.has(mid));
+  const handOf = mid => (LOOKS && LOOKS.pose && LOOKS.pose[mid] && LOOKS.hand && LOOKS.hand[mid]) || FIGHTER_HAND[mid] || HAND_DEFAULT;
   const posedFrames = mid => [0, 1, 2, 3, 4, 5].map(i => (LOOKS && LOOKS.pose[mid] ? `${LOOKS.pose[mid]}${mid}-pose-${i}.webp?v=${ART_V}` : `assets/femc/battle/art/poses/${mid}-pose-${i}.webp?v=${ART_V}`));
   const fieldPose = mid => (FIGHTER_POSES[mid] ? posedFrames(mid)[0] : `assets/femc/battle/art/poses/${mid}.webp?v=${ART_V}`);
   const hasField = mid => FIELD_POSES.has(mid) || !!FIGHTER_POSES[mid];
@@ -190,7 +216,7 @@
   /* Settings: the game's one store. Story fights read it from the life sim; practice reads the same key directly. */
   const readUni = () => { if (BR) { try { return JSON.parse(JSON.stringify(BR.settings() || {})); } catch (e) { return {}; } } try { return JSON.parse(localStorage.getItem(UNI_KEY) || '{}') || {}; } catch (e) { return {}; } };
   // battle setting (save.settings.<k>) → the store's key
-  const UNI = { textSpeed: 'text', sfxVol: 'sfxVol', difficulty: 'difficulty', remember: 'remember', rushWhere: 'rushWhere', rushStop: 'rushStop', shake: 'shake', calm: 'calm', numbers: 'numbers', tips: 'tips', pad: 'pad', showtimes: 'showtimes' };
+  const UNI = { textSpeed: 'text', sfxVol: 'sfxVol', difficulty: 'difficulty', remember: 'remember', rushWhere: 'rushWhere', rushStop: 'rushStop', shake: 'shake', calm: 'calm', numbers: 'numbers', tips: 'tips', pad: 'pad', showtimes: 'showtimes', skinFaces: 'skinFaces', skinFx: 'skinFx' };
   function pullSettings() {
     const u = readUni(), st = save.settings;
     Object.entries(UNI).forEach(([k, uk]) => {
@@ -643,6 +669,8 @@
     { k: 'textSpeed', label: 'Text speed', opts: [['slow', 'Slow'], ['normal', 'Normal'], ['fast', 'Fast'], ['instant', 'Instant']], desc: () => 'How fast Fuuka’s lines type out, and how long lines stay on screen.' },
     { k: 'cutins', top: true, label: 'Persona cut-ins', opts: [['always', 'Always'], ['first', '1st per battle'], ['off', 'Off']], desc: () => 'The Evoker summon before a Persona skill and the full Theurgy cut-in: every time, the first time per member each battle, or never (Theurgy then plays a short version, as it does in Rush).' },
     { k: 'showtimes', label: 'Bond Showtimes', opts: [['on', 'On'], ['still', 'Still only']], desc: () => 'A bond with a Showtime plays its little scene before the strike (tap or Enter skips to the strike). Still only shows the bond’s single picture instead.' },
+    { k: 'skinFaces', label: 'Outfit faces in battle', opts: ON_OFF, desc: () => 'A fighter wearing a Wardrobe outfit with its own portraits shows them on the party cards and turn order (story fights; practice has no Wardrobe).' },
+    { k: 'skinFx', label: 'Outfit effects', opts: ON_OFF, desc: () => 'Extra effects for Wardrobe outfits, like the glow at the hand as a spell leaves it. Off keeps the normal element effects only.' },
     { k: 'music', label: 'Music', opts: ON_OFF, get: () => musicOn(), set: v => { save.music = v; }, desc: () => 'The same switch as the ♪ button.' },
     { k: 'musicVol', label: 'Music volume', range: true, desc: () => (musicOn() ? 'Music volume.' : 'Music volume (music is switched off).') },
     { k: 'sfx', label: 'Sound effects', opts: ON_OFF, get: () => save.sfx !== false, set: v => { save.sfx = v; }, desc: () => (lsGet('kg-femc-sound') === 'off' ? 'Sound effects (FEMC’s sound switch is off, so they stay quiet).' : 'The same switch as the SFX button.') },
@@ -2392,9 +2420,11 @@
     }
   }
   /* A won fight: the last fighter on the field (or the first one standing who has field art) strikes the victory pose. */
+  let winMid = null; // who struck the victory pose (the win screen's hero, design C)
   function fighterWin(lastId) {
     const up = B.party().filter(p => !p.dead && !p.down && hasField(p.mid));
     const u = up.find(p => p.id === lastId) || up[0];
+    winMid = u ? u.mid : null;
     if (!u) return;
     BT.fighter.dataset.id = u.id;
     paintFighter();
@@ -2477,6 +2507,22 @@
     if (!el) return { x: R.width / 2, y: R.height / 2, w: 200, h: 200 };
     const r = el.getBoundingClientRect();
     return en ? { x: r.left + r.width / 2 - R.left, y: r.top + r.height * 0.5 - R.top, w: r.width, h: r.height } : { x: r.left + r.width * 0.55 - R.left, y: r.top + r.height * 0.4 - R.top, w: r.width * 0.7, h: r.height };
+  }
+  /* The casting hand's point on the field (FX canvas coordinates): the pose frame is drawn object-fit: contain at the bottom
+     centre of its <img> (whose rect already includes the --pz / --pdx transform), so map the share onto the drawn picture. */
+  function handAt(fp, mid) {
+    const img = fp && fp.querySelector('img.posed'); if (!img || !BT) return null;
+    const r = img.getBoundingClientRect(), R = BT.root.getBoundingClientRect(), nw = img.naturalWidth, nh = img.naturalHeight;
+    if (!r.width || !r.height || !nw || !nh) return null;
+    const k = Math.min(r.width / nw, r.height / nh), dw = nw * k, dh = nh * k, [hx, hy] = handOf(mid);
+    return { x: r.left + (r.width - dw) / 2 + hx * dw - R.left, y: r.bottom - dh + hy * dh - R.top, r: Math.max(14, dh * 0.07) };
+  }
+  async function castCharge(u, fp, e) {
+    if (!FX || !FX.charge || !fp || E.PHYS.has(e.el) || !castClean(u.mid) || ST().skinFx === false) return;
+    const at = handAt(fp, u.mid); if (!at) return;
+    const ms = FX.charge(e.el, at);
+    mark('fighter-charge');
+    if (ms > 0) await sleep(ms);
   }
   /* Play a spell/hit effect; returns ms (at 1x) until it lands. */
   function fxPlay(kind, id, o = {}) {
@@ -3315,7 +3361,7 @@
         } else {
           paintCard(u);
           const fp = posedFighter(u), act = E.PHYS.has(e.el) ? 'attack' : 'cast';
-          if (e.summon && !e.charmed) { if (fp) { holdPose(fp, 'evoke'); mark('fighter-evoke'); } await summonCut(u, e.name); if (fp) { animateShadow(fp, act, SPELL_HOLD); mark('fighter-' + act); } banner(e.name, { el: e.el, sub: u.persona }); const sg = D.skills[e.skill]; if (sg && sg.fx && sg.type !== 'dmg' && SIG_FX.has(sg.fx)) e.tgts.forEach(id => fxPlay(sg.fx, id)); }
+          if (e.summon && !e.charmed) { if (fp) { holdPose(fp, 'evoke'); mark('fighter-evoke'); } await summonCut(u, e.name); if (fp) { animateShadow(fp, act, SPELL_HOLD); mark('fighter-' + act); if (act === 'cast') await castCharge(u, fp, e); } banner(e.name, { el: e.el, sub: u.persona }); const sg = D.skills[e.skill]; if (sg && sg.fx && sg.type !== 'dmg' && SIG_FX.has(sg.fx)) e.tgts.forEach(id => fxPlay(sg.fx, id)); }
           else if (e.charmed) { banner(e.name, { el: 'charm', sub: `${u.name} · Charmed` }); await sleep(300); }
           else { const c = BT.cards.get(u.id); c.classList.remove('hit'); banner('Attack', { el: e.el, sub: u.name }); if (fp) { animateShadow(fp, 'attack', 700); mark('fighter-attack'); } await sleep(260); }
           log(`${u.name}: ${e.name}`, 'pu');
@@ -4183,7 +4229,12 @@
       if (o.shuffle) { const rc = o.shuffle.res.fx.card && ICON && ICON.revCard ? ICON.revCard(o.shuffle.res.fx.card, { cls: 'bt-res-card' }) : '';
         extra.push(`<span class="shuf${o.shuffle.res.penalty ? ' pen' : ''}${rc ? ' has-card' : ''}">${rc}<em>Shuffle Time · ${esc(o.shuffle.card.name)}: ${esc(o.shuffle.res.lines.join(', '))}</em></span>`); }
       (o.notes || []).forEach(n => extra.push(`<span class="perk">${esc(n)}</span>`));
-      const el = show(`<div class="bt-res"><div>
+      // The win screen's hero (FEMC-SKINS-BATTLE-DESIGN C): the fighter who struck the victory pose (Solar if none), in the
+      // Wardrobe look they wear: its victory frame (pose 5) big, bleeding off the right edge behind the rows. No look: as before.
+      const mvp = winMid || 'solar', hero = LOOKS && LOOKS.pose && LOOKS.pose[mvp] && FIGHTER_POSES[mvp] && o.rew
+        ? `<div class="bt-res-heroW" aria-hidden="true"><img class="bt-res-hero" src="${posedFrames(mvp)[5]}" alt="" draggable="false" data-mid="${mvp}" onerror="this.parentNode.remove()"></div>` : '';
+      if (hero) mark('results-hero');
+      const el = show(`${hero}<div class="bt-res"><div>
           <h1 class="bt-res-title"><small>${esc(o.title)}</small>RESULTS</h1>
           <div class="bt-res-exp"><small>EXP</small>+${o.rew.exp}</div>
           <div class="bt-res-extra" style="margin-top:18px">${extra.join('')}</div>
@@ -5390,6 +5441,7 @@
     awakening: () => awakening(app.firstElementChild || app),
     get handoff() { return HO; }, get hs() { return HS; }, hoFinish: (o, x) => hoFinish(o, x), tt: f => ttCtx(f || D.floors[0]), climb: id => startRun(id || null), hub: () => hub(), get mapLine() { return mapLine; }, // tests
     reloadSave() { save = loadSave(); practiceEpis(); }, settingsChanged, get embedded() { return !!BR; },
+    get looks() { return LOOKS; }, handAt: mid => handAt(BT && BT.fighter, mid || (BT && BT.fighter && BT.fighter.dataset.id && B.U(BT.fighter.dataset.id)?.mid)), // tests: the worn looks, the cast hand point
     playEvents: evs => play(evs), // tests: play engine-shaped events through the real presentation (battle lines, cut-ins)
     music: { state: () => music.state(), play: (k, o) => music.play(k, o), world: n => music.world(n), endWorld: () => music.endWorld() }
   };
