@@ -1296,7 +1296,7 @@ window.FemcMenu = (() => {
     o.el.classList.toggle('is-page', on);
     o.el.classList.toggle('is-dark', !!opts.inBattle || S().slot === 'late');
     if (!on) return;
-    o.el.querySelector('.g-pg-h').textContent = label;
+    const h = o.el.querySelector('.g-pg-h'); h.textContent = label; h.style.setProperty('--len', label.length); // phones scale a long name down (solstice-pages2.css)
     o.el.querySelector('.g-pg-sub').textContent = pageSub();
     o.el.querySelector('.g-pg-ghost span').textContent = PAGE_GHOST[tab] || label;
     o.el.querySelector('.g-pg-foot .g1').textContent = HOME_TIP[tab] || '';
