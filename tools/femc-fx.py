@@ -47,7 +47,11 @@ NAMES = ['pierce', 'slash', 'strike', 'ice', 'elec', 'fire', 'wind', 'light', 'd
          # batch 53: Almighty's crit, and the fighters' own sheets (<kind>-<member id>; fx.js artFor tries the caster's first)
          'almighty-crit', 'dark-haechan', 'elec-akihiko', 'elec-haechan', 'elec-ken', 'fire-junpei', 'fire-koromaru',
          'fire-solar', 'ice-jungwon', 'ice-mitsuru', 'light-solar', 'pierce-aigis', 'pierce-minji', 'strike-shinjiro',
-         'wind-jihoon', 'wind-yukari']
+         'wind-jihoon', 'wind-yukari',
+         # FEMC-SKINS-BATTLE-DESIGN 6.3 / 8 L: the outfit themes' sheets (light on black like the rest; the All-Out cloud's
+         # theme burst plays them now, the themed skill effects later). Ids: cosmetics.js THEMES.
+         'theme-hearts', 'theme-sunmoon', 'theme-petals', 'theme-stars', 'theme-bubbles', 'theme-notes', 'theme-glitter',
+         'theme-snow', 'theme-thorns', 'theme-cards', 'theme-butterflies', 'theme-foxfire', 'theme-confetti']
 BIG = {'crit', 'weak', 'theurgy-burst', 'allout-cloud'}  # 384-px frames; fx.js also draws them 2.2x bigger
 SOLID = {'allout-cloud'}                                  # solid art with real alpha, not light on black
 TINT = {'buff'}                                           # art the game tints (the stat colour). Kat's theurgy-burst is

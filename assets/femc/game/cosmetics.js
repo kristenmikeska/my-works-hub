@@ -9,6 +9,11 @@
                In battle (FEMC-SKINS-BATTLE-DESIGN, 2026-11-01): the portraits also wear the HUD card and turn-order faces, the
                victory pose stands on the win screen, and a look with `clean: true` (its cast frame re-cut without the painted
                effect) gets the layered hand charge; see battle() below.
+               Part 8 (Nov 1 2026): a look's `theme` (THEMES below) frames its HUD card and bursts out of the All-Out cloud;
+               optional art game/art/skins/<id>/<who>-onemore.webp (the One More eye strip, 6:1) and <who>-entrance.webp
+               (the battle-start card, 16:9); a fighter's own look: game/art/onemore/<who>.webp, game/art/entrance/<who>.webp;
+               a couple set's Showtime game/art/couples/<set>-showtime.webp; a theme's frame game/art/frames/<theme>.webp
+               (tools/femc-wardrobe.py onemore / entrance / showtime / frame; scan lists them in ready.js).
      weapon    a weapon look for a fighter: game/art/skins/<id>/weapon.webp (the Equipment tab shows it for her weapon slot).
      evoker    a tint on the Evoker prop in summons (CSS filter; code only).
      battleui  battle colours (CSS variables injected into the battle frame; code only).
@@ -217,6 +222,28 @@ window.FemcCosmetics = (() => {
     c('ui-pumpkin', 'uitheme', 'Pumpkin Colours', 'SR', 'Jack-o’-lantern orange. The Halloween Series reward.', { pal: 'pumpkin', pool: false })
   ];
   const byId = id => ITEMS.find(x => x.id === id) || null;
+  /* Themes (FEMC-SKINS-BATTLE-DESIGN part 4's proposal, Nov 1 2026; Kat can move any look, or take it out to leave it plain):
+     theme id -> looks. A look's `theme` frames its fighter's HUD card (K) and bursts out of the All-Out cloud (L); later the
+     themed skill effects (F) use it too. Ids: hearts, sunmoon, petals, stars, bubbles, notes, glitter, snow, thorns, cards,
+     butterflies, foxfire, confetti (battle.js THEME_ART draws each one; art/fx/theme-<id>.webp and art/frames/<id>.webp
+     replace the drawing once Kat's art is in). */
+  const THEMES = {
+    hearts: ['sk-date', 'sk-sugarrush', 'sk-strawberry', 'sk-cp-drive', 'sk-haechan-cp-drive', 'sk-cp-moviedate', 'sk-jungwon-cp-moviedate', 'sk-cp-afterhours',
+      'sk-jungwon-cp-afterhours', 'sk-cp-ringside', 'sk-akihiko-cp-ringside', 'sk-haechan-sweater', 'sk-jungwon-sweater', 'sk-jungwon-angel'],
+    sunmoon: ['sk-cp-sunmoon', 'sk-haechan-cp-sunmoon', 'sk-arcana-sun', 'sk-hanbok', 'sk-swim-night', 'sk-cp-festival', 'sk-akihiko-cp-festival'],
+    petals: ['sk-yukata', 'sk-alphaphi', 'sk-yukari-kyudo'],
+    stars: ['sk-halloween', 'sk-yukari-pink'],
+    bubbles: ['sk-swim-lagoon', 'sk-swim-lifeguard', 'sk-haechan-swim', 'sk-jungwon-swim', 'sk-yukari-swim', 'sk-akihiko-swim'],
+    notes: ['sk-haechan-stage', 'sk-jungwon-stage', 'sk-haechan-garage', 'sk-haechan-headphones', 'sk-summersession', 'sk-jungwon-soundcheck', 'sk-haechan-runners'],
+    glitter: ['sk-idol', 'sk-y2k', 'sk-oops', 'sk-snake', 'sk-limelight', 'sk-haechan-limelight', 'sk-haechan-fairground'],
+    snow: ['sk-wintercoat', 'sk-harbourcoat'],
+    thorns: ['sk-emo', 'sk-jihoon-emo', 'sk-haechan-unravelled', 'sk-jungwon-sheer', 'sk-prowl', 'sk-haechan-bad'],
+    cards: ['sk-phantom', 'sk-haechan-suit', 'sk-jungwon-heir', 'sk-jungwon-pinstripe'],
+    butterflies: ['sk-velvet'],
+    foxfire: ['sk-kiriko'],
+    confetti: ['sk-esports', 'sk-junpei-baseball', 'sk-akihiko-champ', 'sk-roadwork'],
+  };
+  Object.entries(THEMES).forEach(([t, ids]) => ids.forEach(id => { const x = byId(id); if (x && !x.theme) x.theme = t; }));
   // Featured rotation by the game's month (P5X-style banners).
   const BANNERS = [
     // Art-pending items wait in their banner and join its featured list by themselves once their art is in (featured()).
@@ -378,17 +405,33 @@ window.FemcCosmetics = (() => {
      then add `clean: true` to its ITEMS entry (or list it in CLEAN below). */
   const CLEAN = []; // look ids whose cast frame is clean (same as an ITEMS `clean: true`)
   const isClean = (x, who) => !!(x.clean || CLEAN.includes(x.id) || (((readyArt().skins || {})[x.id] || {}).clean || []).includes(who));
+  /* Part 8 (FEMC-SKINS-BATTLE-DESIGN H-L, Nov 1 2026), also per fighter: theme (the look's theme id), name (the look's name),
+     couple (its couple set id), onemore / entrance (the art's path, when ready.js lists it: the worn look's, else for a
+     fighter in their own clothes game/art/onemore|entrance/<who>.webp); and showtime { set: path }, frames { theme: path }.
+     A missing file is simply absent, and battle.js draws its built-in version. */
+  const ART_V8 = 1; // bump when one of these files is replaced in place
   function battle() {
     if (!S()) return null;
-    const pose = {}, face = {}, clean = {}, hand = {}, look = {}, out = { pose, face, clean, hand, look, css: '' };
+    const pose = {}, face = {}, clean = {}, hand = {}, look = {}, theme = {}, name = {}, couple = {}, onemore = {}, entrance = {}, showtime = {}, frames = {};
+    const out = { pose, face, clean, hand, look, theme, name, couple, onemore, entrance, showtime, frames, css: '' };
+    const A = readyArt(), art = (dir, f) => `${G.base}${dir}${f}?v=${ART_V8}`;
     ITEMS.filter(x => x.kind === 'skin').forEach(x => {
       const o = onIn(slotOf(x)); if (!o || pose[o.who]) return;
-      const w = o.who, have = ((readyArt().skins || {})[o.id]?.portraits || {})[w] || [];
-      pose[w] = G.base + skinDir(o.id); look[w] = o.id;
-      if (have.length) face[w] = { dir: `${G.base}${skinDir(o.id)}portraits/${w}/`, have: have.slice(), v: 7 };
+      const w = o.who, R = (A.skins || {})[o.id] || {}, have = (R.portraits || {})[w] || [];
+      pose[w] = G.base + skinDir(o.id); look[w] = o.id; name[w] = o.name;
+      if (have.length) face[w] = { dir: `${G.base}${skinDir(o.id)}portraits/${w}/`, have: have.slice(), v: 8 };
       if (isClean(o, w)) clean[w] = true;
       if (Array.isArray(o.hand)) hand[w] = o.hand.slice(0, 2);
+      if (o.theme) theme[w] = o.theme;
+      if (o.couple) couple[w] = o.couple;
+      if ((R.onemore || []).includes(w)) onemore[w] = art(skinDir(o.id), `${w}-onemore.webp`);
+      if ((R.entrance || []).includes(w)) entrance[w] = art(skinDir(o.id), `${w}-entrance.webp`);
     });
+    const own = A.own || {};
+    (own.onemore || []).forEach(w => { if (!pose[w]) onemore[w] = art('assets/femc/game/art/onemore/', `${w}.webp`); });
+    (own.entrance || []).forEach(w => { if (!pose[w]) entrance[w] = art('assets/femc/game/art/entrance/', `${w}.webp`); });
+    (A.couples || []).forEach(c => { showtime[c] = art('assets/femc/game/art/couples/', `${c}-showtime.webp`); });
+    (A.frames || []).forEach(t => { frames[t] = art('assets/femc/game/art/frames/', `${t}.webp`); });
     const bui = onIn('battleui'), evk = onIn('evoker');
     if (bui) out.css += `:root{${varsCss(bui.pal)}}`;
     if (evk) out.css += `.bt-evk-band .gun{filter:${evk.filter}}`;
@@ -545,5 +588,5 @@ window.FemcCosmetics = (() => {
   G.onChange(kind => { if (kind !== 'toast') apply(); });
   applyTitleEarly();
   setTimeout(apply, 0);
-  return Object.assign(api, { KINDS, ITEMS, BANNERS, BAN, PAL, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, banner, banners, pickBanner, bannerEnd, pool, featured, canPull, pullWhy, pull, pullN, pull10, apply, battle, portrait, weaponArt, html, wire, preview, metOk, viewable, viewEntry, openViewer });
+  return Object.assign(api, { KINDS, ITEMS, BANNERS, BAN, PAL, THEMES, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, banner, banners, pickBanner, bannerEnd, pool, featured, canPull, pullWhy, pull, pullN, pull10, apply, battle, portrait, weaponArt, html, wire, preview, metOk, viewable, viewEntry, openViewer });
 })();

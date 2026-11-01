@@ -15,6 +15,18 @@
   python3 tools/femc-wardrobe.py goods <sheet.png> <id1> ... <id6>
         The same green-screen sheet with capsule goods (sticker sheets, acrylic stands, mini plush, photo cards) ->
         assets/femc/game/art/goods/<id>.webp. Ids are gacha.js GOODS ids, in reading order.
+  python3 tools/femc-wardrobe.py onemore <src.png> <skin id | own> [fighter id]
+        FEMC-SKINS-BATTLE-DESIGN H: Kat's 6:1 "One More!" eye strip, centre-cropped to 6:1 -> 1800 x 300 WebP at
+        assets/femc/game/art/skins/<skin>/<who>-onemore.webp (`own` = the fighter's own look: game/art/onemore/<who>.webp).
+        The fighter defaults to the look's `who` in cosmetics.js (solar for `own`).
+  python3 tools/femc-wardrobe.py entrance <src.png> <skin id | own> [fighter id]
+        I: the 16:9 battle-start card -> 1600 x 900 at skins/<skin>/<who>-entrance.webp (own: game/art/entrance/<who>.webp).
+  python3 tools/femc-wardrobe.py showtime <src.png> <set>
+        J: a couple set's Showtime (16:9) -> game/art/couples/<set>-showtime.webp, 1600 x 900. <set> is the looks' `couple`
+        field (cp-sunmoon, cp-drive, cp-afterhours, cp-moviedate, cp-ringside, cp-festival; `sunmoon` works too).
+  python3 tools/femc-wardrobe.py frame <src.png> <theme>
+        K: a theme's HUD card frame on flat green (#00ff00), keyed like tools/femc-greens.py -> game/art/frames/<theme>.webp
+        (1000 x 400, the empty middle transparent). Themes: cosmetics.js THEMES.
   python3 tools/femc-wardrobe.py scan
         Rewrites assets/femc/game/art/ready.js from what's on disk (every command above runs it too). An outfit counts for
         a fighter once all six pose frames exist; the game picks it up with no other change (bump ready.js's ?v= in
@@ -128,10 +140,54 @@ def scan():
         ports = {w.name: sorted(f.stem for f in w.glob('*.webp')) for w in sorted((d / 'portraits').glob('*/'))} if (d / 'portraits').exists() else {}
         ports = {k: v for k, v in ports.items() if v}
         if poses or ports: skins[d.name] = {'poses': poses, 'portraits': ports}
+        for k in ('onemore', 'entrance'):  # part 8 art, listed only when present
+            got = sorted(f.name[:-len(f'-{k}.webp')] for f in d.glob(f'*-{k}.webp'))
+            if got and d.name in skins: skins[d.name][k] = got
         if (d / 'weapon.webp').exists(): weapons.append(d.name)
+    stems = lambda sub, cut='': sorted(f.stem[:len(f.stem) - len(cut)] if cut else f.stem for f in (ART / sub).glob(f'*{cut}.webp')) if (ART / sub).exists() else []
+    own = {k: stems(k) for k in ('onemore', 'entrance')}
+    data = {'keys': keys, 'goods': goods, 'skins': skins, 'weapons': weapons, 'own': own, 'couples': stems('couples', '-showtime'), 'frames': stems('frames')}
     head = (ART / 'ready.js').read_text().split('window.FEMC_ART_READY')[0]
-    (ART / 'ready.js').write_text(head + 'window.FEMC_ART_READY = ' + json.dumps({'keys': keys, 'goods': goods, 'skins': skins, 'weapons': weapons}) + ';\n')
-    print('ready.js:', len(keys), 'keychains,', len(goods), 'goods,', len(skins), 'outfits,', len(weapons), 'weapons')
+    (ART / 'ready.js').write_text(head + 'window.FEMC_ART_READY = ' + json.dumps(data) + ';\n')
+    print('ready.js:', len(keys), 'keychains,', len(goods), 'goods,', len(skins), 'outfits,', len(weapons), 'weapons,',
+          sum(map(len, own.values())), 'own-look strips/cards,', len(data['couples']), 'showtimes,', len(data['frames']), 'frames')
+
+
+def look_who(skin):
+    """The fighter a look belongs to, read from cosmetics.js (`c('<id>', 'skin', ..., { who: '<who>'`)."""
+    import re
+    m = re.search(r"c\('%s', 'skin',[^\n]*?who: '([a-z]+)'" % re.escape(skin), (ROOT / 'assets/femc/game/cosmetics.js').read_text())
+    if not m: raise SystemExit(f'no outfit {skin!r} in cosmetics.js')
+    return m.group(1)
+
+
+def fit(src, w, h):
+    """Centre-crop to w:h and scale to w x h (RGB kept opaque; alpha kept if the source has it)."""
+    im = Image.open(src); im = im.convert('RGBA' if 'A' in im.getbands() else 'RGB')
+    W, H = im.size; r = w / h
+    box = (round((W - H * r) / 2), 0, round((W + H * r) / 2), H) if W / H > r else (0, round((H - W / r) / 2), W, round((H + W / r) / 2))
+    return im.crop(box).resize((w, h), Image.LANCZOS)
+
+
+def part8(cmd, a):
+    src = find(a[1])
+    if cmd in ('onemore', 'entrance'):
+        skin = a[2]; who = a[3] if len(a) > 3 else ('solar' if skin == 'own' else look_who(skin))
+        size = (1800, 300) if cmd == 'onemore' else (1600, 900)
+        out = ART / cmd / f'{who}.webp' if skin == 'own' else ART / 'skins' / skin / f'{who}-{cmd}.webp'
+        if skin != 'own' and not (ART / 'skins' / skin).exists(): raise SystemExit(f'{skin}: no pose frames yet (cut the look first)')
+        im = fit(src, *size)
+    elif cmd == 'showtime':
+        st = a[2] if a[2].startswith('cp-') else 'cp-' + a[2]
+        out, im = ART / 'couples' / f'{st}-showtime.webp', fit(src, 1600, 900)
+    else:  # frame
+        import numpy as np
+        GR = tool('femc_greens', 'femc-greens.py')
+        rgb, alpha = GR.key_outer_green(np.asarray(fit(src, 1000, 400).convert('RGB')))
+        out, im = ART / 'frames' / f'{a[2]}.webp', Image.fromarray(np.dstack([rgb, alpha]), 'RGBA')
+    out.parent.mkdir(parents=True, exist_ok=True)
+    im.save(out, 'WEBP', quality=90, method=5)
+    print(src.name, '->', out.relative_to(ROOT), im.size)
 
 
 def main(a):
@@ -157,6 +213,9 @@ def main(a):
         out = ART / 'skins' / skin; out.mkdir(parents=True, exist_ok=True)
         rgba.crop(rgba.getbbox()).save(out / 'weapon.webp', 'WEBP', quality=90, method=5)
         print(src.name, '->', skin, 'weapon')
+    elif cmd in ('onemore', 'entrance', 'showtime', 'frame'):
+        if len(a) < 3: raise SystemExit(__doc__)
+        part8(cmd, a)
     elif cmd in ('keys', 'goods'):
         src, ids = find(a[1]), a[2:]
         if len(ids) != 6: raise SystemExit('six ids, in reading order')

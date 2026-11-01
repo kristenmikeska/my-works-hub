@@ -1,6 +1,6 @@
 # Skins in battle: design sheet
 
-*Persona 3: Solstice · drafted Nov 1 2026 from Kat's decisions of the same day · status: **B, C and A's code built Nov 1 2026** (see 7.9); A switches on per look once its cleaned sheet is wired and marked; D–G and S1–S5 not built.*
+*Persona 3: Solstice · drafted Nov 1 2026 from Kat's decisions of the same day · status: **B, C and A's code built Nov 1 2026** (see 7.9); A switches on per look once its cleaned sheet is wired and marked; **H–L built Nov 1 2026 with built-in versions until their art arrives** (see 8.6); D–G and S1–S5 not built.*
 
 The idea: when a fighter wears a Wardrobe look, the whole fight should know it. Not just the figure on the field, but the faces on the party cards, the win screen, the Theurgy cut-in, the skill effects and the All-Out finish card. Looks stay looks: **no stats, ever.**
 
@@ -68,6 +68,8 @@ Parts 1–5 are for Kat (plain language). Part 6 has the paste-ready prompts. Pa
 Nobody needs to make all of it. Every piece works for one look at a time.
 
 ### The 13 themes and which looks would use them (Claude's proposal; Kat can move any look, or leave it plain)
+
+*In the game since Nov 1 2026 (cosmetics.js `THEMES`, used by the HUD frame K and the All-Out burst L). Kat can move any look to another theme, or take it out to leave it plain: tell Claude, it's one line each.*
 
 | Theme | Looks |
 |---|---|
@@ -330,3 +332,14 @@ Swap the theme words and colours from the part 6.3 list.
 - **K:** `.bt-card` gets `--frame: url(frame-<theme>.webp)` as a border-image overlay at 0.6 opacity when the look has a `theme` and the frame exists; green keyed by `femc-greens.py`.
 - **L:** `allOutSequence`: two small `theme-<leader theme>` plays at the cloud's edges (needs the part 6.3 sheets).
 - **Tests:** extend femc_cosmetics (fallbacks, ready flags) and a real fight in femc_building for each hook.
+
+### 8.6 Built (Nov 1 2026)
+Every piece plays today with a built-in version and switches to Kat's picture the moment its file is cut in (`tools/femc-wardrobe.py … ` runs `scan`, which lists it in `ready.js`; bump ready.js's `?v=`). Story fights only (practice has no Wardrobe).
+- **H, One More eye strip:** `battle.js oneMoreStrip` (in the party's `onemore` beat, in place of the old portrait band). Built-in: the fighter's current battle face (outfit faces included) cropped to the eyes and brows over pink / black diagonal stripes with speed lines (`.bt-om`, battle.css). Art: `skin-<look>-onemore.png` → `python3 tools/femc-wardrobe.py onemore <src> <look id> [who]` (centre-cropped 6:1, 1800 × 300, `skins/<id>/<who>-onemore.webp`); a fighter's own look: `onemore <src> own <who>` → `art/onemore/<who>.webp`. Persona cut-ins Off and Rush keep the old band; reduced motion fades it; Performance / Reduce flashes stop the moving lines.
+- **I, entrance card:** `battle.js entranceCard` (after the encounter flash). Built-in: the look's idle pose (or the fighter's own) on slanted pink / black shards with the look's name and a few theme motifs (`.bt-entrance`). Art: `entrance <src> <look id | own> [who]` (16:9, 1600 × 900). Setting **Entrance cards** (On / Off, both settings panels). Skipped in Rush, the epilogue's stage fights and a chain: a fight starting within 8 s of the last one, and every ordinary fight of a Tartarus night after its first (strong rooms, the Reaper and bosses still get one). Reduced motion: a plain fade.
+- **J, couple Showtime:** `battle.js bondCut` + `coupleSet`: Solar and her bond partner both wearing one couple set (`couple` field), Outfit effects on. Built-in: both victory poses side by side over the bond's own still (or its drawn duo background) with the set's theme sparkling between them (kind `couple`). Art: `couple-<set>-showtime.png` → `showtime <src> <set>` (`sunmoon` or `cp-sunmoon`; `art/couples/cp-<set>-showtime.webp`), played as the bond's single still. The bond's lines stay its own.
+- **K, theme frame:** every look has a `theme` (cosmetics.js `THEMES`, part 4's table). `battle.js themeFrame` puts a thin outline and the theme's little motifs (battle.js `THEME_ART` / `THEME_SVG`: hearts, sun & moon, petals, stars, bubbles, notes, glitter, snow, thorns & bats, cards, butterflies, foxfire, confetti) in the card's corners at about 0.6 opacity. Art: `frame-<theme>.png` on flat green → `frame <src> <theme>` (keyed like femc-greens.py, 1000 × 400, `art/frames/<theme>.webp`). Setting Outfit effects.
+- **L, All-Out theme burst:** `battle.js themeBurst` (the starter's theme, else the leader's): two bursts of motifs flying out of the cloud's edges; with a `theme-<id>` sheet (tools/femc-fx.py now knows the 13 `theme-*` names; part 6.3's prompts) the sheet plays there instead. Performance: fewer motifs; reduced motion: they fade in place. Setting Outfit effects.
+- **Data:** cosmetics.js `battle()` also returns `theme`, `name`, `couple`, `onemore`, `entrance` per fighter and `showtime`, `frames`; ready.js gains per-skin `onemore` / `entrance` and top-level `own`, `couples`, `frames`.
+- **Tests:** `python3 tests/femc_skins_battle.py` (data, tools, fallback, art, settings: every built-in version and every art path in real fights, screenshots at 1440 × 900 and 390 × 844).
+

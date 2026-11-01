@@ -144,6 +144,47 @@
   const HAND_DEFAULT = [0.5, 0.3];
   const castClean = mid => (LOOKS && LOOKS.pose && LOOKS.pose[mid] ? !!(LOOKS.clean && LOOKS.clean[mid]) : FIGHTER_CLEAN.has(mid));
   const handOf = mid => (LOOKS && LOOKS.pose && LOOKS.pose[mid] && LOOKS.hand && LOOKS.hand[mid]) || FIGHTER_HAND[mid] || HAND_DEFAULT;
+  /* ── Outfit extras, part 8 (FEMC-SKINS-BATTLE-DESIGN H-L, Nov 1 2026): the One More eye strip, the battle-start entrance
+     card, a couple set's Showtime, the theme frame on the HUD card and the theme burst in the All-Out cloud. Story fights only
+     (practice has no Wardrobe: LOOKS is null). Each one plays Kat's art when cosmetics.js battle() hands a path (ready.js
+     lists the file) and otherwise a built-in version drawn here. THEME_ART: each theme's colours and small SVG motifs (24 x 24,
+     `currentColor`), shared by the frames, the cloud burst and the Showtime sparkle. */
+  const THEME_SVG = {
+    heart: '<path fill="currentColor" d="M12 21s-8.5-5.3-8.5-11.3A4.7 4.7 0 0 1 12 6.6a4.7 4.7 0 0 1 8.5 3.1C20.5 15.7 12 21 12 21z"/>',
+    sun: '<circle cx="12" cy="12" r="4.6" fill="currentColor"/><path d="M12 1.8v3.4M12 18.8v3.4M1.8 12h3.4M18.8 12h3.4M4.8 4.8l2.4 2.4M16.8 16.8l2.4 2.4M4.8 19.2l2.4-2.4M16.8 7.2l2.4-2.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+    moon: '<path fill="currentColor" d="M15.5 2.5a9.5 9.5 0 1 0 6 16.9A7.6 7.6 0 0 1 15.5 2.5z"/>',
+    flower: '<g fill="currentColor">' + [0, 72, 144, 216, 288].map(a => `<ellipse cx="12" cy="6.6" rx="3.3" ry="5" transform="rotate(${a} 12 12)"/>`).join('') + '</g><circle cx="12" cy="12" r="2.2" fill="#fff"/>',
+    star: '<path fill="currentColor" d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z"/>',
+    glint: '<path fill="currentColor" d="M12 1c.9 5.8 3.2 8.1 11 11-7.8 2.9-10.1 5.2-11 11-.9-5.8-3.2-8.1-11-11 7.8-2.9 10.1-5.2 11-11z"/>',
+    bubble: '<circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7.6 9.4a5 5 0 0 1 3.6-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+    note: '<path fill="currentColor" d="M9 17.5a3.2 3.2 0 1 1-2-3V4l12-2.2v13a3.2 3.2 0 1 1-2-3V5.5L9 7z"/>',
+    flake: '<path d="M12 2v20M3.3 7l17.4 10M3.3 17l17.4-10M9.4 3.7 12 6.3l2.6-2.6M9.4 20.3 12 17.7l2.6 2.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+    bat: '<path fill="currentColor" d="M12 9.2c.8-1.4 1.6-2.1 2-2.1 0 .9-.2 1.5-.4 2 2.6-.9 5.5-.4 8.4 2.2-1.6-.2-2.8.3-3.4 1.5-1-.7-2.1-.8-3.2-.2-.9.4-1.7 1.4-2.4 3-.5-.9-.8-1.5-1-1.5s-.5.6-1 1.5c-.7-1.6-1.5-2.6-2.4-3-1.1-.6-2.2-.5-3.2.2C4.8 11.6 3.6 11.1 2 11.3c2.9-2.6 5.8-3.1 8.4-2.2-.2-.5-.4-1.1-.4-2 .4 0 1.2.7 2 2.1z"/>',
+    thorn: '<path d="M3 21C8 15.5 10.5 9 21 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path fill="currentColor" d="M8.2 15.6 4.6 14.4l4.6-.9zM12 10.8 10.9 7l2.6 3zM16.3 7.3l3.4.3-3 1.3z"/>',
+    card: '<rect x="5" y="2.5" width="14" height="19" rx="2.2" fill="currentColor"/><path d="M12 7.2l3.2 4.8-3.2 4.8-3.2-4.8z" fill="#14070f"/>',
+    butterfly: '<path fill="currentColor" d="M12 8c-1.2-3.2-5-5.2-8-4.8C2 3.5 2.4 8.2 5 10.1c-2.2 1-2.6 4.6-.6 6.1s5.6-.6 7.6-4.1c2 3.5 5.6 5.6 7.6 4.1s1.6-5.1-.6-6.1c2.6-1.9 3-6.6 1-6.9-3-.4-6.8 1.6-8 4.8z"/>',
+    flame: '<path fill="currentColor" d="M12 22c-4 0-6.5-2.8-6.5-6.3 0-3.7 3.2-5.4 3.8-9.2 1.8 1.3 2.4 3 2.3 4.6C13 9.6 13.6 6 12.8 2c4.1 2.6 5.7 7.4 5.7 11.5 0 5-2.5 8.5-6.5 8.5z"/>',
+    confetti: '<rect x="9.5" y="2.5" width="5" height="11" rx="1" fill="currentColor" transform="rotate(28 12 8)"/><path d="M4 20.5c2-2 3 1 5-1s3 1 5-1 3 1 5-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>'
+  };
+  const THEME_ART = {
+    hearts: { m: ['heart'], c: ['#ff4f9e', '#ffb3d4', '#ffffff'] },
+    sunmoon: { m: ['sun', 'moon'], c: ['#ffd9b8', '#ff8cc0', '#ffffff'] },
+    petals: { m: ['flower'], c: ['#ff8cc0', '#ffe3ee', '#ffffff'] },
+    stars: { m: ['star', 'glint'], c: ['#ffffff', '#ffc2dc', '#ff4f9e'] },
+    bubbles: { m: ['bubble'], c: ['#c6f3ff', '#ffffff', '#ffc2dc'] },
+    notes: { m: ['note'], c: ['#ff4f9e', '#ffffff', '#ffb3d4'] },
+    glitter: { m: ['glint'], c: ['#ffffff', '#ffd0e6', '#ff8cc0'] },
+    snow: { m: ['flake'], c: ['#ffffff', '#cdeffc', '#ffd0e6'] },
+    thorns: { m: ['bat', 'thorn'], c: ['#e0245a', '#ff4f9e', '#ff9bc4'] },
+    cards: { m: ['card'], c: ['#ff3b5c', '#ffffff', '#ff8cc0'] },
+    butterflies: { m: ['butterfly'], c: ['#a9dcff', '#ffffff', '#ffc2dc'] },
+    foxfire: { m: ['flame'], c: ['#c4ecff', '#ffffff', '#ff5c7a'] },
+    confetti: { m: ['confetti', 'glint'], c: ['#ff4f9e', '#ffffff', '#ffb08a'] }
+  };
+  // One motif: the theme's i-th shape in its i-th colour (`style` places it; --r a resting turn).
+  const motif = (theme, i, style = '', cls = 'tm') => { const T = THEME_ART[theme] || THEME_ART.hearts; return `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true" style="color:${T.c[i % T.c.length]};--r:${(i * 47) % 70 - 35}deg;${style}">${THEME_SVG[T.m[i % T.m.length]]}</svg>`; };
+  const skinFxOn = () => !!LOOKS && ST().skinFx !== false;
+  const themeOf = mid => (skinFxOn() && LOOKS.theme && LOOKS.theme[mid] && THEME_ART[LOOKS.theme[mid]] ? LOOKS.theme[mid] : null);
   const posedFrames = mid => [0, 1, 2, 3, 4, 5].map(i => (LOOKS && LOOKS.pose[mid] ? `${LOOKS.pose[mid]}${mid}-pose-${i}.webp?v=${ART_V}` : `assets/femc/battle/art/poses/${mid}-pose-${i}.webp?v=${ART_V}`));
   const fieldPose = mid => (FIGHTER_POSES[mid] ? posedFrames(mid)[0] : `assets/femc/battle/art/poses/${mid}.webp?v=${ART_V}`);
   const hasField = mid => FIELD_POSES.has(mid) || !!FIGHTER_POSES[mid];
@@ -216,7 +257,7 @@
   /* Settings: the game's one store. Story fights read it from the life sim; practice reads the same key directly. */
   const readUni = () => { if (BR) { try { return JSON.parse(JSON.stringify(BR.settings() || {})); } catch (e) { return {}; } } try { return JSON.parse(localStorage.getItem(UNI_KEY) || '{}') || {}; } catch (e) { return {}; } };
   // battle setting (save.settings.<k>) → the store's key
-  const UNI = { textSpeed: 'text', sfxVol: 'sfxVol', difficulty: 'difficulty', remember: 'remember', rushWhere: 'rushWhere', rushStop: 'rushStop', shake: 'shake', calm: 'calm', numbers: 'numbers', tips: 'tips', pad: 'pad', showtimes: 'showtimes', skinFaces: 'skinFaces', skinFx: 'skinFx' };
+  const UNI = { textSpeed: 'text', sfxVol: 'sfxVol', difficulty: 'difficulty', remember: 'remember', rushWhere: 'rushWhere', rushStop: 'rushStop', shake: 'shake', calm: 'calm', numbers: 'numbers', tips: 'tips', pad: 'pad', showtimes: 'showtimes', skinFaces: 'skinFaces', skinFx: 'skinFx', entrance: 'entrance' };
   function pullSettings() {
     const u = readUni(), st = save.settings;
     Object.entries(UNI).forEach(([k, uk]) => {
@@ -670,7 +711,8 @@
     { k: 'cutins', top: true, label: 'Persona cut-ins', opts: [['always', 'Always'], ['first', '1st per battle'], ['off', 'Off']], desc: () => 'The Evoker summon before a Persona skill and the full Theurgy cut-in: every time, the first time per member each battle, or never (Theurgy then plays a short version, as it does in Rush).' },
     { k: 'showtimes', label: 'Bond Showtimes', opts: [['on', 'On'], ['still', 'Still only']], desc: () => 'A bond with a Showtime plays its little scene before the strike (tap or Enter skips to the strike). Still only shows the bond’s single picture instead.' },
     { k: 'skinFaces', label: 'Outfit faces in battle', opts: ON_OFF, desc: () => 'A fighter wearing a Wardrobe outfit with its own portraits shows them on the party cards and turn order (story fights; practice has no Wardrobe).' },
-    { k: 'skinFx', label: 'Outfit effects', opts: ON_OFF, desc: () => 'Extra effects for Wardrobe outfits, like the glow at the hand as a spell leaves it. Off keeps the normal element effects only.' },
+    { k: 'skinFx', label: 'Outfit effects', opts: ON_OFF, desc: () => 'Extra effects for Wardrobe outfits: the glow at the hand as a spell leaves it, an outfit theme’s frame on the party card and its burst in the All-Out cloud, and a couple set’s Showtime. Off keeps the normal effects only.' },
+    { k: 'entrance', label: 'Entrance cards', opts: ON_OFF, desc: () => 'The leader’s quick slanted card as a fight opens (story fights; not in Rush or a fight straight after another).' },
     { k: 'music', label: 'Music', opts: ON_OFF, get: () => musicOn(), set: v => { save.music = v; }, desc: () => 'The same switch as the ♪ button.' },
     { k: 'musicVol', label: 'Music volume', range: true, desc: () => (musicOn() ? 'Music volume.' : 'Music volume (music is switched off).') },
     { k: 'sfx', label: 'Sound effects', opts: ON_OFF, get: () => save.sfx !== false, set: v => { save.sfx = v; }, desc: () => (lsGet('kg-femc-sound') === 'off' ? 'Sound effects (FEMC’s sound switch is off, so they stay quiet).' : 'The same switch as the SFX button.') },
@@ -2004,6 +2046,7 @@
     music.play(spec.music || 'battle', { restart: true });
     await stills(theurgyStills());
     await intro(spec, kinds);
+    await entranceCard(spec);
     if (RL && RL.epi) epiOpen(spec);
     if (fx.openBuff) await play(B.openBuff(fx.openBuff));
     if (B.start) await play(B.start());
@@ -2053,6 +2096,7 @@
       return { result: ended, rew: null, boss: !!spec.boss };
     }
     const result = B.outcome() || 'lose';
+    lastBattleEnd = Date.now();
     if (result === 'win' && tallyOn()) HS.tally.kills += B.foes().filter(f => f.dead).length;
     const rating = { allout: stat0.allout, rounds: B.S.round, ko: stat0.ko || B.party().some(p => p.dead) };
     blogAdd(result === 'win' ? 'Victory!' : result === 'escaped' ? 'Got away.' : 'Solar has fallen…', 'sys');
@@ -2076,6 +2120,18 @@
     return { result, rew: result === 'win' ? E.rewards(B, rand, fh ? { drop: fh.v } : {}) : null, boss: !!spec.boss, rating };
   }
 
+  /* The theme frame on a HUD card (FEMC-SKINS-BATTLE-DESIGN K): a fighter wearing a themed look (Outfit effects on) gets
+     a faint frame of that theme around their party card: Kat's frame-<theme> (green keyed, game/art/frames/<theme>.webp)
+     when ready.js lists it, else a thin outline with the theme's little motifs clustered in the corners (CSS, ~0.6 opacity). */
+  const TF_SPOTS = [[-2, -14, 15], [7, -16, 10], [-4, 34, 9], [93, -14, 14], [101, 8, 10], [86, -16, 8], [-3, 82, 13], [8, 96, 9], [95, 80, 14], [87, 96, 9], [42, -12, 8], [60, 98, 8]];
+  function themeFrame(mid) {
+    const th = themeOf(mid); if (!th) return '';
+    const art = LOOKS.frames && LOOKS.frames[th];
+    mark('tframe-' + (art ? 'art' : 'code'));
+    if (art) return `<span class="bt-tframe art" data-theme="${th}" aria-hidden="true" style="background-image:url('${art}')"></span>`;
+    const T = THEME_ART[th];
+    return `<span class="bt-tframe code" data-theme="${th}" aria-hidden="true" style="--t1:${T.c[0]};--t2:${T.c[1]}">${TF_SPOTS.map(([x, y, z], i) => motif(th, i, `left:${x}%;top:${y}%;--z:${z}`)).join('')}</span>`;
+  }
   function buildBattle(floor) {
     const el = show(`${ART.defs()}
       <div class="bt-bg" style="background-image:url('${floor.bg}')"></div>${floor.epi ? `<div class="bt-epi-over" style="background-image:url('${floor.over}')"></div><div class="bt-epi-tint"></div>` : ''}<div class="bt-floor"></div><div class="bt-shade"></div>
@@ -2122,6 +2178,7 @@
         <span class="bt-bar hp"><span>HP</span><span class="track"><i class="g"></i><i class="f"></i></span><b></b></span>
         <span class="bt-bar sp"><span>SP</span><span class="track"><i class="g"></i><i class="f"></i></span><b></b></span><span class="bt-th" title="Theurgy"><i></i></span><span class="st"></span><span class="pulse" aria-hidden="true"></span><span class="aura" aria-hidden="true"><b></b><i></i><i></i><i></i><i></i><i></i></span><span class="thtag" aria-hidden="true">Theurgy ready</span>`;
       if (floor.epi && u === B.leader()) c.classList.add('bt-ghost');
+      const fr = themeFrame(u.mid); if (fr) { c.insertAdjacentHTML('afterbegin', fr); c.classList.add('has-tframe'); }
       c.addEventListener('mousedown', e => e.preventDefault());
       c.addEventListener('click', () => { if (ctl && ctl.pickValue) ctl.pickValue(u.id); });
       c.addEventListener('pointerenter', () => { if (ctl && ctl.hoverValue) ctl.hoverValue(u.id); });
@@ -3216,6 +3273,8 @@
      battle get the full one (each bond is once per battle anyway); Off and Rush a short band; reduced motion a fade. Battle
      speed scales every beat. Test marks: bond, bond-<id>, bond-full|short|fade, bond-kind-*, bond-final, bond-impact, bond-done. */
   const LOOK_FX = { sun: 'light', jade: 'ice', star: 'almighty' };
+  // A couple set worn by both halves of a bond (design J): the set id, or null (practice, Outfit effects Off, no match).
+  const coupleSet = (L, P) => { if (!skinFxOn() || !LOOKS.couple || !L || !P) return null; const a = LOOKS.couple[L.mid]; return a && a === LOOKS.couple[P.mid] && FIGHTER_POSES[L.mid] && FIGHTER_POSES[P.mid] ? a : null; };
   async function bondCut(e) {
     const L = B.U(e.solar), P = B.U(e.partner), mp = member(P.mid), ms = member('solar');
     hideMenu();
@@ -3225,14 +3284,22 @@
     try { if (window.parent !== window && window.parent.FemcStamps) window.parent.FemcStamps.award('p3s-bond'); } catch (err) {}
     const reduced = !FX || FX.reduced(), setting = save.cutins || 'first';
     const style = reduced ? 'fade' : rushActive() || setting === 'off' ? 'short' : 'full';
-    const Lr = e.layers || null, sheet = style === 'full' && e.sheet && e.sheet.frames && e.sheet.frames.length >= 3 ? e.sheet.frames : null;
+    /* Couple Showtime (FEMC-SKINS-BATTLE-DESIGN J): both halves of one couple set (cosmetics.js `couple`) on Solar and her
+       partner, with Outfit effects on: Kat's couple-<set>-showtime still when ready.js lists it (played as the bond's single
+       still), else both victory pose frames side by side over the bond's own still (or its drawn duo background) with the
+       look's theme sparkling between them. Replaces the version's sheet / layers / sequence; the lines stay the bond's. */
+    const cp = coupleSet(L, P), cpArt = cp && LOOKS.showtime && LOOKS.showtime[cp];
+    const img = cpArt || e.img;
+    const Lr = cp ? null : e.layers || null, sheet = !cp && style === 'full' && e.sheet && e.sheet.frames && e.sheet.frames.length >= 3 ? e.sheet.frames : null;
     // Settings → Bond Showtimes: Still only plays the version's img (its short-version still) as a single still.
-    const seq = ST().showtimes === 'still' ? null : seqOf(e, style);
+    const seq = cp || ST().showtimes === 'still' ? null : seqOf(e, style);
     const says = seq ? seqSays(seq) : [];
-    const kind = Lr ? 'layers' : seq ? 'seq' : e.img ? 'cut' : 'duo';
+    const kind = cp && !cpArt ? 'couple' : Lr ? 'layers' : seq ? 'seq' : img ? 'cut' : 'duo';
+    if (cp) { mark('bond-couple'); mark('bond-couple-' + (cpArt ? 'art' : 'code')); }
     const perS = D.personas[L.personaId] || D.personas.haenim, perP = D.personas[P.personaId] || D.personas[mp.persona];
     const fS = e.love ? 'happy' : ms.faces.idle, fP = e.face || (e.love ? 'happy' : mp.faces.win);
-    await stills([...thArt({ img: e.img, layers: Lr, sheet: sheet && { frames: sheet }, sequence: seq }), perS.art, perP.art, pimg('solar', fS), pimg(P.mid, fP)], style === 'full' ? 1200 : 500);
+    const cpPoses = kind === 'couple' ? [posedFrames(L.mid)[5], posedFrames(P.mid)[5]] : [];
+    await stills([...thArt({ img, layers: Lr, sheet: sheet && { frames: sheet }, sequence: seq }), ...cpPoses, perS.art, perP.art, pimg('solar', fS), pimg(P.mid, fP)], style === 'full' ? 1200 : 500);
     const [fx, fy] = e.focus || [50, 42];
     const look = e.look || ['almighty', 'sun'], c1 = (e.colors || [])[0] || ms.color, c2 = (e.colors || [])[1] || mp.color;
     const w = document.createElement('div');
@@ -3242,9 +3309,13 @@
     const piece = (x, cls) => { const o = typeof x === 'object' ? x : {}; return `<div class="th-pl ${cls}" style="--x:${o.x || 0}%;--y:${o.y || 0}%;--s:${o.s || 1}"><img src="${thSrc(x)}" alt=""></div>`; };
     const knot = e.love ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-8.5-5.3-8.5-11.3A4.7 4.7 0 0 1 12 6.6a4.7 4.7 0 0 1 8.5 3.1C20.5 15.7 12 21 12 21z" fill="#ff8cc0" stroke="#fff" stroke-width="1.6"/></svg>'
       : '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="5.6" fill="none" stroke="#fff" stroke-width="2.4"/><circle cx="15" cy="12" r="5.6" fill="none" stroke="#ffd36b" stroke-width="2.4"/></svg>';
+    const cpTh = kind === 'couple' ? themeOf(L.mid) || themeOf(P.mid) || 'hearts' : null;
     const final = kind === 'layers' ? `<img class="th-bg" src="${thSrc(Lr.bg)}" alt="">${Lr.persona ? piece(Lr.persona, 'th-lper') : ''}${Lr.char ? piece(Lr.char, 'th-lchar') : ''}`
       : kind === 'seq' ? seqHtml(seq, e.focus)
-      : kind === 'cut' ? `<div class="th-cut"><img class="th-img" src="${e.img}" alt=""></div>`
+      : kind === 'cut' ? `<div class="th-cut"><img class="th-img" src="${img}" alt=""></div>`
+      : kind === 'couple' ? `${e.img ? `<div class="th-cut cp-back"><img class="th-img" src="${e.img}" alt=""></div>` : `<div class="bd-bg"></div><img class="bd-per s" src="${perS.art}" alt=""><img class="bd-per p" src="${perP.art}" alt="">`}
+          <div class="th-lines"></div><div class="cp-duo"><img class="cp-f s" src="${cpPoses[0]}" alt="" data-mid="${L.mid}"><img class="cp-f p" src="${cpPoses[1]}" alt="" data-mid="${P.mid}"></div>
+          <div class="cp-spark">${Array.from({ length: perf() ? 6 : 12 }, (_, i) => { const a = (i / (perf() ? 6 : 12)) * Math.PI * 2, d = 18 + (i % 3) * 9; return motif(cpTh, i, `--dx:${Math.round(Math.cos(a) * d)}vmin;--dy:${Math.round(Math.sin(a) * d * 0.8)}vmin;animation-delay:${((i % 4) * 0.12).toFixed(2)}s`); }).join('')}</div>`
         : `<div class="bd-bg"></div><div class="th-lines"></div><img class="bd-per s" src="${perS.art}" alt=""><img class="bd-per p" src="${perP.art}" alt="">
           <div class="bd-band s fcb">${fimg('solar', fS, '', 'th-face')}</div><div class="bd-band p fcb">${fimg(P.mid, fP, '', 'th-face')}</div><div class="bd-knot">${knot}</div>`;
     const back = sheet && (Lr ? thSrc(Lr.bg) : e.img);
@@ -3253,7 +3324,7 @@
     const line = e.line || [mp.lines.shift, ms.lines.shift];
     w.innerHTML = `<div class="th-stage">${prelude}<div class="th-final">${final}<div class="th-sweep"></div><div class="th-burst"></div>${look.includes('sun') ? '<div class="th-rays"></div>' : ''}</div></div>
       <div class="th-stripes" aria-hidden="true"><i></i><i></i></div>
-      <b class="th-name"><small>Bond · Solar & ${esc(mp.name)}${e.love ? ' · ♥' : ''}</small>${esc(e.name.toUpperCase())}</b>
+      <b class="th-name"><small>Bond · Solar & ${esc(mp.name)}${e.love ? ' · ♥' : ''}${cp ? ' · Couple Showtime' : ''}</small>${esc(e.name.toUpperCase())}</b>
       <p class="th-line bd-l1">“${esc(line[0])}”<em>${esc(mp.name)}</em></p><p class="th-line bd-l2">“${esc(line[1])}”<em>Solar</em></p>
       ${sayHtml(says, [mp.name, 'Solar'])}${seq ? '<span class="th-skip" aria-hidden="true">Tap · Enter ▸ skip</span>' : ''}`;
     BT.cut.appendChild(w);
@@ -3284,7 +3355,7 @@
       w.classList.add('f-in');
       const ran = seq ? await playSeq(w, seq, 'bond', () => impact(true), { skippable: true }) : null;
       mark('bond-final');
-      await sleep(kind === 'duo' ? 1150 : seq ? (ran.skipped ? 380 : 650) : 800);
+      await sleep(kind === 'duo' || kind === 'couple' ? 1150 : seq ? (ran.skipped ? 380 : 650) : 800);
       w.classList.add('f-hit'); mark('bond-impact');
       impact(!sheet && !seq);
       await sleep(ran && ran.skipped ? 1100 : 1700);
@@ -3316,11 +3387,26 @@
     w.classList.add('out');
     setTimeout(() => w.remove(), 300 / speed());
   }
-  async function bigWord(text, { sub = '', gold = false, band = null, ms = 900 } = {}) {
+  /* The "One More!" eye strip (FEMC-SKINS-BATTLE-DESIGN H): in story fights a thin slanted strip slams across with the
+     fighter's eyes, in place of the old portrait band. Kat's 6:1 art for the look worn (or the fighter's own look) when
+     ready.js lists it; else drawn here: the fighter's current battle face (outfit faces included) cropped to the eyes and
+     brows, over pink / black diagonal stripes with speed lines. Persona cut-ins Off and Rush keep the old band; reduced
+     motion fades it (CSS); Performance mode and Reduce flashes drop the moving lines and the white edge. Marks: onemore-strip,
+     onemore-strip-art | -code. */
+  function oneMoreStrip(u) {
+    if (!LOOKS || rushActive() || save.cutins === 'off' || !member(u.mid)) return null;
+    const art = LOOKS.onemore && LOOKS.onemore[u.mid];
+    mark('onemore-strip'); mark('onemore-strip-' + (art ? 'art' : 'code'));
+    const m = member(u.mid);
+    const inner = art ? `<img class="bt-om-art" src="${art}" alt="" draggable="false">`
+      : `<i class="bt-om-stripes"></i><div class="bt-om-eyes fcb">${fimg(u.mid, m.faces.idle, '', 'om-face')}</div><i class="bt-om-lines"></i>`;
+    return `<div class="bt-om ${art ? 'art' : 'code'}" data-mid="${u.mid}" style="--mc:${m.color || '#ff4f9e'}"><div class="bt-om-in">${inner}</div></div>`;
+  }
+  async function bigWord(text, { sub = '', gold = false, band = null, strip = null, ms = 900 } = {}) {
     const w = document.createElement('div');
-    w.className = 'bt-onemore';
-    w.innerHTML = `${band ? `<div class="bt-band fcb">${fimg(band[0], band[1])}</div>` : ''}<div class="bt-big${gold ? ' gold' : ''}">${text}${sub ? `<small>${esc(sub)}</small>` : ''}</div>`;
-    w.querySelectorAll('.bt-band, .bt-band img, .bt-big').forEach(x => { x.style.animationDuration = `${ms / speed()}ms`; });
+    w.className = `bt-onemore${strip ? ' has-om' : ''}`;
+    w.innerHTML = `${strip || (band ? `<div class="bt-band fcb">${fimg(band[0], band[1])}</div>` : '')}<div class="bt-big${gold ? ' gold' : ''}">${text}${sub ? `<small>${esc(sub)}</small>` : ''}</div>`;
+    w.querySelectorAll('.bt-band, .bt-band img, .bt-big, .bt-om, .bt-om-eyes, .bt-om-art').forEach(x => { x.style.animationDuration = `${ms / speed()}ms`; });
     BT.cut.appendChild(w);
     await sleep(ms * 0.85);
     setTimeout(() => w.remove(), 300);
@@ -3560,7 +3646,7 @@
       case 'onemore': {
         const u = U(e.src);
         sfx('onemore');
-        if (u.side === 'party') { tip('onemore'); await bigWord('1 MORE!', { band: [u.mid, member(u.mid).faces.idle], ms: 950 }); { const hush = !!(curSpec && curSpec.rules && curSpec.rules.mute && u === B.leader()); if (hush) mark('epi-mute'); log(`${u.name}: “${hush ? '…' : member(u.mid).lines.onemore}”`, 'say'); } blogAdd(`${u.name} gets One More!`, 'pf'); mark('onemore'); }
+        if (u.side === 'party') { tip('onemore'); await bigWord('1 MORE!', { band: [u.mid, member(u.mid).faces.idle], strip: oneMoreStrip(u), ms: 950 }); { const hush = !!(curSpec && curSpec.rules && curSpec.rules.mute && u === B.leader()); if (hush) mark('epi-mute'); log(`${u.name}: “${hush ? '…' : member(u.mid).lines.onemore}”`, 'say'); } blogAdd(`${u.name} gets One More!`, 'pf'); mark('onemore'); }
         else { blogAdd(`${u.name} gets One More.`, 'ef'); banner('1 More', { enemy: true, sub: u.name }); await sleep(500); }
         break;
       }
@@ -3609,6 +3695,20 @@
     }
   }
 
+  /* The theme burst in the All-Out cloud (FEMC-SKINS-BATTLE-DESIGN L): when the fighter who starts it (else the leader)
+     wears a themed look, Outfit effects on, two bursts of that theme puff out at the cloud's edges: Kat's theme-<id> effect
+     sheet (art/fx, tools/femc-fx.py) stepped like the cloud sheet, else a handful of the theme's motifs flying out (CSS).
+     Performance mode: fewer motifs; reduced motion: they fade in place (the sheet holds its peak frame). Marks: allout-theme,
+     allout-theme-art | -code. */
+  function themeBurst(actor) {
+    const th = themeOf(actor.mid) || themeOf(B.leader().mid); if (!th) return '';
+    const sheetSrc = FX && FX.artSrc && FX.hasArt && FX.hasArt('theme-' + th) ? FX.artSrc('theme-' + th) : null;
+    mark('allout-theme'); mark('allout-theme-' + (sheetSrc ? 'art' : 'code'));
+    const spots = [[6, 20, 0], [90, 70, 3]], rm = FX && FX.reduced(), n = perf() ? 4 : 7;
+    return spots.map(([x, y, at], k) => sheetSrc
+      ? `<div class="bt-tburst art" data-theme="${th}" data-f="-1" data-at="${at}" style="left:${x}%;top:${y}%;background-image:url('${sheetSrc}');opacity:${rm ? 1 : 0};background-position:${rm ? '100% 0' : '0 0'}"></div>`
+      : `<div class="bt-tburst code" data-theme="${th}" style="left:${x}%;top:${y}%;--d0:${(at * 0.17 / speed()).toFixed(2)}s">${Array.from({ length: n }, (_, i) => { const a = (i / n) * Math.PI * 2 + k; return motif(th, i + k, `--dx:${Math.round(Math.cos(a) * 70)}px;--dy:${Math.round(Math.sin(a) * 60 - 10)}px;animation-delay:calc(var(--d0) + ${(i % 3) * 0.05}s)`); }).join('')}</div>`).join('');
+  }
   async function allOutSequence(e) {
     const actor = B.U(e.src);
     await stills([finishArt(actor.mid)], 600);
@@ -3634,7 +3734,7 @@
     const cloudArt = FX && FX.artSrc && FX.artSrc('allout-cloud');
     const cloud = cloudArt ? `<div class="cloud art" style="background-image:url('${cloudArt}')" data-f="0"></div>` : `<div class="cloud ol">${puffs}</div><div class="cloud">${puffs}</div>`;
     if (cloudArt) mark('fx-art-allout-cloud');
-    wrap.innerHTML = `<div class="bt-speedlines"></div><div class="bt-dust">${cloud}${sils}${words}${stars}</div>`;
+    wrap.innerHTML = `<div class="bt-speedlines"></div><div class="bt-dust">${cloud}${sils}${words}${stars}${themeBurst(actor)}</div>`;
     const fr = BT.field.getBoundingClientRect(), rr = BT.root.getBoundingClientRect();
     const dust = wrap.querySelector('.bt-dust');
     dust.style.left = `${fr.left - rr.left + fr.width / 2}px`;
@@ -3649,6 +3749,8 @@
     const flick = FX && FX.reduced() ? 0 : setInterval(() => {
       wrap.querySelectorAll('.sil.pose').forEach(im => { const fs = brawlFrames(im.dataset.mid), f = (+im.dataset.f + 1) % fs.length; im.dataset.f = f; im.src = fs[f]; });
       if (cloudEl) { const f = (+cloudEl.dataset.f + 1) % 6; cloudEl.dataset.f = f; cloudEl.style.backgroundPosition = `${(f % 3) * 50}% ${Math.floor(f / 3) * 100}%`; }
+      // The theme sheets play through once (frames 0-5), each from its own start beat (data-at), then stay hidden.
+      wrap.querySelectorAll('.bt-tburst.art').forEach(t => { const f = +t.dataset.f + 1; t.dataset.f = f; const k = f - +t.dataset.at; t.style.opacity = k >= 0 && k < 6 ? 1 : 0; if (k >= 0 && k < 6) t.style.backgroundPosition = `${(k % 3) * 50}% ${Math.floor(k / 3) * 100}%`; });
     }, Math.round(170 / speed()));
     await sleep(500); shake(true); await sleep(500); shake(true); await sleep(500);
     clearInterval(flick);
@@ -4166,6 +4268,41 @@
       sfx('escape');
       await sleep(1100);
     }
+    el.remove();
+  }
+
+  /* The battle-start entrance card (FEMC-SKINS-BATTLE-DESIGN I): after the encounter flash, the leader's look flashes on in
+     a quick slanted card (Persona 5 style), ~700 ms at 1x (battle speed applies). Kat's 16:9 art for the look worn (or her
+     own look) when ready.js lists it; else drawn here: the look's idle pose frame (or the fighter's own) on slanted pink /
+     black shards with the look's name. Story fights only, setting "Entrance cards"; skipped in Rush, in the epilogue's
+     stage fights, and for a chain: a fight starting within 8 s of the last one ending, and every ordinary fight of a
+     Tartarus night after its first (strong rooms, the Reaper and bosses still get one). Reduced motion: a plain fade;
+     Performance mode: no shards' motion. Marks: entrance, entrance-art | -code, entrance-skip. */
+  let lastBattleEnd = 0;
+  async function entranceCard(spec) {
+    const L = B && B.leader(), m = L && member(L.mid);
+    const chain = Date.now() - lastBattleEnd < 8000 || !!(run && run.entranceSeen && !spec.boss && !spec.reaper && !spec.strong);
+    if (!LOOKS || !L || !m || ST().entrance === false || rushActive() || spec.epi || chain) { if (LOOKS) mark('entrance-skip'); return; }
+    if (run) run.entranceSeen = true;
+    const mid = L.mid, art = LOOKS.entrance && LOOKS.entrance[mid], look = LOOKS.name && LOOKS.name[mid];
+    const pose = !art && hasField(mid) ? (FIGHTER_POSES[mid] ? posedFrames(mid)[0] : fieldPose(mid)) : null;
+    await stills([art || pose || pimg(mid, m.faces.idle)], 500);
+    const el = document.createElement('div');
+    el.className = `bt-entrance ${art ? 'art' : 'code'}${FX && FX.reduced() ? ' reduced' : ''}`;
+    el.style.setProperty('--spd', speed()); el.style.setProperty('--mc', m.color || '#ff4f9e');
+    el.dataset.mid = mid;
+    const th = themeOf(mid);
+    const fig = art ? `<img class="en-art" src="${art}" alt="" draggable="false">`
+      : pose ? `<img class="en-pose" src="${pose}" alt="" draggable="false">` : `<div class="en-face fcb">${fimg(mid, m.faces.idle)}</div>`;
+    el.innerHTML = `<i class="en-dim"></i><i class="en-sh s1"></i><i class="en-sh s2"></i><i class="en-sh s3"></i>
+      <div class="en-card"><div class="en-in">${art ? '' : '<i class="en-stripes"></i>'}${fig}</div></div>
+      ${art ? '' : `<b class="en-name"><small>${esc(look || 'Ready')}</small>${esc(L.name.toUpperCase())}</b>${th ? `<span class="en-motifs">${[0, 1, 2, 3, 4].map(i => motif(th, i, `left:${[8, 22, 70, 86, 48][i]}%;top:${[14, 70, 10, 66, 84][i]}%`)).join('')}</span>` : ''}`}`;
+    BT.root.appendChild(el);
+    mark('entrance'); mark('entrance-' + (art ? 'art' : 'code'));
+    sfx('summon');
+    await sleep(980);
+    el.classList.add('out');
+    await sleep(240);
     el.remove();
   }
 

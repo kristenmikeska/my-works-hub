@@ -2489,3 +2489,131 @@ html.bt-calm .bt-epi-card h2 { animation: bt-epi-calm .9s .4s ease both; }
   .bt-res-hero { top: 0; bottom: auto; right: -10%; height: 38%; max-width: 64%; object-position: right top; opacity: .9; }
 }
 @media (prefers-reduced-motion: reduce) { .bt-res-hero { animation: none; } }
+
+/* ── Outfit extras, part 8 (FEMC-SKINS-BATTLE-DESIGN H-L, 2026-11-01; battle.js oneMoreStrip, entranceCard, bondCut couple,
+   themeFrame, themeBurst). Built-in versions until Kat's art arrives; her pictures replace them (the .art variants). ── */
+/* Theme motifs (battle.js motif): small SVGs in the theme's colours. */
+svg.tm { position: absolute; display: block; width: 18px; height: 18px; overflow: visible; pointer-events: none; }
+
+/* H: the One More eye strip, in place of the portrait band. The big word moves below it. */
+.bt-om { position: absolute; left: -6%; right: -6%; top: 25%; height: clamp(96px, 17vh, 168px); transform: skewY(-4deg); overflow: hidden;
+  background: #14070f; border-top: 5px solid var(--pink); border-bottom: 5px solid #fff; box-shadow: 0 14px 0 rgba(20, 7, 15, .55);
+  animation: bt-om 1s cubic-bezier(.7, 0, .3, 1) both; }
+.bt-om-in { position: absolute; inset: 0; }
+.bt-om-stripes { position: absolute; inset: -40% -10%; background: repeating-linear-gradient(-58deg, rgba(255, 79, 158, .9) 0 18px, #14070f 18px 46px, rgba(255, 79, 158, .45) 46px 52px, #14070f 52px 82px); }
+.bt-om-lines { position: absolute; inset: 0; z-index: 3; background: repeating-linear-gradient(180deg, transparent 0 9px, rgba(255, 255, 255, .55) 9px 10px, transparent 10px 23px, rgba(255, 255, 255, .3) 23px 24px);
+  -webkit-mask-image: linear-gradient(90deg, #000 0 14%, transparent 30% 70%, #000 86%); mask-image: linear-gradient(90deg, #000 0 14%, transparent 30% 70%, #000 86%); animation: bt-om-lines .25s linear infinite; }
+.bt-om-eyes { position: absolute; left: 16%; right: 16%; top: 0; bottom: 0; z-index: 2; --zx: 50%; --zy: 50%; --zk: 1.55; --zsky: 4deg;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 16%, #000 84%, transparent); mask-image: linear-gradient(90deg, transparent, #000 16%, #000 84%, transparent);
+  animation: bt-om-drift 1s linear both; }
+.bt-om-eyes .fc { left: var(--zx, 50%); top: var(--zy, 50%); filter: contrast(1.08) saturate(1.1) drop-shadow(6px 0 0 rgba(255, 79, 158, .85)); }
+.bt-om-eyes::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20, 7, 15, .5), transparent 22% 78%, rgba(20, 7, 15, .5)); }
+.bt-om-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: skewY(4deg) scale(1.08); animation: bt-om-drift 1s linear both; }
+.bt-onemore.has-om .bt-big { top: 64%; }
+@keyframes bt-om { 0% { transform: skewY(-4deg) translateX(-108%); } 16% { transform: skewY(-4deg) translateX(0); } 80% { transform: skewY(-4deg) translateX(0); opacity: 1; } 100% { transform: skewY(-4deg) translateX(104%); opacity: .6; } }
+@keyframes bt-om-drift { from { translate: -2.5% 0; } to { translate: 2.5% 0; } }
+@keyframes bt-om-lines { to { background-position: 0 24px; } }
+html.bt-perf .bt-om-lines, html.bt-calm .bt-om-lines, .bt-perf .bt-om-lines, .bt-calm .bt-om-lines { animation: none; opacity: .5; }
+.bt-calm .bt-om { border-bottom-color: var(--pink-2, #ff8cc0); }
+@media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) {
+  .bt-om { top: 27%; height: clamp(74px, 11vh, 110px); border-width: 4px 0; }
+  .bt-om-eyes { left: 2%; right: 2%; --zk: 1.45; }
+  .bt-onemore.has-om .bt-big { top: 52%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bt-om { animation: bt-om-fade 1s ease both; } .bt-om-eyes, .bt-om-art, .bt-om-lines { animation: none; }
+}
+@keyframes bt-om-fade { 0% { opacity: 0; } 15%, 80% { opacity: 1; } 100% { opacity: 0; } }
+
+/* I: the battle-start entrance card. --spd: battle speed. */
+.bt-entrance { --spd: 1; position: absolute; inset: 0; z-index: 48; overflow: hidden; pointer-events: none; }
+.bt-entrance .en-dim { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(20, 7, 15, .82), rgba(20, 7, 15, .35) 70%); animation: en-fade calc(260ms / var(--spd)) ease both; }
+.bt-entrance .en-sh { position: absolute; display: block; }
+.bt-entrance .en-sh.s1 { inset: -10% -20% -10% 34%; background: var(--pink); clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%); animation: en-shard calc(320ms / var(--spd)) cubic-bezier(.2, .9, .2, 1) both; }
+.bt-entrance .en-sh.s2 { inset: -10% -20% -10% 40%; background: #14070f; clip-path: polygon(24% 0, 100% 0, 100% 100%, 2% 100%); box-shadow: inset 6px 0 0 #fff; animation: en-shard calc(360ms / var(--spd)) .04s cubic-bezier(.2, .9, .2, 1) both; }
+.bt-entrance .en-sh.s3 { left: -10%; right: -10%; top: 74%; height: 10px; background: #fff; transform: rotate(-9deg); animation: en-slash calc(300ms / var(--spd)) .1s cubic-bezier(.2, .9, .2, 1) both; }
+.bt-entrance .en-card { position: absolute; right: 4%; top: 9%; width: min(58%, 820px); height: 78%; clip-path: polygon(12% 0, 100% 0, 88% 100%, 0 100%);
+  background: #14070f; animation: en-card calc(380ms / var(--spd)) .06s cubic-bezier(.2, 1.1, .3, 1) both; }
+.bt-entrance .en-card::after { content: ""; position: absolute; inset: 0; clip-path: inherit; box-shadow: inset 0 0 0 4px var(--pink); }
+.bt-entrance .en-in { position: absolute; inset: 0; overflow: hidden; }
+.bt-entrance .en-stripes { position: absolute; inset: 0; background: repeating-linear-gradient(-62deg, rgba(255, 79, 158, .2) 0 2px, transparent 2px 22px), radial-gradient(ellipse at 62% 46%, color-mix(in srgb, var(--mc) 46%, #ff4f9e) 0, rgba(255, 79, 158, .38) 34%, transparent 70%); }
+.bt-entrance .en-pose { position: absolute; right: 10%; bottom: -14%; height: 128%; width: auto; max-width: none; filter: drop-shadow(10px 6px 0 rgba(255, 79, 158, .75)) drop-shadow(0 0 2px #fff); animation: en-fig calc(560ms / var(--spd)) .1s cubic-bezier(.2, 1, .3, 1) both; }
+.bt-entrance .en-face { position: absolute; inset: 0 8% 0 24%; --zy: 42%; --zk: .42; }
+.bt-entrance .en-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: en-fig calc(560ms / var(--spd)) .1s cubic-bezier(.2, 1, .3, 1) both; }
+.bt-entrance.art .en-card { right: 0; top: 6%; width: 74%; height: 84%; clip-path: polygon(9% 0, 100% 0, 100% 100%, 0 100%); }
+.bt-entrance .en-name { position: absolute; left: 6%; top: 56%; z-index: 2; font: italic 900 clamp(46px, 8vw, 118px)/.86 var(--cond); letter-spacing: -.01em; color: #fff; transform: skewX(-12deg);
+  text-shadow: .05em .05em 0 var(--pink), -.02em -.02em 0 #14070f; animation: en-name calc(420ms / var(--spd)) .12s cubic-bezier(.2, 1.2, .3, 1) both; }
+.bt-entrance .en-name small { display: block; margin-bottom: .3em; font-size: .24em; letter-spacing: .32em; color: var(--pink-2, #ff8cc0); text-shadow: 2px 2px 0 #14070f; text-transform: uppercase; }
+.bt-entrance .en-motifs { position: absolute; left: 0; top: 0; width: 46%; height: 100%; z-index: 1; opacity: .8; }
+.bt-entrance .en-motifs svg.tm { width: clamp(18px, 2.6vw, 34px); height: auto; aspect-ratio: 1; transform: rotate(var(--r)); animation: en-motif calc(700ms / var(--spd)) .15s ease both; }
+.bt-entrance.out { animation: en-out calc(240ms / var(--spd)) ease both; }
+@keyframes en-fade { from { opacity: 0; } }
+@keyframes en-shard { from { transform: translateX(70%); } }
+@keyframes en-slash { from { transform: rotate(-9deg) scaleX(0); transform-origin: 0 50%; } }
+@keyframes en-card { from { transform: translateX(40%) skewX(-8deg); opacity: 0; } }
+@keyframes en-fig { from { transform: translateX(14%); opacity: 0; } }
+@keyframes en-name { from { transform: skewX(-12deg) translateX(-30%); opacity: 0; } }
+@keyframes en-motif { from { transform: rotate(var(--r)) scale(0); opacity: 0; } }
+@keyframes en-out { to { opacity: 0; transform: translateX(-6%); } }
+.bt-perf .bt-entrance .en-sh.s3, .bt-perf .bt-entrance .en-motifs { display: none; }
+.bt-calm .bt-entrance .en-sh.s3 { background: var(--pink-2, #ff8cc0); }
+@media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) {
+  .bt-entrance .en-sh.s1 { inset: 30% -30% 18% -10%; clip-path: polygon(0 18%, 100% 0, 100% 82%, 0 100%); }
+  .bt-entrance .en-sh.s2 { inset: 33% -30% 21% -10%; clip-path: polygon(0 18%, 100% 0, 100% 82%, 0 100%); box-shadow: inset 0 5px 0 #fff; }
+  .bt-entrance .en-card { right: -2%; top: 18%; width: 100%; height: 50%; clip-path: polygon(0 12%, 100% 0, 100% 88%, 0 100%); }
+  .bt-entrance.art .en-card { top: 24%; height: 38%; clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%); }
+  .bt-entrance .en-pose { right: 4%; height: 118%; bottom: -8%; }
+  .bt-entrance .en-name { left: 5%; top: 70%; font-size: clamp(40px, 13vw, 64px); }
+  .bt-entrance .en-motifs { width: 100%; height: 30%; top: auto; bottom: 0; }
+  .bt-entrance .en-sh.s3 { top: 69%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bt-entrance *, .bt-entrance .en-pose, .bt-entrance .en-art { animation: none !important; }
+  .bt-entrance { animation: en-fade calc(260ms / var(--spd)) ease both; }
+  .bt-entrance.out { animation: en-out-rm calc(240ms / var(--spd)) ease both; }
+}
+@keyframes en-out-rm { to { opacity: 0; } }
+
+/* J: the couple Showtime's built-in version: both victory poses side by side, the theme sparkling between them. */
+.bt-bond.kind-couple .cp-back .th-img { filter: brightness(.5) saturate(1.1); }
+.bt-bond .cp-duo { position: absolute; inset: 6% 2% 0; z-index: 3; }
+.bt-bond .cp-f { position: absolute; bottom: -4%; height: 92%; width: auto; max-width: 52%; object-fit: contain; filter: drop-shadow(0 0 2px #fff) drop-shadow(8px 8px 0 rgba(20, 7, 15, .7)); }
+.bt-bond .cp-f.s { right: 50%; margin-right: -3%; animation: cp-in-l calc(520ms / var(--spd)) cubic-bezier(.2, 1, .3, 1) both; }
+.bt-bond .cp-f.p { left: 50%; margin-left: -3%; animation: cp-in-r calc(520ms / var(--spd)) cubic-bezier(.2, 1, .3, 1) both; transform: scaleX(-1); }
+.bt-bond .cp-spark { position: absolute; left: 50%; top: 44%; z-index: 4; width: 0; height: 0; }
+.bt-bond .cp-spark svg.tm { width: clamp(24px, 3.4vw, 50px); height: auto; aspect-ratio: 1; left: -12px; top: -12px; filter: drop-shadow(0 0 6px rgba(255, 255, 255, .6)); animation: tm-fly calc(1300ms / var(--spd)) cubic-bezier(.15, .8, .3, 1) both; }
+@keyframes cp-in-l { from { transform: translateX(-30%); opacity: 0; } }
+@keyframes cp-in-r { from { transform: scaleX(-1) translateX(-30%); opacity: 0; } }
+@keyframes tm-fly { 0% { transform: translate(0, 0) scale(.2) rotate(0); opacity: 0; } 18% { opacity: 1; } 70% { opacity: .9; } 100% { transform: translate(var(--dx), var(--dy)) scale(1) rotate(var(--r)); opacity: 0; } }
+@media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) {
+  .bt-bond .cp-duo { inset: 22% 0 14%; }
+  .bt-bond .cp-f { height: 84%; max-width: 58%; }
+}
+.bt-calm .bt-bond .cp-spark svg.tm { filter: none; }
+@media (prefers-reduced-motion: reduce) {
+  .bt-bond .cp-f.s, .bt-bond .cp-f.p { animation: none; }
+  .bt-bond .cp-spark svg.tm { animation: tm-still 1.2s ease both; transform: translate(calc(var(--dx) * .6), calc(var(--dy) * .6)) rotate(var(--r)); }
+}
+@keyframes tm-still { 0% { opacity: 0; } 30%, 70% { opacity: .9; } 100% { opacity: 0; } }
+
+/* K: the theme frame on a HUD card: a thin outline and the theme's motifs clustered in the corners (or Kat's frame art),
+   faint, following the card's slant (it opts out of the card's child unskew). */
+.bt-card > .bt-tframe { transform: none; position: absolute; inset: -5px; z-index: 1; pointer-events: none; opacity: .62; }
+.bt-tframe.code { border: 1.5px solid color-mix(in srgb, var(--t1) 70%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--t2) 30%, transparent); }
+.bt-tframe.code svg.tm { width: calc(var(--z) * 1px); height: calc(var(--z) * 1px); margin: calc(var(--z) * -.5px) 0 0 calc(var(--z) * -.5px); transform: skewX(12deg) rotate(var(--r)); filter: drop-shadow(0 0 2px rgba(20, 7, 15, .9)); }
+.bt-tframe.art { inset: -9px -11px; background: center / 100% 100% no-repeat; opacity: .6; }
+.bt-card.active > .bt-tframe { opacity: .85; }
+.bt-card.active > .bt-tframe.code { border-color: #fff; }
+.bt-card.dead > .bt-tframe { opacity: .25; }
+@media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) {
+  .bt-card > .bt-tframe { inset: -3px; }
+  .bt-tframe.code svg.tm { width: calc(var(--z) * .72px); height: calc(var(--z) * .72px); margin: calc(var(--z) * -.36px) 0 0 calc(var(--z) * -.36px); transform: skewX(6deg) rotate(var(--r)); }
+}
+
+/* L: the theme burst at the All-Out cloud's edges. */
+.bt-dust .bt-tburst { position: absolute; z-index: 4; width: 0; height: 0; }
+.bt-dust .bt-tburst.art { width: clamp(150px, 20vw, 280px); height: auto; aspect-ratio: 1; translate: -50% -50%; background-size: 300% 200%; background-repeat: no-repeat; }
+.bt-dust .bt-tburst.code svg.tm { width: clamp(20px, 2.8vw, 38px); height: auto; aspect-ratio: 1; left: -14px; top: -14px; filter: drop-shadow(2px 2px 0 #14070f) drop-shadow(0 0 6px rgba(255, 255, 255, .5));
+  animation: tm-fly .9s cubic-bezier(.15, .8, .3, 1) both; }
+.bt-calm .bt-dust .bt-tburst.code svg.tm { filter: drop-shadow(2px 2px 0 #14070f); }
+@media (prefers-reduced-motion: reduce) { .bt-dust .bt-tburst.code svg.tm { animation: tm-still 1.4s ease both; transform: translate(calc(var(--dx) * .6), calc(var(--dy) * .6)) rotate(var(--r)); } }
