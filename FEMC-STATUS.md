@@ -182,6 +182,7 @@ Other docs, if you ever want detail:
 - ✅ Art batch 94 (Haechan): seven new outfits for Haechan with battle poses and scene portraits: Headphones On, Arrivals Gate, Window Seat, Bad Influence, Garage Band, Limelight and Unravelled. Solar's Emo Night now shows up in Masquerade and Valentine's beside its matching looks.
 - ✅ Art batch 94 (Jungwon): Sheer Nerve is in the Wardrobe with battle poses, and it's Jungwon's first outfit with its own scene portraits.
 - ✅ Art batch 65: your nine epilogue places are in the game: four for HOAX (the Kims' living room, Jihoon's house, the winter street, the winter-break party) and five for strangers (a kitchen, the annex, the mudflats, the festival night on Wolmido, the street in the dust), with a couple of small wording fixes so the scenes match your pictures. Your art list gained 57 new place prompts and 35 new CG prompts across the year and every epilogue, and the Evoker pieces, new expressions, sharper Shadows and strike sheets moved to a new backburner list
+- ✅ Art batch 112: five more epilogue pictures (two for strangers, two for HOAX, one for Stay), each in its world's album.
 
 ## Music and polish
 - ✅ 57 songs, rotating with no repeats, plus world songs in memories, arrivals, calls and endings

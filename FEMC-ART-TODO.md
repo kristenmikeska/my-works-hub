@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make:** 5 Social Link full-body sheets (section 8) · 5 new event CGs (section 11) · Solar's evening poses (section 20) · new projects: 14 swimwear pieces (section 12), 24 couple-outfit pieces (section 13), 10 photo booth sheets (section 15), 14 seasonal face sheets (section 16), 4 climb bosses (section 17), 1 credits still (section 18: Ken) · 24 skin-series pieces for Solar (section 19: Tarot Arcana, Midnight Chapel, Wildflower Cottage) · 26 collab-outfit pieces (section 21: Winx Club, Sailor Moon, Monster High and more). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make:** 5 Social Link full-body sheets (section 8) · Solar's evening poses (section 20) · new projects: 14 swimwear pieces (section 12), 24 couple-outfit pieces (section 13), 10 photo booth sheets (section 15), 14 seasonal face sheets (section 16), 4 climb bosses (section 17), 1 credits still (section 18: Ken) · 24 skin-series pieces for Solar (section 19: Tarot Arcana, Midnight Chapel, Wildflower Cottage) · 26 collab-outfit pieces (section 21: Winx Club, Sailor Moon, Monster High and more). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
@@ -174,101 +174,6 @@ Character pose sheet: 3 columns × 2 rows on a plain white background, with clea
 
 ## 10. Extras: Stay hanami face sheets
 *(Done Oct 31: Yukari, Junpei, Mitsuru and Fuuka wear their hanami outfits in the Stay hanami scene.)*
-
----
-
-## 11. ⭐ New event CGs (ChatGPT)
-Big moments in the story that still play without a picture: four turns in the main story, a few Social Link high points, three romance moments, and one or two scenes from each epilogue world. Each prompt already holds the scene's clothes, time, weather and who stands where, so it should come out right the first time. Every attachment is in `Place Prompt Attachments/`; the style picture always goes first, then the place's background. Main game and Stay: the anime style. Runners, Strangers and HOAX: their world's realistic style.
-
-Solar's clothes and hair are only suggestions here too: change them whenever you like.
-
-### The main story
-
-**[x] 11A. The first full moon** *(in the game Oct 31)*
-
-**[x] 11B. The karaoke hall** *(in the game Oct 31)*
-
-**[x] 11C. The ferry floor** *(in the game Oct 31)*
-
-**[x] 11D. The seagull piano** *(in the game Oct 31)*
-
-**[x] 11E. Two at the gate** *(in the game Oct 31)*
-
-**[x] 11F. Three cans on the railing** *(in the game Oct 31)*
-
-### Social Links
-
-**[x] 11G. Haechan, rank 10: the song** *(in the game Oct 31)*
-
-**[x] 11H. Jungwon, rank 10: the pin** *(in the game Oct 31)*
-
-**[x] 11I. Jihoon, rank 15: the string** *(in the game Oct 31)*
-
-**[x] 11J. Hanni, rank 15: the last page** *(in the game Oct 31)*
-
-### Romance
-
-**[x] 11K. Haechan, rank 9: two blankets** *(in the game Oct 31)*
-
-**[x] 11L. Haechan's umbrella** *(in the game Oct 31)*
-
-**[x] 11M. Jungwon's blazer** *(in the game Oct 31)*
-
-**[x] 11N. Jihoon at the fountain** *(in the game Oct 31)*
-
-### The epilogue worlds
-
-**[x] 11O. Runners: finals-week breakfast** *(in the game Oct 31; it is also the Runners style picture now: `CG - style (Runners).png`)*
-
-**[ ] 11P. strangers: the seventh stair**  
-Before light, on the stairs of the Lee house (epi-s-home, 2/17). Strangers has no CG in its own style yet, so three of its realistic portraits set the style here. Once you've made this one, save a copy as `CG - style (Strangers).png` in Place Prompt Attachments: the later Strangers CGs use it.  
-Attach: `CG - Yunjin (Strangers).png`, `CG - Haechan (Strangers).png`, `CG - Jungwon (Strangers).png`, `BG - Lee House Stairs.png`, `CG - Solar (Strangers).png`, `CG - Appa (Strangers).png`  
-Save as: `epi-s-seventh-stair.png`
-```
-Create a NEW illustration in the art style of the FIRST THREE attached images (realistic portraits from this story's world): a realistic painted style with soft realistic shading, real-looking proportions and faces like the attached portraits, natural skin and hair texture, cinematic light; NOT anime and NOT cel shading. Those three people are NOT in the picture; they only show the style. The FOURTH attached image is the background. Use the background image for the place, its layout and its lighting; draw the people into it. The last two attached images are realistic portraits of, in order, Solar and her father: use them only for their faces and hair. 16:9, high resolution, cinematic composition, no readable text.
-
-The dark wooden staircase of a wealthy, traditional Korean family house in Incheon, before dawn in mid-February. The hall is dark except for a lamp left on in a study at the bottom, which throws one long yellow shape up the stairwell. A patterned runner with a combed fringe on the landing, a loose brass stair rod, cold blue light at a landing window. Her father (as in his attached image, grey-streaked hair, a brown cardigan over a shirt, reading glasses hanging on a cord against his chest) stands on the seventh stair, one hand on the banister, looking up at her. Solar (as in her attached image, long black hair hanging loose and down her back, pale blue cotton pajamas printed with little boats, bare feet) sits on the stair just above him so that their heads are level, her hands flat on her knees, a ring on her right hand. Neither of them is speaking. Warm lamplight from below, cold blue from above. Still, careful, full of feeling.
-```
-
-**[ ] 11Q. strangers: the annex step**  
-Late at night at the bottom of the Lee garden (epi-s-step, 2/17). Make 11P first: its finished picture is the style picture here.  
-Attach: `CG - style (Strangers).png`, `BG - Lee House Annex at night.png`, `CG - Solar (Strangers).png`, `CG - Haechan (Strangers).png`, `CG - Jungwon (Strangers).png`  
-Save as: `epi-s-step.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: a realistic painted style with soft realistic shading, real-looking proportions and faces like the attached portraits, natural skin and hair texture, cinematic light; NOT anime and NOT cel shading. The SECOND attached image is the background. Use the background image for the place, its layout and its lighting; draw the people into it. The other attached images are realistic portraits of, in order, Solar, Haechan and Jungwon: use them only for their faces and hair. 16:9, high resolution, cinematic composition, no readable text.
-
-Half past eleven on a February night in the garden of a big old Korean house: three snowy terraces stepping down to an old stone wall, a thin crust of snow over everything, a bare persimmon tree. Against the wall sits a small concrete annex with a steel door and one small lit window; on its sill an old silver radio. Haechan (as in his attached image, a black padded work jacket open over a sweatshirt) sits on the annex step with his knees up and his forearms on them, chewing gum, mid-bubble. About two meters away across untouched frozen gravel, Jungwon (as in his attached image, a long dark wool coat, hands at his sides) stands beside the persimmon tree, very straight, polite and cold. Solar (as in her attached image, long black hair loose, a long dark coat over pale pajamas printed with little boats, unlaced winter boots) has just come down to the lowest terrace and stops at the top of its few steps, looking down at the two of them. Cold blue snow light, the warm yellow window of the annex. Tense, quiet, a little funny.
-```
-
-**[ ] 11R. HOAX: out the window**  
-A snowy street after curfew (epi-h-window, 1/6, Jungwon's way home). HOAX has no CG in its own style yet, so three of its realistic portraits set the style here. Once you've made this one, save a copy as `CG - style (HOAX).png` in Place Prompt Attachments: the later HOAX CGs use it.  
-Attach: `CG - Jihoon (HOAX).png`, `CG - Cherry (HOAX).png`, `CG - Sunoo (HOAX).png`, `BG - Jungwon's Street at night.png`, `CG - Solar (HOAX).png`, `CG - Jungwon (HOAX).png`  
-Save as: `epi-h-window.png`
-```
-Create a NEW illustration in the art style of the FIRST THREE attached images (realistic portraits from this story's world): a realistic painted style with soft realistic shading, real-looking proportions and faces like the attached portraits, natural skin and hair texture, cinematic light; NOT anime and NOT cel shading. Those three people are NOT in the picture; they only show the style. The FOURTH attached image is the background. Use the background image for the place, its layout and its lighting; draw the people into it. The last two attached images are realistic portraits of, in order, Solar and Jungwon: use them only for their faces and hair. 16:9, high resolution, cinematic composition, no readable text.
-
-A quiet, wealthy residential street in Korea on a January night, lit orange by one humming streetlight. Snow is banked waist-high and frozen along the curbs. A nice two-story house with a low garage roof under an upstairs window; the window is open, its curtain blowing out. Jungwon (as in his attached image, a grey hoodie with snow in the hood, pajama trousers, untied school shoes, no socks) has just slid off the edge of the garage roof and landed in a snowdrift beside the drainpipe, buried up to his hips, frozen in place with his arms out, face stiff with dignity. On the pavement in front of him Solar (as in her attached image, long black hair under a knit beanie, her biggest puffy coat, pajama bottoms tucked into snow boots) has both hands clapped over her mouth to keep from laughing out loud. A light glows in the window of the house next door. Orange streetlight, blue snow shadows, breath clouds. Romantic and very funny.
-```
-
-**[ ] 11S. HOAX: hot water for the flowerpots**  
-A porch on a freezing evening (epi-h-porch, 1/6, Jihoon's way home). Make 11R first: its finished picture is the style picture here.  
-Attach: `CG - style (HOAX).png`, `BG - Jihoon's Porch.png`, `CG - Solar (HOAX).png`, `CG - Jihoon (HOAX).png`  
-Save as: `epi-h-porch.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: a realistic painted style with soft realistic shading, real-looking proportions and faces like the attached portraits, natural skin and hair texture, cinematic light; NOT anime and NOT cel shading. The SECOND attached image is the background. Use the background image for the place, its layout and its lighting; draw the people into it. The other attached images are realistic portraits of, in order, Solar and Jihoon: use them only for their faces and hair. 16:9, high resolution, cinematic composition, no readable text.
-
-The front porch of a small house in Korea on a freezing January evening. Along the porch rail stand six clay flowerpots of frozen dirt with dead brown stalks. The house behind is dark except for one lamp in the front window. Jihoon (as in his attached image, a long puffy parka over pajamas, slippers) stands at the rail slowly pouring hot water from an old dented kettle into one of the pots, the steam rising into the yellow porch light, his face very still. Solar (as in her attached image, long black hair loose over the collar of a big winter coat, gloves, a scarf) sits on the top porch step with her knees pulled up inside her coat, watching him and saying nothing. A ring of wet on the porch boards is turning to ice. Cold blue evening, one warm porch light, the white curl of steam. Gentle, sad, and loving.
-```
-
-**[ ] 11T. Stay: one second on the platform**  
-Midnight at Iwatodai Station (epi-st-platform, 4/5). Stay keeps the anime style.  
-Attach: `CG - style.png`, `BG - Station Platform (Dark Hour).png`, `CG - Solar.png`, `CG - Akihiko.png`, `CG - Haechan.png`, `CG - Jungwon.png`  
-Save as: `epi-st-platform.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, moody lighting with one dominant color. The SECOND attached image is the background. Use the background image for the place, its layout and its lighting; draw the people into it. The other attached images are, in order, Solar, Akihiko, Haechan and Jungwon: use them only for their faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, no readable text.
-
-An empty train station platform at midnight in early April, during the Dark Hour: everything tinted sickly green-yellow, the rails black and gleaming, the last bench at the far end empty, and dark smoky shapes rising off the tracks like smoke learning to stand. Solar (very long straight black hair loose, a light spring coat over a sweater, a silver gun-shaped Evoker in her hand, NO armband) stands near the platform edge with tears in her eyes, half laughing. At her right shoulder stands Haechan (as in his attached image, all in black, headphones around his neck), but he is only half there: see-through, the platform showing through his body, his head turned to look straight at her. On her left, about ten steps away, Jungwon (as in his attached image, a buttoned dark coat) is also see-through, with a faint tortoise and serpent rising behind him like a reflection in glass. Behind Solar, solid and real, Akihiko (silver hair, a dark coat, leather gloves, fists up) guards her back. Green light, ghostly figures. Heartbreaking and beautiful.
-```
 
 ---
 
@@ -1327,7 +1232,7 @@ A 3 × 2 portrait sheet on a plain white background, clear space between cells, 
 Kat's rule (Oct 31): Runners, Strangers and HOAX CGs use their world's realistic style. These are the CGs already in the game that were drawn in the anime style. Each one is a single edit: the picture stays the same, only the art style changes. Do any you like, in any order; skip the rest.
 
 - **Runners** uses `CG - style (Runners).png` (Kat's finals-week breakfast, 11O), so these can be made now.
-- **Strangers** waits for `CG - style (Strangers).png` (make 11P first and save a copy under that name). **HOAX** waits for `CG - style (HOAX).png` (11R).
+- **Strangers** uses `CG - style (Strangers).png` (Kat's seventh stair) and **HOAX** uses `CG - style (HOAX).png` (Kat's out-the-window), both in Place Prompt Attachments, so these can be made now too.
 - Save the new picture under the same name as the old one: Claude swaps it in.
 
 **[ ] 22A. Remake: The Runners ending**  
@@ -1339,7 +1244,7 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 ```
 
 **[ ] 22B. Remake: The strangers ending**  
-The strangers home ending: the Lee house gate at dawn over the harbor. Waits for `CG - style (Strangers).png` (11P).  
+The strangers home ending: the Lee house gate at dawn over the harbor.  
 Attach: `Remake - ending-strangers-home.png`, `CG - style (Strangers).png`, `CG - Yunjin (Strangers).png`, `CG - Solar (Strangers).png`, `CG - Jungwon (Strangers).png`, `BG - Lee House Gate at night.png`  
 Save as: `ending-strangers-home.png`
 ```
@@ -1347,7 +1252,7 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 ```
 
 **[ ] 22C. Remake: The HOAX ending**  
-The HOAX home ending: the decorated gym after hours, Cherry hugging Solar. Waits for `CG - style (HOAX).png` (11R).  
+The HOAX home ending: the decorated gym after hours, Cherry hugging Solar.  
 Attach: `Remake - ending-hoax-home.png`, `CG - style (HOAX).png`, `CG - Jihoon (HOAX).png`, `CG - Cherry (HOAX).png`, `CG - Solar (HOAX).png`, `CG - Asahi (HOAX).png`, `BG - Hanlim Gym.png`  
 Save as: `ending-hoax-home.png`
 ```
@@ -1419,7 +1324,7 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 ```
 
 **[ ] 22L. Remake: strangers: bureom**  
-The Daeboreum breakfast in the Lee kitchen (epi-s-bureom). Waits for `CG - style (Strangers).png` (11P).  
+The Daeboreum breakfast in the Lee kitchen (epi-s-bureom).  
 Attach: `Remake - epi-s-bureom.png`, `CG - style (Strangers).png`, `CG - Haechan (Strangers).png`, `CG - Yunjin (Strangers).png`, `CG - Mrs. Bang (Strangers).png`, `CG - Solar (Strangers).png`, `CG - Jungwon (Strangers).png`, `CG - Mr. Oh (Strangers).png`, `BG - Lee House Kitchen.png`  
 Save as: `epi-s-bureom.png`
 ```
@@ -1427,7 +1332,7 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 ```
 
 **[ ] 22M. Remake: strangers: the girls at the café**  
-The girls and the laminated plan at the Songdo café (epi-s-girls). Waits for `CG - style (Strangers).png` (11P).  
+The girls and the laminated plan at the Songdo café (epi-s-girls).  
 Attach: `Remake - epi-s-cafe.png`, `CG - style (Strangers).png`, `CG - Sakura (Strangers).png`, `CG - Chaewon (Strangers).png`, `CG - Solar (Strangers).png`, `CG - Yunjin (Strangers).png`, `CG - Kazuha (Strangers).png`, `CG - Eunchae (Strangers).png`, `BG - Songdo Café.png`  
 Save as: `epi-s-cafe.png`
 ```
@@ -1435,7 +1340,7 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 ```
 
 **[ ] 22N. Remake: strangers: the dinner**  
-The whole household at the long table (epi-s-dinner). Anyone without a portrait here keeps their face from the first image. Waits for `CG - style (Strangers).png` (11P).  
+The whole household at the long table (epi-s-dinner). Anyone without a portrait here keeps their face from the first image.  
 Attach: `Remake - epi-s-dinner.png`, `CG - style (Strangers).png`, `CG - Solar (Strangers).png`, `CG - Jungwon (Strangers).png`, `CG - Haechan (Strangers).png`, `CG - Yunjin (Strangers).png`, `CG - Appa (Strangers).png`, `CG - Eomma (Strangers).png`, `BG - Lee House Dining Room.png`  
 Save as: `epi-s-dinner.png`
 ```
@@ -1443,7 +1348,7 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 ```
 
 **[ ] 22O. Remake: strangers: dumplings**  
-Folding dumplings on a Sunday in the Lee kitchen (epi-s-sunday). Waits for `CG - style (Strangers).png` (11P).  
+Folding dumplings on a Sunday in the Lee kitchen (epi-s-sunday).  
 Attach: `Remake - epi-s-dumplings.png`, `CG - style (Strangers).png`, `CG - Solar (Strangers).png`, `CG - Haechan (Strangers).png`, `CG - Auntie Song (Strangers).png`, `CG - Appa (Strangers).png`, `CG - Jungwon (Strangers).png`, `BG - Lee House Kitchen.png`  
 Save as: `epi-s-dumplings.png`
 ```
@@ -1451,7 +1356,7 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 ```
 
 **[ ] 22P. Remake: strangers: held**  
-The pull in the garden, both of them holding on (the strangers finale). Waits for `CG - style (Strangers).png` (11P).  
+The pull in the garden, both of them holding on (the strangers finale).  
 Attach: `Remake - epi-s-held.png`, `CG - style (Strangers).png`, `CG - Jungwon (Strangers).png`, `CG - Solar (Strangers).png`, `CG - Haechan (Strangers).png`, `BG - Lee House Garden at night.png`  
 Save as: `epi-s-held.png`
 ```
@@ -1459,7 +1364,7 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 ```
 
 **[ ] 22Q. Remake: strangers: room six**  
-The girls at karaoke (epi-s-karaoke). Waits for `CG - style (Strangers).png` (11P).  
+The girls at karaoke (epi-s-karaoke).  
 Attach: `Remake - epi-s-karaoke.png`, `CG - style (Strangers).png`, `CG - Chaewon (Strangers).png`, `CG - Kazuha (Strangers).png`, `CG - Solar (Strangers).png`, `CG - Sakura (Strangers).png`, `CG - Yunjin (Strangers).png`, `CG - Eunchae (Strangers).png`, `BG - Incheon Karaoke.png`  
 Save as: `epi-s-karaoke.png`
 ```
@@ -1467,7 +1372,7 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 ```
 
 **[ ] 22R. Remake: strangers: the green moon**  
-The moon going green at Daeboreum on Wolmido (epi-s-moon). Waits for `CG - style (Strangers).png` (11P).  
+The moon going green at Daeboreum on Wolmido (epi-s-moon).  
 Attach: `Remake - epi-s-moon.png`, `CG - style (Strangers).png`, `CG - Haechan (Strangers).png`, `CG - Jungwon (Strangers).png`, `BG - Wolmido Daeboreum.png`  
 Save as: `epi-s-moon.png`
 ```
@@ -1475,7 +1380,7 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 ```
 
 **[ ] 22S. Remake: strangers: the pins**  
-Her mother doing her hair at the dressing table (Eomma hangout). Waits for `CG - style (Strangers).png` (11P).  
+Her mother doing her hair at the dressing table (Eomma hangout).  
 Attach: `Remake - epi-s-pins.png`, `CG - style (Strangers).png`, `CG - Eomma (Strangers).png`, `CG - Solar (Strangers).png`, `BG - Solar's Room (Lee House).png`  
 Save as: `epi-s-pins.png`
 ```
@@ -1483,7 +1388,7 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 ```
 
 **[ ] 22T. Remake: strangers: the tide**  
-The tide standing still on the mudflats (epi-s-tide). Waits for `CG - style (Strangers).png` (11P).  
+The tide standing still on the mudflats (epi-s-tide).  
 Attach: `Remake - epi-s-tide.png`, `CG - style (Strangers).png`, `CG - Solar (Strangers).png`, `BG - Incheon Mudflats.png`  
 Save as: `epi-s-tide.png`
 ```
@@ -1491,7 +1396,7 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 ```
 
 **[ ] 22U. Remake: HOAX: Christmas at the door**  
-Jungwon bowing to her mother at the front door (epi-h-christmas). The dog stays as it is. Waits for `CG - style (HOAX).png` (11R).  
+Jungwon bowing to her mother at the front door (epi-h-christmas). The dog stays as it is.  
 Attach: `Remake - epi-h-christmas.png`, `CG - style (HOAX).png`, `CG - Solar (HOAX).png`, `CG - Mom (HOAX).png`, `CG - Jungwon (HOAX).png`, `BG - Kim House.png`  
 Save as: `epi-h-christmas.png`
 ```
@@ -1499,7 +1404,7 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 ```
 
 **[ ] 22V. Remake: HOAX: Christmas Eve with the council**  
-Decorating at Yeobo's on Christmas Eve (epi-h-eve, the council choice). Sunoo's grandmother stays as she is. Waits for `CG - style (HOAX).png` (11R).  
+Decorating at Yeobo's on Christmas Eve (epi-h-eve, the council choice). Sunoo's grandmother stays as she is.  
 Attach: `Remake - epi-h-eve-council.png`, `CG - style (HOAX).png`, `CG - Solar (HOAX).png`, `CG - Jungwon (HOAX).png`, `CG - Jay (HOAX).png`, `CG - Heeseung (HOAX).png`, `CG - Niki (HOAX).png`, `CG - Sunoo (HOAX).png`, `CG - Jake (HOAX).png`, `BG - Yeobo's Café.png`  
 Save as: `epi-h-eve-council.png`
 ```
@@ -1507,7 +1412,7 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 ```
 
 **[ ] 22W. Remake: HOAX: Christmas Eve with Jihoon**  
-The drive through the lights (epi-h-eve, the Jihoon choice). Waits for `CG - style (HOAX).png` (11R).  
+The drive through the lights (epi-h-eve, the Jihoon choice).  
 Attach: `Remake - epi-h-eve-jihoon.png`, `CG - style (HOAX).png`, `CG - Solar (HOAX).png`, `CG - Jihoon (HOAX).png`, `BG - Christmas Lights.png`  
 Save as: `epi-h-eve-jihoon.png`
 ```
@@ -1515,7 +1420,7 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 ```
 
 **[ ] 22X. Remake: HOAX: Christmas Eve with Jungwon**  
-The walk down his street with the dog (epi-h-eve, the Jungwon choice). The dog stays as it is. Waits for `CG - style (HOAX).png` (11R).  
+The walk down his street with the dog (epi-h-eve, the Jungwon choice). The dog stays as it is.  
 Attach: `Remake - epi-h-eve-jungwon.png`, `CG - style (HOAX).png`, `CG - Solar (HOAX).png`, `CG - Jungwon (HOAX).png`, `BG - Jungwon's Street at night.png`  
 Save as: `epi-h-eve-jungwon.png`
 ```
@@ -1523,7 +1428,7 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 ```
 
 **[ ] 22Y. Remake: HOAX: the hearing**  
-Solar standing up at the hearing in the gym (epi-h-hearing). The crowd stays as it is. Waits for `CG - style (HOAX).png` (11R).  
+Solar standing up at the hearing in the gym (epi-h-hearing). The crowd stays as it is.  
 Attach: `Remake - epi-h-hearing.png`, `CG - style (HOAX).png`, `CG - Solar (HOAX).png`, `CG - Jungwon (HOAX).png`, `CG - Jake (HOAX).png`, `CG - Jay (HOAX).png`, `CG - Sunoo (HOAX).png`, `CG - Chaewon (HOAX).png`, `BG - Hanlim Gym (Hearing).png`  
 Save as: `epi-h-hearing.png`
 ```
@@ -1531,7 +1436,7 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 ```
 
 **[ ] 22Z. Remake: HOAX: held**  
-Jungwon holding on in the gym at midnight (the HOAX finale). Waits for `CG - style (HOAX).png` (11R).  
+Jungwon holding on in the gym at midnight (the HOAX finale).  
 Attach: `Remake - epi-h-held.png`, `CG - style (HOAX).png`, `CG - Solar (HOAX).png`, `CG - Jungwon (HOAX).png`, `BG - Hanlim Gym at Midnight.png`  
 Save as: `epi-h-held.png`
 ```
@@ -1539,7 +1444,7 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 ```
 
 **[ ] 22AA. Remake: HOAX: the séance**  
-The planchette moving in Jihoon's living room (epi-h-seance). Waits for `CG - style (HOAX).png` (11R).  
+The planchette moving in Jihoon's living room (epi-h-seance).  
 Attach: `Remake - epi-h-seance.png`, `CG - style (HOAX).png`, `CG - Asahi (HOAX).png`, `CG - Jaehyuk (HOAX).png`, `CG - Solar (HOAX).png`, `CG - Cherry (HOAX).png`, `CG - Jihoon (HOAX).png`, `BG - Jihoon's House.png`  
 Save as: `epi-h-seance.png`
 ```

@@ -77,6 +77,7 @@
     { s: 'appa', f: 'neutral', t: "Sol-ah." },
     { s: 'solar', f: 'neutral', t: "Appa." },
     { n: "He didn't come up. She came down, one stair, two, and sat on the eighth so that their heads were level, the way she'd sat on it when she was small and wanted to be told a story she'd already heard, and the wood was cold under her through the boat pajamas and she didn't care." },
+    { cg: 'epi-s-seventh-stair' },
     { n: "She waited for it. Her whole body arranged itself around the question the way you brace on a deck when you can feel the swell coming under the hull, her hands flat on her knees, the ring on her right hand turning under her thumb without her telling it to. Where. Where were you. Ten days. She had an answer. She'd had it ready since the dorm kitchen, smooth, true in the places that could be checked." },
     { n: "It didn't come." },
     { n: "He put his glasses on, as if he needed them to look at her, and then took them off again, and let them fall back against his chest on the cord." },
@@ -112,6 +113,7 @@
     { n: "Somewhere at the back of her head something thin went tight, like a line paid out too far and caught on a cleat. She noticed it. She put it away. She'd been putting things away in this house since she was eleven." },
     { flag: 'epi-s-fever' },
     { s: 'appa', f: 'neutral', t: "Come down. It's cold up here." },
+    { cg: null },
     { n: "He stood up first. He did it with a hand on the banister, slowly, and she heard his knee go, and he heard her hear it, and neither of them said anything about that either. On the way past the hall table he stopped and squared the comb against the edge of it with one finger, as if that were the thing that had been out of place all this time, and switched off the lamp in the study, and went down into the dark in his slippers." },
     { n: "She followed him three stairs behind, the way she'd followed him at five years old when she couldn't sleep and he'd pretended all the way to the kitchen not to know he had company. The seventh stair creaked under her. He didn't turn round. His shoulders did something small, under the cardigan, and went on down." },
 
@@ -228,6 +230,7 @@
     { place: 'Incheon · The Lee House · Annex', time: 'Late Night', soft: true },
     { n: "Haechan was on the step, the way he'd been on the step every time she'd checked, sitting with his knees up and his forearms on them and the black padded work jacket open over a sweatshirt, chewing gum, cinnamon, she could smell it from the second terrace. Behind him on the sill the old silver radio was on low, the coast-weather station, a man's voice reading out wind speeds for places nobody would ever go on holiday." },
     { n: "Jungwon was standing by the bare persimmon tree in a dark coat, with his hands at his sides, on the other side of about two meters of frozen gravel that nobody had walked across." },
+    { cg: 'epi-s-step' },
     { n: "Two meters. She could see it from the terrace, how exact it was. Not far enough to be rude. Not near enough to be anything else. Two men who had been standing in the same small garden in the cold for some time, she suspected, in silence, out of a shared and mutual refusal to be the one who left first." },
     { s: 'haechan', f: 'neutral', t: "Agasshi." },
     { n: "Jungwon bowed. Properly, from the waist, in the snow, as if she'd come down a staircase in a hotel." },
@@ -247,6 +250,7 @@
     { s: 'solar', f: 'neutral', t: "And what are we saying?" },
     { n: "Nobody answered." },
     { n: "The radio read out the wind at Baengnyeong. Northwest, eight to twelve meters a second. Swell two meters. Haechan's gum stopped." },
+    { cg: null },
     { choose: [
       { t: "(Sit on the step.)", then: [
         { n: "She sat on the step next to him, on the cold half, and he moved over without being asked so she got the warm half instead, which was his way of saying a thing without saying it, and she pretended not to notice, which was hers." },

@@ -523,6 +523,7 @@
     { s: 'akihiko', f: 'serious', t: "Behind me. ...No. Next to me. Fine." },
     { n: "And beside her, at her right shoulder, the air thinned, the way it thinned around her own edges now, and somebody was standing in it." },
     { n: "Half there. A boy in black with headphones round his neck, the platform showing through him, his face turned to the tracks with the old flat stillness. And on her left, ten steps off by habit even here, a boy in a buttoned coat, a tortoise and a serpent rising faint behind him like a reflection in a window." },
+    { cg: 'epi-st-platform' },
     { n: "They were here. In Iwatodai. On the platform they'd left from. They didn't look like they knew it yet." },
     { battle: { id: 'epi-stay-4', kind: 'scripted', script: 'epi-stay-4', title: 'One Second', forced: true,
       desc: 'Iwatodai Station at midnight, where the doors were. For one round, the ones who went home are here, and they can hear her.',
@@ -541,6 +542,7 @@
     ], else: [
       { n: "She wanted to say all of it. The bell and the harbor and the gym and the socks and the four a.m. phone." }
     ] },
+    { cg: null },
     { n: "The one second ended." },
     { n: "Haechan's hand came up, as if to take her wrist, and closed on light. Jungwon's mouth opened on a word. Then the platform was a platform, and the rails were rails, and the lights were white, and there was nobody at her shoulder, and nobody ten steps off." },
     { dark: false },

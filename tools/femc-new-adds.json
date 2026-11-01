@@ -21678,6 +21678,116 @@
         }
       ],
       "section": "FEMC-ART-TODO 18"
+    },
+    {
+      "batch": 112,
+      "source": "epi-s-seventh-stair.png",
+      "sourceNow": "New Adds/epi-s-seventh-stair.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "977498c766622a6aa5456db06ac0bad5a2fe053d602b46a720abf6dcbb63d8f7",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-s-seventh-stair.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "data/epi/strangers/story-w1.js epi-s-home: { cg } after \"He didn't come up. She came down, one stair, two\"; { cg: null } before \"He stood up first.\"; ALBUM.strangers first; cgFocus in data/places.js",
+      "mobileFocus": "85% 40%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/epi-s-seventh-stair.webp",
+          "sha256": "b60252e0196aac350357d4c0db170e36d80f70568805106ffe1095b708121a24"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 112,
+      "source": "epi-s-step.png",
+      "sourceNow": "New Adds/epi-s-step.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "89f47bd2ecc0aaa27dd0bf1a58179817fc0e7e6583722233e47fe4d7048dc194",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-s-step.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "data/epi/strangers/story-w1.js epi-s-step: { cg } after \"Jungwon was standing by the bare persimmon tree\"; { cg: null } before her choice; ALBUM.strangers second; cgFocus in data/places.js",
+      "mobileFocus": "45% 40%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/epi-s-step.webp",
+          "sha256": "337890e6e1ba6f934352a7f18bd3220be926116158347188292d65e0b90bff08"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 112,
+      "source": "epi-h-window.png",
+      "sourceNow": "New Adds/epi-h-window.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e8db03201643a0c970ad99dcaaf806d92610f302bf4ac647e0a8f7f510574b11",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-h-window.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "data/epi/hoax/story-w3.js epi-h-window: { cg } after \"They both froze. Solar had both hands over her mouth.\"; { cg: null } before \"Afterwards they sat on the low wall\"; ALBUM.hoax after the seance; cgFocus in data/places.js",
+      "mobileFocus": "74% 40%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/epi-h-window.webp",
+          "sha256": "9031e9aed5b0d91f78ea626b9ad7e319bbd92d8d5640f352fcc040b08ddd64a0"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 112,
+      "source": "epi-h-porch.png",
+      "sourceNow": "New Adds/epi-h-porch.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "94e7f9195cc5630535d6070684879a598b4706d1e0aad0e1d0bed3ad9f49efb5",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-h-porch.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "data/epi/hoax/story-w3.js epi-h-porch: { cg } after \"He moved on to the next pot. She sat down on the top step\"; { cg: null } at the start of the \"(Get up. Hold the pot steady for him.)\" branch and before \"He was halfway through a story about the forum\"; ALBUM.hoax after the window; cgFocus in data/places.js",
+      "mobileFocus": "40% 35%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/epi-h-porch.webp",
+          "sha256": "ae3235bc46ce0bdfdb2cdcd81f45117c9bafea2e224941664f455028401365d5"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
+    },
+    {
+      "batch": 112,
+      "source": "epi-st-platform.png",
+      "sourceNow": "New Adds/epi-st-platform.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "a1a68a235c0980716d7271bc4cbfe90b978a037e22f2ff305e67929df2906bb2",
+      "status": "integrated",
+      "destination": "assets/femc/cg/epi-st-platform.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "data/epi/stay/story.js epi-st-platform: { cg } after \"Half there. A boy in black with headphones\" (kept through the one-round fight: the resume keeps it); { cg: null } before \"The one second ended.\"; ALBUM.stay before Held; cgFocus in data/places.js",
+      "mobileFocus": "68% 35%",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/epi-st-platform.webp",
+          "sha256": "2391c80b63bf291dbe020c21e5f6d34cbda84459c1fa8307bf65a04117afd3d7"
+        }
+      ],
+      "section": "FEMC-ART-TODO 11"
     }
   ],
   "batch1Validation": {

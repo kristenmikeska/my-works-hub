@@ -255,6 +255,7 @@
     { n: "He looked at the garage roof. He looked at her. He looked at the garage roof again with the specific face of somebody running the numbers and not liking any of them." },
     { n: "It took him four minutes. He got one leg over the sill, then the other, then sat on the edge of the roof in the snow for a long time with both hands flat beside him like the roof might buck him off, and then he slid, not on purpose, the last metre, and landed in the drift by the drainpipe up to his hips, and somewhere in the house next door a dog started barking, and from inside his own house, faint and furious, Maeumi joined in." },
     { n: "They both froze. Solar had both hands over her mouth. A light came on two houses down, stayed on for an endless ten seconds, and went off again." },
+    { cg: 'epi-h-window' },
     { n: "He was in his school shoes. Untied. No socks, she found out later, because socks would've meant opening the drawer that stuck, and the drawer that stuck was directly over his parents' bedroom. There was snow in the left one. He stood in the drift like he'd been planted there and looked down at himself with the face of a man reading his own autopsy." },
     { s: 'jungwon', f: 'flustered', t: "Don't." },
     { s: 'solar', f: 'happy', t: "I didn't say anything." },
@@ -264,6 +265,7 @@
     { ifYear: { xmas: 'jungwon' }, then: [
       { n: "He tasted like toothpaste, like a boy who'd been in bed with the light off ten minutes ago, and she thought of a croissant with red icing, split exactly down the middle, and a tin he'd counted twice and lost count of, and how she'd said his name and he'd lost count again." }
     ] },
+    { cg: null },
     { n: "Afterwards they sat on the low wall at the bottom of his drive with their shoulders pressed together, breath going up in clouds. He was doing something with his fingers on his knee. Tapping. Small, steady, one finger after another, like counting under his breath without the breath." },
     { s: 'solar', f: 'neutral', t: "What are you counting?" },
     { n: "His fingers stopped. He looked at them like they belonged to someone else." },
@@ -334,6 +336,7 @@
     { s: 'solar', f: 'surprised', t: "It's minus eight." },
     { s: 'jihoon', f: 'happy', t: "And these are the toughest plants in Hanlim. They've survived five winters of me. They can survive one more, with the proper royal treatment." },
     { n: "He moved on to the next pot. She sat down on the top step with her knees up inside her coat, the way she'd sat on this step since before she could tie her shoes, and didn't say anything about whose flowers they were. Nobody ever did. It was the one rule all seven of them had kept since they were thirteen without anybody ever having to say it out loud." },
+    { cg: 'epi-h-porch' },
     { n: "Behind him the house was dark except for one lamp in the front room, the one by the window, which he left on every night so the house looked like somebody was in it besides him. Through the glass she could see the edge of the shelf with the photographs on it, the frames all facing the room, dusted, straight. She looked at them the way you look at a thing in a museum you've been told not to touch, and then she looked at the kettle." },
     { n: "It was the old one, dented on one side, with the whistle that had stopped whistling sometime in middle school. He'd refilled it at least once already. There was a ring of wet on the porch boards where he'd set it down, already going white at the edges, and a second ring next to it, and his hands were red to the wrist because he wouldn't wear gloves to do it. He never had. She'd asked once, in eighth grade, and he'd said gloves were for people who didn't respect the soil, and she hadn't asked again." },
     { s: 'jihoon', f: 'neutral', t: "Don't look at me like that. You've got your gremlin face on." },
@@ -342,6 +345,7 @@
     { n: "He got to the last pot, the white one, the one that trailed down over the rail every June so far you could see it from the end of the street, and stopped, and looked at the frozen stalks, and didn't pour." },
     { choose: [
       { t: "(Get up. Hold the pot steady for him.)", flag: 'epi-h-porch-pot', stat: { kindness: 1 }, then: [
+        { cg: null },
         { n: "She got up off the step. She didn't ask. She put both her gloved hands round the cold clay, one on each side, and held it still against the rail, and after a second he tipped the kettle and poured, slowly, so slowly the steam came up between them like a curtain." },
         { s: 'solar', f: 'neutral', t: "It's not dead." },
         { s: 'jihoon', f: 'neutral', t: "It's brown, Sol." },
@@ -363,6 +367,7 @@
       { s: 'solar', f: 'happy', t: "He sleeps on my desk. Nana's jealous." },
       { s: 'jihoon', f: 'happy', t: "As he should be. That claw held for me. That's destiny." }
     ] },
+    { cg: null },
     { n: "He was halfway through a story about the forum, about how somebody under hanlim_accountability had replied to his comment with a paragraph about fiscal responsibility and he'd answered with a picture of Nana in sunglasses, when the music came." },
     { glitch: 'epi-h-g-jihoon' },
     { n: "Piano. From nowhere. Four notes, slow and clear and sad, the way they'd come down a long blue hall when the elevator doors opened, and under the porch light Solar went thin. She felt it happen this time, like stepping off a kerb she hadn't seen, the cold going through her instead of onto her, and she looked down at her own hand on her knee and saw the step through it." },
