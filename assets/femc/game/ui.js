@@ -723,7 +723,7 @@
       <div class="g-title-moon" aria-hidden="true"></div><div class="g-title-fx" aria-hidden="true"></div>
       <div class="g-title-copy"><h1 class="g-logo" aria-label="Persona 3: Solstice"><span class="g-logo-text" aria-hidden="true">Solstice<small>Persona 3 · Every Universe</small></span></h1>
       <button type="button" class="g-title-press">${tap ? 'Tap to start' : 'Press any key'}</button>
-      <div class="g-title-menu" role="menu">${has ? '<button type="button" role="menuitem" data-t="continue">Continue</button>' : ''}<button type="button" role="menuitem" data-t="new">New Game</button><button type="button" role="menuitem" data-t="load">Load</button><button type="button" role="menuitem" data-t="extras">Extras</button><button type="button" role="menuitem" data-t="settings">Settings</button></div>
+      <div class="g-title-menu" role="menu">${has ? '<button type="button" role="menuitem" data-t="continue"><span class="g-tm-t">Continue</span></button>' : ''}<button type="button" role="menuitem" data-t="new"><span class="g-tm-t">New Game</span></button><button type="button" role="menuitem" data-t="load"><span class="g-tm-t">Load</span></button><button type="button" role="menuitem" data-t="extras"><span class="g-tm-t">Extras</span></button><button type="button" role="menuitem" data-t="settings"><span class="g-tm-t">Settings</span></button></div>
       <p class="g-title-foot">${has ? `Autosave · ${esc(autoLine())}` : 'No save yet'}</p></div>
       <a class="g-title-practice" href="femc-battle.html?practice=1" title="Practice mode: the battle game on its own, with its own save">Practice</a></section>`, 'is-title');
     const sec = main.querySelector('.g-title'), items = [...sec.querySelectorAll('.g-title-menu button')];
