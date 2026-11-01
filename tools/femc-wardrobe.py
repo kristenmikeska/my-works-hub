@@ -2,7 +2,8 @@
 
   python3 tools/femc-wardrobe.py skin <sheet.png> <skin id> [fighter id, default solar]
         A 3 x 2 pose sheet on white (the fighters' format: idle, Evoker, attack, spell, hurt, victory), cut exactly like
-        tools/femc-shadow-poses.py cuts fighters -> assets/femc/game/art/skins/<skin>/<who>-pose-0..5.webp.
+        tools/femc-shadow-poses.py cuts fighters -> assets/femc/game/art/skins/<skin>/<who>-pose-0..5.webp. A sheet that
+        already has a transparent background (Oct 31 2026) skips the white key and is split on its own alpha.
   python3 tools/femc-wardrobe.py portraits <skin id> <who> <folder of face PNGs>
         Copies already-cut portrait PNGs (named <face>.png, e.g. from tools/femc-portraits.py) to
         assets/femc/game/art/skins/<skin>/portraits/<who>/<face>.webp.
@@ -57,6 +58,66 @@ def stray_top(f):
     return Image.fromarray(px)
 
 
+def transparent(src):
+    """True for a sheet that already has a transparent background (Kat's Oct 31 2026 outfit sheets): over a fifth of it
+    is clear. Opaque white sheets (every earlier outfit) don't pass and keep the white key."""
+    import numpy as np
+    im = Image.open(src)
+    if 'A' not in im.getbands(): return False
+    return float((np.asarray(im.getchannel('A')) < 8).mean()) > 0.2
+
+
+def regroup(masks, a):
+    """Two fixes to alpha_figures for weapons that reach across the cell line (sk-jungwon-heir, Oct 31 2026: a rapier tip
+    resting on the next figure's coat). A run of bright, grey metal shared by two figures goes wholly to the one that holds
+    most of it (where the touching pieces were parted, the neighbour had claimed the tip). A loose piece goes to the figure
+    whose own art is nearest, pixel to pixel, not the nearest bounding box."""
+    import numpy as np
+    from scipy import ndimage
+    art = a[..., 3] > 0.06
+    rgb = a[..., :3]; mx, mn = rgb.max(2), rgb.min(2)
+    metal = art & (mx > 0.45) & (mx - mn < 0.12)
+    ml, mn_ = ndimage.label(metal, structure=np.ones((3, 3)))
+    masks = [m.copy() for m in masks]
+    for k, sl in enumerate(ndimage.find_objects(ml), 1):
+        if sl is None: continue
+        run = ml[sl] == k
+        run = ndimage.binary_dilation(run, iterations=3) & art[sl] & (mx[sl] > 0.3)  # its soft edge and the faint tip
+        counts = [int((m[sl] & run).sum()) for m in masks]
+        if sum(c > 0 for c in counts) < 2: continue
+        best = int(np.argmax(counts))
+        for i, m in enumerate(masks):
+            if i == best: m[sl] |= run
+            else: m[sl] &= ~run
+    lab, n = ndimage.label(ndimage.binary_dilation(art, iterations=2)); lab = lab * art
+    sz = np.bincount(lab.ravel()); sz[0] = 0
+    def body(m):
+        ks = [k for k in np.unique(lab[m]) if k]
+        return (lab == max(ks, key=lambda k: sz[k])) & m if ks else m
+    main = [body(m) for m in masks]
+    dist = [ndimage.distance_transform_edt(~mb) for mb in main]
+    out = [m.copy() for m in masks]
+    for k in range(1, n + 1):
+        piece = lab == k
+        if not sz[k] or any((piece & mb).any() for mb in main): continue
+        best = int(np.argmin([d[piece].min() for d in dist]))
+        for i in range(len(out)): out[i] &= ~piece
+        out[best] |= piece
+    return out
+
+
+def alpha_frames(SP, src):
+    """A transparent 3 x 2 pose sheet: no keying. Split into the six figures as the transparent Shadow sheets are
+    (femc-shadow-poses.py alpha_figures: touching figures are parted between their solid bodies, specks join the nearest
+    figure) and placed on one canvas like the white sheets (place: body mass centred, feet on one baseline)."""
+    import numpy as np
+    from scipy import ndimage
+    a = np.asarray(Image.open(src).convert('RGBA'), np.float32) / 255
+    a[..., 3] *= a[..., 3] > 0.03  # near-invisible haze around the figures
+    masks = regroup(SP.alpha_figures(a, 3, 2), a)
+    return SP.place(SP.theurgy_tool(), [a[..., 3] * ndimage.binary_dilation(mk, iterations=2) for mk in masks], [a] * 6)
+
+
 def scan():
     keys = sorted(f.stem for f in (ART / 'keys/series').glob('*.webp')) if (ART / 'keys/series').exists() else []
     goods = sorted(f.stem for f in (ART / 'goods').glob('*.webp')) if (ART / 'goods').exists() else []
@@ -79,7 +140,7 @@ def main(a):
     if cmd == 'skin':
         src, skin, who = find(a[1]), a[2], (a[3] if len(a) > 3 else 'solar')
         SP = tool('femc_shadow_poses', 'femc-shadow-poses.py')
-        frames, idle_h = SP.white_frames(src)
+        frames, idle_h = alpha_frames(SP, src) if transparent(src) else SP.white_frames(src)
         out = ART / 'skins' / skin; out.mkdir(parents=True, exist_ok=True)
         frames = [stray_top(f) for f in frames]
         for i, f in enumerate(frames): f.save(out / f'{who}-pose-{i}.webp', 'WEBP', quality=90, method=5)

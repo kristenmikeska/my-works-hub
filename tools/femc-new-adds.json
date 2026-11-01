@@ -19857,6 +19857,496 @@
       "outputs": {
         "assets/femc/game/art/goout-map-evening.webp": "82adfab4a3f5b105405a4eddfbe8215e3df0039ec9e731374acc06e9a6acde81"
       }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-haechan-fairground-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-haechan-fairground-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "789487fd1da04f7e137c1b37ac0b45db626a2badde4bc98323a825a639979daa",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-fairground/haechan-pose-0.webp",
+      "skin": "sk-haechan-fairground",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-haechan-fairground-posesheet.png sk-haechan-fairground haechan, which now skips the white key for a sheet that is over a fifth clear and splits it on its own alpha (femc-shadow-poses.py alpha_figures, haze under alpha 0.03 dropped) and places the six frames like the white sheets (place: body mass centred, feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-haechan-fairground (Fairground Lights, UR, Haechan; Summer Nights and Haechan Spotlight), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-fairground/haechan-pose-0.webp": "c08e3cfbde634a4e348744996b4dd42a437ce1bad18929b71fef7bcc107de85e",
+        "assets/femc/game/art/skins/sk-haechan-fairground/haechan-pose-1.webp": "8dcdec3a04d0a9f47e2c88c731dfd739032ed47f70fc16bb909421aaac373f6f",
+        "assets/femc/game/art/skins/sk-haechan-fairground/haechan-pose-2.webp": "b7b3fcf7fcbc27e5f01d0d73498d321ad41b8b71ed85d17e7cc214588e940106",
+        "assets/femc/game/art/skins/sk-haechan-fairground/haechan-pose-3.webp": "d6403e7db6c0fa6a7ee7e244606104cece88a5d95425496802a3af6972cead5f",
+        "assets/femc/game/art/skins/sk-haechan-fairground/haechan-pose-4.webp": "6830a54d0b77a71c43f65cd33b6f5ce3e6f13062c9e174b52a6d09edf4d761b7",
+        "assets/femc/game/art/skins/sk-haechan-fairground/haechan-pose-5.webp": "2cc158f0f5406f8a92165f195c1bd0f6dfb9f171c5a5d61f90c4e52ab0d82408"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-haechan-fairground-portraits.png",
+      "sourceNow": "New Adds/skin-sk-haechan-fairground-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "97c80d6caf597f5a5b2a42e302a782f47b79a0ce92d8e1820175a9a1c94d90fe",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-fairground/portraits/haechan/neutral.webp",
+      "skin": "sk-haechan-fairground",
+      "conversion": "already transparent sheet (no Vision lift needed): columns split along a min-cost vertical seam (cost = alpha) within 90 px of the thirds, rows at the emptiest row within 24 px of the middle (a top bust's last rows stay with it), each cell's largest piece kept plus pieces inside its box; each cell scaled and placed on his base canvas (870 x 822) by normalized cross-correlation of the face crop against his own six portraits (best assignment over all six); busts that end above the canvas bottom carried down by repeating their last clean row; tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "his file order, matched by face correlation to portraits/haechan/: top row neutral, flustered, happy; bottom row surprised, serious, sad (as Sweater Date)",
+      "placement": "Fairground Lights’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-fairground/portraits/haechan/flustered.webp": "cb6473e0f20535eafbe3e40193fc505a7949f7642ffc2cab5fd4e6bf39f1f9be",
+        "assets/femc/game/art/skins/sk-haechan-fairground/portraits/haechan/happy.webp": "d41186feee1ff13b5d6f46dd31679f321a01f67b85f663789180e969b9b04fce",
+        "assets/femc/game/art/skins/sk-haechan-fairground/portraits/haechan/neutral.webp": "950eed0a9a9195f95a7698bc5140c3d72db64dff6ac1d12225e8ea9e58c4d029",
+        "assets/femc/game/art/skins/sk-haechan-fairground/portraits/haechan/sad.webp": "426acf47e4c8f818bf6c0d92ce69b3d1a67f8e625a58e2c74d2b0b262cefc4ca",
+        "assets/femc/game/art/skins/sk-haechan-fairground/portraits/haechan/serious.webp": "b5bc3987fd26cfaf1c0ac50eee86118507ca032279d2f6c57e671220e03b0219",
+        "assets/femc/game/art/skins/sk-haechan-fairground/portraits/haechan/surprised.webp": "b4f3fac85915444247cf378cab13fa02c9fa83b7efe3cb67f62d6fad3ea046c2"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-haechan-sweettooth-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-haechan-sweettooth-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a5e6caca41b4c628c5ede485a5da1a1da05cb7ffb4b3b288f95d74fc15fec069",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-pose-0.webp",
+      "skin": "sk-haechan-sweettooth",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-haechan-sweettooth-posesheet.png sk-haechan-sweettooth haechan, which now skips the white key for a sheet that is over a fifth clear and splits it on its own alpha (femc-shadow-poses.py alpha_figures, haze under alpha 0.03 dropped) and places the six frames like the white sheets (place: body mass centred, feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-haechan-sweettooth (Sweet Tooth, SR, Haechan; Winter Lights and Haechan Spotlight), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-pose-0.webp": "6c9d93a1463792a8f035a79e792398530575038c143c201f766abf260e7a7ced",
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-pose-1.webp": "93caa3635dc076b8fe9c6afee9b963d5fe2afaf9ac209d1b7c394981473c31b1",
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-pose-2.webp": "731cc06d77be8e444d79bed9b58d6791970b7798527b4971ba4c4c462cbef53f",
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-pose-3.webp": "526a62944f2389f05f595568b3fff776975bf3ff313da27b90fc5f8cbb81903f",
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-pose-4.webp": "b30dd0e4621db3306cbef90c1952d57e51830659dd037a713fe3093544da4024",
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-pose-5.webp": "381506bc5d34e933fa27c66f0f212f17a764171b185e4b7639cb09cd3e56e268"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-haechan-sweettooth-portraits.png",
+      "sourceNow": "New Adds/skin-sk-haechan-sweettooth-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7d5c9153eb90eafe3fc8b0fda27841fc54bb9f8fb453842e3b1cf9ee155b6ca7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-sweettooth/portraits/haechan/neutral.webp",
+      "skin": "sk-haechan-sweettooth",
+      "conversion": "already transparent sheet (no Vision lift needed): columns split along a min-cost vertical seam (cost = alpha) within 90 px of the thirds, rows at the emptiest row within 24 px of the middle (a top bust's last rows stay with it), each cell's largest piece kept plus pieces inside its box; each cell scaled and placed on his base canvas (870 x 822) by normalized cross-correlation of the face crop against his own six portraits (best assignment over all six); busts that end above the canvas bottom carried down by repeating their last clean row; tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "his file order, matched by face correlation to portraits/haechan/: top row neutral, flustered, happy; bottom row surprised, serious, sad (as Sweater Date)",
+      "placement": "Sweet Tooth’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "sad carried down 15 px (streaks at the bottom, behind the dialogue box); straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/portraits/haechan/flustered.webp": "51f5d33ffe8d499c479f33e2443e4ed553d3df0161bbabc2c5f70caf52bbbc27",
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/portraits/haechan/happy.webp": "314f28cd49da3d69fc7b99d142b9d0dde0e54a9a961840d63593e3e3bc87e310",
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/portraits/haechan/neutral.webp": "26f1f34a8f3e4f788de51264ed406d366ff0850b7b582442a65cb68dc32affc3",
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/portraits/haechan/sad.webp": "512559993320e533c00fb78ff120b5ac0c822d5e2dc6dd759ed84c86fadd147d",
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/portraits/haechan/serious.webp": "f0b989e5631b9fb9c387388f3a41d8da1178c24d907871fb06121acbe23b6ed0",
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/portraits/haechan/surprised.webp": "c6d937b8ecbf580ab8acb77d2117b03e916d4b2ebd0246a0f42487fcacf423cd"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-jungwon-pinstripe-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-jungwon-pinstripe-posesheet.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "f018159d3e4f94747f813e0e42237609730e23351db7b185e258fbd14f2904e5",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-pose-0.webp",
+      "skin": "sk-jungwon-pinstripe",
+      "conversion": "already transparent sheet (portrait-format 1024 x 1536, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-jungwon-pinstripe-posesheet.png sk-jungwon-pinstripe jungwon, which now skips the white key for a sheet that is over a fifth clear and splits it on its own alpha (femc-shadow-poses.py alpha_figures, haze under alpha 0.03 dropped) and places the six frames like the white sheets (place: body mass centred, feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-jungwon-pinstripe (Pinstripe Detective, UR, Jungwon; Masquerade and Winter Lights), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-pose-0.webp": "f561a5ad22d609779efa075cd28426efc58c77e602f349ee574a17170a7fba02",
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-pose-1.webp": "713ed7ea82a3b517c9e7aa3a4b5f2acdc607d0bddbf1d9e892c658323e32a4d4",
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-pose-2.webp": "3dae458baf1a742bb123bb081afebc066a066da81036a18a59cfc4b53c281f11",
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-pose-3.webp": "c1394627f058556ed12b742ca825a58417a15dc00d19df502e8e1054623df4cd",
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-pose-4.webp": "2acac64ae1455265fc75df419fac564dd18c4583c7de5482c2bdb99606a08362",
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-pose-5.webp": "514036fb74c36b642cdb78d95d8afe7589f50259c6b8547a0734954f8cb11bbb"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-jungwon-pinstripe-portraits.png",
+      "sourceNow": "New Adds/skin-sk-jungwon-pinstripe-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6cade87ae466495c61892b86d14212f010bc50d0c14346fad999da4353db027f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-pinstripe/portraits/jungwon/neutral.webp",
+      "skin": "sk-jungwon-pinstripe",
+      "conversion": "already transparent sheet (no Vision lift needed): columns split along a min-cost vertical seam (cost = alpha) within 90 px of the thirds, rows at the emptiest row within 24 px of the middle (a top bust's last rows stay with it), each cell's largest piece kept plus pieces inside its box; each cell scaled and placed on his base canvas (873 x 862) by normalized cross-correlation of the face crop against his own six portraits (best assignment over all six); busts that end above the canvas bottom carried down by repeating their last clean row; tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "his file order, matched by face correlation to portraits/jungwon/: top row flustered, serious, neutral; bottom row sad, happy, surprised (as Sheer Nerve)",
+      "placement": "Pinstripe Detective’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/portraits/jungwon/flustered.webp": "1376bcff6a6619de31684af726589446984d445ee206209aea00c05e82d89aa7",
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/portraits/jungwon/happy.webp": "5f3f6d533fe775e850a8972090014dc1b9082f001e9ed74ff22caf62f4cf49ac",
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/portraits/jungwon/neutral.webp": "4e984dd43150234cf2aded50c3592fd35069bd22745e831ce67271c97159e2b4",
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/portraits/jungwon/sad.webp": "0302f067d54285fa947915461efbf1b0e62e5cfbe43c3f59656070584e69eab8",
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/portraits/jungwon/serious.webp": "295c5bc00fa11c9d5e5c4eabebd5abd67a34a9d385c6a37e106442ae7fa7906f",
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/portraits/jungwon/surprised.webp": "c8421a14ee69dacc547b37054a12f8db677bc4e9fe8ab9630abcc3998b2e071f"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-jungwon-soundcheck-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-jungwon-soundcheck-posesheet.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "de4ad8ac685f5aeb280d52d682e2def113c5a77d8c71dd38044d1140ace8efef",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-pose-0.webp",
+      "skin": "sk-jungwon-soundcheck",
+      "conversion": "already transparent sheet (portrait-format 1024 x 1536, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-jungwon-soundcheck-posesheet.png sk-jungwon-soundcheck jungwon, which now skips the white key for a sheet that is over a fifth clear and splits it on its own alpha (femc-shadow-poses.py alpha_figures, haze under alpha 0.03 dropped) and places the six frames like the white sheets (place: body mass centred, feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-jungwon-soundcheck (Soundcheck, SR, Jungwon; Spring Bloom and HOAX World), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-pose-0.webp": "18c4485bd2e44962218c8cf4bdc0b8ab8f22599031ec102e660495b207f4e6e6",
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-pose-1.webp": "d5178446ca6c5bef398f1d661a13803ab465563da3d4f51e618da0c1c76a4e45",
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-pose-2.webp": "fe0ec7a0468df5e59d2575e237a5fdce7f649d8dd8f52e9a3c0221c7dd2c0996",
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-pose-3.webp": "864ebacbb518847adcf810d7c55dd35ce8c63c5b6467f040b89b9b559d5eb660",
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-pose-4.webp": "ef1374f3d18c6af418de5dba517a4bff24a779a7fcabc79559476783531e05f1",
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-pose-5.webp": "80b63c892100f39b8dabec0d30bc71f7b6465d9e874f2ab40a564684f67d34ad"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-jungwon-soundcheck-portraits.png",
+      "sourceNow": "New Adds/skin-sk-jungwon-soundcheck-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e80edb1546b02943ae519dc9c4fb319db675c3e6a0ff61c7103491bda7b689d5",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-soundcheck/portraits/jungwon/neutral.webp",
+      "skin": "sk-jungwon-soundcheck",
+      "conversion": "already transparent sheet (no Vision lift needed): columns split along a min-cost vertical seam (cost = alpha) within 90 px of the thirds, rows at the emptiest row within 24 px of the middle (a top bust's last rows stay with it), each cell's largest piece kept plus pieces inside its box; each cell scaled and placed on his base canvas (873 x 862) by normalized cross-correlation of the face crop against his own six portraits (best assignment over all six); busts that end above the canvas bottom carried down by repeating their last clean row; tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "his file order, matched by face correlation to portraits/jungwon/: top row flustered, serious, neutral; bottom row sad, happy, surprised (as Sheer Nerve)",
+      "placement": "Soundcheck’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "the hoodies fill each cell and touch at the cell lines: straight edges and a small notch at the bottom corners of sad and surprised",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/portraits/jungwon/flustered.webp": "386ca848a2ee0ae3eaff76ff74a951f1a376fe2be2bdb354f32f7919515bfe85",
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/portraits/jungwon/happy.webp": "77f5965d6303cafffde0fe8d8217f7eaf9bdb8a3da839f812d551503586eb599",
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/portraits/jungwon/neutral.webp": "a0240e3b180810281ca9972cd8dc09b27718ab9eb913e113164fb68712fec22a",
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/portraits/jungwon/sad.webp": "743ad2a875099151f013e2437bfce21d3d1a8a44ca0487dda9b7c5f985654d02",
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/portraits/jungwon/serious.webp": "1463d6d6ffba5ecf32c93739a955cb071e27c672a792f27c11e3236c6c7372cf",
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/portraits/jungwon/surprised.webp": "4a6a1154a26e5030d48b1d8243bfdacdd5b6c9e5b7f3f62749585dd65b236e46"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-jungwon-angel-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-jungwon-angel-posesheet.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "8014e8260c7b385e05cbb469c52ed3a9d149e1fabcaf367c6974c9decdac2c65",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-pose-0.webp",
+      "skin": "sk-jungwon-angel",
+      "conversion": "already transparent sheet (portrait-format 1024 x 1536, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-jungwon-angel-posesheet.png sk-jungwon-angel jungwon, which now skips the white key for a sheet that is over a fifth clear and splits it on its own alpha (femc-shadow-poses.py alpha_figures, haze under alpha 0.03 dropped) and places the six frames like the white sheets (place: body mass centred, feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-jungwon-angel (Cell Block Angel, UR, Jungwon; Masquerade and HOAX World), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-pose-0.webp": "1b84229ef76ffa052590fd11f4ce25afaaa4506c0e4b2d12127ec13cf17b1a49",
+        "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-pose-1.webp": "e3c7f568ee93488220f528ce431e0967ec2f75765fc9f8e1dfcb09fb7358f558",
+        "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-pose-2.webp": "7e74cafa7bdb8ec7cbf6bb68a58b43efdcb4597b782e34d74dec7b8d57c62025",
+        "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-pose-3.webp": "850cb7659a074e9085f9ec803e094ffbc7fd8d50d3815aa8384776545a794589",
+        "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-pose-4.webp": "94a5b0b3bce85edef57f42d212c3fe81a91b2435c7a0b6247162638768957271",
+        "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-pose-5.webp": "187c5a4c0f42c3c7e9722aee5be82ae70fc97ef7612ea2c355ca7092e6226e61"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-jungwon-angel-portraits.png",
+      "sourceNow": "New Adds/skin-sk-jungwon-angel-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7ecf627f1be57fbc0071ae1fdb5dd81a4446942b82251f5ccc47aef2abf53b25",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-angel/portraits/jungwon/neutral.webp",
+      "skin": "sk-jungwon-angel",
+      "conversion": "already transparent sheet (no Vision lift needed): columns split along a min-cost vertical seam (cost = alpha) within 90 px of the thirds, rows at the emptiest row within 24 px of the middle (a top bust's last rows stay with it), each cell's largest piece kept plus pieces inside its box; each cell scaled and placed on his base canvas (873 x 862) by normalized cross-correlation of the face crop against his own six portraits (best assignment over all six); busts that end above the canvas bottom carried down by repeating their last clean row; tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "his file order, matched by face correlation to portraits/jungwon/: top row flustered, serious, neutral; bottom row sad, happy, surprised (as Sheer Nerve)",
+      "placement": "Cell Block Angel’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "the happy cell has no lollipop on the sheet (kept as drawn); straight edges at the cell lines",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-angel/portraits/jungwon/flustered.webp": "198c229aace33f2d67cfbed97789c0d6d72263473693cbe10de2ed6a26101692",
+        "assets/femc/game/art/skins/sk-jungwon-angel/portraits/jungwon/happy.webp": "b3438e82f2018c7e4ad75ffdc573f9c4b6f448c967ac0665b739c9519657c1dd",
+        "assets/femc/game/art/skins/sk-jungwon-angel/portraits/jungwon/neutral.webp": "335dac9e3dc8a9fdb4109e2a2b2f485c9a85326c44346997c18076a917adbcd8",
+        "assets/femc/game/art/skins/sk-jungwon-angel/portraits/jungwon/sad.webp": "ef23d5092f5002085798915b1c1a4b1b7520eae8faff6d9b6be957fa56f9f159",
+        "assets/femc/game/art/skins/sk-jungwon-angel/portraits/jungwon/serious.webp": "5df416f7540f37fa2aad49c46d7e70edfb6b0a01b2b583ebbf3c3029ab5899bb",
+        "assets/femc/game/art/skins/sk-jungwon-angel/portraits/jungwon/surprised.webp": "44069d40ec6f0b7139e87110aa0ac8b290e2cac7d860aa1dc263e4085fdeab72"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-jungwon-sweater-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-jungwon-sweater-posesheet.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "c543a3bda3cb5a581a684baef6a48af3bb344313d1fd3648bcd228e013d59bb7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-sweater/jungwon-pose-0.webp",
+      "skin": "sk-jungwon-sweater",
+      "conversion": "already transparent sheet (portrait-format 1024 x 1536, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-jungwon-sweater-posesheet.png sk-jungwon-sweater jungwon, which now skips the white key for a sheet that is over a fifth clear and splits it on its own alpha (femc-shadow-poses.py alpha_figures, haze under alpha 0.03 dropped) and places the six frames like the white sheets (place: body mass centred, feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-jungwon-sweater (Sweater Weather, SR, Jungwon; Valentine's), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-sweater/jungwon-pose-0.webp": "19abecca5a581f5273676f751864159ad6aa82c6b09e8c917461fe45189dbc4f",
+        "assets/femc/game/art/skins/sk-jungwon-sweater/jungwon-pose-1.webp": "082a68e29e27502d3c6554614dc15d515c0487af4b7d6e2f0a29ab7e6fd9518f",
+        "assets/femc/game/art/skins/sk-jungwon-sweater/jungwon-pose-2.webp": "912f4aa147b73c88b8bcf131bc378a161024d5fca4c22e017804385d8d9f0b25",
+        "assets/femc/game/art/skins/sk-jungwon-sweater/jungwon-pose-3.webp": "03b67d017b8e07e8082a08cfa98d4501c6ee62b46c37c1d52283ba42534bc9f8",
+        "assets/femc/game/art/skins/sk-jungwon-sweater/jungwon-pose-4.webp": "bf87686c4b83212c3c47935fbd43258dac8fa773d22486b58d7cc40dbb9fd793",
+        "assets/femc/game/art/skins/sk-jungwon-sweater/jungwon-pose-5.webp": "0dd463e1befeea0bb05a107e1b89336297377b3fd666ffd40d10fa31c956e635"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-jungwon-sweater-portraits.png",
+      "sourceNow": "New Adds/skin-sk-jungwon-sweater-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "0a7297d0fc9a0d21de7344613aaae92c21f4d185d6f22da08b7701bd32e3e7e8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-sweater/portraits/jungwon/neutral.webp",
+      "skin": "sk-jungwon-sweater",
+      "conversion": "already transparent sheet (no Vision lift needed): columns split along a min-cost vertical seam (cost = alpha) within 90 px of the thirds, rows at the emptiest row within 24 px of the middle (a top bust's last rows stay with it), each cell's largest piece kept plus pieces inside its box; each cell scaled and placed on his base canvas (873 x 862) by normalized cross-correlation of the face crop against his own six portraits (best assignment over all six); busts that end above the canvas bottom carried down by repeating their last clean row; tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "his file order, matched by face correlation to portraits/jungwon/: top row flustered, serious, neutral; bottom row sad, happy, surprised (as Sheer Nerve)",
+      "placement": "Sweater Weather’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "the top row's busts end at the row line and are carried down 26-28 px (plain streaks behind the dialogue box); straight edges where coats were cut at cell lines",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-sweater/portraits/jungwon/flustered.webp": "fbd1014017d7224d42db5d6da628304ec22c461116ec9d4fcc6b3239296ac531",
+        "assets/femc/game/art/skins/sk-jungwon-sweater/portraits/jungwon/happy.webp": "2a0e5490587b61f9340a4daac2a8189a2814ee215930eccb6ec9b961a319744e",
+        "assets/femc/game/art/skins/sk-jungwon-sweater/portraits/jungwon/neutral.webp": "323d95909fac7ed70986671bb8faf9b314aee66e7d93af610ec3db26a4137852",
+        "assets/femc/game/art/skins/sk-jungwon-sweater/portraits/jungwon/sad.webp": "c1ee99120e88a0449c7b516ea86fd3c0d7bf175a7239c966c452c2fb74530765",
+        "assets/femc/game/art/skins/sk-jungwon-sweater/portraits/jungwon/serious.webp": "c373af2b64bceb2825337cfb0d71414391fb96dffdf02d7f667d984cf5275c51",
+        "assets/femc/game/art/skins/sk-jungwon-sweater/portraits/jungwon/surprised.webp": "53eda8a60bc1cc59aec398635c23736077d39b8e49103d2a488eb0cc9d6ca311"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-haechan-suit-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-haechan-suit-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "af9e4b4f888f1e622f5bbdcc3fea48c70ed8aa8a63e9ac9224481fe94cdfbbba",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-suit/haechan-pose-0.webp",
+      "skin": "sk-haechan-suit",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-haechan-suit-posesheet.png sk-haechan-suit haechan, which now skips the white key for a sheet that is over a fifth clear and splits it on its own alpha (femc-shadow-poses.py alpha_figures, haze under alpha 0.03 dropped) and places the six frames like the white sheets (place: body mass centred, feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-haechan-suit (Black Suit, SR, Haechan; Winter Lights and Haechan Spotlight), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order; the sheet draws a loose black tie although the prompt said no tie (kept as drawn)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-suit/haechan-pose-0.webp": "75032c24fe461a06df76a779d016af15cc0a9ab4c5c726b12ed6eb2651517241",
+        "assets/femc/game/art/skins/sk-haechan-suit/haechan-pose-1.webp": "d6927d5ed365f33ae926172b6d62da7b322e72618a0ef0611516f239d2781c48",
+        "assets/femc/game/art/skins/sk-haechan-suit/haechan-pose-2.webp": "bb21042d0ed391da4f6e1174981c8abb1daca414a5e85548b7120696483612ae",
+        "assets/femc/game/art/skins/sk-haechan-suit/haechan-pose-3.webp": "e95154c5d6b4b4e4a7b6d3c1a62b0a799eb5e31ab53483ce59db932957439d0f",
+        "assets/femc/game/art/skins/sk-haechan-suit/haechan-pose-4.webp": "44a0dae61cdc99fd6ddf685fa72afc1e2bf766622cf0aef6c696a724f7985f31",
+        "assets/femc/game/art/skins/sk-haechan-suit/haechan-pose-5.webp": "c31e22d60a725ce5abf6dca0ea12e0726346041509179782b915b21d9a2ba2d2"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-haechan-suit-portraits.png",
+      "sourceNow": "New Adds/skin-sk-haechan-suit-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e2492f9ce55375161f1873ef2683fde38af2669d0dfabfca8f7ef5dc79044123",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-suit/portraits/haechan/neutral.webp",
+      "skin": "sk-haechan-suit",
+      "conversion": "already transparent sheet (no Vision lift needed): columns split along a min-cost vertical seam (cost = alpha) within 90 px of the thirds, rows at the emptiest row within 24 px of the middle (a top bust's last rows stay with it), each cell's largest piece kept plus pieces inside its box; each cell scaled and placed on his base canvas (870 x 822) by normalized cross-correlation of the face crop against his own six portraits (best assignment over all six); busts that end above the canvas bottom carried down by repeating their last clean row; tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "his file order, matched by face correlation to portraits/haechan/: top row neutral, flustered, happy; bottom row surprised, serious, sad (as Sweater Date)",
+      "placement": "Black Suit’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-suit/portraits/haechan/flustered.webp": "2f45ae1a9f6b5c896c6d6563967918c8d3b2649ef7af282af5d221e578b8ed60",
+        "assets/femc/game/art/skins/sk-haechan-suit/portraits/haechan/happy.webp": "98ff818c6a91e2880e9c0da2eb93922633fd6b1769ada562693fd68d67b4439d",
+        "assets/femc/game/art/skins/sk-haechan-suit/portraits/haechan/neutral.webp": "907abf6bb64df286ce4146591aa98dfdd72f0295dc1fcc6600f12970e2c7bd47",
+        "assets/femc/game/art/skins/sk-haechan-suit/portraits/haechan/sad.webp": "6c3907356f2b2bbbcada9d35da5f00f5f9888a39e633b65582bb0987b840be8e",
+        "assets/femc/game/art/skins/sk-haechan-suit/portraits/haechan/serious.webp": "3c89b6892d49d05b2ca252bfdade7d8fe5a53a370447924d979e7b6f909e1ed9",
+        "assets/femc/game/art/skins/sk-haechan-suit/portraits/haechan/surprised.webp": "ae38aea09c89fbdb41fb46876d4cb578136dcc3ae45724b66a49e6962abebc64"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-haechan-stage-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-haechan-stage-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ce5b1ac11283249f1896cc955f4187bee8763ce69ad488a8051a256225ee39a1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-stage/haechan-pose-0.webp",
+      "skin": "sk-haechan-stage",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-haechan-stage-posesheet.png sk-haechan-stage haechan, which now skips the white key for a sheet that is over a fifth clear and splits it on its own alpha (femc-shadow-poses.py alpha_figures, haze under alpha 0.03 dropped) and places the six frames like the white sheets (place: body mass centred, feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-haechan-stage (Encore Stage, UR, Haechan; Haechan Spotlight and Solar Spotlight), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-stage/haechan-pose-0.webp": "fa133852b59d2b2705e85109bb980c0ae4affdeb25e04588b12660fdac031635",
+        "assets/femc/game/art/skins/sk-haechan-stage/haechan-pose-1.webp": "a57579f56fe675f5ffb8eb82ee29f5d65f1f9858a6413f81505d1bbc29fd1a67",
+        "assets/femc/game/art/skins/sk-haechan-stage/haechan-pose-2.webp": "d94a3fb1349ed75cc4b6d4b9d1070c46010e046b242ca725316637896d74c388",
+        "assets/femc/game/art/skins/sk-haechan-stage/haechan-pose-3.webp": "99412f3bc43d08ee3c03adb47b715062efef7bd211b4b98482ede0369fdfba0b",
+        "assets/femc/game/art/skins/sk-haechan-stage/haechan-pose-4.webp": "431b7157d3b78313f7a990f607656a613cbc223f979cecd3db1c467c1fb65faf",
+        "assets/femc/game/art/skins/sk-haechan-stage/haechan-pose-5.webp": "e094e5f3c1e85444e874a9bff3fceef3dee2505d3f01bcbe920fda6f1e810ea9"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-haechan-stage-portraits.png",
+      "sourceNow": "New Adds/skin-sk-haechan-stage-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "cc4db097fd9bbec8bd88a12b02858b16f357c8ae347136ee13ffbc1990a3a07f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-stage/portraits/haechan/neutral.webp",
+      "skin": "sk-haechan-stage",
+      "conversion": "already transparent sheet (no Vision lift needed): columns split along a min-cost vertical seam (cost = alpha) within 90 px of the thirds, rows at the emptiest row within 24 px of the middle (a top bust's last rows stay with it), each cell's largest piece kept plus pieces inside its box; each cell scaled and placed on his base canvas (870 x 822) by normalized cross-correlation of the face crop against his own six portraits (best assignment over all six); busts that end above the canvas bottom carried down by repeating their last clean row; tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "his file order, matched by face correlation to portraits/haechan/: top row neutral, flustered, happy; bottom row surprised, serious, sad (as Sweater Date)",
+      "placement": "Encore Stage’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-stage/portraits/haechan/flustered.webp": "c643d88f0479f6002efaa03ca31a6300071691dbeab023e038bbc44683479537",
+        "assets/femc/game/art/skins/sk-haechan-stage/portraits/haechan/happy.webp": "c468c5aa49871d04f52271939bc157dfb209fc0d529c2d8ba947b53e38bf6a9a",
+        "assets/femc/game/art/skins/sk-haechan-stage/portraits/haechan/neutral.webp": "ce4f10e96d5da08bc48b99e23ccbae128580dfbcd370c97090f5e4aa0ef752bb",
+        "assets/femc/game/art/skins/sk-haechan-stage/portraits/haechan/sad.webp": "4081160dc56ee6addc66b534f0e9c3070d3d5c8097c0cf7a1427131c83802eff",
+        "assets/femc/game/art/skins/sk-haechan-stage/portraits/haechan/serious.webp": "f4d53b7eb829280e4bb87b68a769debab1d1fc6e3bbb9136a9547e79303101aa",
+        "assets/femc/game/art/skins/sk-haechan-stage/portraits/haechan/surprised.webp": "e5d361631e2d5effb1ce6d8f29ef1a36d7deb5d2f58ae6f0dc8ddcb37dc38448"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-jungwon-heir-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-jungwon-heir-posesheet.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "b2d118228f94f90563655104a26c634fa219e7eddeefb0f8de699982bb6e164a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-heir/jungwon-pose-0.webp",
+      "skin": "sk-jungwon-heir",
+      "conversion": "already transparent sheet (portrait-format 1024 x 1536, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-jungwon-heir-posesheet.png sk-jungwon-heir jungwon, which now skips the white key for a sheet that is over a fifth clear and splits it on its own alpha (femc-shadow-poses.py alpha_figures, haze under alpha 0.03 dropped) and places the six frames like the white sheets (place: body mass centred, feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-jungwon-heir (Heir’s Suit, UR, Jungwon; Winter Lights and HOAX World), battle pose frames via ready.js",
+      "knownLimits": "the rapier tips of frames 0 and 3 rest on the next figure's coat in the sheet: the new regroup step gives the shared metal run to its owner, and the two tips still drawn over the neighbour's coat (frames 1 and 4) were inpainted out by hand after the cut (cv2 Telea, alpha rounded; a 29 px dark tick removed from frame 4), so frames 0 and 3 end their blades a little short of the drawn tip; checked on magenta",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-heir/jungwon-pose-0.webp": "92c2374c6f57a8e05129714eaa54fefb535b57d5fc23fcf332e862aec0b5e614",
+        "assets/femc/game/art/skins/sk-jungwon-heir/jungwon-pose-1.webp": "9e1f41172589f72fe808987d87f460b1f8374d1e807295dc0b3e437653dc2992",
+        "assets/femc/game/art/skins/sk-jungwon-heir/jungwon-pose-2.webp": "5f334467ab92c655e3eedb0407245b67052cd2d8885fe0ea32db441494f7b847",
+        "assets/femc/game/art/skins/sk-jungwon-heir/jungwon-pose-3.webp": "f2e02847974e0d4f2c4f7cae1c26b63afea08f264e01dff7e9d311a9e426351c",
+        "assets/femc/game/art/skins/sk-jungwon-heir/jungwon-pose-4.webp": "30f0166b485fff7876ede1f0c3b05cf3a7ca7a6d5d231afdfbea983881407fca",
+        "assets/femc/game/art/skins/sk-jungwon-heir/jungwon-pose-5.webp": "f819db240b69ca352e8aedcc33694d635a5ac1ec4f3132747b93e6fab6a548e5"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-jungwon-heir-portraits.png",
+      "sourceNow": "New Adds/skin-sk-jungwon-heir-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a247d631ab8ce714e5a80ccc47b247d3e5d67c0dbc9e6c57df6cdd4d59c9339f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-heir/portraits/jungwon/neutral.webp",
+      "skin": "sk-jungwon-heir",
+      "conversion": "already transparent sheet (no Vision lift needed): columns split along a min-cost vertical seam (cost = alpha) within 90 px of the thirds, rows at the emptiest row within 24 px of the middle (a top bust's last rows stay with it), each cell's largest piece kept plus pieces inside its box; each cell scaled and placed on his base canvas (873 x 862) by normalized cross-correlation of the face crop against his own six portraits (best assignment over all six); busts that end above the canvas bottom carried down by repeating their last clean row; tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "his file order, matched by face correlation to portraits/jungwon/: top row flustered, serious, neutral; bottom row sad, happy, surprised (as Sheer Nerve)",
+      "placement": "Heir’s Suit’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "busts carried down 5-15 px; straight edges where the coats were cut at cell lines",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-heir/portraits/jungwon/flustered.webp": "85fa02e18dceb524395643d85b8902445bde86d66c44180181213a4cab02a452",
+        "assets/femc/game/art/skins/sk-jungwon-heir/portraits/jungwon/happy.webp": "699e8ec72035ce2e33b606f7343d61d9b170053b47395d45dc87fea063d2e910",
+        "assets/femc/game/art/skins/sk-jungwon-heir/portraits/jungwon/neutral.webp": "6d3e7ad3ca1eb2c7c27ef9c4305c02de1030d26c8270bcca710e18329ae5298a",
+        "assets/femc/game/art/skins/sk-jungwon-heir/portraits/jungwon/sad.webp": "3c51e2fef64aa759a43e652d836d469f0293d1a7ecd525f97c1e55e557504374",
+        "assets/femc/game/art/skins/sk-jungwon-heir/portraits/jungwon/serious.webp": "0314e0e11966ba1a851d9a06cddeb664a7c3ef0338eaf8d72d550e1e27c0ca06",
+        "assets/femc/game/art/skins/sk-jungwon-heir/portraits/jungwon/surprised.webp": "c0f13896033ac1fee485ae24cffc2d80fa059b265e8595941ee828157f4dc075"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-jungwon-stage-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-jungwon-stage-posesheet.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "9a64e330002b492d1f503025a774edb26df71fbb417ba4e425eab67486e18dff",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-pose-0.webp",
+      "skin": "sk-jungwon-stage",
+      "conversion": "already transparent sheet (portrait-format 1024 x 1536, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-jungwon-stage-posesheet.png sk-jungwon-stage jungwon, which now skips the white key for a sheet that is over a fifth clear and splits it on its own alpha (femc-shadow-poses.py alpha_figures, haze under alpha 0.03 dropped) and places the six frames like the white sheets (place: body mass centred, feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-jungwon-stage (Center Stage, UR, Jungwon; Solar Spotlight), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-pose-0.webp": "7f8f55e23bb36e3aec25392437cc24b57761ded0ad3ac0f59f2955257c4dfe7a",
+        "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-pose-1.webp": "a7a1783915a9f9add332a929e7d278f54dce0f6b6dd89318ea83a890ea7af592",
+        "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-pose-2.webp": "cda3069bf4381ba176f10ddba4aafa4a5c34fa14d15603227034cfc3c5dfc209",
+        "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-pose-3.webp": "1ad2f56f530ad0f2f930138719144096bc1b414db1a27802d9c23d81ba6a6595",
+        "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-pose-4.webp": "ff10c52709ca316ce1391014a0535d9d7e0c33966f040028649fa160899ea4ed",
+        "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-pose-5.webp": "31acb4f16ed03998aa11199cfa61797994dc0dfbb04c9e488ad9455a891f6b17"
+      }
+    },
+    {
+      "batch": 106,
+      "source": "skin-sk-jungwon-stage-portraits.png",
+      "sourceNow": "New Adds/skin-sk-jungwon-stage-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8b48f69e8d76251c572ad62f38aa7a9daa478ceedf0db4a400a1c73f6861d99f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-stage/portraits/jungwon/neutral.webp",
+      "skin": "sk-jungwon-stage",
+      "conversion": "already transparent sheet (no Vision lift needed): columns split along a min-cost vertical seam (cost = alpha) within 90 px of the thirds, rows at the emptiest row within 24 px of the middle (a top bust's last rows stay with it), each cell's largest piece kept plus pieces inside its box; each cell scaled and placed on his base canvas (873 x 862) by normalized cross-correlation of the face crop against his own six portraits (best assignment over all six); busts that end above the canvas bottom carried down by repeating their last clean row; tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "his file order, matched by face correlation to portraits/jungwon/: top row flustered, serious, neutral; bottom row sad, happy, surprised (as Sheer Nerve)",
+      "placement": "Center Stage’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-stage/portraits/jungwon/flustered.webp": "b7e3b78988f5e711f5713b0a35d6a28afe77efd0b0f03d5f36def2051514f492",
+        "assets/femc/game/art/skins/sk-jungwon-stage/portraits/jungwon/happy.webp": "79ffdf762f8efe6368354edf5957b079452b2833bb16bb4f62a0ea6807a2a4dd",
+        "assets/femc/game/art/skins/sk-jungwon-stage/portraits/jungwon/neutral.webp": "b4cfc6450b70ee1d3b708c6467137b764d542f93a846e913d37f8184388c0dc7",
+        "assets/femc/game/art/skins/sk-jungwon-stage/portraits/jungwon/sad.webp": "39592346196699dd83edaa147262b386729e12768cb22c0bb1281b9da390a476",
+        "assets/femc/game/art/skins/sk-jungwon-stage/portraits/jungwon/serious.webp": "d6d3db00dc7fd92d6922334e6f1c1868cd816bac04dfdf721add8ba2395d8189",
+        "assets/femc/game/art/skins/sk-jungwon-stage/portraits/jungwon/surprised.webp": "4717c412d59c28a69ea30e64fd6ca2489c2eaa27aee5e8b8f0f5de35a70c7909"
+      }
     }
   ],
   "batch1Validation": {
@@ -21259,5 +21749,13 @@
     ],
     "testEdits": "tests/femc_cosmetics.py: NEW_WPNS adds the seven ids; Golden Sunrise, Haechan Spotlight and Solar Spotlight featured sets add their new weapons; the Haechan Spotlight / Winter Lights overlap check allows Black Tie Knife (planned for both)",
     "html": "femc-game.html ready.js v16, cosmetics.js v24"
+  },
+  "batch106Validation": {
+    "date": "2026-10-31",
+    "sources": "20 (ten outfits, a pose sheet and a portrait sheet each; all already transparent; left in New Adds unchanged)",
+    "looked_at": "every pose frame and portrait on magenta beside his own base faces: order, stray background, clipped limbs (scratchpad contact sheets)",
+    "headless": "tests/femc_browser.Page: each outfit equipped in Menu → Wardrobe (preview wears it), Jungwon in Heir's Suit and Haechan in Encore Stage on the battlefield of a real fight in the game's battle frame (and Pinstripe / Fairground in an earlier run), Soundcheck and Fairground Lights scene portraits with Outfits in scene portraits on, his own faces with it off; no console errors",
+    "tests": "femc_cosmetics (all sections; newpending now 38 outfits; Haechan Spotlight and Solar Spotlight featured sets updated), femc_menu, femc_gallery passed; femc_field_poses not run (it plays the members' own pose sheets, which this batch doesn't touch)",
+    "html": "femc-game.html ready.js v17, cosmetics.js v26"
   }
 }

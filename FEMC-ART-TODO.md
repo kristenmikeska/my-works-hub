@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make:** icons for the late-game skills (section 7) · 5 Social Link full-body sheets (section 8). **Optional:** 2 wardrobe items. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make:** icons for the late-game skills (section 7) · 5 Social Link full-body sheets (section 8). **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
@@ -165,26 +165,7 @@ Character pose sheet: 3 columns × 2 rows on a plain white background, with clea
 ---
 
 ## 9. Wardrobe and keychains (optional)
-
-### More outfits (ChatGPT): pose sheets
-
-**[ ] Jungwon: Heir’s Suit (pose sheet)** *(optional)*  
-Jungwon's battle figure in the Heir’s Suit outfit.  
-Attach: `jungwon-posesheet.png`, then `Jungwon.png`  
-Save as: `skin-sk-jungwon-heir-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: a tailored charcoal three-piece suit with a waistcoat, a white shirt and a dark green silk tie, a gold signet ring, a long dark overcoat worn over his shoulders like a cape, polished black oxford shoes. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-**[ ] Jungwon: Center Stage (pose sheet)** *(optional)*  
-Jungwon's battle figure in the Center Stage outfit.  
-Attach: `jungwon-posesheet.png`, then `Jungwon.png`  
-Save as: `skin-sk-jungwon-stage-posesheet.png`
-```
-Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, hair and weapon, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the clothes to this outfit: a K-pop stage outfit: a white cropped stage jacket with silver chain details and sharp shoulders, a black shirt, white slim trousers, white boots, a slim headset microphone at his cheek, a silver ear cuff. Keep the red S.E.E.S. armband on the left sleeve if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+*(Done Oct 31: Haechan's and Jungwon's ten new outfits are in the Wardrobe, with their scene faces.)*
 
 ---
 

@@ -46,7 +46,9 @@ PWPN = SKINS_DIR / 'wpn-jungwon-council'
 NEW_SKINS = ['sk-minji-crew', 'sk-jihoon-pilates', 'sk-aigis-uniform', 'sk-alphaphi', 'sk-harbourcoat', 'sk-idol', 'sk-haechan-sweater', 'sk-esports', 'sk-hanbok', 'sk-vp', 'sk-velvet', 'sk-roadwork',
              'sk-y2k', 'sk-oops', 'sk-snake', 'sk-sugarrush', 'sk-prowl', 'sk-strawberry', 'sk-summersession', 'sk-limelight',
              'sk-haechan-headphones', 'sk-haechan-arrivals', 'sk-haechan-windowseat', 'sk-haechan-bad', 'sk-haechan-garage', 'sk-haechan-limelight',
-             'sk-haechan-unravelled', 'sk-jungwon-sheer']
+             'sk-haechan-unravelled', 'sk-jungwon-sheer', 'sk-haechan-fairground', 'sk-haechan-sweettooth', 'sk-jungwon-pinstripe',
+             'sk-jungwon-soundcheck', 'sk-jungwon-angel', 'sk-jungwon-sweater', 'sk-haechan-suit', 'sk-haechan-stage',
+             'sk-jungwon-heir', 'sk-jungwon-stage']
 NEW_WPNS = ['wpn-runners', 'wpn-strangers', 'wpn-hoax', 'wpn-akihiko-champ', 'wpn-jungwon-council',
             'wpn-velvet', 'wpn-idol', 'wpn-hanbok', 'wpn-haechan-suit', 'wpn-haechan-stage', 'wpn-jungwon-heir', 'wpn-jungwon-stage']
 KEPT = {}
@@ -311,11 +313,12 @@ try:
            and r['feb'] == ['sunrise', 'hoax', 'valentine'], f'2–3 banners November–February, main first: {r}')
         ok(r['mar'] == ['solar', 'akihiko'], f'The Searchers hidden while Minji is unmet (empty featured list): {r}')
         ok(set(r['feat']['haechan']) == {'sk-haechan-runners', 'wpn-runners', 'wpn-strangers', 'evk-midnight', 'wp-rooftop', 'sk-haechan-sweater',
-                                           'sk-haechan-headphones', 'sk-haechan-arrivals', 'sk-haechan-garage', 'sk-haechan-limelight', 'wpn-haechan-suit', 'wpn-haechan-stage'}
+                                           'sk-haechan-headphones', 'sk-haechan-arrivals', 'sk-haechan-garage', 'sk-haechan-limelight', 'wpn-haechan-suit', 'wpn-haechan-stage',
+                                           'sk-haechan-fairground', 'sk-haechan-sweettooth', 'sk-haechan-suit', 'sk-haechan-stage'}
            and set(r['feat']['solar']) == {'sk-idol', 'sk-alphaphi', 'sk-hanbok', 'sk-velvet', 'sk-y2k', 'sk-oops', 'sk-snake', 'sk-sugarrush', 'sk-limelight',
-                                         'wpn-velvet', 'wpn-idol', 'wpn-hanbok', 'wpn-haechan-stage', 'wpn-jungwon-stage'}
+                                         'wpn-velvet', 'wpn-idol', 'wpn-hanbok', 'wpn-haechan-stage', 'wpn-jungwon-stage', 'sk-haechan-stage', 'sk-jungwon-stage'}
            and set(r['feat']['sees']) >= {'sk-yukari-pink', 'sk-mitsuru-rider', 'tt-darkhour'} and 'sk-date' in r['feat']['valentine'] and 'sk-emo' in r['feat']['valentine'] and 'sk-emo' in r['feat']['masquerade']
-           and not set(r['feat']['haechan']) & set(r['feat']['lights']) - {'wpn-strangers', 'sk-haechan-arrivals', 'wpn-haechan-suit'} and r['end'] == 0, f'featured per banner, ends January: {r}')
+           and not set(r['feat']['haechan']) & set(r['feat']['lights']) - {'wpn-strangers', 'sk-haechan-arrivals', 'wpn-haechan-suit', 'sk-haechan-sweettooth', 'sk-haechan-suit'} and r['end'] == 0, f'featured per banner, ends January: {r}')
         ok(p.eval("FemcGame.S.met.push('minji'),FemcCosmetics.banners(FemcGame.dayOf('3/10')).map(b=>b.id).join()") == 'solar,akihiko,searchers', 'The Searchers once Minji is met')
         # Switching: the pick is saved, rates up only that banner's looks, ignores banners not running, falls back when one ends.
         r = p.eval(QUIET + SEED + r"""(()=>{const G=FemcGame,C=FemcCosmetics,GA=FemcGacha;G.S.day=G.dayOf('12/10');GA.gs().plumes=1e5;C.cs().guar=false;
