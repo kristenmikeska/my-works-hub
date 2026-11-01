@@ -1437,8 +1437,8 @@
     const dorm = G.dormActs(), desk = dorm.filter(a => a.desk);
     const secrets = s.spent[`${s.day}-evening`] ? [] : G.secretsDue(); // a hidden link's quiet option (My Melody)
     const opt = (id, label, sub, ok = true, cls = '') => `<button type="button" class="g-night ${cls}" data-n="${id}"${ok ? '' : ' disabled'}><b>${label}</b><small>${esc(sub)}</small></button>`;
-    // Solar at the right edge on wide screens (solstice-hud.css hides her on phones); a silhouette before the armband, as in the menu.
-    const fig = `<div class="g-home-fig" aria-hidden="true"><i class="g-hf-slash"></i><img class="${(s.flags || {}).armband ? '' : 'sil'}" src="${G.base}assets/femc/profile/solar-poses/thinking.webp" alt=""></div>`;
+    // Solar at the right edge on wide screens (solstice-hud.css hides her on phones).
+    const fig = `<div class="g-home-fig" aria-hidden="true"><i class="g-hf-slash"></i><img src="${G.base}assets/femc/profile/solar-poses/thinking.webp" alt=""></div>`;
     show(`${fig}<section class="g-dorm"><div class="g-map-head" data-ghost="Evening"><p class="g-kicker">Evening · Iwatodai Dorm</p><h1>Tonight</h1>
       <p class="g-map-sub">${info.moon.days != null && info.moon.days <= 3 && !info.moon.full ? `The moon is almost full. ${info.moon.days} day${info.moon.days === 1 ? '' : 's'} to go.` : esc(G.crushLine('evening.sub') || 'The lounge smells like instant ramen. What now?')}</p></div>
       <div class="g-nights">

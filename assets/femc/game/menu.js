@@ -1229,7 +1229,7 @@ window.FemcMenu = (() => {
   }
   function homeHtml(enter) {
     const s = S(), i0 = G.dayInfo(), i = i0.shown ? { ...i0, ...i0.shown } : i0, dark = s.slot === 'late', when = G.slotName(s.slot, i0);
-    const list = tabList(), silhouette = !(s.flags || {}).armband;
+    const list = tabList(), silhouette = false; // Kat, Nov 1: Solar shows from day one
     const items = list.map(([k, n], x) => {
       const inner = `<i class="g-fmh-slash" aria-hidden="true"></i><i class="g-fmh-bar" aria-hidden="true"></i><span>${esc(n)}</span>`;
       const a = `class="g-fmh-it" role="menuitem" data-home="${k}" tabindex="${x === homeSel ? 0 : -1}" aria-describedby="g-fmh-g1"`;

@@ -931,8 +931,7 @@ window.FemcGame = (() => {
   };
   function portrait(id, face) {
     id = worldFace(id);
-    // Solar's art wears the S.E.E.S. armband, so she has no portrait until she's given one.
-    if (id === 'solar' && !S.flags.armband) return null;
+    // (Solar's art wears the S.E.E.S. armband; Kat, Nov 1: show it from the first scene anyway, as P3P's FeMC does.)
     // An outfit from the Wardrobe with its own portraits, when "Outfits in scene portraits" is on (cosmetics.js).
     const worn = W.FemcCosmetics && W.FemcCosmetics.portrait(faceId(id), face);
     if (worn) return worn;
