@@ -119,12 +119,21 @@
 /* Solar at the right edge on wide screens, with the menu's pink offset; the list keeps clear of her */
 .g-home-fig { display: none; }
 @media (min-width: 1100px) and (min-aspect-ratio: 13/10) {
-  .g-home-fig { display: block; position: absolute; z-index: 0; right: clamp(0px, 2vw, 40px); bottom: 0; height: min(100%, 800px); pointer-events: none;
+  /* Pinned to the window (fixed) so she stays while the list scrolls; cropped from about the knees down and filling the right side */
+  .g-home-fig { display: block; position: fixed; z-index: 0; right: clamp(-60px, 0vw, 20px); top: 10vh; height: 172vh; pointer-events: none;
     animation: g-hm-fig .5s cubic-bezier(.15, .9, .25, 1) both; }
-  .g-home-fig img { display: block; height: 100%; width: auto; transform: rotate(-3deg); transform-origin: 50% 100%;
-    filter: drop-shadow(14px 6px 0 var(--pink)) drop-shadow(0 0 30px rgba(0, 0, 0, .45)); }
+  .g-home-fig img { display: block; height: 100%; width: auto; transform-origin: 50% 30%; rotate: calc(-3deg + var(--lean, 0) * 1deg);
+    filter: drop-shadow(14px 6px 0 var(--pink)) drop-shadow(0 0 30px rgba(0, 0, 0, .45)); animation: g-hf-breathe 4.2s ease-in-out infinite; }
   .g-home-fig img.sil { filter: brightness(0) drop-shadow(14px 6px 0 var(--pink)); }
-  .g-main.is-dorm .g-dorm { position: relative; z-index: 1; width: auto; max-width: 1240px; margin: 0; padding-right: clamp(230px, 22vw, 380px); }
+  /* A pose change: a quick pop and a pink slash sweeping across her */
+  .g-home-fig.pop img { animation: g-hf-pop .34s cubic-bezier(.2, 1.4, .4, 1), g-hf-breathe 4.2s ease-in-out .34s infinite; }
+  .g-hf-slash { position: absolute; z-index: 2; left: -30%; right: -30%; top: 18%; height: 12%; background: linear-gradient(100deg, transparent, var(--pink) 30%, var(--pink-2) 55%, transparent);
+    clip-path: polygon(0 60%, 100% 0, 100% 40%, 0 100%); opacity: 0; mix-blend-mode: screen; }
+  .g-home-fig.pop .g-hf-slash { animation: g-hf-slash .38s ease-out; }
+  @keyframes g-hf-pop { 0% { translate: 24px 0; scale: .96; opacity: .6; } 60% { scale: 1.03; } 100% { translate: 0 0; scale: 1; opacity: 1; } }
+  @keyframes g-hf-slash { 0% { opacity: 0; translate: -40% 0; } 30% { opacity: .9; } 100% { opacity: 0; translate: 40% 0; } }
+  @keyframes g-hf-breathe { 50% { scale: 1 1.008; } }
+  .g-main.is-dorm .g-dorm { position: relative; z-index: 1; width: auto; max-width: none; margin: 0; padding-right: clamp(320px, 34vw, 760px); }
 }
 @keyframes g-hm-fig { from { opacity: 0; translate: 60px 0; } }
 

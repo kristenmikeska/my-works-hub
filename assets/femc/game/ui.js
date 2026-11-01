@@ -1372,7 +1372,7 @@
     const secrets = s.spent[`${s.day}-evening`] ? [] : G.secretsDue(); // a hidden link's quiet option (My Melody)
     const opt = (id, label, sub, ok = true, cls = '') => `<button type="button" class="g-night ${cls}" data-n="${id}"${ok ? '' : ' disabled'}><b>${label}</b><small>${esc(sub)}</small></button>`;
     // Solar at the right edge on wide screens (solstice-hud.css hides her on phones); a silhouette before the armband, as in the menu.
-    const fig = `<div class="g-home-fig" aria-hidden="true"><img class="${(s.flags || {}).armband ? '' : 'sil'}" src="${G.base}assets/femc/profile/solar-poses/thinking.webp" alt=""></div>`;
+    const fig = `<div class="g-home-fig" aria-hidden="true"><i class="g-hf-slash"></i><img class="${(s.flags || {}).armband ? '' : 'sil'}" src="${G.base}assets/femc/profile/solar-poses/thinking.webp" alt=""></div>`;
     show(`${fig}<section class="g-dorm"><div class="g-map-head" data-ghost="Evening"><p class="g-kicker">Evening · Iwatodai Dorm</p><h1>Tonight</h1>
       <p class="g-map-sub">${info.moon.days != null && info.moon.days <= 3 && !info.moon.full ? `The moon is almost full. ${info.moon.days} day${info.moon.days === 1 ? '' : 's'} to go.` : esc(G.crushLine('evening.sub') || 'The lounge smells like instant ramen. What now?')}</p></div>
       <div class="g-nights">
@@ -1389,6 +1389,44 @@
         ${opt('out', 'Go out', 'Iwatodai at night')}
       </div></section>`, 'is-dorm');
     main.querySelectorAll('[data-n]').forEach(b => b.addEventListener('click', () => nightChoice(b.dataset.n, info)));
+    homeFig();
+  }
+  /* Solar on the evening screen (Kat, Oct 31): pinned large at the right while the list scrolls, changing pose as you scroll
+     (a pop and a pink slash; scrolling back runs the poses backwards), leaning with the scroll, and reacting to the card under
+     the pointer or keyboard focus. Poses: assets/femc/profile/solar-poses/. Reduced motion: plain swaps, no lean. */
+  const HOME_POSES = ['thinking', 'wave', 'peace', 'hair', 'arms-crossed', 'shy'];
+  const HOME_REACT = [[/^tartarus$/, 'arms-crossed'], [/^rest$/, 'shy'], [/^(study|read)$/, 'thinking'], [/^(link|trace|secret):/, 'wave'],
+    [/^out$/, 'peace'], [/^job:/, 'peace'], [/^(desk|dorm:)/, 'hair']];
+  function homeFig() {
+    const fig = main.querySelector('.g-home-fig'), img = fig?.querySelector('img');
+    if (!img) return;
+    const src = p => `${G.base}assets/femc/profile/solar-poses/${p}.webp`;
+    HOME_POSES.forEach(p => { const i = new Image(); i.src = src(p); });
+    let pose = 'thinking', hover = null, lastY = main.scrollTop, lean = 0, raf = 0;
+    const set = p => {
+      if (!p || p === pose) return;
+      pose = p; img.src = src(p);
+      if (reduced.matches) return;
+      fig.classList.remove('pop'); void fig.offsetWidth; fig.classList.add('pop');
+    };
+    const byScroll = () => {
+      const max = Math.max(1, main.scrollHeight - main.clientHeight);
+      const step = Math.min(HOME_POSES.length - 1, Math.floor((main.scrollTop / max) * HOME_POSES.length * .999));
+      return main.scrollHeight - main.clientHeight < 40 ? 'thinking' : HOME_POSES[Math.max(0, step)];
+    };
+    const tick = () => { raf = 0; lean *= .82; fig.style.setProperty('--lean', lean.toFixed(2)); if (Math.abs(lean) > .05) raf = requestAnimationFrame(tick); };
+    main.addEventListener('scroll', () => {
+      if (!main.contains(fig)) return;
+      const y = main.scrollTop, dy = y - lastY; lastY = y;
+      if (!reduced.matches) { lean = Math.max(-6, Math.min(6, lean + dy * .08)); if (!raf) raf = requestAnimationFrame(tick); }
+      if (!hover) set(byScroll());
+    }, { passive: true });
+    const react = b => { const m = HOME_REACT.find(([re]) => re.test(b.dataset.n)); hover = m ? m[1] : null; set(hover || byScroll()); };
+    main.querySelectorAll('.g-dorm [data-n]').forEach(b => {
+      b.addEventListener('pointerenter', () => react(b)); b.addEventListener('focus', () => react(b));
+      const off = () => { hover = null; set(byScroll()); };
+      b.addEventListener('pointerleave', off); b.addEventListener('blur', off);
+    });
   }
   function nightChoice(n, info) {
     const s = S();
