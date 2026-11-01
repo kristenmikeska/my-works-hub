@@ -1,0 +1,97 @@
+# Skins in battle: technical side (for Claude)
+
+Claude's file. Kat's plain-language sheet, art checklist and every prompt are in `FEMC-SKINS-BATTLE-DESIGN.md` (pieces A-L, themes, the cell-4 checklist, prompts 6.1-6.6, all second pose sheets in part 8, all outfit Theurgy cut-ins in part 9). Section numbers below are the ones the design sheet used before the Nov 1 split, so older notes (CLAUDE.md, FEMC-STATUS) still point at the right place.
+
+**Status (Nov 1 2026):** B, C and A's code built (7.9); A switches on per look once its cleaned sheet is wired and marked; H-L built with built-in versions until their art arrives (8.6); S3 (Try it on) built (8.7); D-G, S1, S2 (= L, done), S4 and S5 not built.
+
+## 0. Notes from the Nov 1 restructure
+
+- **Cleaned sheets:** `cosmetics.js const CLEAN` lists the 44 looks Kat recut (cell 4 clean). Everything else (the 12 fighters' own sheets + 31 looks, not sk-kiriko, which is `retired: true`) was copied for her into `~/Documents/UniverseHub-Images/Femc Mode Images/Skins Battle Design/<Fighter>/` as `<Look name> [<look id>] - pose sheet.png` / `<Fighter> - own look - pose sheet.png`. Her recuts land in `Femc Mode Images/RECUTS - PHOTOSHOP EDITS/` under free-form names (pose sheet + the look); match by name, re-cut with `python3 tools/femc-wardrobe.py skin "<recut>" <look id> <who>` (own sheets: `tools/femc-shadow-poses.py`), then add the id to `CLEAN` (own sheets: `FIGHTER_CLEAN`). Kat doesn't check them: do the framing check yourself (frames 0-2, 4, 5 unchanged; cell 4's feet on the baseline). Afterwards remove the item from the design sheet's part 4.
+- **Prompt sources:** part 8/9 attach from `Femc Mode Images/Current Skins/<Fighter>/` (`_INDEX.txt` there; `(recut)` = Kat's cleaned version) and `Current Skins/Base Game/<Fighter>/<Fighter> - battle pose sheet.png`; portraits from `Character Portraits/<Name>/` (Akihiko's neutral is `Aki-Neutral.webp`) or `Place Prompt Attachments/Solar.png`; Theurgy bases from `Added to Game/` (`theurgy-<who>.png`, Solar `theurgy-solar-haenim.png`, Haechan `Haechan-Theurgy-1.png`, per `tools/femc-theurgy.py`). Outfit sentences come from each look's first-sheet prompt in git history (FEMC-ART-TODO.md; `git log -S '<look id>' --all -- FEMC-ART-TODO.md`), with the "attached photo is only a reference" and per-cell clauses removed; Winter Coat / Halloween Witch / Date Day from the old art list (b4c1a66e), Emo Night (Solar, Jihoon) and SU Crewneck written from the sheets. Fighters' own looks and Koromaru's cell list written from the base sheets.
+- **Backgrounds (Kat, Nov 1):** pose sheets (sheet 1 and 2) and theme frames (K) are now asked on a **transparent** background; ChatGPT may still return white or a fake checkerboard, so the cutters must handle alpha, white and green. `femc-wardrobe.py skin` already takes transparent sheets; `femc-wardrobe.py frame` keys green like femc-greens.py: give it an alpha path (keep alpha if present, else key white/green) before the first frame arrives. Theme effect sheets (F, 6.1) stay on solid black (keyed from black by `tools/femc-fx.py`). Full-frame pictures (E, G, H, I, J) keep their backgrounds.
+- **Save names Kat uses:** `<who>-posesheet-2.png`, `skin-<id>-posesheet-2.png`, `skin-<id>-theurgy.png`, `skin-<id>-finish.png`, `skin-<id>-onemore.png` / `<who>-onemore.png`, `skin-<id>-entrance.png` / `<who>-entrance.png`, `couple-<set>-showtime.png`, `theme-<id>.png`, `frame-<id>.png`, all in New Adds.
+
+## 7. Technical side
+
+### 7.1 Files and naming
+
+| Art | Source (New Adds) | Game file |
+|---|---|---|
+| Cleaned first sheet | `<source name>-clean.png` | re-cut over the same `…/<who>-pose-0..5.webp` (fighters `battle/art/poses/`, looks `game/art/skins/<id>/`) |
+| Second pose sheet | `<who>-posesheet-2.png` / `skin-<id>-posesheet-2.png` | `<who>-pose-6..11.webp` in the same folder as sheet 1 |
+| Outfit cut-in | `skin-<id>-theurgy.png` | `game/art/skins/<id>/<who>-theurgy.webp` (1600 × 900, framing kept, like `femc-theurgy.py cutin`) |
+| Theme sheet | `theme-<name>.png` | `battle/art/fx/theme-<name>.webp` via `tools/femc-fx.py` (`NAMES` / `SOURCES`); optional `<kind>-<theme>` the same way |
+| Outfit finish card | `skin-<id>-finish.png` | `game/art/skins/<id>/<who>-finish.webp` (1600 × 900, `femc-cards.py finish` logic with a `dst`) |
+
+Cleaned sheets keep their manifest entry (`tools/femc-new-adds.json`: add the `-clean` source, `supersedes` the old one); the old source stays in Added to Game.
+
+### 7.2 Tools
+- `tools/femc-wardrobe.py`: `skin` takes an optional `--sheet 2` (writes frames 6..11 on the **same canvas and scale as sheet 1**: read sheet 1's canvas size and the idle frame's feet baseline / figure height and fit sheet 2's figures to them, so the two sheets never jump in size). New commands `theurgy <src> <id> <who>` and `finish <src> <id> <who>`. `scan` adds per skin `poses2: [who]`, `theurgy: [who]`, `finish: [who]` (from files present) to `ready.js`.
+- `tools/femc-shadow-poses.py` (fighters' own sheets): a `FIGHTERS2` table for `<who>-posesheet-2.png` → `poses/<who>-pose-6..11.webp`, same canvas rule.
+- Re-cutting a `-clean` sheet: same commands as the original; check that frames 0–2, 4, 5 come out byte-identical (they should; only cell 4 changed) and that cell 4's feet stay on the baseline.
+
+### 7.3 cosmetics.js
+- ITEMS: optional `fx: '<theme>'` on a skin (the table in part 4), optional `hand: [x%, y%]` (only if a look's cast hand sits elsewhere than its fighter's), optional `finishWords` (documentation only; the words are in the art).
+- `battle()` returns, per worn look's `who`: `pose` (as now), `pose2: { who: true }` when ready lists `poses2`, `face: { who: { dir, have: [faces] } }` (from the ready portraits), `theurgy: { who: src }`, `finish: { who: src }`, `theme: { who: '<theme>' }`, `clean: { who: true }` (a cleaned cell 4: ready.js `clean: [who]`, written by scan from the manifest's `-clean` entries, so A only plays for cleaned sheets).
+- Header comment: the new art kinds and files.
+
+### 7.4 battle.js
+- **Sheet 2 and states:** `FIGHTER_STATES` gains `support: [6]`, `guard: [7]`, `dodge: [8]`, `down: [9]`, `wounded: [10]`, `dash: [11]`. `posedFrames(mid)` returns 12 frames when sheet 2 exists for what's worn (`LOOKS.pose2[mid]`, or `FIGHTER_POSES2` for the fighter's own look), else 6. A state whose frame is missing maps back to sheet 1 (`STATE_FALLBACK = { support: 'cast', guard: 'idle', dodge: 'hurt', down: 'hurt', wounded: 'idle', dash: 'attack' }`) with a CSS nudge class (`.fp-dodge` a short slide, `.fp-down` a tilt and drop) so the fallback still reads. Never mix a look's sheet 1 with the fighter's own sheet 2 (outfit mismatch).
+- Where each state plays: support for `use` events of heal / buff / cure / revive / support skills (`D.skills[x].type`); guard on `case 'guard'` (held until that unit's next turn); dodge on `case 'miss'` against a party target; down while `u.down` (held, released on stand-up); wounded replaces idle under 25% HP (`paintFighter`); dash at the start of `allOutSequence`, on `case 'shift'` (baton pass) for the incoming fighter, and on a One More.
+- **A (hand effects):** `FIGHTER_HAND = { solar: [x, y], … }` (fraction of the frame canvas, measured once from each fighter's cleaned cell 4; looks share their fighter's unless the item has `hand`). In `case 'use'` for a party caster with a non-physical skill and `LOOKS.clean[mid]` (or the own sheet cleaned): after `animateShadow(fp, 'cast'…)` starts, `FX.charge(el, at, { theme })` at the hand point (~280 ms at 1x, battle speed applies), then the hit as now. Physical skills get no charge (the weapon swing is the effect). Uncleaned sheets: no charge.
+- **B (faces):** a `bimg(mid, face)` wrapper used by `fimg` / `setFace` / `pimg` callers for party members only: `LOOKS.face[mid]` with the same face fallback as `cosmetics.portrait` (`[face, 'neutral', have[0]]`), else the base portrait. Skin portraits sit on the base canvas, so `fvars` / `faceFocus` work unchanged. Covers the party cards, turn order, results rows, the stylized Theurgy band and perk cut-ins. Setting `skinFaces` (default on).
+- **C (win screen):** `resultsScreen` adds `.bt-res-hero` with `posedFrames(mvp)[5]` (MVP = the fighter `fighterWin` picked; Solar if none), large and bleeding off the right edge, behind the rows; phones put it top-right at reduced size. Reduced motion: no slide-in.
+- **E (cut-in):** in `theurgyCut`, if `LOOKS.theurgy[u.mid]`: `e.img` = that, `focus` kept from the fighter's base (the prompt keeps the layout), and `sheet`, `sequence`, `layers` and `video` dropped (they show the base outfit), so `kind` becomes `cut`. Name, line, mechanics and Solar's form name unchanged. Preload it in the `stills` call.
+- **G (finish card):** `finishArt(mid)` checks `LOOKS.finish[mid]` first (preloaded at line ~2075 like the others).
+- **F (themes):** `fxHitKind` adds `o.theme = LOOKS.theme[src.mid]` for party casters when the `skinFx` setting is on. After the main hit, if the main sheet wasn't a `<kind>-<theme>` replacement, play `theme-<theme>` on top at 0.7 size, starting one frame later.
+- **S2:** `allOutSequence` plays `theme-<leader's theme>` small at the cloud's edge twice.
+- Settings rows next to `cutins` (and the life sim's game settings → Battle, saved through the handoff like the others): `skinFaces` On / Off, `skinFx` On / Off.
+
+### 7.5 fx.js
+- `artFor(kind, o)` order becomes: `<kind>-<o.theme>` (when `o.theme`), then `<kind>-<o.by>`, crit, heavy, plain, borrowed, code. A theme replacement wins over the member's own sheet (Kat's "per-skin effects, falling back to the normal ones").
+- `charge(el, at, o)`: a code effect (a small swirl of motes pulled into a point, element colour from `D.elements`, ~0.3 s), optional sheet `charge-<el>` or `charge-<theme>` if the index has one (same 3 × 2 format, later). Reduced motion: a single soft glow; Performance mode: half the motes; Reduce flashes: no white core.
+- `theme-*` sheets play as drawn (no tint) unless the index marks them `tint`; add them to `ART_OK` / preload only when a worn look uses them (`attach()` gets the list from battle.js).
+
+### 7.6 Fallbacks (summary)
+Every piece checks for its file and silently uses the old behaviour: no sheet 2 → sheet 1 states; no clean cell 4 → painted effect, no charge; no outfit portraits → base faces; no outfit cut-in → the fighter's own cut-in; no theme / setting off → normal effects; no outfit finish card → the fighter's own. Practice (`LOOKS` null) is unchanged throughout.
+
+### 7.7 Tests to extend
+- `tests/femc_cosmetics.py --only party,equip`: `battle()` returns pose2 / face / theurgy / finish / theme / clean for a worn look with fake ready entries, and nothing for an unworn one.
+- `tests/femc_field_poses.py`: the six new states on real turns (guard, a miss, down, low HP, a heal, a baton pass and an All-Out), with sheet 2 and without (fallback frame + class); a look with sheet 1 only never shows the base sheet 2; the hand charge plays only for a cleaned sheet and only for magic.
+- `tests/femc_fx_art.py`: the pick order with `o.theme` (replacement > member > crit > heavy > plain), the overlay when there's no replacement, `charge` with and without a sheet, reduced motion / Performance.
+- `tests/femc_theurgy.py`: an outfit cut-in replaces the art and drops sheet / sequence / layers; without one the fighter's own plays; Solar's form name stays.
+- `tests/femc_building.py --only searchers`: an outfit finish card in a real All-Out.
+- Results screen: the hero pose, by MVP and with a worn look (add to `femc_field_poses.py`, desktop and phone shots).
+- Bumps when built: `ART_V`, battle.js, fx.js, cosmetics.js, ready.js `?v=` (both pages where loaded).
+
+### 7.9 Built (Nov 1 2026)
+- **B, outfit faces:** `battle.js skinFace` inside `pimg` (party cards, turn order, results, the All-Out portraits, Theurgy band, perk cut-ins); `cosmetics.js battle()` returns `face`, `look`, `clean`, `hand` per worn look. Setting `skinFaces` (On / Off), both settings panels.
+- **C, win screen:** `resultsScreen` shows `.bt-res-heroW > .bt-res-hero` (pose 5 of the look worn by the fighter `fighterWin` picked, Solar if none; `battle.css`, phones top right, no slide-in under reduced motion). Only with a worn look: a fighter in their own clothes keeps the old results screen.
+- **A, hand charge:** `fx.js charge(kind, at)` (motes pulled in, a glow, the element's sheet small; Performance half the motes and no sheet, Reduce flashes no white core, reduced motion one soft glow; `chargeLog` test hook) called by `battle.js castCharge` after the cast pose starts, only for non-physical skills and only when `castClean(mid)`: a worn look marked clean (`cosmetics.js` ITEMS `clean: true`, or its `CLEAN` list, or a ready.js `skins[id].clean` list), or a fighter's own sheet in `FIGHTER_CLEAN`. Hand points: `FIGHTER_HAND` (measured from each pose-3 frame; an item's `hand: [x, y]` overrides; `HAND_DEFAULT` [0.5, 0.3]). Setting `skinFx` (On / Off) gates it. **No look is marked clean yet.** To switch one on once Kat's recut is final: `python3 tools/femc-wardrobe.py skin "<…/RECUTS - PHOTOSHOP EDITS/<sheet>.png>" <look id> <who>` (transparent sheets fine), then add `clean: true` to that look's ITEMS entry.
+- **Retired looks:** `retired: true` on an item (Kiriko Cosplay, Nov 1) hides it everywhere and takes it off a save that wears it (cosmetics.js header).
+- Tests: `femc_cosmetics.py --only inbattle,retired`, `femc_fx_art.py` (section 6, the charge).
+
+## 8. Parts H-L: technical notes
+
+### 8.5 Technical notes (for Claude)
+- **H:** `battle.js` weakness hook (where the `weak` sheet plays): if `art/skins/<look>/onemore.webp` (or `art/onemore/<who>.webp`) exists, slide a `.bt-onemore` strip across (CSS, ~550 ms at 1x, battle speed applies; reduced motion: a fade; Off with Persona cut-ins Off / Rush: skip). Cut with a new `femc-wardrobe.py onemore SRC LOOK` (crop to 6:1, WebP).
+- **I:** `intro` in battle.js: after the encounter flash, before the HUD, a 700 ms `.bt-entrance` card of the leader's look; skipped on Rush, auto-battle chains and the second fight of a chain; a setting "Entrance cards" (On / Off).
+- **J:** `bonds.js` versions: a bond whose two members both wear halves of one couple set (`couple` field) plays `couple-<set>-showtime.webp` as its still / first panel (`playSeq` single panel), else its normal version.
+- **K:** `.bt-card` gets `--frame: url(frame-<theme>.webp)` as a border-image overlay at 0.6 opacity when the look has a `theme` and the frame exists; green keyed by `femc-greens.py`.
+- **L:** `allOutSequence`: two small `theme-<leader theme>` plays at the cloud's edges (needs the part 6.3 sheets).
+- **Tests:** extend femc_cosmetics (fallbacks, ready flags) and a real fight in femc_building for each hook.
+
+### 8.6 Built (Nov 1 2026)
+Every piece plays today with a built-in version and switches to Kat's picture the moment its file is cut in (`tools/femc-wardrobe.py … ` runs `scan`, which lists it in `ready.js`; bump ready.js's `?v=`). Story fights only (practice has no Wardrobe).
+- **H, One More eye strip:** `battle.js oneMoreStrip` (in the party's `onemore` beat, in place of the old portrait band). Built-in: the fighter's current battle face (outfit faces included) cropped to the eyes and brows over pink / black diagonal stripes with speed lines (`.bt-om`, battle.css). Art: `skin-<look>-onemore.png` → `python3 tools/femc-wardrobe.py onemore <src> <look id> [who]` (centre-cropped 6:1, 1800 × 300, `skins/<id>/<who>-onemore.webp`); a fighter's own look: `onemore <src> own <who>` → `art/onemore/<who>.webp`. Persona cut-ins Off and Rush keep the old band; reduced motion fades it; Performance / Reduce flashes stop the moving lines.
+- **I, entrance card:** `battle.js entranceCard` (after the encounter flash). Built-in: the look's idle pose (or the fighter's own) on slanted pink / black shards with the look's name and a few theme motifs (`.bt-entrance`). Art: `entrance <src> <look id | own> [who]` (16:9, 1600 × 900). Setting **Entrance cards** (On / Off, both settings panels). Skipped in Rush, the epilogue's stage fights and a chain: a fight starting within 8 s of the last one, and every ordinary fight of a Tartarus night after its first (strong rooms, the Reaper and bosses still get one). Reduced motion: a plain fade.
+- **J, couple Showtime:** `battle.js bondCut` + `coupleSet`: Solar and her bond partner both wearing one couple set (`couple` field), Outfit effects on. Built-in: both victory poses side by side over the bond's own still (or its drawn duo background) with the set's theme sparkling between them (kind `couple`). Art: `couple-<set>-showtime.png` → `showtime <src> <set>` (`sunmoon` or `cp-sunmoon`; `art/couples/cp-<set>-showtime.webp`), played as the bond's single still. The bond's lines stay its own.
+- **K, theme frame:** every look has a `theme` (cosmetics.js `THEMES`, part 4's table). `battle.js themeFrame` puts a thin outline and the theme's little motifs (battle.js `THEME_ART` / `THEME_SVG`: hearts, sun & moon, petals, stars, bubbles, notes, glitter, snow, thorns & bats, cards, butterflies, foxfire, confetti) in the card's corners at about 0.6 opacity. Art: `frame-<theme>.png` on flat green → `frame <src> <theme>` (keyed like femc-greens.py, 1000 × 400, `art/frames/<theme>.webp`). Setting Outfit effects.
+- **L, All-Out theme burst:** `battle.js themeBurst` (the starter's theme, else the leader's): two bursts of motifs flying out of the cloud's edges; with a `theme-<id>` sheet (tools/femc-fx.py now knows the 13 `theme-*` names; part 6.3's prompts) the sheet plays there instead. Performance: fewer motifs; reduced motion: they fade in place. Setting Outfit effects.
+- **Data:** cosmetics.js `battle()` also returns `theme`, `name`, `couple`, `onemore`, `entrance` per fighter and `showtime`, `frames`; ready.js gains per-skin `onemore` / `entrance` and top-level `own`, `couples`, `frames`.
+- **Tests:** `python3 tests/femc_skins_battle.py` (data, tools, fallback, art, settings: every built-in version and every art path in real fights, screenshots at 1440 × 900 and 390 × 844).
+
+### 8.7 S3, Try it on: built (Nov 1 2026)
+- **What it is:** a ▶ Try it on button in the Wardrobe's detail panel (any outfit whose art is in, owned or not) and on each featured outfit in the Boutique. It plays about four seconds over the Wardrobe: the entrance card (Kat's `entrance` art when cut, else the built-in card), the ready pose, a strike with a slash, the skill pose with the fighter's first spell name, the hand charge (only for a look marked clean) and the theme burst, the "1 MORE!" eye strip (Kat's `onemore` art when cut), then the victory pose with the theme sparkle, held with Replay / Done. Click, Enter or Space skips to the victory pose; Esc closes; keys and a pad move between Replay and Done.
+- **Settings:** Outfit effects Off drops the charge, burst, sparkle and the entrance motifs; Performance mode fewer motifs and no moving lines; Reduce flashes no white cores or slash; reduced motion still frames with crossfades.
+- **Code:** `assets/femc/game/tryon.js` (player), `cosmetics.js tryOnSpec`, CSS `.g-to*` at the end of gacha.css; the motifs and hand points now live in `assets/femc/battle/looks-art.js`, shared with battle.js. Test: `python3 tests/femc_skins_battle.py --only tryon`.
