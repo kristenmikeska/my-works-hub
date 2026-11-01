@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make:** 5 Social Link full-body sheets (section 8) · 5 new event CGs (section 11) · Solar's evening poses (section 20) · new projects: 14 swimwear pieces (section 12), 24 couple-outfit pieces (section 13), 10 photo booth sheets (section 15), 14 seasonal face sheets (section 16), 4 climb bosses (section 17), 12 credits stills (section 18) · 24 skin-series pieces for Solar (section 19: Tarot Arcana, Midnight Chapel, Wildflower Cottage) · 26 collab-outfit pieces (section 21: Winx Club, Sailor Moon, Monster High and more). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make:** 5 Social Link full-body sheets (section 8) · 5 new event CGs (section 11) · Solar's evening poses (section 20) · new projects: 14 swimwear pieces (section 12), 24 couple-outfit pieces (section 13), 10 photo booth sheets (section 15), 14 seasonal face sheets (section 16), 4 climb bosses (section 17), 1 credits still (section 18: Ken) · 24 skin-series pieces for Solar (section 19: Tarot Arcana, Midnight Chapel, Wildflower Cottage) · 26 collab-outfit pieces (section 21: Winx Club, Sailor Moon, Monster High and more). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
@@ -847,46 +847,6 @@ Character pose sheet: 3 columns × 2 rows on a plain white background, with clea
 ## 18. Ending credits stills (ChatGPT)
 Quiet "after" pictures that play during the credits, one per person or group. No big moments: just their lives going on, with a small trace of Solar in each (a photo-booth strip, her scarf, a second cup). Nothing that gives away which ending it was.
 
-**[ ] 18A. Credits: the dorm lounge**  
-S.E.E.S. together on an ordinary night.  
-Attach: `CG - style.png`, `BG - Dorm Lounge at night.png`, `CG - Yukari.png`, `CG - Junpei.png`, `CG - Fuuka.png`  
-Save as: `credits-sees.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The SECOND attached image is the background. Use the background image for the place, its layout and its lighting; draw the people into it. The other attached images are, in order, Yukari, Junpei and Fuuka: use them only for their faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
-
-The dorm lounge late at night, lamps low. Yukari is asleep on the sofa under a blanket, Junpei asleep sitting up beside her with his cap over his face, Fuuka tucking the blanket in with a small smile. On the table, a game controller, three cups and a purikura photo strip with a girl with very long black hair in it. Warm amber light.
-```
-
-**[ ] 18B. Credits: Akihiko**  
-His morning run.  
-Attach: `CG - style.png`, `BG - Iwatodai Riverside.png`, `CG - Akihiko.png`  
-Save as: `credits-akihiko.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The SECOND attached image is the background. Use the background image for the place, its layout and its lighting; draw the people into it. The other attached image is Akihiko: use it only for the face and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
-
-Early morning on the riverside path, a little mist over the water. Akihiko stops on the path in his running gear, a towel around his neck, looking back over his shoulder as if waiting for someone to catch up. Two water bottles on the bench beside him. Fresh, clear morning light.
-```
-
-**[ ] 18C. Credits: Mitsuru**  
-At the harbor on her motorcycle. (no background in the game)  
-Attach: `CG - style.png`, `CG - Mitsuru.png`  
-Save as: `credits-mitsuru.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The other attached image is Mitsuru: use it only for the face and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
-
-A harbor road at sunset. Mitsuru sits on her parked motorcycle, helmet on her knee, looking at the sea. A second helmet, a smaller pink one, hangs from the handlebar. Deep red and gold light.
-```
-
-**[ ] 18D. Credits: Aigis and Koromaru**  
-The dorm roof at dawn.  
-Attach: `CG - style.png`, `BG - Dorm Rooftop.png`, `CG - Aigis.png`, `CG - Koromaru.png`  
-Save as: `credits-aigis.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The SECOND attached image is the background. Use the background image for the place, its layout and its lighting; draw the people into it. The other attached images are, in order, Aigis and Koromaru: use them only for their faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
-
-The dorm rooftop at sunrise. Aigis sits on the edge of a bench watching the sunrise, Koromaru curled up beside her, her hand resting on his back. A pink knit scarf is folded on the bench next to them. Warm orange sunrise light.
-```
-
 **[ ] 18E. Credits: Ken**  
 The shrine steps.  
 Attach: `CG - style.png`, `BG - Naganaki Shrine.png`, `CG - Ken.png`, `CG - Koromaru.png`  
@@ -895,76 +855,6 @@ Save as: `credits-ken.png`
 Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The SECOND attached image is the background. Use the background image for the place, its layout and its lighting; draw the people into it. The other attached images are, in order, Ken and Koromaru: use them only for their faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
 
 The stone steps of a small neighbourhood shrine in the afternoon. Ken sits halfway up with a spear-shaped stick across his knees, Koromaru beside him, both watching the street below. A paper fortune is tied to the rope behind them. Warm green-gold afternoon light.
-```
-
-**[ ] 18F. Credits: Shinjiro**  
-Cooking for two.  
-Attach: `CG - style.png`, `BG - Dorm Kitchen at night.png`, `CG - Shinjiro.png`  
-Save as: `credits-shinjiro.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The SECOND attached image is the background. Use the background image for the place, its layout and its lighting; draw the people into it. The other attached image is Shinjiro: use it only for the face and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
-
-The dorm kitchen at night. Shinjiro, sleeves rolled up and beanie on, sets two bowls of steaming food on the counter, one of them pushed a little toward the empty stool. Steam in the light of one hanging lamp. Warm orange light.
-```
-
-**[ ] 18G. Credits: Haechan**  
-The college rooftop in the snow.  
-Attach: `CG - style.png`, `BG - Language Arts Rooftop in the snow.png`, `CG - Haechan.png`  
-Save as: `credits-haechan.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The SECOND attached image is the background. Use the background image for the place, its layout and its lighting; draw the people into it. The other attached image is Haechan: use it only for the face and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
-
-A college dorm rooftop at night with snow on the railing and campus lights below. Haechan sits against the wall with a guitar across his lap, not playing, two cans of drink beside him, one unopened. He is smiling at something on his phone. Cold blue light with one warm window behind him.
-```
-
-**[ ] 18H. Credits: Jungwon**  
-The council room after hours.  
-Attach: `CG - style.png`, `BG - Hanlim Council Room.png`, `CG - Jungwon.png`  
-Save as: `credits-jungwon.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The SECOND attached image is the background. Use the background image for the place, its layout and its lighting; draw the people into it. The other attached image is Jungwon: use it only for the face and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
-
-A high school student council room after hours. Jungwon sits alone at the long table with papers stacked neatly, a pen in his hand, looking at the chair across from him where a pencil case and a cup of tea are waiting. Late golden light through the blinds.
-```
-
-**[ ] 18I. Credits: Jihoon and Minji**  
-A show and a camera. (no background in the game)  
-Attach: `CG - style.png`, `CG - Jihoon.png`, `CG - Minji.png`  
-Save as: `credits-jihoon-minji.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The other attached images are, in order, Jihoon and Minji: use them only for their faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
-
-A small stage in a café at night. Jihoon sings into a microphone with his eyes closed; Minji films him from the front row with a camera on a small rig, smiling behind it. On her table, a folder with a photo-booth strip clipped to it. Pink and violet stage light.
-```
-
-**[ ] 18J. Credits: Hanni and Hyein**  
-Their room on a lazy afternoon.  
-Attach: `CG - style.png`, `BG - Hanni and Hyein's Room.png`, `CG - Hanni.png`, `CG - Hyein.png`  
-Save as: `credits-hanni-hyein.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The SECOND attached image is the background. Use the background image for the place, its layout and its lighting; draw the people into it. The other attached images are, in order, Hanni and Hyein: use them only for their faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
-
-Their cosy shared dorm room at dusk, fairy lights on. Hanni and Hyein lie on the floor on cushions, heads together, scrolling through photos on one phone and laughing. Photo strips and polaroids are taped to the wall above them. Soft fairy-light glow.
-```
-
-**[ ] 18K. Credits: Kat and Ethan**  
-A walk home.  
-Attach: `CG - style.png`, `BG - Iwatodai Strip at night.png`, `CG - Kat.png`, `CG - Ethan.png`  
-Save as: `credits-kat-ethan.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The SECOND attached image is the background. Use the background image for the place, its layout and its lighting; draw the people into it. The other attached images are, in order, Kat and Ethan: use them only for their faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
-
-The shopping street in the evening, quieter now. Kat and Ethan walk home side by side, her arm through his, sharing one umbrella though it has stopped raining. Shop lights reflected on the wet street. Soft rose and grey light.
-```
-
-**[ ] 18L. Credits: Solar**  
-The last still.  
-Attach: `CG - style.png`, `BG - Station Platform.png`, `CG - Solar.png`  
-Save as: `credits-solar.png`
-```
-Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The SECOND attached image is the background. Use the background image for the place, its layout and its lighting; draw the people into it. The other attached image is Solar: use it only for the face and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
-
-A train station platform early in the morning, the sun just up. Solar stands alone at the edge of the platform in a black wool coat and a pink scarf, hands in her pockets, her very long straight black hair moving in the wind, looking toward the sun as it comes up over the city. Her face is calm. Soft early-morning light.
 ```
 
 ---

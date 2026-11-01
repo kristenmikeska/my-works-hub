@@ -950,6 +950,61 @@
     main.querySelector('[data-t=ngp]').addEventListener('click', () => { const keep = window.FemcMenu?.albumCarry?.(); G.newGamePlus(); if (keep) { S().album = keep; G.saveQuiet(); } cardDay = null; run(); });
     main.querySelector('[data-t=title]').addEventListener('click', () => { S().phase = 'title'; G.save(); run(); });
     window.FemcEpilogue?.endScreen?.(main); // the Epilogue button, on the routes that have one
+    creditsRoll(main);
+  }
+
+  /* ── The credits roll (FEMC-ART-TODO 18, 2026-11-01). CREDITS_STILLS: quiet "after" pictures (assets/femc/cg/<id>.webp),
+     in this order; one plays only if Solar has met everyone in its `who` (G.isMet); `always` ones always play (Solar's is
+     last). `art: false` = not made yet (Ken's): drop it when the file arrives (a file that fails to load is skipped too). Over the end
+     screen, before its buttons: the stills crossfade one by one (STILL_MS each, a slow drift like the Showtime panels) behind
+     the rolling credit lines, then the roll fades out. A tap, or Enter / Space / Esc, skips to the buttons. Reduced motion:
+     plain crossfades, no drift, the lines still. Each still shown goes into the album (bridge.seeCg; menu.js's Credits row).
+     Nothing here reads the ending: the same stills for every ending. ── */
+  const CREDITS_STILLS = [
+    { id: 'credits-sees', who: ['yukari', 'junpei', 'fuuka'] }, { id: 'credits-akihiko', who: ['akihiko'] },
+    { id: 'credits-mitsuru', who: ['mitsuru'] }, { id: 'credits-aigis', who: ['aigis'] }, { id: 'credits-ken', who: ['ken'], art: false },
+    { id: 'credits-shinjiro', who: ['shinjiro'] }, { id: 'credits-haechan', who: ['haechan'] }, { id: 'credits-jungwon', who: ['jungwon'] },
+    { id: 'credits-minji-jihoon', who: ['minji', 'jihoon'] }, { id: 'credits-hanni-hyein', who: ['hanni', 'hyein'] },
+    { id: 'credits-kat-ethan', who: ['kat'] }, { id: 'credits-solar', always: true }];
+  const STILL_MS = 5000;
+  function creditsRoll(main) {
+    const want = CREDITS_STILLS.filter(c => c.art !== false && (c.always || c.who.every(id => G.isMet(id))));
+    const src = c => `${G.base}assets/femc/cg/${c.id}.webp`;
+    const names = [...new Set(want.flatMap(c => c.who || []))].map(id => esc(G.name(id)));
+    const roll = document.createElement('div');
+    roll.className = `g-roll${reduced.matches ? ' calm' : ''}`;
+    roll.tabIndex = -1; roll.setAttribute('role', 'button'); roll.setAttribute('aria-label', 'Credits. Press to skip.');
+    roll.innerHTML = `<div class="g-roll-stills"></div><div class="g-roll-lines"><div class="g-roll-in">
+      <p class="g-roll-title"><b>Persona 3: Solstice</b> Every Universe</p><p><small>Story, characters and worlds</small>Kat</p>
+      ${names.length ? `<p><small>With</small>${names.join('<br>')}</p>` : ''}<p><small>Persona 3</small>ATLUS (the year it borrows)</p>
+      <p><small>And</small>Solar</p></div></div><span class="g-roll-skip">Skip ▸▸</span>`;
+    // On the page itself (over the HUD); it goes as soon as the end screen does (New Game+, the title).
+    const sec = main.querySelector('.g-end');
+    document.body.append(roll);
+    const box = roll.querySelector('.g-roll-stills'), timers = [], watch = setInterval(() => { if (!sec?.isConnected) end(); }, 300);
+    let done = false;
+    const end = () => {
+      if (done) return; done = true; timers.forEach(clearTimeout); clearInterval(watch);
+      roll.classList.add('out'); setTimeout(() => roll.remove(), sec?.isConnected ? 900 : 0);
+      setTimeout(() => main.querySelector('.g-end .g-btn')?.focus({ preventScroll: true }), 60);
+    };
+    roll.addEventListener('click', end);
+    roll.addEventListener('keydown', e => { if (['Enter', ' ', 'Escape'].includes(e.key)) { e.preventDefault(); e.stopPropagation(); end(); } });
+    setTimeout(() => roll.isConnected && roll.focus({ preventScroll: true }), 40);
+    // Load each still first; the ones that don't load are left out.
+    Promise.all(want.map(c => new Promise(res => { const im = new Image(); im.onload = () => res(c); im.onerror = () => res(null); im.src = src(c); }))).then(list => {
+      list = list.filter(Boolean);
+      if (done) return;
+      roll.style.setProperty('--roll', `${Math.max(1, list.length) * STILL_MS}ms`);
+      roll.classList.add('go');
+      list.forEach((c, k) => timers.push(setTimeout(() => {
+        const img = document.createElement('img'); img.src = src(c); img.alt = '';
+        box.append(img); requestAnimationFrame(() => img.classList.add('on'));
+        bridge.seeCg(c.id);
+        [...box.children].slice(0, -2).forEach(x => x.remove());
+      }, k * STILL_MS)));
+      timers.push(setTimeout(end, list.length * STILL_MS + 400));
+    });
   }
 
   /* ── Exams ── */
@@ -1918,7 +1973,7 @@
 
   /* ── Start ── */
   window.FemcGameUI = { run, openStatus, openPhone, openSaves, sfxLog: () => sfxLog.slice(), SUN, openSettings, playLink, goOut, evening: () => evening(G.dayInfo()), dateCard, advance, overlay, esc, inBattle: () => !!dh,
-    segment, setBg, show, paintHud, endScreen, phoneSfx, battleCard };
+    segment, setBg, show, paintHud, endScreen, phoneSfx, battleCard, CREDITS_STILLS };
   // An old battle tab coming back (?from=battle): its result was taken into the save on load (core.js); carry on.
   const fromBattle = /[?&]from=battle\b/.test(location.search);
   if (fromBattle) history.replaceState(null, '', location.pathname);

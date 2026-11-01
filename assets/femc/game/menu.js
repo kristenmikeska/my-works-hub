@@ -849,6 +849,7 @@ window.FemcMenu = (() => {
      seen (the clears list: another playthrough's ending replays with that ending's route flags and Christmas pick). A replay
      runs in scene.js's read-only mode (opts.replay, conditions through peek), so it never writes the save; the menu (or the
      Extras panel) steps out of the page meanwhile and comes back after. Not in the Dark Hour.
+     A Credits row (2026-11-01) holds the end-credits stills already shown (ui.js creditsRoll → S.album.cg; no locked tiles).
      New Game+ keeps all of it (albumCarry → the new S.album: cg, frags, events, doors, ranks, prologue). */
   const ALB_V = 1, END_ID = 'end-ending', CLEARS_KEY = 'kg-femc-revamp-clears';
   const EPI = () => window.FemcEpilogue || null;
@@ -960,9 +961,9 @@ window.FemcMenu = (() => {
   const endEvent = () => G.D.events.find(e => e.id === END_ID);
   const runFlags = run => { const f = { ...(run.flags || {}) }; return { on: k => !!f[k], set: v => flagKeys(v).forEach(k => { f[k] = true; }) }; };
   function endingCgs(run) { const out = new Set(), ev = endEvent(); if (!ev) return out; if (run.mine) reach(ev.scene, null, G.flag, null, out); else { const f = runFlags(run); reach(ev.scene, null, f.on, f.set, out); } return out; }
-  const CG_GROUPS = [['story', 'Story'], ['romance', 'Romance & bonds'], ['searchers', 'Searchers'], ['endings', 'Endings']];
+  const CG_GROUPS = [['story', 'Story'], ['romance', 'Romance & bonds'], ['searchers', 'Searchers'], ['endings', 'Endings'], ['credits', 'Credits']];
   const WORLDS = [['Runners', 'Runners'], ['strangers', 'strangers'], ['Hoax', 'Hoax']];
-  const cgGroup = id => (/^(romance|link|crush)-/.test(id) ? 'romance' : /^searchers-/.test(id) ? 'searchers' : /^ending-/.test(id) ? 'endings' : 'story');
+  const cgGroup = id => (/^(romance|link|crush)-/.test(id) ? 'romance' : /^searchers-/.test(id) ? 'searchers' : /^ending-/.test(id) ? 'endings' : /^credits-/.test(id) ? 'credits' : 'story');
   let catCache = null;
   function cgCatalog() {
     if (catCache) return catCache;
@@ -1009,6 +1010,10 @@ window.FemcMenu = (() => {
       const caption = cap[c.id] || (src ? srcCaption(src) : { kicker: CG_GROUPS.find(g => g[0] === c.group)[1], title: '' });
       return { kind: 'cg', id: c.id, group: c.group, on, img: `${G.base}assets/femc/cg/${c.id}.webp`, ...caption };
     });
+    // The credits stills (ui.js creditsRoll puts each one shown in S.album.cg): only the ones seen, in the roll's order.
+    const order = (window.FemcGameUI?.CREDITS_STILLS || []).map(c => c.id), rank = id => (order.indexOf(id) + 1) || 99;
+    [...got].filter(id => /^credits-/.test(id)).sort((x, y) => rank(x) - rank(y))
+      .forEach(id => cgs.push({ kind: 'cg', id, group: 'credits', on: true, img: `${G.base}assets/femc/cg/${id}.webp`, kicker: 'Credits', title: '' }));
     return { cgs };
   }
   // Everything seen so far, for New Game+ (ui.js endScreen): the album and the Theater carry over.

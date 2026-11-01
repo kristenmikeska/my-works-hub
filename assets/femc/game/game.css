@@ -257,6 +257,27 @@ button.g-chip:is(:hover, :focus-visible) { outline: none; box-shadow: 3px 3px 0 
 .g-credits { margin-top: 18px; color: var(--muted, #e8dce4); font-size: 14px; line-height: 1.7; }
 .g-credits p { margin: 0; }
 .g-credits b { font: italic 900 18px/1 var(--cond); margin-right: 8px; }
+/* The credits roll (ui.js creditsRoll): stills crossfading with a slow drift behind the rolling lines; .calm = reduced motion. */
+.g-roll { position: fixed; inset: 0; z-index: 1500; overflow: hidden; background: #07030a; cursor: pointer; outline: none; transition: opacity .9s ease; }
+.g-roll.out { opacity: 0; pointer-events: none; }
+.g-roll-stills { position: absolute; inset: 0; }
+.g-roll-stills img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.4s ease; transform: scale(1.06); }
+.g-roll-stills img.on { opacity: 1; animation: g-roll-drift 6.4s linear both; }
+@keyframes g-roll-drift { from { transform: scale(1.06) translate3d(-1.2%, .6%, 0); } to { transform: scale(1.12) translate3d(1.2%, -.6%, 0); } }
+.g-roll::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(7, 3, 10, .82) 0, rgba(7, 3, 10, .5) 32%, transparent 58%); }
+.g-roll-lines { position: absolute; z-index: 1; top: 0; bottom: 0; left: var(--pad); width: min(420px, calc(100vw - 2 * var(--pad))); overflow: hidden; -webkit-mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent); mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent); }
+.g-roll-in { padding: 100vh 0 0; color: var(--ink); text-shadow: 0 2px 10px rgba(0, 0, 0, .8); }
+.g-roll.go .g-roll-in { animation: g-roll-up var(--roll, 30s) linear both; }
+@keyframes g-roll-up { from { transform: translateY(0); } to { transform: translateY(calc(-100% + 20vh)); } }
+.g-roll-in p { margin: 0 0 9vh; font-size: 18px; line-height: 1.5; }
+.g-roll-in small { display: block; margin-bottom: 4px; color: var(--pink-2); font: italic 800 13px/1.2 var(--cond); letter-spacing: .14em; text-transform: uppercase; }
+.g-roll-title b { display: block; font: italic 900 clamp(28px, 4vw, 40px)/1.05 var(--cond); }
+.g-roll-skip { position: absolute; z-index: 2; right: var(--pad); bottom: calc(18px + env(safe-area-inset-bottom)); padding: 6px 14px; background: #14070f; border: 1px solid rgba(255, 79, 158, .6); color: var(--pink-3); font: italic 800 13px/1 var(--cond); letter-spacing: .1em; transform: skewX(-12deg); }
+.g-roll.calm .g-roll-stills img, .g-roll.calm .g-roll-stills img.on { animation: none; transform: none; }
+.g-roll.calm .g-roll-in, .g-roll.calm.go .g-roll-in { animation: none; padding: 0; position: absolute; top: 50%; transform: translateY(-50%); }
+.g-roll.calm .g-roll-in p { margin-bottom: 3vh; }
+@media (max-width: 640px) { .g-roll::after { background: linear-gradient(0deg, rgba(7, 3, 10, .88) 0, rgba(7, 3, 10, .45) 45%, transparent 70%); } .g-roll-lines { width: auto; right: var(--pad); } .g-roll-in p { font-size: 16px; } }
+@media (prefers-reduced-motion: reduce) { .g-roll-stills img.on, .g-roll.go .g-roll-in { animation: none; } }
 .g-xmas-pic img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; transform: scale(1.6); transform-origin: 50% 12%; }
 .g-tt-ov .g-panel { border-color: #8fffc0; }
 .g-party { display: flex; flex-wrap: wrap; margin: 12px 0; }

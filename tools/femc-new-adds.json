@@ -21447,6 +21447,237 @@
         }
       ],
       "section": "FEMC-ART-TODO 14"
+    },
+    {
+      "batch": 111,
+      "source": "credits-sees.png",
+      "sourceNow": "New Adds/credits-sees.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "b1ffff6fbb689a9af7bf83cb21aad0c586fc9ae0e969c23b21c79aa9d0ed3f8b",
+      "status": "integrated",
+      "destination": "assets/femc/cg/credits-sees.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "ui.js CREDITS_STILLS / creditsRoll (end screen); menu.js album Credits row",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/credits-sees.webp",
+          "sha256": "cc117132d55416049a269ec2d68535960e7a1abf826a8c4feb65e1e6c416a76b"
+        }
+      ],
+      "section": "FEMC-ART-TODO 18"
+    },
+    {
+      "batch": 111,
+      "source": "credits-akihiko.png",
+      "sourceNow": "New Adds/credits-akihiko.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "f83e1564bc1c62d76761322a4411930607805bca9ad295c81b5d577a0da2ab00",
+      "status": "integrated",
+      "destination": "assets/femc/cg/credits-akihiko.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "ui.js CREDITS_STILLS / creditsRoll (end screen); menu.js album Credits row",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/credits-akihiko.webp",
+          "sha256": "21901457d983c743f834da760c827324e2df11f25faca2799313ad87c9fe39a1"
+        }
+      ],
+      "section": "FEMC-ART-TODO 18"
+    },
+    {
+      "batch": 111,
+      "source": "credits-mitsuru.png",
+      "sourceNow": "New Adds/credits-mitsuru.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "63ad5e2db934ea376bbac7d86daecd53c7ec6d0c745cd38c5a5d99e69286ca32",
+      "status": "integrated",
+      "destination": "assets/femc/cg/credits-mitsuru.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "ui.js CREDITS_STILLS / creditsRoll (end screen); menu.js album Credits row",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/credits-mitsuru.webp",
+          "sha256": "a0dad422248305800b6d2fe3de636b729274fc72a8101ee6488e514af6f7035c"
+        }
+      ],
+      "section": "FEMC-ART-TODO 18"
+    },
+    {
+      "batch": 111,
+      "source": "credits-aigis.png",
+      "sourceNow": "New Adds/credits-aigis.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "80ab12ac79766553c821d6c7b37c0dc58f972093450fcc63bde58ec1efa4ebd3",
+      "status": "integrated",
+      "destination": "assets/femc/cg/credits-aigis.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "ui.js CREDITS_STILLS / creditsRoll (end screen); menu.js album Credits row",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/credits-aigis.webp",
+          "sha256": "e5fc30db2a1eaad5818fd85ed7e14113c8fb2d7576c76ce583f8fbfc1fbd2bca"
+        }
+      ],
+      "section": "FEMC-ART-TODO 18"
+    },
+    {
+      "batch": 111,
+      "source": "credits-shinjiro.png",
+      "sourceNow": "New Adds/credits-shinjiro.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e3af5a35e9ff07b68785db91708840f7aa2b1b84525c67d43edd513df17d1629",
+      "status": "integrated",
+      "destination": "assets/femc/cg/credits-shinjiro.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "ui.js CREDITS_STILLS / creditsRoll (end screen); menu.js album Credits row",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/credits-shinjiro.webp",
+          "sha256": "ced720246d585aae7baa341c9776e835f7469e8130a2499a338a2c1eb32698c1"
+        }
+      ],
+      "section": "FEMC-ART-TODO 18"
+    },
+    {
+      "batch": 111,
+      "source": "credits-haechan.png",
+      "sourceNow": "New Adds/credits-haechan.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "90103bee8906fa8ea6174f6b8de36fd92de6d9f0ae588bcc6a870acc08a24741",
+      "status": "integrated",
+      "destination": "assets/femc/cg/credits-haechan.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "ui.js CREDITS_STILLS / creditsRoll (end screen); menu.js album Credits row",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/credits-haechan.webp",
+          "sha256": "929b2e9655849ca0c82076ba26ae950aa148a09497cb2b10c0a8c65542afb1a8"
+        }
+      ],
+      "section": "FEMC-ART-TODO 18"
+    },
+    {
+      "batch": 111,
+      "source": "credits-jungwon.png",
+      "sourceNow": "New Adds/credits-jungwon.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "1882dd38078e49b4a50d3bf546f2e3264cca3d3e9fed7a504dec4cb452a312b4",
+      "status": "integrated",
+      "destination": "assets/femc/cg/credits-jungwon.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "ui.js CREDITS_STILLS / creditsRoll (end screen); menu.js album Credits row",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/credits-jungwon.webp",
+          "sha256": "8bae943e8e5a5783b9e983709b5b0920e2dff0c8e9e9c653be74bed03e2ede1c"
+        }
+      ],
+      "section": "FEMC-ART-TODO 18"
+    },
+    {
+      "batch": 111,
+      "source": "credits-minji-jihoon.png",
+      "sourceNow": "New Adds/credits-minji-jihoon.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "a0b0aaf7d48843bb81f0a7f11266454a92680dc28e041dabc4c6bde50f88e472",
+      "status": "integrated",
+      "destination": "assets/femc/cg/credits-minji-jihoon.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "ui.js CREDITS_STILLS / creditsRoll (end screen); menu.js album Credits row",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/credits-minji-jihoon.webp",
+          "sha256": "c3e5e3185af73cf18147e83975fb66a3e0fb2c62ef992d09dbaf7cbe131c39dd"
+        }
+      ],
+      "section": "FEMC-ART-TODO 18"
+    },
+    {
+      "batch": 111,
+      "source": "credits-hanni-hyein.png",
+      "sourceNow": "New Adds/credits-hanni-hyein.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "469b3f84adc13c7d9f1791dc2f2e35682e3bc58eb23dc8727538871a45623cb4",
+      "status": "integrated",
+      "destination": "assets/femc/cg/credits-hanni-hyein.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "ui.js CREDITS_STILLS / creditsRoll (end screen); menu.js album Credits row",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/credits-hanni-hyein.webp",
+          "sha256": "7d06fa6c06e30b2da0ddc9263066882f5ce995544dbd96a2c75d53311157d8f5"
+        }
+      ],
+      "section": "FEMC-ART-TODO 18"
+    },
+    {
+      "batch": 111,
+      "source": "credits-kat-ethan.png",
+      "sourceNow": "New Adds/credits-kat-ethan.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e287dd235020b403439bef8d73b999943120b2b3ba0d17139671c83235d18a7b",
+      "status": "integrated",
+      "destination": "assets/femc/cg/credits-kat-ethan.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "ui.js CREDITS_STILLS / creditsRoll (end screen); menu.js album Credits row",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/credits-kat-ethan.webp",
+          "sha256": "e31c224acdf71de79532555bc14c0e21b3042c16a67b37d68d74149ace29d4bb"
+        }
+      ],
+      "section": "FEMC-ART-TODO 18"
+    },
+    {
+      "batch": 111,
+      "source": "credits-solar.png",
+      "sourceNow": "New Adds/credits-solar.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "500c919aec48cae7b40806fe7fcd15af6ecbab06fc958bb7f6839a4509ea1bd1",
+      "status": "integrated",
+      "destination": "assets/femc/cg/credits-solar.webp",
+      "conversion": "WebP quality 86 (method 6), original dimensions, no cropping or retouching; source unchanged (left in New Adds)",
+      "placement": "ui.js CREDITS_STILLS / creditsRoll (end screen); menu.js album Credits row",
+      "outputs": [
+        {
+          "path": "assets/femc/cg/credits-solar.webp",
+          "sha256": "8245b42a07cecab215e428f270a709215ac2a0ca7448ecd4d752fba49453c92c"
+        }
+      ],
+      "section": "FEMC-ART-TODO 18"
     }
   ],
   "batch1Validation": {
@@ -22865,5 +23096,13 @@
     "headless": "tests/femc_browser.Page: Akihiko's thread with his sticker and Solar's sticker reply at 1440x900 and 390x844; reply sends her sticker; fallback to t when a pack isn't listed; no console errors",
     "tests": "femc_polish",
     "html": "femc-game.html stickers/index.js v1, texts v6, living-texts v5, core v66, ui v46, game.css v31"
+  },
+  "batch111Validation": {
+    "date": "2026-11-01",
+    "sources": "11 credits stills (Ken's not made yet; left in New Adds unchanged)",
+    "looked_at": "all eleven at thumbnail size",
+    "headless": "end screen with the roll mid-way at 1440x900 and 390x844; only met people's stills, Solar last, the missing Ken skipped; Enter skips to the buttons; reduced motion has no drift or scroll; leaving the end screen stops it; the album's Credits row; no console errors",
+    "tests": "femc_march (end screen)",
+    "html": "femc-game.html ui v47, game.css v32, menu v35"
   }
 }
