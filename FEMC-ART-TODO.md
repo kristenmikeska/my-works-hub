@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make:** 1 HOAX picture fix (4C) · the Go Out map (section 6) · icons for the late-game skills (section 7) · 5 Social Link full-body sheets (section 8). **Optional:** 15 wardrobe items · 4 Stay hanami face sheets. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make:** 1 HOAX picture fix (4C) · icons for the late-game skills (section 7) · 5 Social Link full-body sheets (section 8). **Optional:** 15 wardrobe items · 4 Stay hanami face sheets. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
@@ -48,22 +48,8 @@ Edit the FIRST image. Keep everything exactly the same: the composition, the gym
 
 ---
 
-## 6. ⭐ The Go Out map (Gemini)
-Kat picked the city-map Go Out (option C of `mockups/solstice-ui/goout.html`), to be polished toward Persona 3 Reload's map. These are the illustrated maps the pins sit on. No people, no text: the game draws the labels and pins itself.
-
-**[ ] 6A. The map of Iwatodai and Port Island: day**
-Attach: `UI - style (pink cover).png`
-Save as: `goout-map-day.png`
-```
-Using the attached image only as a reference for its art style and colours (black, deep plum, hot pink, pale pink and white, a few tiny gold lights), create a NEW illustrated city map seen from high above at a slight angle, like the world map in Persona 3 Reload, 16:9, the largest size, no people, no text, no labels. Two parts of a Japanese seaside city on either side of a calm bay. On the LEFT shore, a residential town: a small dormitory building near the top left, a train station in the middle with a shopping street of small shops next to it, a hill with a shrine and torii gate on the right of the town, and a hospital near the bottom. On the RIGHT, an island district: a large modern high school with a sports field near the top right, a second station in the middle, a big shopping mall with a fountain plaza below it, and a seaside park along the bottom edge. A monorail line on a raised track runs across the bay between the two stations, and a long suspension bridge crosses further down. Clean lineart, flat graphic shapes, halftone dots in the shadows, buildings simplified so each landmark is easy to spot, lots of dark space on the far right for a side panel.
-```
-
-**[ ] 6B. The same map: evening**
-Attach: your result from 6A
-Save as: `goout-map-evening.png`
-```
-Edit this image. Keep the map exactly the same. Change it to evening: a pink and violet sunset sky reflected in the bay, warm lit windows and street lamps, longer shadows. Still only black, plum, pink, white and a few warm lights. No text.
-```
+## 6. The Go Out map
+*(Done Oct 31: both maps (day and evening) are the Go Out screen's background, with every place pinned on its landmark.)*
 
 ---
 
