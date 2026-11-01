@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make:** icons for the late-game skills (section 7) · 5 Social Link full-body sheets (section 8) · 20 new event CGs (section 11). **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make:** icons for the late-game skills (section 7) · 5 Social Link full-body sheets (section 8) · 20 new event CGs (section 11) · new projects: 14 swimwear pieces (section 12), 24 couple-outfit pieces (section 13), 11 sticker packs (section 14), 10 photo booth sheets (section 15), 14 seasonal face sheets (section 16), 4 climb bosses (section 17), 12 credits stills (section 18) · **pick a theme** for Solar's next skin series (section 19). **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
@@ -386,3 +386,822 @@ Create a NEW illustration that matches the art style of the FIRST attached image
 
 An empty train station platform at midnight in early April, during the Dark Hour: everything tinted sickly green-yellow, the rails black and gleaming, the last bench at the far end empty, and dark smoky shapes rising off the tracks like smoke learning to stand. Solar (very long straight black hair loose, a light spring coat over a sweater, a silver gun-shaped Evoker in her hand, NO armband) stands near the platform edge with tears in her eyes, half laughing. At her right shoulder stands Haechan (as in his attached image, all in black, headphones around his neck), but he is only half there: see-through, the platform showing through his body, his head turned to look straight at her. On her left, about ten steps away, Jungwon (as in his attached image, a buttoned dark coat) is also see-through, with a faint tortoise and serpent rising behind him like a reflection in glass. Behind Solar, solid and real, Akihiko (silver hair, a dark coat, leather gloves, fists up) guards her back. Green light, ghostly figures. Heartbreaking and beautiful.
 ```
+
+---
+
+## 12. Summer swimwear banner: Swim Season (ChatGPT)
+A summer banner for July and August, beside Summer Nights: beach and pool looks for the fighters. Each look is a pose sheet (her or his battle figure) plus scene portraits (the faces in scenes), like the Wardrobe outfits already in the game. Swimwear still carries the weapon and the Evoker: it's battle art.
+
+**[ ] 12A. Solar: Pink Lagoon (pose sheet)**  
+Solar at the beach in a black-and-pink ruffled bikini, a sheer pink sarong and heart sunglasses, hair in a bubble ponytail with hot-pink streaks.  
+Attach: `solar-posesheet.png`, then `Solar.png`  
+Save as: `skin-sk-swim-lagoon-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a black bikini top with pink ruffle trim and a tiny pink bow at the centre, high-waisted black bikini bottoms with pink ruffles, a sheer hot-pink chiffon sarong knotted at one hip and floating behind her, heart-shaped pink sunglasses pushed up on her head, a pearl anklet, black platform sandals with pink straps, a few pink beaded bracelets. Hair: her own jet-black hair with bold hot-pink streaks, pulled into a very high bubble ponytail (the long ponytail tied off every few inches with pink hair ties so it puffs into bubbles), little pearl clips above one ear, glossy wet-look ends. Her naginata's haft wrapped in pink and white rope like a beach towel stripe, a small seashell charm at the collar. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 12B. Solar: Pink Lagoon (scene portraits)**  
+Her scene faces for the same outfit.  
+Attach: `Solar.png`  
+Save as: `skin-sk-swim-lagoon-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a black bikini top with pink ruffle trim and a tiny pink bow, a sheer hot-pink chiffon sarong over one shoulder, heart-shaped pink sunglasses pushed up on her head, a pearl choker, bright summer sunlight and a little sparkle of water on her skin. Hair: her own jet-black hair with bold hot-pink streaks, pulled into a very high bubble ponytail (the long ponytail tied off every few inches with pink hair ties so it puffs into bubbles), little pearl clips above one ear, glossy wet-look ends. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 12C. Solar: Lifeguard on Duty (pose sheet)**  
+Solar as the pool lifeguard: a red one-piece, an oversized white zip hoodie and a whistle, hair in two French braids with blond face-framing streaks.  
+Attach: `solar-posesheet.png`, then `Solar.png`  
+Save as: `skin-sk-swim-lifeguard-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a red racer-back one-piece swimsuit with white piping and a small white sun emblem on the hip (no letters), an oversized white zip hoodie tied around her waist by the sleeves, a pink whistle on a black cord around her neck, a white sun visor, white-and-red slides, a red waterproof wristband. Hair: her own jet-black hair in two tight French braids down her back, with two bleached-blond face-framing streaks at the front, a few loose baby hairs. Her naginata's haft striped red and white like a lifebuoy. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 12D. Solar: Lifeguard on Duty (scene portraits)**  
+Her scene faces for the same outfit.  
+Attach: `Solar.png`  
+Save as: `skin-sk-swim-lifeguard-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a red racer-back one-piece swimsuit with white piping, a pink whistle on a black cord, a white sun visor, poolside sunlight with blue water reflections on her skin. Hair: her own jet-black hair in two tight French braids down her back, with two bleached-blond face-framing streaks at the front, a few loose baby hairs. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 12E. Solar: Night Swim (pose sheet)**  
+Solar at a midnight pool party: a black halter swimsuit with silver chains and a sheer kimono cover-up, hair in half-up space buns dipped pink.  
+Attach: `solar-posesheet.png`, then `Solar.png`  
+Save as: `skin-sk-swim-night-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a black halter one-piece swimsuit with a side cut-out and thin silver chain details at the hips, a sheer black kimono-sleeve cover-up printed with small pink crescent moons, worn open and slipping off one shoulder, silver ear cuffs, black strappy sandals, a thin silver body chain at the waist. Hair: her own jet-black hair in half-up twin space buns, the rest falling long and straight down her back, the very ends dip-dyed hot pink, a little silver glitter on the buns. Her naginata's blade catching moonlight, a small silver crescent charm at the collar. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 12F. Solar: Night Swim (scene portraits)**  
+Her scene faces for the same outfit.  
+Attach: `Solar.png`  
+Save as: `skin-sk-swim-night-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a black halter swimsuit with thin silver chain details, a sheer black kimono-sleeve cover-up printed with small pink crescent moons slipping off one shoulder, silver ear cuffs, cool night-pool light from below. Hair: her own jet-black hair in half-up twin space buns, the rest falling long and straight down her back, the very ends dip-dyed hot pink, a little silver glitter on the buns. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 12G. Haechan: Boardwalk (pose sheet)**  
+Haechan on the boardwalk: an open black Hawaiian shirt with pink hibiscus, board shorts and sunglasses pushed up.  
+Attach: `haechan-posesheet.png`, then `Haechan.png`  
+Save as: `skin-sk-haechan-swim-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a short-sleeved black Hawaiian shirt with a hot-pink hibiscus print, worn open over a white tank top, black-and-pink board shorts to the knee, black slides, round tinted sunglasses pushed up into his hair, a thin silver chain, a beach towel slung over one shoulder in cell 1 and cell 6. Hair: his own dark chocolate-brown hair, damp and wavy, centre-parted with the fringe falling into his eyes (a look he has really worn). Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 12H. Haechan: Boardwalk (scene portraits)**  
+His scene faces for the same outfit.  
+Attach: `Haechan.png`  
+Save as: `skin-sk-haechan-swim-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a short-sleeved black Hawaiian shirt with a hot-pink hibiscus print, open over a white tank top, round tinted sunglasses pushed up into his hair, a thin silver chain, golden-hour beach light. Hair: his own dark chocolate-brown hair, damp and wavy, centre-parted with the fringe falling into his eyes (a look he has really worn). Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 12I. Jungwon: Pool Day (pose sheet)**  
+Jungwon at the pool: a black-and-white rash guard, swim trunks, a towel round his neck and goggles on his head.  
+Attach: `jungwon-posesheet.png`, then `Jungwon.png`  
+Save as: `skin-sk-jungwon-swim-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a fitted black short-sleeved zip-up rash guard with white side panels, black swim trunks with a white stripe, a white towel around his neck, clear swim goggles pushed up on his forehead, black slides, a black sports watch. Hair: his own black hair, wet and pushed back off his forehead by the goggles, a few strands falling forward (a look he has really worn). Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 12J. Jungwon: Pool Day (scene portraits)**  
+His scene faces for the same outfit.  
+Attach: `Jungwon.png`  
+Save as: `skin-sk-jungwon-swim-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a fitted black zip-up rash guard with white side panels, a white towel around his neck, clear swim goggles pushed up on his forehead, bright pool light with blue water reflections. Hair: his own black hair, wet and pushed back off his forehead by the goggles, a few strands falling forward (a look he has really worn). Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 12K. Yukari: Beach Volley (pose sheet)**  
+Yukari at beach volleyball: a pink sporty bikini under a cropped white mesh tee, and a visor.  
+Attach: `yukari-posesheet.png`, then `Yukari.png`  
+Save as: `skin-sk-yukari-swim-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a pink sporty bikini with white trim, a cropped white mesh tee over it, a pink sun visor, white sneakers with pink laces, a pink sweatband on one wrist. Hair: her own short brown bob, a pink hair clip on one side. Her bow's grip wrapped in pink tape. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 12L. Yukari: Beach Volley (scene portraits)**  
+Her scene faces for the same outfit.  
+Attach: `Yukari.png`  
+Save as: `skin-sk-yukari-swim-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a pink sporty bikini top under a cropped white mesh tee, a pink sun visor, a pink sweatband, bright beach sunlight. Hair: her own short brown bob, a pink hair clip on one side. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 12M. Akihiko: Lifeguard Captain (pose sheet)**  
+Akihiko as the lifeguard captain: red swim trunks, an open white hoodie, a whistle and his hand wraps.  
+Attach: `akihiko-posesheet.png`, then `Akihiko.png`  
+Save as: `skin-sk-akihiko-swim-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: red swim trunks with a white stripe, an open sleeveless white hoodie, a black whistle on a red cord, white hand wraps under his red boxing gloves, red slides. Hair: his own short silver hair. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 12N. Akihiko: Lifeguard Captain (scene portraits)**  
+His scene faces for the same outfit.  
+Attach: `Akihiko.png`  
+Save as: `skin-sk-akihiko-swim-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: an open sleeveless white hoodie over his bare chest, a black whistle on a red cord, a white towel over one shoulder, bright beach sunlight. Hair: his own short silver hair. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+---
+
+## 13. Couple outfits (ChatGPT)
+Matching looks: Solar with Haechan, with Jungwon and with Akihiko, two sets each. Every set is four items (her pose sheet and portraits, his pose sheet and portraits); the game marks them as a couple set. Make each set's two pose sheets in the same chat so the colours match.
+
+**[ ] 13A. Solar: Sun & Moon (pose sheet)**  
+Couple set with Haechan. Matching oversized black hoodies: a pink sun on hers, a pink crescent moon on his.  
+Attach: `solar-posesheet.png`, then `Solar.png`  
+Save as: `skin-sk-cp-sunmoon-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: an oversized black hoodie worn as a short dress, a big hot-pink sun printed on the chest and a tiny crescent moon on the cuff (no letters), black thigh-high socks with a pink stripe, chunky black-and-pink sneakers, a pink heart-shaped hair clip, a silver sun pendant. Hair: her own jet-black hair with hot-pink face-framing streaks, in two low loose pigtails tied with black scrunchies. A small pink sun charm on her naginata. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 13B. Solar: Sun & Moon (scene portraits)**  
+Her scene faces for the same outfit.  
+Attach: `Solar.png`  
+Save as: `skin-sk-cp-sunmoon-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: an oversized black hoodie with a big hot-pink sun printed on the chest (no letters), a silver sun pendant, a pink heart-shaped hair clip. Hair: her own jet-black hair with hot-pink face-framing streaks, in two low loose pigtails tied with black scrunchies. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 13C. Haechan: Sun & Moon (pose sheet)**  
+Couple set with Solar: Haechan's half of Sun & Moon.  
+Attach: `haechan-posesheet.png`, then `Haechan.png`  
+Save as: `skin-sk-haechan-cp-sunmoon-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: an oversized black hoodie with a big hot-pink crescent moon printed on the chest and a tiny sun on the cuff (no letters), black cargo trousers, chunky black-and-pink sneakers, a silver crescent-moon pendant. Hair: his own dark brown hair, a soft fluffy curtain fringe (a look he has really worn). Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 13D. Haechan: Sun & Moon (scene portraits)**  
+His scene faces for the same outfit.  
+Attach: `Haechan.png`  
+Save as: `skin-sk-haechan-cp-sunmoon-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: an oversized black hoodie with a big hot-pink crescent moon printed on the chest (no letters), a silver crescent-moon pendant. Hair: his own dark brown hair, a soft fluffy curtain fringe (a look he has really worn). Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 13E. Solar: Midnight Drive (pose sheet)**  
+Couple set with Haechan. Matching black leather jackets lined in pink for a late-night drive.  
+Attach: `solar-posesheet.png`, then `Solar.png`  
+Save as: `skin-sk-cp-drive-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a cropped black leather moto jacket with a hot-pink satin lining showing at the cuffs and collar, a short pink satin slip dress, sheer black tights, black ankle boots with silver buckles, small silver hoop earrings, a thin black velvet choker. Hair: her own jet-black hair, glossy and wavy, half-up with a hot-pink claw clip and a single pink streak in the front. Her naginata's haft wrapped in black leather with pink stitching. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 13F. Solar: Midnight Drive (scene portraits)**  
+Her scene faces for the same outfit.  
+Attach: `Solar.png`  
+Save as: `skin-sk-cp-drive-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a cropped black leather moto jacket with a hot-pink satin lining at the collar, a pink satin slip dress, a thin black velvet choker, small silver hoops, city night lights behind her. Hair: her own jet-black hair, glossy and wavy, half-up with a hot-pink claw clip and a single pink streak in the front. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 13G. Haechan: Midnight Drive (pose sheet)**  
+Couple set with Solar: Haechan's half of Midnight Drive.  
+Attach: `haechan-posesheet.png`, then `Haechan.png`  
+Save as: `skin-sk-haechan-cp-drive-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a black leather moto jacket with a hot-pink satin lining showing at the cuffs and collar, a pink satin shirt open at the collar, black slim trousers, black boots, silver rings, a car key on a pink lanyard hanging from one hand in cell 6. Hair: his own black hair, swept back off his forehead with a few strands falling forward (a look he has really worn). Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 13H. Haechan: Midnight Drive (scene portraits)**  
+His scene faces for the same outfit.  
+Attach: `Haechan.png`  
+Save as: `skin-sk-haechan-cp-drive-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a black leather moto jacket with a hot-pink satin lining, a pink satin shirt open at the collar, silver rings, city night lights behind him. Hair: his own black hair, swept back off his forehead with a few strands falling forward (a look he has really worn). Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 13I. Solar: After Hours (pose sheet)**  
+Couple set with Jungwon. A school-uniform twist: matching black blazers with pink ties, the council room after hours.  
+Attach: `solar-posesheet.png`, then `Solar.png`  
+Save as: `skin-sk-cp-afterhours-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a black school blazer worn open with a small pink pin on the lapel, a white shirt, a loosened hot-pink tie, a pale pink cardigan tied around her waist, a short black pleated skirt, black knee socks, black loafers, a student council armband in pink beside the red S.E.E.S. one. Hair: her own jet-black hair in two neat French braids with pink ribbon ends. A small pink tassel on her naginata. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 13J. Solar: After Hours (scene portraits)**  
+Her scene faces for the same outfit.  
+Attach: `Solar.png`  
+Save as: `skin-sk-cp-afterhours-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a black school blazer with a small pink pin on the lapel, a white shirt, a loosened hot-pink tie, late-afternoon light through a classroom window. Hair: her own jet-black hair in two neat French braids with pink ribbon ends. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 13K. Jungwon: After Hours (pose sheet)**  
+Couple set with Solar: Jungwon's half of After Hours.  
+Attach: `jungwon-posesheet.png`, then `Jungwon.png`  
+Save as: `skin-sk-jungwon-cp-afterhours-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a black school blazer worn open with a small pink pin on the lapel, a white shirt with the top button undone, a loosened hot-pink tie, black slim trousers, black loafers, a pale pink cardigan over one shoulder, a pen tucked behind his ear in cell 1. Hair: his own black hair, a neat comma fringe (a look he has really worn). Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 13L. Jungwon: After Hours (scene portraits)**  
+His scene faces for the same outfit.  
+Attach: `Jungwon.png`  
+Save as: `skin-sk-jungwon-cp-afterhours-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a black school blazer with a small pink pin on the lapel, a white shirt, a loosened hot-pink tie, a pen tucked behind his ear, late-afternoon light through a classroom window. Hair: his own black hair, a neat comma fringe (a look he has really worn). Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 13M. Solar: Movie Date (pose sheet)**  
+Couple set with Jungwon. Matching cream knits and long black coats for a winter movie date.  
+Attach: `solar-posesheet.png`, then `Solar.png`  
+Save as: `skin-sk-cp-moviedate-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a cream cable-knit sweater dress, a long black wool coat worn open, a pink knit scarf, black tights, black loafers with chunky soles, a small black shoulder bag, a cinema ticket stub tucked in her coat pocket. Hair: her own jet-black hair in a loose low bun with long face-framing strands, tied with a black velvet bow. A small cream pom-pom charm on her naginata. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 13N. Solar: Movie Date (scene portraits)**  
+Her scene faces for the same outfit.  
+Attach: `Solar.png`  
+Save as: `skin-sk-cp-moviedate-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a cream cable-knit sweater, a long black wool coat, a pink knit scarf, warm cinema-lobby light. Hair: her own jet-black hair in a loose low bun with long face-framing strands, tied with a black velvet bow. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 13O. Jungwon: Movie Date (pose sheet)**  
+Couple set with Solar: Jungwon's half of Movie Date.  
+Attach: `jungwon-posesheet.png`, then `Jungwon.png`  
+Save as: `skin-sk-jungwon-cp-moviedate-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a cream cable-knit sweater over a white shirt collar, a long black wool coat worn open, a pink knit scarf (the same as Solar's), black slim trousers, black loafers, a cinema ticket stub tucked in his coat pocket. Hair: his own dark brown hair in a soft wavy perm, fringe falling over his forehead (a look he has really worn). Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 13P. Jungwon: Movie Date (scene portraits)**  
+His scene faces for the same outfit.  
+Attach: `Jungwon.png`  
+Save as: `skin-sk-jungwon-cp-moviedate-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a cream cable-knit sweater, a long black wool coat, a pink knit scarf, warm cinema-lobby light. Hair: his own dark brown hair in a soft wavy perm, fringe falling over his forehead (a look he has really worn). Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 13Q. Solar: Ringside (pose sheet)**  
+Couple set with Akihiko. Matching red-and-black track jackets from the boxing club, hers cropped.  
+Attach: `solar-posesheet.png`, then `Solar.png`  
+Save as: `skin-sk-cp-ringside-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a cropped red-and-black track jacket with white stripes down the sleeves (no letters), a black sports bra top, black bike shorts under a short red track skirt, white hand wraps, red-and-white high-top boxing boots, a towel around her neck. Hair: her own jet-black hair in two tight boxer braids joined into a high ponytail, the tips dyed hot pink. Her naginata's haft wrapped in white boxing tape. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 13R. Solar: Ringside (scene portraits)**  
+Her scene faces for the same outfit.  
+Attach: `Solar.png`  
+Save as: `skin-sk-cp-ringside-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a cropped red-and-black track jacket with white stripes (no letters), a towel around her neck, white hand wraps, gym lights. Hair: her own jet-black hair in two tight boxer braids joined into a high ponytail, the tips dyed hot pink. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 13S. Akihiko: Ringside (pose sheet)**  
+Couple set with Solar: Akihiko's half of Ringside.  
+Attach: `akihiko-posesheet.png`, then `Akihiko.png`  
+Save as: `skin-sk-akihiko-cp-ringside-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a red-and-black track jacket with white stripes down the sleeves (no letters), worn open over a black tank top, black track pants, white hand wraps under his red boxing gloves, red-and-white boxing boots, a towel around his neck. Hair: his own short silver hair. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 13T. Akihiko: Ringside (scene portraits)**  
+His scene faces for the same outfit.  
+Attach: `Akihiko.png`  
+Save as: `skin-sk-akihiko-cp-ringside-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a red-and-black track jacket with white stripes (no letters) open over a black tank top, a towel around his neck, gym lights. Hair: his own short silver hair. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 13U. Solar: Summer Festival (pose sheet)**  
+Couple set with Akihiko. Matching festival yukata: hers black with red and silver moons, his grey with the same red obi.  
+Attach: `solar-posesheet.png`, then `Solar.png`  
+Save as: `skin-sk-cp-festival-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a black yukata printed with red camellias and small silver crescent moons, a red obi with a black bow at the back, a silver obi cord, red-thonged black geta, a red drawstring kinchaku bag, a small paper fan tucked in the obi. Hair: her own jet-black hair in an elegant updo, a silver crescent-moon kanzashi hairpin with red tassels, a few loose strands at her neck. A red tassel and a little silver bell on her naginata. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 13V. Solar: Summer Festival (scene portraits)**  
+Her scene faces for the same outfit.  
+Attach: `Solar.png`  
+Save as: `skin-sk-cp-festival-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a black yukata with red camellias and silver crescent moons, a red obi, a silver crescent-moon kanzashi with red tassels, warm paper-lantern light. Hair: her own jet-black hair in an elegant updo, a silver crescent-moon kanzashi hairpin with red tassels, a few loose strands at her neck. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 13W. Akihiko: Summer Festival (pose sheet)**  
+Couple set with Solar: Akihiko's half of Summer Festival.  
+Attach: `akihiko-posesheet.png`, then `Akihiko.png`  
+Save as: `skin-sk-akihiko-cp-festival-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a light grey yukata with a fine dark grey stripe, a red obi (the same red as Solar's), black geta, a small paper fan tucked in the obi, his red boxing gloves still on for battle. Hair: his own short silver hair. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text.
+```
+If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
+
+**[ ] 13X. Akihiko: Summer Festival (scene portraits)**  
+His scene faces for the same outfit.  
+Attach: `Akihiko.png`  
+Save as: `skin-sk-akihiko-cp-festival-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a light grey striped yukata with a red obi, warm paper-lantern light. Hair: his own short silver hair. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+---
+
+## 14. Chibi sticker packs for texts (ChatGPT)
+Reaction stickers for the phone chats, in the same chibi style as the All-Out Attack chibis. Each pack is a 3 × 3 green sheet: nine stickers, one character, their own personality. The game cuts each sticker out.
+
+**[ ] 14A. Solar: sticker pack**  
+Calm, lowercase, a little dry, soft with her people.  
+Attach: `Stickers - style.png`, then `Solar.png`  
+Save as: `stickers-solar.png`
+```
+A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, in her black Gekkoukan uniform with the red bow and the red S.E.E.S. armband. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 a small calm wave; 2 a thumbs up with a tiny smile; 3 curled up under a blanket, face lit by her phone; 4 a side-eye over a mug of tea; 5 shouldering her naginata, ready to go; 6 making a heart with both hands; 7 a teary pout, hugging a pillow; 8 flustered, hiding her face behind her phone; 9 asleep with her earbuds in, little sleep bubbles.
+```
+
+**[ ] 14B. Junpei: sticker pack**  
+ALL CAPS hype, "NO TAKE BACKS", then a quiet "...ok".  
+Attach: `Stickers - style.png`, then `Junpei.png`  
+Save as: `stickers-junpei.png`
+```
+A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, his blue cap, the open uniform jacket and the blue shirt. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 both arms up, shouting with joy; 2 crying huge anime tears; 3 swinging a baseball bat, sparkles behind; 4 finger guns and a wink; 5 a facepalm; 6 pointing hard at the viewer, fired up; 7 hands pressed together, begging; 8 slurping a giant bowl of ramen; 9 a tiny embarrassed "..." face, cap pulled low.
+```
+
+**[ ] 14C. Yukari: sticker pack**  
+Teasing but caring: "i KNOW", "ok good".  
+Attach: `Stickers - style.png`, then `Yukari.png`  
+Save as: `stickers-yukari.png`
+```
+A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, her pink cardigan, the uniform and the choker. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 an eye roll, hands on hips; 2 a big pink heart held up; 3 an "ok good" thumbs up and a wink; 4 shooting a heart-tipped arrow from her bow; 5 a facepalm; 6 cheeks puffed, angry; 7 giggling behind one hand; 8 slumped over, exhausted; 9 holding up a cute pink rabbit plush, proud.
+```
+
+**[ ] 14D. Akihiko: sticker pack**  
+Short lowercase lines, training, "not a coach. just faster than you".  
+Attach: `Stickers - style.png`, then `Akihiko.png`  
+Save as: `stickers-akihiko.png`
+```
+A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, his red vest, the white shirt and his red boxing gloves. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 flexing one arm, confident; 2 jogging, holding up a stopwatch; 3 a straight punch with a red glove, speed lines; 4 chugging a protein shake; 5 a serious thumbs up; 6 about to eat a huge beef bowl, chopsticks ready; 7 determined, fire in his eyes; 8 a small rare smile and a nod; 9 asleep sitting up, a towel over his head.
+```
+
+**[ ] 14E. Mitsuru: sticker pack**  
+Formal and exact: "Good.", "I may hold you to that."  
+Attach: `Stickers - style.png`, then `Mitsuru.png`  
+Save as: `stickers-mitsuru.png`
+```
+A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, the clothes from the image. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 an elegant small nod; 2 one raised eyebrow; 3 sipping tea from a fine cup; 4 snapping her fingers, sparkles of ice; 5 holding a motorcycle helmet under one arm; 6 an approving small smile; 7 arms crossed, stern; 8 blushing and looking away; 9 reading a document, a single frost crystal on its corner.
+```
+
+**[ ] 14F. Fuuka: sticker pack**  
+Polite and sweet, lots of "!!", the cooking attempts and the ruler.  
+Attach: `Stickers - style.png`, then `Fuuka.png`  
+Save as: `stickers-fuuka.png`
+```
+A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, the clothes from the image. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 a polite bow, a sparkle of thanks; 2 holding a ruler over a pot, measuring; 3 a pot puffing black smoke, her face sooty; 4 wearing her navigation headset, pointing ahead; 5 both hands up, happy "!!" sparkles; 6 a sad ":(" face holding the ruler; 7 offering a bento box with both hands; 8 typing fast on a laptop; 9 holding out a bottle of water, worried.
+```
+
+**[ ] 14G. Haechan: sticker pack**  
+A tease: "liar", "i can hear it from here".  
+Attach: `Stickers - style.png`, then `Haechan.png`  
+Save as: `stickers-haechan.png`
+```
+A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, his usual clothes from the image. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 a smirk with his tongue out; 2 a squinting "liar" look, arms crossed; 3 laughing so hard he is bent over; 4 pointing at the viewer, grinning; 5 blowing a kiss; 6 a big dramatic pout; 7 spinning his two knives, cool; 8 eyes closed, vibing in headphones; 9 lying flat on the floor, dramatically defeated.
+```
+
+**[ ] 14H. Jungwon: sticker pack**  
+Dry and precise: "i was being thorough.", "...".  
+Attach: `Stickers - style.png`, then `Jungwon.png`  
+Save as: `stickers-jungwon.png`
+```
+A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, his usual clothes from the image. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 a deadpan stare with a "..." bubble; 2 checking a clipboard with a pen; 3 holding up a pencil case, unimpressed; 4 a small real smile; 5 one cheek puffed out; 6 one raised eyebrow; 7 asleep with his head on a desk; 8 a rapier salute; 9 a tiny thumbs up.
+```
+
+**[ ] 14I. Jihoon: sticker pack**  
+Grand and dramatic, Capital Letters, "Loyal Subject".  
+Attach: `Stickers - style.png`, then `Jihoon.png`  
+Save as: `stickers-jihoon.png`
+```
+A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, his usual clothes from the image. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 sitting on a little throne with a paper crown; 2 hugging an ice-cream tub like treasure; 3 clutching his heart, wounded; 4 singing into a microphone, sparkles; 5 pointing dramatically into the distance; 6 crying dramatically on his knees; 7 posing in sunglasses; 8 a finger to his lips, shushing; 9 a royal wave.
+```
+
+**[ ] 14J. Minji: sticker pack**  
+Quiet and practical, always filming, folders inside folders.  
+Attach: `Stickers - style.png`, then `Minji.png`  
+Save as: `stickers-minji.png`
+```
+A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big head, small body, thick dark outline, flat cel shading with glossy highlights, bright clean colours. Every sticker is the SAME character, the person in the SECOND attached image: same face, same hair, her usual clothes from the image. Each sticker has a thick white sticker border around the whole figure. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 snapping a film clapperboard; 2 framing the viewer with her fingers; 3 holding a video camera to her eye; 4 hugging a stack of folders; 5 adjusting a desk lamp; 6 thinking, one finger on her chin; 7 a calm small nod; 8 a deadpan sip from a drink; 9 eating popcorn, eyes wide.
+```
+
+**[ ] 14K. S.E.E.S. group chat: sticker pack**  
+For the S.E.E.S. group chat: the dorm together.  
+Attach: `Stickers - style.png`, then `Solar.png`, `Fuuka.png`, `Mitsuru.png`, `Aigis.png`, `Koromaru.png`  
+Save as: `stickers-sees.png`
+```
+A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big heads, small bodies, thick dark outlines, flat cel shading with glossy highlights, bright clean colours. The characters are the members of the Persona 3 dorm: Solar (the girl with very long straight black hair in the second attached image), Fuuka, Mitsuru, Aigis and Koromaru (the other attached images), Yukari, Junpei and Akihiko (as in the first image), Ken and Shinjiro, each with their own face, hair and clothes. Each sticker has a thick white sticker border around the whole group. Same size and framing in every cell. No text, no letters, no numbers, no words in any speech bubble. Cells, left to right, top to bottom: 1 everyone piled into a group hug; 2 Koromaru holding up one paw, proud; 3 Junpei and Akihiko arm-wrestling, sweat flying; 4 Yukari, Junpei and Fuuka asleep on one sofa; 5 Mitsuru and Fuuka sharing tea; 6 Aigis waving stiffly; 7 Ken and Koromaru saluting; 8 Solar and Yukari taking a selfie, peace signs; 9 Shinjiro stirring a big pot, steam rising.
+```
+
+---
+
+## 15. Photo booth: purikura (Gemini for frames and stamps, ChatGPT for poses)
+A photo booth at the mall: Solar picks a partner, a frame and poses, and the strip goes into her Album. Frames and stamps have no people, so they're Gemini; the pose sheets are ChatGPT. Every pose sheet is waist up and facing the camera, so two people fit side by side in a frame (Solar on the left, her partner on the right).
+
+**[ ] 15A. Photo booth frames, part 1**  
+Four everyday frames for the booth.  
+Attach: `UI - style (pink cover).png`  
+Save as: `booth-frames-1.png`
+```
+Using the attached image only as a reference for its colours and graphic style (black, deep plum, hot pink, pale pink and white), create a 2 × 2 sheet of four cute Japanese purikura photo-booth frames on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Each frame is an upright 3:4 rectangle: a thick decorative border with a big EMPTY window in the middle filled with the same flat pure green, wide enough for two people side by side from the waist up. Sparkly and cute, crisp clean edges, flat graphic shapes. No people, no text, no letters, no numbers. Frame 1 (top left): hot-pink hearts and small white sparkles on black. Frame 2 (top right): pink and white stars with a dotted pale pink border. Frame 3 (bottom left): a black lace border with pink ribbon bows in the corners. Frame 4 (bottom right): a sun in the top left corner and a crescent moon in the bottom right, pink rays around a black border.
+```
+
+**[ ] 15B. Photo booth frames, part 2**  
+Four seasonal frames.  
+Attach: `UI - style (pink cover).png`  
+Save as: `booth-frames-2.png`
+```
+Using the attached image only as a reference for its colours and graphic style (black, deep plum, hot pink, pale pink and white), create a 2 × 2 sheet of four cute Japanese purikura photo-booth frames on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Each frame is an upright 3:4 rectangle: a thick decorative border with a big EMPTY window in the middle filled with the same flat pure green, wide enough for two people side by side from the waist up. Sparkly and cute, crisp clean edges, flat graphic shapes. No people, no text, no letters, no numbers. Frame 1 (top left): cherry blossoms and petals (spring). Frame 2 (top right): pink seashells, little waves and fireworks (summer). Frame 3 (bottom left): small bats, pink pumpkins and a crescent moon (autumn, Halloween). Frame 4 (bottom right): snowflakes, pink fairy lights and a ribbon at the top (winter).
+```
+
+**[ ] 15C. Photo booth stamps**  
+Little stamps to stick on the photo.  
+Attach: `UI - style (pink cover).png`  
+Save as: `booth-stamps.png`
+```
+Using the attached image only as a reference for its colours and graphic style (black, deep plum, hot pink, pale pink and white), create a 3 × 3 sheet of nine cute purikura stamps on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Each stamp is a bold flat sticker with a thin white border. Same size in every cell. No people, no text, no letters, no numbers. Cells, left to right, top to bottom: 1 a cluster of sparkles; 2 a puffy pink heart; 3 a small gold-and-pink crown; 4 pink cat ears (a headband shape); 5 white bunny ears (a headband shape); 6 two pink blush ovals with little lines; 7 a blank pink speech bubble; 8 a smiling sun; 9 a sleepy crescent moon.
+```
+
+**[ ] 15D. Solar: photo booth poses**  
+Solar stands on the left of the frame.  
+Attach: `Solar.png`  
+Save as: `booth-solar-poses.png`
+```
+Photo-booth pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached image in all six cells, from the waist up, facing the camera, same face, same hair and the clothes from the attached image, same size and framing in every cell, nothing overlapping. Bright, flattering photo-booth light, a little sparkle in the eyes. Cell 1: a peace sign by her cheek, a big smile. Cell 2: leaning a little to her left, both arms curved to make the LEFT half of a big heart (her partner makes the other half). Cell 3: squishing her own cheeks with both hands, lips puckered. Cell 4: a finger heart held up, a wink. Cell 5: cat paws by her face, a playful look. Cell 6: pointing at the camera, laughing. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
+```
+
+**[ ] 15E. Haechan: photo booth poses**  
+Haechan on the right of the frame.  
+Attach: `Haechan.png`  
+Save as: `booth-haechan-poses.png`
+```
+Photo-booth pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached image in all six cells, from the waist up, facing the camera, same face, same hair and the clothes from the attached image, same size and framing in every cell, nothing overlapping. Bright, flattering photo-booth light, a little sparkle in the eyes. Cell 1: a peace sign, tongue out. Cell 2: leaning a little to his right, both arms curved to make the RIGHT half of a big heart. Cell 3: puffing out his cheeks, eyes wide. Cell 4: pointing at the person beside him (off to the left), grinning. Cell 5: a finger heart and a wink. Cell 6: pretending to bite the air, playful. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
+```
+
+**[ ] 15F. Jungwon: photo booth poses**  
+Jungwon on the right of the frame.  
+Attach: `Jungwon.png`  
+Save as: `booth-jungwon-poses.png`
+```
+Photo-booth pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached image in all six cells, from the waist up, facing the camera, same face, same hair and the clothes from the attached image, same size and framing in every cell, nothing overlapping. Bright, flattering photo-booth light, a little sparkle in the eyes. Cell 1: a small shy peace sign. Cell 2: leaning a little to his right, both arms curved to make the RIGHT half of a big heart, a little embarrassed. Cell 3: one cheek puffed out. Cell 4: a finger heart, serious face. Cell 5: chin on his fist, a slight smile. Cell 6: laughing, eyes closed. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
+```
+
+**[ ] 15G. Akihiko: photo booth poses**  
+Akihiko on the right of the frame.  
+Attach: `Akihiko.png`  
+Save as: `booth-akihiko-poses.png`
+```
+Photo-booth pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached image in all six cells, from the waist up, facing the camera, same face, same hair and the clothes from the attached image, same size and framing in every cell, nothing overlapping. Bright, flattering photo-booth light, a little sparkle in the eyes. Cell 1: a stiff peace sign, not sure about this. Cell 2: leaning a little to his right, both arms curved to make the RIGHT half of a big heart. Cell 3: a flexing pose, a confident grin. Cell 4: a fist held up toward the camera like a fist bump. Cell 5: flustered, rubbing the back of his neck. Cell 6: a real laugh. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
+```
+
+**[ ] 15H. Yukari: photo booth poses**  
+Yukari on the right of the frame (a friends strip).  
+Attach: `Yukari.png`  
+Save as: `booth-yukari-poses.png`
+```
+Photo-booth pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached image in all six cells, from the waist up, facing the camera, same face, same hair and the clothes from the attached image, same size and framing in every cell, nothing overlapping. Bright, flattering photo-booth light, a little sparkle in the eyes. Cell 1: a peace sign by her cheek, a wink. Cell 2: leaning a little to her right, both arms curved to make the RIGHT half of a big heart. Cell 3: squishing her own cheeks, laughing. Cell 4: bunny ears with two fingers above her head. Cell 5: a pout and a hand on her hip. Cell 6: blowing a kiss. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
+```
+
+**[ ] 15I. Hanni: photo booth poses**  
+Hanni on the right of the frame (a friends strip).  
+Attach: `Hanni.png`  
+Save as: `booth-hanni-poses.png`
+```
+Photo-booth pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached image in all six cells, from the waist up, facing the camera, same face, same hair and the clothes from the attached image, same size and framing in every cell, nothing overlapping. Bright, flattering photo-booth light, a little sparkle in the eyes. Cell 1: a peace sign, a big bright smile. Cell 2: leaning a little to her right, both arms curved to make the RIGHT half of a big heart. Cell 3: cheeks puffed out. Cell 4: cat paws by her face. Cell 5: a surprised "oh!" face. Cell 6: giggling, hand over her mouth. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
+```
+
+**[ ] 15J. Hyein: photo booth poses**  
+Hyein on the right of the frame (a friends strip).  
+Attach: `Hyein.png`  
+Save as: `booth-hyein-poses.png`
+```
+Photo-booth pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached image in all six cells, from the waist up, facing the camera, same face, same hair and the clothes from the attached image, same size and framing in every cell, nothing overlapping. Bright, flattering photo-booth light, a little sparkle in the eyes. Cell 1: a small peace sign, a cool look. Cell 2: leaning a little to her right, both arms curved to make the RIGHT half of a big heart. Cell 3: squishing her own cheeks. Cell 4: a finger heart. Cell 5: a sleepy yawn. Cell 6: a big laugh. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
+```
+
+---
+
+## 16. Seasonal looks for S.E.E.S. (ChatGPT)
+Face sheets for the summer uniform and a winter coat, so the faces in scenes change with the season. Same format as the hanami sheets. Aigis keeps her look all year (she doesn't change clothes), and Shinjiro wears his long coat in every season, so they have none.
+
+**[ ] 16A. Solar: summer uniform**  
+Solar's face in summer scenes.  
+Attach: `Solar.png`  
+Save as: `Solar-summer-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a short-sleeved white summer school blouse with a red bow, the red S.E.E.S. armband on her left sleeve, white earbuds around her neck. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 16B. Solar: winter coat**  
+Solar's face in winter scenes outdoors.  
+Attach: `Solar.png`  
+Save as: `Solar-winter-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black wool pea coat over her uniform with the red bow showing at the collar, a pink-and-black checked scarf, the red S.E.E.S. armband on the coat's left sleeve. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 16C. Yukari: summer uniform**  
+Yukari's face in summer scenes.  
+Attach: `Yukari.png`  
+Save as: `Yukari-summer-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a short-sleeved white summer school blouse with a red bow, a thin pink cardigan tied around her shoulders, her choker. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 16D. Yukari: winter coat**  
+Yukari's face in winter scenes outdoors.  
+Attach: `Yukari.png`  
+Save as: `Yukari-winter-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a pink duffel coat with toggle buttons, a white knit scarf, white earmuffs. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 16E. Junpei: summer uniform**  
+Junpei's face in summer scenes.  
+Attach: `Junpei.png`  
+Save as: `Junpei-summer-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: his blue cap, a short-sleeved white summer school shirt worn open over a blue tee, a chain necklace. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 16F. Junpei: winter coat**  
+Junpei's face in winter scenes outdoors.  
+Attach: `Junpei.png`  
+Save as: `Junpei-winter-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: his blue cap, a dark puffer jacket with the collar up, a striped knit scarf. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 16G. Akihiko: summer uniform**  
+Akihiko's face in summer scenes.  
+Attach: `Akihiko.png`  
+Save as: `Akihiko-summer-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a short-sleeved white summer school shirt with the collar open, a red sweater vest. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 16H. Akihiko: winter coat**  
+Akihiko's face in winter scenes outdoors.  
+Attach: `Akihiko.png`  
+Save as: `Akihiko-winter-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a charcoal pea coat with the collar up, a red knit scarf. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 16I. Mitsuru: summer uniform**  
+Mitsuru's face in summer scenes.  
+Attach: `Mitsuru.png`  
+Save as: `Mitsuru-summer-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a short-sleeved white summer school blouse with a red ribbon and a slim gold brooch. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 16J. Mitsuru: winter coat**  
+Mitsuru's face in winter scenes outdoors.  
+Attach: `Mitsuru.png`  
+Save as: `Mitsuru-winter-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a long white wool coat with a fur collar, black leather gloves, a red scarf pin. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 16K. Fuuka: summer uniform**  
+Fuuka's face in summer scenes.  
+Attach: `Fuuka.png`  
+Save as: `Fuuka-summer-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a short-sleeved white summer school blouse with a red ribbon and a small hair clip. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 16L. Fuuka: winter coat**  
+Fuuka's face in winter scenes outdoors.  
+Attach: `Fuuka.png`  
+Save as: `Fuuka-winter-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a mint-green duffel coat, a cream knit scarf, white earmuffs. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 16M. Ken: summer uniform**  
+Ken's face in summer scenes.  
+Attach: `Ken.png`  
+Save as: `Ken-summer-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a short-sleeved white middle-school shirt with a small ribbon tie, an orange wristband. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 16N. Ken: winter coat**  
+Ken's face in winter scenes outdoors.  
+Attach: `Ken.png`  
+Save as: `Ken-winter-sheet.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: an orange puffer jacket over his blazer, a grey knit scarf. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+---
+
+## 17. Climb bosses (ChatGPT)
+The New Game+ climb's three block guardians and the superboss at the top still borrow other Shadows' pictures (the guardians are the memory-floor bosses made bigger; the superboss is the Wild Beast, a lion, tinted gold). Each gets its own pose sheet, like the full-moon boss sheets.
+
+**[ ] 17A. The Last Song (Raqia guardian)**  
+The guardian of the Syracuse block (255–300F): a college party that never ends.  
+Attach: `Shadow - boss sheet style.png`, then `Shadow - The First Party.png`  
+Save as: `guard-raqia-attack.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. Use the FIRST attached image only for the format: one boss monster, six poses, the same size in every cell. The SECOND attached image is a smaller Shadow from the same place: keep its colours and materials so they look related. Draw a NEW, bigger and grander Persona 3 Shadow: a towering party monster whose body is a stack of black loudspeakers, a glittering disco ball for a heart, strings of fairy lights and red party cups wound around its arms like a mane, a long scarf of confetti trailing behind it, a black liquid body leaking through the gaps. It wears the iconic blue Persona 3 Shadow mask. The SAME monster in all six cells, same design, colors, size and lighting, nothing overlapping. Cell 1: idle, hovering menacingly. Cell 2: winding up, gathering power. Cell 3: lunging forward to attack. Cell 4: casting a spell, surrounded by fire and swirling confetti effects. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 17B. The Spring Tide (Zebul guardian)**  
+The guardian of the Incheon block (301–350F): the harbor's highest water.  
+Attach: `Shadow - boss sheet style.png`, then `Shadow - The Tide.png`  
+Save as: `guard-zebul-attack.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. Use the FIRST attached image only for the format: one boss monster, six poses, the same size in every cell. The SECOND attached image is a smaller Shadow from the same place: keep its colours and materials so they look related. Draw a NEW, bigger and grander Persona 3 Shadow: a hunched giant made of a standing wall of black seawater, harbor lights glowing deep inside it, a small sunken fishing boat caught in its chest, mooring ropes and red buoys tangled around its arms, mud and shells dripping from its hands. It wears the iconic blue Persona 3 Shadow mask. The SAME monster in all six cells, same design, colors, size and lighting, nothing overlapping. Cell 1: idle, hovering menacingly. Cell 2: winding up, gathering power. Cell 3: lunging forward to attack. Cell 4: casting a spell, surrounded by freezing seawater and ice effects. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 17C. The Landslide (Araboth guardian)**  
+The guardian of the Hanlim block (351–399F): a school election that buries everyone.  
+Attach: `Shadow - boss sheet style.png`, then `Shadow - The Ballot Box.png`  
+Save as: `guard-araboth-attack.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. Use the FIRST attached image only for the format: one boss monster, six poses, the same size in every cell. The SECOND attached image is a smaller Shadow from the same place: keep its colours and materials so they look related. Draw a NEW, bigger and grander Persona 3 Shadow: a giant made of thousands of folded white ballot papers pouring down its body like a landslide, a huge ballot box for a chest with a slot for a mouth, a wooden gavel for one hand, campaign rosettes and torn posters pinned across it, a school bell hanging at its neck. It wears the iconic blue Persona 3 Shadow mask. The SAME monster in all six cells, same design, colors, size and lighting, nothing overlapping. Cell 1: idle, hovering menacingly. Cell 2: winding up, gathering power. Cell 3: lunging forward to attack. Cell 4: casting a spell, surrounded by crackling lightning and fire effects. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 17D. Horangi (the Zenith)**  
+The superboss at 400F: the tiger from the Korean folk tale of the sun and the moon.  
+Attach: `Shadow - boss sheet style.png`  
+Save as: `super-tiger-attack.png`
+```
+Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. Use the FIRST attached image only for the format: one boss monster, six poses, the same size in every cell. Draw a NEW, bigger and grander Persona 3 Shadow: a huge tiger drawn like a Korean folk painting (minhwa): a black liquid body with bold gold and burnt-orange stripes, round staring eyes, a wide grin of white teeth, a frayed straw rope hanging from one paw, a pale sun and a pale moon floating behind its shoulders. It wears the iconic blue Persona 3 Shadow mask. The SAME monster in all six cells, same design, colors, size and lighting, nothing overlapping. Cell 1: idle, hovering menacingly. Cell 2: winding up, gathering power. Cell 3: lunging forward to attack. Cell 4: casting a spell, surrounded by blinding white-and-black almighty energy effects. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Persona 3 Reload official art style. No text.
+```
+
+---
+
+## 18. Ending credits stills (ChatGPT)
+Quiet "after" pictures that play during the credits, one per person or group. No big moments: just their lives going on, with a small trace of Solar in each (a photo-booth strip, her scarf, a second cup). Nothing that gives away which ending it was.
+
+**[ ] 18A. Credits: the dorm lounge**  
+S.E.E.S. together on an ordinary night.  
+Attach: `CG - style.png`, `CG - Yukari.png`, `CG - Junpei.png`, `CG - Fuuka.png`  
+Save as: `credits-sees.png`
+```
+Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The other attached images are, in order, Yukari, Junpei and Fuuka: use them only for their faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
+
+The dorm lounge late at night, lamps low. Yukari is asleep on the sofa under a blanket, Junpei asleep sitting up beside her with his cap over his face, Fuuka tucking the blanket in with a small smile. On the table, a game controller, three cups and a purikura photo strip with a girl with very long black hair in it. Warm amber light.
+```
+
+**[ ] 18B. Credits: Akihiko**  
+His morning run.  
+Attach: `CG - style.png`, `CG - Akihiko.png`  
+Save as: `credits-akihiko.png`
+```
+Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The other attached image is Akihiko: use it only for the face and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
+
+Early morning by a river, mist on the water. Akihiko stops on the path in his running gear, a towel around his neck, looking back over his shoulder as if waiting for someone to catch up. Two water bottles on the bench beside him. Pale blue dawn light.
+```
+
+**[ ] 18C. Credits: Mitsuru**  
+At the harbor on her motorcycle.  
+Attach: `CG - style.png`, `CG - Mitsuru.png`  
+Save as: `credits-mitsuru.png`
+```
+Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The other attached image is Mitsuru: use it only for the face and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
+
+A harbor road at sunset. Mitsuru sits on her parked motorcycle, helmet on her knee, looking at the sea. A second helmet, a smaller pink one, hangs from the handlebar. Deep red and gold light.
+```
+
+**[ ] 18D. Credits: Aigis and Koromaru**  
+The dorm roof at dawn.  
+Attach: `CG - style.png`, `CG - Aigis.png`, `CG - Koromaru.png`  
+Save as: `credits-aigis.png`
+```
+Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The other attached images are, in order, Aigis and Koromaru: use them only for their faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
+
+The dorm rooftop at dawn. Aigis sits on the edge of a bench watching the sunrise, Koromaru curled up beside her, her hand resting on his back. A pink knit scarf is folded on the bench next to them. Soft pink sunrise light.
+```
+
+**[ ] 18E. Credits: Ken**  
+The shrine steps.  
+Attach: `CG - style.png`, `CG - Ken.png`, `CG - Koromaru.png`  
+Save as: `credits-ken.png`
+```
+Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The other attached images are, in order, Ken and Koromaru: use them only for their faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
+
+The stone steps of a small neighbourhood shrine in the afternoon. Ken sits halfway up with a spear-shaped stick across his knees, Koromaru beside him, both watching the street below. A paper fortune is tied to the rope behind them. Warm green-gold afternoon light.
+```
+
+**[ ] 18F. Credits: Shinjiro**  
+Cooking for two.  
+Attach: `CG - style.png`, `CG - Shinjiro.png`  
+Save as: `credits-shinjiro.png`
+```
+Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The other attached image is Shinjiro: use it only for the face and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
+
+The dorm kitchen at night. Shinjiro, sleeves rolled up and beanie on, sets two bowls of steaming food on the counter, one of them pushed a little toward the empty stool. Steam in the light of one hanging lamp. Warm orange light.
+```
+
+**[ ] 18G. Credits: Haechan**  
+The college rooftop in the snow.  
+Attach: `CG - style.png`, `CG - Haechan.png`  
+Save as: `credits-haechan.png`
+```
+Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The other attached image is Haechan: use it only for the face and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
+
+A college dorm rooftop at night with snow on the railing and campus lights below. Haechan sits against the wall with a guitar across his lap, not playing, two cans of drink beside him, one unopened. He is smiling at something on his phone. Cold blue light with one warm window behind him.
+```
+
+**[ ] 18H. Credits: Jungwon**  
+The council room after hours.  
+Attach: `CG - style.png`, `CG - Jungwon.png`  
+Save as: `credits-jungwon.png`
+```
+Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The other attached image is Jungwon: use it only for the face and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
+
+A high school student council room after hours. Jungwon sits alone at the long table with papers stacked neatly, a pen in his hand, looking at the chair across from him where a pencil case and a cup of tea are waiting. Late golden light through the blinds.
+```
+
+**[ ] 18I. Credits: Jihoon and Minji**  
+A show and a camera.  
+Attach: `CG - style.png`, `CG - Jihoon.png`, `CG - Minji.png`  
+Save as: `credits-jihoon-minji.png`
+```
+Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The other attached images are, in order, Jihoon and Minji: use them only for their faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
+
+A small stage in a café at night. Jihoon sings into a microphone with his eyes closed; Minji films him from the front row with a camera on a small rig, smiling behind it. On her table, a folder with a photo-booth strip clipped to it. Pink and violet stage light.
+```
+
+**[ ] 18J. Credits: Hanni and Hyein**  
+Their room on a lazy afternoon.  
+Attach: `CG - style.png`, `CG - Hanni.png`, `CG - Hyein.png`  
+Save as: `credits-hanni-hyein.png`
+```
+Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The other attached images are, in order, Hanni and Hyein: use them only for their faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
+
+A cosy dorm room in the afternoon. Hanni and Hyein lie on the floor on cushions, heads together, scrolling through photos on one phone and laughing. Photo strips and polaroids are taped to the wall above them. Soft pink afternoon light.
+```
+
+**[ ] 18K. Credits: Kat and Ethan**  
+A walk home.  
+Attach: `CG - style.png`, `CG - Kat.png`, `CG - Ethan.png`  
+Save as: `credits-kat-ethan.png`
+```
+Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The other attached images are, in order, Kat and Ethan: use them only for their faces and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
+
+A quiet city street in the evening. Kat and Ethan walk home side by side, her arm through his, sharing one umbrella though it has stopped raining. Shop lights reflected on the wet street. Soft rose and grey light.
+```
+
+**[ ] 18L. Credits: Solar**  
+The last still.  
+Attach: `CG - style.png`, `CG - Solar.png`  
+Save as: `credits-solar.png`
+```
+Create a NEW illustration that matches the art style of the FIRST attached image exactly: same line weight, flat cel shading with hard-edged shadows, same face style and proportions, soft quiet lighting with one dominant color. The other attached image is Solar: use it only for the face and hair. 16:9, high resolution, Persona 3 Reload event CG, cinematic composition, a calm, wistful mood, no readable text.
+
+A train station platform at sunrise. Solar stands alone at the edge of the platform in a black wool coat and a pink scarf, hands in her pockets, her very long straight black hair moving in the wind, looking toward the sun as it comes up over the city. Her face is calm. Gold and pink sunrise light.
+```
+
+---
+
+## 19. Solar skin series (pick a theme)
+Kat hasn't picked a theme for Solar's next skin series. Four ideas, three or four looks each. Pick one (or mix) and Claude writes the full prompts.
+
+**A. Magical Girl Solstice** (transformation looks, sun and moon)
+- **Sunrise Form:** a white-and-pink sailor-collar dress with a gold sun brooch and ribbon wings at the back; hair in two long high twin tails with pink tips and sun-shaped clips.
+- **Moonlight Form:** a black-and-silver version with a crescent tiara and a sheer star-printed cape; hair in a single long braid threaded with silver ribbon.
+- **Eclipse Form:** the final form, black and hot pink with a corona-shaped collar; hair loose, waist-length, with a pink ombré that glows at the ends.
+- **Off-Duty Disguise:** her everyday look with a plush mascot on her shoulder and a compact mirror on a chain; hair in a messy bun with one pink streak.
+
+**B. Tarot Arcana** (one arcana per look, fits the Velvet Room)
+- **The Sun:** a gold-and-white gown with a sunburst halo collar; hair in a crown braid with tiny gold flowers.
+- **The Moon:** a deep midnight-blue slip dress with a sheer veil and moon-phase jewellery; hair long and loose with silver tinsel strands.
+- **The Star:** a sheer pale pink layered dress covered in tiny stars, barefoot; hair in a high ponytail with pastel pink and silver streaks.
+- **The Lovers:** a red-and-black corset dress with a heart-shaped locket and rose vines; hair in soft Hollywood waves pinned to one side with a red rose.
+
+**C. Midnight Chapel** (gothic)
+- **Black Rose:** a gothic lolita dress with lace, a rose corsage and a tiny top hat; hair in ringlet pigtails with black bows.
+- **Cathedral Veil:** a long black lace gown with a cathedral-length veil and a rosary-style pink bead belt; hair in a sleek low bun under the veil.
+- **Vampire Ball:** a red velvet off-shoulder gown with a high collar cape; hair in a dramatic half-up updo with a deep red streak.
+- **Graveyard Picnic:** a black pinafore dress with pink cross-stitch, a parasol and a picnic basket; hair in two fluffy space buns with pink ribbons.
+
+**D. Wildflower Cottage** (cottagecore)
+- **Meadow Picnic:** a puff-sleeved floral prairie dress with a straw basket; hair in two loose braids woven with little wildflowers.
+- **Bakery Morning:** a pink gingham apron over a cream blouse, flour on her cheek; hair in a messy bun with a pink kerchief.
+- **Rainy Greenhouse:** a cream knit cardigan, rain boots and a clear umbrella; hair half-up with a butterfly clip and pink sun-kissed ends.
+- **Harvest Festival:** a corset-laced bodice over a long tiered skirt with a flower crown; hair in a long waterfall braid.
