@@ -2180,6 +2180,77 @@ window.FemcGame = (() => {
     return new Set((S.phone.threads[id] || []).filter(m => m.from !== 'solar').map(m => m.from)).size > 1;
   }
 
+  /* ── Life sim, Nov 1 2026 (Kat-approved): the phone's Who's Free and Contacts apps, ordinary-day invites, the morning
+     commute, gift notes, rank signposts. State: S.life = { inv, booked, ignored, lastInv, sadDue, commute, gifts }.
+     Contact data: data/living-contacts-*.js FEMC_GAME_CONTACTS[id] = { birthday ('M/D'), food, hobbies (each a string,
+     or { t, rank } shown from the rank where a scene establishes it), learned: { 2: 'line' | { t, romance }, 4: …, … } } (a learned line shows once the
+     rank is >= its key; `romance` replaces `t` on their romance route). Every field is optional; nothing is invented.
+     Ordinary-day invites: a link's dayInvite: { ask: [], ok: [], no: [], sad: [] } (FEMC_GAME_LINK_EXTRAS, same files). ── */
+  const life = () => {
+    const L = (S.life ||= {});
+    if (typeof L.ignored !== 'number') L.ignored = 0;
+    if (typeof L.lastInv !== 'number') L.lastInv = -9;
+    if (!L.gifts || typeof L.gifts !== 'object') L.gifts = {};
+    return L;
+  };
+  const homeSlot = (l, d = S.day) => (homeOf(l, d).slot === 'evening' ? 'evening' : 'after');
+  const lifePick = (arr, n) => (arr && arr.length ? arr[Math.floor(seeded(n) * arr.length) % arr.length] : '');
+  const goneLink = (l, d = S.day) => !!((l.closes && d >= dayOf(l.closes) && !stretchOn(l, d)) || (progress(l.id).rank >= 10 && leavesAtMax(l) && l.closes && d > dayOf(l.closes)));
+  // A story beat today (a dated story event, a full-moon operation, or a link's story rank on its date): no ordinary invites.
+  function storyDay(d = S.day) {
+    const md = mdOf(d);
+    if (D.events.some(e => e.date === md && (!e.flag || flag(e.flag)))) return true;
+    if (D.cal.ops.some(o => o.date === md)) return true;
+    return Object.values(LINKS).some(l => { const p = progress(l.id), n = l.ranks?.[p.rank]; return l.forced?.includes(p.rank + 1) && n?.after === md; });
+  }
+  /* Rank signposts (P5X-style): what time with them does right now. { key, label, note }:
+     'ready' (their next rank scene can play), 'fill' (a hangout fills a short meter; 'ready' once banked ♪ cover it),
+     'opens' (the next rank opens on a date: time together still banks ♪), 'story' (waits on the story: never says which),
+     'quiet' (rank 10+ waiting: nothing new for now, no ♪), 'max', 'gone', 'reversed'. */
+  function rankHint(l, d = S.day) {
+    if (!l || !isMet(l.id)) return null;
+    const p = progress(l.id), r = p.rank || 0, next = l.ranks?.[r];
+    if (isMaxed(l, p) || (r >= 10 && !next?.scene)) return { key: 'max', label: 'MAX', note: 'Your bond is at its fullest.' };
+    if (goneLink(l, d)) return { key: 'gone', label: 'Gone', note: 'They’ve gone for now.' };
+    if (p.reversed) return { key: 'reversed', label: 'Reversed', note: 'Time together can mend it.' };
+    if (r >= 10 && afterGap(l, d)) {
+      const date = next?.after && d < dayOf(next.after) && !l.forced?.includes(r + 1) ? next.after : null;
+      return { key: 'quiet', label: date ? `Next rank opens ${date}` : 'Waits on the story', note: 'Nothing new for now: time together won’t add ♪ until the next rank opens.' };
+    }
+    if (!next?.scene) return { key: 'none', label: '', note: '' };
+    const banks = 'Time together still banks ♪ for later.';
+    if (l.forced?.includes(r + 1) || (next.gate && !fragGateMet(next.gate)) || (l.storyEvents && !l.storyEvents.every(id => S.events.includes(id))))
+      return { key: 'story', label: 'Waits on the story', note: (l.hangouts || []).length && r > 0 ? banks : '' };
+    if (next.after && d < dayOf(next.after)) return { key: 'opens', label: `Next rank opens ${next.after}`, note: banks };
+    if (p.ready === r && r > 0 && (p.xp || 0) < need(l, r)) return { key: 'fill', label: 'Meter filling', note: 'A hangout fills the meter toward the next rank.' };
+    return { key: 'ready', label: 'Rank up ready', note: '' };
+  }
+  /* Who's free (the phone app): today and the next few days, met links at their spot in their slot. Unmet people, secret links
+     not yet found, story-only links and story ranks are never listed. rows[] = { link, slot, area, spot, now, spent, hint }. */
+  function whoFree(n = 4, d0 = S.day) {
+    const last = dayOf(D.cal.end), out = [];
+    const met = Object.values(LINKS).filter(l => isMet(l.id) && !l.storyOnly && !l.hidden && l.status !== 'stub' && !(l.secret && !flag(l.secret.flag)));
+    for (let d = d0; d < d0 + n && d <= last; d += 1) {
+      const info = dayInfo(d), rows = [];
+      if (info.type === 'trip' || info.type === 'prologue') { out.push({ d, info, rows, away: info.type === 'trip' }); continue; }
+      const slots = slotsFor(info).filter(s => s === 'after' || s === 'evening');
+      met.forEach(l => slots.forEach(slot => {
+        if (slot === 'evening' && info.moon.full) return;
+        if (homeSlot(l, d) !== slot) return;
+        const st = linkStatus(l, d, slot);
+        const spent = d === S.day && st.reason === 'spent' && atHome(l, d, slot);
+        if (!st.ok && !spent) return;
+        const h = homeOf(l, d), a = areaById(h.area);
+        if (a && slot === 'after' && a.schoolOnly && info.type !== 'school') return;
+        rows.push({ link: l, slot, area: a ? a.id : null, areaName: a ? a.name : (h.area || ''), spot: h.spot || '', now: d === S.day && slot === S.slot, past: d === S.day && SLOT_ORDER.indexOf(slot) < SLOT_ORDER.indexOf(S.slot), spent, after: !!st.after, hint: rankHint(l, d) });
+      }));
+      rows.sort((a, b) => (a.slot === b.slot ? 0 : a.slot === 'after' ? -1 : 1) || a.link.short.localeCompare(b.link.short));
+      out.push({ d, info, rows });
+    }
+    return out;
+  }
+  const goneLinks = () => Object.values(LINKS).filter(l => isMet(l.id) && !l.storyOnly && !l.hidden && goneLink(l));
+
   /* ── Time ── */
   function freeSlotSpent(slot = S.slot) { return !!S.spent[`${S.day}-${slot}`]; }
   // Moves to the next time slot (or the next day). Returns { newDay }.
@@ -2481,6 +2552,7 @@ window.FemcGame = (() => {
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
     deliverTexts, replyText, textById, answerInvite, gift, bond,
+    rankHint, whoFree, goneLinks, storyDay,
     holidayInvites, sendHolidayInvites, holidayDue, acceptHoliday, finishHoliday, declineHolidays,
     lateNightDue, finishLateNight, tripPlan, finishTrip, unread, markAllRead, isGroupThread, freeSlotSpent, nextSlot, sleep,
     available, navigator, tartarusOk, floorCap, makeHandoff, readHandoff, clearHandoff, finishHandoff, simulate, applyResult,

@@ -1637,12 +1637,14 @@
   function openPhone(thread) {
     const s = S();
     let goLink = null; // an invitation said yes to: the hangout starts when the phone closes
+    let goArea = null; // Who's Free: a row for right now jumps to Go Out with that area open when the phone closes
     const anim = { token: 0, skip: null, timer: null };
     const o = overlay(`<div class="g-phone"><div class="g-ph-top"><button type="button" class="g-ph-back" aria-label="Back">‹</button><b>Messages</b><button type="button" data-close aria-label="Close">✕</button></div>
       <div class="g-ph-bar"></div><div class="g-ph-body" aria-live="polite"></div>
       <div class="g-ph-compose" hidden aria-hidden="true"><p class="g-ph-draft"></p><span class="g-ph-send">↑</span></div><div class="g-ph-reply"></div></div>`, 'g-phone-ov', () => {
       stop();
       if (goLink) { const l = goLink; goLink = null; setTimeout(() => playLink(l), 0); }
+      else if (goArea) { const g = goArea; goArea = null; setTimeout(() => (g.area === 'dorm' ? evening(G.dayInfo()) : goOut(g.slot, g.area)), 0); }
     });
     // A phone case from the capsule machine (gacha.js; game.css .g-phone-ov[data-case]).
     const pcase = window.FemcGacha?.phoneCase(); if (pcase) o.el.dataset.case = pcase;
@@ -1652,6 +1654,38 @@
     const stop = () => { anim.token += 1; clearTimeout(anim.timer); anim.skip = null; o.el.classList.remove('g-ph-playing'); };
     const focusIn = el => setTimeout(() => el?.isConnected && el.focus({ preventScroll: true }), 40);
     const pending = id => !!(s.phone.pending[id] && G.textById(s.phone.pending[id])) || s.phone.invite?.link === id;
+    /* The phone's apps (2026-11-01): Messages and Who's Free (P5X-style: who's at their spot today and the next few days),
+       more apps to come. The tab strip sits at the top of each list. */
+    let tab = 'msgs';
+    const tabsHtml = () => `<nav class="g-ph-tabs" aria-label="Phone apps">${[['msgs', 'Messages'], ['free', 'Who’s free']].map(([k, t]) => `<button type="button" data-tab="${k}"${tab === k ? ' class="on" aria-current="page"' : ''}>${t}</button>`).join('')}</nav>`;
+    const wireTabs = () => body.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { if (b.dataset.tab === tab) return; tab = b.dataset.tab; G.sfx('femc-click'); home(); focusIn(body.querySelector(`[data-tab="${tab}"]`)); }));
+    const home = () => (tab === 'free' ? freeApp() : list());
+    const face = id => { const pic = G.portrait(id, 'neutral'); return `<i>${pic ? `<img src="${pic}" alt="">` : esc((G.LINKS[id]?.short || '?')[0])}</i>`; };
+    const rkChip = l => { const p = G.progress(l.id); return `<em class="g-ph-rk">${G.isMaxed(l) ? 'MAX' : `R${p.rank}`}${p.route === 'romance' ? ' <span class="g-ph-heart" aria-label="romance">♥</span>' : ''}</em>`; };
+    const hintChip = h => (h && h.label && h.key !== 'max' ? `<small class="g-ph-hint k-${h.key}">${esc(h.label)}</small>` : '');
+    const atFree = () => /\bis-(map|city|area|dorm)\b/.test(main.className) && !document.querySelector('.gs:not(.out)');
+    const slotWord = (slot, info) => (slot === 'evening' ? 'Evening' : info.type === 'school' || info.type === 'exam' ? 'After school' : 'Daytime');
+    const freeApp = () => {
+      stop();
+      title.textContent = 'Who’s free'; back.hidden = true; reply.replaceChildren(); compose.hidden = true; bar.innerHTML = ''; bar.hidden = true;
+      const days = G.whoFree(4), gone = G.goneLinks();
+      const dayHtml = (x, k) => {
+        const date = `${x.info.day} ${x.info.md}`, label = k === 0 ? 'Today' : k === 1 ? 'Tomorrow' : date;
+        const rows = x.rows.map(r => {
+          const go = r.now && !r.spent && atFree();
+          const state = r.spent ? 'Seen today' : r.past ? 'Earlier' : go ? 'Go now ▸' : '';
+          return `<button type="button" class="g-ph-row g-ph-fr${r.spent || r.past ? ' done' : ''}${go ? ' now' : ''}" data-fr="${r.link.id}"${go ? ` data-go="${r.slot}|${r.area}"` : ''}>${face(r.link.id)}<span><b>${esc(r.link.short)} ${rkChip(r.link)}</b><small>${esc([r.spot, r.areaName].filter(Boolean).join(' · '))} · ${esc(slotWord(r.slot, x.info))}</small>${hintChip(r.hint)}</span>${state ? `<em class="${go ? '' : 'g-ph-due'}">${esc(state)}</em>` : ''}</button>`;
+        }).join('');
+        return `<section class="g-ph-day"><h3>${esc(label)}${k > 1 ? '' : ` <small>${esc(date)}</small>`}</h3>${x.away ? '<p class="g-ph-empty">Away on a trip.</p>' : rows || '<p class="g-ph-empty">Nobody you know is free.</p>'}</section>`;
+      };
+      body.innerHTML = tabsHtml() + `<p class="g-ph-lede">Where the people you know will be, and when.</p>` + days.map(dayHtml).join('') +
+        (gone.length ? `<section class="g-ph-day gone"><h3>Not around anymore</h3>${gone.map(l => `<button type="button" class="g-ph-row g-ph-fr done" data-fr="${l.id}">${face(l.id)}<span><b>${esc(l.short)} ${rkChip(l)}</b><small>Gone</small></span></button>`).join('')}</section>` : '');
+      wireTabs();
+      body.querySelectorAll('[data-fr]').forEach(b => b.addEventListener('click', () => {
+        G.sfx('femc-click');
+        if (b.dataset.go) { const [slot, area] = b.dataset.go.split('|'); goArea = { slot, area }; o.close(); return; }
+      }));
+    };
 
     const list = () => {
       stop();
@@ -1666,13 +1700,14 @@
       const n = G.unread();
       bar.innerHTML = `<span>${n ? `${n} unread` : ids.length ? 'All caught up' : ''}</span><button type="button" class="g-ph-readall" data-readall${n ? '' : ' disabled'}>Read all</button>`;
       bar.hidden = !ids.length;
-      body.innerHTML = forecastHtml() + (ids.length ? ids.map(id => {
+      body.innerHTML = tabsHtml() + forecastHtml() + (ids.length ? ids.map(id => {
         const th = s.phone.threads[id], last = th[th.length - 1], pic = threadPic(id), u = s.phone.unread[id];
         const m = last ? msgParts(id, last) : { text: '' };
         const lead = !last ? '' : m.me ? 'You: ' : m.group && !m.notice ? `${m.name}: ` : '';
         return `<button type="button" class="g-ph-row${u ? ' unread' : ''}" data-th="${id}"><i>${pic ? picImg(id, pic) : esc(threadName(id)[0])}</i><span><b>${esc(threadName(id))}</b><small>${esc(lead + m.text)}</small></span>${u ? `<em>${u}</em>` : pending(id) ? '<em class="g-ph-due">Reply</em>' : ''}</button>`;
       }).join('') : '<p class="g-note">No messages.</p>');
       body.querySelectorAll('[data-th]').forEach(b => b.addEventListener('click', () => open(b.dataset.th)));
+      wireTabs();
       bar.querySelector('[data-readall]').addEventListener('click', () => {
         if (!G.markAllRead()) return;
         G.sfx('femc-click'); paintHud(); list();
@@ -1790,7 +1825,7 @@
       play(id, th.length - fresh, () => replies(id));
       if (!o.el.classList.contains('g-ph-playing') && !reply.firstChild) focusIn(back);
     };
-    back.addEventListener('click', () => { list(); focusIn(body.querySelector('.g-ph-row')); });
+    back.addEventListener('click', () => { tab = 'msgs'; home(); focusIn(body.querySelector('.g-ph-row') || body.querySelector('[data-tab]')); });
     // A tap on the conversation, or Enter / Space on it, fast-forwards what's still arriving.
     body.addEventListener('click', () => anim.skip?.());
     o.el.addEventListener('keydown', e => { if (anim.skip && (e.key === 'Enter' || e.key === ' ') && !e.target.closest?.('button:not([data-skip])')) { e.preventDefault(); anim.skip(); } });
