@@ -48,7 +48,12 @@ NEW_SKINS = ['sk-minji-crew', 'sk-jihoon-pilates', 'sk-aigis-uniform', 'sk-alpha
              'sk-haechan-headphones', 'sk-haechan-arrivals', 'sk-haechan-windowseat', 'sk-haechan-bad', 'sk-haechan-garage', 'sk-haechan-limelight',
              'sk-haechan-unravelled', 'sk-jungwon-sheer', 'sk-haechan-fairground', 'sk-haechan-sweettooth', 'sk-jungwon-pinstripe',
              'sk-jungwon-soundcheck', 'sk-jungwon-angel', 'sk-jungwon-sweater', 'sk-haechan-suit', 'sk-haechan-stage',
-             'sk-jungwon-heir', 'sk-jungwon-stage']
+             'sk-jungwon-heir', 'sk-jungwon-stage',
+             # art batch 114: Swim Season, the couple outfits, The Sun
+             'sk-swim-lagoon', 'sk-swim-lifeguard', 'sk-swim-night', 'sk-haechan-swim', 'sk-jungwon-swim', 'sk-yukari-swim', 'sk-akihiko-swim',
+             'sk-cp-sunmoon', 'sk-haechan-cp-sunmoon', 'sk-cp-drive', 'sk-haechan-cp-drive', 'sk-cp-afterhours', 'sk-jungwon-cp-afterhours',
+             'sk-cp-moviedate', 'sk-jungwon-cp-moviedate', 'sk-cp-ringside', 'sk-akihiko-cp-ringside', 'sk-cp-festival', 'sk-akihiko-cp-festival',
+             'sk-arcana-sun']
 NEW_WPNS = ['wpn-runners', 'wpn-strangers', 'wpn-hoax', 'wpn-akihiko-champ', 'wpn-jungwon-council',
             'wpn-velvet', 'wpn-idol', 'wpn-hanbok', 'wpn-haechan-suit', 'wpn-haechan-stage', 'wpn-jungwon-heir', 'wpn-jungwon-stage']
 KEPT = {}
@@ -289,7 +294,7 @@ try:
           pending:C.ITEMS.filter(x=>!C.ready(x)).map(x=>x.id),rewards:C.ITEMS.filter(x=>x.pool===false).map(x=>x.id)};})()""")
         ok(not set(r['pending']) & set(r['pool']) and not set(r['rewards']) & set(r['pool']) and len(r['pool']) >= 20, f'pool: {r}')
         # Every look in it has art since batch 57.
-        ok(r['banner'] == 'sunrise' and set(r['feat']) == {'ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-jungwon-council', 'wpn-jungwon-council', 'sk-hanbok', 'wpn-hanbok'}, f'featured: {r}')
+        ok(r['banner'] == 'sunrise' and set(r['feat']) == {'ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-jungwon-council', 'wpn-jungwon-council', 'sk-hanbok', 'wpn-hanbok', 'sk-arcana-sun'}, f'featured: {r}')
         # Cost and pity: always-Rare rolls → Super Rare on every 10th, Ultra on the 40th.
         r = p.eval(QUIET + r"""(()=>{const C=FemcCosmetics,GA=FemcGacha;GA.gs().plumes=200;C.cs().pity={sr:0,ur:0};C.rng=()=>0.99;const out=[];
           try{for(let i=0;i<40;i++)out.push(C.pull().r);}finally{""" + LOUD + r"""}return {out,plumes:GA.gs().plumes,own:C.cs().own.length};})()""")
@@ -308,18 +313,26 @@ try:
         r = p.eval(r"""(()=>{const G=FemcGame,C=FemcCosmetics,at=md=>C.banners(G.dayOf(md)).map(b=>b.id);
           return {jul:at('7/10'),oct:at('10/10'),nov:at('11/10'),dec:at('12/10'),jan:at('1/10'),feb:at('2/10'),mar:at('3/10'),
             feat:Object.fromEntries(C.BANNERS.map(b=>[b.id,C.featured(G.dayOf(b.months[0]+'/10'),b.id).map(x=>x.id)])),end:C.bannerEnd(C.BANNERS.find(b=>b.id==='lights')).getMonth()};})()""")
-        ok(r['jul'] == ['summer'] and r['oct'] == ['masquerade'], f'one banner earlier in the year: {r}')
-        ok(r['nov'] == ['lights', 'runners', 'sees'] and r['dec'] == ['lights', 'sees', 'haechan'] and r['jan'] == ['lights', 'haechan', 'hoax']
-           and r['feb'] == ['sunrise', 'hoax', 'valentine'], f'2–3 banners November–February, main first: {r}')
+        ok(r['jul'] == ['summer', 'swim'] and r['oct'] == ['masquerade'], f'July: Summer Nights and Swim Season; one banner in October: {r}')
+        ok(r['nov'] == ['lights', 'runners', 'sees'] and r['dec'] == ['lights', 'sees', 'haechan'] and r['jan'] == ['lights', 'haechan', 'hoax', 'arcana']
+           and r['feb'] == ['sunrise', 'hoax', 'valentine'], f'2–4 banners November–February (Tarot Arcana in January), main first: {r}')
         ok(r['mar'] == ['solar', 'akihiko'], f'The Searchers hidden while Minji is unmet (empty featured list): {r}')
         ok(set(r['feat']['haechan']) == {'sk-haechan-runners', 'wpn-runners', 'wpn-strangers', 'evk-midnight', 'wp-rooftop', 'sk-haechan-sweater',
                                            'sk-haechan-headphones', 'sk-haechan-arrivals', 'sk-haechan-garage', 'sk-haechan-limelight', 'wpn-haechan-suit', 'wpn-haechan-stage',
-                                           'sk-haechan-fairground', 'sk-haechan-sweettooth', 'sk-haechan-suit', 'sk-haechan-stage'}
+                                           'sk-haechan-fairground', 'sk-haechan-sweettooth', 'sk-haechan-suit', 'sk-haechan-stage',
+                                           'sk-haechan-swim', 'sk-cp-sunmoon', 'sk-haechan-cp-sunmoon', 'sk-cp-drive', 'sk-haechan-cp-drive'}
            and set(r['feat']['solar']) == {'sk-idol', 'sk-alphaphi', 'sk-hanbok', 'sk-velvet', 'sk-y2k', 'sk-oops', 'sk-snake', 'sk-sugarrush', 'sk-limelight',
-                                         'wpn-velvet', 'wpn-idol', 'wpn-hanbok', 'wpn-haechan-stage', 'wpn-jungwon-stage', 'sk-haechan-stage', 'sk-jungwon-stage'}
+                                         'wpn-velvet', 'wpn-idol', 'wpn-hanbok', 'wpn-haechan-stage', 'wpn-jungwon-stage', 'sk-haechan-stage', 'sk-jungwon-stage', 'sk-swim-lagoon'}
+           and set(r['feat']['swim']) == {'sk-swim-lagoon', 'sk-swim-lifeguard', 'sk-swim-night', 'sk-haechan-swim', 'sk-jungwon-swim', 'sk-yukari-swim', 'sk-akihiko-swim', 'wp-fireworks', 'ui-mint', 'sk-summersession'}
+           and set(r['feat']['arcana']) == {'sk-arcana-sun', 'bui-velvet', 'ui-velvet'}
            and set(r['feat']['sees']) >= {'sk-yukari-pink', 'sk-mitsuru-rider', 'tt-darkhour'} and 'sk-date' in r['feat']['valentine'] and 'sk-emo' in r['feat']['valentine'] and 'sk-emo' in r['feat']['masquerade']
            and not set(r['feat']['haechan']) & set(r['feat']['lights']) - {'wpn-strangers', 'sk-haechan-arrivals', 'wpn-haechan-suit', 'sk-haechan-sweettooth', 'sk-haechan-suit'} and r['end'] == 0, f'featured per banner, ends January: {r}')
         ok(p.eval("FemcGame.S.met.push('minji'),FemcCosmetics.banners(FemcGame.dayOf('3/10')).map(b=>b.id).join()") == 'solar,akihiko,searchers', 'The Searchers once Minji is met')
+        # Couple outfits (art batch 114): six sets of two, Solar's half always, the partner's once he's met (Kat's ruling).
+        r = p.eval(r"""(()=>{const C=FemcCosmetics,G=FemcGame,sets={};C.ITEMS.filter(x=>x.couple).forEach(x=>(sets[x.couple]=sets[x.couple]||[]).push(x.who));
+          const m=G.S.met.slice();G.S.met=m.filter(x=>x!=='akihiko');const hid=!C.metOk(C.byId('sk-akihiko-cp-ringside'))&&C.metOk(C.byId('sk-cp-ringside'))&&!C.pool().some(x=>x.id==='sk-akihiko-cp-festival');
+          G.S.met=m;return {sets,hid,back:C.metOk(C.byId('sk-akihiko-cp-ringside'))};})()""")
+        ok(len(r['sets']) == 6 and all(sorted(v)[1:] != [] and 'solar' in v and len(v) == 2 for v in r['sets'].values()) and r['hid'] and r['back'], f'couple sets, partner half met-only: {r}')
         # Switching: the pick is saved, rates up only that banner's looks, ignores banners not running, falls back when one ends.
         r = p.eval(QUIET + SEED + r"""(()=>{const G=FemcGame,C=FemcCosmetics,GA=FemcGacha;G.S.day=G.dayOf('12/10');GA.gs().plumes=1e5;C.cs().guar=false;
           const a=C.pickBanner('haechan'),bad=C.pickBanner('runners'),sel=C.cs().bsel,cur=C.banner().id,f=C.featured().map(x=>x.id);C.rng=__seed(3);const got=[];

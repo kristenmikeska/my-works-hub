@@ -184,6 +184,7 @@ Other docs, if you ever want detail:
 - ✅ Art batch 65: your nine epilogue places are in the game: four for HOAX (the Kims' living room, Jihoon's house, the winter street, the winter-break party) and five for strangers (a kitchen, the annex, the mudflats, the festival night on Wolmido, the street in the dust), with a couple of small wording fixes so the scenes match your pictures. Your art list gained 57 new place prompts and 35 new CG prompts across the year and every epilogue, and the Evoker pieces, new expressions, sharper Shadows and strike sheets moved to a new backburner list
 - ✅ Art batch 112: five more epilogue pictures (two for strangers, two for HOAX, one for Stay), each in its world's album.
 - ✅ Art batch 113: the New Game+ climb's three guardians and its last boss now have their own pictures and poses.
+- ✅ Art batch 114: a Swim Season banner in July and August (seven swimwear looks for Solar, Haechan, Jungwon, Yukari and Akihiko), six couple outfits for Solar with Haechan, Jungwon and Akihiko (his half shows once she's met him), and The Sun, the first Tarot Arcana look, with its own January banner; all with battle poses, and scene portraits for all but The Sun.
 
 ## Music and polish
 - ✅ 57 songs, rotating with no repeats, plus world songs in memories, arrivals, calls and endings

@@ -21968,6 +21968,965 @@
         }
       ],
       "section": "FEMC-ART-TODO 17"
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-swim-lagoon-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-swim-lagoon-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7d69c125bf080bb2ac09ee7b2d0f54a24de6be012d6edcf0d74c8a3f65e35b37",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/solar-pose-0.webp",
+      "skin": "sk-swim-lagoon",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-swim-lagoon-posesheet.png sk-swim-lagoon solar (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-swim-lagoon (Pink Lagoon, UR, Solar; Solar Spotlight, Swim Season), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/solar-pose-0.webp": "d842ca822083278876bca5e3fbf4afee1119671e4ad6ddb3d1d57a214673ad01",
+        "assets/femc/game/art/skins/sk-swim-lagoon/solar-pose-1.webp": "a67b9472543014d08b45ced536ce7f983cbbb12e7f3cd0c149cec55c61eb474c",
+        "assets/femc/game/art/skins/sk-swim-lagoon/solar-pose-2.webp": "0380b97edf85d5a51d15987021d732e7b288b173b08c40bf5fdec85157596352",
+        "assets/femc/game/art/skins/sk-swim-lagoon/solar-pose-3.webp": "6dbeafb6944937cde8129b9da50867eee22ac38c69b28ff1ea2d3814d910f401",
+        "assets/femc/game/art/skins/sk-swim-lagoon/solar-pose-4.webp": "5f869a2f0ca352f223512a144f98c2dfd570a4b711a3e5a8fa1178c1bfdfda97",
+        "assets/femc/game/art/skins/sk-swim-lagoon/solar-pose-5.webp": "03ce65251e8c47943ad73f35d9dec4c174592ad81acc7d7d2ad176495dca9a1d"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-swim-lifeguard-portraits.png",
+      "sourceNow": "New Adds/skin-sk-swim-lifeguard-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1a658c67f40b87ba8b424f97820e6e4e6c62d8859c1d6e4c77f052e6ef08d29d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/solar-pose-0.webp",
+      "skin": "sk-swim-lifeguard",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-swim-lifeguard-portraits.png sk-swim-lifeguard solar (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-swim-lifeguard (Lifeguard on Duty, SR, Solar; Summer Nights, Swim Season), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "note": "Kat’s two Lifeguard files are swapped by name: this one holds the pose sheet, so it was cut as the pose sheet",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/solar-pose-0.webp": "5c4afe279d5bdc759a52d9f3a62652720715df8ffb0f94dcbd95f27b8c77cac3",
+        "assets/femc/game/art/skins/sk-swim-lifeguard/solar-pose-1.webp": "ea0570bb49f83390fb34d6da0bedebbc27d07fc453af26f724b0d1bfd241e49b",
+        "assets/femc/game/art/skins/sk-swim-lifeguard/solar-pose-2.webp": "417308ada106769bac5caff601d01c7bd10708c500dd4f45c1e52584e895d922",
+        "assets/femc/game/art/skins/sk-swim-lifeguard/solar-pose-3.webp": "16b665903322e861523b91cde1d67da60cfe5da259bb50d914718b1949817e60",
+        "assets/femc/game/art/skins/sk-swim-lifeguard/solar-pose-4.webp": "8df5c10dd614a10733fb1bebdc2e9e1e5333488233cef91472d0c2196dd310c9",
+        "assets/femc/game/art/skins/sk-swim-lifeguard/solar-pose-5.webp": "0803bec76e97c8fd26935b64dd530da0a58393f57e6e55945938b7b470780c4b"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-swim-night-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-swim-night-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6a77ee4bf3ec5d175bb690a553c7ecb580fc0832d1f43056c566d0f0f3d54643",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-night/solar-pose-0.webp",
+      "skin": "sk-swim-night",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-swim-night-posesheet.png sk-swim-night solar (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-swim-night (Night Swim, UR, Solar; Masquerade, Swim Season), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-night/solar-pose-0.webp": "d8f929f87e3fc235d57e43d6b9393a62d34294c6a47f8c14d76abf1393048453",
+        "assets/femc/game/art/skins/sk-swim-night/solar-pose-1.webp": "7503f16d7a467d370234159a417335a9336aace4c701352e0f93cec7e3e26753",
+        "assets/femc/game/art/skins/sk-swim-night/solar-pose-2.webp": "273d78d9d8af9906388f13482a86f0833090c813560c2180f72513b35f792cec",
+        "assets/femc/game/art/skins/sk-swim-night/solar-pose-3.webp": "eddf58117d6eb060d023089c1c842c39bc902325e99ccb3184235d7550c5989a",
+        "assets/femc/game/art/skins/sk-swim-night/solar-pose-4.webp": "454627d073f09e31bb82e947795de2080ec5371167d1ce3bfa257e8dd9fb274f",
+        "assets/femc/game/art/skins/sk-swim-night/solar-pose-5.webp": "2e66c149da7504d74ebbdcb47bcaa4e356a2d0e91c2b1de2519ca41b1bd8f723"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-haechan-swim-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-haechan-swim-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "cceac78e67e0355e8255379623fdb2821bd62a3332103b0f25ac10e477b2fd20",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-swim/haechan-pose-0.webp",
+      "skin": "sk-haechan-swim",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-haechan-swim-posesheet.png sk-haechan-swim haechan (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-haechan-swim (Boardwalk, SR, Haechan; Haechan Spotlight, Swim Season), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-swim/haechan-pose-0.webp": "9ef89e68ce3ab3767f93d88afc7b61157e77981e8d4944d2d04cacae67dc3aca",
+        "assets/femc/game/art/skins/sk-haechan-swim/haechan-pose-1.webp": "7414f29516b111bd3ea1ab07a1506098c6832296bb7efda20bbedbbf69f3de14",
+        "assets/femc/game/art/skins/sk-haechan-swim/haechan-pose-2.webp": "3ece44b8ce0bce06a548d39bcfd770a3e402ba13676279ecdc1401daf13587c7",
+        "assets/femc/game/art/skins/sk-haechan-swim/haechan-pose-3.webp": "5004d23cf5d781131a6cbe3c59a4d110d0ee1d75ce6bf684f09495df8ffbe6ed",
+        "assets/femc/game/art/skins/sk-haechan-swim/haechan-pose-4.webp": "755ffaf3b0d95ce147a7dc6d6c1b1b93bdd441201fc35b7ed1b068d55ebc14fe",
+        "assets/femc/game/art/skins/sk-haechan-swim/haechan-pose-5.webp": "6ec41a5be40726be0e455800f11815602386d415d822f7393b7f21c814127606"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-jungwon-swim-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-jungwon-swim-posesheet.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "3c924998db632fe25f412e77f799dc2884dff245fdea9ea0b6f99cb79a33eb3a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-swim/jungwon-pose-0.webp",
+      "skin": "sk-jungwon-swim",
+      "conversion": "already transparent sheet (portrait-format 1024 x 1536, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-jungwon-swim-posesheet.png sk-jungwon-swim jungwon (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-jungwon-swim (Pool Day, SR, Jungwon; HOAX World, Swim Season), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-swim/jungwon-pose-0.webp": "2349c10916586fa4a60a3408bcf94728a853c84bae1550d1ca6a126e00913685",
+        "assets/femc/game/art/skins/sk-jungwon-swim/jungwon-pose-1.webp": "9fffc0a16707c034a5778c682c92cc8b679a91b6b066e5f29946d07172ef92dd",
+        "assets/femc/game/art/skins/sk-jungwon-swim/jungwon-pose-2.webp": "1cbab165e547756a81af0d4947a1b1d3fa7430053ec5271ff6b1affecddf2317",
+        "assets/femc/game/art/skins/sk-jungwon-swim/jungwon-pose-3.webp": "dce7c7e43e89492b4767bf7739a72fc7e11e33e0c0f8550aff53f54106a9d177",
+        "assets/femc/game/art/skins/sk-jungwon-swim/jungwon-pose-4.webp": "f59504e31598032ba9c33b384ff1ac485418ae7d6a8899d6961f7ada0b55e72b",
+        "assets/femc/game/art/skins/sk-jungwon-swim/jungwon-pose-5.webp": "593bc21e2ee941e72f1d72b2233dcdc1c958deeb5f8390b43d8e58eb92a7fd82"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-akihiko-swim-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-akihiko-swim-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7747d0499b7427b6a3c743fbc90ee45a0d9329895ea047a0bdf05215f91ad5d0",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-pose-0.webp",
+      "skin": "sk-akihiko-swim",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-akihiko-swim-posesheet.png sk-akihiko-swim akihiko (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-akihiko-swim (Lifeguard Captain, SR, Akihiko; Akihiko Spotlight, Swim Season), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-pose-0.webp": "a37b220378d82952755018e5b8ce2abf1025d9d0b0ac59eeacebaba080d00ca0",
+        "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-pose-1.webp": "a35045cd8713e496e12e0a6e928a241eb028fc895668d37309340742be08946f",
+        "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-pose-2.webp": "49326d3669a770bfb852a1a5615acea1105b7d130fac055828f6fd2bfde67ee1",
+        "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-pose-3.webp": "c0a45b794ff747a8b4031408db05c0d5a231efdcac41762ddcd30ae3014219dd",
+        "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-pose-4.webp": "b063a321918acb7f436cff897d63f83d56c1b5143e418220e3c51141e20525dd",
+        "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-pose-5.webp": "04d3d5c256226c26e947bf58052cd161d91251475c4afafba084773c7d620932"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-yukari-swim-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-yukari-swim-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "f69d8d8391713ae96ce87ac15d6b5adf219dce8f7cc3ae2be6c9af4a22840b29",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-swim/yukari-pose-0.webp",
+      "skin": "sk-yukari-swim",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-yukari-swim-posesheet.png sk-yukari-swim yukari (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-yukari-swim (Beach Volley, SR, Yukari; S.E.E.S. Spotlight, Swim Season), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-yukari-swim/yukari-pose-0.webp": "ef092eef213145df1d3d35af24576f582eda55f4b5101e6d7e4eeed83d0a4757",
+        "assets/femc/game/art/skins/sk-yukari-swim/yukari-pose-1.webp": "01cb3f7c5a50b96f977720f5f72a583bc0854f448d999a66348bfa04b5024673",
+        "assets/femc/game/art/skins/sk-yukari-swim/yukari-pose-2.webp": "f64d50d97088ffa9da3be593865885539eb39028de2e7ac298e147eb7bc7733a",
+        "assets/femc/game/art/skins/sk-yukari-swim/yukari-pose-3.webp": "50a8df4f1bdc5a99d4fde0c499c07461566cb86ece0baef8efa1d5acf1dfe159",
+        "assets/femc/game/art/skins/sk-yukari-swim/yukari-pose-4.webp": "c8a7c86d7bd3ca9f1761b18e689a9eb1b125f438f77eccb705ed197ad9b17862",
+        "assets/femc/game/art/skins/sk-yukari-swim/yukari-pose-5.webp": "e8c0f9ca750df62fa33095f61ac218b887e44e70645d580d6185050f692c6ea9"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-cp-sunmoon-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-cp-sunmoon-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a1d59f19a40b6977e4e301958bf44b38eb5e18fb96a5d8fc189d1f819b686cc3",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-sunmoon/solar-pose-0.webp",
+      "skin": "sk-cp-sunmoon",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-cp-sunmoon-posesheet.png sk-cp-sunmoon solar (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-cp-sunmoon (Sun Hoodie, SR, Solar; Haechan Spotlight, Valentine's), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-sunmoon/solar-pose-0.webp": "21120107c77c20c1ca552b871cf324d54495749f9595e76b8da1b3884a00633a",
+        "assets/femc/game/art/skins/sk-cp-sunmoon/solar-pose-1.webp": "9487dce4859c6b6252c6a33cef272ecf4fa989cdac9a519abe0fdd78533e5faa",
+        "assets/femc/game/art/skins/sk-cp-sunmoon/solar-pose-2.webp": "556ef2bbf86f9808a147b9fcba7c31684f35b1247fa044a4025446d4007b7cd8",
+        "assets/femc/game/art/skins/sk-cp-sunmoon/solar-pose-3.webp": "f1fc88773c13fb6dc4ba67fa6deaddd703f52cb813cde5c58df37144043cfe6a",
+        "assets/femc/game/art/skins/sk-cp-sunmoon/solar-pose-4.webp": "fff4615b9dd015bb2d7b852945cf5402d41b35e131d28ad4a937e918ab8bab51",
+        "assets/femc/game/art/skins/sk-cp-sunmoon/solar-pose-5.webp": "a72de2f848bd6dbd124cbd4f5bd2d80aa54ebecf9a14ef04d5c50a02a687e2db"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-haechan-cp-sunmoon-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-haechan-cp-sunmoon-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "33a7c961efed2c0204536a39db29ceb65db03f7931fcfd49ba9ece51290f06fb",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-pose-0.webp",
+      "skin": "sk-haechan-cp-sunmoon",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-haechan-cp-sunmoon-posesheet.png sk-haechan-cp-sunmoon haechan (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-haechan-cp-sunmoon (Moon Hoodie, SR, Haechan; Haechan Spotlight, Valentine's), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-pose-0.webp": "01dbddc1d531ca6da396de7675c6ec88deae3f4a0b49686914769eb8d1f8bbe0",
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-pose-1.webp": "8a2f25159fbe9d689520f87f3a7574c2dbaeb9659b9a255d87c4b7bc146715de",
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-pose-2.webp": "29d5a8a5e5201774fcf9183788b37ac33a81023a99184da7875f92c2c931d2f4",
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-pose-3.webp": "8bdf423aeb3d090902e2fb95550b58dab72fa36b321bbb6dcb97c66e668c5bd8",
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-pose-4.webp": "95b1f6ab87fe6441a28d3793e3c7c537adf5699c9aee794d38104769ba3ec93c",
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-pose-5.webp": "ff8cc06cad6cf1e57383ec03e8d87f96240db5ae8df863e6034077cf7c92469b"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-cp-drive-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-cp-drive-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "79b714dacf08cc2811ab5a698fc2f6d2bc4235382f9cc910396628c7f98ae990",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-drive/solar-pose-0.webp",
+      "skin": "sk-cp-drive",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-cp-drive-posesheet.png sk-cp-drive solar (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-cp-drive (Midnight Drive, UR, Solar; Haechan Spotlight, Valentine's), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-drive/solar-pose-0.webp": "7214cb59d00586609529f3758389bff093e4e90bea410c47b050993152998a2b",
+        "assets/femc/game/art/skins/sk-cp-drive/solar-pose-1.webp": "bf5a6b3b727ab5b7633f5dcc1897f0fd4e8c3dfc663daee168115ad824d2ecb3",
+        "assets/femc/game/art/skins/sk-cp-drive/solar-pose-2.webp": "1bbcf323ebacc7e540d825c544763503d9ef3f0f6b0151d5eb900660ac9f17b7",
+        "assets/femc/game/art/skins/sk-cp-drive/solar-pose-3.webp": "afc259779ab4f45a2a258456c59c57945afbc993ed4ed21d1bd00df60b93670c",
+        "assets/femc/game/art/skins/sk-cp-drive/solar-pose-4.webp": "2d43c5ed351092c90c0edb4f61276b8c743166fd178664f71d245dfd204c2f79",
+        "assets/femc/game/art/skins/sk-cp-drive/solar-pose-5.webp": "53c1ff29b1d15e0c042fd2a28f43a490377cf40a22a1ab9c367e207e878734c8"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-haechan-cp-drive-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-haechan-cp-drive-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "461e3a4c318335bf4379b1b894d6f526f7c69b312f4dbfb72233ad29e78b375d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-pose-0.webp",
+      "skin": "sk-haechan-cp-drive",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-haechan-cp-drive-posesheet.png sk-haechan-cp-drive haechan (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-haechan-cp-drive (Midnight Drive, UR, Haechan; Haechan Spotlight, Valentine's), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-pose-0.webp": "cd55536965409825cc509895d9165caa626dff012fb338e99d14ef6ab8ce2200",
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-pose-1.webp": "601718256dd75022c0e3c83032e1abd2b52b06cf9ce4d29776092dcf0e95c126",
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-pose-2.webp": "79b0bd9c4afdd336dabd376c0ab0b3b5120ce401b73aa6e9698709c93dc62e08",
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-pose-3.webp": "07f2a2a220950594ab7e27954c3dc3cedc56bbfcf93117fe3c2eec15997e461f",
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-pose-4.webp": "c3d5364ddc55a5ccf5957b0f8ab0e8f4547d1e3b73d907ae810a1aeff5ba7d5a",
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-pose-5.webp": "fb2de063f16b44cc4e942b11b14aa575f1234264ff1173d718e1a6979588456e"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-cp-afterhours-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-cp-afterhours-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8a0884f10f178becb0bf7cadcb727dc500c558d41cbdfac507ba99281d7862e9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/solar-pose-0.webp",
+      "skin": "sk-cp-afterhours",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-cp-afterhours-posesheet.png sk-cp-afterhours solar (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-cp-afterhours (After Hours, SR, Solar; HOAX World, Valentine's), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/solar-pose-0.webp": "68126860088d11bf7cd8f9a9eddfe4843bb2711446412d3b3c57d2542e0d136a",
+        "assets/femc/game/art/skins/sk-cp-afterhours/solar-pose-1.webp": "90955507616157e518178f1317d4c193c5ccf8b960740746afb22496a10f6e48",
+        "assets/femc/game/art/skins/sk-cp-afterhours/solar-pose-2.webp": "305b0ba148cc492e8d71ff3f381804dc47bf25128c45f0fd0c2c1d48598201df",
+        "assets/femc/game/art/skins/sk-cp-afterhours/solar-pose-3.webp": "33ba38bbcf40baef211548e0396e9faff72fb18e7ed079bfff453448ff37f722",
+        "assets/femc/game/art/skins/sk-cp-afterhours/solar-pose-4.webp": "2bceb8d2d45a8f8fd9a1f6a24ba77e0ef20525fb6dc4854ae5a570ae96041ef1",
+        "assets/femc/game/art/skins/sk-cp-afterhours/solar-pose-5.webp": "978e304b24a3a034eec42df810cd46f071fb711f32643bfa7560df274d4a7119"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-jungwon-cp-afterhours-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-jungwon-cp-afterhours-posesheet.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "292e28577bdee56a31a89b8d6e23b912c00b676ab4530718416cb980e1318d67",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/jungwon-pose-0.webp",
+      "skin": "sk-jungwon-cp-afterhours",
+      "conversion": "already transparent sheet (portrait-format 1024 x 1536, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-jungwon-cp-afterhours-posesheet.png sk-jungwon-cp-afterhours jungwon (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-jungwon-cp-afterhours (After Hours, SR, Jungwon; HOAX World, Valentine's), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/jungwon-pose-0.webp": "458a43f713adf957a5d7c5c638b8d59c87adbccdec4e476a2d09485fc6e6e835",
+        "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/jungwon-pose-1.webp": "fb48b28f315c3d753649ffa6f89a6b988d4f9757280cdf6e02a2d0bbcac676ca",
+        "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/jungwon-pose-2.webp": "02b7f999670db036bab27544f32b739d0b7a07eb8bcf01b6110b4c5acde2ab06",
+        "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/jungwon-pose-3.webp": "8c7d4426cc7a82f835b8964c4cc78813ead33042de466ca72d7a8e8975e1151c",
+        "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/jungwon-pose-4.webp": "c84eabcb6a7226fa79a6c103f73d8cc3170c5b5fcb4fb02b34c6c28ddf52632b",
+        "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/jungwon-pose-5.webp": "ac6cfdffa623e8db2003fc0f391f33b43fedfed84b3905be40dc147c3948cf36"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-cp-moviedate-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-cp-moviedate-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "bd9fc33d6b78e20f3d4e59d4d575b913c664f1526df932728fdc6839efa0ed98",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-moviedate/solar-pose-0.webp",
+      "skin": "sk-cp-moviedate",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-cp-moviedate-posesheet.png sk-cp-moviedate solar (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-cp-moviedate (Movie Date, SR, Solar; Winter Lights, Valentine's), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-moviedate/solar-pose-0.webp": "1bfeacc083114ef032dccb4e4d69b7a037c35388a1e88cc413d3894bd37f2c48",
+        "assets/femc/game/art/skins/sk-cp-moviedate/solar-pose-1.webp": "9f3e02c5da4868e9736f41e21c6b9417c5c44ed2f3f318aae8e408f1b0bbf7eb",
+        "assets/femc/game/art/skins/sk-cp-moviedate/solar-pose-2.webp": "bd0446459ac30eceae17c7a352b79c2eb116caed32622105eb07738bb58fa2bb",
+        "assets/femc/game/art/skins/sk-cp-moviedate/solar-pose-3.webp": "5f6d928b1102ec35a2b687c8b348615589b43cd0bc175b89a627ab8121388c69",
+        "assets/femc/game/art/skins/sk-cp-moviedate/solar-pose-4.webp": "6dcfdcf375dffd0fc3e83f2bfa8d1df125811ac9fac05cc1e72ec94604abd351",
+        "assets/femc/game/art/skins/sk-cp-moviedate/solar-pose-5.webp": "01609e05ac23d935f537bb85fcb0f867c56884d2a56c9f71781512a198bead12"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-jungwon-moviedate-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-jungwon-moviedate-posesheet.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "648797d14ec80d9e8a6629f1625d0ae6fec1fe7b6164a4c268b9a6ef5d0fac22",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/jungwon-pose-0.webp",
+      "skin": "sk-jungwon-cp-moviedate",
+      "conversion": "already transparent sheet (portrait-format 1024 x 1536, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-jungwon-moviedate-posesheet.png sk-jungwon-cp-moviedate jungwon (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-jungwon-cp-moviedate (Movie Date, SR, Jungwon; Winter Lights, Valentine's), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "note": "no cp- in Kat’s file name: it is Jungwon’s half of Movie Date, sk-jungwon-cp-moviedate",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/jungwon-pose-0.webp": "13afb10d032ac1d090fb7dff061fac4cd148c725f2795c81228f4ba9d584b191",
+        "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/jungwon-pose-1.webp": "8eb76639dcb580e9274df4917afe681b64c96b6c84b631f18c2abff78d5b8f0b",
+        "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/jungwon-pose-2.webp": "abe4d05b219aec763821c7d093019d08ab3ec215d58a002e623bd92a9f757f5a",
+        "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/jungwon-pose-3.webp": "4b03be8ce1d0fe706182f7e7ff819708153a2ae3b1f070b6d075405c051fa594",
+        "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/jungwon-pose-4.webp": "de9cdb7756d15a3bd2224d449d54e8c98e2f38a27545a9f2156fa3fb7b14824b",
+        "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/jungwon-pose-5.webp": "1b5d7cf859a0d0c2bbadfbecb389457fb9024c9584fdb809b1b2ece2099ba03b"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-cp-ringside-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-cp-ringside-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a5462748962ecfdab916b5bd60fcaf88e5bf710df39931a787b023254c97bf3d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-ringside/solar-pose-0.webp",
+      "skin": "sk-cp-ringside",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-cp-ringside-posesheet.png sk-cp-ringside solar (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-cp-ringside (Ringside, SR, Solar; Valentine's, Akihiko Spotlight), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-ringside/solar-pose-0.webp": "003ed8b118e696c5f30ef417252e491f07d3ff0e574e07cda467ec672657a711",
+        "assets/femc/game/art/skins/sk-cp-ringside/solar-pose-1.webp": "3a66007244228d450b4e1c120500b31cb3dcb43270764f3d3e0b393b7ab343d9",
+        "assets/femc/game/art/skins/sk-cp-ringside/solar-pose-2.webp": "d9662d40b3d917ede8542da38115e3e9e666912bdc035370f86af5cf2603d206",
+        "assets/femc/game/art/skins/sk-cp-ringside/solar-pose-3.webp": "c04ae0d5407e62d212d0ed65721e48d372ce66bc15608d598c63cd4be0d9e445",
+        "assets/femc/game/art/skins/sk-cp-ringside/solar-pose-4.webp": "28515d9ea3ed57f8b65135dbf8f487c12f92b076e305130246c9016a3c6a8b12",
+        "assets/femc/game/art/skins/sk-cp-ringside/solar-pose-5.webp": "a84bff2ec0edaaddcce29b99b596de7cac53a6947511daf91eb9da00f3325044"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-akihiko-cp-ringside-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-akihiko-cp-ringside-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c64c1f4ef698088ccc72a3e898ca16d9648f7628be4f0c91c997fc36db6e75dd",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-cp-ringside/akihiko-pose-0.webp",
+      "skin": "sk-akihiko-cp-ringside",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-akihiko-cp-ringside-posesheet.png sk-akihiko-cp-ringside akihiko (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-akihiko-cp-ringside (Ringside, SR, Akihiko; Valentine's, Akihiko Spotlight), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-akihiko-cp-ringside/akihiko-pose-0.webp": "971db466fb3725301b8e5421351995f207dc0f273dcb53824974554a20007df4",
+        "assets/femc/game/art/skins/sk-akihiko-cp-ringside/akihiko-pose-1.webp": "82958352760cda011fa54e8b52247a85d152d812ca42651223daf4ad1c6a894a",
+        "assets/femc/game/art/skins/sk-akihiko-cp-ringside/akihiko-pose-2.webp": "ed9a77fef7ad03d2bbe004808b780964afbdc5d325c0653f31c59aa2b0f5fda5",
+        "assets/femc/game/art/skins/sk-akihiko-cp-ringside/akihiko-pose-3.webp": "155c8d3ea0f3916a0ecfeaa491dfa5e8bb3d12770c60cd8ed488412d5a6d21e1",
+        "assets/femc/game/art/skins/sk-akihiko-cp-ringside/akihiko-pose-4.webp": "8d56935f1da289a27b64976202e6ff2c8053fcce96371dfba6ec9b692a4fe5be",
+        "assets/femc/game/art/skins/sk-akihiko-cp-ringside/akihiko-pose-5.webp": "3f3a2827412ea1bc0a51bc0bbfb52aa7b5c9d38fca886cd2d0fd18f825ed3f9d"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-cp-festival-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-cp-festival-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b4495a8add00a052387771c8aa2ed42a44462fa134edbaed75504b5d8eecb368",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-festival/solar-pose-0.webp",
+      "skin": "sk-cp-festival",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-cp-festival-posesheet.png sk-cp-festival solar (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-cp-festival (Summer Festival, UR, Solar; Summer Nights, Akihiko Spotlight), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-festival/solar-pose-0.webp": "63a0b4636a191a48b484eeef372ef8a177e41e9f3fad111f45bc01271ddd4d9d",
+        "assets/femc/game/art/skins/sk-cp-festival/solar-pose-1.webp": "8f6d588d781e3390637a200be19d6f271b83c298e5e9a2c19b45e70e28e2e6d3",
+        "assets/femc/game/art/skins/sk-cp-festival/solar-pose-2.webp": "8d70a96c4471fa4660dd42fa4b817396f383971753d1b30df33bafbac068847a",
+        "assets/femc/game/art/skins/sk-cp-festival/solar-pose-3.webp": "6670b2b5c7536126c5d87f30732f156c567b4a509eebde7e93e4cc65a2bad445",
+        "assets/femc/game/art/skins/sk-cp-festival/solar-pose-4.webp": "a5f656dc85e9406a4ebd94b83f26843e9903e8c11b4623fc664080798bbd4724",
+        "assets/femc/game/art/skins/sk-cp-festival/solar-pose-5.webp": "9276ebe8b3bdc1ae662dd6b10b7c64b80a5071f8e889ed1c7801002a20a18760"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-akihiko-cp-festival-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-akihiko-cp-festival-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "935cdf14741abe931087c9e1dc19bbb9d089d74e2943feab1904f21f0bc4fa44",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-cp-festival/akihiko-pose-0.webp",
+      "skin": "sk-akihiko-cp-festival",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-akihiko-cp-festival-posesheet.png sk-akihiko-cp-festival akihiko (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-akihiko-cp-festival (Summer Festival, UR, Akihiko; Summer Nights, Akihiko Spotlight), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-akihiko-cp-festival/akihiko-pose-0.webp": "c90ad291d28255feaa96f7575816b983e00f2e1bf0d889a299905cfc711d979e",
+        "assets/femc/game/art/skins/sk-akihiko-cp-festival/akihiko-pose-1.webp": "cfc003a2b44ca3bba2af04c070a19fbc1a0322dacc02c95b3d386a7a7243599a",
+        "assets/femc/game/art/skins/sk-akihiko-cp-festival/akihiko-pose-2.webp": "a41dc5d34e1718d5bcb5e410af74464693e438883e374301056d3dc7ae7d8a51",
+        "assets/femc/game/art/skins/sk-akihiko-cp-festival/akihiko-pose-3.webp": "c162bd365601a47f1b2a67e63aff5430ba29fe39ab7fb8f26cadab15184107d9",
+        "assets/femc/game/art/skins/sk-akihiko-cp-festival/akihiko-pose-4.webp": "6c6b093d0153ff3c699ac8ccfa135934bc25433e9396714359cc4ad9d5bb9f8c",
+        "assets/femc/game/art/skins/sk-akihiko-cp-festival/akihiko-pose-5.webp": "85176ffebdeccb3a8e63980057b832397833bb7ff30c5a853617bf57df28d6b5"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-arcana-sun-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-arcana-sun-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "664f2b4db40527487bd9b90a6f335e6298a4ba408d86836e4ee5bb6a82fee105",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-arcana-sun/solar-pose-0.webp",
+      "skin": "sk-arcana-sun",
+      "conversion": "already transparent sheet (1536 x 1024, 3 x 2 grid): python3 tools/femc-wardrobe.py skin skin-sk-arcana-sun-posesheet.png sk-arcana-sun solar (split on its own alpha, frames placed with body mass centred and feet on one baseline); WebP q90; source unchanged",
+      "placement": "cosmetics.js sk-arcana-sun (The Sun, UR, Solar; Golden Sunrise, Tarot Arcana), battle pose frames via ready.js",
+      "knownLimits": "checked on magenta: no stray background, no clipped limbs, frames in order (idle, Evoker, attack, spell, hurt, victory)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-arcana-sun/solar-pose-0.webp": "4dfe77f0d618ae54c69ea486f982b7a28cdbd64f03f607c2cb930f232669bd61",
+        "assets/femc/game/art/skins/sk-arcana-sun/solar-pose-1.webp": "3c89a885df6f3d556430702b00c3287ef48f2802dc57deeade163b24e6614bf4",
+        "assets/femc/game/art/skins/sk-arcana-sun/solar-pose-2.webp": "5f5e70d0c02506f9bc3426d4b1834c9961ae953e4e778f600095f4272e164c84",
+        "assets/femc/game/art/skins/sk-arcana-sun/solar-pose-3.webp": "767d6e412c1afb686159dc2bee28179762ebae6822ac90f1ca35d44fb015dc5f",
+        "assets/femc/game/art/skins/sk-arcana-sun/solar-pose-4.webp": "80ce76274d7c007fa18b84354ea6558e9f0bce7b949e33dc48baf075980a8013",
+        "assets/femc/game/art/skins/sk-arcana-sun/solar-pose-5.webp": "4b168ba4d2269d94d4554ab6b172c71dd644302d28aef8ef6932aebf6b55d377"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-swim-lagoon-portraits.png",
+      "sourceNow": "New Adds/skin-sk-swim-lagoon-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "241c83615ea1d804bf826d9c2ae481ada9a19de0902a851530f005d58cda3c89",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/portraits/solar/neutral.webp",
+      "skin": "sk-swim-lagoon",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (862 x 851) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/solar/: serious, flustered, neutral, sad, happy, surprised",
+      "placement": "Pink Lagoon’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/portraits/solar/flustered.webp": "f9505b1871b012a1d0babc22bd77fd3e1e4459ecad8f3d9db828da7049331fa0",
+        "assets/femc/game/art/skins/sk-swim-lagoon/portraits/solar/happy.webp": "3d3578186000a97f0f052a87a13f538bbdf79f9db9c12456dd47901bdbda68ff",
+        "assets/femc/game/art/skins/sk-swim-lagoon/portraits/solar/neutral.webp": "8b8d6a155d7abc9a6b7acaf3e4fc3d75645a4d3b6a91844373702ad9a5af1ea6",
+        "assets/femc/game/art/skins/sk-swim-lagoon/portraits/solar/sad.webp": "ef6a16ff96e4f5eda47e74fc2308b03be8093b02dd8d665595c70229d47279bc",
+        "assets/femc/game/art/skins/sk-swim-lagoon/portraits/solar/serious.webp": "5e13f61504dd9e8c13c2205b69d729670b689293f78d699a1bca5ac0f19d9e34",
+        "assets/femc/game/art/skins/sk-swim-lagoon/portraits/solar/surprised.webp": "2308db152ff9fe7b6143d381798f2542b4352062bca475209215ee5aa50121c9"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-swim-lifeguard-posesheet.png",
+      "sourceNow": "New Adds/skin-sk-swim-lifeguard-posesheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "f2f36ae9fdb4d6a323855ab16f77f21db802d9bdf5175af91709a0beddd96d83",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/portraits/solar/neutral.webp",
+      "skin": "sk-swim-lifeguard",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (862 x 851) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/solar/: serious, flustered, neutral, sad, happy, surprised",
+      "placement": "Lifeguard on Duty’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "note": "Kat’s two Lifeguard files are swapped by name: this one holds the scene portraits, so it was cut as the portraits",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/portraits/solar/flustered.webp": "60fba48bc07715a4a22ef2e2990ad890a09fd6fa88f162ccd7af8c6f45edb952",
+        "assets/femc/game/art/skins/sk-swim-lifeguard/portraits/solar/happy.webp": "a0d7d9bf8726a16bf364778e6e0d4df24fbee24403f6698b7ef2cb04771f630a",
+        "assets/femc/game/art/skins/sk-swim-lifeguard/portraits/solar/neutral.webp": "38d4318dc1f7c6adbf03b34de1c8ce783d961873f7cbd2e98225c039190ee10e",
+        "assets/femc/game/art/skins/sk-swim-lifeguard/portraits/solar/sad.webp": "943efac249fc34746d66ba918406b50a0abd2ca2d2534b2fff2fe015ef674275",
+        "assets/femc/game/art/skins/sk-swim-lifeguard/portraits/solar/serious.webp": "3cd8b35c785335979daebdb854dab7ff04b4b582bc186b45c54c7706f2a731fd",
+        "assets/femc/game/art/skins/sk-swim-lifeguard/portraits/solar/surprised.webp": "abd83b92ad3ae5e00ae2bbca66b66ac7f911c0abc09453ee66a561e85905b35d"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-swim-night-portraits.png",
+      "sourceNow": "New Adds/skin-sk-swim-night-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b5b48c8c08bc4822dfa6f7191a32013051c413b038fa96ac1c358bbdbf1aae74",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-night/portraits/solar/neutral.webp",
+      "skin": "sk-swim-night",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (862 x 851) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/solar/: serious, flustered, neutral, sad, happy, surprised",
+      "placement": "Night Swim’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-night/portraits/solar/flustered.webp": "1c6cee92a13344ad09b38910ac5eb609b7b13c8c6d1068fd415aef7186f486db",
+        "assets/femc/game/art/skins/sk-swim-night/portraits/solar/happy.webp": "4edb87bb5d3a252325dcb07065c40541ba7e4f3fbe323199a7e46a3d3e0ef62d",
+        "assets/femc/game/art/skins/sk-swim-night/portraits/solar/neutral.webp": "81446433ff76827e98441aade2f73a0d62cee72a194d99433552399f11ae9dfd",
+        "assets/femc/game/art/skins/sk-swim-night/portraits/solar/sad.webp": "3849cde1842bd7cf72a565aa88cc1b927fac1424ce55ca432b523760b90b314e",
+        "assets/femc/game/art/skins/sk-swim-night/portraits/solar/serious.webp": "4d0b89ce31c871adcc1e4bbf3f5a899fbdf3160905dc13e5785cad2212639564",
+        "assets/femc/game/art/skins/sk-swim-night/portraits/solar/surprised.webp": "4409120b7160377a8d20d3a4a7e0218bca562c7d6cad1506abf3fb0379eb2bd5"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-haechan-swim-portraits.png",
+      "sourceNow": "New Adds/skin-sk-haechan-swim-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3a1cade397e18079938a008c4f3f708196b51ec40d0eeb285b926d039d678ec8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-swim/portraits/haechan/neutral.webp",
+      "skin": "sk-haechan-swim",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (870 x 822) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/haechan/: neutral, flustered, happy, surprised, serious, sad",
+      "placement": "Boardwalk’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-swim/portraits/haechan/flustered.webp": "4d09d0641cd73928339470ad5b6cea7c7932667c54ab5a36fd27d256fbfdf460",
+        "assets/femc/game/art/skins/sk-haechan-swim/portraits/haechan/happy.webp": "a6e1c96e504a7254c48af6f731520f18163c021f8a11f072a83a953a98864124",
+        "assets/femc/game/art/skins/sk-haechan-swim/portraits/haechan/neutral.webp": "de5a1debc9aab1e22ee788f31b0ec7ed4e9818bc29dc14a4223afe779e71a138",
+        "assets/femc/game/art/skins/sk-haechan-swim/portraits/haechan/sad.webp": "04be4d4e33d73293e6e842ff322580cce2575421849e096a7ce13559728a1ff0",
+        "assets/femc/game/art/skins/sk-haechan-swim/portraits/haechan/serious.webp": "44b7fbb392ee5c4588783d901a14d70dcdf1a897ee28c07746d340e13d7536b9",
+        "assets/femc/game/art/skins/sk-haechan-swim/portraits/haechan/surprised.webp": "4b59863c50669e28fa0f4eb6ac7b6fc23b4c12d394ca74eaf14ede21bea3eed3"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-jungwon-swim-portraits.png",
+      "sourceNow": "New Adds/skin-sk-jungwon-swim-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "bb2a353d3f4a35235a71758ba54d7744a58cd7acd1b09a5a2abf4c1cd4620e92",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-swim/portraits/jungwon/neutral.webp",
+      "skin": "sk-jungwon-swim",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (873 x 862) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/jungwon/: flustered, serious, neutral, sad, happy, surprised",
+      "placement": "Pool Day’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-swim/portraits/jungwon/flustered.webp": "32c508b808818c1450d2ba00c96e70f956b4d22af8e9f19f0a81a31769612366",
+        "assets/femc/game/art/skins/sk-jungwon-swim/portraits/jungwon/happy.webp": "7a129f17ffd3ab8d0dbe6cf86dcb51997f9661ac0e3d0597d25f1d5aa32c5be2",
+        "assets/femc/game/art/skins/sk-jungwon-swim/portraits/jungwon/neutral.webp": "6e82a5d97987a4b513dab76a68294260e76cb85c35bec80849de2c7e656cf9fb",
+        "assets/femc/game/art/skins/sk-jungwon-swim/portraits/jungwon/sad.webp": "466eff22bb3757f6c2c27687e932fa6116ef99faaf915201f99f4e4e6bc9b2cf",
+        "assets/femc/game/art/skins/sk-jungwon-swim/portraits/jungwon/serious.webp": "d2067e280ba21f7965bcf04ab814337be6c1cc4e31eff5819f4da25b91fd4ed0",
+        "assets/femc/game/art/skins/sk-jungwon-swim/portraits/jungwon/surprised.webp": "78cce5c8f1dd1f586906533a87cd5d5b3d9fa1b6c8847d698ff0acb9f3455987"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-akihiko-swim-portraits.png",
+      "sourceNow": "New Adds/skin-sk-akihiko-swim-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b86f214030d78965fb1d00e6f6bc23688875311cc27c06ffbda3078d4a6ceaed",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-swim/portraits/akihiko/neutral.webp",
+      "skin": "sk-akihiko-swim",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (723 x 736) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/akihiko/: neutral, happy, sad, serious, surprised, blushing",
+      "placement": "Lifeguard Captain’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-akihiko-swim/portraits/akihiko/blushing.webp": "fb38fc46e4876bae42563f2e0c5e271a1a169195c5ec1753ec99ee4ded25d626",
+        "assets/femc/game/art/skins/sk-akihiko-swim/portraits/akihiko/happy.webp": "0cc5a80d0d7453bf4cd4e7e077ca7e554e27064daab72fb67369c6eb5902ffe5",
+        "assets/femc/game/art/skins/sk-akihiko-swim/portraits/akihiko/neutral.webp": "c77ce8053024a25c5f175fd877581edfdf3984626aa3e9afc91641a6f3c46759",
+        "assets/femc/game/art/skins/sk-akihiko-swim/portraits/akihiko/sad.webp": "73a97f3479f3858f6cc69cbd9a68886e06909cb38f8ce4c75c7a2e28f9e6adb4",
+        "assets/femc/game/art/skins/sk-akihiko-swim/portraits/akihiko/serious.webp": "790e67f975d6f80344c534add4de1974f7829063dab064e3aac21ef927de6900",
+        "assets/femc/game/art/skins/sk-akihiko-swim/portraits/akihiko/surprised.webp": "b7fb50c3747e890d9dac0052f6b4f75ff2187c6784fa98cb66c1df1189058a1d"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-yukari-swim-portraits.png",
+      "sourceNow": "New Adds/skin-sk-yukari-swim-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b301608f88748f8837c2150aaf09015de5e5190b876f75cc236fa3ac72e1e36d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-swim/portraits/yukari/neutral.webp",
+      "skin": "sk-yukari-swim",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (743 x 841) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/yukari/: neutral, happy, sad, serious, surprised, blushing",
+      "placement": "Beach Volley’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-yukari-swim/portraits/yukari/blushing.webp": "92d875e69623590c10d50e5e1ada0fa9a3d676e44a127e2eede22726ad098fa2",
+        "assets/femc/game/art/skins/sk-yukari-swim/portraits/yukari/happy.webp": "945855ee7b7c1be28cb8db21b7628efb8166e6d1dd91f29f9cab56f873c13a9b",
+        "assets/femc/game/art/skins/sk-yukari-swim/portraits/yukari/neutral.webp": "d2184b4c09aef4c81ac6e466b9591a080fbfe905acf0e58b24d3dbf7953608ec",
+        "assets/femc/game/art/skins/sk-yukari-swim/portraits/yukari/sad.webp": "79346335cd3eb8e2b683dc13e0bfcd28e6ab0f113c503e9a0e0b8b1450f5b33e",
+        "assets/femc/game/art/skins/sk-yukari-swim/portraits/yukari/serious.webp": "faab8f5c19d05760542f7ea483e6b55e1270d8ac2d5f56d066bb58e8b0526420",
+        "assets/femc/game/art/skins/sk-yukari-swim/portraits/yukari/surprised.webp": "1ecb0a59902c555717e546d044dc1601c3cd5237bf83c0edb44f02450e8925e5"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-cp-sunmoon-portraits.png",
+      "sourceNow": "New Adds/skin-sk-cp-sunmoon-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e5dfc79bcaf46ac0e5587cc44392f0f7c9c26e0c23ca0fbc97dd3f0c371d6263",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-sunmoon/portraits/solar/neutral.webp",
+      "skin": "sk-cp-sunmoon",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (862 x 851) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/solar/: serious, flustered, neutral, sad, happy, surprised",
+      "placement": "Sun Hoodie’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-sunmoon/portraits/solar/flustered.webp": "878c186f1f5984649eddb78d9b31847e10142fc38fb68611e97c828a8f5bee81",
+        "assets/femc/game/art/skins/sk-cp-sunmoon/portraits/solar/happy.webp": "b9b745fa3fda7a9d3e26b07382fb4af09308ff411d52d08bab0420c4a9d2b7ff",
+        "assets/femc/game/art/skins/sk-cp-sunmoon/portraits/solar/neutral.webp": "710957c8db616a5ddb52c4addf9c047b0ebbea51ac795b298a319a878be5ad15",
+        "assets/femc/game/art/skins/sk-cp-sunmoon/portraits/solar/sad.webp": "cd8c299374bdcfabd0b2190df0744de519f4b413a18adfcb3aa3963829b641f1",
+        "assets/femc/game/art/skins/sk-cp-sunmoon/portraits/solar/serious.webp": "cac306b4ff785bd23f023167b0ba0b8fa3c98b0cb8ab5ce75f0299af58a23f24",
+        "assets/femc/game/art/skins/sk-cp-sunmoon/portraits/solar/surprised.webp": "49fc088f88bafa424115128c07c40b96bc090c15e4e3d540e1c4732ee036bbcd"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-haechan-cp-sunmoon-portraits.png",
+      "sourceNow": "New Adds/skin-sk-haechan-cp-sunmoon-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "cb97337a657b8fcf5a7287276df81baa411ad9e31c17889a1169a129b29e4b9d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/portraits/haechan/neutral.webp",
+      "skin": "sk-haechan-cp-sunmoon",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (870 x 822) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/haechan/: neutral, flustered, happy, surprised, serious, sad",
+      "placement": "Moon Hoodie’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/portraits/haechan/flustered.webp": "88340e85045b1769d4c69319e5ec82e4cc219735ae2593b325c8f4d160ddd6df",
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/portraits/haechan/happy.webp": "0e5c389cce67240891ef947f300ab286537c80ad3b21665edd59b1be568b3b53",
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/portraits/haechan/neutral.webp": "198a4d4c1ae3d242079afcdffba5949a856d5af69de4379fbff80742f4410340",
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/portraits/haechan/sad.webp": "2d51d81ef50e413473627dabd5b2e729294d6e834c09ea9ecfe5bb9b91af67b1",
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/portraits/haechan/serious.webp": "53930e12cb8bc44c6061588e6e8706ab2adab8ed7de525f22ea3091805d88a20",
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/portraits/haechan/surprised.webp": "45329404fb3a159787be90262b0d0dd9445a67088a7aafaab841512e0d755d12"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-cp-drive-portraits.png",
+      "sourceNow": "New Adds/skin-sk-cp-drive-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c35c60d235a77e55546e3dd5aa05a5891f27a80d1c701a26bca60b30c861ab00",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-drive/portraits/solar/neutral.webp",
+      "skin": "sk-cp-drive",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (862 x 851) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/solar/: serious, flustered, neutral, sad, happy, surprised",
+      "placement": "Midnight Drive’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-drive/portraits/solar/flustered.webp": "06fec45b8644cb8aaf4a7f65ca04b8a4ce8f68b7e9873b1a1944675c49ba7773",
+        "assets/femc/game/art/skins/sk-cp-drive/portraits/solar/happy.webp": "085737429619eb5b75939c1fdfd7911cdcb07053347a88b135806cc28233c5ad",
+        "assets/femc/game/art/skins/sk-cp-drive/portraits/solar/neutral.webp": "dea5524e76e0090e6c46d897d273eae69efb58eb40ffb05e5d0997d394d73af2",
+        "assets/femc/game/art/skins/sk-cp-drive/portraits/solar/sad.webp": "23d737560eb88f5485001aaf586f7998605e4a0b52b37b4e7914aa60c47139e9",
+        "assets/femc/game/art/skins/sk-cp-drive/portraits/solar/serious.webp": "a736fae9e227ed76a5a68c1e341852ecf101b5e0981d1200d8c86e1d576e9a3b",
+        "assets/femc/game/art/skins/sk-cp-drive/portraits/solar/surprised.webp": "7153ef7660a66e6543339128469cf3fd8942883c44674be080e3f5861ae0c400"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-haechan-cp-drive-portraits.png",
+      "sourceNow": "New Adds/skin-sk-haechan-cp-drive-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b9977a86e12b12a2f51234d430fdc9e49368a298279977eda2703f4f6126011e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-drive/portraits/haechan/neutral.webp",
+      "skin": "sk-haechan-cp-drive",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (870 x 822) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/haechan/: neutral, flustered, happy, surprised, serious, sad",
+      "placement": "Midnight Drive’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/portraits/haechan/flustered.webp": "22420210bf6e09c1b7b662c89c4dfed715598974e874d7381077d10dbb1b3187",
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/portraits/haechan/happy.webp": "f19d6e813546eb4e6644cd0214b4c753d7e2cd715353237b28f3c613ac2a884d",
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/portraits/haechan/neutral.webp": "f5cc4795cd57f138b07a9f1add2ca3ddff5644ca21997a9f61a95d161133ea8f",
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/portraits/haechan/sad.webp": "08eac3e4d23d28bb868b95854607080de6eb1eb526bc18c54d3cad7492646560",
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/portraits/haechan/serious.webp": "d4f03c7f4cb052bebca7d29f982ad0ed230d9907b80a3527228c18ccf1c3563b",
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/portraits/haechan/surprised.webp": "433718cb17ba19661f5257f570a95ca418c50aab2a7e28678d1ff56de51fe97a"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-cp-afterhours-portraits.png",
+      "sourceNow": "New Adds/skin-sk-cp-afterhours-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c2e9133b6fa0c0a77d52fa2b706bbd07809ed3dec3adccc910627eee1d09b583",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/portraits/solar/neutral.webp",
+      "skin": "sk-cp-afterhours",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (862 x 851) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/solar/: serious, flustered, neutral, sad, happy, surprised",
+      "placement": "After Hours’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/portraits/solar/flustered.webp": "be68fe7add505bf95f290c3b43f05e4933286484c1eaa15f89639ded1943e237",
+        "assets/femc/game/art/skins/sk-cp-afterhours/portraits/solar/happy.webp": "0ce73aa57d1ac588275bcb9ee427ad157518cf1b38a137c6a9773f9f30657ed6",
+        "assets/femc/game/art/skins/sk-cp-afterhours/portraits/solar/neutral.webp": "bcba3e2236deb1cc1336515a63b9ec6ba2db911772871cd9c7406d3eeab52d2d",
+        "assets/femc/game/art/skins/sk-cp-afterhours/portraits/solar/sad.webp": "9be8f2cc25359e9f835d7d2d44208ffe7b9ca88c951600a8b9c2703b3fd24dad",
+        "assets/femc/game/art/skins/sk-cp-afterhours/portraits/solar/serious.webp": "7e57e0ab0a885c8d264b65861a9ad4a885c023186e40bf0659b047a3a63e2768",
+        "assets/femc/game/art/skins/sk-cp-afterhours/portraits/solar/surprised.webp": "d79b2a42819cefe41c113102b812ffb1e9d3654e1646599ef1fc4e05249b44d1"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-jungwon-cp-afterhours-portraits.png",
+      "sourceNow": "New Adds/skin-sk-jungwon-cp-afterhours-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9989c185d5f0bef233db81b3f2c43d9cb342334b1c221df4ec8b15981252fc4c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/portraits/jungwon/neutral.webp",
+      "skin": "sk-jungwon-cp-afterhours",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (873 x 862) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/jungwon/: flustered, serious, neutral, sad, happy, surprised",
+      "placement": "After Hours’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/portraits/jungwon/flustered.webp": "40738c02a6f4c10a9002a22adf8c67049c462d8ac5e02b69229addbf760e10f9",
+        "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/portraits/jungwon/happy.webp": "aef3f3d971b098590b129ec7d2cf22f3c0ffd461d8b55f6cd501e6b61e379810",
+        "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/portraits/jungwon/neutral.webp": "3f78dc5e71d063c3facfae8ccf6868d6527763cbe55753068de90f560d08d1f1",
+        "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/portraits/jungwon/sad.webp": "6d7b4e4276232fe27ee1bb71e8e948272ea7f3293a0d1efe140ecb9eb35546db",
+        "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/portraits/jungwon/serious.webp": "2fbc064b5ac68ab6deda9bf1f2ac2f3a045639e6f4d650680f7ec09d0dd81aa5",
+        "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/portraits/jungwon/surprised.webp": "eb294e7e92a58a9c11fccffbac10703bb37e9ac20d1d28daf81927052cb817f8"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-cp-moviedate-portraits.png",
+      "sourceNow": "New Adds/skin-sk-cp-moviedate-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e9b8b723fcb807aac5b1fe1dfb9ead66520156fb3b51190d03f8783392033660",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-moviedate/portraits/solar/neutral.webp",
+      "skin": "sk-cp-moviedate",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (862 x 851) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/solar/: serious, flustered, neutral, sad, happy, surprised",
+      "placement": "Movie Date’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-moviedate/portraits/solar/flustered.webp": "ab051be102bd2948efeb2935de0e83e7d4bff192b479bd18861c3aea3cecc783",
+        "assets/femc/game/art/skins/sk-cp-moviedate/portraits/solar/happy.webp": "36466dc7aa82a3590893ab97bac4e36a8ff5bd30ff8ec83e3060959b411229e3",
+        "assets/femc/game/art/skins/sk-cp-moviedate/portraits/solar/neutral.webp": "614277d549d7ae06c8d31030169017a75b48cbb43950e8520d32468dde299ba5",
+        "assets/femc/game/art/skins/sk-cp-moviedate/portraits/solar/sad.webp": "b4bcba807d2ba88998efe1d7c8fae218b867ef3a33fb6d81b6804238708293ab",
+        "assets/femc/game/art/skins/sk-cp-moviedate/portraits/solar/serious.webp": "cc35d01e2000d33ad8753f262248f5fe86c29b36b02a0a8d74182dc19459818e",
+        "assets/femc/game/art/skins/sk-cp-moviedate/portraits/solar/surprised.webp": "a7c4a549771e17018b20248cab19ec89ce641aa8a107a9117899649d329e7654"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-jungwon-moviedate-portaits.png",
+      "sourceNow": "New Adds/skin-sk-jungwon-moviedate-portaits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a9277ae86051ded404a2396c61fc4c10d1264a8b8a783de598ef305958e3c895",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/portraits/jungwon/neutral.webp",
+      "skin": "sk-jungwon-cp-moviedate",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (873 x 862) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/jungwon/: flustered, serious, neutral, sad, happy, surprised",
+      "placement": "Movie Date’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "note": "Kat’s file name has a typo (portaits) and no cp-: it is Jungwon’s half of Movie Date, sk-jungwon-cp-moviedate",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/portraits/jungwon/flustered.webp": "9585948bb33f1b4efaf6e2c58c92f609de074aeb6f57eee93c7ca89d18bf4baf",
+        "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/portraits/jungwon/happy.webp": "b46aadf1342fa0964d0005245ea6021b0de2cad6449fe3b4702806485d58c4b4",
+        "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/portraits/jungwon/neutral.webp": "5d490fdc854cc4b681396263be878a144711193e662ed56d4e25ab991d0e1c75",
+        "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/portraits/jungwon/sad.webp": "081c3634b7d9449e03932455989ef095cfba23496890945e78ca3ffd98d8275c",
+        "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/portraits/jungwon/serious.webp": "3bedb278bf0b151ec4196d1177edcad99176f458c3e946e3953e3fd4002d5d67",
+        "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/portraits/jungwon/surprised.webp": "9f40faa84afef54376147eca04208a0135273e9afb9252372d3dfaaa39a3349a"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-cp-ringside-portraits.png",
+      "sourceNow": "New Adds/skin-sk-cp-ringside-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "016ee306cb6996112bc473858848c6e2432574afad38d7fe59f7cfed347424b5",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-ringside/portraits/solar/neutral.webp",
+      "skin": "sk-cp-ringside",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (862 x 851) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/solar/: serious, flustered, neutral, sad, happy, surprised",
+      "placement": "Ringside’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-ringside/portraits/solar/flustered.webp": "cbd309cb19d84a8abdb8a5c8862e708373ab40e5be85fe4291565f10276381a7",
+        "assets/femc/game/art/skins/sk-cp-ringside/portraits/solar/happy.webp": "0536e30ff35372af09b5694d8629f9b7a02fd3a79a937c8a6d35a5fced6763d8",
+        "assets/femc/game/art/skins/sk-cp-ringside/portraits/solar/neutral.webp": "8e3d6943bd094bbd6014bcf5aa574d6509bb950eb7f6fae1fe6e7202adea041e",
+        "assets/femc/game/art/skins/sk-cp-ringside/portraits/solar/sad.webp": "3199bc0f86ca7f60752c3c9f9e792ce7420b2a575076b4170bf1df81a58670b9",
+        "assets/femc/game/art/skins/sk-cp-ringside/portraits/solar/serious.webp": "9a248c2f19a3372592559e9242c52b9f3f8c89a344249e10ddf788c8e42f180f",
+        "assets/femc/game/art/skins/sk-cp-ringside/portraits/solar/surprised.webp": "fcbc6780db34ed882001c257eba0c4fed16be22ee17e9e7b2f061dc810a29491"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-akihiko-cp-ringside-portraits.png",
+      "sourceNow": "New Adds/skin-sk-akihiko-cp-ringside-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "69966e9d741ab5d75c5ba14ad6b33d01786428a7b1bcc2e46872be416706bfd2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-cp-ringside/portraits/akihiko/neutral.webp",
+      "skin": "sk-akihiko-cp-ringside",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (723 x 736) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/akihiko/: neutral, happy, sad, serious, surprised, blushing",
+      "placement": "Ringside’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-akihiko-cp-ringside/portraits/akihiko/blushing.webp": "cdde30fcdb433dd4d65cb75a4e3fab76680dd1e572000d9e74ad95183a61cc8a",
+        "assets/femc/game/art/skins/sk-akihiko-cp-ringside/portraits/akihiko/happy.webp": "1c22339bf8bbfa216a54221d7b2bd3e053bfd6220c9149b12793ffaab749da41",
+        "assets/femc/game/art/skins/sk-akihiko-cp-ringside/portraits/akihiko/neutral.webp": "096c9231f9dea4fb10946c9c4383d5f6b591afc552eab275882445313596934d",
+        "assets/femc/game/art/skins/sk-akihiko-cp-ringside/portraits/akihiko/sad.webp": "4bcd9a0d0dcbe80e0283cb9c95b12f09a2aba4f41b65c2c6b27c6d436cfe93b8",
+        "assets/femc/game/art/skins/sk-akihiko-cp-ringside/portraits/akihiko/serious.webp": "ed33a8de2ead74e0ffe783ca52f1b78184df4109143dc658a2fa713b7fc4fcdb",
+        "assets/femc/game/art/skins/sk-akihiko-cp-ringside/portraits/akihiko/surprised.webp": "ea9de2defcdf9fc82eef5bf67a73ae2965ac637a8e468c357bedad54c9c2543c"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-cp-festival-portraits.png",
+      "sourceNow": "New Adds/skin-sk-cp-festival-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a9ca1a381b9b66a9318c9f2389bd6100ee0812f31b39aaaa3a4e051497d012ae",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-festival/portraits/solar/neutral.webp",
+      "skin": "sk-cp-festival",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (862 x 851) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/solar/: serious, flustered, neutral, sad, happy, surprised",
+      "placement": "Summer Festival’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-festival/portraits/solar/flustered.webp": "ffcb4395ea342eb56506a4a17d7d8f05846d2ed1fb769460b9137625a9a7a44d",
+        "assets/femc/game/art/skins/sk-cp-festival/portraits/solar/happy.webp": "7f84470b100bbb8b9cbe648546625fbcc9cbbb8fc95be21d27c4bc5d5349e18f",
+        "assets/femc/game/art/skins/sk-cp-festival/portraits/solar/neutral.webp": "eb8af022c4dfb7417690a834922e8007e077b0bcf3f6274fd9af9f4a8a74ad86",
+        "assets/femc/game/art/skins/sk-cp-festival/portraits/solar/sad.webp": "b5344e76552de1a55e433ac38cd6fc870a7e90828ae6b311ed760de2d7001330",
+        "assets/femc/game/art/skins/sk-cp-festival/portraits/solar/serious.webp": "9d40e489603cbebecf8013cac1d604452a93d2dc8f65dbc569328536d6451290",
+        "assets/femc/game/art/skins/sk-cp-festival/portraits/solar/surprised.webp": "fd728afb08a9bfd0c4f9428796801f246bb5f30de90a529f2b47b95d3dcb303e"
+      }
+    },
+    {
+      "batch": 114,
+      "source": "skin-sk-akihiko-cp-festival-portraits.png",
+      "sourceNow": "New Adds/skin-sk-akihiko-cp-festival-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "19b6a8d3cc356161654562fecc39a835f0bcf41649fef6e433d9e2d310ec72d2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-cp-festival/portraits/akihiko/neutral.webp",
+      "skin": "sk-akihiko-cp-festival",
+      "conversion": "already transparent sheet: cut and placed as batch 106 (columns on a min-cost seam near the thirds, rows at the emptiest line near the middle; each cell scaled and placed on the base canvas (723 x 736) by normalized cross-correlation of the face crop against the fighter's own portraits, best assignment over all of them; busts ending above the canvas bottom carried down by their last clean row); tools/femc-wardrobe.py portraits (WebP q90); scratchpad script, source unchanged",
+      "sheetOrder": "cells in reading order, matched by face correlation to portraits/akihiko/: neutral, happy, sad, serious, surprised, blushing",
+      "placement": "Summer Festival’s scene portraits (cosmetics.js portrait, \"Outfits in scene portraits\" on; ready.js lists them)",
+      "knownLimits": "straight edges where a bust was cut at a cell line",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-akihiko-cp-festival/portraits/akihiko/blushing.webp": "3813a054d0173a9191872b1a3e609824d15dfec97c2e07c2d4e167f3b62d41e8",
+        "assets/femc/game/art/skins/sk-akihiko-cp-festival/portraits/akihiko/happy.webp": "4c9bd2ec651494e04fd55bc9a32cc157ba27d10140ae500fb20bdf01250cd9a5",
+        "assets/femc/game/art/skins/sk-akihiko-cp-festival/portraits/akihiko/neutral.webp": "80c57dc5bfc0959be686e3d4ffdca3aac66ccefae68333690ea606d675455e07",
+        "assets/femc/game/art/skins/sk-akihiko-cp-festival/portraits/akihiko/sad.webp": "ff5f53c9562a1f279b73b3b0140c25cb1615591aac918f5150b4d640aa36acfb",
+        "assets/femc/game/art/skins/sk-akihiko-cp-festival/portraits/akihiko/serious.webp": "460424ba4f6070f2ebcf27ef493d72e8ba34c56a619ccd177e8263bcbcd38331",
+        "assets/femc/game/art/skins/sk-akihiko-cp-festival/portraits/akihiko/surprised.webp": "03c4fe92fa0f501a5cd87f7ce5e38161d7240fb0a0aca1fe66edb7a575d8baea"
+      }
     }
   ],
   "batch1Validation": {
@@ -23394,5 +24353,14 @@
     "headless": "end screen with the roll mid-way at 1440x900 and 390x844; only met people's stills, Solar last, the missing Ken skipped; Enter skips to the buttons; reduced motion has no drift or scroll; leaving the end screen stops it; the album's Credits row; no console errors",
     "tests": "femc_march (end screen)",
     "html": "femc-game.html ui v47, game.css v32, menu v35"
+  },
+  "batch114Validation": {
+    "date": "2026-11-01",
+    "sources": "39 (Swim Season: seven looks, pose sheet and portraits each; couple outfits: twelve halves, pose sheet and portraits each; Tarot Arcana: The Sun's pose sheet only, its portraits still on Kat's list). All already transparent; left in New Adds unchanged. Kat's Lifeguard on Duty files are swapped by name (the -posesheet file holds the portraits) and Jungwon's Movie Date files lack cp- (one is spelled -portaits); mapped by content to sk-swim-lifeguard and sk-jungwon-cp-moviedate.",
+    "looked_at": "every pose frame and portrait on magenta beside the fighter's own base faces (scratchpad contact sheets): order, stray background, clipped limbs, expression names",
+    "portraits": "expressions matched by face correlation (Solar, Haechan, Jungwon as their earlier batches; Akihiko's faces are blushing / happy / neutral / sad / serious / surprised). Akihiko's surprised cell first matched a smaller head, so a cell far off the sheet's median scale is re-matched at that scale. Yukari has no base 'happy' face: her order (neutral, happy, sad, serious, surprised, blushing, the same as Akihiko's sheets) was read by eye and her happy cell placed at the sheet's scale.",
+    "headless": "scratchpad verify (tests/femc_browser.Page): all 20 looks ready, in the pool and in their banners; each equipped in Menu → Wardrobe (preview wears it), desktop and phone (no sideways scroll); scene portraits with the toggle on (Yukari's swim happy, Akihiko's festival blushing, Haechan's Midnight Drive, Solar's Pink Lagoon), The Sun falling back to her own face, toggle off back to their own; a real fight with Solar and Akihiko in Summer Festival, Yukari in Beach Volley and Haechan in Midnight Drive on the battlefield; no console errors",
+    "tests": "femc_cosmetics --only banner,equip,pending,newpending,party,viewer passed (newpending now 58 outfits; Swim Season in July and August, Tarot Arcana in January, the couple sets' met-only partner halves)",
+    "html": "femc-game.html ready.js v18, cosmetics.js v27"
   }
 }
