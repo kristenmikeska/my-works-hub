@@ -24,7 +24,7 @@ Kat's decisions:
 - Approved: 8 tiers, about 40 nodes each, points for roughly two of three builds (respec for the rest); drawn radially like Solar's sun, smaller orbits around her; top nodes need high link ranks and many boost Solar.
 - [x] Design sheet signed off Oct 31 (`FEMC-SKILL-TREES-DESIGN.md`)
 - [x] Build it (Oct 31: the orbits are in; CLAUDE.md "Party skill trees, redesigned: built")
-- [ ] Late-game branches so nobody maxes out early
+- [x] Late-game branches so nobody maxes out early (Oct 31: `FEMC-LATE-BRANCHES-DESIGN.md` signed off and built; CLAUDE.md "Late-game skill branches: built")
 
 ## 5. Tartarus
 - [x] Fill in the gaps between floors (now 8 blocks, 68 stopping floors, top at 254) (Oct 31: 113 floors; CLAUDE.md "Tartarus, phase 1 of the finish roadmap: built")
