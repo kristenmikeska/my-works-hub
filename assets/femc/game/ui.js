@@ -1217,6 +1217,8 @@
       <aside class="g-px-info g-tk" aria-live="polite"></aside>
       <p class="g-city-keys" aria-hidden="true"><span><i>↔</i>Choose</span><span><i>Enter</i>Go</span>${night ? '<span><i>Esc</i>Back</span>' : ''}</p></section>`, 'is-map is-city');
     const sec = main.querySelector('.g-city'), panel = main.querySelector('.g-px-info');
+    // The map covers the backdrop: the weather (weather.js) moves onto it, outdoors, over the art and under the pins and panels.
+    window.FemcWeather?.field('city', sec.querySelector('.g-city-map'), { first: true });
     const paint = b => {
       const a = G.areaById(b.dataset.px), h = here(a);
       main.querySelectorAll('[data-px]').forEach(x => x.classList.toggle('px-on', x === b));

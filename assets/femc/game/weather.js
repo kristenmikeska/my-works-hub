@@ -1,6 +1,6 @@
 /* FEMC revamp: weather you can see and hear (P5-style), 2026-10-23. Rules are in core.js (wx, forecast: the calendar's
    kind and level for each day); this file only draws and plays them.
-   Where: the field screens' backdrop (ui.js setBg → field) and every scene (scene.js paintVis → scene, sceneEnd). The topmost
+   Where: the field screens' backdrop (ui.js setBg → field; the Go Out city map, field('city', map, { first })) and every scene (scene.js paintVis → scene, sceneEnd). The topmost
    one gets the one overlay (.g-wxfx: a canvas, a tint, fog, a lightning flash), moved between them, so only one ever runs.
    Indoors or out comes from the background image's name (places.js weatherFx): outdoors the rain and snow fall; indoors
    (any room with a window) a few drops run down the glass and the sound is muffled; sealed rooms (Tartarus, the Velvet
@@ -57,7 +57,9 @@ window.FemcWeather = (() => {
   const active = () => { for (let i = scenes.length - 1; i >= 0; i--) { if (scenes[i].el.isConnected) return scenes[i]; scenes.splice(i, 1); } return field; };
   function mount(c) {
     if (!c) { host.remove(); return; }
-    const parent = c.el, before = c.before ? parent.querySelector(c.before) : null;
+    const parent = c.el;
+    if (c.first) { if (parent.firstChild !== host) parent.prepend(host); return; } // under everything else in it (the Go Out map's pins)
+    const before = c.before ? parent.querySelector(c.before) : null;
     if (host.parentNode !== parent || (before && host.nextSibling !== before)) parent.insertBefore(host, before);
   }
   function apply() {
@@ -277,8 +279,9 @@ window.FemcWeather = (() => {
 
   /* ── API (ui.js, scene.js) ── */
   return {
-    // The field screens' backdrop (.g-stage), after each setBg.
-    field(slug, el) { field = { el: el || document.querySelector('.g-stage'), slug: slug || '', before: '.g-stripes' }; if (!field.el) field = null; apply(); },
+    // The field screens' backdrop (.g-stage), after each setBg. The Go Out city map (ui.js goOut, 2026-11-01) covers the backdrop,
+    // so it calls this again with its own map: field('city', mapEl, { first: true }), the overlay over the map art, under the pins.
+    field(slug, el, o = {}) { field = { el: el || document.querySelector('.g-stage'), slug: slug || '', before: '.g-stripes', first: !!o.first }; if (!field.el) field = null; apply(); },
     // A scene's backdrop changed (scene.js paintVis). opts: { url, place, time, dark, cg, replay, velvet }.
     scene(el, o = {}) {
       let c = scenes.find(x => x.el === el);
