@@ -1,0 +1,384 @@
+/* Solstice restyle: Go Out as a Persona 3 Reload-style city map, and the area view as a split screen (Kat, Oct 31: option C
+   "City map" of mockups/solstice-ui/goout.html, polished). Pink and black only (the :root tokens of game.css and
+   solstice-ui.css); no gold, lilac, navy or green UI. Loaded after solstice-pages2.css. Markup: ui.js goOut / areaView.
+   The pins are still .g-px-card (data-area, data-px) and the area cards still .g-pcard (data-link, data-act, data-job,
+   data-trace); the side panel is still .g-px-info. Pin positions live in ui.js MAP_PINS (one small table).
+
+   Map:  .g-city > .g-city-view (the screen-filling map; a pannable strip on phones) > .g-city-pan > .g-city-map (16:9, the
+         art or the drawn poster, the pins), .g-city-head (heading + time / weather badge), .g-tk (the ticket panel),
+         .g-city-keys (the key legend).
+   Area: .g-city-area: the stage's place photo shows above a pink diagonal cut (painted on #g-main, at --cut, set by ui.js
+         cityCut), the people as hexagons on the cut, the activities as slanted rows, the ticket on the right. */
+
+.g-city, .g-city-area { --tk: min(390px, 27vw); --cs-sea: #1d0a17; --cs-land: #2a0f22; --cs-edge: var(--pink); --ease: cubic-bezier(.2, .9, .3, 1); }
+
+/* ───────────────────────────── the map ───────────────────────────── */
+.g-main.is-city { padding: 0; overflow: hidden; }
+.g-map.g-city { position: absolute; inset: 0; z-index: 0; width: auto; max-width: none; margin: 0; animation: g-city-in .3s ease both; }
+@keyframes g-city-in { from { opacity: 0; } }
+
+/* The map fills the whole screen (under the HUD), cover-sized so the pins stay on the art; it's wide enough that every pin
+   (x ≤ 64%) clears the ticket, and a little letterboxing beats losing pins on very wide or narrow windows. */
+.g-city-view { position: fixed; inset: 0; z-index: -1; overflow: hidden; background-color: #0c0309;
+  background-image: repeating-linear-gradient(135deg, transparent 0 7px, rgba(255, 79, 158, .05) 7px 8px); }
+.g-city-pan { display: contents; }
+.g-city-map { position: absolute; left: 0; top: 50%; translate: 0 -50%; aspect-ratio: 16 / 9;
+  width: max(calc(100vh * 16 / 9), min(calc((100vw - var(--tk) - 3vw - 24px) / .64), calc(100vh * 16 / 9 * 1.18)));
+  background-color: var(--cs-sea);
+  background-image: linear-gradient(rgba(255, 140, 192, .055) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 140, 192, .055) 1px, transparent 1px);
+  background-size: 2.5% 4.444%; transition: scale .36s cubic-bezier(.55, 0, .8, .2), filter .36s; }
+.g-city.has-art .g-city-map { background: var(--art) center / cover no-repeat; }
+.g-city.art-dim .g-city-map { filter: brightness(.55) saturate(.85); }
+/* A soft dark corner behind the heading, and a fade toward the ticket, over the map but under the pins */
+.g-city-map::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(ellipse 46% 42% at 0 4%, rgba(12, 3, 9, .86), rgba(12, 3, 9, 0)), linear-gradient(90deg, rgba(12, 3, 9, 0) 56%, rgba(12, 3, 9, .5) 72%); }
+
+/* The drawn poster (until Kat's map art lands) */
+.g-city-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.g-cs-land { fill: var(--cs-land); stroke: var(--cs-edge); stroke-width: 2.4; stroke-linejoin: round; }
+.g-cs-river { fill: none; stroke: var(--cs-sea); stroke-width: 12; stroke-linecap: round; }
+.g-cs-blocks rect { fill: rgba(255, 140, 192, .06); }
+.g-cs-road { fill: none; stroke: rgba(255, 214, 232, .3); stroke-width: 2.5; stroke-dasharray: 1 7; stroke-linecap: round; }
+.g-cs-rail-bed { fill: none; stroke: #0c0309; stroke-width: 9; stroke-linecap: round; }
+.g-cs-rail { fill: none; stroke: var(--pink-2); stroke-width: 3.5; stroke-dasharray: 14 8; animation: g-cs-rail 1.6s linear infinite; }
+@keyframes g-cs-rail { to { stroke-dashoffset: -44; } }
+.g-cs-lights circle { fill: var(--pink-3); }
+.g-cs-lights { opacity: 0; }
+.g-cs-ml { position: absolute; z-index: 1; font: italic 900 clamp(30px, 4.4vw, 64px)/.8 var(--cond); color: transparent; -webkit-text-stroke: 1.5px rgba(255, 140, 192, .34);
+  text-transform: uppercase; letter-spacing: .02em; white-space: nowrap; pointer-events: none; }
+.g-cs-ml.sm { font: italic 400 clamp(12px, 1.05vw, 16px)/1 var(--serif); color: rgba(255, 140, 192, .6); -webkit-text-stroke: 0; letter-spacing: .3em; }
+.g-cs-compass { position: absolute; z-index: 1; font: italic 900 14px/1 var(--cond); color: var(--pink-2); text-align: center; letter-spacing: .1em; pointer-events: none; }
+.g-cs-compass::before { content: ""; display: block; width: 12px; height: 26px; margin: 0 auto 4px; background: linear-gradient(var(--pink) 50%, var(--paper) 50%); clip-path: polygon(50% 0, 100% 100%, 50% 80%, 0 100%); }
+/* Evening: the same city, darker, with its windows lit */
+.g-city.late { --cs-sea: #0a0207; --cs-land: #160710; --cs-edge: rgba(255, 79, 158, .75); }
+.g-city.late .g-cs-blocks rect { fill: rgba(255, 140, 192, .05); }
+.g-city.late .g-cs-lights { opacity: 1; filter: drop-shadow(0 0 4px var(--pink)); }
+.g-city.late .g-cs-road { stroke: rgba(255, 140, 192, .32); }
+
+/* ── Kat's painted map (.has-art): the whole picture shows under the HUD, as big as fits beside the ticket (which sits over its
+   open sea on the right), the heading moves to the bottom left over the coast, the key legend under the ticket ── */
+#g-app:has(> .g-main .g-city.has-art) .g-bg { background-image: none !important; }
+.g-city.has-art { --cs-sea: #13050e; }
+.g-city.has-art .g-city-map::after { background: radial-gradient(ellipse 42% 40% at 0 100%, rgba(12, 3, 9, .8), rgba(12, 3, 9, 0)), linear-gradient(90deg, rgba(12, 3, 9, 0) 78%, rgba(19, 5, 14, .6)); }
+@media (min-width: 701px) and (min-aspect-ratio: 13/10) {
+  .g-city.has-art .g-city-view { position: absolute; container-type: size; background: var(--cs-sea); }
+  .g-city.has-art .g-city-map { width: min(100cqh * 16 / 9, (100cqw - var(--tk) - 3vw - 16px) / .79); }
+  .g-city.has-art .g-city-head { top: auto; bottom: 14px; max-width: min(520px, 36vw); }
+  .g-city.has-art .g-city-head[data-ghost]::before { display: none; }
+  .g-city.has-art .g-city-head h1 { font-size: clamp(40px, 5vw, 72px); }
+  .g-city.has-art .g-city-head .g-map-sub { display: none; }
+  .g-city.has-art .g-city-head .g-btn { position: absolute; left: 0; bottom: calc(100% + 8px); margin: 0; }
+  .g-main .g-city.has-art .g-px-info.g-tk { bottom: 44px; }
+  .g-city.has-art .g-city-keys { left: auto; right: 3vw; bottom: 12px; }
+}
+.g-city.has-art .g-pin-off { opacity: .9; }
+.g-city.has-art .g-pin-off .g-pin-lb b { background: rgba(12, 3, 9, .9); }
+@media (max-height: 560px) and (min-aspect-ratio: 13/10) and (min-width: 701px) { .g-city.has-art .g-city-head .g-kicker { display: none; } }
+/* A pin near the top shows its photo below its label (under the faces) instead of above */
+.g-pin.top::before { bottom: auto; top: 46px; translate: 0 -8px; }
+
+/* ── Pins: a diamond, a slanted name label, the faces of who's there; the chosen one pulses and its label turns paper ── */
+.g-main .g-city .g-pin.g-px-card { all: unset; position: absolute; z-index: 2; left: calc(var(--x) * 1%); top: calc(var(--y) * 1%); width: 0; height: 0; cursor: pointer;
+  -webkit-tap-highlight-color: transparent; }
+.g-main .g-city .g-pin.g-px-card.px-on { z-index: 4; }
+.g-pin-pt, .g-pin-ring, .g-pin-ct, .g-pin-lb, .g-pin-off .g-pin-pt { position: absolute; }
+.g-pin-pt { left: -10px; top: -10px; width: 20px; height: 20px; box-sizing: border-box; background: var(--violet); border: 2px solid var(--pink-2); rotate: 45deg;
+  box-shadow: 3px 3px 0 rgba(12, 3, 9, .8); transition: scale .2s var(--ease), background .15s, border-color .15s; animation: g-pin-in .42s var(--ease) calc(var(--k, 0) * 45ms) both; }
+.g-pin.busy .g-pin-pt { background: var(--pink); border-color: var(--paper); }
+.g-pin.home .g-pin-pt { background: var(--paper); border-color: var(--pink); }
+.g-pin-ring { left: -23px; top: -23px; width: 46px; height: 46px; box-sizing: border-box; border: 2px solid var(--pink); rotate: 45deg; opacity: 0; pointer-events: none; }
+.g-pin-ct { z-index: 1; left: -27px; top: -31px; min-width: 20px; height: 20px; padding: 0 5px; box-sizing: border-box; border-radius: 10px; background: var(--paper); color: var(--deep);
+  font: italic 900 13px/20px var(--cond); text-align: center; box-shadow: 2px 2px 0 var(--pink); pointer-events: none; }
+.g-pin-lb { left: 17px; top: -14px; display: grid; justify-items: start; gap: 5px; animation: g-pin-lb .4s var(--ease) calc(var(--k, 0) * 45ms + 80ms) both; }
+.g-pin.lft .g-pin-lb, .g-pin-off.lft .g-pin-lb { left: auto; right: 17px; justify-items: end; }
+.g-pin-lb b { display: block; padding: 5px 15px 5px 11px; background: rgba(16, 5, 12, .93); color: var(--pink-3); white-space: nowrap; font: italic 900 clamp(15px, 1.25vw, 18px)/1 var(--cond);
+  letter-spacing: .015em; text-transform: uppercase; clip-path: polygon(7% 0, 100% 0, 93% 100%, 0 100%); box-shadow: inset 3px 0 0 var(--pink);
+  transform-origin: 0 50%; transition: transform .18s var(--ease), background .12s, color .12s; }
+.g-pin.lft .g-pin-lb b { transform-origin: 100% 50%; }
+.g-pin .g-px-faces { display: flex; flex-wrap: nowrap; gap: 0; margin: 0 0 0 6px; }
+.g-pin.lft .g-px-faces { margin: 0 6px 0 0; }
+.g-pin .g-px-face { width: 26px; height: 26px; border-width: 2px; font-size: 13px; box-shadow: 2px 2px 0 var(--pink); }
+.g-pin .g-px-face + .g-px-face { margin-left: -7px; }
+.g-pin .g-px-face.more { font-size: 11px; }
+/* The chosen pin: a pulse, a bigger pink diamond, the paper label, and the place's photo popping up over it */
+.g-pin.px-on .g-pin-pt { scale: 1.35; background: var(--pink); border-color: var(--paper); }
+.g-pin.px-on .g-pin-ring { animation: g-pin-ping 1.4s ease-out infinite; }
+.g-pin.px-on .g-pin-lb b { background: var(--paper); color: var(--deep); transform: scale(1.12); box-shadow: inset -6px 0 0 var(--pink), 4px 4px 0 rgba(12, 3, 9, .6); }
+.g-pin:hover:not(.px-on) .g-pin-lb b { color: var(--paper); background: rgba(74, 24, 56, .96); }
+.g-pin:focus-visible .g-pin-lb b { outline: 2px dashed var(--pink-3); outline-offset: 3px; }
+.g-pin::before { content: ""; position: absolute; left: 14px; bottom: 22px; width: clamp(120px, 10vw, 156px); aspect-ratio: 16 / 9; opacity: 0; translate: 0 8px; pointer-events: none;
+  background: var(--pic) center / cover; clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%); box-shadow: inset 0 0 0 3px var(--paper);
+  filter: drop-shadow(7px 7px 0 var(--pink)); transition: opacity .18s, translate .22s var(--ease); }
+.g-pin.lft::before { left: auto; right: 14px; }
+.g-pin.px-on::before { opacity: 1; translate: 0 0; }
+@keyframes g-pin-ping { 0% { opacity: .95; scale: .5; } 100% { opacity: 0; scale: 1.6; } }
+@keyframes g-pin-in { from { opacity: 0; translate: 0 -24px; } }
+@keyframes g-pin-lb { from { opacity: 0; translate: -14px 0; } }
+
+/* Places shut right now: a faint dashed diamond and a muted label */
+.g-pin-off { position: absolute; z-index: 1; left: calc(var(--x) * 1%); top: calc(var(--y) * 1%); width: 0; height: 0; opacity: .62; pointer-events: none; }
+.g-pin-off .g-pin-pt { background: #0c0309; border: 2px dashed rgba(255, 140, 192, .6); box-shadow: none; animation: none; }
+.g-pin-off .g-pin-lb { gap: 3px; animation: none; }
+.g-pin-off .g-pin-lb b { background: rgba(12, 3, 9, .8); color: rgba(255, 214, 232, .7); font-size: clamp(13px, 1vw, 15px); box-shadow: inset 3px 0 0 rgba(255, 140, 192, .4); }
+.g-pin-off .g-pin-lb small { padding: 0 8px; color: var(--pink-2); font: italic 800 10px/1 var(--cond); letter-spacing: .22em; text-transform: uppercase; text-shadow: 1px 1px 0 #000; }
+
+/* You're here: Solar's face in a paper ring over a pink tag, just under her pin on the side away from its label (her home, when it
+   isn't a place to go right now, is a paper diamond marked Home) */
+.g-pin-you { position: absolute; z-index: 3; left: calc(var(--x) * 1%); top: calc(var(--y) * 1%); display: flex; flex-direction: column; align-items: flex-end;
+  translate: calc(-100% + 12px) 16px; pointer-events: none; animation: g-pin-lb .4s var(--ease) .3s both; }
+.g-pin-you.lft { align-items: flex-start; translate: -12px 16px; }
+.g-pin-you i { position: relative; z-index: 1; display: grid; place-items: center; flex: none; width: 38px; height: 38px; overflow: hidden; box-sizing: border-box; border: 3px solid var(--paper);
+  border-radius: 50%; background: var(--pink); color: var(--deep); font: italic 900 16px/1 var(--cond); font-style: normal; box-shadow: 3px 3px 0 var(--deep), 0 0 0 2px var(--pink); }
+.g-pin-you img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; scale: 1.6; transform-origin: 50% 12%; }
+.g-pin-you b { margin-top: -6px; padding: 4px 14px 4px 9px; background: var(--pink); color: #fff; white-space: nowrap; font: italic 900 11px/1 var(--cond); letter-spacing: .18em;
+  text-transform: uppercase; clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%); box-shadow: inset 0 -2px 0 rgba(12, 3, 9, .35); }
+.g-pin-you.lft b { padding: 4px 9px 4px 14px; clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%); }
+.g-pin-off.home { opacity: 1; }
+.g-pin-off.home .g-pin-pt { background: var(--paper); border: 2px solid var(--pink); box-shadow: 3px 3px 0 rgba(12, 3, 9, .8); }
+.g-pin-off.home .g-pin-lb b { background: rgba(16, 5, 12, .93); color: var(--pink-3); box-shadow: inset 3px 0 0 var(--paper); }
+
+/* ── The heading, the time and weather badge, the key legend ── */
+.g-city-head { position: absolute; z-index: 3; left: var(--pad); top: clamp(4px, 1.6vh, 18px); max-width: min(560px, 40vw); margin: 0; pointer-events: none; }
+.g-city-head > * { pointer-events: auto; }
+.g-city-head h1 { font-size: clamp(46px, 6.4vw, 92px); }
+.g-city-head .g-map-sub { flex-basis: 100%; max-width: 30em; margin-top: 2px; font-size: clamp(14px, 1.2vw, 17px); }
+.g-city-head .g-btn { margin-top: 8px; }
+.g-city-badge { display: flex; flex-wrap: wrap; align-items: stretch; gap: 6px; margin: 10px 0 2px; flex-basis: 100%; }
+.g-city-badge > span { display: inline-flex; align-items: center; gap: 7px; padding: 4px 14px 4px 9px; font: italic 900 13px/1 var(--cond); letter-spacing: .14em; text-transform: uppercase;
+  transform: skewX(-12deg); }
+.g-city-badge > span > * { transform: skewX(12deg); }
+.g-city-wx { background: rgba(12, 3, 9, .9); color: var(--paper); box-shadow: inset 3px 0 0 var(--pink), 3px 3px 0 rgba(255, 79, 158, .45); }
+.g-city-wx svg { width: 20px; height: 20px; }
+.g-city-when { background: var(--paper); color: var(--deep); box-shadow: 3px 3px 0 var(--pink); }
+.g-city-keys { position: absolute; z-index: 3; left: var(--pad); bottom: 16px; display: flex; gap: 14px; margin: 0; pointer-events: none;
+  font: italic 800 12px/1 var(--cond); letter-spacing: .18em; text-transform: uppercase; color: var(--pink-3); text-shadow: 1px 1px 0 #000; }
+.g-city-keys span { display: inline-flex; align-items: center; gap: 7px; }
+.g-city-keys i { padding: 3px 9px 3px 7px; background: var(--pink); color: var(--deep); font-style: normal; clip-path: polygon(0 0, 100% 0, 86% 100%, 0 100%); }
+
+/* ───────────── the ticket (both screens): the photo with a diagonal cut, a perforated line, the details ───────────── */
+.g-main :is(.g-city, .g-city-area) .g-px-info.g-tk { box-sizing: border-box; min-height: 0; max-height: none; margin: 0; padding: 0; overflow: visible; border: 0; border-radius: 0;
+  background: none; box-shadow: none; filter: drop-shadow(10px 10px 0 rgba(255, 79, 158, .5)); --tk-pic: 34%; }
+.g-main .g-city .g-px-info.g-tk { display: block; position: absolute; z-index: 3; right: 3vw; top: clamp(6px, 1.4vh, 16px); bottom: 24px; width: var(--tk); }
+.g-tk::before { content: ""; position: absolute; inset: 0; background: linear-gradient(175deg, var(--indigo), var(--deep) 70%);
+  -webkit-mask: radial-gradient(circle 13px at 0 calc(var(--tk-pic) + 6px), transparent 12px, #000 13px) left / 51% 100% no-repeat, radial-gradient(circle 13px at 100% calc(var(--tk-pic) + 6px), transparent 12px, #000 13px) right / 51% 100% no-repeat;
+  mask: radial-gradient(circle 13px at 0 calc(var(--tk-pic) + 6px), transparent 12px, #000 13px) left / 51% 100% no-repeat, radial-gradient(circle 13px at 100% calc(var(--tk-pic) + 6px), transparent 12px, #000 13px) right / 51% 100% no-repeat; }
+.g-tk-pic { position: absolute; inset: 0 0 auto 0; height: var(--tk-pic); overflow: hidden; background: #0c0309 var(--pic) center / cover no-repeat; clip-path: polygon(0 0, 100% 0, 100% 74%, 0 100%); }
+.g-tk-pic::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(42, 15, 34, .55), transparent 55%); pointer-events: none; }
+.g-tk-perf { position: absolute; left: 18px; right: 18px; top: calc(var(--tk-pic) + 5px); height: 2px; background: repeating-linear-gradient(90deg, var(--pink) 0 8px, transparent 8px 14px); }
+.g-tk-body { position: absolute; inset: calc(var(--tk-pic) + 22px) 22px 18px 26px; display: grid; align-content: start; gap: 8px; overflow: auto; padding-right: 4px;
+  scrollbar-width: thin; scrollbar-color: var(--pink) transparent; animation: g-tk-in .26s var(--ease) both; }
+@keyframes g-tk-in { from { opacity: 0; translate: 14px 0; } }
+.g-tk .g-kicker { margin: 0; color: var(--pink-2); font: italic 800 12px/1.25 var(--cond); letter-spacing: .26em; text-transform: uppercase; }
+.g-tk h2 { margin: 0 0 2px; font: italic 900 clamp(26px, 2.6vw, 38px)/.92 var(--cond); text-transform: uppercase; letter-spacing: -.005em; color: var(--paper); transform: none;
+  text-shadow: 3px 3px 0 var(--pink); }
+.g-tk h3 { margin: 6px 0 0; color: var(--pink); font: italic 900 12px/1 var(--cond); letter-spacing: .3em; text-transform: uppercase; }
+.g-tk .g-px-about { color: #f6dfea; font-size: 14px; line-height: 1.48; }
+.g-tk .g-px-gets { gap: 5px; }
+.g-tk .g-px-gets li { padding: 6px 10px 6px 12px; border: 0; background: rgba(255, 79, 158, .09); box-shadow: inset 3px 0 0 var(--pink); }
+.g-tk .g-px-gets b { font-size: 16px; color: var(--paper); }
+.g-tk .g-px-who li { grid-template-columns: 30px minmax(0, 1fr); }
+.g-tk .g-px-who .g-px-face, .g-tk .g-px-new .g-px-face { width: 30px; height: 30px; box-shadow: 2px 2px 0 var(--pink); }
+.g-tk .g-warn { display: inline-block; justify-self: start; margin: 2px 0 0; padding: 6px 12px; border: 0; background: var(--violet); color: var(--pink-3); font: italic 800 13px/1.2 var(--cond); letter-spacing: .08em; text-transform: uppercase; }
+.g-tk .g-px-go { margin-top: 8px; color: var(--paper); font: italic 900 13px/1 var(--cond); letter-spacing: .18em; text-transform: uppercase; }
+.g-tk .g-px-go i { display: inline-block; margin-right: 8px; padding: 4px 10px 4px 7px; background: var(--pink); color: var(--deep); font-style: normal; clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%); }
+.g-tk-tags { display: flex; gap: 6px; margin: -2px 0 2px; }
+.g-tk-tags span { padding: 4px 13px 4px 9px; background: var(--pink); color: var(--deep); font: italic 900 12px/1 var(--cond); letter-spacing: .14em; text-transform: uppercase; clip-path: polygon(9% 0, 100% 0, 91% 100%, 0 100%); }
+.g-tk-tags span.new { background: var(--paper); box-shadow: inset -5px 0 0 var(--pink); }
+/* A person's ticket: their portrait standing in the photo, or a big '?' */
+.g-main .g-tk .g-px-person { position: absolute; inset: 0; width: auto; height: auto; margin: 0; overflow: visible; border: 0; border-radius: 0; background: none; box-shadow: none; z-index: 1; }
+.g-main .g-tk .g-px-person img { position: absolute; left: 50%; bottom: -6%; width: auto; height: 112%; max-width: none; object-fit: contain; transform: translateX(-50%); scale: 1; filter: drop-shadow(8px 0 0 var(--deep)); }
+.g-main .g-tk .g-px-person i { position: absolute; inset: 0; display: grid; place-items: center; font: italic 900 130px/1 var(--cond); font-style: normal; color: var(--deep);
+  text-shadow: 6px 6px 0 var(--pink); background: repeating-linear-gradient(135deg, rgba(42, 15, 34, .78) 0 12px, rgba(74, 24, 56, .78) 12px 24px); }
+.g-main .g-tk .g-px-person.trace img { filter: grayscale(.5) drop-shadow(8px 0 0 var(--deep)); opacity: .8; }
+
+/* ── The zoom into a place: the map pushes in toward the pin, the panels fade, a pink slash wipes across ── */
+.g-city.zoom .g-city-map { scale: 2.3; filter: blur(1px) brightness(.8); }
+.g-city.zoom :is(.g-city-head, .g-tk, .g-city-keys) { opacity: 0; transition: opacity .18s; }
+.g-city.zoom::after { content: ""; position: fixed; inset: 0; z-index: 9; pointer-events: none; background: linear-gradient(100deg, var(--pink) 0 6%, #0c0309 6% 100%);
+  animation: g-city-wipe .36s cubic-bezier(.6, 0, .9, .4) both; }
+@keyframes g-city-wipe { from { clip-path: polygon(100% 0, 112% 0, 100% 100%, 88% 100%); } to { clip-path: polygon(-12% 0, 112% 0, 100% 100%, -24% 100%); } }
+
+/* ───────────────────────────── the area ───────────────────────────── */
+/* The stage's photo of the place shows above the cut, brighter than usual; under it, the pink cut and the dark (both scroll with the page) */
+#g-app:has(> .g-main.is-city-area) .g-bg::after { background: linear-gradient(100deg, rgba(12, 3, 9, .82), rgba(12, 3, 9, .3) 52%, rgba(12, 3, 9, .14)), linear-gradient(0deg, rgba(74, 24, 56, .5), transparent 55%); }
+.g-main.is-city-area { --cut: 46vh;
+  background: linear-gradient(175deg, transparent calc(var(--cut) - 1px), var(--pink) var(--cut), var(--pink) calc(var(--cut) + 10px), rgba(12, 3, 9, .97) calc(var(--cut) + 11px), #0c0309) local; }
+.g-areaview.g-city-area { width: 100%; max-width: none; margin: 0; animation: g-city-in .3s ease both; }
+.g-city-area .g-map-head { position: relative; z-index: 2; margin-bottom: 18px; }
+.g-city-area .g-map-head .g-map-sub { flex-basis: 100%; max-width: min(46vw, 640px); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.g-city-area .g-px-places { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; align-items: start; }
+.g-city-area .g-col h2 { margin: 0 0 2px; color: var(--pink); font: italic 900 13px/1 var(--cond); letter-spacing: .34em; text-transform: uppercase; text-shadow: 1px 1px 0 #000; transform: none; }
+.g-city-area .g-ca-spent { justify-self: start; margin: 0; padding: 6px 14px 6px 10px; background: var(--paper); color: var(--deep); font: italic 900 14px/1 var(--cond); letter-spacing: .1em; text-transform: uppercase;
+  clip-path: polygon(0 0, 100% 0, 94% 100%, 0 100%); box-shadow: none; }
+
+/* People: hexagon portraits on the cut */
+.g-main .g-city-area .g-ca-people { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 10px 16px; padding: 0 6px 4px 0; }
+.g-main .g-city-area .g-ca-people h2 { flex-basis: 100%; }
+.g-main .g-city-area .g-pcard.who { all: unset; box-sizing: border-box; position: relative; display: grid; justify-items: center; align-content: start; width: 108px; min-height: 0; padding: 4px 0 0;
+  text-align: center; color: var(--paper); cursor: pointer; transition: transform .2s var(--ease); animation: g-hx-in .38s var(--ease) calc(var(--k) * 45ms) both; -webkit-tap-highlight-color: transparent; }
+.g-main .g-city-area .g-pcard.who > * { transform: none; }
+.g-main .g-city-area .g-pcard.who .g-px-art { display: none !important; }
+/* the paper rim (behind) and the hexagon (the spot's photo, darkened, with their portrait) */
+.g-main .g-city-area .g-pcard.who::before { content: ""; position: absolute; top: 0; left: calc(50% - 50px); width: 100px; height: 112px; background: var(--paper);
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); transition: background .15s; }
+.g-main .g-city-area .g-pcard.who .g-pc-pic { position: relative; z-index: 1; display: grid; place-items: center; width: 92px; height: 104px; margin: 0; overflow: hidden; border: 0; border-radius: 0; box-shadow: none;
+  background: linear-gradient(rgba(42, 15, 34, .55), rgba(42, 15, 34, .55)), var(--pic) center / cover, var(--violet); clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  color: var(--pink); font: italic 900 64px/1 var(--cond); font-style: normal; }
+.g-main .g-city-area .g-pcard.who .g-pc-pic img { position: absolute; left: -12%; top: 4%; width: 124%; height: auto; max-width: none; object-fit: fill; transform: none; scale: 1; background: none; }
+.g-main .g-city-area .g-pcard.who.unmet .g-pc-pic { background: repeating-linear-gradient(135deg, var(--indigo) 0 9px, var(--violet) 9px 18px); text-shadow: 3px 3px 0 var(--deep); }
+.g-main .g-city-area .g-pcard.who .g-pc-txt { display: grid; justify-items: center; gap: 3px; padding: 0; margin-top: 8px; max-width: 124px; }
+.g-main .g-city-area .g-pcard.who .g-pc-txt b { order: 1; display: inline-block; padding: 3px 12px 3px 8px; font: italic 900 16px/1 var(--cond); text-transform: uppercase; white-space: nowrap; color: var(--paper);
+  text-shadow: 2px 2px 0 var(--deep); clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%); }
+.g-main .g-city-area .g-pcard.who .g-pc-kick { order: 2; display: block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font: italic 800 10px/1.1 var(--cond) !important; letter-spacing: .18em !important; color: var(--pink-2) !important; text-shadow: 1px 1px 0 #000; }
+.g-main .g-city-area .g-pcard.who .g-pc-txt > small:not(.g-pc-kick) { display: none; }
+.g-main .g-city-area .g-pcard.who:is(:hover, :focus-visible, .px-on) { transform: translateY(-8px) scale(1.08); z-index: 2; outline: none; box-shadow: none; }
+.g-main .g-city-area .g-pcard.who:is(:hover, :focus-visible, .px-on)::before { background: var(--pink); }
+.g-main .g-city-area .g-pcard.who.px-on .g-pc-txt b, .g-main .g-city-area .g-pcard.who:focus-visible .g-pc-txt b { background: var(--paper); color: var(--deep); text-shadow: none; box-shadow: inset -5px 0 0 var(--pink); }
+.g-main .g-city-area .g-pcard.who:focus-visible .g-pc-txt b { outline: 2px dashed var(--pink-3); outline-offset: 3px; }
+.g-main .g-city-area .g-pcard.who[aria-disabled="true"] { opacity: .5; filter: saturate(.4); }
+.g-main .g-city-area .g-pcard.who[aria-disabled="true"]:is(:hover, :focus-visible, .px-on) { opacity: .85; }
+.g-main .g-city-area .g-pcard.who[aria-disabled="true"] .g-pc-txt > small:last-child { display: block; color: var(--pink-3); font-size: 10px; line-height: 1.2; }
+.g-main .g-city-area .g-pcard.who.trace .g-pc-pic { filter: grayscale(.55); opacity: .85; }
+.g-main .g-city-area .g-pcard.who.trace::before { background: repeating-linear-gradient(135deg, var(--paper) 0 6px, var(--pink-2) 6px 12px); }
+@keyframes g-hx-in { from { opacity: 0; translate: 0 22px; } }
+
+/* Places and work: slanted rows, a thumbnail, the name and what you'd get, the faces at that spot, a FREE / JOIN / price tag */
+.g-main .g-city-area .g-ca-rows { display: grid; grid-template-columns: minmax(0, 1fr); gap: 7px; max-width: 900px; padding: 0 22px 6px 12px; }
+.g-main .g-city-area .g-pcard:is(.place, .job) { all: unset; box-sizing: border-box; position: relative; display: grid; grid-template-columns: clamp(80px, 7.6vw, 108px) minmax(0, 1fr) auto auto; align-items: center;
+  gap: 0 14px; min-height: 58px; padding: 0 14px 0 0; color: var(--paper); cursor: pointer; transform: skewX(-14deg); background: rgba(20, 7, 15, .92);
+  box-shadow: inset 4px 0 0 var(--pink), inset 0 0 0 1px rgba(255, 140, 192, .2); transition: transform .18s var(--ease), background .15s, box-shadow .15s;
+  animation: g-row-in .34s var(--ease) calc(var(--k) * 35ms) both; -webkit-tap-highlight-color: transparent; }
+.g-main .g-city-area .g-pcard:is(.place, .job) > :not(.g-px-art) { transform: skewX(14deg); }
+.g-main .g-city-area .g-pcard:is(.place, .job) .g-px-art { position: relative !important; inset: auto; align-self: stretch; transform: none !important; background: #0c0309 var(--pic) center / cover no-repeat;
+  filter: saturate(.8) brightness(.78); box-shadow: inset 4px 0 0 var(--pink); transition: filter .15s; }
+.g-main .g-city-area .g-pcard:is(.place, .job) .g-pc-txt { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 12px; row-gap: 3px; min-width: 0; padding: 8px 0; }
+.g-main .g-city-area .g-pcard:is(.place, .job) .g-pc-txt::before { content: ""; order: 3; flex-basis: 100%; height: 0; }
+.g-main .g-city-area .g-pcard:is(.place, .job) .g-pc-txt b { order: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: italic 900 clamp(18px, 1.6vw, 23px)/1 var(--cond);
+  text-transform: uppercase; letter-spacing: .005em; text-shadow: 2px 2px 0 rgba(12, 3, 9, .8); }
+.g-main .g-city-area .g-pcard:is(.place, .job) .g-pc-kick { order: 2; flex: none; color: var(--pink-2) !important; font: italic 800 11px/1 var(--cond) !important; letter-spacing: .2em !important; }
+.g-main .g-city-area .g-pcard:is(.place, .job) .g-pc-txt > small:not(.g-pc-kick) { order: 4; min-width: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  color: var(--muted) !important; font-size: 13px; line-height: 1.2; }
+.g-main .g-city-area .g-pcard:is(.place, .job) .g-pc-txt > .g-act-benefit { color: var(--pink-3) !important; }
+.g-main .g-city-area .g-pcard:is(.place, .job) .g-pc-txt > .g-pc-why { order: 5; color: var(--pink) !important; font: italic 800 12px/1.2 var(--cond); letter-spacing: .1em; text-transform: uppercase; }
+.g-main .g-city-area .g-pcard:is(.place, .job) .g-px-more { order: 6; }
+.g-main .g-city-area .g-pcard:is(.place, .job) .g-px-faces { position: static !important; display: flex; gap: 0; margin: 0; }
+.g-main .g-city-area .g-pcard:is(.place, .job) .g-px-faces .g-px-face { width: 28px; height: 28px; box-shadow: 2px 2px 0 var(--pink); }
+.g-main .g-city-area .g-pcard:is(.place, .job) .g-px-faces .g-px-face + .g-px-face { margin-left: -8px; }
+.g-main .g-city-area .g-pcard:is(.place, .job) em { position: static; grid-column: 4; display: inline-block; padding: 5px 14px 5px 10px; border: 0; background: var(--pink); color: var(--deep); box-shadow: none;
+  font: italic 900 12px/1 var(--cond); letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; clip-path: polygon(9% 0, 100% 0, 91% 100%, 0 100%); }
+.g-main .g-city-area .g-pcard:is(.place, .job) em:is(.t-join, .t-club, .t-job) { background: var(--paper); color: var(--deep); box-shadow: inset -5px 0 0 var(--pink); }
+.g-main .g-city-area .g-pcard:is(.place, .job) em.t-yen { background: #0c0309; color: var(--paper); box-shadow: inset 0 0 0 1.5px var(--pink-2); }
+.g-main .g-city-area .g-pcard:is(.place, .job) em.t-shop { background: var(--violet); color: var(--pink-3); }
+.g-main .g-city-area .g-pcard:is(.place, .job):is(:hover, :focus-visible, .px-on) { outline: none; background: var(--paper); transform: skewX(-14deg) translateX(16px);
+  box-shadow: inset 6px 0 0 var(--pink), 9px 9px 0 var(--pink); }
+.g-main .g-city-area .g-pcard:is(.place, .job):is(:hover, :focus-visible, .px-on) .g-px-art { filter: none; }
+.g-main .g-city-area .g-pcard:is(.place, .job):is(:hover, :focus-visible, .px-on) .g-pc-txt b { color: var(--deep); text-shadow: none; }
+.g-main .g-city-area .g-pcard:is(.place, .job):is(:hover, :focus-visible, .px-on) .g-pc-txt > small:not(.g-pc-kick, .g-pc-why) { color: var(--violet) !important; }
+.g-main .g-city-area .g-pcard:is(.place, .job):is(:hover, :focus-visible, .px-on) .g-pc-kick { color: #c2266f !important; }
+.g-main .g-city-area .g-pcard:is(.place, .job):is(:hover, :focus-visible, .px-on) em.t-yen { background: var(--deep); }
+.g-main .g-city-area .g-pcard:is(.place, .job):focus-visible { box-shadow: inset 6px 0 0 var(--pink), 9px 9px 0 var(--pink), 0 0 0 2px var(--pink-3); }
+.g-main .g-city-area .g-pcard:is(.place, .job)[aria-disabled="true"] { opacity: .55; filter: saturate(.6); }
+.g-main .g-city-area .g-pcard:is(.place, .job)[aria-disabled="true"]:is(:hover, :focus-visible, .px-on) { opacity: .85; }
+@keyframes g-row-in { from { opacity: 0; translate: 60px 0; } }
+
+/* Wide screens: the heading, the people and the rows on the left; the ticket down the right, under the HUD */
+@media (min-width: 861px) and (min-aspect-ratio: 13/10) {
+  .g-areaview.g-city-area { display: grid; grid-template-columns: minmax(0, 1fr) var(--tk); grid-template-areas: "head tk" "body tk"; grid-template-rows: auto 1fr; column-gap: 3vw; }
+  .g-city-area > .g-map-head { grid-area: head; }
+  .g-city-area > .g-note { grid-column: 1; }
+  .g-city-area .g-px-wrap { display: contents; }
+  .g-city-area .g-px-places { grid-area: body; }
+  .g-main .g-city-area .g-px-info.g-tk { display: block; grid-area: tk; position: sticky; top: 0; align-self: start; height: calc(100dvh - var(--hud-h, 120px) - clamp(14px, 3vh, 34px) - 24px); min-height: 340px; }
+}
+
+/* ───────────── phones and portrait windows ───────────── */
+@media (max-width: 700px), (max-aspect-ratio: 13/10) {
+  /* The map: the heading, then the map as a strip you can pan sideways, then the ticket as a sheet along the bottom */
+  .g-map.g-city { display: flex; flex-direction: column; --tk: auto; }
+  .g-city-head { order: 0; position: relative; left: auto; top: auto; max-width: none; padding: 4px 16px 8px; }
+  .g-city-head[data-ghost]::before, .g-city-head .g-map-sub { display: none; }
+  .g-city-head h1 { font-size: clamp(36px, 10vw, 52px); }
+  .g-city-head .g-kicker { font-size: 11px; letter-spacing: .24em; }
+  .g-city-badge { margin-top: 8px; }
+  .g-city-head .g-btn { position: absolute; right: 16px; top: 8px; margin: 0; }
+  .g-city-view { order: 1; position: relative; inset: auto; z-index: 0; flex: 1 1 0; min-height: 0; display: flex; justify-content: safe center; overflow: auto;
+    overscroll-behavior: contain; scrollbar-width: none; box-shadow: inset 0 2px 0 rgba(255, 140, 192, .35), inset 0 -2px 0 rgba(255, 140, 192, .35); }
+  .g-city-view::-webkit-scrollbar { display: none; }
+  .g-city-pan { display: block; position: relative; flex: none; height: max(100%, 540px); aspect-ratio: 10.9 / 9; overflow: hidden; }
+  .g-city.has-art .g-city-pan { aspect-ratio: 13 / 9; }
+  .g-city-map { left: 0; top: 0; translate: none; height: 100%; width: auto; }
+  .g-city-map::after { background: linear-gradient(90deg, rgba(12, 3, 9, 0) 60%, rgba(12, 3, 9, .45)); }
+  .g-cs-ml { font-size: 30px; }
+  .g-pin-lb b { padding: 4px 11px 4px 8px; font-size: 13px; }
+  .g-pin.px-on .g-pin-lb b { transform: scale(1.06); }
+  .g-pin .g-px-face { width: 22px; height: 22px; font-size: 11px; }
+  .g-pin-lb { top: -12px; left: 14px; gap: 4px; }
+  .g-pin.lft .g-pin-lb, .g-pin-off.lft .g-pin-lb { right: 14px; }
+  .g-pin::before { display: none; }
+  .g-pin-off .g-pin-lb b { font-size: 11px; }
+  .g-pin-you i { width: 30px; height: 30px; border-width: 2px; }
+  .g-pin-you b { font-size: 9px; }
+  .g-main .g-city .g-px-info.g-tk { order: 2; position: relative; inset: auto; width: auto; flex: 0 0 auto; height: clamp(176px, 31vh, 280px); filter: none; --tk-pic: 0px; }
+  .g-city .g-tk::before { -webkit-mask: none; mask: none; clip-path: polygon(0 20px, 100% 0, 100% 100%, 0 100%); background: linear-gradient(175deg, var(--indigo), var(--deep) 60%); }
+  .g-city .g-tk::after { content: ""; position: absolute; z-index: 1; left: 0; right: 0; top: -1px; height: 25px; background: var(--pink); clip-path: polygon(0 20px, 100% 0, 100% 4px, 0 24px); pointer-events: none; }
+  .g-city .g-tk-pic, .g-city .g-tk-perf { display: none; }
+  .g-city .g-tk-body { inset: 32px 16px calc(10px + env(safe-area-inset-bottom)) 18px; gap: 6px; }
+  .g-tk h2 { font-size: 28px; }
+  .g-tk .g-px-about { font-size: 13.5px; line-height: 1.42; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .g-city-keys { display: none; }
+}
+@media (max-width: 860px), (max-aspect-ratio: 13/10) {
+  /* The area: heading, hexes on the cut (a row you can swipe), the rows describing themselves (a tap opens the review) */
+  .g-city-area .g-map-head[data-ghost]::before { display: none; }
+  .g-city-area .g-map-head .g-map-sub { max-width: none; -webkit-line-clamp: 1; }
+  .g-main .g-city-area .g-ca-people { flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; gap: 10px; padding: 2px 4px 6px; margin: 0 calc(-1 * var(--pad)); padding-left: var(--pad); padding-right: var(--pad); }
+  .g-main .g-city-area .g-ca-people::-webkit-scrollbar { display: none; }
+  .g-main .g-city-area .g-ca-people h2 { display: none; }
+  .g-main .g-city-area .g-pcard.who { flex: none; width: 84px; }
+  .g-main .g-city-area .g-pcard.who::before { left: calc(50% - 40px); width: 80px; height: 90px; }
+  .g-main .g-city-area .g-pcard.who .g-pc-pic { width: 74px; height: 84px; font-size: 46px; }
+  .g-main .g-city-area .g-pcard.who .g-pc-txt b { font-size: 13px; padding: 3px 8px 3px 6px; }
+  .g-main .g-city-area .g-pcard.who .g-pc-kick { font-size: 8px !important; }
+  .g-main .g-city-area .g-ca-rows { padding: 0 14px 6px 10px; }
+  .g-main .g-city-area .g-pcard:is(.place, .job) { grid-template-columns: 56px minmax(0, 1fr) auto; gap: 0 10px; min-height: 52px; padding-right: 10px; }
+  .g-main .g-city-area .g-pcard:is(.place, .job) .g-px-faces { display: none; }
+  .g-main .g-city-area .g-pcard:is(.place, .job) em { grid-column: 3; padding: 4px 10px 4px 7px; font-size: 10px; }
+  .g-main .g-city-area .g-pcard:is(.place, .job) .g-pc-txt b { font-size: 17px; }
+  .g-main .g-city-area .g-pcard:is(.place, .job) .g-pc-kick { display: none; }
+  .g-main .g-city-area .g-pcard:is(.place, .job) .g-px-more { flex-basis: 100%; white-space: normal !important; font-size: 12px; line-height: 1.35; display: -webkit-box !important;
+    -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .g-main .g-city-area .g-pcard:is(.place, .job):is(:hover, :focus-visible, .px-on) { transform: skewX(-14deg) translateX(8px); box-shadow: inset 6px 0 0 var(--pink), 6px 6px 0 var(--pink); }
+  /* With a mouse (or a big portrait screen) the ticket is a sheet along the bottom; on touch phones the rows say it all */
+  .g-main .g-city-area .g-px-info.g-tk { position: fixed; z-index: 4; left: 0; right: 0; top: auto; bottom: 0; width: auto; height: clamp(170px, 30vh, 260px); filter: none; --tk-pic: 0px; }
+  .g-city-area .g-tk::before { -webkit-mask: none; mask: none; clip-path: polygon(0 20px, 100% 0, 100% 100%, 0 100%); }
+  .g-city-area .g-tk::after { content: ""; position: absolute; z-index: 1; left: 0; right: 0; top: -1px; height: 25px; background: var(--pink); clip-path: polygon(0 20px, 100% 0, 100% 4px, 0 24px); pointer-events: none; }
+  .g-city-area .g-tk-pic, .g-city-area .g-tk-perf { display: none; }
+  .g-city-area .g-tk-body { inset: 32px 16px calc(10px + env(safe-area-inset-bottom)) 18px; gap: 6px; }
+}
+@media (hover: hover) and (max-width: 860px), (min-width: 861px) and (max-aspect-ratio: 13/10) {
+  .g-main .g-city-area .g-px-info.g-tk { display: block; }
+  .g-main.is-city-area .g-city-area { padding-bottom: clamp(176px, 31vh, 268px); }
+}
+/* Short landscape windows: a smaller heading, no subtitle */
+@media (max-height: 560px) and (min-aspect-ratio: 13/10) and (min-width: 701px) {
+  .g-city-head h1 { font-size: clamp(36px, 9vh, 56px); }
+  .g-city-head .g-map-sub { display: none; }
+  .g-city-badge { margin-top: 6px; }
+  .g-city-keys { display: none; }
+  .g-pin-lb b { font-size: 14px; }
+  .g-tk h2 { font-size: 24px; }
+  .g-main .g-city-area .g-pcard.who { width: 90px; }
+  .g-main .g-city-area .g-pcard.who::before { left: calc(50% - 42px); width: 84px; height: 94px; }
+  .g-main .g-city-area .g-pcard.who .g-pc-pic { width: 78px; height: 88px; font-size: 50px; }
+  .g-main .g-city-area .g-pcard:is(.place, .job) { min-height: 50px; }
+}
+@media (hover: none) { .g-city-keys { display: none; } }
+
+/* Reduced motion: no zoom, pulse, drop-ins or sliding; the rail stands still */
+@media (prefers-reduced-motion: reduce) {
+  .g-city, .g-city *, .g-city::after, .g-city-area *, .g-city-area .g-pcard, .g-pin::before { animation: none !important; transition: none !important; }
+  .g-main .g-city-area .g-pcard.who:is(:hover, :focus-visible, .px-on) { transform: none; }
+  .g-main .g-city-area .g-pcard:is(.place, .job):is(:hover, :focus-visible, .px-on) { transform: skewX(-14deg); }
+  .g-pin.px-on .g-pin-ring { opacity: .7; scale: 1; }
+}

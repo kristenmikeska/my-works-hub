@@ -305,7 +305,7 @@ try:
           if(ls.length&&a.id!=='mall'){return {day:d,area:a.id,link:ls[0].id,short:ls[0].short}}}}
       return null})()""")
     ok(found, 'a day with someone free somewhere')
-    p.eval(f"FemcGame.S.day={found['day']};FemcGame.S.met.push('{found['link']}');FemcGame.S.yen=10000;FemcGame.S.condition='good';FemcGame.S.spent={{}};FemcGame.save();FemcGameUI.run();FemcGameUI.goOut('after');true")
+    p.eval(f"FemcGame.S.day={found['day']};FemcGame.S.met.push('{found['link']}');FemcGame.S.yen=10000;FemcGame.S.condition='good';FemcGame.S.spent={{}};FemcGame.save();FemcGameUI.run();document.querySelectorAll('.gs,.g-overlay,.gs-rank').forEach(x=>x.remove());document.documentElement.classList.remove('g-in-scene');FemcGameUI.goOut('after');true")
     areas = p.eval("[...document.querySelectorAll('.g-px-card')].map(c=>c.dataset.area)")
     want_areas = p.eval("FemcGame.D.places.areas.filter(a=>a.slots.includes('after')&&!(a.schoolOnly&&FemcGame.dayInfo().type!=='school')).map(a=>a.id)")
     ok(areas == want_areas, f'one card per area: {areas}')
@@ -321,11 +321,12 @@ try:
         ok(p.eval("document.documentElement.scrollWidth<=innerWidth && document.querySelector('#g-main').scrollWidth<=document.querySelector('#g-main').clientWidth+1"), f'Go Out fits at {w}x{h}')
     size(1440, 900)
     # Keyboard: focus moves card to card and the panel follows; a pad's D-pad does the same.
-    p.eval("document.querySelector('.g-px-card').focus();true")
+    # The map (Oct 31): arrows go to the nearest pin in that direction, not the next card in order.
+    p.eval("document.querySelector('.g-px-card[data-area=shrine]').focus();window.__x=document.activeElement.getBoundingClientRect().left;true")
     key('ArrowRight')
-    ok(p.eval("document.activeElement.dataset.area===[...document.querySelectorAll('.g-px-card')][1].dataset.area && document.querySelector('.g-px-info h2').textContent===FemcGame.areaById(document.activeElement.dataset.area).name"), 'arrow keys move between cards and the description follows focus')
-    p.eval("(()=>{const e=new KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true,cancelable:true});e.fromPad=true;document.activeElement.dispatchEvent(e)})();true")
-    ok(p.eval("document.activeElement.dataset.area===[...document.querySelectorAll('.g-px-card')][2].dataset.area && document.querySelector('.g-px-info h2').textContent===FemcGame.areaById(document.activeElement.dataset.area).name"), 'a pad\'s D-pad moves too')
+    ok(p.eval("document.activeElement.matches('.g-px-card') && document.activeElement.dataset.area!=='shrine' && document.activeElement.getBoundingClientRect().left>window.__x && document.querySelector('.g-px-info h2').textContent===FemcGame.areaById(document.activeElement.dataset.area).name"), 'arrow keys move to the pin that way and the description follows focus')
+    p.eval("window.__a=document.activeElement.dataset.area;window.__y=document.activeElement.getBoundingClientRect().top;(()=>{const e=new KeyboardEvent('keydown',{key:'ArrowUp',bubbles:true,cancelable:true});e.fromPad=true;document.activeElement.dispatchEvent(e)})();true")
+    ok(p.eval("document.activeElement.matches('.g-px-card') && document.activeElement.dataset.area!==window.__a && document.activeElement.getBoundingClientRect().top<window.__y && document.querySelector('.g-px-info h2').textContent===FemcGame.areaById(document.activeElement.dataset.area).name"), 'a pad\'s D-pad moves too')
     p.eval("document.querySelector('.g-px-card[data-area=mall]').focus();true")
     key('Enter')
     p.wait("!!document.querySelector('.g-areaview')", 3)

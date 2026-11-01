@@ -974,12 +974,71 @@
     main.querySelector('[data-next]').addEventListener('click', done);
   }
 
-  /* ── Go Out (After School / Daytime, or out at night), P5X-style: bold slanted cards with each place's art and who's there
-     today (met links' faces). Hovering or focusing a card fills the side panel: what the place is, who's around, what you'd
-     get and what it costs. On a phone the cards carry that themselves (the panel would be off-screen), and choosing an
-     activity still opens its review before any time or yen is spent (previewActivity). Arrows / a pad's D-pad move between
-     cards (navKeys), Enter / A picks, Esc / B goes back. ── */
+  /* ── Go Out (After School / Daytime, or out at night): the city map (Kat, Oct 31: option C of mockups/solstice-ui/goout.html,
+     pushed toward Persona 3 Reload's map; looks in solstice-goout.css). The map fills the screen: Kat's painted map
+     (goout-map-day.webp / goout-map-evening.webp, see MAP_ART) or, until it lands, a drawn poster (cityPoster). Each open place
+     is a pin (still a .g-px-card with data-area / data-px, one per area, in the data's order) with a slanted name label, the
+     faces of who's there today (met people; '?' for strangers) and a pulse when it's chosen; places shut right now are faint
+     markers. The ticket on the right (.g-px-info; a bottom sheet on phones) shows the place's photo, what it is, who's around
+     and what to do there. Arrows / a pad's D-pad move to the nearest pin in that direction (cityNav), Enter / A / click / tap
+     zooms in to the area (a plain cut with reduced motion), Esc / B goes back. Choosing an activity in the area still opens its
+     review before any time or yen is spent (previewActivity). ── */
   const faceOf = (id, cls = '') => { const pic = G.portrait(id, 'neutral'); return `<i class="g-px-face${cls}">${pic ? `<img src="${pic}" alt="">` : '?'}</i>`; };
+  /* THE PIN TABLE. Where each place sits on Kat's map art, in % of the picture (x from its left edge, y from its top), each on
+     its landmark: the dorm top left, the shrine's torii on the hill, the station where the monorail starts, the shopping
+     street, the hospital's red cross; across the bay Gekkoukan by the field, Port Island Station at the monorail's far end,
+     the mall's fountain plaza, the seaside park's gazebo. New art → re-tune these numbers, nothing else (roads, the monorail
+     and "you're here" follow the pins). l: 1 puts the name label on the pin's left. The art's right fifth is open sea: the
+     ticket sits there on wide screens, so keep pins left of x 72. A place missing here (a new area) gets a spot along the
+     bottom edge until it's added. */
+  const MAP_PINS = {
+    dorm: { x: 7.8, y: 7.5 },
+    shrine: { x: 33.4, y: 20 },
+    station: { x: 20, y: 31.5 },
+    strip: { x: 13.5, y: 44 },
+    hospital: { x: 11.5, y: 57.5 },
+    portisland: { x: 56, y: 38.5 },
+    gekkoukan: { x: 63, y: 15, l: 1 },
+    mall: { x: 64, y: 50, l: 1 },
+    port: { x: 70.5, y: 66, l: 1 },
+  };
+  const pinAt = (id, k) => MAP_PINS[id] || { x: 8 + (k % 7) * 8, y: 93 };
+  // Kat's painted map (Oct 31, 1672×941 from New Adds; tools/femc-new-adds.json): the files that exist, by name (listed here so
+  // a missing file never 404s). Replacing one: same name, bump MAP_ART_V. The evening map falls back to the day one, darkened;
+  // with neither (or a world of its own) the drawn poster below stands in.
+  const MAP_ART_V = 1, MAP_ART_FILES = { 'goout-map-day': 'assets/femc/game/art/goout-map-day.webp', 'goout-map-evening': 'assets/femc/game/art/goout-map-evening.webp' };
+  const MAP_ART = k => (MAP_ART_FILES[k] ? `${G.base}${MAP_ART_FILES[k]}?v=${MAP_ART_V}` : null);
+  // Where Solar is right now: at school after class on a school or exam day, otherwise at the dorm.
+  const hereNow = (slot, info) => (slot === 'after' && (info.type === 'school' || info.type === 'exam') ? 'gekkoukan' : 'dorm');
+  /* The drawn poster (no art yet): the mainland (Iwatodai) and Port Island across the bay, roads between the pins, the monorail
+     from Iwatodai Station over the bay to Port Island Station, and windows that light up at night. viewBox = the 16:9 art. */
+  function cityPoster() {
+    const P = id => (MAP_PINS[id] ? [MAP_PINS[id].x * 16, MAP_PINS[id].y * 9] : null);
+    const seg = (a, b) => { const p = P(a), q = P(b); return p && q ? `M${p[0]} ${p[1]}L${q[0]} ${q[1]}` : ''; };
+    const roads = [['dorm', 'station'], ['station', 'strip'], ['strip', 'shrine'], ['dorm', 'shrine'], ['dorm', 'strip'], ['portisland', 'gekkoukan'], ['portisland', 'mall'], ['mall', 'hospital'], ['mall', 'port'], ['gekkoukan', 'hospital'], ['mall', 'gekkoukan']].map(r => seg(...r)).join('');
+    const s = P('station'), t = P('portisland');
+    const rail = s && t ? `M-10 ${s[1] - 26}L${s[0]} ${s[1]}C${s[0] + 140} ${s[1] + 24} ${t[0] - 140} ${t[1] + 24} ${t[0]} ${t[1]}L1060 ${t[1] - 46}` : '';
+    // City blocks: a fixed scatter (the same every visit), kept off the bay.
+    let seed = 7, blocks = '', lights = '';
+    const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    for (let i = 0; i < 120; i++) {
+      const west = i < 70, x = west ? 30 + rnd() * 520 : 715 + rnd() * 270, y = 40 + rnd() * 820, w = 14 + rnd() * 34, h = 10 + rnd() * 24;
+      blocks += `<rect x="${x.toFixed(0)}" y="${y.toFixed(0)}" width="${w.toFixed(0)}" height="${h.toFixed(0)}"/>`;
+      if (i % 3 === 0) lights += `<circle cx="${(x + w / 2).toFixed(0)}" cy="${(y + h / 2).toFixed(0)}" r="${(1.5 + rnd() * 2).toFixed(1)}"/>`;
+    }
+    return `<svg class="g-city-svg" viewBox="0 0 1600 900" preserveAspectRatio="none" aria-hidden="true">
+      <path class="g-cs-land" d="M-10 -10H600L584 120L616 232L578 336L606 452L568 566L600 684L560 792L590 910H-10Z"/>
+      <path class="g-cs-land" d="M712 150L948 128L1012 206L990 330L1030 462L994 600L1012 722L952 826L760 836L700 762L726 640L682 520L716 402L676 290L708 210Z"/>
+      <path class="g-cs-river" d="M-10 300C90 286 170 352 250 340S400 380 590 352"/>
+      <g class="g-cs-blocks">${blocks}</g>
+      <path class="g-cs-road" d="${roads}"/>
+      <path class="g-cs-rail-bed" d="${rail}"/><path class="g-cs-rail" d="${rail}"/>
+      <g class="g-cs-lights">${lights}</g>
+    </svg>
+    <span class="g-cs-ml" style="left:3%;bottom:4%">Iwatodai</span><span class="g-cs-ml" style="left:43%;bottom:4%">Port Island</span>
+    <span class="g-cs-ml sm" style="left:37.6%;top:62%">the bay</span><span class="g-cs-ml sm" style="left:36.5%;top:${s && t ? (s[1] + t[1]) / 18 + 2.5 : 46}%">monorail</span>
+    <span class="g-cs-compass" style="left:34%;top:84%">N</span>`;
+  }
   // A link's line on Go Out: rank progress if they're free, why not if they aren't.
   function personNote(l, slot) {
     const st = G.linkStatus(l, S().day, slot), met = G.isMet(l.id), p = G.progress(l.id);
@@ -991,9 +1050,42 @@
     main.querySelectorAll('[data-px]').forEach(b => { const go = () => onPaint(b); b.addEventListener('mouseenter', go); b.addEventListener('focus', go); });
   }
   const pxGo = () => (matchMedia('(hover: none)').matches ? 'Tap' : 'Enter or click');
+  // The ticket's photo strip (the place, or a person over their spot), its perforation, then the details.
+  const ticket = (pic, body, fig = '') => `<div class="g-tk-pic" style="--pic:url('${pic}')">${fig}</div><i class="g-tk-perf" aria-hidden="true"></i><div class="g-tk-body">${body}</div>`;
+  // Arrow keys on the map: the nearest pin in that direction (cone-weighted); none that way → the next / previous pin in order.
+  function cityNav(sec, e) {
+    const pins = [...sec.querySelectorAll('.g-pin')], cur = document.activeElement?.closest?.('.g-pin');
+    if (!pins.length) return;
+    e.preventDefault();
+    let best = null;
+    if (!cur) best = sec.querySelector('.g-pin.px-on') || pins[0];
+    else {
+      const r = cur.getBoundingClientRect(), k = e.key;
+      let bs = Infinity;
+      for (const p of pins) {
+        if (p === cur) continue;
+        const b = p.getBoundingClientRect(), dx = b.left - r.left, dy = b.top - r.top;
+        const [along, side] = k === 'ArrowRight' ? [dx, dy] : k === 'ArrowLeft' ? [-dx, dy] : k === 'ArrowDown' ? [dy, dx] : [-dy, dx];
+        if (along < 6 || Math.abs(side) > along * 2.4) continue;
+        const sc = along + Math.abs(side) * 2.2;
+        if (sc < bs) { bs = sc; best = p; }
+      }
+      if (!best) { const i = pins.indexOf(cur), d = k === 'ArrowUp' || k === 'ArrowLeft' ? -1 : 1; best = pins[(i + d + pins.length) % pins.length]; }
+    }
+    best.focus({ preventScroll: true });
+    cityPan(sec, best);
+    G.sfx('femc-hover');
+  }
+  // Phones: the map pans inside its own box; keep the chosen pin in the middle of it.
+  function cityPan(sec, pin, now) {
+    const pan = sec.querySelector('.g-city-view');
+    if (!pan || getComputedStyle(pan).position === 'fixed' || (pan.scrollWidth <= pan.clientWidth + 1 && pan.scrollHeight <= pan.clientHeight + 1)) return;
+    const r = pin.getBoundingClientRect(), v = pan.getBoundingClientRect();
+    pan.scrollTo({ left: pan.scrollLeft + r.left - v.left - pan.clientWidth / 2, top: pan.scrollTop + r.top - v.top - pan.clientHeight / 2, behavior: now || reduced.matches ? 'auto' : 'smooth' });
+  }
   function goOut(slot, areaId) {
     screenMusic(slot === 'evening' ? 'evening' : 'after');
-    const info = G.dayInfo(), night = slot === 'evening';
+    const info = G.dayInfo(), night = slot === 'evening', shown = info.shown ? { ...info, ...info.shown } : info;
     const areas = G.D.places.areas.filter(a => a.slots.includes(slot) && !(a.schoolOnly && info.type !== 'school'));
     if (areaId) return areaView(slot, G.areaById(areaId));
     setBg(night ? 'outside-night' : 'paulownia-mall', night ? 'night' : '');
@@ -1001,41 +1093,96 @@
       const people = G.linksAt(a.id, slot).filter(l => G.linkStatus(l, S().day, slot).ok), traces = G.tracesAt(a.id, slot);
       return { people, traces, met: people.filter(l => G.isMet(l.id)), unmet: people.filter(l => !G.isMet(l.id)).length, n: people.length + traces.length };
     };
-    show(`<section class="g-map g-px"><div class="g-map-head" data-ghost="${esc(G.slotName(slot, info))}"><p class="g-kicker">Iwatodai · ${esc(G.slotName(slot, info))}</p><h1>${night ? 'Out tonight' : 'Go out'}</h1>
-      <p class="g-map-sub">${night ? 'Where to tonight?' : 'Where do you want to spend this time?'} People keep their own schedules.</p>${night ? '<button type="button" class="g-btn small" data-back>‹ Back to the dorm</button>' : ''}</div>
-      <div class="g-px-wrap"><div class="g-px-grid">${areas.map((a, k) => {
-        const h = here(a), img = night && a.bgEvening ? a.bgEvening : a.bg;
-        const faces = h.met.slice(0, 4).map(l => faceOf(l.id)).join('') + (h.met.length > 4 ? `<i class="g-px-face more">+${h.met.length - 4}</i>` : '') + (h.unmet ? '<i class="g-px-face q">?</i>' : '') + h.traces.map(t => faceOf(t.link.id, ' trace')).join('');
-        return `<button type="button" class="g-px-card${h.n ? ' busy' : ''}${a.home ? ' home' : ''}${night ? ' late' : ''}" data-area="${a.id}" data-px="${a.id}" style="--pic:url('${bgUrl(img)}');--k:${k}">
-          <span class="g-px-art" aria-hidden="true"></span><span class="g-px-num" aria-hidden="true">${String(k + 1).padStart(2, '0')}</span>
-          <span class="g-px-txt"><b>${esc(a.name)}</b><small>${esc(a.blurb)}</small></span>
-          ${faces ? `<span class="g-px-faces" aria-label="Here today: ${esc(h.met.map(l => l.short).join(', ') || 'someone new')}">${faces}</span>` : ''}${h.n ? `<em>${h.n} ${h.n === 1 ? 'person' : 'people'}</em>` : ''}</button>`;
-      }).join('')}</div><aside class="g-px-info" aria-live="polite"></aside></div></section>`, 'is-map');
-    const panel = main.querySelector('.g-px-info');
+    const hereId = hereNow(slot, info), open = new Set(areas.map(a => a.id)), when = G.slotName(slot, info);
+    const art = (night && MAP_ART('goout-map-evening')) || MAP_ART('goout-map-day'), dim = night && art && !MAP_ART('goout-map-evening');
+    const pin = (a, k) => {
+      const h = here(a), p = pinAt(a.id, k), img = night && a.bgEvening ? a.bgEvening : a.bg;
+      const faces = h.met.slice(0, 3).map(l => faceOf(l.id)).join('') + (h.met.length > 3 ? `<i class="g-px-face more">+${h.met.length - 3}</i>` : '') + (h.unmet ? '<i class="g-px-face q">?</i>' : '') + h.traces.map(t => faceOf(t.link.id, ' trace')).join('');
+      return `<button type="button" class="g-px-card g-pin${h.n ? ' busy' : ''}${a.home ? ' home' : ''}${night ? ' late' : ''}${a.id === hereId ? ' here' : ''}${p.l ? ' lft' : ''}${p.y < 26 ? ' top' : ''}" data-area="${a.id}" data-px="${a.id}" style="--pic:url('${bgUrl(img)}');--x:${p.x};--y:${p.y};--k:${k}" aria-label="${esc(a.name)}${h.n ? ` · ${h.n} here today` : ''}">
+        <i class="g-pin-ring" aria-hidden="true"></i><i class="g-pin-pt" aria-hidden="true"></i>${h.n ? `<i class="g-pin-ct" aria-hidden="true">${h.n}</i>` : ''}
+        <span class="g-pin-lb"><b>${esc(a.name)}</b>${faces ? `<span class="g-px-faces" aria-label="Here today: ${esc(h.met.map(l => l.short).join(', ') || 'someone new')}">${faces}</span>` : ''}</span></button>`;
+    };
+    // Places shut right now (the school on a day off, the pier at night): faint, not choosable. Home is the "you are here" flag.
+    const shut = G.D.places.areas.filter(a => !open.has(a.id) && MAP_PINS[a.id]).map(a => {
+      const p = MAP_PINS[a.id], home = a.id === hereId, why = home ? 'Home' : a.schoolOnly && info.type !== 'school' ? 'No school today' : night ? 'Closed at night' : 'Not open now';
+      return `<span class="g-pin-off${p.l ? ' lft' : ''}${home ? ' home' : ''}" style="--x:${p.x};--y:${p.y}" title="${esc(`${a.name} · ${why}`)}" aria-hidden="true"><i class="g-pin-pt"></i><span class="g-pin-lb"><b>${esc(a.name)}</b><small>${esc(why)}</small></span></span>`;
+    }).join('');
+    // "You're here": Solar's face and a tag on the side of her pin away from its label.
+    const hp = MAP_PINS[hereId], solar = G.portrait('solar', 'neutral');
+    const you = hp ? `<span class="g-pin-you${hp.l ? ' lft' : ''}" style="--x:${hp.x};--y:${hp.y}" aria-hidden="true"><i>${solar ? `<img src="${solar}" alt="">` : '◆'}</i><b>You’re here</b></span>` : '';
+    show(`<section class="g-map g-px g-city${night ? ' late' : ''}${art ? ' has-art' : ''}${dim ? ' art-dim' : ''}" aria-label="Go out: the city map">
+      <div class="g-city-view"><div class="g-city-pan"><div class="g-city-map"${art ? ` style="--art:url('${art}')"` : ''}>${art ? '' : cityPoster()}${shut}${you}${areas.map(pin).join('')}</div></div></div>
+      <div class="g-map-head g-city-head" data-ghost="${esc(when)}"><p class="g-kicker">Iwatodai · ${esc(when)}</p><h1>${night ? 'Out tonight' : 'Go out'}</h1>
+        <p class="g-city-badge"><span class="g-city-wx">${wxIcon(shown.wx)}<b>${esc(shown.wx.name)}</b></span><span class="g-city-when">${esc(when)}</span></p>
+        <p class="g-map-sub">${night ? 'Where to tonight?' : 'Where do you want to spend this time?'} People keep their own schedules.</p>${night ? '<button type="button" class="g-btn small" data-back>‹ Back to the dorm</button>' : ''}</div>
+      <aside class="g-px-info g-tk" aria-live="polite"></aside>
+      <p class="g-city-keys" aria-hidden="true"><span><i>↔</i>Choose</span><span><i>Enter</i>Go</span>${night ? '<span><i>Esc</i>Back</span>' : ''}</p></section>`, 'is-map is-city');
+    const sec = main.querySelector('.g-city'), panel = main.querySelector('.g-px-info');
     const paint = b => {
       const a = G.areaById(b.dataset.px), h = here(a);
       main.querySelectorAll('[data-px]').forEach(x => x.classList.toggle('px-on', x === b));
       const acts = G.activities().filter(x => x.area === a.id && x.slots.includes(slot));
       const jobs = G.D.jobs.filter(j => j.area === a.id && G.jobVisible(j) && j.slot === slot);
-      panel.innerHTML = `<p class="g-kicker">${esc(G.slotName(slot, info))}</p><h2>${esc(a.name)}</h2><p class="g-px-about">${esc(a.about || a.blurb)}</p>
+      panel.innerHTML = ticket(bgUrl(night && a.bgEvening ? a.bgEvening : a.bg), `<p class="g-kicker">${esc(when)}${a.id === hereId ? ' · you are here' : ''}</p><h2>${esc(a.name)}</h2><p class="g-px-about">${esc(a.about || a.blurb)}</p>
         ${a.home ? '<ul class="g-px-gets"><li><b>Go home</b><small>Uses this time slot.</small></li></ul>' : `
         <h3>Here today</h3>${h.met.length || h.traces.length ? `<ul class="g-px-who">${h.met.map(l => `<li>${faceOf(l.id)}<span><b>${esc(l.short)}</b><small>${esc(personNote(l, slot).line)}</small></span></li>`).join('')}${h.traces.map(t => `<li>${faceOf(t.link.id, ' trace')}<span><b>${esc(t.link.short)}</b><small>Something of theirs is still here.</small></span></li>`).join('')}</ul>` : ''}
         ${h.unmet ? `<p class="g-px-new">${faceOf('?', ' q')}${h.unmet === 1 ? 'Someone you haven’t met' : `${h.unmet} people you haven’t met`}</p>` : ''}
         ${!h.n ? '<p class="g-note small">Nobody you know is free here right now.</p>' : ''}
         ${acts.length || jobs.length ? `<h3>Things to do</h3><ul class="g-px-gets">${acts.map(x => { const pv = G.activityInfo(x); return `<li><b>${esc(x.name)}</b><small>${esc(x.gacha ? (x.gacha === 'velvet' ? 'Elizabeth’s cards' : 'Capsule machine') : x.shop ? 'Shop · browsing is free' : pv.benefit)}${!x.shop && pv.cost !== 'Free' ? ` · ${esc(pv.cost.replace(/^Costs /, ''))}` : ''}</small></li>`; }).join('')}${jobs.map(j => `<li><b>${esc(j.name)}</b><small>${G.jobState(j.id).hired ? `Work a shift · ¥${j.pay.toLocaleString()}` : 'Part-time work'}</small></li>`).join('')}</ul>` : ''}`}
-        <p class="g-px-go">${pxGo()} ▸ ${a.home ? 'go home' : `go to ${esc(a.name)}`}</p>`;
+        <p class="g-px-go"><i>${pxGo() === 'Tap' ? 'Tap' : 'Enter'}</i>${a.home ? 'go home' : `go to ${esc(a.name)}`}</p>`);
     };
     pxWire(paint);
     main.querySelector('[data-back]')?.addEventListener('click', () => evening(info));
-    main.querySelectorAll('[data-area]').forEach(b => b.addEventListener('click', () => {
+    // Choosing a pin: a quick zoom toward it, then the area (or straight home). Reduced motion: a plain cut.
+    let going = false;
+    const enter = b => {
+      if (going) return;
       const a = G.areaById(b.dataset.area);
       G.sfx('femc-click');
-      if (a.home) { S().spent[`${S().day}-${slot}`] = 'home'; G.save(); return segment({ slot, bg: 'iwotodaidorm-outside', place: 'Iwatodai Dorm', text: wxLine('home', 'home') || G.vary('home', ['She went straight home and let the afternoon go by without asking anything of it.']), next: advance }); }
-      areaView(slot, a);
-    }));
-    const first = main.querySelector('.g-px-card.busy') || main.querySelector('.g-px-card');
-    if (first) { paint(first); first.focus({ preventScroll: true }); }
+      const go = () => {
+        if (a.home) { S().spent[`${S().day}-${slot}`] = 'home'; G.save(); return segment({ slot, bg: 'iwotodaidorm-outside', place: 'Iwatodai Dorm', text: wxLine('home', 'home') || G.vary('home', ['She went straight home and let the afternoon go by without asking anything of it.']), next: advance }); }
+        areaView(slot, a);
+      };
+      if (reduced.matches) return go();
+      going = true;
+      paint(b);
+      const view = sec.querySelector('.g-city-map'), r = b.getBoundingClientRect(), v = view.getBoundingClientRect();
+      view.style.transformOrigin = `${r.left - v.left}px ${r.top - v.top}px`;
+      sec.classList.add('zoom');
+      setTimeout(() => { if (sec.isConnected) go(); }, 360);
+    };
+    main.querySelectorAll('[data-area]').forEach(b => b.addEventListener('click', () => enter(b)));
+    sec.addEventListener('keydown', e => {
+      if (e.metaKey || e.ctrlKey || e.altKey || going) return;
+      if (e.key.startsWith('Arrow')) return cityNav(sec, e);
+      if (e.key === 'Escape') { const back = sec.querySelector('[data-back]'); if (back) { e.preventDefault(); back.click(); } }
+    });
+    const first = main.querySelector('.g-pin.busy') || main.querySelector(`.g-pin[data-area="${hereId}"]`) || main.querySelector('.g-pin');
+    if (first) { paint(first); first.focus({ preventScroll: true }); requestAnimationFrame(() => cityPan(sec, first, true)); }
   }
+  /* The area: the place's photo on top (the stage behind, brighter) with the pink diagonal cut, the people as hexagon portraits
+     on the cut ('?' for someone you haven't met), the activities and jobs as slanted rows with a thumbnail and a FREE / JOIN /
+     price tag, and the ticket on the right. Phones: the rows describe themselves (the review opens on a tap); a narrow window
+     with a mouse gets the ticket as a bottom sheet. */
+  function cityCut() {
+    const sec = main.querySelector('.g-city-area'); if (!sec) return;
+    main.style.setProperty('--hud-h', `${hud.hidden ? 0 : hud.offsetHeight}px`);
+    const head = sec.querySelector('.g-map-head'), hexes = sec.querySelector('.g-ca-people');
+    head.style.marginBottom = '';
+    const m = main.getBoundingClientRect(), phone = matchMedia('(max-width: 700px), (max-aspect-ratio: 13/10)').matches;
+    if (hexes) {
+      // The hexes sit across the cut, about half-way down the screen (a little higher on phones).
+      const hx = hexes.querySelector('.g-pcard') || hexes, r = hx.getBoundingClientRect();
+      const want = innerHeight * (phone ? .3 : .44) - r.height * .45, nowTop = r.top + main.scrollTop;
+      if (want > nowTop) head.style.marginBottom = `${want - nowTop + (parseFloat(getComputedStyle(head).marginBottom) || 0)}px`;
+      const r2 = hx.getBoundingClientRect();
+      main.style.setProperty('--cut', `${r2.top - m.top + main.scrollTop + r2.height * .5}px`);
+    } else {
+      const r = head.getBoundingClientRect();
+      main.style.setProperty('--cut', `${Math.max(r.bottom - m.top + main.scrollTop + 18, innerHeight * (phone ? .22 : .34))}px`);
+    }
+  }
+  addEventListener('resize', () => cityCut());
   function areaView(slot, a) {
     const info = G.dayInfo(), night = slot === 'evening';
     setBg(night && a.bgEvening ? a.bgEvening : a.bg, night && !a.bgEvening ? 'night' : '');
@@ -1055,63 +1202,69 @@
     };
     const traceCard = t => card(`data-trace="${t.link.id}" data-px="trace:${t.link.id}"${G.freeSlotSpent(slot) ? ' aria-disabled="true"' : ''}`, `who trace${G.freeSlotSpent(slot) ? ' off' : ''}`, art(t.entry.place || G.linkPlace(t.link)),
       `${faceOf(t.link.id, ' g-pc-pic')}<span class="g-pc-txt"><small class="g-pc-kick">A memory</small><b>${esc(t.entry.place ? t.entry.place.split(' · ').pop() : t.link.short)}</b><small>${esc(`Something of ${t.link.short}'s is still here.`)}</small></span>`);
+    const tagKind = c => (c === 'Free' ? 'free' : c === 'Join' ? 'join' : c === 'Your club' ? 'club' : /^¥/.test(c) ? 'yen' : 'shop');
     const actCard = x => {
       const ok = G.activityOk(x, slot), pv = G.activityInfo(x), cost = x.club ? (G.clubState(x.id).joined ? 'Your club' : 'Join') : x.cost ? `¥${x.cost.toLocaleString()}` : x.gacha ? (x.gacha === 'velvet' ? 'Draw' : 'Gacha') : x.shop ? 'Shop' : 'Free';
       const who = free.filter(l => spotOf(l) === x.spot);
       return card(`data-act="${x.id}" data-px="act:${x.id}"${ok.ok ? '' : ' aria-disabled="true"'}`, `place${ok.ok ? '' : ' off'}`, art(x.place || `${a.name} · ${x.spot}`),
         `<span class="g-pc-txt"><small class="g-pc-kick">${esc(x.spot)}</small><b>${esc(x.name)}</b><small class="g-act-benefit">${esc(pv.benefit)} · ${esc(pv.time)}</small>${ok.ok ? '' : `<small class="g-pc-why">${esc(ok.why)}</small>`}<small class="g-px-more">${esc(x.about || '')}</small></span>`,
-        `<em>${esc(cost)}</em>${who.length ? `<span class="g-px-faces">${who.map(l => faceOf(l.id)).join('')}</span>` : ''}`);
+        `${who.length ? `<span class="g-px-faces">${who.map(l => faceOf(l.id)).join('')}</span>` : ''}<em class="t-${tagKind(cost)}">${esc(cost)}</em>`);
     };
     const jobCard = j => {
       const st = G.jobState(j.id), ok = G.jobOk(j, slot), off = st.hired && !ok.ok;
       return card(`data-job="${j.id}" data-px="job:${j.id}"${off ? ' aria-disabled="true"' : ''}`, `job${off ? ' off' : ''}`, art(j.place || a.name),
-        `<span class="g-pc-txt"><small class="g-pc-kick">Part-time job</small><b>${esc(j.name)}</b><small>${esc(j.role)}${off ? ` · ${esc(ok.why)}` : ''}</small></span>`, `<em>${esc(st.hired ? `Shift · ¥${j.pay.toLocaleString()}` : 'Ask about work')}</em>`);
+        `<span class="g-pc-txt"><small class="g-pc-kick">Part-time job</small><b>${esc(j.name)}</b><small>${esc(j.role)}${off ? ` · ${esc(ok.why)}` : ''}</small></span>`, `<em class="t-job">${esc(st.hired ? `Shift · ¥${j.pay.toLocaleString()}` : 'Ask about work')}</em>`);
     };
     const spent = G.freeSlotSpent(slot);
-    show(`<section class="g-areaview g-px"><div class="g-map-head" data-ghost="${esc(G.slotName(slot, info))}"><button type="button" class="g-btn small" data-back>‹ Map</button><p class="g-kicker">${esc(G.slotName(slot, info))}</p><h1>${esc(a.name)}</h1>
+    show(`<section class="g-areaview g-px g-city-area${night ? ' late' : ''}"><div class="g-map-head" data-ghost="${esc(G.slotName(slot, info))}"><button type="button" class="g-btn small" data-back>‹ Map</button><p class="g-kicker">${esc(G.slotName(slot, info))}</p><h1>${esc(a.name)}</h1>
       <p class="g-map-sub">${esc(a.about || a.blurb)}</p></div>
-      ${spent ? '<p class="g-note">You’ve already spent this time.</p>' : ''}
       <div class="g-px-wrap"><div class="g-px-places">
-        ${people.length || traces.length ? `<div class="g-col"><h2>People</h2>${people.map(personCard).join('')}${traces.map(traceCard).join('')}</div>` : ''}
-        ${acts.length ? `<div class="g-col"><h2>Places</h2>${acts.map(actCard).join('')}</div>` : ''}
-        ${jobs.length ? `<div class="g-col"><h2>Work</h2>${jobs.map(jobCard).join('')}</div>` : ''}
+        ${people.length || traces.length ? `<div class="g-col g-ca-people"><h2>People</h2>${people.map(personCard).join('')}${traces.map(traceCard).join('')}</div>` : ''}
+        ${spent ? '<p class="g-note g-ca-spent">You’ve already spent this time.</p>' : ''}
+        ${acts.length ? `<div class="g-col g-ca-rows"><h2>Places</h2>${acts.map(actCard).join('')}</div>` : ''}
+        ${jobs.length ? `<div class="g-col g-ca-rows"><h2>Work</h2>${jobs.map(jobCard).join('')}</div>` : ''}
         ${!people.length && !traces.length && !acts.length && !jobs.length ? '<p class="g-note">Nothing much going on here right now.</p>' : ''}
-      </div><aside class="g-px-info" aria-live="polite"></aside></div></section>`, 'is-area');
+      </div><aside class="g-px-info g-tk" aria-live="polite"></aside></div></section>`, 'is-area is-city-area');
     const panel = main.querySelector('.g-px-info');
     const paint = b => {
       main.querySelectorAll('[data-px]').forEach(x => x.classList.toggle('px-on', x === b));
       const [kind, id] = b.dataset.px.split(':');
+      const pic = b.style.getPropertyValue('--pic').replace(/^url\(['"]?|['"]?\)$/g, '');
       if (kind === 'act') {
         const x = G.activities().find(v => v.id === id), pv = G.activityInfo(x), ok = G.activityOk(x, slot), who = free.filter(l => spotOf(l) === x.spot);
-        panel.innerHTML = `<p class="g-kicker">${esc(a.name)} · ${esc(x.spot)}${x.club ? ` · ${G.clubState(x.id).joined ? 'your club' : 'club'}` : ''}</p><h2>${esc(x.name)}</h2>${x.about ? `<p class="g-px-about">${esc(x.about)}</p>` : ''}
+        panel.innerHTML = ticket(pic, `<p class="g-kicker">${esc(a.name)} · ${esc(x.spot)}${x.club ? ` · ${G.clubState(x.id).joined ? 'your club' : 'club'}` : ''}</p><h2>${esc(x.name)}</h2>${x.about ? `<p class="g-px-about">${esc(x.about)}</p>` : ''}
           <h3>You’d get</h3><ul class="g-px-gets"><li><b>${esc(pv.benefit)}</b></li><li><small>${esc(pv.cost)}</small></li><li><small>${esc(pv.time)}</small></li></ul>
           ${ok.ok ? '' : `<p class="g-warn">${esc(ok.why)}</p>`}
           ${who.length ? `<h3>Who’s there</h3><ul class="g-px-who">${who.map(l => `<li>${faceOf(l.id)}<span><b>${esc(l.short)}</b><small>${esc(personNote(l, slot).line)}</small></span></li>`).join('')}</ul>` : ''}
-          <p class="g-px-go">${pxGo()} ▸ review${x.shop ? ' and browse' : ' before spending time'}</p>`;
+          <p class="g-px-go"><i>${pxGo() === 'Tap' ? 'Tap' : 'Enter'}</i>review${x.shop ? ' and browse' : ' before spending time'}</p>`);
       } else if (kind === 'link') {
-        const l = G.LINKS[id], x = personNote(l, slot), pic = x.met ? G.portrait(l.id, 'neutral') : null;
-        panel.innerHTML = `<div class="g-px-person">${pic ? `<img src="${pic}" alt="">` : '<i>?</i>'}</div><p class="g-kicker">${esc(G.linkPlace(l))}</p><h2>${esc(G.linkName(l))}</h2>
+        const l = G.LINKS[id], x = personNote(l, slot), por = x.met ? G.portrait(l.id, 'neutral') : null;
+        panel.innerHTML = ticket(pic, `<p class="g-kicker">${esc(G.linkPlace(l))}</p><h2>${esc(G.linkName(l))}</h2>
+          ${x.met ? `<p class="g-tk-tags"><span>${esc(l.arcana)}</span></p>` : '<p class="g-tk-tags"><span class="new">Someone new</span></p>'}
           <p class="g-px-about">${esc(x.met ? `${l.arcana} · ${x.note}` : x.st.ok && l.approach ? l.approach : x.note)}</p>
           ${x.met && x.st.ok ? `<ul class="g-px-gets"><li><b>${esc(x.st.after ? 'Time together' : 'Deepen your bond')}</b><small>Uses this time slot.</small></li></ul>` : ''}
-          <p class="g-px-go">${x.st.ok ? `${pxGo()} ▸ spend time together` : 'Not today.'}</p>`;
+          <p class="g-px-go">${x.st.ok ? `<i>${pxGo() === 'Tap' ? 'Tap' : 'Enter'}</i>spend time together` : 'Not today.'}</p>`, `<span class="g-px-person">${por ? `<img src="${por}" alt="">` : '<i>?</i>'}</span>`);
       } else if (kind === 'trace') {
-        const l = G.LINKS[id];
-        panel.innerHTML = `<p class="g-kicker">${esc(a.name)}</p><h2>${esc(l.short)}</h2><p class="g-px-about">Something of ${esc(l.short)}'s is still here.</p><ul class="g-px-gets"><li><small>Uses this time slot.</small></li></ul>`;
+        const l = G.LINKS[id], por = G.portrait(l.id, 'neutral');
+        panel.innerHTML = ticket(pic, `<p class="g-kicker">${esc(a.name)}</p><h2>${esc(l.short)}</h2><p class="g-px-about">Something of ${esc(l.short)}'s is still here.</p><ul class="g-px-gets"><li><small>Uses this time slot.</small></li></ul>`, `<span class="g-px-person trace">${por ? `<img src="${por}" alt="">` : '<i>?</i>'}</span>`);
       } else if (kind === 'job') {
         const j = G.D.jobs.find(v => v.id === id), st = G.jobState(j.id), ok = G.jobOk(j, slot);
-        panel.innerHTML = `<p class="g-kicker">Part-time job</p><h2>${esc(j.name)}</h2><p class="g-px-about">${esc(st.hired ? j.role : j.blurb || j.role)}</p>
+        panel.innerHTML = ticket(pic, `<p class="g-kicker">Part-time job</p><h2>${esc(j.name)}</h2><p class="g-px-about">${esc(st.hired ? j.role : j.blurb || j.role)}</p>
           <ul class="g-px-gets"><li><b>¥${j.pay.toLocaleString()} a shift</b></li><li><small>${esc(Object.keys(j.stats).map(k2 => G.D.stats.stats[k2]?.name).filter(Boolean).join(', '))}</small></li><li><small>${st.hired ? 'Uses this time slot.' : 'Asking about work uses no time.'}</small></li></ul>
-          ${st.hired && !ok.ok ? `<p class="g-warn">${esc(ok.why)}</p>` : ''}<p class="g-px-go">${pxGo()} ▸ ${st.hired ? 'review the shift' : 'ask about work'}</p>`;
+          ${st.hired && !ok.ok ? `<p class="g-warn">${esc(ok.why)}</p>` : ''}<p class="g-px-go"><i>${pxGo() === 'Tap' ? 'Tap' : 'Enter'}</i>${st.hired ? 'review the shift' : 'ask about work'}</p>`);
       }
     };
     pxWire(paint);
+    const sec = main.querySelector('.g-city-area');
     main.querySelector('[data-back]').addEventListener('click', () => goOut(slot));
+    sec.addEventListener('keydown', e => { if (e.key === 'Escape' && !e.metaKey && !e.ctrlKey && !e.altKey) { e.preventDefault(); goOut(slot); } });
     const blocked = b => { if (b.getAttribute('aria-disabled') !== 'true') return false; G.sfx('femc-back'); return true; };
     main.querySelectorAll('[data-link]').forEach(b => b.addEventListener('click', () => { if (!blocked(b)) playLink(G.LINKS[b.dataset.link]); }));
     main.querySelectorAll('[data-trace]').forEach(b => b.addEventListener('click', () => { if (!blocked(b)) playLink(G.LINKS[b.dataset.trace], false, G.nextTrace(G.LINKS[b.dataset.trace])); }));
     // Activities you can't do right now still open their review, which says why (its confirm stays off).
     main.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => previewActivity(G.activities().find(x => x.id === b.dataset.act), slot, a)));
     main.querySelectorAll('[data-job]').forEach(b => b.addEventListener('click', () => { if (!blocked(b)) previewJob(G.D.jobs.find(x => x.id === b.dataset.job), slot, a); }));
+    cityCut();
     const first = main.querySelector('.g-pcard:not([aria-disabled])') || main.querySelector('.g-pcard');
     if (first) { paint(first); first.focus({ preventScroll: true }); }
   }

@@ -19825,6 +19825,38 @@
         "assets/femc/portraits/sunoo-hoax-newyear/serious.webp": "e9a3821a5478b154a50c46d88b7c1c65246d368037fd36dc83f5f2c2ddaf7a25",
         "assets/femc/portraits/sunoo-hoax-newyear/surprised.webp": "1aacb027576f1fefce01123bc7b422a391a35a94b8bc39de74c0017bb41522cc"
       }
+    },
+    {
+      "batch": 105,
+      "source": "goout-map-day.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "da8f68972cf62d8a9e560fff801469332141a2a5c5dd4a47ac239e6f867308fd",
+      "status": "integrated",
+      "item": "FEMC-ART-TODO 6A (the Go Out map, day)",
+      "conversion": "PIL RGB → WebP q86 (method 6), full size, no crop; source left in New Adds (read-only)",
+      "placement": "ui.js MAP_ART_FILES['goout-map-day'] (Go Out map background After School / Daytime); pins re-tuned in ui.js MAP_PINS",
+      "outputs": {
+        "assets/femc/game/art/goout-map-day.webp": "44fe81f93e11b3d26faa17c51b7611092c6235018f1df6832bc1b48121ed112f"
+      }
+    },
+    {
+      "batch": 105,
+      "source": "goout-map-evening.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "da10498af7517645aab21c72d2aeeae00be7d6801e1c04db528aad2066760767",
+      "status": "integrated",
+      "item": "FEMC-ART-TODO 6B (the Go Out map, evening)",
+      "conversion": "PIL RGB → WebP q86 (method 6), full size, no crop; source left in New Adds (read-only)",
+      "placement": "ui.js MAP_ART_FILES['goout-map-evening'] (Go Out map background in the evening slot); pins re-tuned in ui.js MAP_PINS",
+      "outputs": {
+        "assets/femc/game/art/goout-map-evening.webp": "82adfab4a3f5b105405a4eddfbe8215e3df0039ec9e731374acc06e9a6acde81"
+      }
     }
   ],
   "batch1Validation": {
