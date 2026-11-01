@@ -402,7 +402,7 @@ window.FemcCosmetics = (() => {
     const have = ((readyArt().skins || {})[x.id]?.portraits || {})[id] || [];
     const f = [face, face && face.replace(/-\d+$/, ''), 'neutral', have[0]].find(k => k && have.includes(k));
     // ?v= bumps when a cut is redone (7: and seven more outfits, 2026-10-30).
-    return f ? `${G.base}${skinDir(x.id)}portraits/${id}/${f}.webp?v=7` : null;
+    return f ? `${G.base}${skinDir(x.id)}portraits/${id}/${f}.webp?v=8` : null;
   }
   // The Equipment tab's picture for a fighter's weapon slot (a path from the site root, like a gear's `art`).
   function weaponArt(who) { const x = onIn(`weapon:${who}`); return x ? `${skinDir(x.id)}weapon.webp` : null; }
