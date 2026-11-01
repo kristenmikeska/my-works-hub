@@ -979,7 +979,8 @@ window.FemcGame = (() => {
      flashbacks) stays as chosen. By day, or in the Dark Hour / Velvet Room / Tartarus, it shows as it is. */
   function background(place = '', time = '', override) {
     const rule = D.places.bg.find(([at]) => at[0] === '*' ? place.includes(at.slice(1)) : place.startsWith(at));
-    const late = /Evening|Night|PM|AM/.test(time) && !/Morning/.test(time);
+    // The Dark Hour is midnight: a place with night art uses it (Kat, Nov 1: the 4/6 konbini showed its sunny street).
+    const late = /Evening|Night|PM|AM|Dark Hour/.test(time) && !/Morning/.test(time);
     const special = /Dark Hour|Velvet|Tartarus/.test(place + time);
     if (override && !(late && !special && rule && rule[1] === override && !nightLit(override))) {
       const dim = late && !special && !nightLit(override) && D.places.bg.some(r => r[1] === override);
