@@ -718,12 +718,14 @@ window.FemcGacha = (() => {
         ${n ? `<button type="button" class="g-btn small" data-claim${busy ? ' disabled' : ''}><span>Show her the Compendium (+${n})</span></button>` : ''}
         ${window.FemcEchoUI ? window.FemcEchoUI.velvetButtons() : ''}
         ${window.FemcRequests ? window.FemcRequests.velvetButtons() : ''}
+        ${window.FemcTrials ? window.FemcTrials.velvetButtons() : ''}
         <span class="g-yen g-ga-yen">${yen(S().yen)}</span>`;
       o.el.querySelectorAll('[data-draw]').forEach(b => b.addEventListener('click', () => deal(b.dataset.draw)));
       o.el.querySelectorAll('[data-draw10]').forEach(b => b.addEventListener('click', () => deal10(b.dataset.draw10)));
       $('[data-claim]')?.addEventListener('click', () => { if (claim()) { G.sfx('femc-rankup'); say(LINES.velClaim[0]); paint(); } });
       window.FemcEchoUI?.wireVelvet(o.el, () => { if (!busy) paint(); });
       window.FemcRequests?.wireVelvet(o.el, () => { if (!busy) paint(); });
+      window.FemcTrials?.wireVelvet(o.el, () => { if (!busy) paint(); });
     };
     /* Ten draws: Elizabeth turns over the best card, then the grid (no picking: she deals the ten herself). */
     async function deal10(how) {

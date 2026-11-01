@@ -308,6 +308,10 @@ The player is `battle.js playSeq` / `seqHtml` / `seqSays` (used by `bondCut`); t
 
 ## Planned from Kat's list sections 12–21 (2026-10-31): data only, nothing in code until the art exists
 
+### Optional, later: Velvet Trials art (2026-11-01; nothing needed, everything is drawn in code)
+- A Velvet Trials banner or Elizabeth holding a card fan for the trials screen header (`trials.js open`, `.g-tr-ov`); a rank stamp set (C/B/A/S, transparent, for `.g-tr-rank.big`); art versions of the Velvet Checker wallpaper and the Trial Rose battle theme swatch. Only if Kat wants them; add to FEMC-ART-TODO first.
+
+
 Each entry below is keyed by its item in `FEMC-ART-TODO.md`. Don't add any id, banner or hook until Kat's art for it is in; then wire it the usual way (outfits: `tools/femc-wardrobe.py skin <sheet> <id> <who>` and `portraits <id> <who> <folder>` on that fighter's base canvas, `ready.js?v=` bump, `NEW_SKINS` / newpending and the banner checks in `tests/femc_cosmetics.py`, the id in each banner's `featured`). The feature notes marked **Kat to approve** are proposals: build nothing until she says yes. Those marked **Approved** (Kat, 2026-10-31: "All sounds good to me") are agreed as written: Claude builds each once its art arrives.
 
 ### 12. Swim Season (swimwear banner) *(built 2026-11-01, art batch 114)*

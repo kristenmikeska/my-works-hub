@@ -1,0 +1,63 @@
+/* Velvet Trials (trials.js, 2026-11-01): the trials screen and its result card, in the Solstice pink and black (Kat's palette
+   rule: no gold, purple, navy or green UI). Loaded after gacha.css (it reuses .g-ga / .g-st-head / .g-shop-top / .g-ga-own). */
+.g-tr-ov .g-panel { width: min(820px, 100%); border-color: var(--pink); box-shadow: 10px 10px 0 rgba(255, 79, 158, .38);
+  background: linear-gradient(180deg, rgba(20, 7, 15, .88), rgba(20, 7, 15, .97) 42%), var(--pic, none) center top / cover no-repeat; }
+.g-tr-ov .g-panel h2 { text-shadow: .06em .06em 0 #7a0b3e; }
+.g-tr-ov .g-shop-top img { border-color: var(--pink); background: #2a0f22; }
+.g-tr-ov .g-shop-say { color: var(--pink-3); }
+.g-tr-ov .g-ga-own b { color: var(--pink); }
+.g-tr-feat { margin: 4px 0 16px; padding: 12px 14px; border: 2px solid var(--pink); border-left-width: 6px; background: linear-gradient(110deg, rgba(255, 79, 158, .2), rgba(20, 7, 15, .9) 60%); box-shadow: 6px 6px 0 rgba(255, 79, 158, .35); }
+.g-tr-feat.shut { border-color: rgba(255, 140, 192, .3); box-shadow: none; background: rgba(20, 7, 15, .8); }
+.g-tr-feat .g-kicker { margin-bottom: 6px; }
+.g-tr-mod { margin: 4px 0; color: var(--ink); font-size: 14.5px; }
+.g-tr-mod b { display: inline-block; margin-right: 6px; padding: 1px 10px; background: var(--pink); color: var(--night); font: italic 900 14px/1.4 var(--cond); letter-spacing: .06em; text-transform: uppercase; transform: skewX(-10deg); }
+.g-tr-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 10px; margin: 4px 0 16px; padding: 0; list-style: none; }
+.g-tr-card { display: grid; gap: 6px; align-content: start; padding: 10px 12px; background: rgba(20, 7, 15, .9); border: 2px solid rgba(255, 79, 158, .55); border-left-width: 5px; box-shadow: 5px 5px 0 rgba(255, 79, 158, .28); }
+.g-tr-card.shut { border-color: rgba(255, 140, 192, .22); box-shadow: none; opacity: .82; }
+.g-tr-top { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 0; }
+.g-tr-top b:not(.g-tr-rank) { flex: 1 1 auto; font: italic 900 20px/1.1 var(--cond); letter-spacing: .02em; }
+.g-tr-no { color: var(--pink-2); font: italic 800 12px/1.2 var(--cond); letter-spacing: .2em; text-transform: uppercase; }
+.g-tr-slots { display: flex; flex-wrap: wrap; gap: 4px 6px; margin: 0; padding: 0; list-style: none; counter-reset: tr; }
+.g-tr-slots li { counter-increment: tr; padding: 2px 9px; border: 1.5px solid rgba(255, 140, 192, .45); background: rgba(42, 15, 34, .9); font: italic 700 13.5px/1.3 var(--cond); transform: skewX(-8deg); }
+.g-tr-slots li::before { content: counter(tr) " "; color: var(--pink); font-weight: 900; }
+.g-tr-slots li.q { color: var(--muted); border-style: dashed; letter-spacing: .2em; }
+.g-tr-meta { margin: 0; color: var(--muted); font-size: 13px; }
+.g-tr-pay { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin: 0; }
+.g-tr-pay span { display: inline-grid; place-items: center; width: 22px; height: 22px; border: 1.5px solid rgba(255, 140, 192, .4); color: var(--muted); font: italic 900 13px/1 var(--cond); }
+.g-tr-pay span.got { background: var(--pink); border-color: var(--pink); color: var(--night); }
+.g-tr-pay small { margin-left: 6px; color: var(--muted); font-size: 12px; }
+.g-tr-card .g-row { margin-top: 2px; }
+.g-tr-rank { display: inline-grid; place-items: center; min-width: 34px; height: 34px; padding: 0 6px; border: 2px solid rgba(255, 140, 192, .4); color: var(--muted); font: italic 900 22px/1 var(--cond); transform: skewX(-10deg); }
+.g-tr-rank.r-S { background: var(--pink); border-color: #fff; color: #fff; box-shadow: 3px 3px 0 #7a0b3e; }
+.g-tr-rank.r-A { background: #fff4f9; border-color: var(--pink); color: var(--night); }
+.g-tr-rank.r-B { border-color: var(--pink); color: var(--pink-2); }
+.g-tr-rank.r-C { border-color: var(--pink-3); color: var(--pink-3); }
+.g-tr-rank.mini { min-width: 22px; height: 22px; margin-left: 6px; font-size: 14px; transform: none; }
+.g-tr-duels { display: flex; flex-wrap: wrap; gap: 10px 12px; margin: 4px 0 14px; }
+.g-tr-duels .g-btn { font-size: 14px; padding: 8px 14px; }
+.g-tr-rules { margin-top: 6px; }
+/* The result card. */
+.g-tr-res-ov .g-panel { width: min(560px, 100%); border-color: var(--pink); box-shadow: 10px 10px 0 rgba(255, 79, 158, .4); background: linear-gradient(160deg, rgba(42, 15, 34, .97), rgba(20, 7, 15, .98) 55%); }
+.g-tr-res-main { display: flex; align-items: center; gap: 22px; margin: 6px 0 10px; }
+.g-tr-rank.big { min-width: 104px; height: 104px; font-size: 84px; border-width: 3px; animation: g-tr-stamp .5s cubic-bezier(.2, 1.6, .4, 1) both; }
+.g-tr-score b { display: block; font: italic 900 46px/1 var(--cond); letter-spacing: -.01em; text-shadow: 3px 3px 0 #7a0b3e; }
+.g-tr-score small { color: var(--muted); font: italic 800 13px/1.4 var(--cond); letter-spacing: .2em; text-transform: uppercase; }
+.g-tr-score i { color: var(--pink); font-style: normal; }
+.g-tr-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 0 0 10px; padding: 0; list-style: none; }
+.g-tr-stats li { display: grid; gap: 2px; padding: 6px 8px; border-left: 3px solid var(--pink); background: rgba(20, 7, 15, .8); }
+.g-tr-stats span { color: var(--muted); font: italic 800 11px/1.2 var(--cond); letter-spacing: .16em; text-transform: uppercase; }
+.g-tr-stats b { font: italic 900 20px/1.1 var(--cond); }
+.g-tr-say2 { margin: 8px 0 12px; color: var(--pink-3); font-style: italic; font-size: 14.5px; }
+@keyframes g-tr-stamp { from { opacity: 0; transform: skewX(-10deg) scale(2.2) rotate(-12deg); } to { opacity: 1; transform: skewX(-10deg) scale(1); } }
+@media (prefers-reduced-motion: reduce) { .g-tr-rank.big { animation: none; } }
+@media (max-width: 600px) {
+  .g-tr-list { grid-template-columns: 1fr; }
+  .g-tr-top b:not(.g-tr-rank) { font-size: 18px; }
+  .g-tr-stats { grid-template-columns: repeat(2, 1fr); }
+  .g-tr-rank.big { min-width: 78px; height: 78px; font-size: 62px; }
+  .g-tr-score b { font-size: 36px; }
+  .g-tr-pay small { flex-basis: 100%; margin-left: 0; }
+}
+/* The looks (cosmetics.js builds these too once its sheet is made; here so they hold either way). */
+:root[data-titletheme="tr-tt-challenger"] .g-title { background: #ff4f9e; } :root[data-titletheme="tr-tt-challenger"] .g-title::before { background: #14070f; }
+:root[data-titletheme="tr-tt-champion"] .g-title { background: #ffd6e8; } :root[data-titletheme="tr-tt-champion"] .g-title::before { background: #14070f; }

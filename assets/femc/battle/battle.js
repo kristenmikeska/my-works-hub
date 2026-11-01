@@ -5146,7 +5146,7 @@
     screen = 'handoff';
     root.classList.remove('bt-in-battle');
     music.play(null);
-    const word = HO.request.epi ? '…' : { win: HO.kind === 'tartarus' ? 'Back to the dorm' : 'The moon is quiet', lose: 'The hour closes', retreat: 'Not tonight', interrupt: '…' }[outcome] || 'Back to the dorm';
+    const word = HO.request.epi ? '…' : HO.kind === 'trial' ? ({ win: 'Trial complete', lose: 'Trial over' }[outcome] || 'Back to the Velvet Room') : { win: HO.kind === 'tartarus' ? 'Back to the dorm' : 'The moon is quiet', lose: 'The hour closes', retreat: 'Not tonight', interrupt: '…' }[outcome] || 'Back to the dorm';
     show(`<div><p class="bt-kicker">${esc(HO.date ? HO.date.md : '')} · The Dark Hour</p><h1>${esc(word.toUpperCase())}</h1></div>`, 'bt-over bt-ho-done');
     // The life sim takes it from here: it records the result, fades this frame out and picks the story up on the next line.
     setTimeout(() => { if (!window.__hoStay) BR.finish(result); }, Math.round(650 / Math.min(speed(), 4)));
@@ -5516,8 +5516,15 @@
     }
     hoFinish(out);
   }
+  /* Velvet Trials (game trials.js, battle trials-battle.js; FEMC-BOSS-RUSH.md): a row of boss refights, no EXP, yen or loot. */
+  function trialCtx() {
+    return { HO, D, E, esc, mark, sfx, persist, newRun, battle, carryEach, prepare: spec => prepareBattle(spec), panel: o => roomPanel(o), hoFinish: (o, x) => hoFinish(o, x),
+      get save() { return save; }, getRun: () => run, setRun: r => { run = r; },
+      partyHp: carry => { const us = buildParty(carry); const max = us.reduce((a, u) => a + u.maxHp, 0); return max ? +(us.reduce((a, u) => a + Math.max(0, u.hp), 0) / max).toFixed(3) : 0; } };
+  }
   function hoStart() {
     hoBegin();
+    if (HO.kind === 'trial' && window.FemcTrialsBattle) return window.FemcTrialsBattle.run(trialCtx());
     if (HO.kind === 'operation') return hoOperation();
     if (HO.kind === 'scripted') return hoScripted();
     hub();

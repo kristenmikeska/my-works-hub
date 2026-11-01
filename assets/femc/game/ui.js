@@ -361,7 +361,7 @@
   function battleCard(battle, resumeInfo, cont, kind) {
     kind = kind || battle.kind || (battle.script ? 'scripted' : battle.op ? 'operation' : 'tartarus');
     const title = battle.title || (kind === 'tartarus' ? 'Tartarus' : battle.op ? 'Full Moon Operation' : 'Battle');
-    const req = { op: battle.op, ops: battle.ops, script: battle.script, segment: battle.segment, title, desc: battle.desc, notes: battle.notes || null, forced: battle.forced !== false && kind !== 'tartarus', party: battle.party, epi: battle.epi || null };
+    const req = { op: battle.op, ops: battle.ops, script: battle.script, segment: battle.segment, title, desc: battle.desc, notes: battle.notes || null, forced: battle.forced !== false && kind !== 'tartarus', party: battle.party, epi: battle.epi || null, trial: battle.trial || null };
     const seg1 = battle.script && battle.segment === 1;
     // The Dark Hour transition carries the fight's title.
     if (!DEBUG) return goBattle(kind, req, resumeInfo, cont);
@@ -419,7 +419,7 @@
     const h = S().handoff;
     if (!h || dh) return;
     const R = h.request || {}, kind = h.kind;
-    const kicker = kind === 'operation' || (R.op && kind !== 'tartarus') ? 'Full Moon · The Dark Hour' : 'The Dark Hour';
+    const kicker = kind === 'trial' ? 'The Velvet Room · Velvet Trial' : kind === 'operation' || (R.op && kind !== 'tartarus') ? 'Full Moon · The Dark Hour' : 'The Dark Hour';
     const title = R.title || (kind === 'tartarus' ? 'Tartarus' : 'Battle');
     // Loading stills by fight type (batch 66): a Tartarus night shows Tartarus over the gate (loading-1); every other fight
     // (full-moon operations and story fights) shows the dorm lounge at midnight (loading-2). An epilogue world's fights show
@@ -520,6 +520,7 @@
   };
   // The night's report after the battle's own results: the same look as the battle's results screen.
   function resultsCard(h, sum, done) {
+    if (h.kind === 'trial' && window.FemcTrials) return window.FemcTrials.results(h, sum, done);
     if (h.kind === 'scripted' && !sum.fragments.length) { done(); return; }
     const exp = Object.entries(sum.exp || {});
     const lv = h.result?.levels || {};
@@ -541,6 +542,7 @@
     if (S().epi && window.FemcEpilogue) return window.FemcEpilogue.resume(p, sum || null);
     if (p.snap) { if (p.music) SC.Music.set(p.music); return playCtx(p.ctx, { onDone: () => afterCtx(p.ctx) }, p.snap); }
     S().pending = null;
+    if (p.ctx.type === 'trial') { G.save(); run(); return window.FemcTrials?.reopen(); }
     if (p.ctx.type === 'tartarus') { S().spent[`${S().day}-evening`] = 'tartarus'; G.save(); return advance(); }
     run();
   }

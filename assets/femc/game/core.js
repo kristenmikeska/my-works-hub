@@ -1736,6 +1736,8 @@ window.FemcGame = (() => {
     if (old.gacha) Object.assign(S.gacha, { keys: { ...(old.gacha.keys || {}) }, cases: [...(old.gacha.cases || [])], caseOn: old.gacha.caseOn || null, stars: old.gacha.stars || 0,
       skeys: { ...(old.gacha.skeys || {}) }, done: [...(old.gacha.done || [])], cos: old.gacha.cos ? { own: [...(old.gacha.cos.own || [])], on: { ...(old.gacha.cos.on || {}) }, portraits: old.gacha.cos.portraits !== false } : undefined });
     if (S.gacha && S.gacha.cos === undefined) delete S.gacha.cos;
+    // Velvet Trials' records, one-time rank rewards and bosses seen carry over (trials.js).
+    if (old.gacha && old.gacha.trials) S.gacha.trials = clone(old.gacha.trials);
     save();
   }
 
@@ -2276,7 +2278,7 @@ window.FemcGame = (() => {
       // Night-only items from the life sim (Shinjiro's Kitchen Duty leftovers); battle.js adds them on a Tartarus night.
       kits: kind === 'tartarus' && S.leftovers ? { night_leftovers: 1 } : null,
       social: { stats: { ...S.stats }, ranks: Object.fromEntries(Object.entries(S.links).filter(([, p]) => p.rank > 0).map(([k, p]) => [k, p.rank])), reversed: Object.entries(S.links).filter(([, p]) => p.reversed).map(([k]) => k), romance: Object.entries(S.links).filter(([, p]) => p.route === 'romance').map(([k]) => k) },
-      difficulty: null
+      difficulty: null, trial: req.trial || null
     };
   }
   const readHandoff = () => S.handoff || null;
@@ -2330,6 +2332,13 @@ window.FemcGame = (() => {
     // A reload can recover this completed handoff after rewards were saved but before
     // the UI cleared it. Keep its receipt in the same save as the rewards.
     if (h.appliedResult) return clone(h.appliedResult);
+    // Velvet Trials (trials.js; FEMC-BOSS-RUSH.md): only the trial's records and rewards, nothing of the story's.
+    if (h.kind === 'trial') {
+      const sum = W.FemcTrials ? W.FemcTrials.apply(h, r) : { outcome: r.outcome, yen: 0, items: [], fragments: [], bosses: [], exp: {}, simulated: !!r.simulated };
+      h.appliedResult = clone(sum);
+      save();
+      return sum;
+    }
     // In the epilogue (batch 6) a fight touches nothing of the world's: no money (battle yen never reaches the world's wallet),
     // no items, gear, fragments, full moons, Tartarus, stats, plumes or condition. Only the EXP tally (the levels themselves
     // are already in the battle save, which the battle side wrote) and a flag for how it ended: <script>-win / -pulled / -faded.

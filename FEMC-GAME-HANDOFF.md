@@ -88,6 +88,8 @@ result: {
 
 ## Kinds of fight
 
+- **`trial`** (2026-11-01, Velvet Trials; FEMC-BOSS-RUSH.md): `request.trial` lists a row of boss refights; battle trials-battle.js plays them with no EXP, yen or loot and returns `result.trial` (score inputs). The life sim applies nothing but the trial's own records and rewards (trials.js `apply`).
+
 - **`tartarus`**: the player chose Tartarus at the dorm at night. Retreat is allowed. Afterwards the evening is spent and the day ends; Solar wakes up with `result.fatigue` (Tired by default).
 - **`operation`**: a full-moon boss. `forced: true`. The calendar (`assets/femc/game/data/calendar.js`, `ops`) decides the date. 7/7 runs two operations back to back (`hierophant`, then `lovers`): two handoffs in a row.
 - **`scripted`**: a story fight inside a scene. The prologue's first fight is `script: 'prologue-1'` in two segments:
