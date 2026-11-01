@@ -6,7 +6,7 @@ Party section (since 2026-10-31, the orbits): node counts and ring gates for all
 chips, ring labels, MAX, respec), an old save's migration, every Solar-ray hook and crown in fights, the party caps, Solar against a
 maxed member at Lv 99, a real Rush frame, practice's orbit screen, and all twelve orbits at 1280x850 and 375x812.
 
-Covers: Haenim's sun (97 nodes on six rays, the corona and the crown; spending, in-place upgrades, choice nodes, hidden memory
+Covers: Haenim's sun (97 nodes on six rays, the corona and the crown, plus 51 late-game ones: 148 drawn; spending, in-place upgrades, choice nodes, hidden memory
 nodes, hybrids, keystones -> forms, Unveiled's gating; mouse, keyboard and phone: tap, drag, wheel, pinch, + - and Fit), Solar's
 skill list (every learned skill kept, no "forget which?" for her, free swapping into her eight slots outside battle, the swap
 reaching a real fight), the Velvet Room respec, the party orbits (see below), each
@@ -139,8 +139,8 @@ try:
     if want('menu'):
         setup(p, lvl=20, pts=200)
         menu(p)
-        ok(p.eval("document.querySelectorAll('.g-sunvp .sun-stage [data-hn]').length") == 97, 'every node of the sun is drawn')
-        ok(p.eval("document.querySelectorAll('.sun-raylbl').length") == 6 and p.eval("document.querySelectorAll('[data-ray]').length") == 6, 'six rays')
+        ok(p.eval("document.querySelectorAll('.g-sunvp .sun-stage [data-hn]').length") == 148, 'every node of the sun is drawn')
+        ok(p.eval("document.querySelectorAll('.sun-raylbl').length") == 6 and p.eval("document.querySelectorAll('[data-ray]').length") == 8, 'six rays (and the Eclipse and Epilogues chips)')
         ok(p.eval("!!document.querySelector('[data-hn=unveiled].crown') && !!document.querySelector('[data-hn=sun1].heart')"), 'Lady Sun at the core, Unveiled as the crown')
         ok(p.eval("['bell-key','jade-key','star-key','st-key','tr-key','gd-key'].every(id=>document.querySelector(`[data-hn=${id}]`).classList.contains('key'))"), 'a keystone at every tip')
         start = kit(p)
@@ -253,12 +253,13 @@ try:
         # 1) Data and rules: ~40 nodes in 8 rings, every 2026-10-25 id kept, ring gates by level and rank, points at Lv 99.
         R = p.eval(r"""(()=>{const E=FemcBattleEngine,D=FEMC_BATTLE_DATA,out={};
           const R15=['akihiko','shinjiro','jihoon','minji','jungwon','haechan'];
-          Object.keys(D.ptrees).forEach(mid=>{const ns=E.ptreeNodes(mid),ids=ns.map(n=>n.id);
+          const base=mid=>E.ptreeNodes(mid).filter(n=>!n.rad&&!n.crown2&&!n.duet); // the orbit itself (the late-game nodes: the 'late' section)
+          Object.keys(D.ptrees).forEach(mid=>{const ns=base(mid),ids=ns.map(n=>n.id);
             out[mid]={n:ns.length,uniq:new Set(ids).size===ids.length,old:ids.filter(i=>/^[a-z]{2}\d+[ab]?$/.test(i)).length,cost:ns.reduce((s,n)=>s+n.cost,0),
               rings:[...new Set(ns.map(n=>n.ring))].sort().join(''),core:ns.filter(n=>n.ray==='core').length,builds:D.ptrees[mid].builds.map(b=>b.nodes.length).join('/'),
               solar:ns.filter(n=>n.ray==='solar').length,r15:ns.filter(n=>n.rank===15).length,want15:R15.includes(mid),crown:ns.filter(n=>n.crown).length,
               max:D.ptrees[mid].max.to};});
-          const all=Object.values(D.ptrees).flatMap((t,i)=>E.ptreeNodes(Object.keys(D.ptrees)[i]).map(n=>n.id));
+          const all=Object.values(D.ptrees).flatMap((t,i)=>base(Object.keys(D.ptrees)[i]).map(n=>n.id));
           out.globalUniq=new Set(all).size===all.length;
           out.pts={5:D.progression.partyPts(5),40:D.progression.partyPts(40),99:D.progression.partyPts(99)};
           // Gates on a fresh save: level then rank then path.
@@ -292,7 +293,7 @@ try:
         p.eval("FemcGame.S.links.akihiko=Object.assign(FemcGame.progress('akihiko'),{rank:0});FemcGame.saveQuiet()")
         menu(p)
         click(p, '[data-sk=akihiko]')
-        ok(p.eval("document.querySelectorAll('.g-orbit .sun-stage [data-hn]').length") == 41, 'Akihiko’s orbit: every node drawn')
+        ok(p.eval("document.querySelectorAll('.g-orbit .sun-stage [data-hn]').length") == 46, 'Akihiko’s orbit: every node drawn (41 + three Radiance, the second crown and the duet)')
         ok(p.eval("!!document.querySelector('.g-orbit [data-hn=ak-crown].crown')"), 'the crown at the heart')
         labels = p.eval("[...document.querySelectorAll('.g-orbit .sun-ringlbl')].map(x=>x.textContent+(x.classList.contains('shut')?'!':''))")
         ok(labels == ['Lv 15', 'Lv 30', 'Lv 45!', 'Rank 4!', 'Rank 7!', 'Rank 9!', 'Rank 10!'], ('ring labels say what opens them', labels))
@@ -369,7 +370,7 @@ try:
         H = p.eval(r"""(()=>{const E=FemcBattleEngine,D=FEMC_BATTLE_DATA,save=JSON.parse(JSON.stringify(FemcGame.S.battleSave)),out={};
           Object.keys(D.ptrees).forEach(mid=>{save.mem[mid]={lvl:99,exp:0};save.ranks[mid]=10;save.bonds=save.bonds||{};save.bonds[mid]=15;});
           const give=(mid,ids)=>{save.ptree[mid]=ids;};
-          const all=mid=>E.ptreeNodes(mid).map(n=>n.id), ray=(mid,r)=>E.ptreeNodes(mid).filter(n=>n.ray===r||n.ray==='core').map(n=>n.id);
+          const all=mid=>E.ptreeNodes(mid).filter(n=>!n.rad&&!n.crown2&&!n.duet).map(n=>n.id), ray=(mid,r)=>E.ptreeNodes(mid).filter(n=>n.ray===r||n.ray==='core').map(n=>n.id);
           const fight=(ids,foes,seed,f)=>{const units=ids.map(id=>E.buildUnit(id,save));const b=E.create({party:units,enemies:foes,rand:E.rng(seed),known:{}});if(f)f(b);return b};
           const has=(ev,lbl)=>ev.some(e=>e.t==='status'&&e.label===lbl);
           // Caps: a whole orbit stays under the party's caps.
@@ -521,7 +522,7 @@ try:
         p.wait("FemcBattle.screen()==='tree'")
         p.eval("document.querySelector('[data-who=akihiko]').click()")
         p.wait("!!document.querySelector('.bt-orbit [data-hn]')")
-        ok(p.eval("document.querySelectorAll('.bt-orbit [data-hn]').length") == 41 and p.eval("document.querySelectorAll('.bt-orbit .sun-ringlbl.shut').length") >= 4, 'practice: Akihiko’s orbit with shut rank rings')
+        ok(p.eval("document.querySelectorAll('.bt-orbit [data-hn]').length") == 46 and p.eval("document.querySelectorAll('.bt-orbit .sun-ringlbl.shut').length") >= 4, 'practice: Akihiko’s orbit with shut rank rings')
         p.eval("FemcBattle.ctl.pick()")
         ok(p.eval("(FemcBattle.save.ptree.akihiko||[]).length") == 1, 'bought in practice')
         cur = p.eval("document.querySelector('.bt-sn.sel').dataset.hn")
@@ -530,7 +531,7 @@ try:
         p.eval("document.querySelector('[data-act=refund]').click()")
         ok(p.eval("(FemcBattle.save.ptree.akihiko||[]).length") == 0, 'free refund in practice')
         p.eval("document.querySelector('[data-who=solar]').click()")
-        ok(p.eval("document.querySelectorAll('.bt-sun [data-hn]').length") == 97, 'back to the sun')
+        ok(p.eval("document.querySelectorAll('.bt-sun [data-hn]').length") == 148, 'back to the sun')
         p.eval("FemcBattle.ctl.back()"); p.wait("FemcBattle.screen()==='hub'")
         errs = p.console(); ok(not errs, errs)
         print('Practice: orbits switch, buy, keys, refund OK', flush=True)
@@ -1330,7 +1331,7 @@ try:
         ok(p.eval('FemcBattle.save.pts') == 4 + 3 and p.eval('FemcBattle.save.nodes.length') == 0, 'practice save migrated (refunded)')
         p.eval("document.querySelector('[data-go=tree]').click()")
         p.wait("FemcBattle.screen()==='tree'")
-        ok(p.eval("document.querySelectorAll('.bt-sun [data-hn]').length") == 97, 'the whole sun')
+        ok(p.eval("document.querySelectorAll('.bt-sun [data-hn]').length") == 148, 'the whole sun')
         ok(p.eval("document.querySelector('.bt-sn.sel b').textContent") == 'Lady Sun', 'starts on the first node you can buy')
         p.eval("FemcBattle.ctl.pick()")
         ok(p.eval("FemcBattle.save.nodes.includes('sun1') && FemcBattle.save.pts===6"), 'bought in practice')
