@@ -587,6 +587,9 @@
     // Holiday invitations (a link's `holidays`) wait for their slot: spend the day with someone, or make your own plans.
     const hol = G.holidayDue();
     if (hol) return holidayPicker(hol, info);
+    // Plans made by text this morning (core.js answerDayInvite): the time together starts now, +1 ♪ for keeping them.
+    const booked = G.bookedDue();
+    if (booked) { G.clearBooked(); return playLink(booked, false, null, { bonus: 1 }); }
     const daily = G.dailyLife();
     if (daily) return playDailyLife(daily, info);
     // A crush moment (core.js crushes, data/crush*.js): plays the same way, in a slot no routine took.
@@ -1439,7 +1442,7 @@
   }
 
   /* ── Links ── */
-  function playLink(l, forcedStory, trace) {
+  function playLink(l, forcedStory, trace, opts = {}) {
     const p = G.progress(l.id);
     const pick = G.linkScene(l, trace);
     const r = pick.r;
@@ -1450,7 +1453,9 @@
       music: pick.music || (/^Persona 5/.test(l.from || '') ? 'p5' : null), // the Persona 5 cast: Beneath the Mask
       onBattle: (b, snap, cont) => battleCard(b, null, cont),
       onDone: res => {
-        const out = G.finishLink(l, pick.kind, r, res.gained);
+        const bonus = opts.bonus && ['rank', 'hangout'].includes(pick.kind) ? opts.bonus : 0;
+        if (bonus) G.toast('perk', `Plans kept with ${l.short}: +${bonus} ♪`);
+        const out = G.finishLink(l, pick.kind, r, (res.gained || 0) + bonus);
         const done = () => { G.save(); advance(); };
         if (out.reversed) return SC.rankUp(l, out.rank, done, true);
         if (out.repaired || out.after) return done();
@@ -1653,7 +1658,7 @@
     const compose = $p('.g-ph-compose'), draft = $p('.g-ph-draft');
     const stop = () => { anim.token += 1; clearTimeout(anim.timer); anim.skip = null; o.el.classList.remove('g-ph-playing'); };
     const focusIn = el => setTimeout(() => el?.isConnected && el.focus({ preventScroll: true }), 40);
-    const pending = id => !!(s.phone.pending[id] && G.textById(s.phone.pending[id])) || s.phone.invite?.link === id;
+    const pending = id => !!(s.phone.pending[id] && G.textById(s.phone.pending[id])) || s.phone.invite?.link === id || !!G.dayInvitePending(id);
     /* The phone's apps (2026-11-01): Messages, Who's Free (P5X-style: who's at their spot today and the next few days) and
        Contacts (a card per met link). The tab strip sits at the top of each list; a contact card's ‹ goes back to Contacts. */
     let tab = 'msgs';
@@ -1842,7 +1847,18 @@
           reply.append(b);
         });
       }
-      if (reply.firstChild) focusIn(reply.firstChild);
+      // An ordinary-day invite (core.js lifeMorning): yes books their slot today.
+      const dv = G.dayInvitePending(id);
+      if (dv) {
+        const l = G.LINKS[id], h = G.rankHint(l);
+        if (h && h.label && h.key !== 'max') { const n = document.createElement('p'); n.className = `g-ph-hint k-${h.key}`; n.textContent = `${h.label}${h.note ? ` · ${h.note}` : ''}`; reply.append(n); }
+        [[`Yes, ${dv.slot === 'evening' ? 'tonight' : G.dayInfo().type === 'school' ? 'after school' : 'later'}`, true], ['Can’t today', false]].forEach(([label, yes]) => {
+          const b = document.createElement('button'); b.type = 'button'; b.textContent = label; b.dataset.dayinv = yes ? 'yes' : 'no';
+          b.addEventListener('click', () => { const from = (s.phone.threads[id] || []).length; G.answerDayInvite(yes); reply.replaceChildren(); G.sfx('femc-click'); play(id, from, () => replies(id)); });
+          reply.append(b);
+        });
+      }
+      if (reply.firstChild) focusIn(reply.querySelector('button') || reply.firstChild);
     };
     const open = id => {
       title.textContent = threadName(id); back.hidden = false; delete title.dataset.card;

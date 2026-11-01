@@ -379,7 +379,7 @@ try:
       s=LW.at('11/10','late');LW.link('akihiko',9,{route:'friend'});out.friend=G.lateNightDue()?.e.id;
       s=LW.at('11/10','late');LW.link('akihiko',2);out.low=G.lateNightDue();
       s=LW.at('11/10','late');LW.link('akihiko',9,{route:'romance',reversed:true});out.rev=G.lateNightDue();
-      s=LW.at('6/10','late');LW.link('akihiko',3);out.quiet=G.lateNightDue();s.tonight='battled';out.tower=G.lateNightDue()?.e.id;
+      s=LW.at('6/10','late');LW.link('akihiko',3);s.lateNights.seen=['call-aki-splits'];out.quiet=G.lateNightDue();out.call=G.lateNightDue&&(s.lateNights.seen=[],G.lateNightDue()?.e.id);s.lateNights.seen=['call-aki-splits'];s.tonight='battled';out.tower=G.lateNightDue()?.e.id;
       s=LW.at('11/10','late');LW.link('akihiko',9,{route:'romance'});G.finishLateNight('aki-ln-landing');s.day+=1;out.spaced=G.lateNightDue();s.day+=2;s.lateNights.seen=[];out.after3=!!G.lateNightDue();
       s=LW.at('12/2','late');LW.link('akihiko',9,{route:'romance'});out.fullMoon=G.lateNightDue();
       s=LW.at('12/12','late');LW.link('jungwon',8,{route:'romance'});s.lateNights.seen=['jw-ln-call','jw-ln-halfway'];out.jw=G.lateNightDue()?.e;s.lateNights.seen=['jw-ln-call','jw-ln-halfway'];LW.link('jungwon',8,{route:'friend'});out.jwFriend=G.lateNightDue();
@@ -389,6 +389,7 @@ try:
     ok(nights['romance'] == 'aki-ln-landing' and nights['friend'] == 'aki-ln-friend', "Akihiko's nights follow his route (romance or friendship)")
     ok(not nights['low'] and not nights['rev'] and not nights['fullMoon'], 'no late night below its rank, from a reversed link, or on a full moon')
     ok(not nights['quiet'] and nights['tower'] == 'aki-ln-ice', 'a Tartarus-night scene plays only after a night in the tower')
+    ok(nights['call'] == 'call-aki-splits', 'a quiet night can bring a phone call instead (living-calls.js, 2026-11-01)')
     ok(not nights['spaced'] and nights['after3'], 'late nights are spaced at least three nights apart')
     ok(nights['jw'] and nights['jw']['kind'] == 'visit' and nights['jw']['route'] == 'romance' and not nights['jwFriend'], "Jungwon's romance night (a visit that ends at the gate) is for his romance route only")
     ok(nights['rotate'] == 'jihoon,jungwon', 'late nights rotate between people')

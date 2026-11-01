@@ -1980,6 +1980,7 @@ window.FemcGame = (() => {
   }
   function deliverTexts() {
     sendHolidayInvites();
+    lifeMorning();
     const t = nextDated() || nextAfterRank() || nextLater() || nextAmbient();
     if (t) { if ((D.texts.ambient || []).includes(t)) S.phone.ambientDay = S.day; sendText(t); }
     maybeInvite();
@@ -2097,10 +2098,12 @@ window.FemcGame = (() => {
   }
   function lateNightDue(d = S.day) {
     const info = dayInfo(d), st = S.lateNights || { seen: [], lastDay: -99 };
-    if (S.phase !== 'play' || info.type === 'trip' || info.moon.full || S.tonight === 'rest' || d - (st.lastDay ?? -99) < 3) return null;
+    // Every third night at most; a phone call can come a night sooner (2026-11-01: calls a little more often).
+    const gap = d - (st.lastDay ?? -99);
+    if (S.phase !== 'play' || info.type === 'trip' || info.moon.full || S.tonight === 'rest' || gap < 2) return null;
     if (D.events.some(e => e.date === info.md && SLOT_FOR[e.slot || 'evening'] === 'late' && S.events.includes(e.id))) return null;
     const all = [];
-    Object.values(LINKS).forEach(l => (l.lateNights || []).forEach(e => { if (!(st.seen || []).includes(e.id) && lateNightFits(l, e, d)) all.push({ link: l, e }); }));
+    Object.values(LINKS).forEach(l => (l.lateNights || []).forEach(e => { if (!(st.seen || []).includes(e.id) && (gap >= 3 || e.kind === 'call') && lateNightFits(l, e, d)) all.push({ link: l, e }); }));
     if (!all.length) return null;
     // Rotate between people night to night; within one person, their scenes in order.
     const people = [...new Set(all.map(x => x.link.id))];
@@ -2271,6 +2274,74 @@ window.FemcGame = (() => {
     (box[g.tier] ||= []).push(g.item);
     return true;
   }
+  /* Ordinary-day invites: on some mornings (about two a week, never on a story day, a trip or a holiday-invite day) one met
+     link at rank 2+ who is free in their slot today texts "free later?". Yes books the slot: when it comes, the time together
+     plays at once (ui.js run → bookedDue) with +1 ♪. Three left unanswered in a row get one wistful text the next morning. */
+  function dayInviteSlot(l, d = S.day) {
+    if (!l.dayInvite?.ask?.length || l.status === 'stub' || l.storyOnly || !isMet(l.id) || (l.secret && !flag(l.secret.flag))) return null;
+    const p = progress(l.id);
+    if (p.reversed || (p.rank || 0) < 2 || goneLink(l, d)) return null;
+    const slot = homeSlot(l, d), info = dayInfo(d);
+    if (!slotsFor(info).includes(slot) || (slot === 'evening' && info.moon.full)) return null;
+    if (S.holiday?.d === d && S.holiday.links.includes(l.id)) return null;
+    return linkStatus(l, d, slot).ok ? slot : null;
+  }
+  function lifeMorning() {
+    if (S.slot !== 'early' || S.phase !== 'play' || S.epi) return;
+    const L = life(), info = dayInfo();
+    if (L.sadDue) {
+      const l = LINKS[L.sadDue]; L.sadDue = null;
+      const t = l && lifePick(l.dayInvite?.sad, S.day * 17 + 3);
+      if (t) { appendPhone(l.id, [{ from: l.id, t }]); S.phone.unread[l.id] = (S.phone.unread[l.id] || 0) + 1; toast('text', `${l.short}: ${t}`, { thread: l.id, from: l.id, msg: t, count: 1 }); }
+    }
+    if (L.inv && L.inv.d !== S.day) L.inv = null;
+    if (L.booked && L.booked.d !== S.day) L.booked = null;
+    if (L.inv || !['school', 'off'].includes(info.type) || S.day - L.lastInv < 2 || storyDay()) return;
+    if (S.holiday && S.holiday.d === S.day) return;
+    if (seeded(S.day * 31 + 7) > 0.5) return;
+    const pool = Object.values(LINKS).map(l => ({ l, slot: dayInviteSlot(l) })).filter(x => x.slot);
+    if (!pool.length) return;
+    const { l, slot } = pool[Math.floor(seeded(S.day * 41 + 11) * pool.length) % pool.length];
+    const ask = lifePick(l.dayInvite.ask, S.day * 7 + 1);
+    L.inv = { d: S.day, link: l.id, slot, ans: null };
+    L.lastInv = S.day;
+    appendPhone(l.id, [{ from: l.id, t: ask, dayInvite: true }]);
+    S.phone.unread[l.id] = (S.phone.unread[l.id] || 0) + 1;
+    toast('text', `${l.short}: ${ask}`, { thread: l.id, invite: true, from: l.id, msg: ask, count: 1 });
+  }
+  // Today's invitation from this thread, still answerable (its slot hasn't passed or been spent).
+  function dayInvitePending(id) {
+    const v = S.life?.inv;
+    if (!v || v.ans || v.d !== S.day || (id && v.link !== id)) return null;
+    if (SLOT_ORDER.indexOf(S.slot) > SLOT_ORDER.indexOf(v.slot) || S.spent[`${S.day}-${v.slot}`]) return null;
+    return v;
+  }
+  function answerDayInvite(yes) {
+    const v = dayInvitePending(); if (!v) return null;
+    const L = life(), l = LINKS[v.link], when = v.slot === 'evening' ? 'tonight' : dayInfo().type === 'school' ? 'after school' : 'later';
+    v.ans = yes ? 'yes' : 'no'; L.ignored = 0;
+    appendPhone(l.id, [{ from: 'solar', t: yes ? `yes. ${when}. i'll be there` : 'can’t today. i’m sorry' }, { from: l.id, t: lifePick(yes ? l.dayInvite.ok : l.dayInvite.no, S.day * 13 + 5) || (yes ? 'ok. see you' : 'ok. next time') }]);
+    if (yes) L.booked = { d: S.day, slot: v.slot, link: l.id };
+    save();
+    return yes ? { link: l, slot: v.slot } : null;
+  }
+  // The booked time, when its slot comes (and it's still free); the hint for the UI. clearBooked once it plays.
+  function bookedDue(slot = S.slot) {
+    const b = S.life?.booked;
+    if (!b || b.d !== S.day || b.slot !== slot || S.spent[`${S.day}-${slot}`]) return null;
+    const l = LINKS[b.link];
+    return l && linkStatus(l, S.day, slot).ok ? l : null;
+  }
+  function clearBooked() { if (S.life) S.life.booked = null; }
+  function lifeOvernight() {
+    const L = S.life; if (!L || S.epi) return;
+    const v = L.inv;
+    if (v && v.d === S.day && !v.ans) {
+      L.ignored = (L.ignored || 0) + 1;
+      if (L.ignored >= 3) { L.sadDue = v.link; L.ignored = 0; }
+    }
+    L.inv = null; L.booked = null;
+  }
 
   /* ── Time ── */
   function freeSlotSpent(slot = S.slot) { return !!S.spent[`${S.day}-${slot}`]; }
@@ -2282,6 +2353,7 @@ window.FemcGame = (() => {
     return sleep();
   }
   function sleep() {
+    lifeOvernight();
     // Overnight: Tartarus tires her out; resting clears it.
     const t = S.tonight;
     if (t === 'tartarus') S.condition = S.condition === 'tired' || S.condition === 'sick' ? 'sick' : 'tired';
@@ -2573,7 +2645,7 @@ window.FemcGame = (() => {
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
     deliverTexts, replyText, textById, answerInvite, gift, bond,
-    rankHint, whoFree, goneLinks, contactCard, noteGift, storyDay,
+    rankHint, whoFree, goneLinks, contactCard, noteGift, dayInvitePending, answerDayInvite, bookedDue, clearBooked, storyDay,
     holidayInvites, sendHolidayInvites, holidayDue, acceptHoliday, finishHoliday, declineHolidays,
     lateNightDue, finishLateNight, tripPlan, finishTrip, unread, markAllRead, isGroupThread, freeSlotSpent, nextSlot, sleep,
     available, navigator, tartarusOk, floorCap, makeHandoff, readHandoff, clearHandoff, finishHandoff, simulate, applyResult,

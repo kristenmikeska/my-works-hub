@@ -68,10 +68,11 @@ window.SP = (() => {
         const r = G.dailyLife(); if (r) { G.finishDailyLife(r.id); continue; }
         const c = G.crushDue();
         if (c) { if (c.optIn) G.crushApply({ [c.optIn]: 'in' }); effects(c.scene); G.finishCrush(c.id); plays.push([c.id, d, slot]); continue; }
-        if (slot === 'late') { const ln = G.lateNightDue(); if (ln) { effects(ln.e.scene); G.finishLateNight(ln.e.id, 2); plays.push([ln.e.id, d, 'late']); nightDays.push(d); } }
+        if (slot === 'late') { const ln = G.lateNightDue(); if (ln) { effects(ln.e.scene); G.finishLateNight(ln.e.id, 2); plays.push([ln.e.id, d, 'late']); nightDays.push([d, ln.e.kind]); } }
       }
     }
-    let gap = 99; for (let i = 1; i < nightDays.length; i++) gap = Math.min(gap, nightDays[i] - nightDays[i - 1]);
+    // A phone call may come a night sooner (2026-11-01), so it counts as one night further.
+    let gap = 99; for (let i = 1; i < nightDays.length; i++) gap = Math.min(gap, nightDays[i][0] - nightDays[i - 1][0] + (nightDays[i][1] === 'call' ? 1 : 0));
     const sp = plays.filter(x => x[0].startsWith('sp-'));
     return { ids: sp.map(x => x[0]), when: Object.fromEntries(sp.map(x => [x[0], G.mdOf(x[1])])), gap, n: plays.length,
       routes: Object.fromEntries(plan.links.map(id => [id, G.S.links[id]?.route || null])) };
@@ -179,7 +180,7 @@ try:
         per[name] = r
         seen |= set(r['ids'])
         print(name, len(r['ids']), r['gap'], json.dumps(r['routes']))
-        ok(len(r['ids']) == len(set(r['ids'])) and r['gap'] >= 3, f"{name}: {len(r['ids'])} spice scenes, none twice, late nights at least three nights apart")
+        ok(len(r['ids']) == len(set(r['ids'])) and r['gap'] >= 3, f"{name}: {len(r['ids'])} spice scenes, none twice, late nights at least three nights apart (a call two)")
     allids = p.eval("[...SP.nights().map(x=>x.e.id),...SP.moments().map(m=>m.id)]")
     missing = [i for i in allids if i not in seen]
     ok(not missing, f"every spice scene plays for some player ({len(allids)} in all): missing {missing}")
