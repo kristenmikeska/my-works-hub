@@ -727,7 +727,10 @@ window.FemcGame = (() => {
     p.xp = (p.xp || 0) + gained;
     if (kind === 'hangout') p.hung = (p.hung || 0) + 1; else if (!p.seen.includes(r)) p.seen.push(r);
     const up = p.xp >= req;
-    if (up) { p.rank = r + 1; p.rankDay[p.rank] = S.day; p.xp = 0; delete p.ready; perkToasts(l, p.rank); } else p.ready = r;
+    // ♪ past the requirement carry into the next rank's meter (P5X-style, 2026-11-01), kept one short of that rank's own
+    // requirement so its scene always plays; story ranks (and a rank whose next one is story) keep their old rule (back to 0).
+    const carry = up && req && !story && !lastChance && !l.forced?.includes(r + 2) ? Math.max(0, Math.min(p.xp - req, need(l, r + 1) - 1)) : 0;
+    if (up) { p.rank = r + 1; p.rankDay[p.rank] = S.day; p.xp = carry; delete p.ready; perkToasts(l, p.rank); } else p.ready = r;
     save();
     return { up, from, to: Math.min(from + gained, req), req, rank: p.rank };
   }

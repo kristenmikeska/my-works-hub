@@ -1175,8 +1175,10 @@
   // A link's line on Go Out: rank progress if they're free, why not if they aren't.
   function personNote(l, slot) {
     const st = G.linkStatus(l, S().day, slot), met = G.isMet(l.id), p = G.progress(l.id);
-    const note = st.ok ? (met ? (st.after ? `${G.isMaxed(l) ? 'MAX' : `Rank ${p.rank}`} · Spend time together` : p.ready === p.rank && p.rank > 0 ? 'Hang out' : `Rank ${p.rank} ▸ ${p.rank + 1}`) : 'Someone you haven’t met') : st.reason === 'needs' ? `Needs ${st.needs}` : st.reason === 'later' ? 'Busy today' : 'Busy right now';
-    return { st, met, note, line: met ? `${l.arcana} · ${note}` : (st.ok && l.approach ? l.approach : note) };
+    // Rank signposts (core.js rankHint, 2026-11-01): rank up ready, the meter filling, a date, or waiting on the story.
+    const h = met ? G.rankHint(l) : null, hl = h && h.label && h.key !== 'max' ? h.label : '';
+    const note = st.ok ? (met ? (st.after ? `${G.isMaxed(l) ? 'MAX' : `Rank ${p.rank}`} · ${hl || 'Spend time together'}` : `Rank ${p.rank}${hl ? ` · ${hl}` : ` ▸ ${p.rank + 1}`}`) : 'Someone you haven’t met') : st.reason === 'needs' ? `Needs ${st.needs}` : st.reason === 'later' ? (hl || 'Busy today') : 'Busy right now';
+    return { st, met, note, hint: h, line: met ? `${l.arcana} · ${note}` : (st.ok && l.approach ? l.approach : note) };
   }
   function pxWire(onPaint) {
     // The side panel follows the pointer and the focus; leaving the cards keeps the last one shown.
@@ -1378,6 +1380,7 @@
           ${x.met ? `<p class="g-tk-tags"><span>${esc(l.arcana)}</span></p>` : '<p class="g-tk-tags"><span class="new">Someone new</span></p>'}
           <p class="g-px-about">${esc(x.met ? `${l.arcana} · ${x.note}` : x.st.ok && l.approach ? l.approach : x.note)}</p>
           ${x.met && x.st.ok ? `<ul class="g-px-gets"><li><b>${esc(x.st.after ? 'Time together' : 'Deepen your bond')}</b><small>Uses this time slot.</small></li></ul>` : ''}
+          ${x.met && x.st.ok && x.hint?.note && ['opens', 'story', 'quiet'].includes(x.hint.key) ? `<p class="g-px-bank">${esc(x.hint.note)}</p>` : ''}
           <p class="g-px-go">${x.st.ok ? `<i>${pxGo() === 'Tap' ? 'Tap' : 'Enter'}</i>spend time together` : 'Not today.'}</p>`, `<span class="g-px-person">${por ? `<img src="${por}" alt="">` : '<i>?</i>'}</span>`);
       } else if (kind === 'trace') {
         const l = G.LINKS[id], por = G.portrait(l.id, 'neutral');

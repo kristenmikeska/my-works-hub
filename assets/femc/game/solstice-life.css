@@ -47,6 +47,10 @@
 .g-ph-msgbtn:is(:hover, :focus-visible) { background: #ff4f9e; color: #fff; outline: none; }
 .g-ph-reply .g-ph-hint { justify-self: start; margin: 0; }
 
+/* ── Go Out: the bank note on a person's ticket ── */
+.g-px-bank { margin: 6px 0 0; padding: 6px 10px; border-left: 3px solid #ff4f9e; background: rgba(20, 7, 15, .06); font-size: 13px; }
+.g-sl-tags span.ready { background: #ff4f9e; color: #fff; }
+
 /* ── The commute ── */
 .g-commute { display: grid; gap: 8px; margin-top: 12px; }
 .g-commute .g-kicker { margin: 0; }

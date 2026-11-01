@@ -729,8 +729,10 @@ window.FemcMenu = (() => {
   }
   function linkDetail(l, B, ctx) {
     const x = linkInfo(l, B, ctx);
-    const tags = [G.isMaxed(l) ? 'MAX' : `Rank ${x.p.rank} of ${x.max}`, x.p.reversed ? 'Reversed' : '', x.where === 'Gone' ? 'Gone' : '', x.p.route === 'romance' ? 'Romance' : '', x.has ? `${x.n} perk${x.n === 1 ? '' : 's'} earned` : ''].filter(Boolean);
-    return `<p class="an">${esc(l.arcana)}</p><p class="fn">${esc(l.name)}</p><p class="g-sl-tags">${tags.map(t => `<span${t === 'Reversed' || t === 'Gone' ? ' class="warn"' : ''}>${esc(t)}</span>`).join('')}</p>`;
+    // Rank signposts (core.js rankHint, 2026-11-01): Rank up ready / Next rank opens M/D / Waits on the story.
+    const h = G.rankHint ? G.rankHint(l) : null, hl = h && h.label && !['max', 'gone', 'reversed'].includes(h.key) ? h.label : '';
+    const tags = [G.isMaxed(l) ? 'MAX' : `Rank ${x.p.rank} of ${x.max}`, x.p.reversed ? 'Reversed' : '', x.where === 'Gone' ? 'Gone' : '', x.p.route === 'romance' ? 'Romance' : '', hl, x.has ? `${x.n} perk${x.n === 1 ? '' : 's'} earned` : ''].filter(Boolean);
+    return `<p class="an">${esc(l.arcana)}</p><p class="fn">${esc(l.name)}</p><p class="g-sl-tags">${tags.map(t => `<span${t === 'Reversed' || t === 'Gone' ? ' class="warn"' : t === hl && h.key === 'ready' ? ' class="ready"' : ''}>${esc(t)}</span>`).join('')}</p>`;
   }
   function linkGuide(l) {
     if (!l) return 'Go out after school and meet people.';

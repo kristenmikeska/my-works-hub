@@ -91,6 +91,7 @@ Other docs, if you ever want detail:
 - ✅ **Plans by text:** on ordinary days people you're close to sometimes text in the morning to ask if you're free later (yes books it, with a small bonus; leave a few on read and someone gets a little sad), and six more late-night phone calls
 - ✅ **The ride in:** some school mornings the monorail is a small choice: study, music, a nap, or sitting with a friend
 - ✅ **Seasonal look:** Solar wears her winter coat on the evening screen in winter and her summer look in summer, or whatever you've dressed her in
+- ✅ **Rank-ups like P5X:** extra ♪ carries into the next rank, and the phone, Go Out and Social Link cards say whether a rank is ready, when it opens, or that it's waiting on the story
 
 ## Battle and building
 - ✅ One merged game (battles inside the story, one save, one menu)
