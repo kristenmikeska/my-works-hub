@@ -13,13 +13,14 @@ WHO = sys.argv[4] if len(sys.argv) > 4 else "solar"
 FACES=['neutral','happy','sad','serious','surprised','flustered']
 sh=np.array(Image.open(sheet_p).convert('RGBA')).astype(np.float32); H,W=sh.shape[:2]
 gray=cv2.cvtColor(sh[:,:,:3].astype(np.uint8),cv2.COLOR_RGB2GRAY)
+SCORES={}; OLD={}
 for k,f in enumerate(FACES):
     old=np.array(Image.open(f'assets/femc/game/art/skins/{sid}/portraits/{WHO}/{f}.webp').convert('RGBA')).astype(np.float32)
     oh,ow=old.shape[:2]
     cells=[((j%3)*W//3,(j//3)*H//2,(j%3+1)*W//3,(j//3+1)*H//2) for j in range(6)]
     # template: a face-centred patch of the old portrait (fully opaque area)
     a=old[:,:,3]; ys,xs=np.where(a>250); my,mx=int(np.median(ys)),int(np.median(xs))
-    best=None
+    best={}
     for cell in cells:
      for s in np.linspace(0.45,0.75,61):   # sheet px per old px
          th,tw=int(260*s),int(260*s)
@@ -30,8 +31,14 @@ for k,f in enumerate(FACES):
          reg=gray[cell[1]:cell[3],cell[0]:cell[2]]
          if tp.shape[0]>=reg.shape[0] or tp.shape[1]>=reg.shape[1]: continue
          r=cv2.matchTemplate(reg,tp,cv2.TM_CCOEFF_NORMED); _,v,_,loc=cv2.minMaxLoc(r)
-         if best is None or v>best[0]: best=(v,s,cell[0]+loc[0]-x0*s,cell[1]+loc[1]-y0*s,cell)
-    v,s,ox,oy,cell=best
+         if cell not in best or v>best[cell][0]: best[cell]=(v,s,cell[0]+loc[0]-x0*s,cell[1]+loc[1]-y0*s,cell)
+    SCORES[f]=best; OLD[f]=old
+# one face per cell: the assignment with the best total match (subtle expressions can fool a face-by-face pick)
+import itertools
+bestp=max(itertools.permutations(range(6)), key=lambda pm: sum(SCORES[f][cells[pm[k]]][0] for k,f in enumerate(FACES)))
+for k,f in enumerate(FACES):
+    old=OLD[f]; oh,ow=old.shape[:2]
+    v,s,ox,oy,cell=SCORES[f][cells[bestp[k]]]
     # map: old canvas (u,v) -> sheet (ox+u*s, oy+v*s)
     M=np.float32([[s,0,ox],[0,s,oy]])
     new=cv2.warpAffine(sh,M,(ow,oh),flags=cv2.INTER_LINEAR|cv2.WARP_INVERSE_MAP,borderMode=cv2.BORDER_CONSTANT,borderValue=(0,0,0,0))

@@ -733,7 +733,7 @@ try:
     # ── Skins in battle (FEMC-SKINS-BATTLE-DESIGN B, C, A; 2026-11-01): outfit faces on the HUD cards and turn order, the
     #    win screen's victory pose, and the cast charge at the hand only for a look marked clean (forced here, in the page) ──
     if want('inbattle'):
-        LOOK = 'sk-date'
+        LOOK = 'sk-swim-lagoon'  # not in cosmetics.js CLEAN (Kat's recuts are)
         motion(p, False)
         view(p, 1440, 900)
         setup(p, day='8/3')
