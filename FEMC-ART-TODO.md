@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make:** 1 small HOAX picture fix (4D, the séance) · icons for the late-game skills (section 7) · 5 Social Link full-body sheets (section 8). **Optional:** 2 wardrobe items. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make:** icons for the late-game skills (section 7) · 5 Social Link full-body sheets (section 8). **Optional:** 2 wardrobe items. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
@@ -36,13 +36,7 @@ Three HOAX pictures still show the old looks (Jihoon blond, Cherry with black ha
 
 **[x] 4C. The HOAX ending (the gym)** *(in the game Oct 31)*
 
-**[ ] 4D. The séance: Cherry's hair back to black**
-Claude's mistake: the 4B prompt asked for auburn hair, but Cherry's hair is black. One small edit of the séance picture now in the game.
-Attach: `Fix 4E - picture to edit (seance).png`
-Save as: `epi-h-seance.png`
-```
-Edit this image. Keep absolutely everything the same, including every face, pose, outfit, the green candles, the lighting and the art style. Change only one thing: the girl with long wavy auburn-red hair (sitting on the right of the two girls) gets long, wavy, jet-black hair instead. Her face, sweater and pose stay exactly as they are.
-```
+**[x] 4D. The séance: Cherry's hair back to black** *(in the game Oct 31)*
 
 ---
 
