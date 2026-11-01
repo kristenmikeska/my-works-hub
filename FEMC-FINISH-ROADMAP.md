@@ -49,7 +49,8 @@ Kat's decisions:
 - [x] Brainstorm the Solstice style from Kat's references, then restyle one area at a time: menus, battle HUD, Tartarus, dialogue (Oct 31: CLAUDE.md "Solstice UI restyle: built"). Built in pink and black: dialogue scenes with every portrait where Kat placed it, the title on her pink cover, the main menu screen on her day / Dark Hour backdrops, the field HUD and home screens, the Social Link screen, a shared frame for every menu page with the most-used pages hand-tuned, the battle HUD and Tartarus panels, Solar's full-body poses, and each epilogue world's fights loading over its own still.
 - Still open from the restyle:
   - [ ] Go Out area cards (demo in progress at `mockups/solstice-ui/goout.html`)
-  - [ ] Not yet checked by eye: the Wardrobe Boutique, the Skills page's skill list, the battle practice sub-screens
-  - [ ] Toasts can sit over the menu's date box
+  - [x] Checked by eye and fixed (Nov 1): the Wardrobe and its Boutique (Equip always visible), the Skills page's skill list, the battle practice sub-screens
+  - [x] Toasts can sit over the menu's date box (Nov 1: they start under it)
+  - [x] The Go Out map shows rain, snow and fog; epilogue fights load over their world's still (checked); the end credits made cinematic (Nov 1)
   - [ ] Social Link heads may want small nudges (`menu.js LINK_FIG`)
   - [ ] Art still to come: HOAX fix 4C, five Social Link full-body sheets (FEMC-ART-TODO section 8; until then those links show a bust-up)

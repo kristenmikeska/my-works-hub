@@ -192,7 +192,7 @@ Other docs, if you ever want detail:
 - ✅ Softer pink slashes, a P5R-style Status screen with sun level-ups, and a P5X-style Go Out menu
 - ✅ Often-seen lines (mornings, lunch, bedtime, studying, every activity) have many more versions and don't repeat back to back
 - ✅ **The Solstice look** (Oct 31), in the game's own pink and black with the new P3 Reload shapes: dialogue with every face where you placed it, the title on your pink cover, a new main menu on your day and Dark Hour backdrops, the field and home screens, the Social Link screen, every menu page, the battle and Tartarus screens, Solar's new full-body poses, and each epilogue world's fights loading over its own picture
-- ⬜ Still to do for the new look: the Go Out area cards (a demo is being made), a look over the Wardrobe Boutique, the Skills list and the practice screens, toasts that can cover the menu's date, small nudges to Social Link heads, and the art still to come (HOAX fix 4C, five full-body pictures)
+- ⬜ Still to do for the new look: the Go Out area cards (a demo is being made), small nudges to Social Link heads, and the art still to come (HOAX fix 4C, five full-body pictures). Done Nov 1: the Wardrobe, Boutique, skill list and practice screens tidied, toasts kept off the menu's date, weather on the city map, and a cinematic end-credits roll
 
 ## Later
 - ✅ The revamp's name (**Persona 3: Solstice**) and title logo (on your pink cover since Oct 31; the old painting is the Solstice Key Art wallpaper)
