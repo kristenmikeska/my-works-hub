@@ -84,3 +84,14 @@
   .g-home-fig.look { top: 12vh; height: 132vh; right: clamp(-420px, -24vw, -120px); }
 }
 .g-ph-job small.g-ph-jst.top { color: #ff4f9e; font-weight: 800; }
+
+/* ── Call / Message on a contact card (2026-11-02, ui.js reachHtml) ── */
+.g-ph-reach { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.g-ph-reachbtn { display: grid; gap: 2px; justify-items: center; padding: 9px 8px; border: 0; border-radius: 12px; background: #ff4f9e; color: #fff; box-shadow: 3px 3px 0 #14070f; transform: skewX(-6deg); cursor: pointer; }
+.g-ph-reachbtn > * { transform: skewX(6deg); }
+.g-ph-reachbtn b { display: flex; gap: 6px; align-items: center; font: italic 900 15px/1 var(--cond, sans-serif); letter-spacing: .04em; text-transform: uppercase; }
+.g-ph-reachbtn b i { font-style: normal; font-size: 14px; }
+.g-ph-reachbtn small { font: 700 11px/1.2 -apple-system, sans-serif; }
+.g-ph-reachbtn:is(:hover, :focus-visible):not(.off) { background: #14070f; box-shadow: 3px 3px 0 #ff4f9e; outline: none; }
+.g-ph-reachbtn.off { background: #f1e3ea; color: #8a6d7c; box-shadow: none; cursor: default; }
+.g-ph-reachbtn.off:focus-visible { outline: 2px solid #ff4f9e; outline-offset: 2px; }

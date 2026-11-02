@@ -16,6 +16,9 @@ Sections:
   calls     the new late-night calls: housing, gates, each reachable; calls can come a night sooner
   commute   about two school mornings a week; study / music / nap / sit with someone through the UI
   look      the evening figure: the season's outfit, a worn Wardrobe outfit first, the toggle off = the usual poses
+  phone     Call / Message from a contact card: data shape, availability (rank 3+, met, gone, reversed, late, trip,
+            Koromaru), once a week each (Sunday reset), no time spent, +1 ♪ once a week, rotation, bands / romance,
+            the generic fallback, an invite at the end, a message and a call through the UI, saves ('reachshots': its screenshots)
   rankups   P5X-style: overflow ♪ carry (never past the next rank), story ranks unchanged, signposts, a rank through an invite
   shots     desktop 1440x900 and phone 390x844 of each new screen
 
@@ -402,6 +405,113 @@ try:
         p.eval("FemcMenu&&FemcMenu.open?FemcMenu.open('links'):FemcGameUI.openStatus('links');true")
         p.eval("new Promise(r=>setTimeout(r,500))")
         ok(p.eval("/Rank up ready|Next rank opens|Meter filling|Waits on the story/.test(document.querySelector('.g-sl-detail')?.textContent||'')"), 'the Social Link card shows the signpost')
+        clear()
+
+    # ── Call / Message from Contacts (2026-11-02) ──
+    if want('phone') or want('shots') or want('reachshots'):
+        reach_shots = want('shots') or want('reachshots')
+        import time
+        bad = p.eval("""(()=>{const P=window.FEMC_GAME_PHONE||{},G=FemcGame,out=[],ids=new Set();
+          const main=['akihiko','yukari','junpei','mitsuru','fuuka','aigis','ken','shinjiro','haechan','jungwon','jihoon','minji','hanni','hyein','mark'];
+          main.forEach(id=>{if(!(P.people||{})[id])out.push('missing '+id)});
+          const lines=(a,k)=>(a||[]).forEach(x=>{if(x.s&&x.s!=='solar'&&x.s!=='them'&&!G.LINKS[x.s]&&!G.castHas?.(x.s))out.push(k+' speaker '+x.s);(x.choose||[]).forEach(o=>{if('notes' in o)out.push(k+' notes');lines(o.then,k)});lines(x.then,k);lines(x.else,k)});
+          const check=(id,o)=>{if(o.noPhone)return;const fit=e=>(e.min??3)<=3&&!e.route;
+            if((o.calls||[]).filter(fit).length<2)out.push(id+' calls');(o.calls||[]).forEach(c=>{if(ids.has(c.id))out.push('dup '+c.id);ids.add(c.id);lines(c.scene,c.id)});
+            if((o.topics||[]).length!==3)out.push(id+' topics');(o.topics||[]).forEach(t=>{if(!(t.v||[]).some(fit))out.push(id+' '+t.id+' rank 3');
+              (t.v||[]).forEach(v=>{if(!v.msgs?.length||!('me' in v.msgs[0]))out.push(id+' '+t.id+' starts');v.msgs.forEach(m=>{const st=m.sticker&&/^([a-z]+)-(\\d)$/.exec(m.sticker);
+                if(m.sticker&&(!st||!(FEMC_STICKERS[st[1]])||(st[1]!==('me' in m?'solar':id))))out.push(id+' sticker '+m.sticker)})})})};
+          Object.entries(P.people||{}).forEach(([id,o])=>{if(!G.LINKS[id])out.push('no link '+id);check(id,o)});check('generic',P.generic);
+          return out})()""")
+        ok(not bad, f'phone data in shape (15 main people, 2+ rank-3 calls, 3 topics, own sticker packs, no notes): {bad}')
+        fresh('11/19', 'after', {'yukari': 2, 'junpei': 3, 'akihiko': 6, 'koromaru': 4, 'shinjiro': 6, 'rio': 4, 'fuuka': 5})
+        why = p.eval("""(()=>{const G=FemcGame,L=G.LINKS,w=(id,k)=>{const r=G.phoneReach(L[id],k);return r?(r.ok?'ok':r.why):null};
+          return {yk:w('yukari','call'),jp:w('junpei','call'),jpm:w('junpei','msg'),ko:w('koromaru','call'),sh:w('shinjiro','msg'),jw:w('jungwon','call')}})()""")
+        ok(why == {'yk': 'Rank 3 first', 'jp': 'ok', 'jpm': 'ok', 'ko': 'He’s a dog', 'sh': 'Not around', 'jw': None}, f'availability: rank 3+, met, not gone, Koromaru has no phone: {why}')
+        r = p.eval("""(()=>{const G=FemcGame,S=G.S,L=G.LINKS;const p=G.progress('rio');p.reversed=true;const a=G.phoneReach(L.rio,'msg').why;p.reversed=false;
+          S.slot='late';const b=G.phoneReach(L.junpei,'call').why,c=G.phoneReach(L.junpei,'msg').ok;S.slot='after';
+          const d0=S.day,tr=(G.D.cal.trips||[])[0];let t=null;if(tr){S.day=G.dayOf(tr.from);t=G.phoneReach(L.junpei,'call').why;S.day=d0}
+          S.phone.pending.junpei='nope';const e=G.phoneReach(L.junpei,'msg').ok;delete S.phone.pending.junpei;
+          return {a,b,c,t,e}})()""")
+        ok(r['a'] == 'Things are tense' and r['b'] == 'Asleep' and r['c'] and r['t'] in (None, 'Away on a trip') and r['e'], f'reversed, late (calls asleep, texts fine), a trip: {r}')
+        # A call and a message: no time spent, the week marked, the bonus once.
+        r = p.eval("""(()=>{const G=FemcGame,S=G.S,L=G.LINKS,pr=G.progress('junpei');pr.xp=0;const d=S.day,sl=S.slot,sp=JSON.stringify(S.spent);
+          const c=G.phoneCall('junpei');const n1=G.finishPhoneCall('junpei');const x1=pr.xp;
+          const again=G.phoneReach(L.junpei,'call').why;const m=G.phoneMessage('junpei',G.phoneTopics('junpei')[0].id);const x2=pr.xp;
+          const again2=G.phoneReach(L.junpei,'msg').why;
+          return {own:/^pc-junpei/.test(c.id),n1,x1,again,mb:m.bonus,x2,again2,count:m.count,time:S.day===d&&S.slot===sl&&JSON.stringify(S.spent)===sp,thread:S.phone.threads.junpei.length}})()""")
+        ok(r['own'] and r['n1'] == 1 and r['x1'] == 1 and r['mb'] == 0 and r['x2'] == 1, f'+1 ♪ once a week whichever comes first: {r}')
+        ok(r['again'] == 'Called this week' and r['again2'] == 'Texted this week' and r['count'] >= 3 and r['thread'] == r['count'], f'once a week each, the exchange in the thread: {r}')
+        ok(r['time'], 'calls and messages spend no time')
+        r = p.eval("""(()=>{const G=FemcGame,S=G.S,L=G.LINKS,wk=G.weekOf?G.weekOf():null;let d=S.day;while(G.dayInfo(d).dow!==6)d++;S.day=d;const sat=G.phoneReach(L.junpei,'call').why;
+          S.day=d+1;const sun=G.phoneReach(L.junpei,'call').ok;const c=G.phoneCall('junpei');const n=G.finishPhoneCall('junpei');
+          const pr=G.progress('akihiko');pr.rank=15;const mx=G.phoneCall('akihiko')&&G.finishPhoneCall('akihiko');pr.rank=6;
+          return {sat,sun,second:c.id,n,mx}})()""")
+        ok(r['sat'] == 'Called this week' and r['sun'] and r['n'] == 1 and r['mx'] == 0, f'the week resets on Sunday; the next call rotates; nothing at MAX: {r}')
+        ok(r['second'] != 'pc-junpei-1', f"calls play in turn: {r['second']}")
+        # Variants by rank band and route; the generic fallback.
+        r = p.eval("""(()=>{const G=FemcGame,S=G.S,pr=G.progress('akihiko');
+          const pick=()=>{S.life.reach.akihiko={calls:(S.life.reach.akihiko||{}).calls||0};return G.phoneCall('akihiko').id};
+          pr.rank=3;pr.route=null;const a=[pick(),pick()];pr.rank=9;pr.route='romance';const pool=new Set();for(let i=0;i<8;i++){S.life.reach.akihiko.call=-1;const c=G.phoneCall('akihiko');pool.add(c.id)}
+          const g=G.phoneCall('rio'),t=G.phoneTopics('rio').map(x=>x.label);
+          return {a,pool:[...pool],gid:g.id,gs:g.scene.some(x=>x.s==='rio'),gn:!JSON.stringify(g.scene).includes('{name}'),t}})()""")
+        ok(r['gid'].startswith('pc-generic') and r['gs'] and r['gn'] and r['t'] == ['Checking in', 'How was your day?', 'Plans this weekend?'], f'someone without their own calls gets the generic ones in their name: {r}')
+        rom = p.eval("(FEMC_GAME_PHONE.people.akihiko.calls||[]).filter(c=>c.route==='romance').map(c=>c.id)")
+        ok(any(x in r['pool'] for x in rom) and not any(x in r['a'] for x in rom), f'romance calls only on the route, by rank: {r}')
+        tv = p.eval("""(()=>{const G=FemcGame,S=G.S,pr=G.progress('akihiko');const out={};for(const [rk,rt] of [[3,null],[6,null],[9,'romance']]){pr.rank=rk;pr.route=rt;delete S.life.reach.akihiko;
+          const th=S.phone.threads.akihiko=[];const m=G.phoneMessage('akihiko','day');out[rk]=th.slice(0,m.count-(m.invite?1:0)).map(x=>x.t).join('|')}pr.rank=6;pr.route='romance';delete S.life.reach.akihiko;return out})()""")
+        ok(len(set(tv.values())) >= 2, f'message variants by rank band / route: {list(tv.values())[:1]}')
+        # An invite at the end of an exchange: the ordinary-day invite in the thread; unanswered it isn't counted as ignored.
+        r = p.eval("""(()=>{const G=FemcGame,S=G.S,P=FEMC_GAME_PHONE.people;
+          for(const id of Object.keys(P)){const l=G.LINKS[id];if(!l||P[id].noPhone)continue;for(const t of P[id].topics||[])for(const v of t.v||[]){if(v.end!=='invite')continue;
+            for(let k=0;k<40;k++){const d=G.dayOf('11/16')+k,info=G.dayInfo(d);if(info.type!=='school'&&info.type!=='off')continue;S.day=d;S.slot='early';if(!S.met.includes(id))S.met.push(id);
+              const pr=G.progress(id);pr.rank=Math.max(v.min||3,3);pr.route=v.route||null;pr.reversed=false;S.life.inv=null;S.life.booked=null;delete S.life.reach[id];S.phone.pending={};
+              if(G.storyDay()||!G.phoneReach(l,'msg')?.ok)continue;const m=G.phoneMessage(id,t.id);if(m&&m.invite)return {id,t:t.id,inv:S.life.inv,pend:!!G.dayInvitePending(id),ign:S.life.ignored};
+              delete S.life.reach[id];}}}return null})()""")
+        ok(r and r['inv']['phone'] and r['pend'], f"an exchange can end with their invite (Yes / Can't today in the thread): {r}")
+        if r:
+            ign = p.eval("(()=>{const G=FemcGame,S=G.S,b=S.life.ignored;G.sleep();return S.life.ignored===b})()")
+            ok(ign, 'a phone invite left unanswered is not counted as ignored')
+        # Through the UI: a message and a call from a contact card.
+        fresh('11/19', 'after', {'junpei': 4, 'haechan': 6, 'yukari': 2})
+        p.eval("FemcGameUI.goOut('after');FemcGameUI.openPhone();document.querySelector('.g-phone-ov [data-tab=people]').click();document.querySelector('.g-ph-ct[data-ct=yukari]').click();true")
+        ok(p.eval("(()=>{const b=[...document.querySelectorAll('.g-ph-reachbtn')];return b.length===2&&b.every(x=>x.classList.contains('off')&&/Rank 3 first/.test(x.textContent))})()"), 'below rank 3 the buttons are greyed with the reason')
+        p.eval("document.querySelector('.g-phone-ov .g-ph-back').click();document.querySelector('.g-ph-ct[data-ct=haechan]').click();true")
+        if reach_shots:
+            shot('reach-card-desktop'); size(390, 844, True); shot('reach-card-phone'); size(1440, 900)
+        p.eval("document.querySelector('.g-ph-reachbtn[data-reach=msg]').click();true")
+        p.wait("document.querySelectorAll('.g-ph-reply [data-topic]').length===3", 5)
+        labels = p.eval("[...document.querySelectorAll('.g-ph-reply [data-topic]')].map(b=>b.textContent)")
+        ok(len(labels) == 3 and 'How was your day?' in labels, f'Message offers three topics: {labels}')
+        if reach_shots:
+            shot('reach-topics-desktop'); size(390, 844, True); shot('reach-topics-phone'); size(1440, 900)
+        n0 = p.eval("(FemcGame.S.phone.threads.haechan||[]).length")
+        p.eval("document.querySelector('.g-ph-reply [data-topic]').click();true")
+        p.wait("!document.querySelector('.g-ph-reply [data-topic]') && document.querySelectorAll('.g-ph-body .g-ph-msg').length>=3", 8)
+        r = p.eval("({n:FemcGame.S.phone.threads.haechan.length,me:!!document.querySelector('.g-ph-body .g-ph-msg.me'),why:FemcGame.phoneReach(FemcGame.LINKS.haechan,'msg').why})")
+        ok(r['n'] > n0 and r['me'] and r['why'] == 'Texted this week', f'the exchange types out in their thread through the UI: {r}')
+        if reach_shots:
+            shot('reach-thread-desktop'); size(390, 844, True); shot('reach-thread-phone'); size(1440, 900)
+        p.eval("document.querySelector('.g-phone-ov .g-ph-back').click();document.querySelector('.g-phone-ov [data-tab=people]').click();document.querySelector('.g-ph-ct[data-ct=junpei]').click();true")
+        before = p.eval("({d:FemcGame.S.day,s:FemcGame.S.slot,xp:FemcGame.progress('junpei').xp||0})")
+        p.eval("document.querySelector('.g-ph-reachbtn[data-reach=call]').click();true")
+        p.wait("!document.querySelector('.g-phone-ov:not(.out)') && !!document.querySelector('.gs:not(.out)')", 5)
+        ok(p.eval("/Call/.test(document.querySelector('.gs:not(.out)').getAttribute('aria-label'))"), 'Call closes the phone and plays the call')
+        if reach_shots:
+            p.eval("new Promise(r=>setTimeout(r,800))"); shot('reach-call-desktop'); size(390, 844, True); shot('reach-call-phone'); size(1440, 900)
+        t0 = time.time()
+        while time.time() - t0 < 30 and p.eval("!!document.querySelector('.gs:not(.out)')"):
+            p.eval("""(()=>{const sc=document.querySelector('.gs:not(.out)');const c=sc&&sc.querySelector('.gs-choices button:not(:disabled)');if(c)c.click();else if(sc){sc.querySelector('[data-t=skip]')?.click();sc.click()}return true})()""")
+            time.sleep(0.15)
+        after = p.eval("({d:FemcGame.S.day,s:FemcGame.S.slot,xp:FemcGame.progress('junpei').xp||0,why:FemcGame.phoneReach(FemcGame.LINKS.junpei,'call').why})")
+        ok(after['d'] == before['d'] and after['s'] == before['s'] and after['xp'] == before['xp'] + 1 and after['why'] == 'Called this week', f'the call ends where it started, +1 ♪, once a week: {before} → {after}')
+        # Saves: the week marks survive a save and reload; an old save without them is fine.
+        p.eval("FemcGame.save();true"); p.goto('femc-game.html')
+        p.wait("!!document.querySelector('[data-t=continue]')", 10); p.eval("document.querySelector('[data-t=continue]').click();true")
+        p.wait("FemcGame.S.phase==='play'", 10)
+        r = p.eval("({k:Object.keys((FemcGame.S.life||{}).reach||{}).sort(),why:FemcGame.phoneReach(FemcGame.LINKS.junpei,'call')})")
+        ok('junpei' in r['k'] and r['why'] and r['why']['why'] == 'Called this week', f'the weekly marks survive a reload: {r}')
+        p.eval("delete FemcGame.S.life.reach;true")
+        ok(p.eval("FemcGame.phoneReach(FemcGame.LINKS.junpei,'call').ok===true"), 'a save without the marks works (nothing used this week)')
         clear()
 
     errors = p.console()

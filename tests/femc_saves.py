@@ -14,6 +14,8 @@ HELPERS = r"""(()=>{
     window.saveSnapshot = s => {
         const copy=JSON.parse(JSON.stringify(s));
         for (const k of ['savedAt','playMinutes','battleAt']) delete copy[k];
+        // S.life: only the phone's weekly marks are compared (other life-sim fields are filled in on load by their own features).
+        if (copy.life) copy.life={reach:copy.life.reach||null};
         return copy;
     };
     window.saveFixture = n => {
@@ -22,6 +24,7 @@ HELPERS = r"""(()=>{
         S.events=G.D.events.map(e=>e.id); S.spent={}; S.pending=null;
         S.unlocked.tartarus=true; S.flags.armband=true;
         S.joined=['solar','yukari','junpei','akihiko'];
+        (S.life||={}).reach={junpei:{call:n,msg:n-1,bonus:n,calls:n}}; // phone Call / Message week marks (2026-11-02)
         S.yen=6000+n*123; S.inventory={medicine:n+2}; S.condition='good';
         S.stats.knowledge=10+n; S.stats.charm=20+n; S.stats.courage=30+n; S.stats.proficiency=40+n; S.stats.kindness=50+n;
         // Keep scheduled story scenes from interrupting these isolated save checks.

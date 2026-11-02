@@ -141,6 +141,15 @@ try:
     ok(any(s and s['typing'] and s['n'] == 4 for _, s in tl), 'typing bubble before the friend answers back')
     ok(p.eval("FemcGame.S.phone.threads.sisters.length===6 && !FemcGame.S.phone.pending.sisters"), 'the save already holds the whole exchange')
 
+    # A message from a contact card (2026-11-02): pick a topic, Solar's text types out, their answers come with typing bubbles.
+    clear(); fresh('11/19', 'after')
+    p.eval("(()=>{const G=FemcGame,S=G.S;S.met.push('junpei');G.progress('junpei').rank=4;G.save();FemcGameUI.openPhone();document.querySelector('.g-phone-ov [data-tab=people]').click();document.querySelector('.g-ph-ct[data-ct=junpei]').click();document.querySelector('[data-reach=msg]').click();return true})()")
+    p.wait("document.querySelectorAll('.g-ph-reply [data-topic]').length===3", 5)
+    p.eval("document.querySelector('.g-ph-reply [data-topic]').click();true")
+    tl = timeline()
+    ok(any(s and s['compose'] and s['draft'] for _, s in tl) and any(s and s['typing'] for _, s in tl), 'a contact-card message types out like other texts')
+    ok(p.eval("document.querySelectorAll('.g-phone-ov .g-ph-msg').length===FemcGame.S.phone.threads.junpei.length && !document.querySelector('.g-ph-reply [data-topic]')"), 'the whole exchange shows, the topics are gone')
+
     # Skip: a tap, or the Skip button, shows everything still on its way at once.
     clear(); fresh(); thread_from('t-0925-searchparty')
     p.eval("FemcGameUI.openPhone('searchparty');true")

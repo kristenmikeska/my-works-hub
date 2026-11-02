@@ -1795,6 +1795,28 @@
       wireTabs();
       body.querySelectorAll('[data-ct]').forEach(b => b.addEventListener('click', () => { G.sfx('femc-click'); card(b.dataset.ct, 'people'); }));
     };
+    /* Call / Message (2026-11-02, core.js phoneReach; data/phone-calls.js): free, once a week each, from rank 3. A call closes the
+       phone and plays its scene; a message opens their thread with three topics to pick from (replies → topicFor). */
+    let topicFor = null;
+    const inScene = () => !!document.querySelector('.gs:not(.out)');
+    const reachHtml = l => {
+      const btn = (kind, label, icon) => {
+        let r = G.phoneReach(l, kind); if (!r) return '';
+        if (r.ok && kind === 'call' && inScene()) r = { ok: false, why: 'Not now' };
+        return `<button type="button" class="g-ph-reachbtn${r.ok ? '' : ' off'}" data-reach="${kind}"${r.ok ? '' : ' aria-disabled="true"'}><b><i aria-hidden="true">${icon}</i>${label}</b>${r.ok ? '' : `<small>${esc(r.why)}</small>`}</button>`;
+      };
+      const h = btn('call', 'Call', '☎') + btn('msg', 'Message', '✉');
+      return h ? `<div class="g-ph-reach">${h}</div>` : '';
+    };
+    const wireReach = id => body.querySelectorAll('[data-reach]').forEach(b => b.addEventListener('click', () => {
+      if (b.getAttribute('aria-disabled') === 'true') { G.sfx('femc-back'); return; }
+      G.sfx('femc-click');
+      if (b.dataset.reach === 'msg') { topicFor = id; tab = 'msgs'; open(id); return; }
+      const c = G.phoneCall(id); if (!c) return card(id, cardFrom);
+      o.close();
+      setTimeout(() => SC.play({ scene: c.scene, place: c.place || "Iwatodai Dorm · Solar's Room", time: c.time || G.slotName(S().slot), music: c.music || (['evening', 'late'].includes(S().slot) ? 'night' : 'tender'), label: `${c.link.short} · Call`, link: c.link.id,
+        onDone: () => { const n = G.finishPhoneCall(c.link.id); if (n) G.toast('perk', `${c.link.short}: +${n} ♪`); run(); } }), 0);
+    }));
     let cardFrom = 'people';
     const card = (id, from) => {
       stop();
@@ -1807,12 +1829,14 @@
       body.innerHTML = `<article class="g-ph-card"><header>${pic ? `<img src="${pic}" alt="">` : `<i>${esc(l.short[0])}</i>`}<div><p class="an">${esc(l.numeral ? `${l.numeral} · ` : '')}${esc(l.arcana)}</p><h3>${esc(l.name)}</h3>
           <p class="rk">${G.isMaxed(l) ? 'MAX' : `Rank ${c.rank} of ${c.max}`}${c.romance ? ' · <span class="g-ph-heart">♥</span> Romance' : ''}</p>${c.hint && c.hint.label && c.hint.key !== 'max' ? `<p class="g-ph-hint k-${c.hint.key}">${esc(c.hint.label)}</p>` : ''}</div></header>
         ${c.hint && c.hint.note ? `<p class="g-ph-note">${esc(c.hint.note)}</p>` : ''}
+        ${reachHtml(l)}
         <dl>${facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
         <h4>Gifts</h4><ul class="g-ph-gifts">${gift('loved', 'Loved')}${gift('liked', 'Liked')}${gift('meh', 'Shrugged')}</ul>
         <h4>Things Solar has learned</h4>${c.known.length ? `<ul class="g-ph-learned">${c.known.map(x => `<li><small>Rank ${x.rank}</small>${esc(x.t)}</li>`).join('')}</ul>` : '<p class="g-ph-empty">Nothing yet. Spend time together.</p>'}
         ${c.locked ? `<p class="g-ph-empty">More to learn as you get closer.</p>` : ''}
         <button type="button" class="g-ph-msgbtn" data-msg="${id}"${(s.phone.threads[id] || []).length ? '' : ' hidden'}>Messages ▸</button></article>`;
       body.querySelector('[data-msg]')?.addEventListener('click', () => { G.sfx('femc-click'); tab = 'msgs'; open(id); });
+      wireReach(id);
       body.scrollTop = 0;
       focusIn(back);
     };
@@ -1953,6 +1977,19 @@
           reply.append(b);
         });
       }
+      // Message from a contact card: three topics (core.js phoneTopics); the exchange types out, then their answers wait here.
+      if (topicFor === id && !reply.firstChild && G.phoneReach(G.LINKS[id], 'msg')?.ok) {
+        const n = document.createElement('p'); n.className = 'g-ph-hint k-ready'; n.textContent = 'Text them about…'; reply.append(n);
+        G.phoneTopics(id).forEach(t => {
+          const b = document.createElement('button'); b.type = 'button'; b.textContent = t.label; b.dataset.topic = t.id;
+          b.addEventListener('click', () => {
+            topicFor = null; reply.replaceChildren(); G.sfx('femc-click');
+            const r = G.phoneMessage(id, t.id); if (!r) return replies(id);
+            play(id, r.from, () => { if (r.bonus) G.toast('perk', `${G.LINKS[id].short}: +${r.bonus} ♪`); paintHud(); replies(id); });
+          });
+          reply.append(b);
+        });
+      }
       if (reply.firstChild) focusIn(reply.querySelector('button') || reply.firstChild);
     };
     const open = id => {
@@ -1966,7 +2003,7 @@
       play(id, th.length - fresh, () => replies(id));
       if (!o.el.classList.contains('g-ph-playing') && !reply.firstChild) focusIn(back);
     };
-    back.addEventListener('click', () => { if (title.dataset.card) { delete title.dataset.card; tab = cardFrom; } else tab = 'msgs'; home(); focusIn(body.querySelector('.g-ph-row') || body.querySelector('[data-tab]')); });
+    back.addEventListener('click', () => { topicFor = null; if (title.dataset.card) { delete title.dataset.card; tab = cardFrom; } else tab = 'msgs'; home(); focusIn(body.querySelector('.g-ph-row') || body.querySelector('[data-tab]')); });
     // A tap on the conversation, or Enter / Space on it, fast-forwards what's still arriving.
     body.addEventListener('click', () => anim.skip?.());
     o.el.addEventListener('keydown', e => { if (anim.skip && (e.key === 'Enter' || e.key === ' ') && !e.target.closest?.('button:not([data-skip])')) { e.preventDefault(); anim.skip(); } });

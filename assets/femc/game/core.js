@@ -2417,6 +2417,92 @@ window.FemcGame = (() => {
     (box[g.tier] ||= []).push(g.item);
     return true;
   }
+  /* ── Phone reach (2026-11-02, Kat-approved): Call and Message from a contact card. Data and the full rules: data/phone-calls.js
+     header. State: S.life.reach[id] = { call: week, msg: week, bonus: week, calls: n } (weekOf: Sunday reset). Free: no slot is
+     spent. +1 ♪ (bond) once a week per person, call or message. ── */
+  const REACH_RANK = 3;
+  const phoneData = id => { const P = W.FEMC_GAME_PHONE || {}; return (P.people || {})[id] || null; };
+  const reachOf = id => { const L = life(); if (!L.reach || typeof L.reach !== 'object') L.reach = {}; return (L.reach[id] ||= {}); };
+  const reachFits = (e, p) => (e.min ?? REACH_RANK) <= (p.rank || 0) && (p.rank || 0) <= (e.max ?? 99) && (!e.route || (e.route === 'romance' ? p.route === 'romance' : p.route !== 'romance'));
+  // { ok, why }: why is the short greyed reason on the button. null: no buttons at all (not met, the epilogue, not playing).
+  function phoneReach(l, kind) {
+    if (!l || !isMet(l.id) || S.epi || S.phase !== 'play' || l.storyOnly || l.hidden || l.status === 'stub' || (l.secret && !flag(l.secret.flag))) return null;
+    const pd = phoneData(l.id), p = progress(l.id), r = reachOf(l.id), wk = weekOf();
+    const no = why => ({ ok: false, why });
+    if (pd?.noPhone) return no(pd.noPhone);
+    if (goneLink(l)) return no('Not around');
+    if ((p.rank || 0) < REACH_RANK) return no(`Rank ${REACH_RANK} first`);
+    if (p.reversed) return no('Things are tense');
+    if (dayInfo().type === 'trip') return no('Away on a trip');
+    if (['away', 'closed'].includes(linkStatus(l).reason)) return no('Away');
+    if (kind === 'call') {
+      if (r.call === wk) return no('Called this week');
+      if (S.slot === 'late') return no('Asleep');
+    } else {
+      if (r.msg === wk) return no('Texted this week');
+      if ((S.phone.pending[l.id] && textById(S.phone.pending[l.id])) || S.phone.invite?.link === l.id || dayInvitePending(l.id)) return no('Answer their text first');
+    }
+    return { ok: true, why: '' };
+  }
+  // The +1 ♪, once a week per person (nothing at MAX or while rank 10+ waits: bond).
+  function reachBonus(id) {
+    const r = reachOf(id), wk = weekOf();
+    if (r.bonus === wk) return 0;
+    r.bonus = wk;
+    return bond(id, 1);
+  }
+  const reachSub = (l, v) => (typeof v === 'string' ? v.replace(/\{name\}/g, l.short) : v);
+  const reachLines = (l, lines) => (lines || []).map(x => {
+    const o = { ...x };
+    if (o.s === 'them') o.s = l.id;
+    ['n', 't'].forEach(k => { if (o[k]) o[k] = reachSub(l, o[k]); });
+    if (o.choose) o.choose = o.choose.map(c => ({ ...c, then: reachLines(l, c.then) }));
+    ['then', 'else'].forEach(k => { if (Array.isArray(o[k])) o[k] = reachLines(l, o[k]); });
+    return o;
+  });
+  // A call: marks the week, picks the next call in this person's pool (their own, else the generic ones). The UI plays it, then
+  // finishPhoneCall gives the bonus.
+  function phoneCall(id) {
+    const l = LINKS[id]; if (!phoneReach(l, 'call')?.ok) return null;
+    const p = progress(id), r = reachOf(id), own = (phoneData(id)?.calls || []).filter(e => reachFits(e, p));
+    const pool = own.length ? own : ((W.FEMC_GAME_PHONE || {}).generic?.calls || []).filter(e => reachFits(e, p));
+    if (!pool.length) return null;
+    const e = pool[(r.calls || 0) % pool.length];
+    r.call = weekOf(); r.calls = (r.calls || 0) + 1;
+    save();
+    return { link: l, id: e.id, place: e.place, time: e.time, music: e.music, scene: reachLines(l, e.scene) };
+  }
+  function finishPhoneCall(id) { const n = reachBonus(id); save(); return n; }
+  // The three topics Solar can text them about: [{ id, label }].
+  function phoneTopics(id) {
+    const l = LINKS[id], p = progress(id);
+    const own = (phoneData(id)?.topics || []).filter(t => (t.v || []).some(v => reachFits(v, p)));
+    const list = own.length >= 3 ? own : ((W.FEMC_GAME_PHONE || {}).generic?.topics || []);
+    return l ? list.slice(0, 3).map(t => ({ id: t.id, label: t.label })) : [];
+  }
+  // A message: the exchange goes into their thread (read, typed out by the UI from `from`), the week is marked, the bonus given;
+  // an `end: 'invite'` exchange may end with their ordinary-day invite (see the data header). { from, count, bonus, invite }.
+  function phoneMessage(id, topicId) {
+    const l = LINKS[id]; if (!phoneReach(l, 'msg')?.ok) return null;
+    const p = progress(id), topics = phoneTopics(id);
+    if (!topics.some(t => t.id === topicId)) return null;
+    const src = (phoneData(id)?.topics || []).filter(t => (t.v || []).some(v => reachFits(v, p))).length >= 3 ? phoneData(id).topics : (W.FEMC_GAME_PHONE || {}).generic?.topics || [];
+    const v = [...((src.find(t => t.id === topicId) || {}).v || [])].reverse().find(x => reachFits(x, p));
+    if (!v) return null;
+    const th = (S.phone.threads[id] ||= []), from = th.length;
+    appendPhone(id, v.msgs.map(m => ({ from: 'me' in m ? 'solar' : id, t: reachSub(l, 'me' in m ? m.me : m.them), ...(m.sticker ? { sticker: m.sticker } : {}) })));
+    reachOf(id).msg = weekOf();
+    let invite = null;
+    const L = life(), slot = v.end === 'invite' && l.dayInvite?.ask?.length ? dayInviteSlot(l) : null;
+    if (slot && SLOT_ORDER.indexOf(S.slot) <= SLOT_ORDER.indexOf(slot) && !(L.inv && L.inv.d === S.day) && !(L.booked && L.booked.d === S.day) && !storyDay()) {
+      L.inv = { d: S.day, link: id, slot, ans: null, phone: true };
+      appendPhone(id, [{ from: id, t: lifePick(l.dayInvite.ask, S.day * 7 + 1), dayInvite: true }]);
+      invite = slot;
+    }
+    const bonus = reachBonus(id);
+    save();
+    return { from, count: S.phone.threads[id].length - from, bonus, invite };
+  }
   /* Ordinary-day invites: on some mornings (about two a week, never on a story day, a trip or a holiday-invite day) one met
      link at rank 2+ who is free in their slot today texts "free later?". Yes books the slot: when it comes, the time together
      plays at once (ui.js run → bookedDue) with +1 ♪. Three left unanswered in a row get one wistful text the next morning. */
@@ -2479,7 +2565,7 @@ window.FemcGame = (() => {
   function lifeOvernight() {
     const L = S.life; if (!L || S.epi) return;
     const v = L.inv;
-    if (v && v.d === S.day && !v.ans) {
+    if (v && v.d === S.day && !v.ans && !v.phone) { // a Contacts message's invite left unanswered isn't "ignored"
       L.ignored = (L.ignored || 0) + 1;
       if (L.ignored >= 3) { L.sadDue = v.link; L.ignored = 0; }
     }
@@ -2809,7 +2895,7 @@ window.FemcGame = (() => {
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
     deliverTexts, replyText, textById, answerInvite, gift, bond,
-    rankHint, whoFree, goneLinks, contactCard, noteGift, dayInvitePending, answerDayInvite, bookedDue, clearBooked, commuteDue, pickCommute, storyDay,
+    rankHint, whoFree, goneLinks, contactCard, noteGift, phoneReach, phoneCall, finishPhoneCall, phoneTopics, phoneMessage, dayInvitePending, answerDayInvite, bookedDue, clearBooked, commuteDue, pickCommute, storyDay,
     holidayInvites, sendHolidayInvites, holidayDue, acceptHoliday, finishHoliday, declineHolidays,
     lateNightDue, finishLateNight, tripPlan, finishTrip, unread, markAllRead, isGroupThread, freeSlotSpent, nextSlot, sleep,
     available, navigator, tartarusOk, floorCap, makeHandoff, readHandoff, clearHandoff, finishHandoff, simulate, applyResult,
