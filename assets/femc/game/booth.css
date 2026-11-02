@@ -18,8 +18,10 @@
 .bs-p > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent); mask-image: linear-gradient(to bottom, #000 78%, transparent); }
 /* Kat's pose art (one canvas per person, waist cut at the bottom): big and close like a real purikura, the partner a little
    in front; the waist runs off the bottom of the shot. */
-img.bs-p.art { width: 94%; height: auto; bottom: -3%; -webkit-mask-image: none; mask-image: none; }
-img.bs-p.art.l { left: -13%; } img.bs-p.art.r { right: -13%; }
+img.bs-p.art { width: 84%; height: auto; bottom: 11%; -webkit-mask-image: none; mask-image: none; }
+img.bs-p.art.l { left: -4%; } img.bs-p.art.r { right: -4%; }
+/* (Kat, Nov 1: the frames' borders covered faces and the faces sat too low; the waist cut now hides under the frame's bottom
+   border, every frame's photo window being about 9-16% in from each edge.) */
 .bs-badge { position: absolute; top: -4%; width: 24%; height: auto; aspect-ratio: 1; color: #ff4f9e; filter: drop-shadow(0 0 0 #fff) drop-shadow(1.5px 1.5px 0 #fff) drop-shadow(-1.5px -1.5px 0 #fff) drop-shadow(2px 3px 0 rgba(20, 7, 15, .55)); }
 .bs-p.l .bs-badge { left: 4%; } .bs-p.r .bs-badge { right: 4%; }
 .bs-heart { position: absolute; left: 50%; top: 13%; width: 24%; height: auto; translate: -50% 0; color: #ff4f9e; opacity: .92; filter: drop-shadow(0 0 6px #fff) drop-shadow(2px 3px 0 rgba(20, 7, 15, .5)); }
