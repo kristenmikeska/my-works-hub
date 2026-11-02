@@ -188,6 +188,8 @@ try:
         p.eval("(()=>{const b=document.querySelector('.g-ph-job[data-go]');b.focus();const e=new KeyboardEvent('keydown',{key:'Enter',bubbles:true,cancelable:true});e.fromPad=true;b.dispatchEvent(e)})();true")
         p.wait("!document.querySelector('.g-phone-ov:not(.out)') && !!document.querySelector('.g-areaview')", 5)
         ok(p.eval(f"document.querySelector('.g-areaview h1').textContent===FemcGame.areaById('{area}').name && !!document.querySelector('.g-areaview [data-job]')"), f'a row for right now jumps to Go Out with {area} and its job open')
+        p.wait("!!document.querySelector('.gs') || !!document.querySelector('.g-overlay:not(.g-phone-ov)')", 5)
+        ok(p.eval("!!document.querySelector('.gs') || !!document.querySelector('.g-overlay:not(.g-phone-ov) [data-y]')"), 'Go now starts the shift (or the hiring offer) straight away (Kat, Nov 2)')
         clear()
 
     # ── Raises and rare rewards ──

@@ -1711,7 +1711,12 @@
       <div class="g-ph-compose" hidden aria-hidden="true"><p class="g-ph-draft"></p><span class="g-ph-send">↑</span></div><div class="g-ph-reply"></div></div>`, 'g-phone-ov', () => {
       stop();
       if (goLink) { const l = goLink; goLink = null; setTimeout(() => playLink(l), 0); }
-      else if (goArea) { const g = goArea; goArea = null; setTimeout(() => (g.area === 'dorm' ? evening(G.dayInfo()) : goOut(g.slot, g.area)), 0); }
+      else if (goArea) {
+        const g = goArea; goArea = null;
+        // Jobs tab "Go now" (Kat, Nov 2): the shift starts straight away (hiring first if needed), from that area's page.
+        const j = g.job && G.D.jobs.find(x => x.id === g.job), a = G.areaById(g.area);
+        setTimeout(() => { if (g.area === 'dorm') return evening(G.dayInfo()); goOut(g.slot, g.area); if (j && a && G.jobOk(j, g.slot).ok) jobFlow(j, g.slot, a); }, 0);
+      }
     });
     // A phone case from the capsule machine (gacha.js; game.css .g-phone-ov[data-case]).
     const pcase = window.FemcGacha?.phoneCase(); if (pcase) o.el.dataset.case = pcase;
@@ -1779,7 +1784,7 @@
       wireTabs();
       body.querySelectorAll('[data-job]').forEach(b => b.addEventListener('click', () => {
         if (!b.dataset.go) { G.sfx(b.getAttribute('aria-disabled') === 'true' ? 'femc-back' : 'femc-click'); return; }
-        G.sfx('femc-click'); const [slot, area] = b.dataset.go.split('|'); goArea = { slot, area }; o.close();
+        G.sfx('femc-click'); const [slot, area] = b.dataset.go.split('|'); goArea = { slot, area, job: b.dataset.job }; o.close();
       }));
     };
     const peopleApp = () => {
