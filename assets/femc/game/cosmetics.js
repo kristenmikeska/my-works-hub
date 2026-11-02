@@ -415,14 +415,15 @@ window.FemcCosmetics = (() => {
      for a fighter in their own clothes game/art/onemore|entrance/<who>.webp, onemore2 = onemore/<who>-v2.webp), theurgy /
      finish (E / G: the worn look's own Theurgy cut-in and All-Out finish card), evoker (M: its Evoker close-up in the summon
      cut-in; battle.js draws the look's pose-1 frame without it), pose2b (an alternate sheet 2), omEyes ([x1, y1, x2, y2]
-     in % of the v2 strip: ready.js eyes2, where the One More glints go; absent = the fixed 40% / 65% spot);
+     in % of the v2 strip: ready.js eyes2, where the One More glints go; absent = the fixed 40% / 65% spot), fx (N: the
+     look's own 3 x 2 effect sheet, skins/<look>/fx.webp, which battle.js plays wherever the theme sheet would);
      and showtime { set: path }, frames { theme: path }.
      A missing file is simply absent, and battle.js draws its built-in version. */
   const ART_V8 = 1; // bump when one of these files is replaced in place
   function battle() {
     if (!S()) return null;
-    const pose = {}, pose2 = {}, pose2b = {}, face = {}, clean = {}, hand = {}, look = {}, theme = {}, name = {}, couple = {}, onemore = {}, onemore2 = {}, omEyes = {}, entrance = {}, theurgy = {}, finish = {}, evoker = {}, showtime = {}, frames = {};
-    const out = { pose, pose2, pose2b, face, clean, hand, look, theme, name, couple, onemore, onemore2, omEyes, entrance, theurgy, finish, evoker, showtime, frames, css: '' };
+    const pose = {}, pose2 = {}, pose2b = {}, face = {}, clean = {}, hand = {}, look = {}, theme = {}, name = {}, couple = {}, onemore = {}, onemore2 = {}, omEyes = {}, entrance = {}, theurgy = {}, finish = {}, evoker = {}, showtime = {}, frames = {}, fx = {};
+    const out = { pose, pose2, pose2b, face, clean, hand, look, theme, name, couple, onemore, onemore2, omEyes, entrance, theurgy, finish, evoker, showtime, frames, fx, css: '' };
     const A = readyArt(), art = (dir, f) => `${G.base}${dir}${f}?v=${ART_V8}`;
     ITEMS.filter(x => x.kind === 'skin').forEach(x => {
       const o = onIn(slotOf(x)); if (!o || pose[o.who]) return;
@@ -442,6 +443,7 @@ window.FemcCosmetics = (() => {
       if ((R.theurgy || []).includes(w)) theurgy[w] = art(skinDir(o.id), `${w}-theurgy.webp`); // E: the look's Theurgy cut-in
       if ((R.finish || []).includes(w)) finish[w] = art(skinDir(o.id), `${w}-finish.webp`); // G: the look's All-Out finish card
       if ((R.evoker || []).includes(w)) evoker[w] = art(skinDir(o.id), `${w}-evoker.webp`); // M: the look's Evoker close-up (summon cut-in)
+      if (R.fx) fx[w] = `${G.base}${skinDir(o.id)}fx.webp?v=${R.fx}`; // N: the look's own effect sheet (tools/femc-fx.py skin; ready.js fx = its hash)
     });
     const own = A.own || {};
     (own.onemore || []).forEach(w => { if (!pose[w]) onemore[w] = art('assets/femc/game/art/onemore/', `${w}.webp`); });
@@ -473,6 +475,7 @@ window.FemcCosmetics = (() => {
       frames: [0, 1, 2, 3, 4, 5].map(i => `${G.base}${skinDir(x.id)}${w}-pose-${i}.webp?v=${SKIN_V}`),
       // Kat's theme effect sheet (battle/art/fx/theme-<id>.webp; ready.js `themes`, femc-wardrobe.py scan) for the burst.
       themeSheet: x.theme && (readyArt().themes || []).includes(x.theme) ? `${G.base}assets/femc/battle/art/fx/theme-${x.theme}.webp?v=${ART_V8}` : null,
+      fxSheet: R.fx ? `${G.base}${skinDir(x.id)}fx.webp?v=${R.fx}` : null, // N: the look's own effect sheet, played in the theme sheet's place
       entrance: (R.entrance || []).includes(w) ? art8(`${w}-entrance.webp`) : null, onemore: (R.onemore || []).includes(w) ? art8(`${w}-onemore.webp`) : null,
       onemore2: (R.onemore2 || []).includes(w) ? art8(`${w}-onemore-v2.webp`) : null, omEyes: (R.onemore2 || []).includes(w) && (R.eyes2 || {})[w] ? R.eyes2[w].slice(0, 4) : null,
       face: f ? `${G.base}${skinDir(x.id)}portraits/${w}/${f}.webp?v=9` : `${G.base}${D.portraits || 'assets/femc/portraits/'}${w}/${face0}.webp?v=${V}`, faceKey: f || face0,

@@ -10,6 +10,11 @@ cloud (solid art on transparent, or on flat green #00ff00).
         Build one sheet from any file (NAME is an effect name below), then rewrite the index.
   python3 tools/femc-fx.py index
         Rewrite assets/femc/battle/art/fx/index.js from the sheets that exist (after deleting one by hand, say).
+  python3 tools/femc-fx.py skin LOOK [SRC.png]
+        FEMC-SKINS-BATTLE-DESIGN N (Nov 1 2026): a Wardrobe look's own signature effect sheet (SRC defaults to
+        skin-<LOOK>-fx.png in New Adds / Added to Game), cut exactly like the theme-* sheets (3 x 2, light keyed from black)
+        -> assets/femc/game/art/skins/<LOOK>/fx.webp, then tools/femc-wardrobe.py scan lists it in ready.js (skins[LOOK].fx,
+        a content hash) and battle.js plays it wherever the look's theme sheet would (LOOKS.fx[who]).
   python3 tools/femc-fx.py check OUT.png [NAME ...]
         Contact sheet of the built sheets (all of them by default) on black, field purple and white, for checking by eye.
 
@@ -249,8 +254,8 @@ def place(f, P, ox, oy):
     return out
 
 
-def build(src, name, dst=DST):
-    if name not in NAMES:
+def build(src, name, dst=DST, path=None):
+    if name not in NAMES and path is None:
         raise SystemExit(f'unknown effect name {name!r}; one of: {", ".join(NAMES)}')
     im = Image.open(src)
     im = im.convert('RGBA')
@@ -313,8 +318,8 @@ def build(src, name, dst=DST):
         c = np.dstack([np.clip(c[..., :3] / np.maximum(al, 1 / 255), 0, 1), al[..., 0]])
         c[c[..., 3] < 2 / 255] = 0
         sheet.paste(Image.fromarray((c * 255 + 0.5).astype(np.uint8)), ((i % 3) * out, (i // 3) * out))
-    os.makedirs(dst, exist_ok=True)
-    path = os.path.join(dst, name + '.webp')
+    path = path or os.path.join(dst, name + '.webp')
+    os.makedirs(os.path.dirname(path), exist_ok=True)
     sheet.save(path, 'WEBP', quality=90, alpha_quality=100, method=6)
     sh = shifts[0] if len(set(shifts)) == 1 else ' '.join(f'{x},{y}' for x, y in shifts)
     print(f'  wrote {os.path.relpath(path, ROOT)} {sheet.size} (shift {sh}{f", padded x{pad}" if pad != 1 else ""}) from {os.path.basename(src)}')
@@ -370,6 +375,23 @@ def build_all(dst=DST):
     index(dst)
 
 
+def skin(look, src=None):
+    """N: a look's own effect sheet -> game/art/skins/<look>/fx.webp (theme-sheet processing), then the Wardrobe scan."""
+    if src is None:
+        want = {f'skin-{look}-fx'}
+        src = next((p for d in FOLDERS for p in sorted(glob.glob(os.path.join(IMAGES, d, '*')))
+                    if os.path.splitext(os.path.basename(p))[1].lower() in EXTS and os.path.splitext(os.path.basename(p))[0].lower() in want), None)
+        if not src: raise SystemExit(f'no skin-{look}-fx.png in New Adds or Added to Game')
+    elif not os.path.exists(src):
+        src = next((os.path.join(IMAGES, d, src) for d in FOLDERS if os.path.exists(os.path.join(IMAGES, d, src))), None) or sys.exit(f'missing source: {src}')
+    skins = os.path.join(ROOT, 'assets/femc/game/art/skins', look)
+    if not os.path.isdir(skins):
+        raise SystemExit(f'{look}: no pose frames yet (cut the look first with tools/femc-wardrobe.py skin)')
+    build(src, f'skin-{look}', path=os.path.join(skins, 'fx.webp'))
+    import subprocess
+    subprocess.run([sys.executable, os.path.join(HERE, 'femc-wardrobe.py'), 'scan'], check=True)
+
+
 def check(out, names, dst=DST):
     files = [os.path.join(dst, n + '.webp') for n in names] if names else sorted(glob.glob(os.path.join(dst, '*.webp')))
     rows = []
@@ -399,12 +421,14 @@ def main():
     p = sub.add_parser('add'); p.add_argument('src'); p.add_argument('name')
     sub.add_parser('index')
     p = sub.add_parser('check'); p.add_argument('out'); p.add_argument('names', nargs='*')
+    p = sub.add_parser('skin'); p.add_argument('look'); p.add_argument('src', nargs='?')
     for s in sub.choices.values():
         s.add_argument('--dst', default=DST)
     a = ap.parse_args()
     if a.cmd == 'all': build_all(a.dst)
     elif a.cmd == 'add': build(a.src, a.name, a.dst); index(a.dst)
     elif a.cmd == 'index': index(a.dst)
+    elif a.cmd == 'skin': skin(a.look, a.src)
     else: check(a.out, a.names, a.dst)
 
 

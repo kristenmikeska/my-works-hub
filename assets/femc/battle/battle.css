@@ -2660,3 +2660,19 @@ html.bt-calm .bt-om-flash, .bt-calm .bt-om-flash { display: none; }
   animation: tm-fly .9s cubic-bezier(.15, .8, .3, 1) both; }
 .bt-calm .bt-dust .bt-tburst.code svg.tm { filter: drop-shadow(2px 2px 0 #14070f); }
 @media (prefers-reduced-motion: reduce) { .bt-dust .bt-tburst.code svg.tm { animation: tm-still 1.4s ease both; transform: translate(calc(var(--dx) * .6), calc(var(--dy) * .6)) rotate(var(--r)); } }
+
+/* N: a look's own effect sheet (game/art/skins/<look>/fx.webp, 3 x 2) as a light layer: one stepped pass at the entrance card
+   and behind the win screen's victory pose (battle.js lookLayer). Reduced motion (.still): the peak frame held faintly;
+   Reduce flashes: dimmer; Performance mode: never drawn. */
+.bt-lfx { --spd: 1; --lfa: 1; position: absolute; display: block; aspect-ratio: 1; translate: -50% -50%; background-size: 300% 200%; background-repeat: no-repeat;
+  background-position: 100% 0; opacity: 0; mix-blend-mode: screen; pointer-events: none; animation: bt-lfx calc(640ms / var(--spd)) var(--lfd, .18s) steps(1, end) both; }
+.bt-lfx.en { z-index: 1; left: 64%; top: 46%; width: clamp(220px, 30vw, 460px); --lfd: calc(.16s / var(--spd)); }
+.bt-lfx.win { z-index: 0; left: auto; right: 4%; top: 44%; translate: 0 -50%; width: clamp(240px, 34vw, 540px); --lfd: .45s; }
+.bt-calm .bt-lfx { --lfa: .45; }
+.bt-lfx.still, .bt-calm .bt-lfx.still { animation: none !important; opacity: calc(var(--lfa) * .6); background-position: 100% 0; }
+@keyframes bt-lfx { 0% { opacity: var(--lfa); background-position: 0 0; } 16.6% { background-position: 50% 0; } 33.3% { background-position: 100% 0; }
+  50% { background-position: 0 100%; } 66.6% { background-position: 50% 100%; } 83.3% { opacity: var(--lfa); background-position: 100% 100%; } 100% { opacity: 0; background-position: 100% 100%; } }
+@media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) {
+  .bt-lfx.en { left: 62%; top: 42%; width: 62vw; }
+  .bt-lfx.win { right: 2%; top: 18%; width: 52vw; }
+}

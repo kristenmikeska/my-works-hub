@@ -1177,6 +1177,13 @@ window.FemcFX = (() => {
     return ready(im) ? im : null;
   }
   const hasArt = name => !reduced() && !!artImg(name);
+  /* A Wardrobe look's own effect sheet (FEMC-SKINS-BATTLE-DESIGN N; battle.js registers look-<who> from LOOKS.fx): same
+     3 x 2 light-on-black format as the theme-* sheets, from its own path. Re-registering with another path replaces it. */
+  function addArt(name, src) {
+    const A = window.FEMC_FX_ART = window.FEMC_FX_ART || {};
+    if (!A[name] || A[name].src !== src) A[name] = { cell: 256, frames: 6, peak: 2, blend: 'lighter', src, look: true };
+    preload(src);
+  }
   // A kind's sheets in order of preference (fear plays its own sheet, then borrows Dark's; the code effect after that).
   const ART_KINDS = { fear: ['fear', 'dark'], freeze: ['freeze', 'ice'], shock: ['shock', 'elec'], shatter: ['shatter', 'ice'] };
   const ART_OK = new Set(['fire', 'ice', 'elec', 'wind', 'light', 'dark', 'almighty', 'slash', 'strike', 'pierce', 'heal', 'cure', 'revive', 'buff',
@@ -1185,7 +1192,7 @@ window.FemcFX = (() => {
   const BORROWED = { fear: 0.6, freeze: 0.7, shock: 0.6 }; // a borrowed sheet plays at the code effect's small size
   /* The sheet a play(kind, at, o) would use right now, or null (the code effect plays). */
   function artFor(kind, o = {}) {
-    if (reduced() || !(ART_OK.has(kind) || /^theme-/.test(kind))) return null; // theme-<id>: an outfit theme's sheet (battle.js fxHit, F)
+    if (reduced() || !(ART_OK.has(kind) || /^(theme|look)-/.test(kind))) return null; // theme-<id>: an outfit theme's sheet (battle.js fxHit, F); look-<who>: a look's own (N)
     let names = ART_KINDS[kind] || [kind];
     if (kind === 'buff') names = [(o.dir || 1) < 0 ? 'debuff' : 'buff'];
     if (o.insta) names = kind === 'light' ? ['hama', 'light'] : ['mudo', 'dark'];
@@ -1262,7 +1269,7 @@ window.FemcFX = (() => {
     if (reduced()) return simple(at, COLORS[kind] || '#fff');
     const art = artFor(kind, o);
     if (art) return sheet(art, at, o, kind);
-    if (kind === 'crit' || kind === 'weak' || kind === 'theurgy-burst' || /^theme-/.test(kind)) return 0; // sheet-only kinds: callers check hasArt first
+    if (kind === 'crit' || kind === 'weak' || kind === 'theurgy-burst' || /^(theme|look)-/.test(kind)) return 0; // sheet-only kinds: callers check hasArt first
     switch (kind) {
       case 'fire': return fire(at, o);
       case 'ice': return ice(at, o);
@@ -1537,7 +1544,7 @@ window.FemcFX = (() => {
     pause() { paused = true; }, resume() { paused = false; last = performance.now(); kick(); }, get paused() { return paused; },
     setCalm(b) { calm = !!b; },
     // Skill-effect sheets: hasArt(name) once loaded; artFor(kind, o) = the sheet play() would use; artSrc for DOM sprites.
-    hasArt, artFor, artSrc: name => (artImg(name) ? new URL(artSrc(name), document.baseURI).href : null), preloadArt, sheetLog, // absolute: a CSS var url() would resolve against battle.css
+    hasArt, artFor, addArt, artSrc: name => (artImg(name) ? new URL(artSrc(name), document.baseURI).href : null), preloadArt, sheetLog, // absolute: a CSS var url() would resolve against battle.css
     setQuality(q) { pinned = q === 'low' ? LEVELS.length - 1 : null; resize(); }, quality: () => ['full', 'reduced', 'low'][pinned != null ? pinned : level],
     get count() { return parts.length; }
   };

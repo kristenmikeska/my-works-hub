@@ -85,7 +85,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 46;
+  const ART_V = 47;
   /* Status art (tools/femc-icons.py): sticker icons for the ailments and the buff / debuff arrows, and the Tartarus map's room
      glyphs. A status chip shows its icon in place of the old name or ATK / DEF / AGI text (the name stays in its title). */
   const ICON_DIR = 'assets/femc/battle/art/icons/';
@@ -133,7 +133,7 @@
      applyLooks: page load = a story fight, and each Tartarus fight) picks it; heads keeps sheet 2 V1, Kat's default.
      Tests: ?alt2=0|1 or window.__btAlt2 fixes it. */
   let ALT2 = false;
-  function applyLooks() { LOOKS = readLooks(); ALT2 = window.__btAlt2 != null ? !!window.__btAlt2 : params.has('alt2') ? params.get('alt2') === '1' : Math.random() < 0.5; let st = document.getElementById('bt-looks'); if (LOOKS && LOOKS.css) { if (!st) { st = document.createElement('style'); st.id = 'bt-looks'; document.head.appendChild(st); } st.textContent = LOOKS.css; } else if (st) st.remove(); }
+  function applyLooks() { LOOKS = readLooks(); ALT2 = window.__btAlt2 != null ? !!window.__btAlt2 : params.has('alt2') ? params.get('alt2') === '1' : Math.random() < 0.5; let st = document.getElementById('bt-looks'); if (LOOKS && LOOKS.fx && FX && FX.addArt) Object.keys(LOOKS.fx).forEach(m => FX.addArt('look-' + m, LOOKS.fx[m])); if (LOOKS && LOOKS.css) { if (!st) { st = document.createElement('style'); st.id = 'bt-looks'; document.head.appendChild(st); } st.textContent = LOOKS.css; } else if (st) st.remove(); }
   applyLooks();
   /* Layered cast effects (FEMC-SKINS-BATTLE-DESIGN A): when a party member casts a non-physical skill, a short charge-up in
      the skill's element plays at the hand of their cast pose (pose 3) before the hit lands as now (fx.js charge, which reuses
@@ -154,6 +154,13 @@
      `currentColor`), shared by the frames, the cloud burst and the Showtime sparkle. */
   const skinFxOn = () => !!LOOKS && ST().skinFx !== false;
   const themeOf = mid => (skinFxOn() && LOOKS.theme && LOOKS.theme[mid] && THEME_ART[LOOKS.theme[mid]] ? LOOKS.theme[mid] : null);
+  /* N (Nov 1 2026): a look's own signature effect sheet (Kat's skin-<look>-fx.png, cut by tools/femc-fx.py skin to
+     game/art/skins/<look>/fx.webp; LOOKS.fx[who]), registered with fx.js as look-<who> (applyLooks preloads it). Wherever
+     the look's theme sheet plays (the skill sparkle, the All-Out burst; Try it on in tryon.js) its own sheet plays instead,
+     else the theme sheet, else the drawn motifs. Also a light layer at the entrance card and behind the win screen's
+     victory pose (lookLayer). Outfit effects Off: none of it; reduced motion: fx.js plays no sheets. */
+  const lookFx = mid => { if (!skinFxOn() || !LOOKS.fx || !LOOKS.fx[mid] || !FX || !FX.addArt) return null; const n = 'look-' + mid; FX.addArt(n, LOOKS.fx[mid]); return FX.hasArt(n) ? n : null; };
+  const fxSheetOf = mid => { const th = themeOf(mid); return lookFx(mid) || (th && FX && FX.hasArt && FX.hasArt('theme-' + th) ? 'theme-' + th : null); };
   /* Second pose sheet (FEMC-SKINS-BATTLE-DESIGN D, Nov 1 2026; tools/femc-wardrobe.py skin2 cuts it onto sheet 1's canvas):
      <who>-pose2-0..5 = support cast, guard, dodge, knocked down, badly hurt, dash-in, as frames 6..11. A fighter's own look:
      FIGHTER_POSES2; a worn look: LOOKS.pose2 (cosmetics.js battle(), from ready.js `poses2`). Never a look's sheet 1 with
@@ -2595,8 +2602,9 @@
   function fxHit(e) {
     const t = fxHitKind(e);
     // F: a themed look's skill hit gets the theme's sheet (Kat's theme-<id>, art/fx) small on top, a frame later. Sheet only.
-    const src = B.U(e.src), th = src && src.side === 'party' && D.skills[e.skill] && !e.theurgy ? themeOf(src.mid) : null;
-    if (th && FX && FX.hasArt && FX.hasArt('theme-' + th)) { fxPlay('theme-' + th, e.tgt, { small: true, delay: 0.07 + Math.max(0, t - 120) / 1000 }); mark('fx-theme-' + th); }
+    // N: the look's own effect sheet (look-<who>) in its place when it has one (marks fx-look-<who> / fx-theme-<id>).
+    const src = B.U(e.src), sh = src && src.side === 'party' && D.skills[e.skill] && !e.theurgy ? fxSheetOf(src.mid) : null;
+    if (sh) { fxPlay(sh, e.tgt, { small: true, delay: 0.07 + Math.max(0, t - 120) / 1000 }); mark('fx-' + sh); }
     if (e.crit && !e.insta && FX && FX.hasArt && FX.hasArt('crit')) fxPlay('crit', e.tgt, { delay: Math.max(0, t - 140) / 1000 });
     return t;
   }
@@ -3794,9 +3802,10 @@
      Performance mode: fewer motifs; reduced motion: they fade in place (the sheet holds its peak frame). Marks: allout-theme,
      allout-theme-art | -code. */
   function themeBurst(actor) {
-    const th = themeOf(actor.mid) || themeOf(B.leader().mid); if (!th) return '';
-    const sheetSrc = FX && FX.artSrc && FX.hasArt && FX.hasArt('theme-' + th) ? FX.artSrc('theme-' + th) : null;
-    mark('allout-theme'); mark('allout-theme-' + (sheetSrc ? 'art' : 'code'));
+    const who = [actor.mid, B.leader().mid].find(m => themeOf(m) || lookFx(m)); if (!who) return '';
+    const th = themeOf(who) || '', nm = fxSheetOf(who); // N: the look's own sheet first, then the theme's
+    const sheetSrc = nm && FX.artSrc ? FX.artSrc(nm) : null;
+    mark('allout-theme'); mark('allout-theme-' + (sheetSrc ? 'art' : 'code')); if (sheetSrc && nm.startsWith('look-')) mark('allout-theme-look');
     const spots = [[6, 20, 0], [90, 70, 3]], rm = FX && FX.reduced(), n = perf() ? 4 : 7;
     return spots.map(([x, y, at], k) => sheetSrc
       ? `<div class="bt-tburst art" data-theme="${th}" data-f="-1" data-at="${at}" style="left:${x}%;top:${y}%;background-image:url('${sheetSrc}');opacity:${rm ? 1 : 0};background-position:${rm ? '100% 0' : '0 0'}"></div>`
@@ -4373,6 +4382,15 @@
      stage fights, and for a chain: a fight starting within 8 s of the last one ending, and every ordinary fight of a
      Tartarus night after its first (strong rooms, the Reaper and bosses still get one). Reduced motion: a plain fade;
      Performance mode: no shards' motion. Marks: entrance, entrance-art | -code, entrance-skip. */
+  /* N: the look's own effect sheet as a light layer (the entrance card 'en', behind the win screen's victory pose 'win'):
+     one CSS-stepped pass through its six frames (.bt-lfx). Performance mode: none; reduced motion: its peak frame held
+     faintly; Reduce flashes (.bt-calm): dimmer. Mark look-fx-<where>. */
+  function lookLayer(mid, where) {
+    if (perf() || !skinFxOn() || !LOOKS.fx || !LOOKS.fx[mid]) return '';
+    if (FX && FX.addArt) FX.addArt('look-' + mid, LOOKS.fx[mid]);
+    mark('look-fx-' + where);
+    return `<i class="bt-lfx ${where}${FX && FX.reduced() ? ' still' : ''}" aria-hidden="true" style="background-image:url('${LOOKS.fx[mid]}');--spd:${speed()}"></i>`;
+  }
   let lastBattleEnd = 0;
   async function entranceCard(spec) {
     const L = B && B.leader(), m = L && member(L.mid);
@@ -4390,7 +4408,7 @@
     const fig = art ? `<img class="en-art" src="${art}" alt="" draggable="false">`
       : pose ? `<img class="en-pose" src="${pose}" alt="" draggable="false">` : `<div class="en-face fcb">${fimg(mid, m.faces.idle)}</div>`;
     el.innerHTML = `<i class="en-dim"></i><i class="en-sh s1"></i><i class="en-sh s2"></i><i class="en-sh s3"></i>
-      <div class="en-card"><div class="en-in">${art ? '' : '<i class="en-stripes"></i>'}${fig}</div></div>
+      <div class="en-card"><div class="en-in">${art ? '' : '<i class="en-stripes"></i>'}${fig}</div></div>${lookLayer(mid, 'en')}
       ${art ? '' : `<b class="en-name"><small>${esc(look || 'Ready')}</small>${esc(L.name.toUpperCase())}</b>${th ? `<span class="en-motifs">${[0, 1, 2, 3, 4].map(i => motif(th, i, `left:${[8, 22, 70, 86, 48][i]}%;top:${[14, 70, 10, 66, 84][i]}%`)).join('')}</span>` : ''}`}`;
     BT.root.appendChild(el);
     mark('entrance'); mark('entrance-' + (art ? 'art' : 'code'));
@@ -4464,7 +4482,7 @@
       // The win screen's hero (FEMC-SKINS-BATTLE-DESIGN C): the fighter who struck the victory pose (Solar if none), in the
       // Wardrobe look they wear: its victory frame (pose 5) big, bleeding off the right edge behind the rows. No look: as before.
       const mvp = winMid || 'solar', hero = LOOKS && LOOKS.pose && LOOKS.pose[mvp] && FIGHTER_POSES[mvp] && o.rew
-        ? `<div class="bt-res-heroW" aria-hidden="true"><img class="bt-res-hero" src="${posedFrames(mvp)[5]}" alt="" draggable="false" data-mid="${mvp}" onerror="this.parentNode.remove()"></div>` : '';
+        ? `<div class="bt-res-heroW" aria-hidden="true">${lookLayer(mvp, 'win')}<img class="bt-res-hero" src="${posedFrames(mvp)[5]}" alt="" draggable="false" data-mid="${mvp}" onerror="this.parentNode.remove()"></div>` : '';
       if (hero) mark('results-hero');
       const el = show(`${hero}<div class="bt-res"><div>
           <h1 class="bt-res-title"><small>${esc(o.title)}</small>RESULTS</h1>

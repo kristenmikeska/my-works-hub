@@ -2,7 +2,7 @@
 card, a couple set's Showtime, the theme frame on the HUD card and the theme burst in the All-Out cloud.
 Headless Chrome, isolated profile, its own localhost server; no player saves.
 
-Run: python3 tests/femc_skins_battle.py [--only data,tools,fallback,art,settings,sheet2,looks,evoker,tryon] [--screenshots DIR]
+Run: python3 tests/femc_skins_battle.py [--only data,tools,fallback,art,settings,sheet2,looks,evoker,tryon,lookfx] [--screenshots DIR]
 
   data      cosmetics.js THEMES (every listed look exists; part 4's picks), battle() hands theme / name / couple per worn
             look and no art paths while no files exist.
@@ -27,6 +27,11 @@ Run: python3 tests/femc_skins_battle.py [--only data,tools,fallback,art,settings
             femc-wardrobe.py evoker) shows it, never the default-uniform shot or summon clip; a look without one shows
             its pose-1 frame large (Solar's Yukata, Akihiko's swimsuit), never the default shot; no look: as before.
             Screenshots at 1440x900 and 390x844.
+  lookfx    N (Nov 1 2026), a look's own effect sheet: a test sheet (3 x 2, light on black) cut by tools/femc-fx.py skin
+            sk-date → skins/sk-date/fx.webp, scan lists its hash in ready.js; battle() / tryOnSpec hand it; in a real Tartarus
+            fight it plays at the entrance card, as the skill sparkle in place of theme-hearts (and theme-hearts again with
+            it removed), as the All-Out burst and behind the win screen's victory pose; Try it on's burst uses it; Outfit
+            effects Off / Performance drop the layer. Screenshots at 1440x900 (and 390x844).
   tryon     S3, the Wardrobe's "Try it on" (game/tryon.js): the button on an owned and an unowned outfit and the Boutique's
             ▶, every beat in order, Enter / click skip to the victory pose, Esc closes only it (focus back), the hand
             charge only for a clean look, Outfit effects Off, reduced motion, every ready look's frames loading, a party
@@ -749,6 +754,92 @@ try:
         cleanup(); shutil.rmtree(tmp, ignore_errors=True)
         ok(READY.read_text() == READY0 and not out.exists(), 'test close-up gone, ready.js restored')
         results['evoker'] = eshots
+
+    # ── N: a look's own signature effect sheet (Nov 1 2026) ──
+    if want('lookfx'):
+        from PIL import Image, ImageDraw
+        tmp = pathlib.Path(SHOTS, '_src'); tmp.mkdir(exist_ok=True)
+        im = Image.new('RGB', (1536, 1024), (0, 0, 0)); d = ImageDraw.Draw(im)
+        for i in range(6):  # a pink star burst that grows to its peak (frame 3) and fades
+            cx, cy, r, k = (i % 3) * 512 + 256, (i // 3) * 512 + 256, [50, 110, 170, 195, 210, 220][i], [0.7, 1, 1, 0.75, 0.45, 0.2][i]
+            col = tuple(int(c * k) for c in (255, 79, 158)); wht = tuple(int(255 * k) for _ in range(3))
+            for j in range(8):
+                import math
+                a0 = j * math.pi / 4; d.line([(cx, cy), (cx + math.cos(a0) * r, cy + math.sin(a0) * r)], fill=col, width=14)
+            d.ellipse([cx - r // 2, cy - r // 2, cx + r // 2, cy + r // 2], outline=col, width=10); d.ellipse([cx - r // 6, cy - r // 6, cx + r // 6, cy + r // 6], fill=wht)
+        im.save(tmp / 'skin-sk-date-fx.png')
+        out = ART / 'skins/sk-date/fx.webp'
+        ok(not out.exists(), 'Date Day has no effect sheet before the test'); MADE.append(out)
+        subprocess.run([sys.executable, str(pathlib.Path(REPO, 'tools/femc-fx.py')), 'skin', 'sk-date', str(tmp / 'skin-sk-date-fx.png')], check=True, capture_output=True)
+        sh = Image.open(out).convert('RGBA')
+        ok(sh.size == (768, 512) and sh.getpixel((2, 2))[3] == 0 and sh.getpixel((640, 128))[3] > 200, f'fx.webp: 3 x 2 of 256, black keyed out, the peak kept: {sh.size}')
+        rd = json.loads(READY.read_text().split('window.FEMC_ART_READY = ')[1].rstrip().rstrip(';'))
+        h = rd['skins']['sk-date'].get('fx')
+        ok(isinstance(h, str) and len(h) == 8, f"scan lists its hash: {rd['skins']['sk-date']}")
+        setup(wear=['sk-date'])
+        p.eval("(()=>{FEMC_ART_READY.skins['sk-date'].fx=%s;FemcGame.setSettings({skinFx:true,perf:false,calm:false});return true})()" % json.dumps(h))  # as scan wrote it
+        b = p.eval("[FemcCosmetics.battle().fx,FemcCosmetics.tryOnSpec('sk-date').fxSheet]")
+        ok(list(b[0]) == ['solar'] and f'skins/sk-date/fx.webp?v={h}' in b[0]['solar'] and f'skins/sk-date/fx.webp?v={h}' in b[1], f'battle().fx / tryOnSpec().fxSheet: {b}')
+        p.eval("FemcGame.S.battleSave.settings&&(FemcGame.S.battleSave.settings.entrance=true);FemcGame.save()")
+        night(['solar', 'akihiko', 'yukari', 'junpei'], "window.__btFreezeAt='entrance';")
+        enter(); frozen_at('entrance', 60); time.sleep(0.4)
+        nshots = []
+        for w, hh in [(1440, 900), (390, 844)]:
+            view(p, w, hh); time.sleep(0.3); hold(p, '.bt-entrance', 0.45)
+            e = p.eval("(()=>{const l=document.querySelector('.bt-entrance .bt-lfx.en');return l&&{bg:l.style.backgroundImage,op:+getComputedStyle(l).opacity}})()")
+            ok(e and 'skins/sk-date/fx.webp' in e['bg'] and e['op'] > 0.5 and fits(p), f'entrance: the look\'s sheet plays over the card ({w}): {e}')
+            nshots.append(shot(p, f'lookfx-entrance-{w}x{hh}'))
+        view(p, 1440, 900); go_on()
+        bdrive(SOLAR_MENU, 120)
+        p.wait("FemcFX.hasArt('look-solar')", 10)
+        # Fallback first: without the look's sheet the hit plays theme-hearts as before.
+        p.eval("FemcBattle.B.foes().forEach(f=>{f.maxHp=f.hp=99999});window.__holdAllout=true;window.__lfx=FemcBattle.looks.fx;FemcBattle.looks.fx={};true")
+        cast_fire()
+        p.wait("(FemcBattle.marks['fx-theme-hearts']||0)>0 && (FemcBattle.marks['fx-art-theme-hearts']||0)>0", 20)
+        ok(not p.eval("FemcBattle.marks['fx-look-solar']"), 'no look sheet: the theme sheet, not the look\'s')
+        bdrive(SOLAR_MENU, 30)
+        h0 = p.eval("FemcBattle.marks['fx-theme-hearts']")
+        p.eval("FemcBattle.looks.fx=window.__lfx;window.__btFreezeAt='fx-look-solar';true")
+        cast_fire()
+        frozen_at('fx-look-solar', 30); time.sleep(0.25)
+        r = p.eval("({look:FemcBattle.marks['fx-look-solar']||0,art:FemcBattle.marks['fx-art-look-solar']||0,hearts:FemcBattle.marks['fx-theme-hearts']||0,log:FemcFX.sheetLog.filter(l=>l.name==='look-solar').length})")
+        ok(r['look'] >= 1 and r['art'] >= 1 and r['hearts'] == h0 and r['log'] >= 1, f'the skill sparkle: the look\'s sheet in place of theme-hearts: {r}')
+        nshots.append(shot(p, 'lookfx-skill-1440x900'))
+        go_on()
+        bdrive("FemcBattle.ctl?.kind==='allout'", 30)
+        p.eval("window.__btFreezeAt='allout-dust';window.__holdAllout=false;FemcBattle.B.foes().forEach(f=>{f.hp=Math.min(f.hp,50)});FemcBattle.ctl.pickValue('1')")
+        frozen_at('allout-dust', 30); time.sleep(0.5)
+        tb = p.eval("[...document.querySelectorAll('.bt-tburst')].map(t=>({cls:t.className,bg:t.style.backgroundImage}))")
+        ok(len(tb) == 2 and all('art' in t['cls'] and 'skins/sk-date/fx.webp' in t['bg'] for t in tb) and p.eval("FemcBattle.marks['allout-theme-look']") == 1, f'All-Out burst: the look\'s sheet: {tb}')
+        go_on()
+        p.eval("window.__holdSolar=false;window.__stopResults=true")
+        bdrive("FemcBattle.screen()==='results'", 60); time.sleep(0.3)
+        for w, hh in [(1440, 900), (390, 844)]:
+            view(p, w, hh); time.sleep(0.3); hold(p, '.bt-res-heroW', 0.4)
+            wl = p.eval("(()=>{const l=document.querySelector('.bt-res-heroW .bt-lfx.win'),i=document.querySelector('.bt-res-hero');return l&&{bg:l.style.backgroundImage,op:+getComputedStyle(l).opacity,behind:!!(l.compareDocumentPosition(i)&Node.DOCUMENT_POSITION_FOLLOWING)}})()")
+            ok(wl and 'skins/sk-date/fx.webp' in wl['bg'] and wl['op'] > 0.5 and wl['behind'] and fits(p), f'win screen: the sheet behind the victory pose ({w}): {wl}')
+            nshots.append(shot(p, f'lookfx-win-{w}x{hh}'))
+        view(p, 1440, 900)
+        clean(p, 'lookfx fight')
+        # Try it on: the burst is the look's sheet.
+        p.top(); p.eval("document.querySelectorAll('.g-dh').forEach(x=>x.remove())")
+        p.eval("FemcTryOn.play('sk-date')")
+        p.wait("(FemcTryOn.state()?.fx||[]).includes('burst-look')", 12); p.eval("FemcTryOn.freeze()")
+        bu = p.eval("(()=>{const b=document.querySelector('.g-to-burst');return b&&{cls:b.className,bg:b.style.backgroundImage}})()")
+        ok(bu and 'look' in bu['cls'] and 'skins/sk-date/fx.webp' in bu['bg'], f'Try it on: the look\'s sheet as the burst: {bu}')
+        p.eval("FemcTryOn.close()")
+        # Settings: Outfit effects Off or Performance mode: no layer at the entrance (Off: no sheet anywhere).
+        for st, tag in (("{skinFx:false}", 'off'), ("{skinFx:true,perf:true}", 'perf')):
+            p.top(); setup(wear=['sk-date'])
+            p.eval("(()=>{FEMC_ART_READY.skins['sk-date'].fx=%s;FemcGame.setSettings(%s);FemcGame.S.battleSave.settings&&(FemcGame.S.battleSave.settings.entrance=true);FemcGame.save();return true})()" % (json.dumps(h), st))
+            night(['solar', 'akihiko', 'yukari', 'junpei'], "window.__btFreezeAt='entrance';" + ("FemcBattle.save.perf=true;" if tag == 'perf' else ''))
+            enter(); frozen_at('entrance', 60)
+            ok(not p.eval("document.querySelector('.bt-lfx')") and not p.eval("FemcBattle.marks['look-fx-en']"), f'{tag}: no layer')
+            go_on(); clean(p, 'lookfx ' + tag)
+        p.top(); p.eval("FemcGame.setSettings({skinFx:true,perf:false})")
+        cleanup(); shutil.rmtree(tmp, ignore_errors=True)
+        ok(READY.read_text() == READY0 and not out.exists(), 'test sheet gone, ready.js restored')
+        results['lookfx'] = nshots
 
     print(json.dumps(results, indent=1))
     print('femc_skins_battle: all checks passed')

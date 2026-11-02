@@ -53,6 +53,8 @@ window.FemcTryOn = (() => {
     const om = sp.onemore ? `<div class="om-frame"><img class="om-art" src="${esc(sp.onemore)}" alt="" draggable="false">${sp.onemore2 ? `<div class="om-v2"><img class="om-art" src="${esc(sp.onemore2)}" alt="" draggable="false"><i class="om-glint"${glintAt(sp.omEyes, 0)}></i><i class="om-glint g2"${glintAt(sp.omEyes, 1)}></i></div>` : ''}</div>${sp.onemore2 ? '<i class="om-flash"></i>' : ''}`
       : `<i class="om-stripes"></i><div class="om-eyes fcb">${faceImg(sp)}</div><i class="om-lines"></i>`;
     const n = o.perf ? 5 : 9, burst = th ? Array.from({ length: n }, (_, i) => { const ang = (i / n) * Math.PI * 2 - Math.PI / 2; return m(th, i, `--dx:${Math.round(Math.cos(ang) * 120)}px;--dy:${Math.round(Math.sin(ang) * 100)}px;animation-delay:${(i % 3) * 0.05}s`); }).join('') : '';
+    // The burst: the look's own effect sheet (sp.fxSheet, N), else its theme's sheet, else the drawn motifs.
+    const sheet = o.fx && sp.fxSheet ? sp.fxSheet : th && sp.themeSheet ? sp.themeSheet : null;
     const sparkle = th ? Array.from({ length: o.perf ? 4 : 8 }, (_, i) => m(th, i, `left:${[12, 80, 22, 70, 6, 88, 34, 60][i]}%;top:${[18, 14, 62, 70, 40, 44, 8, 34][i]}%;animation-delay:${(i * 0.23).toFixed(2)}s`)).join('') : '';
     const motes = Array.from({ length: o.perf ? 6 : 12 }, (_, i) => { const ang = (i / (o.perf ? 6 : 12)) * Math.PI * 2; return `<i style="--dx:${Math.round(Math.cos(ang) * 46)}px;--dy:${Math.round(Math.sin(ang) * 46)}px;animation-delay:${(i % 4) * 0.04}s"></i>`; }).join('');
     return `<div class="g-to${o.reduced ? ' reduced' : ''}${o.perf ? ' perf' : ''}${o.calm ? ' calm' : ''}" data-beat="" data-to="${esc(sp.id)}" style="--mc:${esc(sp.color || '#ff4f9e')};--ec:${esc(sp.skill.color)}">
@@ -61,7 +63,7 @@ window.FemcTryOn = (() => {
         <div class="g-to-figw"><img class="g-to-fig a on" src="${esc(sp.frames[0])}" alt="" draggable="false"><img class="g-to-fig b" alt="" draggable="false"></div>
         <i class="g-to-slash"></i>
         ${sp.clean && o.fx ? `<div class="g-to-charge" aria-hidden="true">${o.reduced ? '' : motes}<b></b></div>` : ''}
-        ${th && sp.themeSheet ? `<div class="g-to-burst art" aria-hidden="true" style="background-image:url('${esc(sp.themeSheet)}')"></div>` : burst ? `<div class="g-to-burst" aria-hidden="true">${burst}</div>` : ''}
+        ${sheet ? `<div class="g-to-burst art${o.fx && sp.fxSheet ? ' look' : ''}" aria-hidden="true" style="background-image:url('${esc(sheet)}')"></div>` : burst ? `<div class="g-to-burst" aria-hidden="true">${burst}</div>` : ''}
         <div class="g-to-skill"><small>${esc(sp.skill.elName)}</small><b>${esc(sp.skill.name)}</b></div>
         ${sparkle ? `<div class="g-to-sparkle" aria-hidden="true">${sparkle}</div>` : ''}
         <div class="g-to-om${sp.onemore2 ? ' two' : ''}" aria-hidden="true"><div class="om-band">${om}</div><b class="om-word">1 MORE!</b></div>
@@ -111,7 +113,7 @@ window.FemcTryOn = (() => {
       if (b.k === 'entrance') me.fx.push('entrance-' + (sp.entrance ? 'art' : 'code'));
       if (b.k === 'skill') {
         if (sp.clean && o.fx) later(o.reduced ? 60 : 120, charge);
-        if (el.querySelector('.g-to-burst')) later(o.reduced ? 200 : 480, () => { const bu = el.querySelector('.g-to-burst'); bu.classList.add('go'); me.fx.push(bu.classList.contains('art') ? 'burst-art' : 'burst'); });
+        if (el.querySelector('.g-to-burst')) later(o.reduced ? 200 : 480, () => { const bu = el.querySelector('.g-to-burst'); bu.classList.add('go'); me.fx.push(bu.classList.contains('art') ? 'burst-art' : 'burst'); if (bu.classList.contains('look')) me.fx.push('burst-look'); });
       }
       root.classList.remove('om2');
       if (b.k === 'onemore') { me.fx.push('onemore-' + (sp.onemore ? 'art' : 'code')); if (sp.onemore && sp.onemore2) { me.fx.push('onemore-two'); later(Math.round(ONE_MORE2 * 0.36), () => root.classList.add('om2')); } }

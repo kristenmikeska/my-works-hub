@@ -51,6 +51,7 @@
   python3 tools/femc-wardrobe.py frame <src.png> <theme>
         K: a theme's HUD card frame on flat green (#00ff00), keyed like tools/femc-greens.py -> game/art/frames/<theme>.webp
         (1000 x 400, the empty middle transparent). Themes: cosmetics.js THEMES.
+  (A look's own effect sheet, skin-<id>-fx.png, is cut by tools/femc-fx.py skin <id> -> skins/<id>/fx.webp; scan lists it.)
   python3 tools/femc-wardrobe.py scan
         Rewrites assets/femc/game/art/ready.js from what's on disk (every command above runs it too). An outfit counts for
         a fighter once all six pose frames exist; the game picks it up with no other change (bump ready.js's ?v= in
@@ -256,6 +257,8 @@ def scan():
         for k, suf in (('onemore', 'onemore'), ('onemore2', 'onemore-v2'), ('entrance', 'entrance'), ('theurgy', 'theurgy'), ('finish', 'finish'), ('evoker', 'evoker')):  # part 8 / E / G / M art, listed only when present
             got = sorted(f.name[:-len(f'-{suf}.webp')] for f in d.glob(f'*-{suf}.webp'))
             if got and d.name in skins: skins[d.name][k] = got
+        if (d / 'fx.webp').exists() and d.name in skins:  # N: the look's own effect sheet (tools/femc-fx.py skin); value = content hash for the cache
+            import hashlib; skins[d.name]['fx'] = hashlib.sha1((d / 'fx.webp').read_bytes()).hexdigest()[:8]
         if 'onemore2' in skins.get(d.name, {}):  # where her eyes are on each v2 strip (om_eyes), for the glints
             ey = eyes_of([d / f'{w}-onemore-v2.webp' for w in skins[d.name]['onemore2']])
             e2 = {w: ey[d / f'{w}-onemore-v2.webp'] for w in skins[d.name]['onemore2'] if ey[d / f'{w}-onemore-v2.webp']}
