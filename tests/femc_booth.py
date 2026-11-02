@@ -2,8 +2,9 @@
 
 Run: python3 tests/femc_booth.py [--only art,flow,album,gates,settings] [--screenshots DIR]
 
-  art       Kat's frames 1-4 cut (600 x 800, green window keyed out, transparent corners and window, border kept) and listed in
-            booth/index.js; frames 5-8, the stamps and the poses drawn (nothing listed for them).
+  art       Kat's eight frames cut (600 x 800, green window keyed out, transparent corners and window, border kept), nine
+            stamps (200 px, no green) and seven pose sets (six per person on one canvas, bottom aligned, waist cut solid, no
+            stray strip at the top), all listed in booth/index.js.
   flow      Go Out → Paulownia Mall → Photo booth through the UI: partners she has met only, eight frames (art 1-4), three shots
             (the half-heart pairs itself and unpairs), stamps (add up to three, drag with the mouse, arrows, Delete), Print:
             ¥400, the slot spent, the strip in S.album.booth with every field, one ♪ for the month's first strip with him and
@@ -119,15 +120,28 @@ try:
         from PIL import Image
         idx = (BOOTH / 'index.js').read_text()
         data = json.loads(idx.split('window.FEMC_BOOTH_ART = ')[1].rstrip().rstrip(';'))
-        ok(data == {'frames': [1, 2, 3, 4], 'stamps': [], 'poses': []}, f'index: {data}')
-        for n in range(1, 5):
+        ok(data == {'frames': list(range(1, 9)), 'stamps': list(range(1, 10)), 'poses': ['akihiko', 'haechan', 'hanni', 'hyein', 'jungwon', 'solar', 'yukari']}, f'index: {data}')
+        for n in range(1, 10):
+            im = Image.open(BOOTH / f'stamp-{n}.webp').convert('RGBA')
+            ok(im.size == (200, 200) and im.getpixel((0, 0))[3] == 0, f'stamp {n}: {im.size}')
+            ok(sum(1 for px in im.getdata() if px[3] > 128 and px[1] > max(px[0], px[2]) + 60) < 40, f'stamp {n}: no green')
+        import numpy as np
+        for who in data['poses']:
+            sizes = set()
+            for i in range(6):
+                a = np.asarray(Image.open(BOOTH / f'{who}-{i}.webp').convert('RGBA'))[..., 3]; sizes.add(a.shape)
+                rows = (a > 20).sum(1); top = np.nonzero(rows)[0][0]
+                ok(rows[top + 1] > 0 and rows[top] < 120, f'{who}-{i}: no stray line at the top')
+                ok((a[-30:] > 200).sum(1).max() > a.shape[1] * 0.25 and (a[-14:] > 200).any(), f'{who}-{i}: the waist cut sits on the bottom')
+            ok(len(sizes) == 1, f'{who}: one canvas for all six {sizes}')
+        for n in range(1, 9):
             im = Image.open(BOOTH / f'frame-{n}.webp').convert('RGBA'); a = im.getchannel('A')
             ok(im.size == (600, 800), f'frame {n} size {im.size}')
             ok(a.getpixel((300, 400)) == 0 and a.getpixel((300, 130)) == 0, f'frame {n}: the window is clear')
             ok(max(a.getpixel((x, 400)) for x in range(0, 60)) > 200 and max(a.getpixel((300, y)) for y in range(0, 60)) > 200, f'frame {n}: the border is kept')
             g = [px for px in im.getdata() if px[3] > 128 and px[1] > max(px[0], px[2]) + 60]
             ok(len(g) < 50, f'frame {n}: no green left ({len(g)} px)')
-        results['art'] = 'frames 1-4: 600 x 800, window and outside clear, border kept, no green'
+        results['art'] = 'frames 1-8: 600 x 800, window and outside clear, border kept, no green; stamps 1-9; seven pose sets on one canvas each'
 
     if want('flow'):
         shots = []
@@ -140,13 +154,13 @@ try:
             ok(fits(), f'{w}: who fits'); shots.append(shot(f'booth-1-who-{w}'))
             click('[data-who=haechan]')
             fr = p.eval("[...document.querySelectorAll('.bs-fr')].map(b=>({n:+b.dataset.fr,art:!!b.querySelector('img.bs-frame'),drawn:!!b.querySelector('.bs-frame.drawn')}))")
-            ok(len(fr) == 8 and all(f['art'] for f in fr[:4]) and all(f['drawn'] for f in fr[4:]), f'eight frames, Kat\'s 1-4: {fr}')
+            ok(len(fr) == 8 and all(f['art'] and not f['drawn'] for f in fr), f'eight frames, all Kat\'s: {fr}')
             p.wait("[...document.querySelectorAll('img.bs-frame')].every(i=>i.complete&&i.naturalWidth===600)", 10)
             click('[data-fr="3"]'); ok(p.eval(ST)['frame'] == 3, 'frame picked')
             ok(fits(), f'{w}: frames fit'); shots.append(shot(f'booth-2-frame-{w}'))
             click('[data-bs=frame-ok]')
             # the half-heart pairs itself, and unpairs when the other picks something else
-            click('[data-ps="1"]'); ok(p.eval(ST)['pose'] == [1, 1] and p.eval("!!document.querySelector('.bs-shot.live .bs-heart')"), 'heart pairs')
+            click('[data-ps="1"]'); ok(p.eval(ST)['pose'] == [1, 1] and p.eval("!document.querySelector('.bs-shot.live .bs-heart')"), 'heart pairs (their own hands, no drawn heart)')
             click('[data-pq="3"]'); ok(p.eval(ST)['pose'] == [0, 3], f'heart unpairs: {p.eval(ST)["pose"]}')
             click('[data-pq="1"]'); ok(p.eval(ST)['pose'] == [1, 1], 'his half brings hers')
             ok(fits(), f'{w}: shot fits'); shots.append(shot(f'booth-3-shot-{w}'))
@@ -238,6 +252,8 @@ try:
         # Kat's pose art takes over a stand-in when listed (pointed at an existing image)
         html = p.eval("(()=>{FEMC_BOOTH_ART.poses=['hanni'];return FemcBooth.stripHtml({who:'hanni',frame:2,shots:[[0,4]],stamps:[]})})()")
         ok('booth/hanni-4.webp' in html and 'img class="bs-p art r"' in html and 'bs-badge' in html, 'pose art for Hanni, stand-in for Solar')
+        ok('bs-heart' in p.eval("FemcBooth.stripHtml({who:'hanni',frame:2,shots:[[1,1]],stamps:[]})"), 'drawn heart while Solar is a stand-in')
+        ok('bs-heart' not in p.eval("(()=>{FEMC_BOOTH_ART.poses=['hanni','solar'];return FemcBooth.stripHtml({who:'hanni',frame:2,shots:[[1,1]],stamps:[]})})()"), 'no drawn heart when both are art')
         clean('gates')
         results['gates'] = 'nobody → closed; Hanni / Hyein; pose art switch'
 

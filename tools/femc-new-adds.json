@@ -23013,6 +23013,255 @@
         "assets/femc/game/art/booth/frame-3.webp": "cdb0bd7efd882eea2f88287015038f5b14e52ba3ff9c561f3a79a87655a23461",
         "assets/femc/game/art/booth/frame-4.webp": "b5fa757014d7f279da2945efea7538ed806d183ea11185908ca6f27de0116af5"
       }
+    },
+    {
+      "batch": 121,
+      "source": "booth-frames-2.png",
+      "sourceNow": "New Adds/booth-frames-2.png",
+      "size": [
+        1086,
+        1448
+      ],
+      "sha256": "f166a7a85334f8540f8764f388fa8e75ed0e8df0eca50e972446e062e398ba45",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/booth/frame-5..8.webp",
+      "conversion": "2 x 2 sheet on flat green, RGB: python3 tools/femc-booth.py frames booth-frames-2.png 5 (green outside and in the window keyed, spill off, each frame to 600 x 800, WebP q90); source unchanged",
+      "sheetOrder": "reading order: spring (cherry blossoms), summer (shells, waves, fireworks), autumn (bats, pumpkins, moon), winter (snow, fairy lights, ribbon)",
+      "placement": "the photo booth frames 5-8 (Spring, Summer, Autumn, Winter), replacing the drawn DRAWN_FRAMES stand-ins",
+      "knownLimits": "boxes 0.737-0.739 wide:high, set to exactly 3:4; borders are thicker than frames 1-4, so the window is a little smaller",
+      "outputs": {
+        "assets/femc/game/art/booth/frame-5.webp": "682af03079ffc979d3896636bded93cf60e2bf327ea42dd35d82cb2697ac5b6c",
+        "assets/femc/game/art/booth/frame-6.webp": "f25bb8458130d54fdd6d6604e68537ef3cdc4b545efdd0d0cdb6e9dbb2ae67ca",
+        "assets/femc/game/art/booth/frame-7.webp": "7e372acc26e78c1aa1e34db77a30cde1fedf370b5d6f0a11d9a5924be692a85a",
+        "assets/femc/game/art/booth/frame-8.webp": "42df08f5e0aa16137f041fe360adb13b51ac76f4cdd69d6b8213046b77dfc554"
+      }
+    },
+    {
+      "batch": 121,
+      "source": "booth-stamps.png",
+      "sourceNow": "New Adds/booth-stamps.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "845ff107d38c2ad0eeddc0268c5350c60f086ef38d4b89d16831fc83b0298926",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/booth/stamp-1..9.webp",
+      "conversion": "3 x 3 sheet on flat green, RGB: python3 tools/femc-booth.py stamps booth-stamps.png (femc-greens cut, 200 px square, then green caught in enclosed holes keyed and despilled; WebP q90); source unchanged",
+      "sheetOrder": "sparkles, heart, crown, cat ears, bunny ears, blush, speech bubble, sun, moon",
+      "placement": "booth stamps 1-9 (stamp picker and placed stamps), replacing the STAMP_SVG stand-ins",
+      "knownLimits": "the moon's gap between its bead strings had board green in it: keyed out",
+      "outputs": {
+        "assets/femc/game/art/booth/stamp-1.webp": "2dc90ec818b221f2cb42e8adfed32dfee7cbcbd739fb4506af23778712226b7c",
+        "assets/femc/game/art/booth/stamp-2.webp": "396d303b4d74d46abdc6db25b41c2b0ad5438cb84b52d372b3ce378dff6b2f0b",
+        "assets/femc/game/art/booth/stamp-3.webp": "c75706d6e2e21c595cf58ff17d0fdf48ca47c0828721ed157afc41f0a3f97037",
+        "assets/femc/game/art/booth/stamp-4.webp": "bccb7bd97c71783b37e38d11b2f627293cc7a4e120e3c001e38c4fb0ff9deded",
+        "assets/femc/game/art/booth/stamp-5.webp": "e30ca5b44896c86f8f6e8179a3d7118a05d6ce710d6e655eff26bc6b0db613b4",
+        "assets/femc/game/art/booth/stamp-6.webp": "62ee92a2ceb666c0f13e2907a297ec94dfdd820843da5f8e79a83151597ef966",
+        "assets/femc/game/art/booth/stamp-7.webp": "bbefabfeee78d215a45f1c8e07b2a8f0af94ae4044be0ea100d838490e54b418",
+        "assets/femc/game/art/booth/stamp-8.webp": "5b660490c7a289cec521044a959bd14b6e8796385e0ce47d1439afedc5580d69",
+        "assets/femc/game/art/booth/stamp-9.webp": "eca6a3ac0ced5db03293e08001fb5556df647cad539aafaf729ce4bafc961e3c"
+      }
+    },
+    {
+      "batch": 121,
+      "source": "booth-solar-poses.png",
+      "sourceNow": "New Adds/booth-solar-poses.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "260c3546e71bbe9b91215a8b77bebfd9777640212adfcab970341f50b93b7f24",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/booth/solar-0..5.webp",
+      "conversion": "python3 tools/femc-booth.py poses booth-solar-poses.png solar (already transparent RGBA: femc-booth.py alpha_frames splits rows at the top row's straight waist cut and columns at the emptiest line near the thirds, each figure keeps its own pieces, femc-shadow-poses place puts all six on one canvas, bottom aligned; WebP q90); source unchanged",
+      "sheetOrder": "peace, heart left half, squished cheeks, finger heart, cat paws, pointing",
+      "placement": "photo booth pose art for solar (Solar, left), replacing the stand-in (scene portrait + gesture badge); booth/index.js lists it",
+      "knownLimits": "none",
+      "outputs": {
+        "assets/femc/game/art/booth/solar-0.webp": "edbd647e58d40dc85e1c4a308f5efabd5d97898d660bcce6c6c339e7973a1f56",
+        "assets/femc/game/art/booth/solar-1.webp": "b814e52ccf68901526c535619a1e69b68f6b6279827bf7714b1f5a60a8095733",
+        "assets/femc/game/art/booth/solar-2.webp": "cd1cee8dcec171035edcc2134d6a36c6d7b4182d428efb05cbb3ddcf3f4faf74",
+        "assets/femc/game/art/booth/solar-3.webp": "5812bfce33364b87d55f370b405b836ab63e4e16e95df054e941d5be91fd0a1c",
+        "assets/femc/game/art/booth/solar-4.webp": "d6c5d0daa0a93973294b57408edb8e51b88fc0ef4cb2373a38a5b6a72735330e",
+        "assets/femc/game/art/booth/solar-5.webp": "573db5e303417a437791c4d57b4c273be4a9ec7470406fe5d7922ea32062b16a"
+      }
+    },
+    {
+      "batch": 121,
+      "source": "booth-haechan-poses.png",
+      "sourceNow": "New Adds/booth-haechan-poses.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "cba4019ca03785f02d7392538d8f110bd99ad524d8c9018862020ef4db06f6fe",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/booth/haechan-0..5.webp",
+      "conversion": "python3 tools/femc-booth.py poses booth-haechan-poses.png haechan (already transparent RGBA: femc-booth.py alpha_frames splits rows at the top row's straight waist cut and columns at the emptiest line near the thirds, each figure keeps its own pieces, femc-shadow-poses place puts all six on one canvas, bottom aligned; WebP q90); source unchanged",
+      "sheetOrder": "peace tongue out, heart right half, puffed cheeks, pointing at her, finger heart, pretend bite",
+      "placement": "photo booth pose art for haechan (partner, right), replacing the stand-in (scene portrait + gesture badge); booth/index.js lists it",
+      "knownLimits": "chosen over booth-haechan-poses-zoomedout.png: chest-up like Solar's sheet, so their heads match in size in the close purikura crop",
+      "outputs": {
+        "assets/femc/game/art/booth/haechan-0.webp": "e9a7662c5f054369c049c3744c894f153f8d6ff4e25bd525eed6b8c765d8206f",
+        "assets/femc/game/art/booth/haechan-1.webp": "f2fe2c43734e57bca90a1e8f70d6f7cc43907c803be2929195872b091c32e5a2",
+        "assets/femc/game/art/booth/haechan-2.webp": "fe4111d8c76eb7ef90e189caf338610bf07ac7daee4f7ba056e9f8ede9733470",
+        "assets/femc/game/art/booth/haechan-3.webp": "aedac5be5cb27c422392091f0e7714626b703577a3735f82bf37b4a02716227b",
+        "assets/femc/game/art/booth/haechan-4.webp": "407555d1e5e6e49b171e496ff9f3c41571830d4842225a4f2324d22bf7540865",
+        "assets/femc/game/art/booth/haechan-5.webp": "52f63d73ff9f3ca766ff70329d4dfe16eba34396630823cb6a899e915b6a2a94"
+      }
+    },
+    {
+      "batch": 121,
+      "source": "booth-jungwon-poses.png",
+      "sourceNow": "New Adds/booth-jungwon-poses.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "96b7e72fadd38c57149e4da6e0720c810fd70a8643b8894d6b9266476b04bcad",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/booth/jungwon-0..5.webp",
+      "conversion": "python3 tools/femc-booth.py poses booth-jungwon-poses.png jungwon (already transparent RGBA: femc-booth.py alpha_frames splits rows at the top row's straight waist cut and columns at the emptiest line near the thirds, each figure keeps its own pieces, femc-shadow-poses place puts all six on one canvas, bottom aligned; WebP q90); source unchanged",
+      "sheetOrder": "shy peace, heart right half, one cheek puffed, finger heart, chin on fist, laughing",
+      "placement": "photo booth pose art for jungwon (partner, right), replacing the stand-in (scene portrait + gesture badge); booth/index.js lists it",
+      "knownLimits": "none",
+      "outputs": {
+        "assets/femc/game/art/booth/jungwon-0.webp": "8c12cfe43c33c778d7cf78440da2fe3937a07b7f8e7c583113cc009c813d1e3b",
+        "assets/femc/game/art/booth/jungwon-1.webp": "ae3cb04ec339aa7bc2d6d570a89d49999ef58e03e659e348456b6f3f27abed9e",
+        "assets/femc/game/art/booth/jungwon-2.webp": "dff2f502a7bdde35e75a2adfbe61caba388614dd38259e6fcdba5dc7b970f243",
+        "assets/femc/game/art/booth/jungwon-3.webp": "13b1bb60c064a0e6b79024972571ee447cb2e5e0ca95a8002b03bbf6d21001aa",
+        "assets/femc/game/art/booth/jungwon-4.webp": "a6ca0299bde1840c2e4ccf68ba19bada245c59de798fdc4b49e5a76a211228e4",
+        "assets/femc/game/art/booth/jungwon-5.webp": "b5df9331d9f7fcca258be30002f14595ae2bb6fde9c29f251c38006ca8d7c320"
+      }
+    },
+    {
+      "batch": 121,
+      "source": "booth-akihiko-poses.png",
+      "sourceNow": "New Adds/booth-akihiko-poses.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "cf8b59f9edccf0cd020f0a324a6ef7db2a7f50ece1f61f8be5b27647ac9c24b9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/booth/akihiko-0..5.webp",
+      "conversion": "python3 tools/femc-booth.py poses booth-akihiko-poses.png akihiko --mirror 1 (already transparent RGBA: femc-booth.py alpha_frames splits rows at the top row's straight waist cut and columns at the emptiest line near the thirds, each figure keeps its own pieces, femc-shadow-poses place puts all six on one canvas, bottom aligned; WebP q90); source unchanged",
+      "sheetOrder": "stiff peace, heart right half (mirrored), flexing, fist bump, flustered, a real laugh",
+      "placement": "photo booth pose art for akihiko (partner, right), replacing the stand-in (scene portrait + gesture badge); booth/index.js lists it",
+      "knownLimits": "cell 2 (the half-heart) came facing away from Solar, so it is mirrored left to right so the two halves meet in the middle",
+      "outputs": {
+        "assets/femc/game/art/booth/akihiko-0.webp": "3d081094a849480bac94f9a45f94337755a370c35e17f762b361d2535ff94881",
+        "assets/femc/game/art/booth/akihiko-1.webp": "45754b83c5b1df77dd3b2ec16d2bbf40c1f2ca851a90b931110d1767a2bad846",
+        "assets/femc/game/art/booth/akihiko-2.webp": "01b06d247c153917f8eb8c955c43b1a1cbc8c2328212b0205b15e39a2a93de79",
+        "assets/femc/game/art/booth/akihiko-3.webp": "d235e7bd10c1a66c27e47432ab9c49f17210e8c8883392e97ab0df8715b337ec",
+        "assets/femc/game/art/booth/akihiko-4.webp": "e965f62b234cbb080761e58bbc94ff7b83c8a329ee37e1109518c8b10190d76d",
+        "assets/femc/game/art/booth/akihiko-5.webp": "9b772cd027055b4cae975751a5e6a68ae8c55e837be522247520e99f042abb5c"
+      }
+    },
+    {
+      "batch": 121,
+      "source": "booth-yukari-poses.png",
+      "sourceNow": "New Adds/booth-yukari-poses.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "adf0ddb26339986fe9b641d7ad5eb6fa1322d2ffad02c9eba7b9b776ff7ee846",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/booth/yukari-0..5.webp",
+      "conversion": "python3 tools/femc-booth.py poses booth-yukari-poses.png yukari --mirror 1 (already transparent RGBA: femc-booth.py alpha_frames splits rows at the top row's straight waist cut and columns at the emptiest line near the thirds, each figure keeps its own pieces, femc-shadow-poses place puts all six on one canvas, bottom aligned; WebP q90); source unchanged",
+      "sheetOrder": "peace and a wink, heart right half (mirrored), squished cheeks, bunny ears, a pout, blowing a kiss",
+      "placement": "photo booth pose art for yukari (partner, right), replacing the stand-in (scene portrait + gesture badge); booth/index.js lists it",
+      "knownLimits": "cell 2 (the half-heart) came facing away from Solar, so it is mirrored left to right so the two halves meet in the middle",
+      "outputs": {
+        "assets/femc/game/art/booth/yukari-0.webp": "9381c728c00f6eefc2649990368c7a9c5f93c34c3837c97b3d99c20bcf75b53e",
+        "assets/femc/game/art/booth/yukari-1.webp": "85159ae38ac7f69629e6232be0eee4fd007f02471c5ea33a27d14f071c9d42b4",
+        "assets/femc/game/art/booth/yukari-2.webp": "ea63c7644ddd99f9c014a135ff3d36f26389d21dcb298046bc292a5e6c928082",
+        "assets/femc/game/art/booth/yukari-3.webp": "f4b159d8af1088cc5a8fba2db17394b6a12c162ea373a310473d6c4807c7e847",
+        "assets/femc/game/art/booth/yukari-4.webp": "f8b7011931c8c4d240c5760247ef8e12fb005d054785e72c21b4985d87166afa",
+        "assets/femc/game/art/booth/yukari-5.webp": "a7277f9492121a9d2a03d6f4f0b57b2464a0f2bd0d9d1b3774162f5651ca9c01"
+      }
+    },
+    {
+      "batch": 121,
+      "source": "booth-hanni-poses-v1.png",
+      "sourceNow": "New Adds/booth-hanni-poses-v1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "11376705ef349e6b326bb3921fa6390c87f6dc66a7c2ea4955ac865b5ff41016",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/booth/hanni-0..5.webp",
+      "conversion": "python3 tools/femc-booth.py poses booth-hanni-poses-v1.png hanni --mirror 1 (already transparent RGBA: femc-booth.py alpha_frames splits rows at the top row's straight waist cut and columns at the emptiest line near the thirds, each figure keeps its own pieces, femc-shadow-poses place puts all six on one canvas, bottom aligned; WebP q90); source unchanged",
+      "sheetOrder": "peace, heart right half (mirrored), puffed cheeks, cat paws, \"oh!\", giggling",
+      "placement": "photo booth pose art for hanni (partner, right), replacing the stand-in (scene portrait + gesture badge); booth/index.js lists it",
+      "knownLimits": "v1 chosen over booth-hanni-poses-v2.png (same five poses; v2's cell 2 is a whole heart on her own, which cannot pair with Solar's half); cell 2 mirrored to face Solar",
+      "outputs": {
+        "assets/femc/game/art/booth/hanni-0.webp": "b501e4489b06ade4daa8e5c35f3402855fea5188eeea42588e6bf82ac0d94ca5",
+        "assets/femc/game/art/booth/hanni-1.webp": "d0dc8ac96e52f2eb4aa455ab1ff0860b203f05b1b563194704c2b05b9596645e",
+        "assets/femc/game/art/booth/hanni-2.webp": "9a719b370407efe354874b1cfe32599ef2fef2319df6a21d8a75742ca148890c",
+        "assets/femc/game/art/booth/hanni-3.webp": "de22d7e09b68cb27c67458872f1222bcf4245c681f0af9c74cbdebae4de37907",
+        "assets/femc/game/art/booth/hanni-4.webp": "8105236f63a2f92970ca9c36200f51932fa2a096e1ef3bd1b9bc41758421d305",
+        "assets/femc/game/art/booth/hanni-5.webp": "366e900c30030060afde5bbd4a7d9e1df063ee3df58e99ffb5be16acd54d084a"
+      }
+    },
+    {
+      "batch": 121,
+      "source": "booth-hyein-poses.png",
+      "sourceNow": "New Adds/booth-hyein-poses.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "eaad8e8d6a99ca8d4bf54f58a900aa7afd2b996bf0bacd827c12c0b34640e9f4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/booth/hyein-0..5.webp",
+      "conversion": "python3 tools/femc-booth.py poses booth-hyein-poses.png hyein --mirror 1 (already transparent RGBA: femc-booth.py alpha_frames splits rows at the top row's straight waist cut and columns at the emptiest line near the thirds, each figure keeps its own pieces, femc-shadow-poses place puts all six on one canvas, bottom aligned; WebP q90); source unchanged",
+      "sheetOrder": "small peace, heart right half (mirrored), squished cheeks, finger heart, sleepy yawn, big laugh",
+      "placement": "photo booth pose art for hyein (partner, right), replacing the stand-in (scene portrait + gesture badge); booth/index.js lists it",
+      "knownLimits": "cell 2 (the half-heart) came facing away from Solar, so it is mirrored left to right so the two halves meet in the middle",
+      "outputs": {
+        "assets/femc/game/art/booth/hyein-0.webp": "2958159fac6f2e23f7974859ff8f59136e7a59596d5d55d8dea84870350168d8",
+        "assets/femc/game/art/booth/hyein-1.webp": "a32855f06c0617d5a8b5dd23364a4ddd4752dfd2c4a3e062d3209daf05608c28",
+        "assets/femc/game/art/booth/hyein-2.webp": "f7901a3faad9588fd38e26adbd5a917eca9cbb8d67c448a9fdec53552c564478",
+        "assets/femc/game/art/booth/hyein-3.webp": "8acc4db472ce104c431cb56fbfbd1200254b3ba5af1427be616c966b3460195b",
+        "assets/femc/game/art/booth/hyein-4.webp": "a66714b0d494d15142daac24e4340d9af7d00291ae60cca8c6883bb193fde88e",
+        "assets/femc/game/art/booth/hyein-5.webp": "e3852e35838a9761ef0653d5613b1ae105d777b69e62cd9ad7020e59f7fe4314"
+      }
+    },
+    {
+      "batch": 121,
+      "source": "booth-haechan-poses-zoomedout.png",
+      "sourceNow": "New Adds/booth-haechan-poses-zoomedout.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "069b9781baefab7fb09eea7e5067947daa3e5e7c8d94a0c566640a0dee2329e0",
+      "status": "reviewed-not-used",
+      "destination": "(none)",
+      "conversion": "not cut",
+      "sheetOrder": "3 x 2, transparent",
+      "placement": "not used",
+      "knownLimits": "reviewed, not used: waist-up with more body, so his head came out smaller than Solar's in the shared crop; booth-haechan-poses.png is used"
+    },
+    {
+      "batch": 121,
+      "source": "booth-hanni-poses-v2.png",
+      "sourceNow": "New Adds/booth-hanni-poses-v2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "f2bc966711f8f89a5b4edbf0509ece3532e0274836ad724f57141b2baa265e83",
+      "status": "reviewed-not-used",
+      "destination": "(none)",
+      "conversion": "not cut",
+      "sheetOrder": "3 x 2, transparent",
+      "placement": "not used",
+      "knownLimits": "reviewed, not used: cell 2 is a full heart made alone (cannot pair with Solar's half-heart); the other five cells match v1, which is used"
     }
   ],
   "batch1Validation": {
@@ -24458,5 +24707,10 @@
     "tests": "python3 tests/femc_booth.py (art, flow at 1440 x 900 and 390 x 844, album, gates, settings): all passed; femc_gallery passed",
     "framing": "every booth step, the Album row and the strip viewer checked by eye at 1440 x 900 and 390 x 844",
     "html": "femc-game.html places v67, core v73, menu v38, ui v55; new booth.js, booth.css, art/booth/index.js (v1)"
+  },
+  "batch121Validation": {
+    "tests": "python3 tests/femc_booth.py (art: frames 1-8, stamps 1-9, seven pose sets; flow at 1440 x 900 and 390 x 844, album, gates, settings): all passed; femc_gallery: 94 checks passed",
+    "framing": "printed strips with Haechan, Hanni and Yukari checked by eye at 1440 x 900 and 390 x 844; art poses drawn big and close (booth.css img.bs-p.art), the drawn heart hidden when both halves are art",
+    "html": "femc-game.html booth.css v2, booth.js v2, art/booth/index.js v2 (booth.js image V 2)"
   }
 }

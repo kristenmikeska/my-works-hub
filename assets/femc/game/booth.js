@@ -7,10 +7,11 @@
    stamps: [{ id, x, y }] }] (x / y in % of the strip). Nothing is baked: the strip is drawn live from its layers, here and in
    the Album (menu.js), and it carries into New Game+ with the album (menu.js albumCarry). The first strip with someone in a
    calendar month gives that link one ♪ (core.js bond).
-   Art (tools/femc-booth.py -> game/art/booth/, listed in booth/index.js as window.FEMC_BOOTH_ART): Kat's frames 1-4 (sheet
-   booth-frames-1) are in; frames 5-8, the nine stamps and everyone's pose sheets are still to come, so those are drawn here
-   (DRAWN_FRAMES: a black border with the season's motifs from battle/looks-art.js; STAMP_SVG; a pose without art is the
-   person's scene portrait with a small drawn gesture badge, POSES). Each switches to Kat's art the moment it's cut and listed.
+   Art (tools/femc-booth.py -> game/art/booth/, listed in booth/index.js as window.FEMC_BOOTH_ART): Kat's eight frames, nine
+   stamps and the pose sheets of Solar and all six partners are in (Nov 1). The drawn stand-ins stay as the fallback for
+   anything not listed (DRAWN_FRAMES: a black border with the season's motifs from battle/looks-art.js; STAMP_SVG; a pose
+   without art is the person's scene portrait with a small drawn gesture badge, POSES). The drawn heart over a paired
+   half-heart only shows while one of the two is a stand-in.
    Settings: reduced motion: no countdown bounce or flash, the shots crossfade; Reduce flashes (calm): a soft fade instead of
    the white flash. Test hooks: FemcBooth.state(), FemcBooth.stripHtml(rec), FemcBooth.partners(). */
 window.FemcBooth = (() => {
@@ -18,7 +19,7 @@ window.FemcBooth = (() => {
   if (!G) return null;
   const S = () => G.S, LA = () => window.FemcLooksArt || {};
   const ART = () => window.FEMC_BOOTH_ART || { frames: [], stamps: [], poses: [] };
-  const DIR = `${G.base}assets/femc/game/art/booth/`, V = 1;
+  const DIR = `${G.base}assets/femc/game/art/booth/`, V = 2;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
   const calm = () => !!(G.settings && G.settings().calm);
@@ -99,7 +100,7 @@ window.FemcBooth = (() => {
       : `<span class="bs-st" style="${pos}">${inner}</span>`;
   }
   function shotHtml(who, frame, shot, cls = '') {
-    const [s, q] = shot || [0, 0], heart = s === HEART && q === HEART;
+    const [s, q] = shot || [0, 0], heart = s === HEART && q === HEART && !(hasPoses('solar') && hasPoses(who)); // drawn hands make their own heart
     return `<div class="bs-shot${cls}"><i class="bs-bg"></i>${person('solar', s, 'l')}${person(who, q, 'r')}${heart ? `<svg class="bs-heart" viewBox="0 0 24 24" aria-hidden="true">${BADGE.heart}</svg>` : ''}${frameHtml(frame)}</div>`;
   }
   // A whole strip of three, stamps on top. live: the stamps are buttons (the stamp step).

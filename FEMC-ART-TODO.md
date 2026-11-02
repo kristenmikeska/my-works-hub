@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 1):** 2 evening poses for Solar (section 20) · 9 photo booth sheets (section 15) · 14 seasonal face sheets (section 16) · 1 credits still (section 18: Ken) · 23 skin-series pieces for Solar (section 19: The Sun's portraits, Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, couple Showtimes, theme sheets and frames, cut-ins, finish cards, second pose sheets): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`, not here. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make (updated Nov 1):** 2 evening poses for Solar (section 20) · 14 seasonal face sheets (section 16) · 1 credits still (section 18: Ken) · 23 skin-series pieces for Solar (section 19: The Sun's portraits, Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, couple Showtimes, theme sheets and frames, cut-ins, finish cards, second pose sheets): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`, not here. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
@@ -10,83 +10,6 @@ Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make.
 - **CG styles (Kat, Oct 31):** main-game and Stay CGs use the P3 Reload anime style (`CG - style.png`); Runners, Strangers and HOAX CGs use their world's realistic style, like their portraits. A CG set in a place the game has a background for also attaches that background (`BG - <place>.png`), right after the style picture.
 - **ChatGPT** for anything with a face, **Gemini** for places with no people.
 - Solar's clothes in a prompt are only a suggestion: change her outfit or hair whenever you like.
-
----
-
-## 15. Photo booth: purikura (Gemini for frames and stamps, ChatGPT for poses)
-A photo booth at the mall: Solar picks a partner, a frame and poses, and the strip goes into her Album. **The booth is in the game (Nov 1)** with your first four frames; the rest is drawn in for now and switches to your art as each sheet arrives. Frames and stamps have no people, so they're Gemini; the pose sheets are ChatGPT. Every pose sheet is waist up and facing the camera, so two people fit side by side in a frame (Solar on the left, her partner on the right).
-
-**[ ] 15B. Photo booth frames, part 2**  
-Four seasonal frames.  
-Attach: `UI - style (pink cover).png`  
-Save as: `booth-frames-2.png`
-```
-Using the attached image only as a reference for its colours and graphic style (black, deep plum, hot pink, pale pink and white), create a 2 × 2 sheet of four cute Japanese purikura photo-booth frames on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Each frame is an upright 3:4 rectangle: a thick decorative border with a big EMPTY window in the middle filled with the same flat pure green, wide enough for two people side by side from the waist up. Sparkly and cute, crisp clean edges, flat graphic shapes. No people, no text, no letters, no numbers. Frame 1 (top left): cherry blossoms and petals (spring). Frame 2 (top right): pink seashells, little waves and fireworks (summer). Frame 3 (bottom left): small bats, pink pumpkins and a crescent moon (autumn, Halloween). Frame 4 (bottom right): snowflakes, pink fairy lights and a ribbon at the top (winter).
-```
-
-**[ ] 15C. Photo booth stamps**  
-Little stamps to stick on the photo.  
-Attach: `UI - style (pink cover).png`  
-Save as: `booth-stamps.png`
-```
-Using the attached image only as a reference for its colours and graphic style (black, deep plum, hot pink, pale pink and white), create a 3 × 3 sheet of nine cute purikura stamps on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Each stamp is a bold flat sticker with a thin white border. Same size in every cell. No people, no text, no letters, no numbers. Cells, left to right, top to bottom: 1 a cluster of sparkles; 2 a puffy pink heart; 3 a small gold-and-pink crown; 4 pink cat ears (a headband shape); 5 white bunny ears (a headband shape); 6 two pink blush ovals with little lines; 7 a blank pink speech bubble; 8 a smiling sun; 9 a sleepy crescent moon.
-```
-
-**[ ] 15D. Solar: photo booth poses**  
-Solar stands on the left of the frame.  
-Attach: `Solar.png`  
-Save as: `booth-solar-poses.png`
-```
-Photo-booth pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached image in all six cells, from the waist up, facing the camera, same face, same hair and the clothes from the attached image, same size and framing in every cell, nothing overlapping. Bright, flattering photo-booth light, a little sparkle in the eyes. Cell 1: a peace sign by her cheek, a big smile. Cell 2: leaning a little to her left, both arms curved to make the LEFT half of a big heart (her partner makes the other half). Cell 3: squishing her own cheeks with both hands, lips puckered. Cell 4: a finger heart held up, a wink. Cell 5: cat paws by her face, a playful look. Cell 6: pointing at the camera, laughing. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
-```
-
-**[ ] 15E. Haechan: photo booth poses**  
-Haechan on the right of the frame.  
-Attach: `Haechan.png`  
-Save as: `booth-haechan-poses.png`
-```
-Photo-booth pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached image in all six cells, from the waist up, facing the camera, same face, same hair and the clothes from the attached image, same size and framing in every cell, nothing overlapping. Bright, flattering photo-booth light, a little sparkle in the eyes. Cell 1: a peace sign, tongue out. Cell 2: leaning a little to his right, both arms curved to make the RIGHT half of a big heart. Cell 3: puffing out his cheeks, eyes wide. Cell 4: pointing at the person beside him (off to the left), grinning. Cell 5: a finger heart and a wink. Cell 6: pretending to bite the air, playful. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
-```
-
-**[ ] 15F. Jungwon: photo booth poses**  
-Jungwon on the right of the frame.  
-Attach: `Jungwon.png`  
-Save as: `booth-jungwon-poses.png`
-```
-Photo-booth pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached image in all six cells, from the waist up, facing the camera, same face, same hair and the clothes from the attached image, same size and framing in every cell, nothing overlapping. Bright, flattering photo-booth light, a little sparkle in the eyes. Cell 1: a small shy peace sign. Cell 2: leaning a little to his right, both arms curved to make the RIGHT half of a big heart, a little embarrassed. Cell 3: one cheek puffed out. Cell 4: a finger heart, serious face. Cell 5: chin on his fist, a slight smile. Cell 6: laughing, eyes closed. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
-```
-
-**[ ] 15G. Akihiko: photo booth poses**  
-Akihiko on the right of the frame.  
-Attach: `Akihiko.png`  
-Save as: `booth-akihiko-poses.png`
-```
-Photo-booth pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached image in all six cells, from the waist up, facing the camera, same face, same hair and the clothes from the attached image, same size and framing in every cell, nothing overlapping. Bright, flattering photo-booth light, a little sparkle in the eyes. Cell 1: a stiff peace sign, not sure about this. Cell 2: leaning a little to his right, both arms curved to make the RIGHT half of a big heart. Cell 3: a flexing pose, a confident grin. Cell 4: a fist held up toward the camera like a fist bump. Cell 5: flustered, rubbing the back of his neck. Cell 6: a real laugh. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
-```
-
-**[ ] 15H. Yukari: photo booth poses**  
-Yukari on the right of the frame (a friends strip).  
-Attach: `Yukari.png`  
-Save as: `booth-yukari-poses.png`
-```
-Photo-booth pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached image in all six cells, from the waist up, facing the camera, same face, same hair and the clothes from the attached image, same size and framing in every cell, nothing overlapping. Bright, flattering photo-booth light, a little sparkle in the eyes. Cell 1: a peace sign by her cheek, a wink. Cell 2: leaning a little to her right, both arms curved to make the RIGHT half of a big heart. Cell 3: squishing her own cheeks, laughing. Cell 4: bunny ears with two fingers above her head. Cell 5: a pout and a hand on her hip. Cell 6: blowing a kiss. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
-```
-
-**[ ] 15I. Hanni: photo booth poses**  
-Hanni on the right of the frame (a friends strip).  
-Attach: `Hanni.png`  
-Save as: `booth-hanni-poses.png`
-```
-Photo-booth pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached image in all six cells, from the waist up, facing the camera, same face, same hair and the clothes from the attached image, same size and framing in every cell, nothing overlapping. Bright, flattering photo-booth light, a little sparkle in the eyes. Cell 1: a peace sign, a big bright smile. Cell 2: leaning a little to her right, both arms curved to make the RIGHT half of a big heart. Cell 3: cheeks puffed out. Cell 4: cat paws by her face. Cell 5: a surprised "oh!" face. Cell 6: giggling, hand over her mouth. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
-```
-
-**[ ] 15J. Hyein: photo booth poses**  
-Hyein on the right of the frame (a friends strip).  
-Attach: `Hyein.png`  
-Save as: `booth-hyein-poses.png`
-```
-Photo-booth pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached image in all six cells, from the waist up, facing the camera, same face, same hair and the clothes from the attached image, same size and framing in every cell, nothing overlapping. Bright, flattering photo-booth light, a little sparkle in the eyes. Cell 1: a small peace sign, a cool look. Cell 2: leaning a little to her right, both arms curved to make the RIGHT half of a big heart. Cell 3: squishing her own cheeks. Cell 4: a finger heart. Cell 5: a sleepy yawn. Cell 6: a big laugh. Persona 3 Reload official art style: clean lineart, flat cel shading, hard-edged shadows. No text.
-```
 
 ---
 
