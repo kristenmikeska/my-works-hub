@@ -1283,6 +1283,8 @@ window.FemcGame = (() => {
   function jobVisible(j) { const u = j.unlock || {}; return (!u.after || S.day >= dayOf(u.after)) && fragGateMet(u.frags); }
   function jobState(id) {
     const st = (S.jobs[id] ||= { hired: false, shifts: 0, beats: [] });
+    // A save without a shift count (raises read it): what the save shows was worked (the shift log, scenes seen, beats).
+    if (typeof st.shifts !== 'number' || !(st.shifts >= 0)) st.shifts = Math.max((st.log || []).length, (Array.isArray(st.seen) ? st.seen.length : 0) + (Array.isArray(st.beats) ? st.beats.length : 0));
     // Saves from before part 2 rotated the three base scenes: the ones already worked count as seen.
     if (!Array.isArray(st.seen)) { st.seen = []; const base = (packs()[id]?.shifts || []).filter(x => x.base); for (let k = 0; k < Math.min(st.shifts || 0, base.length); k++) st.seen.push(base[k].id); }
     return packState(st);
@@ -1304,16 +1306,60 @@ window.FemcGame = (() => {
     if (!pick.scene) pick.scene = [{ n: `The shift at ${j.name} went by the way shifts do, slowly and then all at once.` }];
     return pick;
   }
+  /* ── Raises and rare rewards (2026-11-01, Kat's ask; rules in data/jobs.js FEMC_GAME_JOB_RAISES, voices and gifts in each
+     job's `perks`). Per job (S.jobs[id]): shifts (worked), raise (the tier announced), thanked (the top tier's gift given),
+     rareAt (the shift that last gave a rare reward), rares (how many). raiseInfo(j, shifts) → { tier, pct, next { at, pct,
+     left }, top }; jobPay(j, shifts) → { pay (what a shift pays now, perks in), base (with the raise), raw, up (perk %),
+     raise }. A raise counts from the shift after the tier is reached. jobRng is replaceable (tests: setJobRng). ── */
+  const JR = () => W.FEMC_GAME_JOB_RAISES || { tiers: [], round: 10, rare: [0] };
+  let jobRng = Math.random;
+  const setJobRng = fn => { jobRng = fn || Math.random; };
+  function raiseInfo(j, shifts = 0) {
+    const t = j.raises || JR().tiers || [];
+    let k = 0; while (k < t.length && shifts >= t[k].at) k++;
+    return { tier: k, of: t.length, pct: k ? t[k - 1].pct : 0, next: t[k] ? { at: t[k].at, pct: t[k].pct, left: t[k].at - shifts } : null, top: t.length > 0 && k === t.length };
+  }
+  function jobPay(j, shifts = S.jobs[j.id]?.shifts || 0) {
+    const raise = raiseInfo(j, shifts), step = JR().round || 10;
+    const base = raise.pct ? Math.round(j.pay * (1 + raise.pct / 100) / step) * step : j.pay;
+    const up = perkVal('jobPay').reduce((a, o) => a + (o.all || 0) + (o[j.id] || 0), 0); // Jungwon, Sunoo, Jaemin
+    return { pay: Math.round(base * (1 + up / 100)), base, raw: j.pay, up, raise };
+  }
+  const sceneGives = scene => /"(gift|yen|item|gear|keepsake)":/.test(JSON.stringify(scene || []));
+  // A rare reward or the thanks: battle items into the bag, a book she doesn't own (else just the keepsake), one toast.
+  function jobReward(j, r, kind) {
+    const B = D.battle, names = [], P = j.perks || {};
+    Object.entries(r.item || {}).forEach(([k, n]) => { addItem(k, n); names.push(`${B.items?.[k]?.name || k}${n > 1 ? ` ×${n}` : ''}`); });
+    if (r.book) { const b = (D.places.books || []).find(x => !S.books.owned.includes(x.id)); if (b) { S.books.owned.push(b.id); names.push(b.name); } }
+    if (r.keepsake) names.push(r.keepsake);
+    const who = r.who ?? P.boss;
+    toast('gift', `${kind === 'thanks' ? 'A thank-you' : 'A little extra'} from ${j.name}: ${who ? `${who}: ` : ''}${r.line}${names.length ? ` (${names.join(', ')})` : ''}`);
+    return names;
+  }
   function finishShift(j, pick = {}) {
-    const st = jobState(j.id);
+    const st = jobState(j.id), before = st.shifts;
+    const pay = jobPay(j, before);
     st.shifts += 1;
     if (pick.beat && pick.index != null && pick.beat.lean) tally({ [`lean.${pick.beat.lean}`]: 1 });
     packDone(st, pick);
     st.lastDay = S.day;
-    const up = perkVal('jobPay').reduce((a, o) => a + (o.all || 0) + (o[j.id] || 0), 0); // Jungwon, Sunoo
-    addYen(Math.round(j.pay * (1 + up / 100)));
+    addYen(pay.pay);
     addStats(sumStats(j.stats, ...perkVal('jobStat').map(m => m[j.id]))); // Sunoo's Staff Shift: +1 Kindness at Yeobo's
     S.spent[`${S.day}-${S.slot}`] = `job:${j.id}`;
+    const P = j.perks || {}, now = raiseInfo(j, st.shifts);
+    let gave = false;
+    if (now.tier > (st.raise || 0)) {
+      st.raise = now.tier;
+      const line = (P.raise || [])[now.tier - 1] || 'You’ve earned a raise.';
+      toast('job', `Raise! ${P.boss ? `${P.boss}: ` : ''}${line} (¥${jobPay(j, st.shifts).base.toLocaleString()} a shift from now on)`);
+      if (now.top && !st.thanked && P.thanks) { st.thanked = true; jobReward(j, P.thanks, 'thanks'); gave = true; }
+    }
+    // A rare reward: never two shifts running, never with the thanks, never on a shift whose scene gives something itself.
+    const rates = JR().rare || [0], chance = rates[Math.min(now.tier, rates.length - 1)] || 0;
+    if (!gave && (P.rare || []).length && st.rareAt !== before && !sceneGives(pick.scene) && jobRng() < chance) {
+      jobReward(j, P.rare[Math.floor(jobRng() * P.rare.length) % P.rare.length], 'rare');
+      st.rareAt = st.shifts; st.rares = (st.rares || 0) + 1;
+    }
     save();
   }
   /* The phone's Jobs app (2026-11-01, Kat's ask): today and the next few days, which jobs have a shift Solar can work, in
@@ -1321,7 +1367,7 @@ window.FemcGame = (() => {
      one: packPick on a copy of the job's state). A pure read: nothing in S changes (progress() lookups made by the pack
      gates are put back). Jobs not open yet are left out, unless the save has already seen them ("Opens later").
      rows[] = { job, slot, ok, why, key ('open'|'closed'|'spent'|'past'|'later'|'sick'|'busy'), hired, needs, now, cue,
-     pay, perks: [{ name, who, pct }], stats }. */
+     pay (jobPay: raise and perks in), raise (raiseInfo), perks: [{ name, who, pct }], stats }. */
   const jobVisibleOn = (j, d) => { const u = j.unlock || {}; return (!u.after || d >= dayOf(u.after)) && fragGateMet(u.frags); };
   const jobPerks = j => dailyPerks().filter(p => (p.fx.jobPay && (p.fx.jobPay.all || p.fx.jobPay[j.id])) || p.fx.jobStat?.[j.id])
     .map(p => ({ name: p.name, who: LINKS[p.link]?.short || p.link, pct: p.fx.jobPay ? (p.fx.jobPay.all || 0) + (p.fx.jobPay[j.id] || 0) : 0, stats: p.fx.jobStat?.[j.id] || null }));
@@ -1360,10 +1406,9 @@ window.FemcGame = (() => {
         const info = dayInfo(d), rows = [];
         if (info.type === 'trip' || info.type === 'prologue') { out.push({ d, info, rows, away: info.type === 'trip' }); continue; }
         known.forEach(j => {
-          const st = S.jobs[j.id] || {}, hired = !!st.hired, perks = jobPerks(j);
-          const up = perks.reduce((a, p) => a + p.pct, 0);
+          const st = S.jobs[j.id] || {}, hired = !!st.hired, perks = jobPerks(j), jp = jobPay(j, st.shifts || 0);
           const row = { job: j, slot: j.slot, hired, needs: hired ? null : lacking(j.needs), place: j.place || '', area: j.area, shifts: st.shifts || 0,
-            pay: Math.round(j.pay * (1 + up / 100)), basePay: j.pay, perks, stats: sumStats(j.stats, ...perks.map(p => p.stats)) };
+            pay: jp.pay, basePay: j.pay, raise: jp.raise, perks, stats: sumStats(j.stats, ...perks.map(p => p.stats)) };
           if (!jobVisibleOn(j, d)) Object.assign(row, { ok: false, key: 'later', why: 'Opens later' });
           else { const c = jobClosed(j, d, info); Object.assign(row, c ? { ok: false, ...c } : { ok: true, key: 'open', why: '' }); }
           row.now = row.ok && d === S.day && j.slot === S.slot;
@@ -2727,7 +2772,7 @@ window.FemcGame = (() => {
     portrait, scale, eventFaces, facePlace, name, castHas, silhouette, pendingFace, tarot, background, moodFor, sub, setDate, dateLabel,
     activities, actById, showing, activityOk, activityInfo, doActivity, dormActs, dormInfo, dormOk, doDorm, doStudy, studyInfo, shopStock, buy, bookById, bookArt, readTonight, matSellPrice, sellMat,
     perkOn, bondRank, dailyPerks, actCost, dozeChance, dozed, canRetryClass, useGuidance, classHint, studyBonus, weekly,
-    jobVisible, jobState, jobOk, hire, shiftScene, finishShift, jobsAhead, packs, packPick, packFits,
+    jobVisible, jobState, jobOk, hire, shiftScene, finishShift, jobsAhead, jobPay, raiseInfo, setJobRng, packs, packPick, packFits,
     clubById, clubState, clubStats, clubScene, joinClub, finishClub, runInDue, runInFits, finishRunIn, countOk, vary, varyPool, secretsDue, findSecret,
     heading, headingIs, migrateForced,
     crushTick, crushIs, crushedAt, crushApply, crushPhases, crushTrack, crushFits, crushDue, finishCrush, crushLine, takenBy, glowIs, setGlow,

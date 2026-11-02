@@ -6,6 +6,9 @@ Sections:
   jobs      the phone's Jobs app: rows match jobs.js for a set of dates (days, days off, full moon, trip, story evenings),
             hidden / "Opens later", hired vs not, perk pay, the next-shift cue, a row for right now jumps to Go Out,
             a pure read (the save is byte-identical), keyboard / pad, layout at 1440x900 and 390x844
+  raises    job raises and rare rewards: tiers from jobs.js, the pay math (rounded, perks on top), the raise toast once,
+            the top tier's thanks once, a year's rare-reward rate on a fixed RNG (never two running, never on a gifting
+            scene), old-save seeding of the shift count, the raise in the Jobs app and the Go Out preview
   contacts  contact cards: portrait, arcana, rank, birthday / favourites only from the rank that establishes them, gifts "?"
             until noted (giftReact), learned lines by rank, Messages button, back to the list; every data file's shape
   invites   ordinary-day invites: about two a week, never on a story day; yes books the slot (+1 ♪, plays at once);
@@ -112,7 +115,7 @@ try:
     # ── Jobs ──
     if want('jobs') or want('shots'):
         fresh('11/21', 'after', {'jaemin': 2})
-        p.eval("(()=>{const S=FemcGame.S;S.jobs={bookworms:{hired:true,shifts:2,beats:[],seen:[]},konbini:{hired:true,shifts:0,beats:[]}};S.stats.knowledge=0;FemcGame.save();return true})()")
+        p.eval("(()=>{const S=FemcGame.S;S.jobs={bookworms:{hired:true,shifts:2,beats:[],seen:[]},konbini:{hired:true,shifts:0,beats:[]},amulets:{hired:true,shifts:30,raise:3,thanked:true,beats:[],seen:[]}};S.stats.knowledge=0;FemcGame.save();return true})()")
         # Rows against jobs.js, over a set of dates: the shape of every row and its reason, recomputed here from the data.
         dates = p.eval("""(()=>{const G=FemcGame,C=G.D.cal,out=['11/21','11/22','11/23','12/1','1/4','6/14'];
           out.push(C.fullMoons.find(m=>G.dayOf(m)>G.dayOf('5/1')));const tr=(C.trips||[])[0];if(tr)out.push(tr.from);const ex=C.exams[0];if(ex)out.push(ex.days[0]);return out})()""")
@@ -129,7 +132,7 @@ try:
                 if(r.ok&&j.slot==='evening'&&info.moon.full)bad.push(info.md+' '+j.id+' open on a full moon');
                 if(!onDay&&r.why!==(j.offDaysOnly?'Days off only':'No shifts on '+DN[info.dow]+'s'))bad.push(info.md+' '+j.id+' why '+r.why);
                 if(onDay&&j.slot==='evening'&&info.moon.full&&r.why!=='Full moon tonight')bad.push(info.md+' '+j.id+' moon why '+r.why);
-                if(r.ok&&r.pay!==Math.round(j.pay*1.1))bad.push(j.id+' pay '+r.pay);
+                if(r.ok&&r.pay!==Math.round(Math.round(j.pay*(1+G.raiseInfo(j,r.shifts).pct/100)/10)*10*1.1))bad.push(j.id+' pay '+r.pay);
                 if(r.ok&&JSON.stringify(r.stats)!==JSON.stringify(G.sumStats?G.sumStats(j.stats):j.stats)&&j.id!=='yeobos')bad.push(j.id+' stats');
               })})}
           S.day=d0;S.slot='after';return bad})(""" + json.dumps(dates) + ")")
@@ -185,6 +188,51 @@ try:
         p.eval("(()=>{const b=document.querySelector('.g-ph-job[data-go]');b.focus();const e=new KeyboardEvent('keydown',{key:'Enter',bubbles:true,cancelable:true});e.fromPad=true;b.dispatchEvent(e)})();true")
         p.wait("!document.querySelector('.g-phone-ov:not(.out)') && !!document.querySelector('.g-areaview')", 5)
         ok(p.eval(f"document.querySelector('.g-areaview h1').textContent===FemcGame.areaById('{area}').name && !!document.querySelector('.g-areaview [data-job]')"), f'a row for right now jumps to Go Out with {area} and its job open')
+        clear()
+
+    # ── Raises and rare rewards ──
+    if want('raises'):
+        fresh('11/21', 'after')
+        t = p.eval("""(()=>{const G=FemcGame,j=G.D.jobs.find(x=>x.id==='tutor');return [0,4,5,11,12,24,25,40].map(n=>[G.raiseInfo(j,n).pct,G.jobPay(j,n).pay])})()""")
+        ok(t == [[0, 3200], [0, 3200], [15, 3680], [15, 3680], [30, 4160], [30, 4160], [50, 4800], [50, 4800]], f'tiers at 5 / 12 / 25 shifts: +15 / 30 / 50%, rounded to 10 yen: {t}')
+        pp = p.eval("""(()=>{const G=FemcGame,S=G.S;S.met.push('jaemin');G.progress('jaemin').rank=2;const j=G.D.jobs.find(x=>x.id==='bookworms');const r=G.jobPay(j,12);delete S.links.jaemin;S.met=S.met.filter(x=>x!=='jaemin');return r})()""")
+        ok(pp['base'] == 2340 and pp['pay'] == 2574 and pp['up'] == 10, f'perks multiply the raised pay: {pp}')
+        # Toast once, pay from the next shift, the thanks at the top once.
+        r = p.eval("""(()=>{const G=FemcGame,S=G.S,j=G.D.jobs.find(x=>x.id==='bookworms');G.setJobRng(()=>0.99);window.__lr=0;window.__th=0;S.jobs={};G.hire(j);const pays=[],raises=[];
+          for(let k=0;k<26;k++){S.spent={};const y=S.yen;G.finishShift(j,{});pays.push(S.yen-y);const st0=G.jobState('bookworms');if((st0.raise||0)!==(window.__lr||0)){raises.push(k+1);window.__lr=st0.raise}if(st0.thanked&&!window.__th){window.__th=1;raises.push('thanks@'+(k+1))}}
+          const st=G.jobState('bookworms');const inv=JSON.stringify(S.inventory);G.setJobRng(null);return {pays,raises,raise:st.raise,thanked:st.thanked,inv}})()""")
+        ok(r['pays'][:5] == [1800] * 5 and r['pays'][5] == 2070 and r['pays'][12] == 2340 and r['pays'][25] == 2700, f'the raise pays from the shift after the tier: {r["pays"]}')
+        ok(r['raises'] == [5, 12, 25, 'thanks@25'] and r['raise'] == 3 and r['thanked'], f'each raise toasts once, the thanks once at the top: {r["raises"]}')
+        ok('chewing_soul' in r['inv'], 'the thanks puts its items in the bag')
+        p.eval("(()=>{const G=FemcGame,S=G.S,j=G.D.jobs.find(x=>x.id==='bookworms');G.setJobRng(()=>0.99);S.jobs={bookworms:{hired:true,shifts:4,beats:[],seen:[]}};document.querySelectorAll('.g-toasts > *').forEach(t=>t.remove());S.spent={};G.finishShift(j,{});return true})()")
+        p.eval("new Promise(r=>setTimeout(r,700))")
+        t1 = p.eval("[...document.querySelectorAll('.g-toasts > *')].map(t=>t.textContent).filter(x=>/Raise!/.test(x))")
+        p.eval("(()=>{const G=FemcGame,S=G.S,j=G.D.jobs.find(x=>x.id==='bookworms');document.querySelectorAll('.g-toasts > *').forEach(t=>t.remove());S.spent={};G.finishShift(j,{});G.setJobRng(null);return true})()")
+        p.eval("new Promise(r=>setTimeout(r,700))")
+        t2 = p.eval("[...document.querySelectorAll('.g-toasts > *')].map(t=>t.textContent).filter(x=>/Raise!/.test(x))")
+        ok(len(t1) == 1 and 'Mitsuko:' in t1[0] and '¥2,070 a shift' in t1[0] and not t2, f'the raise toast in the boss\'s voice, once: {t1} {t2}')
+        # A year's rare rate on a fixed RNG: 300 shifts at one job, a seeded LCG.
+        rr = p.eval("""(()=>{const G=FemcGame,S=G.S,j=G.D.jobs.find(x=>x.id==='flowers');let seed=12345;G.setJobRng(()=>((seed=(seed*1103515245+12345)%2147483648)/2147483648));
+          S.jobs={};G.hire(j);const hits=[];let expect=0;const R=window.FEMC_GAME_JOB_RAISES.rare;
+          for(let k=0;k<300;k++){S.spent={};const st=G.jobState('flowers'),n0=st.rares||0,tier=G.raiseInfo(j,st.shifts+1).tier;G.finishShift(j,{});G.takeToasts();if((st.rares||0)>n0)hits.push(st.shifts);expect+=R[Math.min(tier,R.length-1)]}
+          const twice=hits.some((h,i)=>i&&h===hits[i-1]+1);
+          S.spent={};G.setJobRng(()=>0);const st=G.jobState('flowers'),n0=st.rares;st.rareAt=-1;G.finishShift(j,{scene:[{gift:{from:'x',item:{medicine:1}}}]});const gifted=st.rares>n0;
+          S.spent={};G.finishShift(j,{});const after=st.rares>n0;S.spent={};const n1=st.rares;G.finishShift(j,{});const again=st.rares>n1;G.setJobRng(null);G.takeToasts();
+          return {n:hits.length,expect:Math.round(expect),twice,gifted,after,again}})()""")
+        ok(abs(rr['n'] - rr['expect']) <= max(8, rr['expect'] * 0.4) and not rr['twice'], f'a year of shifts: rare rewards near the expected rate, never two running: {rr}')
+        ok(not rr['gifted'] and rr['after'] and not rr['again'], f'never on a scene that gives something; never two shifts running even at RNG 0: {rr}')
+        # Old saves: a job record with no shift count is seeded from what it shows was worked.
+        o = p.eval("""(()=>{const G=FemcGame,S=G.S;S.jobs={konbini:{hired:true,beats:[0],seen:['a','b','c'],log:['a','b','c','x','y','z','w']}};return G.jobState('konbini').shifts})()""")
+        ok(o == 7, f'an old record without a count is seeded from its log / seen shifts: {o}')
+        # Shown in the Jobs app and the Go Out preview.
+        p.eval("(()=>{const G=FemcGame,S=G.S;S.jobs={bookworms:{hired:true,shifts:7,beats:[],seen:[],raise:1}};S.spent={};G.save();FemcGameUI.goOut('after');FemcGameUI.openPhone();document.querySelector('.g-phone-ov [data-tab=jobs]').click();return true})()")
+        ok(p.eval("/Raise 1 of 3 \\(\\+15%\\) · 5 shifts to the next raise/.test(document.querySelector('.g-ph-job[data-job=bookworms]').textContent) && /¥2,070/.test(document.querySelector('.g-ph-job[data-job=bookworms]').textContent)"), 'the Jobs app shows the tier, the shifts to the next raise and the raised pay')
+        clear()
+        p.eval("FemcGameUI.goOut('after','strip');true")
+        p.wait("!!document.querySelector('[data-job=bookworms]')", 5)
+        p.eval("document.querySelector('[data-job=bookworms]').click();true")
+        p.wait("!!document.querySelector('.g-activity-preview:not(.out)')", 5)
+        ok(p.eval("/Earn ¥2,070/.test(document.querySelector('.g-activity-preview').textContent) && /Raise 1 of 3/.test(document.querySelector('.g-activity-preview').textContent)"), 'the shift preview shows the raised pay and the tier')
         clear()
 
     # ── Contacts ──

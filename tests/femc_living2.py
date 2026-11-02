@@ -219,7 +219,11 @@ try:
             const pk=G.shiftScene(j);log.push([pk.kind,pk.kind==='quiet'?pk.key:pk.id,d]);(pk.scene||[]).forEach(l=>{if(l.flag)G.effect({flag:l.flag})});G.finishShift(j,pk);G.takeToasts();}
           const P=G.packs()[j.id],full=log.filter(x=>x[0]==='shift').map(x=>x[1]),quiet=log.filter(x=>x[0]==='quiet').map(x=>x[1]),beats=log.filter(x=>x[0]==='beat').map(x=>x[1]);
           const key=j.id+(every?'*':'');
-          out[key]={n:log.length,full:full.length,quiet:quiet.length,beats:beats.length};
+          const jst=G.jobState(j.id),ri=G.raiseInfo(j,jst.shifts);
+          out[key]={n:log.length,full:full.length,quiet:quiet.length,beats:beats.length,raise:jst.raise||0,rares:jst.rares||0};
+          // Raises (2026-11-01): every tier reached was announced, the top one gave its thanks once.
+          if((jst.raise||0)!==ri.tier)bad.push(key+': raise '+jst.raise+' vs tier '+ri.tier);
+          if(ri.top!==!!jst.thanked)bad.push(key+': thanks '+jst.thanked+' at top '+ri.top);
           if(!every){
             if(new Set(full).size!==full.length)bad.push(key+': a full shift repeated');
             if(new Set(quiet).size!==quiet.length)bad.push(key+': a quiet shift repeated its month and moment');
@@ -237,7 +241,7 @@ try:
       Object.entries(G.packs()).forEach(([id,P])=>{[...P.shifts,...P.beats,...P.quiet,...(P.join?[{id:id+'-join',scene:P.join}]:[])].forEach(x=>LW.walk(x.scene,(o,opt)=>{if(!opt)return;if(o.notes)bad.push(id+'/'+x.id+': notes on a shift option');Object.keys(o.stat||{}).forEach(k=>{if(!S5.includes(k))bad.push(id+'/'+x.id+': stat '+k)});}));});
       return {out,bad}})()""", timeout=600)
     print('jobs', json.dumps(jy['out']))
-    ok(not jy['bad'], f"a year of weekly shifts at every job: no full or quiet shift repeats, every beat once and in order; every full shift reachable; shift options give real stats, no notes: {jy['bad'][:6]}")
+    ok(not jy['bad'], f"a year of weekly shifts at every job: no full or quiet shift repeats, every beat once and in order; every full shift reachable; raises announced and the top tier's thanks given; shift options give real stats, no notes: {jy['bad'][:6]}")
     ok(all(v['n'] >= 10 for k, v in jy['out'].items() if not k.endswith('*')), 'every job gets ten or more weekly shifts in the year')
 
     # ── newjobs: the three new jobs through the real UI ──
@@ -259,7 +263,7 @@ try:
             shots('job-hagakure-shift')
         until("!document.querySelector('.gs:not(.out)')")
         r = p.eval(f"(()=>{{const G=FemcGame,j=G.D.jobs.find(x=>x.id==='{jid}');const st=G.jobState('{jid}');return {{shifts:st.shifts,yen:G.S.yen-window.__y,pay:j.pay,gain:Object.keys(j.stats).every(k=>G.S.stats[k]>window.__st[k]),seen:st.seen.length+st.beats.length}}}})()")
-        ok(r['shifts'] == 1 and r['yen'] >= r['pay'] and r['gain'] and r['seen'] == 1, f'{jid}: hired, a real shift scene, paid and its stats raised ({r})')
+        ok(r['shifts'] == 1 and r['yen'] >= r['pay'] and r['yen'] < r['pay'] * 1.5 and r['gain'] and r['seen'] == 1, f'{jid}: hired, a real shift scene, paid and its stats raised ({r})')
 
     # ── runins ──
     ri = p.eval(r"""(()=>{const G=FemcGame,bad=[];let due=0;const all=G.D.runIns;

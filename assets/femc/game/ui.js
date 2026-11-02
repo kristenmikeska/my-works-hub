@@ -1350,7 +1350,7 @@
     const jobCard = j => {
       const st = G.jobState(j.id), ok = G.jobOk(j, slot), off = st.hired && !ok.ok;
       return card(`data-job="${j.id}" data-px="job:${j.id}"${off ? ' aria-disabled="true"' : ''}`, `job${off ? ' off' : ''}`, art(j.place || a.name),
-        `<span class="g-pc-txt"><small class="g-pc-kick">Part-time job</small><b>${esc(j.name)}</b><small>${esc(j.role)}${off ? ` · ${esc(ok.why)}` : ''}</small></span>`, `<em class="t-job">${esc(st.hired ? `Shift · ¥${j.pay.toLocaleString()}` : 'Ask about work')}</em>`);
+        `<span class="g-pc-txt"><small class="g-pc-kick">Part-time job</small><b>${esc(j.name)}</b><small>${esc(j.role)}${off ? ` · ${esc(ok.why)}` : ''}</small></span>`, `<em class="t-job">${esc(st.hired ? `Shift · ¥${G.jobPay(j).pay.toLocaleString()}` : 'Ask about work')}</em>`);
     };
     const spent = G.freeSlotSpent(slot);
     show(`<section class="g-areaview g-px g-city-area${night ? ' late' : ''}"><div class="g-map-head" data-ghost="${esc(G.slotName(slot, info))}"><button type="button" class="g-btn small" data-back>‹ Map</button><p class="g-kicker">${esc(G.slotName(slot, info))}</p><h1>${esc(a.name)}</h1>
@@ -1388,7 +1388,7 @@
       } else if (kind === 'job') {
         const j = G.D.jobs.find(v => v.id === id), st = G.jobState(j.id), ok = G.jobOk(j, slot);
         panel.innerHTML = ticket(pic, `<p class="g-kicker">Part-time job</p><h2>${esc(j.name)}</h2><p class="g-px-about">${esc(st.hired ? j.role : j.blurb || j.role)}</p>
-          <ul class="g-px-gets"><li><b>¥${j.pay.toLocaleString()} a shift</b></li><li><small>${esc(Object.keys(j.stats).map(k2 => G.D.stats.stats[k2]?.name).filter(Boolean).join(', '))}</small></li><li><small>${st.hired ? 'Uses this time slot.' : 'Asking about work uses no time.'}</small></li></ul>
+          <ul class="g-px-gets"><li><b>¥${G.jobPay(j).pay.toLocaleString()} a shift</b></li>${st.hired ? `<li><small>${esc(raiseWord(j))}</small></li>` : ''}<li><small>${esc(Object.keys(j.stats).map(k2 => G.D.stats.stats[k2]?.name).filter(Boolean).join(', '))}</small></li><li><small>${st.hired ? 'Uses this time slot.' : 'Asking about work uses no time.'}</small></li></ul>
           ${st.hired && !ok.ok ? `<p class="g-warn">${esc(ok.why)}</p>` : ''}<p class="g-px-go"><i>${pxGo() === 'Tap' ? 'Tap' : 'Enter'}</i>${st.hired ? 'review the shift' : 'ask about work'}</p>`);
       }
     };
@@ -1455,11 +1455,18 @@
     SC.play({ scene: [...pk.scene, ...(ri ? ri.scene : [])], place: x.place || `${a.name} · ${x.spot}`, time: G.slotName(slot), label: x.name, link: x.link && G.isMet(x.link) ? x.link : null,
       onDone: () => { G.finishClub(x, pk); if (ri) G.finishRunIn(ri.id); advance(); } });
   }
+  // A job's raise in a few words (core.js raiseInfo): "Raise 1 of 3 · 4 shifts to the next" / "Top rate".
+  function raiseWord(j, shifts = G.jobState(j.id).shifts) {
+    const r = G.raiseInfo(j, shifts);
+    if (!r.of) return '';
+    if (r.top) return `Top rate (+${r.pct}%)`;
+    return `${r.tier ? `Raise ${r.tier} of ${r.of} (+${r.pct}%) · ` : ''}${r.next.left} shift${r.next.left === 1 ? '' : 's'} to the ${r.tier ? 'next' : 'first'} raise`;
+  }
   function previewJob(j, slot, a) {
     if (!G.jobState(j.id).hired) return jobFlow(j, slot, a);
     const preview = G.activityInfo(j);
     const o = overlay(`<p class="g-kicker">Part-time job</p><h2>${esc(j.name)}</h2><p>${esc(j.role)}</p>
-      <ul class="g-gains"><li>Earn ¥${j.pay.toLocaleString()}</li><li>${esc(preview.benefit)}</li><li>Uses this time slot.</li></ul>
+      <ul class="g-gains"><li>Earn ¥${G.jobPay(j).pay.toLocaleString()}</li><li>${esc(preview.benefit)}</li><li>${esc(raiseWord(j))}</li><li>Uses this time slot.</li></ul>
       <div class="g-row"><button type="button" class="g-btn pink" data-confirm>Work a shift</button><button type="button" class="g-btn" data-close>Back</button></div>`, 'g-activity-preview');
     o.el.querySelector('[data-confirm]').addEventListener('click', () => { o.close(); if (G.jobOk(j, slot).ok) jobFlow(j, slot, a); else areaView(slot, a); });
   }
@@ -1468,7 +1475,7 @@
     if (!st.hired) {
       const why = G.lacking(j.needs);
       const o = overlay(`<p class="g-kicker">Part-time job</p><h2>${esc(j.name)}<small>${esc(j.role)}</small></h2><p>${esc(j.blurb)}</p>
-        <ul class="g-gains"><li>¥${j.pay.toLocaleString()} a shift</li><li>${Object.keys(j.stats).map(k => G.D.stats.stats[k].name).join(', ')}</li><li>${j.slot === 'evening' ? 'Evenings' : 'Daytime'} · ${j.days.map(d => ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][d]).join(', ')}</li></ul>
+        <ul class="g-gains"><li>¥${G.jobPay(j).pay.toLocaleString()} a shift (raises as you keep working)</li><li>${Object.keys(j.stats).map(k => G.D.stats.stats[k].name).join(', ')}</li><li>${j.slot === 'evening' ? 'Evenings' : 'Daytime'} · ${j.days.map(d => ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][d]).join(', ')}</li></ul>
         ${why ? `<p class="g-warn">They want someone with ${esc(why)}.</p>` : ''}
         <div class="g-row">${why ? '' : '<button type="button" class="g-btn pink" data-y>Take the job</button>'}<button type="button" class="g-btn" data-close>${why ? 'Maybe later' : 'Not now'}</button></div>`);
       o.el.querySelector('[data-y]')?.addEventListener('click', () => { G.hire(j); o.close(); G.toast('job', `Hired at ${j.name}.`); G.save(); areaView(slot, a); });
@@ -1529,7 +1536,7 @@
         ${dorm.filter(a => !a.desk).map(a => { const ok = G.dormOk(a), pv = G.dormInfo(a); return opt(`dorm:${a.id}`, esc(a.name), ok.ok ? `${pv.benefit}${a.cost ? ` · ¥${a.cost.toLocaleString()}` : ''}` : ok.why, ok.ok, a.perk ? 'perk' : ''); }).join('')}
         ${desk.length ? opt('desk', 'Your desk', `${desk.map(a => a.name).join(' · ')}`, true) : ''}
         ${opt('rest', 'Rest', s.condition === 'good' || s.condition === 'great' ? 'Go to bed early.' : 'Shake off being ' + G.D.stats.conditions[s.condition].name.toLowerCase() + '.')}
-        ${jobs.map(j => { const ok = G.jobOk(j, 'evening'); return opt(`job:${j.id}`, `Work · ${esc(j.name)}`, ok.ok ? `¥${j.pay.toLocaleString()}` : ok.why, ok.ok); }).join('')}
+        ${jobs.map(j => { const ok = G.jobOk(j, 'evening'); return opt(`job:${j.id}`, `Work · ${esc(j.name)}`, ok.ok ? `¥${G.jobPay(j).pay.toLocaleString()}` : ok.why, ok.ok); }).join('')}
         ${homeLinks.map(l => opt(`link:${l.id}`, `${esc(G.linkName(l))}`, `${l.arcana} · ${G.homeOf(l).spot ? G.homeOf(l).spot.toLowerCase() : 'in the lounge'}`, true, 'who')).join('')}
         ${traces.map(t => opt(`trace:${t.link.id}`, esc(t.entry.place ? t.entry.place.split(' · ').pop() : t.link.short), `Something of ${t.link.short}'s is still here.`, true, 'who trace')).join('')}
         ${secrets.map(l => opt(`secret:${l.id}`, esc(l.secret.label || 'Something’s different tonight'), l.secret.sub || '', true, 'secret')).join('')}
@@ -1758,7 +1765,8 @@
         const date = `${x.info.day} ${x.info.md}`, label = k === 0 ? 'Today' : k === 1 ? 'Tomorrow' : date, tag = x.info.label || '';
         const rows = x.rows.map(r => {
           const go = r.now && atFree();
-          const status = r.hired ? `<small class="g-ph-jst hired">Hired${r.shifts ? ` · ${r.shifts} shift${r.shifts === 1 ? '' : 's'}` : ''}</small>` : `<small class="g-ph-jst">Not hired yet: ${r.needs ? `needs ${esc(r.needs)}` : `apply at ${esc(r.place)}`}</small>`;
+          const rw = r.hired ? raiseWord(r.job, r.shifts) : '';
+          const status = r.hired ? `<small class="g-ph-jst hired">Hired${r.shifts ? ` · ${r.shifts} shift${r.shifts === 1 ? '' : 's'}` : ''}</small>${rw ? `<small class="g-ph-jst${r.raise?.top ? ' top' : ''}">${esc(rw)}</small>` : ''}` : `<small class="g-ph-jst">Not hired yet: ${r.needs ? `needs ${esc(r.needs)}` : `apply at ${esc(r.place)}`}</small>`;
           const gets = `¥${r.pay.toLocaleString()}${r.pay !== r.basePay ? ` <s>¥${r.basePay.toLocaleString()}</s>` : ''} · ${esc(Object.entries(r.stats).map(([s2, v]) => `${statName(s2)} +${v}`).join(', '))}`;
           const perks = r.perks.length ? `<small class="g-ph-jperk">${r.perks.map(p2 => `${esc(p2.name)} (${esc(p2.who)})${p2.pct ? ` +${p2.pct}%` : ''}`).join(' · ')}</small>` : '';
           const cue = r.ok && r.cue ? `<small class="g-ph-hint k-${r.cue.key === 'story' ? 'ready' : 'quiet'}">${esc(r.cue.label)}</small>` : '';
