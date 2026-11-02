@@ -85,7 +85,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 44;
+  const ART_V = 45;
   /* Status art (tools/femc-icons.py): sticker icons for the ailments and the buff / debuff arrows, and the Tartarus map's room
      glyphs. A status chip shows its icon in place of the old name or ATK / DEF / AGI text (the name stays in its title). */
   const ICON_DIR = 'assets/femc/battle/art/icons/';
@@ -2146,7 +2146,7 @@
     wireTools(el);
     if (FX) { FX.attach(el, { speed }); FX.preload(floor.bg); }
     // Decode every still this battle might show now, so cut-ins never hitch on first show.
-    stills([SUMMON_DIR + 'solar-evoker.webp'].concat(B.party().map(p => finishArt(p.mid)), B.party().map(p => D.personas[p.personaId].art), theurgyStills()), 0);
+    stills([SUMMON_DIR + 'solar-evoker.webp'].concat(B.party().map(p => (wornPose(p.mid) && ((LOOKS.evoker && LOOKS.evoker[p.mid]) || posedFrames(p.mid)[1])) || []).flat(), B.party().map(p => finishArt(p.mid)), B.party().map(p => D.personas[p.personaId].art), theurgyStills()), 0);
     // Every mood a card or the results can switch to, so a face never pops in blank.
     stills(B.party().flatMap(p => Object.values(member(p.mid).faces).map(f => pimg(p.mid, f))), 0);
     if (!save.awakened) { stills(AWAKEN.map(f => SUMMON_DIR + f + '.webp'), 0); prepClip('awakening'); }
@@ -2752,19 +2752,68 @@
     if (side) await tail; // the spell frame comes after the follow-through, not hidden under it
     return true;
   }
+  /* M's built-in close-up: where the figure sits on a look's pose-1 frame (its alpha box, read once per frame), the crop
+     from the top of the head down to about the chest (the Evoker at her temple is in it), and that part's centre. */
+  const lpCache = new Map();
+  function lookPoseBox(src) {
+    if (lpCache.has(src)) return lpCache.get(src);
+    const im = still(src).im;
+    if (!im.complete || !im.naturalWidth) return null;
+    let box = null;
+    try {
+      const w = im.naturalWidth, h = im.naturalHeight, c = document.createElement('canvas'); c.width = w; c.height = h;
+      const g = c.getContext('2d'); g.drawImage(im, 0, 0); const a = g.getImageData(0, 0, w, h).data;
+      let y0 = -1, y1 = -1;
+      for (let y = 0; y < h && y0 < 0; y++) for (let x = 0; x < w; x++) if (a[(y * w + x) * 4 + 3] > 40) { y0 = y; break; }
+      for (let y = h - 1; y >= 0 && y1 < 0; y--) for (let x = 0; x < w; x++) if (a[(y * w + x) * 4 + 3] > 40) { y1 = y; break; }
+      if (y0 >= 0 && y1 > y0) {
+        const top = Math.max(0, Math.round(y0 - (y1 - y0) * 0.03)), ch = Math.round((y1 - y0) * 0.42);
+        // The upper part's columns, weighted by how much of each is figure (a thin naginata shaft barely moves it).
+        let sx = 0, n = 0, x0 = w, x1 = 0;
+        for (let y = top; y < Math.min(h, top + ch); y++) for (let x = 0; x < w; x++) if (a[(y * w + x) * 4 + 3] > 40) { sx += x; n++; if (x < x0) x0 = x; if (x > x1) x1 = x; }
+        // Her head: the opaque pixels in the top tenth of the figure, for where the glass breaks.
+        let hx = 0, hn = 0; const hb = y0 + Math.round((y1 - y0) * 0.1);
+        for (let y = y0; y < hb; y++) for (let x = 0; x < w; x++) if (a[(y * w + x) * 4 + 3] > 40) { hx += x; hn++; }
+        if (n) box = { w, h, top, ch, cx: sx / n, x0, x1, hx: hn ? hx / hn : sx / n, hy: (y0 + hb) / 2 };
+      }
+    } catch (err) { box = null; }
+    lpCache.set(src, box);
+    return box;
+  }
+  // Lays the pose frame into the shot panel: the crop fills the panel's height (narrower panels: its width), its centre a
+  // little right of the middle on wide screens (the Persona's name rises on the left); returns her temple in root pixels.
+  function placeLookPose(sh, b) {
+    const im = sh && sh.querySelector('img.lp');
+    if (!im || !sh.offsetWidth) return null;
+    const W = sh.offsetWidth, H = sh.offsetHeight, wide = W > H * 1.2;
+    const k = Math.min(H * 0.98 / b.ch, (W * (wide ? 0.9 : 1.15)) / Math.max(1, b.x1 - b.x0));
+    const left = W * (wide ? 0.6 : 0.5) - b.cx * k, top = -b.top * k + Math.max(0, (H - b.ch * k) * 0.3);
+    Object.assign(im.style, { width: `${Math.round(b.w * k)}px`, height: `${Math.round(b.h * k)}px`, left: `${Math.round(left)}px`, top: `${Math.round(top)}px` });
+    const R = BT.root.getBoundingClientRect(), r = sh.getBoundingClientRect();
+    return { x: r.left - R.left + left + b.hx * k, y: r.top - R.top + top + b.hy * k };
+  }
   async function evoker(u, skillName, fp = null) {
     const m = member(u.mid), per = D.personas[u.personaId] || D.personas[m.persona], reduced = !FX || FX.reduced() || perf(), solar = u.mid === 'solar';
     // A close-up Evoker shot (Solar's, or a member's evoker.shot) fills the cut-in; everyone else gets their face and the prop.
-    const ev = m.evoker || {}, shotSrc = solar ? SUMMON_DIR + 'solar-evoker.webp' : ev.shot || null;
-    await stills((shotSrc ? [shotSrc, per.art] : [per.art, pimg(u.mid, m.faces.idle), EVOKER_ART]).concat(evokeFrames(u.mid) || []), 900);
+    // M (FEMC-SKINS-BATTLE-DESIGN, Nov 1 2026): a worn Wardrobe look never shows the default-uniform close-up or summon clip.
+    // Its own close-up (LOOKS.evoker, art/skins/<look>/<who>-evoker.webp) takes the shot's place; without one, a fighter
+    // whose default is a close-up gets the look's Evoker pose frame (pose-1) large, head and shoulders with the gun
+    // (lookPoseShot); a band fighter keeps the band, whose face is already the outfit's (pimg → skinFace).
+    const worn = wornPose(u.mid), ev0 = m.evoker || {}, lookShot = (worn && LOOKS.evoker && LOOKS.evoker[u.mid]) || null;
+    const lookPose = worn && !lookShot && (solar || ev0.shot) ? posedFrames(u.mid)[1] : null;
+    const ev = worn ? {} : ev0; // a default close-up's framing and muzzle point don't apply to the look's picture
+    let shotSrc = lookShot || (worn ? null : solar ? SUMMON_DIR + 'solar-evoker.webp' : ev.shot || null);
+    await stills((shotSrc ? [shotSrc, per.art] : [per.art, pimg(u.mid, m.faces.idle), EVOKER_ART]).concat(lookPose ? [lookPose] : [], evokeFrames(u.mid) || []), 900);
+    const lp = lookPose && lookPoseBox(lookPose); // null (not decoded / unreadable): the band with the outfit face
     const wrap = document.createElement('div');
     wrap.className = `bt-evoke${solar ? ' solar' : ''}`;
     wrap.style.setProperty('--spd', speed());
     // A summon clip (data.clips.summon) replaces Solar's Evoker still when it's loaded and ready.
-    const sclip = solar && !reduced && prepClip('summon');
+    const sclip = solar && !worn && !reduced && prepClip('summon');
     const useS = sclip && await sclip.ready(250);
     const shot = shotSrc
-      ? `<div class="bt-evk-shot"${ev.pos ? ` style="--op:${ev.pos};--opm:${ev.posPhone || ev.pos}"` : ''}>${useS ? '' : `<img src="${shotSrc}" alt="">`}</div>`
+      ? `<div class="bt-evk-shot${lookShot ? ' look' : ''}"${ev.pos ? ` style="--op:${ev.pos};--opm:${ev.posPhone || ev.pos}"` : ''}>${useS ? '' : `<img src="${shotSrc}" alt="">`}</div>`
+      : lp ? `<div class="bt-evk-shot lookpose"><i class="lp-glow"></i><img class="lp" src="${lookPose}" alt=""></div>`
       : `<div class="bt-evk-band" style="--c:${m.color}">${fimg(u.mid, m.faces.idle, '', 'face')}<img class="gun" src="${EVOKER_ART}" alt=""></div>`;
     // With an Evoker sheet: after the glass breaks, the full-body shot stands beside the Persona, then the Evoker lowers.
     const body = !fp && evokeFrames(u.mid) && !reduced && evokeFrames(u.mid).every(f => { const im = still(f).im; return im.complete && im.naturalWidth; }) ? evokeFrames(u.mid) : null;
@@ -2778,6 +2827,7 @@
     if (gun) { gun.onerror = () => { gun.onerror = null; gun.src = EVOKER_SVG; mark('evoker-svg'); }; if (gun.complete && !gun.naturalWidth) gun.onerror(); }
     BT.cut.appendChild(wrap);
     BT.root.classList.add('evoking');
+    const lpAt = lp ? placeLookPose(wrap.querySelector('.bt-evk-shot.lookpose'), lp) : null;
     // The Evoker at the temple (batch 37b): the band's face is drawn far bigger than the band (it shows the eyes), so the
     // temple is about 0.56 face-widths left of the face's centre. The muzzle goes there, but never so far left that the gun
     // leaves the cut-in (it starts at the fighter's edge with a 48px fade); then the face moves right to keep the muzzle at
@@ -2795,7 +2845,8 @@
     sfx('click');
     mark('evoke');
     mark('evoke-' + u.mid);
-    if (shotSrc && !solar) mark('evoke-shot');
+    if (shotSrc && !solar && !lookShot) mark('evoke-shot');
+    if (lookShot) mark('evoke-look'); else if (lpAt) mark('evoke-look-pose');
     await sleep(reduced ? 140 : 320);
     const sh = wrap.querySelector('.bt-evk-shot, .bt-evk-band');
     sfx('evoker');
@@ -2803,7 +2854,10 @@
     if (!reduced) {
       const R = BT.root.getBoundingClientRect();
       let cx, cy, extras;
-      if (shotSrc) {
+      if (lpAt) {
+        cx = lpAt.x; cy = lpAt.y; // her temple, where the look's own Evoker is
+        extras = [{ el: sh, clip: [[0, 6], [100, 0], [100, 94], [0, 100]], fill: '#12081a' }];
+      } else if (shotSrc) {
         const im = sh.querySelector('img'), cb = im ? coverBox(im) : { x: 0, y: 0, w: BT.root.clientWidth, h: BT.root.clientHeight };
         const at = ev.at || [51.5, 18]; // the Evoker's muzzle at the temple, in % of the shot
         cx = cb.x + cb.w * at[0] / 100; cy = cb.y + cb.h * at[1] / 100;

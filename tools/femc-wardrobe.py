@@ -40,6 +40,9 @@
         1600 x 900. battle.js uses it in place of the fighter's cut-in while the look is worn.
   python3 tools/femc-wardrobe.py finish <src.png> <skin id> [fighter id]
         G: the look's All-Out finish card (16:9, like femc-cards.py finish) -> skins/<skin>/<who>-finish.webp, 1600 x 900.
+  python3 tools/femc-wardrobe.py evoker <src.png> <skin id> [fighter id]
+        M: the look's Evoker close-up for the summon cut-in (16:9 like art/summon/solar-evoker.webp, background kept)
+        -> skins/<skin>/<who>-evoker.webp, 1600 x 900. Without it battle.js shows the look's pose-1 frame instead.
   python3 tools/femc-wardrobe.py entrance <src.png> <skin id | own> [fighter id]
         I: the 16:9 battle-start card -> 1600 x 900 at skins/<skin>/<who>-entrance.webp (own: game/art/entrance/<who>.webp).
   python3 tools/femc-wardrobe.py showtime <src.png> <set>
@@ -250,7 +253,7 @@ def scan():
         poses2b = sorted({f.name.split('-pose2b-')[0] for f in d.glob('*-pose2b-0.webp')
                           if all((d / f'{f.name.split("-pose2b-")[0]}-pose2b-{i}.webp').exists() for i in range(6))})
         if poses2b and 'poses2' in skins.get(d.name, {}): skins[d.name]['poses2b'] = poses2b  # an alternate sheet 2 (skin2 --alt)
-        for k, suf in (('onemore', 'onemore'), ('onemore2', 'onemore-v2'), ('entrance', 'entrance'), ('theurgy', 'theurgy'), ('finish', 'finish')):  # part 8 / E / G art, listed only when present
+        for k, suf in (('onemore', 'onemore'), ('onemore2', 'onemore-v2'), ('entrance', 'entrance'), ('theurgy', 'theurgy'), ('finish', 'finish'), ('evoker', 'evoker')):  # part 8 / E / G / M art, listed only when present
             got = sorted(f.name[:-len(f'-{suf}.webp')] for f in d.glob(f'*-{suf}.webp'))
             if got and d.name in skins: skins[d.name][k] = got
         if 'onemore2' in skins.get(d.name, {}):  # where her eyes are on each v2 strip (om_eyes), for the glints
@@ -307,10 +310,10 @@ def unband(src):
 
 def part8(cmd, a):
     src = find(a[1])
-    if cmd in ('onemore', 'onemore2', 'entrance', 'theurgy', 'finish'):
+    if cmd in ('onemore', 'onemore2', 'entrance', 'theurgy', 'finish', 'evoker'):
         skin = a[2]; who = a[3] if len(a) > 3 else ('solar' if skin == 'own' else look_who(skin))
         size = (1800, 360) if cmd.startswith('onemore') else (1600, 900)  # 5:1 keeps the eyes clear of the edges (Nov 1 2026)
-        if skin == 'own' and cmd in ('theurgy', 'finish'): raise SystemExit(f'{cmd}: a fighter\'s own look uses tools/femc-theurgy.py / femc-cards.py')
+        if skin == 'own' and cmd in ('theurgy', 'finish', 'evoker'): raise SystemExit(f'{cmd}: a fighter\'s own look uses tools/femc-theurgy.py / femc-cards.py')
         name = {'onemore2': 'onemore-v2'}.get(cmd, cmd)
         out = (ART / 'onemore' / f'{who}-v2.webp' if cmd == 'onemore2' else ART / cmd / f'{who}.webp') if skin == 'own' else ART / 'skins' / skin / f'{who}-{name}.webp'
         if skin != 'own' and not (ART / 'skins' / skin).exists(): raise SystemExit(f'{skin}: no pose frames yet (cut the look first)')
@@ -330,8 +333,8 @@ def part8(cmd, a):
             rgb, alpha = GR.key_outer_green(np.asarray(fit(src, 1000, 400).convert('RGB')))
             im = Image.fromarray(np.dstack([rgb, alpha]), 'RGBA')
     out.parent.mkdir(parents=True, exist_ok=True)
-    if cmd in ('theurgy', 'finish'): im = im.convert('RGB')  # full-frame pictures keep their backgrounds
-    im.save(out, 'WEBP', quality=86 if cmd in ('theurgy', 'finish') else 90, method=5)
+    if cmd in ('theurgy', 'finish', 'evoker'): im = im.convert('RGB')  # full-frame pictures keep their backgrounds
+    im.save(out, 'WEBP', quality=86 if cmd in ('theurgy', 'finish', 'evoker') else 90, method=5)
     print(src.name, '->', out.relative_to(ROOT), im.size)
 
 
@@ -365,7 +368,7 @@ def main(a):
         out = ART / 'skins' / skin; out.mkdir(parents=True, exist_ok=True)
         rgba.crop(rgba.getbbox()).save(out / 'weapon.webp', 'WEBP', quality=90, method=5)
         print(src.name, '->', skin, 'weapon')
-    elif cmd in ('onemore', 'onemore2', 'entrance', 'theurgy', 'finish', 'showtime', 'frame'):
+    elif cmd in ('onemore', 'onemore2', 'entrance', 'theurgy', 'finish', 'evoker', 'showtime', 'frame'):
         if len(a) < 3: raise SystemExit(__doc__)
         part8(cmd, a)
     elif cmd in ('keys', 'goods'):

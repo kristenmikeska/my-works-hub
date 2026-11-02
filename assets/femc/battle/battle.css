@@ -584,6 +584,12 @@ html.femc:not(.femc-reader) body.bt-page::after { display: none; }
 /* Solar: Kat's close-up of the Evoker at her temple, on a slanted panel. */
 .bt-evk-shot { position: absolute; inset: 0; z-index: 8; clip-path: polygon(0 6%, 100% 0, 100% 94%, 0 100%); background: #05060c; animation: bt-evk-in calc(160ms / var(--spd)) cubic-bezier(.2, 1, .3, 1) both; }
 .bt-evk-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--op, 62% 30%); animation: bt-evk-push calc(400ms / var(--spd)) ease-out both; }
+/* M (Nov 1 2026): a worn look without its own close-up: its Evoker pose frame, large, head and shoulders, over the summon
+   light (battle.js placeLookPose sets the size and place). */
+.bt-evk-shot.lookpose { background: radial-gradient(ellipse 45% 60% at 60% 30%, rgba(170, 215, 255, .30), transparent 62%), radial-gradient(ellipse 70% 90% at 15% 75%, rgba(255, 79, 158, .42), transparent 62%), linear-gradient(160deg, #0a0a14, #14070f 55%, #3a0a26); }
+.bt-evk-shot.lookpose::before { content: ""; position: absolute; inset: -20%; background: repeating-conic-gradient(from 0deg at 60% 38%, rgba(255, 255, 255, .08) 0 2deg, transparent 2deg 12deg); }
+.bt-evk-shot.lookpose .lp-glow { position: absolute; inset: 0; background: radial-gradient(circle at 60% 32%, rgba(255, 255, 255, .22), transparent 34%); }
+.bt-evk-shot.lookpose img.lp { inset: auto; width: auto; height: auto; max-width: none; object-fit: fill; filter: drop-shadow(0 0 18px rgba(170, 215, 255, .55)) drop-shadow(10px 0 0 rgba(255, 79, 158, .35)); transform-origin: 50% 25%; }
 /* Everyone else: a band with their eyes and an Evoker at the temple. */
 .bt-evk-band { --c: var(--pink); position: absolute; left: 0; right: 0; top: 28%; height: 200px; z-index: 8; clip-path: polygon(0 18%, 100% 0, 100% 82%, 0 100%); background: linear-gradient(90deg, #14070f, #2a0c1e 50%, #14070f); animation: bt-evk-in calc(160ms / var(--spd)) cubic-bezier(.2, 1, .3, 1) both; }
 .bt-evk-band::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 30%, rgba(255, 255, 255, .06) 50%, transparent 70%); }

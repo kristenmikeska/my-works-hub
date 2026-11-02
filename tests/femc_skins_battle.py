@@ -2,7 +2,7 @@
 card, a couple set's Showtime, the theme frame on the HUD card and the theme burst in the All-Out cloud.
 Headless Chrome, isolated profile, its own localhost server; no player saves.
 
-Run: python3 tests/femc_skins_battle.py [--only data,tools,fallback,art,settings,sheet2,looks,tryon] [--screenshots DIR]
+Run: python3 tests/femc_skins_battle.py [--only data,tools,fallback,art,settings,sheet2,looks,evoker,tryon] [--screenshots DIR]
 
   data      cosmetics.js THEMES (every listed look exists; part 4's picks), battle() hands theme / name / couple per worn
             look and no art paths while no files exist.
@@ -23,6 +23,10 @@ Run: python3 tests/femc_skins_battle.py [--only data,tools,fallback,art,settings
             borrows Solar's own sheet 2. A themed look's skill hit plays Kat's theme-hearts sheet small on top.
   looks     Nov 1 2026: Alpha Phi's alternate sheet 2 (pose2b) on a fight's coin flip (window.__btAlt2) and V1 otherwise, both
             loading; E, a look's own Theurgy cut-in (a still: no prelude or sequence) and, without one, the fighter's own.
+  evoker    M (Nov 1 2026), the summon cut-in's Evoker close-up: a look with its own `evoker` art (a test file cut with
+            femc-wardrobe.py evoker) shows it, never the default-uniform shot or summon clip; a look without one shows
+            its pose-1 frame large (Solar's Yukata, Akihiko's swimsuit), never the default shot; no look: as before.
+            Screenshots at 1440x900 and 390x844.
   tryon     S3, the Wardrobe's "Try it on" (game/tryon.js): the button on an owned and an unowned outfit and the Boutique's
             ▶, every beat in order, Enter / click skip to the victory pose, Esc closes only it (focus back), the hand
             charge only for a clean look, Outfit effects Off, reduced motion, every ready look's frames loading, a party
@@ -678,6 +682,72 @@ try:
         clean(p, 'looks fallback')
         p.top(); p.eval("document.querySelectorAll('.g-dh').forEach(x=>x.remove())")
         results['looks'] = lshots
+
+    # ── M: the summon cut-in's Evoker close-up wears the outfit (Nov 1 2026) ──
+    if want('evoker'):
+        from PIL import Image, ImageDraw
+        tmp = pathlib.Path(SHOTS, '_src'); tmp.mkdir(exist_ok=True)
+        im = Image.new('RGB', (1920, 1080), (20, 7, 15)); d = ImageDraw.Draw(im)
+        for i in range(0, 2400, 60): d.line([(i, 0), (i - 400, 1080)], fill=(255, 79, 158), width=8)
+        d.ellipse([860, 200, 1260, 600], fill=(255, 140, 192)); d.rectangle([700, 330, 900, 380], fill=(230, 230, 240))
+        im.save(tmp / 'evk.png')
+        out = ART / 'skins/sk-date/solar-evoker.webp'
+        ok(not out.exists(), 'Date Day has no Evoker close-up before the test'); MADE.append(out)
+        subprocess.run([sys.executable, str(pathlib.Path(REPO, 'tools/femc-wardrobe.py')), 'evoker', str(tmp / 'evk.png'), 'sk-date'], check=True, capture_output=True)
+        ok(Image.open(out).size == (1600, 900) and Image.open(out).mode == 'RGB', 'evoker: 1600 x 900, background kept')
+        rd = json.loads(READY.read_text().split('window.FEMC_ART_READY = ')[1].rstrip().rstrip(';'))
+        ok(rd['skins']['sk-date'].get('evoker') == ['solar'], f"scan lists it: {rd['skins']['sk-date']}")
+        EVK = r"""(()=>{const w=document.querySelector('.bt-evoke');if(!w)return null;const s=w.querySelector('.bt-evk-shot'),i=s&&s.querySelector('img'),b=w.querySelector('.bt-evk-band');
+          const r=i&&i.getBoundingClientRect(),sr=s&&s.getBoundingClientRect(),h=w.innerHTML;
+          return {cls:s&&s.className,src:i&&i.getAttribute('src'),ok:!!(i&&i.complete&&i.naturalWidth),band:!!b,video:!!w.querySelector('video'),dflt:/summon\/[a-z]+-evoker\.webp/.test(h),
+            r:r&&[r.left,r.top,r.width,r.height].map(Math.round),sr:sr&&[sr.left,sr.top,sr.width,sr.height].map(Math.round),look:FemcBattle.marks['evoke-look']||0,pose:FemcBattle.marks['evoke-look-pose']||0,clip:FemcBattle.marks['evoke-clip']||0,shotM:FemcBattle.marks['evoke-shot']||0}})()"""
+        eshots = []
+
+        def summon(mid, tag):
+            """The summon cut-in frozen at its close-up, once at 1440x900 and once at 390x844 (fresh each time, as a phone plays it)."""
+            uid = p.eval("FemcBattle.B.party().find(u=>u.mid===%s).id" % json.dumps(mid))
+            ev = json.dumps([{'t': 'use', 'src': uid, 'skill': 'dia', 'name': 'Dia', 'el': 'heal', 'summon': True, 'tgts': [uid]}])
+            r = None
+            for w, h in [(1440, 900), (390, 844)]:
+                view(p, w, h); time.sleep(0.5)
+                p.eval("window.__btFreezeAt='evoke#'+((FemcBattle.marks.evoke||0)+1);FemcBattle.playEvents(%s);true" % ev)
+                p.wait("document.querySelector('.bt-evoke')&&FemcBattle.marks.evoke>0", 30); time.sleep(0.45)
+                hold(p, '.bt-evoke', 1)
+                x = p.eval(EVK)
+                if tag: eshots.append(shot(p, f'evoker-{tag}-{w}x{h}'))
+                if r is None: r = x
+                else: r['phone'] = x
+                go_on(); p.wait("!document.querySelector('.bt-evoke')", 20); time.sleep(0.4)
+            view(p, 1440, 900)
+            return r
+
+        def fight(wear):
+            setup(wear=wear)
+            night(['solar', 'akihiko', 'yukari', 'junpei'], "FemcBattle.save.cutins='always';")
+            enter(); bdrive(SOLAR_MENU, 120)
+            p.eval("FemcBattle.B.party().forEach(u=>{u.maxHp=u.hp=99999;u.sp=999});FemcBattle.B.foes().forEach(f=>{f.maxHp=f.hp=99999})")
+        # 1. Date Day with its own (test) close-up: the shot is the look's; no clip, no default shot.
+        fight(['sk-date'])
+        r = summon('solar', 'art')
+        ok(r and 'look' in r['cls'] and 'skins/sk-date/solar-evoker.webp' in r['src'] and r['ok'] and not r['video'] and not r['dflt'] and r['look'] >= 1 and not r['clip'], f'look art close-up: {r}')
+        clean(p, 'evoker art')
+        # 2. The Summer Yukata (no close-up yet): its pose-1 frame, big, head and shoulders; never the default shot or clip.
+        p.top(); fight(['sk-yukata', 'sk-akihiko-swim'])
+        r = summon('solar', 'fallback')
+        ok(r and 'lookpose' in r['cls'] and 'skins/sk-yukata/solar-pose-1.webp' in r['src'] and r['ok'] and not r['video'] and not r['dflt'] and r['pose'] >= 1 and not r['look'] and not r['clip'] and r['phone']['ok'] and 'lookpose' in r['phone']['cls'], f'fallback close-up: {r}')
+        ok(r['r'][3] > r['sr'][3] * 1.6 and r['phone']['r'][3] > r['phone']['sr'][3] * 0.85, f'the pose frame is shown large (cropped to the upper body): {r["r"]} in {r["sr"]}; phone {r["phone"]}')
+        a = summon('akihiko', 'fallback-akihiko')
+        ok(a and 'lookpose' in a['cls'] and 'skins/sk-akihiko-swim/akihiko-pose-1.webp' in a['src'] and a['ok'] and not a['shotM'] and not a['dflt'], f'Akihiko in a look: his look\'s pose, not his default close-up: {a}')
+        clean(p, 'evoker fallback')
+        # 3. No look: Solar's default close-up exactly as before.
+        p.top(); fight([])
+        r = summon('solar', '')
+        ok(r and r['cls'] == 'bt-evk-shot' and 'summon/solar-evoker.webp' in r['src'] and not r['look'] and not r['pose'], f'no look: the default close-up: {r}')
+        clean(p, 'evoker none')
+        p.top(); p.eval("document.querySelectorAll('.g-dh').forEach(x=>x.remove())")
+        cleanup(); shutil.rmtree(tmp, ignore_errors=True)
+        ok(READY.read_text() == READY0 and not out.exists(), 'test close-up gone, ready.js restored')
+        results['evoker'] = eshots
 
     print(json.dumps(results, indent=1))
     print('femc_skins_battle: all checks passed')

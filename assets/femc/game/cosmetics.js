@@ -12,10 +12,11 @@
                Part 8 (Nov 1 2026): a look's `theme` (THEMES below) frames its HUD card and bursts out of the All-Out cloud;
                optional art game/art/skins/<id>/<who>-onemore.webp (the One More eye strip, 5:1) and <who>-entrance.webp
                (the battle-start card, 16:9), <who>-onemore-v2.webp (the strip's second beat), <who>-theurgy.webp (E, the
-               look's Theurgy cut-in, 16:9) and <who>-finish.webp (G, its All-Out finish card, 16:9); a fighter's own look:
+               look's Theurgy cut-in, 16:9), <who>-finish.webp (G, its All-Out finish card, 16:9) and <who>-evoker.webp (M, its
+               Evoker close-up in the summon cut-in, 16:9); a fighter's own look:
                game/art/onemore/<who>.webp (+ <who>-v2.webp), game/art/entrance/<who>.webp;
                a couple set's Showtime game/art/couples/<set>-showtime.webp; a theme's frame game/art/frames/<theme>.webp
-               (tools/femc-wardrobe.py onemore / onemore2 / entrance / theurgy / finish / showtime / frame; scan lists them in ready.js).
+               (tools/femc-wardrobe.py onemore / onemore2 / entrance / theurgy / finish / evoker / showtime / frame; scan lists them in ready.js).
                S3 (Nov 1 2026): "Try it on" ([data-wd-try] in the Wardrobe and the Boutique) plays game/tryon.js from tryOnSpec().
      weapon    a weapon look for a fighter: game/art/skins/<id>/weapon.webp (the Equipment tab shows it for her weapon slot).
      evoker    a tint on the Evoker prop in summons (CSS filter; code only).
@@ -412,15 +413,16 @@ window.FemcCosmetics = (() => {
   /* Part 8 (FEMC-SKINS-BATTLE-DESIGN H-L, Nov 1 2026), also per fighter: theme (the look's theme id), name (the look's name),
      couple (its couple set id), onemore / onemore2 / entrance (the art's path, when ready.js lists it: the worn look's, else
      for a fighter in their own clothes game/art/onemore|entrance/<who>.webp, onemore2 = onemore/<who>-v2.webp), theurgy /
-     finish (E / G: the worn look's own Theurgy cut-in and All-Out finish card), pose2b (an alternate sheet 2), omEyes ([x1, y1, x2, y2]
+     finish (E / G: the worn look's own Theurgy cut-in and All-Out finish card), evoker (M: its Evoker close-up in the summon
+     cut-in; battle.js draws the look's pose-1 frame without it), pose2b (an alternate sheet 2), omEyes ([x1, y1, x2, y2]
      in % of the v2 strip: ready.js eyes2, where the One More glints go; absent = the fixed 40% / 65% spot);
      and showtime { set: path }, frames { theme: path }.
      A missing file is simply absent, and battle.js draws its built-in version. */
   const ART_V8 = 1; // bump when one of these files is replaced in place
   function battle() {
     if (!S()) return null;
-    const pose = {}, pose2 = {}, pose2b = {}, face = {}, clean = {}, hand = {}, look = {}, theme = {}, name = {}, couple = {}, onemore = {}, onemore2 = {}, omEyes = {}, entrance = {}, theurgy = {}, finish = {}, showtime = {}, frames = {};
-    const out = { pose, pose2, pose2b, face, clean, hand, look, theme, name, couple, onemore, onemore2, omEyes, entrance, theurgy, finish, showtime, frames, css: '' };
+    const pose = {}, pose2 = {}, pose2b = {}, face = {}, clean = {}, hand = {}, look = {}, theme = {}, name = {}, couple = {}, onemore = {}, onemore2 = {}, omEyes = {}, entrance = {}, theurgy = {}, finish = {}, evoker = {}, showtime = {}, frames = {};
+    const out = { pose, pose2, pose2b, face, clean, hand, look, theme, name, couple, onemore, onemore2, omEyes, entrance, theurgy, finish, evoker, showtime, frames, css: '' };
     const A = readyArt(), art = (dir, f) => `${G.base}${dir}${f}?v=${ART_V8}`;
     ITEMS.filter(x => x.kind === 'skin').forEach(x => {
       const o = onIn(slotOf(x)); if (!o || pose[o.who]) return;
@@ -439,6 +441,7 @@ window.FemcCosmetics = (() => {
       if ((R.entrance || []).includes(w)) entrance[w] = art(skinDir(o.id), `${w}-entrance.webp`);
       if ((R.theurgy || []).includes(w)) theurgy[w] = art(skinDir(o.id), `${w}-theurgy.webp`); // E: the look's Theurgy cut-in
       if ((R.finish || []).includes(w)) finish[w] = art(skinDir(o.id), `${w}-finish.webp`); // G: the look's All-Out finish card
+      if ((R.evoker || []).includes(w)) evoker[w] = art(skinDir(o.id), `${w}-evoker.webp`); // M: the look's Evoker close-up (summon cut-in)
     });
     const own = A.own || {};
     (own.onemore || []).forEach(w => { if (!pose[w]) onemore[w] = art('assets/femc/game/art/onemore/', `${w}.webp`); });
