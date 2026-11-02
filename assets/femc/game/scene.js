@@ -197,6 +197,8 @@ window.FemcScene = (() => {
     G.eventFaces?.(vis.faces);
     const placeBefore = G.facePlace ? G.facePlace() : '';
     G.facePlace?.(vis.place);
+    // Seasonal S.E.E.S. faces (core.js seasonFace): the backdrop and, in a replay, its day; paintVis keeps it current.
+    const seasonBefore = G.faceScene ? G.faceScene() : null;
     let gained = opts.resume?.gained || 0;
     // Replay: the flags this scene's own lines set, over the save's (or over opts.replayFlags, which then stand alone).
     const over = {}, baseFlags = opts.replayFlags || null;
@@ -239,6 +241,7 @@ window.FemcScene = (() => {
       el.classList.toggle('gs-dark', !!vis.dark);
       const b = G.background(vis.place, vis.time, vis.bg);
       const bg = $('.gs-bg');
+      G.faceScene?.({ bg: (/\/bg\/([^/?#]+)\.webp/.exec(b?.url || '') || [])[1] || '', md: replay ? vis.date?.md || null : null });
       bg.className = `gs-bg${b ? ' on' : ''}${b?.mood ? ` ${b.mood}` : ''}`;
       bg.style.backgroundImage = b ? `url("${b.url}")` : '';
       if (vis.cg) { const src = `${G.base}assets/femc/cg/${vis.cg}.webp`; if (cgEl.getAttribute('src') !== src) cgEl.src = src; cgEl.style.setProperty('--focus', (window.FEMC_GAME_PLACES.cgFocus || {})[vis.cg] || 'center'); cgEl.hidden = false; el.classList.add('gs-cg-on'); }
@@ -573,6 +576,7 @@ window.FemcScene = (() => {
       closed = true;
       G.eventFaces?.(facesBefore);
       G.facePlace?.(placeBefore);
+      G.faceScene?.(seasonBefore);
       window.FemcWeather?.sceneEnd(el);
       clearTimeout(titleTimer); titleGo = null;
       document.removeEventListener('keydown', keys, true);

@@ -933,20 +933,50 @@ window.FemcGame = (() => {
     const p = FACE_PLACE && (w.placeFaces || []).find(([pre]) => FACE_PLACE.startsWith(pre));
     return (e && e[id]) || (p && p[1][id]) || (w.faces && w.faces[id]) || id;
   };
+  /* Seasonal S.E.E.S. faces (FEMC-ART-TODO 16, approved 2026-10-31; art batch 129): in the year's scenes, Solar and S.E.E.S.
+     wear the summer uniform from the uniform change (6/1-9/30, Yakushima included) and a winter coat outdoors (12/1-2/28,
+     the scene's backdrop outdoors by places.js weatherFx, as the weather decides). Never inside an epilogue world, never in
+     a scene that names event outfits (`faces`), never over a worn Wardrobe outfit; only while a scene plays (scene.js sets
+     the backdrop and, in a replay, the replayed day's date through faceScene). Order: event/world faces, the worn outfit,
+     the season, the plain id. A `<id>-summer` / `<id>-winter` folder must have faces for the swap to happen. */
+  const SEASON_FACES = {
+    summer: { from: 601, to: 930, ids: ['solar', 'yukari', 'junpei', 'akihiko', 'mitsuru', 'fuuka', 'ken'] },
+    winter: { from: 1201, to: 228, outdoor: true, ids: ['solar', 'yukari', 'junpei', 'akihiko', 'mitsuru', 'fuuka', 'ken'] }
+  };
+  let FACE_SCENE = null; // { bg: backdrop slug, md: 'M/D' in a replay } while a scene plays
+  function faceScene(v) { if (arguments.length) FACE_SCENE = v || null; return FACE_SCENE; }
+  const outdoors = slug => {
+    const fx = D.places?.weatherFx || {}, has = l => (l || []).some(p => slug === p || slug.startsWith(p));
+    return !!slug && !has(fx.none) && has(fx.outdoor);
+  };
+  function seasonOf(md) {
+    const [m, d] = String(md || '').split('/').map(Number); if (!m) return null;
+    const n = m * 100 + d;
+    return Object.keys(SEASON_FACES).find(k => { const s = SEASON_FACES[k]; return s.from <= s.to ? n >= s.from && n <= s.to : n >= s.from || n <= s.to; }) || null;
+  }
+  function seasonFace(id) {
+    if (!FACE_SCENE || !S || inWorld() || EVENT_FACES || !id) return id;
+    const k = seasonOf(FACE_SCENE.md || mdOf(S.day || 0)), s = k && SEASON_FACES[k];
+    if (!s || !s.ids.includes(id) || (s.outdoor && !outdoors(FACE_SCENE.bg || ''))) return id;
+    return (PORTRAITS()[`${id}-${k}`] || []).length ? `${id}-${k}` : id;
+  }
   function portrait(id, face) {
     id = worldFace(id);
     // (Solar's art wears the S.E.E.S. armband; Kat, Nov 1: show it from the first scene anyway, as P3P's FeMC does.)
     // An outfit from the Wardrobe with its own portraits, when "Outfits in scene portraits" is on (cosmetics.js).
     const worn = W.FemcCosmetics && W.FemcCosmetics.portrait(faceId(id), face);
     if (worn) return worn;
-    id = faceId(id);
+    id = faceId(seasonFace(id));
     const have = PORTRAITS()[id] || [];
     const b = face && face.replace(/-\d+$/, '');
     const CLOSE = { blushing: ['flustered', 'happy'], flustered: ['blushing', 'happy'], serious: ['sad', 'neutral'], happy: ['neutral'] };
     const pick = [face, b, ...(CLOSE[b] || []), 'neutral', have[0]].find(f => f && have.includes(f));
     return pick ? `${base}assets/femc/portraits/${id}/${pick}.webp?v=${W.FEMC_PORTRAIT_V || 1}` : null;
   }
-  const scale = id => (W.FEMC_PORTRAIT_SCALE || {})[faceId(worldFace(id))] || 1;
+  const scale = id => {
+    const w = worldFace(id), worn = W.FemcCosmetics && W.FemcCosmetics.portrait(faceId(w), 'neutral');
+    return (W.FEMC_PORTRAIT_SCALE || {})[faceId(worn ? w : seasonFace(w))] || 1;
+  };
   const name = id => CAST[id] || (id ? id[0].toUpperCase() + id.slice(1) : '');
   const castHas = id => id in CAST;
   /* Alternate card art for an arcana two links share (FEMC-ART-TODO 6A; tools/femc-tarot.py EXTRA -> tarot/<arcana>-2.webp).
@@ -2769,7 +2799,7 @@ window.FemcGame = (() => {
     LINKS, progress, isMet, linkStatus, linkScene, finishLink, linksAt, linkPlace, linkName, need, written, areaById, isHome,
     homeOf, leavesAtMax, maxOf, isMaxed, stretchOn, afterGap, afterList, tracesAt, nextTrace, farewellDue, farewellScene, christmasOptions, pickChristmas, christmasChoices, christmasLines,
     flag, effect, branch, applyChoice, addFragment, fragmentInfo, worldOf, fragSources, dropsOk,
-    portrait, scale, eventFaces, facePlace, name, castHas, silhouette, pendingFace, tarot, background, moodFor, sub, setDate, dateLabel,
+    portrait, scale, eventFaces, facePlace, faceScene, seasonFace, name, castHas, silhouette, pendingFace, tarot, background, moodFor, sub, setDate, dateLabel,
     activities, actById, showing, activityOk, activityInfo, doActivity, dormActs, dormInfo, dormOk, doDorm, doStudy, studyInfo, shopStock, buy, bookById, bookArt, readTonight, matSellPrice, sellMat,
     perkOn, bondRank, dailyPerks, actCost, dozeChance, dozed, canRetryClass, useGuidance, classHint, studyBonus, weekly,
     jobVisible, jobState, jobOk, hire, shiftScene, finishShift, jobsAhead, jobPay, raiseInfo, setJobRng, packs, packPick, packFits,

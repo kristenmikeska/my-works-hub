@@ -193,6 +193,21 @@ window.FEMC_PORTRAIT_SCALE = {
   'junpei-stay-hanami': 0.97,
   'mitsuru-stay-hanami': 0.96,
   'fuuka-stay-hanami': 1.08,
+  // Nov 1 2026 (art batch 129): seasonal S.E.E.S. faces, each matched to its year face's head (core.js seasonFace)
+  'solar-summer': 0.96,
+  'solar-winter': 0.99,
+  'akihiko-summer': 1.05,
+  'akihiko-winter': 0.98,
+  'yukari-summer': 1.15,
+  'yukari-winter': 1.02,
+  'junpei-summer': 0.87,
+  'junpei-winter': 0.81,
+  'mitsuru-summer': 0.91,
+  'mitsuru-winter': 0.95,
+  'fuuka-summer': 0.88,
+  'fuuka-winter': 0.94,
+  'ken-summer': 0.93,
+  'ken-winter': 0.97,
   sunghoon: 0.95,
   sunoo: 1.0,
   tifa: 1.03,
@@ -280,4 +295,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 28;
+window.FEMC_PORTRAIT_V = 29;

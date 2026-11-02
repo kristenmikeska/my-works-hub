@@ -11,12 +11,12 @@ When a fighter wears a Wardrobe look, the whole fight shows it: the figure, the 
 3. Save the picture into **New Adds** under its **Save as** name, and tell Claude. One picture per message.
 4. You don't have to make everything: a piece you skip just uses the fighter's usual version in the game.
 
-**Made so far (Nov 1 2026):** 187 pieces in the game, so they're off this list: 33 second pose sheets, 33 "1 MORE!" strips, 33 entrance cards, 32 Theurgy cut-ins, 32 finish cards (Solar's own look and all 32 of her other looks), 12 theme effect sheets and 12 HUD frames. **256 prompts left** below. (The 75 Evoker close-up prompts are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`.)
+**Made so far (Nov 1 2026):** 215 pieces in the game, so they're off this list: 39 second pose sheets, 39 "1 MORE!" strips, 39 entrance cards, 37 Theurgy cut-ins, 37 finish cards (Solar's own look and all 32 of her other looks; Haechan's own look and five of his), 12 theme effect sheets and 12 HUD frames. **228 prompts left** below. (The 75 Evoker close-up prompts are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`.)
 
 > **Start here: the best next picks**
 > 1. **The Sun & Moon couple Showtime** (Couple Showtimes → Sun & Moon): both halves already fight in their hoodies.
-> 2. **Haechan's own look** (Haechan → own look): second pose sheet, "1 MORE!" strip and entrance card, seen in every fight he's in.
-> 3. **Jungwon's own look** (Jungwon → own look): the same three pieces.
+> 2. **Jungwon's own look** (Jungwon → own look): second pose sheet, "1 MORE!" strip and entrance card, seen in every fight he's in.
+> 3. **Haechan's Black Suit** (Haechan → Black Suit): all five pieces.
 >
 > The foxfire theme sheet and frame can wait: its only look (Kiriko Cosplay) is retired for now.
 >
@@ -29,11 +29,11 @@ Its 75 prompts live in their own file, `FEMC-SKINS-EVOKER-PROMPTS.md`, to come b
 
 | Piece | What the player sees | Still to make |
 |---|---|---|
-| Second pose sheet | Six more poses: support cast, guard, dodge, knocked down, badly hurt, dash-in | 54 (11 own looks + 43 Wardrobe looks) |
-| Theurgy cut-in | The Theurgy cut-in shows the fighter in the look | 43 (Wardrobe looks; own looks already have theirs) |
-| "1 MORE!" eye strip | Hit a weakness: a thin strip of the fighter's eyes slams across the screen | 54 |
-| Entrance card | As a fight opens, the leader's look flashes on in a slanted card | 54 |
-| Finish card | The All-Out finish card shows the look | 43 (Wardrobe looks) |
+| Second pose sheet | Six more poses: support cast, guard, dodge, knocked down, badly hurt, dash-in | 48 (10 own looks + 38 Wardrobe looks) |
+| Theurgy cut-in | The Theurgy cut-in shows the fighter in the look | 38 (Wardrobe looks; own looks already have theirs) |
+| "1 MORE!" eye strip | Hit a weakness: a thin strip of the fighter's eyes slams across the screen | 48 |
+| Entrance card | As a fight opens, the leader's look flashes on in a slanted card | 48 |
+| Finish card | The All-Out finish card shows the look | 38 (Wardrobe looks) |
 | Evoker close-up (M) | The close-up of the fighter raising the Evoker to their temple when they summon shows the look | 75 (32 of Solar's looks + 43 Wardrobe looks) |
 | Couple Showtime | Both halves of a couple set fighting together get a special Bond cut-in | 6 |
 | Theme effect sheet | Skills sprinkle the look's theme (hearts, petals, stars…) over the normal effect | 1 (foxfire) |
@@ -68,247 +68,7 @@ Finish cards use the fighter's own finish line (listed at the top of each fighte
 
 ## Haechan
 
-Own look + 16 Wardrobe looks. Finish-card words: **TOO EASY**
-
-### Haechan: own look
-
-*Own look · no theme*
-
-#### 1. Second pose sheet
-
-Attach: `Current Skins/Base Game/Haechan/Haechan - battle pose sheet.png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `haechan-posesheet-2.png`
-```
-Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: a black suit jacket worn open over a white shirt with a loose black tie, black trousers, black shoes, his knives. Hair: his messy black hair. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, a knife held loosely in the other hand. Cell 2: guarding: braced low, his knives crossed in front of his body, forearms raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, his hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping a knife. Cell 5: badly hurt: standing but hunched, one hand pressed to his side, breathing hard, the knives lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, a knife in each hand, his hair and clothes streaming back. Persona 3 Reload official art style. No text.
-```
-
-#### 2. "1 MORE!" eye strip
-
-Attach: `Character Portraits/Haechan/Haechan-neutral.png`, then `Current Skins/Base Game/Haechan/Haechan - battle pose sheet.png`  
-Save as: `haechan-onemore.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. His hair: his messy black hair, exactly as in the FIRST attached image, strands falling across the frame. Behind the face: bold flat diagonal stripes and speed lines in hot pink and black. No text, no letters, no logos, no border.
-```
-
-#### 3. Entrance card
-
-Attach: `Current Skins/Base Game/Haechan/Haechan - battle pose sheet.png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `haechan-entrance.png`
-```
-A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (a black suit jacket worn open over a white shirt with a loose black tie, black trousers, black shoes, his knives. Hair: his messy black hair), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, a knife in each hand, one in a reverse grip, his hair and clothes whipping back, a cool, ready look straight at the viewer. Background: flat graphic shards of hot pink, black and white breaking apart diagonally, a few speed lines. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
-```
-
----
-
-### Sweater Date · `sk-haechan-sweater` · Hearts
-
-#### 1. Second pose sheet
-
-Attach: `Current Skins/Haechan/Sweater Date [sk-haechan-sweater] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-sweater-posesheet-2.png`
-```
-Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: a cosy date look: a chunky cream cable-knit sweater with the sleeves pushed up, a brown-and-red check scarf, dark straight jeans, white sneakers, a thin silver ring on one finger. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, a knife held loosely in the other hand. Cell 2: guarding: braced low, his knives crossed in front of his body, forearms raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, his hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping a knife. Cell 5: badly hurt: standing but hunched, one hand pressed to his side, breathing hard, the knives lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, a knife in each hand, his hair and clothes streaming back. Persona 3 Reload official art style. No text.
-```
-
-#### 2. Theurgy cut-in
-
-Attach: `Added to Game/Haechan-Theurgy-1.png`, then `Current Skins/Haechan/Sweater Date [sk-haechan-sweater] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-sweater-theurgy.png`
-```
-Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, colours, lighting, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: a cosy date look: a chunky cream cable-knit sweater with the sleeves pushed up, a brown-and-red check scarf, dark straight jeans, white sneakers, a thin silver ring on one finger. Same face as the THIRD attached image. Keep the Persona behind him exactly as in the first image, and keep his face in the same place in the frame. No text, no letters, no logos.
-```
-
-#### 3. "1 MORE!" eye strip
-
-Attach: `Current Skins/Haechan/Sweater Date [sk-haechan-sweater] - portraits (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-sweater-onemore.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. His hair: his messy black hair, exactly as in the FIRST attached image, strands falling across the frame. Behind the face: bold flat diagonal stripes and speed lines in hot pink, soft pink and black, a few tiny hearts scattered in the stripes. No text, no letters, no logos, no border.
-```
-
-#### 4. Entrance card
-
-Attach: `Current Skins/Haechan/Sweater Date [sk-haechan-sweater] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-sweater-entrance.png`
-```
-A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (a cosy date look: a chunky cream cable-knit sweater with the sleeves pushed up, a brown-and-red check scarf, dark straight jeans, white sneakers, a thin silver ring on one finger), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, a knife in each hand, one in a reverse grip, his hair and clothes whipping back, a cool, ready look straight at the viewer. Background: flat graphic shards of hot pink, soft pink and black breaking apart diagonally, a few speed lines, a scatter of little hearts. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
-```
-
-#### 5. Finish card
-
-Attach: `Current Skins/Base Game/Haechan/Haechan - finish card.png`, then `Current Skins/Haechan/Sweater Date [sk-haechan-sweater] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-sweater-finish.png`
-```
-Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image's layout and art style: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows. The character in the same place, size and crop as in the first image, turned toward the viewer with a confident finishing pose and a small knowing smile; huge bold slanted words where the first image has its words; flat graphic background shapes and thin lines behind him. Change his outfit and hair to the look in the SECOND attached image: a cosy date look: a chunky cream cable-knit sweater with the sleeves pushed up, a brown-and-red check scarf, dark straight jeans, white sneakers, a thin silver ring on one finger. Same face as the THIRD attached image. Background colours: hot pink, soft pink and black, little hearts drifting across. The words read exactly: TOO EASY. No other text, no logos, no watermark.
-```
-
-### Headphones On · `sk-haechan-headphones` · Music notes
-
-#### 1. Second pose sheet
-
-Attach: `Current Skins/Haechan/Headphones On [sk-haechan-headphones] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-headphones-posesheet-2.png`
-```
-Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: a white zip-up track jacket with royal-blue panels down the sleeves and collar, open over a neon lime-green zip hoodie with the hood pulled up over his head, a plain white tee underneath, white-and-silver over-ear headphones on over the hood, slim black pants and white sneakers. Hair: his own dark brown hair, messy and a little damp-looking, the fringe falling into his eyes under the hood (a look he has really worn). Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, a knife held loosely in the other hand. Cell 2: guarding: braced low, his knives crossed in front of his body, forearms raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, his hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping a knife. Cell 5: badly hurt: standing but hunched, one hand pressed to his side, breathing hard, the knives lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, a knife in each hand, his hair and clothes streaming back. Persona 3 Reload official art style. No text.
-```
-
-#### 2. Theurgy cut-in
-
-Attach: `Added to Game/Haechan-Theurgy-1.png`, then `Current Skins/Haechan/Headphones On [sk-haechan-headphones] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-headphones-theurgy.png`
-```
-Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, colours, lighting, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: a white zip-up track jacket with royal-blue panels down the sleeves and collar, open over a neon lime-green zip hoodie with the hood pulled up over his head, a plain white tee underneath, white-and-silver over-ear headphones on over the hood, slim black pants and white sneakers. Hair: his own dark brown hair, messy and a little damp-looking, the fringe falling into his eyes under the hood (a look he has really worn). Same face as the THIRD attached image. Keep the Persona behind him exactly as in the first image, and keep his face in the same place in the frame. No text, no letters, no logos.
-```
-
-#### 3. "1 MORE!" eye strip
-
-Attach: `Current Skins/Haechan/Headphones On [sk-haechan-headphones] - portraits (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-headphones-onemore.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. His hair: his own dark brown hair, messy and a little damp-looking, the fringe falling into his eyes under the hood (a look he has really worn), exactly as in the FIRST attached image, strands falling across the frame. Keep these from the look, exactly as in the FIRST attached image, wherever they show in the crop: a neon lime-green zip hoodie with the hood pulled up over his head; white-and-silver over-ear headphones on over the hood. Behind the face: bold flat diagonal stripes and speed lines in hot pink, black and neon lime, a few tiny music notes and sound waves scattered in the stripes. No text, no letters, no logos, no border.
-```
-
-#### 4. Entrance card
-
-Attach: `Current Skins/Haechan/Headphones On [sk-haechan-headphones] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-headphones-entrance.png`
-```
-A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (a white zip-up track jacket with royal-blue panels down the sleeves and collar, open over a neon lime-green zip hoodie with the hood pulled up over his head, a plain white tee underneath, white-and-silver over-ear headphones on over the hood, slim black pants and white sneakers. Hair: his own dark brown hair, messy and a little damp-looking, the fringe falling into his eyes under the hood (a look he has really worn)), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, a knife in each hand, one in a reverse grip, his hair and clothes whipping back, a cool, ready look straight at the viewer. Background: flat graphic shards of hot pink, black and neon lime breaking apart diagonally, a few speed lines, a scatter of music notes and little sound waves. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
-```
-
-#### 5. Finish card
-
-Attach: `Current Skins/Base Game/Haechan/Haechan - finish card.png`, then `Current Skins/Haechan/Headphones On [sk-haechan-headphones] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-headphones-finish.png`
-```
-Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image's layout and art style: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows. The character in the same place, size and crop as in the first image, turned toward the viewer with a confident finishing pose and a small knowing smile; huge bold slanted words where the first image has its words; flat graphic background shapes and thin lines behind him. Change his outfit and hair to the look in the SECOND attached image: a white zip-up track jacket with royal-blue panels down the sleeves and collar, open over a neon lime-green zip hoodie with the hood pulled up over his head, a plain white tee underneath, white-and-silver over-ear headphones on over the hood, slim black pants and white sneakers. Hair: his own dark brown hair, messy and a little damp-looking, the fringe falling into his eyes under the hood (a look he has really worn). Same face as the THIRD attached image. Background colours: hot pink, black and neon lime, music notes and little sound waves drifting across. The words read exactly: TOO EASY. No other text, no logos, no watermark.
-```
-
-### Arrivals Gate · `sk-haechan-arrivals` · plain (no theme)
-
-#### 1. Second pose sheet
-
-Attach: `Current Skins/Haechan/Arrivals Gate [sk-haechan-arrivals] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-arrivals-posesheet-2.png`
-```
-Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: an airport look: a boxy navy-black button-up overshirt with a pointed collar and a triangle-flap chest pocket, worn over a plain white tee; a dark brown leather crossbody strap with silver rivets across his chest; black straight trousers and white sneakers; thick black square-framed glasses; a thin silver ring. Hair: his own black hair, full and soft, the fringe falling to the top of his glasses, the sides covering his ears (a look he has really worn). Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, a knife held loosely in the other hand. Cell 2: guarding: braced low, his knives crossed in front of his body, forearms raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, his hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping a knife. Cell 5: badly hurt: standing but hunched, one hand pressed to his side, breathing hard, the knives lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, a knife in each hand, his hair and clothes streaming back. Persona 3 Reload official art style. No text.
-```
-
-#### 2. Theurgy cut-in
-
-Attach: `Added to Game/Haechan-Theurgy-1.png`, then `Current Skins/Haechan/Arrivals Gate [sk-haechan-arrivals] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-arrivals-theurgy.png`
-```
-Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, colours, lighting, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: an airport look: a boxy navy-black button-up overshirt with a pointed collar and a triangle-flap chest pocket, worn over a plain white tee; a dark brown leather crossbody strap with silver rivets across his chest; black straight trousers and white sneakers; thick black square-framed glasses; a thin silver ring. Hair: his own black hair, full and soft, the fringe falling to the top of his glasses, the sides covering his ears (a look he has really worn). Same face as the THIRD attached image. Keep the Persona behind him exactly as in the first image, and keep his face in the same place in the frame. No text, no letters, no logos.
-```
-
-#### 3. "1 MORE!" eye strip
-
-Attach: `Current Skins/Haechan/Arrivals Gate [sk-haechan-arrivals] - portraits (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-arrivals-onemore.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. His hair: his own black hair, full and soft, the fringe falling to the top of his glasses, the sides covering his ears (a look he has really worn), exactly as in the FIRST attached image, strands falling across the frame. Keep these from the look, exactly as in the FIRST attached image, wherever they show in the crop: thick black square-framed glasses. Behind the face: bold flat diagonal stripes and speed lines in hot pink and black. No text, no letters, no logos, no border.
-```
-
-#### 4. Entrance card
-
-Attach: `Current Skins/Haechan/Arrivals Gate [sk-haechan-arrivals] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-arrivals-entrance.png`
-```
-A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (an airport look: a boxy navy-black button-up overshirt with a pointed collar and a triangle-flap chest pocket, worn over a plain white tee; a dark brown leather crossbody strap with silver rivets across his chest; black straight trousers and white sneakers; thick black square-framed glasses; a thin silver ring. Hair: his own black hair, full and soft, the fringe falling to the top of his glasses, the sides covering his ears (a look he has really worn)), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, a knife in each hand, one in a reverse grip, his hair and clothes whipping back, a cool, ready look straight at the viewer. Background: flat graphic shards of hot pink, black and white breaking apart diagonally, a few speed lines. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
-```
-
-#### 5. Finish card
-
-Attach: `Current Skins/Base Game/Haechan/Haechan - finish card.png`, then `Current Skins/Haechan/Arrivals Gate [sk-haechan-arrivals] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-arrivals-finish.png`
-```
-Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image's layout and art style: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows. The character in the same place, size and crop as in the first image, turned toward the viewer with a confident finishing pose and a small knowing smile; huge bold slanted words where the first image has its words; flat graphic background shapes and thin lines behind him. Change his outfit and hair to the look in the SECOND attached image: an airport look: a boxy navy-black button-up overshirt with a pointed collar and a triangle-flap chest pocket, worn over a plain white tee; a dark brown leather crossbody strap with silver rivets across his chest; black straight trousers and white sneakers; thick black square-framed glasses; a thin silver ring. Hair: his own black hair, full and soft, the fringe falling to the top of his glasses, the sides covering his ears (a look he has really worn). Same face as the THIRD attached image. Background colours: the same as the FIRST attached image. The words read exactly: TOO EASY. No other text, no logos, no watermark.
-```
-
-### Window Seat · `sk-haechan-windowseat` · plain (no theme)
-
-#### 1. Second pose sheet
-
-Attach: `Current Skins/Haechan/Window Seat [sk-haechan-windowseat] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-windowseat-posesheet-2.png`
-```
-Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: an oversized black tee with a white grunge graphic print (no readable lettering); two silver chains at his throat, a fine rope chain and a chunky one with a silver carabiner clasp; light-wash straight blue jeans; white sneakers; a black leather backpack on one shoulder; clear champagne-tinted round-square glasses; a silver ring. Hair: his own honey-caramel brown hair, a centre-parted curtain fringe sweeping past his cheekbones, glossy and full, covering his ears (a look he has really worn). Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, a knife held loosely in the other hand. Cell 2: guarding: braced low, his knives crossed in front of his body, forearms raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, his hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping a knife. Cell 5: badly hurt: standing but hunched, one hand pressed to his side, breathing hard, the knives lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, a knife in each hand, his hair and clothes streaming back. Persona 3 Reload official art style. No text.
-```
-
-#### 2. Theurgy cut-in
-
-Attach: `Added to Game/Haechan-Theurgy-1.png`, then `Current Skins/Haechan/Window Seat [sk-haechan-windowseat] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-windowseat-theurgy.png`
-```
-Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, colours, lighting, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: an oversized black tee with a white grunge graphic print (no readable lettering); two silver chains at his throat, a fine rope chain and a chunky one with a silver carabiner clasp; light-wash straight blue jeans; white sneakers; a black leather backpack on one shoulder; clear champagne-tinted round-square glasses; a silver ring. Hair: his own honey-caramel brown hair, a centre-parted curtain fringe sweeping past his cheekbones, glossy and full, covering his ears (a look he has really worn). Same face as the THIRD attached image. Keep the Persona behind him exactly as in the first image, and keep his face in the same place in the frame. No text, no letters, no logos.
-```
-
-#### 3. "1 MORE!" eye strip
-
-Attach: `Current Skins/Haechan/Window Seat [sk-haechan-windowseat] - portraits (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-windowseat-onemore.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. His hair: his own honey-caramel brown hair, a centre-parted curtain fringe sweeping past his cheekbones, glossy and full, covering his ears (a look he has really worn), exactly as in the FIRST attached image, strands falling across the frame. Keep these from the look, exactly as in the FIRST attached image, wherever they show in the crop: clear champagne-tinted round-square glasses. Behind the face: bold flat diagonal stripes and speed lines in hot pink and black. No text, no letters, no logos, no border.
-```
-
-#### 4. Entrance card
-
-Attach: `Current Skins/Haechan/Window Seat [sk-haechan-windowseat] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-windowseat-entrance.png`
-```
-A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (an oversized black tee with a white grunge graphic print (no readable lettering); two silver chains at his throat, a fine rope chain and a chunky one with a silver carabiner clasp; light-wash straight blue jeans; white sneakers; a black leather backpack on one shoulder; clear champagne-tinted round-square glasses; a silver ring. Hair: his own honey-caramel brown hair, a centre-parted curtain fringe sweeping past his cheekbones, glossy and full, covering his ears (a look he has really worn)), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, a knife in each hand, one in a reverse grip, his hair and clothes whipping back, a cool, ready look straight at the viewer. Background: flat graphic shards of hot pink, black and white breaking apart diagonally, a few speed lines. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
-```
-
-#### 5. Finish card
-
-Attach: `Current Skins/Base Game/Haechan/Haechan - finish card.png`, then `Current Skins/Haechan/Window Seat [sk-haechan-windowseat] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-windowseat-finish.png`
-```
-Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image's layout and art style: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows. The character in the same place, size and crop as in the first image, turned toward the viewer with a confident finishing pose and a small knowing smile; huge bold slanted words where the first image has its words; flat graphic background shapes and thin lines behind him. Change his outfit and hair to the look in the SECOND attached image: an oversized black tee with a white grunge graphic print (no readable lettering); two silver chains at his throat, a fine rope chain and a chunky one with a silver carabiner clasp; light-wash straight blue jeans; white sneakers; a black leather backpack on one shoulder; clear champagne-tinted round-square glasses; a silver ring. Hair: his own honey-caramel brown hair, a centre-parted curtain fringe sweeping past his cheekbones, glossy and full, covering his ears (a look he has really worn). Same face as the THIRD attached image. Background colours: the same as the FIRST attached image. The words read exactly: TOO EASY. No other text, no logos, no watermark.
-```
-
-### Bad Influence · `sk-haechan-bad` · Thorns & bats
-
-#### 1. Second pose sheet
-
-Attach: `Current Skins/Haechan/Bad Influence [sk-haechan-bad] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-bad-posesheet-2.png`
-```
-Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: an oversized faded black tee with the sleeves rolled and a white block print (no readable lettering); two chunky silver Cuban-link chains; a silver chain bracelet; black fingerless tactical leather gloves; baggy black parachute cargo pants with a black jacket knotted around his hips and a red-orange shirt hanging loose at one side; a black belt with a silver buckle; black boots. Hair: his own jet-black hair, short and textured, the fringe falling across his forehead in messy windswept strands (a look he has really worn). Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, a knife held loosely in the other hand. Cell 2: guarding: braced low, his knives crossed in front of his body, forearms raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, his hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping a knife. Cell 5: badly hurt: standing but hunched, one hand pressed to his side, breathing hard, the knives lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, a knife in each hand, his hair and clothes streaming back. Persona 3 Reload official art style. No text.
-```
-
-#### 2. Theurgy cut-in
-
-Attach: `Added to Game/Haechan-Theurgy-1.png`, then `Current Skins/Haechan/Bad Influence [sk-haechan-bad] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-bad-theurgy.png`
-```
-Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, colours, lighting, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: an oversized faded black tee with the sleeves rolled and a white block print (no readable lettering); two chunky silver Cuban-link chains; a silver chain bracelet; black fingerless tactical leather gloves; baggy black parachute cargo pants with a black jacket knotted around his hips and a red-orange shirt hanging loose at one side; a black belt with a silver buckle; black boots. Hair: his own jet-black hair, short and textured, the fringe falling across his forehead in messy windswept strands (a look he has really worn). Same face as the THIRD attached image. Keep the Persona behind him exactly as in the first image, and keep his face in the same place in the frame. No text, no letters, no logos.
-```
-
-#### 3. "1 MORE!" eye strip
-
-Attach: `Current Skins/Haechan/Bad Influence [sk-haechan-bad] - portraits (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-bad-onemore.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. His hair: his own jet-black hair, short and textured, the fringe falling across his forehead in messy windswept strands (a look he has really worn), exactly as in the FIRST attached image, strands falling across the frame. Behind the face: bold flat diagonal stripes and speed lines in deep red, black and pink, a few tiny small bat silhouettes and thorny vines scattered in the stripes. No text, no letters, no logos, no border.
-```
-
-#### 4. Entrance card
-
-Attach: `Current Skins/Haechan/Bad Influence [sk-haechan-bad] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-bad-entrance.png`
-```
-A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (an oversized faded black tee with the sleeves rolled and a white block print (no readable lettering); two chunky silver Cuban-link chains; a silver chain bracelet; black fingerless tactical leather gloves; baggy black parachute cargo pants with a black jacket knotted around his hips and a red-orange shirt hanging loose at one side; a black belt with a silver buckle; black boots. Hair: his own jet-black hair, short and textured, the fringe falling across his forehead in messy windswept strands (a look he has really worn)), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, a knife in each hand, one in a reverse grip, his hair and clothes whipping back, a cool, ready look straight at the viewer. Background: flat graphic shards of deep red, black and pink breaking apart diagonally, a few speed lines, a scatter of small bat silhouettes and thorny vines. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
-```
-
-#### 5. Finish card
-
-Attach: `Current Skins/Base Game/Haechan/Haechan - finish card.png`, then `Current Skins/Haechan/Bad Influence [sk-haechan-bad] - pose sheet (recut).png`, then `Character Portraits/Haechan/Haechan-neutral.png`  
-Save as: `skin-sk-haechan-bad-finish.png`
-```
-Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image's layout and art style: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows. The character in the same place, size and crop as in the first image, turned toward the viewer with a confident finishing pose and a small knowing smile; huge bold slanted words where the first image has its words; flat graphic background shapes and thin lines behind him. Change his outfit and hair to the look in the SECOND attached image: an oversized faded black tee with the sleeves rolled and a white block print (no readable lettering); two chunky silver Cuban-link chains; a silver chain bracelet; black fingerless tactical leather gloves; baggy black parachute cargo pants with a black jacket knotted around his hips and a red-orange shirt hanging loose at one side; a black belt with a silver buckle; black boots. Hair: his own jet-black hair, short and textured, the fringe falling across his forehead in messy windswept strands (a look he has really worn). Same face as the THIRD attached image. Background colours: deep red, black and pink, small bat silhouettes and thorny vines drifting across. The words read exactly: TOO EASY. No other text, no logos, no watermark.
-```
+His own look and five of his looks (Sweater Date, Headphones On, Arrivals Gate, Window Seat, Bad Influence) are made; 11 looks left. Finish-card words: **TOO EASY**
 
 ### Garage Band · `sk-haechan-garage` · Music notes
 

@@ -199,7 +199,8 @@ try:
         ok(r['theme'] == {'solar': 'hearts'} and r['name'] == {'solar': 'Date Day'} and r['couple'] == {} and not r['showtime'] and not r['pose2b'], f'battle(): {r}')
         # Kat's Nov 1 art for Date Day: both One More pictures, the entrance card, the Theurgy cut-in and the finish card; 12 frames.
         for k, f in (('onemore', 'solar-onemore.webp'), ('onemore2', 'solar-onemore-v2.webp'), ('entrance', 'solar-entrance.webp'), ('theurgy', 'solar-theurgy.webp'), ('finish', 'solar-finish.webp')):
-            ok(list(r[k]) == ['solar'] and f'skins/sk-date/{f}' in r[k]['solar'], f'battle() {k}: {r[k]}')
+            own = ['haechan'] if k in ('onemore', 'entrance') else []  # Haechan's own strip and card (Nov 1, batch 128) ride along for his own look
+            ok(sorted(r[k]) == sorted(['solar'] + own) and f'skins/sk-date/{f}' in r[k]['solar'] and all(f'game/art/{k}/haechan.webp' in r[k][w] for w in own), f'battle() {k}: {r[k]}')
         ok(len(r['frames']) == 12 and 'foxfire' not in r['frames'], f'frames: {r["frames"]}')
         alt = p.eval("(()=>{FemcCosmetics.grantItem('sk-alphaphi');FemcCosmetics.equip('sk-alphaphi');const b=FemcCosmetics.battle();FemcCosmetics.equip('sk-date');return b.pose2b})()")
         ok(alt == {'solar': True}, f'Alpha Phi: an alternate sheet 2: {alt}')
@@ -239,7 +240,7 @@ try:
         rj = READY.read_text()
         data = json.loads(rj.split('window.FEMC_ART_READY = ')[1].rstrip().rstrip(';'))
         ph = data['skins']['sk-haechan-suit']
-        ok(all(ph.get(k) == ['haechan'] for k in ('onemore', 'onemore2', 'entrance', 'theurgy', 'finish')) and data['own']['onemore'] == ['akihiko', 'solar'] and data['own']['onemore2'] == ['solar']
+        ok(all(ph.get(k) == ['haechan'] for k in ('onemore', 'onemore2', 'entrance', 'theurgy', 'finish')) and data['own']['onemore'] == ['akihiko', 'haechan', 'solar'] and data['own']['onemore2'] == ['solar']
            and data['couples'] == ['cp-sunmoon'] and 'foxfire' in data['frames'], f'scan lists them: {ph}, {data["own"]}, {data["couples"]}, {data["frames"]}')
         cleanup()
         ok(READY.read_text() == READY0 and not any(f.exists() for f in outs.values()), 'test files gone, ready.js restored')

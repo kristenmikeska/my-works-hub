@@ -1789,5 +1789,117 @@ window.FEMC_PORTRAITS = {
   "sad",
   "serious",
   "surprised"
+ ],
+ "akihiko-summer": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "akihiko-winter": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "fuuka-summer": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "fuuka-winter": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "junpei-summer": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "junpei-winter": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "ken-summer": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "ken-winter": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "mitsuru-summer": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "mitsuru-winter": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "solar-summer": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "solar-winter": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "yukari-summer": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
+ ],
+ "yukari-winter": [
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised"
  ]
 };

@@ -26990,6 +26990,966 @@
         "assets/femc/profile/solar-poses/lookback.webp": "f42324466562fa38fa02b786348184e136ddf1fd2f70151b0cfd3667ed1fa433",
         "assets/femc/profile/solar-poses/sewing.webp": "0e89254644de89ef6b29a502684c98ce7d8f6cd88b19509233dcfd5d3c766a84"
       }
+    },
+    {
+      "batch": 128,
+      "source": "haechan-entrance.png",
+      "sourceNow": "New Adds/haechan-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "eb9b5af64c4ee20b2d9c8c306ed0a3dc0ef36c664b5a5bef0468ec5139155320",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/entrance/haechan.webp",
+      "skin": "own",
+      "character": "haechan",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when he leads, Try it on)",
+      "tool": "femc-wardrobe.py entrance haechan-entrance.png own haechan",
+      "identifiedBy": "Kat's save name",
+      "outputs": {
+        "assets/femc/game/art/entrance/haechan.webp": "07c68544c910ff351066ad48241a424a336b8cade77d0ea5ac64eeee80bbb60b"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "haechan-onemore.png",
+      "sourceNow": "New Adds/haechan-onemore.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "01635fb2d6dedfd5f16ae5997ff613cf3b434e10e79536824a801dc865948b1e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/onemore/haechan.webp",
+      "skin": "own",
+      "character": "haechan",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore haechan-onemore.png own haechan",
+      "identifiedBy": "Kat's save name",
+      "outputs": {
+        "assets/femc/game/art/onemore/haechan.webp": "ae0ab5cec08e126297d946deb7d08201f955b3571299d574df19d0b2120ca727"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "haechan-posesheet-2.png",
+      "sourceNow": "New Adds/haechan-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "050e63deb7f04f7696032503540ddb4fcf2c7d6d78d2aa0fafca2cf6d2f64aee",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/poses/haechan-pose2-0..5.webp",
+      "skin": "own",
+      "character": "haechan",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent), scale 0.953",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 haechan-posesheet-2.png own haechan",
+      "identifiedBy": "Kat's save name",
+      "outputs": {
+        "assets/femc/battle/art/poses/haechan-pose2-0.webp": "36116730568d8313d82097dc1f4d823630ae7fd1e70050d9914fcebebbeaa353",
+        "assets/femc/battle/art/poses/haechan-pose2-1.webp": "9ce6902844a7700a990109b8d445f0cdf49248cb67f15609a2079b5f71bcf21a",
+        "assets/femc/battle/art/poses/haechan-pose2-2.webp": "54e025a3e061c136aca05c46dcca209eef0ca69385ff3e201db086c2d7c3730c",
+        "assets/femc/battle/art/poses/haechan-pose2-3.webp": "252d8021a91a08861861e13093538dd766baf208023ac8362aef59c5b9136cd3",
+        "assets/femc/battle/art/poses/haechan-pose2-4.webp": "e76ba4f48da0ec02b136f548c1f3dfdb44a46390b05fd088daed5155a2b8593c",
+        "assets/femc/battle/art/poses/haechan-pose2-5.webp": "7052da715a3c2e8a76334eddf95d4d6af7e37ac5a9fc928674fb20bf7d837f3b"
+      },
+      "handPoint": "FIGHTER_HAND2 haechan: [0.24, 0.22] (battle.js; FIGHTER_POSES2 has haechan)"
+    },
+    {
+      "batch": 128,
+      "source": "Stylish Traveler with Twin Blades.png",
+      "sourceNow": "New Adds/HC-ArrivalsGate/Stylish Traveler with Twin Blades.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "f88d8270b5f224cf91cba760b6d54c982ac53c3907fc85a844d0512595ca3def",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-entrance.webp",
+      "skin": "sk-haechan-arrivals",
+      "character": "haechan",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when he leads, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"<folder>/Stylish Traveler with Twin Blades.png\" sk-haechan-arrivals haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-entrance.webp": "844ab195190c25fa5c89f2840d5ad7d472a469e4c1f7a88612ca9780d85f76db"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Determined gaze behind racing glasses.png",
+      "sourceNow": "New Adds/HC-ArrivalsGate/Determined gaze behind racing glasses.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "ca58a752bc66929ae163982c7dcbc404e6059396a83b28558de3a3b09c8ff4b1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-onemore.webp",
+      "skin": "sk-haechan-arrivals",
+      "character": "haechan",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"<folder>/Determined gaze behind racing glasses.png\" sk-haechan-arrivals haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-onemore.webp": "8c3a319d15931aa14120d791042547ff85e7ee7c80a1a9773da7c78a0ca0006e"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Midnight lunar Persona strike.png",
+      "sourceNow": "New Adds/HC-ArrivalsGate/Midnight lunar Persona strike.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "d63bc0e9369fe8d66a76ecaba3b2731693c33bdeb6f1424f40e1c3394bf307d0",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-theurgy.webp",
+      "skin": "sk-haechan-arrivals",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"<folder>/Midnight lunar Persona strike.png\" sk-haechan-arrivals haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-theurgy.webp": "83c6f1a98383a1efccc3df2c157940461b6488db10d24cfb0c1ebe8ae48e20a4"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Too Easy_ Swagger and Silver Dagger.png",
+      "sourceNow": "New Adds/HC-ArrivalsGate/Too Easy_ Swagger and Silver Dagger.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "a701268bbd84f5114ad7afd5dbacb9cbe9e664bad3acb397c34f1773a93c501e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-finish.webp",
+      "skin": "sk-haechan-arrivals",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"<folder>/Too Easy_ Swagger and Silver Dagger.png\" sk-haechan-arrivals haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-finish.webp": "4f16155ebd4459e35ad47e23cfc704e06e31a0339409f46bd8cdcc35237efbcd"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Six-pose anime knife fighter sheet.png",
+      "sourceNow": "New Adds/HC-ArrivalsGate/Six-pose anime knife fighter sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "69b4f564de17f1b1d3f36d16ccb981a9244dadef84bf39778b0bd29f6f7856e0",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-pose2-0..5.webp",
+      "skin": "sk-haechan-arrivals",
+      "character": "haechan",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent), scale 0.918",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"<folder>/Six-pose anime knife fighter sheet.png\" sk-haechan-arrivals haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-pose2-0.webp": "9c8966dbb572f37099aeda2127945934bbda3dec2f682a8dfe8558057276bac2",
+        "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-pose2-1.webp": "d4e25ecf87a86d2dd320515c1bf48d555252f1f75ce8f81b782a67a4d5666a5f",
+        "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-pose2-2.webp": "54761168c8ef51dea9a0412ea997cf186e9ff0d0f7bc64bee68099cf559b9d47",
+        "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-pose2-3.webp": "74e0760836457cfcc4e59f8d9999812e03587743a9c043db2f7f8e74b8992f90",
+        "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-pose2-4.webp": "dfb60a0d1f378e60e9b7b1f6a8b15b53886b90bb00e407df862547c000553537",
+        "assets/femc/game/art/skins/sk-haechan-arrivals/haechan-pose2-5.webp": "325b016e75791af94e4f392f70edc3114f00eb6599a7d3b1668e0072dd5a2888"
+      },
+      "handPoint": "LOOK_HAND2 'sk-haechan-arrivals': [0.33, 0.26]"
+    },
+    {
+      "batch": 128,
+      "source": "Streetwear fighter bursts through red shards.png",
+      "sourceNow": "New Adds/HC-BadInfluence/Streetwear fighter bursts through red shards.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "b388219652b97523f12f47835f3b5d89689f40926cb805ea3c60189daf28d098",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-bad/haechan-entrance.webp",
+      "skin": "sk-haechan-bad",
+      "character": "haechan",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when he leads, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"<folder>/Streetwear fighter bursts through red shards.png\" sk-haechan-bad haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-bad/haechan-entrance.webp": "de431550423d38c4b95b86375b2618f9aea59845ab682d9b243d43da639eb281"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Intense Eyes in a Grunge Banner.png",
+      "sourceNow": "New Adds/HC-BadInfluence/Intense Eyes in a Grunge Banner.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "0dc24e02644c634363241aa7b0075dbf53eca5102c1c46e979136a81bb16747f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-bad/haechan-onemore.webp",
+      "skin": "sk-haechan-bad",
+      "character": "haechan",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"<folder>/Intense Eyes in a Grunge Banner.png\" sk-haechan-bad haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-bad/haechan-onemore.webp": "61691e1b19206998e9302f20978090329697fdc85e6c62d3b0d935f1deb9bbd9"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Moonlit Dagger Strike with Crimson Lightning.png",
+      "sourceNow": "New Adds/HC-BadInfluence/Moonlit Dagger Strike with Crimson Lightning.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "7f3ae305404c2a72fca144af18ea36ab4cb90536c557942dd6db2ce5a8ad82ca",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-bad/haechan-theurgy.webp",
+      "skin": "sk-haechan-bad",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"<folder>/Moonlit Dagger Strike with Crimson Lightning.png\" sk-haechan-bad haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-bad/haechan-theurgy.webp": "8bd7c95c52063dcca0c6033ab762aaac4e7d7d901ca26b23aade4928002ac401"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Too Easy streetwear victory.png",
+      "sourceNow": "New Adds/HC-BadInfluence/Too Easy streetwear victory.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "a84c241a25b6393a63030db9870cd126a55928981d166f32d3b4a91fece852ac",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-bad/haechan-finish.webp",
+      "skin": "sk-haechan-bad",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"<folder>/Too Easy streetwear victory.png\" sk-haechan-bad haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-bad/haechan-finish.webp": "c06d97ed38668070a2e5869f4601df62fa261806913ac3274d2f2be26e40dff0"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Anime knife fighter battle poses.png",
+      "sourceNow": "New Adds/HC-BadInfluence/Anime knife fighter battle poses.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "52ba4f101bc6fbf7c9bb3b10145b3f0dcb14397bd42d60da91e48920ca0bbf85",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-bad/haechan-pose2-0..5.webp",
+      "skin": "sk-haechan-bad",
+      "character": "haechan",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent), scale 0.916",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"<folder>/Anime knife fighter battle poses.png\" sk-haechan-bad haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-bad/haechan-pose2-0.webp": "43b8c08ceda9ccc537d8f9a92b1533501c8f5ecf625a620ea683ebd0057011aa",
+        "assets/femc/game/art/skins/sk-haechan-bad/haechan-pose2-1.webp": "9787b0f8f8e50bd00d717d0bb236d77c134399d28ac4804857944b80a0ed178a",
+        "assets/femc/game/art/skins/sk-haechan-bad/haechan-pose2-2.webp": "572197cffe42761969dbf04966324551993b6692dae9a3ba27fc938b1b30a587",
+        "assets/femc/game/art/skins/sk-haechan-bad/haechan-pose2-3.webp": "c52f745f16ad972fefc40a3ad8035c96c317688dd39c0961f0a432a4a1ddec5c",
+        "assets/femc/game/art/skins/sk-haechan-bad/haechan-pose2-4.webp": "fb862ed0abdff481104ff41f705031983ba231aa7bd7add595dd571044254ea1",
+        "assets/femc/game/art/skins/sk-haechan-bad/haechan-pose2-5.webp": "d35d34be10b470b6ead8d993b31a47c75528181556e980a6d940b2a50e062ee1"
+      },
+      "handPoint": "LOOK_HAND2 'sk-haechan-bad': [0.3, 0.3]"
+    },
+    {
+      "batch": 128,
+      "source": "Neon Hooded Duelist, Twin Knives Ready.png",
+      "sourceNow": "New Adds/HC-HeadphonesOn/Neon Hooded Duelist, Twin Knives Ready.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "4330e8e36e24992492e258adcf221afc1d5bb1a97ca08f26b103db2726f0013c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-headphones/haechan-entrance.webp",
+      "skin": "sk-haechan-headphones",
+      "character": "haechan",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when he leads, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"<folder>/Neon Hooded Duelist, Twin Knives Ready.png\" sk-haechan-headphones haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-headphones/haechan-entrance.webp": "10477b38e08f4619a8599e9be6930a0998e5ace1173aaa475144337f81b0a0ea"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Determined Neon Eye Close-Up.png",
+      "sourceNow": "New Adds/HC-HeadphonesOn/Determined Neon Eye Close-Up.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "040e75ad2791ad049d59cab641f90f51d07932e0fc4d7432d4301bd8365e444e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-headphones/haechan-onemore.webp",
+      "skin": "sk-haechan-headphones",
+      "character": "haechan",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"<folder>/Determined Neon Eye Close-Up.png\" sk-haechan-headphones haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-headphones/haechan-onemore.webp": "9fc51a79876c9c18af85e3712f8d9c4574d48d564acefbef3867fa0f4129187c"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Lunar dagger strike with horned Persona.png",
+      "sourceNow": "New Adds/HC-HeadphonesOn/Lunar dagger strike with horned Persona.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "0f0e2fd75e3568733a315a1cd56f96f36728d9130e65ac69c1a79db1815bebb8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-headphones/haechan-theurgy.webp",
+      "skin": "sk-haechan-headphones",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"<folder>/Lunar dagger strike with horned Persona.png\" sk-haechan-headphones haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-headphones/haechan-theurgy.webp": "16ffcc3e533b743fbf2d50c803ee36c9ccfc5cbddb9032db392df2772ae146c4"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Too Easy Victory Splash.png",
+      "sourceNow": "New Adds/HC-HeadphonesOn/Too Easy Victory Splash.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "6ad4fa4d040c31002920e23a64c1aef4a9f6229f91df550a81abb01d5a4c403c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-headphones/haechan-finish.webp",
+      "skin": "sk-haechan-headphones",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"<folder>/Too Easy Victory Splash.png\" sk-haechan-headphones haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-headphones/haechan-finish.webp": "732060b66a3b8d0948be77f1fe2e53a5cf924bb8c1e28f159b7592e1b65cfd69"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Six character poses, clean transparent cutouts.png",
+      "sourceNow": "New Adds/HC-HeadphonesOn/Six character poses, clean transparent cutouts.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9dfaaf4eb7b4fbf26e6c41a018ab5b1ecbc159b1b01d8cd7642f78de118d89d3",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-headphones/haechan-pose2-0..5.webp",
+      "skin": "sk-haechan-headphones",
+      "character": "haechan",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent), scale 0.893",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"<folder>/Six character poses, clean transparent cutouts.png\" sk-haechan-headphones haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-headphones/haechan-pose2-0.webp": "042e92967c3deca5d841f241ad0e8ee93ade553a77b2a4c494165347239acbe9",
+        "assets/femc/game/art/skins/sk-haechan-headphones/haechan-pose2-1.webp": "914de1bfb20b949e77ee661911fc309cccb677a35a0c84a0a4e9c9ccb00ae084",
+        "assets/femc/game/art/skins/sk-haechan-headphones/haechan-pose2-2.webp": "341a734ffb2baddb5b95956f1a5a5b15dd7ba622561b78ba043704a269186bda",
+        "assets/femc/game/art/skins/sk-haechan-headphones/haechan-pose2-3.webp": "90783fb16502793fe65420b5d3877909014b5f7cde77cdb7c7ba23d4c2d7548d",
+        "assets/femc/game/art/skins/sk-haechan-headphones/haechan-pose2-4.webp": "677603af6d508b0cb14ca4cd9d62466c90efa1d84947f368cd1d977687e53514",
+        "assets/femc/game/art/skins/sk-haechan-headphones/haechan-pose2-5.webp": "8ab1b9328fd4f5a650cc7d0145b800300ac72dd226c98f08565183131692ec13"
+      },
+      "handPoint": "LOOK_HAND2 'sk-haechan-headphones': [0.8, 0.27]"
+    },
+    {
+      "batch": 128,
+      "source": "Battle Entrance with Twin Knives.png",
+      "sourceNow": "New Adds/HC-WindowSeat/Battle Entrance with Twin Knives.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "4d9e1cccfb87b34933ee691a9daf912eb1881cd2ee820f5e1a3c845b6c95e205",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-entrance.webp",
+      "skin": "sk-haechan-windowseat",
+      "character": "haechan",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when he leads, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"<folder>/Battle Entrance with Twin Knives.png\" sk-haechan-windowseat haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-entrance.webp": "9dfe8ede9162026215561f4541c82fe647053dbdcfef2f7e0ef105ada26c2403"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Intense Eyes Across Speed Lines.png",
+      "sourceNow": "New Adds/HC-WindowSeat/Intense Eyes Across Speed Lines.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "4aa03264389fd27a0b56332ee575bbeb185bc347e16388a0844d2ab4875468d8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-onemore.webp",
+      "skin": "sk-haechan-windowseat",
+      "character": "haechan",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"<folder>/Intense Eyes Across Speed Lines.png\" sk-haechan-windowseat haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-onemore.webp": "2bdb418e791799cafcb579cfb3a0d99b4cbc56ae7948178fc3dc1a5fbfb45059"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Lunar Armor Dagger Strike.png",
+      "sourceNow": "New Adds/HC-WindowSeat/Lunar Armor Dagger Strike.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "739f24e347806616eb846f1bb330e172c19c08cc34ebf44f8cda01371f3de6c1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-theurgy.webp",
+      "skin": "sk-haechan-windowseat",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"<folder>/Lunar Armor Dagger Strike.png\" sk-haechan-windowseat haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-theurgy.webp": "6d441f1f662a586ecb86e905f7486d30e925e921b4745c58fc0e10ca1918c919"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Too easy victory card.png",
+      "sourceNow": "New Adds/HC-WindowSeat/Too easy victory card.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "fef35f8032cc7992e1a37d5a5823725712573b1b2f8d664daa953f6d9aa7be1a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-finish.webp",
+      "skin": "sk-haechan-windowseat",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"<folder>/Too easy victory card.png\" sk-haechan-windowseat haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-finish.webp": "1ee80f6919d0a5e4df3c0a88c4b8839f31562921100d44814a12997d05b0e918"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Six-Position Anime Combat Pose Sheet.png",
+      "sourceNow": "New Adds/HC-WindowSeat/Six-Position Anime Combat Pose Sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "60a232313c991a9745a248fb98f576782ce34a6df7de5a18b06730b8438d8671",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-pose2-0..5.webp",
+      "skin": "sk-haechan-windowseat",
+      "character": "haechan",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent), scale 0.876",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"<folder>/Six-Position Anime Combat Pose Sheet.png\" sk-haechan-windowseat haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-pose2-0.webp": "1da6c470c74e3b7293f0fdb5ee7182580e235e51d5154a8e84abb844f7530731",
+        "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-pose2-1.webp": "aefdaf3b831ad3d5b82e7ad3cafc558119e5a1b33787e1c5f7aaeae57ee2b606",
+        "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-pose2-2.webp": "d38333eb4b993713403aa0dcdad4bc2e297e8ed182aa0f6211d5d8d419c648cd",
+        "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-pose2-3.webp": "ea43b25683e47b9337581cdcad4584766d7aed493008f4498b4f9202561ce7e0",
+        "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-pose2-4.webp": "e1515d27ce2c402e599cab1fcb5bc08d51520167b1ae0d649a324f046173c1a1",
+        "assets/femc/game/art/skins/sk-haechan-windowseat/haechan-pose2-5.webp": "152d69eeb7d7d60d47d51f1a42ca410bbd0715ccd1ddcd6df1f321cc942354ce"
+      },
+      "handPoint": "LOOK_HAND2 'sk-haechan-windowseat': [0.29, 0.19]"
+    },
+    {
+      "batch": 128,
+      "source": "Twin blades, autumn rush.png",
+      "sourceNow": "New Adds/Haechan-SweaterDate/Twin blades, autumn rush.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "8790988df26bad86d52cace38973271c2f01d2e3e92f20ea668605ca596ba1e6",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-sweater/haechan-entrance.webp",
+      "skin": "sk-haechan-sweater",
+      "character": "haechan",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when he leads, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"<folder>/Twin blades, autumn rush.png\" sk-haechan-sweater haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-sweater/haechan-entrance.webp": "434754069e2cb7660f3bc9bf7f5fd949f3053bec556ae11c9dc63101a5773311"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Intense autumn eye cut-in.png",
+      "sourceNow": "New Adds/Haechan-SweaterDate/Intense autumn eye cut-in.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "3ff75eacc37ac58c6182e42394ce4558e1e844035a76f8443a7ebd608bbd48af",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-sweater/haechan-onemore.webp",
+      "skin": "sk-haechan-sweater",
+      "character": "haechan",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"<folder>/Intense autumn eye cut-in.png\" sk-haechan-sweater haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-sweater/haechan-onemore.webp": "6d3aaf0fb5c7c8d6dd169e08d113783c2f1a1ddc158fa67fc117c99272857ae6"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Violet Crescent Persona Strike.png",
+      "sourceNow": "New Adds/Haechan-SweaterDate/Violet Crescent Persona Strike.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "42b6a12a60d8645efd63bf43570288748521f1f421b8d50a6c46490d4c9e3144",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-sweater/haechan-theurgy.webp",
+      "skin": "sk-haechan-sweater",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"<folder>/Violet Crescent Persona Strike.png\" sk-haechan-sweater haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-sweater/haechan-theurgy.webp": "af40a284ff4bda7dd1873a19249f0c13d4182ebf2ffbd40b4e45f9677c082dff"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Too easy_ autumn victory splash.png",
+      "sourceNow": "New Adds/Haechan-SweaterDate/Too easy_ autumn victory splash.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "fa2c2a91961206e4848d35535dcb148f5826c06368c5e8b33348308dba1b7dea",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-sweater/haechan-finish.webp",
+      "skin": "sk-haechan-sweater",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"<folder>/Too easy_ autumn victory splash.png\" sk-haechan-sweater haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-sweater/haechan-finish.webp": "e745b996c1db464d71e3bfc5899ace43f937ea6b6f73150b8199c72578d0c999"
+      }
+    },
+    {
+      "batch": 128,
+      "source": "Six-panel anime knife battle poses.png",
+      "sourceNow": "New Adds/Haechan-SweaterDate/Six-panel anime knife battle poses.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "542a72bd1abda02b90253d69eadc045cd20d03cfc17d4726d60ecf11b0e85013",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-sweater/haechan-pose2-0..5.webp",
+      "skin": "sk-haechan-sweater",
+      "character": "haechan",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent), scale 0.911",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"<folder>/Six-panel anime knife battle poses.png\" sk-haechan-sweater haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-sweater/haechan-pose2-0.webp": "2688230ca14312ae51cdf6db7272f60c4a78f433c9c9d1f518471f6f77d7792b",
+        "assets/femc/game/art/skins/sk-haechan-sweater/haechan-pose2-1.webp": "dd6fbd004e5e08202c534c710b422c36518eb0ad3f24474430daf218a475bc60",
+        "assets/femc/game/art/skins/sk-haechan-sweater/haechan-pose2-2.webp": "97e505fda983e991ac5e25d5a5987f7f7fccc17498c76222f38e64105281b808",
+        "assets/femc/game/art/skins/sk-haechan-sweater/haechan-pose2-3.webp": "476c20ad8b76c7a10b5902598fadc7d1139e0802997369cd064ab9f4898fc333",
+        "assets/femc/game/art/skins/sk-haechan-sweater/haechan-pose2-4.webp": "8b5ea6316add9b47ee2ed901624c45cd25c69015c191333d7fb19f1843a2d341",
+        "assets/femc/game/art/skins/sk-haechan-sweater/haechan-pose2-5.webp": "3d431e5ff6de0dd53179e7988dd9e143da06759b6c168cc07cd2ba870d8a23c9"
+      },
+      "handPoint": "LOOK_HAND2 'sk-haechan-sweater': [0.21, 0.21]"
+    },
+    {
+      "batch": 129,
+      "source": "solar-summer-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "2ac39704fb9c51fcf34a9281945262941ed7c44b7bd11dd6ccee61b188bf348f",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/solar-summer/neutral.webp",
+      "character": "solar-summer",
+      "conversion": "transparent 3x2 sheet: tools/femc-sheet-alpha.py (Character Portraits/Solar-Summer/), femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.96,
+      "placement": "core.js SEASON_FACES.summer (6/1-9/30, any scene); place.js borrows solar's x / s / m with its own y",
+      "outputs": {
+        "assets/femc/portraits/solar-summer/flustered.webp": "cb8736a39b21ea90a9fdd56594579f1cba512cc2661674ea48c0353b5338980f",
+        "assets/femc/portraits/solar-summer/happy.webp": "6aa2b335632f210d04d9b65dcda4827aa7111dd9b8f70e651a062fcd58a2e52f",
+        "assets/femc/portraits/solar-summer/neutral.webp": "a1d2c3d588a92571b0c09812981a9d84273eac9719df67fc67d7f7c25588d7f8",
+        "assets/femc/portraits/solar-summer/sad.webp": "012709adf83e4268f85788bf9d2393c99b0a2f14f688a9bc25cf794680d49754",
+        "assets/femc/portraits/solar-summer/serious.webp": "a66b024b51f111b33b0767bcb4e304c24fb45d66d90cae3840e11d3392e1674d",
+        "assets/femc/portraits/solar-summer/surprised.webp": "e1ca55b878ef49e2938d09b8b682fea6336d8b6216271d26dd4f66c14a913fd4"
+      }
+    },
+    {
+      "batch": 129,
+      "source": "solar-winter-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "aeea6c4c95f4db2056069d1a6eecfb06220ef37314f109854ab4a2619eea1fdc",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/solar-winter/neutral.webp",
+      "character": "solar-winter",
+      "conversion": "transparent 3x2 sheet: tools/femc-sheet-alpha.py (Character Portraits/Solar-Winter/), femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.99,
+      "placement": "core.js SEASON_FACES.winter (12/1-2/28, outdoor backdrops); place.js borrows solar's x / s / m with its own y",
+      "outputs": {
+        "assets/femc/portraits/solar-winter/flustered.webp": "07540e0a47fe82f8618ca6b9104bb2330aa799a1adebdf5f4481c51a1dbd7f27",
+        "assets/femc/portraits/solar-winter/happy.webp": "d3e16cffc3aede29e66e3d17c49263e5fbfc8d5ca5fa85dc4aff29bf31e81d38",
+        "assets/femc/portraits/solar-winter/neutral.webp": "fdfb47423c0d92e83043f8a67ae3ca4f4be17a47b340a02194c5b49a69f56e20",
+        "assets/femc/portraits/solar-winter/sad.webp": "ec96f24ba7d1bea8a090f094c9bb5db236a3e024e51babdde37b70e5073b414d",
+        "assets/femc/portraits/solar-winter/serious.webp": "e8e51e0df8c05e3d79d923260517b6bffe464e3b45ab1b1a139b917568f3cee3",
+        "assets/femc/portraits/solar-winter/surprised.webp": "5fb1f39aff6063fc0ebac104674c2b5b3755ff189d0211e215c53604750386d6"
+      }
+    },
+    {
+      "batch": 129,
+      "source": "akihiko-summer-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c6707b5b66d75f305e36abf39b94ee73dbd96daa61ec644e18c837056a9bec1b",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/akihiko-summer/neutral.webp",
+      "character": "akihiko-summer",
+      "conversion": "transparent 3x2 sheet: tools/femc-sheet-alpha.py (Character Portraits/Akihiko-Summer/), femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.05,
+      "placement": "core.js SEASON_FACES.summer (6/1-9/30, any scene); place.js borrows akihiko's x / s / m with its own y",
+      "outputs": {
+        "assets/femc/portraits/akihiko-summer/flustered.webp": "b748386a744e9b6447179bded3b96a3b169ca1c189f802b40c67418d023ebabd",
+        "assets/femc/portraits/akihiko-summer/happy.webp": "4e43538bfec8e02fb2f1a66a1566aac83a4ccaafb0b91cf8f86acca9b9d599fd",
+        "assets/femc/portraits/akihiko-summer/neutral.webp": "dee7602228ffe02f0a590409569c948b73a06b7546640d14a7eeb47d4d14b9d8",
+        "assets/femc/portraits/akihiko-summer/sad.webp": "07dcce062e5bb0f1264fda27c0102caf88220f1741dc7dbd64b863698e04eeb0",
+        "assets/femc/portraits/akihiko-summer/serious.webp": "898490938924264305cd30e888fee5b9b9fbe86f899d62582cf1cb7cce4c3b09",
+        "assets/femc/portraits/akihiko-summer/surprised.webp": "79b27b89a7fb76adea538b24cfaa78a80d58eadf650e14bf320d10eb5f5e67df"
+      }
+    },
+    {
+      "batch": 129,
+      "source": "akihiko-winter-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "91b226fa2bba54ed4cc61a9237e00d2205a7c56589732a3d5953c0cc5392339b",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/akihiko-winter/neutral.webp",
+      "character": "akihiko-winter",
+      "conversion": "transparent 3x2 sheet: tools/femc-sheet-alpha.py (Character Portraits/Akihiko-Winter/), femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.98,
+      "placement": "core.js SEASON_FACES.winter (12/1-2/28, outdoor backdrops); place.js borrows akihiko's x / s / m with its own y",
+      "outputs": {
+        "assets/femc/portraits/akihiko-winter/flustered.webp": "b25a4efafe637cd674e539294f01234babf93243127fef76732597681f3affa4",
+        "assets/femc/portraits/akihiko-winter/happy.webp": "e107a6162d9d09f0f31bc06057a4f5f4dba588b8924683fb9c69e70ebe7a2459",
+        "assets/femc/portraits/akihiko-winter/neutral.webp": "8e27f64310bcc8d6976c29952a4222274d0ba0523c7485e6c9c8562fd4ba3734",
+        "assets/femc/portraits/akihiko-winter/sad.webp": "6118d3f8922ec6b55f7af9f4702a536e6ed6fe870a51a92b9499bd0c4a6c4bea",
+        "assets/femc/portraits/akihiko-winter/serious.webp": "703387f9188b02e9b91d9dd0e10e3e1db3db1ee24898ecfe265a4eabe7c6a0bb",
+        "assets/femc/portraits/akihiko-winter/surprised.webp": "f70388395d18b2ccf353fa3e794d0da1aa1495bc9e8b1e8759ab135851289f89"
+      }
+    },
+    {
+      "batch": 129,
+      "source": "yukari-summer-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3a085c221bc3dea0e358f395f4dc629490973bb00da3796e31bbb12dbb55cca5",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/yukari-summer/neutral.webp",
+      "character": "yukari-summer",
+      "conversion": "transparent 3x2 sheet: tools/femc-sheet-alpha.py (Character Portraits/Yukari-Summer/), femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.15,
+      "placement": "core.js SEASON_FACES.summer (6/1-9/30, any scene); place.js borrows yukari's x / s / m with its own y",
+      "outputs": {
+        "assets/femc/portraits/yukari-summer/flustered.webp": "504f9a9183a31b1cc4a7e386f549263d8186456a2070f10cc8369414dcd99f52",
+        "assets/femc/portraits/yukari-summer/happy.webp": "c23bfebfb47855eeebff3d2999962640296fea0633b9cf8892705d107fa07242",
+        "assets/femc/portraits/yukari-summer/neutral.webp": "f19b78a5178c237b374cfd86af27bc06265db4ad4b7caff7bfe98a60c67b68f8",
+        "assets/femc/portraits/yukari-summer/sad.webp": "25576cc194130a893013340fb7e3a9e47a9a315ab93241d9ab00edc2b510aaf0",
+        "assets/femc/portraits/yukari-summer/serious.webp": "a603af1671a7cc6e7f25ae7c82d71e71faf4c0dd1ea3920a838923c8661be2dd",
+        "assets/femc/portraits/yukari-summer/surprised.webp": "0688b2efe9eed333fe30d7dc09b9f596f4a453a6653b26e319c914a68c4dd45a"
+      }
+    },
+    {
+      "batch": 129,
+      "source": "yukari-winter-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "80cd8bf8c147dd38d03c040f02cc6f83884c4b0e9914bc579f95a72b12615fc3",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/yukari-winter/neutral.webp",
+      "character": "yukari-winter",
+      "conversion": "transparent 3x2 sheet: tools/femc-sheet-alpha.py (Character Portraits/Yukari-Winter/), femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 1.02,
+      "placement": "core.js SEASON_FACES.winter (12/1-2/28, outdoor backdrops); place.js borrows yukari's x / s / m with its own y",
+      "outputs": {
+        "assets/femc/portraits/yukari-winter/flustered.webp": "c7cc1598cc1db5f4c8b48b01cd12ebc7f2d2af8ceedd19336d8f466bf3ad81c2",
+        "assets/femc/portraits/yukari-winter/happy.webp": "4a564b8c9033d3ddabf1d00e25905060c69de83a7c47e85d001078d6535ed094",
+        "assets/femc/portraits/yukari-winter/neutral.webp": "0bd631bebea30d30e25e2cfc61d848a4df56333d240220d5c5e627b640ad7a16",
+        "assets/femc/portraits/yukari-winter/sad.webp": "10fac0556d3ae6aa183c02bc73c4093f1578bc50c152f669e82b03cbdbd12ecd",
+        "assets/femc/portraits/yukari-winter/serious.webp": "0c29fdc33e8088716b88b40f75f1448e568bb1a66ef628af8d89f434894e995f",
+        "assets/femc/portraits/yukari-winter/surprised.webp": "ea9ce00d87da690ab74536a29528ef95f763ab54f7f52e1f8778cda958b9ad0b"
+      }
+    },
+    {
+      "batch": 129,
+      "source": "junpei-summer-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1160f496d824a8e2afb9af7d39a2357f55ef7770719ec0e052def43d3e63ce44",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/junpei-summer/neutral.webp",
+      "character": "junpei-summer",
+      "conversion": "transparent 3x2 sheet: tools/femc-sheet-alpha.py (Character Portraits/Junpei-Summer/), femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.87,
+      "placement": "core.js SEASON_FACES.summer (6/1-9/30, any scene); place.js borrows junpei's x / s / m with its own y",
+      "outputs": {
+        "assets/femc/portraits/junpei-summer/flustered.webp": "17a88bde497dfddb67c1dc95db84bc7297d9cbd9071c92023a8fe602c9a4c0d7",
+        "assets/femc/portraits/junpei-summer/happy.webp": "feee7ef186513eef5b0c6e71cab65248c092a883cf258a3a4f8fcf23dc2bad4f",
+        "assets/femc/portraits/junpei-summer/neutral.webp": "b01f49d2863f6d9074e08a509871ee69ed15c741f7b5dd89f42f72806f12feb3",
+        "assets/femc/portraits/junpei-summer/sad.webp": "f3632cbfa556d2b00bc423b06ef937956fef7400ea2b6175d098391f068dad52",
+        "assets/femc/portraits/junpei-summer/serious.webp": "bc49bc94de07eb45b1924814248b0bb5761cf5c93ea346837fda4ff19643d2a5",
+        "assets/femc/portraits/junpei-summer/surprised.webp": "b10ff3a65550278b9b737ef01c8af706fadd08e70d100e89899f21ededfed979"
+      }
+    },
+    {
+      "batch": 129,
+      "source": "junpei-winter-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "69be161d3bb32f12064bb30ece06a6e0190c31f85b19ca71f38cf863b34ae54c",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/junpei-winter/neutral.webp",
+      "character": "junpei-winter",
+      "conversion": "transparent 3x2 sheet: tools/femc-sheet-alpha.py (Character Portraits/Junpei-Winter/), femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.81,
+      "placement": "core.js SEASON_FACES.winter (12/1-2/28, outdoor backdrops); place.js borrows junpei's x / s / m with its own y",
+      "outputs": {
+        "assets/femc/portraits/junpei-winter/flustered.webp": "284d348cf592150a56a2e5575447921fbd4fd55a2d1b2bebdec2e18ae8c6f48c",
+        "assets/femc/portraits/junpei-winter/happy.webp": "27ea33ba39a17179a97a329d1d1bfe0ded8f2b89679df405df511c79426c63bf",
+        "assets/femc/portraits/junpei-winter/neutral.webp": "8a9a5552c5127cba72d55b5e2ac79794df536c424d0087e76988c6e9cf6569e7",
+        "assets/femc/portraits/junpei-winter/sad.webp": "eb6757b2b373e8c2f409f81ae765f399cdf6b8f8633958ae812712eac390bd41",
+        "assets/femc/portraits/junpei-winter/serious.webp": "b631bba37723900e855d7527a0da22e049c2fce7af3e4fce58c7a87b26c0565c",
+        "assets/femc/portraits/junpei-winter/surprised.webp": "ebb05bcebd8735be9435dbab67683c4e727b3d8dbd9ee6657ef6b945f0a2bf4b"
+      }
+    },
+    {
+      "batch": 129,
+      "source": "mitsuru-summer-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a152b17b1cf8c08b53bd005058d1d6c2f6fe501f1337a9b07ca599dc23bf9853",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/mitsuru-summer/neutral.webp",
+      "character": "mitsuru-summer",
+      "conversion": "transparent 3x2 sheet: tools/femc-sheet-alpha.py (Character Portraits/Mitsuru-Summer/), femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.91,
+      "placement": "core.js SEASON_FACES.summer (6/1-9/30, any scene); place.js borrows mitsuru's x / s / m with its own y",
+      "outputs": {
+        "assets/femc/portraits/mitsuru-summer/flustered.webp": "145273fbbabcea36eebfcab8f1a5098f9bda2b1d70739eeb0459ba0830369279",
+        "assets/femc/portraits/mitsuru-summer/happy.webp": "56f784baf0cb04ab57d7b65e9d12c33bec18b9f584542917cb31a4095f7f11cf",
+        "assets/femc/portraits/mitsuru-summer/neutral.webp": "0188157e1a60ca16f395935dd5f998429439f31f734a18b7a972bd1b9cd32a80",
+        "assets/femc/portraits/mitsuru-summer/sad.webp": "35ac93893adeb072ec1d6a373afbe84c6b8a0f0a1311a639347213a5229c7955",
+        "assets/femc/portraits/mitsuru-summer/serious.webp": "7232ad7b30995ca952b353eab81677b6eeaf907e56d8328b81a8486d508a05b5",
+        "assets/femc/portraits/mitsuru-summer/surprised.webp": "6902f3c8a35c4b23239f00f53ac4f9dca2ccaed6e20681b3cfc9f034ee6e7530"
+      }
+    },
+    {
+      "batch": 129,
+      "source": "mitsuru-winter-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "56568c982bd2c497f46967307137fb1c4bf2775a8f46aa13a4593f14584a61b6",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/mitsuru-winter/neutral.webp",
+      "character": "mitsuru-winter",
+      "conversion": "transparent 3x2 sheet: tools/femc-sheet-alpha.py (Character Portraits/Mitsuru-Winter/), femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.95,
+      "placement": "core.js SEASON_FACES.winter (12/1-2/28, outdoor backdrops); place.js borrows mitsuru's x / s / m with its own y",
+      "outputs": {
+        "assets/femc/portraits/mitsuru-winter/flustered.webp": "b734bc3a5586f8e879d93f1e0ed5f6bbf85c1a3f0eb508cc18a292181b7ef89c",
+        "assets/femc/portraits/mitsuru-winter/happy.webp": "9e4e3305e38c5a4d06de1a03b4f6feb822583d73c68969133215a1fa3a690b74",
+        "assets/femc/portraits/mitsuru-winter/neutral.webp": "396a58b81d9254a10b873c5d6cc9ccee257a6f9491c29e2fba63e2890ec836c3",
+        "assets/femc/portraits/mitsuru-winter/sad.webp": "90d9d00f7efd9a33d389f11d6081489d70cb6aae259cd207051560252fad440b",
+        "assets/femc/portraits/mitsuru-winter/serious.webp": "afe00a7f26999f3060c1499e294d25b7c7e978de56f5af63301af030caec3cc9",
+        "assets/femc/portraits/mitsuru-winter/surprised.webp": "8381b2c208d2eb12af7ebecd86e56d75efecf67a36ff1bec577645f4537e5146"
+      }
+    },
+    {
+      "batch": 129,
+      "source": "fuuka-summer-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8f5742930ef4d0f826fef3961159207c97ca039a158f390fc9ee8564957f29cd",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/fuuka-summer/neutral.webp",
+      "character": "fuuka-summer",
+      "conversion": "transparent 3x2 sheet: tools/femc-sheet-alpha.py (Character Portraits/Fuuka-Summer/), femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.88,
+      "placement": "core.js SEASON_FACES.summer (6/1-9/30, any scene); place.js borrows fuuka's x / s / m with its own y",
+      "outputs": {
+        "assets/femc/portraits/fuuka-summer/flustered.webp": "88b6c972f5ea641363bca9fdde3168b970db7f54f7bd760eac12c3e62a9e0329",
+        "assets/femc/portraits/fuuka-summer/happy.webp": "8b723550048713b1068391c1abadaf7ed5710174f78caa3c03d2c0715905a0fb",
+        "assets/femc/portraits/fuuka-summer/neutral.webp": "87a224ea8a96b00fc6fa728bb0913ddd23f958e72ec28080338456a27642e0c5",
+        "assets/femc/portraits/fuuka-summer/sad.webp": "b7bddd1cf294bfd01152ab0f4d95853ed4b27225180674a7b88ed786e3bac8dd",
+        "assets/femc/portraits/fuuka-summer/serious.webp": "fcac261e7c370fa9f3c2b28feb3d9c171fd08ae9c49c558f7afac0f66372b272",
+        "assets/femc/portraits/fuuka-summer/surprised.webp": "d13e9263adebb1a846185cb726a075d252f53294edc1f5bb471d3f7ef8a7d6fd"
+      }
+    },
+    {
+      "batch": 129,
+      "source": "Fuuka’s winter expression sprite sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b4d11f47fe0a2718c797fbfb7ee9dab808eda140f840da891b7cd978e0bca463",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/fuuka-winter/neutral.webp",
+      "character": "fuuka-winter",
+      "conversion": "transparent 3x2 sheet: tools/femc-sheet-alpha.py (Character Portraits/Fuuka-Winter/), femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.94,
+      "placement": "core.js SEASON_FACES.winter (12/1-2/28, outdoor backdrops); place.js borrows fuuka's x / s / m with its own y",
+      "outputs": {
+        "assets/femc/portraits/fuuka-winter/flustered.webp": "59a70bd41943105c89d6f37b4a8386df8aff643e663f864cc5879fdb14668610",
+        "assets/femc/portraits/fuuka-winter/happy.webp": "cca7609c6e46439297a8a99a23141e06ef687a3b9c6ed55ffb69113b558e711f",
+        "assets/femc/portraits/fuuka-winter/neutral.webp": "9e57adf7788293fe9bfef9c3f8682da26d8c0785c47e7647b27cd30ada799df9",
+        "assets/femc/portraits/fuuka-winter/sad.webp": "f288f6d5ac54c2c2a5e16ca25a1c354fcfcf8406530df359186280d7b307e783",
+        "assets/femc/portraits/fuuka-winter/serious.webp": "be1c5cf9bd185277527c45143e5f0f4a005627dc037e163c5db9effd0d83bfd8",
+        "assets/femc/portraits/fuuka-winter/surprised.webp": "e543eda960faa3fed74559e5370fa2d09778b734aabc39935ac4756f7f9621a1"
+      }
+    },
+    {
+      "batch": 129,
+      "source": "ken-summer-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "efb8c3024c52bdc583f1a3b55ca10183da6daeb45290d6d332f4d56b1dd0c825",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/ken-summer/neutral.webp",
+      "character": "ken-summer",
+      "conversion": "transparent 3x2 sheet: tools/femc-sheet-alpha.py (Character Portraits/Ken-Summer/), femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.93,
+      "placement": "core.js SEASON_FACES.summer (6/1-9/30, any scene); place.js borrows ken's x / s / m with its own y",
+      "outputs": {
+        "assets/femc/portraits/ken-summer/flustered.webp": "f402873fccf274278b95b6170a0c5409e9d31b6a33be6db6b5d55c609c34834f",
+        "assets/femc/portraits/ken-summer/happy.webp": "ebeca90c18cb245f1b5cf00d5c2124d15f9fd32d45d47feccb6df986248fa534",
+        "assets/femc/portraits/ken-summer/neutral.webp": "88e6642cc40794a01fa4957f75ea2124c0fe9af1136f9f7f49e98cc5a841a345",
+        "assets/femc/portraits/ken-summer/sad.webp": "21982610b998c5f46fb4096965f742bc09f3809ca1e3c0cf34f18924bff9ed54",
+        "assets/femc/portraits/ken-summer/serious.webp": "6c2288bd0ecaadd4ba2499189f7b9a34e63dd614ff60710a8dc7012b7610e5b2",
+        "assets/femc/portraits/ken-summer/surprised.webp": "8f9bd99f10c2f362e44b91e9f04241ba90a7a900485707cc6860f7ce40ffccdf"
+      }
+    },
+    {
+      "batch": 129,
+      "source": "ken-winter-sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c69f98dc7decec53b5468c51766c80fb633e68c54763a6f6e561751ff4c897b7",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/ken-winter/neutral.webp",
+      "character": "ken-winter",
+      "conversion": "transparent 3x2 sheet: tools/femc-sheet-alpha.py (Character Portraits/Ken-Winter/), femc-portraits.py aligned (WebP q86)",
+      "sheetOrder": "top row neutral, happy, sad; bottom row serious, surprised, flustered",
+      "scale": 0.97,
+      "placement": "core.js SEASON_FACES.winter (12/1-2/28, outdoor backdrops); place.js borrows ken's x / s / m with its own y",
+      "outputs": {
+        "assets/femc/portraits/ken-winter/flustered.webp": "d2f754202b45e3dcd6db6640cfecb57ea8a6497d22c5a9ed63362a35c961ef68",
+        "assets/femc/portraits/ken-winter/happy.webp": "5f4ebf8b1fec6a7bd2f7fbcf983830c12eaea41bd3ffd7958289623214c34657",
+        "assets/femc/portraits/ken-winter/neutral.webp": "34ecbfecaf1635181aaef0c5a3b73e6018cb80cc14579982c9f3d8e35f076a33",
+        "assets/femc/portraits/ken-winter/sad.webp": "cd3b54d39e1dd17adc82934f067087504501c20f2618814588d6f62677e391a2",
+        "assets/femc/portraits/ken-winter/serious.webp": "27e7cb4c3da210983e1c7e0ec6c89d39eba8c38b1338cea8ad18210077d6bb62",
+        "assets/femc/portraits/ken-winter/surprised.webp": "cc18115d91ecafe456789f190987d8bddfb74666be670b30b9d14eaf5a2f3c62"
+      }
     }
   ],
   "batch1Validation": {
@@ -28449,5 +29409,9 @@
   "batch123Validation": {
     "tests": "femc_skins_battle.py (all 8 sections incl. new looks) passed; femc_cosmetics --only inbattle,equip, femc_fx_art, femc_theurgy, femc_building --only fight passed; strips, cut-ins, finish cards, frames, theme bursts and sheet 2 checked by eye at 1440 x 900 and 390 x 844",
     "note": "Skins in battle art (Nov 1 2026): 21 Solar looks (Strawberry Milk from WIP/Strawberry Milk/, one folder per look with free names) x 6 pieces, Emo Night sheet 2, Solar own entrance + strips, 11 theme sheets, 12 frames; skin-sk-thesun-portraits.png handled by the parallel Sun-portraits agent. Missing: theme-foxfire, frame-foxfire."
+  },
+  "batch129Validation": {
+    "tests": "tests/femc_seasons.py (77 checks: art, windows, worn outfit, event faces, replay, no errors), tools/femc-check-scenes.py, femc_links --links yukari,fuuka, femc_living: all pass; summer / winter / plain scenes checked by eye at 1440 x 900 and 390 x 844",
+    "note": "Seasonal S.E.E.S. faces (FEMC-ART-TODO 16): Solar, Yukari, Junpei, Akihiko, Mitsuru, Fuuka, Ken; Aigis, Shinjiro and Koromaru have none by design. FEMC_PORTRAIT_V 29."
   }
 }
