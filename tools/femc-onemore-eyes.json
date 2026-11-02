@@ -53,6 +53,15 @@
   ],
   "sha256": "bc39bd2eb517e4e584bd5e5b70f92e871e9a583aa59c04d997911ebb5310ca41"
  },
+ "assets/femc/game/art/skins/sk-cp-moviedate/solar-onemore-v2.webp": {
+  "eyes": [
+   38.2,
+   68.1,
+   59.2,
+   63.9
+  ],
+  "sha256": "a5201a1c71183223aea1caaa97aa74233b76df13ba7c27a48a07280116a355af"
+ },
  "assets/femc/game/art/skins/sk-cp-ringside/solar-onemore-v2.webp": {
   "eyes": [
    38.2,
@@ -79,6 +88,15 @@
    62.5
   ],
   "sha256": "5b04ea01335591a1fd96772a9d2e07a459ba4fa332d9ab52a3ee412066d7a6e8"
+ },
+ "assets/femc/game/art/skins/sk-emo/solar-onemore-v2.webp": {
+  "eyes": [
+   38.3,
+   62.2,
+   62.7,
+   60.8
+  ],
+  "sha256": "9613c0020b1edc17f61974411fd5cbdfc6d8fd93cb1d526c5bd5fabd5e88b2e6"
  },
  "assets/femc/game/art/skins/sk-esports/solar-onemore-v2.webp": {
   "eyes": [
@@ -142,6 +160,24 @@
    57.2
   ],
   "sha256": "9ee0a8e42a054a239140d1198f1bc726d7ce436a9d27b43138b1b4b4cd10d5f3"
+ },
+ "assets/femc/game/art/skins/sk-prowl/solar-onemore-v2.webp": {
+  "eyes": [
+   40.2,
+   59.7,
+   64.8,
+   63.3
+  ],
+  "sha256": "26871a4d4960c6788631fd9c08bf31650cccaf96698868743dffb9fd4691c959"
+ },
+ "assets/femc/game/art/skins/sk-roadwork/solar-onemore-v2.webp": {
+  "eyes": [
+   38.2,
+   63.3,
+   60.8,
+   61.1
+  ],
+  "sha256": "18116c8b7c801782936d17cf9d7b5b94a582dbb9feb50b98b4f677f58caf6e06"
  },
  "assets/femc/game/art/skins/sk-snake/solar-onemore-v2.webp": {
   "eyes": [

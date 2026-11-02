@@ -26343,6 +26343,481 @@
         "assets/femc/game/art/skins/sk-cp-sunmoon/solar-pose2-4.webp": "98953639aca6aa668d6ace82e055150de2e46eeccfcd9c87d4fb3882ac32a839",
         "assets/femc/game/art/skins/sk-cp-sunmoon/solar-pose2-5.webp": "96e35a79180dad2fd63ca4b65a78c7b0e24b371f041ba68561732015e47872e6"
       }
+    },
+    {
+      "batch": 125,
+      "source": "Gothic Naginata Battle Entrance.png",
+      "sourceNow": "New Adds/Emo Night/Gothic Naginata Battle Entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "5ed467c6358475542edeae5080a67ea486be21e67bac6c12b63e8b2ea290109b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/solar-entrance.webp",
+      "skin": "sk-emo",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"<folder>/Gothic Naginata Battle Entrance.png\" sk-emo solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/solar-entrance.webp": "8925bf3818656bedd7f633dbfe71a110a891938bbadbc6565e1f88551ce5ed24"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Rise and shine gothic finisher.png",
+      "sourceNow": "New Adds/Emo Night/Rise and shine gothic finisher.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "6d6311d0505dd45e4b213007b0433f8e8cb6524eed35c2792cc4accf781c7bb1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/solar-finish.webp",
+      "skin": "sk-emo",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"<folder>/Rise and shine gothic finisher.png\" sk-emo solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/solar-finish.webp": "0aca1476913f1c052e9ca50e10b8f5203efa0f1c3d9ffca0695e98e1f5489315"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Gothic Naginata Eclipse Attack.png",
+      "sourceNow": "New Adds/Emo Night/Gothic Naginata Eclipse Attack.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "cea8cebb36e1e1927cc76f8e4344c871d939c2ca5ea60b9c88601c41f8dd190e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/solar-theurgy.webp",
+      "skin": "sk-emo",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"<folder>/Gothic Naginata Eclipse Attack.png\" sk-emo solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/solar-theurgy.webp": "b796b6ca500fa490e400b086a410bcae68f90b7c26b71057a36ac8dfc06122cf"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Gothic Sideways Gaze.png",
+      "sourceNow": "New Adds/Emo Night/Gothic Sideways Gaze.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "24437a941e034ea79eb8ecd5cbe55eaf8a7879070639e51cb4d2b718b78e548f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/solar-onemore.webp",
+      "skin": "sk-emo",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat (v1, the sideways glance)",
+      "tool": "femc-wardrobe.py onemore \"<folder>/Gothic Sideways Gaze.png\" sk-emo solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/solar-onemore.webp": "2411a6bc499ee70e721d43c63fbde8dfd39115ade4491667baf40e006deb42b7"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Gothic Gaze, Golden Sun.png",
+      "sourceNow": "New Adds/Emo Night/Gothic Gaze, Golden Sun.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "4b2562c670a74f025f3372cf207102ba28f0c4535a15757a1fd899990c4605f0",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/solar-onemore-v2.webp",
+      "skin": "sk-emo",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP; eyes found by om_eyes (ready.js eyes2)",
+      "placement": "One More strip, second beat (v2, looking front; glints on the detected eyes)",
+      "tool": "femc-wardrobe.py onemore2 \"<folder>/Gothic Gaze, Golden Sun.png\" sk-emo solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/solar-onemore-v2.webp": "9613c0020b1edc17f61974411fd5cbdfc6d8fd93cb1d526c5bd5fabd5e88b2e6"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Pink racing naginata entrance.png",
+      "sourceNow": "New Adds/Morning Roadwork/Pink racing naginata entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "802d7e9c2e626a8bee1ab3fb7fbf1f6fa87905ecbbfedb83d530f7841256c5a9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-roadwork/solar-entrance.webp",
+      "skin": "sk-roadwork",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"<folder>/Pink racing naginata entrance.png\" sk-roadwork solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-roadwork/solar-entrance.webp": "6e11ac8eace13b34dad8f33c7a457a3f7711f554d79ffe983ce98eaade08809d"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Rise and Shine Sports Victory.png",
+      "sourceNow": "New Adds/Morning Roadwork/Rise and Shine Sports Victory.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "bf19d54b2e3235a1ffb028f3398f9ddb570c74877ab54946d49bd4bc8ab13bba",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-roadwork/solar-finish.webp",
+      "skin": "sk-roadwork",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"<folder>/Rise and Shine Sports Victory.png\" sk-roadwork solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-roadwork/solar-finish.webp": "34e1cebab8cffe9c985ad5915393e4e7657bbcbeb8b9c9f1e6f3702bd99d4f4d"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Solar Naginata Awakening.png",
+      "sourceNow": "New Adds/Morning Roadwork/Solar Naginata Awakening.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "568d9db8184ec58435b7ad58d2031c5699cb8c771dc2bb78f9bf3a1229f7359c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-roadwork/solar-theurgy.webp",
+      "skin": "sk-roadwork",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"<folder>/Solar Naginata Awakening.png\" sk-roadwork solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-roadwork/solar-theurgy.webp": "d65a241a75520bd56a68db2820c2d2818045cdc0620bbaa11d9d71183de2dea4"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Determined eyes amid sporty pink stripes.png",
+      "sourceNow": "New Adds/Morning Roadwork/Determined eyes amid sporty pink stripes.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "04a0e585611c27d5cb3813094f0dbf2b9c2afe615602372a0f654d8c734a31d7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-roadwork/solar-onemore.webp",
+      "skin": "sk-roadwork",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat (v1, the sideways glance)",
+      "tool": "femc-wardrobe.py onemore \"<folder>/Determined eyes amid sporty pink stripes.png\" sk-roadwork solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-roadwork/solar-onemore.webp": "54690e88cf65244739a63bc5987add9e1c09594d0fb927f3f5fc2e9a891bf1f1"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Determined Eyes on Racing Stripes.png",
+      "sourceNow": "New Adds/Morning Roadwork/Determined Eyes on Racing Stripes.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "343cb5dc54d24e173c6afeb00c8b4e33de25d05f05027efe4d5f03f205f9fc49",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-roadwork/solar-onemore-v2.webp",
+      "skin": "sk-roadwork",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP; eyes found by om_eyes (ready.js eyes2)",
+      "placement": "One More strip, second beat (v2, looking front; glints on the detected eyes)",
+      "tool": "femc-wardrobe.py onemore2 \"<folder>/Determined Eyes on Racing Stripes.png\" sk-roadwork solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-roadwork/solar-onemore-v2.webp": "18116c8b7c801782936d17cf9d7b5b94a582dbb9feb50b98b4f677f58caf6e06"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Six dynamic naginata battle poses.png",
+      "sourceNow": "New Adds/Morning Roadwork/Six dynamic naginata battle poses.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3ccc77d641857277115f199959efd40cfc0921adb7833ae8f74e58a00f871dac",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-roadwork/solar-pose2-0..5.webp",
+      "skin": "sk-roadwork",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent)",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"<folder>/Six dynamic naginata battle poses.png\" sk-roadwork solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-roadwork/solar-pose2-0.webp": "760339523ee2c83f87034bc8817f61a724b9d8448932cf7df6c47c6bed67bde2",
+        "assets/femc/game/art/skins/sk-roadwork/solar-pose2-1.webp": "16724eab4fd0705e3c1a28efd3c25fb08afd20d76b9f7acf8e97771fcaf847be",
+        "assets/femc/game/art/skins/sk-roadwork/solar-pose2-2.webp": "36cd4318a039236e45c78014a695b074bd9da39a9b9e867d802ee68b43dcc1f1",
+        "assets/femc/game/art/skins/sk-roadwork/solar-pose2-3.webp": "fb41b9dc28b07ccff9fea56727b414c69043c078d8798a11351045c4565418f4",
+        "assets/femc/game/art/skins/sk-roadwork/solar-pose2-4.webp": "b2332f4aa17d543610b46ede92b08417bc23a1b63d87d3822844677de8c51a6e",
+        "assets/femc/game/art/skins/sk-roadwork/solar-pose2-5.webp": "4dd3fb8c92646f05271b6d2a8b31ad2183690c640d9fa6e30b5760faa98bc7fe"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Stylish naginata battle entrance.png",
+      "sourceNow": "New Adds/Movie Date/Stylish naginata battle entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "7257153f5c55dbf0c7ec466ddf64f8d6467d47edd4e25f9a91cd027f3533130b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-moviedate/solar-entrance.webp",
+      "skin": "sk-cp-moviedate",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"<folder>/Stylish naginata battle entrance.png\" sk-cp-moviedate solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-moviedate/solar-entrance.webp": "147b4ff8771d0c5ff2f77fc3e61ecdc7ced8dff5f714bc568376bb5c7fa1593c"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Sassy Movie Date_ Rise and Shine.png",
+      "sourceNow": "New Adds/Movie Date/Sassy Movie Date_ Rise and Shine.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "49d0259725761561f6ab8bca44d2c059c1f4d03aa3fcc6837cf175bf6e5ae679",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-moviedate/solar-finish.webp",
+      "skin": "sk-cp-moviedate",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"<folder>/Sassy Movie Date_ Rise and Shine.png\" sk-cp-moviedate solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-moviedate/solar-finish.webp": "4b64d64c437119c2bdbc7027b704617ff3ccc0d9fc7e62d9ff9541264cc0ab30"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Cinema date solar naginata strike.png",
+      "sourceNow": "New Adds/Movie Date/Cinema date solar naginata strike.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "70630e9a028087530b017c04d148251b15c2b4cc6cc2c4a8c118382ae671cb3d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-moviedate/solar-theurgy.webp",
+      "skin": "sk-cp-moviedate",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"<folder>/Cinema date solar naginata strike.png\" sk-cp-moviedate solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-moviedate/solar-theurgy.webp": "c4961e987f12f8a8a70c0ad3809b94f16e2a6f21ecb23c0ec32ade6e1dd9b5b0"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Sassy Movie Date Stare.png",
+      "sourceNow": "New Adds/Movie Date/Sassy Movie Date Stare.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "ae4976c5c21a0bb61933e49557b82a6a1d9fa7b4bedb4fc09396b8515ad69b94",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-moviedate/solar-onemore.webp",
+      "skin": "sk-cp-moviedate",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat (v1, the sideways glance)",
+      "tool": "femc-wardrobe.py onemore \"<folder>/Sassy Movie Date Stare.png\" sk-cp-moviedate solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-moviedate/solar-onemore.webp": "1b9925acf6a2242cd4bad769dc6e11144b2ce9e2f7d4b5c0c3222d577cd216ab"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Golden Iris Movie-Date Close-Up.png",
+      "sourceNow": "New Adds/Movie Date/Golden Iris Movie-Date Close-Up.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "355a0701668de556807e5cf74bc35b323af13219443826943ae37b3f355f3e39",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-moviedate/solar-onemore-v2.webp",
+      "skin": "sk-cp-moviedate",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP; eyes found by om_eyes (ready.js eyes2)",
+      "placement": "One More strip, second beat (v2, looking front; glints on the detected eyes)",
+      "tool": "femc-wardrobe.py onemore2 \"<folder>/Golden Iris Movie-Date Close-Up.png\" sk-cp-moviedate solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-moviedate/solar-onemore-v2.webp": "a5201a1c71183223aea1caaa97aa74233b76df13ba7c27a48a07280116a355af"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Six Naginata Battle Poses.png",
+      "sourceNow": "New Adds/Movie Date/Six Naginata Battle Poses.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b977df59bf8aa6ce9fb974219d0fe0cbe124f6e38cb1f04e9b208b64d426d332",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-moviedate/solar-pose2-0..5.webp",
+      "skin": "sk-cp-moviedate",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent)",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"<folder>/Six Naginata Battle Poses.png\" sk-cp-moviedate solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-moviedate/solar-pose2-0.webp": "c5a61f393d9a0455723bd22c15a62c106f1e18ff34660d4b6b59d414ed4383fb",
+        "assets/femc/game/art/skins/sk-cp-moviedate/solar-pose2-1.webp": "dae28e7ce1472aef406894c943c50a81f4bc4293e190b0444f65bffc766492ce",
+        "assets/femc/game/art/skins/sk-cp-moviedate/solar-pose2-2.webp": "6258447e8a22fc26ed0a6626858e6c1230b4cef3cfa4faae33f44634276cc732",
+        "assets/femc/game/art/skins/sk-cp-moviedate/solar-pose2-3.webp": "93e8668544db72a88f8647758ee665e8b6daaba30bb88b6f678e5bf33fc2b992",
+        "assets/femc/game/art/skins/sk-cp-moviedate/solar-pose2-4.webp": "0e2024203cb5dbcccf3c5e33c5f8d8cd32eab1477aa64096e4fc8235bbcc738e",
+        "assets/femc/game/art/skins/sk-cp-moviedate/solar-pose2-5.webp": "04106b550409c7fca288c8a953daf4bca2b6de447d8da86f04edde41dcf094d8"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Leopard-Print Naginata Battle Entrance.png",
+      "sourceNow": "New Adds/Night Prowl/Leopard-Print Naginata Battle Entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "1f5c03fb290aa078b8e18ab60d03c45edb8d88335154586fe1905f0de1785885",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-prowl/solar-entrance.webp",
+      "skin": "sk-prowl",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"<folder>/Leopard-Print Naginata Battle Entrance.png\" sk-prowl solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-prowl/solar-entrance.webp": "d8bd54c5754e37003866065f8c98c3d43b9e74acb798c90a7ad89b125a505ecb"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Rise and shine victory splash.png",
+      "sourceNow": "New Adds/Night Prowl/Rise and shine victory splash.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "23723763dcec5856b5faf7360fa6f0c52d031449c8ad7488956885c8329cde1b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-prowl/solar-finish.webp",
+      "skin": "sk-prowl",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"<folder>/Rise and shine victory splash.png\" sk-prowl solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-prowl/solar-finish.webp": "576e167bb100f074660603d40e31d78cf8003d772bc76558df6ef3fac2e8c910"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Solar Persona’s leopard-clad naginata strike.png",
+      "sourceNow": "New Adds/Night Prowl/Solar Persona’s leopard-clad naginata strike.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "8c20dba61a88f22b067449d37c432742036f2414f1904463988dafe2fc2e7361",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-prowl/solar-theurgy.webp",
+      "skin": "sk-prowl",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"<folder>/Solar Persona’s leopard-clad naginata strike.png\" sk-prowl solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-prowl/solar-theurgy.webp": "d0d92fcd8152aa6d20a651e402bf4abaae92ea73ee432efe267de5cebc668985"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Intense eyes over bold night stripes.png",
+      "sourceNow": "New Adds/Night Prowl/Intense eyes over bold night stripes.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "0f455077b907611c86d750d15c8b5b77e84d4c6fcc1a45a027c967bda25a989c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-prowl/solar-onemore.webp",
+      "skin": "sk-prowl",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat (v1, the sideways glance)",
+      "tool": "femc-wardrobe.py onemore \"<folder>/Intense eyes over bold night stripes.png\" sk-prowl solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-prowl/solar-onemore.webp": "bb7152f2c6cd8427e8e1a1d12d8144a6985127e6c326bd4a74eb19d049fe71ab"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Golden sun eyes in stripes.png",
+      "sourceNow": "New Adds/Night Prowl/Golden sun eyes in stripes.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "ffafa1630e3304c2993b2438f02f07ea6471cebb428d8b804d5738b902e7b622",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-prowl/solar-onemore-v2.webp",
+      "skin": "sk-prowl",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP; eyes found by om_eyes (ready.js eyes2)",
+      "placement": "One More strip, second beat (v2, looking front; glints on the detected eyes)",
+      "tool": "femc-wardrobe.py onemore2 \"<folder>/Golden sun eyes in stripes.png\" sk-prowl solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-prowl/solar-onemore-v2.webp": "26871a4d4960c6788631fd9c08bf31650cccaf96698868743dffb9fd4691c959"
+      }
+    },
+    {
+      "batch": 125,
+      "source": "Clean transparent six-pose character sheet.png",
+      "sourceNow": "New Adds/Night Prowl/Clean transparent six-pose character sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "47cbffaeacea8f42688fcfb16c19d939fa6a63e536a3fe3e135135ee11310288",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-prowl/solar-pose2-0..5.webp",
+      "skin": "sk-prowl",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent)",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"<folder>/Clean transparent six-pose character sheet.png\" sk-prowl solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-prowl/solar-pose2-0.webp": "03dbf74824699acf1ef94b7cf76de74cb0d9005d71c360e994665322bae1cf72",
+        "assets/femc/game/art/skins/sk-prowl/solar-pose2-1.webp": "dd68332d09fcf890c432e845180da70d4023856a306016ef291d3db76b0d8f55",
+        "assets/femc/game/art/skins/sk-prowl/solar-pose2-2.webp": "ebf94cb0a91172b9575ec5227af8b2972bddf379802e80ff0175e5ee8f1d3122",
+        "assets/femc/game/art/skins/sk-prowl/solar-pose2-3.webp": "f9ee7c4b090578c83db4207c005dde1dffacce06883c1053267edc086164f158",
+        "assets/femc/game/art/skins/sk-prowl/solar-pose2-4.webp": "fe08d44489b981b4117b649354f86fb35e613adb048c0c52a3fc5cec6f622db0",
+        "assets/femc/game/art/skins/sk-prowl/solar-pose2-5.webp": "497f13afd32d27aa3e02e0a54968e9ee519c4c07f6ce4fc2902203f80221e277"
+      }
     }
   ],
   "batch1Validation": {

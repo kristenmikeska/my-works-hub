@@ -622,15 +622,15 @@ try:
             view(p, w, h); time.sleep(0.35); shots2.append(shot(p, f'sheet2-yukata-dodge-{w}x{h}'))
         view(p, 1440, 900); go_on(); time.sleep(0.5)
         clean(p, 'sheet2 yukata')
-        p.top(); setup(wear=['sk-cp-moviedate'])
+        p.top(); setup(wear=['sk-phantom'])  # Nov 1: Movie Date got its sheet 2 (batch 125); Phantom Thief is sheet 1 only
         night(['solar', 'akihiko', 'yukari', 'junpei'], "FemcBattle.save.cutins='off';")
         enter(); bdrive(SOLAR_MENU, 120)
         d = p.eval("FemcBattle.poses2('solar')")
-        ok(not d['has'] and len(d['frames']) == 6 and not any('pose2' in f for f in d['frames']), f'Movie Date (sheet 1 only): {d}')
-        # F: Movie Date is hearts; a skill hit plays Kat's theme-hearts sheet small on top
+        ok(not d['has'] and len(d['frames']) == 6 and not any('pose2' in f for f in d['frames']), f'Phantom Thief (sheet 1 only): {d}')
+        # F: Phantom Thief is calling cards; a skill hit plays Kat's theme-cards sheet small on top
         p.eval("FemcBattle.B.foes().forEach(f=>{f.maxHp=f.hp=99999})"); cast_fire()
-        p.wait("(FemcBattle.marks['fx-theme-hearts']||0)>0 && (FemcBattle.marks['fx-art-theme-hearts']||0)>0", 20)
-        clean(p, 'sheet2 date')
+        p.wait("(FemcBattle.marks['fx-theme-cards']||0)>0 && (FemcBattle.marks['fx-art-theme-cards']||0)>0", 20)
+        clean(p, 'sheet2 phantom')
         p.top(); p.eval("document.querySelectorAll('.g-dh').forEach(x=>x.remove())")
         results['sheet2'] = {'states': list(want_pose), 'shots': shots2}
 
@@ -667,8 +667,8 @@ try:
                 view(p, 1440, 900); go_on(); p.wait("!document.querySelector('.bt-theurgy')", 20)
             clean(p, f'looks alt={alt}')
             p.top(); p.eval("document.querySelectorAll('.g-dh').forEach(x=>x.remove())")
-        # Without a look's Theurgy art (Movie Date): the fighter's own cut-in, no look mark.
-        setup(wear=['sk-cp-moviedate'])
+        # Without a look's Theurgy art (Phantom Thief): the fighter's own cut-in, no look mark.
+        setup(wear=['sk-phantom'])
         night(['solar', 'akihiko', 'yukari', 'junpei'], "FemcBattle.save.cutins='off';")
         enter(); bdrive(SOLAR_MENU, 120)
         p.eval(TH); p.wait("(FemcBattle.marks['theurgy-final']||FemcBattle.marks['theurgy-short']||0)>0", 30)
