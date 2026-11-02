@@ -663,7 +663,7 @@
           { t: "(Post it. Our picture, our words.)", flag: 'epi-r-public-post', then: [
             { n: "She held it up so he could see it, so he could say no. He looked at it, and at her, and didn't say no." },
             { s: 'haechan', f: 'happy', t: "Your caption, princess. Not mine. I'd make it weird." },
-            { n: "She typed one word. *hi.* Lowercase. She looked at it for a full five seconds, which was four and a half seconds longer than she'd ever looked at anything before posting it, and then she posted it, standing in the front hall of Sigma Chi with the bass coming up through the floor, and put the phone in her pocket, and didn't look at it again." },
+            { n: "She typed one word. *hi.* Lowercase. She looked at it for a full five seconds, which was four and a half seconds longer than she'd ever looked at anything before posting it, and then she posted it, standing in the front hall of Sigma Chi with the bass coming up through the floor, and put the phone in her pocket, and didn't look at it again.", img: 'post-r-5-two-selfie', handle: '@solar', cap: 'hi' },
             { n: "On the stairs, three steps up, a phone lit in a cream sweater's hand. Danielle looked at the screen. Then she looked up, across the hall, straight at Solar, and something moved behind her eyes, a chart being updated, a draft being deleted, a whole caption she'd been saving folded in half and put away. She didn't smile. That was how Solar knew it had worked." },
             { s: 'haechan', f: 'neutral', t: "...Somebody's going to send that to your brother before midnight." },
             { s: 'solar', f: 'serious', t: "I know." },
@@ -952,8 +952,8 @@
 
     { id: 'epi-r-rt-jeno', slot: 'early', after: '12/13', until: '12/14', events: ['epi-r-sigma'], place: 'Syracuse · Alpha Phi House · Kitchen', time: 'Morning', scene: [
       { n: "Saturday morning in the Alpha kitchen, the radiator going, Hyein asleep on the island with her cheek on a sketchbook, and Jeno's story from last night still up on everyone's phone, because Jeno posted the way some people breathed." },
-      { n: "*@jen0l33:* the punch bowl, close up, captioned *its for MORALE.* Then Jisung, still trying to get the speaker to connect, captioned *day 3.* Then a blurry wide shot of the living room, everyone mid-something, captioned *last one before finals we will never forget this.* Then the punch bowl again, empty, at what the timestamp said was 1:40 a.m., captioned *morale achieved.*" },
-      { n: "The house living on. Somebody had already posted the cleanup, too, Renjun's, a single photo of the Sigma kitchen at nine a.m. with a mop leaning against the island like it had given up, no caption, which was Renjun's whole personality in one frame." },
+      { n: "*@jen0l33:* the punch bowl, close up, captioned *its for MORALE.* Then Jisung, still trying to get the speaker to connect, captioned *day 3.* Then a blurry wide shot of the living room, everyone mid-something, captioned *last one before finals we will never forget this.* Then the punch bowl again, empty, at what the timestamp said was 1:40 a.m., captioned *morale achieved.*", img: 'post-r-6-party-wide', handle: 'jen0l33', cap: 'last one before finals we will never forget this' },
+      { n: "The house living on. Somebody had already posted the cleanup, too, Renjun's, a single photo of the Sigma kitchen at nine a.m. with a mop leaning against the island like it had given up, no caption, which was Renjun's whole personality in one frame.", img: 'post-r-7-kitchen-mop', handle: 'renjun' },
       { n: "Under the third one, in the comments, someone had written *why does it look like everyone's frozen in this lmao,* and Jeno had replied *bad wifi king,* and that was that." },
       { n: "She looked at the wide shot longer than she meant to. Everyone mid-something. The snow in the window, white streaks, falling." },
       { choose: [
@@ -961,7 +961,7 @@
           { n: "She zoomed in on the window. The snow was just snow, motion-blurred, falling. She zoomed out. She put the phone face down on the island next to Hyein's sleeping head and made coffee and didn't pick it up again till the coffee was done." }
         ] },
         { t: "(Swipe past. It's just Jeno.)", then: [
-          { n: "She swiped past. It was just Jeno. Jeno's next story was a video of Jaemin asleep on the stairs with a traffic cone, captioned *the house lives on,* and she laughed out loud in the empty kitchen, and Hyein woke up and said *what* and went straight back to sleep." }
+          { n: "She swiped past. It was just Jeno. Jeno's next story was a video of Jaemin asleep on the stairs with a traffic cone, captioned *the house lives on,* and she laughed out loud in the empty kitchen, and Hyein woke up and said *what* and went straight back to sleep.", img: 'post-r-8-stairs-cone', handle: 'jen0l33', cap: 'the house lives on' }
         ] }
       ] }
     ] }

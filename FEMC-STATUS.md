@@ -210,6 +210,7 @@ Other docs, if you ever want detail:
 - ✅ **The Sun's faces:** wearing The Sun, Solar now has her own six scene faces for that look.
 - ✅ **Seasonal looks for S.E.E.S.:** your fourteen summer and winter sheets are in. From June through September, Solar, Yukari, Junpei, Akihiko, Mitsuru, Fuuka and Ken wear their summer faces in scenes (Yakushima too); from December through February, their winter coats outdoors. A worn Wardrobe outfit (with Outfits in scene portraits on) and event outfits still come first.
 - ✅ **Velvet Trials:** a boss rush in the Velvet Room once you've beaten a boss: seven trials of three or four refights in a row (only bosses you've beaten, the rest are ???), a Featured Trial each week with a twist, and Duels against any one boss. A score and a rank from C to S, best records kept, and rewards: plumes, cards and materials once per rank, a few plumes a week, and four looks you can only get here (two title screens, a menu wallpaper, a battle theme). Nothing outside the Velvet Room changes. Notes in FEMC-BOSS-RUSH.md
+- ✅ **Real pictures for the Runners posts (ready for yours):** the posts that pop up on Solar's phone in the Runners epilogue can show a real photo as a post card, in the phone thread or over the scene. `FEMC-RUNNERS-POSTS.md` lists the ten pictures, what each should look like and where to save them; until one is in, that post stays text.
 
 ## Music and polish
 - ✅ 57 songs, rotating with no repeats, plus world songs in memories, arrivals, calls and endings

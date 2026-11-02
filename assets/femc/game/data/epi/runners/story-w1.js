@@ -184,7 +184,7 @@
     { n: "Her phone buzzed on the stairs." },
     { phone: [
       { from: 'suesports', t: "SUesports posted a photo." },
-      { from: 'suesports', t: "FIVE DAYS TO REGIONALS ⏳ our overwatch roster heads downtown this saturday. coach says no visitors at practice, but the bracket's public 🧡 come loud" },
+      { from: 'suesports', t: "FIVE DAYS TO REGIONALS ⏳ our overwatch roster heads downtown this saturday. coach says no visitors at practice, but the bracket's public 🧡 come loud", img: 'post-r-1-team-photo', handle: '@SUesports' },
       { from: 'suesports', t: "oliviahye commented: LETS GOOOOOOO" },
       { from: 'suesports', t: "oliviahye commented: ok i was told to say that more professionally. lets go. 🧡" },
       { from: 'suesports', t: "minjibear commented: 🎥" }
@@ -694,11 +694,11 @@
     { s: 'olivia', f: 'happy', t: "Oh my god, the Sigma stories are already insane. Look. LOOK." },
     { phone: [
       { from: 'jeno', t: "jen0l33 posted a story." },
-      { from: 'jeno', t: "[the sigma living room, red light, a punch bowl the color of a warning] december lineup pt 1 🎄 no invite list this time. you know who you are" },
+      { from: 'jeno', t: "[the sigma living room, red light, a punch bowl the color of a warning] december lineup pt 1 🎄 no invite list this time. you know who you are", img: 'post-r-2-red-party', handle: 'jen0l33' },
       { from: 'jaemin', t: "jaemin posted a story." },
-      { from: 'jaemin', t: "[a hand-drawn sign taped to the stairs: NO LODGE TONIGHT] reminder: tonight is open to everyone who was NOT on the secret trip 🤫 so everyone. allegedly" },
+      { from: 'jaemin', t: "[a hand-drawn sign taped to the stairs: NO LODGE TONIGHT] reminder: tonight is open to everyone who was NOT on the secret trip 🤫 so everyone. allegedly", img: 'post-r-3-stairs-sign', handle: 'jaemin' },
       { from: 'jaemin', t: "jaemin posted a story." },
-      { from: 'jaemin', t: "[a blurry selfie, jaemin and three boys in reindeer antlers] if u went on the exclusive one dm me the wifi password. asking for a friend (the friend is me)" }
+      { from: 'jaemin', t: "[a blurry selfie, jaemin and three boys in reindeer antlers] if u went on the exclusive one dm me the wifi password. asking for a friend (the friend is me)", img: 'post-r-4-antlers-selfie', handle: 'jaemin' }
     ], contact: 'Stories' },
     { n: "Olivia was howling. Haerin was smiling into her pizza. Minji looked at the screen for exactly as long as politeness required and then looked at Solar, and away, fast." },
     { n: "Chenle didn't look at it at all. He was eating a slice very precisely, crust first, which he did when he was thinking, and when Olivia shoved the phone toward him he just said, without looking up from the crust, the way he gave callouts in a fight." },

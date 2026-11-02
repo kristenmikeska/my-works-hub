@@ -14,6 +14,10 @@
      { place, time, bg, music, date, soft }   a scene break (soft: no fade to black)
      { bg } { music } { cg } { cg: null } { dark: true|false }   backdrop changes
      { phone: [{ from, t }], contact }        a text conversation
+     post pictures: a text ({ from, t, img, handle, cap }) or a narration line ({ n, img, handle, cap }) may name a picture
+       'post-r-<n>-<slug>' (art/posts/index.js FEMC_POSTS lists the ones that exist, tools/femc-posts.py writes it). Ready: the
+       text becomes an image bubble (handle, picture, caption: cap, else the text without its leading [description]); the
+       narration gets a small phone-screen card over the scene. Not ready: the line exactly as written.
      { stat } { yen } { flag } { tally } { fragment } { register } { join } { unlock } { setDate }   effects (via the game)
      { ifRank } { ifStat } { ifFlag } { ifMet } { ifRoute } { ifRomance } -> then / else
      { ifCrush: { id: [phases] } } { ifCrushed: { id: 'phase' } } -> then / else; { crush: { id: 'in' | 'out' | n } } an effect (core.js crushes)
@@ -48,6 +52,9 @@ window.FemcScene = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   let G = null;
   const init = game => { G = game; };
+  const postReady = id => typeof id === 'string' && (window.FEMC_POSTS || []).includes(id);
+  const postHtml = (cls, id, handle, cap) => `<div class="${cls}-head"><i aria-hidden="true"></i><b>${esc(handle || '')}</b></div>`
+    + `<img alt="" src="${G.base || ''}assets/femc/game/art/posts/${id}.webp?v=${window.FEMC_POSTS_V || 1}">${cap ? `<p>${esc(cap)}</p>` : ''}`;
 
   // *italic* → segments, for the typewriter.
   function segments(text) {
@@ -391,9 +398,13 @@ window.FemcScene = (() => {
         const show = () => {
           clearTimeout(typing); typing = null; dots?.remove();
           if (!el.isConnected) return;
-          const p = document.createElement('p');
-          p.className = `gs-msg ${me ? 'me' : 'them'}${reduced.matches ? '' : ' in'}`;
-          p.textContent = text;
+          const post = postReady(m.img);
+          const p = document.createElement(post ? 'div' : 'p');
+          p.className = `gs-msg ${me ? 'me' : 'them'}${post ? ' gs-post' : ''}${reduced.matches ? '' : ' in'}`;
+          if (post) {
+            p.innerHTML = postHtml('gs-post', m.img, m.handle || G.name(m.from), m.cap ?? text.replace(/^\s*\[[^\]]*\]\s*/, ''));
+            p.querySelector('img').addEventListener('load', () => { thread.scrollTop = thread.scrollHeight; });
+          } else p.textContent = text;
           thread.appendChild(p);
           thread.scrollTop = thread.scrollHeight;
           log.push({ name: me ? 'Solar' : G.name(m.from), text: `[text] ${text}` });
@@ -459,8 +470,10 @@ window.FemcScene = (() => {
       // half-present fights, when she fades home instead of finishing one).
       opts.onBattle ? opts.onBattle(line.battle, snapshot, r => { if (r && typeof r.reshape === 'function') r.reshape(queue); next(); }) : next();
     }
+    let postCard = null;
     function next() {
       if (closed || !el.isConnected) return;
+      if (postCard) { postCard.remove(); postCard = null; }
       const line = queue.shift();
       if (!line) return end(true);
       if (line.place !== undefined && line.n === undefined && line.t === undefined) return sceneBreak(line);
@@ -495,6 +508,12 @@ window.FemcScene = (() => {
         nameEl.textContent = ''; textEl.classList.add('narration'); img.classList.add('dim'); sil.hidden = true; if (currentFace?.startsWith('sil/')) currentFace = null;
         log.push({ name: '', text: plain(G.sub(line.n)) });
         showMe(null);
+        if (postReady(line.img)) {
+          postCard = document.createElement('div');
+          postCard.className = 'gs-postcard';
+          postCard.innerHTML = postHtml('gs-postcard', line.img, line.handle, line.cap);
+          el.appendChild(postCard);
+        }
         return say(line.n, next);
       }
       if (line.t !== undefined) {
