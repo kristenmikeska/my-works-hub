@@ -3445,8 +3445,24 @@
 
   /* ── Event playback ───────────────────────────────── */
   async function play(evs) {
+    evs = withCritStrips(evs);
     for (let i = 0; i < evs.length; i++) await playOne(evs[i], evs[i + 1]);
     syncAll();
+  }
+  /* Kat, Nov 1: the "1 MORE!" eye strip also plays on a critical hit. A party member's crit that already earns a One More
+     (or All Down) keeps that banner; one that doesn't (the foe was already Down, a follow-up's crit) gets the strip with
+     CRITICAL! after its last hit in the action. Once per member per batch; never for All-Out hits. */
+  function withCritStrips(evs) {
+    const party = id => { const u = B.U(id); return u && u.side === 'party'; };
+    const earned = new Set(evs.filter(e => (e.t === 'onemore' || e.t === 'alloutReady') && e.src).map(e => e.src));
+    const crit = new Set(evs.filter(e => e.t === 'hit' && e.crit && !e.allout && e.amount > 0 && party(e.src) && !earned.has(e.src)).map(e => e.src));
+    if (!crit.size || evs.some(e => e.t === 'allout')) return evs;
+    const out = [];
+    evs.forEach((e, i) => {
+      out.push(e);
+      if (e.t === 'hit' && crit.has(e.src) && !evs.slice(i + 1).some(x => x.t === 'hit' && x.src === e.src && x.crit)) { out.push({ t: 'critStrip', src: e.src }); crit.delete(e.src); }
+    });
+    return out;
   }
   async function playOne(e, next) {
     const U = id => B.U(id);
@@ -3670,7 +3686,8 @@
         else { blogAdd(`${u.name} gets One More.`, 'ef'); banner('1 More', { enemy: true, sub: u.name }); await sleep(500); }
         break;
       }
-      case 'alloutReady': tip('allout'); blogAdd('All foes are Down!', 'sys'); nav('allDown'); sfx('onemore'); await bigWord('ALL DOWN', { sub: 'They’re wide open', ms: 900 }); break;
+      case 'alloutReady': { tip('allout'); blogAdd('All foes are Down!', 'sys'); nav('allDown'); sfx('onemore'); const au = U(e.src), om = au && au.side === 'party' ? oneMoreStrip(au) : null; await bigWord('ALL DOWN', { sub: 'They’re wide open', strip: om, ms: om && om.includes(' two"') ? ONE_MORE_MS2 : 900 }); break; }
+      case 'critStrip': { const u = U(e.src); const om = u ? oneMoreStrip(u) : null; if (om) { mark('crit-strip'); sfx('onemore'); await bigWord('CRITICAL!', { strip: om, ms: om.includes(' two"') ? ONE_MORE_MS2 : ONE_MORE_MS }); } break; }
       case 'allout': stat0.allout = true; await allOutSequence(e); break;
       case 'perk': await perkCut(e); break;
       case 'status': { const t = U(e.tgt); if (t) { popup(e.tgt, { label: e.label, lcls: e.cls || 'buff' }); if (t.side === 'party') paintCard(t); } blogAdd(`${t ? t.name : ''}: ${e.label}`, 'buff'); mark('status-' + String(e.label).toLowerCase().replace(/\s+/g, '-')); await sleep(300); break; }
