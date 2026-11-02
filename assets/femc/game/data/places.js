@@ -60,7 +60,12 @@ window.FEMC_GAME_PLACES = {
     // The photo booth (FEMC-ART-TODO 15; game/booth.js): pick a partner she has met, a frame, three poses and stamps; the strip
     // goes into the Album. `booth` opens it (ui.js doActivity); `daily`: once a day (core.js activityOk / doActivity).
     { id: 'booth', area: 'mall', spot: 'Game Panic', name: 'Photo booth', about: 'A purikura booth by the arcade door: frames, poses, stamps, and a strip of three to keep.', icon: 'game', slots: ['after', 'evening'], cost: 400, booth: true, daily: true,
-      lines: ['The booth counted down in a voice far too cheerful for the mall.'] },
+      lines: ['The booth counted down in a voice far too cheerful for the mall.',
+        'The curtain smelled like every pair of friends who had ever squeezed in behind it, which was oddly comforting.',
+        'The machine offered to make her eyes bigger. She declined, then hit the button anyway, then laughed so hard the second shot came out blurry.',
+        'Somebody had stuck a tiny cat sticker in the corner of the screen months ago and the arcade had never peeled it off. It made it into every photo. It felt like tradition.',
+        'Three, two, one, and a flash bright enough that she saw pink spots all the way back to the escalator.',
+        'The strip slid out still warm, and she held it by the edges like it might smudge if she breathed on it.'] },
     { id: 'cinema', area: 'mall', spot: 'Screen Shot', name: 'See a movie', about: "A small theater with weekend showings. The bill changes every week, and every film leaves you a little different.", icon: 'film', slots: ['after'], days: [0, 6], cost: 1200,
       showings: [
         { title: 'The Ninth Floor (horror)', stats: { courage: 3 }, lines: ['The Ninth Floor was about an elevator, and it was the worst two hours of her life, and she did not look away once. The boy two rows ahead screamed. She did not. She was a little proud of that.'] },
