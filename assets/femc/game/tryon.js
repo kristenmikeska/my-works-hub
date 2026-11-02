@@ -47,8 +47,10 @@ window.FemcTryOn = (() => {
       : `<i class="en-sh s1"></i><i class="en-sh s2"></i><i class="en-sh s3"></i><div class="en-card"><i class="en-stripes"></i><img class="en-pose" src="${esc(sp.frames[0])}" alt="" draggable="false"></div>
         <b class="en-name"><small>${esc(sp.name)}</small>${esc(sp.whoName.toUpperCase())}</b>${enMotifs}`;
     // Kat's strip art; with a second picture (sp.onemore2) the two-stage strip: v1, a flash and a slash wipe to v2 with a glint
-    // on each eye (battle.js oneMoreStrip; reduced motion: a crossfade at the same beat).
-    const om = sp.onemore ? `<div class="om-frame"><img class="om-art" src="${esc(sp.onemore)}" alt="" draggable="false">${sp.onemore2 ? `<div class="om-v2"><img class="om-art" src="${esc(sp.onemore2)}" alt="" draggable="false"><i class="om-glint"></i><i class="om-glint g2"></i></div>` : ''}</div>${sp.onemore2 ? '<i class="om-flash"></i>' : ''}`
+    // on each eye (battle.js oneMoreStrip; reduced motion: a crossfade at the same beat). sp.omEyes (ready.js eyes2) puts each
+    // glint on her iris; without it the CSS's fixed 40% / 65% spot.
+    const glintAt = (e, i) => (Array.isArray(e) && e.length === 4 ? ` style="left:${+e[i * 2]}%;top:${+e[i * 2 + 1]}%"` : '');
+    const om = sp.onemore ? `<div class="om-frame"><img class="om-art" src="${esc(sp.onemore)}" alt="" draggable="false">${sp.onemore2 ? `<div class="om-v2"><img class="om-art" src="${esc(sp.onemore2)}" alt="" draggable="false"><i class="om-glint"${glintAt(sp.omEyes, 0)}></i><i class="om-glint g2"${glintAt(sp.omEyes, 1)}></i></div>` : ''}</div>${sp.onemore2 ? '<i class="om-flash"></i>' : ''}`
       : `<i class="om-stripes"></i><div class="om-eyes fcb">${faceImg(sp)}</div><i class="om-lines"></i>`;
     const n = o.perf ? 5 : 9, burst = th ? Array.from({ length: n }, (_, i) => { const ang = (i / n) * Math.PI * 2 - Math.PI / 2; return m(th, i, `--dx:${Math.round(Math.cos(ang) * 120)}px;--dy:${Math.round(Math.sin(ang) * 100)}px;animation-delay:${(i % 3) * 0.05}s`); }).join('') : '';
     const sparkle = th ? Array.from({ length: o.perf ? 4 : 8 }, (_, i) => m(th, i, `left:${[12, 80, 22, 70, 6, 88, 34, 60][i]}%;top:${[18, 14, 62, 70, 40, 44, 8, 34][i]}%;animation-delay:${(i * 0.23).toFixed(2)}s`)).join('') : '';

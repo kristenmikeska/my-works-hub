@@ -1,0 +1,254 @@
+{
+ "assets/femc/game/art/onemore/solar-v2.webp": {
+  "eyes": [
+   44.4,
+   65.0,
+   71.7,
+   56.4
+  ],
+  "sha256": "63c9c5d6736b3d8ae35c32632e65bdf936bd8fddd3692061b701463ec1ef6d75"
+ },
+ "assets/femc/game/art/skins/sk-alphaphi/solar-onemore-v2.webp": {
+  "eyes": [
+   40.1,
+   63.6,
+   64.1,
+   64.2
+  ],
+  "sha256": "e55c17349f801c6ba2cd7af61ea578aa53ca052fac07e2b9e48249906b655e6c"
+ },
+ "assets/femc/game/art/skins/sk-arcana-sun/solar-onemore-v2.webp": {
+  "eyes": [
+   37.2,
+   61.1,
+   63.9,
+   62.8
+  ],
+  "sha256": "61e6baf2b41e2300315d08202748f4c848956e5ab71d3db2b179fd088a509422"
+ },
+ "assets/femc/game/art/skins/sk-cp-afterhours/solar-onemore-v2.webp": {
+  "eyes": [
+   38.6,
+   62.8,
+   61.6,
+   62.5
+  ],
+  "sha256": "629bff9770d4bf8fa68f0864dad67b4582aa8cb0c7d8f378ca2f48d99605afbb"
+ },
+ "assets/femc/game/art/skins/sk-cp-drive/solar-onemore-v2.webp": {
+  "eyes": [
+   40.5,
+   60.0,
+   60.6,
+   59.4
+  ],
+  "sha256": "9b087a924d2818c91898c6e64c3d1d1c0dfce4ca49bad38ecb327a1566f7ca15"
+ },
+ "assets/femc/game/art/skins/sk-cp-festival/solar-onemore-v2.webp": {
+  "eyes": [
+   37.5,
+   60.3,
+   64.6,
+   60.0
+  ],
+  "sha256": "bc39bd2eb517e4e584bd5e5b70f92e871e9a583aa59c04d997911ebb5310ca41"
+ },
+ "assets/femc/game/art/skins/sk-cp-ringside/solar-onemore-v2.webp": {
+  "eyes": [
+   38.2,
+   71.4,
+   57.1,
+   72.5
+  ],
+  "sha256": "94cdac267e452de62ab984c1e9d73b6e2e16f130ef4da402d7b4a9f1c5bfa181"
+ },
+ "assets/femc/game/art/skins/sk-cp-sunmoon/solar-onemore-v2.webp": {
+  "eyes": [
+   38.1,
+   67.5,
+   60.2,
+   67.8
+  ],
+  "sha256": "49a8c49a8389c967d0ca8f2cd77a64a7395b94422d9e9f7184c3175b0b6b11a4"
+ },
+ "assets/femc/game/art/skins/sk-date/solar-onemore-v2.webp": {
+  "eyes": [
+   39.6,
+   61.4,
+   61.6,
+   62.5
+  ],
+  "sha256": "5b04ea01335591a1fd96772a9d2e07a459ba4fa332d9ab52a3ee412066d7a6e8"
+ },
+ "assets/femc/game/art/skins/sk-esports/solar-onemore-v2.webp": {
+  "eyes": [
+   38.2,
+   67.2,
+   65.2,
+   67.2
+  ],
+  "sha256": "6f3c48611e33a23261193f2dfce5b501400704e0fee6915ef27c26ab35a12494"
+ },
+ "assets/femc/game/art/skins/sk-halloween/solar-onemore-v2.webp": {
+  "eyes": [
+   40.3,
+   88.1,
+   60.7,
+   88.3
+  ],
+  "sha256": "4e873ac7ee50c46815e3c37cd8b682cf2df8e1c960ed8a071fff93097c3152b2"
+ },
+ "assets/femc/game/art/skins/sk-hanbok/solar-onemore-v2.webp": {
+  "eyes": [
+   39.2,
+   63.6,
+   62.6,
+   64.2
+  ],
+  "sha256": "b6510bc70a557750454c24d78574b0ef97f7304b34d8675b81a5db59ff71a320"
+ },
+ "assets/femc/game/art/skins/sk-harbourcoat/solar-onemore-v2.webp": {
+  "eyes": [
+   38.9,
+   68.1,
+   65.6,
+   68.9
+  ],
+  "sha256": "9af08d0746327ed8a323def490ba800c562eed765fcb468d135b2a71235201fd"
+ },
+ "assets/femc/game/art/skins/sk-idol/solar-onemore-v2.webp": {
+  "eyes": [
+   39.2,
+   68.9,
+   60.7,
+   68.9
+  ],
+  "sha256": "b385847f5ad5bfa761fd193c2e2df55801deaab1ee656c46ff63e658255c7fed"
+ },
+ "assets/femc/game/art/skins/sk-limelight/solar-onemore-v2.webp": {
+  "eyes": [
+   39.2,
+   75.3,
+   64.3,
+   70.3
+  ],
+  "sha256": "4f96265b1d0af9bb85e8198ac6df4c66ce30b631dcdf86d53394353f80ab6e0a"
+ },
+ "assets/femc/game/art/skins/sk-oops/solar-onemore-v2.webp": {
+  "eyes": [
+   38.4,
+   56.4,
+   60.9,
+   57.2
+  ],
+  "sha256": "9ee0a8e42a054a239140d1198f1bc726d7ce436a9d27b43138b1b4b4cd10d5f3"
+ },
+ "assets/femc/game/art/skins/sk-snake/solar-onemore-v2.webp": {
+  "eyes": [
+   40.3,
+   74.7,
+   61.0,
+   74.7
+  ],
+  "sha256": "eb0af71b527d8a2c7cf306dc65ad73e90bbd1b04828588c045a21620f3b0cd51"
+ },
+ "assets/femc/game/art/skins/sk-strawberry/solar-onemore-v2.webp": {
+  "eyes": [
+   37.3,
+   65.6,
+   65.9,
+   65.8
+  ],
+  "sha256": "f47c28de913dd770900fd54e971068c3dcaef6343a2e92f869df3256d562fe01"
+ },
+ "assets/femc/game/art/skins/sk-sugarrush/solar-onemore-v2.webp": {
+  "eyes": [
+   39.4,
+   61.4,
+   67.4,
+   65.0
+  ],
+  "sha256": "3444f7325c9f10c52324aadbef447fad302ebc0153aaef47404e79a013d7c338"
+ },
+ "assets/femc/game/art/skins/sk-summersession/solar-onemore-v2.webp": {
+  "eyes": [
+   41.4,
+   79.4,
+   60.8,
+   81.9
+  ],
+  "sha256": "3de7d5d5f9198a0e15a81d6a5b45319f63f0243b06e0d7ade01b8cde4f583ef8"
+ },
+ "assets/femc/game/art/skins/sk-swim-lagoon/solar-onemore-v2.webp": {
+  "eyes": [
+   36.7,
+   67.8,
+   59.8,
+   67.8
+  ],
+  "sha256": "3e3369dd131bca03e289c13378c90e2ab127ae9202eb8772365377f3531c265d"
+ },
+ "assets/femc/game/art/skins/sk-swim-lifeguard/solar-onemore-v2.webp": {
+  "eyes": [
+   37.7,
+   59.2,
+   63.7,
+   60.3
+  ],
+  "sha256": "18e781260fcec771dde8d806a400af07f4dbf1a28298b9998e01eb9d1b7f28be"
+ },
+ "assets/femc/game/art/skins/sk-swim-night/solar-onemore-v2.webp": {
+  "eyes": [
+   37.6,
+   61.9,
+   67.5,
+   62.5
+  ],
+  "sha256": "f3f9b3d7e030bc2d3a289fe91cd9c8a10a368ce0e02c8870df3de47f572472e1"
+ },
+ "assets/femc/game/art/skins/sk-velvet/solar-onemore-v2.webp": {
+  "eyes": [
+   37.6,
+   64.4,
+   65.3,
+   62.5
+  ],
+  "sha256": "18886896fc4c9fdc27f50e1395034c25c253c14556abfb4d71d9f5b74301ef13"
+ },
+ "assets/femc/game/art/skins/sk-vp/solar-onemore-v2.webp": {
+  "eyes": [
+   39.6,
+   68.3,
+   61.4,
+   68.6
+  ],
+  "sha256": "de7acedae4aecf2588461a4762a11f62db9cfe9dcd8696847ef043a6211a1f29"
+ },
+ "assets/femc/game/art/skins/sk-wintercoat/solar-onemore-v2.webp": {
+  "eyes": [
+   39.3,
+   66.4,
+   62.6,
+   65.0
+  ],
+  "sha256": "b3bb662823714a7bd704d9d5f31c3e17094b99caa4663e6dcb814f46457d8596"
+ },
+ "assets/femc/game/art/skins/sk-y2k/solar-onemore-v2.webp": {
+  "eyes": [
+   37.1,
+   61.4,
+   61.8,
+   61.9
+  ],
+  "sha256": "4353162e07da2ac8edf1c5cc4ffacdabf51c393d9ee159bd0ba27a31b8bbe709"
+ },
+ "assets/femc/game/art/skins/sk-yukata/solar-onemore-v2.webp": {
+  "eyes": [
+   39.9,
+   64.7,
+   61.1,
+   65.8
+  ],
+  "sha256": "75115a98485a9f11e091c8ecc727d9fc9666cf5bb371894f1ad010c6fd90c38c"
+ }
+}

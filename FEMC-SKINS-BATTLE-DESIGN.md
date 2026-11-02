@@ -15,11 +15,11 @@ When a fighter wears a Wardrobe look, the whole fight shows it: the figure, the 
 > 1. **The Sun & Moon couple Showtime** (Couple Showtimes → Sun & Moon).
 > 2. **The foxfire theme sheet and frame** (Themes → Foxfire effect sheet, HUD frames → Foxfire frame): the last theme without art.
 > 3. **Haechan's own second pose sheet** (Haechan → own look → piece 1).
-> 4. **Solar's other looks** (Phantom Thief, Velvet Attendant, Snake Charmer…): each still needs its five pieces.
+> 4. **Solar's last six looks**: Phantom Thief, Kiriko Cosplay, Morning Roadwork, Night Prowl and Movie Date still need all five pieces; Emo Night needs four (its second pose sheet is in).
 >
-> **Already made and in the game (✓ made below):** Solar's own second pose sheet, "1 MORE!" strip and entrance card; all five pieces for twenty-one of Solar's looks (Strawberry Milk, Winter Coat, Halloween Witch, Date Day, Alpha Phi Formal, Harbour Night Coat, Stage Idol, SU eSports Jersey, Moonlit Hanbok, Vice President, Y2K Pop Star, Oops!, Sugar Rush, Limelight, Lifeguard on Duty, Night Swim, Midnight Drive, After Hours, Summer Festival, The Sun, Summer Yukata); Emo Night's second pose sheet; twelve of the thirteen theme effect sheets and HUD frames (all but foxfire).
+> **Already made and in the game (✓ made below):** Solar's own second pose sheet, "1 MORE!" strip and entrance card; all five pieces for twenty-seven of Solar's looks (Velvet Attendant, Pink Lagoon, Ringside, Snake Charmer, Summer Session, Sun Hoodie, Strawberry Milk, Winter Coat, Halloween Witch, Date Day, Alpha Phi Formal, Harbour Night Coat, Stage Idol, SU eSports Jersey, Moonlit Hanbok, Vice President, Y2K Pop Star, Oops!, Sugar Rush, Limelight, Lifeguard on Duty, Night Swim, Midnight Drive, After Hours, Summer Festival, The Sun, Summer Yukata); Emo Night's second pose sheet; twelve of the thirteen theme effect sheets and HUD frames (all but foxfire).
 >
-> **New (Nov 1):** the "1 MORE!" strip plays in two beats when a look has two pictures: v1 (the sideways glance) slides in, then a pink-white flash and a slash switch to v2 (looking front, the sun in her eyes) with a little glint on each eye. Alpha Phi Formal has two second pose sheets: V1 plays by default, V2 on about half the fights (a coin flip each fight). Tell Claude if you'd rather have only one.
+> **New (Nov 1):** the "1 MORE!" strip plays in two beats when a look has two pictures: v1 (the sideways glance) slides in, then a pink-white flash and a slash switch to v2 (looking front, the sun in her eyes) with a little glint on each eye (the game finds where her eyes are on each v2 picture, so the glints land on them). Alpha Phi Formal has two second pose sheets: V1 plays by default, V2 on about half the fights (a coin flip each fight). Tell Claude if you'd rather have only one.
 
 ### The pieces
 
@@ -625,7 +625,7 @@ Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image
 
 ### Velvet Attendant · `sk-velvet` · Butterflies
 
-#### 1. Second pose sheet
+#### 1. Second pose sheet ✓ made
 
 Attach: `Current Skins/Solar/Velvet Attendant [sk-velvet] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-velvet-posesheet-2.png`
@@ -633,7 +633,7 @@ Save as: `skin-sk-velvet-posesheet-2.png`
 Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: a gothic Velvet Room attendant outfit in the style of Elizabeth: a deep-blue velvet dress with a high collar and long sleeves, gold buttons down the front, a small blue cap with a gold band, white gloves, black tights and black heeled boots, a heavy blue-and-gold book held in the crook of one arm. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, the naginata held loosely in the other hand. Cell 2: guarding: braced low, the naginata held across her body like a shield, forearm raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, her hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping the naginata. Cell 5: badly hurt: standing but hunched, one hand pressed to her side, breathing hard, the naginata lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, the naginata ready, her hair and clothes streaming back. Persona 3 Reload official art style. No text.
 ```
 
-#### 2. Theurgy cut-in
+#### 2. Theurgy cut-in ✓ made
 
 Attach: `Added to Game/theurgy-solar-haenim.png`, then `Current Skins/Solar/Velvet Attendant [sk-velvet] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-velvet-theurgy.png`
@@ -641,7 +641,7 @@ Save as: `skin-sk-velvet-theurgy.png`
 Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, colours, lighting, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: a gothic Velvet Room attendant outfit in the style of Elizabeth: a deep-blue velvet dress with a high collar and long sleeves, gold buttons down the front, a small blue cap with a gold band, white gloves, black tights and black heeled boots, a heavy blue-and-gold book held in the crook of one arm. Same face as the THIRD attached image. Keep the Persona behind her exactly as in the first image, and keep her face in the same place in the frame. No text, no letters, no logos.
 ```
 
-#### 3. "1 MORE!" eye strip
+#### 3. "1 MORE!" eye strip ✓ made (two pictures: v1 the sideways glance, v2 looking front; the strip plays both)
 
 Attach: `Current Skins/Solar/Velvet Attendant [sk-velvet] - portraits (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-velvet-onemore.png`
@@ -649,7 +649,7 @@ Save as: `skin-sk-velvet-onemore.png`
 A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. Her hair: her long straight jet-black hair, loose, exactly as in the FIRST attached image, strands falling across the frame. Keep these from the look, exactly as in the FIRST attached image, wherever they show in the crop: a small blue cap with a gold band. Behind the face: bold flat diagonal stripes and speed lines in velvet blue, white and black, a few tiny glowing blue butterflies scattered in the stripes. No text, no letters, no logos, no border.
 ```
 
-#### 4. Entrance card
+#### 4. Entrance card ✓ made
 
 Attach: `Current Skins/Solar/Velvet Attendant [sk-velvet] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-velvet-entrance.png`
@@ -657,7 +657,7 @@ Save as: `skin-sk-velvet-entrance.png`
 A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (a gothic Velvet Room attendant outfit in the style of Elizabeth: a deep-blue velvet dress with a high collar and long sleeves, gold buttons down the front, a small blue cap with a gold band, white gloves, black tights and black heeled boots, a heavy blue-and-gold book held in the crook of one arm), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, the naginata swung over one shoulder, her hair and clothes whipping back, a cool, ready look straight at the viewer. Background: flat graphic shards of velvet blue, white and black breaking apart diagonally, a few speed lines, a scatter of glowing blue butterflies. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
 ```
 
-#### 5. Finish card
+#### 5. Finish card ✓ made
 
 Attach: `Current Skins/Base Game/Solar/Solar - finish card.png`, then `Current Skins/Solar/Velvet Attendant [sk-velvet] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-velvet-finish.png`
@@ -801,7 +801,7 @@ Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image
 
 ### Snake Charmer · `sk-snake` · Glitter
 
-#### 1. Second pose sheet
+#### 1. Second pose sheet ✓ made
 
 Attach: `Current Skins/Solar/Snake Charmer [sk-snake] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-snake-posesheet-2.png`
@@ -809,7 +809,7 @@ Save as: `skin-sk-snake-posesheet-2.png`
 Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: a 2001-awards-show stage look: a jewelled crop top covered in tiny green and gold rhinestones, low-rise sparkling stage pants with rhinestone fringe at the hips, strappy gold heels, a body-shimmer glow, and a huge pale yellow-and-white python draped across her shoulders and around one arm (calm, curious, its head near her shoulder in every cell). Hair: long, loose and wavy, light brown with golden-blonde highlights, a little tousled. Her naginata wrapped in gold with a snakeskin-patterned haft. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, the naginata held loosely in the other hand. Cell 2: guarding: braced low, the naginata held across her body like a shield, forearm raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, her hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping the naginata. Cell 5: badly hurt: standing but hunched, one hand pressed to her side, breathing hard, the naginata lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, the naginata ready, her hair and clothes streaming back. Persona 3 Reload official art style. No text.
 ```
 
-#### 2. Theurgy cut-in
+#### 2. Theurgy cut-in ✓ made
 
 Attach: `Added to Game/theurgy-solar-haenim.png`, then `Current Skins/Solar/Snake Charmer [sk-snake] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-snake-theurgy.png`
@@ -817,7 +817,7 @@ Save as: `skin-sk-snake-theurgy.png`
 Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, colours, lighting, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: a 2001-awards-show stage look: a jewelled crop top covered in tiny green and gold rhinestones, low-rise sparkling stage pants with rhinestone fringe at the hips, strappy gold heels, a body-shimmer glow, and a huge pale yellow-and-white python draped across her shoulders and around one arm (calm, curious, its head near her shoulder in every cell). Hair: long, loose and wavy, light brown with golden-blonde highlights, a little tousled. Her naginata wrapped in gold with a snakeskin-patterned haft. Same face as the THIRD attached image. Keep the Persona behind her exactly as in the first image, and keep her face in the same place in the frame. No text, no letters, no logos.
 ```
 
-#### 3. "1 MORE!" eye strip
+#### 3. "1 MORE!" eye strip ✓ made (two pictures: v1 the sideways glance, v2 looking front; the strip plays both)
 
 Attach: `Current Skins/Solar/Snake Charmer [sk-snake] - portraits (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-snake-onemore.png`
@@ -825,7 +825,7 @@ Save as: `skin-sk-snake-onemore.png`
 A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. Her hair: long, loose and wavy, light brown with golden-blonde highlights, a little tousled, exactly as in the FIRST attached image, strands falling across the frame. Behind the face: bold flat diagonal stripes and speed lines in silver, white, hot pink and black, a few tiny rhinestone glints and faceted gems scattered in the stripes. No text, no letters, no logos, no border.
 ```
 
-#### 4. Entrance card
+#### 4. Entrance card ✓ made
 
 Attach: `Current Skins/Solar/Snake Charmer [sk-snake] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-snake-entrance.png`
@@ -833,7 +833,7 @@ Save as: `skin-sk-snake-entrance.png`
 A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (a 2001-awards-show stage look: a jewelled crop top covered in tiny green and gold rhinestones, low-rise sparkling stage pants with rhinestone fringe at the hips, strappy gold heels, a body-shimmer glow, and a huge pale yellow-and-white python draped across her shoulders and around one arm (calm, curious, its head near her shoulder in every cell). Hair: long, loose and wavy, light brown with golden-blonde highlights, a little tousled. Her naginata wrapped in gold with a snakeskin-patterned haft), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, the naginata swung over one shoulder, her hair and clothes whipping back, a cool, ready look straight at the viewer. Background: flat graphic shards of silver, white, hot pink and black breaking apart diagonally, a few speed lines, a scatter of rhinestone glints and faceted gems. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
 ```
 
-#### 5. Finish card
+#### 5. Finish card ✓ made
 
 Attach: `Current Skins/Base Game/Solar/Solar - finish card.png`, then `Current Skins/Solar/Snake Charmer [sk-snake] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-snake-finish.png`
@@ -977,7 +977,7 @@ Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image
 
 ### Summer Session · `sk-summersession` · Music notes
 
-#### 1. Second pose sheet
+#### 1. Second pose sheet ✓ made
 
 Attach: `Current Skins/Solar/Summer Session [sk-summersession] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-summersession-posesheet-2.png`
@@ -985,7 +985,7 @@ Save as: `skin-sk-summersession-posesheet-2.png`
 Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: a sporty campus-summer look: an oversized white zip-up track jacket with a gold zip, navy stripes down the sleeves, gathered elastic cuffs and hem and a tiny navy emblem on the chest, worn open; a strapless white mesh tube top with big blocky royal-blue varsity-number shapes outlined in black (no readable digits); light-wash distressed denim cutoff shorts with frayed hems and the white pocket linings peeking out, little pink star charms clipped to the belt loops; white chunky sneakers and white crew socks with colourful doodles; a dainty silver heart pendant necklace, silver heart stud earrings, stacked rings and long glossy chrome nails with blue-and-pink accents; a few freckles. Hair: black, piled in a messy high bun tied with a navy satin ribbon, with loose face-framing wisps that have cobalt-blue peekaboo streaks. Her naginata with navy-and-white grip tape and a tiny silver heart charm at the collar. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, the naginata held loosely in the other hand. Cell 2: guarding: braced low, the naginata held across her body like a shield, forearm raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, her hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping the naginata. Cell 5: badly hurt: standing but hunched, one hand pressed to her side, breathing hard, the naginata lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, the naginata ready, her hair and clothes streaming back. Persona 3 Reload official art style. No text.
 ```
 
-#### 2. Theurgy cut-in
+#### 2. Theurgy cut-in ✓ made
 
 Attach: `Added to Game/theurgy-solar-haenim.png`, then `Current Skins/Solar/Summer Session [sk-summersession] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-summersession-theurgy.png`
@@ -993,7 +993,7 @@ Save as: `skin-sk-summersession-theurgy.png`
 Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, colours, lighting, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: a sporty campus-summer look: an oversized white zip-up track jacket with a gold zip, navy stripes down the sleeves, gathered elastic cuffs and hem and a tiny navy emblem on the chest, worn open; a strapless white mesh tube top with big blocky royal-blue varsity-number shapes outlined in black (no readable digits); light-wash distressed denim cutoff shorts with frayed hems and the white pocket linings peeking out, little pink star charms clipped to the belt loops; white chunky sneakers and white crew socks with colourful doodles; a dainty silver heart pendant necklace, silver heart stud earrings, stacked rings and long glossy chrome nails with blue-and-pink accents; a few freckles. Hair: black, piled in a messy high bun tied with a navy satin ribbon, with loose face-framing wisps that have cobalt-blue peekaboo streaks. Her naginata with navy-and-white grip tape and a tiny silver heart charm at the collar. Same face as the THIRD attached image. Keep the Persona behind her exactly as in the first image, and keep her face in the same place in the frame. No text, no letters, no logos.
 ```
 
-#### 3. "1 MORE!" eye strip
+#### 3. "1 MORE!" eye strip ✓ made (two pictures: v1 the sideways glance, v2 looking front; the strip plays both)
 
 Attach: `Current Skins/Solar/Summer Session [sk-summersession] - portraits (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-summersession-onemore.png`
@@ -1001,7 +1001,7 @@ Save as: `skin-sk-summersession-onemore.png`
 A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. Her hair: black, piled in a messy high bun tied with a navy satin ribbon, with loose face-framing wisps that have cobalt-blue peekaboo streaks, exactly as in the FIRST attached image, strands falling across the frame. Keep these from the look, exactly as in the FIRST attached image, wherever they show in the crop: silver heart stud earrings. Behind the face: bold flat diagonal stripes and speed lines in hot pink, black and neon lime, a few tiny music notes and sound waves scattered in the stripes. No text, no letters, no logos, no border.
 ```
 
-#### 4. Entrance card
+#### 4. Entrance card ✓ made
 
 Attach: `Current Skins/Solar/Summer Session [sk-summersession] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-summersession-entrance.png`
@@ -1009,7 +1009,7 @@ Save as: `skin-sk-summersession-entrance.png`
 A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (a sporty campus-summer look: an oversized white zip-up track jacket with a gold zip, navy stripes down the sleeves, gathered elastic cuffs and hem and a tiny navy emblem on the chest, worn open; a strapless white mesh tube top with big blocky royal-blue varsity-number shapes outlined in black (no readable digits); light-wash distressed denim cutoff shorts with frayed hems and the white pocket linings peeking out, little pink star charms clipped to the belt loops; white chunky sneakers and white crew socks with colourful doodles; a dainty silver heart pendant necklace, silver heart stud earrings, stacked rings and long glossy chrome nails with blue-and-pink accents; a few freckles. Hair: black, piled in a messy high bun tied with a navy satin ribbon, with loose face-framing wisps that have cobalt-blue peekaboo streaks. Her naginata with navy-and-white grip tape and a tiny silver heart charm at the collar), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, the naginata swung over one shoulder, her hair and clothes whipping back, a cool, ready look straight at the viewer. Background: flat graphic shards of hot pink, black and neon lime breaking apart diagonally, a few speed lines, a scatter of music notes and little sound waves. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
 ```
 
-#### 5. Finish card
+#### 5. Finish card ✓ made
 
 Attach: `Current Skins/Base Game/Solar/Solar - finish card.png`, then `Current Skins/Solar/Summer Session [sk-summersession] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-summersession-finish.png`
@@ -1065,7 +1065,7 @@ Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image
 
 ### Pink Lagoon · `sk-swim-lagoon` · Bubbles
 
-#### 1. Second pose sheet
+#### 1. Second pose sheet ✓ made
 
 Attach: `Current Skins/Solar/Pink Lagoon [sk-swim-lagoon] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-swim-lagoon-posesheet-2.png`
@@ -1073,7 +1073,7 @@ Save as: `skin-sk-swim-lagoon-posesheet-2.png`
 Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: a black bikini top with pink ruffle trim and a tiny pink bow at the centre, high-waisted black bikini bottoms with pink ruffles, a sheer hot-pink chiffon sarong knotted at one hip and floating behind her, heart-shaped pink sunglasses pushed up on her head, a pearl anklet, black platform sandals with pink straps, a few pink beaded bracelets. Hair: her own jet-black hair with bold hot-pink streaks, pulled into a very high bubble ponytail (the long ponytail tied off every few inches with pink hair ties so it puffs into bubbles), little pearl clips above one ear, glossy wet-look ends. Her naginata's haft wrapped in pink and white rope like a beach towel stripe, a small seashell charm at the collar. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, the naginata held loosely in the other hand. Cell 2: guarding: braced low, the naginata held across her body like a shield, forearm raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, her hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping the naginata. Cell 5: badly hurt: standing but hunched, one hand pressed to her side, breathing hard, the naginata lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, the naginata ready, her hair and clothes streaming back. Persona 3 Reload official art style. No text.
 ```
 
-#### 2. Theurgy cut-in
+#### 2. Theurgy cut-in ✓ made
 
 Attach: `Added to Game/theurgy-solar-haenim.png`, then `Current Skins/Solar/Pink Lagoon [sk-swim-lagoon] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-swim-lagoon-theurgy.png`
@@ -1081,7 +1081,7 @@ Save as: `skin-sk-swim-lagoon-theurgy.png`
 Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, colours, lighting, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: a black bikini top with pink ruffle trim and a tiny pink bow at the centre, high-waisted black bikini bottoms with pink ruffles, a sheer hot-pink chiffon sarong knotted at one hip and floating behind her, heart-shaped pink sunglasses pushed up on her head, a pearl anklet, black platform sandals with pink straps, a few pink beaded bracelets. Hair: her own jet-black hair with bold hot-pink streaks, pulled into a very high bubble ponytail (the long ponytail tied off every few inches with pink hair ties so it puffs into bubbles), little pearl clips above one ear, glossy wet-look ends. Her naginata's haft wrapped in pink and white rope like a beach towel stripe, a small seashell charm at the collar. Same face as the THIRD attached image. Keep the Persona behind her exactly as in the first image, and keep her face in the same place in the frame. No text, no letters, no logos.
 ```
 
-#### 3. "1 MORE!" eye strip
+#### 3. "1 MORE!" eye strip ✓ made (two pictures: v1 the sideways glance, v2 looking front; the strip plays both)
 
 Attach: `Current Skins/Solar/Pink Lagoon [sk-swim-lagoon] - portraits.png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-swim-lagoon-onemore.png`
@@ -1089,7 +1089,7 @@ Save as: `skin-sk-swim-lagoon-onemore.png`
 A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. Her hair: her own jet-black hair with bold hot-pink streaks, pulled into a very high bubble ponytail (the long ponytail tied off every few inches with pink hair ties so it puffs into bubbles), little pearl clips above one ear, glossy wet-look ends, exactly as in the FIRST attached image, strands falling across the frame. Keep these from the look, exactly as in the FIRST attached image, wherever they show in the crop: heart-shaped pink sunglasses pushed up on her head. Behind the face: bold flat diagonal stripes and speed lines in aqua, pale pink and white, a few tiny round shiny bubbles scattered in the stripes. No text, no letters, no logos, no border.
 ```
 
-#### 4. Entrance card
+#### 4. Entrance card ✓ made
 
 Attach: `Current Skins/Solar/Pink Lagoon [sk-swim-lagoon] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-swim-lagoon-entrance.png`
@@ -1097,7 +1097,7 @@ Save as: `skin-sk-swim-lagoon-entrance.png`
 A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (a black bikini top with pink ruffle trim and a tiny pink bow at the centre, high-waisted black bikini bottoms with pink ruffles, a sheer hot-pink chiffon sarong knotted at one hip and floating behind her, heart-shaped pink sunglasses pushed up on her head, a pearl anklet, black platform sandals with pink straps, a few pink beaded bracelets. Hair: her own jet-black hair with bold hot-pink streaks, pulled into a very high bubble ponytail (the long ponytail tied off every few inches with pink hair ties so it puffs into bubbles), little pearl clips above one ear, glossy wet-look ends. Her naginata's haft wrapped in pink and white rope like a beach towel stripe, a small seashell charm at the collar), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, the naginata swung over one shoulder, her hair and clothes whipping back, a cool, ready look straight at the viewer. Background: flat graphic shards of aqua, pale pink and white breaking apart diagonally, a few speed lines, a scatter of round shiny bubbles. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
 ```
 
-#### 5. Finish card
+#### 5. Finish card ✓ made
 
 Attach: `Current Skins/Base Game/Solar/Solar - finish card.png`, then `Current Skins/Solar/Pink Lagoon [sk-swim-lagoon] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-swim-lagoon-finish.png`
@@ -1197,7 +1197,7 @@ Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image
 
 ### Sun Hoodie · `sk-cp-sunmoon` · Sun & moon
 
-#### 1. Second pose sheet
+#### 1. Second pose sheet ✓ made
 
 Attach: `Current Skins/Solar/Sun Hoodie [sk-cp-sunmoon] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-cp-sunmoon-posesheet-2.png`
@@ -1205,7 +1205,7 @@ Save as: `skin-sk-cp-sunmoon-posesheet-2.png`
 Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: an oversized black hoodie worn as a short dress, a big hot-pink sun printed on the chest and a tiny crescent moon on the cuff (no letters), black thigh-high socks with a pink stripe, chunky black-and-pink sneakers, a pink heart-shaped hair clip, a silver sun pendant. Hair: her own jet-black hair with hot-pink face-framing streaks, in two low loose pigtails tied with black scrunchies. A small pink sun charm on her naginata. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, the naginata held loosely in the other hand. Cell 2: guarding: braced low, the naginata held across her body like a shield, forearm raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, her hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping the naginata. Cell 5: badly hurt: standing but hunched, one hand pressed to her side, breathing hard, the naginata lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, the naginata ready, her hair and clothes streaming back. Persona 3 Reload official art style. No text.
 ```
 
-#### 2. Theurgy cut-in
+#### 2. Theurgy cut-in ✓ made
 
 Attach: `Added to Game/theurgy-solar-haenim.png`, then `Current Skins/Solar/Sun Hoodie [sk-cp-sunmoon] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-cp-sunmoon-theurgy.png`
@@ -1213,7 +1213,7 @@ Save as: `skin-sk-cp-sunmoon-theurgy.png`
 Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, colours, lighting, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: an oversized black hoodie worn as a short dress, a big hot-pink sun printed on the chest and a tiny crescent moon on the cuff (no letters), black thigh-high socks with a pink stripe, chunky black-and-pink sneakers, a pink heart-shaped hair clip, a silver sun pendant. Hair: her own jet-black hair with hot-pink face-framing streaks, in two low loose pigtails tied with black scrunchies. A small pink sun charm on her naginata. Same face as the THIRD attached image. Keep the Persona behind her exactly as in the first image, and keep her face in the same place in the frame. No text, no letters, no logos.
 ```
 
-#### 3. "1 MORE!" eye strip
+#### 3. "1 MORE!" eye strip ✓ made (two pictures: v1 the sideways glance, v2 looking front; the strip plays both)
 
 Attach: `Current Skins/Solar/Sun Hoodie [sk-cp-sunmoon] - portraits.png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-cp-sunmoon-onemore.png`
@@ -1221,7 +1221,7 @@ Save as: `skin-sk-cp-sunmoon-onemore.png`
 A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. Her hair: her own jet-black hair with hot-pink face-framing streaks, in two low loose pigtails tied with black scrunchies, exactly as in the FIRST attached image, strands falling across the frame. Keep these from the look, exactly as in the FIRST attached image, wherever they show in the crop: a pink heart-shaped hair clip. Behind the face: bold flat diagonal stripes and speed lines in warm gold, hot pink and black, a few tiny suns and crescent moons scattered in the stripes. No text, no letters, no logos, no border.
 ```
 
-#### 4. Entrance card
+#### 4. Entrance card ✓ made
 
 Attach: `Current Skins/Solar/Sun Hoodie [sk-cp-sunmoon] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-cp-sunmoon-entrance.png`
@@ -1229,7 +1229,7 @@ Save as: `skin-sk-cp-sunmoon-entrance.png`
 A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (an oversized black hoodie worn as a short dress, a big hot-pink sun printed on the chest and a tiny crescent moon on the cuff (no letters), black thigh-high socks with a pink stripe, chunky black-and-pink sneakers, a pink heart-shaped hair clip, a silver sun pendant. Hair: her own jet-black hair with hot-pink face-framing streaks, in two low loose pigtails tied with black scrunchies. A small pink sun charm on her naginata), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, the naginata swung over one shoulder, her hair and clothes whipping back, a cool, ready look straight at the viewer. Background: flat graphic shards of warm gold, hot pink and black breaking apart diagonally, a few speed lines, a scatter of little suns and crescent moons. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
 ```
 
-#### 5. Finish card
+#### 5. Finish card ✓ made
 
 Attach: `Current Skins/Base Game/Solar/Solar - finish card.png`, then `Current Skins/Solar/Sun Hoodie [sk-cp-sunmoon] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-cp-sunmoon-finish.png`
@@ -1373,7 +1373,7 @@ Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image
 
 ### Ringside · `sk-cp-ringside` · Hearts
 
-#### 1. Second pose sheet
+#### 1. Second pose sheet ✓ made
 
 Attach: `Current Skins/Solar/Ringside [sk-cp-ringside] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-cp-ringside-posesheet-2.png`
@@ -1381,7 +1381,7 @@ Save as: `skin-sk-cp-ringside-posesheet-2.png`
 Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: a cropped red-and-black track jacket with white stripes down the sleeves (no letters), a black sports bra top, black bike shorts under a short red track skirt, white hand wraps, red-and-white high-top boxing boots, a towel around her neck. Hair: her own jet-black hair in two tight boxer braids joined into a high ponytail, the tips dyed hot pink. Her naginata's haft wrapped in white boxing tape. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, the naginata held loosely in the other hand. Cell 2: guarding: braced low, the naginata held across her body like a shield, forearm raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, her hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping the naginata. Cell 5: badly hurt: standing but hunched, one hand pressed to her side, breathing hard, the naginata lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, the naginata ready, her hair and clothes streaming back. Persona 3 Reload official art style. No text.
 ```
 
-#### 2. Theurgy cut-in
+#### 2. Theurgy cut-in ✓ made
 
 Attach: `Added to Game/theurgy-solar-haenim.png`, then `Current Skins/Solar/Ringside [sk-cp-ringside] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-cp-ringside-theurgy.png`
@@ -1389,7 +1389,7 @@ Save as: `skin-sk-cp-ringside-theurgy.png`
 Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, colours, lighting, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: a cropped red-and-black track jacket with white stripes down the sleeves (no letters), a black sports bra top, black bike shorts under a short red track skirt, white hand wraps, red-and-white high-top boxing boots, a towel around her neck. Hair: her own jet-black hair in two tight boxer braids joined into a high ponytail, the tips dyed hot pink. Her naginata's haft wrapped in white boxing tape. Same face as the THIRD attached image. Keep the Persona behind her exactly as in the first image, and keep her face in the same place in the frame. No text, no letters, no logos.
 ```
 
-#### 3. "1 MORE!" eye strip
+#### 3. "1 MORE!" eye strip ✓ made (two pictures: v1 the sideways glance, v2 looking front; the strip plays both)
 
 Attach: `Current Skins/Solar/Ringside [sk-cp-ringside] - portraits.png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-cp-ringside-onemore.png`
@@ -1397,7 +1397,7 @@ Save as: `skin-sk-cp-ringside-onemore.png`
 A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. Her hair: her own jet-black hair in two tight boxer braids joined into a high ponytail, the tips dyed hot pink, exactly as in the FIRST attached image, strands falling across the frame. Behind the face: bold flat diagonal stripes and speed lines in hot pink, soft pink and black, a few tiny hearts scattered in the stripes. No text, no letters, no logos, no border.
 ```
 
-#### 4. Entrance card
+#### 4. Entrance card ✓ made
 
 Attach: `Current Skins/Solar/Ringside [sk-cp-ringside] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-cp-ringside-entrance.png`
@@ -1405,7 +1405,7 @@ Save as: `skin-sk-cp-ringside-entrance.png`
 A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (a cropped red-and-black track jacket with white stripes down the sleeves (no letters), a black sports bra top, black bike shorts under a short red track skirt, white hand wraps, red-and-white high-top boxing boots, a towel around her neck. Hair: her own jet-black hair in two tight boxer braids joined into a high ponytail, the tips dyed hot pink. Her naginata's haft wrapped in white boxing tape), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, the naginata swung over one shoulder, her hair and clothes whipping back, a cool, ready look straight at the viewer. Background: flat graphic shards of hot pink, soft pink and black breaking apart diagonally, a few speed lines, a scatter of little hearts. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
 ```
 
-#### 5. Finish card
+#### 5. Finish card ✓ made
 
 Attach: `Current Skins/Base Game/Solar/Solar - finish card.png`, then `Current Skins/Solar/Ringside [sk-cp-ringside] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-cp-ringside-finish.png`

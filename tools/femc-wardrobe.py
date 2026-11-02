@@ -32,7 +32,9 @@
   python3 tools/femc-wardrobe.py onemore2 <src.png> <skin id | own> [fighter id]
         The strip's second beat (Nov 1 2026, Kat's two-stage strip: v1 the sideways glance, v2 looking front with the sun in
         her eyes), cut the same way -> <who>-onemore-v2.webp (own: game/art/onemore/<who>-v2.webp). With both, the strip
-        plays v1 then flashes to v2; with one, it plays alone.
+        plays v1 then flashes to v2; with one, it plays alone. scan finds the two irises on every v2 (om_eyes) and lists them
+        in ready.js as `eyes2` (x1, y1, x2, y2 in % of the strip) so the glints land on her eyes; cached by file hash in
+        tools/femc-onemore-eyes.json (edit an entry's `eyes` there by hand to override; `null` = the fixed 40% / 65% spot).
   python3 tools/femc-wardrobe.py theurgy <src.png> <skin id> [fighter id]
         E: the look's own Theurgy cut-in (16:9, framing kept, like femc-theurgy.py cutin) -> skins/<skin>/<who>-theurgy.webp,
         1600 x 900. battle.js uses it in place of the fighter's cut-in while the look is worn.
@@ -190,6 +192,48 @@ def sheet2(src, skin, who):
     return frames, k
 
 
+def om_eyes(path):
+    """The two irises on a v2 One More strip (Nov 1 2026, so the glints land on her eyes, not at a fixed 40% / 65%): a dark
+    disc with white sclera on both sides and skin below, the best one in the middle band, then the best partner level with it
+    18-40% of the width away. [x1, y1, x2, y2] in % of the strip (left eye first), or None when the partner is weak."""
+    import numpy as np
+    from scipy import ndimage
+    a = np.asarray(Image.open(path).convert('RGB')).astype(float); H, W, _ = a.shape
+    lum, sat = a.mean(2), a.max(2) - a.min(2)
+    white = ((a.min(2) > 185) & (sat < 45)).astype(float)
+    dark = ((lum < 140) & (lum > 15)).astype(float)
+    skin = ((a[..., 0] > 200) & (a[..., 1] > 150) & (a[..., 2] > 110) & (sat > 30)).astype(float)
+    def box(m, x0, x1, y0, y1):  # mean of m over the box [x0, x1) x [y0, y1) relative to each pixel
+        f = ndimage.uniform_filter(m, size=(y1 - y0, x1 - x0), mode='constant')
+        return np.roll(np.roll(f, -((y0 + y1) // 2), 0), -((x0 + x1) // 2), 1)
+    sc = box(dark, -28, 28, -22, 22) * np.sqrt(box(white, -75, -38, -14, 14) * box(white, 38, 75, -14, 14) + 1e-6) * (0.3 + box(skin, -40, 40, 60, 110))
+    sc[:, :int(W * .15)] = 0; sc[:, int(W * .85):] = 0; sc[:int(H * .2)] = 0; sc[int(H * .9):] = 0
+    sc = ndimage.gaussian_filter(sc, 4)
+    y1, x1 = np.unravel_index(np.argmax(sc), sc.shape)
+    yy, xx = np.mgrid[0:H, 0:W]
+    s2 = np.where((abs(yy - y1) < H * .15) & (abs(xx - x1) > W * .18) & (abs(xx - x1) < W * .40), sc, 0)
+    y2, x2 = np.unravel_index(np.argmax(s2), s2.shape)
+    if s2[y2, x2] < 0.25 * sc[y1, x1]: return None
+    (ax, ay), (bx, by) = sorted([(x1, y1), (x2, y2)])
+    return [round(100 * ax / W, 1), round(100 * ay / H, 1), round(100 * bx / W, 1), round(100 * by / H, 1)]
+
+
+def eyes_of(paths):
+    """om_eyes for each v2 strip, cached by sha256 in tools/femc-onemore-eyes.json (a hand-edited `eyes` survives while the
+    file is unchanged)."""
+    import hashlib
+    cf = ROOT / 'tools/femc-onemore-eyes.json'
+    cache = json.loads(cf.read_text()) if cf.exists() else {}
+    out, new = {}, {k: v for k, v in cache.items() if (ROOT / k).exists()}  # entries for deleted strips drop out
+    for p in paths:
+        rel = str(p.relative_to(ROOT)); h = hashlib.sha256(p.read_bytes()).hexdigest()
+        c = new.get(rel)
+        if not c or c.get('sha256') != h: c = {'sha256': h, 'eyes': om_eyes(p)}
+        new[rel] = c; out[p] = c['eyes']
+    if new != cache: cf.write_text(json.dumps(new, indent=1, sort_keys=True) + '\n')
+    return out
+
+
 def scan():
     keys = sorted(f.stem for f in (ART / 'keys/series').glob('*.webp')) if (ART / 'keys/series').exists() else []
     goods = sorted(f.stem for f in (ART / 'goods').glob('*.webp')) if (ART / 'goods').exists() else []
@@ -209,11 +253,17 @@ def scan():
         for k, suf in (('onemore', 'onemore'), ('onemore2', 'onemore-v2'), ('entrance', 'entrance'), ('theurgy', 'theurgy'), ('finish', 'finish')):  # part 8 / E / G art, listed only when present
             got = sorted(f.name[:-len(f'-{suf}.webp')] for f in d.glob(f'*-{suf}.webp'))
             if got and d.name in skins: skins[d.name][k] = got
+        if 'onemore2' in skins.get(d.name, {}):  # where her eyes are on each v2 strip (om_eyes), for the glints
+            ey = eyes_of([d / f'{w}-onemore-v2.webp' for w in skins[d.name]['onemore2']])
+            e2 = {w: ey[d / f'{w}-onemore-v2.webp'] for w in skins[d.name]['onemore2'] if ey[d / f'{w}-onemore-v2.webp']}
+            if e2: skins[d.name]['eyes2'] = e2
         if (d / 'weapon.webp').exists(): weapons.append(d.name)
     stems = lambda sub, cut='': sorted(f.stem[:len(f.stem) - len(cut)] if cut else f.stem for f in (ART / sub).glob(f'*{cut}.webp')) if (ART / sub).exists() else []
     own = {k: stems(k) for k in ('onemore', 'entrance')}
     own['onemore2'] = sorted(w[:-3] for w in own['onemore'] if w.endswith('-v2'))  # the strip's second beat, <who>-v2.webp
     own['onemore'] = [w for w in own['onemore'] if not w.endswith('-v2')]
+    ey = eyes_of([ART / 'onemore' / f'{w}-v2.webp' for w in own['onemore2']])
+    own['eyes2'] = {w: ey[ART / 'onemore' / f'{w}-v2.webp'] for w in own['onemore2'] if ey[ART / 'onemore' / f'{w}-v2.webp']}
     P = ROOT / 'assets/femc/battle/art/poses'  # D: fighters' own second sheets (battle.js reads own.poses2)
     own['poses2'] = sorted(f.name[:-len('-pose2-0.webp')] for f in P.glob('*-pose2-0.webp') if all((P / f.name.replace('-pose2-0', f'-pose2-{i}')).exists() for i in range(6)))
     FXD = ROOT / 'assets/femc/battle/art/fx'  # Kat's theme effect sheets (tools/femc-fx.py), for the Wardrobe's Try it on
@@ -222,7 +272,7 @@ def scan():
     head = (ART / 'ready.js').read_text().split('window.FEMC_ART_READY')[0]
     (ART / 'ready.js').write_text(head + 'window.FEMC_ART_READY = ' + json.dumps(data) + ';\n')
     print('ready.js:', len(keys), 'keychains,', len(goods), 'goods,', len(skins), 'outfits,', len(weapons), 'weapons,',
-          sum(len(v) for k, v in own.items() if k != 'poses2'), 'own-look strips/cards,', len(own['poses2']), 'own sheet 2s,', len(data['couples']), 'showtimes,', len(data['frames']), 'frames')
+          sum(len(v) for k, v in own.items() if k not in ('poses2', 'eyes2')), 'own-look strips/cards,', len(own['poses2']), 'own sheet 2s,', len(data['couples']), 'showtimes,', len(data['frames']), 'frames')
 
 
 def look_who(skin):

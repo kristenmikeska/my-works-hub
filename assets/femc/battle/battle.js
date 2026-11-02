@@ -85,7 +85,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 41;
+  const ART_V = 42;
   /* Status art (tools/femc-icons.py): sticker icons for the ailments and the buff / debuff arrows, and the Tartarus map's room
      glyphs. A status chip shows its icon in place of the old name or ATK / DEF / AGI text (the name stays in its title). */
   const ICON_DIR = 'assets/femc/battle/art/icons/';
@@ -165,7 +165,7 @@
   const FIGHTER_POSES2 = new Set(['solar']);
   const STATES2 = { support: [6], guard: [7], dodge: [8], down: [9], wounded: [10], dash: [11] };
   const SUPPORT_TYPES = new Set(['heal', 'buff', 'cure', 'revive', 'support', 'charge', 'ward', 'sp']);
-  const FIGHTER_HAND2 = { solar: [0.136, 0.23] }, LOOK_HAND2 = { 'sk-cp-afterhours': [0.63, 0.26], 'sk-alphaphi': [0.63, 0.26], 'sk-alphaphi:b': [0.3, 0.23], 'sk-date': [0.13, 0.26], 'sk-esports': [0.15, 0.27], 'sk-halloween': [0.63, 0.35], 'sk-hanbok': [0.23, 0.28], 'sk-harbourcoat': [0.58, 0.23], 'sk-idol': [0.11, 0.26], 'sk-swim-lifeguard': [0.13, 0.22], 'sk-limelight': [0.62, 0.28], 'sk-cp-drive': [0.72, 0.24], 'sk-swim-night': [0.67, 0.24], 'sk-oops': [0.68, 0.26], 'sk-sugarrush': [0.18, 0.27], 'sk-cp-festival': [0.68, 0.19], 'sk-arcana-sun': [0.69, 0.27], 'sk-vp': [0.57, 0.28], 'sk-wintercoat': [0.17, 0.24], 'sk-y2k': [0.15, 0.24], 'sk-strawberry': [0.67, 0.22], 'sk-emo': [0.67, 0.28], 'sk-yukata': [0.55, 0.46] }; // Nov 1: Kat's batch, read off each pose2-0 (':b' = the alternate sheet 2's pose2b-0)
+  const FIGHTER_HAND2 = { solar: [0.136, 0.23] }, LOOK_HAND2 = { 'sk-cp-afterhours': [0.63, 0.26], 'sk-alphaphi': [0.63, 0.26], 'sk-alphaphi:b': [0.3, 0.23], 'sk-date': [0.13, 0.26], 'sk-esports': [0.15, 0.27], 'sk-halloween': [0.63, 0.35], 'sk-hanbok': [0.23, 0.28], 'sk-harbourcoat': [0.58, 0.23], 'sk-idol': [0.11, 0.26], 'sk-swim-lifeguard': [0.13, 0.22], 'sk-limelight': [0.62, 0.28], 'sk-cp-drive': [0.72, 0.24], 'sk-swim-night': [0.67, 0.24], 'sk-oops': [0.68, 0.26], 'sk-sugarrush': [0.18, 0.27], 'sk-cp-festival': [0.68, 0.19], 'sk-arcana-sun': [0.69, 0.27], 'sk-vp': [0.57, 0.28], 'sk-wintercoat': [0.17, 0.24], 'sk-y2k': [0.15, 0.24], 'sk-strawberry': [0.67, 0.22], 'sk-emo': [0.67, 0.28], 'sk-velvet': [0.63, 0.3], 'sk-swim-lagoon': [0.56, 0.21], 'sk-cp-ringside': [0.63, 0.26], 'sk-snake': [0.71, 0.28], 'sk-summersession': [0.58, 0.26], 'sk-cp-sunmoon': [0.18, 0.21], 'sk-yukata': [0.55, 0.46] }; // Nov 1: Kat's batch (+ six more the same night), read off each pose2-0 (':b' = the alternate sheet 2's pose2b-0)
   const wornPose = mid => !!(LOOKS && LOOKS.pose && LOOKS.pose[mid]);
   const has2 = mid => (wornPose(mid) ? !!(LOOKS.pose2 && LOOKS.pose2[mid]) : FIGHTER_POSES2.has(mid));
   const hand2Of = mid => (wornPose(mid) ? (alt2On(mid) && LOOK_HAND2[LOOKS.look[mid] + ':b']) || LOOK_HAND2[LOOKS.look && LOOKS.look[mid]] : FIGHTER_HAND2[mid]) || handOf(mid);
@@ -3410,9 +3410,12 @@
   function oneMoreStrip(u) {
     if (!LOOKS || rushActive() || save.cutins === 'off' || !member(u.mid)) return null;
     const art = LOOKS.onemore && LOOKS.onemore[u.mid], art2 = art && LOOKS.onemore2 && LOOKS.onemore2[u.mid];
+    // Nov 1 2026: each v2's eyes, found by femc-wardrobe.py om_eyes (cosmetics.js battle().omEyes); else the fixed 40% / 65%.
+    const eyes = art2 && LOOKS.omEyes && LOOKS.omEyes[u.mid], glintAt = (e, i) => (Array.isArray(e) && e.length === 4 ? ` style="left:${+e[i * 2]}%;top:${+e[i * 2 + 1]}%"` : '');
+    if (Array.isArray(eyes)) mark('onemore-eyes');
     mark('onemore-strip'); mark('onemore-strip-' + (art ? 'art' : 'code')); if (art2) mark('onemore-strip-two');
     const m = member(u.mid);
-    const inner = art ? `<div class="bt-om-frame"><img class="bt-om-art v1" src="${art}" alt="" draggable="false">${art2 ? `<div class="bt-om-v2"><img class="bt-om-art" src="${art2}" alt="" draggable="false"><i class="bt-om-glint"></i><i class="bt-om-glint g2"></i></div>` : ''}</div>${art2 ? '<i class="bt-om-flash"></i>' : ''}`
+    const inner = art ? `<div class="bt-om-frame"><img class="bt-om-art v1" src="${art}" alt="" draggable="false">${art2 ? `<div class="bt-om-v2"><img class="bt-om-art" src="${art2}" alt="" draggable="false"><i class="bt-om-glint"${glintAt(eyes, 0)}></i><i class="bt-om-glint g2"${glintAt(eyes, 1)}></i></div>` : ''}</div>${art2 ? '<i class="bt-om-flash"></i>' : ''}`
       : `<i class="bt-om-stripes"></i><div class="bt-om-eyes fcb">${fimg(u.mid, m.faces.idle, '', 'om-face')}</div><i class="bt-om-lines"></i>`;
     return `<div class="bt-om ${art ? 'art' : 'code'}${art2 ? ' two' : ''}" data-mid="${u.mid}" style="--mc:${m.color || '#ff4f9e'}"><div class="bt-om-in">${inner}</div></div>`;
   }

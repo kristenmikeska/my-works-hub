@@ -412,14 +412,15 @@ window.FemcCosmetics = (() => {
   /* Part 8 (FEMC-SKINS-BATTLE-DESIGN H-L, Nov 1 2026), also per fighter: theme (the look's theme id), name (the look's name),
      couple (its couple set id), onemore / onemore2 / entrance (the art's path, when ready.js lists it: the worn look's, else
      for a fighter in their own clothes game/art/onemore|entrance/<who>.webp, onemore2 = onemore/<who>-v2.webp), theurgy /
-     finish (E / G: the worn look's own Theurgy cut-in and All-Out finish card), pose2b (an alternate sheet 2);
+     finish (E / G: the worn look's own Theurgy cut-in and All-Out finish card), pose2b (an alternate sheet 2), omEyes ([x1, y1, x2, y2]
+     in % of the v2 strip: ready.js eyes2, where the One More glints go; absent = the fixed 40% / 65% spot);
      and showtime { set: path }, frames { theme: path }.
      A missing file is simply absent, and battle.js draws its built-in version. */
   const ART_V8 = 1; // bump when one of these files is replaced in place
   function battle() {
     if (!S()) return null;
-    const pose = {}, pose2 = {}, pose2b = {}, face = {}, clean = {}, hand = {}, look = {}, theme = {}, name = {}, couple = {}, onemore = {}, onemore2 = {}, entrance = {}, theurgy = {}, finish = {}, showtime = {}, frames = {};
-    const out = { pose, pose2, pose2b, face, clean, hand, look, theme, name, couple, onemore, onemore2, entrance, theurgy, finish, showtime, frames, css: '' };
+    const pose = {}, pose2 = {}, pose2b = {}, face = {}, clean = {}, hand = {}, look = {}, theme = {}, name = {}, couple = {}, onemore = {}, onemore2 = {}, omEyes = {}, entrance = {}, theurgy = {}, finish = {}, showtime = {}, frames = {};
+    const out = { pose, pose2, pose2b, face, clean, hand, look, theme, name, couple, onemore, onemore2, omEyes, entrance, theurgy, finish, showtime, frames, css: '' };
     const A = readyArt(), art = (dir, f) => `${G.base}${dir}${f}?v=${ART_V8}`;
     ITEMS.filter(x => x.kind === 'skin').forEach(x => {
       const o = onIn(slotOf(x)); if (!o || pose[o.who]) return;
@@ -434,13 +435,14 @@ window.FemcCosmetics = (() => {
       if (o.couple) couple[w] = o.couple;
       if ((R.onemore || []).includes(w)) onemore[w] = art(skinDir(o.id), `${w}-onemore.webp`);
       if ((R.onemore2 || []).includes(w)) onemore2[w] = art(skinDir(o.id), `${w}-onemore-v2.webp`); // the strip's second beat
+      if (onemore2[w] && (R.eyes2 || {})[w]) omEyes[w] = R.eyes2[w].slice(0, 4); // where her eyes are on v2 (femc-wardrobe.py om_eyes), for the glints
       if ((R.entrance || []).includes(w)) entrance[w] = art(skinDir(o.id), `${w}-entrance.webp`);
       if ((R.theurgy || []).includes(w)) theurgy[w] = art(skinDir(o.id), `${w}-theurgy.webp`); // E: the look's Theurgy cut-in
       if ((R.finish || []).includes(w)) finish[w] = art(skinDir(o.id), `${w}-finish.webp`); // G: the look's All-Out finish card
     });
     const own = A.own || {};
     (own.onemore || []).forEach(w => { if (!pose[w]) onemore[w] = art('assets/femc/game/art/onemore/', `${w}.webp`); });
-    (own.onemore2 || []).forEach(w => { if (!pose[w]) onemore2[w] = art('assets/femc/game/art/onemore/', `${w}-v2.webp`); });
+    (own.onemore2 || []).forEach(w => { if (!pose[w]) { onemore2[w] = art('assets/femc/game/art/onemore/', `${w}-v2.webp`); if ((own.eyes2 || {})[w]) omEyes[w] = own.eyes2[w].slice(0, 4); } });
     (own.entrance || []).forEach(w => { if (!pose[w]) entrance[w] = art('assets/femc/game/art/entrance/', `${w}.webp`); });
     (A.couples || []).forEach(c => { showtime[c] = art('assets/femc/game/art/couples/', `${c}-showtime.webp`); });
     (A.frames || []).forEach(t => { frames[t] = art('assets/femc/game/art/frames/', `${t}.webp`); });
@@ -469,7 +471,7 @@ window.FemcCosmetics = (() => {
       // Kat's theme effect sheet (battle/art/fx/theme-<id>.webp; ready.js `themes`, femc-wardrobe.py scan) for the burst.
       themeSheet: x.theme && (readyArt().themes || []).includes(x.theme) ? `${G.base}assets/femc/battle/art/fx/theme-${x.theme}.webp?v=${ART_V8}` : null,
       entrance: (R.entrance || []).includes(w) ? art8(`${w}-entrance.webp`) : null, onemore: (R.onemore || []).includes(w) ? art8(`${w}-onemore.webp`) : null,
-      onemore2: (R.onemore2 || []).includes(w) ? art8(`${w}-onemore-v2.webp`) : null,
+      onemore2: (R.onemore2 || []).includes(w) ? art8(`${w}-onemore-v2.webp`) : null, omEyes: (R.onemore2 || []).includes(w) && (R.eyes2 || {})[w] ? R.eyes2[w].slice(0, 4) : null,
       face: f ? `${G.base}${skinDir(x.id)}portraits/${w}/${f}.webp?v=9` : `${G.base}${D.portraits || 'assets/femc/portraits/'}${w}/${face0}.webp?v=${V}`, faceKey: f || face0,
       skill: { name: sk.name, el: sk.el, elName: el.name, color: el.color } };
   }
