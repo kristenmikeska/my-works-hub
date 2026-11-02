@@ -23262,6 +23262,31 @@
       "sheetOrder": "3 x 2, transparent",
       "placement": "not used",
       "knownLimits": "reviewed, not used: cell 2 is a full heart made alone (cannot pair with Solar's half-heart); the other five cells match v1, which is used"
+    },
+    {
+      "batch": 122,
+      "source": "skin-sk-thesun-portraits.png",
+      "sourceNow": "New Adds/skin-sk-thesun-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "bbd006dd377f602ac008fbbe4c3304feacacffeb699150ea2b6af73393899277",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-arcana-sun/portraits/solar/neutral.webp",
+      "skin": "sk-arcana-sun",
+      "conversion": "already transparent sheet, a fresh cut (no faces for this look before): python3 tools/femc-skin-portraits.py skin-sk-thesun-portraits.png OUT (rows at the emptiest line near the middle, columns on a min-cost seam near the thirds; each face matched (eyes to chin, TM_CCOEFF_NORMED 0.86-0.89) against Solar's own portrait of the same expression, one shared scale 0.55 sheet px per canvas px, placed on the 862 x 851 canvas; busts carried down by their last clean row) then tools/femc-wardrobe.py portraits sk-arcana-sun solar OUT and scan (WebP q90); source unchanged",
+      "sheetOrder": "reading order, checked by eye: neutral, happy, sad, serious, surprised, flustered",
+      "placement": "Solar's scene portraits while The Sun (sk-arcana-sun) is worn; ready.js skins.sk-arcana-sun.portraits.solar",
+      "knownLimits": "saved under skin-sk-thesun-portraits.png (the TODO asked for skin-sk-arcana-sun-portraits.png); the top few px of the crown braid run off the canvas top, as on her other looks",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-arcana-sun/portraits/solar/neutral.webp": "a74202c56e20f4a58c0bd06d8410255ae5a52d5fe41731aadf46ae56d063cf42",
+        "assets/femc/game/art/skins/sk-arcana-sun/portraits/solar/happy.webp": "3510eb655248f47c31ae9d0aa39d8f51850e7031925473e61262ef3be6247fa8",
+        "assets/femc/game/art/skins/sk-arcana-sun/portraits/solar/sad.webp": "a1f930ae88c8b2cd5df980b1d7a584db8b1201bdcdd8541569c315aef9f7f29a",
+        "assets/femc/game/art/skins/sk-arcana-sun/portraits/solar/serious.webp": "51af2d86ac245e57f604893d5a78c012373eadd2eb4ff109128f0d2dac18e365",
+        "assets/femc/game/art/skins/sk-arcana-sun/portraits/solar/surprised.webp": "c570e6cc4583731b78d16951db25b24789913e84d2343987c2da571e938675a5",
+        "assets/femc/game/art/skins/sk-arcana-sun/portraits/solar/flustered.webp": "ff71c4fbd6e48b2a4554747c96943c5490c037b01af5204fc0a7895dd46ebac8"
+      }
     }
   ],
   "batch1Validation": {
@@ -24712,5 +24737,10 @@
     "tests": "python3 tests/femc_booth.py (art: frames 1-8, stamps 1-9, seven pose sets; flow at 1440 x 900 and 390 x 844, album, gates, settings): all passed; femc_gallery: 94 checks passed",
     "framing": "printed strips with Haechan, Hanni and Yukari checked by eye at 1440 x 900 and 390 x 844; art poses drawn big and close (booth.css img.bs-p.art), the drawn heart hidden when both halves are art",
     "html": "femc-game.html booth.css v2, booth.js v2, art/booth/index.js v2 (booth.js image V 2)"
+  },
+  "batch122Validation": {
+    "tests": "femc-wardrobe.py scan lists the six faces; FemcGame.portrait('solar', face) returns the sk-arcana-sun files for all six with the look equipped",
+    "framing": "overlay against Solar's own neutral: eyes and face line up; scene screenshots (happy, flustered) at 1440 x 900 and 390 x 844 checked by eye",
+    "html": "femc-game.html art/ready.js ?v bumped"
   }
 }

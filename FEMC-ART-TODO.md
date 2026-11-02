@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 1):** 2 evening poses for Solar (section 20) · 14 seasonal face sheets (section 16) · 1 credits still (section 18: Ken) · 23 skin-series pieces for Solar (section 19: The Sun's portraits, Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, couple Showtimes, theme sheets and frames, cut-ins, finish cards, second pose sheets): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`, not here. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make (updated Nov 1):** 2 evening poses for Solar (section 20) · 14 seasonal face sheets (section 16) · 1 credits still (section 18: Ken) · 22 skin-series pieces for Solar (section 19: Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, couple Showtimes, theme sheets and frames, cut-ins, finish cards, second pose sheets): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`, not here. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
@@ -149,14 +149,6 @@ The stone steps of a small neighbourhood shrine in the afternoon. Ken sits halfw
 Kat's picks (Oct 31): three series, four looks each, each with its own banner. Every look is a pose sheet plus scene portraits, like the Wardrobe outfits already in the game.
 
 ### Tarot Arcana
-**[ ] 19B. Solar: The Sun (scene portraits)**  
-Her scene faces for The Sun (its pose sheet is in the game: a white-and-gold gown with a sunburst halo collar, hair in a crown braid with tiny gold flowers).  
-Attach: `Solar.png`  
-Save as: `skin-sk-arcana-sun-portraits.png`
-```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a white-and-gold gown with a sunburst halo collar of gold rays rising behind her neck, gold arm cuffs, a small sun-disc pendant, warm sunrise light with a soft gold glow behind her. Hair: her own jet-black hair in a crown braid wrapped around her head, the rest falling long down her back with warm honey-gold highlights at the ends, tiny gold flowers and gold thread woven through the braid. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
 **[ ] 19C. Solar: The Moon (pose sheet)**  
 Tarot Arcana. A midnight-blue slip dress, a sheer veil and moon-phase jewellery; long loose hair with silver tinsel.  
 Attach: `solar-posesheet.png`, then `Solar.png`  

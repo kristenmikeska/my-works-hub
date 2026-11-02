@@ -197,6 +197,7 @@ Other docs, if you ever want detail:
 - ✅ **Outfits in battle (third part):** Solar now has six more battle poses (a calm hand raised for healing and support, guarding, dodging, knocked down, badly hurt, dashing in for an All-Out or a baton pass), and so does her Summer Yukata; your hearts effect plays over hearts-look skills, in the All-Out cloud and in Try it on. Everyone else keeps their usual poses until their second sheet comes.
 - ✅ **Photo booth:** a purikura booth at Paulownia Mall: pick a friend, a frame and three poses, add stamps, and the strip goes into the Album (and comes along into New Game+). Your first four frames are in; the other frames, the stamps and the pose sheets are drawn in for now.
 - ✅ **Photo booth art:** all eight of your frames, your nine stamps and your pose sheets for Solar and all six friends are in, so every strip is your art now.
+- ✅ **The Sun's faces:** wearing The Sun, Solar now has her own six scene faces for that look.
 - ✅ **Velvet Trials:** a boss rush in the Velvet Room once you've beaten a boss: seven trials of three or four refights in a row (only bosses you've beaten, the rest are ???), a Featured Trial each week with a twist, and Duels against any one boss. A score and a rank from C to S, best records kept, and rewards: plumes, cards and materials once per rank, a few plumes a week, and four looks you can only get here (two title screens, a menu wallpaper, a battle theme). Nothing outside the Velvet Room changes. Notes in FEMC-BOSS-RUSH.md
 
 ## Music and polish
