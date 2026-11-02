@@ -3,6 +3,9 @@
 Sections:
   free      the phone's Who's Free app: today + three days, only met links, slots and places, rank / romance marks, Gone,
             a row for right now jumps to Go Out with its area open; never unmet, secret or story-only people
+  jobs      the phone's Jobs app: rows match jobs.js for a set of dates (days, days off, full moon, trip, story evenings),
+            hidden / "Opens later", hired vs not, perk pay, the next-shift cue, a row for right now jumps to Go Out,
+            a pure read (the save is byte-identical), keyboard / pad, layout at 1440x900 and 390x844
   contacts  contact cards: portrait, arcana, rank, birthday / favourites only from the rank that establishes them, gifts "?"
             until noted (giftReact), learned lines by rank, Messages button, back to the list; every data file's shape
   invites   ordinary-day invites: about two a week, never on a story day; yes books the slot (+1 ♪, plays at once);
@@ -83,7 +86,7 @@ try:
         ok('shinjiro' in p.eval("FemcGame.goneLinks().map(l=>l.id)"), 'a link that has left shows as gone')
         p.eval("FemcGameUI.openPhone();true")
         p.wait("!!document.querySelector('.g-phone-ov [data-tab=free]')", 5)
-        ok(p.eval("document.querySelectorAll('.g-phone-ov [data-tab]').length===3 && !!document.querySelector('.g-phone-ov .g-ph-wx')"), 'the phone lists three apps; Messages keeps the forecast')
+        ok(p.eval("document.querySelectorAll('.g-phone-ov [data-tab]').length===4 && !!document.querySelector('.g-phone-ov .g-ph-wx')"), 'the phone lists four apps; Messages keeps the forecast')
         p.eval("document.querySelector('.g-phone-ov [data-tab=free]').click();true")
         ok(p.eval("document.querySelector('.g-phone-ov .g-ph-top b').textContent==='Who’s free' && document.querySelectorAll('.g-ph-day').length>=4"), 'the Who\'s free app opens on its tab')
         ok(p.eval("[...document.querySelectorAll('.g-ph-fr')].some(b=>/R6/.test(b.textContent)&&/♥/.test(b.textContent))") or 'akihiko' not in ids, 'rank and romance marks on rows')
@@ -104,6 +107,84 @@ try:
         ok(p.eval("!!document.querySelector('.g-ph-card')"), 'a later row opens their contact card')
         p.eval("document.querySelector('.g-phone-ov .g-ph-back').click();true")
         ok(p.eval("document.querySelector('.g-phone-ov .g-ph-top b').textContent==='Who’s free'"), 'back from the card returns to Who\'s free')
+        clear()
+
+    # ── Jobs ──
+    if want('jobs') or want('shots'):
+        fresh('11/21', 'after', {'jaemin': 2})
+        p.eval("(()=>{const S=FemcGame.S;S.jobs={bookworms:{hired:true,shifts:2,beats:[],seen:[]},konbini:{hired:true,shifts:0,beats:[]}};S.stats.knowledge=0;FemcGame.save();return true})()")
+        # Rows against jobs.js, over a set of dates: the shape of every row and its reason, recomputed here from the data.
+        dates = p.eval("""(()=>{const G=FemcGame,C=G.D.cal,out=['11/21','11/22','11/23','12/1','1/4','6/14'];
+          out.push(C.fullMoons.find(m=>G.dayOf(m)>G.dayOf('5/1')));const tr=(C.trips||[])[0];if(tr)out.push(tr.from);const ex=C.exams[0];if(ex)out.push(ex.days[0]);return out})()""")
+        bad = p.eval("""(dates=>{const G=FemcGame,S=G.S,bad=[],DN=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];const d0=S.day;
+          for(const md of dates){S.day=G.dayOf(md);S.slot='early';const days=G.jobsAhead(4);if(days.length!==4)bad.push(md+' days '+days.length);
+            days.forEach(x=>{const info=G.dayInfo(x.d);
+              if(info.type==='trip'){if(!x.away||x.rows.length)bad.push(info.md+' trip');return}
+              const vis=G.D.jobs.filter(j=>{const u=j.unlock||{};return(!u.after||S.day>=G.dayOf(u.after))&&(!u.frags||Object.entries(u.frags).every(([w,n])=>(S.route.frags[w]||0)>=n))});
+              const ids=x.rows.map(r=>r.job.id).sort().join(),want=vis.map(j=>j.id).sort().join();if(ids!==want)bad.push(info.md+' ids '+ids+' vs '+want);
+              x.rows.forEach(r=>{const j=r.job,onDay=j.days.includes(info.dow)||(j.offDaysOnly&&info.type==='off'&&j.days.includes(0));
+                if(r.slot!==j.slot)bad.push(j.id+' slot');
+                if(r.ok&&!onDay)bad.push(info.md+' '+j.id+' open off-day');
+                if(r.ok&&j.offDaysOnly&&info.type!=='off')bad.push(info.md+' '+j.id+' open on a school day');
+                if(r.ok&&j.slot==='evening'&&info.moon.full)bad.push(info.md+' '+j.id+' open on a full moon');
+                if(!onDay&&r.why!==(j.offDaysOnly?'Days off only':'No shifts on '+DN[info.dow]+'s'))bad.push(info.md+' '+j.id+' why '+r.why);
+                if(onDay&&j.slot==='evening'&&info.moon.full&&r.why!=='Full moon tonight')bad.push(info.md+' '+j.id+' moon why '+r.why);
+                if(r.ok&&r.pay!==Math.round(j.pay*1.1))bad.push(j.id+' pay '+r.pay);
+                if(r.ok&&JSON.stringify(r.stats)!==JSON.stringify(G.sumStats?G.sumStats(j.stats):j.stats)&&j.id!=='yeobos')bad.push(j.id+' stats');
+              })})}
+          S.day=d0;S.slot='after';return bad})(""" + json.dumps(dates) + ")")
+        ok(not bad, f'Jobs rows match jobs.js on {len(dates)} start dates (days, days off, full moons, trips, pay with The Pitch): {bad[:6]}')
+        # A story evening is busy; spent and earlier slots today say so.
+        r = p.eval("""(()=>{const G=FemcGame,S=G.S,ev=G.D.events.find(e=>e.date&&(e.slot||'evening')==='evening'&&!e.flag&&!e.unlock&&G.dayOf(e.date)>G.dayOf('5/1')&&G.dayInfo(G.dayOf(e.date)).type==='school'&&!G.dayInfo(G.dayOf(e.date)).moon.full);
+          const d0=S.day,ev0=S.events.slice();S.day=G.dayOf(ev.date);S.events=S.events.filter(x=>x!==ev.id);const rows=G.jobsAhead(1)[0].rows.filter(r=>r.slot==='evening'&&r.why!=='Opens later'&&r.job.days.includes(G.dayInfo(S.day).dow));
+          const busy=rows.length&&rows.every(r=>r.why==='Busy that evening');S.day=d0;S.events=ev0;
+          S.spent[S.day+'-after']='act:x';const sp=G.jobsAhead(1)[0].rows.filter(r=>r.slot==='after'&&r.key==='spent').length;delete S.spent[S.day+'-after'];
+          S.slot='evening';const past=G.jobsAhead(1)[0].rows.filter(r=>r.slot==='after'&&r.key==='past').length;S.slot='after';return {busy,n:rows.length,sp,past}})()""")
+        ok(r['busy'] and r['sp'] and r['past'], f'a story evening is busy (no spoiler), time already spent and earlier slots are greyed: {r}')
+        # Hidden until open; "Opens later" only for a job the save has already seen.
+        h = p.eval("""(()=>{const G=FemcGame,S=G.S,d0=S.day;S.day=G.dayOf('6/1');const a=G.jobsAhead(1)[0].rows.map(r=>r.job.id);
+          S.jobs.respawn={hired:false,shifts:0,beats:[]};const b=G.jobsAhead(1)[0].rows.find(r=>r.job.id==='respawn');delete S.jobs.respawn;S.day=d0;return {hidden:!a.includes('respawn')&&!a.includes('yeobos'),later:b&&b.why}})()""")
+        ok(h['hidden'] and h['later'] == 'Opens later', f'jobs not open yet are hidden; one seen before says Opens later: {h}')
+        # Hired vs not, needs, the next shift's cue (from the pack logic, on a copy).
+        c = p.eval("""(()=>{const G=FemcGame,S=G.S,rows=G.jobsAhead(4).flatMap(x=>x.rows);const bw=rows.find(r=>r.job.id==='bookworms'&&r.ok),tu=rows.find(r=>r.job.id==='tutor'),fl=rows.find(r=>r.job.id==='flowers');
+          const st=JSON.parse(JSON.stringify(S.jobs.bookworms)),pk=G.packPick('bookworms',st,3,bw.d||S.day);
+          const pk2=G.packs().bookworms;S.jobs.bookworms.seen=pk2.shifts.map(x=>x.id);S.jobs.bookworms.beats=pk2.beats.map((b,i)=>i);
+          const q=G.jobsAhead(4).flatMap(x=>x.rows).find(r=>r.job.id==='bookworms'&&r.ok);S.jobs.bookworms.seen=[];S.jobs.bookworms.beats=[];
+          return {hired:bw.hired,cue:bw.cue&&bw.cue.label,kind:pk.kind,quiet:q&&q.cue&&q.cue.label,tutorNeeds:tu&&tu.needs,flHired:fl&&fl.hired,flPlace:fl&&fl.place,perk:bw.perks.map(p=>p.name+'/'+p.pct).join()}})()""")
+        ok(c['hired'] and c['cue'] == 'New shift story' and c['kind'] in ('beat', 'shift') and c['quiet'] == 'Quiet shift', f'the cue follows the pack logic: {c}')
+        ok(c['tutorNeeds'] and 'Knowledge' in c['tutorNeeds'] and c['flHired'] is False and c['flPlace'], f'not hired: where to apply, or the stat a job wants: {c}')
+        ok('The Pitch/10' in c['perk'], f'perks that boost a job are listed: {c}')
+        # A pure read: the whole save is the same after the app is opened, switched to and painted, and after jobsAhead over a year.
+        p.eval("FemcGameUI.goOut('after');FemcGameUI.openPhone();true")
+        p.wait("!!document.querySelector('.g-phone-ov [data-tab=jobs]')", 5)
+        before = p.eval("(()=>{const s=JSON.parse(JSON.stringify(FemcGame.S));delete s.savedAt;delete s.playMinutes;return JSON.stringify(s)})()")
+        p.eval("document.querySelector('.g-phone-ov [data-tab=jobs]').click();true")
+        p.eval("(()=>{const G=FemcGame,S=G.S,d0=S.day;for(let d=G.dayOf('4/8');d<G.dayOf('3/1');d+=3){S.day=d;G.jobsAhead(4)}S.day=d0;return true})()")
+        after = p.eval("(()=>{const s=JSON.parse(JSON.stringify(FemcGame.S));delete s.savedAt;delete s.playMinutes;return JSON.stringify(s)})()")
+        ok(before == after, 'the Jobs app never changes the save (pure read)')
+        ok(p.eval("document.querySelector('.g-phone-ov .g-ph-top b').textContent==='Jobs' && document.querySelectorAll('.g-ph-day').length===4 && !!document.querySelector('.g-ph-job.off') && /Hired/.test(document.querySelector('.g-ph-job[data-job=bookworms]').textContent) && /Not hired yet: apply at/.test(document.body.textContent)"), 'the app shows four days, greyed closed rows, Hired and where to apply')
+        ok(p.eval("/No shifts on|Days off only/.test([...document.querySelectorAll('.g-ph-job.off')].map(b=>b.textContent).join())"), 'closed rows say why')
+        # Keyboard / pad: arrows move between rows, a pad's Enter on the right-now row jumps.
+        p.eval("document.querySelector('.g-phone-ov [data-tab=jobs]').focus();true")
+        for _ in range(3):
+            p.eval("(()=>{const e=new KeyboardEvent('keydown',{key:'ArrowDown',bubbles:true,cancelable:true});e.fromPad=true;document.activeElement.dispatchEvent(e)})();true")
+        ok(p.eval("document.activeElement.matches('.g-phone-ov button')"), 'the D-pad moves focus through the app')
+        # Layout: no sideways scroll, tabs fit, at both sizes.
+        for nm, w, hh in (('desktop', 1440, 900), ('phone', 390, 844)):
+            size(w, hh, nm == 'phone')
+            p.eval("new Promise(r=>setTimeout(r,300))")
+            lay = p.eval("""(()=>{const b=document.querySelector('.g-phone-ov .g-ph-body');return {doc:document.documentElement.scrollWidth<=innerWidth,body:b.scrollWidth<=b.clientWidth+1,
+              tabs:[...document.querySelectorAll('.g-phone-ov [data-tab]')].every(t=>t.scrollWidth<=t.clientWidth+1),rows:[...document.querySelectorAll('.g-ph-job')].every(r=>r.getBoundingClientRect().right<=b.getBoundingClientRect().right+1)}})()""")
+            ok(all(lay.values()), f'Jobs fits at {w}x{hh} with no sideways scroll: {lay}')
+            if want('shots'):
+                shot(f'jobs-{nm}')
+        size(1440, 900)
+        go = p.eval("(()=>{const b=document.querySelector('.g-ph-job[data-go]');return b?b.dataset.go:null})()")
+        ok(go, 'a job open right now offers Go now')
+        slot, area = go.split('|')
+        p.eval("(()=>{const b=document.querySelector('.g-ph-job[data-go]');b.focus();const e=new KeyboardEvent('keydown',{key:'Enter',bubbles:true,cancelable:true});e.fromPad=true;b.dispatchEvent(e)})();true")
+        p.wait("!document.querySelector('.g-phone-ov:not(.out)') && !!document.querySelector('.g-areaview')", 5)
+        ok(p.eval(f"document.querySelector('.g-areaview h1').textContent===FemcGame.areaById('{area}').name && !!document.querySelector('.g-areaview [data-job]')"), f'a row for right now jumps to Go Out with {area} and its job open')
         clear()
 
     # ── Contacts ──

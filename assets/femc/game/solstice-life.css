@@ -1,8 +1,8 @@
 /* Life sim, Nov 1 2026 (ui.js openPhone apps, commute, rank signposts, the evening look). Pink (#ff4f9e) and black (#14070f). */
 
 /* ── Phone: app tabs ── */
-.g-ph-tabs { position: sticky; top: -14px; z-index: 2; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin: -14px -14px 6px; padding: 10px 12px 8px; background: #f7f2f5; border-bottom: 1px solid #eadde4; }
-.g-ph-tabs button { padding: 7px 4px; border: 1.5px solid #14070f; border-radius: 99px; background: #fff; color: #14070f; font: 800 12px/1 -apple-system, "Helvetica Neue", sans-serif; letter-spacing: .02em; white-space: nowrap; }
+.g-ph-tabs { position: sticky; top: -14px; z-index: 2; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; margin: -14px -14px 6px; padding: 10px 10px 8px; background: #f7f2f5; border-bottom: 1px solid #eadde4; }
+.g-ph-tabs button { min-width: 0; overflow: hidden; text-overflow: ellipsis; padding: 7px 3px; border: 1.5px solid #14070f; border-radius: 99px; background: #fff; color: #14070f; font: 800 12px/1 -apple-system, "Helvetica Neue", sans-serif; letter-spacing: .02em; white-space: nowrap; }
 .g-ph-tabs button.on { background: #14070f; color: #fff; box-shadow: inset 0 -3px 0 #ff4f9e; }
 .g-ph-tabs button:is(:hover, :focus-visible):not(.on) { background: #ff4f9e; border-color: #ff4f9e; color: #fff; outline: none; }
 .g-ph-tabs button.on:focus-visible { outline: 2px solid #ff4f9e; outline-offset: 2px; }
@@ -21,6 +21,22 @@
 .g-ph-hint.k-ready, .g-ph-row small.g-ph-hint.k-ready { background: #ff4f9e; color: #fff; }
 .g-ph-hint.k-fill, .g-ph-row small.g-ph-hint.k-fill { background: #ffd0e5; color: #8c0f4a; }
 .g-ph-empty { margin: 4px 2px 8px; color: #8a7080; font-size: 12.5px; }
+
+/* ── Jobs (ui.js jobsApp, core.js jobsAhead) ── */
+.g-ph-job { align-items: start; }
+.g-ph-job i.g-ph-jslot { width: 34px; height: 34px; margin: 2px 5px; background: #14070f; color: #ff4f9e; font: 900 17px/1 -apple-system, sans-serif; box-shadow: inset 0 -3px 0 #ff4f9e; }
+.g-ph-job em { align-self: center; max-width: 118px; white-space: normal; text-align: center; }
+.g-ph-job small.g-ph-jpay { color: #14070f; font-weight: 700; white-space: normal; }
+.g-ph-job small.g-ph-jpay s { color: #8a7080; font-weight: 500; }
+.g-ph-job small.g-ph-jst { color: #8a7080; font-size: 12px; white-space: normal; }
+.g-ph-job small.g-ph-jst.hired { color: #b0185e; font-weight: 800; }
+.g-ph-job small.g-ph-jperk { color: #b0185e; font-size: 11.5px; white-space: normal; }
+.g-ph-job small.g-ph-hint.k-quiet { background: #f0e4ea; color: #6e5262; }
+.g-ph-job.off { opacity: .5; }
+.g-ph-job.off i.g-ph-jslot { background: #c9b3bf; color: #fff; box-shadow: none; }
+.g-ph-job.off em.g-ph-due { border-color: #c9b3bf; color: #6e5262; }
+.g-ph-job.now { background: #fff0f6; box-shadow: inset 3px 0 0 #ff4f9e; }
+.g-ph-day h3 small.g-ph-dtag { margin-left: auto; padding: 2px 7px; border-radius: 4px; background: #14070f; color: #fff; font-size: 10.5px; }
 
 /* ── Contact card ── */
 .g-ph-card { display: grid; gap: 8px; }

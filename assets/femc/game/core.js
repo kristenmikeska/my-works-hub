@@ -1293,6 +1293,7 @@ window.FemcGame = (() => {
     if (j.slot !== slot) return { ok: false, why: j.slot === 'evening' ? 'Evening shifts' : 'Daytime shifts' };
     if (!j.days.includes(info.dow) && !(j.offDaysOnly && info.type === 'off' && j.days.includes(0))) return { ok: false, why: 'No shift today' };
     if (j.offDaysOnly && info.type !== 'off') return { ok: false, why: 'Days off only' };
+    if (j.closedIn && wxIn(j.closedIn, info.weather)) return { ok: false, why: `Closed: ${(D.cal.weatherNames[info.weather] || info.weather).toLowerCase()}` }; // none yet: jobs.js `closedIn`
     if (S.spent[`${S.day}-${slot}`]) return { ok: false, why: 'No time left' };
     if (S.condition === 'sick') return { ok: false, why: 'Too sick to work' };
     return { ok: true };
@@ -1314,6 +1315,66 @@ window.FemcGame = (() => {
     addStats(sumStats(j.stats, ...perkVal('jobStat').map(m => m[j.id]))); // Sunoo's Staff Shift: +1 Kindness at Yeobo's
     S.spent[`${S.day}-${S.slot}`] = `job:${j.id}`;
     save();
+  }
+  /* The phone's Jobs app (2026-11-01, Kat's ask): today and the next few days, which jobs have a shift Solar can work, in
+     which slot, the pay (with perks), stats, hired or not, and what the next shift would be (a new shift story or a quiet
+     one: packPick on a copy of the job's state). A pure read: nothing in S changes (progress() lookups made by the pack
+     gates are put back). Jobs not open yet are left out, unless the save has already seen them ("Opens later").
+     rows[] = { job, slot, ok, why, key ('open'|'closed'|'spent'|'past'|'later'|'sick'|'busy'), hired, needs, now, cue,
+     pay, perks: [{ name, who, pct }], stats }. */
+  const jobVisibleOn = (j, d) => { const u = j.unlock || {}; return (!u.after || d >= dayOf(u.after)) && fragGateMet(u.frags); };
+  const jobPerks = j => dailyPerks().filter(p => (p.fx.jobPay && (p.fx.jobPay.all || p.fx.jobPay[j.id])) || p.fx.jobStat?.[j.id])
+    .map(p => ({ name: p.name, who: LINKS[p.link]?.short || p.link, pct: p.fx.jobPay ? (p.fx.jobPay.all || 0) + (p.fx.jobPay[j.id] || 0) : 0, stats: p.fx.jobStat?.[j.id] || null }));
+  function jobNext(j, d) {
+    const raw = S.jobs[j.id] || { hired: false, shifts: 0, beats: [] }, st = JSON.parse(JSON.stringify(raw));
+    if (!Array.isArray(st.seen)) { st.seen = []; const base = (packs()[j.id]?.shifts || []).filter(x => x.base); for (let k = 0; k < Math.min(st.shifts || 0, base.length); k++) st.seen.push(base[k].id); }
+    if (!packs()[j.id]) return null;
+    const pick = packPick(j.id, st, (st.shifts || 0) + 1, d);
+    if (!pick.scene) return null;
+    return (pick.kind === 'beat' || pick.kind === 'shift') && !pick.again ? { key: 'story', label: 'New shift story' } : { key: 'quiet', label: 'Quiet shift' };
+  }
+  function jobClosed(j, d, info) {
+    const slot = j.slot;
+    if (!slotsFor(info).includes(slot)) return { key: 'closed', why: 'No shifts that day' };
+    if (!j.days.includes(info.dow) && !(j.offDaysOnly && info.type === 'off' && j.days.includes(0))) return { key: 'closed', why: j.offDaysOnly ? 'Days off only' : `No shifts on ${info.dayName}s` };
+    if (j.offDaysOnly && info.type !== 'off') return { key: 'closed', why: 'Days off only' };
+    if (j.closedIn && wxIn(j.closedIn, info.weather)) return { key: 'closed', why: `Closed: ${(D.cal.weatherNames[info.weather] || info.weather).toLowerCase()}` };
+    if (slot === 'evening' && info.moon.full) return { key: 'busy', why: 'Full moon tonight' };
+    const md = info.md;
+    if (D.events.some(e => e.date === md && SLOT_FOR[e.slot || 'evening'] === slot && !S.events.includes(e.id) && (!e.flag || flag(e.flag))))
+      return { key: 'busy', why: slot === 'evening' ? 'Busy that evening' : 'Busy that afternoon' };
+    if (d === S.day) {
+      const sp = S.spent[`${d}-${slot}`];
+      if (sp) return { key: 'spent', why: sp === `job:${j.id}` ? 'Worked today' : 'Time already spent' };
+      if (SLOT_ORDER.indexOf(slot) < SLOT_ORDER.indexOf(S.slot)) return { key: 'past', why: 'Earlier today' };
+      if (S.condition === 'sick') return { key: 'sick', why: 'Too sick to work' };
+    }
+    return null;
+  }
+  function jobsAhead(n = 4, d0 = S.day) {
+    const keep = new Set(Object.keys(S.links));
+    try {
+      const last = dayOf(D.cal.end), out = [];
+      const known = D.jobs.filter(j => jobVisibleOn(j, d0) || S.jobs[j.id]);
+      for (let d = d0; d < d0 + n && d <= last; d += 1) {
+        const info = dayInfo(d), rows = [];
+        if (info.type === 'trip' || info.type === 'prologue') { out.push({ d, info, rows, away: info.type === 'trip' }); continue; }
+        known.forEach(j => {
+          const st = S.jobs[j.id] || {}, hired = !!st.hired, perks = jobPerks(j);
+          const up = perks.reduce((a, p) => a + p.pct, 0);
+          const row = { job: j, slot: j.slot, hired, needs: hired ? null : lacking(j.needs), place: j.place || '', area: j.area, shifts: st.shifts || 0,
+            pay: Math.round(j.pay * (1 + up / 100)), basePay: j.pay, perks, stats: sumStats(j.stats, ...perks.map(p => p.stats)) };
+          if (!jobVisibleOn(j, d)) Object.assign(row, { ok: false, key: 'later', why: 'Opens later' });
+          else { const c = jobClosed(j, d, info); Object.assign(row, c ? { ok: false, ...c } : { ok: true, key: 'open', why: '' }); }
+          row.now = row.ok && d === S.day && j.slot === S.slot;
+          row.cue = row.ok && hired ? jobNext(j, d) : null;
+          rows.push(row);
+        });
+        rows.sort((a, b) => (b.ok - a.ok) || (a.slot === b.slot ? 0 : a.slot === 'after' ? -1 : 1) || (b.hired - a.hired) || a.job.name.localeCompare(b.job.name));
+        out.push({ d, info, rows });
+      }
+      return out;
+    } finally { Object.keys(S.links).forEach(k => { if (!keep.has(k)) delete S.links[k]; }); }
   }
 
   /* ── Clubs (places.js clubs; scenes in data/clubs.js) ──
@@ -2666,7 +2727,7 @@ window.FemcGame = (() => {
     portrait, scale, eventFaces, facePlace, name, castHas, silhouette, pendingFace, tarot, background, moodFor, sub, setDate, dateLabel,
     activities, actById, showing, activityOk, activityInfo, doActivity, dormActs, dormInfo, dormOk, doDorm, doStudy, studyInfo, shopStock, buy, bookById, bookArt, readTonight, matSellPrice, sellMat,
     perkOn, bondRank, dailyPerks, actCost, dozeChance, dozed, canRetryClass, useGuidance, classHint, studyBonus, weekly,
-    jobVisible, jobState, jobOk, hire, shiftScene, finishShift, packs, packPick, packFits,
+    jobVisible, jobState, jobOk, hire, shiftScene, finishShift, jobsAhead, packs, packPick, packFits,
     clubById, clubState, clubStats, clubScene, joinClub, finishClub, runInDue, runInFits, finishRunIn, countOk, vary, varyPool, secretsDue, findSecret,
     heading, headingIs, migrateForced,
     crushTick, crushIs, crushedAt, crushApply, crushPhases, crushTrack, crushFits, crushDue, finishCrush, crushLine, takenBy, glowIs, setGlow,

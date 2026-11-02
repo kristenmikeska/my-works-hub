@@ -1717,9 +1717,9 @@
     /* The phone's apps (2026-11-01): Messages, Who's Free (P5X-style: who's at their spot today and the next few days) and
        Contacts (a card per met link). The tab strip sits at the top of each list; a contact card's ‹ goes back to Contacts. */
     let tab = 'msgs';
-    const tabsHtml = () => `<nav class="g-ph-tabs" aria-label="Phone apps">${[['msgs', 'Messages'], ['free', 'Who’s free'], ['people', 'Contacts']].map(([k, t]) => `<button type="button" data-tab="${k}"${tab === k ? ' class="on" aria-current="page"' : ''}>${t}</button>`).join('')}</nav>`;
+    const tabsHtml = () => `<nav class="g-ph-tabs" aria-label="Phone apps">${[['msgs', 'Messages'], ['free', 'Who’s free'], ['jobs', 'Jobs'], ['people', 'Contacts']].map(([k, t]) => `<button type="button" data-tab="${k}"${tab === k ? ' class="on" aria-current="page"' : ''}>${t}</button>`).join('')}</nav>`;
     const wireTabs = () => body.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { if (b.dataset.tab === tab) return; tab = b.dataset.tab; G.sfx('femc-click'); home(); focusIn(body.querySelector(`[data-tab="${tab}"]`)); }));
-    const home = () => (tab === 'free' ? freeApp() : tab === 'people' ? peopleApp() : list());
+    const home = () => (tab === 'free' ? freeApp() : tab === 'jobs' ? jobsApp() : tab === 'people' ? peopleApp() : list());
     const face = id => { const pic = G.portrait(id, 'neutral'); return `<i>${pic ? `<img src="${pic}" alt="">` : esc((G.LINKS[id]?.short || '?')[0])}</i>`; };
     const rkChip = l => { const p = G.progress(l.id); return `<em class="g-ph-rk">${G.isMaxed(l) ? 'MAX' : `R${p.rank}`}${p.route === 'romance' ? ' <span class="g-ph-heart" aria-label="romance">♥</span>' : ''}</em>`; };
     const hintChip = h => (h && h.label && h.key !== 'max' ? `<small class="g-ph-hint k-${h.key}">${esc(h.label)}</small>` : '');
@@ -1745,6 +1745,33 @@
         G.sfx('femc-click');
         if (b.dataset.go) { const [slot, area] = b.dataset.go.split('|'); goArea = { slot, area }; o.close(); return; }
         card(b.dataset.fr, 'free');
+      }));
+    };
+    /* Jobs (2026-11-01, Kat's ask): today and the next three days, each known job's shift (G.jobsAhead, a pure read): slot,
+       pay with perks, stats, hired or where to apply, the next shift's cue, greyed rows with the reason when closed. A row
+       for right now jumps to Go Out with the job's area open (like Who's free). */
+    const jobsApp = () => {
+      stop();
+      title.textContent = 'Jobs'; back.hidden = true; reply.replaceChildren(); compose.hidden = true; bar.innerHTML = ''; bar.hidden = true;
+      const days = G.jobsAhead(4), statName = k => G.D.stats.stats[k]?.name || k;
+      const dayHtml = (x, k) => {
+        const date = `${x.info.day} ${x.info.md}`, label = k === 0 ? 'Today' : k === 1 ? 'Tomorrow' : date, tag = x.info.label || '';
+        const rows = x.rows.map(r => {
+          const go = r.now && atFree();
+          const status = r.hired ? `<small class="g-ph-jst hired">Hired${r.shifts ? ` · ${r.shifts} shift${r.shifts === 1 ? '' : 's'}` : ''}</small>` : `<small class="g-ph-jst">Not hired yet: ${r.needs ? `needs ${esc(r.needs)}` : `apply at ${esc(r.place)}`}</small>`;
+          const gets = `¥${r.pay.toLocaleString()}${r.pay !== r.basePay ? ` <s>¥${r.basePay.toLocaleString()}</s>` : ''} · ${esc(Object.entries(r.stats).map(([s2, v]) => `${statName(s2)} +${v}`).join(', '))}`;
+          const perks = r.perks.length ? `<small class="g-ph-jperk">${r.perks.map(p2 => `${esc(p2.name)} (${esc(p2.who)})${p2.pct ? ` +${p2.pct}%` : ''}`).join(' · ')}</small>` : '';
+          const cue = r.ok && r.cue ? `<small class="g-ph-hint k-${r.cue.key === 'story' ? 'ready' : 'quiet'}">${esc(r.cue.label)}</small>` : '';
+          const state = !r.ok ? r.why : go ? 'Go now ▸' : '';
+          return `<button type="button" class="g-ph-row g-ph-job${r.ok ? '' : ' off'}${go ? ' now' : ''}" data-job="${r.job.id}"${go ? ` data-go="${r.slot}|${r.area}"` : ''}${r.ok ? '' : ' aria-disabled="true"'}><i class="g-ph-jslot">${r.slot === 'evening' ? '☾' : '☀'}</i><span><b>${esc(r.job.name)}</b><small>${esc(slotWord(r.slot, x.info))} · ${esc(G.areaById(r.area)?.name || '')}</small>${r.ok ? `<small class="g-ph-jpay">${gets}</small>` : ''}${status}${r.ok ? perks : ''}${cue}</span>${state ? `<em class="${go ? '' : 'g-ph-due'}">${esc(state)}</em>` : ''}</button>`;
+        }).join('');
+        return `<section class="g-ph-day"><h3>${esc(label)}${k > 1 ? '' : ` <small>${esc(date)}</small>`}${tag ? ` <small class="g-ph-dtag">${esc(tag)}</small>` : ''}</h3>${x.away ? '<p class="g-ph-empty">Away on a trip.</p>' : rows || '<p class="g-ph-empty">No work around yet.</p>'}</section>`;
+      };
+      body.innerHTML = tabsHtml() + `<p class="g-ph-lede">Shifts you could work, and what they pay.</p>` + days.map(dayHtml).join('');
+      wireTabs();
+      body.querySelectorAll('[data-job]').forEach(b => b.addEventListener('click', () => {
+        if (!b.dataset.go) { G.sfx(b.getAttribute('aria-disabled') === 'true' ? 'femc-back' : 'femc-click'); return; }
+        G.sfx('femc-click'); const [slot, area] = b.dataset.go.split('|'); goArea = { slot, area }; o.close();
       }));
     };
     const peopleApp = () => {
