@@ -23287,6 +23287,2318 @@
         "assets/femc/game/art/skins/sk-arcana-sun/portraits/solar/surprised.webp": "c570e6cc4583731b78d16951db25b24789913e84d2343987c2da571e938675a5",
         "assets/femc/game/art/skins/sk-arcana-sun/portraits/solar/flustered.webp": "ff71c4fbd6e48b2a4554747c96943c5490c037b01af5204fc0a7895dd46ebac8"
       }
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-afterhour-entrance.png",
+      "sourceNow": "New Adds/skin-sk-afterhour-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "f46e70bf42d22617d9fbc391bd4c1ccf54a9ec7d883d0f5fab718b12d8f96cfb",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-cp-afterhours"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-afterhour-finish.png",
+      "sourceNow": "New Adds/skin-sk-afterhour-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "dd40c0c517e3724ecdf2793ef90432c965b45bbc2fa60b39a202f3b5a0ddf7d9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-cp-afterhours"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-afterhour-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-afterhour-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "6989a2f7ce75ff4d07a086bbc6ee1a79dd753d4e7cc265f827a3e834c72ccb85",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-cp-afterhours"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-afterhour-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-afterhour-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "337118241fbf9e202b7e98adf8b447a37bd2bd5dd11193455bb01db6dbd934a0",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-cp-afterhours"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-afterhour-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-afterhour-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "6a0591adcc65960b20973cbf150b02a2caab3b58e8ccdf31c2cb9f723d7988b1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-cp-afterhours"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-afterhour-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-afterhour-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a5806028f91953e7fc124813e0123f276fe6778110ae4a699e193fe4e2170c15",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-cp-afterhours"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-alphaphi-entrance.png",
+      "sourceNow": "New Adds/skin-sk-alphaphi-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "89bd9707b46559e209631004c7653bd24bddb7b3aca23bd1c7fc6377fa8c53ea",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-alphaphi"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-alphaphi-finish.png",
+      "sourceNow": "New Adds/skin-sk-alphaphi-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "df2645e194ad183ee22ac7d0af181e26f09c41644e398acc7e7c434c55249fec",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-alphaphi"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-alphaphi-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-alphaphi-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "0df327688faf2c40e4b7029af28db40e651b9fed7866155309d914bb443bae21",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-alphaphi"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-alphaphi-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-alphaphi-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "edf1034921eaa0531f685f8ace030178eed65bd3eb2393907b27cb9cabcb9aa9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-alphaphi"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-alphaphi-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-alphaphi-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "fcf4e8956b1af5752c5ca209dbb5c86d1478bd2c6e616bb95727fd1657d6d89c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-alphaphi"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-alphaphi-posesheet-2V1.png",
+      "sourceNow": "New Adds/skin-sk-alphaphi-posesheet-2V1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1c6777b39ca8da525dba36a4349d6be425502c431f90ce19f3be40f5599b3d76",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash (default)",
+      "tool": "femc-wardrobe.py skin2 <src> sk-alphaphi"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-alphaphi-posesheet-2V2.png",
+      "sourceNow": "New Adds/skin-sk-alphaphi-posesheet-2V2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6cfebcaec4e12d2ef1a3184465c9e01a08fa974d5e2fbab49187ae544db876f9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/solar-pose2b-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas (alternate)",
+      "placement": "sheet 2 on a per-fight coin flip",
+      "tool": "femc-wardrobe.py skin2 <src> sk-alphaphi solar --alt",
+      "knownLimits": "Kat may pick one; V1 is the default"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-date-entrance.png",
+      "sourceNow": "New Adds/skin-sk-date-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "94ed939bc7b9e20df0670ec9e72065bf044cd27bef0ed6fe9062c7b9cd872fdd",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-date"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-date-finish.png",
+      "sourceNow": "New Adds/skin-sk-date-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "62017c58f5e4d00db66e4c9e3991aafccf05274b52ad70b81b3434eb32d7328e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-date"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-date-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-date-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "2da5297f51a02be94ff97bfe7b813252538aa4effecc3f600b9321ca40d628b2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-date"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-date-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-date-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "0f6d95bda4d9a29e3a108caf787438467ece13e60a6d9baa4ae47df48e12e416",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-date"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-date-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-date-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "647a0525ce2333cd880c6f1563eaf168d1d4f42159be3d6294954ba725d5871a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-date"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-date-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-date-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "47432335c4c104203d67f73901dfd06265837f16ca1184bf268ae04cd419173c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-date"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-esports-entrance.png",
+      "sourceNow": "New Adds/skin-sk-esports-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "5e31731a4761ca356cdca039b99321830d613f73ebc8df0265b1c9a535401b39",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-esports/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-esports"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-esports-finish.png",
+      "sourceNow": "New Adds/skin-sk-esports-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "9225b05905bc0f2136f6f0ad936e7613a31ea9a60bcadfd310d37672a085dbe7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-esports/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-esports"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-esports-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-esports-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "f133088948d9cf083dbe26fbacff2194095f9b2d2d0a3d8ccbb23e7bb6ed4fdc",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-esports/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-esports"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-esports-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-esports-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "ff6ad9a2e96bc14c9949a20cd5c1fe837959070d397195865af37d83156766e0",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-esports/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-esports"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-esports-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-esports-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "02e513f6de42fde1798bfc3743d45ee2233fd6dab0040bd5b9e7c2e4bc669c69",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-esports/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-esports"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-esports-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-esports-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8174652f0bbd51f42c379da9d0137e35474897ce791cc67a82637577bc553b57",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-esports/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-esports"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-halloween-entrance.png",
+      "sourceNow": "New Adds/skin-sk-halloween-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "8f1518ccd0ffdd84d1f725396ab94e49040a3eaef4356a2286127c1f62e881e4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-halloween/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-halloween"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-halloween-finish.png",
+      "sourceNow": "New Adds/skin-sk-halloween-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "4cbb50b24611909bcec544cae95f8361071f1ecc4aa536ce22d11cfff3e2760f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-halloween/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-halloween"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-halloween-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-halloween-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "1d4857c3f2b6fa4f09b438f0859e67f75733a0ce6dfd06ff3bd18dd64c0e5ad4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-halloween/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-halloween"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-halloween-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-halloween-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "df8f91c6e983bc6acb0ea2c7adcd884e1ceb573998ab0742f5c5f3bdf7e91117",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-halloween/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-halloween"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-halloween-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-halloween-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "d459da7ee26d7f1e02ef14521f66562e8d9bcbd6efcedbfe0118b906ec3853c2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-halloween/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-halloween"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-halloween-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-halloween-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8ccb39aa970510a18a61370a1ede0b7f0e97a115aae069025c7fbd1422e21847",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-halloween/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-halloween"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-hanbok-entrance.png",
+      "sourceNow": "New Adds/skin-sk-hanbok-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "41fb7844a924ef2e642a1ac999d81156df16311875bdcedea0c8aae005271c9b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-hanbok/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-hanbok"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-hanbok-finish.png",
+      "sourceNow": "New Adds/skin-sk-hanbok-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "49c69799b1d6981a1ae5db61d1fba668546aac36a2fd19f43d9ff1024ebdd6d7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-hanbok/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-hanbok"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-hanbok-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-hanbok-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "50fe5783358b17d1184a74347d1d975eba36f4121c9fd96d651fa849faaf060b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-hanbok/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-hanbok"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-hanbok-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-hanbok-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "66114a11e94f5ea3ce782a60f8d9df001991291c04af9123339683d4b4b6b2d9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-hanbok/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-hanbok"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-hanbok-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-hanbok-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "5dc434b4fb54ea1245b9df4c61c6c2715fcc577e83f321c0c6402850eaf42924",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-hanbok/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-hanbok"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-hanbok-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-hanbok-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "89962a587a05889842bc1de983cd6aa37df0516fb4a6486d239ed7393da17254",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-hanbok/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-hanbok"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-harbourcoat-entrance.png",
+      "sourceNow": "New Adds/skin-sk-harbourcoat-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "ffc40d93e13e020b5a5189ddcc8fed04c71015974c94117b3779d4729cf6d5b7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-harbourcoat/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-harbourcoat"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-harbourcoat-finish.png",
+      "sourceNow": "New Adds/skin-sk-harbourcoat-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "3e45bd1acf767c98ed4c870496b5015420c974c2d5b28756868487f1fd935c06",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-harbourcoat/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-harbourcoat"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-harbourcoat-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-harbourcoat-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "1368709f33cdce8bb5f3a68836f538e9639d48ff151bfbd30a626fb421be0c9e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-harbourcoat/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-harbourcoat"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-harbourcoat-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-harbourcoat-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "3cb4d7c099cadbb7a0183030222c4533d7b57ad02d5d94a8e7c4d3adceb79648",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-harbourcoat/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-harbourcoat"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-harbourcoat-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-harbourcoat-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "a0c7d22ba3493b1ea5a4c8f71ff69c1fc3fd6057fc811c2d31b6291fc39f93b2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-harbourcoat/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-harbourcoat"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-harbourcoat-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-harbourcoat-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "122efcaf39b541c3a8a33f5fcdd12d5f0a6de3b1504bb7166e3f99070d24374b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-harbourcoat/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-harbourcoat"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-idol-entrance.png",
+      "sourceNow": "New Adds/skin-sk-idol-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "3df1bd87a70aa0f31f854bbb2851833d14911b06fc280e11fd297c9a3a61777b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-idol/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-idol"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-idol-finish.png",
+      "sourceNow": "New Adds/skin-sk-idol-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "5062d233e62f452be25ea91a714ec357758f7e19d5b0756acda5b7b6e809a7bb",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-idol/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-idol"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-idol-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-idol-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "ad09daa35249ab0b07e3622d6ddcc679ab7cd1007e8c20d2c18571e964fe51fb",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-idol/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-idol"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-idol-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-idol-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "e5f4dffbf8700391eae9b9cc5bbe5d673c9ff9966a3426fe9afa03a22f31d444",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-idol/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-idol"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-idol-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-idol-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "c4611af12909615686f8654fb97e3df88fe57e7a90fee11cf3d0cffde7f4acc6",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-idol/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-idol"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-idol-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-idol-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "2a2d2c982082cea5b52121f648f06aa3af7ec9a557f0db57277878803e4e0cef",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-idol/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-idol"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-lifeguard-entrance.png",
+      "sourceNow": "New Adds/skin-sk-lifeguard-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "6948b3995019ae10d8bf7a2407b131966bb3eadbee979ebdde2fabd999b22ca2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-swim-lifeguard"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-lifeguard-finish.png",
+      "sourceNow": "New Adds/skin-sk-lifeguard-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "8071d196a2b0083b334286b3d0f9a6892841dd75ff9801b76491b3be2dc8d6f6",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-swim-lifeguard"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-lifeguard-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-lifeguard-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "a96e20909a0b97a5bf5c1ec18cbe0cde08b5cbc31baf7f9b48c46f31e06841be",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-swim-lifeguard"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-lifeguard-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-lifeguard-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "a319c91ffc595b2b106e7aa450330f0c1474bc26d093a06cd31e3194c74a3539",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-swim-lifeguard"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-lifeguard-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-lifeguard-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "bb71f86358e6a66ca268c95338dc28b264066e3bac9a8ace6a0ecdc611547308",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-swim-lifeguard"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-lifeguard-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-lifeguard-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "4fe67ca70bf683424701dcc6f21e54446be1191bd71eba29c44daa81c237d2c3",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-swim-lifeguard"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-limelight-entrance.png",
+      "sourceNow": "New Adds/skin-sk-limelight-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "058ccf86358257455438136da77ca44d7e5fae2416423a5f1c3f8ab7c262a17a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-limelight"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-limelight-finish.png",
+      "sourceNow": "New Adds/skin-sk-limelight-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "a61820655d24f4fb06194327bd8339ab831ebbe1df06131e388f14e02f953e07",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-limelight"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-limelight-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-limelight-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "12ccb4a09fef2b845c2b1c8ac3190285e265ba296fcd5494f8e3b8b10e00649d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-limelight"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-limelight-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-limelight-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "37630e3902c535b92c8fb4bc0472904b053c67284b788751187473437f94fa63",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-limelight"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-limelight-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-limelight-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "6302e0c601723b5cb43a85b7612e89deb6a8395c52cf01f80b6571f5fcdd888c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-limelight"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-limelight-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-limelight-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8b85270d6fb583b48cd015fe69b2db64d40351bef7b8072bff631d48c91aea2a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-limelight"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-midnightdr-entrance.png",
+      "sourceNow": "New Adds/skin-sk-midnightdr-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "730118af6abfa6c81ef8b062dafca82394cfc42b77f2f0d9d59fcd01020b4340",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-drive/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-cp-drive"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-midnightdr-finish.png",
+      "sourceNow": "New Adds/skin-sk-midnightdr-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "4b43b1073f2ae90ed69c1c3221087d7557c54c1f8775df58077d361ccfbd1f18",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-drive/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-cp-drive"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-midnightdr-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-midnightdr-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "47bac69cdfef9d32a32ba703a78a2068c991fd5bb48cda3616e7b79c14333af9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-drive/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-cp-drive"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-midnightdr-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-midnightdr-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "042b7007fda58801fd9508f9d8ef163256f22c1f5e8a3ba50c2eee02a4356d90",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-drive/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-cp-drive"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-midnightdr-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-midnightdr-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "c8358c1ae2172eeadc5133aeba18681455b47059a382b3c53b6d3461a5ea8a2c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-drive/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-cp-drive"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-midnightdr-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-midnightdr-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9db6cdace2ce273fee2aa79c797d2416b29ce5eb8954bc528a31c2b52b90c1b9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-drive/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-cp-drive"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-nightswim-entrance.png",
+      "sourceNow": "New Adds/skin-sk-nightswim-entrance.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "3e64e8ab4783435dcfec2a58c602617a459f92658ec4a4a7609d92901a7b5dc6",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-night/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-swim-night"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-nightswim-finish.png",
+      "sourceNow": "New Adds/skin-sk-nightswim-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "7ccacd8a2caea59c84ce48dcd457844afd24bae7cf2e1dbaa0c2fe491b8368b4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-night/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-swim-night"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-nightswim-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-nightswim-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "aec8dec0aa66e27a2b36caf3368cc12bf3a11dc407e626e8912c7d65942f4a5d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-night/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-swim-night"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-nightswim-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-nightswim-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "0e74251d6e7185ca7cac88cb01cf0359d8f421fb11557d64410b9c566a0fb143",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-night/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-swim-night"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-nightswim-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-nightswim-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "bec7d5a58130b8bccf7b83ba77a3ba2708bbd33a0d575ff52322f39559a5df2e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-night/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-swim-night"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-nightswim-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-nightswim-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1637ce263702a96c193e0e4d9fd159988923f84b0c896ad3816bde1b24d4a5f3",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-night/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-swim-night"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-oops-entrance.png",
+      "sourceNow": "New Adds/skin-sk-oops-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "6a59c3d66dd65282ce130fea874e94495bcb12742b2f42b806c4b8629874b409",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-oops/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-oops"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-oops-finish.png",
+      "sourceNow": "New Adds/skin-sk-oops-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "0229e6a9a6ddfb666e1595270760d2afc42fe909c24673b226ac70354ad3856d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-oops/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-oops"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-oops-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-oops-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "f1ff9c0ac1c846401f8158140fe46e37e9610bceeb7da1034ea3f6dceb2c4276",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-oops/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-oops"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-oops-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-oops-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "47b12c64528f3b648a86865361a2fc417ded2bc1ce393acf1c4c44cc365c77af",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-oops/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-oops"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-oops-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-oops-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "bd0d4c72142174631d3b16da8c2a7760485a7d90174eebb385fbc99d3202ca90",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-oops/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-oops"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-oops-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-oops-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "939df24dd5bb497b814d6b7fdcbaf8034dc7d39b8d0839d79d55dc25fb3ae943",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-oops/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-oops"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-sugarrush-entrance.png",
+      "sourceNow": "New Adds/skin-sk-sugarrush-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "be1037b466be10e10950eedf02ba760c568a42c80536ed7e413fd4ddc8abf42a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-sugarrush/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-sugarrush"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-sugarrush-finish.png",
+      "sourceNow": "New Adds/skin-sk-sugarrush-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "006d363fa8e800c0f9f49c22d1e95e0cf21238f198e1c52b499fe8d6ca8ac9b1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-sugarrush/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-sugarrush"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-sugarrush-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-sugarrush-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "731d4654bcc5404350e2e47a9c5bcfd0d910561e21d39581396431e38eb361c8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-sugarrush/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-sugarrush"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-sugarrush-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-sugarrush-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "592d99f0f0a8fa0e911fb4dea70089a683edc9d93a72372e968761bf10ce4d47",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-sugarrush/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-sugarrush"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-sugarrush-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-sugarrush-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "d623bfec3c477f511665cc0f60fe3a68236fee6dc161f4f45536248c1ec58858",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-sugarrush/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-sugarrush"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-sugarrush-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-sugarrush-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "12d8a00e3e7b3d84630e95558d46656556c6bef7e67aaf8df19768c75356d452",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-sugarrush/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-sugarrush"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-summerfest-entrance.png",
+      "sourceNow": "New Adds/skin-sk-summerfest-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "ab67f90c8ff4aa7ca7052fcd034ddbf85a4346235ac836c1d99e9fec0a434fc2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-festival/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-cp-festival"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-summerfest-finish.png",
+      "sourceNow": "New Adds/skin-sk-summerfest-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "9008a8fe587fef641c8b73616b2a5f8f533faca1406ebd1ab979c68605e20b5f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-festival/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-cp-festival"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-summerfest-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-summerfest-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "21ad864449a55019c319b1d0655c57286f747ef3a07e81f1c43cbcd4ad42a43e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-festival/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-cp-festival"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-summerfest-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-summerfest-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "bdd3f424190a269b557c94011bdfd43dc4b711882d7a7d6d421f9267d2b4ff6a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-festival/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-cp-festival"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-summerfest-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-summerfest-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "a6c0fb893ccac22b177633ab34824c02b66d6f4a408736edebe70a4509d7776c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-festival/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-cp-festival"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-summerfest-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-summerfest-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b42077b08bd8160c54f5e4c3f71f34d6032774fbd4f841f43f2c2c860987af32",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-festival/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-cp-festival"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-thesun-entrance.png",
+      "sourceNow": "New Adds/skin-sk-thesun-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "0fb888694d126292c0221140b7c15af7253464c0d11bc53d74ef8c7c23651250",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-arcana-sun/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-arcana-sun"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-thesun-finish.png",
+      "sourceNow": "New Adds/skin-sk-thesun-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "34ab628ce7cad5f31b03b70559e070d417a4d7970d4321d6f7add7021b773f34",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-arcana-sun/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-arcana-sun"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-thesun-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-thesun-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "3728bf27fd1a0806f096251c953bf0d032eec0f498b579294b8ce1dccc3d2ffe",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-arcana-sun/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-arcana-sun"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-thesun-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-thesun-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "3503ecb84ab6a6f74041925465edbd847a5c49da6eabf57b3219313ee72de32a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-arcana-sun/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-arcana-sun"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-thesun-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-thesun-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "16532cb5fc4c816836d2e9a333eab747812f14866549d24f38d82f73cd0714e2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-arcana-sun/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-arcana-sun"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-thesun-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-thesun-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "f068bd1ba5a5379212cd9ef702570978912f3c3d3e9bfa3c5fdbcda51aab84f1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-arcana-sun/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-arcana-sun"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-vp-entrance.png",
+      "sourceNow": "New Adds/skin-sk-vp-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "f8d483b255f4b908e92ffbbfe02c7f7d4f52ca68a845667c869a0b84b41b1829",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-vp"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-vp-finish.png",
+      "sourceNow": "New Adds/skin-sk-vp-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "0cba405d379f77872a76f338b0aa748e0fde11cfc4609bd044d9963efd0181f7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-vp"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-vp-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-vp-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "a251ca77cf72cc9ed5b5ea3e0c8cf8eb96d070f71781a48818de0a1b7ce52983",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-vp"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-vp-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-vp-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "566e519642bca2ae4e1dab342c131a795d96af38324e88dc0f7142acfede1edd",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-vp"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-vp-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-vp-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "696d89f9c99afb7f2252a286adb39b072fb0244d630604bf7c1125811b18be50",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-vp"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-vp-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-vp-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a943b23b05de552c9d6f30513f6d3e9f4e481d40da44da612549eaa11d1ae8e9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-vp"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-wintercoat-entrance.png",
+      "sourceNow": "New Adds/skin-sk-wintercoat-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e49fb5503810fdfb6657be57119eb7dc5f586380ce90c4e1c6a1ab1433d41273",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-wintercoat"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-wintercoat-finish.png",
+      "sourceNow": "New Adds/skin-sk-wintercoat-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e366bba2b0fb2e03f939059c0833054e214375e15c11dc5df350089a5cc5ba33",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-wintercoat"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-wintercoat-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-wintercoat-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "958b88b84430b0e5343086e6c02002e68975501332603b7d483ba4484aa66959",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-wintercoat"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-wintercoat-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-wintercoat-onemore-v1.png",
+      "size": [
+        2170,
+        725
+      ],
+      "sha256": "b34213d9a1cc9c556c45e9be85945de4f294ebcca2e4690746e237e40eb14aba",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-wintercoat"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-wintercoat-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-wintercoat-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "477aaea4147bb526d189b6b0dbe916884c4e747bd6252cb1905c00e4a26dc2e1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-wintercoat"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-wintercoat-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-wintercoat-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1614725a92138ded8924b59cfc4b3985beb22485d413fe457efef03e314e0851",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-wintercoat"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-y2k-entrance.png",
+      "sourceNow": "New Adds/skin-sk-y2k-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "13eda696932e8c6232f85d6f976020a94c1e632250b597aa8ae05c639e4ef256",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-y2k"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-y2k-finish.png",
+      "sourceNow": "New Adds/skin-sk-y2k-finish.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "e0482966aceb7aa7715d83860807c633ffabed60266d93407a526c0f9effddcb",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-y2k"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-y2k-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-y2k-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "d83925252a90c581866cfe5fa3edd14ce9e4e4b70d6faaa048bf48273946610c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-y2k"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-y2k-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-y2k-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "5f312d539742af1277432f4492dd3aeea6e565416a52abc710c63ed7ebe8068f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-y2k"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-y2k-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-y2k-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "98002fdc5fe4c927f746f63d3e60c549103fb0291b2096a57a11d9998fb96bb9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-y2k"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-y2k-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-y2k-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "54f9d1d74e44869cbf81a5a4c7433a190adab8a8a00481c2a9a418af7bdab1c2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-y2k"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-yukata-entrance.png",
+      "sourceNow": "New Adds/skin-sk-yukata-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e5f947872278ad3bd02ffb93935757c8e586dd92a22dbb943ec8baaca71a273d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukata/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance <src> sk-yukata"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-yukata-finish.png",
+      "sourceNow": "New Adds/skin-sk-yukata-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "ac8986bfeeb4a1494cf55f423c556501f86f312753331515e3212bf60a2a24e3",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukata/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish <src> sk-yukata"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-yukata-theurgy.png",
+      "sourceNow": "New Adds/skin-sk-yukata-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "10d55bb11adacecd3ca2dc78638d586f23f2b1121d0d544de93bf39eaa432c48",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukata/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy <src> sk-yukata"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-yukata-onemore-v1.png",
+      "sourceNow": "New Adds/skin-sk-yukata-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "07ad131cf140acc0ab41e8552f15736ea8859d9c3b4d203a2c19827de5a78cab",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukata/solar-onemore.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat",
+      "tool": "femc-wardrobe.py onemore <src> sk-yukata"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-yukata-onemore-v2.png",
+      "sourceNow": "New Adds/skin-sk-yukata-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "ea2de28512d04d42553f0a51a3d9f07675a92b8dabb4f51e525f25a877f9b179",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukata/solar-onemore-v2.webp",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, second beat (flash to v2)",
+      "tool": "femc-wardrobe.py onemore2 <src> sk-yukata"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-yukata-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-yukata-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ce92df87d53a3603480c346aa3c37773a6b3a0953a3e729a6d7926d7fef04ce3",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukata/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-yukata",
+      "knownLimits": "identical to the earlier cut"
+    },
+    {
+      "batch": 123,
+      "source": "skin-sk-emonight-posesheet-2.png",
+      "sourceNow": "New Adds/skin-sk-emonight-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "899b2c7b37d211ab90c716cf2495d12851daeb604ac26a797fa1a9a2ec523078",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 <src> sk-emo"
+    },
+    {
+      "batch": 123,
+      "source": "solar-entrance.png",
+      "sourceNow": "New Adds/solar-entrance.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "03008f69e32fa55c55ea80b4a67eb96246c4696593934d95ba38c3a7e5cc6b80",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/entrance/solar.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card, own look",
+      "tool": "femc-wardrobe.py entrance <src> own solar"
+    },
+    {
+      "batch": 123,
+      "source": "solar-onemore-v1.png",
+      "sourceNow": "New Adds/solar-onemore-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "64b3a62a98c3079d02b2c9e1cc1f5d4a7135170df285406904bc278e0a8c54a2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/onemore/solar.webp",
+      "conversion": "bands cut, 5:1, 1800 x 360",
+      "placement": "One More strip, own look, first beat",
+      "tool": "femc-wardrobe.py onemore <src> own solar"
+    },
+    {
+      "batch": 123,
+      "source": "solar-onemore-v2.png",
+      "sourceNow": "New Adds/solar-onemore-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "9a0f0545c5270198dbb3b10cfff191e80f99fed51a9ec4f3f5ff8933a56261dd",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/onemore/solar-v2.webp",
+      "conversion": "bands cut, 5:1, 1800 x 360",
+      "placement": "One More strip, own look, second beat",
+      "tool": "femc-wardrobe.py onemore2 <src> own solar"
+    },
+    {
+      "batch": 123,
+      "source": "Strawberry Milk Divine Naginata Strike.png",
+      "sourceNow": "WIP/Strawberry Milk/Strawberry Milk Divine Naginata Strike.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "8c48fdb836645d65c7f5e7d0322aee93ae2cd5f6eb4f7ca55a6fcebf7a5d614e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-strawberry/solar-theurgy.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"<folder>/Strawberry Milk Divine Naginata Strike.png\" sk-strawberry"
+    },
+    {
+      "batch": 123,
+      "source": "Strawberry milk victory finish.png",
+      "sourceNow": "WIP/Strawberry Milk/Strawberry milk victory finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "54e3fa2e66dd8e9eabc6c6a8e3a9b9592787f1faf16ee43e18c68cede42388b9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-strawberry/solar-finish.webp",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"<folder>/Strawberry milk victory finish.png\" sk-strawberry"
+    },
+    {
+      "batch": 123,
+      "source": "Strawberry vanguard breaks through.png",
+      "sourceNow": "WIP/Strawberry Milk/Strawberry vanguard breaks through.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "76fe1d699b3ecb3bfa121d9cea14410d67a386c367df91563623d182ea929a9d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-strawberry/solar-entrance.webp",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card",
+      "tool": "femc-wardrobe.py entrance \"<folder>/Strawberry vanguard breaks through.png\" sk-strawberry"
+    },
+    {
+      "batch": 123,
+      "source": "Strawberry-pink heroine with silver star clips.png",
+      "sourceNow": "WIP/Strawberry Milk/Strawberry-pink heroine with silver star clips.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "36ce63970e8d1bbd64edf296a8a9bdf0e1dc32a7da992d245f370eeedcc9d8e4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-strawberry/solar-onemore.webp",
+      "conversion": "bands cut, 5:1, 1800 x 360",
+      "placement": "One More strip, first beat (v1)",
+      "tool": "femc-wardrobe.py onemore \"<folder>/Strawberry-pink heroine with silver star clips.png\" sk-strawberry"
+    },
+    {
+      "batch": 123,
+      "source": "Strawberry Pink Hair Banner.png",
+      "sourceNow": "WIP/Strawberry Milk/Strawberry Pink Hair Banner.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "b446dcb68fa6cca0979e026ac06b87c5f26ae1d5f0367c5befb2842cf3e94d66",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-strawberry/solar-onemore-v2.webp",
+      "conversion": "bands cut, 5:1, 1800 x 360",
+      "placement": "One More strip, second beat (v2)",
+      "tool": "femc-wardrobe.py onemore2 \"<folder>/Strawberry Pink Hair Banner.png\" sk-strawberry"
+    },
+    {
+      "batch": 123,
+      "source": "Transparent six-pose character sheet.png",
+      "sourceNow": "WIP/Strawberry Milk/Transparent six-pose character sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ed8dec84219a0ef237a3680a86a93a4666169f020c1c5f9e93b08c08c915422b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-strawberry/solar-pose2-0..5.webp",
+      "conversion": "sheet 2 on sheet 1 canvas",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"<folder>/Transparent six-pose character sheet.png\" sk-strawberry"
+    },
+    {
+      "batch": 123,
+      "source": "theme-bubbles.png",
+      "sourceNow": "New Adds/theme-bubbles.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "30baa43e845674cda8a21f8580b8245a7374a473861d62f5ee0b68f9cd910e50",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/theme-bubbles.webp",
+      "conversion": "3 x 2 sheet keyed from black, 256 px frames",
+      "placement": "theme sparkle on skill hits, All-Out burst, Try it on",
+      "tool": "femc-fx.py add <src> theme-bubbles"
+    },
+    {
+      "batch": 123,
+      "source": "theme-butterflies.png",
+      "sourceNow": "New Adds/theme-butterflies.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c269baa7f98687b05dd33ce5064d09a16bd8435eebd64f77d5a227ff07fe95d9",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/theme-butterflies.webp",
+      "conversion": "3 x 2 sheet keyed from black, 256 px frames",
+      "placement": "theme sparkle on skill hits, All-Out burst, Try it on",
+      "tool": "femc-fx.py add <src> theme-butterflies"
+    },
+    {
+      "batch": 123,
+      "source": "theme-cards.png",
+      "sourceNow": "New Adds/theme-cards.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "649d765bb7f12e17909f86b32fc60f81a0aa053e71310c4181faba6b1e9d0be8",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/theme-cards.webp",
+      "conversion": "3 x 2 sheet keyed from black, 256 px frames",
+      "placement": "theme sparkle on skill hits, All-Out burst, Try it on",
+      "tool": "femc-fx.py add <src> theme-cards"
+    },
+    {
+      "batch": 123,
+      "source": "theme-confetti.png",
+      "sourceNow": "New Adds/theme-confetti.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c39927b85c6fe977d44b8a671c26b0560d67110d261978b4bf0fbb36b9ebca87",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/theme-confetti.webp",
+      "conversion": "3 x 2 sheet keyed from black, 256 px frames",
+      "placement": "theme sparkle on skill hits, All-Out burst, Try it on",
+      "tool": "femc-fx.py add <src> theme-confetti"
+    },
+    {
+      "batch": 123,
+      "source": "theme-glitter.png",
+      "sourceNow": "New Adds/theme-glitter.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c22b72e9f3156255fffd34f71fb10a5277d9e703591afbd096cb7c02d920b85a",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/theme-glitter.webp",
+      "conversion": "3 x 2 sheet keyed from black, 256 px frames",
+      "placement": "theme sparkle on skill hits, All-Out burst, Try it on",
+      "tool": "femc-fx.py add <src> theme-glitter"
+    },
+    {
+      "batch": 123,
+      "source": "theme-notes.png",
+      "sourceNow": "New Adds/theme-notes.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "715740cef4c7f6eed9954f6849d75afd837c8af6d672e1fb7b9c99eb67cc3ed5",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/theme-notes.webp",
+      "conversion": "3 x 2 sheet keyed from black, 256 px frames",
+      "placement": "theme sparkle on skill hits, All-Out burst, Try it on",
+      "tool": "femc-fx.py add <src> theme-notes"
+    },
+    {
+      "batch": 123,
+      "source": "theme-petals.png",
+      "sourceNow": "New Adds/theme-petals.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "906470d930f0e3f44e28ba2cc4712d6f6726304419c129f9aa62d86bb4918c87",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/theme-petals.webp",
+      "conversion": "3 x 2 sheet keyed from black, 256 px frames",
+      "placement": "theme sparkle on skill hits, All-Out burst, Try it on",
+      "tool": "femc-fx.py add <src> theme-petals"
+    },
+    {
+      "batch": 123,
+      "source": "theme-snow.png",
+      "sourceNow": "New Adds/theme-snow.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ff153b18363e8d4ca3d244148bda3eb72e92de05d0651d972ee751c1ae7a87f5",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/theme-snow.webp",
+      "conversion": "3 x 2 sheet keyed from black, 256 px frames",
+      "placement": "theme sparkle on skill hits, All-Out burst, Try it on",
+      "tool": "femc-fx.py add <src> theme-snow"
+    },
+    {
+      "batch": 123,
+      "source": "theme-stars.png",
+      "sourceNow": "New Adds/theme-stars.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "f116d7b6e474eb32d9c5dd9bbf994f93503868bb1610e2f8b3a1a875ee727bdc",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/theme-stars.webp",
+      "conversion": "3 x 2 sheet keyed from black, 256 px frames",
+      "placement": "theme sparkle on skill hits, All-Out burst, Try it on",
+      "tool": "femc-fx.py add <src> theme-stars"
+    },
+    {
+      "batch": 123,
+      "source": "theme-sunmoon.png",
+      "sourceNow": "New Adds/theme-sunmoon.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b18d20bfd6003151bbf869d8cfc425b2125e68e9a08e0a79134fa159c229afd6",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/theme-sunmoon.webp",
+      "conversion": "3 x 2 sheet keyed from black, 256 px frames",
+      "placement": "theme sparkle on skill hits, All-Out burst, Try it on",
+      "tool": "femc-fx.py add <src> theme-sunmoon"
+    },
+    {
+      "batch": 123,
+      "source": "theme-thorns.png",
+      "sourceNow": "New Adds/theme-thorns.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "54513c2b7937f0c61f6c1ba0e630ff1d39dcdacc4fe0366f386db36a21de728c",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/fx/theme-thorns.webp",
+      "conversion": "3 x 2 sheet keyed from black, 256 px frames",
+      "placement": "theme sparkle on skill hits, All-Out burst, Try it on",
+      "tool": "femc-fx.py add <src> theme-thorns"
+    },
+    {
+      "batch": 123,
+      "source": "frame-bubbles.png",
+      "sourceNow": "New Adds/frame-bubbles.png",
+      "size": [
+        1983,
+        793
+      ],
+      "sha256": "6f696419e4f8058063805ce7a13d46d6cd692db3124c72c1ec544cb5547e9412",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/frames/bubbles.webp",
+      "conversion": "transparent as sent, 1000 x 400 WebP",
+      "placement": "HUD card frame for the theme",
+      "tool": "femc-wardrobe.py frame <src> bubbles"
+    },
+    {
+      "batch": 123,
+      "source": "frame-butterflies.png",
+      "sourceNow": "New Adds/frame-butterflies.png",
+      "size": [
+        1983,
+        793
+      ],
+      "sha256": "68e7eba12c36fc2486ed8e005b86a86bab01039bef641bdd7941eb4fc12666ef",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/frames/butterflies.webp",
+      "conversion": "transparent as sent, 1000 x 400 WebP",
+      "placement": "HUD card frame for the theme",
+      "tool": "femc-wardrobe.py frame <src> butterflies"
+    },
+    {
+      "batch": 123,
+      "source": "frame-cards.png",
+      "sourceNow": "New Adds/frame-cards.png",
+      "size": [
+        1983,
+        793
+      ],
+      "sha256": "41d059199b6d9f330eed975b1a7c1e8194ddf6a0e03c6e98fa17d02719b9916e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/frames/cards.webp",
+      "conversion": "transparent as sent, 1000 x 400 WebP",
+      "placement": "HUD card frame for the theme",
+      "tool": "femc-wardrobe.py frame <src> cards"
+    },
+    {
+      "batch": 123,
+      "source": "frame-confetti.png",
+      "sourceNow": "New Adds/frame-confetti.png",
+      "size": [
+        1983,
+        793
+      ],
+      "sha256": "f7774eda1e3ac92c8b57b9e126972e8b8c9ddb1c8cf9e9211e98bc293af2c749",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/frames/confetti.webp",
+      "conversion": "transparent as sent, 1000 x 400 WebP",
+      "placement": "HUD card frame for the theme",
+      "tool": "femc-wardrobe.py frame <src> confetti"
+    },
+    {
+      "batch": 123,
+      "source": "frame-glitter.png",
+      "sourceNow": "New Adds/frame-glitter.png",
+      "size": [
+        1983,
+        793
+      ],
+      "sha256": "6d1d4e944c5c637312f63f0d722d2cfbd8cc87a3cf7eae9103b8ca8f38892b99",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/frames/glitter.webp",
+      "conversion": "transparent as sent, 1000 x 400 WebP",
+      "placement": "HUD card frame for the theme",
+      "tool": "femc-wardrobe.py frame <src> glitter"
+    },
+    {
+      "batch": 123,
+      "source": "frame-hearts.png",
+      "sourceNow": "New Adds/frame-hearts.png",
+      "size": [
+        1983,
+        793
+      ],
+      "sha256": "f7bd1b4e5ccd21693c513933b93e7291455d8b36a7ff4e6c1ada5d4fbe166c2e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/frames/hearts.webp",
+      "conversion": "transparent as sent, 1000 x 400 WebP",
+      "placement": "HUD card frame for the theme",
+      "tool": "femc-wardrobe.py frame <src> hearts"
+    },
+    {
+      "batch": 123,
+      "source": "frame-notes.png",
+      "sourceNow": "New Adds/frame-notes.png",
+      "size": [
+        1983,
+        793
+      ],
+      "sha256": "402d0b62b572e5e68ca81800577924ee14775b658e403379ea8e5f473a1b5288",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/frames/notes.webp",
+      "conversion": "transparent as sent, 1000 x 400 WebP",
+      "placement": "HUD card frame for the theme",
+      "tool": "femc-wardrobe.py frame <src> notes"
+    },
+    {
+      "batch": 123,
+      "source": "frame-petals.png",
+      "sourceNow": "New Adds/frame-petals.png",
+      "size": [
+        1983,
+        793
+      ],
+      "sha256": "7bd6f54ff39436e918adf1d7cc05b8c10678c3144ae94ac55dc2427d7a8bb7f7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/frames/petals.webp",
+      "conversion": "transparent as sent, 1000 x 400 WebP",
+      "placement": "HUD card frame for the theme",
+      "tool": "femc-wardrobe.py frame <src> petals"
+    },
+    {
+      "batch": 123,
+      "source": "frame-snow.png",
+      "sourceNow": "New Adds/frame-snow.png",
+      "size": [
+        1983,
+        793
+      ],
+      "sha256": "d33c607953082ebeb9b4abc295c32743678055d4d3f836a94389da83d5bdc785",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/frames/snow.webp",
+      "conversion": "transparent as sent, 1000 x 400 WebP",
+      "placement": "HUD card frame for the theme",
+      "tool": "femc-wardrobe.py frame <src> snow"
+    },
+    {
+      "batch": 123,
+      "source": "frame-stars.png",
+      "sourceNow": "New Adds/frame-stars.png",
+      "size": [
+        1983,
+        793
+      ],
+      "sha256": "c01064d20d93f39ab54f56db41a516d38cace00a1cafc6d49ea09b13e3f0ce83",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/frames/stars.webp",
+      "conversion": "transparent as sent, 1000 x 400 WebP",
+      "placement": "HUD card frame for the theme",
+      "tool": "femc-wardrobe.py frame <src> stars"
+    },
+    {
+      "batch": 123,
+      "source": "frame-sunmoon.png",
+      "sourceNow": "New Adds/frame-sunmoon.png",
+      "size": [
+        1983,
+        793
+      ],
+      "sha256": "80ef788c87d2eae8b6efcd76245a66cbc49535751ac2a1ad1f211297ea63bd8c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/frames/sunmoon.webp",
+      "conversion": "transparent as sent, 1000 x 400 WebP",
+      "placement": "HUD card frame for the theme",
+      "tool": "femc-wardrobe.py frame <src> sunmoon"
+    },
+    {
+      "batch": 123,
+      "source": "frame-thorns.png",
+      "sourceNow": "New Adds/frame-thorns.png",
+      "size": [
+        1983,
+        793
+      ],
+      "sha256": "24f7d75362ad06b0f1f73855f5348291b1fc550aed4022cf2e0257cde82aa8a3",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/frames/thorns.webp",
+      "conversion": "transparent as sent, 1000 x 400 WebP",
+      "placement": "HUD card frame for the theme",
+      "tool": "femc-wardrobe.py frame <src> thorns"
     }
   ],
   "batch1Validation": {
@@ -24742,5 +27054,9 @@
     "tests": "femc-wardrobe.py scan lists the six faces; FemcGame.portrait('solar', face) returns the sk-arcana-sun files for all six with the look equipped",
     "framing": "overlay against Solar's own neutral: eyes and face line up; scene screenshots (happy, flustered) at 1440 x 900 and 390 x 844 checked by eye",
     "html": "femc-game.html art/ready.js ?v bumped"
+  },
+  "batch123Validation": {
+    "tests": "femc_skins_battle.py (all 8 sections incl. new looks) passed; femc_cosmetics --only inbattle,equip, femc_fx_art, femc_theurgy, femc_building --only fight passed; strips, cut-ins, finish cards, frames, theme bursts and sheet 2 checked by eye at 1440 x 900 and 390 x 844",
+    "note": "Skins in battle art (Nov 1 2026): 21 Solar looks (Strawberry Milk from WIP/Strawberry Milk/, one folder per look with free names) x 6 pieces, Emo Night sheet 2, Solar own entrance + strips, 11 theme sheets, 12 frames; skin-sk-thesun-portraits.png handled by the parallel Sun-portraits agent. Missing: theme-foxfire, frame-foxfire."
   }
 }
