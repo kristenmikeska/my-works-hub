@@ -38,6 +38,7 @@ Kat's decisions:
 
 ## 6. Epilogue depth
 - [x] Longer, deeper scenes, paired with the new backgrounds from 3 (Oct 31: CLAUDE.md "Epilogue depth: built")
+- [ ] Later (Kat, Nov 2): the same depth pass for the **Stay** epilogue (it reuses Iwatodai's backgrounds; its scenes weren't lengthened)
 
 ## 7. UI revamp (last)
 - Close to P3 Reload, with its own Solstice identity. Kat's references: `Femc Mode Images/Inspo` (not `Skin Inspo`). Approved direction: giant ghost words, bold italic slanted lists, art bleeding off the edge, angular text box with an arrow name tag; a selection slash, a sun and moon in the date box. (The mockup's indigo-to-gold day and green-and-black Dark Hour were dropped: see Kat's palette rule below.)
