@@ -4,6 +4,26 @@ Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make.
 
 **To make (updated Nov 1):** 1 credits still (section 18: Ken) · 22 skin-series pieces for Solar (section 19: Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, couple Showtimes, theme sheets and frames, cut-ins, finish cards, second pose sheets): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`, not here. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
+## ⭐⭐ TOP PRIORITY when you have usage: high-resolution poses (Kat, Nov 2)
+
+**Why things look blurry:** a 3 × 2 sheet only gives each figure about 500–760 pixels of height, and the evening screen and the results screen show Solar at nearly twice that (even her school-uniform poses, and every outfit's victory pose, are stretched). The fix is **one figure per image**, tall and sharp, instead of six to a sheet.
+
+**The plan (in this order):**
+1. **Solar's own evening poses, redone one per image** (her 18 poses: arms crossed, thinking, wave, peace, hair, shy, study, ramen, watering, Evoker, stretch, phone, cheer, jump, tease, heart, look back, sewing). These show every evening.
+2. **One evening "hero" pose per Solar outfit** (32 outfits), the pose that also shows big on the results screen. Later, if you want, more poses per outfit.
+3. **The other fighters' victory poses** (their own look first), for the results screen.
+4. Optional later: battle pose sheets redone as single figures (only if the in-battle figures ever look soft to you).
+
+**The prompt (one figure per image; change the bracketed parts):**
+Attach: the outfit's pose sheet from `Current Skins/` (or `Pose - Solar sheet.png` for her school uniform), then `Solar.png`
+Save as: `solar-hd-<pose>.png` (school uniform) or `skin-<look id>-hd-<pose>.png` (an outfit)
+```
+A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image [outfit name]. Pose: [the pose, e.g. arms crossed, a small confident smile, weight on one leg]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
+```
+If it comes back with a background, that's fine: Claude cuts it out.
+
+---
+
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
 - Save finished art in **New Adds** and tell Claude. Claude takes it off this list once it's in the game.
