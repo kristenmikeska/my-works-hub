@@ -2,7 +2,7 @@
 
 Claude's file. Kat's plain-language sheet, art checklist and every prompt are in `FEMC-SKINS-BATTLE-DESIGN.md` (pieces A-L, themes, the cell-4 checklist, prompts 6.1-6.6, all second pose sheets in part 8, all outfit Theurgy cut-ins in part 9). Section numbers below are the ones the design sheet used before the Nov 1 split, so older notes (CLAUDE.md, FEMC-STATUS) still point at the right place.
 
-**Status (Nov 1 2026):** B, C and A's code built (7.9); A switches on per look once its cleaned sheet is wired and marked; H-L built with built-in versions until their art arrives (8.6); S3 (Try it on) built (8.7); D built and F's skill sparkle built (7.10: Solar's own sheet 2, Summer Yukata's sheet 2 and the hearts theme sheet in); E and G built (7.11, with Kat's first batch of looks' art; 7.12 six more and per-strip eye glints); S1, S2 (= L, done), S4 and S5 not built; N's code built (8.9), waiting for art.
+**Status (Nov 1 2026):** B, C and A's code built (7.9); A switches on per look once its cleaned sheet is wired and marked; H-L built with built-in versions until their art arrives (8.6); S3 (Try it on) built (8.7); D built and F's skill sparkle built (7.10: Solar's own sheet 2, Summer Yukata's sheet 2 and the hearts theme sheet in); E and G built (7.11, with Kat's first batch of looks' art; 7.12 six more and per-strip eye glints); S1, S2 (= L, done), S4 and S5 not built; N's code built (8.9); art in (Nov 2) for all 32 of Solar's looks and 9 of Haechan's.
 
 ## 0. Notes from the Nov 1 restructure
 
@@ -124,6 +124,7 @@ Every piece plays today with a built-in version and switches to Kat's picture th
 - **Tests:** `python3 tests/femc_skins_battle.py --only evoker`: a test close-up on Date Day (tool size, scan, the shot, no clip, no default), the Yukata and Akihiko's swimsuit with no close-up (pose-1 big, no default), no look (default shot); screenshots at 1440 × 900 and 390 × 844.
 
 ### 8.9 N, a look's own signature effect sheet: code built (Nov 1 2026)
+- **Art in (Nov 2 2026, manifest batch 130):** Kat's `New Adds/Solar Skin FX/<n>-<name>.png` (32, numbered in design-sheet order but 18 / 19 swapped: map by name) and the fx sheet in each `HC-<look>/` folder (no fx for Garage Band) → `femc-fx.py skin <look> "<folder>/<file>"`. Most Solar sheets came transparent rather than on black; build() composites them on black first, so they key the same.
 - **Why:** Kat (Nov 1): "specific effects or cosmetics for skins that can be layered on top or used to animate". Art arrives later as `skin-<look id>-fx.png`, a 3 x 2 sheet on solid black (theme-sheet format, part 6.3).
 - **Tool:** `python3 tools/femc-fx.py skin <look id> [src]` (src defaults to `skin-<look>-fx.png` in New Adds / Added to Game; the look must already have its pose folder) runs `build()` with the theme sheets' processing (light keyed from black, shared centring shift, 256-px cells) into `assets/femc/game/art/skins/<look>/fx.webp`, then `femc-wardrobe.py scan`, which writes `skins[<look>].fx = <sha1[:8]>` in ready.js (the hash is the cache key). Not in fx/index.js.
 - **Data:** cosmetics.js `battle().fx[who]` (`skins/<look>/fx.webp?v=<hash>`), `tryOnSpec(id).fxSheet`.

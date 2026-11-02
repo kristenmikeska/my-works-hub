@@ -52,6 +52,7 @@ ART = pathlib.Path(REPO, 'assets/femc/game/art')
 READY = ART / 'ready.js'
 READY0 = READY.read_text()
 MADE = []  # test files to remove at the end
+SAVED = {}  # Kat's real files a test overwrites: put back by cleanup()
 
 
 def ok(cond, msg):
@@ -69,6 +70,8 @@ def cleanup():
         for d in (f.parent,):
             if d.exists() and d != ART and not any(d.iterdir()) and d.parent in (ART, ART / 'skins'): d.rmdir()
     MADE.clear()
+    for f, b in SAVED.items(): f.write_bytes(b)
+    SAVED.clear()
     scan()
     if READY.read_text() != READY0: READY.write_text(READY0)
 
@@ -145,6 +148,8 @@ try:
     def setup(**cfg):
         p.goto(URL)
         p.eval(SETUP % {'cfg': json.dumps(cfg)})
+        # Nov 2: Kat's signature effect sheets (N) are in for 41 looks; the theme-sheet checks run without them (lookfx sets its own).
+        p.eval("Object.values(FEMC_ART_READY.skins).forEach(s=>{delete s.fx});true")
 
     def bdrive(until, limit=90):
         t0 = time.time()
@@ -221,19 +226,19 @@ try:
         fr = Image.new('RGB', (1500, 600), (0, 255, 0)); d = ImageDraw.Draw(fr); d.rectangle([20, 20, 1480, 580], outline=(255, 79, 158), width=10)
         d.ellipse([10, 10, 90, 90], fill=(255, 140, 192)); fr.save(tmp / 'frame.png')
         W = [sys.executable, str(pathlib.Path(REPO, 'tools/femc-wardrobe.py'))]
-        # A look with none of Kat's Nov 1 art (Haechan's Black Suit; Phantom Thief got its art in batch 126), Akihiko's own look and the missing foxfire theme, so nothing real is touched.
+        # A look with none of Kat's art (Haechan's Sigma Chi Runner; Black Suit got its art on Nov 2), Akihiko's own look and the missing foxfire theme, so nothing real is touched.
         # The strip source has white letterbox bands top and bottom: they are cut off before the 5:1 crop.
         band = Image.new('RGB', (1536, 520), (255, 255, 255)); band.paste(wide, (0, 110)); band.save(tmp / 'omband.png')
-        outs = {'onemore': ART / 'skins/sk-haechan-suit/haechan-onemore.webp', 'onemore2': ART / 'skins/sk-haechan-suit/haechan-onemore-v2.webp', 'own': ART / 'onemore/akihiko.webp',
-                'entrance': ART / 'skins/sk-haechan-suit/haechan-entrance.webp', 'theurgy': ART / 'skins/sk-haechan-suit/haechan-theurgy.webp', 'finish': ART / 'skins/sk-haechan-suit/haechan-finish.webp',
+        outs = {'onemore': ART / 'skins/sk-haechan-runners/haechan-onemore.webp', 'onemore2': ART / 'skins/sk-haechan-runners/haechan-onemore-v2.webp', 'own': ART / 'onemore/akihiko.webp',
+                'entrance': ART / 'skins/sk-haechan-runners/haechan-entrance.webp', 'theurgy': ART / 'skins/sk-haechan-runners/haechan-theurgy.webp', 'finish': ART / 'skins/sk-haechan-runners/haechan-finish.webp',
                 'showtime': ART / 'couples/cp-sunmoon-showtime.webp', 'frame': ART / 'frames/foxfire.webp'}
         for f in outs.values(): ok(not f.exists(), f'{f} should not exist before the test'); MADE.append(f)
-        subprocess.run(W + ['onemore', str(tmp / 'om.png'), 'sk-haechan-suit'], check=True, capture_output=True)
-        subprocess.run(W + ['onemore2', str(tmp / 'omband.png'), 'sk-haechan-suit'], check=True, capture_output=True)
+        subprocess.run(W + ['onemore', str(tmp / 'om.png'), 'sk-haechan-runners'], check=True, capture_output=True)
+        subprocess.run(W + ['onemore2', str(tmp / 'omband.png'), 'sk-haechan-runners'], check=True, capture_output=True)
         subprocess.run(W + ['onemore', str(tmp / 'om.png'), 'own', 'akihiko'], check=True, capture_output=True)
-        subprocess.run(W + ['entrance', str(tmp / 'card.png'), 'sk-haechan-suit'], check=True, capture_output=True)
-        subprocess.run(W + ['theurgy', str(tmp / 'card.png'), 'sk-haechan-suit'], check=True, capture_output=True)
-        subprocess.run(W + ['finish', str(tmp / 'card.png'), 'sk-haechan-suit'], check=True, capture_output=True)
+        subprocess.run(W + ['entrance', str(tmp / 'card.png'), 'sk-haechan-runners'], check=True, capture_output=True)
+        subprocess.run(W + ['theurgy', str(tmp / 'card.png'), 'sk-haechan-runners'], check=True, capture_output=True)
+        subprocess.run(W + ['finish', str(tmp / 'card.png'), 'sk-haechan-runners'], check=True, capture_output=True)
         subprocess.run(W + ['showtime', str(tmp / 'card.png'), 'sunmoon'], check=True, capture_output=True)
         subprocess.run(W + ['frame', str(tmp / 'frame.png'), 'foxfire'], check=True, capture_output=True)
         sizes = {k: Image.open(f).size for k, f in outs.items()}
@@ -244,7 +249,7 @@ try:
         ok(fa.getpixel((500, 200))[3] == 0 and fa.getpixel((16, 200))[3] > 200 and fa.getpixel((5, 200))[3] == 0, 'the frame\'s green keyed out, its border kept')
         rj = READY.read_text()
         data = json.loads(rj.split('window.FEMC_ART_READY = ')[1].rstrip().rstrip(';'))
-        ph = data['skins']['sk-haechan-suit']
+        ph = data['skins']['sk-haechan-runners']
         ok(all(ph.get(k) == ['haechan'] for k in ('onemore', 'onemore2', 'entrance', 'theurgy', 'finish')) and data['own']['onemore'] == ['akihiko', 'haechan', 'solar'] and data['own']['onemore2'] == ['solar']
            and data['couples'] == ['cp-sunmoon'] and 'foxfire' in data['frames'], f'scan lists them: {ph}, {data["own"]}, {data["couples"]}, {data["frames"]}')
         cleanup()
@@ -633,14 +638,14 @@ try:
             view(p, w, h); time.sleep(0.35); shots2.append(shot(p, f'sheet2-yukata-dodge-{w}x{h}'))
         view(p, 1440, 900); go_on(); time.sleep(0.5)
         clean(p, 'sheet2 yukata')
-        p.top(); setup(wear=['sk-haechan-suit'], day='12/12')  # Nov 1: Phantom Thief got its sheet 2 (batch 126); Haechan's Black Suit is sheet 1 only
+        p.top(); setup(wear=['sk-haechan-runners'], day='12/12')  # Nov 2: Black Suit got its sheet 2; Sigma Chi Runner is sheet 1 only
         scripted(['solar', 'haechan', 'akihiko', 'yukari'])  # Haechan fights from December; a scripted fight takes him
         p.eval("FemcBattle.save.cutins='off'"); bdrive(HAECHAN_MENU, 120)
         d = p.eval("FemcBattle.poses2('haechan')")
-        ok(not d['has'] and len(d['frames']) == 6 and not any('pose2' in f for f in d['frames']), f'Black Suit (sheet 1 only): {d}')
-        # F: Black Suit is calling cards; Haechan's skill hit plays Kat's theme-cards sheet small on top
+        ok(not d['has'] and len(d['frames']) == 6 and not any('pose2' in f for f in d['frames']), f'Sigma Chi Runner (sheet 1 only): {d}')
+        # F: Sigma Chi Runner is music notes; Haechan's skill hit plays Kat's theme-notes sheet small on top
         p.eval("FemcBattle.B.foes().forEach(f=>{f.maxHp=f.hp=99999})"); cast_fire()
-        p.wait("(FemcBattle.marks['fx-theme-cards']||0)>0 && (FemcBattle.marks['fx-art-theme-cards']||0)>0", 20)
+        p.wait("(FemcBattle.marks['fx-theme-notes']||0)>0 && (FemcBattle.marks['fx-art-theme-notes']||0)>0", 20)
         clean(p, 'sheet2 suit')
         p.top(); p.eval("document.querySelectorAll('.g-dh').forEach(x=>x.remove())")
         results['sheet2'] = {'states': list(want_pose), 'shots': shots2}
@@ -678,8 +683,8 @@ try:
                 view(p, 1440, 900); go_on(); p.wait("!document.querySelector('.bt-theurgy')", 20)
             clean(p, f'looks alt={alt}')
             p.top(); p.eval("document.querySelectorAll('.g-dh').forEach(x=>x.remove())")
-        # Without a look's Theurgy art (Haechan's Black Suit; Phantom Thief has its own since batch 126): the fighter's own cut-in, no look mark.
-        setup(wear=['sk-haechan-suit'], day='12/12')
+        # Without a look's Theurgy art (Haechan's Sigma Chi Runner; Black Suit has its own since Nov 2): the fighter's own cut-in, no look mark.
+        setup(wear=['sk-haechan-runners'], day='12/12')
         scripted(['solar', 'haechan', 'akihiko', 'yukari'])
         p.eval("FemcBattle.save.cutins='off'"); bdrive(SOLAR_MENU, 120)
         p.eval(TH.replace("'solar'", "'haechan'")); p.wait("(FemcBattle.marks['theurgy-final']||FemcBattle.marks['theurgy-short']||0)>0", 30)
@@ -769,7 +774,11 @@ try:
             d.ellipse([cx - r // 2, cy - r // 2, cx + r // 2, cy + r // 2], outline=col, width=10); d.ellipse([cx - r // 6, cy - r // 6, cx + r // 6, cy + r // 6], fill=wht)
         im.save(tmp / 'skin-sk-date-fx.png')
         out = ART / 'skins/sk-date/fx.webp'
-        ok(not out.exists(), 'Date Day has no effect sheet before the test'); MADE.append(out)
+        rd0 = json.loads(READY0.split('window.FEMC_ART_READY = ')[1].rstrip().rstrip(';'))
+        real = sorted(k for k, v in rd0['skins'].items() if v.get('fx'))
+        ok(len(real) >= 41 and all((ART / 'skins' / k / 'fx.webp').exists() for k in real), f"Kat's signature sheets (Nov 2) listed and on disk: {len(real)}")
+        if out.exists(): SAVED[out] = out.read_bytes()  # Kat's real Date Day sheet (Nov 2): set aside, put back by cleanup()
+        MADE.append(out)
         subprocess.run([sys.executable, str(pathlib.Path(REPO, 'tools/femc-fx.py')), 'skin', 'sk-date', str(tmp / 'skin-sk-date-fx.png')], check=True, capture_output=True)
         sh = Image.open(out).convert('RGBA')
         ok(sh.size == (768, 512) and sh.getpixel((2, 2))[3] == 0 and sh.getpixel((640, 128))[3] > 200, f'fx.webp: 3 x 2 of 256, black keyed out, the peak kept: {sh.size}')
@@ -837,8 +846,9 @@ try:
             ok(not p.eval("document.querySelector('.bt-lfx')") and not p.eval("FemcBattle.marks['look-fx-en']"), f'{tag}: no layer')
             go_on(); clean(p, 'lookfx ' + tag)
         p.top(); p.eval("FemcGame.setSettings({skinFx:true,perf:false})")
+        kat = SAVED.get(out)
         cleanup(); shutil.rmtree(tmp, ignore_errors=True)
-        ok(READY.read_text() == READY0 and not out.exists(), 'test sheet gone, ready.js restored')
+        ok(READY.read_text() == READY0 and (out.read_bytes() == kat if kat else not out.exists()), 'test sheet gone (Kat\'s put back), ready.js restored')
         results['lookfx'] = nshots
 
     print(json.dumps(results, indent=1))

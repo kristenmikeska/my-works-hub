@@ -27950,6 +27950,2018 @@
         "assets/femc/portraits/ken-winter/serious.webp": "27e7cb4c3da210983e1c7e0ec6c89d39eba8c38b1338cea8ad18210077d6bb62",
         "assets/femc/portraits/ken-winter/surprised.webp": "cc18115d91ecafe456789f190987d8bddfb74666be670b30b9d14eaf5a2f3c62"
       }
+    },
+    {
+      "batch": 130,
+      "source": "1-sunflowers.png",
+      "sourceNow": "New Adds/Solar Skin FX/1-sunflowers.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6e8b8ce042b46ff387da8c867ba39666856d567c2cb53dcd7867b76f796f7679",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukata/fx.webp",
+      "skin": "sk-yukata",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-yukata \"Solar Skin FX/1-sunflowers.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-yukata/fx.webp": "0175c6749fcb15476267a6c0325c8b3bf26157653bbdeb8556d010b66ba9fd84"
+      },
+      "readyHash": "cd14ea0c"
+    },
+    {
+      "batch": 130,
+      "source": "2-wintercoat.png",
+      "sourceNow": "New Adds/Solar Skin FX/2-wintercoat.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "965f07094df2475e4d43e2eccfeee7e0384bee2699f375bffd657c6c27844c28",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/fx.webp",
+      "skin": "sk-wintercoat",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-wintercoat \"Solar Skin FX/2-wintercoat.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-wintercoat/fx.webp": "1d37ab7680cea7beda7d8dd28790b4d9a5eccb534b094de9dc2708f09d7ac39b"
+      },
+      "readyHash": "612b9ceb"
+    },
+    {
+      "batch": 130,
+      "source": "3-halloween.png",
+      "sourceNow": "New Adds/Solar Skin FX/3-halloween.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a49cddae63d7e68ad9b7436c79e7d12db923907b1505dc1a9c30846a33f1e977",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-halloween/fx.webp",
+      "skin": "sk-halloween",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-halloween \"Solar Skin FX/3-halloween.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-halloween/fx.webp": "395e3a64c23db9a7aaeb0ce5b772687e50265a67b7d2f2d83a793ba621270aea"
+      },
+      "readyHash": "f56f39c3"
+    },
+    {
+      "batch": 130,
+      "source": "4-date.png",
+      "sourceNow": "New Adds/Solar Skin FX/4-date.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d1949870dc4aa70f8b873746585a007f115d8dabb04d6812d66078cd38e4a506",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/fx.webp",
+      "skin": "sk-date",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-date \"Solar Skin FX/4-date.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/fx.webp": "7971f57884aee560d322b7c5d84eff45489f649da641330adbe8fbff0fb016cb"
+      },
+      "readyHash": "0ef0cb7d"
+    },
+    {
+      "batch": 130,
+      "source": "5-phantomthief.png",
+      "sourceNow": "New Adds/Solar Skin FX/5-phantomthief.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "5b66b97d540f3aed4d57a433cc919b7a4a1e78189626fe60b18fc601238ba569",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-phantom/fx.webp",
+      "skin": "sk-phantom",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-phantom \"Solar Skin FX/5-phantomthief.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-phantom/fx.webp": "2edabfe307c15383db256f580b56f3db2b5c5787d9dce4a1d26559628619f870"
+      },
+      "readyHash": "c409ea98"
+    },
+    {
+      "batch": 130,
+      "source": "6-emonight.png",
+      "sourceNow": "New Adds/Solar Skin FX/6-emonight.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "05f958a2f772326bf8da32722348046a6b59206f776fee2bc8be927b15a7889f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/fx.webp",
+      "skin": "sk-emo",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-emo \"Solar Skin FX/6-emonight.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/fx.webp": "5a907af83267d68d83306baa7eabb4820df92aefbca1e6c35de7b6c606a9f43e"
+      },
+      "readyHash": "574662bc"
+    },
+    {
+      "batch": 130,
+      "source": "7-alphaformal.png",
+      "sourceNow": "New Adds/Solar Skin FX/7-alphaformal.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "5455a883b4ad1fd85fc02c739741a280da27df6e269b4f992429ec02e893075d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/fx.webp",
+      "skin": "sk-alphaphi",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-alphaphi \"Solar Skin FX/7-alphaformal.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/fx.webp": "0adf70ec99bd6ea0af951398877fdde602f0ef576dae51b077a23778c0e5eb16"
+      },
+      "readyHash": "cafb8530"
+    },
+    {
+      "batch": 130,
+      "source": "8-harbournight.png",
+      "sourceNow": "New Adds/Solar Skin FX/8-harbournight.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "13bf1f695fafcd986fc07cec6baeb98a15f92af517fb4f1c38682f63bd104745",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-harbourcoat/fx.webp",
+      "skin": "sk-harbourcoat",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-harbourcoat \"Solar Skin FX/8-harbournight.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-harbourcoat/fx.webp": "af94a6d7783761ddd2c58201ea939ecc1977bd8c17d74c1519abe27808d3acb4"
+      },
+      "readyHash": "834f3e69"
+    },
+    {
+      "batch": 130,
+      "source": "9-stageidol.png",
+      "sourceNow": "New Adds/Solar Skin FX/9-stageidol.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1b18a2c68789e167ee4110bf489aa1ef7d10016d956f13914278f4ce81e2fde1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-idol/fx.webp",
+      "skin": "sk-idol",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-idol \"Solar Skin FX/9-stageidol.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-idol/fx.webp": "dfe07b79aa044dc60f775926f804b92edcb217955bc4ac237cddf4033fb09f69"
+      },
+      "readyHash": "40afc301"
+    },
+    {
+      "batch": 130,
+      "source": "10-suesports.png",
+      "sourceNow": "New Adds/Solar Skin FX/10-suesports.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "cfbaf2dae067257e0dd86ccac7f83b5340a4dfb3f3ebeddd57b6c1ac59044d0d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-esports/fx.webp",
+      "skin": "sk-esports",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-esports \"Solar Skin FX/10-suesports.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-esports/fx.webp": "ecc4ee7c679589ff7f05b2e8b4e0ea627d8d00ae74dad9885874280a7c0ae4a7"
+      },
+      "readyHash": "c386409f"
+    },
+    {
+      "batch": 130,
+      "source": "11-moonlithanbok.png",
+      "sourceNow": "New Adds/Solar Skin FX/11-moonlithanbok.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d8d68321b0c55b2ade4faa61c321890bb877077529239f1a5b2382c74ee1634f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-hanbok/fx.webp",
+      "skin": "sk-hanbok",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-hanbok \"Solar Skin FX/11-moonlithanbok.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-hanbok/fx.webp": "d807c7c06ec9dccbf0576c15e28d1e1135074c95f2788089407d3a7a91752e68"
+      },
+      "readyHash": "881b5ff5"
+    },
+    {
+      "batch": 130,
+      "source": "12-vicepresident.png",
+      "sourceNow": "New Adds/Solar Skin FX/12-vicepresident.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d43c05dcd0331f1bfaf312b674b19b1761fb6d372d39c4b7f68c6d8f26cb8689",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/fx.webp",
+      "skin": "sk-vp",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-vp \"Solar Skin FX/12-vicepresident.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-vp/fx.webp": "e725071e823a346f2936bf46d026559d367e49f223ea87cba8fffb7206e8a886"
+      },
+      "readyHash": "5993a75a"
+    },
+    {
+      "batch": 130,
+      "source": "13-velvetroom.png",
+      "sourceNow": "New Adds/Solar Skin FX/13-velvetroom.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "572eddae464c46ac2f87219962b0d1a668b833fc71615dcadd08d40e1d032dfc",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-velvet/fx.webp",
+      "skin": "sk-velvet",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-velvet \"Solar Skin FX/13-velvetroom.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-velvet/fx.webp": "6eb7f03a9b63773e30fcf5557c9e2f9a12999e0461862f0ceef6b9a6a9be6730"
+      },
+      "readyHash": "111c9e68"
+    },
+    {
+      "batch": 130,
+      "source": "14-morningroadwork.png",
+      "sourceNow": "New Adds/Solar Skin FX/14-morningroadwork.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "90d181ee157f2ee3cbb1f0ec0be6b18be559893643ebda2c5eca1cc5bd607324",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-roadwork/fx.webp",
+      "skin": "sk-roadwork",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-roadwork \"Solar Skin FX/14-morningroadwork.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-roadwork/fx.webp": "6299bed55411b0e715851816337afbe371cf58582ddaa44709129399a92cda21"
+      },
+      "readyHash": "0172256b"
+    },
+    {
+      "batch": 130,
+      "source": "15-y2kpopstar.png",
+      "sourceNow": "New Adds/Solar Skin FX/15-y2kpopstar.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "645fa8808bcba5783f5211e7db589936319531083e257a5e0161a94c650fff0f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/fx.webp",
+      "skin": "sk-y2k",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-y2k \"Solar Skin FX/15-y2kpopstar.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/fx.webp": "dda667b9886cf3728818302d1007f6c14aa19e65d0f754b881c0f11176fed008"
+      },
+      "readyHash": "1c3cc7a7"
+    },
+    {
+      "batch": 130,
+      "source": "16-oops.png",
+      "sourceNow": "New Adds/Solar Skin FX/16-oops.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a05eb1dc31adb4640a64f4c856906ed7b58b2a328e58c4e9ffb24bd60dafd814",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-oops/fx.webp",
+      "skin": "sk-oops",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-oops \"Solar Skin FX/16-oops.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-oops/fx.webp": "1ab986128bc19787cd7751d3a411a41b8546de85bf14173611ac7cd910593956"
+      },
+      "readyHash": "275da8ae"
+    },
+    {
+      "batch": 130,
+      "source": "17-snakecharmer.png",
+      "sourceNow": "New Adds/Solar Skin FX/17-snakecharmer.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ebb47acaadd6a3ef4dd704bb126d534ea4f41f331bb4a994a32d3b3dc3f6f225",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-snake/fx.webp",
+      "skin": "sk-snake",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-snake \"Solar Skin FX/17-snakecharmer.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-snake/fx.webp": "8dee2c15c3ccc3e70c9a3546de6699e98bebabff70da639a57e3482ff12b6f9c"
+      },
+      "readyHash": "90a6169d"
+    },
+    {
+      "batch": 130,
+      "source": "18-nightprowl.png",
+      "sourceNow": "New Adds/Solar Skin FX/18-nightprowl.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "51bc80dfec3b9e10252195417b05c6a754a056b7439beb5a655dcb830068fd7a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-prowl/fx.webp",
+      "skin": "sk-prowl",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-prowl \"Solar Skin FX/18-nightprowl.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-prowl/fx.webp": "57035a6ba9f4d1e164ea0357916511a1b13ba4dec56e8c3e782dafb1dd9f2729"
+      },
+      "readyHash": "f863c771"
+    },
+    {
+      "batch": 130,
+      "source": "19-sugarrush.png",
+      "sourceNow": "New Adds/Solar Skin FX/19-sugarrush.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3a1bb212f2e51a88834f7b2d0ab8325c2c6ff41c81e655984d871465986ca217",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-sugarrush/fx.webp",
+      "skin": "sk-sugarrush",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-sugarrush \"Solar Skin FX/19-sugarrush.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-sugarrush/fx.webp": "24e860501b73b6156b8923507ec7db77ef0306fabce1b4bb454e8417408560f0"
+      },
+      "readyHash": "0ceee9aa"
+    },
+    {
+      "batch": 130,
+      "source": "20-strawberrymilk.png",
+      "sourceNow": "New Adds/Solar Skin FX/20-strawberrymilk.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7d6350ea8e6e953192b58d1ec043837fdd35d407a61910283f86a4ae83b8d271",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-strawberry/fx.webp",
+      "skin": "sk-strawberry",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-strawberry \"Solar Skin FX/20-strawberrymilk.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-strawberry/fx.webp": "55a3d6b32daa7dd89a421dc612452ce3c812c6694b0db4acdfac9928f25ee10e"
+      },
+      "readyHash": "12453596"
+    },
+    {
+      "batch": 130,
+      "source": "21-summersession.png",
+      "sourceNow": "New Adds/Solar Skin FX/21-summersession.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "80ced1848a3637863bcaeae63b29dd16fa96b902dd024fa4a18d629e887e90c5",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-summersession/fx.webp",
+      "skin": "sk-summersession",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-summersession \"Solar Skin FX/21-summersession.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-summersession/fx.webp": "5d0551e7b5cd1d7e0c9961c597dba6ede85ba1b624cf355d78d033b6ad41c57d"
+      },
+      "readyHash": "7c252774"
+    },
+    {
+      "batch": 130,
+      "source": "22-limelight.png",
+      "sourceNow": "New Adds/Solar Skin FX/22-limelight.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d65a14f5601e3c7290ed045f36edddad8b7661a87c1f2119252b2ba0fd284891",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/fx.webp",
+      "skin": "sk-limelight",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-limelight \"Solar Skin FX/22-limelight.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/fx.webp": "ad0094d4682c7595f39108202f914356eda2160e7545d200d9501fbf452d7581"
+      },
+      "readyHash": "94374bae"
+    },
+    {
+      "batch": 130,
+      "source": "23-pinklagoon.png",
+      "sourceNow": "New Adds/Solar Skin FX/23-pinklagoon.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "0744043f58c932be6a12c7f7552eba1a25be0a92e85a4a125102006e7236b24d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/fx.webp",
+      "skin": "sk-swim-lagoon",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-swim-lagoon \"Solar Skin FX/23-pinklagoon.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/fx.webp": "d1a1e22e95ce54c662b91cd826ce2850105ae9cbc792fb76a2823fb635a9bf2d"
+      },
+      "readyHash": "59bec14d"
+    },
+    {
+      "batch": 130,
+      "source": "24-lifeguard.png",
+      "sourceNow": "New Adds/Solar Skin FX/24-lifeguard.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "0005ab02fb2e3784a9d028c1c8d4402c509c928889033745e7a4d22da08720b3",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/fx.webp",
+      "skin": "sk-swim-lifeguard",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-swim-lifeguard \"Solar Skin FX/24-lifeguard.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/fx.webp": "77d1025562c6743dd76f17895ebabd61846fa469440fbd79352f302c0f49b6c7"
+      },
+      "readyHash": "ae589816"
+    },
+    {
+      "batch": 130,
+      "source": "25-nightswim.png",
+      "sourceNow": "New Adds/Solar Skin FX/25-nightswim.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ec0145729957d96bea1adb99642576cdf69d79b1d37ea49a033fc00fa7a50f62",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-night/fx.webp",
+      "skin": "sk-swim-night",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-swim-night \"Solar Skin FX/25-nightswim.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-night/fx.webp": "56754d2cf412e3d4a5209491e8c44b6f925e53b53cdd669a7e496f96c2cbe298"
+      },
+      "readyHash": "ee096f0f"
+    },
+    {
+      "batch": 130,
+      "source": "26-sunhoodie.png",
+      "sourceNow": "New Adds/Solar Skin FX/26-sunhoodie.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "33c6ac8230a4e0eac7749231c5ee4fd71614c70e5e4c0843f4f09b131055c36d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-sunmoon/fx.webp",
+      "skin": "sk-cp-sunmoon",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-cp-sunmoon \"Solar Skin FX/26-sunhoodie.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-sunmoon/fx.webp": "66155ec14e6425d9375733134aaedd25d1c4369ac4baad48898c584cdc6a03a3"
+      },
+      "readyHash": "522e7bc8"
+    },
+    {
+      "batch": 130,
+      "source": "27-midnightdrive.png",
+      "sourceNow": "New Adds/Solar Skin FX/27-midnightdrive.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "97fc8a8649bb4cab12f14fef78af9255ebc56ace84f110f183db7945c34a2bca",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-drive/fx.webp",
+      "skin": "sk-cp-drive",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-cp-drive \"Solar Skin FX/27-midnightdrive.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-drive/fx.webp": "e7ba4f8fb0025f65129e785292f84697f61fcb826baa057472bb9da5c5dad466"
+      },
+      "readyHash": "3e49b5fa"
+    },
+    {
+      "batch": 130,
+      "source": "28-afterhours.png",
+      "sourceNow": "New Adds/Solar Skin FX/28-afterhours.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6af0a29d22b76b756fef03bc22c2484117c57869001c33feaf2112fa21f9f46a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/fx.webp",
+      "skin": "sk-cp-afterhours",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-cp-afterhours \"Solar Skin FX/28-afterhours.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/fx.webp": "0e342335e42cbf240faeafb3fa6c0136a06b521b7d310d4e5e33a5c31971012d"
+      },
+      "readyHash": "59c4b227"
+    },
+    {
+      "batch": 130,
+      "source": "29-moviedate.png",
+      "sourceNow": "New Adds/Solar Skin FX/29-moviedate.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "4318d8d3dd81c2ad68e91393368076d483e7444738dd72019f953dc5654fcc40",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-moviedate/fx.webp",
+      "skin": "sk-cp-moviedate",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-cp-moviedate \"Solar Skin FX/29-moviedate.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-moviedate/fx.webp": "0832a9726fc28e14fa6db7c8f700bcb4cfeaaaf0f4e32154bbc46dd487609786"
+      },
+      "readyHash": "5dd71184"
+    },
+    {
+      "batch": 130,
+      "source": "30-ringside.png",
+      "sourceNow": "New Adds/Solar Skin FX/30-ringside.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "18789e4154544033f66b7a221759d978f38114f962fa9a0121502e7e9a0891b8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-ringside/fx.webp",
+      "skin": "sk-cp-ringside",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-cp-ringside \"Solar Skin FX/30-ringside.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-ringside/fx.webp": "c6e46f76d2d5cffbb0f75417f4040907f3038b1bc874c3f897c887119bc9c20f"
+      },
+      "readyHash": "02885b63"
+    },
+    {
+      "batch": 130,
+      "source": "31-summerfestival.png",
+      "sourceNow": "New Adds/Solar Skin FX/31-summerfestival.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ddca5fc807f9d0d55c291dcb298b03799253e6c007731aa18b067ceed90b2d86",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-festival/fx.webp",
+      "skin": "sk-cp-festival",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-cp-festival \"Solar Skin FX/31-summerfestival.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-festival/fx.webp": "bc02cd88b3a879799d1b0cf184254b43dc84dfa923139093d84bb8c0e15df4b7"
+      },
+      "readyHash": "151eb2f1"
+    },
+    {
+      "batch": 130,
+      "source": "32-thesun.png",
+      "sourceNow": "New Adds/Solar Skin FX/32-thesun.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "f3e6883c4210cb684597538cb67b514bfe134596347f882ea3204d6d3c6f9168",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-arcana-sun/fx.webp",
+      "skin": "sk-arcana-sun",
+      "character": "solar",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-arcana-sun \"Solar Skin FX/32-thesun.png\"",
+      "identifiedBy": "Kat's numbered name (design-sheet order of Solar's looks; 18 nightprowl / 19 sugarrush are swapped against the sheet, mapped by name) and the motifs checked against the look bible",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-arcana-sun/fx.webp": "56c8619469d5b2b19edd89bdc77abc42a907571dacf261154331d28f479e150e"
+      },
+      "readyHash": "c9bb5c65"
+    },
+    {
+      "batch": 130,
+      "source": "Luminous cardstorm spell progression.png",
+      "sourceNow": "New Adds/HC-Black Suit/Luminous cardstorm spell progression.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "423ff5c9cc79d29b96ebfa6142b1b72480ecbae304f180442875cfbd75aa241e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-suit/fx.webp",
+      "skin": "sk-haechan-suit",
+      "character": "haechan",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-haechan-suit \"HC-Black Suit/Luminous cardstorm spell progression.png\"",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-suit/fx.webp": "9e666ebd87601de98a3b205ce874bd5ce126a5c7163cefdba075b810cf2b448c"
+      },
+      "readyHash": "03bf9174"
+    },
+    {
+      "batch": 130,
+      "source": "Midnight Harbour Knife Entrance.png",
+      "sourceNow": "New Adds/HC-Black Suit/Midnight Harbour Knife Entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "fc67f81d7676dda1d7361e13237173f3817cd8266752b3099456e339d48e98e6",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-suit/haechan-entrance.webp",
+      "skin": "sk-haechan-suit",
+      "character": "haechan",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when he leads, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"HC-Black Suit/Midnight Harbour Knife Entrance.png\" sk-haechan-suit haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-suit/haechan-entrance.webp": "e648065c700d8d6000141da2101c40a12bc66370aa91486af74d5c2b7f9a86cf"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Orange energy knife strike at Incheon harbor.png",
+      "sourceNow": "New Adds/HC-Black Suit/Orange energy knife strike at Incheon harbor.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "acb9a64c5ae00b20e4d8507a5a32f9562ba9983ad3d69147de7cb8612525169f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-suit/haechan-theurgy.webp",
+      "skin": "sk-haechan-suit",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"HC-Black Suit/Orange energy knife strike at Incheon harbor.png\" sk-haechan-suit haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-suit/haechan-theurgy.webp": "c3e24eeb39c906a60f89c61f3554641ff946b8572fc6b228b373814c024e0739"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Sharp Eyes, Orange Rain Stripes.png",
+      "sourceNow": "New Adds/HC-Black Suit/Sharp Eyes, Orange Rain Stripes.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "22e2c0be530e2bab1b5dc5b8a879fbe45d6ebf6acc5105c1400b3a173ee7d225",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-suit/haechan-onemore.webp",
+      "skin": "sk-haechan-suit",
+      "character": "haechan",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"HC-Black Suit/Sharp Eyes, Orange Rain Stripes.png\" sk-haechan-suit haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-suit/haechan-onemore.webp": "d807125bf93149740ce9e1a6a1a291e1e382db86ba60f6854cf2af9712446f40"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Suited fighter, six combat poses.png",
+      "sourceNow": "New Adds/HC-Black Suit/Suited fighter, six combat poses.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c1d69008fc9fb75240ff8c9f6e1042a7bfb05fcee4cbacbc31caae5c350934ea",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-suit/haechan-pose2-0..5.webp",
+      "skin": "sk-haechan-suit",
+      "character": "haechan",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent)",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"HC-Black Suit/Suited fighter, six combat poses.png\" sk-haechan-suit haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-suit/haechan-pose2-0.webp": "4b7fd069e4569e6f0ab4576192d43a94452fd21e08c8718bf9b9f07aa3ba6bfe",
+        "assets/femc/game/art/skins/sk-haechan-suit/haechan-pose2-1.webp": "0af9376709cfca3c2c250c698ea2accf1e958070f0129e04947a4ad8aa184b57",
+        "assets/femc/game/art/skins/sk-haechan-suit/haechan-pose2-2.webp": "0b7e2f57a6138537bca8795daa621484cdd792b4bf3dbc6ae50dfb0b41257127",
+        "assets/femc/game/art/skins/sk-haechan-suit/haechan-pose2-3.webp": "ed46345cf536a640046e0c8b1685817e35d1c1bc78d9c46a1e76f3e2027aef99",
+        "assets/femc/game/art/skins/sk-haechan-suit/haechan-pose2-4.webp": "3c7fd918b13c0abebcb5c43ef944d3561660eab9fbcd3ef6db8bcfe04bf32772",
+        "assets/femc/game/art/skins/sk-haechan-suit/haechan-pose2-5.webp": "6e63d616a831687886d9459ad64b4be8aad0a8ea1ce7f3b6c1b4426bc6cd6cfe"
+      },
+      "handPoint": "LOOK_HAND2 'sk-haechan-suit': [0.27, 0.18]"
+    },
+    {
+      "batch": 130,
+      "source": "Too Easy in the Rainy Harbour.png",
+      "sourceNow": "New Adds/HC-Black Suit/Too Easy in the Rainy Harbour.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "3b2413c72d6cb9dfbfcaf5569d22110e569650793f4181ff8c53af492a5cede4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-suit/haechan-finish.webp",
+      "skin": "sk-haechan-suit",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"HC-Black Suit/Too Easy in the Rainy Harbour.png\" sk-haechan-suit haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-suit/haechan-finish.webp": "528cd90bd42c35127008b595363a5c3eab146e3e789fa568c31c39697ad81b56"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Determined Eyes, Sunset Stripes.png",
+      "sourceNow": "New Adds/HC-Boardwalk/Determined Eyes, Sunset Stripes.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "722399e94f75649e0d13374cb1793ed9e6942489a12a8a47a160ee12557381cf",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-swim/haechan-onemore.webp",
+      "skin": "sk-haechan-swim",
+      "character": "haechan",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"HC-Boardwalk/Determined Eyes, Sunset Stripes.png\" sk-haechan-swim haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-swim/haechan-onemore.webp": "9ac765db28e1972db0e0170baf7146cca2091464b8a40fa28f2ccf8eda4ed319"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Hibiscus blades at sunset.png",
+      "sourceNow": "New Adds/HC-Boardwalk/Hibiscus blades at sunset.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "83d4d552cd9fb31325d1a56f38aabe2aa4b2bbedfe9eb0b14a7312d9becc3c4d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-swim/haechan-entrance.webp",
+      "skin": "sk-haechan-swim",
+      "character": "haechan",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when he leads, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"HC-Boardwalk/Hibiscus blades at sunset.png\" sk-haechan-swim haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-swim/haechan-entrance.webp": "901b658f959f70ec84ffbef08f2ac31e9e0e171609a4cd71aa4c566f4d627ea5"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Six-pose transparent character sheet.png",
+      "sourceNow": "New Adds/HC-Boardwalk/Six-pose transparent character sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6ff952dca5e337ff9ceefd337ceb7abb10b029f3cc7b51f274be0b1e18a36b68",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-swim/haechan-pose2-0..5.webp",
+      "skin": "sk-haechan-swim",
+      "character": "haechan",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent)",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"HC-Boardwalk/Six-pose transparent character sheet.png\" sk-haechan-swim haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-swim/haechan-pose2-0.webp": "cc28e607becd0be95c2260cfafb0b69f101fa1d3d3dfc62deec38c7d17979efa",
+        "assets/femc/game/art/skins/sk-haechan-swim/haechan-pose2-1.webp": "caafacfce8edc8b9d63f87a8a46515d9beaf9fd42c4c02f98d81a9187ae44517",
+        "assets/femc/game/art/skins/sk-haechan-swim/haechan-pose2-2.webp": "7f1f693e199a959e99379e2b19e46aa16e8a6af30eeb2c6db724eaf51d5b773a",
+        "assets/femc/game/art/skins/sk-haechan-swim/haechan-pose2-3.webp": "ca509ecab8502ed43f8b6e08b4cde21bfcb5d81cef9465f3d2519ccc3e6e3a21",
+        "assets/femc/game/art/skins/sk-haechan-swim/haechan-pose2-4.webp": "20a1093e2ac47c4d620715faf6b26386820ec38cd39c47faa8f4aab740461658",
+        "assets/femc/game/art/skins/sk-haechan-swim/haechan-pose2-5.webp": "51104ff34d1c339b9cf3cad02d75a2f465c849e826d87def24ca03a0453a3c00"
+      },
+      "handPoint": "LOOK_HAND2 'sk-haechan-swim': [0.77, 0.25]"
+    },
+    {
+      "batch": 130,
+      "source": "Six-step hibiscus tide spell.png",
+      "sourceNow": "New Adds/HC-Boardwalk/Six-step hibiscus tide spell.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "54d6234ae2033280cf9ebd00e7f16966cbb760a08fad400d9e78a6d982f4be01",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-swim/fx.webp",
+      "skin": "sk-haechan-swim",
+      "character": "haechan",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-haechan-swim \"HC-Boardwalk/Six-step hibiscus tide spell.png\"",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-swim/fx.webp": "d1338c36fcff752a5a17b8b1c1bbb7625754f7327ccb64a2600c44890679b56b"
+      },
+      "readyHash": "0a04c548"
+    },
+    {
+      "batch": 130,
+      "source": "Sunset Hibiscus Persona Strike.png",
+      "sourceNow": "New Adds/HC-Boardwalk/Sunset Hibiscus Persona Strike.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "4d490c16a7abca0a3dbdc4e98274079508e6ff1a09477512b6073cd3434189e0",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-swim/haechan-theurgy.webp",
+      "skin": "sk-haechan-swim",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"HC-Boardwalk/Sunset Hibiscus Persona Strike.png\" sk-haechan-swim haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-swim/haechan-theurgy.webp": "6e493f53983a3ead243a011cc24f4dcd4222327a1492706dcb0954a3d9ca9447"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Sunset boardwalk, too easy.png",
+      "sourceNow": "New Adds/HC-Boardwalk/Sunset boardwalk, too easy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "5081bb3659ba37d54398f51e5fd5e8194eb3aa15fd2857e31ed075942baff3f7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-swim/haechan-finish.webp",
+      "skin": "sk-haechan-swim",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"HC-Boardwalk/Sunset boardwalk, too easy.png\" sk-haechan-swim haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-swim/haechan-finish.webp": "344c31e2da7021af7af1352cce4a26713c660908b652826e90eced519e8c0980"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Determined Eyes, Stage Stripes.png",
+      "sourceNow": "New Adds/HC-Encore Stage/Determined Eyes, Stage Stripes.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "894c57e6344355a730468b9b418b8564df532d6f41d47da4aac66c7275d7e825",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-stage/haechan-onemore.webp",
+      "skin": "sk-haechan-stage",
+      "character": "haechan",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"HC-Encore Stage/Determined Eyes, Stage Stripes.png\" sk-haechan-stage haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-stage/haechan-onemore.webp": "894a710b6f2d894f46210ecafadd5f6f74c6c137f0b6243755a1b948ae15141a"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Pyro Music Spell Burst Sprite Sheet.png",
+      "sourceNow": "New Adds/HC-Encore Stage/Pyro Music Spell Burst Sprite Sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b1a21133c1b9ec4daa2bbf95458e809776fe227a2e477279bc9bb84b0b5af0c7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-stage/fx.webp",
+      "skin": "sk-haechan-stage",
+      "character": "haechan",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-haechan-stage \"HC-Encore Stage/Pyro Music Spell Burst Sprite Sheet.png\"",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-stage/fx.webp": "86470bc028fef440e71575e36b1f127889387a1dc21c95c09577e4239fa13f37"
+      },
+      "readyHash": "e70bc593"
+    },
+    {
+      "batch": 130,
+      "source": "Pyro stageblade battle entrance.png",
+      "sourceNow": "New Adds/HC-Encore Stage/Pyro stageblade battle entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "8edf420d91ab6653e14c4c4eaa7412acc78211708c3b02c7964f7f5c4e764862",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-stage/haechan-entrance.webp",
+      "skin": "sk-haechan-stage",
+      "character": "haechan",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when he leads, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"HC-Encore Stage/Pyro stageblade battle entrance.png\" sk-haechan-stage haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-stage/haechan-entrance.webp": "c95df36382e3f12b76537bac7a5d58e0a84968e978bc422290647057d1fa29da"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Red Stage Persona Attack.png",
+      "sourceNow": "New Adds/HC-Encore Stage/Red Stage Persona Attack.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "ff4030d121594f5e806cc3485eca19e3fd308258336959225cb083b0a6730e9a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-stage/haechan-theurgy.webp",
+      "skin": "sk-haechan-stage",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"HC-Encore Stage/Red Stage Persona Attack.png\" sk-haechan-stage haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-stage/haechan-theurgy.webp": "b0e059d2f7d8745e34ce7b103e549c0b444b01e327909da0e93664c9176269bf"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Too Easy_ K-Pop Stage Finish.png",
+      "sourceNow": "New Adds/HC-Encore Stage/Too Easy_ K-Pop Stage Finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "690b045bfd32aca1547ceef225b04d60b9ef1678c2528a9b7f495a0a7767fa28",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-stage/haechan-finish.webp",
+      "skin": "sk-haechan-stage",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"HC-Encore Stage/Too Easy_ K-Pop Stage Finish.png\" sk-haechan-stage haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-stage/haechan-finish.webp": "008147635b054cc96808c5093bf2386b309717bbff496c9313bd06a9f21c0b51"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Transparent six-character pose sheet.png",
+      "sourceNow": "New Adds/HC-Encore Stage/Transparent six-character pose sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "de68617930c0bcb2a2123f8a6c256d705e9a10c5196652e94a404ba6f13c24b2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-stage/haechan-pose2-0..5.webp",
+      "skin": "sk-haechan-stage",
+      "character": "haechan",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent)",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"HC-Encore Stage/Transparent six-character pose sheet.png\" sk-haechan-stage haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-stage/haechan-pose2-0.webp": "710fa1585f972693c767a4ecd86257acc1602ba71a5b0e38377602ad3588c158",
+        "assets/femc/game/art/skins/sk-haechan-stage/haechan-pose2-1.webp": "0c1f064849f5c4e3f8979f505b25d05b31ebfefa82cbfbe8aab7bd6ef5d7a84e",
+        "assets/femc/game/art/skins/sk-haechan-stage/haechan-pose2-2.webp": "8975c633b4a08b7387f27a74e047604eed0436d54f33940c52f09c6e20f6368a",
+        "assets/femc/game/art/skins/sk-haechan-stage/haechan-pose2-3.webp": "2dda65a8b1c63dec903094f07bca5c3473ee4eca35cae49ab34794d70321e651",
+        "assets/femc/game/art/skins/sk-haechan-stage/haechan-pose2-4.webp": "663a1afa4410ad33c2ad82d733f46a636425fd8e0b2ba06d0b296412cf34b46c",
+        "assets/femc/game/art/skins/sk-haechan-stage/haechan-pose2-5.webp": "4709394ee9a90587666b02a3275f8c3007b07e0655f25ac957f40879d3ef6c64"
+      },
+      "handPoint": "LOOK_HAND2 'sk-haechan-stage': [0.78, 0.21]"
+    },
+    {
+      "batch": 130,
+      "source": "Carnival Blade Ultimate Cut-In.png",
+      "sourceNow": "New Adds/HC-Fairground Lights/Carnival Blade Ultimate Cut-In.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "c6a39acee50b6cd9fa98fd115ddb8c9341db5b3852822cc546920cadc1bfa9bf",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-fairground/haechan-theurgy.webp",
+      "skin": "sk-haechan-fairground",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"HC-Fairground Lights/Carnival Blade Ultimate Cut-In.png\" sk-haechan-fairground haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-fairground/haechan-theurgy.webp": "e59f15d1247a46381aee645a073d5538786269d2bde500a3ab5ce0906b2a0f7c"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Carnival Wheel Spell Burst.png",
+      "sourceNow": "New Adds/HC-Fairground Lights/Carnival Wheel Spell Burst.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "bf124f90c0e2c37f8c85d4037c46cbe86c06bc54eb47671fdb015045dc24b48d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-fairground/fx.webp",
+      "skin": "sk-haechan-fairground",
+      "character": "haechan",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-haechan-fairground \"HC-Fairground Lights/Carnival Wheel Spell Burst.png\"",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-fairground/fx.webp": "c71b8528911b642d7f361fe19e34d6ee187137b1830a616dd4bccb399d59862c"
+      },
+      "readyHash": "b2441c08"
+    },
+    {
+      "batch": 130,
+      "source": "Determined Gaze Under Copper Fringe.png",
+      "sourceNow": "New Adds/HC-Fairground Lights/Determined Gaze Under Copper Fringe.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "b55086047c3a7701394c5cfd781ba0540237f238e7a9b5aa082b1ce16e2b6b16",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-fairground/haechan-onemore.webp",
+      "skin": "sk-haechan-fairground",
+      "character": "haechan",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"HC-Fairground Lights/Determined Gaze Under Copper Fringe.png\" sk-haechan-fairground haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-fairground/haechan-onemore.webp": "ea61479302613bbdfc2299b723028344ce02f8e636409452e2b40a88dceed901"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Six-character pose sheet, clean cutouts.png",
+      "sourceNow": "New Adds/HC-Fairground Lights/Six-character pose sheet, clean cutouts.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "65b408ca75ead4cd2776355f8c163c2e057e4da86e0584f0bf4cbabfecc16951",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-fairground/haechan-pose2-0..5.webp",
+      "skin": "sk-haechan-fairground",
+      "character": "haechan",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent)",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"HC-Fairground Lights/Six-character pose sheet, clean cutouts.png\" sk-haechan-fairground haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-fairground/haechan-pose2-0.webp": "135cd758c35194f1bcd9e33f6b550d1ca6c4443ec0d746a4045b993f935835b0",
+        "assets/femc/game/art/skins/sk-haechan-fairground/haechan-pose2-1.webp": "9065abb6d09f5df081d84d3b819e33a4e5a16ac14a52400ccaf41f75cc132693",
+        "assets/femc/game/art/skins/sk-haechan-fairground/haechan-pose2-2.webp": "b5a8d481827e3afab8d2db54266864fd00058a0660d5296007dfec32056ae50d",
+        "assets/femc/game/art/skins/sk-haechan-fairground/haechan-pose2-3.webp": "4599af89341b000866b6a280d525acf2ff61d8f0eadaa0edb29b35418546a80d",
+        "assets/femc/game/art/skins/sk-haechan-fairground/haechan-pose2-4.webp": "c6b4a90e8aec84e169e753e62aa33845c5f763bc04e5b15e7b505f49820f12f7",
+        "assets/femc/game/art/skins/sk-haechan-fairground/haechan-pose2-5.webp": "807630ed00dda8f21e10129b9aa333c582d811979c58d3002eac02733bf2b3ad"
+      },
+      "handPoint": "LOOK_HAND2 'sk-haechan-fairground': [0.8, 0.21]"
+    },
+    {
+      "batch": 130,
+      "source": "Too Easy at the Midnight Fairground.png",
+      "sourceNow": "New Adds/HC-Fairground Lights/Too Easy at the Midnight Fairground.png",
+      "size": [
+        1671,
+        941
+      ],
+      "sha256": "967ddd1f21a999a5e10d66b097eb057278c2f1d78160964a2509bc8d7ccd97c2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-fairground/haechan-finish.webp",
+      "skin": "sk-haechan-fairground",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"HC-Fairground Lights/Too Easy at the Midnight Fairground.png\" sk-haechan-fairground haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-fairground/haechan-finish.webp": "c0a04235512acd4d488e4ccabca1f89669b5b02adf18082fe5d7f9e11151f292"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Twin Blades at Carnival Night.png",
+      "sourceNow": "New Adds/HC-Fairground Lights/Twin Blades at Carnival Night.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "cfa66d3199b40bf02674743d6218a76ebf85feccddb1101d907fdd91df2e5ea0",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-fairground/haechan-entrance.webp",
+      "skin": "sk-haechan-fairground",
+      "character": "haechan",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when he leads, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"HC-Fairground Lights/Twin Blades at Carnival Night.png\" sk-haechan-fairground haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-fairground/haechan-entrance.webp": "ca1a05bd25b7e86bad9c411a81d487feda35378eaa63feb2f82547f421f5cfc6"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Amber garage dagger strike.png",
+      "sourceNow": "New Adds/HC-Garage Band/Amber garage dagger strike.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "9bc6583144fa7ef37aa93bbd2f89a62a8e83f52e398adea925d9e06e64fa25e0",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-garage/haechan-theurgy.webp",
+      "skin": "sk-haechan-garage",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"HC-Garage Band/Amber garage dagger strike.png\" sk-haechan-garage haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-garage/haechan-theurgy.webp": "c9e3283bd99e6fe1aeaf7b6ca013a6f30bda59af481be4d627c72867f0aef029"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Battle-ready in a shattered garage.png",
+      "sourceNow": "New Adds/HC-Garage Band/Battle-ready in a shattered garage.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "25dfa31118d7f9951c98193e6314aed88dc10cf8c504bc1ff5930be0c9d9b18f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-garage/haechan-entrance.webp",
+      "skin": "sk-haechan-garage",
+      "character": "haechan",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when he leads, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"HC-Garage Band/Battle-ready in a shattered garage.png\" sk-haechan-garage haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-garage/haechan-entrance.webp": "0daaa0c194e5e0bb33a54dd167016994d1e9e7fd527600887c54586bd39e2ff6"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Determined eyes in a dynamic cut-in.png",
+      "sourceNow": "New Adds/HC-Garage Band/Determined eyes in a dynamic cut-in.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "d085a0f18726418874d6ff9929e5efb5cd7464305299dada5cbe0322442b1551",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-garage/haechan-onemore.webp",
+      "skin": "sk-haechan-garage",
+      "character": "haechan",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"HC-Garage Band/Determined eyes in a dynamic cut-in.png\" sk-haechan-garage haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-garage/haechan-onemore.webp": "9183abbc546fc8cf9aa417da3449f1b69896f0d16e2253dc64aae9f18146041e"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Six-character transparent cutout sprite sheet.png",
+      "sourceNow": "New Adds/HC-Garage Band/Six-character transparent cutout sprite sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "84d78d4e7df7984cda6b2a1e6bc7d16f40741f89f96413abf96510af53ce2571",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-garage/haechan-pose2-0..5.webp",
+      "skin": "sk-haechan-garage",
+      "character": "haechan",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent)",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"HC-Garage Band/Six-character transparent cutout sprite sheet.png\" sk-haechan-garage haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-garage/haechan-pose2-0.webp": "f896ffc92cd901be57b78895278260ed0e1385a439ab1ba1cbec15b793f0714d",
+        "assets/femc/game/art/skins/sk-haechan-garage/haechan-pose2-1.webp": "5ad55880d80f219a50b7efe31570458ddc339fe3062d483c1a2bf9db9e2961a0",
+        "assets/femc/game/art/skins/sk-haechan-garage/haechan-pose2-2.webp": "f1941b3d1a3a7ef8b8219b403429ce815aa871b5d1c83f9be5f6080360de6b28",
+        "assets/femc/game/art/skins/sk-haechan-garage/haechan-pose2-3.webp": "4e11e094b2ff04d25f4058a354e7e5069a7d76ae80300e3a512302fb6ee90013",
+        "assets/femc/game/art/skins/sk-haechan-garage/haechan-pose2-4.webp": "e1bd9be45e7142de0d21efdcb0a122fa01471bc19f4fdab00ec26f0a3e76ea8d",
+        "assets/femc/game/art/skins/sk-haechan-garage/haechan-pose2-5.webp": "b242067741e56cc99790ed6f20dfbb6b7b5b97c6b7353c6e706d9323ef44ea59"
+      },
+      "handPoint": "LOOK_HAND2 'sk-haechan-garage': [0.28, 0.26]"
+    },
+    {
+      "batch": 130,
+      "source": "Too easy_ All-out garage attack.png",
+      "sourceNow": "New Adds/HC-Garage Band/Too easy_ All-out garage attack.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "4f30fe18ed20830fedeedd06396ca70cadf804a4af3bc7304199a82058314059",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-garage/haechan-finish.webp",
+      "skin": "sk-haechan-garage",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"HC-Garage Band/Too easy_ All-out garage attack.png\" sk-haechan-garage haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-garage/haechan-finish.webp": "2e92fe5d3772c177587da28fa7c9d2d3f51118dd1e131d54a4a8f6f05236b68d"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Neon Eyes, Racing Resolve.png",
+      "sourceNow": "New Adds/HC-Limelight/Neon Eyes, Racing Resolve.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "81193be3a07488c384a0db0f7df3158c89ae6ffd29805d025d4ae006d9a12dba",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-limelight/haechan-onemore.webp",
+      "skin": "sk-haechan-limelight",
+      "character": "haechan",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"HC-Limelight/Neon Eyes, Racing Resolve.png\" sk-haechan-limelight haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-limelight/haechan-onemore.webp": "dabb4a1029679422efb7e132725cd952709d52fae7fbe347c055acfbb91991c9"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Neon racer blade rush.png",
+      "sourceNow": "New Adds/HC-Limelight/Neon racer blade rush.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "880fac5a486e69e4cbf42c713ae3d2b3ff6ff49110cdbb7c00888e1fa6952e0d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-limelight/haechan-entrance.webp",
+      "skin": "sk-haechan-limelight",
+      "character": "haechan",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when he leads, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"HC-Limelight/Neon racer blade rush.png\" sk-haechan-limelight haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-limelight/haechan-entrance.webp": "c01e22d2c1311f29f9683253f0b747c80f85415f589878c6ac668f062be055c6"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Neon racetrack Persona cut-in.png",
+      "sourceNow": "New Adds/HC-Limelight/Neon racetrack Persona cut-in.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "6965539b12c226fb1b3f4772b2c5baaccd8e1144f25da39da6142507112781f3",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-limelight/haechan-theurgy.webp",
+      "skin": "sk-haechan-limelight",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"HC-Limelight/Neon racetrack Persona cut-in.png\" sk-haechan-limelight haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-limelight/haechan-theurgy.webp": "222ca7752891963ef3d269b2a31b2af8691ad4c186528d576229bd77d7e95277"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Six tactical poses in anime style.png",
+      "sourceNow": "New Adds/HC-Limelight/Six tactical poses in anime style.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "cb0fb1ab434ecee11629dbe9639dad3e8fb32434bc87c4d89dc5c5a7366e3e09",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-limelight/haechan-pose2-0..5.webp",
+      "skin": "sk-haechan-limelight",
+      "character": "haechan",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent)",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"HC-Limelight/Six tactical poses in anime style.png\" sk-haechan-limelight haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-limelight/haechan-pose2-0.webp": "11a30b81bb269d80083756851f34ab31ab406637635c9ea0fa6873e4db749e96",
+        "assets/femc/game/art/skins/sk-haechan-limelight/haechan-pose2-1.webp": "e865dac519036e3193d9aebb534794dec49371efa1356e3a07fa110fc97f69a8",
+        "assets/femc/game/art/skins/sk-haechan-limelight/haechan-pose2-2.webp": "ef4b9178343d3c8d3b45fdc24f54b87bb9f9ac74cf8303d9b25aeb98c29c2104",
+        "assets/femc/game/art/skins/sk-haechan-limelight/haechan-pose2-3.webp": "b762a49934d64ddcfe3d1368a116dd8d1c0d2c11fece19797dc7dab90e5df37c",
+        "assets/femc/game/art/skins/sk-haechan-limelight/haechan-pose2-4.webp": "28868bda81456c961e9d41f27ac17eebb6b7164b6bf71f10448c691bd0611824",
+        "assets/femc/game/art/skins/sk-haechan-limelight/haechan-pose2-5.webp": "343cb92c59a87ae984faaf139fcbb569e0a35c1a6bdf87fb304a2e7b0a998790"
+      },
+      "handPoint": "LOOK_HAND2 'sk-haechan-limelight': [0.25, 0.24]"
+    },
+    {
+      "batch": 130,
+      "source": "Six-Stage Chrome Spell Burst.png",
+      "sourceNow": "New Adds/HC-Limelight/Six-Stage Chrome Spell Burst.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6251151b40e16ef41979273233996c27ff92ec431e320cbcbb7e5a7a051022a5",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-limelight/fx.webp",
+      "skin": "sk-haechan-limelight",
+      "character": "haechan",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-haechan-limelight \"HC-Limelight/Six-Stage Chrome Spell Burst.png\"",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-limelight/fx.webp": "683c9842c445c377378db8dbee83d4e357e82e8b966d677ce163c5cc163f9a49"
+      },
+      "readyHash": "9eb89736"
+    },
+    {
+      "batch": 130,
+      "source": "Too easy neon finish card.png",
+      "sourceNow": "New Adds/HC-Limelight/Too easy neon finish card.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "49099c5b6b56f172be57e3286e994bb1c3467e282de23256814406154f411877",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-limelight/haechan-finish.webp",
+      "skin": "sk-haechan-limelight",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"HC-Limelight/Too easy neon finish card.png\" sk-haechan-limelight haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-limelight/haechan-finish.webp": "6ea7265ab58579a882b79599b2f5d6d2dcdde9ea23dedc4b23f0174c245384da"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Chrome Key Spell Cascade.png",
+      "sourceNow": "New Adds/HC-Midnight Drive/Chrome Key Spell Cascade.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b5071fbd574800586365df6b160efc188d5c37b1cfde6e3c74512e6d08b83883",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-drive/fx.webp",
+      "skin": "sk-haechan-cp-drive",
+      "character": "haechan",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-haechan-cp-drive \"HC-Midnight Drive/Chrome Key Spell Cascade.png\"",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/fx.webp": "a9164584534c1c2b866ec148c546ce829234ade4dfe657f8e66074c3cf095233"
+      },
+      "readyHash": "33fb927a"
+    },
+    {
+      "batch": 130,
+      "source": "Neon Highway All-Out Attack.png",
+      "sourceNow": "New Adds/HC-Midnight Drive/Neon Highway All-Out Attack.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "a4420a81e290cc7ac3c00d7d4bf41f27f983fa9a9146b1007d207161bd25405b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-finish.webp",
+      "skin": "sk-haechan-cp-drive",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"HC-Midnight Drive/Neon Highway All-Out Attack.png\" sk-haechan-cp-drive haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-finish.webp": "98973a1ce15e17700db326b071dab1e58ac44b57da643cab118ae4fce89148ce"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Neon Highway Persona Attack.png",
+      "sourceNow": "New Adds/HC-Midnight Drive/Neon Highway Persona Attack.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "288dca38efa0d3aca675396d1006442cbcecb510d3dc91c59518c8fd0f02f1e7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-theurgy.webp",
+      "skin": "sk-haechan-cp-drive",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"HC-Midnight Drive/Neon Highway Persona Attack.png\" sk-haechan-cp-drive haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-theurgy.webp": "005cd0911186b9e30508208b2f4648d41ab6e191363d8203cabaf756399078c2"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Neon Knife Entrance.png",
+      "sourceNow": "New Adds/HC-Midnight Drive/Neon Knife Entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "0ff59f84141c6a2f41eea80bf4f4c6bd966d1406da18cdf6b9317ffb8b29fd0f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-entrance.webp",
+      "skin": "sk-haechan-cp-drive",
+      "character": "haechan",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when he leads, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"HC-Midnight Drive/Neon Knife Entrance.png\" sk-haechan-cp-drive haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-entrance.webp": "0d1b59b6a614ce4e64e2d488a8a22b23b3ca81ccbdc5862764d108e0ef2704b2"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Neon Speed, Determined Stare.png",
+      "sourceNow": "New Adds/HC-Midnight Drive/Neon Speed, Determined Stare.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "bd011298aafc14b270fc5f9af7c481488dbcefaa726f7ba37a47a5c2a4e0ab54",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-onemore.webp",
+      "skin": "sk-haechan-cp-drive",
+      "character": "haechan",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"HC-Midnight Drive/Neon Speed, Determined Stare.png\" sk-haechan-cp-drive haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-onemore.webp": "f31fa178e7c8419a22eab50b412f984c2e8b0b07590d580581da4e1a7aeca711"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Six dynamic anime combat poses.png",
+      "sourceNow": "New Adds/HC-Midnight Drive/Six dynamic anime combat poses.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d0093031e6f61250c4ae642c02a7b43e37e6d243cefe551a5f4497c70ac83ec9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-pose2-0..5.webp",
+      "skin": "sk-haechan-cp-drive",
+      "character": "haechan",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent)",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"HC-Midnight Drive/Six dynamic anime combat poses.png\" sk-haechan-cp-drive haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-pose2-0.webp": "f298205318c2063956d0e790a085c392be2065d7e5b2990b8d1505ee099abf82",
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-pose2-1.webp": "436b495dd39eabc54110fafc6c25e25244f6a3bf4ae54ef0f40f660ac38eb579",
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-pose2-2.webp": "a57988ad792275ab5a3d00aa959454391d07e6f29580099c5b164ae21a06d461",
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-pose2-3.webp": "817c02682173d6a4eea247a5d48927a43dcf32c590fa9f2466a64172236d2257",
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-pose2-4.webp": "5220b40a447888d2660fa3fc0a5d6ab8c2d4a4a02d8275cc630417af25ac42f9",
+        "assets/femc/game/art/skins/sk-haechan-cp-drive/haechan-pose2-5.webp": "ee7f9c8b500741911a9992bf8b0eceb437a085175205791a1f3eccc15c77b050"
+      },
+      "handPoint": "LOOK_HAND2 'sk-haechan-cp-drive': [0.83, 0.15]"
+    },
+    {
+      "batch": 130,
+      "source": "3b3bca25-6398-4bf2-86ba-986e7642acd2.png",
+      "sourceNow": "New Adds/HC-Moon Hoodie/3b3bca25-6398-4bf2-86ba-986e7642acd2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "2c60e1de4011453f00dd41b3b3af453cf5df47e2f429d0b12c18870350c1c47a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-pose2-0..5.webp",
+      "skin": "sk-haechan-cp-sunmoon",
+      "character": "haechan",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent)",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"HC-Moon Hoodie/3b3bca25-6398-4bf2-86ba-986e7642acd2.png\" sk-haechan-cp-sunmoon haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-pose2-0.webp": "113c7af48e5ac84d0b3cc85fce80e1b353a7cdd5b635d2505810d67b0e0ad317",
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-pose2-1.webp": "cb0d27f6db180bfb4ea3e702f6567c7ad29b36afd8fcd22d4926681f50f20298",
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-pose2-2.webp": "dcb7e34eb39d37f39b1d1750790057d5a74b9ceee340dee1365eacabdf98205e",
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-pose2-3.webp": "c7971bced35e2d8cb26b80b081fa0840dddf9c0399b87bb638be282c21d129e6",
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-pose2-4.webp": "7a6cb6df9afbd5b6e7da69c8248d3d3beceef51e7fab7c03531311fce0c24c4f",
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-pose2-5.webp": "469a912bdb0c4b30165b516dbbc8bccff6bdf60af95cc7e2d68e7119b012e5a4"
+      },
+      "handPoint": "LOOK_HAND2 'sk-haechan-cp-sunmoon': [0.77, 0.25]"
+    },
+    {
+      "batch": 130,
+      "source": "Hot pink moon spell sprite sheet.png",
+      "sourceNow": "New Adds/HC-Moon Hoodie/Hot pink moon spell sprite sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "bc0aa431f6d8b3f28db4e8879556a01d56143c6c8e1a28b40e93381f18169c5c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/fx.webp",
+      "skin": "sk-haechan-cp-sunmoon",
+      "character": "haechan",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-haechan-cp-sunmoon \"HC-Moon Hoodie/Hot pink moon spell sprite sheet.png\"",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/fx.webp": "6a62918fd840f730893eb9bda737dafd0c00de487ee5bdf1e71c0298a97f5692"
+      },
+      "readyHash": "379cd14b"
+    },
+    {
+      "batch": 130,
+      "source": "Moonlit Rogue Bursts Through Diagonal Shards.png",
+      "sourceNow": "New Adds/HC-Moon Hoodie/Moonlit Rogue Bursts Through Diagonal Shards.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "ca8c9059003550067b8c9970d542b5ae51ab28e332f3a8736c66c8fd670768c2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-entrance.webp",
+      "skin": "sk-haechan-cp-sunmoon",
+      "character": "haechan",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when he leads, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"HC-Moon Hoodie/Moonlit Rogue Bursts Through Diagonal Shards.png\" sk-haechan-cp-sunmoon haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-entrance.webp": "467bb7d3459bddbb8ea4f0f9eee70ea7960a3bc1720a74dd0dd1636f903dc035"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Sharp Eyes Under Moonlit Stripes.png",
+      "sourceNow": "New Adds/HC-Moon Hoodie/Sharp Eyes Under Moonlit Stripes.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "a03b93240e4b6913116bf53144e5a063550590541f89e320d443f68276c3b102",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-onemore.webp",
+      "skin": "sk-haechan-cp-sunmoon",
+      "character": "haechan",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"HC-Moon Hoodie/Sharp Eyes Under Moonlit Stripes.png\" sk-haechan-cp-sunmoon haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-onemore.webp": "7447e94c32e2b8a6689ae3061bbd207b2e34db16423e16ef57a18518407dc5b6"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Too Easy under a violet moon.png",
+      "sourceNow": "New Adds/HC-Moon Hoodie/Too Easy under a violet moon.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "fdc498dae5b6e5f4ccece89eebdd716175040e2f228fa6a582875af890a89088",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-finish.webp",
+      "skin": "sk-haechan-cp-sunmoon",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"HC-Moon Hoodie/Too Easy under a violet moon.png\" sk-haechan-cp-sunmoon haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-finish.webp": "0595ffebbd3c41734dedbd8b5895157562897f76c2939562f729a6e5eea29827"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Twilight crescent Persona strike.png",
+      "sourceNow": "New Adds/HC-Moon Hoodie/Twilight crescent Persona strike.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "b990ecc4bebcbd208c45f7641450a1849e5f9c85ff76546675cd8f994a0c25c2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-theurgy.webp",
+      "skin": "sk-haechan-cp-sunmoon",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"HC-Moon Hoodie/Twilight crescent Persona strike.png\" sk-haechan-cp-sunmoon haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/haechan-theurgy.webp": "3e4fd0721227ddf5deb5cfb9d9a21dda49749394931e14d4ac3c7fc0368fd3a9"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Determined Eyes in Neon Stripes.png",
+      "sourceNow": "New Adds/HC-Sweet Tooth/Determined Eyes in Neon Stripes.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "e99dce98e1590c08173c0e09662eac55de6a9144e950caee41ee4c070971b8a8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-onemore.webp",
+      "skin": "sk-haechan-sweettooth",
+      "character": "haechan",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"HC-Sweet Tooth/Determined Eyes in Neon Stripes.png\" sk-haechan-sweettooth haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-onemore.webp": "4dc972c078b5a84b2d2748afc76abd37d6383f8c20d87f5c25b94a189fec1827"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Licorice Candy Burst Spell Sequence.png",
+      "sourceNow": "New Adds/HC-Sweet Tooth/Licorice Candy Burst Spell Sequence.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7c8a30244c21b5089f90c21daf9a75c1a124bb1c92b50a7893537935994e4d0d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-sweettooth/fx.webp",
+      "skin": "sk-haechan-sweettooth",
+      "character": "haechan",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-haechan-sweettooth \"HC-Sweet Tooth/Licorice Candy Burst Spell Sequence.png\"",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/fx.webp": "110b51bdcd852551f0338c8d97c7303cac5aff28aeafaa2390e05750cbd09861"
+      },
+      "readyHash": "5ac8127c"
+    },
+    {
+      "batch": 130,
+      "source": "Licorice Night Knife Showdown.png",
+      "sourceNow": "New Adds/HC-Sweet Tooth/Licorice Night Knife Showdown.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "de83cbc375d7700dfc9ccb14c14fb4b20e57629aae54a678171f75e3dfca1e49",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-entrance.webp",
+      "skin": "sk-haechan-sweettooth",
+      "character": "haechan",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when he leads, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"HC-Sweet Tooth/Licorice Night Knife Showdown.png\" sk-haechan-sweettooth haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-entrance.webp": "8a5624120a226c926181834866d21c6c9c7330d16c7f24743f6c0587959a1302"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Licorice neon ultimate attack.png",
+      "sourceNow": "New Adds/HC-Sweet Tooth/Licorice neon ultimate attack.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "c47deacfd761cf7688fe1c0ae8ea204725cbec496c7a469717a137c85bd5886e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-theurgy.webp",
+      "skin": "sk-haechan-sweettooth",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"HC-Sweet Tooth/Licorice neon ultimate attack.png\" sk-haechan-sweettooth haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-theurgy.webp": "39ab245e61f7e8d16042b54b8ea8583a63bba36e5376576d6d1c7f14c33fe233"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Six anime combat poses.png",
+      "sourceNow": "New Adds/HC-Sweet Tooth/Six anime combat poses.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "42a77b53aae01ecb1fe20240f61d576240e223e02d80d0d0d4a60b33b119b5ed",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-pose2-0..5.webp",
+      "skin": "sk-haechan-sweettooth",
+      "character": "haechan",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent)",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"HC-Sweet Tooth/Six anime combat poses.png\" sk-haechan-sweettooth haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-pose2-0.webp": "d074e3262509e10c73aa646969165e2a6b043faaf1c722a81a0ee96793c25130",
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-pose2-1.webp": "2b0dd07e7908ed966d77ea7be7a7ad6919a1c650b6932e71b4b5098a97108056",
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-pose2-2.webp": "29248f5ab55b233dcc33be7867efe63733002e7f22510df8211f9e26ee95d66f",
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-pose2-3.webp": "94a9e42139a407bccbaeaf6da204655439ae0466c7c9acd205243ecbc1184040",
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-pose2-4.webp": "575207f557fa722164305a30c9254cbb9321e338b6f7eaa09c6f45df655e0d24",
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-pose2-5.webp": "14d247062900f124cc4695a37344220a7b41e288df6cc63284fcb4593dca00c1"
+      },
+      "handPoint": "LOOK_HAND2 'sk-haechan-sweettooth': [0.22, 0.23]"
+    },
+    {
+      "batch": 130,
+      "source": "Too Easy at the Corner Shop.png",
+      "sourceNow": "New Adds/HC-Sweet Tooth/Too Easy at the Corner Shop.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "c7f7a834ca13bf0de34bbb2cfd1fe22125645454fa0a74c730fa5296ba6f2f48",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-finish.webp",
+      "skin": "sk-haechan-sweettooth",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"HC-Sweet Tooth/Too Easy at the Corner Shop.png\" sk-haechan-sweettooth haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-sweettooth/haechan-finish.webp": "dd2e1baef0de508d8c72d3829b6b19e768b8df3e50bdf5c6e8f675bf02b1e63a"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Crimson Threaded Persona at Dusk.png",
+      "sourceNow": "New Adds/HC-Unravelled/Crimson Threaded Persona at Dusk.png",
+      "size": [
+        1672,
+        940
+      ],
+      "sha256": "ec1eed67aebe88ec7dd31387d53070dea86eded05b27536247127f3fff52543e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-theurgy.webp",
+      "skin": "sk-haechan-unravelled",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"HC-Unravelled/Crimson Threaded Persona at Dusk.png\" sk-haechan-unravelled haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-theurgy.webp": "e1d18938b57d076937d122a6db2b4d09bc95818fde8800a2c7948d1b36e0a190"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Determined Eyes in a Red-Striped Cut-In.png",
+      "sourceNow": "New Adds/HC-Unravelled/Determined Eyes in a Red-Striped Cut-In.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "45f34a12df7bc6f927763db3da4d36b416a316c9d1562f815c1d245c25b98e31",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-onemore.webp",
+      "skin": "sk-haechan-unravelled",
+      "character": "haechan",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"HC-Unravelled/Determined Eyes in a Red-Striped Cut-In.png\" sk-haechan-unravelled haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-onemore.webp": "e3ba39ceae18440e527cd2e6d09e51ca57b2af2307e720c702d19f21fc8663fd"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Dual knives through shattered dusk.png",
+      "sourceNow": "New Adds/HC-Unravelled/Dual knives through shattered dusk.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "9b9159529c3aa6c35a4074903dbcbceb2f4f6c4925517562295d86f45ae0c685",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-entrance.webp",
+      "skin": "sk-haechan-unravelled",
+      "character": "haechan",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when he leads, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"HC-Unravelled/Dual knives through shattered dusk.png\" sk-haechan-unravelled haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-entrance.webp": "d87e550ed84adaf30e0057c90856286f22f9e07e4f1ba96954f5e56da5ea944f"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Six-Panel Knife Fighter Pose Sheet.png",
+      "sourceNow": "New Adds/HC-Unravelled/Six-Panel Knife Fighter Pose Sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "086606dd8dde0e511cef3fe2c2f36e6e2a39d5989e94a31779f126c148db0fb6",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-pose2-0..5.webp",
+      "skin": "sk-haechan-unravelled",
+      "character": "haechan",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent)",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"HC-Unravelled/Six-Panel Knife Fighter Pose Sheet.png\" sk-haechan-unravelled haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-pose2-0.webp": "2bb9b89d58af99b7560fd93d1698b3a155c9bd0f923e50f1975a2f614c62a95c",
+        "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-pose2-1.webp": "bd88996800676cfd7811a8553a90c5e21e049861b72eb7d6226b520960e3a91e",
+        "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-pose2-2.webp": "1ec6f674095dfe1806e001df288f70ce4644a95cb196b3807c4aa9f59c3b675c",
+        "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-pose2-3.webp": "830da17ae4994e400232453fa45c65e3027aff0588f631aaf769cb26059b88f2",
+        "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-pose2-4.webp": "d32922c2b4e822ee43f03f23bd82efc9ad8fc1aec2e83aa7a2f7131e7c4b62bf",
+        "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-pose2-5.webp": "96fe6f86c12e848a51938e37171c30e82e9097a50d41e4a185b4829565d59499"
+      },
+      "handPoint": "LOOK_HAND2 'sk-haechan-unravelled': [0.73, 0.21]"
+    },
+    {
+      "batch": 130,
+      "source": "Too easy rooftop finish card.png",
+      "sourceNow": "New Adds/HC-Unravelled/Too easy rooftop finish card.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "cde4b5c4ba9966908847af0f93342711e5f426ffab7b439f5d13870cad461ceb",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-finish.webp",
+      "skin": "sk-haechan-unravelled",
+      "character": "haechan",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"HC-Unravelled/Too easy rooftop finish card.png\" sk-haechan-unravelled haechan",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-unravelled/haechan-finish.webp": "85312b5b0804002f677e948995f7495614e76c82d5f0d3bfb8b5e6a29115cbcb"
+      }
+    },
+    {
+      "batch": 130,
+      "source": "Unraveling Thorn Spell Sprite Sheet.png",
+      "sourceNow": "New Adds/HC-Unravelled/Unraveling Thorn Spell Sprite Sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "af5cc4f089c82a1c15d92d73d2d7506df52c96a6f1616b0eb2b4fce6a58ae639",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-unravelled/fx.webp",
+      "skin": "sk-haechan-unravelled",
+      "character": "haechan",
+      "conversion": "3 x 2 effect sheet, light keyed from black (transparent sources put on black first), 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-haechan-unravelled \"HC-Unravelled/Unraveling Thorn Spell Sprite Sheet.png\"",
+      "identifiedBy": "looked at (Kat's folder convention: free file names; finish = TOO EASY words, Theurgy = his Persona behind him, entrance = slanted shard card, eye strip, transparent 3x2 = sheet 2 layout, 3x2 spell sprites on black = signature effect sheet)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-unravelled/fx.webp": "508857c1777dedaf8069425d9b48cb46aaa116092b10470ebbecb74eafc7ef7b"
+      },
+      "readyHash": "b01a25db"
     }
   ],
   "batch1Validation": {
@@ -29413,5 +31425,9 @@
   "batch129Validation": {
     "tests": "tests/femc_seasons.py (77 checks: art, windows, worn outfit, event faces, replay, no errors), tools/femc-check-scenes.py, femc_links --links yukari,fuuka, femc_living: all pass; summer / winter / plain scenes checked by eye at 1440 x 900 and 390 x 844",
     "note": "Seasonal S.E.E.S. faces (FEMC-ART-TODO 16): Solar, Yukari, Junpei, Akihiko, Mitsuru, Fuuka, Ken; Aigis, Shinjiro and Koromaru have none by design. FEMC_PORTRAIT_V 29."
+  },
+  "batch130Validation": {
+    "tests": "femc_skins_battle.py (all sections) passed; femc_cosmetics --only inbattle,equip passed; entrance layer and skill sparkle checked by eye for five Solar looks, support pose (hand charge) and skill sparkle for the ten Haechan looks at 1440 x 900",
+    "note": "Nov 2 2026: Solar's 32 signature effect sheets (New Adds/Solar Skin FX/) and ten Haechan looks (HC-* folders): 5 pieces each + 9 effect sheets (Garage Band sent none). HC-ArrivalsGate / BadInfluence / HeadphonesOn / WindowSeat / Haechan-SweaterDate unchanged (same hashes as batch 128)."
   }
 }
