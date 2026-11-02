@@ -218,6 +218,7 @@ window.FemcGame = (() => {
     if (!s.runId) s.runId = newRunId();
     if (legacy && autosave && !lsGet(PREMERGE_KEY)) lsSet(PREMERGE_KEY, JSON.stringify({ at: Date.now(), revamp: lsGet(KEY), handoff: lsGet(HANDOFF_KEY) }));
     const out = { ...f, ...s, route: { ...f.route, ...(s.route || {}) }, phone: { ...f.phone, ...(s.phone || {}) }, books: { ...f.books, ...(s.books || {}) }, tartarus: { ...f.tartarus, ...(s.tartarus || {}) }, battle: { ...f.battle, ...(s.battle || {}) }, crush: normCrush(s.crush) };
+    if (out.life && typeof out.life === 'object') normLife(out.life); // gift fields (2026-11-02); a save without S.life gets them on first read
     if (legacy) {
       // One save: fold this playthrough's battle save in (New Game+: the previous playthrough's, to carry over).
       const runs = readLegacyBattle(), mine = runs[out.runId];
@@ -1115,9 +1116,16 @@ window.FemcGame = (() => {
     save();
     return { text: (w ? `${w.label}. ` : '') + text, place: a.place || `${areaById(a.area).name} · ${a.spot}` };
   }
+  // A shop's gifts (data/gifts.js): every gift whose `shop` is this one, with the met links it pleases (fans).
+  const giftStock = id => (S.epi ? [] : Object.entries(GIFTS().items || {}).filter(([, g]) => g.shop === id)
+    .map(([k, g]) => ({ id: k, kind: 'gift', name: g.name, price: g.price, desc: g.desc, tag: g.kind, shop: id, fans: giftFans(k) })));
   function shopStock(id) {
-    const B = D.battle, cfg = D.places.shops[id], shop = B.shops?.[cfg?.battleShop];
+    const B = D.battle, cfg = D.places.shops[id] || {}, shop = B.shops?.[cfg.battleShop];
+    if (cfg.gifts) return giftStock(id);
     if (!shop) return [];
+    return battleStock(id, B, cfg, shop).concat(giftStock(id));
+  }
+  function battleStock(id, B, cfg, shop) {
     const tier = 1 + S.tartarus.bosses.length;
     const out = [], line = k => (W.FemcBattleSave ? W.FemcBattleSave.gearLine(k) : (B.gear[k].desc || ''));
     const price = (p, kind) => Math.round(p * (1 - shopDiscount(id, kind) / 100));
@@ -1144,8 +1152,9 @@ window.FemcGame = (() => {
     if (S.yen < entry.price) return false;
     addYen(-entry.price);
     if (entry.kind === 'item') addItem(entry.id, 1);
+    else if (entry.kind === 'gift') addGift(entry.id, 1);
     else if (entry.kind === 'cardpack') { const b = ensureBattleSave(), c = W.FemcBuild.rollCard(Math.random, { tier: 1 + S.tartarus.bosses.length }); const r = W.FemcBuild.addCard(b, c); toast('perk', r.card ? `Revelation card: ${W.FemcBuild.cardName(c)} ★${c.r}` : `The card box is full: +${r.dust} Tarot Dust`); }
-    else if (entry.kind !== 'book' && !S.gear.includes(entry.id)) S.gear.push(entry.id);
+    else if (entry.kind !== 'book' && entry.kind !== 'gift' && !S.gear.includes(entry.id)) S.gear.push(entry.id);
     if (entry.kind === 'book') S.books.owned.push(entry.id);
     // Ann's Model Discount: shopping at Be Blue V is good for Charm.
     perkVal('shopStat').forEach(m => { if (m[entry.shop]) addStats(m[entry.shop]); });
@@ -2337,9 +2346,20 @@ window.FemcGame = (() => {
     const L = (S.life ||= {});
     if (typeof L.ignored !== 'number') L.ignored = 0;
     if (typeof L.lastInv !== 'number') L.lastInv = -9;
-    if (!L.gifts || typeof L.gifts !== 'object') L.gifts = {};
-    return L;
+    return normLife(L);
   };
+  // S.life's gift fields (data/gifts.js): bag { gift id: n }, gifts (what each link thought: loved / liked / meh / no), given
+  // { link: n } (turns the generic reactions), specials ['link:gift'] (played once), keeps [{ link, item, name, note, d }]
+  // (keepsakes given back). Run on every load (migrate) and on each read; a malformed field is rebuilt.
+  function normLife(L) {
+    if (!L.gifts || typeof L.gifts !== 'object') L.gifts = {};
+    if (!L.bag || typeof L.bag !== 'object' || Array.isArray(L.bag)) L.bag = {};
+    Object.keys(L.bag).forEach(k => { if (!(+L.bag[k] > 0)) delete L.bag[k]; else L.bag[k] = Math.floor(+L.bag[k]); });
+    if (!L.given || typeof L.given !== 'object') L.given = {};
+    if (!Array.isArray(L.specials)) L.specials = [];
+    if (!Array.isArray(L.keeps)) L.keeps = [];
+    return L;
+  }
   const homeSlot = (l, d = S.day) => (homeOf(l, d).slot === 'evening' ? 'evening' : 'after');
   const lifePick = (arr, n) => (arr && arr.length ? arr[Math.floor(seeded(n) * arr.length) % arr.length] : '');
   const goneLink = (l, d = S.day) => !!((l.closes && d >= dayOf(l.closes) && !stretchOn(l, d)) || (progress(l.id).rank >= 10 && leavesAtMax(l) && l.closes && d > dayOf(l.closes)));
@@ -2406,17 +2426,70 @@ window.FemcGame = (() => {
     const g = life().gifts[l.id] || {};
     return { link: l, rank: r, max: maxOf(l), romance: rom, birthday: field(c.birthday), food: field(c.food), hobbies: field(c.hobbies), where: homeOf(l).hint || linkPlace(l),
       gone: goneLink(l), hint: rankHint(l), known: learned.filter(x => r >= x.rank), locked: learned.filter(x => r < x.rank).length,
-      gifts: { loved: g.loved || [], liked: g.liked || [], meh: g.meh || [] } };
+      gifts: Object.fromEntries(GIFT_TIERS.map(k => [k, (g[k] || []).map(id => giftItem(id)?.name || id)])) };
   }
   /* Gift reactions, recorded from now on: a scene line { giftReact: { link, item, tier: 'loved' | 'liked' | 'meh' } } (or a
      call to FemcGame.noteGift) files the item under that reaction on their card. The card shows "?" until one is learned. */
   function noteGift(g) {
-    if (!g || !g.link || !g.item || !['loved', 'liked', 'meh'].includes(g.tier)) return false;
+    if (!g || !g.link || !g.item || !GIFT_TIERS.includes(g.tier)) return false;
     const box = (life().gifts[g.link] ||= {});
-    ['loved', 'liked', 'meh'].forEach(k => { box[k] = (box[k] || []).filter(x => x !== g.item); });
+    GIFT_TIERS.forEach(k => { box[k] = (box[k] || []).filter(x => x !== g.item); });
     (box[g.tier] ||= []).push(g.item);
     return true;
+  }  /* ── Gifts (data/gifts.js header; Kat, 2026-11-02, P5X-style). Bought in shops (shopStock / buy, kind 'gift'), carried in
+     S.life.bag, given only at the start of a link's rank scene or hangout (ui.js playLink puts a { giftAsk } line in; scene.js
+     asks and lists the bag, then calls giveGift). Main game only: nothing here runs in an epilogue state. ── */
+  const GIFT_TIERS = ['loved', 'liked', 'meh', 'no'];
+  const GIFTS = () => W.FEMC_GAME_GIFTS || { items: {}, links: {}, shops: {}, points: {} };
+  const giftItem = id => (GIFTS().items || {})[id] || null;
+  const giftShop = id => (GIFTS().shops || {})[id] || null;
+  function giftBag() { if (S.epi) return []; const L = life(); return Object.entries(L.bag).filter(([k, n]) => n > 0 && giftItem(k)).map(([id, n]) => ({ ...giftItem(id), id, n })); }
+  function addGift(id, n = 1) { if (!giftItem(id)) return false; const b = life().bag; b[id] = Math.max(0, (b[id] || 0) + n); if (!b[id]) delete b[id]; return true; }
+  function giftTier(link, id) {
+    const p = (GIFTS().links || {})[link];
+    if (!p) return 'meh';
+    return (p.loved || []).includes(id) ? 'loved' : (p.liked || []).includes(id) ? 'liked' : (p.no || []).includes(id) ? 'no' : 'meh';
   }
+  // Who a gift pleases, for the shop's little faces: met links only (never unmet, hidden, story-only, unfound secrets or gone).
+  function giftFans(id) {
+    return Object.values(LINKS).filter(l => isMet(l.id) && !l.hidden && !l.storyOnly && l.status !== 'stub' && !(l.secret && !flag(l.secret.flag)) && !goneLink(l))
+      .map(l => ({ id: l.id, name: l.short || l.name, tier: giftTier(l.id, id) })).filter(f => f.tier === 'loved' || f.tier === 'liked')
+      .map(f => ({ id: f.id, name: f.name, loved: f.tier === 'loved' })).sort((a, b) => (b.loved - a.loved) || a.name.localeCompare(b.name));
+  }
+  const canGift = l => !!l && !S.epi && !!(GIFTS().links || {})[l.id] && giftBag().length > 0;
+  // ♪ a gift adds: none when reversed, at MAX, or at rank 10+ while the next rank isn't open (afterGap), as bond() rules.
+  function giftPoints(l, tier) { const p = progress(l.id); if (p.reversed || isMaxed(l, p) || afterGap(l)) return 0; return +((GIFTS().points || {})[tier] || 0); }
+  function giftLines(lines, item) {
+    const swap = s => s.replace(/\{gift\}/g, item.short || item.name);
+    const walk = x => (Array.isArray(x) ? x.map(walk) : x && typeof x === 'object' ? Object.fromEntries(Object.entries(x).map(([k, v]) => [k, typeof v === 'string' ? swap(v) : walk(v)])) : x);
+    return walk(clone(lines || []));
+  }
+  // Give a gift: out of the bag, the reaction (its own, else the tier's next generic one), the ♪ (the scene adds them to its
+  // own, so finishLink's meter, overflow and MAX rules apply), the contact card, a special once. → { tier, notes, lines, special }.
+  function giveGift(linkId, id) {
+    const l = LINKS[linkId], item = giftItem(id), L = life();
+    if (!l || !item || !(L.bag[id] > 0) || S.epi) return null;
+    addGift(id, -1);
+    const tier = giftTier(linkId, id), P = (GIFTS().links || {})[linkId] || {}, say = P.say || {};
+    const n = L.given[linkId] || 0;
+    L.given[linkId] = n + 1;
+    const pool = say[tier] || [];
+    let lines = say[id] || (pool.length ? pool[n % pool.length] : [{ n: tier === 'no' ? `${l.short} turned ${item.short || item.name} over, smiled politely, and set it down.` : `${l.short} thanked her for ${item.short || item.name}.` }]);
+    lines = giftLines(lines, item);
+    const key = `${linkId}:${id}`, sp = tier === 'loved' && !!(P.special || {})[id] && !L.specials.includes(key);
+    if (sp) {
+      L.specials.push(key);
+      const extra = giftLines(P.special[id], item);
+      JSON.stringify(extra, (k, v) => { if (v && v.gift && v.gift.keepsake) L.keeps.push({ link: linkId, item: id, name: v.gift.keepsake, note: v.gift.note || '', d: S.day }); return v; });
+      lines = lines.concat(extra);
+    }
+    noteGift({ link: linkId, item: id, tier });
+    const notes = giftPoints(l, tier);
+    save();
+    return { tier, notes, lines, special: sp };
+  }
+  const keepsakes = () => (S.epi ? [] : life().keeps.slice());
+
   /* ── Phone reach (2026-11-02, Kat-approved): Call and Message from a contact card. Data and the full rules: data/phone-calls.js
      header. State: S.life.reach[id] = { call: week, msg: week, bonus: week, calls: n } (weekOf: Sunday reset). Free: no slot is
      spent. +1 ♪ (bond) once a week per person, call or message. ── */
@@ -2895,7 +2968,7 @@ window.FemcGame = (() => {
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
     deliverTexts, replyText, textById, answerInvite, gift, bond,
-    rankHint, whoFree, goneLinks, contactCard, noteGift, phoneReach, phoneCall, finishPhoneCall, phoneTopics, phoneMessage, dayInvitePending, answerDayInvite, bookedDue, clearBooked, commuteDue, pickCommute, storyDay,
+    rankHint, whoFree, goneLinks, contactCard, noteGift, giftItem, giftShop, giftBag, addGift, giftTier, giftFans, canGift, giftPoints, giveGift, keepsakes, GIFT_TIERS, phoneReach, phoneCall, finishPhoneCall, phoneTopics, phoneMessage, dayInvitePending, answerDayInvite, bookedDue, clearBooked, commuteDue, pickCommute, storyDay,
     holidayInvites, sendHolidayInvites, holidayDue, acceptHoliday, finishHoliday, declineHolidays,
     lateNightDue, finishLateNight, tripPlan, finishTrip, unread, markAllRead, isGroupThread, freeSlotSpent, nextSlot, sleep,
     available, navigator, tartarusOk, floorCap, makeHandoff, readHandoff, clearHandoff, finishHandoff, simulate, applyResult,

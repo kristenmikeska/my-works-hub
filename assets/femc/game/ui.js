@@ -1493,7 +1493,7 @@
     const r = pick.r;
     const rank = l.ranks[r] || {};
     SC.play({
-      scene: pick.scene, place: pick.place, time: pick.time || rank.time || (S().slot === 'evening' ? 'Evening' : G.slotName(S().slot)),
+      scene: withGiftAsk(pick, l), place: pick.place, time: pick.time || rank.time || (S().slot === 'evening' ? 'Evening' : G.slotName(S().slot)),
       title: pick.kind === 'rank' || pick.kind === 'after' || pick.kind === 'trace' ? pick.title || null : null, label: pick.kind === 'rank' ? `${l.short} · Rank ${r + 1}` : pick.kind === 'after' ? `${l.short} · ${G.isMaxed(l) ? 'MAX' : `Rank ${r}`}` : l.short, link: l.id,
       music: pick.music || (/^Persona 5/.test(l.from || '') ? 'p5' : null), // the Persona 5 cast: Beneath the Mask
       onBattle: (b, snap, cont) => battleCard(b, null, cont),
@@ -1509,6 +1509,16 @@
         void p; void forcedStory;
       }
     });
+  }
+
+  /* Gifts (P5X-style, data/gifts.js): a rank scene, a hangout or time together at MAX opens with "Give a gift?" when Solar
+     carries any, after the scene's opening place / backdrop / music lines. Not for repairs or traces. */
+  function withGiftAsk(pick, l) {
+    const scene = pick.scene || [];
+    if (!['rank', 'hangout', 'after'].includes(pick.kind) || !G.canGift || !G.canGift(l)) return scene;
+    let i = 0;
+    while (i < scene.length && scene[i] && scene[i].n === undefined && scene[i].t === undefined && (scene[i].place !== undefined || ['bg', 'music', 'cg', 'dark', 'faces'].some(k => k in scene[i])) && !scene[i].choose) i += 1;
+    return [...scene.slice(0, i), { giftAsk: l.id }, ...scene.slice(i)];
   }
 
   /* ── The dorm at night ── */
@@ -1831,7 +1841,7 @@
         ${c.hint && c.hint.note ? `<p class="g-ph-note">${esc(c.hint.note)}</p>` : ''}
         ${reachHtml(l)}
         <dl>${facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
-        <h4>Gifts</h4><ul class="g-ph-gifts">${gift('loved', 'Loved')}${gift('liked', 'Liked')}${gift('meh', 'Shrugged')}</ul>
+        <h4>Gifts</h4><ul class="g-ph-gifts">${gift('loved', 'Loved')}${gift('liked', 'Liked')}${gift('meh', 'Shrugged')}${gift('no', 'Not for them')}</ul>
         <h4>Things Solar has learned</h4>${c.known.length ? `<ul class="g-ph-learned">${c.known.map(x => `<li><small>Rank ${x.rank}</small>${esc(x.t)}</li>`).join('')}</ul>` : '<p class="g-ph-empty">Nothing yet. Spend time together.</p>'}
         ${c.locked ? `<p class="g-ph-empty">More to learn as you get closer.</p>` : ''}
         <button type="button" class="g-ph-msgbtn" data-msg="${id}"${(s.phone.threads[id] || []).length ? '' : ' hidden'}>Messages ▸</button></article>`;
@@ -2011,9 +2021,17 @@
   }
 
   /* ── Shops ── */
+  // A gift's row: its tag, the met people it pleases (faces; a heart on the ones who'd love it; unmet people never), the price.
+  function giftRow(x, i) {
+    const fans = (x.fans || []).map(f => { const pic = G.portrait(f.id, 'neutral'); return `<i class="g-gf-fan${f.loved ? ' loved' : ''}" title="${esc(f.name)}${f.loved ? ' would love this' : ' would like this'}" data-fan="${f.id}">${pic ? `<img src="${pic}" alt="">` : `<b>${esc(f.name[0])}</b>`}${f.loved ? '<s aria-hidden="true">♥</s>' : ''}</i>`; }).join('');
+    const own = (G.giftBag().find(g => g.id === x.id) || {}).n;
+    return `<button type="button" class="g-act g-gf-row" data-i="${i}" data-gift="${esc(x.id)}"${S().yen < x.price ? ' disabled' : ''}><span><b><em class="g-gf-tag">${esc(x.tag || 'Gift')}</em>${esc(x.name)}</b><small>${esc(x.desc || '')}</small>${fans ? `<span class="g-gf-fans" aria-label="${esc((x.fans || []).map(f => `${f.name}${f.loved ? ' (loves)' : ''}`).join(', '))}">${fans}</span>` : ''}</span><em>¥${x.price.toLocaleString()}${own ? ` · own ${own}` : ''}</em></button>`;
+  }
   function openShop(id, done) {
     const books = id === 'books';
-    const shopData = books ? { name: 'Bookworms', sub: 'Used books', lines: { hi: ['Take your time, dear. The good ones are on the bottom shelf.'] } } : G.D.battle.shops?.[G.D.places.shops[id].battleShop];
+    const gshop = !books && G.D.places.shops[id]?.gifts ? G.giftShop(id) : null; // a gift-only shop (data/gifts.js)
+    const shopData = books ? { name: 'Bookworms', sub: 'Used books', lines: { hi: ['Take your time, dear. The good ones are on the bottom shelf.'] } }
+      : gshop ? { name: gshop.name, sub: gshop.sub, lines: { hi: gshop.hi, buy: gshop.buy } } : G.D.battle.shops?.[G.D.places.shops[id].battleShop];
     if (!shopData) { G.toast('note', 'Closed today.'); return done(); }
     // Mayoido buys materials (they live in the battle save): a Sell tab.
     const buys = !books && !!shopData.buys;
@@ -2025,7 +2043,7 @@
       if (tabs) tabs.innerHTML = buys ? `<button type="button" class="g-chip${tab === 'buy' ? ' on' : ''}" data-tab="buy">Buy</button><button type="button" class="g-chip${tab === 'sell' ? ' on' : ''}" data-tab="sell">Sell materials</button>` : '';
       o.el.querySelector('.g-shop-list').innerHTML = tab === 'sell'
         ? (mats.length ? mats.map(([k, n]) => `<button type="button" class="g-act${G.D.battle.materials[k].art ? ' has-art' : ''}" data-sell="${esc(k)}">${G.D.battle.materials[k].art ? `<img class="g-shop-art icon" src="${G.base}${G.D.battle.materials[k].art}" alt="">` : ''}<span><b>${esc(G.D.battle.materials[k].name)} ×${n}</b><small>${esc(G.D.battle.materials[k].desc || '')}</small></span><em>¥${G.matSellPrice(k).toLocaleString()} each</em></button>`).join('') : '<p class="g-note">Nothing to sell. Shadows drop materials in Tartarus.</p>')
-        : stock.length ? stock.map((x, i) => `<button type="button" class="g-act${x.art ? ' has-art' : ''}" data-i="${i}"${S().yen < x.price ? ' disabled' : ''}>${x.art ? `<img class="g-shop-art${x.wide ? ' wide' : ''}${x.icon ? ' icon' : ''}${x.book ? ' book' : ''}" src="${G.base}${x.art}" alt="">` : ''}<span><b>${esc(x.name)}</b><small>${esc(x.desc || '')}${x.who ? ` · for ${esc(x.who)}` : ''}</small></span><em>¥${x.price.toLocaleString()}${!books && x.kind === 'item' && S().inventory[x.id] ? ` · own ${S().inventory[x.id]}` : ''}${!books && !['item', 'cardpack'].includes(x.kind) && S().gear.includes(x.id) ? ' · owned' : ''}</em></button>`).join('') : '<p class="g-note">Nothing for sale right now.</p>';
+        : stock.length ? stock.map((x, i) => x.kind === 'gift' ? `${!gshop && x === stock.find(y => y.kind === 'gift') ? '<h4 class="g-shop-sub">Gifts</h4>' : ''}${giftRow(x, i)}` : `<button type="button" class="g-act${x.art ? ' has-art' : ''}" data-i="${i}"${S().yen < x.price ? ' disabled' : ''}>${x.art ? `<img class="g-shop-art${x.wide ? ' wide' : ''}${x.icon ? ' icon' : ''}${x.book ? ' book' : ''}" src="${G.base}${x.art}" alt="">` : ''}<span><b>${esc(x.name)}</b><small>${esc(x.desc || '')}${x.who ? ` · for ${esc(x.who)}` : ''}</small></span><em>¥${x.price.toLocaleString()}${!books && x.kind === 'item' && S().inventory[x.id] ? ` · own ${S().inventory[x.id]}` : ''}${!books && !['item', 'cardpack'].includes(x.kind) && S().gear.includes(x.id) ? ' · owned' : ''}</em></button>`).join('') : '<p class="g-note">Nothing for sale right now.</p>';
       o.el.querySelector('.g-shop-yen').textContent = `¥${S().yen.toLocaleString()}`;
       o.el.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { tab = b.dataset.tab; G.sfx('femc-hover'); render(); }));
       o.el.querySelectorAll('[data-sell]').forEach(b => b.addEventListener('click', () => { if (G.sellMat(b.dataset.sell, 1)) { o.el.querySelector('.g-shop-say').textContent = shopData.lines?.sold || 'A pleasure.'; G.sfx('femc-click'); } render(); }));
@@ -2041,7 +2059,7 @@
     const pic = shopData.portrait ? G.portrait(shopData.portrait, 'neutral') : null;
     const o = overlay(`<div class="g-shop"${shopData.bg ? ` style="--pic:url('${G.base}${shopData.bg}')"` : ''}><div class="g-st-head"><h2>${esc(shopData.name)}<small>${esc(shopData.sub || '')}</small></h2><button type="button" class="g-btn small" data-close>Leave</button></div>
       <div class="g-shop-top">${pic ? `<img src="${pic}" alt="">` : ''}<p class="g-shop-say">${esc(pick(shopData.lines?.hi || ['Welcome.'], S().day))}</p><b class="g-shop-yen"></b></div>
-      <p class="g-note small">${books ? 'Read them at the dorm in the evening.' : 'Whatever you buy goes with you into Tartarus.'}${!books && G.D.places.rainyDay?.sale?.[id] && G.wet() ? ` <b>Rainy-day sale: ${G.D.places.rainyDay.sale[id].pct}% off today.</b>` : ''}</p><div class="g-shop-tabs g-row"></div><div class="g-shop-list"></div></div>`, 'g-shop-ov', done);
+      <p class="g-note small">${books ? 'Read them at the dorm in the evening.' : gshop ? 'Gifts wait in your bag. Give one at the start of a hangout.' : 'Whatever you buy goes with you into Tartarus.'}${!books && G.D.places.rainyDay?.sale?.[id] && G.wet() ? ` <b>Rainy-day sale: ${G.D.places.rainyDay.sale[id].pct}% off today.</b>` : ''}</p><div class="g-shop-tabs g-row"></div><div class="g-shop-list"></div></div>`, 'g-shop-ov', done);
     render();
   }
 

@@ -14,6 +14,7 @@
      { place, time, bg, music, date, soft }   a scene break (soft: no fade to black)
      { bg } { music } { cg } { cg: null } { dark: true|false }   backdrop changes
      { phone: [{ from, t }], contact }        a text conversation
+     { giftAsk: 'linkId' }                    "Give a gift?" when Solar carries one (ui.js playLink adds it; see giftAsk below)
      post pictures: a text ({ from, t, img, handle, cap }) or a narration line ({ n, img, handle, cap }) may name a picture
        'post-r-<n>-<slug>' (art/posts/index.js FEMC_POSTS lists the ones that exist, tools/femc-posts.py writes it). Ready: the
        text becomes an image bubble (handle, picture, caption: cap, else the text without its leading [description]); the
@@ -365,6 +366,37 @@ window.FemcScene = (() => {
       choices.querySelector('button:not(:disabled)')?.focus({ preventScroll: true });
       G.sfx('femc-hover');
     }
+    /* Gifts (core.js giveGift, data/gifts.js): { giftAsk: link } asks "Give a gift?" when Solar carries any (skipping is
+       fine), { giftPick: link } lists the bag in the choice box (arrows / Enter / click; "(Never mind.)" goes back to the
+       question). The reaction's lines play next and its ♪ join the scene's. Nothing in a replay. */
+    function giftAsk(line) {
+      const who = line.giftAsk;
+      if (replay || !G.giftBag || !G.giftBag().length) return next();
+      nameEl.textContent = ''; textEl.classList.add('narration'); img.classList.add('dim');
+      const q = `Solar has a gift with her. Give one to ${G.name(who)}?`;
+      paintText(textEl, segments(q), q.length);
+      ask([{ t: '(Give a gift.)', then: [{ giftPick: who }] }, { t: '(Not today.)' }]);
+    }
+    function giftPick(line) {
+      const who = line.giftPick, bag = G.giftBag();
+      if (!bag.length) return next();
+      skipping = false; showMe(null); el.classList.remove('ready'); waiting = null;
+      const btn = (html, fn, cls) => { const b = document.createElement('button'); b.type = 'button'; if (cls) b.className = cls; b.innerHTML = html; b.addEventListener('click', e => { e.stopPropagation(); choices.replaceChildren(); choices.classList.remove('gs-giftlist'); G.sfx('femc-click'); fn(); }); return b; };
+      choices.classList.add('gs-giftlist');
+      choices.replaceChildren(...bag.map((g, i) => {
+        const b = btn(`<span>${esc(g.name)}</span><small>${esc(g.kind || 'Gift')}${g.n > 1 ? ` · ×${g.n}` : ''}</small>`, () => {
+          const r = G.giveGift(who, g.id);
+          if (!r) return next();
+          queue.unshift(...r.lines);
+          notes(r.notes || 0);
+          next();
+        }, 'gs-gift');
+        b.dataset.gift = g.id; b.style.animationDelay = `${Math.min(i, 8) * 0.04}s`;
+        return b;
+      }), btn('<span>(Never mind.)</span>', () => { queue.unshift({ giftAsk: who }); next(); }, 'gs-gift-back'));
+      choices.querySelector('button')?.focus({ preventScroll: true });
+      G.sfx('femc-hover');
+    }
     function sceneBreak(line) {
       currentFace = null; img.hidden = true; sil.hidden = true;
       if (line.music) { Music.set(line.music); picked = true; } else if (!picked && line.place) Music.set(G.moodFor(line.place, line.time), { under: true });
@@ -493,6 +525,8 @@ window.FemcScene = (() => {
       if (line.glitch !== undefined) { waiting = null; return replay || !window.FemcGlitch ? next() : window.FemcGlitch.line(line, el, next, skipping); }
       if (line.act) return actCard(line);
       if (line.battle) return battle(line);
+      if (line.giftAsk) return giftAsk(line);
+      if (line.giftPick) return giftPick(line);
       if (line.choose) return ask(line.choose);
       if (line.route) return ask(line.route);
       // In a replay, opts.branch(line, link, flagOn) answers conditions without touching the save (menu.js peek); without

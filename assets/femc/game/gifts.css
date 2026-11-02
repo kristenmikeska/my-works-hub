@@ -1,0 +1,24 @@
+/* Gifts (data/gifts.js, 2026-11-02): the shop rows with the faces of who'd like them, the bag list inside a scene's choice
+   box, the Items page's Gifts / Keepsakes. Pink and black only. Loaded after solstice-life.css. */
+
+/* Shop rows */
+.g-shop-sub { margin: 14px 0 4px; color: var(--pink-3, #ffb3d4); font: italic 900 15px/1 var(--cond, sans-serif); letter-spacing: .12em; text-transform: uppercase; }
+.g-gf-row > span { min-width: 0; }
+.g-shop-list .g-gf-row .g-gf-tag { display: inline-block; text-align: left; margin-right: 8px; padding: 2px 7px 1px; background: #fff4f9; color: #14070f; font: italic 900 10px/1.3 var(--cond, sans-serif); letter-spacing: .12em; text-transform: uppercase; vertical-align: 2px; transform: skewX(-12deg); }
+.g-gf-fans { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+.g-gf-fan { position: relative; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; overflow: visible; background: #3a1028; border: 1.5px solid rgba(255, 179, 212, .55); font-style: normal; }
+.g-gf-fan img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: 50% 10%; }
+.g-gf-fan b { color: #fff; font-size: 12px; }
+.g-gf-fan.loved { border-color: #ff4f9e; box-shadow: 0 0 0 1.5px rgba(255, 79, 158, .35); }
+.g-gf-fan s { position: absolute; right: -5px; bottom: -4px; display: grid; place-items: center; width: 15px; height: 15px; border-radius: 50%; background: #ff4f9e; color: #fff; font: 900 9px/1 sans-serif; text-decoration: none; box-shadow: 0 0 0 1.5px #14070f; }
+@media (max-width: 600px) { .g-gf-fan { width: 24px; height: 24px; } .g-shop-list .g-gf-row .g-gf-tag { font-size: 9px; } }
+
+/* "Give a gift?" list in a scene (scene.js giftPick) */
+.gs-choices.gs-giftlist { max-height: min(52vh, calc(100vh - var(--boxh, 190px) - 120px)); overflow-y: auto; overscroll-behavior: contain; padding: 4px 12px 8px 4px; scrollbar-width: thin; scrollbar-color: #ff4f9e transparent; }
+.gs-choices.gs-giftlist button { min-width: min(320px, calc(100vw - 48px)); }
+.gs-choices.gs-giftlist button small { color: #ffb3d4; font-weight: 700; }
+.gs-choices.gs-giftlist .gs-gift-back { opacity: .85; }
+@media (max-width: 600px) { .gs-choices.gs-giftlist { max-height: 46vh; } .gs-choices.gs-giftlist button { padding: 9px 18px; } }
+
+/* Items page */
+.g-gf-keeps li b { color: #ffb3d4; }

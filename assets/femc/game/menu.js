@@ -634,6 +634,13 @@ window.FemcMenu = (() => {
     }));
     el.querySelector('[data-use-cancel]')?.addEventListener('click', () => { sel.use = null; render(); });
   }
+  // Gifts in the bag (data/gifts.js; given at the start of a hangout) and keepsakes given back. Main game only.
+  function giftsBlock() {
+    if (!G.giftBag || S().epi) return '';
+    const bag = G.giftBag(), keeps = G.keepsakes();
+    return `<h3>Gifts</h3>${bag.length ? `<ul class="g-list g-gf-bag">${bag.map(g => `<li data-gift="${esc(g.id)}"><b>${esc(g.name)}<small>${esc(g.desc || '')}</small></b><span>×${g.n}</span></li>`).join('')}</ul>` : '<p class="g-note">No gifts yet. Shops around the city sell them; give one at the start of a hangout.</p>'}
+      ${keeps.length ? `<h3>Keepsakes</h3><ul class="g-list g-gf-keeps">${keeps.map(k => `<li><b>${esc(k.name)}<small>${esc(k.note || '')}</small></b><span>${esc(G.LINKS[k.link]?.short || '')}</span></li>`).join('')}</ul>` : ''}`;
+  }
   function itemsTab() {
     // In the Dark Hour Solar carries the battle's own counts (items used tonight come off as she goes).
     const s = S(), inv = Object.entries(opts.items || s.inventory).filter(([, n]) => n > 0), b = bsave();
@@ -643,6 +650,7 @@ window.FemcMenu = (() => {
     const mats = Object.entries(b.mats || {}).filter(([, n]) => n > 0);
     return `<div class="g-cols">
       <div class="g-col"><h3>Items</h3>${inv.length ? `<ul class="g-list">${inv.map(([k, n]) => `<li>${window.FemcIcons ? window.FemcIcons.of(k, 'g-li-ico') : ''}<b>${esc(D().items?.[k]?.name || k)}<small>${esc(D().items?.[k]?.desc || '')}</small></b><span>×${n}</span></li>`).join('')}</ul>` : '<p class="g-note">Nothing yet. Aohige Pharmacy is on the Strip.</p>'}
+        ${giftsBlock()}
         ${mats.length ? `<h3>Materials</h3><ul class="g-list">${mats.map(([k, n]) => `<li>${window.FemcIcons ? window.FemcIcons.of(k, 'g-li-ico') : ''}<b>${esc(D().materials?.[k]?.name || k)}</b><span>×${n}</span></li>`).join('')}</ul>` : ''}</div>
       <div class="g-col"><h3>Gear</h3>${gear.length ? `<ul class="g-list">${gear.map(k => `<li>${window.FemcIcons ? window.FemcIcons.of(k, 'g-li-ico') : ''}<b>${esc(D().gear[k].name)}<small>${esc(BS().gearLine(k))}</small></b><span>${BS().equippedCount(b, k) ? 'E' : ''}</span></li>`).join('')}</ul>` : '<p class="g-note">No gear yet. The Police Box and Be Blue V sell it.</p>'}
         <h3>Books</h3>${s.books.owned.length ? `<ul class="g-list">${s.books.owned.map(k => { const bk = G.bookById(k); return `<li><b>${esc(bk?.name || k)}</b><span>${s.books.done.includes(k) ? 'Read' : `${s.books.progress[k] || 0}/${bk?.nights}`}</span></li>`; }).join('')}</ul>` : '<p class="g-note">Bookworms on the Strip sells used books.</p>'}

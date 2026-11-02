@@ -265,7 +265,7 @@ try:
             p.eval("document.querySelector('.g-phone-ov .g-ph-back').click();true"); shot('contacts-phone'); size(1440, 900)
         clear()
         p.eval("FemcGame.effect({giftReact:{link:'akihiko',item:'Protein bar',tier:'loved'}});FemcGame.effect({giftReact:{link:'akihiko',item:'Protein bar',tier:'liked'}});true")
-        ok(p.eval("JSON.stringify(FemcGame.contactCard(FemcGame.LINKS.akihiko).gifts)") == '{"loved":[],"liked":["Protein bar"],"meh":[]}', 'gift reactions are recorded (the latest wins)')
+        ok(p.eval("JSON.stringify(FemcGame.contactCard(FemcGame.LINKS.akihiko).gifts)") == '{"loved":[],"liked":["Protein bar"],"meh":[],"no":[]}', 'gift reactions are recorded (the latest wins; "no" = disliked, gifts 2026-11-02)')
         clear()
 
     # ── Ordinary-day invites ──
