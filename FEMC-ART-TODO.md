@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 1):** 2 evening poses for Solar (section 20) · 14 seasonal face sheets (section 16) · 1 credits still (section 18: Ken) · 22 skin-series pieces for Solar (section 19: Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21). **Optional:** 25 epilogue CGs redrawn in their world's style (section 22; Kat's remakes of the HOAX ending and the séance are made and waiting in New Adds to go in). **Skins in battle** (One More eyes, entrance cards, couple Showtimes, theme sheets and frames, cut-ins, finish cards, second pose sheets): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`, not here. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make (updated Nov 1):** 2 evening poses for Solar (section 20) · 14 seasonal face sheets (section 16) · 1 credits still (section 18: Ken) · 22 skin-series pieces for Solar (section 19: Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, couple Showtimes, theme sheets and frames, cut-ins, finish cards, second pose sheets): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`, not here. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 **How to use this list**
 - Attach the files on each item's **Attach** line, in that order, then paste the prompt.
@@ -615,6 +615,14 @@ Save as: `ending-strangers-home.png`
 Redraw the FIRST image in the art style of the SECOND image (realistic painted style). Keep the composition, poses, clothes, setting, lighting and who is where exactly the same; use the other images for each person's face and hair. The next images are realistic portraits of, in order, Yunjin (running up the steps, red hair), Solar (in the doorway, arms open) and Jungwon (in the suit by the gate). The last image is this place's background in the game: use it for the place's details, but keep the FIRST image's framing. Soft realistic shading, real-looking proportions and faces like the portraits, natural skin and hair texture, cinematic light; NOT anime and NOT cel shading. 16:9, high resolution, no readable text.
 ```
 
+**[ ] 22C. Remake: The HOAX ending**  
+The HOAX home ending: the decorated gym after hours, Cherry hugging Solar.  
+Attach: `Remake - ending-hoax-home.png`, `CG - style (HOAX).png`, `CG - Jihoon (HOAX).png`, `CG - Cherry (HOAX).png`, `CG - Solar (HOAX).png`, `CG - Asahi (HOAX).png`, `BG - Hanlim Gym.png`  
+Save as: `ending-hoax-home.png`
+```
+Redraw the FIRST image in the art style of the SECOND image (realistic painted style). Keep the composition, poses, clothes, setting, lighting and who is where exactly the same; use the other images for each person's face and hair. The next images are realistic portraits of, in order, Jihoon (on the left), Cherry (hugging Solar), Solar (in her uniform with the armband) and Asahi (in the leather jacket on the right). The last image is this place's background in the game: use it for the place's details, but keep the FIRST image's framing. Soft realistic shading, real-looking proportions and faces like the portraits, natural skin and hair texture, cinematic light; NOT anime and NOT cel shading. 16:9, high resolution, no readable text.
+```
+
 **[ ] 22D. Remake: Runners: the floor**  
 The three of them on Hanni and Hyein's floor (epi-r-sisters).  
 Attach: `Remake - epi-r-floor.png`, `CG - style (Runners).png`, `CG - Solar (Runners).png`, `CG - Hanni (Runners).png`, `CG - Hyein (Runners).png`, `BG - Hanni and Hyein's Room.png`  
@@ -798,3 +806,12 @@ Save as: `epi-h-held.png`
 ```
 Redraw the FIRST image in the art style of the SECOND image (realistic painted style). Keep the composition, poses, clothes, setting, lighting and who is where exactly the same; use the other images for each person's face and hair. The next images are realistic portraits of, in order, Solar (breaking into green light) and Jungwon (holding her, the can in his hand). The last image is this place's background in the game: use it for the place's details, but keep the FIRST image's framing. Soft realistic shading, real-looking proportions and faces like the portraits, natural skin and hair texture, cinematic light; NOT anime and NOT cel shading. 16:9, high resolution, no readable text.
 ```
+
+**[ ] 22AA. Remake: HOAX: the séance**  
+The planchette moving in Jihoon's living room (epi-h-seance).  
+Attach: `Remake - epi-h-seance.png`, `CG - style (HOAX).png`, `CG - Asahi (HOAX).png`, `CG - Jaehyuk (HOAX).png`, `CG - Solar (HOAX).png`, `CG - Cherry (HOAX).png`, `CG - Jihoon (HOAX).png`, `BG - Jihoon's House.png`  
+Save as: `epi-h-seance.png`
+```
+Redraw the FIRST image in the art style of the SECOND image (realistic painted style). Keep the composition, poses, clothes, setting, lighting and who is where exactly the same; use the other images for each person's face and hair. The next images are realistic portraits of, in order, Asahi (at the back left), Jaehyuk (in the grey hoodie, front left), Solar (with her finger on the planchette), Cherry (beside her) and Jihoon (on the right). The last image is this place's background in the game: use it for the place's details, but keep the FIRST image's framing. Soft realistic shading, real-looking proportions and faces like the portraits, natural skin and hair texture, cinematic light; NOT anime and NOT cel shading. 16:9, high resolution, no readable text.
+```
+
