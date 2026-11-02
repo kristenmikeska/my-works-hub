@@ -11,13 +11,12 @@ When a fighter wears a Wardrobe look, the whole fight shows it: the figure, the 
 3. Save the picture into **New Adds** under its **Save as** name, and tell Claude. One picture per message.
 4. You don't have to make everything: a piece you skip just uses the fighter's usual version in the game.
 
-**Made so far (Nov 1 2026):** 182 pieces in the game, so they're off this list: 32 second pose sheets, 32 "1 MORE!" strips, 32 entrance cards, 31 Theurgy cut-ins, 31 finish cards (Solar's own look and all 31 of her other looks), 12 theme effect sheets and 12 HUD frames. **261 prompts left** below.
+**Made so far (Nov 1 2026):** 187 pieces in the game, so they're off this list: 33 second pose sheets, 33 "1 MORE!" strips, 33 entrance cards, 32 Theurgy cut-ins, 32 finish cards (Solar's own look and all 32 of her other looks), 12 theme effect sheets and 12 HUD frames. **256 prompts left** below.
 
 > **Start here: the best next picks**
-> 1. **Phantom Thief** (Solar → Phantom Thief): Solar's last look without battle art, all five pieces.
-> 2. **The Sun & Moon couple Showtime** (Couple Showtimes → Sun & Moon): both halves already fight in their hoodies.
-> 3. **Haechan's own look** (Haechan → own look): second pose sheet, "1 MORE!" strip and entrance card, seen in every fight he's in.
-> 4. **Jungwon's own look** (Jungwon → own look): the same three pieces.
+> 1. **The Sun & Moon couple Showtime** (Couple Showtimes → Sun & Moon): both halves already fight in their hoodies.
+> 2. **Haechan's own look** (Haechan → own look): second pose sheet, "1 MORE!" strip and entrance card, seen in every fight he's in.
+> 3. **Jungwon's own look** (Jungwon → own look): the same three pieces.
 >
 > The foxfire theme sheet and frame can wait: its only look (Kiriko Cosplay) is retired for now.
 >
@@ -27,11 +26,11 @@ When a fighter wears a Wardrobe look, the whole fight shows it: the figure, the 
 
 | Piece | What the player sees | Still to make |
 |---|---|---|
-| Second pose sheet | Six more poses: support cast, guard, dodge, knocked down, badly hurt, dash-in | 55 (11 own looks + 44 Wardrobe looks) |
-| Theurgy cut-in | The Theurgy cut-in shows the fighter in the look | 44 (Wardrobe looks; own looks already have theirs) |
-| "1 MORE!" eye strip | Hit a weakness: a thin strip of the fighter's eyes slams across the screen | 55 |
-| Entrance card | As a fight opens, the leader's look flashes on in a slanted card | 55 |
-| Finish card | The All-Out finish card shows the look | 44 (Wardrobe looks) |
+| Second pose sheet | Six more poses: support cast, guard, dodge, knocked down, badly hurt, dash-in | 54 (11 own looks + 43 Wardrobe looks) |
+| Theurgy cut-in | The Theurgy cut-in shows the fighter in the look | 43 (Wardrobe looks; own looks already have theirs) |
+| "1 MORE!" eye strip | Hit a weakness: a thin strip of the fighter's eyes slams across the screen | 54 |
+| Entrance card | As a fight opens, the leader's look flashes on in a slanted card | 54 |
+| Finish card | The All-Out finish card shows the look | 43 (Wardrobe looks) |
 | Couple Showtime | Both halves of a couple set fighting together get a special Bond cut-in | 6 |
 | Theme effect sheet | Skills sprinkle the look's theme (hearts, petals, stars…) over the normal effect | 1 (foxfire) |
 | HUD frame | A faint frame of the theme around the fighter's HUD card | 1 (foxfire) |
@@ -65,49 +64,7 @@ Finish cards use the fighter's own finish line (listed at the top of each fighte
 
 ## Solar
 
-Her own look and 31 of her looks are all made; one look left. Finish-card words: **RISE AND SHINE**
-
-### Phantom Thief · `sk-phantom` · Calling cards
-
-#### 1. Second pose sheet
-
-Attach: `Current Skins/Solar/Phantom Thief [sk-phantom] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-phantom-posesheet-2.png`
-```
-Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: a long black tailcoat with a high collar, red gloves, black fitted trousers and pointed black boots, a white domino mask over her eyes. Hair: very long straight black hair, her naginata. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, the naginata held loosely in the other hand. Cell 2: guarding: braced low, the naginata held across her body like a shield, forearm raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, her hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping the naginata. Cell 5: badly hurt: standing but hunched, one hand pressed to her side, breathing hard, the naginata lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, the naginata ready, her hair and clothes streaming back. Persona 3 Reload official art style. No text.
-```
-
-#### 2. Theurgy cut-in
-
-Attach: `Added to Game/theurgy-solar-haenim.png`, then `Current Skins/Solar/Phantom Thief [sk-phantom] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-phantom-theurgy.png`
-```
-Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, colours, lighting, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: a long black tailcoat with a high collar, red gloves, black fitted trousers and pointed black boots, a white domino mask over her eyes. Hair: very long straight black hair, her naginata. Same face as the THIRD attached image. Keep the Persona behind her exactly as in the first image, and keep her face in the same place in the frame. No text, no letters, no logos.
-```
-
-#### 3. "1 MORE!" eye strip
-
-Attach: `Current Skins/Solar/Phantom Thief [sk-phantom] - portraits.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-phantom-onemore.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. Her hair: very long straight black hair, exactly as in the FIRST attached image, strands falling across the frame. Keep these from the look, exactly as in the FIRST attached image, wherever they show in the crop: a white domino mask over her eyes. Behind the face: bold flat diagonal stripes and speed lines in red, black and white, a few tiny playing cards scattered in the stripes. No text, no letters, no logos, no border.
-```
-
-#### 4. Entrance card
-
-Attach: `Current Skins/Solar/Phantom Thief [sk-phantom] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-phantom-entrance.png`
-```
-A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (a long black tailcoat with a high collar, red gloves, black fitted trousers and pointed black boots, a white domino mask over her eyes. Hair: very long straight black hair, her naginata), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, the naginata swung over one shoulder, her hair and clothes whipping back, a cool, ready look straight at the viewer. Background: flat graphic shards of red, black and white breaking apart diagonally, a few speed lines, a scatter of playing cards. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
-```
-
-#### 5. Finish card
-
-Attach: `Current Skins/Base Game/Solar/Solar - finish card.png`, then `Current Skins/Solar/Phantom Thief [sk-phantom] - pose sheet (recut).png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-phantom-finish.png`
-```
-Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image's layout and art style: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows. The character in the same place, size and crop as in the first image, turned toward the viewer with a confident finishing pose and a small knowing smile; huge bold slanted words where the first image has its words; flat graphic background shapes and thin lines behind her. Change her outfit and hair to the look in the SECOND attached image: a long black tailcoat with a high collar, red gloves, black fitted trousers and pointed black boots, a white domino mask over her eyes. Hair: very long straight black hair, her naginata. Same face as the THIRD attached image. Background colours: red, black and white, playing cards drifting across. The words read exactly: RISE AND SHINE. No other text, no logos, no watermark.
-```
+Her own look and all 32 of her looks are made (Phantom Thief last, Nov 1). Finish-card words: **RISE AND SHINE**
 
 ---
 

@@ -26818,6 +26818,178 @@
         "assets/femc/game/art/skins/sk-prowl/solar-pose2-4.webp": "fe08d44489b981b4117b649354f86fb35e613adb048c0c52a3fc5cec6f622db0",
         "assets/femc/game/art/skins/sk-prowl/solar-pose2-5.webp": "497f13afd32d27aa3e02e0a54968e9ee519c4c07f6ce4fc2902203f80221e277"
       }
+    },
+    {
+      "batch": 126,
+      "source": "Masked Duelist’s Crimson Battle Entrance.png",
+      "sourceNow": "New Adds/Phantom Thief/Masked Duelist’s Crimson Battle Entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "cf9d5e055bcc60a0ea7ff645a604af5eb1b0dceaf8d5db9a680518b5f5a2492f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-phantom/solar-entrance.webp",
+      "skin": "sk-phantom",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"<folder>/Masked Duelist’s Crimson Battle Entrance.png\" sk-phantom solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-phantom/solar-entrance.webp": "1eb4c82d6eb6313b4279f2f2f3b5b8c2572e29877d5835bedb15939fefd7d24f"
+      }
+    },
+    {
+      "batch": 126,
+      "source": "Rise and Shine Phantom Thief.png",
+      "sourceNow": "New Adds/Phantom Thief/Rise and Shine Phantom Thief.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "3a05a0b0b71857b94e6ca1c27f8b8e4d2d08047ca88f5ed6080dd7408cd1d4a8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-phantom/solar-finish.webp",
+      "skin": "sk-phantom",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "All-Out finish card while worn (G)",
+      "tool": "femc-wardrobe.py finish \"<folder>/Rise and Shine Phantom Thief.png\" sk-phantom solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-phantom/solar-finish.webp": "04bf4bcbb92ac051369b8758f4653b804b917025fc9810486fedf876bbdf4349"
+      }
+    },
+    {
+      "batch": 126,
+      "source": "Phantom Thief's Radiant Naginata Assault.png",
+      "sourceNow": "New Adds/Phantom Thief/Phantom Thief's Radiant Naginata Assault.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "470b96e99e870ba9f9d66677f1d28c7db4b515f4326de43a561d2001c2d7400f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-phantom/solar-theurgy.webp",
+      "skin": "sk-phantom",
+      "conversion": "1600 x 900 WebP, framing kept",
+      "placement": "Theurgy cut-in while worn (E)",
+      "tool": "femc-wardrobe.py theurgy \"<folder>/Phantom Thief's Radiant Naginata Assault.png\" sk-phantom solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-phantom/solar-theurgy.webp": "e0e0873a622a069a4f5d09f04c156e71195c2e5f66a5e9d97624fd86a7071715"
+      }
+    },
+    {
+      "batch": 126,
+      "source": "Masked heroine’s intense sideways gaze.png",
+      "sourceNow": "New Adds/Phantom Thief/Masked heroine’s intense sideways gaze.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "c0009ad96ecc1259ba1cf302bb4badae4737f1a1aab0267ee9b639ad1be01e9c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-phantom/solar-onemore.webp",
+      "skin": "sk-phantom",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip, first beat (v1, the sideways glance)",
+      "tool": "femc-wardrobe.py onemore \"<folder>/Masked heroine’s intense sideways gaze.png\" sk-phantom solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-phantom/solar-onemore.webp": "cd20c93b2cbe37a91b32e34a6d6aa6838773152e1a3c0199cb1dcf610babca45"
+      }
+    },
+    {
+      "batch": 126,
+      "source": "Masked Golden Gaze.png",
+      "sourceNow": "New Adds/Phantom Thief/Masked Golden Gaze.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "2fd12774e1cefe361039a6e8c99262f3c72f79e83be279e4d1e84ae7743ed59c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-phantom/solar-onemore-v2.webp",
+      "skin": "sk-phantom",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP; om_eyes caught the left eye's lower rim, hand-set to [38.3, 60.5, 61.9, 61.5] in tools/femc-onemore-eyes.json",
+      "placement": "One More strip, second beat (v2, looking front; glints on her eyes)",
+      "tool": "femc-wardrobe.py onemore2 \"<folder>/Masked Golden Gaze.png\" sk-phantom solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-phantom/solar-onemore-v2.webp": "b1a8f33bfb70d15ad9835f5201abc342ab248a5d349838e72ccb71596c8024d1"
+      }
+    },
+    {
+      "batch": 126,
+      "source": "Six-Pose Character Sprite Sheet.png",
+      "sourceNow": "New Adds/Phantom Thief/Six-Pose Character Sprite Sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "41edf8788fcaa9f484763efd81000ca17b13bb6ea4b200a74bb777973a293b3e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-phantom/solar-pose2-0..5.webp",
+      "skin": "sk-phantom",
+      "conversion": "sheet 2 on sheet 1 canvas (transparent as sent), scale 0.855",
+      "placement": "support/guard/dodge/down/hurt/dash",
+      "tool": "femc-wardrobe.py skin2 \"<folder>/Six-Pose Character Sprite Sheet.png\" sk-phantom solar",
+      "identifiedBy": "looked at (Kat's folder convention: free file names)",
+      "handPoint": "LOOK_HAND2 'sk-phantom': [0.2, 0.24] (battle.js)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-phantom/solar-pose2-0.webp": "974849bd788cab03731b4521bda7ede1853ea5e660c2db386e37a50b1be6fa86",
+        "assets/femc/game/art/skins/sk-phantom/solar-pose2-1.webp": "8032dfe7000c603c9c0816a413ac6dcdb5197badf9d2c7bf5295745162acdcf2",
+        "assets/femc/game/art/skins/sk-phantom/solar-pose2-2.webp": "41c8e9885839bc97b110e3abf4b90fff305622511d7e2dfdff3c857ae2ff0da4",
+        "assets/femc/game/art/skins/sk-phantom/solar-pose2-3.webp": "6274439c7ae5d24a1c99ebbb51cf18971626ba8b4226f9a6a996f04aba37f3b6",
+        "assets/femc/game/art/skins/sk-phantom/solar-pose2-4.webp": "ae9351cc44f71ba6c107cd2740c475fae22cfdf7f23e412bc19f198b3aacaaca",
+        "assets/femc/game/art/skins/sk-phantom/solar-pose2-5.webp": "6ae41a2b7752b3066566b2ebfc1b238b14db4ef4a6099e4062ce84858889d650"
+      }
+    },
+    {
+      "batch": 127,
+      "source": "solar-poses-2.png",
+      "sourceNow": "New Adds/solar-poses-2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d51a5f4992ee261d8211b4198d6be5f058fcebe3582701ad7986b2c0fb6d8611",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/<pose>.webp",
+      "conversion": "transparent 3 x 2 sheet split per figure (eroded cores per cell, every pixel to its nearest core, loose bits to their nearest piece), tight crop at the sheet's own scale like the first six (no resize), WebP q90; jump keeps the row's ground under her (canvas to y 753)",
+      "placement": "evening screen (ui.js HOME_POSES scroll rotation, HOME_REACT hover poses); cells in reading order: study, ramen, watering, evoker, stretch, phone",
+      "tool": "one-off split (not a repo tool); same canvas rule as profile/solar-poses/ from solar-fullbody-poses-update.png",
+      "outputs": {
+        "assets/femc/profile/solar-poses/study.webp": "6d1afa3cc019a3dff1d87f60548838a984e4008bc405eb3fcf9492d39372c508",
+        "assets/femc/profile/solar-poses/ramen.webp": "b2d58d7f256d6e2dd3e5febace495f1c016db35af6fb44c7f05dc36a1d2033eb",
+        "assets/femc/profile/solar-poses/watering.webp": "1eed02e4f647fd30779c4eb41fb9cf262fae731e05a856e33b0a9289e45b644d",
+        "assets/femc/profile/solar-poses/evoker.webp": "db30410fcf73173a2570b63e9ad9ade20320fab351c87f189195bcf3ccfb4312",
+        "assets/femc/profile/solar-poses/stretch.webp": "2608359f6a75dc97bfd325aad804eeadd90802df203ecbcfc86e116563cae88f",
+        "assets/femc/profile/solar-poses/phone.webp": "251f7a6810fdc7be57c93700de37222a8f7ad74e30c9bc0f46b430f5b78ff80e"
+      }
+    },
+    {
+      "batch": 127,
+      "source": "solar-poses-3.png",
+      "sourceNow": "New Adds/solar-poses-3.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "57283e855550b52125bb2230b933fb6df8ae18f5a91ad9839e336bc5819503ee",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/<pose>.webp",
+      "conversion": "transparent 3 x 2 sheet split per figure (eroded cores per cell, every pixel to its nearest core, loose bits to their nearest piece), tight crop at the sheet's own scale like the first six (no resize), WebP q90; jump keeps the row's ground under her (canvas to y 753)",
+      "placement": "evening screen (ui.js HOME_POSES scroll rotation, HOME_REACT hover poses); cells in reading order: cheer, jump, tease, heart, lookback, sewing",
+      "tool": "one-off split (not a repo tool); same canvas rule as profile/solar-poses/ from solar-fullbody-poses-update.png",
+      "outputs": {
+        "assets/femc/profile/solar-poses/cheer.webp": "69874e4c073b35cedbba40feb95aa8907778d488b3469a5cc2d2cdc18c97e10b",
+        "assets/femc/profile/solar-poses/jump.webp": "ca7fe1d81af02788383761dea65da199e35c9bf6b380290703d0b31db0d062c3",
+        "assets/femc/profile/solar-poses/tease.webp": "a44cfa9c518f21958cb9aaddc62458d604a5c5e0ec9f01bd9aa5ae017a5ea8be",
+        "assets/femc/profile/solar-poses/heart.webp": "6ea9f7c19f7ef844225844dc65f319e5eccacb107ef279551112367adb07289d",
+        "assets/femc/profile/solar-poses/lookback.webp": "f42324466562fa38fa02b786348184e136ddf1fd2f70151b0cfd3667ed1fa433",
+        "assets/femc/profile/solar-poses/sewing.webp": "0e89254644de89ef6b29a502684c98ce7d8f6cd88b19509233dcfd5d3c766a84"
+      }
     }
   ],
   "batch1Validation": {

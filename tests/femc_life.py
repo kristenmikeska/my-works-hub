@@ -235,9 +235,17 @@ try:
             shot('evening-summer-desktop')
         n = look('5/12')
         ok(n['look'] is None and 'solar-poses/thinking' in n['src'], 'spring: the usual poses')
+        # Nov 1: eighteen poses; hovering an activity shows its own (Kat's solar-poses-2 / -3)
+        ok(p.eval("Promise.all(['thinking','wave','peace','hair','arms-crossed','shy','study','ramen','watering','evoker','stretch','phone','cheer','jump','tease','heart','lookback','sewing'].map(k=>new Promise(r=>{const i=new Image();i.onload=()=>r(i.naturalHeight>700);i.onerror=()=>r(false);i.src=FemcGame.base+'assets/femc/profile/solar-poses/'+k+'.webp'}))).then(a=>a.every(Boolean))"), 'all eighteen evening poses load')
+        HOV = "(n=>{const b=document.querySelector('.g-dorm [data-n=\"'+n+'\"]');if(!b)return null;b.dispatchEvent(new Event('pointerenter'));const s=document.querySelector('.g-home-fig img').getAttribute('src');b.dispatchEvent(new Event('pointerleave'));return s})(%s)"
+        want_pose = {'study': 'study', 'rest': 'stretch', 'out': 'phone', 'tartarus': 'evoker', 'dorm:cook': 'ramen', 'dorm:roofgarden': 'watering', 'desk': 'sewing'}
+        got = {k: p.eval(HOV % json.dumps(k)) for k in want_pose}
+        ok(all(v is None or f'solar-poses/{want_pose[k]}.webp' in v for k, v in got.items()) and sum(v is not None for v in got.values()) >= 4, f'hover reactions: {got}')
         p.eval("(()=>{const C=FemcCosmetics;C.grantItem('sk-yukata');C.equip('sk-yukata');return true})()")
         p.eval("FemcGameUI.evening();true")
         ok(p.eval("document.querySelector('.g-home-fig').dataset.look==='sk-yukata'"), 'a worn Wardrobe outfit comes first')
+        t = p.eval(HOV % json.dumps('tartarus')); r = p.eval(HOV % json.dumps('rest'))
+        ok((t is None or 'sk-yukata/solar-pose-0' in t) and (r is None or 'sk-yukata/solar-pose-' in r), f'the worn look still wins on hover: {t} {r}')
         p.eval("FemcCosmetics.setPortraits(false);FemcGameUI.evening();true")
         ok(p.eval("!document.querySelector('.g-home-fig').dataset.look"), 'outfits toggled off: the usual poses')
         p.eval("FemcCosmetics.setPortraits(true);true")

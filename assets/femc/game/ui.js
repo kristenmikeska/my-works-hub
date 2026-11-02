@@ -1540,10 +1540,13 @@
   }
   /* Solar on the evening screen (Kat, Oct 31): pinned large at the right while the list scrolls, changing pose as you scroll
      (a pop and a pink slash; scrolling back runs the poses backwards), leaning with the scroll, and reacting to the card under
-     the pointer or keyboard focus. Poses: assets/femc/profile/solar-poses/. Reduced motion: plain swaps, no lean. */
-  const HOME_POSES = ['thinking', 'wave', 'peace', 'hair', 'arms-crossed', 'shy'];
-  const HOME_REACT = [[/^tartarus$/, 'arms-crossed'], [/^rest$/, 'shy'], [/^(study|read)$/, 'thinking'], [/^(link|trace|secret):/, 'wave'],
-    [/^out$/, 'peace'], [/^job:/, 'peace'], [/^(desk|dorm:)/, 'hair']];
+     the pointer or keyboard focus. Poses: assets/femc/profile/solar-poses/ (Nov 1: twelve more from Kat's solar-poses-2 / -3,
+     cut on the same scale with her feet on the bottom edge; `jump` keeps the air under her). Reduced motion: plain swaps, no lean. */
+  const HOME_POSES = ['thinking', 'wave', 'peace', 'study', 'cheer', 'hair', 'ramen', 'heart', 'arms-crossed', 'watering', 'tease', 'shy',
+    'phone', 'jump', 'stretch', 'lookback', 'evoker', 'sewing'];
+  const HOME_REACT = [[/^tartarus$/, 'evoker'], [/^rest$/, 'stretch'], [/^(study|read)$/, 'study'], [/^dorm:cook/, 'ramen'], [/^dorm:roofgarden$/, 'watering'],
+    [/^dorm:walkkoro$/, 'cheer'], [/^(desk|dorm:sew)/, 'sewing'], [/^link:/, 'heart'], [/^(trace|secret):/, 'wave'],
+    [/^out$/, 'phone'], [/^job:/, 'peace'], [/^dorm:/, 'hair']];
   /* Her look on the evening screen (2026-11-01): the outfit she wears in the Wardrobe (while "Outfits in scene portraits" is
      on), else the season's (Dec–Feb the Winter Coat, Jul–Aug Summer Session), else the usual poses. Outfit art is the
      battle pose sheet: 5 (standing) and 4 while the list scrolls, 0 (her stance) on Tartarus. */

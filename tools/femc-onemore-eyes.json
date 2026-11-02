@@ -161,6 +161,15 @@
   ],
   "sha256": "9ee0a8e42a054a239140d1198f1bc726d7ce436a9d27b43138b1b4b4cd10d5f3"
  },
+ "assets/femc/game/art/skins/sk-phantom/solar-onemore-v2.webp": {
+  "eyes": [
+   38.3,
+   60.5,
+   61.9,
+   61.5
+  ],
+  "sha256": "b1a8f33bfb70d15ad9835f5201abc342ab248a5d349838e72ccb71596c8024d1"
+ },
  "assets/femc/game/art/skins/sk-prowl/solar-onemore-v2.webp": {
   "eyes": [
    40.2,

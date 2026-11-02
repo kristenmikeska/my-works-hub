@@ -111,6 +111,7 @@ BSTEP = r"""(()=>{const F=FemcBattle,c=F.ctl,d=document;
   if(c?.kind==='menu'){const B=F.B,u=B&&B.S.cur;if(window.__holdSolar&&u&&u.mid==='solar')return 'solar';const v=c.items.map(i=>i.v);c.pickValue(v.includes('attack')?'attack':v.includes('guard')?'guard':v[0]);return 'pick'}
   if(c?.kind==='buttons'){const b=d.querySelector('.bt-btn.pink:not(:disabled)')||d.querySelector('.bt-btn:not(:disabled)');b&&b.click();return 'btn'}
   return null})()"""
+HAECHAN_MENU = "FemcBattle.screen()==='battle'&&FemcBattle.ctl?.kind==='menu'&&FemcBattle.ctl.items.some(i=>i.v==='skill')&&FemcBattle.B.S.cur.mid==='haechan'"
 SOLAR_MENU = "FemcBattle.screen()==='battle'&&FemcBattle.ctl?.kind==='menu'&&FemcBattle.ctl.items.some(i=>i.v==='skill')&&FemcBattle.B.S.cur.mid==='solar'"
 # A fire spell for Solar (Maya is weak to fire): a weakness → One More → All Down.
 CAST = r"""(()=>{const F=FemcBattle,D=FEMC_BATTLE_DATA,u=F.B.U(F.B.S.cur.id);D.skills.t_fire=D.skills.t_fire||{name:'Test Fire',el:'fire',type:'dmg',target:'one',power:1,cost:{sp:1},desc:''};
@@ -210,19 +211,19 @@ try:
         fr = Image.new('RGB', (1500, 600), (0, 255, 0)); d = ImageDraw.Draw(fr); d.rectangle([20, 20, 1480, 580], outline=(255, 79, 158), width=10)
         d.ellipse([10, 10, 90, 90], fill=(255, 140, 192)); fr.save(tmp / 'frame.png')
         W = [sys.executable, str(pathlib.Path(REPO, 'tools/femc-wardrobe.py'))]
-        # A look with none of Kat's Nov 1 art (Phantom Thief), Akihiko's own look and the missing foxfire theme, so nothing real is touched.
+        # A look with none of Kat's Nov 1 art (Haechan's Black Suit; Phantom Thief got its art in batch 126), Akihiko's own look and the missing foxfire theme, so nothing real is touched.
         # The strip source has white letterbox bands top and bottom: they are cut off before the 5:1 crop.
         band = Image.new('RGB', (1536, 520), (255, 255, 255)); band.paste(wide, (0, 110)); band.save(tmp / 'omband.png')
-        outs = {'onemore': ART / 'skins/sk-phantom/solar-onemore.webp', 'onemore2': ART / 'skins/sk-phantom/solar-onemore-v2.webp', 'own': ART / 'onemore/akihiko.webp',
-                'entrance': ART / 'skins/sk-phantom/solar-entrance.webp', 'theurgy': ART / 'skins/sk-phantom/solar-theurgy.webp', 'finish': ART / 'skins/sk-phantom/solar-finish.webp',
+        outs = {'onemore': ART / 'skins/sk-haechan-suit/haechan-onemore.webp', 'onemore2': ART / 'skins/sk-haechan-suit/haechan-onemore-v2.webp', 'own': ART / 'onemore/akihiko.webp',
+                'entrance': ART / 'skins/sk-haechan-suit/haechan-entrance.webp', 'theurgy': ART / 'skins/sk-haechan-suit/haechan-theurgy.webp', 'finish': ART / 'skins/sk-haechan-suit/haechan-finish.webp',
                 'showtime': ART / 'couples/cp-sunmoon-showtime.webp', 'frame': ART / 'frames/foxfire.webp'}
         for f in outs.values(): ok(not f.exists(), f'{f} should not exist before the test'); MADE.append(f)
-        subprocess.run(W + ['onemore', str(tmp / 'om.png'), 'sk-phantom'], check=True, capture_output=True)
-        subprocess.run(W + ['onemore2', str(tmp / 'omband.png'), 'sk-phantom'], check=True, capture_output=True)
+        subprocess.run(W + ['onemore', str(tmp / 'om.png'), 'sk-haechan-suit'], check=True, capture_output=True)
+        subprocess.run(W + ['onemore2', str(tmp / 'omband.png'), 'sk-haechan-suit'], check=True, capture_output=True)
         subprocess.run(W + ['onemore', str(tmp / 'om.png'), 'own', 'akihiko'], check=True, capture_output=True)
-        subprocess.run(W + ['entrance', str(tmp / 'card.png'), 'sk-phantom'], check=True, capture_output=True)
-        subprocess.run(W + ['theurgy', str(tmp / 'card.png'), 'sk-phantom'], check=True, capture_output=True)
-        subprocess.run(W + ['finish', str(tmp / 'card.png'), 'sk-phantom'], check=True, capture_output=True)
+        subprocess.run(W + ['entrance', str(tmp / 'card.png'), 'sk-haechan-suit'], check=True, capture_output=True)
+        subprocess.run(W + ['theurgy', str(tmp / 'card.png'), 'sk-haechan-suit'], check=True, capture_output=True)
+        subprocess.run(W + ['finish', str(tmp / 'card.png'), 'sk-haechan-suit'], check=True, capture_output=True)
         subprocess.run(W + ['showtime', str(tmp / 'card.png'), 'sunmoon'], check=True, capture_output=True)
         subprocess.run(W + ['frame', str(tmp / 'frame.png'), 'foxfire'], check=True, capture_output=True)
         sizes = {k: Image.open(f).size for k, f in outs.items()}
@@ -233,8 +234,8 @@ try:
         ok(fa.getpixel((500, 200))[3] == 0 and fa.getpixel((16, 200))[3] > 200 and fa.getpixel((5, 200))[3] == 0, 'the frame\'s green keyed out, its border kept')
         rj = READY.read_text()
         data = json.loads(rj.split('window.FEMC_ART_READY = ')[1].rstrip().rstrip(';'))
-        ph = data['skins']['sk-phantom']
-        ok(all(ph.get(k) == ['solar'] for k in ('onemore', 'onemore2', 'entrance', 'theurgy', 'finish')) and data['own']['onemore'] == ['akihiko', 'solar'] and data['own']['onemore2'] == ['solar']
+        ph = data['skins']['sk-haechan-suit']
+        ok(all(ph.get(k) == ['haechan'] for k in ('onemore', 'onemore2', 'entrance', 'theurgy', 'finish')) and data['own']['onemore'] == ['akihiko', 'solar'] and data['own']['onemore2'] == ['solar']
            and data['couples'] == ['cp-sunmoon'] and 'foxfire' in data['frames'], f'scan lists them: {ph}, {data["own"]}, {data["couples"]}, {data["frames"]}')
         cleanup()
         ok(READY.read_text() == READY0 and not any(f.exists() for f in outs.values()), 'test files gone, ready.js restored')
@@ -622,15 +623,15 @@ try:
             view(p, w, h); time.sleep(0.35); shots2.append(shot(p, f'sheet2-yukata-dodge-{w}x{h}'))
         view(p, 1440, 900); go_on(); time.sleep(0.5)
         clean(p, 'sheet2 yukata')
-        p.top(); setup(wear=['sk-phantom'])  # Nov 1: Movie Date got its sheet 2 (batch 125); Phantom Thief is sheet 1 only
-        night(['solar', 'akihiko', 'yukari', 'junpei'], "FemcBattle.save.cutins='off';")
-        enter(); bdrive(SOLAR_MENU, 120)
-        d = p.eval("FemcBattle.poses2('solar')")
-        ok(not d['has'] and len(d['frames']) == 6 and not any('pose2' in f for f in d['frames']), f'Phantom Thief (sheet 1 only): {d}')
-        # F: Phantom Thief is calling cards; a skill hit plays Kat's theme-cards sheet small on top
+        p.top(); setup(wear=['sk-haechan-suit'], day='12/12')  # Nov 1: Phantom Thief got its sheet 2 (batch 126); Haechan's Black Suit is sheet 1 only
+        scripted(['solar', 'haechan', 'akihiko', 'yukari'])  # Haechan fights from December; a scripted fight takes him
+        p.eval("FemcBattle.save.cutins='off'"); bdrive(HAECHAN_MENU, 120)
+        d = p.eval("FemcBattle.poses2('haechan')")
+        ok(not d['has'] and len(d['frames']) == 6 and not any('pose2' in f for f in d['frames']), f'Black Suit (sheet 1 only): {d}')
+        # F: Black Suit is calling cards; Haechan's skill hit plays Kat's theme-cards sheet small on top
         p.eval("FemcBattle.B.foes().forEach(f=>{f.maxHp=f.hp=99999})"); cast_fire()
         p.wait("(FemcBattle.marks['fx-theme-cards']||0)>0 && (FemcBattle.marks['fx-art-theme-cards']||0)>0", 20)
-        clean(p, 'sheet2 phantom')
+        clean(p, 'sheet2 suit')
         p.top(); p.eval("document.querySelectorAll('.g-dh').forEach(x=>x.remove())")
         results['sheet2'] = {'states': list(want_pose), 'shots': shots2}
 
@@ -667,11 +668,11 @@ try:
                 view(p, 1440, 900); go_on(); p.wait("!document.querySelector('.bt-theurgy')", 20)
             clean(p, f'looks alt={alt}')
             p.top(); p.eval("document.querySelectorAll('.g-dh').forEach(x=>x.remove())")
-        # Without a look's Theurgy art (Phantom Thief): the fighter's own cut-in, no look mark.
-        setup(wear=['sk-phantom'])
-        night(['solar', 'akihiko', 'yukari', 'junpei'], "FemcBattle.save.cutins='off';")
-        enter(); bdrive(SOLAR_MENU, 120)
-        p.eval(TH); p.wait("(FemcBattle.marks['theurgy-final']||FemcBattle.marks['theurgy-short']||0)>0", 30)
+        # Without a look's Theurgy art (Haechan's Black Suit; Phantom Thief has its own since batch 126): the fighter's own cut-in, no look mark.
+        setup(wear=['sk-haechan-suit'], day='12/12')
+        scripted(['solar', 'haechan', 'akihiko', 'yukari'])
+        p.eval("FemcBattle.save.cutins='off'"); bdrive(SOLAR_MENU, 120)
+        p.eval(TH.replace("'solar'", "'haechan'")); p.wait("(FemcBattle.marks['theurgy-final']||FemcBattle.marks['theurgy-short']||0)>0", 30)
         ok(not p.eval("FemcBattle.marks['theurgy-look']"), 'no look art: the fighter\'s own Theurgy')
         p.wait("!document.querySelector('.bt-theurgy')", 20)
         clean(p, 'looks fallback')
