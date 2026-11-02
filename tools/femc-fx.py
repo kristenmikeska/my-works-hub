@@ -110,6 +110,9 @@ SOURCES = {
     'ice-mitsuru': 'Added to Game/ice-mitsuru.jpeg', 'light-solar': 'Added to Game/light-solar-v1.jpeg', 'pierce-aigis': 'Added to Game/pierce-aigis.jpeg',
     'pierce-minji': 'Added to Game/pierce-minji.jpeg', 'strike-shinjiro': 'Added to Game/strike-shinjiro.jpeg', 'wind-jihoon': 'Added to Game/wind-jihoon.jpeg',
     'wind-yukari': 'Added to Game/wind-yukari.jpeg',
+    # Nov 1 2026 (FEMC-SKINS-BATTLE-DESIGN 6.3): the outfit themes' sheets (theme-hearts first, then eleven more; foxfire to come).
+    **{f'theme-{t}': f'New Adds/theme-{t}.png' for t in ('hearts', 'bubbles', 'butterflies', 'cards', 'confetti', 'glitter', 'notes',
+                                                          'petals', 'snow', 'stars', 'sunmoon', 'thorns')},
 }
 # Kat's other versions, kept in Added to Game unused (swap one into SOURCES and run `all` to try it).
 ALTERNATES = {'fire': 'fire.jpeg', 'wind': 'wind.jpeg', 'light': 'light.jpeg', 'almighty': 'almighty-v2.jpeg',

@@ -85,7 +85,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 40;
+  const ART_V = 41;
   /* Status art (tools/femc-icons.py): sticker icons for the ailments and the buff / debuff arrows, and the Tartarus map's room
      glyphs. A status chip shows its icon in place of the old name or ATK / DEF / AGI text (the name stays in its title). */
   const ICON_DIR = 'assets/femc/battle/art/icons/';
@@ -109,7 +109,8 @@
   // Searchers' finish cards (Kat's <name>-alloutattack.png, cut by tools/femc-cards.py): all four have one now; a searcher
   // without one would use their portrait. Searchers' cards carry ART_V (the S.E.E.S. ones are older and unchanged).
   const FINISH_CARDS = new Set(['haechan', 'jungwon', 'jihoon', 'minji']);
-  const finishArt = mid => ((member(mid) || {}).searcher ? (FINISH_CARDS.has(mid) ? `${FINISH_DIR}${mid}.webp?v=${ART_V}` : pimg(mid, 'serious')) : FINISH_DIR + mid + '.webp');
+  // G (Nov 1 2026): the All-Out finisher's worn look has its own finish card (cosmetics.js battle().finish) -> that card.
+  const finishArt = mid => (LOOKS && LOOKS.finish && LOOKS.finish[mid]) || ((member(mid) || {}).searcher ? (FINISH_CARDS.has(mid) ? `${FINISH_DIR}${mid}.webp?v=${ART_V}` : pimg(mid, 'serious')) : FINISH_DIR + mid + '.webp');
   // Full-body weapon stances belong on the battlefield, separate from face crops and finish cards.
   const FIELD_POSES = new Set(['solar', 'akihiko', 'junpei', 'yukari', 'aigis', 'mitsuru', 'shinjiro', 'koromaru']);
   /* Fighter pose sheets (Kat's <name>-posesheet.png, cut by tools/femc-shadow-poses.py into poses/<mid>-pose-0..5.webp:
@@ -128,7 +129,11 @@
   // The Wardrobe's looks, read fresh each time (the Wardrobe can change in the Dark Hour menu; Kat, 2026-10-27).
   const readLooks = () => { try { return window.parent !== window && window.parent.FemcCosmetics ? window.parent.FemcCosmetics.battle() : null; } catch (e) { return null; } };
   let LOOKS = readLooks();
-  function applyLooks() { LOOKS = readLooks(); let st = document.getElementById('bt-looks'); if (LOOKS && LOOKS.css) { if (!st) { st = document.createElement('style'); st.id = 'bt-looks'; document.head.appendChild(st); } st.textContent = LOOKS.css; } else if (st) st.remove(); }
+  /* An alternate sheet 2 (Alpha Phi has two, Nov 1 2026; cosmetics.js battle().pose2b): a coin flip each fight (every
+     applyLooks: page load = a story fight, and each Tartarus fight) picks it; heads keeps sheet 2 V1, Kat's default.
+     Tests: ?alt2=0|1 or window.__btAlt2 fixes it. */
+  let ALT2 = false;
+  function applyLooks() { LOOKS = readLooks(); ALT2 = window.__btAlt2 != null ? !!window.__btAlt2 : params.has('alt2') ? params.get('alt2') === '1' : Math.random() < 0.5; let st = document.getElementById('bt-looks'); if (LOOKS && LOOKS.css) { if (!st) { st = document.createElement('style'); st.id = 'bt-looks'; document.head.appendChild(st); } st.textContent = LOOKS.css; } else if (st) st.remove(); }
   applyLooks();
   /* Layered cast effects (FEMC-SKINS-BATTLE-DESIGN A): when a party member casts a non-physical skill, a short charge-up in
      the skill's element plays at the hand of their cast pose (pose 3) before the hit lands as now (fx.js charge, which reuses
@@ -160,14 +165,16 @@
   const FIGHTER_POSES2 = new Set(['solar']);
   const STATES2 = { support: [6], guard: [7], dodge: [8], down: [9], wounded: [10], dash: [11] };
   const SUPPORT_TYPES = new Set(['heal', 'buff', 'cure', 'revive', 'support', 'charge', 'ward', 'sp']);
-  const FIGHTER_HAND2 = { solar: [0.136, 0.23] }, LOOK_HAND2 = { 'sk-yukata': [0.55, 0.46] };
+  const FIGHTER_HAND2 = { solar: [0.136, 0.23] }, LOOK_HAND2 = { 'sk-cp-afterhours': [0.63, 0.26], 'sk-alphaphi': [0.63, 0.26], 'sk-alphaphi:b': [0.3, 0.23], 'sk-date': [0.13, 0.26], 'sk-esports': [0.15, 0.27], 'sk-halloween': [0.63, 0.35], 'sk-hanbok': [0.23, 0.28], 'sk-harbourcoat': [0.58, 0.23], 'sk-idol': [0.11, 0.26], 'sk-swim-lifeguard': [0.13, 0.22], 'sk-limelight': [0.62, 0.28], 'sk-cp-drive': [0.72, 0.24], 'sk-swim-night': [0.67, 0.24], 'sk-oops': [0.68, 0.26], 'sk-sugarrush': [0.18, 0.27], 'sk-cp-festival': [0.68, 0.19], 'sk-arcana-sun': [0.69, 0.27], 'sk-vp': [0.57, 0.28], 'sk-wintercoat': [0.17, 0.24], 'sk-y2k': [0.15, 0.24], 'sk-strawberry': [0.67, 0.22], 'sk-emo': [0.67, 0.28], 'sk-yukata': [0.55, 0.46] }; // Nov 1: Kat's batch, read off each pose2-0 (':b' = the alternate sheet 2's pose2b-0)
   const wornPose = mid => !!(LOOKS && LOOKS.pose && LOOKS.pose[mid]);
   const has2 = mid => (wornPose(mid) ? !!(LOOKS.pose2 && LOOKS.pose2[mid]) : FIGHTER_POSES2.has(mid));
-  const hand2Of = mid => (wornPose(mid) ? LOOK_HAND2[LOOKS.look && LOOKS.look[mid]] : FIGHTER_HAND2[mid]) || handOf(mid);
+  const hand2Of = mid => (wornPose(mid) ? (alt2On(mid) && LOOK_HAND2[LOOKS.look[mid] + ':b']) || LOOK_HAND2[LOOKS.look && LOOKS.look[mid]] : FIGHTER_HAND2[mid]) || handOf(mid);
   const statesOf = mid => (has2(mid) ? Object.assign({}, FIGHTER_STATES, STATES2) : FIGHTER_STATES);
+  const alt2On = mid => !!(ALT2 && wornPose(mid) && LOOKS.pose2b && LOOKS.pose2b[mid] && LOOKS.look);
   const posedFrames = mid => {
     const dir = wornPose(mid) ? LOOKS.pose[mid] : 'assets/femc/battle/art/poses/';
-    return [0, 1, 2, 3, 4, 5].map(i => `${dir}${mid}-pose-${i}.webp?v=${ART_V}`).concat(has2(mid) ? [0, 1, 2, 3, 4, 5].map(i => `${dir}${mid}-pose2-${i}.webp?v=${ART_V}`) : []);
+    const p2 = alt2On(mid) ? 'pose2b' : 'pose2';
+    return [0, 1, 2, 3, 4, 5].map(i => `${dir}${mid}-pose-${i}.webp?v=${ART_V}`).concat(has2(mid) ? [0, 1, 2, 3, 4, 5].map(i => `${dir}${mid}-${p2}-${i}.webp?v=${ART_V}`) : []);
   };
   const fieldPose = mid => (FIGHTER_POSES[mid] ? posedFrames(mid)[0] : `assets/femc/battle/art/poses/${mid}.webp?v=${ART_V}`);
   const hasField = mid => FIELD_POSES.has(mid) || !!FIGHTER_POSES[mid];
@@ -335,7 +342,7 @@
     return maxWait ? Promise.race([all, new Promise(r => setTimeout(r, maxWait))]) : Promise.resolve();
   }
   // The current presentation of each fighter's Theurgy (their Persona form's art, if it has its own); thArt is with theurgyCut.
-  const theurgyStills = () => (B ? B.party() : []).flatMap(p => thArt(B.theurgyDef(p)));
+  const theurgyStills = () => (B ? B.party() : []).flatMap(p => thArt(lookTheurgy(B.theurgyDef(p), p.mid)));
   /* Video clips (data.clips): a <video> loaded ahead of time. ready() resolves true once it can play through,
      false on error or after maxWait. The small file is used on phones, low-end devices and in Performance mode. */
   const clipCache = new Map();
@@ -3019,8 +3026,14 @@
   // How long a sequence's panels take at 1x (for the particle stream under them).
   const seqMs = seq => seq.slice(0, -1).reduce((a, f, i) => a + (+f.ms > 0 ? +f.ms : f.hit ? SEQ_STEP + 160 : SEQ_STEP), 0);
   let thSeen = new Set();
+  /* E (Nov 1 2026): a caster wearing a look with its own Theurgy art (cosmetics.js battle().theurgy) gets that picture as a
+     still cut-in: same crop (the fighter's focus), timing and layers as a still; the fighter's sheet, sequence, layers and
+     clip are dropped (they show the base outfit). Name, line, mechanics and the form name are unchanged. */
+  const lookTheurgy = (e, mid) => { const src = LOOKS && LOOKS.theurgy && LOOKS.theurgy[mid]; return src ? Object.assign({}, e, { img: src, sheet: null, sequence: null, layers: null, video: null, lookArt: true }) : e; };
   async function theurgyCut(e) {
+    e = lookTheurgy(e, B.U(e.src).mid);
     const u = B.U(e.src), m = member(u.mid), per = D.personas[u.personaId] || D.personas[m.persona];
+    if (e.lookArt) mark('theurgy-look');
     hideMenu();
     mark('theurgy'); mark('theurgy-' + u.mid);
     const first = !thSeen.has(u.id);
@@ -3388,21 +3401,26 @@
      ready.js lists it; else drawn here: the fighter's current battle face (outfit faces included) cropped to the eyes and
      brows, over pink / black diagonal stripes with speed lines. Persona cut-ins Off and Rush keep the old band; reduced
      motion fades it (CSS); Performance mode and Reduce flashes drop the moving lines and the white edge. Marks: onemore-strip,
-     onemore-strip-art | -code. */
+     onemore-strip-art | -code.
+     Two-stage strip (Kat's idea, Nov 1 2026): with both pictures (onemore = v1, the sideways glance; onemore2 = v2, looking
+     front with the sun in her eyes) v1 slides in (~200 ms at 1x), holds (~250 ms), a white-pink flash and a slash wipe snap
+     to v2 with a small glint pulse on the eyes, v2 holds and slides off (ONE_MORE_MS2 in all, battle speed applies; reduced
+     motion: a crossfade; Reduce flashes: no white flash). One picture plays alone as before. Mark: onemore-strip-two. */
+  const ONE_MORE_MS = 950, ONE_MORE_MS2 = 1300;
   function oneMoreStrip(u) {
     if (!LOOKS || rushActive() || save.cutins === 'off' || !member(u.mid)) return null;
-    const art = LOOKS.onemore && LOOKS.onemore[u.mid];
-    mark('onemore-strip'); mark('onemore-strip-' + (art ? 'art' : 'code'));
+    const art = LOOKS.onemore && LOOKS.onemore[u.mid], art2 = art && LOOKS.onemore2 && LOOKS.onemore2[u.mid];
+    mark('onemore-strip'); mark('onemore-strip-' + (art ? 'art' : 'code')); if (art2) mark('onemore-strip-two');
     const m = member(u.mid);
-    const inner = art ? `<img class="bt-om-art" src="${art}" alt="" draggable="false">`
+    const inner = art ? `<div class="bt-om-frame"><img class="bt-om-art v1" src="${art}" alt="" draggable="false">${art2 ? `<div class="bt-om-v2"><img class="bt-om-art" src="${art2}" alt="" draggable="false"><i class="bt-om-glint"></i><i class="bt-om-glint g2"></i></div>` : ''}</div>${art2 ? '<i class="bt-om-flash"></i>' : ''}`
       : `<i class="bt-om-stripes"></i><div class="bt-om-eyes fcb">${fimg(u.mid, m.faces.idle, '', 'om-face')}</div><i class="bt-om-lines"></i>`;
-    return `<div class="bt-om ${art ? 'art' : 'code'}" data-mid="${u.mid}" style="--mc:${m.color || '#ff4f9e'}"><div class="bt-om-in">${inner}</div></div>`;
+    return `<div class="bt-om ${art ? 'art' : 'code'}${art2 ? ' two' : ''}" data-mid="${u.mid}" style="--mc:${m.color || '#ff4f9e'}"><div class="bt-om-in">${inner}</div></div>`;
   }
   async function bigWord(text, { sub = '', gold = false, band = null, strip = null, ms = 900 } = {}) {
     const w = document.createElement('div');
     w.className = `bt-onemore${strip ? ' has-om' : ''}`;
     w.innerHTML = `${strip || (band ? `<div class="bt-band fcb">${fimg(band[0], band[1])}</div>` : '')}<div class="bt-big${gold ? ' gold' : ''}">${text}${sub ? `<small>${esc(sub)}</small>` : ''}</div>`;
-    w.querySelectorAll('.bt-band, .bt-band img, .bt-big, .bt-om, .bt-om-eyes, .bt-om-art').forEach(x => { x.style.animationDuration = `${ms / speed()}ms`; });
+    w.querySelectorAll('.bt-band, .bt-band img, .bt-big, .bt-om, .bt-om-eyes, .bt-om-frame, .bt-om-v2, .bt-om-flash, .bt-om-glint').forEach(x => { x.style.animationDuration = `${ms / speed()}ms`; });
     BT.cut.appendChild(w);
     await sleep(ms * 0.85);
     setTimeout(() => w.remove(), 300);
@@ -3645,7 +3663,7 @@
       case 'onemore': {
         const u = U(e.src);
         sfx('onemore');
-        if (u.side === 'party') { tip('onemore'); await bigWord('1 MORE!', { band: [u.mid, member(u.mid).faces.idle], strip: oneMoreStrip(u), ms: 950 }); { const hush = !!(curSpec && curSpec.rules && curSpec.rules.mute && u === B.leader()); if (hush) mark('epi-mute'); log(`${u.name}: “${hush ? '…' : member(u.mid).lines.onemore}”`, 'say'); } blogAdd(`${u.name} gets One More!`, 'pf'); mark('onemore'); }
+        if (u.side === 'party') { tip('onemore'); { const om = oneMoreStrip(u); await bigWord('1 MORE!', { band: [u.mid, member(u.mid).faces.idle], strip: om, ms: om && om.includes(' two"') ? ONE_MORE_MS2 : ONE_MORE_MS }); } { const hush = !!(curSpec && curSpec.rules && curSpec.rules.mute && u === B.leader()); if (hush) mark('epi-mute'); log(`${u.name}: “${hush ? '…' : member(u.mid).lines.onemore}”`, 'say'); } blogAdd(`${u.name} gets One More!`, 'pf'); mark('onemore'); }
         else { blogAdd(`${u.name} gets One More.`, 'ef'); banner('1 More', { enemy: true, sub: u.name }); await sleep(500); }
         break;
       }

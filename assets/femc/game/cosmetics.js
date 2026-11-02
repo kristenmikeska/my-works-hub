@@ -10,10 +10,12 @@
                victory pose stands on the win screen, and a look with `clean: true` (its cast frame re-cut without the painted
                effect) gets the layered hand charge; see battle() below.
                Part 8 (Nov 1 2026): a look's `theme` (THEMES below) frames its HUD card and bursts out of the All-Out cloud;
-               optional art game/art/skins/<id>/<who>-onemore.webp (the One More eye strip, 6:1) and <who>-entrance.webp
-               (the battle-start card, 16:9); a fighter's own look: game/art/onemore/<who>.webp, game/art/entrance/<who>.webp;
+               optional art game/art/skins/<id>/<who>-onemore.webp (the One More eye strip, 5:1) and <who>-entrance.webp
+               (the battle-start card, 16:9), <who>-onemore-v2.webp (the strip's second beat), <who>-theurgy.webp (E, the
+               look's Theurgy cut-in, 16:9) and <who>-finish.webp (G, its All-Out finish card, 16:9); a fighter's own look:
+               game/art/onemore/<who>.webp (+ <who>-v2.webp), game/art/entrance/<who>.webp;
                a couple set's Showtime game/art/couples/<set>-showtime.webp; a theme's frame game/art/frames/<theme>.webp
-               (tools/femc-wardrobe.py onemore / entrance / showtime / frame; scan lists them in ready.js).
+               (tools/femc-wardrobe.py onemore / onemore2 / entrance / theurgy / finish / showtime / frame; scan lists them in ready.js).
                S3 (Nov 1 2026): "Try it on" ([data-wd-try] in the Wardrobe and the Boutique) plays game/tryon.js from tryOnSpec().
      weapon    a weapon look for a fighter: game/art/skins/<id>/weapon.webp (the Equipment tab shows it for her weapon slot).
      evoker    a tint on the Evoker prop in summons (CSS filter; code only).
@@ -408,30 +410,37 @@ window.FemcCosmetics = (() => {
   const CLEAN = ['sk-aigis-uniform', 'sk-akihiko-champ', 'sk-akihiko-cp-festival', 'sk-akihiko-cp-ringside', 'sk-akihiko-hoodie', 'sk-akihiko-swim', 'sk-alphaphi', 'sk-arcana-sun', 'sk-cp-afterhours', 'sk-cp-drive', 'sk-cp-festival', 'sk-cp-moviedate', 'sk-cp-ringside', 'sk-cp-sunmoon', 'sk-date', 'sk-emo', 'sk-esports', 'sk-haechan-arrivals', 'sk-haechan-bad', 'sk-haechan-cp-drive', 'sk-haechan-cp-sunmoon', 'sk-haechan-fairground', 'sk-haechan-garage', 'sk-haechan-headphones', 'sk-haechan-limelight', 'sk-haechan-runners', 'sk-haechan-stage', 'sk-haechan-suit', 'sk-haechan-sweater', 'sk-haechan-sweettooth', 'sk-haechan-swim', 'sk-haechan-unravelled', 'sk-haechan-windowseat', 'sk-halloween', 'sk-hanbok', 'sk-harbourcoat', 'sk-idol', 'sk-jihoon-emo', 'sk-jihoon-pilates', 'sk-jungwon-angel', 'sk-jungwon-council', 'sk-jungwon-cp-afterhours', 'sk-jungwon-cp-moviedate', 'sk-jungwon-heir', 'sk-jungwon-pinstripe', 'sk-jungwon-sheer', 'sk-jungwon-soundcheck', 'sk-jungwon-stage', 'sk-jungwon-sweater', 'sk-jungwon-swim', 'sk-junpei-baseball', 'sk-limelight', 'sk-minji-crew', 'sk-minji-su', 'sk-mitsuru-rider', 'sk-oops', 'sk-phantom', 'sk-prowl', 'sk-roadwork', 'sk-shinjiro-apron', 'sk-snake', 'sk-strawberry', 'sk-sugarrush', 'sk-summersession', 'sk-swim-lagoon', 'sk-swim-lifeguard', 'sk-swim-night', 'sk-velvet', 'sk-vp', 'sk-wintercoat', 'sk-y2k', 'sk-yukari-kyudo', 'sk-yukari-pink', 'sk-yukata']; // look ids whose cast frame is clean (same as an ITEMS `clean: true`)
   const isClean = (x, who) => !!(x.clean || CLEAN.includes(x.id) || (((readyArt().skins || {})[x.id] || {}).clean || []).includes(who));
   /* Part 8 (FEMC-SKINS-BATTLE-DESIGN H-L, Nov 1 2026), also per fighter: theme (the look's theme id), name (the look's name),
-     couple (its couple set id), onemore / entrance (the art's path, when ready.js lists it: the worn look's, else for a
-     fighter in their own clothes game/art/onemore|entrance/<who>.webp); and showtime { set: path }, frames { theme: path }.
+     couple (its couple set id), onemore / onemore2 / entrance (the art's path, when ready.js lists it: the worn look's, else
+     for a fighter in their own clothes game/art/onemore|entrance/<who>.webp, onemore2 = onemore/<who>-v2.webp), theurgy /
+     finish (E / G: the worn look's own Theurgy cut-in and All-Out finish card), pose2b (an alternate sheet 2);
+     and showtime { set: path }, frames { theme: path }.
      A missing file is simply absent, and battle.js draws its built-in version. */
   const ART_V8 = 1; // bump when one of these files is replaced in place
   function battle() {
     if (!S()) return null;
-    const pose = {}, pose2 = {}, face = {}, clean = {}, hand = {}, look = {}, theme = {}, name = {}, couple = {}, onemore = {}, entrance = {}, showtime = {}, frames = {};
-    const out = { pose, pose2, face, clean, hand, look, theme, name, couple, onemore, entrance, showtime, frames, css: '' };
+    const pose = {}, pose2 = {}, pose2b = {}, face = {}, clean = {}, hand = {}, look = {}, theme = {}, name = {}, couple = {}, onemore = {}, onemore2 = {}, entrance = {}, theurgy = {}, finish = {}, showtime = {}, frames = {};
+    const out = { pose, pose2, pose2b, face, clean, hand, look, theme, name, couple, onemore, onemore2, entrance, theurgy, finish, showtime, frames, css: '' };
     const A = readyArt(), art = (dir, f) => `${G.base}${dir}${f}?v=${ART_V8}`;
     ITEMS.filter(x => x.kind === 'skin').forEach(x => {
       const o = onIn(slotOf(x)); if (!o || pose[o.who]) return;
       const w = o.who, R = (A.skins || {})[o.id] || {}, have = (R.portraits || {})[w] || [];
       pose[w] = G.base + skinDir(o.id); look[w] = o.id; name[w] = o.name;
       if ((R.poses2 || []).includes(w)) pose2[w] = true; // D: the look's second pose sheet (<who>-pose2-0..5, femc-wardrobe.py skin2)
+      if (pose2[w] && (R.poses2b || []).includes(w)) pose2b[w] = true; // an alternate sheet 2 (<who>-pose2b-0..5, skin2 --alt); battle.js flips a coin per fight
       if (have.length) face[w] = { dir: `${G.base}${skinDir(o.id)}portraits/${w}/`, have: have.slice(), v: 9 };
       if (isClean(o, w)) clean[w] = true;
       if (Array.isArray(o.hand)) hand[w] = o.hand.slice(0, 2);
       if (o.theme) theme[w] = o.theme;
       if (o.couple) couple[w] = o.couple;
       if ((R.onemore || []).includes(w)) onemore[w] = art(skinDir(o.id), `${w}-onemore.webp`);
+      if ((R.onemore2 || []).includes(w)) onemore2[w] = art(skinDir(o.id), `${w}-onemore-v2.webp`); // the strip's second beat
       if ((R.entrance || []).includes(w)) entrance[w] = art(skinDir(o.id), `${w}-entrance.webp`);
+      if ((R.theurgy || []).includes(w)) theurgy[w] = art(skinDir(o.id), `${w}-theurgy.webp`); // E: the look's Theurgy cut-in
+      if ((R.finish || []).includes(w)) finish[w] = art(skinDir(o.id), `${w}-finish.webp`); // G: the look's All-Out finish card
     });
     const own = A.own || {};
     (own.onemore || []).forEach(w => { if (!pose[w]) onemore[w] = art('assets/femc/game/art/onemore/', `${w}.webp`); });
+    (own.onemore2 || []).forEach(w => { if (!pose[w]) onemore2[w] = art('assets/femc/game/art/onemore/', `${w}-v2.webp`); });
     (own.entrance || []).forEach(w => { if (!pose[w]) entrance[w] = art('assets/femc/game/art/entrance/', `${w}.webp`); });
     (A.couples || []).forEach(c => { showtime[c] = art('assets/femc/game/art/couples/', `${c}-showtime.webp`); });
     (A.frames || []).forEach(t => { frames[t] = art('assets/femc/game/art/frames/', `${t}.webp`); });
@@ -460,6 +469,7 @@ window.FemcCosmetics = (() => {
       // Kat's theme effect sheet (battle/art/fx/theme-<id>.webp; ready.js `themes`, femc-wardrobe.py scan) for the burst.
       themeSheet: x.theme && (readyArt().themes || []).includes(x.theme) ? `${G.base}assets/femc/battle/art/fx/theme-${x.theme}.webp?v=${ART_V8}` : null,
       entrance: (R.entrance || []).includes(w) ? art8(`${w}-entrance.webp`) : null, onemore: (R.onemore || []).includes(w) ? art8(`${w}-onemore.webp`) : null,
+      onemore2: (R.onemore2 || []).includes(w) ? art8(`${w}-onemore-v2.webp`) : null,
       face: f ? `${G.base}${skinDir(x.id)}portraits/${w}/${f}.webp?v=9` : `${G.base}${D.portraits || 'assets/femc/portraits/'}${w}/${face0}.webp?v=${V}`, faceKey: f || face0,
       skill: { name: sk.name, el: sk.el, elName: el.name, color: el.color } };
   }

@@ -418,12 +418,89 @@ window.FEMC_FX_ART = {
   "peak": 2,
   "v": "59105889"
  },
+ "theme-bubbles": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "1f246cc5"
+ },
+ "theme-butterflies": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "9196f600"
+ },
+ "theme-cards": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "8b75bc04"
+ },
+ "theme-confetti": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "75f00ee2"
+ },
+ "theme-glitter": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "050520f0"
+ },
  "theme-hearts": {
   "blend": "lighter",
   "cell": 256,
   "frames": 6,
   "peak": 2,
   "v": "5533725c"
+ },
+ "theme-notes": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "ee07ab37"
+ },
+ "theme-petals": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "1fffa1bf"
+ },
+ "theme-snow": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "0c9f9b8e"
+ },
+ "theme-stars": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "d800d4bd"
+ },
+ "theme-sunmoon": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "7ed9cb59"
+ },
+ "theme-thorns": {
+  "blend": "lighter",
+  "cell": 256,
+  "frames": 6,
+  "peak": 2,
+  "v": "b6692ebf"
  },
  "theurgy-burst": {
   "blend": "lighter",

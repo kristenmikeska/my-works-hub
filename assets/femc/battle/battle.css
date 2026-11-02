@@ -2524,6 +2524,37 @@ html.bt-perf .bt-om-lines, html.bt-calm .bt-om-lines, .bt-perf .bt-om-lines, .bt
   .bt-om { animation: bt-om-fade 1s ease both; } .bt-om-eyes, .bt-om-art, .bt-om-lines { animation: none; }
 }
 @keyframes bt-om-fade { 0% { opacity: 0; } 15%, 80% { opacity: 1; } 100% { opacity: 0; } }
+/* Kat's art (5:1, femc-wardrobe.py onemore): the strip takes a taller shape so her eyes aren't cut; the frame covers the strip
+   like object-fit: cover (so the glints land on the eyes) and drifts. Two-stage (.two, Nov 1 2026): v1, a flash and a slash
+   wipe to v2 with a glint pulse on each eye (percentages of ONE_MORE_MS2 = 1300 ms at 1x: in 0-15%, v1 to 33%, wipe 33-40%,
+   glint 40-62%, out 85-100%). */
+.bt-om.art { --omh: clamp(110px, min(30vh, calc(112vw / 5.4)), 290px); height: var(--omh); }
+.bt-onemore.has-om .bt-om.art ~ .bt-big { top: 70%; }
+.bt-om-frame { position: absolute; left: 50%; top: 50%; width: max(100%, calc(var(--omh) * 5)); height: max(100%, calc(112vw / 5)); transform: translate(-50%, -50%) skewY(4deg) scale(1.08); animation: bt-om-drift 1s linear both; }
+.bt-om-frame .bt-om-art { transform: none; animation: none; }
+.bt-om.two { animation-name: bt-om2; }
+.bt-om-v2 { position: absolute; inset: 0; animation: bt-om-wipe 1s linear both; }
+.bt-om-flash { position: absolute; inset: 0; z-index: 4; pointer-events: none; opacity: 0; mix-blend-mode: screen;
+  background: linear-gradient(100deg, rgba(255, 79, 158, 0) 0%, rgba(255, 140, 192, .8) 30%, #fff 50%, rgba(255, 209, 230, .9) 68%, rgba(255, 79, 158, 0) 100%); animation: bt-om-flash 1s linear both; }
+.bt-om-glint { position: absolute; left: 40%; top: 55%; width: 11%; aspect-ratio: 1; translate: -50% -50%; opacity: 0; mix-blend-mode: screen; pointer-events: none;
+  background: radial-gradient(circle, #fff 0 4%, rgba(255, 214, 232, .9) 9%, rgba(255, 140, 192, .35) 24%, transparent 46%),
+    linear-gradient(90deg, transparent 47%, rgba(255, 255, 255, .95) 50%, transparent 53%), linear-gradient(0deg, transparent 47.5%, rgba(255, 255, 255, .9) 50%, transparent 52.5%);
+  -webkit-mask-image: radial-gradient(circle, #000 18%, transparent 68%); mask-image: radial-gradient(circle, #000 18%, transparent 68%); animation: bt-om-glint 1s ease-out both; }
+.bt-om-glint.g2 { left: 65%; }
+@keyframes bt-om2 { 0% { transform: skewY(-4deg) translateX(-108%); } 15% { transform: skewY(-4deg) translateX(0); } 85% { transform: skewY(-4deg) translateX(0); opacity: 1; } 100% { transform: skewY(-4deg) translateX(104%); opacity: .6; } }
+@keyframes bt-om-wipe { 0%, 33% { clip-path: polygon(-30% 0, -30% 0, -50% 100%, -50% 100%); } 40%, 100% { clip-path: polygon(-30% 0, 130% 0, 110% 100%, -50% 100%); } }
+@keyframes bt-om-flash { 0%, 31% { opacity: 0; } 36% { opacity: .95; } 47%, 100% { opacity: 0; } }
+@keyframes bt-om-glint { 0%, 39% { opacity: 0; transform: scale(.2) rotate(0deg); } 47% { opacity: 1; transform: scale(1.25) rotate(25deg); } 62% { opacity: .55; transform: scale(.7) rotate(45deg); } 74%, 100% { opacity: 0; transform: scale(.5) rotate(60deg); } }
+html.bt-calm .bt-om-flash, .bt-calm .bt-om-flash { display: none; }
+@media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) {
+  .bt-om.art { --omh: clamp(84px, calc(112vw / 4.3), 128px); height: var(--omh); }
+  .bt-onemore.has-om .bt-om.art ~ .bt-big { top: 52%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bt-om.two { animation: bt-om-fade 1s ease both; } .bt-om-frame { animation: none; }
+  .bt-om-v2 { clip-path: none; animation: bt-om-xfade 1s ease both; } .bt-om-flash, .bt-om-glint { display: none; }
+}
+@keyframes bt-om-xfade { 0%, 30% { opacity: 0; } 45%, 100% { opacity: 1; } }
 
 /* I: the battle-start entrance card. --spd: battle speed. */
 .bt-entrance { --spd: 1; position: absolute; inset: 0; z-index: 48; overflow: hidden; pointer-events: none; }

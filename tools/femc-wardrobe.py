@@ -11,6 +11,8 @@
         sheet 1's standing cast pose (frame 3), so the figure never jumps between the two sheets. Writes
         <who>-pose2-0..5.webp next to sheet 1: battle/art/poses/ for `own` (the fighter's own look; the fighter defaults to
         solar), game/art/skins/<skin>/ for an outfit (scan lists it as the skin's `poses2`).
+        `--alt` (Nov 1 2026, Alpha Phi's two versions) writes an ALTERNATE sheet 2 as <who>-pose2b-0..5.webp (scan: `poses2b`);
+        battle.js flips a coin per fight between the two.
   python3 tools/femc-wardrobe.py portraits <skin id> <who> <folder of face PNGs>
         Copies already-cut portrait PNGs (named <face>.png, e.g. from tools/femc-portraits.py) to
         assets/femc/game/art/skins/<skin>/portraits/<who>/<face>.webp.
@@ -23,9 +25,19 @@
         The same green-screen sheet with capsule goods (sticker sheets, acrylic stands, mini plush, photo cards) ->
         assets/femc/game/art/goods/<id>.webp. Ids are gacha.js GOODS ids, in reading order.
   python3 tools/femc-wardrobe.py onemore <src.png> <skin id | own> [fighter id]
-        FEMC-SKINS-BATTLE-DESIGN H: Kat's 6:1 "One More!" eye strip, centre-cropped to 6:1 -> 1800 x 300 WebP at
+        FEMC-SKINS-BATTLE-DESIGN H: Kat's "One More!" eye strip (she draws them ~3:1, often with black or white letterbox
+        bands): the flat bands are cut off, then the art is centre-cropped to 5:1 -> 1800 x 360 WebP at
         assets/femc/game/art/skins/<skin>/<who>-onemore.webp (`own` = the fighter's own look: game/art/onemore/<who>.webp).
         The fighter defaults to the look's `who` in cosmetics.js (solar for `own`).
+  python3 tools/femc-wardrobe.py onemore2 <src.png> <skin id | own> [fighter id]
+        The strip's second beat (Nov 1 2026, Kat's two-stage strip: v1 the sideways glance, v2 looking front with the sun in
+        her eyes), cut the same way -> <who>-onemore-v2.webp (own: game/art/onemore/<who>-v2.webp). With both, the strip
+        plays v1 then flashes to v2; with one, it plays alone.
+  python3 tools/femc-wardrobe.py theurgy <src.png> <skin id> [fighter id]
+        E: the look's own Theurgy cut-in (16:9, framing kept, like femc-theurgy.py cutin) -> skins/<skin>/<who>-theurgy.webp,
+        1600 x 900. battle.js uses it in place of the fighter's cut-in while the look is worn.
+  python3 tools/femc-wardrobe.py finish <src.png> <skin id> [fighter id]
+        G: the look's All-Out finish card (16:9, like femc-cards.py finish) -> skins/<skin>/<who>-finish.webp, 1600 x 900.
   python3 tools/femc-wardrobe.py entrance <src.png> <skin id | own> [fighter id]
         I: the 16:9 battle-start card -> 1600 x 900 at skins/<skin>/<who>-entrance.webp (own: game/art/entrance/<who>.webp).
   python3 tools/femc-wardrobe.py showtime <src.png> <set>
@@ -191,12 +203,17 @@ def scan():
         poses2 = sorted({f.name.split('-pose2-')[0] for f in d.glob('*-pose2-0.webp')
                          if all((d / f'{f.name.split("-pose2-")[0]}-pose2-{i}.webp').exists() for i in range(6))})
         if poses2 and d.name in skins: skins[d.name]['poses2'] = poses2  # D: a second pose sheet
-        for k in ('onemore', 'entrance'):  # part 8 art, listed only when present
-            got = sorted(f.name[:-len(f'-{k}.webp')] for f in d.glob(f'*-{k}.webp'))
+        poses2b = sorted({f.name.split('-pose2b-')[0] for f in d.glob('*-pose2b-0.webp')
+                          if all((d / f'{f.name.split("-pose2b-")[0]}-pose2b-{i}.webp').exists() for i in range(6))})
+        if poses2b and 'poses2' in skins.get(d.name, {}): skins[d.name]['poses2b'] = poses2b  # an alternate sheet 2 (skin2 --alt)
+        for k, suf in (('onemore', 'onemore'), ('onemore2', 'onemore-v2'), ('entrance', 'entrance'), ('theurgy', 'theurgy'), ('finish', 'finish')):  # part 8 / E / G art, listed only when present
+            got = sorted(f.name[:-len(f'-{suf}.webp')] for f in d.glob(f'*-{suf}.webp'))
             if got and d.name in skins: skins[d.name][k] = got
         if (d / 'weapon.webp').exists(): weapons.append(d.name)
     stems = lambda sub, cut='': sorted(f.stem[:len(f.stem) - len(cut)] if cut else f.stem for f in (ART / sub).glob(f'*{cut}.webp')) if (ART / sub).exists() else []
     own = {k: stems(k) for k in ('onemore', 'entrance')}
+    own['onemore2'] = sorted(w[:-3] for w in own['onemore'] if w.endswith('-v2'))  # the strip's second beat, <who>-v2.webp
+    own['onemore'] = [w for w in own['onemore'] if not w.endswith('-v2')]
     P = ROOT / 'assets/femc/battle/art/poses'  # D: fighters' own second sheets (battle.js reads own.poses2)
     own['poses2'] = sorted(f.name[:-len('-pose2-0.webp')] for f in P.glob('*-pose2-0.webp') if all((P / f.name.replace('-pose2-0', f'-pose2-{i}')).exists() for i in range(6)))
     FXD = ROOT / 'assets/femc/battle/art/fx'  # Kat's theme effect sheets (tools/femc-fx.py), for the Wardrobe's Try it on
@@ -218,20 +235,36 @@ def look_who(skin):
 
 def fit(src, w, h):
     """Centre-crop to w:h and scale to w x h (RGB kept opaque; alpha kept if the source has it)."""
-    im = Image.open(src); im = im.convert('RGBA' if 'A' in im.getbands() else 'RGB')
+    im = src if isinstance(src, Image.Image) else Image.open(src); im = im.convert('RGBA' if 'A' in im.getbands() else 'RGB')
     W, H = im.size; r = w / h
     box = (round((W - H * r) / 2), 0, round((W + H * r) / 2), H) if W / H > r else (0, round((H - W / r) / 2), W, round((H + W / r) / 2))
     return im.crop(box).resize((w, h), Image.LANCZOS)
 
 
+def unband(src):
+    """The source without flat letterbox bands (rows that are one even black or white across the whole width) at the top
+    and bottom: Kat's 3:1 One More strips often come with them, and a centre crop would otherwise land on a band."""
+    import numpy as np
+    im = Image.open(src).convert('RGB'); a = np.asarray(im, np.int16)
+    flat = (a.std(axis=(1, 2)) < 6) & ((a.mean(axis=(1, 2)) < 28) | (a.mean(axis=(1, 2)) > 236))
+    t = 0
+    while t < len(flat) and flat[t]: t += 1
+    b = len(flat)
+    while b > t and flat[b - 1]: b -= 1
+    if b - t < im.height // 4: return im  # (an all-flat picture: leave it)
+    return im.crop((0, t, im.width, b))
+
+
 def part8(cmd, a):
     src = find(a[1])
-    if cmd in ('onemore', 'entrance'):
+    if cmd in ('onemore', 'onemore2', 'entrance', 'theurgy', 'finish'):
         skin = a[2]; who = a[3] if len(a) > 3 else ('solar' if skin == 'own' else look_who(skin))
-        size = (1800, 300) if cmd == 'onemore' else (1600, 900)
-        out = ART / cmd / f'{who}.webp' if skin == 'own' else ART / 'skins' / skin / f'{who}-{cmd}.webp'
+        size = (1800, 360) if cmd.startswith('onemore') else (1600, 900)  # 5:1 keeps the eyes clear of the edges (Nov 1 2026)
+        if skin == 'own' and cmd in ('theurgy', 'finish'): raise SystemExit(f'{cmd}: a fighter\'s own look uses tools/femc-theurgy.py / femc-cards.py')
+        name = {'onemore2': 'onemore-v2'}.get(cmd, cmd)
+        out = (ART / 'onemore' / f'{who}-v2.webp' if cmd == 'onemore2' else ART / cmd / f'{who}.webp') if skin == 'own' else ART / 'skins' / skin / f'{who}-{name}.webp'
         if skin != 'own' and not (ART / 'skins' / skin).exists(): raise SystemExit(f'{skin}: no pose frames yet (cut the look first)')
-        im = fit(src, *size)
+        im = fit(unband(src) if cmd.startswith('onemore') else src, *size)
     elif cmd == 'showtime':
         st = a[2] if a[2].startswith('cp-') else 'cp-' + a[2]
         out, im = ART / 'couples' / f'{st}-showtime.webp', fit(src, 1600, 900)
@@ -247,7 +280,8 @@ def part8(cmd, a):
             rgb, alpha = GR.key_outer_green(np.asarray(fit(src, 1000, 400).convert('RGB')))
             im = Image.fromarray(np.dstack([rgb, alpha]), 'RGBA')
     out.parent.mkdir(parents=True, exist_ok=True)
-    im.save(out, 'WEBP', quality=90, method=5)
+    if cmd in ('theurgy', 'finish'): im = im.convert('RGB')  # full-frame pictures keep their backgrounds
+    im.save(out, 'WEBP', quality=86 if cmd in ('theurgy', 'finish') else 90, method=5)
     print(src.name, '->', out.relative_to(ROOT), im.size)
 
 
@@ -263,11 +297,12 @@ def main(a):
         for i, f in enumerate(frames): f.save(out / f'{who}-pose-{i}.webp', 'WEBP', quality=90, method=5)
         print(src.name, '->', skin, who, frames[0].size, 'idle', idle_h)
     elif cmd == 'skin2':
+        alt = '--alt' in a; a = [x for x in a if x != '--alt']
         src, skin = find(a[1]), a[2]; who = a[3] if len(a) > 3 else ('solar' if skin == 'own' else look_who(skin))
         frames, k = sheet2(src, skin, who)
         out = ROOT / 'assets/femc/battle/art/poses' if skin == 'own' else ART / 'skins' / skin
-        for i, f in enumerate(frames): f.save(out / f'{who}-pose2-{i}.webp', 'WEBP', quality=90, method=5)
-        print(src.name, '->', skin, who, 'sheet 2', frames[0].size, 'scale', round(k, 3))
+        for i, f in enumerate(frames): f.save(out / f'{who}-pose2{"b" if alt else ""}-{i}.webp', 'WEBP', quality=90, method=5)
+        print(src.name, '->', skin, who, 'sheet 2' + (' (alternate)' if alt else ''), frames[0].size, 'scale', round(k, 3))
     elif cmd == 'portraits':
         skin, who, folder = a[1], a[2], Path(a[3])
         out = ART / 'skins' / skin / 'portraits' / who; out.mkdir(parents=True, exist_ok=True)
@@ -280,7 +315,7 @@ def main(a):
         out = ART / 'skins' / skin; out.mkdir(parents=True, exist_ok=True)
         rgba.crop(rgba.getbbox()).save(out / 'weapon.webp', 'WEBP', quality=90, method=5)
         print(src.name, '->', skin, 'weapon')
-    elif cmd in ('onemore', 'entrance', 'showtime', 'frame'):
+    elif cmd in ('onemore', 'onemore2', 'entrance', 'theurgy', 'finish', 'showtime', 'frame'):
         if len(a) < 3: raise SystemExit(__doc__)
         part8(cmd, a)
     elif cmd in ('keys', 'goods'):

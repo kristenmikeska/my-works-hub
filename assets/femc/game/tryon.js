@@ -25,6 +25,7 @@ window.FemcTryOn = (() => {
     { k: 'onemore', ms: 900, f: 3, label: '1 More!' },
     { k: 'win', ms: 0, f: 5, label: 'Victory' }
   ];
+  const ONE_MORE2 = 1300; // the two-stage strip's beat (gacha.css .g-to-om.two keyframes are in shares of it)
   let cur = null;
 
   // Where the casting hand sits on the shown frame (object-fit: contain, bottom aligned), in stage pixels (like battle.js handAt).
@@ -45,7 +46,9 @@ window.FemcTryOn = (() => {
     const entrance = sp.entrance ? `<div class="en-card art"><img class="en-art" src="${esc(sp.entrance)}" alt="" draggable="false"></div>`
       : `<i class="en-sh s1"></i><i class="en-sh s2"></i><i class="en-sh s3"></i><div class="en-card"><i class="en-stripes"></i><img class="en-pose" src="${esc(sp.frames[0])}" alt="" draggable="false"></div>
         <b class="en-name"><small>${esc(sp.name)}</small>${esc(sp.whoName.toUpperCase())}</b>${enMotifs}`;
-    const om = sp.onemore ? `<img class="om-art" src="${esc(sp.onemore)}" alt="" draggable="false">`
+    // Kat's strip art; with a second picture (sp.onemore2) the two-stage strip: v1, a flash and a slash wipe to v2 with a glint
+    // on each eye (battle.js oneMoreStrip; reduced motion: a crossfade at the same beat).
+    const om = sp.onemore ? `<div class="om-frame"><img class="om-art" src="${esc(sp.onemore)}" alt="" draggable="false">${sp.onemore2 ? `<div class="om-v2"><img class="om-art" src="${esc(sp.onemore2)}" alt="" draggable="false"><i class="om-glint"></i><i class="om-glint g2"></i></div>` : ''}</div>${sp.onemore2 ? '<i class="om-flash"></i>' : ''}`
       : `<i class="om-stripes"></i><div class="om-eyes fcb">${faceImg(sp)}</div><i class="om-lines"></i>`;
     const n = o.perf ? 5 : 9, burst = th ? Array.from({ length: n }, (_, i) => { const ang = (i / n) * Math.PI * 2 - Math.PI / 2; return m(th, i, `--dx:${Math.round(Math.cos(ang) * 120)}px;--dy:${Math.round(Math.sin(ang) * 100)}px;animation-delay:${(i % 3) * 0.05}s`); }).join('') : '';
     const sparkle = th ? Array.from({ length: o.perf ? 4 : 8 }, (_, i) => m(th, i, `left:${[12, 80, 22, 70, 6, 88, 34, 60][i]}%;top:${[18, 14, 62, 70, 40, 44, 8, 34][i]}%;animation-delay:${(i * 0.23).toFixed(2)}s`)).join('') : '';
@@ -59,7 +62,7 @@ window.FemcTryOn = (() => {
         ${th && sp.themeSheet ? `<div class="g-to-burst art" aria-hidden="true" style="background-image:url('${esc(sp.themeSheet)}')"></div>` : burst ? `<div class="g-to-burst" aria-hidden="true">${burst}</div>` : ''}
         <div class="g-to-skill"><small>${esc(sp.skill.elName)}</small><b>${esc(sp.skill.name)}</b></div>
         ${sparkle ? `<div class="g-to-sparkle" aria-hidden="true">${sparkle}</div>` : ''}
-        <div class="g-to-om" aria-hidden="true"><div class="om-band">${om}</div><b class="om-word">1 MORE!</b></div>
+        <div class="g-to-om${sp.onemore2 ? ' two' : ''}" aria-hidden="true"><div class="om-band">${om}</div><b class="om-word">1 MORE!</b></div>
         <div class="g-to-en ${sp.entrance ? 'art' : 'code'}" aria-hidden="true"><i class="en-dim"></i>${entrance}</div>
         <div class="g-to-tag"><small>Try it on · ${esc(sp.whoName)}</small><b>${esc(sp.name)}</b><em class="g-to-step" aria-live="polite"></em></div>
         <ol class="g-to-prog" aria-hidden="true">${BEATS.map(b => `<li data-k="${b.k}"></li>`).join('')}</ol>
@@ -82,7 +85,7 @@ window.FemcTryOn = (() => {
     const root = el.querySelector('.g-to'), stage = el.querySelector('[data-to-stage]'), figs = [...el.querySelectorAll('.g-to-fig')];
     const me = cur = { id, sp, el, root, from, timers: [], beat: -1, done: false, fx: [], seen: [], o };
     // Every frame loaded before the first beat (a missing one never blocks: 1.2 s at most).
-    const pre = [...new Set([sp.frames[0], sp.frames[2], sp.frames[3], sp.frames[5], sp.entrance, sp.onemore, sp.onemore ? null : sp.face].filter(Boolean))].map(src => new Promise(r => { const i = new Image(); i.onload = i.onerror = r; i.src = src; }));
+    const pre = [...new Set([sp.frames[0], sp.frames[2], sp.frames[3], sp.frames[5], sp.entrance, sp.onemore, sp.onemore2, sp.onemore ? null : sp.face].filter(Boolean))].map(src => new Promise(r => { const i = new Image(); i.onload = i.onerror = r; i.src = src; }));
     const later = (ms, fn) => { me.timers.push(setTimeout(() => { if (cur === me && el.isConnected) fn(); }, ms)); };
     let front = 0;
     const frame = f => {
@@ -108,9 +111,10 @@ window.FemcTryOn = (() => {
         if (sp.clean && o.fx) later(o.reduced ? 60 : 120, charge);
         if (el.querySelector('.g-to-burst')) later(o.reduced ? 200 : 480, () => { const bu = el.querySelector('.g-to-burst'); bu.classList.add('go'); me.fx.push(bu.classList.contains('art') ? 'burst-art' : 'burst'); });
       }
-      if (b.k === 'onemore') me.fx.push('onemore-' + (sp.onemore ? 'art' : 'code'));
+      root.classList.remove('om2');
+      if (b.k === 'onemore') { me.fx.push('onemore-' + (sp.onemore ? 'art' : 'code')); if (sp.onemore && sp.onemore2) { me.fx.push('onemore-two'); later(Math.round(ONE_MORE2 * 0.36), () => root.classList.add('om2')); } }
       if (b.k === 'win') return finish();
-      later(b.ms, () => go(i + 1));
+      later(b.k === 'onemore' && sp.onemore && sp.onemore2 ? ONE_MORE2 : b.ms, () => go(i + 1));
     }
     function finish() {
       me.done = true; root.classList.add('done');
