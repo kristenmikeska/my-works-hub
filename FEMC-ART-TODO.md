@@ -2,17 +2,16 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 1):** 1 credits still (section 18: Ken) · 22 skin-series pieces for Solar (section 19: Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, couple Showtimes, theme sheets and frames, cut-ins, finish cards, second pose sheets): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`, not here. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make (updated Nov 3):** ⭐ high-resolution poses (top section: Solar first) · 1 credits still (section 18: Ken) · 22 skin-series pieces for Solar (section 19: Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 ## ⭐⭐ TOP PRIORITY when you have usage: high-resolution poses (Kat, Nov 2)
 
 **Why things look blurry:** a 3 × 2 sheet only gives each figure about 500–760 pixels of height, and the evening screen and the results screen show Solar at nearly twice that (even her school-uniform poses, and every outfit's victory pose, are stretched). The fix is **one figure per image**, tall and sharp, instead of six to a sheet.
 
 **The plan (in this order):**
-1. **Solar's own evening poses, redone one per image** (her 18 poses: arms crossed, thinking, wave, peace, hair, shy, study, ramen, watering, Evoker, stretch, phone, cheer, jump, tease, heart, look back, sewing). These show every evening.
-2. **One evening "hero" pose per Solar outfit** (32 outfits), the pose that also shows big on the results screen. Later, if you want, more poses per outfit.
-3. **The other fighters' victory poses** (their own look first), for the results screen.
-4. Optional later: battle pose sheets redone as single figures (only if the in-battle figures ever look soft to you).
+1. **Solar first (Kat, Nov 3: several poses for every outfit).** Her own look's 18 evening poses redone one per image (arms crossed, thinking, wave, peace, hair, shy, study, ramen, watering, Evoker, stretch, phone, cheer, jump, tease, heart, look back, sewing), and **several poses for each of her 32 outfits** (the evening screen rotates through them when she wears that outfit; one of them also shows big on the results screen). Drop each outfit's poses in a folder named after the outfit; Claude sorts them.
+2. **Then the other fighters' victory poses** (their own look first, then their outfits), for the results screen.
+3. Optional later: battle pose sheets redone as single figures (only if the in-battle figures ever look soft to you).
 
 **The prompt (one figure per image; change the bracketed parts):**
 Attach: the outfit's pose sheet from `Current Skins/` (or `Pose - Solar sheet.png` for her school uniform), then `Solar.png`
