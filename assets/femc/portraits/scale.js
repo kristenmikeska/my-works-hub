@@ -98,7 +98,7 @@ window.FEMC_PORTRAIT_SCALE = {
   'jisung-runners': 0.8, // batch 99: Kat's realistic Runners set
   'renjun-runners': 0.8, // batch 99: Kat's realistic Runners set
   'yerim-runners': 0.8, // batch 99: Kat's realistic Runners set
-  'mark-runners': 0.82, // batch 96: Kat's realistic remake
+  'mark-runners': 0.892, // batch 96: Kat's realistic remake; Nov 3: canvas carried 44 px lower from her expanded sheet (0.82 x 546/502, same head size)
   'minji-runners': 0.86, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
   'hanni-runners': 0.83, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
   'hyein-runners': 0.8, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
@@ -107,7 +107,7 @@ window.FEMC_PORTRAIT_SCALE = {
   'doyoung-runners': 0.76, // batch 97: Kat's remake, eyes-to-chin matched to Haechan's
   'olivia-runners': 0.83, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
   'haerin-runners': 0.8, // batch 95: Kat's realistic Runners set, eyes-to-chin matched to Haechan's
-  'chenle-runners': 0.8, // batch 96: Kat's realistic set, eyes-to-chin matched to Haechan's
+  'chenle-runners': 0.851, // batch 96: Kat's realistic set, eyes-to-chin matched to Haechan's; Nov 3: canvas carried 33 px lower from her expanded sheet (0.8 x 546/513, same head size)
   'jaehyun-runners': 0.76, // batch 97: Kat's remake, eyes-to-chin matched to Haechan's
   'jeno-runners': 0.8, // batch 97: Kat's remake, eyes-to-chin matched to Haechan's
   // batch 87: Runners event outfits (world.js eventFaces); eyes level with each one's usual face in Runners (Vision eye
@@ -295,4 +295,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 29;
+window.FEMC_PORTRAIT_V = 30;

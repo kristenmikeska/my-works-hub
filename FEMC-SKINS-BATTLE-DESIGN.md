@@ -13,13 +13,14 @@ When a fighter wears a Wardrobe look, the whole fight shows it: the figure, the 
 3. Save the picture into **New Adds** under its **Save as** name, and tell Claude. One picture per message.
 4. You don't have to make everything: a piece you skip just uses the fighter's usual version in the game.
 
-**Made so far (Nov 3 2026):** 384 pieces in the game, so they're off this list: 65 second pose sheets, 65 "1 MORE!" strips, 65 entrance cards, 54 Theurgy cut-ins, 54 finish cards (every fighter's own look but Koromaru's; all 32 of Solar's other looks; 15 of Haechan's; Jungwon's Sheer Nerve, Pinstripe Detective and Soundcheck, Akihiko's Lifeguard Captain, Yukari's Beach Volley, Minji's SU Crewneck and Jihoon's Emo Night), 53 signature effect sheets (all 32 of Solar's looks, 14 of Haechan's and those seven looks), 4 couple Showtimes (Sun & Moon, Midnight Drive, After Hours, Movie Date), 12 theme effect sheets and 12 HUD frames. **134 prompts left** below (112 + 22 signature effect sheets). (The 75 Evoker close-up prompts are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional remakes of the made pieces with the new look bibles, 180 prompts, are in `FEMC-SKINS-REMAKES.md`.)
+**Made so far (Nov 3 2026):** 398 pieces in the game, so they're off this list: 68 second pose sheets, 67 "1 MORE!" strips, 67 entrance cards, 57 Theurgy cut-ins, 56 finish cards (every fighter's own look but Koromaru's; all 32 of Solar's other looks; 15 of Haechan's; Jungwon's Sheer Nerve, Pinstripe Detective, Soundcheck, Cell Block Angel and Center Stage (and Pool Day's sheet 2 and Theurgy), Akihiko's Lifeguard Captain, Yukari's Beach Volley, Minji's SU Crewneck and Jihoon's Emo Night), 55 signature effect sheets (all 32 of Solar's looks, 14 of Haechan's and those nine finished looks), 4 couple Showtimes (Sun & Moon, Midnight Drive, After Hours, Movie Date), 12 theme effect sheets and 12 HUD frames. **120 prompts left** below (100 + 20 signature effect sheets). (The 75 Evoker close-up prompts are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional remakes of the made pieces with the new look bibles, 180 prompts, are in `FEMC-SKINS-REMAKES.md`.)
 
 > **Start here: the best next picks**
 > 1. **Haechan's last look, Sigma Chi Runner** (Haechan → Sigma Chi Runner): all six pieces (its scene faces are in); then Garage Band's signature effect sheet.
-> 2. **Koromaru's own look** (Koromaru → own look): second pose sheet, "1 MORE!" strip and entrance card, the last own look.
-> 3. **The last two couple Showtimes** (Couple Showtimes → Ringside, Summer Festival): Solar and Akihiko together.
-> 4. **Signature effect sheets for the other fighters' looks** (piece N in each look's block): one picture each.
+> 2. **Finish Jungwon's Pool Day** (Jungwon → Pool Day): its "1 MORE!" strip, entrance card, finish card and signature effect sheet (sheet 2 and Theurgy are in).
+> 3. **Koromaru's own look** (Koromaru → own look): second pose sheet, "1 MORE!" strip and entrance card, the last own look.
+> 4. **The last two couple Showtimes** (Couple Showtimes → Ringside, Summer Festival): Solar and Akihiko together.
+> 5. **Signature effect sheets for the other fighters' looks** (piece N in each look's block): one picture each.
 >
 > Want the made pieces redone in their look's own colours? That's optional: `FEMC-SKINS-REMAKES.md`.
 >
@@ -153,60 +154,7 @@ A sprite sheet of one video-game spell effect: a 3 × 2 grid of six square frame
 
 ## Jungwon
 
-Own look + 11 Wardrobe looks. His own look, Sheer Nerve, Pinstripe Detective and Soundcheck are made (Nov 3). Finish-card words: **MEETING ADJOURNED**
-
-### Cell Block Angel · `sk-jungwon-angel` · Hearts
-
-> **Look bible.** Palette: brick red, white, lollipop pink and steel grey. Vibe: prison-concept K-pop: Inmate 1004, an angel.  
-> Motifs: white feathers, halos, broken handcuff links, lollipop hearts and cell bars. Light: harsh cell-block light falling through bars. Scene: a cell block with long shadows of bars.
-
-#### 1. Second pose sheet
-
-Attach: `Current Skins/Jungwon/Cell Block Angel [sk-jungwon-angel] - pose sheet (recut).png`, then `Character Portraits/Jungwon/Jungwon-neutral.png`  
-Save as: `skin-sk-jungwon-angel-posesheet-2.png`
-```
-Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: a faded, sun-washed brick-red hoodie with one arm through its sleeve and the rest slung across his chest and over one shoulder like a cape, a white cloth patch stitched on it like an inmate tag (no readable numbers); a plain white tee under it; matching faded red track pants with white drawstrings; black-and-white sneakers with white toe caps; chunky silver band rings and white tape wrapped around a few fingers; an open silver handcuff locked on one wrist, its short chain dangling; a pink lollipop. Hair: his own black hair, a choppy layered curtain fringe falling into his eyes, longer at the front, ear-length (a look he has really worn). Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, the rapier held loosely in the other hand. Cell 2: guarding: braced low, the rapier held up in a fencer's parry, the free arm raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, his hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping the rapier. Cell 5: badly hurt: standing but hunched, one hand pressed to his side, breathing hard, the rapier lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, the rapier ready, his hair and clothes streaming back. Persona 3 Reload official art style. No text.
-```
-
-#### 2. Theurgy cut-in
-
-Attach: `Added to Game/theurgy-jungwon.png`, then `Current Skins/Jungwon/Cell Block Angel [sk-jungwon-angel] - pose sheet (recut).png`, then `Character Portraits/Jungwon/Jungwon-neutral.png`  
-Save as: `skin-sk-jungwon-angel-theurgy.png`
-```
-Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: a faded, sun-washed brick-red hoodie with one arm through its sleeve and the rest slung across his chest and over one shoulder like a cape, a white cloth patch stitched on it like an inmate tag (no readable numbers); a plain white tee under it; matching faded red track pants with white drawstrings; black-and-white sneakers with white toe caps; chunky silver band rings and white tape wrapped around a few fingers; an open silver handcuff locked on one wrist, its short chain dangling; a pink lollipop. Hair: his own black hair, a choppy layered curtain fringe falling into his eyes, longer at the front, ear-length (a look he has really worn). Same face as the THIRD attached image. Keep the Persona behind him exactly as in the first image, and keep his face in the same place in the frame. Repaint everything around the figure to this look instead of the first image's colours: the background becomes a cell block with long shadows of bars in brick red, white, lollipop pink and steel grey, the light is harsh cell-block light falling through bars, and white feathers and halos streak through the speed lines; the Persona keeps its own shape and design, lit to match. No text, no letters, no logos.
-```
-
-#### 3. "1 MORE!" eye strip
-
-Attach: `Current Skins/Jungwon/Cell Block Angel [sk-jungwon-angel] - portraits.png`, then `Character Portraits/Jungwon/Jungwon-neutral.png`  
-Save as: `skin-sk-jungwon-angel-onemore.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. His hair: his own black hair, a choppy layered curtain fringe falling into his eyes, longer at the front, ear-length (a look he has really worn), exactly as in the FIRST attached image, strands falling across the frame. Behind the face: bold flat diagonal stripes and speed lines in brick red, white, lollipop pink and steel grey, lit by harsh cell-block light falling through bars, a few tiny white feathers and halos scattered in the stripes. No text, no letters, no logos, no border.
-```
-
-#### 4. Entrance card
-
-Attach: `Current Skins/Jungwon/Cell Block Angel [sk-jungwon-angel] - pose sheet (recut).png`, then `Character Portraits/Jungwon/Jungwon-neutral.png`  
-Save as: `skin-sk-jungwon-angel-entrance.png`
-```
-A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (a faded, sun-washed brick-red hoodie with one arm through its sleeve and the rest slung across his chest and over one shoulder like a cape, a white cloth patch stitched on it like an inmate tag (no readable numbers); a plain white tee under it; matching faded red track pants with white drawstrings; black-and-white sneakers with white toe caps; chunky silver band rings and white tape wrapped around a few fingers; an open silver handcuff locked on one wrist, its short chain dangling; a pink lollipop. Hair: his own black hair, a choppy layered curtain fringe falling into his eyes, longer at the front, ear-length (a look he has really worn)), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, the rapier held out low at his side, his hair and clothes whipping back, a cool, ready look straight at the viewer. Background: a cell block with long shadows of bars, broken into flat graphic shards of brick red, white, lollipop pink and steel grey splitting apart diagonally, a few speed lines, a scatter of white feathers, halos and broken handcuff links, lit by harsh cell-block light falling through bars. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
-```
-
-#### 5. Finish card
-
-Attach: `Current Skins/Base Game/Jungwon/Jungwon - finish card.png`, then `Current Skins/Jungwon/Cell Block Angel [sk-jungwon-angel] - pose sheet (recut).png`, then `Character Portraits/Jungwon/Jungwon-neutral.png`  
-Save as: `skin-sk-jungwon-angel-finish.png`
-```
-Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image's layout and art style: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows. The character in the same place, size and crop as in the first image, turned toward the viewer with a confident finishing pose and a small knowing smile; huge bold slanted words where the first image has its words; flat graphic background shapes and thin lines behind him. Change his outfit and hair to the look in the SECOND attached image: a faded, sun-washed brick-red hoodie with one arm through its sleeve and the rest slung across his chest and over one shoulder like a cape, a white cloth patch stitched on it like an inmate tag (no readable numbers); a plain white tee under it; matching faded red track pants with white drawstrings; black-and-white sneakers with white toe caps; chunky silver band rings and white tape wrapped around a few fingers; an open silver handcuff locked on one wrist, its short chain dangling; a pink lollipop. Hair: his own black hair, a choppy layered curtain fringe falling into his eyes, longer at the front, ear-length (a look he has really worn). Same face as the THIRD attached image. Background: a cell block with long shadows of bars, as flat graphic shapes in brick red, white, lollipop pink and steel grey, white feathers and halos drifting across, lit by harsh cell-block light falling through bars. The words are white with a brick red outline. The words read exactly: MEETING ADJOURNED. No other text, no logos, no watermark.
-```
-
-#### 6. Signature effect sheet (piece N)
-
-Attach: `Added to Game/heal.jpeg` (format and spacing only)  
-Save as: `skin-sk-jungwon-angel-fx.png`
-```
-A sprite sheet of one video-game spell effect: a 3 × 2 grid of six square frames (3 columns, 2 rows), read left to right, top to bottom, on a pure solid black background (#000000). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty black margin (at least 10%) on every side so nothing touches or crosses into the next frame. Frame 1: one white feather flickers on in the centre. Frame 2: a few white feathers and broken cuff links appear around it, white light gathering. Frame 3, the peak: a halo flashing open with white feathers and broken handcuff links bursting outward. Frame 4: the white feathers and broken cuff links spreading wider, tumbling and turning. Frame 5: the white feathers and broken cuff links breaking into small pink hearts. Frame 6: a few last tiny white feathers and broken cuff links and pink hearts fading. Style: Persona 3 Reload battle VFX: sharp, stylish, graphic shapes with clean hard edges, white-hot cores, brick red, white, lollipop pink and steel grey, high contrast, readable at small size. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2.
-```
+Own look + 11 Wardrobe looks. His own look, Sheer Nerve, Pinstripe Detective, Soundcheck, Cell Block Angel and Center Stage are made (Nov 3); Pool Day is part-made. Finish-card words: **MEETING ADJOURNED**
 
 ### Sweater Weather · `sk-jungwon-sweater` · Hearts
 
@@ -314,81 +262,14 @@ Save as: `skin-sk-jungwon-heir-fx.png`
 A sprite sheet of one video-game spell effect: a 3 × 2 grid of six square frames (3 columns, 2 rows), read left to right, top to bottom, on a pure solid black background (#000000). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty black margin (at least 10%) on every side so nothing touches or crosses into the next frame. Frame 1: one gold-edged card flickers on in the centre. Frame 2: a few gold-edged cards and wax seals appear around it, dark green light gathering. Frame 3, the peak: gold-edged cards fanning out from a gold flash, wax seals tumbling. Frame 4: the gold-edged cards and wax seals spreading wider, tumbling and turning. Frame 5: the gold-edged cards and wax seals breaking into small gold dust. Frame 6: a few last tiny gold-edged cards and wax seals and gold dust fading. Style: Persona 3 Reload battle VFX: sharp, stylish, graphic shapes with clean hard edges, white-hot cores, charcoal, tie dark green, signet gold and black, high contrast, readable at small size. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2.
 ```
 
-### Center Stage · `sk-jungwon-stage` · Music notes
-
-> **Look bible.** Palette: pearl white, silver, black and ice blue. Vibe: centre position, cool precision.  
-> Motifs: spotlight beams, silver chains, music notes and mirror shards. Light: ice blue spotlight on white. Scene: a white stage with crossing ice blue spotlights.
-
-#### 1. Second pose sheet
-
-Attach: `Current Skins/Jungwon/Center Stage [sk-jungwon-stage] - pose sheet (recut).png`, then `Character Portraits/Jungwon/Jungwon-neutral.png`  
-Save as: `skin-sk-jungwon-stage-posesheet-2.png`
-```
-Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: a K-pop stage outfit: a white cropped stage jacket with silver chain details and sharp shoulders, a black shirt, white slim trousers, white boots, a slim headset microphone at his cheek, a silver ear cuff. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, the rapier held loosely in the other hand. Cell 2: guarding: braced low, the rapier held up in a fencer's parry, the free arm raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, his hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping the rapier. Cell 5: badly hurt: standing but hunched, one hand pressed to his side, breathing hard, the rapier lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, the rapier ready, his hair and clothes streaming back. Persona 3 Reload official art style. No text.
-```
-
-#### 2. Theurgy cut-in
-
-Attach: `Added to Game/theurgy-jungwon.png`, then `Current Skins/Jungwon/Center Stage [sk-jungwon-stage] - pose sheet (recut).png`, then `Character Portraits/Jungwon/Jungwon-neutral.png`  
-Save as: `skin-sk-jungwon-stage-theurgy.png`
-```
-Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: a K-pop stage outfit: a white cropped stage jacket with silver chain details and sharp shoulders, a black shirt, white slim trousers, white boots, a slim headset microphone at his cheek, a silver ear cuff. Same face as the THIRD attached image. Keep the Persona behind him exactly as in the first image, and keep his face in the same place in the frame. Repaint everything around the figure to this look instead of the first image's colours: the background becomes a white stage with crossing ice blue spotlights in pearl white, silver, black and ice blue, the light is ice blue spotlight on white, and spotlight beams and silver chains streak through the speed lines; the Persona keeps its own shape and design, lit to match. No text, no letters, no logos.
-```
-
-#### 3. "1 MORE!" eye strip
-
-Attach: `Current Skins/Jungwon/Center Stage [sk-jungwon-stage] - portraits.png`, then `Character Portraits/Jungwon/Jungwon-neutral.png`  
-Save as: `skin-sk-jungwon-stage-onemore.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. His hair: his short black hair, exactly as in the FIRST attached image, strands falling across the frame. Keep these from the look, exactly as in the FIRST attached image, wherever they show in the crop: a slim headset microphone at his cheek. Behind the face: bold flat diagonal stripes and speed lines in pearl white, silver, black and ice blue, lit by ice blue spotlight on white, a few tiny spotlight beams and silver chains scattered in the stripes. No text, no letters, no logos, no border.
-```
-
-#### 4. Entrance card
-
-Attach: `Current Skins/Jungwon/Center Stage [sk-jungwon-stage] - pose sheet (recut).png`, then `Character Portraits/Jungwon/Jungwon-neutral.png`  
-Save as: `skin-sk-jungwon-stage-entrance.png`
-```
-A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (a K-pop stage outfit: a white cropped stage jacket with silver chain details and sharp shoulders, a black shirt, white slim trousers, white boots, a slim headset microphone at his cheek, a silver ear cuff), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, the rapier held out low at his side, his hair and clothes whipping back, a cool, ready look straight at the viewer. Background: a white stage with crossing ice blue spotlights, broken into flat graphic shards of pearl white, silver, black and ice blue splitting apart diagonally, a few speed lines, a scatter of spotlight beams, silver chains and music notes, lit by ice blue spotlight on white. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
-```
-
-#### 5. Finish card
-
-Attach: `Current Skins/Base Game/Jungwon/Jungwon - finish card.png`, then `Current Skins/Jungwon/Center Stage [sk-jungwon-stage] - pose sheet (recut).png`, then `Character Portraits/Jungwon/Jungwon-neutral.png`  
-Save as: `skin-sk-jungwon-stage-finish.png`
-```
-Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image's layout and art style: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows. The character in the same place, size and crop as in the first image, turned toward the viewer with a confident finishing pose and a small knowing smile; huge bold slanted words where the first image has its words; flat graphic background shapes and thin lines behind him. Change his outfit and hair to the look in the SECOND attached image: a K-pop stage outfit: a white cropped stage jacket with silver chain details and sharp shoulders, a black shirt, white slim trousers, white boots, a slim headset microphone at his cheek, a silver ear cuff. Same face as the THIRD attached image. Background: a white stage with crossing ice blue spotlights, as flat graphic shapes in pearl white, silver, black and ice blue, spotlight beams and silver chains drifting across, lit by ice blue spotlight on white. The words are pearl white with an ice blue outline. The words read exactly: MEETING ADJOURNED. No other text, no logos, no watermark.
-```
-
-#### 6. Signature effect sheet (piece N)
-
-Attach: `Added to Game/heal.jpeg` (format and spacing only)  
-Save as: `skin-sk-jungwon-stage-fx.png`
-```
-A sprite sheet of one video-game spell effect: a 3 × 2 grid of six square frames (3 columns, 2 rows), read left to right, top to bottom, on a pure solid black background (#000000). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty black margin (at least 10%) on every side so nothing touches or crosses into the next frame. Frame 1: one silver mirror shard flickers on in the centre. Frame 2: a few mirror shards and music notes appear around it, ice blue light gathering. Frame 3, the peak: mirror shards bursting out from an ice blue flash, notes spinning. Frame 4: the mirror shards and music notes spreading wider, tumbling and turning. Frame 5: the mirror shards and music notes breaking into small silver glitter. Frame 6: a few last tiny mirror shards and music notes and silver glitter fading. Style: Persona 3 Reload battle VFX: sharp, stylish, graphic shapes with clean hard edges, white-hot cores, pearl white, silver, black and ice blue, high contrast, readable at small size. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2.
-```
-
 ### Pool Day · `sk-jungwon-swim` · Bubbles
 
 > **Look bible.** Palette: lane blue, black, white and chlorine aqua. Vibe: neat, disciplined swim practice.  
 > Motifs: lane lines, bubbles, goggle glints and ripples. Light: bright indoor pool light. Scene: an indoor pool with lane ropes.
 
-#### 1. Second pose sheet
+Made (Nov 3): the second pose sheet and the Theurgy cut-in. Still to make: the four below.
 
-Attach: `Current Skins/Jungwon/Pool Day [sk-jungwon-swim] - pose sheet (recut).png`, then `Character Portraits/Jungwon/Jungwon-neutral.png`  
-Save as: `skin-sk-jungwon-swim-posesheet-2.png`
-```
-Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: a fitted black short-sleeved zip-up rash guard with white side panels, black swim trunks with a white stripe, a white towel around his neck, clear swim goggles pushed up on his forehead, black slides, a black sports watch. Hair: his own black hair, wet and pushed back off his forehead by the goggles, a few strands falling forward (a look he has really worn). Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, the rapier held loosely in the other hand. Cell 2: guarding: braced low, the rapier held up in a fencer's parry, the free arm raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, his hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping the rapier. Cell 5: badly hurt: standing but hunched, one hand pressed to his side, breathing hard, the rapier lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, the rapier ready, his hair and clothes streaming back. Persona 3 Reload official art style. No text.
-```
-
-#### 2. Theurgy cut-in
-
-Attach: `Added to Game/theurgy-jungwon.png`, then `Current Skins/Jungwon/Pool Day [sk-jungwon-swim] - pose sheet (recut).png`, then `Character Portraits/Jungwon/Jungwon-neutral.png`  
-Save as: `skin-sk-jungwon-swim-theurgy.png`
-```
-Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: a fitted black short-sleeved zip-up rash guard with white side panels, black swim trunks with a white stripe, a white towel around his neck, clear swim goggles pushed up on his forehead, black slides, a black sports watch. Hair: his own black hair, wet and pushed back off his forehead by the goggles, a few strands falling forward (a look he has really worn). Same face as the THIRD attached image. Keep the Persona behind him exactly as in the first image, and keep his face in the same place in the frame. Repaint everything around the figure to this look instead of the first image's colours: the background becomes an indoor pool with lane ropes in lane blue, black, white and chlorine aqua, the light is bright indoor pool light, and lane lines and bubbles streak through the speed lines; the Persona keeps its own shape and design, lit to match. No text, no letters, no logos.
-```
-
-#### 3. "1 MORE!" eye strip
+#### 1. "1 MORE!" eye strip
 
 Attach: `Current Skins/Jungwon/Pool Day [sk-jungwon-swim] - portraits.png`, then `Character Portraits/Jungwon/Jungwon-neutral.png`  
 Save as: `skin-sk-jungwon-swim-onemore.png`
@@ -396,7 +277,7 @@ Save as: `skin-sk-jungwon-swim-onemore.png`
 A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. His hair: his own black hair, wet and pushed back off his forehead by the goggles, a few strands falling forward (a look he has really worn), exactly as in the FIRST attached image, strands falling across the frame. Keep these from the look, exactly as in the FIRST attached image, wherever they show in the crop: clear swim goggles pushed up on his forehead. Behind the face: bold flat diagonal stripes and speed lines in lane blue, black, white and chlorine aqua, lit by bright indoor pool light, a few tiny lane lines and bubbles scattered in the stripes. No text, no letters, no logos, no border.
 ```
 
-#### 4. Entrance card
+#### 2. Entrance card
 
 Attach: `Current Skins/Jungwon/Pool Day [sk-jungwon-swim] - pose sheet (recut).png`, then `Character Portraits/Jungwon/Jungwon-neutral.png`  
 Save as: `skin-sk-jungwon-swim-entrance.png`
@@ -404,7 +285,7 @@ Save as: `skin-sk-jungwon-swim-entrance.png`
 A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (a fitted black short-sleeved zip-up rash guard with white side panels, black swim trunks with a white stripe, a white towel around his neck, clear swim goggles pushed up on his forehead, black slides, a black sports watch. Hair: his own black hair, wet and pushed back off his forehead by the goggles, a few strands falling forward (a look he has really worn)), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, the rapier held out low at his side, his hair and clothes whipping back, a cool, ready look straight at the viewer. Background: an indoor pool with lane ropes, broken into flat graphic shards of lane blue, black, white and chlorine aqua splitting apart diagonally, a few speed lines, a scatter of lane lines, bubbles and goggle glints, lit by bright indoor pool light. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
 ```
 
-#### 5. Finish card
+#### 3. Finish card
 
 Attach: `Current Skins/Base Game/Jungwon/Jungwon - finish card.png`, then `Current Skins/Jungwon/Pool Day [sk-jungwon-swim] - pose sheet (recut).png`, then `Character Portraits/Jungwon/Jungwon-neutral.png`  
 Save as: `skin-sk-jungwon-swim-finish.png`
@@ -412,7 +293,7 @@ Save as: `skin-sk-jungwon-swim-finish.png`
 Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image's layout and art style: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows. The character in the same place, size and crop as in the first image, turned toward the viewer with a confident finishing pose and a small knowing smile; huge bold slanted words where the first image has its words; flat graphic background shapes and thin lines behind him. Change his outfit and hair to the look in the SECOND attached image: a fitted black short-sleeved zip-up rash guard with white side panels, black swim trunks with a white stripe, a white towel around his neck, clear swim goggles pushed up on his forehead, black slides, a black sports watch. Hair: his own black hair, wet and pushed back off his forehead by the goggles, a few strands falling forward (a look he has really worn). Same face as the THIRD attached image. Background: an indoor pool with lane ropes, as flat graphic shapes in lane blue, black, white and chlorine aqua, lane lines and bubbles drifting across, lit by bright indoor pool light. The words are white with a lane blue outline. The words read exactly: MEETING ADJOURNED. No other text, no logos, no watermark.
 ```
 
-#### 6. Signature effect sheet (piece N)
+#### 4. Signature effect sheet (piece N)
 
 Attach: `Added to Game/heal.jpeg` (format and spacing only)  
 Save as: `skin-sk-jungwon-swim-fx.png`

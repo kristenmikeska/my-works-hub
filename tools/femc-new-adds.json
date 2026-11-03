@@ -32508,6 +32508,365 @@
         "assets/femc/game/art/skins/sk-cp-afterhours/hd/wave.webp": "f8673420b1ce78ca4f3082346e89bf9ddc097d283c39b0119ecb1b3808e2a1c7"
       },
       "skin": "sk-cp-afterhours"
+    },
+    {
+      "batch": 135,
+      "source": "Six character poses, clean transparent cutouts.png",
+      "sourceNow": "New Adds/JW-Center Stage/Six character poses, clean transparent cutouts.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3afd6c9c7ce77c7f65433d6840adc82744fd3b36342fea205ef38782ce7fd868",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-stage/",
+      "skin": "sk-jungwon-stage",
+      "character": "jungwon",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"JW-Center Stage/Six character poses, clean transparent cutouts.png\" sk-jungwon-stage jungwon",
+      "identifiedBy": "identified by looking (transparent 3x2)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-pose2-0.webp": "fff2ff440f086e153bfd2d04c59f255546a7b5f3c630efee56bc9ccece59db96",
+        "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-pose2-1.webp": "f570ff0954c36f4032f73f0d219ad35096e6a30e442ba7c9eb963b765280e2ff",
+        "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-pose2-2.webp": "17cae0a7997ac29acd02a0a0415268a27e48ccde679f1ab8e7ea092eb7773f67",
+        "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-pose2-3.webp": "bf8c2597620bbf8ad574aef496f54a468a1060a81dbc0d924560f4554c504698",
+        "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-pose2-4.webp": "a8a50c2032384789890a4e033e2e82f332e372ed7a8238c71dfe465af28f7ddb",
+        "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-pose2-5.webp": "e8cf0d18b9bd93929324ae81f1ac9d05d88dbf1f91f8a3b42a8ec752c63e9e45"
+      }
+    },
+    {
+      "batch": 135,
+      "source": "Rapier ready under ice-blue lights.png",
+      "sourceNow": "New Adds/JW-Center Stage/Rapier ready under ice-blue lights.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e60cc8f4ce258143ad0330214259c9ba02946d996b8590027f584784c09dbffb",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-entrance.webp",
+      "skin": "sk-jungwon-stage",
+      "character": "jungwon",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when they lead, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"JW-Center Stage/Rapier ready under ice-blue lights.png\" sk-jungwon-stage jungwon",
+      "identifiedBy": "identified by looking (shard card)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-entrance.webp": "812694a6f6e942c1b6eb4fe208502a94a73306a4bf3e014a145163b25d345b22"
+      }
+    },
+    {
+      "batch": 135,
+      "source": "Determined Eyes in Ice-Blue Motion.png",
+      "sourceNow": "New Adds/JW-Center Stage/Determined Eyes in Ice-Blue Motion.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "8a55fc1a49b2549c2479707123671fa09ed1fe4aa58a74407ab70a4d3bd94b9c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-onemore.webp",
+      "skin": "sk-jungwon-stage",
+      "character": "jungwon",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"JW-Center Stage/Determined Eyes in Ice-Blue Motion.png\" sk-jungwon-stage jungwon",
+      "identifiedBy": "identified by looking (eye strip)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-onemore.webp": "804938289af8a5b6ba2802cd099558f99bf5ae37b0514312bbc2a5378757fa4a"
+      }
+    },
+    {
+      "batch": 135,
+      "source": "Ice-blue armored serpent stage strike.png",
+      "sourceNow": "New Adds/JW-Center Stage/Ice-blue armored serpent stage strike.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "d14a4f58efd38fb133a3151a7733d5c3985be744e0f80f80f78691a83d7b5ea5",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-theurgy.webp",
+      "skin": "sk-jungwon-stage",
+      "character": "jungwon",
+      "conversion": "16:9, framing kept, 1600 x 900 WebP",
+      "placement": "the look's Theurgy cut-in",
+      "tool": "femc-wardrobe.py theurgy \"JW-Center Stage/Ice-blue armored serpent stage strike.png\" sk-jungwon-stage jungwon",
+      "identifiedBy": "identified by looking (Persona behind)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-theurgy.webp": "c7430c958dac7aae7ba9c4d78455b26070f77d9bdb2f2426b222b9a0c1abcd5d"
+      }
+    },
+    {
+      "batch": 135,
+      "source": "Ice-blue meeting adjourned stage finisher.png",
+      "sourceNow": "New Adds/JW-Center Stage/Ice-blue meeting adjourned stage finisher.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "64b9105d05e854cd5ac12e6110a39c7c22ad4e3690960424d5eea61251abeb33",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-finish.webp",
+      "skin": "sk-jungwon-stage",
+      "character": "jungwon",
+      "conversion": "16:9, 1600 x 900 WebP",
+      "placement": "the look's All-Out finish card",
+      "tool": "femc-wardrobe.py finish \"JW-Center Stage/Ice-blue meeting adjourned stage finisher.png\" sk-jungwon-stage jungwon",
+      "identifiedBy": "identified by looking (the finish words: MEETING ADJOURNED)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-stage/jungwon-finish.webp": "6471ee4aca8ac30c1b1dc0541dfbef66b81cb34ff46ae3f59e0da983938aedc0"
+      }
+    },
+    {
+      "batch": 135,
+      "source": "Six-step ice mirror spell burst.png",
+      "sourceNow": "New Adds/JW-Center Stage/Six-step ice mirror spell burst.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "20c7fd61f59856e574b54df8cf96ba90849f911f58fe4e1fa8caa053a3c7a0bd",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-stage/fx.webp",
+      "skin": "sk-jungwon-stage",
+      "character": "jungwon",
+      "conversion": "3 x 2 effect sheet, light keyed from black, 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-jungwon-stage \"JW-Center Stage/Six-step ice mirror spell burst.png\"",
+      "identifiedBy": "identified by looking (3x2 effects on black)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-stage/fx.webp": "c40b6cccda35c452ba0e5576c1de8297bd390d2b12165ec287064a6488262a7b"
+      }
+    },
+    {
+      "batch": 135,
+      "source": "Rapier fighter six-pose battle sheet.png",
+      "sourceNow": "New Adds/JW-Cell Block Angel/Rapier fighter six-pose battle sheet.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "47656be227e055de48080a1ebfa30ecc10994d782f010c168f5d92d873f1d37b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-angel/",
+      "skin": "sk-jungwon-angel",
+      "character": "jungwon",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"JW-Cell Block Angel/Rapier fighter six-pose battle sheet.png\" sk-jungwon-angel jungwon",
+      "identifiedBy": "identified by looking (transparent 3x2)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-pose2-0.webp": "3df301fb2d62d756ee0415f84ccc132fb33fecca35bb1ed0fcb69dad67ca7654",
+        "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-pose2-1.webp": "2a2ac2784fda67f3311c46fb118cf93b3c8229bed667ca5a20b493b3064bb5ce",
+        "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-pose2-2.webp": "e1a966c02ab3ca706b52eb0b240cb7eb5805e95d651645655a736a7e3720d411",
+        "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-pose2-3.webp": "3ce10279e683fd8e94aeaeec08fbb88a7cb26937fde2cd4844fa1e4c0ffb7201",
+        "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-pose2-4.webp": "4b972990ba4c5181e5ddb889414c4556c19285f525a561f4bb02c3ce20084791",
+        "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-pose2-5.webp": "b647dfcba7eb87b17dbf02c905c13d4ace4ca60fb9036f2771f61f82e9ab3d74"
+      }
+    },
+    {
+      "batch": 135,
+      "source": "Pink Lollipop Rapier Duelist.png",
+      "sourceNow": "New Adds/JW-Cell Block Angel/Pink Lollipop Rapier Duelist.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "bb64c80aebfd7d8fb20f03c2b8983ba50f13f96628885354f0c3dd94a4c409dd",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-entrance.webp",
+      "skin": "sk-jungwon-angel",
+      "character": "jungwon",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when they lead, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"JW-Cell Block Angel/Pink Lollipop Rapier Duelist.png\" sk-jungwon-angel jungwon",
+      "identifiedBy": "identified by looking (shard card)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-entrance.webp": "17aa5ed71c11a8b8161ad7dd5278af29a7e2f1084a563ec49091cdd3423daca0"
+      }
+    },
+    {
+      "batch": 135,
+      "source": "Determined Eyes Under Striped Light.png",
+      "sourceNow": "New Adds/JW-Cell Block Angel/Determined Eyes Under Striped Light.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "3d4e6c137ad8a81c6961f0da6db5e644b987b55fcead875ae96d1353413e1195",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-onemore.webp",
+      "skin": "sk-jungwon-angel",
+      "character": "jungwon",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"JW-Cell Block Angel/Determined Eyes Under Striped Light.png\" sk-jungwon-angel jungwon",
+      "identifiedBy": "identified by looking (eye strip)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-onemore.webp": "02f51e4e7fb05b606dd5462221c9a257d6cc772009ffda4ef82c734ca93c1180"
+      }
+    },
+    {
+      "batch": 135,
+      "source": "Crimson Hoodie Serpent Ultimate Attack.png",
+      "sourceNow": "New Adds/JW-Cell Block Angel/Crimson Hoodie Serpent Ultimate Attack.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "26bd210da888ea9349771a90fd725c517730b71e719ac9dfb554f7a3e50a18fa",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-theurgy.webp",
+      "skin": "sk-jungwon-angel",
+      "character": "jungwon",
+      "conversion": "16:9, framing kept, 1600 x 900 WebP",
+      "placement": "the look's Theurgy cut-in",
+      "tool": "femc-wardrobe.py theurgy \"JW-Cell Block Angel/Crimson Hoodie Serpent Ultimate Attack.png\" sk-jungwon-angel jungwon",
+      "identifiedBy": "identified by looking (Persona behind)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-theurgy.webp": "d8cd50af453b76a8b5db6a5a3c92037cbfa546c510ec1cdeaf961a098059ff96"
+      }
+    },
+    {
+      "batch": 135,
+      "source": "Meeting Adjourned_ Brick-Red Rapier Finish.png",
+      "sourceNow": "New Adds/JW-Cell Block Angel/Meeting Adjourned_ Brick-Red Rapier Finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "aa61e7c839fcaf9e4fb0a7113b2847c29137ebf38c9f662d2a375b7131415fa2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-finish.webp",
+      "skin": "sk-jungwon-angel",
+      "character": "jungwon",
+      "conversion": "16:9, 1600 x 900 WebP",
+      "placement": "the look's All-Out finish card",
+      "tool": "femc-wardrobe.py finish \"JW-Cell Block Angel/Meeting Adjourned_ Brick-Red Rapier Finish.png\" sk-jungwon-angel jungwon",
+      "identifiedBy": "identified by looking (the finish words: MEETING ADJOURNED)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-angel/jungwon-finish.webp": "f3b28d58d3e47ddb742f2173776944816dad875c879b74b10b67a578093e3aec"
+      }
+    },
+    {
+      "batch": 135,
+      "source": "Halo, feathers, and broken chains.png",
+      "sourceNow": "New Adds/JW-Cell Block Angel/Halo, feathers, and broken chains.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a6896831a281956109efd55c4aed6eb255e25218f0e1374b01396c755010fc02",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-angel/fx.webp",
+      "skin": "sk-jungwon-angel",
+      "character": "jungwon",
+      "conversion": "3 x 2 effect sheet, light keyed from black, 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-jungwon-angel \"JW-Cell Block Angel/Halo, feathers, and broken chains.png\"",
+      "identifiedBy": "identified by looking (3x2 effects on black)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-angel/fx.webp": "6d56d0fc06588f0a8bab847c48c26ec4d177a3421fa7cf169cdefdd994601473"
+      }
+    },
+    {
+      "batch": 135,
+      "source": "Six isolated character sprites.png",
+      "sourceNow": "New Adds/JW-Pool Day/Six isolated character sprites.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "370cd36a112e76286ba5720711d6079b319bec81247ecc61d6eae87213239744",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-swim/",
+      "skin": "sk-jungwon-swim",
+      "character": "jungwon",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"JW-Pool Day/Six isolated character sprites.png\" sk-jungwon-swim jungwon",
+      "identifiedBy": "identified by looking (transparent 3x2)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-swim/jungwon-pose2-0.webp": "21504e681e35a9c4b9ce6f12462bc7f63687002492570505d4e85d6a25c764e2",
+        "assets/femc/game/art/skins/sk-jungwon-swim/jungwon-pose2-1.webp": "fa54fb177a60049fad1dcf2192eb3cc54fb4cce2cc7f35662253e776fb4d7521",
+        "assets/femc/game/art/skins/sk-jungwon-swim/jungwon-pose2-2.webp": "6519cb3d266e3a2b9eeb09f3c3b86706584ff8ddb437334b2870748989757b29",
+        "assets/femc/game/art/skins/sk-jungwon-swim/jungwon-pose2-3.webp": "4cc000b4a1cb29977e00660b4571eb575c34e943762c12deb82b867eada476e1",
+        "assets/femc/game/art/skins/sk-jungwon-swim/jungwon-pose2-4.webp": "df87b9207cd9aec3e78f466982824ed6c6eda4784516b2a33a7e074eecf7e59e",
+        "assets/femc/game/art/skins/sk-jungwon-swim/jungwon-pose2-5.webp": "4a3fe433e60cd8891452590a08da166ebfe6f53c6a64f54a628aa57fa9391b94"
+      }
+    },
+    {
+      "batch": 135,
+      "source": "Aquatic Serpent Ultimate Attack.png",
+      "sourceNow": "New Adds/JW-Pool Day/Aquatic Serpent Ultimate Attack.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "c0c3fe7a3f061692660e908b04b02045e554af93da460a286e4111727d07bfba",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-swim/jungwon-theurgy.webp",
+      "skin": "sk-jungwon-swim",
+      "character": "jungwon",
+      "conversion": "16:9, framing kept, 1600 x 900 WebP",
+      "placement": "the look's Theurgy cut-in",
+      "tool": "femc-wardrobe.py theurgy \"JW-Pool Day/Aquatic Serpent Ultimate Attack.png\" sk-jungwon-swim jungwon",
+      "identifiedBy": "identified by looking (Persona behind)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-swim/jungwon-theurgy.webp": "a0606e5038b50ad3ced442e3d9ab9b78504a5509d8c30ae39a7287045948595f"
+      }
+    },
+    {
+      "batch": 135,
+      "source": "mark-expanded-portraits.png",
+      "sourceNow": "New Adds/mark-expanded-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ea14dab00335f02b3f3c4a1810e5af8e1fec163830c056bbb7613a56ed518fe6",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/mark-runners/",
+      "character": "mark",
+      "conversion": "each face matched to its cell (template match, refined on the shoulders); the old face pixels kept and the canvas carried 44 px lower with Kat's expanded sheet (crossfade above the old bottom rows), same width, WebP q92",
+      "placement": "Runners-world scene portraits (mark-runners): same head size in scenes (scale.js raised by the canvas growth), body now down to the bottom edge",
+      "tool": "one-off script (template match + extend), like tools/femc-recut-portraits.py",
+      "identifiedBy": "Kat's file name; cells in order neutral, happy, serious / surprised, flustered, sad",
+      "outputs": {
+        "assets/femc/portraits/mark-runners/flustered.webp": "cb7fd56a199b77a893e0f39722da711e359ddd19ffdd6e00cb2511952f507d72",
+        "assets/femc/portraits/mark-runners/happy.webp": "a889991d9acda8224225e0afef1df71ba3be67e1c34823fa8f71161b2d998471",
+        "assets/femc/portraits/mark-runners/neutral.webp": "c7178ec02f0d303b4fc960148c92a164ea86863cc68a4143c4c5b4833e36fca3",
+        "assets/femc/portraits/mark-runners/sad.webp": "2aa313ede8903d08f1c75473def161bbb7ce0e5013384aac928013112ecb0514",
+        "assets/femc/portraits/mark-runners/serious.webp": "2a910a70d88b0a8edff18bcc975f359c8846fdcd3357c92685bf4edb72f92276",
+        "assets/femc/portraits/mark-runners/surprised.webp": "614353deb22f59dfbd8d3bbf6f8192905d47321179570f6d30d1abf556c38584"
+      }
+    },
+    {
+      "batch": 135,
+      "source": "chenle-expanded-portraits.png",
+      "sourceNow": "New Adds/chenle-expanded-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d65c016561037925367ac0979e6e3b5ff6b23c537b470a6b6d7d1f64a718846d",
+      "status": "integrated",
+      "destination": "assets/femc/portraits/chenle-runners/",
+      "character": "chenle",
+      "conversion": "each face matched to its cell (template match, refined on the shoulders); the old face pixels kept and the canvas carried 33 px lower with Kat's expanded sheet (crossfade above the old bottom rows), same width, WebP q92",
+      "placement": "Runners-world scene portraits (chenle-runners): same head size in scenes (scale.js raised by the canvas growth), body now down to the bottom edge",
+      "tool": "one-off script (template match + extend), like tools/femc-recut-portraits.py",
+      "identifiedBy": "Kat's file name; cells in order neutral, happy, serious / surprised, flustered, sad",
+      "outputs": {
+        "assets/femc/portraits/chenle-runners/flustered.webp": "992d5d2de95c8a4b68198e328fc6fd62d1b17bdb38b6f8237d2d8ca5d5cbe71f",
+        "assets/femc/portraits/chenle-runners/happy.webp": "b003982a651c09be9af612cd8aaf4fcff93653483c9a4fd8efa85f1a423ab41e",
+        "assets/femc/portraits/chenle-runners/neutral.webp": "5f22dd32e89aa26bf03ede6849a50baaa2460786d6e64cd8ec760716882bd9ee",
+        "assets/femc/portraits/chenle-runners/sad.webp": "895d763607051b7be455e43165b750a21db8a0d28906e9e5a3609bdec44c0900",
+        "assets/femc/portraits/chenle-runners/serious.webp": "9533881f38f9e1f955e1bf884be4e14ac40b5bc17030f181254108d52f738559",
+        "assets/femc/portraits/chenle-runners/surprised.webp": "066ba28fe2d3043304acd0e9e66742f8a02740f36b833031bb979dd88559c01e"
+      }
     }
   ],
   "batch1Validation": {
@@ -33979,5 +34338,9 @@
   "batch131Validation": {
     "tests": "TBD",
     "note": "Nov 3 2026: own looks of Akihiko, Jungwon, Minji, Yukari (sheet 2, entrance card, One More strip); Akihiko's Lifeguard Captain, Jungwon's Pinstripe Detective / Sheer Nerve / Soundcheck, Minji's SU Crewneck, Yukari's Beach Volley (sheet 2, entrance, strip, Theurgy, finish, fx); fresh scene faces for SU Crewneck and Sigma Chi Runner; five Haechan fx sheets. Minji's and Yukari's base / Beach Volley sheets were second pose sheets, not the cell-4 recuts. Other HC-* folders unchanged (hashes match batches 128 / 130). Later the same day: own looks of Aigis, Jihoon, Junpei, Mitsuru, Shinjiro (sheet 2s, not recuts), Jihoon's Emo Night (six pieces + scene faces), four couple Showtimes; skin-sk-haechan-bad-fx.png was already the newest file (same hash)."
+  },
+  "batch135Validation": {
+    "tests": "femc_skins_battle --only data,sheet2,looks; femc_cosmetics --only inbattle: all passed",
+    "note": "Nov 3 2026: Jungwon's Center Stage and Cell Block Angel (skin2, entrance, onemore, theurgy, finish, fx), Pool Day (skin2, theurgy; strip, entrance, finish and fx still to come). Mark's and Chenle's Runners faces carried lower from Kat's expanded sheets."
   }
 }
