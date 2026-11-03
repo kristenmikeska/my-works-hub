@@ -384,7 +384,9 @@ window.FemcScene = (() => {
       const btn = (html, fn, cls) => { const b = document.createElement('button'); b.type = 'button'; if (cls) b.className = cls; b.innerHTML = html; b.addEventListener('click', e => { e.stopPropagation(); choices.replaceChildren(); choices.classList.remove('gs-giftlist'); G.sfx('femc-click'); fn(); }); return b; };
       choices.classList.add('gs-giftlist');
       choices.replaceChildren(...bag.map((g, i) => {
-        const b = btn(`<span>${esc(g.name)}</span><small>${esc(g.kind || 'Gift')}${g.n > 1 ? ` · ×${g.n}` : ''}</small>`, () => {
+        // How they'd take it (Kat, Nov 3): a heart pair for loved, one heart for liked, a dash for so-so, a cross for not for them.
+        const tier = G.giftTier ? G.giftTier(who, g.id) : 'meh', TIER = { loved: ['♥♥', 'Loves it'], liked: ['♥', 'Likes it'], meh: ['–', 'So-so'], no: ['✕', 'Not for them'] }[tier] || ['–', ''];
+        const b = btn(`<i class="gs-gtier ${tier}" title="${TIER[1]}" aria-label="${TIER[1]}">${TIER[0]}</i><span>${esc(g.name)}</span><small>${esc(TIER[1])} · ${esc(g.kind || 'Gift')}${g.n > 1 ? ` · ×${g.n}` : ''}</small>`, () => {
           const r = G.giveGift(who, g.id);
           if (!r) return next();
           queue.unshift(...r.lines);

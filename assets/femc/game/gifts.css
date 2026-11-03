@@ -22,3 +22,12 @@
 
 /* Items page */
 .g-gf-keeps li b { color: #ffb3d4; }
+
+/* The gift picker's "how they'd take it" mark (Kat, Nov 3). */
+.gs-choices.gs-giftlist button { display: grid; grid-template-columns: 2.6em 1fr; column-gap: 8px; align-items: center; text-align: left; }
+.gs-choices.gs-giftlist button > span, .gs-choices.gs-giftlist button > small { grid-column: 2; }
+.gs-gtier { grid-row: 1 / span 2; font-style: normal; font-weight: 900; font-size: 1.15em; text-align: center; letter-spacing: -.08em; }
+.gs-gtier.loved { color: #ff4f9e; text-shadow: 0 0 8px rgba(255, 79, 158, .6); }
+.gs-gtier.liked { color: #ff8cc0; }
+.gs-gtier.meh { color: rgba(255, 255, 255, .5); }
+.gs-gtier.no { color: #9a8a92; }

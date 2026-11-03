@@ -240,8 +240,8 @@ try:
                 r = p.eval(DRIVE % json.dumps({'gift': 'sprayroses'}), timeout=90)
             else:
                 r = hang('yukari', area, 'sprayroses', slot)
-            check('max.reaction', r['asked'] == 1 and r['gave'] == 'sprayroses' and r['lines'], r)
-            check('max.nopoints', r['fin']['kind'] == 'after' and r['fin']['after']['xp'] == 0, r['fin'])
+            # Kat, Nov 3: time together at MAX is part of their story: no gift offer there.
+            check('max.noask', r['asked'] == 0 and r['gave'] is None and r['fin']['kind'] == 'after', r)
         # rule check either way
         check('max.giftPoints', p.eval("FemcGame.giftPoints(FemcGame.LINKS.yukari,'loved')") == 0)
         clean('max')

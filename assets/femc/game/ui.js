@@ -1511,11 +1511,12 @@
     });
   }
 
-  /* Gifts (P5X-style, data/gifts.js): a rank scene, a hangout or time together at MAX opens with "Give a gift?" when Solar
-     carries any, after the scene's opening place / backdrop / music lines. Not for repairs or traces. */
+  /* Gifts (P5X-style, data/gifts.js): only an ordinary hangout opens with "Give a gift?" when Solar carries any, after the
+     scene's opening place / backdrop / music lines (Kat, Nov 3: never in a rank scene, a story rank's hangout, time together at
+     MAX, repairs or traces: only time together that isn't part of their story). */
   function withGiftAsk(pick, l) {
     const scene = pick.scene || [];
-    if (!['rank', 'hangout', 'after'].includes(pick.kind) || !G.canGift || !G.canGift(l)) return scene;
+    if (pick.kind !== 'hangout' || pick.story || !G.canGift || !G.canGift(l)) return scene;
     let i = 0;
     while (i < scene.length && scene[i] && scene[i].n === undefined && scene[i].t === undefined && (scene[i].place !== undefined || ['bg', 'music', 'cg', 'dark', 'faces'].some(k => k in scene[i])) && !scene[i].choose) i += 1;
     return [...scene.slice(0, i), { giftAsk: l.id }, ...scene.slice(i)];
