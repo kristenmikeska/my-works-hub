@@ -13,6 +13,8 @@ Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make.
 2. **Then the other fighters' victory poses** (their own look first, then their outfits), for the results screen.
 3. Optional later: battle pose sheets redone as single figures (only if the in-battle figures ever look soft to you).
 
+**Finishing step (Kat, Nov 3):** when every pose is done, upscale them all in Photoshop in one batch (200%, Preserve Details 2.0 or Camera Raw Super Resolution) and drop them back in with the same names; Claude swaps them in.
+
 **The prompt (one figure per image; change the bracketed parts):**
 Attach: the outfit's pose sheet from `Current Skins/` (or `Pose - Solar sheet.png` for her school uniform), then `Solar.png`
 Save as: `solar-hd-<pose>.png` (school uniform) or `skin-<look id>-hd-<pose>.png` (an outfit)
