@@ -29962,6 +29962,1814 @@
         "assets/femc/game/art/skins/sk-haechan-unravelled/fx.webp": "508857c1777dedaf8069425d9b48cb46aaa116092b10470ebbecb74eafc7ef7b"
       },
       "readyHash": "b01a25db"
+    },
+    {
+      "batch": 131,
+      "source": "Akihiko six-pose battle reference sheet.png",
+      "sourceNow": "New Adds/Akihiko-Base Game/Akihiko six-pose battle reference sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9cc3269022f3b788fbc3dbd877ad3cb6018e6fd03e3cff821b193bc3dfb86bd4",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/poses/",
+      "skin": "own",
+      "character": "akihiko",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"Akihiko-Base Game/Akihiko six-pose battle reference sheet.png\" own akihiko",
+      "identifiedBy": "identified by looking (a second pose sheet: support, guard, dodge, down, hurt, dash; not a cell-4 recut)",
+      "outputs": {
+        "assets/femc/battle/art/poses/akihiko-pose2-0.webp": "3d838e65984d3f4f6ac17cfb8962e466db1bdf1eae88d1152345c443677bd9a5",
+        "assets/femc/battle/art/poses/akihiko-pose2-1.webp": "8682463f56a30885faf6e73d8454ade8bdb72fb1e3c0e104b8351cd061bd5834",
+        "assets/femc/battle/art/poses/akihiko-pose2-2.webp": "b53f272888ea654c4b0333a475070a5d65d485a230605d04edfccfe2664e165d",
+        "assets/femc/battle/art/poses/akihiko-pose2-3.webp": "376ca78aaf59a00eb5baee1d286f1bcd105483f78fa90204e748890fcb093dcd",
+        "assets/femc/battle/art/poses/akihiko-pose2-4.webp": "de250b2572fb865585b9618fb53fa374602aeca287d7d23c2393d45b2d6912e3",
+        "assets/femc/battle/art/poses/akihiko-pose2-5.webp": "20c7569e5b8e9925fc3a836dbcf470d411c8a4d38463176a7670b85f3a02793e"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Akihiko's Battle-Ready Entrance.png",
+      "sourceNow": "New Adds/Akihiko-Base Game/Akihiko's Battle-Ready Entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "99c260a73b18cbb3a2eb6d65340f3b5baa665856829ad0537584b2de33466d1d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/entrance/akihiko.webp",
+      "skin": "own",
+      "character": "akihiko",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when they lead, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"Akihiko-Base Game/Akihiko's Battle-Ready Entrance.png\" own akihiko",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/entrance/akihiko.webp": "15b06e231fdbadeb51c0e338e0a57a6732f3932ebf6027ec5290121db9d1d743"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Akihiko’s Fierce Rightward Gaze.png",
+      "sourceNow": "New Adds/Akihiko-Base Game/Akihiko’s Fierce Rightward Gaze.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "c6ae8a8377da0600da155300852d0836a757c992d17c209dd7579377e6960759",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/onemore/akihiko.webp",
+      "skin": "own",
+      "character": "akihiko",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"Akihiko-Base Game/Akihiko’s Fierce Rightward Gaze.png\" own akihiko",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/onemore/akihiko.webp": "6d3f4197cd218d643cffb6c08d85ba98cb0dcf5fcb34ef117070eb9e60b4ce04"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "jungwon-posesheet-2.png",
+      "sourceNow": "New Adds/Jungwon-Base Game/jungwon-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9d6fec5a87d267678d1bbb0315fd2e39e8836fe8739d7182e916e1d999e0bea5",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/poses/",
+      "skin": "own",
+      "character": "jungwon",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"Jungwon-Base Game/jungwon-posesheet-2.png\" own jungwon",
+      "identifiedBy": "Kat's save name",
+      "outputs": {
+        "assets/femc/battle/art/poses/jungwon-pose2-0.webp": "c56c23bd8d2a43c6b11dca039914caf9b097e1e3b38f747668deefceefbfe09c",
+        "assets/femc/battle/art/poses/jungwon-pose2-1.webp": "422dd60acd7bc8ed19cce2a8a10c547ce39c80b00b311107c1a864293316088d",
+        "assets/femc/battle/art/poses/jungwon-pose2-2.webp": "9f0e064205415108ac7fa6446cd824b56764be4e2c2c704275eca2fa13cd2917",
+        "assets/femc/battle/art/poses/jungwon-pose2-3.webp": "5f835da9ec7da11e4b0c3bfcd8380823bf32d913495bcd2a97896cd324ea7fd1",
+        "assets/femc/battle/art/poses/jungwon-pose2-4.webp": "82a0945b230276591dda48d5cced6ad62df7980483770dfc15fde5d87256e80a",
+        "assets/femc/battle/art/poses/jungwon-pose2-5.webp": "7abce98e578062d9ccc977d7f14bed3e10fbde074ed9b4e7bd6ff82831b3c6c2"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "jungwon-entrance.png",
+      "sourceNow": "New Adds/Jungwon-Base Game/jungwon-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "b3e70db5999cf0f8d0b1316c0f15aab40db3d7543b16cc864a592c82bd863f93",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/entrance/jungwon.webp",
+      "skin": "own",
+      "character": "jungwon",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when they lead, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"Jungwon-Base Game/jungwon-entrance.png\" own jungwon",
+      "identifiedBy": "Kat's save name",
+      "outputs": {
+        "assets/femc/game/art/entrance/jungwon.webp": "53de8d1d87f3cf34b58e03fff152d75dbb0cd8abf9b7562c6b8361fd3b4da914"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "jungwon-onemore.png",
+      "sourceNow": "New Adds/Jungwon-Base Game/jungwon-onemore.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "ae6dcfcbf59c12bca9f0cdd2069d0852912120efcab008fb56744f4603184871",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/onemore/jungwon.webp",
+      "skin": "own",
+      "character": "jungwon",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"Jungwon-Base Game/jungwon-onemore.png\" own jungwon",
+      "identifiedBy": "Kat's save name",
+      "outputs": {
+        "assets/femc/game/art/onemore/jungwon.webp": "925c945b7a12654e8c03ee186904d5f64955b42b1f113eff1cbc0bb937fd07f9"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Anime Archer Six-Pose Battle Sheet.png",
+      "sourceNow": "New Adds/Minji-Base Game/Anime Archer Six-Pose Battle Sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e4af84b3a2f4bcaace784ddc014c987debdaae4bd3223caef4156a6a5f4ddcbf",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/poses/",
+      "skin": "own",
+      "character": "minji",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"Minji-Base Game/Anime Archer Six-Pose Battle Sheet.png\" own minji",
+      "identifiedBy": "identified by looking (a second pose sheet: support, guard, dodge, down, hurt, dash; not a cell-4 recut)",
+      "outputs": {
+        "assets/femc/battle/art/poses/minji-pose2-0.webp": "b57e50c9981439e92508d26257d7d1db87be3782b661a4cf230c9556d049b62e",
+        "assets/femc/battle/art/poses/minji-pose2-1.webp": "f8ae1f238b1c76a121dcb57730c287edc6461489caa0d0e80577a42de69cc704",
+        "assets/femc/battle/art/poses/minji-pose2-2.webp": "34a6eefbd50960f21e04e19f2380f66539de6fb6ffa4430946f4bcd57db9993d",
+        "assets/femc/battle/art/poses/minji-pose2-3.webp": "8b4b2255db7663b473fdea3ab24897eb19d7305ec09e4a5b744f03d15a6939ad",
+        "assets/femc/battle/art/poses/minji-pose2-4.webp": "840713bb321a646a5735c62f64abd1b5127e3082ecd69643080eab51485f7822",
+        "assets/femc/battle/art/poses/minji-pose2-5.webp": "c121a46292a15d54f553d56ad7164e7e56320d9fff4b435cfba42b5691a097b6"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Battle-ready archer breaks through shards.png",
+      "sourceNow": "New Adds/Minji-Base Game/Battle-ready archer breaks through shards.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "f3cda904e302737d14c5d91431388a42d1c35d24a443a6b54bd736389008e211",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/entrance/minji.webp",
+      "skin": "own",
+      "character": "minji",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when they lead, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"Minji-Base Game/Battle-ready archer breaks through shards.png\" own minji",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/entrance/minji.webp": "6d145a93a6c70c71ad70fb827cdabd143e6cfd7467b24358d20d5bdcf9f391e0"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Determined Eyes Against Hot Pink Stripes.png",
+      "sourceNow": "New Adds/Minji-Base Game/Determined Eyes Against Hot Pink Stripes.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "b392b05383bea7d2128315aad0a4af244d2a6238800d79c5d7c7cb4ddd24fb6a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/onemore/minji.webp",
+      "skin": "own",
+      "character": "minji",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"Minji-Base Game/Determined Eyes Against Hot Pink Stripes.png\" own minji",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/onemore/minji.webp": "7fdb1a57fa4d7c0d5d9c04c0a16aacf581f38515f4538e2fe635fff2bc72af2c"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Yukari’s Six-Pose Archery Battle Sheet.png",
+      "sourceNow": "New Adds/Yukari-Base Game/Yukari’s Six-Pose Archery Battle Sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "10b9e2e4adc89213ede86553320a06810b844b954346baa2632780c05c599378",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/poses/",
+      "skin": "own",
+      "character": "yukari",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"Yukari-Base Game/Yukari’s Six-Pose Archery Battle Sheet.png\" own yukari",
+      "identifiedBy": "identified by looking (a second pose sheet: support, guard, dodge, down, hurt, dash; not a cell-4 recut)",
+      "outputs": {
+        "assets/femc/battle/art/poses/yukari-pose2-0.webp": "cae4c6386bb9acbff117e1ff2262766f84e52c84ffa314fb0fc757c70d569059",
+        "assets/femc/battle/art/poses/yukari-pose2-1.webp": "eac85f02ce7689ce56d8709090dbc88a78a409a390b4a4694d0785bf8241a64e",
+        "assets/femc/battle/art/poses/yukari-pose2-2.webp": "9d057c74dbdba3437346b9d4b29765f2969b5d2ebb8f49c37ea05fe08f00afd7",
+        "assets/femc/battle/art/poses/yukari-pose2-3.webp": "5514a9a48a881d18178b62f66a18ea4dbd87bd528d112b0dd0ea926be2b4b2d7",
+        "assets/femc/battle/art/poses/yukari-pose2-4.webp": "f10398d869b90607cf4222196453cabefddd1b5a0d7e8d7029713a9847d675d0",
+        "assets/femc/battle/art/poses/yukari-pose2-5.webp": "523efb079d7d0f69844ac5f32d6644594b42211fc34b8c5dea9b2477038dbf47"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Yukari’s Pink-Shard Battle Entrance.png",
+      "sourceNow": "New Adds/Yukari-Base Game/Yukari’s Pink-Shard Battle Entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "95f3250e6ace225989a5d2142daea5b777cdb1d6d97521bab2d3ad0007992b44",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/entrance/yukari.webp",
+      "skin": "own",
+      "character": "yukari",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when they lead, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"Yukari-Base Game/Yukari’s Pink-Shard Battle Entrance.png\" own yukari",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/entrance/yukari.webp": "84bb95420833fdccebe94439ba12aff43cec69110df3920719fc8eb1d07ded4d"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Yukari’s Determined Gaze.png",
+      "sourceNow": "New Adds/Yukari-Base Game/Yukari’s Determined Gaze.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "1ce8932bbe0f2cb6aee0a7bd9313d93f9d725cf866cc73bc8f535c956c316f45",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/onemore/yukari.webp",
+      "skin": "own",
+      "character": "yukari",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"Yukari-Base Game/Yukari’s Determined Gaze.png\" own yukari",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/onemore/yukari.webp": "cf79a2a4e349e728f059dc864deb1e511f243331ebe2a9fbc6386d6c8d3923e3"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Silver-haired boxer battle pose sheet.png",
+      "sourceNow": "New Adds/Akihiko-Lifeguard/Silver-haired boxer battle pose sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "01151d2c9a27a9065c3119eba835ccf009cd5e993df08f28ea631a23b4df03c9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-swim/",
+      "skin": "sk-akihiko-swim",
+      "character": "akihiko",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"Akihiko-Lifeguard/Silver-haired boxer battle pose sheet.png\" sk-akihiko-swim akihiko",
+      "identifiedBy": "identified by looking (a second pose sheet, not a sheet-1 recut)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-pose2-0.webp": "e9aa0a4f148e6851114a549beb3ccd9a58a2df72eceb4c7ce732f04827fa0f8d",
+        "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-pose2-1.webp": "3c5209022f09e3fbdb899a4339b1cb7958b010b062e953a9ce3fdc362f6077f8",
+        "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-pose2-2.webp": "8f1927222d978a9f9b80a12fa8a77c9d1af0166f51b710d2b8e842fe2cb440cc",
+        "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-pose2-3.webp": "59bcd93879158ee8db722b590bd304094299273117f074993e61ccb4de2e0e89",
+        "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-pose2-4.webp": "fee5aa03d5279ede01c4553998f8cf387d4c588a78f9147f43fcf52199940fe1",
+        "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-pose2-5.webp": "f2f3b2a290bce55cffda511c39f5ad53c098b3b3c863b9b2ab75c65814a30676"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Akihiko's Beachfront Battle Stance.png",
+      "sourceNow": "New Adds/Akihiko-Lifeguard/Akihiko's Beachfront Battle Stance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "a9e90097d978b395c9dcb471c5dea5fa977ff5d582d057f58fdb8b2663d90e95",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-entrance.webp",
+      "skin": "sk-akihiko-swim",
+      "character": "akihiko",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when they lead, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"Akihiko-Lifeguard/Akihiko's Beachfront Battle Stance.png\" sk-akihiko-swim akihiko",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-entrance.webp": "4ef41a6bd1dfe2f3c3cf7d62a7bc136ff3afd81e38de1631d15d46e05e6101f9"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Akihiko's fierce beachside gaze.png",
+      "sourceNow": "New Adds/Akihiko-Lifeguard/Akihiko's fierce beachside gaze.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "57a9cee7f4fed6cd012664426bf568ffb7e4838a00f090c9f80ca6241ce92f06",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-onemore.webp",
+      "skin": "sk-akihiko-swim",
+      "character": "akihiko",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"Akihiko-Lifeguard/Akihiko's fierce beachside gaze.png\" sk-akihiko-swim akihiko",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-onemore.webp": "dc9b2f76665cf46bad1022f9f7b263f36752aa6c7d4a133ed414a58046cfc162"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Beach lifeguard Persona ultimate cut-in.png",
+      "sourceNow": "New Adds/Akihiko-Lifeguard/Beach lifeguard Persona ultimate cut-in.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "5f5f30473447e0a5cfffc2bfa0822a21bd83ce6674a256fe2e1bed5dbf3b0f5b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-theurgy.webp",
+      "skin": "sk-akihiko-swim",
+      "character": "akihiko",
+      "conversion": "16:9, framing kept, 1600 x 900 WebP",
+      "placement": "the look's Theurgy cut-in",
+      "tool": "femc-wardrobe.py theurgy \"Akihiko-Lifeguard/Beach lifeguard Persona ultimate cut-in.png\" sk-akihiko-swim akihiko",
+      "identifiedBy": "identified by looking (Persona behind)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-theurgy.webp": "9b333148ee3239ccaef7a455acee0d33a8b08e4716e2cc5865247260d6bf4536"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Beachside Lifeguard All-Out Attack.png",
+      "sourceNow": "New Adds/Akihiko-Lifeguard/Beachside Lifeguard All-Out Attack.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "f4a3376fffb57c725698b354a5f3a66a17ceb912eaaea3b93382b82cbf644f1c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-finish.webp",
+      "skin": "sk-akihiko-swim",
+      "character": "akihiko",
+      "conversion": "16:9, 1600 x 900 WebP",
+      "placement": "the look's All-Out finish card",
+      "tool": "femc-wardrobe.py finish \"Akihiko-Lifeguard/Beachside Lifeguard All-Out Attack.png\" sk-akihiko-swim akihiko",
+      "identifiedBy": "identified by looking (the finish words)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-akihiko-swim/akihiko-finish.webp": "7ecbe155fac9897c1040ba94c2ef894ed23b86db41020c5389c1c256e8fe6230"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Ocean lifebuoy spell burst.png",
+      "sourceNow": "New Adds/Akihiko-Lifeguard/Ocean lifebuoy spell burst.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9ae583bcf66a55491cc7eea0006a9a8fbb026461fafa46ff9b3b20686f160ae5",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-swim/fx.webp",
+      "skin": "sk-akihiko-swim",
+      "character": "akihiko",
+      "conversion": "3 x 2 effect sheet, light keyed from black, 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-akihiko-swim \"Akihiko-Lifeguard/Ocean lifebuoy spell burst.png\"",
+      "identifiedBy": "identified by looking (3 x 2 spell sheet on black)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-akihiko-swim/fx.webp": "116d75ce90b999d347eb5ea95920cdacbf785b9d4998f95006a6bc8531cfa8e1"
+      },
+      "readyHash": "7ec0b4a8"
+    },
+    {
+      "batch": 131,
+      "source": "Six-pose rapier duelist combat sheet.png",
+      "sourceNow": "New Adds/JW-Pinstripe Detective/Six-pose rapier duelist combat sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "31fb7705564c3e11681c8d5bcf3245f0f739552d518afa0417479037b14ba910",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-pinstripe/",
+      "skin": "sk-jungwon-pinstripe",
+      "character": "jungwon",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"JW-Pinstripe Detective/Six-pose rapier duelist combat sheet.png\" sk-jungwon-pinstripe jungwon",
+      "identifiedBy": "identified by looking (a second pose sheet, not a sheet-1 recut)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-pose2-0.webp": "de63bec81716ae13afba80409b4220e20fb726e3efabddc30047b4b498954e54",
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-pose2-1.webp": "e74b4eaffaa1092dcf0a586198bcf0f28a5ea4d9e6da7428c30c65af10cbf651",
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-pose2-2.webp": "af7b666857f532ffcbfc4852094a4bb846eeb62b7be4da84b5b355723f8c6fb2",
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-pose2-3.webp": "1f07e7f7d85aa9ab3068b32a5a9f12f4d030312c6b1bf0f07781f3dcb713a8e3",
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-pose2-4.webp": "7eb4d17553a1fe1a47b99e6119d2ebf2b662b040521c9d38afe29d9b8ec538c0",
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-pose2-5.webp": "ccc045a51176c1601862fb21813fb18a1ad7ddadecb386bae143b4e26df1facc"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Fogbound detective strides with a silver rapier.png",
+      "sourceNow": "New Adds/JW-Pinstripe Detective/Fogbound detective strides with a silver rapier.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "4e0c0be0923bbd66f0b97f2bf6eed59f95b35b5da820944785a7cc311a4ea610",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-entrance.webp",
+      "skin": "sk-jungwon-pinstripe",
+      "character": "jungwon",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when they lead, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"JW-Pinstripe Detective/Fogbound detective strides with a silver rapier.png\" sk-jungwon-pinstripe jungwon",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-entrance.webp": "2464f3afc50a837a688ee4be48a9eaefb7c09746f7245b0780f27e92249e3292"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Determined eyes in sepia speed lines.png",
+      "sourceNow": "New Adds/JW-Pinstripe Detective/Determined eyes in sepia speed lines.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "084a2dd62045658d25d82ca660394f82b6ca6389e3679e78273825aae6c45020",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-onemore.webp",
+      "skin": "sk-jungwon-pinstripe",
+      "character": "jungwon",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"JW-Pinstripe Detective/Determined eyes in sepia speed lines.png\" sk-jungwon-pinstripe jungwon",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-onemore.webp": "35a4122d7e3d68c8395a2600e0777ed4fc1a0aed4400c65d384e14a33b45a3c5"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Gaslamp Duel with Armored Serpent.png",
+      "sourceNow": "New Adds/JW-Pinstripe Detective/Gaslamp Duel with Armored Serpent.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "009c0725d895fa9930b848dd91e2f4ef9cf794bcf75453da5e7080267c988894",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-theurgy.webp",
+      "skin": "sk-jungwon-pinstripe",
+      "character": "jungwon",
+      "conversion": "16:9, framing kept, 1600 x 900 WebP",
+      "placement": "the look's Theurgy cut-in",
+      "tool": "femc-wardrobe.py theurgy \"JW-Pinstripe Detective/Gaslamp Duel with Armored Serpent.png\" sk-jungwon-pinstripe jungwon",
+      "identifiedBy": "identified by looking (Persona behind)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-theurgy.webp": "31a7fab6488981da0dc0f60f2856d850364dced9789eb42317038dbc2b9edf4b"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Meeting Adjourned, Dapper Rapier Duelist.png",
+      "sourceNow": "New Adds/JW-Pinstripe Detective/Meeting Adjourned, Dapper Rapier Duelist.png",
+      "size": [
+        1671,
+        941
+      ],
+      "sha256": "c9eb2877da99bb845cf5ca871b85c227e5846d485318959c2fc792ccfc82c703",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-finish.webp",
+      "skin": "sk-jungwon-pinstripe",
+      "character": "jungwon",
+      "conversion": "16:9, 1600 x 900 WebP",
+      "placement": "the look's All-Out finish card",
+      "tool": "femc-wardrobe.py finish \"JW-Pinstripe Detective/Meeting Adjourned, Dapper Rapier Duelist.png\" sk-jungwon-pinstripe jungwon",
+      "identifiedBy": "identified by looking (the finish words)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/jungwon-finish.webp": "f49136bb0a25b6640e702bfbbe6a102ea8234406e7824c458ca53c665069f80d"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Detective lens clue cascade.png",
+      "sourceNow": "New Adds/JW-Pinstripe Detective/Detective lens clue cascade.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "5a53ba3ca8e6f0c2406b432905fb52bc7f7961ab367b64d6236dc9af589d4fe4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-pinstripe/fx.webp",
+      "skin": "sk-jungwon-pinstripe",
+      "character": "jungwon",
+      "conversion": "3 x 2 effect sheet, light keyed from black, 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-jungwon-pinstripe \"JW-Pinstripe Detective/Detective lens clue cascade.png\"",
+      "identifiedBy": "identified by looking (3 x 2 spell sheet on black)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-pinstripe/fx.webp": "7dae5ecacfbf47b1bdd09aa4821d28ceb0541b498996af388905b107f6ffaecd"
+      },
+      "readyHash": "cce73f6c"
+    },
+    {
+      "batch": 131,
+      "source": "Transparent six-pose character sheet.png",
+      "sourceNow": "New Adds/JW-Sheer Nerve/Transparent six-pose character sheet.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "426e02a4c48b5d02779f816ccf8e5de10aa64554b0fedc1e7e0a9f9b73c506f3",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-sheer/",
+      "skin": "sk-jungwon-sheer",
+      "character": "jungwon",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"JW-Sheer Nerve/Transparent six-pose character sheet.png\" sk-jungwon-sheer jungwon",
+      "identifiedBy": "identified by looking (a second pose sheet, not a sheet-1 recut)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-pose2-0.webp": "8dd11f69fadc49f4b415b6078696f4bd53f5578f975aebb8fdfe28235ff69327",
+        "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-pose2-1.webp": "c6f5aea391ecba1bdc4b089b3387186e1b7fb7cc8fb014e180eeaa03907de0d0",
+        "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-pose2-2.webp": "e2ad37606d74a2cb73291b83e9dbfb990900bac118d1cfcbf13aef88f06d68c1",
+        "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-pose2-3.webp": "a778e6d2b613e033937cbf0a21929cfb9e5f84bc600b908c6b2f885404d3c627",
+        "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-pose2-4.webp": "09a4b6f297068960ccda8df025b55a88c07b916cfb5fb2403c68fd1910aea194",
+        "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-pose2-5.webp": "f448910eea08bd260c5b7c5b01607c80cbfbc23df4c9575ca382dc2761cc2cac"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Silver rapier through shattered shadows.png",
+      "sourceNow": "New Adds/JW-Sheer Nerve/Silver rapier through shattered shadows.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "c62dde940551aa5bf7d54e38143959575210010fed643af81da71d5abccc33c8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-entrance.webp",
+      "skin": "sk-jungwon-sheer",
+      "character": "jungwon",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when they lead, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"JW-Sheer Nerve/Silver rapier through shattered shadows.png\" sk-jungwon-sheer jungwon",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-entrance.webp": "ee57e3880f9b528620c04875bdaa51063cbb3db2a54317df96eeaff9d06811e2"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Intense eyes in a silver-striped cut-in.png",
+      "sourceNow": "New Adds/JW-Sheer Nerve/Intense eyes in a silver-striped cut-in.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "ab561a3e2daade6c8efe47ed5992ad8188867ceb0956d43ca300a51c74c7d66e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-onemore.webp",
+      "skin": "sk-jungwon-sheer",
+      "character": "jungwon",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"JW-Sheer Nerve/Intense eyes in a silver-striped cut-in.png\" sk-jungwon-sheer jungwon",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-onemore.webp": "21521cbcff33e6360d701e342c6fa111b0eb8e856fa8b8ce61a902c742afa588"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Silver Serpent Ultimate Cut-In.png",
+      "sourceNow": "New Adds/JW-Sheer Nerve/Silver Serpent Ultimate Cut-In.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "fbf60f2b9f7fbe4a2a10f1591775570761546299f93ee916703a2e7304000ad9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-theurgy.webp",
+      "skin": "sk-jungwon-sheer",
+      "character": "jungwon",
+      "conversion": "16:9, framing kept, 1600 x 900 WebP",
+      "placement": "the look's Theurgy cut-in",
+      "tool": "femc-wardrobe.py theurgy \"JW-Sheer Nerve/Silver Serpent Ultimate Cut-In.png\" sk-jungwon-sheer jungwon",
+      "identifiedBy": "identified by looking (Persona behind)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-theurgy.webp": "a087aad6c55ff378b90c635fe28e13aec936665f4937b6bad798f21a6764ac7c"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Meeting adjourned_ noir rapier finisher.png",
+      "sourceNow": "New Adds/JW-Sheer Nerve/Meeting adjourned_ noir rapier finisher.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "9b9d3f0ebba8a798a5c91b734d3e88dd7adaffc00d39342bb0960520651039e7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-finish.webp",
+      "skin": "sk-jungwon-sheer",
+      "character": "jungwon",
+      "conversion": "16:9, 1600 x 900 WebP",
+      "placement": "the look's All-Out finish card",
+      "tool": "femc-wardrobe.py finish \"JW-Sheer Nerve/Meeting adjourned_ noir rapier finisher.png\" sk-jungwon-sheer jungwon",
+      "identifiedBy": "identified by looking (the finish words)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-sheer/jungwon-finish.webp": "79f27528f11436daa530d725ba80c9536e1784f1030d0e27d897b4c0b439c4db"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Black rose thorn spell progression.png",
+      "sourceNow": "New Adds/JW-Sheer Nerve/Black rose thorn spell progression.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1d08c751a867f8a71fabeb2789bb1be18e8ffd080eb27969a22de3cfdb19564b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-sheer/fx.webp",
+      "skin": "sk-jungwon-sheer",
+      "character": "jungwon",
+      "conversion": "3 x 2 effect sheet, light keyed from black, 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-jungwon-sheer \"JW-Sheer Nerve/Black rose thorn spell progression.png\"",
+      "identifiedBy": "identified by looking (3 x 2 spell sheet on black)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-sheer/fx.webp": "8c972c4d0b37d1b4e40818ae5fea4fc7180c42dc21b70f632ed1918c8e8e3bd4"
+      },
+      "readyHash": "09fa873b"
+    },
+    {
+      "batch": 131,
+      "source": "Six isolated rapier duelists.png",
+      "sourceNow": "New Adds/JW-Soundcheck/Six isolated rapier duelists.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "bc0929fba044ec9d450edfdb4eb811fced6110d1e2adcd177db0128d8b81e67b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-soundcheck/",
+      "skin": "sk-jungwon-soundcheck",
+      "character": "jungwon",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"JW-Soundcheck/Six isolated rapier duelists.png\" sk-jungwon-soundcheck jungwon",
+      "identifiedBy": "identified by looking (a second pose sheet, not a sheet-1 recut)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-pose2-0.webp": "5422407ab65d8a3e0a101fba6758146ab99b28e4d76a6de94452c433f7662781",
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-pose2-1.webp": "ff0cc6a3d81ecdf3cf9584e5383426e1002c3f5949504b3156720c614c021086",
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-pose2-2.webp": "ed62efa85318bb9ae7f041c967e4bca18fd3b450cf60ffbb27b24582a0cf95c3",
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-pose2-3.webp": "a36fe59a53ad1953b9594c1e6b366582a5091bcc7209566155a3e0e39435478e",
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-pose2-4.webp": "9809985d826ac570029c5b779ec94a72f2d0e6c6f293d74ca88daeac7d6edf21",
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-pose2-5.webp": "33f1c233ef48b6de11d37a3a27a87e8320fb26c6cf449ca7204056602345d605"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Rapier-wielding performer at soundcheck.png",
+      "sourceNow": "New Adds/JW-Soundcheck/Rapier-wielding performer at soundcheck.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e63a07cdd3dbb2b3d5b662a56e8a4af0533be2412c804cb2bb110ff3c4e8e830",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-entrance.webp",
+      "skin": "sk-jungwon-soundcheck",
+      "character": "jungwon",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when they lead, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"JW-Soundcheck/Rapier-wielding performer at soundcheck.png\" sk-jungwon-soundcheck jungwon",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-entrance.webp": "681ac37c8df0c1df0f98fa36ca7d3faebb0b80a52532167833ae0fff81194d10"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Intense Eyes Behind Square Glasses.png",
+      "sourceNow": "New Adds/JW-Soundcheck/Intense Eyes Behind Square Glasses.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "a2ba28c13d3a8d9b4e6664220ca38a1a94a999ce949504238957de9785cadef2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-onemore.webp",
+      "skin": "sk-jungwon-soundcheck",
+      "character": "jungwon",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"JW-Soundcheck/Intense Eyes Behind Square Glasses.png\" sk-jungwon-soundcheck jungwon",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-onemore.webp": "241a3f2ca2ed0101d5c53e885073b11c67607d5e7ef2c8cab24389410fe56f30"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Soundcheck showdown with a serpent Persona.png",
+      "sourceNow": "New Adds/JW-Soundcheck/Soundcheck showdown with a serpent Persona.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "0916b081fcd7774ab62ca5dc106a33606382a49c91037e62d06c54c014ffe972",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-theurgy.webp",
+      "skin": "sk-jungwon-soundcheck",
+      "character": "jungwon",
+      "conversion": "16:9, framing kept, 1600 x 900 WebP",
+      "placement": "the look's Theurgy cut-in",
+      "tool": "femc-wardrobe.py theurgy \"JW-Soundcheck/Soundcheck showdown with a serpent Persona.png\" sk-jungwon-soundcheck jungwon",
+      "identifiedBy": "identified by looking (Persona behind)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-theurgy.webp": "3634f878cf652c7daea6b7cfe9dba110f4cfe23e63d742a0585a9d5ac4329402"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Meeting adjourned at soundcheck.png",
+      "sourceNow": "New Adds/JW-Soundcheck/Meeting adjourned at soundcheck.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "90a0dc8e98febb80000359e8f91ca479cfc82b39301600e20f2fc68184115fd9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-finish.webp",
+      "skin": "sk-jungwon-soundcheck",
+      "character": "jungwon",
+      "conversion": "16:9, 1600 x 900 WebP",
+      "placement": "the look's All-Out finish card",
+      "tool": "femc-wardrobe.py finish \"JW-Soundcheck/Meeting adjourned at soundcheck.png\" sk-jungwon-soundcheck jungwon",
+      "identifiedBy": "identified by looking (the finish words)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/jungwon-finish.webp": "0a1d9eb5d0dd495e6513bd9e2517b56041feb6a36aa73b4254b078ee82eebc08"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Sonic Waveform Spell Sprite Sheet.png",
+      "sourceNow": "New Adds/JW-Soundcheck/Sonic Waveform Spell Sprite Sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1bd9ac18440812ecfa53265ccbdbd900819c9587853761c85664b8cfac945cb9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-soundcheck/fx.webp",
+      "skin": "sk-jungwon-soundcheck",
+      "character": "jungwon",
+      "conversion": "3 x 2 effect sheet, light keyed from black, 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-jungwon-soundcheck \"JW-Soundcheck/Sonic Waveform Spell Sprite Sheet.png\"",
+      "identifiedBy": "identified by looking (3 x 2 spell sheet on black)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jungwon-soundcheck/fx.webp": "1a9b2d49b295aaf5e542be1d2e29735eb4ad0c02797f122fde0ffef9cc5b36c1"
+      },
+      "readyHash": "2f3e6fbf"
+    },
+    {
+      "batch": 131,
+      "source": "Six-character bow pose sheet.png",
+      "sourceNow": "New Adds/Minji-SU Crewneck/Six-character bow pose sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "0114da55b7df3c9023c39a3986e27c8f4881bda7fe2378ec681012cb84a8dd8c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-minji-su/",
+      "skin": "sk-minji-su",
+      "character": "minji",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"Minji-SU Crewneck/Six-character bow pose sheet.png\" sk-minji-su minji",
+      "identifiedBy": "identified by looking (a second pose sheet, not a sheet-1 recut)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-minji-su/minji-pose2-0.webp": "7815e5714b082e845a837ed103960b9b7f9943fdb1ec8b0af40f8efe6c7e2fec",
+        "assets/femc/game/art/skins/sk-minji-su/minji-pose2-1.webp": "f36f72b57095a85c59c6dd2e8ef93d66e77824bec79aebb7ac0634b625d01ef8",
+        "assets/femc/game/art/skins/sk-minji-su/minji-pose2-2.webp": "806d9ef7ee5c92a08a67b54f352eb77f6794933c43d39ef6327682f34a4023ef",
+        "assets/femc/game/art/skins/sk-minji-su/minji-pose2-3.webp": "0062f650c65480a0362fe1cd156e012bec6479a6426bd4ac9102735fd9b712bc",
+        "assets/femc/game/art/skins/sk-minji-su/minji-pose2-4.webp": "57173fa8940051c711749af06ec978dc784ee27f9da71cbf42b0a2dcf6be99e6",
+        "assets/femc/game/art/skins/sk-minji-su/minji-pose2-5.webp": "969aa93fba1d168307c05d51a92ab54cb2ee571496e878b1914a375c7adc59c8"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Winter archer bursts through the campus.png",
+      "sourceNow": "New Adds/Minji-SU Crewneck/Winter archer bursts through the campus.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "40750813c08bb6920a74ae369ccaa35c6bfc03147bedb41313aee9ed43530ddf",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-minji-su/minji-entrance.webp",
+      "skin": "sk-minji-su",
+      "character": "minji",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when they lead, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"Minji-SU Crewneck/Winter archer bursts through the campus.png\" sk-minji-su minji",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-minji-su/minji-entrance.webp": "52c631562da4082992773ad2ab0e44e57ae2dfe3d02a770d57554e14e60236f7"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Determined Eyes in Winter Motion.png",
+      "sourceNow": "New Adds/Minji-SU Crewneck/Determined Eyes in Winter Motion.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "de6759e405b188f461d94fdcf5035d42734fce858053146979981de974d412e7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-minji-su/minji-onemore.webp",
+      "skin": "sk-minji-su",
+      "character": "minji",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"Minji-SU Crewneck/Determined Eyes in Winter Motion.png\" sk-minji-su minji",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-minji-su/minji-onemore.webp": "6b35e2d2e03c94b5c7642aaca0546f347c9751d5d69cee69bad940265cdca9a8"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Winter archer energy cut-in.png",
+      "sourceNow": "New Adds/Minji-SU Crewneck/Winter archer energy cut-in.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "7076686905e7107df0bc58c6bc2c92c856011c54a2181b3488ae95450a72b77f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-minji-su/minji-theurgy.webp",
+      "skin": "sk-minji-su",
+      "character": "minji",
+      "conversion": "16:9, framing kept, 1600 x 900 WebP",
+      "placement": "the look's Theurgy cut-in",
+      "tool": "femc-wardrobe.py theurgy \"Minji-SU Crewneck/Winter archer energy cut-in.png\" sk-minji-su minji",
+      "identifiedBy": "identified by looking (Persona behind)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-minji-su/minji-theurgy.webp": "ae1d8f5312205708fd13f3d17f6c1a861f4175de3487ae036e4e51cab6bd1cb1"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Syracuse Snowfall_ That’s a Wrap.png",
+      "sourceNow": "New Adds/Minji-SU Crewneck/Syracuse Snowfall_ That’s a Wrap.png",
+      "size": [
+        1671,
+        941
+      ],
+      "sha256": "b5cd59d30ee69ca54fbc349ccf6011f89e827f8dd15a719211c6bb2cd22505c8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-minji-su/minji-finish.webp",
+      "skin": "sk-minji-su",
+      "character": "minji",
+      "conversion": "16:9, 1600 x 900 WebP",
+      "placement": "the look's All-Out finish card",
+      "tool": "femc-wardrobe.py finish \"Minji-SU Crewneck/Syracuse Snowfall_ That’s a Wrap.png\" sk-minji-su minji",
+      "identifiedBy": "identified by looking (the finish words)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-minji-su/minji-finish.webp": "194c95ed854050dd4f64234d049da3b88339e89d65899e01ff314f0a14e755e6"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Snowflake spell burst sprite sheet.png",
+      "sourceNow": "New Adds/Minji-SU Crewneck/Snowflake spell burst sprite sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "137398ec9c1ccd3123dd5c8ffce0511865af282648370c240a8c2506de4d7765",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-minji-su/fx.webp",
+      "skin": "sk-minji-su",
+      "character": "minji",
+      "conversion": "3 x 2 effect sheet, light keyed from black, 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-minji-su \"Minji-SU Crewneck/Snowflake spell burst sprite sheet.png\"",
+      "identifiedBy": "identified by looking (3 x 2 spell sheet on black)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-minji-su/fx.webp": "c85206dcc9dd36a61b507a4c06eaf49605773dd51b38ae4db0e436c4ffd07dfe"
+      },
+      "readyHash": "08f46dad"
+    },
+    {
+      "batch": 131,
+      "source": "Yukari’s Six Battle Poses.png",
+      "sourceNow": "New Adds/Yukari-Beach Volley/Yukari’s Six Battle Poses.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e6dd7dcab7b6d468406c1006efc044f999abd643547cb3c881a29370a1d18470",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-swim/",
+      "skin": "sk-yukari-swim",
+      "character": "yukari",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"Yukari-Beach Volley/Yukari’s Six Battle Poses.png\" sk-yukari-swim yukari",
+      "identifiedBy": "identified by looking (a second pose sheet, not a sheet-1 recut)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-yukari-swim/yukari-pose2-0.webp": "97f244adfd62553862c8c64444b1b2b0c98b0e0e27817c52f24326ec5980e35e",
+        "assets/femc/game/art/skins/sk-yukari-swim/yukari-pose2-1.webp": "511586e1b142b588306c434a434750f5ad3d86845c59b62f74e358ccc68fc8b5",
+        "assets/femc/game/art/skins/sk-yukari-swim/yukari-pose2-2.webp": "d10f03c9f8a4e40cbf8686d7108f6d828bb4f5f5ab8757a4a257138d754b83f9",
+        "assets/femc/game/art/skins/sk-yukari-swim/yukari-pose2-3.webp": "de4330036fe8048b37c30acf3c508fb5397ce7da292d8bcd62f85c9b25f5b099",
+        "assets/femc/game/art/skins/sk-yukari-swim/yukari-pose2-4.webp": "e3061f0d0a3006b9dd18eafc383e8c73262e4b14b09bedc346be8c9283206558",
+        "assets/femc/game/art/skins/sk-yukari-swim/yukari-pose2-5.webp": "60a621904cc6124f876669c48eaa1d38f6d9d19f6f6c2b668cc75777ad979e64"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Beachside Archer Enters the Battle.png",
+      "sourceNow": "New Adds/Yukari-Beach Volley/Beachside Archer Enters the Battle.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "4fdfd9d1d0f738eefdd48994322410303429f61c10fd31e8111589ae67529e86",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-swim/yukari-entrance.webp",
+      "skin": "sk-yukari-swim",
+      "character": "yukari",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when they lead, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"Yukari-Beach Volley/Beachside Archer Enters the Battle.png\" sk-yukari-swim yukari",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-yukari-swim/yukari-entrance.webp": "3f892ab676f61fb047ce16bf19256019eb309dc602328f19fd3d03b174e4cb24"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Determined Eyes Across Beach Stripes.png",
+      "sourceNow": "New Adds/Yukari-Beach Volley/Determined Eyes Across Beach Stripes.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "cfa979d45bfe009bd2ef549bf3d75f6933e1ddbda7598db6f1ce8b3832492f28",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-swim/yukari-onemore.webp",
+      "skin": "sk-yukari-swim",
+      "character": "yukari",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"Yukari-Beach Volley/Determined Eyes Across Beach Stripes.png\" sk-yukari-swim yukari",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-yukari-swim/yukari-onemore.webp": "f86584917f99c65275e2cc89f660492f50b7c5ef4de77d16278762869cfa1f07"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Sunny Beach Volleyball Magic Strike.png",
+      "sourceNow": "New Adds/Yukari-Beach Volley/Sunny Beach Volleyball Magic Strike.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "d7feb334b3a640e6431edc3c7e56f732257019534a6d58bb78c57dd2de6a0551",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-swim/yukari-theurgy.webp",
+      "skin": "sk-yukari-swim",
+      "character": "yukari",
+      "conversion": "16:9, framing kept, 1600 x 900 WebP",
+      "placement": "the look's Theurgy cut-in",
+      "tool": "femc-wardrobe.py theurgy \"Yukari-Beach Volley/Sunny Beach Volleyball Magic Strike.png\" sk-yukari-swim yukari",
+      "identifiedBy": "identified by looking (Persona behind)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-yukari-swim/yukari-theurgy.webp": "38fa1e5f5a762f238a85ea9c7f5c456fb133cce3f623df5b2d2e5b37d6263800"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Beach volleyball finishing pose.png",
+      "sourceNow": "New Adds/Yukari-Beach Volley/Beach volleyball finishing pose.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "f45c4f9ed35635af7ed87682fd9deb7348d8960ee1e43c30d9b7d08c5555d979",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-swim/yukari-finish.webp",
+      "skin": "sk-yukari-swim",
+      "character": "yukari",
+      "conversion": "16:9, 1600 x 900 WebP",
+      "placement": "the look's All-Out finish card",
+      "tool": "femc-wardrobe.py finish \"Yukari-Beach Volley/Beach volleyball finishing pose.png\" sk-yukari-swim yukari",
+      "identifiedBy": "identified by looking (the finish words)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-yukari-swim/yukari-finish.webp": "343505a46d88142e15fcc8910026b2e3f9c4e477518ef0d6fac8c67416af7a08"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Cel-Shaded Bubble Burst Sprite Sheet.png",
+      "sourceNow": "New Adds/Yukari-Beach Volley/Cel-Shaded Bubble Burst Sprite Sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "dd5105bad1a3cb06d046ce7d378f16fc644f0f6258617de32d0d2be9b7f83885",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-swim/fx.webp",
+      "skin": "sk-yukari-swim",
+      "character": "yukari",
+      "conversion": "3 x 2 effect sheet, light keyed from black, 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-yukari-swim \"Yukari-Beach Volley/Cel-Shaded Bubble Burst Sprite Sheet.png\"",
+      "identifiedBy": "identified by looking (3 x 2 spell sheet on black)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-yukari-swim/fx.webp": "c18c32fbbc6e63ca2cfa9e1f60e5af94bb9772e8f86daa85d37a10ce8ea780a9"
+      },
+      "readyHash": "0a873898"
+    },
+    {
+      "batch": 131,
+      "source": "Six anime portraits in navy streetwear.png",
+      "sourceNow": "New Adds/Minji-SU Crewneck/Six anime portraits in navy streetwear.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d22a835beb3a7ee532d207fb7f35bbf1ab1f5f08c9906e0ac16529e61dc912ab",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-minji-su/portraits/minji/",
+      "skin": "sk-minji-su",
+      "character": "minji",
+      "conversion": "fresh cut with tools/femc-skin-portraits.py: each face matched to the fighter's own portrait of that expression, one shared scale, on the fighter's portrait canvas",
+      "placement": "scene / battle faces while the look is worn",
+      "tool": "femc-skin-portraits.py ... minji neutral,serious,surprised,flustered,sad,happy + femc-wardrobe.py portraits sk-minji-su minji",
+      "identifiedBy": "identified by looking; cells read neutral, serious, surprised, flustered, sad, happy",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-minji-su/portraits/minji/neutral.webp": "7502924246f54b2c46d62e53b1aa1257e6337b0351daa04718ef8d34204d043f",
+        "assets/femc/game/art/skins/sk-minji-su/portraits/minji/happy.webp": "d89c6c1fd8aa1df272c2a9e0520fa509489e6577cd8ea0b2c4fd933c68730da6",
+        "assets/femc/game/art/skins/sk-minji-su/portraits/minji/sad.webp": "9a5b1a0428100b545267106a3b4a69987f14da930898e2532b365e75a7aa1564",
+        "assets/femc/game/art/skins/sk-minji-su/portraits/minji/serious.webp": "b6b51b4332e136e360ec6f20a7a46bedbf323f8527f40ae8f1cbe08427a230ad",
+        "assets/femc/game/art/skins/sk-minji-su/portraits/minji/surprised.webp": "a30dc7c0dfd916de534e1a5e76fe159e985a2c953e2a892ce23a1c93b1bcf7e2",
+        "assets/femc/game/art/skins/sk-minji-su/portraits/minji/flustered.webp": "ab3ba329eb245adf42bcefcfbaf85db9fa5b07e1e1c7ca2e8c369e39fb2fd055"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "sigmachirunner-portraits.png",
+      "sourceNow": "New Adds/HC-Sigma Chi Runner/sigmachirunner-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "4f01e0b6f86eaf452a684f29b25d0b3fa1ffbc9eaa4ca811a21df9caadc91804",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-runners/portraits/haechan/",
+      "skin": "sk-haechan-runners",
+      "character": "haechan",
+      "conversion": "fresh cut with tools/femc-skin-portraits.py: each face matched to the fighter's own portrait of that expression, one shared scale, on the fighter's portrait canvas",
+      "placement": "scene / battle faces while the look is worn",
+      "tool": "femc-skin-portraits.py ... haechan neutral,flustered,happy,surprised,serious,sad + femc-wardrobe.py portraits sk-haechan-runners haechan",
+      "identifiedBy": "cells read neutral, flustered, happy, surprised, serious, sad (cells 2 and 3 by the best match against his own happy / flustered faces: 0.97 vs 0.83)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-runners/portraits/haechan/neutral.webp": "90f295832f61b63d3335cf93bd17c770a599b5cbebb6602186ee0a5d0238746f",
+        "assets/femc/game/art/skins/sk-haechan-runners/portraits/haechan/happy.webp": "d0fb0c1b101e7eb1c03bfe0c821c91f018967fad34a538c4ec34c09006911cda",
+        "assets/femc/game/art/skins/sk-haechan-runners/portraits/haechan/sad.webp": "739122ec47e846389fe9a304be34a30b17b59f19d6105136cdcafbb9d35cca4d",
+        "assets/femc/game/art/skins/sk-haechan-runners/portraits/haechan/serious.webp": "a456025530a68f4a3971e700e4fb81b1f6fa6d0a3168114d225f5a84cc07e6a8",
+        "assets/femc/game/art/skins/sk-haechan-runners/portraits/haechan/surprised.webp": "08ff34dd8cbd2a4b9d6ca5e6a6d618afc5abda38bb47a8836db5ecfe81e5c408",
+        "assets/femc/game/art/skins/sk-haechan-runners/portraits/haechan/flustered.webp": "3bcce243b387018d42df7313c0c522906537cd33d8a8b37007faaaea3b8be947"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "skin-sk-haechan-arrivals-fx.png",
+      "sourceNow": "New Adds/skin-sk-haechan-arrivals-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d50d617c53e9b6466b1d81e797ce394aff17cbdf8adbf89dd87184a5a2cb9f46",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-arrivals/fx.webp",
+      "skin": "sk-haechan-arrivals",
+      "character": "haechan",
+      "conversion": "3 x 2 effect sheet, light keyed from black, 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-haechan-arrivals skin-sk-haechan-arrivals-fx.png",
+      "identifiedBy": "Kat's save name",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-arrivals/fx.webp": "4991d629d0edbf4cff33059c41bca164b7f0d74319787de80c5e00109202542c"
+      },
+      "readyHash": "59d932e3"
+    },
+    {
+      "batch": 131,
+      "source": "skin-sk-haechan-bad-fx.png",
+      "sourceNow": "New Adds/skin-sk-haechan-bad-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a43d779e7e9c2109a767c8c0b0e1f483bfeae6c149add9c3ce8d45381316deeb",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-bad/fx.webp",
+      "skin": "sk-haechan-bad",
+      "character": "haechan",
+      "conversion": "3 x 2 effect sheet, light keyed from black, 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-haechan-bad skin-sk-haechan-bad-fx.png",
+      "identifiedBy": "Kat's save name",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-bad/fx.webp": "80a01b210abef408dbf966f5c04583d79d7ea48518239aac5672efe802e21c86"
+      },
+      "readyHash": "2596c97f"
+    },
+    {
+      "batch": 131,
+      "source": "skin-sk-haechan-headphones-fx.png",
+      "sourceNow": "New Adds/skin-sk-haechan-headphones-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "108cd39078aba7a13b32dbf36064a18d93dcb93aac2df542940d26296627dc3f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-headphones/fx.webp",
+      "skin": "sk-haechan-headphones",
+      "character": "haechan",
+      "conversion": "3 x 2 effect sheet, light keyed from black, 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-haechan-headphones skin-sk-haechan-headphones-fx.png",
+      "identifiedBy": "Kat's save name",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-headphones/fx.webp": "e1879e4fbd7464b300ffd1ce30dfd5dabb8e4686afb73ac7b449702279c99d94"
+      },
+      "readyHash": "04d8156b"
+    },
+    {
+      "batch": 131,
+      "source": "skin-sk-haechan-sweater-fx.png",
+      "sourceNow": "New Adds/skin-sk-haechan-sweater-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8ef8186e8f5b6c24f856fc4d1530d1988918e9604056b4b6336a50984d1423e4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-sweater/fx.webp",
+      "skin": "sk-haechan-sweater",
+      "character": "haechan",
+      "conversion": "3 x 2 effect sheet, light keyed from black, 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-haechan-sweater skin-sk-haechan-sweater-fx.png",
+      "identifiedBy": "Kat's save name",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-sweater/fx.webp": "ca462ea81ca1c3423e10a925efbb32b901f4a190b542aceb429e6ff8e05cfd18"
+      },
+      "readyHash": "464c9871"
+    },
+    {
+      "batch": 131,
+      "source": "skin-sk-haechan-windowseat-fx.png",
+      "sourceNow": "New Adds/skin-sk-haechan-windowseat-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "0a8311daf71b9bdf0d4dc9035072563544b9c851f72d21d23d77f08c7227e5eb",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-windowseat/fx.webp",
+      "skin": "sk-haechan-windowseat",
+      "character": "haechan",
+      "conversion": "3 x 2 effect sheet, light keyed from black, 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-haechan-windowseat skin-sk-haechan-windowseat-fx.png",
+      "identifiedBy": "Kat's save name",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-haechan-windowseat/fx.webp": "4f7e01a974894c4984584cb63c2088dbe4b8c4aa8ea6185535530f1e290682a1"
+      },
+      "readyHash": "1afb417f"
+    },
+    {
+      "batch": 131,
+      "source": "Aigis six-pose transparent sprite sheet.png",
+      "sourceNow": "New Adds/Aigis-Base Game/Aigis six-pose transparent sprite sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1d5a5c2906fe0ba8b72b303ab17c680e83f29fe2f23d336ab2bdd941abdbaf79",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/poses/",
+      "skin": "own",
+      "character": "aigis",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"Aigis-Base Game/Aigis six-pose transparent sprite sheet.png\" own aigis",
+      "identifiedBy": "identified by looking (a second pose sheet: support, guard, dodge, down, hurt, dash; not a sheet-1 recut)",
+      "outputs": {
+        "assets/femc/battle/art/poses/aigis-pose2-0.webp": "ece79d2fe94f60ac2c762433eaaea6ad6b45bd6a04495e444fad0b74502763bb",
+        "assets/femc/battle/art/poses/aigis-pose2-1.webp": "2061d0ebd94a3b84c74f266270c146a516171137d3f1843aaffbf676ccea6bba",
+        "assets/femc/battle/art/poses/aigis-pose2-2.webp": "8a4304a6bc4f5b0fa5d3fe07a4bb0f58a6ce03204cedcea9e2999409ed909eee",
+        "assets/femc/battle/art/poses/aigis-pose2-3.webp": "3806e9cc238ec7bfb3c55e364edf694ff4a5f5bff114d389c7baa1be4895efe0",
+        "assets/femc/battle/art/poses/aigis-pose2-4.webp": "1689b9955c64497ff527228b4a8818f3a2f348a7cf5e9accdfe8c3df500217e9",
+        "assets/femc/battle/art/poses/aigis-pose2-5.webp": "fdbb7cdc205ee310d736472374af680c12e834ace9300df000244dd122d66c7e"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Aigis Breaks Into Battle.png",
+      "sourceNow": "New Adds/Aigis-Base Game/Aigis Breaks Into Battle.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "2f6bdd0d04a1a62550b123e29657a40543ff8a9247cd38d8a93b4674c9e3225f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/entrance/aigis.webp",
+      "skin": "own",
+      "character": "aigis",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when they lead, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"Aigis-Base Game/Aigis Breaks Into Battle.png\" own aigis",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/entrance/aigis.webp": "991acfdac9e62590eccf50d3bfe734e199186d4509fbbe381797e560518aa433"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Aigis's blue eyes in motion.png",
+      "sourceNow": "New Adds/Aigis-Base Game/Aigis's blue eyes in motion.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "02bc4245fa5e7316beca556775c2d7efc382466031fc23447cfa198a279043d8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/onemore/aigis.webp",
+      "skin": "own",
+      "character": "aigis",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"Aigis-Base Game/Aigis's blue eyes in motion.png\" own aigis",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/onemore/aigis.webp": "32355229cac339a281f76290ab25c635a7c1e14ec2ed61286a1d70794c1aa8f7"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Six-pose anime boxer battle sheet.png",
+      "sourceNow": "New Adds/Jihoon-Base Game/Six-pose anime boxer battle sheet.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "71cbeecb8c541557428ac4401d8925950e9fe084a1f36c3200b899c1ccc67322",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/poses/",
+      "skin": "own",
+      "character": "jihoon",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"Jihoon-Base Game/Six-pose anime boxer battle sheet.png\" own jihoon",
+      "identifiedBy": "identified by looking (a second pose sheet: support, guard, dodge, down, hurt, dash; not a sheet-1 recut)",
+      "outputs": {
+        "assets/femc/battle/art/poses/jihoon-pose2-0.webp": "ead631d10ac6d820829e3e1165a58d4851884ef5f35f2112b506ae7817c9cecf",
+        "assets/femc/battle/art/poses/jihoon-pose2-1.webp": "413853e945aa4ab642d7e0e4b48b8ed4ae7968db1286e50207f22bdcc3ecc339",
+        "assets/femc/battle/art/poses/jihoon-pose2-2.webp": "0cc672d69e8b7315973915a423b6543ad4bb1a7dac773953059b5adbf7eccac1",
+        "assets/femc/battle/art/poses/jihoon-pose2-3.webp": "1db58ee9e0c4e3f147a69aab0f6ddf4648b9785c0592b95b1e0a8f5e01603af0",
+        "assets/femc/battle/art/poses/jihoon-pose2-4.webp": "b7e39c97cc258fff212c9f408449daf426ea33b80761a8d4e17325361e5b8e48",
+        "assets/femc/battle/art/poses/jihoon-pose2-5.webp": "cef8d3fc011d6e97ba859b54431faf0831d51e860256fd4b7319c02cc30414a0"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Brawler breaks through pink shards.png",
+      "sourceNow": "New Adds/Jihoon-Base Game/Brawler breaks through pink shards.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "62a747572d48af04ba36dae35446d24b9312fa1d3b1d8bd7a86af3f3e53fdff4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/entrance/jihoon.webp",
+      "skin": "own",
+      "character": "jihoon",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when they lead, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"Jihoon-Base Game/Brawler breaks through pink shards.png\" own jihoon",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/entrance/jihoon.webp": "3be47f8a14be43bf34c014b58b21739ec0c6465319c2599fb1bcd5ced8121d3b"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Determined Eyes in Pink Motion.png",
+      "sourceNow": "New Adds/Jihoon-Base Game/Determined Eyes in Pink Motion.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "2a8f391e76ea83f1cb32cd44791e47c2b1722bbd8a2ea646db76317e37b46da3",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/onemore/jihoon.webp",
+      "skin": "own",
+      "character": "jihoon",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"Jihoon-Base Game/Determined Eyes in Pink Motion.png\" own jihoon",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/onemore/jihoon.webp": "91147c18e08ecda10be2b9bba0e05e9256b714e329abcb379241595b2c8d1295"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Six Sword-Wielding Poses on Transparency.png",
+      "sourceNow": "New Adds/Junpei-Base Game/Six Sword-Wielding Poses on Transparency.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "51b313b521cdee196c4573b5faac16658f7314814fcafc86b4ddb0692efc5504",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/poses/",
+      "skin": "own",
+      "character": "junpei",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"Junpei-Base Game/Six Sword-Wielding Poses on Transparency.png\" own junpei",
+      "identifiedBy": "identified by looking (a second pose sheet: support, guard, dodge, down, hurt, dash; not a sheet-1 recut)",
+      "outputs": {
+        "assets/femc/battle/art/poses/junpei-pose2-0.webp": "fff79e35b059e7c72374c1da03a276d19a7f5094dfa1e8655e0080eb6b904eb4",
+        "assets/femc/battle/art/poses/junpei-pose2-1.webp": "3c46cec03d0f972e6fd0f3810a32f992130a5adceaa285cf154b1813840fc21e",
+        "assets/femc/battle/art/poses/junpei-pose2-2.webp": "49e7c3fc06b0729f1eb92006e4b4a841bd562f6caf128347fdefa9e93a78b284",
+        "assets/femc/battle/art/poses/junpei-pose2-3.webp": "cca8e5d6f5fb3ae8d9799d76943480da9ec589f6d34e64adaac5bdf9ed4ed821",
+        "assets/femc/battle/art/poses/junpei-pose2-4.webp": "5a1d2f259bd6c4c413e88c84403e82f3c78fc631f26b9d20bd85d6fa56efa26c",
+        "assets/femc/battle/art/poses/junpei-pose2-5.webp": "aeabd856c49fce2f94ab2709d6d345927d93874460426033abdb0271ffb96592"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Junpei’s Sword-Ready Entrance.png",
+      "sourceNow": "New Adds/Junpei-Base Game/Junpei’s Sword-Ready Entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "547f0206f484f0308d42968e88c586499d18f48ea67ed9fa6ab5927f57266c09",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/entrance/junpei.webp",
+      "skin": "own",
+      "character": "junpei",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when they lead, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"Junpei-Base Game/Junpei’s Sword-Ready Entrance.png\" own junpei",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/entrance/junpei.webp": "8ff6a03ee4168b215c04f9e0c6423c27edb318c368e79ef24261e458a421552a"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Junpei’s intense eyes on pink stripes.png",
+      "sourceNow": "New Adds/Junpei-Base Game/Junpei’s intense eyes on pink stripes.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "01b32a492deb97c42205965bdc7f131dff345f7d7f18a90e6c3e70b4fb3bf147",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/onemore/junpei.webp",
+      "skin": "own",
+      "character": "junpei",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"Junpei-Base Game/Junpei’s intense eyes on pink stripes.png\" own junpei",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/onemore/junpei.webp": "e442ebb84fffc5443eea2f243b40ccec4c6d51d99c489bd91d90bd8a00681481"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Mitsuru combat pose sheet.png",
+      "sourceNow": "New Adds/Mitsuru-Base Game/Mitsuru combat pose sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "f7e93801839fe57a7cd770515d1b46a9019b8a70fd594a3ff9356486b9975ffe",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/poses/",
+      "skin": "own",
+      "character": "mitsuru",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"Mitsuru-Base Game/Mitsuru combat pose sheet.png\" own mitsuru",
+      "identifiedBy": "identified by looking (a second pose sheet: support, guard, dodge, down, hurt, dash; not a sheet-1 recut)",
+      "outputs": {
+        "assets/femc/battle/art/poses/mitsuru-pose2-0.webp": "c0d5e2f0ecc393bcc86c43884b680a9661672f80e2b1c8b2a41daf45cbd7b7c3",
+        "assets/femc/battle/art/poses/mitsuru-pose2-1.webp": "4c1d27d72ab416fea353b0b177d6d3484f1ce0e55e2eff6edc05ba665086c19e",
+        "assets/femc/battle/art/poses/mitsuru-pose2-2.webp": "160e4e7c5535d1d51e76ab445ea381ba8c6fa493e6c434c01264a24202ff2508",
+        "assets/femc/battle/art/poses/mitsuru-pose2-3.webp": "ee6432040fe9b554bf7289222760c2c8b4bebe6f284e2bf28f138dcba8203ea8",
+        "assets/femc/battle/art/poses/mitsuru-pose2-4.webp": "15d17e6a1905d6f4146fa550685b5cf32e155d106101ff5cd8f01d2fd30a62ea",
+        "assets/femc/battle/art/poses/mitsuru-pose2-5.webp": "aa5a2c9cddadd7a8daf4ed91256764c8dc857ea7fa21dbbc5e54dfe89f8b87ab"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Mitsuru’s Crimson Rapier Entrance.png",
+      "sourceNow": "New Adds/Mitsuru-Base Game/Mitsuru’s Crimson Rapier Entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "70da89c7eb4bfcda93a7bb662ef3a18af36bba8f2dd84336f4d6ead3f6b1af40",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/entrance/mitsuru.webp",
+      "skin": "own",
+      "character": "mitsuru",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when they lead, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"Mitsuru-Base Game/Mitsuru’s Crimson Rapier Entrance.png\" own mitsuru",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/entrance/mitsuru.webp": "35099cfc96fa046c003cdd06b19a12f263ca1dc8b7f848529d17f6210bf6e4f3"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Mitsuru’s Crimson Gaze.png",
+      "sourceNow": "New Adds/Mitsuru-Base Game/Mitsuru’s Crimson Gaze.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "f1b026508da894cb6937c359c019261b690a372d68ea7215367c52a5899d1efe",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/onemore/mitsuru.webp",
+      "skin": "own",
+      "character": "mitsuru",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"Mitsuru-Base Game/Mitsuru’s Crimson Gaze.png\" own mitsuru",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/onemore/mitsuru.webp": "188a679496ef3036a0d26cede800f7463c17cf866d76c136566a590a3bbf04cb"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Shinjiro’s six-pose battle sheet.png",
+      "sourceNow": "New Adds/Shinjiro-Base Game/Shinjiro’s six-pose battle sheet.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "bf1ff65ba6c3e998cdc6540ce98fa56ddd61ba49c3303e4661f4dd4c0ea350d0",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/poses/",
+      "skin": "own",
+      "character": "shinjiro",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"Shinjiro-Base Game/Shinjiro’s six-pose battle sheet.png\" own shinjiro",
+      "identifiedBy": "identified by looking (a second pose sheet: support, guard, dodge, down, hurt, dash; not a sheet-1 recut)",
+      "outputs": {
+        "assets/femc/battle/art/poses/shinjiro-pose2-0.webp": "b6d5f05342b0cc6f77980cdca906b2ba33be370b648f38a0fcd64cd3e1ca07b0",
+        "assets/femc/battle/art/poses/shinjiro-pose2-1.webp": "b6a2f75f26dd5da04967e409c63e2a8639c5cbc0920f513b831cdf35cc49afcd",
+        "assets/femc/battle/art/poses/shinjiro-pose2-2.webp": "d3868312c073375064960629bc691d8f6f46dec16f28858a6c4e1a83f99a63cf",
+        "assets/femc/battle/art/poses/shinjiro-pose2-3.webp": "af5302ab45a3e6e8b2a2016d8d15cb73d69914410c83b4e5b37300830faf51d1",
+        "assets/femc/battle/art/poses/shinjiro-pose2-4.webp": "123b2994be3a6fda15dda25bbe248735a6e4d206ee2a3e6d12186d092be9203c",
+        "assets/femc/battle/art/poses/shinjiro-pose2-5.webp": "b5115070d006f1fd957bbb9fa87e90bd5005ddacda30217428428af40123c406"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Shinjiro’s Battle-Ready Axe Entrance.png",
+      "sourceNow": "New Adds/Shinjiro-Base Game/Shinjiro’s Battle-Ready Axe Entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e9d2586ab70f090960780c384653e741bfe756b70e7b165db5b9acd49da7cfa2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/entrance/shinjiro.webp",
+      "skin": "own",
+      "character": "shinjiro",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when they lead, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"Shinjiro-Base Game/Shinjiro’s Battle-Ready Axe Entrance.png\" own shinjiro",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/entrance/shinjiro.webp": "9dbeb5e72e721bcc3ece60867760ce21587a7047cf2a6aea172ee60f9ab99cc9"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Determined eyes cut through pink speed stripes.png",
+      "sourceNow": "New Adds/Shinjiro-Base Game/Determined eyes cut through pink speed stripes.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "13d45689b14afc5941dfc250e54bf9dd04faef5be8081cd2fe5dacea003b4182",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/onemore/shinjiro.webp",
+      "skin": "own",
+      "character": "shinjiro",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"Shinjiro-Base Game/Determined eyes cut through pink speed stripes.png\" own shinjiro",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/onemore/shinjiro.webp": "ae33a2c1bd96c8a0a98a6f23dc44b868cbf470afd31fd7ad2f6fcdbdce7fc71a"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Six-pose ash-blond fighter sheet.png",
+      "sourceNow": "New Adds/Jihoon-Emo Night/Six-pose ash-blond fighter sheet.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "ceb9d9a2777613a9fe106fbb2d101d1810e7771156d4f6c3e694212ea6f89a5b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jihoon-emo/",
+      "skin": "sk-jihoon-emo",
+      "character": "jihoon",
+      "conversion": "3 x 2 transparent sheet 2 cut onto sheet 1's canvas (body-mass centre line, baseline, support pose scaled to the cast frame)",
+      "placement": "second pose sheet: support cast, guard, dodge, knocked down, badly hurt, dash-in",
+      "tool": "femc-wardrobe.py skin2 \"Jihoon-Emo Night/Six-pose ash-blond fighter sheet.png\" sk-jihoon-emo jihoon",
+      "identifiedBy": "identified by looking (a second pose sheet, not a sheet-1 recut)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jihoon-emo/jihoon-pose2-0.webp": "5415c2185531e8f340010700be7feca40b5292f20cc95ea713f72d1781982b33",
+        "assets/femc/game/art/skins/sk-jihoon-emo/jihoon-pose2-1.webp": "e47e255181268d14f961bd3f488694bb9a24fefa38228c21e869759c1f186e70",
+        "assets/femc/game/art/skins/sk-jihoon-emo/jihoon-pose2-2.webp": "fc2830544abe46b1f7a647cff28320c389adb84d916fc9b05a49e2edef07af73",
+        "assets/femc/game/art/skins/sk-jihoon-emo/jihoon-pose2-3.webp": "6509b4b84f88a070ace16638b588b27763531a6ddc445a5b851ad41003822b39",
+        "assets/femc/game/art/skins/sk-jihoon-emo/jihoon-pose2-4.webp": "0b66f442e768c6a76673364bc1571a9840841b7b75ffdc937de843d75449e208",
+        "assets/femc/game/art/skins/sk-jihoon-emo/jihoon-pose2-5.webp": "50897a1c9d86546e500f63673f72ded9ccdb6951c9269fca8ea5df95633ed19a"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Rooftop Brawler Breaks Through.png",
+      "sourceNow": "New Adds/Jihoon-Emo Night/Rooftop Brawler Breaks Through.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "377ff114a875d543971d95ed49d2e2c64998544365e1615274a03dc615d05bc4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jihoon-emo/jihoon-entrance.webp",
+      "skin": "sk-jihoon-emo",
+      "character": "jihoon",
+      "conversion": "16:9 centre fit, 1600 x 900 WebP",
+      "placement": "entrance card (battle start when they lead, Try it on)",
+      "tool": "femc-wardrobe.py entrance \"Jihoon-Emo Night/Rooftop Brawler Breaks Through.png\" sk-jihoon-emo jihoon",
+      "identifiedBy": "identified by looking",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jihoon-emo/jihoon-entrance.webp": "7b93260bda5e7cb6f69997289f8350b84b58ee766c6d9526c4843e97e4fb2dc2"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "b14b73ac-b626-4618-aec0-07efd7a987f8.png",
+      "sourceNow": "New Adds/Jihoon-Emo Night/b14b73ac-b626-4618-aec0-07efd7a987f8.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "9852d99313247f0a3186d1f503711b361c1e781edfb9ea48aa779cfeb3308371",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jihoon-emo/jihoon-onemore.webp",
+      "skin": "sk-jihoon-emo",
+      "character": "jihoon",
+      "conversion": "letterbox bands cut, 5:1 centre crop, 1800 x 360 WebP",
+      "placement": "One More strip (one picture, plays alone)",
+      "tool": "femc-wardrobe.py onemore \"Jihoon-Emo Night/b14b73ac-b626-4618-aec0-07efd7a987f8.png\" sk-jihoon-emo jihoon",
+      "identifiedBy": "identified by looking (the UUID-named file: an eye strip, 2172 x 724)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jihoon-emo/jihoon-onemore.webp": "814912f659029e38c5fd5f5a12f8eb0bcd5c4e7a5cc6af4e6869e8b8d9a1d888"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Cold blue rooftop ultimate attack.png",
+      "sourceNow": "New Adds/Jihoon-Emo Night/Cold blue rooftop ultimate attack.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "2ad453148d9e73cea277e88c1c4f430c0835690958945c7199b94671faecd53b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jihoon-emo/jihoon-theurgy.webp",
+      "skin": "sk-jihoon-emo",
+      "character": "jihoon",
+      "conversion": "16:9, framing kept, 1600 x 900 WebP",
+      "placement": "the look's Theurgy cut-in",
+      "tool": "femc-wardrobe.py theurgy \"Jihoon-Emo Night/Cold blue rooftop ultimate attack.png\" sk-jihoon-emo jihoon",
+      "identifiedBy": "identified by looking (Persona behind)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jihoon-emo/jihoon-theurgy.webp": "565246c3c50bb17935ddc393f0310f2f5798dee4cc3a559dabf99bd5c211e6f8"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Rainy rooftop all-out attack.png",
+      "sourceNow": "New Adds/Jihoon-Emo Night/Rainy rooftop all-out attack.png",
+      "size": [
+        1671,
+        941
+      ],
+      "sha256": "67a4d170fa6f7ef6411a144e09947d12732ca9cfb8056abc12fd30cde76657dd",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jihoon-emo/jihoon-finish.webp",
+      "skin": "sk-jihoon-emo",
+      "character": "jihoon",
+      "conversion": "16:9, 1600 x 900 WebP",
+      "placement": "the look's All-Out finish card",
+      "tool": "femc-wardrobe.py finish \"Jihoon-Emo Night/Rainy rooftop all-out attack.png\" sk-jihoon-emo jihoon",
+      "identifiedBy": "identified by looking (YOU'RE WELCOME)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jihoon-emo/jihoon-finish.webp": "0e628594646cc85baa4585b106ff0f4534e6781c5dad7bf38ad461a0455f3cd1"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "Six-frame silver chain lightning burst.png",
+      "sourceNow": "New Adds/Jihoon-Emo Night/Six-frame silver chain lightning burst.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "90a994997106eeb60a791692f3753e4cb80f47b095610c6dcd24995a4185b371",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jihoon-emo/fx.webp",
+      "skin": "sk-jihoon-emo",
+      "character": "jihoon",
+      "conversion": "3 x 2 effect sheet, light keyed from black, 256-px cells -> 768 x 512 WebP",
+      "placement": "signature effect sheet (N): skill sparkle, All-Out burst, entrance / win layer, Try it on",
+      "tool": "femc-fx.py skin sk-jihoon-emo \"Jihoon-Emo Night/Six-frame silver chain lightning burst.png\"",
+      "identifiedBy": "identified by looking (3 x 2 spell sheet on black)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jihoon-emo/fx.webp": "f680af59a18af1741e41fea2d906753c1483096a1c2d14a5d9c35681c1a5ccff"
+      },
+      "readyHash": "8f8d6ea5"
+    },
+    {
+      "batch": 131,
+      "source": "Six portraits with matching ash-blond style.png",
+      "sourceNow": "New Adds/Jihoon-Emo Night/Six portraits with matching ash-blond style.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8845ccb22c4e91d79b1be5776da3607fdba3f79a5d14c70928fdf2e739386e7f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jihoon-emo/portraits/jihoon/",
+      "skin": "sk-jihoon-emo",
+      "character": "jihoon",
+      "conversion": "fresh cut with tools/femc-skin-portraits.py on the fighter's portrait canvas (944 x 847)",
+      "placement": "scene / battle faces while the look is worn",
+      "tool": "femc-skin-portraits.py ... jihoon neutral,happy,sad,happy-2,serious,surprised + femc-wardrobe.py portraits sk-jihoon-emo jihoon",
+      "identifiedBy": "identified by looking; cells read neutral, happy, sad, happy-2 (the grin), serious, surprised (his own faces have no flustered)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-jihoon-emo/portraits/jihoon/neutral.webp": "b8e981e6ef8a7e3c12d12048fd85b089b47331c4d1a5b6696e43d57ce9ab069a",
+        "assets/femc/game/art/skins/sk-jihoon-emo/portraits/jihoon/happy.webp": "ba7092556fb6390bf1c9130676ddd89e3c5ed6aff337f2334346f58311965f3d",
+        "assets/femc/game/art/skins/sk-jihoon-emo/portraits/jihoon/happy-2.webp": "42f9222f24d01019331541c7c24a6c3431d7d8f6b7b3a501b90971fd162fa186",
+        "assets/femc/game/art/skins/sk-jihoon-emo/portraits/jihoon/sad.webp": "a4606af1d1fd9e0eb0ae777df36cbc04096e14482aafbef374a7b929fc86404c",
+        "assets/femc/game/art/skins/sk-jihoon-emo/portraits/jihoon/serious.webp": "ce58a8b59793e258538499ab5d8e6e74fbee9074f659a3f1da33ae42756dc3ad",
+        "assets/femc/game/art/skins/sk-jihoon-emo/portraits/jihoon/surprised.webp": "000d62c42e0636132b6a8f846fa5ff39fd957e6aea3a83b5b8068c71cbffd63d"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "couple-afterhours-showtime.png",
+      "sourceNow": "New Adds/couple-afterhours-showtime.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "52864b83a8c9592834f11275515bcfd53544ccc3262c0fb5454a1d44ba7c5e4f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/couples/cp-afterhours-showtime.webp",
+      "skin": "cp-afterhours",
+      "character": "solar",
+      "conversion": "16:9, 1600 x 900 WebP",
+      "placement": "couple Showtime: the bond's single still when Solar and her partner wear both halves of the set",
+      "tool": "femc-wardrobe.py showtime couple-afterhours-showtime.png cp-afterhours",
+      "identifiedBy": "Kat's save name",
+      "outputs": {
+        "assets/femc/game/art/couples/cp-afterhours-showtime.webp": "25890176a008fc54d9d43849af76ac919b329a0cbafbfb4ac0c0241e6c743273"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "couple-drive-showtime.png",
+      "sourceNow": "New Adds/couple-drive-showtime.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "5b3501d9713530ed0826225805c111d0b370bf9c73873ca1771cb8d7f9adb302",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/couples/cp-drive-showtime.webp",
+      "skin": "cp-drive",
+      "character": "solar",
+      "conversion": "16:9, 1600 x 900 WebP",
+      "placement": "couple Showtime: the bond's single still when Solar and her partner wear both halves of the set",
+      "tool": "femc-wardrobe.py showtime couple-drive-showtime.png cp-drive",
+      "identifiedBy": "Kat's save name",
+      "outputs": {
+        "assets/femc/game/art/couples/cp-drive-showtime.webp": "f403d3321658330cb7f71998253e336a7f3a09cae13aa1c24babeefce393d6b4"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "couple-moviedate-showtime.png",
+      "sourceNow": "New Adds/couple-moviedate-showtime.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "47d859200efd99930b6e3420520bb047b61fcf709a72fbf0d28c2ac37a5f6c4a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/couples/cp-moviedate-showtime.webp",
+      "skin": "cp-moviedate",
+      "character": "solar",
+      "conversion": "16:9, 1600 x 900 WebP",
+      "placement": "couple Showtime: the bond's single still when Solar and her partner wear both halves of the set",
+      "tool": "femc-wardrobe.py showtime couple-moviedate-showtime.png cp-moviedate",
+      "identifiedBy": "Kat's save name",
+      "outputs": {
+        "assets/femc/game/art/couples/cp-moviedate-showtime.webp": "73f3832b0ae6f988c16b6666ab54554293968682e37b3708393791b69b3cab29"
+      }
+    },
+    {
+      "batch": 131,
+      "source": "couple-sunmoon-showtime.png",
+      "sourceNow": "New Adds/couple-sunmoon-showtime.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "0bc2243abe2a38cf21b307cedd53c146ced41f919a98fd2e59af5ddccaaaedea",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/couples/cp-sunmoon-showtime.webp",
+      "skin": "cp-sunmoon",
+      "character": "solar",
+      "conversion": "16:9, 1600 x 900 WebP",
+      "placement": "couple Showtime: the bond's single still when Solar and her partner wear both halves of the set",
+      "tool": "femc-wardrobe.py showtime couple-sunmoon-showtime.png cp-sunmoon",
+      "identifiedBy": "Kat's save name",
+      "outputs": {
+        "assets/femc/game/art/couples/cp-sunmoon-showtime.webp": "9f432799864e4c5320e8d1917d83153eb55f903cafed729e3b71961078095ef5"
+      }
     }
   ],
   "batch1Validation": {
@@ -31429,5 +33237,9 @@
   "batch130Validation": {
     "tests": "femc_skins_battle.py (all sections) passed; femc_cosmetics --only inbattle,equip passed; entrance layer and skill sparkle checked by eye for five Solar looks, support pose (hand charge) and skill sparkle for the ten Haechan looks at 1440 x 900",
     "note": "Nov 2 2026: Solar's 32 signature effect sheets (New Adds/Solar Skin FX/) and ten Haechan looks (HC-* folders): 5 pieces each + 9 effect sheets (Garage Band sent none). HC-ArrivalsGate / BadInfluence / HeadphonesOn / WindowSeat / Haechan-SweaterDate unchanged (same hashes as batch 128)."
+  },
+  "batch131Validation": {
+    "tests": "TBD",
+    "note": "Nov 3 2026: own looks of Akihiko, Jungwon, Minji, Yukari (sheet 2, entrance card, One More strip); Akihiko's Lifeguard Captain, Jungwon's Pinstripe Detective / Sheer Nerve / Soundcheck, Minji's SU Crewneck, Yukari's Beach Volley (sheet 2, entrance, strip, Theurgy, finish, fx); fresh scene faces for SU Crewneck and Sigma Chi Runner; five Haechan fx sheets. Minji's and Yukari's base / Beach Volley sheets were second pose sheets, not the cell-4 recuts. Other HC-* folders unchanged (hashes match batches 128 / 130). Later the same day: own looks of Aigis, Jihoon, Junpei, Mitsuru, Shinjiro (sheet 2s, not recuts), Jihoon's Emo Night (six pieces + scene faces), four couple Showtimes; skin-sk-haechan-bad-fx.png was already the newest file (same hash)."
   }
 }

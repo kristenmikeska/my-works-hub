@@ -206,11 +206,11 @@ try:
             theme:b.theme,name:b.name,couple:b.couple,onemore:b.onemore,onemore2:b.onemore2,entrance:b.entrance,theurgy:b.theurgy,finish:b.finish,pose2b:b.pose2b,showtime:b.showtime,frames:b.frames}})()""")
         ok(len(r['themes']) == 13 and not r['missing'] and not r['dup'], f'13 themes, every look real, none twice: {r["missing"]} {r["dup"]}')
         ok(r['date'] == 'hearts' and r['sun'] == 'sunmoon' and r['moon'] == 'sunmoon' and r['plain'] == [None] * 4, f'part 4 picks: {r}')
-        ok(r['theme'] == {'solar': 'hearts'} and r['name'] == {'solar': 'Date Day'} and r['couple'] == {} and not r['showtime'] and not r['pose2b'], f'battle(): {r}')
+        ok(r['theme'] == {'solar': 'hearts'} and r['name'] == {'solar': 'Date Day'} and r['couple'] == {} and sorted(r['showtime']) == ['cp-afterhours', 'cp-drive', 'cp-moviedate', 'cp-sunmoon'] and not r['pose2b'], f'battle(): {r}')
         # Kat's Nov 1 art for Date Day: both One More pictures, the entrance card, the Theurgy cut-in and the finish card; 12 frames.
         for k, f in (('onemore', 'solar-onemore.webp'), ('onemore2', 'solar-onemore-v2.webp'), ('entrance', 'solar-entrance.webp'), ('theurgy', 'solar-theurgy.webp'), ('finish', 'solar-finish.webp')):
-            own = ['haechan'] if k in ('onemore', 'entrance') else []  # Haechan's own strip and card (Nov 1, batch 128) ride along for his own look
-            ok(sorted(r[k]) == sorted(['solar'] + own) and f'skins/sk-date/{f}' in r[k]['solar'] and all(f'game/art/{k}/haechan.webp' in r[k][w] for w in own), f'battle() {k}: {r[k]}')
+            own = ['aigis', 'akihiko', 'haechan', 'jihoon', 'jungwon', 'junpei', 'minji', 'mitsuru', 'shinjiro', 'yukari'] if k in ('onemore', 'entrance') else []  # own strips and cards (Haechan Nov 1, batch 128; the other fighters but Koromaru Nov 3, batch 131) ride along for their own looks
+            ok(sorted(r[k]) == sorted(['solar'] + own) and f'skins/sk-date/{f}' in r[k]['solar'] and all(f'game/art/{k}/{w}.webp' in r[k][w] for w in own), f'battle() {k}: {r[k]}')
         ok(len(r['frames']) == 12 and 'foxfire' not in r['frames'], f'frames: {r["frames"]}')
         alt = p.eval("(()=>{FemcCosmetics.grantItem('sk-alphaphi');FemcCosmetics.equip('sk-alphaphi');const b=FemcCosmetics.battle();FemcCosmetics.equip('sk-date');return b.pose2b})()")
         ok(alt == {'solar': True}, f'Alpha Phi: an alternate sheet 2: {alt}')
@@ -226,20 +226,20 @@ try:
         fr = Image.new('RGB', (1500, 600), (0, 255, 0)); d = ImageDraw.Draw(fr); d.rectangle([20, 20, 1480, 580], outline=(255, 79, 158), width=10)
         d.ellipse([10, 10, 90, 90], fill=(255, 140, 192)); fr.save(tmp / 'frame.png')
         W = [sys.executable, str(pathlib.Path(REPO, 'tools/femc-wardrobe.py'))]
-        # A look with none of Kat's art (Haechan's Sigma Chi Runner; Black Suit got its art on Nov 2), Akihiko's own look and the missing foxfire theme, so nothing real is touched.
+        # A look with none of Kat's art (Haechan's Sigma Chi Runner; Black Suit got its art on Nov 2), Koromaru's own look (the others got their strips Nov 3), the Ringside Showtime and the missing foxfire theme, so nothing real is touched.
         # The strip source has white letterbox bands top and bottom: they are cut off before the 5:1 crop.
         band = Image.new('RGB', (1536, 520), (255, 255, 255)); band.paste(wide, (0, 110)); band.save(tmp / 'omband.png')
-        outs = {'onemore': ART / 'skins/sk-haechan-runners/haechan-onemore.webp', 'onemore2': ART / 'skins/sk-haechan-runners/haechan-onemore-v2.webp', 'own': ART / 'onemore/akihiko.webp',
+        outs = {'onemore': ART / 'skins/sk-haechan-runners/haechan-onemore.webp', 'onemore2': ART / 'skins/sk-haechan-runners/haechan-onemore-v2.webp', 'own': ART / 'onemore/koromaru.webp',
                 'entrance': ART / 'skins/sk-haechan-runners/haechan-entrance.webp', 'theurgy': ART / 'skins/sk-haechan-runners/haechan-theurgy.webp', 'finish': ART / 'skins/sk-haechan-runners/haechan-finish.webp',
-                'showtime': ART / 'couples/cp-sunmoon-showtime.webp', 'frame': ART / 'frames/foxfire.webp'}
+                'showtime': ART / 'couples/cp-ringside-showtime.webp', 'frame': ART / 'frames/foxfire.webp'}
         for f in outs.values(): ok(not f.exists(), f'{f} should not exist before the test'); MADE.append(f)
         subprocess.run(W + ['onemore', str(tmp / 'om.png'), 'sk-haechan-runners'], check=True, capture_output=True)
         subprocess.run(W + ['onemore2', str(tmp / 'omband.png'), 'sk-haechan-runners'], check=True, capture_output=True)
-        subprocess.run(W + ['onemore', str(tmp / 'om.png'), 'own', 'akihiko'], check=True, capture_output=True)
+        subprocess.run(W + ['onemore', str(tmp / 'om.png'), 'own', 'koromaru'], check=True, capture_output=True)
         subprocess.run(W + ['entrance', str(tmp / 'card.png'), 'sk-haechan-runners'], check=True, capture_output=True)
         subprocess.run(W + ['theurgy', str(tmp / 'card.png'), 'sk-haechan-runners'], check=True, capture_output=True)
         subprocess.run(W + ['finish', str(tmp / 'card.png'), 'sk-haechan-runners'], check=True, capture_output=True)
-        subprocess.run(W + ['showtime', str(tmp / 'card.png'), 'sunmoon'], check=True, capture_output=True)
+        subprocess.run(W + ['showtime', str(tmp / 'card.png'), 'ringside'], check=True, capture_output=True)
         subprocess.run(W + ['frame', str(tmp / 'frame.png'), 'foxfire'], check=True, capture_output=True)
         sizes = {k: Image.open(f).size for k, f in outs.items()}
         ok(sizes == {'onemore': (1800, 360), 'onemore2': (1800, 360), 'own': (1800, 360), 'entrance': (1600, 900), 'theurgy': (1600, 900), 'finish': (1600, 900), 'showtime': (1600, 900), 'frame': (1000, 400)}, f'sizes: {sizes}')
@@ -250,8 +250,8 @@ try:
         rj = READY.read_text()
         data = json.loads(rj.split('window.FEMC_ART_READY = ')[1].rstrip().rstrip(';'))
         ph = data['skins']['sk-haechan-runners']
-        ok(all(ph.get(k) == ['haechan'] for k in ('onemore', 'onemore2', 'entrance', 'theurgy', 'finish')) and data['own']['onemore'] == ['akihiko', 'haechan', 'solar'] and data['own']['onemore2'] == ['solar']
-           and data['couples'] == ['cp-sunmoon'] and 'foxfire' in data['frames'], f'scan lists them: {ph}, {data["own"]}, {data["couples"]}, {data["frames"]}')
+        ok(all(ph.get(k) == ['haechan'] for k in ('onemore', 'onemore2', 'entrance', 'theurgy', 'finish')) and data['own']['onemore'] == ['aigis', 'akihiko', 'haechan', 'jihoon', 'jungwon', 'junpei', 'koromaru', 'minji', 'mitsuru', 'shinjiro', 'solar', 'yukari'] and data['own']['onemore2'] == ['solar']
+           and data['couples'] == ['cp-afterhours', 'cp-drive', 'cp-moviedate', 'cp-ringside', 'cp-sunmoon'] and 'foxfire' in data['frames'], f'scan lists them: {ph}, {data["own"]}, {data["couples"]}, {data["frames"]}')
         cleanup()
         ok(READY.read_text() == READY0 and not any(f.exists() for f in outs.values()), 'test files gone, ready.js restored')
         shutil.rmtree(tmp, ignore_errors=True)
@@ -336,6 +336,7 @@ try:
         p.top()
         setup(wear=['sk-cp-sunmoon', 'sk-haechan-cp-sunmoon'], day='12/12')
         if art: p.eval("(()=>{FEMC_ART_READY.couples=['cp-sunmoon'];return true})()")
+        else: p.eval("(()=>{FEMC_ART_READY.couples=[];return true})()")  # Kat's Sun & Moon Showtime is in (Nov 3): hide it for the drawn version
         scripted(['solar', 'haechan', 'akihiko', 'yukari'])
         p.eval("window.__btFreezeAt='bond-final'")
         p.eval(r"""(()=>{const F=FemcBattle,B=F.B,L=B.party().find(u=>u.mid==='solar'),P=B.party().find(u=>u.mid==='haechan');
@@ -360,7 +361,7 @@ try:
 
     if want('art'):
         from PIL import Image, ImageDraw
-        test_art = {ART / 'couples/cp-sunmoon-showtime.webp': (1600, 900)}  # Date Day's strip, card, finish and the hearts frame are Kat's (Nov 1)
+        test_art = {}  # Date Day's strip, card, finish and the hearts frame are Kat's (Nov 1); the Sun & Moon Showtime too (Nov 3)
         # theme-hearts is Kat's own sheet since Nov 1 (art/fx/theme-hearts.webp): the burst plays it, nothing faked.
         for f, (w, h) in test_art.items():
             ok(not f.exists(), f'{f} exists already: not overwriting it'); f.parent.mkdir(parents=True, exist_ok=True); MADE.append(f)
@@ -550,12 +551,12 @@ try:
             view(p, 1440, 900); time.sleep(0.2)
             return out
         setup()
-        night(['solar', 'akihiko', 'yukari', 'junpei'], "window.__holdAllout=true;FemcBattle.save.cutins='off';")
+        night(['solar', 'akihiko', 'yukari', 'koromaru'], "window.__holdAllout=true;FemcBattle.save.cutins='off';")
         enter(); bdrive(SOLAR_MENU, 120)
-        info = p.eval("FemcBattle.poses2('solar')"); aki = p.eval("FemcBattle.poses2('akihiko')")
+        info = p.eval("FemcBattle.poses2('solar')"); aki = p.eval("FemcBattle.poses2('koromaru')")
         ok(info['has'] and len(info['frames']) == 12 and all('poses/solar-pose2-%d.webp' % i in info['frames'][6 + i] for i in range(6))
            and info['states']['support'] == [6] and info['states']['dash'] == [11], f'Solar: sheet 2 as frames 6-11: {info}')
-        ok(not aki['has'] and len(aki['frames']) == 6 and 'support' not in aki['states'], f'Akihiko: sheet 1 only: {aki}')
+        ok(not aki['has'] and len(aki['frames']) == 6 and 'support' not in aki['states'], f'Koromaru: sheet 1 only: {aki}')
         p.eval("FemcBattle.B.party().forEach(u=>{u.maxHp=u.hp=99999;u.sp=999});FemcBattle.B.foes().forEach(f=>{f.maxHp=f.hp=99999});" + POSELOG)
         sid, aid = unit('solar'), unit('akihiko'); foe = p.eval("FemcBattle.B.foes()[0].id")
         boxes['idle'] = snap('idle')
@@ -606,20 +607,20 @@ try:
         go_on(); p.eval("window.__holdSolar=false;window.__stopResults=true")
         bdrive("FemcBattle.screen()==='results'", 60)
         log = p.eval("window.__poseLog")
-        ok(not any(e[2] and 'pose2' in e[2] and 'solar' not in e[2] for e in log), 'no other fighter ever shows a pose2 frame')
+        ok(not any(e[2] and 'pose2' in e[2] and 'koromaru' in e[2] for e in log), 'a fighter with no sheet 2 (Koromaru) never shows a pose2 frame')
         clean(p, 'sheet2 solar')
-        # Fallback: Akihiko leads; guard / dodge / down keep sheet 1 exactly (no pose2, hidden when Down).
-        p.top(); setup()
+        # Fallback: Akihiko leads in his Off-Day Hoodie (sheet 1 only; every fighter but Koromaru, who has no menu, got an own sheet 2 by Nov 3); guard / dodge / down keep sheet 1 exactly (no pose2, hidden when Down).
+        p.top(); setup(wear=['sk-akihiko-hoodie'])
         night(['akihiko', 'solar', 'yukari', 'junpei'], "window.__holdSolar=false;FemcBattle.save.cutins='off';")
         enter(); bdrive("FemcBattle.screen()==='battle'&&FemcBattle.ctl?.kind==='menu'&&FemcBattle.B.S.cur.mid==='akihiko'", 120)
         p.eval("FemcBattle.B.party().forEach(u=>{u.maxHp=u.hp=99999});FemcBattle.B.foes().forEach(f=>{f.maxHp=f.hp=99999});" + POSELOG)
         aid = unit('akihiko'); foe = p.eval("FemcBattle.B.foes()[0].id")
         p.eval("FemcBattle.B.U(%s).guard=true;FemcBattle.playEvents(%s)" % (json.dumps(aid), json.dumps([{'t': 'guard', 'src': aid}, {'t': 'miss', 'src': foe, 'tgt': aid}]))); time.sleep(1.5)
-        g = p.eval(BOX); ok(g['pose'] == '0' and 'akihiko-pose-0' in g['src'], f'Akihiko guarding / dodging: sheet 1 idle as before: {g}')
+        g = p.eval(BOX); ok(g['pose'] == '0' and 'sk-akihiko-hoodie/akihiko-pose-0' in g['src'], f'Akihiko (Off-Day Hoodie) guarding / dodging: sheet 1 idle as before: {g}')
         p.eval("(()=>{const u=FemcBattle.B.U(%s);u.guard=false;u.hp=Math.floor(u.maxHp*0.2);u.down=true;return true})()" % json.dumps(aid))
         p.eval("FemcBattle.playEvents(%s)" % json.dumps([{'t': 'hit', 'src': foe, 'tgt': aid, 'el': 'strike', 'aff': 'weak', 'amount': 1, 'hp': 19999, 'maxHp': 99999, 'downed': True}])); time.sleep(1.5)
-        ok(not p.eval("FemcBattle.marks['fighter-down']") and not any('pose2' in (e[2] or '') for e in p.eval("window.__poseLog")), 'Akihiko: no sheet-2 state, no pose2 frame')
-        ok(p.eval("FemcBattle.poses2('akihiko').frames.length") == 6, 'Akihiko: six frames')
+        ok(not p.eval("FemcBattle.marks['fighter-down']") and not any('pose2' in (e[2] or '') for e in p.eval("window.__poseLog")), 'Akihiko (Off-Day Hoodie): no sheet-2 state, no pose2 frame (never his own sheet 2)')
+        ok(p.eval("FemcBattle.poses2('akihiko').frames.length") == 6, 'Akihiko (Off-Day Hoodie): six frames')
         clean(p, 'sheet2 fallback')
         # Looks: the Summer Yukata has its own sheet 2; Date Day (sheet 1 only) never borrows Solar's own.
         p.top(); setup(wear=['sk-yukata'])

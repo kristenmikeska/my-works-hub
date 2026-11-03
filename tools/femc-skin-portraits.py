@@ -69,10 +69,11 @@ for k, f in enumerate(ORDER):
     # premultiplied resample onto the canvas
     M = np.float32([[S, 0, ox], [0, S, oy]])
     pm = piece.copy(); pm[..., :3] *= pm[..., 3:4] / 255
-    canvas = cv2.warpAffine(pm, M, (862, 851), flags=cv2.WARP_INVERSE_MAP | cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT, borderValue=0)
+    CH, CW = ref.shape[:2]   # the fighter's own canvas (862 x 851 Solar, 866 x 821 Minji, 870 x 822 Haechan)
+    canvas = cv2.warpAffine(pm, M, (CW, CH), flags=cv2.WARP_INVERSE_MAP | cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT, borderValue=0)
     # bust bottom on the canvas: rows below the last sheet row get the last clean row
     lastc = int(np.floor((last - 2 - oy) / S))
-    if lastc < 850:
+    if lastc < CH - 1:
         canvas[lastc + 1:] = canvas[lastc][None]
     a = canvas[..., 3:4]; rgb = np.where(a > 0, canvas[..., :3] / np.maximum(a, 1e-3) * 255, 0)
     out = np.dstack([np.clip(rgb, 0, 255), np.clip(a, 0, 255)]).astype(np.uint8)
