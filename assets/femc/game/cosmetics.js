@@ -417,13 +417,14 @@ window.FemcCosmetics = (() => {
      cut-in; battle.js draws the look's pose-1 frame without it), pose2b (an alternate sheet 2), omEyes ([x1, y1, x2, y2]
      in % of the v2 strip: ready.js eyes2, where the One More glints go; absent = the fixed 40% / 65% spot), fx (N: the
      look's own 3 x 2 effect sheet, skins/<look>/fx.webp, which battle.js plays wherever the theme sheet would);
-     and showtime { set: path }, frames { theme: path }.
+     hd ({ dir, have, v }: the look's HD single-figure poses, skins/<look>/hd/, tools/femc-hd-poses.py) and hdOwn (her own look's,
+     profile/solar-poses/); and showtime { set: path }, frames { theme: path }.
      A missing file is simply absent, and battle.js draws its built-in version. */
   const ART_V8 = 1; // bump when one of these files is replaced in place
   function battle() {
     if (!S()) return null;
-    const pose = {}, pose2 = {}, pose2b = {}, face = {}, clean = {}, hand = {}, look = {}, theme = {}, name = {}, couple = {}, onemore = {}, onemore2 = {}, omEyes = {}, entrance = {}, theurgy = {}, finish = {}, evoker = {}, showtime = {}, frames = {}, fx = {};
-    const out = { pose, pose2, pose2b, face, clean, hand, look, theme, name, couple, onemore, onemore2, omEyes, entrance, theurgy, finish, evoker, showtime, frames, fx, css: '' };
+    const pose = {}, pose2 = {}, pose2b = {}, face = {}, clean = {}, hand = {}, look = {}, theme = {}, name = {}, couple = {}, onemore = {}, onemore2 = {}, omEyes = {}, entrance = {}, theurgy = {}, finish = {}, evoker = {}, showtime = {}, frames = {}, fx = {}, hd = {};
+    const out = { pose, pose2, pose2b, face, clean, hand, look, theme, name, couple, onemore, onemore2, omEyes, entrance, theurgy, finish, evoker, showtime, frames, fx, hd, hdOwn: null, css: '' };
     const A = readyArt(), art = (dir, f) => `${G.base}${dir}${f}?v=${ART_V8}`;
     ITEMS.filter(x => x.kind === 'skin').forEach(x => {
       const o = onIn(slotOf(x)); if (!o || pose[o.who]) return;
@@ -443,9 +444,11 @@ window.FemcCosmetics = (() => {
       if ((R.theurgy || []).includes(w)) theurgy[w] = art(skinDir(o.id), `${w}-theurgy.webp`); // E: the look's Theurgy cut-in
       if ((R.finish || []).includes(w)) finish[w] = art(skinDir(o.id), `${w}-finish.webp`); // G: the look's All-Out finish card
       if ((R.evoker || []).includes(w)) evoker[w] = art(skinDir(o.id), `${w}-evoker.webp`); // M: the look's Evoker close-up (summon cut-in)
+      if ((R.hd || []).length) hd[w] = { dir: `${G.base}${skinDir(o.id)}hd/`, have: R.hd.slice(), v: R.hdv || 1 }; // Solar's HD single-figure poses (win screen)
       if (R.fx) fx[w] = `${G.base}${skinDir(o.id)}fx.webp?v=${R.fx}`; // N: the look's own effect sheet (tools/femc-fx.py skin; ready.js fx = its hash)
     });
     const own = A.own || {};
+    if ((own.hd || []).length) out.hdOwn = { dir: `${G.base}assets/femc/profile/solar-poses/`, have: own.hd.slice(), v: own.hdv || 1 }; // her own look's HD poses
     (own.onemore || []).forEach(w => { if (!pose[w]) onemore[w] = art('assets/femc/game/art/onemore/', `${w}.webp`); });
     (own.onemore2 || []).forEach(w => { if (!pose[w]) { onemore2[w] = art('assets/femc/game/art/onemore/', `${w}-v2.webp`); if ((own.eyes2 || {})[w]) omEyes[w] = own.eyes2[w].slice(0, 4); } });
     (own.entrance || []).forEach(w => { if (!pose[w]) entrance[w] = art('assets/femc/game/art/entrance/', `${w}.webp`); });

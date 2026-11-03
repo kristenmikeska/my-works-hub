@@ -1,0 +1,200 @@
+{
+ "arms-crossed": {
+  "ar": 0.323,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.431,
+  "size": [
+   496,
+   1536
+  ],
+  "src": "solar-armscrossed.png"
+ },
+ "cheer": {
+  "ar": 0.367,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.539,
+  "size": [
+   564,
+   1536
+  ],
+  "src": "solar-fistpump.png"
+ },
+ "evoker": {
+  "ar": 0.355,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.507,
+  "size": [
+   546,
+   1536
+  ],
+  "src": "solar-evoker.png"
+ },
+ "hair": {
+  "ar": 0.398,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.484,
+  "size": [
+   612,
+   1536
+  ],
+  "src": "solar-handinhair.png"
+ },
+ "heart": {
+  "ar": 0.368,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.52,
+  "size": [
+   566,
+   1536
+  ],
+  "src": "solar-hearthands.png"
+ },
+ "jump": {
+  "ar": 0.527,
+  "hf": 0.134,
+  "ht": 0.005,
+  "hx": 0.505,
+  "size": [
+   809,
+   1536
+  ],
+  "src": "solar-jump.png"
+ },
+ "lookback": {
+  "ar": 0.35,
+  "hf": 0.138,
+  "ht": 0.017,
+  "hx": 0.488,
+  "size": [
+   538,
+   1536
+  ],
+  "src": "solar-shoulderlook.png"
+ },
+ "peace": {
+  "ar": 0.395,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.543,
+  "size": [
+   606,
+   1536
+  ],
+  "src": "solar-peacesign.png"
+ },
+ "phone": {
+  "ar": 0.33,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.436,
+  "size": [
+   507,
+   1536
+  ],
+  "src": "solar-phone.png"
+ },
+ "ramen": {
+  "ar": 0.348,
+  "hf": 0.14,
+  "ht": 0.003,
+  "hx": 0.541,
+  "size": [
+   535,
+   1536
+  ],
+  "src": "solar-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.348,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.497,
+  "size": [
+   535,
+   1536
+  ],
+  "src": "solar-sewing.png"
+ },
+ "shy": {
+  "ar": 0.313,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.441,
+  "size": [
+   481,
+   1536
+  ],
+  "src": "solar-shy.png"
+ },
+ "stretch": {
+  "ar": 0.356,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.814,
+  "size": [
+   547,
+   1536
+  ],
+  "src": "solar-yawn.png"
+ },
+ "study": {
+  "ar": 0.329,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.419,
+  "size": [
+   505,
+   1536
+  ],
+  "src": "solar-reading.png"
+ },
+ "tease": {
+  "ar": 0.392,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.523,
+  "size": [
+   602,
+   1536
+  ],
+  "src": "solar-handsonhip.png"
+ },
+ "thinking": {
+  "ar": 0.325,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.531,
+  "size": [
+   499,
+   1536
+  ],
+  "src": "solar-thinking.png"
+ },
+ "watering": {
+  "ar": 0.332,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.522,
+  "size": [
+   510,
+   1536
+  ],
+  "src": "solar-watering.png"
+ },
+ "wave": {
+  "ar": 0.363,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.52,
+  "size": [
+   558,
+   1536
+  ],
+  "src": "solar-wave.png"
+ }
+}

@@ -31770,6 +31770,744 @@
       "outputs": {
         "assets/femc/game/art/couples/cp-sunmoon-showtime.webp": "9f432799864e4c5320e8d1917d83153eb55f903cafed729e3b71961078095ef5"
       }
+    },
+    {
+      "batch": 133,
+      "source": "solar-armscrossed.png",
+      "sourceNow": "New Adds/solar-armscrossed.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "69b232bd71e76893978632c154e1c05a9720e400ece1e9d32320e42fc1b5dde6",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/arms-crossed.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py own",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/profile/solar-poses/arms-crossed.webp": "0f83348f5efa84a24c82dd7abf536cf450e81de159293685afdb0f286c415357"
+      }
+    },
+    {
+      "batch": 133,
+      "source": "solar-fistpump.png",
+      "sourceNow": "New Adds/solar-fistpump.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "5774bf65042c647202d5da41be019093f6d116620d1c263617142dfd8644e296",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/cheer.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py own",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/profile/solar-poses/cheer.webp": "2717e8602fcce4152fd41063aa06a15d50e34bb82dbd6081ec4203aab3d49928"
+      }
+    },
+    {
+      "batch": 133,
+      "source": "solar-evoker.png",
+      "sourceNow": "New Adds/solar-evoker.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "b895ad5589c435f95a390209b88d3ce7668603b8b616d8c427d87a48043d0a6b",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/evoker.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py own",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/profile/solar-poses/evoker.webp": "31d8cc22a20a1ebb9de5bb1cab4dc249888a9d09883683be050d659ecb209e86"
+      }
+    },
+    {
+      "batch": 133,
+      "source": "solar-handinhair.png",
+      "sourceNow": "New Adds/solar-handinhair.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "0f97db5c78330469768ca3d861261d2275d923642d22dac70bf5ffba40b85e09",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/hair.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py own",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/profile/solar-poses/hair.webp": "fa26b1f0f480be863beef32c7046a07a577a08f07c994a24cbb4271a73eff910"
+      }
+    },
+    {
+      "batch": 133,
+      "source": "solar-hearthands.png",
+      "sourceNow": "New Adds/solar-hearthands.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "8485dabdb7ae483fa5a4a6ca4085392a1222d47c3e04e577ccfccdc1d95cb5e2",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/heart.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py own",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/profile/solar-poses/heart.webp": "15055cae947732f644a07a3966f5bdc91af27db8256c47bfd81500dcc039f1da"
+      }
+    },
+    {
+      "batch": 133,
+      "source": "solar-jump.png",
+      "sourceNow": "New Adds/solar-jump.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d533e261b30f6bc09f1644f81d3b5860c33b989ff811052488f2d24e8ee58f0d",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/jump.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py own",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/profile/solar-poses/jump.webp": "3102be22b38e2548f0a2bd4aef06c8f667a5c0ee5575d238b7d5b125e6b2068e"
+      }
+    },
+    {
+      "batch": 133,
+      "source": "solar-shoulderlook.png",
+      "sourceNow": "New Adds/solar-shoulderlook.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "4cbc49b24c18d2de3fead91e89a1923bf257d2691e683f2e2bbd7bf0f5f01008",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/lookback.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py own",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/profile/solar-poses/lookback.webp": "0b6944a7dfb4a1bfde0efdf5cbeb1f156906d315e4ec164c427d82620f6152af"
+      }
+    },
+    {
+      "batch": 133,
+      "source": "solar-peacesign.png",
+      "sourceNow": "New Adds/solar-peacesign.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "582162082fb1aab13b0c8a08b93163e2e73d080ecee93b31133df6e8b14b606d",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/peace.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py own",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/profile/solar-poses/peace.webp": "2ffea748b4f8fb9f04595ee0e268d088b9e02ead1da0c7a988f3d31512edcf94"
+      }
+    },
+    {
+      "batch": 133,
+      "source": "solar-phone.png",
+      "sourceNow": "New Adds/solar-phone.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "06d6e678ce8a77e68470bd8bc234ef3f0cbd12f33fc9c73f57fea33f3ef53bbb",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/phone.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py own",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/profile/solar-poses/phone.webp": "6a6ec8e56c2e6843049a73cf426930668d931f94518ec674208ed75bc3bc0298"
+      }
+    },
+    {
+      "batch": 133,
+      "source": "solar-ramen.png",
+      "sourceNow": "New Adds/solar-ramen.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "7520b03e4ed011e6caeba88e92f181113bdd6f01fa663d380bee3efb8c8fe50f",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/ramen.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py own",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/profile/solar-poses/ramen.webp": "c4e2bd2ca1b76461c418cec34d8732d3f1fe53ecae0bef189e80b06b80ccb832"
+      }
+    },
+    {
+      "batch": 133,
+      "source": "solar-sewing.png",
+      "sourceNow": "New Adds/solar-sewing.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "c0a4236293b9dd59191c24613d22d05093ab4b8ea7f36bacf5f09d65d32906d6",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/sewing.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py own",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/profile/solar-poses/sewing.webp": "f3a3d93adfedf543a5ddc8c88f55922569548f9bcfcbb4c8df4bd410a5541a90"
+      }
+    },
+    {
+      "batch": 133,
+      "source": "solar-shy.png",
+      "sourceNow": "New Adds/solar-shy.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "e50dbf29257912cbb23e7be8475491e7c12e09fffc455c998b8fcca6204771a9",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/shy.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py own",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/profile/solar-poses/shy.webp": "211d22368df4e829cf4be75fb7ad0ccdca1fcea6fd544f06f7e11c35351d192c"
+      }
+    },
+    {
+      "batch": 133,
+      "source": "solar-yawn.png",
+      "sourceNow": "New Adds/solar-yawn.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "ea20787d3bbe63a5c4d67458818228d42d37e47175fc4d5ba2d1c839554cce63",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/stretch.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py own",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/profile/solar-poses/stretch.webp": "ba9ae18480d393f1f42aa20728c88772a724d92924c3d755cb8af1b925068257"
+      }
+    },
+    {
+      "batch": 133,
+      "source": "solar-reading.png",
+      "sourceNow": "New Adds/solar-reading.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "943d3c135c5eb0217cef4844b17edfe40fa9935ee5414793676e78bf4eb165a7",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/study.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py own",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/profile/solar-poses/study.webp": "6038fe51a6f9ef7151eccf18f97fa23eaca969150523a2d1060dc5e2bb78b6a7"
+      }
+    },
+    {
+      "batch": 133,
+      "source": "solar-handsonhip.png",
+      "sourceNow": "New Adds/solar-handsonhip.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "77016b3c0825894a6703d1fe1af54b99d4874bda53f98c94d19e17c82efb816f",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/tease.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py own",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/profile/solar-poses/tease.webp": "86187913b5fef60c8de4b85bdd3290c05e43660ebc6d80a8490b673f86d46f19"
+      }
+    },
+    {
+      "batch": 133,
+      "source": "solar-thinking.png",
+      "sourceNow": "New Adds/solar-thinking.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "a647dd4340b1e542ff855571cd33a694ceb64496a215d5d8d28e4af24cc1c97e",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/thinking.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py own",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/profile/solar-poses/thinking.webp": "0b27b343c63772b657a6e329d496823eea2d34bd91571f7d961a9907b192d9f6"
+      }
+    },
+    {
+      "batch": 133,
+      "source": "solar-watering.png",
+      "sourceNow": "New Adds/solar-watering.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d740f78d830de43e41e5ebeb2b7ee59ef3fab9b8d0323c3c1ca109c2cfe083a5",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/watering.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py own",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/profile/solar-poses/watering.webp": "c12c67ce86652a064764cb2a9a881bc6a807743b142b19d660a5eeb26365a0e1"
+      }
+    },
+    {
+      "batch": 133,
+      "source": "solar-wave.png",
+      "sourceNow": "New Adds/solar-wave.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "e8ed4c053c5af89bd6bbe7eea09dae658019107cf240a6348542cf13d1f3138f",
+      "status": "integrated",
+      "destination": "assets/femc/profile/solar-poses/wave.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py own",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/profile/solar-poses/wave.webp": "205b7f8608acce71215e2d677a253654fb4c7a8951bd11770947f93abe272400"
+      }
+    },
+    {
+      "batch": 133,
+      "source": "afterhr-armscrossed.png",
+      "sourceNow": "New Adds/Solar-After Hours-Menu Poses/afterhr-armscrossed.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "e1d79fadafa0f0f623f4993ba9c49a6c483e5082ae80568519dddc1b01540e06",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/hd/arms-crossed.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-cp-afterhours",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/hd/arms-crossed.webp": "4ddabb54e501d83227565531fdd1f322004ae04c40e00eddb3cee2d2ddfe47df"
+      },
+      "skin": "sk-cp-afterhours"
+    },
+    {
+      "batch": 133,
+      "source": "afterhr-fistpump.png",
+      "sourceNow": "New Adds/Solar-After Hours-Menu Poses/afterhr-fistpump.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "44c7cd7ae29e7978ae12d9740c41b3f405e05a0fa12fb2731066c27414775040",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/hd/cheer.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-cp-afterhours",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/hd/cheer.webp": "33ffb0c30e4e43391b88d3547cac1f016f24c11896a6cd15dc1bb60041af3ae9"
+      },
+      "skin": "sk-cp-afterhours"
+    },
+    {
+      "batch": 133,
+      "source": "afterhr-evoker.png",
+      "sourceNow": "New Adds/Solar-After Hours-Menu Poses/afterhr-evoker.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "7a3471c281f8ab6ae39b1bfb06729d6e0875194cdd7a92fd2dea29b7db974412",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/hd/evoker.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-cp-afterhours",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/hd/evoker.webp": "04ba49b80bb98ae018ca5c97149fbf2bbd7a885259900d9dce692a91a02c25d5"
+      },
+      "skin": "sk-cp-afterhours"
+    },
+    {
+      "batch": 133,
+      "source": "afterhr-handinhair.png",
+      "sourceNow": "New Adds/Solar-After Hours-Menu Poses/afterhr-handinhair.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "283ad6fab978891a8067e8631fc13f558d7a2a60977e671d1ae27e1d04d79029",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/hd/hair.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-cp-afterhours",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/hd/hair.webp": "b091ddcadb283b4f5a6241927b1fe469fa0a56f0f0fb189c55f4f7a58ec3f717"
+      },
+      "skin": "sk-cp-afterhours"
+    },
+    {
+      "batch": 133,
+      "source": "afterhr-hearthands.png",
+      "sourceNow": "New Adds/Solar-After Hours-Menu Poses/afterhr-hearthands.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "646d8e558478b6415ded5cfbd936e13be915ad026b76852453fda32a8dda05fb",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/hd/heart.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-cp-afterhours",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/hd/heart.webp": "1cf737e7c9566b0c9730f4af1ca679d22fdeacc34941ff87582efd1fcea9d0e5"
+      },
+      "skin": "sk-cp-afterhours"
+    },
+    {
+      "batch": 133,
+      "source": "afterhr-jump.png",
+      "sourceNow": "New Adds/Solar-After Hours-Menu Poses/afterhr-jump.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "80bad49cbd1b20664faddd3a19a1c8d218f03fc3bb366f77acf2e9f291cf2532",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/hd/jump.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-cp-afterhours",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/hd/jump.webp": "118decd271205f1c5295d27c97dc721cd3cc35e089e6228357b549b13e670461"
+      },
+      "skin": "sk-cp-afterhours"
+    },
+    {
+      "batch": 133,
+      "source": "afterhr-overshoulder.png",
+      "sourceNow": "New Adds/Solar-After Hours-Menu Poses/afterhr-overshoulder.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "2591436ac46d0c23949c8d81845cbc0c524b3548e188bc54624d2fbc3a1bc2f8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/hd/lookback.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-cp-afterhours",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/hd/lookback.webp": "331c218a5827fac8742d8aa47a86449fffcbea7ee91f7e2018eba358c0f6d551"
+      },
+      "skin": "sk-cp-afterhours"
+    },
+    {
+      "batch": 133,
+      "source": "afterhr-peacesign.png",
+      "sourceNow": "New Adds/Solar-After Hours-Menu Poses/afterhr-peacesign.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "8b9832330a2ac35b7d1cbb7102b1b6f99401fa91edfa92b4d19d48f6ca7cca05",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/hd/peace.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-cp-afterhours",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/hd/peace.webp": "a09555ef539971871642f79b1e158d73bb23c63f242dc9bd5bf521f18c2dfc9f"
+      },
+      "skin": "sk-cp-afterhours"
+    },
+    {
+      "batch": 133,
+      "source": "afterhr-phone.png",
+      "sourceNow": "New Adds/Solar-After Hours-Menu Poses/afterhr-phone.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "e99cd5e0511c8b10e81fc78e5a54496104c4dfd85b1e23be139ed68e0110259c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/hd/phone.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-cp-afterhours",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/hd/phone.webp": "5b643ed003df43f47cf3e5bf03b8365ef8e981e6792a1fb809c95d50677ae883"
+      },
+      "skin": "sk-cp-afterhours"
+    },
+    {
+      "batch": 133,
+      "source": "afterhr-ramen.png",
+      "sourceNow": "New Adds/Solar-After Hours-Menu Poses/afterhr-ramen.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "ea6722d1a002c94485a05f3424909501f723aa6b06aff12a3821bcc2efb6f152",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/hd/ramen.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-cp-afterhours",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/hd/ramen.webp": "201080ac7fb98430e394c52e6ea460933fa83ab314902cf2c315c5f49f92d2c5"
+      },
+      "skin": "sk-cp-afterhours"
+    },
+    {
+      "batch": 133,
+      "source": "afterhr-sewing.png",
+      "sourceNow": "New Adds/Solar-After Hours-Menu Poses/afterhr-sewing.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "0d5e7ff94f0b95d6b0c5cf4025a8204897ec8b080d4e3873a9c15b058349a91b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/hd/sewing.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-cp-afterhours",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/hd/sewing.webp": "3723341e5ea32f0fb52329a4bc4aaf8b03b569221dc964e4cd72ca4a15a84c68"
+      },
+      "skin": "sk-cp-afterhours"
+    },
+    {
+      "batch": 133,
+      "source": "afterhr-shy.png",
+      "sourceNow": "New Adds/Solar-After Hours-Menu Poses/afterhr-shy.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "eb94700efc7b6b1f2e82993875282e2b3bebbf1a93c899d99d250edcfa426603",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/hd/shy.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-cp-afterhours",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/hd/shy.webp": "f82fd7170615fb1a442b51dd49487e8576ef5f490004971b7fafb609bf8a9d70"
+      },
+      "skin": "sk-cp-afterhours"
+    },
+    {
+      "batch": 133,
+      "source": "afterhr-yawn.png",
+      "sourceNow": "New Adds/Solar-After Hours-Menu Poses/afterhr-yawn.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "a75843acd26c1f85d08198add0b8deb61b199297b2a6419e4443ea6676bb1013",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/hd/stretch.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-cp-afterhours",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/hd/stretch.webp": "fd6edcf052f97c4be9ee5ed9452ec25cc0a19204bad50669e93f37ef3d11dc04"
+      },
+      "skin": "sk-cp-afterhours"
+    },
+    {
+      "batch": 133,
+      "source": "afterhr-reading.png",
+      "sourceNow": "New Adds/Solar-After Hours-Menu Poses/afterhr-reading.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d6e148971a26613cb126f0ceb9d5e88209cbc3235b40c1d0d8143fb2b84dfbd0",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/hd/study.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-cp-afterhours",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/hd/study.webp": "ac75e7126ce9815e1a4c97e4a26ab78858a7b796534ba456c4b005e1149a48b5"
+      },
+      "skin": "sk-cp-afterhours"
+    },
+    {
+      "batch": 133,
+      "source": "afterhr-hiphands.png",
+      "sourceNow": "New Adds/Solar-After Hours-Menu Poses/afterhr-hiphands.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "c567f0ae2496e680e3824d3afff3755967bb03f26784b2aa81496b67b0a31f24",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/hd/tease.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-cp-afterhours",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/hd/tease.webp": "96d820f57b28e85e012927b29c3a21ff940f60699fd63dd4872dcd403201ab45"
+      },
+      "skin": "sk-cp-afterhours"
+    },
+    {
+      "batch": 133,
+      "source": "afterhr-thinking.png",
+      "sourceNow": "New Adds/Solar-After Hours-Menu Poses/afterhr-thinking.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "0b9d592a1595b8dfb5a0f96f876e1e51ae8298aa14451e5cfbf25c8831674f90",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/hd/thinking.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-cp-afterhours",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/hd/thinking.webp": "6f276cf6ffd217e60556c477b36500fdcf52d2fa78ceee49d90c21fb4776c12b"
+      },
+      "skin": "sk-cp-afterhours"
+    },
+    {
+      "batch": 133,
+      "source": "afterhr-watering.png",
+      "sourceNow": "New Adds/Solar-After Hours-Menu Poses/afterhr-watering.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "3e4a3d3f3f59ee55eccd49010f4c1485a662c70aaeca258bba011f27b65b8f7a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/hd/watering.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-cp-afterhours",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/hd/watering.webp": "93004dda82d096d76f46a842828ca17632cf9b2a8073eea03692ba87068fc2a2"
+      },
+      "skin": "sk-cp-afterhours"
+    },
+    {
+      "batch": 133,
+      "source": "afterhr-wave.png",
+      "sourceNow": "New Adds/Solar-After Hours-Menu Poses/afterhr-wave.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "944549cf29c20e63f0e132ee2b0b33752575d6d531cfc42a91e49af627dea0d8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-cp-afterhours/hd/wave.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-cp-afterhours",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-cp-afterhours/hd/wave.webp": "f8673420b1ce78ca4f3082346e89bf9ddc097d283c39b0119ecb1b3808e2a1c7"
+      },
+      "skin": "sk-cp-afterhours"
     }
   ],
   "batch1Validation": {

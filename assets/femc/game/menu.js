@@ -1219,7 +1219,17 @@ window.FemcMenu = (() => {
     album: 'The memories you’ve kept', theater: 'Watch a scene again', calendar: 'The days ahead', compendium: 'Every Persona registered · opens in a new tab' };
   const DAY_WORD = { school: 'Weekday', prologue: 'Weekday', off: 'Day Off', exam: 'Exams', trip: 'Trip' };
   // Solar's full-body pose, measured once: width/height, head top, head-to-chin, head centre x (fractions of the image).
+  // HD poses (2026-11-03, tools/femc-hd-poses.py): ready.js own.hdfig / skins[<look>].hdfig = [ar, ht, hf, hx] of the arms-crossed
+  // pose. The Solar outfit she wears in the Wardrobe shows its own arms-crossed HD pose when its set has one
+  // (while "Outfits in scene portraits" is on, as on the evening screen), else her own look.
   const HOME_FIG = { src: 'assets/femc/profile/solar-poses/arms-crossed.webp', ar: .306, ht: .01, hf: .14, hx: .47 };
+  function homeFig() {
+    const A = window.FEMC_ART_READY || {}, C = window.FemcCosmetics, fig = m => (m && m.length === 4 ? { ar: m[0], ht: m[1], hf: m[2], hx: m[3] } : {});
+    const x = C && C.onIn && C.cs().portraits !== false ? C.onIn('skin:solar') : null, R = x ? (A.skins || {})[x.id] || {} : {};
+    if (x && (R.hd || []).includes('arms-crossed')) return { ...HOME_FIG, ...fig(R.hdfig), src: `assets/femc/game/art/skins/${x.id}/hd/arms-crossed.webp?v=${R.hdv || 1}` };
+    const own = A.own || {};
+    return { ...HOME_FIG, ...fig(own.hdfig), src: `${HOME_FIG.src}?v=${own.hdv || 1}` };
+  }
   let view = 'panel', homeOk = false, homeSel = 0;
   const stagger = i => Math.round(Math.sin(i * 1.15) * 22 + i * 4);
   function sunMoon(phase) {
@@ -1248,7 +1258,7 @@ window.FemcMenu = (() => {
       const a = `class="g-fmh-it" role="menuitem" data-home="${k}" tabindex="${x === homeSel ? 0 : -1}" aria-describedby="g-fmh-g1"`;
       return `<li role="none" style="--i:${x};--x:${stagger(x)}px"${x === homeSel ? ' class="sel"' : ''}>${k === 'compendium' ? `<a ${a} href="${G.base}compendium.html" target="_blank" rel="noopener">${inner}</a>` : `<button type="button" ${a}>${inner}</button>`}</li>`;
     }).join('');
-    const f = HOME_FIG;
+    const f = homeFig();
     return `<div class="g-fmh${dark ? ' dark' : ''}${enter ? ' enter' : ''}">
       <div class="g-fmh-bg" aria-hidden="true"></div><div class="g-fmh-rays" aria-hidden="true"></div>
       <div class="g-fmh-ghost side" aria-hidden="true">${esc(dark ? 'Dark Hour' : when)}</div><div class="g-fmh-ghost back" aria-hidden="true">${dark ? '00:00' : 'Solstice'}</div>

@@ -2,7 +2,7 @@
 card, a couple set's Showtime, the theme frame on the HUD card and the theme burst in the All-Out cloud.
 Headless Chrome, isolated profile, its own localhost server; no player saves.
 
-Run: python3 tests/femc_skins_battle.py [--only data,tools,fallback,art,settings,sheet2,looks,evoker,tryon,lookfx] [--screenshots DIR]
+Run: python3 tests/femc_skins_battle.py [--only data,tools,fallback,art,settings,sheet2,looks,evoker,tryon,lookfx,winhd] [--screenshots DIR]
 
   data      cosmetics.js THEMES (every listed look exists; part 4's picks), battle() hands theme / name / couple per worn
             look and no art paths while no files exist.
@@ -26,6 +26,9 @@ Run: python3 tests/femc_skins_battle.py [--only data,tools,fallback,art,settings
   evoker    M (Nov 1 2026), the summon cut-in's Evoker close-up: a look with its own `evoker` art (a test file cut with
             femc-wardrobe.py evoker) shows it, never the default-uniform shot or summon clip; a look without one shows
             its pose-1 frame large (Solar's Yukata, Akihiko's swimsuit), never the default shot; no look: as before.
+            Screenshots at 1440x900 and 390x844.
+  winhd     Nov 3 2026, HD single-figure poses: the win screen's hero is the worn look's HD peace sign (After Hours), her own
+            HD peace sign in her own look; a set without peace uses the fist pump; a look without a set keeps pose 5.
             Screenshots at 1440x900 and 390x844.
   lookfx    N (Nov 1 2026), a look's own effect sheet: a test sheet (3 x 2, light on black) cut by tools/femc-fx.py skin
             sk-date → skins/sk-date/fx.webp, scan lists its hash in ready.js; battle() / tryOnSpec hand it; in a real Tartarus
@@ -851,6 +854,40 @@ try:
         cleanup(); shutil.rmtree(tmp, ignore_errors=True)
         ok(READY.read_text() == READY0 and (out.read_bytes() == kat if kat else not out.exists()), 'test sheet gone (Kat\'s put back), ready.js restored')
         results['lookfx'] = nshots
+
+    # ── HD poses on the win screen (Nov 3 2026, tools/femc-hd-poses.py) ──
+    if want('winhd'):
+        hshots = []
+        def solar_wins():
+            bdrive(SOLAR_MENU, 120)
+            p.eval("window.__stopResults=true;FemcBattle.B.foes().forEach(f=>{f.hp=1});FemcBattle.ctl.pickValue('attack')"); time.sleep(0.15)
+            p.eval("(()=>{const c=FemcBattle.ctl,f=FemcBattle.B.foes().find(f=>!f.dead);if(c&&c.pickValue&&f)c.pickValue(f.id)})()")
+            p.eval("window.__holdSolar=false")
+            bdrive("FemcBattle.screen()==='results'", 60); time.sleep(0.8)
+            return p.eval("(()=>{const h=document.querySelector('.bt-res-hero');return h&&{src:h.getAttribute('src'),ok:h.complete&&h.naturalWidth>0,h:h.naturalHeight,mid:h.dataset.mid,hd:h.classList.contains('hd')}})()")
+        for wear, want_src, tag in ((['sk-cp-afterhours'], 'skins/sk-cp-afterhours/hd/peace.webp', 'afterhours'), ([], 'profile/solar-poses/peace.webp', 'own')):
+            p.top(); setup(wear=wear)
+            ok(not wear or p.eval("(FemcCosmetics.battle().hd.solar||{}).have.includes('peace')"), 'battle() hands the HD set')
+            night(['solar', 'akihiko', 'yukari', 'junpei'], "FemcBattle.save.settings.entrance=false;window.__btGroup=['maya'];")
+            enter()
+            hero = solar_wins()
+            ok(hero and want_src in hero['src'] and hero['ok'] and hero['h'] >= 1500 and hero['hd'] and p.eval("FemcBattle.marks['results-hero-hd']>0"), f'win screen ({tag}): the HD peace sign: {hero}')
+            for w, hh in [(1440, 900), (390, 844)]:
+                view(p, w, hh); time.sleep(0.9); ok(fits(p), f'win {tag} {w}: no sideways scroll'); hshots.append(shot(p, f'winhd-{tag}-{w}x{hh}'))
+            view(p, 1440, 900)
+            clean(p, f'winhd {tag}')
+        # A set without peace falls back to the fist pump (cheer), then jump; a look without a set keeps pose 5.
+        p.top(); setup(wear=['sk-cp-afterhours'])
+        p.eval("(()=>{const R=FEMC_ART_READY.skins['sk-cp-afterhours'];R.hd=R.hd.filter(k=>k!=='peace');return true})()")
+        night(['solar', 'akihiko', 'yukari', 'junpei'], "FemcBattle.save.settings.entrance=false;window.__btGroup=['maya'];"); enter()
+        hero = solar_wins()
+        ok(hero and 'sk-cp-afterhours/hd/cheer.webp' in hero['src'] and hero['ok'], f'no peace sign in the set: the fist pump: {hero}')
+        p.top(); setup(wear=['sk-date'])
+        night(['solar', 'akihiko', 'yukari', 'junpei'], "FemcBattle.save.settings.entrance=false;window.__btGroup=['maya'];"); enter()
+        hero = solar_wins()
+        ok(hero and 'skins/sk-date/solar-pose-5.webp' in hero['src'] and not hero['hd'], f'a look without an HD set: its pose 5 as before: {hero}')
+        clean(p, 'winhd fallbacks')
+        results['winhd'] = hshots
 
     print(json.dumps(results, indent=1))
     print('femc_skins_battle: all checks passed')

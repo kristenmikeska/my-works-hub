@@ -1537,7 +1537,7 @@
     const opt = (id, label, sub, ok = true, cls = '') => `<button type="button" class="g-night ${cls}" data-n="${id}"${ok ? '' : ' disabled'}><b>${label}</b><small>${esc(sub)}</small></button>`;
     // Solar at the right edge on wide screens (solstice-hud.css hides her on phones).
     const look = homeLook();
-    const fig = `<div class="g-home-fig${look ? ' look' : ''}" aria-hidden="true"${look ? ` data-look="${look.id}"` : ''}><i class="g-hf-slash"></i><img src="${look ? look.src(5) : `${G.base}assets/femc/profile/solar-poses/thinking.webp`}" alt=""></div>`;
+    const fig = `<div class="g-home-fig${look ? (look.hd ? ' hd' : ' look') : ''}" aria-hidden="true"${look ? ` data-look="${look.id}"` : ''}><i class="g-hf-slash"></i><img src="${look ? look.src(look.hd ? look.hd[0] : 5) : homePose('thinking')}" alt=""></div>`;
     show(`${fig}<section class="g-dorm"><div class="g-map-head" data-ghost="Evening"><p class="g-kicker">Evening · Iwatodai Dorm</p><h1>Tonight</h1>
       <p class="g-map-sub">${info.moon.days != null && info.moon.days <= 3 && !info.moon.full ? `The moon is almost full. ${info.moon.days} day${info.moon.days === 1 ? '' : 's'} to go.` : esc(G.crushLine('evening.sub') || 'The lounge smells like instant ramen. What now?')}</p></div>
       <div class="g-nights">
@@ -1567,21 +1567,29 @@
     [/^out$/, 'phone'], [/^job:/, 'peace'], [/^dorm:/, 'hair']];
   /* Her look on the evening screen (2026-11-01): the outfit she wears in the Wardrobe (while "Outfits in scene portraits" is
      on), else the season's (Dec–Feb the Winter Coat, Jul–Aug Summer Session), else the usual poses. Outfit art is the
-     battle pose sheet: 5 (standing) and 4 while the list scrolls, 0 (her stance) on Tartarus. */
+     battle pose sheet: 5 (standing) and 4 while the list scrolls, 0 (her stance) on Tartarus.
+     HD sets (2026-11-03, tools/femc-hd-poses.py; ready.js skins[<look>].hd / hdv): a look with Kat's single-figure poses
+     rotates through them like her own look (HOME_POSES order, only the poses the set has) and reacts with the set's matching
+     pose (HOME_REACT); a reaction pose the set lacks keeps the scroll pose, so she never changes clothes mid-hover. Her own
+     poses are HD too (profile/solar-poses/, ready.js own.hdv for ?v=). */
   const HOME_SEASON = { 12: 'sk-wintercoat', 1: 'sk-wintercoat', 2: 'sk-wintercoat', 7: 'sk-summersession', 8: 'sk-summersession' };
+  const homePose = p => `${G.base}assets/femc/profile/solar-poses/${p}.webp?v=${((window.FEMC_ART_READY || {}).own || {}).hdv || 1}`;
   function homeLook() {
     const C = window.FemcCosmetics;
     if (!C || C.cs().portraits === false) return null;
     const worn = C.onIn('skin:solar'), x = worn || C.byId(HOME_SEASON[G.dayInfo().date.getMonth() + 1]);
     if (!x || !C.ready(x)) return null;
+    const R = ((window.FEMC_ART_READY || {}).skins || {})[x.id] || {}, hd = R.hd && R.hd.length ? HOME_POSES.filter(p => R.hd.includes(p)) : null;
+    if (hd && hd.length) return { id: x.id, hd, src: p => `${G.base}assets/femc/game/art/skins/${x.id}/hd/${p}.webp?v=${R.hdv || 1}` };
     return { id: x.id, src: k => `${G.base}assets/femc/game/art/skins/${x.id}/solar-pose-${k}.webp?v=2` };
   }
   function homeFig() {
     const fig = main.querySelector('.g-home-fig'), img = fig?.querySelector('img');
     if (!img) return;
     const lk = fig.dataset.look ? homeLook() : null;
-    const POSES = lk ? ['5', '4'] : HOME_POSES, REACT = lk ? [[/^tartarus$/, '0']] : HOME_REACT;
-    const src = p => (lk ? lk.src(p) : `${G.base}assets/femc/profile/solar-poses/${p}.webp`);
+    const POSES = lk ? lk.hd || ['5', '4'] : HOME_POSES;
+    const REACT = lk ? (lk.hd ? HOME_REACT.map(([re, p]) => [re, lk.hd.includes(p) ? p : null]) : [[/^tartarus$/, '0']]) : HOME_REACT;
+    const src = p => (lk ? lk.src(p) : homePose(p));
     POSES.forEach(p => { const i = new Image(); i.src = src(p); });
     let pose = POSES[0], hover = null, lastY = main.scrollTop, lean = 0, raf = 0;
     const set = p => {

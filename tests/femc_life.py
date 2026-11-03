@@ -383,6 +383,25 @@ try:
         p.eval("FemcCosmetics.setPortraits(false);FemcGameUI.evening();true")
         ok(p.eval("!document.querySelector('.g-home-fig').dataset.look"), 'outfits toggled off: the usual poses')
         p.eval("FemcCosmetics.setPortraits(true);true")
+        # Nov 3: HD single-figure poses (tools/femc-hd-poses.py): her own 18 at full size; a look with an HD set rotates
+        # through it and reacts with its own matching pose; a pose the set lacks keeps the scroll pose; seasons use a set too
+        ok(p.eval("Promise.all(['thinking','peace','arms-crossed','jump'].map(k=>new Promise(r=>{const i=new Image();i.onload=()=>r(i.naturalHeight>=1500);i.onerror=()=>r(false);i.src=FemcGame.base+'assets/femc/profile/solar-poses/'+k+'.webp'}))).then(a=>a.every(Boolean))"), 'own poses are the HD ones (full height)')
+        A = p.eval("(FEMC_ART_READY.skins['sk-cp-afterhours']||{}).hd||[]")
+        ok(len(A) == 18 and 'arms-crossed' in A and 'peace' in A, f'ready.js lists After Hours\' 18 HD poses: {A}')
+        p.eval("(()=>{const C=FemcCosmetics;C.grantItem('sk-cp-afterhours');C.equip('sk-cp-afterhours');FemcGameUI.evening();return true})()")
+        f = p.eval("(()=>{const f=document.querySelector('.g-home-fig');return {look:f.dataset.look,hd:f.classList.contains('hd'),old:f.classList.contains('look'),src:f.querySelector('img').getAttribute('src')}})()")
+        ok(f['look'] == 'sk-cp-afterhours' and f['hd'] and not f['old'] and 'sk-cp-afterhours/hd/thinking.webp' in f['src'], f'After Hours worn: its HD set: {f}')
+        got = {k: p.eval(HOV % json.dumps(k)) for k in want_pose}
+        ok(all(v is None or f'sk-cp-afterhours/hd/{want_pose[k]}.webp' in v for k, v in got.items()) and sum(v is not None for v in got.values()) >= 4, f'After Hours hover reactions: {got}')
+        p.eval("(()=>{const R=FEMC_ART_READY.skins['sk-cp-afterhours'];window.__hd0=R.hd;R.hd=R.hd.filter(k=>k!=='study');FemcGameUI.evening();return true})()")
+        s0 = p.eval("document.querySelector('.g-home-fig img').getAttribute('src')"); s1 = p.eval(HOV % json.dumps('study'))
+        ok(s1 is None or (s1 == s0 and 'sk-cp-afterhours/hd/' in s1), f'a pose the set lacks keeps the outfit\'s scroll pose: {s0} {s1}')
+        p.eval("(()=>{FEMC_ART_READY.skins['sk-cp-afterhours'].hd=window.__hd0;FemcCosmetics.unequip('skin:solar');const W=FEMC_ART_READY.skins['sk-wintercoat'];window.__w0=W.hd;W.hd=['thinking','study'];return true})()")
+        w = look('12/10')
+        ok(w['look'] == 'sk-wintercoat' and 'sk-wintercoat/hd/thinking.webp' in w['src'], f'the season\'s outfit uses its HD set when it has one: {w}')
+        p.eval("(()=>{const W=FEMC_ART_READY.skins['sk-wintercoat'];if(window.__w0)W.hd=window.__w0;else delete W.hd;return true})()")
+        errs = [e for e in p.console() if 'sk-wintercoat/hd/' not in str(e) and 'favicon' not in str(e)]  # the pretend set's files don't exist
+        ok(not errs, f'HD looks: no browser errors: {errs}')
         clear()
 
     # ── Rank-ups ──

@@ -155,6 +155,22 @@ def main():
         open_menu(p,'party'); assert not p.eval("!!document.querySelector('.g-fm-ov.is-home')"); close_menu(p)
         print('The menu screen: the list, keys, Back / Esc to the list, Esc to close; a tab asked for opens directly.',flush=True)
 
+        # Nov 3: Solar on the menu screen is her HD arms-crossed pose; wearing a look with an HD set, that look's own.
+        FIG="(()=>{const i=document.querySelector('.g-fmh-fig img');return i&&{src:i.getAttribute('src'),h:i.naturalHeight,ar:+getComputedStyle(i).getPropertyValue('--ar')}})()"
+        click(p,'[data-ui=menu]'); p.wait("!!document.querySelector('.g-fmh-fig img')?.complete")
+        f=p.eval(FIG); assert 'profile/solar-poses/arms-crossed.webp' in f['src'] and f['h']>=1500 and 0.25<f['ar']<0.45, f
+        key('Escape',27); p.wait("!document.querySelector('.g-fm-ov')")
+        p.eval("(()=>{const C=FemcCosmetics;C.grantItem('sk-cp-afterhours');C.equip('sk-cp-afterhours');return true})()")
+        click(p,'[data-ui=menu]'); p.wait("!!document.querySelector('.g-fmh-fig img')?.complete")
+        f=p.eval(FIG); assert 'skins/sk-cp-afterhours/hd/arms-crossed.webp' in f['src'] and f['h']>=1500, f
+        key('Escape',27); p.wait("!document.querySelector('.g-fm-ov')")
+        p.eval("FemcCosmetics.setPortraits(false);true")
+        click(p,'[data-ui=menu]'); p.wait("!!document.querySelector('.g-fmh-fig img')?.complete")
+        f=p.eval(FIG); assert 'profile/solar-poses/arms-crossed.webp' in f['src'], f
+        key('Escape',27); p.wait("!document.querySelector('.g-fm-ov')")
+        p.eval("FemcCosmetics.setPortraits(true);FemcCosmetics.unequip('skin:solar');true")
+        print("The menu screen's Solar: her HD pose, a worn look's HD pose, the outfits toggle.",flush=True)
+
         # Visual/layout check without exposing any story content.
         shots=pathlib.Path('/private/tmp/femc-menu-check'); shots.mkdir(exist_ok=True)
         for width,height,name in [(1280,850,'desktop'),(390,844,'mobile')]:

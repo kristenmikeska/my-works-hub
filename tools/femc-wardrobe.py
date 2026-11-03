@@ -238,6 +238,18 @@ def eyes_of(paths):
     return out
 
 
+def hd_set(d):
+    """A folder of HD poses (tools/femc-hd-poses.py): hd = pose names, hdv = content hash (?v=), hdfig = arms-crossed's menu metrics."""
+    import hashlib
+    fs = sorted(d.glob('*.webp'))
+    if not fs: return {}
+    h = hashlib.sha1(); [h.update(f.read_bytes()) for f in fs]
+    out = {'hd': [f.stem for f in fs], 'hdv': h.hexdigest()[:8]}
+    fig = json.loads((d / 'fig.json').read_text()) if (d / 'fig.json').exists() else {}
+    if 'arms-crossed' in fig: out['hdfig'] = [fig['arms-crossed'][k] for k in ('ar', 'ht', 'hf', 'hx')]
+    return out
+
+
 def scan():
     keys = sorted(f.stem for f in (ART / 'keys/series').glob('*.webp')) if (ART / 'keys/series').exists() else []
     goods = sorted(f.stem for f in (ART / 'goods').glob('*.webp')) if (ART / 'goods').exists() else []
@@ -263,6 +275,7 @@ def scan():
             ey = eyes_of([d / f'{w}-onemore-v2.webp' for w in skins[d.name]['onemore2']])
             e2 = {w: ey[d / f'{w}-onemore-v2.webp'] for w in skins[d.name]['onemore2'] if ey[d / f'{w}-onemore-v2.webp']}
             if e2: skins[d.name]['eyes2'] = e2
+        if (d / 'hd').exists() and d.name in skins: skins[d.name].update(hd_set(d / 'hd'))  # Solar's HD single-figure poses (tools/femc-hd-poses.py)
         if (d / 'weapon.webp').exists(): weapons.append(d.name)
     stems = lambda sub, cut='': sorted(f.stem[:len(f.stem) - len(cut)] if cut else f.stem for f in (ART / sub).glob(f'*{cut}.webp')) if (ART / sub).exists() else []
     own = {k: stems(k) for k in ('onemore', 'entrance')}
@@ -272,6 +285,7 @@ def scan():
     own['eyes2'] = {w: ey[ART / 'onemore' / f'{w}-v2.webp'] for w in own['onemore2'] if ey[ART / 'onemore' / f'{w}-v2.webp']}
     P = ROOT / 'assets/femc/battle/art/poses'  # D: fighters' own second sheets (battle.js reads own.poses2)
     own['poses2'] = sorted(f.name[:-len('-pose2-0.webp')] for f in P.glob('*-pose2-0.webp') if all((P / f.name.replace('-pose2-0', f'-pose2-{i}')).exists() for i in range(6)))
+    own.update(hd_set(ROOT / 'assets/femc/profile/solar-poses'))  # her own look's 18 evening poses: hd / hdv / hdfig
     FXD = ROOT / 'assets/femc/battle/art/fx'  # Kat's theme effect sheets (tools/femc-fx.py), for the Wardrobe's Try it on
     themes = sorted(f.stem[len('theme-'):] for f in FXD.glob('theme-*.webp'))
     data = {'keys': keys, 'goods': goods, 'skins': skins, 'weapons': weapons, 'own': own, 'couples': stems('couples', '-showtime'), 'frames': stems('frames'), 'themes': themes}

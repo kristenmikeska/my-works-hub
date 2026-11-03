@@ -85,7 +85,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 49;
+  const ART_V = 51;
   /* Status art (tools/femc-icons.py): sticker icons for the ailments and the buff / debuff arrows, and the Tartarus map's room
      glyphs. A status chip shows its icon in place of the old name or ATK / DEF / AGI text (the name stays in its title). */
   const ICON_DIR = 'assets/femc/battle/art/icons/';
@@ -4455,6 +4455,12 @@
       return go;
     }
   }
+  const OWN_HD = { dir: 'assets/femc/profile/solar-poses/', have: ['peace'] }; // practice (no Wardrobe data): her own HD poses
+  function winHd(mid, worn) {
+    const H = worn ? LOOKS.hd && LOOKS.hd[mid] : mid === 'solar' ? (LOOKS && LOOKS.hdOwn) || OWN_HD : null;
+    const p = H && ['peace', 'cheer', 'jump'].find(k => (H.have || []).includes(k));
+    return p ? `${H.dir}${p}.webp?v=${H.v || ART_V}` : null;
+  }
   function resultsScreen(o, g, first) {
     screen = 'results';
     root.classList.remove('bt-in-battle');
@@ -4481,9 +4487,13 @@
       (o.notes || []).forEach(n => extra.push(`<span class="perk">${esc(n)}</span>`));
       // The win screen's hero (FEMC-SKINS-BATTLE-DESIGN C): the fighter who struck the victory pose (Solar if none), in the
       // Wardrobe look they wear: its victory frame (pose 5) big, bleeding off the right edge behind the rows. No look: as before.
-      const mvp = winMid || 'solar', hero = LOOKS && LOOKS.pose && LOOKS.pose[mvp] && FIGHTER_POSES[mvp] && o.rew
-        ? `<div class="bt-res-heroW" aria-hidden="true">${lookLayer(mvp, 'win')}<img class="bt-res-hero" src="${posedFrames(mvp)[5]}" alt="" draggable="false" data-mid="${mvp}" onerror="this.parentNode.remove()"></div>` : '';
+      // HD poses (2026-11-03): a look with Kat's single-figure HD set (ready.js hd, cosmetics battle().hd) shows its peace sign
+      // (else fist pump, else jump) instead of the small battle frame; Solar in her own look shows her own HD peace sign.
+      const mvp = winMid || 'solar', worn = !!(LOOKS && LOOKS.pose && LOOKS.pose[mvp]), hd = winHd(mvp, worn);
+      const hero = ((worn && FIGHTER_POSES[mvp]) || hd) && o.rew
+        ? `<div class="bt-res-heroW${hd ? ' hd' : ''}" aria-hidden="true">${worn ? lookLayer(mvp, 'win') : ''}<img class="bt-res-hero${hd ? ' hd' : ''}" src="${hd || posedFrames(mvp)[5]}" alt="" draggable="false" data-mid="${mvp}" onerror="this.parentNode.remove()"></div>` : '';
       if (hero) mark('results-hero');
+      if (hero && hd) mark('results-hero-hd');
       const el = show(`${hero}<div class="bt-res"><div>
           <h1 class="bt-res-title"><small>${esc(o.title)}</small>RESULTS</h1>
           <div class="bt-res-exp"><small>EXP</small>+${o.rew.exp}</div>

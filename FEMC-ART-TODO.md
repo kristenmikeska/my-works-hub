@@ -10,6 +10,7 @@ Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make.
 
 **The plan (in this order):**
 1. **Solar first (Kat, Nov 3: several poses for every outfit).** Her own look's 18 evening poses redone one per image (arms crossed, thinking, wave, peace, hair, shy, study, ramen, watering, Evoker, stretch, phone, cheer, jump, tease, heart, look back, sewing), and **several poses for each of her 32 outfits** (the evening screen rotates through them when she wears that outfit; one of them also shows big on the results screen). Drop each outfit's poses in a folder named after the outfit; Claude sorts them.
+   **In the game so far (Nov 3):** ✅ her own look, all 18 poses · ✅ After Hours (all 18). Still to make: the other 31 outfits' sets (folder per outfit, any of the 18 pose names; the evening screen uses whichever poses a set has, the menu its arms crossed, the results screen its peace sign, else fist pump, else jump).
 2. **Then the other fighters' victory poses** (their own look first, then their outfits), for the results screen.
 3. Optional later: battle pose sheets redone as single figures (only if the in-battle figures ever look soft to you).
 
