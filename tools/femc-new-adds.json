@@ -32867,6 +32867,3408 @@
         "assets/femc/portraits/chenle-runners/serious.webp": "9533881f38f9e1f955e1bf884be4e14ac40b5bc17030f181254108d52f738559",
         "assets/femc/portraits/chenle-runners/surprised.webp": "066ba28fe2d3043304acd0e9e66742f8a02740f36b833031bb979dd88559c01e"
       }
+    },
+    {
+      "batch": 134,
+      "source": "datenight-armscrossed.png",
+      "sourceNow": "New Adds/Solar-Date Night-Menu Poses/datenight-armscrossed.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "b50fb7f26e1211f7d80551a80d8d99836db31adae5a49e56ca3720928850bd48",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/hd/arms-crossed.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-date",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/hd/arms-crossed.webp": "4f89f795d0f2b1d71a4b987e3d43a7a21b9a4bd5279ef6c3fa6906501a31b186"
+      },
+      "skin": "sk-date"
+    },
+    {
+      "batch": 134,
+      "source": "datenight-fist.png",
+      "sourceNow": "New Adds/Solar-Date Night-Menu Poses/datenight-fist.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "071c876745e282f8dfced66d459da06389127b2fba471c78f5d117320b6bd65b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/hd/cheer.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-date",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/hd/cheer.webp": "7b85a188cd490521be2638d632128021f9ffa83cea86746fda324cbd540853db"
+      },
+      "skin": "sk-date"
+    },
+    {
+      "batch": 134,
+      "source": "datenight-evoker.png",
+      "sourceNow": "New Adds/Solar-Date Night-Menu Poses/datenight-evoker.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "582672f19ab719d87fc8e97142e4626e49192af50302215584ba4b9b3a0122bc",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/hd/evoker.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-date",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/hd/evoker.webp": "71c3bfc6cf1e71deb78dbcbe10f3ca4337c3abee5d66557627260ccb71bc1493"
+      },
+      "skin": "sk-date"
+    },
+    {
+      "batch": 134,
+      "source": "datenight-handinhair.png",
+      "sourceNow": "New Adds/Solar-Date Night-Menu Poses/datenight-handinhair.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "f7b4d0783ccf7b7e4fc76a06c6a0c949ed3cd6508086a04428ff7388a3c23462",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/hd/hair.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-date",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/hd/hair.webp": "7555dbfb5c2b65ab21ccc4f814bcb01ab246c4d3d37b2383bab79657be5d880d"
+      },
+      "skin": "sk-date"
+    },
+    {
+      "batch": 134,
+      "source": "datenight-hearthands.png",
+      "sourceNow": "New Adds/Solar-Date Night-Menu Poses/datenight-hearthands.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "939cff831c364fc9bb2d47e1012e3f036eab8e894cc3c4769fda03f984e55a20",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/hd/heart.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-date",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/hd/heart.webp": "75497d325c2bd26d8d9a9a37cc45055ac1805d46a9659b350694ef8eb6f4c8bf"
+      },
+      "skin": "sk-date"
+    },
+    {
+      "batch": 134,
+      "source": "datenight-jump.png",
+      "sourceNow": "New Adds/Solar-Date Night-Menu Poses/datenight-jump.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "391d2e088ecca5ee6ecf4960f429890ec1113c517cc455dab51fa2b334b6094d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/hd/jump.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-date",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/hd/jump.webp": "91f294abe92b52d3b1ffba6180462ed1df38849cd994b03f277234a5575dbfdc"
+      },
+      "skin": "sk-date"
+    },
+    {
+      "batch": 134,
+      "source": "datenight-overshoulder.png",
+      "sourceNow": "New Adds/Solar-Date Night-Menu Poses/datenight-overshoulder.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "925778601645d6e870fab76f5a080b7d494fe4efa881b0b1a783b728cdd10423",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/hd/lookback.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-date",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/hd/lookback.webp": "dfd72fd138a01bd7478099241b30f20c7042b06de19eb24b731dcdbe914fd0d7"
+      },
+      "skin": "sk-date"
+    },
+    {
+      "batch": 134,
+      "source": "datenight-peace.png",
+      "sourceNow": "New Adds/Solar-Date Night-Menu Poses/datenight-peace.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "6e089f46b069638c4ab7ebccc32d39e64dcc4a1be0c257363d9a718e396faf9d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/hd/peace.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-date",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/hd/peace.webp": "a80cdfc417131e49c0b781b9895e73e1a49dc5ff2f03483f8255a11afed4ccea"
+      },
+      "skin": "sk-date"
+    },
+    {
+      "batch": 134,
+      "source": "datenight-phone.png",
+      "sourceNow": "New Adds/Solar-Date Night-Menu Poses/datenight-phone.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "45cd9557907f6c3830c009d9734c84f161daabffe9179eaa29589873c8e3898c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/hd/phone.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-date",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/hd/phone.webp": "b1f5c5c0f92c8849c140bd39e9c7017fef258cec5feee3b37be24b1b8fefd5cf"
+      },
+      "skin": "sk-date"
+    },
+    {
+      "batch": 134,
+      "source": "datenight-ramen.png",
+      "sourceNow": "New Adds/Solar-Date Night-Menu Poses/datenight-ramen.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "dd5ce30ae7d1a567abc5c428acab9997ca7ec15c22b76d66c4687bba8d6db75f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/hd/ramen.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-date",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/hd/ramen.webp": "7866afb94d58a1b2523b7e1a34058a50e120128f04c3ff62b9a09999389888ae"
+      },
+      "skin": "sk-date"
+    },
+    {
+      "batch": 134,
+      "source": "datenight-sewing.png",
+      "sourceNow": "New Adds/Solar-Date Night-Menu Poses/datenight-sewing.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "105b07c133e81a4a2ad947f39d6e30bfe66b076bc0bc6f92edd81d265ce6463d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/hd/sewing.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-date",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/hd/sewing.webp": "df033b9697a8ed5c5370334eb3bf540d74d7389b848fe20c2ec0f02f218ba564"
+      },
+      "skin": "sk-date"
+    },
+    {
+      "batch": 134,
+      "source": "datenight-shy.png",
+      "sourceNow": "New Adds/Solar-Date Night-Menu Poses/datenight-shy.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "906e693ba14ffcbcc3ea7dfaaae2072ddd62757d323bcc300db8fce7efdd8402",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/hd/shy.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-date",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/hd/shy.webp": "146a56c7414092c561246d7f3100914e888ec0de644ff698c5f67982de36a8f8"
+      },
+      "skin": "sk-date"
+    },
+    {
+      "batch": 134,
+      "source": "datenight-yawn.png",
+      "sourceNow": "New Adds/Solar-Date Night-Menu Poses/datenight-yawn.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "96580a874fb8f26227ee00e94ee0c392048ff8ea23f0443cd1dcacad283c365f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/hd/stretch.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-date",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/hd/stretch.webp": "6a629f67cbbc8e9aae4d56b6fcad5642abdd9ddaf9af9debaa86cfb476087271"
+      },
+      "skin": "sk-date"
+    },
+    {
+      "batch": 134,
+      "source": "datenight-reading.png",
+      "sourceNow": "New Adds/Solar-Date Night-Menu Poses/datenight-reading.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "1d0c7afd9a8d9d00788402f421fd9e9bf744df0a785c00f5687fe81228bfe16e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/hd/study.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-date",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/hd/study.webp": "43359db66c0ee507072332fee1446f5e426c15325e44692a23bce58daaec9e79"
+      },
+      "skin": "sk-date"
+    },
+    {
+      "batch": 134,
+      "source": "datenight-handsonhip.png",
+      "sourceNow": "New Adds/Solar-Date Night-Menu Poses/datenight-handsonhip.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "302cf873e1f07d99c9ab462ee68c5379c0ff7d3f81f09340ab6f620388c5451b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/hd/tease.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-date",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/hd/tease.webp": "db5cd9f0dfb5e82dfeb731d214aa589cf4e7b177da040104f84dd8bf5cf6b3c5"
+      },
+      "skin": "sk-date"
+    },
+    {
+      "batch": 134,
+      "source": "datenight-thinking.png",
+      "sourceNow": "New Adds/Solar-Date Night-Menu Poses/datenight-thinking.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "4dd8fbc6753b93e0070da28adddfb88e2b2a6d13ace7ae3bfab397bebf49a0e8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/hd/thinking.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-date",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/hd/thinking.webp": "6b866df25c6536b75fc4edf3bd9b9fdfa82a863b930dd75d995241b6028d66b7"
+      },
+      "skin": "sk-date"
+    },
+    {
+      "batch": 134,
+      "source": "datenight-watering.png",
+      "sourceNow": "New Adds/Solar-Date Night-Menu Poses/datenight-watering.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "1dd58f3acfb381298d69fef53f3d96e90d43b380c5756e3819adc5a79960b946",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/hd/watering.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-date",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/hd/watering.webp": "bb946c43c4eef924d5b7d46edd8a2f6632023a3b2d9ab526085d1e1769dbbb88"
+      },
+      "skin": "sk-date"
+    },
+    {
+      "batch": 134,
+      "source": "datenight-wave.png",
+      "sourceNow": "New Adds/Solar-Date Night-Menu Poses/datenight-wave.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "5c5a814d1a672a676a26200bdd8c763d3d7e24fd37db7a13923fd202aa5de1f3",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-date/hd/wave.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-date",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-date/hd/wave.webp": "aedfb6978659d909c79ddf963d46756c8826701d624a27c38d01d442267fce06"
+      },
+      "skin": "sk-date"
+    },
+    {
+      "batch": 134,
+      "source": "emo-armscrossed.png",
+      "sourceNow": "New Adds/Solar-Emo Night-Menu Poses/emo-armscrossed.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "7d3d382d64a7349de7663fca19886868ca2577bcf3c88e39b9dada07745db2d7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/hd/arms-crossed.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-emo",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/hd/arms-crossed.webp": "43d90489e7042f936fcf8f0cd8384039fe306e3899d5d1630835ae1e6109304b"
+      },
+      "skin": "sk-emo"
+    },
+    {
+      "batch": 134,
+      "source": "emo-fist.png",
+      "sourceNow": "New Adds/Solar-Emo Night-Menu Poses/emo-fist.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "498b1096f585e08232f56a5cf59618a29b9f37b74414cc859e835397480f323c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/hd/cheer.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-emo",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/hd/cheer.webp": "faba39624d1492d3d31584d3e8f5ce0f39d479c81e9840e0a91dcfe51e790d09"
+      },
+      "skin": "sk-emo"
+    },
+    {
+      "batch": 134,
+      "source": "emo-evoker.png",
+      "sourceNow": "New Adds/Solar-Emo Night-Menu Poses/emo-evoker.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "12d9d8faf33d78d97d5b50f8ceb11033e58492866a5d9c58ddcbde962ab9398e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/hd/evoker.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-emo",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/hd/evoker.webp": "9f04a88914172dfde83ddb4521187a43e18c9bfc08b433ff808cd5a45a2858fa"
+      },
+      "skin": "sk-emo"
+    },
+    {
+      "batch": 134,
+      "source": "emo-handsinhair.png",
+      "sourceNow": "New Adds/Solar-Emo Night-Menu Poses/emo-handsinhair.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "c7ce684e5f14ad487349dd58f53565e4c01bdf837d00bf7759565ee71d45fe95",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/hd/hair.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-emo",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/hd/hair.webp": "a54c6d4ab7db73579aaaa648e61e4b4e628361dafeb3204d2ba6c7c2b12d6992"
+      },
+      "skin": "sk-emo"
+    },
+    {
+      "batch": 134,
+      "source": "emo-hearthands.png",
+      "sourceNow": "New Adds/Solar-Emo Night-Menu Poses/emo-hearthands.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "cacbc7c7f1ed262630d8a12ff9420f4e9da5244609d23e2ac5c9dbb94c9ef6d7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/hd/heart.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-emo",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/hd/heart.webp": "53c6a418a8fca30051cf1178cb84f24f887a95cb006b52271674b1851e41dfd5"
+      },
+      "skin": "sk-emo"
+    },
+    {
+      "batch": 134,
+      "source": "emo-jump.png",
+      "sourceNow": "New Adds/Solar-Emo Night-Menu Poses/emo-jump.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "103813abc03659c34d20018cb7d2a3a3da55a01475de2a88d631986033603df8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/hd/jump.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-emo",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/hd/jump.webp": "e1e35fe353d456134435b7ef332d01da757ece95dc37a486b05fff68b7675053"
+      },
+      "skin": "sk-emo"
+    },
+    {
+      "batch": 134,
+      "source": "emo-overshoulder.png",
+      "sourceNow": "New Adds/Solar-Emo Night-Menu Poses/emo-overshoulder.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "b9e7ca450a89d97872bdb34a2e7340ab27884065ba9d4db108c460935fbc2677",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/hd/lookback.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-emo",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/hd/lookback.webp": "50621ae755c4ad4886310c546009eb042b07bb7f401ff50c5139d58613d68485"
+      },
+      "skin": "sk-emo"
+    },
+    {
+      "batch": 134,
+      "source": "emo-peace.png",
+      "sourceNow": "New Adds/Solar-Emo Night-Menu Poses/emo-peace.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "16aa64157396eb1cb393a4f2dd2bb7079695187c58ee71f6785b07fe07f91d07",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/hd/peace.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-emo",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/hd/peace.webp": "77b2fa3499676aff27d71acd224fc90dbd01d284fc684a346e8318cde3134d97"
+      },
+      "skin": "sk-emo"
+    },
+    {
+      "batch": 134,
+      "source": "emo-phone.png",
+      "sourceNow": "New Adds/Solar-Emo Night-Menu Poses/emo-phone.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "749705a13df79a8e79d59e1eac59165321f45acf99301991c95787507cb3c673",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/hd/phone.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-emo",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/hd/phone.webp": "bfc3e7da8a120c1687a21ad26eb548c7f0a1b3501a71771fabd0f246c5ce0cc5"
+      },
+      "skin": "sk-emo"
+    },
+    {
+      "batch": 134,
+      "source": "emo-ramen.png",
+      "sourceNow": "New Adds/Solar-Emo Night-Menu Poses/emo-ramen.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "092ca4d41c850094baa524d7ec94a54fb6c506795448034f5fd759f02a07cf20",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/hd/ramen.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-emo",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/hd/ramen.webp": "bc6fbaf3a6a77fc26550660ccca80c222381bfbe73c30be146aa0367f9f32bd0"
+      },
+      "skin": "sk-emo"
+    },
+    {
+      "batch": 134,
+      "source": "emo-sewing.png",
+      "sourceNow": "New Adds/Solar-Emo Night-Menu Poses/emo-sewing.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "17efc3074c5dbed343f8e1f2cbb635f4e85c5bcf76b55dc7105791108db7e91e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/hd/sewing.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-emo",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/hd/sewing.webp": "28c01982dde2c330fbcb4d876a1f7b4aa7a95637d20ba65c1ed4d15b28d2a03a"
+      },
+      "skin": "sk-emo"
+    },
+    {
+      "batch": 134,
+      "source": "emo-shy.png",
+      "sourceNow": "New Adds/Solar-Emo Night-Menu Poses/emo-shy.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "dda561e1ccaeeb7726956b3a4242f70a57256827bd46d4b93fab03b20aa8c0e2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/hd/shy.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-emo",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/hd/shy.webp": "f8e29bbdde4cd3ea374cc23b982b230e5fc7c5bbd689d52a1fa012f0a46ca95d"
+      },
+      "skin": "sk-emo"
+    },
+    {
+      "batch": 134,
+      "source": "emo-yawn.png",
+      "sourceNow": "New Adds/Solar-Emo Night-Menu Poses/emo-yawn.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d62e927eda77003c83b0a539afb7b602427b236b7ea295afcce4f21c88db45ff",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/hd/stretch.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-emo",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/hd/stretch.webp": "20d8a6b32d44bb88458dacd0ae7408e5af70d175ed81b5d7a2ca958430b5bc45"
+      },
+      "skin": "sk-emo"
+    },
+    {
+      "batch": 134,
+      "source": "emo-reading.png",
+      "sourceNow": "New Adds/Solar-Emo Night-Menu Poses/emo-reading.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "c9692aaa4b1fc873b8ff9402366505539c58af43836b28826cfcdff35d3c1df7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/hd/study.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-emo",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/hd/study.webp": "1be50cc51b5ab7ba6b30816cfc10f46d8d32e813b90179d084e3be06acb5b267"
+      },
+      "skin": "sk-emo"
+    },
+    {
+      "batch": 134,
+      "source": "emo-handsonhip.png",
+      "sourceNow": "New Adds/Solar-Emo Night-Menu Poses/emo-handsonhip.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "c3d408128b89e6fa85d5f2303ddffc9caa6b902f19fc2a8a486f44167778dc85",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/hd/tease.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-emo",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/hd/tease.webp": "4b80ad12e13856ae811f1a44793f9f56f02d45108d1a0af032b6d89fc7df4830"
+      },
+      "skin": "sk-emo"
+    },
+    {
+      "batch": 134,
+      "source": "emo-thinking.png",
+      "sourceNow": "New Adds/Solar-Emo Night-Menu Poses/emo-thinking.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "f860391f02cd4b959028630fdf78c364a5f84b87bbffec7dc70633ff6a4dd4ce",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/hd/thinking.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-emo",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/hd/thinking.webp": "d053a4427c926d0c3fac19386fd2b6a36b8063f5dd79f85d2ff445d7fc8e66d2"
+      },
+      "skin": "sk-emo"
+    },
+    {
+      "batch": 134,
+      "source": "emo-watering.png",
+      "sourceNow": "New Adds/Solar-Emo Night-Menu Poses/emo-watering.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "fd66386be44aacd62d574d4a6482302c5bfa43705f99f881cc446641f0031ce1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/hd/watering.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-emo",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/hd/watering.webp": "e877fb63bf1621752bb4e80e9d5b2f33bbd4bee32ade7a345d8273292f34a719"
+      },
+      "skin": "sk-emo"
+    },
+    {
+      "batch": 134,
+      "source": "emo-wave.png",
+      "sourceNow": "New Adds/Solar-Emo Night-Menu Poses/emo-wave.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "86fb7b06811edf7f33245968accaa0f243002d4f6b68faddda8bbfcb0efc78d0",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-emo/hd/wave.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-emo",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-emo/hd/wave.webp": "227951f511e7f685732e8d9787dc8e9884863c5636ca7fb7688bf6943b9a6ec2"
+      },
+      "skin": "sk-emo"
+    },
+    {
+      "batch": 134,
+      "source": "lifeguard-armscrossed.png",
+      "sourceNow": "New Adds/Solar-Lifeguard-Menu Poses/lifeguard-armscrossed.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "2eaeab6220631507cb7438f55947ec89af4d8732c26dfb2e2e5031a56ccd6681",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/hd/arms-crossed.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lifeguard",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/hd/arms-crossed.webp": "1c714d5b5b22177ffcdf2fe79711848cd3921ece9ff7c36872d1e772cdd77fb0"
+      },
+      "skin": "sk-swim-lifeguard"
+    },
+    {
+      "batch": 134,
+      "source": "lifeguard-fist.png",
+      "sourceNow": "New Adds/Solar-Lifeguard-Menu Poses/lifeguard-fist.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "afd632f0093335bc74df029e6851b0b07d84bb3fd1ae4b74b547786a0a9536e9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/hd/cheer.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lifeguard",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/hd/cheer.webp": "31c6687b350b5b0c1a059bd925d8a6ad8ec54f4552f407b4dacf5033c4c7e6b4"
+      },
+      "skin": "sk-swim-lifeguard"
+    },
+    {
+      "batch": 134,
+      "source": "lifeguard-evoker.png",
+      "sourceNow": "New Adds/Solar-Lifeguard-Menu Poses/lifeguard-evoker.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d5956c99ed7634aa356ffc89de3d35d1ad1a6d6fe4191dfb8bb04bc70526cd80",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/hd/evoker.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lifeguard",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/hd/evoker.webp": "dfb7db7a186d9c507eb3818d55bbf2d910e85615f9648f9b37f948e4d81a2bc3"
+      },
+      "skin": "sk-swim-lifeguard"
+    },
+    {
+      "batch": 134,
+      "source": "lifeguard-handsinhair.png",
+      "sourceNow": "New Adds/Solar-Lifeguard-Menu Poses/lifeguard-handsinhair.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "965fc1f2c9f6e61949129e393e9ce4ea7c862878e1bbdbef7cf65b9fd03b0554",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/hd/hair.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lifeguard",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/hd/hair.webp": "88baaae5e4b5471ac9b910cca91f23a129df55e9ec70736677c3817c640df787"
+      },
+      "skin": "sk-swim-lifeguard"
+    },
+    {
+      "batch": 134,
+      "source": "lifeguard-hearthands.png",
+      "sourceNow": "New Adds/Solar-Lifeguard-Menu Poses/lifeguard-hearthands.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "586bcb584423cec387f5553b1cdccc09b6d16a2fb76e7f642e6217eb9bb3c426",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/hd/heart.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lifeguard",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/hd/heart.webp": "eee7cf052f858f42c9b7661ee189a5794c7c8d065184d1910cbe9e64370202b8"
+      },
+      "skin": "sk-swim-lifeguard"
+    },
+    {
+      "batch": 134,
+      "source": "lifeguard-jump.png",
+      "sourceNow": "New Adds/Solar-Lifeguard-Menu Poses/lifeguard-jump.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "12e1e90ccbab40a59eae1e1e288924871a440e3953dca1b05f27e607ca651bcb",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/hd/jump.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lifeguard",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/hd/jump.webp": "f3834705a9745b0a60ccabf9546daa98f8789dccbfec2659aa98e2db2fa0b92b"
+      },
+      "skin": "sk-swim-lifeguard"
+    },
+    {
+      "batch": 134,
+      "source": "lifeguard-overshoulder.png",
+      "sourceNow": "New Adds/Solar-Lifeguard-Menu Poses/lifeguard-overshoulder.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "4a44b1ea9c6bbc28a00980bae3458d079bb2e58a608ab8b227df56e205d6fc21",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/hd/lookback.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lifeguard",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/hd/lookback.webp": "47148593376c1bad99284c8a3906985bd7cbee81e7391fdcbb5dcb621f406f5c"
+      },
+      "skin": "sk-swim-lifeguard"
+    },
+    {
+      "batch": 134,
+      "source": "lifeguard-peace.png",
+      "sourceNow": "New Adds/Solar-Lifeguard-Menu Poses/lifeguard-peace.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "b7480cea235b20353977f08498e68a985a86ede6533778fe4b7909748ec07997",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/hd/peace.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lifeguard",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/hd/peace.webp": "a8e0c76f079a93630b4d3fefb2973003db38b19dbbd02856cb965815f9690775"
+      },
+      "skin": "sk-swim-lifeguard"
+    },
+    {
+      "batch": 134,
+      "source": "lifeguard-phone.png",
+      "sourceNow": "New Adds/Solar-Lifeguard-Menu Poses/lifeguard-phone.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "0be057777d7578bd9d7524d120172d9b9b0e3a0721930cee397a2e57cdba9b19",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/hd/phone.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lifeguard",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/hd/phone.webp": "232b448ebd35c25ca62387f06d09f075c28818d54e06bd1ec8f454db0c5095ab"
+      },
+      "skin": "sk-swim-lifeguard"
+    },
+    {
+      "batch": 134,
+      "source": "lifeguard-ramen.png",
+      "sourceNow": "New Adds/Solar-Lifeguard-Menu Poses/lifeguard-ramen.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "e7a1e29b33ab4348ff8b4093d69484d149f80f282e7e5b4cef802de93c87348f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/hd/ramen.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lifeguard",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/hd/ramen.webp": "5a8f56c08f162160312161d59eda19f1e6e415b58501f27fd06576b49e71703a"
+      },
+      "skin": "sk-swim-lifeguard"
+    },
+    {
+      "batch": 134,
+      "source": "lifeguard-sewing.png",
+      "sourceNow": "New Adds/Solar-Lifeguard-Menu Poses/lifeguard-sewing.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d8ae837452a82b36bba30483e2e0f7e8dd4797e2da3f7df3122df10609c013cc",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/hd/sewing.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lifeguard",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/hd/sewing.webp": "89a10bd915eb7a9ee8b6cfe3d1612442fe313d683b25d2657b4a7e7a375f6bed"
+      },
+      "skin": "sk-swim-lifeguard"
+    },
+    {
+      "batch": 134,
+      "source": "lifeguard-yawn.png",
+      "sourceNow": "New Adds/Solar-Lifeguard-Menu Poses/lifeguard-yawn.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "5d7f35c1c5f0699a13a74db7e143b3931c6a9ca469c4f6611191d506661db09b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/hd/stretch.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lifeguard",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/hd/stretch.webp": "7f3d054b7765c488c535c4f1e01b293c0c203d6723d64262f5460e54517df203"
+      },
+      "skin": "sk-swim-lifeguard"
+    },
+    {
+      "batch": 134,
+      "source": "lifeguard-reading.png",
+      "sourceNow": "New Adds/Solar-Lifeguard-Menu Poses/lifeguard-reading.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "7a0f45e1f604db0cbdead352691a2070e3b18e4b129b9421b7a753c736d6ac63",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/hd/study.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lifeguard",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/hd/study.webp": "39ecef750725569df007a58ecb80cee0cf26272b11a4bcf56fcea074fd7511d0"
+      },
+      "skin": "sk-swim-lifeguard"
+    },
+    {
+      "batch": 134,
+      "source": "lifeguard-handsonhips.png",
+      "sourceNow": "New Adds/Solar-Lifeguard-Menu Poses/lifeguard-handsonhips.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "9c8338e16fc9001ce103ef9090cfcd6665146849cb822d2a2972060eb190ca6e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/hd/tease.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lifeguard",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/hd/tease.webp": "555c0a7ee4cc5dcd43ccc761c8e4127d8f27238812601764b6a2498d71cdcac3"
+      },
+      "skin": "sk-swim-lifeguard"
+    },
+    {
+      "batch": 134,
+      "source": "lifeguard-thinking.png",
+      "sourceNow": "New Adds/Solar-Lifeguard-Menu Poses/lifeguard-thinking.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "052a9033c1301cc9a8edee24b498772ec5da00d4250df40fe0b35d4b200cf9f5",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/hd/thinking.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lifeguard",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/hd/thinking.webp": "ba03f234c04bcc9841efcdefce83eb2bae56063ddddf33e519ff2ece8ba281fb"
+      },
+      "skin": "sk-swim-lifeguard"
+    },
+    {
+      "batch": 134,
+      "source": "lifeguard-watering.png",
+      "sourceNow": "New Adds/Solar-Lifeguard-Menu Poses/lifeguard-watering.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "0d2b4e8ec30a51cb7061a740a2ca067029c4c854d8c09ccb7f0d287d0e1a50bd",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/hd/watering.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lifeguard",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/hd/watering.webp": "705e048d8116219d8d045bddef6073eb5f6821873c9d99e0d5793a26aeb69478"
+      },
+      "skin": "sk-swim-lifeguard"
+    },
+    {
+      "batch": 134,
+      "source": "lifeguard-wave.png",
+      "sourceNow": "New Adds/Solar-Lifeguard-Menu Poses/lifeguard-wave.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "de1dac05875b13c9bb59a82688a3572a5ab03812f4f34386e3321f75649fc00d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lifeguard/hd/wave.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lifeguard",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lifeguard/hd/wave.webp": "45a929c1933a09db187f245e79969d96b2c6c8488e29d554bd5112031c349194"
+      },
+      "skin": "sk-swim-lifeguard"
+    },
+    {
+      "batch": 134,
+      "source": "limelight-armscrossed.png",
+      "sourceNow": "New Adds/Solar-Limelight-Menu Poses/limelight-armscrossed.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "3b43bb79580fadcae6acccb1a2460b0c0115a833b3fa92a53cac103696ac4a78",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/hd/arms-crossed.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-limelight",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/hd/arms-crossed.webp": "7d2e0deda5877411ed8572aa1e07b4d0ddd43d22b946a368d27ea7a2017d8e7f"
+      },
+      "skin": "sk-limelight"
+    },
+    {
+      "batch": 134,
+      "source": "limelight-fist.png",
+      "sourceNow": "New Adds/Solar-Limelight-Menu Poses/limelight-fist.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d21f01406ec15c8b876ab41f01e4367bd23a86c05ed238a4696a8784acfbbf20",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/hd/cheer.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-limelight",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/hd/cheer.webp": "4406bffc9f27ee6f5f23db179837f4aba378cd0df4aeaea096bff8d5302dae8c"
+      },
+      "skin": "sk-limelight"
+    },
+    {
+      "batch": 134,
+      "source": "limelight-evoker.png",
+      "sourceNow": "New Adds/Solar-Limelight-Menu Poses/limelight-evoker.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "675359b58c063a46ec679dc1faa270eba09915a9c4909774774b5308034ff093",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/hd/evoker.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-limelight",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/hd/evoker.webp": "c21be636c76600f69a3cc908440f99193f3ea0874239390a1167f7cacc4b1e50"
+      },
+      "skin": "sk-limelight"
+    },
+    {
+      "batch": 134,
+      "source": "limelight-handsinhair.png",
+      "sourceNow": "New Adds/Solar-Limelight-Menu Poses/limelight-handsinhair.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "23bf0ddde80020f42a0bebb5265a2b0e504d1f3a75987d592d0868d653392d69",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/hd/hair.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-limelight",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/hd/hair.webp": "bd808fbb2b29ee3eba05d63d5bbd899cd384462976c41082f18aa8a42c4d8c38"
+      },
+      "skin": "sk-limelight"
+    },
+    {
+      "batch": 134,
+      "source": "limelight-hearthands.png",
+      "sourceNow": "New Adds/Solar-Limelight-Menu Poses/limelight-hearthands.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "30be1c97760a444b18d8f8cfeec86a447b33c09b37143e44cbe7dc4075bc9ab4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/hd/heart.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-limelight",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/hd/heart.webp": "b35be40061d940496df49aa4dff14989b281af7422244b111232c2f9181d419a"
+      },
+      "skin": "sk-limelight"
+    },
+    {
+      "batch": 134,
+      "source": "limelight-jump.png",
+      "sourceNow": "New Adds/Solar-Limelight-Menu Poses/limelight-jump.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "8412c2386ed97bcbf74978149f84a29d23b9fab00885255f9353efcca423d07a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/hd/jump.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-limelight",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/hd/jump.webp": "803d9fa97ad5821ef34012aa5ef614edb85c559cba08309a20ae6bd2390f6ae7"
+      },
+      "skin": "sk-limelight"
+    },
+    {
+      "batch": 134,
+      "source": "limelight-overshoulder.png",
+      "sourceNow": "New Adds/Solar-Limelight-Menu Poses/limelight-overshoulder.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "2c9350834bb47cbb104cf077ab25dfa934d65077a70173fcbd213dfaddf8919a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/hd/lookback.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-limelight",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/hd/lookback.webp": "1894d6e303b824b0d57c5494da5b08010894bb0454eff5c686a1c37b93bfe153"
+      },
+      "skin": "sk-limelight"
+    },
+    {
+      "batch": 134,
+      "source": "limelight-peace.png",
+      "sourceNow": "New Adds/Solar-Limelight-Menu Poses/limelight-peace.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "bc351b3b7157c51aee5147009a42231e3765cccb5b989933c5f3ab55edf47f3b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/hd/peace.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-limelight",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/hd/peace.webp": "7e40c9d89edaad89a42cc83c900faec7fa771ff49a86b1da4c01011f803e1f4d"
+      },
+      "skin": "sk-limelight"
+    },
+    {
+      "batch": 134,
+      "source": "limelight-phone.png",
+      "sourceNow": "New Adds/Solar-Limelight-Menu Poses/limelight-phone.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "9015bae380b0ad1e84044616fa2d2f7441cd41b25f67cef689cf50990d9b5578",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/hd/phone.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-limelight",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/hd/phone.webp": "7235d9d06d6b0dd744d7253371f944cd6e7ded8610fd977e54210a97bd45f153"
+      },
+      "skin": "sk-limelight"
+    },
+    {
+      "batch": 134,
+      "source": "limelight-ramen.png",
+      "sourceNow": "New Adds/Solar-Limelight-Menu Poses/limelight-ramen.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "40dc81fa65116d7be0e39d21ce6712a48b6de2835ea8b38796f3c592c6537c65",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/hd/ramen.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-limelight",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/hd/ramen.webp": "b0781ab11bf188cafabce1309b10430936623b0500b1677a858f4725423b9cf2"
+      },
+      "skin": "sk-limelight"
+    },
+    {
+      "batch": 134,
+      "source": "limelight-sewing.png",
+      "sourceNow": "New Adds/Solar-Limelight-Menu Poses/limelight-sewing.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "48d138a198fca1e5a445e888a878e714dd499cb2b53cc5a9aee95f8ab530f439",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/hd/sewing.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-limelight",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/hd/sewing.webp": "2ec0d8eddaf04a8e71acbc66512d58908d10827839174c2d79bd5d3b36ae8ddb"
+      },
+      "skin": "sk-limelight"
+    },
+    {
+      "batch": 134,
+      "source": "limelight-shy.png",
+      "sourceNow": "New Adds/Solar-Limelight-Menu Poses/limelight-shy.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "7858c0fbb4d501b93e037ed44a5a2cf2405c1548c3c2d2dc4d458390653bfecb",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/hd/shy.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-limelight",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/hd/shy.webp": "378162a78322a38e2221619bbdc316676b96a1e4f261253fe21ea6010d734c91"
+      },
+      "skin": "sk-limelight"
+    },
+    {
+      "batch": 134,
+      "source": "limelight-yawn.png",
+      "sourceNow": "New Adds/Solar-Limelight-Menu Poses/limelight-yawn.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "a98f896ce33c8f5fb6151ec80ca9a3dd9d23a0733ca9222665b4b4439881a129",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/hd/stretch.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-limelight",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/hd/stretch.webp": "e058951dc249f584b3e3aef1999ec36d8bb467106afc271f60fb64206153e28d"
+      },
+      "skin": "sk-limelight"
+    },
+    {
+      "batch": 134,
+      "source": "limelight-reading.png",
+      "sourceNow": "New Adds/Solar-Limelight-Menu Poses/limelight-reading.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "ec9083b78d4be940e2a363f528006435b6eaa8fedf739edd1a346efb833e61fe",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/hd/study.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-limelight",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/hd/study.webp": "d5682f3fd2d3a8bcb5fa22e9c30273054763cd818214d66d9d51798ea42baad8"
+      },
+      "skin": "sk-limelight"
+    },
+    {
+      "batch": 134,
+      "source": "limelight-handsonhips.png",
+      "sourceNow": "New Adds/Solar-Limelight-Menu Poses/limelight-handsonhips.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "8266152480e6f76a3313e49dc4f71b8c2e889dd2bf93c963b3cc6ccd6b04c596",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/hd/tease.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-limelight",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/hd/tease.webp": "b3f3ec0be67bf5f85d59095691df958ea427718366f07ab4f144c6ae51d04e17"
+      },
+      "skin": "sk-limelight"
+    },
+    {
+      "batch": 134,
+      "source": "limelight-thinking.png",
+      "sourceNow": "New Adds/Solar-Limelight-Menu Poses/limelight-thinking.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "4a7cff6e15597833e7875731f63a8277e3b071b9603e93bce71804221ec0a7b3",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/hd/thinking.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-limelight",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/hd/thinking.webp": "de56685719b6c684c62bc87b583262b4bcf648fb4f3ba3bc38bcc3b7479e0f76"
+      },
+      "skin": "sk-limelight"
+    },
+    {
+      "batch": 134,
+      "source": "limelight-watering.png",
+      "sourceNow": "New Adds/Solar-Limelight-Menu Poses/limelight-watering.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "dec721490c8882e8df6b2c2a3f8979a7f8a6795d95f7e761ab3f54f97da7b42b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/hd/watering.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-limelight",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/hd/watering.webp": "bf65a4f5e5d8c6801f2d235a200bd9f5c89c2288bebc3785c2ce90977483e7db"
+      },
+      "skin": "sk-limelight"
+    },
+    {
+      "batch": 134,
+      "source": "limelight-wave.png",
+      "sourceNow": "New Adds/Solar-Limelight-Menu Poses/limelight-wave.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "1021c06f8a77202de640081b5af51c384fdac9fff0d3a337c6bdc649ebaad56d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-limelight/hd/wave.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-limelight",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-limelight/hd/wave.webp": "c219b4aaed54685e21ecf50c32b3379f202cb6f6907f0a0c6a00e77d647c8a91"
+      },
+      "skin": "sk-limelight"
+    },
+    {
+      "batch": 134,
+      "source": "solar-alpha-armscrossed.png",
+      "sourceNow": "New Adds/Solar-Alpha Formal-Menu Poses/solar-alpha-armscrossed.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "a41ebf0ddcec680d6f5d73ac8193f2d6693ca6a499f9113901d26969d4966447",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/hd/arms-crossed.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-alphaphi",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/hd/arms-crossed.webp": "868f3bc85eda478daa77603ea99ff00188c444bc6e2a8635be50f2edb012321d"
+      },
+      "skin": "sk-alphaphi"
+    },
+    {
+      "batch": 134,
+      "source": "solar-alpha-fistbump.png",
+      "sourceNow": "New Adds/Solar-Alpha Formal-Menu Poses/solar-alpha-fistbump.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "64a563d6eee8d45c6d09c189ac5c41eebb08f886dfb1bc35c37105658529d57e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/hd/cheer.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-alphaphi",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/hd/cheer.webp": "ba059f293741d0339f332af0f23a13929882c64a18bfc1c8396d37ccc5ea945e"
+      },
+      "skin": "sk-alphaphi"
+    },
+    {
+      "batch": 134,
+      "source": "solar-alpha-evoker.png",
+      "sourceNow": "New Adds/Solar-Alpha Formal-Menu Poses/solar-alpha-evoker.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "af55d83f5e4b84214ae2a97b29188cba44d7a343e95b1f0e2a3c0a8a94fad721",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/hd/evoker.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-alphaphi",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/hd/evoker.webp": "1b6058d6abdf44648b7cf7b075e803118fa8ea9f12235d2b175ea485dd6a44df"
+      },
+      "skin": "sk-alphaphi"
+    },
+    {
+      "batch": 134,
+      "source": "solar-alpha-handinhair.png",
+      "sourceNow": "New Adds/Solar-Alpha Formal-Menu Poses/solar-alpha-handinhair.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d4acdc3cdd116f69bd9cbb46047754b6fc2d481f3d5489bbce4b0ba4ba77d3ca",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/hd/hair.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-alphaphi",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/hd/hair.webp": "9b36440da92c9d4839b7953c1e1ad958713d0774116d0fa9c171170fa86999fd"
+      },
+      "skin": "sk-alphaphi"
+    },
+    {
+      "batch": 134,
+      "source": "solar-alpha-hearthands.png",
+      "sourceNow": "New Adds/Solar-Alpha Formal-Menu Poses/solar-alpha-hearthands.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "ef512da9cc56188cb60f396cad6c877bd0e84c8acee35e51d17eadc57094a0b1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/hd/heart.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-alphaphi",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/hd/heart.webp": "08914665be30eb19e14f200dafd615e6f3f209140af89e48a97c11af2c2ae470"
+      },
+      "skin": "sk-alphaphi"
+    },
+    {
+      "batch": 134,
+      "source": "solar-alpha-jump.png",
+      "sourceNow": "New Adds/Solar-Alpha Formal-Menu Poses/solar-alpha-jump.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "baaf206369e731a52956b6b56f4e573aa403e3d720f19420d6e8f99bb3614cd9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/hd/jump.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-alphaphi",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/hd/jump.webp": "7e3417f4e356b3227d15e303f315260aba61bef961f715de882445fcc7cf933b"
+      },
+      "skin": "sk-alphaphi"
+    },
+    {
+      "batch": 134,
+      "source": "solar-alpha-overshoulder.png",
+      "sourceNow": "New Adds/Solar-Alpha Formal-Menu Poses/solar-alpha-overshoulder.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "17cd94c5b7b5a93faee1ecd302a1438d274c75cbc039dde7ee3692efffb085ae",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/hd/lookback.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-alphaphi",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/hd/lookback.webp": "b9a8421da3e0b8af80abe01ec987c9a2ddef3cacac533c3f6c261bc5b997265a"
+      },
+      "skin": "sk-alphaphi"
+    },
+    {
+      "batch": 134,
+      "source": "solar-alpha-peace.png",
+      "sourceNow": "New Adds/Solar-Alpha Formal-Menu Poses/solar-alpha-peace.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "f965d0006f3d629ed5e0f926b17f82024b32bd4906f6548cd15168d5829371ea",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/hd/peace.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-alphaphi",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/hd/peace.webp": "e89b22caaa99b5fec04cc21faa9dded2de83843019eb8e17fae3916370b41077"
+      },
+      "skin": "sk-alphaphi"
+    },
+    {
+      "batch": 134,
+      "source": "solar-alpha-phone.png",
+      "sourceNow": "New Adds/Solar-Alpha Formal-Menu Poses/solar-alpha-phone.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "84be307fc176f214a5864f3b8a0b7aeb0185c5ee19b7c438d411792dd87f700a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/hd/phone.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-alphaphi",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/hd/phone.webp": "fcdb0d772da060e2fa3f2f6197240f0df9fd3229685131d0b4f937a4ef23702d"
+      },
+      "skin": "sk-alphaphi"
+    },
+    {
+      "batch": 134,
+      "source": "solar-alpha-ramen.png",
+      "sourceNow": "New Adds/Solar-Alpha Formal-Menu Poses/solar-alpha-ramen.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "97ab809a1c85074365815fcb2426bbec5ae721033d724a4d82628668eea57dc9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/hd/ramen.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-alphaphi",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/hd/ramen.webp": "44e8bc88a068396ca77cfcd2b09e3dfe77d070a33a90fca765b265cc27feece4"
+      },
+      "skin": "sk-alphaphi"
+    },
+    {
+      "batch": 134,
+      "source": "solar-alpha-sewing.png",
+      "sourceNow": "New Adds/Solar-Alpha Formal-Menu Poses/solar-alpha-sewing.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "5189598676a799bb0c0cedb876e0ac4013531b205e77d8101d50b128e21697e9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/hd/sewing.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-alphaphi",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/hd/sewing.webp": "4e913b2be8615f7cea5dd63ab1226279cb60a792d77233278f509b2cfeba9d3f"
+      },
+      "skin": "sk-alphaphi"
+    },
+    {
+      "batch": 134,
+      "source": "solar-alpha-shy.png",
+      "sourceNow": "New Adds/Solar-Alpha Formal-Menu Poses/solar-alpha-shy.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "8a0641d8992a6f5b6bae98c97f0bf67608c458de8768950802f900e7fd7f26dd",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/hd/shy.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-alphaphi",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/hd/shy.webp": "ffa714d49987688f07961499ab552976d038c564bee901481abdc8b96b94493f"
+      },
+      "skin": "sk-alphaphi"
+    },
+    {
+      "batch": 134,
+      "source": "solar-alpha-yawn.png",
+      "sourceNow": "New Adds/Solar-Alpha Formal-Menu Poses/solar-alpha-yawn.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "3919eb1e360bac87f2123a0ec6f5e5ca61ef468c61e19a5c66e0ed02d6be7f1a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/hd/stretch.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-alphaphi",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/hd/stretch.webp": "d7735e7bf41c769272ea7b1f3ef8fbce9c0aeef960f4647bcbf0cc743ec0713d"
+      },
+      "skin": "sk-alphaphi"
+    },
+    {
+      "batch": 134,
+      "source": "solar-alpha-reading.png",
+      "sourceNow": "New Adds/Solar-Alpha Formal-Menu Poses/solar-alpha-reading.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "69906883d7d8863c68b422300b75fda555bfe94f4d2ad0dbdbd46a623e1278b2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/hd/study.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-alphaphi",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/hd/study.webp": "b55f5997c6845d768563bcab90cc2b5b6b670dc053d422ef33ea39d09e3274c7"
+      },
+      "skin": "sk-alphaphi"
+    },
+    {
+      "batch": 134,
+      "source": "solar-alpha-handsonhip.png",
+      "sourceNow": "New Adds/Solar-Alpha Formal-Menu Poses/solar-alpha-handsonhip.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "f5a500229106d16b9d7ea1bbad43b5cc6aa5d3ad236e2d193012c7c359e17fc2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/hd/tease.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-alphaphi",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/hd/tease.webp": "06ce668b2988571746ca2ec46d2ea68865c78e46ef9fd4668daf53bbeab0fffb"
+      },
+      "skin": "sk-alphaphi"
+    },
+    {
+      "batch": 134,
+      "source": "solar-alpha-thinking.png",
+      "sourceNow": "New Adds/Solar-Alpha Formal-Menu Poses/solar-alpha-thinking.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "f29d2033df87acf2d316e00f1dbf28855932bed7e0ebd1ac299a34734e2af99e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/hd/thinking.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-alphaphi",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/hd/thinking.webp": "e9684629743f1790f6b1a84bae426252dd146a4bf1356725879a55111af3111e"
+      },
+      "skin": "sk-alphaphi"
+    },
+    {
+      "batch": 134,
+      "source": "solar-alpha-watering.png",
+      "sourceNow": "New Adds/Solar-Alpha Formal-Menu Poses/solar-alpha-watering.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "705b40cc130cca7fc860d7b87e86432cac2548b2a5a619b9c0d62ea559366fc7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/hd/watering.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-alphaphi",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/hd/watering.webp": "c9525f0dd11a3fc858db3c854df9162f94831b3c869550e5499ce7d160c57064"
+      },
+      "skin": "sk-alphaphi"
+    },
+    {
+      "batch": 134,
+      "source": "solar-alpha-wave.png",
+      "sourceNow": "New Adds/Solar-Alpha Formal-Menu Poses/solar-alpha-wave.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "2bf88d18b352e3c6db0272c8a29c716494e4974b20f2923436ae0caf974e6570",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-alphaphi/hd/wave.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-alphaphi",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-alphaphi/hd/wave.webp": "8728b6768e73fcf2559f4f73cf43efe911d23d430d0bd131810faedcc9b37641"
+      },
+      "skin": "sk-alphaphi"
+    },
+    {
+      "batch": 134,
+      "source": "y2k-armscrossed.png",
+      "sourceNow": "New Adds/Solar-Y2K-Menu Poses/y2k-armscrossed.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "ef3dd9303248fa5ec683b35f3207480197650c9c521d27da424ca043a3fb5912",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/hd/arms-crossed.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-y2k",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/hd/arms-crossed.webp": "6e97a91e33dd2dd2d0730f2318903f9714f49c3ab7dc11456cfdd08763d1ead0"
+      },
+      "skin": "sk-y2k"
+    },
+    {
+      "batch": 134,
+      "source": "y2k-fistpump.png",
+      "sourceNow": "New Adds/Solar-Y2K-Menu Poses/y2k-fistpump.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "579d4498e230b8b1f95b508f3e29ddcf9cd716903f55fc60a1aef569a065e1d9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/hd/cheer.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-y2k",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/hd/cheer.webp": "9c4fadd4ff81dbb3c2d520cbf87b0cae1878af298b7ee7293e79db3b94b60e21"
+      },
+      "skin": "sk-y2k"
+    },
+    {
+      "batch": 134,
+      "source": "y2k-evoker.png",
+      "sourceNow": "New Adds/Solar-Y2K-Menu Poses/y2k-evoker.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "a2a6ef54d3a12c7ebf2f7c42aaa491d5bc74afd030b3c800d18ae9fa7a7c89fc",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/hd/evoker.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-y2k",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/hd/evoker.webp": "e6a834f835d112fe9e5b091ba937ef740f6d1ab7dac914e0d45fa62c2d5a5e3d"
+      },
+      "skin": "sk-y2k"
+    },
+    {
+      "batch": 134,
+      "source": "y2k-handinhair.png",
+      "sourceNow": "New Adds/Solar-Y2K-Menu Poses/y2k-handinhair.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "bc8b87a8b641e599b756b7479b95e09e5d3632a4a803613fbf378f5a384292ca",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/hd/hair.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-y2k",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/hd/hair.webp": "721b8525cb9e59e9367c664a809e230d6a46d9fa584b13e333106fb1ec41f248"
+      },
+      "skin": "sk-y2k"
+    },
+    {
+      "batch": 134,
+      "source": "y2k-hearthands.png",
+      "sourceNow": "New Adds/Solar-Y2K-Menu Poses/y2k-hearthands.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "5d3094c81fb4acbdc1a40276964742914205158b25075d4d810e86d8d32e8610",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/hd/heart.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-y2k",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/hd/heart.webp": "b56e66d3f8962595a7f5a9c540eb0f4629b3dfbe333180dcdb40cb11293952bf"
+      },
+      "skin": "sk-y2k"
+    },
+    {
+      "batch": 134,
+      "source": "y2k-jump.png",
+      "sourceNow": "New Adds/Solar-Y2K-Menu Poses/y2k-jump.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "c4c3f799a58adcfbfd5de4083a396819eb64b2911abced84a68f2246b692e156",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/hd/jump.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-y2k",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/hd/jump.webp": "4ec43cf76f97f8d90b1afc99420599a7b74204e4ecab642fc8d63c8459189379"
+      },
+      "skin": "sk-y2k"
+    },
+    {
+      "batch": 134,
+      "source": "y2k-overshoulder.png",
+      "sourceNow": "New Adds/Solar-Y2K-Menu Poses/y2k-overshoulder.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "0f46623f91f59f197e25856a886c7c7382a5a63f770c6c22197db26a28075ad8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/hd/lookback.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-y2k",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/hd/lookback.webp": "48583186c3012a8ec8880220a4a7b1b2eee8772f9bddacca50ee4f701fb1beda"
+      },
+      "skin": "sk-y2k"
+    },
+    {
+      "batch": 134,
+      "source": "y2k-peace.png",
+      "sourceNow": "New Adds/Solar-Y2K-Menu Poses/y2k-peace.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "45ea7f68d1710f3953c1afd923855dbc40fffa5aa58160486417c42cdc35a307",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/hd/peace.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-y2k",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/hd/peace.webp": "349fd72d5186512fdac60ef4c2d0913bdb9bb7ce2909284a6adb6eb5b186cdf6"
+      },
+      "skin": "sk-y2k"
+    },
+    {
+      "batch": 134,
+      "source": "y2k-phone.png",
+      "sourceNow": "New Adds/Solar-Y2K-Menu Poses/y2k-phone.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "eb476211705a05b92cde8847d0f9faa2c9949aa44bed05e48eb6325ddf78ee74",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/hd/phone.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-y2k",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/hd/phone.webp": "3250dcc256ca3d55b6df24c49462b3da433937023c12b1e9ec36e97121c3683e"
+      },
+      "skin": "sk-y2k"
+    },
+    {
+      "batch": 134,
+      "source": "y2k-ramen.png",
+      "sourceNow": "New Adds/Solar-Y2K-Menu Poses/y2k-ramen.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "9dc4c620e5ea1bcb00a41e157cba2c30fddf21e1fc0179d82b9b56bceb2dcee1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/hd/ramen.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-y2k",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/hd/ramen.webp": "fc679900197f196bfd26f6f4d514740182c91413154f49e766cc4e9c40ec33ad"
+      },
+      "skin": "sk-y2k"
+    },
+    {
+      "batch": 134,
+      "source": "y2k-sewing.png",
+      "sourceNow": "New Adds/Solar-Y2K-Menu Poses/y2k-sewing.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "149cc640a7508a26a6dee8257f0376de6541263574296b5d4e7760634aae1864",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/hd/sewing.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-y2k",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/hd/sewing.webp": "cc10589a33926b6a1802c97ed8c7c6086a7b28746ac68f954b98a77d32eb96af"
+      },
+      "skin": "sk-y2k"
+    },
+    {
+      "batch": 134,
+      "source": "y2k-shy.png",
+      "sourceNow": "New Adds/Solar-Y2K-Menu Poses/y2k-shy.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "1b606ad33fd96599679edae6ecbfcd76249cdf0fd0077dfcb0c371af16fa098d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/hd/shy.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-y2k",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/hd/shy.webp": "ed526ab0463b5f995741b02cdf95c2d3344e3a7fcc7e3561854520c034251fd0"
+      },
+      "skin": "sk-y2k"
+    },
+    {
+      "batch": 134,
+      "source": "y2k-yawn.png",
+      "sourceNow": "New Adds/Solar-Y2K-Menu Poses/y2k-yawn.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "5b04d1364582f7385ce0a49e41176efed0dd9e06a383c35f2793c1ef17defc35",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/hd/stretch.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-y2k",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/hd/stretch.webp": "31c9244e69b97eeccb34bfdabe740a23c202f338b1b5b7f834ece7e89c93c178"
+      },
+      "skin": "sk-y2k"
+    },
+    {
+      "batch": 134,
+      "source": "y2k-reading.png",
+      "sourceNow": "New Adds/Solar-Y2K-Menu Poses/y2k-reading.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "ce808b1f1fd14bffd5b8ed682f67f0a6dcb1443b9abab632b223817f49ec74a4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/hd/study.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-y2k",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/hd/study.webp": "c16e6a35fcbbb54c34174cd2498bc2907b6652e62e178e290df1aa7894a2fe5a"
+      },
+      "skin": "sk-y2k"
+    },
+    {
+      "batch": 134,
+      "source": "y2k-handsonhip.png",
+      "sourceNow": "New Adds/Solar-Y2K-Menu Poses/y2k-handsonhip.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "812260e2d71df7576a7cbcc177205d966d3ac2d68a0c229dedbd64ca07d2cf9b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/hd/tease.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-y2k",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/hd/tease.webp": "00e9aa97f8470a13e0229e56c38b55629903b84d9d07911a87c56249a15176c2"
+      },
+      "skin": "sk-y2k"
+    },
+    {
+      "batch": 134,
+      "source": "y2k-thinking.png",
+      "sourceNow": "New Adds/Solar-Y2K-Menu Poses/y2k-thinking.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "02e89b50d365efaa7d2cc0e93e8f33eb141042d6d4661ba16256807e7bdd43f4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/hd/thinking.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-y2k",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/hd/thinking.webp": "efd3dd0e39731e2055dc4666ddf86881a2b61f1f8969f36e6d744d70ff4896a2"
+      },
+      "skin": "sk-y2k"
+    },
+    {
+      "batch": 134,
+      "source": "y2k-watering.png",
+      "sourceNow": "New Adds/Solar-Y2K-Menu Poses/y2k-watering.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "31758de43af8aedb1f1934426a63fbf1e5c7efbb6d14ab6fc1d6c6904638c8fb",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/hd/watering.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-y2k",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/hd/watering.webp": "b026d81ff7315a744d0ea5a17291a95db885799a7302829ad4515589e47417c7"
+      },
+      "skin": "sk-y2k"
+    },
+    {
+      "batch": 134,
+      "source": "y2k-wave.png",
+      "sourceNow": "New Adds/Solar-Y2K-Menu Poses/y2k-wave.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "555c9b374124f71ebaff505fb6dfea5e7f603d8437054f96de251f67183f3c7b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-y2k/hd/wave.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-y2k",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-y2k/hd/wave.webp": "dd34457ca1c10c0a86ba290cdaa49ea341e8e882a2e50863a7a392c42b066ec9"
+      },
+      "skin": "sk-y2k"
+    },
+    {
+      "batch": 134,
+      "source": "lagoon-armscrossed.png",
+      "sourceNow": "New Adds/Solar-Pink Lagoon-Menu Poses/lagoon-armscrossed.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "25623dd60f7aabc3e03ff365c4983244c43ec9a2e1190b9fd95f833d1a67e05a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/hd/arms-crossed.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lagoon",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/hd/arms-crossed.webp": "f3e52bfe0fcea6248821bfc0de29f72a71a216cdcfd5beb45ba1fc8ed73a28d1"
+      },
+      "skin": "sk-swim-lagoon"
+    },
+    {
+      "batch": 134,
+      "source": "lagoon-fist.png",
+      "sourceNow": "New Adds/Solar-Pink Lagoon-Menu Poses/lagoon-fist.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "3231ab03d7ff9c07484a7ed9827dddd705e9fe8d1d3975b925d2565d76f5603a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/hd/cheer.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lagoon",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/hd/cheer.webp": "ad20a27b6f79cb1442fb93fda5f60493b58041862af51980af3623a925fef1a5"
+      },
+      "skin": "sk-swim-lagoon"
+    },
+    {
+      "batch": 134,
+      "source": "lagoon-evoker.png",
+      "sourceNow": "New Adds/Solar-Pink Lagoon-Menu Poses/lagoon-evoker.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "e00fa501068cf2fbbad821bc909a1a8b4b39ca99a7c173e240556246d71b223b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/hd/evoker.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lagoon",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/hd/evoker.webp": "d15de05c472a7b95d8429b9f4ff1fdbae6399adca029715e085c91c24e568907"
+      },
+      "skin": "sk-swim-lagoon"
+    },
+    {
+      "batch": 134,
+      "source": "lagoon-handinhair.png",
+      "sourceNow": "New Adds/Solar-Pink Lagoon-Menu Poses/lagoon-handinhair.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "c48caec8e546914ab30464a0703a1a0885f937a26dade76e0d3efdcfce09f334",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/hd/hair.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lagoon",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/hd/hair.webp": "fc671ddc9b85e5edb41d23c906e8158cff62db65c82f5b6f6074f0fa5e184105"
+      },
+      "skin": "sk-swim-lagoon"
+    },
+    {
+      "batch": 134,
+      "source": "lagoon-hearthands.png",
+      "sourceNow": "New Adds/Solar-Pink Lagoon-Menu Poses/lagoon-hearthands.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "8533d9fde4aa43ff3d82e885d8f2d5b5590fdbbda41a9def9f4b936e0b08ea58",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/hd/heart.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lagoon",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/hd/heart.webp": "cd2078ea9f0ead4cc2bbbb9885f41dd0ac3a5e90282cf925135a51beaebd8980"
+      },
+      "skin": "sk-swim-lagoon"
+    },
+    {
+      "batch": 134,
+      "source": "lagoon-jump.png",
+      "sourceNow": "New Adds/Solar-Pink Lagoon-Menu Poses/lagoon-jump.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d08a80cddab604eca2174c839f78a7677129aabdcc80522dfe600d7fcaa902e4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/hd/jump.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lagoon",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/hd/jump.webp": "66dbe189385329e491870efa96fa2e608d1a597a8fc03e411ab0608fbab2bc8b"
+      },
+      "skin": "sk-swim-lagoon"
+    },
+    {
+      "batch": 134,
+      "source": "lagoon-overshoulder.png",
+      "sourceNow": "New Adds/Solar-Pink Lagoon-Menu Poses/lagoon-overshoulder.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "59b9cdbac5063022e483556b80c6e20354e3bd7f551c48cac28dbec6b7f5e0ab",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/hd/lookback.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lagoon",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/hd/lookback.webp": "7d2544c8a647a1362031dcc5b16641f639170a3ab692a4df353a4463ecf3e6ae"
+      },
+      "skin": "sk-swim-lagoon"
+    },
+    {
+      "batch": 134,
+      "source": "lagoon-peace.png",
+      "sourceNow": "New Adds/Solar-Pink Lagoon-Menu Poses/lagoon-peace.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "423faf8878ff7c027966d7f383a7cb3d146bbe07db70ca3148e7eb85754c198d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/hd/peace.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lagoon",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/hd/peace.webp": "76562866242d396fbc26a1d903b9e16f986cbc1957c731a03789ad3962de4028"
+      },
+      "skin": "sk-swim-lagoon"
+    },
+    {
+      "batch": 134,
+      "source": "lagoon-phone.png",
+      "sourceNow": "New Adds/Solar-Pink Lagoon-Menu Poses/lagoon-phone.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "e9da467839429e7b0a7ae633f18b8b671392ca42856cc21a97e52526a1be1fd6",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/hd/phone.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lagoon",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/hd/phone.webp": "5588f17589afcea349ff4b970040f99c1c812f3bc63e778f9b8de8e20b14f969"
+      },
+      "skin": "sk-swim-lagoon"
+    },
+    {
+      "batch": 134,
+      "source": "lagoon-ramen.png",
+      "sourceNow": "New Adds/Solar-Pink Lagoon-Menu Poses/lagoon-ramen.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d9369adff8778a87ac5148c33369ffea297ffa5a49fcda0bdda5dda5f258a46a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/hd/ramen.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lagoon",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/hd/ramen.webp": "b85715e62978f9f2b53c9c58848b804e4e782a1d2a6ffe590998f31a645ce0e7"
+      },
+      "skin": "sk-swim-lagoon"
+    },
+    {
+      "batch": 134,
+      "source": "lagoon-sewing.png",
+      "sourceNow": "New Adds/Solar-Pink Lagoon-Menu Poses/lagoon-sewing.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d62d686c3232b4f1395aee77e1cac43a679bdb3decb62c321b6da8049deaaef1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/hd/sewing.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lagoon",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/hd/sewing.webp": "92062eafb7183f6553ecf11c3332883ed9e5e247541f6744d60aeb1a5769ada9"
+      },
+      "skin": "sk-swim-lagoon"
+    },
+    {
+      "batch": 134,
+      "source": "lagoon-shy.png",
+      "sourceNow": "New Adds/Solar-Pink Lagoon-Menu Poses/lagoon-shy.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "acd27848e62ba17411fe3d2a4247ca373c0de1420fafa32a7fb6f702719c4535",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/hd/shy.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lagoon",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/hd/shy.webp": "67c866a8bb921a6181d4ac2f94a119dbcb006cac4af11d8e7d2b3dabbf7dd062"
+      },
+      "skin": "sk-swim-lagoon"
+    },
+    {
+      "batch": 134,
+      "source": "lagoon-yawn.png",
+      "sourceNow": "New Adds/Solar-Pink Lagoon-Menu Poses/lagoon-yawn.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "0f5805529017f4da2588a376266401ae74e592360234fb889b823b546fa3473d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/hd/stretch.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lagoon",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/hd/stretch.webp": "63471abf3db8bcd689114bfd8c3005c9966e96b4cfa948d713bc08ac64da8ac4"
+      },
+      "skin": "sk-swim-lagoon"
+    },
+    {
+      "batch": 134,
+      "source": "lagoon-reading.png",
+      "sourceNow": "New Adds/Solar-Pink Lagoon-Menu Poses/lagoon-reading.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "c5a9e789a3a64968b85fcd8495cc522291dc9532b007c27d021d861749a7be0c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/hd/study.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lagoon",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/hd/study.webp": "4f74737265df0e8b53ab755dd90c29010dfd1c1931f3d24b10ad8ae0f10a3571"
+      },
+      "skin": "sk-swim-lagoon"
+    },
+    {
+      "batch": 134,
+      "source": "lagoon-handsonhips.png",
+      "sourceNow": "New Adds/Solar-Pink Lagoon-Menu Poses/lagoon-handsonhips.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "73b8e287478479b22e4d862062822a545656b4e512abb519095eaddce294d63c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/hd/tease.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lagoon",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/hd/tease.webp": "cee9d81083726bd3225fa59541f9f56989ccc9f765b833b0e29eb004784578d4"
+      },
+      "skin": "sk-swim-lagoon"
+    },
+    {
+      "batch": 134,
+      "source": "lagoon-thinking.png",
+      "sourceNow": "New Adds/Solar-Pink Lagoon-Menu Poses/lagoon-thinking.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d161221357a2c596d3874feca492f918448bc8b1a1f399019b14c66b1ce06bf4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/hd/thinking.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lagoon",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/hd/thinking.webp": "c1756c7d111b8a454ec2ed2ce4c41dfe82aa9a61d34cd504c3eda7d3fd5779db"
+      },
+      "skin": "sk-swim-lagoon"
+    },
+    {
+      "batch": 134,
+      "source": "lagoon-watering.png",
+      "sourceNow": "New Adds/Solar-Pink Lagoon-Menu Poses/lagoon-watering.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "2ba23fb5518142337c87fbfc77706d4da19de0c55ec3d8850a881d1f8236929c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/hd/watering.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lagoon",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/hd/watering.webp": "a858464dc763db503c6c5389ad3e6518095830e12bd1246be35350d24b0e7917"
+      },
+      "skin": "sk-swim-lagoon"
+    },
+    {
+      "batch": 134,
+      "source": "lagoon-wave.png",
+      "sourceNow": "New Adds/Solar-Pink Lagoon-Menu Poses/lagoon-wave.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "2f516046bb32a8b7a1cda7fd10c2888a6c52d5927117022bef5e492269bd5d7a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-swim-lagoon/hd/wave.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-swim-lagoon",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-swim-lagoon/hd/wave.webp": "73124e91c0901275ff4de3f4700cdc696cbf4990648ef82b696adf3cccd6c502"
+      },
+      "skin": "sk-swim-lagoon"
+    },
+    {
+      "batch": 134,
+      "source": "vp-armscrossed.png",
+      "sourceNow": "New Adds/Solar-VP-Menu Poses/vp-armscrossed.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d8227acbee7e5507b767314849d3148ff1b24d4732aad6aecf254ef7617700a7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/hd/arms-crossed.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-vp",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-vp/hd/arms-crossed.webp": "72da884b083487fc41ed195b5229c9e4783c7537c684fe09e407e79f5c796153"
+      },
+      "skin": "sk-vp"
+    },
+    {
+      "batch": 134,
+      "source": "vp-fist.png",
+      "sourceNow": "New Adds/Solar-VP-Menu Poses/vp-fist.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "e534b49636caf908f7aa3e456ed1fb164877618a3a08bb947f0153b079961a00",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/hd/cheer.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-vp",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-vp/hd/cheer.webp": "eb9409b314427662f4d5fc8f9960f70016c624130e6ab379afc1b40622f20d16"
+      },
+      "skin": "sk-vp"
+    },
+    {
+      "batch": 134,
+      "source": "vp-evoker.png",
+      "sourceNow": "New Adds/Solar-VP-Menu Poses/vp-evoker.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "06e17abc683e52b39c4b81cb0b5b8f27f829c424f9683d99d89a119490281c72",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/hd/evoker.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-vp",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-vp/hd/evoker.webp": "b44637b679b03018b313e2e37594158a245d9d15b235fa22146b140dacd9b8dd"
+      },
+      "skin": "sk-vp"
+    },
+    {
+      "batch": 134,
+      "source": "vp-handinhair.png",
+      "sourceNow": "New Adds/Solar-VP-Menu Poses/vp-handinhair.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "1eab9295c508fe94338e8b3186c4e788930a248ed17d7bdafa9745583acb2c42",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/hd/hair.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-vp",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-vp/hd/hair.webp": "356a2effd43b35ef051074bc0df57caeb633e1ceb1bf5bade768b74127c473cf"
+      },
+      "skin": "sk-vp"
+    },
+    {
+      "batch": 134,
+      "source": "vp-hearthands.png",
+      "sourceNow": "New Adds/Solar-VP-Menu Poses/vp-hearthands.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "09fb7cbf71e9de6ba5b50f9cfd59890a0e25606fd462a0a83a0babcd4a4fba7a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/hd/heart.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-vp",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-vp/hd/heart.webp": "45198690927ba83cbffdc763dcee7e64a19f1ed5d2fffc779c962fa52431f541"
+      },
+      "skin": "sk-vp"
+    },
+    {
+      "batch": 134,
+      "source": "vp-peace.png",
+      "sourceNow": "New Adds/Solar-VP-Menu Poses/vp-peace.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "90a4a90ee9d47f03642577e96b7348fbaa1c582dd10cd43ae06c5776f7fd0deb",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/hd/peace.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-vp",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-vp/hd/peace.webp": "051ee1b5c1558ac897ade112f0784ab4bc20acc967b4dc391c1c8efe050c4915"
+      },
+      "skin": "sk-vp"
+    },
+    {
+      "batch": 134,
+      "source": "vp-phone.png",
+      "sourceNow": "New Adds/Solar-VP-Menu Poses/vp-phone.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "ab4c02e1b4e70930a8da0a8794a1133da8018421076f9bbe8465144cf79377fa",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/hd/phone.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-vp",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-vp/hd/phone.webp": "31d84a55218dc7890663ef108a475a283347bb09ec1b092d1d1ac4d03b028bfe"
+      },
+      "skin": "sk-vp"
+    },
+    {
+      "batch": 134,
+      "source": "vp-ramen.png",
+      "sourceNow": "New Adds/Solar-VP-Menu Poses/vp-ramen.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "9cf62760577bb8a12df8cf8a91420ee9184e94dcc76c99ec7caa56fd42a1301b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/hd/ramen.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-vp",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-vp/hd/ramen.webp": "ffd831d3e88818d1bb2efe8dd9bc22aa180486d1e034ecac5cfb4c2361ca4ffe"
+      },
+      "skin": "sk-vp"
+    },
+    {
+      "batch": 134,
+      "source": "vp-shy.png",
+      "sourceNow": "New Adds/Solar-VP-Menu Poses/vp-shy.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "3b8d527eaf8187146f2b8e8de8062cce1a0a5c77690f86cee82fd0ef8ad3ea96",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/hd/shy.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-vp",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-vp/hd/shy.webp": "8d2c893ba28690dfeedd68a8a628e080addb7e463445b749283a4359fa8b3717"
+      },
+      "skin": "sk-vp"
+    },
+    {
+      "batch": 134,
+      "source": "vp-yawn-v2.png",
+      "sourceNow": "New Adds/Solar-VP-Menu Poses/vp-yawn-v2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "abf946a137133818a580a9f4e89c98a92e0978b729f18b7d968dcfbf753dec80",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/hd/stretch.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-vp",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-vp/hd/stretch.webp": "02c4f1c078bee7cef899bda9198d301660d2cc718504710c37027b01d165632c"
+      },
+      "skin": "sk-vp"
+    },
+    {
+      "batch": 134,
+      "source": "vp-reading.png",
+      "sourceNow": "New Adds/Solar-VP-Menu Poses/vp-reading.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "623755e978e30a2f99204447e0454ae39062e8d0e9bb7e4907976a4b0c21dcaa",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/hd/study.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-vp",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-vp/hd/study.webp": "530f7d193bfaae03af9273273378f061ab5ea18d9ccfd7ae5555efed54515e74"
+      },
+      "skin": "sk-vp"
+    },
+    {
+      "batch": 134,
+      "source": "vp-handsonhips.png",
+      "sourceNow": "New Adds/Solar-VP-Menu Poses/vp-handsonhips.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "215ab92cb6056097c292e6e421db6d7103d3f7dc697e0eb99b232583031e1bee",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/hd/tease.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-vp",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-vp/hd/tease.webp": "bcf6d8d211c48b0737e463f09948a9c72a5688928335e620c075ee3abd10a006"
+      },
+      "skin": "sk-vp"
+    },
+    {
+      "batch": 134,
+      "source": "vp-thinking.png",
+      "sourceNow": "New Adds/Solar-VP-Menu Poses/vp-thinking.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "4d13352c215667165230f686efa17fffec03d46acdf2d9c0c4082bb8e86654bc",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/hd/thinking.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-vp",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-vp/hd/thinking.webp": "0a11498491eb4dd563cce1727420b8446b86c94d1acb9db0d04b0f217afaa71d"
+      },
+      "skin": "sk-vp"
+    },
+    {
+      "batch": 134,
+      "source": "vp-watering.png",
+      "sourceNow": "New Adds/Solar-VP-Menu Poses/vp-watering.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "933b93daf1dba90b2154b641c7c85e6b6bc42716dfa7ff8862aea012fff6c842",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/hd/watering.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-vp",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-vp/hd/watering.webp": "d92fc0cccb7847024390be8cd151874ebd9bd1ce82e68362779e7d1e0bb8c43e"
+      },
+      "skin": "sk-vp"
+    },
+    {
+      "batch": 134,
+      "source": "vp-wave.png",
+      "sourceNow": "New Adds/Solar-VP-Menu Poses/vp-wave.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d02e681da25986cd76dd91f2963d49bf16621c1b27dfb0c827cc7cc4d47cb4bf",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-vp/hd/wave.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-vp",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-vp/hd/wave.webp": "dcb3623945316ff349e4a8e5454148bb54f8bdcecab8b9bf181903987360dbbf"
+      },
+      "skin": "sk-vp"
+    },
+    {
+      "batch": 134,
+      "source": "velvet-armscrossed.png",
+      "sourceNow": "New Adds/Solar-Velvet Room-Menu Poses/velvet-armscrossed.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "7e43f80252e641b08c511a757b692a56748094bab8235b8f2a2e0ce20dcf7664",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-velvet/hd/arms-crossed.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-velvet",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-velvet/hd/arms-crossed.webp": "f22ba9f45e65bb6893092c5192fbebd830b25df5aff8fcc67cdbb4da5cba5d41"
+      },
+      "skin": "sk-velvet"
+    },
+    {
+      "batch": 134,
+      "source": "velvet-fist.png",
+      "sourceNow": "New Adds/Solar-Velvet Room-Menu Poses/velvet-fist.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "dba53c746ab12764b82605eccf748b6bc4a729bab6a71fcbff676e665da2316e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-velvet/hd/cheer.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-velvet",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-velvet/hd/cheer.webp": "0256bc34e33ce58f3b49db987a55e7fd1cf16a85017c577787afff9c24be25eb"
+      },
+      "skin": "sk-velvet"
+    },
+    {
+      "batch": 134,
+      "source": "velvet-evoker.png",
+      "sourceNow": "New Adds/Solar-Velvet Room-Menu Poses/velvet-evoker.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "305f07b2da28dd6f120a18efbb5643e737221ef231f1b677ee5fe466212fbd9d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-velvet/hd/evoker.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-velvet",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-velvet/hd/evoker.webp": "1a191bd737c82ae34ae04231b0db27be6c0e4255c997b8e058224be22d6d50f1"
+      },
+      "skin": "sk-velvet"
+    },
+    {
+      "batch": 134,
+      "source": "velvet-handinhair.png",
+      "sourceNow": "New Adds/Solar-Velvet Room-Menu Poses/velvet-handinhair.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "a77256655edbf33c4efc9a4718a8fc1aa2614a9ebea8a5b5381b3f9096e6accf",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-velvet/hd/hair.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-velvet",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-velvet/hd/hair.webp": "558ced7d064bb2fe5af44a75994d935f7f082233aad3cfd9ec068ac81c95c7b1"
+      },
+      "skin": "sk-velvet"
+    },
+    {
+      "batch": 134,
+      "source": "velvet-phone.png",
+      "sourceNow": "New Adds/Solar-Velvet Room-Menu Poses/velvet-phone.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "e92432869ed6ab285750d47062db4ca601f941bba2107635128652eedbba65f9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-velvet/hd/phone.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-velvet",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-velvet/hd/phone.webp": "f9b494119dd78ddd852bfe21bbc95ed47b21e338ff3b35f042f43a520d017b7b"
+      },
+      "skin": "sk-velvet"
+    },
+    {
+      "batch": 134,
+      "source": "velvet-ramen.png",
+      "sourceNow": "New Adds/Solar-Velvet Room-Menu Poses/velvet-ramen.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "8a31dd47c5672dd4142741d19084235cc63ae54e18a4642764594f6686f3d880",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-velvet/hd/ramen.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-velvet",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-velvet/hd/ramen.webp": "4c9b0908d262875a945556b7bb8f6274c76eb2e8a970223c1e039ce6d10a4e14"
+      },
+      "skin": "sk-velvet"
+    },
+    {
+      "batch": 134,
+      "source": "velvet-yawn.png",
+      "sourceNow": "New Adds/Solar-Velvet Room-Menu Poses/velvet-yawn.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "f58c05f8175c48594b45590b939938fb8a47cc6185b9c40753f44073119d9ee7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-velvet/hd/stretch.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-velvet",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-velvet/hd/stretch.webp": "da765aa4e119a81229e609a10a1a55b2c123f44518e72ca684c81c4f051c8a91"
+      },
+      "skin": "sk-velvet"
+    },
+    {
+      "batch": 134,
+      "source": "velvet-reading.png",
+      "sourceNow": "New Adds/Solar-Velvet Room-Menu Poses/velvet-reading.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "625955b3534cdd4a7d9c792cc647119703ee6280fc6673af0d3cf008b2448101",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-velvet/hd/study.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-velvet",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-velvet/hd/study.webp": "8f11d67b7fc508054b12165e8b6e5f396e7b7895643a3684fd26af47537e947f"
+      },
+      "skin": "sk-velvet"
+    },
+    {
+      "batch": 134,
+      "source": "velvet-thinking.png",
+      "sourceNow": "New Adds/Solar-Velvet Room-Menu Poses/velvet-thinking.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "0b199e827974814984edcd81f5c3c218667a22813d9a71b95edb89c100767837",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-velvet/hd/thinking.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-velvet",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-velvet/hd/thinking.webp": "a3ef3e9bccffd5e3e57363d83b7aa82aa747a531a112dde1cca0a272976b4f56"
+      },
+      "skin": "sk-velvet"
+    },
+    {
+      "batch": 134,
+      "source": "velvet-watering.png",
+      "sourceNow": "New Adds/Solar-Velvet Room-Menu Poses/velvet-watering.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "b4546516ea6c6a374c4d2eec78ffaf3f8555ee8bebdfa9cfe1d8ec464a45f8db",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-velvet/hd/watering.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-velvet",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-velvet/hd/watering.webp": "4b16ae2ad631ab23cc900079df0e6a06b7e0828222d29417302040f7fe158a49"
+      },
+      "skin": "sk-velvet"
+    },
+    {
+      "batch": 134,
+      "source": "velvet-wave.png",
+      "sourceNow": "New Adds/Solar-Velvet Room-Menu Poses/velvet-wave.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "67d927c1d895e46558e6288ccbd995d739b6f342abbbd0cc227f2b7502e799b5",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-velvet/hd/wave.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-velvet",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-velvet/hd/wave.webp": "b8fc202f08e123401e74b8f74f3b0db6fc527790ce340b0f0cc80bef1f91dcc5"
+      },
+      "skin": "sk-velvet"
+    },
+    {
+      "batch": 134,
+      "source": "winter-armscrossed.png",
+      "sourceNow": "New Adds/Solar-Winter-Menu Poses/winter-armscrossed.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "c076ffba1081b135abd84ac7e07e112676ac9ca12c61c09b9079068859e44802",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/hd/arms-crossed.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-wintercoat",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-wintercoat/hd/arms-crossed.webp": "09dc1f7a082f988b62317d447db0bd17d02137bf7ab50b2d98f96ffb23818674"
+      },
+      "skin": "sk-wintercoat"
+    },
+    {
+      "batch": 134,
+      "source": "winter-evoker.png",
+      "sourceNow": "New Adds/Solar-Winter-Menu Poses/winter-evoker.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "9e9789acbdf766cdbd251ba921fe1d1817adf140cfb62214d4280a08e7e811e8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/hd/evoker.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-wintercoat",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-wintercoat/hd/evoker.webp": "ba19cd23d0d97975f50c6b74d5b59069902a7e14fbf9f610b8c0c04dc017ac14"
+      },
+      "skin": "sk-wintercoat"
+    },
+    {
+      "batch": 134,
+      "source": "winter-handinhair.png",
+      "sourceNow": "New Adds/Solar-Winter-Menu Poses/winter-handinhair.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d63a72737c1c84948e436dc8bd56f2c342f0944c462af26a97b8b3c74384a9d0",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/hd/hair.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-wintercoat",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-wintercoat/hd/hair.webp": "3219ee66c01b68c7de06e029cd3e253c0e28396aeeada5dc21b91cdcb0c04c14"
+      },
+      "skin": "sk-wintercoat"
+    },
+    {
+      "batch": 134,
+      "source": "winter-peace.png",
+      "sourceNow": "New Adds/Solar-Winter-Menu Poses/winter-peace.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d87e01359819bd88da2b4f740f0f2a713b3f59cb655245d54a458ff7ebd212d9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/hd/peace.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-wintercoat",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-wintercoat/hd/peace.webp": "64dc36e544ca8215fe1056781bf234d73fd22c868fdc9abef49c1f656dc8b8b5"
+      },
+      "skin": "sk-wintercoat"
+    },
+    {
+      "batch": 134,
+      "source": "winter-ramen.png",
+      "sourceNow": "New Adds/Solar-Winter-Menu Poses/winter-ramen.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "f4575d9767eac6e4ddf423dc1615ed90f85e0563c5b6025b6b2dfd5e02913ad1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/hd/ramen.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-wintercoat",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-wintercoat/hd/ramen.webp": "53f481b1ab16a8213b0de62082ed75cddfd9eae271da4dc1cdd00dd82c9295f1"
+      },
+      "skin": "sk-wintercoat"
+    },
+    {
+      "batch": 134,
+      "source": "winter-shy.png",
+      "sourceNow": "New Adds/Solar-Winter-Menu Poses/winter-shy.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d2d48b8f3defc7b1104369cac2f91ac92ec3f0bc5cb9ec89f918e50435e62586",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/hd/shy.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-wintercoat",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-wintercoat/hd/shy.webp": "e9fbbd401acd4d55b9fb78ab263a14c8980390ac96c82d30aae75a17bb0e3789"
+      },
+      "skin": "sk-wintercoat"
+    },
+    {
+      "batch": 134,
+      "source": "winter-yawn.png",
+      "sourceNow": "New Adds/Solar-Winter-Menu Poses/winter-yawn.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "b8d9a416b465f3625c5cb2493fcfeee83f981f189225288dd648ea3a4304527d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/hd/stretch.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-wintercoat",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-wintercoat/hd/stretch.webp": "8f29ea785736a1272e3890e5d22aab4ca77e54c069551214f022aec88db72356"
+      },
+      "skin": "sk-wintercoat"
+    },
+    {
+      "batch": 134,
+      "source": "winter-reading.png",
+      "sourceNow": "New Adds/Solar-Winter-Menu Poses/winter-reading.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "17528bf63a3ac6636f982fa4081eb6a783f6ebeec9aaf926ec55e27314c9bc47",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/hd/study.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-wintercoat",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-wintercoat/hd/study.webp": "523d0a8c6dbb9a9cee9a95a33abd2f0bc5244f6e9c43c90161a09d174811758a"
+      },
+      "skin": "sk-wintercoat"
+    },
+    {
+      "batch": 134,
+      "source": "winter-thinking.png",
+      "sourceNow": "New Adds/Solar-Winter-Menu Poses/winter-thinking.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "45e6786206604951802a921bc67a12169d4d8882ff101790e19a615389a74ff5",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/hd/thinking.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-wintercoat",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-wintercoat/hd/thinking.webp": "9094060979037aeb745716613ecab63e0c0c1ae93cfcb684e69ad3a62b53d3b7"
+      },
+      "skin": "sk-wintercoat"
+    },
+    {
+      "batch": 134,
+      "source": "winter-watering.png",
+      "sourceNow": "New Adds/Solar-Winter-Menu Poses/winter-watering.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "12885ce1a7e0e6fddf3ab9346a2224a883bfc7e07a1fc102f613bf6a15c8fa9d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/hd/watering.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-wintercoat",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-wintercoat/hd/watering.webp": "f93fee6adb2595a919c6109a967de7ddcf67bd613abd67aea3d53772951149a8"
+      },
+      "skin": "sk-wintercoat"
+    },
+    {
+      "batch": 134,
+      "source": "winter-wave.png",
+      "sourceNow": "New Adds/Solar-Winter-Menu Poses/winter-wave.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "927352e152b4e77b30fa9d2c821816becff9381b8ad2a15bd7983ffc7d125f66",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-wintercoat/hd/wave.webp",
+      "character": "solar",
+      "conversion": "one figure, native resolution (no rescale), canvas = source height x figure width + margin, feet on the bottom edge (jump keeps its air); WebP q92, alpha 100",
+      "placement": "evening screen rotation + hover reactions, menu screen (arms-crossed), win screen (peace, else cheer, else jump)",
+      "tool": "python3 tools/femc-hd-poses.py look sk-wintercoat",
+      "identifiedBy": "Kat's file name (pose word)",
+      "outputs": {
+        "assets/femc/game/art/skins/sk-wintercoat/hd/wave.webp": "dd5423923d3a35564a4d597b38039ee288825acbca827a6576b71e51d145c1a0"
+      },
+      "skin": "sk-wintercoat"
     }
   ],
   "batch1Validation": {
@@ -34342,5 +37744,9 @@
   "batch135Validation": {
     "tests": "femc_skins_battle --only data,sheet2,looks; femc_cosmetics --only inbattle: all passed",
     "note": "Nov 3 2026: Jungwon's Center Stage and Cell Block Angel (skin2, entrance, onemore, theurgy, finish, fx), Pool Day (skin2, theurgy; strip, entrance, finish and fx still to come). Mark's and Chenle's Runners faces carried lower from Kat's expanded sheets."
+  },
+  "batch134Validation": {
+    "tests": "femc_life --only look, femc_skins_battle --only winhd, femc_menu",
+    "note": "Nov 3 2026: HD single-figure poses for ten more Solar outfits; partial sets (Lifeguard 17, VP 15, Velvet 11, Winter Coat 11) wired as they are. VP: vp-yawn-v2.png used, vp-yawn.png not. Night Swim and Midnight Drive folders were empty."
   }
 }

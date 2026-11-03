@@ -1,0 +1,167 @@
+{
+ "arms-crossed": {
+  "ar": 0.43,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.408,
+  "size": [
+   660,
+   1536
+  ],
+  "src": "vp-armscrossed.png"
+ },
+ "cheer": {
+  "ar": 0.512,
+  "hf": 0.138,
+  "ht": 0.015,
+  "hx": 0.44,
+  "size": [
+   786,
+   1536
+  ],
+  "src": "vp-fist.png"
+ },
+ "evoker": {
+  "ar": 0.592,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.451,
+  "size": [
+   910,
+   1536
+  ],
+  "src": "vp-evoker.png"
+ },
+ "hair": {
+  "ar": 0.495,
+  "hf": 0.138,
+  "ht": 0.016,
+  "hx": 0.397,
+  "size": [
+   761,
+   1536
+  ],
+  "src": "vp-handinhair.png"
+ },
+ "heart": {
+  "ar": 0.48,
+  "hf": 0.138,
+  "ht": 0.013,
+  "hx": 0.375,
+  "size": [
+   738,
+   1536
+  ],
+  "src": "vp-hearthands.png"
+ },
+ "peace": {
+  "ar": 0.561,
+  "hf": 0.138,
+  "ht": 0.016,
+  "hx": 0.432,
+  "size": [
+   862,
+   1536
+  ],
+  "src": "vp-peace.png"
+ },
+ "phone": {
+  "ar": 0.454,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.374,
+  "size": [
+   697,
+   1536
+  ],
+  "src": "vp-phone.png"
+ },
+ "ramen": {
+  "ar": 0.548,
+  "hf": 0.138,
+  "ht": 0.015,
+  "hx": 0.431,
+  "size": [
+   842,
+   1536
+  ],
+  "src": "vp-ramen.png"
+ },
+ "shy": {
+  "ar": 0.43,
+  "hf": 0.138,
+  "ht": 0.011,
+  "hx": 0.359,
+  "size": [
+   660,
+   1536
+  ],
+  "src": "vp-shy.png"
+ },
+ "stretch": {
+  "ar": 0.468,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.629,
+  "size": [
+   719,
+   1536
+  ],
+  "src": "vp-yawn-v2.png"
+ },
+ "study": {
+  "ar": 0.457,
+  "hf": 0.138,
+  "ht": 0.018,
+  "hx": 0.389,
+  "size": [
+   702,
+   1536
+  ],
+  "src": "vp-reading.png"
+ },
+ "tease": {
+  "ar": 0.555,
+  "hf": 0.138,
+  "ht": 0.015,
+  "hx": 0.458,
+  "size": [
+   853,
+   1536
+  ],
+  "src": "vp-handsonhips.png"
+ },
+ "thinking": {
+  "ar": 0.448,
+  "hf": 0.137,
+  "ht": 0.018,
+  "hx": 0.399,
+  "size": [
+   688,
+   1536
+  ],
+  "src": "vp-thinking.png"
+ },
+ "watering": {
+  "ar": 0.625,
+  "hf": 0.138,
+  "ht": 0.013,
+  "hx": 0.499,
+  "size": [
+   960,
+   1536
+  ],
+  "src": "vp-watering.png"
+ },
+ "wave": {
+  "ar": 0.486,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.407,
+  "size": [
+   746,
+   1536
+  ],
+  "src": "vp-wave.png"
+ }
+}

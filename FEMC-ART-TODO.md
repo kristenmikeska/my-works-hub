@@ -9,10 +9,23 @@ Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make.
 **Why things look blurry:** a 3 × 2 sheet only gives each figure about 500–760 pixels of height, and the evening screen and the results screen show Solar at nearly twice that (even her school-uniform poses, and every outfit's victory pose, are stretched). The fix is **one figure per image**, tall and sharp, instead of six to a sheet.
 
 **The plan (in this order):**
-1. **Solar first (Kat, Nov 3: several poses for every outfit).** Her own look's 18 evening poses redone one per image (arms crossed, thinking, wave, peace, hair, shy, study, ramen, watering, Evoker, stretch, phone, cheer, jump, tease, heart, look back, sewing), and **several poses for each of her 32 outfits** (the evening screen rotates through them when she wears that outfit; one of them also shows big on the results screen). Drop each outfit's poses in a folder named after the outfit; Claude sorts them.
-   **In the game so far (Nov 3):** ✅ her own look, all 18 poses · ✅ After Hours (all 18). Still to make: the other 31 outfits' sets (folder per outfit, any of the 18 pose names; the evening screen uses whichever poses a set has, the menu its arms crossed, the results screen its peace sign, else fist pump, else jump).
+1. **Solar first (Kat, Nov 3: several poses for every outfit).** Her own look's 18 evening poses redone one per image (arms crossed, thinking, wave, peace, hair, shy, study, ramen, watering, Evoker, stretch, phone, cheer, jump, tease, heart, look back, sewing), and the same 18 for each of her 32 outfits. Drop each outfit's poses in a folder named after the outfit; Claude sorts them. A set doesn't have to be complete: the game uses whichever poses are there.
 2. **Then the other fighters' victory poses** (their own look first, then their outfits), for the results screen.
 3. Optional later: battle pose sheets redone as single figures (only if the in-battle figures ever look soft to you).
+
+**Solar: done (in the game)**
+- ✅ Her own look (18) · ✅ After Hours (18) · ✅ Date Day (18) · ✅ Emo Night (18) · ✅ Limelight (18) · ✅ Alpha Phi Formal (18) · ✅ Y2K Pop Star (18) · ✅ Pink Lagoon (18)
+
+**Solar: in, but missing a few poses**
+- **Lifeguard on Duty** (17 in): shy
+- **Vice President** (15 in): jump, over-the-shoulder, sewing
+- **Velvet Attendant** (11 in): hands on hip, heart hands, jump, over-the-shoulder, peace sign, sewing, shy
+- **Winter Coat** (11 in): fist pump, hands on hip, heart hands, jump, over-the-shoulder, phone, sewing
+
+**Solar: no HD set yet (21 outfits, all 18 poses each)**
+Summer Yukata · Halloween Witch · Phantom Thief · Harbour Night Coat · Stage Idol · SU eSports Jersey · Moonlit Hanbok · Morning Roadwork · Oops! · Snake Charmer · Sugar Rush · Night Prowl · Strawberry Milk · Summer Session · Night Swim · Sun Hoodie · Midnight Drive · Movie Date · Ringside · Summer Festival · The Sun
+
+**Tip:** if ChatGPT blocks a pose, reword it (e.g. "relaxed standing pose, hand resting on hip" instead of "hands on hips"); that often gets it through.
 
 **Finishing step (Kat, Nov 3):** when every pose is done, upscale them all in Photoshop in one batch (200%, Preserve Details 2.0 or Camera Raw Super Resolution) and drop them back in with the same names; Claude swaps them in.
 

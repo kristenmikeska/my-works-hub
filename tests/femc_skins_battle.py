@@ -882,10 +882,16 @@ try:
         night(['solar', 'akihiko', 'yukari', 'junpei'], "FemcBattle.save.settings.entrance=false;window.__btGroup=['maya'];"); enter()
         hero = solar_wins()
         ok(hero and 'sk-cp-afterhours/hd/cheer.webp' in hero['src'] and hero['ok'], f'no peace sign in the set: the fist pump: {hero}')
-        p.top(); setup(wear=['sk-date'])
+        # Nov 3 (batch 134): Velvet's partial set has no peace sign: its fist pump, for real
+        p.top(); setup(wear=['sk-velvet'])
         night(['solar', 'akihiko', 'yukari', 'junpei'], "FemcBattle.save.settings.entrance=false;window.__btGroup=['maya'];"); enter()
         hero = solar_wins()
-        ok(hero and 'skins/sk-date/solar-pose-5.webp' in hero['src'] and not hero['hd'], f'a look without an HD set: its pose 5 as before: {hero}')
+        ok(hero and 'sk-velvet/hd/cheer.webp' in hero['src'] and hero['ok'] and hero['hd'], f'Velvet (partial, no peace): the fist pump: {hero}')
+        if want('winhd'): hshots.append(shot(p, 'winhd-velvet-1440x900'))
+        p.top(); setup(wear=['sk-yukata'])
+        night(['solar', 'akihiko', 'yukari', 'junpei'], "FemcBattle.save.settings.entrance=false;window.__btGroup=['maya'];"); enter()
+        hero = solar_wins()
+        ok(hero and 'skins/sk-yukata/solar-pose-5.webp' in hero['src'] and not hero['hd'], f'a look without an HD set: its pose 5 as before: {hero}')
         clean(p, 'winhd fallbacks')
         results['winhd'] = hshots
 

@@ -33,10 +33,22 @@ SKINS = ROOT / 'assets/femc/game/art/skins'
 NAMES = {'armscrossed': 'arms-crossed', 'evoker': 'evoker', 'fistpump': 'cheer', 'handinhair': 'hair', 'handsonhip': 'tease',
          'hiphands': 'tease', 'hearthands': 'heart', 'jump': 'jump', 'peacesign': 'peace', 'phone': 'phone', 'ramen': 'ramen',
          'reading': 'study', 'sewing': 'sewing', 'shoulderlook': 'lookback', 'overshoulder': 'lookback', 'shy': 'shy',
-         'thinking': 'thinking', 'watering': 'watering', 'wave': 'wave', 'yawn': 'stretch'}
+         'thinking': 'thinking', 'watering': 'watering', 'wave': 'wave', 'yawn': 'stretch',
+         'fist': 'cheer', 'fistbump': 'cheer', 'handsinhair': 'hair', 'handsonhips': 'tease', 'peace': 'peace'}
 AIR = {'jump'}
 # Wardrobe looks with an HD set: look id -> (folder in New Adds, file prefix). Kat names a folder after the outfit.
-LOOKS = {'sk-cp-afterhours': ('Solar-After Hours-Menu Poses', 'afterhr-')}
+# A set may be partial (ChatGPT blocked some poses): the game uses only the poses a set has (FEMC-ART-WIRING).
+LOOKS = {'sk-cp-afterhours': ('Solar-After Hours-Menu Poses', 'afterhr-'),
+         'sk-date': ('Solar-Date Night-Menu Poses', 'datenight-'),
+         'sk-emo': ('Solar-Emo Night-Menu Poses', 'emo-'),
+         'sk-swim-lifeguard': ('Solar-Lifeguard-Menu Poses', 'lifeguard-'),
+         'sk-limelight': ('Solar-Limelight-Menu Poses', 'limelight-'),
+         'sk-alphaphi': ('Solar-Alpha Formal-Menu Poses', 'solar-alpha-'),
+         'sk-y2k': ('Solar-Y2K-Menu Poses', 'y2k-'),
+         'sk-swim-lagoon': ('Solar-Pink Lagoon-Menu Poses', 'lagoon-'),
+         'sk-vp': ('Solar-VP-Menu Poses', 'vp-'),
+         'sk-velvet': ('Solar-Velvet Room-Menu Poses', 'velvet-'),
+         'sk-wintercoat': ('Solar-Winter-Menu Poses', 'winter-')}
 QUALITY, ALPHA_MIN, SPECK = 92, 16, 3
 
 
@@ -84,12 +96,13 @@ def run_set(srcs, outdir):
 
 
 def sources(folder, prefix, quiet=False):
-    """<prefix><pose>.png, or the art list's <prefix>hd-<pose>.png (which wins when both are there)."""
+    """<prefix><pose>.png, or the art list's <prefix>hd-<pose>.png or Kat's retry <prefix><pose>-v2.png (either wins over the plain one)."""
     got, hd = {}, set()
     for f in sorted(folder.glob(f'{prefix}*.png')):
         word = f.stem[len(prefix):].lower().replace('-', '').replace('_', '')
         is_hd = word.startswith('hd') and word[2:] in NAMES
         if is_hd: word = word[2:]
+        elif word.endswith('v2') and word[:-2] in NAMES: word, is_hd = word[:-2], True
         if word not in NAMES:
             if not quiet: print(f'  skipped {f.name}: unknown pose word "{word}"')
             continue
@@ -112,7 +125,7 @@ def look(lid):
     if not (SKINS / lid).exists(): raise SystemExit(f'{lid}: no skins folder (cut the look first)')
     srcs = sources(NEW / folder, prefix)
     missing = sorted(set(NAMES.values()) - set(srcs))
-    if missing: print(f'  {lid}: missing', ', '.join(missing), '(the evening screen falls back to the own-look pose for those)')
+    if missing: print(f'  {lid}: missing', ', '.join(missing), '(fine: the game uses only the poses the set has)')
     return run_set(srcs, SKINS / lid / 'hd')
 
 

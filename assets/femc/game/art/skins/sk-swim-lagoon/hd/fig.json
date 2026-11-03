@@ -1,0 +1,200 @@
+{
+ "arms-crossed": {
+  "ar": 0.481,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.496,
+  "size": [
+   739,
+   1536
+  ],
+  "src": "lagoon-armscrossed.png"
+ },
+ "cheer": {
+  "ar": 0.599,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.389,
+  "size": [
+   920,
+   1536
+  ],
+  "src": "lagoon-fist.png"
+ },
+ "evoker": {
+  "ar": 0.626,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.472,
+  "size": [
+   961,
+   1536
+  ],
+  "src": "lagoon-evoker.png"
+ },
+ "hair": {
+  "ar": 0.477,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.457,
+  "size": [
+   732,
+   1536
+  ],
+  "src": "lagoon-handinhair.png"
+ },
+ "heart": {
+  "ar": 0.546,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.501,
+  "size": [
+   838,
+   1536
+  ],
+  "src": "lagoon-hearthands.png"
+ },
+ "jump": {
+  "ar": 0.637,
+  "hf": 0.137,
+  "ht": 0.007,
+  "hx": 0.467,
+  "size": [
+   978,
+   1536
+  ],
+  "src": "lagoon-jump.png"
+ },
+ "lookback": {
+  "ar": 0.584,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.46,
+  "size": [
+   897,
+   1536
+  ],
+  "src": "lagoon-overshoulder.png"
+ },
+ "peace": {
+  "ar": 0.547,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.49,
+  "size": [
+   840,
+   1536
+  ],
+  "src": "lagoon-peace.png"
+ },
+ "phone": {
+  "ar": 0.514,
+  "hf": 0.14,
+  "ht": 0.001,
+  "hx": 0.467,
+  "size": [
+   790,
+   1536
+  ],
+  "src": "lagoon-phone.png"
+ },
+ "ramen": {
+  "ar": 0.586,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.5,
+  "size": [
+   900,
+   1536
+  ],
+  "src": "lagoon-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.576,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.51,
+  "size": [
+   885,
+   1536
+  ],
+  "src": "lagoon-sewing.png"
+ },
+ "shy": {
+  "ar": 0.432,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.515,
+  "size": [
+   663,
+   1536
+  ],
+  "src": "lagoon-shy.png"
+ },
+ "stretch": {
+  "ar": 0.546,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.653,
+  "size": [
+   839,
+   1536
+  ],
+  "src": "lagoon-yawn.png"
+ },
+ "study": {
+  "ar": 0.46,
+  "hf": 0.14,
+  "ht": 0.001,
+  "hx": 0.49,
+  "size": [
+   706,
+   1536
+  ],
+  "src": "lagoon-reading.png"
+ },
+ "tease": {
+  "ar": 0.545,
+  "hf": 0.14,
+  "ht": 0.002,
+  "hx": 0.455,
+  "size": [
+   837,
+   1536
+  ],
+  "src": "lagoon-handsonhips.png"
+ },
+ "thinking": {
+  "ar": 0.505,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.455,
+  "size": [
+   775,
+   1536
+  ],
+  "src": "lagoon-thinking.png"
+ },
+ "watering": {
+  "ar": 0.608,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.55,
+  "size": [
+   934,
+   1536
+  ],
+  "src": "lagoon-watering.png"
+ },
+ "wave": {
+  "ar": 0.512,
+  "hf": 0.139,
+  "ht": 0.004,
+  "hx": 0.522,
+  "size": [
+   786,
+   1536
+  ],
+  "src": "lagoon-wave.png"
+ }
+}

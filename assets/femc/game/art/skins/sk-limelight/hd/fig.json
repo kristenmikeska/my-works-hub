@@ -1,0 +1,200 @@
+{
+ "arms-crossed": {
+  "ar": 0.417,
+  "hf": 0.14,
+  "ht": 0.003,
+  "hx": 0.485,
+  "size": [
+   640,
+   1536
+  ],
+  "src": "limelight-armscrossed.png"
+ },
+ "cheer": {
+  "ar": 0.535,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.386,
+  "size": [
+   822,
+   1536
+  ],
+  "src": "limelight-fist.png"
+ },
+ "evoker": {
+  "ar": 0.554,
+  "hf": 0.138,
+  "ht": 0.013,
+  "hx": 0.518,
+  "size": [
+   851,
+   1536
+  ],
+  "src": "limelight-evoker.png"
+ },
+ "hair": {
+  "ar": 0.484,
+  "hf": 0.138,
+  "ht": 0.011,
+  "hx": 0.452,
+  "size": [
+   744,
+   1536
+  ],
+  "src": "limelight-handsinhair.png"
+ },
+ "heart": {
+  "ar": 0.486,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.521,
+  "size": [
+   747,
+   1536
+  ],
+  "src": "limelight-hearthands.png"
+ },
+ "jump": {
+  "ar": 0.61,
+  "hf": 0.138,
+  "ht": 0.005,
+  "hx": 0.511,
+  "size": [
+   937,
+   1536
+  ],
+  "src": "limelight-jump.png"
+ },
+ "lookback": {
+  "ar": 0.506,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.51,
+  "size": [
+   777,
+   1536
+  ],
+  "src": "limelight-overshoulder.png"
+ },
+ "peace": {
+  "ar": 0.549,
+  "hf": 0.14,
+  "ht": 0.003,
+  "hx": 0.456,
+  "size": [
+   844,
+   1536
+  ],
+  "src": "limelight-peace.png"
+ },
+ "phone": {
+  "ar": 0.486,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.473,
+  "size": [
+   746,
+   1536
+  ],
+  "src": "limelight-phone.png"
+ },
+ "ramen": {
+  "ar": 0.503,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.498,
+  "size": [
+   772,
+   1536
+  ],
+  "src": "limelight-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.445,
+  "hf": 0.138,
+  "ht": 0.017,
+  "hx": 0.491,
+  "size": [
+   683,
+   1536
+  ],
+  "src": "limelight-sewing.png"
+ },
+ "shy": {
+  "ar": 0.417,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.477,
+  "size": [
+   640,
+   1536
+  ],
+  "src": "limelight-shy.png"
+ },
+ "stretch": {
+  "ar": 0.479,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.66,
+  "size": [
+   735,
+   1536
+  ],
+  "src": "limelight-yawn.png"
+ },
+ "study": {
+  "ar": 0.463,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.504,
+  "size": [
+   711,
+   1536
+  ],
+  "src": "limelight-reading.png"
+ },
+ "tease": {
+  "ar": 0.499,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.474,
+  "size": [
+   767,
+   1536
+  ],
+  "src": "limelight-handsonhips.png"
+ },
+ "thinking": {
+  "ar": 0.455,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.475,
+  "size": [
+   699,
+   1536
+  ],
+  "src": "limelight-thinking.png"
+ },
+ "watering": {
+  "ar": 0.626,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.572,
+  "size": [
+   961,
+   1536
+  ],
+  "src": "limelight-watering.png"
+ },
+ "wave": {
+  "ar": 0.512,
+  "hf": 0.14,
+  "ht": 0.003,
+  "hx": 0.454,
+  "size": [
+   787,
+   1536
+  ],
+  "src": "limelight-wave.png"
+ }
+}

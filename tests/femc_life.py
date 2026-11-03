@@ -360,7 +360,7 @@ try:
             p.eval("FemcGameUI.evening();true")
             return p.eval("(()=>{const f=document.querySelector('.g-home-fig');return {look:f.dataset.look||null,src:f.querySelector('img').getAttribute('src')}})()")
         w = look('12/10')
-        ok(w['look'] == 'sk-wintercoat' and 'solar-pose-5' in w['src'], f'December: the winter coat: {w}')
+        ok(w['look'] == 'sk-wintercoat' and ('solar-pose-5' in w['src'] or 'sk-wintercoat/hd/thinking.webp' in w['src']), f'December: the winter coat: {w}')
         if want('shots'):
             shot('evening-winter-desktop')
         s = look('8/3')
@@ -400,6 +400,17 @@ try:
         w = look('12/10')
         ok(w['look'] == 'sk-wintercoat' and 'sk-wintercoat/hd/thinking.webp' in w['src'], f'the season\'s outfit uses its HD set when it has one: {w}')
         p.eval("(()=>{const W=FEMC_ART_READY.skins['sk-wintercoat'];if(window.__w0)W.hd=window.__w0;else delete W.hd;return true})()")
+        # Nov 3 (batch 134): a PARTIAL set (Velvet: 11 of 18) rotates only through what it has; a hover pose it lacks keeps the scroll pose
+        V = p.eval("(FEMC_ART_READY.skins['sk-velvet']||{}).hd||[]")
+        ok(len(V) == 11 and 'phone' in V and 'peace' not in V and 'study' in V, f'ready.js lists Velvet\'s 11 HD poses: {V}')
+        p.eval("(()=>{const C=FemcCosmetics;C.grantItem('sk-velvet');C.equip('sk-velvet');FemcGameUI.evening();return true})()")
+        v0 = p.eval("document.querySelector('.g-home-fig img').getAttribute('src')")
+        vo = p.eval(HOV % json.dumps('out')); vs = p.eval(HOV % json.dumps('study')); vd = p.eval(HOV % json.dumps('desk'))
+        ok('sk-velvet/hd/thinking.webp' in v0 and (vo is None or 'sk-velvet/hd/phone.webp' in vo) and (vs is None or 'sk-velvet/hd/study.webp' in vs)
+           and (vd is None or vd == v0), f'Velvet (partial) worn: its own poses, sewing (missing) keeps the scroll pose: {v0} {vo} {vs} {vd}')
+        if want('shots'):
+            shot('evening-velvet-partial-desktop')
+        p.eval("FemcCosmetics.unequip('skin:solar');true")
         errs = [e for e in p.console() if 'sk-wintercoat/hd/' not in str(e) and 'favicon' not in str(e)]  # the pretend set's files don't exist
         ok(not errs, f'HD looks: no browser errors: {errs}')
         clear()

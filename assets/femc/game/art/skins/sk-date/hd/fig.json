@@ -1,0 +1,200 @@
+{
+ "arms-crossed": {
+  "ar": 0.421,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.418,
+  "size": [
+   647,
+   1536
+  ],
+  "src": "datenight-armscrossed.png"
+ },
+ "cheer": {
+  "ar": 0.545,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.409,
+  "size": [
+   837,
+   1536
+  ],
+  "src": "datenight-fist.png"
+ },
+ "evoker": {
+  "ar": 0.545,
+  "hf": 0.138,
+  "ht": 0.018,
+  "hx": 0.409,
+  "size": [
+   837,
+   1536
+  ],
+  "src": "datenight-evoker.png"
+ },
+ "hair": {
+  "ar": 0.494,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.379,
+  "size": [
+   759,
+   1536
+  ],
+  "src": "datenight-handinhair.png"
+ },
+ "heart": {
+  "ar": 0.423,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.431,
+  "size": [
+   650,
+   1536
+  ],
+  "src": "datenight-hearthands.png"
+ },
+ "jump": {
+  "ar": 0.613,
+  "hf": 0.127,
+  "ht": 0.007,
+  "hx": 0.434,
+  "size": [
+   941,
+   1536
+  ],
+  "src": "datenight-jump.png"
+ },
+ "lookback": {
+  "ar": 0.441,
+  "hf": 0.138,
+  "ht": 0.018,
+  "hx": 0.392,
+  "size": [
+   677,
+   1536
+  ],
+  "src": "datenight-overshoulder.png"
+ },
+ "peace": {
+  "ar": 0.512,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.417,
+  "size": [
+   787,
+   1536
+  ],
+  "src": "datenight-peace.png"
+ },
+ "phone": {
+  "ar": 0.434,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.39,
+  "size": [
+   667,
+   1536
+  ],
+  "src": "datenight-phone.png"
+ },
+ "ramen": {
+  "ar": 0.464,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.435,
+  "size": [
+   712,
+   1536
+  ],
+  "src": "datenight-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.483,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.419,
+  "size": [
+   742,
+   1536
+  ],
+  "src": "datenight-sewing.png"
+ },
+ "shy": {
+  "ar": 0.391,
+  "hf": 0.138,
+  "ht": 0.018,
+  "hx": 0.454,
+  "size": [
+   600,
+   1536
+  ],
+  "src": "datenight-shy.png"
+ },
+ "stretch": {
+  "ar": 0.447,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.69,
+  "size": [
+   686,
+   1536
+  ],
+  "src": "datenight-yawn.png"
+ },
+ "study": {
+  "ar": 0.447,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.408,
+  "size": [
+   687,
+   1536
+  ],
+  "src": "datenight-reading.png"
+ },
+ "tease": {
+  "ar": 0.521,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.473,
+  "size": [
+   801,
+   1536
+  ],
+  "src": "datenight-handsonhip.png"
+ },
+ "thinking": {
+  "ar": 0.398,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.4,
+  "size": [
+   612,
+   1536
+  ],
+  "src": "datenight-thinking.png"
+ },
+ "watering": {
+  "ar": 0.644,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.529,
+  "size": [
+   989,
+   1536
+  ],
+  "src": "datenight-watering.png"
+ },
+ "wave": {
+  "ar": 0.465,
+  "hf": 0.137,
+  "ht": 0.023,
+  "hx": 0.401,
+  "size": [
+   714,
+   1536
+  ],
+  "src": "datenight-wave.png"
+ }
+}
