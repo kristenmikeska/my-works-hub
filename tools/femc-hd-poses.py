@@ -66,7 +66,10 @@ LOOKS = {'sk-cp-afterhours': ('Solar-After Hours-Menu Poses', 'afterhr-'),
          'sk-halloween': ('Solar-Halloween-Menu Poses', 'halloween-'),
          'sk-harbourcoat': ('Solar-Harbour-Menu Poses', 'harbor-'),
          'sk-phantom': ('Solar-Phantom-Menu Poses', 'phantom-'),
-         'sk-snake': ('Solar-Snake-Menu Poses', 'snake-')}
+         'sk-snake': ('Solar-Snake-Menu Poses', 'snake-'),
+         'sk-cp-moviedate': ('Solar-Movie Date-Menu Poses', 'movie-'),
+         'sk-roadwork': ('Solar-Morning Roadwork-Menu Poses', 'morning-'),
+         'sk-summersession': ('Solar-Summer Session-Menu Poses', 'summer-')}
 QUALITY, ALPHA_MIN, SPECK = 92, 16, 3
 
 
@@ -143,6 +146,11 @@ def look(lid):
     folder, prefix = LOOKS[lid]
     if not (SKINS / lid).exists(): raise SystemExit(f'{lid}: no skins folder (cut the look first)')
     srcs = sources(NEW / folder, prefix)
+    # Kat's fill-ins for a set's missing poses sometimes land loose in New Adds (e.g. velvet-jump.png): those count too and,
+    # being newer, win over the folder's own picture of the same pose.
+    loose = sources(NEW, prefix, quiet=True)
+    if loose: print('  loose in New Adds:', ', '.join(sorted(f.name for f in loose.values())))
+    srcs.update(loose)
     missing = sorted(set(NAMES.values()) - set(srcs))
     if missing: print(f'  {lid}: missing', ', '.join(missing), '(fine: the game uses only the poses the set has)')
     return run_set(srcs, SKINS / lid / 'hd')
