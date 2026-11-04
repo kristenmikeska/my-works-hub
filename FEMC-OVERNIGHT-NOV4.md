@@ -1,5 +1,51 @@
 # FEMC overnight notes, Nov 4
 
+## Done tonight
+
+- **Six more HD outfits are in the game:** Night Swim, The Sun, Sugar Rush, Sun Hoodie, Summer Yukata and Summer Festival, with all 18 poses each. Sun Hoodie uses your arms-crossed v2. Fifteen outfits still have no set, and Midnight Drive's folder is still empty. The art to-do list is updated.
+- **The Evoker close-up prompts are reworded (all 71)**, in `FEMC-SKINS-EVOKER-PROMPTS.md`. The old wording asked for "a silver gun pressed to her temple" with "glass shards bursting around the head", which reads like a shooting. That's almost certainly why ChatGPT refused them. Now:
+  - The Evoker is "a smooth silver fantasy summoning device" held against the side of her head.
+  - The shards are "light fragments swirling like a magic aura".
+  - Every prompt ends "bright, stylised fantasy, nothing violent".
+  - Words like "blood red" and "oxblood" are gone.
+  - Outfits, colours and scenes are unchanged.
+
+  If one still gets refused, the note at the top of that file has a backup wording.
+- Two small fixes in my pose tool, with nothing renamed:
+  - It now reads the "handonhip" spelling.
+  - It reads `sugar-overshoulder`, which was saved without ".png".
+
+## Upscaling plan for tomorrow (nothing downloaded)
+
+- **What to upscale:**
+  - 290 HD pose files across the `New Adds/Solar-…-Menu Poses` folders.
+  - 38 loose `solar-*.png` own-look poses in New Adds.
+  - 87 outfit pose sheets in `Current Skins`.
+- **Tools:** Photoshop's Preserve Details 2.0 at 200% works now. Upscayl, a free app, does a whole folder in one go. I'll ask before downloading anything.
+- **Two checks before I re-cut:**
+  1. **HD poses:** the cutting tool keeps the size you give it, so a 2× upscale makes each file about 4× bigger. The game never shows a pose larger than about 1,500 pixels tall, so I'll cap the saved size at around 1,800 tall. You still get the sharper detail without making the game heavier, since the game felt laggy today.
+  2. **Pose sheets:** the battle-sheet tool scales each new sheet to match the old frame size. An upscaled sheet would come out sharper, but not bigger, unless I raise the frame size, which also changes how big she stands in battle. I'll show you a before and after on one outfit first.
+
+## Ideas: art
+
+1. **Couple results screens:** Sun Hoodie goes with Haechan's Moon Hoodie, and Summer Festival goes with Akihiko's festival outfit. When both are worn and you win, the results screen could show them side by side. You'd need one HD victory pose each for Haechan and Akihiko in those outfits.
+2. **Other fighters' HD victory poses** are already step 2 of the plan. I'd start with Haechan and Jungwon in their own looks: one pose each, so the results screen always has a figure.
+3. **A seasonal home screen:** the evening screen could change backdrop with the season or the weather, for example a snowy window in December or a rainy one in June. That's about 4 backdrops.
+4. **Wardrobe "try-on":** in the Wardrobe, hovering an outfit could show its HD arms-crossed pose large. This needs no new art, since the sets exist now.
+5. **Boutique banner art:** the featured outfit could use its best HD pose (e.g. jump or peace) instead of the pose sheet frame. No new art needed either.
+6. **Epilogue polaroids:** a few photo-style CGs of the hangouts, realistic like the CGs, that land in the album. These would fit your wish for more hangouts and could come later with the expansion.
+
+## Ideas: polish and fun
+
+1. **A photo mode:** pick any outfit and any of its 18 HD poses, and set a background from places you've unlocked. Save it as a picture, or use it as your home screen. It would make all your HD poses something players play with.
+2. **Pose of the day:** each evening the home screen picks a different pose from the worn outfit, and sometimes a rare one, like jump or sewing.
+3. **Outfit-aware lines:** a short line from a friend when Solar wears certain outfits, e.g. Haechan noticing the Sun Hoodie, or Yukari on Night Swim. Ten to twenty lines total.
+4. **A wardrobe collection meter:** "HD sets 17/32" and "Evoker close-ups 0/71", so collecting feels like progress.
+5. **Settings quality toggle:** a "Lighter graphics" switch that turns off weather particles and blur effects on older laptops. It would make the lag fix something you control.
+6. **Echo of the week:** a rotating Echo shown on the menu with its lore line, so the 120 Echoes get seen.
+
+Tell me which ones you like and I'll build them, or skip any.
+
 ## Lag and missing art
 
 **Short version: I didn't change any game code tonight.** I measured every main screen and the battle. Nothing in the game itself is heavy enough to cause the lag, and nothing it asks for is missing. The few small wins I found would all change how something looks or behaves a little, so they're listed below for you to decide on.
