@@ -1,7 +1,7 @@
 """The capsule series, rarities and tokens (gacha.js) and the Wardrobe / Boutique cosmetics (cosmetics.js), 2026-10-25.
 Headless Chrome, isolated profile, localhost; no player saves.
 
-Run: python3 tests/femc_cosmetics.py [--only odds,rotation,solchan,hidden,tokens,banner,equip,pending,ui,x10,shots,viewer,party,newpending,retired,inbattle] [--screenshots DIR]
+Run: python3 tests/femc_cosmetics.py [--only odds,rotation,solchan,hidden,tokens,banner,equip,pending,ui,boutique,x10,shots,viewer,party,newpending,retired,inbattle] [--screenshots DIR]
 
 Covers: five rarities over many turns (Secret included) and pity kept per series; which machines stand in the Corner by
 date (each season, and a turn on a series that isn't on falls back to the Cast machine); only people Solar has met;
@@ -26,7 +26,9 @@ month's featured list until its art exists, and each having a prompt in FEMC-ART
 2026-11-01 (inbattle, FEMC-SKINS-BATTLE-DESIGN): battle() hands the frame a worn look's faces / clean / hand (no look marked
 clean yet); in a real Tartarus night Solar's HUD card and turn order wear the look's portraits (Off restores hers), the win
 screen shows its victory pose, an uncleaned look's fire cast plays no hand charge and one marked clean (in the page only)
-plays it inside the fighter's frame; screenshots at 1440x900 and 390x844."""
+plays it inside the fighter's frame; screenshots at 1440x900 and 390x844.
+2026-11-03 (boutique): the restyled Boutique page (hero art, countdown, pity meters, a featured tile taking the hero spot) and
+the pull sequence (deal, tell, show, summary; Enter / S / Esc / Done; reduced motion, Performance and Reduce flashes)."""
 import argparse, base64, json, pathlib, shutil, subprocess, sys, time
 from femc_browser import Page, REPO
 
@@ -490,6 +492,50 @@ try:
         results['ui'] = 'equip / Default / toggle / pull through the menu; NG+ keeps looks and series'
 
     # ── ×10 rolls: cost, pity per turn, the grid, Skip, the disabled reason ──
+    # ── The Boutique page and pull sequence (Nov 3 2026): hero, countdown, meters; deal → tell → show → sum; keys; settings ──
+    if want('boutique'):
+        setup(p, day='12/10')
+        p.eval("FemcGacha.gs().plumes=100;FemcGame.save()")
+        motion(p, False)
+        menu(p, 'wardrobe')
+        click(p, '[data-wd-view=banner]')
+        r = p.eval("({hero:!!document.querySelector('.g-bq-hero-art .g-bq-img'),count:document.querySelector('.g-bq-count').innerText,meters:document.querySelectorAll('.g-bq-meter').length,feat:document.querySelectorAll('.g-wd-feat [data-wd-hero]').length})")
+        ok(r['hero'] and '52' in r['count'] and r['meters'] == 2 and r['feat'] > 3, f'banner page: {r}')
+        f = p.eval("document.querySelectorAll('.g-wd-feat [data-wd-hero]')[1].dataset.wdHero")
+        click(p, f'[data-wd-hero="{f}"]')
+        ok(p.eval(f"document.querySelector('.g-bq-hero-art').dataset.hero==='{f}'"), 'a featured tile takes the hero spot')
+        # ×1: deal → tell → show → end; Enter closes and the page shows the result.
+        p.eval("FemcCosmetics.rng=()=>0.5")
+        click(p, '[data-wd-pull]')
+        p.wait("FemcCosmetics.bq()?.stage==='tell'", 5)
+        p.wait("FemcCosmetics.bq()?.stage==='end'", 8)
+        ok(p.eval("!!document.querySelector('.g-bq-ov .g-bq-item .g-bq-plate') && !!document.querySelector('.g-bq-ov [data-bq=done]')"), 'single reveal: art, plate, Done')
+        p.eval("document.activeElement.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true,cancelable:true}))")
+        p.wait("!FemcCosmetics.bq() && !document.querySelector('.g-bq-ov:not(.out)')", 3)
+        ok(p.eval("!!document.querySelector('.g-fm-ov:not(.out)') && !!document.querySelector('.g-wd-reveal .g-wd-card')"), 'Esc closes only the sequence; the result stays on the page')
+        # ×10: Enter steps through, S skips to the summary of ten with NEW tags.
+        click(p, '[data-wd-pull10]')
+        p.wait("FemcCosmetics.bq()?.stage==='show'", 8)
+        i0 = p.eval("FemcCosmetics.bq().i")
+        p.eval("document.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true,cancelable:true}))")
+        ok(p.eval("FemcCosmetics.bq().i") == i0 + 1, 'Enter: the next look')
+        p.eval("document.dispatchEvent(new KeyboardEvent('keydown',{key:'s',bubbles:true,cancelable:true}))")
+        r = p.eval("({st:FemcCosmetics.bq().stage,tiles:document.querySelectorAll('.g-bq-tile').length,tags:document.querySelectorAll('.g-bq-tile small').length})")
+        ok(r == {'st': 'sum', 'tiles': 10, 'tags': 10}, f'skip to the summary: {r}')
+        click(p, '.g-bq [data-bq=done]')
+        p.wait("!FemcCosmetics.bq()", 3)
+        # Settings: reduced motion, Performance and Reduce flashes reach the sequence.
+        motion(p, True); p.eval("FemcGame.setSetting&&FemcGame.setSetting('perf',true);FemcGame.setSetting&&FemcGame.setSetting('calm',true)")
+        click(p, '[data-wd-pull]')
+        r = p.eval("FemcCosmetics.bq().o")
+        ok(r == {'reduced': True, 'perf': True, 'calm': True} and p.eval("document.querySelector('.g-bq-ov:not(.out) .g-bq').className.includes('reduced')"), f'settings: {r}')
+        p.wait("FemcCosmetics.bq()?.stage==='end'", 5)
+        p.eval("FemcCosmetics.seqClose(true);FemcGame.setSetting&&FemcGame.setSetting('perf',false);FemcGame.setSetting&&FemcGame.setSetting('calm',false);FemcCosmetics.rng=Math.random")
+        ok(p.eval('document.documentElement.scrollWidth <= innerWidth + 1'), 'no sideways scroll')
+        p.eval("FemcMenu.close()")
+        clean(p, 'boutique')
+        results['boutique'] = 'hero / countdown / meters / featured pick; ×1 and ×10 sequences, Enter, S, Esc, Done; reduced motion, Performance, Reduce flashes'
+
     if want('x10'):
         setup(p, day='10/12')
         p.eval("FemcGame.progress('elizabeth').rank=1;FemcGame.save()")
