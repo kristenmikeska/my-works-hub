@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 4):** ⭐ high-resolution poses (top section: Solar first) · 1 credits still (section 18: Ken) · 22 skin-series pieces for Solar (section 19: Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21) · 11 Runners epilogue places (section 23: four for Regionals, three for the home screen) · 1 Runners sticker sheet (section 24) · 12 Echo sheets (section 25: 72 new Echoes) · 6 dorm lounge pictures (section 26) · couple victory poses for Haechan and Akihiko (section 27). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make (updated Nov 4):** ⭐ high-resolution poses (top section: Solar first) · 1 credits still (section 18: Ken) · 22 skin-series pieces for Solar (section 19: Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21) · 11 Runners epilogue places (section 23: four for Regionals, three for the home screen) · 1 Runners sticker sheet (section 24) · 12 Echo sheets (section 25: 72 new Echoes) · 6 dorm lounge pictures (section 26) · couple victory poses for Haechan, Jungwon and Akihiko (section 27: six outfits). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 ## ⭐⭐ TOP PRIORITY when you have usage: high-resolution poses (Kat, Nov 2)
 
@@ -966,7 +966,7 @@ Redraw the attached image as a sharp, high-resolution 16:9 anime background in t
 ---
 
 ## 27. Couple victory poses (ChatGPT)
-Kat's yes (Nov 4): when Solar and her partner wear a matching couple outfit and win, the results screen shows them side by side, with a different pose each time. These are the partner's poses; Solar's come from her HD sets (Sun Hoodie and Summer Festival are done). One figure per image, same format as Solar's HD poses. Make as many as you like; the game uses whichever exist.
+Kat's yes (Nov 4): when Solar and her partner wear a matching couple outfit and win, the results screen shows them side by side, with a different pose each time. These are the partner's poses; Solar's come from her HD sets (Sun Hoodie, Summer Festival and After Hours are done; Midnight Drive, Movie Date and Ringside still need hers in the top section). Until both halves exist, the results screen stays as it is now. One figure per image, same format as Solar's HD poses. Make as many as you like; the game uses whichever exist.
 
 **[ ] 27A. Haechan, Moon Hoodie (goes with Solar's Sun Hoodie)**  
 Attach: `Moon Hoodie [sk-haechan-cp-sunmoon] - pose sheet (recut).png`, then `Haechan.png`  
@@ -982,4 +982,36 @@ Save as: `akihiko-summerfestival-hd-<pose>.png` in a folder `Akihiko-Summer Fest
 Poses (one image each): fist pump, arms crossed with a confident grin, thumbs up, fist raised to the sky, hand rubbing the back of his neck (bashful), boxing stance
 ```
 A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (a grey striped yukata with a red obi, and his boxing gloves). Pose: [the pose, e.g. a fist pump, a big confident grin], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
+```
+
+**[ ] 27C. Haechan, Midnight Drive (goes with Solar's Midnight Drive)**  
+Attach: `Midnight Drive [sk-haechan-cp-drive] - pose sheet (recut).png`, then `Haechan.png`  
+Save as: `haechan-midnightdrive-hd-<pose>.png` in a folder `HC-Midnight Drive-Victory Poses`  
+Poses (one image each): twirling car keys on one finger, peace sign, leaning back with hands in jacket pockets, arms crossed with a smirk, pointing at the viewer, hand in hair
+```
+A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (black leather jacket lined in pink over a pink shirt open at the collar). Pose: [the pose], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
+```
+
+**[ ] 27D. Jungwon, After Hours (goes with Solar's After Hours)**  
+Attach: `After Hours [sk-jungwon-cp-afterhours] - pose sheet (recut).png`, then `Jungwon.png`  
+Save as: `jungwon-afterhours-hd-<pose>.png` in a folder `JW-After Hours-Victory Poses`  
+Poses (one image each): adjusting his tie, a small polite bow, arms crossed with a calm smile, peace sign, holding up a ring of keys, hand on hip
+```
+A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (black blazer, a pink tie and a pink cardigan over his shoulders). Pose: [the pose], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
+```
+
+**[ ] 27E. Jungwon, Movie Date (goes with Solar's Movie Date)**  
+Attach: `Movie Date [sk-jungwon-cp-moviedate] - pose sheet (recut).png`, then `Jungwon.png`  
+Save as: `jungwon-moviedate-hd-<pose>.png` in a folder `JW-Movie Date-Victory Poses`  
+Poses (one image each): holding up two movie tickets, hands in coat pockets, peace sign, adjusting his pink scarf, a shy wave, thumbs up
+```
+A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (cream knit sweater under a long black coat, a pink scarf). Pose: [the pose], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
+```
+
+**[ ] 27F. Akihiko, Ringside (goes with Solar's Ringside)**  
+Attach: `Ringside [sk-akihiko-cp-ringside] - pose sheet (recut).png`, then `Akihiko.png`  
+Save as: `akihiko-ringside-hd-<pose>.png` in a folder `Akihiko-Ringside-Victory Poses`  
+Poses (one image each): fist pump, boxing stance, towel over his shoulder with a grin, thumbs up, fist raised to the sky, arms crossed
+```
+A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (red-and-black boxing club track jacket, a towel round his neck). Pose: [the pose], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
 ```
