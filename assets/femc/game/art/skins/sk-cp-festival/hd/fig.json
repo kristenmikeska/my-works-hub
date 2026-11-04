@@ -1,0 +1,200 @@
+{
+ "arms-crossed": {
+  "ar": 0.35,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.582,
+  "size": [
+   537,
+   1536
+  ],
+  "src": "sumfest-armscrossed.png"
+ },
+ "cheer": {
+  "ar": 0.508,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.555,
+  "size": [
+   781,
+   1536
+  ],
+  "src": "sumfest-fist.png"
+ },
+ "evoker": {
+  "ar": 0.392,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.591,
+  "size": [
+   602,
+   1536
+  ],
+  "src": "sumfest-evoker.png"
+ },
+ "hair": {
+  "ar": 0.479,
+  "hf": 0.138,
+  "ht": 0.013,
+  "hx": 0.519,
+  "size": [
+   735,
+   1536
+  ],
+  "src": "sumfest-handinhair.png"
+ },
+ "heart": {
+  "ar": 0.465,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.546,
+  "size": [
+   714,
+   1536
+  ],
+  "src": "sumfest-hearthands.png"
+ },
+ "jump": {
+  "ar": 0.66,
+  "hf": 0.136,
+  "ht": 0.005,
+  "hx": 0.529,
+  "size": [
+   1014,
+   1536
+  ],
+  "src": "sumfest-jump.png"
+ },
+ "lookback": {
+  "ar": 0.447,
+  "hf": 0.138,
+  "ht": 0.018,
+  "hx": 0.517,
+  "size": [
+   687,
+   1536
+  ],
+  "src": "sumfest-overshoulder.png"
+ },
+ "peace": {
+  "ar": 0.516,
+  "hf": 0.14,
+  "ht": 0.003,
+  "hx": 0.525,
+  "size": [
+   793,
+   1536
+  ],
+  "src": "sumfest-peace.png"
+ },
+ "phone": {
+  "ar": 0.346,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.525,
+  "size": [
+   532,
+   1536
+  ],
+  "src": "sumfest-phone.png"
+ },
+ "ramen": {
+  "ar": 0.375,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.647,
+  "size": [
+   576,
+   1536
+  ],
+  "src": "sumfest-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.358,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.61,
+  "size": [
+   550,
+   1536
+  ],
+  "src": "sumfest-sewing.png"
+ },
+ "shy": {
+  "ar": 0.316,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.509,
+  "size": [
+   485,
+   1536
+  ],
+  "src": "sumfest-shy.png"
+ },
+ "stretch": {
+  "ar": 0.403,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.715,
+  "size": [
+   619,
+   1536
+  ],
+  "src": "sumfest-yawn.png"
+ },
+ "study": {
+  "ar": 0.338,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.518,
+  "size": [
+   519,
+   1536
+  ],
+  "src": "sumfest-reading.png"
+ },
+ "tease": {
+  "ar": 0.446,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.562,
+  "size": [
+   685,
+   1536
+  ],
+  "src": "sumfest-handonhip.png"
+ },
+ "thinking": {
+  "ar": 0.34,
+  "hf": 0.14,
+  "ht": 0.001,
+  "hx": 0.534,
+  "size": [
+   522,
+   1536
+  ],
+  "src": "sumfest-thinking.png"
+ },
+ "watering": {
+  "ar": 0.576,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.403,
+  "size": [
+   884,
+   1536
+  ],
+  "src": "sumfest-watering.png"
+ },
+ "wave": {
+  "ar": 0.434,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.559,
+  "size": [
+   666,
+   1536
+  ],
+  "src": "sumfest-wave.png"
+ }
+}

@@ -375,11 +375,11 @@ try:
         want_pose = {'study': 'study', 'rest': 'stretch', 'out': 'phone', 'tartarus': 'evoker', 'dorm:cook': 'ramen', 'dorm:roofgarden': 'watering', 'desk': 'sewing'}
         got = {k: p.eval(HOV % json.dumps(k)) for k in want_pose}
         ok(all(v is None or f'solar-poses/{want_pose[k]}.webp' in v for k, v in got.items()) and sum(v is not None for v in got.values()) >= 4, f'hover reactions: {got}')
-        p.eval("(()=>{const C=FemcCosmetics;C.grantItem('sk-yukata');C.equip('sk-yukata');return true})()")
+        p.eval("(()=>{const C=FemcCosmetics;C.grantItem('sk-summersession');C.equip('sk-summersession');return true})()")
         p.eval("FemcGameUI.evening();true")
-        ok(p.eval("document.querySelector('.g-home-fig').dataset.look==='sk-yukata'"), 'a worn Wardrobe outfit comes first')
+        ok(p.eval("document.querySelector('.g-home-fig').dataset.look==='sk-summersession'"), 'a worn Wardrobe outfit comes first')
         t = p.eval(HOV % json.dumps('tartarus')); r = p.eval(HOV % json.dumps('rest'))
-        ok((t is None or 'sk-yukata/solar-pose-0' in t) and (r is None or 'sk-yukata/solar-pose-' in r), f'the worn look still wins on hover: {t} {r}')
+        ok((t is None or 'sk-summersession/solar-pose-0' in t) and (r is None or 'sk-summersession/solar-pose-' in r), f'the worn look still wins on hover: {t} {r}')
         p.eval("FemcCosmetics.setPortraits(false);FemcGameUI.evening();true")
         ok(p.eval("!document.querySelector('.g-home-fig').dataset.look"), 'outfits toggled off: the usual poses')
         p.eval("FemcCosmetics.setPortraits(true);true")

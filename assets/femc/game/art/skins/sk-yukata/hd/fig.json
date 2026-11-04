@@ -1,0 +1,200 @@
+{
+ "arms-crossed": {
+  "ar": 0.31,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.64,
+  "size": [
+   476,
+   1536
+  ],
+  "src": "sumyu-armscrossed.png"
+ },
+ "cheer": {
+  "ar": 0.424,
+  "hf": 0.138,
+  "ht": 0.015,
+  "hx": 0.598,
+  "size": [
+   651,
+   1536
+  ],
+  "src": "sumyu-fist.png"
+ },
+ "evoker": {
+  "ar": 0.327,
+  "hf": 0.138,
+  "ht": 0.017,
+  "hx": 0.576,
+  "size": [
+   502,
+   1536
+  ],
+  "src": "sumyu-evoker.png"
+ },
+ "hair": {
+  "ar": 0.389,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.644,
+  "size": [
+   598,
+   1536
+  ],
+  "src": "sumyu-handinhair.png"
+ },
+ "heart": {
+  "ar": 0.344,
+  "hf": 0.138,
+  "ht": 0.016,
+  "hx": 0.585,
+  "size": [
+   529,
+   1536
+  ],
+  "src": "sumyu-hearthands.png"
+ },
+ "jump": {
+  "ar": 0.625,
+  "hf": 0.137,
+  "ht": 0.007,
+  "hx": 0.554,
+  "size": [
+   960,
+   1536
+  ],
+  "src": "sumyu-jump.png"
+ },
+ "lookback": {
+  "ar": 0.357,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.593,
+  "size": [
+   548,
+   1536
+  ],
+  "src": "sumyu-overshoulder.png"
+ },
+ "peace": {
+  "ar": 0.467,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.527,
+  "size": [
+   718,
+   1536
+  ],
+  "src": "sumyu-peace.png"
+ },
+ "phone": {
+  "ar": 0.296,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.529,
+  "size": [
+   455,
+   1536
+  ],
+  "src": "sumyu-phone.png"
+ },
+ "ramen": {
+  "ar": 0.353,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.625,
+  "size": [
+   542,
+   1536
+  ],
+  "src": "sumyu-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.32,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.604,
+  "size": [
+   491,
+   1536
+  ],
+  "src": "sumyu-sewing.png"
+ },
+ "shy": {
+  "ar": 0.273,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.565,
+  "size": [
+   420,
+   1536
+  ],
+  "src": "sumyu-shy.png"
+ },
+ "stretch": {
+  "ar": 0.426,
+  "hf": 0.137,
+  "ht": 0.021,
+  "hx": 0.644,
+  "size": [
+   654,
+   1536
+  ],
+  "src": "sumyu-yawn.png"
+ },
+ "study": {
+  "ar": 0.344,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.53,
+  "size": [
+   529,
+   1536
+  ],
+  "src": "sumyu-reading.png"
+ },
+ "tease": {
+  "ar": 0.389,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.545,
+  "size": [
+   598,
+   1536
+  ],
+  "src": "sumyu-handonhip.png"
+ },
+ "thinking": {
+  "ar": 0.296,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.648,
+  "size": [
+   455,
+   1536
+  ],
+  "src": "sumyu-thinking.png"
+ },
+ "watering": {
+  "ar": 0.483,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.738,
+  "size": [
+   742,
+   1536
+  ],
+  "src": "sumyu-watering.png"
+ },
+ "wave": {
+  "ar": 0.375,
+  "hf": 0.138,
+  "ht": 0.015,
+  "hx": 0.6,
+  "size": [
+   576,
+   1536
+  ],
+  "src": "sumyu-wave.png"
+ }
+}

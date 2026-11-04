@@ -888,10 +888,10 @@ try:
         hero = solar_wins()
         ok(hero and 'sk-velvet/hd/cheer.webp' in hero['src'] and hero['ok'] and hero['hd'], f'Velvet (partial, no peace): the fist pump: {hero}')
         if want('winhd'): hshots.append(shot(p, 'winhd-velvet-1440x900'))
-        p.top(); setup(wear=['sk-yukata'])
+        p.top(); setup(wear=['sk-summersession'])
         night(['solar', 'akihiko', 'yukari', 'junpei'], "FemcBattle.save.settings.entrance=false;window.__btGroup=['maya'];"); enter()
         hero = solar_wins()
-        ok(hero and 'skins/sk-yukata/solar-pose-5.webp' in hero['src'] and not hero['hd'], f'a look without an HD set: its pose 5 as before: {hero}')
+        ok(hero and 'skins/sk-summersession/solar-pose-5.webp' in hero['src'] and not hero['hd'], f'a look without an HD set: its pose 5 as before: {hero}')
         clean(p, 'winhd fallbacks')
         results['winhd'] = hshots
 

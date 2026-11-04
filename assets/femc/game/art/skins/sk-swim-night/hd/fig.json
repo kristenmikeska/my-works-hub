@@ -1,0 +1,200 @@
+{
+ "arms-crossed": {
+  "ar": 0.338,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.537,
+  "size": [
+   519,
+   1536
+  ],
+  "src": "nightswim-armscrossed.png"
+ },
+ "cheer": {
+  "ar": 0.543,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.454,
+  "size": [
+   834,
+   1536
+  ],
+  "src": "nightswim-fist.png"
+ },
+ "evoker": {
+  "ar": 0.605,
+  "hf": 0.138,
+  "ht": 0.016,
+  "hx": 0.467,
+  "size": [
+   929,
+   1536
+  ],
+  "src": "nightswim-evoker.png"
+ },
+ "hair": {
+  "ar": 0.449,
+  "hf": 0.14,
+  "ht": 0.003,
+  "hx": 0.402,
+  "size": [
+   690,
+   1536
+  ],
+  "src": "nightswim-handinhair.png"
+ },
+ "heart": {
+  "ar": 0.471,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.427,
+  "size": [
+   723,
+   1536
+  ],
+  "src": "nightswim-hearthands.png"
+ },
+ "jump": {
+  "ar": 0.626,
+  "hf": 0.136,
+  "ht": 0.008,
+  "hx": 0.598,
+  "size": [
+   961,
+   1536
+  ],
+  "src": "nightswim-jump.png"
+ },
+ "lookback": {
+  "ar": 0.449,
+  "hf": 0.138,
+  "ht": 0.016,
+  "hx": 0.515,
+  "size": [
+   690,
+   1536
+  ],
+  "src": "nightswim-overshoulder.png"
+ },
+ "peace": {
+  "ar": 0.449,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.523,
+  "size": [
+   689,
+   1536
+  ],
+  "src": "nightswim-peace.png"
+ },
+ "phone": {
+  "ar": 0.452,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.422,
+  "size": [
+   695,
+   1536
+  ],
+  "src": "nightswim-phone.png"
+ },
+ "ramen": {
+  "ar": 0.452,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.49,
+  "size": [
+   694,
+   1536
+  ],
+  "src": "nightswim-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.458,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.558,
+  "size": [
+   703,
+   1536
+  ],
+  "src": "nightswim-sewing.png"
+ },
+ "shy": {
+  "ar": 0.374,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.492,
+  "size": [
+   574,
+   1536
+  ],
+  "src": "nightswim-shy.png"
+ },
+ "stretch": {
+  "ar": 0.415,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.653,
+  "size": [
+   637,
+   1536
+  ],
+  "src": "nightswim-yawn.png"
+ },
+ "study": {
+  "ar": 0.423,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.453,
+  "size": [
+   649,
+   1536
+  ],
+  "src": "nightswim-reading.png"
+ },
+ "tease": {
+  "ar": 0.523,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.478,
+  "size": [
+   804,
+   1536
+  ],
+  "src": "nightswim-handsonhip.png"
+ },
+ "thinking": {
+  "ar": 0.336,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.564,
+  "size": [
+   516,
+   1536
+  ],
+  "src": "nightswim-thinking.png"
+ },
+ "watering": {
+  "ar": 0.578,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.465,
+  "size": [
+   888,
+   1536
+  ],
+  "src": "nightswim-watering.png"
+ },
+ "wave": {
+  "ar": 0.391,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.483,
+  "size": [
+   601,
+   1536
+  ],
+  "src": "nightswim-wave.png"
+ }
+}

@@ -1,0 +1,200 @@
+{
+ "arms-crossed": {
+  "ar": 0.521,
+  "hf": 0.138,
+  "ht": 0.018,
+  "hx": 0.388,
+  "size": [
+   800,
+   1536
+  ],
+  "src": "sunhood-armscrossed-v2.png"
+ },
+ "cheer": {
+  "ar": 0.61,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.426,
+  "size": [
+   937,
+   1536
+  ],
+  "src": "sunhood-fist.png"
+ },
+ "evoker": {
+  "ar": 0.531,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.393,
+  "size": [
+   815,
+   1536
+  ],
+  "src": "sunhood-evoker.png"
+ },
+ "hair": {
+  "ar": 0.543,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.369,
+  "size": [
+   834,
+   1536
+  ],
+  "src": "sunhood-handinhair.png"
+ },
+ "heart": {
+  "ar": 0.639,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.501,
+  "size": [
+   981,
+   1536
+  ],
+  "src": "sunhood-hearthands.png"
+ },
+ "jump": {
+  "ar": 0.654,
+  "hf": 0.13,
+  "ht": 0.007,
+  "hx": 0.467,
+  "size": [
+   1004,
+   1536
+  ],
+  "src": "sunhood-jump.png"
+ },
+ "lookback": {
+  "ar": 0.604,
+  "hf": 0.138,
+  "ht": 0.016,
+  "hx": 0.503,
+  "size": [
+   927,
+   1536
+  ],
+  "src": "sunhood-overshoulder.png"
+ },
+ "peace": {
+  "ar": 0.634,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.463,
+  "size": [
+   974,
+   1536
+  ],
+  "src": "sunhood-peace.png"
+ },
+ "phone": {
+  "ar": 0.6,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.493,
+  "size": [
+   922,
+   1536
+  ],
+  "src": "sunhood-phone.png"
+ },
+ "ramen": {
+  "ar": 0.637,
+  "hf": 0.138,
+  "ht": 0.016,
+  "hx": 0.473,
+  "size": [
+   978,
+   1536
+  ],
+  "src": "sunhood-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.596,
+  "hf": 0.138,
+  "ht": 0.011,
+  "hx": 0.488,
+  "size": [
+   916,
+   1536
+  ],
+  "src": "sunhood-sewing.png"
+ },
+ "shy": {
+  "ar": 0.51,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.494,
+  "size": [
+   783,
+   1536
+  ],
+  "src": "sunhood-shy.png"
+ },
+ "stretch": {
+  "ar": 0.576,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.679,
+  "size": [
+   884,
+   1536
+  ],
+  "src": "sunhood-yawn.png"
+ },
+ "study": {
+  "ar": 0.566,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.424,
+  "size": [
+   870,
+   1536
+  ],
+  "src": "sunhood-reading.png"
+ },
+ "tease": {
+  "ar": 0.641,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.47,
+  "size": [
+   984,
+   1536
+  ],
+  "src": "sunhood-handsonhips.png"
+ },
+ "thinking": {
+  "ar": 0.559,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.491,
+  "size": [
+   859,
+   1536
+  ],
+  "src": "sunhood-thinking.png"
+ },
+ "watering": {
+  "ar": 0.6,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.429,
+  "size": [
+   921,
+   1536
+  ],
+  "src": "sunhood-watering.png"
+ },
+ "wave": {
+  "ar": 0.559,
+  "hf": 0.138,
+  "ht": 0.011,
+  "hx": 0.357,
+  "size": [
+   858,
+   1536
+  ],
+  "src": "sunhood-wave.png"
+ }
+}

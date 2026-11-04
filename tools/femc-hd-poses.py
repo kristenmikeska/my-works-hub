@@ -30,7 +30,7 @@ NEW = Path.home() / 'Documents/UniverseHub-Images/Femc Mode Images/New Adds'
 OWN_OUT = ROOT / 'assets/femc/profile/solar-poses'
 SKINS = ROOT / 'assets/femc/game/art/skins'
 # Kat's pose words -> the game's pose names (ui.js HOME_POSES / HOME_REACT, menu.js HOME_FIG, battle.js win hero)
-NAMES = {'armscrossed': 'arms-crossed', 'evoker': 'evoker', 'fistpump': 'cheer', 'handinhair': 'hair', 'handsonhip': 'tease',
+NAMES = {'armscrossed': 'arms-crossed', 'evoker': 'evoker', 'fistpump': 'cheer', 'handinhair': 'hair', 'handsonhip': 'tease', 'handonhip': 'tease',
          'hiphands': 'tease', 'hearthands': 'heart', 'jump': 'jump', 'peacesign': 'peace', 'phone': 'phone', 'ramen': 'ramen',
          'reading': 'study', 'sewing': 'sewing', 'shoulderlook': 'lookback', 'overshoulder': 'lookback', 'shy': 'shy',
          'thinking': 'thinking', 'watering': 'watering', 'wave': 'wave', 'yawn': 'stretch',
@@ -48,7 +48,13 @@ LOOKS = {'sk-cp-afterhours': ('Solar-After Hours-Menu Poses', 'afterhr-'),
          'sk-swim-lagoon': ('Solar-Pink Lagoon-Menu Poses', 'lagoon-'),
          'sk-vp': ('Solar-VP-Menu Poses', 'vp-'),
          'sk-velvet': ('Solar-Velvet Room-Menu Poses', 'velvet-'),
-         'sk-wintercoat': ('Solar-Winter-Menu Poses', 'winter-')}
+         'sk-wintercoat': ('Solar-Winter-Menu Poses', 'winter-'),
+         'sk-swim-night': ('Solar-Night Swim-Menu Poses', 'nightswim-'),
+         'sk-arcana-sun': ('Solar-The Sun-Menu Poses', 'sun-'),
+         'sk-sugarrush': ('Solar-Sugar Rush-Menu Poses', 'sugar-'),
+         'sk-cp-sunmoon': ('Solar-Sun Hoodie-Menu Poses', 'sunhood-'),
+         'sk-yukata': ('Solar-Summer Yukata-Menu Poses', 'sumyu-'),
+         'sk-cp-festival': ('Solar-Summer Festival-Menu Poses', 'sumfest-')}
 QUALITY, ALPHA_MIN, SPECK = 92, 16, 3
 
 
@@ -98,7 +104,8 @@ def run_set(srcs, outdir):
 def sources(folder, prefix, quiet=False):
     """<prefix><pose>.png, or the art list's <prefix>hd-<pose>.png or Kat's retry <prefix><pose>-v2.png (either wins over the plain one)."""
     got, hd = {}, set()
-    for f in sorted(folder.glob(f'{prefix}*.png')):
+    for f in sorted(folder.glob(f'{prefix}*')):
+        if f.suffix.lower() not in ('.png', ''): continue  # Kat sometimes saves without the .png
         word = f.stem[len(prefix):].lower().replace('-', '').replace('_', '')
         is_hd = word.startswith('hd') and word[2:] in NAMES
         if is_hd: word = word[2:]

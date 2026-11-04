@@ -1,0 +1,200 @@
+{
+ "arms-crossed": {
+  "ar": 0.52,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.541,
+  "size": [
+   799,
+   1536
+  ],
+  "src": "sugar-armscrossed.png"
+ },
+ "cheer": {
+  "ar": 0.585,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.351,
+  "size": [
+   898,
+   1536
+  ],
+  "src": "sugar-fist.png"
+ },
+ "evoker": {
+  "ar": 0.576,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.512,
+  "size": [
+   884,
+   1536
+  ],
+  "src": "sugar-evoker.png"
+ },
+ "hair": {
+  "ar": 0.544,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.489,
+  "size": [
+   836,
+   1536
+  ],
+  "src": "sugar-handinhair.png"
+ },
+ "heart": {
+  "ar": 0.505,
+  "hf": 0.14,
+  "ht": 0.001,
+  "hx": 0.531,
+  "size": [
+   776,
+   1536
+  ],
+  "src": "sugar-hearthands.png"
+ },
+ "jump": {
+  "ar": 0.648,
+  "hf": 0.139,
+  "ht": 0.002,
+  "hx": 0.522,
+  "size": [
+   996,
+   1536
+  ],
+  "src": "sugar-jump.png"
+ },
+ "lookback": {
+  "ar": 0.493,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.472,
+  "size": [
+   758,
+   1536
+  ],
+  "src": "sugar-overshoulder"
+ },
+ "peace": {
+  "ar": 0.537,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.504,
+  "size": [
+   825,
+   1536
+  ],
+  "src": "sugar-peace.png"
+ },
+ "phone": {
+  "ar": 0.475,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.499,
+  "size": [
+   730,
+   1536
+  ],
+  "src": "sugar-phone.png"
+ },
+ "ramen": {
+  "ar": 0.589,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.567,
+  "size": [
+   904,
+   1536
+  ],
+  "src": "sugar-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.511,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.538,
+  "size": [
+   785,
+   1536
+  ],
+  "src": "sugar-sewing.png"
+ },
+ "shy": {
+  "ar": 0.48,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.48,
+  "size": [
+   737,
+   1536
+  ],
+  "src": "sugar-shy.png"
+ },
+ "stretch": {
+  "ar": 0.518,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.649,
+  "size": [
+   796,
+   1536
+  ],
+  "src": "sugar-yawn.png"
+ },
+ "study": {
+  "ar": 0.432,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.489,
+  "size": [
+   664,
+   1536
+  ],
+  "src": "sugar-reading.png"
+ },
+ "tease": {
+  "ar": 0.55,
+  "hf": 0.138,
+  "ht": 0.011,
+  "hx": 0.527,
+  "size": [
+   845,
+   1536
+  ],
+  "src": "sugar-handonhip.png"
+ },
+ "thinking": {
+  "ar": 0.507,
+  "hf": 0.14,
+  "ht": 0.003,
+  "hx": 0.494,
+  "size": [
+   779,
+   1536
+  ],
+  "src": "sugar-thinking.png"
+ },
+ "watering": {
+  "ar": 0.632,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.58,
+  "size": [
+   971,
+   1536
+  ],
+  "src": "sugar-watering.png"
+ },
+ "wave": {
+  "ar": 0.485,
+  "hf": 0.14,
+  "ht": 0.003,
+  "hx": 0.505,
+  "size": [
+   745,
+   1536
+  ],
+  "src": "sugar-wave.png"
+ }
+}
