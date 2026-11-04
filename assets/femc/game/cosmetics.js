@@ -51,6 +51,10 @@
    ── The viewer ──
      An owned look's ⤢ (or the View button by Equip) opens gacha.js viewer() over every owned look on the page; ← → / swipe,
      Esc. First-got days: S.gacha.cos.got { id: day }.
+   ── HD preview and the collection meter (2026-11-04) ──
+     A Solar outfit with an HD pose set (ready.js skins[id].hd / hdv) previews its HD arms-crossed pose (.g-wd-stage.hd) with a
+     row of its other poses (.g-wd-hdrow [data-wd-hd]) and an HD tag on its tile; meters() tops the list: outfits owned / in
+     the Wardrobe with art, and Solar's art-ready outfits with an HD set.
    Save: S.gacha.cos = { own: [ids], on: { slot: id }, portraits, pulls, pity: { sr, ur } (shared by every banner), guar, last, got, bsel }. NG+ keeps own / on /
    portraits (core.js newGamePlus). Tests: FemcCosmetics.rng is replaceable; tests/femc_cosmetics.py. */
 window.FemcCosmetics = (() => {
@@ -499,6 +503,34 @@ window.FemcCosmetics = (() => {
 
   /* ── Menu → Wardrobe ── */
   let view = 'wardrobe', sel = null, fresh = null;
+  /* HD preview (2026-11-04, Kat): a Solar outfit with a high-res pose set (ready.js skins[id].hd / hdv, tools/femc-hd-poses.py)
+     shows its HD arms-crossed pose large in the preview instead of the pose-sheet frame, with a row of the set's other poses
+     to click through (hdPick remembers the pose per look for this session). No set = the pose frame, as before. */
+  const hdPick = {};
+  function hdOf(x) {
+    if (!x || x.kind !== 'skin' || x.who !== 'solar' || !ready(x)) return null;
+    const R = (readyArt().skins || {})[x.id] || {}, have = (R.hd || []).slice();
+    if (!have.length) return null;
+    const first = have.includes('arms-crossed') ? 'arms-crossed' : have[0];
+    const pick = have.includes(hdPick[x.id]) ? hdPick[x.id] : first;
+    return { have: [first, ...have.filter(k => k !== first)], pick, src: k => `${G.base}${skinDir(x.id)}hd/${k}.webp?v=${R.hdv || 1}` };
+  }
+  const poseName = k => String(k).replace(/-/g, ' ').replace(/^./, c => c.toUpperCase());
+  function hdRow(x) {
+    const h = hdOf(x); if (!h || h.have.length < 2) return '';
+    return `<div class="g-wd-hdrow" role="group" aria-label="HD poses">${h.have.map(k => `<button type="button" class="g-wd-hdp${k === h.pick ? ' on' : ''}" data-wd-hd="${esc(k)}" data-src="${esc(h.src(k))}" aria-pressed="${k === h.pick}" title="${esc(poseName(k))}"><img src="${esc(h.src(k))}" alt="${esc(poseName(k))}" loading="lazy" decoding="async"></button>`).join('')}</div>`;
+  }
+  /* The collection meter (2026-11-04): outfits owned of those in the Wardrobe with art in (every fighter's; retired and
+     not-yet-met ones left out), and how many of Solar's art-ready outfits have an HD pose set. */
+  function meters() {
+    const A = (readyArt().skins || {});
+    const outfits = ITEMS.filter(i => i.kind === 'skin' && ready(i) && (metOk(i) || owns(i.id)));
+    const own = outfits.filter(i => owns(i.id)).length;
+    const solar = ITEMS.filter(i => i.kind === 'skin' && i.who === 'solar' && ready(i));
+    const hd = solar.filter(i => ((A[i.id] || {}).hd || []).length).length;
+    const m = (k, lbl, n, max, unit) => `<span class="g-bq-meter" data-wd-meter="${k}" style="--rc:#ff4f9e;--p:${max ? (n / max).toFixed(3) : 0}"><b>${lbl}</b><i><s></s></i><em><b>${n}</b> / ${max} ${unit}</em></span>`;
+    return `<div class="g-wd-meters">${m('own', 'Outfits', own, outfits.length, 'owned')}${m('hd', 'HD poses', hd, solar.length, 'Solar outfits')}</div>`;
+  }
   const starsHtml = r => `<span class="g-ga-stars" style="--rc:${RAR[r].color}" aria-label="${RAR[r].name}">${'★'.repeat({ R: 2, SR: 3, UR: 4 }[r])}</span>`;
   const DEFAULT_POSE = 'assets/femc/battle/art/poses/solar-pose-0.webp';
   const EVOKER = 'assets/femc/battle/art/summon/evoker-prop.webp';
@@ -521,9 +553,9 @@ window.FemcCosmetics = (() => {
     if (x && x.kind === 'title') extra = `<span class="g-wd-pv-title" style="--a:${x.title[0]};--b:${x.title[1]}"><img src="${G.base}assets/femc/title/keyart.webp" alt="" style="${x.titleFilter ? `filter:${x.titleFilter}` : ''}"><b>Solstice</b></span>`;
     else if (x && x.kind === 'weapon') extra = ready(x) ? `<img class="g-wd-pv-wpn" src="${G.base}${skinDir(x.id)}weapon.webp" alt="">` : '';
     else if (x && x.kind === 'battleui') extra = `<span class="g-wd-pv-hud" style="${varsCss(x.pal)}"><i style="--w:80%"></i><i class="sp" style="--w:55%"></i><b>Attack</b><b>Skill</b><b>Guard</b></span>`;
-    const pending = x && x.art && !ready(x);
-    return `<div class="g-wd-stage"${wall ? ` style="--wall:${esc(wallCss(wall))}"` : ''} data-pv="${x ? x.id : ''}">
-      <img class="g-wd-pv-solar${pending && x.kind === 'skin' ? ' pending' : ''}" src="${pose}" alt="" data-who="${who}">
+    const pending = x && x.art && !ready(x), hd = hdOf(x);
+    return `<div class="g-wd-stage${hd ? ' hd' : ''}"${wall ? ` style="--wall:${esc(wallCss(wall))}"` : ''} data-pv="${x ? x.id : ''}">
+      <img class="g-wd-pv-solar${pending && x.kind === 'skin' ? ' pending' : ''}${hd ? ' hd' : ''}" src="${hd ? hd.src(hd.pick) : pose}" alt="" data-who="${who}"${hd ? ` data-hd-pose="${esc(hd.pick)}" decoding="async"` : ''}>
       ${evk ? `<img class="g-wd-pv-evk" src="${G.base}${EVOKER}" alt="" style="filter:${evk.filter}">` : ''}
       ${extra}${pal ? `<span class="g-wd-pv-pal" style="${varsCss(pal)}"><i></i><i></i><i></i></span>` : ''}
       ${pending ? '<span class="g-wd-pending">Art coming</span>' : ''}</div>`;
@@ -538,16 +570,16 @@ window.FemcCosmetics = (() => {
         const worn = onIn(slot), one = items.find(i => slotOf(i) === slot);
         return `<section class="g-wd-kind"><h3>${esc(KINDS[k].name)}${one.who ? ` <small>${esc(whoName(one.who))}</small>` : ''}</h3><ul class="g-wd-items">
           <li><button type="button" class="g-wd-item${worn ? '' : ' on'}" data-wd-off="${slot}"><span class="g-wd-th"><span class="g-wd-ico">○</span></span><b>Default</b><small>${worn ? 'Take it off' : 'Wearing'}</small></button></li>
-          ${items.filter(i => slotOf(i) === slot).map(i => { const own = owns(i.id), rd = ready(i), on = worn && worn.id === i.id; const st = !rd ? 'Art coming' : on ? 'Wearing' : own ? 'Owned' : i.pool === false ? 'Series reward' : 'Boutique'; return `<li class="g-wd-li">${own && rd ? `<button type="button" class="g-view-zoom" data-wd-zoom="${i.id}" aria-label="View ${esc(i.name)}" title="View">⤢</button>` : ''}<button type="button" class="g-wd-item${own ? ' own' : ''}${on ? ' on' : ''}${rd ? '' : ' pending'}${sel === i.id ? ' sel' : ''}" data-wd="${i.id}" style="--rc:${RAR[i.r].color}"><span class="g-wd-th">${thumb(i)}</span><b>${esc(i.name)}</b><small>${starsHtml(i.r)} ${st}</small></button></li>`; }).join('')}</ul></section>`;
+          ${items.filter(i => slotOf(i) === slot).map(i => { const own = owns(i.id), rd = ready(i), on = worn && worn.id === i.id; const st = !rd ? 'Art coming' : on ? 'Wearing' : own ? 'Owned' : i.pool === false ? 'Series reward' : 'Boutique'; return `<li class="g-wd-li">${own && rd ? `<button type="button" class="g-view-zoom" data-wd-zoom="${i.id}" aria-label="View ${esc(i.name)}" title="View">⤢</button>` : ''}<button type="button" class="g-wd-item${own ? ' own' : ''}${on ? ' on' : ''}${rd ? '' : ' pending'}${sel === i.id ? ' sel' : ''}" data-wd="${i.id}" style="--rc:${RAR[i.r].color}"><span class="g-wd-th">${thumb(i)}</span>${hdOf(i) ? '<i class="g-wd-hdtag" title="HD poses">HD</i>' : ''}<b>${esc(i.name)}</b><small>${starsHtml(i.r)} ${st}</small></button></li>`; }).join('')}</ul></section>`;
       }).join('');
     }).join('');
     const can = x && owns(x.id) && ready(x), tryable = x && x.kind === 'skin' && ready(x) && window.FemcTryOn, wearing = x && onIn(slotOf(x))?.id === x.id;
-    return `<div class="g-wd-grid"><div class="g-wd-side">${preview(x)}
+    return `<div class="g-wd-grid"><div class="g-wd-side">${preview(x)}${hdRow(x)}
         <div class="g-wd-info">${x ? `<b>${esc(x.name)}</b><small>${starsHtml(x.r)} ${esc(RAR[x.r].name)} · ${esc(KINDS[x.kind].name)}${x.who ? ` · ${esc(whoName(x.who))}` : ''}</small><p>${esc(x.desc)}</p>
           ${!ready(x) ? '<p class="g-note small">Art coming: it joins the Boutique once its pictures are in.</p>' : !owns(x.id) ? `<p class="g-note small">${x.pool === false ? 'Complete its capsule series to get it.' : 'Pull for it in the Boutique.'}</p>` : ''}
           ${can || tryable ? `<span class="g-row g-wd-acts">${can ? `<button type="button" class="g-btn pink small" data-wd-equip="${x.id}"${wearing ? ' disabled' : ''}><span>${wearing ? 'Wearing' : 'Equip'}</span></button><button type="button" class="g-btn small" data-wd-zoom="${x.id}"><span>View</span></button>` : ''}${tryable ? `<button type="button" class="g-btn small g-wd-try" data-wd-try="${x.id}"><span>▶ Try it on</span></button>` : ''}</span>` : ''}` : '<b>Wardrobe</b><p>Pick something to preview it. Looks only: nothing here changes a fight.</p>'}</div>
         <label class="g-wd-toggle"><input type="checkbox" data-wd-portraits${s.portraits ? ' checked' : ''}> Outfits in scene portraits</label></div>
-      <div class="g-wd-list">${lists}</div></div>`;
+      <div class="g-wd-list">${meters()}${lists}</div></div>`;
   }
   /* The viewer (gacha.js viewer): every owned, usable look in Wardrobe order. */
   const viewable = () => ITEMS.filter(x => owns(x.id) && ready(x)).sort((a, b) => KINDS[a.kind].order - KINDS[b.kind].order);
@@ -745,6 +777,12 @@ window.FemcCosmetics = (() => {
     el.querySelectorAll('[data-wd-view]').forEach(b => b.addEventListener('click', () => { view = b.dataset.wdView; fresh = null; G.sfx('femc-click'); rerender(`[data-wd-view="${view}"]`); }));
     el.querySelectorAll('[data-wd-ban]').forEach(b => b.addEventListener('click', () => { if (pickBanner(b.dataset.wdBan)) { fresh = null; G.sfx('femc-click'); rerender(`[data-wd-ban="${b.dataset.wdBan}"]`); } }));
     el.querySelectorAll('[data-wd]').forEach(b => b.addEventListener('click', () => { sel = b.dataset.wd; G.sfx('femc-hover'); rerender(`[data-wd="${sel}"]`); }));
+    el.querySelectorAll('[data-wd-hd]').forEach(b => b.addEventListener('click', () => { // an HD pose: swap the preview in place (no re-render)
+      const img = el.querySelector('.g-wd-pv-solar.hd'); if (!img || !sel) return;
+      hdPick[sel] = b.dataset.wdHd; img.src = b.dataset.src; img.dataset.hdPose = b.dataset.wdHd;
+      el.querySelectorAll('[data-wd-hd]').forEach(o => { o.classList.toggle('on', o === b); o.setAttribute('aria-pressed', String(o === b)); });
+      G.sfx('femc-hover');
+    }));
     el.querySelectorAll('[data-wd-off]').forEach(b => b.addEventListener('click', () => { unequip(b.dataset.wdOff); sel = null; G.sfx('femc-back'); rerender(`[data-wd-off="${b.dataset.wdOff}"]`); }));
     el.querySelectorAll('[data-wd-zoom]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openViewer(b.dataset.wdZoom); }));
     el.querySelectorAll('[data-wd-try]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); if (window.FemcTryOn) window.FemcTryOn.play(b.dataset.wdTry, b); }));
@@ -773,5 +811,5 @@ window.FemcCosmetics = (() => {
   G.onChange(kind => { if (kind !== 'toast') apply(); });
   applyTitleEarly();
   setTimeout(apply, 0);
-  return Object.assign(api, { CLEAN, KINDS, ITEMS, BANNERS, BAN, PAL, THEMES, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, banner, banners, pickBanner, bannerEnd, pool, featured, canPull, pullWhy, pull, pullN, pull10, apply, battle, tryOnSpec, portrait, weaponArt, html, wire, preview, metOk, viewable, viewEntry, openViewer, seq, seqClose, bq, skipSeq: () => sq && sq.skip(), nextSeq: () => sq && sq.next() });
+  return Object.assign(api, { CLEAN, KINDS, ITEMS, BANNERS, BAN, PAL, THEMES, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, banner, banners, pickBanner, bannerEnd, pool, featured, canPull, pullWhy, pull, pullN, pull10, apply, battle, tryOnSpec, portrait, weaponArt, html, wire, preview, metOk, viewable, viewEntry, openViewer, seq, seqClose, bq, hdOf, meters, skipSeq: () => sq && sq.skip(), nextSeq: () => sq && sq.next() });
 })();

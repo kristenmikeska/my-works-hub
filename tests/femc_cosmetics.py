@@ -1,7 +1,7 @@
 """The capsule series, rarities and tokens (gacha.js) and the Wardrobe / Boutique cosmetics (cosmetics.js), 2026-10-25.
 Headless Chrome, isolated profile, localhost; no player saves.
 
-Run: python3 tests/femc_cosmetics.py [--only odds,rotation,solchan,hidden,tokens,banner,equip,pending,ui,boutique,x10,shots,viewer,party,newpending,retired,inbattle] [--screenshots DIR]
+Run: python3 tests/femc_cosmetics.py [--only odds,rotation,solchan,hidden,tokens,banner,equip,pending,ui,boutique,x10,shots,viewer,party,newpending,retired,inbattle,hdpreview] [--screenshots DIR]
 
 Covers: five rarities over many turns (Secret included) and pity kept per series; which machines stand in the Corner by
 date (each season, and a turn on a series that isn't on falls back to the Cast machine); only people Solar has met;
@@ -28,7 +28,10 @@ clean yet); in a real Tartarus night Solar's HUD card and turn order wear the lo
 screen shows its victory pose, an uncleaned look's fire cast plays no hand charge and one marked clean (in the page only)
 plays it inside the fighter's frame; screenshots at 1440x900 and 390x844.
 2026-11-03 (boutique): the restyled Boutique page (hero art, countdown, pity meters, a featured tile taking the hero spot) and
-the pull sequence (deal, tell, show, summary; Enter / S / Esc / Done; reduced motion, Performance and Reduce flashes)."""
+the pull sequence (deal, tell, show, summary; Enter / S / Esc / Done; reduced motion, Performance and Reduce flashes).
+2026-11-04 (hdpreview): a Solar outfit with an HD set previews its HD arms-crossed pose with a row of its poses (a pick kept
+across re-renders; an outfit without a set and a non-outfit keep the pose frame), the HD tags, the two meters against
+ready.js, and Equip reachable at 1440x900, 2000x957 and 390x844 (screenshots wardrobe-hd-*)."""
 import argparse, base64, json, pathlib, shutil, subprocess, sys, time
 from femc_browser import Page, REPO
 
@@ -893,6 +896,60 @@ try:
         results['inbattle'] = {'faces': faces, 'hero': hero['src'].split('?')[0], 'charge': lg}
 
     # ── Screens ──
+    # ── HD preview and the collection meter (Nov 4 2026): a Solar outfit's HD set in the preview, its pose row, the meters ──
+    if want('hdpreview'):
+        setup(p, day='10/12')
+        p.eval("(()=>{const C=FemcCosmetics;['sk-emo','sk-summersession','evk-rose'].forEach(C.grantItem);FemcGame.save();})()")
+        menu(p, 'wardrobe')
+        click(p, '[data-wd-view=wardrobe]')
+        # The meters, against ready.js counted here independently.
+        r = p.eval(r"""(()=>{const C=FemcCosmetics,A=FEMC_ART_READY.skins||{};
+          const solar=C.ITEMS.filter(i=>i.kind==='skin'&&i.who==='solar'&&C.ready(i)), hd=solar.filter(i=>((A[i.id]||{}).hd||[]).length);
+          const outfits=C.ITEMS.filter(i=>i.kind==='skin'&&C.ready(i)&&(C.metOk(i)||C.owns(i.id))), own=outfits.filter(i=>C.owns(i.id));
+          const t=k=>document.querySelector(`[data-wd-meter=${k}] em`)?.innerText.replace(/\s+/g,' ').trim();
+          return {hd:t('hd'),own:t('own'),want:[`${hd.length} / ${solar.length} Solar outfits`,`${own.length} / ${outfits.length} owned`],
+            retired:solar.some(i=>i.retired),tags:document.querySelectorAll('.g-wd-hdtag').length,n:hd.length,
+            emoTag:!!document.querySelector('[data-wd="sk-emo"] .g-wd-hdtag'),ssTag:!!document.querySelector('[data-wd="sk-summersession"] .g-wd-hdtag')}})()""")
+        ok(r['hd'] == r['want'][0] and r['own'] == r['want'][1] and not r['retired'] and r['tags'] == r['n'] and r['n'] >= 17 and r['emoTag'] and not r['ssTag'], f'meters / HD tags: {r}')
+        results['hdmeter'] = r['want']
+        # Emo Night has an HD set: its arms-crossed pose, the row, a pose clicked, and the pick kept through a re-render.
+        click(p, '[data-wd="sk-emo"]')
+        p.wait("document.querySelector('.g-wd-pv-solar.hd')?.complete && document.querySelector('.g-wd-pv-solar.hd').naturalWidth>0", 10)
+        hv = p.eval("FEMC_ART_READY.skins['sk-emo'].hdv")
+        r = p.eval("({src:document.querySelector('.g-wd-pv-solar').src,stage:document.querySelector('.g-wd-stage').classList.contains('hd'),row:document.querySelectorAll('.g-wd-hdrow [data-wd-hd]').length,first:document.querySelector('.g-wd-hdrow [data-wd-hd]').dataset.wdHd,on:document.querySelector('.g-wd-hdp.on')?.dataset.wdHd,equip:!!document.querySelector('[data-wd-equip=\"sk-emo\"]')})")
+        ok(r['src'].endswith(f'skins/sk-emo/hd/arms-crossed.webp?v={hv}') and r['stage'] and r['row'] == len(p.eval("FEMC_ART_READY.skins['sk-emo'].hd")) and r['first'] == 'arms-crossed' and r['on'] == 'arms-crossed' and r['equip'], f'HD preview: {r}')
+        click(p, '.g-wd-hdrow [data-wd-hd="peace"]')
+        p.wait("document.querySelector('.g-wd-pv-solar').src.includes('/hd/peace.webp') && document.querySelector('.g-wd-pv-solar').complete && document.querySelector('.g-wd-pv-solar').naturalWidth>0", 10)
+        ok(p.eval("document.querySelector('.g-wd-hdp.on').dataset.wdHd==='peace' && document.querySelectorAll('.g-wd-hdp[aria-pressed=true]').length===1 && document.querySelector('.g-wd-pv-solar').dataset.hdPose==='peace'"), 'a pose from the row')
+        click(p, '[data-wd="evk-rose"]')
+        ok(p.eval("!document.querySelector('.g-wd-stage.hd') && !document.querySelector('.g-wd-hdrow')"), 'a non-outfit: no HD preview')
+        click(p, '[data-wd="sk-emo"]')
+        ok(p.eval("document.querySelector('.g-wd-pv-solar').src.includes('/hd/peace.webp')"), 'the picked pose is kept')
+        # An outfit without an HD set: exactly the pose frame, as before.
+        click(p, '[data-wd="sk-summersession"]')
+        ok(p.eval("document.querySelector('.g-wd-pv-solar').src.includes('skins/sk-summersession/solar-pose-0.webp') && !document.querySelector('.g-wd-stage.hd') && !document.querySelector('.g-wd-pv-solar.hd') && !document.querySelector('.g-wd-hdrow')"), 'no HD set: the pose frame')
+        # Equip stays reachable (Nov 1 cap) with the bigger HD preview; screenshots.
+        for w, h, tag in [(1440, 900, 'desktop'), (2000, 957, 'wide'), (390, 844, 'phone')]:
+            view(p, w, h)
+            menu(p, 'wardrobe')
+            click(p, '[data-wd-view=wardrobe]')
+            click(p, '[data-wd="sk-emo"]')
+            p.wait("document.querySelector('.g-wd-pv-solar.hd')?.complete", 10)
+            p.eval("new Promise(r=>setTimeout(r,400))")
+            r = p.eval("""(()=>{const b=document.querySelector('[data-wd-equip="sk-emo"]'),side=document.querySelector('.g-wd-side'),st=document.querySelector('.g-wd-stage');
+              const noScroll=(()=>{const q=b.getBoundingClientRect(),s=side.getBoundingClientRect();return q.bottom<=Math.min(innerHeight,s.bottom)+1&&q.top>=0;})();
+              b.scrollIntoView({block:'nearest'});const q=b.getBoundingClientRect(),hit=document.elementFromPoint(q.left+q.width/2,q.top+q.height/2);
+              const tg=document.querySelector('.g-wd-toggle').getBoundingClientRect(),toggle=tg.bottom<=document.querySelector('.g-fm-body').getBoundingClientRect().bottom+1;
+              return {noScroll,toggle,hit:!!hit&&b.contains(hit),stageH:Math.round(st.getBoundingClientRect().height),side:side.scrollTop,sideways:document.documentElement.scrollWidth>innerWidth+1}})()""")
+            ok(r['hit'] and not r['sideways'] and r['stageH'] >= 130 and (tag == 'phone' or (r['noScroll'] and r['toggle'])), f'{tag}: Equip reachable: {r}')
+            results[f'hdpreview-{tag}'] = r
+            p.eval("document.querySelector('.g-fm-body').scrollTop=0;document.querySelector('.g-wd-side').scrollTop=0")
+            shot(p, f'wardrobe-hd-{tag}')
+        view(p, 1280, 850)
+        p.eval("FemcMenu.close()")
+        clean(p, 'hdpreview')
+        results['hdpreview'] = 'HD arms-crossed pose, pose row, pick kept, no-set fallback, meters; Equip reachable at 1440x900, 2000x957, 390x844'
+
     if want('shots'):
         setup(p, day='10/12')
         p.eval("(()=>{const C=FemcCosmetics;['wp-velvet','ui-moonlight','evk-gold','tt-darkhour','bui-gold'].forEach(C.grantItem);C.equip('wp-velvet');FemcGacha.gs().plumes=40;FemcGacha.gs().skeys['hw-solar']=1;FemcGacha.gs().skeys['cp-solar-akihiko']=1;FemcGame.save();})()")
@@ -933,7 +990,7 @@ try:
         menu(p, 'wardrobe')
         click(p, '[data-wd-view=wardrobe]')
         click(p, '[data-wd="sk-emo"]')
-        ok(p.eval("document.querySelector('.g-wd-pv-solar').src.includes('skins/sk-emo/solar-pose-0.webp')"), 'the preview wears Emo Night')
+        ok(p.eval("document.querySelector('.g-wd-pv-solar').src.includes('skins/sk-emo/hd/')"), 'the preview wears Emo Night (its HD set, Nov 4)')
         shot(p, 'wardrobe-emo')
         p.eval("FemcMenu.close()")
         p.eval("(()=>{const G=FemcGame;G.S.joined=['akihiko','yukari','junpei'];G.S.day=G.dayOf('9/15');G.makeHandoff('scripted',{script:'looks-check',notes:'interrupt turn 6',segment:1,forced:true,party:['solar','akihiko','yukari','junpei']});})()")
