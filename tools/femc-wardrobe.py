@@ -288,7 +288,10 @@ def scan():
     own.update(hd_set(ROOT / 'assets/femc/profile/solar-poses'))  # her own look's 18 evening poses: hd / hdv / hdfig
     FXD = ROOT / 'assets/femc/battle/art/fx'  # Kat's theme effect sheets (tools/femc-fx.py), for the Wardrobe's Try it on
     themes = sorted(f.stem[len('theme-'):] for f in FXD.glob('theme-*.webp'))
-    data = {'keys': keys, 'goods': goods, 'skins': skins, 'weapons': weapons, 'own': own, 'couples': stems('couples', '-showtime'), 'frames': stems('frames'), 'themes': themes}
+    data = {'keys': keys, 'goods': goods, 'skins': skins, 'weapons': weapons, 'own': own, 'couples': stems('couples', '-showtime'), 'frames': stems('frames'), 'themes': themes,
+            # The Boutique (Nov 4 2026): banner pictures game/art/banners/<banner id>.webp (FEMC-ART-TODO 28) and card art
+            # game/art/cards/<name>.webp: card-back, frame-R / -SR / -UR, art-<item id> (FEMC-ART-TODO 29). cosmetics.js uses them when listed.
+            'banners': stems('banners'), 'cards': stems('cards')}
     head = (ART / 'ready.js').read_text().split('window.FEMC_ART_READY')[0]
     (ART / 'ready.js').write_text(head + 'window.FEMC_ART_READY = ' + json.dumps(data) + ';\n')
     print('ready.js:', len(keys), 'keychains,', len(goods), 'goods,', len(skins), 'outfits,', len(weapons), 'weapons,',

@@ -647,71 +647,141 @@ window.FemcCosmetics = (() => {
     if (at < 0 || !window.FemcGacha) return null;
     return window.FemcGacha.viewer(list.map(viewEntry), at);
   }
-  /* The Boutique page (Nov 3 2026, Kat's "stylize the skin gacha"): a hero with the headline look's art large (any featured
-     tile puts its look there: `hero`), the countdown, two pity meters, the featured strip (▶ Try it on), rates folded under
-     "Rates & rules", and the pull buttons. Pulls play the sequence below (seq) over the page; the inline reveal under the
-     buttons (.g-wd-reveal: the card and the ×10 grid) is what stays after it. */
-  let hero = null;
+  /* The Boutique page, P5X style (Nov 4 2026, Kat's approved mockup: mockups/boutique/). A banner list down the left
+     (every running banner: its headline look's face, name, kind, end date, days left; [data-wd-ban] switches and the pick
+     is saved as before) and the splash: the banner's name in big slanted letters, the headline look's art large on the
+     right with two more featured looks dimmed behind it, a "Rate up" plate (▶ Try it on), the featured strip (a tile puts
+     its look in the splash: `hero`, [data-wd-hero]), the pity panel (two meters + the shared-pity line), "Odds & rules"
+     and the pull buttons. Pink and black only (Kat's palette rule): a banner's own colour is only its tab stripe.
+     Art hooks: game/art/banners/<banner id>.webp (ready.js `banners`; FEMC-ART-TODO 28) becomes the splash's picture in
+     place of the composed cast; game/art/cards/<name>.webp (ready.js `cards`: card-back, frame-R / -SR / -UR, art-<item id>;
+     FEMC-ART-TODO 29) dress the pull cards and the cards of items with no picture. Neither exists yet: the drawn versions stay.
+     Switching banners plays a pink slash wipe and the title, plate and cast slam in; the cast drifts with the pointer.
+     The inline result under the splash (.g-wd-reveal: the card and the ×10 grid) is what stays after a pull. */
+  let hero = null, lastBan = null;
   const RANK = { R: 0, SR: 1, UR: 2 };
-  const heroOf = f => f.find(x => x.id === hero) || f.find(x => x.kind === 'skin' && x.r === 'UR') || f.find(x => x.kind === 'skin') || f[0] || null;
-  function bigArt(x, cls = 'g-bq-img') {
-    if (x.kind === 'skin') return `<img class="${cls}" src="${posePath(x.who, x)}" alt="">`;
+  const heroOf = f => f.find(x => x.id === hero) || f.find(x => x.kind === 'skin' && x.r === 'UR' && hdOf(x)) || f.find(x => x.kind === 'skin' && x.r === 'UR') || f.find(x => x.kind === 'skin') || f[0] || null;
+  const artList = k => readyArt()[k] || [];
+  const cardArt = name => (artList('cards').includes(name) ? `${G.base}assets/femc/game/art/cards/${name}.webp` : null);
+  // An outfit's scene face (sharp, head and shoulders) for cards; else its battle frame.
+  function faceSrc(x) {
+    if (!x || x.kind !== 'skin' || !ready(x)) return null;
+    const fs = (((readyArt().skins || {})[x.id] || {}).portraits || {})[x.who] || [];
+    return fs.length ? `${G.base}${skinDir(x.id)}portraits/${x.who}/${fs.includes('happy') ? 'happy' : fs[0]}.webp?v=${SKIN_V}` : null;
+  }
+  function cardHtml(x) {
+    const f = faceSrc(x); if (f) return `<img class="face" src="${f}" alt="">`;
+    const a = cardArt(`art-${x.id}`); if (a) return `<img class="art" src="${a}" alt="">`;
+    return thumb(x);
+  }
+  // A look's big picture: its HD pose (the first of `prefer` it has), else its victory frame / weapon / swatch.
+  function figSrc(x, prefer) {
+    if (x.kind !== 'skin' || !ready(x)) return null;
+    const R = (readyArt().skins || {})[x.id] || {}, have = R.hd || [];
+    const p = (prefer || ['peace', 'jump', 'tease', 'cheer', 'heart', 'wave', 'arms-crossed']).find(k => have.includes(k)) || have[0];
+    return p ? { src: `${G.base}${skinDir(x.id)}hd/${p}.webp?v=${R.hdv || 1}`, hd: true } : { src: `${G.base}${skinDir(x.id)}${x.who}-pose-5.webp?v=${SKIN_V}`, hd: false };
+  }
+  function bigArt(x, cls = 'g-bq-img', prefer) {
+    if (x.kind === 'skin') { const f = figSrc(x, prefer); return f ? `<img class="${cls}${f.hd ? ' hd' : ' frame'}" src="${f.src}" alt="">` : `<img class="${cls} frame" src="${posePath(x.who, x)}" alt="">`; }
     if (x.kind === 'weapon') return `<img class="${cls} wpn" src="${G.base}${skinDir(x.id)}weapon.webp" alt="">`;
-    return `<span class="${cls} sw">${viewEntry(x).art}</span>`;
+    const a = cardArt(`art-${x.id}`);
+    return a ? `<img class="${cls} sw" src="${a}" alt="">` : `<span class="${cls} sw">${viewEntry(x).art}</span>`;
   }
   const daysLeft = b => { try { return Math.max(0, Math.round((bannerEnd(b) - G.dateOf(S().day)) / 864e5)); } catch (e) { return null; } };
   function bannerHtml() {
     const s = cs(), all = banners(), b = banner(), f = featured(), p = s.pity, MON = m => new Date(2009, m - 1, 1).toLocaleString('en', { month: 'long' });
     const res = fresh || (s.last && byId(s.last.id) ? { item: byId(s.last.id), r: s.last.r, old: true } : null);
     const n = pool().length, ends = x => bannerEnd(x).toLocaleString('en', { month: 'long', day: 'numeric' });
-    const h = heroOf(f), dl = daysLeft(b), srL = BAN.pitySR - p.sr, urL = BAN.pityUR - p.ur;
-    const tabs = all.length > 1 ? `<div class="g-wd-bans" role="tablist" aria-label="Banners">${all.map(x => `<button type="button" role="tab" aria-selected="${x === b}" class="${x === b ? 'on' : ''}" style="--c:${x.color}" data-wd-ban="${x.id}"><b>${esc(x.name)}</b><small>${x.kind ? `${esc(x.kind)} · ` : ''}until ${esc(ends(x))}</small></button>`).join('')}</div>` : '';
+    const h = heroOf(f), dl = daysLeft(b), srL = BAN.pitySR - p.sr, urL = BAN.pityUR - p.ur, hasArt = artList('banners').includes(b.id);
+    const tabs = `<div class="g-wd-bans g-bq-tabs" role="tablist" aria-label="Banners">${all.map(x => {
+      const hx = heroOf(featOf(x)), d = daysLeft(x), art = artList('banners').includes(x.id);
+      const pic = art ? `<span class="g-bq-tth art" style="background-image:url('${G.base}assets/femc/game/art/banners/${x.id}.webp')"></span>` : `<span class="g-bq-tth">${hx ? cardHtml(hx) : ''}</span>`;
+      return `<button type="button" role="tab" aria-selected="${x === b}" class="${x === b ? 'on' : ''}" style="--c:${x.color}" data-wd-ban="${x.id}">${pic}<span class="g-bq-tt"><b>${esc(x.name)}</b><small>${x.kind ? `${esc(x.kind)} · ` : ''}until ${esc(ends(x))}</small>${d == null ? '' : `<small class="g-bq-tleft">${d ? `${d} day${d === 1 ? '' : 's'} left` : 'Last day'}</small>`}</span></button>`; }).join('')}</div>`;
     const meter = (k, lbl, left, max) => `<span class="g-bq-meter" style="--rc:${RAR[k].color};--p:${((max - left) / max).toFixed(3)}"><b>${lbl}</b><i><s></s></i><em><b>${left}</b> pull${left === 1 ? '' : 's'} at most</em></span>`;
-    const heroHtml = h ? `<div class="g-bq-hero-art r-${h.r}" style="--rc:${RAR[h.r].color}" data-hero="${h.id}"><span class="g-bq-ghost" aria-hidden="true">${esc(b.name)}</span><i class="g-bq-rays" aria-hidden="true"></i>${bigArt(h)}
-        <span class="g-bq-hero-tag">${starsHtml(h.r)}<b>${esc(h.name)}</b><small>${esc(RAR[h.r].name)} · ${esc(KINDS[h.kind].name)}${h.who ? ` · ${esc(whoName(h.who))}` : ''}${owns(h.id) ? ' · owned' : ''}</small>
-        ${h.kind === 'skin' && ready(h) && window.FemcTryOn ? `<button type="button" class="g-btn small g-bq-htry" data-wd-try="${h.id}"><span>▶ Try it on</span></button>` : ''}</span></div>` : '<div class="g-bq-hero-art empty"><p class="g-note">Nothing featured is ready yet.</p></div>';
-    return `${tabs}<div class="g-wd-banner g-bq-ban" data-ban="${b.id}" style="--c:${b.color}"><div class="g-bq-hero">${heroHtml}
-      <div class="g-bq-hero-info"><div class="g-wd-bhead"><span class="g-bq-kind">${esc(b.kind || 'Monthly')} banner</span><b>${esc(b.name)}</b><small>Featured ${esc(MON(b.months[0]))}${b.months.length > 1 ? `–${esc(MON(b.months[b.months.length - 1]))}` : ''} · ends ${esc(ends(b))}</small></div>
-        ${dl == null ? '' : `<span class="g-bq-count"><b>${dl || 'Last'}</b><small>${dl ? `day${dl === 1 ? '' : 's'} left` : 'day today'}</small></span>`}
-        <div class="g-bq-meters">${meter('SR', 'Super Rare+', srL, BAN.pitySR)}${meter('UR', 'Ultra', urL, BAN.pityUR)}</div>
-        <p class="g-ga-pity">Super Rare or better within <b>${srL}</b> pull${srL === 1 ? '' : 's'} · an Ultra within <b>${urL}</b>${s.guar ? ' · <span class="g-bq-guar">the next Ultra is featured</span>' : ''}.${all.length > 1 ? ' Pity is shared: it carries over when you switch banners.' : ''}</p>
-        <div class="g-row g-ga-btns"><button type="button" class="g-btn pink g-bq-pull" data-wd-pull${canPull() ? '' : ' disabled'}><span><b>Pull ×1</b><small>${BAN.cost} Velvet Plumes</small></span></button>
-          <button type="button" class="g-btn pink g-ga-x10 g-bq-pull" data-wd-pull10${canPull(10) ? '' : ` disabled title="${esc(pullWhy(10))}"`}><span><b>Pull ×10</b><small>${canPull(10) ? `${BAN.cost * 10} Plumes` : esc(pullWhy(10))}</small></span></button></div>
-        <span class="g-ga-own"><span>Velvet Plumes <b>${plumes()}</b></span><span>Pulls <b>${s.pulls}</b></span></span></div></div>
-      <h4 class="g-bq-h">Featured looks <small>${f.length}</small></h4>
-      <ul class="g-wd-feat">${f.map(x => `<li style="--rc:${RAR[x.r].color}" class="r-${x.r}${h && h.id === x.id ? ' hero' : ''}${owns(x.id) ? ' own' : ''}"><button type="button" class="g-bq-ft" data-wd-hero="${x.id}" aria-pressed="${!!(h && h.id === x.id)}"><span class="g-wd-th">${thumb(x)}</span><b>${esc(x.name)}</b><small>${starsHtml(x.r)}${owns(x.id) ? ' · owned' : ''}</small></button>${x.kind === 'skin' && ready(x) && window.FemcTryOn ? `<button type="button" class="g-wd-ftry" data-wd-try="${x.id}" aria-label="Try on ${esc(x.name)}" title="Try it on">▶</button>` : ''}</li>`).join('') || '<li class="g-note">Nothing featured is ready yet.</li>'}</ul>
-      <details class="g-bq-rules"><summary>Rates &amp; rules</summary><ul class="g-ga-odds">${Object.entries(BAN.odds).map(([k, v]) => `<li style="--rc:${RAR[k].color}">${starsHtml(k)} ${RAR[k].name} <b>${(v * 100).toFixed(0)}%</b></li>`).join('')}</ul>
-      <p class="g-note small">Half of each rarity's pulls land on its featured item; an Ultra that isn't featured makes the next one featured. ${n} looks are in the pool (outfits still waiting on art aren't). Repeats give Velvet Plumes back (Rare and Super Rare 1, Ultra 2).</p></details>
+    // The cast: the headline look large on the right, two more featured outfits dimmed behind (others' looks first).
+    const back = h && h.kind === 'skin' ? f.filter(x => x !== h && x.kind === 'skin').sort((a, c) => (c.who !== h.who) - (a.who !== h.who) || !!hdOf(c) - !!hdOf(a)).slice(0, 2) : [];
+    const cast = h ? `${back.map((x, i) => bigArt(x, `g-bq-cast b${i}`, ['arms-crossed', 'hair', 'tease', 'thinking'])).join('')}${bigArt(h)}` : '';
+    const words = b.name.split(' '), title = words.length > 1 ? `<span>${esc(words.slice(0, -1).join(' '))}</span><span>${esc(words[words.length - 1])}</span>` : `<span>${esc(b.name)}</span>`;
+    const tryBtn = x => x && x.kind === 'skin' && ready(x) && window.FemcTryOn;
+    const heroHtml = h ? `<div class="g-bq-hero-art r-${h.r}${hasArt ? ' has-art' : ''}" style="--rc:${RAR[h.r].color}" data-hero="${h.id}">${cast}</div>` : '<div class="g-bq-hero-art empty"><p class="g-note">Nothing featured is ready yet.</p></div>';
+    return `<div class="g-wd-banner g-bq-ban" data-ban="${b.id}" style="--c:${b.color}">${tabs}
+      <div class="g-bq-splash${hasArt ? ' has-art' : ''}"${hasArt ? ` style="--bq-art:url('${G.base}assets/femc/game/art/banners/${b.id}.webp')"` : ''}>
+        <div class="g-bq-sbg" aria-hidden="true"><i class="g-bq-rays"></i><i class="g-bq-slash s1"></i><i class="g-bq-slash s2"></i><i class="g-bq-slash s3"></i><b class="g-bq-ghost">${esc(words[0])}</b></div>
+        ${heroHtml}
+        <div class="g-bq-title"><div class="g-wd-bhead"><span class="g-bq-kind">${esc(b.kind || 'Monthly')} banner</span><b>${title}</b><small>Featured ${esc(MON(b.months[0]))}${b.months.length > 1 ? `–${esc(MON(b.months[b.months.length - 1]))}` : ''} · ends ${esc(ends(b))}</small></div>
+          ${dl == null ? '' : `<span class="g-bq-count"><small>Ends in</small><b>${dl || 'Last'}</b><small>${dl ? `day${dl === 1 ? '' : 's'}` : 'day today'}</small></span>`}</div>
+        ${h ? `<div class="g-bq-hero-tag" style="--rc:${RAR[h.r].color}"><small>Rate up${h.who ? ` · ${esc(whoName(h.who))}` : ''}</small><b>${esc(h.name)}</b>${starsHtml(h.r)}<em>${esc(RAR[h.r].name)} · ${esc(KINDS[h.kind].name)}${owns(h.id) ? ' · owned' : ''}</em>
+          ${tryBtn(h) ? `<button type="button" class="g-btn small g-bq-htry" data-wd-try="${h.id}"><span>▶ Try it on</span></button>` : ''}</div><p class="g-bq-desc">${esc(h.desc)}</p>` : ''}
+        <ul class="g-wd-feat g-bq-strip" aria-label="Featured looks">${f.map(x => `<li style="--rc:${RAR[x.r].color}" class="r-${x.r}${h && h.id === x.id ? ' hero' : ''}${owns(x.id) ? ' own' : ''}"><button type="button" class="g-bq-ft" data-wd-hero="${x.id}" aria-pressed="${!!(h && h.id === x.id)}" title="${esc(x.name)}"><span class="g-bq-fth">${cardHtml(x)}</span><b class="g-bq-sr">${esc(x.name)}</b></button>${tryBtn(x) ? `<button type="button" class="g-wd-ftry" data-wd-try="${x.id}" aria-label="Try on ${esc(x.name)}" title="Try it on">▶</button>` : ''}</li>`).join('') || '<li class="g-note">Nothing featured is ready yet.</li>'}</ul>
+        <div class="g-bq-side">
+          <div class="g-bq-pity"><div class="g-bq-meters">${meter('SR', 'Super Rare+', srL, BAN.pitySR)}${meter('UR', 'Ultra', urL, BAN.pityUR)}</div>
+            <p class="g-ga-pity">Super Rare or better within <b>${srL}</b> pull${srL === 1 ? '' : 's'} · an Ultra within <b>${urL}</b>${s.guar ? ' · <span class="g-bq-guar">the next Ultra is featured</span>' : ''}.${all.length > 1 ? ' Pity is shared: it carries over when you switch banners.' : ''}</p></div>
+          <details class="g-bq-rules"><summary>Odds &amp; rules</summary><ul class="g-ga-odds">${Object.entries(BAN.odds).map(([k, v]) => `<li style="--rc:${RAR[k].color}">${starsHtml(k)} ${RAR[k].name} <b>${(v * 100).toFixed(0)}%</b></li>`).join('')}</ul>
+            <p class="g-note small">Half of each rarity's pulls land on its featured item; an Ultra that isn't featured makes the next one featured. ${n} looks are in the pool (outfits still waiting on art aren't). Repeats give Velvet Plumes back (Rare and Super Rare 1, Ultra 2).</p></details>
+          <div class="g-row g-ga-btns"><button type="button" class="g-btn g-bq-pull one" data-wd-pull${canPull() ? '' : ' disabled'}><span><b>Pull ×1</b><small>${BAN.cost} Velvet Plumes</small></span></button>
+            <button type="button" class="g-btn pink g-ga-x10 g-bq-pull ten" data-wd-pull10${canPull(10) ? '' : ` disabled title="${esc(pullWhy(10))}"`}><span><b>Pull ×10</b><small>${canPull(10) ? `${BAN.cost * 10} Plumes · a Super Rare or better` : esc(pullWhy(10))}</small></span></button></div>
+          <span class="g-ga-own"><span>Velvet Plumes <b>${plumes()}</b></span><span>Pulls <b>${s.pulls}</b></span></span></div>
+        <i class="g-bq-wipe" aria-hidden="true"></i><i class="g-bq-wipe w2" aria-hidden="true"></i>
+      </div>
       <div class="g-wd-reveal" aria-live="polite">${res ? (res.list ? tenHtml(res) : revealHtml(res)) : ''}</div></div>`;
   }
+  // After a render: the slash wipe when the banner changed, the slam when the banner or the hero did, and the pointer drift.
+  let lastHero = null;
+  function bannerMotion(el) {
+    const root = el.querySelector('.g-bq-ban'); if (!root) return;
+    const sp = root.querySelector('.g-bq-splash'), still = reduced() || (G.settings && G.settings().perf);
+    const b = root.dataset.ban, hid = root.querySelector('.g-bq-hero-art')?.dataset.hero || null;
+    const newBan = b !== lastBan, newHero = hid !== lastHero;
+    lastBan = b; lastHero = hid;
+    if (still || !sp.animate) return;
+    if (newBan) sp.querySelectorAll('.g-bq-wipe').forEach((w, k) => w.animate([{ transform: 'skewX(-20deg) translateX(-160%)', opacity: 1 }, { transform: 'skewX(-20deg) translateX(40%)', opacity: 1, offset: .5 }, { transform: 'skewX(-20deg) translateX(260%)', opacity: 1 }], { duration: 620, delay: k * 50, easing: 'cubic-bezier(.7, 0, .3, 1)' }));
+    const d0 = newBan ? 260 : 0;
+    if (newBan) {
+      sp.querySelector('.g-bq-title')?.animate([{ transform: 'skewX(-9deg) translateX(-60px)', opacity: 0 }, { transform: 'skewX(-9deg)', opacity: 1 }], { duration: 420, delay: d0, easing: 'cubic-bezier(.2, 1.3, .4, 1)', fill: 'backwards' });
+    }
+    if (newBan || newHero) {
+      sp.querySelector('.g-bq-hero-tag')?.animate([{ transform: 'skewX(-12deg) rotate(-2deg) translateY(20px)', opacity: 0 }, { transform: 'skewX(-12deg) rotate(-2deg)', opacity: 1 }], { duration: 400, delay: d0 + 120, easing: 'cubic-bezier(.2, 1.3, .4, 1)', fill: 'backwards' });
+      const imgs = [...sp.querySelectorAll('.g-bq-hero-art img')];
+      imgs.forEach((i, k) => i.animate([{ translate: '120px 0', opacity: 0 }, { translate: '0 0', opacity: 1 }], { duration: 520, delay: d0 + 60 + (imgs.length - 1 - k) * 90, easing: 'cubic-bezier(.2, 1, .3, 1)', fill: 'backwards' }));
+    }
+    sp.addEventListener('pointermove', e => {
+      if (e.pointerType === 'touch') return;
+      const r = sp.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - .5, dy = (e.clientY - r.top) / r.height - .5;
+      sp.querySelectorAll('.g-bq-hero-art img').forEach(i => { const d = i.classList.contains('g-bq-cast') ? .4 : 1; i.style.transform = `translate(${(-dx * 18 * d).toFixed(1)}px, ${(-dy * 8 * d).toFixed(1)}px)`; });
+    });
+  }
 
-  /* ── The pull sequence (seq): an overlay over the menu, the game's Velvet tarot motif in pink and black.
-     deal: the cards fall in face down (one, or ten in a 5×2 spread) → tell: each back lights in its rarity's colour (an Ultra
-     brings rays and a held beat, a Super Rare a shake) → show: each look in turn, its art large with a slanted name plate
-     (NEW / +plumes back; Rare ones move on by themselves, the rarer ones wait a little longer) → sum (×10): the ten tiles with
-     NEW tags. Click / tap / Enter / Space / → move on, Skip (S) jumps to the end, Esc skips then closes; pad buttons arrive as
-     those keys (battle/pad.js). Settings: reduced motion = no flying or flipping (fades only, shorter beats); Performance =
-     fewer shards, no rays or blur; Reduce flashes (calm) = no white flash, the tells glow steadily. Sounds through G.sfx.
-     Focus goes to the overlay's buttons and back to the pull button after. bq() is the state for tests. */
+  /* ── The pull sequence (seq), P5X style (Nov 4 2026, Kat's approved mockup): an overlay over the menu, pink and black.
+     deal: the cards sit in one deck that lights in the best pull's colour (an Ultra flickers) → tell: they're dealt face down,
+     each back in its own rarity's light → show: they turn over one by one; a Super Rare or Ultra shakes first and then gets
+     its calling card: a black card flies in and bursts, the look slams in large (its HD pose, else its victory frame) over
+     rays and slanted bands with its name, stars and NEW! (a ×1 always ends on it: stage end) → sum (×10): the ten tiles with
+     NEW / +plumes tags, Pull ×10 again / Done. Click / tap / Enter / Space / → move on, Skip (S) jumps to the end, Esc skips
+     then closes; pad buttons arrive as those keys (battle/pad.js). Settings: reduced motion = no flying, flipping or
+     calling card (fades, shorter beats); Performance = fewer layers, still rays; Reduce flashes (calm) = no flash or flicker,
+     steady glows. Sounds through G.sfx. Focus goes to the overlay's buttons and back to the pull button after. bq() is the
+     state for tests. Kat's card-back.webp / frame-<r>.webp (FEMC-ART-TODO 29, ready.js `cards`) dress the cards when in. */
   let sq = null;
   function seq(list, from, rerender) {
     seqClose(true);
     const st = G.settings ? G.settings() : {}, o = { reduced: reduced(), perf: !!st.perf, calm: !!st.calm };
     const n = list.length, best = list.reduce((b, x) => (RANK[x.r] > RANK[b.r] ? x : b), list[0]);
-    const T = o.reduced ? { deal: 120, step: 0, tell: { R: 250, SR: 400, UR: 600 }, auto: { R: 1100, SR: 1800, UR: 2200 } }
-      : { deal: 620, step: 70, tell: { R: 450, SR: 900, UR: 1400 }, auto: { R: 1300, SR: 2300, UR: 2900 } };
-    const shards = Array.from({ length: o.perf ? 6 : 14 }, (_, i) => `<i style="--x:${(i * 37) % 100}%;--d:${((i * 0.29) % 2.4).toFixed(2)}s;--s:${0.6 + (i % 4) * 0.25}"></i>`).join('');
+    const T = o.reduced ? { deal: 200, tell: 250, shake: { R: 0, SR: 0, UR: 0 }, flip: 120, auto: { R: 1000, SR: 1800, UR: 2200 }, step: 350 }
+      : { deal: best.r === 'UR' ? 1150 : 750, tell: 650 + (n - 1) * 60, shake: { R: 0, SR: 420, UR: 700 }, flip: 420, auto: { R: 1500, SR: 3200, UR: 4200 }, step: 650 };
+    const cols = n > 1 ? 5 : 1, back = cardArt('card-back'), frame = r => cardArt(`frame-${r}`);
     const el = document.createElement('div');
     el.className = 'g-overlay g-bq-ov';
     el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', n > 1 ? 'Boutique: ten pulls' : 'Boutique: a pull');
     el.innerHTML = `<div class="g-bq n${n > 1 ? 10 : 1} best-${best.r}${o.reduced ? ' reduced' : ''}${o.perf ? ' perf' : ''}${o.calm ? ' calm' : ''}" data-stage="deal" style="--top:${RAR[best.r].color}">
-      <div class="g-bq-bg" aria-hidden="true"><i class="g-bq-rays"></i><b class="g-bq-ghost">${esc(banner().name)}</b><span class="g-bq-shards">${shards}</span></div>
-      <div class="g-bq-spread" aria-hidden="true">${list.map((x, i) => `<span class="g-bq-card r-${x.r}" style="--rc:${RAR[x.r].color};--i:${i}" data-card="${i}"><span class="g-bq-back"><i></i></span><span class="g-bq-front"><span class="g-wd-th">${thumb(x.item)}</span></span></span>`).join('')}</div>
+      <div class="g-bq-bg" aria-hidden="true"><i class="g-bq-rays"></i><b class="g-bq-ghost">${esc(banner().name)}</b><i class="g-bq-bolt"></i></div>
+      <div class="g-bq-spread" aria-hidden="true">${list.map((x, i) => `<span class="g-bq-card r-${x.r}" style="--rc:${RAR[x.r].color};--i:${i};--col:${(i % cols) - (Math.min(cols, n) - 1) / 2};--row:${Math.floor(i / cols) - (Math.ceil(n / cols) - 1) / 2};--tilt:${((i * 7) % 11) - 5}deg" data-card="${i}">
+        <span class="g-bq-back"${back ? ` style="background-image:url('${back}')"` : ''}><i></i></span><span class="g-bq-front"><span class="g-bq-cth">${cardHtml(x.item)}</span><b>${esc(x.item.name)}</b>${starsHtml(x.r)}${frame(x.r) ? `<img class="g-bq-frame" src="${frame(x.r)}" alt="">` : ''}</span>
+        ${x.dup ? `<em class="g-bq-ctag dup">+${x.refund}</em>` : '<em class="g-bq-ctag new">NEW!</em>'}</span>`).join('')}</div>
       <div class="g-bq-show" aria-live="polite"></div><div class="g-bq-sum"></div><i class="g-bq-flash" aria-hidden="true"></i>
       <div class="g-bq-bar"><span class="g-bq-hint">${n > 1 ? 'Tap or Enter: next · S: skip to all ten' : 'Tap or Enter: reveal'}</span><span class="g-bq-acts">
         <button type="button" class="g-btn small" data-bq="skip"><span>Skip</span></button></span></div></div>`;
     document.body.appendChild(el);
-    const root = el.querySelector('.g-bq'), acts = el.querySelector('.g-bq-acts');
+    const root = el.querySelector('.g-bq'), acts = el.querySelector('.g-bq-acts'), cards = [...el.querySelectorAll('.g-bq-card')];
     const me = sq = { el, root, list, from, rerender, stage: 'deal', i: -1, timers: [], o, seen: [] };
     const later = (ms, fn) => me.timers.push(setTimeout(() => { if (sq === me && el.isConnected) fn(); }, ms));
     const clear = () => { me.timers.forEach(clearTimeout); me.timers = []; };
@@ -721,43 +791,61 @@ window.FemcCosmetics = (() => {
     function tell() {
       if (me.stage !== 'deal') return; stage('tell');
       G.sfx(best.r === 'R' ? 'femc-text' : 'femc-rez');
-      const hold = (n > 1 ? n * T.step : 0) + T.tell[best.r];
-      later(hold, () => show(0));
+      later(T.tell, () => show(0));
     }
+    // The calling card: the look large over rays and bands, its plate (stars, rarity, name, who, NEW! / plumes back).
     function itemHtml(x, i) {
-      const it = x.item, tag = x.dup ? `<span class="g-bq-tag dup">Already had it · +${x.refund} Velvet Plume${x.refund === 1 ? '' : 's'}</span>` : '<span class="g-bq-tag new">New!</span>';
-      return `<div class="g-bq-item r-${x.r}${x.feat ? ' feat' : ''}" style="--rc:${RAR[x.r].color}" data-i="${i}"><div class="g-bq-art"><i class="g-bq-halo"></i>${bigArt(it)}</div>
-        <div class="g-bq-plate">${n > 1 ? `<span class="g-bq-num">${i + 1} / ${n}</span>` : ''}${starsHtml(x.r)}<small>${esc(RAR[x.r].name)}${x.feat ? ' · Featured' : ''}</small><b>${esc(it.name)}</b>
-          <em>${esc(KINDS[it.kind].name)}${it.who ? ` · ${esc(whoName(it.who))}` : ''}</em>${tag}</div></div>`;
+      const it = x.item, ur = x.r === 'UR', tag = x.dup ? `<span class="g-bq-tag dup">Already had it · +${x.refund} Velvet Plume${x.refund === 1 ? '' : 's'}</span>` : '<span class="g-bq-tag new">New!</span>';
+      return `<div class="g-bq-item r-${x.r}${x.feat ? ' feat' : ''}" style="--rc:${RAR[x.r].color}" data-i="${i}">
+        <i class="g-bq-irays" aria-hidden="true"></i><i class="g-bq-ihalf" aria-hidden="true"></i><i class="g-bq-band" aria-hidden="true"></i><i class="g-bq-band w" aria-hidden="true"></i>
+        <div class="g-bq-art">${bigArt(it, 'g-bq-img', ['jump', 'peace', 'cheer', 'tease', 'heart', 'wave', 'arms-crossed'])}</div>
+        <div class="g-bq-plate">${n > 1 ? `<span class="g-bq-num">${i + 1} / ${n}</span>` : ''}<small>${esc(RAR[x.r].name)}${x.feat ? ' · Featured' : ''}${it.who ? ` · ${esc(whoName(it.who))}` : ''}</small><b>${esc(it.name)}</b>
+          <span class="g-bq-stars">${[...'★'.repeat({ R: 2, SR: 3, UR: 4 }[x.r])].map((c, k) => `<i style="--k:${k}">${c}</i>`).join('')}</span><em>${esc(KINDS[it.kind].name)}</em>${tag}</div>
+        ${x.r !== 'R' && !o.reduced ? `<div class="g-bq-cc" aria-hidden="true"><span>Take your<br>look<small>Velvet Boutique</small></span></div>` : ''}</div>`;
     }
+    function turn(i) { const c = cards[i]; if (!c) return; c.classList.remove('shake'); c.classList.add('up'); cards.forEach((k, j) => k.classList.toggle('cur', j === i)); }
     function show(i) {
       clear(); if (i >= n) return sum();
       if (me.stage !== 'show') stage('show');
-      me.i = i; const x = list[i];
-      el.querySelectorAll('.g-bq-card').forEach((c, j) => { c.classList.toggle('up', j <= i); c.classList.toggle('cur', j === i); });
-      el.querySelector('.g-bq-show').innerHTML = itemHtml(x, i);
-      flash(x.r); G.sfx(n > 1 && x.r === 'R' ? 'femc-hover' : RAR[x.r].sfx);
-      const tryable = x.item.kind === 'skin' && ready(x.item) && window.FemcTryOn;
-      if (i === n - 1 && n === 1) { done1(tryable); return; }
-      buttons(`<button type="button" class="g-btn small" data-bq="skip"><span>Skip</span></button><button type="button" class="g-btn pink small" data-bq="next"><span>${i === n - 1 ? 'See all ten' : 'Next'}</span></button>`);
-      later(T.auto[x.r], () => show(i + 1));
+      me.i = i; const x = list[i], c = cards[i], big = n === 1 || x.r !== 'R';
+      el.querySelector('.g-bq-show').innerHTML = '';
+      root.classList.remove('splash');
+      const reveal = () => {
+        turn(i);
+        G.sfx(n > 1 && x.r === 'R' ? 'femc-hover' : RAR[x.r].sfx);
+        if (!big) { buttons(`<button type="button" class="g-btn small" data-bq="skip"><span>Skip</span></button><button type="button" class="g-btn pink small" data-bq="next"><span>${i === n - 1 ? 'See all ten' : 'Next'}</span></button>`); later(T.step, () => show(i + 1)); return; }
+        later(o.reduced ? 0 : T.flip, () => {
+          el.querySelector('.g-bq-show').innerHTML = itemHtml(x, i); root.classList.add('splash'); flash(x.r);
+          if (n === 1) { done1(x.item.kind === 'skin' && ready(x.item) && window.FemcTryOn); return; }
+          buttons(`<button type="button" class="g-btn small" data-bq="skip"><span>Skip</span></button><button type="button" class="g-btn pink small" data-bq="next"><span>${i === n - 1 ? 'See all ten' : 'Next'}</span></button>`);
+          later(T.auto[x.r], () => show(i + 1));
+        });
+      };
+      if (T.shake[x.r] && c) { c.classList.add('shake'); later(T.shake[x.r], reveal); } else reveal();
     }
     function done1(tryable) {
       stage('end'); el.querySelector('.g-bq-hint').textContent = 'Enter: done · Esc: close';
       buttons(`${tryable ? `<button type="button" class="g-btn small" data-bq="try"><span>▶ Try it on</span></button>` : ''}${canPull() ? '<button type="button" class="g-btn small" data-bq="again"><span>Pull again</span></button>' : ''}<button type="button" class="g-btn pink small" data-bq="done"><span>Done</span></button>`);
     }
     function sum() {
-      clear(); stage('sum'); me.i = n;
-      el.querySelectorAll('.g-bq-card').forEach(c => c.classList.add('up'));
+      clear(); stage('sum'); me.i = n; root.classList.remove('splash');
+      cards.forEach(c => c.classList.add('up'));
+      el.querySelector('.g-bq-show').innerHTML = '';
       const refund = list.reduce((a, x) => a + x.refund, 0), nw = list.filter(x => !x.dup).length;
-      el.querySelector('.g-bq-sum').innerHTML = `<h3 class="g-bq-sumh">Ten pulls <small>${nw} new look${nw === 1 ? '' : 's'}${refund ? ` · +${refund} Velvet Plumes back` : ''}</small></h3>
-        <div class="g-bq-grid">${list.map((x, i) => `<div class="g-bq-tile r-${x.r}${x === best ? ' best' : ''}" style="--rc:${RAR[x.r].color};--i:${i}"><span class="g-wd-th">${thumb(x.item)}</span>${starsHtml(x.r)}<b>${esc(x.item.name)}</b>${x.dup ? `<small class="dup">+${x.refund}</small>` : '<small class="new">NEW</small>'}</div>`).join('')}</div>`;
+      el.querySelector('.g-bq-sum').innerHTML = `<h3 class="g-bq-sumh">Your ten <small>${nw} new look${nw === 1 ? '' : 's'}${refund ? ` · +${refund} Velvet Plumes back` : ''}</small></h3>
+        <div class="g-bq-grid">${list.map((x, i) => `<div class="g-bq-tile r-${x.r}${x === best ? ' best' : ''}" style="--rc:${RAR[x.r].color};--i:${i}"><span class="g-bq-cth">${cardHtml(x.item)}</span>${starsHtml(x.r)}<b>${esc(x.item.name)}</b>${x.dup ? `<small class="dup">+${x.refund}</small>` : '<small class="new">NEW</small>'}</div>`).join('')}</div>`;
       el.querySelector('.g-bq-hint').textContent = 'Enter: done · Esc: close';
       G.sfx('femc-on');
       buttons(`${canPull(10) ? '<button type="button" class="g-btn small" data-bq="again"><span>Pull ×10 again</span></button>' : ''}<button type="button" class="g-btn pink small" data-bq="done"><span>Done</span></button>`);
     }
-    function skip() { if (me.stage === 'sum' || me.stage === 'end') return; clear(); root.classList.add('skipped'); if (n > 1) sum(); else show(0); }
-    function next() { if (me.stage === 'deal' || me.stage === 'tell') { clear(); show(0); } else if (me.stage === 'show') show(me.i + 1); }
+    function skip() {
+      if (me.stage === 'sum' || me.stage === 'end') return; clear(); root.classList.add('skipped');
+      if (n > 1) sum(); else { stage('show'); me.i = 0; turn(0); el.querySelector('.g-bq-show').innerHTML = itemHtml(list[0], 0); root.classList.add('splash'); done1(list[0].item.kind === 'skin' && ready(list[0].item) && window.FemcTryOn); }
+    }
+    function next() {
+      if (me.stage === 'deal' || me.stage === 'tell') { clear(); if (me.stage === 'deal') stage('tell'); show(0); }
+      else if (me.stage === 'show') { if (me.i >= 0 && !cards[me.i]?.classList.contains('up')) { clear(); cards[me.i].classList.remove('shake'); show(me.i); return; } show(me.i + 1); }
+    }
     function act(a) {
       if (a === 'skip') skip(); else if (a === 'next') next(); else if (a === 'done') seqClose();
       else if (a === 'try') window.FemcTryOn && window.FemcTryOn.play(list[0].item.id, acts.querySelector('[data-bq="try"]'));
@@ -836,6 +924,7 @@ window.FemcCosmetics = (() => {
     el.querySelector('[data-wd-equip]')?.addEventListener('click', e => { if (equip(e.currentTarget.dataset.wdEquip)) { G.sfx('femc-on'); if (window.FemcFitting) window.FemcFitting.cue('equip'); rerender('[data-wd-equip]'); } });
     el.querySelector('[data-wd-portraits]')?.addEventListener('change', e => { setPortraits(e.target.checked); G.sfx('femc-click'); });
     el.querySelectorAll('[data-wd-hero]').forEach(b => b.addEventListener('click', () => { hero = b.dataset.wdHero; G.sfx('femc-hover'); rerender(`[data-wd-hero="${hero}"]`); }));
+    if (el.querySelector('.g-bq-ban')) bannerMotion(el); else lastBan = lastHero = null;
     el.querySelector('[data-wd-pull10]')?.addEventListener('click', () => {
       const list = pull10(); if (!list) return;
       fresh = { list }; G.sfx('femc-click');
