@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fitting Room Mockup</title>
+<!-- Mockup only: the Wardrobe redone as a fitting room. Real art and outfit data (data.js, from build-data.py).
+     Nothing here touches the game or a save. "Owned" is faked so the filter has something to do. -->
+<style>
+:root {
+  --pink: #ff4f9e; --pink-2: #ff8cc0; --pink-3: #ffd1e6; --night: #14070f; --deep: #0b040a; --ink: #fff4f9; --paper: #fff4f9;
+  --cond: "Avenir Next Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --R: #6ab0ff; --SR: #c58bff; --UR: #ffd36b;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: var(--deep); color: var(--ink); font: 15px/1.4 var(--cond); overflow: hidden; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.page { position: relative; display: grid; grid-template-columns: minmax(340px, 40%) 1fr; grid-template-rows: minmax(0, 1fr); height: 100vh; overflow: hidden;
+  background: radial-gradient(120% 90% at 0% 0%, #3a0f28 0, transparent 60%), linear-gradient(160deg, #1d0816, var(--deep)); }
+.page::before { content: "FITTING ROOM"; position: absolute; right: -2vw; bottom: -4vh; font: italic 900 17vw/.8 var(--cond); color: rgba(255, 79, 158, .05); letter-spacing: -.04em; pointer-events: none; white-space: nowrap; }
+
+/* ── The booth ── */
+.booth { position: relative; margin: 20px 0 20px 20px; overflow: hidden; border-radius: 4px; isolation: isolate;
+  background:
+    radial-gradient(60% 55% at 50% 30%, rgba(255, 170, 210, .38), transparent 70%),
+    repeating-linear-gradient(90deg, rgba(0,0,0,.18) 0 2px, transparent 2px 64px),
+    linear-gradient(180deg, #5a1640 0%, #3a0c29 62%, #210818 62.3%, #12040c 100%);
+  box-shadow: inset 0 0 0 2px rgba(255, 140, 192, .25), inset 0 0 80px rgba(0, 0, 0, .7), 10px 10px 0 rgba(255, 79, 158, .25); }
+.booth .floor { position: absolute; left: 0; right: 0; bottom: 0; height: 38%; background: radial-gradient(50% 40% at 50% 10%, rgba(255, 140, 192, .22), transparent 70%); z-index: 0; }
+.booth .bulbs { position: absolute; inset: 14px 14px auto; height: 10px; display: flex; justify-content: space-between; z-index: 1; }
+.booth .bulbs i { width: 8px; height: 8px; border-radius: 50%; background: #ffe7f2; box-shadow: 0 0 10px 3px rgba(255, 190, 220, .7); animation: bulb 3s ease-in-out infinite; }
+.booth .bulbs i:nth-child(odd) { animation-delay: -1.5s; }
+@keyframes bulb { 50% { opacity: .55; } }
+
+.stage { position: absolute; inset: 0; z-index: 2; }
+.fig { position: absolute; left: 50%; bottom: 0; transform-origin: 50% 100%; animation: sway 7.5s ease-in-out infinite; }
+.fig .breathe { position: absolute; inset: 0; transform-origin: 50% 100%; animation: breathe 4.2s ease-in-out infinite; }
+.fig img { position: absolute; display: block; max-width: none; user-select: none; -webkit-user-drag: none; transition: opacity .45s ease, transform .6s cubic-bezier(.2, 1, .3, 1); filter: drop-shadow(0 18px 24px rgba(0, 0, 0, .55)); }
+.fig img.out { opacity: 0; transform: translateX(-3%) scale(.985); }
+@keyframes breathe { 0%, 100% { transform: translateY(0) scaleY(1); } 50% { transform: translateY(-.5%) scaleY(1.008); } }
+@keyframes sway { 0%, 100% { transform: translateX(-50%) rotate(-.35deg); } 50% { transform: translateX(-50%) rotate(.35deg); } }
+.fig.hop .breathe { animation: hop .55s cubic-bezier(.3, 1.6, .5, 1), breathe 4.2s ease-in-out .55s infinite; }
+@keyframes hop { 40% { transform: translateY(-2.2%) scale(1.012); } }
+.soft-note { position: absolute; left: 14px; top: 34px; z-index: 6; padding: 3px 9px; background: rgba(20, 7, 15, .8); border: 1px solid rgba(255, 140, 192, .4); font: italic 800 11px/1.2 var(--cond); letter-spacing: .12em; text-transform: uppercase; color: var(--pink-3); transform: skewX(-10deg); }
+
+/* The curtain: two velvet panels gathered at the sides; they sweep shut and fall open. */
+.curtain { position: absolute; top: 0; bottom: 0; width: 54%; z-index: 4; pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .08), transparent 18%, transparent 80%, rgba(0, 0, 0, .5)),
+    repeating-linear-gradient(90deg, #6e0f43 0, #a8215f 14px, #e04b8c 22px, #a8215f 30px, #5a0b36 44px, #3c0623 52px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, .7); transition: transform .42s cubic-bezier(.6, 0, .35, 1); }
+.curtain.l { left: 0; transform-origin: 0 50%; transform: scaleX(.13); border-right: 2px solid rgba(0, 0, 0, .4); }
+.curtain.r { right: 0; transform-origin: 100% 50%; transform: scaleX(.13); border-left: 2px solid rgba(0, 0, 0, .4); }
+.booth.shut .curtain { transform: scaleX(1); }
+.booth.peek .curtain.l { transform: scaleX(.62); }
+.booth.peek .curtain.r { transform: scaleX(.62); }
+.booth.opening .curtain { transition: transform .75s cubic-bezier(.2, 1.25, .35, 1); }
+.booth .curtain::after { content: ""; position: absolute; top: 46%; width: 22px; height: 16px; border-radius: 8px; background: linear-gradient(180deg, #ffd1e6, #ff8cc0); box-shadow: 0 2px 4px rgba(0, 0, 0, .5); transition: opacity .2s; }
+.curtain.l::after { right: -6px; } .curtain.r::after { left: -6px; }
+.booth.shut .curtain::after, .booth.peek .curtain::after { opacity: 0; }
+.valance { position: absolute; left: 0; right: 0; top: 0; height: 30px; z-index: 5; pointer-events: none;
+  background: radial-gradient(circle at 20px -6px, transparent 18px, #7e1350 19px) 0 0 / 40px 30px repeat-x; filter: drop-shadow(0 4px 4px rgba(0, 0, 0, .5)); }
+.valance::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 10px; background: linear-gradient(180deg, #c03474, #7e1350); }
+
+/* Name tag on the booth */
+.tag { position: absolute; left: 22px; bottom: 26px; z-index: 6; max-width: 76%; padding: 10px 18px 10px 16px; background: var(--paper); color: var(--night); transform: skewX(-10deg) rotate(-2deg); box-shadow: 6px 6px 0 var(--pink); transition: transform .3s; }
+.tag b { display: block; font: italic 900 clamp(22px, 2.6vw, 34px)/1 var(--cond); letter-spacing: -.01em; }
+.tag small { display: block; margin-top: 4px; font: italic 800 12px/1.2 var(--cond); letter-spacing: .14em; text-transform: uppercase; color: #7a0b3e; }
+.tag .st { color: var(--rc, #7a0b3e); text-shadow: 0 0 1px #000; }
+.booth-acts { position: absolute; right: 16px; bottom: 26px; z-index: 6; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+.btn { padding: 9px 18px; border: 0; background: rgba(20, 7, 15, .92); color: #fff; font: italic 900 15px/1 var(--cond); letter-spacing: .06em; text-transform: uppercase; transform: skewX(-12deg); box-shadow: 4px 4px 0 rgba(255, 79, 158, .5); transition: transform .12s, background .12s; }
+.btn:hover, .btn:focus-visible { background: var(--pink); transform: skewX(-12deg) translateX(3px); outline: none; }
+.btn.pink { background: var(--pink); box-shadow: 4px 4px 0 #fff; }
+.btn.pink:hover { background: #fff; color: var(--night); }
+.btn[disabled] { opacity: .5; pointer-events: none; }
+
+/* ── The closet ── */
+.closet { position: relative; display: flex; flex-direction: column; min-width: 0; min-height: 0; padding: 20px 24px 0 28px; }
+.kicker { margin: 0; color: var(--pink-2); font: italic 800 12px/1.2 var(--cond); letter-spacing: .3em; text-transform: uppercase; }
+.who { display: flex; gap: 10px; margin: 8px 0 12px; padding: 4px 4px 10px; overflow-x: auto; scrollbar-width: thin; }
+.who button { position: relative; flex: 0 0 auto; width: 74px; padding: 0; border: 0; background: none; text-align: center; opacity: .62; transition: opacity .15s, transform .15s; }
+.who button .face { display: block; width: 66px; height: 66px; margin: 0 auto; overflow: hidden; background: #2a0f22 center 12% / 190% auto no-repeat; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); transition: background-color .15s; }
+.who button b { display: block; margin-top: 4px; font: italic 900 13px/1 var(--cond); letter-spacing: .02em; }
+.who button small { display: block; font: italic 700 11px/1.2 var(--cond); color: var(--pink-3); opacity: .8; }
+.who button:hover, .who button:focus-visible { opacity: .9; outline: none; }
+.who button.on { opacity: 1; transform: translateY(-2px); }
+.who button.on .face { background-color: var(--pink); }
+.who button.on::after { content: ""; position: absolute; left: 10px; right: 10px; bottom: -8px; height: 4px; background: var(--pink); transform: skewX(-20deg); }
+.who .main { margin-right: 10px; padding-right: 14px; border-right: 1px solid rgba(255, 140, 192, .25); }
+
+.hd { display: flex; align-items: flex-end; gap: 14px; margin: 0 0 10px; }
+.hd h1 { margin: 0; font: italic 900 clamp(34px, 4vw, 56px)/.9 var(--cond); letter-spacing: -.03em; transform: skewX(-8deg); text-shadow: 3px 3px 0 #7a0b3e; }
+.meter { margin-left: auto; text-align: right; font: italic 800 12px/1.3 var(--cond); letter-spacing: .1em; text-transform: uppercase; color: var(--pink-3); }
+.meter i { display: block; width: 150px; height: 6px; margin-top: 4px; background: rgba(255, 255, 255, .12); transform: skewX(-20deg); }
+.meter i span { display: block; height: 100%; background: var(--pink); }
+
+.kinds { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.kinds button, .chips button { padding: 6px 14px; border: 1.5px solid rgba(255, 140, 192, .4); background: rgba(20, 7, 15, .8); font: italic 800 13px/1.1 var(--cond); letter-spacing: .04em; transform: skewX(-10deg); transition: background .12s, color .12s, border-color .12s; }
+.kinds button.on, .chips button.on { background: var(--pink); border-color: var(--pink); color: #fff; }
+.kinds button:hover:not(.on), .chips button:hover:not(.on) { border-color: var(--pink); }
+.kinds button small { opacity: .75; margin-left: 4px; }
+.tools { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.chips { display: flex; gap: 6px; }
+.tools select { margin-left: auto; padding: 5px 10px; border: 1.5px solid rgba(255, 140, 192, .4); background: var(--night); color: var(--ink); font: italic 800 13px var(--cond); }
+
+.list { flex: 1; overflow-y: auto; padding: 4px 6px 40px 2px; scrollbar-width: thin; scrollbar-color: var(--pink) transparent; }
+.group { margin-bottom: 18px; }
+.group h3 { display: flex; align-items: baseline; gap: 10px; margin: 0 0 8px; font: italic 900 18px/1 var(--cond); letter-spacing: .04em; text-transform: uppercase; }
+.group h3::before { content: ""; width: 18px; height: 4px; background: var(--pink); transform: skewX(-20deg); align-self: center; }
+.group h3 small { font: italic 700 12px var(--cond); color: var(--pink-3); opacity: .7; letter-spacing: .1em; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 12px; }
+.card { position: relative; display: block; width: 100%; padding: 0; border: 0; background: none; text-align: left; transition: transform .15s; }
+.card .th { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden;
+  background: radial-gradient(70% 60% at 50% 35%, rgba(255, 140, 192, .28), transparent 70%), linear-gradient(180deg, #3a0f2a, #1a0713);
+  clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%); }
+.card .th img { position: absolute; left: 50%; top: 4%; width: 150%; transform: translateX(-50%); }
+.card .th img.hdth { width: auto; height: 210%; top: 3%; }
+.card .th .sw { position: absolute; inset: 14% 12%; border-radius: 3px; box-shadow: 0 6px 14px rgba(0, 0, 0, .5); }
+.card .th .ico { position: absolute; inset: 0; display: grid; place-items: center; font-size: 38px; opacity: .6; }
+.card .th::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 -3px 0 var(--rc); }
+.card b { display: block; margin-top: 6px; font: italic 900 14px/1.1 var(--cond); }
+.card small { display: block; font: italic 700 11px/1.2 var(--cond); color: var(--pink-3); opacity: .85; }
+.card .st { color: var(--rc); }
+.card .tags { position: absolute; top: 6px; right: 10px; display: flex; gap: 4px; z-index: 2; }
+.card .tags i { padding: 2px 6px; background: var(--paper); color: var(--night); font: italic 900 10px/1.2 var(--cond); letter-spacing: .08em; transform: skewX(-12deg); }
+.card .tags i.cp { background: var(--pink); color: #fff; }
+.card .wear { position: absolute; left: 10px; top: 6px; z-index: 2; padding: 2px 7px; background: var(--pink); color: #fff; font: italic 900 10px/1.2 var(--cond); letter-spacing: .1em; text-transform: uppercase; transform: skewX(-12deg); }
+.card.locked .th img, .card.locked .th .sw { filter: grayscale(.85) brightness(.55); }
+.card.locked b { opacity: .7; }
+.card:hover, .card:focus-visible { transform: translateY(-3px); outline: none; }
+.card.sel .th { background: radial-gradient(70% 60% at 50% 35%, rgba(255, 140, 192, .55), transparent 70%), linear-gradient(180deg, #7a1650, #2a0a1e); }
+.card.sel::before { content: ""; position: absolute; left: -4px; right: -4px; top: -4px; aspect-ratio: 4 / 5; border: 2px solid var(--pink); transform: skewX(-4deg); pointer-events: none; }
+details.soon { margin-top: 6px; border-top: 1px dashed rgba(255, 140, 192, .3); padding-top: 10px; }
+details.soon summary { cursor: pointer; font: italic 800 13px var(--cond); letter-spacing: .14em; text-transform: uppercase; color: var(--pink-3); }
+details.soon .cards { margin-top: 10px; opacity: .7; }
+.empty { padding: 30px 0; color: var(--pink-3); font: italic 700 15px var(--cond); }
+.desc { min-height: 2.6em; margin: 0 0 10px; color: var(--pink-3); font: italic 600 14px/1.35 var(--cond); max-width: 60ch; }
+
+.mock-note { position: fixed; right: 12px; top: 10px; z-index: 50; padding: 4px 10px; background: rgba(20, 7, 15, .9); border: 1px solid var(--pink); font: italic 800 11px var(--cond); letter-spacing: .14em; text-transform: uppercase; }
+
+@media (max-width: 860px) {
+  body { overflow-x: hidden; overflow-y: auto; }
+  .page { display: block; height: auto; overflow: visible; overflow-x: clip; }
+  .booth { height: 62vh; margin: 12px 16px 0; }
+  .closet { padding: 14px 16px 0; }
+  .list { overflow: visible; }
+  .cards { grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); }
+  .meter i { width: 100px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fig, .fig .breathe, .booth .bulbs i { animation: none !important; }
+  .curtain { transition: opacity .25s !important; }
+  .booth.shut .curtain { transform: scaleX(.13); }
+  .booth.shut .stage { opacity: 0; transition: opacity .2s; }
+}
+</style>
+</head>
+<body>
+<div class="mock-note">Mockup · nothing here saves</div>
+<div class="page">
+  <div class="booth" id="booth">
+    <div class="floor"></div>
+    <div class="bulbs"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="stage"><div class="fig" id="fig"><div class="breathe" id="breathe"></div></div></div>
+    <div class="soft-note" id="softNote" hidden></div>
+    <div class="curtain l"></div><div class="curtain r"></div>
+    <div class="valance"></div>
+    <div class="tag" id="tag"></div>
+    <div class="booth-acts">
+      <button type="button" class="btn" id="poseBtn">Strike a pose</button>
+      <button type="button" class="btn pink" id="equipBtn">Equip</button>
+    </div>
+  </div>
+  <div class="closet">
+    <p class="kicker">Wardrobe</p>
+    <div class="who" id="who" role="tablist" aria-label="Whose closet"></div>
+    <div class="hd"><h1 id="whoName"></h1><div class="meter" id="meter"></div></div>
+    <div class="kinds" id="kinds" role="tablist" aria-label="What to change"></div>
+    <div class="tools">
+      <div class="chips" id="chips"><button type="button" data-own="all" class="on">All</button><button type="button" data-own="own">Owned</button></div>
+      <select id="sort" aria-label="Sort"><option value="group">Grouped</option><option value="rarity">Rarity</option><option value="name">Name</option></select>
+    </div>
+    <p class="desc" id="desc"></p>
+    <div class="list" id="list"></div>
+  </div>
+</div>
+<script src="data.js"></script>
+<script>
+(() => {
+  const A = '../../assets/femc/';
+  const { items, own, pal } = window.WD;
+  const ORDER = ['solar', 'haechan', 'jungwon', 'jihoon', 'minji', 'akihiko', 'yukari', 'junpei', 'mitsuru', 'aigis', 'shinjiro'];
+  const NAME = { solar: 'Solar', haechan: 'Haechan', jungwon: 'Jungwon', jihoon: 'Jihoon', minji: 'Minji', akihiko: 'Akihiko', yukari: 'Yukari', junpei: 'Junpei', mitsuru: 'Mitsuru', aigis: 'Aigis', shinjiro: 'Shinjiro' };
+  const KIND = { skin: 'Outfits', weapon: 'Weapon', evoker: 'Evoker', battleui: 'Battle theme', uitheme: 'Menu colours', title: 'Title screen', wallpaper: 'Wallpaper' };
+  const SOLAR_KINDS = ['skin', 'weapon', 'evoker', 'battleui', 'uitheme', 'title', 'wallpaper'];
+  // Solar's outfits in small groups (Kat can rename / move any of these).
+  const GROUPS = [
+    ['Couple sets', i => /-cp-|^sk-cp-/.test(i.id)],
+    ['Summer', i => /swim|yukata|summersession/.test(i.id)],
+    ['Seasons & festivals', i => /wintercoat|halloween|hanbok/.test(i.id)],
+    ['Stage & spotlight', i => /idol|limelight|y2k|alphaphi|oops|snake|stage|encore/.test(i.id)],
+    ['Arcana & otherworldly', i => /arcana|velvet|phantom|angel/.test(i.id)],
+    ['Everyday', () => true],
+  ];
+  const STARS = { R: '★★★', SR: '★★★★', UR: '★★★★★' };
+  const RANK = { UR: 0, SR: 1, R: 2 };
+  // Fake ownership for the mockup: about two thirds, stable per id.
+  const hash = s => [...s].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7);
+  const owned = i => i.kind === 'skin' && i.who !== 'solar' ? hash(i.id) % 3 !== 0 : hash(i.id) % 3 !== 1;
+  const ready = i => i.kind !== 'skin' || i.pose;
+  const worn = {};   // who+kind -> id
+  let who = 'solar', kind = 'skin', sel = null, ownOnly = false, sortBy = 'group';
+
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+  const of = (w, k) => items.filter(i => i.who === w && i.kind === k);
+  const kindsFor = w => w === 'solar' ? SOLAR_KINDS.filter(k => k === 'skin' || items.some(i => i.kind === k && (k !== 'weapon' || i.who === 'solar'))) : ['skin', 'weapon'].filter(k => of(w, k).length);
+  const listOf = (w, k) => k === 'skin' || k === 'weapon' ? of(w, k) : items.filter(i => i.kind === k);
+
+  /* ── Character strip ── */
+  function paintWho() {
+    $('who').innerHTML = ORDER.filter(w => own[w]).map(w => {
+      const n = of(w, 'skin').filter(ready).length;
+      return `<button type="button" role="tab" data-who="${w}" class="${w === who ? 'on' : ''}${w === 'solar' ? ' main' : ''}" aria-selected="${w === who}">
+        <span class="face" style="background-image:url('${A}portraits/${w}/neutral.webp')"></span><b>${NAME[w]}</b><small>${n} outfit${n === 1 ? '' : 's'}</small></button>`;
+    }).join('');
+  }
+  $('who').addEventListener('click', e => {
+    const b = e.target.closest('[data-who]'); if (!b || b.dataset.who === who) return;
+    who = b.dataset.who; kind = 'skin'; sel = null;
+    paintWho(); paintCloset(); swap('full');
+  });
+
+  /* ── Closet ── */
+  function thumb(i) {
+    if (i.kind === 'skin') {
+      if (!i.pose) return '<span class="ico">👗</span>';
+      return `<img loading="lazy" src="${A}game/art/skins/${i.id}/${i.who}-pose-0.webp" alt="">`;
+    }
+    if (i.kind === 'weapon') return i.art ? `<img loading="lazy" style="width:90%;top:8%" src="${A}game/art/skins/${i.id}/weapon.webp" alt="">` : '<span class="ico">⚔</span>';
+    if (i.kind === 'evoker') return `<img loading="lazy" style="width:70%;top:22%;filter:${i.filter}" src="${A}battle/art/summon/evoker-prop.webp" alt="">`;
+    if (i.kind === 'wallpaper') return i.bg ? `<span class="sw" style="background:url('${A}${i.bg}') center/cover"></span>` : '<span class="sw" style="background:repeating-linear-gradient(45deg,#ff8cc0 0 6px,#2a0f22 6px 16px)"></span>';
+    if (i.kind === 'title') return `<span class="sw" style="background:linear-gradient(110deg, ${i.title[1]} 0 42%, ${i.title[0]} 42%)"></span>`;
+    const v = pal[i.pal] || ['#ff4f9e', '#ff8cc0', '#ffd1e6', '#14070f'];
+    return `<span class="sw" style="background:linear-gradient(135deg, ${v[3]} 0 30%, ${v[0]} 30% 60%, ${v[1]} 60% 80%, ${v[2]} 80%)"></span>`;
+  }
+  function card(i) {
+    const o = owned(i), on = worn[who + kind] === i.id;
+    const tags = (i.hd ? '<i>HD</i>' : '') + (/-cp-/.test(i.id) ? '<i class="cp">Couple</i>' : '');
+    return `<button type="button" class="card${sel === i.id ? ' sel' : ''}${o ? '' : ' locked'}" data-id="${i.id}" style="--rc:var(--${i.r})">
+      ${on ? '<span class="wear">Wearing</span>' : ''}<span class="tags">${tags}</span>
+      <span class="th">${thumb(i)}</span><b>${esc(i.name)}</b><small><span class="st">${STARS[i.r]}</span> ${o ? 'Owned' : 'Boutique'}</small></button>`;
+  }
+  function defaultCard() {
+    const on = !worn[who + kind];
+    const img = kind === 'skin' && own[who].pose ? `<img src="${A}battle/art/poses/${who}-pose-0.webp" alt="">` : '<span class="ico">○</span>';
+    return `<button type="button" class="card${sel === null ? ' sel' : ''}" data-id="" style="--rc:var(--pink)">${on ? '<span class="wear">Wearing</span>' : ''}<span class="th">${img}</span><b>${kind === 'skin' ? (who === 'solar' ? 'Her own look' : 'Their own look') : 'Default'}</b><small>Always yours</small></button>`;
+  }
+  function paintCloset() {
+    $('whoName').textContent = NAME[who] + (who === 'solar' ? '' : '’s closet');
+    const ks = kindsFor(who);
+    $('kinds').innerHTML = ks.map(k => `<button type="button" role="tab" data-kind="${k}" class="${k === kind ? 'on' : ''}">${KIND[k]}<small>${listOf(who, k).length}</small></button>`).join('');
+    $('kinds').style.display = ks.length > 1 ? '' : 'none';
+    const all = listOf(who, kind);
+    const live = all.filter(ready), soon = all.filter(i => !ready(i));
+    const n = live.filter(owned).length;
+    $('meter').innerHTML = `${n} / ${live.length} owned<i><span style="width:${live.length ? n / live.length * 100 : 0}%"></span></i>`;
+    let shown = live.filter(i => !ownOnly || owned(i));
+    let html = '';
+    if (sortBy === 'group' && kind === 'skin' && who === 'solar') {
+      const used = new Set();
+      html = `<section class="group"><div class="cards">${defaultCard()}</div></section>` + GROUPS.map(([g, test]) => {
+        const xs = shown.filter(i => !used.has(i.id) && test(i)); xs.forEach(i => used.add(i.id));
+        return xs.length ? `<section class="group"><h3>${g}<small>${xs.length}</small></h3><div class="cards">${xs.sort((a, b) => RANK[a.r] - RANK[b.r]).map(card).join('')}</div></section>` : '';
+      }).join('');
+    } else {
+      if (sortBy === 'name') shown.sort((a, b) => a.name.localeCompare(b.name));
+      else shown.sort((a, b) => RANK[a.r] - RANK[b.r] || a.name.localeCompare(b.name));
+      html = `<section class="group"><div class="cards">${defaultCard()}${shown.map(card).join('')}</div></section>`;
+    }
+    if (!shown.length && ownOnly) html += '<p class="empty">Nothing owned here yet. The Boutique has them.</p>';
+    if (soon.length) html += `<details class="soon"><summary>Coming soon (${soon.length})</summary><div class="cards">${soon.map(card).join('')}</div></details>`;
+    $('list').innerHTML = html;
+    paintDesc();
+  }
+  $('kinds').addEventListener('click', e => {
+    const b = e.target.closest('[data-kind]'); if (!b) return;
+    kind = b.dataset.kind; sel = null; paintCloset(); if (kind === 'skin') swap('peek'); else paintTag();
+  });
+  $('chips').addEventListener('click', e => {
+    const b = e.target.closest('[data-own]'); if (!b) return;
+    ownOnly = b.dataset.own === 'own';
+    $('chips').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); paintCloset();
+  });
+  $('sort').addEventListener('change', e => { sortBy = e.target.value; paintCloset(); });
+  $('list').addEventListener('click', e => {
+    const b = e.target.closest('.card'); if (!b) return;
+    const id = b.dataset.id || null; if (id === sel) return;
+    sel = id; paintCloset();
+    if (kind === 'skin') swap('peek'); else { paintTag(); hop(); }
+  });
+
+  /* ── The booth ── */
+  const fig = $('fig'), breathe = $('breathe'), booth = $('booth');
+  let mode = null, poses = [], poseAt = 0, faceTimer = 0, poseTimer = 0;
+  const cur = () => items.find(i => i.id === sel) || null;
+  const outfit = () => { const x = kind === 'skin' ? cur() : items.find(i => i.id === worn[who + 'skin']); return x && x.kind === 'skin' && x.who === who ? x : null; };
+  function lookArt() {
+    const x = outfit();
+    if (x && x.hd && Object.keys(x.hd).length) return { mode: 'hd', dir: `${A}game/art/skins/${x.id}/hd/`, hd: x.hd };
+    if (!x && own[who].hd) return { mode: 'hd', dir: A + own[who].hdDir, hd: own[who].hd };
+    if (x && x.faces && x.faces.length) return { mode: 'face', dir: `${A}game/art/skins/${x.id}/portraits/${who}/`, faces: x.faces };
+    if (!x && own[who].faces.length) return { mode: 'face', dir: `${A}portraits/${who}/`, faces: own[who].faces };
+    if (x && x.pose) return { mode: 'pose', src: `${A}game/art/skins/${x.id}/${who}-pose-0.webp` };
+    return { mode: 'pose', src: `${A}battle/art/poses/${who}-pose-0.webp` };
+  }
+  const POSE_ORDER = ['arms-crossed', 'peace', 'hair', 'wave', 'tease', 'heart', 'lookback', 'cheer', 'phone', 'thinking', 'shy'];
+  function place(img, info) {
+    // Hip-up: the figure's top ~55% fills the booth; head kept centred.
+    const W = booth.clientWidth, H = booth.clientHeight;
+    if (info.mode === 'hd') {
+      const h = H * 1.8, w = h * info.ar;
+      img.style.height = h + 'px'; img.style.width = w + 'px';
+      img.style.left = (-info.hx * w) + 'px'; img.style.top = (H * .07 - info.ht * h - H) + 'px';
+    } else if (info.mode === 'face') {
+      const w = Math.min(W * 1.08, H * 1.02); img.style.width = w + 'px'; img.style.height = 'auto';
+      img.style.left = (-w / 2) + 'px'; img.style.top = 'auto'; img.style.bottom = '0';
+    } else {
+      const h = H * 1.45, at = () => { img.style.left = (-(img.naturalWidth / img.naturalHeight) * h / 2) + 'px'; };
+      img.style.height = h + 'px'; img.style.width = 'auto';
+      img.style.top = (H * .04 - h * .1 - H) + 'px';
+      if (img.complete && img.naturalWidth) at(); else img.addEventListener('load', at, { once: true });
+    }
+  }
+  function show(src, info, instant) {
+    const old = breathe.querySelector('img:not(.out)');
+    const img = new Image(); img.alt = ''; img.className = instant ? '' : 'out'; img.src = src; place(img, info);
+    img.decoding = 'async';
+    breathe.appendChild(img);
+    const go = () => { requestAnimationFrame(() => { img.classList.remove('out'); if (old) { old.classList.add('out'); setTimeout(() => old.remove(), 600); } }); };
+    if (img.complete) go(); else img.onload = img.onerror = go;
+  }
+  function render(instant) {
+    clearInterval(faceTimer); clearInterval(poseTimer);
+    const L = lookArt(); mode = L.mode; fig.dataset.mode = mode;
+    breathe.innerHTML = ''; fig.style.bottom = mode === 'face' ? '0' : '';
+    const note = $('softNote'); note.hidden = mode !== 'pose'; note.textContent = 'Battle frame · softer until HD poses';
+    if (mode === 'hd') {
+      poses = POSE_ORDER.filter(p => L.hd[p]).concat(Object.keys(L.hd).filter(p => !POSE_ORDER.includes(p)));
+      poseAt = 0; L.cur = poses[0];
+      const at = p => Object.assign({ mode: 'hd' }, L.hd[p]);
+      show(L.dir + poses[0] + '.webp', at(poses[0]), instant);
+      // Every few seconds she settles into another everyday pose.
+      poseTimer = setInterval(() => { if (document.hidden) return; nextPose(L, at); }, 6500);
+      $('poseBtn').onclick = () => { nextPose(L, at); hop(); restart(L, at); };
+    } else if (mode === 'face') {
+      const fs = L.faces, base = fs.includes('neutral') ? 'neutral' : fs[0];
+      const idle = ['happy', 'neutral', 'neutral', 'serious', 'neutral', 'flustered', 'neutral'].filter(f => fs.includes(f));
+      show(L.dir + base + '.webp', { mode: 'face' }, instant);
+      let k = 0;
+      faceTimer = setInterval(() => { if (document.hidden) return; k = (k + 1) % idle.length; show(L.dir + idle[k] + '.webp', { mode: 'face' }); }, 3200);
+      $('poseBtn').onclick = () => { const f = ['happy', 'surprised', 'flustered', 'serious'].filter(x => fs.includes(x)); show(L.dir + f[Math.floor(Math.random() * f.length)] + '.webp', { mode: 'face' }); hop(); };
+    } else {
+      show(L.src, { mode: 'pose' }, instant);
+      $('poseBtn').onclick = hop;
+    }
+    paintTag();
+  }
+  function nextPose(L, at) { poseAt = (poseAt + 1) % poses.length; show(L.dir + poses[poseAt] + '.webp', at(poses[poseAt])); }
+  function restart(L, at) { clearInterval(poseTimer); poseTimer = setInterval(() => { if (!document.hidden) nextPose(L, at); }, 6500); }
+  function hop() { fig.classList.remove('hop'); void fig.offsetWidth; fig.classList.add('hop'); }
+  function paintTag() {
+    const x = cur(), it = x || null;
+    const nm = it ? it.name : kind === 'skin' ? (who === 'solar' ? 'Her own look' : 'Their own look') : `Default ${KIND[kind].toLowerCase()}`;
+    const sub = it ? `<span class="st" style="--rc:var(--${it.r})">${STARS[it.r]}</span> · ${KIND[it.kind] === 'Outfits' ? 'Outfit' : KIND[it.kind]}` : NAME[who];
+    $('tag').innerHTML = `<b>${esc(nm)}</b><small>${sub}</small>`;
+    const can = !it || owned(it), on = (worn[who + kind] || null) === (it ? it.id : null);
+    const eq = $('equipBtn'); eq.textContent = !can ? 'In the Boutique' : on ? 'Wearing' : 'Equip'; eq.disabled = !can || on;
+    $('poseBtn').style.display = kind === 'skin' ? '' : 'none';
+    paintDesc();
+  }
+  function paintDesc() { const x = cur(); $('desc').textContent = x ? x.desc : kind === 'skin' ? 'Pick an outfit to try it on.' : 'Pick one to preview it.'; }
+  $('equipBtn').addEventListener('click', () => {
+    const x = cur(); if (x && !owned(x)) return;
+    if (x) worn[who + kind] = x.id; else delete worn[who + kind];
+    paintCloset(); paintTag(); hop(); swish(.5);
+    if (mode === 'face' && kind === 'skin') { const L = lookArt(); if (L.faces && L.faces.includes('happy')) show(L.dir + 'happy.webp', { mode: 'face' }); }
+  });
+
+  /* The curtain. full: swept shut and thrown open (a new person). peek: half-drawn and back (a new outfit). */
+  let busy = 0;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function swap(kindOf) {
+    const id = ++busy;
+    booth.classList.remove('opening', 'peek', 'shut');
+    void booth.offsetWidth;
+    booth.classList.add(kindOf === 'full' ? 'shut' : reduced ? 'shut' : 'peek');
+    swish(kindOf === 'full' ? 1 : .6);
+    setTimeout(() => {
+      if (id !== busy) return;
+      render(true);
+      setTimeout(() => {
+        if (id !== busy) return;
+        booth.classList.add('opening'); booth.classList.remove('shut', 'peek'); swish(.8, true); hop();
+        setTimeout(() => { if (id === busy) booth.classList.remove('opening'); }, 800);
+      }, kindOf === 'full' ? 220 : 60);
+    }, kindOf === 'full' ? 430 : 300);
+  }
+
+  /* A fabric swish and curtain rings (Web Audio; nothing to load). */
+  let ac = null;
+  function swish(v = 1, rings) {
+    try {
+      ac = ac || new (window.AudioContext || window.webkitAudioContext)();
+      const t = ac.currentTime, len = .38, buf = ac.createBuffer(1, ac.sampleRate * len, ac.sampleRate), d = buf.getChannelData(0);
+      for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.sin(Math.PI * i / d.length);
+      const src = ac.createBufferSource(); src.buffer = buf;
+      const f = ac.createBiquadFilter(); f.type = 'bandpass'; f.Q.value = .8; f.frequency.setValueAtTime(900, t); f.frequency.exponentialRampToValueAtTime(2600, t + len);
+      const g = ac.createGain(); g.gain.value = .16 * v;
+      src.connect(f).connect(g).connect(ac.destination); src.start(t);
+      if (rings) for (let k = 0; k < 4; k++) {
+        const o = ac.createOscillator(), og = ac.createGain(); o.type = 'triangle'; o.frequency.value = 2400 + k * 180;
+        og.gain.setValueAtTime(0, t + k * .05); og.gain.linearRampToValueAtTime(.03 * v, t + k * .05 + .005); og.gain.exponentialRampToValueAtTime(.0001, t + k * .05 + .12);
+        o.connect(og).connect(ac.destination); o.start(t + k * .05); o.stop(t + k * .05 + .14);
+      }
+    } catch (e) {}
+  }
+
+  addEventListener('resize', () => { const L = lookArt(); breathe.querySelectorAll('img').forEach(img => {
+    if (L.mode === 'hd') { const p = (img.src.match(/\/([^/]+)\.webp/) || [])[1]; if (L.hd[p]) place(img, Object.assign({ mode: 'hd' }, L.hd[p])); } else place(img, L);
+  }); });
+
+  const q = new URLSearchParams(location.search);   // ?who=haechan&sel=<id> opens straight on a look (handy for checking)
+  if (own[q.get('who')]) who = q.get('who');
+  if (items.some(i => i.id === q.get('sel'))) sel = q.get('sel');
+  paintWho(); paintCloset(); render(true);
+  booth.classList.add('shut'); setTimeout(() => { booth.classList.add('opening'); booth.classList.remove('shut'); }, 350);
+})();
+</script>
+</body>
+</html>
