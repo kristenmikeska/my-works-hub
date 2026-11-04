@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boutique Mockup</title>
+<!-- Mockup only: a P5X-style Boutique. Real banners and outfits (data.js from build-data.py); odds and plumes are pretend. -->
+<style>
+:root {
+  --pink: #ff4f9e; --pink-2: #ff8cc0; --pink-3: #ffd1e6; --night: #14070f; --deep: #0b040a; --paper: #fff4f9;
+  --cond: "Avenir Next Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --R: #6ab0ff; --SR: #c58bff; --UR: #ffd36b; --bc: #ff4f9e;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: var(--deep); color: var(--paper); font: 15px/1.4 var(--cond); overflow: hidden; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.app { position: relative; display: grid; grid-template-columns: 250px 1fr; grid-template-rows: 56px minmax(0, 1fr); height: 100vh; }
+
+/* Top bar */
+.top { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px; padding: 0 22px; background: linear-gradient(90deg, #000, rgba(0, 0, 0, .6)); z-index: 5; }
+.top h1 { margin: 0; font: italic 900 30px/1 var(--cond); letter-spacing: -.02em; transform: skewX(-10deg); text-shadow: 3px 3px 0 var(--pink); }
+.top .plumes { margin-left: auto; padding: 6px 16px; background: var(--paper); color: var(--night); font: italic 900 17px/1 var(--cond); transform: skewX(-12deg); box-shadow: 4px 4px 0 var(--pink); }
+.top .plumes b { color: var(--pink); }
+.mock { padding: 3px 9px; border: 1px solid var(--pink); font: italic 800 11px var(--cond); letter-spacing: .14em; text-transform: uppercase; }
+
+/* Banner list (left) */
+.tabs { overflow-y: auto; padding: 14px 0 20px 14px; background: linear-gradient(90deg, #000 60%, transparent); z-index: 4; scrollbar-width: none; }
+.tab { position: relative; display: grid; grid-template-columns: 62px 1fr; align-items: center; gap: 10px; width: 100%; height: 76px; margin-bottom: 10px; padding: 0 10px 0 0; border: 0; background: #1c0a16; text-align: left; overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%); transition: transform .2s cubic-bezier(.2, 1.2, .4, 1), background .2s; }
+.tab::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--c); }
+.tab .th { position: relative; width: 62px; height: 76px; overflow: hidden; background: radial-gradient(70% 70% at 50% 40%, color-mix(in srgb, var(--c) 50%, transparent), transparent); }
+.tab .th img { position: absolute; left: 50%; top: 4px; height: 220%; transform: translateX(-50%); }
+.tab b { display: block; font: italic 900 17px/1 var(--cond); letter-spacing: -.01em; }
+.tab small { display: block; margin-top: 3px; font: italic 700 11px/1.2 var(--cond); color: var(--pink-3); opacity: .8; letter-spacing: .08em; text-transform: uppercase; }
+.tab:hover { background: #2a0f22; }
+.tab.on { transform: translateX(12px); background: var(--paper); color: var(--night); }
+.tab.on small { color: #7a0b3e; }
+.tab .new { position: absolute; right: 18px; top: 6px; padding: 1px 6px; background: var(--pink); color: #fff; font: italic 900 10px/1.3 var(--cond); transform: skewX(-12deg); }
+
+/* The splash */
+.splash { position: relative; overflow: hidden; isolation: isolate; background: #000; }
+.bg { position: absolute; inset: 0; z-index: 0;
+  background: radial-gradient(70% 90% at 72% 40%, color-mix(in srgb, var(--bc) 55%, transparent), transparent 70%),
+              radial-gradient(circle, rgba(255, 255, 255, .12) 1.2px, transparent 1.6px) 0 0 / 14px 14px,
+              linear-gradient(160deg, #24091a, #000); transition: background .6s; }
+.rays { position: absolute; left: 72%; top: 42%; width: 220vmax; height: 220vmax; margin: -110vmax; z-index: 0; opacity: .22;
+  background: repeating-conic-gradient(from 0deg, color-mix(in srgb, var(--bc) 80%, #fff) 0 6deg, transparent 6deg 18deg); animation: spin 90s linear infinite; mask: radial-gradient(circle, #000 10%, transparent 45%); }
+@keyframes spin { to { transform: rotate(360deg); } }
+.slashes { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.slashes i { position: absolute; top: -30%; bottom: -30%; transform: skewX(-22deg); }
+.slashes i:nth-child(1) { left: 34%; width: 9%; background: var(--pink); opacity: .9; }
+.slashes i:nth-child(2) { left: 45%; width: 2%; background: #fff; opacity: .85; }
+.slashes i:nth-child(3) { left: 8%; width: 22%; background: rgba(0, 0, 0, .55); }
+.ghost { position: absolute; right: -2%; bottom: -6%; z-index: 1; font: italic 900 22vw/.75 var(--cond); letter-spacing: -.05em; color: color-mix(in srgb, var(--bc) 18%, transparent); white-space: nowrap; pointer-events: none; text-transform: uppercase; }
+
+.cast { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.cast img { position: absolute; bottom: 0; max-width: none; filter: drop-shadow(-10px 0 0 var(--pink)) drop-shadow(14px 18px 22px rgba(0, 0, 0, .6)); transition: transform .35s ease-out; }
+.cast img.back { filter: brightness(.55) saturate(.8) drop-shadow(10px 14px 18px rgba(0, 0, 0, .6)); }
+.cast img.weapon { bottom: 10%; filter: drop-shadow(0 0 18px color-mix(in srgb, var(--bc) 80%, transparent)) drop-shadow(10px 14px 18px rgba(0, 0, 0, .6)); }
+
+.title { position: absolute; left: 4%; top: 7%; z-index: 3; transform: skewX(-9deg); }
+.title .kind { display: inline-block; margin-bottom: 10px; padding: 4px 12px; background: var(--paper); color: var(--night); font: italic 900 14px/1 var(--cond); letter-spacing: .2em; text-transform: uppercase; box-shadow: 4px 4px 0 var(--bc); }
+.title h2 { margin: 0; font: italic 900 clamp(48px, 7.4vw, 118px)/.82 var(--cond); letter-spacing: -.04em; text-transform: uppercase; text-shadow: .05em .05em 0 var(--night), .09em .09em 0 var(--bc); }
+.title h2 span { display: block; }
+.title h2 span:nth-child(2) { margin-left: .5em; color: var(--night); -webkit-text-stroke: 2px #fff; text-shadow: .05em .05em 0 var(--bc); }
+.title .ends { margin-top: 14px; font: italic 800 15px var(--cond); letter-spacing: .14em; text-transform: uppercase; color: var(--pink-3); }
+.title .ends b { color: #fff; font-size: 18px; }
+
+.rate { position: absolute; left: 4%; top: 46%; z-index: 3; max-width: 38%; }
+.rate .plate { display: inline-block; padding: 10px 20px 10px 16px; background: var(--paper); color: var(--night); transform: skewX(-12deg) rotate(-2deg); box-shadow: 6px 6px 0 var(--pink); }
+.rate .plate small { display: block; font: italic 900 12px/1 var(--cond); letter-spacing: .24em; color: var(--pink); text-transform: uppercase; }
+.rate .plate b { display: block; margin-top: 4px; font: italic 900 clamp(22px, 2.6vw, 34px)/1 var(--cond); }
+.rate .plate .st { color: var(--rc); text-shadow: 0 0 1px #000; font-size: 15px; letter-spacing: .1em; }
+.rate p { margin: 14px 0 0; max-width: 34ch; color: var(--pink-3); font: italic 600 15px/1.35 var(--cond); text-shadow: 0 1px 4px #000; }
+
+.feat { position: absolute; left: 4%; bottom: 22px; z-index: 4; display: flex; gap: 8px; max-width: 52%; overflow-x: auto; padding: 6px 4px 8px; scrollbar-width: thin; scrollbar-color: var(--pink) transparent; }
+.feat button { position: relative; flex: 0 0 auto; width: 70px; height: 86px; padding: 0; border: 0; overflow: hidden; background: #1c0a16; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); transition: transform .15s; }
+.feat button::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 -4px 0 var(--rc); }
+.feat button img { position: absolute; left: 50%; top: 3px; height: 230%; transform: translateX(-50%); }
+.feat button img.w { height: auto; width: 140%; top: 22%; transform: translateX(-50%) rotate(-30deg); }
+.feat button .g { position: absolute; inset: 0; display: grid; place-items: center; font-size: 26px; }
+.feat button.on { transform: translateY(-6px); background: color-mix(in srgb, var(--bc) 50%, #1c0a16); }
+.feat button.on::before { content: ""; position: absolute; inset: 0; z-index: 1; border: 2px solid #fff; }
+.feat button:hover { transform: translateY(-4px); }
+
+.side { position: absolute; right: 22px; bottom: 22px; z-index: 4; width: min(380px, 40%); }
+.pity { padding: 12px 16px; margin-bottom: 12px; background: rgba(0, 0, 0, .72); border-left: 4px solid var(--pink); transform: skewX(-6deg); }
+.pity > * { transform: skewX(6deg); }
+.pity .row { display: flex; align-items: baseline; gap: 8px; font: italic 800 14px var(--cond); }
+.pity .row b { margin-left: auto; font-size: 20px; }
+.pity .bar { height: 6px; margin: 4px 0 10px; background: rgba(255, 255, 255, .12); transform: skewX(-20deg); }
+.pity .bar i { display: block; height: 100%; background: var(--c); transition: width .5s; }
+.pity .note { font: italic 700 12px var(--cond); color: var(--pink-3); opacity: .85; }
+.acts { display: flex; gap: 8px; margin-bottom: 10px; }
+.btn { padding: 9px 16px; border: 0; background: rgba(20, 7, 15, .92); color: #fff; font: italic 900 14px/1 var(--cond); letter-spacing: .06em; text-transform: uppercase; transform: skewX(-12deg); box-shadow: 4px 4px 0 rgba(255, 79, 158, .5); }
+.btn:hover { background: var(--pink); }
+.pulls { display: grid; grid-template-columns: 1fr 1.25fr; gap: 12px; }
+.pull { position: relative; padding: 12px 10px 10px; border: 0; background: var(--paper); color: var(--night); text-align: center; transform: skewX(-12deg); box-shadow: 6px 6px 0 var(--pink); transition: transform .12s, box-shadow .12s; }
+.pull b { display: block; font: italic 900 26px/1 var(--cond); letter-spacing: -.01em; }
+.pull small { display: block; margin-top: 4px; font: italic 800 13px var(--cond); color: #7a0b3e; }
+.pull.ten { background: var(--pink); color: #fff; box-shadow: 6px 6px 0 #fff; }
+.pull.ten small { color: #fff; }
+.pull:hover { transform: skewX(-12deg) translate(-2px, -2px); box-shadow: 9px 9px 0 var(--night); }
+
+/* Banner switch: a slash wipes across */
+.wipe { position: absolute; top: -10%; bottom: -10%; left: 0; z-index: 6; width: 70%; background: var(--pink); transform: skewX(-20deg) translateX(-150%); pointer-events: none; }
+.wipe.w2 { width: 22%; background: #fff; }
+
+/* Details drawer */
+.drawer { position: absolute; right: 22px; bottom: 210px; z-index: 7; width: min(380px, 40%); padding: 14px 18px; background: var(--paper); color: var(--night); box-shadow: 6px 6px 0 var(--pink); display: none; font: 600 13px/1.45 var(--cond); }
+.drawer.on { display: block; }
+.drawer h4 { margin: 0 0 6px; font: italic 900 16px var(--cond); text-transform: uppercase; letter-spacing: .1em; }
+
+/* ── The pull ── */
+.ov { position: fixed; inset: 0; z-index: 50; display: none; background: #000; overflow: hidden; }
+.ov.on { display: block; }
+.ov .skip { position: absolute; right: 20px; top: 16px; z-index: 9; }
+.ov .stack { position: absolute; left: 50%; top: 50%; width: 150px; height: 220px; margin: -110px 0 0 -75px; }
+.card { position: absolute; left: 50%; top: 50%; width: 120px; height: 176px; margin: -88px 0 0 -60px; perspective: 900px; }
+.card .in { position: absolute; inset: 0; transform-style: preserve-3d; transition: transform .5s cubic-bezier(.3, 1.3, .5, 1); }
+.card.flip .in { transform: rotateY(180deg); }
+.card .face, .card .back { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 6px; overflow: hidden; }
+.card .back { background: radial-gradient(circle at 50% 50%, #3a0f2a 0 22%, transparent 23%), repeating-linear-gradient(45deg, #1c0a16 0 8px, #12050e 8px 16px); border: 2px solid var(--pink); box-shadow: 0 0 0 3px #000; }
+.card .back::after { content: "☀"; position: absolute; inset: 0; display: grid; place-items: center; font-size: 46px; color: var(--pink); }
+.card.glow .back { box-shadow: 0 0 22px 6px var(--rc), 0 0 0 3px var(--rc); border-color: #fff; }
+.card .face { transform: rotateY(180deg); background: radial-gradient(70% 60% at 50% 35%, color-mix(in srgb, var(--rc) 55%, transparent), transparent 75%), linear-gradient(180deg, #2a0f22, #0b040a); border: 2px solid var(--rc); }
+.card .face img { position: absolute; left: 50%; top: 6px; height: 200%; transform: translateX(-50%); }
+.card .face img.w { height: auto; width: 150%; top: 24%; transform: translateX(-50%) rotate(-30deg); }
+.card .face .g { position: absolute; inset: 0; display: grid; place-items: center; font-size: 40px; }
+.card .face b { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 6px 6px; background: linear-gradient(transparent, rgba(0, 0, 0, .9) 45%); font: italic 900 13px/1.05 var(--cond); text-align: center; }
+.card .face b small { display: block; color: var(--rc); font-size: 11px; letter-spacing: .08em; }
+.card .tagnew { position: absolute; right: -6px; top: 8px; z-index: 2; padding: 2px 7px; background: var(--pink); color: #fff; font: italic 900 11px/1.2 var(--cond); transform: skewX(-12deg) rotate(8deg); backface-visibility: hidden; }
+.ov .hint { position: absolute; left: 0; right: 0; bottom: 26px; text-align: center; font: italic 800 14px var(--cond); letter-spacing: .2em; text-transform: uppercase; color: var(--pink-3); opacity: .8; }
+.ov .bolt { position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0; background: radial-gradient(circle at 50% 50%, var(--rc), transparent 60%); mix-blend-mode: screen; }
+
+/* The Ultra (and Super Rare) splash: P5X's big character moment, as a calling card */
+.big { position: absolute; inset: 0; z-index: 8; display: none; background: #000; overflow: hidden; }
+.big.on { display: block; }
+.big .rays { left: 64%; top: 46%; opacity: .35; --bc: var(--rc); }
+.big .band { position: absolute; top: -20%; bottom: -20%; left: 26%; width: 30%; background: var(--rc); transform: skewX(-20deg); }
+.big .band.w { left: 54%; width: 4%; background: #fff; }
+.big .halftone { position: absolute; inset: 0; background: radial-gradient(circle, rgba(255, 255, 255, .16) 1.4px, transparent 1.8px) 0 0 / 12px 12px; }
+.big .fig { position: absolute; right: 6%; bottom: 0; height: 104%; max-width: none; filter: drop-shadow(-14px 0 0 var(--pink)) drop-shadow(14px 14px 0 #fff) drop-shadow(18px 24px 28px rgba(0, 0, 0, .7)); }
+.big .fig.w { height: auto; width: 60%; bottom: 18%; right: 8%; transform: rotate(-22deg); }
+.big .who { position: absolute; left: 6%; top: 18%; transform: skewX(-10deg); }
+.big .who small { display: inline-block; padding: 4px 12px; background: #fff; color: #000; font: italic 900 14px/1 var(--cond); letter-spacing: .26em; text-transform: uppercase; }
+.big .who h3 { margin: 10px 0 0; font: italic 900 clamp(46px, 7.6vw, 120px)/.85 var(--cond); letter-spacing: -.04em; text-transform: uppercase; max-width: 9ch; text-shadow: .05em .05em 0 #000, .09em .09em 0 var(--pink); }
+.big .stars { margin-top: 16px; font-size: clamp(26px, 3vw, 44px); color: var(--rc); letter-spacing: .1em; text-shadow: 0 0 14px var(--rc); }
+.big .stars i { display: inline-block; font-style: normal; }
+.big .newbig { position: absolute; left: 6%; bottom: 14%; padding: 8px 18px; background: var(--pink); color: #fff; font: italic 900 30px/1 var(--cond); transform: skewX(-12deg) rotate(-4deg); box-shadow: 6px 6px 0 #fff; }
+.big .card-cc { position: absolute; left: 50%; top: 50%; width: 46vmin; height: 64vmin; margin: -32vmin 0 0 -23vmin; z-index: 5; background: #000; border: 3px solid var(--rc); box-shadow: 0 0 60px var(--rc); display: grid; place-items: center; }
+.big .card-cc span { font: italic 900 6vmin/1 var(--cond); letter-spacing: -.02em; color: var(--rc); text-transform: uppercase; transform: skewX(-10deg); text-align: center; }
+.big .card-cc span small { display: block; font-size: .35em; letter-spacing: .3em; color: #fff; margin-top: 1vmin; }
+
+.sum { position: absolute; inset: 0; z-index: 7; display: none; align-content: center; justify-content: center; gap: 22px; padding: 40px; background: radial-gradient(70% 70% at 50% 40%, #3a0f2a, #000); }
+.sum.on { display: grid; }
+.sum h3 { margin: 0; text-align: center; font: italic 900 46px/1 var(--cond); transform: skewX(-10deg); text-shadow: 4px 4px 0 var(--pink); }
+.sum .grid { display: grid; grid-template-columns: repeat(5, 120px); gap: 14px; justify-content: center; }
+.sum .grid .card { position: relative; left: auto; top: auto; margin: 0; }
+.sum .row { display: flex; gap: 14px; justify-content: center; }
+
+@media (max-width: 860px) {
+  .app { grid-template-columns: 1fr; grid-template-rows: 50px auto minmax(0, 1fr); }
+  .tabs { display: flex; gap: 8px; padding: 8px 12px; overflow-x: auto; overflow-y: hidden; background: #000; }
+  .tab { flex: 0 0 200px; height: 62px; margin: 0; }
+  .tab .th { height: 62px; }
+  .tab.on { transform: translateY(-2px); }
+  .splash { overflow-y: auto; }
+  .title { top: 4%; } .title h2 { font-size: 46px; }
+  .rate { top: 30%; max-width: 70%; } .rate p { display: none; }
+  .feat { left: 12px; right: 12px; max-width: none; bottom: 230px; }
+  .side { left: 16px; right: 16px; width: auto; bottom: 14px; }
+  .drawer { left: 16px; right: 16px; width: auto; }
+  .sum .grid { grid-template-columns: repeat(5, 62px); gap: 8px; }
+  .sum .grid .card { width: 62px; height: 92px; }
+  .ghost { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .rays { animation: none; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top"><h1>Boutique</h1><span class="mock">Mockup · pretend plumes</span><span class="plumes">◆ <b id="plumes">60</b> plumes</span></div>
+  <nav class="tabs" id="tabs" aria-label="Banners"></nav>
+  <main class="splash" id="splash">
+    <div class="bg"></div><div class="rays"></div><div class="slashes"><i></i><i></i><i></i></div>
+    <div class="ghost" id="ghost"></div>
+    <div class="cast" id="cast"></div>
+    <div class="title" id="title"></div>
+    <div class="rate" id="rate"></div>
+    <div class="feat" id="feat" aria-label="Featured looks"></div>
+    <div class="side">
+      <div class="pity" id="pity"></div>
+      <div class="acts"><button type="button" class="btn" id="details">Odds & rules</button><button type="button" class="btn" id="preview">▶ Try it on</button></div>
+      <div class="pulls"><button type="button" class="pull" data-n="1"><b>Pull ×1</b><small>◆ 2 plumes</small></button><button type="button" class="pull ten" data-n="10"><b>Pull ×10</b><small>◆ 20 plumes · a Super Rare or better guaranteed</small></button></div>
+    </div>
+    <div class="drawer" id="drawer"><h4>Odds</h4>Rare 76% · Super Rare 20% · Ultra 4%.<br>Half of every Super Rare and Ultra is from this banner's featured looks.<br>A Super Rare or better within 10 pulls, an Ultra within 40. Pity is shared by every banner.<br>A look you already own gives plumes back.</div>
+    <i class="wipe"></i><i class="wipe w2"></i>
+  </main>
+</div>
+
+<div class="ov" id="ov">
+  <button type="button" class="btn skip" id="skip">Skip ▸▸</button>
+  <div class="bolt" id="bolt"></div>
+  <div id="table"></div>
+  <div class="hint" id="hint"></div>
+  <div class="big" id="big"></div>
+  <div class="sum" id="sum"></div>
+</div>
+
+<script src="data.js"></script>
+<script>
+(() => {
+  const A = '../../assets/femc/';
+  const { banners, items } = window.BQ;
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+  const STARS = { R: '★★★', SR: '★★★★', UR: '★★★★★' };
+  const NAME = { solar: 'Solar', haechan: 'Haechan', jungwon: 'Jungwon', jihoon: 'Jihoon', minji: 'Minji', akihiko: 'Akihiko', yukari: 'Yukari', junpei: 'Junpei', mitsuru: 'Mitsuru', aigis: 'Aigis', shinjiro: 'Shinjiro' };
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Pretend dates: each banner "ends" a different number of days from now.
+  const daysLeft = b => 3 + (b.id.length * 7) % 26;
+  let bi = 0, hero = null, plumes = 60, pSR = 3, pUR = 22;
+  const owned = new Set(['sk-date', 'sk-yukata', 'sk-emo']);
+  const it = id => items[id];
+  const skins = b => b.featured.map(it).filter(x => x && x.kind === 'skin' && x.pose);
+  const live = banners.filter(b => skins(b).length);
+
+  /* Pictures */
+  const HERO_POSES = ['peace', 'jump', 'tease', 'cheer', 'heart', 'wave', 'arms-crossed'];
+  function figSrc(x, prefer) {
+    if (x.kind === 'weapon') return x.art ? `${A}game/art/skins/${x.id}/weapon.webp` : null;
+    if (x.kind !== 'skin') return null;
+    if (x.hd) { const p = (prefer || HERO_POSES).find(q => x.hd[q]) || Object.keys(x.hd)[0]; return `${A}game/art/skins/${x.id}/hd/${p}.webp`; }
+    return x.pose ? `${A}game/art/skins/${x.id}/${x.who}-pose-5.webp` : null;
+  }
+  const thumbSrc = x => x.kind === 'skin' ? (x.hd && x.hd['arms-crossed'] ? `${A}game/art/skins/${x.id}/hd/arms-crossed.webp` : `${A}game/art/skins/${x.id}/${x.who}-pose-0.webp`) : figSrc(x);
+  const glyph = x => ({ evoker: '✦', battleui: '⚔', uitheme: '◐', title: '❖', wallpaper: '▦', weapon: '⚔' })[x.kind] || '?';
+  function thumbHtml(x, cls = '') {
+    const s = thumbSrc(x);
+    if (!s) return `<span class="g">${glyph(x)}</span>`;
+    return `<img loading="lazy" class="${x.kind === 'weapon' ? 'w' : cls}" src="${s}" alt="" ${x.filter ? `style="filter:${x.filter}"` : ''}>`;
+  }
+  // The headline look: the first Ultra outfit with HD poses, else the first Ultra, else the first outfit.
+  const headline = b => { const s = skins(b); return s.find(x => x.r === 'UR' && x.hd) || s.find(x => x.r === 'UR') || s.find(x => x.hd) || s[0]; };
+
+  /* Banner list */
+  function paintTabs() {
+    $('tabs').innerHTML = live.map((b, i) => {
+      const h = headline(b);
+      return `<button type="button" class="tab${i === bi ? ' on' : ''}" data-i="${i}" style="--c:${b.color}"><span class="th">${thumbHtml(h)}</span>
+        <span><b>${esc(b.name)}</b><small>${esc(b.kind === 'Main' ? 'Monthly' : b.kind)} · ${daysLeft(b)} days left</small></span>${i % 4 === 1 ? '<span class="new">NEW</span>' : ''}</button>`;
+    }).join('');
+  }
+  $('tabs').addEventListener('click', e => { const t = e.target.closest('.tab'); if (!t || +t.dataset.i === bi) return; bi = +t.dataset.i; hero = null; paintTabs(); switchBanner(); });
+
+  /* The splash */
+  function paintSplash() {
+    const b = live[bi], h = hero || headline(b), sp = $('splash');
+    sp.style.setProperty('--bc', b.color);
+    $('ghost').textContent = b.name.split(' ')[0];
+    const words = b.name.split(' ');
+    $('title').innerHTML = `<span class="kind">${esc(b.kind === 'Main' ? 'Monthly banner' : b.kind + ' banner')}</span>
+      <h2>${words.length > 1 ? `<span>${esc(words.slice(0, -1).join(' '))}</span><span>${esc(words[words.length - 1])}</span>` : `<span>${esc(words[0])}</span>`}</h2>
+      <div class="ends">Ends in <b>${daysLeft(b)}</b> days</div>`;
+    $('rate').innerHTML = `<span class="plate" style="--rc:var(--${h.r})"><small>Rate up${h.kind === 'skin' ? ' · ' + esc(NAME[h.who] || '') : ''}</small><b>${esc(h.name)}</b><span class="st">${STARS[h.r]}</span></span><p>${esc(h.desc)}</p>`;
+    // The cast: the headline big on the right, two more featured looks behind it.
+    const H = sp.clientHeight, W = sp.clientWidth;
+    const others = skins(b).filter(x => x !== h).sort((p, q) => (q.who !== h.who) - (p.who !== h.who) || !!q.hd - !!p.hd).slice(0, 2);
+    const fig = (x, cls, hgt, right, prefer) => { const s = figSrc(x, prefer); return s ? `<img class="${cls}" src="${s}" alt="" style="height:${hgt}px;right:${right}px" data-depth="${cls === 'back' ? .4 : 1}">` : ''; };
+    let html = '';
+    if (h.kind === 'skin') {
+      others.forEach((x, k) => { html += fig(x, 'back', H * (x.hd ? .82 : .62), W * (k ? .36 : .02), ['arms-crossed', 'hair', 'tease']); });
+      html += fig(h, '', H * (h.hd ? 1.02 : .8), W * .1);
+    } else if (h.kind === 'weapon' && figSrc(h)) html = `<img class="weapon" src="${figSrc(h)}" alt="" style="width:${W * .5}px;right:${W * .06}px;transform:rotate(-24deg)" data-depth="1">`;
+    $('cast').innerHTML = html;
+    $('feat').innerHTML = b.featured.map(it).filter(Boolean).filter(x => x.kind !== 'skin' || x.pose).map(x =>
+      `<button type="button" data-id="${x.id}" class="${x === h ? 'on' : ''}" style="--rc:var(--${x.r})" title="${esc(x.name)}">${thumbHtml(x)}</button>`).join('');
+    $('preview').style.display = h.kind === 'skin' ? '' : 'none';
+    paintPity();
+  }
+  $('feat').addEventListener('click', e => { const t = e.target.closest('[data-id]'); if (!t) return; hero = it(t.dataset.id); paintSplash(); slam(); });
+  function paintPity() {
+    $('pity').innerHTML = `<div class="row">Super Rare or better within <b>${10 - pSR}</b></div><div class="bar" style="--c:var(--SR)"><i style="width:${pSR * 10}%"></i></div>
+      <div class="row">Ultra within <b>${40 - pUR}</b></div><div class="bar" style="--c:var(--UR)"><i style="width:${pUR / 40 * 100}%"></i></div>
+      <div class="note">Pity is shared by every banner · next Ultra is 50 / 50 featured</div>`;
+    $('plumes').textContent = plumes;
+  }
+  // Parallax: the cast drifts a little with the mouse.
+  $('splash').addEventListener('pointermove', e => {
+    if (reduced) return; const r = e.currentTarget.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - .5, dy = (e.clientY - r.top) / r.height - .5;
+    $('cast').querySelectorAll('img').forEach(i => { const d = +i.dataset.depth || 1; i.style.translate = `${-dx * 18 * d}px ${-dy * 8 * d}px`; });
+  });
+  function slam() {
+    if (reduced) return;
+    $('title').animate([{ transform: 'skewX(-9deg) translateX(-60px)', opacity: 0 }, { transform: 'skewX(-9deg)', opacity: 1 }], { duration: 420, easing: 'cubic-bezier(.2, 1.3, .4, 1)' });
+    $('rate').animate([{ transform: 'translateY(20px)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 400, delay: 120, easing: 'cubic-bezier(.2, 1.3, .4, 1)', fill: 'backwards' });
+    $('cast').querySelectorAll('img').forEach((i, k, all) => i.animate([{ transform: 'translateX(120px)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 520, delay: 60 + (all.length - 1 - k) * 90, easing: 'cubic-bezier(.2, 1, .3, 1)', fill: 'backwards' }));
+  }
+  function switchBanner() {
+    if (reduced) { paintSplash(); return; }
+    const w = document.querySelectorAll('.wipe');
+    w.forEach((el, k) => el.animate([{ transform: 'skewX(-20deg) translateX(-150%)' }, { transform: 'skewX(-20deg) translateX(40%)', offset: .5 }, { transform: 'skewX(-20deg) translateX(250%)' }], { duration: 620, delay: k * 50, easing: 'cubic-bezier(.7, 0, .3, 1)' }));
+    setTimeout(() => { paintSplash(); slam(); }, 300);
+  }
+  $('details').onclick = () => $('drawer').classList.toggle('on');
+  $('preview').onclick = () => alert('In the game this opens the fitting room with the look on.');
+
+  /* ── Pulls (pretend odds with the game's pity) ── */
+  function roll(guaranteeSR) {
+    pSR++; pUR++;
+    let r = Math.random() < .04 ? 'UR' : Math.random() < .2 / .96 ? 'SR' : 'R';
+    if (pUR >= 40) r = 'UR'; else if (pSR >= 10 || guaranteeSR) r = r === 'R' ? 'SR' : r;
+    if (r !== 'R') pSR = 0; if (r === 'UR') pUR = 0;
+    const b = live[bi], pool = Object.values(items).filter(x => x.r === r && (x.kind !== 'skin' || x.pose));
+    const feat = b.featured.map(it).filter(x => x && x.r === r && (x.kind !== 'skin' || x.pose));
+    const from = r !== 'R' && feat.length && Math.random() < .5 ? feat : pool, x = from[Math.floor(Math.random() * from.length)] || pool[0];
+    const isNew = !owned.has(x.id); owned.add(x.id);
+    return { x, r, isNew };
+  }
+  let run = null;
+  document.querySelectorAll('.pull').forEach(btn => btn.onclick = () => {
+    const n = +btn.dataset.n; if (plumes < n * 2) plumes += 100;   // pretend: never run out
+    plumes -= n * 2; const res = []; for (let i = 0; i < n; i++) res.push(roll(n === 10 && i === 9 && !res.some(q => q.r !== 'R')));
+    paintPity(); play(res);
+  });
+  const wait = ms => new Promise(r => { const t = setTimeout(r, run && run.fast ? 0 : ms); });
+  async function play(res) {
+    run = { fast: reduced }; const me = run;
+    const ov = $('ov'), table = $('table'), best = res.some(q => q.r === 'UR') ? 'UR' : res.some(q => q.r === 'SR') ? 'SR' : 'R';
+    ov.classList.add('on'); $('sum').classList.remove('on'); $('big').classList.remove('on'); table.innerHTML = ''; $('hint').textContent = '';
+    ov.style.setProperty('--rc', `var(--${best})`);
+    // 1. The deck: one stack in the middle that glows in the best rarity's colour (Ultra flickers and cracks with light).
+    const W = innerWidth, H = innerHeight, cols = res.length === 1 ? 1 : 5, cw = Math.min(140, (W - 120) / 5), ch = cw * 1.47, gap = 16;
+    const cards = res.map((q, k) => {
+      const c = document.createElement('div'); c.className = 'card'; c.style.cssText = `--rc:var(--${q.r});width:${cw}px;height:${ch}px;margin:${-ch / 2}px 0 0 ${-cw / 2}px`;
+      c.innerHTML = `<div class="in"><div class="back"></div><div class="face">${thumbHtml(q.x)}<b>${esc(q.x.name)}<small>${STARS[q.r]}</small></b></div></div>${q.isNew ? '<span class="tagnew">NEW!</span>' : ''}`;
+      c.querySelector('.tagnew') && (c.querySelector('.tagnew').style.opacity = 0);
+      table.appendChild(c); c.style.transform = `translate(0, ${-k * 2}px) rotate(${(k - 5) * 1.2}deg)`; return c;
+    });
+    await wait(500);
+    if (me !== run) return;
+    const bolt = $('bolt');
+    if (!me.fast) bolt.animate(best === 'UR' ? [{ opacity: 0 }, { opacity: .9, offset: .1 }, { opacity: .1, offset: .2 }, { opacity: .8, offset: .3 }, { opacity: 0 }] : [{ opacity: 0 }, { opacity: best === 'SR' ? .6 : .3 }, { opacity: 0 }], { duration: best === 'UR' ? 1100 : 700 });
+    cards.forEach(c => c.classList.add('glow')); cards.forEach(c => c.style.setProperty('--rc', `var(--${best})`));
+    await wait(best === 'UR' ? 1100 : 650);
+    // 2. Dealt out face down (each back now in its own rarity's light).
+    cards.forEach((c, k) => {
+      const row = Math.floor(k / cols), col = k % cols, rows = Math.ceil(res.length / cols);
+      const x = (col - (Math.min(cols, res.length) - 1) / 2) * (cw + gap), y = (row - (rows - 1) / 2) * (ch + gap);
+      c.style.transition = me.fast ? 'none' : `transform .45s cubic-bezier(.2, 1.1, .4, 1) ${k * 60}ms`;
+      c.style.transform = `translate(${x}px, ${y}px)`; c.style.setProperty('--rc', `var(--${res[k].r})`);
+      if (res[k].r === 'R') c.classList.remove('glow');
+    });
+    await wait(600 + res.length * 60);
+    // 3. Turned over one by one; a Super Rare or Ultra stops everything for its own splash.
+    $('hint').textContent = 'Click to go faster · Esc skips';
+    for (let k = 0; k < res.length; k++) {
+      if (me !== run) return;
+      const q = res[k], c = cards[k];
+      if (q.r !== 'R' && !me.fast) { c.animate([{ translate: '0 0' }, { translate: '-4px 0' }, { translate: '4px 0' }, { translate: '0 0' }], { duration: 120, iterations: q.r === 'UR' ? 5 : 3 }); await wait(q.r === 'UR' ? 700 : 400); }
+      c.classList.add('flip'); const tn = c.querySelector('.tagnew'); if (tn) setTimeout(() => tn.style.opacity = 1, 350);
+      await wait(q.r === 'R' ? 220 : 500);
+      if (q.r !== 'R' && q.x.kind === 'skin' && !me.fast) { await splash(q, me); if (me !== run) return; }
+    }
+    await wait(500);
+    summary(res);
+  }
+  // The calling card: a black card flies in, splits, and the look slams in over rays with its name and stars.
+  function splash(q, me) {
+    return new Promise(done => {
+      const big = $('big'), x = q.x, s = figSrc(x, ['jump', 'peace', 'cheer', 'tease', 'heart']), ur = q.r === 'UR';
+      big.style.setProperty('--rc', `var(--${q.r})`);
+      big.innerHTML = `<div class="rays" style="--bc:var(--${q.r})"></div><div class="halftone"></div><i class="band"></i><i class="band w"></i>
+        ${s ? `<img class="fig" src="${s}" alt="">` : ''}
+        <div class="who"><small>${ur ? 'Ultra' : 'Super Rare'} · ${esc(NAME[x.who] || '')}</small><h3>${esc(x.name)}</h3><div class="stars">${[...STARS[q.r]].map(c => `<i>${c}</i>`).join('')}</div></div>
+        ${q.isNew ? '<span class="newbig">NEW!</span>' : ''}
+        <div class="card-cc"><span>Take your<br>look<small>Velvet Boutique</small></span></div>`;
+      big.classList.add('on');
+      const cc = big.querySelector('.card-cc'), fig = big.querySelector('.fig'), who = big.querySelector('.who');
+      cc.animate([{ transform: 'scale(.2) rotate(-30deg)', opacity: 0 }, { transform: 'scale(1) rotate(-6deg)', opacity: 1, offset: .5 }, { transform: 'scale(1.05) rotate(-6deg)', opacity: 1, offset: .8 }, { transform: 'scale(2.4) rotate(4deg)', opacity: 0 }], { duration: ur ? 1300 : 900, easing: 'cubic-bezier(.3, .8, .4, 1)', fill: 'forwards' });
+      big.querySelectorAll('.band').forEach((b, k) => b.animate([{ transform: 'skewX(-20deg) translateY(-120%)' }, { transform: 'skewX(-20deg) translateY(0)' }], { duration: 400, delay: (ur ? 900 : 600) + k * 60, easing: 'cubic-bezier(.2, 1, .3, 1)', fill: 'backwards' }));
+      if (fig) fig.animate([{ transform: 'translateX(60%) scale(1.15)', opacity: 0, filter: 'blur(8px) brightness(3)' }, { transform: 'translateX(-2%) scale(1)', opacity: 1, filter: 'none', offset: .7 }, { transform: 'none', opacity: 1 }], { duration: 620, delay: ur ? 1000 : 700, easing: 'cubic-bezier(.2, 1, .3, 1)', fill: 'backwards' });
+      who.animate([{ transform: 'skewX(-10deg) translateX(-80px)', opacity: 0 }, { transform: 'skewX(-10deg)', opacity: 1 }], { duration: 420, delay: ur ? 1250 : 900, easing: 'cubic-bezier(.2, 1.3, .4, 1)', fill: 'backwards' });
+      big.querySelectorAll('.stars i').forEach((s, k) => s.animate([{ transform: 'scale(3)', opacity: 0 }, { transform: 'scale(1)', opacity: 1 }], { duration: 260, delay: (ur ? 1500 : 1100) + k * 110, easing: 'cubic-bezier(.3, 1.6, .5, 1)', fill: 'backwards' }));
+      const nb = big.querySelector('.newbig'); if (nb) nb.animate([{ transform: 'skewX(-12deg) rotate(-4deg) scale(2)', opacity: 0 }, { transform: 'skewX(-12deg) rotate(-4deg)', opacity: 1 }], { duration: 300, delay: ur ? 2200 : 1700, easing: 'cubic-bezier(.3, 1.6, .5, 1)', fill: 'backwards' });
+      const end = () => { big.removeEventListener('click', end); big.classList.remove('on'); done(); };
+      setTimeout(() => big.addEventListener('click', end), 600);
+      const t = setTimeout(end, ur ? 5200 : 3800);
+      me.endSplash = () => { clearTimeout(t); end(); };
+    });
+  }
+  function summary(res) {
+    const sum = $('sum');
+    sum.innerHTML = `<h3>${res.length === 1 ? 'Your pull' : 'Your ten'}</h3><div class="grid">${res.map(q => `<div class="card flip" style="--rc:var(--${q.r})"><div class="in"><div class="back"></div><div class="face">${thumbHtml(q.x)}<b>${esc(q.x.name)}<small>${STARS[q.r]}</small></b></div></div>${q.isNew ? '<span class="tagnew">NEW!</span>' : '<span class="tagnew" style="background:#fff;color:#000">+1 ◆</span>'}</div>`).join('')}</div>
+      <div class="row"><button type="button" class="pull ten" id="again" style="width:220px"><b>Pull again</b><small>◆ ${res.length * 2} plumes</small></button><button type="button" class="pull" id="done" style="width:160px"><b>Done</b></button></div>`;
+    sum.classList.add('on'); $('hint').textContent = '';
+    $('again').onclick = () => document.querySelector(`.pull[data-n="${res.length}"]`).click();
+    $('done').onclick = close;
+  }
+  function close() { run = null; $('ov').classList.remove('on'); }
+  $('ov').addEventListener('click', e => { if (e.target.closest('#big, .sum, #skip')) return; if (run) run.fast = true; });
+  $('skip').onclick = () => { if (!run) return; run.fast = true; run.endSplash && run.endSplash(); };
+  addEventListener('keydown', e => { if (e.key === 'Escape' && $('ov').classList.contains('on')) { if ($('sum').classList.contains('on')) close(); else $('skip').click(); } });
+  addEventListener('resize', paintSplash);
+
+  bi = Math.max(0, live.findIndex(b => b.id === (new URLSearchParams(location.search).get('b') || 'summer')));
+  paintTabs(); paintSplash(); slam();
+})();
+</script>
+</body>
+</html>
