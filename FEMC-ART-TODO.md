@@ -1015,3 +1015,67 @@ Poses (one image each): fist pump, boxing stance, towel over his shoulder with a
 ```
 A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (red-and-black boxing club track jacket, a towel round his neck). Pose: [the pose], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
 ```
+
+## 28. Low-res pictures to look at (assess later)
+
+These are already in the game but look soft or blurry, because they're shown much bigger than the file. No prompts yet: check each one and decide whether to find a bigger copy, redo it, or leave it for the upscale batch. Sizes are width × height in pixels; the newer backgrounds are 1920 wide.
+
+**Finish cards** (full screen after an All-Out; source files in `Current Skins/Base Game/<name>/`)
+- `Aigis - finish card.png`: 236 × 118, thumbnail-sized, very blurry (most urgent)
+- `Ken - finish card.png`: 736 × 414
+- `Koromaru - finish card.png`: 736 × 414
+- `Shinjiro - finish card.png`: 736 × 414
+- `Akihiko`, `Junpei`, `Mitsuru`, `Yukari - finish card.png`: about 1200 × 675, only slightly soft
+
+**Shop fronts** (stretched onto the Go Out place cards)
+- `aohigepharmacy-outside`: Aohige Pharmacy storefront, 240 × 240
+- `bebluev-outside`: Be Blue V storefront, 240 × 240
+- `clubescapade-outside`: Club Escapade entrance, 240 × 240
+- `gameparade-outside`: Game Parade storefront, 240 × 240
+- `policestation-outside`: the police box, 256 × 255
+- `hagakureramen`: Hagakure Ramen, 300 × 210
+
+**The dorm**
+- `iwatodaidorm-kitchen`: dorm kitchen, 474 × 356
+- `iwatodaidorm-laundryroom`: dorm laundry room, 480 × 340
+- `iwatodaidorm-diningroom`: dorm dining room, 636 × 358
+- `iwatodaidorm-hallway`: dorm hallway, 735 × 426
+- (the lounge at night is already section 26)
+
+**School**
+- `outside-school`: Gekkoukan front gate, 736 × 414
+- `rooftop-day`: school rooftop by day, 850 × 480
+- `rooftop-citynight`: a rooftop over the city at night, 736 × 414
+
+**Around town**
+- `moonlightbridge`: Moonlight Bridge, 512 × 384
+- `harbor`: the harbor, 580 × 326
+- `outside-nightdistrict`: the night district street, 640 × 435
+- `paulownia-mall`: Paulownia Mall, 736 × 414
+- `shopping-street`: the shopping street, 736 × 416
+- `portisland`: Port Island station area, 736 × 414
+- `park`: the park, 736 × 413
+- `outside-night`: tree-lined riverside path at night, 736 × 414
+- `location-1`: plaza with steps and lavender planters, 736 × 414
+- `location-2`: shopping arcade with a spiral stair, 736 × 414
+- `junkyard-scene`: ruined overgrown city street, 736 × 414
+- `hotel-outside`: hotel exterior, 736 × 414
+- `hotel-lobby`: hotel lobby, 735 × 415
+- `hospital-outside`: hospital exterior, 854 × 480
+- `hospital-room`: hospital room, 1024 × 576
+- `clothing-store`: clothing store, 960 × 564
+- `city`: big city crossing with billboards, 1199 × 672 (slightly soft)
+- `inside-mall`: inside the mall, 1199 × 672 (slightly soft)
+
+**Rooms and cafés**
+- `lablanc`: dim café with booths, 735 × 414
+- `akihiko-bedroom`: Akihiko's room, 735 × 496
+- `kuromi-bedroom`: Kuromi's room, 736 × 414
+- `pink-bedroom`: purple-lit bedroom with fairy lights, 736 × 509 (also has a small logo in the bottom left)
+- `pink-bedroom-2`: second pink bedroom, 736 × 414
+- `elegant-bedroom`: cream bedroom with a red throw, 1000 × 591
+
+**Tartarus and the Velvet Room**
+- `tartarus-coffins`: the coffins on the Dark Hour streets, 701 × 438
+- `tartarus-lobby`: Tartarus entrance hall, 1024 × 572
+- `velvetroom-1`: the Velvet Room, 1192 × 670 (slightly soft)
