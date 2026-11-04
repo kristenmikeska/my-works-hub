@@ -21,7 +21,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .page::before { content: "FITTING ROOM"; position: absolute; right: -2vw; bottom: -4vh; font: italic 900 17vw/.8 var(--cond); color: rgba(255, 79, 158, .05); letter-spacing: -.04em; pointer-events: none; white-space: nowrap; }
 
 /* ── The booth ── */
-.booth { position: relative; margin: 20px 0 20px 20px; overflow: hidden; border-radius: 4px; isolation: isolate;
+.booth { --cv-a: #6e0f43; --cv-b: #a8215f; --cv-c: #e04b8c; --cv-d: #3c0623; --bulb: #ffe7f2; position: relative; margin: 20px 0 20px 20px; overflow: hidden; border-radius: 4px; isolation: isolate;
   background:
     radial-gradient(60% 55% at 50% 30%, rgba(255, 170, 210, .38), transparent 70%),
     repeating-linear-gradient(90deg, rgba(0,0,0,.18) 0 2px, transparent 2px 64px),
@@ -29,7 +29,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   box-shadow: inset 0 0 0 2px rgba(255, 140, 192, .25), inset 0 0 80px rgba(0, 0, 0, .7), 10px 10px 0 rgba(255, 79, 158, .25); }
 .booth .floor { position: absolute; left: 0; right: 0; bottom: 0; height: 38%; background: radial-gradient(50% 40% at 50% 10%, rgba(255, 140, 192, .22), transparent 70%); z-index: 0; }
 .booth .bulbs { position: absolute; inset: 14px 14px auto; height: 10px; display: flex; justify-content: space-between; z-index: 1; }
-.booth .bulbs i { width: 8px; height: 8px; border-radius: 50%; background: #ffe7f2; box-shadow: 0 0 10px 3px rgba(255, 190, 220, .7); animation: bulb 3s ease-in-out infinite; }
+.booth .bulbs i { width: 8px; height: 8px; border-radius: 50%; background: var(--bulb); box-shadow: 0 0 10px 3px color-mix(in srgb, var(--bulb) 70%, transparent); animation: bulb 3s ease-in-out infinite; }
 .booth .bulbs i:nth-child(odd) { animation-delay: -1.5s; }
 @keyframes bulb { 50% { opacity: .55; } }
 
@@ -44,11 +44,48 @@ button { font: inherit; color: inherit; cursor: pointer; }
 /* The walk-in, twirl and hop are Web Animations in pixels (see motion() in the script). */
 .soft-note { position: absolute; left: 14px; top: 34px; z-index: 6; padding: 3px 9px; background: rgba(20, 7, 15, .8); border: 1px solid rgba(255, 140, 192, .4); font: italic 800 11px/1.2 var(--cond); letter-spacing: .12em; text-transform: uppercase; color: var(--pink-3); transform: skewX(-10deg); }
 
+/* The wallpaper you're previewing becomes the booth's back wall. */
+.wall { position: absolute; inset: 0; z-index: 0; opacity: 0; background-size: cover; background-position: center; transition: opacity .5s; }
+.wall.on { opacity: .6; }
+.wall::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20, 7, 15, .2), rgba(20, 7, 15, .75)); }
+/* The couple partner leans in from the side. */
+.fig { transition: left .6s cubic-bezier(.3, .8, .3, 1); }
+.stage.duo .fig { left: 40%; }
+.partner { position: absolute; right: 0; bottom: 0; width: 0; height: 0; z-index: 1; }
+.partner .pin { position: absolute; transform-origin: 50% 100%; }
+.partner img { position: absolute; display: block; max-width: none; filter: drop-shadow(0 14px 18px rgba(0, 0, 0, .55)) brightness(.97); }
+.partner .bub { position: absolute; padding: 5px 10px; background: var(--paper); color: var(--night); font: italic 900 13px/1.1 var(--cond); white-space: nowrap; transform: skewX(-10deg); box-shadow: 3px 3px 0 var(--pink); }
+/* Items held up in front: a weapon or an Evoker. */
+.prop { position: absolute; z-index: 3; left: 50%; bottom: 14%; width: 0; height: 0; pointer-events: none; }
+.prop img { position: absolute; max-width: none; filter: drop-shadow(0 10px 16px rgba(0, 0, 0, .6)); }
+/* An outfit's own effect sheet (3 x 2 on black) and a burst of sparkles. */
+.fxl { position: absolute; inset: 0; z-index: 3; pointer-events: none; overflow: hidden; }
+.fxl .sheet { position: absolute; left: 50%; top: 42%; mix-blend-mode: screen; background-repeat: no-repeat; transform: translate(-50%, -50%); }
+.fxl .spark { position: absolute; left: 50%; top: 45%; width: 14px; height: 14px; margin: -7px; background: #fff; clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); }
+/* Title screen preview: a small card slides in. */
+.tcard { position: absolute; z-index: 5; right: 18px; top: 50px; width: 46%; aspect-ratio: 16 / 9; display: grid; place-items: center; transform: translateX(130%) rotate(3deg); transition: transform .55s cubic-bezier(.2, 1.2, .35, 1); box-shadow: 6px 6px 0 rgba(0, 0, 0, .5); }
+.tcard.on { transform: translateX(0) rotate(3deg); }
+.tcard b { font: italic 900 clamp(14px, 1.6vw, 22px)/1 var(--cond); letter-spacing: .04em; text-transform: uppercase; transform: skewX(-8deg); text-align: center; }
+.tcard b small { display: block; margin-top: 4px; font-size: .55em; letter-spacing: .3em; opacity: .8; }
+/* Not owned yet: a sheer curtain over the booth. */
+.sheer { position: absolute; inset: 0; z-index: 4; display: grid; place-items: center; pointer-events: none; opacity: 0; transition: opacity .45s;
+  background: repeating-linear-gradient(90deg, rgba(255, 210, 230, .16) 0 10px, rgba(255, 210, 230, .05) 10px 26px), linear-gradient(180deg, rgba(40, 10, 30, .35), rgba(40, 10, 30, .55));
+  backdrop-filter: blur(1.5px) saturate(.6); }
+.sheer.on { opacity: 1; }
+.sheer span { margin-top: -10%; padding: 8px 16px; background: var(--paper); color: var(--night); font: italic 900 16px/1 var(--cond); letter-spacing: .06em; text-transform: uppercase; transform: skewX(-10deg) rotate(-3deg); box-shadow: 5px 5px 0 var(--pink); }
+/* Ultra / Super Rare entrance: a glint sweeps across and the curtain edges catch the light. */
+.glint { position: absolute; inset: 0; z-index: 5; pointer-events: none; overflow: hidden; }
+.glint i { position: absolute; top: -20%; bottom: -20%; width: 28%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .55), transparent); transform: skewX(-18deg); }
+.booth.ur .curtain { box-shadow: 0 0 30px rgba(0, 0, 0, .7), inset 0 0 0 3px rgba(255, 211, 107, .85), 0 0 24px rgba(255, 211, 107, .55); }
+.booth.ur .bulbs i { background: #fff2c8; box-shadow: 0 0 14px 5px rgba(255, 211, 107, .8); }
+.booth.sr .curtain { box-shadow: 0 0 30px rgba(0, 0, 0, .7), inset 0 0 0 3px rgba(197, 139, 255, .7); }
+.booth .curtain, .booth .bulbs i { transition: transform .42s cubic-bezier(.6, 0, .35, 1), box-shadow .5s, background .5s; }
+
 /* The curtain: two velvet panels gathered at the sides; they sweep shut and fall open. */
 .curtain { position: absolute; top: 0; bottom: 0; width: 54%; z-index: 4; pointer-events: none;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, .08), transparent 18%, transparent 80%, rgba(0, 0, 0, .5)),
-    repeating-linear-gradient(90deg, #6e0f43 0, #a8215f 14px, #e04b8c 22px, #a8215f 30px, #5a0b36 44px, #3c0623 52px);
+    repeating-linear-gradient(90deg, var(--cv-a) 0, var(--cv-b) 14px, var(--cv-c) 22px, var(--cv-b) 30px, var(--cv-a) 44px, var(--cv-d) 52px);
   box-shadow: 0 0 30px rgba(0, 0, 0, .7); transition: transform .42s cubic-bezier(.6, 0, .35, 1); }
 .curtain.l { left: 0; transform-origin: 0 50%; transform: scaleX(.13); border-right: 2px solid rgba(0, 0, 0, .4); }
 .curtain.r { right: 0; transform-origin: 100% 50%; transform: scaleX(.13); border-left: 2px solid rgba(0, 0, 0, .4); }
@@ -60,8 +97,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .curtain.l::after { right: -6px; } .curtain.r::after { left: -6px; }
 .booth.shut .curtain::after, .booth.peek .curtain::after { opacity: 0; }
 .valance { position: absolute; left: 0; right: 0; top: 0; height: 30px; z-index: 5; pointer-events: none;
-  background: radial-gradient(circle at 20px -6px, transparent 18px, #7e1350 19px) 0 0 / 40px 30px repeat-x; filter: drop-shadow(0 4px 4px rgba(0, 0, 0, .5)); }
-.valance::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 10px; background: linear-gradient(180deg, #c03474, #7e1350); }
+  background: radial-gradient(circle at 20px -6px, transparent 18px, var(--cv-a) 19px) 0 0 / 40px 30px repeat-x; filter: drop-shadow(0 4px 4px rgba(0, 0, 0, .5)); }
+.valance::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 10px; background: linear-gradient(180deg, var(--cv-b), var(--cv-a)); }
 
 /* Name tag on the booth */
 .tag { position: absolute; left: 22px; bottom: 26px; z-index: 6; max-width: 76%; padding: 10px 18px 10px 16px; background: var(--paper); color: var(--night); transform: skewX(-10deg) rotate(-2deg); box-shadow: 6px 6px 0 var(--pink); transition: transform .3s; }
@@ -160,9 +197,12 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
 <div class="mock-note">Mockup · nothing here saves</div>
 <div class="page">
   <div class="booth" id="booth">
-    <div class="floor"></div>
+    <div class="wall" id="wall"></div><div class="floor"></div>
     <div class="bulbs"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    <div class="stage"><div class="fig" id="fig"><div class="walk" id="walk"><div class="breathe" id="breathe"></div></div></div></div>
+    <div class="stage"><div class="partner" id="partner"></div><div class="fig" id="fig"><div class="walk" id="walk"><div class="breathe" id="breathe"></div></div></div></div>
+    <div class="prop" id="prop"></div><div class="fxl" id="fxl"></div><div class="tcard" id="tcard"></div>
+    <div class="sheer" id="sheer"><span>Find it in the Boutique</span></div>
+    <div class="glint" id="glint"></div>
     <div class="soft-note" id="softNote" hidden></div>
     <div class="curtain l"></div><div class="curtain r"></div>
     <div class="valance"></div>
@@ -293,7 +333,7 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
   }
   $('kinds').addEventListener('click', e => {
     const b = e.target.closest('[data-kind]'); if (!b) return;
-    kind = b.dataset.kind; sel = null; paintCloset(); if (kind === 'skin') swap('peek'); else paintTag();
+    kind = b.dataset.kind; sel = null; paintCloset(); if (kind === 'skin') swap('peek'); else { paintTag(); paintExtras(); if (L && rest && mode === 'hd') { render(false); } }
   });
   $('chips').addEventListener('click', e => {
     const b = e.target.closest('[data-own]'); if (!b) return;
@@ -305,33 +345,41 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
     const b = e.target.closest('.card'); if (!b) return;
     const id = b.dataset.id || null; if (id === sel) return;
     sel = id; paintCloset();
-    if (kind === 'skin') swap('peek'); else { paintTag(); hop(); }
+    if (kind === 'skin') swap('peek'); else { paintTag(); paintExtras(); hop(); rarityIn(cur()); }
   });
 
   /* ── The booth ── */
   const fig = $('fig'), breathe = $('breathe'), booth = $('booth');
-  let mode = null, poses = [], poseAt = 0, faceTimer = 0, poseTimer = 0;
+  let mode = null, poses = [], poseAt = 0, faceTimer = 0, poseTimer = 0, holdTimer = 0;
   const cur = () => items.find(i => i.id === sel) || null;
   const outfit = () => { const x = kind === 'skin' ? cur() : items.find(i => i.id === worn[who + 'skin']); return x && x.kind === 'skin' && x.who === who ? x : null; };
+  // Booth photo poses (Kat's purikura sheets): cell 1 is half a heart, so it's left out here.
+  const snaps = w => (own[w].booth || []).filter(s => !s.endsWith('-1'));
   function lookArt() {
     const x = outfit();
     if (x && x.hd && Object.keys(x.hd).length) return { mode: 'hd', dir: `${A}game/art/skins/${x.id}/hd/`, hd: x.hd };
     if (!x && own[who].hd) return { mode: 'hd', dir: A + own[who].hdDir, hd: own[who].hd };
+    // Their own look: the full-body Social Link art, with the photo-booth poses as extra moves.
+    if (!x && own[who].fig) return { mode: 'fig', fig: own[who].fig, snaps: snaps(who) };
     if (x && x.faces && x.faces.length) return { mode: 'face', dir: `${A}game/art/skins/${x.id}/portraits/${who}/`, faces: x.faces };
     if (!x && own[who].faces.length) return { mode: 'face', dir: `${A}portraits/${who}/`, faces: own[who].faces };
     if (x && x.pose) return { mode: 'pose', src: `${A}game/art/skins/${x.id}/${who}-pose-0.webp` };
     return { mode: 'pose', src: `${A}battle/art/poses/${who}-pose-0.webp` };
   }
-  const POSE_ORDER = ['arms-crossed', 'peace', 'hair', 'wave', 'tease', 'heart', 'lookback', 'cheer', 'phone', 'thinking', 'shy'];
-  function place(img, info) {
+  const POSE_ORDER = ['arms-crossed', 'peace', 'hair', 'wave', 'tease', 'heart', 'cheer', 'phone', 'thinking', 'shy'];
+  // 1. Each outfit's own reaction when you pick it (an HD pose of hers; first match wins).
+  const REACT = [[/swim|lagoon/, 'jump'], [/date|moviedate|strawberry/, 'shy'], [/phantom|velvet|arcana|snake/, 'evoker'], [/idol|limelight|y2k|stage/, 'peace'],
+    [/sugarrush|oops/, 'heart'], [/festival|yukata|hanbok/, 'wave'], [/emo|prowl|drive/, 'tease'], [/roadwork|esports|ringside/, 'cheer'], [/./, 'hair']];
+  const reactPose = (x, hd) => { for (const [re, p] of REACT) if (re.test(x.id) && hd[p]) return p; return ['peace', 'hair', 'wave'].find(p => hd[p]); };
+  function place(img, info, H = booth.clientHeight, W = booth.clientWidth) {
     // Hip-up: the figure's top ~55% fills the booth; head kept centred.
-    const W = booth.clientWidth, H = booth.clientHeight;
-    if (info.mode === 'hd') {
+    img.style.bottom = ''; img.style.top = '';
+    if (info.mode === 'hd' || info.mode === 'fig') {
       const h = H * 1.8, w = h * info.ar;
       img.style.height = h + 'px'; img.style.width = w + 'px';
       img.style.left = (-info.hx * w) + 'px'; img.style.top = (H * .07 - info.ht * h - H) + 'px';
-    } else if (info.mode === 'face') {
-      const w = Math.min(W * 1.08, H * 1.02); img.style.width = w + 'px'; img.style.height = 'auto';
+    } else if (info.mode === 'face' || info.mode === 'snap') {
+      const w = Math.min(W * (info.mode === 'snap' ? 1.12 : 1.08), H * 1.02); img.style.width = w + 'px'; img.style.height = 'auto';
       img.style.left = (-w / 2) + 'px'; img.style.top = 'auto'; img.style.bottom = '0';
     } else {
       const h = H * 1.45, at = () => { img.style.left = (-(img.naturalWidth / img.naturalHeight) * h / 2) + 'px'; };
@@ -342,45 +390,138 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
   }
   function show(src, info, instant) {
     const old = breathe.querySelector('img:not(.out)');
-    const img = new Image(); img.alt = ''; img.className = instant ? '' : 'out'; img.src = src; place(img, info);
+    const img = new Image(); img.alt = ''; img.className = instant ? '' : 'out'; img.src = src; img.dataset.info = JSON.stringify(info); place(img, info);
     img.decoding = 'async';
     breathe.appendChild(img);
-    const go = () => { setTimeout(() => { img.classList.remove("out"); if (old) { old.classList.add("out"); setTimeout(() => old.remove(), 600); } }, 30); };
+    const go = () => { setTimeout(() => { img.classList.remove('out'); if (old) { old.classList.add('out'); setTimeout(() => old.remove(), 600); } }, 30); };
     if (img.complete) go(); else img.onload = img.onerror = go;
   }
-  function render(instant, greet) {
-    clearInterval(faceTimer); clearInterval(poseTimer);
-    const L = lookArt(); mode = L.mode; fig.dataset.mode = mode;
-    breathe.innerHTML = ''; fig.style.bottom = mode === 'face' ? '0' : '';
+  // Show a pose for a moment, then go back to the resting one.
+  function hold(src, info, ms, back) { clearTimeout(holdTimer); show(src, info); holdTimer = setTimeout(back, ms); }
+  let L = null, rest = null;
+  function render(instant, greet, react) {
+    clearInterval(faceTimer); clearInterval(poseTimer); clearTimeout(holdTimer);
+    L = lookArt(); mode = L.mode; fig.dataset.mode = mode;
+    breathe.innerHTML = '';
     const note = $('softNote'); note.hidden = mode !== 'pose'; note.textContent = 'Battle frame · softer until HD poses';
     if (mode === 'hd') {
-      poses = POSE_ORDER.filter(p => L.hd[p]).concat(Object.keys(L.hd).filter(p => !POSE_ORDER.includes(p)));
-      poseAt = 0; L.cur = poses[0];
-      const at = p => Object.assign({ mode: 'hd' }, L.hd[p]);
-      const hi = greet && ['wave', 'peace', 'cheer'].find(p => L.hd[p]);
-      show(L.dir + (hi || poses[0]) + '.webp', at(hi || poses[0]), instant);
-      if (hi) setTimeout(() => { if (mode === 'hd' && breathe.querySelector('img:not(.out)')?.src.includes('/' + hi + '.webp')) show(L.dir + poses[0] + '.webp', at(poses[0])); }, 1700);
-      // Every few seconds she settles into another everyday pose.
-      poseTimer = setInterval(() => { if (document.hidden) return; nextPose(L, at); }, 6500);
-      $('poseBtn').onclick = () => { nextPose(L, at); hop(); restart(L, at); };
-    } else if (mode === 'face') {
-      const fs = L.faces, base = fs.includes('neutral') ? 'neutral' : fs[0];
-      const idle = ['happy', 'neutral', 'neutral', 'serious', 'neutral', 'flustered', 'neutral'].filter(f => fs.includes(f));
-      const hi = greet && fs.includes('happy');
-      show(L.dir + (hi ? 'happy' : base) + '.webp', { mode: 'face' }, instant);
-      if (hi) setTimeout(() => { if (mode === 'face' && breathe.querySelector('img:not(.out)')?.src.includes('/happy.webp')) show(L.dir + base + '.webp', { mode: 'face' }); }, 1800);
+      poses = POSE_ORDER.filter(p => L.hd[p]).concat(Object.keys(L.hd).filter(p => !POSE_ORDER.includes(p) && !['lookback', 'jump', 'evoker', 'sewing', 'ramen', 'watering', 'study', 'stretch'].includes(p)));
+      poseAt = 0;
+      const at = p => Object.assign({ mode: 'hd' }, L.hd[p]), src = p => L.dir + p + '.webp';
+      rest = () => show(src(poses[poseAt]), at(poses[poseAt]));
+      const first = (greet && ['wave', 'peace', 'cheer'].find(p => L.hd[p])) || (react && outfit() && reactPose(outfit(), L.hd));
+      show(src(first || poses[0]), at(first || poses[0]), instant);
+      if (first) holdTimer = setTimeout(rest, 1900);
+      // Every few seconds she settles into another everyday pose; every fourth time she checks the mirror first (2).
+      let n = 0;
+      const tick = () => { if (document.hidden) return; n++;
+        if (n % 4 === 0 && L.hd.lookback) { hold(src('lookback'), at('lookback'), 2400, () => { poseAt = (poseAt + 1) % poses.length; rest(); }); return; }
+        poseAt = (poseAt + 1) % poses.length; rest(); };
+      poseTimer = setInterval(tick, 6500);
+      $('poseBtn').onclick = () => { clearInterval(poseTimer); poseAt = (poseAt + 1) % poses.length; rest(); hop(); poseTimer = setInterval(tick, 6500); };
+    } else if (mode === 'fig') {
+      const fi = Object.assign({ mode: 'fig' }, L.fig), sn = L.snaps, snap = k => show(`${A}game/art/booth/${sn[k]}.webp`, { mode: 'snap' });
+      rest = () => show(A + L.fig.src, fi);
+      if (greet && sn.length) { snap(0); holdTimer = setTimeout(rest, 2000); } else show(A + L.fig.src, fi, instant);
       let k = 0;
-      faceTimer = setInterval(() => { if (document.hidden) return; k = (k + 1) % idle.length; show(L.dir + idle[k] + '.webp', { mode: 'face' }); }, 6000);
-      $('poseBtn').onclick = () => { const f = ['happy', 'surprised', 'flustered', 'serious'].filter(x => fs.includes(x)); show(L.dir + f[Math.floor(Math.random() * f.length)] + '.webp', { mode: 'face' }); hop(); };
+      // Now and then they strike one of their photo-booth poses, then go back to standing.
+      if (sn.length) poseTimer = setInterval(() => { if (document.hidden) return; k = (k + 1) % sn.length; snap(k); clearTimeout(holdTimer); holdTimer = setTimeout(rest, 3000); }, 8000);
+      $('poseBtn').onclick = () => { if (sn.length) { k = (k + 1) % sn.length; snap(k); clearTimeout(holdTimer); holdTimer = setTimeout(rest, 3200); } hop(); };
+    } else if (mode === 'face') {
+      const fs = L.faces, base = fs.includes('neutral') ? 'neutral' : fs[0], f = x => ({ src: L.dir + x + '.webp', info: { mode: 'face' } });
+      const idle = ['happy', 'neutral', 'neutral', 'serious', 'neutral', 'flustered', 'neutral'].filter(x => fs.includes(x));
+      rest = () => show(f(base).src, f(base).info);
+      const hi = (greet || react) && (react && /date|swim|sweater|moviedate/.test(outfit()?.id || '') && fs.includes('flustered') ? 'flustered' : fs.includes('happy') && 'happy');
+      show(f(hi || base).src, f(hi || base).info, instant);
+      if (hi) holdTimer = setTimeout(rest, 1800);
+      let k = 0;
+      faceTimer = setInterval(() => { if (document.hidden) return; k = (k + 1) % idle.length; show(f(idle[k]).src, f(idle[k]).info); }, 6000);
+      $('poseBtn').onclick = () => { const xs = ['happy', 'surprised', 'flustered', 'serious'].filter(x => fs.includes(x)); const x = xs[Math.floor(Math.random() * xs.length)]; hold(f(x).src, f(x).info, 2600, rest); hop(); };
     } else {
-      show(L.src, { mode: 'pose' }, instant);
+      show(L.src, { mode: 'pose' }, instant); rest = () => {};
       $('poseBtn').onclick = hop;
     }
-    paintTag();
+    paintTag(); paintExtras();
   }
-  function nextPose(L, at) { poseAt = (poseAt + 1) % poses.length; show(L.dir + poses[poseAt] + '.webp', at(poses[poseAt])); }
-  function restart(L, at) { clearInterval(poseTimer); poseTimer = setInterval(() => { if (!document.hidden) nextPose(L, at); }, 6500); }
   function hop() { if (!reduced) $('walk').animate([{ transform: 'none' }, { transform: 'translateY(-14px) scale(1.01)', offset: .4 }, { transform: 'none' }], { duration: 520, easing: 'cubic-bezier(.3, 1.4, .5, 1)' }); }
+
+  /* 5. What the other tabs show in the booth, 7. the sheer curtain, 8. the couple partner. */
+  const SOLAR_EVOKER = () => { const x = items.find(i => i.id === worn['solarskin']); return x && x.hd && x.hd.evoker ? { dir: `${A}game/art/skins/${x.id}/hd/`, hd: x.hd } : { dir: A + own.solar.hdDir, hd: own.solar.hd }; };
+  function paintExtras() {
+    const x = cur(), wall = $('wall'), prop = $('prop'), tc = $('tcard');
+    // Wallpaper -> the back wall.
+    const wp = kind === 'wallpaper' && x ? x : null;
+    wall.classList.toggle('on', !!wp);
+    if (wp) wall.style.background = wp.bg ? `url('${A}${wp.bg}') center / cover` : 'repeating-linear-gradient(45deg, #ff8cc0 0 6px, #2a0f22 6px 16px)';
+    // Menu colours / battle theme -> the curtain and the lights.
+    const v = (kind === 'uitheme' || kind === 'battleui') && x && pal[x.pal];
+    [['--cv-a', v && `color-mix(in srgb, ${v[0]} 45%, ${v[3]})`], ['--cv-b', v && v[0]], ['--cv-c', v && v[1]], ['--cv-d', v && v[3]], ['--bulb', v && v[2]]]
+      .forEach(([k, val]) => val ? booth.style.setProperty(k, val) : booth.style.removeProperty(k));
+    // Title screen -> a little card slides in.
+    const tt = kind === 'title' && x && x.title;
+    tc.classList.toggle('on', !!tt);
+    if (tt) { tc.style.background = `linear-gradient(110deg, ${tt[1]} 0 46%, ${tt[0]} 46%)`; tc.innerHTML = `<b style="color:${tt[0]};text-shadow:2px 2px 0 ${tt[1]}">Persona 3<br>Solstice<small style="color:#fff">Every Universe</small></b>`; }
+    // Weapon / Evoker -> held up in front (and Solar takes her Evoker pose).
+    prop.innerHTML = '';
+    if (kind === 'weapon' && x && x.art) prop.innerHTML = `<img src="${A}game/art/skins/${x.id}/weapon.webp" alt="" style="width:${booth.clientWidth * .95}px;left:${-booth.clientWidth * .5}px;bottom:-40px;transform:rotate(-24deg)">`;
+    if (kind === 'evoker' && x) prop.innerHTML = `<img src="${A}battle/art/summon/evoker-prop.webp" alt="" style="width:${booth.clientWidth * .42}px;left:${booth.clientWidth * .02}px;bottom:0;transform:rotate(-14deg);filter:${x.filter} drop-shadow(0 10px 16px rgba(0,0,0,.6))">`;
+    if (prop.firstChild && !reduced) prop.firstChild.animate([{ translate: '0 30px', opacity: 0 }, { translate: '0 0', opacity: 1 }], { duration: 500, easing: 'cubic-bezier(.2, 1.3, .4, 1)' })
+      .finished.then(() => prop.firstChild && prop.firstChild.animate([{ translate: '0 0' }, { translate: '0 -8px' }, { translate: '0 0' }], { duration: 3000, iterations: Infinity, easing: 'ease-in-out' }));
+    if (who === 'solar' && kind === 'evoker' && mode === 'hd') { const E = SOLAR_EVOKER(); if (E.hd.evoker) { clearInterval(poseTimer); clearTimeout(holdTimer); show(E.dir + 'evoker.webp', Object.assign({ mode: 'hd' }, E.hd.evoker)); } }
+    // 7. Not owned: a sheer curtain.
+    $('sheer').classList.toggle('on', !!(x && !owned(x)));
+    paintPartner();
+  }
+  let partnerFor = null;
+  function paintPartner() {
+    const x = kind === 'skin' ? outfit() : null, stage = booth.querySelector('.stage'), box = $('partner');
+    const mate = x && x.couple && items.find(i => i.couple === x.couple && i.id !== x.id);
+    if (!mate) { if (partnerFor) { stage.classList.remove('duo'); const pin = box.firstChild; if (pin && !reduced) pin.animate([{ translate: '0 0' }, { translate: `${booth.clientWidth * .5}px 0` }], { duration: 350, fill: 'forwards' }).finished.then(() => { box.innerHTML = ''; }); else box.innerHTML = ''; partnerFor = null; } return; }
+    if (partnerFor === mate.id) return;
+    partnerFor = mate.id;
+    const H = booth.clientHeight, W = booth.clientWidth;
+    // Their matching outfit's scene face (waist up, smiling), else its battle frame.
+    const face = mate.faces && mate.faces.length ? `${A}game/art/skins/${mate.id}/portraits/${mate.who}/${mate.faces.includes('happy') ? 'happy' : mate.faces[0]}.webp` : null;
+    const src = face || `${A}game/art/skins/${mate.id}/${mate.who}-pose-0.webp`, w = face ? Math.min(W * .62, H * .6) : H * .72;
+    box.innerHTML = `<div class="pin"><img src="${src}" alt="" style="width:${w}px;right:${-w * .36}px;bottom:0"><span class="bub" style="right:${w * .12}px;bottom:${w * .92}px">${esc(NAME[mate.who])} · ${esc(mate.name)}</span></div>`;
+    stage.classList.add('duo');
+    const pin = box.firstChild;
+    if (!reduced) {
+      // Slides in from the edge, leans in to look, then a small bob now and then.
+      pin.animate([{ transform: `translateX(${w}px) rotate(-8deg)` }, { transform: 'translateX(-14px) rotate(-5deg)', offset: .7 }, { transform: 'translateX(0) rotate(-4deg)' }],
+        { duration: 900, delay: 350, easing: 'cubic-bezier(.25, .8, .3, 1)', fill: 'both' })
+        .finished.then(() => pin.isConnected && pin.animate([{ transform: 'rotate(-4deg)' }, { transform: 'translateY(-6px) rotate(-2.5deg)' }, { transform: 'rotate(-4deg)' }], { duration: 2600, iterations: Infinity, easing: 'ease-in-out' }));
+    } else pin.style.transform = 'rotate(-4deg)';
+  }
+
+  /* 3. Equip sparkle (the outfit's own effect sheet when it has one) and 4. the rarity entrance. */
+  function sparkle() {
+    if (reduced) return;
+    const box = $('fxl'), W = booth.clientWidth, x = kind === 'skin' ? outfit() : null;
+    if (x && x.fx) {
+      const s = W * .9, el = document.createElement('div'); el.className = 'sheet';
+      el.style.cssText = `width:${s}px;height:${s}px;background-image:url('${A}game/art/skins/${x.id}/fx.webp');background-size:${s * 3}px ${s * 2}px`;
+      box.appendChild(el); let f = 0;
+      const step = () => { if (f > 5) { el.remove(); return; } el.style.backgroundPosition = `${-(f % 3) * s}px ${-Math.floor(f / 3) * s}px`; f++; setTimeout(step, 110); };
+      step();
+    }
+    for (let i = 0; i < 16; i++) {
+      const sp = document.createElement('i'); sp.className = 'spark'; box.appendChild(sp);
+      const a = Math.random() * Math.PI * 2, d = W * (.18 + Math.random() * .3), sc = .5 + Math.random();
+      sp.style.background = i % 3 ? '#fff' : 'var(--pink-2)';
+      sp.animate([{ transform: 'translate(0,0) scale(0)', opacity: 1 }, { transform: `translate(${Math.cos(a) * d}px, ${Math.sin(a) * d}px) scale(${sc}) rotate(90deg)`, opacity: 1, offset: .6 }, { transform: `translate(${Math.cos(a) * d * 1.2}px, ${Math.sin(a) * d * 1.2 + 20}px) scale(0)`, opacity: 0 }],
+        { duration: 900 + Math.random() * 300, easing: 'cubic-bezier(.2, .8, .4, 1)' }).finished.then(() => sp.remove());
+    }
+  }
+  function rarityIn(x) {
+    if (!x || reduced || x.r === 'R') return;
+    booth.classList.remove('ur', 'sr'); void booth.offsetWidth; booth.classList.add(x.r === 'UR' ? 'ur' : 'sr');
+    setTimeout(() => booth.classList.remove('ur', 'sr'), x.r === 'UR' ? 1600 : 1000);
+    const g = $('glint'), i = document.createElement('i'); g.appendChild(i);
+    if (x.r === 'SR') i.style.background = 'linear-gradient(90deg, transparent, rgba(220, 190, 255, .4), transparent)';
+    i.animate([{ left: '-40%' }, { left: '120%' }], { duration: x.r === 'UR' ? 900 : 700, delay: 250, easing: 'cubic-bezier(.4, 0, .3, 1)', fill: 'both' }).finished.then(() => i.remove());
+    if (x.r === 'UR') swish(.25, true);
+  }
   function paintTag() {
     const x = cur(), it = x || null;
     const nm = it ? it.name : kind === 'skin' ? (who === 'solar' ? 'Her own look' : 'Their own look') : `Default ${KIND[kind].toLowerCase()}`;
@@ -395,8 +536,8 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
   $('equipBtn').addEventListener('click', () => {
     const x = cur(); if (x && !owned(x)) return;
     if (x) worn[who + kind] = x.id; else delete worn[who + kind];
-    paintCloset(); paintTag(); hop(); swish(.5);
-    if (mode === 'face' && kind === 'skin') { const L = lookArt(); if (L.faces && L.faces.includes('happy')) show(L.dir + 'happy.webp', { mode: 'face' }); }
+    paintCloset(); paintTag(); hop(); swish(.5); sparkle();
+    if (mode === 'face' && kind === 'skin' && L.faces.includes('happy')) hold(L.dir + 'happy.webp', { mode: 'face' }, 2200, rest);
   });
 
   /* The curtain. full: swept shut and thrown open (a new person). peek: half-drawn and back (a new outfit). */
@@ -424,7 +565,7 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
       // Same person, new clothes: a quick half-curtain and she turns on the spot; the picture changes mid-turn.
       booth.classList.remove('opening', 'peek', 'shut'); void booth.offsetWidth;
       booth.classList.add('peek'); swish(.6); motion('twirl');
-      setTimeout(() => { if (id !== busy) return; render(true, false);
+      setTimeout(() => { if (id !== busy) return; render(true, false, true); rarityIn(cur());
         setTimeout(() => { if (id !== busy) return; booth.classList.add('opening'); booth.classList.remove('peek'); swish(.5, true);
           setTimeout(() => { if (id === busy) booth.classList.remove('opening'); }, 800); }, 120); }, reduced ? 300 : 290);
       return;
@@ -475,9 +616,7 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
     } catch (e) {}
   }
 
-  addEventListener('resize', () => { const L = lookArt(); breathe.querySelectorAll('img').forEach(img => {
-    if (L.mode === 'hd') { const p = (img.src.match(/\/([^/]+)\.webp/) || [])[1]; if (L.hd[p]) place(img, Object.assign({ mode: 'hd' }, L.hd[p])); } else place(img, L);
-  }); });
+  addEventListener('resize', () => { breathe.querySelectorAll('img').forEach(img => place(img, JSON.parse(img.dataset.info))); partnerFor = null; $('partner').innerHTML = ''; paintExtras(); });
 
   const q = new URLSearchParams(location.search);   // ?who=haechan&sel=<id> opens straight on a look (handy for checking)
   if (own[q.get('who')]) who = q.get('who');
