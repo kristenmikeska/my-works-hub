@@ -140,7 +140,7 @@ def main():
             p.ws.call('Input.dispatchKeyEvent',{'type':'keyUp','key':k,'code':k,'windowsVirtualKeyCode':code})
         click(p,'[data-ui=menu]')
         p.wait("!!document.querySelector('.g-fm-ov.is-home') && document.activeElement?.dataset?.home==='party'")
-        assert p.eval("document.querySelectorAll('.g-fm-ov [role=menu] [role=menuitem]').length")==16
+        assert p.eval("document.querySelectorAll('.g-fm-ov [role=menu] [role=menuitem]').length")==9
         assert p.eval("document.querySelectorAll('.g-fmh-pm').length")==1+len(p.eval('FemcGame.S.battleSave.party'))
         key('ArrowDown',40); key('ArrowDown',40)
         assert p.eval("document.activeElement.dataset.home")=='skills' and p.eval("document.querySelector('.g-fmh-list li.sel [data-home]').dataset.home")=='skills'

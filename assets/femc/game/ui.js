@@ -2247,6 +2247,8 @@
       { k: 'quickClass', label: 'Quiet class periods', opts: [[false, 'Show'], [true, 'Skip']], desc: () => 'Skip class periods where nothing happens.' },
       { k: 'wxFx', label: 'Weather effects', opts: ONOFF, desc: () => 'Rain, snow, fog and lightning over the scenes and the map. Lightning follows Reduce flashes; reduced motion shows it still.' },
       { k: 'glitchFx', label: 'Glitch effects', opts: [['full', 'Full'], ['gentle', 'Gentle'], ['off', 'Off']], desc: v => ({ full: 'In the epilogue: the strange moments, as they are. Reduce flashes softens them; reduced motion shows them still.', gentle: 'In the epilogue: shorter, softer and rarer strange moments.', off: 'In the epilogue: no glitch effects.' }[v] || '') },
+      // Tips (tips.js, Nov 3 2026): kept in the save, not the shared settings (a new game starts with them on, an older save past the prologue off).
+      ...(window.FemcTips && S().started && S().phase !== 'title' ? [{ k: 'gameTips', label: 'Tips', opts: ONOFF, get: () => window.FemcTips.on(), put: v => window.FemcTips.set(v), desc: () => 'A short tip the first time each part of the game comes up (this save). Reread them in Menu → Records → Tips.' }] : []),
       { h: 'Battle' },
       { k: 'difficulty', label: 'Difficulty', opts: Object.keys(DF).map(id => [id, DF[id].name]), desc: v => DF[v]?.desc || '' },
       { k: 'battleSpeed', label: 'Battle speed', opts: [[1, '1x'], [2, '2x'], [3, '3x']], desc: () => 'How fast battle animations play. Rush doubles it on the Fast Rush pace.' },
@@ -2277,7 +2279,7 @@
     if (settingsPanel) return;
     const rows = settingRows(), items = rows.filter(r => r.k);
     let i = Math.max(0, items.findIndex(r => r.k === opts.startKey));
-    const val = r => G.settings()[r.k];
+    const val = r => (r.get ? r.get() : G.settings()[r.k]);
     const valText = r => { const v = val(r); if (r.range) return v ? `${v}%` : 'Off'; const o = r.opts.find(x => String(x[0]) === String(v)); return o ? o[1] : String(v); };
     const canTitle = !opts.inBattle && S().phase !== 'title' && !dh;
     const o = overlay(`<div class="g-settings"><div class="g-st-head"><h2>Settings<small>${opts.inBattle ? 'Paused · the battle waits' : 'The whole game: story and battles'}</small></h2><button type="button" class="g-btn small" data-close>Done</button></div>
@@ -2294,7 +2296,7 @@
     const list = o.el.querySelector('.g-set-list'), desc = o.el.querySelector('.g-set-desc');
     const rowEl = r => list.querySelector(`[data-k="${r.k}"]`);
     function set(r, v) {
-      G.setSetting(r.k, v);
+      if (r.put) r.put(v); else G.setSetting(r.k, v);
       window.FemcWeather?.refresh();
       if (r.k === 'sfx') G.sfx('femc-click');
       paint(true);

@@ -316,3 +316,8 @@
   .g-fm-ov.is-page :is(.g-cslot, .g-cbox-card, .g-wd-item, .g-keys li, .g-goods li, .g-al-tile, .g-th-row) { transition: none !important; }
   .g-fm-ov.is-page :is(.g-cslot, .g-wd-item, .g-th-row)::after { animation: none !important; }
 }
+
+/* Hover never moves a row (Nov 3 2026, Kat: options under the mouse flickered). A row pushed sideways or lifted on :hover slid
+   out from under a pointer near its edge, lost the hover, slid back, and so on. Hover keeps its colours; only the chosen
+   (.on / .sel) or keyboard-focused row moves. */
+.g-fm-ov.is-page :is(.g-pm, .g-eq-slot, .g-eq-item, .g-cslot, .g-cbox-card, .g-wd-item, .g-al-tile, .g-keys li, .g-goods li):hover:not(:focus-visible, .on, .sel) { transform: none; }

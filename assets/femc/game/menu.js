@@ -49,7 +49,14 @@ window.FemcMenu = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const yen = n => `¥${Math.round(n || 0).toLocaleString('en-US')}`;
   const AFF = { normal: '–', weak: 'Wk', resist: 'Rs', null: 'Nu', drain: 'Dr', repel: 'Rp' };
-  const TABS = [['party', 'Party'], ['personas', 'Personas'], ['skills', 'Skills'], ['cards', 'Cards'], ['equip', 'Equipment'], ['items', 'Items'], ['collection', 'Collection'], ['wardrobe', 'Wardrobe'], ['status', 'Status'], ['links', 'Links'], ['bonds', 'Bonds'], ['journal', 'Journal'], ['album', 'Album'], ['theater', 'Theater'], ['calendar', 'Calendar'], ['compendium', 'Compendium']];
+  const TABS = [['party', 'Party'], ['personas', 'Personas'], ['skills', 'Skills'], ['equip', 'Equipment'], ['cards', 'Cards'], ['items', 'Items'], ['collection', 'Collection'], ['wardrobe', 'Wardrobe'], ['links', 'Links'], ['bonds', 'Bonds'], ['status', 'Status'], ['calendar', 'Calendar'], ['journal', 'Journal'], ['album', 'Album'], ['theater', 'Theater'], ['tips', 'Tips'], ['compendium', 'Compendium']];
+  // The menu's groups (Kat, Nov 3 2026: "better, less messy menu"): the menu screen lists one entry per group (data-home = its
+  // first tab), a page's top strip has one button per group and a second strip the group's own tabs. TABS is in group order,
+  // so [ ] still steps through every tab one by one.
+  const GROUPS = [['party', 'Party', ['party']], ['personas', 'Personas', ['personas']], ['skills', 'Skills', ['skills']], ['equip', 'Equipment', ['equip', 'cards']],
+    ['items', 'Items', ['items', 'collection']], ['wardrobe', 'Wardrobe', ['wardrobe']], ['links', 'Links', ['links', 'bonds']], ['status', 'Status', ['status', 'calendar']],
+    ['journal', 'Records', ['journal', 'album', 'theater', 'tips', 'compendium']]];
+  const groupOf = k => GROUPS.find(g => g[2].includes(k)) || GROUPS[0];
   const BLD = () => window.FemcBuild || null;
   // Kat's tab icons (batch 43, art/icons/<tab>.webp) sit before each label; a tab without one (or a file that fails) is text only.
   const TAB_ICONS = new Set(['party', 'personas', 'skills', 'cards', 'equip', 'items', 'collection', 'status', 'links', 'bonds', 'journal', 'album', 'theater', 'calendar', 'compendium']);
@@ -771,7 +778,7 @@ window.FemcMenu = (() => {
       <div class="g-sl-ghost" aria-hidden="true">Commu</div>
       <div class="g-sl-art" aria-hidden="true"><div class="g-sl-fig">${at ? linkFigure(at) : ''}</div></div>
       ${at ? `<div class="g-sl-tarot" aria-hidden="true">${art ? `<img src="${art}" alt="">` : `<span>${esc(at.numeral || '✦')}</span>`}</div>` : ''}
-      <div class="g-sl-head"><h2>Links</h2><p>Bonds · ${met.length} of ${all} met</p></div>
+      <div class="g-sl-head"><h2>Links</h2><p>Bonds · ${met.length} of ${all} met</p>${met.length && BLD() ? '<button type="button" class="g-sl-bonds" data-sl-bonds>Bond perks ›</button>' : ''}</div>
       ${met.length ? `<ul class="g-st-links g-sl-cards" aria-label="Social links">${cards}</ul>` : '<p class="g-note g-sl-empty">No bonds yet. Go out after school and meet people.</p>'}
       ${at ? `<div class="g-sl-detail" aria-live="polite">${linkDetail(at, B, ctx)}</div>` : ''}
       ${perks}
@@ -780,14 +787,14 @@ window.FemcMenu = (() => {
     </div>`;
   }
   // Move the slash to a card without repainting: the figure, the tarot, the name and the guide swap.
-  function linkSelect(el, id, focus) {
+  function linkSelect(el, id, focus, still) {
     const l = G.LINKS[id], root = el.querySelector('.g-sl'); if (!l || !root) return;
     const B = BLD(), ctx = B ? perkCtx() : null, same = linkAt === id;
     linkAt = id;
     root.querySelectorAll('[data-link]').forEach(b => { const on = b.dataset.link === id; b.parentElement.classList.toggle('sel', on); b.tabIndex = on ? 0 : -1; });
     const card = root.querySelector(`[data-link="${id}"]`);
     if (focus && card) card.focus({ preventScroll: true });
-    card?.scrollIntoView?.({ block: 'nearest' });
+    if (!still) card?.scrollIntoView?.({ block: 'nearest' });
     if (same) return;
     const fig = root.querySelector('.g-sl-fig'), tc = root.querySelector('.g-sl-tarot'), art = G.tarot(l);
     fig.innerHTML = linkFigure(l);
@@ -805,9 +812,10 @@ window.FemcMenu = (() => {
     let pre; // which perks were open when the pointer went down (focus moves them before the click lands)
     cards.forEach((bt, i) => {
       const id = bt.dataset.link;
-      bt.addEventListener('pointerover', () => { if (linkAt !== id && !sel.link) { linkSelect(el, id); G.sfx('femc-hover'); } });
+      // The row takes the pointer (hoverRow); a hover never scrolls the list, so the card under the pointer stays put.
+      hoverRow(bt.parentElement, bt, () => { if (linkAt !== id && !sel.link) { linkSelect(el, id, false, true); G.sfx('femc-hover'); } });
       bt.addEventListener('focus', () => { if (linkAt !== id) linkSelect(el, id); });
-      bt.addEventListener('pointerdown', () => { pre = sel.link || null; });
+      bt.parentElement.addEventListener('pointerdown', () => { pre = sel.link || null; });
       bt.addEventListener('click', () => { const was = pre !== undefined ? pre : sel.link; pre = undefined; linkAt = id; sel.link = was === id ? null : id; G.sfx('femc-hover'); render(sel.link ? '[data-link-close]' : `[data-link="${id}"]`); });
       bt.addEventListener('keydown', e => {
         const k = e.key, n = cards.length;
@@ -820,6 +828,7 @@ window.FemcMenu = (() => {
     el.querySelector('[data-link-close]')?.addEventListener('click', () => { const id = sel.link; sel.link = null; render(`[data-link="${id}"]`); });
     el.querySelector('[data-sl-go]')?.addEventListener('click', () => { if (sel.link) { const id = sel.link; sel.link = null; render(`[data-link="${id}"]`); } else el.querySelector(`[data-link="${linkAt}"]`)?.click(); });
     el.querySelector('[data-sl-back]')?.addEventListener('click', () => { if (homeOk) goHome(); else o?.close(); });
+    el.querySelector('[data-sl-bonds]')?.addEventListener('click', () => { pickTab('bonds'); focusTab(); });
   }
   function journalTab() {
     const fr = S().fragments.map(G.fragmentInfo);
@@ -1220,7 +1229,11 @@ window.FemcMenu = (() => {
   const HOME_TIP = { party: 'Check on everyone’s condition', personas: 'The Personas you carry', skills: 'Grow Haenim’s sun', cards: 'Your Revelation cards',
     equip: 'Weapons, armor and accessories', items: 'Use or look over your items', collection: 'Everything you’ve gathered', wardrobe: 'Change your look',
     status: 'Social stats at a glance', links: 'Look in on your bonds', bonds: 'What your bonds have taught you', journal: 'Requests and memory fragments',
-    album: 'The memories you’ve kept', theater: 'Watch a scene again', calendar: 'The days ahead', compendium: 'Every Persona registered · opens in a new tab' };
+    album: 'The memories you’ve kept', theater: 'Watch a scene again', calendar: 'The days ahead', tips: 'Every tip you’ve seen', compendium: 'Every Persona registered · opens in a new tab' };
+  // The menu screen's line for a group, and its other tabs under its name (the first one is the entry's own page).
+  const GROUP_TIP = { equip: 'Weapons, armor, accessories and cards', items: 'Your bag and everything you’ve gathered', wardrobe: 'Change your look · the Boutique has new ones',
+    links: 'Your bonds and what they’ve taught you', status: 'Social stats and the days ahead', journal: 'Requests, memories, replays and tips' };
+  const homeTip = k => GROUP_TIP[k] || HOME_TIP[k] || '';
   const DAY_WORD = { school: 'Weekday', prologue: 'Weekday', off: 'Day Off', exam: 'Exams', trip: 'Trip' };
   // Solar's full-body pose, measured once: width/height, head top, head-to-chin, head centre x (fractions of the image).
   // HD poses (2026-11-03, tools/femc-hd-poses.py): ready.js own.hdfig / skins[<look>].hdfig = [ar, ht, hf, hx] of the arms-crossed
@@ -1256,9 +1269,10 @@ window.FemcMenu = (() => {
   }
   function homeHtml(enter) {
     const s = S(), i0 = G.dayInfo(), i = i0.shown ? { ...i0, ...i0.shown } : i0, dark = s.slot === 'late', when = G.slotName(s.slot, i0);
-    const list = tabList(), silhouette = false; // Kat, Nov 1: Solar shows from day one
-    const items = list.map(([k, n], x) => {
-      const inner = `<i class="g-fmh-slash" aria-hidden="true"></i><i class="g-fmh-bar" aria-hidden="true"></i><span>${esc(n)}</span>`;
+    const list = homeList(), silhouette = false; // Kat, Nov 1: Solar shows from day one
+    const items = list.map(([k, n, subs], x) => {
+      const also = subs.filter(t => t !== k).map(t => (TABS.find(([y]) => y === t) || [])[1]).filter(Boolean);
+      const inner = `<i class="g-fmh-slash" aria-hidden="true"></i><i class="g-fmh-bar" aria-hidden="true"></i><span>${esc(n)}</span>${also.length ? `<em class="g-fmh-also">${esc(also.join(' · '))}</em>` : ''}`;
       const a = `class="g-fmh-it" role="menuitem" data-home="${k}" tabindex="${x === homeSel ? 0 : -1}" aria-describedby="g-fmh-g1"`;
       return `<li role="none" style="--i:${x};--x:${stagger(x)}px"${x === homeSel ? ' class="sel"' : ''}>${k === 'compendium' ? `<a ${a} href="${G.base}compendium.html" target="_blank" rel="noopener">${inner}</a>` : `<button type="button" ${a}>${inner}</button>`}</li>`;
     }).join('');
@@ -1267,22 +1281,50 @@ window.FemcMenu = (() => {
       <div class="g-fmh-bg" aria-hidden="true"></div><div class="g-fmh-rays" aria-hidden="true"></div>
       <div class="g-fmh-ghost side" aria-hidden="true">${esc(dark ? 'Dark Hour' : when)}</div><div class="g-fmh-ghost back" aria-hidden="true">${dark ? '00:00' : 'Solstice'}</div>
       <div class="g-fmh-art" aria-hidden="true"><div class="g-fmh-fig"><img class="${silhouette ? 'sil' : ''}" src="${G.base}${f.src}" alt="" style="--ar:${f.ar};--ht:${f.ht};--hf:${f.hf};--hx:${f.hx}"></div></div>
-      <div class="g-fmh-wallet"><b>${yen(opts.yen ?? s.yen)}</b><small>current wallet</small></div>
+      <div class="g-fmh-wallet"><b>${yen(opts.yen ?? s.yen)}</b><small>current wallet</small></div>${boutiqueHtml()}
       <h2 class="g-fmh-h" id="g-fmh-h">Menu</h2>
       <ul class="g-fmh-list" role="menu" aria-labelledby="g-fmh-h">${items}</ul>
       <div class="g-fmh-date"><div class="dg" aria-hidden="true">${esc(dark ? 'Dark Hour' : DAY_WORD[i.type] || 'Today')}</div>
         <div class="row"><div class="d">${esc(i.md)}<span class="wd">${esc(i.day)}</span></div>${sunMoon(i.moon?.phase ?? .5)}</div><div class="tod">${esc(when)}${i.label ? ` · ${esc(i.label)}` : ''}</div></div>
       <div class="g-fmh-party" role="group" aria-label="Party">${homeParty()}</div>
-      <div class="g-fmh-guide"><p class="g1" id="g-fmh-g1">${esc(HOME_TIP[list[homeSel]?.[0]] || '')}</p><span class="g2">Command</span>
+      <div class="g-fmh-guide"><p class="g1" id="g-fmh-g1">${esc(homeTip(list[homeSel]?.[0]))}</p><span class="g2">Command</span>
         <div class="g-fmh-keys"><span><kbd>↑↓</kbd>Choose</span><button type="button" data-home-go><kbd>↵</kbd>Open</button><button type="button" data-close><kbd>Esc</kbd>Close</button></div></div>
     </div>`;
   }
   const homeItems = () => [...o.el.querySelectorAll('[data-home]')];
+  const homeList = () => GROUPS.map(([k, n, subs]) => [k, n, subs.filter(t => tabList().some(([y]) => y === t))]).filter(g => g[2].length);
+  /* Hover that follows the pointer and nothing else (Kat, Nov 3 2026: "your mouse bounces between two options"). The chosen
+     entry is pushed right and scaled, so its own box used to slide out from under the pointer, the row behind took the hover,
+     then that one moved, and so on. Now the row (li) is the target: the entry inside has pointer-events: none
+     (solstice-menu.css / solstice-links.css), rows never move, and a click on a row presses its entry. Only a real move
+     selects: a mouse that sits still while the list scrolls or repaints under it changes nothing, and touch never hovers. */
+  let lastPt = '';
+  function hoverRow(row, btn, pick) {
+    row.addEventListener('pointermove', e => {
+      if (e.pointerType === 'touch') return;
+      const at = `${e.clientX},${e.clientY}`; if (at === lastPt) return; lastPt = at; pick();
+    });
+    row.addEventListener('click', e => { if (e.target === row) btn.click(); });
+  }
+  // The Boutique's plate on the menu screen (Kat: "move the skin banner somewhere less hidden"): the banners running now.
+  function boutiqueHtml() {
+    const C = window.FemcCosmetics; let bs = [];
+    try { bs = C && !S().epi ? C.banners() : []; } catch (e) { bs = []; }
+    if (!bs.length) return '';
+    const name = bs.length > 1 ? `${bs.length} banners` : bs[0].name;
+    return `<button type="button" class="g-fmh-bq" data-home-boutique><small>Boutique</small><b>${esc(name)}</b><span>New looks · Velvet Plumes</span></button>`;
+  }
+  // The Wardrobe page on its Boutique view (cosmetics.js draws and wires the view; the menu only opens it).
+  function openBoutique() {
+    choose('wardrobe');
+    const b = o && o.el.querySelector('[data-wd-view="banner"]');
+    if (b && !b.classList.contains('on')) b.click();
+  }
   function homeSelect(n, focus) {
     const its = homeItems(); if (!its.length) return;
     homeSel = (n + its.length) % its.length;
     its.forEach((b, x) => { b.parentElement.classList.toggle('sel', x === homeSel); b.tabIndex = x === homeSel ? 0 : -1; });
-    const g1 = o.el.querySelector('#g-fmh-g1'); if (g1) g1.textContent = HOME_TIP[its[homeSel].dataset.home] || '';
+    const g1 = o.el.querySelector('#g-fmh-g1'); if (g1) g1.textContent = homeTip(its[homeSel].dataset.home);
     if (focus) its[homeSel].focus({ preventScroll: true });
   }
   function paintHome(enter) {
@@ -1294,11 +1336,13 @@ window.FemcMenu = (() => {
     const bg = document.querySelector('.g-stage .g-bg'), img = bg && getComputedStyle(bg).backgroundImage;
     if (img && img !== 'none') h.querySelector('.g-fmh-bg').style.backgroundImage = img;
     h.querySelectorAll('[data-home]').forEach((b, x) => {
-      b.addEventListener('pointerover', () => { if (x !== homeSel) { homeSelect(x, true); G.sfx('femc-hover'); } });
+      // The row (an untransformed strip) takes the pointer, not the slanted, scaled entry (see hoverRow).
+      hoverRow(b.parentElement, b, () => { if (x !== homeSel) { homeSelect(x, true); G.sfx('femc-hover'); } });
       b.addEventListener('focus', () => { if (x !== homeSel) homeSelect(x); });
       if (b.tagName === 'BUTTON') b.addEventListener('click', () => choose(b.dataset.home));
     });
     h.querySelector('[data-home-go]').addEventListener('click', () => homeItems()[homeSel]?.click());
+    h.querySelector('[data-home-boutique]')?.addEventListener('click', openBoutique);
   }
   // The open tab's button, or on the Links screen (no tab strip) its chosen card.
   function focusTab() {
@@ -1313,7 +1357,7 @@ window.FemcMenu = (() => {
   }
   function goHome() {
     if (!o || !homeOk) return;
-    const at = tabList().findIndex(([k]) => k === tab); if (at >= 0) homeSel = at;
+    const at = homeList().findIndex(([k]) => k === groupOf(tab)[0]); if (at >= 0) homeSel = at;
     view = 'home'; o.el.classList.remove('is-links', 'is-page'); o.el.classList.add('is-home'); paintHome(false); G.sfx('femc-hover');
     homeSelect(homeSel, true);
   }
@@ -1329,7 +1373,7 @@ window.FemcMenu = (() => {
      backdrop (the Dark Hour's over a fight or in the late slot, darker over a fight), the page name big and slanted with a
      line under it, a ghost word, the compact tab strip ([ ] still switch), the content in angular panels, the key footer. ── */
   const PAGE_GHOST = { party: 'Team', personas: 'Persona', skills: 'Skill', cards: 'Arcana', equip: 'Gear', items: 'Items', collection: 'Collect', wardrobe: 'Style',
-    status: 'Status', bonds: 'Bonds', journal: 'Memory', album: 'Album', theater: 'Theater', calendar: 'Days' };
+    status: 'Status', bonds: 'Bonds', journal: 'Memory', album: 'Album', theater: 'Theater', calendar: 'Days', tips: 'Tips' };
   function pageSub() {
     try {
       const n = roster().length, inP = ['solar', ...(bsave().party || [])].filter(id => roster().some(m => m.id === id)).length;
@@ -1356,6 +1400,16 @@ window.FemcMenu = (() => {
   /* ── The panel ── */
   // The Album and the Theater stay out of the Dark Hour (a replay can't play over a fight).
   const tabList = () => TABS.filter(([k]) => !(opts.inBattle && EXTRA_TABS.includes(k)));
+  // The second strip: the open group's own tabs (none for a group of one). Rebuilt only when the group changes.
+  function paintSub() {
+    const nav = o.el.querySelector('.g-fm-sub'), g = groupOf(tab), subs = g[2].filter(t => tabList().some(([y]) => y === t));
+    if (!nav || nav.dataset.grp === g[0]) return;
+    nav.dataset.grp = g[0]; nav.hidden = subs.length < 2;
+    nav.innerHTML = subs.length < 2 ? '' : subs.map(k => { const n = (TABS.find(([y]) => y === k) || [])[1];
+      return k === 'compendium' ? `<a role="tab" href="${G.base}compendium.html" target="_blank" rel="noopener">${tabIco(k)}${n} ↗</a>` : `<button type="button" role="tab" data-tab="${k}">${tabIco(k)}${n}</button>`; }).join('');
+    nav.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => pickTab(b.dataset.tab)));
+  }
+  function pickTab(k) { tab = k; sel.slot = null; sel.use = null; sel.velvet = null; G.sfx('femc-click'); render(); }
   function render(focus) {
     if (!o) return;
     const body = o.el.querySelector('.g-fm-body');
@@ -1375,6 +1429,7 @@ window.FemcMenu = (() => {
     else if (tab === 'album') html = albumHtml();
     else if (tab === 'theater') html = theaterHtml();
     else if (tab === 'calendar') html = calendarTab();
+    else if (tab === 'tips') html = window.FemcTips ? window.FemcTips.pageHtml() : '<p class="g-note">No tips here.</p>';
     const top = body.scrollTop;
     // The Links page is a screen of its own (solstice-links.css): the panel goes full screen while it shows.
     o.el.classList.toggle('is-links', tab === 'links' && view !== 'home');
@@ -1386,10 +1441,16 @@ window.FemcMenu = (() => {
     else if (tab === 'collection') window.FemcGacha?.wireCollection(body, render);
     else if (tab === 'wardrobe') window.FemcCosmetics?.wire(body, render);
     else if (tab === 'album') wireAlbum(body); else if (tab === 'theater') wireTheater(body, o.el, render);
+    else if (tab === 'tips') window.FemcTips?.wirePage(body, render);
+    paintSub();
     o.el.querySelectorAll('[data-tab]').forEach(b => { b.classList.toggle('on', b.dataset.tab === tab); b.setAttribute('aria-selected', b.dataset.tab === tab); });
+    o.el.querySelectorAll('[data-grp]').forEach(b => b.classList.toggle('in', b.dataset.grp === groupOf(tab)[0]));
     // The tab strip scrolls sideways on narrow panels: keep the open tab in sight.
     const on = o.el.querySelector('[data-tab].on'), strip = on?.parentElement;
     if (on && strip && strip.scrollWidth > strip.clientWidth) { const l = on.offsetLeft - strip.offsetLeft, r = l + on.offsetWidth; if (l < strip.scrollLeft || r > strip.scrollLeft + strip.clientWidth) strip.scrollLeft = Math.max(0, l - 16); }
+    // …and the open group's button in the group strip (a page from a group's second strip, e.g. Cards).
+    const gi = o.el.querySelector('.g-fm-grp.in'), gs = gi?.parentElement;
+    if (gi && gs && gs.scrollWidth > gs.clientWidth) { const l = gi.offsetLeft - gs.offsetLeft, r = l + gi.offsetWidth; if (l < gs.scrollLeft || r > gs.scrollLeft + gs.clientWidth) gs.scrollLeft = Math.max(0, l - 16); }
     if (focus) { const f = typeof focus === 'string' && focus.startsWith('[') ? body.querySelector(focus) : body.querySelector(`[data-pm="${focus}"]`); f?.focus({ preventScroll: true }); f?.scrollIntoView?.({ block: 'nearest', inline: 'nearest' }); }
   }
   function open(startTab, options = {}) {
@@ -1400,11 +1461,12 @@ window.FemcMenu = (() => {
     const s = S(), i = G.dayInfo(), when = opts.inBattle ? 'The Dark Hour' : G.slotName(s.slot, i);
     // The menu screen (HOME above) when the field opens the menu with no tab; a tab asked for, or a fight's menu, opens on its panel.
     homeOk = !opts.inBattle && !startTab; view = homeOk ? 'home' : 'panel';
-    if (homeOk) { const at = tabList().findIndex(([k]) => k === tab); homeSel = at >= 0 ? at : 0; }
+    if (homeOk) { const at = homeList().findIndex(([k]) => k === groupOf(tab)[0]); homeSel = at >= 0 ? at : 0; }
     const shut = homeOk ? '<button type="button" class="g-btn small" data-fm-back>Back</button>' : `<button type="button" class="g-btn small" data-close>${opts.inBattle ? 'Back' : 'Close'}</button>`;
     o = UI().overlay(`<div class="g-fm${opts.inBattle ? ' dark' : ''}"><div class="g-pg-bg" aria-hidden="true"></div><div class="g-pg-ghost" aria-hidden="true"><span></span></div>
       <div class="g-fm-head"><div class="g-pg-title"><p class="g-kicker">${esc(i.md)} ${esc(i.day)} · ${esc(when)}</p><h2 class="g-pg-h">Menu</h2><p class="g-pg-sub"></p></div><span class="g-yen">${yen(opts.yen ?? s.yen)}</span>${shut}</div>
-      <nav class="g-tabs g-fm-tabs" role="tablist">${tabList().map(([k, n]) => (k === 'compendium' ? `<a role="tab" href="${G.base}compendium.html" target="_blank" rel="noopener">${tabIco(k)}${n} ↗</a>` : `<button type="button" role="tab" data-tab="${k}">${tabIco(k)}${n}</button>`)).join('')}</nav>
+      <div class="g-fm-navs"><nav class="g-tabs g-fm-tabs g-fm-groups" role="tablist" aria-label="Menu">${homeList().map(([k, n]) => `<button type="button" role="tab" class="g-fm-grp" data-tab="${k}" data-grp="${k}">${tabIco(k)}${n}</button>`).join('')}</nav>
+      <nav class="g-tabs g-fm-tabs g-fm-sub" role="tablist" aria-label="In this section" hidden></nav></div>
       <div class="g-fm-body" tabindex="-1"></div>
       <p class="g-hint g-fm-hint">[ ] or ←→ on the tabs · Esc ${opts.inBattle || homeOk ? 'back' : 'close'}</p>
       <div class="g-pg-foot"><p class="g1"></p><div class="g-fmh-keys"><span><kbd>[ ]</kbd>Switch</span><span><kbd>↑↓</kbd>Choose</span><span><kbd>↵</kbd>Open</span><button type="button" data-pg-esc><kbd>Esc</kbd>${opts.inBattle || homeOk ? 'Back' : 'Close'}</button></div></div></div>`, `g-fm-ov${opts.inBattle ? ' g-over-battle' : ''}${homeOk ? ' is-home' : ''}`, () => { o = null; view = 'panel'; homeOk = false; removeEventListener('keydown', escKey, true); sel.slot = null; G.save(); const done = opts.onClose; opts = {}; done?.(); });
@@ -1415,7 +1477,7 @@ window.FemcMenu = (() => {
     try { syncLife(); } catch (e) {}
     // Someone waiting on a "forget which?" choice: the Skills tab opens on it.
     sel.forget = skMembers().find(m => kitOf(m.id).pending.length)?.id || null;
-    o.el.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { tab = b.dataset.tab; sel.slot = null; sel.use = null; sel.velvet = null; G.sfx('femc-click'); render(); }));
+    o.el.querySelectorAll('.g-fm-groups [data-tab]').forEach(b => b.addEventListener('click', () => pickTab(b.dataset.tab)));
     o.el.addEventListener('keydown', e => {
       if (view === 'home') {
         // The list: up / down (keyboard or a pad's D-pad) move the slash; Enter / A press the item itself (a button).

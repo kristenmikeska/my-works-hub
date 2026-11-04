@@ -192,3 +192,12 @@
 @media (prefers-reduced-motion: reduce) {
   .g-sl *, .g-sl *::before, .g-sl *::after { animation: none !important; transition: none !important; }
 }
+
+/* Nov 3 2026: the row takes the pointer, the card inside never does (menu.js hoverRow): the chosen card is pushed out and
+   scaled, so its own box used to slide out from under the mouse and the hover bounced between two cards. */
+.g-sl-cards li { cursor: pointer; }
+.g-sl-card { pointer-events: none; }
+/* Bond perks (the Links group's second page), under the heading */
+.g-sl-bonds { margin-top: 10px; padding: 5px 16px 6px 10px; border: 0; background: var(--paper); color: var(--deep); cursor: pointer; font: italic 900 14px/1 var(--cond);
+  letter-spacing: .06em; text-transform: uppercase; clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%); box-shadow: none; }
+.g-sl-bonds:is(:hover, :focus-visible) { background: var(--pink); outline: none; }
