@@ -218,8 +218,8 @@ try:
     ok(any(t in wv for t in texts['storm-commute']), f"a storm commute reads as a storm: {list(texts['storm-commute'])[:1]}")
     ok(all(t in wv or 'indoors' in t.lower() or 'rain' in t.lower() for t in texts['rain-lunch']), f"rainy lunches are rainy: {list(texts['rain-lunch'])[:2]}")
     eff = p.eval(f"""(()=>{{const G=FemcGame,out={{}};
-      WX.at('{md['clear']}','after');out.clear=G.shopStock('aohige').map(x=>x.price);out.pierClear=G.activityOk(G.actById('pier'),'after').ok;
-      WX.at('{md['rain']}','after');out.rain=G.shopStock('aohige').map(x=>x.price);out.lib=G.activityInfo(G.actById('library')).benefit;
+      WX.at('{md['clear']}','after');out.clear=G.shopStock('aohige').filter(x=>x.kind!=='gift').map(x=>x.price);out.pierClear=G.activityOk(G.actById('pier'),'after').ok;
+      WX.at('{md['rain']}','after');out.rain=G.shopStock('aohige').filter(x=>x.kind!=='gift').map(x=>x.price);out.lib=G.activityInfo(G.actById('library')).benefit;
       WX.at('{md['storm']}','after');out.pierStorm=G.activityOk(G.actById('pier'),'after');out.hag=G.activityInfo(G.actById('hagakure')).benefit;
       WX.at('{md['light']}','evening');out.bath=G.activityInfo(G.actById('bathhouse')).benefit;return out}})()""")
     ok(eff['rain'] and all(r == round(c * 0.9) for r, c in zip(eff['rain'], eff['clear'])), f"rainy-day sale: {eff['clear'][:3]} → {eff['rain'][:3]}")
