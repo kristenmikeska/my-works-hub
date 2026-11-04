@@ -30,7 +30,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%); transition: transform .2s cubic-bezier(.2, 1.2, .4, 1), background .2s; }
 .tab::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--c); }
 .tab .th { position: relative; width: 62px; height: 76px; overflow: hidden; background: radial-gradient(70% 70% at 50% 40%, color-mix(in srgb, var(--c) 50%, transparent), transparent); }
-.tab .th img { position: absolute; left: 50%; top: 4px; height: 220%; transform: translateX(-50%); }
+.tab .th img { position: absolute; left: 50%; top: 2px; width: 160%; transform: translateX(-50%); }
 .tab b { display: block; font: italic 900 17px/1 var(--cond); letter-spacing: -.01em; }
 .tab small { display: block; margin-top: 3px; font: italic 700 11px/1.2 var(--cond); color: var(--pink-3); opacity: .8; letter-spacing: .08em; text-transform: uppercase; }
 .tab:hover { background: #2a0f22; }
@@ -77,7 +77,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .feat { position: absolute; left: 4%; bottom: 22px; z-index: 4; display: flex; gap: 8px; max-width: 52%; overflow-x: auto; padding: 6px 4px 8px; scrollbar-width: thin; scrollbar-color: var(--pink) transparent; }
 .feat button { position: relative; flex: 0 0 auto; width: 70px; height: 86px; padding: 0; border: 0; overflow: hidden; background: #1c0a16; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); transition: transform .15s; }
 .feat button::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 -4px 0 var(--rc); }
-.feat button img { position: absolute; left: 50%; top: 3px; height: 230%; transform: translateX(-50%); }
+.feat button img { position: absolute; left: 50%; top: 2px; width: 170%; transform: translateX(-50%); }
 .feat button img.w { height: auto; width: 140%; top: 22%; transform: translateX(-50%) rotate(-30deg); }
 .feat button .g { position: absolute; inset: 0; display: grid; place-items: center; font-size: 26px; }
 .feat button.on { transform: translateY(-6px); background: color-mix(in srgb, var(--bc) 50%, #1c0a16); }
@@ -125,7 +125,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .card .back::after { content: "☀"; position: absolute; inset: 0; display: grid; place-items: center; font-size: 46px; color: var(--pink); }
 .card.glow .back { box-shadow: 0 0 22px 6px var(--rc), 0 0 0 3px var(--rc); border-color: #fff; }
 .card .face { transform: rotateY(180deg); background: radial-gradient(70% 60% at 50% 35%, color-mix(in srgb, var(--rc) 55%, transparent), transparent 75%), linear-gradient(180deg, #2a0f22, #0b040a); border: 2px solid var(--rc); }
-.card .face img { position: absolute; left: 50%; top: 6px; height: 200%; transform: translateX(-50%); }
+.card .face img { position: absolute; left: 50%; top: 4px; width: 150%; transform: translateX(-50%); }
 .card .face img.w { height: auto; width: 150%; top: 24%; transform: translateX(-50%) rotate(-30deg); }
 .card .face .g { position: absolute; inset: 0; display: grid; place-items: center; font-size: 40px; }
 .card .face b { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 6px 6px; background: linear-gradient(transparent, rgba(0, 0, 0, .9) 45%); font: italic 900 13px/1.05 var(--cond); text-align: center; }
@@ -235,12 +235,12 @@ button { font: inherit; color: inherit; cursor: pointer; }
     if (x.hd) { const p = (prefer || HERO_POSES).find(q => x.hd[q]) || Object.keys(x.hd)[0]; return `${A}game/art/skins/${x.id}/hd/${p}.webp`; }
     return x.pose ? `${A}game/art/skins/${x.id}/${x.who}-pose-5.webp` : null;
   }
-  const thumbSrc = x => x.kind === 'skin' ? (x.hd && x.hd['arms-crossed'] ? `${A}game/art/skins/${x.id}/hd/arms-crossed.webp` : `${A}game/art/skins/${x.id}/${x.who}-pose-0.webp`) : figSrc(x);
+  const thumbSrc = x => x.kind === 'skin' ? `${A}game/art/skins/${x.id}/${x.who}-pose-0.webp` : figSrc(x);
   const glyph = x => ({ evoker: '✦', battleui: '⚔', uitheme: '◐', title: '❖', wallpaper: '▦', weapon: '⚔' })[x.kind] || '?';
   function thumbHtml(x, cls = '') {
     const s = thumbSrc(x);
     if (!s) return `<span class="g">${glyph(x)}</span>`;
-    return `<img loading="lazy" class="${x.kind === 'weapon' ? 'w' : cls}" src="${s}" alt="" ${x.filter ? `style="filter:${x.filter}"` : ''}>`;
+    return `<img class="${x.kind === 'weapon' ? 'w' : cls}" src="${s}" alt="" ${x.filter ? `style="filter:${x.filter}"` : ''}>`;
   }
   // The headline look: the first Ultra outfit with HD poses, else the first Ultra, else the first outfit.
   const headline = b => { const s = skins(b); return s.find(x => x.r === 'UR' && x.hd) || s.find(x => x.r === 'UR') || s.find(x => x.hd) || s[0]; };
@@ -258,7 +258,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   /* The splash */
   function paintSplash() {
     const b = live[bi], h = hero || headline(b), sp = $('splash');
-    sp.style.setProperty('--bc', b.color);
+    // Kat's palette rule: the splash stays pink and black; the banner's own colour is only the tab stripe.
     $('ghost').textContent = b.name.split(' ')[0];
     const words = b.name.split(' ');
     $('title').innerHTML = `<span class="kind">${esc(b.kind === 'Main' ? 'Monthly banner' : b.kind + ' banner')}</span>
