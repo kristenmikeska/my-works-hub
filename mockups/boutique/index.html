@@ -78,6 +78,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .feat button { position: relative; flex: 0 0 auto; width: 70px; height: 86px; padding: 0; border: 0; overflow: hidden; background: #1c0a16; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); transition: transform .15s; }
 .feat button::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 -4px 0 var(--rc); }
 .feat button img { position: absolute; left: 50%; top: 2px; width: 170%; transform: translateX(-50%); }
+.feat button img.face, .tab .th img.face { width: 175%; top: -4%; }
 .feat button img.w { height: auto; width: 140%; top: 22%; transform: translateX(-50%) rotate(-30deg); }
 .feat button .g { position: absolute; inset: 0; display: grid; place-items: center; font-size: 26px; }
 .feat button.on { transform: translateY(-6px); background: color-mix(in srgb, var(--bc) 50%, #1c0a16); }
@@ -126,6 +127,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .card.glow .back { box-shadow: 0 0 22px 6px var(--rc), 0 0 0 3px var(--rc); border-color: #fff; }
 .card .face { transform: rotateY(180deg); background: radial-gradient(70% 60% at 50% 35%, color-mix(in srgb, var(--rc) 55%, transparent), transparent 75%), linear-gradient(180deg, #2a0f22, #0b040a); border: 2px solid var(--rc); }
 .card .face img { position: absolute; left: 50%; top: 4px; width: 150%; transform: translateX(-50%); }
+.card .face img.face { width: 175%; top: -2%; }
 .card .face img.w { height: auto; width: 150%; top: 24%; transform: translateX(-50%) rotate(-30deg); }
 .card .face .g { position: absolute; inset: 0; display: grid; place-items: center; font-size: 40px; }
 .card .face b { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 6px 6px; background: linear-gradient(transparent, rgba(0, 0, 0, .9) 45%); font: italic 900 13px/1.05 var(--cond); text-align: center; }
@@ -235,12 +237,14 @@ button { font: inherit; color: inherit; cursor: pointer; }
     if (x.hd) { const p = (prefer || HERO_POSES).find(q => x.hd[q]) || Object.keys(x.hd)[0]; return `${A}game/art/skins/${x.id}/hd/${p}.webp`; }
     return x.pose ? `${A}game/art/skins/${x.id}/${x.who}-pose-5.webp` : null;
   }
-  const thumbSrc = x => x.kind === 'skin' ? `${A}game/art/skins/${x.id}/${x.who}-pose-0.webp` : figSrc(x);
+  // Cards show the outfit's scene face (sharp, head and shoulders) when it has one, else its battle frame.
+  const faceOf = x => x.kind === 'skin' && x.faces && x.faces.length ? `${A}game/art/skins/${x.id}/portraits/${x.who}/${x.faces.includes('happy') ? 'happy' : x.faces[0]}.webp` : null;
+  const thumbSrc = x => x.kind === 'skin' ? faceOf(x) || `${A}game/art/skins/${x.id}/${x.who}-pose-0.webp` : figSrc(x);
   const glyph = x => ({ evoker: '✦', battleui: '⚔', uitheme: '◐', title: '❖', wallpaper: '▦', weapon: '⚔' })[x.kind] || '?';
   function thumbHtml(x, cls = '') {
     const s = thumbSrc(x);
     if (!s) return `<span class="g">${glyph(x)}</span>`;
-    return `<img class="${x.kind === 'weapon' ? 'w' : cls}" src="${s}" alt="" ${x.filter ? `style="filter:${x.filter}"` : ''}>`;
+    return `<img class="${x.kind === 'weapon' ? 'w' : faceOf(x) ? 'face' : cls}" src="${s}" alt="" ${x.filter ? `style="filter:${x.filter}"` : ''}>`;
   }
   // The headline look: the first Ultra outfit with HD poses, else the first Ultra, else the first outfit.
   const headline = b => { const s = skins(b); return s.find(x => x.r === 'UR' && x.hd) || s.find(x => x.r === 'UR') || s.find(x => x.hd) || s[0]; };

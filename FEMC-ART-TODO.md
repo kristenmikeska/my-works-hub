@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 4):** ⭐ high-resolution poses (top section: Solar first) · 1 credits still (section 18: Ken) · 22 skin-series pieces for Solar (section 19: Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21) · 11 Runners epilogue places (section 23: four for Regionals, three for the home screen) · 1 Runners sticker sheet (section 24) · 12 Echo sheets (section 25: 72 new Echoes) · 6 dorm lounge pictures (section 26) · couple victory poses for Haechan, Jungwon and Akihiko (section 27: six outfits) · 15 Boutique banner pictures (section 28) · low-res pictures to look over at the very end (section 29). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make (updated Nov 4):** ⭐ high-resolution poses (top section: Solar first) · 1 credits still (section 18: Ken) · 22 skin-series pieces for Solar (section 19: Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21) · 11 Runners epilogue places (section 23: four for Regionals, three for the home screen) · 1 Runners sticker sheet (section 24) · 12 Echo sheets (section 25: 72 new Echoes) · 6 dorm lounge pictures (section 26) · couple victory poses for Haechan, Jungwon and Akihiko (section 27: six outfits) · 15 Boutique banner pictures (section 28) · little card art (section 29: card back, frames, 22 item pictures, 11 outfit face sheets) · low-res pictures to look over at the very end (section 30). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 ## ⭐⭐ TOP PRIORITY when you have usage: high-resolution poses (Kat, Nov 2)
 
@@ -1129,7 +1129,127 @@ A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload 
 
 ---
 
-## 29. Low-res pictures to look at (assess later)
+## 29. Little card art (ChatGPT; Boutique and Wardrobe cards, Kat Nov 4)
+
+Small pictures for the cards in the Boutique and the Wardrobe: the pull cards, the rarity frames, the items that have no picture yet (menu colours, battle themes, title screens, pattern wallpapers) and scene faces for the outfits that have none. Outfits that already have scene faces use them on their cards, so they need nothing here.
+
+**[ ] 29A. The pull card back**  
+Attach: `Solar.png` (only for the art style)  
+Save as: `card-back.png`
+```
+The back of a single tarot-style collectible card, portrait 2:3, filling the whole image edge to edge, flat and straight-on (not tilted, no table, no hands). Black card with a hot pink (#ff4f9e) ornate border, a glowing pink sun with twelve rays in the centre, a thin crescent moon tucked behind the sun, fine pink filigree in the corners, tiny stars scattered over a subtle black velvet texture. Symmetrical, elegant, Persona 3 Reload / Persona 5 X menu style. No text, no letters, no numbers.
+```
+
+**[ ] 29B. Card frames by rarity (one sheet)**  
+Attach: nothing  
+Save as: `card-frames.png`
+```
+Three empty collectible-card frames side by side on a plain white background, clear space between them, each portrait 2:3 and the same size: the frame border only, the middle of each card left completely plain white (artwork goes there later). Left: Rare, a clean black frame with a thin sky-blue inner line and one small star at the bottom. Middle: Super Rare, a black frame with lavender-purple filigree corners and two small stars at the bottom. Right: Ultra, an ornate black-and-gold frame with sunburst corners, tiny gems and three small stars at the bottom. Slanted Persona 5 X style accents on each. No text.
+```
+
+**[ ] 29C. Card art sheet 1: battle themes and menu colours**  
+Attach: nothing  
+Save as: `card-art-1.png`
+```
+A 3 × 3 sheet of small square card illustrations on a plain white background, clear space between cells, every cell the same size: each one a simple, bold, centred emblem picture in Persona 5 X item-icon style, clean lineart and flat cel shading, readable at a small size. Cells, in order: 1. Moonlight Battle: a crescent moon over a crossed naginata, cool silver-blue; 2. Jade Battle: a jade-green shield with a calm leaf, soft greens; 3. Velvet Battle: a blue velvet ribbon wrapped round a silver key; 4. Golden Battle: a golden sun over crossed weapons, all gold; 5. Sakura Colours: a cherry blossom branch, soft pinks; 6. Mint Colours: a sprig of mint leaves and a little bubble, fresh greens; 7. Moonlight Colours: a silver full moon over clouds, silver and pale blue; 8. Velvet Colours: a blue velvet curtain pulled back from a door; 9. Sunrise Colours: a sun rising over a horizon, gold and amber. No text, no letters.
+```
+
+**[ ] 29D. Card art sheet 2: menu colours and title screens**  
+Attach: nothing  
+Save as: `card-art-2.png`
+```
+A 3 × 3 sheet of small square card illustrations on a plain white background, clear space between cells, every cell the same size: each one a simple, bold, centred emblem picture in Persona 5 X item-icon style, clean lineart and flat cel shading, readable at a small size. Cells, in order: 1. Summer Colours: a wave and a starfish, sea blue; 2. Pumpkin Colours: a jack-o’-lantern with a little bat, orange and black; 3. Snowfall Title: snowflakes falling over a navy night sky; 4. Sakura Title: blossom petals blowing across pink; 5. Dark Hour Title: a huge green full moon over coffins in a sickly green night; 6. Velvet Title: a blue door with no handle floating in blue space; 7. Sunburst Title: a golden sunburst filling the card; 8. Two Suns Title: two suns, one amber and one rose, side by side; 9. Eclipse Title: a sun and a moon overlapping in an eclipse ring. No text, no letters.
+```
+
+**[ ] 29E. Card art sheet 3: the last title and the pattern wallpapers (2 × 2)**  
+Attach: nothing  
+Save as: `card-art-3.png`
+```
+A 2 × 2 sheet of small square card illustrations on a plain white background, clear space between cells, every cell the same size: each one a simple, bold, centred emblem picture in Persona 5 X item-icon style, clean lineart and flat cel shading, readable at a small size. Cells, in order: 1. Zenith Title: the sun straight overhead at noon, white-gold light, no shadows; 2. Hearts wallpaper: little pink hearts on deep pink; 3. Snowfall wallpaper: soft snow on navy; 4. Pajama Night wallpaper: moons and stars on flannel blue. No text, no letters.
+```
+
+**Scene faces for outfits that have none (each a 3 × 2 sheet; they show on the outfit's cards and in the fitting room):**
+
+**[ ] 29F. Akihiko: Champion’s Robe (scene portraits)**  
+Attach: `Champion’s Robe [sk-akihiko-champ] - pose sheet (recut).png`, then `Akihiko.png`  
+Save as: `skin-sk-akihiko-champ-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached images in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style as the character reference. Wearing exactly the outfit from the first attached image (A red satin boxing robe with gold trim, SANADA across the back and a title belt over one shoulder.). Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 29G. Akihiko: Off-Day Hoodie (scene portraits)**  
+Attach: `Off-Day Hoodie [sk-akihiko-hoodie] - pose sheet (recut).png`, then `Akihiko.png`  
+Save as: `skin-sk-akihiko-hoodie-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached images in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style as the character reference. Wearing exactly the outfit from the first attached image (A grey zip hoodie, track pants and running shoes. His day off still has roadwork in it.). Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 29H. Jungwon: HOAX Council Uniform (scene portraits)**  
+Attach: `HOAX Council Uniform [sk-jungwon-council] - pose sheet (recut).png`, then `Jungwon.png`  
+Save as: `skin-sk-jungwon-council-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached images in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style as the character reference. Wearing exactly the outfit from the first attached image (The Hanlim High blazer, the student-council armband and a clipboard he takes very seriously.). Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 29I. Yukari: Archery Club (scene portraits)**  
+Attach: `Archery Club [sk-yukari-kyudo] - pose sheet (recut).png`, then `Yukari.png`  
+Save as: `skin-sk-yukari-kyudo-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached images in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style as the character reference. Wearing exactly the outfit from the first attached image (Her kyudo uniform: a white top, navy hakama and a black chest guard.). Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 29J. Yukari: Featherman Pink (scene portraits)**  
+Attach: `sk-yukari-pink - pose sheet (recut).png`, then `Yukari.png`  
+Save as: `skin-sk-yukari-pink-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached images in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style as the character reference. Wearing exactly the outfit from the first attached image (A pink sentai suit, the feathered helmet under her arm. She will not be taking questions from Ken.). Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 29K. Junpei: Little League Legend (scene portraits)**  
+Attach: `Little League Legend [sk-junpei-baseball] - pose sheet (recut).png`, then `Junpei.png`  
+Save as: `skin-sk-junpei-baseball-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached images in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style as the character reference. Wearing exactly the outfit from the first attached image (Pinstripes, a batting helmet and eye black. A legend, by his own account.). Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 29L. Mitsuru: Motorcycle Leathers (scene portraits)**  
+Attach: `Motorcycle Leathers [sk-mitsuru-rider] - pose sheet (recut).png`, then `Mitsuru.png`  
+Save as: `skin-sk-mitsuru-rider-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached images in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style as the character reference. Wearing exactly the outfit from the first attached image (Her white riding suit, and her white motorcycle never far behind. Execution, with style.). Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 29M. Shinjiro: Beanie & Apron (scene portraits)**  
+Attach: `Beanie & Apron [sk-shinjiro-apron] - pose sheet (recut).png`, then `Shinjiro.png`  
+Save as: `skin-sk-shinjiro-apron-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached images in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style as the character reference. Wearing exactly the outfit from the first attached image (A knit beanie and a plain apron over his coat. Dinner is in ten minutes; nobody touches the pot.). Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 29N. Minji: Film Crew (scene portraits)**  
+Attach: `Film Crew [sk-minji-crew] - pose sheet (recut).png`, then `Minji.png`  
+Save as: `skin-sk-minji-crew-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached images in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style as the character reference. Wearing exactly the outfit from the first attached image (A cargo vest, black cargo pants and a crew pass on a lanyard. Quiet on set.). Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 29O. Jihoon: Purple Pilates Set (scene portraits)**  
+Attach: `Purple Pilates Set [sk-jihoon-pilates] - pose sheet (recut).png`, then `Jihoon.png`  
+Save as: `skin-sk-jihoon-pilates-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached images in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style as the character reference. Wearing exactly the outfit from the first attached image (A lavender matching set, grip socks and a rolled mat. It’s for his core, he says.). Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 29P. Aigis: Gekkoukan Uniform (scene portraits)**  
+Attach: `Gekkoukan Uniform [sk-aigis-uniform] - pose sheet (recut).png`, then `Aigis.png`  
+Save as: `skin-sk-aigis-uniform-portraits.png`
+```
+A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached images in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style as the character reference. Wearing exactly the outfit from the first attached image (The school uniform over her frame, the ribbon tied to the millimetre. Mission: blend in.). Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+---
+
+## 30. Low-res pictures to look at (assess later)
 
 These are already in the game but look soft or blurry, because they're shown much bigger than the file. No prompts yet: check each one and decide whether to find a bigger copy, redo it, or leave it for the upscale batch. Sizes are width × height in pixels; the newer backgrounds are 1920 wide.
 
