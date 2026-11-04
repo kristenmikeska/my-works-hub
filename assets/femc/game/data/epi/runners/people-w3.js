@@ -42,7 +42,9 @@
    toast"; Mark's name is crossed off the committee list in blue ballpoint (Johnny's); Hanni's invented cabin owner is
    "Mr. Gerald Lodge, One Lake Road" (Gerald is Hyein's dress form); the car on 12/21 is at 9 a.m., booked for two whatever
    Solar answered; Chenle's log is three angles (his phone, the bell-tower webcam, an SUanon video), 4.2 seconds each.
-   Noticed, not changed: people.js's ambient epi-r-am-mark-notes says the Stats final is the 16th; this brief has it on the 15th. */
+   Noticed, not changed: people.js's ambient epi-r-am-mark-notes says the Stats final is the 16th; this brief has it on the 15th. Phone pass (Nov 3 2026): Ms. Han's reminder is her own thread 'han'; two short texts from her father himself
+   (epi-r-tx-dad-finals 12/16 late; epi-r-tx-dad-sunday 12/18 evening, only after she confirmed the car: flag epi-r-travel-yes).
+   Inventions: none beyond his wording ("Don't be clever on the essays. Be clear."). No flag set, no outcome changed. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).runners ||= {});
   const B = (R.bonds ||= {});
@@ -571,7 +573,7 @@
   add('jaemin', 'friend', [
     { id: 'epi-r-jaemin-3', title: 'run of show', hint: 'Jaemin has taped the run of show for the nineteenth to the Sigma fridge and is defending it with his body.',
       after: '12/15', until: '12/18', slots: BOTH,
-      place: 'Syracuse · Sigma Chi House', time: 'After Class', scene: [
+      place: 'Syracuse · Sigma Chi House · Kitchen', time: 'After Class', scene: [
       { music: 'epi-r-party' },
       { n: "The Sigma kitchen at four in the afternoon in finals week smelled like burnt coffee and orange cleaner and somebody's abandoned ramen, and on the fridge, held up by six magnets and a strip of gaffer tape, was a single printed sheet titled RUN OF SHOW (FINAL) (FINAL FINAL) in Jaemin's purple gel pen." },
       { n: "*8:00 · doors (JENO).* *8:15 · Hyein's looks arrive (EVERYONE LOOK).* *9:00 · a few words (JAEMIN, 3 min).* Somebody had crossed out the 3 and written *lol* in pencil. *10:00 · photo wall.* *12:00 · the toast (EVERYONE).* At the bottom, underlined twice: *NO PINK PUNCH. I MEAN IT. JENO.*" },
@@ -620,7 +622,7 @@
   add('danielle', 'rival', [
     { id: 'epi-r-danielle-3', title: 'for the records', hint: 'Danielle has taken over the Alpha dining room with the party budget, and she has saved you a chair.',
       after: '12/15', until: '12/18', slots: BOTH,
-      place: 'Syracuse · Alpha Phi House', time: 'Evening', scene: [
+      place: 'Syracuse · Alpha Phi House · Dining Room', time: 'Evening', scene: [
       { music: 'epi-r-danielle' },
       { n: "The Alpha dining room, the long table nobody ate at, the chandelier with one dead bulb Chungha kept saying she'd replace. Danielle had covered every inch of the table in order. Receipts squared into stacks by date, a calculator with a paper tape curling off it onto the floor, the laptop, the red folder, and in front of the chair beside hers, set out exactly square, a single pen." },
       { n: "Chungha came through from the kitchen with a mug, saw them, and kept walking without slowing down. Chaeyeon, a minute later, did the same. Neither of them looked at the table. It was very noticeable, how much they didn't look at it." },
@@ -706,13 +708,28 @@
   /* ── Texts ── */
   const T = (R.texts ||= {});
   (T.texts ||= []).push(
-    { id: 'epi-r-tx-han-reminder', thread: 'dad', date: '12/15', slot: 'after', msgs: [
-      { from: 'dad', t: 'Good afternoon, Solar. This is Ms. Han.' },
-      { from: 'dad', t: 'A reminder that your winter break travel needs to be confirmed by Thursday, the eighteenth. Arrangements for Sunday are in place pending your confirmation.' },
-      { from: 'dad', t: "Mr. Lee has asked me to note, again, that he is still waiting for the advisor's name." }
+    { id: 'epi-r-tx-han-reminder', thread: 'han', date: '12/15', slot: 'after', msgs: [
+      { from: 'han', t: 'Good afternoon, Solar. This is Ms. Han.' },
+      { from: 'han', t: 'A reminder that your winter break travel needs to be confirmed by Thursday, the eighteenth. Arrangements for Sunday are in place pending your confirmation.' },
+      { from: 'han', t: "Mr. Lee has asked me to note, again, that he is still waiting for the advisor's name." }
     ], reply: [
-      { t: "i'll confirm by thursday", then: [{ from: 'dad', t: 'Thank you, Solar. Good luck with your examinations.' }] },
-      { t: "(Leave it on read.)", silent: true, then: [{ from: 'dad', t: "I'll note that the message was received. Again." }] }
+      { t: "i'll confirm by thursday", then: [{ from: 'han', t: 'Thank you, Solar. Good luck with your examinations.' }] },
+      { t: "(Leave it on read.)", silent: true, then: [{ from: 'han', t: "I'll note that the message was received. Again." }] }
+    ] },
+    // Her father himself (Nov 3 2026): finals, and the confirmed car. Nothing new: his 12/2 voice, the trip home already set.
+    { id: 'epi-r-tx-dad-finals', thread: 'dad', date: '12/16', slot: 'late', msgs: [
+      { from: 'dad', t: 'Your mother says your examinations have started.' },
+      { from: 'dad', t: "Sleep. Eat. Don't be clever on the essays. Be clear." }
+    ], reply: [
+      { t: "ok dad. i will", then: [{ from: 'dad', t: 'Good luck, Solar.' }] },
+      { t: "(Leave it on read.)", silent: true, then: [] }
+    ] },
+    { id: 'epi-r-tx-dad-sunday', thread: 'dad', date: '12/18', slot: 'evening', flag: 'epi-r-travel-yes', msgs: [
+      { from: 'dad', t: 'Ms. Han tells me you confirmed.' },
+      { from: 'dad', t: 'Good. Sunday, then.' }
+    ], reply: [
+      { t: "sunday", then: [] },
+      { t: "(Leave it on read.)", silent: true, then: [] }
     ] },
     { id: 'epi-r-tx-team-last', thread: 'team', date: '12/15', slot: 'late', msgs: [
       { from: 'doyoung', t: 'lab is closed for finals. i mean it. i will know' },
@@ -850,7 +867,7 @@
       ] }
     ] },
 
-    { id: 'epi-r-rt-allnighter', slot: 'evening', after: '12/16', until: '12/18', place: 'Syracuse · Alpha Phi House', time: 'Night', scene: [
+    { id: 'epi-r-rt-allnighter', slot: 'evening', after: '12/16', until: '12/18', place: 'Syracuse · Alpha Phi House · Living Room', time: 'Night', scene: [
       { music: 'epi-r-home' },
       { n: "The Alpha living room the night before a final looked like a field hospital. Girls on every cushion and most of the rug, laptops balanced on knees, a pizza box open on the coffee table with two slices left that everyone was too polite to take, and Olivia at the center of it all with six highlighters fanned out in one hand like a winning poker hand, explaining a system nobody had asked about to everyone at once." },
       { s: 'olivia', f: 'happy', t: "Yellow is facts. Pink is facts I'll forget. Orange is facts I've already forgotten. Green is vibes." },

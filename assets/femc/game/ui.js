@@ -151,25 +151,54 @@
       const h = HANDLE.exec(text);
       if (h) { handle = h[1]; text = text.slice(h[0].length); }
       else if (NOTICE.test(text)) return { group, me, name, notice: true, text };
+      else handle = (G.D.texts.handles || {})[m.from] || null; // a world's in-world handles (epilogue phone.js, Nov 3 2026)
     }
     return { group, me, name, handle: handle && handle.toLowerCase() !== name.toLowerCase() ? handle : null, text };
   }
   const threadName = id => G.D.texts.threads[id] || G.name(id);
   // Kat's group-chat pictures (batch 48, tools/femc-greens.py -> game/art/phone/<group>.webp); everyone else is a portrait.
   const GROUP_PICS = ['sees', 'sisters', 'searchparty', 'hateclub'];
-  const threadPic = id => GROUP_PICS.includes(id) ? `${G.base}assets/femc/game/art/phone/${id}.webp` : G.portrait(id, 'neutral');
-  const picImg = (id, pic) => GROUP_PICS.includes(id) ? `<img class="g-grp-pic" src="${pic}" alt="" onerror="this.remove()">` : `<img src="${pic}" alt="">`;
+  const threadPic = id => GROUP_PICS.includes(id) ? `${G.base}assets/femc/game/art/phone/${id}.webp` : avatarUrl(id) || G.portrait(id, 'neutral');
+  const picImg = (id, pic) => GROUP_PICS.includes(id) ? `<img class="g-grp-pic" src="${pic}" alt="" onerror="this.remove()">` : faceImg(id) || `<img src="${pic}" alt="">`;
+  /* Contact pictures (Nov 3 2026, Kat's notes after the Runners epilogue). A picture of their own first: art/avatars/<world>/<id>.webp
+     when art/avatars/index.js lists it (tools/femc-avatars.py: Runners' SUgram photos; drop any square WebP there and run --index;
+     a group chat uses its thread id); else the portrait, cropped round the face (place.js face centre); a group chat without one
+     is a composite of two or three of its people (avatarHtml); else the initial. */
+  const avWorld = () => G.world() || 'main';
+  const avatarUrl = id => ((window.FEMC_AVATARS || {})[avWorld()] || []).includes(id) ? `${G.base}assets/femc/game/art/avatars/${avWorld()}/${id}.webp?v=${window.FEMC_AVATARS_V || 1}` : null;
+  function faceImg(id) {
+    const own = avatarUrl(id); if (own) return `<img class="g-av-own" src="${own}" alt="">`;
+    const pic = G.portrait(id, 'neutral'); if (!pic) return '';
+    const f = /portraits\/([^/]+)\//.exec(pic), cx = f && (window.FEMC_PORTRAIT_PLACE || {})[f[1]]?.[0];
+    const x = cx == null ? null : `${(cx * 100).toFixed(1)}%`;
+    return `<img src="${pic}" alt=""${x ? ` style="object-position:${x} 8%;transform-origin:${x} 12%"` : ''}>`;
+  }
+  const initial = id => esc((threadName(id) || G.name(id) || '?').replace(/^[^a-z0-9]+/i, '')[0] || '?');
+  // A group chat's people: the latest senders first (not Solar), up to three.
+  function groupFaces(id) {
+    const seen = [];
+    (S().phone.threads[id] || []).slice().reverse().forEach(m => { if (m.from && m.from !== 'solar' && !seen.includes(m.from) && seen.length < 3) seen.push(m.from); });
+    return seen;
+  }
+  function avatarHtml(id) {
+    if (GROUP_PICS.includes(id) || avatarUrl(id)) return picImg(id, threadPic(id));
+    if (G.isGroupThread(id)) {
+      const who = groupFaces(id);
+      if (who.length > 1) return `<span class="g-av-grp n${who.length}">${who.map(w => `<span>${faceImg(w) || initial(w)}</span>`).join('')}</span>`;
+    }
+    return faceImg(id) || initial(id);
+  }
   // A text arriving: the notification chime and a banner from the top. Tap / Enter opens the conversation.
   function textBanner(t, i, chime) {
     const th = S().phone.threads[t.thread] || [], last = th[th.length - (t.count || 1)] || { from: t.from, t: t.msg || t.text };
     const m = msgParts(t.thread, { from: t.from || last.from, t: t.msg || last.t, sticker: t.from ? t.sticker : last.sticker });
-    const picId = threadPic(t.thread) ? t.thread : t.from || last.from, pic = threadPic(picId);
+    const picId = threadPic(t.thread) || G.isGroupThread(t.thread) ? t.thread : t.from || last.from;
     const el = document.createElement('div');
     el.className = `g-banner${reduced.matches ? ' calm' : ''}${t.invite ? ' invite' : ''}`;
     el.setAttribute('role', 'button'); el.tabIndex = 0;
     el.dataset.thread = t.thread;
     const more = (t.count || 1) > 1 ? ` · ${t.count} new` : '';
-    el.innerHTML = `<i class="g-bn-pic">${pic ? picImg(picId, pic) : esc(threadName(t.thread)[0] || '✉')}</i><span class="g-bn-body"><span class="g-bn-top"><b>${esc(threadName(t.thread))}</b><small>now${esc(more)}</small></span><span class="g-bn-msg">${m.group && !m.notice ? `<em>${esc(m.name)}:</em> ` : ''}${esc(m.text)}</span></span>`;
+    el.innerHTML = `<i class="g-bn-pic">${avatarHtml(picId)}</i><span class="g-bn-body"><span class="g-bn-top"><b>${esc(threadName(t.thread))}</b><small>now${esc(more)}</small></span><span class="g-bn-msg">${m.group && !m.notice ? `<em>${esc(m.name)}:</em> ` : ''}${esc(m.text)}</span></span>`;
     el.setAttribute('aria-label', `New message. ${threadName(t.thread)}: ${m.text}. Open the phone.`);
     const go = () => {
       if (el.classList.contains('out')) return;
@@ -1718,7 +1747,7 @@
     const days = G.forecast(5); if (!days.length) return '';
     const spell = days[0].spell, wet = days.filter(d => d.wet).length;
     const note = days[0].kind === 'storm' ? 'Storm warning today. The pier and the beach are closed.' : days[0].wet && G.D.places.rainyDay?.note ? G.D.places.rainyDay.note : wet >= 3 ? 'A wet few days ahead. Take an umbrella.' : days.some(d => d.kind === 'snow') ? 'Snow in the forecast.' : '';
-    return `<section class="g-ph-wx" aria-label="Forecast"><p class="g-ph-wx-h">Iwatodai weather${spell ? `<small>${esc(spell)}</small>` : ''}</p><ol>${days.map((d, k) => `<li class="${k ? '' : 'today'}" data-wx="${esc(d.level)}"><b>${k ? esc(d.day) : 'Today'}</b>${wxIcon(d)}<small>${esc(d.name)}</small></li>`).join('')}</ol>${note ? `<p>${esc(note)}</p>` : ''}</section>`;
+    return `<section class="g-ph-wx" aria-label="Forecast"><p class="g-ph-wx-h">${esc(S().epi?.place && S().epi.place !== 'Every world' ? S().epi.place : 'Iwatodai')} weather${spell ? `<small>${esc(spell)}</small>` : ''}</p><ol>${days.map((d, k) => `<li class="${k ? '' : 'today'}" data-wx="${esc(d.level)}"><b>${k ? esc(d.day) : 'Today'}</b>${wxIcon(d)}<small>${esc(d.name)}</small></li>`).join('')}</ol>${note ? `<p>${esc(note)}</p>` : ''}</section>`;
   }
   function openPhone(thread) {
     const s = S();
@@ -1739,6 +1768,9 @@
     });
     // A phone case from the capsule machine (gacha.js; game.css .g-phone-ov[data-case]).
     const pcase = window.FemcGacha?.phoneCase(); if (pcase) o.el.dataset.case = pcase;
+    // The epilogue's phone (Nov 3 2026): the world's own look (epilogue.css [data-world]), Messages and Contacts only.
+    const EPI = s.epi && window.FemcEpilogue ? window.FemcEpilogue : null;
+    if (EPI) o.el.dataset.world = G.world() || s.epi.world;
     const $p = sel => o.el.querySelector(sel);
     const body = $p('.g-ph-body'), reply = $p('.g-ph-reply'), back = $p('.g-ph-back'), title = $p('.g-ph-top b'), bar = $p('.g-ph-bar');
     const compose = $p('.g-ph-compose'), draft = $p('.g-ph-draft');
@@ -1748,9 +1780,9 @@
     /* The phone's apps (2026-11-01): Messages, Who's Free (P5X-style: who's at their spot today and the next few days) and
        Contacts (a card per met link). The tab strip sits at the top of each list; a contact card's ‹ goes back to Contacts. */
     let tab = 'msgs';
-    const tabsHtml = () => `<nav class="g-ph-tabs" aria-label="Phone apps">${[['msgs', 'Messages'], ['free', 'Who’s free'], ['jobs', 'Jobs'], ['people', 'Contacts']].map(([k, t]) => `<button type="button" data-tab="${k}"${tab === k ? ' class="on" aria-current="page"' : ''}>${t}</button>`).join('')}</nav>`;
+    const tabsHtml = () => `<nav class="g-ph-tabs" aria-label="Phone apps">${(EPI ? [['msgs', 'Messages'], ['people', 'Contacts']] : [['msgs', 'Messages'], ['free', 'Who’s free'], ['jobs', 'Jobs'], ['people', 'Contacts']]).map(([k, t]) => `<button type="button" data-tab="${k}"${tab === k ? ' class="on" aria-current="page"' : ''}>${t}</button>`).join('')}</nav>`;
     const wireTabs = () => body.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { if (b.dataset.tab === tab) return; tab = b.dataset.tab; G.sfx('femc-click'); home(); focusIn(body.querySelector(`[data-tab="${tab}"]`)); }));
-    const home = () => (tab === 'free' ? freeApp() : tab === 'jobs' ? jobsApp() : tab === 'people' ? peopleApp() : list());
+    const home = () => (tab === 'free' ? freeApp() : tab === 'jobs' ? jobsApp() : tab === 'people' ? (EPI ? epiPeople() : peopleApp()) : list());
     const face = id => { const pic = G.portrait(id, 'neutral'); return `<i>${pic ? `<img src="${pic}" alt="">` : esc((G.LINKS[id]?.short || '?')[0])}</i>`; };
     const rkChip = l => { const p = G.progress(l.id); return `<em class="g-ph-rk">${G.isMaxed(l) ? 'MAX' : `R${p.rank}`}${p.route === 'romance' ? ' <span class="g-ph-heart" aria-label="romance">♥</span>' : ''}</em>`; };
     const hintChip = h => (h && h.label && h.key !== 'max' ? `<small class="g-ph-hint k-${h.key}">${esc(h.label)}</small>` : '');
@@ -1837,6 +1869,47 @@
         onDone: () => { const n = G.finishPhoneCall(c.link.id); if (n) G.toast('perk', `${c.link.short}: +${n} ♪`); run(); } }), 0);
     }));
     let cardFrom = 'people';
+    /* The epilogue's Contacts (epilogue.js "The phone"): the world's people, a card each (picture, who they are to her, Call /
+       Message, the things she knows so far), its own calls and topics; nothing here spends time or changes the story. */
+    const epiPeople = () => {
+      stop();
+      title.textContent = 'Contacts'; back.hidden = true; reply.replaceChildren(); compose.hidden = true; bar.innerHTML = ''; bar.hidden = true;
+      const list2 = EPI.contacts();
+      body.innerHTML = tabsHtml() + (list2.length ? list2.map(c => `<button type="button" class="g-ph-row g-ph-ct" data-ct="${esc(c.id)}"><i>${avatarHtml(c.id)}</i><span><b>${esc(c.name)}</b><small>${esc(c.rel)}</small></span></button>`).join('') : '<p class="g-note">No contacts yet.</p>');
+      wireTabs();
+      body.querySelectorAll('[data-ct]').forEach(b => b.addEventListener('click', () => { G.sfx('femc-click'); epiCard(b.dataset.ct); }));
+    };
+    const epiReachHtml = id => {
+      const btn = (kind, label, icon) => {
+        let r = EPI.reach(id, kind); if (!r) return '';
+        if (r.ok && kind === 'call' && inScene()) r = { ok: false, why: 'Not now' };
+        return `<button type="button" class="g-ph-reachbtn${r.ok ? '' : ' off'}" data-reach="${kind}"${r.ok ? '' : ' aria-disabled="true"'}><b><i aria-hidden="true">${icon}</i>${label}</b>${r.ok ? '' : `<small>${esc(r.why)}</small>`}</button>`;
+      };
+      const h = btn('call', 'Call', '☎') + btn('msg', 'Message', '✉');
+      return h ? `<div class="g-ph-reach">${h}</div>` : '';
+    };
+    const epiCard = id => {
+      stop();
+      const c = EPI.contactCard(id); if (!c) return epiPeople();
+      cardFrom = 'people';
+      title.textContent = c.name; title.dataset.card = '1'; back.hidden = false; reply.replaceChildren(); compose.hidden = true; bar.innerHTML = ''; bar.hidden = true;
+      body.innerHTML = `<article class="g-ph-card g-epi-card-ct"><header><i class="g-av-big">${avatarHtml(id)}</i><div><p class="an">${esc(s.epi.place)}</p><h3>${esc(c.name)}</h3>${c.rel ? `<p class="rk">${esc(c.rel)}</p>` : ''}</div></header>
+        ${epiReachHtml(id)}
+        <h4>Things Solar knows</h4>${c.known.length ? `<ul class="g-ph-learned">${c.known.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : '<p class="g-ph-empty">Nothing yet.</p>'}
+        <button type="button" class="g-ph-msgbtn" data-msg="${esc(id)}"${(s.phone.threads[id] || []).length ? '' : ' hidden'}>Messages ▸</button></article>`;
+      body.querySelector('[data-msg]')?.addEventListener('click', () => { G.sfx('femc-click'); tab = 'msgs'; open(id); });
+      body.querySelectorAll('[data-reach]').forEach(b => b.addEventListener('click', () => {
+        if (b.getAttribute('aria-disabled') === 'true') { G.sfx('femc-back'); return; }
+        G.sfx('femc-click');
+        if (b.dataset.reach === 'msg') { topicFor = id; tab = 'msgs'; open(id); return; }
+        const x = EPI.call(id); if (!x) return epiCard(id);
+        o.close();
+        setTimeout(() => SC.play({ scene: x.scene, place: x.place, time: x.time, music: x.music || (['evening', 'late'].includes(S().slot) ? 'night' : 'tender'), label: `${x.name} · Call`,
+          onDone: () => run() }), 0);
+      }));
+      body.scrollTop = 0;
+      focusIn(back);
+    };
     const card = (id, from) => {
       stop();
       const l = G.LINKS[id], c = G.contactCard(l); if (!c) return;
@@ -1874,10 +1947,10 @@
       bar.innerHTML = `<span>${n ? `${n} unread` : ids.length ? 'All caught up' : ''}</span><button type="button" class="g-ph-readall" data-readall${n ? '' : ' disabled'}>Read all</button>`;
       bar.hidden = !ids.length;
       body.innerHTML = tabsHtml() + forecastHtml() + (ids.length ? ids.map(id => {
-        const th = s.phone.threads[id], last = th[th.length - 1], pic = threadPic(id), u = s.phone.unread[id];
+        const th = s.phone.threads[id], last = th[th.length - 1], u = s.phone.unread[id];
         const m = last ? msgParts(id, last) : { text: '' };
         const lead = !last ? '' : m.me ? 'You: ' : m.group && !m.notice ? `${m.name}: ` : '';
-        return `<button type="button" class="g-ph-row${u ? ' unread' : ''}" data-th="${id}"><i>${pic ? picImg(id, pic) : esc(threadName(id)[0])}</i><span><b>${esc(threadName(id))}</b><small>${esc(lead + m.text)}</small></span>${u ? `<em>${u}</em>` : pending(id) ? '<em class="g-ph-due">Reply</em>' : ''}</button>`;
+        return `<button type="button" class="g-ph-row${u ? ' unread' : ''}" data-th="${id}"><i>${avatarHtml(id)}</i><span><b>${esc(threadName(id))}</b><small>${esc(lead + m.text)}</small></span>${u ? `<em>${u}</em>` : pending(id) ? '<em class="g-ph-due">Reply</em>' : ''}</button>`;
       }).join('') : '<p class="g-note">No messages.</p>');
       body.querySelectorAll('[data-th]').forEach(b => b.addEventListener('click', () => open(b.dataset.th)));
       wireTabs();
@@ -1997,7 +2070,19 @@
         });
       }
       // Message from a contact card: three topics (core.js phoneTopics); the exchange types out, then their answers wait here.
-      if (topicFor === id && !reply.firstChild && G.phoneReach(G.LINKS[id], 'msg')?.ok) {
+      if (EPI && topicFor === id && !reply.firstChild && EPI.reach(id, 'msg')?.ok) {
+        const n = document.createElement('p'); n.className = 'g-ph-hint k-ready'; n.textContent = 'Text them about…'; reply.append(n);
+        EPI.topics(id).forEach(t => {
+          const b = document.createElement('button'); b.type = 'button'; b.textContent = t.label; b.dataset.topic = t.id;
+          b.addEventListener('click', () => {
+            topicFor = null; reply.replaceChildren(); G.sfx('femc-click');
+            const r = EPI.message(id, t.id); if (!r) return replies(id);
+            play(id, r.from, () => { paintHud(); replies(id); });
+          });
+          reply.append(b);
+        });
+      }
+      if (!EPI && topicFor === id && !reply.firstChild && G.phoneReach(G.LINKS[id], 'msg')?.ok) {
         const n = document.createElement('p'); n.className = 'g-ph-hint k-ready'; n.textContent = 'Text them about…'; reply.append(n);
         G.phoneTopics(id).forEach(t => {
           const b = document.createElement('button'); b.type = 'button'; b.textContent = t.label; b.dataset.topic = t.id;

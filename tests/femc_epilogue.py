@@ -1,6 +1,6 @@
 """The epilogue (FEMC-EPILOGUE-PLAN.md; batch 1, 2026-10-27: the engine, with stand-in worlds).
 
-  python3 tests/femc_epilogue.py [--only engine,saves,glitch,runners1,runners2,hoax,strangers,fights,stay,true,polish,shots] [--screenshots /absolute/dir]
+  python3 tests/femc_epilogue.py [--only engine,saves,glitch,runners1,runners2,hoax,strangers,fights,stay,true,polish,phone,shots] [--screenshots /absolute/dir]
 
 engine   the end screen's Epilogue button on the Runners, strangers and HOAX home endings (none on bad, true or Stay); the
          save-first offer writes the finished year to a slot; entering from each eligible ending tucks the year into the save
@@ -44,7 +44,7 @@ hoax     (batch 5, the whole HOAX world, 12/21/2023-1/12/2024) the 35 beats on t
          saved on 1/10 and finished in a fresh page, the hearing's locked options greyed, one desktop / phone pair in the gym;
          Jihoon; the council: Christmas Eve offers only Yeobo's), each checking the lock, every shared beat and only its own,
          the flags, every glitch on schedule to stage 4, hangouts, texts, routines and council duty; the year untouched.
-strangers (batch 7, the whole strangers world, 2/17-3/16/2013) the main game untouched; the nine files; the 38 beats on their dates and
+strangers (batch 7, the whole strangers world, 2/17-3/16/2013) the main game untouched; the ten files (with phone.js); the 38 beats on their dates and
          slots (each route's three own beats; only the final `ends`); the calendar (Daeboreum's full moon, the holiday, the yellow
          dust, the lock); the four fights' lines and battle.js's row; a walk of every line on every branch (75 scenes) and every
          image; the 14 ♪ placeholders and world-strangers; the final's fixed lines; the canon guard (no line names what the book
@@ -67,7 +67,7 @@ fights   (batch 6, the half-present battles) the engine's ghost (never targeted)
          end screen, the battle save's own party and items put back, the fights' EXP in the year's battle save. One desktop /
          phone pair per stage.
 stay     (batch 8, the reverse epilogue in Iwatodai, 3/24-4/6/2010) the button on the Stay end screen; the main game untouched
-         (a Stay year reads Iwatodai's data, no `ends`, no glitch); entering: the five files, the calendar (spring break, the full
+         (a Stay year reads Iwatodai's data, no `ends`, no glitch); entering: the six files (with phone.js), the calendar (spring break, the full
          moon, two weeks), yen, Iwatodai's own places; the sixteen beats on their dates and slots (only the final `ends`); the four
          reversed fights' lines and parties (the searchers; fight 4 with Akihiko); a walk of every line on every branch (36 scenes)
          and every image, the ♪ placeholders; three whole acts through the real UI to the end card, the Equinox card and the
@@ -89,6 +89,15 @@ polish   (batch 9, finale and polish) the Equinox card by route (each world's ro
          Epilogue tab inside the act and from the year after it (the world loads, a replay reads the world's places and the
          record's route, then everything goes back; the save is byte-identical); the moon on the coda's days and Runners' last
          days; Stay's kept things answer in its final; Shinjiro's route opens at closeness 4.
+phone    (Nov 3 2026, Kat's notes after the Runners epilogue) every world's phone.js: contacts, known lines, calls and topics
+         gated only on real events / routines / routes, calls with no effect lines and only known speakers; every group-chat
+         sender in texts and scene phones named (cast) and handled (a "handle: " prefix or texts.handles); Runners: Ms. Han is
+         her own thread ('han', "Ms. Han"), 'dad' is her father, an old save's 'dad' thread of Ms. Han moves (migratePhone), the
+         post on 12/12 is a phone line with post-r-5-solchan; through the UI in each world: two tabs, the world's theme, the
+         Contacts list and a card; in Runners: contact pictures (SUgram photos, a portrait crop, a group composite), the team
+         chat's names and handles, Message (topics, the exchange, "Texted this week"), Call (the scene, then the day goes on),
+         nothing in the story changed (flags, closeness, stats, events, day); a scene's group phone shows names; the post line
+         falls back to text with no picture; screenshots at 1440×900 and 390×844.
 shots    one desktop / phone pair of the end-screen button and of an epilogue day.
 No browser errors. Isolated browser profile and server; never the player's saves."""
 import base64, datetime, json, pathlib, sys, tempfile, time
@@ -96,7 +105,7 @@ from femc_browser import Page
 
 OUT = pathlib.Path(sys.argv[sys.argv.index('--screenshots') + 1]) if '--screenshots' in sys.argv else pathlib.Path(tempfile.mkdtemp(prefix='femc-epilogue-'))
 OUT.mkdir(parents=True, exist_ok=True)
-ONLY = set(sys.argv[sys.argv.index('--only') + 1].split(',')) if '--only' in sys.argv else {'engine', 'saves', 'glitch', 'runners1', 'runners2', 'hoax', 'strangers', 'fights', 'stay', 'true', 'polish', 'shots'}
+ONLY = set(sys.argv[sys.argv.index('--only') + 1].split(',')) if '--only' in sys.argv else {'engine', 'saves', 'glitch', 'runners1', 'runners2', 'hoax', 'strangers', 'fights', 'stay', 'true', 'polish', 'phone', 'shots'}
 checks = []
 
 
@@ -678,7 +687,7 @@ try:
           gl:!FemcGlitch.active(),b:JSON.stringify(G.branch({ifGlitch:3,then:['y'],else:['n']}))}})()""")
         ok(base['cal'] and base['ev'] and base['world'] is None and not base['ends'] and base['gl'] and base['b'] == '["n"]', f'the year reads Iwatodai’s data; no glitch, no `ends`, ifGlitch false ({base})')
         enter('route-R')
-        ok(p.eval("FEMC_EPI_WORLDS.runners._loaded && FemcEpilogue.WORLDS.runners.files.join()==='calendar,world,glitches,people,story-w1,story-w2,people-w3,story-w3'"), 'the Runners world loads eight files (week 3’s story and people files last)')
+        ok(p.eval("FEMC_EPI_WORLDS.runners._loaded && FemcEpilogue.WORLDS.runners.files.join()==='calendar,world,glitches,people,story-w1,story-w2,people-w3,story-w3,phone'"), 'the Runners world loads nine files (week 3’s story and people files, then the phone)')
         beats = p.eval("FemcGame.D.events.filter(e=>e.id==='epi-r-alone'||FemcGame.dayOf(e.date)>=FemcGame.dayOf('12/15')).map(e=>[e.id,e.date,e.slot,!!e.ends,!!e.consumes])")
         want3 = {'epi-r-alone': ['12/14', 'late'], 'epi-r-upward': ['12/15', 'early'], 'epi-r-kitchen': ['12/16', 'early'], 'epi-r-unseen': ['12/16', 'late'], 'epi-r-butterfly': ['12/17', 'evening'],
                  'epi-r-clocks': ['12/18', 'early'], 'epi-r-unheard': ['12/18', 'late'], 'epi-r-holiday': ['12/19', 'evening'], 'epi-r-footage': ['12/19', 'late'],
@@ -781,8 +790,8 @@ try:
           ends:FEMC_GAME_EVENTS.some(e=>e.ends),gl:!FemcGlitch.active(),b:JSON.stringify([G.branch({ifGlitch:3,then:['y'],else:['n']}),G.branch({ifRouteOpen:'council',then:['y'],else:['n']}),G.branch({ifBond:{jungwon:0},then:['y'],else:['n']})])}})()""")
         ok(base['cal'] and base['ev'] and base['world'] is None and not base['ends'] and base['gl'] and base['b'] == '[["n"],["n"],["n"]]', f'a HOAX year reads Iwatodai’s data; no glitch, no `ends`, ifGlitch / ifRouteOpen / ifBond false ({base})')
         enter('route-H')
-        files = 'calendar,world,glitches,people,people-crew,story-w1,story-w2,story-w3,story-end'
-        ok(p.eval(f"FEMC_EPI_WORLDS.hoax._loaded && !FEMC_EPI_WORLDS.hoax.stub && FemcGame.world()==='hoax' && FemcEpilogue.WORLDS.hoax.files.join()==='{files}'"), 'the HOAX world loads its nine files (no stand-in left)')
+        files = 'calendar,world,glitches,people,people-crew,story-w1,story-w2,story-w3,story-end,phone'
+        ok(p.eval(f"FEMC_EPI_WORLDS.hoax._loaded && !FEMC_EPI_WORLDS.hoax.stub && FemcGame.world()==='hoax' && FemcEpilogue.WORLDS.hoax.files.join()==='{files}'"), 'the HOAX world loads its ten files (no stand-in left)')
         beats = p.eval("FemcGame.D.events.map(e=>[e.id,e.date,e.slot,e.flag||null,!!e.ends])")
         want = {'epi-h-home': ['12/21', 'early'], 'epi-h-part-four': ['12/21', 'after'], 'epi-h-curfew': ['12/21', 'late'], 'epi-h-emergency': ['12/22', 'after'],
                 'epi-h-study-plans': ['12/23', 'after'], 'epi-h-karaoke': ['12/23', 'evening'], 'epi-h-eve': ['12/24', 'evening'], 'epi-h-christmas': ['12/25', 'after'],
@@ -931,8 +940,8 @@ try:
           ends:FEMC_GAME_EVENTS.some(e=>e.ends),gl:!FemcGlitch.active(),b:JSON.stringify([G.branch({ifGlitch:3,then:['y'],else:['n']}),G.branch({ifRouteOpen:'family',then:['y'],else:['n']}),G.branch({ifBond:{haechan:0},then:['y'],else:['n']})])}})()""")
         ok(base['cal'] and base['ev'] and base['world'] is None and not base['ends'] and base['gl'] and base['b'] == '[["n"],["n"],["n"]]', f'a strangers year reads Iwatodai’s data; no glitch, no `ends`, ifGlitch / ifRouteOpen / ifBond false ({base})')
         enter('route-S')
-        files = 'calendar,world,glitches,people,people-crew,story-w1,story-w2,story-w3,story-end'
-        ok(p.eval(f"FEMC_EPI_WORLDS.strangers._loaded && !FEMC_EPI_WORLDS.strangers.stub && FemcGame.world()==='strangers' && FemcEpilogue.WORLDS.strangers.files.join()==='{files}'"), 'the strangers world loads its nine files (no stand-in left)')
+        files = 'calendar,world,glitches,people,people-crew,story-w1,story-w2,story-w3,story-end,phone'
+        ok(p.eval(f"FEMC_EPI_WORLDS.strangers._loaded && !FEMC_EPI_WORLDS.strangers.stub && FemcGame.world()==='strangers' && FemcEpilogue.WORLDS.strangers.files.join()==='{files}'"), 'the strangers world loads its ten files (no stand-in left)')
         beats = p.eval("FemcGame.D.events.map(e=>[e.id,e.date,e.slot,e.flag||null,!!e.ends])")
         want = {'epi-s-home': ['2/17', 'early'], 'epi-s-kitchen': ['2/17', 'after'], 'epi-s-step': ['2/17', 'late'], 'epi-s-eomma': ['2/18', 'evening'], 'epi-s-stair': ['2/19', 'late'],
                 'epi-s-trio': ['2/20', 'after'], 'epi-s-humming': ['2/20', 'late'], 'epi-s-quay': ['2/21', 'after'], 'epi-s-girls': ['2/22', 'after'], 'epi-s-crossroads': ['2/23', 'late'],
@@ -1335,8 +1344,8 @@ try:
                     'haechan': {'rank': 10, 'xp': 0, 'seen': [], 'rankDay': {}}, 'jungwon': {'rank': 8, 'xp': 0, 'seen': [], 'rankDay': {}}},
                     'route': {'tally': {}, 'choices': {'xmas': 'akihiko'}, 'frags': {'R': 0, 'S': 0, 'H': 0}, 'doorsDue': [], 'doorsSeen': []}}
         start8({'route-stay': True, 'stay-akihiko': True, 'ending-akihiko': True}, aki_year, 'stay', 'epi-st-held', "s.flags['xmas-akihiko']=true;s.route.choices.xmas='akihiko';")
-        files = 'calendar,world,glitches,people,story'
-        ok(p.eval(f"FEMC_EPI_WORLDS.stay._loaded && FemcEpilogue.WORLDS.stay.files.join()==='{files}' && FemcGame.world()==='stay'"), 'the Stay world loads its five files on demand')
+        files = 'calendar,world,glitches,people,story,phone'
+        ok(p.eval(f"FEMC_EPI_WORLDS.stay._loaded && FemcEpilogue.WORLDS.stay.files.join()==='{files}' && FemcGame.world()==='stay'"), 'the Stay world loads its six files on demand')
         cal = p.eval(r"""(()=>{const G=FemcGame,i=d=>G.dayInfo(G.dayOf(d));return [G.mdOf(0),G.dateOf(0).getFullYear(),i('3/24').day,G.mdOf(G.END()),i('4/6').day,G.END(),i('3/29').type,i('3/30').moon.full,i('3/31').label,G.slotsFor(i('3/29')).join(),G.money(G.S.yen),FemcGame.S.epi.lean,
           G.background("Iwatodai Dorm · Solar's Room",'Morning').url.split('/').pop(),G.background("Iwatodai Dorm · Haechan's Room",'').url.split('/').pop(),G.background('Incheon · Harbor','Midnight').url.split('/').pop()]})()""")
         ok(cal[:11] == ['3/24', 2010, 'Wed', '4/6', 'Tue', 13, 'off', True, 'Spring Break', 'early,after,evening,late', '¥20,000'], f'the calendar: Wed 3/24 to Tue 4/6/2010, spring break every day, the full moon on 3/30, yen ({cal[:11]})')
@@ -1624,6 +1633,125 @@ try:
         mo = p.eval("[0,1,2].map(d=>FemcGame.dayInfo(d).moon.name)")
         ok(mo != ['First Quarter'] * 3 and 'Full Moon' not in mo, f'the coda’s moons follow each day’s own date ({mo})')
         errs = p.console(); ok(not errs, f'no browser errors through the polish checks: {errs}')
+
+    if 'phone' in ONLY:
+        def shot2(name):
+            for tag, w, h in [('desktop', 1440, 900), ('phone', 390, 844)]:
+                size(w, h, tag == 'phone')
+                p.eval('document.fonts.ready.then(()=>new Promise(r=>setTimeout(r,450)))')
+                (OUT / f'{name}-{tag}.png').write_bytes(base64.b64decode(p.ws.call('Page.captureScreenshot', {'format': 'png'})['data']))
+            size(1000, 486)
+        p.goto('femc-game.html?debug=1'); p.eval(HELPERS); p.eval(DRIVER); size(1000, 486)
+        AUDIT = r"""(id => FemcEpilogue.loadWorld(id).then(() => {
+          const G = FemcGame, R = FEMC_EPI_WORLDS[id], P = R.phone || {}, C = P.contacts || {}, bad = [];
+          const evs = new Set([...(R.events || []), ...(R.routines || [])].map(e => e.id)), routes = (R.routes || []).map(r => r.id);
+          const cast = x => x === 'solar' || x === 'them' || (R.cast || {})[x] !== undefined || (R.links || {})[x] || (FEMC_GAME_LINKS || []).some(l => l.id === x) || G.castHas(x);
+          const gate = (g, k) => { (g.events || []).forEach(e => { if (!evs.has(e)) bad.push(k + ': no event ' + e); }); [].concat(g.route || [], g.noRoute || []).forEach(r => { if (!routes.includes(r)) bad.push(k + ': no route ' + r); }); };
+          const EFFECTS = ['flag', 'bond', 'stat', 'yen', 'glitch', 'battle', 'gift', 'crush', 'glow', 'tally', 'fragment', 'join', 'unlock', 'setDate'];
+          const walk = (lines, k) => (lines || []).forEach(l => { EFFECTS.forEach(e => { if (l[e] !== undefined) bad.push(k + ': effect ' + e); }); if (l.s && !cast(l.s)) bad.push(k + ': speaker ' + l.s);
+            [l.then, l.else].forEach(x => Array.isArray(x) && walk(x, k)); (l.choose || []).forEach(o => { if (o.flag || o.stat || o.bond) bad.push(k + ': choice effect'); walk(o.then, k); }); });
+          let calls = 0, topics = 0, known = 0;
+          Object.entries(C).forEach(([cid, c]) => { gate(c, cid); if (!cast(cid)) bad.push('contact ' + cid + ' has no name');
+            (c.known || []).forEach((x, i) => { known++; gate(x, cid + ' known ' + i); });
+            (c.calls || []).forEach(x => { calls++; gate(x, x.id); walk(x.scene, x.id); if (!(x.scene || []).length) bad.push(x.id + ': empty'); });
+            (c.topics || []).forEach(x => { topics++; gate(x, x.id); if (!x.label || !(x.msgs || []).length || x.msgs.some(m => !('me' in m) && !('them' in m))) bad.push(x.id + ': bad topic'); }); });
+          // Group chats: every sender named and handled, in texts and scene phones.
+          const T = R.texts || {}, groups = T.groups || [], H = T.handles || {}, pre = /^@?([a-z0-9_.]{2,24}):\s+/i;
+          const msgSender = (m, k) => { if (m.from === 'solar') return; if (!cast(m.from)) bad.push(k + ': sender ' + m.from + ' unnamed');
+            if (!pre.test(m.t || '') && !H[m.from] && !/^@?[a-z0-9_.]+ (posted|commented|added|named|removed|left|renamed|changed|created|started) /i.test(m.t || '')) bad.push(k + ': ' + m.from + ' has no handle'); };
+          [...(T.texts || []), ...(T.ambient || [])].filter(t => groups.includes(t.thread)).forEach(t => { (t.msgs || []).forEach(m => msgSender(m, t.id)); (t.reply || []).forEach(r => (r.then || []).forEach(m => msgSender(m, t.id))); });
+          let gphones = 0;
+          const scan = (lines, k) => (lines || []).forEach(l => { if (!l || typeof l !== 'object') return;
+            if (l.phone && (l.group || new Set(l.phone.filter(m => m.from !== 'solar').map(m => m.from)).size > 1)) { gphones++; l.phone.forEach(m => msgSender(m, k)); }
+            [l.then, l.else].forEach(x => Array.isArray(x) && scan(x, k)); (l.choose || []).forEach(o => scan(o.then, k)); });
+          [...(R.events || []), ...(R.routines || []), ...Object.values(R.bonds || {}).flatMap(b => b.hangouts || [])].forEach(e => scan(e.scene, e.id));
+          return { contacts: Object.keys(C).length, calls, topics, known, gphones, bad };
+        }))"""
+        for wid in ['runners', 'strangers', 'hoax', 'stay']:
+            a = p.eval(AUDIT + "(%s)" % json.dumps(wid))
+            ok(a['contacts'] >= 8 and a['calls'] >= 10 and a['topics'] >= 15 and not a['bad'], f'{wid}: phone data sound ({a["contacts"]} contacts, {a["calls"]} calls, {a["topics"]} topics, {a["known"]} known lines; {a["gphones"]} group scene phones named) {a["bad"][:6]}')
+        r = p.eval(r"""(() => { const R = FEMC_EPI_WORLDS.runners, T = R.texts, all = [...T.texts, ...T.ambient];
+          const han = all.filter(t => t.thread === 'han'), dad = all.filter(t => t.thread === 'dad');
+          const post = JSON.stringify(R.events).includes("'post-r-5-solchan'") || JSON.stringify(R.events).includes('"img":"post-r-5-solchan"');
+          return { hanName: T.threads.han, dadName: T.threads.dad, han: han.length, hanFrom: han.every(t => t.msgs.every(m => m.from === 'han')), dad: dad.length,
+            dadClean: dad.every(t => t.msgs.every(m => m.from === 'dad' && !/Ms\. Han\.$|This is Ms\. Han/.test(m.t))), castHan: R.cast.han, post,
+            noDadHan: !JSON.stringify(R).includes('This is Ms. Han.","from":"dad') && !/from: 'dad', t: '[^']*This is Ms\. Han/.test(JSON.stringify(R)) }; })()""")
+        ok(r['hanName'] == 'Ms. Han' and r['castHan'] == 'Ms. Han' and r['han'] == 3 and r['hanFrom'], f'Runners: Ms. Han has her own thread "Ms. Han" ({r["han"]} texts, all from her)')
+        ok(r['dadName'] == 'Dad' and r['dad'] == 3 and r['dadClean'], f'Runners: "Dad" is her father ({r["dad"]} short texts from him, none from Ms. Han)')
+        ok(r['post'], 'Runners: the 12/12 post is a phone line with post-r-5-solchan')
+        # Migration: an old save whose 'dad' thread is Ms. Han's.
+        enter('route-R')
+        m = p.eval(r"""(() => { const s = FemcGame.S; s.epi.phoneV = 0; s.phone.threads.dad = [{ from: 'dad', t: 'Good afternoon, Solar. This is Ms. Han.', d: 1, slot: 'after', seq: 3 }, { from: 'solar', t: 'of course. ill send it' }, { from: 'dad', t: "I'll note that the message was received." }];
+          s.phone.unread.dad = 2; FemcEpilogue.migratePhone(); return { dad: !!s.phone.threads.dad, han: (s.phone.threads.han || []).map(m => m.from).join(), unread: s.phone.unread.han, v: s.epi.phoneV }; })()""")
+        ok(not m['dad'] and m['han'] == 'han,solar,han' and m['unread'] == 2 and m['v'] == 1, f'an old Runners save: Ms. Han’s messages move from "Dad" to her own thread ({m})')
+        # Through the UI, Runners to 12/9.
+        p.eval("RUN('12/9',{prefer:[]},false)", timeout=900)
+        snap = "JSON.stringify([FemcGame.S.flags, FemcGame.S.epi.bonds, FemcGame.S.stats, FemcGame.S.day, FemcGame.S.slot, FemcGame.S.events, FemcGame.S.dailyLife])"
+        before = p.eval(snap)
+        p.eval("EP.clear(); FemcGameUI.openPhone()")
+        u = p.eval(r"""(() => { const o = document.querySelector('.g-phone-ov'), row = id => o.querySelector(`[data-th="${id}"] i`);
+          return { tabs: [...o.querySelectorAll('.g-ph-tabs button')].map(b => b.textContent).join(), world: o.dataset.world, wx: o.querySelector('.g-ph-wx-h')?.textContent || '',
+            hc: row('haechan')?.querySelector('img')?.src || '', dad: row('dad')?.querySelector('img')?.src || '', girls: row('girls')?.querySelectorAll('.g-av-grp > span').length || 0,
+            han: [...o.querySelectorAll('[data-th] b')].map(b => b.textContent).filter(t => /Ms\. Han|Dad/.test(t)).join() }; })()""")
+        ok(u['tabs'] == 'Messages,Contacts' and u['world'] == 'runners' and u['wx'].startswith('Syracuse'), f'the Runners phone: two apps, its own theme, Syracuse weather ({u["tabs"]}, {u["wx"][:20]})')
+        ok('avatars/runners/haechan.webp' in u['hc'] and 'portraits/' in u['dad'] and u['girls'] >= 2, f'contact pictures: his SUgram photo, a portrait crop for Dad, a composite for the girls ({u["girls"]} faces)')
+        ok('Dad' in u['han'] and 'Ms. Han' in u['han'], f'the list has both Dad and Ms. Han ({u["han"]})')
+        shot2('phone-runners-list')
+        p.eval("document.querySelector('[data-th=team]').click()")
+        g = p.eval("[...document.querySelectorAll('.g-ph-msg.group b')].map(b=>b.textContent)")
+        ok(len(g) >= 3 and all(' ' in x for x in g if not x.startswith('Chenle')), f'the team chat names every sender with a handle ({g[:4]})')
+        shot2('phone-runners-team')
+        p.eval("document.querySelector('.g-ph-back').click(); document.querySelector('[data-tab=people]').click()")
+        cl = p.eval("[...document.querySelectorAll('[data-ct]')].map(b=>b.dataset.ct)")
+        ok(cl[:3] == ['haechan', 'minji', 'hanni'] and 'han' in cl and 'dad' in cl, f'Contacts lists the world’s people in order ({len(cl)})')
+        shot2('phone-runners-contacts')
+        who = p.eval("FemcEpilogue.contacts().map(c=>c.id).find(id=>FemcEpilogue.reach(id,'msg')?.ok)")
+        p.eval("document.querySelector('[data-ct=%s]').click()" % who)
+        cd = p.eval("({known: document.querySelectorAll('.g-ph-learned li').length, call: !!document.querySelector('[data-reach=call]'), msg: !!document.querySelector('[data-reach=msg]:not(.off)')})")
+        ok(cd['known'] >= 2 and cd['call'] and cd['msg'], f'{who}’s card: things she knows, Call and Message ({cd})')
+        shot2('phone-runners-card')
+        p.eval("document.querySelector('[data-reach=msg]').click()")
+        tp = p.eval("[...document.querySelectorAll('[data-topic]')].map(b=>b.textContent)")
+        n0 = p.eval("FemcGame.S.phone.threads[%s]?.length||0" % json.dumps(who))
+        p.eval("document.querySelector('[data-topic]').click()")
+        p.wait("!document.querySelector('.g-ph-playing')", 20)
+        n1 = p.eval("FemcGame.S.phone.threads[%s].length" % json.dumps(who))
+        rr = p.eval("FemcEpilogue.reach(%s,'msg')" % json.dumps(who))
+        ok(len(tp) == 3 and n1 > n0 and rr['why'] == 'Texted this week', f'Message: three topics, the exchange in the thread, then "Texted this week" ({tp}, +{n1 - n0})')
+        shot2('phone-runners-message')
+        p.eval("document.querySelector('.g-ph-back').click(); document.querySelector('[data-tab=people]').click(); document.querySelector('[data-ct=minji]').click(); document.querySelector('[data-reach=call]').click()")
+        p.wait("!!document.querySelector('.gs:not(.out)')", 10)
+        lab = p.eval("FemcEpilogue.reach('minji','call').why")
+        step_until("!document.querySelector('.gs:not(.out)')", 80, 0.1)
+        after = p.eval(snap)
+        ok(lab == 'Called this week' and before == after, 'Call plays its scene, marks the week, and nothing in the story changed (flags, closeness, stats, events, day)')
+        p.eval("""EP.clear(); FemcScene.play({scene:[{phone:[{from:'doyoung',t:'No practice today.'},{from:'olivia',t:'HE SAID FOOD'},{from:'hyein',t:'@hyein: me too'}],contact:'the team'},{n:'x'}],place:'Syracuse · The Quad',time:'Morning'})""")
+        step_until("document.querySelectorAll('.gs-msg').length>=3", 20, 0.15)
+        sg = p.eval("[...document.querySelectorAll('.gs-from')].map(b=>b.textContent)")
+        ok(sg == ['Doyoung dykim.coach', 'Olivia oliviahye', 'Hyein'] and p.eval("![...document.querySelectorAll('.gs-msg')].some(x=>x.textContent.includes('@hyein:'))"), f'a scene’s group phone names each sender with the handle, prefixes stripped ({sg})')
+        shot2('phone-runners-scene-group')
+        p.eval("EP.clear()")
+        p.eval("""FemcScene.play({scene:[{phone:[{from:'solar',t:'[the two of them] hi',img:'post-r-5-solchan',handle:'sollee',cap:'hi'}],contact:'sollee · new post'},{n:'x'}],place:'Syracuse · Sigma Chi House',time:'Evening'})""")
+        step_until("document.querySelectorAll('.gs-msg').length>=1", 20, 0.15)
+        fb = p.eval("({post: !!document.querySelector('.gs-post'), text: document.querySelector('.gs-msg')?.textContent})")
+        ok(not fb['post'] and 'hi' in (fb['text'] or ''), f'the post line without a picture stays a text bubble ({fb})')
+        p.eval("EP.clear()")
+        errs = p.console(); ok(not errs, f'no browser errors in the Runners phone: {errs}')
+        for flag, wid in [('route-S', 'strangers'), ('route-H', 'hoax'), ({}, 'stay')]:
+            p.goto('femc-game.html?debug=1'); p.eval(HELPERS); size(1000, 486)
+            if wid == 'stay':
+                p.eval("(()=>{EP.year({'route-stay':true});EP.end()})()"); p.eval("document.querySelector('[data-t=epi]').click()")
+                p.wait("!!document.querySelector('.g-epi-offer [data-go]')"); p.eval("document.querySelector('.g-epi-offer [data-go]').click()")
+                p.wait("!!FemcGame.S.epi && FemcGame.world()===FemcGame.S.epi.world", 20)
+            else:
+                enter(flag)
+            p.eval("EP.clear(); FemcGameUI.openPhone(); document.querySelector('[data-tab=people]').click()")
+            w = p.eval("({world: document.querySelector('.g-phone-ov').dataset.world, n: document.querySelectorAll('[data-ct]').length, tabs: document.querySelectorAll('.g-ph-tabs button').length})")
+            p.eval("document.querySelector('[data-ct]')?.click()")
+            c = p.eval("({card: !!document.querySelector('.g-ph-card'), known: document.querySelectorAll('.g-ph-learned li').length})")
+            ok(w['world'] == wid and w['tabs'] == 2 and w['n'] >= 3 and c['card'], f'{wid}: its phone theme, Contacts ({w["n"]} on the first day) and a card')
+            shot2(f'phone-{wid}-card')
+            errs = p.console(); ok(not errs, f'no browser errors in the {wid} phone: {errs}')
 
     if 'shots' in ONLY:
         p.goto('femc-game.html'); p.eval(HELPERS)

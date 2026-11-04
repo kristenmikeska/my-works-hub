@@ -497,14 +497,14 @@
             { from: 'niki', t: "rikiniki: its a holiday hyung" },
             { from: 'heeseung', t: "heeheeseung: Today is a holiday. Wednesday is Wednesday." },
             { from: 'jake', t: "jakeys: new year new me (same me but studying)" }
-          ], contact: 'RETREAT FACTS (do not leave)' }
+          ], contact: 'RETREAT FACTS (do not leave)', group: true }
         ] }
       ] },
       { phone: [
         { from: 'heeseung', t: "heeheeseung: Reminder. The New Year photo is TODAY. Yeobo's, 2pm. Hanbok. Halmeoni wants us at 1:45 for sebae, and she counts." },
         { from: 'niki', t: "rikiniki: why does everyone keep saying she counts" },
         { from: 'heeseung', t: "heeheeseung: Because she counts, Niki." }
-      ], contact: 'RETREAT FACTS (do not leave)' },
+      ], contact: 'RETREAT FACTS (do not leave)', group: true },
       { s: 'mom', t: "Eat your soup before it gets cold, a year older." },
       { n: "The doorbell went before she'd finished it. Two long, one short." },
       { s: 'mom', t: "*Jihoonie!*" },
@@ -636,18 +636,18 @@
         { from: 'sunghoon', t: "princehoon: Sunghoon did not put it in the ballot box. Sunghoon would never." },
         { from: 'jay', t: "jbird: nobody asked u specifically bro" },
         { from: 'jungwon', t: "injangwon: the tin is all there. i counted it twice on the twentieth." }
-      ], contact: 'RETREAT FACTS (do not leave)' },
+      ], contact: 'RETREAT FACTS (do not leave)', group: true },
       { ifYear: { xmas: 'jungwon' }, then: [
         { phone: [
           { from: 'jungwon', t: "injangwon: i lost count the second time. but i recounted. it's all there." },
           { from: 'jake', t: "jakeys: why did u lose count" },
           { from: 'jungwon', t: "injangwon: unrelated." }
-        ], contact: 'RETREAT FACTS (do not leave)' },
+        ], contact: 'RETREAT FACTS (do not leave)', group: true },
         { n: "She put her face in Nana's fur for a second." }
       ] },
       { phone: [
         { from: 'jungwon', t: "injangwon: please, nobody comment." }
-      ], contact: 'RETREAT FACTS (do not leave)' },
+      ], contact: 'RETREAT FACTS (do not leave)', group: true },
       { n: "She refreshed the thread. There was a comment." },
       { s: 'forum', t: "jihoney commented: Signed. Twice. Accountability Is The Backbone Of Any Healthy Democracy." },
       { s: 'forum', t: "jihoney commented: Where Is The Tin, Jungwon. The People Are Hungry. The People Want Brownies." },
@@ -662,7 +662,7 @@
         { from: 'hyunsuk', t: "geniusuk: bro." },
         { from: 'jaehyuk', t: "jaehyukkie: The handbook does say that. Page 41. I checked. Sorry." },
         { from: 'jihoon', t: "jihoney: Astonishing!!!! Democracy!!!!" }
-      ], contact: "rip solar kim (she's fine probably)" },
+      ], contact: "rip solar kim (she's fine probably)", group: true },
       { n: "*Signatures: 64.* Nana rolled over onto his back and presented his stomach to the ceiling like none of this was any of his business, which it wasn't." },
       { choose: [
         { t: "(Reply to Jihoon's comment. Publicly.)", stat: { courage: 1 }, then: [
@@ -679,7 +679,7 @@
           { from: 'heeseung', t: "heeheeseung: Update. Wednesday is now a war council. Bring your textbooks AND your brains." },
           { from: 'niki', t: "rikiniki: WAR COUNCIL" },
           { from: 'jake', t: "jakeys: i'll bring the snacks of war" }
-        ], contact: 'RETREAT FACTS (do not leave)' }
+        ], contact: 'RETREAT FACTS (do not leave)', group: true }
       ] },
       { flag: 'epi-h-motion' },
       { n: "By dinner it had a hundred and forty-two signatures. She hadn't known a hundred and forty-two people at Hanlim knew her name. It turned out the fastest way to find out was to disappear for nine days and come back in somebody else's uniform." }

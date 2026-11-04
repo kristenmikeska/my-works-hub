@@ -14,7 +14,7 @@ Text-only posts stay text and aren't on this list. "(only sometimes)" means not 
 | 2 | `post-r-2-red-party` | 12/5 | jen0l33 | A frat-house living room lit red at night, a big punch bowl up close in the foreground, Christmas lights, a party starting behind it. |
 | 3 | `post-r-3-stairs-sign` | 12/5 | jaemin | A hand-drawn paper sign taped to a wooden staircase banister in a house, marker letters, party lights in the background, night. |
 | 4 | `post-r-4-antlers-selfie` | 12/5 | jaemin | A blurry flash selfie of four guys in reindeer-antler headbands, grinning, at a crowded house party at night. |
-| 5 | `post-r-5-two-selfie` | 12/12 | @solar | A close two-person photo indoors at night, warm low light; one person turned half away from the lens, the other looking straight into it; casual, nothing staged. (only sometimes) |
+| 5 | `post-r-5-solchan` | 12/12 | sollee | A real photo of Solar and Haechan together (a "Solchan" picture): the two of them close, indoors at night, warm low light; one turned half away from the lens, the other looking straight into it; casual, nothing staged. Shows on her phone screen as her post. (only sometimes) |
 | 6 | `post-r-6-party-wide` | 12/13 | jen0l33 | A blurry wide shot of a packed house-party living room, everyone mid-motion, red cups, tinsel, snow streaking past a dark window. |
 | 7 | `post-r-7-kitchen-mop` | 12/13 | renjun | A messy frat-house kitchen in gray morning light, cups everywhere, a mop leaning against the kitchen island; nobody in the shot. |
 | 8 | `post-r-8-stairs-cone` | 12/13 | jen0l33 | A guy asleep sprawled on a staircase in party clothes, hugging an orange traffic cone, morning light. (only sometimes) |

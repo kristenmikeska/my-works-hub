@@ -622,7 +622,7 @@
       { s: 'sakura', t: "She has exit energy." },
       { n: "Solar sat. She did, in fact, want to be near an exit. She counted them on the way in out of habit, two, and the fire stairs, and a window that opened, and she sat in the end chair with her coat still on and put her hands in the bowl of soapy water like everybody else." },
       { n: "Her phone buzzed in her lap. She looked at it. It was the committee. It was Eunchae, three chairs away." },
-      { phone: [ { from: 'eunchae', t: "she's here she's here. she counted the doors" } ] },
+      { phone: [ { from: 'eunchae', t: "she's here she's here. she counted the doors" } ], contact: '🌕 daeboreum committee', group: true },
       { s: 'solar', f: 'happy', t: "...I can see you, Eunchae." },
       { s: 'eunchae', t: "I know. This is more fun." },
       { phone: [
@@ -631,7 +631,7 @@
         { from: 'sakura', t: "black" },
         { from: 'chaewon', t: "you always say black" },
         { from: 'sakura', t: "and i'm always right" }
-      ] },
+      ], contact: '🌕 daeboreum committee', group: true },
       { n: "It went on like that. Kazuha, two chairs down, reading her horoscope out loud and then typing it into the chat as well, as if it needed to exist in both places. Sakura playing a game on a handheld under the table with her free hand, her face completely blank as she killed things. Chaewon with a little notebook open on her knee, writing everybody's color down, because she didn't trust the chat to remember. The nail technicians, who had clearly been doing this for years, ignoring all of them." },
       { s: 'yunjin', f: 'neutral', t: "Hers is dark. She always does dark." },
       { s: 'chaewon', t: "Why?" },

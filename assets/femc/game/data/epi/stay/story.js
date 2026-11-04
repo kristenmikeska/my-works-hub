@@ -220,7 +220,7 @@
     { n: "It shouldn't have. There was nobody left to buzz it. She'd stopped charging it every night in the second week, and then had started again, and hadn't asked herself why." },
     { glitch: 'epi-st-g-girls' },
     { n: "A thread with two names at the top that her thumb knew. A thread that wasn't there any more. That had gone dark on a night she wasn't going to think about. *Read,* it said, under her last message, from three weeks ago, and then the time, and the time was now." },
-    { phone: [{ from: 'hyein', t: 'drink' }, { from: 'hyein', t: 'drink wat' }], contact: 'hanni, hyein' },
+    { phone: [{ from: 'hyein', t: 'drink' }, { from: 'hyein', t: 'drink wat' }], contact: 'hanni, hyein', group: true },
     { n: "Then three dots. Typing. She sat up. She held the phone in both hands like it might get away. The dots went on, and on, and on, Hyein typing with her thumbs in a dorm in a city where it was the middle of the morning, and never sending, and then the dots stopped, and nothing came, and the thread was still there, lit, waiting for the end of a word." },
     { glitch: 'epi-st-g-camo' },
     { n: "For two seconds, under the hum of the dorm's fridge downstairs, under her own breathing, there was a song. A bassline she'd have known asleep. Then the fridge again." },

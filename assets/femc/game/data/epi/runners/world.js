@@ -47,10 +47,15 @@
         ['Syracuse · Alpha Phi House · Kitchen', 'epi-r-alpha-kitchen', null],
         // The stairs are indoors (the house's own art is outside, in the snow); batch 77: the second landing, day and night.
         ['Syracuse · Alpha Phi House · Stairs', 'epi-r-alpha-landing', 'epi-r-alpha-landing-night'],
+        // Stand-ins (Nov 3): each copies the rule below it until its art comes (FEMC-ART-TODO 23; FEMC-ART-WIRING "23").
+        ['Syracuse · Alpha Phi House · Living Room', 'flashback-alphaphi-house', null],   // → epi-r-alpha-living (both slots)
+        ['Syracuse · Alpha Phi House · Dining Room', 'flashback-alphaphi-house', null],   // → epi-r-alpha-living (both slots)
         ['Syracuse · Alpha Phi House', 'flashback-alphaphi-house', null],
         ['Syracuse · Sigma Chi House · Holiday Party', 'epi-r-sigma-holiday', 'epi-r-sigma-holiday'],
         ['Syracuse · Sigma Chi House · Kitchen', 'epi-r-sigma-kitchen', null],
         ['Syracuse · Sigma Chi House · His Room', 'epi-r-sigma-his-room', 'epi-r-sigma-his-room'], // batch 77: night art, both slots
+        ['Syracuse · Sigma Chi House · Living Room', 'flashback-frat-party', null],       // stand-in → epi-r-sigma-living (day; evening null)
+        ['Syracuse · Sigma Chi House · Back Porch', 'flashback-frat-party', null],        // stand-in → epi-r-sigma-porch (day; evening null)
         ['Syracuse · Sigma Chi House', 'flashback-frat-party', null],
         ['Syracuse · The Quad', 'epi-r-quad-day', 'flashback-syracuse-quad'],
         ['Syracuse · The Valley', 'epi-r-valley', null],
@@ -66,6 +71,10 @@
         ['Syracuse · Studio 4B', 'epi-r-studio-4b', null],
         ['Syracuse · Language Arts Rooftop · Snow', 'epi-r-rooftop-night-snow', 'epi-r-rooftop-night-snow'],
         ['Syracuse · Language Arts Rooftop', 'epi-r-rooftop-night', 'epi-r-rooftop-night'],
+        ['Syracuse · Regionals · Green Room', 'epi-r-regionals', null],                  // stand-in → epi-r-regionals-green-room (both slots)
+        ['Syracuse · Regionals · The Van', 'epi-r-regionals', null],                     // stand-in → epi-r-regionals-van (both slots)
+        ['Syracuse · Regionals · Loading Dock', 'epi-r-regionals', null],                // stand-in → epi-r-regionals-dock (day; evening null)
+        ['Syracuse · Regionals · After the Final', 'epi-r-regionals', null],             // stand-in → epi-r-regionals-after (both slots)
         ['Syracuse · Regionals', 'epi-r-regionals', null],
         ['Syracuse', 'flashback-syracuse-quad', null]
       ],
@@ -83,7 +92,7 @@
           text: "The bookstore on Marshall Street smelled like radiator heat and old paper. She came out with a paperback nobody had assigned her and a bag she'd let the man behind the counter talk her into, because he'd seemed so sure." },
         { id: 'epi-r-valley', name: 'Walk through the valley', place: 'Syracuse · The Valley', bg: 'epi-r-valley', slots: ['after'], cost: 0, stats: { courage: 1 },
           text: "By daylight the valley was just grass under snow, crossed and recrossed by a thousand people on their way to somewhere else. She walked it anyway, slow, all the way past the tree that leaned too far to the right, and didn't stop." },
-        { id: 'epi-r-dining', name: 'Late dinner at the dining hall', place: 'Syracuse · Marshall Street · Café', bg: 'epi-r-marshall-cafe', slots: ['evening'], cost: 9, stats: { kindness: 1, charm: 1 },
+        { id: 'epi-r-dining', name: 'Late dinner at the dining hall', place: 'Syracuse · Dining Hall', bg: 'epi-r-marshall-cafe', // stand-in bg → epi-r-dining-hall (FEMC-ART-TODO 23H) slots: ['evening'], cost: 9, stats: { kindness: 1, charm: 1 },
           text: "A tray, a table by the window, and a freshman she half recognised who sat down across from her because every other seat was taken and then talked for forty minutes about a lab partner. She let him. It was nice to be the one listening." }
       ],
       /* ♪ MUSIC: Kat's song picks (FEMC-EPILOGUE-PLAN.md, revision 1); an epi-r-* mood still marked ♪ PLACEHOLDER plays a stand-in P3 track. To set one,
@@ -127,7 +136,7 @@
     cast: {
       doyoung: 'Doyoung', olivia: 'Olivia', haerin: 'Haerin', jeno: 'Jeno', renjun: 'Renjun', johnny: 'Johnny', jisung: 'Jisung',
       yerim: 'Yerim', chungha: 'Chungha', chaeyeon: 'Chaeyeon', sakura: 'Sakura', eunchae: 'Eunchae', kazuha: 'Kazuha', chaewon: 'Chaewon',
-      dad: 'Dad', mom: 'Mom', caster: 'Caster', suesports: '@SUesports'
+      dad: 'Dad', han: 'Ms. Han', mom: 'Mom', caster: 'Caster', suesports: '@SUesports'
     },
     // This world's own faces (core.js worldFace): Solar's home look and the outfits drawn for Runners (FEMC-ART-WIRING).
     faces: { solar: 'solar-runners', sakura: 'sakura-runners', eunchae: 'eunchae-runners', kazuha: 'kazuha-runners', chaewon: 'chaewon-runners', haechan: 'haechan-runners',

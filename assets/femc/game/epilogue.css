@@ -111,3 +111,46 @@
 @media (prefers-reduced-motion: reduce) {
   .g-glx, .g-glx *, .gs-hand { animation: none !important; transition: none !important; }
 }
+
+/* The epilogue's phone (Nov 3 2026, Kat's notes; ui.js openPhone sets data-world): each world's own wallpaper and accent, the
+   original pink and black only tinted (no gold, purple, navy, blue or green): Runners a warm Syracuse coral, strangers a
+   harbour-night rose, HOAX a schoolbook cherry, Stay the game's own pink. Messages and Contacts only (two tabs). */
+.g-phone-ov[data-world] { --ph-acc: #ff4f9e; --ph-acc-2: #c8236f; --ph-wall: #f7f2f5; --ph-them: #e7dde3; --ph-bar: #fff; --ph-ink: #1b0b15; }
+.g-phone-ov[data-world="runners"] { --ph-acc: #ff5a6e; --ph-acc-2: #d23a4e; --ph-wall: linear-gradient(170deg, #fff4f0 0%, #ffe6e4 55%, #fbd9de 100%); --ph-them: #f6dcdc; --ph-bar: #fffaf8; }
+.g-phone-ov[data-world="strangers"] { --ph-acc: #e04a7c; --ph-acc-2: #a8305a; --ph-wall: linear-gradient(175deg, #f4eef0 0%, #eadfe3 60%, #e2d3d9 100%); --ph-them: #e3d6db; --ph-bar: #f9f5f6; }
+.g-phone-ov[data-world="hoax"] { --ph-acc: #ff3f68; --ph-acc-2: #c9264a; --ph-wall: linear-gradient(170deg, #fffaf6 0%, #fdeef0 60%, #fbe2e8 100%); --ph-them: #f4dfe4; --ph-bar: #fffdfb; }
+.g-phone-ov[data-world="stay"] { --ph-wall: linear-gradient(170deg, #fbf3f7 0%, #f6e3ed 100%); }
+.g-phone-ov[data-world] .g-ph-body { background: var(--ph-wall); }
+.g-phone-ov[data-world] .g-ph-top { background: var(--ph-bar); }
+.g-phone-ov[data-world] .g-ph-top button { color: var(--ph-acc); }
+.g-phone-ov[data-world] .g-ph-msg.me, .g-phone-ov[data-world] .g-ph-row em, .g-phone-ov[data-world] .g-ph-row i { background: var(--ph-acc); }
+.g-phone-ov[data-world] .g-ph-msg.them { background: var(--ph-them); }
+.g-phone-ov[data-world] .g-ph-msg.group b { color: var(--ph-acc-2); }
+.g-phone-ov[data-world] .g-ph-reply button { border-color: var(--ph-acc); }
+.g-phone-ov[data-world] .g-ph-tabs { grid-template-columns: 1fr 1fr; background: var(--ph-bar); }
+.g-phone-ov[data-world] .g-ph-tabs button.on { box-shadow: inset 0 -3px 0 var(--ph-acc); }
+.g-phone-ov[data-world] .g-ph-tabs button:is(:hover, :focus-visible):not(.on) { background: var(--ph-acc); border-color: var(--ph-acc); }
+.g-phone-ov[data-world] .g-ph-card header { box-shadow: 5px 5px 0 var(--ph-acc); }
+.g-phone-ov[data-world] .g-ph-wx { background: #14070f; }
+
+/* Contact pictures (ui.js avatarHtml): their own photo whole; a group chat without a picture is two or three faces. */
+.g-ph-row i img.g-av-own, .g-bn-pic img.g-av-own, .g-ph-card header .g-av-big img.g-av-own { transform: none; object-position: 50% 50%; }
+.g-av-grp { position: relative; display: block; width: 100%; height: 100%; background: #14070f; }
+.g-av-grp > span { position: absolute; display: grid; place-items: center; overflow: hidden; border-radius: 50%; border: 2px solid #fff; background: var(--ph-acc, #ff4f9e); color: #fff; font-size: 12px; }
+.g-av-grp > span img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; transform: scale(1.6); transform-origin: 50% 12%; background: #3a1028; }
+.g-av-grp > span img.g-av-own { transform: none; object-position: 50% 50%; }
+.g-av-grp.n2 > span { width: 64%; height: 64%; }
+.g-av-grp.n2 > span:nth-child(1) { left: -4%; top: -4%; }
+.g-av-grp.n2 > span:nth-child(2) { right: -4%; bottom: -4%; }
+.g-av-grp.n3 > span { width: 56%; height: 56%; }
+.g-av-grp.n3 > span:nth-child(1) { left: 22%; top: -6%; }
+.g-av-grp.n3 > span:nth-child(2) { left: -6%; bottom: -2%; }
+.g-av-grp.n3 > span:nth-child(3) { right: -6%; bottom: -2%; }
+/* The contact card's picture: round, like a profile. */
+.g-ph-card header > i.g-av-big { overflow: hidden; border-radius: 50%; background: var(--ph-acc, #ff4f9e); color: #fff; }
+.g-ph-card header .g-av-big img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; transform: scale(1.5); transform-origin: 50% 12%; border-radius: 0; }
+
+/* Scene phones in a group chat (scene.js phone): the sender's name and handle, and "x posted …" notices. */
+.gs-msg .gs-from { display: flex; align-items: baseline; gap: 5px; margin-bottom: 2px; color: #b0185e; font: 700 11.5px/1.2 -apple-system, "Helvetica Neue", sans-serif; }
+.gs-msg .gs-from small { color: #8a7080; font-weight: 500; font-size: 10.5px; }
+.gs-msg.gs-notice { align-self: center; max-width: 90%; padding: 2px 8px; background: none; color: #8a7080; font-size: 12px; text-align: center; }

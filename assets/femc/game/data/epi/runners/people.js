@@ -23,7 +23,10 @@
    ifYear read: xmas haechan (haechan-1, the five minutes), rank haechan 10 (haechan-1b), rank hyein 7 (hyein-1, the coat),
      romance minji (minji-1, minji-2), noFlag arrived-mark / arrived-chenle / arrived-jaemin (the missed-searcher lines),
      flag danielle-refused / danielle-sold (danielle-2).
-   Texts: groups girls, team; 18 dated (12/1-12/14), 6 ambient (three route-gated after 12/8). Ms. Han writes from 'dad'.
+   Texts: groups girls, team; 18 dated (12/1-12/14), 6 ambient (three route-gated after 12/8). Ms. Han writes from 'han' (her own thread since Nov 3 2026; 'dad' is her father himself, see phone.js).
+   Phone pass (Nov 3 2026, Kat's notes): Ms. Han's texts are her own thread 'han' ("Ms. Han"); 'dad' is her father, with one new
+   text here (epi-r-tx-dad-call, 12/8 evening, after Mom's) and two in people-w3.js. Inventions: he's at his desk until seven
+   and Ms. Han takes the line after that. No flag, gate or outcome changed.
    Canon held: the track has no title; the valley promise is never paid; he never asks anyone about her; the jacket stays in the
    bag; Hanni/Hyein/Jaemin/Jaehyun don't know about the stem; nobody but Danielle has seen a print. Decision: Jaemin pays Hyein's
    deposit on 12/9 (cash, an envelope that says FOR THE ARTIST). */
@@ -562,7 +565,7 @@
 
     { id: 'epi-r-jaehyun-2', title: 'helpful', hint: "Jaehyun asked her to come by Sigma and sign their mother's Christmas card.",
       after: '12/11', until: '12/14', slots: ['after'], events: ['epi-r-strategy'],
-      place: 'Syracuse · Sigma Chi House', time: 'After Class', scene: [
+      place: 'Syracuse · Sigma Chi House · Living Room', time: 'After Class', scene: [
       { n: "The Sigma living room at four in the afternoon was a different country from the Sigma living room at midnight. Somebody had vacuumed. Johnny was asleep upright on the far end of the couch with a laptop on his chest. Jaehyun was at the coffee table in the middle of it all, in the chair he used for meetings, the chair she knew, without ever having seen it, he'd sat in to tell two boys what they were allowed to do about her, and in front of him on the table was a card with a gold border and their mother's handwriting already on the inside." },
       { n: "Danielle was leaving as Solar came in. She had a folder under her arm, the chapter's red one, and she paused in the doorway long enough for it to be a pause." },
       { s: 'danielle', f: 'neutral', t: "Jaehyun." },
@@ -802,7 +805,7 @@
   (T.groups ||= []).push('girls', 'team');
   T.threads = Object.assign(T.threads || {}, {
     girls: 'the girls', team: 'SU overwatch', haechan: 'haechanah', minji: 'minjibear', mark: 'markylee',
-    jaehyun: 'Jaehyun', chenle: 'Chenle', jaemin: 'Jaemin', dad: 'Dad', mom: 'Mom'
+    jaehyun: 'Jaehyun', chenle: 'Chenle', jaemin: 'Jaemin', han: 'Ms. Han', dad: 'Dad', mom: 'Mom'
   });
   (T.texts ||= []).push(
     { id: 'epi-r-tx-mom-home', thread: 'mom', date: '12/1', slot: 'late', msgs: [
@@ -823,13 +826,13 @@
       { t: "60. got it", then: [{ from: 'doyoung', t: 'good' }, { from: 'minji', t: 'minjibear: 60. got it' }] },
       { t: "(Leave it on read.)", silent: true, then: [{ from: 'chenle', t: 'she read it. i saw the read receipt. she is watching the film' }] }
     ] },
-    { id: 'epi-r-tx-han-advisor', thread: 'dad', date: '12/2', slot: 'after', msgs: [
-      { from: 'dad', t: "Good afternoon, Solar. This is Ms. Han, from your father's office." },
-      { from: 'dad', t: "Mr. Lee asks that you keep Thursday at 6:00 p.m. free for a call. He would also like the name of the trip's faculty advisor, for his records." },
-      { from: 'dad', t: 'Thank you.' }
+    { id: 'epi-r-tx-han-advisor', thread: 'han', date: '12/2', slot: 'after', msgs: [
+      { from: 'han', t: "Good afternoon, Solar. This is Ms. Han, from your father's office." },
+      { from: 'han', t: "Mr. Lee asks that you keep Thursday at 6:00 p.m. free for a call. He would also like the name of the trip's faculty advisor, for his records." },
+      { from: 'han', t: 'Thank you.' }
     ], reply: [
-      { t: "of course. ill send it", then: [{ from: 'dad', t: "Thank you, Solar. I'll let him know you're looking for it." }] },
-      { t: "(Leave it on read.)", silent: true, then: [{ from: 'dad', t: "I'll note that the message was received." }] }
+      { t: "of course. ill send it", then: [{ from: 'han', t: "Thank you, Solar. I'll let him know you're looking for it." }] },
+      { t: "(Leave it on read.)", silent: true, then: [{ from: 'han', t: "I'll note that the message was received." }] }
     ] },
     { id: 'epi-r-tx-girls-exclusive', thread: 'girls', date: '12/2', slot: 'evening', events: ['epi-r-cover'], msgs: [
       { from: 'hyein', t: 'hyein: did danielle say EXCLUSIVE' },
@@ -900,6 +903,14 @@
       { t: "i'll call him this week", then: [{ from: 'mom', t: 'Thank you. Wear something warm. It says snow.' }] },
       { t: "i had a thing on thursday", then: [{ from: 'mom', t: 'I know you did. Call him anyway.' }] }
     ] },
+    // Her father himself (Nov 3 2026, Kat's note: "Dad" is him, not his assistant). Short, his voice from the 12/2 call.
+    { id: 'epi-r-tx-dad-call', thread: 'dad', date: '12/8', slot: 'evening', msgs: [
+      { from: 'dad', t: "Your mother tells me you'll call this week." },
+      { from: 'dad', t: 'I am at my desk until seven. Ms. Han has the line after that.' }
+    ], reply: [
+      { t: "i will. sorry dad", then: [{ from: 'dad', t: 'Good.' }] },
+      { t: "(Leave it on read.)", silent: true, then: [] }
+    ] },
     { id: 'epi-r-tx-chenle-data', thread: 'chenle', date: '12/8', slot: 'evening', events: ['epi-r-regionals-2'], msgs: [
       { from: 'chenle', t: 'regionals final. your suzu was 0.4s faster than your november average' },
       { from: 'chenle', t: "that's a lot. i'm telling you because nobody else will notice. that's not an insult to them" }
@@ -930,13 +941,13 @@
       { t: "thank you for telling me", then: [{ from: 'haechan', t: "don't thank me for it. it's the rule" }, { from: 'haechan', t: '...ok. ur welcome' }] },
       { t: "how was it", then: [{ from: 'haechan', t: 'bad coffee. a guy cried. i didnt' }, { from: 'haechan', t: 'i went' }] }
     ] },
-    { id: 'epi-r-tx-han-travel', thread: 'dad', date: '12/13', slot: 'after', msgs: [
-      { from: 'dad', t: "Good afternoon, Solar. This is Ms. Han." },
-      { from: 'dad', t: "Mr. Lee will be in touch about your winter break travel. Please confirm by the eighteenth so the arrangements can be made." },
-      { from: 'dad', t: 'He also asked me to note that he is still waiting for the advisor\'s name.' }
+    { id: 'epi-r-tx-han-travel', thread: 'han', date: '12/13', slot: 'after', msgs: [
+      { from: 'han', t: "Good afternoon, Solar. This is Ms. Han." },
+      { from: 'han', t: "Mr. Lee will be in touch about your winter break travel. Please confirm by the eighteenth so the arrangements can be made." },
+      { from: 'han', t: 'He also asked me to note that he is still waiting for the advisor\'s name.' }
     ], reply: [
-      { t: "i'll confirm. thank you ms. han", then: [{ from: 'dad', t: 'Thank you, Solar.' }] },
-      { t: "(Leave it on read.)", silent: true, then: [{ from: 'dad', t: "I'll note that the message was received." }] }
+      { t: "i'll confirm. thank you ms. han", then: [{ from: 'han', t: 'Thank you, Solar.' }] },
+      { t: "(Leave it on read.)", silent: true, then: [{ from: 'han', t: "I'll note that the message was received." }] }
     ] },
     { id: 'epi-r-tx-jaemin-list', thread: 'jaemin', date: '12/14', slot: 'evening', msgs: [
       { from: 'jaemin', t: 'five days.' },

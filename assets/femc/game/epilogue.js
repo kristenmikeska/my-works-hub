@@ -74,14 +74,14 @@ window.FemcEpilogue = (() => {
   const S = () => G.S, UI = () => W.FemcGameUI;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const clone = o => JSON.parse(JSON.stringify(o));
-  const DATA_V = 53; // data/epi/<world>/*.js ?v=
+  const DATA_V = 54; // data/epi/<world>/*.js ?v=
   // The worlds: the year's route flag that opens each, its name (the button) and place (slot labels), its data files.
   const WORLDS = {
-    runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3'] },
-    strangers: { id: 'strangers', flag: 'route-S', name: 'strangers', place: 'Incheon', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-w2', 'story-w3', 'story-end'] },
-    hoax: { id: 'hoax', flag: 'route-H', name: 'HOAX', place: 'Hanlim', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-w2', 'story-w3', 'story-end'] },
+    runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3', 'phone'] },
+    strangers: { id: 'strangers', flag: 'route-S', name: 'strangers', place: 'Incheon', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-w2', 'story-w3', 'story-end', 'phone'] },
+    hoax: { id: 'hoax', flag: 'route-H', name: 'HOAX', place: 'Hanlim', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-w2', 'story-w3', 'story-end', 'phone'] },
     // Batch 8: Stay's reverse epilogue (Iwatodai is home) and the true ending's coda (three small days, one per world).
-    stay: { id: 'stay', flag: 'route-stay', name: 'Iwatodai', place: 'Iwatodai', files: ['calendar', 'world', 'glitches', 'people', 'story'] },
+    stay: { id: 'stay', flag: 'route-stay', name: 'Iwatodai', place: 'Iwatodai', files: ['calendar', 'world', 'glitches', 'people', 'story', 'phone'] },
     true: { id: 'true', flag: 'true-final', name: 'Every world', place: 'Every world', files: ['calendar', 'world', 'glitches', 'story'] }
   };
   // Which world a finished year's ending opens (the same order as core.js endingName): none for bad; the true ending's coda;
@@ -338,6 +338,7 @@ window.FemcEpilogue = (() => {
       loadWorld(s.epi.world).then(() => ui.run(), () => ui.show('<section class="g-seg"><div class="g-seg-box"><p class="g-seg-text">The epilogue couldn’t load. Check your connection and reload the page.</p></div></section>', 'is-seg'));
       return;
     }
+    migratePhone();
     ui.paintHud();
     // A scene a fight interrupted (a reload after the fight, before the scene finished): it goes on from the line after it.
     if (s.pending) return resume(s.pending, null);
@@ -521,6 +522,102 @@ window.FemcEpilogue = (() => {
     UI().segment({ slot: s.slot, bg: a.bg, place: a.place, text: a.text || a.name, next: advance });
   }
 
+  /* ── The phone (Nov 3 2026, Kat's notes after the Runners epilogue): the Contacts app, its calls and messages ──
+     Data: data/epi/<world>/phone.js → raw.phone = { order, contacts: { id: { rel, after, until, events, flags, noFlags, route,
+     noRoute, ifYear (the contact's own gates), known: [{ t, …gates }], calls: [{ id, …gates, place, time, music, scene }],
+     topics: [{ id, label, …gates, msgs: [{ me } | { them }] }], noCall, noMsg } } }; texts.handles names group-chat senders.
+     The gates are the hangouts' (fits): dates, events (or routines) seen, flags, the LOCKED route, ifYear.
+     Rules: free (no slot spent), once a week each (Sunday reset, phoneWeek) for a call and for a message; a call plays its next
+     unplayed fitting call as a "· Call" scene (`s: 'them'` = the contact), a message offers up to three unused fitting topics and
+     appends the exchange to their thread, read. No closeness, flag, stat or outcome ever changes (a call's choices are flavour).
+     State: S.epi.reach[id] = { call: week, msg: week, calls: [ids], topics: [ids] }. ui.js openPhone draws it (epiPeople / epiCard). */
+  const PHONE = () => worldRaw().phone || {};
+  const phoneWeek = (d = S().day) => Math.floor((d + G.dateOf(0).getDay()) / 7);
+  function fits(g, d = S().day) {
+    const e = S().epi, f = S().flags, locked = e && e.locked ? e.route : null;
+    return !!g && !!e && (!g.after || d >= G.dayOf(g.after)) && (!g.until || d <= G.dayOf(g.until))
+      && (g.events || []).every(x => S().events.includes(x) || (S().dailyLife?.seen || []).includes(x)) && (g.flags || []).every(k => f[k]) && !(g.noFlags || []).some(k => f[k])
+      && (!g.route || (locked && [].concat(g.route).includes(locked))) && !(g.noRoute && locked && [].concat(g.noRoute).includes(locked))
+      && (!g.ifYear || cond({ ifYear: g.ifYear }));
+  }
+  const reachOf = id => ((S().epi.reach ||= {})[id] ||= { calls: [], topics: [] });
+  function contacts() {
+    const P = PHONE(), all = P.contacts || {}, order = P.order || [];
+    if (!S().epi) return [];
+    return Object.keys(all).filter(id => fits(all[id])).sort((a, b) => {
+      const x = order.indexOf(a), y = order.indexOf(b);
+      return (x < 0 ? 999 : x) - (y < 0 ? 999 : y) || G.name(a).localeCompare(G.name(b));
+    }).map(id => ({ id, name: G.name(id), rel: all[id].rel || '' }));
+  }
+  const contactOf = id => (S().epi && (PHONE().contacts || {})[id] && fits(PHONE().contacts[id]) ? PHONE().contacts[id] : null);
+  function contactCard(id) {
+    const c = contactOf(id); if (!c) return null;
+    return { id, name: G.name(id), rel: c.rel || '', known: (c.known || []).filter(k => fits(k)).map(k => k.t) };
+  }
+  const nextCall = (c, r) => (c.calls || []).find(x => !r.calls.includes(x.id) && fits(x));
+  const openTopics = (c, r) => (c.topics || []).filter(x => !r.topics.includes(x.id) && fits(x)).slice(0, 3);
+  // { ok, why } or null (no button): the reasons greyed on the card, like the main game's.
+  function reach(id, kind) {
+    const c = contactOf(id), s = S();
+    if (!c || s.phase !== 'play' || s.epi.done) return null;
+    const r = reachOf(id), wk = phoneWeek(), no = why => ({ ok: false, why });
+    if (kind === 'call') {
+      if (c.noCall) return no(c.noCall);
+      if (!(c.calls || []).length) return null;
+      if (r.call === wk) return no('Called this week');
+      if (!nextCall(c, r)) return no('Nothing new to say');
+    } else {
+      if (c.noMsg) return no(c.noMsg);
+      if (!(c.topics || []).length) return null;
+      if (r.msg === wk) return no('Texted this week');
+      if (s.phone.pending[id] && G.textById(s.phone.pending[id])) return no('Answer their text first');
+      if (!openTopics(c, r).length) return no('Nothing new to say');
+    }
+    return { ok: true, why: '' };
+  }
+  const themLines = (id, lines) => (lines || []).map(x => {
+    const o = { ...x };
+    if (o.s === 'them') o.s = id;
+    if (o.choose) o.choose = o.choose.map(ch => ({ ...ch, then: themLines(id, ch.then) }));
+    ['then', 'else'].forEach(k => { if (Array.isArray(o[k])) o[k] = themLines(id, o[k]); });
+    return o;
+  });
+  // A call: marks the week and the call, hands the scene to the UI (ui.js plays it, then runs the day on).
+  function call(id) {
+    if (!reach(id, 'call')?.ok) return null;
+    const c = contactOf(id), r = reachOf(id), x = nextCall(c, r), home = P().home || {};
+    r.call = phoneWeek(); r.calls.push(x.id); G.save();
+    return { id, name: G.name(id), callId: x.id, place: x.place || home.place || '', time: x.time || G.slotName(S().slot), music: x.music || null, scene: themLines(id, x.scene) };
+  }
+  const topics = id => { const c = contactOf(id); return c ? openTopics(c, reachOf(id)).map(t => ({ id: t.id, label: t.label })) : []; };
+  // A message: the exchange goes into their thread (the UI types it out from `from`). { from, count }.
+  function message(id, topicId) {
+    if (!reach(id, 'msg')?.ok) return null;
+    const c = contactOf(id), r = reachOf(id), t = openTopics(c, r).find(x => x.id === topicId);
+    if (!t) return null;
+    const th = (S().phone.threads[id] ||= []), from = th.length;
+    const ph = S().phone, seq = Math.max(0, ph.sequence || 0, ...Object.values(ph.threads).flatMap(xs => xs.map(m => m.seq || 0)));
+    ph.sequence = seq; // the same numbering as core.js appendPhone, so the list's newest-first order holds
+    th.push(...(t.msgs || []).map(m => ({ from: 'me' in m ? 'solar' : id, t: 'me' in m ? m.me : m.them, ...(m.sticker ? { sticker: m.sticker } : {}), d: S().day, slot: S().slot, seq: ++ph.sequence })));
+    r.msg = phoneWeek(); r.topics.push(t.id); G.save();
+    return { from, count: S().phone.threads[id].length - from };
+  }
+  // Saves from before the phone (Nov 3 2026): Runners' Ms. Han wrote from 'dad'; her thread and texts move to 'han', so
+  // the 'dad' thread is her father's own. Runs once per save (S.epi.phoneV).
+  function migratePhone() {
+    const s = S(); if (!s.epi || s.epi.phoneV >= 1) return;
+    if (s.epi.world === 'runners' && s.phone && s.phone.threads.dad) {
+      const th = s.phone.threads, han = /Ms\. Han|message was received|let him know|Good luck with your examinations|Thank you, Solar/;
+      const moved = th.dad.filter(m => m.from === 'solar' || han.test(m.t || '')).length === th.dad.length;
+      if (moved) {
+        th.han = [...(th.han || []), ...th.dad.map(m => ({ ...m, from: m.from === 'dad' ? 'han' : m.from }))]; delete th.dad;
+        ['unread', 'pending'].forEach(k => { if (s.phone[k] && s.phone[k].dad != null) { s.phone[k].han = s.phone[k].dad; delete s.phone[k].dad; } });
+      }
+    }
+    s.epi.phoneV = 1;
+    G.save();
+  }
+
   /* ── The end of the act: its card, the Equinox card, then back to the year's end screen ── */
   // The Equinox card's words (batch 9): the world's `equinox` (world.js): the route's own line, else `line`; then `echoes`, one
   // line per other world ("Place · what happens there"), each fading in under it.
@@ -680,6 +777,6 @@ window.FemcEpilogue = (() => {
 
   return { WORLDS, worldFor, endingOf, loadWorld, build, ensure, carryOf, leanFor, route, lockRoute, cond, stateFor, enter, leave, endScreen, offer, run, finish, raw: worldRaw,
     yearCond, peekCond, isEpiCond, replaySaw, recordOf, records, entered, albumEntries, theaterRows, theaterLoad, replay, equinoxOf, ALBUM,
-    routeOpen, bond, closeness, startBond, hangoutFor, people, hangout, practiceNow, CLOSE_MAX, resume, partyFor, fightOf, fadeQueue, FADE, STAGES,
+    routeOpen, bond, closeness, startBond, contacts, contactCard, reach, call, topics, message, phoneWeek, migratePhone, hangoutFor, people, hangout, practiceNow, CLOSE_MAX, resume, partyFor, fightOf, fadeQueue, FADE, STAGES,
     get cardDay() { return cardDay; } };
 })();

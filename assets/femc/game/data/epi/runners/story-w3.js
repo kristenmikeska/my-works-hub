@@ -329,14 +329,14 @@
     { n: "At the top of the stairs, on the second landing, Danielle stood in a cream robe with a mug in her hand, looking down at the grandfather clock with an expression of polite, total interest, like someone reading a line item that didn't add up. She didn't come down. She didn't film it. She just looked at the clock, and then at Solar, and then went back to her room and shut the door with that small, precise, almost polite sound." },
     { place: 'Syracuse · Alpha Phi House · Her Room', time: 'Morning', soft: true },
     { phone: [
-      { from: 'dad', t: 'Good morning, Solar. This is Ms. Han.' },
-      { from: 'dad', t: 'Today is the eighteenth. Mr. Lee asks you to confirm your winter break travel so the arrangements can be completed. The car is booked for Sunday at 9:00 a.m. for you and Jaehyun.' },
-      { from: 'dad', t: 'He also asked me to note, again, that he is still waiting for the name of the trip’s faculty advisor.' }
-    ], contact: 'Dad' },
+      { from: 'han', t: 'Good morning, Solar. This is Ms. Han.' },
+      { from: 'han', t: 'Today is the eighteenth. Mr. Lee asks you to confirm your winter break travel so the arrangements can be completed. The car is booked for Sunday at 9:00 a.m. for you and Jaehyun.' },
+      { from: 'han', t: 'He also asked me to note, again, that he is still waiting for the name of the trip’s faculty advisor.' }
+    ], contact: 'Ms. Han' },
     { n: "The clock on her desk said 12:00. Her phone said 7:58. She sat on the edge of the bed with both in front of her and the cursor blinking in the reply box." },
     { choose: [
       { t: "(Confirm.) confirmed. thank you ms. han. see you sunday", flag: 'epi-r-travel-yes', then: [
-        { phone: [{ from: 'solar', t: 'confirmed. thank you ms. han. see you sunday' }, { from: 'dad', t: 'Thank you, Solar. I’ll let him know.' }], contact: 'Dad' },
+        { phone: [{ from: 'solar', t: 'confirmed. thank you ms. han. see you sunday' }, { from: 'han', t: 'Thank you, Solar. I’ll let him know.' }], contact: 'Ms. Han' },
         { n: "She'd go home. Of course she'd go home. She'd sit at the table set for four with her place card on it and her father at the head, and she'd say the right thing without using any of the words, the way she'd been raised to. She knew exactly how. That was the worst part. She knew exactly how." }
       ] },
       { t: "(Don't answer. Not today.)", flag: 'epi-r-travel-no', then: [

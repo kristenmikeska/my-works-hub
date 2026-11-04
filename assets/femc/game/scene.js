@@ -422,12 +422,24 @@ window.FemcScene = (() => {
       el.appendChild(box);
       const thread = box.querySelector('.gs-phone-thread');
       let i = 0;
+      // A group chat (Nov 3 2026, Kat: "some group chat scenes don't have names"): the line's `group: true`, or two or more
+      // people besides Solar. Each sender's first bubble in a run gets their name and in-world handle (a leading "handle: "
+      // or "@handle: " in the text, else the world's texts.handles), like the phone's group chats; "x posted / added …"
+      // lines are notices. A post line ({ img }) keeps its own handle and text. A one-to-one conversation is unchanged.
+      const group = !!line.group || new Set(line.phone.filter(m => m.from !== 'solar').map(m => m.from)).size > 1;
+      let lastFrom = null;
+      const groupParts = (m, text) => {
+        const h = /^@?([a-z0-9_.]{2,24}):\s+/i.exec(text), name = m.from === 'solar' ? 'Solar' : G.name(m.from);
+        const body = h ? text.slice(h[0].length) : text, handle = h ? h[1] : ((G.D.texts || {}).handles || {})[m.from] || null;
+        return { body, name, handle: handle && handle.toLowerCase() !== name.toLowerCase() ? handle : null,
+          notice: m.from !== 'solar' && !h && /^@?[a-z0-9_.]+ (posted|commented|added|named|removed|left|renamed|changed|created|started) /i.test(text) };
+      };
       // Each incoming text gets a moment of "typing…" first (a tap shows it at once); Solar's own send with a whoosh.
       // Skip, Instant text speed and reduced motion show them straight away.
       const reveal = () => {
         const m = line.phone[i++];
         if (!m) { box.remove(); el.classList.remove('phoning'); waiting = null; return next(); }
-        const me = m.from === 'solar', text = G.sub(m.t);
+        const me = m.from === 'solar', gp = group && !m.img ? groupParts(m, G.sub(m.t)) : null, text = gp ? gp.body : G.sub(m.t);
         let dots = null;
         const show = () => {
           clearTimeout(typing); typing = null; dots?.remove();
@@ -438,7 +450,16 @@ window.FemcScene = (() => {
           if (post) {
             p.innerHTML = postHtml('gs-post', m.img, m.handle || G.name(m.from), m.cap ?? text.replace(/^\s*\[[^\]]*\]\s*/, ''));
             p.querySelector('img').addEventListener('load', () => { thread.scrollTop = thread.scrollHeight; });
-          } else p.textContent = text;
+          } else if (gp && gp.notice) { p.className = `gs-msg gs-notice${reduced.matches ? '' : ' in'}`; p.textContent = text; }
+          else {
+            if (gp && !me && lastFrom !== m.from) {
+              const b = document.createElement('b'); b.className = 'gs-from'; b.textContent = gp.name;
+              if (gp.handle) { const s = document.createElement('small'); s.textContent = gp.handle.replace(/^@/, ''); b.append(' ', s); }
+              p.append(b);
+            }
+            p.append(text);
+          }
+          lastFrom = gp && gp.notice ? null : m.from;
           thread.appendChild(p);
           thread.scrollTop = thread.scrollHeight;
           log.push({ name: me ? 'Solar' : G.name(m.from), text: `[text] ${text}` });

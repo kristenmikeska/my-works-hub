@@ -90,7 +90,7 @@
           { from: 'junkyu', t: "junkyute: does she need ice cream and hugs in the morning!!! i can bring both!!!" },
           { from: 'jaehyuk', t: "jaehyukkie: it's 4am. everyone go to sleep." },
           { from: 'hyunsuk', t: "geniusuk: u go to sleep" }
-        ], contact: "rip solar kim (she's fine probably)" }
+        ], contact: "rip solar kim (she's fine probably)", group: true }
       ] }
     ] },
 
@@ -106,7 +106,7 @@
       { from: 'jihoon', t: "jihoney: Phones Lie Sol. Look It Up" },
       { from: 'cherry', t: "cherryblossoms: he did it at 11:52 and then called me crying at 11:53" },
       { from: 'jihoon', t: "jihoney: Cherry Has Been Blocked From My Heart" }
-    ], contact: "rip solar kim (she's fine probably)" },
+    ], contact: "rip solar kim (she's fine probably)", group: true },
 
     // Mom.
     { place: 'Hanlim · Home · Her Room', time: 'Morning', soft: true },
@@ -415,7 +415,7 @@
       { from: 'heeseung', t: "heeheeseung: IT SAYS DO NOT LEAVE" },
       { from: 'sunoo', t: "sunooshine: i'm practicing in the mirror!!! bows!!! (not a question)" },
       { from: 'jungwon', t: "injangwon: made it with 1 minute to spare. goodnight everyone." }
-    ], contact: 'RETREAT FACTS (do not leave)' },
+    ], contact: 'RETREAT FACTS (do not leave)', group: true },
     { flag: 'epi-h-retreat' },
     { bond: { council: 1 } },
     { n: "From her doorstep she watched his mother's car go down the road at exactly the speed limit, indicator blinking at an empty intersection, until it turned the corner and was gone, and then she stood there a little longer in the cold with the song still going round her head, loud and stupid and bright, and didn't stop it." }
@@ -627,7 +627,7 @@
       { from: 'jay', t: "jbird: bro just say late" },
       { from: 'jungwon', t: "injangwon: have fun. don't let niki on the ladder." },
       { from: 'niki', t: "rikiniki: too late" }
-    ], contact: 'RETREAT FACTS (do not leave)' },
+    ], contact: 'RETREAT FACTS (do not leave)', group: true },
     { n: "Three places she could be. She sat on the edge of the bed with her coat already half on, because some part of her had known since four o'clock she was going somewhere, and Nana watched her from the doorway with the resigned face of a dog who knew what a coat meant." },
     { n: "The can was in the pocket. She felt it against her hip when she stood, cold, the way it always was, and left it there." },
     { choose: [
@@ -1065,7 +1065,7 @@
           { from: 'jake', t: "jakeys: boo-ddhism" },
           { from: 'jay', t: "jbird: bro" },
           { from: 'jungwon', t: "injangwon: sol, are you home?" }
-        ], contact: 'RETREAT FACTS (do not leave)' },
+        ], contact: 'RETREAT FACTS (do not leave)', group: true },
         { n: "She typed *home*. She watched it, in case it changed into something else. It didn't. She sent it, and lay back on her bed, and the moon lay on the floor and didn't move, and neither did she, for a long time." }
       ] }
     ] }

@@ -340,7 +340,7 @@
     ] },
 
     // ---------------------------------------------------------------- 12/10 · the sisters (cover route)
-    { id: 'epi-r-sisters', date: '12/10', slot: 'evening', consumes: true, flag: 'epi-route-cover', title: 'the emergency vacation, again', place: 'Syracuse · Alpha Phi House', time: 'Evening', scene: [
+    { id: 'epi-r-sisters', date: '12/10', slot: 'evening', consumes: true, flag: 'epi-route-cover', title: 'the emergency vacation, again', place: 'Syracuse · Alpha Phi House · Living Room', time: 'Evening', scene: [
       { music: 'epi-r-sisters' },
       { n: "Wednesday chapter meeting, seven o'clock, the living room with the good couches pushed back and the folding chairs out, forty girls in sweatpants and pearls in various ratios, somebody's candle making the whole room smell like a cookie someone had set on fire, and Chungha at the front with the laptop and the little bell she rang when people talked over each other, which was always." },
         { n: "Solar sat on the arm of the couch at the back, because the arm of the couch at the back was where you sat when you wanted to be technically present, and Hyein sat on the floor at her feet with a bag of pretzels she'd been told twice to put away. Hanni was in the second row with the Social Chair binder on her knees. Danielle was in the first row. Danielle was always in the first row." },
@@ -663,7 +663,10 @@
           { t: "(Post it. Our picture, our words.)", flag: 'epi-r-public-post', then: [
             { n: "She held it up so he could see it, so he could say no. He looked at it, and at her, and didn't say no." },
             { s: 'haechan', f: 'happy', t: "Your caption, princess. Not mine. I'd make it weird." },
-            { n: "She typed one word. *hi.* Lowercase. She looked at it for a full five seconds, which was four and a half seconds longer than she'd ever looked at anything before posting it, and then she posted it, standing in the front hall of Sigma Chi with the bass coming up through the floor, and put the phone in her pocket, and didn't look at it again.", img: 'post-r-5-two-selfie', handle: '@solar', cap: 'hi' },
+            { n: "She typed one word. *hi.* Lowercase. She looked at it for a full five seconds, which was four and a half seconds longer than she'd ever looked at anything before posting it, and then she posted it, standing in the front hall of Sigma Chi with the bass coming up through the floor." },
+            // The post itself on her screen (Nov 3 2026, Kat: the phone and the post should come up). Picture: FEMC-RUNNERS-POSTS 5.
+            { phone: [{ from: 'solar', t: '[the two of them, close, warm low light] hi', img: 'post-r-5-solchan', handle: 'sollee', cap: 'hi' }], contact: 'sollee · new post' },
+            { n: "She put the phone in her pocket, and didn't look at it again." },
             { n: "On the stairs, three steps up, a phone lit in a cream sweater's hand. Danielle looked at the screen. Then she looked up, across the hall, straight at Solar, and something moved behind her eyes, a chart being updated, a draft being deleted, a whole caption she'd been saving folded in half and put away. She didn't smile. That was how Solar knew it had worked." },
             { s: 'haechan', f: 'neutral', t: "...Somebody's going to send that to your brother before midnight." },
             { s: 'solar', f: 'serious', t: "I know." },
