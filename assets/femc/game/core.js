@@ -2748,7 +2748,7 @@ window.FemcGame = (() => {
     };
   }
   // Epilogue worlds finished (S.epilogues, or the year's inside an epilogue): the battle save's epilogue branches (request.epis).
-  const episDone = () => { const out = new Set(); [S.epilogues, S.year1 && S.year1.epilogues].forEach(r => Object.entries(r || {}).forEach(([w, x]) => { if (x && x.done) out.add(w); })); return [...out]; };
+  const episDone = () => { const out = new Set(); [S.epilogues, S.year1 && S.year1.epilogues, S.album && S.album.epi].forEach(r => Object.entries(r || {}).forEach(([w, x]) => { if (x && x.done) out.add(w); })); return [...out]; };
   function yearRequest(kind, req) {
     const party = (req.party || S.tartarus.lastParty || ['solar', ...available().filter(x => x !== 'solar').slice(0, 3)]).filter(x => available().includes(x));
     return {

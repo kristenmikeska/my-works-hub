@@ -67,7 +67,7 @@ window.FemcStamps = (() => {
     // S.epilogues / the year's inside an epilogue); the last one once all five have.
     const EPI = ['runners', 'strangers', 'hoax', 'stay', 'true'], done = new Set();
     clears().forEach(c => (c && Array.isArray(c.epi) ? c.epi : []).forEach(w => done.add(w)));
-    [S.epilogues, S.year1 && S.year1.epilogues].forEach(r => Object.entries(r || {}).forEach(([w, x]) => { if (x && x.done) done.add(w); }));
+    [S.epilogues, S.year1 && S.year1.epilogues, S.album && S.album.epi].forEach(r => Object.entries(r || {}).forEach(([w, x]) => { if (x && x.done) done.add(w); }));
     EPI.forEach(w => { if (done.has(w)) out.push(`p3s-epi-${w}`); });
     if (EPI.every(w => done.has(w))) out.push('p3s-epi-all');
     return out;

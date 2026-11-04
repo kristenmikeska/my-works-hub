@@ -74,10 +74,10 @@ window.FemcEpilogue = (() => {
   const S = () => G.S, UI = () => W.FemcGameUI;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const clone = o => JSON.parse(JSON.stringify(o));
-  const DATA_V = 54; // data/epi/<world>/*.js ?v=
+  const DATA_V = 55; // data/epi/<world>/*.js ?v=
   // The worlds: the year's route flag that opens each, its name (the button) and place (slot labels), its data files.
   const WORLDS = {
-    runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3', 'phone'] },
+    runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3', 'phone', 'alerts'] },
     strangers: { id: 'strangers', flag: 'route-S', name: 'strangers', place: 'Incheon', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-w2', 'story-w3', 'story-end', 'phone'] },
     hoax: { id: 'hoax', flag: 'route-H', name: 'HOAX', place: 'Hanlim', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-w2', 'story-w3', 'story-end', 'phone'] },
     // Batch 8: Stay's reverse epilogue (Iwatodai is home) and the true ending's coda (three small days, one per world).
@@ -285,6 +285,8 @@ window.FemcEpilogue = (() => {
     // CGs she saw here join the year's album (the album's epilogue pages; New Game+ carries them like the rest).
     const ecg = (E.album && E.album.cg) || [];
     if (ecg.length) { const a = (Y.album ||= { v: 1 }); a.cg = [...new Set([...(a.cg || []), ...ecg])]; }
+    const eps = (E.album && E.album.posts) || []; // and the post lines (the album's Runners posts, Nov 3 2026)
+    if (eps.length) { const a = (Y.album ||= { v: 1 }); a.posts = [...new Set([...(a.posts || []), ...eps])]; }
     const wid = E.epi.world;
     W.FemcGlitch?.clear();
     G.setWorld(null);
@@ -349,6 +351,7 @@ window.FemcEpilogue = (() => {
     if (due && due.kind === 'event') return playEvent(due.ev);
     const daily = G.dailyLife();
     if (daily) return SC.play({ ...daily, scene: [{ bg: daily.bg }, ...(GL()?.inject(daily.id, daily.scene) || daily.scene)], label: daily.label || 'Everyday life', onDone: () => { G.finishDailyLife(daily.id); ui.run(); } });
+    newsTick();
     if (practiceNow(info)) return practice(info);
     switch (s.slot) {
       case 'early': return morning(info);
@@ -357,6 +360,28 @@ window.FemcEpilogue = (() => {
     }
   }
   function advance() { const r = G.nextSlot(); if (r.end) return finish(); UI().run(); }
+  /* SUnews / SUanon alerts (Nov 3 2026; data/epi/runners/alerts.js documents the data). run() asks newsTick() whenever the day
+     lands on a screen (morning, practice, Go Out, late), never inside a scene: the first alert whose `after` events are all seen
+     (and `date` reached) drops in as a lock-screen banner (ui.js newsAlert: tap opens the phone; reduced motion: no slide),
+     once each (S.epi.alerts), at most one a day (S.epi.alertDay). A scene, date card or fight up when it would show: it waits
+     for the next screen. Nothing else changes. */
+  const ALERTS = () => worldRaw().alerts || [];
+  function alertDue(s = S()) {
+    if (!s.epi || s.epi.alertDay === s.day) return null;
+    const seen = s.epi.alerts || [];
+    return ALERTS().find(a => !seen.includes(a.id) && (a.after || []).every(id => s.events.includes(id)) && (!a.date || s.day >= G.dayOf(a.date))) || null;
+  }
+  let newsTimer = null;
+  function newsTick() {
+    if (!alertDue()) return;
+    clearTimeout(newsTimer);
+    newsTimer = setTimeout(() => {
+      const s = S(), a = alertDue(s);
+      if (!a || !UI().newsAlert || document.querySelector('.gs:not(.out), .g-dh, .g-datecard, .g-statup, .gs-rank, .g-epi-card, .g-phone-ov:not(.out)')) return;
+      if (!UI().newsAlert(a)) return;
+      (s.epi.alerts ||= []).push(a.id); s.epi.alertDay = s.day; G.saveQuiet();
+    }, 900);
+  }
   // resume: a snapshot from a fight in this event (batch 6), when the scene is rebuilt after it (a reload, or the fight's own way back).
   function playEvent(ev, resume) {
     if (!resume) S().pending = null;
@@ -715,8 +740,33 @@ window.FemcEpilogue = (() => {
   }
   const worldLabel = id => (id === 'true' ? 'Every world' : WORLDS[id].place);
   function cgsOf(lines, out) { (lines || []).forEach(l => { if (!l || typeof l !== 'object') return; if (typeof l.cg === 'string') out.add(l.cg); [l.then, l.else, ...(Array.isArray(l.choose) ? l.choose.map(o => o && o.then) : [])].forEach(k => Array.isArray(k) && cgsOf(k, out)); }); return out; }
-  // The album's epilogue tiles. seen: the CG ids the save (and the year) have seen.
-  function albumEntries(seen) {
+  // The post lines in a world's scenes ({ img: 'post-…', handle, cap } on a narration line or inside a { phone } line).
+  function postsOf(lines, out) {
+    (lines || []).forEach(l => {
+      if (!l || typeof l !== 'object') return;
+      if (typeof l.img === 'string' && /^post-/.test(l.img) && !out.has(l.img)) out.set(l.img, l);
+      if (Array.isArray(l.phone)) postsOf(l.phone, out);
+      [l.then, l.else, ...(Array.isArray(l.choose) ? l.choose.map(o => o && o.then) : [])].forEach(k => Array.isArray(k) && postsOf(k, out));
+    });
+    return out;
+  }
+  // A world's post pictures for the album (Nov 3 2026): every post id with a picture (art/posts/index.js), in number order;
+  // unlocked once a live scene played its line (S.album.posts, ui.js bridge seePost). Posts without a picture have no tile.
+  const POST_PREFIX = { runners: 'post-r-' };
+  function postEntries(wid, seenPosts) {
+    const pre = POST_PREFIX[wid]; if (!pre) return [];
+    const raw = W.FEMC_EPI_WORLDS?.[wid], info = new Map();
+    if (raw && raw._loaded) [...(raw.events || []), ...(raw.routines || []), ...Object.values(raw.bonds || {}).flatMap(b => b.hangouts || [])].forEach(e => postsOf(e.scene, info));
+    const num = id => +(/^post-[a-z]+-(\d+)/.exec(id) || [])[1] || 0;
+    return (W.FEMC_POSTS || []).filter(id => id.startsWith(pre)).sort((x, y) => num(x) - num(y)).map(id => {
+      const l = info.get(id) || {}, handle = l.handle ? (/^@/.test(l.handle) ? l.handle : `@${l.handle}`) : '';
+      const cap = l.cap ?? (typeof l.t === 'string' ? l.t.replace(/^\s*\[[^\]]*\]\s*/, '') : '');
+      return { kind: 'post', id, group: `epi-${wid}-posts`, world: wid, on: seenPosts.has(id), img: `${G.base}assets/femc/game/art/posts/${id}.webp?v=${W.FEMC_POSTS_V || 1}`,
+        kicker: `Epilogue · ${worldLabel(wid)} · Posts`, title: handle, text: cap };
+    });
+  }
+  // The album's epilogue tiles. seen: the CG ids the save (and the year) have seen; seenPosts: the post ids.
+  function albumEntries(seen, seenPosts = new Set()) {
     return entered().flatMap(wid => {
       const list = [...ALBUM[wid]], raw = W.FEMC_EPI_WORLDS?.[wid];
       if (raw && raw._loaded) {
@@ -724,7 +774,8 @@ window.FemcEpilogue = (() => {
         [...(raw.events || []), ...(raw.routines || []), ...Object.values(raw.bonds || {}).flatMap(b => b.hangouts || [])].forEach(e => cgsOf(e.scene, more));
         more.forEach(id => { if (!list.some(x => x[0] === id)) list.push([id, '']); });
       }
-      return list.map(([id, title]) => ({ kind: 'cg', id, group: `epi-${wid}`, world: wid, on: seen.has(id), img: `${G.base}assets/femc/cg/${id}.webp`, kicker: `Epilogue · ${worldLabel(wid)}`, title }));
+      return [...list.map(([id, title]) => ({ kind: 'cg', id, group: `epi-${wid}`, world: wid, on: seen.has(id), img: `${G.base}assets/femc/cg/${id}.webp`, kicker: `Epilogue · ${worldLabel(wid)}`, title })),
+        ...postEntries(wid, seenPosts)];
     });
   }
   // The Theater's epilogue rows: the current world while she's in it (live), else each finished world's record.
@@ -776,7 +827,7 @@ window.FemcEpilogue = (() => {
   }
 
   return { WORLDS, worldFor, endingOf, loadWorld, build, ensure, carryOf, leanFor, route, lockRoute, cond, stateFor, enter, leave, endScreen, offer, run, finish, raw: worldRaw,
-    yearCond, peekCond, isEpiCond, replaySaw, recordOf, records, entered, albumEntries, theaterRows, theaterLoad, replay, equinoxOf, ALBUM,
+    yearCond, peekCond, isEpiCond, replaySaw, recordOf, records, entered, albumEntries, postEntries, alertDue, newsTick, ALERTS, theaterRows, theaterLoad, replay, equinoxOf, ALBUM,
     routeOpen, bond, closeness, startBond, contacts, contactCard, reach, call, topics, message, phoneWeek, migratePhone, hangoutFor, people, hangout, practiceNow, CLOSE_MAX, resume, partyFor, fightOf, fadeQueue, FADE, STAGES,
     get cardDay() { return cardDay; } };
 })();

@@ -2,6 +2,7 @@
 
   python3 tools/femc-avatars.py          Runners: the Runners World site's SUgram profile pictures -> art/avatars/runners/<id>.webp
   python3 tools/femc-avatars.py --index  only rewrite art/avatars/index.js from the webps already there
+  python3 tools/femc-avatars.py --custom only the hand-picked pictures in CUSTOM (group chats), then the index
 
 Sources are only read (the runners-world repo next to this one: scripts/data/sugram-profiles.js `avatar: assets("…")`).
 Each becomes a 256 px square WebP (q84), cropped around the face OpenCV finds (largest frontal face; else the upper middle).
@@ -32,6 +33,24 @@ RUNNERS = {
     'chenle': 'sugram/chenles posts/chenle-profilepicture.jpg',        # chenle
     'sunews': 'sumascot-pic.jpg',                                      # SUnews
 }
+# Hand-picked pictures (Nov 3 2026, Kat's post picks): (world, id) -> (runners-world/assets/… file, square box L, T, R, B in
+# pixels of the original). The Alpha Phi girls' group chat ('girls') is 4e on mockups/runners-posts: Hanni, Hyein and Solar.
+CUSTOM = {
+    ('runners', 'girls'): ('sugram/solars posts/solar-carousel-19/alphaphi-christmas-selfie-tree.jpg', (76, 200, 836, 960)),
+}
+
+
+def custom():
+    for (world, gid), (rel, box) in CUSTOM.items():
+        src = os.path.join(RW, rel)
+        if not os.path.exists(src):
+            print('missing', src)
+            continue
+        d = os.path.join(OUT, world)
+        os.makedirs(d, exist_ok=True)
+        im = ImageOps.exif_transpose(Image.open(src)).convert('RGB').crop(box).resize((SIZE, SIZE), Image.LANCZOS)
+        im.save(os.path.join(d, gid + '.webp'), 'WEBP', quality=84)
+        print(world, gid, 'custom', box)
 
 
 def face_box(im):
@@ -88,7 +107,10 @@ def index():
 
 
 if __name__ == '__main__':
-    if '--index' not in sys.argv:
+    if '--custom' in sys.argv:
+        custom()
+    elif '--index' not in sys.argv:
+        custom()
         d = os.path.join(OUT, 'runners')
         os.makedirs(d, exist_ok=True)
         for gid, rel in RUNNERS.items():

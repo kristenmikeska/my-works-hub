@@ -696,7 +696,7 @@
       { from: 'jeno', t: "jen0l33 posted a story." },
       { from: 'jeno', t: "[the sigma living room, red light, a punch bowl the color of a warning] december lineup pt 1 🎄 no invite list this time. you know who you are", img: 'post-r-2-red-party', handle: 'jen0l33' },
       { from: 'jaemin', t: "jaemin posted a story." },
-      { from: 'jaemin', t: "[a hand-drawn sign taped to the stairs: NO LODGE TONIGHT] reminder: tonight is open to everyone who was NOT on the secret trip 🤫 so everyone. allegedly", img: 'post-r-3-stairs-sign', handle: 'jaemin' },
+      { from: 'jaemin', t: "[BABY, WELCOME TO THE PARTY! painted on the sigma hallway wall in black marker, an arrow pointing in] the wall says welcome. the wall means everyone who was NOT on the secret trip 🤫 so everyone. allegedly", img: 'post-r-3-stairs-sign', handle: 'jaemin' },
       { from: 'jaemin', t: "jaemin posted a story." },
       { from: 'jaemin', t: "[a blurry selfie, jaemin and three boys in reindeer antlers] if u went on the exclusive one dm me the wifi password. asking for a friend (the friend is me)", img: 'post-r-4-antlers-selfie', handle: 'jaemin' }
     ], contact: 'Stories' },

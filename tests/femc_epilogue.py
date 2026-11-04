@@ -1,6 +1,6 @@
 """The epilogue (FEMC-EPILOGUE-PLAN.md; batch 1, 2026-10-27: the engine, with stand-in worlds).
 
-  python3 tests/femc_epilogue.py [--only engine,saves,glitch,runners1,runners2,hoax,strangers,fights,stay,true,polish,phone,shots] [--screenshots /absolute/dir]
+  python3 tests/femc_epilogue.py [--only engine,saves,glitch,runners1,runners2,hoax,strangers,fights,stay,true,polish,phone,alerts,album,shots] [--screenshots /absolute/dir]
 
 engine   the end screen's Epilogue button on the Runners, strangers and HOAX home endings (none on bad, true or Stay); the
          save-first offer writes the finished year to a slot; entering from each eligible ending tucks the year into the save
@@ -98,6 +98,12 @@ phone    (Nov 3 2026, Kat's notes after the Runners epilogue) every world's phon
          chat's names and handles, Message (topics, the exchange, "Texted this week"), Call (the scene, then the day goes on),
          nothing in the story changed (flags, closeness, stats, events, day); a scene's group phone shows names; the post line
          falls back to text with no picture; screenshots at 1440×900 and 390×844.
+alerts   (Nov 3 2026) the Runners SUnews / SUanon alerts: data (6-10, ids unique, every gate an event every route plays, posts
+         known), none before its events, one a day, once each, a post thumbnail when the picture exists, never over a scene,
+         tap opens the phone, reduced motion, no story change; 1440×900 and 390×844.
+album    (Nov 3 2026) the album's Runners posts: a 4:5 tile per post picture (none for posts without one), "?" until its line
+         plays live (a replay doesn't count), the viewer, the CGs beside them, leave() and albumCarry keep the posts; 1440×900
+         and 390×844.
 shots    one desktop / phone pair of the end-screen button and of an epilogue day.
 No browser errors. Isolated browser profile and server; never the player's saves."""
 import base64, datetime, json, pathlib, sys, tempfile, time
@@ -105,7 +111,7 @@ from femc_browser import Page
 
 OUT = pathlib.Path(sys.argv[sys.argv.index('--screenshots') + 1]) if '--screenshots' in sys.argv else pathlib.Path(tempfile.mkdtemp(prefix='femc-epilogue-'))
 OUT.mkdir(parents=True, exist_ok=True)
-ONLY = set(sys.argv[sys.argv.index('--only') + 1].split(',')) if '--only' in sys.argv else {'engine', 'saves', 'glitch', 'runners1', 'runners2', 'hoax', 'strangers', 'fights', 'stay', 'true', 'polish', 'phone', 'shots'}
+ONLY = set(sys.argv[sys.argv.index('--only') + 1].split(',')) if '--only' in sys.argv else {'engine', 'saves', 'glitch', 'runners1', 'runners2', 'hoax', 'strangers', 'fights', 'stay', 'true', 'polish', 'phone', 'alerts', 'album', 'shots'}
 checks = []
 
 
@@ -687,7 +693,7 @@ try:
           gl:!FemcGlitch.active(),b:JSON.stringify(G.branch({ifGlitch:3,then:['y'],else:['n']}))}})()""")
         ok(base['cal'] and base['ev'] and base['world'] is None and not base['ends'] and base['gl'] and base['b'] == '["n"]', f'the year reads Iwatodai’s data; no glitch, no `ends`, ifGlitch false ({base})')
         enter('route-R')
-        ok(p.eval("FEMC_EPI_WORLDS.runners._loaded && FemcEpilogue.WORLDS.runners.files.join()==='calendar,world,glitches,people,story-w1,story-w2,people-w3,story-w3,phone'"), 'the Runners world loads nine files (week 3’s story and people files, then the phone)')
+        ok(p.eval("FEMC_EPI_WORLDS.runners._loaded && FemcEpilogue.WORLDS.runners.files.join()==='calendar,world,glitches,people,story-w1,story-w2,people-w3,story-w3,phone,alerts'"), 'the Runners world loads ten files (week 3’s story and people files, the phone, the SUnews alerts)')
         beats = p.eval("FemcGame.D.events.filter(e=>e.id==='epi-r-alone'||FemcGame.dayOf(e.date)>=FemcGame.dayOf('12/15')).map(e=>[e.id,e.date,e.slot,!!e.ends,!!e.consumes])")
         want3 = {'epi-r-alone': ['12/14', 'late'], 'epi-r-upward': ['12/15', 'early'], 'epi-r-kitchen': ['12/16', 'early'], 'epi-r-unseen': ['12/16', 'late'], 'epi-r-butterfly': ['12/17', 'evening'],
                  'epi-r-clocks': ['12/18', 'early'], 'epi-r-unheard': ['12/18', 'late'], 'epi-r-holiday': ['12/19', 'evening'], 'epi-r-footage': ['12/19', 'late'],
@@ -1691,10 +1697,10 @@ try:
         p.eval("EP.clear(); FemcGameUI.openPhone()")
         u = p.eval(r"""(() => { const o = document.querySelector('.g-phone-ov'), row = id => o.querySelector(`[data-th="${id}"] i`);
           return { tabs: [...o.querySelectorAll('.g-ph-tabs button')].map(b => b.textContent).join(), world: o.dataset.world, wx: o.querySelector('.g-ph-wx-h')?.textContent || '',
-            hc: row('haechan')?.querySelector('img')?.src || '', dad: row('dad')?.querySelector('img')?.src || '', girls: row('girls')?.querySelectorAll('.g-av-grp > span').length || 0,
+            hc: row('haechan')?.querySelector('img')?.src || '', dad: row('dad')?.querySelector('img')?.src || '', girls: row('girls')?.querySelector('img')?.src || '', team: row('team')?.querySelectorAll('.g-av-grp > span').length || 0,
             han: [...o.querySelectorAll('[data-th] b')].map(b => b.textContent).filter(t => /Ms\. Han|Dad/.test(t)).join() }; })()""")
         ok(u['tabs'] == 'Messages,Contacts' and u['world'] == 'runners' and u['wx'].startswith('Syracuse'), f'the Runners phone: two apps, its own theme, Syracuse weather ({u["tabs"]}, {u["wx"][:20]})')
-        ok('avatars/runners/haechan.webp' in u['hc'] and 'portraits/' in u['dad'] and u['girls'] >= 2, f'contact pictures: his SUgram photo, a portrait crop for Dad, a composite for the girls ({u["girls"]} faces)')
+        ok('avatars/runners/haechan.webp' in u['hc'] and 'portraits/' in u['dad'] and 'avatars/runners/girls.webp' in u['girls'] and u['team'] >= 2, f'contact pictures: his SUgram photo, a portrait crop for Dad, the girls\' own group picture (Kat\'s 4e), a composite for the team ({u["team"]} faces)')
         ok('Dad' in u['han'] and 'Ms. Han' in u['han'], f'the list has both Dad and Ms. Han ({u["han"]})')
         shot2('phone-runners-list')
         p.eval("document.querySelector('[data-th=team]').click()")
@@ -1733,8 +1739,14 @@ try:
         p.eval("EP.clear()")
         p.eval("""FemcScene.play({scene:[{phone:[{from:'solar',t:'[the two of them] hi',img:'post-r-5-solchan',handle:'sollee',cap:'hi'}],contact:'sollee · new post'},{n:'x'}],place:'Syracuse · Sigma Chi House',time:'Evening'})""")
         step_until("document.querySelectorAll('.gs-msg').length>=1", 20, 0.15)
+        p.wait("(document.querySelector('.gs-post img')?.naturalWidth || 0) > 0")
+        fb = p.eval("({post: !!document.querySelector('.gs-post'), cap: document.querySelector('.gs-post p')?.textContent, handle: document.querySelector('.gs-post-head b')?.textContent})")
+        ok(fb['post'] and fb['cap'] == 'hi' and fb['handle'] == 'sollee', f'the 12/12 post shows Kat\'s picked photo as an image bubble, caption "hi" ({fb})')
+        p.eval("EP.clear()")
+        p.eval("""FemcScene.play({scene:[{phone:[{from:'renjun',t:'[the kitchen] morning',img:'post-r-7-kitchen-mop',handle:'renjun'}],contact:'renjun · new post'},{n:'x'}],place:'Syracuse · Sigma Chi House',time:'Morning'})""")
+        step_until("document.querySelectorAll('.gs-msg').length>=1", 20, 0.15)
         fb = p.eval("({post: !!document.querySelector('.gs-post'), text: document.querySelector('.gs-msg')?.textContent})")
-        ok(not fb['post'] and 'hi' in (fb['text'] or ''), f'the post line without a picture stays a text bubble ({fb})')
+        ok(not fb['post'] and 'morning' in (fb['text'] or ''), f'a post line without a picture stays a text bubble ({fb})')
         p.eval("EP.clear()")
         errs = p.console(); ok(not errs, f'no browser errors in the Runners phone: {errs}')
         for flag, wid in [('route-S', 'strangers'), ('route-H', 'hoax'), ({}, 'stay')]:
@@ -1752,6 +1764,103 @@ try:
             ok(w['world'] == wid and w['tabs'] == 2 and w['n'] >= 3 and c['card'], f'{wid}: its phone theme, Contacts ({w["n"]} on the first day) and a card')
             shot2(f'phone-{wid}-card')
             errs = p.console(); ok(not errs, f'no browser errors in the {wid} phone: {errs}')
+
+    def shot3(name, prep=None):
+        for tag, w, h in [('desktop', 1440, 900), ('phone', 390, 844)]:
+            size(w, h, tag == 'phone')
+            if prep:
+                p.eval('new Promise(r=>setTimeout(r,200))'); p.eval(prep)
+            p.eval('document.fonts.ready.then(()=>new Promise(r=>setTimeout(r,450)))')
+            (OUT / f'{name}-{tag}.png').write_bytes(base64.b64decode(p.ws.call('Page.captureScreenshot', {'format': 'png'})['data']))
+        size(1000, 486)
+
+    if 'alerts' in ONLY:
+        p.goto('femc-game.html?debug=1'); p.eval(HELPERS); size(1000, 486)
+        enter('route-R')
+        d = p.eval(r"""(() => { const R = FEMC_EPI_WORLDS.runners, A = R.alerts || [], ev = Object.fromEntries(R.events.map(e => [e.id, e])), bad = [];
+          A.forEach(a => { if (!['sunews', 'suanon'].includes(a.from) || !a.t) bad.push(a.id + ': from/t');
+            (a.after || []).forEach(id => { if (!ev[id]) bad.push(a.id + ': no event ' + id); else if (ev[id].flag) bad.push(a.id + ': route-only ' + id); });
+            if (!(a.after || []).length) bad.push(a.id + ': no gate'); if (a.img && !/^post-r-\d+-/.test(a.img)) bad.push(a.id + ': img ' + a.img); });
+          return { n: A.length, uniq: new Set(A.map(a => a.id)).size, bad, due: !!FemcEpilogue.alertDue() }; })()""")
+        ok(6 <= d['n'] <= 10 and d['uniq'] == d['n'] and not d['bad'], f'Runners alerts: {d["n"]} alerts, ids unique, every gate an event every route plays {d["bad"]}')
+        ok(not d['due'], 'none is due on the first morning (nothing has happened yet)')
+        snap = "JSON.stringify([FemcGame.S.flags, FemcGame.S.epi.bonds, FemcGame.S.stats, FemcGame.S.day, FemcGame.S.slot, FemcGame.S.events, FemcGame.S.yen])"
+        # 12/2 After Class, after the kitchen scene: the first alert drops in on the Go Out screen.
+        p.eval("(()=>{const G=FemcGame,s=G.S;s.day=G.dayOf('12/2');s.slot='after';['epi-r-home','epi-r-five-days','epi-r-pale','epi-r-cover'].forEach(id=>s.events.includes(id)||s.events.push(id));G.save();EP.clear();FemcGameUI.run()})()")
+        time.sleep(0.3)
+        step_until("!document.querySelector('.gs:not(.out), .g-datecard, .g-actcard:not(.out)')", 60, 0.1)
+        scr = p.eval("EP.screen()")
+        before = p.eval(snap)
+        p.wait("!!document.querySelector('.g-news')", 6)
+        a1 = p.eval("({id: document.querySelector('.g-news').dataset.news, name: document.querySelector('.g-news .g-bn-top b').textContent, pic: document.querySelector('.g-news .g-bn-pic img')?.src || '', seen: FemcGame.S.epi.alerts, day: FemcGame.S.epi.alertDay === FemcGame.S.day, calm: document.querySelector('.g-news').classList.contains('calm')})")
+        ok(scr != 'scene' and a1['id'] == 'epi-r-al-back' and a1['name'] == 'SUnews' and 'avatars/runners/sunews.webp' in a1['pic'] and a1['seen'] == ['epi-r-al-back'] and a1['day'] and not a1['calm'],
+           f'the first alert drops in between scenes as an SUnews banner with its picture, noted once ({a1})')
+        ok(p.eval(snap) == before, 'an alert changes nothing in the story (flags, closeness, stats, day, events, money)')
+        shot3('alert-text')
+        # Once a day: the next one is due (12/1's five days) but waits for tomorrow.
+        p.eval("EP.clear(); document.querySelectorAll('.g-news').forEach(x=>x.remove()); FemcGameUI.run()")
+        time.sleep(1.4)
+        ok(p.eval("!document.querySelector('.g-news') && FemcGame.S.epi.alerts.length===1"), 'at most one alert a day')
+        # Never over a scene: a scene is up when it would show, so it waits.
+        p.eval("(()=>{const s=FemcGame.S;s.day=FemcGame.dayOf('12/3');G=FemcGame;G.save();EP.clear();FemcEpilogue.newsTick();FemcScene.play({scene:[{n:'A line.'},{n:'Another.'}],place:'Syracuse · The Quad',time:'Morning'})})()")
+        time.sleep(1.4)
+        ok(p.eval("!document.querySelector('.g-news') && FemcGame.S.epi.alerts.length===1"), 'never over a scene: it waits for the next screen')
+        p.eval("EP.clear()")
+        # A post with its picture gets the thumbnail; reduced motion has no slide; a tap opens the phone.
+        p.ws.call('Emulation.setEmulatedMedia', {'features': [{'name': 'prefers-reduced-motion', 'value': 'reduce'}]})
+        p.eval("(()=>{const G=FemcGame,s=G.S;s.day=G.dayOf('12/6');s.slot='late';s.epi.alerts=['epi-r-al-back','epi-r-al-regionals'];['epi-r-friday'].forEach(id=>s.events.includes(id)||s.events.push(id));G.save();EP.clear();FemcEpilogue.newsTick()})()")
+        p.wait("!!document.querySelector('.g-news')", 6)
+        a2 = p.eval("({id: document.querySelector('.g-news').dataset.news, thumb: document.querySelector('.g-news .g-news-thumb')?.src || '', calm: document.querySelector('.g-news').classList.contains('calm')})")
+        ok(a2['id'] == 'epi-r-al-opener' and 'posts/post-r-3-stairs-sign.webp' in a2['thumb'] and a2['calm'], f'a post alert shows the post’s thumbnail; reduced motion: no slide ({a2})')
+        p.wait("(document.querySelector('.g-news .g-news-thumb')?.naturalWidth || 0) > 0", 6)
+        shot3('alert-thumb')
+        p.eval("document.querySelector('.g-news').click()")
+        p.wait("!!document.querySelector('.g-phone-ov')", 6)
+        ok(True, 'a tap on the alert opens the phone')
+        p.ws.call('Emulation.setEmulatedMedia', {'features': []})
+        p.eval("document.querySelectorAll('.g-overlay').forEach(x=>x.remove())")
+        # A post alert whose picture isn't in yet is text only.
+        p.eval("(()=>{const G=FemcGame,s=G.S;s.day=G.dayOf('12/7');s.epi.alerts=['epi-r-al-back'];G.save();EP.clear();document.querySelectorAll('.g-news').forEach(x=>x.remove());FemcEpilogue.newsTick()})()")
+        p.wait("!!document.querySelector('.g-news')", 6)
+        a3 = p.eval("({id: document.querySelector('.g-news').dataset.news, thumb: !!document.querySelector('.g-news .g-news-thumb')})")
+        ok(a3['id'] == 'epi-r-al-regionals' and not a3['thumb'], f'no picture yet: text only ({a3})')
+        errs = p.console(); ok(not errs, f'no browser errors in the alerts: {errs}')
+
+    if 'album' in ONLY:
+        p.goto('femc-game.html?debug=1'); p.eval(HELPERS); size(1000, 486)
+        enter('route-R')
+        p.eval("EP.clear()")
+        al = p.eval("(()=>{const e=FemcMenu.albumData().epi;const po=e.filter(c=>c.kind==='post');return {posts:po.map(c=>[c.id,c.on]),cg:e.filter(c=>c.kind==='cg').length,ready:FEMC_POSTS.filter(x=>x.startsWith('post-r-'))}})()")
+        ok([x[0] for x in al['posts']] == al['ready'] and len(al['ready']) >= 6 and not any(x[1] for x in al['posts']) and al['cg'] >= 9,
+           f'the Runners page: a post tile per picture that exists ({len(al["ready"])}), none for posts without one, all locked at first; the CGs beside them ({al["cg"]})')
+        # A replay doesn't count; a live narration post and a live phone post do.
+        p.eval("FemcScene.play({scene:[{n:'Her phone lit.',img:'post-r-10-holiday-toast',handle:'@SUnews',cap:'happy holidays'},{n:'x'}],place:'Syracuse',time:'Morning',replay:true})")
+        step_until("!document.querySelector('.gs:not(.out)')", 30, 0.1)
+        ok(p.eval("!(FemcGame.S.album?.posts||[]).length"), 'a replay doesn’t unlock a post')
+        p.eval("FemcScene.play({scene:[{n:'Her phone lit.',img:'post-r-10-holiday-toast',handle:'@SUnews',cap:'happy holidays'},{n:'x'}],place:'Syracuse',time:'Morning'})")
+        step_until("!document.querySelector('.gs:not(.out)')", 30, 0.1)
+        p.eval("FemcScene.play({scene:[{phone:[{from:'solar',t:'[x] hi',img:'post-r-5-solchan',handle:'sollee',cap:'hi'}],contact:'sollee'},{n:'x'}],place:'Syracuse',time:'Evening'})")
+        step_until("!document.querySelector('.gs:not(.out)')", 40, 0.12)
+        p.eval("FemcGame.seeCg?.('epi-r-regionals')")
+        got = p.eval("(()=>{const e=FemcMenu.albumData().epi;return {posts:FemcGame.S.album.posts,on:e.filter(c=>c.on).map(c=>c.id),t:e.find(c=>c.id==='post-r-10-holiday-toast')}})()")
+        ok(got['posts'] == ['post-r-10-holiday-toast', 'post-r-5-solchan'] and {'post-r-10-holiday-toast', 'post-r-5-solchan'} <= set(got['on']) and got['t']['title'] == '@SUnews' and 'Posts' in got['t']['kicker'],
+           f'live post lines unlock their tiles (handle and caption from the line) ({got["posts"]})')
+        p.eval("FemcMenu.open('album')")
+        p.wait("!!document.querySelector('.g-al-grid.po')", 10)
+        pg = p.eval("(()=>{const g=document.querySelector('.g-al-grid.po'),t=[...g.querySelectorAll('.g-al-tile')],b=t[0].getBoundingClientRect();return {n:t.length,on:g.querySelectorAll('.g-al-tile:not(.lock)').length,q:[...g.querySelectorAll('.g-al-tile.lock i')].every(i=>i.textContent==='?'&&getComputedStyle(i).visibility==='visible'),ratio:b.width/b.height,head:g.closest('.g-al-sec').querySelector('h3').textContent}})()")
+        ok(pg['n'] == len(al['ready']) and pg['on'] == 2 and pg['q'] and abs(pg['ratio'] - 0.8) < 0.05, f'the album page: 4:5 post tiles, two open, "?" on the rest ({pg})')
+        shot3('album-runners-posts', "document.querySelector('.g-al-grid.po').closest('.g-al-sec').scrollIntoView({block:'start'})")
+        p.eval("document.querySelector('.g-al-grid.po .g-al-tile:not(.lock)').click()")
+        p.wait("!!document.querySelector('.g-av-img.sq')", 6)
+        v = p.eval("({src: document.querySelector('.g-av-img').src, kicker: document.querySelector('.g-av-cap .g-kicker').textContent})")
+        ok('art/posts/' in v['src'] and 'Posts' in v['kicker'], f'a post tile opens the viewer ({v["kicker"]})')
+        p.wait("(document.querySelector('.g-av-img')?.naturalWidth || 0) > 0", 6)
+        shot3('album-runners-viewer')
+        p.eval("document.querySelectorAll('.g-overlay').forEach(x=>x.remove())")
+        # Leaving keeps them in the year's album; New Game+ (albumCarry) carries them; a CG never mixes into the posts.
+        lv = p.eval("(()=>{FemcEpilogue.leave();const a=FemcGame.S.album;const c=FemcMenu.albumCarry();return {posts:a.posts,carry:c.posts,cgHasPost:c.cg.some(x=>/^post-/.test(x))}})()")
+        ok(lv['posts'] == ['post-r-10-holiday-toast', 'post-r-5-solchan'] and lv['carry'] == lv['posts'] and not lv['cgHasPost'], f'leaving keeps the posts in the year’s album; New Game+ carries them ({lv})')
+        errs = p.console(); ok(not errs, f'no browser errors in the album: {errs}')
 
     if 'shots' in ONLY:
         p.goto('femc-game.html'); p.eval(HELPERS)

@@ -665,7 +665,7 @@
             { s: 'haechan', f: 'happy', t: "Your caption, princess. Not mine. I'd make it weird." },
             { n: "She typed one word. *hi.* Lowercase. She looked at it for a full five seconds, which was four and a half seconds longer than she'd ever looked at anything before posting it, and then she posted it, standing in the front hall of Sigma Chi with the bass coming up through the floor." },
             // The post itself on her screen (Nov 3 2026, Kat: the phone and the post should come up). Picture: FEMC-RUNNERS-POSTS 5.
-            { phone: [{ from: 'solar', t: '[the two of them, close, warm low light] hi', img: 'post-r-5-solchan', handle: 'sollee', cap: 'hi' }], contact: 'sollee · new post' },
+            { phone: [{ from: 'solar', t: '[a mirror selfie: he kisses her cheek, she smiles into the lens] hi', img: 'post-r-5-solchan', handle: 'sollee', cap: 'hi' }], contact: 'sollee · new post' },
             { n: "She put the phone in her pocket, and didn't look at it again." },
             { n: "On the stairs, three steps up, a phone lit in a cream sweater's hand. Danielle looked at the screen. Then she looked up, across the hall, straight at Solar, and something moved behind her eyes, a chart being updated, a draft being deleted, a whole caption she'd been saving folded in half and put away. She didn't smile. That was how Solar knew it had worked." },
             { s: 'haechan', f: 'neutral', t: "...Somebody's going to send that to your brother before midnight." },
@@ -964,7 +964,7 @@
           { n: "She zoomed in on the window. The snow was just snow, motion-blurred, falling. She zoomed out. She put the phone face down on the island next to Hyein's sleeping head and made coffee and didn't pick it up again till the coffee was done." }
         ] },
         { t: "(Swipe past. It's just Jeno.)", then: [
-          { n: "She swiped past. It was just Jeno. Jeno's next story was a video of Jaemin asleep on the stairs with a traffic cone, captioned *the house lives on,* and she laughed out loud in the empty kitchen, and Hyein woke up and said *what* and went straight back to sleep.", img: 'post-r-8-stairs-cone', handle: 'jen0l33', cap: 'the house lives on' }
+          { n: "She swiped past. It was just Jeno. Jeno's next story was a photo of Jaemin passed out face-up on the Sigma couch, one arm flung over his head, his phone still in his hand, captioned *the house lives on,* and she laughed out loud in the empty kitchen, and Hyein woke up and said *what* and went straight back to sleep.", img: 'post-r-8-stairs-cone', handle: 'jen0l33', cap: 'the house lives on' }
         ] }
       ] }
     ] }

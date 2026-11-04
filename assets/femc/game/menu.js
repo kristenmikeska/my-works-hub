@@ -412,7 +412,7 @@ window.FemcMenu = (() => {
     (S().fragments || []).forEach(f => { if (D0.memories.some(m => m.id === f) && !b.memories.includes(f)) { b.memories.push(f); b.pts += D0.progression.memoryPoints; changed = true; } });
     // Finished epilogue worlds open Haenim's epilogue branches (engine.js epiDone; the battle save keeps them through New Game+).
     const epis = new Set(b.epis || []);
-    [S().epilogues, S().year1 && S().year1.epilogues].forEach(r => Object.entries(r || {}).forEach(([w, x]) => { if (x && x.done) epis.add(w); }));
+    [S().epilogues, S().year1 && S().year1.epilogues, S().album && S().album.epi].forEach(r => Object.entries(r || {}).forEach(([w, x]) => { if (x && x.done) epis.add(w); }));
     if (epis.size !== (b.epis || []).length) { b.epis = [...epis]; changed = true; }
     b.ranks = b.ranks || {};
     D0.party.forEach(m => { if (m.id === 'solar' || !G.LINKS[m.id]) return; const r = Math.min(10, rankOf(m.id)); if ((b.ranks[m.id] || 0) !== r) { b.ranks[m.id] = r; changed = true; } });
@@ -868,7 +868,9 @@ window.FemcMenu = (() => {
      page (the CGs the year saw, kept in year1.album when she went in, plus the memory cards) and the Theater only the world
      she's in; back in the year everything is as before. Either way the album gains a page per epilogue entered (its CGs,
      locked until seen: epilogue.js albumEntries) and the Theater an Epilogue tab (epilogue.js theaterRows / replay). A save
-     that never went into an epilogue sees none of it. */
+     that never went into an epilogue sees none of it. The Runners page also has a Posts row (Nov 3 2026): every post picture
+     that exists (art/posts/index.js), unlocked once its line played in a live scene (S.album.posts, ui.js seePost; leave()
+     and albumCarry keep them), 4:5 tiles (.g-al-grid.po), "?" while locked; a post with no picture yet has no tile. */
   const inEpi = () => !!S().epi;
   const EXTRA_TABS = ['album', 'theater']; // the Wardrobe opens in the Dark Hour menu too (Kat, 2026-10-27); looks apply from the next fight
   const albumOf = () => S().album || {};
@@ -1004,7 +1006,8 @@ window.FemcMenu = (() => {
     const have = new Set([...(a.frags || []), ...s.fragments]);
     const frags = (G.D.battle.memories || []).map(m => ({ kind: 'mem', id: m.id, group: m.world, on: have.has(m.id), img: G.base + m.img, big: G.base + (m.wide || m.img), kicker: `${m.world} · memory fragment`, title: m.title, text: m.text }));
     const yAl = (s.year1 && s.year1.album) || {}, seen = new Set([...(a.cg || []), ...(yAl.cg || [])]);
-    const epi = EPI() ? EPI().albumEntries(seen) : [];
+    const posts = new Set([...(a.posts || []), ...(yAl.posts || [])]); // the epilogue's post lines (Nov 3 2026)
+    const epi = EPI() ? EPI().albumEntries(seen, posts) : [];
     if (inEpi()) {
       const cgs = uniq((yAl.cg || []).filter(id => !/^epi-/.test(id))).map(id => ({ kind: 'cg', id, group: cgGroup(id), on: true, img: `${G.base}assets/femc/cg/${id}.webp`, kicker: 'Iwatodai', title: '' }));
       return { cgs, frags, epi };
@@ -1034,7 +1037,8 @@ window.FemcMenu = (() => {
     Object.entries(s.links || {}).forEach(([k, p]) => { if ((p.seen || []).length) ranks[k] = uniq([...(ranks[k] || []), ...p.seen]); });
     const { cgs, epi } = albumData();
     const recs = { ...(a.epi || {}), ...(s.epilogues || {}) }; // the epilogues' Theater records (batch 9)
-    return { v: ALB_V, cg: uniq([...cgs.filter(c => c.on).map(c => c.id), ...epi.filter(c => c.on).map(c => c.id), ...(a.cg || []).filter(id => /^epi-/.test(id))]),
+    return { v: ALB_V, cg: uniq([...cgs.filter(c => c.on).map(c => c.id), ...epi.filter(c => c.on && c.kind === 'cg').map(c => c.id), ...(a.cg || []).filter(id => /^epi-/.test(id))]),
+      ...((a.posts || []).length ? { posts: uniq(a.posts) } : {}),
       frags: uniq([...(a.frags || []), ...s.fragments]), events: uniq([...(a.events || []), ...s.events.filter(id => id !== END_ID)]),
       doors: uniq([...(a.doors || []), ...(s.route.doorsSeen || [])]), ranks, ...((a.booth || []).length ? { booth: a.booth.map(r => JSON.parse(JSON.stringify(r))) } : {}), prologue: !!a.prologue || !!(s.started && s.day > 0), ...(Object.keys(recs).length ? { epi: recs } : {}) };
   }
@@ -1047,11 +1051,11 @@ window.FemcMenu = (() => {
     const tile = (c, sq) => (c.on
       ? `<button type="button" class="g-al-tile" data-al="${k++}" aria-label="${esc([c.kicker, c.title].filter(Boolean).join(' · '))}"${sq ? ` style="--w:var(--w-${esc(c.group.toLowerCase())})"` : ''}><img src="${esc(c.img)}" alt="" loading="lazy" decoding="async"><span class="g-al-cap">${esc(c.title || c.kicker)}</span></button>`
       : `<div class="g-al-tile lock" aria-hidden="true"${sq ? ` style="--w:var(--w-${esc(c.group.toLowerCase())})"` : ''}><i>?</i></div>`);
-    const sec = (name, list, sq) => (list.length ? `<section class="g-al-sec"><h3>${esc(name)} <small>${n(list)} / ${list.length}</small></h3><div class="g-al-grid${sq ? ' sq' : ''}">${list.map(c => tile(c, sq)).join('')}</div></section>` : '');
+    const sec = (name, list, sq, po) => (list.length ? `<section class="g-al-sec${po ? ' g-al-posts' : ''}"><h3>${esc(name)} <small>${n(list)} / ${list.length}</small></h3><div class="g-al-grid${sq ? ' sq' : ''}${po ? ' po' : ''}">${list.map(c => tile(c, sq)).join('')}</div></section>` : '');
     return `<div class="g-al"><p class="g-al-sum"><span class="g-chip">Event CGs · ${n(cgs)}${inEpi() ? '' : ` / ${cgs.length}`}</span>${epi.length ? `<span class="g-chip">Epilogue · ${n(epi)} / ${epi.length}</span>` : ''}<span class="g-chip">Memory cards · ${n(frags)} / ${frags.length}</span></p>
       ${n(cgs) + n(frags) + n(epi) ? '' : '<p class="g-note">Nothing here yet. Scenes and memories she lives through will be kept here.</p>'}
       ${CG_GROUPS.map(([g, name]) => sec(yr + name, cgs.filter(c => c.group === g))).join('')}
-      ${epiGroups(epi).map(([g, name]) => sec(name, epi.filter(c => c.group === g))).join('')}
+      ${epiGroups(epi).map(([g, name]) => sec(name, epi.filter(c => c.group === g), false, /-posts$/.test(g))).join('')}
       ${WORLDS.map(([w, name]) => sec(`Memory cards · ${name}`, frags.filter(c => c.group === w), true)).join('')}
       ${window.FemcBooth ? window.FemcBooth.albumSection(esc) : ''}</div>`;
   }
@@ -1082,7 +1086,7 @@ window.FemcMenu = (() => {
       img.classList.remove('in', 'from-l', 'from-r');
       img.alt = [c.title, c.kicker].filter(Boolean).join(' · ');
       img.src = c.big || c.img;
-      img.classList.toggle('sq', c.kind === 'mem' && !c.big.endsWith('-wide.webp'));
+      img.classList.toggle('sq', (c.kind === 'mem' && !c.big.endsWith('-wide.webp')) || c.kind === 'post'); // posts are 4:5
       void img.offsetWidth; // restart the zoom
       img.classList.add('in'); if (dir) img.classList.add(dir > 0 ? 'from-r' : 'from-l');
       box.querySelector('.g-av-cap .g-kicker').textContent = c.kicker || '';

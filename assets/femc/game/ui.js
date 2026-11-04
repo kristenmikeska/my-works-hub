@@ -213,6 +213,34 @@
     setTimeout(() => { el.classList.add('out'); setTimeout(() => el.remove(), 300); }, 4600 + i * 220);
   }
 
+  /* SUnews / SUanon alerts in an epilogue (Nov 3 2026; epilogue.js newsTick decides when, data/epi/runners/alerts.js what):
+     a lock-screen banner like a text's, the account's picture, its name, the line and the post's thumbnail when its picture
+     exists (art/posts/index.js). Tap / Enter opens the phone. Reduced motion: no slide (.calm). Returns false if it can't show. */
+  const NEWS = { sunews: 'SUnews', suanon: 'SUanon' };
+  function newsAlert(a) {
+    if (!a || !a.t) return false;
+    const name = NEWS[a.from] || a.from || 'SUnews', thumb = a.img && (window.FEMC_POSTS || []).includes(a.img);
+    const el = document.createElement('div');
+    el.className = `g-banner g-news${thumb ? ' has-thumb' : ''}${reduced.matches ? ' calm' : ''}`;
+    el.setAttribute('role', 'button'); el.tabIndex = 0; el.dataset.news = a.id;
+    const pic = avatarUrl(a.from) ? `<img class="g-av-own" src="${avatarUrl(a.from)}" alt="">` : `<span class="g-news-anon" aria-hidden="true">?</span>`;
+    el.innerHTML = `<i class="g-bn-pic">${pic}</i><span class="g-bn-body"><span class="g-bn-top"><b>${esc(name)}</b><small>now</small></span><span class="g-bn-msg">${esc(a.t)}</span></span>`
+      + (thumb ? `<img class="g-news-thumb" src="${G.base}assets/femc/game/art/posts/${a.img}.webp?v=${window.FEMC_POSTS_V || 1}" alt="">` : '');
+    el.setAttribute('aria-label', `${name}: ${a.t}. Open the phone.`);
+    const go = () => {
+      if (el.classList.contains('out')) return;
+      el.classList.add('out'); setTimeout(() => el.remove(), 260);
+      if (document.querySelector('.gs:not(.out), .g-dh')) return;
+      document.querySelectorAll('.g-phone-ov:not(.out) [data-close]').forEach(b => b.click());
+      openPhone();
+    };
+    el.addEventListener('click', go);
+    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); go(); } });
+    bannerBox.prepend(el); phoneSfx('notify');
+    setTimeout(() => { el.classList.add('out'); setTimeout(() => el.remove(), 300); }, 6200);
+    return true;
+  }
+
   /* ── Social stat level-up (P5R's rank-up, with Solar's sun instead of a star). Waits until no scene, date card or rank card
      is up, so it lands between beats, never under them. Click / Enter / Space / Esc (or a pad's A / B) to go on; it also
      moves on by itself. ── */
@@ -264,7 +292,9 @@
     dateLabel: G.dateLabel, setDate: G.setDate, moodFor: G.moodFor, applyChoice: G.applyChoice, lacking: G.lacking, flag: G.flag,
     branch: G.branch, effect: G.effect, tarot: G.tarot, actCard, phoneSfx,
     // The Memories album (menu.js): every CG a live scene shows is kept in S.album.cg (a replay never calls this).
-    seeCg: id => { const a = S().album ||= { v: 1 }; const list = a.cg ||= []; if (id && !list.includes(id)) { list.push(id); G.saveQuiet(); } }
+    seeCg: id => { const a = S().album ||= { v: 1 }; const list = a.cg ||= []; if (id && !list.includes(id)) { list.push(id); G.saveQuiet(); } },
+    // …and every post line ({ img: 'post-…' }) in S.album.posts, picture or not yet (Nov 3 2026: the album's Runners posts).
+    seePost: id => { const a = S().album ||= { v: 1 }; const list = a.posts ||= []; if (id && !list.includes(id)) { list.push(id); G.saveQuiet(); } }
   });
   SC.init(bridge);
 
@@ -2338,7 +2368,7 @@
 
   /* ── Start ── */
   window.FemcGameUI = { run, openStatus, openPhone, openSaves, sfxLog: () => sfxLog.slice(), SUN, openSettings, playLink, goOut, evening: () => evening(G.dayInfo()), dateCard, advance, overlay, esc, inBattle: () => !!dh,
-    segment, setBg, show, paintHud, endScreen, phoneSfx, battleCard, CREDITS_STILLS };
+    segment, setBg, show, paintHud, endScreen, phoneSfx, battleCard, CREDITS_STILLS, newsAlert };
   // An old battle tab coming back (?from=battle): its result was taken into the save on load (core.js); carry on.
   const fromBattle = /[?&]from=battle\b/.test(location.search);
   if (fromBattle) history.replaceState(null, '', location.pathname);

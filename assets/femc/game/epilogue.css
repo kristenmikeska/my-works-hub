@@ -154,3 +154,13 @@
 .gs-msg .gs-from { display: flex; align-items: baseline; gap: 5px; margin-bottom: 2px; color: #b0185e; font: 700 11.5px/1.2 -apple-system, "Helvetica Neue", sans-serif; }
 .gs-msg .gs-from small { color: #8a7080; font-weight: 500; font-size: 10.5px; }
 .gs-msg.gs-notice { align-self: center; max-width: 90%; padding: 2px 8px; background: none; color: #8a7080; font-size: 12px; text-align: center; }
+
+/* SUnews / SUanon alerts (Nov 3 2026; ui.js newsAlert): a text banner with the post's thumbnail on the right. */
+.g-banner.g-news.has-thumb { grid-template-columns: 42px minmax(0, 1fr) 46px; }
+.g-news-thumb { width: 46px; height: 58px; object-fit: cover; border-radius: 8px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ff4f9e; }
+.g-news-anon { display: grid; place-items: center; width: 100%; height: 100%; background: #14070f; color: #ff4f9e; font: italic 900 22px/1 var(--cond); }
+/* The album's Runners posts (menu.js albumHtml, epilogue.js postEntries): 4:5 tiles, "?" while locked. */
+.g-al-grid.po { grid-template-columns: repeat(auto-fill, minmax(min(30%, 150px), 1fr)); }
+.g-al-grid.po .g-al-tile { aspect-ratio: 4 / 5; }
+.g-al-grid.po .g-al-tile.lock { background: url('art/album-locked-sq.webp') center / cover no-repeat, #10050c; }
+.g-al-grid.po .g-al-tile.lock i { visibility: visible; position: relative; z-index: 2; color: rgba(255, 140, 192, .8); }

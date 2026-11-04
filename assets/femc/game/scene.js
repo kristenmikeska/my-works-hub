@@ -18,7 +18,8 @@
      post pictures: a text ({ from, t, img, handle, cap }) or a narration line ({ n, img, handle, cap }) may name a picture
        'post-r-<n>-<slug>' (art/posts/index.js FEMC_POSTS lists the ones that exist, tools/femc-posts.py writes it). Ready: the
        text becomes an image bubble (handle, picture, caption: cap, else the text without its leading [description]); the
-       narration gets a small phone-screen card over the scene. Not ready: the line exactly as written.
+       narration gets a small phone-screen card over the scene. Not ready: the line exactly as written. Either way a live
+       scene reports the id through G.seePost(id) (S.album.posts, the album's Runners posts).
      { stat } { yen } { flag } { tally } { fragment } { register } { join } { unlock } { setDate }   effects (via the game)
      { ifRank } { ifStat } { ifFlag } { ifMet } { ifRoute } { ifRomance } -> then / else
      { ifCrush: { id: [phases] } } { ifCrushed: { id: 'phase' } } -> then / else; { crush: { id: 'in' | 'out' | n } } an effect (core.js crushes)
@@ -446,6 +447,7 @@ window.FemcScene = (() => {
           if (!el.isConnected) return;
           const post = postReady(m.img);
           const p = document.createElement(post ? 'div' : 'p');
+          if (m.img && !replay) G.seePost?.(m.img);
           p.className = `gs-msg ${me ? 'me' : 'them'}${post ? ' gs-post' : ''}${reduced.matches ? '' : ' in'}`;
           if (post) {
             p.innerHTML = postHtml('gs-post', m.img, m.handle || G.name(m.from), m.cap ?? text.replace(/^\s*\[[^\]]*\]\s*/, ''));
@@ -568,6 +570,7 @@ window.FemcScene = (() => {
         if (postReady(line.img)) {
           postCard = document.createElement('div');
           postCard.className = 'gs-postcard';
+        if (line.img && !replay) G.seePost?.(line.img);
           postCard.innerHTML = postHtml('gs-postcard', line.img, line.handle, line.cap);
           el.appendChild(postCard);
         }

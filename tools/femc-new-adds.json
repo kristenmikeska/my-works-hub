@@ -36269,6 +36269,132 @@
         "assets/femc/game/art/skins/sk-wintercoat/hd/wave.webp": "dd5423923d3a35564a4d597b38039ee288825acbca827a6576b71e51d145c1a0"
       },
       "skin": "sk-wintercoat"
+    },
+    {
+      "batch": 136,
+      "source": "redsolocups-drinking.jpg",
+      "sourceNow": "~/Desktop/Narrative Universe Sites/runners-world/assets/sugram/jenos posts/redsolocups-drinking.jpg",
+      "size": [
+        480,
+        560
+      ],
+      "sha256": "deb0f8a9b44667d34055df501b349b6451e9f489dae17fc118b311a7c97948f5",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/posts/post-r-2-red-party.webp",
+      "conversion": "longest side at most 1080, WebP q82 (the game crops to 4:5)",
+      "placement": "the Runners epilogue post post-r-2-red-party (FEMC-RUNNERS-POSTS.md): an image bubble on the phone or the phone-screen card over the scene; the album's Runners posts",
+      "tool": "python3 tools/femc-posts.py post-r-2-red-party <source>",
+      "outputs": {
+        "assets/femc/game/art/posts/post-r-2-red-party.webp": "eb50a79640fa9aa720c0516bb135d6e8fb8af949b40ce3756e88bfdd9c9de92f"
+      }
+    },
+    {
+      "batch": 136,
+      "source": "welcometotheparty-wallgraffiti.jpg",
+      "sourceNow": "~/Desktop/Narrative Universe Sites/runners-world/assets/sugram/jenos posts/welcometotheparty-wallgraffiti.jpg",
+      "size": [
+        736,
+        981
+      ],
+      "sha256": "15d300c7c29359d58e819bdd0ded9fd41750546f627d8be9c94d2ea4dcfd75da",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/posts/post-r-3-stairs-sign.webp",
+      "conversion": "crop [0, 30, 736, 950] (pixels of the original), then longest side at most 1080, WebP q82 (the game crops to 4:5)",
+      "placement": "the Runners epilogue post post-r-3-stairs-sign (FEMC-RUNNERS-POSTS.md): an image bubble on the phone or the phone-screen card over the scene; the album's Runners posts",
+      "tool": "python3 tools/femc-posts.py post-r-3-stairs-sign <source> --crop 0,30,736,950",
+      "outputs": {
+        "assets/femc/game/art/posts/post-r-3-stairs-sign.webp": "c7a78c0055136a45f871175a8ab15024a34f021dbb3feca7725d0b3a3d49bdb3"
+      }
+    },
+    {
+      "batch": 136,
+      "source": "b16e057c8ef3af150d99b5d7289ba5cd.jpg",
+      "sourceNow": "~/Documents/UniverseHub-Images/Solchan/b16e057c8ef3af150d99b5d7289ba5cd.jpg",
+      "size": [
+        736,
+        1308
+      ],
+      "sha256": "46c4e22d6a3bcedd27ba28be68b91ab5b4da09daac8ba89b7ae59984dd9ba059",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/posts/post-r-5-solchan.webp",
+      "conversion": "crop [0, 120, 736, 1040] (pixels of the original), then longest side at most 1080, WebP q82 (the game crops to 4:5)",
+      "placement": "the Runners epilogue post post-r-5-solchan (FEMC-RUNNERS-POSTS.md): an image bubble on the phone or the phone-screen card over the scene; the album's Runners posts",
+      "tool": "python3 tools/femc-posts.py post-r-5-solchan <source> --crop 0,120,736,1040",
+      "outputs": {
+        "assets/femc/game/art/posts/post-r-5-solchan.webp": "1f873da2aa9bbed9ad61cf2e304ef86783b3760f2bfe5a01b07744bfac27ea6e"
+      }
+    },
+    {
+      "batch": 136,
+      "source": "sigmachi-inside-party-2.jpg",
+      "sourceNow": "~/Desktop/Narrative Universe Sites/runners-world/assets/sugram/jenos posts/sigmachi-inside-party-2.jpg",
+      "size": [
+        900,
+        1200
+      ],
+      "sha256": "91deec025ce0cb16f7685d2821b4f3ce99980c59fb3c095eea257bbd6db5399f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/posts/post-r-6-party-wide.webp",
+      "conversion": "longest side at most 1080, WebP q82 (the game crops to 4:5)",
+      "placement": "the Runners epilogue post post-r-6-party-wide (FEMC-RUNNERS-POSTS.md): an image bubble on the phone or the phone-screen card over the scene; the album's Runners posts",
+      "tool": "python3 tools/femc-posts.py post-r-6-party-wide <source>",
+      "outputs": {
+        "assets/femc/game/art/posts/post-r-6-party-wide.webp": "8dbe93e8c97f7d341442f37f1a85630dfec8d93424e207cd0316f7340531177a"
+      }
+    },
+    {
+      "batch": 136,
+      "source": "jeno-jaeminpassedout.jpg",
+      "sourceNow": "~/Desktop/Narrative Universe Sites/runners-world/assets/sugram/jenos posts/jeno-jaeminpassedout.jpg",
+      "size": [
+        960,
+        1280
+      ],
+      "sha256": "4cae0d5fce17a68c3753cf93cde8e3b82066ddcbf826b170ab738f664876c0fb",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/posts/post-r-8-stairs-cone.webp",
+      "conversion": "crop [70, 230, 910, 1280] (pixels of the original), then longest side at most 1080, WebP q82 (the game crops to 4:5)",
+      "placement": "the Runners epilogue post post-r-8-stairs-cone (FEMC-RUNNERS-POSTS.md): an image bubble on the phone or the phone-screen card over the scene; the album's Runners posts",
+      "tool": "python3 tools/femc-posts.py post-r-8-stairs-cone <source> --crop 70,230,910,1280",
+      "outputs": {
+        "assets/femc/game/art/posts/post-r-8-stairs-cone.webp": "10528c890756ee56a843e2b0c6b3ed3aeb2c493b96a404b61dc9967dfe49c06f"
+      }
+    },
+    {
+      "batch": 136,
+      "source": "ed8add3feaaa6f1e15800384bd9614d7.jpg",
+      "sourceNow": "~/Desktop/Narrative Universe Sites/runners-world/assets/sugram/haechans posts/haechan-carousel-4/ed8add3feaaa6f1e15800384bd9614d7.jpg",
+      "size": [
+        564,
+        564
+      ],
+      "sha256": "a52729f9f67c2a10052fdd903f0232a9f8d7d00d12c97fcce4e07a01c7699116",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/posts/post-r-10-holiday-toast.webp",
+      "conversion": "crop [56, 0, 507, 564] (pixels of the original), then longest side at most 1080, WebP q82 (the game crops to 4:5)",
+      "placement": "the Runners epilogue post post-r-10-holiday-toast (FEMC-RUNNERS-POSTS.md): an image bubble on the phone or the phone-screen card over the scene; the album's Runners posts",
+      "tool": "python3 tools/femc-posts.py post-r-10-holiday-toast <source> --crop 56,0,507,564",
+      "outputs": {
+        "assets/femc/game/art/posts/post-r-10-holiday-toast.webp": "4047d37a3c8f7c9b05519e73f5044aa102172d9c4fe5882567ad6cc6868e3d30"
+      }
+    },
+    {
+      "batch": 136,
+      "source": "alphaphi-christmas-selfie-tree.jpg",
+      "sourceNow": "~/Desktop/Narrative Universe Sites/runners-world/assets/sugram/solars posts/solar-carousel-19/alphaphi-christmas-selfie-tree.jpg",
+      "size": [
+        912,
+        1136
+      ],
+      "sha256": "f43edc6b7855392cd0903bf2515013e874bc083ee1ebd4b624b8ed3d317879a2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/avatars/runners/girls.webp",
+      "conversion": "square crop (76, 200, 836, 960) of the original, 256 px, WebP q84",
+      "placement": "the Runners epilogue phone: the Alpha Phi girls' group chat ('girls') picture in the thread list, banners and contacts (Kat's pick 4e)",
+      "tool": "python3 tools/femc-avatars.py --custom",
+      "outputs": {
+        "assets/femc/game/art/avatars/runners/girls.webp": "702006fbd2c34adbe67cb50b5f8456091c5982d4368acdb34c67abed6abca35b"
+      }
     }
   ],
   "batch1Validation": {
