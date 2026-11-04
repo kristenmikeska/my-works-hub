@@ -501,24 +501,24 @@ window.FemcCosmetics = (() => {
   // The Equipment tab's picture for a fighter's weapon slot (a path from the site root, like a gear's `art`).
   function weaponArt(who) { const x = onIn(`weapon:${who}`); return x ? `${skinDir(x.id)}weapon.webp` : null; }
 
-  /* ── Menu → Wardrobe ── */
+  /* ── Menu → Wardrobe: the fitting room (Nov 4 2026, Kat's mockup mockups/wardrobe/) ──
+     Character tabs (Solar first; she holds every general kind too: weapon, Evoker, battle theme, menu colours, title,
+     wallpaper; the others have Outfits and Weapon), only people Solar has met (or whose looks she owns). Every closet pane
+     is in the page (data-fr-pane="<who>:<kind>"), only the open one shows, so any [data-wd] can be clicked from anywhere
+     (picking it opens its pane). Solar's outfits come in small groups (FR_GROUPS); All / Owned and a sort; outfits whose
+     art isn't in yet fold under "Coming soon". The booth on the left is fitting.js (FemcFitting.mount), with the picked
+     item's name tag and buttons (Strike a pose, View, ▶ Try it on, Equip). Old hooks kept: [data-wd], [data-wd-off],
+     [data-wd-equip], [data-wd-zoom], [data-wd-try], [data-wd-portraits], [data-wd-meter], .g-wd-items, .g-wd-acts,
+     .g-wd-stage(.hd), .g-wd-pv-solar(.hd, data-who, data-hd-pose), .g-wd-pending, .g-wd-hdtag. */
   let view = 'wardrobe', sel = null, fresh = null;
-  /* HD preview (2026-11-04, Kat): a Solar outfit with a high-res pose set (ready.js skins[id].hd / hdv, tools/femc-hd-poses.py)
-     shows its HD arms-crossed pose large in the preview instead of the pose-sheet frame, with a row of the set's other poses
-     to click through (hdPick remembers the pose per look for this session). No set = the pose frame, as before. */
-  const hdPick = {};
+  let frWho = 'solar', frKind = 'skin', frOwn = false, frSort = 'group';
+  // A Solar outfit with a high-res pose set (ready.js skins[id].hd / hdv, tools/femc-hd-poses.py): the booth uses it.
   function hdOf(x) {
     if (!x || x.kind !== 'skin' || x.who !== 'solar' || !ready(x)) return null;
     const R = (readyArt().skins || {})[x.id] || {}, have = (R.hd || []).slice();
     if (!have.length) return null;
     const first = have.includes('arms-crossed') ? 'arms-crossed' : have[0];
-    const pick = have.includes(hdPick[x.id]) ? hdPick[x.id] : first;
-    return { have: [first, ...have.filter(k => k !== first)], pick, src: k => `${G.base}${skinDir(x.id)}hd/${k}.webp?v=${R.hdv || 1}` };
-  }
-  const poseName = k => String(k).replace(/-/g, ' ').replace(/^./, c => c.toUpperCase());
-  function hdRow(x) {
-    const h = hdOf(x); if (!h || h.have.length < 2) return '';
-    return `<div class="g-wd-hdrow" role="group" aria-label="HD poses">${h.have.map(k => `<button type="button" class="g-wd-hdp${k === h.pick ? ' on' : ''}" data-wd-hd="${esc(k)}" data-src="${esc(h.src(k))}" aria-pressed="${k === h.pick}" title="${esc(poseName(k))}"><img src="${esc(h.src(k))}" alt="${esc(poseName(k))}" loading="lazy" decoding="async"></button>`).join('')}</div>`;
+    return { have: [first, ...have.filter(k => k !== first)], pick: first, src: k => `${G.base}${skinDir(x.id)}hd/${k}.webp?v=${R.hdv || 1}` };
   }
   /* The collection meter (2026-11-04): outfits owned of those in the Wardrobe with art in (every fighter's; retired and
      not-yet-met ones left out), and how many of Solar's art-ready outfits have an HD pose set. */
@@ -532,54 +532,100 @@ window.FemcCosmetics = (() => {
     return `<div class="g-wd-meters">${m('own', 'Outfits', own, outfits.length, 'owned')}${m('hd', 'HD poses', hd, solar.length, 'Solar outfits')}</div>`;
   }
   const starsHtml = r => `<span class="g-ga-stars" style="--rc:${RAR[r].color}" aria-label="${RAR[r].name}">${'★'.repeat({ R: 2, SR: 3, UR: 4 }[r])}</span>`;
-  const DEFAULT_POSE = 'assets/femc/battle/art/poses/solar-pose-0.webp';
   const EVOKER = 'assets/femc/battle/art/summon/evoker-prop.webp';
   function thumb(x) {
-    if (x.kind === 'skin') return ready(x) ? `<img src="${G.base}${skinDir(x.id)}${x.who}-pose-0.webp?v=${SKIN_V}" alt="">` : `<span class="g-wd-ico">👗</span>`;
-    if (x.kind === 'weapon') return ready(x) ? `<img src="${G.base}${skinDir(x.id)}weapon.webp" alt="">` : `<span class="g-wd-ico">⚔</span>`;
-    if (x.kind === 'evoker') return `<img src="${G.base}${EVOKER}" alt="" style="filter:${x.filter}">`;
+    if (x.kind === 'skin') return ready(x) ? `<img src="${G.base}${skinDir(x.id)}${x.who}-pose-0.webp?v=${SKIN_V}" alt="" loading="lazy">` : `<span class="g-wd-ico">👗</span>`;
+    if (x.kind === 'weapon') return ready(x) ? `<img src="${G.base}${skinDir(x.id)}weapon.webp" alt="" loading="lazy">` : `<span class="g-wd-ico">⚔</span>`;
+    if (x.kind === 'evoker') return `<img src="${G.base}${EVOKER}" alt="" style="filter:${x.filter}" loading="lazy">`;
     if (x.kind === 'wallpaper') return `<span class="g-wd-sw" style="background:${wallCss(x)}"></span>`;
     if (x.kind === 'title') return `<span class="g-wd-sw" style="background:linear-gradient(110deg, ${x.title[1]} 0 42%, ${x.title[0]} 42%)"></span>`;
     const v = PAL[x.pal]; return `<span class="g-wd-sw" style="background:linear-gradient(135deg, ${v[3]} 0 30%, ${v[0]} 30% 60%, ${v[1]} 60% 80%, ${v[2]} 80%)"></span>`;
   }
-  // The big preview: the wallpaper (selected or worn), Solar in her outfit, and the item itself.
-  function preview(x) {
-    const wall = x && x.kind === 'wallpaper' ? x : onIn('wallpaper');
-    const who = (x && x.who) || 'solar', skin = x && x.kind === 'skin' ? x : onIn(`skin:${who}`);
-    const pose = who === 'solar' && !(skin && ready(skin)) ? `${G.base}${DEFAULT_POSE}` : posePath(who, skin);
-    const pal = x && (x.kind === 'uitheme' || x.kind === 'battleui') ? x.pal : (onIn('uitheme') || {}).pal;
-    const evk = x && x.kind === 'evoker' ? x : onIn('evoker');
-    let extra = '';
-    if (x && x.kind === 'title') extra = `<span class="g-wd-pv-title" style="--a:${x.title[0]};--b:${x.title[1]}"><img src="${G.base}assets/femc/title/keyart.webp" alt="" style="${x.titleFilter ? `filter:${x.titleFilter}` : ''}"><b>Solstice</b></span>`;
-    else if (x && x.kind === 'weapon') extra = ready(x) ? `<img class="g-wd-pv-wpn" src="${G.base}${skinDir(x.id)}weapon.webp" alt="">` : '';
-    else if (x && x.kind === 'battleui') extra = `<span class="g-wd-pv-hud" style="${varsCss(x.pal)}"><i style="--w:80%"></i><i class="sp" style="--w:55%"></i><b>Attack</b><b>Skill</b><b>Guard</b></span>`;
-    const pending = x && x.art && !ready(x), hd = hdOf(x);
-    return `<div class="g-wd-stage${hd ? ' hd' : ''}"${wall ? ` style="--wall:${esc(wallCss(wall))}"` : ''} data-pv="${x ? x.id : ''}">
-      <img class="g-wd-pv-solar${pending && x.kind === 'skin' ? ' pending' : ''}${hd ? ' hd' : ''}" src="${hd ? hd.src(hd.pick) : pose}" alt="" data-who="${who}"${hd ? ` data-hd-pose="${esc(hd.pick)}" decoding="async"` : ''}>
-      ${evk ? `<img class="g-wd-pv-evk" src="${G.base}${EVOKER}" alt="" style="filter:${evk.filter}">` : ''}
-      ${extra}${pal ? `<span class="g-wd-pv-pal" style="${varsCss(pal)}"><i></i><i></i><i></i></span>` : ''}
-      ${pending ? '<span class="g-wd-pending">Art coming</span>' : ''}</div>`;
+  // Solar's outfits in small groups, first match wins (Kat can rename or move any of these).
+  const FR_GROUPS = [
+    ['Couple sets', x => !!x.couple],
+    ['Summer', x => /swim|yukata|summersession/.test(x.id)],
+    ['Seasons & festivals', x => /wintercoat|halloween|hanbok/.test(x.id)],
+    ['Stage & spotlight', x => /idol|limelight|y2k|alphaphi|oops|snake|stage/.test(x.id)],
+    ['Arcana & otherworldly', x => /arcana|velvet|phantom|angel/.test(x.id)],
+    ['Everyday', () => true],
+  ];
+  const FR_KINDS = ['skin', 'weapon', 'evoker', 'battleui', 'uitheme', 'title', 'wallpaper'];
+  const FR_TAB = { skin: 'Outfits', weapon: 'Weapon', evoker: 'Evoker', battleui: 'Battle theme', uitheme: 'Menu colours', title: 'Title screen', wallpaper: 'Wallpaper' };
+  const visible = i => !i.retired && (metOk(i) || owns(i.id));
+  const tabOf = x => (x.who || 'solar');
+  const frList = (who, kind) => ITEMS.filter(i => i.kind === kind && tabOf(i) === who && visible(i));
+  const frWhos = () => {
+    const F = window.FemcFitting, order = F ? F.ORDER : ['solar'];
+    const has = new Set(ITEMS.filter(visible).map(tabOf));
+    return ['solar', ...order.filter(w => w !== 'solar' && has.has(w)), ...[...has].filter(w => w !== 'solar' && !order.includes(w))];
+  };
+  const frKinds = who => FR_KINDS.filter(k => frList(who, k).length || (who === 'solar' && k === 'skin'));
+  const RANK_DESC = { UR: 0, SR: 1, R: 2 };
+  function frCard(i) {
+    const own = owns(i.id), rd = ready(i), on = onIn(slotOf(i))?.id === i.id;
+    const st = !rd ? 'Art coming' : on ? 'Wearing' : own ? 'Owned' : i.pool === false ? 'Series reward' : 'Boutique';
+    const tags = (hdOf(i) ? '<i class="g-wd-hdtag" title="HD poses">HD</i>' : '') + (i.couple ? '<i class="g-fr-cptag">Couple</i>' : '');
+    return `<li class="g-fr-li">${own && rd ? `<button type="button" class="g-view-zoom" data-wd-zoom="${i.id}" aria-label="View ${esc(i.name)}" title="View">⤢</button>` : ''}<button type="button" class="g-fr-card${own ? ' own' : ''}${on ? ' on' : ''}${rd ? '' : ' pending'}${sel === i.id ? ' sel' : ''}${own || !rd ? '' : ' locked'}" data-wd="${i.id}" style="--rc:${RAR[i.r].color}">${on ? '<span class="g-fr-wear">Wearing</span>' : ''}${tags}<span class="g-fr-th k-${i.kind}">${thumb(i)}</span><b>${esc(i.name)}</b><small>${starsHtml(i.r)} ${st}</small></button></li>`;
+  }
+  function frDefault(who, kind) {
+    const slot = kind === 'skin' || kind === 'weapon' ? `${kind}:${who}` : kind, worn = onIn(slot);
+    const label = kind === 'skin' ? (who === 'solar' ? 'Her own look' : 'Their own look') : 'Default';
+    const art = kind === 'skin' ? `<img src="${G.base}assets/femc/battle/art/poses/${who}-pose-0.webp" alt="" loading="lazy">` : '<span class="g-wd-ico">○</span>';
+    return `<li class="g-fr-li"><button type="button" class="g-fr-card own${worn ? '' : ' on'}${!sel && frWho === who && frKind === kind ? ' sel' : ''}" data-wd-off="${slot}" style="--rc:#ff4f9e">${worn ? '' : '<span class="g-fr-wear">Wearing</span>'}<span class="g-fr-th k-${kind}">${art}</span><b>${label}</b><small>${worn ? 'Take it off' : 'Always yours'}</small></button></li>`;
+  }
+  function frPane(who, kind) {
+    const all = frList(who, kind), live = all.filter(ready), soon = all.filter(i => !ready(i));
+    const shown = live.filter(i => !frOwn || owns(i.id));
+    const ul = xs => `<ul class="g-fr-cards g-wd-items">${xs}</ul>`;
+    let h = '';
+    if (frSort === 'group' && kind === 'skin' && who === 'solar') {
+      const used = new Set();
+      h = ul(frDefault(who, kind)) + FR_GROUPS.map(([g, test]) => {
+        const xs = shown.filter(i => !used.has(i.id) && test(i)); xs.forEach(i => used.add(i.id));
+        return xs.length ? `<section class="g-fr-group"><h3>${g}<small>${xs.length}</small></h3>${ul(xs.sort((a, b) => RANK_DESC[a.r] - RANK_DESC[b.r]).map(frCard).join(''))}</section>` : '';
+      }).join('');
+    } else {
+      const xs = shown.slice().sort(frSort === 'name' ? (a, b) => a.name.localeCompare(b.name) : (a, b) => RANK_DESC[a.r] - RANK_DESC[b.r] || a.name.localeCompare(b.name));
+      h = ul(frDefault(who, kind) + xs.map(frCard).join(''));
+    }
+    if (!shown.length && frOwn && live.length) h += '<p class="g-fr-empty">Nothing owned here yet. The Boutique has them.</p>';
+    if (soon.length) h += `<details class="g-fr-soon"${soon.some(i => i.id === sel) ? ' open' : ''}><summary>Coming soon (${soon.length})</summary>${ul(soon.map(frCard).join(''))}</details>`;
+    return `<div class="g-fr-pane" data-fr-pane="${who}:${kind}"${who === frWho && kind === frKind ? '' : ' hidden'}>${h}</div>`;
+  }
+  // The booth's name tag and buttons for what's picked (or what's worn).
+  function frBooth() {
+    const x = byId(sel), who = frWho, slot = frKind === 'skin' || frKind === 'weapon' ? `${frKind}:${who}` : frKind;
+    const shown = x || onIn(slot) || (frKind !== 'skin' ? null : onIn(`skin:${who}`));
+    const name = shown ? shown.name : frKind === 'skin' ? (who === 'solar' ? 'Her own look' : 'Their own look') : `Default ${FR_TAB[frKind].toLowerCase()}`;
+    const sub = shown ? `${starsHtml(shown.r)} ${esc(KINDS[shown.kind].name)}${shown.who ? ` · ${esc(whoName(shown.who))}` : ''}` : esc(whoName(who));
+    const tag = `<b>${esc(name)}</b><small>${sub}</small>`;
+    const can = x && owns(x.id) && ready(x), tryable = x && x.kind === 'skin' && ready(x) && window.FemcTryOn, wearing = x && onIn(slotOf(x))?.id === x.id;
+    const pose = frKind === 'skin' ? '<button type="button" class="g-btn small g-fr-pose" data-fr-pose><span>Strike a pose</span></button>' : '';
+    const acts = `${pose}${tryable ? `<button type="button" class="g-btn small g-wd-try" data-wd-try="${x.id}"><span>▶ Try it on</span></button>` : ''}${can ? `<button type="button" class="g-btn small" data-wd-zoom="${x.id}"><span>View</span></button><button type="button" class="g-btn pink small" data-wd-equip="${x.id}"${wearing ? ' disabled' : ''}><span>${wearing ? 'Wearing' : 'Equip'}</span></button>` : ''}`;
+    return { who, kind: frKind, sel, tag, acts };
   }
   function wardrobeHtml() {
     const s = cs(), x = byId(sel);
-    const kinds = Object.keys(KINDS).sort((a, b) => KINDS[a].order - KINDS[b].order);
-    const lists = kinds.map(k => {
-      const items = ITEMS.filter(i => i.kind === k && !i.retired && (metOk(i) || owns(i.id)));
-      const slots = [...new Set(items.map(slotOf))];
-      return slots.map(slot => {
-        const worn = onIn(slot), one = items.find(i => slotOf(i) === slot);
-        return `<section class="g-wd-kind"><h3>${esc(KINDS[k].name)}${one.who ? ` <small>${esc(whoName(one.who))}</small>` : ''}</h3><ul class="g-wd-items">
-          <li><button type="button" class="g-wd-item${worn ? '' : ' on'}" data-wd-off="${slot}"><span class="g-wd-th"><span class="g-wd-ico">○</span></span><b>Default</b><small>${worn ? 'Take it off' : 'Wearing'}</small></button></li>
-          ${items.filter(i => slotOf(i) === slot).map(i => { const own = owns(i.id), rd = ready(i), on = worn && worn.id === i.id; const st = !rd ? 'Art coming' : on ? 'Wearing' : own ? 'Owned' : i.pool === false ? 'Series reward' : 'Boutique'; return `<li class="g-wd-li">${own && rd ? `<button type="button" class="g-view-zoom" data-wd-zoom="${i.id}" aria-label="View ${esc(i.name)}" title="View">⤢</button>` : ''}<button type="button" class="g-wd-item${own ? ' own' : ''}${on ? ' on' : ''}${rd ? '' : ' pending'}${sel === i.id ? ' sel' : ''}" data-wd="${i.id}" style="--rc:${RAR[i.r].color}"><span class="g-wd-th">${thumb(i)}</span>${hdOf(i) ? '<i class="g-wd-hdtag" title="HD poses">HD</i>' : ''}<b>${esc(i.name)}</b><small>${starsHtml(i.r)} ${st}</small></button></li>`; }).join('')}</ul></section>`;
-      }).join('');
-    }).join('');
-    const can = x && owns(x.id) && ready(x), tryable = x && x.kind === 'skin' && ready(x) && window.FemcTryOn, wearing = x && onIn(slotOf(x))?.id === x.id;
-    return `<div class="g-wd-grid"><div class="g-wd-side">${preview(x)}${hdRow(x)}
-        <div class="g-wd-info">${x ? `<b>${esc(x.name)}</b><small>${starsHtml(x.r)} ${esc(RAR[x.r].name)} · ${esc(KINDS[x.kind].name)}${x.who ? ` · ${esc(whoName(x.who))}` : ''}</small><p>${esc(x.desc)}</p>
-          ${!ready(x) ? '<p class="g-note small">Art coming: it joins the Boutique once its pictures are in.</p>' : !owns(x.id) ? `<p class="g-note small">${x.pool === false ? 'Complete its capsule series to get it.' : 'Pull for it in the Boutique.'}</p>` : ''}
-          ${can || tryable ? `<span class="g-row g-wd-acts">${can ? `<button type="button" class="g-btn pink small" data-wd-equip="${x.id}"${wearing ? ' disabled' : ''}><span>${wearing ? 'Wearing' : 'Equip'}</span></button><button type="button" class="g-btn small" data-wd-zoom="${x.id}"><span>View</span></button>` : ''}${tryable ? `<button type="button" class="g-btn small g-wd-try" data-wd-try="${x.id}"><span>▶ Try it on</span></button>` : ''}</span>` : ''}` : '<b>Wardrobe</b><p>Pick something to preview it. Looks only: nothing here changes a fight.</p>'}</div>
-        <label class="g-wd-toggle"><input type="checkbox" data-wd-portraits${s.portraits ? ' checked' : ''}> Outfits in scene portraits</label></div>
-      <div class="g-wd-list">${meters()}${lists}</div></div>`;
+    const whos = frWhos(); if (!whos.includes(frWho)) { frWho = 'solar'; frKind = 'skin'; }
+    if (!frKinds(frWho).includes(frKind)) frKind = 'skin';
+    const F = window.FemcFitting;
+    const tabs = whos.map(w => { const n = frList(w, 'skin').filter(ready).length;
+      return `<button type="button" role="tab" data-fr-who="${w}" class="${w === frWho ? 'on' : ''}${w === 'solar' ? ' main' : ''}" aria-selected="${w === frWho}"><span class="g-fr-face" style="${F ? F.faceIcon(w) : ''}"></span><b>${esc(whoName(w))}</b><small>${n} outfit${n === 1 ? '' : 's'}</small></button>`; }).join('');
+    const ks = frKinds(frWho);
+    const kinds = ks.length > 1 ? `<div class="g-fr-kinds" role="tablist">${ks.map(k => `<button type="button" role="tab" data-fr-kind="${k}" class="${k === frKind ? 'on' : ''}" aria-selected="${k === frKind}">${FR_TAB[k]}<small>${frList(frWho, k).filter(ready).length}</small></button>`).join('')}</div>` : '';
+    const panes = whos.map(w => frKinds(w).map(k => frPane(w, k)).join('')).join('');
+    const note = x ? (!ready(x) ? 'Art coming: it joins the Boutique once its pictures are in.' : !owns(x.id) ? (x.pool === false ? 'Complete its capsule series to get it.' : 'Pull for it in the Boutique.') : '') : '';
+    const desc = x ? `${esc(x.desc)}${note ? ` <em class="g-note small">${note}</em>` : ''}` : frKind === 'skin' ? 'Pick an outfit to try it on. Looks only: nothing here changes a fight.' : 'Pick one to preview it.';
+    return `<div class="g-fr"><div class="g-fr-left"><div data-fr-booth></div></div>
+      <div class="g-fr-closet"><div class="g-fr-who" role="tablist" aria-label="Whose closet">${tabs}</div>
+        <div class="g-fr-head"><h2>${esc(whoName(frWho))}${frWho === 'solar' ? '' : '’s closet'}</h2>${meters()}</div>
+        ${kinds}
+        <div class="g-fr-tools"><span class="g-fr-chips"><button type="button" data-fr-own="all" class="${frOwn ? '' : 'on'}">All</button><button type="button" data-fr-own="own" class="${frOwn ? 'on' : ''}">Owned</button></span>
+          <select data-fr-sort aria-label="Sort"><option value="group"${frSort === 'group' ? ' selected' : ''}>Grouped</option><option value="rarity"${frSort === 'rarity' ? ' selected' : ''}>Rarity</option><option value="name"${frSort === 'name' ? ' selected' : ''}>Name</option></select>
+          <label class="g-wd-toggle"><input type="checkbox" data-wd-portraits${s.portraits ? ' checked' : ''}> Outfits in scene portraits</label></div>
+        <p class="g-fr-desc">${desc}</p>
+        ${panes}</div></div>`;
   }
   /* The viewer (gacha.js viewer): every owned, usable look in Wardrobe order. */
   const viewable = () => ITEMS.filter(x => owns(x.id) && ready(x)).sort((a, b) => KINDS[a.kind].order - KINDS[b.kind].order);
@@ -776,17 +822,18 @@ window.FemcCosmetics = (() => {
   function wire(el, rerender) {
     el.querySelectorAll('[data-wd-view]').forEach(b => b.addEventListener('click', () => { view = b.dataset.wdView; fresh = null; G.sfx('femc-click'); rerender(`[data-wd-view="${view}"]`); }));
     el.querySelectorAll('[data-wd-ban]').forEach(b => b.addEventListener('click', () => { if (pickBanner(b.dataset.wdBan)) { fresh = null; G.sfx('femc-click'); rerender(`[data-wd-ban="${b.dataset.wdBan}"]`); } }));
-    el.querySelectorAll('[data-wd]').forEach(b => b.addEventListener('click', () => { sel = b.dataset.wd; G.sfx('femc-hover'); rerender(`[data-wd="${sel}"]`); }));
-    el.querySelectorAll('[data-wd-hd]').forEach(b => b.addEventListener('click', () => { // an HD pose: swap the preview in place (no re-render)
-      const img = el.querySelector('.g-wd-pv-solar.hd'); if (!img || !sel) return;
-      hdPick[sel] = b.dataset.wdHd; img.src = b.dataset.src; img.dataset.hdPose = b.dataset.wdHd;
-      el.querySelectorAll('[data-wd-hd]').forEach(o => { o.classList.toggle('on', o === b); o.setAttribute('aria-pressed', String(o === b)); });
-      G.sfx('femc-hover');
-    }));
-    el.querySelectorAll('[data-wd-off]').forEach(b => b.addEventListener('click', () => { unequip(b.dataset.wdOff); sel = null; G.sfx('femc-back'); rerender(`[data-wd-off="${b.dataset.wdOff}"]`); }));
+    // The fitting room's booth first (its buttons are wired below with the rest).
+    const slot = el.querySelector('[data-fr-booth]');
+    if (slot && window.FemcFitting) window.FemcFitting.mount(slot, frBooth());
+    el.querySelectorAll('[data-fr-who]').forEach(b => b.addEventListener('click', () => { if (b.dataset.frWho === frWho) return; frWho = b.dataset.frWho; frKind = 'skin'; sel = null; G.sfx('femc-click'); rerender(`[data-fr-who="${frWho}"]`); }));
+    el.querySelectorAll('[data-fr-kind]').forEach(b => b.addEventListener('click', () => { if (b.dataset.frKind === frKind) return; frKind = b.dataset.frKind; sel = null; G.sfx('femc-click'); rerender(`[data-fr-kind="${frKind}"]`); }));
+    el.querySelectorAll('[data-fr-own]').forEach(b => b.addEventListener('click', () => { frOwn = b.dataset.frOwn === 'own'; G.sfx('femc-click'); rerender(`[data-fr-own="${b.dataset.frOwn}"]`); }));
+    el.querySelector('[data-fr-sort]')?.addEventListener('change', e => { frSort = e.target.value; rerender('[data-fr-sort]'); });
+    el.querySelectorAll('[data-wd]').forEach(b => b.addEventListener('click', () => { const x = byId(b.dataset.wd); if (!x) return; sel = x.id; frWho = tabOf(x); frKind = x.kind; G.sfx('femc-hover'); rerender(`[data-wd="${sel}"]`); }));
+    el.querySelectorAll('[data-wd-off]').forEach(b => b.addEventListener('click', () => { const sl = b.dataset.wdOff, had = !!onIn(sl); if (had) unequip(sl); sel = null; if (had && window.FemcFitting) window.FemcFitting.cue('equip'); G.sfx(had ? 'femc-back' : 'femc-hover'); rerender(`[data-wd-off="${sl}"]`); }));
     el.querySelectorAll('[data-wd-zoom]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openViewer(b.dataset.wdZoom); }));
     el.querySelectorAll('[data-wd-try]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); if (window.FemcTryOn) window.FemcTryOn.play(b.dataset.wdTry, b); }));
-    el.querySelector('[data-wd-equip]')?.addEventListener('click', e => { if (equip(e.currentTarget.dataset.wdEquip)) { G.sfx('femc-on'); rerender('[data-wd-equip]'); } });
+    el.querySelector('[data-wd-equip]')?.addEventListener('click', e => { if (equip(e.currentTarget.dataset.wdEquip)) { G.sfx('femc-on'); if (window.FemcFitting) window.FemcFitting.cue('equip'); rerender('[data-wd-equip]'); } });
     el.querySelector('[data-wd-portraits]')?.addEventListener('change', e => { setPortraits(e.target.checked); G.sfx('femc-click'); });
     el.querySelectorAll('[data-wd-hero]').forEach(b => b.addEventListener('click', () => { hero = b.dataset.wdHero; G.sfx('femc-hover'); rerender(`[data-wd-hero="${hero}"]`); }));
     el.querySelector('[data-wd-pull10]')?.addEventListener('click', () => {
@@ -811,5 +858,5 @@ window.FemcCosmetics = (() => {
   G.onChange(kind => { if (kind !== 'toast') apply(); });
   applyTitleEarly();
   setTimeout(apply, 0);
-  return Object.assign(api, { CLEAN, KINDS, ITEMS, BANNERS, BAN, PAL, THEMES, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, banner, banners, pickBanner, bannerEnd, pool, featured, canPull, pullWhy, pull, pullN, pull10, apply, battle, tryOnSpec, portrait, weaponArt, html, wire, preview, metOk, viewable, viewEntry, openViewer, seq, seqClose, bq, hdOf, meters, skipSeq: () => sq && sq.skip(), nextSeq: () => sq && sq.next() });
+  return Object.assign(api, { CLEAN, KINDS, ITEMS, BANNERS, BAN, PAL, THEMES, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, banner, banners, pickBanner, bannerEnd, pool, featured, canPull, pullWhy, pull, pullN, pull10, apply, battle, tryOnSpec, portrait, weaponArt, html, wire, metOk, viewable, viewEntry, openViewer, seq, seqClose, bq, hdOf, meters, skipSeq: () => sq && sq.skip(), nextSeq: () => sq && sq.next() });
 })();

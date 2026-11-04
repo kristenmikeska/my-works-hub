@@ -1,7 +1,7 @@
 """The capsule series, rarities and tokens (gacha.js) and the Wardrobe / Boutique cosmetics (cosmetics.js), 2026-10-25.
 Headless Chrome, isolated profile, localhost; no player saves.
 
-Run: python3 tests/femc_cosmetics.py [--only odds,rotation,solchan,hidden,tokens,banner,equip,pending,ui,boutique,x10,shots,viewer,party,newpending,retired,inbattle,hdpreview,app] [--screenshots DIR]
+Run: python3 tests/femc_cosmetics.py [--only odds,rotation,solchan,hidden,tokens,banner,equip,pending,ui,boutique,x10,shots,viewer,party,newpending,retired,inbattle,hdpreview,fitting,app] [--screenshots DIR]
 
 Covers: five rarities over many turns (Secret included) and pity kept per series; which machines stand in the Corner by
 date (each season, and a turn on a series that isn't on falls back to the Cast machine); only people Solar has met;
@@ -447,7 +447,8 @@ try:
                '/skins/' not in p.eval("(()=>{FemcCosmetics.setPortraits(false);const f=FemcGame.portrait('solar','happy');FemcCosmetics.setPortraits(true);return f})()"), 'the portrait toggle')
             menu(p, 'wardrobe')
             click(p, '[data-wd="sk-phantom"]')
-            ok(p.eval("document.querySelector('.g-wd-pv-solar').src.includes('skins/sk-phantom/solar-pose-0.webp') && !document.querySelector('.g-wd-stage .g-wd-pending')"), 'the preview wears it')
+            p.wait("document.querySelector('.g-wd-pv-solar')?.src.includes('skins/sk-phantom/')", 5)
+            ok(p.eval("document.querySelector('.g-wd-pv-solar').src.includes('skins/sk-phantom/') && !document.querySelector('.g-wd-stage .g-wd-pending')"), 'the booth wears it (its scene face: the fitting room prefers faces to the pose frame)')
             p.eval("FemcMenu.close()")
             # Worn in a real fight: Solar's battlefield figure comes from the outfit's folder.
             p.eval("(()=>{const G=FemcGame;G.S.joined=['akihiko','yukari','junpei'];G.S.day=G.dayOf('9/15');G.makeHandoff('scripted',{script:'looks-check',notes:'interrupt turn 6',segment:1,forced:true,party:['solar','akihiko','yukari','junpei']});})()")
@@ -708,8 +709,8 @@ try:
         ok(r == [], f'never pulled: {r}')
         menu(p, 'wardrobe')
         click(p, '[data-wd="sk-minji-crew"]')
-        r = p.eval("({badge:!!document.querySelector('.g-wd-stage .g-wd-pending'),row:document.querySelector('[data-wd=\"sk-minji-crew\"]').innerText,equip:!!document.querySelector('[data-wd-equip]'),zoom:[...document.querySelectorAll('[data-wd-zoom]')].some(b=>/^(sk|wpn)-/.test(b.dataset.wdZoom)&&!FemcCosmetics.ready(FemcCosmetics.byId(b.dataset.wdZoom))),who:document.querySelector('.g-wd-pv-solar').dataset.who,heads:[...document.querySelectorAll('.g-wd-kind h3 small')].map(x=>x.textContent)})")
-        ok(r['badge'] and 'Art coming' in r['row'] and not r['equip'] and not r['zoom'] and r['who'] == 'minji' and 'Minji' in r['heads'] and 'Akihiko' in r['heads'], f'Wardrobe: Art coming, by member: {r}')
+        r = p.eval("({badge:!!document.querySelector('.g-wd-stage .g-wd-pending'),row:document.querySelector('[data-wd=\"sk-minji-crew\"]').innerText,equip:!!document.querySelector('[data-wd-equip]'),zoom:[...document.querySelectorAll('[data-wd-zoom]')].some(b=>/^(sk|wpn)-/.test(b.dataset.wdZoom)&&!FemcCosmetics.ready(FemcCosmetics.byId(b.dataset.wdZoom))),who:document.querySelector('.g-wd-pv-solar').dataset.who,heads:[...document.querySelectorAll('[data-fr-who]')].map(x=>x.dataset.frWho),open:document.querySelector('[data-fr-who].on')?.dataset.frWho})")
+        ok(r['badge'] and 'Art coming' in r['row'] and not r['equip'] and not r['zoom'] and r['who'] == 'minji' and r['open'] == 'minji' and 'minji' in r['heads'] and 'akihiko' in r['heads'], f'Wardrobe: Art coming, by member: {r}')
         p.eval("FemcMenu.close()")
         # (Their prompts left FEMC-ART-TODO.md when Kat's art came in, batch 57, so no list check here.)
         clean(p, 'newpending')
@@ -914,43 +915,107 @@ try:
             emoTag:!!document.querySelector('[data-wd="sk-emo"] .g-wd-hdtag'),ssTag:!!document.querySelector('[data-wd="sk-summersession"] .g-wd-hdtag')}})()""")
         ok(r['hd'] == r['want'][0] and r['own'] == r['want'][1] and not r['retired'] and r['tags'] == r['n'] and r['n'] >= 17 and r['emoTag'] and not r['ssTag'], f'meters / HD tags: {r}')
         results['hdmeter'] = r['want']
-        # Emo Night has an HD set: its arms-crossed pose, the row, a pose clicked, and the pick kept through a re-render.
+        # Emo Night has an HD set: the fitting room's booth shows its poses (fitting.js).
         click(p, '[data-wd="sk-emo"]')
-        p.wait("document.querySelector('.g-wd-pv-solar.hd')?.complete && document.querySelector('.g-wd-pv-solar.hd').naturalWidth>0", 10)
+        p.wait("document.querySelector('.g-wd-pv-solar.hd')?.complete && document.querySelector('.g-wd-pv-solar.hd').naturalWidth>0 && document.querySelector('.g-wd-pv-solar').src.includes('sk-emo')", 10)
         hv = p.eval("FEMC_ART_READY.skins['sk-emo'].hdv")
-        r = p.eval("({src:document.querySelector('.g-wd-pv-solar').src,stage:document.querySelector('.g-wd-stage').classList.contains('hd'),row:document.querySelectorAll('.g-wd-hdrow [data-wd-hd]').length,first:document.querySelector('.g-wd-hdrow [data-wd-hd]').dataset.wdHd,on:document.querySelector('.g-wd-hdp.on')?.dataset.wdHd,equip:!!document.querySelector('[data-wd-equip=\"sk-emo\"]')})")
-        ok(r['src'].endswith(f'skins/sk-emo/hd/arms-crossed.webp?v={hv}') and r['stage'] and r['row'] == len(p.eval("FEMC_ART_READY.skins['sk-emo'].hd")) and r['first'] == 'arms-crossed' and r['on'] == 'arms-crossed' and r['equip'], f'HD preview: {r}')
-        click(p, '.g-wd-hdrow [data-wd-hd="peace"]')
-        p.wait("document.querySelector('.g-wd-pv-solar').src.includes('/hd/peace.webp') && document.querySelector('.g-wd-pv-solar').complete && document.querySelector('.g-wd-pv-solar').naturalWidth>0", 10)
-        ok(p.eval("document.querySelector('.g-wd-hdp.on').dataset.wdHd==='peace' && document.querySelectorAll('.g-wd-hdp[aria-pressed=true]').length===1 && document.querySelector('.g-wd-pv-solar').dataset.hdPose==='peace'"), 'a pose from the row')
+        r = p.eval("({src:document.querySelector('.g-wd-pv-solar').src,stage:document.querySelector('.g-wd-stage').classList.contains('hd'),pose:document.querySelector('.g-wd-pv-solar').dataset.hdPose,equip:!!document.querySelector('[data-wd-equip=\"sk-emo\"]'),st:FemcFitting.state()})")
+        ok('skins/sk-emo/hd/' in r['src'] and r['src'].endswith(f'?v={hv}') and r['stage'] and r['pose'] in p.eval("FEMC_ART_READY.skins['sk-emo'].hd") and r['equip'] and r['st']['mode'] == 'hd', f'HD in the booth: {r}')
+        p0 = r['pose']
+        click(p, '[data-fr-pose]')
+        p.wait("document.querySelector('.g-wd-pv-solar').dataset.hdPose!==%s" % json.dumps(p0), 5)
+        ok(True, 'Strike a pose changes the pose')
         click(p, '[data-wd="evk-rose"]')
-        ok(p.eval("!document.querySelector('.g-wd-stage.hd') && !document.querySelector('.g-wd-hdrow')"), 'a non-outfit: no HD preview')
-        click(p, '[data-wd="sk-emo"]')
-        ok(p.eval("document.querySelector('.g-wd-pv-solar').src.includes('/hd/peace.webp')"), 'the picked pose is kept')
-        # An outfit without an HD set: exactly the pose frame, as before.
+        p.wait("FemcFitting.state().prop==='evk-rose'", 5)
+        ok(p.eval("FemcFitting.state().evoker && document.querySelector('.g-wd-pv-solar').dataset.hdPose==='evoker'"), 'an Evoker: held up, Solar in her Evoker pose')
+        # An outfit without an HD set: its scene faces.
         click(p, '[data-wd="sk-summersession"]')
-        ok(p.eval("document.querySelector('.g-wd-pv-solar').src.includes('skins/sk-summersession/solar-pose-0.webp') && !document.querySelector('.g-wd-stage.hd') && !document.querySelector('.g-wd-pv-solar.hd') && !document.querySelector('.g-wd-hdrow')"), 'no HD set: the pose frame')
-        # Equip stays reachable (Nov 1 cap) with the bigger HD preview; screenshots.
-        for w, h, tag in [(1440, 900, 'desktop'), (2000, 957, 'wide'), (390, 844, 'phone')]:
+        p.wait("document.querySelector('.g-wd-pv-solar').src.includes('skins/sk-summersession/')", 5)
+        ok(p.eval("!document.querySelector('.g-wd-stage.hd') && !document.querySelector('.g-wd-pv-solar.hd') && FemcFitting.state().mode==='face'"), 'no HD set: the scene faces')
+        # Equip stays reachable inside the booth; screenshots.
+        for w, h, tag in [(1440, 900, 'desktop'), (1280, 720, 'small'), (2000, 957, 'wide'), (390, 844, 'phone')]:
             view(p, w, h)
             menu(p, 'wardrobe')
             click(p, '[data-wd-view=wardrobe]')
             click(p, '[data-wd="sk-emo"]')
             p.wait("document.querySelector('.g-wd-pv-solar.hd')?.complete", 10)
-            p.eval("new Promise(r=>setTimeout(r,400))")
-            r = p.eval("""(()=>{const b=document.querySelector('[data-wd-equip="sk-emo"]'),side=document.querySelector('.g-wd-side'),st=document.querySelector('.g-wd-stage');
-              const noScroll=(()=>{const q=b.getBoundingClientRect(),s=side.getBoundingClientRect();return q.bottom<=Math.min(innerHeight,s.bottom)+1&&q.top>=0;})();
+            p.eval("new Promise(r=>setTimeout(r,1400))")
+            r = p.eval("""(()=>{const b=document.querySelector('[data-wd-equip="sk-emo"]'),st=document.querySelector('.g-wd-stage'),body=document.querySelector('.g-fm-body').getBoundingClientRect();
+              const q0=b.getBoundingClientRect(),noScroll=q0.bottom<=Math.min(innerHeight,body.bottom)+1&&q0.top>=body.top-1;
               b.scrollIntoView({block:'nearest'});const q=b.getBoundingClientRect(),hit=document.elementFromPoint(q.left+q.width/2,q.top+q.height/2);
-              const tg=document.querySelector('.g-wd-toggle').getBoundingClientRect(),toggle=tg.bottom<=document.querySelector('.g-fm-body').getBoundingClientRect().bottom+1;
-              return {noScroll,toggle,hit:!!hit&&b.contains(hit),stageH:Math.round(st.getBoundingClientRect().height),side:side.scrollTop,sideways:document.documentElement.scrollWidth>innerWidth+1}})()""")
-            ok(r['hit'] and not r['sideways'] and r['stageH'] >= 130 and (tag == 'phone' or (r['noScroll'] and r['toggle'])), f'{tag}: Equip reachable: {r}')
+              const s=st.getBoundingClientRect(),tg=document.querySelector('.g-wd-toggle').getBoundingClientRect();
+              return {noScroll,hit:!!hit&&b.contains(hit),stageH:Math.round(s.height),stageIn:s.bottom<=body.bottom+1,toggle:tg.width>0,sideways:document.documentElement.scrollWidth>innerWidth+1}})()""")
+            ok(r['hit'] and not r['sideways'] and r['stageH'] >= 280 and r['toggle'] and (tag == 'phone' or (r['noScroll'] and r['stageIn'])), f'{tag}: Equip reachable: {r}')
             results[f'hdpreview-{tag}'] = r
-            p.eval("document.querySelector('.g-fm-body').scrollTop=0;document.querySelector('.g-wd-side').scrollTop=0")
+            p.eval("document.querySelector('.g-fm-body').scrollTop=0")
             shot(p, f'wardrobe-hd-{tag}')
         view(p, 1280, 850)
         p.eval("FemcMenu.close()")
         clean(p, 'hdpreview')
-        results['hdpreview'] = 'HD arms-crossed pose, pose row, pick kept, no-set fallback, meters; Equip reachable at 1440x900, 2000x957, 390x844'
+        results['hdpreview'] = 'HD set in the booth, Strike a pose, Evoker pose, no-set faces, meters; Equip reachable at 1440x900, 1280x720, 2000x957, 390x844'
+
+    # ── The fitting room (Nov 4 2026, fitting.js): character tabs, the booth across re-renders, the curtain and the walk-in,
+    #    a couple partner, what the other tabs show, the sheer curtain, equip sparkle, settings. ──
+    if want('fitting'):
+        setup(p, day='10/12')
+        view(p, 1440, 900); motion(p, False)
+        p.eval("(()=>{const C=FemcCosmetics;['sk-cp-sunmoon','sk-haechan-cp-sunmoon','wp-velvet','ui-moonlight','tt-darkhour','wpn-sakura'].forEach(C.grantItem);FemcGame.setSettings({skinFx:true,perf:false,calm:false});FemcGame.save();})()")
+        menu(p, 'wardrobe')
+        click(p, '[data-wd-view=wardrobe]')
+        ST = "FemcFitting.state()"
+        p.wait(ST + ".alive && !" + ST + ".shut", 5)
+        r = p.eval("({tabs:[...document.querySelectorAll('[data-fr-who]')].map(b=>b.dataset.frWho),on:document.querySelector('[data-fr-who].on').dataset.frWho,kinds:[...document.querySelectorAll('[data-fr-kind]')].map(b=>b.dataset.frKind),st:" + ST + ",panes:document.querySelectorAll('[data-fr-pane]:not([hidden])').length,groups:[...document.querySelectorAll('[data-fr-pane=\"solar:skin\"] .g-fr-group h3')].map(h=>h.firstChild.textContent)})")
+        ok(r['tabs'][0] == 'solar' and r['on'] == 'solar' and 'haechan' in r['tabs'] and 'minji' not in r['tabs'] and r['kinds'][:3] == ['skin', 'weapon', 'evoker'] and r['panes'] == 1
+           and r['st']['who'] == 'solar' and r['st']['mode'] == 'hd' and 'Couple sets' in r['groups'], f'tabs, kinds, groups, Solar in the booth: {r}')
+        p.eval("window.__booth=document.querySelector('.g-fr-booth')")
+        # A couple outfit: the partner leans in; the same booth element survives the re-render.
+        click(p, '[data-wd="sk-cp-sunmoon"]')
+        p.wait(ST + ".key==='sk-cp-sunmoon' && " + ST + ".partner==='sk-haechan-cp-sunmoon'", 5)
+        ok(p.eval("document.querySelector('.g-fr-booth')===window.__booth && !!document.querySelector('.g-fr-partner img')"), 'partner in; the booth survives the re-render')
+        click(p, '[data-wd-equip="sk-cp-sunmoon"]')
+        p.wait(ST + ".fx.length>0", 3)
+        ok(p.eval(ST + ".fx.includes('sheet') && FemcCosmetics.cs().on['skin:solar']==='sk-cp-sunmoon'"), 'equip: sparkles and the look\'s effect sheet')
+        # Another person: the curtain shuts, they walk in.
+        click(p, '[data-fr-who="haechan"]')
+        ok(p.eval(ST + ".shut && " + ST + ".who==='haechan'"), 'switching people shuts the curtain')
+        p.wait("!" + ST + ".shut", 3)
+        r = p.eval(ST)
+        ok(r['who'] == 'haechan' and r['mode'] in ('fig', 'face') and p.eval("document.querySelector('[data-fr-pane=\"haechan:skin\"]').hidden===false && document.querySelector('[data-fr-pane=\"solar:skin\"]').hidden"), f'Haechan\'s closet and booth: {r}')
+        # Other tabs: wallpaper -> wall, menu colours -> curtain, title -> card, weapon -> prop; not owned -> the sheer curtain.
+        click(p, '[data-wd="wp-shrine"]'); p.wait(ST + ".who==='solar' && " + ST + ".wall==='wp-shrine'", 5)
+        ok(p.eval(ST + ".sheer"), 'a wallpaper not owned: the wall, and the sheer curtain')
+        click(p, '[data-wd="ui-moonlight"]'); p.wait("getComputedStyle(document.querySelector('.g-fr-booth')).getPropertyValue('--cv-b').trim()==='#6ab0ff'", 5)
+        ok(not p.eval(ST + ".sheer"), 'menu colours recolour the curtain (owned: no sheer)')
+        click(p, '[data-wd="tt-darkhour"]'); p.wait(ST + ".tcard", 5)
+        click(p, '[data-wd="wpn-sakura"]'); p.wait(ST + ".prop==='wpn-sakura'", 5)
+        ok(True, 'title card, weapon held up')
+        # Off to another tab and back: a fresh booth that walks in again.
+        p.eval("document.querySelector('[data-tab=items]')?.click()")
+        p.eval("new Promise(r=>setTimeout(r,700))")
+        ok(not p.eval(ST + ".alive"), 'the booth is dropped when the page changes')
+        p.eval("document.querySelector('[data-tab=wardrobe]')?.click()")
+        p.wait(ST + ".alive", 5)
+        ok(p.eval("document.querySelector('.g-fr-booth')!==window.__booth"), 'a fresh booth on return')
+        # Settings: Outfit effects Off (no partner, no sheet); reduced motion (no walk); phone fit.
+        p.eval("FemcGame.setSettings({skinFx:false})")
+        click(p, '[data-fr-who="solar"]')
+        click(p, '[data-wd="sk-cp-sunmoon"]'); p.eval("new Promise(r=>setTimeout(r,900))")
+        ok(p.eval(ST + ".partner") is None, 'Outfit effects Off: no partner')
+        p.eval("FemcGame.setSettings({skinFx:true})")
+        motion(p, True)
+        click(p, '[data-fr-who="haechan"]'); p.eval("new Promise(r=>setTimeout(r,800))")
+        ok(p.eval("document.querySelector('.g-fr-booth').classList.contains('reduced') && document.querySelector('.g-fr-walk').getAnimations().length===0"), 'reduced motion: no walk-in')
+        motion(p, False)
+        for w, h, tag in [(1440, 900, 'desktop'), (390, 844, 'phone')]:
+            view(p, w, h)
+            menu(p, 'wardrobe'); click(p, '[data-wd-view=wardrobe]')
+            click(p, '[data-wd="sk-cp-sunmoon"]'); p.eval("new Promise(r=>setTimeout(r,2400))")
+            ok(p.eval('document.documentElement.scrollWidth <= innerWidth + 1'), tag + ': no sideways scroll')
+            shot(p, f'fitting-{tag}')
+        view(p, 1280, 850)
+        p.eval("FemcMenu.close()")
+        clean(p, 'fitting')
+        results['fitting'] = 'tabs, groups, booth kept across re-renders, partner, equip fx, curtain + walk-in, wall / colours / title / weapon, sheer, dropped and fresh, Outfit effects Off, reduced motion, fit'
 
     # ── Installable app (Nov 4 2026): femc-game.webmanifest, its icons, Chrome's installability, and no service worker ──
     if want('app'):

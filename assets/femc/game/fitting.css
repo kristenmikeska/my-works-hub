@@ -1,0 +1,168 @@
+/* Persona 3: Solstice · the Wardrobe as a fitting room (Nov 4 2026; cosmetics.js wardrobeHtml + fitting.js). Pink and
+   black only (Kat's palette rule); rarity colours only on the cards' edges and the booth's glint. Loaded last, so the old
+   Wardrobe hooks kept on these elements (.g-wd-stage, .g-wd-pv-solar, .g-wd-items, .g-wd-acts) are restyled here. */
+.g-fr { --fr-h: clamp(320px, calc(100dvh - 300px), 820px); display: grid; grid-template-columns: minmax(300px, 38%) minmax(0, 1fr); gap: 18px 26px; align-items: start; }
+.g-fr-left { position: sticky; top: 0; }
+
+/* ── The booth ── */
+.g-fr .g-fr-booth { --cv-a: #6e0f43; --cv-b: #a8215f; --cv-c: #e04b8c; --cv-d: #3c0623; --bulb: #ffe7f2;
+  position: relative; height: var(--fr-h); overflow: hidden; isolation: isolate; border: 0; border-radius: 3px;
+  background: radial-gradient(60% 55% at 50% 30%, rgba(255, 170, 210, .38), transparent 70%), repeating-linear-gradient(90deg, rgba(0, 0, 0, .18) 0 2px, transparent 2px 64px),
+    linear-gradient(180deg, #5a1640 0%, #3a0c29 62%, #210818 62.3%, #12040c 100%);
+  box-shadow: inset 0 0 0 2px rgba(255, 140, 192, .25), inset 0 0 80px rgba(0, 0, 0, .7), 8px 8px 0 rgba(255, 79, 158, .25); }
+.g-fr .g-fr-booth::before { content: none; }
+.g-fr-wall { position: absolute; inset: 0; z-index: 0; opacity: 0; transition: opacity .5s; }
+.g-fr-wall.on { opacity: .6; }
+.g-fr-wall::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20, 7, 15, .2), rgba(20, 7, 15, .75)); }
+.g-fr-floor { position: absolute; left: 0; right: 0; bottom: 0; height: 38%; z-index: 0; background: radial-gradient(50% 40% at 50% 10%, rgba(255, 140, 192, .22), transparent 70%); }
+.g-fr-bulbs { position: absolute; z-index: 1; inset: 36px 16px auto; height: 10px; display: flex; justify-content: space-between; }
+.g-fr-bulbs i { width: 8px; height: 8px; border-radius: 50%; background: var(--bulb); box-shadow: 0 0 10px 3px color-mix(in srgb, var(--bulb) 70%, transparent); animation: g-fr-bulb 3s ease-in-out infinite; transition: background .5s, box-shadow .5s; }
+.g-fr-bulbs i:nth-child(odd) { animation-delay: -1.5s; }
+@keyframes g-fr-bulb { 50% { opacity: .55; } }
+
+.g-fr-stage { position: absolute; inset: 0; z-index: 2; }
+.g-fr-fig { position: absolute; left: 50%; bottom: 0; width: 0; height: 0; transform-origin: 50% 100%; animation: g-fr-sway 7.5s ease-in-out infinite; transition: left .6s cubic-bezier(.3, .8, .3, 1); }
+.g-fr-stage.duo .g-fr-fig { left: 40%; }
+.g-fr-walk, .g-fr-breathe { position: absolute; inset: 0; transform-origin: 50% 100%; }
+.g-fr-breathe { animation: g-fr-breathe 4.2s ease-in-out infinite; }
+@keyframes g-fr-breathe { 0%, 100% { transform: translateY(0) scaleY(1); } 50% { transform: translateY(-4px) scaleY(1.008); } }
+@keyframes g-fr-sway { 0%, 100% { transform: rotate(-.35deg); } 50% { transform: rotate(.35deg); } }
+.g-fr .g-fr-breathe img { position: absolute; display: block; max-width: none; height: auto; transform: none; bottom: auto; object-fit: fill; user-select: none; -webkit-user-drag: none;
+  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, .55)); transition: opacity .6s ease; }
+.g-fr .g-fr-breathe img.out { opacity: 0; }
+.g-fr .g-fr-breathe img.snap { transition: none; }
+.g-fr .g-fr-breathe img.pending { filter: brightness(0) drop-shadow(0 0 1px #fff) opacity(.55); }
+.g-fr-note { position: absolute; z-index: 6; left: 14px; top: 54px; padding: 3px 9px; background: rgba(20, 7, 15, .8); border: 1px solid rgba(255, 140, 192, .4); color: var(--pink-3); font: italic 800 11px/1.2 var(--cond); letter-spacing: .12em; text-transform: uppercase; transform: skewX(-10deg); }
+.g-fr .g-wd-pending { position: absolute; z-index: 6; left: 50%; top: 42%; transform: translate(-50%, -50%) skewX(-10deg); padding: 7px 14px; background: var(--night, #14070f); border: 2px dashed var(--pink-2); color: var(--pink-3); font: italic 900 16px/1 var(--cond); letter-spacing: .08em; text-transform: uppercase; }
+
+/* The couple partner leans in from the side. */
+.g-fr-partner { position: absolute; right: 0; bottom: 0; width: 0; height: 0; z-index: 1; }
+.g-fr-pin { position: absolute; transform-origin: 50% 100%; }
+.g-fr-pin img { position: absolute; display: block; max-width: none; filter: drop-shadow(0 14px 18px rgba(0, 0, 0, .55)) brightness(.97); }
+.g-fr-bub { position: absolute; padding: 5px 10px; background: var(--paper, #fff4f9); color: var(--night, #14070f); font: italic 900 13px/1.1 var(--cond); white-space: nowrap; transform: skewX(-10deg); box-shadow: 3px 3px 0 var(--pink); }
+/* A weapon or an Evoker held up in front; the effect sheet and sparkles; the title card. */
+.g-fr-prop { position: absolute; z-index: 3; left: 50%; bottom: 14%; width: 0; height: 0; pointer-events: none; }
+.g-fr-prop img { position: absolute; max-width: none; filter: drop-shadow(0 10px 16px rgba(0, 0, 0, .6)); }
+.g-fr-fx { position: absolute; inset: 0; z-index: 3; pointer-events: none; overflow: hidden; }
+.g-fr-sheet { position: absolute; left: 50%; top: 42%; mix-blend-mode: screen; background-repeat: no-repeat; transform: translate(-50%, -50%); }
+.g-fr-spark { position: absolute; left: 50%; top: 45%; width: 14px; height: 14px; margin: -7px; background: #fff; clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); }
+.g-fr-tcard { position: absolute; z-index: 5; right: 16px; top: 56px; width: 50%; aspect-ratio: 16 / 9; transform: translateX(130%) rotate(3deg); transition: transform .55s cubic-bezier(.2, 1.2, .35, 1); }
+.g-fr-tcard.on { transform: translateX(0) rotate(3deg); }
+.g-fr-tcard > span { position: absolute; inset: 0; overflow: hidden; border: 2px solid #fff; background: var(--a); box-shadow: 6px 6px 0 rgba(0, 0, 0, .5); }
+.g-fr-tcard > span::before { content: ""; position: absolute; z-index: 1; left: -10%; top: -20%; width: 52%; height: 140%; background: var(--b); transform: skewX(-14deg); }
+.g-fr-tcard img { position: absolute; right: 0; top: 0; width: 70%; height: 100%; object-fit: cover; }
+.g-fr-tcard b { position: absolute; z-index: 2; left: 10px; bottom: 8px; color: #fff; font: italic 900 22px/1 var(--cond); }
+/* Not owned: a sheer curtain. */
+.g-fr-sheer { position: absolute; inset: 0; z-index: 4; display: grid; place-items: center; pointer-events: none; opacity: 0; transition: opacity .45s;
+  background: repeating-linear-gradient(90deg, rgba(255, 210, 230, .16) 0 10px, rgba(255, 210, 230, .05) 10px 26px), linear-gradient(180deg, rgba(40, 10, 30, .35), rgba(40, 10, 30, .55));
+  backdrop-filter: blur(1.5px) saturate(.6); }
+.g-fr-sheer.on { opacity: 1; }
+.g-fr-sheer span { margin-top: -12%; padding: 8px 16px; background: var(--paper, #fff4f9); color: var(--night, #14070f); font: italic 900 16px/1 var(--cond); letter-spacing: .06em; text-transform: uppercase; transform: skewX(-10deg) rotate(-3deg); box-shadow: 5px 5px 0 var(--pink); }
+/* Ultra / Super Rare: a glint and the curtain's edges. */
+.g-fr-glint { position: absolute; inset: 0; z-index: 5; pointer-events: none; overflow: hidden; }
+.g-fr-glint i { position: absolute; top: -20%; bottom: -20%; width: 28%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .55), transparent); transform: skewX(-18deg); }
+.g-fr-glint i.sr { background: linear-gradient(90deg, transparent, rgba(220, 190, 255, .4), transparent); }
+.g-fr-booth.ur .g-fr-curtain { box-shadow: 0 0 30px rgba(0, 0, 0, .7), inset 0 0 0 3px rgba(255, 211, 107, .85), 0 0 24px rgba(255, 211, 107, .55); }
+.g-fr-booth.ur .g-fr-bulbs i { background: #fff2c8; box-shadow: 0 0 14px 5px rgba(255, 211, 107, .8); }
+.g-fr-booth.sr .g-fr-curtain { box-shadow: 0 0 30px rgba(0, 0, 0, .7), inset 0 0 0 3px rgba(197, 139, 255, .7); }
+
+/* The curtain: two velvet panels gathered at the sides; they sweep shut and fall open. */
+.g-fr-curtain { position: absolute; top: 0; bottom: 0; width: 54%; z-index: 6; pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .08), transparent 18%, transparent 80%, rgba(0, 0, 0, .5)),
+    repeating-linear-gradient(90deg, var(--cv-a) 0, var(--cv-b) 14px, var(--cv-c) 22px, var(--cv-b) 30px, var(--cv-a) 44px, var(--cv-d) 52px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, .7); transition: transform .42s cubic-bezier(.6, 0, .35, 1), box-shadow .5s; }
+.g-fr-curtain.l { left: 0; transform-origin: 0 50%; transform: scaleX(.12); border-right: 2px solid rgba(0, 0, 0, .4); }
+.g-fr-curtain.r { right: 0; transform-origin: 100% 50%; transform: scaleX(.12); border-left: 2px solid rgba(0, 0, 0, .4); }
+.g-fr-booth.shut .g-fr-curtain { transform: scaleX(1); }
+.g-fr-booth.peek .g-fr-curtain { transform: scaleX(.62); }
+.g-fr-booth.opening .g-fr-curtain { transition: transform .75s cubic-bezier(.2, 1.25, .35, 1), box-shadow .5s; }
+.g-fr-curtain::after { content: ""; position: absolute; top: 46%; width: 22px; height: 16px; border-radius: 8px; background: linear-gradient(180deg, #ffd1e6, #ff8cc0); box-shadow: 0 2px 4px rgba(0, 0, 0, .5); transition: opacity .2s; }
+.g-fr-curtain.l::after { right: -6px; } .g-fr-curtain.r::after { left: -6px; }
+.g-fr-booth:is(.shut, .peek) .g-fr-curtain::after { opacity: 0; }
+.g-fr-valance { position: absolute; left: 0; right: 0; top: 0; height: 30px; z-index: 7; pointer-events: none;
+  background: radial-gradient(circle at 20px -6px, transparent 18px, var(--cv-a) 19px) 0 0 / 40px 30px repeat-x; filter: drop-shadow(0 4px 4px rgba(0, 0, 0, .5)); }
+.g-fr-valance::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 10px; background: linear-gradient(180deg, var(--cv-b), var(--cv-a)); }
+
+/* Name tag and buttons on the booth. */
+.g-fr-tag { position: absolute; z-index: 8; left: 18px; bottom: 22px; max-width: calc(100% - 36px); padding: 9px 18px 9px 14px; background: var(--paper, #fff4f9); color: var(--night, #14070f); transform: skewX(-10deg) rotate(-2deg); box-shadow: 6px 6px 0 var(--pink); }
+.g-fr-tag b { display: block; font: italic 900 clamp(20px, 2.2vw, 32px)/1 var(--cond); letter-spacing: -.01em; }
+.g-fr-tag small { display: flex; align-items: center; gap: 6px; margin-top: 4px; color: #7a0b3e; font: italic 800 12px/1.2 var(--cond); letter-spacing: .1em; text-transform: uppercase; }
+.g-fr-tag .g-ga-stars { font-size: 11px; color: var(--rc); text-shadow: 0 0 1px #000; letter-spacing: 0; }
+.g-fr .g-fr-acts { position: absolute; z-index: 8; right: 14px; top: 46px; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.g-fr .g-fr-acts .g-btn { box-shadow: 4px 4px 0 rgba(255, 79, 158, .5); }
+.g-fr .g-fr-acts .g-btn.pink { box-shadow: 4px 4px 0 #fff; }
+
+/* ── The closet ── */
+.g-fr-closet { min-width: 0; }
+.g-fr-who { display: flex; gap: 8px; margin: 0 0 10px; padding: 4px 4px 12px; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: var(--pink) transparent; }
+.g-fr-who button { position: relative; flex: 0 0 auto; width: 72px; padding: 0; border: 0; background: none; color: #fff; text-align: center; opacity: .62; cursor: pointer; transition: opacity .15s, transform .15s; }
+.g-fr-face { display: block; width: 62px; height: 62px; margin: 0 auto; background-color: #2a0f22; background-repeat: no-repeat; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); transition: background-color .15s; }
+.g-fr-who button b { display: block; margin-top: 4px; font: italic 900 13px/1 var(--cond); letter-spacing: .02em; }
+.g-fr-who button small { display: block; color: var(--pink-3); font: italic 700 11px/1.2 var(--cond); opacity: .8; }
+.g-fr-who button:is(:hover, :focus-visible) { opacity: .9; outline: none; }
+.g-fr-who button.on { opacity: 1; transform: translateY(-2px); }
+.g-fr-who button.on .g-fr-face { background-color: var(--pink); }
+.g-fr-who button.on::after { content: ""; position: absolute; left: 10px; right: 10px; bottom: -8px; height: 4px; background: var(--pink); transform: skewX(-20deg); }
+.g-fr-who .main { margin-right: 8px; padding-right: 12px; border-right: 1px solid rgba(255, 140, 192, .25); width: 84px; }
+.g-fr-head { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 8px 16px; margin: 0 0 10px; }
+.g-fr-head h2 { margin: 0; color: var(--paper, #fff4f9); font: italic 900 clamp(30px, 3.4vw, 50px)/.9 var(--cond); letter-spacing: -.03em; transform: skewX(-8deg); text-shadow: 3px 3px 0 #7a0b3e; }
+.g-fr-head .g-wd-meters { margin: 0 0 0 auto; min-width: 240px; }
+.g-fr-kinds { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
+.g-fr-kinds button, .g-fr-chips button { padding: 6px 14px; border: 1.5px solid rgba(255, 140, 192, .4); background: rgba(20, 7, 15, .8); color: #fff; font: italic 800 13px/1.1 var(--cond); letter-spacing: .04em; transform: skewX(-10deg); cursor: pointer; transition: background .12s, border-color .12s; }
+.g-fr-kinds button small { margin-left: 5px; opacity: .75; }
+.g-fr-kinds button.on, .g-fr-chips button.on { background: var(--pink); border-color: var(--pink); }
+.g-fr-kinds button:is(:hover, :focus-visible):not(.on), .g-fr-chips button:is(:hover, :focus-visible):not(.on) { border-color: var(--pink); outline: none; }
+.g-fr-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 0 0 6px; }
+.g-fr-chips { display: flex; gap: 6px; }
+.g-fr-tools select { padding: 5px 10px; border: 1.5px solid rgba(255, 140, 192, .4); background: var(--night, #14070f); color: #fff; font: italic 800 13px var(--cond); }
+.g-fr .g-wd-toggle { margin-left: auto; }
+.g-fr-desc { min-height: 2.6em; max-width: 64ch; margin: 0 0 10px; color: rgba(255, 228, 240, .85); font: italic 500 15px/1.35 var(--serif, Georgia, serif); }
+.g-fr-desc .g-note { display: block; margin-top: 2px; color: var(--pink-2); font-style: italic; }
+.g-fr-group { margin: 0 0 16px; }
+.g-fr-group h3, .g-fm-ov.is-page .g-fm-body .g-fr-group h3 { display: flex; align-items: baseline; gap: 10px; margin: 0 0 8px; color: var(--paper, #fff4f9); font: italic 900 18px/1 var(--cond); letter-spacing: .06em; text-transform: uppercase; }
+.g-fr-group h3 small { color: var(--pink-3); font: italic 700 12px var(--cond); opacity: .75; letter-spacing: .1em; }
+.g-fr .g-fr-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(124px, 1fr)); gap: 12px; margin: 0 0 14px; padding: 0; list-style: none; }
+.g-fr-li { position: relative; }
+.g-fr-li .g-view-zoom { position: absolute; z-index: 3; right: 10px; bottom: 44px; }
+.g-fr-card { position: relative; display: block; width: 100%; padding: 0; border: 0; background: none; color: #fff; text-align: left; cursor: pointer; transition: transform .15s; }
+.g-fr-th { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%);
+  background: radial-gradient(70% 60% at 50% 35%, rgba(255, 140, 192, .28), transparent 70%), linear-gradient(180deg, #3a0f2a, #1a0713); }
+.g-fr-th::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 -3px 0 var(--rc); }
+.g-fr-th.k-skin img { position: absolute; left: 50%; top: 4%; width: 150%; max-width: none; transform: translateX(-50%); }
+.g-fr-th.k-weapon img { position: absolute; left: 5%; top: 10%; width: 90%; height: 80%; object-fit: contain; }
+.g-fr-th.k-evoker img { position: absolute; left: 15%; top: 22%; width: 70%; }
+.g-fr-th .g-wd-sw { position: absolute; inset: 14% 12%; width: auto; height: auto; border: 0; border-radius: 3px; transform: none; box-shadow: 0 6px 14px rgba(0, 0, 0, .5); }
+.g-fr-th .g-wd-ico { position: absolute; inset: 0; display: grid; place-items: center; font-size: 36px; opacity: .6; }
+.g-fr-card b { display: block; margin-top: 6px; font: italic 900 14px/1.1 var(--cond); }
+.g-fr-card small { display: block; color: var(--pink-3); font: italic 700 11px/1.2 var(--cond); opacity: .85; }
+.g-fr-card .g-ga-stars { font-size: 10px; }
+.g-fr .g-fr-card .g-wd-hdtag { left: auto; right: 12px; top: 6px; }
+.g-fr-cptag { position: absolute; z-index: 2; right: 12px; top: 6px; padding: 1px 6px; background: var(--pink); color: #fff; font: italic 900 10px/1.2 var(--cond); letter-spacing: .08em; transform: skewX(-12deg); }
+.g-fr-card .g-wd-hdtag + .g-fr-cptag { top: 24px; }
+.g-fr-wear { position: absolute; z-index: 2; left: 10px; top: 6px; padding: 2px 7px; background: var(--paper, #fff4f9); color: var(--night, #14070f); font: italic 900 10px/1.2 var(--cond); letter-spacing: .1em; text-transform: uppercase; transform: skewX(-12deg); }
+.g-fr-card.locked .g-fr-th > *, .g-fr-card.pending .g-fr-th > * { filter: grayscale(.85) brightness(.55); }
+.g-fr-card.locked b, .g-fr-card.pending b { opacity: .7; }
+.g-fr-card:is(:hover, :focus-visible) { transform: translateY(-3px); outline: none; }
+.g-fr-card.sel .g-fr-th { background: radial-gradient(70% 60% at 50% 35%, rgba(255, 140, 192, .55), transparent 70%), linear-gradient(180deg, #7a1650, #2a0a1e); }
+.g-fr-card.sel::before { content: ""; position: absolute; z-index: 2; left: -4px; right: -4px; top: -4px; aspect-ratio: 4 / 5; border: 2px solid var(--pink); transform: skewX(-4deg); pointer-events: none; }
+.g-fr-card:focus-visible .g-fr-th { outline: 2px solid #fff; outline-offset: 2px; }
+.g-fr-soon { margin: 4px 0 14px; padding-top: 10px; border-top: 1px dashed rgba(255, 140, 192, .3); }
+.g-fr-soon summary { color: var(--pink-3); font: italic 800 13px var(--cond); letter-spacing: .14em; text-transform: uppercase; cursor: pointer; }
+.g-fr-soon .g-fr-cards { margin-top: 10px; opacity: .75; }
+.g-fr-empty { color: var(--pink-3); font: italic 700 15px var(--cond); }
+
+/* Settings: Performance (no breathing, sway or bulbs), reduced motion (crossfades only). */
+.g-fr-booth.perf :is(.g-fr-fig, .g-fr-breathe, .g-fr-bulbs i) { animation: none; }
+.g-fr-booth.reduced :is(.g-fr-fig, .g-fr-breathe, .g-fr-bulbs i) { animation: none; }
+.g-fr-booth.reduced .g-fr-curtain { transition: transform .25s ease; }
+@media (prefers-reduced-motion: reduce) { .g-fr-card, .g-fr-who button, .g-fr-tcard { transition: none; } }
+
+/* Narrower screens: the booth on top, the closet below. */
+@media (max-width: 860px) {
+  .g-fr { grid-template-columns: minmax(0, 1fr); --fr-h: clamp(300px, 50dvh, 480px); }
+  .g-fr-left { position: relative; }
+  .g-fr .g-fr-cards { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
+  .g-fr-head .g-wd-meters { min-width: 0; margin: 0; width: 100%; }
+  .g-fr .g-wd-toggle { margin-left: 0; }
+  .g-fr-tag b { font-size: 20px; }
+}

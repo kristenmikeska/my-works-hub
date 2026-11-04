@@ -1506,7 +1506,7 @@ window.FemcMenu = (() => {
     G.sfx('femc-click');
     return true;
   }
-  return { open, close: () => o?.close(), isOpen: () => !!o, TABS, extras, albumCarry, peek,
+  return { open, close: () => o?.close(), isOpen: () => !!o, TABS, extras, albumCarry, peek, LINK_FIG, // LINK_FIG: the Wardrobe's fitting room (fitting.js)
     // For tests: what the album and the Theater would show now.
     albumData, albumList, theaterItems, replayRow: (k, back) => replay(theaterItems()[k], null, back), viewer };
 })();
