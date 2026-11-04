@@ -1,0 +1,200 @@
+{
+ "arms-crossed": {
+  "ar": 0.667,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.521,
+  "size": [
+   1024,
+   1536
+  ],
+  "src": "moonlit-armscrossed.png"
+ },
+ "cheer": {
+  "ar": 0.655,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.539,
+  "size": [
+   1006,
+   1536
+  ],
+  "src": "moonlit-fist.png"
+ },
+ "evoker": {
+  "ar": 0.667,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.501,
+  "size": [
+   1024,
+   1536
+  ],
+  "src": "moonlit-evoker.png"
+ },
+ "hair": {
+  "ar": 0.629,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.519,
+  "size": [
+   966,
+   1536
+  ],
+  "src": "moonlit-handinhair.png"
+ },
+ "heart": {
+  "ar": 0.659,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.51,
+  "size": [
+   1012,
+   1536
+  ],
+  "src": "moonlit-hearthands.png"
+ },
+ "jump": {
+  "ar": 0.663,
+  "hf": 0.134,
+  "ht": 0.014,
+  "hx": 0.502,
+  "size": [
+   1018,
+   1536
+  ],
+  "src": "moonlit-jump.png"
+ },
+ "lookback": {
+  "ar": 0.632,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.516,
+  "size": [
+   971,
+   1536
+  ],
+  "src": "moonlit-overshoulder.png"
+ },
+ "peace": {
+  "ar": 0.658,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.52,
+  "size": [
+   1011,
+   1536
+  ],
+  "src": "moonlit-peace.png"
+ },
+ "phone": {
+  "ar": 0.64,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.486,
+  "size": [
+   983,
+   1536
+  ],
+  "src": "moonlit-phone.png"
+ },
+ "ramen": {
+  "ar": 0.648,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.519,
+  "size": [
+   995,
+   1536
+  ],
+  "src": "moonlit-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.654,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.518,
+  "size": [
+   1005,
+   1536
+  ],
+  "src": "moonlit-sewing.png"
+ },
+ "shy": {
+  "ar": 0.665,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.514,
+  "size": [
+   1021,
+   1536
+  ],
+  "src": "moonlit-shy.png"
+ },
+ "stretch": {
+  "ar": 0.639,
+  "hf": 0.138,
+  "ht": 0.018,
+  "hx": 0.664,
+  "size": [
+   981,
+   1536
+  ],
+  "src": "moonlit-yawn.png"
+ },
+ "study": {
+  "ar": 0.665,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.52,
+  "size": [
+   1021,
+   1536
+  ],
+  "src": "moonlit-reading.png"
+ },
+ "tease": {
+  "ar": 0.658,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.513,
+  "size": [
+   1010,
+   1536
+  ],
+  "src": "moonlit-handonhip.png"
+ },
+ "thinking": {
+  "ar": 0.662,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.516,
+  "size": [
+   1017,
+   1536
+  ],
+  "src": "moonlit-thinking.png"
+ },
+ "watering": {
+  "ar": 0.667,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.571,
+  "size": [
+   1024,
+   1536
+  ],
+  "src": "moonlit-watering.png"
+ },
+ "wave": {
+  "ar": 0.663,
+  "hf": 0.139,
+  "ht": 0.004,
+  "hx": 0.522,
+  "size": [
+   1018,
+   1536
+  ],
+  "src": "moonlit-wave.png"
+ }
+}

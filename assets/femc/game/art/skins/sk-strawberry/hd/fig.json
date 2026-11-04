@@ -1,0 +1,200 @@
+{
+ "arms-crossed": {
+  "ar": 0.505,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.399,
+  "size": [
+   775,
+   1536
+  ],
+  "src": "strawberry-armscrossed.png"
+ },
+ "cheer": {
+  "ar": 0.617,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.38,
+  "size": [
+   948,
+   1536
+  ],
+  "src": "strawberry-fist.png"
+ },
+ "evoker": {
+  "ar": 0.605,
+  "hf": 0.138,
+  "ht": 0.015,
+  "hx": 0.445,
+  "size": [
+   929,
+   1536
+  ],
+  "src": "strawberry-evoker.png"
+ },
+ "hair": {
+  "ar": 0.473,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.373,
+  "size": [
+   726,
+   1536
+  ],
+  "src": "strawberry-handinhair.png"
+ },
+ "heart": {
+  "ar": 0.5,
+  "hf": 0.14,
+  "ht": 0.0,
+  "hx": 0.427,
+  "size": [
+   768,
+   1536
+  ],
+  "src": "strawberry-hearthands.png"
+ },
+ "jump": {
+  "ar": 0.639,
+  "hf": 0.125,
+  "ht": 0.006,
+  "hx": 0.1,
+  "size": [
+   982,
+   1536
+  ],
+  "src": "strawberry-jump.png"
+ },
+ "lookback": {
+  "ar": 0.523,
+  "hf": 0.138,
+  "ht": 0.016,
+  "hx": 0.489,
+  "size": [
+   804,
+   1536
+  ],
+  "src": "strawberry-overshoulder.png"
+ },
+ "peace": {
+  "ar": 0.514,
+  "hf": 0.138,
+  "ht": 0.011,
+  "hx": 0.406,
+  "size": [
+   790,
+   1536
+  ],
+  "src": "strawberry-peace.png"
+ },
+ "phone": {
+  "ar": 0.512,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.368,
+  "size": [
+   786,
+   1536
+  ],
+  "src": "strawberry-phone.png"
+ },
+ "ramen": {
+  "ar": 0.501,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.418,
+  "size": [
+   770,
+   1536
+  ],
+  "src": "strawberry-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.552,
+  "hf": 0.137,
+  "ht": 0.019,
+  "hx": 0.446,
+  "size": [
+   848,
+   1536
+  ],
+  "src": "strawberry-sewing.png"
+ },
+ "shy": {
+  "ar": 0.479,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.442,
+  "size": [
+   736,
+   1536
+  ],
+  "src": "strawberry-shy.png"
+ },
+ "stretch": {
+  "ar": 0.534,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.645,
+  "size": [
+   820,
+   1536
+  ],
+  "src": "strawberry-yawn.png"
+ },
+ "study": {
+  "ar": 0.459,
+  "hf": 0.138,
+  "ht": 0.016,
+  "hx": 0.401,
+  "size": [
+   705,
+   1536
+  ],
+  "src": "strawberry-reading.png"
+ },
+ "tease": {
+  "ar": 0.547,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.471,
+  "size": [
+   840,
+   1536
+  ],
+  "src": "strawberry-handonhip.png"
+ },
+ "thinking": {
+  "ar": 0.472,
+  "hf": 0.138,
+  "ht": 0.016,
+  "hx": 0.428,
+  "size": [
+   725,
+   1536
+  ],
+  "src": "strawberry-thinking.png"
+ },
+ "watering": {
+  "ar": 0.654,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.428,
+  "size": [
+   1004,
+   1536
+  ],
+  "src": "strawberry-watering.png"
+ },
+ "wave": {
+  "ar": 0.529,
+  "hf": 0.138,
+  "ht": 0.016,
+  "hx": 0.315,
+  "size": [
+   813,
+   1536
+  ],
+  "src": "strawberry-wave.png"
+ }
+}

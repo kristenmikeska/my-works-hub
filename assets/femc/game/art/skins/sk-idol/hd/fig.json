@@ -1,0 +1,200 @@
+{
+ "arms-crossed": {
+  "ar": 0.527,
+  "hf": 0.14,
+  "ht": 0.0,
+  "hx": 0.447,
+  "size": [
+   809,
+   1536
+  ],
+  "src": "stage-armscrossed.png"
+ },
+ "cheer": {
+  "ar": 0.57,
+  "hf": 0.138,
+  "ht": 0.011,
+  "hx": 0.416,
+  "size": [
+   876,
+   1536
+  ],
+  "src": "stage-fist.png"
+ },
+ "evoker": {
+  "ar": 0.607,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.432,
+  "size": [
+   932,
+   1536
+  ],
+  "src": "stage-evoker.png"
+ },
+ "hair": {
+  "ar": 0.565,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.427,
+  "size": [
+   868,
+   1536
+  ],
+  "src": "stage-handinhair.png"
+ },
+ "heart": {
+  "ar": 0.49,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.432,
+  "size": [
+   753,
+   1536
+  ],
+  "src": "stage-hearthands.png"
+ },
+ "jump": {
+  "ar": 0.62,
+  "hf": 0.138,
+  "ht": 0.008,
+  "hx": 0.325,
+  "size": [
+   953,
+   1536
+  ],
+  "src": "stage-jump.png"
+ },
+ "lookback": {
+  "ar": 0.524,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.411,
+  "size": [
+   805,
+   1536
+  ],
+  "src": "stage-overshoulder.png"
+ },
+ "peace": {
+  "ar": 0.615,
+  "hf": 0.139,
+  "ht": 0.004,
+  "hx": 0.483,
+  "size": [
+   945,
+   1536
+  ],
+  "src": "stage-peace.png"
+ },
+ "phone": {
+  "ar": 0.473,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.417,
+  "size": [
+   726,
+   1536
+  ],
+  "src": "stage-phone.png"
+ },
+ "ramen": {
+  "ar": 0.532,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.435,
+  "size": [
+   817,
+   1536
+  ],
+  "src": "stage-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.493,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.382,
+  "size": [
+   757,
+   1536
+  ],
+  "src": "stage-sewing.png"
+ },
+ "shy": {
+  "ar": 0.47,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.488,
+  "size": [
+   722,
+   1536
+  ],
+  "src": "stage-shy.png"
+ },
+ "stretch": {
+  "ar": 0.501,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.603,
+  "size": [
+   770,
+   1536
+  ],
+  "src": "stage-yawn.png"
+ },
+ "study": {
+  "ar": 0.486,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.418,
+  "size": [
+   746,
+   1536
+  ],
+  "src": "stage-reading.png"
+ },
+ "tease": {
+  "ar": 0.602,
+  "hf": 0.14,
+  "ht": 0.003,
+  "hx": 0.437,
+  "size": [
+   925,
+   1536
+  ],
+  "src": "stage-handonhip.png"
+ },
+ "thinking": {
+  "ar": 0.454,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.472,
+  "size": [
+   697,
+   1536
+  ],
+  "src": "stage-thinking.png"
+ },
+ "watering": {
+  "ar": 0.656,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.525,
+  "size": [
+   1008,
+   1536
+  ],
+  "src": "stage-watering.png"
+ },
+ "wave": {
+  "ar": 0.524,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.458,
+  "size": [
+   805,
+   1536
+  ],
+  "src": "stage-wave.png"
+ }
+}

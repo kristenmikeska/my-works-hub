@@ -1,0 +1,200 @@
+{
+ "arms-crossed": {
+  "ar": 0.416,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.457,
+  "size": [
+   639,
+   1536
+  ],
+  "src": "drive-armscrossed.png"
+ },
+ "cheer": {
+  "ar": 0.551,
+  "hf": 0.138,
+  "ht": 0.011,
+  "hx": 0.524,
+  "size": [
+   846,
+   1536
+  ],
+  "src": "drive-fist.png"
+ },
+ "evoker": {
+  "ar": 0.538,
+  "hf": 0.138,
+  "ht": 0.011,
+  "hx": 0.481,
+  "size": [
+   827,
+   1536
+  ],
+  "src": "drive-evoker.png"
+ },
+ "hair": {
+  "ar": 0.507,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.45,
+  "size": [
+   778,
+   1536
+  ],
+  "src": "drive-handinhair.png"
+ },
+ "heart": {
+  "ar": 0.428,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.514,
+  "size": [
+   658,
+   1536
+  ],
+  "src": "drive-hearthands.png"
+ },
+ "jump": {
+  "ar": 0.623,
+  "hf": 0.131,
+  "ht": 0.009,
+  "hx": 0.52,
+  "size": [
+   957,
+   1536
+  ],
+  "src": "drive-jump.png"
+ },
+ "lookback": {
+  "ar": 0.482,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.451,
+  "size": [
+   741,
+   1536
+  ],
+  "src": "drive-overshoulder.png"
+ },
+ "peace": {
+  "ar": 0.517,
+  "hf": 0.14,
+  "ht": 0.003,
+  "hx": 0.436,
+  "size": [
+   794,
+   1536
+  ],
+  "src": "drive-peace.png"
+ },
+ "phone": {
+  "ar": 0.486,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.434,
+  "size": [
+   747,
+   1536
+  ],
+  "src": "drive-phone.png"
+ },
+ "ramen": {
+  "ar": 0.507,
+  "hf": 0.138,
+  "ht": 0.011,
+  "hx": 0.453,
+  "size": [
+   779,
+   1536
+  ],
+  "src": "drive-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.477,
+  "hf": 0.138,
+  "ht": 0.017,
+  "hx": 0.465,
+  "size": [
+   733,
+   1536
+  ],
+  "src": "drive-sewing.png"
+ },
+ "shy": {
+  "ar": 0.393,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.528,
+  "size": [
+   604,
+   1536
+  ],
+  "src": "drive-shy.png"
+ },
+ "stretch": {
+  "ar": 0.455,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.624,
+  "size": [
+   699,
+   1536
+  ],
+  "src": "drive-yawn.png"
+ },
+ "study": {
+  "ar": 0.462,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.417,
+  "size": [
+   710,
+   1536
+  ],
+  "src": "drive-reading.png"
+ },
+ "tease": {
+  "ar": 0.542,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.475,
+  "size": [
+   833,
+   1536
+  ],
+  "src": "drive-handonhip.png"
+ },
+ "thinking": {
+  "ar": 0.445,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.537,
+  "size": [
+   683,
+   1536
+  ],
+  "src": "drive-thinking.png"
+ },
+ "watering": {
+  "ar": 0.569,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.407,
+  "size": [
+   874,
+   1536
+  ],
+  "src": "drive-watering.png"
+ },
+ "wave": {
+  "ar": 0.478,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.464,
+  "size": [
+   734,
+   1536
+  ],
+  "src": "drive-wave.png"
+ }
+}

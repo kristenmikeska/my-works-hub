@@ -1,0 +1,200 @@
+{
+ "arms-crossed": {
+  "ar": 0.499,
+  "hf": 0.14,
+  "ht": 0.001,
+  "hx": 0.412,
+  "size": [
+   767,
+   1536
+  ],
+  "src": "esports-armscrossed.png"
+ },
+ "cheer": {
+  "ar": 0.607,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.436,
+  "size": [
+   932,
+   1536
+  ],
+  "src": "esports-fist.png"
+ },
+ "evoker": {
+  "ar": 0.529,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.454,
+  "size": [
+   813,
+   1536
+  ],
+  "src": "esports-evoker.png"
+ },
+ "hair": {
+  "ar": 0.556,
+  "hf": 0.14,
+  "ht": 0.003,
+  "hx": 0.419,
+  "size": [
+   854,
+   1536
+  ],
+  "src": "esports-handinhair.png"
+ },
+ "heart": {
+  "ar": 0.587,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.5,
+  "size": [
+   901,
+   1536
+  ],
+  "src": "esports-hearthands.png"
+ },
+ "jump": {
+  "ar": 0.605,
+  "hf": 0.138,
+  "ht": 0.005,
+  "hx": 0.338,
+  "size": [
+   930,
+   1536
+  ],
+  "src": "esports-jump.png"
+ },
+ "lookback": {
+  "ar": 0.551,
+  "hf": 0.139,
+  "ht": 0.004,
+  "hx": 0.444,
+  "size": [
+   846,
+   1536
+  ],
+  "src": "esports-overshoulder.png"
+ },
+ "peace": {
+  "ar": 0.589,
+  "hf": 0.14,
+  "ht": 0.001,
+  "hx": 0.513,
+  "size": [
+   904,
+   1536
+  ],
+  "src": "esports-peace.png"
+ },
+ "phone": {
+  "ar": 0.415,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.404,
+  "size": [
+   638,
+   1536
+  ],
+  "src": "esports-phone.png"
+ },
+ "ramen": {
+  "ar": 0.507,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.443,
+  "size": [
+   779,
+   1536
+  ],
+  "src": "esports-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.46,
+  "hf": 0.14,
+  "ht": 0.0,
+  "hx": 0.447,
+  "size": [
+   707,
+   1536
+  ],
+  "src": "esports-sewing.png"
+ },
+ "shy": {
+  "ar": 0.402,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.427,
+  "size": [
+   617,
+   1536
+  ],
+  "src": "esports-shy.png"
+ },
+ "stretch": {
+  "ar": 0.447,
+  "hf": 0.139,
+  "ht": 0.004,
+  "hx": 0.616,
+  "size": [
+   687,
+   1536
+  ],
+  "src": "esports-yawn.png"
+ },
+ "study": {
+  "ar": 0.449,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.435,
+  "size": [
+   689,
+   1536
+  ],
+  "src": "esports-reading.png"
+ },
+ "tease": {
+  "ar": 0.528,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.443,
+  "size": [
+   811,
+   1536
+  ],
+  "src": "esports-handonhip.png"
+ },
+ "thinking": {
+  "ar": 0.495,
+  "hf": 0.14,
+  "ht": 0.001,
+  "hx": 0.468,
+  "size": [
+   761,
+   1536
+  ],
+  "src": "esports-thinking.png"
+ },
+ "watering": {
+  "ar": 0.654,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.61,
+  "size": [
+   1004,
+   1536
+  ],
+  "src": "esports-watering.png"
+ },
+ "wave": {
+  "ar": 0.492,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.426,
+  "size": [
+   755,
+   1536
+  ],
+  "src": "esports-wave.png"
+ }
+}

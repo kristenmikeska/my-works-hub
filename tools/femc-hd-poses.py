@@ -54,7 +54,15 @@ LOOKS = {'sk-cp-afterhours': ('Solar-After Hours-Menu Poses', 'afterhr-'),
          'sk-sugarrush': ('Solar-Sugar Rush-Menu Poses', 'sugar-'),
          'sk-cp-sunmoon': ('Solar-Sun Hoodie-Menu Poses', 'sunhood-'),
          'sk-yukata': ('Solar-Summer Yukata-Menu Poses', 'sumyu-'),
-         'sk-cp-festival': ('Solar-Summer Festival-Menu Poses', 'sumfest-')}
+         'sk-cp-festival': ('Solar-Summer Festival-Menu Poses', 'sumfest-'),
+         'sk-oops': ('Solar-Oops-Menu Poses', 'oops-'),
+         'sk-esports': ('Solar-SU eSports-Menu Poses', 'esports-'),
+         'sk-cp-ringside': ('Solar-Ringside-Menu Poses', 'ringside-'),
+         'sk-idol': ('Solar-Stage Idol-Menu Poses', 'stage-'),
+         'sk-strawberry': ('Solar-Strawberry Milk-Menu Poses', 'strawberry-'),
+         'sk-hanbok': ('Solar-Moonlit Hanbok-Menu Poses', 'moonlit-'),
+         'sk-cp-drive': ('Solar-Midnight Drive-Menu Poses', 'drive-'),
+         'sk-prowl': ('Solar-Night Prowl-Menu Poses', 'prowl-')}
 QUALITY, ALPHA_MIN, SPECK = 92, 16, 3
 
 

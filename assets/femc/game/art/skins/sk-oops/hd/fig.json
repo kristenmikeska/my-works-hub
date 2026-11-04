@@ -1,0 +1,200 @@
+{
+ "arms-crossed": {
+  "ar": 0.451,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.512,
+  "size": [
+   692,
+   1536
+  ],
+  "src": "oops-armscrossed.png"
+ },
+ "cheer": {
+  "ar": 0.523,
+  "hf": 0.138,
+  "ht": 0.015,
+  "hx": 0.476,
+  "size": [
+   804,
+   1536
+  ],
+  "src": "oops-fist.png"
+ },
+ "evoker": {
+  "ar": 0.514,
+  "hf": 0.138,
+  "ht": 0.015,
+  "hx": 0.416,
+  "size": [
+   789,
+   1536
+  ],
+  "src": "oops-evoker.png"
+ },
+ "hair": {
+  "ar": 0.477,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.409,
+  "size": [
+   733,
+   1536
+  ],
+  "src": "oops-handinhair.png"
+ },
+ "heart": {
+  "ar": 0.48,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.441,
+  "size": [
+   737,
+   1536
+  ],
+  "src": "oops-hearthands.png"
+ },
+ "jump": {
+  "ar": 0.635,
+  "hf": 0.136,
+  "ht": 0.005,
+  "hx": 0.476,
+  "size": [
+   975,
+   1536
+  ],
+  "src": "oops-jump.png"
+ },
+ "lookback": {
+  "ar": 0.479,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.386,
+  "size": [
+   735,
+   1536
+  ],
+  "src": "oops-overshoulder.png"
+ },
+ "peace": {
+  "ar": 0.516,
+  "hf": 0.138,
+  "ht": 0.011,
+  "hx": 0.445,
+  "size": [
+   793,
+   1536
+  ],
+  "src": "oops-peace.png"
+ },
+ "phone": {
+  "ar": 0.426,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.402,
+  "size": [
+   654,
+   1536
+  ],
+  "src": "oops-phone.png"
+ },
+ "ramen": {
+  "ar": 0.495,
+  "hf": 0.138,
+  "ht": 0.013,
+  "hx": 0.453,
+  "size": [
+   761,
+   1536
+  ],
+  "src": "oops-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.411,
+  "hf": 0.138,
+  "ht": 0.011,
+  "hx": 0.495,
+  "size": [
+   632,
+   1536
+  ],
+  "src": "oops-sewing.png"
+ },
+ "shy": {
+  "ar": 0.439,
+  "hf": 0.138,
+  "ht": 0.015,
+  "hx": 0.483,
+  "size": [
+   674,
+   1536
+  ],
+  "src": "oops-shy.png"
+ },
+ "stretch": {
+  "ar": 0.434,
+  "hf": 0.138,
+  "ht": 0.013,
+  "hx": 0.677,
+  "size": [
+   666,
+   1536
+  ],
+  "src": "oops-yawn.png"
+ },
+ "study": {
+  "ar": 0.425,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.498,
+  "size": [
+   653,
+   1536
+  ],
+  "src": "oops-reading.png"
+ },
+ "tease": {
+  "ar": 0.417,
+  "hf": 0.138,
+  "ht": 0.017,
+  "hx": 0.467,
+  "size": [
+   640,
+   1536
+  ],
+  "src": "oops-handonhip.png"
+ },
+ "thinking": {
+  "ar": 0.405,
+  "hf": 0.137,
+  "ht": 0.018,
+  "hx": 0.527,
+  "size": [
+   622,
+   1536
+  ],
+  "src": "oops-thinking.png"
+ },
+ "watering": {
+  "ar": 0.622,
+  "hf": 0.138,
+  "ht": 0.011,
+  "hx": 0.573,
+  "size": [
+   956,
+   1536
+  ],
+  "src": "oops-watering.png"
+ },
+ "wave": {
+  "ar": 0.436,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.436,
+  "size": [
+   669,
+   1536
+  ],
+  "src": "oops-wave.png"
+ }
+}
