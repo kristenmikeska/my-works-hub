@@ -54,6 +54,28 @@
   ],
   "src": "vp-hearthands.png"
  },
+ "jump": {
+  "ar": 0.625,
+  "hf": 0.138,
+  "ht": 0.004,
+  "hx": 0.333,
+  "size": [
+   960,
+   1536
+  ],
+  "src": "vp-jump.png"
+ },
+ "lookback": {
+  "ar": 0.497,
+  "hf": 0.14,
+  "ht": 0.003,
+  "hx": 0.366,
+  "size": [
+   764,
+   1536
+  ],
+  "src": "vp-overshoulder.png"
+ },
  "peace": {
   "ar": 0.561,
   "hf": 0.138,
@@ -86,6 +108,17 @@
    1536
   ],
   "src": "vp-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.414,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.477,
+  "size": [
+   636,
+   1536
+  ],
+  "src": "vp-sewing.png"
  },
  "shy": {
   "ar": 0.43,

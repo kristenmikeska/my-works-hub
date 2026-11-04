@@ -1,0 +1,145 @@
+{
+ "arms-crossed": {
+  "ar": 0.415,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.558,
+  "size": [
+   638,
+   1536
+  ],
+  "src": "movie-armscrossed.png"
+ },
+ "cheer": {
+  "ar": 0.534,
+  "hf": 0.138,
+  "ht": 0.013,
+  "hx": 0.181,
+  "size": [
+   820,
+   1536
+  ],
+  "src": "movie-fist.png"
+ },
+ "hair": {
+  "ar": 0.399,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.512,
+  "size": [
+   613,
+   1536
+  ],
+  "src": "movie-handinhair.png"
+ },
+ "heart": {
+  "ar": 0.461,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.466,
+  "size": [
+   708,
+   1536
+  ],
+  "src": "movie-hearthands.png"
+ },
+ "lookback": {
+  "ar": 0.469,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.38,
+  "size": [
+   720,
+   1536
+  ],
+  "src": "movie-overshoulder.png"
+ },
+ "peace": {
+  "ar": 0.421,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.57,
+  "size": [
+   647,
+   1536
+  ],
+  "src": "movie-peace.png"
+ },
+ "ramen": {
+  "ar": 0.479,
+  "hf": 0.138,
+  "ht": 0.011,
+  "hx": 0.528,
+  "size": [
+   735,
+   1536
+  ],
+  "src": "movie-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.4,
+  "hf": 0.138,
+  "ht": 0.018,
+  "hx": 0.519,
+  "size": [
+   614,
+   1536
+  ],
+  "src": "movie-sewing.png"
+ },
+ "shy": {
+  "ar": 0.356,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.553,
+  "size": [
+   547,
+   1536
+  ],
+  "src": "movie-shy.png"
+ },
+ "stretch": {
+  "ar": 0.473,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.728,
+  "size": [
+   727,
+   1536
+  ],
+  "src": "movie-yawn.png"
+ },
+ "study": {
+  "ar": 0.365,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.53,
+  "size": [
+   560,
+   1536
+  ],
+  "src": "movie-reading.png"
+ },
+ "thinking": {
+  "ar": 0.377,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.51,
+  "size": [
+   579,
+   1536
+  ],
+  "src": "movie-thinking.png"
+ },
+ "wave": {
+  "ar": 0.446,
+  "hf": 0.138,
+  "ht": 0.013,
+  "hx": 0.479,
+  "size": [
+   685,
+   1536
+  ],
+  "src": "movie-wave.png"
+ }
+}

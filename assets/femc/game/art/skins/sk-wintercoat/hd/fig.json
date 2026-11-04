@@ -10,6 +10,17 @@
   ],
   "src": "winter-armscrossed.png"
  },
+ "cheer": {
+  "ar": 0.612,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.422,
+  "size": [
+   940,
+   1536
+  ],
+  "src": "winter-fist.png"
+ },
  "evoker": {
   "ar": 0.542,
   "hf": 0.139,
@@ -32,6 +43,28 @@
   ],
   "src": "winter-handinhair.png"
  },
+ "jump": {
+  "ar": 0.658,
+  "hf": 0.138,
+  "ht": 0.005,
+  "hx": 0.125,
+  "size": [
+   1011,
+   1536
+  ],
+  "src": "winter-jump.png"
+ },
+ "lookback": {
+  "ar": 0.57,
+  "hf": 0.138,
+  "ht": 0.015,
+  "hx": 0.565,
+  "size": [
+   875,
+   1536
+  ],
+  "src": "winter-overshoulder.png"
+ },
  "peace": {
   "ar": 0.516,
   "hf": 0.139,
@@ -43,6 +76,17 @@
   ],
   "src": "winter-peace.png"
  },
+ "phone": {
+  "ar": 0.449,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.496,
+  "size": [
+   689,
+   1536
+  ],
+  "src": "winter-phone.png"
+ },
  "ramen": {
   "ar": 0.464,
   "hf": 0.139,
@@ -53,6 +97,17 @@
    1536
   ],
   "src": "winter-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.381,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.456,
+  "size": [
+   585,
+   1536
+  ],
+  "src": "winter-sewing.png"
  },
  "shy": {
   "ar": 0.436,
@@ -86,6 +141,17 @@
    1536
   ],
   "src": "winter-reading.png"
+ },
+ "tease": {
+  "ar": 0.437,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.462,
+  "size": [
+   671,
+   1536
+  ],
+  "src": "winter-handonhip.png"
  },
  "thinking": {
   "ar": 0.49,

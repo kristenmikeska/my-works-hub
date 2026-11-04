@@ -43,13 +43,46 @@
   ],
   "src": "velvet-handinhair.png"
  },
- "phone": {
-  "ar": 0.349,
+ "heart": {
+  "ar": 0.352,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.518,
+  "size": [
+   540,
+   1536
+  ],
+  "src": "velvet-hearthands.png"
+ },
+ "jump": {
+  "ar": 0.557,
   "hf": 0.139,
   "ht": 0.007,
-  "hx": 0.513,
+  "hx": 0.327,
   "size": [
-   536,
+   855,
+   1536
+  ],
+  "src": "velvet-jump.png"
+ },
+ "lookback": {
+  "ar": 0.341,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.559,
+  "size": [
+   524,
+   1536
+  ],
+  "src": "velvet-overshoulder.png"
+ },
+ "phone": {
+  "ar": 0.389,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.534,
+  "size": [
+   598,
    1536
   ],
   "src": "velvet-phone.png"
@@ -64,6 +97,17 @@
    1536
   ],
   "src": "velvet-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.355,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.559,
+  "size": [
+   546,
+   1536
+  ],
+  "src": "velvet-sewing.png"
  },
  "stretch": {
   "ar": 0.411,
@@ -86,6 +130,17 @@
    1536
   ],
   "src": "velvet-reading.png"
+ },
+ "tease": {
+  "ar": 0.375,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.51,
+  "size": [
+   576,
+   1536
+  ],
+  "src": "velvet-handonhip.png"
  },
  "thinking": {
   "ar": 0.367,

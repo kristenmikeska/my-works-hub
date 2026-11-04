@@ -14,17 +14,14 @@ Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make.
 3. Optional later: battle pose sheets redone as single figures (only if the in-battle figures ever look soft to you).
 
 **Solar: done (in the game)**
-- ✅ Her own look (18) · ✅ After Hours (18) · ✅ Date Day (18) · ✅ Emo Night (18) · ✅ Limelight (18) · ✅ Alpha Phi Formal (18) · ✅ Y2K Pop Star (18) · ✅ Pink Lagoon (18) · ✅ Night Swim (18) · ✅ The Sun (18) · ✅ Sugar Rush (18) · ✅ Sun Hoodie (18) · ✅ Summer Yukata (18) · ✅ Summer Festival (18) · ✅ Oops! (18) · ✅ SU eSports Jersey (18) · ✅ Ringside (18) · ✅ Stage Idol (18) · ✅ Strawberry Milk (18) · ✅ Moonlit Hanbok (18) · ✅ Midnight Drive (18) · ✅ Night Prowl (18) · ✅ Halloween Witch (18) · ✅ Harbour Night Coat (18) · ✅ Phantom Thief (18)
+- ✅ Her own look (18) · ✅ After Hours (18) · ✅ Date Day (18) · ✅ Emo Night (18) · ✅ Limelight (18) · ✅ Alpha Phi Formal (18) · ✅ Y2K Pop Star (18) · ✅ Pink Lagoon (18) · ✅ Night Swim (18) · ✅ The Sun (18) · ✅ Sugar Rush (18) · ✅ Sun Hoodie (18) · ✅ Summer Yukata (18) · ✅ Summer Festival (18) · ✅ Oops! (18) · ✅ SU eSports Jersey (18) · ✅ Ringside (18) · ✅ Stage Idol (18) · ✅ Strawberry Milk (18) · ✅ Moonlit Hanbok (18) · ✅ Midnight Drive (18) · ✅ Night Prowl (18) · ✅ Halloween Witch (18) · ✅ Harbour Night Coat (18) · ✅ Phantom Thief (18) · ✅ Morning Roadwork (18) · ✅ Summer Session (18) · ✅ Snake Charmer (18) · ✅ Lifeguard on Duty (18) · ✅ Vice President (18)
 
-**Solar: in, but missing a few poses**
-- **Snake Charmer** (17 in): shy
-- **Lifeguard on Duty** (17 in): shy
-- **Vice President** (15 in): jump, over-the-shoulder, sewing
-- **Velvet Attendant** (11 in): hands on hip, heart hands, jump, over-the-shoulder, peace sign, sewing, shy
-- **Winter Coat** (11 in): fist pump, hands on hip, heart hands, jump, over-the-shoulder, phone, sewing
+**Solar: in, but missing a few poses (8 left in all)**
+- **Movie Date** (13 in): Evoker, hands on hip, jump, phone, watering (the last piece the couple results screen needs for Solar)
+- **Velvet Attendant** (16 in): peace sign, shy
+- **Winter Coat** (17 in): heart hands
 
-**Solar: no HD set yet (3 outfits, all 18 poses each)**
-Morning Roadwork · Summer Session · Movie Date (also the last piece the couple results screen needs for Solar)
+Fill-ins can go loose in New Adds (e.g. `velvet-peace.png`); the tool finds them.
 
 **Tip:** if ChatGPT blocks a pose, reword it (e.g. "relaxed standing pose, hand resting on hip" instead of "hands on hips"); that often gets it through.
 

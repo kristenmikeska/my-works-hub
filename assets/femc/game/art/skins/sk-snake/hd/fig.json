@@ -120,6 +120,17 @@
   ],
   "src": "snake-sewing.png"
  },
+ "shy": {
+  "ar": 0.396,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.451,
+  "size": [
+   608,
+   1536
+  ],
+  "src": "snake-shy.png"
+ },
  "stretch": {
   "ar": 0.493,
   "hf": 0.139,

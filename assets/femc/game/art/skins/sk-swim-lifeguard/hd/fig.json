@@ -120,6 +120,17 @@
   ],
   "src": "lifeguard-sewing.png"
  },
+ "shy": {
+  "ar": 0.282,
+  "hf": 0.138,
+  "ht": 0.011,
+  "hx": 0.456,
+  "size": [
+   433,
+   1536
+  ],
+  "src": "lifeguard-shy.png"
+ },
  "stretch": {
   "ar": 0.442,
   "hf": 0.138,

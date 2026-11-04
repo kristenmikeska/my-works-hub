@@ -1,0 +1,200 @@
+{
+ "arms-crossed": {
+  "ar": 0.294,
+  "hf": 0.138,
+  "ht": 0.013,
+  "hx": 0.695,
+  "size": [
+   451,
+   1536
+  ],
+  "src": "summer-armscrossed.png"
+ },
+ "cheer": {
+  "ar": 0.404,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.448,
+  "size": [
+   620,
+   1536
+  ],
+  "src": "summer-fist.png"
+ },
+ "evoker": {
+  "ar": 0.516,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.525,
+  "size": [
+   792,
+   1536
+  ],
+  "src": "summer-evoker.png"
+ },
+ "hair": {
+  "ar": 0.427,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.425,
+  "size": [
+   656,
+   1536
+  ],
+  "src": "summer-handinhair.png"
+ },
+ "heart": {
+  "ar": 0.339,
+  "hf": 0.138,
+  "ht": 0.018,
+  "hx": 0.584,
+  "size": [
+   521,
+   1536
+  ],
+  "src": "summer-hearthands.png"
+ },
+ "jump": {
+  "ar": 0.59,
+  "hf": 0.138,
+  "ht": 0.001,
+  "hx": 0.455,
+  "size": [
+   907,
+   1536
+  ],
+  "src": "summer-jump.png"
+ },
+ "lookback": {
+  "ar": 0.358,
+  "hf": 0.138,
+  "ht": 0.011,
+  "hx": 0.585,
+  "size": [
+   550,
+   1536
+  ],
+  "src": "summer-overshoulder.png"
+ },
+ "peace": {
+  "ar": 0.436,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.567,
+  "size": [
+   669,
+   1536
+  ],
+  "src": "summer-peace.png"
+ },
+ "phone": {
+  "ar": 0.328,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.56,
+  "size": [
+   504,
+   1536
+  ],
+  "src": "summer-phone.png"
+ },
+ "ramen": {
+  "ar": 0.371,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.646,
+  "size": [
+   570,
+   1536
+  ],
+  "src": "summer-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.362,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.558,
+  "size": [
+   556,
+   1536
+  ],
+  "src": "summer-sewing.png"
+ },
+ "shy": {
+  "ar": 0.283,
+  "hf": 0.138,
+  "ht": 0.016,
+  "hx": 0.628,
+  "size": [
+   434,
+   1536
+  ],
+  "src": "summer-shy.png"
+ },
+ "stretch": {
+  "ar": 0.415,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.668,
+  "size": [
+   638,
+   1536
+  ],
+  "src": "summer-yawn.png"
+ },
+ "study": {
+  "ar": 0.304,
+  "hf": 0.138,
+  "ht": 0.018,
+  "hx": 0.576,
+  "size": [
+   467,
+   1536
+  ],
+  "src": "summer-reading.png"
+ },
+ "tease": {
+  "ar": 0.541,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.56,
+  "size": [
+   831,
+   1536
+  ],
+  "src": "summer-handonhip.png"
+ },
+ "thinking": {
+  "ar": 0.352,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.56,
+  "size": [
+   540,
+   1536
+  ],
+  "src": "summer-thinking.png"
+ },
+ "watering": {
+  "ar": 0.448,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.596,
+  "size": [
+   688,
+   1536
+  ],
+  "src": "summer-watering.png"
+ },
+ "wave": {
+  "ar": 0.389,
+  "hf": 0.139,
+  "ht": 0.004,
+  "hx": 0.632,
+  "size": [
+   598,
+   1536
+  ],
+  "src": "summer-wave.png"
+ }
+}
