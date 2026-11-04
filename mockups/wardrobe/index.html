@@ -35,6 +35,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 .stage { position: absolute; inset: 0; z-index: 2; }
 .fig { position: absolute; left: 50%; bottom: 0; transform-origin: 50% 100%; animation: sway 7.5s ease-in-out infinite; }
+.fig .walk { position: absolute; inset: 0; transform-origin: 50% 100%; }
 .fig .breathe { position: absolute; inset: 0; transform-origin: 50% 100%; animation: breathe 4.2s ease-in-out infinite; }
 .fig img { position: absolute; display: block; max-width: none; user-select: none; -webkit-user-drag: none; transition: opacity .45s ease, transform .6s cubic-bezier(.2, 1, .3, 1); filter: drop-shadow(0 18px 24px rgba(0, 0, 0, .55)); }
 .fig img.out { opacity: 0; transform: translateX(-3%) scale(.985); }
@@ -42,6 +43,19 @@ button { font: inherit; color: inherit; cursor: pointer; }
 @keyframes sway { 0%, 100% { transform: translateX(-50%) rotate(-.35deg); } 50% { transform: translateX(-50%) rotate(.35deg); } }
 .fig.hop .breathe { animation: hop .55s cubic-bezier(.3, 1.6, .5, 1), breathe 4.2s ease-in-out .55s infinite; }
 @keyframes hop { 40% { transform: translateY(-2.2%) scale(1.012); } }
+/* A new person walks in from the side as the curtain opens: two steps, a lean, then she settles. */
+.walk.enter { animation: enter 1.05s cubic-bezier(.25, .8, .3, 1) both; }
+.walk.enter.from-l { animation-name: enter-l; }
+@keyframes enter { 0% { transform: translateX(46%) rotate(2.5deg); opacity: 0; } 12% { opacity: 1; }
+  30% { transform: translateX(28%) translateY(-1.6%) rotate(1.6deg); } 50% { transform: translateX(14%) translateY(0) rotate(1deg); }
+  70% { transform: translateX(3%) translateY(-1.2%) rotate(.4deg); } 86% { transform: translateX(-1.2%) translateY(0) rotate(-.6deg); } 100% { transform: none; } }
+@keyframes enter-l { 0% { transform: translateX(-46%) rotate(-2.5deg); opacity: 0; } 12% { opacity: 1; }
+  30% { transform: translateX(-28%) translateY(-1.6%) rotate(-1.6deg); } 50% { transform: translateX(-14%) translateY(0) rotate(-1deg); }
+  70% { transform: translateX(-3%) translateY(-1.2%) rotate(-.4deg); } 86% { transform: translateX(1.2%) translateY(0) rotate(.6deg); } 100% { transform: none; } }
+/* A new outfit: she turns on the spot (squeezes to a sliver, the clothes change, turns back). */
+.walk.twirl { animation: twirl .62s cubic-bezier(.5, 0, .4, 1) both; }
+@keyframes twirl { 0% { transform: none; } 45%, 55% { transform: scaleX(.04) translateY(-1.5%); } 100% { transform: none; } }
+.walk.twirl img { transition: none; }
 .soft-note { position: absolute; left: 14px; top: 34px; z-index: 6; padding: 3px 9px; background: rgba(20, 7, 15, .8); border: 1px solid rgba(255, 140, 192, .4); font: italic 800 11px/1.2 var(--cond); letter-spacing: .12em; text-transform: uppercase; color: var(--pink-3); transform: skewX(-10deg); }
 
 /* The curtain: two velvet panels gathered at the sides; they sweep shut and fall open. */
@@ -80,7 +94,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .kicker { margin: 0; color: var(--pink-2); font: italic 800 12px/1.2 var(--cond); letter-spacing: .3em; text-transform: uppercase; }
 .who { display: flex; gap: 10px; margin: 8px 0 12px; padding: 4px 4px 10px; overflow-x: auto; scrollbar-width: thin; }
 .who button { position: relative; flex: 0 0 auto; width: 74px; padding: 0; border: 0; background: none; text-align: center; opacity: .62; transition: opacity .15s, transform .15s; }
-.who button .face { display: block; width: 66px; height: 66px; margin: 0 auto; overflow: hidden; background: #2a0f22 center 12% / 190% auto no-repeat; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); transition: background-color .15s; }
+.who button .face { display: block; width: 66px; height: 66px; margin: 0 auto; overflow: hidden; background: #2a0f22 no-repeat; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); transition: background-color .15s; }
 .who button b { display: block; margin-top: 4px; font: italic 900 13px/1 var(--cond); letter-spacing: .02em; }
 .who button small { display: block; font: italic 700 11px/1.2 var(--cond); color: var(--pink-3); opacity: .8; }
 .who button:hover, .who button:focus-visible { opacity: .9; outline: none; }
@@ -162,7 +176,7 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
   <div class="booth" id="booth">
     <div class="floor"></div>
     <div class="bulbs"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    <div class="stage"><div class="fig" id="fig"><div class="breathe" id="breathe"></div></div></div>
+    <div class="stage"><div class="fig" id="fig"><div class="walk" id="walk"><div class="breathe" id="breathe"></div></div></div></div>
     <div class="soft-note" id="softNote" hidden></div>
     <div class="curtain l"></div><div class="curtain r"></div>
     <div class="valance"></div>
@@ -219,11 +233,18 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
   const listOf = (w, k) => k === 'skin' || k === 'weapon' ? of(w, k) : items.filter(i => i.kind === k);
 
   /* ── Character strip ── */
+  // Each neutral portrait's face, measured by eye (fractions of the picture's width): x between the eyes, the eye line, eye-to-chin.
+  // Every icon is scaled so eye-to-chin is the same size and the eyes sit at the same height.
+  const FACE = { solar: [0.47, 0.399, 0.18], haechan: [0.62, 0.355, 0.21], jungwon: [0.485, 0.408, 0.25], jihoon: [0.407, 0.299, 0.2], minji: [0.651, 0.402, 0.2], akihiko: [0.273, 0.462, 0.25], yukari: [0.365, 0.497, 0.27], junpei: [0.634, 0.424, 0.26], mitsuru: [0.456, 0.408, 0.23], aigis: [0.374, 0.437, 0.21], shinjiro: [0.635, 0.569, 0.21] };
+  function faceCss(w) {
+    const [cx, ey, d] = FACE[w] || [.5, .4, .22], S = 66, size = 31 / d;
+    return `background-size:${size.toFixed(1)}px auto;background-position:${(S / 2 - cx * size).toFixed(1)}px ${(S * .36 - ey * size).toFixed(1)}px`;
+  }
   function paintWho() {
     $('who').innerHTML = ORDER.filter(w => own[w]).map(w => {
       const n = of(w, 'skin').filter(ready).length;
       return `<button type="button" role="tab" data-who="${w}" class="${w === who ? 'on' : ''}${w === 'solar' ? ' main' : ''}" aria-selected="${w === who}">
-        <span class="face" style="background-image:url('${A}portraits/${w}/neutral.webp')"></span><b>${NAME[w]}</b><small>${n} outfit${n === 1 ? '' : 's'}</small></button>`;
+        <span class="face" style="background-image:url('${A}portraits/${w}/neutral.webp');${faceCss(w)}"></span><b>${NAME[w]}</b><small>${n} outfit${n === 1 ? '' : 's'}</small></button>`;
     }).join('');
   }
   $('who').addEventListener('click', e => {
@@ -338,10 +359,10 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
     const img = new Image(); img.alt = ''; img.className = instant ? '' : 'out'; img.src = src; place(img, info);
     img.decoding = 'async';
     breathe.appendChild(img);
-    const go = () => { requestAnimationFrame(() => { img.classList.remove('out'); if (old) { old.classList.add('out'); setTimeout(() => old.remove(), 600); } }); };
+    const go = () => { setTimeout(() => { img.classList.remove("out"); if (old) { old.classList.add("out"); setTimeout(() => old.remove(), 600); } }, 30); };
     if (img.complete) go(); else img.onload = img.onerror = go;
   }
-  function render(instant) {
+  function render(instant, greet) {
     clearInterval(faceTimer); clearInterval(poseTimer);
     const L = lookArt(); mode = L.mode; fig.dataset.mode = mode;
     breathe.innerHTML = ''; fig.style.bottom = mode === 'face' ? '0' : '';
@@ -350,14 +371,18 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
       poses = POSE_ORDER.filter(p => L.hd[p]).concat(Object.keys(L.hd).filter(p => !POSE_ORDER.includes(p)));
       poseAt = 0; L.cur = poses[0];
       const at = p => Object.assign({ mode: 'hd' }, L.hd[p]);
-      show(L.dir + poses[0] + '.webp', at(poses[0]), instant);
+      const hi = greet && ['wave', 'peace', 'cheer'].find(p => L.hd[p]);
+      show(L.dir + (hi || poses[0]) + '.webp', at(hi || poses[0]), instant);
+      if (hi) setTimeout(() => { if (mode === 'hd' && breathe.querySelector('img:not(.out)')?.src.includes('/' + hi + '.webp')) show(L.dir + poses[0] + '.webp', at(poses[0])); }, 1700);
       // Every few seconds she settles into another everyday pose.
       poseTimer = setInterval(() => { if (document.hidden) return; nextPose(L, at); }, 6500);
       $('poseBtn').onclick = () => { nextPose(L, at); hop(); restart(L, at); };
     } else if (mode === 'face') {
       const fs = L.faces, base = fs.includes('neutral') ? 'neutral' : fs[0];
       const idle = ['happy', 'neutral', 'neutral', 'serious', 'neutral', 'flustered', 'neutral'].filter(f => fs.includes(f));
-      show(L.dir + base + '.webp', { mode: 'face' }, instant);
+      const hi = greet && fs.includes('happy');
+      show(L.dir + (hi ? 'happy' : base) + '.webp', { mode: 'face' }, instant);
+      if (hi) setTimeout(() => { if (mode === 'face' && breathe.querySelector('img:not(.out)')?.src.includes('/happy.webp')) show(L.dir + base + '.webp', { mode: 'face' }); }, 1800);
       let k = 0;
       faceTimer = setInterval(() => { if (document.hidden) return; k = (k + 1) % idle.length; show(L.dir + idle[k] + '.webp', { mode: 'face' }); }, 3200);
       $('poseBtn').onclick = () => { const f = ['happy', 'surprised', 'flustered', 'serious'].filter(x => fs.includes(x)); show(L.dir + f[Math.floor(Math.random() * f.length)] + '.webp', { mode: 'face' }); hop(); };
@@ -391,23 +416,47 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
   /* The curtain. full: swept shut and thrown open (a new person). peek: half-drawn and back (a new outfit). */
   let busy = 0;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const walk = $('walk');
+  let lastWho = 'solar';
+  function motion(cls, extra) { walk.className = 'walk'; void walk.offsetWidth; if (!reduced) walk.className = 'walk ' + cls + (extra ? ' ' + extra : ''); }
   function swap(kindOf) {
     const id = ++busy;
+    if (kindOf === 'peek') {
+      // Same person, new clothes: a quick half-curtain and she turns on the spot; the picture changes mid-turn.
+      booth.classList.remove('opening', 'peek', 'shut'); void booth.offsetWidth;
+      booth.classList.add('peek'); swish(.6); motion('twirl');
+      setTimeout(() => { if (id !== busy) return; render(true, false);
+        setTimeout(() => { if (id !== busy) return; booth.classList.add('opening'); booth.classList.remove('peek'); swish(.5, true);
+          setTimeout(() => { if (id === busy) booth.classList.remove('opening'); }, 800); }, 120); }, reduced ? 300 : 290);
+      return;
+    }
+    // From the right when moving along the row, from the left when going back.
+    const dir = ORDER.indexOf(who) < ORDER.indexOf(lastWho) ? 'from-l' : ''; lastWho = who;
     booth.classList.remove('opening', 'peek', 'shut');
     void booth.offsetWidth;
     booth.classList.add(kindOf === 'full' ? 'shut' : reduced ? 'shut' : 'peek');
     swish(kindOf === 'full' ? 1 : .6);
     setTimeout(() => {
       if (id !== busy) return;
-      render(true);
+      render(true, true); motion('enter', dir); walk.style.opacity = reduced ? '' : '0';
       setTimeout(() => {
         if (id !== busy) return;
-        booth.classList.add('opening'); booth.classList.remove('shut', 'peek'); swish(.8, true); hop();
+        walk.style.opacity = ''; motion('enter', dir);
+        booth.classList.add('opening'); booth.classList.remove('shut', 'peek'); swish(.8, true); footsteps();
         setTimeout(() => { if (id === busy) booth.classList.remove('opening'); }, 800);
       }, kindOf === 'full' ? 220 : 60);
     }, kindOf === 'full' ? 430 : 300);
   }
 
+  /* Two soft footsteps as someone walks in. */
+  function footsteps() {
+    try { ac = ac || new (window.AudioContext || window.webkitAudioContext)();
+      [0.18, 0.5].forEach(dt => { const t = ac.currentTime + dt, o = ac.createOscillator(), g = ac.createGain();
+        o.type = 'sine'; o.frequency.setValueAtTime(140, t); o.frequency.exponentialRampToValueAtTime(60, t + .09);
+        g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.12, t + .01); g.gain.exponentialRampToValueAtTime(.0001, t + .12);
+        o.connect(g).connect(ac.destination); o.start(t); o.stop(t + .14); });
+    } catch (e) {}
+  }
   /* A fabric swish and curtain rings (Web Audio; nothing to load). */
   let ac = null;
   function swish(v = 1, rings) {
@@ -434,8 +483,9 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
   const q = new URLSearchParams(location.search);   // ?who=haechan&sel=<id> opens straight on a look (handy for checking)
   if (own[q.get('who')]) who = q.get('who');
   if (items.some(i => i.id === q.get('sel'))) sel = q.get('sel');
-  paintWho(); paintCloset(); render(true);
-  booth.classList.add('shut'); setTimeout(() => { booth.classList.add('opening'); booth.classList.remove('shut'); }, 350);
+  paintWho(); paintCloset(); render(true, true);
+  booth.classList.add('shut'); walk.style.opacity = '0';
+  setTimeout(() => { walk.style.opacity = ''; motion('enter'); booth.classList.add('opening'); booth.classList.remove('shut'); }, 350);
 })();
 </script>
 </body>
