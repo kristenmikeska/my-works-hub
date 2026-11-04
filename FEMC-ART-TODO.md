@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 3):** ⭐ high-resolution poses (top section: Solar first) · 1 credits still (section 18: Ken) · 22 skin-series pieces for Solar (section 19: Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21) · 11 Runners epilogue places (section 23: four for Regionals, three for the home screen) · 1 Runners sticker sheet (section 24) · 12 Echo sheets (section 25: 72 new Echoes). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make (updated Nov 4):** ⭐ high-resolution poses (top section: Solar first) · 1 credits still (section 18: Ken) · 22 skin-series pieces for Solar (section 19: Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21) · 11 Runners epilogue places (section 23: four for Regionals, three for the home screen) · 1 Runners sticker sheet (section 24) · 12 Echo sheets (section 25: 72 new Echoes) · 6 dorm lounge pictures (section 26) · couple victory poses for Haechan and Akihiko (section 27). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 ## ⭐⭐ TOP PRIORITY when you have usage: high-resolution poses (Kat, Nov 2)
 
@@ -914,4 +914,72 @@ Attach: `Echo - style (Gumiho).png`, `Echo - style 2 (Hecate).png`
 Save as: `echoes-stay-2.png`
 ```
 A sheet of six Persona designs in a 3 columns × 2 rows grid on a plain white background, with clear empty space between every cell and nothing overlapping. Match the attached Persona art exactly: the same Persona 3 Reload official art style, painted rendering, line weight, lighting and level of detail, a dramatic full-body pose, each one a mythic being summoned as a Persona with a faint glowing blue Persona aura at its edges. Every cell is one full-body figure, centred and about the same height. Cell 1 (top left): Taweret, a protective Egyptian goddess with the head and body of a standing hippopotamus, lion paws and a crocodile tail, a gold headdress with plumes, resting her paw on a protective sa amulet, a sleeping child behind her. Cell 2 (top middle): Vesta, a serene veiled goddess in a long white stola, holding a shallow bowl with a bright steady flame, standing in a round columned temple with a sacred hearth fire burning behind her. Cell 3 (top right): Cardea, a graceful young Roman goddess in a pale rose stola, holding a flowering hawthorn branch and a large ornate bronze door key, standing in a half-open doorway with light spilling through. Cell 4 (bottom left): Janus, a dignified Roman god with two bearded faces looking in opposite directions, one older and one younger, holding a key and a staff, standing in a great arched gateway, a sunrise on one side and a sunset on the other. Cell 5 (bottom middle): Eostre, a radiant spring goddess with long flowing hair woven with blossoms, a pale gold and green gown, a white hare at her feet, holding a glowing egg of light, a sunrise and blossoming trees behind her. Cell 6 (bottom right): Gabija, a warm young hearth goddess made of soft firelight in a white and red Lithuanian folk dress and amber beads, cupping glowing embers in her hands, bread and salt on a wooden table, a stork at the window. Clean edges on the white background, no background scenery beyond small props named here, no text, no labels.
+```
+
+---
+
+## 26. The dorm lounge, sharper and by season (ChatGPT)
+Kat's note (Nov 4): the evening screen's dorm lounge (the room behind Solar every night) is an old 1000 px picture. 26A redraws it sharper; 26B-26E are the same room through the year, with the season showing in the windows and small touches. Same room, same angle every time, so it still feels like home.
+
+**[ ] 26A. The dorm lounge at night (redrawn)**  
+Attach: `BG - Dorm Lounge at night.png`  
+Save as: `iwatodaidorm-livingroom-night-hd.png`
+```
+Redraw the attached image as a sharp, high-resolution 16:9 anime background in the Persona 3 Reload official art style: clean lineart, soft painted lighting, no people, no text. Keep the room, layout and camera angle exactly: the Iwatodai dorm lounge at night, two dark leather sofas with studded arms and a grey stone coffee table on a patterned rug in front, tall arched windows and double doors glowing warm amber from the lamps outside, two standing lamps, a reception counter with flowers behind, a potted tree on the left, a dark ceiling with a chandelier. Cosy and lived-in: a folded throw blanket on a sofa arm, a few magazines and a mug on the table, soft warm lamplight pooling on the floor, deep shadows in the corners. Crisp detail on the furniture and rug, nothing blurry.
+```
+
+**[ ] 26B. The dorm lounge in spring**  
+Attach: `BG - Dorm Lounge at night.png`  
+Save as: `iwatodaidorm-livingroom-night-spring.png`
+```
+Redraw the attached image as a sharp, high-resolution 16:9 anime background in the Persona 3 Reload official art style: clean lineart, soft painted lighting, no people, no text. Keep the room, layout and camera angle exactly: the Iwatodai dorm lounge at night, two dark leather sofas, a grey stone coffee table on a patterned rug, tall arched windows and double doors, two standing lamps, a reception counter, a potted tree. Spring: a vase of cherry blossom branches on the coffee table, a few pink petals on the rug and windowsill, the windows showing a soft blue spring night with blossoms outside, warm lamplight inside.
+```
+
+**[ ] 26C. The dorm lounge in the rainy season**  
+Attach: `BG - Dorm Lounge at night.png`  
+Save as: `iwatodaidorm-livingroom-night-rain.png`
+```
+Redraw the attached image as a sharp, high-resolution 16:9 anime background in the Persona 3 Reload official art style: clean lineart, soft painted lighting, no people, no text. Keep the room, layout and camera angle exactly: the Iwatodai dorm lounge at night, two dark leather sofas, a grey stone coffee table on a patterned rug, tall arched windows and double doors, two standing lamps, a reception counter, a potted tree. June rain: raindrops running down the window glass, the night outside dark blue-grey and wet, a few umbrellas drying in a stand by the doors, a towel over a sofa arm, warm lamplight inside against the cool rain.
+```
+
+**[ ] 26D. The dorm lounge in summer**  
+Attach: `BG - Dorm Lounge at night.png`  
+Save as: `iwatodaidorm-livingroom-night-summer.png`
+```
+Redraw the attached image as a sharp, high-resolution 16:9 anime background in the Persona 3 Reload official art style: clean lineart, soft painted lighting, no people, no text. Keep the room, layout and camera angle exactly: the Iwatodai dorm lounge at night, two dark leather sofas, a grey stone coffee table on a patterned rug, tall arched windows and double doors, two standing lamps, a reception counter, a potted tree. Summer: a glass wind chime hanging by a window, an electric fan on the floor, a paper fan and a bowl of watermelon slices on the coffee table, one window open to a warm summer night, warm lamplight.
+```
+
+**[ ] 26E. The dorm lounge in autumn**  
+Attach: `BG - Dorm Lounge at night.png`  
+Save as: `iwatodaidorm-livingroom-night-autumn.png`
+```
+Redraw the attached image as a sharp, high-resolution 16:9 anime background in the Persona 3 Reload official art style: clean lineart, soft painted lighting, no people, no text. Keep the room, layout and camera angle exactly: the Iwatodai dorm lounge at night, two dark leather sofas, a grey stone coffee table on a patterned rug, tall arched windows and double doors, two standing lamps, a reception counter, a potted tree. Autumn: the windows showing orange and red leaves blowing past in the night wind, a few leaves on the doormat, a knit blanket on a sofa, a bowl of persimmons and a steaming teapot on the coffee table, warm amber lamplight.
+```
+
+**[ ] 26F. The dorm lounge in winter**  
+Attach: `BG - Dorm Lounge at night.png`  
+Save as: `iwatodaidorm-livingroom-night-winter.png`
+```
+Redraw the attached image as a sharp, high-resolution 16:9 anime background in the Persona 3 Reload official art style: clean lineart, soft painted lighting, no people, no text. Keep the room, layout and camera angle exactly: the Iwatodai dorm lounge at night, two dark leather sofas, a grey stone coffee table on a patterned rug, tall arched windows and double doors, two standing lamps, a reception counter, a potted tree. Winter: snow falling past the windows and frost in the corners of the glass, scarves and coats on a rack by the doors, thick blankets on the sofas, mugs of cocoa on the coffee table, a small space heater glowing, cosy warm lamplight against the cold blue night outside.
+```
+
+---
+
+## 27. Couple victory poses (ChatGPT)
+Kat's yes (Nov 4): when Solar and her partner wear a matching couple outfit and win, the results screen shows them side by side, with a different pose each time. These are the partner's poses; Solar's come from her HD sets (Sun Hoodie and Summer Festival are done). One figure per image, same format as Solar's HD poses. Make as many as you like; the game uses whichever exist.
+
+**[ ] 27A. Haechan, Moon Hoodie (goes with Solar's Sun Hoodie)**  
+Attach: `Moon Hoodie [sk-haechan-cp-sunmoon] - pose sheet (recut).png`, then `Haechan.png`  
+Save as: `haechan-moonhoodie-hd-<pose>.png` in a folder `HC-Moon Hoodie-Victory Poses`  
+Poses (one image each): peace sign, arms crossed with a smirk, hand in hair, thumbs up, pointing at the viewer, hands in hoodie pocket leaning back
+```
+A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (an oversized black hoodie with a pink crescent moon on the front). Pose: [the pose, e.g. a lazy peace sign, a small cocky smile, weight on one leg], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
+```
+
+**[ ] 27B. Akihiko, Summer Festival (goes with Solar's Summer Festival)**  
+Attach: `Summer Festival [sk-akihiko-cp-festival] - pose sheet (recut).png`, then `Akihiko.png`  
+Save as: `akihiko-summerfestival-hd-<pose>.png` in a folder `Akihiko-Summer Festival-Victory Poses`  
+Poses (one image each): fist pump, arms crossed with a confident grin, thumbs up, fist raised to the sky, hand rubbing the back of his neck (bashful), boxing stance
+```
+A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (a grey striped yukata with a red obi, and his boxing gloves). Pose: [the pose, e.g. a fist pump, a big confident grin], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
 ```
