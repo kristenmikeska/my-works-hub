@@ -375,6 +375,8 @@ try:
         want_pose = {'study': 'study', 'rest': 'stretch', 'out': 'phone', 'tartarus': 'evoker', 'dorm:cook': 'ramen', 'dorm:roofgarden': 'watering', 'desk': 'sewing'}
         got = {k: p.eval(HOV % json.dumps(k)) for k in want_pose}
         ok(all(v is None or f'solar-poses/{want_pose[k]}.webp' in v for k, v in got.items()) and sum(v is not None for v in got.values()) >= 4, f'hover reactions: {got}')
+        # Nov 4: every Solar outfit has an HD set now; Summer Session's is taken away here (in the page only) to test the old frames.
+        p.eval("(()=>{const R=(FEMC_ART_READY.skins||{})['sk-summersession'];if(R){delete R.hd;delete R.hdv;delete R.hdfig}return true})()")
         p.eval("(()=>{const C=FemcCosmetics;C.grantItem('sk-summersession');C.equip('sk-summersession');return true})()")
         p.eval("FemcGameUI.evening();true")
         ok(p.eval("document.querySelector('.g-home-fig').dataset.look==='sk-summersession'"), 'a worn Wardrobe outfit comes first')
@@ -402,7 +404,9 @@ try:
         p.eval("(()=>{const W=FEMC_ART_READY.skins['sk-wintercoat'];if(window.__w0)W.hd=window.__w0;else delete W.hd;return true})()")
         # Nov 3 (batch 134): a PARTIAL set (Velvet: 11 of 18) rotates only through what it has; a hover pose it lacks keeps the scroll pose
         V = p.eval("(FEMC_ART_READY.skins['sk-velvet']||{}).hd||[]")
-        ok(len(V) == 11 and 'phone' in V and 'peace' not in V and 'study' in V, f'ready.js lists Velvet\'s 11 HD poses: {V}')
+        ok(len(V) >= 11 and 'phone' in V and 'peace' not in V and 'study' in V, f'ready.js lists Velvet\'s HD poses (still partial): {V}')
+        # Nov 4: Kat filled in Velvet's sewing; take it away here (in the page only) so the "pose it lacks" hover is still tested.
+        p.eval("(()=>{const R=FEMC_ART_READY.skins['sk-velvet'];R.hd=R.hd.filter(k=>k!=='sewing');return true})()")
         p.eval("(()=>{const C=FemcCosmetics;C.grantItem('sk-velvet');C.equip('sk-velvet');FemcGameUI.evening();return true})()")
         v0 = p.eval("document.querySelector('.g-home-fig img').getAttribute('src')")
         vo = p.eval(HOV % json.dumps('out')); vs = p.eval(HOV % json.dumps('study')); vd = p.eval(HOV % json.dumps('desk'))

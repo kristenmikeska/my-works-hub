@@ -902,6 +902,8 @@ try:
     # ── HD preview and the collection meter (Nov 4 2026): a Solar outfit's HD set in the preview, its pose row, the meters ──
     if want('hdpreview'):
         setup(p, day='10/12')
+        # Nov 4: every Solar outfit has an HD set now; Summer Session's is taken away here (in the page only) as the no-set case.
+        p.eval("(()=>{const R=(FEMC_ART_READY.skins||{})['sk-summersession'];if(R){delete R.hd;delete R.hdv;delete R.hdfig}return true})()")
         p.eval("(()=>{const C=FemcCosmetics;['sk-emo','sk-summersession','evk-rose'].forEach(C.grantItem);FemcGame.save();})()")
         menu(p, 'wardrobe')
         click(p, '[data-wd-view=wardrobe]')
