@@ -160,12 +160,12 @@ window.FemcEchoUI = (() => {
     const $ = q => o.el.querySelector(q);
     const list = () => (filter === 'all' ? X.collectable() : X.collectable().filter(x => x.set === filter)).concat(filter === 'all' && X.isRegistered(bs(), X.SECRET) ? [X.byId(X.SECRET)] : []);
     function grid() {
-      const b = bs();
-      return `<div class="g-ec-grid">${list().map(x => { const known = X.isRegistered(b, x.id), r = X.es(b).reg[x.id]; return `<button type="button" class="g-ec-tile${known ? '' : ' locked'}" data-cp="${x.id}" style="--ec:${setOf(x).color}" aria-label="${esc(known ? x.name : `Unknown ${x.arcana} Echo`)}">${X.cardHtml(x.id, { cls: 'g-ec-thumb', known })}<b>${esc(known ? x.name : '???')}</b><small>${esc(x.arcana)}${known ? ` · Lv ${r.lvl}` : ''}</small></button>`; }).join('')}</div>`;
+      const b = bs(), gs = X.SETS[filter], shut = gs && gs.gate && !X.setOpen(b, filter);
+      return `${shut ? `<p class="g-note g-ec-gate">${esc(gs.gateWhy || 'Not open yet.')}</p>` : ''}<div class="g-ec-grid">${list().map(x => { const known = X.isRegistered(b, x.id), r = X.es(b).reg[x.id]; return `<button type="button" class="g-ec-tile${known ? '' : ' locked'}" data-cp="${x.id}" style="--ec:${setOf(x).color}" aria-label="${esc(known ? x.name : `Unknown ${x.arcana} Echo`)}">${X.cardHtml(x.id, { cls: 'g-ec-thumb', known })}<b>${esc(known ? x.name : '???')}</b><small>${esc(x.arcana)}${known ? ` · Lv ${r.lvl}` : ''}</small></button>`; }).join('')}</div>`;
     }
     function detail(id) {
       const b = bs(), x = X.byId(id), known = X.isRegistered(b, id), r = X.es(b).reg[id], set = setOf(x), arr = list(), k = arr.findIndex(z => z.id === id);
-      if (!known) return `<div class="g-ec-page locked"><button type="button" class="g-btn small" data-cp-back><span>‹ All Echoes</span></button><div class="g-ec-pgmain">${X.cardHtml(id, { cls: 'g-ec-big', known: false })}<div><p class="g-kicker">${esc(x.arcana)} · ${esc(set.myth)}</p><h2>???</h2><p class="g-note">Not registered yet.</p></div></div></div>`;
+      if (!known) return `<div class="g-ec-page locked"><button type="button" class="g-btn small" data-cp-back><span>‹ All Echoes</span></button><div class="g-ec-pgmain">${X.cardHtml(id, { cls: 'g-ec-big', known: false })}<div><p class="g-kicker">${esc(x.arcana)} · ${esc(set.myth)}</p><h2>???</h2><p class="g-note">${esc(X.setOpen(b, x.set) ? 'Not registered yet.' : (set.gateWhy || 'Not open yet.'))}</p></div></div></div>`;
       const sumWhy = velvet ? X.summonWhy(b, id) : '', cost = X.summonCost(r.lvl), held = X.owned(b).filter(i => i.id === id).sort((p, q) => q.lvl - p.lvl)[0];
       const better = held && (held.lvl > r.lvl || held.exp !== r.exp || (held.inh || []).join() !== (r.inh || []).join());
       const learn = x.learn.map(([L, s]) => `<li title="${esc(D().skills[s].desc || '')}">${skIcon(s)}<span>${esc(D().skills[s].name)}</span><small>Lv ${L}</small></li>`).join('') + (r.inh || []).map(s => `<li title="${esc(D().skills[s].desc || '')}">${skIcon(s)}<span>${esc(D().skills[s].name)}</span><small>inherited</small></li>`).join('');
@@ -184,9 +184,9 @@ window.FemcEchoUI = (() => {
     function rewards() {
       const b = bs(), ms = X.milestones(b);
       const rw = m => [m.reward.plumes ? `${m.reward.plumes} Velvet Plumes` : '', m.reward.card ? `a ★${m.reward.card} Revelation card` : '', m.reward.cos ? (window.FemcCosmetics && window.FemcCosmetics.byId(m.reward.cos) ? window.FemcCosmetics.byId(m.reward.cos).name : 'a look') : '', m.reward.echo ? 'a secret Echo' : ''].filter(Boolean).join(', ');
-      const row = s => `<li class="g-ec-mile${s.claimed ? ' done' : ''}" data-mile="${esc(s.m.id)}"><b>${esc(s.m.kind === 'all' ? 'Every Echo' : s.m.name)}</b><span class="g-ec-meter"><i style="--w:${Math.round(s.have / s.total * 100)}%"></i></span><small>${s.have} / ${s.total} · ${esc(rw(s.m))}${s.claimed ? ' · ✓' : ''}</small></li>`;
-      return `<p class="g-note">Every new Echo registered is a Velvet Plume from Elizabeth (show her the Compendium). Finishing an arcana or a whole myth set pays out here by itself.</p>
-        <p class="g-kicker">Myth sets</p><ul class="g-ec-miles">${ms.filter(s => s.m.kind !== 'arcana').map(row).join('')}</ul>
+      const row = s => `<li class="g-ec-mile${s.claimed ? ' done' : ''}" data-mile="${esc(s.m.id)}"><b>${esc(s.m.name)}</b><span class="g-ec-meter"><i style="--w:${Math.round(s.have / s.total * 100)}%"></i></span><small>${s.have} / ${s.total} · ${esc(rw(s.m))}${s.claimed ? ' · ✓' : ''}</small></li>`;
+      return `<p class="g-note">Every new Echo registered is a Velvet Plume from Elizabeth (show her the Compendium). Finishing an arcana or a whole set pays out here by itself.</p>
+        <p class="g-kicker">Sets</p><ul class="g-ec-miles">${ms.filter(s => s.m.kind !== 'arcana').map(row).join('')}</ul>
         <p class="g-kicker">Arcana</p><ul class="g-ec-miles cols">${ms.filter(s => s.m.kind === 'arcana').map(row).join('')}</ul>`;
     }
     const paint = () => {
@@ -235,7 +235,7 @@ window.FemcEchoUI = (() => {
       if (m.reward.card && window.FemcBuild) { const B = window.FemcBuild, c = B.rollCard(Math.random, { tier: Math.min(7, 1 + Math.floor((b.lvl || 5) / 9)), minR: m.reward.card, r: m.reward.card }); const res = B.addCard(b, c); got.push(res.card ? `a ★${c.r} Revelation card` : `Tarot Dust ×${res.dust}`); }
       if (m.reward.cos && window.FemcCosmetics) { const it = window.FemcCosmetics.grantItem(m.reward.cos); if (it) got.push(it.name); }
       if (m.reward.echo) { const r = X.add(b, m.reward.echo, { via: 'milestone', day: S().day }); if (r) got.push(`a secret Echo: ${X.byId(m.reward.echo).name}`); }
-      paid.push(`Echo Compendium: ${m.kind === 'all' ? 'every Echo' : m.name} complete! ${got.join(', ')}`);
+      paid.push(`Echo Compendium: ${m.kind === 'every' ? 'every Echo' : m.kind === 'all' ? 'the four worlds' : m.name} complete! ${got.join(', ')}`);
     });
     if (paid.length) { G.saveQuiet(); paid.forEach(t => G.toast('perk', t)); }
     return paid;
@@ -250,7 +250,12 @@ window.FemcEchoUI = (() => {
     add('ec-tt-laurel', 'title', 'Laurel Title', 'UR', 'Olympian gold on night blue. The Runners Echoes reward.', { title: ['#e8c25a', '#0b1640'] });
     add('ec-wp-static', 'wallpaper', 'Static', 'SR', 'A dead channel at 3 a.m. The HOAX Echoes reward.', { css: 'repeating-linear-gradient(0deg, rgba(255,255,255,.07) 0 1px, transparent 1px 3px), radial-gradient(circle at 30% 40%, #2a1a3a, #07050c 70%)' });
     add('ec-tt-torii', 'title', 'Torii Title', 'UR', 'Shrine-gate vermilion on black. The Persona 3 Echoes reward.', { title: ['#e8452c', '#140605'] });
-    add('ec-tt-samjogo', 'title', 'Three-Legged Sun Title', 'UR', 'A black crow inside a gold sun. For every Echo in the Compendium.', { title: ['#ffd36b', '#050302'] });
+    add('ec-tt-samjogo', 'title', 'Three-Legged Sun Title', 'UR', 'A black crow inside a gold sun. For every Echo of the four worlds.', { title: ['#ffd36b', '#050302'] });
+    add('ec-tt-mirror', 'title', 'Mirror Title', 'UR', 'A rose-pink glass on black. The Delicate Echoes reward.', { title: ['#ff4f8b', '#14070f'] });
+    add('ec-tt-lantern', 'title', 'Lantern Title', 'UR', 'A paper lantern’s orange glow on black. The Havenbrook Echoes reward.', { title: ['#ff8a4c', '#120806'] });
+    add('ec-tt-briar', 'title', 'Briar Title', 'UR', 'Petal pink with a thorn’s edge. The Petal & Thorn Echoes reward.', { title: ['#ff7aa8', '#14070f'] });
+    add('ec-tt-hearth', 'title', 'Hearth Title', 'UR', 'Soft pink firelight on black. The Stay Echoes reward.', { title: ['#ffc0d8', '#14070f'] });
+    add('ec-tt-every', 'title', 'Every Universe Title', 'UR', 'Hot pink on the deepest black. For every Echo of every world.', { title: ['#ff4f9e', '#050302'] });
   }
 
   return { personaHtml, wirePersona, openFusion, openCompendium, velvetButtons, wireVelvet, payMilestones, ranksByArcana };

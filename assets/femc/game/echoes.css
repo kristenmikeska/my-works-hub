@@ -47,6 +47,7 @@
 @media (prefers-reduced-motion: reduce) { .g-ec-born .g-ec-respic { animation: none; } }
 
 .g-ec-filter { display: flex; flex-wrap: wrap; margin: 12px 0 6px; }
+.g-ec-gate { margin: 4px 0 10px; }
 .g-ec-filter em { font-style: normal; opacity: .75; margin-left: 4px; font-size: .9em; }
 .g-ec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; max-height: 62vh; overflow-y: auto; padding: 2px 4px 2px 0; }
 .g-ec-tile { display: grid; justify-items: center; gap: 2px; padding: 6px 4px; border: 2px solid color-mix(in srgb, var(--ec) 40%, transparent); background: rgba(20, 7, 15, .9); color: var(--ink); text-align: center; }
@@ -90,3 +91,8 @@
 :root[data-titletheme="ec-tt-laurel"] .g-title { background: #e8c25a; } :root[data-titletheme="ec-tt-laurel"] .g-title::before { background: #0b1640; }
 :root[data-titletheme="ec-tt-torii"] .g-title { background: #e8452c; } :root[data-titletheme="ec-tt-torii"] .g-title::before { background: #140605; }
 :root[data-titletheme="ec-tt-samjogo"] .g-title { background: #ffd36b; } :root[data-titletheme="ec-tt-samjogo"] .g-title::before { background: #050302; }
+:root[data-titletheme="ec-tt-mirror"] .g-title { background: #ff4f8b; } :root[data-titletheme="ec-tt-mirror"] .g-title::before { background: #14070f; }
+:root[data-titletheme="ec-tt-lantern"] .g-title { background: #ff8a4c; } :root[data-titletheme="ec-tt-lantern"] .g-title::before { background: #120806; }
+:root[data-titletheme="ec-tt-briar"] .g-title { background: #ff7aa8; } :root[data-titletheme="ec-tt-briar"] .g-title::before { background: #14070f; }
+:root[data-titletheme="ec-tt-hearth"] .g-title { background: #ffc0d8; } :root[data-titletheme="ec-tt-hearth"] .g-title::before { background: #14070f; }
+:root[data-titletheme="ec-tt-every"] .g-title { background: #ff4f9e; } :root[data-titletheme="ec-tt-every"] .g-title::before { background: #050302; }

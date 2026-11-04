@@ -1,7 +1,11 @@
 """Echoes (2026-10-27): Solar's collectible second Persona slot, played for real in headless Chrome (femc-game.html, isolated
 profile, localhost; no player saves).
 
-Run: python3 tests/femc_echoes.py [--only rules,fight,fusion,compendium,rewards,milestones,drops,migration,shots] [--screenshots DIR]
+Run: python3 tests/femc_echoes.py [--only rules,fight,fusion,compendium,rewards,milestones,drops,migration,sets,shots] [--screenshots DIR]
+
+2026-11-03: 120 Echoes in eight sets (the first four 18 each; Delicate, Havenbrook, Petal & Thorn and Stay 12 each) plus the
+secret one; `sets` checks the Stay gate (no drops, Shuffle cards or fusions until the Stay epilogue is finished, then the
+Brownie gift), the new sets' milestones and titles, and shots of the Compendium on a new set at 1440x900 and 390x844.
 
 Covers: the roster (48 in four myth sets plus the secret one, arcana, the balance audit, the fusion chart), equipping through the
 Personas tab and the Echo changing Solar's skills, passives and resists/weaknesses in a real fight (an Echo skill used through
@@ -143,7 +147,9 @@ try:
           // Searchers', S.E.E.S.'s and Haenim's Personas are never Echoes.
           out.names=X.ECHOES.map(e=>e.name);
           return out;})()""")
-        ok(r['n'] == 49 and r['sets'] == {'strangers': 12, 'runners': 12, 'hoax': 12, 'p3': 12, 'secret': 1}, r['sets'])
+        ok(r['n'] == 121 and r['sets'] == {'strangers': 18, 'runners': 18, 'hoax': 18, 'p3': 18, 'delicate': 12, 'havenbrook': 12, 'petal': 12, 'stay': 12, 'secret': 1}, r['sets'])
+        sig_ids = p.eval("FemcEchoes.ECHOES.map(e=>e.learn[2][1])")
+        ok(len(sig_ids) == len(set(sig_ids)) and all(s.startswith('ec_') for s in sig_ids), 'every signature is its own ec_* skill')
         ok(r['arcana'] == 21, ('every arcana of the year', r['arcana']))
         ok(r['audit'] == [], ('balance audit', r['audit']))
         ok(not r['dupPersonas'], ('no Echo shares a Persona already in the game', r['dupPersonas']))
@@ -159,7 +165,7 @@ try:
         top = p.eval("(()=>{const X=FemcEchoes;let m=0;X.ECHOES.forEach(e=>e.learn.forEach(([,s])=>{m=Math.max(m,X.reach(s).one)}));return [m,FEMC_BATTLE_DATA.skills.high_noon.power]})()")
         ok(top[0] <= top[1] * 0.75, ('Echo skills stay under her rays', top))
         clean(p, 'rules')
-        results['rules'] = f"49 Echoes (12 × 4 + secret), 21 arcana, audit clean, {r['pairs']} pairs checked, strongest one-target {top[0]} vs High Noon {top[1]}"
+        results['rules'] = f"121 Echoes (18 × 4 + 12 × 4 + secret), 21 arcana, audit clean, {r['pairs']} pairs checked, strongest one-target {top[0]} vs High Noon {top[1]}"
         print('rules OK', results['rules'], flush=True)
 
     # ── Equipping in the Personas tab changes skills, passives and resists in a real fight ──
@@ -275,7 +281,7 @@ try:
         click(p, '.g-vel-ov [data-ec-vcomp]')
         p.wait("!!document.querySelector('.g-ec-comp .g-ec-grid')")
         tiles = p.eval("[...document.querySelectorAll('.g-ec-comp [data-cp]')].map(t=>[t.dataset.cp,t.classList.contains('locked'),t.innerText])")
-        ok(len(tiles) == 48 and sum(1 for t in tiles if not t[1]) == 2, ('48 tiles, two registered', len(tiles)))
+        ok(len(tiles) == 120 and sum(1 for t in tiles if not t[1]) == 2, ('120 tiles, two registered', len(tiles)))
         ok(all('???' in t[2] for t in tiles if t[1]), 'unregistered ones stay ???')
         shot(p, 'compendium-desktop')
         click(p, '.g-ec-comp [data-cp="oni"]')
@@ -309,7 +315,7 @@ try:
         ok(p.eval("!document.querySelector('.g-ec-page [data-summon]')"), 'summoning is the Velvet Room’s')
         p.eval("document.querySelectorAll('.g-overlay').forEach(x=>x.remove())")
         clean(p, 'compendium')
-        results['compendium'] = f"48 tiles (??? until registered), Oni's page, registered again at Lv 27, re-summoned for ¥{cost:,}; summoning only in the Velvet Room"
+        results['compendium'] = f"120 tiles (??? until registered), Oni's page, registered again at Lv 27, re-summoned for ¥{cost:,}; summoning only in the Velvet Room"
         print('compendium OK', results['compendium'], flush=True)
 
     # ── Rewards: a plume per registered Echo through Elizabeth's claim button ──
@@ -336,8 +342,8 @@ try:
         r = p.eval(r"""(async()=>{const X=FemcEchoes,G=FemcGame,b=G.S.battleSave,g=FemcGacha.gs();const out={};
           const tick=()=>new Promise(r=>setTimeout(r,500));
           let pl=g.plumes,cards=b.cards.list.length;
-          // Strength: Bulgasari, Minotaur, Oni.
-          ['bulgasari','minotaur','oni'].forEach(id=>X.add(b,id,{via:'gift'})); G.save(); await tick();
+          // Strength: every ungated Strength Echo (Stay's Bes doesn't count toward the arcana).
+          const str=X.MILESTONES.find(m=>m.id==='arc:Strength').ids; out.strIds=str; str.forEach(id=>X.add(b,id,{via:'gift'})); G.save(); await tick();
           out.arc={claimed:X.es(b).miles.includes('arc:Strength'),plumes:g.plumes-pl,cards:b.cards.list.length-cards};
           pl=g.plumes; cards=b.cards.list.length;
           // Every Persona 3 Echo: the myth set.
@@ -345,20 +351,22 @@ try:
           out.set={claimed:X.es(b).miles.includes('set:p3'),plumes:g.plumes-pl,cards:b.cards.list.length-cards,look:FemcCosmetics.owns('ec-tt-torii'),five:b.cards.list.some(c=>c.r===5)};
           // Everything: Samjogo.
           X.collectable().forEach(x=>X.add(b,x.id,{via:'gift'})); G.save(); await tick();
-          out.all={claimed:X.es(b).miles.includes('all'),samjogo:X.isRegistered(b,'samjogo'),title:FemcCosmetics.owns('ec-tt-samjogo'),miles:X.es(b).miles.length,total:X.MILESTONES.length};
+          out.all={claimed:X.es(b).miles.includes('all'),every:X.es(b).miles.includes('every'),samjogo:X.isRegistered(b,'samjogo'),title:FemcCosmetics.owns('ec-tt-samjogo'),every_title:FemcCosmetics.owns('ec-tt-every'),set_titles:['ec-tt-mirror','ec-tt-lantern','ec-tt-briar','ec-tt-hearth'].every(k=>FemcCosmetics.owns(k)),miles:X.es(b).miles.length,total:X.MILESTONES.length};
           // Paid once: saving again changes nothing.
           const p2=g.plumes; G.save(); await tick(); out.once=g.plumes===p2;
           out.toasts=document.querySelectorAll('.g-toast').length;
           return out})()""")
         ok(r['arc']['claimed'] and r['arc']['plumes'] == 3 and r['arc']['cards'] == 1, ('Strength complete: 3 plumes and a card', r['arc']))
+        ok('bes' not in r['strIds'] and {'bulgasari', 'minotaur', 'oni', 'nian'} <= set(r['strIds']), ('arcana milestones skip the gated set', r['strIds']))
         ok(r['set']['claimed'] and r['set']['look'] and r['set']['five'], ('Persona 3 set: plumes, a ★5 card, the Torii title', r['set']))
         ok(r['all']['claimed'] and r['all']['samjogo'] and r['all']['title'] and r['all']['miles'] == r['all']['total'], ('everything: Samjogo and its title', r['all']))
+        ok(r['all']['every'] and r['all']['every_title'] and r['all']['set_titles'], ('every set: its title; every Echo: the Every Universe title', r['all']))
         ok(r['once'], 'milestones pay once')
         menu(p, 'wardrobe')
         ok('Torii Title' in p.eval("document.querySelector('.g-fm-body').innerText"), 'the look is in the Wardrobe')
         p.eval("FemcMenu.close()")
         clean(p, 'milestones')
-        results['milestones'] = f"Strength (3 plumes + ★4 card), the Persona 3 set (5 plumes, ★5 card, Torii Title), everything (Samjogo, 10 plumes, title); {r['all']['total']} milestones, each paid once"
+        results['milestones'] = f"Strength (3 plumes + ★4 card), the Persona 3 set (5 plumes, ★5 card, Torii Title), the four worlds (Samjogo, 10 plumes, title), every Echo (Every Universe Title), the new sets' titles; {r['all']['total']} milestones, each paid once"
         print('milestones OK', results['milestones'], flush=True)
 
     # ── Drops: Shuffle Time's Echo card in a real Tartarus night, Tartarus loot ──
@@ -414,6 +422,50 @@ try:
         clean(p, 'migration')
         results['migration'] = 'old saves start empty; Zashiki-warashi after the first full moon (straight away when past it), once; world gifts after three memories; toast on load'
         print('migration OK', flush=True)
+
+    # ── The new sets: Stay's gate (drops, Shuffle, fusion, gift), the new world sets dealt like the rest ──
+    if want('sets'):
+        setup(p, lvl=60)
+        g = p.eval(r"""(()=>{const X=FemcEchoes,b=FemcGame.S.battleSave,R=FemcBattleEngine.rng(11),out={};
+          const stay=new Set(X.collectable().filter(x=>x.set==='stay').map(x=>x.id)),neu=new Set(X.collectable().filter(x=>['delicate','havenbrook','petal'].includes(x.set)).map(x=>x.id));
+          const roll=()=>{let st=0,nw=0,dr=0,dn=0;for(let i=0;i<3000;i++){const c=X.shuffleCard(R,7,b);if(stay.has(c.echo))st++;if(neu.has(c.echo))nw++;const d=X.dropPick(R,b);if(stay.has(d))dr++;if(neu.has(d))dn++;}return {st,nw,dr,dn}};
+          // A fusion pair whose chart lands on an arcana with a Stay Echo (Bes, Strength) and a high enough target.
+          const fz=()=>{let hit=0;X.collectable().forEach(a=>X.collectable().forEach(c=>{if(a.id>=c.id)return;const pool=X.fuseResult(a.id,c.id,b);if(pool&&pool.some(x=>stay.has(x.id)))hit++;}));return hit};
+          out.shut={open:X.setOpen(b,'stay'),...roll(),fuse:fz(),gift:X.es(b).gifts.includes('stay')};
+          b.epis=['stay']; X.normalize(b);
+          out.open={open:X.setOpen(b,'stay'),...roll(),fuse:fz(),gift:X.es(b).gifts.includes('stay'),brownie:X.owned(b).some(i=>i.id==='brownie')};
+          return out})()""")
+        ok(not g['shut']['open'] and g['shut']['st'] == 0 and g['shut']['dr'] == 0 and g['shut']['fuse'] == 0 and not g['shut']['gift'], ('Stay stays shut before its epilogue', g['shut']))
+        ok(g['shut']['nw'] > 0 and g['shut']['dn'] > 0, ('the new world sets drop and deal like the rest', g['shut']))
+        ok(g['open']['open'] and g['open']['st'] > 0 and g['open']['dr'] > 0 and g['open']['fuse'] > 0 and g['open']['gift'] and g['open']['brownie'], ('after the Stay epilogue: drops, cards, fusions and the Brownie gift', g['open']))
+        # The Compendium: the Stay tab says when it opens (no names), a new set's tab lists its twelve.
+        setup(p, lvl=60)
+        menu(p, 'personas')
+        click(p, '.g-ec-sec [data-ec-comp]')
+        p.wait("!!document.querySelector('.g-ec-comp .g-ec-grid')")
+        click(p, '.g-ec-comp [data-cf="stay"]')
+        gate = p.eval("(document.querySelector('.g-ec-gate')||{}).textContent||''")
+        ok('Stay epilogue' in gate and p.eval("[...document.querySelectorAll('.g-ec-comp [data-cp]')].every(t=>t.classList.contains('locked'))"), ('the Stay tab is locked with its note', gate))
+        click(p, '.g-ec-comp [data-cf="delicate"]')
+        ok(p.eval("document.querySelectorAll('.g-ec-comp [data-cp]').length") == 12 and not p.eval("document.querySelector('.g-ec-gate')"), 'Delicate lists its twelve, no gate')
+        p.eval("document.querySelectorAll('.g-overlay').forEach(x=>x.remove())")
+        for w, h, tag in [(1440, 900, 'desktop'), (390, 844, 'phone')]:
+            view(p, w, h)
+            setup(p, lvl=40, echoes=[['little_mermaid', 15], ['snow_queen', 26], ['magic_mirror', 30], ['tudigong', 6], ['selkie', 15], ['guan_yu', 38]])
+            menu(p, 'personas')
+            click(p, '.g-ec-sec [data-ec-comp]')
+            p.wait("!!document.querySelector('.g-ec-comp .g-ec-grid')")
+            click(p, '.g-ec-comp [data-cf="delicate"]')
+            shot(p, f'compendium-delicate-{tag}')
+            no_scroll(p, f'compendium delicate {tag}')
+            click(p, '.g-ec-comp [data-cp="magic_mirror"]')
+            shot(p, f'compendium-mirror-{tag}')
+            no_scroll(p, f'compendium page {tag}')
+            p.eval("document.querySelectorAll('.g-overlay').forEach(x=>x.remove())")
+        view(p, 1280, 850)
+        clean(p, 'sets')
+        results['sets'] = f"Stay shut before its epilogue (0 of 3000 cards / drops, 0 fusions), then open with the Brownie gift; new world sets dealt {g['shut']['nw']} / dropped {g['shut']['dn']} of 3000; shots in {SHOTS}"
+        print('sets OK', results['sets'], flush=True)
 
     # ── Screenshots: the Personas tab, fusion and the Compendium at desktop and phone size ──
     if want('shots'):
