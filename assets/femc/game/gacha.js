@@ -699,7 +699,7 @@ window.FemcGacha = (() => {
     gs();
     let busy = false;
     const bg = G.background('The Velvet Room', 'Daytime'), pic = G.portrait('elizabeth', 'happy');
-    const o = UI().overlay(`<div class="g-ga g-vel"${bg ? ` style="--pic:url('${bg}')"` : ''}><div class="g-st-head"><h2>The Velvet Room<small>Elizabeth’s cards</small></h2><button type="button" class="g-btn small" data-close>Leave</button></div>
+    const o = UI().overlay(`<div class="g-ga g-vel"${bg ? ` style="--pic:url('${bg.url}')"` : ''}><div class="g-st-head"><h2>The Velvet Room<small>Elizabeth’s cards</small></h2><button type="button" class="g-btn small" data-close>Leave</button></div>
       <div class="g-shop-top">${pic ? `<img src="${pic}" alt="">` : ''}<p class="g-shop-say g-ga-say">${esc(LINES.velHi[S().day % LINES.velHi.length])}</p></div>
       <div class="g-vel-table" aria-live="polite"></div><div class="g-ga-result" aria-live="polite"></div><div class="g-ga-info"></div>
       <div class="g-row g-ga-btns"></div></div>`, 'g-ga-ov g-vel-ov', () => { skip = true; done?.(); });

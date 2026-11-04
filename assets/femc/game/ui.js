@@ -334,6 +334,9 @@
     el.className = `g-overlay ${cls}`;
     el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true');
     el.innerHTML = `<div class="g-panel">${html}</div>`;
+    // A screen's backdrop (--pic on its first element) is drawn by the panel around it: lift it up (Kat, Nov 4: the Velvet Room and shops showed none)
+    const pic = el.querySelector('.g-panel > [style*="--pic"]')?.style.getPropertyValue('--pic');
+    if (pic) el.style.setProperty('--pic', pic);
     document.body.appendChild(el);
     const close = () => { if (el.classList.contains('out')) return; el.classList.add('out'); document.removeEventListener('keydown', key, true); setTimeout(() => el.remove(), 220); onClose?.(); };
     const key = e => { if (e.key === 'Escape' && el === [...document.querySelectorAll('.g-overlay')].pop() && !el.dataset.locked) { e.preventDefault(); e.stopPropagation(); close(); } };

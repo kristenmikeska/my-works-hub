@@ -251,7 +251,7 @@ window.FemcTrials = (() => {
         <div class="g-row"><button type="button" class="g-btn${ts.open ? ' pink' : ''} small" data-tr-go="${T.id}"${ts.open ? '' : ' disabled'}><span>${ts.open ? 'Begin' : `Beat its bosses first (${ts.n} / ${T.bosses.length})`}</span></button></div></li>`;
     };
     const duels = [...have].filter(k => C[k]).sort((a, b) => C[a].lvl - C[b].lvl);
-    const o = UI().overlay(`<div class="g-ga g-tr"${bg ? ` style="--pic:url('${bg}')"` : ''}>${head('Velvet Trials', 'The Velvet Room · old opponents, called back', say)}
+    const o = UI().overlay(`<div class="g-ga g-tr"${bg ? ` style="--pic:url('${bg.url}')"` : ''}>${head('Velvet Trials', 'The Velvet Room · old opponents, called back', say)}
       <p class="g-ga-own"><span>Velvet Plumes <b>${GA().gs().plumes}</b></span><span>Trials cleared <b>${TRIALS.filter(T => st.best[T.id]).length} / ${TRIALS.length}</b></span><span>Duels this week <b>${w.duels} / ${DUEL_CAP}</b></span></p>
       <section class="g-tr-feat${F ? '' : ' shut'}"><p class="g-kicker">Featured Trial · this week</p>
         ${F ? `<p class="g-tr-top"><span class="g-tr-no">Trial ${F.T.no}</span><b>${esc(F.T.name)}</b>${badge(fb && fb.rank)}</p>

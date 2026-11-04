@@ -699,7 +699,7 @@ window.FemcRequests = (() => {
   /* ── Elizabeth's Requests: the board ── */
   function openRequests(done) {
     const bg = G.background('The Velvet Room', 'Daytime');
-    const o = UI().overlay(`<div class="g-ga g-rq"${bg ? ` style="--pic:url('${bg}')"` : ''}>${head('Elizabeth’s Requests', 'The Velvet Room · written in silver')}<div class="g-rq-body"></div></div>`, 'g-ga-ov g-vel-ov g-rq-ov', () => done?.());
+    const o = UI().overlay(`<div class="g-ga g-rq"${bg ? ` style="--pic:url('${bg.url}')"` : ''}>${head('Elizabeth’s Requests', 'The Velvet Room · written in silver')}<div class="g-rq-body"></div></div>`, 'g-ga-ov g-vel-ov g-rq-ov', () => done?.());
     const $ = q => o.el.querySelector(q);
     const say = t => { $('.g-rq-say').textContent = t; };
     if (weeklyOn()) weekState();
@@ -776,7 +776,7 @@ window.FemcRequests = (() => {
   };
   function openExchange(done) {
     const bg = G.background('The Velvet Room', 'Daytime');
-    const o = UI().overlay(`<div class="g-ga g-px"${bg ? ` style="--pic:url('${bg}')"` : ''}>${head('Plume Exchange', 'Elizabeth · spares for Velvet Plumes')}<div class="g-px-body" aria-live="polite"></div></div>`, 'g-ga-ov g-vel-ov g-px-ov', () => done?.());
+    const o = UI().overlay(`<div class="g-ga g-px"${bg ? ` style="--pic:url('${bg.url}')"` : ''}>${head('Plume Exchange', 'Elizabeth · spares for Velvet Plumes')}<div class="g-px-body" aria-live="polite"></div></div>`, 'g-ga-ov g-vel-ov g-px-ov', () => done?.());
     const $ = q => o.el.querySelector(q);
     const say = t => { $('.g-rq-say').textContent = t; };
     let sel = { cards: {}, mats: {} }, confirm = null;
@@ -835,7 +835,7 @@ window.FemcRequests = (() => {
   };
   function openBuy(done) {
     const bg = G.background('The Velvet Room', 'Daytime');
-    const o = UI().overlay(`<div class="g-ga g-pb"${bg ? ` style="--pic:url('${bg}')"` : ''}>${head('Velvet Plumes for Yen', 'Elizabeth · priced by the week')}<div class="g-pb-body" aria-live="polite"></div></div>`, 'g-ga-ov g-vel-ov g-pb-ov', () => done?.());
+    const o = UI().overlay(`<div class="g-ga g-pb"${bg ? ` style="--pic:url('${bg.url}')"` : ''}>${head('Velvet Plumes for Yen', 'Elizabeth · priced by the week')}<div class="g-pb-body" aria-live="polite"></div></div>`, 'g-ga-ov g-vel-ov g-pb-ov', () => done?.());
     const $ = q => o.el.querySelector(q);
     const say = t => { $('.g-rq-say').textContent = t; };
     let confirm = false;

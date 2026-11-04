@@ -852,7 +852,7 @@ try:
         p.eval("window.__holdSolar=false")
         bdrive("FemcBattle.screen()==='results'", 60)
         hero = p.eval("(()=>{const h=document.querySelector('.bt-res-hero');return h&&{src:h.getAttribute('src'),ok:h.complete&&h.naturalWidth>0,mid:h.dataset.mid}})()")
-        ok(hero and f'skins/{LOOK}/' in hero['src'] and '-pose-5.webp' in hero['src'] and hero['ok'], f'win screen: the look\'s victory pose: {hero}')
+        ok(hero and f'skins/{LOOK}/hd/' in hero['src'] and hero['ok'], f'win screen: the look\'s HD victory pose (Pink Lagoon has a set since Nov 3): {hero}')
         ok(p.eval('document.documentElement.scrollWidth <= innerWidth + 1'), 'results: no sideways scroll')
         time.sleep(0.8); shot(p, 'inbattle-win-1440x900')
         view(p, 390, 844); time.sleep(0.8)
