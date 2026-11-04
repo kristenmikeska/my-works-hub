@@ -1,0 +1,18 @@
+{
+  "id": "femc-game.html",
+  "name": "Persona 3: Solstice",
+  "short_name": "Solstice",
+  "description": "Persona 3: Solstice, Kat's Persona 3 Portable FeMC-style game.",
+  "start_url": "femc-game.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#14070f",
+  "theme_color": "#14070f",
+  "icons": [
+    { "src": "assets/femc/title/app-icon-192.png?v=1", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/femc/title/app-icon-512.png?v=1", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/femc/title/app-icon-maskable-512.png?v=1", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/femc/title/solstice-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

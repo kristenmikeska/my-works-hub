@@ -1,7 +1,7 @@
 """The capsule series, rarities and tokens (gacha.js) and the Wardrobe / Boutique cosmetics (cosmetics.js), 2026-10-25.
 Headless Chrome, isolated profile, localhost; no player saves.
 
-Run: python3 tests/femc_cosmetics.py [--only odds,rotation,solchan,hidden,tokens,banner,equip,pending,ui,boutique,x10,shots,viewer,party,newpending,retired,inbattle,hdpreview] [--screenshots DIR]
+Run: python3 tests/femc_cosmetics.py [--only odds,rotation,solchan,hidden,tokens,banner,equip,pending,ui,boutique,x10,shots,viewer,party,newpending,retired,inbattle,hdpreview,app] [--screenshots DIR]
 
 Covers: five rarities over many turns (Secret included) and pity kept per series; which machines stand in the Corner by
 date (each season, and a turn on a series that isn't on falls back to the Cast machine); only people Solar has met;
@@ -31,7 +31,9 @@ plays it inside the fighter's frame; screenshots at 1440x900 and 390x844.
 the pull sequence (deal, tell, show, summary; Enter / S / Esc / Done; reduced motion, Performance and Reduce flashes).
 2026-11-04 (hdpreview): a Solar outfit with an HD set previews its HD arms-crossed pose with a row of its poses (a pick kept
 across re-renders; an outfit without a set and a non-outfit keep the pose frame), the HD tags, the two meters against
-ready.js, and Equip reachable at 1440x900, 2000x957 and 390x844 (screenshots wardrobe-hd-*)."""
+ready.js, and Equip reachable at 1440x900, 2000x957 and 390x844 (screenshots wardrobe-hd-*).
+2026-11-04 (app): the web app manifest (name, display, start_url, colours), its PNG icons, Chrome's installability errors
+(none) and no service worker registered."""
 import argparse, base64, json, pathlib, shutil, subprocess, sys, time
 from femc_browser import Page, REPO
 
@@ -949,6 +951,25 @@ try:
         p.eval("FemcMenu.close()")
         clean(p, 'hdpreview')
         results['hdpreview'] = 'HD arms-crossed pose, pose row, pick kept, no-set fallback, meters; Equip reachable at 1440x900, 2000x957, 390x844'
+
+    # ── Installable app (Nov 4 2026): femc-game.webmanifest, its icons, Chrome's installability, and no service worker ──
+    if want('app'):
+        setup(p, day='10/12')
+        m = p.ws.call('Page.getAppManifest')
+        ok(not m.get('errors'), f"manifest errors: {m.get('errors')}")
+        man = json.loads(m['data'])
+        ok(man['name'] == 'Persona 3: Solstice' and man['short_name'] == 'Solstice' and man['display'] == 'standalone'
+           and man['start_url'] == 'femc-game.html' and man['theme_color'] == man['background_color'] == '#14070f', f'manifest: {man}')
+        sizes = {(i['sizes'], i.get('purpose', 'any')) for i in man['icons']}
+        ok({('192x192', 'any'), ('512x512', 'any'), ('512x512', 'maskable')} <= sizes, f'icons: {sizes}')
+        r = p.eval("""Promise.all(%s.map(src=>new Promise(res=>{const im=new Image();im.onload=()=>res([src,im.naturalWidth,im.naturalHeight]);im.onerror=()=>res([src,0,0]);im.src=src;})))""" % json.dumps([i['src'] for i in man['icons'] if i['type'] == 'image/png']))
+        ok(all(w == h and str(w) in src.replace('maskable-', '') for src, w, h in r), f'icon files: {r}')
+        e = p.ws.call('Page.getInstallabilityErrors')
+        ok(not e.get('installabilityErrors'), f"installability: {e}")
+        ok(p.eval("(navigator.serviceWorker?navigator.serviceWorker.getRegistrations():Promise.resolve([])).then(r=>r.length)") == 0, 'no service worker')
+        ok(p.eval("document.querySelector('meta[name=theme-color]').content") == '#14070f', 'theme-color')
+        clean(p, 'app')
+        results['app'] = 'manifest, icons 192 / 512 / maskable, Chrome installable, no service worker'
 
     if want('shots'):
         setup(p, day='10/12')
