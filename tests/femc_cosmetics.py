@@ -63,6 +63,10 @@ NEW_SKINS = ['sk-minji-crew', 'sk-jihoon-pilates', 'sk-aigis-uniform', 'sk-alpha
 NEW_WPNS = ['wpn-runners', 'wpn-strangers', 'wpn-hoax', 'wpn-akihiko-champ', 'wpn-jungwon-council',
             'wpn-velvet', 'wpn-idol', 'wpn-hanbok', 'wpn-haechan-suit', 'wpn-haechan-stage', 'wpn-jungwon-heir', 'wpn-jungwon-stage']
 KEPT = {}
+# A scan with a folder set aside drops its strips from the One More eye cache, so the scan after put_back would recompute
+# them and lose hand-set values (sk-phantom's v2): put_back writes the cache as it was before scanning.
+EYES = pathlib.Path(REPO, 'tools/femc-onemore-eyes.json')
+EYES0 = EYES.read_text() if EYES.exists() else None
 
 
 def set_aside(d):
@@ -75,7 +79,9 @@ def set_aside(d):
 def put_back(d):
     k = KEPT.pop(d, None)
     if k and k.exists():
-        shutil.rmtree(d, ignore_errors=True); shutil.move(str(k), str(d)); scan()
+        shutil.rmtree(d, ignore_errors=True); shutil.move(str(k), str(d))
+        if EYES0 is not None: EYES.write_text(EYES0)
+        scan()
 
 
 import atexit
