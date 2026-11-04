@@ -62,7 +62,11 @@ LOOKS = {'sk-cp-afterhours': ('Solar-After Hours-Menu Poses', 'afterhr-'),
          'sk-strawberry': ('Solar-Strawberry Milk-Menu Poses', 'strawberry-'),
          'sk-hanbok': ('Solar-Moonlit Hanbok-Menu Poses', 'moonlit-'),
          'sk-cp-drive': ('Solar-Midnight Drive-Menu Poses', 'drive-'),
-         'sk-prowl': ('Solar-Night Prowl-Menu Poses', 'prowl-')}
+         'sk-prowl': ('Solar-Night Prowl-Menu Poses', 'prowl-'),
+         'sk-halloween': ('Solar-Halloween-Menu Poses', 'halloween-'),
+         'sk-harbourcoat': ('Solar-Harbour-Menu Poses', 'harbor-'),
+         'sk-phantom': ('Solar-Phantom-Menu Poses', 'phantom-'),
+         'sk-snake': ('Solar-Snake-Menu Poses', 'snake-')}
 QUALITY, ALPHA_MIN, SPECK = 92, 16, 3
 
 
