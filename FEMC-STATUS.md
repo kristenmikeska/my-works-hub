@@ -110,6 +110,7 @@ Other docs, if you ever want detail:
 - ✅ **Tartarus, filled in:** the climb now stops every few floors all the way up (113 floors, short landings between the old ones, and the stairs skip landings you've already mapped), a Teleport from the entrance to any block you've reached, a guardian in every block and every Monad section, four optional superbosses behind sealed doors, Velvet Plumes from guardians, superbosses and now and then an event, and 33 new events (some only for a sweetheart)
 - ✅ **Tartarus, past the top (New Game+ only):** three new blocks above Monad, each built from one of your worlds, and one last floor at the very top, with short scenes on the way, a guardian per block, new events, and the hardest fight in the game waiting at the end; they open late in a New Game+ year (and in Practice once you've finished the game)
 - ✅ Buff stacking, smarter Rush, and the All-Out flash removed
+- ✅ Rush pace (Nov 3): a new setting. Fast keeps today's doubled speed; Normal plays Rush at your battle speed (the tag reads AUTO), smoother if Rush lags
 - ✅ Shuffle Time, Revelation cards, 170 link perks, your 12 naginatas as weapons
 - ✅ Your art on all 13 Revelation card sets: in the Cards menu, when Shuffle Time or Elizabeth hands you one, and in the results
 - ✅ Bond skills (12), a new signature skill for every fighter, battle reactions, romance banter

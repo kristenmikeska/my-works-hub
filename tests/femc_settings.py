@@ -9,11 +9,11 @@ from femc_merge import drive, BSTEP
 
 URL='femc-game.html?seed=42'  # No speed override: exercise the actual setting.
 FIRST=dict(text='fast',auto='slow',dateCard=False,quickClass=True,difficulty='hard',
-           battleSpeed=3,cutins='off',showtimes='still',rushWhere='all',rushStop=50,remember=False,
+           battleSpeed=3,cutins='off',showtimes='still',rushWhere='all',rushStop=50,rushPace='normal',remember=False,
            numbers=False,tips=False,shake=False,calm=True,perf=True,pad='ps',
            music=35,sfx=False,sfxVol=25)
 SECOND=dict(text='instant',auto='off',dateCard=True,quickClass=False,difficulty='story',
-            battleSpeed=2,cutins='always',showtimes='on',rushWhere='strong',rushStop=30,remember=True,
+            battleSpeed=2,cutins='always',showtimes='on',rushWhere='strong',rushStop=30,rushPace='fast',remember=True,
             numbers=True,tips=True,shake=True,calm=False,perf=False,pad='auto',
             music=0,sfx=True,sfxVol=80)
 FRAME="document.querySelector('.g-dh-iframe').contentWindow"
@@ -46,7 +46,7 @@ def assert_shared(p, expected):
 
 def assert_battle(p,expected):
     b=p.eval('JSON.parse(JSON.stringify('+FRAME+'.FemcBattle.save))')
-    for key in ('difficulty','rushWhere','rushStop','remember','numbers','tips','shake','calm','pad','sfxVol','showtimes'):
+    for key in ('difficulty','rushWhere','rushStop','rushPace','remember','numbers','tips','shake','calm','pad','sfxVol','showtimes'):
         assert b['settings'][key]==expected[key],key
     assert b['settings']['textSpeed']==expected['text']
     assert b['speed']==expected['battleSpeed']

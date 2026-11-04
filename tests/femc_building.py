@@ -310,7 +310,12 @@ try:
         n0 = p.eval("FemcBattle.save.cards.list.length")
         p.eval("window.__btShuffleHand=[{kind:'major',id:'fool',num:'0',name:'The Fool',out:'card'}];window.__btShufflePick=0;window.__btGroup=['maya']")
         drive(p, "FemcBattle.screen()==='battle' && FemcBattle.ctl?.kind==='menu'", 60)
-        p.eval("document.dispatchEvent(new KeyboardEvent('keydown',{key:'r',bubbles:true}))")
+        # Rush pace (Nov 3 2026): Fast doubles the battle speed, Normal (the AUTO tag) keeps it; set through the shared store.
+        pace = p.eval("""(()=>{document.dispatchEvent(new KeyboardEvent('keydown',{key:'r',bubbles:true}));
+          const tag=()=>document.querySelector('.bt-rushtag b').textContent, o={on:FemcBattle.rushOn,fast:FemcBattle.speed(),fastTag:tag()};
+          parent.FemcGame.setSetting('rushPace','normal');FemcBattle.settingsChanged();o.normal=FemcBattle.speed();o.normalTag=tag();o.st=FemcBattle.settings.rushPace;
+          parent.FemcGame.setSetting('rushPace','fast');FemcBattle.settingsChanged();o.back=FemcBattle.speed();return o})()""")
+        ok(pace['on'] and pace['st'] == 'normal' and pace['fast'] == 2 * pace['normal'] == pace['back'] and pace['fastTag'] == 'RUSH' and pace['normalTag'] == 'AUTO', ('Rush pace: Normal does not double speed', pace))
         drive(p, "FemcBattle.marks['shuffle-major']>0", 120)
         ok(p.eval("FemcBattle.save.cards.list.length") == n0 + 1, 'the Fool gave a Revelation card (Rush picked)')
         # Tea Time (Hanni, Tartarus) at the access point every first floor has.

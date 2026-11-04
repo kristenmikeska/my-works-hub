@@ -254,7 +254,7 @@
   /* Settings: the game's one store. Story fights read it from the life sim; practice reads the same key directly. */
   const readUni = () => { if (BR) { try { return JSON.parse(JSON.stringify(BR.settings() || {})); } catch (e) { return {}; } } try { return JSON.parse(localStorage.getItem(UNI_KEY) || '{}') || {}; } catch (e) { return {}; } };
   // battle setting (save.settings.<k>) → the store's key
-  const UNI = { textSpeed: 'text', sfxVol: 'sfxVol', difficulty: 'difficulty', remember: 'remember', rushWhere: 'rushWhere', rushStop: 'rushStop', shake: 'shake', calm: 'calm', numbers: 'numbers', tips: 'tips', pad: 'pad', showtimes: 'showtimes', skinFaces: 'skinFaces', skinFx: 'skinFx', entrance: 'entrance' };
+  const UNI = { textSpeed: 'text', sfxVol: 'sfxVol', difficulty: 'difficulty', remember: 'remember', rushWhere: 'rushWhere', rushStop: 'rushStop', rushPace: 'rushPace', shake: 'shake', calm: 'calm', numbers: 'numbers', tips: 'tips', pad: 'pad', showtimes: 'showtimes', skinFaces: 'skinFaces', skinFx: 'skinFx', entrance: 'entrance' };
   function pullSettings() {
     const u = readUni(), st = save.settings;
     Object.entries(UNI).forEach(([k, uk]) => {
@@ -290,8 +290,10 @@
   const musicOn = () => save.music !== false;
   const sfxOn = () => save.sfx !== false && lsGet('kg-femc-sound') !== 'off';
   const ST = () => save.settings;
-  /* Rush doubles the battle speed (and skips cut-ins) while it's running. */
-  const speed = () => (testSpeed || save.speed || 1) * (rushActive() ? 2 : 1);
+  /* Rush skips cut-ins while it's running; on the Fast pace (the default) it also doubles the battle speed. Normal pace
+     ("Auto", Nov 3 2026: Kat found 2x on top of 3x could lag) plays at the chosen battle speed. */
+  const rushFast = () => ST().rushPace !== 'normal';
+  const speed = () => (testSpeed || save.speed || 1) * (rushActive() && rushFast() ? 2 : 1);
   const diff = () => D.difficulty[ST().difficulty] || D.difficulty.normal;
   /* Text speed: how fast Fuuka's lines type out (chars/second, 0 = at once) and how long lines stay up. */
   const textHold = () => ({ slow: 1.6, normal: 1, fast: 0.65, instant: 0.5 })[ST().textSpeed] || 1;
@@ -703,7 +705,7 @@
   const RUSH_WHERE = { normal: 'Rush runs in normal Shadow rooms only. It turns itself off for Strong rooms, the Reaper and full moons.', strong: 'Rush runs in normal and Strong Shadow rooms, never against the Reaper or a full moon.', all: 'Rush runs anywhere, even the Reaper and full moons. Careful.' };
   const settingRows = () => [
     { k: 'difficulty', label: 'Difficulty', opts: Object.keys(D.difficulty).map(id => [id, D.difficulty[id].name]), desc: v => D.difficulty[v].desc },
-    { k: 'speed', top: true, label: 'Battle speed', opts: [[1, '1x'], [2, '2x'], [3, '3x']], desc: () => 'How fast battle animations play. Rush doubles it.' },
+    { k: 'speed', top: true, label: 'Battle speed', opts: [[1, '1x'], [2, '2x'], [3, '3x']], desc: () => `How fast battle animations play. ${ST().rushPace === 'normal' ? 'Rush keeps it (Rush pace: Normal).' : 'Rush doubles it (Rush pace: Fast).'}` },
     { k: 'textSpeed', label: 'Text speed', opts: [['slow', 'Slow'], ['normal', 'Normal'], ['fast', 'Fast'], ['instant', 'Instant']], desc: () => 'How fast Fuuka’s lines type out, and how long lines stay on screen.' },
     { k: 'cutins', top: true, label: 'Persona cut-ins', opts: [['always', 'Always'], ['first', '1st per battle'], ['off', 'Off']], desc: () => 'The Evoker summon before a Persona skill and the full Theurgy cut-in: every time, the first time per member each battle, or never (Theurgy then plays a short version, as it does in Rush).' },
     { k: 'showtimes', label: 'Bond Showtimes', opts: [['on', 'On'], ['still', 'Still only']], desc: () => 'A bond with a Showtime plays its little scene before the strike (tap or Enter skips to the strike). Still only shows the bond’s single picture instead.' },
@@ -717,6 +719,7 @@
     { k: 'remember', label: 'Remember cursor', opts: ON_OFF, desc: () => 'Each member’s menu reopens on their last command, skill, item and target (if it’s still standing).' },
     { k: 'rushWhere', label: 'Rush allowed in', opts: [['normal', 'Normal rooms'], ['strong', '+ Strong rooms'], ['all', 'Every fight']], desc: v => RUSH_WHERE[v] },
     { k: 'rushStop', label: 'Rush stops below', opts: [[30, '30% HP'], [50, '50% HP']], desc: v => `Rush hands control back when anyone drops below ${v}% HP, or Solar below 50%.` },
+    { k: 'rushPace', label: 'Rush pace', opts: [['fast', 'Fast'], ['normal', 'Normal (Auto)']], desc: v => (v === 'normal' ? 'Rush plays at your battle speed and the tag reads AUTO. Smoother if Rush lags.' : 'Rush doubles your battle speed while it runs.') },
     { k: 'shake', label: 'Screen shake', opts: ON_OFF, desc: () => 'The screen shakes on criticals, weaknesses and All-Out Attacks.' },
     { k: 'calm', label: 'Reduce flashes', opts: OFF_ON, desc: () => 'Softens white flashes and bursts (Evoker, Theurgy, lightning, criticals).' },
     { k: 'numbers', label: 'Damage numbers', opts: ON_OFF, desc: () => 'Damage and healing numbers. WEAK, CRITICAL and the rest still show.' },
@@ -729,7 +732,7 @@
     if (r.set) r.set(v); else if (r.top) save[r.k] = v; else ST()[r.k] = v;
     if (r.k === 'music' || r.k === 'musicVol') music.refresh();
     if (r.k === 'speed') paintSpeed();
-    if (r.k === 'rushWhere' || r.k === 'rushStop') paintRush();
+    if (r.k === 'rushWhere' || r.k === 'rushStop' || r.k === 'rushPace') paintRush();
     applyPerf();
     pushSettings();
     persist();
@@ -918,6 +921,7 @@
     const b = BT.root.querySelector('[data-tool="rush"]'), on = rushActive();
     if (b) { b.setAttribute('aria-pressed', String(on)); b.classList.toggle('na', !rushAllowed()); }
     BT.root.classList.toggle('rushing', on);
+    const tag = BT.root.querySelector('.bt-rushtag b'); if (tag) tag.textContent = rushFast() ? 'RUSH' : 'AUTO';
   }
   function stopRush(key, vars) { rushOn = false; paintRush(); if (key) nav(key, vars); banner('Rush off'); blogAdd('Rush off.', 'sys'); mark('rush-stop'); }
   function toggleRush() {
@@ -5702,7 +5706,7 @@
   /* ── Boot ─────────────────────────────────────────── */
   window.FemcBattle = {
     get B() { return B; }, get save() { return save; }, get run() { return run; }, get ctl() { return ctl; },
-    get settings() { return save.settings; }, get blog() { return blog; }, get rushOn() { return rushActive(); }, get paused() { return paused; }, get frozen() { return frozen; },
+    get settings() { return save.settings; }, get blog() { return blog; }, get rushOn() { return rushActive(); }, speed: () => speed(), get paused() { return paused; }, get frozen() { return frozen; },
     openSettings: k => openSettings(k), openHelp: t => openHelp(t), openLog, toggleRush, exportCode, parseCode, diff,
     screen: () => screen, marks, freeze() { frozen = true; if (FX) FX.pause(); }, unfreeze() { frozen = false; if (FX) FX.resume(); },
     awakening: () => awakening(app.firstElementChild || app),
