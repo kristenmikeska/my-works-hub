@@ -27,7 +27,9 @@
      reads anything moved). Small inventions: the session's vocal lane is labelled SOLAR LEE and the file carries two sets of initials
      (still untitled); Ms. Han has been her father's assistant for eleven years; Danielle's "Welcome home, by the way."
    Glitches: { glitch: { stage: 2 } } + epi-r-g-room (studio playback), epi-r-g-freeze + tint (the party), epi-r-g-yunjin
-     (the quad), strain on the lying choices (sisters, print, the party's cover). The track stays untitled. */
+     (the quad), strain on the lying choices (sisters, print, the party's cover). The track stays untitled.
+   Nov 3 2026 (Kat's post pictures): epi-r-rt-jeno's stories are red cups (no punch bowl) and the wide shot has PHI PSI on the
+   wall and no window, so the look and the first choice are at the crowd, not the snow; same meaning, no flag. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).runners ||= {});
 
@@ -955,13 +957,13 @@
 
     { id: 'epi-r-rt-jeno', slot: 'early', after: '12/13', until: '12/14', events: ['epi-r-sigma'], place: 'Syracuse · Alpha Phi House · Kitchen', time: 'Morning', scene: [
       { n: "Saturday morning in the Alpha kitchen, the radiator going, Hyein asleep on the island with her cheek on a sketchbook, and Jeno's story from last night still up on everyone's phone, because Jeno posted the way some people breathed." },
-      { n: "*@jen0l33:* the punch bowl, close up, captioned *its for MORALE.* Then Jisung, still trying to get the speaker to connect, captioned *day 3.* Then a blurry wide shot of the living room, everyone mid-something, captioned *last one before finals we will never forget this.* Then the punch bowl again, empty, at what the timestamp said was 1:40 a.m., captioned *morale achieved.*", img: 'post-r-6-party-wide', handle: 'jen0l33', cap: 'last one before finals we will never forget this' },
+      { n: "*@jen0l33:* a tower of red cups, close up, captioned *its for MORALE.* Then Jisung, still trying to get the speaker to connect, captioned *day 3.* Then a blurry wide shot of the living room, everyone mid-something under PHI PSI painted huge on the back wall, some other house's letters from some other year that nobody had ever painted over, captioned *last one before finals we will never forget this.* Then the cups again, knocked over and empty, at what the timestamp said was 1:40 a.m., captioned *morale achieved.*", img: 'post-r-6-party-wide', handle: 'jen0l33', cap: 'last one before finals we will never forget this' },
       { n: "The house living on. Somebody had already posted the cleanup, too, Renjun's, a single photo of the Sigma kitchen at nine a.m. with a mop leaning against the island like it had given up, no caption, which was Renjun's whole personality in one frame.", img: 'post-r-7-kitchen-mop', handle: 'renjun' },
       { n: "Under the third one, in the comments, someone had written *why does it look like everyone's frozen in this lmao,* and Jeno had replied *bad wifi king,* and that was that." },
-      { n: "She looked at the wide shot longer than she meant to. Everyone mid-something. The snow in the window, white streaks, falling." },
+      { n: "She looked at the wide shot longer than she meant to. Everyone mid-something. Arms up, a cup tipped, a laugh with no end to it, and the old letters on the wall the only thing in the picture that was supposed to be standing still." },
       { choose: [
-        { t: "(Zoom in on the window.)", then: [
-          { n: "She zoomed in on the window. The snow was just snow, motion-blurred, falling. She zoomed out. She put the phone face down on the island next to Hyein's sleeping head and made coffee and didn't pick it up again till the coffee was done." }
+        { t: "(Zoom in on the crowd.)", then: [
+          { n: "She zoomed in on the crowd. It was just a crowd, motion-blurred, mid-laugh. Out the kitchen window, last night's snow sat on the sill the ordinary way, not going anywhere. She zoomed out. She put the phone face down on the island next to Hyein's sleeping head and made coffee and didn't pick it up again till the coffee was done." }
         ] },
         { t: "(Swipe past. It's just Jeno.)", then: [
           { n: "She swiped past. It was just Jeno. Jeno's next story was a photo of Jaemin passed out face-up on the Sigma couch, one arm flung over his head, his phone still in his hand, captioned *the house lives on,* and she laughed out loud in the empty kitchen, and Hyein woke up and said *what* and went straight back to sleep.", img: 'post-r-8-stairs-cone', handle: 'jen0l33', cap: 'the house lives on' }

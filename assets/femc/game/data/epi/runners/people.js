@@ -29,7 +29,10 @@
    and Ms. Han takes the line after that. No flag, gate or outcome changed.
    Canon held: the track has no title; the valley promise is never paid; he never asks anyone about her; the jacket stays in the
    bag; Hanni/Hyein/Jaemin/Jaehyun don't know about the stem; nobody but Danielle has seen a print. Decision: Jaemin pays Hyein's
-   deposit on 12/9 (cash, an envelope that says FOR THE ARTIST). */
+   deposit on 12/9 (cash, an envelope that says FOR THE ARTIST).
+   Stickers (Nov 3 2026; pack `runners`, FEMC-ART-TODO 24: until art/stickers/index.js lists it each shows its `t`): Olivia's GG
+   in team-day1, Hyein's sign in girls-deposit (after "frame it"), Chenle's fox in chenle-data (after "i noticed"), and a
+   sticker reply (the two of them, earbuds) in hc-checkin. No flag, gate or outcome. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).runners ||= {});
   const B = (R.bonds ||= {});
@@ -884,7 +887,8 @@
       { from: 'doyoung', t: 'phones off at midnight. lobby at 8:30. eat something with a vegetable in it' },
       { from: 'olivia', t: "WE'RE THROUGH WE'RE THROUGH WE'RE" },
       { from: 'chenle', t: 'their ana slept the tank 6 times today. 6 for 6' },
-      { from: 'haerin', t: 'good game everyone' }
+      { from: 'haerin', t: 'good game everyone' },
+      { from: 'olivia', t: '(GG! Solar in her jersey, fist up)', sticker: 'runners-1' }
     ], reply: [
       { t: "see you at 8:30", then: [{ from: 'doyoung', t: '8:25' }] },
       { t: "olivia go to sleep", then: [{ from: 'olivia', t: 'I CANT' }, { from: 'olivia', t: 'ok i can' }] }
@@ -915,7 +919,7 @@
       { from: 'chenle', t: 'regionals final. your suzu was 0.4s faster than your november average' },
       { from: 'chenle', t: "that's a lot. i'm telling you because nobody else will notice. that's not an insult to them" }
     ], reply: [
-      { t: "i noticed", then: [{ from: 'chenle', t: 'good. then two of us noticed' }] },
+      { t: "i noticed", then: [{ from: 'chenle', t: 'good. then two of us noticed' }, { from: 'chenle', t: '(a fox curled on a headset, holding a tiny trophy)', sticker: 'runners-9' }] },
       { t: "thank you chenle", then: [{ from: 'chenle', t: "you're welcome. i made a graph. i'm not going to send it unless you ask" }] }
     ] },
     { id: 'epi-r-tx-girls-deposit', thread: 'girls', date: '12/9', slot: 'evening', msgs: [
@@ -924,7 +928,7 @@
       { from: 'hyein', t: 'hyein: THE ENVELOPE SAYS FOR THE ARTIST' },
       { from: 'hanni', t: 'hanni: there is glitter on our carpet now. forever' }
     ], reply: [
-      { t: "frame it", then: [{ from: 'hyein', t: "hyein: ALREADY BUYING THE FRAME" }] },
+      { t: "frame it", then: [{ from: 'hyein', t: "hyein: ALREADY BUYING THE FRAME" }, { from: 'hyein', t: 'hyein: (on a chair, waving a sign)', sticker: 'runners-6' }] },
       { t: "the artist!!!", then: [{ from: 'hyein', t: 'hyein: THE ARTIST' }, { from: 'hanni', t: 'hanni: please do not encourage her she bowed back to him' }] }
     ] },
     { id: 'epi-r-tx-jaehyun-card', thread: 'jaehyun', date: '12/10', slot: 'late', msgs: [
@@ -939,7 +943,8 @@
       { from: 'haechan', t: "not going anywhere tonight. that's the check in" }
     ], reply: [
       { t: "thank you for telling me", then: [{ from: 'haechan', t: "don't thank me for it. it's the rule" }, { from: 'haechan', t: '...ok. ur welcome' }] },
-      { t: "how was it", then: [{ from: 'haechan', t: 'bad coffee. a guy cried. i didnt' }, { from: 'haechan', t: 'i went' }] }
+      { t: "how was it", then: [{ from: 'haechan', t: 'bad coffee. a guy cried. i didnt' }, { from: 'haechan', t: 'i went' }] },
+      { t: '(the two of you, sharing earbuds)', sticker: 'runners-2', then: [{ from: 'haechan', t: 'ok' }, { from: 'haechan', t: "...i'm keeping that" }] }
     ] },
     { id: 'epi-r-tx-han-travel', thread: 'han', date: '12/13', slot: 'after', msgs: [
       { from: 'han', t: "Good afternoon, Solar. This is Ms. Han." },

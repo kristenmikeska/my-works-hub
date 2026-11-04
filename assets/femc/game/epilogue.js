@@ -74,7 +74,7 @@ window.FemcEpilogue = (() => {
   const S = () => G.S, UI = () => W.FemcGameUI;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const clone = o => JSON.parse(JSON.stringify(o));
-  const DATA_V = 55; // data/epi/<world>/*.js ?v=
+  const DATA_V = 56; // data/epi/<world>/*.js ?v=
   // The worlds: the year's route flag that opens each, its name (the button) and place (slot labels), its data files.
   const WORLDS = {
     runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3', 'phone', 'alerts'] },
@@ -417,17 +417,26 @@ window.FemcEpilogue = (() => {
   const P = () => G.D.places;
   const GL = () => W.FemcGlitch;
   const line = (path, fallback) => G.vary(path, [fallback]);
+  /* The home screen (Nov 3 2026): places.home.views { day, evening, night } (Runners: Solar's room in the Alpha Phi house) are
+     the hub's backdrop by slot (morning / after → day, evening, late → night) once each slug is in home.viewsReady (its art is
+     in assets/femc/bg; listing it is the wiring step, so nothing 404s before then); a view isn't dimmed. Until then, and in a
+     world without views: home.bg, dimmed in the evening and at night as before. Used by the day-off morning, Go Out (and
+     staying in) and the late screen. */
+  function homeView(slot) {
+    const h = P().home || {}, k = slot === 'late' ? 'night' : slot === 'evening' ? 'evening' : 'day', v = h.views?.[k];
+    return v && (h.viewsReady || []).includes(v) ? { bg: v, mood: '', art: true } : { bg: h.bg, mood: /evening|late/.test(slot) ? 'night' : '', art: false };
+  }
   function morning(info) {
-    const at = (info.type !== 'off' && P().school) || P().home || {};
+    const home = info.type === 'off' || !P().school, at = (!home && P().school) || P().home || {};
     const kind = info.type === 'exam' ? 'exam' : info.type === 'off' ? 'off' : 'school';
     SC.Music.set(G.D.places.screens.after || 'day');
-    UI().segment({ slot: 'early', bg: at.bg, place: at.place, text: line(`morning.${kind}`, 'Morning.'), next: advance });
+    UI().segment({ slot: 'early', ...(home ? homeView('early') : { bg: at.bg }), place: at.place, text: line(`morning.${kind}`, 'Morning.'), next: advance });
     GL()?.tick('morning', { place: at.place });
   }
   function late(info) {
     const at = P().home || {};
     SC.Music.set(G.D.places.screens.dorm || 'night');
-    UI().segment({ slot: 'late', bg: at.bg, place: at.place, text: line('late', 'Late.'), button: 'Sleep', next: () => {
+    UI().segment({ slot: 'late', ...homeView('late'), place: at.place, text: line('late', 'Late.'), button: 'Sleep', next: () => {
       const raw = worldRaw();
       if (!S().epi.locked && raw.lockAfter && S().day >= G.dayOf(raw.lockAfter)) lockRoute();
       const r = G.sleep(); if (r.end) return finish(); UI().run();
@@ -437,7 +446,8 @@ window.FemcEpilogue = (() => {
   const acts = slot => (P().activities || []).filter(a => (!a.slots || a.slots.includes(slot)) && (!a.from || S().day >= G.dayOf(a.from)) && (!a.until || S().day <= G.dayOf(a.until)));
   function goOut(info) {
     const s = S(), slot = s.slot, ui = UI(), home = P().home || {};
-    ui.setBg(home.bg, slot === 'evening' ? 'night' : '');
+    const hv = homeView(slot);
+    ui.setBg(hv.bg, hv.mood);
     SC.Music.set(G.D.places.screens[slot === 'evening' ? 'evening' : 'after'] || 'day');
     const list = acts(slot), folks = people(slot);
     const pips = id => { const c = closeness(id); return `<i class="g-epi-pips" aria-label="closeness ${c} of ${CLOSE_MAX}">${'●'.repeat(Math.min(c, CLOSE_MAX))}${'○'.repeat(Math.max(0, CLOSE_MAX - c))}</i>`; };
@@ -452,7 +462,7 @@ window.FemcEpilogue = (() => {
     main.querySelectorAll('[data-bond]').forEach(b => b.addEventListener('click', () => hangout(b.dataset.bond)));
     main.querySelector('[data-stay]').addEventListener('click', () => {
       s.spent[`${s.day}-${slot}`] = 'stay'; G.save();
-      ui.segment({ slot, bg: home.bg, place: home.place, text: line('stayIn', 'She stayed in.'), next: advance });
+      ui.segment({ slot, ...homeView(slot), place: home.place, text: line('stayIn', 'She stayed in.'), next: advance });
     });
     GL()?.tick('out', { place: home.place, list: main.querySelector('.g-epi-acts:not(.g-epi-folks)') }); // the station card joins the places, not the people
     main.querySelector('[data-bond], [data-act]:not(:disabled), [data-stay]')?.focus({ preventScroll: true });
@@ -826,7 +836,7 @@ window.FemcEpilogue = (() => {
     });
   }
 
-  return { WORLDS, worldFor, endingOf, loadWorld, build, ensure, carryOf, leanFor, route, lockRoute, cond, stateFor, enter, leave, endScreen, offer, run, finish, raw: worldRaw,
+  return { WORLDS, worldFor, endingOf, loadWorld, build, ensure, homeView, carryOf, leanFor, route, lockRoute, cond, stateFor, enter, leave, endScreen, offer, run, finish, raw: worldRaw,
     yearCond, peekCond, isEpiCond, replaySaw, recordOf, records, entered, albumEntries, postEntries, alertDue, newsTick, ALERTS, theaterRows, theaterLoad, replay, equinoxOf, ALBUM,
     routeOpen, bond, closeness, startBond, contacts, contactCard, reach, call, topics, message, phoneWeek, migratePhone, hangoutFor, people, hangout, practiceNow, CLOSE_MAX, resume, partyFor, fightOf, fadeQueue, FADE, STAGES,
     get cardDay() { return cardDay; } };

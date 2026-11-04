@@ -18,6 +18,9 @@
      variants    lines for the day screens (core.js vary(): morning.school / .off / .exam, late, stayIn, practice)
      cast        names for speakers without a link of their own (scene names; no portraits yet: FEMC-ART-TODO)
      events / routines / bonds / texts   in the story and people files
+   Snow days (Nov 3 2026, Kat: more realism; invented, no story change): seven `variants` lines tagged { weather: ['snow'] }
+   (morning school x2 / off / exam, practice, late, stayIn: the lake-effect walk, FINALS in the car frost, Hanni on the porch,
+   the library line, Doyoung's cold hands, the sill, the street erased) and places.snowDay.note for the phone's forecast.
    Places that don't have their own art yet borrow the nearest existing background (FEMC-ART-TODO "The epilogue: Runners"
    lists the real ones; FEMC-ART-WIRING says which rule each replaces). */
 (() => {
@@ -78,8 +81,16 @@
         ['Syracuse · Regionals', 'epi-r-regionals', null],
         ['Syracuse', 'flashback-syracuse-quad', null]
       ],
-      weatherFx: { outdoor: ['epi-r-valley', 'epi-r-football', 'flashback-syracuse-quad', 'flashback-alphaphi-house', 'epi-r-rooftop-night', 'epi-r-rooftop-night-snow', 'epi-r-quad-day', 'epi-r-marshall-st'], sealed: [], none: ['epi-r-regionals'] },
-      home: { place: 'Syracuse · Alpha Phi House · Her Room', bg: 'epi-r-her-room' },
+      weatherFx: { outdoor: ['epi-r-valley', 'epi-r-football', 'flashback-syracuse-quad', 'flashback-alphaphi-house', 'epi-r-rooftop-night', 'epi-r-rooftop-night-snow', 'epi-r-quad-day', 'epi-r-marshall-st',
+        'epi-r-regionals-dock', 'epi-r-sigma-porch'], sealed: [],
+        // '$': that image only (weather.js), so the Regionals hall (and the stand-ins on it) show nothing but its loading dock snows.
+        none: ['epi-r-regionals$', 'epi-r-regionals-green-room', 'epi-r-regionals-van', 'epi-r-regionals-after'] },
+      // The phone forecast's note on a snow day (ui.js forecastHtml; Nov 3 2026).
+      snowDay: { note: 'Lake-effect snow off Ontario. The paths are salted. The hill is not.' },
+      home: { place: 'Syracuse · Alpha Phi House · Her Room', bg: 'epi-r-her-room',
+        // The home screen by time of day (Nov 3 2026; epilogue.js homeView, FEMC-ART-TODO 23I-23K): a slug shows once it's in
+        // viewsReady (its art in assets/femc/bg); until then the screen keeps `bg`, dimmed in the evening and at night.
+        views: { day: 'epi-r-home-day', evening: 'epi-r-home-evening', night: 'epi-r-home-night' }, viewsReady: [] },
       school: { place: 'Syracuse · The Quad', bg: 'epi-r-quad-day' },
       activities: [
         { id: 'epi-r-coffee', name: 'Coffee on Marshall Street', place: 'Syracuse · Marshall Street · Café', bg: 'epi-r-marshall-cafe', slots: ['after', 'evening'], cost: 7, stats: { charm: 1 },
@@ -158,18 +169,25 @@
       morning: {
         school: ["Class at nine. The quad was salted into gray paths, and everyone she passed looked like they'd slept four hours, which was December's whole look.",
           "Morning. Snow on the steps, a line out the door of the coffee cart, and a lecture hall that smelled like wet coats.",
-          "Media and Society, then a walk across the quad with her hood up. The bell tower said a time she didn't believe. She checked her phone anyway. Twice."],
+          "Media and Society, then a walk across the quad with her hood up. The bell tower said a time she didn't believe. She checked her phone anyway. Twice.",
+          { weather: ['snow'], t: "Lake-effect again. The snow came in off the lake sideways, and the walk to class was one long argument between the plows and everybody's boots. She lost it twice before she got to class." },
+          { weather: ['snow'], t: "Fresh snow over yesterday's gray. Somebody had written FINALS in the frost on every car on Walnut, which was either a prank or a cry for help." }],
         off: ["No class. The house slept late, the radiators knocking like they had somewhere to be.",
-          "A weekend morning. Somebody downstairs was making pancakes, badly, and narrating it."],
-        exam: ["Finals. The whole campus walked like it was carrying something heavy and trying not to show it."]
+          "A weekend morning. Somebody downstairs was making pancakes, badly, and narrating it.",
+          { weather: ['snow'], t: "No class, and no plows yet. Walnut was one smooth white sheet, and Hanni was on the porch in pajamas and snow boots announcing to nobody that she was going to build something." }],
+        exam: ["Finals. The whole campus walked like it was carrying something heavy and trying not to show it.",
+          { weather: ['snow'], t: "Finals, in the snow. A line of people outside the library before it opened, everyone's breath going up in front of them like small engines." }]
       },
       practice: ["Practice. Doyoung's clipboard, Olivia's laugh a full second before anyone else's, Haerin saying nothing and hitting every shot, Minji's cap backwards. Scrims until her wrists ached. She made her calls and they listened.",
         "Practice ran long. Two scrims, one VOD, and Doyoung's voice going flat on the third mistake, which was worse than shouting. Chenle wrote something down every time she cleansed. She didn't ask what.",
-        "The lab, the hum, the blue light. She played like someone who'd spent a year learning when to step in front of a hit, which, she supposed, she had."],
+        "The lab, the hum, the blue light. She played like someone who'd spent a year learning when to step in front of a hit, which, she supposed, she had.",
+        { weather: ['snow'], t: "Practice, with coats steaming on the backs of the chairs and snow melting into gray puddles under the desks. \"Your hands'll warm up,\" Doyoung said, \"or you'll learn to play cold.\" Both happened." }],
       late: ["The house went quiet in pieces: a door, a shower, music through the wall, then nothing.",
         "Late. Snow ticking at the window, her phone face down on the desk, the house asleep around her.",
+        { weather: ['snow'], t: "Late. Snow piling up silent on the sill, the window gone white at the corners, the radiator pretending it could keep up." },
         "The radiator knocked twice and settled. Somewhere downstairs a door at the end of the second landing closed, softly, the way you close a door when you want people to know you're being quiet."],
-      stayIn: ["She stayed in. Blanket, desk lamp, the radiator, and nobody asking her anything."]
+      stayIn: ["She stayed in. Blanket, desk lamp, the radiator, and nobody asking her anything.",
+        { weather: ['snow'], t: "She stayed in. Outside, the snow was erasing the street one car at a time, and she let it." }]
     }
   });
   // The story, people and routine files push into these; never replace them here.

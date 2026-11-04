@@ -40,6 +40,7 @@
      { ifReversed: 'linkId' }       -> then / else, when that link is reversed (the flag reversed-<id> mirrors it)
      choices may carry link: 'id' (whose bond reverse / route apply to); in story events a reverse that reaches 2 turns it now
      { act: { numeral, title } }    an act title card
+     { match: { home, away, stage, map, score, feed, gg } | null }   the esports broadcast HUD over the scene (match.js documents it)
      { glitch: kind | id | { kind, ... } | { stage | strain | near } }   the epilogue's glitches (glitch.js documents them);
                                     nothing at all outside the epilogue or in a replay. { ifGlitch: n } is a condition (G.branch)
    G (the game) supplies portraits, names, backgrounds, settings and effects.
@@ -533,6 +534,8 @@ window.FemcScene = (() => {
       if (postCard) { postCard.remove(); postCard = null; }
       const line = queue.shift();
       if (!line) return end(true);
+      // { match }: the esports broadcast overlay (match.js); a line that is only that goes straight on.
+      if (line.match !== undefined) { window.FemcMatch?.apply(el, line.match); if (Object.keys(line).length === 1) return next(); }
       if (line.place !== undefined && line.n === undefined && line.t === undefined) return sceneBreak(line);
       if (line.music) { Music.set(line.music); picked = true; return next(); }
       if (line.bg !== undefined && Object.keys(line).length === 1) { vis.bg = line.bg; paintVis(); return next(); }
@@ -657,6 +660,7 @@ window.FemcScene = (() => {
       G.facePlace?.(placeBefore);
       G.faceScene?.(seasonBefore);
       window.FemcWeather?.sceneEnd(el);
+      window.FemcMatch?.end(el);
       clearTimeout(titleTimer); titleGo = null;
       document.removeEventListener('keydown', keys, true);
       el.classList.add('out');

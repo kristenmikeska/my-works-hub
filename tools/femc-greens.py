@@ -40,7 +40,8 @@ SHEETS = {
     # Chibi sticker packs for the phone chats (FEMC-ART-TODO 14, 2026-11-01): 3 x 3, white sticker border kept,
     # art/stickers/<pack>-<1..9>.webp; stickers/index.js lists the packs (ui.js stickerSrc reads it).
     **{f'stickers-{w}': ('assets/femc/game/art/stickers', 3, 3, [f'{w}-{i}' for i in range(1, 10)], 200, True)
-       for w in ('solar', 'junpei', 'yukari', 'akihiko', 'mitsuru', 'fuuka', 'haechan', 'jungwon', 'jihoon', 'minji', 'sees')},
+       for w in ('solar', 'junpei', 'yukari', 'akihiko', 'mitsuru', 'fuuka', 'haechan', 'jungwon', 'jihoon', 'minji', 'sees', 'runners')},
+    # 'runners' (Nov 3 2026, FEMC-ART-TODO 24): the Runners epilogue's pack; after cutting add `runners: 9` to stickers/index.js.
 }
 
 

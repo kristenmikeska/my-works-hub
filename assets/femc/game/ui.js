@@ -886,8 +886,8 @@
   }
 
   /* ── Generic segment (a time of day with a line or two) ── */
-  function segment({ slot, bg, place, text, sub, extra = '', next = advance, button = 'Continue', music }) {
-    setBg(bg, /evening|late/.test(slot) ? 'night' : '');
+  function segment({ slot, bg, place, text, sub, extra = '', next = advance, button = 'Continue', music, mood }) { // mood: '' for art that is already night (epilogue.js homeView)
+    setBg(bg, mood ?? (/evening|late/.test(slot) ? 'night' : ''));
     if (music) screenMusic(music);
     show(`<section class="g-seg">
       <p class="g-kicker">${esc(G.slotName(slot))}${place ? ` · ${esc(place)}` : ''}</p>
@@ -1776,7 +1776,7 @@
   function forecastHtml() {
     const days = G.forecast(5); if (!days.length) return '';
     const spell = days[0].spell, wet = days.filter(d => d.wet).length;
-    const note = days[0].kind === 'storm' ? 'Storm warning today. The pier and the beach are closed.' : days[0].wet && G.D.places.rainyDay?.note ? G.D.places.rainyDay.note : wet >= 3 ? 'A wet few days ahead. Take an umbrella.' : days.some(d => d.kind === 'snow') ? 'Snow in the forecast.' : '';
+    const note = days[0].kind === 'storm' ? 'Storm warning today. The pier and the beach are closed.' : days[0].wet && G.D.places.rainyDay?.note ? G.D.places.rainyDay.note : wet >= 3 ? 'A wet few days ahead. Take an umbrella.' : days[0].kind === 'snow' && G.D.places.snowDay?.note ? G.D.places.snowDay.note : days.some(d => d.kind === 'snow') ? 'Snow in the forecast.' : ''; // snowDay: an epilogue world's own (Runners)
     return `<section class="g-ph-wx" aria-label="Forecast"><p class="g-ph-wx-h">${esc(S().epi?.place && S().epi.place !== 'Every world' ? S().epi.place : 'Iwatodai')} weather${spell ? `<small>${esc(spell)}</small>` : ''}</p><ol>${days.map((d, k) => `<li class="${k ? '' : 'today'}" data-wx="${esc(d.level)}"><b>${k ? esc(d.day) : 'Today'}</b>${wxIcon(d)}<small>${esc(d.name)}</small></li>`).join('')}</ol>${note ? `<p>${esc(note)}</p>` : ''}</section>`;
   }
   function openPhone(thread) {

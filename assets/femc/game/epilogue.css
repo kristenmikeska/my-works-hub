@@ -155,6 +155,16 @@
 .gs-msg .gs-from small { color: #8a7080; font-weight: 500; font-size: 10.5px; }
 .gs-msg.gs-notice { align-self: center; max-width: 90%; padding: 2px 8px; background: none; color: #8a7080; font-size: 12px; text-align: center; }
 
+/* Frost on the glass (weather.js `frost`, Nov 3 2026: a calendar with frost, the Runners epilogue's December): a snow day in a
+   room with a window frosts the picture's edges and corners; a few melting drops run down it (the canvas). No motion. */
+.g-wxfx.frost .g-wx-fog { display: block; inset: 0; animation: none; opacity: 1;
+  background: radial-gradient(ellipse 34% 42% at 0 0, rgba(232, 240, 252, .42), rgba(232, 240, 252, .12) 55%, transparent 75%),
+    radial-gradient(ellipse 30% 38% at 100% 0, rgba(232, 240, 252, .36), rgba(232, 240, 252, .1) 55%, transparent 75%),
+    radial-gradient(ellipse 38% 34% at 0 100%, rgba(236, 243, 253, .46), rgba(236, 243, 253, .12) 58%, transparent 78%),
+    radial-gradient(ellipse 36% 32% at 100% 100%, rgba(236, 243, 253, .42), rgba(236, 243, 253, .1) 58%, transparent 78%),
+    linear-gradient(0deg, rgba(236, 243, 253, .2), transparent 14%), linear-gradient(90deg, rgba(232, 240, 252, .14), transparent 8%, transparent 92%, rgba(232, 240, 252, .14)); }
+.g-wxfx.frost.wx-heavy .g-wx-fog { filter: brightness(1.08) saturate(.9); }
+
 /* SUnews / SUanon alerts (Nov 3 2026; ui.js newsAlert): a text banner with the post's thumbnail on the right. */
 .g-banner.g-news.has-thumb { grid-template-columns: 42px minmax(0, 1fr) 46px; }
 .g-news-thumb { width: 46px; height: 58px; object-fit: cover; border-radius: 8px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ff4f9e; }
@@ -164,3 +174,62 @@
 .g-al-grid.po .g-al-tile { aspect-ratio: 4 / 5; }
 .g-al-grid.po .g-al-tile.lock { background: url('art/album-locked-sq.webp') center / cover no-repeat, #10050c; }
 .g-al-grid.po .g-al-tile.lock i { visibility: visible; position: relative; z-index: 2; color: rgba(255, 140, 192, .8); }
+
+/* The esports broadcast HUD (match.js, Nov 3 2026: the Runners Regionals). Over the backdrop and portraits (z 3), under the
+   text box (4), choices (5) and tools (6); never takes a click. Pink and black only. */
+.gs-match { position: absolute; inset: 0; z-index: 3; pointer-events: none; font-family: var(--cond, "Arial Narrow", sans-serif); color: #fff4f9; }
+.gs-mx-bar { position: absolute; top: 78px; left: 50%; translate: -50% 0; display: flex; align-items: stretch; height: 46px; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .45)); }
+.gs-mx-bar > * { display: flex; align-items: center; transform: skewX(-14deg); }
+.gs-mx-bar > * > *, .gs-mx-team span { transform: none; }
+.gs-mx-live { padding: 0 10px; margin-right: 6px; background: #ff4f9e; color: #14070f; font: italic 900 13px/1 var(--cond, sans-serif); letter-spacing: .14em; }
+.gs-mx-live::before { content: ''; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: #14070f; animation: gs-mx-blink 1.6s steps(1) infinite; }
+.gs-mx-team { min-width: 150px; padding: 0 18px; background: #14070f; border: 2px solid #ff4f9e; font: italic 900 22px/1 var(--cond, sans-serif); letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+.gs-mx-team.home { justify-content: flex-end; border-right: 0; }
+.gs-mx-team.away { border-left: 0; color: #ffd0e4; }
+.gs-mx-team .tag { display: none; }
+.gs-mx-score { gap: 10px; padding: 0 16px; background: #ff4f9e; color: #14070f; font: italic 900 30px/1 var(--cond, sans-serif); }
+.gs-mx-score em { font-style: normal; font-size: 20px; opacity: .6; }
+.gs-mx-score i { display: inline-block; min-width: 18px; font-style: normal; text-align: center; transform: skewX(14deg); }
+.gs-mx-score i.pop { animation: gs-mx-pop .6s cubic-bezier(.2, 1.6, .4, 1); }
+.gs-mx-sub { position: absolute; top: 128px; left: 50%; translate: -50% 0; margin: 0; padding: 4px 16px; background: rgba(20, 7, 15, .86); border-bottom: 2px solid #ff4f9e;
+  font: italic 800 13px/1.2 var(--cond, sans-serif); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; transform: skewX(-14deg); }
+.gs-mx-feed { position: absolute; top: 78px; right: max(3vw, 16px); display: grid; gap: 5px; justify-items: end; width: min(330px, 30vw); margin: 0; padding: 0; list-style: none; }
+.gs-mx-feed li { display: flex; align-items: center; gap: 8px; max-width: 100%; padding: 5px 12px; background: rgba(20, 7, 15, .88); border-right: 4px solid #fff4f9;
+  font: 700 13.5px/1.15 -apple-system, "Helvetica Neue", sans-serif; transform: skewX(-12deg); white-space: nowrap; overflow: hidden; }
+.gs-mx-feed li > * { transform: skewX(12deg); }
+.gs-mx-feed li.su { border-right-color: #ff4f9e; }
+.gs-mx-feed li.su b:first-child { color: #ff8cc0; }
+.gs-mx-feed li.op b:last-child { color: #ff8cc0; }
+.gs-mx-feed li small { color: #c9a4b6; font: italic 800 11px/1 var(--cond, sans-serif); letter-spacing: .08em; text-transform: uppercase; }
+.gs-mx-feed li.in { animation: gs-mx-in .35s ease-out both; }
+.gs-mx-gg { position: absolute; top: 168px; left: 50%; translate: -50% 0; display: flex; align-items: center; gap: 18px; padding: 10px 30px 10px 24px; background: #14070f; border: 3px solid #ff4f9e;
+  box-shadow: 8px 8px 0 #ff4f9e; transform: skewX(-14deg); animation: gs-mx-gg .5s cubic-bezier(.2, 1.4, .4, 1) both; }
+.gs-mx-gg[hidden] { display: none; }
+.gs-mx-gg > * { transform: skewX(14deg); }
+.gs-mx-gg b { color: #ff4f9e; font: italic 900 54px/1 var(--cond, sans-serif); letter-spacing: .02em; text-shadow: 3px 3px 0 #fff4f9; }
+.gs-mx-gg span { font: italic 900 20px/1.1 var(--cond, sans-serif); letter-spacing: .08em; text-transform: uppercase; }
+.gs-mx-gg span:empty { display: none; }
+@keyframes gs-mx-pop { 0% { scale: 1.9; color: #fff4f9; } 100% { scale: 1; } }
+@keyframes gs-mx-in { from { opacity: 0; translate: 30px 0; } to { opacity: 1; translate: 0 0; } }
+@keyframes gs-mx-gg { from { opacity: 0; scale: .7; } to { opacity: 1; scale: 1; } }
+@keyframes gs-mx-blink { 50% { opacity: .25; } }
+.gs-match.still *, .gs-match.still *::before { animation: none !important; }
+@media (prefers-reduced-motion: reduce) { .gs-match *, .gs-match *::before { animation: none !important; } }
+@media (max-width: 760px) {
+  .gs-mx-bar { top: 98px; height: 36px; }
+  .gs-mx-live { padding: 0 6px; margin-right: 4px; font-size: 10px; letter-spacing: .08em; }
+  .gs-mx-live::before { width: 5px; height: 5px; margin-right: 4px; }
+  .gs-mx-team { min-width: 0; padding: 0 10px; font-size: 16px; }
+  .gs-mx-team .full { display: none; }
+  .gs-mx-team .tag { display: inline; }
+  .gs-mx-score { gap: 6px; padding: 0 10px; font-size: 22px; }
+  .gs-mx-score em { font-size: 14px; }
+  .gs-mx-sub { top: 138px; padding: 3px 10px; font-size: 10.5px; letter-spacing: .08em; max-width: calc(100vw - 40px); overflow: hidden; text-overflow: ellipsis; }
+  .gs-mx-feed { top: 166px; right: 10px; width: min(250px, 66vw); gap: 4px; }
+  .gs-mx-feed li { padding: 4px 9px; font-size: 11.5px; gap: 6px; }
+  .gs-mx-feed li:nth-child(n+3) { display: none; }
+  .gs-mx-gg { top: 172px; gap: 12px; padding: 8px 18px 8px 14px; box-shadow: 5px 5px 0 #ff4f9e; }
+  .gs-mx-gg b { font-size: 38px; }
+  .gs-mx-gg span { font-size: 14px; }
+  .gs-match.done .gs-mx-feed { display: none; }
+}

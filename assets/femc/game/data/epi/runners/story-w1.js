@@ -24,7 +24,13 @@
      the crossroads' one choice is unchanged). Small inventions: his reason, said plainly ("I wanted to keep it"); she walks home
      in his footprints on the long way.
    Glitches used (named entries in glitches.js): epi-r-g-wake, epi-r-g-thumbs, epi-r-g-moon, epi-r-g-junpei, epi-r-g-evoke;
-     { glitch: { strain: 1 } } on each lie that holds the cover. The track stays untitled. The jacket stays in the bag. */
+     { glitch: { strain: 1 } } on each lie that holds the cover. The track stays untitled. The jacket stays in the bag.
+   Broadcast HUD (Nov 3 2026, Kat: Regionals like a stream; match.js): { match } lines in epi-r-regionals-1 / -2 only, no text,
+   flag or choice changed. Scores follow the narration (Ohio 2-0; Boston 2-1 or 2-0; the semifinal 2-1 or 2-0; the final 3-2
+   or 3-1). Inventions: the scene never names three opponents, so the HUD calls the good-Lucio team (the opener and the final)
+   "Top Seed" and the semifinal team "Semifinalist"; the kill-feed's lines (handles from phone.js texts.handles, enemy heroes
+   the narration names; "Seed 1 dive" for the final's first map) and the map labels where the text gives only a number.
+   Jeno's 12/5 story (post-r-2-red-party) shows red solo cups now, not a punch bowl (Kat's picture, Nov 3). */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).runners ||= {});
   (R.events ||= []).push(
@@ -694,7 +700,7 @@
     { s: 'olivia', f: 'happy', t: "Oh my god, the Sigma stories are already insane. Look. LOOK." },
     { phone: [
       { from: 'jeno', t: "jen0l33 posted a story." },
-      { from: 'jeno', t: "[the sigma living room, red light, a punch bowl the color of a warning] december lineup pt 1 🎄 no invite list this time. you know who you are", img: 'post-r-2-red-party', handle: 'jen0l33' },
+      { from: 'jeno', t: "[the sigma living room, red light, a stack of red solo cups the color of a warning] december lineup pt 1 🎄 no invite list this time. you know who you are", img: 'post-r-2-red-party', handle: 'jen0l33' },
       { from: 'jaemin', t: "jaemin posted a story." },
       { from: 'jaemin', t: "[BABY, WELCOME TO THE PARTY! painted on the sigma hallway wall in black marker, an arrow pointing in] the wall says welcome. the wall means everyone who was NOT on the secret trip 🤫 so everyone. allegedly", img: 'post-r-3-stairs-sign', handle: 'jaemin' },
       { from: 'jaemin', t: "jaemin posted a story." },
@@ -784,8 +790,11 @@
       { n: "Half the row turned to look at him. He waved at them too. Hyein put her face in the glitter sign." }
     ] },
     { place: 'Syracuse · Regionals', time: 'Afternoon' },
+    { match: { home: 'Syracuse', homeTag: 'SU', away: 'Top Seed', awayTag: 'SEED 1', stage: 'Opening bracket · Bo3', map: 'Map 1', score: [0, 0] } },
     { n: "The opening bracket was a blur of the best kind. Two best-of-threes before dinner, the first against the team with the good Lucio, the second against a school from Ohio in matching jerseys with their names stitched on the back." },
+    { match: { map: 'Map 2', score: [1, 0], feed: [{ by: 'haerin.k', how: 'calls', on: 'Beat up', su: true }, { by: 'chenle', how: '▸', on: 'Lucio', su: true }] } },
     { n: "They made the Lucio wait. Every fight, they pulled him to the first one and made him decide, and twenty-two maps of habit made him hold beat for the second fight that Doyoung never let them take, and Haerin called it every single time he had it, flat and exact in the headsets, *beat's up, he's holding,* like a girl reading a train timetable, and by the middle of the second map he was spending it early out of panic and Chenle was saying *there it is, there it is, go* in a voice so quiet and so happy it was barely a voice at all." },
+    { match: { home: 'Syracuse', homeTag: 'SU', away: 'Ohio', awayTag: 'OHIO', stage: 'Opening bracket · Bo3', map: 'Map 2', score: [1, 0], feed: [{ by: 'Ana', how: 'nade', on: 'oliviahye', su: false }, { by: 'sollee', how: 'Suzu', on: 'cleanse ×3', su: true }] } },
     { n: "Somewhere in the second map against Ohio, Solar threw a Protection Suzu across a choke she couldn't see, off sound alone, the hiss of an enemy Ana's nade still in the air, and it landed on Haerin and Olivia and Chenle a quarter second before the anti did, and cleansed it, and the whole fight turned over like a coin." },
     { n: "She didn't hear the broadcast. Nobody on stage did; their headsets were closed. She found out between maps, when they slid the headsets down and the sound of the hall came back in like water, and the speaker over the stage was playing the caster desk, and a woman's voice was saying her name." },
     { s: 'sakura', f: 'happy', t: "...and that's Solar Lee on the Kiriko, and I need everyone at home to rewind that, because she does not see that nade. She can't see it. She hears it. She hears the Ana pull the pin and she's already throwing." },
@@ -805,7 +814,9 @@
     { n: "It was a dad. A tired-looking dad in a fleece with a camcorder, clapping politely for somebody from Rochester. No cap. No goatee. He didn't even look at her." },
     { n: "She looked at the place where the face had been until Doyoung said her name twice. Her hands were steady. That was the strange part. Her hands, which had been shaking all morning, were perfectly, completely steady, the way they'd been in a tower in the green dark with somebody she loved at her back." },
     { s: 'doyoung', f: 'serious', t: "Lee. Headset. We're not done." },
+    { match: { score: [2, 0], feed: [{ by: 'minjibear', how: '▸', on: 'Ana', su: true }], gg: 'Syracuse win · 2-0' } },
     { n: "They weren't done. They won the Ohio set two-nil. They went into the dinner break undefeated, top of their side of the bracket, through to tomorrow." },
+    { match: null },
     { place: 'Syracuse · Regionals · Green Room', time: 'Evening' },
     { n: "Dinner was sandwiches in a green room that was actually a coat check. Doyoung didn't smile, but he let Olivia put the forehead sticker on his clipboard, which for him was a parade. Chenle ate an entire sandwich, which Solar noticed, and noticed she'd noticed, and filed somewhere she'd come back to." },
     { place: 'Syracuse · Regionals · The Van', time: 'Night', soft: true },
@@ -825,52 +836,73 @@
     { s: 'doyoung', f: 'serious', t: "Kim, Lee. You're the weakness. Congratulations. Be a weakness that bites." },
     { n: "Minji turned her cap around. Backwards. She didn't look at Solar while she did it. She didn't have to." },
     { place: 'Syracuse · Regionals', time: 'Morning', soft: true },
+    { match: { home: 'Syracuse', homeTag: 'SU', away: 'Boston', awayTag: 'BOS', stage: 'Quarterfinal · Bo3', map: 'Map 2 · Lijiang', score: [1, 0] } },
     { n: "The quarterfinal was a team from Boston with a Zarya who was the best player in the building, and everybody knew it, including the Zarya. Map one went their way, clean, two-nil on points. Map two was Lijiang, and Lijiang was a knife fight in a phone booth, and in the third round of Control Center, with the point at ninety-eight and the Zarya's ultimate at a hundred, Solar had her Suzu up and a choice." },
     { n: "The enemy Ana was lining up an anti-nade on their tank. Throw the Suzu now, and it cleansed the anti. Hold it, and the anti landed, and the Graviton came, and the Suzu might cleanse that instead, if she timed it to the frame, if she was right that the Zarya was going to wait for the anti to land before she threw, the way she'd waited in every fight on the film." },
     { choose: [
       { t: "(Suzu the anti. Now.)", then: [
+        { match: { feed: [{ by: 'sollee', how: 'Suzu', on: 'anti-nade', su: true }, { by: 'Zarya', how: 'Graviton', on: '×4', su: false }] } },
         { n: "She threw it on the anti. It was clean, it was pretty, it cleansed the whole front line, and a second and a half later the Zarya threw Graviton into the middle of all of them with nothing left to answer it, and the fight folded like wet paper, and they lost the point, and the map." },
+        { match: { score: [1, 1], map: 'Map 3' } },
         { n: "She took her hand off the mouse. One map. One map was allowed. Doyoung said it in her headset before she could say anything, flat, the voice of a man who'd expected exactly this." },
         { s: 'doyoung', f: 'serious', t: "She waits for the anti. You knew that. Next map. Go." },
+        { match: { score: [2, 1], gg: 'Syracuse win · 2-1' } },
         { n: "They took map three. Two-one. Through. It was harder than it should have been, and Solar knew whose fault that was, and she put it in a box, and shut the box, and kept playing." }
       ] },
       { t: "(Hold it. Wait for the grav.)", flag: 'epi-r-read-1', then: [
+        { match: { feed: [{ by: 'Ana', how: 'anti-nade', on: 'oliviahye', su: false }] } },
         { n: "She held it. Every nerve in her hand wanted to throw. The anti landed on their tank, and he couldn't heal, and the Zarya saw it land and grinned, probably, somewhere in Boston's headsets, and threw Graviton into the middle of all of them." },
         { n: "And Solar's Suzu was already in the air." },
+        { match: { feed: [{ by: 'Zarya', how: 'Graviton', on: '×4', su: false }, { by: 'sollee', how: 'Suzu', on: 'Graviton', su: true }] } },
         { n: "It came down on the Graviton like a bell. Cleansed. Invulnerable. The whole front line pulled into the black hole and, for one long beautiful half second, nobody in it could die, and when it ended, Olivia and Chenle were standing in the middle of four enemies at full health with all their cooldowns and nowhere better to be." },
         { s: 'chenle', f: 'surprised', t: "...Oh, that's disgusting. Go. GO." },
+        { match: { score: [2, 0], feed: [{ by: 'oliviahye', how: '▸', on: 'Zarya', su: true }], gg: 'Syracuse win · 2-0' } },
         { n: "They took the point. They took the map. Two-nil. Through." }
       ] }
     ] },
+    { match: null },
     { place: 'Syracuse · Regionals', time: 'Afternoon' },
+    { match: { home: 'Syracuse', homeTag: 'SU', away: 'Semifinalist', awayTag: 'SEMI', stage: 'Semifinal · Bo3', map: 'Map 1', score: [0, 0] } },
     { n: "The semifinal was worse. The semifinal was a team that had watched them on film all night and come in with exactly the plan Doyoung had drawn on the whiteboard: dive the duo. Every fight, a Genji and a Winston, through the back line, straight at Minji, and then at Solar, and then at Minji again, like a dog that had found a gap in a fence." },
+    { match: { map: "Map 2 · King's Row", score: [1, 0] } },
     { n: "Second map. King's Row. Third point. A Genji came over the wall behind Minji's sightline, and Solar heard it, the little scrape of the climb, a half second before anyone else did." },
     { s: 'minji', f: 'neutral', t: "I'm fine. I've got him. Stay with tank." },
     { n: "It was her voice. Her steady voice. Her comms voice, calm and exact. And Solar, who had said *I'm fine* in that exact tone of voice ten thousand times in her life, to her father, to her brother, to her own mirror, heard it, and heard what was under it, and knew." },
     { choose: [
       { t: "(Trust her. Stay with tank.)", then: [
         { n: "She stayed. Minji had said she had him, and Minji always had him. She held the line with the tank and listened to the fight behind her and heard Minji's health go down in her comms, steady, steady, and then the Genji's blade, and then nothing." },
+        { match: { feed: [{ by: 'Genji', how: 'blade', on: 'minjibear', su: false }] } },
         { s: 'minji', f: 'sad', t: "...Sorry. I didn't have him." },
+        { match: { score: [1, 1], map: 'Map 3' } },
         { n: "They lost the fight, and the point, and the map, because without the Ashe the line couldn't hold, and because she'd known, and she'd let Minji's voice tell her a thing she'd heard was a lie. She'd know better than anyone. She'd invented that voice." },
         { s: 'solar', f: 'serious', t: "That was me. That's on me. Next one." },
+        { match: { score: [2, 1], gg: 'Syracuse win · 2-1' } },
         { n: "They took the next one. Two-one. Through to the final, a map heavier than they should have been, and Minji didn't say anything about it, and Solar didn't either, and the not-saying sat between their stations like a third chair." }
       ] },
       { t: "(She's not fine. Swift Step to her.)", flag: 'epi-r-read-2', then: [
+        { match: { feed: [{ by: 'sollee', how: 'Swift Step', on: 'minjibear', su: true }, { by: 'minjibear', how: '▸', on: 'Genji', su: true }] } },
         { n: "She stepped. Swift Step, the little fox-fire blink across the map, and she was beside Minji before the Genji had finished drawing his blade, and her Ofuda were already on Minji, and Minji's health came back up as fast as it was going down, and the Genji looked at the two of them, a girl with a bow and a girl with a fox, and committed anyway, because he'd been told to, and died." },
         { n: "Minji didn't say anything for a second. Then, in comms, very quietly." },
         { s: 'minji', f: 'flustered', t: "...I said I was fine." },
         { s: 'solar', f: 'happy', t: "You said it like me." },
+        { match: { score: [2, 0], feed: [{ by: 'minjibear', how: 'headshot ×2', on: 'Winston', su: true }], gg: 'Syracuse win · 2-0' } },
         { n: "Minji laughed. In the middle of the semifinal. A short helpless real laugh, in comms, in front of the whole team, and then she shot the Winston twice in the head, and they took the point, and the map, and the series, two-nil." }
       ] }
     ] },
+    { match: null },
     { place: 'Syracuse · Regionals', time: 'Afternoon' },
     { music: 'epi-r-regionals' },
+    { match: { home: 'Syracuse', homeTag: 'SU', away: 'Top Seed', awayTag: 'SEED 1', stage: 'Grand final · Bo5', map: 'Map 1 · Busan', score: [0, 0] } },
     { n: "The final was a best-of-five against the team they'd been afraid of all season, from a school with a real arena and real scholarships and a coach who'd played semi-pro, and the first map went so badly that afterward nobody would talk about it, ever, not even Olivia." },
+    { match: { feed: [{ by: 'Seed 1', how: 'dive', on: 'sollee', su: false }, { by: 'Seed 1', how: 'dive', on: 'minjibear', su: false }] } },
     { n: "Busan. Three rounds of Control. Lost all three. Every fight, the duo dove, every fight, Solar and Minji split apart and picked off, every fight the scoreboard turning over against them like a clock. It was the weakness. It was exactly the weakness Doyoung had drawn on the whiteboard, found and pried open and stood on." },
+    { match: { score: [0, 1], map: 'Map 2' } },
     { n: "In the break between maps, nobody spoke. Doyoung stood behind them with his clipboard and didn't write on it. That was the worst part. He just stood there, and let them sit in it, and then he leaned down between Solar's and Minji's chairs and said one thing, very quietly, so only they could hear." },
     { s: 'doyoung', f: 'serious', t: "You two aren't a weakness because they dive you. You're a weakness because when they dive you, you go separate ways. Stop going separate ways." },
     { n: "Minji looked at her. Solar looked back. Something passed between them that didn't need comms, and they turned back to the screens, and they took the second map, together, so close the whole time that Olivia complained, and the third, and the fourth went to the last fight of the last point with the score tied and the whole hall on its feet." },
+    { match: { score: [2, 1], map: 'Map 4 · Numbani · Overtime' } },
     { n: "Numbani. Overtime. The payload six meters from the end. The enemy Lucio, the good one, the one Chenle had watched on film until four in the morning, was sitting on Sound Barrier. Solar had Kitsune Rush. Everyone had everything. It was the fight." },
+    { match: { feed: [{ by: 'haerin.k', how: 'calls', on: 'Beat up · 40s', su: true }] } },
     { s: 'haerin', f: 'serious', t: "Beat's up. He's had it forty seconds. He's not holding it for the payload. He's holding it for you." },
     { n: "Her hand left the mouse." },
     { glitch: 'epi-r-g-evoke' },
@@ -878,17 +910,24 @@
     { n: "She put it back on the mouse. It was steady. It was perfectly, completely steady." },
     { choose: [
       { t: "(Rush now. Go first.)", then: [
+        { match: { feed: [{ by: 'sollee', how: 'Kitsune Rush', on: 'go', su: true }, { by: 'Lucio', how: 'Sound Barrier', on: 'blocked', su: false }] } },
         { n: "She went first. Kitsune Rush, the long fox-lit corridor of speed and cooldowns laid out ahead of them, and her team poured into it, and the enemy Lucio, who'd been waiting for exactly this for the whole series, dropped Sound Barrier on top of it, and every bit of damage they'd brought bounced off the shield like rain off a roof." },
+        { match: { score: [2, 2] } },
         { n: "They lost the fight. They lost the map. Two-two." },
         { n: "She sat back. Doyoung's hand was on the back of her chair. He didn't say anything. He didn't have to. The fifth map loaded, and she put her hands on the desk, flat, and waited for them to stop shaking, and they stopped, and she leaned forward." },
+        { match: { map: 'Map 5 · Ilios', score: [3, 2], feed: [{ by: 'sollee', how: '▸', on: 'Lucio', su: true }], gg: 'Regional champions · 3-2' } },
         { n: "The fifth map was Ilios, and they won it three rounds to one, and the last fight of it wasn't a read at all. It was just the five of them going the same way at the same time, the way Doyoung had told them to, until there was nobody left to go the other way." }
       ] },
       { t: "(Wait. Make the Lucio spend it first.)", flag: 'epi-r-read-3', then: [
+        { match: { feed: [{ by: 'chenle', how: 'bait', on: 'Lucio', su: true }] } },
         { n: "She waited. *Make them wait.* She held the Rush and called the bait, Chenle diving in alone, loud and visible and obvious, the way he'd never once played in his life, and the enemy Lucio, who'd been saving Sound Barrier for the second fight of every point for twenty-two straight maps, saw a kill coming on his tank, and panicked, and spent it." },
+        { match: { feed: [{ by: 'Lucio', how: 'Sound Barrier', on: 'wasted', su: false }] } },
         { s: 'chenle', f: 'happy', t: "Barrier's gone. Barrier's GONE. Solar." },
+        { match: { map: 'Map 4 · Numbani', score: [3, 1], feed: [{ by: 'sollee', how: 'Kitsune Rush', on: 'go', su: true }, { by: 'oliviahye', how: '▸', on: 'payload', su: true }], gg: 'Regional champions · 3-1' } },
         { n: "She threw the Rush. The fox-fire corridor opened ahead of them and the five of them went down it together, so fast the enemy line didn't have time to understand it was over before it was, and the payload rolled the last six meters with Olivia standing on it screaming and Haerin's healing on all of them like a hand on a back, and the hall came apart." }
       ] }
     ] },
+    { match: null },
     { cg: 'epi-r-regionals' },
     { ifFlag: 'epi-r-read-3', then: [
       { n: "Three-one. Regional champions. Through to Nationals in the spring." }

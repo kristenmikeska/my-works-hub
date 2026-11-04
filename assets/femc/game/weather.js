@@ -17,6 +17,8 @@
    Glitch modes (the epilogue's glitch.js, 2026-10-27): glitch('rise') makes the snow or rain go up (slowly, for rain),
    glitch('hold') freezes it in the air (one still frame, no loop); glitch(null) ends it. A clear or sealed place gets a
    little snow (rise) or rain (hold) for the length of it; indoors, the drops on the glass rise or hang. Sound unchanged.
+   Frost (Nov 3 2026, the Runners epilogue): a calendar's `frost: true` gives a snow day indoors the .frost class (frosted
+   glass edges, epilogue.css) and a few melting drops. A weatherFx entry ending in '$' matches that image name only.
    Tests: FemcWeather.state(). */
 window.FemcWeather = (() => {
   const G = window.FemcGame;
@@ -28,7 +30,8 @@ window.FemcWeather = (() => {
   const slugOf = url => (/\/bg\/([^/?#]+)\.webp/.exec(url || '') || [])[1] || '';
   function placeKind(slug) {
     const fx = G.D.places.weatherFx || {};
-    const has = list => (list || []).some(p => slug === p || slug.startsWith(p));
+    // A name ending in '$' is that image only (Runners: the Regionals hall is none, its loading dock is outdoors).
+    const has = list => (list || []).some(p => p.endsWith('$') ? slug === p.slice(0, -1) : slug === p || slug.startsWith(p));
     if (!slug) return 'none';
     if (has(fx.none)) return 'none';
     if (has(fx.outdoor)) return 'out';
@@ -69,13 +72,13 @@ window.FemcWeather = (() => {
       const where = want.where === 'in' ? 'in' : 'out';
       want = { level: where === 'in' ? (RAIN[want.level] ? want.level : 'drizzle') : RAIN[want.level] || SNOW[want.level] ? want.level : gm === 'rise' ? 'light' : 'rain', where };
     }
-    const k = `${want.level}|${want.where}|${!!c}|${reduced.matches}|${st().calm}|${st().perf}|${gm || ''}`;
+    const k = `${want.level}|${want.where}|${!!c}|${reduced.matches}|${st().calm}|${st().perf}|${gm || ''}|${!!G.D?.cal?.frost}`;
     mount(c);
     sound(decide(c));
     if (k === key && c === lastHost) return;
     key = k; lastHost = c; cur = want;
     const lv = want.where === 'none' || want.where === 'sealed' ? 'clear' : want.level;
-    host.className = `g-wxfx wx-${lv} at-${want.where}${reduced.matches ? ' still' : ''}${gm ? ` glx-${gm}` : ''}`;
+    host.className = `g-wxfx wx-${lv} at-${want.where}${reduced.matches ? ' still' : ''}${gm ? ` glx-${gm}` : ''}${frosty(lv, want.where) ? ' frost' : ''}`;
     host.hidden = lv === 'clear';
     resize(); seed(lv, want.where);
     clearTimeout(flashTimer);
@@ -93,9 +96,13 @@ window.FemcWeather = (() => {
 
   // How many: by level, by screen area (a phone gets fewer), halved in Performance mode.
   const COUNT = { out: { drizzle: 70, rain: 170, storm: 280, light: 110, heavy: 320 }, in: { drizzle: 14, rain: 26, storm: 36 } };
+  // A calendar with `frost` (the Runners epilogue): on a snow day a room with a window gets frost at the glass's edges and a
+  // few drops of melt running down it. Iwatodai's calendar doesn't set it, so its snow days indoors are only the tint.
+  const FROST = { light: 8, heavy: 14 };
+  const frosty = (level, where) => where === 'in' && !!SNOW[level] && !!G.D?.cal?.frost;
   function seed(level, where) {
     drops = [];
-    const n0 = COUNT[where]?.[level] || 0;
+    const n0 = COUNT[where]?.[level] || (frosty(level, where) ? FROST[level] : 0);
     if (!n0) return;
     const area = Math.max(0.35, Math.min(1.3, (W * H) / (1280 * 720)));
     const n = Math.round(n0 * area * (st().perf ? 0.5 : 1));
@@ -299,7 +306,7 @@ window.FemcWeather = (() => {
     glitch(mode) { gm = mode === 'rise' || mode === 'hold' ? mode : null; key = ''; apply(); return !!gm && !host.hidden && host.isConnected; },
     flash: lightning,
     state: () => ({ level: cur.level, where: cur.where, shown: !host.hidden && host.isConnected, host: host.parentNode?.className || null, drops: drops.length, frames, flashes,
-      flashing: flashEl.className, still: host.classList.contains('still'), glitch: gm, audio: { ctx: !!A.ctx, on: !!A.key, key: A.key, want: A.want, thunders: A.thunders || 0 } }),
+      flashing: flashEl.className, still: host.classList.contains('still'), frost: host.classList.contains('frost'), glitch: gm, audio: { ctx: !!A.ctx, on: !!A.key, key: A.key, want: A.want, thunders: A.thunders || 0 } }),
     placeKind
   };
 })();

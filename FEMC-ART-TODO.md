@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 3):** ⭐ high-resolution poses (top section: Solar first) · 1 credits still (section 18: Ken) · 22 skin-series pieces for Solar (section 19: Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21) · 8 Runners epilogue places (section 23: four for Regionals). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make (updated Nov 3):** ⭐ high-resolution poses (top section: Solar first) · 1 credits still (section 18: Ken) · 22 skin-series pieces for Solar (section 19: Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21) · 11 Runners epilogue places (section 23: four for Regionals, three for the home screen) · 1 Runners sticker sheet (section 24). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 ## ⭐⭐ TOP PRIORITY when you have usage: high-resolution poses (Kat, Nov 2)
 
@@ -716,68 +716,103 @@ Redraw the FIRST image in the art style of the SECOND image (realistic painted s
 
 
 ## 23. More places for the Runners epilogue (Gemini)
-Kat's note (Nov 3): the Runners epilogue needs more backgrounds, Regionals most of all. Each of these places shows a borrowed background today (the main Regionals hall, the outside of the Alpha Phi house, the Sigma party, the café). Same painted style as the Runners places already in the game. Save under the name given: Claude swaps it in.
+Kat's note (Nov 3): the Runners epilogue needs more backgrounds, Regionals most of all, and a home screen by time of day (23I-23K). Each of these places shows a borrowed background today (the main Regionals hall, the outside of the Alpha Phi house, the Sigma party, the café). Realistic style, like the Runners epilogue CGs (Kat, Nov 3): attach `CG - style (Runners).png` for the look (its people are left out). The Runners backgrounds already in the game are painted, so these will look different from them until those are remade. Save under the name given: Claude swaps it in.
 
 **[ ] 23A. Regionals: the green room**  
 The coat check the team uses as a green room at Regionals: dinner on the first day, the whiteboard on the second morning (now the main hall stands in).  
-Attach: `BG - Regionals.png` (for the style only)  
+Attach: `CG - style (Runners).png` (for the style only)  
 Save as: `epi-r-regionals-green-room.png`
 ```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the coat check of a downtown convention center, used as a college esports team's green room: a long half-door counter with a hinged flap, rows of empty coat hangers on metal rails behind it with a few winter coats and orange team scarves still hanging, a folding table pushed against the wall with a tray of plastic-wrapped sandwiches, energy drink cans and water bottles, a rolling whiteboard covered in marker boxes and arrows (unreadable), headset cases and rubber-banded mousepads in a plastic tub, two folding chairs, a clipboard on the counter, a coat-check ticket roll. Flat fluorescent light from the ceiling, no windows, beige walls, carpet tape on the floor. Cramped, a little shabby, a team's private corner. Match the painted style of the attached image. Keep everything important away from the edges.
+Realistic background art in the style of the attached image (the realistic painted style of the Runners CGs), 16:9, high resolution, no people, no readable text: the coat check of a downtown convention center, used as a college esports team's green room: a long half-door counter with a hinged flap, rows of empty coat hangers on metal rails behind it with a few winter coats and orange team scarves still hanging, a folding table pushed against the wall with a tray of plastic-wrapped sandwiches, energy drink cans and water bottles, a rolling whiteboard covered in marker boxes and arrows (unreadable), headset cases and rubber-banded mousepads in a plastic tub, two folding chairs, a clipboard on the counter, a coat-check ticket roll. Flat fluorescent light from the ceiling, no windows, beige walls, carpet tape on the floor. Cramped, a little shabby, a team's private corner. Soft realistic shading, real-looking light and materials, cinematic; NOT anime and NOT cel shading. Use the attached image for the style only and leave out its people. Keep everything important away from the edges.
 ```
 
 **[ ] 23B. Regionals: the van home**  
 The team van driving back to campus after the first day, in the dark (now the main hall stands in).  
-Attach: `BG - Regionals.png` (for the style only)  
+Attach: `CG - style (Runners).png` (for the style only)  
 Save as: `epi-r-regionals-van.png`
 ```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: inside a white university passenger van at night on a highway in upstate New York in December, seen from the back seats looking forward: three rows of worn grey bench seats, winter coats and orange scarves piled on the back row, a team duffel bag and a plastic tub of cables on the floor, a paper cup in a cup holder, the windows black with night and light snow streaking past, orange highway lights sliding over the ceiling, the red glow of the dashboard and the taillights of a truck far ahead through the windshield. Quiet, tired, warm inside against the cold outside. Match the painted style of the attached image. Keep everything important away from the edges.
+Realistic background art in the style of the attached image (the realistic painted style of the Runners CGs), 16:9, high resolution, no people, no readable text: inside a white university passenger van at night on a highway in upstate New York in December, seen from the back seats looking forward: three rows of worn grey bench seats, winter coats and orange scarves piled on the back row, a team duffel bag and a plastic tub of cables on the floor, a paper cup in a cup holder, the windows black with night and light snow streaking past, orange highway lights sliding over the ceiling, the red glow of the dashboard and the taillights of a truck far ahead through the windshield. Quiet, tired, warm inside against the cold outside. Soft realistic shading, real-looking light and materials, cinematic; NOT anime and NOT cel shading. Use the attached image for the style only and leave out its people. Keep everything important away from the edges.
 ```
 
 **[ ] 23C. Regionals: the loading dock**  
 The loading dock behind the convention center, where two players step out after the final (now the main hall stands in).  
-Attach: `BG - Regionals.png` (for the style only)  
+Attach: `CG - style (Runners).png` (for the style only)  
 Save as: `epi-r-regionals-dock.png`
 ```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the back loading dock of a downtown convention center on a snowy December afternoon: a concrete dock with a yellow-striped edge, a big roll-up door half open on a dim service corridor with stacked flattened cardboard boxes and an equipment road case inside, a heavy steel side door propped open with a rubber wedge, black rubber bumpers on the dock wall, a short metal stair down to an empty alley lot where snow is falling and piling against a dumpster and a chain-link fence, the grey sky going toward early dusk, a single caged light over the door just switched on. Cold, quiet, a place to breathe away from a crowd. Match the painted style of the attached image. Keep everything important away from the edges.
+Realistic background art in the style of the attached image (the realistic painted style of the Runners CGs), 16:9, high resolution, no people, no readable text: the back loading dock of a downtown convention center on a snowy December afternoon: a concrete dock with a yellow-striped edge, a big roll-up door half open on a dim service corridor with stacked flattened cardboard boxes and an equipment road case inside, a heavy steel side door propped open with a rubber wedge, black rubber bumpers on the dock wall, a short metal stair down to an empty alley lot where snow is falling and piling against a dumpster and a chain-link fence, the grey sky going toward early dusk, a single caged light over the door just switched on. Cold, quiet, a place to breathe away from a crowd. Soft realistic shading, real-looking light and materials, cinematic; NOT anime and NOT cel shading. Use the attached image for the style only and leave out its people. Keep everything important away from the edges.
 ```
 
 **[ ] 23D. Regionals: the hall after the final**  
 The same hall as the Regionals background once the final is over: the crowd going home, confetti on the floor (now the hall during the matches stands in).  
-Attach: `BG - Regionals.png` (the picture to edit)  
+Attach: `BG - Regionals.png` (the picture to edit), `CG - style (Runners).png` (the style)  
 Save as: `epi-r-regionals-after.png`
 ```
-Edit this picture. Keep the same convention hall, stages, glass player booths, banners, screens, angle and art style; change it to after the tournament final: the house lights up, plain and a little harsh, the stage lights off, the big screens showing only a dark logo-less standby glow, orange and white confetti lying in drifts across the floor and the stage, half the folding chairs folded and stacked on rolling carts, the rest pushed out of line, a push broom leaning against the stage rail beside a swept pile of confetti, cables being coiled on the stage. The feeling of a big day ending. 16:9, no people, no readable text.
+Edit the FIRST image and redraw it in the realistic style of the SECOND image (soft realistic shading, real-looking light and materials, cinematic; NOT anime and NOT cel shading; leave out the second image's people). Keep the same convention hall, stages, glass player booths, banners, screens and angle; change it to after the tournament final: the house lights up, plain and a little harsh, the stage lights off, the big screens showing only a dark logo-less standby glow, orange and white confetti lying in drifts across the floor and the stage, half the folding chairs folded and stacked on rolling carts, the rest pushed out of line, a push broom leaning against the stage rail beside a swept pile of confetti, cables being coiled on the stage. The feeling of a big day ending. 16:9, no people, no readable text.
 ```
 
 **[ ] 23E. The Alpha Phi living room**  
 The big living room of the sorority house for chapter meeting night and the finals-week all-nighter, with the dining room through an archway for Danielle's scene (now the outside of the house stands in).  
-Attach: `BG - Alpha Phi Kitchen.png` (for the style only)  
+Attach: `CG - style (Runners).png` (for the style only)  
 Save as: `epi-r-alpha-living.png`
 ```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the living room of an old American sorority house on a winter evening: two big soft couches and an armchair, a coffee table with laptops, highlighters and an open pizza box, throw blankets and floor cushions on a worn rug, a fireplace with a mantel full of framed group photos and a small garland, tall windows with the curtains open on dark blue night and snow falling, warm table lamps on; through a wide archway on one side, the dining room: a long polished table nobody eats at, a chandelier with one dead bulb, papers squared into neat stacks on the table. Warm, cozy and a little grand. Match the painted style of the attached image. Keep everything important away from the edges.
+Realistic background art in the style of the attached image (the realistic painted style of the Runners CGs), 16:9, high resolution, no people, no readable text: the living room of an old American sorority house on a winter evening: two big soft couches and an armchair, a coffee table with laptops, highlighters and an open pizza box, throw blankets and floor cushions on a worn rug, a fireplace with a mantel full of framed group photos and a small garland, tall windows with the curtains open on dark blue night and snow falling, warm table lamps on; through a wide archway on one side, the dining room: a long polished table nobody eats at, a chandelier with one dead bulb, papers squared into neat stacks on the table. Warm, cozy and a little grand. Soft realistic shading, real-looking light and materials, cinematic; NOT anime and NOT cel shading. Use the attached image for the style only and leave out its people. Keep everything important away from the edges.
 ```
 
 **[ ] 23F. The Sigma Chi living room by day**  
 The fraternity house's living room at four in the afternoon, cleaned up and quiet (now the Sigma party stands in).  
-Attach: `BG - Sigma Chi Kitchen.png` (for the style only)  
+Attach: `CG - style (Runners).png` (for the style only)  
 Save as: `epi-r-sigma-living.png`
 ```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the living room of an old college fraternity house on a winter afternoon, freshly vacuumed and quiet: a long battered leather couch with a laptop left on one cushion, a big TV on the wall switched off, a coffee table with a stack of Christmas cards and a pen, a framed composite of past members and a wooden paddle on the wall, a pool table in the back with the cues racked, a staircase going up in the corner, tall windows with grey snow light and a white front yard outside. Calm, a little worn, a different place from the party it is at night. Match the painted style of the attached image. Keep everything important away from the edges.
+Realistic background art in the style of the attached image (the realistic painted style of the Runners CGs), 16:9, high resolution, no people, no readable text: the living room of an old college fraternity house on a winter afternoon, freshly vacuumed and quiet: a long battered leather couch with a laptop left on one cushion, a big TV on the wall switched off, a coffee table with a stack of Christmas cards and a pen, a framed composite of past members and a wooden paddle on the wall, a pool table in the back with the cues racked, a staircase going up in the corner, tall windows with grey snow light and a white front yard outside. Calm, a little worn, a different place from the party it is at night. Soft realistic shading, real-looking light and materials, cinematic; NOT anime and NOT cel shading. Use the attached image for the style only and leave out its people. Keep everything important away from the edges.
 ```
 
 **[ ] 23G. The Sigma Chi back porch**  
 The back porch of the fraternity house on a cold finals-week morning (now the Sigma party stands in).  
-Attach: `BG - Sigma Chi Kitchen.png` (for the style only)  
+Attach: `CG - style (Runners).png` (for the style only)  
 Save as: `epi-r-sigma-porch.png`
 ```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: the back porch of an old wooden fraternity house on a cold grey December morning: a covered porch with peeling white railings, a mug of coffee steaming on the railing, two mismatched plastic chairs, a kitchen door with a window in it behind, steps down to a backyard covered in snow stamped flat with boot prints, beer cans frozen into the snow by a wooden fence like fossils, bare trees and the backs of other old houses beyond, pale flat morning light. Cold, still, a place for a hard conversation. Match the painted style of the attached image. Keep everything important away from the edges.
+Realistic background art in the style of the attached image (the realistic painted style of the Runners CGs), 16:9, high resolution, no people, no readable text: the back porch of an old wooden fraternity house on a cold grey December morning: a covered porch with peeling white railings, a mug of coffee steaming on the railing, two mismatched plastic chairs, a kitchen door with a window in it behind, steps down to a backyard covered in snow stamped flat with boot prints, beer cans frozen into the snow by a wooden fence like fossils, bare trees and the backs of other old houses beyond, pale flat morning light. Cold, still, a place for a hard conversation. Soft realistic shading, real-looking light and materials, cinematic; NOT anime and NOT cel shading. Use the attached image for the style only and leave out its people. Keep everything important away from the edges.
 ```
 
 **[ ] 23H. The dining hall**  
 The campus dining hall for "Late dinner at the dining hall" on a Go Out evening (now the Marshall Street café stands in).  
-Attach: `BG - Marshall Street Café.png` (for the style only)  
+Attach: `CG - style (Runners).png` (for the style only)  
 Save as: `epi-r-dining-hall.png`
 ```
-Persona 3 Reload style background art, 16:9, high resolution, no people, no readable text: a big university dining hall on a December evening: long rows of tables with plastic trays and a few half-finished plates, a food counter with steam rising and sneeze guards, a cereal wall and a drink station, a tray return window in the back, tall windows along one side showing dark blue night and snow on the lamplit paths outside, warm overhead lights, a small paper snowflake garland strung over the counter. Busy-looking but nearly empty, warm and ordinary. Match the painted style of the attached image. Keep everything important away from the edges.
+Realistic background art in the style of the attached image (the realistic painted style of the Runners CGs), 16:9, high resolution, no people, no readable text: a big university dining hall on a December evening: long rows of tables with plastic trays and a few half-finished plates, a food counter with steam rising and sneeze guards, a cereal wall and a drink station, a tray return window in the back, tall windows along one side showing dark blue night and snow on the lamplit paths outside, warm overhead lights, a small paper snowflake garland strung over the counter. Busy-looking but nearly empty, warm and ordinary. Soft realistic shading, real-looking light and materials, cinematic; NOT anime and NOT cel shading. Use the attached image for the style only and leave out its people. Keep everything important away from the edges.
+```
+
+**[ ] 23I. Home screen: Solar's room, day**  
+The Runners epilogue's home screen in the daytime (mornings off, Go Out after class, staying in), like the dorm room in the main game. Make this one first: the evening and night versions are edits of it.  
+Attach: `BG - Solar's Room (Alpha Phi).png` (the room to redraw), `CG - style (Runners).png` (the style)  
+Save as: `epi-r-home-day.png`
+```
+Redraw the FIRST image as a realistic background in the style of the SECOND image (the realistic painted style of the Runners CGs: soft realistic shading, real-looking light and materials, cinematic; NOT anime and NOT cel shading; leave out the second image's people). Keep the FIRST image's room and everything in it: a girl's bedroom in an old American sorority house, pink walls, the double bed with pink bedding and a fringed pink throw, fairy lights on the wooden headboard, the closet door open with coats and a puffer jacket hanging on it, the tall white sash window with pink curtains tied back, the old cream radiator under it, the desk on the right with a pink gaming PC, monitor, keyboard, headphones and desk lamp, the mirror with photos on the left, a few clothes on the floor. Make it a little wider and tidier as a home screen: the bed made, a coffee mug on the windowsill, a laptop and a highlighter-marked syllabus on the desk, a folded orange scarf on the chair. Time: a snowy December morning: soft white daylight through the window, snow on the sill outside and a white campus street beyond the glass, the corners of the panes a little frosted, the fairy lights off. 16:9, high resolution, no people, no readable text. Keep everything important away from the edges and the lower left (the game puts menus there).
+```
+
+**[ ] 23J. Home screen: Solar's room, evening**  
+The same room for the Evening slot.  
+Attach: `epi-r-home-day.png` (the one from 23I), `CG - style (Runners).png` (the style)  
+Save as: `epi-r-home-evening.png`
+```
+Edit the FIRST image: the same room, same angle, same furniture and the same realistic style (the SECOND image is the style; leave out its people). Change only the time: a December evening just after sunset: the window a deep blue dusk with a few lit windows and a streetlamp coming on outside, snow falling softly past it, the fairy lights on the headboard switched on and glowing warm, the desk lamp on, warm lamplight on the pink walls against the cool blue from the window, the PC's soft pink glow. Cozy, quiet, the room lived in. 16:9, high resolution, no people, no readable text.
+```
+
+**[ ] 23K. Home screen: Solar's room, night**  
+The same room for Late Night.  
+Attach: `epi-r-home-day.png` (the one from 23I), `CG - style (Runners).png` (the style)  
+Save as: `epi-r-home-night.png`
+```
+Edit the FIRST image: the same room, same angle, same furniture and the same realistic style (the SECOND image is the style; leave out its people). Change only the time: late at night: the room dark, lit only by the warm fairy lights on the headboard, the small desk lamp turned low and the faint pink glow of the PC; outside the window black night with snow drifting through the orange light of a streetlamp, frost thick in the corners of the panes, the radiator's shadow long across the floor, the bed's covers turned back, a phone face down on the desk. Quiet and a little lonely, but warm. 16:9, high resolution, no people, no readable text.
+```
+
+## 24. Runners sticker pack (ChatGPT)
+Reaction stickers for the Runners epilogue's phone chats: Solar, Haechan, the Alpha Phi girls and the eSports team. Same 3 × 3 green sheet as the other packs (section 14's, all done); the game cuts each sticker out. Until it's in, the chats show a short line in its place.
+
+**[ ] 24A. Runners: sticker pack**  
+Solar and Haechan at Syracuse, Alpha Phi, the eSports team, December snow.  
+Attach: `Stickers - style.png`, then `Solar (Runners).png`, `Solar (Regionals).png`, `Haechan (Runners).png`, `Hanni (Runners).png`, `Hyein (Runners).png`  
+Save as: `stickers-runners.png`
+```
+A 3 × 3 sheet of nine chibi stickers on a flat pure green (#00FF00) background, with wide green space between them and nothing touching. Match the chibi style of the FIRST attached image exactly: big heads, small bodies, thick dark outlines, flat cel shading with glossy highlights, bright clean colours. The characters are from the other attached images, each with their own face and hair: Solar (long wavy black hair; the SECOND image, in her orange hoodie and navy coat, and the THIRD image, in her orange Syracuse esports jersey with black headphones), Haechan (messy black hair, black hoodie, black headphones round his neck; the FOURTH image), Hanni (long black hair with bangs, cream cardigan; the FIFTH image) and Hyein (long brown hair, cream cardigan over a striped top; the SIXTH image). Each sticker has a thick white sticker border around the whole figure or group. Same size and framing in every cell. No text, no letters, no numbers, no logos, no words on the jersey or in any speech bubble. Cells, left to right, top to bottom: 1 Solar in her orange jersey and headphones, one fist up in victory, sparkles; 2 Solar and Haechan sitting back to back in the snow, sharing one pair of earbuds, eyes closed; 3 Haechan in his black hoodie, lifting a paper cup of hot chocolate just a little, a small smirk; 4 Haechan at a studio keyboard with his headphones on, little music notes floating up; 5 Solar, Hanni and Hyein squished together for a selfie in matching orange scarves, peace signs; 6 Hyein standing on a folding chair waving a blank handmade sign, Hanni tugging her sleeve; 7 Solar asleep face-down on a stack of textbooks, a coffee cup tipped beside her, little sleep bubbles; 8 Solar bundled in a puffy coat and scarf in falling snow, only her eyes showing; 9 a small glowing orange fox spirit curled on top of a black gaming headset, holding a tiny gold trophy.
 ```

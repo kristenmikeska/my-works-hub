@@ -44,7 +44,10 @@
    Solar answered; Chenle's log is three angles (his phone, the bell-tower webcam, an SUanon video), 4.2 seconds each.
    Noticed, not changed: people.js's ambient epi-r-am-mark-notes says the Stats final is the 16th; this brief has it on the 15th. Phone pass (Nov 3 2026): Ms. Han's reminder is her own thread 'han'; two short texts from her father himself
    (epi-r-tx-dad-finals 12/16 late; epi-r-tx-dad-sunday 12/18 evening, only after she confirmed the car: flag epi-r-travel-yes).
-   Inventions: none beyond his wording ("Don't be clever on the essays. Be clear."). No flag set, no outcome changed. */
+   Inventions: none beyond his wording ("Don't be clever on the essays. Be clear."). No flag set, no outcome changed.
+   Stickers (Nov 3 2026; pack `runners`, FEMC-ART-TODO 24, fall back to their `t`): Solar's sticker replies in team-last
+   (asleep on textbooks) and girls-upward (bundled up in the snow; Hanni answers as on read), Haechan's cup in hc-home-2.
+   No flag, gate or outcome. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).runners ||= {});
   const B = (R.bonds ||= {});
@@ -739,6 +742,7 @@
       { from: 'haerin', t: 'ok' }
     ], reply: [
       { t: "see you saturday", then: [{ from: 'doyoung', t: '2pm. not 2:05' }] },
+      { t: '(asleep on a stack of textbooks)', sticker: 'runners-7', then: [{ from: 'doyoung', t: 'sleep is allowed. saturday 2pm' }] },
       { t: "(Leave it on read.)", silent: true, then: [{ from: 'chenle', t: "she read it at 11:48. that's a studying time. leave her alone" }] }
     ] },
     { id: 'epi-r-tx-girls-upward', thread: 'girls', date: '12/15', slot: 'evening', events: ['epi-r-upward'], msgs: [
@@ -748,6 +752,7 @@
       { from: 'hyein', t: 'hyein: she was out there. she had stats' }
     ], reply: [
       { t: "i was out there", then: [{ from: 'hanni', t: 'hanni: are you ok' }, { from: 'hyein', t: 'hyein: ARE you ok' }] },
+      { t: '(bundled up in the snow, only her eyes showing)', sticker: 'runners-8', then: [{ from: 'hanni', t: "hanni: that's not an answer" }, { from: 'hanni', t: "hanni: coming up with tea. don't argue" }] },
       { t: "it was an inversion layer", then: [{ from: 'hyein', t: 'hyein: a WHAT' }, { from: 'hanni', t: 'hanni: sol.' }, { from: 'hanni', t: "hanni: i'm coming up with tea" }] },
       { t: "(Leave it on read.)", silent: true, then: [{ from: 'hanni', t: "hanni: coming up with tea. don't argue" }] }
     ] },
@@ -762,7 +767,7 @@
       { from: 'haechan', t: 'home' },
       { from: 'haechan', t: "same as last time. i'm keeping the rule boring on purpose" }
     ], reply: [
-      { t: "home too", then: [{ from: 'haechan', t: 'good' }, { from: 'haechan', t: 'sleep princess. actually sleep' }] },
+      { t: "home too", then: [{ from: 'haechan', t: 'good' }, { from: 'haechan', t: 'sleep princess. actually sleep' }, { from: 'haechan', t: '(tipping a paper cup of hot chocolate an inch)', sticker: 'runners-3' }] },
       { t: "(Leave it on read.)", silent: true, then: [{ from: 'haechan', t: 'read receipt counts' }] }
     ] },
     { id: 'epi-r-tx-mom-car', thread: 'mom', date: '12/17', slot: 'after', msgs: [
