@@ -37,25 +37,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .fig { position: absolute; left: 50%; bottom: 0; transform-origin: 50% 100%; animation: sway 7.5s ease-in-out infinite; }
 .fig .walk { position: absolute; inset: 0; transform-origin: 50% 100%; }
 .fig .breathe { position: absolute; inset: 0; transform-origin: 50% 100%; animation: breathe 4.2s ease-in-out infinite; }
-.fig img { position: absolute; display: block; max-width: none; user-select: none; -webkit-user-drag: none; transition: opacity .45s ease, transform .6s cubic-bezier(.2, 1, .3, 1); filter: drop-shadow(0 18px 24px rgba(0, 0, 0, .55)); }
-.fig img.out { opacity: 0; transform: translateX(-3%) scale(.985); }
+.fig img { position: absolute; display: block; max-width: none; user-select: none; -webkit-user-drag: none; transition: opacity .6s ease; filter: drop-shadow(0 18px 24px rgba(0, 0, 0, .55)); }
+.fig img.out { opacity: 0; }
 @keyframes breathe { 0%, 100% { transform: translateY(0) scaleY(1); } 50% { transform: translateY(-.5%) scaleY(1.008); } }
 @keyframes sway { 0%, 100% { transform: translateX(-50%) rotate(-.35deg); } 50% { transform: translateX(-50%) rotate(.35deg); } }
-.fig.hop .breathe { animation: hop .55s cubic-bezier(.3, 1.6, .5, 1), breathe 4.2s ease-in-out .55s infinite; }
-@keyframes hop { 40% { transform: translateY(-2.2%) scale(1.012); } }
-/* A new person walks in from the side as the curtain opens: two steps, a lean, then she settles. */
-.walk.enter { animation: enter 1.05s cubic-bezier(.25, .8, .3, 1) both; }
-.walk.enter.from-l { animation-name: enter-l; }
-@keyframes enter { 0% { transform: translateX(46%) rotate(2.5deg); opacity: 0; } 12% { opacity: 1; }
-  30% { transform: translateX(28%) translateY(-1.6%) rotate(1.6deg); } 50% { transform: translateX(14%) translateY(0) rotate(1deg); }
-  70% { transform: translateX(3%) translateY(-1.2%) rotate(.4deg); } 86% { transform: translateX(-1.2%) translateY(0) rotate(-.6deg); } 100% { transform: none; } }
-@keyframes enter-l { 0% { transform: translateX(-46%) rotate(-2.5deg); opacity: 0; } 12% { opacity: 1; }
-  30% { transform: translateX(-28%) translateY(-1.6%) rotate(-1.6deg); } 50% { transform: translateX(-14%) translateY(0) rotate(-1deg); }
-  70% { transform: translateX(-3%) translateY(-1.2%) rotate(-.4deg); } 86% { transform: translateX(1.2%) translateY(0) rotate(.6deg); } 100% { transform: none; } }
-/* A new outfit: she turns on the spot (squeezes to a sliver, the clothes change, turns back). */
-.walk.twirl { animation: twirl .62s cubic-bezier(.5, 0, .4, 1) both; }
-@keyframes twirl { 0% { transform: none; } 45%, 55% { transform: scaleX(.04) translateY(-1.5%); } 100% { transform: none; } }
-.walk.twirl img { transition: none; }
+/* The walk-in, twirl and hop are Web Animations in pixels (see motion() in the script). */
 .soft-note { position: absolute; left: 14px; top: 34px; z-index: 6; padding: 3px 9px; background: rgba(20, 7, 15, .8); border: 1px solid rgba(255, 140, 192, .4); font: italic 800 11px/1.2 var(--cond); letter-spacing: .12em; text-transform: uppercase; color: var(--pink-3); transform: skewX(-10deg); }
 
 /* The curtain: two velvet panels gathered at the sides; they sweep shut and fall open. */
@@ -384,7 +370,7 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
       show(L.dir + (hi ? 'happy' : base) + '.webp', { mode: 'face' }, instant);
       if (hi) setTimeout(() => { if (mode === 'face' && breathe.querySelector('img:not(.out)')?.src.includes('/happy.webp')) show(L.dir + base + '.webp', { mode: 'face' }); }, 1800);
       let k = 0;
-      faceTimer = setInterval(() => { if (document.hidden) return; k = (k + 1) % idle.length; show(L.dir + idle[k] + '.webp', { mode: 'face' }); }, 3200);
+      faceTimer = setInterval(() => { if (document.hidden) return; k = (k + 1) % idle.length; show(L.dir + idle[k] + '.webp', { mode: 'face' }); }, 6000);
       $('poseBtn').onclick = () => { const f = ['happy', 'surprised', 'flustered', 'serious'].filter(x => fs.includes(x)); show(L.dir + f[Math.floor(Math.random() * f.length)] + '.webp', { mode: 'face' }); hop(); };
     } else {
       show(L.src, { mode: 'pose' }, instant);
@@ -394,7 +380,7 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
   }
   function nextPose(L, at) { poseAt = (poseAt + 1) % poses.length; show(L.dir + poses[poseAt] + '.webp', at(poses[poseAt])); }
   function restart(L, at) { clearInterval(poseTimer); poseTimer = setInterval(() => { if (!document.hidden) nextPose(L, at); }, 6500); }
-  function hop() { fig.classList.remove('hop'); void fig.offsetWidth; fig.classList.add('hop'); }
+  function hop() { if (!reduced) $('walk').animate([{ transform: 'none' }, { transform: 'translateY(-14px) scale(1.01)', offset: .4 }, { transform: 'none' }], { duration: 520, easing: 'cubic-bezier(.3, 1.4, .5, 1)' }); }
   function paintTag() {
     const x = cur(), it = x || null;
     const nm = it ? it.name : kind === 'skin' ? (who === 'solar' ? 'Her own look' : 'Their own look') : `Default ${KIND[kind].toLowerCase()}`;
@@ -418,7 +404,20 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const walk = $('walk');
   let lastWho = 'solar';
-  function motion(cls, extra) { walk.className = 'walk'; void walk.offsetWidth; if (!reduced) walk.className = 'walk ' + cls + (extra ? ' ' + extra : ''); }
+  // Motion in pixels (the figure's box has no width, so % moves would do nothing).
+  let anim = null;
+  function motion(kindOf, fromLeft) {
+    if (anim) anim.cancel(); if (reduced) return;
+    if (kindOf === 'twirl') {
+      anim = walk.animate([{ transform: 'none' }, { transform: 'scaleX(.04) translateY(-10px)', offset: .45 }, { transform: 'scaleX(.04) translateY(-10px)', offset: .55 }, { transform: 'none' }],
+        { duration: 620, easing: 'cubic-bezier(.5, 0, .4, 1)' });
+      return;
+    }
+    // Walks in from beyond the booth's edge: four steps (a small bob on each), leaning into the walk, then a settle.
+    const s = (fromLeft ? -1 : 1) * booth.clientWidth * .8, lean = fromLeft ? 2 : -2, f = (x, y, r, o) => ({ transform: `translateX(${x}px) translateY(${y}px) rotate(${r}deg)`, offset: o });
+    anim = walk.animate([f(s, 0, lean, 0), f(s * .74, -9, lean, .2), f(s * .5, 0, lean, .38), f(s * .28, -8, lean * .7, .55), f(s * .1, 0, lean * .4, .72), f(-s * .015, -4, -lean * .2, .86), f(0, 0, 0, 1)],
+      { duration: 1250, easing: 'cubic-bezier(.25, .6, .35, 1)', fill: 'backwards' });
+  }
   function swap(kindOf) {
     const id = ++busy;
     if (kindOf === 'peek') {
@@ -431,17 +430,17 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
       return;
     }
     // From the right when moving along the row, from the left when going back.
-    const dir = ORDER.indexOf(who) < ORDER.indexOf(lastWho) ? 'from-l' : ''; lastWho = who;
+    const fromLeft = ORDER.indexOf(who) < ORDER.indexOf(lastWho); lastWho = who;
     booth.classList.remove('opening', 'peek', 'shut');
     void booth.offsetWidth;
     booth.classList.add(kindOf === 'full' ? 'shut' : reduced ? 'shut' : 'peek');
     swish(kindOf === 'full' ? 1 : .6);
     setTimeout(() => {
       if (id !== busy) return;
-      render(true, true); motion('enter', dir); walk.style.opacity = reduced ? '' : '0';
+      render(true, true); motion('enter', fromLeft);
       setTimeout(() => {
         if (id !== busy) return;
-        walk.style.opacity = ''; motion('enter', dir);
+        motion('enter', fromLeft);
         booth.classList.add('opening'); booth.classList.remove('shut', 'peek'); swish(.8, true); footsteps();
         setTimeout(() => { if (id === busy) booth.classList.remove('opening'); }, 800);
       }, kindOf === 'full' ? 220 : 60);
@@ -451,7 +450,7 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
   /* Two soft footsteps as someone walks in. */
   function footsteps() {
     try { ac = ac || new (window.AudioContext || window.webkitAudioContext)();
-      [0.18, 0.5].forEach(dt => { const t = ac.currentTime + dt, o = ac.createOscillator(), g = ac.createGain();
+      [0.2, 0.5, 0.78, 1.02].forEach(dt => { const t = ac.currentTime + dt, o = ac.createOscillator(), g = ac.createGain();
         o.type = 'sine'; o.frequency.setValueAtTime(140, t); o.frequency.exponentialRampToValueAtTime(60, t + .09);
         g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.12, t + .01); g.gain.exponentialRampToValueAtTime(.0001, t + .12);
         o.connect(g).connect(ac.destination); o.start(t); o.stop(t + .14); });
@@ -484,8 +483,8 @@ details.soon .cards { margin-top: 10px; opacity: .7; }
   if (own[q.get('who')]) who = q.get('who');
   if (items.some(i => i.id === q.get('sel'))) sel = q.get('sel');
   paintWho(); paintCloset(); render(true, true);
-  booth.classList.add('shut'); walk.style.opacity = '0';
-  setTimeout(() => { walk.style.opacity = ''; motion('enter'); booth.classList.add('opening'); booth.classList.remove('shut'); }, 350);
+  booth.classList.add('shut'); motion('enter');
+  setTimeout(() => { motion('enter'); booth.classList.add('opening'); booth.classList.remove('shut'); }, 350);
 })();
 </script>
 </body>
