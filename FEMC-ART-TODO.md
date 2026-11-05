@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 4):** ⭐ high-resolution poses (top section: Solar ✅ done; the other fighters next) · 1 credits still (section 18: Ken) · 22 skin-series pieces for Solar (section 19: Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21) · 11 Runners epilogue places (section 23: four for Regionals, three for the home screen) · 1 Runners sticker sheet (section 24) · 12 Echo sheets (section 25: 72 new Echoes) · 6 dorm lounge pictures (section 26) · couple victory poses for Haechan, Jungwon and Akihiko (section 27: six outfits) · 15 Boutique banner pictures (section 28) · little card art (section 29: card back, frames, 22 item pictures, 11 outfit face sheets) · low-res pictures to look over at the very end (section 30). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make (updated Nov 4):** ⭐ high-resolution poses (top section: Solar ✅ done; the other fighters next) · 1 credits still (section 18: Ken) · 22 skin-series pieces for Solar (section 19: Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21) · 11 Runners epilogue places (section 23: four for Regionals, three for the home screen) · 1 Runners sticker sheet (section 24) · 12 Echo sheets (section 25: 72 new Echoes) · 6 dorm lounge pictures (section 26) · couple victory poses for Haechan, Jungwon and Akihiko (section 27: six outfits) · 15 Boutique banner pictures (section 28) · little card art (section 29: card back, frames, 22 item pictures, 11 outfit face sheets) · 9 epilogue polaroids (section 30) · low-res pictures to look over at the very end (section 31). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 ## ⭐⭐ TOP PRIORITY when you have usage: high-resolution poses (Kat, Nov 2)
 
@@ -1242,7 +1242,78 @@ A 3 × 2 portrait sheet on a plain white background, clear space between cells, 
 
 ---
 
-## 30. Low-res pictures to look at (assess later)
+## 30. Epilogue polaroids (ChatGPT; realistic, Kat Nov 4)
+
+Little photo-style keepsakes of time with friends in the epilogue worlds, for the Album (and later the hangouts). Square polaroids in each world’s realistic style. Only hangouts that are open to every route are here, so nothing here hints at anything. The game part waits until the pictures exist.
+
+**For every polaroid:** square 1:1, the whole picture inside a white polaroid border with the thicker strip at the bottom left blank (the game writes there).
+
+**[ ] 30A. Runners: Snow day at the Valley**  
+Attach: `CG - style (Runners).png`, `BG - The Valley (Syracuse).png`, `CG - Solar (Runners).png`, `CG - Hanni (Runners).png`  
+Save as: `polaroid-runners-snow-day-at-the-valley.png`
+```
+A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Solar and Hanni (in that order in the portraits) at the top of a snowy hill on campus, each holding a borrowed cafeteria tray like a sled, cheeks pink from the cold, Hanni mid-laugh and pointing downhill, Solar grinning. Winter coats, scarves, snow in their hair. The people are the ones in the attached realistic portraits, in this order: Solar, Hanni; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
+```
+
+**[ ] 30B. Runners: Napkin math**  
+Attach: `CG - style (Runners).png`, `BG - Marshall Street Café.png`, `CG - Solar (Runners).png`, `CG - Hyein (Runners).png`  
+Save as: `polaroid-runners-napkin-math.png`
+```
+A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Solar and Hyein in a booth at a cosy college café, Hyein dramatically face-down on a napkin covered in scribbled numbers, Solar laughing behind her coffee cup and holding the camera at arm’s length for the photo. The people are the ones in the attached realistic portraits, in this order: Solar, Hyein; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
+```
+
+**[ ] 30C. Runners: Four seconds**  
+Attach: `CG - style (Runners).png`, `BG - Minji’s Room (Honors Dorm).png`, `CG - Solar (Runners).png`, `CG - Minji (Runners).png`  
+Save as: `polaroid-runners-four-seconds.png`
+```
+A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Solar and Minji sitting cross-legged on a dorm bed, leaning together over a laptop with a video playing, Minji pointing at the screen, both caught mid-reaction, fairy lights on the wall behind them. The people are the ones in the attached realistic portraits, in this order: Solar, Minji; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
+```
+
+**[ ] 30D. Runners: Two chairs**  
+Attach: `CG - style (Runners).png`, `BG - Bird Library.png`, `CG - Solar (Runners).png`, `CG - Jaehyun (Runners).png`  
+Save as: `polaroid-runners-two-chairs.png`
+```
+A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Solar and her older brother Jaehyun in a library study room, textbooks everywhere, Jaehyun calmly reading while Solar steals a bite of a wrapped deli sandwich and grins at the camera. The people are the ones in the attached realistic portraits, in this order: Solar, Jaehyun; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
+```
+
+**[ ] 30E. Strangers: Hot floor**  
+Attach: `CG - style (Strangers).png`, `BG - Incheon Bathhouse.png`, `CG - Solar (Strangers).png`, `CG - Yunjin (Strangers).png`  
+Save as: `polaroid-strangers-hot-floor.png`
+```
+A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Solar and Yunjin at a Korean bathhouse (jjimjilbang) in matching loose bathhouse clothes, towels folded into little lamb-ear hats on their heads, lying on the warm floor with a basket of baked eggs and two banana milks, Yunjin holding the camera up for a selfie. The people are the ones in the attached realistic portraits, in this order: Solar, Yunjin; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
+```
+
+**[ ] 30F. Strangers: The chair by the window**  
+Attach: `CG - style (Strangers).png`, `BG - Songdo Café.png`, `CG - Solar (Strangers).png`, `CG - Yunjin (Strangers).png`  
+Save as: `polaroid-strangers-the-chair-by-the-window.png`
+```
+A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Solar and Yunjin side by side at a nail salon table by a big window over a glass city, hands out on the table showing off fresh nails, both making the same exaggerated pose. The people are the ones in the attached realistic portraits, in this order: Solar, Yunjin; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
+```
+
+**[ ] 30G. Strangers: Good cards**  
+Attach: `CG - style (Strangers).png`, `BG - Lee House Sunroom.png`, `CG - Solar (Strangers).png`, `CG - Eomma (Strangers).png`  
+Save as: `polaroid-strangers-good-cards.png`
+```
+A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Solar and her mother in a bright sunroom full of orchids, a stack of thick cream cards and a fountain pen on the table between them, her mother pointing at Solar’s handwriting, Solar trying not to smile. The people are the ones in the attached realistic portraits, in this order: Solar, Eomma; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
+```
+
+**[ ] 30H. HOAX: Backwards**  
+Attach: `CG - style (HOAX).png`, `BG - Hanlim Ice Rink.png`, `CG - Solar (HOAX).png`, `CG - Cherry (HOAX).png`  
+Save as: `polaroid-hoax-backwards.png`
+```
+A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Solar and Cherry at an ice rink, Cherry skating backwards with a show-off grin, Solar wobbling and grabbing the rail, both laughing, rink lights glowing behind them. The people are the ones in the attached realistic portraits, in this order: Solar, Cherry; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
+```
+
+**[ ] 30I. HOAX: Swings**  
+Attach: `CG - style (HOAX).png`, `BG - Hanlim Park.png`, `CG - Solar (HOAX).png`, `CG - Cherry (HOAX).png`  
+Save as: `polaroid-hoax-swings.png`
+```
+A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Solar and Cherry on the park swings at dusk, a small fluffy dog on a leash sitting between them, Cherry holding the leash like a trophy, both bundled in winter coats. The people are the ones in the attached realistic portraits, in this order: Solar, Cherry; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
+```
+
+---
+
+## 31. Low-res pictures to look at (assess later)
 
 These are already in the game but look soft or blurry, because they're shown much bigger than the file. No prompts yet: check each one and decide whether to find a bigger copy, redo it, or leave it for the upscale batch. Sizes are width × height in pixels; the newer backgrounds are 1920 wide.
 
