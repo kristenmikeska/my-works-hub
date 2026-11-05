@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 4, late):** ⭐ high-resolution poses (top section: Solar ✅ done; the other fighters next) · 1 credits still (section 18: Ken) · 6 Runners epilogue places (section 23: the Sigma house by day, its back porch, the dining hall and three for the home screen) · 1 Runners sticker sheet (section 24) · 12 Echo sheets (section 25: 72 new Echoes) · 4 dorm lounge pictures (section 26; autumn and winter are in) · couple victory poses for Haechan, Jungwon and Akihiko (section 27: five outfits to go; Moon Hoodie is in) · 15 Boutique banner pictures (section 28) · little card art (section 29: card back, frames, 22 item pictures) · 9 epilogue polaroids (section 30) · low-res pictures to look over at the very end (section 31). **Optional:** 27 epilogue CGs redrawn in their world's style now live in `FEMC-CG-REMAKES.md`. **New Wardrobe outfits** (Solar's skin series and the collab outfits, 24 looks) and **skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make (updated Nov 4, late):** ⭐ high-resolution poses (top section: Solar ✅ done; the other fighters next) · 1 credits still (section 18: Ken) · 6 Runners epilogue places (section 23: the Sigma house by day, its back porch, the dining hall and three for the home screen) · 1 Runners sticker sheet (section 24) · 12 Echo sheets (section 25: 72 new Echoes) · 4 dorm lounge pictures (section 26; autumn and winter are in) · couple victory poses for Jungwon and Akihiko (section 27: four outfits to go; Moon Hoodie and Midnight Drive are in) · 1 Boutique banner picture (section 28: Tarot Arcana) · 3 epilogue polaroids (section 30) · low-res pictures to look over at the very end (section 31). **Optional:** 27 epilogue CGs redrawn in their world's style now live in `FEMC-CG-REMAKES.md`. **New Wardrobe outfits** (Solar's skin series and the collab outfits, 24 looks) and **skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 ## ⭐⭐ TOP PRIORITY when you have usage: high-resolution poses (Kat, Nov 2)
 
@@ -253,7 +253,7 @@ Redraw the attached image as a sharp, high-resolution 16:9 anime background in t
 ---
 
 ## 27. Couple victory poses (ChatGPT)
-Kat's yes (Nov 4): when Solar and her partner wear a matching couple outfit and win, the results screen shows them side by side, with a different pose each time. These are the partner's poses; Solar's come from her HD sets (Sun Hoodie, Summer Festival and After Hours are done; Midnight Drive, Movie Date and Ringside still need hers in the top section). Built Nov 4: Sun & Moon already shows them side by side; each other set joins once its partner's poses come in. One figure per image, same format as Solar's HD poses. Make as many as you like; the game uses whichever exist.
+Kat's yes (Nov 4): when Solar and her partner wear a matching couple outfit and win, the results screen shows them side by side, with a different pose each time. These are the partner's poses; Solar's come from her HD sets (Sun Hoodie, Summer Festival and After Hours are done; Midnight Drive, Movie Date and Ringside still need hers in the top section). Built Nov 4: Sun & Moon and (since Nov 5) Midnight Drive already show them side by side; each other set joins once its partner's poses come in. One figure per image, same format as Solar's HD poses. Make as many as you like; the game uses whichever exist.
 
 **[ ] 27A. Haechan, Moon Hoodie (goes with Solar's Sun Hoodie)** · ✅ five poses in (Nov 4); only "hands in hoodie pocket" left, optional  
 Attach: `Moon Hoodie [sk-haechan-cp-sunmoon] - pose sheet (recut).png`, then `Haechan.png`  
@@ -269,14 +269,6 @@ Save as: `akihiko-summerfestival-hd-<pose>.png` in a folder `Akihiko-Summer Fest
 Poses (one image each): fist pump, arms crossed with a confident grin, thumbs up, fist raised to the sky, hand rubbing the back of his neck (bashful), boxing stance
 ```
 A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (a grey striped yukata with a red obi, and his boxing gloves). Pose: [the pose, e.g. a fist pump, a big confident grin], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-**[ ] 27C. Haechan, Midnight Drive (goes with Solar's Midnight Drive)**  
-Attach: `Midnight Drive [sk-haechan-cp-drive] - pose sheet (recut).png`, then `Haechan.png`  
-Save as: `haechan-midnightdrive-hd-<pose>.png` in a folder `HC-Midnight Drive-Victory Poses`  
-Poses (one image each): twirling car keys on one finger, peace sign, leaning back with hands in jacket pockets, arms crossed with a smirk, pointing at the viewer, hand in hair
-```
-A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (black leather jacket lined in pink over a pink shirt open at the collar). Pose: [the pose], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
 ```
 
 **[ ] 27D. Jungwon, After Hours (goes with Solar's After Hours)**  
@@ -309,104 +301,6 @@ One wide picture per Boutique banner, like the big character art on P5X's banner
 
 **For every banner:** landscape 3:2 (the widest ChatGPT makes), no text anywhere. If a picture comes back with words or a logo, paint them out or ask again with "no text" first.
 
-**[ ] 28A. Spring Bloom** (April–May)  
-Attach: `Date Day [sk-date] - pose sheet (recut).png`, `Purple Pilates Set [sk-jihoon-pilates] - pose sheet (recut).png`, `Archery Club [sk-yukari-kyudo] - pose sheet (recut).png`, then `Solar.png`, `Jihoon.png`, `Yukari.png`  
-Save as: `banner-bloom.png`
-```
-A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload / Persona 5 X key art. The SAME people as the attached images, each in EXACTLY the outfit from their attached pose sheet (the outfit sheets come first, in this order, then the character references): Solar (first and second images, the Date Day outfit) front and centre, laughing, one hand holding back her hair in the breeze; Jihoon (third image, the Purple Pilates Set) to the right, a cocky grin, a water bottle over his shoulder; Yukari (fourth image, the Archery Club outfit) behind on the left, bow in hand, a small wave. Setting: a riverside path under full cherry blossoms, petals blowing across the frame, soft spring sunlight. Dynamic diagonal composition with bold slanted graphic shapes in black and blossom pink, halftone dots and light streaks; the characters overlap a little like a group key visual, shown from about the knees up, faces sharp and detailed. Keep the LEFT third of the image darker and less busy, with no faces there (a title goes there). Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
-**[ ] 28B. Summer Nights** (June–August)  
-Attach: `Summer Yukata [sk-yukata] - pose sheet (recut).png`, `Fairground Lights [sk-haechan-fairground] - pose sheet (recut).png`, `sk-akihiko-cp-festival - pose sheet (recut).png`, then `Solar.png`, `Haechan.png`, `Akihiko.png`  
-Save as: `banner-summer.png`
-```
-A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload / Persona 5 X key art. The SAME people as the attached images, each in EXACTLY the outfit from their attached pose sheet (the outfit sheets come first, in this order, then the character references): Solar (the Summer Yukata) front and centre, a paper fan raised, mid-laugh; Haechan (Fairground Lights) to the right, leaning in with a candy apple and a lazy smile; Akihiko (Summer Festival) behind on the left, a festival mask pushed up on his head, arms crossed, grinning. Setting: a summer festival at night: paper lanterns, food stalls and a big firework bursting in the sky. Dynamic diagonal composition with bold slanted graphic shapes in black and lantern orange and pink, halftone dots and light streaks; the characters overlap a little like a group key visual, shown from about the knees up, faces sharp and detailed. Keep the LEFT third of the image darker and less busy, with no faces there (a title goes there). Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
-**[ ] 28C. Masquerade** (September–October)  
-Attach: `Phantom Thief [sk-phantom] - pose sheet (recut).png`, `Cell Block Angel [sk-jungwon-angel] - pose sheet (recut).png`, `Bad Influence [sk-haechan-bad] - pose sheet (recut).png`, then `Solar.png`, `Jungwon.png`, `Haechan.png`  
-Save as: `banner-masquerade.png`
-```
-A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload / Persona 5 X key art. The SAME people as the attached images, each in EXACTLY the outfit from their attached pose sheet (the outfit sheets come first, in this order, then the character references): Solar (Phantom Thief) front and centre, coat flaring, one red-gloved hand adjusting her white mask, a sly smile; Jungwon (Cell Block Angel) to the right, cool and composed, chin raised; Haechan (Bad Influence) behind on the left, a crooked grin, hands in pockets. Setting: a moonlit masquerade ballroom with tall windows, black and pink curtains, scattered playing cards and a huge full moon. Dynamic diagonal composition with bold slanted graphic shapes in black and violet and pink, halftone dots and light streaks; the characters overlap a little like a group key visual, shown from about the knees up, faces sharp and detailed. Keep the LEFT third of the image darker and less busy, with no faces there (a title goes there). Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
-**[ ] 28D. Winter Lights** (November–January)  
-Attach: `Winter Coat [sk-wintercoat] - pose sheet (recut).png`, `Arrivals Gate [sk-haechan-arrivals] - pose sheet (recut).png`, `Motorcycle Leathers [sk-mitsuru-rider] - pose sheet (recut).png`, then `Solar.png`, `Haechan.png`, `Mitsuru.png`  
-Save as: `banner-lights.png`
-```
-A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload / Persona 5 X key art. The SAME people as the attached images, each in EXACTLY the outfit from their attached pose sheet (the outfit sheets come first, in this order, then the character references): Solar (Winter Coat) front and centre, scarf blowing, catching a snowflake on her glove, smiling; Haechan (Arrivals Gate) to the right, a coffee cup in hand, looking at her sideways; Mitsuru (Motorcycle Leathers) behind on the left, helmet under one arm, elegant and calm. Setting: a city street at night in falling snow, strings of fairy lights overhead and a lit Christmas tree in the distance. Dynamic diagonal composition with bold slanted graphic shapes in black and icy blue and pink, halftone dots and light streaks; the characters overlap a little like a group key visual, shown from about the knees up, faces sharp and detailed. Keep the LEFT third of the image darker and less busy, with no faces there (a title goes there). Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
-**[ ] 28E. Golden Sunrise** (February)  
-Attach: `Moonlit Hanbok [sk-hanbok] - pose sheet (recut).png`, `Champion’s Robe [sk-akihiko-champ] - pose sheet (recut).png`, `HOAX Council Uniform [sk-jungwon-council] - pose sheet (recut).png`, then `Solar.png`, `Akihiko.png`, `Jungwon.png`  
-Save as: `banner-sunrise.png`
-```
-A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload / Persona 5 X key art. The SAME people as the attached images, each in EXACTLY the outfit from their attached pose sheet (the outfit sheets come first, in this order, then the character references): Solar (Moonlit Hanbok) front and centre, sleeves and skirt flowing, a calm proud look; Akihiko (Champion’s Robe) to the right, one gloved fist raised, a confident grin; Jungwon (HOAX Council Uniform) behind on the left, a small composed smile, hands behind his back. Setting: a rooftop at dawn, the sun breaking over the city in long golden rays, clouds lit pink and gold. Dynamic diagonal composition with bold slanted graphic shapes in black and warm gold and pink (pink still the main colour), halftone dots and light streaks; the characters overlap a little like a group key visual, shown from about the knees up, faces sharp and detailed. Keep the LEFT third of the image darker and less busy, with no faces there (a title goes there). Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
-**[ ] 28F. Solar Spotlight** (March)  
-Attach: `Stage Idol [sk-idol] - pose sheet (recut).png`, then `Solar.png`  
-Save as: `banner-solar.png`
-```
-A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload / Persona 5 X key art. The SAME people as the attached images, each in EXACTLY the outfit from their attached pose sheet (the outfit sheets come first, in this order, then the character references): Solar ALONE (Stage Idol), large, mid-performance: a microphone in one hand, the other pointing at the viewer, a big confident smile, her hair flying. Setting: a concert stage seen from the crowd: spotlights sweeping, glowing lightsticks, confetti in the air. Dynamic diagonal composition with bold slanted graphic shapes in black and hot pink and white, halftone dots and light streaks; the characters overlap a little like a group key visual, shown from about the knees up, faces sharp and detailed. Keep the LEFT third of the image darker and less busy, with no faces there (a title goes there). Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
-**[ ] 28G. Runners World** (November)  
-Attach: `SU eSports Jersey [sk-esports] - pose sheet (recut).png`, `Sigma Chi Runner [sk-haechan-runners] - pose sheet (recut).png`, `SU Crewneck [sk-minji-su] - pose sheet (recut).png`, then `Solar.png`, `Haechan.png`, `Minji.png`  
-Save as: `banner-runners.png`
-```
-A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload / Persona 5 X key art. The SAME people as the attached images, each in EXACTLY the outfit from their attached pose sheet (the outfit sheets come first, in this order, then the character references): Solar (SU eSports Jersey) front and centre, a gaming headset round her neck, a victory peace sign; Haechan (Sigma Chi Runner) to the right, a lazy half-smile, one hand on her shoulder; Minji (SU Crewneck) behind on the left, a camera raised as if filming them. Setting: an autumn college campus at golden hour: brick buildings, orange leaves blowing, a stadium glowing in the distance. Dynamic diagonal composition with bold slanted graphic shapes in black and coral orange and pink, halftone dots and light streaks; the characters overlap a little like a group key visual, shown from about the knees up, faces sharp and detailed. Keep the LEFT third of the image darker and less busy, with no faces there (a title goes there). Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
-**[ ] 28H. S.E.E.S. Spotlight** (November–December)  
-Attach: `sk-yukari-pink - pose sheet (recut).png`, `Motorcycle Leathers [sk-mitsuru-rider] - pose sheet (recut).png`, `Little League Legend [sk-junpei-baseball] - pose sheet (recut).png`, then `Yukari.png`, `Mitsuru.png`, `Junpei.png`  
-Save as: `banner-sees.png`
-```
-A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload / Persona 5 X key art. The SAME people as the attached images, each in EXACTLY the outfit from their attached pose sheet (the outfit sheets come first, in this order, then the character references): Yukari (Featherman Pink) front and centre, a heroic pose; Mitsuru (Motorcycle Leathers) to the right, cool and elegant, hand on hip; Junpei (Little League Legend) behind on the left, bat over his shoulder, a goofy grin. Setting: the dorm rooftop at the Dark Hour: a huge green-tinted full moon and the city skyline below. Dynamic diagonal composition with bold slanted graphic shapes in black and moonlight blue and pink, halftone dots and light streaks; the characters overlap a little like a group key visual, shown from about the knees up, faces sharp and detailed. Keep the LEFT third of the image darker and less busy, with no faces there (a title goes there). Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
-**[ ] 28I. Haechan Spotlight** (December–January)  
-Attach: `Encore Stage [sk-haechan-stage] - pose sheet (recut).png`, then `Haechan.png`  
-Save as: `banner-haechan.png`
-```
-A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload / Persona 5 X key art. The SAME people as the attached images, each in EXACTLY the outfit from their attached pose sheet (the outfit sheets come first, in this order, then the character references): Haechan ALONE (Encore Stage), large, under a spotlight, a microphone held loosely, looking straight at the viewer with a confident half-smile. Setting: a dark stage with a single spotlight and drifting haze, a glittering crowd blurred behind. Dynamic diagonal composition with bold slanted graphic shapes in black and red and pink, halftone dots and light streaks; the characters overlap a little like a group key visual, shown from about the knees up, faces sharp and detailed. Keep the LEFT third of the image darker and less busy, with no faces there (a title goes there). Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
-**[ ] 28J. HOAX World** (January–February)  
-Attach: `Heir’s Suit [sk-jungwon-heir] - pose sheet (recut).png`, `Vice President [sk-vp] - pose sheet (recut).png`, `Emo Night [sk-jihoon-emo] - pose sheet (recut).png`, then `Jungwon.png`, `Solar.png`, `Jihoon.png`  
-Save as: `banner-hoax.png`
-```
-A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload / Persona 5 X key art. The SAME people as the attached images, each in EXACTLY the outfit from their attached pose sheet (the outfit sheets come first, in this order, then the character references): Jungwon (Heir’s Suit) front and centre, adjusting a cufflink, a cool look; Solar (Vice President) to the right, holding a clipboard to her chest, a knowing smile; Jihoon (Emo Night) behind on the left, leaning back with a smirk. Setting: a school student-council room at night, tall windows, papers drifting in the air, city lights outside. Dynamic diagonal composition with bold slanted graphic shapes in black and spring green and pink (pink still the main colour), halftone dots and light streaks; the characters overlap a little like a group key visual, shown from about the knees up, faces sharp and detailed. Keep the LEFT third of the image darker and less busy, with no faces there (a title goes there). Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
-**[ ] 28K. Valentine's** (February)  
-Attach: `Midnight Drive [sk-cp-drive] - pose sheet (recut).png`, `Midnight Drive [sk-haechan-cp-drive] - pose sheet (recut).png`, then `Solar.png`, `Haechan.png`  
-Save as: `banner-valentine.png`
-```
-A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload / Persona 5 X key art. The SAME people as the attached images, each in EXACTLY the outfit from their attached pose sheet (the outfit sheets come first, in this order, then the character references): Solar (Midnight Drive, first image) and Haechan (Midnight Drive, second image) together, a couple: she sits on the hood of a black car, he leans beside her twirling the car keys, both looking at the viewer. Setting: a night road by the sea, the car’s headlights on, pink and red hearts floating like bokeh. Dynamic diagonal composition with bold slanted graphic shapes in black and rose pink and red, halftone dots and light streaks; the characters overlap a little like a group key visual, shown from about the knees up, faces sharp and detailed. Keep the LEFT third of the image darker and less busy, with no faces there (a title goes there). Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
-**[ ] 28L. Akihiko Spotlight** (March)  
-Attach: `Champion’s Robe [sk-akihiko-champ] - pose sheet (recut).png`, then `Akihiko.png`  
-Save as: `banner-akihiko.png`
-```
-A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload / Persona 5 X key art. The SAME people as the attached images, each in EXACTLY the outfit from their attached pose sheet (the outfit sheets come first, in this order, then the character references): Akihiko ALONE (Champion’s Robe), large, in a boxing ring, robe flowing, one gloved fist raised to the crowd. Setting: a boxing arena under bright lights, ropes in the foreground, a cheering crowd blurred behind. Dynamic diagonal composition with bold slanted graphic shapes in black and silver and pink, halftone dots and light streaks; the characters overlap a little like a group key visual, shown from about the knees up, faces sharp and detailed. Keep the LEFT third of the image darker and less busy, with no faces there (a title goes there). Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
-**[ ] 28M. The Searchers** (March)  
-Attach: `Film Crew [sk-minji-crew] - pose sheet (recut).png`, then `Minji.png`  
-Save as: `banner-searchers.png`
-```
-A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload / Persona 5 X key art. The SAME people as the attached images, each in EXACTLY the outfit from their attached pose sheet (the outfit sheets come first, in this order, then the character references): Minji ALONE (Film Crew), large, looking through a film camera on her shoulder, then glancing past it at the viewer with a small smile. Setting: a film set at night: lights on stands, a clapperboard, cables, a glowing monitor. Dynamic diagonal composition with bold slanted graphic shapes in black and sky blue and pink, halftone dots and light streaks; the characters overlap a little like a group key visual, shown from about the knees up, faces sharp and detailed. Keep the LEFT third of the image darker and less busy, with no faces there (a title goes there). Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
-**[ ] 28N. Swim Season** (July–August)  
-Attach: `Pink Lagoon [sk-swim-lagoon] - pose sheet (recut).png`, `Pool Day [sk-jungwon-swim] - pose sheet (recut).png`, `Boardwalk [sk-haechan-swim] - pose sheet (recut).png`, then `Solar.png`, `Jungwon.png`, `Haechan.png`  
-Save as: `banner-swim.png`
-```
-A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload / Persona 5 X key art. The SAME people as the attached images, each in EXACTLY the outfit from their attached pose sheet (the outfit sheets come first, in this order, then the character references): Solar (Pink Lagoon) front and centre, splashing water toward the viewer, laughing; Jungwon (Pool Day) to the right, sunglasses pushed up, a shy smile; Haechan (Boardwalk) behind on the left, sitting on the boardwalk rail, grinning. Setting: a bright beach and boardwalk on a summer day, sparkling water spray, a few beach balls in the air. Dynamic diagonal composition with bold slanted graphic shapes in black and turquoise and pink, halftone dots and light streaks; the characters overlap a little like a group key visual, shown from about the knees up, faces sharp and detailed. Keep the LEFT third of the image darker and less busy, with no faces there (a title goes there). Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
 **[ ] 28O. Tarot Arcana** (January)  
 Attach: `The Sun [sk-arcana-sun] - pose sheet (recut).png`, then `Solar.png`  
 Save as: `banner-arcana.png`
@@ -416,95 +310,11 @@ A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload 
 
 ---
 
-## 29. Little card art (ChatGPT; Boutique and Wardrobe cards, Kat Nov 4)
-
-Small pictures for the cards in the Boutique and the Wardrobe: the pull cards, the rarity frames, the items that have no picture yet (menu colours, battle themes, title screens, pattern wallpapers). Outfits use their own scene faces on their cards (the last three outfits without faces are on the skins design sheet).
-
-**[ ] 29A. The pull card back**  
-Attach: `Solar.png` (only for the art style)  
-Save as: `card-back.png`
-```
-The back of a single tarot-style collectible card, portrait 2:3, filling the whole image edge to edge, flat and straight-on (not tilted, no table, no hands). Black card with a hot pink (#ff4f9e) ornate border, a glowing pink sun with twelve rays in the centre, a thin crescent moon tucked behind the sun, fine pink filigree in the corners, tiny stars scattered over a subtle black velvet texture. Symmetrical, elegant, Persona 3 Reload / Persona 5 X menu style. No text, no letters, no numbers.
-```
-
-**[ ] 29B. Card frames by rarity (one sheet)**  
-Attach: nothing  
-Save as: `card-frames.png`
-```
-Three empty collectible-card frames side by side on a plain white background, clear space between them, each portrait 2:3 and the same size: the frame border only, the middle of each card left completely plain white (artwork goes there later). Left: Rare, a clean black frame with a thin sky-blue inner line and one small star at the bottom. Middle: Super Rare, a black frame with lavender-purple filigree corners and two small stars at the bottom. Right: Ultra, an ornate black-and-gold frame with sunburst corners, tiny gems and three small stars at the bottom. Slanted Persona 5 X style accents on each. No text.
-```
-
-**[ ] 29C. Card art sheet 1: battle themes and menu colours**  
-Attach: nothing  
-Save as: `card-art-1.png`
-```
-A 3 × 3 sheet of small square card illustrations on a plain white background, clear space between cells, every cell the same size: each one a simple, bold, centred emblem picture in Persona 5 X item-icon style, clean lineart and flat cel shading, readable at a small size. Cells, in order: 1. Moonlight Battle: a crescent moon over a crossed naginata, cool silver-blue; 2. Jade Battle: a jade-green shield with a calm leaf, soft greens; 3. Velvet Battle: a blue velvet ribbon wrapped round a silver key; 4. Golden Battle: a golden sun over crossed weapons, all gold; 5. Sakura Colours: a cherry blossom branch, soft pinks; 6. Mint Colours: a sprig of mint leaves and a little bubble, fresh greens; 7. Moonlight Colours: a silver full moon over clouds, silver and pale blue; 8. Velvet Colours: a blue velvet curtain pulled back from a door; 9. Sunrise Colours: a sun rising over a horizon, gold and amber. No text, no letters.
-```
-
-**[ ] 29D. Card art sheet 2: menu colours and title screens**  
-Attach: nothing  
-Save as: `card-art-2.png`
-```
-A 3 × 3 sheet of small square card illustrations on a plain white background, clear space between cells, every cell the same size: each one a simple, bold, centred emblem picture in Persona 5 X item-icon style, clean lineart and flat cel shading, readable at a small size. Cells, in order: 1. Summer Colours: a wave and a starfish, sea blue; 2. Pumpkin Colours: a jack-o’-lantern with a little bat, orange and black; 3. Snowfall Title: snowflakes falling over a navy night sky; 4. Sakura Title: blossom petals blowing across pink; 5. Dark Hour Title: a huge green full moon over coffins in a sickly green night; 6. Velvet Title: a blue door with no handle floating in blue space; 7. Sunburst Title: a golden sunburst filling the card; 8. Two Suns Title: two suns, one amber and one rose, side by side; 9. Eclipse Title: a sun and a moon overlapping in an eclipse ring. No text, no letters.
-```
-
-**[ ] 29E. Card art sheet 3: the last title and the pattern wallpapers (2 × 2)**  
-Attach: nothing  
-Save as: `card-art-3.png`
-```
-A 2 × 2 sheet of small square card illustrations on a plain white background, clear space between cells, every cell the same size: each one a simple, bold, centred emblem picture in Persona 5 X item-icon style, clean lineart and flat cel shading, readable at a small size. Cells, in order: 1. Zenith Title: the sun straight overhead at noon, white-gold light, no shadows; 2. Hearts wallpaper: little pink hearts on deep pink; 3. Snowfall wallpaper: soft snow on navy; 4. Pajama Night wallpaper: moons and stars on flannel blue. No text, no letters.
-```
-
-
----
-
 ## 30. Epilogue polaroids (ChatGPT; realistic, Kat Nov 4)
 
-Little photo-style keepsakes of time with friends in the epilogue worlds, for the Album (and later the hangouts). Square polaroids in each world’s realistic style. Only hangouts that are open to every route are here, so nothing here hints at anything. The game part waits until the pictures exist.
+Little photo-style keepsakes of time with friends in the epilogue worlds, for the Album (and later the hangouts). Square polaroids in each world’s realistic style. Only hangouts that are open to every route are here, so nothing here hints at anything. Built Nov 5: the Album shows each one (with its caption written on the strip) once its hangout has played; six are in, these three are left.
 
 **For every polaroid:** square 1:1, the whole picture inside a white polaroid border with the thicker strip at the bottom left blank (the game writes there).
-
-**[ ] 30A. Runners: Snow day at the Valley**  
-Attach: `CG - style (Runners).png`, `BG - The Valley (Syracuse).png`, `CG - Solar (Runners).png`, `CG - Hanni (Runners).png`  
-Save as: `polaroid-runners-snow-day-at-the-valley.png`
-```
-A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Solar and Hanni (in that order in the portraits) at the top of a snowy hill on campus, each holding a borrowed cafeteria tray like a sled, cheeks pink from the cold, Hanni mid-laugh and pointing downhill, Solar grinning. Winter coats, scarves, snow in their hair. The people are the ones in the attached realistic portraits, in this order: Solar, Hanni; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
-```
-
-**[ ] 30B. Runners: Napkin math**  
-Attach: `CG - style (Runners).png`, `BG - Marshall Street Café.png`, `CG - Solar (Runners).png`, `CG - Hyein (Runners).png`  
-Save as: `polaroid-runners-napkin-math.png`
-```
-A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Solar and Hyein in a booth at a cosy college café, Hyein dramatically face-down on a napkin covered in scribbled numbers, Solar laughing behind her coffee cup and holding the camera at arm’s length for the photo. The people are the ones in the attached realistic portraits, in this order: Solar, Hyein; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
-```
-
-**[ ] 30C. Runners: Four seconds**  
-Attach: `CG - style (Runners).png`, `BG - Minji’s Room (Honors Dorm).png`, `CG - Solar (Runners).png`, `CG - Minji (Runners).png`  
-Save as: `polaroid-runners-four-seconds.png`
-```
-A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Solar and Minji sitting cross-legged on a dorm bed, leaning together over a laptop with a video playing, Minji pointing at the screen, both caught mid-reaction, fairy lights on the wall behind them. The people are the ones in the attached realistic portraits, in this order: Solar, Minji; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
-```
-
-**[ ] 30D. Runners: Two chairs**  
-Attach: `CG - style (Runners).png`, `BG - Bird Library.png`, `CG - Solar (Runners).png`, `CG - Jaehyun (Runners).png`  
-Save as: `polaroid-runners-two-chairs.png`
-```
-A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Solar and her older brother Jaehyun in a library study room, textbooks everywhere, Jaehyun calmly reading while Solar steals a bite of a wrapped deli sandwich and grins at the camera. The people are the ones in the attached realistic portraits, in this order: Solar, Jaehyun; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
-```
-
-**[ ] 30E. Strangers: Hot floor**  
-Attach: `CG - style (Strangers).png`, `BG - Incheon Bathhouse.png`, `CG - Solar (Strangers).png`, `CG - Yunjin (Strangers).png`  
-Save as: `polaroid-strangers-hot-floor.png`
-```
-A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Solar and Yunjin at a Korean bathhouse (jjimjilbang) in matching loose bathhouse clothes, towels folded into little lamb-ear hats on their heads, lying on the warm floor with a basket of baked eggs and two banana milks, Yunjin holding the camera up for a selfie. The people are the ones in the attached realistic portraits, in this order: Solar, Yunjin; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
-```
-
-**[ ] 30F. Strangers: The chair by the window**  
-Attach: `CG - style (Strangers).png`, `BG - Songdo Café.png`, `CG - Solar (Strangers).png`, `CG - Yunjin (Strangers).png`  
-Save as: `polaroid-strangers-the-chair-by-the-window.png`
-```
-A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Solar and Yunjin side by side at a nail salon table by a big window over a glass city, hands out on the table showing off fresh nails, both making the same exaggerated pose. The people are the ones in the attached realistic portraits, in this order: Solar, Yunjin; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
-```
 
 **[ ] 30G. Strangers: Good cards**  
 Attach: `CG - style (Strangers).png`, `BG - Lee House Sunroom.png`, `CG - Solar (Strangers).png`, `CG - Eomma (Strangers).png`  

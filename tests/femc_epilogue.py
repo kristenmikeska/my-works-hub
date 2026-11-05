@@ -1857,9 +1857,25 @@ try:
         p.wait("(document.querySelector('.g-av-img')?.naturalWidth || 0) > 0", 6)
         shot3('album-runners-viewer')
         p.eval("document.querySelectorAll('.g-overlay').forEach(x=>x.remove())")
+        # Polaroids (Nov 5 2026): one square tile per picture that exists, locked until its hangout has played.
+        pl = p.eval("(()=>{const e=()=>FemcMenu.albumData().epi.filter(c=>c.kind==='polaroid');const a=e();const B=(FemcGame.S.epi.bonds||(FemcGame.S.epi.bonds={}));(B.hanni||(B.hanni={})).seen=[...(B.hanni.seen||[]),'epi-r-hanni-4'];return {ids:a.map(c=>c.id),locked:a.every(c=>!c.on),on:e().filter(c=>c.on).map(c=>c.id)}})()")
+        ok(pl['ids'] == ['runners-snow-day-at-the-valley', 'runners-napkin-math', 'runners-four-seconds', 'runners-two-chairs'] and pl['locked'] and pl['on'] == ['runners-snow-day-at-the-valley'],
+           f'the Runners polaroids: four tiles, locked until their hangout, the Valley one open after Hanni’s ({pl})')
+        p.eval("FemcMenu.close?.();FemcMenu.open('album')")
+        p.wait("!!document.querySelector('.g-al-sec .g-al-grid.sq img[src*=polaroids]')", 10)
+        sq = p.eval("(()=>{const i=document.querySelector('.g-al-grid.sq img[src*=polaroids]'),g=i.closest('.g-al-grid'),b=i.closest('.g-al-tile').getBoundingClientRect();return {n:g.querySelectorAll('.g-al-tile').length,ratio:b.width/b.height,head:g.closest('.g-al-sec').querySelector('h3').textContent}})()")
+        ok(sq['n'] == 4 and abs(sq['ratio'] - 1) < 0.05 and 'Polaroids' in sq['head'], f'the album page: a Polaroids section of square tiles ({sq})')
+        shot3('album-runners-polaroids', "document.querySelector('.g-al-grid.sq img[src*=polaroids]').closest('.g-al-sec').scrollIntoView({block:'start'})")
+        p.eval("document.querySelector('.g-al-grid.sq img[src*=polaroids]').closest('.g-al-tile').click()")
+        p.wait("(document.querySelector('.g-av-img.sq')?.naturalWidth || 0) > 0", 6)
+        ok('art/polaroids/' in p.eval("document.querySelector('.g-av-img').src"), 'a polaroid tile opens the viewer, square')
+        shot3('album-runners-polaroid-viewer')
+        p.eval("document.querySelectorAll('.g-overlay').forEach(x=>x.remove())")
         # Leaving keeps them in the year's album; New Game+ (albumCarry) carries them; a CG never mixes into the posts.
         lv = p.eval("(()=>{FemcEpilogue.leave();const a=FemcGame.S.album;const c=FemcMenu.albumCarry();return {posts:a.posts,carry:c.posts,cgHasPost:c.cg.some(x=>/^post-/.test(x))}})()")
         ok(lv['posts'] == ['post-r-10-holiday-toast', 'post-r-5-solchan'] and lv['carry'] == lv['posts'] and not lv['cgHasPost'], f'leaving keeps the posts in the year’s album; New Game+ carries them ({lv})')
+        kept = p.eval("FemcMenu.albumData().epi.filter(c=>c.kind==='polaroid'&&c.on).map(c=>c.id)")
+        ok(kept == ['runners-snow-day-at-the-valley'], f'after leaving, the polaroid stays open from the world’s record ({kept})')
         errs = p.console(); ok(not errs, f'no browser errors in the album: {errs}')
 
     if 'shots' in ONLY:

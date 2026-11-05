@@ -35,7 +35,8 @@ NAMES = {'armscrossed': 'arms-crossed', 'evoker': 'evoker', 'fistpump': 'cheer',
          'reading': 'study', 'sewing': 'sewing', 'shoulderlook': 'lookback', 'overshoulder': 'lookback', 'shy': 'shy',
          'thinking': 'thinking', 'watering': 'watering', 'wave': 'wave', 'yawn': 'stretch',
          'fist': 'cheer', 'fistbump': 'cheer', 'handsinhair': 'hair', 'handsonhips': 'tease', 'peace': 'peace',
-         'pointing': 'pointing', 'thumbsup': 'thumbsup', 'pocket': 'pocket', 'handsinpocket': 'pocket'}  # the last three: couple partners' victory poses (FEMC-ART-TODO 27)
+         'pointing': 'pointing', 'thumbsup': 'thumbsup', 'pocket': 'pocket', 'handsinpocket': 'pocket',
+         'point': 'pointing', 'handsinpockets': 'pocket', 'keys': 'keys'}  # the last three: couple partners' victory poses (FEMC-ART-TODO 27)
 AIR = {'jump'}
 # Wardrobe looks with an HD set: look id -> (folder in New Adds, file prefix). Kat names a folder after the outfit.
 # A set may be partial (ChatGPT blocked some poses): the game uses only the poses a set has (FEMC-ART-WIRING).
@@ -56,6 +57,7 @@ LOOKS = {'sk-cp-afterhours': ('Solar-After Hours-Menu Poses', 'afterhr-'),
          'sk-cp-sunmoon': ('Solar-Sun Hoodie-Menu Poses', 'sunhood-'),
          # Couple partners' victory poses (FEMC-ART-TODO 27, Nov 4): the partner's half of a couple set, for the couple win screen.
          'sk-haechan-cp-sunmoon': ('HC-Moon Hoodie-Victory Poses', 'haechan-moonhoodie-'),
+         'sk-haechan-cp-drive': ('HC-Midnight Drive-Victory Poses', 'haechan-midnightdrive-'),
          'sk-yukata': ('Solar-Summer Yukata-Menu Poses', 'sumyu-'),
          'sk-cp-festival': ('Solar-Summer Festival-Menu Poses', 'sumfest-'),
          'sk-oops': ('Solar-Oops-Menu Poses', 'oops-'),
@@ -152,6 +154,7 @@ def look(lid):
     # Kat's fill-ins for a set's missing poses sometimes land loose in New Adds (e.g. velvet-jump.png): those count too and,
     # being newer, win over the folder's own picture of the same pose.
     loose = sources(NEW, prefix, quiet=True)
+    loose.update({k: v for k, v in sources(NEW.parent / 'WIP', prefix, quiet=True).items() if k not in loose})  # or in WIP (Nov 5)
     if loose: print('  loose in New Adds:', ', '.join(sorted(f.name for f in loose.values())))
     srcs.update(loose)
     missing = sorted(set(NAMES.values()) - set(srcs))

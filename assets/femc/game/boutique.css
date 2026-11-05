@@ -312,3 +312,6 @@
 @media (prefers-reduced-motion: reduce) {
   .g-bq-sbg .g-bq-rays, .g-bq-pull:not(:disabled) { animation: none; }
 }
+
+/* Kat's card art (Nov 5): square item pictures on the pull cards and tiles. */
+.g-bq-fth img.art, .g-bq-cth img.art { top: 12%; width: 76%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }

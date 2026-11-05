@@ -169,3 +169,6 @@
 /* The per-character "outfit in scenes" toggle (cosmetics.js setPortraits(v, who)); dimmed while the master toggle is off. */
 .g-fr .g-wd-toggle-who { margin-left: 0; }
 .g-fr .g-wd-toggle-who.off { opacity: .45; }
+
+/* Kat's card art (Nov 5): menu colours, battle themes, titles, pattern wallpapers. */
+.g-fr-th img.art { position: absolute; inset: 12% 10%; width: 80%; height: 76%; object-fit: cover; border-radius: 4px; box-shadow: 0 6px 14px rgba(0, 0, 0, .5); }

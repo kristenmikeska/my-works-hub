@@ -1,7 +1,7 @@
 """The capsule series, rarities and tokens (gacha.js) and the Wardrobe / Boutique cosmetics (cosmetics.js), 2026-10-25.
 Headless Chrome, isolated profile, localhost; no player saves.
 
-Run: python3 tests/femc_cosmetics.py [--only odds,rotation,solchan,hidden,tokens,banner,equip,pending,ui,boutique,x10,shots,viewer,party,newpending,retired,inbattle,hdpreview,fitting,app] [--screenshots DIR]
+Run: python3 tests/femc_cosmetics.py [--only odds,rotation,solchan,hidden,tokens,banner,equip,pending,ui,boutique,x10,shots,viewer,party,newpending,retired,inbattle,hdpreview,fitting,app,cardart] [--screenshots DIR]
 
 Covers: five rarities over many turns (Secret included) and pity kept per series; which machines stand in the Corner by
 date (each season, and a turn on a series that isn't on falls back to the Cast machine); only people Solar has met;
@@ -1104,6 +1104,37 @@ try:
         motion(p, True)
         clean(p, 'shots')
         results['shots'] = str(SHOTS)
+
+    if want('cardart'):
+        # Kat's Boutique art (Nov 5): banner pictures on the splash and tabs, the card back, rarity frames, item card art.
+        setup(p, day='10/12')
+        view(p, 1440, 900); motion(p, False)
+        p.eval("(()=>{['ui-sunrise','ui-sakura','tt-darkhour'].forEach(FemcCosmetics.grantItem);FemcGame.save();})()")
+        menu(p, 'wardrobe')
+        click(p, '[data-wd-view=wardrobe]')
+        click(p, '[data-fr-kind="uitheme"]')
+        p.wait("!!document.querySelector('[data-fr-pane$=\":uitheme\"]:not([hidden]) img.art')", 10)
+        r = p.eval("(()=>{const im=[...document.querySelectorAll('[data-fr-pane$=\":uitheme\"]:not([hidden]) img.art')];return {n:im.length,ok:im.every(i=>/cards\\/art-ui-/.test(i.src))}})()")
+        ok(r['n'] >= 7 and r['ok'], f'menu colour cards show Kat\'s card art in the Wardrobe ({r})')
+        shot(p, 'cardart-wardrobe')
+        click(p, '[data-wd-view=banner]')
+        p.wait("!!document.querySelector('.g-bq-splash.has-art')", 10)
+        r = p.eval("({tabs:[...document.querySelectorAll('.g-bq-tth.art')].length,all:document.querySelectorAll('[data-wd-ban]').length})")
+        ok(r['tabs'] == r['all'] and r['all'] >= 1, f'the splash and every banner tab use the banner picture ({r})')
+        p.eval("new Promise(r=>setTimeout(r,1500))")
+        shot(p, 'cardart-banner')
+        p.eval("FemcCosmetics.seq([{item:FemcCosmetics.byId('ui-sunrise'),r:'UR',dup:false}])")
+        p.wait("!!document.querySelector('.g-bq-back[style*=card-back]') && !!document.querySelector('.g-bq-frame[src*=frame-UR]') && !!document.querySelector('.g-bq-cth img.art')", 10)
+        p.eval("new Promise(r=>setTimeout(r,1600))")
+        shot(p, 'cardart-pull-show')
+        for _ in range(6):
+            p.eval("FemcCosmetics.nextSeq()"); p.eval("new Promise(r=>setTimeout(r,700))")
+            if p.eval("FemcCosmetics.bq().stage") in ('end', 'sum'): break
+        ok(True, 'a pull card wears the card back, the Ultra frame and the item\'s card art')
+        shot(p, 'cardart-pull')
+        p.eval("FemcCosmetics.seqClose(true)")
+        p.eval("FemcMenu.close()")
+        results['cardart'] = str(SHOTS)
 
     clean(p, 'end')
     print(json.dumps(results, indent=1))

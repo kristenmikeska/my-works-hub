@@ -697,3 +697,6 @@
   .g-wd-meters .g-bq-meter { grid-template-columns: 64px minmax(30px, 1fr) auto; }
 }
 @media (prefers-reduced-motion: reduce) { .g-wd-hdp { transition: none; } }
+
+/* Kat's card art (Nov 5) in the old small thumbs. */
+.g-wd-th img.art { object-fit: cover; border-radius: 3px; }

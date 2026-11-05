@@ -106,6 +106,10 @@ Common to every item below: convert to `assets/femc/bg/<slug>.webp`; bump `DATA_
 
 #### The epilogue: HOAX
 
+- **27C Haechan, Midnight Drive (Nov 5, batch 139: peace, arms crossed, hand in hair, hands in pockets, keys, pointing).** `femc-hd-poses.py look sk-haechan-cp-drive` (NAMES gained point / handsinpockets / keys; `look()` also reads loose files in WIP). Solar's Midnight Drive set was in, so the couple win screen shows the pair with no code change.
+- **28. Boutique banners (Nov 5, batch 139: all but 28O Tarot Arcana).** `python3 tools/femc-boutique-art.py` → `game/art/banners/<banner id>.webp` (as is, q86) + scan (ready.js `banners`); cosmetics.js already used them (the splash's `.has-art` and each tab's thumbnail). Arcana: drop `banner-arcana.png` and rerun.
+- **29. Card art (Nov 5, batch 139: all).** Same tool: `cards/card-back.webp` (trimmed, 600 × 900), `frame-R|SR|UR.webp` (white inside and outside keyed by flood fill, 600 × 900), `art-<item id>.webp` (360 px squares, cut on an even 3 × 3 / 2 × 2 grid then trimmed to the ink). cosmetics.js `thumb()` now uses the card art too, so the Wardrobe's menu colour, battle theme, title and pattern wallpaper cards show it (`img.art`, CSS in fitting.css, boutique.css, gacha.css).
+- **30. Polaroids (Nov 5, batch 139: 30A-30F; built).** `python3 tools/femc-polaroids.py` → `game/art/polaroids/<world>-<slug>.webp` (900 px, the caption written on the bottom strip in Bradley Hand, `CAPTIONS`) + `polaroids/index.js` (`FEMC_POLAROIDS`, `_V`; bumps its ?v=). epilogue.js `POLAROIDS` maps each to the hangout that unlocks it (30G `epi-s-eomma-1`, 30H `epi-h-cherry-2`, 30I `epi-h-cherry-4` are mapped already: just drop the picture and rerun); `polaroidEntries` adds an "Epilogue · <place> · Polaroids" Album section (square tiles, `.g-al-grid.pl` hides the tile label). Unlock: the hangout in `S.epi.bonds[*].seen` live, or the world record's `seen.hangouts`.
 - *(All seven HOAX place items are in: the living room and winter street by day, her room day and night, the Christmas lights, Jihoon's porch, the gym on the hearing day; art batch 77.)*
 
 #### The epilogue: Stay

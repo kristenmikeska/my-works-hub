@@ -1,0 +1,68 @@
+{
+ "arms-crossed": {
+  "ar": 0.428,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.492,
+  "size": [
+   658,
+   1536
+  ],
+  "src": "haechan-midnightdrive-hd-armscrossed.png"
+ },
+ "hair": {
+  "ar": 0.399,
+  "hf": 0.138,
+  "ht": 0.011,
+  "hx": 0.436,
+  "size": [
+   613,
+   1536
+  ],
+  "src": "haechan-midnightdrive-hd-handinhair.png"
+ },
+ "keys": {
+  "ar": 0.512,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.357,
+  "size": [
+   786,
+   1536
+  ],
+  "src": "haechan-midnightdrive-hd-keys.png"
+ },
+ "peace": {
+  "ar": 0.482,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.437,
+  "size": [
+   741,
+   1536
+  ],
+  "src": "haechan-midnightdrive-hd-peace.png"
+ },
+ "pocket": {
+  "ar": 0.43,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.536,
+  "size": [
+   660,
+   1536
+  ],
+  "src": "haechan-midnightdrive-hd-handsinpockets.png"
+ },
+ "pointing": {
+  "ar": 0.508,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.541,
+  "size": [
+   780,
+   1536
+  ],
+  "src": "haechan-midnightdrive-hd-point.png"
+ }
+}

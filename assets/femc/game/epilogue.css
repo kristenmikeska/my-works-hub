@@ -233,3 +233,6 @@
   .gs-mx-gg span { font-size: 14px; }
   .gs-match.done .gs-mx-feed { display: none; }
 }
+
+/* Polaroids (Nov 5 2026): the caption is written on the picture, so the tile's label stays off. */
+.g-al-grid.pl .g-al-cap { display: none; }

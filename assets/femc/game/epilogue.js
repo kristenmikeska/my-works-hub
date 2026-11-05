@@ -775,6 +775,26 @@ window.FemcEpilogue = (() => {
         kicker: `Epilogue · ${worldLabel(wid)} · Posts`, title: handle, text: cap };
     });
   }
+  // Polaroids (FEMC-ART-TODO 30, Kat's pictures Nov 5 2026): a keepsake photo per route-free hangout, its caption already on
+  // the picture (tools/femc-polaroids.py). A tile only once its picture exists (art/polaroids/index.js FEMC_POLAROIDS);
+  // unlocked once that hangout has played: live in this world (S.epi.bonds[*].seen) or in its record (seen.hangouts).
+  const POLAROIDS = {
+    runners: [['runners-snow-day-at-the-valley', 'epi-r-hanni-4'], ['runners-napkin-math', 'epi-r-hyein-4'], ['runners-four-seconds', 'epi-r-minji-3'], ['runners-two-chairs', 'epi-r-jaehyun-3']],
+    strangers: [['strangers-hot-floor', 'epi-s-yunjin-5'], ['strangers-the-chair-by-the-window', 'epi-s-yunjin-2'], ['strangers-good-cards', 'epi-s-eomma-1']],
+    hoax: [['hoax-backwards', 'epi-h-cherry-2'], ['hoax-swings', 'epi-h-cherry-4']],
+  };
+  function hangoutsSeen(wid) {
+    const s = S(), live = !!s.epi && s.epi.world === wid, rec = records()[wid];
+    const lists = live ? Object.values(s.epi.bonds || {}).map(b => b.seen || []) : Object.values(((rec || {}).seen || {}).hangouts || {});
+    return new Set(lists.flat());
+  }
+  function polaroidEntries(wid) {
+    const have = new Set(W.FEMC_POLAROIDS || []), list = (POLAROIDS[wid] || []).filter(([id]) => have.has(id));
+    if (!list.length) return [];
+    const seen = hangoutsSeen(wid);
+    return list.map(([id, hang]) => ({ kind: 'polaroid', id, group: `epi-${wid}-polaroids`, world: wid, on: seen.has(hang),
+      img: `${G.base}assets/femc/game/art/polaroids/${id}.webp?v=${W.FEMC_POLAROIDS_V || 1}`, kicker: `Epilogue · ${worldLabel(wid)} · Polaroids`, title: '' }));
+  }
   // The album's epilogue tiles. seen: the CG ids the save (and the year) have seen; seenPosts: the post ids.
   function albumEntries(seen, seenPosts = new Set()) {
     return entered().flatMap(wid => {
@@ -785,7 +805,7 @@ window.FemcEpilogue = (() => {
         more.forEach(id => { if (!list.some(x => x[0] === id)) list.push([id, '']); });
       }
       return [...list.map(([id, title]) => ({ kind: 'cg', id, group: `epi-${wid}`, world: wid, on: seen.has(id), img: `${G.base}assets/femc/cg/${id}.webp`, kicker: `Epilogue · ${worldLabel(wid)}`, title })),
-        ...postEntries(wid, seenPosts)];
+        ...postEntries(wid, seenPosts), ...polaroidEntries(wid)];
     });
   }
   // The Theater's epilogue rows: the current world while she's in it (live), else each finished world's record.
@@ -837,7 +857,7 @@ window.FemcEpilogue = (() => {
   }
 
   return { WORLDS, worldFor, endingOf, loadWorld, build, ensure, homeView, carryOf, leanFor, route, lockRoute, cond, stateFor, enter, leave, endScreen, offer, run, finish, raw: worldRaw,
-    yearCond, peekCond, isEpiCond, replaySaw, recordOf, records, entered, albumEntries, postEntries, alertDue, newsTick, ALERTS, theaterRows, theaterLoad, replay, equinoxOf, ALBUM,
+    yearCond, peekCond, isEpiCond, replaySaw, recordOf, records, entered, albumEntries, postEntries, polaroidEntries, POLAROIDS, alertDue, newsTick, ALERTS, theaterRows, theaterLoad, replay, equinoxOf, ALBUM,
     routeOpen, bond, closeness, startBond, contacts, contactCard, reach, call, topics, message, phoneWeek, migratePhone, hangoutFor, people, hangout, practiceNow, CLOSE_MAX, resume, partyFor, fightOf, fadeQueue, FADE, STAGES,
     get cardDay() { return cardDay; } };
 })();

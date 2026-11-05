@@ -37955,6 +37955,409 @@
       "destination": "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/hd/thumbsup.webp",
       "conversion": "native size, feet on the bottom edge, WebP q92",
       "placement": "the couple win screen: Haechan in Moon Hoodie beside Solar in Sun Hoodie (27A)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/banner-bloom.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1ca46c63c52decd8a8ab76a7547f2f661d47f602c5acc0d0c1ebd11b1f03b824",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/banners/bloom.webp",
+      "conversion": "as is, WebP q86 (tools/femc-boutique-art.py)",
+      "placement": "the Boutique splash and tab of the bloom banner (28)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/banner-summer.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "78d47e22298fcc4ae28371db4267c2e34165ecc296b65adfdefa62c3e7609a42",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/banners/summer.webp",
+      "conversion": "as is, WebP q86 (tools/femc-boutique-art.py)",
+      "placement": "the Boutique splash and tab of the summer banner (28)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/banner-masquerade.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b397f0eb52a456e21fd8b079d4964c918b06869af1a0ce28ddcaa6eeb6992c0f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/banners/masquerade.webp",
+      "conversion": "as is, WebP q86 (tools/femc-boutique-art.py)",
+      "placement": "the Boutique splash and tab of the masquerade banner (28)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/banner-lights.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "bc53088f1cdf08e3121fef0940267b1956f6170904ec48647f7a57d4fad8f098",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/banners/lights.webp",
+      "conversion": "as is, WebP q86 (tools/femc-boutique-art.py)",
+      "placement": "the Boutique splash and tab of the lights banner (28)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/banner-sunrise.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "4f8f686f1d3240d4a98869e8fd2a7da3a6382acb8179a60040fca5f156966085",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/banners/sunrise.webp",
+      "conversion": "as is, WebP q86 (tools/femc-boutique-art.py)",
+      "placement": "the Boutique splash and tab of the sunrise banner (28)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/banner-solar.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "03e99bd52cefcd0bdd8a51898d335a3f10e9495442ba0f70b85e69f870c8ea4f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/banners/solar.webp",
+      "conversion": "as is, WebP q86 (tools/femc-boutique-art.py)",
+      "placement": "the Boutique splash and tab of the solar banner (28)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/banner-runners.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1d8e94cb2e82a477640625724624cf0c2223147349f415f6ea1f8b2bab266064",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/banners/runners.webp",
+      "conversion": "as is, WebP q86 (tools/femc-boutique-art.py)",
+      "placement": "the Boutique splash and tab of the runners banner (28)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/banner-sees.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "ad1d1ecd78c862278d25d0b328c4713d9f0c2aa468dceb7cff0e7f963df48d94",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/banners/sees.webp",
+      "conversion": "as is, WebP q86 (tools/femc-boutique-art.py)",
+      "placement": "the Boutique splash and tab of the sees banner (28)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/banner-haechan.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6c9eb6816f5ba79eb4f928652348dd0e6954bf560510b62fdcb609d519b1938c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/banners/haechan.webp",
+      "conversion": "as is, WebP q86 (tools/femc-boutique-art.py)",
+      "placement": "the Boutique splash and tab of the haechan banner (28)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/banner-hoax.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b14bb4004c8b1a5f973713d9aba02c47daa79be3db262f395a0168ff2667c341",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/banners/hoax.webp",
+      "conversion": "as is, WebP q86 (tools/femc-boutique-art.py)",
+      "placement": "the Boutique splash and tab of the hoax banner (28)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/banner-valentine.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "24e29c3715b903e5e47a20577db7135912c851a44de48171267bfec16fe8ff12",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/banners/valentine.webp",
+      "conversion": "as is, WebP q86 (tools/femc-boutique-art.py)",
+      "placement": "the Boutique splash and tab of the valentine banner (28)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/banner-akihiko.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "257c21339b795a0f33d3b9a872f60e4f803d6d95927d54cc96481a162221ff04",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/banners/akihiko.webp",
+      "conversion": "as is, WebP q86 (tools/femc-boutique-art.py)",
+      "placement": "the Boutique splash and tab of the akihiko banner (28)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/banner-searchers.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "96394f8049005033db39fc477fad488b7479e728d706cbbd4903ef91fb3ac24d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/banners/searchers.webp",
+      "conversion": "as is, WebP q86 (tools/femc-boutique-art.py)",
+      "placement": "the Boutique splash and tab of the searchers banner (28)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/banner-swim.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c9c778558cf1799f30967cb5c93684bb934b0c447665a55f8b884ae96b679279",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/banners/swim.webp",
+      "conversion": "as is, WebP q86 (tools/femc-boutique-art.py)",
+      "placement": "the Boutique splash and tab of the swim banner (28)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/card-back.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "2ea5d0321dc0650e479c5fa3ef2e40a34d7ebf9a3a5f38a7dcc75871ce7a8074",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/cards/card-back.webp",
+      "conversion": "trimmed to the card, 600 x 900, WebP q88",
+      "placement": "the pull cards' back (29A)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/card-frames.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "15bf647353e9e16273d00361e6230368032a457055cb6b57359086bf9af20d8c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/cards/frame-R.webp, frame-SR.webp, frame-UR.webp",
+      "conversion": "three frames, white keyed out, 600 x 900, WebP q90",
+      "placement": "pull card frames by rarity (29B)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/card-art-1.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "13d5918b828185e70217ea848bee4ed80758d5627c5d4a5a0306aaff1fd5a411",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/cards/art-<item id>.webp",
+      "conversion": "even grid, trimmed to the ink, 360 px squares, WebP q88",
+      "placement": "card art for items with no picture (29C): Boutique cards and Wardrobe thumbs"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/card-art-2.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "732c23c45a680e8769e860fb775f399bb93623009ebe59cf21ee1847b532cb9e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/cards/art-<item id>.webp",
+      "conversion": "even grid, trimmed to the ink, 360 px squares, WebP q88",
+      "placement": "card art for items with no picture (29D): Boutique cards and Wardrobe thumbs"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/card-art-3.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "c04596820ddc718b5261c0815c588e5063d1e3c48c235239d051ad1efc366f33",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/cards/art-<item id>.webp",
+      "conversion": "even grid, trimmed to the ink, 360 px squares, WebP q88",
+      "placement": "card art for items with no picture (29E): Boutique cards and Wardrobe thumbs"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/haechan-midnightdrive-hd-armscrossed.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "e1a792988957c15d10f3688378be613cdf94a706445c41f2297cb8f4868aae63",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-drive/hd/",
+      "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+      "placement": "the couple win screen: Haechan in Midnight Drive beside Solar (27C)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/haechan-midnightdrive-hd-handinhair.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "a2b7a961b973060e6fed1bf379055fd7a27c222ac62cbccf9e2f7110461ac71c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-drive/hd/",
+      "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+      "placement": "the couple win screen: Haechan in Midnight Drive beside Solar (27C)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/haechan-midnightdrive-hd-handsinpockets.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "f571626c8ee0a91e2ce65ff459d78165ca84a38b852ff6897b4af1d55686c0ed",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-drive/hd/",
+      "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+      "placement": "the couple win screen: Haechan in Midnight Drive beside Solar (27C)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/haechan-midnightdrive-hd-keys.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "0c5a2147dca6e13b074b6d27011b610b36a57b2aa86818db69b7a92132974902",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-drive/hd/",
+      "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+      "placement": "the couple win screen: Haechan in Midnight Drive beside Solar (27C)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/haechan-midnightdrive-hd-peace.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "8a5555012db66f9696125b9012c419b475d39f7c23614377706f9e2d6616d62b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-drive/hd/",
+      "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+      "placement": "the couple win screen: Haechan in Midnight Drive beside Solar (27C)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/haechan-midnightdrive-hd-point.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "bfb5e47d5bd4d3b326ab631528e29eb46a4b14f8046485ed93b9d05f707cd7f0",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-drive/hd/",
+      "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+      "placement": "the couple win screen: Haechan in Midnight Drive beside Solar (27C)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/polaroid-runners-four-seconds.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "db6f29b58a9f33fa33fe8a90f7b2f08e0a0bb772681d3c2e496efacf14826020",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/polaroids/runners-four-seconds.webp",
+      "conversion": "caption written on the strip, 900 px, WebP q88 (tools/femc-polaroids.py)",
+      "placement": "the epilogue Album's Polaroids section, unlocked by its hangout (30)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/polaroid-runners-napkin-math.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "bcd2b42e8960c50ec3ef9b989c82ac591d03510058d44f61c12944ab50df94e8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/polaroids/runners-napkin-math.webp",
+      "conversion": "caption written on the strip, 900 px, WebP q88 (tools/femc-polaroids.py)",
+      "placement": "the epilogue Album's Polaroids section, unlocked by its hangout (30)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/polaroid-runners-snow-day-at-the-valley.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "223b5d4011d52956529ab36ba9daec220219f3908b263f7fe62e51e1aace1700",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/polaroids/runners-snow-day-at-the-valley.webp",
+      "conversion": "caption written on the strip, 900 px, WebP q88 (tools/femc-polaroids.py)",
+      "placement": "the epilogue Album's Polaroids section, unlocked by its hangout (30)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/polaroid-runners-two-chairs.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "bd2583bf3a74ebc4d7ade7e065b6a1a15a051b5e2e37132c2c80bb81ed725f95",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/polaroids/runners-two-chairs.webp",
+      "conversion": "caption written on the strip, 900 px, WebP q88 (tools/femc-polaroids.py)",
+      "placement": "the epilogue Album's Polaroids section, unlocked by its hangout (30)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/polaroid-strangers-hot-floor.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "d212b8030c378f8d31b5eb5077a795f21a60d53570948403f379d1ea23450a44",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/polaroids/strangers-hot-floor.webp",
+      "conversion": "caption written on the strip, 900 px, WebP q88 (tools/femc-polaroids.py)",
+      "placement": "the epilogue Album's Polaroids section, unlocked by its hangout (30)"
+    },
+    {
+      "batch": 139,
+      "source": "WIP/polaroid-strangers-the-chair-by-the-window.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "357eccbd8441c9b47ba872073e27840534f46a3351cec1c009154e0684d0dde5",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/polaroids/strangers-the-chair-by-the-window.webp",
+      "conversion": "caption written on the strip, 900 px, WebP q88 (tools/femc-polaroids.py)",
+      "placement": "the epilogue Album's Polaroids section, unlocked by its hangout (30)"
     }
   ],
   "batch1Validation": {

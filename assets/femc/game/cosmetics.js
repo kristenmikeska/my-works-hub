@@ -546,6 +546,7 @@ window.FemcCosmetics = (() => {
     if (x.kind === 'skin') return ready(x) ? `<img src="${G.base}${skinDir(x.id)}${x.who}-pose-0.webp?v=${SKIN_V}" alt="" loading="lazy">` : `<span class="g-wd-ico">👗</span>`;
     if (x.kind === 'weapon') return ready(x) ? `<img src="${G.base}${skinDir(x.id)}weapon.webp" alt="" loading="lazy">` : `<span class="g-wd-ico">⚔</span>`;
     if (x.kind === 'evoker') return `<img src="${G.base}${EVOKER}" alt="" style="filter:${x.filter}" loading="lazy">`;
+    const ca = cardArt(`art-${x.id}`); if (ca) return `<img class="art" src="${ca}" alt="" loading="lazy">`;  // Kat's card art (FEMC-ART-TODO 29)
     if (x.kind === 'wallpaper') return `<span class="g-wd-sw" style="background:${wallCss(x)}"></span>`;
     if (x.kind === 'title') return `<span class="g-wd-sw" style="background:linear-gradient(110deg, ${x.title[1]} 0 42%, ${x.title[0]} 42%)"></span>`;
     const v = PAL[x.pal]; return `<span class="g-wd-sw" style="background:linear-gradient(135deg, ${v[3]} 0 30%, ${v[0]} 30% 60%, ${v[1]} 60% 80%, ${v[2]} 80%)"></span>`;
@@ -665,7 +666,7 @@ window.FemcCosmetics = (() => {
      and the pull buttons. Pink and black only (Kat's palette rule): a banner's own colour is only its tab stripe.
      Art hooks: game/art/banners/<banner id>.webp (ready.js `banners`; FEMC-ART-TODO 28) becomes the splash's picture in
      place of the composed cast; game/art/cards/<name>.webp (ready.js `cards`: card-back, frame-R / -SR / -UR, art-<item id>;
-     FEMC-ART-TODO 29) dress the pull cards and the cards of items with no picture. Neither exists yet: the drawn versions stay.
+     FEMC-ART-TODO 29) dress the pull cards and the cards of items with no picture (and their Wardrobe thumbs). All in since Nov 5 (batch 139).
      Switching banners plays a pink slash wipe and the title, plate and cast slam in; the cast drifts with the pointer.
      The inline result under the splash (.g-wd-reveal: the card and the ×10 grid) is what stays after a pull. */
   let hero = null, lastBan = null;

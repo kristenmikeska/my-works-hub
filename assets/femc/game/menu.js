@@ -1064,7 +1064,7 @@ window.FemcMenu = (() => {
     return `<div class="g-al"><p class="g-al-sum"><span class="g-chip">Event CGs · ${n(cgs)}${inEpi() ? '' : ` / ${cgs.length}`}</span>${epi.length ? `<span class="g-chip">Epilogue · ${n(epi)} / ${epi.length}</span>` : ''}<span class="g-chip">Memory cards · ${n(frags)} / ${frags.length}</span></p>
       ${n(cgs) + n(frags) + n(epi) ? '' : '<p class="g-note">Nothing here yet. Scenes and memories she lives through will be kept here.</p>'}
       ${CG_GROUPS.map(([g, name]) => sec(yr + name, cgs.filter(c => c.group === g))).join('')}
-      ${epiGroups(epi).map(([g, name]) => sec(name, epi.filter(c => c.group === g), false, /-posts$/.test(g))).join('')}
+      ${epiGroups(epi).map(([g, name]) => (/-polaroids$/.test(g) ? sec(name, epi.filter(c => c.group === g), true).replace('g-al-grid sq', 'g-al-grid sq pl') : sec(name, epi.filter(c => c.group === g), false, /-posts$/.test(g)))).join('')}
       ${WORLDS.map(([w, name]) => sec(`Memory cards · ${name}`, frags.filter(c => c.group === w), true)).join('')}
       ${window.FemcBooth ? window.FemcBooth.albumSection(esc) : ''}</div>`;
   }
@@ -1095,7 +1095,7 @@ window.FemcMenu = (() => {
       img.classList.remove('in', 'from-l', 'from-r');
       img.alt = [c.title, c.kicker].filter(Boolean).join(' · ');
       img.src = c.big || c.img;
-      img.classList.toggle('sq', (c.kind === 'mem' && !c.big.endsWith('-wide.webp')) || c.kind === 'post'); // posts are 4:5
+      img.classList.toggle('sq', (c.kind === 'mem' && !c.big.endsWith('-wide.webp')) || c.kind === 'post' || c.kind === 'polaroid'); // posts are 4:5, polaroids square
       void img.offsetWidth; // restart the zoom
       img.classList.add('in'); if (dir) img.classList.add(dir > 0 ? 'from-r' : 'from-l');
       box.querySelector('.g-av-cap .g-kicker').textContent = c.kicker || '';
