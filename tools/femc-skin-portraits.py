@@ -38,9 +38,13 @@ for r, (y0, y1) in enumerate([(0, ycut), (ycut, H)]):
     cellmap[y0:y1] = r * 3 + c
 print('ycut', ycut)
 gray = cv2.cvtColor(sh[..., :3].astype(np.uint8), cv2.COLOR_RGB2GRAY)
+# A fighter without this expression (Yukari's and Akihiko's flustered is `blushing`; Mitsuru and Jihoon have neither): the nearest one.
+def refOf(f):
+    return next(REPO + f'assets/femc/portraits/{WHO}/{g}.webp' for g in [f, *{'flustered': ['blushing', 'happy'], 'blushing': ['flustered', 'happy']}.get(f, []), 'neutral']
+                if Path(REPO + f'assets/femc/portraits/{WHO}/{g}.webp').exists())
 res = {}
 for k, f in enumerate(ORDER):
-    ref = np.asarray(Image.open(REPO + f'assets/femc/portraits/{WHO}/{f}.webp').convert('RGBA')).astype(np.float32)
+    ref = np.asarray(Image.open(refOf(f)).convert('RGBA')).astype(np.float32)
     # face patch of the reference: eyes to chin, between the cheeks
     patch = cv2.cvtColor(ref[230:560, 250:560, :3].astype(np.uint8), cv2.COLOR_RGB2GRAY)
     cellimg = np.where(cellmap == k, gray, 0).astype(np.uint8)
@@ -52,7 +56,7 @@ for k, f in enumerate(ORDER):
     res[f] = best; print(f, 'score %.3f scale %.3f origin %.1f %.1f' % best)
 S = float(np.median([res[f][1] for f in ORDER])); print('shared scale', S)
 for k, f in enumerate(ORDER):
-    ref = np.asarray(Image.open(REPO + f'assets/femc/portraits/{WHO}/{f}.webp').convert('RGBA')).astype(np.float32)
+    ref = np.asarray(Image.open(refOf(f)).convert('RGBA')).astype(np.float32)
     patch = cv2.cvtColor(ref[230:560, 250:560, :3].astype(np.uint8), cv2.COLOR_RGB2GRAY)
     tp = cv2.resize(patch, (int(310 * S), int(330 * S)), interpolation=cv2.INTER_AREA)
     cellimg = np.where(cellmap == k, gray, 0).astype(np.uint8)

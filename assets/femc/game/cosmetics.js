@@ -445,7 +445,7 @@ window.FemcCosmetics = (() => {
       pose[w] = G.base + skinDir(o.id); look[w] = o.id; name[w] = o.name;
       if ((R.poses2 || []).includes(w)) pose2[w] = true; // D: the look's second pose sheet (<who>-pose2-0..5, femc-wardrobe.py skin2)
       if (pose2[w] && (R.poses2b || []).includes(w)) pose2b[w] = true; // an alternate sheet 2 (<who>-pose2b-0..5, skin2 --alt); battle.js flips a coin per fight
-      if (have.length) face[w] = { dir: `${G.base}${skinDir(o.id)}portraits/${w}/`, have: have.slice(), v: 9 };
+      if (have.length) face[w] = { dir: `${G.base}${skinDir(o.id)}portraits/${w}/`, have: have.slice(), v: 10 };
       if (isClean(o, w)) clean[w] = true;
       if (Array.isArray(o.hand)) hand[w] = o.hand.slice(0, 2);
       if (o.theme) theme[w] = o.theme;
@@ -494,7 +494,7 @@ window.FemcCosmetics = (() => {
       fxSheet: R.fx ? `${G.base}${skinDir(x.id)}fx.webp?v=${R.fx}` : null, // N: the look's own effect sheet, played in the theme sheet's place
       entrance: (R.entrance || []).includes(w) ? art8(`${w}-entrance.webp`) : null, onemore: (R.onemore || []).includes(w) ? art8(`${w}-onemore.webp`) : null,
       onemore2: (R.onemore2 || []).includes(w) ? art8(`${w}-onemore-v2.webp`) : null, omEyes: (R.onemore2 || []).includes(w) && (R.eyes2 || {})[w] ? R.eyes2[w].slice(0, 4) : null,
-      face: f ? `${G.base}${skinDir(x.id)}portraits/${w}/${f}.webp?v=9` : `${G.base}${D.portraits || 'assets/femc/portraits/'}${w}/${face0}.webp?v=${V}`, faceKey: f || face0,
+      face: f ? `${G.base}${skinDir(x.id)}portraits/${w}/${f}.webp?v=10` : `${G.base}${D.portraits || 'assets/femc/portraits/'}${w}/${face0}.webp?v=${V}`, faceKey: f || face0,
       skill: { name: sk.name, el: sk.el, elName: el.name, color: el.color } };
   }
   /* For scenes (core.js portrait): an outfit's portrait, when it has one and the toggle is on. */
@@ -505,7 +505,7 @@ window.FemcCosmetics = (() => {
     const have = ((readyArt().skins || {})[x.id]?.portraits || {})[id] || [];
     const f = [face, face && face.replace(/-\d+$/, ''), 'neutral', have[0]].find(k => k && have.includes(k));
     // ?v= bumps when a cut is redone (7: and seven more outfits, 2026-10-30).
-    return f ? `${G.base}${skinDir(x.id)}portraits/${id}/${f}.webp?v=9` : null;
+    return f ? `${G.base}${skinDir(x.id)}portraits/${id}/${f}.webp?v=10` : null;
   }
   // The Equipment tab's picture for a fighter's weapon slot (a path from the site root, like a gear's `art`).
   function weaponArt(who) { const x = onIn(`weapon:${who}`); return x ? `${skinDir(x.id)}weapon.webp` : null; }

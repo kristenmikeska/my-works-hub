@@ -209,10 +209,10 @@ try:
             theme:b.theme,name:b.name,couple:b.couple,onemore:b.onemore,onemore2:b.onemore2,entrance:b.entrance,theurgy:b.theurgy,finish:b.finish,pose2b:b.pose2b,showtime:b.showtime,frames:b.frames}})()""")
         ok(len(r['themes']) == 13 and not r['missing'] and not r['dup'], f'13 themes, every look real, none twice: {r["missing"]} {r["dup"]}')
         ok(r['date'] == 'hearts' and r['sun'] == 'sunmoon' and r['moon'] == 'sunmoon' and r['plain'] == [None] * 4, f'part 4 picks: {r}')
-        ok(r['theme'] == {'solar': 'hearts'} and r['name'] == {'solar': 'Date Day'} and r['couple'] == {} and sorted(r['showtime']) == ['cp-afterhours', 'cp-drive', 'cp-moviedate', 'cp-sunmoon'] and not r['pose2b'], f'battle(): {r}')
+        ok(r['theme'] == {'solar': 'hearts'} and r['name'] == {'solar': 'Date Day'} and r['couple'] == {} and sorted(r['showtime']) == ['cp-afterhours', 'cp-drive', 'cp-festival', 'cp-moviedate', 'cp-ringside', 'cp-sunmoon'] and not r['pose2b'], f'battle(): {r}')
         # Kat's Nov 1 art for Date Day: both One More pictures, the entrance card, the Theurgy cut-in and the finish card; 12 frames.
         for k, f in (('onemore', 'solar-onemore.webp'), ('onemore2', 'solar-onemore-v2.webp'), ('entrance', 'solar-entrance.webp'), ('theurgy', 'solar-theurgy.webp'), ('finish', 'solar-finish.webp')):
-            own = ['aigis', 'akihiko', 'haechan', 'jihoon', 'jungwon', 'junpei', 'minji', 'mitsuru', 'shinjiro', 'yukari'] if k in ('onemore', 'entrance') else []  # own strips and cards (Haechan Nov 1, batch 128; the other fighters but Koromaru Nov 3, batch 131) ride along for their own looks
+            own = ['aigis', 'akihiko', 'haechan', 'jihoon', 'jungwon', 'junpei', 'koromaru', 'minji', 'mitsuru', 'shinjiro', 'yukari'] if k in ('onemore', 'entrance') else []  # own strips and cards (Haechan Nov 1, batch 128; the other fighters but Koromaru Nov 3, batch 131) ride along for their own looks
             ok(sorted(r[k]) == sorted(['solar'] + own) and f'skins/sk-date/{f}' in r[k]['solar'] and all(f'game/art/{k}/{w}.webp' in r[k][w] for w in own), f'battle() {k}: {r[k]}')
         ok(len(r['frames']) == 12 and 'foxfire' not in r['frames'], f'frames: {r["frames"]}')
         alt = p.eval("(()=>{FemcCosmetics.grantItem('sk-alphaphi');FemcCosmetics.equip('sk-alphaphi');const b=FemcCosmetics.battle();FemcCosmetics.equip('sk-date');return b.pose2b})()")
@@ -229,19 +229,21 @@ try:
         fr = Image.new('RGB', (1500, 600), (0, 255, 0)); d = ImageDraw.Draw(fr); d.rectangle([20, 20, 1480, 580], outline=(255, 79, 158), width=10)
         d.ellipse([10, 10, 90, 90], fill=(255, 140, 192)); fr.save(tmp / 'frame.png')
         W = [sys.executable, str(pathlib.Path(REPO, 'tools/femc-wardrobe.py'))]
-        # A look with none of Kat's art (Haechan's Sigma Chi Runner; Black Suit got its art on Nov 2), Koromaru's own look (the others got their strips Nov 3), the Ringside Showtime and the missing foxfire theme, so nothing real is touched.
+        # A look with none of Kat's art (Akihiko's Off-Day Hoodie; Sigma Chi Runner got its art on Nov 4), Koromaru's own strip and the Ringside Showtime (both Kat's since Nov 4: set aside and put back) and the missing foxfire theme, so nothing real is lost.
         # The strip source has white letterbox bands top and bottom: they are cut off before the 5:1 crop.
         band = Image.new('RGB', (1536, 520), (255, 255, 255)); band.paste(wide, (0, 110)); band.save(tmp / 'omband.png')
-        outs = {'onemore': ART / 'skins/sk-haechan-runners/haechan-onemore.webp', 'onemore2': ART / 'skins/sk-haechan-runners/haechan-onemore-v2.webp', 'own': ART / 'onemore/koromaru.webp',
-                'entrance': ART / 'skins/sk-haechan-runners/haechan-entrance.webp', 'theurgy': ART / 'skins/sk-haechan-runners/haechan-theurgy.webp', 'finish': ART / 'skins/sk-haechan-runners/haechan-finish.webp',
+        outs = {'onemore': ART / 'skins/sk-akihiko-hoodie/akihiko-onemore.webp', 'onemore2': ART / 'skins/sk-akihiko-hoodie/akihiko-onemore-v2.webp', 'own': ART / 'onemore/koromaru.webp',
+                'entrance': ART / 'skins/sk-akihiko-hoodie/akihiko-entrance.webp', 'theurgy': ART / 'skins/sk-akihiko-hoodie/akihiko-theurgy.webp', 'finish': ART / 'skins/sk-akihiko-hoodie/akihiko-finish.webp',
                 'showtime': ART / 'couples/cp-ringside-showtime.webp', 'frame': ART / 'frames/foxfire.webp'}
+        KEPT = {f: tmp / f'kept-{f.parent.name}-{f.name}' for f in outs.values() if f.exists() and f.name in ('koromaru.webp', 'cp-ringside-showtime.webp')}
+        for f, k in KEPT.items(): shutil.move(str(f), str(k))
         for f in outs.values(): ok(not f.exists(), f'{f} should not exist before the test'); MADE.append(f)
-        subprocess.run(W + ['onemore', str(tmp / 'om.png'), 'sk-haechan-runners'], check=True, capture_output=True)
-        subprocess.run(W + ['onemore2', str(tmp / 'omband.png'), 'sk-haechan-runners'], check=True, capture_output=True)
+        subprocess.run(W + ['onemore', str(tmp / 'om.png'), 'sk-akihiko-hoodie'], check=True, capture_output=True)
+        subprocess.run(W + ['onemore2', str(tmp / 'omband.png'), 'sk-akihiko-hoodie'], check=True, capture_output=True)
         subprocess.run(W + ['onemore', str(tmp / 'om.png'), 'own', 'koromaru'], check=True, capture_output=True)
-        subprocess.run(W + ['entrance', str(tmp / 'card.png'), 'sk-haechan-runners'], check=True, capture_output=True)
-        subprocess.run(W + ['theurgy', str(tmp / 'card.png'), 'sk-haechan-runners'], check=True, capture_output=True)
-        subprocess.run(W + ['finish', str(tmp / 'card.png'), 'sk-haechan-runners'], check=True, capture_output=True)
+        subprocess.run(W + ['entrance', str(tmp / 'card.png'), 'sk-akihiko-hoodie'], check=True, capture_output=True)
+        subprocess.run(W + ['theurgy', str(tmp / 'card.png'), 'sk-akihiko-hoodie'], check=True, capture_output=True)
+        subprocess.run(W + ['finish', str(tmp / 'card.png'), 'sk-akihiko-hoodie'], check=True, capture_output=True)
         subprocess.run(W + ['showtime', str(tmp / 'card.png'), 'ringside'], check=True, capture_output=True)
         subprocess.run(W + ['frame', str(tmp / 'frame.png'), 'foxfire'], check=True, capture_output=True)
         sizes = {k: Image.open(f).size for k, f in outs.items()}
@@ -252,11 +254,13 @@ try:
         ok(fa.getpixel((500, 200))[3] == 0 and fa.getpixel((16, 200))[3] > 200 and fa.getpixel((5, 200))[3] == 0, 'the frame\'s green keyed out, its border kept')
         rj = READY.read_text()
         data = json.loads(rj.split('window.FEMC_ART_READY = ')[1].rstrip().rstrip(';'))
-        ph = data['skins']['sk-haechan-runners']
-        ok(all(ph.get(k) == ['haechan'] for k in ('onemore', 'onemore2', 'entrance', 'theurgy', 'finish')) and data['own']['onemore'] == ['aigis', 'akihiko', 'haechan', 'jihoon', 'jungwon', 'junpei', 'koromaru', 'minji', 'mitsuru', 'shinjiro', 'solar', 'yukari'] and data['own']['onemore2'] == ['solar']
-           and data['couples'] == ['cp-afterhours', 'cp-drive', 'cp-moviedate', 'cp-ringside', 'cp-sunmoon'] and 'foxfire' in data['frames'], f'scan lists them: {ph}, {data["own"]}, {data["couples"]}, {data["frames"]}')
+        ph = data['skins']['sk-akihiko-hoodie']
+        ok(all(ph.get(k) == ['akihiko'] for k in ('onemore', 'onemore2', 'entrance', 'theurgy', 'finish')) and data['own']['onemore'] == ['aigis', 'akihiko', 'haechan', 'jihoon', 'jungwon', 'junpei', 'koromaru', 'minji', 'mitsuru', 'shinjiro', 'solar', 'yukari'] and data['own']['onemore2'] == ['solar']
+           and data['couples'] == ['cp-afterhours', 'cp-drive', 'cp-festival', 'cp-moviedate', 'cp-ringside', 'cp-sunmoon'] and 'foxfire' in data['frames'], f'scan lists them: {ph}, {data["own"]}, {data["couples"]}, {data["frames"]}')
         cleanup()
-        ok(READY.read_text() == READY0 and not any(f.exists() for f in outs.values()), 'test files gone, ready.js restored')
+        for f, k in KEPT.items(): shutil.move(str(k), str(f))
+        subprocess.run(W + ['scan'], check=True, capture_output=True)
+        ok(READY.read_text() == READY0 and all(f.exists() == (f in KEPT) for f in outs.values()), 'test files gone, Kat\'s put back, ready.js restored')
         shutil.rmtree(tmp, ignore_errors=True)
         results['tools'] = sizes
 
@@ -553,13 +557,13 @@ try:
                 shots2.append(shot(p, f'sheet2-{tag}-{w}x{h}'))
             view(p, 1440, 900); time.sleep(0.2)
             return out
-        setup()
+        setup(wear=['sk-akihiko-hoodie'])
         night(['solar', 'akihiko', 'yukari', 'koromaru'], "window.__holdAllout=true;FemcBattle.save.cutins='off';")
         enter(); bdrive(SOLAR_MENU, 120)
-        info = p.eval("FemcBattle.poses2('solar')"); aki = p.eval("FemcBattle.poses2('koromaru')")
+        info = p.eval("FemcBattle.poses2('solar')"); aki = p.eval("FemcBattle.poses2('akihiko')")
         ok(info['has'] and len(info['frames']) == 12 and all('poses/solar-pose2-%d.webp' % i in info['frames'][6 + i] for i in range(6))
            and info['states']['support'] == [6] and info['states']['dash'] == [11], f'Solar: sheet 2 as frames 6-11: {info}')
-        ok(not aki['has'] and len(aki['frames']) == 6 and 'support' not in aki['states'], f'Koromaru: sheet 1 only: {aki}')
+        ok(not aki['has'] and len(aki['frames']) == 6 and 'support' not in aki['states'], f'Akihiko in the Off-Day Hoodie: sheet 1 only: {aki}')
         p.eval("FemcBattle.B.party().forEach(u=>{u.maxHp=u.hp=99999;u.sp=999});FemcBattle.B.foes().forEach(f=>{f.maxHp=f.hp=99999});" + POSELOG)
         sid, aid = unit('solar'), unit('akihiko'); foe = p.eval("FemcBattle.B.foes()[0].id")
         boxes['idle'] = snap('idle')
@@ -610,7 +614,7 @@ try:
         go_on(); p.eval("window.__holdSolar=false;window.__stopResults=true")
         bdrive("FemcBattle.screen()==='results'", 60)
         log = p.eval("window.__poseLog")
-        ok(not any(e[2] and 'pose2' in e[2] and 'koromaru' in e[2] for e in log), 'a fighter with no sheet 2 (Koromaru) never shows a pose2 frame')
+        ok(not any(e[2] and 'pose2' in e[2] and 'akihiko' in e[2] for e in log), 'a fighter with no sheet 2 (Akihiko in his Off-Day Hoodie) never shows a pose2 frame')
         clean(p, 'sheet2 solar')
         # Fallback: Akihiko leads in his Off-Day Hoodie (sheet 1 only; every fighter but Koromaru, who has no menu, got an own sheet 2 by Nov 3); guard / dodge / down keep sheet 1 exactly (no pose2, hidden when Down).
         p.top(); setup(wear=['sk-akihiko-hoodie'])
@@ -642,7 +646,8 @@ try:
             view(p, w, h); time.sleep(0.35); shots2.append(shot(p, f'sheet2-yukata-dodge-{w}x{h}'))
         view(p, 1440, 900); go_on(); time.sleep(0.5)
         clean(p, 'sheet2 yukata')
-        p.top(); setup(wear=['sk-haechan-runners'], day='12/12')  # Nov 2: Black Suit got its sheet 2; Sigma Chi Runner is sheet 1 only
+        p.top(); setup(wear=['sk-haechan-runners'], day='12/12')  # Sigma Chi Runner got its sheet 2 on Nov 4: made sheet 1 only in this page
+        p.eval("FEMC_ART_READY.skins['sk-haechan-runners'].poses2=[];true")
         scripted(['solar', 'haechan', 'akihiko', 'yukari'])  # Haechan fights from December; a scripted fight takes him
         p.eval("FemcBattle.save.cutins='off'"); bdrive(HAECHAN_MENU, 120)
         d = p.eval("FemcBattle.poses2('haechan')")
@@ -687,8 +692,9 @@ try:
                 view(p, 1440, 900); go_on(); p.wait("!document.querySelector('.bt-theurgy')", 20)
             clean(p, f'looks alt={alt}')
             p.top(); p.eval("document.querySelectorAll('.g-dh').forEach(x=>x.remove())")
-        # Without a look's Theurgy art (Haechan's Sigma Chi Runner; Black Suit has its own since Nov 2): the fighter's own cut-in, no look mark.
+        # Without a look's Theurgy art (Haechan's Sigma Chi Runner, its Nov 4 cut-in hidden in this page): the fighter's own cut-in, no look mark.
         setup(wear=['sk-haechan-runners'], day='12/12')
+        p.eval("FEMC_ART_READY.skins['sk-haechan-runners'].theurgy=[];true")
         scripted(['solar', 'haechan', 'akihiko', 'yukari'])
         p.eval("FemcBattle.save.cutins='off'"); bdrive(SOLAR_MENU, 120)
         p.eval(TH.replace("'solar'", "'haechan'")); p.wait("(FemcBattle.marks['theurgy-final']||FemcBattle.marks['theurgy-short']||0)>0", 30)
@@ -884,6 +890,7 @@ try:
         ok(hero and 'sk-cp-afterhours/hd/cheer.webp' in hero['src'] and hero['ok'], f'no peace sign in the set: the fist pump: {hero}')
         # Nov 3 (batch 134): Velvet's partial set has no peace sign: its fist pump, for real
         p.top(); setup(wear=['sk-velvet'])
+        p.eval("FEMC_ART_READY.skins['sk-velvet'].hd=FEMC_ART_READY.skins['sk-velvet'].hd.filter(k=>k!=='peace');true")  # her set is whole since Nov 4: made partial in this page
         night(['solar', 'akihiko', 'yukari', 'junpei'], "FemcBattle.save.settings.entrance=false;window.__btGroup=['maya'];"); enter()
         hero = solar_wins()
         ok(hero and 'sk-velvet/hd/cheer.webp' in hero['src'] and hero['ok'] and hero['hd'], f'Velvet (partial, no peace): the fist pump: {hero}')

@@ -36395,6 +36395,1410 @@
       "outputs": {
         "assets/femc/game/art/avatars/runners/girls.webp": "702006fbd2c34adbe67cb50b5f8456091c5982d4368acdb34c67abed6abca35b"
       }
+    },
+    {
+      "batch": 137,
+      "source": "couple-festival-showtime.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "0c8cf25158dce4acd9f50c146f3154ffb795859cddc1b61f019e903e13568397",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/couples/cp-festival-showtime.webp",
+      "placement": "Skins in battle: festival couple Showtime",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "couple-ringside-showtime.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "84c9c78829aaa04c6b040f180bc7e5ca7fb31c80311e08b9d3fbd40d694d546a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/couples/cp-ringside-showtime.webp",
+      "placement": "Skins in battle: ringside couple Showtime",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "koromaru-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "aaa29dd4920974486b040b14a9c3e962b6fbd05c7e081b2ccb09f3f6779aedb6",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/poses/ | game/art/onemore | game/art/entrance",
+      "placement": "Skins in battle: own (koromaru) entrance",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "koromaru-onemore.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "268f6ca9354c52401f3f4ea74d239653d402b7da4fd437588e06300bf841632b",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/poses/ | game/art/onemore | game/art/entrance",
+      "placement": "Skins in battle: own (koromaru) onemore",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "koromaru-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6bb0b90f22b50c65b06073ae948df7b515c695c2b038e56e0679eb73b6be19a1",
+      "status": "integrated",
+      "destination": "assets/femc/battle/art/poses/ | game/art/onemore | game/art/entrance",
+      "placement": "Skins in battle: own (koromaru) posesheet-2",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-champ-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "decbb4eaf1d958a5ef31f76c37836cf3a80cae67ebf32b0384467e819c0d145d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-champ/",
+      "placement": "Skins in battle: sk-akihiko-champ entrance",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-champ-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "4404435abe82713fff9c07e2fc9c15ba5e604a55c33e17d6abf3099b3e3da026",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-champ/",
+      "placement": "Skins in battle: sk-akihiko-champ finish",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-champ-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d0457fb33d7c9bec70b207053aedfed814ac1cc8572930ea6db0d77e7b1ad319",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-champ/",
+      "placement": "Skins in battle: sk-akihiko-champ fx",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-champ-onemore.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "6397551a483b9a80bd94e303d3cfa480848f11cd505225c29b2a4448c927e628",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-champ/",
+      "placement": "Skins in battle: sk-akihiko-champ onemore",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-champ-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e9469ca647bd33683d2954d5611567f09eb8cc134b48d122bb7853e8de279669",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-champ/",
+      "placement": "Skins in battle: sk-akihiko-champ portraits",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-champ-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6d10b7b8e77f336d8accecc7004c293857c89bdc559de69f6bcc600f9a5ac1bc",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-champ/",
+      "placement": "Skins in battle: sk-akihiko-champ second pose sheet",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-champ-theurgy..png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "19d279397a1b366626ac3cc02e3100f509d7695e241f9179f67ba601ff7ff833",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-champ/",
+      "placement": "Skins in battle: sk-akihiko-champ theurgy",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-cp-festival-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "cb227c271f36f7dc096ee1b5e84ebeaa8b67712f9fa1d61af41c6d6ef60d1857",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-cp-festival/",
+      "placement": "Skins in battle: sk-akihiko-cp-festival entrance",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-cp-festival-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "63cf16f4189434b72ffaee538c996236bdf85f7020c69946fc447f35ba0252ab",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-cp-festival/",
+      "placement": "Skins in battle: sk-akihiko-cp-festival finish",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-cp-festival-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "39df039e31a35c29e1246231ca68d0fde7626f45c688cef63f97ac1f91b23857",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-cp-festival/",
+      "placement": "Skins in battle: sk-akihiko-cp-festival fx",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-cp-festival-onemore.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "dd59e23a87bc1481fa15691a906b7a55fbc983d3c3b11c16b7c60379e76178d2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-cp-festival/",
+      "placement": "Skins in battle: sk-akihiko-cp-festival onemore",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-cp-festival-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "94d1f5d18ac09d376cdf96fc18a7716216144079d036604c6b321483e0f415f8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-cp-festival/",
+      "placement": "Skins in battle: sk-akihiko-cp-festival second pose sheet",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-cp-festival-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "33132701098ac7b6496280c108455af0291c0393cd96b2c14475d76130c830cd",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-cp-festival/",
+      "placement": "Skins in battle: sk-akihiko-cp-festival theurgy",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-cp-ringside-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "c6fe45be0a05388989d7e389b64f0386833bb4760213269f078807c090b4154d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-cp-ringside/",
+      "placement": "Skins in battle: sk-akihiko-cp-ringside entrance",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-cp-ringside-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "ea1f56730fdf7c0a88c13c9fe0c5f51f59ee0131dc2d41567bf947945f051d94",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-cp-ringside/",
+      "placement": "Skins in battle: sk-akihiko-cp-ringside finish",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-cp-ringside-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c1c58b7f6f0f36934fac955479a5f3f5dce0fecba041e7559a3a0a1f9976d058",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-cp-ringside/",
+      "placement": "Skins in battle: sk-akihiko-cp-ringside fx",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-cp-ringside-onemore.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "9eab8c41b6fa19c343c85db91ca5f1c41677d75f3264120574d320c10a62dc66",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-cp-ringside/",
+      "placement": "Skins in battle: sk-akihiko-cp-ringside onemore",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-cp-ringside-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e7d045b37888756323678f7624bec8aafee2de4c3c6132c9326a351e711e7e7a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-cp-ringside/",
+      "placement": "Skins in battle: sk-akihiko-cp-ringside second pose sheet",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-akihiko-cp-ringside-theurgy.png",
+      "size": [
+        1671,
+        941
+      ],
+      "sha256": "9855003c64311b94d466588e4b3b4027223d4cc4121b1109c854529c5816e794",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-akihiko-cp-ringside/",
+      "placement": "Skins in battle: sk-akihiko-cp-ringside theurgy",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-haechan-garage-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "59a7ecafe6e24faf38063b9a0f6595e95ce7766cdf6e4054af2f03f61a3784ef",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-garage/",
+      "placement": "Skins in battle: sk-haechan-garage fx",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-haechan-runners-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "96a0fc22efef8f0791c9d5ec387888320154f815e696fe520683aa64406000b5",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-runners/",
+      "placement": "Skins in battle: sk-haechan-runners entrance",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-haechan-runners-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "b01b30926875d6108fcac9da631900a46b357b8645dc0dba032b164008be89e1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-runners/",
+      "placement": "Skins in battle: sk-haechan-runners finish",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-haechan-runners-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "837d56fb89f0f5a1f51ec70b9267daa606b0d79d3326eff1f80a1bc3f2948d5d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-runners/",
+      "placement": "Skins in battle: sk-haechan-runners fx",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-haechan-runners-onemore.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "644311a175e490583b047276f009b9b01422226152e4010497fb07f3b0ec4225",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-runners/",
+      "placement": "Skins in battle: sk-haechan-runners onemore",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-haechan-runners-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a2034a5ae0b946aec1456cac252059b5b0166ee38405dc395e852040958edb2a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-runners/",
+      "placement": "Skins in battle: sk-haechan-runners second pose sheet",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-haechan-runners-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "caa428adbb300ecd575aedd93c88bbde3bccc4c3133d95874cd3a7163b541b81",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-runners/",
+      "placement": "Skins in battle: sk-haechan-runners theurgy",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jihoon-emo-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "daed5e2e14218db3cf0d949153537fc1dc3a34e5f2c6b91485c6573e0cff2cee",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jihoon-emo/",
+      "placement": "Skins in battle: sk-jihoon-emo portraits",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jihoon-pilate-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c23af47a87104124b6aea86d5aebbeaec5908d3524d4e06ef2acfc206fbb5fec",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jihoon-pilates/",
+      "placement": "Skins in battle: sk-jihoon-pilates portraits",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jihoon-pilates-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e613d9f8e5c838a5b871416b2c7e73e60ed1f52d697cf5323230ce5e697cac4b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jihoon-pilates/",
+      "placement": "Skins in battle: sk-jihoon-pilates entrance",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jihoon-pilates-f.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3e8119fee72fa7987759c4bf1474557336a328c5ff555757ddd2accaa0795dad",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jihoon-pilates/",
+      "placement": "Skins in battle: sk-jihoon-pilates fx",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jihoon-pilates-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "fcd2b25c96f121ee9ca959f1d93681c1ceb6427a7be776f7851a3fa77b9a5b25",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jihoon-pilates/",
+      "placement": "Skins in battle: sk-jihoon-pilates finish",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jihoon-pilates-onemore.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "d959bbc732ee413861e1db57b3fe0d5dfa47e27081b557ec8eea596684dcedce",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jihoon-pilates/",
+      "placement": "Skins in battle: sk-jihoon-pilates onemore",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jihoon-pilates-posesheet-2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "37d75ff295413ca508ff87266f3c11727fda02defe13f8ceb71751234416cac4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jihoon-pilates/",
+      "placement": "Skins in battle: sk-jihoon-pilates second pose sheet",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jihoon-pilates-theurgy.png",
+      "size": [
+        1671,
+        941
+      ],
+      "sha256": "359b29068a60588616abcb9905c0c86e8debe69ad2cb3c41bd554aa506e68dd9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jihoon-pilates/",
+      "placement": "Skins in battle: sk-jihoon-pilates theurgy",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-council-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "a6d30316a09aad1f28841a17d27b8f52f2faf99edb5726dd64713f9bb2221f20",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-council/",
+      "placement": "Skins in battle: sk-jungwon-council entrance",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-council-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "8b9fe2b02e57ec897800dab864fe9d73f22b7d0fcce4101ba5e5c31d76b22191",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-council/",
+      "placement": "Skins in battle: sk-jungwon-council finish",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-council-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "0680c734db60ac5024306c1a45f93f0a6f1538620a279988915dd4dc431d1f73",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-council/",
+      "placement": "Skins in battle: sk-jungwon-council fx",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-council-onemore.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "54f301756e68f689e64169397a895484eae73092d8061eb6ac9bc9f10b5de697",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-council/",
+      "placement": "Skins in battle: sk-jungwon-council onemore",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-council-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "51525633001a03f1b4598c8375fd9690fb5ab797c4db4c2178b2cb5612902445",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-council/",
+      "placement": "Skins in battle: sk-jungwon-council portraits",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-council-posesheet-2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "613b095f47318649cc95ce8f11f1490520e9bede4efb014b5666048c3c0f15f1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-council/",
+      "placement": "Skins in battle: sk-jungwon-council second pose sheet",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-council-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "09338af9fe6ee6f8d5d690d93f720ad925162dd528427f78c4f43c21336ae0f9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-council/",
+      "placement": "Skins in battle: sk-jungwon-council theurgy",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-cp-afterhours-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "0e8f010d8ea9f6ecef01637cd8dcb926439200f15e90160b29475ef810e3891d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/",
+      "placement": "Skins in battle: sk-jungwon-cp-afterhours entrance",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-cp-afterhours-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e408ab7c54109e53fa57cc60b2031eebe10379852bed79fa5b2970e287377c3c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/",
+      "placement": "Skins in battle: sk-jungwon-cp-afterhours finish",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-cp-afterhours-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "4befd6ff0601203f9013e45fe43cb9e942cac197bbf72403d3a076dcb89bf7bf",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/",
+      "placement": "Skins in battle: sk-jungwon-cp-afterhours fx",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-cp-afterhours-onemore.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "58eed05c909d90d913aced89061ca820b1f173e1c12a901aee3f1f946839fb9e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/",
+      "placement": "Skins in battle: sk-jungwon-cp-afterhours onemore",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-cp-afterhours-posesheet-2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "f6dd7200ddf49cc6a40bb887bc7a82747ca863843a876f28adb94823c8b210f2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/",
+      "placement": "Skins in battle: sk-jungwon-cp-afterhours second pose sheet",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-cp-afterhours-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "111489708ea7da4a071e6207689f9effc03f75a43d1cb3aaa34948c87c4d09bf",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/",
+      "placement": "Skins in battle: sk-jungwon-cp-afterhours theurgy",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-cp-moviedate-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "4328e4b1ff0cbdc8c3bb162f7fc748ccd3bce6bf9b83cba03e84167a47dc396a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/",
+      "placement": "Skins in battle: sk-jungwon-cp-moviedate entrance",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-cp-moviedate-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "a144a653933054409d5254c6b3f69a75ec7f92c6d57baef80de084e82286488b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/",
+      "placement": "Skins in battle: sk-jungwon-cp-moviedate finish",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-cp-moviedate-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a0f1d744b153eb362879f2b2c526758d0f7147145e2cb7bdd1e815e5fb8a4cb1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/",
+      "placement": "Skins in battle: sk-jungwon-cp-moviedate fx",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-cp-moviedate-onemore.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "f0bf0194596b1df0087a83b769440f76c6bc8038a208aac4c4b72dcf6163f2e0",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/",
+      "placement": "Skins in battle: sk-jungwon-cp-moviedate onemore",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-cp-moviedate-posesheet-2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "e97bb0d766911f16533745384f9730ebae61d94baca30a2c707951122f0002c2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/",
+      "placement": "Skins in battle: sk-jungwon-cp-moviedate second pose sheet",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-cp-moviedate-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "4822a4987db324e740eddc1db8ad0012f61f55aa93191cc5a1f9ec1f6db7c646",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/",
+      "placement": "Skins in battle: sk-jungwon-cp-moviedate theurgy",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-heir-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "cfd0d094cc33448b357ce3d7c000d4e423e7749d6098e59b9eb727314264fb9d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-heir/",
+      "placement": "Skins in battle: sk-jungwon-heir entrance",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-heir-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "a3215df409015934d70919cbccb8b07dc4664dbc4868856eca1f49b5bf6cfdd5",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-heir/",
+      "placement": "Skins in battle: sk-jungwon-heir finish",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-heir-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "2f203c70c5b81918ee1db1d1a9260c97669bb6933f984f89e7ff8dc1f6fc5c69",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-heir/",
+      "placement": "Skins in battle: sk-jungwon-heir fx",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-heir-onemore.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "f4811b2e8bdf1248bfbafe5348a465ce8b8029f1f88c00904ae74d01f90dcee2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-heir/",
+      "placement": "Skins in battle: sk-jungwon-heir onemore",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-heir-posesheet-2.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "a50ea86a540cff81ea2a65a79adf8cc5b6f52a8085381784bd20733551be4c7e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-heir/",
+      "placement": "Skins in battle: sk-jungwon-heir second pose sheet",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-heir-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "c726516b18a5e75627613529db841fbe9a1bb5af99dcdafb3315531f447a23ca",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-heir/",
+      "placement": "Skins in battle: sk-jungwon-heir theurgy",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-sweater-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "7a616a366b489213b4a08e121c9e03c21594b0b6aefc4458d936036d556dffe1",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-sweater/",
+      "placement": "Skins in battle: sk-jungwon-sweater entrance",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-sweater-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "3ef4b7f82505436a3e939c7de5cfa0a0bc5f6b237dc51581e1e26b1aabcd6c41",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-sweater/",
+      "placement": "Skins in battle: sk-jungwon-sweater finish",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-sweater-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "dffbe6c03945010a4502f1fa687334bb2c1d961c10371994b36482655eecef30",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-sweater/",
+      "placement": "Skins in battle: sk-jungwon-sweater fx",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-sweater-onemore.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "43f97aad014e6b2e1f5bf823fa54041c15dc96a6278ede269d697fc8f52b24f7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-sweater/",
+      "placement": "Skins in battle: sk-jungwon-sweater onemore",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-sweater-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1afde4763e8f05ccad1ee94dff7d65a225c80b1e0f2dea397ed34585d44ae0be",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-sweater/",
+      "placement": "Skins in battle: sk-jungwon-sweater second pose sheet",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-sweater-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "233bb3bcf510abe3ce5ca735444d74504290c7a9d468168bc5bf2ce0dba5139e",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-sweater/",
+      "placement": "Skins in battle: sk-jungwon-sweater theurgy",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-swim-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "f5f8bfa5abbfff01168da72d31735b6e894b8f38eca194cc6a7c6b70c04718ae",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-swim/",
+      "placement": "Skins in battle: sk-jungwon-swim entrance",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-swim-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "d198dd08edca9fe84cc08b01442d72eaa61da8d0e67a5b65664a9f085087ee87",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-swim/",
+      "placement": "Skins in battle: sk-jungwon-swim finish",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-swim-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7a9b834401ebdd8b25bd785f88f64aec8cd1a91312e3d09caaa95f6fc92f2a19",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-swim/",
+      "placement": "Skins in battle: sk-jungwon-swim fx",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-jungwon-swim-onemore.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "1c3b1ddaf890f9fa75348154da8a6c1d5f513c5ba7a17a3e1c41bb15c3654aa9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-jungwon-swim/",
+      "placement": "Skins in battle: sk-jungwon-swim onemore",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-junpei-baseball-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "460c8b079e5a14f050ce87916b41455a448359f038cbd9f427d494094ce26a23",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-junpei-baseball/",
+      "placement": "Skins in battle: sk-junpei-baseball finish",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-junpei-baseball-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "bf6747ab89634d8d5aba3947ec7c457c4cdee2d3a278e6c63fbca8502422966c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-junpei-baseball/",
+      "placement": "Skins in battle: sk-junpei-baseball fx",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-junpei-baseball-onemore.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "f53fd5cdbc38bdbdd57723ba8ea8994dde841d3aeef3b518211f7cfec2081c03",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-junpei-baseball/",
+      "placement": "Skins in battle: sk-junpei-baseball onemore",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-junpei-baseball-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8e8c20bba902e4254f711089d8d73141c055a27884fc40cf59ee46d89533d572",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-junpei-baseball/",
+      "placement": "Skins in battle: sk-junpei-baseball portraits",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-junpei-baseball-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "961424420cffa51369ce9c3c279e879a6a21a3f3ff28973ce15cf1b54e54e2af",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-junpei-baseball/",
+      "placement": "Skins in battle: sk-junpei-baseball second pose sheet",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-junpei-baseball-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "8c0ecaec51c69d70fe1f52b74882ac63369300840ca763234d0deb85c269e4ce",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-junpei-baseball/",
+      "placement": "Skins in battle: sk-junpei-baseball theurgy",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-minji-crew-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "1a4a12fdd58194f115fc34db45b5d05ca18077dfa4a3d77d6d4e2bd6439c7d1b",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-minji-crew/",
+      "placement": "Skins in battle: sk-minji-crew entrance",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-minji-crew-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "25aa3810998d57a41f4f4d864e3f9dbc96946d623633338e493c820a983bd455",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-minji-crew/",
+      "placement": "Skins in battle: sk-minji-crew finish",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-minji-crew-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e479b149ea095262a61cff2cc6fcd9b84dfa8ca69a742317b41c36264a0d49f4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-minji-crew/",
+      "placement": "Skins in battle: sk-minji-crew fx",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-minji-crew-onemore.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "306425c2905931093cedcc1138e4b131c77ea9f21cd5584ff0254f3e923260ae",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-minji-crew/",
+      "placement": "Skins in battle: sk-minji-crew onemore",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-minji-crew-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "821399b0f5b1bfd7c8efd48b96b280785bfcac6ef9d5007e902c58c17513bb11",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-minji-crew/",
+      "placement": "Skins in battle: sk-minji-crew portraits",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-minji-crew-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "91c3b1840fc335640980cfc39e9448eac2984acdc1fedac52631b7d2c06716b9",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-minji-crew/",
+      "placement": "Skins in battle: sk-minji-crew second pose sheet",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-minji-crew-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "a659ab13c39e74d7b258ba51329011d1e5827723a390971e879c97d1df14ab98",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-minji-crew/",
+      "placement": "Skins in battle: sk-minji-crew theurgy",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-mitsuru-rider-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "08080e877c248d4d95c41f13ee60107e245a0659f1edc0225b713af4a72819a3",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-mitsuru-rider/",
+      "placement": "Skins in battle: sk-mitsuru-rider entrance",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-mitsuru-rider-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "fe47afca3822d32626c6c5d2adeb8680f8b8aac2283d14945e8fa9150a986da2",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-mitsuru-rider/",
+      "placement": "Skins in battle: sk-mitsuru-rider finish",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-mitsuru-rider-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6d557ca965ed4544eb904782d811d2690bb8f93783e3458338c45311589d8d3f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-mitsuru-rider/",
+      "placement": "Skins in battle: sk-mitsuru-rider fx",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-mitsuru-rider-onemore.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "b35ff546ac77aa750e954e1beedc3b2a5be78de13210e117e160485e64311b4d",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-mitsuru-rider/",
+      "placement": "Skins in battle: sk-mitsuru-rider onemore",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-mitsuru-rider-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d0970613329a3d0f1c5774e2503f6bd84fedb9d2d3e359fd5177a7bc49abf844",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-mitsuru-rider/",
+      "placement": "Skins in battle: sk-mitsuru-rider portraits",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-mitsuru-rider-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "47baadc8edb68ccd0650bdea9d63c52dd5f1a235941e588bf627376462a9fad0",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-mitsuru-rider/",
+      "placement": "Skins in battle: sk-mitsuru-rider second pose sheet",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-mitsuru-rider-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "5b9843acb1850a4865543c470fa76cfb8515dbf2702e0b6de290aa127370701c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-mitsuru-rider/",
+      "placement": "Skins in battle: sk-mitsuru-rider theurgy",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-yukari-kyudo-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "070fed742a76b50c5d3be5edc60137e728983cfc5a166dfc1df391be251b8bd4",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-kyudo/",
+      "placement": "Skins in battle: sk-yukari-kyudo entrance",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-yukari-kyudo-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "e1ec4ab0867f00fe67d0cfd80515a6b39505bec250a639d0bfc93c0a92d37031",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-kyudo/",
+      "placement": "Skins in battle: sk-yukari-kyudo finish",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-yukari-kyudo-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "fd2cb9744d40179bd0e151399f3aaea93f46fd08bb83a92ca5b18cf8cf27567f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-kyudo/",
+      "placement": "Skins in battle: sk-yukari-kyudo fx",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-yukari-kyudo-onemore.png",
+      "size": [
+        2172,
+        362
+      ],
+      "sha256": "275e0d9ef6eff25b056a1f4cd5e1c8d5a52a8bd78f65e4a19e783aa8aad648c8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-kyudo/",
+      "placement": "Skins in battle: sk-yukari-kyudo onemore",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-yukari-kyudo-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9bb7868cf57a53a9ff8474f0ef042dd22695b791797fe499b9e9dba1c5b76a9a",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-kyudo/",
+      "placement": "Skins in battle: sk-yukari-kyudo portraits",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-yukari-kyudo-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6e30137898e6ca4f3ac126fea72e86e8477f3f795c1efdd0ee0c416bed662095",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-kyudo/",
+      "placement": "Skins in battle: sk-yukari-kyudo second pose sheet",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-yukari-kyudo-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "4c1e31b3134fbe20802b28cd5cdd96ce7d8dc2a44053db117b6f295ce64aa736",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-kyudo/",
+      "placement": "Skins in battle: sk-yukari-kyudo theurgy",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-yukari-pink-entrance.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "a2cdcaf941bd77bba2bb0a14737e8cc21fcc793453c3d7b30f6c0876011c7e8c",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-pink/",
+      "placement": "Skins in battle: sk-yukari-pink entrance",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-yukari-pink-finish.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "c535b89051b51e2e0a727e55f51902a9ec38f706d56c7b9836fc5c0eecece794",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-pink/",
+      "placement": "Skins in battle: sk-yukari-pink finish",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-yukari-pink-fx.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e7b00a654c1b6bcc1269168a3b35d4e9c33e46540716943b55f16d8f54fa1280",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-pink/",
+      "placement": "Skins in battle: sk-yukari-pink fx",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-yukari-pink-onemore.png",
+      "size": [
+        2172,
+        724
+      ],
+      "sha256": "ec4234171ac70538ab324bd4d3672a0f4c926975f0a41d5e775a60ef087b9987",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-pink/",
+      "placement": "Skins in battle: sk-yukari-pink onemore",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-yukari-pink-portraits.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "25b112c84dbb56e9b1ae704f25b2e619762b52963665014a2f5b16108bd4ffd7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-pink/",
+      "placement": "Skins in battle: sk-yukari-pink portraits",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-yukari-pink-posesheet-2.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7aaac6a651e3a3ae5f3246313312feb0a483cc5e776d6911ea7a69e787d62c65",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-pink/",
+      "placement": "Skins in battle: sk-yukari-pink second pose sheet",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 137,
+      "source": "skin-sk-yukari-pink-theurgy.png",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "44f0332c679267e89e580946ebdbc87e579097c6b9163bc8b3294332593ee92f",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-yukari-pink/",
+      "placement": "Skins in battle: sk-yukari-pink theurgy",
+      "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
     }
   ],
   "batch1Validation": {
