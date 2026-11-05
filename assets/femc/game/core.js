@@ -367,8 +367,13 @@ window.FemcGame = (() => {
   }
   let settingsCache = { ...DEFAULTS, ...settingsRaw };
   const settings = () => settingsCache;
+  // Performance mode on the life-sim side too (Kat's "lighter graphics", Nov 4): <html class="g-perf"> lets the CSS drop blur
+  // and the always-running decorative loops (game.css, end). Weather already reads settings().perf for fewer particles.
+  const markPerf = () => { try { document.documentElement.classList.toggle('g-perf', !!settingsCache.perf); } catch (e) {} };
+  markPerf();
   function setSettings(patch) {
     settingsCache = { ...settingsCache, ...patch };
+    if ('perf' in patch) markPerf();
     if (typeof patch.music === 'number' && patch.music > 0 && !('musicLast' in patch)) settingsCache.musicLast = patch.music;
     lsSet(SETTINGS_KEY, JSON.stringify(settingsCache));
     if ('sfx' in patch) lsSet('kg-femc-sound', patch.sfx ? null : 'off');

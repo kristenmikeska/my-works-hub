@@ -2268,7 +2268,7 @@
       { k: 'tips', label: 'Navigator tips', opts: ONOFF, desc: () => 'A small tip the first time each battle mechanic shows up.' },
       { k: 'shake', label: 'Screen shake', opts: ONOFF, desc: () => 'The screen shakes on criticals, weaknesses and All-Out Attacks.' },
       { k: 'calm', label: 'Reduce flashes', opts: OFFON, desc: () => 'Softens white flashes and bursts (Evoker, Theurgy, lightning, criticals).' },
-      { k: 'perf', label: 'Performance mode', opts: OFFON, desc: () => 'No glass shatter or ash, fewer particles, a lighter video. Try it if battles feel slow.' },
+      { k: 'perf', label: 'Performance mode', opts: OFFON, desc: () => 'Lighter graphics everywhere: no blur behind menus, no glass shatter or ash, half the weather, fewer particles, a lighter video and the decorative loops (title shimmer, spinning rays, booth lights) stopped. Try it if anything feels slow.' },
       { k: 'pad', label: 'Controller buttons', opts: [['auto', 'Auto'], ['xbox', 'Xbox'], ['ps', 'PlayStation']], desc: () => 'Which button prompts show while you play with a controller.' },
       { h: 'Sound' },
       { k: 'music', label: 'Music volume', range: true, desc: v => (v ? 'Music, everywhere.' : 'Music is off.') },

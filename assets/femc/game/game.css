@@ -1530,3 +1530,10 @@ button.g-st-link:is(:hover, :focus-visible) { outline: none; border-color: #fff;
 .g-quiz-face { grid-row: 1 / span 4; width: 76px; height: 92px; object-fit: cover; object-position: center top; border: 2px solid rgba(255, 140, 192, .6); background: rgba(20, 7, 15, .8); transform: skewX(-6deg); }
 .g-seg-sub .g-quiz-face.small { float: left; width: 46px; height: 54px; margin: 0 10px 4px 0; grid-row: auto; }
 @media (max-width: 520px) { .g-quiz.has-face { grid-template-columns: 54px minmax(0, 1fr); } .g-quiz-face { width: 54px; height: 66px; } }
+
+/* Performance mode on the life-sim side (core.js markPerf, <html class="g-perf">; Kat's "lighter graphics", Nov 4 2026):
+   no blur behind overlays, no title particles or fog layer, and the purely decorative endless loops stand still. */
+.g-perf .g-overlay, .g-perf .g-fr-sheer, .g-perf .g-fm-ov { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+.g-perf .g-title-fx, .g-perf .g-title-moon::after, .g-perf .wx-fog .g-wx-fog { display: none !important; }
+.g-perf :is(.g-logo .sl-rays, .g-logo .sl-shine, .g-title-art, .g-title-moon, .g-bq-bg .g-bq-rays, .g-bq-irays, .g-bq-pull, .g-fmh-rays-sun,
+  .g-su-sunbox .g-sun-rays, .g-fr-bulbs i, .g-cs-rail, .g-pin.px-on .g-pin-ring, .g-ga-art .g-key, .g-to-sparkle svg.tm) { animation: none !important; }
