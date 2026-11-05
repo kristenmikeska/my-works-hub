@@ -1027,7 +1027,7 @@ window.FemcGame = (() => {
     }
     if (!rule) return null;
     const [, day, evening, look] = rule;
-    const img = late && evening ? dressed(evening) : seasonal(day);
+    const img = late && evening ? seasonal(evening) : seasonal(day); // seasonal() falls through to dressed() for the rest
     return { url: `${base}assets/femc/bg/${img}.webp`, mood: look || (special || (late && evening) || nightLit(day) ? '' : late ? 'night' : '') };
   }
   function moodFor(place = '', time = '') {

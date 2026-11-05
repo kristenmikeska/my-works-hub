@@ -85,7 +85,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 53;
+  const ART_V = 54;
   /* Status art (tools/femc-icons.py): sticker icons for the ailments and the buff / debuff arrows, and the Tartarus map's room
      glyphs. A status chip shows its icon in place of the old name or ATK / DEF / AGI text (the name stays in its title). */
   const ICON_DIR = 'assets/femc/battle/art/icons/';
@@ -4465,6 +4465,22 @@
     const p = H && ['peace', 'cheer', 'jump'].find(k => (H.have || []).includes(k));
     return p ? `${H.dir}${p}.webp?v=${H.v || ART_V}` : null;
   }
+  /* The couple win screen (FEMC-ART-TODO 27, Kat's yes of Nov 4): Solar and a partner who both fought, each in their half of the
+     same couple set (cosmetics.js `couple`), both halves with an HD pose set: they stand side by side behind the rows, a new
+     pair of poses each win. Outfit effects Off, a half without HD art, or no partner in the fight: the single hero as before. */
+  const DUO_SOLAR = ['peace', 'cheer', 'jump', 'heart', 'tease', 'wave', 'arms-crossed'];
+  function coupleWin(g) {
+    if (!skinFxOn() || !LOOKS || !LOOKS.couple || !LOOKS.hd) return null;
+    const set = LOOKS.couple.solar, fought = id => g.rows.some(r => r.inP && r.m.id === id);
+    if (!set || !fought('solar')) return null;
+    const mate = Object.keys(LOOKS.couple).find(m => m !== 'solar' && LOOKS.couple[m] === set && fought(m));
+    const A = LOOKS.hd.solar, P = mate && LOOKS.hd[mate];
+    if (!A || !P || !(A.have || []).length || !(P.have || []).length) return null;
+    const pick = list => list[Math.floor(Math.random() * list.length)];
+    const mine = DUO_SOLAR.filter(k => A.have.includes(k));
+    const a = pick(mine.length ? mine : A.have), b = pick(P.have);
+    return { set, mate, solar: `${A.dir}${a}.webp?v=${A.v || ART_V}`, partner: `${P.dir}${b}.webp?v=${P.v || ART_V}`, poses: [a, b] };
+  }
   function resultsScreen(o, g, first) {
     screen = 'results';
     root.classList.remove('bt-in-battle');
@@ -4493,11 +4509,15 @@
       // Wardrobe look they wear: its victory frame (pose 5) big, bleeding off the right edge behind the rows. No look: as before.
       // HD poses (2026-11-03): a look with Kat's single-figure HD set (ready.js hd, cosmetics battle().hd) shows its peace sign
       // (else fist pump, else jump) instead of the small battle frame; Solar in her own look shows her own HD peace sign.
-      const mvp = winMid || 'solar', worn = !!(LOOKS && LOOKS.pose && LOOKS.pose[mvp]), hd = winHd(mvp, worn);
-      const hero = ((worn && FIGHTER_POSES[mvp]) || hd) && o.rew
+      const mvp = winMid || 'solar', worn = !!(LOOKS && LOOKS.pose && LOOKS.pose[mvp]), hd = winHd(mvp, worn), duo = o.rew && coupleWin(g);
+      if (duo) window.__btDuo = duo;
+      const hero = duo
+        ? `<div class="bt-res-heroW hd duo" aria-hidden="true" data-couple="${duo.set}">${lookLayer('solar', 'win')}<img class="bt-res-hero hd duo-mate" src="${duo.partner}" alt="" draggable="false" data-mid="${duo.mate}" onerror="this.parentNode.remove()"><img class="bt-res-hero hd duo-solar" src="${duo.solar}" alt="" draggable="false" data-mid="solar" onerror="this.parentNode.remove()"></div>`
+        : ((worn && FIGHTER_POSES[mvp]) || hd) && o.rew
         ? `<div class="bt-res-heroW${hd ? ' hd' : ''}" aria-hidden="true">${worn ? lookLayer(mvp, 'win') : ''}<img class="bt-res-hero${hd ? ' hd' : ''}" src="${hd || posedFrames(mvp)[5]}" alt="" draggable="false" data-mid="${mvp}" onerror="this.parentNode.remove()"></div>` : '';
       if (hero) mark('results-hero');
-      if (hero && hd) mark('results-hero-hd');
+      if (hero && hd && !duo) mark('results-hero-hd');
+      if (duo) mark('results-hero-duo');
       const el = show(`${hero}<div class="bt-res"><div>
           <h1 class="bt-res-title"><small>${esc(o.title)}</small>RESULTS</h1>
           <div class="bt-res-exp"><small>EXP</small>+${o.rew.exp}</div>

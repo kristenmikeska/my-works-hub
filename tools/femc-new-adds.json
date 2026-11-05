@@ -37799,6 +37799,162 @@
       "destination": "assets/femc/game/art/skins/sk-yukari-pink/",
       "placement": "Skins in battle: sk-yukari-pink theurgy",
       "tool": "tools/femc-wardrobe.py / femc-fx.py skin / femc-skin-portraits.py"
+    },
+    {
+      "batch": 138,
+      "source": "epi-r-alpha-living.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "9ac62525ecea881e30dffb059a58b541f418a18680e3a45b9b07a5ab4f1f033f",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-alpha-living.webp",
+      "conversion": "1920 x 1072 WebP q86",
+      "placement": "Runners epilogue: Alpha Phi living / dining room (23E)"
+    },
+    {
+      "batch": 138,
+      "source": "epi-r-regionals-after.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "69ddcb97da21b5df28b59df73a52c2819c9812245f1faad2505fc31690ff48b6",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-regionals-after.webp",
+      "conversion": "1920 x 1072 WebP q86",
+      "placement": "Regionals: the hall after the final (23D)"
+    },
+    {
+      "batch": 138,
+      "source": "epi-r-regionals-dock.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "ac5407cbcac3a276582c7ae01461cee663f0230c776740240646e70abfd052ba",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-regionals-dock.webp",
+      "conversion": "1920 x 1072 WebP q86",
+      "placement": "Regionals: the loading dock (23C)"
+    },
+    {
+      "batch": 138,
+      "source": "epi-r-regionals-green-room.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "36e63acf84d2d401cf42973160558894556e5e6753a84b7c0775bc259f8d3551",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-regionals-green-room.webp",
+      "conversion": "1920 x 1072 WebP q86",
+      "placement": "Regionals: the green room (23A)"
+    },
+    {
+      "batch": 138,
+      "source": "epi-r-regionals-van.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "371ab1a4b45195ec8a26beebd824441bb0eefe988847c051572e3acecb470ef3",
+      "status": "integrated",
+      "destination": "assets/femc/bg/epi-r-regionals-van.webp",
+      "conversion": "1920 x 1072 WebP q86",
+      "placement": "Regionals: the van home (23B)"
+    },
+    {
+      "batch": 138,
+      "source": "iwatodaidorm-livingroom-night-autumn.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "05430e9f31869921b44d67fe844d86e1531d655c55a67cf9a7eb5182b0de6ee4",
+      "status": "integrated",
+      "destination": "assets/femc/bg/iwatodaidorm-livingroom-night-autumn.webp",
+      "conversion": "1920 x 1072 WebP q86",
+      "placement": "the dorm lounge at night, Oct-Nov (26E)"
+    },
+    {
+      "batch": 138,
+      "source": "iwatodaidorm-livingroom-night-winter.jpeg",
+      "size": [
+        2752,
+        1536
+      ],
+      "sha256": "5997223762a322fc653359392ceec1d08dfbee446be72b7bb7dfc1d4e0f1bd83",
+      "status": "integrated",
+      "destination": "assets/femc/bg/iwatodaidorm-livingroom-night-winter.webp",
+      "conversion": "1920 x 1072 WebP q86",
+      "placement": "the dorm lounge at night, Dec-Feb (26F)"
+    },
+    {
+      "batch": 138,
+      "source": "haechan-moonhoodie-hd-armscrossed.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "b20aa2e9bfda8f069d809ce40309772c50aa48e6ee427fbdd4e2498d3737e399",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/hd/arms-crossed.webp",
+      "conversion": "native size, feet on the bottom edge, WebP q92",
+      "placement": "the couple win screen: Haechan in Moon Hoodie beside Solar in Sun Hoodie (27A)"
+    },
+    {
+      "batch": 138,
+      "source": "haechan-moonhoodie-hd-handinhair.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "8fd44b772e212aab87666aa6d331f5c77f52256c510a8c37c7ed253561f08db8",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/hd/hair.webp",
+      "conversion": "native size, feet on the bottom edge, WebP q92",
+      "placement": "the couple win screen: Haechan in Moon Hoodie beside Solar in Sun Hoodie (27A)"
+    },
+    {
+      "batch": 138,
+      "source": "haechan-moonhoodie-hd-peace.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "2988531b3bd2a4d4f5f1a7e5a8779fd3bc291c6f15e2727e4e689b671c007858",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/hd/peace.webp",
+      "conversion": "native size, feet on the bottom edge, WebP q92",
+      "placement": "the couple win screen: Haechan in Moon Hoodie beside Solar in Sun Hoodie (27A)"
+    },
+    {
+      "batch": 138,
+      "source": "haechan-moonhoodie-hd-pointing.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "edd14896f89fd5c7c59a1623adecc0cabc8fef99ee146f3a73732c5970e4f3c7",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/hd/pointing.webp",
+      "conversion": "native size, feet on the bottom edge, WebP q92",
+      "placement": "the couple win screen: Haechan in Moon Hoodie beside Solar in Sun Hoodie (27A)"
+    },
+    {
+      "batch": 138,
+      "source": "haechan-moonhoodie-hd-thumbsup.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "75a24a5ce04a89da4fe55c263b13304f30b4ddbee2e51ba047d69514af1066da",
+      "status": "integrated",
+      "destination": "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/hd/thumbsup.webp",
+      "conversion": "native size, feet on the bottom edge, WebP q92",
+      "placement": "the couple win screen: Haechan in Moon Hoodie beside Solar in Sun Hoodie (27A)"
     }
   ],
   "batch1Validation": {

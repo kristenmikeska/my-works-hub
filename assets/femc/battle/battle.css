@@ -2497,6 +2497,14 @@ html.bt-calm .bt-epi-card h2 { animation: bt-epi-calm .9s .4s ease both; }
   .bt-res-hero { top: 0; bottom: auto; right: -10%; height: 38%; max-width: 64%; object-position: right top; opacity: .9; }
   .bt-res-hero.hd { top: 1%; bottom: auto; height: 38%; right: -8%; }
 }
+/* The couple win screen (battle.js coupleWin, Nov 4 2026): Solar in front on the left, her partner beside her at the edge
+   (his poses are drawn turned toward her), the partner a step behind and a beat later. */
+.bt-res-heroW.duo .duo-solar { right: 21%; max-width: 46%; z-index: 2; }
+.bt-res-heroW.duo .duo-mate { right: -5%; height: 97%; max-width: 46%; z-index: 1; animation-delay: .3s; }
+@media (max-width: 760px), (max-width: 1100px) and (max-aspect-ratio: 4/5) {
+  .bt-res-heroW.duo .duo-solar { right: 16%; height: 31%; max-width: 38%; }
+  .bt-res-heroW.duo .duo-mate { right: -10%; height: 37%; max-width: 40%; }
+}
 @media (prefers-reduced-motion: reduce) { .bt-res-hero { animation: none; } }
 
 /* ── Outfit extras, part 8 (FEMC-SKINS-BATTLE-DESIGN H-L, 2026-11-01; battle.js oneMoreStrip, entranceCard, bondCut couple,

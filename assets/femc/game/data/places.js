@@ -318,7 +318,7 @@ window.FEMC_GAME_PLACES = {
   ],
   /* Seasonal day art: wherever a scene's day background is one of these (a rule's or a scene's own bg), the month picks
      the version: [first month, image] pairs, the latest one not after this month (January and February wrap to the last).
-     core.js background(); evening images and other backgrounds are unchanged. Spring Mar-May, summer Jun-Sep, autumn
+     core.js background() (evening images too, since Nov 4: the dorm lounge is one). Spring Mar-May, summer Jun-Sep, autumn
      Oct-Nov, winter Dec-Feb (a place without a summer or autumn version keeps its own art until the next one). */
   seasons: {
     'outside-shrine-day': [[3, 'naganaki-shrine-spring'], [6, 'naganaki-shrine-summer'], [10, 'naganaki-shrine-autumn'], [12, 'naganaki-shrine-winter']],
@@ -326,7 +326,10 @@ window.FEMC_GAME_PLACES = {
     'gekkoukanhigh': [[3, 'gekkoukanhigh'], [6, 'gekkoukanhigh-summer'], [10, 'gekkoukanhigh-autumn'], [12, 'gekkoukanhigh-winter']],
     'park-2': [[3, 'park-2'], [10, 'park-2-autumn'], [12, 'park-2-winter']],
     'rooftop-day': [[3, 'rooftop-day'], [12, 'rooftop-day-winter']],
-    'iwotodaidorm-outside': [[3, 'iwotodaidorm-outside'], [12, 'iwatodaidorm-front-winter']]
+    'iwotodaidorm-outside': [[3, 'iwotodaidorm-outside'], [12, 'iwatodaidorm-front-winter']],
+    // the dorm lounge at night (FEMC-ART-TODO 26, Kat's art Nov 4): the evening screen, its scenes and rules (a night image, so
+    // this one is read for evening art too). Spring, the rainy season and summer keep the old picture until theirs come.
+    'iwatodaidorm-livingroom-night': [[3, 'iwatodaidorm-livingroom-night'], [10, 'iwatodaidorm-livingroom-night-autumn'], [12, 'iwatodaidorm-livingroom-night-winter']]
   },
   /* Today's art: wherever a background is one of these images (a rule's day or evening image, a scene's own bg, Go Out), the
      first entry that fits today swaps it: `dates` ['M/D', ...] and / or `weather` (calendar.js: clear, cloudy, rain, snow,

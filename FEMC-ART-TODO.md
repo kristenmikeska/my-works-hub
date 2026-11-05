@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 4):** ⭐ high-resolution poses (top section: Solar ✅ done; the other fighters next) · 1 credits still (section 18: Ken) · 11 Runners epilogue places (section 23: four for Regionals, three for the home screen) · 1 Runners sticker sheet (section 24) · 12 Echo sheets (section 25: 72 new Echoes) · 6 dorm lounge pictures (section 26) · couple victory poses for Haechan, Jungwon and Akihiko (section 27: six outfits) · 15 Boutique banner pictures (section 28) · little card art (section 29: card back, frames, 22 item pictures) · 9 epilogue polaroids (section 30) · low-res pictures to look over at the very end (section 31). **Optional:** 27 epilogue CGs redrawn in their world's style now live in `FEMC-CG-REMAKES.md`. **New Wardrobe outfits** (Solar's skin series and the collab outfits, 24 looks) and **skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make (updated Nov 4, late):** ⭐ high-resolution poses (top section: Solar ✅ done; the other fighters next) · 1 credits still (section 18: Ken) · 6 Runners epilogue places (section 23: the Sigma house by day, its back porch, the dining hall and three for the home screen) · 1 Runners sticker sheet (section 24) · 12 Echo sheets (section 25: 72 new Echoes) · 4 dorm lounge pictures (section 26; autumn and winter are in) · couple victory poses for Haechan, Jungwon and Akihiko (section 27: five outfits to go; Moon Hoodie is in) · 15 Boutique banner pictures (section 28) · little card art (section 29: card back, frames, 22 item pictures) · 9 epilogue polaroids (section 30) · low-res pictures to look over at the very end (section 31). **Optional:** 27 epilogue CGs redrawn in their world's style now live in `FEMC-CG-REMAKES.md`. **New Wardrobe outfits** (Solar's skin series and the collab outfits, 24 looks) and **skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 ## ⭐⭐ TOP PRIORITY when you have usage: high-resolution poses (Kat, Nov 2)
 
@@ -58,46 +58,6 @@ The stone steps of a small neighbourhood shrine in the afternoon. Ken sits halfw
 
 ## 23. More places for the Runners epilogue (Gemini)
 Kat's note (Nov 3): the Runners epilogue needs more backgrounds, Regionals most of all, and a home screen by time of day (23I-23K). Each of these places shows a borrowed background today (the main Regionals hall, the outside of the Alpha Phi house, the Sigma party, the café). Realistic style, like the Runners epilogue CGs (Kat, Nov 3): attach `CG - style (Runners).png` for the look (its people are left out). The Runners backgrounds already in the game are painted, so these will look different from them until those are remade. Save under the name given: Claude swaps it in.
-
-**[ ] 23A. Regionals: the green room**  
-The coat check the team uses as a green room at Regionals: dinner on the first day, the whiteboard on the second morning (now the main hall stands in).  
-Attach: `CG - style (Runners).png` (for the style only)  
-Save as: `epi-r-regionals-green-room.png`
-```
-Realistic background art in the style of the attached image (the realistic painted style of the Runners CGs), 16:9, high resolution, no people, no readable text: the coat check of a downtown convention center, used as a college esports team's green room: a long half-door counter with a hinged flap, rows of empty coat hangers on metal rails behind it with a few winter coats and orange team scarves still hanging, a folding table pushed against the wall with a tray of plastic-wrapped sandwiches, energy drink cans and water bottles, a rolling whiteboard covered in marker boxes and arrows (unreadable), headset cases and rubber-banded mousepads in a plastic tub, two folding chairs, a clipboard on the counter, a coat-check ticket roll. Flat fluorescent light from the ceiling, no windows, beige walls, carpet tape on the floor. Cramped, a little shabby, a team's private corner. Soft realistic shading, real-looking light and materials, cinematic; NOT anime and NOT cel shading. Use the attached image for the style only and leave out its people. Keep everything important away from the edges.
-```
-
-**[ ] 23B. Regionals: the van home**  
-The team van driving back to campus after the first day, in the dark (now the main hall stands in).  
-Attach: `CG - style (Runners).png` (for the style only)  
-Save as: `epi-r-regionals-van.png`
-```
-Realistic background art in the style of the attached image (the realistic painted style of the Runners CGs), 16:9, high resolution, no people, no readable text: inside a white university passenger van at night on a highway in upstate New York in December, seen from the back seats looking forward: three rows of worn grey bench seats, winter coats and orange scarves piled on the back row, a team duffel bag and a plastic tub of cables on the floor, a paper cup in a cup holder, the windows black with night and light snow streaking past, orange highway lights sliding over the ceiling, the red glow of the dashboard and the taillights of a truck far ahead through the windshield. Quiet, tired, warm inside against the cold outside. Soft realistic shading, real-looking light and materials, cinematic; NOT anime and NOT cel shading. Use the attached image for the style only and leave out its people. Keep everything important away from the edges.
-```
-
-**[ ] 23C. Regionals: the loading dock**  
-The loading dock behind the convention center, where two players step out after the final (now the main hall stands in).  
-Attach: `CG - style (Runners).png` (for the style only)  
-Save as: `epi-r-regionals-dock.png`
-```
-Realistic background art in the style of the attached image (the realistic painted style of the Runners CGs), 16:9, high resolution, no people, no readable text: the back loading dock of a downtown convention center on a snowy December afternoon: a concrete dock with a yellow-striped edge, a big roll-up door half open on a dim service corridor with stacked flattened cardboard boxes and an equipment road case inside, a heavy steel side door propped open with a rubber wedge, black rubber bumpers on the dock wall, a short metal stair down to an empty alley lot where snow is falling and piling against a dumpster and a chain-link fence, the grey sky going toward early dusk, a single caged light over the door just switched on. Cold, quiet, a place to breathe away from a crowd. Soft realistic shading, real-looking light and materials, cinematic; NOT anime and NOT cel shading. Use the attached image for the style only and leave out its people. Keep everything important away from the edges.
-```
-
-**[ ] 23D. Regionals: the hall after the final**  
-The same hall as the Regionals background once the final is over: the crowd going home, confetti on the floor (now the hall during the matches stands in).  
-Attach: `BG - Regionals.png` (the picture to edit), `CG - style (Runners).png` (the style)  
-Save as: `epi-r-regionals-after.png`
-```
-Edit the FIRST image and redraw it in the realistic style of the SECOND image (soft realistic shading, real-looking light and materials, cinematic; NOT anime and NOT cel shading; leave out the second image's people). Keep the same convention hall, stages, glass player booths, banners, screens and angle; change it to after the tournament final: the house lights up, plain and a little harsh, the stage lights off, the big screens showing only a dark logo-less standby glow, orange and white confetti lying in drifts across the floor and the stage, half the folding chairs folded and stacked on rolling carts, the rest pushed out of line, a push broom leaning against the stage rail beside a swept pile of confetti, cables being coiled on the stage. The feeling of a big day ending. 16:9, no people, no readable text.
-```
-
-**[ ] 23E. The Alpha Phi living room**  
-The big living room of the sorority house for chapter meeting night and the finals-week all-nighter, with the dining room through an archway for Danielle's scene (now the outside of the house stands in).  
-Attach: `CG - style (Runners).png` (for the style only)  
-Save as: `epi-r-alpha-living.png`
-```
-Realistic background art in the style of the attached image (the realistic painted style of the Runners CGs), 16:9, high resolution, no people, no readable text: the living room of an old American sorority house on a winter evening: two big soft couches and an armchair, a coffee table with laptops, highlighters and an open pizza box, throw blankets and floor cushions on a worn rug, a fireplace with a mantel full of framed group photos and a small garland, tall windows with the curtains open on dark blue night and snow falling, warm table lamps on; through a wide archway on one side, the dining room: a long polished table nobody eats at, a chandelier with one dead bulb, papers squared into neat stacks on the table. Warm, cozy and a little grand. Soft realistic shading, real-looking light and materials, cinematic; NOT anime and NOT cel shading. Use the attached image for the style only and leave out its people. Keep everything important away from the edges.
-```
 
 **[ ] 23F. The Sigma Chi living room by day**  
 The fraternity house's living room at four in the afternoon, cleaned up and quiet (now the Sigma party stands in).  
@@ -290,26 +250,12 @@ Save as: `iwatodaidorm-livingroom-night-summer.png`
 Redraw the attached image as a sharp, high-resolution 16:9 anime background in the Persona 3 Reload official art style: clean lineart, soft painted lighting, no people, no text. Keep the room, layout and camera angle exactly: the Iwatodai dorm lounge at night, two dark leather sofas, a grey stone coffee table on a patterned rug, tall arched windows and double doors, two standing lamps, a reception counter, a potted tree. Summer: a glass wind chime hanging by a window, an electric fan on the floor, a paper fan and a bowl of watermelon slices on the coffee table, one window open to a warm summer night, warm lamplight.
 ```
 
-**[ ] 26E. The dorm lounge in autumn**  
-Attach: `BG - Dorm Lounge at night.png`  
-Save as: `iwatodaidorm-livingroom-night-autumn.png`
-```
-Redraw the attached image as a sharp, high-resolution 16:9 anime background in the Persona 3 Reload official art style: clean lineart, soft painted lighting, no people, no text. Keep the room, layout and camera angle exactly: the Iwatodai dorm lounge at night, two dark leather sofas, a grey stone coffee table on a patterned rug, tall arched windows and double doors, two standing lamps, a reception counter, a potted tree. Autumn: the windows showing orange and red leaves blowing past in the night wind, a few leaves on the doormat, a knit blanket on a sofa, a bowl of persimmons and a steaming teapot on the coffee table, warm amber lamplight.
-```
-
-**[ ] 26F. The dorm lounge in winter**  
-Attach: `BG - Dorm Lounge at night.png`  
-Save as: `iwatodaidorm-livingroom-night-winter.png`
-```
-Redraw the attached image as a sharp, high-resolution 16:9 anime background in the Persona 3 Reload official art style: clean lineart, soft painted lighting, no people, no text. Keep the room, layout and camera angle exactly: the Iwatodai dorm lounge at night, two dark leather sofas, a grey stone coffee table on a patterned rug, tall arched windows and double doors, two standing lamps, a reception counter, a potted tree. Winter: snow falling past the windows and frost in the corners of the glass, scarves and coats on a rack by the doors, thick blankets on the sofas, mugs of cocoa on the coffee table, a small space heater glowing, cosy warm lamplight against the cold blue night outside.
-```
-
 ---
 
 ## 27. Couple victory poses (ChatGPT)
-Kat's yes (Nov 4): when Solar and her partner wear a matching couple outfit and win, the results screen shows them side by side, with a different pose each time. These are the partner's poses; Solar's come from her HD sets (Sun Hoodie, Summer Festival and After Hours are done; Midnight Drive, Movie Date and Ringside still need hers in the top section). Until both halves exist, the results screen stays as it is now. One figure per image, same format as Solar's HD poses. Make as many as you like; the game uses whichever exist.
+Kat's yes (Nov 4): when Solar and her partner wear a matching couple outfit and win, the results screen shows them side by side, with a different pose each time. These are the partner's poses; Solar's come from her HD sets (Sun Hoodie, Summer Festival and After Hours are done; Midnight Drive, Movie Date and Ringside still need hers in the top section). Built Nov 4: Sun & Moon already shows them side by side; each other set joins once its partner's poses come in. One figure per image, same format as Solar's HD poses. Make as many as you like; the game uses whichever exist.
 
-**[ ] 27A. Haechan, Moon Hoodie (goes with Solar's Sun Hoodie)**  
+**[ ] 27A. Haechan, Moon Hoodie (goes with Solar's Sun Hoodie)** · ✅ five poses in (Nov 4); only "hands in hoodie pocket" left, optional  
 Attach: `Moon Hoodie [sk-haechan-cp-sunmoon] - pose sheet (recut).png`, then `Haechan.png`  
 Save as: `haechan-moonhoodie-hd-<pose>.png` in a folder `HC-Moon Hoodie-Victory Poses`  
 Poses (one image each): peace sign, arms crossed with a smirk, hand in hair, thumbs up, pointing at the viewer, hands in hoodie pocket leaning back

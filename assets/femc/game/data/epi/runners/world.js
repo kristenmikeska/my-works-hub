@@ -51,8 +51,8 @@
         // The stairs are indoors (the house's own art is outside, in the snow); batch 77: the second landing, day and night.
         ['Syracuse · Alpha Phi House · Stairs', 'epi-r-alpha-landing', 'epi-r-alpha-landing-night'],
         // Stand-ins (Nov 3): each copies the rule below it until its art comes (FEMC-ART-TODO 23; FEMC-ART-WIRING "23").
-        ['Syracuse · Alpha Phi House · Living Room', 'flashback-alphaphi-house', null],   // → epi-r-alpha-living (both slots)
-        ['Syracuse · Alpha Phi House · Dining Room', 'flashback-alphaphi-house', null],   // → epi-r-alpha-living (both slots)
+        ['Syracuse · Alpha Phi House · Living Room', 'epi-r-alpha-living', 'epi-r-alpha-living'],  // Kat's art, Nov 4 (lamp-lit; both slots)
+        ['Syracuse · Alpha Phi House · Dining Room', 'epi-r-alpha-living', 'epi-r-alpha-living'],  // the same room (both slots)
         ['Syracuse · Alpha Phi House', 'flashback-alphaphi-house', null],
         ['Syracuse · Sigma Chi House · Holiday Party', 'epi-r-sigma-holiday', 'epi-r-sigma-holiday'],
         ['Syracuse · Sigma Chi House · Kitchen', 'epi-r-sigma-kitchen', null],
@@ -74,10 +74,10 @@
         ['Syracuse · Studio 4B', 'epi-r-studio-4b', null],
         ['Syracuse · Language Arts Rooftop · Snow', 'epi-r-rooftop-night-snow', 'epi-r-rooftop-night-snow'],
         ['Syracuse · Language Arts Rooftop', 'epi-r-rooftop-night', 'epi-r-rooftop-night'],
-        ['Syracuse · Regionals · Green Room', 'epi-r-regionals', null],                  // stand-in → epi-r-regionals-green-room (both slots)
-        ['Syracuse · Regionals · The Van', 'epi-r-regionals', null],                     // stand-in → epi-r-regionals-van (both slots)
-        ['Syracuse · Regionals · Loading Dock', 'epi-r-regionals', null],                // stand-in → epi-r-regionals-dock (day; evening null)
-        ['Syracuse · Regionals · After the Final', 'epi-r-regionals', null],             // stand-in → epi-r-regionals-after (both slots)
+        ['Syracuse · Regionals · Green Room', 'epi-r-regionals-green-room', 'epi-r-regionals-green-room'],  // Kat's art, Nov 4 (windowless)
+        ['Syracuse · Regionals · The Van', 'epi-r-regionals-van', 'epi-r-regionals-van'],  // Kat's art, Nov 4 (night)
+        ['Syracuse · Regionals · Loading Dock', 'epi-r-regionals-dock', null],  // Kat's art, Nov 4 (day; dims in the evening)
+        ['Syracuse · Regionals · After the Final', 'epi-r-regionals-after', 'epi-r-regionals-after'],  // Kat's art, Nov 4 (house lights)
         ['Syracuse · Regionals', 'epi-r-regionals', null],
         ['Syracuse', 'flashback-syracuse-quad', null]
       ],

@@ -34,7 +34,8 @@ NAMES = {'armscrossed': 'arms-crossed', 'evoker': 'evoker', 'fistpump': 'cheer',
          'hiphands': 'tease', 'hearthands': 'heart', 'jump': 'jump', 'peacesign': 'peace', 'phone': 'phone', 'ramen': 'ramen',
          'reading': 'study', 'sewing': 'sewing', 'shoulderlook': 'lookback', 'overshoulder': 'lookback', 'shy': 'shy',
          'thinking': 'thinking', 'watering': 'watering', 'wave': 'wave', 'yawn': 'stretch',
-         'fist': 'cheer', 'fistbump': 'cheer', 'handsinhair': 'hair', 'handsonhips': 'tease', 'peace': 'peace'}
+         'fist': 'cheer', 'fistbump': 'cheer', 'handsinhair': 'hair', 'handsonhips': 'tease', 'peace': 'peace',
+         'pointing': 'pointing', 'thumbsup': 'thumbsup', 'pocket': 'pocket', 'handsinpocket': 'pocket'}  # the last three: couple partners' victory poses (FEMC-ART-TODO 27)
 AIR = {'jump'}
 # Wardrobe looks with an HD set: look id -> (folder in New Adds, file prefix). Kat names a folder after the outfit.
 # A set may be partial (ChatGPT blocked some poses): the game uses only the poses a set has (FEMC-ART-WIRING).
@@ -53,6 +54,8 @@ LOOKS = {'sk-cp-afterhours': ('Solar-After Hours-Menu Poses', 'afterhr-'),
          'sk-arcana-sun': ('Solar-The Sun-Menu Poses', 'sun-'),
          'sk-sugarrush': ('Solar-Sugar Rush-Menu Poses', 'sugar-'),
          'sk-cp-sunmoon': ('Solar-Sun Hoodie-Menu Poses', 'sunhood-'),
+         # Couple partners' victory poses (FEMC-ART-TODO 27, Nov 4): the partner's half of a couple set, for the couple win screen.
+         'sk-haechan-cp-sunmoon': ('HC-Moon Hoodie-Victory Poses', 'haechan-moonhoodie-'),
          'sk-yukata': ('Solar-Summer Yukata-Menu Poses', 'sumyu-'),
          'sk-cp-festival': ('Solar-Summer Festival-Menu Poses', 'sumfest-'),
          'sk-oops': ('Solar-Oops-Menu Poses', 'oops-'),

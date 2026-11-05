@@ -341,7 +341,7 @@ try:
         clean(p, f'{tag} fight')
         # Couple Showtime: Sun Hoodie + Moon Hoodie, a bond of Solar and Haechan through the real presentation.
         p.top()
-        setup(wear=['sk-cp-sunmoon', 'sk-haechan-cp-sunmoon'], day='12/12')
+        setup(wear=['sk-cp-sunmoon', 'sk-haechan-cp-sunmoon'], day='12/2')
         if art: p.eval("(()=>{FEMC_ART_READY.couples=['cp-sunmoon'];return true})()")
         else: p.eval("(()=>{FEMC_ART_READY.couples=[];return true})()")  # Kat's Sun & Moon Showtime is in (Nov 3): hide it for the drawn version
         scripted(['solar', 'haechan', 'akihiko', 'yukari'])
@@ -902,6 +902,24 @@ try:
         hero = solar_wins()
         ok(hero and 'skins/sk-summersession/solar-pose-5.webp' in hero['src'] and not hero['hd'], f'a look without an HD set: its pose 5 as before: {hero}')
         clean(p, 'winhd fallbacks')
+        # Nov 4: the couple win screen. Solar in her Sun Hoodie and Haechan in his Moon Hoodie (both halves have HD poses) side by
+        # side; Outfit effects Off: the single hero as before.
+        for fx in (True, False):
+            p.top(); setup(wear=['sk-cp-sunmoon', 'sk-haechan-cp-sunmoon'], day='12/12')
+            scripted(['solar', 'haechan', 'akihiko', 'yukari'])  # Haechan fights from December; a scripted fight takes him
+            p.eval("FemcBattle.save.cutins='off';FemcBattle.save.settings.skinFx=%s;window.__holdSolar=true" % ('true' if fx else 'false'))
+            solar_wins()
+            duo = p.eval("(()=>{const w=document.querySelector('.bt-res-heroW.duo');if(!w)return null;const im=[...w.querySelectorAll('img')].map(i=>({src:i.getAttribute('src'),ok:i.complete&&i.naturalWidth>0,mid:i.dataset.mid,r:i.getBoundingClientRect().right}));return {set:w.dataset.couple,im}})()")
+            if fx:
+                ok(duo and duo['set'] == 'cp-sunmoon' and len(duo['im']) == 2 and all(i['ok'] for i in duo['im'])
+                   and any('sk-haechan-cp-sunmoon/hd/' in i['src'] and i['mid'] == 'haechan' for i in duo['im'])
+                   and any('sk-cp-sunmoon/hd/' in i['src'] and i['mid'] == 'solar' for i in duo['im']) and p.eval("FemcBattle.marks['results-hero-duo']>0"), f'couple win screen: {duo}')
+                for w, hh in [(1440, 900), (390, 844)]:
+                    view(p, w, hh); time.sleep(0.9); ok(fits(p), f'couple win {w}: no sideways scroll'); hshots.append(shot(p, f'winhd-couple-{w}x{hh}'))
+                view(p, 1440, 900)
+            else:
+                ok(duo is None and not p.eval("FemcBattle.marks['results-hero-duo']"), f'Outfit effects Off: no couple screen: {duo}')
+            clean(p, f'winhd couple fx={fx}')
         results['winhd'] = hshots
 
     print(json.dumps(results, indent=1))

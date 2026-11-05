@@ -1,0 +1,57 @@
+{
+ "arms-crossed": {
+  "ar": 0.344,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.498,
+  "size": [
+   528,
+   1536
+  ],
+  "src": "haechan-moonhoodie-hd-armscrossed.png"
+ },
+ "hair": {
+  "ar": 0.383,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.43,
+  "size": [
+   589,
+   1536
+  ],
+  "src": "haechan-moonhoodie-hd-handinhair.png"
+ },
+ "peace": {
+  "ar": 0.421,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.577,
+  "size": [
+   647,
+   1536
+  ],
+  "src": "haechan-moonhoodie-hd-peace.png"
+ },
+ "pointing": {
+  "ar": 0.354,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.545,
+  "size": [
+   544,
+   1536
+  ],
+  "src": "haechan-moonhoodie-hd-pointing.png"
+ },
+ "thumbsup": {
+  "ar": 0.403,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.616,
+  "size": [
+   619,
+   1536
+  ],
+  "src": "haechan-moonhoodie-hd-thumbsup.png"
+ }
+}
