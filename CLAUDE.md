@@ -29,6 +29,7 @@ Kat's fiction archive (13 worlds) plus FEMC mode, a Persona 3 Portable FeMC-styl
   - `FEMC-REVAMP-ROADMAP.md`
   - `FEMC-ART-LIST.md` is the art checklist.
   - `FEMC-ART-TODO.md` is Kat's list of art still to make: only art not yet made, each item with what it's for, a plain Attach list, a Save as name and a full paste-ready prompt. No technical notes in it.
+  - `FEMC-CG-REMAKES.md` holds the optional epilogue CG remakes (old ART-TODO section 22, items 22A–22AA, moved Nov 4); like `FEMC-SKINS-REMAKES.md`, it sits outside the main list.
   - `FEMC-ART-WIRING.md` holds the technical side of that list (where each item goes, tools, code hooks, the old appendix), keyed by item name. **When wiring art, use FEMC-ART-WIRING.md. After every art batch, remove the finished items from FEMC-ART-TODO.md (and their wiring entries), then re-verify the whole list against `assets/femc/` and `tools/femc-new-adds.json`, name by name for per-character lists, and fix its count.** Stale items have made Kat redo finished art.
   - `FEMC-ART-TODO.md` is the one image-prompt list Kat runs (cleaned Oct 31 2026; attachments copied into `Femc Mode Images/Place Prompt Attachments/`). The old CG and Gemini prompt files are retired: `_archive/FEMC-CG-PROMPTS-old.md` and `_archive/FEMC-GEMINI-PROMPTS-old.md`; don't add prompts there.
 - **Cache-busting:** after editing a script, bump its `?v=` in the HTML.
