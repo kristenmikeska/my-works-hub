@@ -1892,7 +1892,7 @@ window.FemcGame = (() => {
     // The keychains and phone cases are a collection, so they come along (gacha.js); counters and plumes start over.
     // Since the skins batch: series keychains, finished series and the Wardrobe (owned looks, what's worn) come along too.
     if (old.gacha) Object.assign(S.gacha, { keys: { ...(old.gacha.keys || {}) }, cases: [...(old.gacha.cases || [])], caseOn: old.gacha.caseOn || null, stars: old.gacha.stars || 0,
-      skeys: { ...(old.gacha.skeys || {}) }, done: [...(old.gacha.done || [])], cos: old.gacha.cos ? { own: [...(old.gacha.cos.own || [])], on: { ...(old.gacha.cos.on || {}) }, portraits: old.gacha.cos.portraits !== false } : undefined });
+      skeys: { ...(old.gacha.skeys || {}) }, done: [...(old.gacha.done || [])], cos: old.gacha.cos ? { own: [...(old.gacha.cos.own || [])], on: { ...(old.gacha.cos.on || {}) }, portraits: old.gacha.cos.portraits !== false, pOff: [...(old.gacha.cos.pOff || [])] } : undefined });
     if (S.gacha && S.gacha.cos === undefined) delete S.gacha.cos;
     // Velvet Trials' records, one-time rank rewards and bosses seen carry over (trials.js).
     if (old.gacha && old.gacha.trials) S.gacha.trials = clone(old.gacha.trials);
@@ -2386,7 +2386,7 @@ window.FemcGame = (() => {
     const t = dayInfo(d).type;
     if (t === 'trip' || t === 'prologue') return null;
     const C = W.FemcCosmetics;
-    if (!C || C.cs().portraits === false) return null;
+    if (!C || (C.portraitsOn ? !C.portraitsOn('solar') : C.cs().portraits === false)) return null;
     const worn = C.onIn('skin:solar');
     if (!worn || !C.ready(worn)) return null;
     if (L.outfitDay === d) return null;

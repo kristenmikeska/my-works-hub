@@ -1673,7 +1673,7 @@
   const homePose = p => `${G.base}assets/femc/profile/solar-poses/${p}.webp?v=${((window.FEMC_ART_READY || {}).own || {}).hdv || 1}`;
   function homeLook() {
     const C = window.FemcCosmetics;
-    if (!C || C.cs().portraits === false) return null;
+    if (!C || (C.portraitsOn ? !C.portraitsOn('solar') : C.cs().portraits === false)) return null;
     const worn = C.onIn('skin:solar'), x = worn || C.byId(HOME_SEASON[G.dayInfo().date.getMonth() + 1]);
     if (!x || !C.ready(x)) return null;
     const R = ((window.FEMC_ART_READY || {}).skins || {})[x.id] || {}, hd = R.hd && R.hd.length ? HOME_POSES.filter(p => R.hd.includes(p)) : null;

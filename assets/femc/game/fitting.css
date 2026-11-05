@@ -166,3 +166,6 @@
   .g-fr .g-wd-toggle { margin-left: 0; }
   .g-fr-tag b { font-size: 20px; }
 }
+/* The per-character "outfit in scenes" toggle (cosmetics.js setPortraits(v, who)); dimmed while the master toggle is off. */
+.g-fr .g-wd-toggle-who { margin-left: 0; }
+.g-fr .g-wd-toggle-who.off { opacity: .45; }

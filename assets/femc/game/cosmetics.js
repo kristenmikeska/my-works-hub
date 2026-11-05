@@ -299,12 +299,12 @@ window.FemcCosmetics = (() => {
   /* ── State ── */
   function cs() {
     const g = window.FemcGacha ? window.FemcGacha.gs() : (S().gacha = S().gacha || {});
-    const f = { own: [], on: {}, portraits: true, pulls: 0, pity: { sr: 0, ur: 0 }, guar: false, last: null, got: {}, bsel: '' };
+    const f = { own: [], on: {}, portraits: true, pOff: [], pulls: 0, pity: { sr: 0, ur: 0 }, guar: false, last: null, got: {}, bsel: '' };
     if (!g.cos || typeof g.cos !== 'object') g.cos = f;
     const s = g.cos;
     Object.keys(f).forEach(k => { if (s[k] === undefined || (f[k] !== null && typeof s[k] !== typeof f[k])) s[k] = f[k]; });
     if (s.on && typeof s.on === 'object') Object.keys(s.on).forEach(k => { const x = byId(s.on[k]); if (x && x.retired) delete s.on[k]; }); // a retired look comes off (Default)
-    if (!Array.isArray(s.own)) s.own = []; if (!s.got || Array.isArray(s.got)) s.got = {}; s.pity = Object.assign({ sr: 0, ur: 0 }, s.pity || {});
+    if (!Array.isArray(s.own)) s.own = []; if (!Array.isArray(s.pOff)) s.pOff = []; if (!s.got || Array.isArray(s.got)) s.got = {}; s.pity = Object.assign({ sr: 0, ur: 0 }, s.pity || {});
     return s;
   }
   const owns = id => cs().own.includes(id);
@@ -317,7 +317,16 @@ window.FemcCosmetics = (() => {
     cs().on[slotOf(x)] = id; G.save(); apply(); return true;
   }
   function unequip(slot) { delete cs().on[slot]; G.save(); apply(); return true; }
-  function setPortraits(v) { cs().portraits = !!v; G.save(); return cs().portraits; }
+  /* "Outfits in scene portraits": the master toggle (`portraits`) and, under it, one per character (Kat, Nov 4): `pOff` lists
+     the people whose worn outfit stays out of scenes (and, for Solar, off the evening screen). setPortraits(v) sets the master,
+     setPortraits(v, who) that one person. */
+  function setPortraits(v, who) {
+    const s = cs();
+    if (!who) s.portraits = !!v;
+    else { s.pOff = s.pOff.filter(w => w !== who); if (!v) s.pOff.push(who); }
+    G.save(); return who ? portraitsOn(who) : s.portraits;
+  }
+  const portraitsOn = who => { const s = cs(); return s.portraits !== false && !(who && s.pOff.includes(who)); };
 
   /* ── The banner ── */
   const monthOf = d => { try { return G.dateOf(d ?? S().day).getMonth() + 1; } catch (e) { return 4; } };
@@ -491,7 +500,7 @@ window.FemcCosmetics = (() => {
   /* For scenes (core.js portrait): an outfit's portrait, when it has one and the toggle is on. */
   function portrait(id, face) {
     const s = S() && S().gacha && S().gacha.cos;
-    if (!s || !s.portraits) return null;
+    if (!s || !s.portraits || !portraitsOn(id)) return null;
     const x = onIn(`skin:${id}`); if (!x) return null;
     const have = ((readyArt().skins || {})[x.id]?.portraits || {})[id] || [];
     const f = [face, face && face.replace(/-\d+$/, ''), 'neutral', have[0]].find(k => k && have.includes(k));
@@ -623,7 +632,8 @@ window.FemcCosmetics = (() => {
         ${kinds}
         <div class="g-fr-tools"><span class="g-fr-chips"><button type="button" data-fr-own="all" class="${frOwn ? '' : 'on'}">All</button><button type="button" data-fr-own="own" class="${frOwn ? 'on' : ''}">Owned</button></span>
           <select data-fr-sort aria-label="Sort"><option value="group"${frSort === 'group' ? ' selected' : ''}>Grouped</option><option value="rarity"${frSort === 'rarity' ? ' selected' : ''}>Rarity</option><option value="name"${frSort === 'name' ? ' selected' : ''}>Name</option></select>
-          <label class="g-wd-toggle"><input type="checkbox" data-wd-portraits${s.portraits ? ' checked' : ''}> Outfits in scene portraits</label></div>
+          <label class="g-wd-toggle"><input type="checkbox" data-wd-portraits${s.portraits ? ' checked' : ''}> Outfits in scene portraits</label>
+          <label class="g-wd-toggle g-wd-toggle-who${s.portraits ? '' : ' off'}"><input type="checkbox" data-wd-portraits-who="${frWho}"${portraitsOn(frWho) ? ' checked' : ''}${s.portraits ? '' : ' disabled'}> ${esc(whoName(frWho))}’s outfit in scenes</label></div>
         <p class="g-fr-desc">${desc}</p>
         ${panes}</div></div>`;
   }
@@ -922,7 +932,11 @@ window.FemcCosmetics = (() => {
     el.querySelectorAll('[data-wd-zoom]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openViewer(b.dataset.wdZoom); }));
     el.querySelectorAll('[data-wd-try]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); if (window.FemcTryOn) window.FemcTryOn.play(b.dataset.wdTry, b); }));
     el.querySelector('[data-wd-equip]')?.addEventListener('click', e => { if (equip(e.currentTarget.dataset.wdEquip)) { G.sfx('femc-on'); if (window.FemcFitting) window.FemcFitting.cue('equip'); rerender('[data-wd-equip]'); } });
-    el.querySelector('[data-wd-portraits]')?.addEventListener('change', e => { setPortraits(e.target.checked); G.sfx('femc-click'); });
+    el.querySelector('[data-wd-portraits]')?.addEventListener('change', e => {
+      setPortraits(e.target.checked); G.sfx('femc-click');
+      const one = el.querySelector('[data-wd-portraits-who]'); if (one) { one.disabled = !e.target.checked; one.checked = portraitsOn(one.dataset.wdPortraitsWho); one.parentElement.classList.toggle('off', !e.target.checked); }
+    });
+    el.querySelector('[data-wd-portraits-who]')?.addEventListener('change', e => { setPortraits(e.target.checked, e.target.dataset.wdPortraitsWho); G.sfx('femc-click'); });
     el.querySelectorAll('[data-wd-hero]').forEach(b => b.addEventListener('click', () => { hero = b.dataset.wdHero; G.sfx('femc-hover'); rerender(`[data-wd-hero="${hero}"]`); }));
     if (el.querySelector('.g-bq-ban')) bannerMotion(el); else lastBan = lastHero = null;
     el.querySelector('[data-wd-pull10]')?.addEventListener('click', () => {
@@ -947,5 +961,5 @@ window.FemcCosmetics = (() => {
   G.onChange(kind => { if (kind !== 'toast') apply(); });
   applyTitleEarly();
   setTimeout(apply, 0);
-  return Object.assign(api, { CLEAN, KINDS, ITEMS, BANNERS, BAN, PAL, THEMES, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, banner, banners, pickBanner, bannerEnd, pool, featured, canPull, pullWhy, pull, pullN, pull10, apply, battle, tryOnSpec, portrait, weaponArt, html, wire, metOk, viewable, viewEntry, openViewer, seq, seqClose, bq, hdOf, meters, skipSeq: () => sq && sq.skip(), nextSeq: () => sq && sq.next() });
+  return Object.assign(api, { CLEAN, KINDS, ITEMS, BANNERS, BAN, PAL, THEMES, byId, ready, cs, owns, slotOf, onIn, grantItem, equip, unequip, setPortraits, portraitsOn, banner, banners, pickBanner, bannerEnd, pool, featured, canPull, pullWhy, pull, pullN, pull10, apply, battle, tryOnSpec, portrait, weaponArt, html, wire, metOk, viewable, viewEntry, openViewer, seq, seqClose, bq, hdOf, meters, skipSeq: () => sq && sq.skip(), nextSeq: () => sq && sq.next() });
 })();

@@ -1242,7 +1242,7 @@ window.FemcMenu = (() => {
   const HOME_FIG = { src: 'assets/femc/profile/solar-poses/arms-crossed.webp', ar: .306, ht: .01, hf: .14, hx: .47 };
   function homeFig() {
     const A = window.FEMC_ART_READY || {}, C = window.FemcCosmetics, fig = m => (m && m.length === 4 ? { ar: m[0], ht: m[1], hf: m[2], hx: m[3] } : {});
-    const x = C && C.onIn && C.cs().portraits !== false ? C.onIn('skin:solar') : null, R = x ? (A.skins || {})[x.id] || {} : {};
+    const x = C && C.onIn && (C.portraitsOn ? C.portraitsOn('solar') : C.cs().portraits !== false) ? C.onIn('skin:solar') : null, R = x ? (A.skins || {})[x.id] || {} : {};
     if (x && (R.hd || []).includes('arms-crossed')) return { ...HOME_FIG, ...fig(R.hdfig), src: `assets/femc/game/art/skins/${x.id}/hd/arms-crossed.webp?v=${R.hdv || 1}` };
     const own = A.own || {};
     return { ...HOME_FIG, ...fig(own.hdfig), src: `${HOME_FIG.src}?v=${own.hdv || 1}` };
