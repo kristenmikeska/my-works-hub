@@ -465,10 +465,13 @@
   /* ── Mark ── */
   B.mark = { id: 'mark', role: 'friend', hangouts: [
     { id: 'epi-r-mark-1', title: 'no notes', hint: 'Mark is in a carrel at Bird Library with the Statistics problem set and nothing written on it.',
-      after: '12/2', until: '12/5', slots: ['after'],
+      after: '12/2', until: '12/10', slots: ['after'], // the time pass (C5): open until 12/10, with "after Regionals" touches
       place: 'Syracuse · Bird Library', time: 'After Class', scene: [
       { n: "Fourth floor, the quiet floor, the carrels by the windows with the radiators that ticked. He saw her before she saw him. She knew because when she turned the corner he was already halfway out of his chair and then sitting back down in it, too fast, the way he did when he was nervous about a room, overplaying casual so hard it went all the way round to obvious." },
       { s: 'mark', f: 'happy', t: "Sol. Hey." },
+      { ifEvent: 'epi-r-regionals-2', then: [
+        { n: "They hadn't said a word to each other since Sunday, since Regionals and whatever it had been that he'd said to her there, and he looked like he'd spent the whole two days since finding out whether that had been the last one." }
+      ] },
       { n: "It landed somewhere under her ribs and stayed there. It had been his first, that name, before anyone, the first week of school, and she'd let him have it because it had felt like a gift. Now every time he said it she could feel the shape of everything he'd built on top of it." },
       { s: 'mark', f: 'flustered', t: "I was going to offer you my notes. For the week we, uh. Missed. Then I remembered I wasn't here either." },
       { s: 'mark', f: 'happy', t: "So I have no notes. You have no notes. We're the two least prepared people in this building, and there's a guy over there asleep on a textbook." },
@@ -502,7 +505,11 @@
           { n: "She didn't ask. He put the earbud away in its case and clicked it shut, and that was that, and it was strange how much it felt like a kindness, from both directions." }
         ] }
       ] },
-      { s: 'mark', f: 'happy', t: "Good luck Saturday, Sol. You don't need it. I'm just saying it so it's said." }
+      { ifEvent: 'epi-r-regionals-2', then: [
+        { s: 'mark', f: 'happy', t: "You were good on Sunday, Sol. You didn't need me to say it. I'm just saying it so it's said." }
+      ], else: [
+        { s: 'mark', f: 'happy', t: "Good luck Saturday, Sol. You don't need it. I'm just saying it so it's said." }
+      ] }
     ] },
 
     { id: 'epi-r-mark-2', title: 'her order', hint: 'Mark is in line at the café on Marshall Street, one person ahead of her.',
@@ -535,8 +542,11 @@
   /* ── Jaehyun ── */
   B.jaehyun = { id: 'jaehyun', role: 'friend', hangouts: [
     { id: 'epi-r-jaehyun-1', title: 'treatment', hint: 'Jaehyun is at the football complex. He told her which door.',
-      after: '12/3', until: '12/5', slots: ['after'], events: ['epi-r-did-you-eat'],
+      after: '12/3', until: '12/10', slots: ['after'], events: ['epi-r-did-you-eat'], // the time pass (C5): open until 12/10
       place: 'Syracuse · Football Complex', time: 'After Class', scene: [
+      { ifEvent: 'epi-r-regionals-2', then: [
+        { n: "He'd told her the Wednesday before Regionals to come by after treatment, and she never had, and on Monday he'd texted the same door again without mentioning the first time, which was how Jaehyun apologized for things that weren't his fault." }
+      ] },
       { n: "He'd told her which door, because he knew she wouldn't wander into a building full of men in shoulder pads looking for him, and he was right. The player exit at Ensley, the side one by the equipment trucks. She waited there with a paper bag going translucent at the bottom from the grease and her hands tucked into her sleeves, and watched the snow come down slant across the floodlights over a practice field with nobody on it." },
       { n: "The season was over. Nobody in the building was acting like it." },
       { n: "He came out at five past, hair still wet, hood up, and the first thing she noticed was the way he took the step down, carefully, leading with the left, and the second thing was the edge of an ice wrap showing at the collar of his hoodie, and the third was that he'd seen her see both and decided not to mention either." },
@@ -545,8 +555,13 @@
       { s: 'solar', f: 'happy', t: "Did you eat." },
       { n: "He almost smiled. On him it was a whole event, a thing happening at the corner of his mouth and then being overruled." },
       { s: 'jaehyun', f: 'happy', t: "...No." },
-      { n: "They sat on the bench by the gate and ate out of the bag with the snow coming down on them, two people in very expensive coats eating fries off their knees, and he told her his week without being asked, the way he'd give a briefing. Treatment, then film. Conditioning at six tomorrow. The banquet next week, where somebody's father would ask him about April in front of their father's friends." },
-      { s: 'jaehyun', f: 'serious', t: "Ms. Han called me Tuesday. She wants the name of the faculty advisor on the trip. For Dad's records." },
+      { n: "They sat on the bench by the gate and ate out of the bag with the snow coming down on them, two people in very expensive coats eating fries off their knees, and he told her his week without being asked, the way he'd give a briefing. Treatment, then film. Conditioning at six tomorrow." },
+      { ifEvent: 'epi-r-regionals-2', then: [
+        { n: "The banquet on Friday, where somebody's father would ask him about April in front of their father's friends. He'd watched the Regionals final on his phone in the training room with ice on his shoulder, he said, both days, and the trainer had told him to stop shouting." }
+      ], else: [
+        { n: "The banquet next week, where somebody's father would ask him about April in front of their father's friends." }
+      ] },
+      { s: 'jaehyun', f: 'serious', t: "Ms. Han called me last Tuesday. She wants the name of the faculty advisor on the trip. For Dad's records." },
       { s: 'solar', f: 'serious', t: "What did you say." },
       { s: 'jaehyun', f: 'neutral', t: "That I'd get back to her. I don't throw into coverage." },
       { choose: [
@@ -587,18 +602,23 @@
           { n: "She signed the card. *Love, Solar,* under *Love, Jaehyun,* in handwriting nobody would ever be able to tell anything from. She'd been trained for this since she was eight. It was the most expensive signature she'd ever given." },
           { glitch: { strain: 1 } }
         ] }
-      ] },
+    ] },
       { s: 'jaehyun', f: 'neutral', t: "Mom wants a photo for the inside. The two of us. I said I'd ask." },
-      { n: "He said it to the card, not to her. On his forearm, where the sleeve had ridden up, the last of a turf burn was going yellow at the edges. She didn't mention it. He didn't mention Danielle again. They sat there for a while in the clean quiet room with Johnny snoring at the end of the couch, two Lees being very good at not saying things, and it was the closest she'd felt to him all year." }
+      { n: "He said it to the card, not to her. On his forearm, where the sleeve had ridden up, the last of a turf burn was going yellow at the edges. She didn't mention it. He didn't mention Danielle again. They sat there for a while in the clean quiet room with Johnny snoring at the end of the couch, two Lees being very good at not saying things, and it was the closest she'd felt to him all year." },
+      { flag: 'epi-r-card-signed' } // the time pass (gap 12): she signed Mom's card here; the 12/16 breakfast reads it
     ] }
   ] };
 
   /* ── Chenle ── */
   B.chenle = { id: 'chenle', role: 'friend', hangouts: [
     { id: 'epi-r-chenle-1', title: 'forty-one for forty-one', hint: 'Chenle has a spreadsheet of every team in the bracket, and he wants to show someone.',
-      after: '12/2', until: '12/5', slots: ['after'],
+      after: '12/2', until: '12/10', slots: ['after'], // the time pass (C5): open until 12/10
       place: 'Syracuse · eSports Lab', time: 'After Class', scene: [
       { n: "He was at the corner station with both monitors going, one on a VOD paused mid-fight and the other on a spreadsheet so color-coded it looked like a quilt. He'd been pale since Monday. He was still pale. He looked up when she came in and the paleness didn't change, but something behind it did, like a person deciding to be fine on purpose." },
+      { ifEvent: 'epi-r-regionals-2', then: [
+        { n: "It was the spreadsheet from before Regionals. He'd wanted to show it to her all of last week, and she'd never come by, and they'd played that team on Saturday anyway and beaten them, and he wanted to show her anyway, now, after, which was the most Chenle thing she'd ever seen anybody do." },
+        { s: 'chenle', f: 'neutral', t: "It's still true. It'll be true at Nationals. People don't change what they do when they're scared." }
+      ] },
       { s: 'chenle', f: 'serious', t: "Their Ana sleeps the tank every time he uses Nade. Every time. Forty-one for forty-one. Look." },
       { n: "She looked. He had every instance clipped, timestamped, in a column labeled *SLEEP (TANK) AFTER NADE (Y/N)*, and every cell said Y, and they went down the screen like a drumbeat." },
       { s: 'chenle', f: 'neutral', t: "So when the Nade goes out, the sleep's coming. You have about a second and a half. That's a lot, actually. That's forever." },
@@ -667,10 +687,13 @@
   /* ── Jaemin ── */
   B.jaemin = { id: 'jaemin', role: 'friend', hangouts: [
     { id: 'epi-r-jaemin-1', title: 'the architect', hint: 'Jaemin is holding court at the café on Marshall Street, delighted about something.',
-      after: '12/2', until: '12/5', slots: BOTH,
+      after: '12/2', until: '12/10', slots: BOTH, // the time pass (C5): open until 12/10
       place: 'Syracuse · Marshall Street · Café', time: 'After Class', scene: [
       { n: "Three girls were just leaving his table when she came in, the way girls were always just leaving Jaemin's table, and he saw her over their heads and put both arms up like she'd scored." },
       { s: 'jaemin', f: 'happy', t: "Solar Lee. Sit. Sit with the architect." },
+      { ifEvent: 'epi-r-regionals-2', then: [
+        { s: 'jaemin', f: 'serious', t: "You've been avoiding me since you got back. A whole week. I took it personally, and then I watched your little Kiriko clip eleven times and forgave you. I'm very generous." }
+      ] },
       { s: 'jaemin', f: 'happy', t: "I went quiet for one Friday. One. I didn't post on the twenty-eighth because I was, you know." },
       { n: "He waved a hand at the window, at the snow, at the whole idea of elsewhere." },
       { s: 'jaemin', f: 'happy', t: "And this entire campus decided it meant there was a party so exclusive I couldn't even post about it. Invite only. No signal. Not even the whole chapters. I have never in my life been this famous for doing nothing." },
@@ -979,7 +1002,9 @@
       { t: "thanks mark", then: [{ from: 'mark', t: 'word' }] },
       { t: "(Leave it on read.)", silent: true, then: [] }
     ] },
-    { id: 'epi-r-am-hc-porch', thread: 'haechan', from: '12/9', to: '12/14', flag: 'epi-route-haechan', msgs: [
+    // The time pass (Nov 5): 12/9-12/13 the 'porch rail' Late Night hangout plays these texts as a scene (people-time.js), so the
+    // text waits for 12/14 and only comes if that scene didn't play.
+    { id: 'epi-r-am-hc-porch', thread: 'haechan', from: '12/14', to: '12/14', flag: 'epi-route-haechan', noFlag: 'epi-r-porchrail-seen', msgs: [
       { from: 'haechan', t: 'u didnt eat' },
       { from: 'haechan', t: 'porch rail. before it freezes' }
     ], reply: [

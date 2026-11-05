@@ -57,7 +57,7 @@
     if (B[id]) { (B[id].hangouts ||= []).push(...list); return; }
     let v = { id, role, hangouts: [...list] };
     Object.defineProperty(B, id, { enumerable: true, configurable: true, get: () => v,
-      set: o => { (o.hangouts ||= []).push(...list); v = o; } });
+      set: o => { (o.hangouts ||= []).push(...v.hangouts); v = o; } }); // everything merged so far (the time pass: several files can hold one bond)
   };
   const BOTH = ['after', 'evening'];
 

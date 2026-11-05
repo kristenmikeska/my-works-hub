@@ -36,8 +36,14 @@
        from the year (startBond: rank 1+ → 1, 5+ → 2, 10+ → 3, 15 → 4; +1 romance, +1 her Christmas pick; at most 5) and tops
        out at 10. A scene's { bond: { id: n } } adds to it (core.js bond → bond() here). A rival's closeness is how closely she's
        watching.
-     - Practice (raw.practice: { days, slot, from, to, skip, place, bg, stats, title, music }): on those days that slot is practice
-       (variants.practice), not Go Out, unless a story event or routine took it first (HOAX uses it for council duty, batch 5).
+     - Practice (raw.practice: { days, slot, from, to, skip, optional, place, bg, stats, title, music }): on those days that slot is
+       practice (variants.practice), not Go Out, unless a story event or routine took it first (HOAX uses it for council duty, batch 5).
+       `optional: ['M/D']` (the Runners time pass, Nov 5 2026): on those days practice is a choice at the top of Go Out's places
+       (practiceOpt: the same stats, spent as 'practice', sets the flag epi-practice-M-D) instead of the whole slot.
+     - Late Night hangouts (the time pass): raw.lateOpen ['M/D'] are the quiet nights where the late screen lists, above Sleep,
+       each person whose first unseen hangout has `slots: ['late']` and fits (the Go Out rules). Playing one spends the night and
+       then sleeps (sleepNow: the route lock, then core.js sleep). Nights not listed keep the plain late screen.
+     - A bond's `name` (the time pass: 'The team') is shown in place of G.name(id) on its buttons and toasts (bondName).
      - An event's `fills: [slots]` spends those slots too (a whole day, like Regionals).
      - Conditions: { ifBond: { id: n } } (closeness at least n), { ifRouteOpen: id } (the route's `open`: always, lean, bond,
        noFlag), plus scene.js's option `when` for choices that show only while a condition holds (the crossroads).
@@ -74,10 +80,10 @@ window.FemcEpilogue = (() => {
   const S = () => G.S, UI = () => W.FemcGameUI;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const clone = o => JSON.parse(JSON.stringify(o));
-  const DATA_V = 57; // data/epi/<world>/*.js ?v=
+  const DATA_V = 61; // data/epi/<world>/*.js ?v=
   // The worlds: the year's route flag that opens each, its name (the button) and place (slot labels), its data files.
   const WORLDS = {
-    runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3', 'phone', 'alerts'] },
+    runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3', 'story-home', 'story-time', 'people-time', 'story-nyc1', 'story-nyc2', 'people-nyc', 'phone', 'alerts'] },
     strangers: { id: 'strangers', flag: 'route-S', name: 'strangers', place: 'Incheon', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-w2', 'story-w3', 'story-end', 'phone'] },
     hoax: { id: 'hoax', flag: 'route-H', name: 'HOAX', place: 'Hanlim', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-w2', 'story-w3', 'story-end', 'phone'] },
     // Batch 8: Stay's reverse epilogue (Iwatodai is home) and the true ending's coda (three small days, one per world).
@@ -215,13 +221,14 @@ window.FemcEpilogue = (() => {
     return (all[id] ||= { c: startBond(id), seen: [] });
   }
   const closeness = id => (S().epi && BONDS()[id] ? bondState(id).c : 0);
+  const bondName = id => (BONDS()[id] && BONDS()[id].name) || G.name(id);
   function bond(id, n) {
     const b = BONDS()[id];
     if (!S().epi || !b || !n) return 0;
     const st = bondState(id), was = st.c;
     st.c = Math.max(0, Math.min(CLOSE_MAX, st.c + n));
     const key = `${S().day}-${S().slot}-${id}`; // one toast per person per slot (a scene's { bond } and the hangout's gain)
-    if (st.c > was && toasted !== key) { toasted = key; G.toast('bond', b.role === 'rival' ? `${G.name(id)} is watching more closely.` : `Bond · ${G.name(id)}`); }
+    if (st.c > was && toasted !== key) { toasted = key; G.toast('bond', b.role === 'rival' ? `${bondName(id)} is watching more closely.` : `Bond · ${bondName(id)}`); }
     G.save();
     return st.c - was;
   }
@@ -359,7 +366,13 @@ window.FemcEpilogue = (() => {
       default: return G.freeSlotSpent(s.slot) ? advance() : goOut(info);
     }
   }
-  function advance() { const r = G.nextSlot(); if (r.end) return finish(); UI().run(); }
+  function advance() { if (S().slot === 'late') return sleepNow(); const r = G.nextSlot(); if (r.end) return finish(); UI().run(); }
+  // Sleep: the route locks on the first night on or after lockAfter (P5R-style), then the next day (or the end).
+  function sleepNow() {
+    const raw = worldRaw();
+    if (!S().epi.locked && raw.lockAfter && S().day >= G.dayOf(raw.lockAfter)) lockRoute();
+    const r = G.sleep(); if (r.end) return finish(); UI().run();
+  }
   /* SUnews / SUanon alerts (Nov 3 2026; data/epi/runners/alerts.js documents the data). run() asks newsTick() whenever the day
      lands on a screen (morning, practice, Go Out, late), never inside a scene: the first alert whose `after` events are all seen
      (and `date` reached) drops in as a lock-screen banner (ui.js newsAlert: tap opens the phone; reduced motion: no slide),
@@ -402,12 +415,18 @@ window.FemcEpilogue = (() => {
   function practiceNow(info) {
     const p = worldRaw().practice, s = S();
     if (!p || s.slot !== p.slot || G.freeSlotSpent(s.slot) || info.type === 'exam') return false;
-    if (!p.days.includes(info.dow) || (p.skip || []).includes(info.md)) return false;
+    if (!p.days.includes(info.dow) || (p.skip || []).includes(info.md) || (p.optional || []).includes(info.md)) return false;
     return (!p.from || s.day >= G.dayOf(p.from)) && (!p.to || s.day <= G.dayOf(p.to));
+  }
+  // An optional practice (practice.optional): today's Go Out offers it at the top of the places.
+  function practiceOpt(info) {
+    const p = worldRaw().practice, s = S();
+    return !!p && s.slot === p.slot && (p.optional || []).includes(info.md) && p.days.includes(info.dow) && !G.freeSlotSpent(s.slot);
   }
   function practice(info) {
     const p = worldRaw().practice, s = S();
     s.spent[`${s.day}-${s.slot}`] = 'practice';
+    if ((p.optional || []).includes(info.md)) s.flags[`epi-practice-${info.md.replace('/', '-')}`] = true;
     if (p.stats) G.addStats(p.stats);
     G.save();
     SC.Music.set(p.music && G.D.places.music[p.music] ? p.music : G.D.places.music['epi-r-team'] ? 'epi-r-team' : 'day');
@@ -415,50 +434,69 @@ window.FemcEpilogue = (() => {
     GL()?.tick('out', { place: p.place });
   }
   const P = () => G.D.places;
+  /* The map by date (the Runners Manhattan pass, Nov 5 2026): places.phases [{ from: 'M/D', name, home, school, variants }]
+     (the last one whose `from` has come wins) swap in their own home screen, morning place, place name (Go Out's and Late
+     Night's kicker, the phone's forecast) and day-screen lines (`variants`: a key in the world's variants, e.g. 'nyc', read
+     before the plain path). Activities move with their own from / until. No phase: the world's own. */
+  const phaseNow = () => [...(P().phases || [])].reverse().find(ph => S().day >= G.dayOf(ph.from)) || null;
+  const homeOf = () => phaseNow()?.home || P().home || {};
+  const schoolOf = () => { const ph = phaseNow(); return ph && 'school' in ph ? ph.school : P().school; };
+  const placeName = () => phaseNow()?.name || S().epi?.place || '';
   const GL = () => W.FemcGlitch;
-  const line = (path, fallback) => G.vary(path, [fallback]);
+  const line = (path, fallback) => { const k = phaseNow()?.variants; return k && G.varyAll(`${k}.${path}`).length ? G.vary(`${k}.${path}`, [fallback]) : G.vary(path, [fallback]); };
   /* The home screen (Nov 3 2026): places.home.views { day, evening, night } (Runners: Solar's room in the Alpha Phi house) are
      the hub's backdrop by slot (morning / after → day, evening, late → night) once each slug is in home.viewsReady (its art is
      in assets/femc/bg; listing it is the wiring step, so nothing 404s before then); a view isn't dimmed. Until then, and in a
      world without views: home.bg, dimmed in the evening and at night as before. Used by the day-off morning, Go Out (and
      staying in) and the late screen. */
   function homeView(slot) {
-    const h = P().home || {}, k = slot === 'late' ? 'night' : slot === 'evening' ? 'evening' : 'day', v = h.views?.[k];
+    const h = homeOf(), k = slot === 'late' ? 'night' : slot === 'evening' ? 'evening' : 'day', v = h.views?.[k];
     return v && (h.viewsReady || []).includes(v) ? { bg: v, mood: '', art: true } : { bg: h.bg, mood: /evening|late/.test(slot) ? 'night' : '', art: false };
   }
   function morning(info) {
-    const home = info.type === 'off' || !P().school, at = (!home && P().school) || P().home || {};
+    const sc = schoolOf(), home = info.type === 'off' || !sc, at = (!home && sc) || homeOf();
     const kind = info.type === 'exam' ? 'exam' : info.type === 'off' ? 'off' : 'school';
     SC.Music.set(G.D.places.screens.after || 'day');
     UI().segment({ slot: 'early', ...(home ? homeView('early') : { bg: at.bg }), place: at.place, text: line(`morning.${kind}`, 'Morning.'), next: advance });
     GL()?.tick('morning', { place: at.place });
   }
   function late(info) {
-    const at = P().home || {};
+    const at = homeOf();
     SC.Music.set(G.D.places.screens.dorm || 'night');
-    UI().segment({ slot: 'late', ...homeView('late'), place: at.place, text: line('late', 'Late.'), button: 'Sleep', next: () => {
-      const raw = worldRaw();
-      if (!S().epi.locked && raw.lockAfter && S().day >= G.dayOf(raw.lockAfter)) lockRoute();
-      const r = G.sleep(); if (r.end) return finish(); UI().run();
-    } });
+    const folks = (worldRaw().lateOpen || []).includes(info.md) ? people('late') : [];
+    if (!folks.length) {
+      UI().segment({ slot: 'late', ...homeView('late'), place: at.place, text: line('late', 'Late.'), button: 'Sleep', next: sleepNow });
+      GL()?.tick('late', { place: at.place });
+      return;
+    }
+    // A quiet night (lateOpen): the people still up, above Sleep.
+    const ui = UI(), hv = homeView('late');
+    ui.setBg(hv.bg, hv.mood);
+    const main = ui.show(`<section class="g-seg g-epi-out g-epi-late"><p class="g-kicker">${esc(G.slotName('late', info))} · ${esc(placeName())}</p>
+      <div class="g-seg-box"><p class="g-seg-text">${esc(line('late', 'Late.'))}</p><p class="g-epi-sub">Still up</p><div class="g-epi-acts g-epi-folks">${folks.map(x => folkBtn(x)).join('')}</div></div>
+      <div class="g-row g-seg-next"><button type="button" class="g-btn" data-sleep>Sleep ▸</button></div></section>`, 'is-seg');
+    main.querySelectorAll('[data-bond]').forEach(b => b.addEventListener('click', () => hangout(b.dataset.bond)));
+    main.querySelector('[data-sleep]').addEventListener('click', sleepNow);
     GL()?.tick('late', { place: at.place });
+    main.querySelector('[data-bond], [data-sleep]')?.focus({ preventScroll: true });
   }
+  const pips = id => { const c = closeness(id); return `<i class="g-epi-pips" aria-label="closeness ${c} of ${CLOSE_MAX}">${'●'.repeat(Math.min(c, CLOSE_MAX))}${'○'.repeat(Math.max(0, CLOSE_MAX - c))}</i>`; };
+  const folkBtn = x => `<button type="button" class="g-epi-act g-epi-bond${x.b.role === 'rival' ? ' rival' : ''}" data-bond="${esc(x.id)}"><b>${esc(bondName(x.id))}</b><small>${esc(x.h.hint || x.h.place || '')}</small>${pips(x.id)}</button>`;
   const acts = slot => (P().activities || []).filter(a => (!a.slots || a.slots.includes(slot)) && (!a.from || S().day >= G.dayOf(a.from)) && (!a.until || S().day <= G.dayOf(a.until)));
   function goOut(info) {
-    const s = S(), slot = s.slot, ui = UI(), home = P().home || {};
+    const s = S(), slot = s.slot, ui = UI(), home = homeOf();
     const hv = homeView(slot);
     ui.setBg(hv.bg, hv.mood);
     SC.Music.set(G.D.places.screens[slot === 'evening' ? 'evening' : 'after'] || 'day');
-    const list = acts(slot), folks = people(slot);
-    const pips = id => { const c = closeness(id); return `<i class="g-epi-pips" aria-label="closeness ${c} of ${CLOSE_MAX}">${'●'.repeat(Math.min(c, CLOSE_MAX))}${'○'.repeat(Math.max(0, CLOSE_MAX - c))}</i>`; };
-    const main = ui.show(`<section class="g-seg g-epi-out"><p class="g-kicker">${esc(G.slotName(slot, info))} · ${esc(s.epi.place)}</p>
-      <div class="g-seg-box"><p class="g-seg-text">Where to?</p>${folks.length ? `<p class="g-epi-sub">People</p><div class="g-epi-acts g-epi-folks">${folks.map(x =>
-        `<button type="button" class="g-epi-act g-epi-bond${x.b.role === 'rival' ? ' rival' : ''}" data-bond="${esc(x.id)}"><b>${esc(G.name(x.id))}</b><small>${esc(x.h.hint || x.h.place || '')}</small>${pips(x.id)}</button>`).join('')}</div><p class="g-epi-sub">Places</p>` : ''}<div class="g-epi-acts">${list.map(a => {
+    const pr = practiceOpt(info) ? worldRaw().practice : null;
+    const list = [...(pr ? [{ id: '_practice', name: pr.title || 'Practice', place: pr.place, stats: pr.stats }] : []), ...acts(slot)], folks = people(slot);
+    const main = ui.show(`<section class="g-seg g-epi-out"><p class="g-kicker">${esc(G.slotName(slot, info))} · ${esc(placeName())}</p>
+      <div class="g-seg-box"><p class="g-seg-text">Where to?</p>${folks.length ? `<p class="g-epi-sub">People</p><div class="g-epi-acts g-epi-folks">${folks.map(folkBtn).join('')}</div><p class="g-epi-sub">Places</p>` : ''}<div class="g-epi-acts">${list.map(a => {
         const short = (a.cost || 0) > s.yen;
         return `<button type="button" class="g-epi-act" data-act="${esc(a.id)}"${short ? ' disabled' : ''}><b>${esc(a.name)}</b><small>${a.cost ? esc(G.money(a.cost)) : 'Free'}${a.stats ? ` · ${esc(G.gainText(a.stats))}` : ''}${short ? ' · not enough money' : ''}</small></button>`;
       }).join('') || '<p class="g-note">Nowhere to be today.</p>'}</div></div>
       <div class="g-row g-seg-next"><button type="button" class="g-btn" data-stay>Stay in ▸</button></div></section>`, 'is-seg');
-    main.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => doAct(list.find(a => a.id === b.dataset.act), info)));
+    main.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => b.dataset.act === '_practice' ? practice(info) : doAct(list.find(a => a.id === b.dataset.act), info)));
     main.querySelectorAll('[data-bond]').forEach(b => b.addEventListener('click', () => hangout(b.dataset.bond)));
     main.querySelector('[data-stay]').addEventListener('click', () => {
       s.spent[`${s.day}-${slot}`] = 'stay'; G.save();
@@ -476,7 +514,7 @@ window.FemcEpilogue = (() => {
     hangoutScene(id, h);
   }
   function hangoutScene(id, h, resume) {
-    SC.play({ scene: [...(h.bg ? [{ bg: h.bg }] : []), ...(GL()?.inject(h.id, h.scene) || h.scene)], place: h.place, time: h.time, title: resume ? null : h.title, label: G.name(id), cast: h.cast, faces: h.faces, resume,
+    SC.play({ scene: [...(h.bg ? [{ bg: h.bg }] : []), ...(GL()?.inject(h.id, h.scene) || h.scene)], place: h.place, time: h.time, title: resume ? null : h.title, label: bondName(id), cast: h.cast, faces: h.faces, resume,
       onBattle: fightHook({ type: 'epi', kind: 'hangout', id, h: h.id }),
       onDone: () => { S().pending = null; const st = bondState(id), first = !st.seen.includes(h.id); if (first) st.seen.push(h.id); bond(id, h.gain ?? 1); G.save();
         const pid = first && polaroidFor(h.id); pid ? polaroidShow(pid, advance) : advance(); } });
@@ -847,7 +885,7 @@ window.FemcEpilogue = (() => {
       (raw.events || []).filter(e => evs.includes(e.id)).forEach(e => out.push({ sec: 'epilogue', group, date: shown(e.date), title: e.title || 'Epilogue', sub: e.place || '',
         src: { kind: 'epi', k: 'event', world: wid, key: e.id, live } }));
       Object.entries(hang).forEach(([bid, ids]) => ((raw.bonds || {})[bid]?.hangouts || []).filter(h => ids.includes(h.id)).forEach(h => out.push({ sec: 'epilogue', group, date: '',
-        title: h.title || 'Time together', sub: `${G.name(bid)}${h.place ? ` · ${h.place}` : ''}`, src: { kind: 'epi', k: 'hangout', world: wid, key: h.id, bond: bid, live } })));
+        title: h.title || 'Time together', sub: `${(raw.bonds || {})[bid]?.name || G.name(bid)}${h.place ? ` · ${h.place}` : ''}`, src: { kind: 'epi', k: 'hangout', world: wid, key: h.id, bond: bid, live } })));
     });
     return out;
   }
@@ -882,6 +920,6 @@ window.FemcEpilogue = (() => {
 
   return { WORLDS, worldFor, endingOf, loadWorld, build, ensure, homeView, carryOf, leanFor, route, lockRoute, cond, stateFor, enter, leave, endScreen, offer, run, finish, raw: worldRaw,
     yearCond, peekCond, isEpiCond, replaySaw, recordOf, records, entered, albumEntries, postEntries, polaroidEntries, POLAROIDS, polaroidFor, polaroidShow, alertDue, newsTick, ALERTS, theaterRows, theaterLoad, replay, equinoxOf, ALBUM,
-    routeOpen, bond, closeness, startBond, contacts, contactCard, reach, call, topics, message, phoneWeek, migratePhone, hangoutFor, people, hangout, practiceNow, CLOSE_MAX, resume, partyFor, fightOf, fadeQueue, FADE, STAGES,
+    routeOpen, bond, closeness, startBond, contacts, contactCard, reach, call, topics, message, phoneWeek, migratePhone, hangoutFor, people, hangout, practiceNow, practiceOpt, bondName, sleepNow, placeName, phaseNow, CLOSE_MAX, resume, partyFor, fightOf, fadeQueue, FADE, STAGES,
     get cardDay() { return cardDay; } };
 })();

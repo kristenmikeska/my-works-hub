@@ -1,4 +1,6 @@
-/* The Runners epilogue's calendar (FEMC-EPILOGUE-PLAN.md section 3): Monday 12/1/2025 to Saturday 12/20/2025, Syracuse.
+/* The Runners epilogue's calendar (FEMC-EPILOGUE-PLAN.md section 3): Monday 12/1/2025 to Wednesday 12/31/2025: Syracuse to
+   12/20, then winter break in Manhattan (the Manhattan pass, Nov 5 2026, FEMC-RUNNERS-MANHATTAN-PLAN.md: `end` 12/31, the
+   break 12/21-12/31 as days off, Christmas Eve / Christmas / New Year's Eve labels, a New York late December's weather).
    Loaded on demand by epilogue.js when the epilogue is entered (never at the main game's start-up). Same shape as Iwatodai's
    data/calendar.js; whatever is left out comes from epilogue.js CAL_BASE (no ops, trips or floor caps at home).
    - `year` + `start` are day 0; `end` is the act's last night (sleeping through it ends the epilogue).
@@ -13,7 +15,7 @@
      edges and a few melting drops (weather.js; Iwatodai's calendar doesn't set it, so the main game is unchanged). */
 (window.FEMC_EPI_WORLDS ||= {}).runners = Object.assign(window.FEMC_EPI_WORLDS.runners || {}, {
   calendar: {
-    year: 2025, start: '12/1', firstFree: '12/1', end: '12/20', weekend: [0, 6],
+    year: 2025, start: '12/1', firstFree: '12/1', end: '12/31', weekend: [0, 6],
     slots: [
       { id: 'early', name: 'Morning' },
       { id: 'after', name: 'After Class', offName: 'Daytime' },
@@ -21,15 +23,18 @@
       { id: 'late', name: 'Late Night' }
     ],
     daySlots: { school: ['early', 'after', 'evening', 'late'], off: ['early', 'after', 'evening', 'late'], exam: ['early', 'after', 'evening', 'late'] },
-    holidays: {},
+    holidays: { '12/24': 'Christmas Eve', '12/25': 'Christmas', '12/31': "New Year's Eve" },
+    breaks: [{ id: 'winter', name: 'Winter break', from: '12/21', to: '12/31' }],
     events: { '12/6': 'Regionals', '12/7': 'Regionals' },
     exams: [{ id: 'finals', days: ['12/15', '12/16', '12/17', '12/18', '12/19'] }],
     fullMoons: ['12/4'],
     weather: { '12/1': 'snow', '12/2': 'snow', '12/3': 'snow', '12/4': 'clear', '12/5': 'cloudy', '12/6': 'snow', '12/7': 'snow',
       '12/8': 'cloudy', '12/9': 'snow', '12/10': 'snow', '12/11': 'snow', '12/12': 'snow', '12/13': 'cloudy', '12/14': 'clear',
-      '12/15': 'snow', '12/16': 'cloudy', '12/17': 'snow', '12/18': 'snow', '12/19': 'clear', '12/20': 'snow' },
+      '12/15': 'snow', '12/16': 'cloudy', '12/17': 'snow', '12/18': 'snow', '12/19': 'clear', '12/20': 'snow',
+      '12/21': 'cloudy', '12/22': 'clear', '12/23': 'cloudy', '12/24': 'snow', '12/25': 'snow', '12/26': 'clear', '12/27': 'cloudy',
+      '12/28': 'clear', '12/29': 'snow', '12/30': 'cloudy', '12/31': 'clear' },
     weatherLevels: { '12/1': 'heavy', '12/2': 'light', '12/3': 'light', '12/6': 'light', '12/7': 'light', '12/8': 'fog', '12/9': 'light',
-      '12/10': 'light', '12/11': 'light', '12/12': 'light', '12/15': 'light', '12/17': 'light', '12/18': 'light', '12/20': 'heavy' },
+      '12/10': 'light', '12/11': 'light', '12/12': 'light', '12/15': 'light', '12/17': 'light', '12/18': 'light', '12/20': 'heavy', '12/24': 'light', '12/25': 'light', '12/29': 'light' },
     spells: [{ name: 'Lake-effect snow', from: '12/1', to: '12/3' }, { name: 'Lake-effect snow', from: '12/9', to: '12/12' },
       { name: 'Lake-effect snow', from: '12/17', to: '12/18' }],
     frost: true,

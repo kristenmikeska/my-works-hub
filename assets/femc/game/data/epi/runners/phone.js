@@ -4,7 +4,7 @@
    Handles: the Runners World site's SUgram handles where it has them (sollee, haechanah, markylee, minjibear, jen0l33, hanni,
    hyein, jaemin, renjun, chenle, oliviahye); profile pictures: art/avatars/runners (tools/femc-avatars.py).
    Inventions: Doyoung's handle `dykim.coach`, Haerin's `haerin.k`; Haechan keeps the studio's space heater on a timer; Jaehyun
-   ices after practice; Mom's text-only "Rosa says hello"; Dad answers a plain good morning; Ms. Han signs "H." No plot. */
+   ices after practice; Mom's text-only "Mrs. Oh says hello"; Dad answers a plain good morning; Ms. Han signs "H." No plot. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).runners ||= {});
   const T = (R.texts ||= {});
@@ -335,7 +335,7 @@
             { s: 'them', f: 'happy', t: 'Sweetheart. Is everything all right?' },
             { s: 'solar', f: 'happy', t: 'Everything’s fine. I just wanted to hear you.' },
             { n: 'A silence. Not a bad one. The kind you could hear somebody smile through.' },
-            { s: 'them', f: 'happy', t: 'Well. Here I am. It’s snowing here too, a little. Rosa says hello.' },
+            { s: 'them', f: 'happy', t: 'Well. Here I am. It’s snowing here too, a little. Mrs. Oh says hello.' },
             { s: 'them', f: 'neutral', t: 'Wear something warm. Eat something warm. And then go and do your work.' }
           ] }
         ],

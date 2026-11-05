@@ -5,7 +5,9 @@
      { choose: [{ t, notes, then, say, flag, tally, stat, needs, reverse, route, ifFlag, when }] }
                                  (when: a condition object; the option shows only while it holds)
                                  a choice; "(...)" options aren't spoken; needs: { stat: rank } locks an option
-       { christmasOptions: true }  an entry in a choice list (the 12/24 story picker) that expands into one "(Text <name>.)"
+       { mingle: { pick, min }, choose: [options] }   a party loop: asks the options not yet taken, again and again (at most
+                                 pick; an option with leave: true ends it once min are taken); see mingle() below
+     { christmasOptions: true }  an entry in a choice list (the 12/24 story picker) that expands into one "(Text <name>.)"
                                  option per G.christmasChoices(): links whose own `christmas` scene is open (core.js) and
                                  that no shown option already offers (an option setting the flag xmas-<id> offers <id>).
                                  Picking one records the pick (G.pickChristmas) and plays G.christmasLines(id).
@@ -368,6 +370,20 @@ window.FemcScene = (() => {
       choices.querySelector('button:not(:disabled)')?.focus({ preventScroll: true });
       G.sfx('femc-hover');
     }
+    /* A party's mingle loop (the Runners Manhattan pass, Nov 5 2026): { mingle: { pick, min }, choose: [options] } asks the
+       options not yet taken (ordinary choice options, so every scene walker follows them), plays the one picked, then asks
+       again, until `pick` have been taken or none is left. An option with `leave: true` ends the loop; it shows once `min`
+       others are taken (default 1). What's been taken rides in the queue (`mingle._taken`), so a scene rebuilt after a
+       reload keeps it. In a replay every option shows, once. */
+    function mingle(line) {
+      const m = line.mingle, taken = m._taken || [], whenOk = c => { if (replay) return true; const r = G.branch({ ...c, then: [1], else: [] }); return r === null || r.length > 0; };
+      const open = (line.choose || []).map((o, i) => ({ o, i })).filter(({ o, i }) => !o.leave && !taken.includes(i) && (!o.ifFlag || flagOn(o.ifFlag)) && (!o.when || whenOk(o.when)));
+      const leave = (line.choose || []).filter(o => o.leave);
+      if (taken.length >= (m.pick || Infinity) || !open.length) return next();
+      const list = open.map(({ o, i }) => ({ ...o, when: undefined, ifFlag: undefined, then: [...(o.then || []), { ...line, mingle: { ...m, _taken: [...taken, i] } }] }));
+      if (taken.length >= (m.min ?? 1)) list.push(...leave);
+      return ask(list);
+    }
     /* Gifts (core.js giveGift, data/gifts.js): { giftAsk: link } asks "Give a gift?" when Solar carries any (skipping is
        fine), { giftPick: link } lists the bag in the choice box (arrows / Enter / click; "(Never mind.)" goes back to the
        question). The reaction's lines play next and its ♪ join the scene's. Nothing in a replay. */
@@ -555,6 +571,7 @@ window.FemcScene = (() => {
       if (line.battle) return battle(line);
       if (line.giftAsk) return giftAsk(line);
       if (line.giftPick) return giftPick(line);
+      if (line.mingle) return mingle(line);
       if (line.choose) return ask(line.choose);
       if (line.route) return ask(line.route);
       // In a replay, opts.branch(line, link, flagOn) answers conditions without touching the save (menu.js peek); without

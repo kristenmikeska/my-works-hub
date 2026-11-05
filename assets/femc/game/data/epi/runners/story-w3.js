@@ -141,6 +141,12 @@
     { s: 'solar', f: 'serious', t: "I'll answer her." },
     { s: 'jaehyun', f: 'serious', t: "By the eighteenth. Or she calls the house. You know what happens when she calls the house." },
     { n: "She knew. Everybody at the island knew, from the way he said it, and the island developed a sudden collective interest in its breakfast. Jaehyun didn't raise his voice when it counted. He didn't need to; the calm was the threat, and the calm was also, she'd only lately started to understand, the closest thing he had to worrying out loud." },
+    { ifFlag: 'epi-r-card-signed', else: [ // the time pass (gap 12): she never came by to sign Mom's card (people.js jaehyun-2)
+      { s: 'jaehyun', f: 'neutral', t: "Mom's card went out Friday. You never came by. I signed for you." },
+      { s: 'solar', f: 'surprised', t: "You forged my signature?" },
+      { s: 'jaehyun', f: 'neutral', t: "I made it worse than mine. So she'd believe it." },
+      { n: "It was the closest thing to a joke she'd heard him make in a year. He didn't smile. He went back to his eggs, and she sat there with the image of her brother at the Sigma coffee table, practicing her handwriting badly on purpose so their mother wouldn't notice it was him, and had to look at the banana for a while." }
+    ] },
     { n: "He looked at the Band-Aid on her knuckles. He looked at it for exactly as long as it took to decide not to ask, which was half a second, which was very fast for Jaehyun, and then he rinsed his plate and put on his coat and squeezed the back of her neck once on his way past, hard, the way he used to when she was nine and he was leaving for something important." },
     { s: 'jaehyun', f: 'neutral', t: "Eat the banana." },
     { n: "Then he was gone, the front door, the cold, a slice of white light across the hall floor and then not. And the kitchen, which had been six people pretending not to be awake, became six people pretending not to notice who'd just come down the stairs." },
@@ -312,21 +318,23 @@
     { n: "Hanni was at the bottom of the stairs with her hand on the grandfather clock's case. She wasn't filming. She wasn't saying anything. She was looking at Solar coming down the stairs, the way she'd looked at her on the quad on Monday with the coffee lids popped off, and Solar understood that Hanni had already decided something, alone, at seven in the morning, and had been waiting for her to come down to find out what." },
     { s: 'hanni', f: 'serious', t: "It's yours. Isn't it." },
     { n: "Not an accusation. Just a fact, set down on the counter between them where they could both look at it." },
-    { s: 'hyein', f: 'sad', t: "Monday the snow. Sunday your hand. Last night you came up the stairs at like twelve-oh-two and I heard you count them. Out loud. Sol, you counted the stairs." },
+    { s: 'hyein', f: 'sad', t: "Monday the snow. Sunday your hand. Tuesday night you came up the stairs at like twelve-oh-two and I heard you count them. Out loud. Sol, you counted the stairs." },
     { choose: [
-      { t: "Yes. It's mine. I don't know how to stop it.", then: [
+      { t: "Yes. It's mine. I don't know how to stop it.", flag: 'epi-r-told-girls', then: [
         { n: "It came out quiet. It came out true. Hanni let go of the clock and came across the hall and took both her hands, the way she'd taken them on the shuttle, one each, and Hyein came up behind her and put her chin on Solar's shoulder, and the three of them stood at the bottom of the stairs in their pajamas in a house where every clock had stopped, holding on." },
         { s: 'hanni', f: 'serious', t: "Okay. Then it's ours. Like the cabin. We hold it." },
         { s: 'hyein', f: 'sad', t: "We are SO bad at holding normal things. We're going to be incredible at this." }
       ] },
-      { t: "(Lie.) It's the electrics. Old house. Chungha's calling someone.", then: [
+      { t: "(Lie.) It's the electrics. Old house. Chungha's calling someone.", flag: 'epi-r-lied-girls', then: [
         { glitch: { strain: 1 } },
         { n: "Her father's daughter. Smooth as a wineglass, not a hitch. Behind her the grandfather clock made a sound it hadn't made in years, a single deep tick, as if it disagreed." },
         { s: 'hanni', f: 'sad', t: "...Okay, Sol." },
         { n: "Hanni said it the way you say okay to someone on a ledge. She didn't let go of the clock. Hyein didn't say anything at all, which was how Solar knew how bad it was." }
       ] }
     ] },
-    { n: "At the top of the stairs, on the second landing, Danielle stood in a cream robe with a mug in her hand, looking down at the grandfather clock with an expression of polite, total interest, like someone reading a line item that didn't add up. She didn't come down. She didn't film it. She just looked at the clock, and then at Solar, and then went back to her room and shut the door with that small, precise, almost polite sound." },
+    { n: "At the top of the stairs, on the second landing, Danielle stood in a cream robe with a mug in her hand, looking down at the grandfather clock with an expression of polite, total interest, like someone reading a line item that didn't add up. She didn't come down. She didn't film it. She just looked at the clock, and then at Solar, the whole length of the staircase between them." },
+    { s: 'danielle', f: 'neutral', t: "Tomorrow night. Wear something you'd like to be remembered in." },
+    { n: "Then she went back to her room and shut the door with that small, precise, almost polite sound, and left the sentence hanging over the stairwell like the smell of her coffee." },
     { place: 'Syracuse · Alpha Phi House · Her Room', time: 'Morning', soft: true },
     { phone: [
       { from: 'han', t: 'Good morning, Solar. This is Ms. Han.' },
@@ -384,7 +392,61 @@
   ] },
 
   // ───────────────────────────── 12/19, evening: the Sigma holiday party (fight 4) ─────────────────────────────
-  { id: 'epi-r-holiday', date: '12/19', slot: 'evening', consumes: true, faces: 'runners-holiday', title: 'the holiday party', place: 'Syracuse · Sigma Chi House · Holiday Party', time: 'Evening', scene: [
+  { id: 'epi-r-holiday', date: '12/19', slot: 'evening', consumes: true, faces: 'runners-holiday', title: 'the holiday party', place: "Syracuse · Alpha Phi House · Hanni and Hyein's Room", time: 'Evening', scene: [
+    // Seven-thirty, before the party (home pass 2026-11-04, FEMC-RUNNERS-EPI-EXPANSION gap 4): getting ready, by route.
+    { music: 'epi-r-sisters' },
+    { n: "At seven-thirty Hanni and Hyein's room smelled like hairspray and hot metal and the clementines Hyein ate when she was nervous, and every surface that could hold a dress was holding one, and Solar stood in the middle of it in her slip with her arms out while Hyein walked around her with pins in her mouth like a tailor in a movie." },
+    { s: 'hyein', f: 'serious', t: "Don't breathe." },
+    { s: 'solar', f: 'neutral', t: "At all?" },
+    { s: 'hyein', f: 'serious', t: "Breathe later. At the party. Breathe at Sigma." },
+    { n: "The wine-red silk went over her head cool as water and fell all the way down, and Hyein did the zip in one long pull from the small of her back, which was as high as the zip went, because above that there wasn't any dress, only skin and the cold air from the window Hanni had cracked to let the hairspray out. The sleeves came to her knuckles. The hem moved when she did, a half-second late, like it had its own opinion." },
+    { n: "Then Hanni sat her on the desk chair and did her hair." },
+    { n: "It took twenty minutes and two arguments. Hanni wanted it up, a low twist at the nape, the way you'd wear it to a gallery. Hyein wanted it down, for the back. In the end Hanni put it up and pulled it loose again around her face in soft dark pieces that looked like an accident and had taken eleven minutes, and Hyein tied a thin black velvet ribbon around the twist with the ends left long, so they fell down between her shoulder blades and moved when she turned her head, which Hyein said was *the whole point of the back,* and which Hanni conceded, out loud, was correct." },
+    { ifEpiRoute: 'haechan', then: [
+      { s: 'hyein', f: 'happy', t: "I dropped the shirt at Sigma at five. He looked at it like it had insulted his mother. Jeno says he's wearing it." },
+      { s: 'hanni', f: 'neutral', t: "Jeno says a lot of things." },
+      { s: 'hyein', f: 'happy', t: "Jeno sent a picture. It's blurry. It's him in the shirt in the bathroom doorway looking at the camera like he's going to have Jeno killed. It's my favorite photo I own." },
+      { n: "Her phone buzzed on the desk. Hanni passed it over her shoulder without looking at the screen, which was a kindness, and kept pinning." },
+      { phone: [
+        { from: 'haechan', t: 'two hours' },
+        { from: 'haechan', t: "careful for two hours. we talk to other people. i judge jeno's eggnog. you dont look at me" },
+        { from: 'haechan', t: 'then i stop being careful' }
+      ], contact: 'haechanah' },
+      { choose: [
+        { t: "(Reply.) deal", then: [
+          { phone: [{ from: 'solar', t: 'deal' }, { from: 'haechan', t: 'you looked at your phone just now. thats looking at me' }], contact: 'haechanah' }
+        ] },
+        { t: "(Reply.) and if i look at you", then: [
+          { phone: [{ from: 'solar', t: 'and if i look at you' }, { from: 'haechan', t: 'then i lose a bet i made with myself at 4pm' }, { from: 'haechan', t: 'look anyway' }], contact: 'haechanah' }
+        ] }
+      ] },
+      { n: "Hyein read it upside down over her shoulder, which wasn't a kindness, and made a noise like a dying balloon." }
+    ] },
+    { ifEpiRoute: 'cover', then: [
+      { n: "There were three dresses on the bed. Three cuts, the same wine, laid out side by side like a family photo. Hyein's, which had a slit. Hanni's, which had a collar and was the least festive thing in the room and was, Hanni said, festive enough. And the one Solar was wearing." },
+      { s: 'hanni', f: 'serious', t: "We stay together. All night. Nobody goes to the bathroom alone. Nobody goes upstairs. Nobody goes near the stairs." },
+      { s: 'hyein', f: 'serious', t: "Not even if someone's cute?" },
+      { s: 'hanni', f: 'serious', t: "Especially if someone's cute." },
+      { s: 'hyein', f: 'happy', t: "Okay. I'll work on the rest of the plan. I have like a whole thing. It has a part where I'm loud." },
+      { s: 'hanni', f: 'neutral', t: "We'll see." },
+      { n: "Hanni said *we'll see* the way you said it to a dog that wanted to go out in the rain. Hyein looked delighted anyway. She'd been told no by Hanni a thousand times and had never once let it stop her from having a plan." }
+    ] },
+    { ifEpiRoute: 'minji', then: [
+      { n: "Her phone was face up on the desk with Minji's thread open on it, the question from that afternoon still sitting at the bottom of the screen. Hyein saw it. Hyein saw everything. She leaned over with a pin in her teeth and read it upside down and then very carefully didn't say anything, which, for Hyein, was a speech." },
+      { s: 'hyein', f: 'sad', t: "She asks. Like, every time. Even for little things." },
+      { s: 'solar', f: 'neutral', t: "I know." },
+      { s: 'hyein', f: 'sad', t: "That's so... okay. Okay. I'm not saying anything. I'm pinning." },
+      { n: "She pinned. She was blinking a lot. Hanni, behind Solar with the ribbon, reached round and squeezed Hyein's shoulder once without stopping what her other hand was doing." }
+    ] },
+    { n: "Hyein made her stand by the window, after, for the portfolio. Her phone on the little tripod, the ring light balanced on a stack of textbooks, the snow outside going past blue in the dark behind her. *Turn. No, the back. Look over your shoulder. Not like that. Like you forgot something.* Click. Click. Hyein looked at the screen and went quiet, and turned it around, and didn't say anything." },
+    { n: "Then Solar turned to the mirror on the back of the closet door, the long one, warped a little at the bottom, the way every mirror in this house was." },
+    { n: "There was a girl in it in wine-red silk with her chin level and her shoulders back and a black ribbon down her spine. She didn't recognize her. For one long second she genuinely didn't, a stranger in somebody else's room, dressed for somebody else's life. Then, slowly, she did. The scrape across the knuckles, gone pink. The dark under the eyes she'd left. The way she was standing, weight forward, ready, a stance she'd learned at midnight in a tower and never unlearned." },
+    { n: "It was worse, recognizing her. It was also better. She didn't have a word for which one it was more." },
+    { n: "Downstairs the grandfather clock struck eight, all eight, telling the right time. Hanni checked her watch anyway. So did Solar." },
+    { s: 'hanni', f: 'neutral', t: "Jaemin says Hyein's looks arrive at eight-fifteen. So everyone sees them arrive." },
+    { s: 'hyein', f: 'happy', t: "It's in the run of show. It's on the fridge. It's LAW." },
+    { n: "On the second landing, as they went down, Danielle's door was shut and her light was on, a thin bright line under it. The three of them walked past it in step, in wine, without slowing, and the third stair from the top didn't make a sound." },
+    { place: 'Syracuse · Sigma Chi House · Holiday Party', time: 'Evening' },
     { music: 'epi-r-holiday' },
     { n: "The last Friday before break, Sigma put on a jacket. That was the only way to describe it. The Friday party, the one that happened weekly without fail, had shaved and put on a tie and hung lights from every surface that would take a staple, and called itself a holiday party, and behaved, for the first hour, like it believed it." },
     { n: "Jaemin had hosted it the way some people direct films. There was a run of show on the fridge in his handwriting, doors at eight, Jeno, a speech at nine, a photo wall at ten that was just a bedsheet with tinsel safety-pinned to it, and at the bottom, underlined twice, *12:00 · the toast (EVERYONE).* Under that, smaller, in a different pen: *NO PINK PUNCH.* Under that, smaller still, in a third: *there is pink punch.*" },
@@ -395,13 +457,13 @@
     ], else: [
       { s: 'jaemin', f: 'happy', t: "The emergency vacationer! Look at you. Hyein, look at her. You did that. That's a crime. In a good way." }
     ] },
-    { n: "Hyein had done it. Wine-red silk, cut on the bias, long sleeves and almost no back at all, and Solar had stood in front of the mirror in Hanni and Hyein's room at seven-thirty and not recognized the girl in it and then, slowly, recognized her, which had been worse and better." },
+    { n: "Hyein had done it. Wine-red silk, cut on the bias, long sleeves and almost no back at all, and Solar still wasn't used to the girl wearing it, which was worse and better." },
     { s: 'jaemin', f: 'happy', t: "Toast at midnight. Everyone. That means you. I'm going to say something about the emergency vacation and you're going to laugh like it's the first time." },
     { s: 'solar', f: 'neutral', t: "Midnight." },
     { s: 'jaemin', f: 'happy', t: "It's tradition. As of tonight." },
     { n: "She looked at the clock over the Sigma fireplace. It said 8:51. It was telling the right time. She checked her phone anyway, which also said 8:51, and put it away, and felt the evening open in front of her like a staircase in the dark, every step there, until one of them wasn't." },
     { cg: null },
-    { n: "Danielle was on the stairs. Three steps up, the way she always was, in black, a glass of something clear in her hand she wasn't drinking, her phone in the other. She'd done the budget for this party. Everyone knew she had, because she'd put *approved, D. Marsh* on the bottom of the spreadsheet in a font size that suggested she'd like it engraved. She lifted the glass an inch toward Solar. *Wear something you'd like to be remembered in,* she'd said on Tuesday. Solar had." },
+    { n: "Danielle was on the stairs. Three steps up, the way she always was, in black, a glass of something clear in her hand she wasn't drinking, her phone in the other. She'd done the budget for this party. Everyone knew she had, because she'd put *approved, D. Marsh* on the bottom of the spreadsheet in a font size that suggested she'd like it engraved. She lifted the glass an inch toward Solar. *Wear something you'd like to be remembered in,* she'd said from the landing, over a stopped clock. Solar had." },
     { ifFlag: 'epi-r-danielle-initial', then: [
       { n: "Solar's initials were on that spreadsheet, too, small, on a guest-list line she'd signed for the records. She thought about that now. She thought Danielle was thinking about it too." }
     ] },
@@ -425,6 +487,141 @@
     ] },
     { s: 'jaehyun', f: 'happy', t: "Midnight. Then bed. The car's at nine on Sunday and I'm not carrying your bag down." },
     { n: "Then Johnny said his name from the kitchen and he went, the careful left-side-first step through the crowd, a hand on a back here and there, president of a house that was behaving tonight because he was in it." },
+    { n: "The house filled in behind him. It was a bigger crowd than the Fridays got, half of campus in clothes it had clearly bought for this, the radiators knocking under the windows and the windows themselves gone blind with steam, the whole place smelling of pine needles off the tree Jeno had dragged in from somewhere he refused to name, and nutmeg, and the hot, faintly scorched smell of three hundred fairy bulbs that had been on since four. Somebody had hung mistletoe over the kitchen door and somebody else had taken it down and somebody else had put it back up crooked, and the fight was still going on, in shifts. She stood at the edge of the living room with a cup of something Jeno had pressed into her hand and felt the night unroll in front of her, three hours of it, room by room." },
+    // The mingle (Manhattan pass): nine-fifteen to ten.
+    { mingle: { pick: 5, min: 3 }, choose: [
+      { t: "(Find Jaemin.)", then: [
+        { n: "Jaemin was in the dining room with a clipboard, which he'd borrowed from Doyoung without telling Doyoung, and a pen behind each ear, and the expression of a man hosting a party in the precise sense of the word, which was to say having a panic attack in a nice shirt." },
+        { s: 'jaemin', f: 'happy', t: "Solar. Thank god. A competent person. The photo wall is a bedsheet. I knew it was a bedsheet. I didn't know it would *look* like a bedsheet." },
+        { s: 'solar', f: 'happy', t: "It's got tinsel on it." },
+        { s: 'jaemin', f: 'happy', t: "It does have tinsel on it. You're right. You're so right. This is why you won Regionals. Clarity." },
+        { n: "He ticked something off. She couldn't see what. She suspected it said *Solar: reassures* and that he'd written it before she arrived." },
+        { s: 'jaemin', f: 'neutral', t: "Okay, two things. One, at midnight I need you front and center. I'm toasting the emergency vacation and the Regional champion in the same sentence. It's going to be a very long sentence. I've practiced it." },
+        { ifEpiRoute: 'haechan', then: [
+          { ifFlag: 'epi-r-public-post', then: [
+            { s: 'jaemin', f: 'happy', t: "Two. I'm not saying anything about the *hi.* I'm not. I'm a professional. But it has nine hundred likes and the house account has never once hit nine hundred likes, and I want you to know I'm not jealous, and I'm a little jealous." }
+          ], else: [
+            { s: 'jaemin', f: 'neutral', t: "Two. I'm not asking about anybody. Nobody. If anybody were somebody, I'd be very discreet about it. I'm the most discreet man in this house. Ask anyone. Don't ask Jeno." }
+          ] }
+        ], else: [
+          { s: 'jaemin', f: 'happy', t: "Two. People keep asking me where the trip was. I've started saying *this,* actually. This party. The trip was this party. It's a metaphor. Nobody understands it. It's working." }
+        ] },
+        { n: "Then somebody shouted his name from the kitchen about the ice, and he said *ice* the way a general says *the river,* and went, clipboard high, and she stood alone in the dining room for a moment with the run of show visible through the doorway on the fridge, *12:00 · the toast (EVERYONE),* underlined twice, and felt her pulse go strange in her wrists, like a clock that wasn't sure of itself." }
+      ] },
+      { t: "(Watch Jeno work the room.)", then: [
+        { n: "It was something to see. Jeno moved through a party the way water moved through a house with a burst pipe, everywhere at once and impossible to stop, a cup in every hand that had come in empty, a hand on every back, and somewhere in it a kind of order, if you watched long enough, the way a flood had an order." },
+        { n: "She watched him talk a sophomore down off the arm of the couch where he'd been about to try the tree. She watched him confiscate a Bluetooth speaker from a boy trying to start a second, rival party in the downstairs bathroom, and hand it to Jisung, who received it like a hostage. She watched him pour eggnog for Renjun, who didn't want any, and Renjun take it anyway, because it was easier, which was how most things in this house got done." },
+        { s: 'jeno', f: 'happy', t: "Champion! Two cups. Champion's discount. The discount is two cups." },
+        { s: 'solar', f: 'neutral', t: "What's in it?" },
+        { s: 'jeno', f: 'serious', t: "Eggnog. On my mother. Mostly eggnog. A historically significant amount of eggnog." },
+        { ifEpiRoute: 'haechan', then: [
+          { ifFlag: 'epi-r-public-post', then: [
+            { s: 'jeno', f: 'neutral', t: "People keep coming up to me going *is it real, is it real.* I tell them read the caption. It says hi. That's real. That's the realest thing anyone's posted all year." }
+          ], else: [
+            { s: 'jeno', f: 'happy', t: "People keep coming up to me going *is it a thing, are they a thing.* I tell them I don't know anything, which is true, technically. I'm very technical." }
+          ] }
+        ], else: [
+          { s: 'jeno', f: 'happy', t: "People keep asking me where you went. I say a yacht. Every time. Then they go away. A yacht is the end of a conversation. You should try it." }
+        ] },
+        { n: "He clinked his cup against both of hers and was gone, into the crowd, a hand already on somebody else's back, and she stood there holding two cups of something historically significant and found that she was smiling, properly, because there were people in the world who simply kept the room going, and asked nothing back for it but noise." }
+      ] },
+      { t: "(The woman by the tree is looking at you.)", then: [
+        { n: "She was older than anyone else in the room by thirty years and wore it like a decision: a camel coat she hadn't taken off, a string of pearls that had been somebody's mother's, a glass of white wine she was holding the way you'd hold a pen at a signing. She was standing by Jeno's tree as though it had been put there for her to stand by." },
+        { s: 'whitfield', f: 'neutral', t: "You're Solji's girl. Don't look so worried. I'm only house board. Alpha put money into the eggnog this year, so they send someone to make sure it's eggnog. Caroline Whitfield. Alpha Phi, ninety-one." },
+        { s: 'solar', f: 'neutral', t: "...You know my mother?" },
+        { s: 'whitfield', f: 'happy', t: "I sat on a Lee Foundation committee with your mother for six years. The spring benefit. Six years, and I never once saw her sit down. Not at a single dinner. I don't believe she owns a chair." },
+        { n: "It was so exactly right that Solar laughed out loud, which she hadn't meant to, and the woman looked pleased in a small, dry way, like someone who'd placed a bet on a horse and been proven right." },
+        { s: 'whitfield', f: 'neutral', t: "You stand in a doorway the way she does. Like you're deciding whether the room deserves you. I noticed it from over here. I'm sure no one's ever told you." },
+        { s: 'solar', f: 'neutral', t: "No one's ever told me." },
+        { s: 'whitfield', f: 'happy', t: "Well. Tell her Caroline says hello. She won't remember me. She'll pretend beautifully. Your mother could pretend to remember a lamppost." },
+        { n: "Solar said she would. She meant it, and also knew she wouldn't, because there was no version of a phone call with her mother where *a woman at a frat party said I stand like you* fit anywhere in it, and she stood there by the tree after Mrs. Whitfield had moved on, in a dress her mother had never seen, holding the shape of her mother's posture in her own spine like something borrowed she wasn't sure she wanted to give back." }
+      ] },
+      { t: "(Two of Jaehyun's teammates are waving you over.)", then: [
+        { n: "Tyler and Marcus were six-foot-something each and wedged into the corner by the keg like furniture that had been delivered to the wrong room. She knew them the way she knew most of the team, as a set of shoulders behind her brother at a tailgate, and they straightened up when she came over the way boys straightened up for a coach." },
+        { s: 'tyler', f: 'happy', t: "Little Lee. Congrats on the, uh. The video game. The big one. Coach showed us the clip in film. Not as film. Just as, like, a thing. It was sick." },
+        { s: 'marcus', f: 'neutral', t: "Real question, though. Where's he been?" },
+        { s: 'solar', f: 'surprised', t: "Jaehyun?" },
+        { s: 'marcus', f: 'neutral', t: "He's skipped two team dinners. He leaves lift early. He's never once in three years left lift early. Coach thinks it's the shoulder. It's not the shoulder. I've seen the shoulder." },
+        { s: 'tyler', f: 'neutral', t: "We figured you'd know. He's always over at Alpha now. Like, with a shovel. Somebody saw him shoveling your steps at six in the morning." },
+        { n: "She hadn't known. That was the thing that went through her first, cold and quick: she hadn't known about the dinners, or the lifts, or the six in the morning. She'd only known that since she came back he'd been everywhere she was, at the lab door, at the bottom of the stairs, at the end of the phone, asking whether she'd eaten, and she'd put it down to him being him. She'd never once asked where he was supposed to be instead." },
+        { s: 'solar', f: 'neutral', t: "He's been making sure I eat." },
+        { s: 'marcus', f: 'happy', t: "...Yeah. Okay. That tracks. That's him. Tell him the O-line misses him. Don't tell him I said it like that." },
+        { n: "Across the room, by the kitchen, her brother was listening to Johnny with his arms folded and his weight on his left side, the right shoulder held a careful quarter inch lower than it used to be, and she looked at him for a long time over the heads of the crowd, and he didn't look back, and she was grateful, because she didn't know what her face was doing." }
+      ] },
+      { t: "(Someone's got Haechan cornered by the speaker.)", then: [
+        { n: "She was pretty in the exact way that knew it, a junior Solar half recognized from the music building, in silver, with a phone already out and a link already up on it, and she had Haechan backed up against the speaker by sheer conversational force while Jisung, beside them, pretended to be part of the speaker." },
+        { s: 'bree', f: 'happy', t: "I'm not trying to be weird. I just heard you do sessions in 4B. Like, real ones. My demo's done, I just need someone who can actually hear it. I'll pay. Obviously. Whatever you charge." },
+        { n: "She said it with Solar standing right there. Solar had come over for Jisung, ostensibly. She had a cup in her hand and nowhere to put her face." },
+        { ifEpiRoute: 'haechan', then: [
+          { s: 'haechan', f: 'neutral', t: "I don't do sessions for people I don't know." },
+          { s: 'bree', f: 'happy', t: "So get to know me. I'm Bree. Hi. Now you know me." },
+          { s: 'haechan', f: 'neutral', t: "Studio's booked through January." },
+          { s: 'bree', f: 'surprised', t: "By who?" },
+          { s: 'haechan', f: 'neutral', t: "Me. And I'm away after Christmas. Work." },
+          { ifFlag: 'epi-r-term-circle', then: [
+            { n: "He didn't look at Solar once. It was impressive, actually, how completely he didn't, two hours of careful in one unbroken line. Over Bree's shoulder Hyein, by the photo wall, made a face of such enormous, silent, delighted outrage that Hanni had to physically turn her round by the elbows and walk her away." }
+          ], else: [
+            { n: "He didn't look at Solar once. It was impressive, actually, how completely he didn't, two hours of careful in one unbroken line, the week she'd asked for kept even here, even now, with a girl in silver asking him for the one room in the world that was theirs. Solar drank her eggnog. It tasted like nothing." }
+          ] },
+          { n: "Bree went, eventually, with a *well, if anything opens up,* and Haechan picked a piece of tinsel off the speaker and examined it with great seriousness, and said, to the tinsel, so low only she could hear it, *you looked,* and she said *I did not,* and he said *you're looking now,* and she was." }
+        ] },
+        { ifEpiRoute: 'cover', then: [
+          { s: 'haechan', f: 'neutral', t: "I'm booked. And I'm away after Christmas. Work." },
+          { s: 'bree', f: 'happy', t: "January, then. Seriously. I'll bring coffee. Good coffee." },
+          { s: 'haechan', f: 'happy', t: "There's no good coffee on this campus. That's how I know you've never been in the building." },
+          { n: "Bree laughed, and turned, and seemed to see Solar for the first time, and looked between the two of them with a quick, assessing interest." },
+          { s: 'bree', f: 'neutral', t: "Wait. Are you two...?" },
+          { s: 'solar', f: 'happy', t: "God, no." },
+          { s: 'haechan', f: 'happy', t: "She'd ruin my reputation." },
+          { n: "It was easy. It was so easy it surprised her, the two of them standing by a speaker being nothing to each other on purpose, a friend's dry voice and a friend's flat face, and Bree went off satisfied, and Haechan nodded once at Solar the way you'd nod at a teammate after a clean trade, and went back to ignoring the room, and she found, a little to her own surprise, that she didn't mind at all." }
+        ] },
+        { ifEpiRoute: 'minji', then: [
+          { s: 'haechan', f: 'neutral', t: "I'm booked. And I'm away after Christmas. Work." },
+          { s: 'bree', f: 'happy', t: "January, then. I'm persistent. I'm told it's my best quality." },
+          { s: 'haechan', f: 'neutral', t: "Who told you that?" },
+          { s: 'bree', f: 'happy', t: "...Me." },
+          { n: "Behind Bree, at the edge of the crowd, Minji had lowered her camera to watch, and when Bree finally gave up and drifted off toward the kitchen, Minji caught Solar's eye and did a tiny, perfect impression of Haechan's face, the total flatness of it, and Solar had to turn around and look at a wall for a full minute before she could trust herself." },
+          { n: "Haechan, who'd seen all of it, said nothing, and handed Jisung the tinsel he'd been holding, and Jisung put it in his pocket as if it were important." }
+        ] }
+      ] },
+      { t: "(Danielle's friends are fussing with the photo wall.)", then: [
+        { n: "Tess and Nora were never more than ten feet from Danielle at any Alpha event, and tonight they were ten feet from her exactly, at the photo wall at the foot of the stairs, moving a standing lamp an inch at a time and looking up at the third step after every inch, like two stagehands checking the light on a mark." },
+        { s: 'tess', f: 'neutral', t: "Can you not stand there? Sorry. You're in the light. We're setting up for the toast picture." },
+        { s: 'nora', f: 'happy', t: "Danielle wants the whole room in it. At midnight. From the stairs. She says it's the only angle in the house that gets everyone." },
+        { s: 'solar', f: 'neutral', t: "That's very thoughtful of her." },
+        { s: 'tess', f: 'happy', t: "Isn't it? She thinks of everything." },
+        { n: "Solar stepped out of the light. She stood off to the side and watched them work, Nora shifting a chair out of the line between the stairs and the fireplace, Tess pulling the tinsel bedsheet a little to the left so it framed the foot of the staircase, and she realized slowly what she was looking at, the way you realize you've been walking uphill. Not a photo wall. A sight line. Somebody had drawn a line from the third step to the middle of the room and was clearing everything off it." },
+        { n: "On the third step, above them, Danielle wasn't watching her friends at all. She was looking at the clock over the fireplace. It said 9:38. It was telling the right time." }
+      ] },
+      { t: "(Hover by the punch bowl and listen.)", then: [
+        { n: "The punch bowl was where the house came to talk about itself. She stood at the edge of it with her back half turned, ladling something pink she wasn't going to drink, and let the conversations wash past her like water round a rock." },
+        { n: "*Regional champions. Through to Nationals. The Kiriko girl. Did you see the confetti, there's a picture of her with it in her mouth.* That was a girl in a reindeer headband, to two others, and none of them knew she was standing there, and Solar ladled very slowly so she could hear the rest of it. It was all nice. It was strange how strange that was." },
+        { n: "*The trip, though. Nobody will say. My suitemate's in Alpha and she literally said 'it's complicated, airport-wise.' What does that MEAN.*" },
+        { ifEpiRoute: 'haechan', then: [
+          { ifFlag: 'epi-r-public-post', then: [
+            { n: "*Okay but the hi. The HI. I had to sit down. I've followed him for two years and he's never been in a single post that he didn't take himself, and she just. Hi.* *I give it till spring.* *I give it till never ending, did you see his face in it?*" }
+          ], else: [
+            { n: "*Are they or aren't they. Jeno won't say. Jaemin says he's discreet, which means yes.* *I saw them come in the same door last week.* *That's not a thing, that's a door.*" }
+          ] },
+          { ifFlag: 'epi-r-term-circle', then: [
+            { n: "*Her friends know, though. Watch Hanni. Every time he walks past, Hanni looks at Hyein. That's a tell. That's a whole tell.*" }
+          ], else: [
+            { n: "*If her own friends don't know, nobody knows. And her friends look like they don't know. Hyein would have said. Hyein says everything.*" },
+            { n: "Hyein, who knew, was ten feet away doing an impression of Jeno for Olivia, and said nothing, and Solar loved her for it so suddenly her eyes stung." }
+          ] }
+        ] },
+        { ifEpiRoute: 'minji', then: [
+          { n: "*Kim Minji's filming again. She asks. Like, she actually asks. My roommate cried.* *She's filming the Kiriko girl a lot, though.* *She asks her too. I watched. She asks her every time.*" }
+        ] },
+        { ifEpiRoute: 'cover', then: [
+          { n: "*The three of them have been in the same dress all week. Not literally. Spiritually.* *That's not a trip, that's a coven.*" }
+        ] },
+        { n: "She put the ladle down and left the punch in it and walked away with nothing in her hand, feeling the shape of herself as the house had drawn it tonight, the champion, the vacationer, the question, and none of it wrong, exactly, and none of it her." }
+      ] },
+      { t: "(Go find the girls.)", leave: true, then: [
+        { n: "She went looking for Hanni and Hyein, the way you go looking for your own coat at the end of a night, without hurry, already knowing which one it is." }
+      ] }
+    ] },
     { n: "Mark came at ten." },
     { n: "Nobody had said whether he would. Jisung had asked, at the fridge, and nobody had answered, and now here he was in the front hall in the loudest sweater in the building, a green-and-red knit with a snowman on the front whose buttons were actual pom-poms, a Santa hat pushed back on his head, which broke every rule in purple pen on the run of show and was either a joke or a white flag and on Mark Lee was probably both. Nobody stopped him at the door. Nobody made room for him either. Jisung waved, from the speaker, alone, with his whole arm." },
     { n: "He didn't come looking for her. He ended up by the fireplace because it was the one place in the room nobody was standing, and she ended up there because the clock was over it, and they stood a person's width apart and looked at the room instead of each other." },
@@ -444,6 +641,88 @@
     { s: 'solar', f: 'serious', t: "Why would I need to leave before midnight?" },
     { s: 'chenle', f: 'neutral', t: "I don't know. The snow went up on Monday. I'd just rather have the car out front." },
     { n: "The bell on his hat rang when he nodded at the door. He looked at the ceiling about it. She didn't leave. But she knew, now, for the rest of the night, exactly where the car was, and she thought that had probably been the point." },
+
+    // The slow dance (every route; Manhattan pass).
+    { n: "At a quarter to eleven Jisung, who'd been handed the speaker and some measure of power along with it, put on something slow, very slow, a song with strings in it that had no business at a Sigma party, and half the room groaned and the other half paired off at once like they'd been waiting all night for permission, and Hyein put her cup down on the mantel under the clock and said *oh, absolutely,* and took Solar's hand, and then Hanni's, and towed them both into the middle of the living room." },
+    { n: "There wasn't a way to slow dance as three. They found one anyway. Hyein in the middle with an arm round each of them and her chin up, Hanni's hand on Solar's shoulder, the three of them in a small slow circle in wine silk on the Sigma rug while the tree blinked and the tinsel moved in the radiator's breath, and somebody whistled, and Hyein shouted *yes, thank you, we know,* without turning her head, and kept swaying." },
+    { s: 'hyein', f: 'happy', t: "Next year we do this again. Same dresses. Different cuts. Every year until we're old. Until we're Mrs. Whitfield." },
+    { s: 'hanni', f: 'neutral', t: "You'd be a terrible Mrs. Whitfield." },
+    { s: 'hyein', f: 'happy', t: "I'd be an INCREDIBLE Mrs. Whitfield. I'd have so many pearls." },
+    { n: "Hyein stepped on her foot. Hanni's head came down to rest on her shoulder, briefly, just the weight of it, and lifted again. The strings went on. Solar looked over Hyein's hair at the clock above the fireplace, which said 10:48 and was telling the right time, and then she made herself stop looking at it, and looked at them instead, at Hanni's eyelashes and the clementine-sticky ends of Hyein's fingers, at the two people who'd walked her down a staircase tonight in step, and the body knew a thing before she let herself, a long low ache under the breastbone like the note at the end of a song that hasn't ended yet." },
+    { ifFlag: 'epi-r-told-girls', then: [
+      { s: 'hanni', f: 'serious', t: "Whatever happens at midnight. We're right here. We've got you. We hold it." },
+      { s: 'hyein', f: 'sad', t: "We're SO good at holding it. We practiced all week." },
+      { n: "They knew. That was the thing. Since the clocks they'd known, and they were dancing with her anyway, slowly, in the middle of everyone, holding on to her in a way the whole room could see and nobody in the room could read." }
+    ], else: [
+      { ifFlag: 'epi-r-lied-girls', then: [
+        { s: 'hanni', f: 'neutral', t: "You'd tell us. If it was something. You'd tell us." },
+        { n: "It wasn't a question. Hanni said it into the song, quiet, the way you'd set something down on a table and leave it there for someone to pick up when they were ready. Solar didn't pick it up. Hyein, between them, held on a little harder, and didn't say anything, which was how Solar knew they both remembered the clocks." }
+      ] }
+    ] },
+    { n: "The song ended. Jisung, drunk on it, put on another one, and the three of them didn't let go for that one either." },
+
+    // Minji's balcony (every route; Manhattan pass).
+    { n: "Minji found her after, at the foot of the stairs, and didn't say anything, only tipped her head up toward the second floor, and Solar followed her up past the first landing and along the upstairs hall to the little balcony at the end of it, the one off the back bedroom that nobody was allowed on, which meant there were always at least two people on it, and tonight, for once, there weren't." },
+    { n: "It was barely a balcony. An iron rail, a square of snow-crusted boards, room for two if they liked each other. The cold went straight through Hyein's silk like it wasn't there. Below them the yard was blue and the frozen beer cans glittered and the party pressed its orange light against the windows, muffled, far away, the bass coming up through the boards under their feet like a heart in another room." },
+    { n: "Minji took her coat off without asking and put it round both their shoulders, which was asking, in Minji, and they stood under it together at the rail with their breath going up white." },
+    { s: 'minji', f: 'neutral', t: "I filmed the snow on Monday. When it went up. Everybody did. Mine's the only one that's in focus." },
+    { s: 'solar', f: 'neutral', t: "Of course it is." },
+    { s: 'minji', f: 'happy', t: "Of course it is. I watch it every night. I don't know why. It's just snow going the wrong way. It's the most beautiful thing I've ever shot and I didn't do anything. I just pointed." },
+    { n: "She didn't ask. She never asked the thing. She stood with her shoulder against Solar's under a coat that smelled like her shampoo and film-lab chemicals and the cold, and let the question sit in the air between them unasked, like the snow, falling the right way now, and Solar was so grateful for it she had to look at the yard." },
+    { s: 'minji', f: 'neutral', t: "My grandmother's in Jersey. I'm there for Christmas. Every year. She makes me eat until I can't move." },
+    { s: 'minji', f: 'happy', t: "It's like a train from you, I think. Jersey. From the city. I looked it up. I don't know why I looked it up." },
+    { ifEpiRoute: 'minji', then: [
+      { s: 'minji', f: 'flustered', t: "I could go down early. Film the city. If you... I'm not asking. I'm just saying the train exists." },
+      { s: 'solar', f: 'happy', t: "The train exists." },
+      { s: 'minji', f: 'happy', t: "It does. I checked." },
+      { ifFlag: 'epi-r-reel-yes', then: [
+        { n: "Under the coat, Minji's hand found hers, and held it, and didn't ask, because some things you'd already asked about once and been told yes, in a dark honors dorm room in front of a reel with your face in it, and a yes like that lasted." }
+      ], else: [
+        { n: "Under the coat, Minji's little finger touched the side of Solar's hand, and waited there, a question without any words in it, and Solar turned her hand over and let her take it." }
+      ] }
+    ], else: [
+      { ifEpiRoute: 'haechan', then: [
+        { s: 'minji', f: 'neutral', t: "You look happy. I wanted to say it out loud once. You look like somebody who's allowed things now." },
+        { n: "It cost her. Solar could hear what it cost her, a small cut in the middle of the sentence, and Minji said it anyway and then smiled at the yard like she'd won something, and maybe she had, and Solar leaned her head on her shoulder under the coat for a moment, which was all there was to say back, and was enough." }
+      ], else: [
+        { s: 'minji', f: 'neutral', t: "You can text me. Over break. If it's weird at home. I'm good at weird. I'll send you my grandmother's cat." },
+        { n: "Solar said she would. She meant it. They stood there a little longer than either of them needed to, two girls under one coat at a rail nobody was allowed on, and went back in only when Hyein's voice came up the stairs asking where everybody *went,* in a tone that suggested she'd been asking for some time." }
+      ] }
+    ] },
+
+    // The landing (every route; Manhattan pass): the required conflict. Sets epi-r-landing-dare / epi-r-landing-ask.
+    { music: 'epi-r-danielle' },
+    { n: "Danielle was on the landing." },
+    { n: "Not the third step. The landing, halfway down, where the Sigma staircase turned on itself and you couldn't see up or down, the small square of carpet between two flights where the bass came through the wall and the light from below went thin. Minji had gone on down ahead. Solar came round the turn and Danielle was simply there, in black velvet and white fur, glass in one hand and phone in the other, standing in the exact middle of the landing the way she'd stand in a doorway, so that getting past her meant asking." },
+    { n: "It was eleven-fifteen. The clock downstairs was telling the right time. Solar could hear it through the floor, or thought she could." },
+    { s: 'danielle', f: 'neutral', t: "You've been up here a long time. With Kim Minji, on the balcony nobody's allowed on. I'm not going to write that down. I'm telling you I'm not." },
+    { s: 'solar', f: 'neutral', t: "What do you want, Danielle?" },
+    { s: 'danielle', f: 'neutral', t: "I want to tell you something, and I want you to know I'm only telling you because I can't work it out." },
+    { n: "She turned the phone over in her hand. Once. The way Hyein turned the charm on her wrist. Solar had never once seen Danielle Marsh fidget, and she watched it now with the specific cold attention of someone watching a dog they know sit down for no reason in the middle of a road." },
+    { s: 'danielle', f: 'serious', t: "Every picture I take of you comes out a little wrong lately. The print. The stairs last Friday. Something green at the edge, every time, or something that should be there and isn't. I've tried three phones. I had it developed at the good place on Marshall. It's not the phone." },
+    { s: 'danielle', f: 'neutral', t: "So I'm going to get the whole room at midnight. From the stairs. All of it, everyone, the toast. And I'm going to look. I wanted you to know that before. It seemed fair. I'm told I'm not fair, so I'm trying it." },
+    { n: "Her body knew before she did: the drop under the ribs, the cold at the back of the neck, the knowledge arriving in her hands first, which had gone still at her sides. *Something that should be there and isn't.* Below them, through the turn of the stairs, Jaemin's voice was telling somebody the toast was in forty-five minutes and could they *please* find a glass, and somebody was laughing, and the tree was blinking, and none of it could hear them." },
+    { choose: [
+      { t: "Then get a good one. I'll be standing right where Tess put the light.", flag: 'epi-r-landing-dare', then: [
+        { n: "She said it level, her chin up the way Hyein had set it at seven-thirty, the way her mother stood in a doorway, deciding whether a room deserved her. It came out of her before she'd weighed it, and she found she didn't want it back." },
+        { s: 'danielle', f: 'surprised', t: "...You're daring me." },
+        { s: 'solar', f: 'neutral', t: "I'm saving you the trouble. You were going to anyway. Now you don't have to sneak." },
+        { n: "Something went across Danielle's face that Solar had never seen on it, not a chart being updated, nothing so tidy: the quick blank look of a girl who'd come to a fight with a speech and been handed the floor, and had nowhere to put her hands." },
+        { s: 'danielle', f: 'neutral', t: "Fine. Midnight. Stand still, then." },
+        { s: 'solar', f: 'serious', t: "I always do." },
+        { n: "Danielle stepped aside. Not far. Exactly the width of one person. Solar went past her and down the second flight without looking back, and every step was there, and her legs were shaking by the bottom, and nobody in the living room could have told." }
+      ] },
+      { t: "Whatever you get tonight, ask me before you do anything with it. That's all. Just ask.", flag: 'epi-r-landing-ask', then: [
+        { n: "It came out quieter than she'd meant. It came out true, which she hadn't meant either. It was the only rule she'd ever really believed in, the one Minji lived by and she'd learned too late, and she said it now to the one person on this campus who'd never kept one, because it was the only thing she had that was hers to say." },
+        { s: 'danielle', f: 'surprised', t: "...Ask." },
+        { s: 'solar', f: 'neutral', t: "Before, not after. People do. It's a thing people do." },
+        { n: "Danielle looked at her for a long moment on the landing with the bass in the wall, and Solar couldn't read it, and that was the most frightening thing that had happened all night, because she'd always been able to read it, it had always been a chart, and now it was a face." },
+        { s: 'danielle', f: 'neutral', t: "Nobody's ever asked me to ask. They usually ask me not to." },
+        { s: 'danielle', f: 'neutral', t: "I'll think about it. That's not yes. Don't write it down as yes." },
+        { n: "She stepped aside, exactly the width of one person, and Solar went past her and down, and halfway down the second flight she heard behind her, very soft, the small sound of a phone being locked, and didn't turn around, and didn't know what it meant, and kept walking." }
+      ] }
+    ] },
+    { music: 'epi-r-holiday' },
 
     // The Haechan route: the stairs, the sequence, the pull
     { ifEpiRoute: 'haechan', then: [
@@ -673,11 +952,11 @@
   ] },
 
   // ───────────────────────────── 12/20, late: the rooftop (the final) ─────────────────────────────
-  { id: 'epi-r-rooftop', date: '12/20', slot: 'late', ends: true, title: 'every world', place: 'Syracuse · Language Arts Rooftop · Snow', time: 'Late Night', scene: [
+  { id: 'epi-r-rooftop', date: '12/20', slot: 'late', title: 'the twelfth stroke', place: 'Syracuse · Language Arts Rooftop · Snow', time: 'Late Night', scene: [
     { music: 'world-runners-theme' },
     { n: "The ladder was cold enough to burn. She went up it in gloves, rung over rung, the way she'd gone up it in October with her heart going for a completely different reason, and swung her leg over the parapet onto the roof of the Language Arts building, and stood up into the snow." },
     { n: "It was falling slow and thick and straight down, no wind, every flake taking its time. The whole campus below was white, the quad and the paths and the bell tower and the dome of the chapel, every lamppost wearing a little white cap, and beyond it the city's lights going soft and gold through the snow like they were very far away. The ledge had six inches on it. There was a can of Monster Pink Punch on the ledge, already open, half buried, with snow on its lid." },
-    { n: "Finals were over. Her last one had been yesterday at two, Intro to Business, in a gym full of folding desks, and she'd written the essay in forty minutes and spent the other eighty watching the clock over the scoreboard, watching the second hand go round, making sure. It had gone round every time. She'd counted. Tonight the first real snow of the year had come down on a campus already half empty, suitcases bumping down steps all afternoon, and she'd walked out into it with her hands in her pockets and her heart going for no reason she'd let herself name, and come here, because there was nowhere else on this campus she'd have gone." },
+    { n: "Finals were over. Her last one had been yesterday at two, the writing final, in a gym full of folding desks, and she'd written the essay in forty minutes and spent the other eighty watching the clock over the scoreboard, watching the second hand go round, making sure. It had gone round every time. She'd counted. Tonight the first real snow of the year had come down on a campus already half empty, suitcases bumping down steps all afternoon, and she'd walked out into it with her hands in her pockets and her heart going for no reason she'd let herself name, and come here, because there was nowhere else on this campus she'd have gone." },
     { n: "Her breath went up white. The cold had the clean metal taste it only got when the snow was serious. Somewhere below, on the quad, a group of freshmen were having a snowball fight in the dark and shrieking about it, small and far away, the most ordinary sound in the world, and she stood at the parapet and listened to it like it was music, because tonight it was." },
     { glitch: { stage: 4 } },
 
@@ -768,14 +1047,143 @@
     { n: "In the middle of it, absurdly, she thought of the valley. A tree that leaned too far to the right, an ugly blanket, a boy who'd been going whether she came or not. He'd been there first, that night. He'd been there first every time, on the steps, by the stairs, at the vent stack in the snow. It had never once been about whether she came. It had been about being there when she did." },
     { s: 'haechan', f: 'serious', t: "Solar. Look at me. Look at me." },
     { n: "She looked at him. His face was an inch from hers, snow in his hair, and for once in his entire life he wasn't flat. Every single thing he'd ever filed away was on it, all at once, and he let her see all of it." },
-    { s: 'haechan', f: 'sad', t: "I'll find you." },
-    { s: 'haechan', f: 'sad', t: "Wherever it takes you. Whatever you are there. Whoever I am. I'll find you." },
-    { s: 'haechan', f: 'sad', t: "Every world." },
+    { s: 'haechan', f: 'sad', t: "I've got you." },
+    { n: "That was all. Three words, flat and sure, the way he said the things he'd decided were true, and he didn't add anything to them, not a promise, not a where or a when, because he wasn't a man who said what he'd do. He said what he was doing. He was holding on." },
+    { s: 'haechan', f: 'serious', t: "I've got you. Princess. I've got you." },
     { flag: 'epi-r-held' },
-    { n: "She heard it. Through the bells and the train and her own breath going in sobs, she heard it, every word, flat and sure the way he said the things he'd decided were true, and something in her that had been leaning toward the window stopped leaning." },
+    { n: "She heard it. Through the bells and the train and her own breath going in sobs, she heard it, and something in her that had been leaning toward the window stopped leaning." },
     { n: "She held on back. That was the only thing she could do, so she did it with everything: her fists in his coat, her forehead against his collarbone, her whole weight thrown the other way, the way you'd throw it against a door. If her hands went through him she closed them again. If they went through again she closed them again. She was very good, it turned out, at doing a thing over and over until it worked. She'd had a whole year of practice." },
-    { n: "The bell rang. Seven. Eight. The light came off her like snow off a roof, and the sky behind the tower opened wider, and his arms were around her, and everyone who loved her on that roof was holding on, and the snow fell through all of them and up, and the tower in the seam of the sky waited, very patient, very green, and the last thing she felt was his hand in her hair, and the last thing she heard was the bell, a quarter-tone flat, ringing nine, ten—" },
-    { n: "—and on the ledge, half buried in the snow, the can of Monster Pink Punch stood where she'd left it, and somewhere a long way off, in a city where it was always midnight, every clock began, very slowly, to move." }
+    { n: "The bell rang. Seven. Eight. The light came off her like snow off a roof, and the seam behind the tower opened wider, and his arms were around her, and everyone who loved her on that roof was holding on, and the snow fell through all of them and up, and the tower in the sky waited, very patient, very green. Nine. Ten. Her boots were gone. Her knees. She could feel his hand in her hair and not much else, and she held on to the hand, the one thing, the way you hold the last rung." },
+    { n: "Eleven." },
+    { n: "The twelfth stroke came down over the campus a quarter-tone flat, the way it had every hour since September, and nobody had ever fixed it, and on the twelfth stroke it let go." },
+    { n: "Not the way a door closes. The way a hand opens. All at once and without any anger in it, like someone who'd been holding her wrist across a very long table had simply, finally, decided to stop. The seam in the sky folded shut over the tower. The green went out of the snow. The train, wherever it had been, wasn't. Her knees came back, and her boots, and the roof under her boots, solid and cold and absolutely ordinary, and his arms closed on her, all of her, and didn't go through." },
+    { dark: false },
+    { cg: null },
+    { n: "The bell stopped." },
+    { n: "And the snow stopped with it. Not stopped falling. Stopped. Every flake on that roof and over the quad and in the cone of every lamppost on campus hung where it was, in the air, a whole sky of white held perfectly still, so still she could see the shape of the one in front of her eye, six arms and a hole in the middle. No wind. No sound. Not the freshmen on the quad, not the city, not her own breath. She knew that stillness. She'd lived inside it at midnight for a year." },
+    { n: "One long second." },
+    { n: "Then it fell. Normally. Down. Slow and thick and straight, the way it had been falling all night, and the sound came back with it all at once, somebody shrieking on the quad, a car on Comstock, his breath going out against her temple in one long rough piece." },
+    { music: 'epi-r-snow' },
+    { n: "She was still there." },
+    { n: "She was standing on the roof of the Language Arts building in a coat and gloves with snow landing on her, on her, and staying, and she started to laugh." },
+    { n: "She didn't decide to. It came up out of her the way the sobbing had, from somewhere under her ribs with no say from the rest of her, and it was the stupidest sound she'd ever made, high and wet and hiccuping, and she couldn't stop it. She tried. She put her face in his coat to stop it and it got worse." },
+    { ifEpiRoute: 'haechan', then: [
+      { n: "And then he was laughing too." },
+      { n: "Not the flat one. Not the one that scraped against something on the way out, the one she'd been hearing since August. This one didn't have anything under it at all. It came out of him helpless and rough into her hair, his whole chest going with it, his arms still locked around her like he hadn't been told yet that he could stop, and she pulled back far enough to look at him, and he had his eyes shut, and he was laughing like a boy who'd been holding his breath under water for a very long time and had just come up." },
+      { s: 'solar', f: 'flustered', t: "Why are *you* laughing—" },
+      { s: 'haechan', f: 'happy', t: "I don't know. I don't know. You're laughing." },
+      { s: 'solar', f: 'happy', t: "That's not a reason—" },
+      { s: 'haechan', f: 'happy', t: "It's the only one I've got, princess." },
+      { n: "They stood there and laughed at nothing in the snow for a full minute, maybe more, and every time one of them nearly stopped the other one set them off again, and she'd remember that minute for the rest of her life without ever once being able to say what had been funny." }
+    ] },
+    { ifEpiRoute: 'cover', then: [
+      { n: "Hyein was laughing on her knees in the snow, actually on her knees, sobbing and laughing at once with her mittens over her face, and Hanni had sat down hard on the vent housing and was laughing with her head back and tears running into her ears, saying *oh my God, oh my God* to the sky like a girl who'd just walked out of a car crash without a scratch." },
+      { n: "He let go of Solar first. He stepped back, one step, and put his hands in his pockets like he'd been caught holding something that wasn't his, and looked at the three of them, and then he laughed too, once, surprised, and then again, and couldn't seem to put it away." },
+      { s: 'hyein', f: 'happy', t: "WE MEMORIZED IT. We had a STORY. We had a whole— Hanni, we didn't even NEED it—" },
+      { s: 'hanni', f: 'happy', t: "I know, baby. I know. Come here." },
+      { n: "Hanni held both arms out without getting up, and Hyein crawled over through the snow into them, and Solar went too, and the three of them ended up in a heap against the vent housing laughing so hard none of them could breathe, and he stood a step away from the heap the whole time, keeping an eye on the parapet, like somebody had to." }
+    ] },
+    { ifEpiRoute: 'minji', then: [
+      { n: "Minji was laughing behind the camera. For the first time all night the lens moved, a little, up and down, because Minji's shoulders were going and she couldn't hold it still any more, and she didn't put it down. She laughed with her face wet and her eye still at the viewfinder and her free hand pressed flat over her mouth." },
+      { s: 'minji', f: 'happy', t: "I got it. I got it, Sol. I don't know what I got. I got all of it." },
+      { n: "He let go of Solar slowly, like a man setting down something he'd been told was heavy and turned out to be a girl, and stepped back, and looked at Minji, and laughed once, surprised at himself, and then couldn't stop either, and the three of them stood in the snow on a roof laughing at nothing, and the little red light kept watching, steady again, the way it always came back to steady." }
+    ] },
+    { n: "It was a long time before anybody could talk." },
+    { n: "She wiped her face with her glove, which only moved the wet around. She looked down at her own hands, both of them, in their gloves, solid, with snow on the backs of them, and then she looked at the roof, because she wanted to see the place she'd been standing, the way you'd look back at the stretch of ice you'd just walked off." },
+    { ifEpiRoute: 'haechan', then: [
+      { n: "There were footprints everywhere. His, from the vent stack, deep and wandering in the way of a man who'd been waiting a while. Two sets churned up together at the ledge where they'd stood and held on." }
+    ] },
+    { ifEpiRoute: 'cover', then: [
+      { n: "There were footprints everywhere. Hanni's and Hyein's in a mess from the parapet, the drag marks where Hyein had gone down on her knees. His from the vent stack, deep and wandering in the way of a man who'd been waiting a while. All of them churned up together at the ledge where they'd stood and held on." }
+    ] },
+    { ifEpiRoute: 'minji', then: [
+      { n: "There were footprints everywhere. Minji's from the parapet to the vent housing and back, careful, the steps of a girl carrying a camera bag like a baby. His from the vent stack, deep and wandering in the way of a man who'd been waiting a while. All of them churned up together at the ledge where they'd stood and held on." }
+    ] },
+    { n: "Not hers." },
+    { n: "From the top of the ladder to the ledge, where she'd come up first and walked across the roof alone with her heart going, the snow lay smooth and whole and untouched, six inches of it, as if nobody had come up the ladder at all tonight. As if she'd never walked across it. She looked at the ledge. The can of Monster Pink Punch wasn't on it. There was no hollow in the snow where it had stood, no ring, no pink, nothing. Just the ledge, white and level and perfect, like a page no one had written on." },
+    { glitch: 'epi-r-g-footprints' },
+    { n: "Nobody else was looking. She didn't say anything. She stood very still with the laugh gone out of her somewhere and watched the snow settle on the smooth place, flake by flake, and told herself it had filled in, the way snow did, and knew, the way the body knows, that it hadn't." },
+    { n: "In her coat pocket her phone buzzed." },
+    { n: "12:01. NEW POST. @SUnews." },
+    { n: "The last one of the semester. Of course it was. Danielle had always had a very good sense of an ending." },
+    { ifEpiRoute: 'haechan', then: [
+      { n: "He'd heard it buzz. He didn't look at her pocket. He looked at her, and waited, and didn't say a single word about it either way, which was the most he could have said." }
+    ] },
+    { ifEpiRoute: 'cover', then: [
+      { n: "Hanni's phone buzzed in her coat at the same time, and Hyein's, and the three of them looked at each other in the snow, and Hyein said *no* very firmly to her own pocket, like it was a dog." }
+    ] },
+    { ifEpiRoute: 'minji', then: [
+      { n: "Minji heard it. The red light went off, finally, for the first time in an hour, and Minji lowered the camera and held it against her chest with both hands and looked at Solar over it, and didn't say anything, because whatever was on that phone was Solar's to decide and Minji had never once in her life decided a thing like that for her." }
+    ] },
+    { choose: [
+      { t: "(Read it.)", flag: 'epi-r-caption-read', then: [
+        { n: "She took the glove off with her teeth. The screen was too bright in the dark and she turned it down, and the snow landed on the glass and melted there in little lenses that made the picture swim." },
+        { n: "A photo: the Alpha Phi front steps after dark, shoveled clean for what had to be the first time in recorded history, every step scraped down to the brick, the porch light on, and one line of footprints going down the cleared path toward the street and already filling in. The caption underneath: *last night of the semester ❄️ someone finally shoveled the alpha phi steps!! we love a man who shows up 👀 see you all in january. we'll be right here 💕*" },
+        { n: "Her brother. Six o'clock. A borrowed shovel and the wrong hand. Danielle had been at a window. Of course she had; Danielle was always at a window. She'd taken the one plain good thing that had happened on that porch all semester and turned it around so the light caught the edge, *a man who shows up,* so that two thousand people would spend Christmas wondering which one." },
+        { n: "Three hundred likes already. The first comment: *WHO 👀👀.* The second: *the emergency vacation girls have a SECRET SHOVEL MAN.* Forty people laughing at it." },
+        { choose: [
+          { t: "(Answer it.)", flag: 'epi-r-caption-fought', then: [
+            { n: "She typed it standing in the snow with one bare hand going numb, fast, the way she typed in a match when somebody on comms needed a call, and she didn't read it back before she sent it, because reading it back was how you lost your nerve." },
+            { n: "*@sollee: it was my brother. he's the only one who ever shovels anything. merry christmas 💕*" },
+            { n: "Posted. Pinned under the caption by the time she'd got her glove back on, with eleven likes, then forty, then a reply from somebody she'd never met that just said *QUEEN.* It didn't feel like winning. It felt like closing a door on somebody's foot, which was close enough for tonight." },
+            { ifEpiRoute: 'haechan', then: [
+              { ifFlag: 'epi-r-term-silent', then: [
+                { n: "He read it over her shoulder. She felt him read it." },
+                { s: 'haechan', f: 'neutral', t: "We said we never answer her." },
+                { s: 'solar', f: 'serious', t: "We said that about us. That one's about my brother." },
+                { n: "He thought about it. She watched him actually think about it, there in the snow, turning it over like a ruling on a technicality." },
+                { s: 'haechan', f: 'neutral', t: "...Allowed." }
+              ], else: [
+                { n: "He read it over her shoulder. She felt him read it, and felt him decide something about it, and then he said, to the snow:" },
+                { s: 'haechan', f: 'happy', t: "*Merry Christmas,* with the heart. That's violent, princess." },
+                { s: 'solar', f: 'happy', t: "It's festive." },
+                { s: 'haechan', f: 'happy', t: "It's both." }
+              ] }
+            ] },
+            { ifEpiRoute: 'cover', then: [
+              { s: 'hyein', f: 'happy', t: "Oh, she ANSWERED. She answered with a HEART. Hanni, she put the heart—" },
+              { s: 'hanni', f: 'serious', t: "I see the heart. Everyone's going to see the heart. Sol, she's going to read that over breakfast and choke on her granola." },
+              { s: 'solar', f: 'neutral', t: "Good." }
+            ] },
+            { ifEpiRoute: 'minji', then: [
+              { n: "Minji read it on her own phone, standing beside her, and didn't say anything for a while. Then she said, very quietly, that it was a good sentence. Then she said she hoped it was worth it. She didn't say it like Danielle would have. She said it like somebody who'd keep checking." }
+            ] }
+          ] },
+          { t: "(Leave it. Let her have the caption.)", then: [
+            { n: "She looked at it a moment longer, the steps, the porch light, the footprints filling in. Then she locked the phone and put it back in her pocket with the post still open on it, unanswered, the way you'd leave a letter on a hall table for somebody else to deal with. Danielle could have the caption. Danielle had always wanted the caption more than the picture." }
+          ] }
+        ] }
+      ] },
+      { t: "(Put the phone face down.)", flag: 'epi-r-caption-down', then: [
+        { n: "She didn't open it." },
+        { n: "She took the phone out of her pocket and looked at the banner, *NEW POST,* the little SUnews circle, and she didn't touch it. She walked to the ledge, to the smooth white place where the can had been and wasn't, and laid the phone down on it, face down, in the snow." },
+        { n: "It buzzed once more against the stone. A like, a comment, two thousand people being told something about her that she'd find out tomorrow, or never. It didn't matter. She was standing on a roof in the first snow with the people who'd held on to her, and that was the thing that was actually happening, the living moment and not the caption, and for once she didn't feel any need at all to win." },
+        { n: "The snow started to cover the phone. She let it, for a while." }
+      ] }
+    ] },
+    { ifEpiRoute: 'haechan', then: [
+      { n: "They went down the ladder at twenty past twelve. He went first, which he never did, and stood at the bottom with a hand up on the rail, not touching her, just there, the whole way down, every rung." },
+      { n: "At the bottom she stepped off into the snow on the path and looked back at it. Her footprints were there. Both boots, sharp-edged, filling slowly, exactly where she'd put them. She stood and looked at them long enough that he looked at them too, and didn't ask, and took her hand." },
+      { n: "He walked her to the corner of Walnut, which was further than he'd ever walked her anywhere, and stopped there under the streetlight with the Alpha Phi porch light on at the end of the block and the steps her brother had shoveled already gone soft again under the new snow." },
+      { s: 'haechan', f: 'neutral', t: "Car's at nine." },
+      { s: 'solar', f: 'neutral', t: "Everyone keeps telling me that." },
+      { s: 'haechan', f: 'neutral', t: "Then be in it." },
+      { n: "He didn't kiss her. He looked at her for a long time in the jacket, with his hand still around hers, and then he let go of it one finger at a time, like he was checking she'd stay up on her own, and she did." }
+    ] },
+    { ifEpiRoute: 'cover', then: [
+      { n: "They went down the ladder one at a time, Hanni first, then Hyein with both of them talking her down every rung, then Solar. At the bottom she stepped off into the snow on the path and looked back at it, and her footprints were there, both boots, sharp-edged, filling slowly. She stood and looked at them until Hyein took her arm." },
+      { n: "He stayed on the roof. He said somebody should check the hatch was shut, and they all knew there wasn't a hatch, and nobody said so. From the path she looked up once and saw him at the parapet with his hands in his pockets, watching them go the way he'd watched them come, and then he lifted one hand, and she lifted one back." },
+      { n: "They slept in her room that night, all three, the single bed and the floor and a sleeping bag Hyein had owned since sixth grade, and nobody turned the lamp off, and nobody said they'd left it on." }
+    ] },
+    { ifEpiRoute: 'minji', then: [
+      { n: "They went down the ladder with the camera bag passed hand to hand between them. At the bottom she stepped off into the snow on the path and looked back at it, and her footprints were there, both boots, sharp-edged, filling slowly. Minji saw her looking and looked too, and lifted the camera halfway, and then put it down again without filming, which was its own kind of answer." },
+      { s: 'minji', f: 'neutral', t: "I'm not watching it tonight. I'm putting it somewhere safe and I'm not watching it till you say." },
+      { s: 'solar', f: 'neutral', t: "What if I never say?" },
+      { s: 'minji', f: 'neutral', t: "Then it's the safest card in the state." },
+      { n: "Minji walked her to the porch. He walked behind them both, a little way back, the whole length of Walnut, the way you'd walk behind two people carrying something breakable, and left them at the steps without a word." }
+    ] },
+    { n: "She went up to her room and didn't turn the light on. Outside the window the snow was falling the right way, down, into the dark, onto the steps and the street and the roofs and the long white quad, and every few minutes she got up off the bed and went to the window to check that it still was." },
+    { n: "It was the longest night of the year tomorrow. She'd read that somewhere. She lay down in her coat and didn't think about how many seconds were in it." }
   ] }
 
   );

@@ -2999,7 +2999,7 @@ window.FemcGame = (() => {
     activities, actById, showing, activityOk, activityInfo, doActivity, dormActs, dormInfo, dormOk, doDorm, doStudy, studyInfo, shopStock, buy, bookById, bookArt, readTonight, matSellPrice, sellMat,
     perkOn, bondRank, dailyPerks, actCost, dozeChance, dozed, canRetryClass, useGuidance, classHint, studyBonus, weekly,
     jobVisible, jobState, jobOk, hire, shiftScene, finishShift, jobsAhead, jobPay, raiseInfo, setJobRng, packs, packPick, packFits,
-    clubById, clubState, clubStats, clubScene, joinClub, finishClub, runInDue, runInFits, finishRunIn, countOk, vary, varyPool, secretsDue, findSecret,
+    clubById, clubState, clubStats, clubScene, joinClub, finishClub, runInDue, runInFits, finishRunIn, countOk, vary, varyAll, varyPool, secretsDue, findSecret,
     heading, headingIs, migrateForced,
     crushTick, crushIs, crushedAt, crushApply, crushPhases, crushTrack, crushFits, crushDue, finishCrush, crushLine, takenBy, glowIs, setGlow,
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,

@@ -26,6 +26,9 @@
               song in Stay) | 'piano' (a Velvet Room note) | 'static'
      tear     cracks and glass across the screen (the Dark Hour transition's cracks), then gone
      name     Haenim's name glitching on a card (names, label)
+     erase    (the "held" layer, Runners Manhattan pass, Nov 5 2026: things go missing instead of coming through) Solar's own
+              portrait in a scene thins to nothing and comes back; on a screen, the place in the kicker goes blank
+     late     her reflection is behind her: a copy of Solar's portrait stays where she was while she moves, then catches up
      hands    a choice she didn't write: the next choice list gets "(Evoke.)" (t). Not pickable: it flickers and is gone.
               pickable: true (the "then once she does"): picking it plays its `then` lines. Armed until a choice that day.
      Any spec may carry ms (its length at Full).
@@ -41,7 +44,8 @@
        by scene   scene: '<event or routine id>', line: n inserts { glitch: id } before line n of that scene (inject)
        inline     inline: true never plays on a screen; only a scene's { glitch: '<id>' } plays it (Runners batch 3)
      Each screen asks once per day and slot (tick): the first scheduled entry that fits, else an ambient roll for the stage
-     (chance × ½ on Gentle) picked by the seed.
+     (chance × ½ on Gentle) picked by the seed. glitch.held: { from: 'M/D', ambient: [specs] } (the Runners Manhattan pass):
+     from that day on the ambient pool is the held one, whatever the stage (the world losing track of her).
    In scenes (any epilogue scene; scene.js):
      { glitch: 'tint' }  { glitch: { kind: 'sound', sound: 'piano', stage: 2 } } (stage: plays only at that stage or higher)
      { glitch: '<schedule id>' }  plays that entry (its spec; marks it seen)
@@ -58,8 +62,8 @@
 window.FemcGlitch = (() => {
   const G = window.FemcGame, W = window;
   if (!G) return null;
-  const KINDS = ['tint', 'weather', 'clock', 'date', 'phone', 'map', 'face', 'sound', 'tear', 'name', 'hands'];
-  const DUR = { tint: 1100, weather: 3600, clock: 1500, date: 1300, phone: 4200, map: 0, face: 140, sound: 2000, tear: 1100, name: 1600, hands: 2400 };
+  const KINDS = ['tint', 'weather', 'clock', 'date', 'phone', 'map', 'face', 'sound', 'tear', 'name', 'hands', 'erase', 'late'];
+  const DUR = { tint: 1100, weather: 3600, clock: 1500, date: 1300, phone: 4200, map: 0, face: 140, sound: 2000, tear: 1100, name: 1600, hands: 2400, erase: 1400, late: 1600 };
   const SCREENS = ['morning', 'out', 'late'], AT = { date: ['card'], map: ['out'] };
   const CHANCE = [0, 0.12, 0.2, 0.3, 0.4];
   const SEES = ['akihiko', 'yukari', 'junpei', 'mitsuru', 'fuuka', 'aigis', 'ken', 'koromaru'];
@@ -133,6 +137,8 @@ window.FemcGlitch = (() => {
     return true;
   }
   function ambientPool(stage) {
+    const H = cfg().held;
+    if (H && (H.ambient || []).length && S().day >= G.dayOf(H.from)) return H.ambient;
     const A = cfg().ambient || {};
     for (let k = stage; k >= 1; k--) if ((A[k] || []).length) return A[k];
     return [];
@@ -151,7 +157,7 @@ window.FemcGlitch = (() => {
     const a = pool[Math.floor(rnd(s.day, s.slot, where, 'pick') * pool.length)];
     return { ...a, id: a.id || `amb-${a.kind}`, src: 'ambient' };
   }
-  const findSpec = id => (raw().glitches || []).find(e => e.id === id) || Object.values(cfg().ambient || {}).flat().find(a => (a.id || `amb-${a.kind}`) === id) || null;
+  const findSpec = id => (raw().glitches || []).find(e => e.id === id) || [...Object.values(cfg().ambient || {}).flat(), ...(cfg().held?.ambient || [])].find(a => (a.id || `amb-${a.kind}`) === id) || null;
   // A screen asks for its glitch (epilogue.js: 'card' after the date card, 'morning', 'out' with ctx.list, 'late').
   function tick(where, ctx = {}) {
     if (!active()) return null;
@@ -269,6 +275,31 @@ window.FemcGlitch = (() => {
           label: spec.name || 'Iwatodai Station', onDone: () => W.FemcGameUI.run() });
       });
       list.appendChild(b);
+    },
+    // The held layer: she goes missing for a beat (her portrait, or the place's name on a screen).
+    erase(spec, dur) {
+      const sc = sceneEl(), me = sc?.querySelector('.gs-solar');
+      const soft = calm() || still(), ms = soft ? Math.max(dur, 900) : dur;
+      if (me && !me.hidden) {
+        me.classList.add('g-glx-erase'); if (soft) me.classList.add('soft');
+        hold(() => me.classList.remove('g-glx-erase', 'soft'), ms);
+        return;
+      }
+      const k = document.querySelector('.g-epi-out .g-kicker, .g-seg .g-kicker');
+      if (!k) return false;
+      const was = k.innerHTML;
+      k.innerHTML = was.replace(/ · [^<]*$/, ' · <span class="g-glx-blank"> </span>');
+      hold(() => { k.innerHTML = was; }, ms);
+    },
+    late(spec, dur) {
+      const sc = sceneEl(), me = sc?.querySelector('.gs-solar');
+      if (!me || me.hidden || still()) return false;
+      const copy = me.cloneNode(true);
+      copy.classList.add('g-glx-lag'); if (calm()) copy.classList.add('soft');
+      copy.removeAttribute('id'); copy.setAttribute('aria-hidden', 'true');
+      me.after(copy);
+      me.classList.add('g-glx-ahead');
+      hold(() => { copy.remove(); me.classList.remove('g-glx-ahead'); }, dur);
     },
     face(spec, dur) {
       const who = spec.who || SEES[Math.floor(rnd(S().day, S().slot, 'face') * SEES.length)];

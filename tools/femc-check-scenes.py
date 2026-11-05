@@ -214,7 +214,9 @@ for wid, w in D.get('epi', {}).items():
             hk = f'{k}/{h.get("id")}'; uid(h.get('id'), k)
             for md in [h.get('after'), h.get('until')]:
                 if md and not inr(md): problems.append(f'{hk}: date {md} outside the act')
-            if any(x not in ('after', 'evening') for x in h.get('slots', ['after', 'evening'])): problems.append(f'{hk}: hangouts are After Class / Evening only')
+            # Late Night hangouts (the Runners time pass, Nov 5 2026) need the world's lateOpen nights and a window that meets one.
+            late_ok = 'late' in h.get('slots', []) and any(inr(md) and (not h.get('after') or epi_day(cal, md) >= epi_day(cal, h['after'])) and (not h.get('until') or epi_day(cal, md) <= epi_day(cal, h['until'])) for md in (w.get('lateOpen') or []))
+            if any(x not in ('after', 'evening') and not (x == 'late' and late_ok) for x in h.get('slots', ['after', 'evening'])): problems.append(f'{hk}: hangouts are After Class / Evening (or Late Night on a lateOpen night) only')
             if not wbg_ok(h.get('place')): problems.append(f'{hk}: place "{h.get("place")}" has no background rule')
             for x in h.get('events', []):
                 if x not in evset: problems.append(f'{hk}: waits on unknown event {x}')
@@ -243,7 +245,7 @@ for wid, w in D.get('epi', {}).items():
     cast = saved_cast
     bg = saved_bg
     # The glitch file (epilogue batch 2, glitch.js): kinds, stages, dates in the act, scene hooks, ambient pools.
-    KINDS = {'tint', 'weather', 'clock', 'date', 'phone', 'map', 'face', 'sound', 'tear', 'name', 'hands'}
+    KINDS = {'tint', 'weather', 'clock', 'date', 'phone', 'map', 'face', 'sound', 'tear', 'name', 'hands', 'erase', 'late'}
     gc, gl = w.get('glitch') or {}, w.get('glitches')
     if gl is None or not gc: problems.append(f'{k}: glitches.js needs glitch and glitches')
     gl = gl or []

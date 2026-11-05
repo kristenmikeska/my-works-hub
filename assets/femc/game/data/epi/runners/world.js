@@ -43,6 +43,10 @@
       { id: 'cover', name: 'The cover', open: { always: true } }
     ],
     lockAfter: '12/7',
+    // The time pass (C1): quiet nights where Late Night lists people with a `slots: ['late']` hangout, above Sleep (epilogue.js
+    // late()). Not 12/5 (the night before Regionals), 12/6 (Regionals), fight nights or nights with a late story scene.
+    lateOpen: ['12/3', '12/8', '12/9', '12/10', '12/11', '12/12', '12/13', '12/15', '12/17',
+      '12/22', '12/23', '12/25', '12/26', '12/29', '12/30'], // Manhattan's quiet nights (the Manhattan pass, Nov 5 2026)
     places: {
       bg: [
         ['Syracuse · Alpha Phi House · Her Room', 'epi-r-her-room', 'epi-r-her-room-night'],   // batch 77
@@ -53,6 +57,7 @@
         // Stand-ins (Nov 3): each copies the rule below it until its art comes (FEMC-ART-TODO 23; FEMC-ART-WIRING "23").
         ['Syracuse · Alpha Phi House · Living Room', 'epi-r-alpha-living', 'epi-r-alpha-living'],  // Kat's art, Nov 4 (lamp-lit; both slots)
         ['Syracuse · Alpha Phi House · Dining Room', 'epi-r-alpha-living', 'epi-r-alpha-living'],  // the same room (both slots)
+        ['Syracuse · Alpha Phi House · Porch', 'flashback-alphaphi-house', null],  // stand-in → epi-r-alpha-porch-night (FEMC-ART-TODO 23L; home pass, epi-r-porch)
         ['Syracuse · Alpha Phi House', 'flashback-alphaphi-house', null],
         ['Syracuse · Sigma Chi House · Holiday Party', 'epi-r-sigma-holiday', 'epi-r-sigma-holiday'],
         ['Syracuse · Sigma Chi House · Kitchen', 'epi-r-sigma-kitchen', null],
@@ -67,6 +72,7 @@
         ['Syracuse · Marshall Street', 'epi-r-marshall-st', 'epi-r-marshall-st'],
         ['Syracuse · Bird Library', 'epi-r-bird-library', null],
         ['Syracuse · Lecture Hall', 'epi-r-lecture-hall', null],
+        ['Syracuse · Archbold Gym', 'epi-r-lecture-hall', null],  // stand-in → epi-r-finals-gym (FEMC-ART-TODO 23M; home pass, epi-r-last-final)
         ['Syracuse · Hall of Languages', 'epi-r-music-room', 'epi-r-music-room'],
         ['Syracuse · Honors Dorm', 'epi-r-minji-room', 'epi-r-minji-room'],
         ['Syracuse · eSports Lab', 'epi-r-esports-lab', null],
@@ -79,6 +85,26 @@
         ['Syracuse · Regionals · Loading Dock', 'epi-r-regionals-dock', null],  // Kat's art, Nov 4 (day; dims in the evening)
         ['Syracuse · Regionals · After the Final', 'epi-r-regionals-after', 'epi-r-regionals-after'],  // Kat's art, Nov 4 (house lights)
         ['Syracuse · Regionals', 'epi-r-regionals', null],
+        // The Manhattan pass (Nov 5 2026): every place borrows a picture until its own art comes (FEMC-ART-TODO 33; FEMC-ART-WIRING "33").
+        ['Syracuse · The Car', 'epi-s-car', 'epi-s-car-night'],                         // → epi-r-car (33M)
+        ['Manhattan · The Lee Apartment · Her Room', 'elegant-bedroom', 'elegant-bedroom'], // → epi-r-nyc-her-room (33E)
+        ['Manhattan · The Lee Apartment · Kitchen', 'epi-s-lee-kitchen', 'epi-s-lee-kitchen'], // → epi-r-nyc-kitchen (33D)
+        ['Manhattan · The Lee Apartment · Living Room', 'kirijo-flat', 'kirijo-flat'],    // → epi-r-nyc-living (33C, the piano)
+        ['Manhattan · The Lee Apartment · Dining Room', 'epi-s-dining-room', 'epi-s-dining-room'], // → epi-r-nyc-dining (33F)
+        ['Manhattan · The Lee Apartment · Hall', 'epi-s-study', 'epi-s-study'],          // → epi-r-nyc-hall (33G, the photos)
+        ['Manhattan · The Lee Apartment · Study', 'epi-s-study', 'epi-s-study'],         // → epi-r-nyc-hall (33G)
+        ['Manhattan · The Lee Apartment · Roof Terrace', 'rooftop-citynight', 'rooftop-citynight'], // → epi-r-nyc-terrace (33H)
+        ['Manhattan · The Lee Apartment', 'kirijo-flat', 'kirijo-flat'],
+        ['Manhattan · The Building · Lobby', 'hotel-lobby', 'hotel-lobby'],              // → epi-r-nyc-lobby (33A)
+        ['Manhattan · The Building · Service Elevator', 'hotel-lobby', 'hotel-lobby'],   // → epi-r-nyc-service (33B)
+        ['Manhattan · Lee Foundation Reception', 'hotel-lobby', 'hotel-lobby'],          // → epi-r-nyc-reception (33L)
+        ['Manhattan · Upper East Side', 'outside-daytime-neighborhood', 'outside-night'], // → epi-r-nyc-street / -street-night (33I)
+        ['Manhattan · Her Old School', 'outside-school', 'outside-school'],             // → epi-r-nyc-school (33J)
+        ['Manhattan · Central Park', 'park-2-winter', 'park-2-winter'],                  // → epi-r-nyc-park (33K)
+        ['Manhattan · Madison Avenue · Café', 'chagall-cafe-inside', 'chagall-cafe-inside'],
+        ['Manhattan · Penn Station', 'station-concourse-busy', 'station-concourse-evening'], // → epi-r-nyc-penn (33N)
+        ['Manhattan · Subway', 'subway-populated', 'subway'],                            // → epi-r-nyc-subway (33O)
+        ['Manhattan', 'outside-daytime-neighborhood', 'outside-night'],
         ['Syracuse', 'flashback-syracuse-quad', null]
       ],
       weatherFx: { outdoor: ['epi-r-valley', 'epi-r-football', 'flashback-syracuse-quad', 'flashback-alphaphi-house', 'epi-r-rooftop-night', 'epi-r-rooftop-night-snow', 'epi-r-quad-day', 'epi-r-marshall-st',
@@ -92,19 +118,34 @@
         // viewsReady (its art in assets/femc/bg); until then the screen keeps `bg`, dimmed in the evening and at night.
         views: { day: 'epi-r-home-day', evening: 'epi-r-home-evening', night: 'epi-r-home-night' }, viewsReady: [] },
       school: { place: 'Syracuse · The Quad', bg: 'epi-r-quad-day' },
+      // The Manhattan pass (Nov 5 2026; epilogue.js phaseNow): from 12/21 the home screen is her room in the Lee apartment, the
+      // place name Manhattan, no school, and the day screens read variants.nyc first.
+      phases: [{ from: '12/21', name: 'Manhattan', school: null, variants: 'nyc',
+        home: { place: 'Manhattan · The Lee Apartment · Her Room', bg: 'elegant-bedroom' } }],
       activities: [
-        { id: 'epi-r-coffee', name: 'Coffee on Marshall Street', place: 'Syracuse · Marshall Street · Café', bg: 'epi-r-marshall-cafe', slots: ['after', 'evening'], cost: 7, stats: { charm: 1 },
+        { id: 'epi-r-coffee', until: '12/20', name: 'Coffee on Marshall Street', place: 'Syracuse · Marshall Street · Café', bg: 'epi-r-marshall-cafe', slots: ['after', 'evening'], cost: 7, stats: { charm: 1 },
           text: "A corner table, a coffee she let go cold, and a whole street of people who had no idea where she'd been." },
-        { id: 'epi-r-library', name: 'Study at Bird Library', place: 'Syracuse · Bird Library', bg: 'epi-r-bird-library', slots: ['after', 'evening'], cost: 0, stats: { knowledge: 1 },
+        { id: 'epi-r-library', until: '12/20', name: 'Study at Bird Library', place: 'Syracuse · Bird Library', bg: 'epi-r-bird-library', slots: ['after', 'evening'], cost: 0, stats: { knowledge: 1 },
           text: "Three hours in a carrel with a syllabus that had kept going without her. She caught up on most of it." },
-        { id: 'epi-r-vod', name: 'VOD review in the lab', place: 'Syracuse · eSports Lab', bg: 'epi-r-esports-lab', slots: ['after', 'evening'], cost: 0, stats: { proficiency: 1 },
+        { id: 'epi-r-vod', until: '12/20', name: 'VOD review in the lab', place: 'Syracuse · eSports Lab', bg: 'epi-r-esports-lab', slots: ['after', 'evening'], cost: 0, stats: { proficiency: 1 },
           text: "Headphones on, the lab empty except for the hum, her own Kiriko on the screen at quarter speed, every cleanse she'd been half a second late on. There were fewer than there used to be. A year of reading a room in the dark did that." },
-        { id: 'epi-r-books', name: 'The used bookstore', place: 'Syracuse · Marshall Street', bg: 'epi-r-marshall-st', slots: ['after'], cost: 12, stats: { knowledge: 1, kindness: 1 },
+        { id: 'epi-r-books', until: '12/20', name: 'The used bookstore', place: 'Syracuse · Marshall Street', bg: 'epi-r-marshall-st', slots: ['after'], cost: 12, stats: { knowledge: 1, kindness: 1 },
           text: "The bookstore on Marshall Street smelled like radiator heat and old paper. She came out with a paperback nobody had assigned her and a bag she'd let the man behind the counter talk her into, because he'd seemed so sure." },
-        { id: 'epi-r-valley', name: 'Walk through the valley', place: 'Syracuse · The Valley', bg: 'epi-r-valley', slots: ['after'], cost: 0, stats: { courage: 1 },
+        { id: 'epi-r-valley', until: '12/20', name: 'Walk through the valley', place: 'Syracuse · The Valley', bg: 'epi-r-valley', slots: ['after'], cost: 0, stats: { courage: 1 },
           text: "By daylight the valley was just grass under snow, crossed and recrossed by a thousand people on their way to somewhere else. She walked it anyway, slow, all the way past the tree that leaned too far to the right, and didn't stop." },
-        { id: 'epi-r-dining', name: 'Late dinner at the dining hall', place: 'Syracuse · Dining Hall', bg: 'epi-r-marshall-cafe', // stand-in bg → epi-r-dining-hall (FEMC-ART-TODO 23H) slots: ['evening'], cost: 9, stats: { kindness: 1, charm: 1 },
-          text: "A tray, a table by the window, and a freshman she half recognised who sat down across from her because every other seat was taken and then talked for forty minutes about a lab partner. She let him. It was nice to be the one listening." }
+        { id: 'epi-r-dining', until: '12/20', name: 'Late dinner at the dining hall', place: 'Syracuse · Dining Hall', bg: 'epi-r-marshall-cafe', slots: ['evening'], cost: 9, stats: { kindness: 1, charm: 1 }, // stand-in bg → epi-r-dining-hall (FEMC-ART-TODO 23H); slots / cost / stats were inside this comment until Nov 5
+          text: "A tray, a table by the window, and a freshman she half recognised who sat down across from her because every other seat was taken and then talked for forty minutes about a lab partner. She let him. It was nice to be the one listening." },
+        // Manhattan (the Manhattan pass, Nov 5 2026): from 12/21 (winter break, so every day is a day off).
+        { id: 'epi-r-nyc-coffee', from: '12/21', name: 'Coffee on Madison', place: 'Manhattan · Madison Avenue · Café', bg: 'chagall-cafe-inside', slots: ['after', 'evening'], cost: 9, stats: { charm: 1 },
+          text: "A café on Madison where a latte cost nine dollars and came with a cookie nobody asked for. She sat in the window and watched the Upper East Side walk its dogs in coats that matched the dogs' coats, and nobody looked twice at her, which here was the whole point of the neighborhood." },
+        { id: 'epi-r-nyc-park', from: '12/21', name: 'Walk in Central Park', place: 'Manhattan · Central Park', bg: 'park-2-winter', slots: ['after'], cost: 0, stats: { courage: 1 },
+          text: "The park in late December was all bare branches and joggers who'd made it a personality. She walked the reservoir loop with her hands in her pockets and the skyline going gray behind the trees, and it was the first time in a week she'd been somewhere big enough to feel small in." },
+        { id: 'epi-r-nyc-books', from: '12/21', name: 'The bookstore on Lexington', place: 'Manhattan · Upper East Side', bg: 'bookworms-inside', slots: ['after'], cost: 18, stats: { knowledge: 1 },
+          text: "The bookstore on Lexington had a cat, a radiator, and a man behind the counter who'd sold her her first Agatha Christie at nine and didn't remember her at all. She bought a paperback anyway. She didn't tell him." },
+        { id: 'epi-r-nyc-subway', from: '12/21', name: 'Ride the subway downtown', place: 'Manhattan · Subway', bg: 'subway-populated', slots: ['after', 'evening'], cost: 3, stats: { courage: 1, kindness: 1 },
+          text: "The 6 downtown and back, for no reason, because she'd never once been allowed to take it alone as a kid and she could now. A man played a saw at Union Square. She gave him five dollars she'd meant to spend on something else and didn't regret it." },
+        { id: 'epi-r-nyc-games', from: '12/21', name: 'Queue from her old desk', place: 'Manhattan · The Lee Apartment · Her Room', bg: 'elegant-bedroom', slots: ['evening'], cost: 0, stats: { proficiency: 1 },
+          text: "Her old desk, her old chair, a laptop on a stack of school yearbooks and a ranked queue at midnight on the East Coast server. She played four games as Kiriko in the room where she'd first learned the game existed. She won three. The fourth, she'd say later, was the tank's fault." }
       ],
       /* ♪ MUSIC: Kat's song picks (FEMC-EPILOGUE-PLAN.md, revision 1); an epi-r-* mood still marked ♪ PLACEHOLDER plays a stand-in P3 track. To set one,
          replace its value with a file in assets/femc/music/ (no extension) or an 'assets/audio/…' path, like world-runners. */
@@ -143,11 +184,21 @@
     },
     // The team's practices (Mon/Tue/Thu/Sat; Doyoung gives them Monday 12/8 after Regionals). A story event or routine in that
     // slot comes first; an event that consumes the slot means no practice that day.
-    practice: { days: [1, 2, 4, 6], slot: 'after', from: '12/1', to: '12/20', skip: ['12/6', '12/8'], place: 'Syracuse · eSports Lab', bg: 'epi-r-esports-lab', stats: { proficiency: 1 }, title: 'Practice' },
+    // The time pass (Nov 5 2026, FEMC-RUNNERS-EPI-EXPANSION C3): after Regionals, 12/9 and 12/13 are optional (a choice in Go Out:
+    // practice for the stat, or see someone). The 20th's practice is the story event epi-r-last-practice (story-time.js).
+    practice: { days: [1, 2, 4, 6], slot: 'after', from: '12/1', to: '12/20', skip: ['12/6', '12/8'], optional: ['12/9', '12/13'], place: 'Syracuse · eSports Lab', bg: 'epi-r-esports-lab', stats: { proficiency: 1 }, title: 'Practice' },
     cast: {
       doyoung: 'Doyoung', olivia: 'Olivia', haerin: 'Haerin', jeno: 'Jeno', renjun: 'Renjun', johnny: 'Johnny', jisung: 'Jisung',
       yerim: 'Yerim', chungha: 'Chungha', chaeyeon: 'Chaeyeon', sakura: 'Sakura', eunchae: 'Eunchae', kazuha: 'Kazuha', chaewon: 'Chaewon',
-      dad: 'Dad', han: 'Ms. Han', mom: 'Mom', caster: 'Caster', suesports: '@SUesports'
+      dad: 'Dad', han: 'Ms. Han', mom: 'Mom', caster: 'Caster', suesports: '@SUesports', suanon: 'SUanon',
+      // The Manhattan pass (Nov 5 2026): minor voices, no portraits (shown by name only). Parties: Alpha (sophie, grace: the
+      // seniors; tess, nora: Danielle's friends; ellie: the pledge), Sigma (kai: the playlist), students (dev: saw her Kiriko;
+      // maya, priya: Media and Society; tyler, marcus: Jaehyun's teammates; bree: wants a session), the alum (whitfield).
+      // Manhattan: marco (the front desk), mrsoh (the housekeeper), mrkwon / mrskwon (Christmas Eve), velvet (the reception's
+      // nine-year-old), reporter, kaplan (the parents' New Year's Eve hosts).
+      sophie: 'Sophie', grace: 'Grace', tess: 'Tess', nora: 'Nora', ellie: 'Ellie', kai: 'Kai', dev: 'Dev', maya: 'Maya', priya: 'Priya',
+      tyler: 'Tyler', marcus: 'Marcus', bree: 'Bree', whitfield: 'Mrs. Whitfield',
+      marco: 'Marco', mrsoh: 'Mrs. Oh', mrkwon: 'Mr. Kwon', mrskwon: 'Mrs. Kwon', velvet: 'Girl in velvet', reporter: 'Reporter', kaplan: 'Mrs. Kaplan', theo: 'Theo'
     },
     // This world's own faces (core.js worldFace): Solar's home look and the outfits drawn for Runners (FEMC-ART-WIRING).
     faces: { solar: 'solar-runners', sakura: 'sakura-runners', eunchae: 'eunchae-runners', kazuha: 'kazuha-runners', chaewon: 'chaewon-runners', haechan: 'haechan-runners',
@@ -166,6 +217,18 @@
         chenle: 'chenle-runners-regionals' } // epi-r-regionals-1 / -2 (12/6-12/7)
     },
     variants: {
+      // Manhattan (the Manhattan pass; epilogue.js line() reads nyc.<path> first once places.phases' Manhattan phase starts).
+      nyc: {
+        morning: {
+          off: ["Morning on the eleventh floor. Mrs. Oh's radio in the kitchen, the radiators doing nothing because the building ran on a system nobody had explained to her in eighteen years, and four hundred windows across the street, most of them still dark.",
+            "She woke up and didn't know which ceiling it was for a second. Then the light told her: gray, high, Fifth Avenue light, the park a rumor at the end of the street.",
+            { weather: ['snow'], t: "Snow on the terrace planters and on the park, the city gone quiet under it the way only a city that never was quiet could. Somebody on the street below was already shoveling, rhythmically, like a heartbeat." }]
+        },
+        late: ["Late. The apartment ticked and settled around her, eleven rooms of it, every one of them dark but hers.",
+          "The building at night: an elevator somewhere going up, the hum of a city that didn't believe in sleep, and her phone face down on the window seat, lit every few minutes from underneath."],
+        stayIn: ["She stayed in. The apartment was big enough to be alone in three different ways, and she tried two of them.",
+          "She stayed in her room with the door shut and the curtains open, the way she always had, the building across the street doing its four hundred small lives in its windows."]
+      },
       morning: {
         school: ["Class at nine. The quad was salted into gray paths, and everyone she passed looked like they'd slept four hours, which was December's whole look.",
           "Morning. Snow on the steps, a line out the door of the coffee cart, and a lecture hall that smelled like wet coats.",

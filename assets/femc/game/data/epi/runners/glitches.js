@@ -17,6 +17,9 @@
     thin: ['Language Arts Rooftop', 'Studio 4B', 'Sigma Chi House · Stairs'],
     constant: ['haechan'],
     chance: [0, 0.1, 0.18, 0.3, 0.45],
+    // The held layer (the Manhattan pass, Nov 5 2026): after the roof the world starts losing track of her. From 12/21 the
+    // ambient pool is quieter and removes things instead of adding them (glitch.js erase / late).
+    held: { from: '12/21', ambient: [{ kind: 'erase' }, { kind: 'late' }, { kind: 'sound', sound: 'static' }, { kind: 'erase' }, { kind: 'tint' }] },
     ambient: {
       1: [{ kind: 'sound', sound: 'static' }, { kind: 'clock' }],
       2: [{ kind: 'tint' }, { kind: 'sound', sound: 'p3' }, { kind: 'face' }, { kind: 'sound', sound: 'piano' }],
@@ -25,6 +28,22 @@
     }
   };
   R.glitches = [
+    // The held stretch (the Manhattan pass, Nov 5 2026; FEMC-RUNNERS-MANHATTAN-PLAN section 6). Inline: the scenes say where.
+    { id: 'epi-r-g-footprints', kind: 'erase', inline: true },                 // 12/20, the roof: the can and her footprints gone
+    { id: 'epi-r-g-leftchat', kind: 'phone', name: 'Alpha Phi House', msg: 'Solar left the chat', read: false, time: '3:12 AM', inline: true }, // 12/21
+    { id: 'epi-r-g-sign', kind: 'tint', inline: true },                         // 12/21, the highway sign to nowhere
+    { id: 'epi-r-g-frame', kind: 'erase', inline: true },                       // 12/22, the frame nobody sent
+    { id: 'epi-r-g-reflection', kind: 'late', inline: true },                   // 12/23, her reflection half a second late
+    { id: 'epi-r-g-log', kind: 'name', inline: true },                          // 12/24, the second name in the guest log
+    { id: 'epi-r-g-photos', kind: 'erase', inline: true },                      // 12/26-28, the gap in the family photos
+    { id: 'epi-r-g-floor', kind: 'clock', inline: true },                       // 12/26-28, a floor the elevator shouldn't have
+    { id: 'epi-r-g-train', kind: 'sound', sound: 'p3', inline: true },          // 12/26-28, a train under the building at 2 a.m.
+    { id: 'epi-r-g-green-train', kind: 'tint', inline: true },                  // 12/29-30, the subway's green train
+    { id: 'epi-r-g-marco', kind: 'erase', inline: true },                       // 12/29-30, Marco doesn't know her
+    { id: 'epi-r-g-tenth', kind: 'name', inline: true },                        // 12/31, one more name on Marco's list
+    { id: 'epi-r-g-album', kind: 'face', inline: true },                        // 12/31, a photo nobody took
+    { id: 'epi-r-g-1159', kind: 'clock', inline: true },                        // 12/31, every clock stops at 11:59
+    { id: 'epi-r-g-held-out', kind: 'erase', from: '12/22', to: '12/30', at: 'out' },  // Go Out: the place forgets its name
     // In scenes (inline: the scene says where).
     { id: 'epi-r-g-wake', kind: 'tint', inline: true },                         // 12/1, the first morning back
     { id: 'epi-r-g-thumbs', kind: 'sound', sound: 'static', inline: true },     // 12/1, her thumbs type a Gekkoukan word

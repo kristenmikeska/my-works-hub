@@ -711,7 +711,20 @@
     { s: 'chenle', f: 'neutral', t: "He's not in any of them." },
     { s: 'olivia', f: 'surprised', t: "Who?" },
     { s: 'chenle', f: 'neutral', t: "Nobody. Jaemin's posted eleven. Jeno's posted six. I'm just saying who's in them." },
-    { n: "Solar didn't ask who wasn't. She knew. He didn't perform; that was the whole of him. He didn't stand in the back of a Jaemin story with a soda to prove he was sober. He didn't come to the lab glass. He didn't send her anything, all day, not one word, two days out from the most important weekend of her year, and she'd checked, more times than she'd ever admit, and every time she checked she'd understood a little more exactly that he was doing it on purpose." },
+    { n: "Solar didn't ask who wasn't. She knew. He didn't perform; that was the whole of him. He didn't stand in the back of a Jaemin story with a soda to prove he was sober. He didn't come to the lab glass. He didn't send her anything, all day, not one word, one night out from the most important weekend of her year, and she'd checked, more times than she'd ever admit, and every time she checked she'd understood a little more exactly that he was doing it on purpose." },
+    // Jaemin's story time (Manhattan pass): the stories keep coming.
+    { n: "Jaemin was not done. Jaemin was, it turned out, never done. By half past eight he'd moved on from photographs to something he was calling *story time,* a series of videos shot from the arm of the Sigma couch with his face far too close to the lens, and Olivia propped her phone against the lid of the pepperoni box so the whole floor could watch, which nobody had agreed to and everybody did." },
+    { phone: [
+      { from: 'jaemin', t: "jaemin posted a story." },
+      { from: 'jaemin', t: "[video, jaemin on the couch arm, too close] story time pt 1. it's november. there's a trip. nobody tells me where. i find out from a GROUP CHAT. like a peasant" },
+      { from: 'jaemin', t: "[video, same couch, one reindeer antler now] pt 2. they come back. they have TANS. it's syracuse. in november. explain the tans. you can't. nobody can" },
+      { from: 'jaemin', t: "[video, jeno's hand over the lens, jaemin yelling behind it] pt 3. jeno says i'm not allowed to do pt 3. pt 3 is about the uncle" },
+      { from: 'jaemin', t: "[video, jaemin whispering in a dark hallway, bass behind the wall] pt 4. the vacationers are not here tonight. they're at the LAB. on a FRIDAY. which is honestly more suspicious than the trip" },
+      { from: 'jaemin', t: "[video, jaemin holding a red cup up to the camera like a microphone] pt 5. good luck tomorrow su overwatch. we love you. we will be watching on a stream with forty viewers. we will be twenty of them" }
+    ], contact: 'Stories' },
+    { s: 'haerin', f: 'neutral', t: "He's going to run out of parts." },
+    { s: 'olivia', f: 'happy', t: "He won't. He has a part nine about Hyein's luggage. He told me. He's saving it." },
+    { n: "Pt 5 got a noise out of the whole floor, a soft *aw* from Olivia and a snort from Chenle that he turned into a cough, and Doyoung, who'd been watching the phones go round with the expression of a man watching weather come in over a lake, reached over and paused it on Jaemin's face mid-word, mouth open, cup up, and said that would be the last story time of the evening, and then watched it twice more himself when he thought nobody was looking." },
     { s: 'olivia', f: 'happy', t: "Okay but SERIOUSLY. Solar. The trip. Was it actually that exclusive? Like, was there a guest list? Was there a dress code? Did Jaemin cry?" },
     { choose: [
       { t: "Smaller than they're making it sound. A lodge, bad Wi-Fi, a lot of board games. Jaemin cheated at all of them.", then: [
@@ -734,6 +747,58 @@
       { s: 'chenle', f: 'happy', t: "Junpei still owes me ramen. Frame six. I was right." },
       { n: "She laughed so suddenly she choked on her pizza. Minji had to hit her on the back. Nobody else in the room had any idea why it was funny, and Chenle didn't explain, and he looked, for one second, pleased with himself in a way she hadn't seen since before Thanksgiving." }
     ] },
+    // The feed and the girls' chat (Manhattan pass).
+    { n: "A little after that Haerin, who never showed anybody anything on her phone, held hers out sideways to Olivia without a word, and Olivia read it and went quiet, which almost never happened, and then passed it on round the circle like a note in a classroom, past Chenle, who didn't take it, past Minji, who did and then wished she hadn't, until it got to Solar." },
+    { phone: [
+      { from: 'suanon', t: "ok who actually went on the alpha sigma 'trip'. my roommate's bf is a sigma and HE didn't go. so it's not a sigma trip. so what is it" },
+      { from: 'suanon', t: "it was a wellness retreat. my cousin's in alpha. she said 'wellness' and then changed the subject which is what people do when it was rehab" },
+      { from: 'suanon', t: "not rehab. they all came back wearing the same little plastic charm thing. it's a cult. a small one. a boutique cult" },
+      { from: 'suanon', t: "y'all the su overwatch girl went. the kiriko one. the one with regionals TOMORROW. so either the trip was real or the lab is a front" },
+      { from: 'suanon', t: "the lab is not a front i walk past it every night and it smells like pizza and sadness" }
+    ], contact: 'SUanon' },
+    { n: "*The same little plastic charm thing.* She thought of Hyein's wrist, the cheap pink charm from a crane game in a mall in a city that wasn't anywhere, which Hyein wore every day now and turned with her thumb when she was thinking, and she thought of the stranger who'd looked at it long enough to notice there were two, and her stomach turned over once, slow, like something rolling in its sleep." },
+    { s: 'olivia', f: 'happy', t: "A BOUTIQUE cult. I'm crying. Solar, are you in a boutique cult? Blink twice." },
+    { s: 'solar', f: 'happy', t: "If I were, you couldn't afford it." },
+    { n: "Olivia fell over sideways into the pizza boxes. Haerin took her phone back and turned it face down on the carpet, gently, like closing a door on a sleeping room, and Minji, beside Solar, didn't say anything, but she moved half an inch closer, so their shoulders touched, and left them there." },
+    { n: "Then Solar's own phone went, against her hip, three times and then again and then so many more times it turned into a single long purr, and she knew who it was before she looked, because only one group chat in her life had ever arrived like weather." },
+    { phone: [
+      { from: 'hyein', t: "@hyein: ok hear me out. 20 minutes" },
+      { from: 'hanni', t: "@hanni: no" },
+      { from: 'hyein', t: "@hyein: TWENTY. she walks in, says hi to jaemin, everyone sees she exists, she leaves. if shes not here it looks like hiding" },
+      { from: 'hanni', t: "@hanni: she has regionals at 9am hyein" },
+      { from: 'hyein', t: "@hyein: and?? the van is 7:15. thats ten hours. you can do a lot in ten hours" },
+      { from: 'hanni', t: "@hanni: you can do one thing in ten hours and it's sleep" },
+      { from: 'hyein', t: "@hyein: danielle is here. third step. she asked me where 'the vacationers' are. she did the quote marks with her VOICE" },
+      { from: 'hanni', t: "@hanni: which is exactly why she's not coming" },
+      { from: 'hyein', t: "@hyein: ...ok thats actually a good point and i hate it" },
+      { from: 'hanni', t: "@hanni: sol don't come. we've got it. we're telling everyone you're asleep like an athlete" },
+      { from: 'hyein', t: "@hyein: shes not an athlete shes a gamer" },
+      { from: 'hanni', t: "@hanni: hyein" },
+      { from: 'hyein', t: "@hyein: a GAMER ATHLETE. sol dont come. love u. hydrate" }
+    ], contact: 'hanni, hyein 🩷' },
+    { n: "She read it twice, once fast and once slow, and in the slow one she could see them, actually see them, Hyein on the arm of the Sigma couch in something she'd made herself with her phone held up to her nose, Hanni by the kitchen door with a cup she'd been nursing for an hour, the two of them three feet apart and texting each other in a group chat instead of turning their heads, because the argument was for her and they wanted her to watch them have it." },
+    { choose: [
+      { t: "(Reply.) not coming. tell danielle i'm asleep. tell her i'm dreaming about her", then: [
+        { phone: [
+          { from: 'solar', t: "@solar: not coming. tell danielle i'm asleep. tell her i'm dreaming about her" },
+          { from: 'hyein', t: "@hyein: IM TELLING HER THAT EXACTLY" },
+          { from: 'hanni', t: "@hanni: she is not telling her that" },
+          { from: 'hyein', t: "@hyein: im walking over" },
+          { from: 'hanni', t: "@hanni: HYEIN" }
+        ], contact: 'hanni, hyein 🩷' },
+        { n: "Then nothing, for four minutes, which was the longest that chat had been silent since September. Then a single photo, no caption, of the third step of the Sigma staircase with nobody standing on it, and Solar laughed out loud on the floor of the lab and refused to explain why to anyone." }
+      ] },
+      { t: "(Reply.) twenty minutes is how they get you", then: [
+        { phone: [
+          { from: 'solar', t: "@solar: twenty minutes is how they get you" },
+          { from: 'hanni', t: "@hanni: THANK you" },
+          { from: 'hyein', t: "@hyein: fine. FINE. but you're bringing the trophy to breakfast sunday and i'm drinking orange juice out of it" },
+          { from: 'hanni', t: "@hanni: we're so proud of u already. go to bed by 11" }
+        ], contact: 'hanni, hyein 🩷' },
+        { n: "*Already.* Hanni had typed *already,* before anything had happened, before a single map, and Solar sat with it on the floor of the lab for a moment longer than she needed to, the way you'd hold a hand to a radiator." }
+      ] }
+    ] },
+    { n: "The gossip about her was happening in a house she wasn't in, about a trip she couldn't describe, to people who'd decided what it was without her, and she found, putting her phone face down on the carpet next to Haerin's, that for one night it was the best kind. The kind with a wall between it and her. The kind she didn't have to stand in." },
     { n: "At nine Doyoung shut the VOD off and stood up and looked at them, all five of them, cross-legged on the floor of the lab in the low light with pizza grease on their fingers and their gear packed and labeled in a row by the door like a little army of luggage." },
     { s: 'doyoung', f: 'serious', t: "That's it. We're done. Nobody is going to that party." },
     { s: 'olivia', f: 'happy', t: "Nobody WANTS to go to that party." },
@@ -827,7 +892,7 @@
   ] },
 
   // ───────────────────────────── 12/7: Regionals, day two ─────────────────────────────
-  { id: 'epi-r-regionals-2', date: '12/7', slot: 'early', fills: ['after'], faces: 'runners-regionals', title: 'regionals, day two', place: 'Syracuse · Regionals', time: 'Morning', scene: [
+  { id: 'epi-r-regionals-2', date: '12/7', slot: 'early', fills: ['after', 'evening'], faces: 'runners-regionals', title: 'regionals, day two', place: 'Syracuse · Regionals', time: 'Morning', scene: [
     { music: 'epi-r-match' },
     { n: "Day two was a different hall. Same room, same drapes, same carpet-glue smell, but half the teams were gone, and the folding chairs had been pushed closer to the stages, and the crowd had doubled overnight, because the stream had numbers now and the numbers had told people where to be. The card-table mom had run out of hot chocolate by ten." },
     { place: 'Syracuse · Regionals · Green Room', time: 'Morning', soft: true },

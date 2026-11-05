@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 4, late):** ⭐ high-resolution poses (top section: Solar ✅ done; the other fighters next) · 1 credits still (section 18: Ken) · 6 Runners epilogue places (section 23: the Sigma house by day, its back porch, the dining hall and three for the home screen) · 1 Runners sticker sheet (section 24) · 12 Echo sheets (section 25: 72 new Echoes) · 4 dorm lounge pictures (section 26; autumn and winter are in) · couple victory poses for Jungwon and Akihiko (section 27: four outfits to go; Moon Hoodie and Midnight Drive are in) · 1 Boutique banner picture (section 28: Tarot Arcana) · 3 epilogue polaroids (section 30) · low-res pictures to look over at the very end (section 31). **Optional:** 27 epilogue CGs redrawn in their world's style now live in `FEMC-CG-REMAKES.md`. **New Wardrobe outfits** (Solar's skin series and the collab outfits, 24 looks) and **skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make (updated Nov 5):** ⭐ high-resolution poses (top section: Solar ✅ done; the other fighters next) · 1 credits still (section 18: Ken) · **Runners backgrounds: all in `RUNNERS-BACKGROUND-PROMPTS.md`** (27 remakes in the new realistic style + 26 new places, Syracuse and Manhattan) · 1 Runners sticker sheet (section 24) · 12 Echo sheets (section 25: 72 new Echoes) · 4 dorm lounge pictures (section 26; autumn and winter are in) · couple victory poses for Jungwon and Akihiko (section 27: four outfits to go; Moon Hoodie and Midnight Drive are in) · 1 Boutique banner picture (section 28: Tarot Arcana) · 3 epilogue polaroids (section 30) · 8 new Runners epilogue CGs (section 32: the blanket fort, the mirror, the porch, the porch rail, the window seat, the last practice, room tone, half speed) · 7 Manhattan Runners CGs (section 35) · 1 strangers place (section 34: the harbor by day) · low-res pictures to look over at the very end (section 31). **Optional:** 27 epilogue CGs redrawn in their world's style now live in `FEMC-CG-REMAKES.md`. **New Wardrobe outfits** (Solar's skin series and the collab outfits, 24 looks) and **skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 ## ⭐⭐ TOP PRIORITY when you have usage: high-resolution poses (Kat, Nov 2)
 
@@ -14,7 +14,7 @@ Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make.
 3. Optional later: battle pose sheets redone as single figures (only if the in-battle figures ever look soft to you).
 
 **Solar: done (in the game)**
-- ✅ Her own look (18) · ✅ After Hours (18) · ✅ Date Day (18) · ✅ Emo Night (18) · ✅ Limelight (18) · ✅ Alpha Phi Formal (18) · ✅ Y2K Pop Star (18) · ✅ Pink Lagoon (18) · ✅ Night Swim (18) · ✅ The Sun (18) · ✅ Sugar Rush (18) · ✅ Sun Hoodie (18) · ✅ Summer Yukata (18) · ✅ Summer Festival (18) · ✅ Oops! (18) · ✅ SU eSports Jersey (18) · ✅ Ringside (18) · ✅ Stage Idol (18) · ✅ Strawberry Milk (18) · ✅ Moonlit Hanbok (18) · ✅ Midnight Drive (18) · ✅ Night Prowl (18) · ✅ Halloween Witch (18) · ✅ Harbour Night Coat (18) · ✅ Phantom Thief (18) · ✅ Morning Roadwork (18) · ✅ Summer Session (18) · ✅ Snake Charmer (18) · ✅ Lifeguard on Duty (18) · ✅ Vice President (18)
+- ✅ Her own look (18) · ✅ After Hours (18) · ✅ Date Day (18) · ✅ Emo Night (18) · ✅ Limelight (18) · ✅ Alpha Phi Formal (18) · ✅ Y2K Pop Star (18) · ✅ Pink Lagoon (18) · ✅ Night Swim (18) · ✅ The Sun (18) · ✅ Sugar Rush (18) · ✅ Sun Hoodie (18) · ✅ Summer Yukata (18) · ✅ Summer Festival (18) · ✅ Oops! (18) · ✅ SU eSports Jersey (18) · ✅ Ringside (18) · ✅ Stage Idol (18) · ✅ Strawberry Milk (18) · ✅ Moonlit Hanbok (18) · ✅ Midnight Drive (18) · ✅ Night Prowl (18) · ✅ Halloween Witch (18) · ✅ Harbour Night Coat (18) · ✅ Phantom Thief (18) · ✅ Morning Roadwork (18) · ✅ Summer Session (18) · ✅ Snake Charmer (18) · ✅ Lifeguard on Duty (18) · ✅ Vice President (18) · ✅ Movie Date (18) · ✅ Velvet Attendant (18) · ✅ Winter Coat (18)
 
 **Solar: ✅ ALL DONE (Nov 4).** Her own look and all 32 outfits have the full 18 poses. Next in this section: step 2, the other fighters' victory poses (section 27 has the couple partners).
 
@@ -56,56 +56,8 @@ The stone steps of a small neighbourhood shrine in the afternoon. Ken sits halfw
 
 ---
 
-## 23. More places for the Runners epilogue (Gemini)
-Kat's note (Nov 3): the Runners epilogue needs more backgrounds, Regionals most of all, and a home screen by time of day (23I-23K). Each of these places shows a borrowed background today (the main Regionals hall, the outside of the Alpha Phi house, the Sigma party, the café). Realistic style, like the Runners epilogue CGs (Kat, Nov 3): attach `CG - style (Runners).png` for the look (its people are left out). The Runners backgrounds already in the game are painted, so these will look different from them until those are remade. Save under the name given: Claude swaps it in.
-
-**[ ] 23F. The Sigma Chi living room by day**  
-The fraternity house's living room at four in the afternoon, cleaned up and quiet (now the Sigma party stands in).  
-Attach: `CG - style (Runners).png` (for the style only)  
-Save as: `epi-r-sigma-living.png`
-```
-Realistic background art in the style of the attached image (the realistic painted style of the Runners CGs), 16:9, high resolution, no people, no readable text: the living room of an old college fraternity house on a winter afternoon, freshly vacuumed and quiet: a long battered leather couch with a laptop left on one cushion, a big TV on the wall switched off, a coffee table with a stack of Christmas cards and a pen, a framed composite of past members and a wooden paddle on the wall, a pool table in the back with the cues racked, a staircase going up in the corner, tall windows with grey snow light and a white front yard outside. Calm, a little worn, a different place from the party it is at night. Soft realistic shading, real-looking light and materials, cinematic; NOT anime and NOT cel shading. Use the attached image for the style only and leave out its people. Keep everything important away from the edges.
-```
-
-**[ ] 23G. The Sigma Chi back porch**  
-The back porch of the fraternity house on a cold finals-week morning (now the Sigma party stands in).  
-Attach: `CG - style (Runners).png` (for the style only)  
-Save as: `epi-r-sigma-porch.png`
-```
-Realistic background art in the style of the attached image (the realistic painted style of the Runners CGs), 16:9, high resolution, no people, no readable text: the back porch of an old wooden fraternity house on a cold grey December morning: a covered porch with peeling white railings, a mug of coffee steaming on the railing, two mismatched plastic chairs, a kitchen door with a window in it behind, steps down to a backyard covered in snow stamped flat with boot prints, beer cans frozen into the snow by a wooden fence like fossils, bare trees and the backs of other old houses beyond, pale flat morning light. Cold, still, a place for a hard conversation. Soft realistic shading, real-looking light and materials, cinematic; NOT anime and NOT cel shading. Use the attached image for the style only and leave out its people. Keep everything important away from the edges.
-```
-
-**[ ] 23H. The dining hall**  
-The campus dining hall for "Late dinner at the dining hall" on a Go Out evening (now the Marshall Street café stands in).  
-Attach: `CG - style (Runners).png` (for the style only)  
-Save as: `epi-r-dining-hall.png`
-```
-Realistic background art in the style of the attached image (the realistic painted style of the Runners CGs), 16:9, high resolution, no people, no readable text: a big university dining hall on a December evening: long rows of tables with plastic trays and a few half-finished plates, a food counter with steam rising and sneeze guards, a cereal wall and a drink station, a tray return window in the back, tall windows along one side showing dark blue night and snow on the lamplit paths outside, warm overhead lights, a small paper snowflake garland strung over the counter. Busy-looking but nearly empty, warm and ordinary. Soft realistic shading, real-looking light and materials, cinematic; NOT anime and NOT cel shading. Use the attached image for the style only and leave out its people. Keep everything important away from the edges.
-```
-
-**[ ] 23I. Home screen: Solar's room, day**  
-The Runners epilogue's home screen in the daytime (mornings off, Go Out after class, staying in), like the dorm room in the main game. Make this one first: the evening and night versions are edits of it.  
-Attach: `BG - Solar's Room (Alpha Phi).png` (the room to redraw), `CG - style (Runners).png` (the style)  
-Save as: `epi-r-home-day.png`
-```
-Redraw the FIRST image as a realistic background in the style of the SECOND image (the realistic painted style of the Runners CGs: soft realistic shading, real-looking light and materials, cinematic; NOT anime and NOT cel shading; leave out the second image's people). Keep the FIRST image's room and everything in it: a girl's bedroom in an old American sorority house, pink walls, the double bed with pink bedding and a fringed pink throw, fairy lights on the wooden headboard, the closet door open with coats and a puffer jacket hanging on it, the tall white sash window with pink curtains tied back, the old cream radiator under it, the desk on the right with a pink gaming PC, monitor, keyboard, headphones and desk lamp, the mirror with photos on the left, a few clothes on the floor. Make it a little wider and tidier as a home screen: the bed made, a coffee mug on the windowsill, a laptop and a highlighter-marked syllabus on the desk, a folded orange scarf on the chair. Time: a snowy December morning: soft white daylight through the window, snow on the sill outside and a white campus street beyond the glass, the corners of the panes a little frosted, the fairy lights off. 16:9, high resolution, no people, no readable text. Keep everything important away from the edges and the lower left (the game puts menus there).
-```
-
-**[ ] 23J. Home screen: Solar's room, evening**  
-The same room for the Evening slot.  
-Attach: `epi-r-home-day.png` (the one from 23I), `CG - style (Runners).png` (the style)  
-Save as: `epi-r-home-evening.png`
-```
-Edit the FIRST image: the same room, same angle, same furniture and the same realistic style (the SECOND image is the style; leave out its people). Change only the time: a December evening just after sunset: the window a deep blue dusk with a few lit windows and a streetlamp coming on outside, snow falling softly past it, the fairy lights on the headboard switched on and glowing warm, the desk lamp on, warm lamplight on the pink walls against the cool blue from the window, the PC's soft pink glow. Cozy, quiet, the room lived in. 16:9, high resolution, no people, no readable text.
-```
-
-**[ ] 23K. Home screen: Solar's room, night**  
-The same room for Late Night.  
-Attach: `epi-r-home-day.png` (the one from 23I), `CG - style (Runners).png` (the style)  
-Save as: `epi-r-home-night.png`
-```
-Edit the FIRST image: the same room, same angle, same furniture and the same realistic style (the SECOND image is the style; leave out its people). Change only the time: late at night: the room dark, lit only by the warm fairy lights on the headboard, the small desk lamp turned low and the faint pink glow of the PC; outside the window black night with snow drifting through the orange light of a streetlamp, frost thick in the corners of the panes, the radiator's shadow long across the floor, the bed's covers turned back, a phone face down on the desk. Quiet and a little lonely, but warm. 16:9, high resolution, no people, no readable text.
-```
+## 23. Runners epilogue places → moved
+Kat, Nov 5: every Runners background prompt (the remakes and the new places, including what was 23F-23N here) now lives in `RUNNERS-BACKGROUND-PROMPTS.md`, rewritten for the new realistic style. Item numbers kept.
 
 ## 24. Runners sticker pack (ChatGPT)
 Reaction stickers for the Runners epilogue's phone chats: Solar, Haechan, the Alpha Phi girls and the eSports team. Same 3 × 3 green sheet as the other packs (section 14's, all done); the game cuts each sticker out. Until it's in, the chats show a short line in its place.
@@ -220,7 +172,7 @@ A sheet of six Persona designs in a 3 columns × 2 rows grid on a plain white ba
 ---
 
 ## 26. The dorm lounge, sharper and by season (ChatGPT)
-Kat's note (Nov 4): the evening screen's dorm lounge (the room behind Solar every night) is an old 1000 px picture. 26A redraws it sharper; 26B-26E are the same room through the year, with the season showing in the windows and small touches. Same room, same angle every time, so it still feels like home.
+Kat's note (Nov 4): the evening screen's dorm lounge (the room behind Solar every night) is an old 1000 px picture. 26A redraws it sharper; 26B-26D are the same room through the year (autumn and winter are in), with the season showing in the windows and small touches. Same room, same angle every time, so it still feels like home.
 
 **[ ] 26A. The dorm lounge at night (redrawn)**  
 Attach: `BG - Dorm Lounge at night.png`  
@@ -253,12 +205,12 @@ Redraw the attached image as a sharp, high-resolution 16:9 anime background in t
 ---
 
 ## 27. Couple victory poses (ChatGPT)
-Kat's yes (Nov 4): when Solar and her partner wear a matching couple outfit and win, the results screen shows them side by side, with a different pose each time. These are the partner's poses; Solar's come from her HD sets (Sun Hoodie, Summer Festival and After Hours are done; Midnight Drive, Movie Date and Ringside still need hers in the top section). Built Nov 4: Sun & Moon and (since Nov 5) Midnight Drive already show them side by side; each other set joins once its partner's poses come in. One figure per image, same format as Solar's HD poses. Make as many as you like; the game uses whichever exist.
+Kat's yes (Nov 4): when Solar and her partner wear a matching couple outfit and win, the results screen shows them side by side, with a different pose each time. These are the partner's poses; Solar's come from her HD sets (all six are done). Built Nov 4: Sun & Moon and (since Nov 5) Midnight Drive already show them side by side; each other set joins once its partner's poses come in. One figure per image, same format as Solar's HD poses. Make as many as you like; the game uses whichever exist.
 
 **[ ] 27A. Haechan, Moon Hoodie (goes with Solar's Sun Hoodie)** · ✅ five poses in (Nov 4); only "hands in hoodie pocket" left, optional  
 Attach: `Moon Hoodie [sk-haechan-cp-sunmoon] - pose sheet (recut).png`, then `Haechan.png`  
 Save as: `haechan-moonhoodie-hd-<pose>.png` in a folder `HC-Moon Hoodie-Victory Poses`  
-Poses (one image each): peace sign, arms crossed with a smirk, hand in hair, thumbs up, pointing at the viewer, hands in hoodie pocket leaning back
+Poses left (one image each): hands in hoodie pocket leaning back (peace sign, arms crossed, hand in hair, thumbs up and pointing are in)
 ```
 A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (an oversized black hoodie with a pink crescent moon on the front). Pose: [the pose, e.g. a lazy peace sign, a small cocky smile, weight on one leg], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
 ```
@@ -338,6 +290,133 @@ A square 1:1 instant-camera polaroid photo in the realistic painted style of the
 ```
 
 ---
+
+## 32. New Runners epilogue CGs (ChatGPT; realistic, Kat Nov 4)
+
+New moments from the longer Runners epilogue: the first night back, getting ready for the holiday party and the porch the night before the drive home (Nov 4), then the porch rail, Mark alone in the café window, the last practice, Minji's room before break and the lab at half speed (Nov 5). Realistic like the other Runners epilogue CGs: the style anchor first, then the place, then the people in the order the prompt names them. The game part waits until the pictures exist.
+
+**[ ] 32A. Runners: the blanket fort**  
+Attach: `CG - style (Runners).png`, `BG - Hanni and Hyein's Room.png`, `CG - Solar (Runners).png`, `CG - Hanni (Runners).png`, `CG - Hyein (Runners).png`  
+Save as: `epi-r-fort.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: two girls' dorm room in an old sorority house. Night, a snowstorm outside the window, gold where the porch light catches the snow. The room has been turned into a blanket fort: two desk chairs pushed together under a pink duvet that sags in the middle, every spare blanket piled on the bed and the rug, warm uneven fairy lights stapled along the ceiling. On the rug in front of them a ring of open takeout containers (noodles, dumplings, soup, a box of fries). Three girls under the fort, in this order from left to right: Hanni sitting against the wall on the bed with a laptop on her knees, in strawberry-print pajamas and a cardigan, half-smiling; Solar in the middle, cross-legged in an oversized grey SU hoodie and pajama shorts, her long dark hair piled up in a messy claw-clip twist with loose pieces falling round her face, a soft fry in her hand, laughing for real with her eyes nearly shut; Hyein beside her in mismatched socks and a big knit sweater, chopsticks raised, mid-sentence. Cozy, warm lamplight against the cold blue window. The people are the ones in the attached realistic portraits, in this order: Solar, Hanni, Hyein; keep their faces and hair exactly (except Solar's hairstyle, which is the claw-clip twist above). Real-looking proportions, natural skin and hair texture, cinematic; NOT anime and NOT cel shading. No text.
+```
+
+**[ ] 32B. Runners: seven-thirty, the mirror**  
+Attach: `CG - style (Runners).png`, `BG - Hanni and Hyein's Room.png`, `CG - Solar (Runners holiday).png`, `CG - Hanni (Runners holiday).png`, `CG - Hyein (Runners holiday).png`  
+Save as: `epi-r-mirror.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: two girls' dorm room in an old sorority house, early evening in December, a window cracked open on a dark blue snowy night, warm lamp and fairy-light glow, dresses laid over every surface, a curling iron on the desk, a ring light on a stack of textbooks. Solar stands in the centre in front of a long slightly warped mirror on the back of a closet door, seen from behind and in the mirror at once: a floor-length wine-red silk dress cut on the bias with long sleeves to her knuckles and an open back down to the small of her back. Her long dark hair is in a low twisted knot at the nape with soft loose pieces around her face, tied with a thin black velvet ribbon whose long ends fall down her bare back between her shoulder blades. In the mirror her face is caught in a quiet moment of not quite recognizing herself. Hyein crouches beside her with dressmaker pins in her mouth, adjusting the hem; Hanni stands behind her, one hand still on the ribbon. The people are the ones in the attached realistic portraits, in this order: Solar, Hanni, Hyein; keep their faces exactly (Solar's hairstyle is the low knot and ribbon above). Real-looking proportions, natural skin and hair texture, real silk sheen, cinematic; NOT anime and NOT cel shading. No text.
+```
+
+**[ ] 32C. Runners: the porch**  
+Attach: `CG - style (Runners).png`, `BG - Alpha Phi House (old painted).png` (swap in `epi-r-alpha-porch-night.png` from 23M if you've made it), `CG - Solar (Runners).png`, `CG - Jaehyun (Runners).png`  
+Save as: `epi-r-porch.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: the front porch and steps of an old sorority house at six in the evening in heavy snow, the porch light and a string of warm lights on the columns turning the falling snow gold, lit windows behind. The steps have just been shoveled down to bare wet wood, neat banks of snow on each side, a borrowed snow shovel leaning on the railing. At the bottom of the steps Jaehyun stands looking up, in a dark team parka and an orange Syracuse beanie with snow on his shoulders, his right arm held a little close to his side, his face calm and steady. On the bottom step above him Solar stands in a long tailored grey wool coat buttoned to the throat, her long dark hair down and wind-tangled with snow caught in it, her hands pushed into the coat's sleeves, looking down at him. Brother and sister, quiet, the street behind them filling in with snow. The people are the ones in the attached realistic portraits, in this order: Solar, Jaehyun; keep their faces and hair exactly. Real-looking proportions, natural skin and hair texture, cinematic; NOT anime and NOT cel shading. No text.
+```
+
+**[ ] 32D. Runners: the porch rail**  
+Attach: `CG - style (Runners).png`, `BG - Alpha Phi House (old painted).png` (swap in `epi-r-alpha-porch-night.png` from 23M if you've made it), `CG - Solar (Runners).png`, `CG - Haechan (Runners).png`  
+Save as: `epi-r-porchrail.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: the front porch of an old sorority house a little after midnight, eleven degrees, no wind, the porch light warm gold, the street beyond it empty and orange under streetlights, old snow banked along the sidewalk. On the porch rail, furred white with ice, sits a folded paper takeout bag pressed into the snow, two thin threads of steam rising from it into the porch light. Solar stands in the open front door in thick socks, black leggings and an oversized cream knit sweater pulled over her hands, her long dark hair in two loose low braids coming undone, one hand on the frozen rail beside the bag, laughing with her breath clouding. Far down the street, a block and a half away and small under a streetlight, Haechan walks away with his hood up and his hands in his pockets, not looking back. The people are the ones in the attached realistic portraits, in this order: Solar, Haechan; keep their faces exactly (Solar's hairstyle is the braids above; Haechan is too far away for his hair to show under the hood). Real-looking proportions, natural skin and hair texture, cinematic; NOT anime and NOT cel shading. No text.
+```
+
+**[ ] 32E. Runners: the window seat**  
+Attach: `CG - style (Runners).png`, `BG - Marshall Street Café.png`, `CG - Mark (Runners).png`  
+Save as: `epi-r-window-seat.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: a college-town café seen from OUTSIDE, from across a slushy street at noon on a gray Saturday in December, the café's big front window steamed at the edges, string lights inside, a line of people at the counter blurred behind the glass. In the front window booth, alone, sits Mark: a dark hoodie under an open winter coat, his black hair short and a little messy as if he'd pushed his hand through it, an untouched lidded coffee in front of him, his phone face down beside it, a yellow legal pad under his flat hand with a column of short lines, each one crossed out except the last. He is looking down at that last line, very still, the only still person on the street. In the foreground, out of focus, the edge of a bus shelter and falling snow; passers-by with their hoods up. Quiet, lonely, observed. The person is the one in the attached realistic portrait; keep his face and hair exactly. Real-looking proportions, natural skin and hair texture, cinematic; NOT anime and NOT cel shading. No text.
+```
+
+**[ ] 32F. Runners: see you in january**  
+Attach: `CG - style (Runners).png`, `BG - eSports Lab.png`, `CG - Doyoung (Runners).png`, `CG - Olivia (Runners).png`, `CG - Haerin (Runners).png`, `CG - Solar (Runners).png`  
+Save as: `epi-r-january.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: a university eSports lab on a snowy Saturday afternoon, the windows white with heavy snow, rows of gaming PCs with soft RGB keyboards, a big whiteboard on the front wall wiped clean except for the faint gray ghost of old writing. Doyoung stands at the whiteboard in a hoodie, a capped marker in one hand and an eraser in the other, writing very small in the bottom corner of the clean board (the words don't need to be legible). Behind him at the desks: Olivia crying happily with a silver esports trophy hugged in both arms; Haerin beside her, knees up on her chair, holding out a clementine to Olivia without looking at her, a neat row of peels on the desk. In the open doorway on the right, Solar with her gear bag on her shoulder and her hood half up, looking back at the board, her long dark hair in a high sleek ponytail. The people are the ones in the attached realistic portraits, in this order: Doyoung, Olivia, Haerin, Solar; keep their faces and hair exactly (except Solar's hairstyle, which is the ponytail above). Real-looking proportions, natural skin and hair texture, cinematic; NOT anime and NOT cel shading. No text.
+```
+
+**[ ] 32G. Runners: room tone**  
+Attach: `CG - style (Runners).png`, `BG - Minji's Room (Honors Dorm).png`, `CG - Minji (Runners).png`, `CG - Solar (Runners).png`  
+Save as: `epi-r-room-tone.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: a small, very tidy honors-dorm room half packed for winter break, early evening, snow thick against the window, one desk lamp on. Taped cardboard boxes labeled in marker, a bare corkboard with only pinholes left, a hard drive tower in a crate with a towel draped over it, a small succulent on the windowsill. On the bare desk between the two girls sits a little handheld audio recorder with its red light on. Minji sits on the stripped mattress in a hoodie with the sleeves over her hands, her cap on backwards, holding perfectly still with her eyes on the recorder; Solar sits on a box across from her in a long grey wool coat, her long dark hair down with a few snowflakes melting in it, holding still too, looking at Minji instead of the recorder. Thirty seconds of silence, made visible. The people are the ones in the attached realistic portraits, in this order: Minji, Solar; keep their faces and hair exactly. Real-looking proportions, natural skin and hair texture, cinematic; NOT anime and NOT cel shading. No text.
+```
+
+**[ ] 32H. Runners: half speed**  
+Attach: `CG - style (Runners).png`, `BG - eSports Lab.png`, `CG - Minji (Runners).png`, `CG - Solar (Runners).png`  
+Save as: `epi-r-half-speed.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: the same university eSports lab after midnight, every overhead light off, only one monitor on, its blue light the only light in the room, a paused match frozen on the screen (a blurred colorful game scene, no readable interface). Two girls sit side by side at neighboring stations in the dark, both in headsets, listening, not looking at each other: Minji with her cap on frontwards and a hoodie with the sleeves over her hands, her finger still on the mouse; Solar beside her in an oversized SU hoodie, her long dark hair twisted up in a claw clip with loose pieces, her chin on her knee. The blue screen light on both faces, the rest of the room in deep shadow, RGB keyboards glowing faintly down the empty rows. The people are the ones in the attached realistic portraits, in this order: Minji, Solar; keep their faces and hair exactly (except Solar's hairstyle, which is the claw-clip twist above). Real-looking proportions, natural skin and hair texture, cinematic; NOT anime and NOT cel shading. No text.
+```
+
+## 34. A strangers place of its own (Gemini; Kat, Nov 5)
+Kat's note (Nov 5): every epilogue place should have its own background. This one still borrows a main-game picture. Save under the name given: Claude swaps it in.
+
+**[ ] 34A. The Incheon harbor by day**  
+"Walk the harbor" on a Go Out afternoon in the strangers epilogue (now the main game's harbor stands in; the evening already has its own Incheon harbor at night).  
+Attach: `BG - Incheon Harbor at Night (strangers).png` (the same harbor, to match)  
+Save as: `epi-s-harbor-day.png`
+```
+Background art in the same style as the attached image, 16:9, high resolution, no people, no readable text: the same Incheon harbor as the attached night picture, now on a cold grey afternoon in late February: a long concrete quay with iron bollards and coiled mooring ropes, rust-streaked shipping containers stacked in rows, tall gantry cranes standing still over everything, cargo ships anchored out on flat grey-green water, gulls over the water, a low pale winter sun behind thin cloud, patches of old snow along the edge of the quay, wet concrete reflecting the sky. Wide, windy, a little lonely. Keep everything important away from the edges.
+```
+
+## 33. Manhattan places → moved
+Kat, Nov 5: 33A-33P now live in `RUNNERS-BACKGROUND-PROMPTS.md` (same numbers), rewritten for the new realistic style.
+
+## 35. Manhattan Runners epilogue CGs (ChatGPT; realistic, Kat Nov 5)
+Seven moments from the Runners epilogue's Manhattan stretch. Realistic like the other Runners epilogue CGs: the style anchor first, then the place, then the people in the order the prompt names them. Most places are new (section 33), so each prompt names the stand-in to attach until you've made that place. The game part waits until the pictures exist.
+
+**[ ] 35A. Runners: the twelfth stroke**  
+Attach: `CG - style (Runners).png`, `BG - Language Arts Rooftop in the snow.png`, `CG - Solar (Runners).png`, `CG - Haechan (Runners).png`  
+Save as: `epi-r-twelfth.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: a college building's flat snowy rooftop at midnight, the campus bell tower lit in the distance, heavy snow. The snow is hanging motionless in the air for one second, every flake stopped. Solar stands in the middle in a long grey wool coat with an oversized black men's jacket around her shoulders, her long dark hair loose and full of snow, eyes shut; Haechan holds her from behind with both arms locked around her, his black hair short and messy under a dark hood pushed back, his face pressed into her hair, his jaw set. The people are the ones in the attached realistic portraits, in this order: Solar, Haechan; keep their faces exactly. Real-looking proportions, natural skin and hair texture, cinematic; NOT anime and NOT cel shading. No text.
+```
+
+**[ ] 35B. Runners: the sign to nowhere**  
+Attach: `CG - style (Runners).png`, `BG - Car (stand-in).png` (swap in `epi-r-car.png` from 33M if you've made it), `CG - Solar (Runners).png`, `CG - Jaehyun (Runners).png`  
+Save as: `epi-r-sign.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: the back seat of a black town car on a grey upstate highway at dusk in light snow. Through the windshield a green overhead highway sign glows faintly Dark-Hour green, its letters unreadable. Jaehyun, in the left seat in a navy quarter-zip, his black hair short and neat, has turned to look back through the rear window at the sign they've just passed, his right arm held close to his side; Solar beside him in a cream turtleneck, her long dark hair in a loose low ponytail, is looking at him, not the sign. The people are the ones in the attached realistic portraits, in this order: Solar, Jaehyun; keep their faces exactly. Real-looking proportions, natural skin and hair texture, cinematic; NOT anime and NOT cel shading. No text.
+```
+
+**[ ] 35C. Runners: where wealthy people keep the spices**  
+Attach: `CG - style (Runners).png`, `BG - Lee Kitchen (stand-in).png` (swap in `epi-r-nyc-kitchen.png` from 33D if you've made it), `CG - Haechan (Runners).png`, `CG - Jaehyun (Runners).png`  
+Save as: `epi-r-spices.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: a big white marble kitchen in a Fifth Avenue apartment on Christmas morning, winter light. Haechan stands at the stove in a black T-shirt and grey sweatpants, his black hair short and slept-on, one hand on a pan of eggs and the other reaching up into an open cabinet, completely calm on the surface; Jaehyun has stopped dead in the kitchen doorway in a grey team hoodie, his black hair short and neat, car keys still in his hand, staring. The people are the ones in the attached realistic portraits, in this order: Haechan, Jaehyun; keep their faces exactly. Real-looking proportions, natural skin and hair texture, cinematic; NOT anime and NOT cel shading. No text.
+```
+
+**[ ] 35D. Runners: her childhood room**  
+Attach: `CG - style (Runners).png`, `BG - Lee Bedroom (stand-in).png` (swap in `epi-r-nyc-her-room.png` from 33E if you've made it), `CG - Solar (Runners).png`, `CG - Haechan (Runners).png`  
+Save as: `epi-r-childhood-room.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: a teenage girl's bedroom in a Manhattan apartment after midnight on Christmas Eve, a lamp on, the window seat's curtains open on the hundreds of lit windows across the street. Haechan stands at a shelf of framed school awards and old choir programs, holding one programme, his black hair short and messy, in a dark coat; Solar sits on the window seat in a green velvet dress with her knees pulled up and her heels on the floor, her long dark hair half up with a gold clip, watching him look at her old life. The people are the ones in the attached realistic portraits, in this order: Solar, Haechan; keep their faces exactly (Solar's hairstyle is the half-up clip above). Real-looking proportions, natural skin and hair texture, cinematic; NOT anime and NOT cel shading. No text.
+```
+
+**[ ] 35E. Runners: bar nine**  
+Attach: `CG - style (Runners).png`, `BG - Lee Living Room (stand-in).png` (swap in `epi-r-nyc-living.png` from 33C if you've made it), `CG - Solar (Runners).png`, `CG - Haechan (Runners).png`, `CG - Hanni (Runners).png`, `CG - Hyein (Runners).png`, `CG - Minji (Runners).png`  
+Save as: `epi-r-bar-nine.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: the front room of a Fifth Avenue apartment at 11:15 on New Year's Eve, a party: a black grand piano under tall windows over the lit skyline, the lid up. Haechan at the keys in a black shirt with the sleeves pushed up, his black hair short and messy, looking up at Solar; Solar standing in the curve of the piano in a short sparkly black dress, her long dark hair in loose glossy waves, singing with her eyes half shut, one hand on the piano's edge. Behind them friends have gone quiet on the sofas and the floor: Hanni and Hyein holding each other's arms, Minji with a camera lowered, others in soft focus. Fairy lights, a tall Christmas tree, empty dumpling plates. The people are the ones in the attached realistic portraits, in this order: Solar, Haechan, Hanni, Hyein, Minji; keep their faces exactly (Solar's hairstyle is the waves above). Real-looking proportions, natural skin and hair texture, cinematic; NOT anime and NOT cel shading. No text.
+```
+
+**[ ] 35F. Runners: the tenth name**  
+Attach: `CG - style (Runners).png`, `BG - Lee Lobby (stand-in).png` (swap in `epi-r-nyc-lobby.png` from 33A if you've made it)  
+Save as: `epi-r-tenth-name.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: close on the front desk of a marble apartment lobby at four in the afternoon: a leather guest book open under a green-shaded lamp, a handwritten list of nine names in neat ink, and below them a tenth line in different, square, old-fashioned capitals that slightly shimmer green (no readable letters, just the shape of a name). A doorman's hand in a grey uniform cuff rests beside it holding a pen. Winter light from the street doors. No faces. Real-looking proportions, natural skin and hair texture, cinematic; NOT anime and NOT cel shading. No text.
+```
+
+**[ ] 35G. Runners: everyone holding on**  
+Attach: `CG - style (Runners).png`, `BG - Lee Terrace (stand-in).png` (swap in `epi-r-nyc-terrace.png` from 33H if you've made it), `CG - Haechan (Runners).png`, `CG - Hanni (Runners).png`, `CG - Hyein (Runners).png`, `CG - Minji (Runners).png`, `CG - Jaehyun (Runners).png`  
+Save as: `epi-r-hold.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: a private rooftop terrace on Fifth Avenue at one minute past midnight on New Year's Day: patio heaters glowing orange, small lights in a pergola, fireworks bursting over Central Park in every colour. In the middle a tight knot of young people in party clothes and open coats, arms locked around each other at the glass rail, all holding on as hard as they can to an empty space in the middle where nobody is standing: Haechan at the centre with his arms closed around nothing, his black hair short and messy, his face wrecked; Hanni and Hyein on either side gripping; Minji at the edge, a camera with a red light still recording on the planter; Jaehyun arriving through the roof door behind them in a dark suit and open coat, his black hair short and neat. Snow on the planters. Heartbreaking and beautiful. The people are the ones in the attached realistic portraits, in this order: Haechan, Hanni, Hyein, Minji, Jaehyun; keep their faces exactly. Real-looking proportions, natural skin and hair texture, cinematic; NOT anime and NOT cel shading. No text.
+```
+
 
 ## 31. Low-res pictures to look at (assess later)
 

@@ -112,6 +112,14 @@ from femc_browser import Page
 OUT = pathlib.Path(sys.argv[sys.argv.index('--screenshots') + 1]) if '--screenshots' in sys.argv else pathlib.Path(tempfile.mkdtemp(prefix='femc-epilogue-'))
 OUT.mkdir(parents=True, exist_ok=True)
 ONLY = set(sys.argv[sys.argv.index('--only') + 1].split(',')) if '--only' in sys.argv else {'engine', 'saves', 'glitch', 'runners1', 'runners2', 'hoax', 'strangers', 'fights', 'stay', 'true', 'polish', 'phone', 'alerts', 'album', 'shots'}
+# The Runners Manhattan pass (Nov 5 2026): the act runs to 12/31; these are the beats it added after the roof.
+NYC_BEATS = {'epi-r-empty-campus': ['12/21', 'early'], 'epi-r-car': ['12/21', 'after'], 'epi-r-homecoming': ['12/21', 'evening'], 'epi-r-own-bed': ['12/21', 'late'],
+             'epi-r-breakfast-dad': ['12/22', 'early'], 'epi-r-dossier': ['12/22', 'evening'], 'epi-r-how-long': ['12/23', 'early'], 'epi-r-christmas-eve': ['12/24', 'evening'],
+             'epi-r-quietest-way': ['12/24', 'late'], 'epi-r-spices': ['12/25', 'early'], 'epi-r-reception': ['12/25', 'after'], 'epi-r-gifts': ['12/25', 'evening'],
+             'epi-r-mother-finds': ['12/26', 'early'], 'epi-r-terrace': ['12/26', 'after'], 'epi-r-food-coming': ['12/27', 'early'], 'epi-r-dark-kitchen': ['12/27', 'late'],
+             'epi-r-parents-home': ['12/28', 'evening'], 'epi-r-invitation': ['12/28', 'late'], 'epi-r-the-city': ['12/29', 'after'], 'epi-r-marco': ['12/30', 'early'],
+             'epi-r-the-list': ['12/31', 'after'], 'epi-r-nye': ['12/31', 'evening'], 'epi-r-midnight': ['12/31', 'late']}
+NYC_EVENTS = 41 + len(NYC_BEATS)
 checks = []
 
 
@@ -191,7 +199,7 @@ window.RUN = async (until, policy, sleepOn) => {
     const card = document.querySelector('.g-actcard:not(.out), .g-datecard'); if (card) { card.click(); await S(20); continue; }
     const pola = document.querySelector('.g-pola:not(.out)'); if (pola) { (log.polaroids = log.polaroids || []).push(pola.dataset.pola); pola.click(); await S(300); continue; }
     const out = document.querySelector('.g-epi-out');
-    if (out) { const b = out.querySelector('[data-bond]'); if (b) { log.hangouts.push(b.dataset.bond + ':' + FemcEpilogue.hangoutFor(b.dataset.bond).id); b.click(); } else out.querySelector('[data-stay]').click(); await S(20); continue; }
+    if (out) { const b = out.querySelector('[data-bond]'); if (b) { log.hangouts.push(b.dataset.bond + ':' + FemcEpilogue.hangoutFor(b.dataset.bond).id); b.click(); } else (out.querySelector('[data-stay]') || out.querySelector('[data-sleep]')).click(); await S(20); continue; }
     const n = document.querySelector('#g-app [data-next]:not(:disabled)');
     if (n) { if (G.S.day === stop && G.S.slot === 'late' && !sleepOn) break; n.click(); await S(20); continue; }
     await S(40);
@@ -298,7 +306,7 @@ try:
         ok(st['y1'] and st['y1day'] == 335 and st['y1yen'] == 12345 and st['y1bs'] is None and st['bs'] == 'year-battle', 'the year is tucked inside the save (year1); its battle save comes along into the epilogue layer')
         ok(st['yen'] == 200 and st['money'] == '$200' and st['stats'] == 50 and st['frags'] == 2 and st['links'] == 0, f'Runners: dollars, her stats and memory journal carried, no Iwatodai links ({st["money"]})')
         ok(st['lean'] == 'haechan' and st['carry']['romance'] == ['haechan'] and st['carry']['xmas'] == 'haechan' and st['carry']['ending'] == 'where it begins', f'carry-over and the lean ({st["lean"]})')
-        ok(st['year'] == 2025 and st['md'] == '12/1' and st['dow'] == 'Mon' and st['end'] == '12/20' and st['last'] == 19 and st['cal'] == '12/1', 'Syracuse: Monday 12/1/2025 to 12/20, twenty days')
+        ok(st['year'] == 2025 and st['md'] == '12/1' and st['dow'] == 'Mon' and st['end'] == '12/31' and st['last'] == 30 and st['cal'] == '12/1', 'Runners: Monday 12/1/2025 to New Year’s Eve, thirty-one days (Syracuse, then Manhattan from 12/21)')
         ok(st['slots'] == 'early,after,evening,late' and st['sat'] == 'off' and st['finals'] == 'exam' and st['moon'] and st['wx'] == 'snow' and st['ev'][0] == 'epi-r-home' and len(st['ev']) >= 20, f'its own slots, weekends, finals, full moon, snow and events ({st["slots"]}, {len(st["ev"])} events)')
         cond = p.eval(r"""(()=>{const G=FemcGame,b=l=>JSON.stringify(G.branch({...l,then:['y'],else:['n']}));return [b({ifYear:{romance:'haechan'}}),b({ifYear:{romance:'jungwon'}}),b({ifYear:'xmas-haechan'}),b({ifYear:{rank:{minji:8},ending:'where it begins'}}),b({ifEpiRoute:'haechan'}),b({ifEpiRoute:['cover']})]})()""")
         ok(cond == ['["y"]', '["n"]', '["y"]', '["y"]', '["y"]', '["n"]'], f'ifYear reads the finished year, ifEpiRoute the route ({cond})')
@@ -307,6 +315,7 @@ try:
         ok(step_until("FemcGame.S.events.includes('epi-r-home') && !document.querySelector('.gs:not(.out)')"), 'the opening plays on the first morning')
         hud = p.eval("document.querySelector('.g-hud .g-yen').textContent + '|' + document.querySelector('.g-hud .g-slot').textContent + '|' + document.querySelector('.g-hud .g-date').textContent")
         ok(hud.startswith('$200|Morning|12/1'), f'the HUD: dollars, the world’s slot name, the date ({hud})')
+        p.eval("FemcGame.S.events.push('epi-r-welcome')")  # the home pass's 12/1 welcome-back scene fills that evening; this check wants Go Out
         ok(step_until("EP.screen()==='out' && FemcGame.S.slot==='evening'") and p.eval("FemcGame.S.events.includes('epi-r-five-days') && FemcGame.S.spent[FemcGame.S.day+'-after']==='ev:epi-r-five-days'"), 'After Class is the day’s story (it takes the slot); Evening: Go Out at home')
         out = p.eval("[...document.querySelectorAll('.g-epi-act')].map(b=>b.textContent)")
         ok(len(out) == 4 and '$7' in out[0] and 'Charm' in out[0] and 'Free' in out[1], f'the world’s evening activities, priced in dollars ({out})')
@@ -376,7 +385,8 @@ try:
     if 'saves' in ONLY:
         p.goto('femc-game.html'); p.eval(HELPERS)
         enter('route-R')
-        step_until("EP.screen()==='out'")
+        p.eval("FemcGame.S.events.push('epi-r-welcome')")  # the home pass's 12/1 welcome-back scene fills that evening; this check wants Go Out
+        step_until("EP.screen()==='out' && FemcGame.S.slot==='evening'")
         p.eval("document.querySelector('[data-act=epi-r-library]').click()")
         p.eval("(()=>{const G=FemcGame;G.saveSlot(3);window.__code=G.exportCode()})()")
         lab = p.eval("(()=>{const x=FemcGame.readSlot(3);return [x.label,FemcGame.slotInfo(x.state)]})()")
@@ -416,8 +426,8 @@ try:
 
     if 'glitch' in ONLY:
         p.goto('femc-game.html'); p.eval(HELPERS)
-        KINDS = ['tint', 'weather', 'clock', 'date', 'phone', 'map', 'face', 'sound', 'tear', 'name', 'hands']
-        ok(p.eval('FemcGlitch.KINDS') == KINDS, 'eleven glitch kinds')
+        KINDS = ['tint', 'weather', 'clock', 'date', 'phone', 'map', 'face', 'sound', 'tear', 'name', 'hands', 'erase', 'late']
+        ok(p.eval('FemcGlitch.KINDS') == KINDS, 'thirteen glitch kinds (the Manhattan pass added erase and late, the held layer)')
         # Never in the main game: a year save, mid-year and on its last night.
         main = p.eval(r"""(async()=>{const G=FemcGame,GL=FemcGlitch;EP.year({'route-R':true});G.S.day=120;G.S.slot='late';G.save();
           const plays=GL.KINDS.map(k=>GL.play({kind:k,ms:3000})),ticks=['card','morning','out','late'].map(w=>GL.tick(w));
@@ -437,6 +447,7 @@ try:
         ok(step_until("FemcGame.S.events.includes('epi-r-home') && !document.querySelector('.gs:not(.out)')"), 'the opening plays')
         op = p.eval("(()=>{const s=FemcGlitch.state();return {seen:s.seen,kinds:s.log.map(x=>x.kind),dom:s.dom}})()")
         ok('epi-r-g-wake' in op['seen'] and 'epi-r-g-thumbs' in op['seen'] and op['kinds'][:2] == ['tint', 'sound'], f'the opening scene’s tint and static ({op["kinds"][:3]})')
+        p.eval("FemcGame.S.events.push('epi-r-welcome')")  # the home pass's 12/1 welcome-back scene fills that evening; this check wants Go Out
         ok(step_until("EP.screen()==='out'"), 'Go Out on 12/1')
         p.eval("FemcGame.setSetting('music',40)")
 
@@ -591,12 +602,14 @@ try:
                       'epi-r-did-you-eat': ['12/3', 'after'], 'epi-r-confession': ['12/3', 'evening'], 'epi-r-moon': ['12/4', 'late'], 'epi-r-friday': ['12/5', 'evening'],
                       'epi-r-regionals-1': ['12/6', 'early'], 'epi-r-regionals-2': ['12/7', 'early'], 'epi-r-crossroads': ['12/7', 'late'], 'epi-r-studio': ['12/9', 'evening'],
                       'epi-r-playback': ['12/10', 'evening'], 'epi-r-sisters': ['12/10', 'evening'], 'epi-r-reel': ['12/10', 'evening'], 'epi-r-print': ['12/11', 'after'],
-                      'epi-r-strategy': ['12/11', 'evening'], 'epi-r-sigma': ['12/12', 'evening'], 'epi-r-sunday': ['12/14', 'after']}
+                      'epi-r-strategy': ['12/11', 'evening'], 'epi-r-sigma': ['12/12', 'evening'], 'epi-r-sunday': ['12/14', 'after'],
+                      'epi-r-welcome': ['12/1', 'evening'], 'epi-r-dad-call': ['12/13', 'early'], 'epi-r-mom-call': ['12/14', 'early'],
+                      'epi-r-morning-after': ['12/8', 'early'], 'epi-r-mark-alone': ['12/13', 'after']}
         got_beats = {b[0]: [b[1], b[2]] for b in beats}
-        ok(all(got_beats.get(k) == v for k, v in want_beats.items()) and len(beats) == 20, f'twenty story beats on Kat’s canon dates (12/1 to 12/14) and slots ({len(beats)})')
+        ok(all(got_beats.get(k) == v for k, v in want_beats.items()) and len(beats) == 25, f'twenty-five story beats on Kat’s canon dates (12/1 to 12/14) and slots ({len(beats)})')
         ok({b[0]: b[3] for b in beats if b[3]} == {'epi-r-playback': 'epi-route-haechan', 'epi-r-sisters': 'epi-route-cover', 'epi-r-reel': 'epi-route-minji'}, 'each route has its own 12/10 beat')
         dates = p.eval("(()=>{const G=FemcGame,i=d=>G.dayInfo(G.dayOf(d));return [i('12/1').day,i('12/6').day,i('12/7').day,i('12/14').day,i('12/4').moon.full,G.mdOf(G.END())]})()")
-        ok(dates == ['Mon', 'Sat', 'Sun', 'Sun', True, '12/20'], f'the calendar: Regionals on the weekend of 12/6, the full moon on 12/4 ({dates})')
+        ok(dates == ['Mon', 'Sat', 'Sun', 'Sun', True, '12/31'], f'the calendar: Regionals on the weekend of 12/6, the full moon on 12/4, the act to New Year’s Eve ({dates})')
         # The structural walk: every line on every branch of every event, routine and hangout.
         walk = p.eval("WALK()")
         ok(not walk['problems'], f'every scene line resolves (speakers, faces, places, music, glitches): {walk["problems"][:8]}')
@@ -632,7 +645,7 @@ try:
         ok(all(g in st['seen'] for g in g_need), f'the glitches on schedule, week 1 to week 2 ({[g for g in g_need if g not in st["seen"]]} missing)')
         ok(len(h['hangouts']) >= 6 and any(x.endswith('epi-r-haechan-3') for x in h['hangouts']), f'home bonds through Go Out, including the Haechan route’s own ({h["hangouts"]})')
         ok(st['bonds']['haechan']['c'] > 5 and any(st['bonds'][k]['c'] >= 1 for k in st['bonds'] if k != 'haechan'), f'closeness grows ({ {k: v["c"] for k, v in st["bonds"].items()} })')
-        ok(h['practice'] >= 4 and st['routines'] >= 3, f'practice days ({h["practice"]}) and routines ({st["routines"]}) through the UI')
+        ok(h['practice'] >= 2 and st['routines'] >= 3, f'practice days ({h["practice"]}) and routines ({st["routines"]}) through the UI')
         ok({'girls', 'haechan', 'team'} <= set(st['threads']), f'texts arrive on their threads ({st["threads"]})')
         ok(p.eval("FemcGame.S.glitch.peak>=2"), 'week 2 reaches stage 2')
         errs = p.console(); ok(not errs, f'no browser errors on the Haechan run: {errs}')
@@ -678,6 +691,22 @@ try:
         p.eval(r"""(()=>{const G=FemcGame,s=G.S;s.day=G.dayOf('12/13');s.slot='evening';s.epi.bonds={};delete s.spent[s.day+'-evening'];G.save();EP.clear();FemcGameUI.run()})()""")
         p.wait("!!document.querySelector('.g-epi-out')")
         ok(p.eval("document.querySelectorAll('.g-epi-bond').length") >= 1, 'Go Out lists people above places')
+        # The time pass (Nov 5 2026): 12/9's practice is a choice in Go Out; quiet nights list people above Sleep; 12/5 stays closed.
+        tp = p.eval(r"""(async()=>{const G=FemcGame,s=G.S,w=ms=>new Promise(r=>setTimeout(r,ms)),r={};
+          const go=(md,sl)=>{s.day=G.dayOf(md);s.slot=sl;delete s.spent[s.day+'-'+sl];s.epi.bonds={};G.save();EP.clear();FemcGameUI.run()};
+          go('12/9','after');await w(300);const pb=document.querySelector('.g-epi-out [data-act=_practice]');r.optBtn=!!pb;r.first=document.querySelector('.g-epi-out .g-epi-acts:not(.g-epi-folks) [data-act]')?.dataset.act;
+          const prof=s.stats.proficiency||0;pb&&pb.click();await w(200);r.spent=s.spent[G.dayOf('12/9')+'-after'];r.flag=!!s.flags['epi-practice-12-9'];r.prof=(s.stats.proficiency||0)>prof;
+          go('12/11','after');await w(300);r.noOpt=!document.querySelector('[data-act=_practice]');
+          go('12/9','late');await w(300);r.lateOpen=!!document.querySelector('.g-epi-late');r.lateFolks=[...document.querySelectorAll('.g-epi-late [data-bond]')].map(b=>b.dataset.bond);r.sleepBtn=!!document.querySelector('.g-epi-late [data-sleep]');
+          const b=document.querySelector('.g-epi-late [data-bond]');const hid=b&&FemcEpilogue.hangoutFor(b.dataset.bond,'late').id;r.hang=hid;b&&b.click();
+          for(let i=0;i<3000&&G.mdOf(s.day)==='12/9';i++){const sc=document.querySelector('.gs:not(.out)');if(sc){const t=sc.querySelector('.gs-title');if(t){t.click();await w(5);continue}const c=sc.querySelector('.gs-choices button:not(:disabled)');if(c){c.click();await w(5);continue}sc.click();await w(5);continue}await w(30)}
+          r.after=[G.mdOf(s.day),s.slot];r.seen=Object.values(s.epi.bonds).some(x=>(x.seen||[]).includes(hid));
+          go('12/5','late');await w(300);r.closed=!document.querySelector('.g-epi-late')&&!!document.querySelector('#g-app [data-next]');
+          r.fills=G.D.events.find(e=>e.id==='epi-r-regionals-2').fills;r.porch=!G.D.events.find(e=>e.id==='epi-r-porch').consumes;
+          return r})()""", timeout=180)
+        ok(tp['optBtn'] and tp['first'] == '_practice' and tp['spent'] == 'practice' and tp['flag'] and tp['prof'] and tp['noOpt'], f'12/9’s practice is the first choice in Go Out (the stat, the flag); 12/11’s Go Out has none ({tp})')
+        ok(tp['lateOpen'] and tp['sleepBtn'] and len(tp['lateFolks']) >= 2 and tp['hang'] and tp['seen'] and tp['after'] == ['12/10', 'early'], f'a quiet night lists people above Sleep; one plays and the night sleeps on to 12/10 ({tp})')
+        ok(tp['closed'] and tp['fills'] == ['after', 'evening'] and tp['porch'], f'12/5’s night stays plain; 12/7 Evening is Regionals; the porch leaves 12/20 Evening open ({tp})')
         p.eval("document.querySelectorAll('.g-banners > *, .g-toasts > *').forEach(x=>x.remove());document.querySelector('.g-epi-out .g-seg-box')?.scrollTo(0,0)")
         shots('runners1-goout')
 
@@ -686,7 +715,7 @@ try:
         # the Equinox card and the year's end screen; a save across the finale; the main game untouched.
         p.goto('femc-game.html'); p.eval(HELPERS); p.eval(DRIVER)
         HOOK = r"""(()=>{const G=FemcGame;window.__snap=null;window.__cards=[];window.__noBattle=true;const mk=G.markEvent;
-          G.markEvent=id=>{const r=mk(id);if(id==='epi-r-rooftop')window.__snap=JSON.parse(JSON.stringify(G.S));return r};
+          G.markEvent=id=>{const r=mk(id);if(id==='epi-r-midnight')window.__snap=JSON.parse(JSON.stringify(G.S));return r};
           const mh=G.makeHandoff;G.makeHandoff=(...a)=>{if(G.S.epi)window.__noBattle=false;return mh(...a)};
           new MutationObserver(()=>document.querySelectorAll('.g-epi-card').forEach(c=>{const t=c.querySelector('.g-ac-num').textContent+' · '+c.querySelector('.g-ac-title').textContent;if(!__cards.includes(t))__cards.push(t)})).observe(document.body,{childList:true})})()"""
         # The main game for a player who never enters: no week-3 data reaches the year.
@@ -694,27 +723,29 @@ try:
           gl:!FemcGlitch.active(),b:JSON.stringify(G.branch({ifGlitch:3,then:['y'],else:['n']}))}})()""")
         ok(base['cal'] and base['ev'] and base['world'] is None and not base['ends'] and base['gl'] and base['b'] == '["n"]', f'the year reads Iwatodai’s data; no glitch, no `ends`, ifGlitch false ({base})')
         enter('route-R')
-        ok(p.eval("FEMC_EPI_WORLDS.runners._loaded && FemcEpilogue.WORLDS.runners.files.join()==='calendar,world,glitches,people,story-w1,story-w2,people-w3,story-w3,phone,alerts'"), 'the Runners world loads ten files (week 3’s story and people files, the phone, the SUnews alerts)')
+        ok(p.eval("FEMC_EPI_WORLDS.runners._loaded && FemcEpilogue.WORLDS.runners.files.join()==='calendar,world,glitches,people,story-w1,story-w2,people-w3,story-w3,story-home,story-time,people-time,story-nyc1,story-nyc2,people-nyc,phone,alerts'"), 'the Runners world loads ten files (week 3’s story and people files, the phone, the SUnews alerts)')
         beats = p.eval("FemcGame.D.events.filter(e=>e.id==='epi-r-alone'||FemcGame.dayOf(e.date)>=FemcGame.dayOf('12/15')).map(e=>[e.id,e.date,e.slot,!!e.ends,!!e.consumes])")
         want3 = {'epi-r-alone': ['12/14', 'late'], 'epi-r-upward': ['12/15', 'early'], 'epi-r-kitchen': ['12/16', 'early'], 'epi-r-unseen': ['12/16', 'late'], 'epi-r-butterfly': ['12/17', 'evening'],
                  'epi-r-clocks': ['12/18', 'early'], 'epi-r-unheard': ['12/18', 'late'], 'epi-r-holiday': ['12/19', 'evening'], 'epi-r-footage': ['12/19', 'late'],
-                 'epi-r-first-snow': ['12/20', 'early'], 'epi-r-rooftop': ['12/20', 'late']}
+                 'epi-r-first-snow': ['12/20', 'early'], 'epi-r-rooftop': ['12/20', 'late'],
+                 'epi-r-what-tells': ['12/18', 'evening'], 'epi-r-hoodie': ['12/19', 'early'], 'epi-r-last-final': ['12/19', 'after'], 'epi-r-porch': ['12/20', 'evening'],
+                 'epi-r-last-practice': ['12/20', 'after'], **NYC_BEATS}
         got3 = {b[0]: [b[1], b[2]] for b in beats}
-        ok(got3 == want3, f'week 3’s eleven beats on their dates and slots ({len(beats)})')
-        ok([b[0] for b in beats if b[3]] == ['epi-r-rooftop'] and p.eval("FemcGame.D.events.length") == 31, 'only the rooftop ends the act; 31 story events in all')
+        ok(got3 == want3, f'week 3’s sixteen beats and Manhattan’s twenty-three on their dates and slots ({len(beats)})')
+        ok([b[0] for b in beats if b[3]] == ['epi-r-midnight'] and p.eval("FemcGame.D.events.length") == NYC_EVENTS, f'only New Year’s Eve’s midnight ends the act (the roof no longer does); {NYC_EVENTS} story events in all')
         fights = p.eval(r"""(()=>{const out=[];const f=l=>{for(const x of l||[]){if(x.battle)out.push([x.battle.script,x.battle.kind,x.battle.forced,!!x.battle.notes]);f(x.then);f(x.else);(x.choose||[]).forEach(o=>f(o.then))}};FemcGame.D.events.forEach(e=>f(e.scene));return out})()""")
         ok([x[0] for x in fights] == ['epi-runners-1', 'epi-runners-2', 'epi-runners-3', 'epi-runners-4'] and all(x[1] == 'scripted' and x[2] and x[3] for x in fights), f'the four half-present fights are scripted, forced placeholders with notes for batch 6 ({fights})')
         bjs = (pathlib.Path(__file__).resolve().parent.parent / 'assets/femc/battle/battle.js').read_text()
         ok('function hoEpi' in bjs and "runners: { over:" in bjs and "if (/^epi-[a-z]+-\\d+$/.test(id)) return hoEpi();" in bjs, 'battle.js plays epi-runners-1..4 from its EPI table (batch 6)')
         walk = p.eval("WALK()")
         ok(not walk['problems'], f'every line of the whole world resolves (speakers, faces, places, music, glitches): {walk["problems"][:8]}')
-        ok(walk["scenes"] == 31 + 11 + 35, f'{walk["scenes"]} scenes walked ({walk["lines"]} lines, {walk["paths"]} paths)')
+        ok(walk["scenes"] == NYC_EVENTS + 11 + 69, f'{walk["scenes"]} scenes walked ({walk["lines"]} lines, {walk["paths"]} paths)')
         assets = p.eval("CHECK_ASSETS(%s)" % json.dumps(walk['urls']), timeout=120)
         ok(not assets['bad'], f'every background and portrait loads ({assets["n"]}): {assets["bad"]}')
         need = {'epi-r-finals', 'epi-r-verdict', 'epi-r-bleed', 'epi-r-half', 'epi-r-holiday', 'epi-r-footage', 'epi-r-snow', 'world-runners-theme'}
         ok(need <= set(walk['music']) and p.eval("FemcGame.D.events.find(e=>e.id==='epi-r-rooftop').scene[0].music") == 'world-runners-theme', f'week 3’s ♪ placeholders and world-runners on the rooftop ({sorted(need - set(walk["music"]))} missing)')
 
-        def run(policy, until='12/20', sleep=True):
+        def run(policy, until='12/31', sleep=True):
             return p.eval("RUN(%s,%s,%s)" % (json.dumps(until), json.dumps(policy), 'true' if sleep else 'false'), timeout=1500)
 
         def finale(tag):
@@ -757,6 +788,11 @@ try:
         sh = finale('Haechan')
         ok(all(e in sh['ev'] for e in week3) and {'epi-r-jacket', 'epi-r-held'} <= set(sh['flags']), 'Haechan: every week-3 beat, the jacket on the roof, held')
         ok(all(g in sh['seen'] for g in g3), f'the week-3 glitches on schedule ({[g for g in g3 if g not in sh["seen"]]} missing)')
+        ok(all(e in sh['ev'] for e in NYC_BEATS) and sh['ev'].index('epi-r-rooftop') < sh['ev'].index('epi-r-car') < sh['ev'].index('epi-r-midnight') and sum(f in sh['flags'] for f in ['epi-r-jh-all', 'epi-r-jh-part', 'epi-r-jh-none']) == 1 and sum(f in sh['flags'] for f in ['epi-r-nye-mark', 'epi-r-nye-no-mark']) == 1 and 'epi-r-dossier' in sh['flags'] and any(f in sh['flags'] for f in ['epi-r-caption-down', 'epi-r-caption-read']),
+           f'Haechan: past the roof to New Year’s Eve: every Manhattan beat, one answer to Jaehyun, one guest list, the dossier, the 12:01 post ({[f for f in sh["flags"] if any(k in f for k in ("jh-", "nye-", "caption", "entry"))]})')
+        ok(any(f in sh['flags'] for f in ['epi-r-entry-desk', 'epi-r-entry-service', 'epi-r-entry-listed']) and any(f in sh['flags'] for f in ['epi-r-angry-no', 'epi-r-angry-honest']), 'Haechan: the way upstairs on 12/24 and the childhood room’s answer')
+        held = ['epi-r-g-footprints', 'epi-r-g-leftchat', 'epi-r-g-sign', 'epi-r-g-frame', 'epi-r-g-1159']
+        ok(all(g in sh['seen'] for g in held), f'the held glitches play where the scenes put them ({[g for g in held if g not in sh["seen"]]} missing)')
         errs = p.console(); ok(not errs, f'no browser errors finishing from the slot: {errs}')
         p.eval("localStorage.removeItem('kg-femc-revamp-slot3')")
 
@@ -769,6 +805,8 @@ try:
         sc_ = finale('the cover')
         ok(sc_['route'] == 'cover' and all(e in sc_['ev'] for e in week3) and 'epi-r-footage-sent' in sc_['flags'] and 'epi-r-travel-no' in sc_['flags'] and 'epi-r-mark-closed' in sc_['flags'] and 'epi-r-jacket' not in sc_['flags'] and 'epi-r-held' in sc_['flags'],
            f'the cover: every week-3 beat, Danielle has sent it, no answer to Ms. Han, the jacket stays in the bag, held ({[f for f in sc_["flags"] if f.startswith("epi-r-") and ("footage" in f or "travel" in f or "jacket" in f)]})')
+        ok(all(e in sc_['ev'] for e in NYC_BEATS) and sc_['ev'].index('epi-r-rooftop') < sc_['ev'].index('epi-r-car') < sc_['ev'].index('epi-r-midnight') and sum(f in sc_['flags'] for f in ['epi-r-jh-all', 'epi-r-jh-part', 'epi-r-jh-none']) == 1 and sum(f in sc_['flags'] for f in ['epi-r-nye-mark', 'epi-r-nye-no-mark']) == 1 and 'epi-r-dossier' in sc_['flags'] and any(f in sc_['flags'] for f in ['epi-r-caption-down', 'epi-r-caption-read']),
+           f'the cover: past the roof to New Year’s Eve: every Manhattan beat, one answer to Jaehyun, one guest list, the dossier, the 12:01 post ({[f for f in sc_["flags"] if any(k in f for k in ("jh-", "nye-", "caption", "entry"))]})')
         errs = p.console(); ok(not errs, f'no browser errors on the cover act: {errs}')
 
         # Route 3: Minji (her romance and Christmas pick; neither Danielle flag). The whole act in one go.
@@ -779,6 +817,8 @@ try:
         run({'prefer': ['Give me the file.', 'Minji', 'Yes. All of it', '(Stay', 'Ten minutes', 'make music honestly', 'While.', 'Yes. It', '(Confirm']})
         sm = finale('Minji')
         ok(sm['route'] == 'minji' and all(e in sm['ev'] for e in week3) and 'epi-r-footage-kept' in sm['flags'] and 'epi-r-jacket' not in sm['flags'] and 'epi-r-held' in sm['flags'], 'Minji: every week-3 beat, Danielle keeps it, the camera on the roof, held')
+        ok(all(e in sm['ev'] for e in NYC_BEATS) and sm['ev'].index('epi-r-rooftop') < sm['ev'].index('epi-r-car') < sm['ev'].index('epi-r-midnight') and sum(f in sm['flags'] for f in ['epi-r-jh-all', 'epi-r-jh-part', 'epi-r-jh-none']) == 1 and sum(f in sm['flags'] for f in ['epi-r-nye-mark', 'epi-r-nye-no-mark']) == 1 and 'epi-r-dossier' in sm['flags'] and any(f in sm['flags'] for f in ['epi-r-caption-down', 'epi-r-caption-read']),
+           f'Minji: past the roof to New Year’s Eve: every Manhattan beat, one answer to Jaehyun, one guest list, the dossier, the 12:01 post ({[f for f in sm["flags"] if any(k in f for k in ("jh-", "nye-", "caption", "entry"))]})')
         errs = p.console(); ok(not errs, f'no browser errors on the Minji act: {errs}')
         # And the year afterwards: Iwatodai's data again, no glitch.
         aft = p.eval("(()=>{const G=FemcGame;return [G.D.events===FEMC_GAME_EVENTS,G.D.cal===FEMC_GAME_CALENDAR,FemcGlitch.active(),G.money(5)]})()")
