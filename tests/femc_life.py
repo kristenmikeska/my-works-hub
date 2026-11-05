@@ -404,9 +404,10 @@ try:
         p.eval("(()=>{const W=FEMC_ART_READY.skins['sk-wintercoat'];if(window.__w0)W.hd=window.__w0;else delete W.hd;return true})()")
         # Nov 3 (batch 134): a PARTIAL set (Velvet: 11 of 18) rotates only through what it has; a hover pose it lacks keeps the scroll pose
         V = p.eval("(FEMC_ART_READY.skins['sk-velvet']||{}).hd||[]")
-        ok(len(V) >= 11 and 'phone' in V and 'peace' not in V and 'study' in V, f'ready.js lists Velvet\'s HD poses (still partial): {V}')
-        # Nov 4: Kat filled in Velvet's sewing; take it away here (in the page only) so the "pose it lacks" hover is still tested.
-        p.eval("(()=>{const R=FEMC_ART_READY.skins['sk-velvet'];R.hd=R.hd.filter(k=>k!=='sewing');return true})()")
+        ok(len(V) >= 11 and 'phone' in V and 'study' in V, f'ready.js lists Velvet\'s HD poses: {V}')
+        # Nov 4: Kat finished Velvet's set; it's made partial again here (in the page only: no peace, no sewing) so the
+        # "rotates only through what it has" and "a pose it lacks keeps the scroll pose" checks still test something.
+        p.eval("(()=>{const R=FEMC_ART_READY.skins['sk-velvet'];R.hd=R.hd.filter(k=>k!=='sewing'&&k!=='peace');return true})()")
         p.eval("(()=>{const C=FemcCosmetics;C.grantItem('sk-velvet');C.equip('sk-velvet');FemcGameUI.evening();return true})()")
         v0 = p.eval("document.querySelector('.g-home-fig img').getAttribute('src')")
         vo = p.eval(HOV % json.dumps('out')); vs = p.eval(HOV % json.dumps('study')); vd = p.eval(HOV % json.dumps('desk'))
@@ -546,6 +547,71 @@ try:
         ok('junpei' in r['k'] and r['why'] and r['why']['why'] == 'Called this week', f'the weekly marks survive a reload: {r}')
         p.eval("delete FemcGame.S.life.reach;true")
         ok(p.eval("FemcGame.phoneReach(FemcGame.LINKS.junpei,'call').ok===true"), 'a save without the marks works (nothing used this week)')
+        clear()
+
+    # ── Outfit lines (Nov 4 2026; data/outfit-lines.js, core.js outfitLineDue, ui.js outfitLine) ──
+    if want('outfit') or want('shots'):
+        def wear(look):
+            p.eval("(()=>{const C=FemcCosmetics;C.setPortraits(true);C.grantItem(%s);C.equip(%s);return true})()" % (json.dumps(look), json.dumps(look)))
+        due = lambda: p.eval("(()=>{const e=FemcGame.outfitLineDue();return e?e.look+':'+e.who:null})()")
+        fresh('6/12', 'evening', met={'yukari': 3, 'junpei': 3, 'akihiko': 3})
+        wear('sk-date')
+        ok(due() == 'sk-date:yukari', f'a worn outfit with a line is due: {due()}')
+        p.eval("FemcGameUI.evening();true")
+        p.wait("!!document.querySelector('.g-oline')", 5)
+        r = p.eval("(()=>{const b=document.querySelector('.g-oline');const L=FemcGame.S.life;return {who:b.dataset.who,t:b.innerText,img:!!b.querySelector('img'),seen:L.outfitSeen,day:L.outfitDay===FemcGame.S.day}})()")
+        ok(r['who'] == 'yukari' and r['img'] and 'sk-date:yukari' in r['seen'] and r['day'], f'the bubble shows with her face and is marked seen: {r}')
+        if want('outfit') or want('shots'):
+            shot('outfit-line-desktop'); size(390, 844, True); p.eval("new Promise(r=>setTimeout(r,300))"); shot('outfit-line-phone')
+            ok(p.eval("(()=>{const b=document.querySelector('.g-oline').getBoundingClientRect();return b.left>=0&&b.right<=innerWidth&&b.bottom<=innerHeight})()"), 'the bubble fits on a phone')
+            size(1440, 900)
+        p.eval("document.querySelector('.g-oline').click();true")
+        ok(p.eval("document.querySelectorAll('.g-oline:not(.out)').length===1"), 'a tap shows the second line')
+        p.eval("document.querySelector('.g-oline').click();true")
+        p.wait("!document.querySelector('.g-oline')", 3)
+        ok(True, 'a second tap closes it')
+        # One a day: another outfit with a line, same day: nothing; the next day it plays.
+        wear('sk-roadwork')
+        ok(due() is None, 'one reaction a day at most')
+        p.eval("FemcGameUI.evening();true"); p.eval("new Promise(r=>setTimeout(r,1500))")
+        ok(p.eval("!document.querySelector('.g-oline')"), 'no second bubble the same day')
+        p.eval("FemcGame.S.day+=1;true")
+        ok(due() == 'sk-roadwork:akihiko', f'the next day the other outfit\'s line is due: {due()}')
+        # Once per reaction: Date Day again on a later day: nothing.
+        wear('sk-date')
+        ok(due() is None, 'a reaction plays once a playthrough')
+        # Met-gating: Minji's line waits until Minji is met.
+        wear('sk-esports')
+        ok(due() is None, 'a speaker not met yet: nothing')
+        p.eval("FemcGame.S.met.push('minji');true")
+        ok(due() == 'sk-esports:minji', f'once met, their line is due: {due()}')
+        # Shinjiro's only before 10/4.
+        p.eval("FemcGame.S.met.push('shinjiro');FemcGame.S.day=FemcGame.dayOf('9/28');true")
+        wear('sk-emo')
+        ok(due() == 'sk-emo:shinjiro', f'Shinjiro before 10/4: {due()}')
+        p.eval("FemcGame.S.day=FemcGame.dayOf('10/6');true")
+        ok(due() is None, 'Shinjiro after 10/4: nothing')
+        p.eval("FemcGame.S.day=FemcGame.dayOf('9/28');true")
+        # The toggle, the epilogue, a trip day, the season's look (not worn): nothing.
+        p.eval("FemcCosmetics.setPortraits(false);true")
+        ok(due() is None, 'outfits toggled off: nothing')
+        p.eval("FemcCosmetics.setPortraits(true);FemcGame.S.epi={world:'runners'};true")
+        ok(due() is None, 'in the epilogue: nothing')
+        p.eval("delete FemcGame.S.epi;FemcGame.S.day=FemcGame.dayOf('7/22');true")
+        ok(due() is None, 'on a trip day: nothing')
+        p.eval("FemcGame.S.day=FemcGame.dayOf('9/28');FemcCosmetics.unequip&&FemcCosmetics.unequip('skin:solar');true")
+        p.eval("(()=>{const C=FemcCosmetics;const w=C.onIn('skin:solar');if(w&&C.toggleOff)C.toggleOff('skin:solar');return true})()")
+        # Save round trip, and an old save without the fields.
+        p.eval("FemcGame.save();true"); p.goto('femc-game.html')
+        p.wait("!!document.querySelector('[data-t=continue]')", 10); p.eval("document.querySelector('[data-t=continue]').click();true")
+        p.wait("FemcGame.S.phase==='play'", 10)
+        r = p.eval("({seen:FemcGame.S.life.outfitSeen,day:FemcGame.S.life.outfitDay})")
+        ok('sk-date:yukari' in r['seen'] and isinstance(r['day'], int), f'what played survives a reload: {r}')
+        p.eval("delete FemcGame.S.life.outfitSeen;delete FemcGame.S.life.outfitDay;true")
+        ok(p.eval("(FemcGame.outfitLineDue(),Array.isArray(FemcGame.S.life.outfitSeen))"), 'a save without the fields is fine')
+        # The data: every look and speaker exists.
+        r = p.eval("(()=>{const C=FemcCosmetics,G=FemcGame;return FEMC_GAME_OUTFIT_LINES.filter(e=>!C.byId(e.look)||!G.LINKS[e.who]||!e.lines.length||e.lines.length>2).map(e=>e.look+':'+e.who)})()")
+        ok(r == [], f'every reaction names a real look and speaker, one or two lines: {r}')
         clear()
 
     errors = p.console()

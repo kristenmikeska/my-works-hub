@@ -2363,7 +2363,39 @@ window.FemcGame = (() => {
     if (!L.given || typeof L.given !== 'object') L.given = {};
     if (!Array.isArray(L.specials)) L.specials = [];
     if (!Array.isArray(L.keeps)) L.keeps = [];
+    // Outfit lines (data/outfit-lines.js): reactions already played ('look:who') and the day of the last one.
+    if (!Array.isArray(L.outfitSeen)) L.outfitSeen = [];
+    L.outfitSeen = L.outfitSeen.filter(k => typeof k === 'string');
+    if (typeof L.outfitDay !== 'number') L.outfitDay = -1;
     return L;
+  }
+  /* Outfit lines (Kat, Nov 4 2026): a friend notices the outfit Solar wears in the Wardrobe, once per reaction a playthrough,
+     one a day at most, on the dorm's evening screen (ui.js outfitLine). The worn look only (not the season's), with
+     "Outfits in scene portraits" on; never in the prologue, a trip, the epilogue. The speaker must be met and not gone;
+     `before` / `rank` narrow it. New Game+ starts S.life over, so every reaction can play again. Nothing else changes. */
+  const outfitKey = e => `${e.look}:${e.who}`;
+  function outfitLineOk(e, d = S.day) {
+    const l = LINKS[e.who];
+    if (!isMet(e.who) || (l && goneLink(l, d))) return false;
+    if (e.before && d >= dayOf(e.before)) return false;
+    return !e.rank || progress(e.who).rank >= e.rank;
+  }
+  function outfitLineDue(d = S.day) {
+    const L = life(); // normalises S.life's outfit fields too
+    if (S.epi || S.phase !== 'play') return null;
+    const t = dayInfo(d).type;
+    if (t === 'trip' || t === 'prologue') return null;
+    const C = W.FemcCosmetics;
+    if (!C || C.cs().portraits === false) return null;
+    const worn = C.onIn('skin:solar');
+    if (!worn || !C.ready(worn)) return null;
+    if (L.outfitDay === d) return null;
+    return (W.FEMC_GAME_OUTFIT_LINES || []).find(e => e.look === worn.id && !L.outfitSeen.includes(outfitKey(e)) && outfitLineOk(e, d)) || null;
+  }
+  function seeOutfitLine(e) {
+    const L = life();
+    if (!L.outfitSeen.includes(outfitKey(e))) L.outfitSeen.push(outfitKey(e));
+    L.outfitDay = S.day; save();
   }
   const homeSlot = (l, d = S.day) => (homeOf(l, d).slot === 'evening' ? 'evening' : 'after');
   const lifePick = (arr, n) => (arr && arr.length ? arr[Math.floor(seeded(n) * arr.length) % arr.length] : '');
@@ -2972,7 +3004,7 @@ window.FemcGame = (() => {
     crushTick, crushIs, crushedAt, crushApply, crushPhases, crushTrack, crushFits, crushDue, finishCrush, crushLine, takenBy, glowIs, setGlow,
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
-    deliverTexts, replyText, textById, answerInvite, gift, bond,
+    deliverTexts, replyText, textById, answerInvite, gift, bond, outfitLineDue, seeOutfitLine,
     rankHint, whoFree, goneLinks, contactCard, noteGift, giftItem, giftShop, giftBag, addGift, giftTier, giftFans, canGift, giftPoints, giveGift, keepsakes, GIFT_TIERS, phoneReach, phoneCall, finishPhoneCall, phoneTopics, phoneMessage, dayInvitePending, answerDayInvite, bookedDue, clearBooked, commuteDue, pickCommute, storyDay,
     holidayInvites, sendHolidayInvites, holidayDue, acceptHoliday, finishHoliday, declineHolidays,
     lateNightDue, finishLateNight, tripPlan, finishTrip, unread, markAllRead, isGroupThread, freeSlotSpent, nextSlot, sleep,

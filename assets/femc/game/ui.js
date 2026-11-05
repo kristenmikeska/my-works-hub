@@ -1617,6 +1617,41 @@
       </div></section>`, 'is-dorm');
     main.querySelectorAll('[data-n]').forEach(b => b.addEventListener('click', () => nightChoice(b.dataset.n, info)));
     homeFig();
+    outfitLine();
+  }
+  /* Outfit lines (Nov 4 2026; core.js outfitLineDue, data/outfit-lines.js): a friend's one-line reaction to what Solar wears,
+     as a small bubble by her figure (bottom of the screen on phones). It waits a moment so a date card or scene can open
+     first, and is only marked seen once it actually shows. Tap or Enter (when the focus isn't on a choice) moves to the next
+     line or closes it; each line also moves on by itself. Leaving the screen removes it (show() replaces #g-main). */
+  function outfitLine() {
+    if (!G.outfitLineDue || !G.outfitLineDue()) return;
+    setTimeout(() => {
+      const e = G.outfitLineDue();
+      if (!e || !main.querySelector('.g-dorm') || main.querySelector('.g-oline')
+        || document.querySelector('.gs, .gs-rank, .g-datecard, .g-actcard, .g-overlay, .g-statcard')) return;
+      G.seeOutfitLine(e);
+      const who = G.LINKS[e.who], nm = (who && who.short) || G.name(e.who), face = G.portrait(e.who, e.f || 'happy');
+      const el = document.createElement('button');
+      el.type = 'button'; el.className = 'g-oline'; el.dataset.who = e.who; el.dataset.look = e.look;
+      el.setAttribute('aria-live', 'polite');
+      let k = 0, timer = 0;
+      const paint = () => {
+        el.innerHTML = `${face ? `<img src="${face}" alt="">` : ''}<span><b>${esc(nm)}</b><span class="g-oline-t">${esc(e.lines[k])}</span><i aria-hidden="true">${k < e.lines.length - 1 ? '▸' : '✕'}</i></span>`;
+        clearTimeout(timer); timer = setTimeout(next, Math.max(4200, e.lines[k].length * 70));
+      };
+      const close = () => { clearTimeout(timer); removeEventListener('keydown', key, true); el.classList.add('out'); setTimeout(() => el.remove(), reduced.matches ? 0 : 260); };
+      const next = () => { if (!el.isConnected) return close(); if (++k < e.lines.length) paint(); else close(); };
+      const key = ev => {
+        if (!el.isConnected) { removeEventListener('keydown', key, true); return; }
+        if (ev.key !== 'Enter' && ev.key !== ' ') return;
+        if (document.activeElement && document.activeElement !== el && document.activeElement.closest('.g-dorm, .g-hud, .g-overlay')) return;
+        ev.preventDefault(); ev.stopPropagation(); next();
+      };
+      el.addEventListener('click', ev => { ev.stopPropagation(); next(); });
+      addEventListener('keydown', key, true);
+      paint(); main.appendChild(el);
+      G.sfx && G.sfx('femc-text');
+    }, 900);
   }
   /* Solar on the evening screen (Kat, Oct 31): pinned large at the right while the list scrolls, changing pose as you scroll
      (a pop and a pink slash; scrolling back runs the poses backwards), leaning with the scroll, and reacting to the card under
