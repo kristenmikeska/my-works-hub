@@ -189,6 +189,7 @@ window.RUN = async (until, policy, sleepOn) => {
       sc.click(); await S(8); continue;
     }
     const card = document.querySelector('.g-actcard:not(.out), .g-datecard'); if (card) { card.click(); await S(20); continue; }
+    const pola = document.querySelector('.g-pola:not(.out)'); if (pola) { (log.polaroids = log.polaroids || []).push(pola.dataset.pola); pola.click(); await S(300); continue; }
     const out = document.querySelector('.g-epi-out');
     if (out) { const b = out.querySelector('[data-bond]'); if (b) { log.hangouts.push(b.dataset.bond + ':' + FemcEpilogue.hangoutFor(b.dataset.bond).id); b.click(); } else out.querySelector('[data-stay]').click(); await S(20); continue; }
     const n = document.querySelector('#g-app [data-next]:not(:disabled)');
@@ -1871,6 +1872,16 @@ try:
         ok('art/polaroids/' in p.eval("document.querySelector('.g-av-img').src"), 'a polaroid tile opens the viewer, square')
         shot3('album-runners-polaroid-viewer')
         p.eval("document.querySelectorAll('.g-overlay').forEach(x=>x.remove())")
+        # The hangout's own reveal (Nov 5): the polaroid drops in once, the first time its hangout ends.
+        pf = p.eval("({hit: FemcEpilogue.polaroidFor('epi-r-hanni-4'), none: FemcEpilogue.polaroidFor('epi-r-hanni-1')})")
+        ok(pf == {'hit': 'runners-snow-day-at-the-valley', 'none': None}, f'a hangout with a polaroid gives it, others don’t ({pf})')
+        p.eval("window.__polaDone=0;FemcEpilogue.polaroidShow('runners-snow-day-at-the-valley',()=>{window.__polaDone++})")
+        p.wait("(document.querySelector('.g-pola-pic')?.naturalWidth || 0) > 0", 6)
+        p.wait("document.activeElement?.matches('[data-pola-ok]')", 4)
+        shot3('hangout-polaroid', "void 0")
+        p.eval("document.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}))")
+        p.wait("!document.querySelector('.g-pola') && window.__polaDone===1", 4)
+        ok(True, 'the hangout polaroid shows, Enter puts it away and the day goes on')
         # Leaving keeps them in the year's album; New Game+ (albumCarry) carries them; a CG never mixes into the posts.
         lv = p.eval("(()=>{FemcEpilogue.leave();const a=FemcGame.S.album;const c=FemcMenu.albumCarry();return {posts:a.posts,carry:c.posts,cgHasPost:c.cg.some(x=>/^post-/.test(x))}})()")
         ok(lv['posts'] == ['post-r-10-holiday-toast', 'post-r-5-solchan'] and lv['carry'] == lv['posts'] and not lv['cgHasPost'], f'leaving keeps the posts in the year’s album; New Game+ carries them ({lv})')

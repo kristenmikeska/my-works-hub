@@ -236,3 +236,15 @@
 
 /* Polaroids (Nov 5 2026): the caption is written on the picture, so the tile's label stays off. */
 .g-al-grid.pl .g-al-cap { display: none; }
+/* The polaroid a hangout gives (epilogue.js polaroidShow): the photo drops in, tilted, over a dim screen. */
+.g-pola { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; background: rgba(20, 7, 15, .78); animation: g-pola-dim .3s ease both; cursor: pointer; }
+.g-pola-in { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 16px; text-align: center; }
+.g-pola-pic { width: min(62vh, 78vw, 460px); aspect-ratio: 1; box-shadow: 0 18px 50px rgba(0, 0, 0, .55); transform: rotate(-3deg); animation: g-pola-drop .7s cubic-bezier(.2, 1.3, .4, 1) both; }
+.g-pola-line { margin: 14px 0 0; color: #fff4f9; font-style: italic; font-weight: 700; font-size: 1.15rem; animation: g-pola-dim .4s .45s ease both; }
+.g-pola-note { margin: 0; color: #ff4f9e; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; animation: g-pola-dim .4s .55s ease both; }
+.g-pola-ok { margin-top: 8px; padding: 8px 22px; border: 0; background: #ff4f9e; color: #14070f; font-weight: 800; font-style: italic; clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%); cursor: pointer; animation: g-pola-dim .4s .6s ease both; }
+.g-pola-ok:focus-visible { outline: 2px solid #fff4f9; outline-offset: 3px; }
+.g-pola.out { opacity: 0; transition: opacity .25s ease; }
+.g-pola.reduced *, .g-pola.reduced { animation-duration: .01s !important; animation-delay: 0s !important; }
+@keyframes g-pola-dim { from { opacity: 0; } }
+@keyframes g-pola-drop { from { opacity: 0; transform: translateY(-40px) rotate(-12deg) scale(1.08); } }

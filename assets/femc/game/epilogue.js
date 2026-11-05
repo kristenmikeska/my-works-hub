@@ -478,7 +478,31 @@ window.FemcEpilogue = (() => {
   function hangoutScene(id, h, resume) {
     SC.play({ scene: [...(h.bg ? [{ bg: h.bg }] : []), ...(GL()?.inject(h.id, h.scene) || h.scene)], place: h.place, time: h.time, title: resume ? null : h.title, label: G.name(id), cast: h.cast, faces: h.faces, resume,
       onBattle: fightHook({ type: 'epi', kind: 'hangout', id, h: h.id }),
-      onDone: () => { S().pending = null; const st = bondState(id); if (!st.seen.includes(h.id)) st.seen.push(h.id); bond(id, h.gain ?? 1); G.save(); advance(); } });
+      onDone: () => { S().pending = null; const st = bondState(id), first = !st.seen.includes(h.id); if (first) st.seen.push(h.id); bond(id, h.gain ?? 1); G.save();
+        const pid = first && polaroidFor(h.id); pid ? polaroidShow(pid, advance) : advance(); } });
+  }
+  // The polaroid a hangout gives (POLAROIDS, below), shown once when it first plays (Kat, Nov 5: so the player notices them):
+  // the photo drops in over the screen, "Solar keeps the photo", then on to the next slot. Only once its picture exists.
+  function polaroidFor(hid) {
+    const have = new Set(W.FEMC_POLAROIDS || []), hit = (POLAROIDS[S().epi?.world] || []).find(([id, hang]) => hang === hid && have.has(id));
+    return hit ? hit[0] : null;
+  }
+  function polaroidShow(pid, done) {
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const ov = document.createElement('div');
+    ov.className = `g-overlay g-pola${reduced ? ' reduced' : ''}`; ov.dataset.pola = pid;
+    ov.innerHTML = `<div class="g-pola-in" role="dialog" aria-label="A polaroid">
+      <img class="g-pola-pic" src="${G.base}assets/femc/game/art/polaroids/${pid}.webp?v=${W.FEMC_POLAROIDS_V || 1}" alt="">
+      <p class="g-pola-line">Solar keeps the photo.</p><p class="g-pola-note">Added to the Album · Polaroids</p>
+      <button type="button" class="g-pola-ok" data-pola-ok>Keep it</button></div>`;
+    document.body.appendChild(ov);
+    let over = false;
+    const close = () => { if (over) return; over = true; removeEventListener('keydown', key, true); ov.classList.add('out'); setTimeout(() => { ov.remove(); done(); }, reduced ? 120 : 260); };
+    const key = e => { if (['Enter', ' ', 'Escape'].includes(e.key)) { e.preventDefault(); e.stopPropagation(); close(); } };
+    addEventListener('keydown', key, true);
+    ov.addEventListener('click', close);
+    G.sfx?.('femc-on');
+    setTimeout(() => ov.querySelector('[data-pola-ok]')?.focus({ preventScroll: true }), 50);
   }
 
   /* ── The half-present fights (batch 6; FEMC-EPILOGUE-PLAN.md 2.4) ──
@@ -857,7 +881,7 @@ window.FemcEpilogue = (() => {
   }
 
   return { WORLDS, worldFor, endingOf, loadWorld, build, ensure, homeView, carryOf, leanFor, route, lockRoute, cond, stateFor, enter, leave, endScreen, offer, run, finish, raw: worldRaw,
-    yearCond, peekCond, isEpiCond, replaySaw, recordOf, records, entered, albumEntries, postEntries, polaroidEntries, POLAROIDS, alertDue, newsTick, ALERTS, theaterRows, theaterLoad, replay, equinoxOf, ALBUM,
+    yearCond, peekCond, isEpiCond, replaySaw, recordOf, records, entered, albumEntries, postEntries, polaroidEntries, POLAROIDS, polaroidFor, polaroidShow, alertDue, newsTick, ALERTS, theaterRows, theaterLoad, replay, equinoxOf, ALBUM,
     routeOpen, bond, closeness, startBond, contacts, contactCard, reach, call, topics, message, phoneWeek, migratePhone, hangoutFor, people, hangout, practiceNow, CLOSE_MAX, resume, partyFor, fightOf, fadeQueue, FADE, STAGES,
     get cardDay() { return cardDay; } };
 })();
