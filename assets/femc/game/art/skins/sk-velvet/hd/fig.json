@@ -76,6 +76,17 @@
   ],
   "src": "velvet-overshoulder.png"
  },
+ "peace": {
+  "ar": 0.355,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.524,
+  "size": [
+   546,
+   1536
+  ],
+  "src": "velvet-peace.png"
+ },
  "phone": {
   "ar": 0.389,
   "hf": 0.139,
@@ -108,6 +119,17 @@
    1536
   ],
   "src": "velvet-sewing.png"
+ },
+ "shy": {
+  "ar": 0.334,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.498,
+  "size": [
+   513,
+   1536
+  ],
+  "src": "velvet-shy.png"
  },
  "stretch": {
   "ar": 0.411,

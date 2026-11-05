@@ -21,6 +21,17 @@
   ],
   "src": "movie-fist.png"
  },
+ "evoker": {
+  "ar": 0.626,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.493,
+  "size": [
+   962,
+   1536
+  ],
+  "src": "movie-evoker.png"
+ },
  "hair": {
   "ar": 0.399,
   "hf": 0.139,
@@ -43,6 +54,17 @@
   ],
   "src": "movie-hearthands.png"
  },
+ "jump": {
+  "ar": 0.652,
+  "hf": 0.138,
+  "ht": 0.003,
+  "hx": 0.163,
+  "size": [
+   1002,
+   1536
+  ],
+  "src": "movie-jump.png"
+ },
  "lookback": {
   "ar": 0.469,
   "hf": 0.139,
@@ -64,6 +86,17 @@
    1536
   ],
   "src": "movie-peace.png"
+ },
+ "phone": {
+  "ar": 0.41,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.48,
+  "size": [
+   629,
+   1536
+  ],
+  "src": "movie-phone.png"
  },
  "ramen": {
   "ar": 0.479,
@@ -120,6 +153,17 @@
   ],
   "src": "movie-reading.png"
  },
+ "tease": {
+  "ar": 0.52,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.497,
+  "size": [
+   799,
+   1536
+  ],
+  "src": "movie-handonhip.png"
+ },
  "thinking": {
   "ar": 0.377,
   "hf": 0.139,
@@ -130,6 +174,17 @@
    1536
   ],
   "src": "movie-thinking.png"
+ },
+ "watering": {
+  "ar": 0.564,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.561,
+  "size": [
+   866,
+   1536
+  ],
+  "src": "movie-watering.png"
  },
  "wave": {
   "ar": 0.446,

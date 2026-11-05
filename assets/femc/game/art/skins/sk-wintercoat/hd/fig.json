@@ -43,6 +43,17 @@
   ],
   "src": "winter-handinhair.png"
  },
+ "heart": {
+  "ar": 0.46,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.481,
+  "size": [
+   706,
+   1536
+  ],
+  "src": "winter-hearthands.png"
+ },
  "jump": {
   "ar": 0.658,
   "hf": 0.138,

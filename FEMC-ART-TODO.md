@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 4):** ⭐ high-resolution poses (top section: Solar first) · 1 credits still (section 18: Ken) · 22 skin-series pieces for Solar (section 19: Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21) · 11 Runners epilogue places (section 23: four for Regionals, three for the home screen) · 1 Runners sticker sheet (section 24) · 12 Echo sheets (section 25: 72 new Echoes) · 6 dorm lounge pictures (section 26) · couple victory poses for Haechan, Jungwon and Akihiko (section 27: six outfits) · 15 Boutique banner pictures (section 28) · little card art (section 29: card back, frames, 22 item pictures, 11 outfit face sheets) · low-res pictures to look over at the very end (section 30). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make (updated Nov 4):** ⭐ high-resolution poses (top section: Solar ✅ done; the other fighters next) · 1 credits still (section 18: Ken) · 22 skin-series pieces for Solar (section 19: Midnight Chapel, Wildflower Cottage and the other Arcana) · 26 collab-outfit pieces (section 21) · 11 Runners epilogue places (section 23: four for Regionals, three for the home screen) · 1 Runners sticker sheet (section 24) · 12 Echo sheets (section 25: 72 new Echoes) · 6 dorm lounge pictures (section 26) · couple victory poses for Haechan, Jungwon and Akihiko (section 27: six outfits) · 15 Boutique banner pictures (section 28) · little card art (section 29: card back, frames, 22 item pictures, 11 outfit face sheets) · low-res pictures to look over at the very end (section 30). **Optional:** 27 epilogue CGs redrawn in their world's style (section 22). **Skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 ## ⭐⭐ TOP PRIORITY when you have usage: high-resolution poses (Kat, Nov 2)
 
@@ -16,12 +16,7 @@ Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make.
 **Solar: done (in the game)**
 - ✅ Her own look (18) · ✅ After Hours (18) · ✅ Date Day (18) · ✅ Emo Night (18) · ✅ Limelight (18) · ✅ Alpha Phi Formal (18) · ✅ Y2K Pop Star (18) · ✅ Pink Lagoon (18) · ✅ Night Swim (18) · ✅ The Sun (18) · ✅ Sugar Rush (18) · ✅ Sun Hoodie (18) · ✅ Summer Yukata (18) · ✅ Summer Festival (18) · ✅ Oops! (18) · ✅ SU eSports Jersey (18) · ✅ Ringside (18) · ✅ Stage Idol (18) · ✅ Strawberry Milk (18) · ✅ Moonlit Hanbok (18) · ✅ Midnight Drive (18) · ✅ Night Prowl (18) · ✅ Halloween Witch (18) · ✅ Harbour Night Coat (18) · ✅ Phantom Thief (18) · ✅ Morning Roadwork (18) · ✅ Summer Session (18) · ✅ Snake Charmer (18) · ✅ Lifeguard on Duty (18) · ✅ Vice President (18)
 
-**Solar: in, but missing a few poses (8 left in all)**
-- **Movie Date** (13 in): Evoker, hands on hip, jump, phone, watering (the last piece the couple results screen needs for Solar)
-- **Velvet Attendant** (16 in): peace sign, shy
-- **Winter Coat** (17 in): heart hands
-
-Fill-ins can go loose in New Adds (e.g. `velvet-peace.png`); the tool finds them.
+**Solar: ✅ ALL DONE (Nov 4).** Her own look and all 32 outfits have the full 18 poses. Next in this section: step 2, the other fighters' victory poses (section 27 has the couple partners).
 
 **Tip:** if ChatGPT blocks a pose, reword it (e.g. "relaxed standing pose, hand resting on hip" instead of "hands on hips"); that often gets it through.
 
