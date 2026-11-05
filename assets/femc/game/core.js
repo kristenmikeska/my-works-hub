@@ -1063,7 +1063,7 @@ window.FemcGame = (() => {
     if (S.spent[`${S.day}-${slot}`] && !a.shop) return { ok: false, why: 'No time left' };
     // daily: once a day (the photo booth); booth: someone to take it with (booth.js partners).
     if (a.daily && (S.doneDay || {})[a.id] === S.day) return { ok: false, why: 'Once a day' };
-    if (a.booth && W.FemcBooth && !W.FemcBooth.partners().length) return { ok: false, why: 'Nobody to squeeze in with yet' };
+    // booth: open even before anyone is met (the Solo shoot, booth.js; Nov 4 2026)
     return { ok: true };
   }
   // Preview the same weather and condition-adjusted gains the activity will award.

@@ -12,9 +12,14 @@ Run: python3 tests/femc_booth.py [--only art,flow,album,gates,settings] [--scree
             390 x 844 screenshots of every step, no sideways scroll.
   album     the Album's Photo Booth row draws the strips live, the viewer opens and closes (focus back), New Game+ keeps them
             (menu.js albumCarry).
-  gates     nobody met → "Nobody to squeeze in with yet"; Hanni and Hyein listed once met; Kat's pose art takes over a stand-in
+  gates     nobody met → still open (only the Solo shoot tile); Hanni and Hyein listed once met; Kat's pose art takes over a stand-in
             when booth/index.js lists it.
   settings  reduced motion (no countdown, still shots), Reduce flashes (the soft flash).
+  solo      the Solo shoot (Nov 4): the tile, her looks (own + owned outfits with HD sets; not-owned ones absent), every
+            pose of a look, backdrops (pink, dorm, mall, booth + places she has done something at; a place not done is
+            absent), the figure framed from fig.json, one snap → stamps → Print: ¥400, slot spent, once a day, no ♪, the
+            record { kind: 'solo', look, pose, bg, fit, frame, stamps }; the Album draws it next to a strip, the viewer names
+            the look; New Game+ keeps it; reduced motion; 1440 x 900, 1280 x 720, 390 x 844 fit.
 """
 import argparse, base64, json, pathlib, sys, time
 from femc_browser import Page, REPO
@@ -245,7 +250,10 @@ try:
     if want('gates'):
         setup(met=['junpei'])
         g = p.eval("FemcGame.activityOk(FemcGame.actById('booth'),'after')")
-        ok(not g['ok'] and g['why'] == 'Nobody to squeeze in with yet', f'nobody met: {g}')
+        ok(g['ok'], f'nobody met: still open for a solo shoot: {g}')
+        enter()
+        ok(p.eval("document.querySelectorAll('[data-who]').length===0 && !!document.querySelector('[data-solo]')"), 'nobody met: only the Solo shoot tile')
+        p.eval("FemcBooth.close(true);true")
         p.eval("FemcGame.S.met.push('hanni','hyein');FemcGame.save()")
         ok(p.eval("FemcBooth.partners()") == ['hanni', 'hyein'], 'Hanni and Hyein once met')
         ok(p.eval("FemcGame.activityOk(FemcGame.actById('booth'),'after').ok"), 'open with a partner')
@@ -271,6 +279,68 @@ try:
         p.eval("FemcGame.setSettings({calm:false})")
         clean('settings')
         results['settings'] = 'reduced motion, Reduce flashes'
+
+    if want('solo'):
+        sh = []
+        for w, h in [(1440, 900), (1280, 720), (390, 844)]:
+            view(w, h); setup()
+            # owns Sun Hoodie (HD set), not Phantom Thief; has done the fountain (mall) and the Chagall café, not the pier
+            p.eval("(()=>{const C=FemcCosmetics;C.grantItem('sk-cp-sunmoon');const S=FemcGame.S;S.done=Object.assign(S.done||{},{chagall:1});FemcGame.save();return true})()")
+            y0 = p.eval("FemcGame.S.yen"); xp0 = p.eval("FemcGame.progress('haechan').xp||0")
+            L = p.eval("FemcBooth.looks().map(l=>({id:l.id,n:l.poses.length}))")
+            ok(L[0] == {'id': None, 'n': 18} and {'id': 'sk-cp-sunmoon', 'n': 18} in L and not any(l['id'] == 'sk-phantom' for l in L), f'looks: her own + owned with HD: {L}')
+            B = p.eval("FemcBooth.backdrops().map(b=>b.id)")
+            ok(B[0] == 'pink' and 'iwatodaidorm-livingroom-night' in B and any('chagall' in b for b in B) and not any('pier' in b for b in B), f'backdrops: seen places only: {B}')
+            enter()
+            ok(fits(), f'{w}: who fits'); click('[data-solo]')
+            ok(p.eval(ST)['step'] == 'frame' and p.eval(ST)['solo']['pose'] == 'peace', f'solo → frame: {p.eval(ST)}')
+            click('[data-fr="4"]'); click('[data-bs=frame-ok]')
+            ok(p.eval(ST)['step'] == 'solo', 'the shoot step')
+            n = p.eval("document.querySelectorAll('[data-sp]').length")
+            ok(n == 18, f'every pose of her own look: {n}')
+            click('[data-sl="sk-cp-sunmoon"]'); click('[data-sp="jump"]')
+            bg = next(b for b in B if 'chagall' in b)
+            click(f'[data-sb="{bg}"]')
+            p.wait("(()=>{const i=document.querySelector('.bs-shot.live .bs-solo-fig');return i&&i.complete&&i.naturalWidth>0&&i.src.includes('sk-cp-sunmoon/hd/jump')&&!i.style.translate})()", 10)
+            fig = p.eval("(()=>{const i=document.querySelector('.bs-shot.live .bs-solo-fig').getBoundingClientRect(),s=document.querySelector('.bs-shot.live').getBoundingClientRect();return {h:i.height/s.height,top:(i.top-s.top)/s.height}})()")
+            ok(1.4 < fig['h'] < 1.7 and -0.05 < fig['top'] < 0.1, f'framed knees-up from fig.json: {fig}')
+            ok(p.eval("document.querySelector('.bs-shot.live .bs-bg.photo').style.backgroundImage.includes(%s)" % json.dumps(bg)), 'the backdrop')
+            ok(fits(), f'{w}: shoot fits'); sh.append(shot(f'booth-solo-shoot-{w}'))
+            click('[data-bs=snap]'); p.wait("FemcBooth.state()?.step==='stamps'", 10)
+            ok(p.eval("!!document.querySelector('.bs-stage .bs-solo')"), 'stamps on the solo picture')
+            click('[data-sa="2"]'); click('[data-sa="8"]')
+            ok(fits(), f'{w}: stamps fit')
+            click('[data-bs=print]'); p.wait("FemcBooth.state()?.printed===true")
+            S = p.eval("(()=>{const S=FemcGame.S;return {yen:S.yen,spent:S.spent[S.day+'-after'],dd:(S.doneDay||{}).booth,day:S.day,rec:S.album.booth.slice(-1)[0],xp:FemcGame.progress('haechan').xp||0}})()")
+            rec = S['rec']
+            ok(S['yen'] == y0 - 400 and S['spent'] == 'act:booth' and S['dd'] == S['day'] and S['xp'] == xp0, f'¥400, slot, once a day, no ♪: {S}')
+            ok(rec['kind'] == 'solo' and rec['look'] == 'sk-cp-sunmoon' and rec['pose'] == 'jump' and rec['bg'] == bg and rec['frame'] == 4 and len(rec['stamps']) == 2
+               and rec['fit'] and set(rec['fit']) == {'ar', 'ht', 'hx'} and 'who' not in rec, f'the record: {rec}')
+            ok(fits(), f'{w}: printed fits'); sh.append(shot(f'booth-solo-printed-{w}'))
+            click('.bs-body[data-step=printed] [data-bs=go]'); p.wait("!document.querySelector('.g-booth-ov')", 5)
+            p.wait("/built for two|One pose, one flash|told her to smile/.test(document.body.innerText)", 10)
+            clean(f'solo {w}')
+        # the Album: a strip and a solo shoot side by side; the viewer; New Game+
+        view(1440, 900); setup()
+        strip('haechan')
+        p.eval("(()=>{const S=FemcGame.S;S.day+=1;S.spent={};S.slot='after';S.album.booth.push({kind:'solo',date:'6/14',day:S.day,run:S.runId||null,look:null,pose:'wave',bg:'pink',fit:null,frame:2,stamps:[{id:1,x:30,y:30}]});FemcGame.save();return true})()")
+        p.eval("document.querySelectorAll('.g-overlay').forEach(x=>x.remove());FemcMenu.open('album')")
+        p.wait("document.querySelectorAll('.bs-al-tile').length===2", 10)
+        ok(p.eval("document.querySelectorAll('.bs-al-tile.solo .bs-solo-fig').length") == 1 and p.eval("document.querySelectorAll('.bs-al-tile .bs-strip').length") == 1, 'Album: one strip, one solo')
+        p.eval("document.querySelector('.bs-al-tile.solo').scrollIntoView({block:'center'})"); sh.append(shot('booth-solo-album-1440'))
+        click('[data-bs-al="1"]'); p.wait("!!document.querySelector('.g-booth-ov.view .bs-solo')")
+        ok('Solo shoot' in p.eval("document.querySelector('.g-booth-ov.view').innerText") and 'Her own look' in p.eval("document.querySelector('.g-booth-ov.view').innerText"), 'the viewer names the look')
+        sh.append(shot('booth-solo-view-1440'))
+        p.eval("document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}))"); p.wait("!document.querySelector('.g-booth-ov.view')", 5)
+        carry = p.eval("FemcMenu.albumCarry().booth")
+        ok(len(carry) == 2 and carry[1]['kind'] == 'solo', f'New Game+ keeps the solo shoot: {carry}')
+        # reduced motion: no countdown, the print still
+        motion(True); p.eval("FemcGame.S.day+=1;FemcGame.S.spent={};FemcGame.save()")
+        enter(); click('[data-solo]'); click('[data-bs=frame-ok]'); click('[data-bs=snap]'); p.wait("FemcBooth.state()?.step==='stamps'", 5)
+        ok(p.eval("getComputedStyle(document.querySelector('.bs-solo')).animationName") in ('none', ''), 'reduced motion: still')
+        motion(False); p.eval("FemcBooth.close(true);true")
+        clean('solo album')
+        results['solo'] = {'shots': sh}
 
     print(json.dumps(results, indent=1))
     print('femc_booth: all checks passed')

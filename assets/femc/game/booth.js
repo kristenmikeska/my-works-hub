@@ -12,8 +12,19 @@
    anything not listed (DRAWN_FRAMES: a black border with the season's motifs from battle/looks-art.js; STAMP_SVG; a pose
    without art is the person's scene portrait with a small drawn gesture badge, POSES). The drawn heart over a paired
    half-heart only shows while one of the two is a stand-in.
+   Solo shoot (Kat, Nov 4 2026: the "photo mode" folded into the booth): the first tile on the partner step, always there
+   (so the booth opens even before anyone is met). Steps: frame → the shoot (an outfit she owns or her own look, any of its
+   HD poses, a backdrop) → stamps → Print. Looks: her own (profile/solar-poses/, ready.js own.hd / hdv) and every owned
+   Solar outfit with an HD set (cosmetics.js hdOf). Backdrops (backdrops()): the booth's pink, the dorm lounge, the mall and
+   the photo booth, plus the day and night art of every place she has done something at (S.done, core.js background), so
+   nothing she hasn't been to shows. One picture, 3:4, framed knees-up from the set's fig.json (head top `ht`, head centre
+   `hx`, aspect `ar`; fetched once, copied into the record as `fit` so the Album draws without fetching). Print: the same
+   ¥400, slot and once-a-day rule, no ♪. Record: { kind: 'solo', date, day, run, look: <id> | null (her own), pose, bg:
+   <bg slug> | 'pink', fit: { ar, ht, hx }, frame, stamps } in S.album.booth beside the strips; the Album row and viewer
+   draw both kinds (soloHtml). Strips have no `kind`.
    Settings: reduced motion: no countdown bounce or flash, the shots crossfade; Reduce flashes (calm): a soft fade instead of
-   the white flash. Test hooks: FemcBooth.state(), FemcBooth.stripHtml(rec), FemcBooth.partners(). */
+   the white flash. Test hooks: FemcBooth.state(), FemcBooth.stripHtml(rec), FemcBooth.soloHtml(rec), FemcBooth.partners(),
+   FemcBooth.looks(), FemcBooth.backdrops(). */
 window.FemcBooth = (() => {
   const G = window.FemcGame;
   if (!G) return null;
@@ -80,6 +91,73 @@ window.FemcBooth = (() => {
   const artFrame = n => (ART().frames || []).includes(n);
   const artStamp = n => (ART().stamps || []).includes(n);
 
+  // ── Solo shoot: her looks, their HD poses, backdrops ──
+  const POSE_NAMES = { 'arms-crossed': 'Arms crossed', thinking: 'Thinking', wave: 'Wave', peace: 'Peace sign', hair: 'Hand in hair', shy: 'Shy',
+    study: 'Reading', ramen: 'Ramen', watering: 'Watering', evoker: 'Evoker', stretch: 'Stretch', phone: 'Phone', cheer: 'Fist pump', jump: 'Jump',
+    tease: 'Hand on hip', heart: 'Heart hands', lookback: 'Over the shoulder', sewing: 'Sewing' };
+  const POSE_ORDER = Object.keys(POSE_NAMES);
+  const READY = () => window.FEMC_ART_READY || {};
+  const ownDir = () => `${G.base}assets/femc/profile/solar-poses/`;
+  function lookSrc(id, pose) {
+    if (!id) return `${ownDir()}${pose}.webp?v=${(READY().own || {}).hdv || 1}`;
+    return `${G.base}assets/femc/game/art/skins/${id}/hd/${pose}.webp?v=${((READY().skins || {})[id] || {}).hdv || 1}`;
+  }
+  const figUrl = id => (id ? `${G.base}assets/femc/game/art/skins/${id}/hd/fig.json` : `${ownDir()}fig.json`);
+  function looks() {
+    const C = window.FemcCosmetics, own = (READY().own || {}).hd || [];
+    const out = [{ id: null, name: 'Her own look', poses: POSE_ORDER.filter(k => own.includes(k)) }];
+    if (C) C.ITEMS.filter(x => x.kind === 'skin' && x.who === 'solar' && C.owns(x.id) && C.hdOf(x)).forEach(x => {
+      const have = ((READY().skins || {})[x.id] || {}).hd || [];
+      out.push({ id: x.id, name: x.name, poses: POSE_ORDER.filter(k => have.includes(k)) });
+    });
+    return out.filter(l => l.poses.length);
+  }
+  const lookName = id => (id ? (window.FemcCosmetics && window.FemcCosmetics.byId(id) || {}).name || 'An outfit' : 'Her own look');
+  function backdrops() {
+    const s = S(), out = [{ id: 'pink', name: 'Booth pink' }], seen = new Set(['pink']);
+    const add = (name, place, time) => {
+      const b = G.background(place, time); if (!b) return;
+      const m = b.url.match(/\/bg\/([^/?]+)\.webp/); if (!m || seen.has(m[1])) return;
+      seen.add(m[1]); out.push({ id: m[1], name });
+    };
+    const base = (name, slug) => { if (!seen.has(slug)) { seen.add(slug); out.push({ id: slug, name }); } };
+    base('Dorm lounge', 'iwatodaidorm-livingroom-night');
+    add('Paulownia Mall', 'Paulownia Mall', ''); add('The photo booth', 'Paulownia Mall · Photo Booth', '');
+    G.activities().filter(a => (s.done || {})[a.id] > 0).forEach(a => {
+      const area = G.areaById(a.area), place = a.place || `${area ? area.name : ''} · ${a.spot}`;
+      add(a.spot, place, ''); add(`${a.spot} at night`, place, 'Evening');
+    });
+    return out;
+  }
+  const figCache = {};
+  function loadFit(id, pose) {
+    const k = id || 'own';
+    if (figCache[k] === undefined) figCache[k] = fetch(figUrl(id)).then(r => (r.ok ? r.json() : {})).catch(() => ({})).then(j => (figCache[k] = j));
+    const c = figCache[k];
+    if (c && !c.then) { const f = c[pose]; return Promise.resolve(f ? { ar: f.ar, ht: f.ht, hx: f.hx } : null); }
+    return c.then(j => { const f = j[pose]; return f ? { ar: f.ar, ht: f.ht, hx: f.hx } : null; });
+  }
+  // Knees-up in a 3:4 shot: the figure 155% of the shot's height, its head 9% from the top and centred.
+  const SOLO_H = 1.55;
+  function figStyle(fit) {
+    if (!fit) return 'height:155%;left:50%;top:4%;translate:-50% 0';
+    const w = SOLO_H * (4 / 3) * fit.ar; // the figure's width in shot widths
+    return `height:${SOLO_H * 100}%;left:${((0.5 - fit.hx * w) * 100).toFixed(2)}%;top:${((0.09 - fit.ht * SOLO_H) * 100).toFixed(2)}%`;
+  }
+  function soloShot(rec, cls = '') {
+    const bg = rec.bg && rec.bg !== 'pink' ? `<i class="bs-bg photo" style="background-image:url('${G.base}assets/femc/bg/${esc(rec.bg)}.webp')"></i>` : '<i class="bs-bg"></i>';
+    return `<div class="bs-shot solo${cls}">${bg}<img class="bs-solo-fig" src="${esc(lookSrc(rec.look, rec.pose))}" alt="" draggable="false" style="${figStyle(rec.fit)}">${frameHtml(rec.frame)}</div>`;
+  }
+  // The solo picture as a card on paper, stamps on top (the stamp step, the print, the Album).
+  function soloHtml(rec, live = false, cls = '') {
+    return `<div class="bs-solo${cls}" data-frame="${rec.frame}">${soloShot(rec)}<div class="bs-stamps">${(rec.stamps || []).map((s, i) => stampHtml(s.id, i, s.x, s.y, live)).join('')}</div></div>`;
+  }
+  const SOLO_LINES = [
+    'The booth was built for two. She took it over anyway, and the countdown was much less stressful without anyone stealing the frame.',
+    'One pose, one flash, and a picture she kept looking at all the way home.',
+    'The booth’s cheerful voice told her to smile. For once she didn’t mind being told.'
+  ];
+
   // ── Drawing (shared by the booth and the Album) ──
   function person(who, i, side) {
     const p = (POSES[who] || POSES.solar)[i] || POSES.solar[0];
@@ -116,8 +194,6 @@ window.FemcBooth = (() => {
   let cur = null;
   function open(o) {
     close(true);
-    const list = partners();
-    if (!list.length) return null;
     const me = cur = { o, step: 'who', rec: { who: null, frame: 1, shots: [], stamps: [] }, pose: [0, 0], sel: -1, printed: false, log: [] };
     const el = document.createElement('div');
     el.className = 'g-overlay g-booth-ov';
@@ -153,7 +229,9 @@ window.FemcBooth = (() => {
   }
   function back() {
     const me = cur; if (!me) return;
-    if (me.step === 'frame') me.step = 'who';
+    if (me.step === 'frame') { me.step = 'who'; me.solo = null; }
+    else if (me.step === 'solo') me.step = 'frame';
+    else if (me.step === 'stamps' && me.solo) { me.step = 'solo'; me.rec.stamps = []; }
     else if (me.step === 'shots') { if (me.rec.shots.length) me.rec.shots.pop(); else me.step = 'frame'; }
     else if (me.step === 'stamps') { me.step = 'shots'; me.rec.shots.pop(); me.rec.stamps = []; }
     G.sfx('femc-back'); paint();
@@ -164,12 +242,12 @@ window.FemcBooth = (() => {
     const r = me.rec, b = me.body;
     let h = '';
     if (me.step === 'who') {
-      h = `${head('1 / 4', 'Who’s squeezing in?', '¥400 for a strip of three. It goes into her Album.')}
-        <div class="bs-who">${partners().map(id => `<button type="button" class="bs-pick" data-who="${id}"><img src="${esc(G.portrait(id, 'happy') || '')}" alt="" draggable="false"><b>${esc(nm(id))}</b></button>`).join('')}</div>
+      h = `${head('1 / 4', 'Who’s squeezing in?', '¥400 for a strip of three with someone, or a solo shoot in any outfit she owns. It goes into her Album.')}
+        <div class="bs-who"><button type="button" class="bs-pick solo" data-solo><img src="${esc(lookSrc(null, 'peace'))}" alt="" draggable="false"><b>Solo shoot</b></button>${partners().map(id => `<button type="button" class="bs-pick" data-who="${id}"><img src="${esc(G.portrait(id, 'happy') || '')}" alt="" draggable="false"><b>${esc(nm(id))}</b></button>`).join('')}</div>
         <div class="g-row bs-nav"><button type="button" class="g-btn small" data-bs="close">Leave</button></div>`;
     } else if (me.step === 'frame') {
-      h = `<div class="bs-cols"><div class="bs-stage">${shotHtml(r.who, r.frame, [0, 0], ' big')}</div><div class="bs-side">
-        ${head('2 / 4', 'Pick a frame', `With ${nm(r.who)}.`)}
+      h = `<div class="bs-cols"><div class="bs-stage">${me.solo ? soloShot(Object.assign({}, me.solo, { frame: r.frame }), ' big') : shotHtml(r.who, r.frame, [0, 0], ' big')}</div><div class="bs-side">
+        ${head('2 / 4', 'Pick a frame', me.solo ? 'A solo shoot.' : `With ${nm(r.who)}.`)}
         <div class="bs-frames">${FRAMES.map(([n, label]) => `<button type="button" class="bs-fr${n === r.frame ? ' on' : ''}" data-fr="${n}" aria-pressed="${n === r.frame}" aria-label="${esc(label)} frame"><span class="bs-fr-pic">${frameHtml(n)}</span><small>${esc(label)}</small></button>`).join('')}</div>
         <div class="g-row bs-nav"><button type="button" class="g-btn pink" data-bs="frame-ok">Use this frame</button><button type="button" class="g-btn small" data-bs="back">Back</button></div></div></div>`;
     } else if (me.step === 'shots') {
@@ -181,6 +259,20 @@ window.FemcBooth = (() => {
         <h3 class="bs-h3">${esc(nm(r.who))}</h3><div class="bs-poses" role="group" aria-label="${esc(nm(r.who))}'s pose">${pp.map((p, i) => `<button type="button" class="bs-pose${i === q ? ' on' : ''}" data-pq="${i}" aria-pressed="${i === q}"><svg viewBox="0 0 24 24" aria-hidden="true">${BADGE[p[2]]}</svg><span>${esc(p[0])}</span></button>`).join('')}</div>
         <p class="g-hint bs-tip">A half-heart on either side brings the other half.</p>
         <div class="g-row bs-nav"><button type="button" class="g-btn pink" data-bs="snap">Snap! (${n} / 3)</button><button type="button" class="g-btn small" data-bs="back">Back</button></div></div></div>`;
+    } else if (me.step === 'solo') {
+      const q = me.solo, L = looks(), cl = L.find(l => l.id === q.look) || L[0];
+      h = `<div class="bs-cols"><div class="bs-stage">${soloShot(Object.assign({}, q, { frame: r.frame }), ' big live')}<i class="bs-flash" aria-hidden="true"></i><b class="bs-count" aria-hidden="true"></b></div><div class="bs-side">
+        ${head('3 / 4', 'Strike a pose', 'Pick an outfit, a pose and a backdrop.')}
+        <h3 class="bs-h3">Outfit</h3><div class="bs-chips" role="group" aria-label="Outfit">${L.map(l => `<button type="button" class="bs-chip${l.id === q.look ? ' on' : ''}" data-sl="${l.id || ''}" aria-pressed="${l.id === q.look}">${esc(l.name)}</button>`).join('')}</div>
+        <h3 class="bs-h3">Pose</h3><div class="bs-poses solo" role="group" aria-label="Pose">${cl.poses.map(k => `<button type="button" class="bs-pose${k === q.pose ? ' on' : ''}" data-sp="${k}" aria-pressed="${k === q.pose}"><span>${esc(POSE_NAMES[k] || k)}</span></button>`).join('')}</div>
+        <h3 class="bs-h3">Backdrop</h3><div class="bs-chips bg" role="group" aria-label="Backdrop">${backdrops().map(b => `<button type="button" class="bs-chip bgc${b.id === q.bg ? ' on' : ''}" data-sb="${esc(b.id)}" aria-pressed="${b.id === q.bg}" title="${esc(b.name)}">${b.id === 'pink' ? '<i class="sw pink"></i>' : `<i class="sw" style="background-image:url('${G.base}assets/femc/bg/${esc(b.id)}.webp')"></i>`}<span>${esc(b.name)}</span></button>`).join('')}</div>
+        <div class="g-row bs-nav"><button type="button" class="g-btn pink" data-bs="snap">Snap!</button><button type="button" class="g-btn small" data-bs="back">Back</button></div></div></div>`;
+    } else if (me.solo) {
+      const left = 3 - r.stamps.length;
+      h = `<div class="bs-cols st"><div class="bs-stage strip">${soloHtml(Object.assign({}, me.solo, { frame: r.frame, stamps: r.stamps }), true)}</div><div class="bs-side">
+        ${head('4 / 4', 'Decorate the picture', left ? `Up to ${left} more stamp${left === 1 ? '' : 's'}. Drag one to move it; Delete takes it off.` : 'Three stamps on. Drag to move; Delete takes one off.')}
+        <div class="bs-stampset">${STAMPS.map((label, i) => `<button type="button" class="bs-stamp" data-sa="${i + 1}"${left ? '' : ' disabled'} aria-label="Add ${esc(label)}"><span>${artStamp(i + 1) ? `<img src="${DIR}stamp-${i + 1}.webp?v=${V}" alt="" draggable="false">` : `<svg viewBox="0 0 24 24" aria-hidden="true">${STAMP_SVG[i]}</svg>`}</span></button>`).join('')}</div>
+        <div class="g-row bs-nav"><button type="button" class="g-btn pink" data-bs="print">Print · ¥400</button><button type="button" class="g-btn small" data-bs="back">Back</button></div></div></div>`;
     } else {
       const left = 3 - r.stamps.length;
       h = `<div class="bs-cols st"><div class="bs-stage strip">${stripHtml(r, true)}</div><div class="bs-side">
@@ -190,13 +282,27 @@ window.FemcBooth = (() => {
     }
     b.innerHTML = h;
     b.dataset.step = me.step;
+    b.dataset.mode = me.solo ? 'solo' : 'strip';
     wire();
+    if (me.solo) { const q = me.solo, want = `${q.look}|${q.pose}`; loadFit(q.look, q.pose).then(fit => { if (cur !== me || `${q.look}|${q.pose}` !== want) return; q.fit = fit; b.querySelectorAll('.bs-solo-fig').forEach(img => { img.style.cssText = figStyle(fit); }); }); }
     const f = b.querySelector('.bs-pick, .bs-fr.on, [data-bs=snap], [data-bs=print]');
     if (f) setTimeout(() => { if (cur === me && f.isConnected) f.focus({ preventScroll: true }); }, 30);
   }
   function wire() {
     const me = cur, r = me.rec, b = me.body;
-    b.querySelectorAll('[data-who]').forEach(x => x.addEventListener('click', () => { r.who = x.dataset.who; me.step = 'frame'; G.sfx('femc-click'); paint(); }));
+    b.querySelectorAll('[data-who]').forEach(x => x.addEventListener('click', () => { r.who = x.dataset.who; me.solo = null; me.step = 'frame'; G.sfx('femc-click'); paint(); }));
+    b.querySelectorAll('[data-solo]').forEach(x => x.addEventListener('click', () => {
+      const L = looks(), C = window.FemcCosmetics, worn = C && C.onIn && C.onIn('skin:solar'), l = L.find(k => worn && k.id === worn.id) || L[0];
+      r.who = null; me.solo = { look: l.id, pose: l.poses.includes('peace') ? 'peace' : l.poses[0], bg: 'pink', fit: null };
+      me.step = 'frame'; G.sfx('femc-click'); paint();
+    }));
+    const soloPick = (fn, sel) => { fn(); G.sfx('femc-hover'); paint(); b.querySelector(sel)?.focus({ preventScroll: true }); };
+    b.querySelectorAll('[data-sl]').forEach(x => x.addEventListener('click', () => soloPick(() => {
+      const l = looks().find(k => (k.id || '') === x.dataset.sl); if (!l) return;
+      me.solo.look = l.id; if (!l.poses.includes(me.solo.pose)) me.solo.pose = l.poses[0]; me.solo.fit = null;
+    }, `[data-sl="${x.dataset.sl}"]`)));
+    b.querySelectorAll('[data-sp]').forEach(x => x.addEventListener('click', () => soloPick(() => { me.solo.pose = x.dataset.sp; me.solo.fit = null; }, `[data-sp="${x.dataset.sp}"]`)));
+    b.querySelectorAll('[data-sb]').forEach(x => x.addEventListener('click', () => soloPick(() => { me.solo.bg = x.dataset.sb; }, `[data-sb="${x.dataset.sb}"]`)));
     b.querySelectorAll('[data-fr]').forEach(x => x.addEventListener('click', () => { r.frame = +x.dataset.fr; G.sfx('femc-hover'); paint(); b.querySelector(`[data-fr="${r.frame}"]`)?.focus({ preventScroll: true }); }));
     const pose = (k, i) => {
       me.pose[k] = i;
@@ -215,14 +321,14 @@ window.FemcBooth = (() => {
     b.querySelectorAll('[data-bs]').forEach(x => x.addEventListener('click', () => {
       const a = x.dataset.bs;
       if (a === 'close') close(); else if (a === 'back') back();
-      else if (a === 'frame-ok') { me.step = 'shots'; me.pose = [0, 0]; G.sfx('femc-click'); paint(); }
+      else if (a === 'frame-ok') { me.step = me.solo ? 'solo' : 'shots'; me.pose = [0, 0]; G.sfx('femc-click'); paint(); }
       else if (a === 'snap') snap(); else if (a === 'print') print();
     }));
   }
   // Drag a placed stamp around the strip (mouse, pen or touch).
   function drag(btn) {
     btn.addEventListener('pointerdown', e => {
-      const me = cur, strip = btn.closest('.bs-strip'), s = me.rec.stamps[+btn.dataset.st]; if (!s || !strip) return;
+      const me = cur, strip = btn.closest('.bs-strip, .bs-solo'), s = me.rec.stamps[+btn.dataset.st]; if (!s || !strip) return;
       e.preventDefault(); btn.setPointerCapture(e.pointerId); btn.focus({ preventScroll: true }); btn.classList.add('drag');
       const move = ev => { const R = strip.getBoundingClientRect(); s.x = clamp((ev.clientX - R.left) / R.width * 100); s.y = clamp((ev.clientY - R.top) / R.height * 100); btn.style.left = s.x + '%'; btn.style.top = s.y + '%'; };
       const up = () => { btn.classList.remove('drag'); btn.removeEventListener('pointermove', move); btn.removeEventListener('pointerup', up); btn.removeEventListener('pointercancel', up); };
@@ -243,8 +349,9 @@ window.FemcBooth = (() => {
       cnt.textContent = ''; fl.classList.add('go'); G.sfx('femc-click');
       setTimeout(() => {
         if (cur !== me) return;
-        me.busy = false; me.rec.shots.push(me.pose.slice()); me.log.push('shot');
-        if (me.rec.shots.length >= 3) me.step = 'stamps'; else me.pose = [0, 0];
+        me.busy = false; me.log.push('shot');
+        if (me.solo) me.step = 'stamps';
+        else { me.rec.shots.push(me.pose.slice()); if (me.rec.shots.length >= 3) me.step = 'stamps'; else me.pose = [0, 0]; }
         paint();
       }, quick ? 120 : 380);
     };
@@ -256,6 +363,7 @@ window.FemcBooth = (() => {
     if (!G.activityOk(me.o.act, me.o.slot).ok) { close(); return; }
     // Pays, spends the slot and counts the visit (core.js doActivity; the activity has no stats of its own).
     const res = G.doActivity(me.o.act);
+    if (me.solo) return printSolo(me, res);
     const rec = { date: G.dayInfo().md, day: s.day, run: s.runId || null, who: r.who, frame: r.frame, shots: r.shots.map(x => x.slice()), stamps: r.stamps.map(x => ({ id: x.id, x: x.x, y: x.y })) };
     const al = s.album ||= { v: 1 }, list = al.booth ||= [];
     const month = d => G.dateOf(d).getMonth();
@@ -277,20 +385,41 @@ window.FemcBooth = (() => {
     setTimeout(() => me.body.querySelector('[data-bs=go]')?.focus({ preventScroll: true }), 30);
   }
 
+  function printSolo(me, res) {
+    const s = S(), q = me.solo, r = me.rec;
+    const rec = { kind: 'solo', date: G.dayInfo().md, day: s.day, run: s.runId || null, look: q.look, pose: q.pose, bg: q.bg, fit: q.fit ? Object.assign({}, q.fit) : null, frame: r.frame, stamps: r.stamps.map(x => ({ id: x.id, x: x.x, y: x.y })) };
+    const al = s.album ||= { v: 1 }, list = al.booth ||= [];
+    list.push(rec); G.save();
+    me.printed = true;
+    const text = SOLO_LINES[Math.floor(Math.random() * SOLO_LINES.length)];
+    me.result = { rec, first: false, pt: 0 };
+    me.body.innerHTML = `<div class="bs-cols st done"><div class="bs-stage strip">${soloHtml(rec, false, ' print')}</div><div class="bs-side">
+      ${head('Printed', 'Into the Album', `${dateText(rec)} · ${lookName(rec.look)}`)}
+      <div class="g-row bs-nav"><button type="button" class="g-btn pink" data-bs="go">Continue</button></div></div></div>`;
+    me.body.dataset.step = 'printed';
+    G.sfx('femc-click');
+    const go = me.go = () => { if (cur !== me) return; cur = null; window.removeEventListener('keydown', me.key, true); me.el.classList.add('out'); setTimeout(() => me.el.remove(), 220); me.o.onDone && me.o.onDone({ text, place: res && res.place, rec }); };
+    me.body.querySelector('[data-bs=go]').addEventListener('click', go);
+    setTimeout(() => me.body.querySelector('[data-bs=go]')?.focus({ preventScroll: true }), 30);
+  }
+
   // ── The Album's row and its viewer (menu.js) ──
   const strips = () => { const s = S(); return ((s.album && s.album.booth) || (s.year1 && s.year1.album && s.year1.album.booth) || []); };
   function albumSection(esc2 = esc) {
     const list = strips();
     if (!list.length) return '';
-    return `<section class="g-al-sec bs-al"><h3>Photo Booth <small>${list.length}</small></h3><div class="bs-al-grid">${list.map((r, i) => `<button type="button" class="bs-al-tile" data-bs-al="${i}" aria-label="${esc2(`Photo strip with ${nm(r.who)}, ${dateText(r)}`)}">${stripHtml(r, false, ' mini')}<span class="g-al-cap">${esc2(nm(r.who))}</span></button>`).join('')}</div></section>`;
+    return `<section class="g-al-sec bs-al"><h3>Photo Booth <small>${list.length}</small></h3><div class="bs-al-grid">${list.map((r, i) => r.kind === 'solo'
+      ? `<button type="button" class="bs-al-tile solo" data-bs-al="${i}" aria-label="${esc2(`Solo shoot, ${lookName(r.look)}, ${dateText(r)}`)}">${soloHtml(r, false, ' mini')}<span class="g-al-cap">Solo</span></button>`
+      : `<button type="button" class="bs-al-tile" data-bs-al="${i}" aria-label="${esc2(`Photo strip with ${nm(r.who)}, ${dateText(r)}`)}">${stripHtml(r, false, ' mini')}<span class="g-al-cap">${esc2(nm(r.who))}</span></button>`).join('')}</div></section>`;
   }
   function view(i, from) {
     const list = strips(), r = list[i]; if (!r) return null;
     const el = document.createElement('div');
     el.className = 'g-overlay g-booth-ov view';
-    el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', `Photo strip with ${nm(r.who)}`);
-    el.innerHTML = `<div class="g-panel g-booth"><div class="bs-body" data-step="view"><div class="bs-cols st"><div class="bs-stage strip">${stripHtml(r, false, ' print')}</div><div class="bs-side">
-      <p class="g-kicker">Album · Photo Booth · ${i + 1} / ${list.length}</p><h2>${esc(nm(r.who))}</h2><p class="g-note">${esc(dateText(r))}</p>
+    const solo = r.kind === 'solo';
+    el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', solo ? `Solo shoot, ${lookName(r.look)}` : `Photo strip with ${nm(r.who)}`);
+    el.innerHTML = `<div class="g-panel g-booth"><div class="bs-body" data-step="view"><div class="bs-cols st"><div class="bs-stage strip">${solo ? soloHtml(r, false, ' print') : stripHtml(r, false, ' print')}</div><div class="bs-side">
+      <p class="g-kicker">Album · Photo Booth · ${i + 1} / ${list.length}</p><h2>${esc(solo ? 'Solo shoot' : nm(r.who))}</h2><p class="g-note">${esc(dateText(r))}${solo ? ` · ${esc(lookName(r.look))}` : ''}</p>
       <div class="g-row bs-nav"><button type="button" class="g-btn small" data-close>Close</button></div></div></div></div></div>`;
     document.body.appendChild(el);
     const done = () => { document.removeEventListener('keydown', key, true); el.classList.add('out'); setTimeout(() => el.remove(), 220); if (from && from.isConnected) from.focus({ preventScroll: true }); };
@@ -302,6 +431,6 @@ window.FemcBooth = (() => {
   }
   function wireAlbum(root) { root.querySelectorAll('[data-bs-al]').forEach(b => b.addEventListener('click', () => { G.sfx('femc-click'); view(+b.dataset.bsAl, b); })); }
 
-  const state = () => (cur ? { step: cur.step, who: cur.rec.who, frame: cur.rec.frame, shots: cur.rec.shots.map(x => x.slice()), pose: cur.pose.slice(), stamps: cur.rec.stamps.map(x => Object.assign({}, x)), printed: cur.printed, result: cur.result || null } : null);
-  return { open, close, state, partners, stripHtml, albumSection, wireAlbum, view, strips, POSES, FRAMES, STAMPS, PARTNERS };
+  const state = () => (cur ? { step: cur.step, solo: cur.solo ? Object.assign({}, cur.solo) : null, who: cur.rec.who, frame: cur.rec.frame, shots: cur.rec.shots.map(x => x.slice()), pose: cur.pose.slice(), stamps: cur.rec.stamps.map(x => Object.assign({}, x)), printed: cur.printed, result: cur.result || null } : null);
+  return { open, close, state, partners, looks, backdrops, soloHtml, stripHtml, albumSection, wireAlbum, view, strips, POSES, FRAMES, STAMPS, PARTNERS };
 })();

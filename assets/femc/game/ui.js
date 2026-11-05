@@ -1489,7 +1489,7 @@
     // The photo booth (booth.js): its own panel; Print pays and spends the slot, then its line plays here. Leaving costs nothing.
     if (x.booth && window.FemcBooth) {
       const bo = window.FemcBooth.open({ act: x, slot, onCancel: () => areaView(slot, a),
-        onDone: r => SC.play({ scene: [{ n: r.text }], place: r.place, time: slot === 'evening' ? 'Evening' : G.slotName(slot), label: `${x.name} · ${G.name(r.rec.who)}`, onDone: () => advance() }) });
+        onDone: r => SC.play({ scene: [{ n: r.text }], place: r.place, time: slot === 'evening' ? 'Evening' : G.slotName(slot), label: `${x.name} · ${r.rec.kind === 'solo' ? 'Solo shoot' : G.name(r.rec.who)}`, onDone: () => advance() }) });
       if (bo) return;
     }
     const r = G.doActivity(x);

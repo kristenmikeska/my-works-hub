@@ -116,3 +116,30 @@ span.bs-st { pointer-events: none; cursor: default; }
 }
 @media (prefers-reduced-motion: reduce) { .bs-count.go, .bs-strip.print, .bs-flash.go { animation-duration: .01s; } }
 .g-booth-ov.view .g-panel.g-booth { width: min(600px, 100%); }
+
+/* Solo shoot (Nov 4 2026): one 3:4 picture of Solar, an outfit's HD pose knees-up over a backdrop, the frame on top. */
+.bs-pick.solo img { object-fit: cover; object-position: 50% 4%; background: linear-gradient(#ff8cc0, #ff4f9e); }
+.bs-pick.solo { border-color: #ff4f9e; }
+.bs-bg.photo { background-size: cover; background-position: center; }
+.bs-bg.photo::after { background: linear-gradient(180deg, rgba(20, 7, 15, 0) 55%, rgba(20, 7, 15, .35)); }
+.bs-solo-fig { position: absolute; width: auto; max-width: none; filter: drop-shadow(0 6px 10px rgba(20, 7, 15, .45)); }
+.bs-solo { position: relative; width: var(--sw, min(300px, 44vh)); padding: 4.5%; background: #fff4f9; box-shadow: 6px 6px 0 rgba(255, 79, 158, .5); }
+.bs-solo .bs-shot { width: 100%; }
+.bs-stage.strip .bs-solo { --sw: min(300px, 44vh); }
+.bs-solo.print { animation: bs-print .6s cubic-bezier(.2, .8, .2, 1) both; }
+.reduced .bs-solo.print { animation: none; }
+.bs-chips { display: flex; gap: 6px; overflow-x: auto; padding: 2px 2px 6px; scrollbar-width: thin; scrollbar-color: #ff4f9e transparent; }
+.bs-chip { flex: none; display: flex; align-items: center; gap: 6px; padding: 6px 10px; border: 1.5px solid rgba(255, 140, 192, .3); background: #1a0a13; color: #fff; font: 700 13px/1.1 var(--body, inherit); white-space: nowrap; cursor: pointer; }
+.bs-chip.on { border-color: #ff4f9e; background: #ff4f9e; color: #14070f; }
+.bs-chip:is(:hover, :focus-visible) { outline: none; border-color: #fff; }
+.bs-chip .sw { width: 34px; height: 22px; background: center / cover no-repeat; flex: none; }
+.bs-chip .sw.pink { background: radial-gradient(120% 80% at 50% 18%, #ffe3ee 0, #ffb3d4 46%, #ff8cc0 100%); }
+.bs-poses.solo { grid-template-columns: repeat(4, minmax(0, 1fr)); max-height: 170px; overflow-y: auto; }
+.bs-poses.solo .bs-pose { min-height: 34px; justify-content: center; text-align: center; }
+.bs-al-tile.solo .bs-solo { --sw: 120px; box-shadow: 4px 4px 0 rgba(255, 79, 158, .45); transition: transform .14s; }
+.bs-al-tile.solo:is(:hover, :focus-visible) .bs-solo { transform: translate(-2px, -2px) rotate(-1.5deg); box-shadow: 6px 6px 0 var(--pink); }
+.g-booth-ov.view .bs-stage.strip .bs-solo { --sw: min(300px, 44vh); }
+@media (max-width: 760px) {
+  .bs-stage.strip .bs-solo, .g-booth-ov.view .bs-stage.strip .bs-solo { --sw: min(220px, 30vh); }
+  .bs-poses.solo { grid-template-columns: repeat(3, minmax(0, 1fr)); max-height: 120px; }
+}
