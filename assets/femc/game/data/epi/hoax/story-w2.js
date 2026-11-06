@@ -1,4 +1,4 @@
-/* The HOAX epilogue, week 2 (12/29-1/3) plus eight routines across the act. Batch 5, Writer B (2026-10-28).
+/* The HOAX epilogue, week 2 (12/29-1/3) plus nine routines across the act. Batch 5, Writer B (2026-10-28).
    Merges into FEMC_EPI_WORLDS.hoax (events, routines); never overwrites.
 
    Events
@@ -15,6 +15,7 @@
      epi-h-study-council  1/3        evening, consumes   route council: study + the first war council at Yeobo's; the ledger
    Routines (once each)
      epi-h-rt-nana            early  12/22-12/27  Nana's morning; she almost calls him by another dog's name (ifYear xmas)
+     epi-h-rt-nana-snow       evening 1/4-1/10    Nana at the window on the first snow day back; out in it, or the heated floor (Kat, Nov 5)
      epi-h-rt-doomscroll      late   12/22-12/28  the forum's theories (rehab, eloping, "a different dimension lol")
      epi-h-rt-mom-breakfast   early  12/26-12/30  Mom's breakfast interrogation about the temple (strain)
      epi-h-rt-calculus        after  1/3-1/7      calculus alone; the pencil case that isn't there
@@ -855,7 +856,7 @@
   (R.routines ||= []).push(
 
     { id: 'epi-h-rt-nana', slot: 'early', after: '12/22', until: '12/27', events: ['epi-h-home'], place: 'Hanlim · Home · Her Room', time: 'Morning', scene: [
-      { n: "Nana woke her at six the way he always had, by lying on her. All of her. All of him, a hundred pounds of white fluff and silly legs arranged across her body like a fallen cloud, his nose an inch from her ear, breathing hot dog breath into it with total devotion." },
+      { n: "Nana woke her at six the way he always had, by lying on her. All of her. All of him, sixty pounds of white Samoyed fluff and silly legs arranged across her body like a fallen cloud, his nose an inch from her ear, breathing hot dog breath into it with total devotion." },
       { n: "For a year she'd woken up to a different dog. A smaller, sharper, white one with a red collar who sat by the bed in perfect silence until she opened her eyes, then went to the door, and waited." },
       { s: 'solar', f: 'happy', t: "Koro— ...Nana. Nana. Good morning. Get off me, you giant." },
       { n: "Nana didn't know who Koro was. Nana didn't care. Nana licked the side of her face in a long, slow, offended stripe." },
@@ -872,6 +873,23 @@
         ] },
         { t: "(Five more minutes.)", then: [
           { n: "She put her arm around him and pulled him in and he let her, heavy and warm and absolutely sure of everything, and she slept for five more minutes, and then forty more, and nobody came to the door to wait for her." }
+        ] }
+      ] }
+    ] },
+
+    // Kat, Nov 5 2026: more Nana. The first snow day back at school (1/4 is heavy snow in calendar.js).
+    { id: 'epi-h-rt-nana-snow', slot: 'evening', after: '1/4', until: '1/10', events: ['epi-h-new-year'], place: 'Hanlim · Home', time: 'Evening', scene: [
+      { n: "She came home in the dark with snow up to her ankles and her bag soaked through, and Nana was in the front window, standing on the back of the sofa where he was absolutely not allowed, a white shape against the glass with his whole body wagging, the way he'd been there every single evening she'd come home since she'd come home." },
+      { n: "He hit her at the door like a snowdrift with opinions. Sixty pounds of Samoyed, paws on her shoulders, smiling straight into her face, and she staggered back into the shoe rack and let him, because for a year nobody had been waiting at a window for her, and she was not going to start telling him to get down now." },
+      { s: 'solar', f: 'happy', t: "Hi. Hi. I know. I was gone *nine hours*, I know, it's a tragedy." },
+      { n: "Her mom called from the kitchen that he'd been at that window since four. Nana went to the door, sat, and looked at the snow, and then at her, and then at the snow." },
+      { choose: [
+        { t: "(Take him out in it.)", stat: { kindness: 1 }, then: [
+          { n: "She didn't even change out of her uniform. Coat back on, his leash, the street under the lamps gone soft and blue and silent, and Nana threw himself face first into the deepest bank on the block and came up white on white, snow on his nose, snow in his eyelashes, grinning like he'd invented weather." },
+          { n: "She lay down in it next to him, because why not, and made half a snow angel before he lay down on top of her and ruined it. Above the lamps the snow was coming down, ordinary and slow, the way snow was supposed to, and for a while she just watched it do that." }
+        ] },
+        { t: "(Towel him off and share the heated floor.)", then: [
+          { n: "She got the old striped towel and he let her dry him the way he let her do everything, patiently, like a prince allowing a peasant to serve him, and then he lay down on the heated floor with a groan of total satisfaction and she lay down beside him with her calculus and got through four problems with her head on his side, rising and falling, warm, and didn't think about anything at all." }
         ] }
       ] }
     ] },

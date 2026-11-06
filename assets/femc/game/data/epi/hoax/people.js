@@ -31,7 +31,7 @@
      epi-h-cherry-swore (cherry-4, she promises to text first and doesn't) and epi-h-cherry-leash (cherry-4 played: Nana's spare
      leash in her right pocket), epi-h-roof-vote (council-3).
    Depth-pass inventions: the rink lets them stay after closing; Jihoon's karaoke score is 98 (room six, the 12/23 room); Cherry
-     takes Nana's spare leash as 'collateral'; Heeseung's key ring also opens the roof; the roof vote is 8-0.
+     takes Nana (and his spare leash) as 'collateral'; Heeseung's key ring also opens the roof; the roof vote is 8-0.
    Flags read: epi-h-notes (jungwon-3, cherry-3, the 1/1 text), epi-h-party, epi-h-jihoon-chose (jihoon-2), epi-h-cherry-promise,
      epi-route-jungwon / -jihoon / -council (text flags), epi-h-jw-gate, epi-h-jihoon-speaks, epi-h-gym-done (1/10 texts).
      Events read (gates): epi-h-home, -part-four, -emergency, -karaoke, -eve, -christmas, -seance, -party, -motion, -makeup,
@@ -728,23 +728,23 @@
       { s: 'cherry', f: 'neutral', t: "...Ugly bitch. I love you. Turn your head." }
     ] },
     // Epilogue depth pass (2026-10-31): any route; the evening after the hearing, the swings.
-    { id: 'epi-h-cherry-4', title: 'swings', hint: "Cherry is at the park with Nana's spare leash, which she has apparently stolen, sitting on a swing she is much too cool for.",
+    { id: 'epi-h-cherry-4', title: 'swings', hint: "Cherry is at the park with Nana, whom she has apparently stolen, sitting on a swing she is much too cool for.",
       after: '1/11', until: '1/12', slots: ['evening'], events: ['epi-h-hearing'], noFlags: [], route: null, noRoute: null,
       place: 'Hanlim · The Park', time: 'Evening', scene: [
       { music: 'epi-h-evening' },
-      { n: "The park was empty in the particular way parks were empty in January after dark, the paths salted and grey, the benches white, the lamps making small warm rooms in the snow that nobody was sitting in, and Cherry was on the swings, in her boots and the cherry-red mohair sweater under her coat, pushing herself back and forth with one heel, very slowly, with Nana's spare leash wound round her wrist like a bracelet." },
-      { s: 'solar', f: 'surprised', t: "Is that Nana's leash?" },
-      { s: 'cherry', f: 'neutral', t: "It was by your door. I took it. It's collateral." },
+      { n: "The park was empty in the particular way parks were empty in January after dark, the paths salted and grey, the benches white, the lamps making small warm rooms in the snow that nobody was sitting in, and Cherry was on the swings, in her boots and the cherry-red mohair sweater under her coat, pushing herself back and forth with one heel, very slowly, with Nana's spare leash wound round her wrist like a bracelet and, on the other end of it, Nana himself, sitting in the snow at her feet with the big black-lipped Samoyed smile of a dog who had been kidnapped and was having the time of his life." },
+      { s: 'solar', f: 'surprised', t: "Is that my dog?" },
+      { s: 'cherry', f: 'neutral', t: "He was by your door. I took him. He's collateral." },
       { s: 'solar', f: 'happy', t: "For what?" },
       { s: 'cherry', f: 'serious', t: "Sit down." },
-      { n: "She sat down on the next swing. The chains were so cold they burned through her gloves. Above the lamps the snow was going up, the way it had been going up all day, and Cherry was very carefully not looking at it, in the exact way she'd very carefully not looked at the bleachers through Solar's chest at the hearing, before she'd come through the crowd like a bulldozer." },
+      { n: "She sat down on the next swing. The chains were so cold they burned through her gloves. Nana got up, shook the snow off his whole body from the nose backwards, and came and put his head in her lap, heavy and warm, which was his way of saying he'd been abducted but had no complaints. Above the lamps the snow was going up, the way it had been going up all day, and Cherry was very carefully not looking at it, in the exact way she'd very carefully not looked at the bleachers through Solar's chest at the hearing, before she'd come through the crowd like a bulldozer." },
       { ifFlag: 'epi-h-cherry-promise', then: [
         { s: 'cherry', f: 'neutral', t: "I told Yang I'd keep you away from Park. You heard me. I keep my promises. I'm very honourable. Ask anyone." },
         { s: 'cherry', f: 'sad', t: "Nobody told me I'd have to keep you away from the *sky*, Sol." }
       ], else: [
         { s: 'cherry', f: 'sad', t: "I can keep you away from people. I've been doing it since we were twelve. I'm very good at it. Nobody told me I'd have to keep you away from the *sky*." }
       ] },
-      { n: "Solar didn't say anything. Cherry's heel scraped the frozen ground, back, forward, back, and her blue eyes were wet and furious in the lamplight, and she was smiling, because Cherry Kim had never once in her life cried without smiling first to make it look like a choice." },
+      { n: "Solar didn't say anything. Cherry's heel scraped the frozen ground, back, forward, back, and her blue eyes were wet and furious in the lamplight, and she was smiling, because Cherry Kim had never once in her life cried without smiling first to make it look like a choice. Nana whined at her, once, low, and she put her free hand in the thick white ruff at his neck without looking down, and held on." },
       { s: 'cherry', f: 'serious', t: "So here's the deal. If you're going somewhere. Anywhere. Back there, or up there, or wherever the hell the gym goes at night. You text me first. Even if it's stupid. Even if it's one letter. I don't care. I want it in writing." },
       { choose: [
         { t: "(Promise her.)", flag: 'epi-h-cherry-swore', then: [
@@ -753,16 +753,16 @@
           { n: "It came out easy. That was how she knew. Something thin and cold went tight at the back of her neck, a wire being pulled from very far off, and Cherry held out her pinky without looking at her, and Solar hooked it with her own, and they shook on it, on the swings, in the cold, two girls who'd made a hundred of these and broken about half." }
         ] },
         { t: "(Don't promise. Get up and push her swing.)", stat: { kindness: 1 }, then: [
-          { n: "She got up. She went round behind Cherry and put both hands flat on her back and pushed, the way she'd pushed her on these exact swings when they were nine and Cherry had been too proud to ask, and Cherry swore at her, and went up, and came back, and went up higher." },
+          { n: "She got up. She went round behind Cherry and put both hands flat on her back and pushed, the way she'd pushed her on these exact swings when they were nine and Cherry had been too proud to ask, and Cherry swore at her, and went up, and came back, and went up higher, and Nana barked at the swing every single time it left the ground, like it was taking her somewhere without asking him." },
           { s: 'cherry', f: 'serious', t: "That's not a yes. I noticed that's not a yes." },
           { s: 'solar', f: 'sad', t: "I know." },
           { n: "Cherry didn't say anything for three swings. On the fourth she let her head fall back so she was looking straight up at the lamps and the snow going the wrong way, and laughed, once, wet." },
           { s: 'cherry', f: 'happy', t: "You're such a bitch. Push harder." }
         ] }
       ] },
-      { n: "They stayed until Cherry's grandmother called, twice, which with Cherry's grandmother meant the first one had been the warning. Cherry unwound the leash from her wrist and put it in Solar's coat pocket, the right one, not the left, without asking which one was which, and zipped it." },
+      { n: "They stayed until Cherry's grandmother called, twice, which with Cherry's grandmother meant the first one had been the warning. Cherry unclipped the leash from Nana's collar, unwound it from her wrist and put it in Solar's coat pocket, the right one, not the left, without asking which one was which, and zipped it." },
       { s: 'cherry', f: 'neutral', t: "Collateral. You want it back, you come get it. From me. In person." },
-      { n: "She walked off backwards down the salted path, pointing at Solar the whole way, the way she always did, until the dark at the edge of the park took her boots and then the red sweater and then the pointing hand." },
+      { n: "She walked off backwards down the salted path, pointing at Solar the whole way, the way she always did, until the dark at the edge of the park took her boots and then the red sweater and then the pointing hand. Nana watched her go until there was nothing left to watch, then turned his smiling face up at Solar like it was her fault, and Solar walked him home with two fingers hooked through his collar, the leash wound small in her pocket." },
       { flag: 'epi-h-cherry-leash' }
     ] }
   ]);

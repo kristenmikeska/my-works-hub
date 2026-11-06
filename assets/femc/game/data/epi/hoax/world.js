@@ -76,7 +76,7 @@
         { id: 'epi-h-machine', name: 'The vending machine', place: 'Hanlim · Winter Street', bg: 'epi-h-winter-street-day', slots: ['after', 'evening'], cost: 1500, stats: { courage: 1 },
           text: "She stood in front of the row of machines outside the convenience store with a thousand-won note and a coin and pressed the button for barley tea, on principle. The third machine from the left thought about it, hummed, and dropped a can. Pink and black. Claw marks for a logo. It didn't even stock them. She put it in her other pocket and walked home with one hand on each." },
         { id: 'epi-h-nana', name: 'Walk Nana', place: 'Hanlim · The Park', bg: 'epi-h-park', slots: ['after', 'evening'], cost: 0, stats: { kindness: 1 },
-          text: "Nana walked her, mostly. Forty minutes of a very large white dog deciding which snowbanks were enemies, three strangers who stopped to tell her he looked like a cloud, and one tiny dog across the park that Nana stared at with the deep personal interest of someone who had a history. She held the leash with both hands." },
+          text: "Nana walked her, mostly. Forty minutes of a very large white Samoyed deciding which snowbanks were enemies, three strangers who stopped to tell her he looked like a cloud, and one tiny dog across the park that Nana stared at with the deep personal interest of someone who had a history. She held the leash with both hands." },
         { id: 'epi-h-arcade', name: 'The arcade', place: 'Hanlim · Arcade', bg: 'epi-h-arcade', slots: ['after', 'evening'], cost: 5000, stats: { proficiency: 1 },
           text: "Five thousand won in tokens and a rhythm game she was annoyingly good at now, for reasons she couldn't explain to anyone here. A kid behind her filmed her last song. She let him." },
         { id: 'epi-h-karaoke', name: 'Karaoke', place: 'Hanlim · Karaoke', bg: 'epi-h-noraebang', slots: ['evening'], cost: 12000, stats: { charm: 1, courage: 1 },
@@ -143,10 +143,12 @@
       morning: {
         school: ["Hanlim at eight, snow on the gate, and a whole building full of people with opinions about where the council had been.",
           "Uniform, cardigan, the VP pin, the walk past Jungwon's street with her hands in her sleeves. The school looked exactly the same, which felt like a personal insult.",
-          "The hallway smelled like floor wax and wet coats. Three first-years stopped talking when she walked past, then started again, louder."],
+          "The hallway smelled like floor wax and wet coats. Three first-years stopped talking when she walked past, then started again, louder.",
+          "Nana walked her as far as the front door and sat in it like a toll booth, smiling, until she paid him one ear scratch and a promise about later."],
         off: ["Winter break. Her mom was already up, which meant the kitchen was already a negotiation.",
           "No school. The heating ticked, the street outside was white, and her phone had forty notifications she wasn't reading yet.",
-          "Nana was on her feet. Nana weighed about as much as she did. The morning could wait until he decided it couldn't."],
+          "Nana was on her feet. Nana weighed about as much as she did. The morning could wait until he decided it couldn't.",
+          "Nana had stolen one of her socks in the night and was guarding it at the foot of the bed, smiling his Samoyed smile, very proud of the hostage situation."],
         exam: ["Make-up exams. The classroom was half empty and twice as quiet, and everyone in it had missed something for a reason they weren't saying.",
           "Exam day. Pencil, eraser, student ID, the calculus formulas written on the inside of her eyelids, she hoped."]
       },
@@ -155,8 +157,10 @@
         "Duty. The long table, the radiator, the bake-sale tin locked in the bottom drawer where Heeseung could see it. Jungwon answered six emails in the time it took her to staple one packet. She stapled it very well."],
       late: ["Her phone buzzed twice and stopped: the group chat, deciding whether it was still awake.",
         "Late. The apartment block's lights went out one window at a time, and Nana sighed at the foot of her bed like he'd had a long day too.",
-        "The heating clicked off. Somewhere down the street a car door shut, and she listened to it the way she used to listen for footsteps on a dormitory stair, and then made herself stop."],
-      stayIn: ["She stayed in. Blanket, heated floor, a drama she wasn't really watching, and a very large dog on most of the sofa."]
+        "The heating clicked off. Somewhere down the street a car door shut, and she listened to it the way she used to listen for footsteps on a dormitory stair, and then made herself stop.",
+        "Nana climbed up and arranged himself across her feet, a warm white weight, and sighed at her until she turned the light off."],
+      stayIn: ["She stayed in. Blanket, heated floor, a drama she wasn't really watching, and a very large dog on most of the sofa.",
+        "She stayed in and brushed Nana on the living-room floor until there was enough white fur on the rug to build a second, smaller Samoyed, and he fell asleep halfway through, smiling."]
     }
   });
   // The story, people and routine files push into these; never replace them here.
