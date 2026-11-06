@@ -291,6 +291,7 @@
     { n: "Riki took a slice, wrapped in a paper napkin, in his free hand, and the folded banana peel in the other, and went out of the back door and down the garden and over the wall beside the open gate, and Minseok, by the door, sighed once through his nose." },
 
     // The candles, and the app.
+    { cg: 'epi-s-twenty' },
     { n: "They sang to Pyo. All of them, badly, at different speeds, Mrs. Park tapping the time on the table and nobody following it, Auntie Song in Mandarin and louder than anyone, and Pyo sat at the head of the table with his hands in his lap and the two candles lit in front of him and his face doing the thing faces do when they have never once been sung to by a whole room, and he blew, and both candles went out, and the smoke went up in two straight lines in the steam." },
     // The committee's voice message (the Nov 6 pass: the girls in every universe).
     { n: "At eight o'clock exactly, while the smoke was still going up, Yunjin's phone buzzed on the table by the japchae, and buzzed again, and went on buzzing, and she looked at it and put both hands over her mouth and said *oh no, they actually did it,* and turned it face up, and pressed play, and held it out over the table toward Pyo at arm's length like a torch." },
@@ -332,6 +333,7 @@
     { n: "Jungwon sat back down and unbuttoned his jacket and picked up his chopsticks and went on with his noodle, the one noodle, without having bitten through it once, and Auntie Song looked at him with something like respect." },
 
     // Appa.
+    { cg: null },
     { n: "Somewhere in the middle of Yunjin trying to make Mrs. Bang sing a hymn, the seventh stair creaked." },
     { n: "The kitchen didn't go quiet, exactly. It went careful. The way it went careful for her mother, except warmer, the way a room straightens up for somebody it isn't afraid of. Pyo stood up. Minseok, who'd come back in, stood up straighter by the door. Jungwon was on his feet before anybody else, and bowed, and her father lifted a hand to him from the doorway, palm down, *sit, sit*, and he sat." },
     { n: "Her father was in his cardigan and his slippers, with his reading glasses on their cord and the crossword folded in his other hand, as if he'd come down for something else and got lost. He looked at the kitchen. All of it. The long table with the leaf in it, the pot, the cake, the cooking soju, Mr. Oh's tie, Yunjin on the floor, the boy at the head of the table in his ironed shirt with a bag of rubber boots between his feet." },

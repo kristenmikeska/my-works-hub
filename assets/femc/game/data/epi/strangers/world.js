@@ -63,33 +63,33 @@
         ['Incheon · The Yang House · Kitchen', 'epi-s-yang-kitchen', null],
         ['Incheon · The Yang House', 'epi-s-yang-house', null],
         ['Incheon · Harbor at Midnight', 'flashback-incheon-harbor', null],
-        ['Incheon · Harbor', 'harbor', 'flashback-incheon-harbor'],
+        ['Incheon · Harbor', 'epi-s-harbor-day', 'flashback-incheon-harbor'],
         ['Incheon · The Mudflats at Midnight', 'epi-s-mudflats-midnight', 'epi-s-mudflats-midnight'], // batch 78: both slots ('Midnight' reads the day slot)
         ['Incheon · The Mudflats', 'epi-s-harbor-tide', null],                         // batch 65: grey low tide by day
         ['Incheon · Fish Market at Midnight', 'flashback-fish-market', null],
         ['Incheon · Fish Market', 'flashback-fish-market', null],
-        ['Incheon · Sinpo Market', 'flashback-fish-market', null],                     // stand-in → flashback-fish-market (Nov 6 pass; daytime only; ART-ADDS-strangers-2 34G)
+        ['Incheon · Sinpo Market', 'epi-s-sinpo', null],                               // art batch 143 (34G); daytime only
         ['Incheon · Wolmido · Daeboreum', 'epi-s-daeboreum', 'epi-s-daeboreum'],     // batch 65: the festival night (epi-s-moon)
         ['Incheon · Wolmido', 'epi-s-wolmido', 'epi-s-wolmido-night'],                  // batch 78
         ['Incheon · Chinatown', 'epi-s-chinatown', 'epi-s-chinatown'],                  // batch 78: dusk art, both slots
         ['Incheon · Street in the Dust', 'epi-s-dust', null],                         // batch 65: daytime only
         ['Incheon · Songdo · Café', 'epi-s-songdo-cafe', null],
-        ['Incheon · Songdo · Dance Studio', 'epi-s-songdo-cafe', null],                // stand-in → epi-s-songdo-cafe (Nov 6 pass; daytime only; ART-ADDS-strangers-2 34F)
+        ['Incheon · Songdo · Dance Studio', 'epi-s-dance-studio', null],               // art batch 143 (34F); daytime only
         ['Incheon · Songdo', 'epi-s-songdo', 'epi-s-songdo-night'],
         ['Incheon · Karaoke', 'epi-s-noraebang', 'epi-s-noraebang'],
-        ['Incheon · Pojangmacha', 'epi-s-chinatown', null],                            // stand-in → epi-s-chinatown (no evening art until its own); the expansion pass's tent bar (ART-ADDS-strangers)
+        ['Incheon · Pojangmacha', 'epi-s-pojangmacha', 'epi-s-pojangmacha'],           // art batch 143 (34B); night art, both slots
         ['Incheon · Bathhouse', 'epi-s-bathhouse', 'epi-s-bathhouse'],
         ['Incheon · The Bridge', 'epi-s-bridge', 'epi-s-bridge'],
         ['Incheon · The Car', 'epi-s-car', 'epi-s-car-night'],                          // batch 78: a room with windows for weather
         ['Incheon', 'flashback-incheon-harbor', null]
       ],
-      weatherFx: { outdoor: ['epi-s-songdo', 'epi-s-bathhouse', 'epi-s-bridge', 'epi-s-annex', 'epi-s-harbor-tide', 'epi-s-mudflats-midnight', 'epi-s-garden', 'epi-s-gate-day', 'epi-s-wolmido', 'epi-s-chinatown', 'epi-s-daeboreum', 'epi-s-dust', 'flashback-incheon-harbor', 'harbor', 'flashback-fish-market', 'flashback-lee-house', 'port-island-seaside-park', 'port-island-pier-night', 'shopping-street', 'iwatodai-strip-night', 'moonlightbridge'],
+      weatherFx: { outdoor: ['epi-s-harbor-day', 'epi-s-pojangmacha', 'epi-s-sinpo', 'epi-s-songdo', 'epi-s-bathhouse', 'epi-s-bridge', 'epi-s-annex', 'epi-s-harbor-tide', 'epi-s-mudflats-midnight', 'epi-s-garden', 'epi-s-gate-day', 'epi-s-wolmido', 'epi-s-chinatown', 'epi-s-daeboreum', 'epi-s-dust', 'flashback-incheon-harbor', 'harbor', 'flashback-fish-market', 'flashback-lee-house', 'port-island-seaside-park', 'port-island-pier-night', 'shopping-street', 'iwatodai-strip-night', 'moonlightbridge'],
         sealed: ['epi-s-noraebang', 'paulownia-karaoke', 'iwatodai-bathhouse', 'bathhouse-night'], none: [] },
       home: { place: 'Incheon · The Lee House · Her Room', bg: 'epi-s-her-room' },
       activities: [
         { id: 'epi-s-market', name: 'The fish market', place: 'Incheon · Fish Market', bg: 'flashback-fish-market', slots: ['after'], cost: 8000, stats: { kindness: 1 },
           text: "Ice underfoot, men shouting prices over each other, the smell of salt and diesel and cold blood, and a woman behind a flounder tank who looked at her hands, looked at her face, and put an extra one in the bag without being asked. She carried it home for Mrs. Bang like a prize." },
-        { id: 'epi-s-harbor', name: 'Walk the harbor', place: 'Incheon · Harbor', bg: 'harbor', slots: ['after', 'evening'], cost: 0, stats: { courage: 1 },
+        { id: 'epi-s-harbor', name: 'Walk the harbor', place: 'Incheon · Harbor', bg: 'epi-s-harbor-day', slots: ['after', 'evening'], cost: 0, stats: { courage: 1 },
           text: "Wind off the water, gulls, and the cranes standing over everything like they'd been told to wait. She walked the long way round the quay and stayed well back from the edge, the way she always had, and counted the ships at anchor without meaning to. Eleven. She counted again. Eleven." },
         { id: 'epi-s-chinatown', name: 'Jjajangmyeon in Chinatown', place: 'Incheon · Chinatown', bg: 'epi-s-chinatown', slots: ['after', 'evening'], cost: 6000, stats: { charm: 1 },
           text: "Up the red steps, past the paper lanterns, to the place with the cracked sign where the aunties still talked about her in Mandarin as if she couldn't understand it. She answered one of them in Mandarin, very politely, and the whole table laughed so hard the owner brought her dumplings she hadn't ordered." },

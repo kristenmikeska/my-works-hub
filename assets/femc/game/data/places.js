@@ -404,7 +404,8 @@ window.FEMC_GAME_PLACES = {
     'link-haechan-r10': '46% 30%', 'link-jungwon-r10': '46% 30%', 'link-jihoon-r15': '43% 40%', 'link-hanni-r15': '46% 40%', 'link-haechan-r9': '41% 35%',
     'crush-haechan-umbrella': '15% 30%', 'crush-jungwon-blazer': '43% 25%', 'crush-jihoon-fountain': '47% 30%', 'epi-r-breakfast': '45% 40%',
     'epi-r-fort': '45% 45%', 'epi-r-mirror': '50% 35%', 'epi-r-porch': '45% 50%', 'epi-r-porchrail': '50% 40%', 'epi-r-window-seat': '48% 45%', 'epi-r-january': '45% 45%', 'epi-r-room-tone': '50% 45%', 'epi-r-half-speed': '45% 45%', 'epi-r-twelfth': '55% 40%', 'epi-r-sign': '45% 40%', 'epi-r-spices': '45% 40%', 'epi-r-childhood-room': '50% 40%', 'epi-r-bar-nine': '60% 40%', 'epi-r-tenth-name': '40% 55%', 'epi-r-hold': '45% 55%',
-    'epi-h-window': '74% 40%', 'epi-h-porch': '40% 35%', 'epi-s-seventh-stair': '85% 40%', 'epi-s-step': '45% 40%', 'epi-st-platform': '68% 35%'
+    'epi-h-window': '74% 40%', 'epi-h-porch': '40% 35%', 'epi-s-seventh-stair': '85% 40%', 'epi-s-step': '45% 40%', 'epi-st-platform': '68% 35%',
+    'epi-s-twenty': '50% 40%', 'epi-s-gatelamp': '64% 45%', 'epi-s-islands': '42% 40%', 'epi-s-nuts': '50% 35%', 'epi-s-eyebrows': '50% 45%', 'epi-s-sugar': '24% 35%', 'epi-s-engine': '78% 45%'
   },
   /* Music (assets/femc/music/<file>.mp3) by mood. Scenes pick a mood; screens use the `screens` map.
      A mood is one file (it loops) or a pool (a list): a pool rotates, never plays the same file twice in a row, and each

@@ -119,6 +119,7 @@
       { n: "She said it lightly, under the sack. Nobody else would have heard what was in it. Solar found Yunjin's hand on the straw between them in the dark and squeezed it, once, and Yunjin squeezed back, once, and that was a whole conversation, the one they'd been having since she came home, the one they'd been having since a dorm in a city by the sea that nobody else in this kiln had ever seen." },
       { n: "The ice room at nine fifteen was the opposite, a little white room at minus five with frost on the benches, and they ran into it screaming and stood in it steaming like horses and ran out again. Then the salt room, pink walls of salt bricks lit from behind. Then the hall again and more eggs and the second can of sikhye, and it was ten o'clock, and Yunjin was asleep." },
       { n: "Flat on her back on the warm floor with her lamb hat over one eye and her mouth open and both hands folded on her stomach like a saint on a tomb, out cold, the first casualty of the eve, at ten o'clock exactly, before the variety show had even finished." },
+      { cg: 'epi-s-eyebrows' },
       { n: "Eunchae reached into her bag and took out a black plastic film canister. She opened it. Inside was flour." },
       { s: 'eunchae', f: 'neutral', t: "From my mother's kitchen. I've been carrying this since Tuesday." },
       { s: 'chaewon', f: 'serious', t: "That's premeditated." },
@@ -138,6 +139,7 @@
           { bond: { girls: 1 } }
         ] }
       ] },
+      { cg: null },
       { n: "At half past ten Mr. Oh was in the car park with the engine running, because the plan said home by eleven and her mother's plan said home by half past, and her mother's plans had no margins." },
       { n: "She went to change. She came back for her bag. And at the door of the hall, as she turned to wave, Eunchae was standing just inside it with her hands behind her back and an expression of perfect innocence." },
       { s: 'eunchae', f: 'neutral', t: "Bye, Solar-ssi. Sleep well. Or don't. Ha." },

@@ -179,6 +179,7 @@
     { s: 'haechan', f: 'serious', t: "You don't need teeth. You've never needed teeth for anything in your life. You've had people." },
     { s: 'jungwon', f: 'happy', t: "I've had people. You had Dal. He cracked chestnuts in his teeth, I'm told. I'm told he broke one doing it." },
     { n: "Haechan went quiet. Not his ordinary quiet. The other one. And Jungwon looked at the walnut in his palm and didn't look at Haechan, and Solar saw, as she'd seen once or twice this winter, the dead come up between the two of them like a fish under ice, and look at her, and go down again." },
+    { cg: 'epi-s-nuts' },
     { n: "Then both of them held out half a walnut. To her. At the same time. Without looking at each other. Mrs. Gong, on her crate, put her hands in her cardigan sleeves and watched with the face of a woman at a very good drama." },
     { choose: [
       { t: "(Take Haechan's.)", stat: { courage: 1 }, then: [
@@ -200,6 +201,7 @@
     ] },
 
     // The stall radio.
+    { cg: null },
     { n: "Mrs. Gong's radio was on the shelf behind her among the scoops and the abacus, a little red one with the aerial taped, and while she was counting out change it stopped doing the traffic." },
     { n: "Two seconds. A girl's voice, bright, quick, singing, in Japanese, over a beat that belonged to a shop she'd stood in one evening in a station she'd never been to in this life. Then a crackle, and the traffic again, a jam on the Gyeongin expressway, a lorry on its side." },
     { n: "Mrs. Gong smacked the radio without looking at it and went on counting." },

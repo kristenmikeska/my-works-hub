@@ -51,6 +51,7 @@
       { s: 'solar', f: 'neutral', t: "I know what time it is." },
       { s: 'haechan', f: 'happy', t: "I know you know. I'm telling the garden. So it knows who's out of bed." },
       { n: "He shifted over on the step without looking at her, off the hollow in the middle where he always sat and onto the cold half, and she sat down in the warm place he'd left, and he stretched one leg out in front of him and frowned at it, as if he'd only moved because his knee was stiff. She let him have the knee." },
+      { cg: 'epi-s-islands' },
       { n: "Cinnamon. He was chewing slowly, and she breathed it in without meaning to, the way you breathe in a kitchen you grew up in." },
       { s: 'solar', f: 'happy', t: "Still quitting?" },
       { s: 'haechan', f: 'neutral', t: "I'm a man of tremendous discipline. I've quit four times since Seollal. Nobody's quit more than me. Ask the gum." },
@@ -58,6 +59,7 @@
       { n: "She nodded at the radio. The man had moved down the coast and was reading out somewhere else's wind now, flat and kind, a voice for people who were already out on the water and couldn't do anything about it." },
       { s: 'haechan', f: 'neutral', t: "For the islands." },
       { n: "He said it as if it were obvious. As if anybody would." },
+      { cg: null },
       { choose: [
         { t: "Which islands? Name them for me.", stat: { kindness: 1 }, flag: 'epi-s-islands', then: [
           { n: "He looked at her sideways, to see if she was making fun of him, and decided she wasn't, and sat up a little on the step and cleared his throat like a waiter at a restaurant much too good for either of them." },
@@ -170,6 +172,7 @@
       { s: 'jungwon', f: 'neutral', t: "Solar-ssi. It's very late." },
       { s: 'solar', f: 'neutral', t: "It's your night." },
       { s: 'jungwon', f: 'neutral', t: "It is. That's usually the reason for you not to be in it." },
+      { cg: 'epi-s-gatelamp' },
       { n: "She held out the cup. He looked at it, and then at her, and then he took it, with his right hand, the left one coming up flat beneath his right forearm the way you were taught as a child to receive something from your elders, a gesture so correct, so old-fashioned, at one in the morning at the top of her father's drive, that she nearly laughed and found she didn't want to." },
       { s: 'jungwon', f: 'neutral', t: "Thank you. You're very kind." },
       { n: "In the gatehouse, Minseok was asleep in his chair with the sports pages over his face. The sports pages rose and fell, rose and fell, with tremendous regularity, the breathing of a man who wanted it known that he was asleep and would be asleep for as long as it took." },
@@ -184,6 +187,7 @@
       { s: 'jungwon', f: 'neutral', t: "*Did you make this yourself?*" },
       { s: 'solar', f: 'happy', t: "*Mrs. Bang would have made it better.*" },
       { s: 'jungwon', f: 'neutral', t: "*Mrs. Bang wouldn't have brought it up the drive.*" },
+      { cg: null },
       { choose: [
         { t: "Come inside. It's warm in the kitchen. Just for ten minutes.", stat: { charm: 1 }, then: [
           { s: 'jungwon', f: 'neutral', t: "No. Thank you." },

@@ -44,6 +44,7 @@
       { s: 'mroh', f: 'neutral', t: "I sleep in the car. It's a good car. Better than the bed. The bed doesn't have a heater." },
       { n: "He lived in the room over the garage, and had since before she was born, a room she had been in exactly once, at eight, with a fever, when he'd carried her up the outside stairs because her mother was in Seoul and Mrs. Bang was at the market, and she remembered a single bed made so tight you could bounce a coin on it and a photograph of a fishing boat, and nothing else, nothing at all, as if he'd only rented the room from himself for the night." },
       { n: "She drank the coffee. It was disgusting. She drank all of it." },
+      { cg: 'epi-s-engine' },
       { s: 'solar', f: 'neutral', t: "Mrs. Bang says you did this. When I was gone. Every night." },
       { n: "His hands moved on the wheel. A centimeter. Back to ten and two." },
       { s: 'mroh', f: 'neutral', t: "Mrs. Bang talks." },
@@ -56,6 +57,7 @@
       { ifFlag: 'epi-s-oh-cranes', then: [
         { n: "She thought of the cranes, the first week, the way he'd driven the long way round the harbor without being asked, and said nothing all the way, and pointed once, at one of them, the way you'd point out an old friend in a crowd. She'd thought it was for the cranes. It hadn't been for the cranes." }
       ] },
+      { cg: null },
       { choose: [
         { t: "Drive me round the harbor. Like when I was eight.", flag: 'epi-s-oh-harbor', stat: { kindness: 1 }, then: [
           { n: "He didn't say anything. He put the car into gear. That was the answer. It had always been the answer." },
@@ -161,8 +163,10 @@
           { s: 'jungwon', f: 'neutral', t: "...Again, Jay. Please." }
         ] }
       ] },
+      { cg: 'epi-s-sugar' },
       { n: "He did four more umbrellas. He broke three. The fourth one came out whole, the hook and every curve, at twenty past two in the morning, and he held it up to the light over the stove between his finger and thumb, a little brown umbrella of burnt sugar, and looked at it with his face perfectly still, which meant, she knew now, the thing it meant." },
 
+      { cg: null },
       { ifEpiRoute: 'jungwon', then: [
         { n: "Jay took one look at the two of them, Jungwon holding up his umbrella and Solar looking at Jungwon holding up his umbrella, and turned off the gas, and took his goggles off his head, and said he was going to check on the squid, and went out through the back door to sit on the step with Minseok, and shut it behind him with real tact." },
         { n: "The kitchen was very quiet. The one light. The smell of sugar." },

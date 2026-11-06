@@ -80,7 +80,7 @@ window.FemcEpilogue = (() => {
   const S = () => G.S, UI = () => W.FemcGameUI;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const clone = o => JSON.parse(JSON.stringify(o));
-  const DATA_V = 66; // data/epi/<world>/*.js ?v=
+  const DATA_V = 67; // data/epi/<world>/*.js ?v=
   // The worlds: the year's route flag that opens each, its name (the button) and place (slot labels), its data files.
   const WORLDS = {
     runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3', 'story-home', 'story-time', 'people-time', 'story-nyc1', 'story-nyc2', 'people-nyc', 'phone', 'alerts', 'texts-up'] },
@@ -794,7 +794,7 @@ window.FemcEpilogue = (() => {
     runners: [['epi-r-regionals', 'Regionals'], ['epi-r-reel', "Minji's room"], ['epi-r-floor', 'The floor'], ['epi-r-studio', 'The studio'], ['epi-r-his-room', 'His room'], ['epi-r-breakfast', 'Breakfast'], ['epi-r-holiday', 'The holiday party'], ['epi-r-footage', 'The footage'], ['epi-r-held', 'Held'],
       // Kat's Nov 5 batch (FEMC-ART-TODO 32, 35)
       ['epi-r-fort', 'The blanket fort'], ['epi-r-mirror', 'The mirror'], ['epi-r-porchrail', 'The porch rail'], ['epi-r-window-seat', 'The window seat'], ['epi-r-room-tone', 'Room tone'], ['epi-r-half-speed', 'Half speed'], ['epi-r-january', 'See you in January'], ['epi-r-porch', 'The porch'], ['epi-r-twelfth', 'The twelfth stroke'], ['epi-r-sign', 'The sign'], ['epi-r-spices', 'The spices'], ['epi-r-childhood-room', 'Her childhood room'], ['epi-r-bar-nine', 'Bar nine'], ['epi-r-tenth-name', 'The tenth name'], ['epi-r-hold', 'Holding on']],
-    strangers: [['epi-s-seventh-stair', 'The seventh stair'], ['epi-s-step', 'The step'], ['epi-s-cafe', 'The studio girls'], ['epi-s-bureom', 'Bureom'], ['epi-s-moon', 'The first full moon'], ['epi-s-pins', 'The pins'], ['epi-s-karaoke', 'Room six'], ['epi-s-tide', 'The tide'], ['epi-s-dumplings', 'Thirty-four'], ['epi-s-dinner', 'Dinner'], ['epi-s-held', 'Held']],
+    strangers: [['epi-s-seventh-stair', 'The seventh stair'], ['epi-s-step', 'The step'], ['epi-s-islands', 'The islands'], ['epi-s-nuts', 'Nuts'], ['epi-s-engine', 'Engine running'], ['epi-s-cafe', 'The studio girls'], ['epi-s-eyebrows', 'White eyebrows'], ['epi-s-bureom', 'Bureom'], ['epi-s-moon', 'The first full moon'], ['epi-s-pins', 'The pins'], ['epi-s-gatelamp', 'The gate lamp'], ['epi-s-twenty', 'Twenty'], ['epi-s-sugar', 'Sugar giving up'], ['epi-s-karaoke', 'Room six'], ['epi-s-tide', 'The tide'], ['epi-s-dumplings', 'Thirty-four'], ['epi-s-dinner', 'Dinner'], ['epi-s-held', 'Held']],
     hoax: [['epi-h-eve-jungwon', 'Christmas Eve · Jungwon'], ['epi-h-eve-jihoon', 'Christmas Eve · Jihoon'], ['epi-h-eve-council', "Christmas Eve · Yeobo's"], ['epi-h-christmas', 'Christmas'], ['epi-h-seance', 'The séance'], ['epi-h-window', 'Out the window'], ['epi-h-porch', 'The porch'], ['epi-h-hearing', 'The hearing'], ['epi-h-held', 'Held']],
     stay: [['epi-st-hanami', 'Hanami'], ['epi-st-courtyard', 'The oldest tree'], ['epi-st-roof-garden', 'The roof garden'], ['epi-st-platform', 'One second'], ['epi-stay-held', 'Held']],
     true: [['epi-tr-first-snow', 'First snow'], ['epi-true-coda', 'Every world']]

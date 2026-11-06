@@ -39931,6 +39931,188 @@
    "destination": "assets/femc/portraits/solar-hoax-party/",
    "conversion": "as solar-hoax-update.png; scale 1.574, old 848 x 824 canvas kept. Neutral -> Place Prompt Attachments/CG - Solar (HOAX party).png (old one in Old/)",
    "placement": "HOAX epilogue Solar party faces (eventFaces)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/epi-s-harbor-day.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "ba7fa3c4be0de60369ed1600d7691ab807d3f4841a67524cac8985c03e20ce53",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-harbor-day.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "strangers world.js 'Incheon · Harbor' day slot + the epi-s-harbor activity bg; weatherFx.outdoor (34A)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/epi-s-pojangmacha.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "a27d420d8be90c4a8e750af78929a718e4f4b0fdf5f549bf9d45dd05ec40e06a",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-pojangmacha.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "strangers world.js 'Incheon · Pojangmacha' both slots (night art); weatherFx.outdoor (34B)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/epi-s-dance-studio.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "bab54e3ccf39a335c91d2f9919e38595f9f1877ec8e0f3716fb3a871c047f36b",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-dance-studio.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "strangers world.js 'Incheon · Songdo · Dance Studio' day slot (34F)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/epi-s-sinpo.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "dda5477ac58d5546ff8b7338c3e32744e80c27e8cf7a09473b5273d9b457fdff",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-sinpo.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "strangers world.js 'Incheon · Sinpo Market' day slot; weatherFx.outdoor (34G)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/epi-h-front-step-night.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "ea24bdfd839f83c1d091a0e7ad55d040b9f6b240e721c8b4f6d052ed58c6205a",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-front-step-night.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "HOAX world.js 'Hanlim · Home · Front Step' evening slot only (the day slot keeps the winter street: a 1/12 After School scene); weatherFx.outdoor (36A)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/epi-h-cherry-room.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "9346c4a1f4ad5decfdf5f73b94124b6da3f4a24dec252bcb9d5c548af49fe6bb",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-cherry-room.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "HOAX world.js \"Hanlim · Cherry's Room\" day slot (36B)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/epi-h-hyunsuk-car.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "076a054c3e0f45fa2cceb1dac17ec0c898e449437f720e7770f40c2bb667722b",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-hyunsuk-car.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "HOAX world.js \"Hanlim · Hyunsuk's Car\" both slots; weatherFx.sealed (36C)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/epi-s-twenty.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "8d62680b7a86d0e6eb0af3f324d440c1004373fa36238bcac13261504b5b7645",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-s-twenty.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "story-home.js epi-s-twenty, from 'They sang to Pyo' to the seventh stair; cgFocus; ALBUM.strangers (34C)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/epi-s-gatelamp.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "ab2c8cec7b909c125c06d594d51fd3e48e5c90fc9e5dc258a0ce4fc254ed6147",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-s-gatelamp.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "people-night.js epi-s-jungwon-gatelamp, the tea hand-over to the choice; cgFocus; ALBUM (34D)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/epi-s-islands.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "b487da161f0bfe208025c60fb9031c5f37ce1e570cf13534fa9edd8e6d86728f",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-s-islands.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "people-night.js epi-s-haechan-islands, on the step to the choice; cgFocus; ALBUM (34E)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/epi-s-nuts.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "cb9f35c0db84e1259fde1c4ddcec9d68dc199478573e7e14be289b2d8e8395d5",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-s-nuts.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "story-car.js epi-s-sinpo, the two walnut halves through the choice; cgFocus; ALBUM (34H)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/epi-s-eyebrows.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "328252e78667e2c2088e8304b1bac595b376e41d0d3b6889ef1c9de312b7e15e",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-s-eyebrows.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "people-girls.js epi-s-girls-eyebrows, the film canister through the choice; cgFocus; ALBUM (34I)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/epi-s-sugar.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "6d8fb6b8cf2f80f7ccebeafd8d347fb1d16a46f9d880df387c2dddd9b1fa2a28",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-s-sugar.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "people-late.js epi-s-jay-sugar, the fourth umbrella, cleared before the route branch; cgFocus; ALBUM (34J)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/epi-s-engine.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "92373ec7c00d73d8c78ba069cfc085d53422654d5152d35ddee440a7c0c1bf72",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-s-engine.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "people-late.js epi-s-mroh-engine, after the coffee to the choice; cgFocus; ALBUM (34K)"
   }
  ],
  "batch1Validation": {

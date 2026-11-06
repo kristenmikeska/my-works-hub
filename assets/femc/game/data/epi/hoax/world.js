@@ -57,9 +57,9 @@
         ["Hanlim · Yeobo's · Back Door", 'epi-h-winter-street-day', null],                  // stand-in → epi-h-yeobos-back
         // The expansion pass (Nov 5-6 2026): three new places on stand-ins until their art comes (ART-ADDS-hoax.md). Each
         // evening image is already another rule's night art, so nothing is made night-lit that wasn't.
-        ['Hanlim · Home · Front Step', 'epi-h-winter-street-day', 'epi-h-winter-street'],   // stand-in → epi-h-front-step(-night)
-        ["Hanlim · Cherry's Room", 'epi-h-her-room', null],                                 // stand-in → epi-h-cherry-room
-        ["Hanlim · Hyunsuk's Car", 'epi-h-car', 'epi-h-car'],                                // stand-in → epi-h-hyunsuk-car
+        ['Hanlim · Home · Front Step', 'epi-h-winter-street-day', 'epi-h-front-step-night'],  // art batch 143 (36A) at night; day still the winter street (1/12 After School scene) until a day picture exists
+        ["Hanlim · Cherry's Room", 'epi-h-cherry-room', null],                              // art batch 143 (36B)
+        ["Hanlim · Hyunsuk's Car", 'epi-h-hyunsuk-car', 'epi-h-hyunsuk-car'],                // art batch 143 (36C)
         ['Hanlim · Home', 'epi-h-kim-house-day', 'epi-h-kim-house'],                      // batch 77: by day; batch 65: lamp-lit, snowing outside (evening)
         ['Hanlim · School · Council Room', 'epi-h-council-room', null],
         ['Hanlim · School · Classroom', 'epi-h-classroom-exam', null],
@@ -86,8 +86,8 @@
         ["Hanlim · Jungwon's Car", 'epi-h-car', 'epi-h-car'],
         ['Hanlim', 'epi-h-jungwon-street-day', 'epi-h-jungwon-street']
       ],
-      weatherFx: { outdoor: ['epi-h-jungwon-street-day', 'epi-h-jungwon-street', 'epi-h-rooftop', 'epi-h-park', 'epi-h-party-outside', 'outside-daytime-neighborhood', 'outside-night', 'park-2-winter', 'epi-h-christmas-lights', 'epi-h-jihoon-porch', 'epi-h-winter-street', 'rooftop-day-winter', 'gekkoukan-rooftop-night', 'outside-nightdistrict'],
-        sealed: ['epi-h-car', 'epi-h-noraebang', 'paulownia-karaoke'], none: [] },
+      weatherFx: { outdoor: ['epi-h-front-step-night', 'epi-h-jungwon-street-day', 'epi-h-jungwon-street', 'epi-h-rooftop', 'epi-h-park', 'epi-h-party-outside', 'outside-daytime-neighborhood', 'outside-night', 'park-2-winter', 'epi-h-christmas-lights', 'epi-h-jihoon-porch', 'epi-h-winter-street', 'rooftop-day-winter', 'gekkoukan-rooftop-night', 'outside-nightdistrict'],
+        sealed: ['epi-h-hyunsuk-car', 'epi-h-car', 'epi-h-noraebang', 'paulownia-karaoke'], none: [] },
       home: { place: 'Hanlim · Home · Her Room', bg: 'epi-h-her-room' },
       school: { place: 'Hanlim · School', bg: 'flashback-hamlim-hallway' },
       activities: [
