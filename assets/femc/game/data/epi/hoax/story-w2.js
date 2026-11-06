@@ -15,7 +15,7 @@
      epi-h-study-council  1/3        evening, consumes   route council: study + the first war council at Yeobo's; the ledger
    Routines (once each)
      epi-h-rt-nana            early  12/22-12/27  Nana's morning; she almost calls him by another dog's name (ifYear xmas)
-     epi-h-rt-nana-snow       evening 1/4-1/10    Nana at the window on the first snow day back; out in it, or the heated floor (Kat, Nov 5)
+     (epi-h-rt-nana-snow is now the event epi-h-nana-window, 1/8 evening, no consume: see the end of this file; Nov 5-6 2026)
      epi-h-rt-doomscroll      late   12/22-12/28  the forum's theories (rehab, eloping, "a different dimension lol")
      epi-h-rt-mom-breakfast   early  12/26-12/30  Mom's breakfast interrogation about the temple (strain)
      epi-h-rt-calculus        after  1/3-1/7      calculus alone; the pencil case that isn't there
@@ -877,23 +877,6 @@
       ] }
     ] },
 
-    // Kat, Nov 5 2026: more Nana. The first snow day back at school (1/4 is heavy snow in calendar.js).
-    { id: 'epi-h-rt-nana-snow', slot: 'evening', after: '1/4', until: '1/10', events: ['epi-h-new-year'], place: 'Hanlim · Home', time: 'Evening', scene: [
-      { n: "She came home in the dark with snow up to her ankles and her bag soaked through, and Nana was in the front window, standing on the back of the sofa where he was absolutely not allowed, a white shape against the glass with his whole body wagging, the way he'd been there every single evening she'd come home since she'd come home." },
-      { n: "He hit her at the door like a snowdrift with opinions. Sixty pounds of Samoyed, paws on her shoulders, smiling straight into her face, and she staggered back into the shoe rack and let him, because for a year nobody had been waiting at a window for her, and she was not going to start telling him to get down now." },
-      { s: 'solar', f: 'happy', t: "Hi. Hi. I know. I was gone *nine hours*, I know, it's a tragedy." },
-      { n: "Her mom called from the kitchen that he'd been at that window since four. Nana went to the door, sat, and looked at the snow, and then at her, and then at the snow." },
-      { choose: [
-        { t: "(Take him out in it.)", stat: { kindness: 1 }, then: [
-          { n: "She didn't even change out of her uniform. Coat back on, his leash, the street under the lamps gone soft and blue and silent, and Nana threw himself face first into the deepest bank on the block and came up white on white, snow on his nose, snow in his eyelashes, grinning like he'd invented weather." },
-          { n: "She lay down in it next to him, because why not, and made half a snow angel before he lay down on top of her and ruined it. Above the lamps the snow was coming down, ordinary and slow, the way snow was supposed to, and for a while she just watched it do that." }
-        ] },
-        { t: "(Towel him off and share the heated floor.)", then: [
-          { n: "She got the old striped towel and he let her dry him the way he let her do everything, patiently, like a prince allowing a peasant to serve him, and then he lay down on the heated floor with a groan of total satisfaction and she lay down beside him with her calculus and got through four problems with her head on his side, rising and falling, warm, and didn't think about anything at all." }
-        ] }
-      ] }
-    ] },
-
     { id: 'epi-h-rt-doomscroll', slot: 'late', after: '12/22', until: '12/28', events: ['epi-h-part-four'], place: 'Hanlim · Home · Her Room', time: 'Late Night', scene: [
       { n: "One in the morning, under the duvet, phone at six percent brightness, reading WHERE IS THE COUNCIL (part 4) from the top like a horror story she was in." },
       { s: 'forum', t: "theory: rehab. all eight of them. group rate. (61 upvotes)" },
@@ -1021,6 +1004,27 @@
         ] }
       ] },
       { bond: { council: 1 } }
+    ] }
+  );
+  // Kat, Nov 5 2026: more Nana (the first snow day back at school). Was the routine epi-h-rt-nana-snow (evening, 1/4-1/10);
+  // moved to a 1/8 evening event in the expansion pass (Nov 5-6 2026) because a routine never plays on a day whose story event
+  // has already played, and every school evening has one, so it could only ever have come on 1/7 (a Sunday, out of uniform).
+  // No `consumes`: it opens the evening, then Go Out as usual.
+  (R.events ||= []).push(
+    { id: 'epi-h-nana-window', date: '1/8', slot: 'evening', title: 'the window', place: 'Hanlim · Home', time: 'Evening', scene: [
+      { n: "She came home in the dark with snow up to her ankles and her bag soaked through, and Nana was in the front window, standing on the back of the sofa where he was absolutely not allowed, a white shape against the glass with his whole body wagging, the way he'd been there every single evening she'd come home since she'd come home." },
+      { n: "He hit her at the door like a snowdrift with opinions. Sixty pounds of Samoyed, paws on her shoulders, smiling straight into her face, and she staggered back into the shoe rack and let him, because for a year nobody had been waiting at a window for her, and she was not going to start telling him to get down now." },
+      { s: 'solar', f: 'happy', t: "Hi. Hi. I know. I was gone *nine hours*, I know, it's a tragedy." },
+      { n: "Her mom called from the kitchen that he'd been at that window since four. Nana went to the door, sat, and looked at the snow, and then at her, and then at the snow." },
+      { choose: [
+        { t: "(Take him out in it.)", stat: { kindness: 1 }, then: [
+          { n: "She didn't even change out of her uniform. Coat back on, his leash, the street under the lamps gone soft and blue and silent, and Nana threw himself face first into the deepest bank on the block and came up white on white, snow on his nose, snow in his eyelashes, grinning like he'd invented weather." },
+          { n: "She lay down in it next to him, because why not, and made half a snow angel before he lay down on top of her and ruined it. Above the lamps the snow was coming down, ordinary and slow, the way snow was supposed to, and for a while she just watched it do that." }
+        ] },
+        { t: "(Towel him off and share the heated floor.)", then: [
+          { n: "She got the old striped towel and he let her dry him the way he let her do everything, patiently, like a prince allowing a peasant to serve him, and then he lay down on the heated floor with a groan of total satisfaction and she lay down beside him with her calculus and got through four problems with her head on his side, rising and falling, warm, and didn't think about anything at all." }
+        ] }
+      ] }
     ] }
   );
 })();

@@ -415,3 +415,34 @@ Each entry below is keyed by its item in `FEMC-ART-TODO.md`. Don't add any id, b
 - **Rules kept:** Haechan and Jungwon wear only hairstyles they've worn in real life (dark/black hair in every prompt) and Haechan is never genderbent (his collabs are the male halves); Solar's hair changes freely (Stella's golden half-up is a wig look on her own face). Prompts describe outfits visually, no logos or printed names.
 
 - **34A. The Incheon harbor by day** (`epi-s-harbor-day.png`, Nov 5): WebP q86 into `assets/femc/bg/`; in `data/epi/strangers/world.js` swap `harbor` for `epi-s-harbor-day` in the `Incheon · Harbor` bg rule (day image; the evening stays `flashback-incheon-harbor`) and in the `epi-s-harbor` activity, add it to `weatherFx.outdoor`, bump epilogue.js `DATA_V`.
+- **34B (strangers expansion, Nov 6) `epi-s-pojangmacha`:** convert to `assets/femc/bg/epi-s-pojangmacha.webp` (q86, native size). In `data/epi/strangers/world.js`, change the stand-in rule `['Incheon · Pojangmacha', 'epi-s-chinatown', null]` to `['Incheon · Pojangmacha', 'epi-s-pojangmacha', 'epi-s-pojangmacha']` (it's night art, so it can fill both slots), and add `'epi-s-pojangmacha'` to `weatherFx.outdoor` (a tent with clear flap windows: rain and dust show outside). Used by `people-time.js` `epi-s-girls-tent` (evening).
+- **34C `epi-s-twenty`:** `assets/femc/cg/epi-s-twenty.webp`. In `story-home.js` `epi-s-twenty`, put a `{ cg: 'epi-s-twenty' }` line just after the narration where Jungwon's bow silences the room and the kitchen laughs (the "dimples" beat), and a `{ cg: null }` before the late route beat moves place. Add a cgFocus in `data/places.js` (faces in the middle third) and a tile `['epi-s-twenty', 'Twenty']` in `epilogue.js ALBUM.strangers`. Bump `DATA_V` / the epilogue `?v=`.
+- **34D `epi-s-gatelamp`:** `assets/femc/cg/epi-s-gatelamp.webp`; `{ cg }` / `{ cg: null }` around the tea hand-over in `people-night.js` `epi-s-jungwon-gatelamp`; cgFocus; ALBUM tile `['epi-s-gatelamp', 'The gate lamp']`.
+- **34E `epi-s-islands`:** `assets/femc/cg/epi-s-islands.webp`; `{ cg }` / `{ cg: null }` around the radio naming the islands in `people-night.js` `epi-s-haechan-islands`; cgFocus; ALBUM tile `['epi-s-islands', 'The islands']`.
+- Nothing is wired until the pictures exist. The stand-in rule for 34B keeps the evening column `null`, so the stand-in never fills an evening slot as if it were night art.
+
+### 36. HOAX expansion art (Nov 6 2026)
+- **36A** `epi-h-front-step-night`: world.js bg rule `['Hanlim · Home · Front Step', 'epi-h-winter-street-day', 'epi-h-winter-street']` → `['Hanlim · Home · Front Step', 'epi-h-front-step-night', 'epi-h-front-step-night']` (its scene is Late Night: people-late.js `epi-h-jihoon-late-1`). Add it to `weatherFx.outdoor`.
+- **36B** `epi-h-cherry-room`: rule `["Hanlim · Cherry's Room", 'epi-h-her-room', null]` → `["Hanlim · Cherry's Room", 'epi-h-cherry-room', null]` (one daytime scene, people-late.js `epi-h-cherry-late-1`).
+- **36C** `epi-h-hyunsuk-car`: rule `["Hanlim · Hyunsuk's Car", 'epi-h-car', 'epi-h-car']` → both slots `epi-h-hyunsuk-car`; add to `weatherFx.sealed`.
+- **CGs** (WebP q86 in `assets/femc/cg/`, as batch 112): a `{ cg: '<id>' }` / `{ cg: null }` pair, a `cgFocus` in `data/places.js`, a tile in epilogue.js `ALBUM.hoax`, bump `DATA_V`.
+  - **36D** `epi-h-ready`: story-days.js `epi-h-ready`, `{ cg }` before the line "Then Solar sat in front of the long mirror…", `{ cg: null }` after the iron line ("She wound the first piece round the iron…") and the next line or two.
+  - **36E** `epi-h-proof-of-life`: people-late.js `epi-h-jihoon-late-1`, `{ cg }` before "Nana lost his entire mind.", `{ cg: null }` once Jihoon is sitting up again.
+  - **36F** `epi-h-nana-window`: story-w2.js event `epi-h-nana-window` (1/8 evening), `{ cg }` before its first line, `{ cg: null }` after "He hit her at the door like a snowdrift with opinions…".
+- Nothing is wired until the pictures exist (no stand-in images in a `{ cg }` line, nothing new in an evening slot of a rule that wasn't already night art).
+
+### 37. Stay expansion CGs (Nov 6 2026)
+For Claude when the pictures come in (Kat doesn't need this part). Each is a `{ cg: '<id>' }` / `{ cg: null }` pair in the
+scene, a `cgFocus` entry in `data/places.js` (the face centre, like `'epi-st-hanami': '41% 40%'`), and a tile in
+`epilogue.js` ALBUM `stay` (after `epi-st-roof-garden`, in act order). Convert like the others (WebP q86 into
+`assets/femc/cg/`, manifest entry).
+
+- **37A `epi-st-cake`** → `data/epi/stay/people-days.js` `epi-st-junpei-cake` ("contraband"): `{ cg: 'epi-st-cake' }` before
+  the narration line "So it was eight people and a dog in a kitchen built for three", `{ cg: null }` before "They went up
+  at one". ALBUM `['epi-st-cake', 'Contraband']`.
+- **37B `epi-st-thirtieth`** → `data/epi/stay/story-days.js` `epi-st-thirtieth`: `{ cg }` before "Akihiko had his gloves in
+  his lap.", `{ cg: null }` before "At eleven they started going up". ALBUM `['epi-st-thirtieth', 'The thirtieth']`.
+- **37C `epi-st-couch`** → `data/epi/stay/people-days.js` `epi-st-akihiko-couch` ("gloves on", Akihiko's route): `{ cg }`
+  before "It was a very small couch.", `{ cg: null }` before "When she woke it was gray". ALBUM `['epi-st-couch', 'Gloves on']`.
+- After wiring: bump `DATA_V` in epilogue.js and its `?v=` / places.js `?v=` in femc-game.html; run
+  `tools/femc-check-scenes.py`.

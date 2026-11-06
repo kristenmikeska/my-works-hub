@@ -373,7 +373,7 @@ try:
         p.eval("EP.clear()")
         enter('route-S')
         sx = p.eval("(()=>{const G=FemcGame;return [G.mdOf(0),G.dateOf(0).getFullYear(),G.dayInfo(0).day,G.mdOf(G.END()),G.money(G.S.yen),G.S.epi.lean,G.D.events.map(e=>e.id)]})()")
-        ok(sx[:6] == ['2/17', 2013, 'Sun', '3/16', '₩100,000', 'haechan'] and len(sx[6]) == 38 and sx[6][0] == 'epi-s-home', f'Incheon: 2013, won, its own world ({sx[:6]}, {len(sx[6])} events)')
+        ok(sx[:6] == ['2/17', 2013, 'Sun', '3/16', '₩100,000', 'haechan'] and len(sx[6]) == 41 and sx[6][0] == 'epi-s-home', f'Incheon: 2013, won, its own world ({sx[:6]}, {len(sx[6])} events)')
         ok(step_until("FemcGame.S.events.includes('epi-s-home') && FemcGame.S.events.includes('epi-s-kitchen')", 900, 0.03), 'strangers: the first morning and the kitchen play')
         # Back out to a year save: Iwatodai's data again, with the world still loaded.
         p.eval("(()=>{EP.year({'route-R':true});})()")

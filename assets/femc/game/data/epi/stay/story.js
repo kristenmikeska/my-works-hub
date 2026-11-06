@@ -50,7 +50,12 @@
        the dorm; his room is not mentioned here.
      - Speakers: S.E.E.S. (akihiko, shinjiro, junpei, yukari, fuuka, mitsuru, ken, aigis, koromaru), nurse (no portrait),
        haechan / jungwon / jihoon (fights, the final), yunjin (the final). No new cast ids.
-   Wren is never literal (the empty last bench, a horn). No ending line is quoted back. No explicit content. */
+   Wren is never literal (the empty last bench, a horn). No ending line is quoted back. No explicit content.
+   The days pass (Nov 5 2026; DO-NOT-OPEN-stay-epilogue-expansion.md gaps 1, 6, 7): epi-st-unheard gains two { ifFlag:
+     'epi-st-told' } blocks (Yukari, Fuuka and Koromaru in her room before midnight, Akihiko in the hall; the three faces when
+     she comes back), so the clocks' "you won't be alone in your room" holds; epi-st-witness "School tomorrow" → "School on
+     Wednesday" (term starts 4/7); epi-st-last-day Ken's bag "packed since Sunday" → "since last Tuesday" (his phone topic).
+     No flag, gate, fight line, glitch id or date changed. New scenes around these: story-days.js. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).stay ||= {});
   const awake = { anyFlag: ['shinji-awake', 'ending-shinjiro'] };
@@ -431,6 +436,12 @@
   { id: 'epi-st-unheard', date: '4/4', slot: 'late', title: 'unheard', place: "Iwatodai Dorm · Solar's Room", time: 'Late Night', scene: [
     { music: 'epi-st-half' },
     { glitch: { stage: 4 } },
+    // The days pass (Nov 5 2026): on the told path she isn't alone (epi-st-clocks' promise; story-days.js epi-st-rota's watch).
+    { ifFlag: 'epi-st-told', then: [
+      { n: "She wasn't alone. Mitsuru had said she wouldn't be, and Mitsuru had made a chart. Yukari was on the floor with her back against the bed and a blanket round her shoulders and a bag of shrimp chips she hadn't opened. Fuuka was in the desk chair with her headphones round her neck and her eyes shut. Koromaru lay across the door. Out in the hall, on the floor, she could hear Akihiko not sleeping." },
+      { n: "At eleven fifty-nine Yukari reached up without looking and took hold of the hem of Solar's sleeve, a pinch of it, between finger and thumb, and held on." },
+      { s: 'fuuka', f: 'sad', t: "...It's coming. I can hear it. I'm sorry. I'm right here." }
+    ] },
     { n: "Midnight came, and the room went, and she let it." },
     { glitch: 'epi-st-g-unheard' },
     { place: 'Hanlim · School · Gym at Midnight', time: 'Midnight' },
@@ -459,13 +470,16 @@
     { dark: false },
     { place: "Iwatodai Dorm · Solar's Room", time: 'Late Night', soft: true },
     { n: "Her room. Her hands. On the side of one of them, a smear of blue paint, still wet. She didn't remember touching anything." },
+    { ifFlag: 'epi-st-told', then: [
+      { n: "And three faces, a foot from hers. Yukari on her knees with her empty hand still closed on nothing, the way it had closed when the sleeve went. Fuuka with her headphones off and both hands over her mouth. Koromaru's nose pushed hard into her neck, and the sound he was making, which she'd never heard a dog make. Nobody said anything. Yukari opened her hand, and looked at it, and took hold of the sleeve again." }
+    ] },
     { flag: 'epi-st-unheard' }
   ] },
 
   // ───────────────────────────── 4/5, evening: witness ─────────────────────────────
   { id: 'epi-st-witness', date: '4/5', slot: 'evening', consumes: true, title: 'witness', place: 'Iwatodai Strip · Hagakure', time: 'Evening', scene: [
     { music: 'epi-st-witness' },
-    { n: "The last spring break dinner. Mitsuru had announced it at breakfast as a formal event, which meant Hagakure, which meant all of them at the long counter on stools in a row, Koromaru tied up outside with his nose pressed to the glass, and steam going up off eight bowls of ramen into the lights. Monday. School tomorrow, for the ones who still had school." },
+    { n: "The last spring break dinner. Mitsuru had announced it at breakfast as a formal event, which meant Hagakure, which meant all of them at the long counter on stools in a row, Koromaru tied up outside with his nose pressed to the glass, and steam going up off eight bowls of ramen into the lights. Monday. School on Wednesday, for the ones who still had school." },
     { s: 'mitsuru', f: 'happy', t: "I'm paying. Please don't argue. I've already argued with the owner about it and I won." },
     { s: 'junpei', f: 'happy', t: "Senpai, you're a legend. Extra pork. Extra everything. This is the best day of my—" },
     { ifEpiRoute: 'shinjiro', then: [
@@ -554,7 +568,7 @@
   // ───────────────────────────── 4/6, morning: the last day ─────────────────────────────
   { id: 'epi-st-last-day', date: '4/6', slot: 'early', consumes: true, title: 'the last day', place: 'Iwatodai Dorm · Lounge', time: 'Morning', scene: [
     { music: 'epi-st-last' },
-    { n: "The last day of spring break. Tuesday. The dorm smelled of starch. Junpei's uniform, Yukari's, Fuuka's, hanging pressed on the backs of three chairs in the lounge for tomorrow, the first day of their third year, and Yukari had ironed Junpei's because she couldn't watch him do it any more. Ken's school bag by the door, packed since Sunday. In the hall, a stack of Mitsuru's boxes, neatly taped, because she was leaving the dorm at the end of the month and had started packing three weeks early, which was, she said, late." },
+    { n: "The last day of spring break. Tuesday. The dorm smelled of starch. Junpei's uniform, Yukari's, Fuuka's, hanging pressed on the backs of three chairs in the lounge for tomorrow, the first day of their third year, and Yukari had ironed Junpei's because she couldn't watch him do it any more. Ken's school bag by the door, packed since last Tuesday. In the hall, a stack of Mitsuru's boxes, neatly taped, because she was leaving the dorm at the end of the month and had started packing three weeks early, which was, she said, late." },
     { n: "It was one year to the night. Nobody had said so. Everybody knew. They were being very normal about it, which was how she knew they knew." },
     { ifEpiRoute: 'akihiko', then: [
       { n: "She'd gone running with him at five. Along the river in the gray, the cherry petals coming down in the wet, his stopwatch on a string round his neck. At the bridge he'd stopped it, looked at it, and showed her." },

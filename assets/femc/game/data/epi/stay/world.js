@@ -7,6 +7,9 @@
      calendar.js   3/24-4/6/2010, spring break          glitches.js  the reverse glitch schedule
      world.js      this file                              people.js    S.E.E.S. as home bonds, routines, texts (writer B)
      story.js      the sixteen story events (writer A)
+     phone.js      the Contacts app                       the days pass (Nov 5 2026): story-days.js (four events),
+     people-days.js (twelve hangouts, two routines), texts-days.js (texts, known lines, topics); lateOpen and two
+     hospital bg rules below
    It's the cheapest world: Iwatodai's own places, people and art. `places.bg` is a few rules of its own (the searchers'
    rooms in the dorm, the three worlds' places the fights pull her into) in front of the main game's rules; the music moods
    and screens are the main game's plus the epi-st-* placeholders below. Shape: data/epi/runners/world.js's header. */
@@ -32,6 +35,9 @@
       { id: 'sees', name: 'S.E.E.S.', open: { always: true } }
     ],
     lockAfter: '3/28',
+    // The days pass (Nov 5 2026, DO-NOT-OPEN-stay-epilogue-expansion.md): the quiet nights where the late screen lists who's still
+    // up (epilogue.js late(); the hangouts with slots ['late'] in people-days.js). Every night the story doesn't own.
+    lateOpen: ['3/24', '3/25', '3/26', '3/27', '3/28', '4/1', '4/3'],
     // The half-present fights, reversed (epilogue.js partyFor): fight 1 alone in Syracuse; 2 with Haechan and Jungwon at the
     // harbor in Incheon (they can't see her); 3 with Jungwon and Jihoon in Hanlim's gym (they see her, can't hear her);
     // 4 at Iwatodai Station with Akihiko, and the two of them flickering in for one round. Shinjiro never fights.
@@ -53,6 +59,10 @@
         ['Hanlim', 'flashback-hamlim-hallway', null],
         ['Port Island · Seaside Park · Hanami', 'epi-st-seaside-hanami', null], // batch 80: the hanami event only; other park scenes keep the main rule
         ['Iwatodai Station · Bench', 'epi-tr-station-bench', null], // batch 80 (the true coda's bench art): the concourse's last bench
+        // The days pass (Nov 5 2026): the hospital's courtyard and roof have the main game's art (Mercy's link uses both); without
+        // these they fell through to the hallway rule (shinjiro-2's courtyard).
+        ['Tatsumi Memorial Hospital · Courtyard', 'hospital-outside', null],
+        ['Tatsumi Memorial Hospital · Rooftop', 'hospital-rooftop', null],
         ...MAIN.bg
       ],
       // Stay's own copy (each list copied), so adding to it never changes the main year's weather.

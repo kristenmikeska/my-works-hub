@@ -42,6 +42,9 @@
       { id: 'family', name: 'Family', open: { always: true } }
     ],
     lockAfter: '2/23',
+    // The expansion pass (Nov 5-6 2026; the Runners time pass's C1): quiet nights where Late Night lists the people still up
+    // above Sleep (people-night.js). Not 2/26 or 3/13 (the route nights), not 3/15 (the night before the last morning).
+    lateOpen: ['2/18', '2/21', '2/22', '2/24', '2/25', '3/1', '3/2', '3/3', '3/4', '3/6', '3/10', '3/11', '3/12'],
     places: {
       bg: [
         ['Incheon · The Lee House · Her Room', 'epi-s-her-room', 'epi-s-her-room-night'],  // batch 78
@@ -72,6 +75,7 @@
         ['Incheon · Songdo · Café', 'epi-s-songdo-cafe', null],
         ['Incheon · Songdo', 'epi-s-songdo', 'epi-s-songdo-night'],
         ['Incheon · Karaoke', 'epi-s-noraebang', 'epi-s-noraebang'],
+        ['Incheon · Pojangmacha', 'epi-s-chinatown', null],                            // stand-in → epi-s-chinatown (no evening art until its own); the expansion pass's tent bar (ART-ADDS-strangers)
         ['Incheon · Bathhouse', 'epi-s-bathhouse', 'epi-s-bathhouse'],
         ['Incheon · The Bridge', 'epi-s-bridge', 'epi-s-bridge'],
         ['Incheon · The Car', 'epi-s-car', 'epi-s-car-night'],                          // batch 78: a room with windows for weather
@@ -127,7 +131,7 @@
       appa: 'Appa', eomma: 'Eomma', mrsbang: 'Mrs. Bang', auntie: 'Auntie Song', pyo: 'Pyo', mroh: 'Mr. Oh', minseok: 'Minseok',
       mrspark: 'Mrs. Park', seo: 'Inspector Seo', chaewon: 'Chaewon', sakura: 'Sakura', kazuha: 'Kazuha', eunchae: 'Eunchae',
       girls: 'The girls', house: 'The kitchen', man: 'A man', fisherman: 'A fisherman', aunt: 'Aunt Hyesun', radio: 'The radio',
-      fkvoice: 'Fuuka'
+      fkvoice: 'Fuuka', flounder: 'The flounder woman', ajumma: 'The ajumma' // the last two: the expansion pass
     },
     // This world's own faces (core.js worldFace): Solar's strangers look, the four's strangers outfits and Solar's parents (FEMC-ART-WIRING).
     faces: { solar: 'solar-strangers', chaewon: 'chaewon-strangers', sakura: 'sakura-strangers', kazuha: 'kazuha-strangers', eunchae: 'eunchae-strangers', appa: 'taesang-strangers', eomma: 'miyeon-strangers', yunjin: 'yunjin-strangers', haechan: 'haechan-strangers', jungwon: 'jungwon-strangers',
