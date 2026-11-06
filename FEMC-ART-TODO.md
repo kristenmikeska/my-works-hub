@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 6):** ⭐ high-resolution poses (top section: Solar ✅ done; the other fighters next) · couple victory poses for Jungwon and Akihiko (section 27: four outfits to go; Moon Hoodie and Midnight Drive are in) · 1 Boutique banner picture (section 28: Tarot Arcana) · strangers: 4 places and 7 CGs (section 34) · HOAX: 5 places and 6 CGs (section 36) · Stay: 3 optional CGs (section 37) · Nana's faces and photo-booth sheets, plus Solar's HOAX booth sheet (section 38) · 19 polaroids for strangers, HOAX and Stay (section 39: 7 / 7 / 5) · **Epilogue backgrounds remade:** strangers, HOAX and Stay in `EPILOGUE-BACKGROUND-PROMPTS.md` (like the Runners ones) · low-res pictures to look over at the very end (section 31). **Runners backgrounds:** all made; only an optional night café is left in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style now live in `FEMC-CG-REMAKES.md`. **New Wardrobe outfits** (Solar's skin series and the collab outfits, 24 looks) and **skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make (updated Nov 6, after art batch 143):** ⭐ high-resolution poses (top section: Solar ✅ done; the other fighters next) · 1 Boutique banner picture (section 28: Tarot Arcana) · HOAX: 2 places and 6 CGs (section 36) · Stay: 3 optional CGs (section 37) · Nana's faces and photo-booth sheets, plus Solar's HOAX booth sheet (section 38) · 19 polaroids for strangers, HOAX and Stay (section 39: 7 / 7 / 5) · **Epilogue backgrounds remade:** strangers, HOAX and Stay in `EPILOGUE-BACKGROUND-PROMPTS.md` (like the Runners ones) · low-res pictures to look over at the very end (section 31). **Runners backgrounds:** all made; only an optional night café is left in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style now live in `FEMC-CG-REMAKES.md`. **New Wardrobe outfits** (Solar's skin series and the collab outfits, 24 looks) and **skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 ## ⭐⭐ TOP PRIORITY when you have usage: high-resolution poses (Kat, Nov 2)
 
@@ -16,7 +16,7 @@ Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make.
 **Solar: done (in the game)**
 - ✅ Her own look (18) · ✅ After Hours (18) · ✅ Date Day (18) · ✅ Emo Night (18) · ✅ Limelight (18) · ✅ Alpha Phi Formal (18) · ✅ Y2K Pop Star (18) · ✅ Pink Lagoon (18) · ✅ Night Swim (18) · ✅ The Sun (18) · ✅ Sugar Rush (18) · ✅ Sun Hoodie (18) · ✅ Summer Yukata (18) · ✅ Summer Festival (18) · ✅ Oops! (18) · ✅ SU eSports Jersey (18) · ✅ Ringside (18) · ✅ Stage Idol (18) · ✅ Strawberry Milk (18) · ✅ Moonlit Hanbok (18) · ✅ Midnight Drive (18) · ✅ Night Prowl (18) · ✅ Halloween Witch (18) · ✅ Harbour Night Coat (18) · ✅ Phantom Thief (18) · ✅ Morning Roadwork (18) · ✅ Summer Session (18) · ✅ Snake Charmer (18) · ✅ Lifeguard on Duty (18) · ✅ Vice President (18) · ✅ Movie Date (18) · ✅ Velvet Attendant (18) · ✅ Winter Coat (18)
 
-**Solar: ✅ ALL DONE (Nov 4).** Her own look and all 32 outfits have the full 18 poses. Next in this section: step 2, the other fighters' victory poses (section 27 has the couple partners).
+**Solar: ✅ ALL DONE (Nov 4).** Her own look and all 32 outfits have the full 18 poses. Next in this section: step 2, the other fighters' victory poses (the couple partners' poses are all in, Nov 6).
 
 **Tip:** if ChatGPT blocks a pose, reword it (e.g. "relaxed standing pose, hand resting on hip" instead of "hands on hips"); that often gets it through.
 
@@ -41,49 +41,6 @@ If it comes back with a background, that's fine: Claude cuts it out.
 
 ---
 
-## 27. Couple victory poses (ChatGPT)
-Kat's yes (Nov 4): when Solar and her partner wear a matching couple outfit and win, the results screen shows them side by side, with a different pose each time. These are the partner's poses; Solar's come from her HD sets (all six are done). Built Nov 4: Sun & Moon and (since Nov 5) Midnight Drive already show them side by side; each other set joins once its partner's poses come in. One figure per image, same format as Solar's HD poses. Make as many as you like; the game uses whichever exist.
-
-**[ ] 27A. Haechan, Moon Hoodie (goes with Solar's Sun Hoodie)** · ✅ five poses in (Nov 4); only "hands in hoodie pocket" left, optional  
-Attach: `Moon Hoodie [sk-haechan-cp-sunmoon] - pose sheet (recut).png`, then `Haechan.png`  
-Save as: `haechan-moonhoodie-hd-<pose>.png` in a folder `HC-Moon Hoodie-Victory Poses`  
-Poses left (one image each): hands in hoodie pocket leaning back (peace sign, arms crossed, hand in hair, thumbs up and pointing are in)
-```
-A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (an oversized black hoodie with a pink crescent moon on the front). Pose: [the pose, e.g. a lazy peace sign, a small cocky smile, weight on one leg], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-**[ ] 27B. Akihiko, Summer Festival (goes with Solar's Summer Festival)**  
-Attach: `Summer Festival [sk-akihiko-cp-festival] - pose sheet (recut).png`, then `Akihiko.png`  
-Save as: `akihiko-summerfestival-hd-<pose>.png` in a folder `Akihiko-Summer Festival-Victory Poses`  
-Poses (one image each): fist pump, arms crossed with a confident grin, thumbs up, fist raised to the sky, hand rubbing the back of his neck (bashful), boxing stance
-```
-A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (a grey striped yukata with a red obi, and his boxing gloves). Pose: [the pose, e.g. a fist pump, a big confident grin], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-**[ ] 27D. Jungwon, After Hours (goes with Solar's After Hours)**  
-Attach: `After Hours [sk-jungwon-cp-afterhours] - pose sheet (recut).png`, then `Jungwon.png`  
-Save as: `jungwon-afterhours-hd-<pose>.png` in a folder `JW-After Hours-Victory Poses`  
-Poses (one image each): adjusting his tie, a small polite bow, arms crossed with a calm smile, peace sign, holding up a ring of keys, hand on hip
-```
-A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (black blazer, a pink tie and a pink cardigan over his shoulders). Pose: [the pose], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-**[ ] 27E. Jungwon, Movie Date (goes with Solar's Movie Date)**  
-Attach: `Movie Date [sk-jungwon-cp-moviedate] - pose sheet (recut).png`, then `Jungwon.png`  
-Save as: `jungwon-moviedate-hd-<pose>.png` in a folder `JW-Movie Date-Victory Poses`  
-Poses (one image each): holding up two movie tickets, hands in coat pockets, peace sign, adjusting his pink scarf, a shy wave, thumbs up
-```
-A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (cream knit sweater under a long black coat, a pink scarf). Pose: [the pose], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-**[ ] 27F. Akihiko, Ringside (goes with Solar's Ringside)**  
-Attach: `Ringside [sk-akihiko-cp-ringside] - pose sheet (recut).png`, then `Akihiko.png`  
-Save as: `akihiko-ringside-hd-<pose>.png` in a folder `Akihiko-Ringside-Victory Poses`  
-Poses (one image each): fist pump, boxing stance, towel over his shoulder with a grin, thumbs up, fist raised to the sky, arms crossed
-```
-A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (red-and-black boxing club track jacket, a towel round his neck). Pose: [the pose], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
 ## 28. Boutique banner art (ChatGPT; for the new Boutique, Kat Nov 4)
 
 One wide picture per Boutique banner, like the big character art on P5X's banners. The game puts the banner's name over the **left third**, so that side stays darker and calmer. Until a banner has its picture, it uses the outfits' HD poses instead.
@@ -99,128 +56,8 @@ A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload 
 
 ---
 
-## 34. strangers places and CGs (Gemini for places, ChatGPT for CGs; realistic; Kat, Nov 5)
-Kat's note (Nov 5): every epilogue place should have its own background. This one still borrows a main-game picture. Save under the name given: Claude swaps it in.
-
-**[ ] 34A. The Incheon harbor by day**  
-"Walk the harbor" on a Go Out afternoon in the strangers epilogue (now the main game's harbor stands in; the evening already has its own Incheon harbor at night).  
-⏳ Make S-harbor night (`epi-s-harbor-night`) from `EPILOGUE-BACKGROUND-PROMPTS.md` first, then attach it here in place of the old night picture.  
-Attach: `BG - Incheon Harbor at Night (strangers).png` (the same harbor, to match)  
-Save as: `epi-s-harbor-day.png`
-```
-Background art in the same style as the attached image, 16:9, high resolution, no people, no readable text: the same Incheon harbor as the attached night picture, now on a cold grey afternoon in late February: a long concrete quay with iron bollards and coiled mooring ropes, rust-streaked shipping containers stacked in rows, tall gantry cranes standing still over everything, cargo ships anchored out on flat grey-green water, gulls over the water, a low pale winter sun behind thin cloud, patches of old snow along the edge of the quay, wet concrete reflecting the sky. Wide, windy, a little lonely. Keep everything important away from the edges.
-```
-
-**[ ] 34B. A tent bar under the overpass**  
-The pojangmacha the girls drag Solar to in the strangers epilogue. It's an evening place, and right now it borrows the Chinatown picture.  
-Attach: `CG - style (Strangers).png`, `BG - Incheon Karaoke.png` (the same city at night, to match)  
-Save as: `epi-s-pojangmacha.png`
-```
-Background art in the same realistic style as the first attached image, 16:9, high resolution, no people, no readable text: a Korean pojangmacha (street tent bar) at night in early March, under a concrete overpass in Songdo, Incheon, 2013. A long orange plastic tarp tent with clear plastic flap windows fogged on the inside, lit warm from within by bare bulbs on a cord; inside, low folding tables with red and blue plastic stools, a tall gas patio heater glowing, a steaming pot of fish-cake skewers in broth on the counter, green soju bottles and small glasses, a laminated menu taped to a pole. Outside the tent: wet asphalt reflecting the orange light, the grey underside of the overpass above, glass towers of Songdo lit far behind in a faint yellow haze, a scooter parked by the curb. Cosy, crowded-feeling even when empty, cold air outside and warmth inside. Keep everything important away from the edges.
-```
-
-**[ ] 34C. twenty**  
-A CG for the kitchen birthday party in the strangers epilogue: the whole house round the long table at night.  
-Attach: `CG - style (Strangers).png`, `BG - Lee House Kitchen.png`, `CG - Solar (Strangers).png`, `CG - Pyo (Strangers).png`, `CG - Mrs. Bang (Strangers).png`, `CG - Auntie Song (Strangers).png`, `CG - Haechan (Strangers).png`, `CG - Jungwon (Strangers).png`, `CG - Yunjin (Strangers).png`, `CG - Mr. Oh (Strangers).png`  
-Save as: `epi-s-twenty.png`
-```
-A realistic cinematic illustration in exactly the style of the first attached image, 16:9, no text: the attached Lee house kitchen at night, the long wooden table pulled out to its longest and crowded with dishes (a big pot of noodles, pancakes, japchae, kimchi, tangerines, a strawberry sponge cake with candles), the windows steamed up and dark blue outside, warm lamp light. The SAME people as the attached references, each recognisable: at the head of the table the young cook (Pyo) in a clean white shirt, flustered and close to happy tears, holding a pair of black rubber boots in a bag on his lap; beside him the housekeeper (Mrs. Bang) in a cardigan with her hand on his shoulder; the small older head cook (Auntie Song) in an apron and rubber boots standing at the end holding a ladle, almost smiling; the driver (Mr. Oh) sitting very straight in a grey jacket and a navy tie; the best friend (Yunjin) in a sparkly top under an oversized sweatshirt, holding a steel chopstick up like a microphone and laughing; at one side the bodyguard (Haechan, sun-browned, black work jacket over a good shirt) leaning on the counter mid-song with his head thrown back; at the other side, very upright in a dark buttoned coat, the heir (Jungwon) holding a gift wrapped in dark blue silk, perfectly polite and out of place; and Solar (long near-black hair pinned up, a soft cream sweater) at the middle of the table, turned toward Pyo, smiling with her whole face for once. Crowded, loud, warm, everyone in motion. Natural skin, real fabrics, soft depth of field.
-```
-
-**[ ] 34D. the gate lamp**  
-A CG for a late night in the strangers epilogue: Jungwon keeping watch at the Lee house gate and Solar bringing him tea.  
-Attach: `CG - style (Strangers).png`, `BG - Lee House Gate at night.png`, `CG - Solar (Strangers).png`, `CG - Jungwon (Strangers).png`  
-Save as: `epi-s-gatelamp.png`
-```
-A realistic cinematic illustration in exactly the style of the first attached image, 16:9, no text: the attached Lee house gate at night in deep winter, the iron gate closed, one lantern-style lamp on a post making a small hard circle of light on frosted paving stones, everything beyond it dark. The SAME two people as the attached references. Jungwon stands just inside the circle of light, very straight, never leaning, in a long dark coat buttoned to the collar, his breath showing, accepting a steaming cup of barley tea with his right hand and bowing slightly as he takes it; an old steel watch on his wrist catches the lamp. Solar faces him in a long dark coat over pyjamas, her long near-black hair down past her shoulders, a green thermos tucked under one arm, her face turned up to him, still and careful. The space between them is small and formal. Cold blue night, warm yellow lamp, frost glittering on the stones. Natural skin, real fabrics, soft depth of field.
-```
-
-**[ ] 34E. the islands**  
-A CG for a late night in the strangers epilogue: the annex step at the bottom of the garden, the old radio on the sill.  
-Attach: `CG - style (Strangers).png`, `BG - Lee House Annex at night.png`, `CG - Solar (Strangers).png`, `CG - Haechan (Strangers).png`  
-Save as: `epi-s-islands.png`
-```
-A realistic cinematic illustration in exactly the style of the first attached image, 16:9, no text: the attached annex at the bottom of the Lee house garden at night, a low concrete building with a steel door and one step, an old silver portable radio on the window sill glowing faintly, a thin crust of old snow on the gravel and the bare branches of a persimmon tree against a grey night sky. The SAME two people as the attached references, sitting side by side on the step with a careful gap between them. Haechan (sun-browned, moles on his cheek and jaw, short dark brown hair longer at the front and wind-wrecked, a knife scar through his left eyebrow) in a black padded work jacket, forearms on his knees, chewing gum, looking out at the dark rather than at her, head tilted toward the radio as if listening. Solar beside him in a long dark coat pulled round her knees, her long near-black hair down, a can of coffee in both hands, watching him sideways. Cold breath in the air, the radio's small light on both faces. Quiet, intimate, unsaid. Natural skin, real fabrics, soft depth of field.
-```
-
-**[ ] 34F. The old dance studio**  
-An empty dance studio in Songdo the strangers epilogue visits by day. For now it borrows the Songdo café.  
-Attach: `CG - style (Strangers).png`  
-Save as: `epi-s-dance-studio.png`
-```
-Background art in the same realistic style as the attached image, 16:9, high resolution, no people, no readable text: a small, slightly worn dance studio on the third floor of an ordinary Songdo building in Incheon, early March 2013, on a grey afternoon. A long room with a wall of mirrors along one side and a wooden ballet barre along the other, a sprung pale wooden floor worn lighter in the middle where years of feet have danced, a row of windows over the street letting in soft grey daylight, a cheap cassette player on the floor by the mirror, a stack of folded mats in a corner, and an old upright piano against the end wall with a dust sheet half pulled off it. Quiet, a little shabby, full of other people's years. Keep everything important away from the edges.
-```
-
-**[ ] 34G. Sinpo market**  
-The old covered market where the strangers epilogue buys its Daeboreum nuts. For now it borrows the fish market.  
-Attach: `CG - style (Strangers).png`  
-Save as: `epi-s-sinpo.png`
-```
-Background art in the same realistic style as the attached image, 16:9, high resolution, no people, no readable text: Sinpo market in Incheon on a cold grey February afternoon in 2013, a long old covered shopping arcade under a patched translucent roof that turns the daylight a dim yellow. Crowded stalls down both sides: open sacks of walnuts, peanuts and chestnuts with tin scoops in them, wooden boxes of grains and beans, strings of dried radish greens hanging like brown laundry, steam rising from a dumpling stall, a fried-chicken shop at the corner with a glowing sign (no readable letters), a little red radio on a shelf among scoops and an abacus, old hand-painted signs too faded to read, wet concrete underfoot with a few peanut shells. Busy-looking even empty, warm against the cold. Keep everything important away from the edges.
-```
-
-**[ ] 34H. nuts**  
-A CG for the strangers epilogue: at a nut stall in the market, both boys hold out half a walnut to her at the same time.  
-Attach: `CG - style (Strangers).png`, `BG - Sinpo Market.png` (34G, once it's made; until then leave it off), `CG - Solar (Strangers).png`, `CG - Haechan (Strangers).png`, `CG - Jungwon (Strangers).png`  
-Save as: `epi-s-nuts.png`
-```
-A realistic cinematic illustration in exactly the style of the first attached image, 16:9, no text: an old covered market in Incheon on a grey February afternoon, dim yellow light through a patched roof, at a stall piled with open sacks of walnuts and peanuts with tin scoops. The SAME three people as the attached references. In the middle Solar (long near-black hair pinned up, a dark winter coat, a cream scarf, a jade ring on her right hand) stands at the stall looking down, trying not to smile. On her left Haechan (sun-browned, moles on his cheek and jaw, short dark brown hair longer at the front and wind-wrecked, a knife scar through his left eyebrow, a black padded work jacket over a good shirt) holds out half a cracked walnut on his open palm toward her, grinning, chewing gum. On her right Jungwon (small sharp feline face, neat black hair, a dark coat buttoned to the collar, a grey scarf, an old steel watch, a heavy paper bag of grain held in his right hand) holds out the other half of a walnut on his palm, perfectly polite, with deep dimples. The two young men are not looking at each other at all. Behind the stall, an old woman in several cardigans sits on an upturned crate watching them with delight. Steam from a nearby stall, a string of dried greens overhead. Funny, tense, warm. Natural skin, real fabrics, soft depth of field.
-```
-
-**[ ] 34I. white eyebrows**  
-A CG for the strangers epilogue: the girls' night at the jjimjilbang on the eve of the full moon.  
-Attach: `CG - style (Strangers).png`, `BG - Incheon Bathhouse.png`, `CG - Solar (Strangers).png`, `CG - Yunjin (Strangers).png`, `CG - Chaewon (Strangers).png`, `CG - Sakura (Strangers).png`, `CG - Kazuha (Strangers).png`, `CG - Eunchae (Strangers).png`  
-Save as: `epi-s-eyebrows.png`
-```
-A realistic cinematic illustration in exactly the style of the first attached image, 16:9, no text: the big warm hall of a Korean jjimjilbang at night, a heated wooden floor with thin mats, soft yellow lights, a television on the wall with the sound off, strangers sleeping in the background. The SAME six young women as the attached references, all in matching orange cotton jjimjilbang T-shirts and shorts, each with a towel rolled into the little "lamb" hat with two ears on her head. In the middle Yunjin lies fast asleep on her back on the floor, hands folded on her stomach, mouth a little open, with two thick white stripes of flour painted along her eyebrows. Around her, kneeling and lying on the mats, the others are shaking with silent laughter: one (Eunchae) holding a small black film canister of flour, one (Sakura, tall, straight face) carefully finishing an eyebrow with a fingertip, one (Kazuha) holding up a phone to take the photo, one (Chaewon) on watch with an index card in a plastic sleeve, and Solar (long near-black hair under her lamb hat) leaning over Yunjin with a pinch of flour, biting her lip. A tray of brown baked eggs and cans of sikhye on the floor. Cosy, silly, golden. Natural skin, real fabrics, soft depth of field.
-```
-
-**[ ] 34J. sugar giving up**  
-A CG for a late night in the strangers epilogue: the Yang house kitchen at one in the morning, sugar candy on the counter.  
-Attach: `CG - style (Strangers).png`, `BG - Yang House Kitchen.png`, `CG - Solar (Strangers).png`, `CG - Jungwon (Strangers).png`, `CG - Jay (Strangers).png`  
-Save as: `epi-s-sugar.png`
-```
-A realistic cinematic illustration in exactly the style of the first attached image, 16:9, no text: the attached Yang house kitchen late at night, steel counters, the window black, one warm light on over a big stove and the rest of the room gone dark around it. The SAME three people as the attached references. At the stove, Jay (tired handsome face, goggles pushed up in his hair, a faded grey T-shirt with an old city name on it, track trousers) holds a big ladle over a blue gas flame. On stools at the counter: Jungwon, barefoot on the tiles, in a soft dark grey sweater with the sleeves pushed up and his hair pushed back and not neat, no watch on his wrist, holding up a small honey-colored disc of dalgona sugar candy with a perfect little umbrella shape between his finger and thumb toward the light, his face completely still with concentration and quiet pride; beside him Solar, in a long dark coat over pyjamas with her long near-black hair loose, laughing into her hand. On the counter in front of them, rows of little sugar candies with stars and triangles pressed into them, a few broken umbrellas, a jar of sewing needles, greased foil. Warm amber light, deep shadows, a secret midnight feeling. Natural skin, real fabrics, soft depth of field.
-```
-
-**[ ] 34K. engine running**  
-A CG for a late night in the strangers epilogue: the driver's car idling at the Lee house gate, and Solar in the passenger seat.  
-Attach: `CG - style (Strangers).png`, `BG - Lee Car at night.png`, `BG - Lee House Gate at night.png`, `CG - Solar (Strangers).png`, `CG - Mr. Oh (Strangers).png`  
-Save as: `epi-s-engine.png`
-```
-A realistic cinematic illustration in exactly the style of the first attached image, 16:9, no text: inside an older dark saloon car parked at the attached Lee house gate on a frozen winter night, seen from the back seat between the two front seats, the windscreen showing the lantern-lit iron gate and a road going down a hill into the dark, frost beginning to grow in ferns at the corners of the glass, a thread of white exhaust rising past the side window in the lamp light. The SAME two people as the attached references. In the driver's seat Mr. Oh (an older man, grey jacket, tie loosened very slightly, very upright) sits with both hands on the wheel at ten and two, looking straight ahead, his face still, the very tips of his ears pink. In the passenger seat Solar, in a long dark coat over pyjamas with her long near-black hair down, holds the cup of a tartan thermos in both hands, head turned toward him, laughing quietly. A dim dashboard glow, the heater's warmth on both faces, the radio dark. Tender, unspoken, a little funny. Natural skin, real fabrics, soft depth of field.
-```
-
----
-
 ## 36. HOAX places and CGs (Gemini for places, ChatGPT for CGs; realistic; Kat, Nov 6)
 New places and moments from the HOAX expansion. Until each picture exists the game borrows the closest existing background. Save under the name given: Claude swaps it in.
-
-**[ ] 36A. The Kims' front step at night**  
-For a late-night scene on Solar's front step in HOAX (now a winter street stands in).  
-⏳ Make this after the new Kim house (H3 / H4 in `EPILOGUE-BACKGROUND-PROMPTS.md`), and attach the new picture in place of `BG - Kim House (evening).png`.  
-Attach: `CG - style (HOAX).png`, `BG - Kim House (evening).png`  
-Save as: `epi-h-front-step-night.png`
-```
-Background art in the same realistic painted style as the first attached image, 16:9, high resolution, no people, no readable text: the front step of the same family house as the second attached image, seen from the path at one in the morning in a Korean residential neighbourhood in late December. Three wide stone steps up to a front door with a frosted glass panel, a warm yellow porch light above the door making a small circle of light on the steps, fresh snow on the steps and the handrail with no footprints yet, a doormat, a pair of slippers left by the door, a low wall and a small gate at the edge of the frame, the dark windows of the houses across the narrow street, light snow falling through the porch light. Quiet, cold, safe. Keep everything important away from the edges.
-```
-
-**[ ] 36B. Cherry's room**  
-Cherry's bedroom, where Solar visits her after Christmas (now Solar's own room stands in).  
-Attach: `CG - style (HOAX).png`  
-Save as: `epi-h-cherry-room.png`
-```
-Background art in the same realistic painted style as the attached image, 16:9, high resolution, no people, no readable text: a high-school girl's bedroom in a Korean house on a cold, sunny winter afternoon. Shelves on every wall filled three deep with Care Bear plush toys arranged in rainbow order, one grumpy blue bear alone on the windowsill facing out, a vanity with a big lit mirror covered in makeup, a curling iron and hair clips, a pair of black lace-up boots by the bed, a messy bed with a cherry-red throw and a stack of fashion magazines, fairy lights along the top of the window, flat white winter sun coming in, old snow banked on the street below the window. Pretty, cluttered and a little tough at the same time. Keep everything important away from the edges.
-```
-
-**[ ] 36C. Hyunsuk's car at night**  
-A late drive on Christmas night in HOAX (now Jungwon's car stands in).  
-Attach: `CG - style (HOAX).png`  
-Save as: `epi-h-hyunsuk-car.png`
-```
-Background art in the same realistic painted style as the attached image, 16:9, high resolution, no people, no readable text: the inside of a small, old silver hatchback at night, seen from the back seat between the two front seats. A worn fabric dashboard lit by the dim green glow of the dials, the heater's red light on full, a little air freshener swinging from the mirror, a takeaway coffee cup in the holder, the driver's seat pulled all the way forward, a windshield with one wiper stopped halfway up, and through it a quiet Korean town street at night with snow banked on the kerbs, street lamps and the lit sign of a convenience store far ahead. Warm inside, cold outside. Keep everything important away from the edges.
-```
-
 
 **[ ] 36D. Getting ready**  
 Cherry doing Solar's hair at the mirror before the winter-break party.  

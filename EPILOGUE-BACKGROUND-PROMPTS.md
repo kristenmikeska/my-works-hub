@@ -10,14 +10,14 @@ Kat, Nov 6 2026: the strangers and HOAX epilogues' older backgrounds redrawn in 
 | strangers | 14 | 21 | 6, plus the Lees' kitchen needs a **day** version (2 here, 4 left as they are) |
 | Stay | 27 | 15 (11 here, 4 left as notes) | 1 (optional) |
 
-New places that still borrow another picture (Front Step, Cherry's room, the boys' cars, Yeobo's back door, the tent bar, Sinpo, the dance studio, the harbor by day) are already on `FEMC-ART-TODO.md` (36A–36C, 36G, 36H, 34A, 34B, 34F, 34G), so they aren't repeated here.
+New places that still borrow another picture (Jihoon's car, Yeobo's back door) are already on `FEMC-ART-TODO.md` (36G, 36H), so they aren't repeated here. (Front Step at night, Cherry's room, Hyunsuk's car, the tent bar, Sinpo, the dance studio and the harbor by day are in, art batch 143.)
 
 **Do these first** (most-used and most-wrong first)
 1. **H1 + H2. Solar's HOAX room, day and night.** The priority. It's her home screen, and most of her late nights happen there.
 2. **S1. The Lees' kitchen.** The most-used place in strangers. Then **S2**, its daytime version.
 3. **S3 + S4. Solar's room at the Lee house, day and night.**
 4. **H3 + H4. The Kims' house, day and evening.** The current picture is a high-rise apartment, but the Kims live in a house with a gate, a front step and stairs. The kitchen and living-room scenes all show this picture.
-5. **S16. The Incheon harbor at night**, then FEMC-ART-TODO 34A for the day. Today the daytime harbor is the main game's sailing-ship harbor.
+5. **S16. The Incheon harbor at night**, to match the new harbor by day (in since art batch 143).
 6. **H5 + H6 + H7. Yeobo's** (day, night, after closing).
 7. **S5–S10. The Lee house gate, garden and annex**, day and night.
 8. **H8 + H9. The park** (day, night), then **H10. the school hallway**.
@@ -368,13 +368,12 @@ The place: the formal dining room of a wealthy old 1970s Korean house in Incheon
 ```
 
 **[ ] S16. The Incheon harbor at night**  
-Attach: `BG - style 1 (Strangers).png`, `BG - style 2 (Strangers).png`  
-Save as: `epi-s-harbor-night.png` (new: the old harbor picture stays in the main game)  
-Then make **FEMC-ART-TODO 34A (the harbor by day)** attaching this new picture instead of the old night one, so the two match.
+Attach: `BG - style 1 (Strangers).png`, `BG - style 2 (Strangers).png`, `BG - Incheon Harbor by Day (strangers).png` (the same harbor by day, to match)  
+Save as: `epi-s-harbor-night.png` (new: the old harbor picture stays in the main game)
 ```
 Paint a background in the art style of the attached images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; warm cinematic lighting from real light sources with glowing highlights and soft deep shadows; like a still from a high-budget animated film that leans toward realism. The attached images only show the style; do not copy their street or car. Leave out all people. No readable text. 16:9, high resolution. Keep everything important away from the edges.
 
-The place: the real port of Incheon, South Korea, at night in late February 2013. A long concrete quay with iron bollards and coiled mooring ropes, rust-streaked shipping containers stacked in rows, giant gantry cranes with red warning lights standing over everything, a cargo ship tied up with its deck lights on, black water with the orange sodium lights shivering on it, puddles on the concrete, old snow along the edge of the quay, and across the water the lights of Wolmido island. Cold, wide, a little dangerous. Diesel haze in the lamplight.
+The place: the real port of Incheon, South Korea, at night in late February 2013, the SAME quay, cranes and water as the third attached image (it shows this harbor by day; match its layout, but in the painting style of the first two). A long concrete quay with iron bollards and coiled mooring ropes, rust-streaked shipping containers stacked in rows, giant gantry cranes with red warning lights standing over everything, a cargo ship tied up with its deck lights on, black water with the orange sodium lights shivering on it, puddles on the concrete, old snow along the edge of the quay, and across the water the lights of Wolmido island. Cold, wide, a little dangerous. Diesel haze in the lamplight.
 ```
 
 **[ ] S17. Yeonan Pier fish market, day**  
