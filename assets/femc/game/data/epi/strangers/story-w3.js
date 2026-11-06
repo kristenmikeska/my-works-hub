@@ -52,7 +52,8 @@
      - The watch shifts: the kitchen door is left on the latch for whoever has the night (unheard).
      - The Lee house sits on the hill above the seawall; the seawall steps go down to the flats at the bottom of it.
      - Mrs. Bang crosses herself (the brief's beat; she is Catholic). The hall clock was Solar's grandmother's.
-     - Auntie Song dozes in her armchair by the stove on the nights she misses the last bus (molihua).
+     - (Kat, Nov 6: Auntie Song never stays over; the old armchair-at-night line was moved. In molihua Mrs. Bang, who lives in,
+       has the kitchen at two in the morning, and Solar rings Auntie Song at home in Chinatown.)
    Canon fences kept as the private plan sets them (Claude-only: DO-NOT-OPEN-epilogue-plan-private.md §4). */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).strangers ||= {});
@@ -906,7 +907,7 @@
       ] },
       { t: "(Run down and wake the kitchen.)", stat: { courage: 1 }, then: [
         { n: "She went down the stairs in the dark in her socks, past the seventh stair without stepping on it, the way she'd learned at fourteen, and across the hall past the grandmother clock ticking in its case, and into the kitchen, and put the light on." },
-        { n: "Auntie Song was in her armchair by the stove under a blanket, where she slept on the nights she missed the last bus and Mrs. Bang wouldn't let her walk. She was already awake. She was sitting bolt upright in the chair with the blanket clutched at her throat and her face white as rice paper, listening to her own voice coming up the garden, singing." }
+        { n: "Mrs. Bang was already there, down the back stairs from her room over the kitchen in her quilted dressing gown, with her hair in its net and the rug beater in one hand. She was standing in the middle of the tiles with her face white as rice paper, listening to Auntie Song's voice coming up the garden, singing, when Auntie Song had gone home on the last bus at ten and was asleep in her own bed in Chinatown, three kilometers down the hill." }
       ] },
       { t: "(Open the window and shout for him.)", then: [
         { n: "She got the window open. The cold came in, and the dust, and the song, so loud now it filled the room. She leaned out into it." },
@@ -959,15 +960,20 @@
 
     { place: 'Incheon · The Lee House · Kitchen', time: 'Late Night', soft: true },
     { n: "She didn't go to bed. She went to the kitchen." },
-    { n: "Mrs. Bang was there, in her quilted dressing gown, putting the kettle on, because there was nothing at two in the morning in this house that Mrs. Bang couldn't answer with a kettle. And Auntie Song was still in her armchair by the stove, upright, the blanket at her throat. Her face was white. Her little hands were shaking on the blanket, and Solar had never seen them shake, not over a knife, not over a fish, not over anything." },
-    { n: "She looked up when Solar came in. She spoke in Mandarin. In her kitchen she only ever spoke Mandarin, and her voice was hoarse, as if she was the one who'd been singing." },
+    { n: "Mrs. Bang was there, in her quilted dressing gown, putting the kettle on, because there was nothing at two in the morning in this house that Mrs. Bang couldn't answer with a kettle. Her hands were shaking. Solar had never seen them shake, not over a pot, not over a cut, not over anything, and she watched them miss the kettle's handle once and find it, and fill it, and put it on the ring, and then Mrs. Bang crossed herself, quickly, the way she had that morning over the clocks, and put both hands flat on the counter." },
+    { s: 'mrsbang', f: 'serious', t: "That was Meilan. That was her voice. Every note of it wrong in the right place." },
+    { s: 'solar', f: 'serious', t: "She's at home, Mrs. Bang." },
+    { s: 'mrsbang', f: 'serious', t: "I know where she is. I put her on the bus." },
+    { n: "Solar took the grey phone out of her coat pocket. Six numbers in it. One of them saved as Song-ayi, because she'd typed it in at fifteen and never changed it. It rang twice. Old women didn't sleep; Auntie Song had told her that when she was nine, and it had sounded like a threat." },
+    { s: 'auntie', f: 'neutral', t: "*Little moon. It's two in the morning. Who's dead.*" },
+    { s: 'solar', f: 'serious', t: "*Nobody, Auntie. Nobody's dead. The radio in the annex. It sang your song. Loud. Like you did that night.*" },
+    { n: "Nothing on the line for a long moment but a television somewhere in an apartment in Chinatown, and a kettle of Auntie Song's own beginning, very faintly, to tick." },
     { s: 'auntie', f: 'surprised', t: "*Who taught that radio my song.*" },
-    { n: "Solar crouched in front of the armchair. She took the small shaking hands in hers, the knife-hard calluses, the fingers that had taught hers to open a flounder at eleven, and held them." },
     { s: 'solar', f: 'serious', t: "*It was warning us, Auntie. It did it the way you did. Loud.*" },
-    { n: "Auntie Song looked at her for a long time. At her face, and her hair down, and her eyes. She'd been listening at doors for nineteen years. She knew what she was looking at, or half of it, and she knew which half she'd never be told." },
+    { n: "Another silence. She could hear the old woman breathing, short, through her nose, the way she breathed when a broth was being tested. She'd been listening at doors for nineteen years. She knew what she was hearing, or half of it, and she knew which half she'd never be told, not on a phone, not in this city." },
     { s: 'auntie', f: 'neutral', t: "*Then it learned it from me.*" },
-    { n: "She turned her hands over in Solar's and held on back, hard, and her chin came up, and some of the white went out of her face." },
-    { s: 'auntie', f: 'happy', t: "*Good. It learned it right.*" },
+    { s: 'auntie', f: 'happy', t: "*Good. It learned it right. Put Bang on.*" },
+    { n: "She held the phone out. Mrs. Bang took it in her shaking hand and put it to her ear, and listened, and said *ne* twice, and then, in Korean, very sharply, that the woman should go back to sleep and stop singing on other people's radios, and Solar heard, quite clearly across the kitchen, Auntie Song laugh, and Mrs. Bang's mouth went, against her will, and her hands stopped shaking on the counter." },
     { n: "Down the garden, the annex window was dark again. Through the kitchen window Solar could see him sitting on the back step by the gate in the lantern light, in his shirtsleeves, with Mrs. Bang's crane quilt off his own bed round his shoulders, his back against the gatepost, facing the lane." },
     { n: "Later, before light, she went down with a cup of barley tea and found the radio on the annex sill. It was cold. The dial was turned to off. It had been off, he told her without looking round, when he'd gone out. It had been off all night." },
     { n: "The warning had worked. That was the thing she kept turning over, with her hands round her own cup, on the back step beside him, while the sky went gray over the dust. Whatever it was that had been leaking through into this house for three weeks, the bells and the clocks and the cold tea and the tide, it had, tonight, for the first time, done something for them." },

@@ -45,7 +45,7 @@
    Inventions for Kat to confirm: Jungwon's mother sends him out with a list on an envelope (and asks for stamps the store
      doesn't sell); the temple story's breakfast was rice porridge and the wake-up bell was four a.m. (Heeseung's flashcards);
      Chaewon's surname Kim on the hearing notice;
-     the hearing is 'after lunch' Thursday; the make-up exams are 8:30 a.m. in Room 3-2 and the library annex; Jihoon's crane
+     the hearing is 'after lunch' Thursday; the make-up exams are 8:30 a.m. in Room 3-4 and the library annex (was 3-2; Nov 6, matching story-w3); Jihoon's crane
      prize on 1/1-1/5 (a pink pig keyring) hangs from his mirror; Jihoon on Iwatodai: 'zero stars, the food was good'; the bake-
      sale tin's exact total is never stated (Jungwon's count matches Heeseung's ledger, nobody says the number); who put the tin
      in the ballot box is never said (Niki claims it, Heeseung says no). The vending-machine can, the séance words and the notes
@@ -528,7 +528,7 @@
     ] },
 
     { id: 'epi-h-jihoon-5', title: 'fix it', hint: "Jihoon is on the park swings in the dark, by himself, which is new.",
-      after: '1/8', until: '1/12', slots: ['evening'], events: ['epi-h-makeup'], noFlags: [], route: null, noRoute: 'jihoon',
+      after: '1/8', until: '1/10', slots: ['evening', 'late'], events: ['epi-h-makeup'], noFlags: [], route: null, noRoute: 'jihoon', // Nov 6: +late (the park at night), to 1/10 (it's an exam day: "you were behind me today")
       place: 'Hanlim · The Park', time: 'Evening', scene: [
       { music: 'epi-h-jihoon' },
       { n: "The park at night was the swings and one working lamp and the snow gone blue under it, and Jihoon on the swing on the end, not swinging, just sitting with the chains wrapped around his fists and his boots dragging two long tracks in the snow." },
@@ -944,7 +944,7 @@
       { t: "(Leave it on read.)", silent: true, then: [{ from: 'asahi', t: 'asanoonecares: she left us on read. iconic' }] }
     ] },
     { id: 'epi-h-tx-school-makeups', thread: 'school', date: '12/22', slot: 'evening', events: ['epi-h-emergency'], msgs: [
-      { from: 'school', t: "Re: Make-up examinations (second semester finals). Students who were absent for any part of the examination period of 11-15 December will sit make-up examinations Monday 8 January through Wednesday 10 January, beginning 8:30 a.m., in Room 3-2 and the library annex." },
+      { from: 'school', t: "Re: Make-up examinations (second semester finals). Students who were absent for any part of the examination period of 11-15 December will sit make-up examinations Monday 8 January through Wednesday 10 January, beginning 8:30 a.m., in Room 3-4 and the library annex." },
       { from: 'school', t: "Individual timetables will be posted to the student portal. Examinations will be proctored by Ms. Miyawaki (student teacher). Results will be posted Friday 12 January. Uniform regulations apply." }
     ], reply: [
       { t: "(Screenshot it for the chat.)", then: [] },
@@ -1163,7 +1163,7 @@
       { t: "(Leave it on read.)", silent: true, then: [{ from: 'asahi', t: 'asanoonecares: no one cares about the tin' }] }
     ] },
     { id: 'epi-h-tx-retreat-clocks', thread: 'retreat', date: '1/6', slot: 'after', events: ['epi-h-clocks'], msgs: [
-      { from: 'sunoo', t: "sunooshine: halmeoni says the clocks are fine now. she says they were 'resting'" },
+      { from: 'sunoo', t: "sunooshine: halmeoni says leave the clocks at twelve. she says they're 'resting'" },
       { from: 'niki', t: 'rikiniki: -skull-' },
       { from: 'jay', t: "jbird: clocks don't rest bro" },
       { from: 'sunghoon', t: 'princehoon: everything rests. - s' },

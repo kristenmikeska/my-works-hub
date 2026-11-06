@@ -24,6 +24,11 @@
      epi-h-rt-jh-icecream     late   12/26-1/7    route jihoon: "Come Outside."; melon bars on the step in the snow
      epi-h-rt-council-facts   early  12/26-1/7    route council: Heeseung's 8 a.m. retreat-facts drill (strain)
 
+   Second pass (Nov 6 2026): epi-h-party splices in R.partyMingle (story-party.js, which loads first) once per route branch,
+     between the arrival and the kitchen; the jihoon branch's "She didn't answer that. She sat on the third stair..." line was
+     split in two around it. Nothing else in the party changed. The jw-call routine's "four streets away" and the Nana routine's
+     "fallen cloud" were reworded (Jungwon lives about a block away; Solar doesn't call Nana a cloud).
+
    Flags set: epi-h-party (always), epi-h-jihoon-chose (jihoon route), epi-h-notes, epi-h-motion, epi-h-alone.
      Local: epi-h-party-refused / -flushed / -left (jungwon route choice), epi-h-party-jh-flushed / -jh-walked (jihoon route),
      epi-h-party-scuffle (council route), epi-h-notes-kept (she left the notes up / kept them; jungwon route or call).
@@ -88,6 +93,7 @@
         { s: 'cherry', f: 'surprised', t: "'I'm not trying to be controlling.' Oh my God. He put a period after controlling. Is he being held hostage? Blink twice, Yang." },
         { s: 'solar', f: 'happy', t: "He's kept home, Cher. He's basically a princess in a tower." },
         { s: 'cherry', f: 'serious', t: "A princess in a tower who made me pinky swear in the Yeobo's bathroom, so you know what that means. You're not going within ten feet of the kitchen. I will physically sit on you." },
+        ...(R.partyMingle || []), // second pass (Nov 6 2026): the mingle, story-party.js
         { n: "The kitchen was where Jihoon was. Of course it was. He was up on the counter in a black jacket and the beanie Cherry had once chosen for him as a joke and he'd kept as a personality, holding court over a ring of people who laughed a half second before he finished anything, and beside him, leaning on the fridge, was the guy from sophomore year." },
         { n: "She hadn't seen him in two years. She recognized him from the back of his head, which was its own kind of answer." },
         { n: "Jihoon saw her across the room and lit up like a slot machine. He slid off the counter, and Cherry stepped directly into his path like a bouncer with a grudge." },
@@ -150,7 +156,9 @@
           { s: 'hyunsuk', f: 'serious', t: "You came with him? Man. Sol." },
           { s: 'solar', f: 'sad', t: "I know." },
           { s: 'hyunsuk', f: 'sad', t: "Do you, though." },
-          { n: "She didn't answer that. She sat on the third stair with her coat still on and watched Jihoon talk to the guy by the fridge, the little hand thing they used to do, the laugh that came too early. When he came back across the room his hand was already in his jacket." },
+          { n: "She didn't answer that." },
+          ...(R.partyMingle || []), // second pass (Nov 6 2026): the mingle, story-party.js
+          { n: "She sat on the third stair with her coat still on and watched Jihoon talk to the guy by the fridge, the little hand thing they used to do, the laugh that came too early. When he came back across the room his hand was already in his jacket." },
           { s: 'jihoon', f: 'neutral', t: "Sol. You Want—" },
           { n: "He stopped." },
           { n: "She watched him stop. He was looking at her, at the snow melting into the shoulders of her coat, at whatever was on her face, and for once in his whole life Park Jihoon didn't finish a sentence just to see where it went. His hand stayed in his pocket. The music thumped on. Behind him Hyunsuk had gone very still with a cup halfway to his mouth." },
@@ -208,6 +216,7 @@
           { n: "So they went in. Sunoo carried the crate of water like a ring bearer and gave a bottle to everyone who looked at him, which was everyone. Jay knew every single person in the house and said *bro* to all of them in a slightly different key. Niki vanished into the crowd in under eight seconds and was later seen on a bannister. Sunghoon, who hadn't looked at another girl since Cherry, spread the word exclusively to boys, using exactly the same smile, to deeply confusing effect." },
           { s: 'sunoo', f: 'happy', t: "Water? Happy holidays! It's free! It's just water! Stay hydrated!" },
           { s: 'sunoo', f: 'flustered', t: "Why is everyone looking at it like that? It's sealed. Look. It's sealed! It's Evian!" },
+          ...(R.partyMingle || []), // second pass (Nov 6 2026): the mingle, story-party.js
           { n: "Then the kitchen. Then Jihoon, on the counter, the guy from sophomore year at his shoulder, a corner of a bag showing at the lip of his jacket and going back down when he saw who'd come in." },
           { s: 'jihoon', f: 'happy', t: "Oh, Look. The Temple Kids. Did You Bring Incense? Is This A Field Trip?" },
           { s: 'heeseung', f: 'neutral', t: "Water?" },
@@ -856,7 +865,7 @@
   (R.routines ||= []).push(
 
     { id: 'epi-h-rt-nana', slot: 'early', after: '12/22', until: '12/27', events: ['epi-h-home'], place: 'Hanlim · Home · Her Room', time: 'Morning', scene: [
-      { n: "Nana woke her at six the way he always had, by lying on her. All of her. All of him, sixty pounds of white Samoyed fluff and silly legs arranged across her body like a fallen cloud, his nose an inch from her ear, breathing hot dog breath into it with total devotion." },
+      { n: "Nana woke her at six the way he always had, by lying on her. All of her. All of him, sixty pounds of white Samoyed fluff and silly legs arranged across her body like a dropped duvet, his nose an inch from her ear, breathing hot dog breath into it with total devotion." },
       { n: "For a year she'd woken up to a different dog. A smaller, sharper, white one with a red collar who sat by the bed in perfect silence until she opened her eyes, then went to the door, and waited." },
       { s: 'solar', f: 'happy', t: "Koro— ...Nana. Nana. Good morning. Get off me, you giant." },
       { n: "Nana didn't know who Koro was. Nana didn't care. Nana licked the side of her face in a long, slow, offended stripe." },
@@ -959,7 +968,7 @@
       { s: 'jungwon', f: 'happy', t: "Good. Sine x." },
       { s: 'solar', f: 'happy', t: "Cosine x." },
       { s: 'jungwon', f: 'happy', t: "Good. You're better at this lying down." },
-      { n: "Then she didn't say anything for a while, and he let her not, and she lay there with the phone on the pillow listening to him breathe on the floor of a room four streets away." },
+      { n: "Then she didn't say anything for a while, and he let her not, and she lay there with the phone on the pillow listening to him breathe on the floor of a room a block away." },
       { s: 'solar', f: 'sad', t: "He would've hated this. Calculus. He would've—" },
       { n: "She stopped. She heard herself stop. On the other end of the line, Jungwon didn't ask who." },
       { s: 'jungwon', f: 'sad', t: "He would've made fun of both of us." },

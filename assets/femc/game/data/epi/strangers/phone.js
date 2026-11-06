@@ -7,7 +7,9 @@
    Inventions: the committee handles (chae_committee, yunjinnie, sakura_afk, kazuha_obake, eunchae.seen); Haechan's gum is
    anything but mint now; Mr. Oh's car radio stays off; the annex light going off and on once as Haechan's goodnight; Jungwon
    waits for her to hang up first; Mrs. Moon makes Jay wear two masks in the dust; Riki answers calls mid-run; Kazuha's
-   grandmother says ghosts are mostly polite; Sakura's handheld; Eunchae keeps count of Solar's sentences. */
+   grandmother says ghosts are mostly polite; Sakura's handheld; Eunchae keeps count of Solar's sentences.
+   Nov 6 pass: card lines read the new hangout flags epi-s-oh-harbor, epi-s-umbrella, epi-s-chaewon-counts, epi-s-sakura-nihongo,
+   epi-s-kazuha-morning, epi-s-eyebrows, epi-s-eunchae-forty (people-late.js, people-girls.js). */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).strangers ||= {});
   const T = (R.texts ||= {});
@@ -313,7 +315,8 @@
         known: [
           { t: 'Hands at ten and two. Thirty years, never a corner taken fast.' },
           { t: 'Texts one line at a time. Usually “Downstairs.”', events: ['epi-s-home'] },
-          { t: 'Once drove you round the harbor road at two in the morning till you slept.', flags: ['epi-s-oh-cranes'] }
+          { t: 'Once drove you round the harbor road at two in the morning till you slept.', flags: ['epi-s-oh-cranes'] },
+          { t: 'Lives over the garage. Ran the engine at the gate every night you were gone, so you’d hear it.', flags: ['epi-s-oh-harbor'] }
         ],
         calls: [
           { id: 'epi-s-call-mroh-1', after: '2/18', events: ['epi-s-home'], scene: [
@@ -392,7 +395,8 @@
         events: ['epi-s-trio'],
         known: [
           { t: 'In the Yang kitchen, under Mrs. Moon, who stirs against his advice.', events: ['epi-s-trio'] },
-          { t: 'Thinks everything is chemistry. Salt is a door.', events: ['epi-s-trio'] }
+          { t: 'Thinks everything is chemistry. Salt is a door.', events: ['epi-s-trio'] },
+          { t: 'Makes ppopgi at one in the morning. The only reaction he knows that can’t hurt anybody.', flags: ['epi-s-umbrella'] }
         ],
         calls: [
           { id: 'epi-s-call-jay-1', after: '2/22', events: ['epi-s-trio'], scene: [
@@ -461,7 +465,8 @@
         events: ['epi-s-girls'],
         known: [
           { t: 'Made the daeboreum committee, so it’s official.', events: ['epi-s-girls'] },
-          { t: 'Makes spreadsheets for outings. Laminates them, sometimes.', events: ['epi-s-girls'] }
+          { t: 'Makes spreadsheets for outings. Laminates them, sometimes.', events: ['epi-s-girls'] },
+          { t: 'Teaches the six-year-olds at the old studio on Saturdays. Builds a gap into every dance, in case somebody goes first.', flags: ['epi-s-chaewon-counts'] }
         ],
         calls: [
           { id: 'epi-s-call-chaewon-1', after: '2/22', until: '2/24', events: ['epi-s-girls'], scene: [
@@ -493,7 +498,8 @@
         events: ['epi-s-girls'],
         known: [
           { t: 'Says “respect” to things, and means it about once a month.', events: ['epi-s-girls'] },
-          { t: 'Hit diamond. Nobody is to congratulate her.', after: '2/26', events: ['epi-s-moon'] }
+          { t: 'Hit diamond. Nobody is to congratulate her.', after: '2/26', events: ['epi-s-moon'] },
+          { t: 'From Kagoshima. Her mother sends fish cakes every month. She talks Japanese with you, like a girl skipping class.', flags: ['epi-s-sakura-nihongo'] }
         ],
         noCall: 'She doesn’t pick up calls. Nobody does anymore, she says.',
         topics: [
@@ -510,7 +516,8 @@
         events: ['epi-s-girls'],
         known: [
           { t: 'Believes in ghosts. Asks everyone whether they do.', events: ['epi-s-girls'] },
-          { t: 'Her grandmother says a lot of things. She is usually right.', after: '3/3', events: ['epi-s-moon'] }
+          { t: 'Her grandmother says a lot of things. She is usually right.', after: '3/3', events: ['epi-s-moon'] },
+          { t: 'Did ballet for eleven years. Still turns on any floor that’s flat enough. Dreams about people.', flags: ['epi-s-kazuha-morning'] }
         ],
         noCall: 'She’d tell you a ghost story. It’s late.',
         topics: [
@@ -527,7 +534,9 @@
         events: ['epi-s-girls'],
         known: [
           { t: 'Notices things. It is, apparently, her whole personality.', events: ['epi-s-girls'] },
-          { t: 'Keeps count of how many sentences you say.', events: ['epi-s-girls'] }
+          { t: 'Keeps count of how many sentences you say.', events: ['epi-s-girls'] },
+          { t: 'Got your eyebrows at the jjimjilbang door. You didn’t feel a thing.', flags: ['epi-s-eyebrows'] },
+          { t: 'Returned forty hair ties in person. One of them was yours.', flags: ['epi-s-eunchae-forty'] }
         ],
         noCall: 'She’d screenshot the call log.',
         topics: [

@@ -29,5 +29,17 @@ window.FEMC_GAME_OUTFIT_LINES = [
   { look: 'sk-esports', who: 'minji', f: 'happy', lines: ["Jersey's on. You look like you're about to ruin somebody's ranked.", "Hold still. I'm getting the camera."] },
   { look: 'sk-limelight', who: 'jihoon', f: 'happy', lines: ["Bold. Dressing like that when I'm in the building.", "Now nobody's going to look at me. Rude."] },
   { look: 'sk-alphaphi', who: 'jungwon', f: 'neutral', lines: ["You look very nice.", "...That's all. I'm not good at adding to it."] },
-  { look: 'sk-cp-afterhours', who: 'jungwon', f: 'happy', lines: ["Is that a council tie?", "It suits you better than it suits me. Don't tell anyone I said that."] }
+  { look: 'sk-cp-afterhours', who: 'jungwon', f: 'happy', lines: ["Is that a council tie?", "It suits you better than it suits me. Don't tell anyone I said that."] },
+  // Nov 6 2026: the eleven skin-series outfits (art batch 142)
+  { look: 'sk-arcana-moon', who: 'fuuka', f: 'surprised', lines: ["Every phase of the moon... you even got the waning gibbous right.", "Sorry. I counted. I couldn't help it."] },
+  { look: 'sk-arcana-star', who: 'junpei', f: 'surprised', lines: ["Dude, you're barefoot. In the dorm. In the lounge.", "...Okay, that's kind of magical. I'm still getting you socks."] },
+  { look: 'sk-arcana-lovers', who: 'haechan', f: 'neutral', lines: ["A rose. You picked that yourself?", "Hm. Thought someone gave it to you. Good. Keep it that way."] },
+  { look: 'sk-chapel-rose', who: 'jihoon', f: 'happy', lines: ["The tiny hat. The pigtails. The face like you'd ruin my whole life.", "Ten out of ten. I'm scared. Keep going."] },
+  { look: 'sk-chapel-veil', who: 'mitsuru', f: 'neutral', lines: ["That veil must be three metres at least.", "Mind the stairs. ...It is, I'll admit, very striking."] },
+  { look: 'sk-chapel-vampire', who: 'ken', f: 'surprised', lines: ["Are those fangs?", "They're fake. Right? I'm only asking for... research."] },
+  { look: 'sk-chapel-picnic', who: 'yukari', f: 'neutral', lines: ["A parasol, a basket and a graveyard. That's your idea of a picnic?", "...Fine. Save me a sandwich. I'm not going, though."] },
+  { look: 'sk-cottage-meadow', who: 'koromaru', f: 'happy', lines: ["Arf!", "(He noses at a daisy in her braid, decides it's his, and very gently tries to take it.)"] },
+  { look: 'sk-cottage-bakery', who: 'shinjiro', f: 'neutral', before: '10/4', lines: ["...You've got flour on your face.", "Left side. No, your other left. ...Whatever you made, I'll try it."] },
+  { look: 'sk-cottage-greenhouse', who: 'aigis', f: 'happy', lines: ["The weather forecast says forty percent chance of rain.", "Your boots are prepared for one hundred. I find that admirable."] },
+  { look: 'sk-cottage-harvest', who: 'akihiko', f: 'happy', lines: ["Is that wheat in your hair? You look like you won the whole festival.", "Did they have an eating contest? I'm asking for a reason."] }
 ];

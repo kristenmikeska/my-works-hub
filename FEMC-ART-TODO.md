@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 5, after the big Runners batch):** ⭐ high-resolution poses (top section: Solar ✅ done; the other fighters next) · couple victory poses for Jungwon and Akihiko (section 27: four outfits to go; Moon Hoodie and Midnight Drive are in) · 1 Boutique banner picture (section 28: Tarot Arcana) · strangers: 2 places and 3 CGs (section 34: the harbor by day, a tent bar, three new scenes) · HOAX: 3 places and 3 CGs (section 36) · Stay: 3 optional CGs (section 37) · low-res pictures to look over at the very end (section 31). **Runners backgrounds:** all made; only an optional night café is left in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style now live in `FEMC-CG-REMAKES.md`. **New Wardrobe outfits** (Solar's skin series and the collab outfits, 24 looks) and **skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make (updated Nov 5, after the big Runners batch):** ⭐ high-resolution poses (top section: Solar ✅ done; the other fighters next) · couple victory poses for Jungwon and Akihiko (section 27: four outfits to go; Moon Hoodie and Midnight Drive are in) · 1 Boutique banner picture (section 28: Tarot Arcana) · strangers: 4 places and 7 CGs (section 34) · HOAX: 5 places and 6 CGs (section 36) · Stay: 3 optional CGs (section 37) · Nana's faces and photo-booth sheets, plus Solar's HOAX booth sheet (section 38) · low-res pictures to look over at the very end (section 31). **Runners backgrounds:** all made; only an optional night café is left in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style now live in `FEMC-CG-REMAKES.md`. **New Wardrobe outfits** (Solar's skin series and the collab outfits, 24 looks) and **skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 ## ⭐⭐ TOP PRIORITY when you have usage: high-resolution poses (Kat, Nov 2)
 
@@ -142,6 +142,54 @@ Save as: `epi-s-islands.png`
 A realistic cinematic illustration in exactly the style of the first attached image, 16:9, no text: the attached annex at the bottom of the Lee house garden at night, a low concrete building with a steel door and one step, an old silver portable radio on the window sill glowing faintly, a thin crust of old snow on the gravel and the bare branches of a persimmon tree against a grey night sky. The SAME two people as the attached references, sitting side by side on the step with a careful gap between them. Haechan (sun-browned, moles on his cheek and jaw, short dark brown hair longer at the front and wind-wrecked, a knife scar through his left eyebrow) in a black padded work jacket, forearms on his knees, chewing gum, looking out at the dark rather than at her, head tilted toward the radio as if listening. Solar beside him in a long dark coat pulled round her knees, her long near-black hair down, a can of coffee in both hands, watching him sideways. Cold breath in the air, the radio's small light on both faces. Quiet, intimate, unsaid. Natural skin, real fabrics, soft depth of field.
 ```
 
+**[ ] 34F. The old dance studio**  
+An empty dance studio in Songdo the strangers epilogue visits by day. For now it borrows the Songdo café.  
+Attach: `CG - style (Strangers).png`  
+Save as: `epi-s-dance-studio.png`
+```
+Background art in the same realistic style as the attached image, 16:9, high resolution, no people, no readable text: a small, slightly worn dance studio on the third floor of an ordinary Songdo building in Incheon, early March 2013, on a grey afternoon. A long room with a wall of mirrors along one side and a wooden ballet barre along the other, a sprung pale wooden floor worn lighter in the middle where years of feet have danced, a row of windows over the street letting in soft grey daylight, a cheap cassette player on the floor by the mirror, a stack of folded mats in a corner, and an old upright piano against the end wall with a dust sheet half pulled off it. Quiet, a little shabby, full of other people's years. Keep everything important away from the edges.
+```
+
+**[ ] 34G. Sinpo market**  
+The old covered market where the strangers epilogue buys its Daeboreum nuts. For now it borrows the fish market.  
+Attach: `CG - style (Strangers).png`  
+Save as: `epi-s-sinpo.png`
+```
+Background art in the same realistic style as the attached image, 16:9, high resolution, no people, no readable text: Sinpo market in Incheon on a cold grey February afternoon in 2013, a long old covered shopping arcade under a patched translucent roof that turns the daylight a dim yellow. Crowded stalls down both sides: open sacks of walnuts, peanuts and chestnuts with tin scoops in them, wooden boxes of grains and beans, strings of dried radish greens hanging like brown laundry, steam rising from a dumpling stall, a fried-chicken shop at the corner with a glowing sign (no readable letters), a little red radio on a shelf among scoops and an abacus, old hand-painted signs too faded to read, wet concrete underfoot with a few peanut shells. Busy-looking even empty, warm against the cold. Keep everything important away from the edges.
+```
+
+**[ ] 34H. nuts**  
+A CG for the strangers epilogue: at a nut stall in the market, both boys hold out half a walnut to her at the same time.  
+Attach: `CG - style (Strangers).png`, `BG - Sinpo Market.png` (34G, once it's made; until then leave it off), `CG - Solar (Strangers).png`, `CG - Haechan (Strangers).png`, `CG - Jungwon (Strangers).png`  
+Save as: `epi-s-nuts.png`
+```
+A realistic cinematic illustration in exactly the style of the first attached image, 16:9, no text: an old covered market in Incheon on a grey February afternoon, dim yellow light through a patched roof, at a stall piled with open sacks of walnuts and peanuts with tin scoops. The SAME three people as the attached references. In the middle Solar (long near-black hair pinned up, a dark winter coat, a cream scarf, a jade ring on her right hand) stands at the stall looking down, trying not to smile. On her left Haechan (sun-browned, moles on his cheek and jaw, short dark brown hair longer at the front and wind-wrecked, a knife scar through his left eyebrow, a black padded work jacket over a good shirt) holds out half a cracked walnut on his open palm toward her, grinning, chewing gum. On her right Jungwon (small sharp feline face, neat black hair, a dark coat buttoned to the collar, a grey scarf, an old steel watch, a heavy paper bag of grain held in his right hand) holds out the other half of a walnut on his palm, perfectly polite, with deep dimples. The two young men are not looking at each other at all. Behind the stall, an old woman in several cardigans sits on an upturned crate watching them with delight. Steam from a nearby stall, a string of dried greens overhead. Funny, tense, warm. Natural skin, real fabrics, soft depth of field.
+```
+
+**[ ] 34I. white eyebrows**  
+A CG for the strangers epilogue: the girls' night at the jjimjilbang on the eve of the full moon.  
+Attach: `CG - style (Strangers).png`, `BG - Incheon Bathhouse.png`, `CG - Solar (Strangers).png`, `CG - Yunjin (Strangers).png`, `CG - Chaewon (Strangers).png`, `CG - Sakura (Strangers).png`, `CG - Kazuha (Strangers).png`, `CG - Eunchae (Strangers).png`  
+Save as: `epi-s-eyebrows.png`
+```
+A realistic cinematic illustration in exactly the style of the first attached image, 16:9, no text: the big warm hall of a Korean jjimjilbang at night, a heated wooden floor with thin mats, soft yellow lights, a television on the wall with the sound off, strangers sleeping in the background. The SAME six young women as the attached references, all in matching orange cotton jjimjilbang T-shirts and shorts, each with a towel rolled into the little "lamb" hat with two ears on her head. In the middle Yunjin lies fast asleep on her back on the floor, hands folded on her stomach, mouth a little open, with two thick white stripes of flour painted along her eyebrows. Around her, kneeling and lying on the mats, the others are shaking with silent laughter: one (Eunchae) holding a small black film canister of flour, one (Sakura, tall, straight face) carefully finishing an eyebrow with a fingertip, one (Kazuha) holding up a phone to take the photo, one (Chaewon) on watch with an index card in a plastic sleeve, and Solar (long near-black hair under her lamb hat) leaning over Yunjin with a pinch of flour, biting her lip. A tray of brown baked eggs and cans of sikhye on the floor. Cosy, silly, golden. Natural skin, real fabrics, soft depth of field.
+```
+
+**[ ] 34J. sugar giving up**  
+A CG for a late night in the strangers epilogue: the Yang house kitchen at one in the morning, sugar candy on the counter.  
+Attach: `CG - style (Strangers).png`, `BG - Yang House Kitchen.png`, `CG - Solar (Strangers).png`, `CG - Jungwon (Strangers).png`, `CG - Jay (Strangers).png`  
+Save as: `epi-s-sugar.png`
+```
+A realistic cinematic illustration in exactly the style of the first attached image, 16:9, no text: the attached Yang house kitchen late at night, steel counters, the window black, one warm light on over a big stove and the rest of the room gone dark around it. The SAME three people as the attached references. At the stove, Jay (tired handsome face, goggles pushed up in his hair, a faded grey T-shirt with an old city name on it, track trousers) holds a big ladle over a blue gas flame. On stools at the counter: Jungwon, barefoot on the tiles, in a soft dark grey sweater with the sleeves pushed up and his hair pushed back and not neat, no watch on his wrist, holding up a small honey-colored disc of dalgona sugar candy with a perfect little umbrella shape between his finger and thumb toward the light, his face completely still with concentration and quiet pride; beside him Solar, in a long dark coat over pyjamas with her long near-black hair loose, laughing into her hand. On the counter in front of them, rows of little sugar candies with stars and triangles pressed into them, a few broken umbrellas, a jar of sewing needles, greased foil. Warm amber light, deep shadows, a secret midnight feeling. Natural skin, real fabrics, soft depth of field.
+```
+
+**[ ] 34K. engine running**  
+A CG for a late night in the strangers epilogue: the driver's car idling at the Lee house gate, and Solar in the passenger seat.  
+Attach: `CG - style (Strangers).png`, `BG - Lee Car at night.png`, `BG - Lee House Gate at night.png`, `CG - Solar (Strangers).png`, `CG - Mr. Oh (Strangers).png`  
+Save as: `epi-s-engine.png`
+```
+A realistic cinematic illustration in exactly the style of the first attached image, 16:9, no text: inside an older dark saloon car parked at the attached Lee house gate on a frozen winter night, seen from the back seat between the two front seats, the windscreen showing the lantern-lit iron gate and a road going down a hill into the dark, frost beginning to grow in ferns at the corners of the glass, a thread of white exhaust rising past the side window in the lamp light. The SAME two people as the attached references. In the driver's seat Mr. Oh (an older man, grey jacket, tie loosened very slightly, very upright) sits with both hands on the wheel at ten and two, looking straight ahead, his face still, the very tips of his ears pink. In the passenger seat Solar, in a long dark coat over pyjamas with her long near-black hair down, holds the cup of a tartan thermos in both hands, head turned toward him, laughing quietly. A dim dashboard glow, the heater's warmth on both faces, the radio dark. Tender, unspoken, a little funny. Natural skin, real fabrics, soft depth of field.
+```
+
 ---
 
 ## 36. HOAX places and CGs (Gemini for places, ChatGPT for CGs; realistic; Kat, Nov 6)
@@ -196,6 +244,46 @@ Save as: `epi-h-nana-window.png`
 A realistic painted illustration in the style of the first attached image, 16:9, high resolution, no people, no readable text. The family house in the second image seen from the snowy street at dusk in early January, a little from below: in the lit front window, a very large, very fluffy white Samoyed dog (the third image) stands on the back of a sofa where he isn't allowed, front paws on the sill, nose almost on the glass, his whole body wagging, smiling his black-lipped smile at someone coming up the path. Warm lamp light inside, blue snow outside, a schoolbag-shaped set of footprints leading up the path toward the door, light snow falling. Soft realistic shading; NOT anime and NOT cel shading.
 ```
 
+**[ ] 36G. Jihoon's car at night**  
+A late-night scene in Jihoon's car outside Solar's house in HOAX (now Jungwon's car stands in).  
+Attach: `CG - style (HOAX).png`  
+Save as: `epi-h-jihoon-car.png`
+```
+Background art in the same realistic painted style as the attached image, 16:9, high resolution, no people, no readable text: the inside of a young man's black car at one in the morning, seen from the passenger seat looking across at the driver's side and out through the windscreen. A good car but not new, a black leather interior with a few scuffs, the dashboard glowing a dim orange, the heater on full with its little red light, a convenience-store plastic bag with two ice-cream bars in it on the dashboard, a beanie on the driver's seat, white dog hair on the back seat, a small pink pig keyring hanging from the rear-view mirror. Through the fogged windscreen, a quiet Korean residential street at night with snow banked on the kerbs, one street lamp, the headlights off. Warm inside, cold outside, a little lonely. Keep everything important away from the edges.
+```
+
+**[ ] 36H. Yeobo's back door**  
+The alley behind Sunoo's grandmother's café, where Nana gets a present (now a winter street stands in).  
+Attach: `CG - style (HOAX).png`, `BG - Yeobo's Café.png`  
+Save as: `epi-h-yeobos-back.png`
+```
+Background art in the same realistic painted style as the first attached image, 16:9, high resolution, no people, no readable text: the narrow side alley behind the small neighbourhood café in the second image, on a grey January afternoon in a Korean town. A steel back door standing open, propped with a plastic crate of empty glass milk bottles, warm yellow light and a little steam coming out of the doorway, a glimpse inside of a steel kitchen counter with trays of croissants, a broom leaning by the door, a plastic stool, recycling bins, a dry cleaner's back wall opposite, old snow banked along the alley's edges and salted grey concrete underfoot. Cosy and ordinary. Keep everything important away from the edges.
+```
+
+**[ ] 36I. The dog date**  
+Solar and Jungwon on a park bench with both dogs on their first proper dog date.  
+Attach: `CG - style (HOAX).png`, `BG - Hanlim Park.png`, `CG - Solar (HOAX).png`, `CG - Jungwon (HOAX).png`, `CG - Nana (HOAX).png`  
+Save as: `epi-h-dog-date.png`
+```
+A realistic painted illustration in the style of the first attached image, 16:9, high resolution, no readable text. The setting is the park in the second image on a white winter afternoon, by a frozen pond, old snow on the benches and paths. The next images are realistic portraits of, in order, Solar (small, long brunette hair, green eyes, a tiny nose stud, a long winter coat and a scarf) and Jungwon (dark hair falling in his eyes, deep dimples, a good dark wool coat buttoned to the top). They sit side by side on a park bench with a thermos and two paper cups between them; Solar has both her hands tucked into Jungwon's coat pockets and is laughing, and Jungwon is looking at her, not at the camera, smiling with the dimple showing, his ears a little pink. In the snow at their feet lies a very large, very fluffy white Samoyed (the last image), lying perfectly still, and curled up asleep in the deep fur on his back is a tiny toy dog, no bigger than a cat, in a small knitted orange coat. A small paper bag of homemade dog biscuits on the bench. Soft winter light, breath in the air, warm and romantic. Soft realistic shading, real-looking faces like the portraits; NOT anime and NOT cel shading.
+```
+
+**[ ] 36J. Antlers**  
+Nana in his Christmas reindeer antlers on Christmas night, having given up.  
+Attach: `CG - style (HOAX).png`, `BG - Kim House (evening).png`, `CG - Nana (HOAX).png`  
+Save as: `epi-h-antlers.png`
+```
+A realistic painted illustration in the style of the first attached image, 16:9, high resolution, no people's faces, no readable text. The living room of the family house in the second image on Christmas night, warm lamp light, a heated wooden floor, a sofa with a blanket, a small Christmas tree with white lights in the corner, wrapping paper still on the floor. In the middle of the floor a very large, very fluffy white Samoyed (the third image) lies flat on his side, completely given up, wearing a pair of squashed brown felt reindeer antlers with a red pom-pom between them, half a chewed red ribbon bow hanging off his collar like a medal, his tongue out, looking up at the ceiling. Only a pair of slippered feet and a hand holding a phone at the edge of the frame show the family. Funny and cosy. Soft realistic shading; NOT anime and NOT cel shading.
+```
+
+**[ ] 36K. The party**  
+Solar in the hallway of the winter-break party, still in her coat, with the whole school around her.  
+Attach: `CG - style (HOAX).png`, `BG - The Party (HOAX).png`, `CG - Solar (HOAX party).png`  
+Save as: `epi-h-party-hall.png`
+```
+A realistic painted illustration in the style of the first attached image, 16:9, high resolution, no readable text. The house party in the second image at about ten at night: a crowded hallway at the foot of a staircase, teenagers sitting on every stair like a stadium, a heap of shoes by the front door, red cups, a framed photo of a little boy in swimming goggles hanging crooked by the stairs, warm light and coloured party lights spilling out of the rooms on either side. In the middle of it all stands Solar (the third image: small, long brunette hair, green eyes, a tiny nose stud, dressed for the party exactly as in her portrait) with her winter coat still on over her outfit and a can of barley tea in one hand, looking round at the room with a small, guarded smile, while several people around her have turned to look at her or are whispering behind their hands. Lively, noisy, a little lonely in the middle. Soft realistic shading, real-looking faces; NOT anime and NOT cel shading.
+```
+
 ---
 
 ## 37. Stay CGs (ChatGPT; Persona 3 Reload anime style; optional; Kat, Nov 6)
@@ -223,6 +311,35 @@ Attach: `CG - style.png`, `BG - Dorm Lounge at night.png`, `Solar.png`, `Akihiko
 Save as: `epi-st-couch.png`
 ```
 A 16:9 anime CG in the exact style of the FIRST attached image (Persona 3 Reload official art: clean crisp lineart, flat cel shading with hard-edged shadows, soft colour, high detail on faces and hair). The setting is the SECOND attached image, the Iwatodai dorm lounge late at night, the lamps off, only the blue light of the window and a little light from the hall. The two people are the same as the other attached images: same faces, eyes and hair. Akihiko (silver hair, a grey T-shirt) lying on the narrow lounge couch, half asleep, one arm around Solar (dark hair, an oversized cardigan over pajamas), who is curled against his chest; his chin rests on top of her head. One red boxing glove is still on his right hand, resting against her back; the other glove lies on the rug by the couch. Quiet, tender, sleepy, fully clothed. No text.
+```
+
+---
+
+## 38. Nana (HOAX; ChatGPT; realistic; Kat, Nov 6)
+Solar's Samoyed gets his own faces for the HOAX epilogue, like Koromaru, Cosmo and Wanda have in the main game, and a photo-booth sheet so he can be Solar's partner in the booth there. Realistic, like the other epilogue portraits. The booth in HOAX gets built once 38B and 38C are in.
+
+**[ ] 38A. Nana: portrait sheet**  
+His faces in scenes (six expressions, like Cosmo's).  
+Attach: `CG - style (HOAX).png`, `CG - Nana (HOAX).png`  
+Save as: `nana-hoax-portraits.png`
+```
+A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell. The SAME dog as the SECOND attached image in all six cells: a very large, very fluffy pure-white Samoyed, about sixty pounds, thick double coat, black eyes, black nose, black lips, the classic Samoyed smile. Each cell shows him from the chest up, facing the camera at the same size and framing, nothing overlapping. Realistic painted style of the FIRST attached image: real fur texture, soft natural light, cinematic; NOT anime and NOT cel shading. Cell 1 (neutral): sitting calmly, mouth closed, ears up, attentive. Cell 2 (happy): the big open-mouthed Samoyed smile, tongue out, eyes squinting with joy. Cell 3 (sad): ears back, head lowered a little, big pleading eyes. Cell 4 (serious): mouth closed, head up, staring hard at something off to the side, very alert. Cell 5 (surprised): ears straight up, head tilted to one side, mouth slightly open. Cell 6 (flustered): looking away sheepishly with his ears flat and a guilty little smile, like he just got caught on the sofa. No text, no collar tags with writing.
+```
+
+**[ ] 38B. Nana: photo booth poses**  
+Nana on the right of the frame in the HOAX booth.  
+Attach: `CG - style (HOAX).png`, `CG - Nana (HOAX).png`  
+Save as: `booth-nana-poses.png`
+```
+Photo-booth pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME dog as the SECOND attached image in all six cells: a very large, very fluffy pure-white Samoyed, from the chest up, facing the camera, same size and framing in every cell, nothing overlapping. Bright, flattering photo-booth light, a little shine in his eyes. Realistic painted style of the FIRST attached image: real fur texture; NOT anime and NOT cel shading. Cell 1: the big Samoyed smile, tongue out. Cell 2: leaning a little to his right with his head tilted, as if pressing into someone beside him off to the left. Cell 3: a wide-eyed head tilt, one ear flopped. Cell 4: licking the air toward the left, eyes shut. Cell 5: wearing a small pink bow on top of his head, looking very proud. Cell 6: shaking his head mid-sneeze, fur flying, a happy blur. No text.
+```
+
+**[ ] 38C. Solar (HOAX): photo booth poses**  
+Solar on the left of the frame in the HOAX booth, to go with Nana's sheet (the main game's booth sheet is in the anime style).  
+Attach: `CG - style (HOAX).png`, `CG - Solar (HOAX).png`  
+Save as: `booth-solar-hoax-poses.png`
+```
+Photo-booth pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME girl as the SECOND attached image in all six cells, from the waist up, facing the camera, same face, same hair and the clothes from the attached image, same size and framing in every cell, nothing overlapping. Bright, flattering photo-booth light, a little sparkle in the eyes. Realistic painted style of the FIRST attached image: real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. Cell 1: a peace sign by her cheek, a big smile. Cell 2: leaning a little to her left, both arms curved to make the LEFT half of a big heart. Cell 3: puffing out her cheeks, eyes wide. Cell 4: pointing at someone beside her (off to the right), laughing. Cell 5: a finger heart and a wink. Cell 6: hugging the air to her right with both arms, eyes closed, as if squeezing a big dog. No text.
 ```
 
 ---

@@ -281,7 +281,7 @@
     ] },
     { bond: { jungwon: 1 } },
     { n: "11:19. She heard it happen on his end before he did, footsteps, the soft rattle of a door handle being tested, and he said *goodnight, Sol* in a whisper so quick it was barely words, and the line went dead with the specific, guilty click of a boy pretending to have been asleep for an hour." },
-    { n: "She held the phone against her chest. Down the road, three houses and a whole other life away, a light went off. She liked to think it was his. It probably was." }
+    { n: "She held the phone against her chest. A block over, one street and a whole other life away, a light was going off somewhere she couldn't see. She liked to think it was his. It probably was." }
   ] },
 
   // ───────────────────────────── 12/22, afternoon: the emergency meeting ─────────────────────────────

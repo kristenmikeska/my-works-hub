@@ -12,6 +12,10 @@
      people-late.js and people-crew-late.js (hangouts, mostly Late Night on the `lateOpen` nights below), texts-more.js (texts and
      phone lines). This file gained `lateOpen`, three stand-in bg rules (Front Step, Cherry's Room, Hyunsuk's Car) and Nana lines
      in `variants`; calendar.js fixes every day's weather.
+     Second pass (Nov 6 2026, Kat's answers; same audit file): story-party.js (the party's mingle, spliced into epi-h-party),
+     story-nana.js (short Nana moments that take no time), people-last.js (the last days' late night and afternoon) and
+     texts-nana.js. This file gained 1/11 in `lateOpen`, `practice.optional` 1/12, two stand-in rules (Jihoon's Car, Yeobo's
+     Back Door), the party's four cast names and more Nana lines; "about as much as she did" became sixty pounds.
    Shape: as data/epi/runners/world.js (its header documents every field; epilogue.js the engine side).
    The routes: Jungwon (his romance or Christmas pick in the year), Jihoon's redemption (his), the council (everyone else; always
    open). The 12/24 evening event is the Christmas Eve choice (the crossroads: options gated by { ifRouteOpen }); the route
@@ -41,10 +45,16 @@
     lockAfter: '12/24',
     // Late Night hangouts (the expansion pass, Nov 5-6 2026; epilogue.js late()): the quiet nights with no late story scene,
     // where the late screen lists who's still up above Sleep (people-late.js, people-crew-late.js).
-    lateOpen: ['12/22', '12/23', '12/25', '12/26', '12/28', '12/30', '1/1', '1/3', '1/4', '1/7', '1/8', '1/10'],
+    // Second pass (Nov 6 2026, Kat's "open a few more evenings / late nights" for the last days): 1/11 after the late story scene
+    // (epilogue.js late() runs once a non-consuming late event has played, so the people list follows it); people-last.js.
+    lateOpen: ['12/22', '12/23', '12/25', '12/26', '12/28', '12/30', '1/1', '1/3', '1/4', '1/7', '1/8', '1/10', '1/11'],
     places: {
       bg: [
         ['Hanlim · Home · Her Room', 'epi-h-her-room', 'epi-h-her-room-night'],            // batch 77
+        // Second pass (Nov 6 2026): two more stand-ins (ART-ADDS-hoax-2.md). Jihoon's car is only ever Late Night and borrows
+        // epi-h-car, already night art; Yeobo's back door is After School only, so its evening is null.
+        ["Hanlim · Jihoon's Car", 'epi-h-car', 'epi-h-car'],                                 // stand-in → epi-h-jihoon-car
+        ["Hanlim · Yeobo's · Back Door", 'epi-h-winter-street-day', null],                  // stand-in → epi-h-yeobos-back
         // The expansion pass (Nov 5-6 2026): three new places on stand-ins until their art comes (ART-ADDS-hoax.md). Each
         // evening image is already another rule's night art, so nothing is made night-lit that wasn't.
         ['Hanlim · Home · Front Step', 'epi-h-winter-street-day', 'epi-h-winter-street'],   // stand-in → epi-h-front-step(-night)
@@ -126,12 +136,16 @@
     },
     // Council duty: after school on school days once term is back (1/8-1/12). Exam days skip it (epilogue.js practiceNow), and a
     // story event or routine in that slot comes first, so in practice it's the odd afternoon in the council room.
-    practice: { days: [1, 2, 3, 4, 5], slot: 'after', from: '1/8', to: '1/12', place: 'Hanlim · School · Council Room', bg: 'epi-h-council-room', stats: { kindness: 1 }, title: 'Council duty', music: 'epi-h-goofy' },
+    // Second pass (Nov 6 2026): 1/12, the last school day, makes duty a choice at the top of Go Out (`optional`), so its After
+    // School is free time (people-last.js); taking duty sets epi-practice-1-12, which nothing reads.
+    practice: { days: [1, 2, 3, 4, 5], slot: 'after', from: '1/8', to: '1/12', optional: ['1/12'], place: 'Hanlim · School · Council Room', bg: 'epi-h-council-room', stats: { kindness: 1 }, title: 'Council duty', music: 'epi-h-goofy' },
     cast: {
       mom: 'Mom', dad: 'Dad', eunchae: 'Eunchae', kazuha: 'Kazuha', chaewon: 'Chaewon', sakura: 'Sakura',
       advisor: 'The advisor', principal: 'The principal', hayoon: 'Do Hayoon', halmeoni: "Sunoo's grandmother", jwmom: 'Mrs. Yang',
       clerk: 'Clerk', school: 'Hanlim High School', stream: 'Hanlim Unfiltered', forum: 'Hanlim Forum', council: 'The council',
-      bleed: 'A voice', hcvoice: 'Haechan'
+      bleed: 'A voice', hcvoice: 'Haechan',
+      // Second pass (Nov 6 2026), the party's mingle (story-party.js): the host and three Hanlim students, no portraits.
+      dohyun: 'Dohyun', yuna: 'Yuna', seoyeon: 'Seoyeon', minho: 'Minho'
     },
     // This world's own faces (core.js worldFace): Solar's HOAX look, the four's HOAX outfits and Solar's parents (FEMC-ART-WIRING).
     faces: { solar: 'solar-hoax', sakura: 'sakura-hoax', eunchae: 'eunchae-hoax', kazuha: 'kazuha-hoax', chaewon: 'chaewon-hoax', mom: 'kim-mom', dad: 'kim-dad', jungwon: 'jungwon-hoax',
@@ -159,13 +173,17 @@
           "Nana walked her as far as the front door and sat in it like a toll booth, smiling, until she paid him one ear scratch and a promise about later."],
         off: ["Winter break. Her mom was already up, which meant the kitchen was already a negotiation.",
           "No school. The heating ticked, the street outside was white, and her phone had forty notifications she wasn't reading yet.",
-          "Nana was on her feet. Nana weighed about as much as she did. The morning could wait until he decided it couldn't.",
+          "Nana was on her feet. All sixty pounds of him, warm as a radiator and twice as immovable. The morning could wait until he decided it couldn't.",
           "Nana had stolen one of her socks in the night and was guarding it at the foot of the bed, smiling his Samoyed smile, very proud of the hostage situation.",
           "Nana stood at the bedroom door with his leash in his mouth, the whole leash, the clip hanging off one side of his black-lipped smile like a cigarette, and waited with enormous patience for her to understand the assignment.",
-          "Her mom had let Nana out into the yard and he'd come back in with snow packed between every toe, and he was now drying himself, thoroughly, on her duvet, with her in it."],
+          "Her mom had let Nana out into the yard and he'd come back in with snow packed between every toe, and he was now drying himself, thoroughly, on her duvet, with her in it.",
+          // Second pass (Nov 6 2026), Kat: more Nana.
+          "She woke with her face in white fur. Somewhere in the night Nana had decided her pillow was his and she was a guest on it, and she lay there a long minute with her nose in the back of his neck, breathing dog, and didn't move him. She never moved him.",
+          "Her dad was in the kitchen doorway with his coffee, telling Nana about the weather in full sentences, the way he did, and Nana was listening with his head on one side, the way he did. Neither of them noticed her on the stairs for a while. She let them have it."],
         exam: ["Make-up exams. The classroom was half empty and twice as quiet, and everyone in it had missed something for a reason they weren't saying.",
           "Exam day. Pencil, eraser, student ID, the calculus formulas written on the inside of her eyelids, she hoped.",
-          "Nana saw her to the gate in the dark and sat down in the snow on the right side of it, the way he had every school morning since he was a puppy, and didn't get up until she'd turned the corner. She checked. He hadn't."]
+          "Nana saw her to the gate in the dark and sat down in the snow on the right side of it, the way he had every school morning since he was a puppy, and didn't get up until she'd turned the corner. She checked. He hadn't.",
+          "She said goodbye to Nana at the door three times. He leaned his whole weight on her shins every time, like he could keep her in the house by being heavy enough, and the third time it almost worked."]
       },
       practice: ["Council duty. Heeseung's clipboard, Sunoo's laminator, Jake reading the forum out loud in a newscaster voice until Jungwon took his phone, and a whiteboard with PROM written on it and nothing underneath.",
         "An hour in the council room, sorting sign-up sheets nobody had touched since the week they'd vanished. Niki ate three of the bake-sale leftovers out of the freezer and lived.",
@@ -174,10 +192,14 @@
         "Late. The houses down the street went dark one window at a time, and Nana sighed at the foot of her bed like he'd had a long day too.",
         "The heating clicked off. Somewhere down the street a car door shut, and she listened to it the way she used to listen for footsteps on a dormitory stair, and then made herself stop.",
         "Nana climbed up and arranged himself across her feet, a warm white weight, and sighed at her until she turned the light off.",
-        "Somewhere in the dark Nana was dreaming, his paws going in little running twitches against her shins and a soft *wuf* coming out of him every few seconds, chasing something across a field she'd never see. She lay still so she wouldn't wake him."],
+        "Somewhere in the dark Nana was dreaming, his paws going in little running twitches against her shins and a soft *wuf* coming out of him every few seconds, chasing something across a field she'd never see. She lay still so she wouldn't wake him.",
+        "Nana took his half of the bed out of the middle, which was his half, and she curled round the edge of him with one hand buried in his ruff, and the whole house went quiet around the two of them.",
+        "Her mom's voice came through the wall, low, saying goodnight to the dog through the door, which she'd done every night since September and thought nobody knew about. Nana thumped his tail on the duvet twice. *Goodnight,* he meant."],
       stayIn: ["She stayed in. Blanket, heated floor, a drama she wasn't really watching, and a very large dog on most of the sofa.",
         "She stayed in and brushed Nana on the living-room floor until there was enough white fur on the rug to build a second, smaller Samoyed, and he fell asleep halfway through, smiling.",
-        "She stayed in. Nana lay on the heated floor with all four silly legs in the air and his head upside down, smiling at the ceiling, and every time she laughed at him his tail thumped the boards twice, like he was keeping score."]
+        "She stayed in. Nana lay on the heated floor with all four silly legs in the air and his head upside down, smiling at the ceiling, and every time she laughed at him his tail thumped the boards twice, like he was keeping score.",
+        "She stayed in. Nana put his chin on her knee and kept it there through two whole episodes, looking up at her with his black-rimmed eyes every time she laughed, checking it was still her. It was still her. She kept telling him.",
+        "She stayed in, and so did her dad, and the two of them sat on the floor on either side of Nana picking dried snow out of his feet and arguing, very gently, about whether he liked it."]
     }
   });
   // The story, people and routine files push into these; never replace them here.

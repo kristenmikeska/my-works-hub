@@ -113,7 +113,7 @@
     { glitch: { near: true } },
     { n: "Jungwon looked down at question four. He read it three times. He didn't say anything. He'd always been very good at not saying anything in front of people. He'd had a lot of practice at home." },
     { place: 'Hanlim', time: 'Daytime', soft: true },
-    { n: "The plough came through at four. Halmeoni released them like a prison warden with a soft spot, pressing a paper bag of day-old croissants into every pair of hands, and Jungwon walked Solar home along the one dug-out lane of pavement because his mother's car was buried in his own driveway and his house was only down the road from hers anyway." },
+    { n: "The plough came through at four. Halmeoni released them like a prison warden with a soft spot, pressing a paper bag of day-old croissants into every pair of hands, and Jungwon walked Solar home along the one dug-out lane of pavement because his mother's car was buried in his own driveway and his house was only a block from hers anyway." },
     { n: "It was very quiet out. The kind of quiet only heavy snow made, every sound swallowed, their own footsteps soft and squeaking. He waited until the café's light was two streets behind them." },
     { s: 'jungwon', f: 'serious', t: "You went thin." },
     { s: 'solar', f: 'flustered', t: "I've been eating, Won, I swear, I had like three croissants, your boyfriend senses are—" },
@@ -244,7 +244,7 @@
       { from: 'jungwon', t: "solar." },
       { from: 'jungwon', t: "solar it's been four minutes, are you walking here right now." }
     ], contact: 'jungwon' },
-    { n: "She was. Down the road and round the corner in her biggest coat and her pyjama bottoms tucked into her boots, the snow from Thursday still banked up waist-high along the kerbs and frozen hard on top, Jungwon's street lit orange and empty and so quiet she could hear the streetlight hum. His mother's car sat in the driveway under a white crust. The whole house was dark except one window over the garage." },
+    { n: "She was. A block over and round the corner in her biggest coat and her pyjama bottoms tucked into her boots, the snow from Thursday still banked up waist-high along the kerbs and frozen hard on top, Jungwon's street lit orange and empty and so quiet she could hear the streetlight hum. His mother's car sat in the driveway under a white crust. The whole house was dark except one window over the garage." },
     { n: "She'd walked this street a hundred times since September and never once at night by herself, and it was different at night, the gates all shut and their little lights all the same warm white, the houses set back behind them like people standing politely at the back of a room. She caught herself counting the gates. Seven to his. She'd never counted them before. She'd caught it off him, the counting, the way you catch a cold off someone you sit too close to, and she didn't mind." },
     { n: "Somebody's television flickered blue behind a curtain. Somebody's boiler kicked on with a cough. Her breath went up in front of her face and kept going up, past the streetlight, which she didn't look at, because it had been doing that since Thursday and she'd decided not to give it the satisfaction." },
     { n: "The curtain moved. Then the window opened, and Yang Jungwon, student council president of two years, a boy who had never in his life been outside after curfew without a typed reason, looked down at her in a hoodie with an expression like she'd personally asked him to commit a felony." },

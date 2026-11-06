@@ -1,38 +1,35 @@
 # strangers epilogue: questions for you (Nov 6 2026)
 
-These are from the overnight pass that lengthened the strangers epilogue. They don't say what happens in any scene: each one asks about a preference or a canon fact in the abstract. Answer whichever you like. Anything left unanswered keeps the default I picked, which is shown after each question.
+These are from the two passes that lengthened the strangers epilogue. They don't say what happens in any scene: each one asks about a preference or a canon fact in the abstract. Anything left unanswered keeps the default shown after it.
 
-## Canon facts
+## First round: answered (Nov 6)
 
-1. **Pyo's birthday.** Is there a canon birthday for Pyo, or anything about his age past "19 in November"? *Default: he turns twenty in early March.*
-2. **The house staff's evenings.**
-   - Does Auntie Song ever stay over at the Lee house?
-   - Does Minseok ever come inside, or does he only ever stay on the gate?
-   - *Default: Auntie Song dozes in her armchair by the stove when she misses the last bus. Minseok comes into the kitchen but keeps his coat on.*
-3. **Mr. Oh.** Is it canon that he has a soft spot for someone (an earlier pass invented a woman in the toll booth on the bridge)? *Default: yes, as kitchen gossip only.*
-4. **Yunjin and the year.** Two of the older epilogue scenes have Yunjin knowing about Solar's year in Japan.
-   - Is that right for strangers, or should only Solar, Haechan and Jungwon know?
-   - *Default: the new scenes don't touch it either way.*
-5. **Solar's mother at night.** In the book, has Solar ever seen her mother with her hair down? *Default: never before this act.*
-6. **Salt for bad luck.** Is throwing coarse salt into a bath for bad luck something you'd like Mrs. Bang to do, or is it too superstitious for her? (She's Catholic in the game.) *Default: she does it and wouldn't call it superstition.*
-7. **The girls' lives.** Are any of the four girls auditioning for anything in spring 2013, and do any of them have a boyfriend you'd want named? *Default: one has an audition callback; no boyfriends named.*
+1. **Pyo's birthday.** Answered: no canon birthday, the invented one stays.
+2. **The house staff's evenings.** Answered: Auntie Song never stays over; Mr. Oh and Mrs. Bang live in. Fixed everywhere she used to sleep in the kitchen.
+3. **Mr. Oh's soft spot.** Answered: not sure it's canon, not a big deal. It stays as kitchen gossip.
+4. **Yunjin and the year.** Answered: she knows, because she was there. New scenes may use it.
+5. **Solar's mother at night.** Answered: default kept.
+6. **Salt for bad luck.** Answered: default kept.
+7. **The girls' lives.** Answered: default kept (one audition callback, no boyfriends named).
+8. **The party's length.** Answered: keep it long. Longer is fine.
+9. **Spice level.** Answered: more. Built.
+10. **The last evening.** Answered: default kept.
+11. **More Late Nights?** Answered: default kept (13 nights).
+12. **A late night in the car at the gate.** Answered: yes. Built.
+13. **The Yang kitchen at night.** Answered: yes, with a cameo. Built.
+14. **A second girls' night.** Answered: yes. Built.
+15. **An afternoon with both boys in one car.** Answered: yes, the centrepiece. Built, before and after the route locks.
+16. **Inspector Seo again.** Answered: skip. Skipped.
+17. **A Daeboreum-week evening with the girls.** Answered: yes. Built.
+18. **Art numbering.** The second pass's art starts at 34F.
 
-## Preferences
+## New questions (second pass)
 
-8. **The party's length.** The new party scene is long (about 25 minutes of reading on one path). Keep it that long, or trim it? *Default: keep it.*
-9. **Spice level.** One late night on one route is spicier than anything in strangers so far. It cuts away before anything explicit. Is that the level you want here, or more, or less? *Default: as written.*
-10. **The last evening.** Is it all right that there are several people you could spend the very last evening with, and you can only pick one? *Default: yes, the way Runners did its goodbyes.*
-11. **More Late Nights?** Late Night is now open on 13 quiet nights. Do you want it on more of them? *Default: no. The nights of the route scenes and the night before the last morning stay closed.*
-
-## Ideas I didn't build (say yes to any)
-
-12. A late night with Mr. Oh in the car at the gate, engine running.
-13. Jay in the Yang kitchen at night.
-14. A second girls' night.
-15. An afternoon errand that forces Haechan and Jungwon into the same car.
-16. One more short scene with Inspector Seo.
-17. A Daeboreum-week evening with the girls.
-
-## Art
-
-18. Four new art items are written up in `ART-ADDS-strangers.md`: one new place and three CGs. They're numbered after 34A for the art list, so renumber them if HOAX's new items land in the same spot.
+19. **Mr. Oh's room.** Where does Mr. Oh sleep in the Lee house? *Default: a room over the garage.*
+20. **The four girls' backgrounds.** Is it all right to give the girls small real-life-flavoured details? Sakura is from Kagoshima, Kazuha did ballet for years before the studio, and Chaewon teaches little kids at their old studio on Saturdays. *Default: yes.*
+21. **The girls at the Lee house.** Until now the girls never came to the house. Is it all right for one of them to come to the gate by day, once? *Default: yes, by day only.*
+22. **Heat, again.** The new route scenes go further before the cut than the first pass did. Is this the right level, or more, or less? *Default: as written.*
+23. **Haechan and Mandarin.** Does Haechan understand Mandarin at all? *Default: left open; nobody in the new scenes knows either way.*
+24. **What Solar calls Jungwon.** Would Solar ever call Jungwon "Jungwon-ah", even once, in private? *Default: yes, once, as a choice the player can make.*
+25. **Jungwon and the piano.** Did Jungwon ever have piano lessons? *Default: as a boy, until twelve.*
+26. **Too much to do.** strangers now has more hangouts than free time, like Runners, so one run can't see everything. Is that all right? *Default: yes.*

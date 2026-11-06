@@ -14,6 +14,7 @@
      niki     epi-s-niki-wall 'top of the wall'        3/3-3/12 late, after epi-s-even (Garden)
      eomma    epi-s-eomma-sunroom 'the sunroom at night' 2/21-2/25 late, after epi-s-eomma (Sunroom)
      appa     epi-s-appa-forecast 'the forecast'       3/10-3/12 late, route family, after epi-s-sunday (Study)
+   Nov 6 pass edit: 'the seventh stair' gains two lines of heat before its cut (Kat's question 9).
    Flags set (local): epi-s-islands (haechan-islands, she asked him to name them; read in haechan-oddnight).
    Flags read: epi-s-islands; epi-s-niki-name (people-crew niki-1) in niki-wall; epi-s-sari (people.js appa-1) in appa-forecast.
    Events read: epi-s-step, -kitchen, -eomma, -even, -twenty, -sunday (gates); ifEvent epi-s-clocks (house-lastbus, latch: the
@@ -26,7 +27,7 @@
      kitchen in Chinatown; the gate has twenty bars, one hidden behind the lamp post; Minseok sleeps (or doesn't) under the
      sports pages; Mrs. Bang's room is over the kitchen; Riki's slipped word on the wall is "hai"; Appa's clue is hagu (the
      estuary, "where the river gives up"); Eomma's blanket on the window seat is the grey wool one from the reading chair; a tenth window in the attic (Christmas
-     lights, a box of Solar's baby shoes); Auntie Song's burst-arm armchair came from the restaurant; Kazuha's studio days are
+     lights, a box of Solar's baby shoes); Auntie Song's burst-arm armchair came from the restaurant (she never stays over, Kat Nov 6: on a missed bus Mr. Oh drives her and Pyo home, and Mrs. Bang, who lives in, has the room over the kitchen); Kazuha's studio days are
      Thursdays (Saturdays if Chaewon says); Yunjin's NYU sweatshirt and the apartment on 104th; Mrs. Bang's porridge pot with the
      dented lid, the sesame oil behind the vinegar, the rug beater by her bed; the white orchid by the sunroom door is in bud in
      late February (people.js eomma-3 has it bloom in March). */
@@ -268,13 +269,13 @@
 
   /* ── The house ── */
   add('house', 'friend', [
-    { id: 'epi-s-house-lastbus', title: 'the last bus', hint: "There's a light on in the kitchen, and somebody in the armchair by the stove has missed the last bus.",
+    { id: 'epi-s-house-lastbus', title: 'the last bus', hint: "There's a light on in the kitchen. Somebody has missed the last bus to Chinatown and is waiting on Mr. Oh.",
       after: '3/3', until: '3/12', slots: LATE, events: ['epi-s-twenty'], noFlags: [], route: null, noRoute: null,
       place: 'Incheon · The Lee House · Kitchen', time: 'Late Night', scene: [
       { music: 'epi-s-house' },
       { n: "There was a light on in the kitchen at midnight, not the one over the stove that Mrs. Bang left for whoever had the night but the low lamp on the shelf by the rice cooker, and when she came down for water in her socks it was the first thing she saw from the bottom of the back stairs, and the second was a pair of rubber boots standing side by side on the fender, upside down, drying." },
-      { n: "Auntie Song was in her armchair by the stove. The old one with the burst arm that had come from the restaurant in a truck one winter and never gone back, pulled up close to the warmth, with a blanket over her knees and her feet in Mrs. Bang's spare slippers, which were too big for her, and her eyes shut. She'd missed the last bus. She'd missed it on purpose, probably. She missed it about once a week." },
-      { n: "On the bench under the window, under his own coat, Pyo was asleep with his mouth open and one arm hanging down to the floor, his knuckles resting on the tiles. Since his party he'd been trying very hard to act like a man who stayed up late. He was not that man yet." },
+      { n: "Auntie Song was in her armchair by the stove. The old one with the burst arm that had come from the restaurant in a truck one winter and never gone back, pulled up close to the warmth, with a blanket over her knees and her feet in Mrs. Bang's spare slippers, which were too big for her, and her eyes shut, and her coat already on over her apron, buttoned wrong. She'd missed the last bus. She missed it about once a week, rolling something too long or arguing with a broth, and on those nights Mr. Oh drove her down the hill to Chinatown, and tonight Mr. Oh was out at the gate warming the car through, which in that car took twenty minutes and a certain amount of swearing he never did out loud." },
+      { n: "On the bench under the window, under his own coat, Pyo was asleep with his mouth open and one arm hanging down to the floor, his knuckles resting on the tiles, waiting for the same lift, his moped being dead in the frost by the gate with its seat off. Since his party he'd been trying very hard to act like a man who stayed up late. He was not that man yet." },
       { ifEvent: 'epi-s-clocks', then: [
         { n: "Over the kitchen clock, the dish towel. Blue check. Nobody had taken it down. The clock ticked under it like something in a cage with a cloth over it, and she didn't look at it, and the kitchen didn't either." }
       ] },
@@ -314,8 +315,10 @@
       { n: "Solar didn't say anything. She couldn't, for a second. Her throat had done something without asking her, and she looked at the stove until it stopped, and Auntie Song, who had been listening at doors for nineteen years and knew exactly when to stop listening at one, looked at the stove too." },
       { s: 'auntie', f: 'serious', t: "*Now go to bed. You've got your father's heels and my bad hours. Don't keep both.*" },
       { s: 'solar', f: 'neutral', t: "*What about Pyo?*" },
-      { s: 'auntie', f: 'neutral', t: "*Pyo stays where he is. If he goes up those stairs in the dark, the ghost will get him. That's what he thinks. Let him think it. He sleeps better down here with me.*" },
-      { n: "She went up the back stairs with the warmth still in her chest and her feet cold on the treads. At the turn she looked down. The lamp by the rice cooker. The boots upside down on the fender. Auntie Song with her eyes shut and the little glass still in her hands, humming something under her breath, off-key, the first four notes of it, over and over, and Pyo's arm hanging down to the tiles." },
+      { s: 'auntie', f: 'neutral', t: "*Pyo comes with me. Mr. Oh leaves him at the bottom of his hill, and he runs up it, because he thinks the ghost from the storeroom follows the car. Let him think it. He gets home faster.*" },
+      { n: "Headlights came round the side of the house and stopped at the back door with the engine running. Auntie Song opened her eyes, put the little glass down very straight on the board, the way she put down a knife, and turned her boots the right way up and stepped into them, and kicked the bench, once, and Pyo sat up saying he was awake, he'd been awake the whole time, he was a man who stayed up late." },
+      { n: "Mrs. Bang came down the back stairs from her room over the kitchen in her quilted vest with a hot-water bottle wrapped in a towel, the way she came down every time this happened, and put it in Auntie Song's arms for the car, and said something sharp about the hour, and Auntie Song said something sharper in Mandarin about the broth, and they understood each other perfectly, the way they had for nineteen years without a language in common between them." },
+      { n: "She went up the back stairs with the warmth still in her chest and her feet cold on the treads. At the turn she looked down through the landing window. Mr. Oh's car going down the drive at exactly the speed limit, two heads in the back, one of them already asleep against the window, and Auntie Song's voice still faintly carrying, humming something, off-key, the first four notes of it, over and over, until the gate closed on it. Below her, in the kitchen, Mrs. Bang turned the lamp by the rice cooker off and left the one over the stove." },
       { n: "She got into bed and pulled the quilt up and lay there with her hand open on top of it, palm up, the scar to the ceiling, and fell asleep like that, before she'd decided to." }
     ] }
   ]);
@@ -454,6 +457,8 @@
       { s: 'solar', f: 'neutral', t: "Shh." },
       { s: 'haechan', f: 'flustered', t: "I'm being quiet. I'm being so quiet. I'm the quietest I've ever been in my life. This is—" },
       { n: "She kissed him again to stop him finishing, and the quilt slid, and his hand went flat on the small of her back under her pajama top, spread wide, holding her to him as if she might be blown somewhere, and for a long breath the only thing in the whole house was that hand, and the dark." },
+      { n: "He rolled them so she was over him, which the bed announced to the whole of the second floor, and they both stopped dead and listened to the house, and the house said nothing, and he started laughing without any sound at all, his face screwed up, his hands on her waist under the pajama top, and she put her palm over his mouth the way you'd put a lid on a pot, and felt him stop laughing under it, and felt his mouth open against her palm instead, and his tongue, very slowly, along the old white scar across it, from one end to the other, as if he'd been meaning to for seven years and had finally been given the time." },
+      { n: "She took her hand away. She didn't say anything. She didn't have anything left to say anything with. She pulled the pajama top over her head and dropped it off the side of the bed, and the cold of the room hit her skin for exactly one second before his hands were there instead, rough and warm and shaking a little, and he breathed in through his teeth like a man who's put his hand flat on a stove on purpose, and said her name, not agasshi, the other one, into the dark between them, once, and after that the quilt went over both their heads and the house could think what it liked." },
       { n: "She didn't count anything. It was the first time in her life she noticed afterwards that she hadn't." },
       { n: "It was half past four when the study door opened downstairs." },
       { n: "She heard it through his shoulder, tangled in the warm wreck of the quilt, nearly asleep, and felt him hear it too, because every muscle in his body went still at once." },

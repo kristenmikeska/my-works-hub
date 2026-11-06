@@ -23,6 +23,7 @@
    Flags set (local; nobody else needs them): epi-s-twenty-told (twenty: she translates Auntie Song truthfully) /
      epi-s-twenty-covered (twenty: she covers for Pyo).
    Flags read: none. ifEpiRoute read: jammed (who comes in for coffee; the lacquer box), twenty (the late beat and its bond).
+   Nov 6 pass edit: twenty gains the committee's voice message at eight (Chaewon, the four girls by phone).
    Glitch lines: { strain: 1 } once in twenty (the fever to Mrs. Park); { near: true } once in twenty (a silent beat, both boys).
      No glitch ids.
    Bonds: twenty, by route (haechan / jungwon / appa), one per scene; salt, yunjin +1 (one option).
@@ -291,6 +292,14 @@
 
     // The candles, and the app.
     { n: "They sang to Pyo. All of them, badly, at different speeds, Mrs. Park tapping the time on the table and nobody following it, Auntie Song in Mandarin and louder than anyone, and Pyo sat at the head of the table with his hands in his lap and the two candles lit in front of him and his face doing the thing faces do when they have never once been sung to by a whole room, and he blew, and both candles went out, and the smoke went up in two straight lines in the steam." },
+    // The committee's voice message (the Nov 6 pass: the girls in every universe).
+    { n: "At eight o'clock exactly, while the smoke was still going up, Yunjin's phone buzzed on the table by the japchae, and buzzed again, and went on buzzing, and she looked at it and put both hands over her mouth and said *oh no, they actually did it,* and turned it face up, and pressed play, and held it out over the table toward Pyo at arm's length like a torch." },
+    { s: 'chaewon', f: 'neutral', t: "This is a message from the Daeboreum committee. The committee is permanent. Item one. Pyo-ssi, happy birthday. Item two. Eunchae, go." },
+    { n: "And four girls on a phone in a Songdo apartment somewhere sang happy birthday to a cook they had never met, terribly, at four different speeds, Eunchae conducting so loudly you could hear her counting under it, Kazuha a third above everybody in a sweet wobbly harmony that went into Japanese halfway, *otanjoubi omedetou,* and then back, and a fourth voice, flat and dry and exactly in tune, that didn't sing the last line at all but said it." },
+    { s: 'sakura', f: 'neutral', t: "Happy birthday. The storeroom ghost is probably fine. Respect." },
+    { s: 'kazuha', f: 'happy', t: "Say good morning to it! It's polite!" },
+    { s: 'eunchae', f: 'happy', t: "That's forty-one seconds. Chaewon said forty. We went over. Sorry, Pyo-ssi. Happy birthday." },
+    { n: "Pyo didn't say anything. He took the phone out of Yunjin's hand very carefully, the way he'd taken the knife box, and held it in both of his, and pressed play again, and listened to the whole forty-one seconds a second time with his head bent over it at the head of the table, and nobody laughed at him, not even Haechan, and when it finished he gave the phone back and said, to the tablecloth, that he'd never been sung to by girls before, and Auntie Song, who didn't understand a word of it, put another noodle on his plate." },
     { n: "Then Yunjin took out her phone." },
     { s: 'yunjin', f: 'happy', t: "Okay. Okay okay okay. House rules. Everybody sings. Everybody. It's an app, it's got everything, it gives you a score out of a hundred and the score is final, the score is God. Lowest score does the dishes." },
     { s: 'mrsbang', f: 'neutral', t: "I do the dishes." },
@@ -387,7 +396,7 @@
     { ifEpiRoute: 'haechan', then: [
       { place: 'Incheon · The Lee House · Garden', time: 'Late Night', soft: true },
       { music: 'epi-s-step' },
-      { n: "At eleven the dishes were still going on. Yunjin had lost the score in the end, on a technicality she was still disputing, and she was at the sink in the sequined top with her sleeves pushed up, washing, while Minseok dried and Mrs. Park stacked and Auntie Song slept in her armchair by the stove with her boots up on the fender, having missed the last bus on purpose. Pyo had been sent to bed. He'd gone up the back stairs holding the boots, the envelope and the knife box, like a boy carrying his whole life." },
+      { n: "At eleven the dishes were still going on. Yunjin had lost the score in the end, on a technicality she was still disputing, and she was at the sink in the sequined top with her sleeves pushed up, washing, while Minseok dried and Mrs. Park stacked, and Auntie Song's armchair by the stove stood empty with her shape still in the cushion. She'd missed the last bus on purpose and slept through half an hour of the dishes in it, and at half past ten Mr. Oh had driven her down the hill to Chinatown, and Pyo with her, in the back seat, holding the boots, the envelope and the knife box on his knees like a boy carrying his whole life." },
       { n: "Solar went out onto the back step." },
       { n: "He was there already. Of course he was. It was his night; it had been his night since the market, every other one, and he was sitting on the step by the koi bucket with his forearms on his knees and the black jacket back on, the collar up, chewing. The cloud had come down almost to the garden. The air was wet and cold and smelled of the harbor, and the light from the kitchen window lay out across the gravel in a long yellow shape with his shadow in it." },
       { n: "She sat down next to him. On the cold half. He moved over so she got the warm half, which he always did, and she pretended not to notice, which she always did." },
@@ -414,7 +423,7 @@
     { ifEpiRoute: 'jungwon', then: [
       { place: 'Incheon · The Lee House · Gate', time: 'Late Night', soft: true },
       { music: 'epi-s-jungwon' },
-      { n: "At half past ten he thanked Mrs. Bang for the evening, and bowed to her, and to Auntie Song asleep in her armchair, and to Pyo, who bowed back so deep he hit his head on the table, and Solar saw him out." },
+      { n: "At half past ten he thanked Mrs. Bang for the evening, and bowed to her, and to Auntie Song, asleep in her armchair in her coat with her boots on, waiting for Mr. Oh to take her down the hill, and to Pyo, who bowed back so deep he hit his head on the table, and Solar saw him out." },
       { n: "Up the side of the house on the path, in the wet dark, the cloud so low over the garden that the gate lamp had a ring round it like a moon. His coat buttoned to the collar again. His shoes very quiet on the gravel. The kitchen behind them going on without them, the sink running, Yunjin singing the girl-group song at it with all of the hand movements, as a protest." },
       { n: "At the gate he stopped under the lamp. Minseok's gatehouse light was on, the little window, a television going inside it. He didn't open the gate. He turned round and stood with his back to it." },
       { s: 'jungwon', f: 'neutral', t: "Thank you for tonight, Solar-ssi." },
@@ -439,7 +448,7 @@
     { ifEpiRoute: 'family', then: [
       { place: 'Incheon · The Lee House · Stairs', time: 'Late Night', soft: true },
       { music: 'epi-s-family' },
-      { n: "At half past eleven she went up. The kitchen was still going, quieter, the dishes and the radio and Auntie Song snoring very gently in her armchair by the stove, having missed the last bus on purpose. She went up the main stairs in her socks with a slice of Jay's cake on a saucer for the morning, and on the seventh stair, coming down, was her father." },
+      { n: "At half past eleven she went up. The kitchen was still going, quieter, the dishes and the radio and, out on the drive, Mr. Oh's car coming back up the hill at exactly the speed limit, having taken Auntie Song and Pyo home. She went up the main stairs in her socks with a slice of Jay's cake on a saucer for the morning, and on the seventh stair, coming down, was her father." },
       { n: "Not coming down. Standing. His slippers and his cardigan and his glasses on their cord, one hand on the banister, on his way to bed, and stopped there, where he always stopped, on the one that creaked, the way he'd stopped on it her whole life. Humming." },
       { n: "The song. The hometown station. Low and flat and a little behind the beat, the second verse, where he always went flat. He stopped humming when he saw her, and then, when she didn't say anything, he went on with it, to the end of the line, as if it would have been rude to the song to stop." },
       { s: 'appa', f: 'neutral', t: "Was it a good party." },

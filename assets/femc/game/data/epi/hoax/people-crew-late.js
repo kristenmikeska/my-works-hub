@@ -505,7 +505,7 @@
       { s: 'solar', f: 'happy', t: "It's Nana." },
       { s: 'jake', f: 'happy', t: "NANA! Layla says hi! Layla says happy new year!" },
       { s: 'jungwon', f: 'happy', t: "Hi, Nana." },
-      { n: "He said it so quietly. Barely a voice at all, out of a duvet four streets away. Nana stopped snoring. One ear came up, and then his whole head, off her stomach, and he looked at the phone with total attention, the way he looked at the front door when he heard a particular car, like he knew exactly who that was." },
+      { n: "He said it so quietly. Barely a voice at all, out of a duvet a block away. Nana stopped snoring. One ear came up, and then his whole head, off her stomach, and he looked at the phone with total attention, the way he looked at the front door when he heard a particular car, like he knew exactly who that was." },
       { n: "It went on another forty minutes. Nobody could say afterwards what the rest of the agenda had been. Then the blue cave in Jungwon's square tipped sideways, and the call heard a door, and a woman's voice somewhere past it saying his name, the whole name, and his square went black without a goodbye." },
       { n: "One by one after that the others went, Niki mid-sentence, Jake with a pun nobody let him finish, Sunoo blowing kisses through the sheet mask. Heeseung was last. He looked at his agenda, and then at her, the last square left." },
       { s: 'heeseung', f: 'neutral', t: "Minutes closed. Goodnight, Vice President." },

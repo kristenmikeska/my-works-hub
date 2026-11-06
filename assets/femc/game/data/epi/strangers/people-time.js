@@ -22,7 +22,7 @@
      fight is Sakura going to a backup-dancer audition alone that the four had planned to do together in April, and getting a
      callback (Kazuha was sworn to secrecy, Eunchae saw it first); the flounder woman once slipped eleven-year-old Solar an
      extra flounder and does it again; the dent in the tray edge where the ice shovel came down; Pyo and Mr. Oh wait in the car
-     with the doors locked; on 3/15 Auntie Song rolls kalguksu dough for Saturday lunch and misses the last bus; the koi bucket
+     with the doors locked; on 3/15 Auntie Song rolls kalguksu dough for Saturday lunch past the last bus and Mr. Oh drives her and Pyo home (she never stays over: Kat, Nov 6); the koi bucket
      comes in under the kitchen radiator for the frost; Haechan's plan is the Deokjeok ferry next month; Jungwon's is a walk in
      Jayu Park when the cherry blossoms come. */
 (() => {
@@ -302,7 +302,7 @@
       { s: 'mrsbang', f: 'surprised', t: "Aigoo." },
       { s: 'solar', f: 'neutral', t: "Eomma took the pins out." },
       { n: "Mrs. Bang said nothing to that. Her wet hand came up as if to tuck a piece of it behind Solar's ear, the way it had in this kitchen a month ago, and found there was too much of it, much too much, and stopped in the air, and went back to the bowl." },
-      { n: "At the end of the long table, under the lamp, Auntie Song was rolling dough. She should have gone at nine with her boots in a bag; it was a quarter to ten, and the last bus went at ten past, and she was rolling noodle dough for tomorrow's kalguksu as thin as paper, slowly, as if she had all night, which she did, now, in the armchair by the stove, on purpose. She looked up at the hair. She looked at it the way she looked at a dumpling she approved of." },
+      { n: "At the end of the long table, under the lamp, Auntie Song was rolling dough. She should have gone at nine with her boots in a bag; it was a quarter to ten, and the last bus went at ten past, and she was rolling noodle dough for tomorrow's kalguksu as thin as paper, slowly, as if she had all night, which she didn't, and knew she didn't, and had decided Mr. Oh could drive her down the hill when it was done, which Mr. Oh had decided too, without either of them asking the other. She looked up at the hair. She looked at it the way she looked at a dumpling she approved of." },
       { s: 'auntie', f: 'neutral', t: "*Like when you were small. You stood on my crate with it in your eyes and I tied it back with string.*" },
       { s: 'solar', f: 'happy', t: "*Butcher's string. It smelled of pork for a week.*" },
       { s: 'auntie', f: 'happy', t: "*It kept it out of the fish.*" },
@@ -335,8 +335,12 @@
       { s: 'auntie', f: 'neutral', t: "*Kalguksu tomorrow. Twelve o'clock. Be down.*" },
       { s: 'pyo', f: 'happy', t: "I'm making the broth. Auntie said. I'm allowed the anchovies." },
       { s: 'mrsbang', f: 'neutral', t: "God help us." },
-      { n: "Mr. Oh rinsed his cup at the sink, ten o'clock exactly, and turned it upside down on the rack, and went out to check the car the way he did every night, though it was in the garage and had been in the garage since five." },
-      { n: "Mrs. Bang turned the big light off and left the little one over the stove, the way she always did, so the kitchen went gold and small, and the koi went round in their bucket under the radiator, and Auntie Song settled into the armchair with her boots up on the fender and her eyes already shut, listening to everything." },
+      { n: "Mr. Oh rinsed his cup at the sink, ten o'clock exactly, and turned it upside down on the rack, and took the car keys off the hook by the back door without a word, and Auntie Song rolled the last sheet of dough round the pin and floured it and laid it under a damp cloth like a baby put down for the night, and pulled her rubber boots on one at a time with a hand on the table, grumbling at them in Mandarin." },
+      { s: 'auntie', f: 'neutral', t: "*Pyo. Coat. If you make him wait he'll drive at forty the whole way to punish you.*" },
+      { s: 'pyo', f: 'flustered', t: "He drives at forty anyway." },
+      { s: 'mroh', f: 'neutral', t: "Forty-five." },
+      { n: "The back door let the cold in round the three of them and shut on it, and through the steamed window over the sink the headlights came on at the side of the house and swung across the garden, the frost lit up white on every terrace for one long second, and went away down the drive at exactly the speed Pyo had said, and then the kitchen was only the two of them and the koi." },
+      { n: "Mrs. Bang turned the big light off and left the little one over the stove, the way she always did, so the kitchen went gold and small, and the koi went round in their bucket under the radiator, and the armchair by the stove sat empty with the burst arm and the shape of a small woman still in its cushion, keeping her place till the morning bus." },
       { s: 'mrsbang', f: 'neutral', t: "Bed. All that hair, you'll catch cold." },
       { n: "Solar went up the back stairs with the thermos held against her and her hair down her back, and on the landing she stopped and looked down, and the kitchen was a small gold square at the bottom of the dark, with the calendar on the wall by the door saying twenty-nine, and somebody, in the morning, before she got there, would turn it." }
     ] }

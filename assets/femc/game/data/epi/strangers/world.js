@@ -68,11 +68,13 @@
         ['Incheon · The Mudflats', 'epi-s-harbor-tide', null],                         // batch 65: grey low tide by day
         ['Incheon · Fish Market at Midnight', 'flashback-fish-market', null],
         ['Incheon · Fish Market', 'flashback-fish-market', null],
+        ['Incheon · Sinpo Market', 'flashback-fish-market', null],                     // stand-in → flashback-fish-market (Nov 6 pass; daytime only; ART-ADDS-strangers-2 34G)
         ['Incheon · Wolmido · Daeboreum', 'epi-s-daeboreum', 'epi-s-daeboreum'],     // batch 65: the festival night (epi-s-moon)
         ['Incheon · Wolmido', 'epi-s-wolmido', 'epi-s-wolmido-night'],                  // batch 78
         ['Incheon · Chinatown', 'epi-s-chinatown', 'epi-s-chinatown'],                  // batch 78: dusk art, both slots
         ['Incheon · Street in the Dust', 'epi-s-dust', null],                         // batch 65: daytime only
         ['Incheon · Songdo · Café', 'epi-s-songdo-cafe', null],
+        ['Incheon · Songdo · Dance Studio', 'epi-s-songdo-cafe', null],                // stand-in → epi-s-songdo-cafe (Nov 6 pass; daytime only; ART-ADDS-strangers-2 34F)
         ['Incheon · Songdo', 'epi-s-songdo', 'epi-s-songdo-night'],
         ['Incheon · Karaoke', 'epi-s-noraebang', 'epi-s-noraebang'],
         ['Incheon · Pojangmacha', 'epi-s-chinatown', null],                            // stand-in → epi-s-chinatown (no evening art until its own); the expansion pass's tent bar (ART-ADDS-strangers)
@@ -131,7 +133,8 @@
       appa: 'Appa', eomma: 'Eomma', mrsbang: 'Mrs. Bang', auntie: 'Auntie Song', pyo: 'Pyo', mroh: 'Mr. Oh', minseok: 'Minseok',
       mrspark: 'Mrs. Park', seo: 'Inspector Seo', chaewon: 'Chaewon', sakura: 'Sakura', kazuha: 'Kazuha', eunchae: 'Eunchae',
       girls: 'The girls', house: 'The kitchen', man: 'A man', fisherman: 'A fisherman', aunt: 'Aunt Hyesun', radio: 'The radio',
-      fkvoice: 'Fuuka', flounder: 'The flounder woman', ajumma: 'The ajumma' // the last two: the expansion pass
+      fkvoice: 'Fuuka', flounder: 'The flounder woman', ajumma: 'The ajumma', // the last two: the expansion pass
+      gong: 'Mrs. Gong', tankman: 'The fish-tank man', wu: 'Auntie Wu', moon: 'Mrs. Moon', watchman: 'The watchman' // the Nov 6 pass
     },
     // This world's own faces (core.js worldFace): Solar's strangers look, the four's strangers outfits and Solar's parents (FEMC-ART-WIRING).
     faces: { solar: 'solar-strangers', chaewon: 'chaewon-strangers', sakura: 'sakura-strangers', kazuha: 'kazuha-strangers', eunchae: 'eunchae-strangers', appa: 'taesang-strangers', eomma: 'miyeon-strangers', yunjin: 'yunjin-strangers', haechan: 'haechan-strangers', jungwon: 'jungwon-strangers',
