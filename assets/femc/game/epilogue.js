@@ -80,14 +80,14 @@ window.FemcEpilogue = (() => {
   const S = () => G.S, UI = () => W.FemcGameUI;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const clone = o => JSON.parse(JSON.stringify(o));
-  const DATA_V = 65; // data/epi/<world>/*.js ?v=
+  const DATA_V = 66; // data/epi/<world>/*.js ?v=
   // The worlds: the year's route flag that opens each, its name (the button) and place (slot labels), its data files.
   const WORLDS = {
-    runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3', 'story-home', 'story-time', 'people-time', 'story-nyc1', 'story-nyc2', 'people-nyc', 'phone', 'alerts'] },
-    strangers: { id: 'strangers', flag: 'route-S', name: 'strangers', place: 'Incheon', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-w2', 'story-w3', 'story-end', 'story-home', 'people-night', 'people-time', 'story-car', 'people-girls', 'people-late', 'people-heat', 'phone'] },
-    hoax: { id: 'hoax', flag: 'route-H', name: 'HOAX', place: 'Hanlim', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-party', 'story-w2', 'story-w3', 'story-end', 'phone', 'story-days', 'people-late', 'people-crew-late', 'texts-more', 'story-nana', 'people-last', 'people-extra', 'texts-nana'] },
+    runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3', 'story-home', 'story-time', 'people-time', 'story-nyc1', 'story-nyc2', 'people-nyc', 'phone', 'alerts', 'texts-up'] },
+    strangers: { id: 'strangers', flag: 'route-S', name: 'strangers', place: 'Incheon', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-w2', 'story-w3', 'story-end', 'story-home', 'people-night', 'people-time', 'story-car', 'people-girls', 'people-late', 'people-heat', 'phone', 'texts-up'] },
+    hoax: { id: 'hoax', flag: 'route-H', name: 'HOAX', place: 'Hanlim', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-party', 'story-w2', 'story-w3', 'story-end', 'phone', 'story-days', 'people-late', 'people-crew-late', 'texts-more', 'story-nana', 'people-last', 'people-extra', 'texts-nana', 'alerts', 'texts-up'] },
     // Batch 8: Stay's reverse epilogue (Iwatodai is home) and the true ending's coda (three small days, one per world).
-    stay: { id: 'stay', flag: 'route-stay', name: 'Iwatodai', place: 'Iwatodai', files: ['calendar', 'world', 'glitches', 'people', 'story', 'phone', 'story-days', 'people-days', 'texts-days'] },
+    stay: { id: 'stay', flag: 'route-stay', name: 'Iwatodai', place: 'Iwatodai', files: ['calendar', 'world', 'glitches', 'people', 'story', 'phone', 'story-days', 'people-days', 'texts-days', 'texts-up'] },
     true: { id: 'true', flag: 'true-final', name: 'Every world', place: 'Every world', files: ['calendar', 'world', 'glitches', 'story'] }
   };
   // Which world a finished year's ending opens (the same order as core.js endingName): none for bad; the true ending's coda;
@@ -373,7 +373,8 @@ window.FemcEpilogue = (() => {
     if (!S().epi.locked && raw.lockAfter && S().day >= G.dayOf(raw.lockAfter)) lockRoute();
     const r = G.sleep(); if (r.end) return finish(); UI().run();
   }
-  /* SUnews / SUanon alerts (Nov 3 2026; data/epi/runners/alerts.js documents the data). run() asks newsTick() whenever the day
+  /* SUnews / SUanon alerts (Nov 3 2026; data/epi/runners/alerts.js documents the data; HOAX's Hanlim Forum alerts since Nov 6,
+     data/epi/hoax/alerts.js, the same rules). run() asks newsTick() whenever the day
      lands on a screen (morning, practice, Go Out, late), never inside a scene: the first alert whose `after` events are all seen
      (and `date` reached) drops in as a lock-screen banner (ui.js newsAlert: tap opens the phone; reduced motion: no slide),
      once each (S.epi.alerts), at most one a day (S.epi.alertDay). A scene, date card or fight up when it would show: it waits
@@ -479,6 +480,36 @@ window.FemcEpilogue = (() => {
     main.querySelector('[data-sleep]').addEventListener('click', sleepNow);
     GL()?.tick('late', { place: at.place });
     main.querySelector('[data-bond], [data-sleep]')?.focus({ preventScroll: true });
+    upText(info, folks);
+  }
+  /* "Who's up tonight" texts (Nov 6 2026, Kat's idea 4: "Lots of group chat and text opportunities"; data/epi/<world>/
+     texts-up.js documents the data). When the late screen lists people (a lateOpen night where someone's Late Night hangout
+     fits: the same `folks` it shows), one short text arrives as it opens, from one of them or a group chat they're in, so the
+     phone says someone's awake before Sleep. raw.textsUp [{ id, who: bond id | [ids] (one must be listed tonight), hang:
+     hangout id | [ids] (that person's offered hangout must be one: a text that hints at a hangout is gated exactly like it),
+     thread (default the first `who`), msgs [{ from, t }], after / until 'M/D', events, flags, noFlags, route (the locked
+     route) }]. A fitting text with `hang` wins over a general one; among those, a pick seeded by the day. At most one a night
+     (S.epi.upDay), each once (S.epi.ups); none on a story night (a world event dated today in the late slot, or in the evening
+     with consumes / fills, its `flag` holding), none if a text already came in this late slot. Sent through core.js sendText
+     (banner, chime, unread; no reply); no flag, closeness or stat changes. */
+  function upText(info, folks) {
+    const s = S(), e = s.epi, pool = worldRaw().textsUp || [];
+    if (!pool.length || !folks.length || e.upDay === s.day || !G.sendText) return;
+    const evOn = ev => ev.date === info.md && (!ev.flag || s.flags[ev.flag]);
+    if ((G.D.events || []).some(ev => evOn(ev) && ((ev.slot || 'evening') === 'late' || ((ev.slot || 'evening') === 'evening' && (ev.consumes || ev.fills))))) return;
+    if (Object.values(s.phone?.threads || {}).some(xs => xs.some(m => m.d === s.day && m.slot === 'late' && m.from !== 'solar'))) return;
+    const up = new Map(folks.map(x => [x.id, x.h.id])), seen = e.ups || [], locked = e.locked ? e.route : null, d = s.day;
+    const fit = pool.filter(t => !seen.includes(t.id)
+      && [].concat(t.who).some(w => up.has(w) && (!t.hang || [].concat(t.hang).includes(up.get(w))))
+      && (!t.after || d >= G.dayOf(t.after)) && (!t.until || d <= G.dayOf(t.until))
+      && (t.events || []).every(x => s.events.includes(x)) && (t.flags || []).every(k => s.flags[k]) && !(t.noFlags || []).some(k => s.flags[k])
+      && (!t.route || (locked && [].concat(t.route).includes(locked))));
+    if (!fit.length) return;
+    const hinted = fit.filter(t => t.hang), list = hinted.length ? hinted : fit;
+    const t = list[((d * 9301 + 49297) % 233280) * list.length / 233280 | 0];
+    e.upDay = s.day; (e.ups ||= []).push(t.id);
+    G.sendText({ id: t.id, thread: t.thread || [].concat(t.who)[0], msgs: t.msgs });
+    G.save();
   }
   const pips = id => { const c = closeness(id); return `<i class="g-epi-pips" aria-label="closeness ${c} of ${CLOSE_MAX}">${'●'.repeat(Math.min(c, CLOSE_MAX))}${'○'.repeat(Math.max(0, CLOSE_MAX - c))}</i>`; };
   const folkBtn = x => `<button type="button" class="g-epi-act g-epi-bond${x.b.role === 'rival' ? ' rival' : ''}" data-bond="${esc(x.id)}"><b>${esc(bondName(x.id))}</b><small>${esc(x.h.hint || x.h.place || '')}</small>${pips(x.id)}</button>`;
@@ -839,13 +870,17 @@ window.FemcEpilogue = (() => {
         kicker: `Epilogue · ${worldLabel(wid)} · Posts`, title: handle, text: cap };
     });
   }
-  // Polaroids (FEMC-ART-TODO 30, Kat's pictures Nov 5 2026): a keepsake photo per route-free hangout, its caption already on
+  // Polaroids (FEMC-ART-TODO 30, Kat's pictures Nov 5 2026; section 39 adds strangers / HOAX / Stay ones, Nov 6): a keepsake photo per route-free hangout, its caption already on
   // the picture (tools/femc-polaroids.py). A tile only once its picture exists (art/polaroids/index.js FEMC_POLAROIDS);
   // unlocked once that hangout has played: live in this world (S.epi.bonds[*].seen) or in its record (seen.hangouts).
   const POLAROIDS = {
     runners: [['runners-snow-day-at-the-valley', 'epi-r-hanni-4'], ['runners-napkin-math', 'epi-r-hyein-4'], ['runners-four-seconds', 'epi-r-minji-3'], ['runners-two-chairs', 'epi-r-jaehyun-3']],
-    strangers: [['strangers-hot-floor', 'epi-s-yunjin-5'], ['strangers-the-chair-by-the-window', 'epi-s-yunjin-2'], ['strangers-good-cards', 'epi-s-eomma-1']],
-    hoax: [['hoax-backwards', 'epi-h-cherry-2'], ['hoax-swings', 'epi-h-cherry-4']],
+    strangers: [['strangers-hot-floor', 'epi-s-yunjin-5'], ['strangers-the-chair-by-the-window', 'epi-s-yunjin-2'], ['strangers-good-cards', 'epi-s-eomma-1'],
+      // FEMC-ART-TODO 39 (Nov 6): listed before their pictures exist; each shows only once it's in FEMC_POLAROIDS.
+      ['strangers-four-frames', 'epi-s-girls-1'], ['strangers-white-eyebrows', 'epi-s-girls-eyebrows'], ['strangers-the-tent', 'epi-s-girls-tent'], ['strangers-pleats', 'epi-s-house-1'], ['strangers-bad-coffee', 'epi-s-yunjin-1'], ['strangers-the-wall', 'epi-s-niki-1'], ['strangers-good-morning', 'epi-s-kazuha-morning']],
+    hoax: [['hoax-backwards', 'epi-h-cherry-2'], ['hoax-swings', 'epi-h-cherry-4'],
+      ['hoax-snow-way', 'epi-h-jake-1'], ['hoax-ice-cream-and-hugs', 'epi-h-junkyu-1'], ['hoax-four-croissants', 'epi-h-sunoo-1'], ['hoax-sleepover', 'epi-h-cherry-late-2'], ['hoax-land-of-the-living', 'epi-h-jihoon-1'], ['hoax-dog-date', 'epi-h-jungwon-dogs'], ['hoax-colour-coded', 'epi-h-jaehyuk-1']],
+    stay: [['stay-borrowed', 'epi-st-yukari-1'], ['stay-attempt-nine', 'epi-st-fuuka-1'], ['stay-the-long-way', 'epi-st-ken-1'], ['stay-in-that-order', 'epi-st-mitsuru-2'], ['stay-april-fool', 'epi-st-junpei-2']],
   };
   function hangoutsSeen(wid) {
     const s = S(), live = !!s.epi && s.epi.world === wid, rec = records()[wid];

@@ -3004,7 +3004,7 @@ window.FemcGame = (() => {
     crushTick, crushIs, crushedAt, crushApply, crushPhases, crushTrack, crushFits, crushDue, finishCrush, crushLine, takenBy, glowIs, setGlow,
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
-    deliverTexts, replyText, textById, answerInvite, gift, bond, outfitLineDue, seeOutfitLine,
+    deliverTexts, sendText, replyText, textById, answerInvite, gift, bond, outfitLineDue, seeOutfitLine,
     rankHint, whoFree, goneLinks, contactCard, noteGift, giftItem, giftShop, giftBag, addGift, giftTier, giftFans, canGift, giftPoints, giveGift, keepsakes, GIFT_TIERS, phoneReach, phoneCall, finishPhoneCall, phoneTopics, phoneMessage, dayInvitePending, answerDayInvite, bookedDue, clearBooked, commuteDue, pickCommute, storyDay,
     holidayInvites, sendHolidayInvites, holidayDue, acceptHoliday, finishHoliday, declineHolidays,
     lateNightDue, finishLateNight, tripPlan, finishTrip, unread, markAllRead, isGroupThread, freeSlotSpent, nextSlot, sleep,

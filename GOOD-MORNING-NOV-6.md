@@ -46,14 +46,19 @@ Every new place shows a borrowed background until its picture exists. New refere
 - **The 11 new Solar outfits** are in the Wardrobe with their own looks in battle, and there are two new banners: **Midnight Chapel** (October) and **Wildflower Cottage** (May). Still to make: the second pose sheet for Black Rose, Rainy Greenhouse and Harvest Festival (prompts on the outfit design sheet).
 - **The last Echo sheet**: all 121 Echoes have art.
 
-## Ideas, if you want more (none of these are built)
+## Ideas, if you want more (1, 3 and 4 are built now; the rest aren't)
 
-1. **Polaroids for strangers, HOAX and Stay's new hangouts.** The Album already has room for them, and each new world got a few hangouts that would make a good photo. I can write the prompts.
+1. ✅ **Built.** **Polaroids for strangers, HOAX and Stay's new hangouts.** The Album already has room for them, and each new world got a few hangouts that would make a good photo. I can write the prompts.
 2. **Runners' 14 optional hangouts** from its first plan are still unwritten. Best decided after you've played it.
-3. **SUnews-style alerts for HOAX.** HOAX has its own forum (the WHERE IS THE COUNCIL threads). The alert banner Runners uses could pop up when a new thread drops.
-4. **A "who's up tonight" text before Late Night**, so you know someone's awake before you pick Sleep.
+3. ✅ **Built.** **SUnews-style alerts for HOAX.** HOAX has its own forum (the WHERE IS THE COUNCIL threads). The alert banner Runners uses could pop up when a new thread drops.
+4. ✅ **Built.** **A "who's up tonight" text before Late Night**, so you know someone's awake before you pick Sleep.
 5. **Nana in the Photo Booth** as a partner for the HOAX epilogue. He'd need one small pose sheet.
 6. **Outfit lines for the 11 new outfits**: the little reactions when someone notices what Solar's wearing.
+
+**What got built from 1, 3 and 4 (Nov 6, not pushed):**
+- **Polaroids:** 19 new ones on your list as **section 39** of FEMC-ART-TODO.md (strangers 7, HOAX 7, Stay 5, Stay's in its anime style). Every one is a hangout that's open on every route, so nothing hints at anything. The game's already set up for them: each one shows up in the Album (and drops in the first time its hangout ends) as soon as you drop the picture in, same as the Runners ones. New reference copies are in Place Prompt Attachments (a few portraits and backgrounds made from the game's own art).
+- **Hanlim Forum alerts:** 9 banners in HOAX, one when a new thread drops, in the forum's own voice. Like SUnews: between scenes, one a day at most, tap opens the phone.
+- **"Who's up" texts:** in all four epilogues (64 in all: Runners 17, strangers 19, HOAX 18, Stay 10, with group chats in each). On a quiet night where someone's still up, one of them texts as the late screen opens, so you know before you pick Sleep. One a night at most, never on a big story night.
 
 ## For the PC (heavy tests)
 

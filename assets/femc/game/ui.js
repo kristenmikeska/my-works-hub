@@ -213,13 +213,14 @@
     setTimeout(() => { el.classList.add('out'); setTimeout(() => el.remove(), 300); }, 4600 + i * 220);
   }
 
-  /* SUnews / SUanon alerts in an epilogue (Nov 3 2026; epilogue.js newsTick decides when, data/epi/runners/alerts.js what):
+  /* SUnews / SUanon alerts in an epilogue (Nov 3 2026; epilogue.js newsTick decides when, data/epi/<world>/alerts.js what;
+     Nov 6: any world's source, named by a.name, then NEWS, then the world's texts.threads (HOAX: 'forum' → Hanlim Forum)):
      a lock-screen banner like a text's, the account's picture, its name, the line and the post's thumbnail when its picture
      exists (art/posts/index.js). Tap / Enter opens the phone. Reduced motion: no slide (.calm). Returns false if it can't show. */
   const NEWS = { sunews: 'SUnews', suanon: 'SUanon' };
   function newsAlert(a) {
     if (!a || !a.t) return false;
-    const name = NEWS[a.from] || a.from || 'SUnews', thumb = a.img && (window.FEMC_POSTS || []).includes(a.img);
+    const name = a.name || NEWS[a.from] || G.D.texts?.threads?.[a.from] || a.from || 'SUnews', thumb = a.img && (window.FEMC_POSTS || []).includes(a.img);
     const el = document.createElement('div');
     el.className = `g-banner g-news${thumb ? ' has-thumb' : ''}${reduced.matches ? ' calm' : ''}`;
     el.setAttribute('role', 'button'); el.tabIndex = 0; el.dataset.news = a.id;

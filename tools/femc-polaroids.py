@@ -26,6 +26,26 @@ CAPTIONS = {
     'strangers-good-cards': 'good cards',
     'hoax-backwards': 'backwards',
     'hoax-swings': 'swings',
+    # section 39 (Nov 6)
+    'strangers-four-frames': 'four frames',
+    'strangers-white-eyebrows': 'white eyebrows',
+    'strangers-the-tent': 'the tent',
+    'strangers-pleats': 'pleats',
+    'strangers-bad-coffee': 'bad coffee',
+    'strangers-the-wall': 'the wall',
+    'strangers-good-morning': 'good morning',
+    'hoax-snow-way': 'snow way',
+    'hoax-ice-cream-and-hugs': 'ice cream and hugs',
+    'hoax-four-croissants': 'four croissants',
+    'hoax-sleepover': 'sleepover',
+    'hoax-land-of-the-living': 'land of the living',
+    'hoax-dog-date': 'dog date',
+    'hoax-colour-coded': 'colour-coded',
+    'stay-borrowed': 'borrowed',
+    'stay-attempt-nine': 'attempt nine',
+    'stay-the-long-way': 'the long way',
+    'stay-in-that-order': 'in that order',
+    'stay-april-fool': 'april fool',
 }
 
 
