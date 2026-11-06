@@ -39489,6 +39489,19 @@
    "destination": "assets/femc/cg/credits-ken.webp",
    "conversion": "WebP q86",
    "placement": "end credits still (18E)"
+  },
+  {
+   "batch": 141,
+   "source": "WIP/echoes.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "a1bb403cbfafff8cca4a9d0935f073876ae7aa8fbbef44b2905698f53629fcf2",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/echoes/{cheoyong,ungnyeo,bulgae,mago,cheonyeo,haemosu}.webp",
+   "conversion": "tools/femc-echoes.py cut (3x2); mago, cheonyeo, haemosu re-cut from taller / wider crops",
+   "placement": "Echo Compendium art, strangers sheet 3 (25A)"
   }
  ],
  "batch1Validation": {
