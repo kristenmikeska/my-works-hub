@@ -39502,6 +39502,396 @@
    "destination": "assets/femc/battle/art/echoes/{cheoyong,ungnyeo,bulgae,mago,cheonyeo,haemosu}.webp",
    "conversion": "tools/femc-echoes.py cut (3x2); mago, cheonyeo, haemosu re-cut from taller / wider crops",
    "placement": "Echo Compendium art, strangers sheet 3 (25A)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-arcana-lovers-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "93b9a551c5469eb415fcc0309261036d93e1baf70cb098d0ad5a47ed2e50c481",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-lovers/",
+   "conversion": "scene faces (femc-skin-portraits.py + femc-wardrobe.py portraits)",
+   "placement": "Wardrobe outfit sk-arcana-lovers (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-arcana-lovers-posesheet-2.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "f545189d37e4a5731bb851f0600b8eede1e807addb2d15f6e42e9e8dc8ad2c8a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-lovers/",
+   "conversion": "second pose sheet (femc-wardrobe.py skin2)",
+   "placement": "Wardrobe outfit sk-arcana-lovers (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-arcana-lovers-posesheet.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "d65dd594b7dff3ae3f2a44e6e42b2c8ff1115afc1c5ebf389c1665c729f5a397",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-lovers/",
+   "conversion": "pose sheet (femc-wardrobe.py skin)",
+   "placement": "Wardrobe outfit sk-arcana-lovers (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-arcana-moon-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "6fc7c901fcb9ec0ac7b2db7ce7ce852c08f609616a88b89a441e0e62bc68de9b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-moon/",
+   "conversion": "scene faces (femc-skin-portraits.py + femc-wardrobe.py portraits)",
+   "placement": "Wardrobe outfit sk-arcana-moon (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-arcana-moon-posesheet-2.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "b6c81a8f616c5a7d2133d8c3af5e9d59d2cec2fdcfb1fa9dc2480e1bc29474a4",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-moon/",
+   "conversion": "second pose sheet (femc-wardrobe.py skin2)",
+   "placement": "Wardrobe outfit sk-arcana-moon (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-arcana-moon-posesheet.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "be10713f2cc0f17cd9b963ac2ab2af8c7b511884e5c68b14d30d402c2486a688",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-moon/",
+   "conversion": "pose sheet (femc-wardrobe.py skin)",
+   "placement": "Wardrobe outfit sk-arcana-moon (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-arcana-star-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "738cf1accca308d5551c7ea7bcd93c1601881a579747ce84b9a098e493ad2517",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-star/",
+   "conversion": "scene faces (femc-skin-portraits.py + femc-wardrobe.py portraits)",
+   "placement": "Wardrobe outfit sk-arcana-star (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-arcana-star-posesheet-2.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "68281766b5e4c86264c68f5e509c1afe138871b1e64d35c63e49916d5dfce0c5",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-star/",
+   "conversion": "second pose sheet (femc-wardrobe.py skin2)",
+   "placement": "Wardrobe outfit sk-arcana-star (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-arcana-star-posesheet.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "6ae7c095bde2181d0e56cd54bf96eb65b72e76ed310aa3334bb07c62c10aa1d0",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-star/",
+   "conversion": "pose sheet (femc-wardrobe.py skin)",
+   "placement": "Wardrobe outfit sk-arcana-star (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-chapel-picnic-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "11e90e10127d2642a83732878bcafb894d3879be5df8c97a441feb253035f058",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-picnic/",
+   "conversion": "scene faces (femc-skin-portraits.py + femc-wardrobe.py portraits)",
+   "placement": "Wardrobe outfit sk-chapel-picnic (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-chapel-picnic-posesheet-2.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "9af07bde37c81fc5e220f4475d0c7eed8a26efa82994c3ad4a6334209cb0de05",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-picnic/",
+   "conversion": "second pose sheet (femc-wardrobe.py skin2)",
+   "placement": "Wardrobe outfit sk-chapel-picnic (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-chapel-picnic-posesheet.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "6be7892705cb540b40355268974b4b36cf13286b0cbd8298f5d66678877310d0",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-picnic/",
+   "conversion": "pose sheet (femc-wardrobe.py skin)",
+   "placement": "Wardrobe outfit sk-chapel-picnic (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-chapel-rose-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "59e6f939728372ba685635fa2f333d9c5607735c23257c913e6f0b4732a353cd",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-rose/",
+   "conversion": "scene faces (femc-skin-portraits.py + femc-wardrobe.py portraits)",
+   "placement": "Wardrobe outfit sk-chapel-rose (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-chapel-rose-posesheet.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "5a79649dd88b30ff484c30d2782422e671bd5e91531dede71453d3025883cb42",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-rose/",
+   "conversion": "pose sheet (femc-wardrobe.py skin)",
+   "placement": "Wardrobe outfit sk-chapel-rose (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-chapel-vampire-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "4f762c13210749231fd8f0daa2a43b3db469a5772f73edccfd5f4430e9ef1d76",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-vampire/",
+   "conversion": "scene faces (femc-skin-portraits.py + femc-wardrobe.py portraits)",
+   "placement": "Wardrobe outfit sk-chapel-vampire (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-chapel-vampire-posesheet-2.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "8dca59a738a8e5f190f1c2771156ff1734864ee030e416b61c4cfac91cb030d1",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-vampire/",
+   "conversion": "second pose sheet (femc-wardrobe.py skin2)",
+   "placement": "Wardrobe outfit sk-chapel-vampire (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-chapel-vampire-posesheet.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "6923a80590d809014792a95218efbffe6eb0d1c4ad194bfbb526cea6a49260f1",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-vampire/",
+   "conversion": "pose sheet (femc-wardrobe.py skin)",
+   "placement": "Wardrobe outfit sk-chapel-vampire (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-chapel-veil-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "a15941158840c8830cef41277fc6a4b105ebb2c61e4ca805ed8fb6e9504cf7d0",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-veil/",
+   "conversion": "scene faces (femc-skin-portraits.py + femc-wardrobe.py portraits)",
+   "placement": "Wardrobe outfit sk-chapel-veil (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-chapel-veil-posesheet-2.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "14cf14bdb42ca31d306e0ec5f660aea02b3b418989d4ef6a63316b8d1257c259",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-veil/",
+   "conversion": "second pose sheet (femc-wardrobe.py skin2)",
+   "placement": "Wardrobe outfit sk-chapel-veil (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-chapel-veil-posesheet.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "7546780307ac8c9b167a53ba27177378cf3b93b3d546339551acf263dd8f451c",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-veil/",
+   "conversion": "pose sheet (femc-wardrobe.py skin)",
+   "placement": "Wardrobe outfit sk-chapel-veil (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-cottage-bakery-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "2c09344ee039eb36c4a432c7682a7615e220427b71ca8401ba956b839b1ede50",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-bakery/",
+   "conversion": "scene faces (femc-skin-portraits.py + femc-wardrobe.py portraits)",
+   "placement": "Wardrobe outfit sk-cottage-bakery (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-cottage-bakery-posesheet-2.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "3f8d7d181ed9ec598133d212444c0f73678e01d833a2f4cba2d077751e131ea9",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-bakery/",
+   "conversion": "second pose sheet (femc-wardrobe.py skin2)",
+   "placement": "Wardrobe outfit sk-cottage-bakery (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-cottage-bakery-posesheet.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "b2739bc3ab30c2eac7a0e0891e66c173330a5308546a9e4e5e80eb8efcfd77e5",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-bakery/",
+   "conversion": "pose sheet (femc-wardrobe.py skin)",
+   "placement": "Wardrobe outfit sk-cottage-bakery (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-cottage-greenhouse-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "42b5a1278950ba1e8bfff71134b9fba909f4d1fcf15af999c9b756ebc711aaa4",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-greenhouse/",
+   "conversion": "scene faces (femc-skin-portraits.py + femc-wardrobe.py portraits)",
+   "placement": "Wardrobe outfit sk-cottage-greenhouse (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-cottage-greenhouse-posesheet.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "8ac097ab660e1fbfe6d087be084cc6af66235b2da56a0b531eda398f7c736981",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-greenhouse/",
+   "conversion": "pose sheet (femc-wardrobe.py skin)",
+   "placement": "Wardrobe outfit sk-cottage-greenhouse (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-cottage-harvest-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "8e35e584b69d03dda7c4f8cdbcda1eda12d2b788523a435c5ee55bb0c3a6cc60",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-harvest/",
+   "conversion": "scene faces (femc-skin-portraits.py + femc-wardrobe.py portraits)",
+   "placement": "Wardrobe outfit sk-cottage-harvest (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-cottage-harvest-posesheet.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "4c6ef92c81cb1a4b43995c8eb2cff43064eb7570d3723a6d5470850cbe62ffb0",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-harvest/",
+   "conversion": "pose sheet (femc-wardrobe.py skin)",
+   "placement": "Wardrobe outfit sk-cottage-harvest (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-cottage-meadow-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "08b8a0cffe0daffd9c3522c4b989eac5e43f5ca991f837658e513e7ded55ac0a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-meadow/",
+   "conversion": "scene faces (femc-skin-portraits.py + femc-wardrobe.py portraits)",
+   "placement": "Wardrobe outfit sk-cottage-meadow (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-cottage-meadow-posesheet-2.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "e23099bb342ea95af280e45b12eef24bdacab75b5f717b11b1e748e8bc93ddf8",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-meadow/",
+   "conversion": "second pose sheet (femc-wardrobe.py skin2)",
+   "placement": "Wardrobe outfit sk-cottage-meadow (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 142,
+   "source": "New Adds/skin-sk-cottage-meadow-posesheet.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "e6e1f26bd8ae53553a6acb3b0bd0f88d4b1a7cfa8db9a9aa60e6d32ed79b539a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-meadow/",
+   "conversion": "pose sheet (femc-wardrobe.py skin)",
+   "placement": "Wardrobe outfit sk-cottage-meadow (FEMC-ART-WIRING 19)"
   }
  ],
  "batch1Validation": {

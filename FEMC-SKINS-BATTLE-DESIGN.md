@@ -89,6 +89,8 @@ Kat's picks (Oct 31): three series, four looks each, each with its own banner. E
 
 ### The Moon · `sk-arcana-moon` (was 19C / 19D on the main list)
 
+> ✅ **In the game (Nov 5, art batch 142):** pose sheet, scene faces and second pose sheet.
+
 Tarot Arcana. A midnight-blue slip dress, a sheer veil and moon-phase jewellery; long loose hair with silver tinsel.
 
 #### 1. Pose sheet
@@ -118,6 +120,8 @@ Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with 
 
 ### The Star · `sk-arcana-star` (was 19E / 19F on the main list)
 
+> ✅ **In the game (Nov 5, art batch 142):** pose sheet, scene faces and second pose sheet.
+
 Tarot Arcana. A sheer pale pink layered dress covered in tiny stars, barefoot; a high ponytail with pastel pink and silver streaks.
 
 #### 1. Pose sheet
@@ -146,6 +150,8 @@ Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with 
 ```
 
 ### The Lovers · `sk-arcana-lovers` (was 19G / 19H on the main list)
+
+> ✅ **In the game (Nov 5, art batch 142):** pose sheet, scene faces and second pose sheet.
 
 Tarot Arcana. A red-and-black corset dress with a heart locket and rose vines; Hollywood waves pinned with a red rose.
 
@@ -178,6 +184,8 @@ Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with 
 
 ### Black Rose · `sk-chapel-rose` (was 19I / 19J on the main list)
 
+> ✅ **In the game (Nov 5, art batch 142):** pose sheet, scene faces. **Still to make: the second pose sheet (#3 below).**
+
 Midnight Chapel. A gothic lolita dress with lace, a rose corsage and a tiny top hat; ringlet pigtails with black bows.
 
 #### 1. Pose sheet
@@ -206,6 +214,8 @@ Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with 
 ```
 
 ### Cathedral Veil · `sk-chapel-veil` (was 19K / 19L on the main list)
+
+> ✅ **In the game (Nov 5, art batch 142):** pose sheet, scene faces and second pose sheet.
 
 Midnight Chapel. A long black lace gown, a cathedral-length veil and a pink bead belt; a sleek low bun under the veil.
 
@@ -236,6 +246,8 @@ Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with 
 
 ### Vampire Ball · `sk-chapel-vampire` (was 19M / 19N on the main list)
 
+> ✅ **In the game (Nov 5, art batch 142):** pose sheet, scene faces and second pose sheet.
+
 Midnight Chapel. A red velvet off-shoulder gown and a high-collared cape; a dramatic half-up updo with a deep red streak.
 
 #### 1. Pose sheet
@@ -264,6 +276,8 @@ Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with 
 ```
 
 ### Graveyard Picnic · `sk-chapel-picnic` (was 19O / 19P on the main list)
+
+> ✅ **In the game (Nov 5, art batch 142):** pose sheet, scene faces and second pose sheet.
 
 Midnight Chapel. A black pinafore with pink cross-stitch, a parasol and a picnic basket; two fluffy space buns with pink ribbons.
 
@@ -296,6 +310,8 @@ Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with 
 
 ### Meadow Picnic · `sk-cottage-meadow` (was 19Q / 19R on the main list)
 
+> ✅ **In the game (Nov 5, art batch 142):** pose sheet, scene faces and second pose sheet.
+
 Wildflower Cottage. A puff-sleeved floral prairie dress and a straw basket; two loose braids woven with wildflowers.
 
 #### 1. Pose sheet
@@ -324,6 +340,8 @@ Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with 
 ```
 
 ### Bakery Morning · `sk-cottage-bakery` (was 19S / 19T on the main list)
+
+> ✅ **In the game (Nov 5, art batch 142):** pose sheet, scene faces and second pose sheet.
 
 Wildflower Cottage. A pink gingham apron over a cream blouse, flour on her cheek; a messy bun with a pink kerchief.
 
@@ -354,6 +372,8 @@ Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with 
 
 ### Rainy Greenhouse · `sk-cottage-greenhouse` (was 19U / 19V on the main list)
 
+> ✅ **In the game (Nov 5, art batch 142):** pose sheet, scene faces. **Still to make: the second pose sheet (#3 below).**
+
 Wildflower Cottage. A cream knit cardigan, rain boots and a clear umbrella; half-up hair with a butterfly clip and pink sun-kissed ends.
 
 #### 1. Pose sheet
@@ -382,6 +402,8 @@ Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with 
 ```
 
 ### Harvest Festival · `sk-cottage-harvest` (was 19W / 19X on the main list)
+
+> ✅ **In the game (Nov 5, art batch 142):** pose sheet, scene faces. **Still to make: the second pose sheet (#3 below).**
 
 Wildflower Cottage. A laced bodice over a long tiered skirt and a flower crown; a long waterfall braid.
 
