@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 6):** ⭐ high-resolution poses (top section: Solar ✅ done; the other fighters next) · couple victory poses for Jungwon and Akihiko (section 27: four outfits to go; Moon Hoodie and Midnight Drive are in) · 1 Boutique banner picture (section 28: Tarot Arcana) · strangers: 4 places and 7 CGs (section 34) · HOAX: 5 places and 6 CGs (section 36) · Stay: 3 optional CGs (section 37) · Nana's faces and photo-booth sheets, plus Solar's HOAX booth sheet (section 38) · 19 polaroids for strangers, HOAX and Stay (section 39: 7 / 7 / 5) · low-res pictures to look over at the very end (section 31). **Runners backgrounds:** all made; only an optional night café is left in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style now live in `FEMC-CG-REMAKES.md`. **New Wardrobe outfits** (Solar's skin series and the collab outfits, 24 looks) and **skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make (updated Nov 6):** ⭐ high-resolution poses (top section: Solar ✅ done; the other fighters next) · couple victory poses for Jungwon and Akihiko (section 27: four outfits to go; Moon Hoodie and Midnight Drive are in) · 1 Boutique banner picture (section 28: Tarot Arcana) · strangers: 4 places and 7 CGs (section 34) · HOAX: 5 places and 6 CGs (section 36) · Stay: 3 optional CGs (section 37) · Nana's faces and photo-booth sheets, plus Solar's HOAX booth sheet (section 38) · 19 polaroids for strangers, HOAX and Stay (section 39: 7 / 7 / 5) · **Epilogue backgrounds remade:** strangers, HOAX and Stay in `EPILOGUE-BACKGROUND-PROMPTS.md` (like the Runners ones) · low-res pictures to look over at the very end (section 31). **Runners backgrounds:** all made; only an optional night café is left in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style now live in `FEMC-CG-REMAKES.md`. **New Wardrobe outfits** (Solar's skin series and the collab outfits, 24 looks) and **skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 ## ⭐⭐ TOP PRIORITY when you have usage: high-resolution poses (Kat, Nov 2)
 
@@ -104,6 +104,7 @@ Kat's note (Nov 5): every epilogue place should have its own background. This on
 
 **[ ] 34A. The Incheon harbor by day**  
 "Walk the harbor" on a Go Out afternoon in the strangers epilogue (now the main game's harbor stands in; the evening already has its own Incheon harbor at night).  
+⏳ Make S-harbor night (`epi-s-harbor-night`) from `EPILOGUE-BACKGROUND-PROMPTS.md` first, then attach it here in place of the old night picture.  
 Attach: `BG - Incheon Harbor at Night (strangers).png` (the same harbor, to match)  
 Save as: `epi-s-harbor-day.png`
 ```
@@ -197,6 +198,7 @@ New places and moments from the HOAX expansion. Until each picture exists the ga
 
 **[ ] 36A. The Kims' front step at night**  
 For a late-night scene on Solar's front step in HOAX (now a winter street stands in).  
+⏳ Make this after the new Kim house (H3 / H4 in `EPILOGUE-BACKGROUND-PROMPTS.md`), and attach the new picture in place of `BG - Kim House (evening).png`.  
 Attach: `CG - style (HOAX).png`, `BG - Kim House (evening).png`  
 Save as: `epi-h-front-step-night.png`
 ```
@@ -222,6 +224,7 @@ Background art in the same realistic painted style as the attached image, 16:9, 
 
 **[ ] 36D. Getting ready**  
 Cherry doing Solar's hair at the mirror before the winter-break party.  
+⏳ Make this after Solar's new HOAX room (H1 / H2 in `EPILOGUE-BACKGROUND-PROMPTS.md`), and attach the new picture in place of `BG - Solar's Room (HOAX).png`.  
 Attach: `CG - style (HOAX).png`, `BG - Solar's Room (HOAX).png`, `CG - Solar (HOAX party).png`, `CG - Cherry (HOAX party).png`, `CG - Nana (HOAX).png`  
 Save as: `epi-h-ready.png`
 ```
@@ -230,6 +233,7 @@ A realistic painted illustration in the style of the first attached image, 16:9,
 
 **[ ] 36E. Proof of life**  
 Jihoon on Solar's front step at one in the morning, flattened in the snow by Nana.  
+⏳ Make this after the new Kim house (H3 / H4 in `EPILOGUE-BACKGROUND-PROMPTS.md`), and attach the new picture in place of `BG - Kim House (evening).png`.  
 Attach: `CG - style (HOAX).png`, `BG - Kim House (evening).png`, `CG - Jihoon (HOAX).png`, `CG - Solar (HOAX).png`, `CG - Nana (HOAX).png`  
 Save as: `epi-h-proof-of-life.png`
 ```
@@ -238,6 +242,7 @@ A realistic painted illustration in the style of the first attached image, 16:9,
 
 **[ ] 36F. The window**  
 Nana waiting in the front window for Solar on the first day back at school.  
+⏳ Make this after the new Kim house (H3 / H4 in `EPILOGUE-BACKGROUND-PROMPTS.md`), and attach the new picture in place of `BG - Kim House (evening).png`.  
 Attach: `CG - style (HOAX).png`, `BG - Kim House (evening).png`, `CG - Nana (HOAX).png`  
 Save as: `epi-h-nana-window.png`
 ```
