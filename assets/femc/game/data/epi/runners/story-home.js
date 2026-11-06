@@ -29,6 +29,7 @@
   { id: 'epi-r-welcome', date: '12/1', slot: 'evening', consumes: true, title: 'the first night back', place: "Syracuse · Alpha Phi House · Hanni and Hyein's Room", time: 'Evening', scene: [
     { music: 'epi-r-sisters' },
     { n: "By seven the snow had buried the bikes outside the house up to their handlebars, and Hanni and Hyein's room had been turned, without anybody discussing it, into the kind of fort you build when you're nine and someone in the house is sick. Every spare blanket on the second floor. Both desk chairs dragged together under a duvet to make a roof that sagged in the middle. The fairy lights Hyein had stapled along the ceiling in September plugged in at last, warm and uneven, one strand blinking on a timer nobody had ever figured out how to change." },
+    { cg: 'epi-r-fort' },
     { n: "Hyein had ordered from three different places on Marshall Street, because she couldn't decide, and because, she said, it was an occasion, and the containers sat open on the rug in a ring between them, noodles and dumplings and soup and a box of fries that had gone soft in the cold on the way over and that nobody was going to admit to wanting the most." },
     { s: 'hyein', f: 'happy', t: "I got the spicy one and the not-spicy one because I didn't know which one you'd be tonight. Like, as a person." },
     { s: 'solar', f: 'neutral', t: "Which one am I?" },
@@ -39,6 +40,7 @@
     { s: 'hanni', f: 'neutral', t: "You ate a sandwich from a convenience store on a monorail platform in a city that isn't on any map, Hyein." },
     { s: 'hyein', f: 'happy', t: "It was a turkey sandwich." },
     { n: "Solar laughed. It came out of her before she'd decided anything about it, a real one, loud enough that it surprised her, the first one all day that she hadn't had to build first, and Hanni looked up from the laptop and didn't say anything, and looked back down, and Solar watched her not say anything and loved her for it so suddenly that she had to eat a fry about it." },
+    { cg: null },
     { n: "It was so normal. That was the part she hadn't been ready for. She'd been ready for the cover story and her father and the green coming into the corners of her eyes when she wasn't looking. She hadn't been ready for a Monday night in December with the radiator knocking and Hyein's socks not matching and the smell of soy sauce and somebody's vanilla candle and wet coats drying on the back of the door, and the three of them in a room that was exactly as small as she remembered it, which was the strangest thing of all, because she'd been sure, somewhere, that it would have shrunk." },
     { n: "Hyein put her chopsticks down. She did it carefully, the way she did things when she was about to be brave." },
     { s: 'hyein', f: 'sad', t: "Did you sleep? There, I mean. Like actually sleep. In a bed. Was it a nice bed?" },
@@ -315,6 +317,7 @@
       { s: 'solar', f: 'happy', t: "Everyone likes me better." },
       { s: 'jaehyun', f: 'neutral', t: "That's not true. But it's close." }
     ] },
+    { cg: 'epi-r-porch' },
     { n: "She came down the steps he'd cleared and stood next to him in the snow. Up close the shoulder was worse. Not anything you'd see. Something you'd only notice if you'd grown up next to him, the way he held his weight a quarter-inch to the left, the way he'd thrown the snow with the wrong hand and made it look like a choice." },
     { n: "She could tell Dad. She thought about it, one clean second. A word on the drive down, a word in the study on the twenty-sixth, and their father would have a doctor on the phone by noon and an opinion by one, and her brother would never forgive her, and he'd be right." },
     { n: "He'd kept hers. She'd keep his." },
@@ -325,6 +328,7 @@
     { s: 'jaehyun', f: 'neutral', t: "I've thought about nothing else since the season ended." },
     { n: "The snow came down between them, heavy and slow, the kind that swallowed sound. Somewhere down the street someone was laughing on another porch. Inside the house, through the glass, Hyein was carrying a laundry basket up the stairs and singing." },
     { n: "Midnight was six hours away. The roof was a ten-minute walk. He didn't know. He knew about the dorm and the dog and the tower; he didn't know about tonight, and she wasn't going to be the one to put it on him, not now, not on a porch, not with his shoulder like that." },
+    { cg: null },
     { choose: [
       { t: "If I'm not in the car tomorrow—", flag: 'epi-r-porch-fetch', then: [
         { n: "He turned and looked at her. Properly. Not the sideline look. The other one, the one she'd only seen a handful of times, the last one in a noodle place on Marshall Street when she'd said *everything* and he'd said *you ate badly there, too.*" },

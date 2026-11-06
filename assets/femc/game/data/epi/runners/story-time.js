@@ -97,6 +97,7 @@
     { n: "Saturday on Marshall Street at noon was salt and slush and the smell of the falafel place opening, a line out the bagel shop door, a man in a Santa hat outside the bookstore ringing a bell with the grim endurance of somebody on his third hour. The sky was the color of a sink. Everyone she passed had their hood up and their head down, the whole street walking like it was apologizing for something." },
     { n: "She was crossing at the light when she saw him, and she stopped on the curb without meaning to, and somebody bumped her shoulder going past and said *sorry* the way people in Syracuse said sorry, which was mostly to the snow." },
     { place: 'Syracuse · Marshall Street · Café', time: 'Daytime', soft: true },
+    { cg: 'epi-r-window-seat' },
     { n: "Mark was in the window of the café. The front booth, the one everybody wanted, the one that was never free on a weekend. He had it to himself." },
     { n: "That was the first thing that was wrong. She had never, in a whole semester, seen Mark Lee anywhere by himself. Mark was a person who happened in groups. Mark was the center of a table, the guy who knew the barista's name and the barista's sister's name, the one with an arm over somebody's chair and a laugh going before the joke had finished. She'd watched him walk into rooms all fall and seen the rooms rearrange themselves around him, slightly, the way water does around a stone." },
     { n: "There was nobody around him now. A coffee in front of him with the lid still on, untouched. His phone face down on the table beside it. A yellow legal pad, and a pen, and his hand flat on the pad not writing anything." },
@@ -107,6 +108,7 @@
     { n: "Jisung's hand came back down. He hitched his box higher and kept walking. Neither of them stopped." },
     { n: "Behind the glass, Mark had seen the whole thing. She watched him see it. She watched his face do the Mark thing first, out of pure habit, the easy half-smile coming up to meet the wave that wasn't coming, and then she watched him notice that it wasn't coming and put the smile away again, carefully, like he was putting something back on a shelf where it went. He didn't look after them. He looked back down at the pad." },
     { n: "She had watched that man perform in a hundred rooms. She had watched him be warm in the right places and sorry in the right amount and kind with a receipt clipped to it. She'd never once seen him with nobody to perform for. She hadn't known, until right now, that there was anything left over when the audience went home." },
+    { cg: null },
     { choose: [
       { t: "(Keep walking.)", then: [
         { n: "The light changed. She went with it. She didn't look back at the window, and that was a choice too, and she knew it was, and made it anyway, and it stayed with her for the whole length of the street like a stone in her boot." }
@@ -167,11 +169,13 @@
     { s: 'doyoung', f: 'neutral', t: "You don't carry the board home. You carry what's on it. Go home. Sleep. Eat something with a vegetable in it." },
     { n: "Olivia cried, as promised. She'd promised on Monday, in writing, and she kept it the way she kept everything, loudly and all at once, with Gregory in her arms. Haerin handed her a clementine without looking at her, which, from Haerin, was a hug. Chenle said goodbye to each of them by name. Minji filmed the empty board, once, after asking the room, and the room said yes." },
     { n: "Doyoung was the last one at the front, capping the marker. On her way past him, with her bag on her shoulder and the snow already waiting at the door, she saw him reach up and write one more thing, very small, in the bottom corner of the clean board, where the cleaners wouldn't bother with it." },
+    { cg: 'epi-r-january' },
     { n: "*see you in january.*" },
     { n: "No name on it. It wasn't for anyone in particular. She stood in the doorway and read it twice, a promise in a coach's handwriting about a month she had no idea whether she'd be in, and then she pulled her hood up and went down the stairs and out into the white, and didn't take the back way, and didn't look up." },
     { ifEpiRoute: 'cover', then: [
       { n: "Hanni and Hyein were at the bottom of the steps in the snow, the way they'd been at the bottom of the lab stairs a hundred times this month, Hyein with a bag of gummy worms and Hanni with two coats over her arm, one of which was hers. Nobody had asked them to come. Nobody ever did." }
     ] },
+    { cg: null },
     { stat: { proficiency: 1 } }
   ] }
 

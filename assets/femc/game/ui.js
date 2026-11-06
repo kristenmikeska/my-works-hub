@@ -1058,7 +1058,7 @@
      Nothing here reads the ending: the same stills for every ending. ── */
   const CREDITS_STILLS = [
     { id: 'credits-sees', who: ['yukari', 'junpei', 'fuuka'] }, { id: 'credits-akihiko', who: ['akihiko'] },
-    { id: 'credits-mitsuru', who: ['mitsuru'] }, { id: 'credits-aigis', who: ['aigis'] }, { id: 'credits-ken', who: ['ken'], art: false },
+    { id: 'credits-mitsuru', who: ['mitsuru'] }, { id: 'credits-aigis', who: ['aigis'] }, { id: 'credits-ken', who: ['ken'] },
     { id: 'credits-shinjiro', who: ['shinjiro'] }, { id: 'credits-haechan', who: ['haechan'] }, { id: 'credits-jungwon', who: ['jungwon'] },
     { id: 'credits-minji-jihoon', who: ['minji', 'jihoon'] }, { id: 'credits-hanni-hyein', who: ['hanni', 'hyein'] },
     { id: 'credits-kat-ethan', who: ['kat'] }, { id: 'credits-solar', always: true }];

@@ -47,8 +47,9 @@ SHEETS = {
 
 def source(stem):
     for d in ('New Adds', 'Added to Game'):
-        p = os.path.join(IMAGES, d, stem + '.png')
-        if os.path.exists(p): return p
+        for name in (stem, '-'.join(stem.split('-', 1)[::-1])):  # stickers-runners or runners-stickers (Kat's Nov 5 name)
+            p = os.path.join(IMAGES, d, name + '.png')
+            if os.path.exists(p): return p
     return None
 
 

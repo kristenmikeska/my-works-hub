@@ -439,6 +439,7 @@
       { n: "She pinned. She was blinking a lot. Hanni, behind Solar with the ribbon, reached round and squeezed Hyein's shoulder once without stopping what her other hand was doing." }
     ] },
     { n: "Hyein made her stand by the window, after, for the portfolio. Her phone on the little tripod, the ring light balanced on a stack of textbooks, the snow outside going past blue in the dark behind her. *Turn. No, the back. Look over your shoulder. Not like that. Like you forgot something.* Click. Click. Hyein looked at the screen and went quiet, and turned it around, and didn't say anything." },
+    { cg: 'epi-r-mirror' },
     { n: "Then Solar turned to the mirror on the back of the closet door, the long one, warped a little at the bottom, the way every mirror in this house was." },
     { n: "There was a girl in it in wine-red silk with her chin level and her shoulders back and a black ribbon down her spine. She didn't recognize her. For one long second she genuinely didn't, a stranger in somebody else's room, dressed for somebody else's life. Then, slowly, she did. The scrape across the knuckles, gone pink. The dark under the eyes she'd left. The way she was standing, weight forward, ready, a stance she'd learned at midnight in a tower and never unlearned." },
     { n: "It was worse, recognizing her. It was also better. She didn't have a word for which one it was more." },
@@ -446,6 +447,7 @@
     { s: 'hanni', f: 'neutral', t: "Jaemin says Hyein's looks arrive at eight-fifteen. So everyone sees them arrive." },
     { s: 'hyein', f: 'happy', t: "It's in the run of show. It's on the fridge. It's LAW." },
     { n: "On the second landing, as they went down, Danielle's door was shut and her light was on, a thin bright line under it. The three of them walked past it in step, in wine, without slowing, and the third stair from the top didn't make a sound." },
+    { cg: null },
     { place: 'Syracuse · Sigma Chi House · Holiday Party', time: 'Evening' },
     { music: 'epi-r-holiday' },
     { n: "The last Friday before break, Sigma put on a jacket. That was the only way to describe it. The Friday party, the one that happened weekly without fail, had shaved and put on a tie and hung lights from every surface that would take a staple, and called itself a holiday party, and behaved, for the first hour, like it believed it." },
@@ -1060,6 +1062,7 @@
     { dark: false },
     { cg: null },
     { n: "The bell stopped." },
+    { cg: 'epi-r-twelfth' },
     { n: "And the snow stopped with it. Not stopped falling. Stopped. Every flake on that roof and over the quad and in the cone of every lamppost on campus hung where it was, in the air, a whole sky of white held perfectly still, so still she could see the shape of the one in front of her eye, six arms and a hole in the middle. No wind. No sound. Not the freshmen on the quad, not the city, not her own breath. She knew that stillness. She'd lived inside it at midnight for a year." },
     { n: "One long second." },
     { n: "Then it fell. Normally. Down. Slow and thick and straight, the way it had been falling all night, and the sound came back with it all at once, somebody shrieking on the quad, a car on Comstock, his breath going out against her temple in one long rough piece." },
@@ -1067,6 +1070,7 @@
     { n: "She was still there." },
     { n: "She was standing on the roof of the Language Arts building in a coat and gloves with snow landing on her, on her, and staying, and she started to laugh." },
     { n: "She didn't decide to. It came up out of her the way the sobbing had, from somewhere under her ribs with no say from the rest of her, and it was the stupidest sound she'd ever made, high and wet and hiccuping, and she couldn't stop it. She tried. She put her face in his coat to stop it and it got worse." },
+    { cg: null },
     { ifEpiRoute: 'haechan', then: [
       { n: "And then he was laughing too." },
       { n: "Not the flat one. Not the one that scraped against something on the way out, the one she'd been hearing since August. This one didn't have anything under it at all. It came out of him helpless and rough into her hair, his whole chest going with it, his arms still locked around her like he hadn't been told yet that he could stop, and she pulled back far enough to look at him, and he had his eyes shut, and he was laughing like a boy who'd been holding his breath under water for a very long time and had just come up." },

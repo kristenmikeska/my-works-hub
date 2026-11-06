@@ -1521,11 +1521,13 @@
     { n: "The lobby, the marble floor, the white flowers the size of a car. She stood in all of it with her coat on and her face doing something she couldn't stop." },
     { s: 'solar', f: 'neutral', t: "I know." },
     { s: 'marco', f: 'happy', t: "About time." },
+    { cg: 'epi-r-tenth-name' },
     { n: "He turned the book round to copy them in, his good pen, his small square capitals, one name to a line, the way he'd written every name in that book since before she was born. She watched him do it because she couldn't not. It felt like watching somebody carve something." },
     { n: "He got to the bottom of her list. He kept writing." },
     { glitch: 'epi-r-g-tenth' },
     { n: "One more line. In the same small square capitals, in the same good pen, under the last name she'd given him, as easily as all the others." },
     { n: "*IORI, J.*" },
+    { cg: null },
     { n: "She looked at the paper in her own hand. Her list, in her handwriting. She counted it. She counted it again. It ended where she'd ended it." },
     { s: 'solar', f: 'neutral', t: "Marco. That last one." },
     { s: 'marco', f: 'neutral', t: "Mr. Iori? Oh, that guest is already upstairs." },
@@ -2057,6 +2059,7 @@
       { s: 'haechan', f: 'neutral', t: "Bar nine." }
     ] },
 
+    { cg: 'epi-r-bar-nine' },
     { n: "She'd sung in front of people since she was eight. Three hundred parents in a school auditorium in velvet. A cathedral at Christmas once, in a robe, with her mother in the fourth row. A padded room on the ninth of December with a microphone that cost more than a car payment. She had never once been afraid." },
     { n: "This was a front room. The good floor and nine or ten people on it and no microphone, no track, no headphones, no click, nothing between her and any of them, nothing to fix afterward and nothing to hide behind, and a boy at a piano that had been shut since she was eleven." },
     { n: "He played eight bars. She came in on nine." },
@@ -2066,6 +2069,7 @@
     { n: "She did the thing at the top of the second phrase and didn't reach for it." },
     { n: "Somewhere behind her, Hanni made a sound." },
     { n: "She held the last note and let it go, and the apartment took two seconds to let go of it after her, and then the room came apart." },
+    { cg: null },
     { n: "Hyein screamed. Not a word, a scream, both hands over her mouth, and then sat straight down on the floor. Olivia said *WHAT* four times in a row at rising volume. Jisung had both hands on top of his head. Jaemin was saying *what was that, what IS that* to Renjun, who wasn't answering, because Renjun was crying, which was the single most alarming thing that happened all night and which he would deny for the rest of the academic year. Chenle had his forearm over his eyes and stayed like that for eleven seconds." },
     { ifFlag: 'epi-r-nye-mark', then: [
       { n: "Mark, in the doorway, had stopped doing anything with his face at all, which was how she knew. *That's different in a room,* he said, when she looked at him, and then, before she could do anything with it, jerked his chin at the piano: *make him do another one.* From the stool, Haechan said *HE'S NOT DOING ANOTHER ONE.*" }
@@ -2197,6 +2201,7 @@
     { n: "She heard it. Through the fireworks and the train and the whole city screaming at the sky and her own breath going in pieces, she heard every word, flat and sure, the way he said the things he'd already decided were true." },
     { n: "It was the last thing she heard." },
     { dark: false },
+    { cg: 'epi-r-hold' },
     { n: "On the roof of a building on Fifth Avenue, at one minute past midnight on the first of January, the three heaters were burning orange and the little lights were on in the pergola, and fireworks were going up over the park in every color there was." },
     { n: "Everyone she loved stood in a knot at the glass rail with their arms out, around each other and through each other, holding on as hard as they could to the space in the middle where nobody was standing." },
     { n: "Nobody let go. Not for a long time. Hyein was still saying *no.* Hanni's hands were still closed. On the planter, Minji's camera ran on with its little red light, pointed at all of them, recording the space." },
@@ -2209,7 +2214,8 @@
     { ifFlag: 'epi-r-nye-mark', then: [
       { n: "In the pocket of a gray coat that was no longer on that roof, there had been an envelope, unopened, with her name on it in blue biro." }
     ] },
-    { n: "Below them, eleven floors down, in a lobby with a marble floor, a book lay open on the desk, and at the bottom of the day's page, in small square capitals, there was a line with nothing written on it at all." }
+    { n: "Below them, eleven floors down, in a lobby with a marble floor, a book lay open on the desk, and at the bottom of the day's page, in small square capitals, there was a line with nothing written on it at all." },
+    { cg: null }
   ] }
 
   );

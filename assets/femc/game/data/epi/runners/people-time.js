@@ -521,10 +521,12 @@
       { n: "She read it twice. She hadn't told anybody she hadn't eaten. She hadn't told herself, really, not in words. Her stomach answered for her anyway, low and embarrassing, and she put her phone face down as if it could hear." },
       { place: 'Syracuse · Alpha Phi House · Porch', time: 'Late Night' },
       { n: "She went down in her socks. The stairs were dark and the front door stuck the way it always stuck in the cold, and when she got it open the air came in so clean and total it took her breath, eleven degrees and no wind, the kind of cold that didn't blow at you so much as wait." },
+      { cg: 'epi-r-porchrail' },
       { n: "The porch rail was furred white with ice, and on it, pressed down into the snow so it wouldn't tip, was a paper bag folded over twice at the top. It was steaming. Actually steaming, two thin threads of it going up into the porch light, which meant it had been there about a minute, which meant—" },
       { n: "She looked up. Walnut Avenue ran away from the house empty and orange under the streetlights, and halfway down it, a block and a half, there was a figure with his hood up and his hands in his pockets, walking at the exact unhurried pace of somebody who had not just left something on a porch. He didn't look back. He wasn't going to look back. She knew that the way she knew the stairs." },
       { n: "Inside the bag: a rice bowl from the late Korean place on Marshall Street, the one that stayed open until two for exactly this kind of person, the sauce in its own little cup because she didn't like it poured on. Chopsticks. Two napkins. And a banana." },
       { n: "Perfectly yellow. Not a single brown spot on it. Insultingly, deliberately yellow, the yellow of somebody who had stood at a register and gone through the whole bunch to find it, and she stood on the frozen porch in her socks and laughed out loud, once, at nobody, because the last banana he'd ever given her had been nearly rotten, in a valley, at two in the morning, and he'd said *it was by the register,* and that had been a lie, and this was the correction." },
+      { cg: null },
       { ifFlag: 'epi-r-stem-hers', then: [
         { n: "Her coat was on the hook inside the door, and in its inside pocket, zipped, was a small drive with one file on it that nobody opened but her. She thought about that, holding the warm bag. About a boy who'd taken something from her once without asking, and now left things on rails and walked away before she could thank him. She didn't know yet if it evened out. She wasn't sure it was supposed to." }
       ], else: [
@@ -639,11 +641,13 @@
       { s: 'minji', f: 'neutral', t: "Doyoung records comms. For review. He sent the files tonight. I haven't listened yet. I didn't want to do it alone." },
       { s: 'minji', f: 'neutral', t: "You can say no." },
       { n: "Solar sat down and put the headset on. Minji reached over and set the playback to half speed, the little dropdown, 0.5x, and pressed play." },
+      { cg: 'epi-r-half-speed' },
       { n: "At half speed the game went underwater. The Genji came over the wall behind Minji's sightline like something swimming, slow and graceful and wrong, and in their ears the comms came out of the dark dragged long and low, their own voices stretched into something almost like singing. Olivia's laugh, a full second before anyone else's, turned into a long slow bell. Chenle saying *rotate* became a word with three rooms in it." },
       { n: "And then Minji's voice, half speed, a whole octave lower than it was, steady, calm, exact." },
       { s: 'minji', f: 'neutral', t: "*I'm fine. I've got him. Stay with tank.*" },
       { n: "Minji, beside her, in the real room, didn't move. On the screen, slowly, a small blue fox-fire blink: Solar's Kiriko stepping across the map to her. In their ears, stretched out like taffy, her own voice, laughing, saying *you said it like me.*" },
       { n: "Neither of them said anything. That was the whole of it, for a long time. Two girls in the blue light with one VOD going at half speed and the hum of thirty dead PCs around them, listening to themselves from Sunday, and every time the comms went quiet on the recording the lab went quiet too, so that it was hard to tell which silence was which. Solar realized after a while that Minji had turned her own mic on. So had she. Neither of them had said a word into it. They were just there, in each other's ears, breathing, the way they'd been on a stage with three hundred people screaming." },
+      { cg: null },
       { ifEpiRoute: 'minji', then: [
         { n: "When the map ended Minji paused it on the scoreboard and didn't take the headset off. She spoke into the mic, quietly, so that it came to Solar not from the next chair but from inside her own ears, which was a different kind of close." },
         { s: 'minji', f: 'sad', t: "You heard me. Under it. Nobody else did." },
@@ -746,9 +750,11 @@
       { s: 'minji', f: 'serious', t: "Can you stay for it? You'd have to not say anything for thirty seconds. I know that's a lot to ask." },
       { s: 'solar', f: 'happy', t: "I can be quiet." },
       { s: 'minji', f: 'happy', t: "I've met you." },
+      { cg: 'epi-r-room-tone' },
       { n: "She pressed the button. The little red light came on. And they stood in the half-empty room and didn't say anything." },
       { n: "Thirty seconds was long. Solar had forgotten how long it was. The radiator ticked. Somebody down the hall laughed and a door shut. The snow touched the window so softly it was almost not a sound, a page being turned very slowly, everywhere at once. Her own breath. Minji's. She looked at the red light and thought, with a clarity that went through her like the cold on the porch had, that this would still be on Minji's drive in a year, and in ten, thirty seconds of a room on the twentieth of December with her in it, and that whatever happened tonight, it would have happened after this. That this part was already safe." },
       { n: "Her throat did something. She didn't let it make a sound. That was the whole job." },
+      { cg: null },
       { n: "The light went off. Minji let out a breath that steamed a little in the cold of a room with the window cracked." },
       { s: 'minji', f: 'happy', t: "Got it. That's the room." },
       { ifEpiRoute: 'minji', then: [
