@@ -36,7 +36,11 @@ NAMES = {'armscrossed': 'arms-crossed', 'evoker': 'evoker', 'fistpump': 'cheer',
          'thinking': 'thinking', 'watering': 'watering', 'wave': 'wave', 'yawn': 'stretch',
          'fist': 'cheer', 'fistbump': 'cheer', 'handsinhair': 'hair', 'handsonhips': 'tease', 'peace': 'peace',
          'pointing': 'pointing', 'thumbsup': 'thumbsup', 'pocket': 'pocket', 'handsinpocket': 'pocket',
-         'point': 'pointing', 'handsinpockets': 'pocket', 'keys': 'keys'}  # the last three: couple partners' victory poses (FEMC-ART-TODO 27)
+         'point': 'pointing', 'handsinpockets': 'pocket', 'keys': 'keys',  # these three: couple partners' victory poses (FEMC-ART-TODO 27)
+         # Akihiko's and Jungwon's couple victory poses (art batch 143): fist to the sky, boxing stance, hand behind the neck, towel on the
+         # shoulder, tie, bow, car keys, two movie tickets, scarf
+         'victory': 'victory', 'boxing': 'boxing', 'behindneck': 'neck', 'towel': 'towel', 'adjustingtie': 'tie', 'bow': 'bow',
+         'carkey': 'keys', 'tickets': 'tickets', 'adjustscarf': 'scarf'}
 AIR = {'jump'}
 # Wardrobe looks with an HD set: look id -> (folder in New Adds, file prefix). Kat names a folder after the outfit.
 # A set may be partial (ChatGPT blocked some poses): the game uses only the poses a set has (FEMC-ART-WIRING).
@@ -58,6 +62,10 @@ LOOKS = {'sk-cp-afterhours': ('Solar-After Hours-Menu Poses', 'afterhr-'),
          # Couple partners' victory poses (FEMC-ART-TODO 27, Nov 4): the partner's half of a couple set, for the couple win screen.
          'sk-haechan-cp-sunmoon': ('HC-Moon Hoodie-Victory Poses', 'haechan-moonhoodie-'),
          'sk-haechan-cp-drive': ('HC-Midnight Drive-Victory Poses', 'haechan-midnightdrive-'),
+         'sk-akihiko-cp-festival': ('Akihiko-Summer Festival-Victory Poses', 'akihiko-summerfestival-'),
+         'sk-akihiko-cp-ringside': ('Akihiko-Ringside-Victory Poses', 'akihiko-ringside-'),
+         'sk-jungwon-cp-afterhours': ('JW-After Hours-Victory Poses', 'jungwon-afterhours-'),
+         'sk-jungwon-cp-moviedate': ('JW-Movie Date-Victory Poses', 'jungwon-moviedate-'),
          'sk-yukata': ('Solar-Summer Yukata-Menu Poses', 'sumyu-'),
          'sk-cp-festival': ('Solar-Summer Festival-Menu Poses', 'sumfest-'),
          'sk-oops': ('Solar-Oops-Menu Poses', 'oops-'),

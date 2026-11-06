@@ -40113,6 +40113,331 @@
    "destination": "assets/femc/cg/epi-s-engine.webp",
    "conversion": "WebP q86, native 1672 x 941",
    "placement": "people-late.js epi-s-mroh-engine, after the coffee to the choice; cgFocus; ALBUM (34K)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/akihiko-ringside-hd-armscrossed.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "98124443cd4cd1ad9254486646643f20f538e72e1e81c99df410503a48068026",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-akihiko-cp-ringside/hd/arms-crossed.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-akihiko-cp-ringside (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27F)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/akihiko-ringside-hd-boxing.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "81dba183b39ec6c4367d0caf00ef3b191fc68328cd3295727610cf1599e916e7",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-akihiko-cp-ringside/hd/boxing.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-akihiko-cp-ringside (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27F)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/akihiko-ringside-hd-fist.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "534471edc8e454d88e099c22ff82549d4d0de9b3d6f722a69b24aa53fa1f4871",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-akihiko-cp-ringside/hd/cheer.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-akihiko-cp-ringside (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27F)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/akihiko-ringside-hd-thumbsup.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "c3c3b150e9c050a595573d8ed8f213e5068be47e6ba8f670eaf1199eb2d479b2",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-akihiko-cp-ringside/hd/thumbsup.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-akihiko-cp-ringside (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27F)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/akihiko-ringside-hd-towel.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "9e2e1309c38a1d573e2770e11c5c48ef227301d4cfeef266b39be01c5578c0ec",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-akihiko-cp-ringside/hd/towel.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-akihiko-cp-ringside (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27F)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/akihiko-ringside-hd-victory.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "84ed7a000a4aa978d224e4e6b838358c7fc0dc2e9e0e3794f4cb1fe4e227d566",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-akihiko-cp-ringside/hd/victory.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-akihiko-cp-ringside (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27F)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/akihiko-summerfestival-hd-armscrossed.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "67d081c5bdb9ff34d08d83d6654f1b926787f42e7c8a77ed3175d1b3957010b4",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-akihiko-cp-festival/hd/arms-crossed.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-akihiko-cp-festival (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27B)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/akihiko-summerfestival-hd-behindneck.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "cebb8b1a1555d64b76758cb22203b5dbe3867e96542cb97542b58159319e15ac",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-akihiko-cp-festival/hd/neck.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-akihiko-cp-festival (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27B)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/akihiko-summerfestival-hd-boxing.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "70e1235e013851fc596c81838a31ead1fcdcc5a4430b17c0e6f410ae3f72b266",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-akihiko-cp-festival/hd/boxing.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-akihiko-cp-festival (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27B)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/akihiko-summerfestival-hd-fist.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "558ad5ace33d529c0fd4713dd08ca8f79f1a30aa9c285e5d0d114766be59ca01",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-akihiko-cp-festival/hd/cheer.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-akihiko-cp-festival (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27B)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/akihiko-summerfestival-hd-thumbsup.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "93f1fe158e13e9955d1c385bd6f6ef7a130d46d7f627f200613fbd8a89cdebe5",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-akihiko-cp-festival/hd/thumbsup.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-akihiko-cp-festival (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27B)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/akihiko-summerfestival-hd-victory.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "59c12b61d1020eaedfb5e1c7fbd72be9c6ee8788d6886b753779b4e3ebfc90f2",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-akihiko-cp-festival/hd/victory.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-akihiko-cp-festival (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27B)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/haechan-moonhoodie-hd-handsinpocket.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "c0d2403bd6d08a11d1079849f119c401bd3d22a44d3982b6fd239d725f231006",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-cp-sunmoon/hd/pocket.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-haechan-cp-sunmoon (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27A)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/jungwon-afterhours-hd-adjustingtie.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "d84edd66dea54ce4a9f83afa287ba8799ac22fedcb0047ffef8cbb855e1b057f",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/hd/tie.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-jungwon-cp-afterhours (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27D)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/jungwon-afterhours-hd-armscrossed.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "0c339391b06c1de4d209d3be03948fa9e6bff9a1bb283f0d3fc357568558744f",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/hd/arms-crossed.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-jungwon-cp-afterhours (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27D)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/jungwon-afterhours-hd-bow.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "c540e109957277ac0a4599701133c4f43616d2c3f9789d93f068289c05e968e1",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/hd/bow.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-jungwon-cp-afterhours (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27D)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/jungwon-afterhours-hd-carkey.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "929d47ff0d135749a50b806f6b9e2a9292edd890a5153928d8562282877b8650",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/hd/keys.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-jungwon-cp-afterhours (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27D)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/jungwon-afterhours-hd-handonhip.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "6f79691942f0e4b23cc78b131d0494fc2704214abe6307a6bfdfe9e9b676aa19",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/hd/tease.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-jungwon-cp-afterhours (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27D)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/jungwon-afterhours-hd-peace.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "7e5911cca47140bab5006bd8b554d8855a8a164d0452974646b0020cd02f64b6",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-jungwon-cp-afterhours/hd/peace.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-jungwon-cp-afterhours (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27D)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/jungwon-moviedate-hd-adjustscarf.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "7c4722f805b53b6d472fbd8df0d579869de7d770d5e3d312029f0ae5b827bd6e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/hd/scarf.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-jungwon-cp-moviedate (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27E)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/jungwon-moviedate-hd-handsinpockets.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "2a96cd73f800c3d2f8f5bba6504ae7640aa27f726675546715b69f73a6fbbce0",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/hd/pocket.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-jungwon-cp-moviedate (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27E)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/jungwon-moviedate-hd-peace.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "c4ef555616666c3fcadf06a1be87629b19dfc81a04400b7b1d2a78e9caee82af",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/hd/peace.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-jungwon-cp-moviedate (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27E)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/jungwon-moviedate-hd-thumbsup.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "9525615dfa163ed148973acf4fe6de590dec59ea63605e70f5518b5cd94bad99",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/hd/thumbsup.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-jungwon-cp-moviedate (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27E)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/jungwon-moviedate-hd-tickets.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "734187775017a1fc83d4c19eab9eff1286bc1bfcf39fb5bfcc58598fd351d953",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/hd/tickets.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-jungwon-cp-moviedate (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27E)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/jungwon-moviedate-hd-wave.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "8974cd294fa392d50a6855c42aeb486b20b57dc1fc173b2840289de0e44e99b1",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/hd/wave.webp",
+   "conversion": "tools/femc-hd-poses.py look sk-jungwon-cp-moviedate (no rescale, feet on the bottom edge, WebP q92)",
+   "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27E)"
   }
  ],
  "batch1Validation": {

@@ -1,0 +1,68 @@
+{
+ "arms-crossed": {
+  "ar": 0.324,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.546,
+  "size": [
+   497,
+   1536
+  ],
+  "src": "jungwon-afterhours-hd-armscrossed.png"
+ },
+ "bow": {
+  "ar": 0.352,
+  "hf": 0.139,
+  "ht": 0.004,
+  "hx": 0.255,
+  "size": [
+   541,
+   1536
+  ],
+  "src": "jungwon-afterhours-hd-bow.png"
+ },
+ "keys": {
+  "ar": 0.357,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.527,
+  "size": [
+   549,
+   1536
+  ],
+  "src": "jungwon-afterhours-hd-carkey.png"
+ },
+ "peace": {
+  "ar": 0.337,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.552,
+  "size": [
+   517,
+   1536
+  ],
+  "src": "jungwon-afterhours-hd-peace.png"
+ },
+ "tease": {
+  "ar": 0.368,
+  "hf": 0.139,
+  "ht": 0.007,
+  "hx": 0.517,
+  "size": [
+   565,
+   1536
+  ],
+  "src": "jungwon-afterhours-hd-handonhip.png"
+ },
+ "tie": {
+  "ar": 0.345,
+  "hf": 0.139,
+  "ht": 0.005,
+  "hx": 0.538,
+  "size": [
+   530,
+   1536
+  ],
+  "src": "jungwon-afterhours-hd-adjustingtie.png"
+ }
+}
