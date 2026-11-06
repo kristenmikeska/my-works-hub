@@ -39892,6 +39892,45 @@
    "destination": "assets/femc/game/art/skins/sk-cottage-meadow/",
    "conversion": "pose sheet (femc-wardrobe.py skin)",
    "placement": "Wardrobe outfit sk-cottage-meadow (FEMC-ART-WIRING 19)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/solar-hoax-update.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "603a00fff550a54f1c2db620a928cac9cf6562570b24ece2ee48cb611e122259",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/solar-hoax/",
+   "conversion": "3x2 transparent sheet (neutral, happy, sad, serious, surprised, flustered), seam cut as femc-skin-portraits.py; one shared scale 0.958 (eye distance + Vision face box vs the old neutral), neutral's eyes on the old neutral's, cells on the grid; old 521 x 516 canvas kept; bust mirrored down to the edge; WebP q86. Copy of the neutral -> Place Prompt Attachments/CG - Solar (HOAX).png (old one in Old/)",
+   "placement": "HOAX epilogue Solar casual faces (FEMC_PORTRAIT_V 31)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/solar-hoax-school-update.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "4bb999e0f839ee4f4d4a97f92963da401786537dea191f98161d0d2d547a3782",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/solar-hoax-school/",
+   "conversion": "as solar-hoax-update.png; scale 0.974, old 525 x 510 canvas kept. Neutral -> Place Prompt Attachments/CG - Solar (HOAX school).png",
+   "placement": "HOAX epilogue Solar Hanlim uniform faces (placeFaces)"
+  },
+  {
+   "batch": 143,
+   "source": "WIP/solar-hoax-party-update.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "45953d3bb5938b0b0be156b84e527b07ad8492fbc0a0876b4118b15797f18cfd",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/solar-hoax-party/",
+   "conversion": "as solar-hoax-update.png; scale 1.574, old 848 x 824 canvas kept. Neutral -> Place Prompt Attachments/CG - Solar (HOAX party).png (old one in Old/)",
+   "placement": "HOAX epilogue Solar party faces (eventFaces)"
   }
  ],
  "batch1Validation": {
