@@ -398,12 +398,12 @@ Paint a background in the art style of the attached images: semi-realistic digit
 The place: a long hallway in a large Manhattan apartment at night, about forty feet, doors along one side, a long runner rug, and a wall of framed family photographs lit by small brass picture lights (a family of four at galas and graduations, a boy in a football uniform, a little girl at a piano; faces small and soft). One lamp glowing at the far end, the rest in warm shadow.
 ```
 
-**[ ] 33H. The rooftop terrace**  
+**[ ] 33H. The Lees' roof terrace (above the penthouse)**  
 Save as: `epi-r-nyc-terrace.png`
 ```
 Paint a background in the art style of the attached images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; warm cinematic lighting from real light sources with glowing highlights and soft deep shadows; like a still from a high-budget animated film that leans toward realism. Leave out all people. No readable text. 16:9, high resolution. Keep everything important away from the edges.
 
-The place: a private rooftop terrace on top of an old Fifth Avenue building at night in December. Evergreen planters dusted with snow, a wooden pergola strung with small warm lights, three tall patio heaters glowing orange, a glass railing, and beyond it the dark of Central Park and the whole Manhattan skyline lit up. A heavy old door with a small lit stairwell behind it. Cold air, warm light. Magical and private.
+The place: the Lee family's private roof terrace on top of their penthouse on Fifth Avenue, overlooking Central Park, at dusk in December. The terrace runs the whole width of the building, built properly a long time ago: a wooden deck with snow on it and a line of footprints from the door, a low railing with glass panels, four enormous planters at the corners with black evergreens and snow banked against them, three tall patio heaters glowing orange, outdoor furniture under fitted winter covers, and at the far end a wooden pergola strung with small warm lights that have just come on by themselves. Behind the viewer's side, a plain heavy door with a bar across it. Beyond the glass rail on three sides, the city: Central Park going dark and enormous to the west, the reservoir a flat grey coin in the middle, the buildings around the park lit all the way up, and the Midtown skyline to the south, under a deep orange-and-blue December dusk sky. Cold air, warm light, nobody there. Private, a little magical, the one place in the apartment that feels like hers.
 ```
 
 **[ ] 33I. The Upper East Side street, day**  
