@@ -93,26 +93,28 @@
         { n: "Later, she'd go. She knew it the way you know a step is there in the dark. And later still, after that, Minji would send her the footage, and there'd be one frame in the middle of it that neither of them could explain, and they would both decide, separately, that it was the camera." },
         { n: "That was later. Right now her door banged open." },
         { n: "Hanni and Hyein, in pajamas and coats, Hyein's hair half-dried and enormous on one side, Hanni holding two iced coffees in the middle of a snowstorm, both of them talking at once, and then both of them stopping at once, in the doorway, to look at her." },
-        { s: 'hyein', f: 'surprised', t: "Did you just wake up too?" },
-        { s: 'hanni', f: 'serious', t: "Do you remember?" },
+        { s: 'hyein', f: 'surprised', t: "You're HERE. Hanni, she's here, she came back with us." },
+        { s: 'hanni', f: 'serious', t: "We woke up and your door was shut. I made her wait a whole minute before we knocked. Tell me it's not going." },
+        { n: "She didn't have to ask what. It was the thing everyone in the hallway was afraid of without saying so: that it would go the way a dream goes, a little more every minute you're awake, until all that's left is a feeling and a charm you can't explain." },
         { n: "Solar looked at them. Hanni's coat over Hanni's pajamas, the ones with the strawberries. The cheap plastic charm on Hyein's wrist, won from a crane game in a mall in another country, in another year, in a world that had a whole extra hour in it." },
-        { s: 'solar', f: 'sad', t: "...Everything." },
+        { s: 'solar', f: 'sad', t: "...It's not going. None of it." },
         { n: "Hyein made a noise like a kettle. Hanni put a coffee in Solar's hand and kept her hand over Solar's for a second longer than it needed, and then took it back, and sat down on the end of the bed like she'd been invited, which she had, about four hundred times." }
       ], else: [
         { n: "The coffee was still cold in her hand. That was how she knew she hadn't dreamed the last ninety seconds. Hyein had stopped screaming and was now sitting cross-legged on the end of the bed in a coat over her pajamas, crying a little and pretending it was the cold, and Hanni was in the desk chair with her knees pulled up, watching Solar's face the way you'd watch a pot." },
-        { s: 'hyein', f: 'sad', t: "You were gone for so long. Like, here. Nine days here. And then over there it was..." },
+        { s: 'hyein', f: 'sad', t: "We were gone for so long. Like, here, nine days. You longest. And then over there it was..." },
         { s: 'hanni', f: 'neutral', t: "Don't do the math, Hyein. You'll cry again." },
         { s: 'hyein', f: 'sad', t: "I'm already crying again." },
         { n: "Solar drank the coffee. It was exactly how she took it. Hyein had never once in her life gotten it right on the first try and she'd gotten it right today, in a snowstorm, at eight in the morning, and Solar had to look at the window for a while." },
-        { s: 'hanni', f: 'serious', t: "You do remember. Right? All of it. You're not doing the thing where you say you're fine and you're actually just being polite to two strangers." },
-        { s: 'solar', f: 'serious', t: "I remember all of it." },
+        { s: 'hanni', f: 'serious', t: "It's still there for you? All of it? Because I keep waiting for it to fade like a dream does, and it isn't, and I need it to not be just me." },
+        { s: 'solar', f: 'serious', t: "It's all still there. The dorm. The monorail. Your rice balls on the plate by the door." },
+        { s: 'hyein', f: 'sad', t: "She made SO many. Every morning." },
         { s: 'hanni', f: 'happy', t: "Okay. Okay. Good. Then we can do the boring part." }
       ] }
     ] },
 
     // The drill (every variant).
     { place: 'Syracuse · Alpha Phi House · Her Room', time: 'Morning', soft: true },
-    { n: "The boring part had a Notes app. Hanni had written it at some point in the last nine days, clearly at three in the morning, clearly more than once, and she held the phone up between the three of them like a coach holding up a play sheet." },
+    { n: "The boring part had a Notes app. Hanni had written it over there, in her room in the dorm, on a phone that hadn't had a signal in a year, clearly at three in the morning, clearly more than once, and she held the phone up between the three of them like a coach holding up a play sheet." },
     { s: 'hanni', f: 'serious', t: "Okay. Joint retreat with Sigma. Invite only. Upstate. A lodge. No signal. We left on the twenty-second, you left on the twenty-second, we came back on the thirtieth. Memorize it." },
     { s: 'hyein', f: 'neutral', t: "We didn't leave on the twenty-second. We left on, like, the twenty-fourth." },
     { s: 'hanni', f: 'serious', t: "To campus we left on the twenty-second. To our moms we went to Friendsgiving." },
