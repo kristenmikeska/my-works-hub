@@ -324,3 +324,20 @@
 .g-bq-strip li.unmet .g-bq-fth { filter: saturate(.55) brightness(.8); }
 .g-bq-strip li.unmet::after { content: "🔒"; position: absolute; right: 4px; bottom: 4px; font-size: 11px; line-height: 1; pointer-events: none; }
 .g-bq-hero-tag .g-bq-meet { display: block; margin-top: 2px; color: var(--pink-3, #ffb3d6); font-style: italic; }
+
+/* Wide, short windows (Kat, Nov 7: a ~2000 x 956 window cropped the banner art's faces and piled the text onto it, and
+   browser zoom didn't help since the splash fills the window either way). The splash is a size container: its text scales
+   with the splash's own width AND height (cqw / cqh, not the window's vw), and when the splash is wider than the art (3:2)
+   the art keeps its whole height on the right, with the left side going to black under the title, plate and strip. */
+.g-fm-body .g-bq-ban .g-bq-splash { container-type: size; container-name: bqsplash; }
+.g-fm-body .g-bq-ban .g-bq-title .g-wd-bhead b { font-size: clamp(38px, min(6.6cqw, 14cqh), 112px); }
+.g-bq-splash .g-bq-hero-tag b { font-size: clamp(18px, min(2.4cqw, 4.6cqh), 34px); }
+.g-bq-sbg .g-bq-ghost { font-size: clamp(100px, min(20cqw, 40cqh), 300px); }
+@container bqsplash (min-aspect-ratio: 3 / 2) {
+  .g-bq-splash.has-art .g-bq-sbg { background: linear-gradient(90deg, #000 0, #000 calc(100% - 150cqh), rgba(0, 0, 0, .55) calc(100% - 150cqh + 10cqh), rgba(0, 0, 0, .25) calc(100% - 92cqh), transparent calc(100% - 70cqh)), var(--bq-art) right center / auto 100% no-repeat, #000; }
+  .g-fm-body .g-bq-ban .g-bq-title { max-width: max(44%, calc(100cqw - 150cqh + 8cqh)); }
+  .g-fm-body .g-bq-ban .g-bq-strip { max-width: max(50%, calc(100cqw - 150cqh - 4%)); }
+  .g-bq-desc { max-width: max(34%, calc(100cqw - 150cqh - 8%)); }
+  .g-bq-splash .g-bq-hero-tag { top: auto; bottom: calc(150px + 4cqh); max-width: max(40%, calc(100cqw - 150cqh - 6%)); }
+  .g-bq-desc { top: auto; bottom: calc(16px + 96px); }
+}
