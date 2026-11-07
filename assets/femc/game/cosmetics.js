@@ -777,7 +777,8 @@ window.FemcCosmetics = (() => {
             <p class="g-note small">Half of each rarity's pulls land on its featured item; an Ultra that isn't featured makes the next one featured. ${n} looks are in the pool (outfits still waiting on art aren't). Repeats give Velvet Plumes back (Rare and Super Rare 1, Ultra 2).</p></details>
           <div class="g-row g-ga-btns"><button type="button" class="g-btn g-bq-pull one" data-wd-pull${canPull() && !soon ? '' : ' disabled'}><span><b>Pull ×1</b><small>${soon ? esc(soonWord(b)) : `${BAN.cost} Velvet Plumes`}</small></span></button>
             <button type="button" class="g-btn pink g-ga-x10 g-bq-pull ten" data-wd-pull10${soon ? ' disabled' : canPull(10) ? '' : ` disabled title="${esc(pullWhy(10))}"`}><span><b>Pull ×10</b><small>${soon ? esc(soonWord(b)) : canPull(10) ? `${BAN.cost * 10} Plumes · a Super Rare or better` : esc(pullWhy(10))}</small></span></button></div>
-          <span class="g-ga-own"><span>Velvet Plumes <b>${plumes()}</b></span><span>Pulls <b>${s.pulls}</b></span></span></div>
+</div>
+        <span class="g-ga-own g-bq-wallet" title="Velvet Plumes you have · pulls made"><span>Velvet Plumes <b>${plumes()}</b></span><span>Pulls <b>${s.pulls}</b></span></span>
         <i class="g-bq-wipe" aria-hidden="true"></i><i class="g-bq-wipe w2" aria-hidden="true"></i>
       </div>
       <div class="g-wd-reveal" aria-live="polite">${res ? (res.list ? tenHtml(res) : revealHtml(res)) : ''}</div></div>`;

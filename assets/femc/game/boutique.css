@@ -375,3 +375,11 @@
   .g-fm-body .g-bq-ban .g-bq-pull small { font-size: 10px !important; }
   .g-bq-ban .g-ga-own { font-size: 11px; }
 }
+
+/* The wallet (Kat, Nov 7): a small plate in the splash's top right corner, not under the pull buttons. */
+.g-fm-body .g-bq-ban .g-bq-splash > .g-bq-wallet { position: absolute; top: 12px; right: 14px; z-index: 5; display: flex; gap: 12px; padding: 5px 12px 5px 10px;
+  background: rgba(20, 7, 15, .72); border: 1px solid rgba(255, 140, 192, .45); color: var(--pink-3); font: italic 800 11px/1 var(--cond); letter-spacing: .04em;
+  transform: skewX(-10deg); box-shadow: 3px 3px 0 rgba(255, 79, 158, .35); }
+.g-bq-splash > .g-bq-wallet b { color: #fff4f9; font-size: 13px; }
+@media (min-width: 621px) { .g-fm-body .g-bq-ban .g-bq-side { grid-template-areas: "btns btns" "rules pity"; } }
+@media (max-width: 620px) { .g-fm-body .g-bq-ban .g-bq-splash > .g-bq-wallet { top: 8px; right: 8px; } }
