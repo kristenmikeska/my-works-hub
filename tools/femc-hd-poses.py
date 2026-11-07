@@ -82,7 +82,12 @@ LOOKS = {'sk-cp-afterhours': ('Solar-After Hours-Menu Poses', 'afterhr-'),
          'sk-snake': ('Solar-Snake-Menu Poses', 'snake-'),
          'sk-cp-moviedate': ('Solar-Movie Date-Menu Poses', 'movie-'),
          'sk-roadwork': ('Solar-Morning Roadwork-Menu Poses', 'morning-'),
-         'sk-summersession': ('Solar-Summer Session-Menu Poses', 'summer-')}
+         'sk-summersession': ('Solar-Summer Session-Menu Poses', 'summer-'),
+         # Nov 7: Kat's folder names
+         'sk-arcana-moon': ('The Moon Poses', 'moon-'),
+         'sk-arcana-star': ('The Star Poses', 'star-'),
+         'sk-arcana-lovers': ('The Lovers Poses', 'lovers-'),
+         'sk-chapel-rose': ('Black Rose Poses', 'rose-')}
 QUALITY, ALPHA_MIN, SPECK = 92, 16, 3
 
 

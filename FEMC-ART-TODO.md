@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 7, after art batch 145):** ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: pose sheets and faces for 60 new outfits (the 13 collabs and Kat's Nov 7 list of 47), 108 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: Stay: 3 optional CGs (section 37) · Solar's HOAX booth sheet (section 38C) · 19 polaroids for strangers, HOAX and Stay (section 39: 7 / 7 / 5) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom and the 10 Stay ones left in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners only an optional night café in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
+**To make (updated Nov 7, after art batch 146):** ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: pose sheets and faces for 60 new outfits (the 13 collabs and Kat's Nov 7 list of 47), 104 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: Stay: 3 optional CGs (section 37) · 11 polaroids for strangers, HOAX and Stay (section 39: 1 / 5 / 5) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom and the 10 Stay ones left in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners only an optional night café in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
 
 ## ⭐ Outfits, HD poses and banners: in `FEMC-SKIN-ART.md` (Nov 7)
 
@@ -51,17 +51,7 @@ A 16:9 anime CG in the exact style of the FIRST attached image (Persona 3 Reload
 ## 38. Nana (HOAX; ChatGPT; realistic; Kat, Nov 6)
 Solar's Samoyed gets his own faces for the HOAX epilogue, like Koromaru, Cosmo and Wanda have in the main game, and a photo-booth sheet so he can be Solar's partner in the booth there. Realistic, like the other epilogue portraits. The booth in HOAX gets built once 38B and 38C are in.
 
-✅ 38A (Nana's faces) and 38B (his booth poses) are in (art batch 145). His booth poses wait for Solar's sheet below, then Claude builds the HOAX booth.
-
-**[ ] 38C. Solar (HOAX): photo booth poses**  
-Solar on the left of the frame in the HOAX booth, to go with Nana's sheet (the main game's booth sheet is in the anime style).  
-Attach: `CG - style (HOAX).png`, `CG - Solar (HOAX).png`  
-Save as: `booth-solar-hoax-poses.png`
-```
-Photo-booth pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME girl as the SECOND attached image in all six cells, from the waist up, facing the camera, same face, same hair and the clothes from the attached image, same size and framing in every cell, nothing overlapping. Bright, flattering photo-booth light, a little sparkle in the eyes. Realistic painted style of the FIRST attached image: real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. Cell 1: a peace sign by her cheek, a big smile. Cell 2: leaning a little to her left, both arms curved to make the LEFT half of a big heart. Cell 3: puffing out her cheeks, eyes wide. Cell 4: pointing at someone beside her (off to the right), laughing. Cell 5: a finger heart and a wink. Cell 6: hugging the air to her right with both arms, eyes closed, as if squeezing a big dog. No text.
-```
-
----
+✅ 38A (Nana's faces) and 38B (his booth poses) are in (art batch 145). 38C (Solar's HOAX booth sheet) is in too (batch 146): Claude builds the HOAX booth next.
 
 ## 39. Polaroids for strangers, HOAX and Stay (ChatGPT; realistic for strangers and HOAX, Persona 3 Reload anime for Stay; Kat, Nov 6)
 
@@ -69,67 +59,11 @@ More keepsake photos for the Album, like section 30's: one for a hangout in each
 
 **For every polaroid:** square 1:1, the whole picture inside a white polaroid border with the thicker strip at the bottom left blank (the game writes the caption there).
 
-**[ ] 39A. strangers: Four frames**  
-Attach: `CG - style (Strangers).png`, `BG - Songdo Mall.png`, `CG - Solar (Strangers).png`, `CG - Yunjin (Strangers).png`, `CG - Chaewon (Strangers).png`, `CG - Sakura (Strangers).png`, `CG - Kazuha (Strangers).png`, `CG - Eunchae (Strangers).png`  
-Save as: `polaroid-strangers-four-frames.png`
-```
-A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Six girls squeezed half in and half out of a small photo booth with a pink curtain that won't close, in a bright glass shopping mall on a winter afternoon: Yunjin in a big yellow puffer taking up most of the frame and laughing, Solar (long near-black hair) wedged in the middle trying not to smile, Chaewon doing a neat peace sign as if she planned it, Kazuha leaning almost entirely on Sakura, Sakura deadpan, and Eunchae crouched on the floor with only her grinning face in the shot. Elbows everywhere, pink booth light on one side of their faces. The people are the ones in the attached realistic portraits, in this order: Solar, Yunjin, Chaewon, Sakura, Kazuha, Eunchae; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
-```
-
 **[ ] 39B. strangers: White eyebrows**  
 Attach: `CG - style (Strangers).png`, `BG - Incheon Bathhouse.png`, `CG - Solar (Strangers).png`, `CG - Yunjin (Strangers).png`, `CG - Chaewon (Strangers).png`, `CG - Sakura (Strangers).png`, `CG - Kazuha (Strangers).png`, `CG - Eunchae (Strangers).png`  
 Save as: `polaroid-strangers-white-eyebrows.png`
 ```
 A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Late at night on the warm floor of a big Korean bathhouse (jjimjilbang) hall, six girls in matching orange cotton bathhouse T-shirts and shorts, towels rolled into little lamb-ear hats: Yunjin fast asleep flat on her back on a mat with her mouth a little open, and the other five lying round her in a ring, faces pressed into their sleeves, shaking with silent laughter; Eunchae holding up a small black plastic film canister like evidence, Solar beside her with a finger to her lips. A tray of brown baked eggs and cans of sikhye on the floor, dim hall lights, a television glowing somewhere behind. The people are the ones in the attached realistic portraits, in this order: Solar, Yunjin, Chaewon, Sakura, Kazuha, Eunchae; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
-```
-
-**[ ] 39C. strangers: The tent**  
-Attach: `CG - style (Strangers).png`, `BG - Pojangmacha Tent (strangers).png`, `CG - Solar (Strangers).png`, `CG - Yunjin (Strangers).png`, `CG - Chaewon (Strangers).png`, `CG - Sakura (Strangers).png`, `CG - Kazuha (Strangers).png`, `CG - Eunchae (Strangers).png`  
-Save as: `polaroid-strangers-the-tent.png`
-```
-A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour. Use the SECOND image for the place. Inside a Korean street tent bar (pojangmacha) at night, an orange tarp glowing all around them and a gas heater ticking orange in the middle: the girls crowded on red and blue plastic stools round a low folding table with fish-cake skewers in a steaming pot, small soju glasses and a laminated plan on the table. Yunjin pressed against Solar's shoulder with a fish-cake skewer in her mouth like a cigar, Chaewon holding up the laminated page, Sakura raising an eyebrow at it, Kazuha holding a paper cup of broth near her face for the steam, Eunchae leaning in to say something to Solar. Winter coats, warm faces, cold blue dark outside the plastic window. The people are the ones in the attached realistic portraits, in this order: Solar, Yunjin, Chaewon, Sakura, Kazuha, Eunchae; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
-```
-
-**[ ] 39D. strangers: Pleats**  
-Attach: `CG - style (Strangers).png`, `BG - Lee House Kitchen.png`, `CG - Solar (Strangers).png`, `CG - Auntie Song (Strangers).png`, `CG - Mrs. Bang (Strangers).png`, `CG - Pyo (Strangers).png`  
-Save as: `polaroid-strangers-pleats.png`
-```
-A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. A big house kitchen on a winter afternoon, the long wooden table floured from end to end and covered in rows and rows of handmade dumplings on trays, the window steamed up: the small older head cook (Auntie Song) in an apron holding one dumpling up to the light to inspect it, Solar (long near-black hair tied back, sleeves pushed up, flour on her cheek) folding the next one with a small proud look, the housekeeper (Mrs. Bang) in a cardigan pointing at Auntie Song mid-argument, and the young cook (Pyo) in the doorway with an empty flour scoop, looking spooked. A radio on the shelf, flour in the air. The people are the ones in the attached realistic portraits, in this order: Solar, Auntie Song, Mrs. Bang, Pyo; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
-```
-
-**[ ] 39E. strangers: Bad coffee**  
-Attach: `CG - style (Strangers).png`, `BG - Incheon Mudflats.png`, `CG - Solar (Strangers).png`, `CG - Yunjin (Strangers).png`  
-Save as: `polaroid-strangers-bad-coffee.png`
-```
-A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Taken from the passenger side inside a small purple hatchback parked on top of a seawall with its nose to the sea, the tide far out and the grey mudflats shining through the windscreen: Yunjin with her slippered feet up on the dash, a little pink camera on a strawberry strap round her wrist, pulling a disgusted face at a can of vending-machine coffee; Solar beside her in a big coat holding the other can, laughing at her. A gull standing on the bonnet looking in at them. Cold daylight, the car warm and fogged at the edges. The people are the ones in the attached realistic portraits, in this order: Solar, Yunjin; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
-```
-
-**[ ] 39F. strangers: The wall**  
-Attach: `CG - style (Strangers).png`, `BG - Lee House Gate (day).png`, `CG - Solar (Strangers).png`, `CG - Niki (Strangers).png`  
-Save as: `polaroid-strangers-the-wall.png`
-```
-A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. A sunny, cold February day by the stone garden wall of a grand house, the iron gate standing wide open just to one side: a lanky sixteen-year-old boy (Niki) sitting on top of the wall instead, in a dark padded jacket, mid-bite of a banana, a cloth bag over his shoulder; Solar standing below him in a long coat holding a big glass jar of kimchi in both arms, looking up at him with a completely straight face. Thin winter sun, bare trees. The people are the ones in the attached realistic portraits, in this order: Solar, Niki; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
-```
-
-**[ ] 39G. strangers: Good morning**  
-Attach: `CG - style (Strangers).png`, `BG - Wolmido.png`, `CG - Solar (Strangers).png`, `CG - Kazuha (Strangers).png`  
-Save as: `polaroid-strangers-good-morning.png`
-```
-A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Evening on an empty seaside promenade with shuttered funfair rides, everything washed a hazy sepia yellow by spring dust, the streetlamps glowing soft through it: Kazuha in a long cream coat and a white face mask, her arm hooked through Solar's, waving at the hazy sea with her free hand as if greeting someone out there, her eyes smiling over the mask; Solar beside her at the railing in a dark coat, her own mask pulled down to her chin, looking at Kazuha, not at the sea. The people are the ones in the attached realistic portraits, in this order: Solar, Kazuha; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
-```
-
-**[ ] 39H. HOAX: Snow way**  
-Attach: `CG - style (HOAX).png`, `BG - Hanlim Park.png`, `CG - Solar (HOAX).png`, `CG - Jake (HOAX).png`, `CG - Nana (HOAX).png`  
-Save as: `polaroid-hoax-snow-way.png`
-```
-A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. A snowy park on a bright winter afternoon: Solar and Jake sitting on a bench with snow soaking into their jeans, both laughing, in front of them on the slope a very big fluffy white Samoyed (Nana) rolling in the snow with a small fast brown dog (Layla) bouncing on top of him, a loose leash trailing across the snow. Winter coats, beanies, pink noses, Jake mid-joke with one hand up. The people are the ones in the attached realistic portraits, in this order: Solar, Jake, Nana; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
-```
-
-**[ ] 39I. HOAX: Ice cream and hugs**  
-Attach: `CG - style (HOAX).png`, `BG - Hanlim Winter Street.png`, `CG - Solar (HOAX).png`, `CG - Junkyu (HOAX).png`  
-Save as: `polaroid-hoax-ice-cream-and-hugs.png`
-```
-A square 1:1 instant-camera polaroid photo in the realistic painted style of the FIRST image: a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. Evening, snowing, the step under a convenience store's awning with the fluorescent light buzzing over it: Solar and Junkyu sitting shoulder to shoulder in thick coats, each holding an ice-cream cone, snow on Junkyu's beanie and mittens, Junkyu beaming at the camera with his whole face, Solar holding up her frozen strawberry cone with a long-suffering smile. Breath fogging, the snowy street dark blue behind them. The people are the ones in the attached realistic portraits, in this order: Solar, Junkyu; keep their faces and hair exactly. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. Real-looking proportions, natural skin and hair texture; NOT anime and NOT cel shading. No text, no writing on the polaroid.
 ```
 
 **[ ] 39J. HOAX: Four croissants**  

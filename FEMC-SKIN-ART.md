@@ -4,7 +4,7 @@
 
 **Order for each outfit:** 1. pose sheet → 2. scene portraits → 3. HD poses (only what's still missing is listed; the 11 skin-series looks need only their HD poses). **Banner art** is at the bottom: make a banner once its outfits exist.
 
-**What's here (Nov 7, with Kat's new list):** 60 pose sheets and 63 scene-portrait sheets (the 13 collab outfits, Kat's 47 new outfits, plus faces for Off-Day Hoodie, Beanie & Apron and Gekkoukan Uniform), 108 HD pose sets, 14 banner pictures (8 older, 6 for the new banners: Ghoul School, Anime Night, Magical Girls, Wonderland, Live Concert, Pastel Ponies).
+**What's here (Nov 7, with Kat's new list):** 60 pose sheets and 63 scene-portrait sheets (the 13 collab outfits, Kat's 47 new outfits, plus faces for Off-Day Hoodie, Beanie & Apron and Gekkoukan Uniform), 104 HD pose sets, 14 banner pictures (8 older, 6 for the new banners: Ghoul School, Anime Night, Magical Girls, Wonderland, Live Concert, Pastel Ponies).
 
 **How:** open a new ChatGPT message, attach the files on the **Attach** line in that order (all in `Femc Mode Images/`, mostly `Place Prompt Attachments/`), paste the prompt, send. Save into **New Adds** under its **Save as** name (HD poses: a folder per outfit) and tell Claude. One picture per message.
 
@@ -34,71 +34,7 @@ Other fighters get six victory poses per outfit (for the win screen); each one's
 
 ### Skin series: Tarot Arcana, Midnight Chapel, Wildflower Cottage
 
-These 11 are in the game already (pose sheet and faces): only their HD poses are left here.
-
-### The Moon · `sk-arcana-moon`
-
-Tarot Arcana. A midnight-blue slip dress, a sheer veil and moon-phase jewellery; long loose hair with silver tinsel.
-
-> **Look bible.** Palette: midnight blue, moon silver, pearl white and pale violet. Vibe: the Moon card: dreamlike, quiet, a little uncanny.  
-> Motifs: crescent moons, moon phases, silver mist and tiny falling stars. Light: cool blue moonlight through silver mist. Scene: a still lake at midnight under a huge full moon.
-
-#### 1. HD poses
-
-Her evening and win-screen poses in The Moon.  
-Attach: `The Moon [sk-arcana-moon] - pose sheet.png`, then `Solar.png`  
-Save as: `skin-sk-arcana-moon-hd-<pose>.png` in a folder `The Moon`
-```
-A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (The Moon: a midnight-blue silk slip dress, a sheer silver veil and moon-phase jewellery). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-### The Star · `sk-arcana-star`
-
-Tarot Arcana. A sheer pale pink layered dress covered in tiny stars, barefoot; a high ponytail with pastel pink and silver streaks.
-
-> **Look bible.** Palette: pale pink, starlight silver, twilight lilac and soft white. Vibe: the Star card: hope, a wish, a quiet glow.  
-> Motifs: tiny stars, shooting stars, starlight sparkles and pink nebula haze. Light: soft silvery starlight with a pink nebula glow. Scene: a twilight hilltop under a sky thick with stars.
-
-#### 1. HD poses
-
-Her evening and win-screen poses in The Star.  
-Attach: `The Star [sk-arcana-star] - pose sheet.png`, then `Solar.png`  
-Save as: `skin-sk-arcana-star-hd-<pose>.png` in a folder `The Star`
-```
-A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (The Star: a sheer pale pink tulle dress covered in tiny silver stars, barefoot). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-### The Lovers · `sk-arcana-lovers`
-
-Tarot Arcana. A red-and-black corset dress with a heart locket and rose vines; Hollywood waves pinned with a red rose.
-
-> **Look bible.** Palette: rose red, black, gold and blush. Vibe: the Lovers card: a choice, a vow, a little dangerous.  
-> Motifs: red roses, rose petals, gold hearts and climbing rose vines. Light: warm candlelight with a deep red glow. Scene: a rose garden arbour at dusk, roses climbing a black iron arch.
-
-#### 1. HD poses
-
-Her evening and win-screen poses in The Lovers.  
-Attach: `The Lovers [sk-arcana-lovers] - pose sheet.png`, then `Solar.png`  
-Save as: `skin-sk-arcana-lovers-hd-<pose>.png` in a folder `The Lovers`
-```
-A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (The Lovers: a red-and-black corset dress with rose vines, a heart locket and a red rose in her hair). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-### Black Rose · `sk-chapel-rose`
-
-Midnight Chapel. A gothic lolita dress with lace, a rose corsage and a tiny top hat; ringlet pigtails with black bows.
-
-> **Look bible.** Palette: black lace, hot pink, bone white and dusty rose. Vibe: a gothic doll: sweet, until it isn't.  
-> Motifs: black roses, lace ribbons, ribbon bows and pink thorns. Light: pink candlelight in a dark chapel. Scene: a gothic chapel at midnight, candles and a rose window.
-
-#### 1. HD poses
-
-Her evening and win-screen poses in Black Rose.  
-Attach: `Black Rose [sk-chapel-rose] - pose sheet.png`, then `Solar.png`  
-Save as: `skin-sk-chapel-rose-hd-<pose>.png` in a folder `Black Rose`
-```
-A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (Black Rose: a black-and-pink gothic lolita dress with lace, a black rose headpiece and striped stockings). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
+These 11 are in the game already (pose sheet and faces): only their HD poses are left here. The Moon, The Star, The Lovers and Black Rose have theirs (Nov 7).
 
 ### Cathedral Veil · `sk-chapel-veil`
 
