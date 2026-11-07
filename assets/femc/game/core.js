@@ -353,7 +353,7 @@ window.FemcGame = (() => {
   // own names): battleSpeed, cutins, showtimes, difficulty, remember, rushWhere, rushStop, rushPace, shake, calm, numbers, tips, pad, perf, skinFaces, skinFx, entrance. Both:
   // text (also the battle's text speed), music (0-100, 0 = off; musicLast remembers the volume), sfx, sfxVol.
   const DEFAULTS = { text: 'normal', music: 60, musicLast: 60, sfx: true, sfxVol: 100, auto: 'off', dateCard: true, battles: 'ask', quickClass: false, wxFx: true, wxSound: 60, glitchFx: 'full',
-    battleSpeed: 1, cutins: 'first', showtimes: 'on', difficulty: 'normal', remember: true, rushWhere: 'normal', rushStop: 30, rushPace: 'fast', shake: true, calm: false, numbers: true, tips: true, pad: 'auto', perf: false, skinFaces: true, skinFx: true, entrance: true, seasonLook: true };
+    battleSpeed: 1, cutins: 'first', showtimes: 'on', difficulty: 'normal', remember: true, rushWhere: 'normal', rushStop: 30, rushPace: 'fast', shake: true, calm: false, numbers: true, tips: true, pad: 'auto', perf: false, skinFaces: true, skinFx: true, entrance: true, seasonLook: true, uiScale: '1' };
   let settingsRaw = (() => { try { return JSON.parse(lsGet(SETTINGS_KEY) || '{}') || {}; } catch (e) { return {}; } })();
   // The merge: battle preferences come from the playthrough's battle save the first time (difficulty, Rush, cut-ins…).
   if (!('difficulty' in settingsRaw) && S.battleSave && S.battleSave.settings) {
@@ -371,9 +371,17 @@ window.FemcGame = (() => {
   // and the always-running decorative loops (game.css, end). Weather already reads settings().perf for fewer particles.
   const markPerf = () => { try { document.documentElement.classList.toggle('g-perf', !!settingsCache.perf); } catch (e) {} };
   markPerf();
+  /* Screen size (Kat, Nov 7: "the game resizes itself based on the chosen screen size"): CSS zoom on <html>, like the
+     browser's own zoom but kept with the game's settings. uiScale '1' (100%, the default), '0.9' … '0.7', '1.1', or 'auto'
+     (fits a ~1600 x 1100 layout into the window, 70-100%, follows window resizes). */
+  const uiScale = () => { const v = settingsCache.uiScale; if (v === 'auto') { try { return Math.max(0.7, Math.min(1, innerWidth / 1600, innerHeight / 1100)); } catch (e) { return 1; } } const n = parseFloat(v); return n >= 0.5 && n <= 1.5 ? n : 1; };
+  const markZoom = () => { try { const z = uiScale(); document.documentElement.style.zoom = z === 1 ? '' : String(Math.round(z * 100) / 100); } catch (e) {} };
+  markZoom();
+  try { addEventListener('resize', () => { if (settingsCache.uiScale === 'auto') markZoom(); }); } catch (e) {}
   function setSettings(patch) {
     settingsCache = { ...settingsCache, ...patch };
     if ('perf' in patch) markPerf();
+    if ('uiScale' in patch) markZoom();
     if (typeof patch.music === 'number' && patch.music > 0 && !('musicLast' in patch)) settingsCache.musicLast = patch.music;
     lsSet(SETTINGS_KEY, JSON.stringify(settingsCache));
     if ('sfx' in patch) lsSet('kg-femc-sound', patch.sfx ? null : 'off');

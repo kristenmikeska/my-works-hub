@@ -2307,6 +2307,8 @@
       { k: 'calm', label: 'Reduce flashes', opts: OFFON, desc: () => 'Softens white flashes and bursts (Evoker, Theurgy, lightning, criticals).' },
       { k: 'perf', label: 'Performance mode', opts: OFFON, desc: () => 'Lighter graphics everywhere: no blur behind menus, no glass shatter or ash, half the weather, fewer particles, a lighter video and the decorative loops (title shimmer, spinning rays, booth lights) stopped. Try it if anything feels slow.' },
       { k: 'pad', label: 'Controller buttons', opts: [['auto', 'Auto'], ['xbox', 'Xbox'], ['ps', 'PlayStation']], desc: () => 'Which button prompts show while you play with a controller.' },
+      { h: 'Screen' },
+      { k: 'uiScale', label: 'Screen size', opts: [['auto', 'Auto'], ['0.7', '70%'], ['0.8', '80%'], ['0.9', '90%'], ['1', '100%'], ['1.1', '110%']], desc: v => (v === 'auto' ? 'Fits the game to your window: smaller on short or narrow screens, never bigger than 100%.' : v === '1' ? 'The game at its normal size. Pick a smaller size if menus feel cramped or cut off on your screen.' : `Everything drawn at ${Math.round(parseFloat(v) * 100)}%: more fits on screen at smaller sizes.`) },
       { h: 'Sound' },
       { k: 'music', label: 'Music volume', range: true, desc: v => (v ? 'Music, everywhere.' : 'Music is off.') },
       { k: 'sfx', label: 'Sound effects', opts: ONOFF, desc: () => 'Menu sounds, text blips and battle sounds.' },
