@@ -339,3 +339,14 @@
    read pink under pale text); every line of page text carries a dark shadow; the selected item keeps its paper bar or pink plate. */
 .g-fm-ov.is-page .g-fm-body, .g-fm-ov.is-page .g-pg-head, .g-fm-ov.is-page .g-fm-body :is(p, small, span, b, em, li, h3, h4, label) { text-shadow: 0 1px 2px rgba(0, 0, 0, .95), 0 0 8px rgba(0, 0, 0, .7); }
 .g-fm-ov.is-page .g-fm-body > .g-note, .g-fm-ov.is-page .g-fm-body > p { display: inline-block; padding: 4px 12px; background: rgba(8, 2, 6, .82); clip-path: polygon(0 0, 100% 0, 99% 100%, 0 100%); }
+
+/* Shorter windows (Kat, Nov 7: a 2000 x 956 window felt crammed): a smaller page name and tighter rows above the body, so
+   every page gets more height (the Wardrobe booth, the Boutique splash). */
+@media (max-height: 1000px) and (min-width: 621px) {
+  .g-fm-ov.is-page .g-pg-h { font-size: clamp(36px, 5.6vh, 72px); }
+  .g-fm-ov.is-page .g-pg-h::after { height: 5px; margin-top: 3px; }
+  .g-fm-ov.is-page .g-pg-sub { margin-top: 4px; font-size: 14px; }
+  .g-fm-ov.is-page .g-fm-head { gap: 8px; }
+  .g-fm-ov.is-page .g-fm-tabs { padding-bottom: 4px; }
+  .g-fm-ov.is-page .g-fm-tabs > :is(button, a) { padding: 5px 11px 5px 9px; }
+}

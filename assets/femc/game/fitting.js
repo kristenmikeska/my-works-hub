@@ -56,7 +56,7 @@ window.FemcFitting = (() => {
     if (x) {
       const r = R[x.id] || {};
       if (!C().ready(x)) return { key: `${x.id}|pending`, mode: 'pose', src: `${base()}assets/femc/battle/art/poses/${who}-pose-0.webp`, pending: true };
-      if (who === 'solar' && (r.hd || []).length) return { key: x.id, mode: 'hd', dir: `${SK(x.id)}hd/`, v: r.hdv || 1, have: r.hd };
+      if ((r.hd || []).length) return { key: x.id, mode: 'hd', dir: `${SK(x.id)}hd/`, v: r.hdv || 1, have: r.hd };
       const fs = (r.portraits || {})[who];
       if (fs && fs.length) return { key: x.id, mode: 'face', dir: `${SK(x.id)}portraits/${who}/`, v: SKIN_V, faces: fs };
       return { key: x.id, mode: 'pose', src: `${SK(x.id)}${who}-pose-0.webp?v=${SKIN_V}` };
@@ -305,11 +305,11 @@ window.FemcFitting = (() => {
     const nm = mate.who === 'solar' ? 'Solar' : (G.LINKS && G.LINKS[mate.who] && G.LINKS[mate.who].short) || mate.who;
     const bub = `<span class="g-fr-bub" style="right:${W * 0.04}px;bottom:${H * 0.06}px">${esc(nm)} · ${esc(mate.name)}</span>`;
     if (p) {
-      const h = H * 1.8 * 0.94; // Solar's own hip-up scale, a touch smaller: set back
+      const h = H * 1.8 * 0.84; // standing behind her: smaller (Kat, Nov 7)
       box.innerHTML = `<div class="g-fr-pin" data-mate="${esc(mate.id)}"><img src="${SK(mate.id)}hd/${p}.webp?v=${R.hdv || 1}" alt="" style="height:${h}px;width:auto;visibility:hidden">${bub}</div>`;
       const img = box.querySelector('img');
       const put = m => { if (!img.isConnected) return; const w = h * (m.ar || (img.naturalWidth / img.naturalHeight) || 0.45);
-        img.style.width = `${w}px`; img.style.left = `${-W * 0.2 - (m.hx ?? 0.5) * w}px`; img.style.top = `${H * 0.03 - (m.ht ?? 0.012) * h - H}px`; img.style.visibility = ''; };
+        img.style.width = `${w}px`; img.style.left = `${-W * 0.33 - (m.hx ?? 0.5) * w}px`; img.style.top = `${H * 0.1 - (m.ht ?? 0.012) * h - H}px`; img.style.visibility = ''; };
       figsFor(`${SK(mate.id)}hd/fig.json?v=${R.hdv || 1}`).then(f => put(f[p] || {}));
     } else {
       const w = H * 0.72;
@@ -317,6 +317,9 @@ window.FemcFitting = (() => {
     }
     stage.classList.add('duo');
     const pin = box.firstChild;
+    // Click the partner: their closet, their half of the set (the booth flips: they stand in front, the mate behind).
+    pin.title = `See ${nm}'s ${mate.name}`;
+    pin.addEventListener('click', () => { const b = document.querySelector(`[data-wd="${mate.id}"]`); if (b) b.click(); });
     if (!o.reduced) {
       // Slides in from the edge, leans in to look, then a small bob now and then.
       pin.animate([{ transform: `translateX(${W * 0.5}px) rotate(-4deg)` }, { transform: 'translateX(-10px) rotate(-2deg)', offset: 0.7 }, { transform: 'translateX(0) rotate(-1.5deg)' }], { duration: 900, delay: 350, easing: 'cubic-bezier(.25, .8, .3, 1)', fill: 'both' })

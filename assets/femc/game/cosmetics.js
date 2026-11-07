@@ -747,7 +747,7 @@ window.FemcCosmetics = (() => {
   function bannerHtml() {
     if (viewBan && banners().some(x => x.id === viewBan)) { pickBanner(viewBan); viewBan = null; } // its month came: pulls go to it
     const s = cs(), all = allBans(), live = banners(), b = (viewBan && BANNERS.find(x => x.id === viewBan)) || banner(), soon = !live.includes(b), f = featShow(b), p = s.pity, MON = m => new Date(2009, m - 1, 1).toLocaleString('en', { month: 'long' });
-    const res = fresh || (s.last && byId(s.last.id) ? { item: byId(s.last.id), r: s.last.r, old: true } : null);
+    const res = fresh; // only a pull just made shows under the splash (Kat, Nov 7: the last pull's card stayed on every banner)
     const n = pool().length, ends = x => bannerEnd(x).toLocaleString('en', { month: 'long', day: 'numeric' });
     const h = heroOf(f), dl = soon ? null : daysLeft(b), srL = BAN.pitySR - p.sr, urL = BAN.pityUR - p.ur, hasArt = artList('banners').includes(b.id);
     const tabs = `<div class="g-wd-bans g-bq-tabs" role="tablist" aria-label="Banners">${all.map(x => {
@@ -977,6 +977,8 @@ window.FemcCosmetics = (() => {
     el.querySelectorAll('[data-wd-ban]').forEach(b => b.addEventListener('click', () => { const id = b.dataset.wdBan; if (pickBanner(id) ? !(viewBan = null) : BANNERS.some(x => x.id === id) && (viewBan = id)) { fresh = null; G.sfx('femc-click'); rerender(`[data-wd-ban="${b.dataset.wdBan}"]`); } }));
     // The fitting room's booth first (its buttons are wired below with the rest).
     const slot = el.querySelector('[data-fr-booth]');
+    // The booth's height from the real window (Kat, Nov 7), like the Boutique's bqFit: CSS --fr-h is the fallback.
+    const fr = el.querySelector('.g-fr'); if (fr) { try { const z = parseFloat(document.documentElement.style.zoom) || 1, h = Math.round((innerHeight - fr.getBoundingClientRect().top) / z - 70); if (h > 0) fr.style.setProperty('--fr-h', `${Math.max(320, Math.min(900, h))}px`); } catch (e) {} }
     if (slot && window.FemcFitting) window.FemcFitting.mount(slot, frBooth());
     el.querySelectorAll('[data-fr-who]').forEach(b => b.addEventListener('click', () => { if (b.dataset.frWho === frWho) return; frWho = b.dataset.frWho; frKind = 'skin'; sel = null; G.sfx('femc-click'); rerender(`[data-fr-who="${frWho}"]`); }));
     el.querySelectorAll('[data-fr-kind]').forEach(b => b.addEventListener('click', () => { if (b.dataset.frKind === frKind) return; frKind = b.dataset.frKind; sel = null; G.sfx('femc-click'); rerender(`[data-fr-kind="${frKind}"]`); }));

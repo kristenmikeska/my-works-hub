@@ -172,3 +172,12 @@
 
 /* Kat's card art (Nov 5): menu colours, battle themes, titles, pattern wallpapers. */
 .g-fr-th img.art { position: absolute; inset: 12% 10%; width: 80%; height: 76%; object-fit: cover; border-radius: 4px; box-shadow: 0 6px 14px rgba(0, 0, 0, .5); }
+
+/* A couple set (Kat, Nov 7): the worn person a little bigger, centre-left in front; the partner smaller and dimmed behind
+   them to the right, clickable (their closet, flipped). */
+.g-fr-stage.duo .g-fr-fig { left: 42%; z-index: 2; }
+.g-fr-stage.duo .g-fr-walk { scale: 1.05; transform-origin: 50% 100%; }
+.g-fr-partner { pointer-events: none; }
+.g-fr-pin { pointer-events: auto; cursor: pointer; }
+.g-fr-pin img { filter: drop-shadow(0 14px 18px rgba(0, 0, 0, .55)) brightness(.68) saturate(.7); transition: filter .25s; }
+.g-fr-pin:hover img { filter: drop-shadow(0 14px 18px rgba(0, 0, 0, .55)) brightness(.9) saturate(.9); }

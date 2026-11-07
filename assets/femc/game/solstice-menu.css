@@ -243,3 +243,6 @@ body:has(.g-fm-ov.is-home) .g-toasts { top: calc(clamp(30px, 6vh, 56px) + clamp(
 .g-tips-list li { padding: 9px 14px 10px; background: rgba(20, 7, 15, .82); border-left: 3px solid var(--pink-2); clip-path: polygon(0 0, 100% 0, 98.5% 100%, 0 100%); }
 .g-tips-list b { display: block; font: italic 900 17px/1 var(--cond); text-transform: uppercase; color: var(--paper, #fff4f9); }
 .g-tips-list p { margin: 4px 0 0; font: 500 14px/1.35 var(--sans); color: rgba(255, 244, 249, .86); }
+
+/* Kat, Nov 7: on a wide window her head touched the wallet / Boutique plates; a touch further right where there's room. */
+@media (min-width: 621px) { .g-fmh-fig { --fx: min(24vw, 46vh); } }

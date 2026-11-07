@@ -354,3 +354,24 @@
 }
 /* Kat's banner art is the picture: the big ghost word sat over the characters, so it goes when the banner has art (Nov 7). */
 .g-bq-splash.has-art .g-bq-ghost { display: none; }
+
+/* The corner stack (Kat, Nov 7: the pity panel, rules and big pull buttons covered the faces). Bottom right of the splash:
+   the Pull ×1 / ×10 buttons (a touch smaller), the wallet line under them, then along the bottom edge "Odds & rules" (small)
+   left of the two meters. Shorter than the old stack, so the faces above stay clear. */
+@media (min-width: 621px) {
+  .g-fm-body .g-bq-ban .g-bq-side { right: 14px; bottom: 12px; width: min(400px, 40%); gap: 6px; grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas: "btns btns" "own own" "rules pity"; align-items: end; }
+  .g-bq-side > .g-ga-btns { grid-area: btns; gap: 10px; }
+  .g-bq-side > .g-ga-own { grid-area: own; }
+  .g-bq-side > .g-bq-rules { grid-area: rules; align-self: end; }
+  .g-bq-side > .g-bq-pity { grid-area: pity; padding: 5px 10px; gap: 0; }
+  .g-bq-side .g-ga-pity { display: none; }
+  .g-bq-side .g-bq-meter { grid-template-columns: 74px minmax(0, 1fr) auto; gap: 6px; font-size: 11px; }
+  .g-bq-rules summary { padding: 5px 10px; font-size: 11px; }
+  .g-bq-rules[open] > :not(summary) { position: absolute; right: auto; left: 0; bottom: calc(100% + 6px); width: min(360px, 60vw); }
+  .g-fm-body .g-bq-ban .g-bq-pull { padding: 8px 8px 7px; box-shadow: 4px 4px 0 var(--pink); }
+  .g-fm-body .g-bq-ban .g-bq-pull.ten { box-shadow: 4px 4px 0 #fff4f9; }
+  .g-fm-body .g-bq-ban .g-bq-pull b { font-size: 19px; }
+  .g-fm-body .g-bq-ban .g-bq-pull small { font-size: 10px !important; }
+  .g-bq-ban .g-ga-own { font-size: 11px; }
+}
