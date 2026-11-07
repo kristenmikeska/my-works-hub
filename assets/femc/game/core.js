@@ -1024,6 +1024,9 @@ window.FemcGame = (() => {
   /* A scene's own bg (override) at night: the place's own day art plays as its rule (its evening image, else the dimmed
      day); other day art the rules know is dimmed; night-lit art and art no rule uses (the festival, the terrace dinner, the
      flashbacks) stays as chosen. By day, or in the Dark Hour / Velvet Room / Tartarus, it shows as it is. */
+  // Bump BG_V whenever a background file is replaced under the same name (Kat, Nov 7: a remade Studio 4B stayed cached
+  // through a hard refresh, since backgrounds are set from script). booth.js / scene.js / weather.js read slugs up to '.webp'.
+  const BG_V = 2;
   function background(place = '', time = '', override) {
     const rule = D.places.bg.find(([at]) => at[0] === '*' ? place.includes(at.slice(1)) : place.startsWith(at));
     // The Dark Hour is midnight: a place with night art uses it (Kat, Nov 1: the 4/6 konbini showed its sunny street).
@@ -1031,12 +1034,12 @@ window.FemcGame = (() => {
     const special = /Dark Hour|Velvet|Tartarus/.test(place + time);
     if (override && !(late && !special && rule && rule[1] === override && !nightLit(override))) {
       const dim = late && !special && !nightLit(override) && D.places.bg.some(r => r[1] === override);
-      return { url: `${base}assets/femc/bg/${seasonal(override)}.webp`, mood: dim ? 'night' : '' };
+      return { url: `${base}assets/femc/bg/${seasonal(override)}.webp?v=${BG_V}`, mood: dim ? 'night' : '' };
     }
     if (!rule) return null;
     const [, day, evening, look] = rule;
     const img = late && evening ? seasonal(evening) : seasonal(day); // seasonal() falls through to dressed() for the rest
-    return { url: `${base}assets/femc/bg/${img}.webp`, mood: look || (special || (late && evening) || nightLit(day) ? '' : late ? 'night' : '') };
+    return { url: `${base}assets/femc/bg/${img}.webp?v=${BG_V}`, mood: look || (special || (late && evening) || nightLit(day) ? '' : late ? 'night' : '') };
   }
   function moodFor(place = '', time = '') {
     if (/Velvet/.test(place)) return 'velvet';
