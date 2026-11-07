@@ -297,19 +297,31 @@ window.FemcFitting = (() => {
     }
     if (bt.partner === mate.id) return;
     bt.partner = mate.id;
-    const H = bt.el.clientHeight, W = bt.el.clientWidth, R = (AR().skins || {})[mate.id] || {}, fs = (R.portraits || {})[mate.who] || [];
-    // Their matching outfit's scene face (waist up, smiling), else its battle frame.
-    const face = fs.length ? `${SK(mate.id)}portraits/${mate.who}/${fs.includes('happy') ? 'happy' : fs[0]}.webp?v=${SKIN_V}` : null;
-    const src = face || `${SK(mate.id)}${mate.who}-pose-0.webp?v=${SKIN_V}`, w = face ? Math.min(W * 0.62, H * 0.6) : H * 0.72;
+    const H = bt.el.clientHeight, W = bt.el.clientWidth, R = (AR().skins || {})[mate.id] || {}, hd = R.hd || [];
+    // Kat, Nov 7: a pose, not the scene face (no shoulders, too zoomed in, and it covered Solar's outfit). Their matching
+    // outfit's HD pose, framed hip-up like Solar's and a step behind her on the right (she stays in front); else the
+    // outfit's battle frame, full figure.
+    const p = ['victory', 'peace', 'thumbsup', 'arms-crossed', 'wave'].find(k => hd.includes(k)) || hd[0];
     const nm = mate.who === 'solar' ? 'Solar' : (G.LINKS && G.LINKS[mate.who] && G.LINKS[mate.who].short) || mate.who;
-    box.innerHTML = `<div class="g-fr-pin" data-mate="${esc(mate.id)}"><img src="${src}" alt="" style="width:${w}px;right:${-w * 0.36}px;bottom:0"><span class="g-fr-bub" style="right:${w * 0.12}px;bottom:${w * 0.92}px">${esc(nm)} · ${esc(mate.name)}</span></div>`;
+    const bub = `<span class="g-fr-bub" style="right:${W * 0.04}px;bottom:${H * 0.06}px">${esc(nm)} · ${esc(mate.name)}</span>`;
+    if (p) {
+      const h = H * 1.8 * 0.94; // Solar's own hip-up scale, a touch smaller: set back
+      box.innerHTML = `<div class="g-fr-pin" data-mate="${esc(mate.id)}"><img src="${SK(mate.id)}hd/${p}.webp?v=${R.hdv || 1}" alt="" style="height:${h}px;width:auto;visibility:hidden">${bub}</div>`;
+      const img = box.querySelector('img');
+      const put = m => { if (!img.isConnected) return; const w = h * (m.ar || (img.naturalWidth / img.naturalHeight) || 0.45);
+        img.style.width = `${w}px`; img.style.left = `${-W * 0.2 - (m.hx ?? 0.5) * w}px`; img.style.top = `${H * 0.03 - (m.ht ?? 0.012) * h - H}px`; img.style.visibility = ''; };
+      figsFor(`${SK(mate.id)}hd/fig.json?v=${R.hdv || 1}`).then(f => put(f[p] || {}));
+    } else {
+      const w = H * 0.72;
+      box.innerHTML = `<div class="g-fr-pin" data-mate="${esc(mate.id)}"><img src="${SK(mate.id)}${mate.who}-pose-0.webp?v=${SKIN_V}" alt="" style="width:${w}px;right:${-w * 0.36}px;bottom:0">${bub}</div>`;
+    }
     stage.classList.add('duo');
     const pin = box.firstChild;
     if (!o.reduced) {
       // Slides in from the edge, leans in to look, then a small bob now and then.
-      pin.animate([{ transform: `translateX(${w}px) rotate(-8deg)` }, { transform: 'translateX(-14px) rotate(-5deg)', offset: 0.7 }, { transform: 'translateX(0) rotate(-4deg)' }], { duration: 900, delay: 350, easing: 'cubic-bezier(.25, .8, .3, 1)', fill: 'both' })
-        .finished.then(() => { if (pin.isConnected && !o.perf) pin.animate([{ transform: 'rotate(-4deg)' }, { transform: 'translateY(-6px) rotate(-2.5deg)' }, { transform: 'rotate(-4deg)' }], { duration: 2600, iterations: Infinity, easing: 'ease-in-out' }); }).catch(() => {});
-    } else pin.style.transform = 'rotate(-4deg)';
+      pin.animate([{ transform: `translateX(${W * 0.5}px) rotate(-4deg)` }, { transform: 'translateX(-10px) rotate(-2deg)', offset: 0.7 }, { transform: 'translateX(0) rotate(-1.5deg)' }], { duration: 900, delay: 350, easing: 'cubic-bezier(.25, .8, .3, 1)', fill: 'both' })
+        .finished.then(() => { if (pin.isConnected && !o.perf) pin.animate([{ transform: 'rotate(-1.5deg)' }, { transform: 'translateY(-5px) rotate(-.75deg)' }, { transform: 'rotate(-1.5deg)' }], { duration: 2600, iterations: Infinity, easing: 'ease-in-out' }); }).catch(() => {});
+    } else pin.style.transform = 'rotate(-1.5deg)';
   }
   // Equip: sparkles and the outfit's own effect sheet (3 x 2 on black, played once).
   function sparkle(outfit) {
