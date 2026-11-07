@@ -375,7 +375,7 @@ window.FEMC_GAME_PLACES = {
   cgFocus: {
     // The epilogue CGs (scene.js reads this main map in every world).
     'epi-r-regionals': '45% 35%', 'epi-r-studio': '46% 35%', 'epi-r-footage': '45% 40%', 'epi-r-held': '40% 35%',
-    'epi-h-seance': '50% 45%', 'epi-h-hearing': '45% 30%', 'epi-h-held': '55% 35%',
+    'epi-h-seance': '50% 45%', 'epi-h-ready': '57% 30%', 'epi-h-proof-of-life': '62% 35%', 'epi-h-nana-window': '45% 45%', 'epi-h-dog-date': '55% 30%', 'epi-h-antlers': '45% 55%', 'epi-h-party-hall': '42% 30%', 'epi-h-hearing': '45% 30%', 'epi-h-held': '55% 35%',
     'epi-r-holiday': '50% 35%', 'epi-r-his-room': '45% 35%', 'epi-r-reel': '10% 40%', 'epi-r-floor': '50% 40%', 'epi-h-eve-jungwon': '40% 35%', 'epi-h-eve-jihoon': '80% 40%',
     'epi-h-eve-council': '27% 30%', 'epi-h-christmas': '61% 40%', 'epi-st-hanami': '41% 40%', 'epi-st-roof-garden': '63% 30%', 'epi-st-courtyard': '34% 35%', 'epi-tr-first-snow': '53% 30%',
     'epi-s-cafe': '23% 35%', 'epi-s-bureom': '95% 35%', 'epi-s-pins': '66% 25%', 'epi-s-karaoke': '5% 40%', 'epi-s-dumplings': '42% 40%', 'epi-s-dinner': '10% 35%',

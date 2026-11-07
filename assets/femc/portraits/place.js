@@ -202,6 +202,7 @@ window.FEMC_PORTRAIT_PLACE = {
   "mroh-strangers": [0.545, 0, 2.5, 1.18, 0],
   "mrsbang-strangers": [0.555, 1.5, 1, 1.34, 0],
   "mymelody": [0.491, -1, 14.5, 1.1, 1],
+  "nana-hoax": [0.5, 0, 0, 0.95, 1],
   "natsuki": [0.41, 0, 2.5, 1.2, 1],
   "nephew": [0.508, 0, 15, 1.62, 1],
   "niki": [0.577, -1.5, 1.5, 1, 1],

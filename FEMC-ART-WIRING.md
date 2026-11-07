@@ -413,12 +413,7 @@ Each entry below is keyed by its item in `FEMC-ART-TODO.md`. Don't add any id, b
 - **Rules kept:** Haechan and Jungwon wear only hairstyles they've worn in real life (dark/black hair in every prompt) and Haechan is never genderbent (his collabs are the male halves); Solar's hair changes freely (Stella's golden half-up is a wig look on her own face). Prompts describe outfits visually, no logos or printed names.
 
 ### 36. HOAX expansion art (Nov 6 2026)
-- *(36A-36C in, art batch 143: Front Step's evening slot is `epi-h-front-step-night` (its day slot stays `epi-h-winter-street-day` for the 1/12 After School scene, people-last.js `epi-h-junkyu-3`, until a day picture exists), Cherry's room, Hyunsuk's car (both slots, weatherFx.sealed).)*
-- **CGs** (WebP q86 in `assets/femc/cg/`, as batch 112): a `{ cg: '<id>' }` / `{ cg: null }` pair, a `cgFocus` in `data/places.js`, a tile in epilogue.js `ALBUM.hoax`, bump `DATA_V`.
-  - **36D** `epi-h-ready`: story-days.js `epi-h-ready`, `{ cg }` before the line "Then Solar sat in front of the long mirror…", `{ cg: null }` after the iron line ("She wound the first piece round the iron…") and the next line or two.
-  - **36E** `epi-h-proof-of-life`: people-late.js `epi-h-jihoon-late-1`, `{ cg }` before "Nana lost his entire mind.", `{ cg: null }` once Jihoon is sitting up again.
-  - **36F** `epi-h-nana-window`: story-w2.js event `epi-h-nana-window` (1/8 evening), `{ cg }` before its first line, `{ cg: null }` after "He hit her at the door like a snowdrift with opinions…".
-- Nothing is wired until the pictures exist (no stand-in images in a `{ cg }` line, nothing new in an evening slot of a rule that wasn't already night art).
+- All in (art batches 143 and 145).
 
 ### 37. Stay expansion CGs (Nov 6 2026)
 For Claude when the pictures come in (Kat doesn't need this part). Each is a `{ cg: '<id>' }` / `{ cg: null }` pair in the
@@ -437,17 +432,9 @@ scene, a `cgFocus` entry in `data/places.js` (the face centre, like `'epi-st-han
   `tools/femc-check-scenes.py`.
 
 ## 38. Nana (HOAX), Kat Nov 6
-- **38A** `nana-hoax-portraits.png` → `tools/femc-sheet-alpha.py` (or keying white) + `femc-portraits.py` into `portraits/nana-hoax/` (neutral, happy, sad, serious, surprised, flustered, like `cosmo/`); face centre in `mockups/solstice-ui/placements-data.js`, a size in `scale.js`, run `tools/femc-placements.py`. Then give Nana scene lines a face in the HOAX data (cast id `nana`; today his scenes are narration only) and a contact picture.
+- **38A** in (art batch 145): `portraits/nana-hoax/`, hoax/world.js `faces.nana`. Nana still has no spoken lines (narration only), so his face shows nowhere yet: Kat's call whether he gets `s: 'nana'` reaction lines (Koromaru-style) and a contact picture.
+- **38B** cut (batch 145, Kat's name `nana-booth-poses.png`): `booth/nana-0..5.webp`, in booth/index.js poses but not in booth.js PARTNERS, so nothing shows it.
 - **38B / 38C** `booth-nana-poses.png`, `booth-solar-hoax-poses.png` → `tools/femc-booth.py poses <sheet> nana` / `solar-hoax`. Not built yet: a photo booth in the HOAX epilogue (an activity in `data/epi/hoax/world.js`, booth.js reading the world's partners and Solar's world sheet), with Nana as a partner. Build it when the art is in (Kat: no placeholder features).
-
-## 36G-36K. HOAX, second pass (Nov 6)
-New reference copies in Place Prompt Attachments: `CG - Jungwon (HOAX).png` (from `portraits/jungwon-hoax/happy.webp`) and `BG - The Party (HOAX).png` (from `bg/epi-h-party.webp`). Every other attachment was already there.
-- **36G** `epi-h-jihoon-car`: world.js rule `["Hanlim · Jihoon's Car", 'epi-h-car', 'epi-h-car']` → both slots `epi-h-jihoon-car`; add it to `weatherFx.sealed`. Only scene: people-last.js `epi-h-jihoon-late-2` (Late Night).
-- **36H** `epi-h-yeobos-back`: world.js rule `["Hanlim · Yeobo's · Back Door", 'epi-h-winter-street-day', null]` → `["Hanlim · Yeobo's · Back Door", 'epi-h-yeobos-back', null]` (After School only: people-last.js `epi-h-sunoo-3`); add to `weatherFx.outdoor`. Keep the rule above `Hanlim · Yeobo's` (prefix match).
-- CGs (each a `{ cg: 'epi-h-…' }` / `{ cg: null }` pair, a cgFocus in `data/places.js` and a tile in HOAX's `ALBUM` in epilogue.js, as batch 112):
-  - **36I** `epi-h-dog-date`: people-extra.js `epi-h-jungwon-dogs`, `{ cg }` before "They ended up on the bench by the pond…", `{ cg: null }` after that route's branch ends (before "The timer went off at a quarter to three.").
-  - **36J** `epi-h-antlers`: story-nana.js `epi-h-nana-antlers`, `{ cg }` before "He was good for exactly four seconds.", `{ cg: null }` before the choice.
-  - **36K** `epi-h-party-hall`: story-party.js `R.partyMingle`, `{ cg }` before "The house went on further than it had any right to.", `{ cg: null }` just before the `{ mingle }` line (the CG shows only Solar, so it fits all three routes).
 
 ## 39. Polaroids for strangers, HOAX and Stay (Nov 6)
 Already wired: epilogue.js `POLAROIDS` lists all 19 (id → the hangout that unlocks it), and `tools/femc-polaroids.py` `CAPTIONS` has their captions. Nothing shows until a picture exists (`polaroidFor` and `polaroidEntries` both filter by `FEMC_POLAROIDS`). When Kat's `polaroid-<world>-<slug>.png` files land in WIP or New Adds: run `python3 tools/femc-polaroids.py` (writes the WebPs, index.js and bumps its `?v=`). That's all.

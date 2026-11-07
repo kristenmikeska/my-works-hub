@@ -53,8 +53,8 @@
         ['Hanlim · Home · Her Room', 'epi-h-her-room', 'epi-h-her-room-night'],            // batch 77
         // Second pass (Nov 6 2026): two more stand-ins (ART-ADDS-hoax-2.md). Jihoon's car is only ever Late Night and borrows
         // epi-h-car, already night art; Yeobo's back door is After School only, so its evening is null.
-        ["Hanlim · Jihoon's Car", 'epi-h-car', 'epi-h-car'],                                 // stand-in → epi-h-jihoon-car
-        ["Hanlim · Yeobo's · Back Door", 'epi-h-winter-street-day', null],                  // stand-in → epi-h-yeobos-back
+        ["Hanlim · Jihoon's Car", 'epi-h-jihoon-car', 'epi-h-jihoon-car'],                 // art batch 145 (36G)
+        ["Hanlim · Yeobo's · Back Door", 'epi-h-yeobos-back', null],                        // art batch 145 (36H)
         // The expansion pass (Nov 5-6 2026): three new places on stand-ins until their art comes (ART-ADDS-hoax.md). Each
         // evening image is already another rule's night art, so nothing is made night-lit that wasn't.
         ['Hanlim · Home · Front Step', 'epi-h-winter-street-day', 'epi-h-front-step-night'],  // art batch 143 (36A) at night; day still the winter street (1/12 After School scene) until a day picture exists
@@ -86,8 +86,8 @@
         ["Hanlim · Jungwon's Car", 'epi-h-car', 'epi-h-car'],
         ['Hanlim', 'epi-h-jungwon-street-day', 'epi-h-jungwon-street']
       ],
-      weatherFx: { outdoor: ['epi-h-front-step-night', 'epi-h-jungwon-street-day', 'epi-h-jungwon-street', 'epi-h-rooftop', 'epi-h-park', 'epi-h-party-outside', 'outside-daytime-neighborhood', 'outside-night', 'park-2-winter', 'epi-h-christmas-lights', 'epi-h-jihoon-porch', 'epi-h-winter-street', 'rooftop-day-winter', 'gekkoukan-rooftop-night', 'outside-nightdistrict'],
-        sealed: ['epi-h-hyunsuk-car', 'epi-h-car', 'epi-h-noraebang', 'paulownia-karaoke'], none: [] },
+      weatherFx: { outdoor: ['epi-h-yeobos-back', 'epi-h-front-step-night', 'epi-h-jungwon-street-day', 'epi-h-jungwon-street', 'epi-h-rooftop', 'epi-h-park', 'epi-h-party-outside', 'outside-daytime-neighborhood', 'outside-night', 'park-2-winter', 'epi-h-christmas-lights', 'epi-h-jihoon-porch', 'epi-h-winter-street', 'rooftop-day-winter', 'gekkoukan-rooftop-night', 'outside-nightdistrict'],
+        sealed: ['epi-h-jihoon-car', 'epi-h-hyunsuk-car', 'epi-h-car', 'epi-h-noraebang', 'paulownia-karaoke'], none: [] },
       home: { place: 'Hanlim · Home · Her Room', bg: 'epi-h-her-room' },
       school: { place: 'Hanlim · School', bg: 'epi-h-hallway' },
       activities: [
@@ -148,7 +148,7 @@
       dohyun: 'Dohyun', yuna: 'Yuna', seoyeon: 'Seoyeon', minho: 'Minho'
     },
     // This world's own faces (core.js worldFace): Solar's HOAX look, the four's HOAX outfits and Solar's parents (FEMC-ART-WIRING).
-    faces: { solar: 'solar-hoax', sakura: 'sakura-hoax', eunchae: 'eunchae-hoax', kazuha: 'kazuha-hoax', chaewon: 'chaewon-hoax', mom: 'kim-mom', dad: 'kim-dad', jungwon: 'jungwon-hoax',
+    faces: { nana: 'nana-hoax', solar: 'solar-hoax', sakura: 'sakura-hoax', eunchae: 'eunchae-hoax', kazuha: 'kazuha-hoax', chaewon: 'chaewon-hoax', mom: 'kim-mom', dad: 'kim-dad', jungwon: 'jungwon-hoax',
       // Kat's realistic HOAX set (batch 100): HOAX-only, so the main game keeps their year faces. The ENHYPEN boys were drawn in
       // uniform only, so they wear it everywhere.
       jihoon: 'jihoon-hoax', cherry: 'cherry-hoax', asahi: 'asahi-hoax', hyunsuk: 'hyunsuk-hoax', jaehyuk: 'jaehyuk-hoax', junkyu: 'junkyu-hoax',

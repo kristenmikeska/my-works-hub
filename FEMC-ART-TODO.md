@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 6, after art batch 143):** ⭐ high-resolution poses (top section: Solar ✅ done; the other fighters next) · 1 Boutique banner picture (section 28: Tarot Arcana) · HOAX: 2 places and 6 CGs (section 36) · Stay: 3 optional CGs (section 37) · Nana's faces and photo-booth sheets, plus Solar's HOAX booth sheet (section 38) · 19 polaroids for strangers, HOAX and Stay (section 39: 7 / 7 / 5) · **Epilogue backgrounds remade:** strangers, HOAX and Stay in `EPILOGUE-BACKGROUND-PROMPTS.md` (like the Runners ones) · low-res pictures to look over at the very end (section 31). **Runners backgrounds:** all made; only an optional night café is left in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style now live in `FEMC-CG-REMAKES.md`. **New Wardrobe outfits** (Solar's skin series and the collab outfits, 24 looks) and **skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
+**To make (updated Nov 7, after art batch 145):** ⭐ high-resolution poses (top section: Solar ✅ done; the other fighters next) · 1 Boutique banner picture (section 28: Tarot Arcana) · Stay: 3 optional CGs (section 37) · Solar's HOAX booth sheet (section 38C) · 19 polaroids for strangers, HOAX and Stay (section 39: 7 / 7 / 5) · **Epilogue backgrounds remade:** HOAX done; strangers' sunroom and the 10 Stay ones left in `EPILOGUE-BACKGROUND-PROMPTS.md` · low-res pictures to look over at the very end (section 31). **Runners backgrounds:** all made; only an optional night café is left in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style now live in `FEMC-CG-REMAKES.md`. **New Wardrobe outfits** (Solar's skin series and the collab outfits, 24 looks) and **skins in battle** (One More eyes, entrance cards, Theurgy cut-ins, finish cards, second pose sheets, signature effects, couple Showtimes): prompts live in `FEMC-SKINS-BATTLE-DESIGN.md`; Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`.
 
 ## ⭐⭐ TOP PRIORITY when you have usage: high-resolution poses (Kat, Nov 2)
 
@@ -56,78 +56,6 @@ A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload 
 
 ---
 
-## 36. HOAX places and CGs (Gemini for places, ChatGPT for CGs; realistic; Kat, Nov 6)
-New places and moments from the HOAX expansion. Until each picture exists the game borrows the closest existing background. Save under the name given: Claude swaps it in.
-
-**[ ] 36D. Getting ready**  
-Cherry doing Solar's hair at the mirror before the winter-break party.  
-✅ Solar's new HOAX room is in, and `BG - Solar's Room (HOAX).png` is now the new picture.  
-Attach: `CG - style (HOAX).png`, `BG - Solar's Room (HOAX).png`, `CG - Solar (HOAX party).png`, `CG - Cherry (HOAX party).png`, `CG - Nana (HOAX).png`  
-Save as: `epi-h-ready.png`
-```
-A realistic painted illustration in the style of the first attached image, 16:9, high resolution, no readable text. The setting is the bedroom in the second image, in the late afternoon with a lamp on. The next images are realistic portraits of, in order, Solar (small, long brunette hair, green eyes, a tiny nose stud) and Cherry (blue eyes), both dressed for a party exactly as in their portraits. Solar sits on a stool in front of a long mirror on a wardrobe door; Cherry stands behind her with a comb held in her teeth, winding a piece of Solar's hair around a curling iron, a little steam rising. We see both of them mostly in the mirror's reflection, Solar looking at her own face as if she's not sure it's hers, Cherry concentrating. On the bed behind them lies a very large, very fluffy white Samoyed dog (the last image), lying across a jacket that was laid out on the bed, a hair tie hanging from his mouth, smiling. A makeup bag spilled open on the dresser. Warm lamp light, soft realistic shading, real-looking faces like the portraits; NOT anime and NOT cel shading.
-```
-
-**[ ] 36E. Proof of life**  
-Jihoon on Solar's front step at one in the morning, flattened in the snow by Nana.  
-✅ The new Kim house is in, and `BG - Kim House (evening).png` is now the new picture.  
-Attach: `CG - style (HOAX).png`, `BG - Kim House (evening).png`, `CG - Jihoon (HOAX).png`, `CG - Solar (HOAX).png`, `CG - Nana (HOAX).png`  
-Save as: `epi-h-proof-of-life.png`
-```
-A realistic painted illustration in the style of the first attached image, 16:9, high resolution, no readable text. Night, the front step of the family house in the second image, a warm porch light, light snow falling. The next images are realistic portraits of, in order, Jihoon (tall, black hair with blonde streaks, a nose ring, a leather jacket that's too thin for winter) and Solar (small, brunette, green eyes, in pyjamas with a puffer coat thrown over them and socks, standing in the open front doorway with one hand over her mouth, laughing). Jihoon has been knocked flat on his back in the snow on the steps, laughing, a convenience-store plastic bag spilling dog treats beside him, while a very large, very fluffy white Samoyed (the last image) stands on his chest licking his face, tail a blur. Warm light from the doorway on the snow, blue night everywhere else. Soft realistic shading, real-looking faces like the portraits; NOT anime and NOT cel shading.
-```
-
-**[ ] 36F. The window**  
-Nana waiting in the front window for Solar on the first day back at school.  
-✅ The new Kim house is in, and `BG - Kim House (evening).png` is now the new picture.  
-Attach: `CG - style (HOAX).png`, `BG - Kim House (evening).png`, `CG - Nana (HOAX).png`  
-Save as: `epi-h-nana-window.png`
-```
-A realistic painted illustration in the style of the first attached image, 16:9, high resolution, no people, no readable text. The family house in the second image seen from the snowy street at dusk in early January, a little from below: in the lit front window, a very large, very fluffy white Samoyed dog (the third image) stands on the back of a sofa where he isn't allowed, front paws on the sill, nose almost on the glass, his whole body wagging, smiling his black-lipped smile at someone coming up the path. Warm lamp light inside, blue snow outside, a schoolbag-shaped set of footprints leading up the path toward the door, light snow falling. Soft realistic shading; NOT anime and NOT cel shading.
-```
-
-**[ ] 36G. Jihoon's car at night**  
-A late-night scene in Jihoon's car outside Solar's house in HOAX (now Jungwon's car stands in).  
-Attach: `CG - style (HOAX).png`  
-Save as: `epi-h-jihoon-car.png`
-```
-Background art in the same realistic painted style as the attached image, 16:9, high resolution, no people, no readable text: the inside of a young man's black car at one in the morning, seen from the passenger seat looking across at the driver's side and out through the windscreen. A good car but not new, a black leather interior with a few scuffs, the dashboard glowing a dim orange, the heater on full with its little red light, a convenience-store plastic bag with two ice-cream bars in it on the dashboard, a beanie on the driver's seat, white dog hair on the back seat, a small pink pig keyring hanging from the rear-view mirror. Through the fogged windscreen, a quiet Korean residential street at night with snow banked on the kerbs, one street lamp, the headlights off. Warm inside, cold outside, a little lonely. Keep everything important away from the edges.
-```
-
-**[ ] 36H. Yeobo's back door**  
-The alley behind Sunoo's grandmother's café, where Nana gets a present (now a winter street stands in).  
-Attach: `CG - style (HOAX).png`, `BG - Yeobo's Café.png`  
-Save as: `epi-h-yeobos-back.png`
-```
-Background art in the same realistic painted style as the first attached image, 16:9, high resolution, no people, no readable text: the narrow side alley behind the small neighbourhood café in the second image, on a grey January afternoon in a Korean town. A steel back door standing open, propped with a plastic crate of empty glass milk bottles, warm yellow light and a little steam coming out of the doorway, a glimpse inside of a steel kitchen counter with trays of croissants, a broom leaning by the door, a plastic stool, recycling bins, a dry cleaner's back wall opposite, old snow banked along the alley's edges and salted grey concrete underfoot. Cosy and ordinary. Keep everything important away from the edges.
-```
-
-**[ ] 36I. The dog date**  
-Solar and Jungwon on a park bench with both dogs on their first proper dog date.  
-Attach: `CG - style (HOAX).png`, `BG - Hanlim Park.png`, `CG - Solar (HOAX).png`, `CG - Jungwon (HOAX).png`, `CG - Nana (HOAX).png`  
-Save as: `epi-h-dog-date.png`
-```
-A realistic painted illustration in the style of the first attached image, 16:9, high resolution, no readable text. The setting is the park in the second image on a white winter afternoon, by a frozen pond, old snow on the benches and paths. The next images are realistic portraits of, in order, Solar (small, long brunette hair, green eyes, a tiny nose stud, a long winter coat and a scarf) and Jungwon (dark hair falling in his eyes, deep dimples, a good dark wool coat buttoned to the top). They sit side by side on a park bench with a thermos and two paper cups between them; Solar has both her hands tucked into Jungwon's coat pockets and is laughing, and Jungwon is looking at her, not at the camera, smiling with the dimple showing, his ears a little pink. In the snow at their feet lies a very large, very fluffy white Samoyed (the last image), lying perfectly still, and curled up asleep in the deep fur on his back is a tiny toy dog, no bigger than a cat, in a small knitted orange coat. A small paper bag of homemade dog biscuits on the bench. Soft winter light, breath in the air, warm and romantic. Soft realistic shading, real-looking faces like the portraits; NOT anime and NOT cel shading.
-```
-
-**[ ] 36J. Antlers**  
-Nana in his Christmas reindeer antlers on Christmas night, having given up.  
-Attach: `CG - style (HOAX).png`, `BG - Kim House (evening).png`, `CG - Nana (HOAX).png`  
-Save as: `epi-h-antlers.png`
-```
-A realistic painted illustration in the style of the first attached image, 16:9, high resolution, no people's faces, no readable text. The living room of the family house in the second image on Christmas night, warm lamp light, a heated wooden floor, a sofa with a blanket, a small Christmas tree with white lights in the corner, wrapping paper still on the floor. In the middle of the floor a very large, very fluffy white Samoyed (the third image) lies flat on his side, completely given up, wearing a pair of squashed brown felt reindeer antlers with a red pom-pom between them, half a chewed red ribbon bow hanging off his collar like a medal, his tongue out, looking up at the ceiling. Only a pair of slippered feet and a hand holding a phone at the edge of the frame show the family. Funny and cosy. Soft realistic shading; NOT anime and NOT cel shading.
-```
-
-**[ ] 36K. The party**  
-Solar in the hallway of the winter-break party, still in her coat, with the whole school around her.  
-Attach: `CG - style (HOAX).png`, `BG - The Party (HOAX).png`, `CG - Solar (HOAX party).png`  
-Save as: `epi-h-party-hall.png`
-```
-A realistic painted illustration in the style of the first attached image, 16:9, high resolution, no readable text. The house party in the second image at about ten at night: a crowded hallway at the foot of a staircase, teenagers sitting on every stair like a stadium, a heap of shoes by the front door, red cups, a framed photo of a little boy in swimming goggles hanging crooked by the stairs, warm light and coloured party lights spilling out of the rooms on either side. In the middle of it all stands Solar (the third image: small, long brunette hair, green eyes, a tiny nose stud, dressed for the party exactly as in her portrait) with her winter coat still on over her outfit and a can of barley tea in one hand, looking round at the room with a small, guarded smile, while several people around her have turned to look at her or are whispering behind their hands. Lively, noisy, a little lonely in the middle. Soft realistic shading, real-looking faces; NOT anime and NOT cel shading.
-```
-
----
-
 ## 37. Stay CGs (ChatGPT; Persona 3 Reload anime style; optional; Kat, Nov 6)
 Three optional moments from the Stay expansion. The scenes play fine without them.
 
@@ -160,21 +88,7 @@ A 16:9 anime CG in the exact style of the FIRST attached image (Persona 3 Reload
 ## 38. Nana (HOAX; ChatGPT; realistic; Kat, Nov 6)
 Solar's Samoyed gets his own faces for the HOAX epilogue, like Koromaru, Cosmo and Wanda have in the main game, and a photo-booth sheet so he can be Solar's partner in the booth there. Realistic, like the other epilogue portraits. The booth in HOAX gets built once 38B and 38C are in.
 
-**[ ] 38A. Nana: portrait sheet**  
-His faces in scenes (six expressions, like Cosmo's).  
-Attach: `CG - style (HOAX).png`, `CG - Nana (HOAX).png`  
-Save as: `nana-hoax-portraits.png`
-```
-A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell. The SAME dog as the SECOND attached image in all six cells: a very large, very fluffy pure-white Samoyed, about sixty pounds, thick double coat, black eyes, black nose, black lips, the classic Samoyed smile. Each cell shows him from the chest up, facing the camera at the same size and framing, nothing overlapping. Realistic painted style of the FIRST attached image: real fur texture, soft natural light, cinematic; NOT anime and NOT cel shading. Cell 1 (neutral): sitting calmly, mouth closed, ears up, attentive. Cell 2 (happy): the big open-mouthed Samoyed smile, tongue out, eyes squinting with joy. Cell 3 (sad): ears back, head lowered a little, big pleading eyes. Cell 4 (serious): mouth closed, head up, staring hard at something off to the side, very alert. Cell 5 (surprised): ears straight up, head tilted to one side, mouth slightly open. Cell 6 (flustered): looking away sheepishly with his ears flat and a guilty little smile, like he just got caught on the sofa. No text, no collar tags with writing.
-```
-
-**[ ] 38B. Nana: photo booth poses**  
-Nana on the right of the frame in the HOAX booth.  
-Attach: `CG - style (HOAX).png`, `CG - Nana (HOAX).png`  
-Save as: `booth-nana-poses.png`
-```
-Photo-booth pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME dog as the SECOND attached image in all six cells: a very large, very fluffy pure-white Samoyed, from the chest up, facing the camera, same size and framing in every cell, nothing overlapping. Bright, flattering photo-booth light, a little shine in his eyes. Realistic painted style of the FIRST attached image: real fur texture; NOT anime and NOT cel shading. Cell 1: the big Samoyed smile, tongue out. Cell 2: leaning a little to his right with his head tilted, as if pressing into someone beside him off to the left. Cell 3: a wide-eyed head tilt, one ear flopped. Cell 4: licking the air toward the left, eyes shut. Cell 5: wearing a small pink bow on top of his head, looking very proud. Cell 6: shaking his head mid-sneeze, fur flying, a happy blur. No text.
-```
+✅ 38A (Nana's faces) and 38B (his booth poses) are in (art batch 145). His booth poses wait for Solar's sheet below, then Claude builds the HOAX booth.
 
 **[ ] 38C. Solar (HOAX): photo booth poses**  
 Solar on the left of the frame in the HOAX booth, to go with Nana's sheet (the main game's booth sheet is in the anime style).  

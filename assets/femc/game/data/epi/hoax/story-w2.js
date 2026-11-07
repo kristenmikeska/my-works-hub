@@ -1021,8 +1021,10 @@
   // No `consumes`: it opens the evening, then Go Out as usual.
   (R.events ||= []).push(
     { id: 'epi-h-nana-window', date: '1/8', slot: 'evening', title: 'the window', place: 'Hanlim · Home', time: 'Evening', scene: [
+      { cg: 'epi-h-nana-window' },
       { n: "She came home in the dark with snow up to her ankles and her bag soaked through, and Nana was in the front window, standing on the back of the sofa where he was absolutely not allowed, a white shape against the glass with his whole body wagging, the way he'd been there every single evening she'd come home since she'd come home." },
       { n: "He hit her at the door like a snowdrift with opinions. Sixty pounds of Samoyed, paws on her shoulders, smiling straight into her face, and she staggered back into the shoe rack and let him, because for a year nobody had been waiting at a window for her, and she was not going to start telling him to get down now." },
+      { cg: null },
       { s: 'solar', f: 'happy', t: "Hi. Hi. I know. I was gone *nine hours*, I know, it's a tragedy." },
       { n: "Her mom called from the kitchen that he'd been at that window since four. Nana went to the door, sat, and looked at the snow, and then at her, and then at the snow." },
       { choose: [

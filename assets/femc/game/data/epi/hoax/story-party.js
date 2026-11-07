@@ -64,8 +64,10 @@
       { n: "Heeseung's agenda had a line for this. She'd seen it laminated. *21:10 to 21:40, MINGLE (visible),* with a smaller line under it in brackets that said *(be normal)*, which was the most Heeseung thing she'd ever read, because it meant he'd sat at his desk and considered the possibility that they wouldn't be." },
       { n: "So they mingled. Visibly. The council scattered into the house like somebody had dropped a bag of marbles, and she was left in the hallway with her coat still on and Jungwon's voice coming very faintly out of Heeseung's shirt pocket two rooms away, asking somebody to turn him around." }
     ] },
+    { cg: 'epi-h-party-hall' },
     { n: "The house went on further than it had any right to. A living room with a sectional sofa the shape of a horseshoe and forty people on it. A staircase with people sitting on every step like a stadium. A den at the back with its door half shut. A dining room where somebody had pushed the chairs into a circle. A glass door at the very end, fogged at the corners, with the back step behind it and the dark garden and the snow. Every room had a different song in it, bleeding into the next, and every room had at least one person in it who looked up when she came in." },
 
+    { cg: null },
     { mingle: { pick: 4, min: 2 }, choose: [
 
       // ── the living room ──

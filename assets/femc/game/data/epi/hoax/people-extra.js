@@ -88,6 +88,7 @@
           { n: "Nana pulled. Jungwon held on with both hands, and was towed, at speed, very politely, in a straight line across the snow towards a pigeon, saying *Nana, Nana, Nana, please,* while she stood on the path holding Maeumi, who weighed nothing and screamed at everything, and laughed so hard she had to sit down on a bench in the snow, and Maeumi got onto her lap and sat there, warm and indignant, and let her." }
         ] }
       ] },
+      { cg: 'epi-h-dog-date' },
       { n: "They ended up on the bench by the pond with the thermos between them and twenty minutes left on his watch. Maeumi had climbed into the deep fur on Nana's back and gone to sleep there, curled up small, his traffic-cone coat the only colour in the whole white park, and Nana was lying very still underneath him with his chin on his paws, not moving so much as an ear, in case he woke him up." },
       { s: 'jungwon', f: 'neutral', t: "Look at them." },
       { s: 'solar', f: 'happy', t: "I'm looking." },
@@ -132,6 +133,7 @@
         { s: 'solar', f: 'happy', t: "You did that for the chat." },
         { s: 'jungwon', f: 'neutral', t: "I did that for me. The chat was a coincidence." }
       ] },
+      { cg: null },
       { n: "The timer went off at a quarter to three. Maeumi woke up on Nana's back, remembered where he was, and screamed. Nana got up very slowly so as not to tip him off, and Maeumi rode him the first four metres of the path before he jumped down, and Jungwon watched them with his hands in his pockets and the empty biscuit bag folded in one of them, and walked her to the gate, and at the gate, before he went, he crouched down one more time and said *goodbye, Nana* into the dog's ruff, quietly, so only the dog would hear, and she heard anyway." }
     ] }
   ]);

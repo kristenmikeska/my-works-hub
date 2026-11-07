@@ -40958,6 +40958,137 @@
    "destination": "assets/femc/bg/flashback-yeobos-cafe.webp",
    "conversion": "WebP q86, native 1672 x 941",
    "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 145,
+   "source": "New Adds/epi-h-ready.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "9ae7d28ce904b5234344779161d9a6e5765ddfb89144a319e7d16ace70d81e25",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-h-ready.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "story-days.js epi-h-ready, the mirror through the iron; cgFocus; ALBUM (36D)"
+  },
+  {
+   "batch": 145,
+   "source": "New Adds/epi-h-proof-of-life.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "e1ceedfb4c9d62e1d85f40290a09aea68024306e75e6d4ec76a18dd713e2155c",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-h-proof-of-life.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "people-late.js epi-h-jihoon-late-1, Nana knocks Jihoon over until he sits up; cgFocus; ALBUM (36E)"
+  },
+  {
+   "batch": 145,
+   "source": "New Adds/epi-h-nana-window.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "b36a3a5183af1d62802337e3356104da893bed572f2f526af3cf766e49d06435",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-h-nana-window.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "story-w2.js epi-h-nana-window, first two lines; cgFocus; ALBUM (36F)"
+  },
+  {
+   "batch": 145,
+   "source": "New Adds/epi-h-dog-date.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "f2c59b43eb65b444fed0a840360e3980555c6c673262e8461eb59db893bfc74a",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-h-dog-date.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "people-extra.js epi-h-jungwon-dogs, the bench by the pond through all three route branches; cgFocus; ALBUM (36I)"
+  },
+  {
+   "batch": 145,
+   "source": "New Adds/epi-h-antlers.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "f8634d12d4ef60b2c94bedea4f67983ecccf16eaf09abfd911c5780e4f8beed9",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-h-antlers.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "story-nana.js epi-h-nana-antlers, four seconds to the choice; cgFocus; ALBUM (36J)"
+  },
+  {
+   "batch": 145,
+   "source": "New Adds/epi-h-party-hall.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "4180dfbc5f72144bd2e3f82947027d1f8c04e34ddf539875c069d5702d6c6b9d",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-h-party-hall.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "story-party.js R.partyMingle, the house tour up to the mingle; cgFocus; ALBUM (36K)"
+  },
+  {
+   "batch": 145,
+   "source": "New Adds/epi-h-jihoon-car.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "162963e44940a7d070388ad62d094dfc737736321319dc8c1ea5ca202cd6e823",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-jihoon-car.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "hoax/world.js Jihoon's Car both slots, weatherFx.sealed (36G)"
+  },
+  {
+   "batch": 145,
+   "source": "New Adds/epi-h-yeobos-back.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "66c74a7ec47a780d57f760f186a0268a84e81211fadcbe0739e841c993ab0ed7",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-yeobos-back.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "hoax/world.js Yeobo's Back Door, weatherFx.outdoor (36H)"
+  },
+  {
+   "batch": 145,
+   "source": "New Adds/nana-hoax-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "93e999cce5b37a78af5fcb5dd045e99319c4223e8dac32e8c74cf3257bba6d1a",
+   "character": "nana-hoax",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/nana-hoax/neutral.webp",
+   "conversion": "transparent 3x2 sheet cut at the emptiest column/row near the thirds/half (order neutral, happy, sad, serious, surprised, flustered) -> Character Portraits/Nana-HOAX/<emotion>.png; tools/femc-portraits.py nana-hoax (SAME_SCALE, like the huskies); scale.js 1.12; placements-data face [0.985, 0.5], placements-kat {s 0.95, m 1}; hoax/world.js faces nana -> nana-hoax. Neutral copied to Place Prompt Attachments/CG - Nana (HOAX).png (old in Old/)",
+   "placement": "HOAX speaker id nana (no spoken lines yet)"
+  },
+  {
+   "batch": 145,
+   "source": "New Adds/nana-booth-poses.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "56f470bcd7f8325d302079c112508dc534a72166ddd535d04adea6333034dfb7",
+   "status": "prepared",
+   "destination": "assets/femc/game/art/booth/nana-0.webp",
+   "conversion": "tools/femc-booth.py poses nana-booth-poses.png nana (alpha split) -> booth/nana-0..5.webp",
+   "placement": "not shown anywhere yet: waits for 38C (Solar's HOAX booth poses) and the HOAX booth (38B; Kat's name nana-booth-poses = booth-nana-poses)"
   }
  ],
  "batch1Validation": {

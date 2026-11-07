@@ -3,6 +3,7 @@
    neutral portrait's eye-to-chin height in a real scene. Adjust a number if someone still looks too big or small. */
 window.FEMC_PORTRAIT_SCALE = {
   cosmo: 1.08,
+  'nana-hoax': 1.12, // Nana, 60 lb Samoyed (art batch 145); a touch bigger than the huskies
   ikutsuki: 0.82,
   abigail: 1.04,
   ada: 1.1,

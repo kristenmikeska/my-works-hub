@@ -66,8 +66,10 @@
       { n: "When the house had emptied out and the dishes were done and her dad had fallen asleep sitting up on the sofa with the television explaining the weather to him, her mom went to the hall cupboard and came back with the antlers." },
       { n: "They were the same antlers as every year. Felt, brown, a bit squashed, with a red pom-pom between them and an elastic strap Nana had chewed through in 2019 and her mom had sewn back with white thread. Half of the red bow from lunch still hung off his collar like a medal. Her mom knelt down on the heated floor in front of him with the antlers held out, and Nana looked at them, and then at her, with the deep weary patience of a dog who had been through this before and knew it would be over sooner if he cooperated." },
       { s: 'mom', f: 'happy', t: "One picture. One. Then they come off. Solar, get your phone, he's only good for about four seconds." },
+      { cg: 'epi-h-antlers' },
       { n: "He was good for exactly four seconds. Then he lay down very slowly onto his side with the antlers on, like a building being demolished, and looked at the ceiling with his tongue out, and her dad woke up and laughed so hard he had to take his glasses off." },
       { s: 'dad', f: 'happy', t: "Soyeon, look at him. He's given up. He's given up on all of us." },
+      { cg: null },
       { choose: [
         { t: "(Send the good one, antlers up, to the group chat.)", then: [
           { phone: [

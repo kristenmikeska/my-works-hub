@@ -25,7 +25,7 @@ EMO = {'mad': 'serious', 'angry': 'serious', 'embarrassed': 'flustered', 'smilin
 TARGET_H = 860      # height of the reference portrait on the canvas
 WORK_H = 140        # matching happens on small silhouettes this tall
 HEAD = 0.55         # only the top part of the reference (head and hair) is compared
-SAME_SCALE = {'cosmo', 'wanda'}
+SAME_SCALE = {'cosmo', 'wanda', 'nana-hoax'}
 
 
 def trimmed(path):
