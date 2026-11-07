@@ -61,16 +61,16 @@
         ["Hanlim · Cherry's Room", 'epi-h-cherry-room', null],                              // art batch 143 (36B)
         ["Hanlim · Hyunsuk's Car", 'epi-h-hyunsuk-car', 'epi-h-hyunsuk-car'],                // art batch 143 (36C)
         ['Hanlim · Home', 'epi-h-kim-house-day', 'epi-h-kim-house'],                      // batch 77: by day; batch 65: lamp-lit, snowing outside (evening)
-        ['Hanlim · School · Council Room', 'epi-h-council-room', null],
+        ['Hanlim · School · Council Room', 'epi-h-council-room', 'epi-h-council-room-night'], // art batch 144: night (H15)
         ['Hanlim · School · Classroom', 'epi-h-classroom-exam', null],
         ['Hanlim · School · Gym at Midnight', 'epi-h-gym-midnight', 'epi-h-gym-midnight'],
         ['Hanlim · School · Gym · Hearing', 'epi-h-gym-hearing', null],                    // batch 77: the hearing day (epi-h-hearing)
         ['Hanlim · School · Gym', 'flashback-hamlim-gym', null],
         ['Hanlim · School · Rooftop', 'epi-h-rooftop', 'epi-h-rooftop'],
         ['Hanlim · School · Library', 'epi-h-library', null],
-        ['Hanlim · School', 'flashback-hamlim-hallway', null],
+        ['Hanlim · School', 'epi-h-hallway', 'epi-h-hallway-night'],                   // art batch 144 (H10, H11); flashback-hamlim-hallway stays for the links / Stay
         ["Hanlim · Yeobo's · After Closing", 'flashback-yeobos-cafe', null],
-        ["Hanlim · Yeobo's", 'yeobos-cafe', null],
+        ["Hanlim · Yeobo's", 'epi-h-yeobos', 'epi-h-yeobos-night'],                   // art batch 144 (H5, H6); yeobos-cafe stays for the main game
         ["Hanlim · Jihoon's House · Porch", 'epi-h-jihoon-porch', 'epi-h-jihoon-porch'],     // batch 77: night, both slots
         ["Hanlim · Jihoon's House", 'epi-h-jihoon-house', 'epi-h-jihoon-house'],             // batch 65: night, one lamp (every scene there is evening or late)
         ["Hanlim · Jungwon's Street", 'epi-h-jungwon-street-day', 'epi-h-jungwon-street'],
@@ -80,7 +80,7 @@
         ['Hanlim · Karaoke', 'epi-h-noraebang', 'epi-h-noraebang'],
         ['Hanlim · Arcade', 'epi-h-arcade', 'epi-h-arcade'],
         ['Hanlim · Ice Rink', 'epi-h-ice-rink', null],
-        ['Hanlim · The Park', 'epi-h-park', null],
+        ['Hanlim · The Park', 'epi-h-park', 'epi-h-park-night'],                   // art batch 144: night (H9)
         ['Hanlim · The Party · Outside', 'epi-h-party-outside', 'epi-h-party-outside'],
         ['Hanlim · The Party', 'epi-h-party', 'epi-h-party'],                               // batch 65: night
         ["Hanlim · Jungwon's Car", 'epi-h-car', 'epi-h-car'],
@@ -89,11 +89,11 @@
       weatherFx: { outdoor: ['epi-h-front-step-night', 'epi-h-jungwon-street-day', 'epi-h-jungwon-street', 'epi-h-rooftop', 'epi-h-park', 'epi-h-party-outside', 'outside-daytime-neighborhood', 'outside-night', 'park-2-winter', 'epi-h-christmas-lights', 'epi-h-jihoon-porch', 'epi-h-winter-street', 'rooftop-day-winter', 'gekkoukan-rooftop-night', 'outside-nightdistrict'],
         sealed: ['epi-h-hyunsuk-car', 'epi-h-car', 'epi-h-noraebang', 'paulownia-karaoke'], none: [] },
       home: { place: 'Hanlim · Home · Her Room', bg: 'epi-h-her-room' },
-      school: { place: 'Hanlim · School', bg: 'flashback-hamlim-hallway' },
+      school: { place: 'Hanlim · School', bg: 'epi-h-hallway' },
       activities: [
-        { id: 'epi-h-yeobos', name: "Hang out at Yeobo's", place: "Hanlim · Yeobo's", bg: 'yeobos-cafe', slots: ['after', 'evening'], cost: 6500, stats: { charm: 1 },
+        { id: 'epi-h-yeobos', name: "Hang out at Yeobo's", place: "Hanlim · Yeobo's", bg: 'epi-h-yeobos', slots: ['after', 'evening'], cost: 6500, stats: { charm: 1 },
           text: "Two drinks, the table by the window, and the radiator doing its best against the door every time it opened. Sunoo's grandmother put a croissant on the table she hadn't ordered and walked off before she could pay for it, which was the whole point." },
-        { id: 'epi-h-study', name: "Study at Yeobo's", place: "Hanlim · Yeobo's", bg: 'yeobos-cafe', slots: ['after', 'evening'], cost: 4500, stats: { knowledge: 1 },
+        { id: 'epi-h-study', name: "Study at Yeobo's", place: "Hanlim · Yeobo's", bg: 'epi-h-yeobos', slots: ['after', 'evening'], cost: 4500, stats: { knowledge: 1 },
           text: "One americano, three hours, and a stack of calculus notes for exams she'd technically already missed. Some of it went in. She decided that counted." },
         { id: 'epi-h-machine', name: 'The vending machine', place: 'Hanlim · Winter Street', bg: 'epi-h-winter-street-day', slots: ['after', 'evening'], cost: 1500, stats: { courage: 1 },
           text: "She stood in front of the row of machines outside the convenience store with a thousand-won note and a coin and pressed the button for barley tea, on principle. The third machine from the left thought about it, hummed, and dropped a can. Pink and black. Claw marks for a logo. It didn't even stock them. She put it in her other pocket and walked home with one hand on each." },

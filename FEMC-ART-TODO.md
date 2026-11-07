@@ -61,7 +61,7 @@ New places and moments from the HOAX expansion. Until each picture exists the ga
 
 **[ ] 36D. Getting ready**  
 Cherry doing Solar's hair at the mirror before the winter-break party.  
-⏳ Make this after Solar's new HOAX room (H1 / H2 in `EPILOGUE-BACKGROUND-PROMPTS.md`), and attach the new picture in place of `BG - Solar's Room (HOAX).png`.  
+✅ Solar's new HOAX room is in, and `BG - Solar's Room (HOAX).png` is now the new picture.  
 Attach: `CG - style (HOAX).png`, `BG - Solar's Room (HOAX).png`, `CG - Solar (HOAX party).png`, `CG - Cherry (HOAX party).png`, `CG - Nana (HOAX).png`  
 Save as: `epi-h-ready.png`
 ```
@@ -70,7 +70,7 @@ A realistic painted illustration in the style of the first attached image, 16:9,
 
 **[ ] 36E. Proof of life**  
 Jihoon on Solar's front step at one in the morning, flattened in the snow by Nana.  
-⏳ Make this after the new Kim house (H3 / H4 in `EPILOGUE-BACKGROUND-PROMPTS.md`), and attach the new picture in place of `BG - Kim House (evening).png`.  
+✅ The new Kim house is in, and `BG - Kim House (evening).png` is now the new picture.  
 Attach: `CG - style (HOAX).png`, `BG - Kim House (evening).png`, `CG - Jihoon (HOAX).png`, `CG - Solar (HOAX).png`, `CG - Nana (HOAX).png`  
 Save as: `epi-h-proof-of-life.png`
 ```
@@ -79,7 +79,7 @@ A realistic painted illustration in the style of the first attached image, 16:9,
 
 **[ ] 36F. The window**  
 Nana waiting in the front window for Solar on the first day back at school.  
-⏳ Make this after the new Kim house (H3 / H4 in `EPILOGUE-BACKGROUND-PROMPTS.md`), and attach the new picture in place of `BG - Kim House (evening).png`.  
+✅ The new Kim house is in, and `BG - Kim House (evening).png` is now the new picture.  
 Attach: `CG - style (HOAX).png`, `BG - Kim House (evening).png`, `CG - Nana (HOAX).png`  
 Save as: `epi-h-nana-window.png`
 ```

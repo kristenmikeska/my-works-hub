@@ -48,7 +48,7 @@
     places: {
       bg: [
         ['Incheon · The Lee House · Her Room', 'epi-s-her-room', 'epi-s-her-room-night'],  // batch 78
-        ['Incheon · The Lee House · Kitchen', 'epi-s-lee-kitchen', 'epi-s-lee-kitchen'], // batch 65: lamp-lit, blue at the windows (before light to late)
+        ['Incheon · The Lee House · Kitchen', 'epi-s-lee-kitchen-day', 'epi-s-lee-kitchen'], // art batch 144: by day (S2); the lamp-lit one at night (before-light scenes set it)
         ['Incheon · The Lee House · Stairs', 'epi-s-stairs-night', 'epi-s-stairs-night'], // batch 78: every scene is before light to late
         ['Incheon · The Lee House · Study', 'epi-s-study', 'epi-s-study'],               // batch 78: lamp-lit evening, both slots
         ['Incheon · The Lee House · Sunroom', 'epi-s-sunroom', null],
@@ -56,17 +56,17 @@
         ["Incheon · The Lee House · Yunjin's Room", 'epi-s-yunjin-room', null],           // batch 78: the night tint over the lamp-lit room in the evening
         ['Incheon · The Lee House · Annex', 'epi-s-annex-day', 'epi-s-annex'],          // batch 78: by day; batch 65: night
         ['Incheon · The Lee House · Garden', 'epi-s-garden-day', 'epi-s-garden-night'],  // batch 78 (the 3/16 before-light line sets the night art)
-        ['Incheon · The Lee House · Gate', 'epi-s-gate-day', 'flashback-lee-house'],     // batch 78: by day; the lantern-lit gate at night
-        ['Incheon · The Lee House at Midnight', 'flashback-lee-house', null],
-        ['Incheon · The Lee House', 'flashback-lee-house', null],
+        ['Incheon · The Lee House · Gate', 'epi-s-gate-day', 'epi-s-gate-night'],        // art batch 144 (S5, S6); flashback-lee-house stays for the main game
+        ['Incheon · The Lee House at Midnight', 'epi-s-stairs-night', null],   // its one scene is on the landing (was the gate)
+        ['Incheon · The Lee House', 'epi-s-front-room', 'epi-s-front-room'],       // art batch 144: the front room with the piano (S13), lamp-lit
         ["Incheon · The Yang House · Jungwon's Room", 'epi-s-jungwon-room', null],         // batch 78
         ['Incheon · The Yang House · Kitchen', 'epi-s-yang-kitchen', null],
         ['Incheon · The Yang House', 'epi-s-yang-house', null],
-        ['Incheon · Harbor at Midnight', 'flashback-incheon-harbor', null],
-        ['Incheon · Harbor', 'epi-s-harbor-day', 'flashback-incheon-harbor'],
+        ['Incheon · Harbor at Midnight', 'epi-s-harbor-night', null],
+        ['Incheon · Harbor', 'epi-s-harbor-day', 'epi-s-harbor-night'],          // art batch 144: night (S16)
         ['Incheon · The Mudflats at Midnight', 'epi-s-mudflats-midnight', 'epi-s-mudflats-midnight'], // batch 78: both slots ('Midnight' reads the day slot)
         ['Incheon · The Mudflats', 'epi-s-harbor-tide', null],                         // batch 65: grey low tide by day
-        ['Incheon · Fish Market at Midnight', 'flashback-fish-market', null],
+        ['Incheon · Fish Market at Midnight', 'epi-s-fish-market-night', null], // art batch 144 (S19)
         ['Incheon · Fish Market', 'flashback-fish-market', null],
         ['Incheon · Sinpo Market', 'epi-s-sinpo', null],                               // art batch 143 (34G); daytime only
         ['Incheon · Wolmido · Daeboreum', 'epi-s-daeboreum', 'epi-s-daeboreum'],     // batch 65: the festival night (epi-s-moon)
@@ -83,7 +83,7 @@
         ['Incheon · The Car', 'epi-s-car', 'epi-s-car-night'],                          // batch 78: a room with windows for weather
         ['Incheon', 'flashback-incheon-harbor', null]
       ],
-      weatherFx: { outdoor: ['epi-s-harbor-day', 'epi-s-pojangmacha', 'epi-s-sinpo', 'epi-s-songdo', 'epi-s-bathhouse', 'epi-s-bridge', 'epi-s-annex', 'epi-s-harbor-tide', 'epi-s-mudflats-midnight', 'epi-s-garden', 'epi-s-gate-day', 'epi-s-wolmido', 'epi-s-chinatown', 'epi-s-daeboreum', 'epi-s-dust', 'flashback-incheon-harbor', 'harbor', 'flashback-fish-market', 'flashback-lee-house', 'port-island-seaside-park', 'port-island-pier-night', 'shopping-street', 'iwatodai-strip-night', 'moonlightbridge'],
+      weatherFx: { outdoor: ['epi-s-harbor-day', 'epi-s-harbor-night', 'epi-s-gate-night', 'epi-s-fish-market-night', 'epi-s-pojangmacha', 'epi-s-sinpo', 'epi-s-songdo', 'epi-s-bathhouse', 'epi-s-bridge', 'epi-s-annex', 'epi-s-harbor-tide', 'epi-s-mudflats-midnight', 'epi-s-garden', 'epi-s-gate-day', 'epi-s-wolmido', 'epi-s-chinatown', 'epi-s-daeboreum', 'epi-s-dust', 'flashback-incheon-harbor', 'harbor', 'flashback-fish-market', 'flashback-lee-house', 'port-island-seaside-park', 'port-island-pier-night', 'shopping-street', 'iwatodai-strip-night', 'moonlightbridge'],
         sealed: ['epi-s-noraebang', 'paulownia-karaoke', 'iwatodai-bathhouse', 'bathhouse-night'], none: [] },
       home: { place: 'Incheon · The Lee House · Her Room', bg: 'epi-s-her-room' },
       activities: [
@@ -97,7 +97,7 @@
           text: "A paper cup of fish cake broth from the cart, the shuttered rides along the promenade, the sea grey and flat beyond the railing. A child fed the gulls a whole bag of shrimp crackers while his mother pretended not to see. She stood beside him and didn't help, which he seemed to understand was a kind of help." },
         { id: 'epi-s-songdo', name: 'Coffee in Songdo', place: 'Incheon · Songdo · Café', bg: 'epi-s-songdo-cafe', slots: ['after'], cost: 7500, stats: { charm: 1 },
           text: "The glass city across the water, a café with too many plants and a barista who'd been at her old school, a latte she didn't want and a window seat she did. Nobody here knew which house she was from. She stayed an extra hour for that alone." },
-        { id: 'epi-s-piano', name: 'Practice piano', place: 'Incheon · The Lee House', bg: 'flashback-lee-house', slots: ['after', 'evening'], cost: 0, stats: { proficiency: 1 },
+        { id: 'epi-s-piano', name: 'Practice piano', place: 'Incheon · The Lee House', bg: 'epi-s-front-room', slots: ['after', 'evening'], cost: 0, stats: { proficiency: 1 },
           text: "An hour at the piano in the front room, the sheltered daughter's hobby and the best alibi in the house. Scales first, then the easy Clementi, then nothing in particular. Mrs. Bang stopped dusting the hall to listen and pretended she'd stopped for some other reason." },
         { id: 'epi-s-bathhouse', name: 'The bathhouse', place: 'Incheon · Bathhouse', bg: 'epi-s-bathhouse', slots: ['evening'], cost: 9000, stats: { kindness: 1, courage: 1 },
           text: "Hot water to the chin, the ajummas arguing about a drama, a scrub from a woman with forearms like a crane man's who said she had the skin of someone who hadn't slept in a month. She had a boiled egg and a sikhye after and fell asleep on the heated floor with a towel on her head like a lamb. Nobody woke her. Nobody ever did, here." },

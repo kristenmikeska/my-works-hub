@@ -118,7 +118,7 @@
     { n: "She followed him three stairs behind, the way she'd followed him at five years old when she couldn't sleep and he'd pretended all the way to the kitchen not to know he had company. The seventh stair creaked under her. He didn't turn round. His shoulders did something small, under the cardigan, and went on down." },
 
     // The kitchen, before light.
-    { place: 'Incheon · The Lee House · Kitchen', time: 'Morning', soft: true },
+    { place: 'Incheon · The Lee House · Kitchen', time: 'Morning', soft: true, bg: 'epi-s-lee-kitchen' },
     { n: "The kitchen smelled of barley tea and lemon oil and the gas ring, and Mrs. Bang was at the stove with her back to the door, stirring a pot of rice porridge with abalone in it, the pale green kind she made for people who were sick, which nobody in the house was." },
     { n: "She didn't turn round. Her shoulders did. They went up once, under the cardigan, and came down, and stayed down." },
     { s: 'mrsbang', f: 'sad', t: "Aigoo." },
@@ -621,7 +621,7 @@
     { place: 'Incheon · The Lee House · Stairs', time: 'Midnight', soft: true },
     { n: "The house was dark. The landing, the stairs. The seventh stair creaked under her own foot and the singing didn't stop for it, the way a person singing in a kitchen would have stopped, to listen, to see who was coming. It went on. *Mòlìhuā, mòlìhuā*. Off-key and steady, from the kitchen at the back, where there was no light under the door." },
     { n: "Down. The hall. The clock, ticking. She noticed that she was glad it was ticking." },
-    { place: 'Incheon · The Lee House · Kitchen', time: 'Midnight', soft: true },
+    { place: 'Incheon · The Lee House · Kitchen', time: 'Midnight', soft: true, bg: 'epi-s-lee-kitchen' },
     { n: "The kitchen door was open a hand's width. The singing was right there, on the other side of it, in the dark, close enough that she could hear the breath between the lines, the little catch where Auntie Song always ran out of air before the end of the second verse and pushed through it anyway." },
     { n: "She stood in the doorway. Her eyes found the shapes. The long table. The stove. The fridge, humming under the song. The calendar on its nail, a pale square. The back door, bolted. And by the stove, the old armchair that had been Auntie Song's for longer than Solar had been alive, low, its cushion worn down by years of short women sitting in it to take the weight off their boots." },
     { n: "She couldn't see who was in it. It was too dark. She could hear the song coming from exactly there." },

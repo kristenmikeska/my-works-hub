@@ -488,7 +488,7 @@
     { s: 'jungwon', f: 'serious', t: "Of course. I should have assumed it would be blue." },
     { n: "They took her up the steps. Neither of them let go to do it." },
 
-    { place: 'Incheon · The Lee House · Kitchen', time: 'Before Light', soft: true },
+    { place: 'Incheon · The Lee House · Kitchen', time: 'Before Light', soft: true, bg: 'epi-s-lee-kitchen' },
     { n: "Her father was at the kitchen table." },
     { n: "Half past five. The paper open in front of him, his reading glasses on their cord, the first cup of barley tea of the day beside his elbow, the kitchen lit yellow and the window over the sink still dark. Mrs. Bang at the stove. The calendar on the wall behind him said 38." },
     { n: "He looked up when the back door opened. At his daughter in her coat with her hair down and mud to the knees of her jeans and her boots full of seawater, and at Haechan holding on to the back of her collar like she might go somewhere, and at the Yang boy behind them holding her wrist, at half past five in the morning, in his kitchen." },

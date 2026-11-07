@@ -40438,6 +40438,526 @@
    "destination": "assets/femc/game/art/skins/sk-jungwon-cp-moviedate/hd/wave.webp",
    "conversion": "tools/femc-hd-poses.py look sk-jungwon-cp-moviedate (no rescale, feet on the bottom edge, WebP q92)",
    "placement": "couple win screen partner pose (battle.js coupleWin; FEMC-ART-WIRING 27, item 27E)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-h-arcade.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "008623188eb3ab0734baf193aefa60e4963f2d5b7dbcf929250eb6df419b7a74",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-arcade.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-h-classroom-exam.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "97d06ef6f9b69b4cc0bb12a0ba612134bf67b2141054809ad95982841f129ba9",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-classroom-exam.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-h-council-room-night.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "5d103bd8ed80e7899c0b0a6d6abd410ce09b5e8a8ab10eb3fc5d2bc03a30ed13",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-council-room-night.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "new epilogue background, wired in data/epi world.js (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-h-council-room.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "3305b54a13ad3a9c9c8e947779d6af54c072ff3c2272767b9d4bfbcee9129cdb",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-council-room.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-h-hallway-night.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "4ad5cf46464cd2e0c0b408606bdab1cbd6f4ab46a5cdd737886510d96d793623",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-hallway-night.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "new epilogue background, wired in data/epi world.js (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-h-hallway.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "ca7b7a670faf85606d2eaf3ab0d5315cdf10ce0e5100d7077e0db56982949952",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-hallway.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "new epilogue background, wired in data/epi world.js (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-h-her-room-night.png",
+   "size": [
+    1671,
+    941
+   ],
+   "sha256": "b169a3ade6842ca89d53a186abbc7ae789d347db14cd30fcda12025b84ae1904",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-her-room-night.webp",
+   "conversion": "WebP q86, native 1671 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-h-her-room.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "50d1d59586df75cc862cb1f5fac22496bfce8e66e873c5df5a2e86f4c9e4497d",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-her-room.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-h-jihoon-house.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "d4293d51c12390199555dc95a6bcdf0132019c8a9d5d97c439a2c10bc6c4e805",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-jihoon-house.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-h-jihoon-porch.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "58568bca0f3fc9f65e878775c67301920085b1fd75fe9700098fbe4fc594cd78",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-jihoon-porch.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-h-kim-house-day.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "7eb62a501452642606346f2f5d85f3952bf90559964a5c034282ccc1ebd04339",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-kim-house-day.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-h-kim-house.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "df1004707e5736078549220b9ede90fba917f9c3cdca19c410c0d0d39b69a9d0",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-kim-house.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-h-noraebang.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "650e495724adef9e942356e168f8a249d445088d443a41488acea21ecfb3fe00",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-noraebang.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-h-park-night.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "2c0d7cc77e985db681e65bf199d502f511aaf8c71c68c85e7b62c64d19a89d64",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-park-night.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "new epilogue background, wired in data/epi world.js (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-h-park.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "a03167be7b6219635312108ed5c9010f4374803d21db5fd99ef1863d6044f444",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-park.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-h-party.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "9e033f69cc04ba859ffe7a712561a25ad171861cd11cf1fcc9c00ce0278991fd",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-party.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-h-yeobos-night.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "82f2890ba41d038d64ae7a506d840aecfe8f067931a7693ac9f7f04b26417f36",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-yeobos-night.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "new epilogue background, wired in data/epi world.js (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-h-yeobos.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "654a4964b0ce963456bff73ccf74066114af8116fbcea67141ab9041e4d1060e",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-h-yeobos.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "new epilogue background, wired in data/epi world.js (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-annex-day.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "f442099398a7d1f470627748d72e90832081979a8718705abb7f4ad59fb97690",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-annex-day.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-annex-night.png",
+   "size": [
+    1671,
+    941
+   ],
+   "sha256": "c7140e86114b6e9eff256aea2d765b4036ee09e62374f68657bc873dd5b776c8",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-annex.webp",
+   "conversion": "WebP q86, native 1671 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md) ; Kat's file name epi-s-annex-night = the S10 night annex"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-chinatown.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "c053406c17ad671274e4f3d80e28306d58646189e09f15e22f156f2c856e0738",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-chinatown.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-dining-room.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "9be86a39913f024ddc0dbd178480cfefe243ea0b3877882682be2cf22466fcbf",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-dining-room.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-fish-market-night.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "4d33e10deaa05eb43f4d98e33b19862e14e7bb6c4c856a9567a29de2232db792",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-fish-market-night.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "new epilogue background, wired in data/epi world.js (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-front-room.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "25dd07e29ac3d7356420328bb86072ece3da70899cf16e7a0e5ae4f41afed713",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-front-room.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "new epilogue background, wired in data/epi world.js (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-garden-day.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "175a48baf1834cf1fa12ae3aaac499ebb6add295e62e93294ac38f34f2f1cba6",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-garden-day.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-garden-night.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "0ef3f71b8b60afd54ccec878043057a7a02abe70118aff98f4f9b01803ec457c",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-garden-night.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-gate-day.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "ac42ef8753a902f75a2fb86ed962b890f9b0dd9cca68d76ff82998bd4b1a6341",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-gate-day.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-gate-night.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "f331957fea96c16b905a3e4e38eedf4f74d75da20aafd54bc6d2a442652c489f",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-gate-night.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "new epilogue background, wired in data/epi world.js (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-harbor-night.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "d0cf53501db56c12294136337e863c9222116215993283f43b719f121c90a3ac",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-harbor-night.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "new epilogue background, wired in data/epi world.js (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-her-room-night.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "7512b59a8b6de3bfcf7c5f8cd2e409966b66ccb56873862741f0a50ef8128517",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-her-room-night.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-her-room.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "2443d0f66b4fc62585a45bdb102366e09b40961f77e1b8da235ea7fb1ff62cbf",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-her-room.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-lee-kitchen-day.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "aa1fe759bd13021d26a000b886a07eccd14dd55bdfd5eeda3781e7ec249e982d",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-lee-kitchen-day.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "new epilogue background, wired in data/epi world.js (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-lee-kitchen.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "7b60aebf303214e5025a386d8e42d0c41299619dfcc384385e2e49f98c5a9643",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-lee-kitchen.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-noraebang.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "237da04011a020fd57b404ad0962b2d11b45deab135fb5627910d83ef095ef9b",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-noraebang.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-songdo-cafe.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "869542dc2174e50e79350f3a46a507b2d95e51d299e8a61dc2b63ab222b9d016",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-songdo-cafe.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-songdo-night.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "3362991744494239d20c3d87c3dbf40ef9e61113c8127202a6be94513393efe9",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-songdo-night.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-stairs-night.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "564b8f3e074dec4241285146818f08e2c2409b1496e1ae344b63347811f6a8db",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-stairs-night.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/epi-s-study.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "66e5c542e7508050c62c07924a98c2589c42bdf88924a4346a823a0f7ae636f9",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-s-study.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/flashback-fish-market.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "d4783a42148a693e67ad925dffec053ee92ec67b7e0bae789ed40eb868990298",
+   "status": "integrated",
+   "destination": "assets/femc/bg/flashback-fish-market.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
+  },
+  {
+   "batch": 144,
+   "source": "New Adds/flashback-yeobos-cafe.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "c5ef3dd451669abc046c2113b41170b59d40d61f2de501d41db7e82b76a357ef",
+   "status": "integrated",
+   "destination": "assets/femc/bg/flashback-yeobos-cafe.webp",
+   "conversion": "WebP q86, native 1672 x 941",
+   "placement": "replaces the old picture (EPILOGUE-BACKGROUND-PROMPTS.md)"
   }
  ],
  "batch1Validation": {

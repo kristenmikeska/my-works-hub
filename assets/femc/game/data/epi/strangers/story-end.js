@@ -539,7 +539,7 @@
     { n: "Twenty-nine." },
     { n: "She got down to the kitchen at seven and somebody had already turned it. Somebody always got there first. She stood in front of the calendar in her socks and looked at the number in the red pen for a long time, and she didn't know who'd turned it, and she didn't want to know, and she thought she'd never in her life wanted so badly to be the one who got there first." },
     { n: "Nobody said it was the last ordinary day. Nobody knew that. She didn't, really, either. She just had the feeling you get at the bottom of a tide, standing on the seawall, when the water's gone as far as it can go and everything goes still for a minute before it turns." },
-    { place: 'Incheon · The Lee House', time: 'Daytime', soft: true },
+    { place: 'Incheon · The Lee House', time: 'Daytime', soft: true, bg: 'epi-s-garden-day' },
     { n: "Mrs. Bang was on the back step in her quilted vest with the koi bucket between her feet and the tin of fish food in her hand, breaking the skin of ice on the water with two fingers, the way she did every morning, talking to them." },
     { s: 'mrsbang', f: 'serious', t: "There. There, Mrs. Kim. Don't push. Your husband has manners even if you don't." },
     { n: "She held out the tin without looking round. Solar took a pinch and dropped it in. Mr. and Mrs. Kim came up for it, slow and orange and gold, the two oldest fish in Incheon, round and round in a bucket on a back step in the cold, and didn't seem to mind." },
@@ -649,7 +649,7 @@
   { id: 'epi-s-held', date: '3/16', slot: 'early', consumes: true, ends: true, title: 'hold on', place: 'Incheon · The Lee House · Garden', time: 'Before Light', scene: [
     { music: 'world-strangers-theme' },
     { glitch: { stage: 4 } },
-    { place: 'Incheon · The Lee House · Kitchen', time: 'Before Light' },
+    { place: 'Incheon · The Lee House · Kitchen', time: 'Before Light', bg: 'epi-s-lee-kitchen' },
     { n: "She woke at twenty to four knowing. Not dreaming it, not afraid of it, just knowing, the way she'd always known when the tide had gone out under the house, in her back teeth, in the soles of her feet; it was tonight, and it was the bottom of the tide, and it was soon." },
     { n: "She didn't put her hair up. She went down in her socks, in her coat over the boat pajamas, past Yunjin's door with the light under it, down the stairs, and the seventh one creaked under her the way it always had, and she stood on it for a second and let it." },
     { n: "The kitchen was dark. The stove was cold. Barley tea in the pot from last night, stone cold, and the koi bucket out on the back step under its skin of new ice, and the calendar on the wall." },

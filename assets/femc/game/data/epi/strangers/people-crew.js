@@ -615,6 +615,7 @@
   (R.routines ||= []).push(
 
     { id: 'epi-s-rt-paper', slot: 'early', after: '2/18', until: '2/24', events: ['epi-s-home'], place: 'Incheon · The Lee House · Kitchen', time: 'Before Light', scene: [
+      { bg: 'epi-s-lee-kitchen' }, // before light: the lamp-lit kitchen, not the day picture (art batch 144)
       { n: "Half past four. She heard him on the stairs before she was properly awake, his slippers and the seventh stair's creak, and when she went down in her socks with her hair down he was at the kitchen table under the one light, the paper open, the reading glasses on their cord, an Esse Light unlit in the ashtray like a promise he'd made to somebody and was keeping for now." },
       { n: "The calendar on the wall beside him had already been turned. The number was one smaller than yesterday. He didn't look at it. He didn't look at her either, for a moment. Then he moved the second chair out from the table with his foot." },
       { s: 'appa', f: 'neutral', t: "Tides. Inner harbor. Low water at—" },
