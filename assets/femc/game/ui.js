@@ -1675,7 +1675,7 @@
   function homeLook() {
     const C = window.FemcCosmetics;
     if (!C || (C.portraitsOn ? !C.portraitsOn('solar') : C.cs().portraits === false)) return null;
-    const worn = C.onIn('skin:solar'), x = worn || C.byId(HOME_SEASON[G.dayInfo().date.getMonth() + 1]);
+    const worn = C.onIn('skin:solar'), x = worn || (G.settings().seasonLook !== false ? C.byId(HOME_SEASON[G.dayInfo().date.getMonth() + 1]) : null); // Settings → Story → Seasonal outfits (Kat, Nov 7)
     if (!x || !C.ready(x)) return null;
     const R = ((window.FEMC_ART_READY || {}).skins || {})[x.id] || {}, hd = R.hd && R.hd.length ? HOME_POSES.filter(p => R.hd.includes(p)) : null;
     if (hd && hd.length) return { id: x.id, hd, src: p => `${G.base}assets/femc/game/art/skins/${x.id}/hd/${p}.webp?v=${R.hdv || 1}` };
@@ -2283,6 +2283,7 @@
       { k: 'text', label: 'Text speed', opts: [['slow', 'Slow'], ['normal', 'Normal'], ['fast', 'Fast'], ['instant', 'Instant']], desc: () => 'How fast lines type out, in scenes and in battle.' },
       { k: 'auto', label: 'Auto-advance', opts: [['off', 'Off'], ['slow', 'Slow'], ['normal', 'Normal'], ['fast', 'Fast']], desc: () => 'Scenes move on by themselves after each line. The Auto button in a scene cycles it too.' },
       { k: 'dateCard', label: 'Date card', opts: ONOFF, desc: () => 'The calendar flip each morning.' },
+      { k: 'seasonLook', label: 'Seasonal outfits', opts: ONOFF, desc: () => 'With no Wardrobe outfit on, Solar dresses for the season on the evening screen: the Summer Session look in July and August, the Winter Coat from December to February. Off: her own look all year.' },
       { k: 'quickClass', label: 'Quiet class periods', opts: [[false, 'Show'], [true, 'Skip']], desc: () => 'Skip class periods where nothing happens.' },
       { k: 'wxFx', label: 'Weather effects', opts: ONOFF, desc: () => 'Rain, snow, fog and lightning over the scenes and the map. Lightning follows Reduce flashes; reduced motion shows it still.' },
       { k: 'glitchFx', label: 'Glitch effects', opts: [['full', 'Full'], ['gentle', 'Gentle'], ['off', 'Off']], desc: v => ({ full: 'In the epilogue: the strange moments, as they are. Reduce flashes softens them; reduced motion shows them still.', gentle: 'In the epilogue: shorter, softer and rarer strange moments.', off: 'In the epilogue: no glitch effects.' }[v] || '') },
