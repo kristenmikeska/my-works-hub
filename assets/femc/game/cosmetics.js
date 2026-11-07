@@ -802,7 +802,8 @@ window.FemcCosmetics = (() => {
     // Its height from the real window (Kat, Nov 7: at 125% the bottom was cut off; CSS guessed 100dvh − 306 px): from the
     // splash's top to the window's bottom less the key bar, in CSS px (÷ the Screen size zoom). CSS --bq-h is the fallback.
     bqFit(root);
-    if (!window.__bqFit) { window.__bqFit = true; addEventListener('resize', () => { const r = document.querySelector('.g-bq-ban'); if (r) bqFit(r); }); }
+    window.FemcBqLayout?.apply(root); // Kat's per-banner layout (bq-layout.js; the editor at ?bqedit=1)
+    if (!window.__bqFit) { window.__bqFit = true; addEventListener('resize', () => { const r = document.querySelector('.g-bq-ban'); if (r) { bqFit(r); window.FemcBqLayout?.apply(r); } }); }
     const sp = root.querySelector('.g-bq-splash'), still = reduced() || (G.settings && G.settings().perf);
     const b = root.dataset.ban, hid = root.querySelector('.g-bq-hero-art')?.dataset.hero || null;
     const newBan = b !== lastBan, newHero = hid !== lastHero;

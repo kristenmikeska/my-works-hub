@@ -383,3 +383,13 @@
 .g-bq-splash > .g-bq-wallet b { color: #fff4f9; font-size: 13px; }
 @media (min-width: 621px) { .g-fm-body .g-bq-ban .g-bq-side { grid-template-areas: "btns btns" "rules pity"; } }
 @media (max-width: 620px) { .g-fm-body .g-bq-ban .g-bq-splash > .g-bq-wallet { top: 8px; right: 8px; } }
+
+/* Kat's layout editor (bq-layout.js, ?bqedit=1) */
+.g-bq-splash.g-bqe { cursor: grab; }
+.g-bq-splash.g-bqe :is(.g-bq-title, .g-bq-hero-tag, .g-bq-strip, .g-bq-side, .g-bq-wallet) { outline: 1px dashed rgba(255, 244, 249, .55); outline-offset: 3px; cursor: move; }
+.g-bq-splash.g-bqe .g-bqe-on { outline: 2px solid #ff4f9e !important; }
+.g-bqe-bar { position: absolute; left: 50%; top: 8px; z-index: 20; display: flex; align-items: center; gap: 8px; translate: -50% 0; padding: 6px 10px; background: rgba(20, 7, 15, .92); border: 1px solid #ff4f9e; color: #fff4f9; font: 600 12px/1.2 system-ui, sans-serif; white-space: nowrap; cursor: default; }
+.g-bqe-bar b { color: #ff8cc0; }
+.g-bqe-bar button { padding: 3px 8px; border: 1px solid rgba(255, 140, 192, .6); background: #2a0f22; color: #fff4f9; font: inherit; cursor: pointer; }
+.g-bqe-bar button:hover { background: #ff4f9e; }
+.g-bqe-bar em { color: #8fd0ff; font-style: normal; }
