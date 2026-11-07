@@ -88,7 +88,7 @@ button, input, select { font: inherit; color: inherit; }
   <label>Show <select data-mode><option value="speakers">Everyone, A–Z</option><option value="solar">Solar, every version</option>
     <option value="main">World: Main game</option><option value="runners">World: Runners</option><option value="strangers">World: Strangers</option><option value="hoax">World: HOAX</option><option value="stay">World: Stay</option></select></label>
   <label>Face <select data-face><option>neutral</option><option>happy</option><option>sad</option><option>serious</option><option>surprised</option><option>flustered</option></select></label>
-  <label><input type="checkbox" data-only> Adjusted only</label>
+  <label>Placed <select data-only><option value="">All</option><option value="adj">Adjusted only</option><option value="not">Not adjusted yet</option></select></label>
   <span class="count" data-count></span>
   <button class="btn" type="button" data-copy>Copy for Claude</button>
 </header>
@@ -168,8 +168,8 @@ button, input, select { font: inherit; color: inherit; }
   document.addEventListener('load', e => { const i = e.target; if (i.matches?.('.scene .p') && i.naturalHeight) i.style.setProperty('--ar', i.naturalWidth / i.naturalHeight); }, true);
   const grid = $('[data-grid]');
   function render() {
-    const q = $('[data-q]').value.trim().toLowerCase(), only = $('[data-only]').checked;
-    const w = mode(), keep = card => (!q || card.includes(q)) && (!only || isAdj(card));
+    const q = $('[data-q]').value.trim().toLowerCase(), only = $('[data-only]').value;
+    const w = mode(), keep = card => (!q || card.includes(q)) && (!only || (only === 'adj') === isAdj(card));
     /* A world shows its Solar versions first (every expression, opposite someone from that world), then its cast */
     const sections = WORLD[w] && WORLDS[w]
       ? [[`Solar <small>in ${WORLD[w][0]}, every expression</small>`, solarCards.filter(c => WORLDS[w].includes(c.split('/')[0])).map(c => c + '@' + w)],
