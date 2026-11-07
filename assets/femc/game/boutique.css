@@ -347,4 +347,10 @@
   .g-bq-splash .g-bq-hero-tag { top: auto; bottom: calc(112px + 2cqh); padding: 6px 16px 8px 12px; }
   .g-bq-splash .g-bq-hero-tag b { font-size: clamp(16px, min(2.4cqw, 4.2cqh), 30px); }
   .g-bq-desc { display: none; }
+  /* the pity panel: the meters say it, so the sentence goes; tighter so it covers less of the art */
+  .g-bq-side { gap: 6px; width: min(340px, 36%); bottom: 12px; }
+  .g-bq-side .g-ga-pity { display: none; }
+  .g-bq-pity { padding: 6px 12px; }
 }
+/* Kat's banner art is the picture: the big ghost word sat over the characters, so it goes when the banner has art (Nov 7). */
+.g-bq-splash.has-art .g-bq-ghost { display: none; }
