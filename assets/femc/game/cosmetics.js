@@ -355,6 +355,35 @@ window.FemcCosmetics = (() => {
   // The last day of a banner's run (its last month; the game runs April 2009 – March 2010).
   const bannerEnd = b => { const m = b.months[b.months.length - 1]; return new Date(m >= 4 ? 2009 : 2010, m, 0); };
   const pool = () => ITEMS.filter(x => x.pool !== false && ready(x) && metOk(x));
+  /* Everything is visible from the start (Kat, Nov 7: "all of the outfits in the game should be visible from the beginning
+     of the game, you just can't GET some of them yet"). What can be pulled is unchanged (pool, featOf, banners: the month's
+     banners, met fighters only); what's SHOWN is every look with art and every banner. featShow = a banner's featured looks
+     for display (unmet fighters' too); allBans = the running banners, then every other one by when it opens next;
+     viewBan = an id the player is looking at that isn't running (no pulls there). */
+  const featShow = b => b.featured.map(byId).filter(x => x && x.pool !== false && ready(x));
+  const MONTH = m => new Date(2009, m - 1, 1).toLocaleString('en', { month: 'long' });
+  const GAME_ORDER = m => (m - 4 + 12) % 12; // April first, March last
+  function nextRun(b, d) { // the next month of b's run still ahead this game year, or null (it already ran)
+    const now = GAME_ORDER(monthOf(d)), ahead = b.months.filter(m => GAME_ORDER(m) > now).sort((x, y) => GAME_ORDER(x) - GAME_ORDER(y));
+    return ahead.length ? ahead[0] : null;
+  }
+  function allBans(d) {
+    const on = banners(d), rest = BANNERS.filter(b => !on.includes(b));
+    const key = b => { const n = nextRun(b, d); return n == null ? 100 + GAME_ORDER(b.months[0]) : GAME_ORDER(n); };
+    return [...on, ...rest.sort((a, c) => key(a) - key(c))];
+  }
+  const soonWord = (b, d) => { const n = nextRun(b, d); return b.months.includes(monthOf(d)) ? 'Nothing you can pull yet' : n != null ? `Opens in ${MONTH(n)}` : `Ran in ${MONTH(b.months[0])}`; };
+  let viewBan = null;
+  // How a look you don't own can be had (the Wardrobe's note and the Boutique's hero plate).
+  function gettable(x) {
+    if (!ready(x)) return 'Art coming: it joins the Boutique once its pictures are in.';
+    if (x.pool === false) return 'Complete its capsule series to get it.';
+    if (!metOk(x)) return `You can pull for it once Solar has met ${whoName(x.who)}.`;
+    const now = banners().find(b => featOf(b).includes(x));
+    if (now) return `Featured now on ${now.name}. Pull for it in the Boutique.`;
+    const later = BANNERS.filter(b => b.featured.includes(x.id)).map(b => [b, nextRun(b)]).filter(([, n]) => n != null).sort((a, c) => GAME_ORDER(a[1]) - GAME_ORDER(c[1]))[0];
+    return `Pull for it in the Boutique any time${later ? `; it's featured on ${later[0].name} in ${MONTH(later[1])}` : ''}.`;
+  }
   const featured = (d, id) => featOf(banner(d, id));
   const plumes = () => (window.FemcGacha ? window.FemcGacha.gs().plumes : 0);
   const canPull = (n = 1) => plumes() >= BAN.cost * n && pool().length > 0;
@@ -547,7 +576,7 @@ window.FemcCosmetics = (() => {
      not-yet-met ones left out), and how many of Solar's art-ready outfits have an HD pose set. */
   function meters() {
     const A = (readyArt().skins || {});
-    const outfits = ITEMS.filter(i => i.kind === 'skin' && ready(i) && (metOk(i) || owns(i.id)));
+    const outfits = ITEMS.filter(i => i.kind === 'skin' && ready(i) && !i.retired);
     const own = outfits.filter(i => owns(i.id)).length;
     const solar = ITEMS.filter(i => i.kind === 'skin' && i.who === 'solar' && ready(i));
     const hd = solar.filter(i => ((A[i.id] || {}).hd || []).length).length;
@@ -578,7 +607,7 @@ window.FemcCosmetics = (() => {
   ];
   const FR_KINDS = ['skin', 'weapon', 'evoker', 'battleui', 'uitheme', 'title', 'wallpaper'];
   const FR_TAB = { skin: 'Outfits', weapon: 'Weapon', evoker: 'Evoker', battleui: 'Battle theme', uitheme: 'Menu colours', title: 'Title screen', wallpaper: 'Wallpaper' };
-  const visible = i => !i.retired && (metOk(i) || owns(i.id));
+  const visible = i => !i.retired; // everyone's looks, met or not (Kat, Nov 7)
   const tabOf = x => (x.who || 'solar');
   const frList = (who, kind) => ITEMS.filter(i => i.kind === kind && tabOf(i) === who && visible(i));
   const frWhos = () => {
@@ -641,7 +670,7 @@ window.FemcCosmetics = (() => {
     const ks = frKinds(frWho);
     const kinds = ks.length > 1 ? `<div class="g-fr-kinds" role="tablist">${ks.map(k => `<button type="button" role="tab" data-fr-kind="${k}" class="${k === frKind ? 'on' : ''}" aria-selected="${k === frKind}">${FR_TAB[k]}<small>${frList(frWho, k).filter(ready).length}</small></button>`).join('')}</div>` : '';
     const panes = whos.map(w => frKinds(w).map(k => frPane(w, k)).join('')).join('');
-    const note = x ? (!ready(x) ? 'Art coming: it joins the Boutique once its pictures are in.' : !owns(x.id) ? (x.pool === false ? 'Complete its capsule series to get it.' : 'Pull for it in the Boutique.') : '') : '';
+    const note = x ? (!ready(x) || !owns(x.id) ? gettable(x) : '') : '';
     const desc = x ? `${esc(x.desc)}${note ? ` <em class="g-note small">${note}</em>` : ''}` : frKind === 'skin' ? 'Pick an outfit to try it on. Looks only: nothing here changes a fight.' : 'Pick one to preview it.';
     return `<div class="g-fr"><div class="g-fr-left"><div data-fr-booth></div></div>
       <div class="g-fr-closet"><div class="g-fr-who" role="tablist" aria-label="Whose closet">${tabs}</div>
@@ -716,14 +745,15 @@ window.FemcCosmetics = (() => {
   }
   const daysLeft = b => { try { return Math.max(0, Math.round((bannerEnd(b) - G.dateOf(S().day)) / 864e5)); } catch (e) { return null; } };
   function bannerHtml() {
-    const s = cs(), all = banners(), b = banner(), f = featured(), p = s.pity, MON = m => new Date(2009, m - 1, 1).toLocaleString('en', { month: 'long' });
+    if (viewBan && banners().some(x => x.id === viewBan)) { pickBanner(viewBan); viewBan = null; } // its month came: pulls go to it
+    const s = cs(), all = allBans(), live = banners(), b = (viewBan && BANNERS.find(x => x.id === viewBan)) || banner(), soon = !live.includes(b), f = featShow(b), p = s.pity, MON = m => new Date(2009, m - 1, 1).toLocaleString('en', { month: 'long' });
     const res = fresh || (s.last && byId(s.last.id) ? { item: byId(s.last.id), r: s.last.r, old: true } : null);
     const n = pool().length, ends = x => bannerEnd(x).toLocaleString('en', { month: 'long', day: 'numeric' });
-    const h = heroOf(f), dl = daysLeft(b), srL = BAN.pitySR - p.sr, urL = BAN.pityUR - p.ur, hasArt = artList('banners').includes(b.id);
+    const h = heroOf(f), dl = soon ? null : daysLeft(b), srL = BAN.pitySR - p.sr, urL = BAN.pityUR - p.ur, hasArt = artList('banners').includes(b.id);
     const tabs = `<div class="g-wd-bans g-bq-tabs" role="tablist" aria-label="Banners">${all.map(x => {
-      const hx = heroOf(featOf(x)), d = daysLeft(x), art = artList('banners').includes(x.id);
+      const hx = heroOf(featShow(x)), on = live.includes(x), d = on ? daysLeft(x) : null, art = artList('banners').includes(x.id);
       const pic = art ? `<span class="g-bq-tth art" style="background-image:url('${G.base}assets/femc/game/art/banners/${x.id}.webp')"></span>` : `<span class="g-bq-tth">${hx ? cardHtml(hx) : ''}</span>`;
-      return `<button type="button" role="tab" aria-selected="${x === b}" class="${x === b ? 'on' : ''}" style="--c:${x.color}" data-wd-ban="${x.id}">${pic}<span class="g-bq-tt"><b>${esc(x.name)}</b><small>${x.kind ? `${esc(x.kind)} · ` : ''}until ${esc(ends(x))}</small>${d == null ? '' : `<small class="g-bq-tleft">${d ? `${d} day${d === 1 ? '' : 's'} left` : 'Last day'}</small>`}</span></button>`; }).join('')}</div>`;
+      return `<button type="button" role="tab" aria-selected="${x === b}" class="${x === b ? 'on' : ''}${on ? '' : ' soon'}" style="--c:${x.color}" data-wd-ban="${x.id}">${pic}<span class="g-bq-tt"><b>${esc(x.name)}</b><small>${x.kind ? `${esc(x.kind)} · ` : ''}${on ? `until ${esc(ends(x))}` : esc(soonWord(x))}</small>${d == null ? '' : `<small class="g-bq-tleft">${d ? `${d} day${d === 1 ? '' : 's'} left` : 'Last day'}</small>`}</span></button>`; }).join('')}</div>`;
     const meter = (k, lbl, left, max) => `<span class="g-bq-meter" style="--rc:${RAR[k].color};--p:${((max - left) / max).toFixed(3)}"><b>${lbl}</b><i><s></s></i><em><b>${left}</b> pull${left === 1 ? '' : 's'} at most</em></span>`;
     // The cast: the headline look large on the right, two more featured outfits dimmed behind (others' looks first).
     const back = h && h.kind === 'skin' ? f.filter(x => x !== h && x.kind === 'skin').sort((a, c) => (c.who !== h.who) - (a.who !== h.who) || !!hdOf(c) - !!hdOf(a)).slice(0, 2) : [];
@@ -735,18 +765,18 @@ window.FemcCosmetics = (() => {
       <div class="g-bq-splash${hasArt ? ' has-art' : ''}"${hasArt ? ` style="--bq-art:url('${G.base}assets/femc/game/art/banners/${b.id}.webp')"` : ''}>
         <div class="g-bq-sbg" aria-hidden="true"><i class="g-bq-rays"></i><i class="g-bq-slash s1"></i><i class="g-bq-slash s2"></i><i class="g-bq-slash s3"></i><b class="g-bq-ghost">${esc(words[0])}</b></div>
         ${heroHtml}
-        <div class="g-bq-title"><div class="g-wd-bhead"><span class="g-bq-kind">${esc(b.kind || 'Monthly')} banner</span><b>${title}</b><small>Featured ${esc(MON(b.months[0]))}${b.months.length > 1 ? `–${esc(MON(b.months[b.months.length - 1]))}` : ''} · ends ${esc(ends(b))}</small></div>
+        <div class="g-bq-title"><div class="g-wd-bhead"><span class="g-bq-kind">${esc(b.kind || 'Monthly')} banner</span><b>${title}</b><small>Featured ${esc(MON(b.months[0]))}${b.months.length > 1 ? `–${esc(MON(b.months[b.months.length - 1]))}` : ''} · ${soon ? esc(soonWord(b)) : `ends ${esc(ends(b))}`}</small></div>
           ${dl == null ? '' : `<span class="g-bq-count"><small>Ends in</small><b>${dl || 'Last'}</b><small>${dl ? `day${dl === 1 ? '' : 's'}` : 'day today'}</small></span>`}</div>
-        ${h ? `<div class="g-bq-hero-tag" style="--rc:${RAR[h.r].color}"><small>Rate up${h.who ? ` · ${esc(whoName(h.who))}` : ''}</small><b>${esc(h.name)}</b>${starsHtml(h.r)}<em>${esc(RAR[h.r].name)} · ${esc(KINDS[h.kind].name)}${owns(h.id) ? ' · owned' : ''}</em>
+        ${h ? `<div class="g-bq-hero-tag" style="--rc:${RAR[h.r].color}"><small>Rate up${h.who ? ` · ${esc(whoName(h.who))}` : ''}</small><b>${esc(h.name)}</b>${starsHtml(h.r)}<em>${esc(RAR[h.r].name)} · ${esc(KINDS[h.kind].name)}${owns(h.id) ? ' · owned' : ''}</em>${!owns(h.id) && h.kind === 'skin' && !metOk(h) ? `<em class="g-bq-meet">Meet ${esc(whoName(h.who))} to pull it</em>` : ''}
           ${tryBtn(h) ? `<button type="button" class="g-btn small g-bq-htry" data-wd-try="${h.id}"><span>▶ Try it on</span></button>` : ''}</div><p class="g-bq-desc">${esc(h.desc)}</p>` : ''}
-        <ul class="g-wd-feat g-bq-strip" aria-label="Featured looks">${f.map(x => `<li style="--rc:${RAR[x.r].color}" class="r-${x.r}${h && h.id === x.id ? ' hero' : ''}${owns(x.id) ? ' own' : ''}"><button type="button" class="g-bq-ft" data-wd-hero="${x.id}" aria-pressed="${!!(h && h.id === x.id)}" title="${esc(x.name)}"><span class="g-bq-fth">${cardHtml(x)}</span><b class="g-bq-sr">${esc(x.name)}</b></button>${tryBtn(x) ? `<button type="button" class="g-wd-ftry" data-wd-try="${x.id}" aria-label="Try on ${esc(x.name)}" title="Try it on">▶</button>` : ''}</li>`).join('') || '<li class="g-note">Nothing featured is ready yet.</li>'}</ul>
+        <ul class="g-wd-feat g-bq-strip" aria-label="Featured looks">${f.map(x => `<li style="--rc:${RAR[x.r].color}" class="r-${x.r}${h && h.id === x.id ? ' hero' : ''}${owns(x.id) ? ' own' : ''}${metOk(x) ? '' : ' unmet'}"><button type="button" class="g-bq-ft" data-wd-hero="${x.id}" aria-pressed="${!!(h && h.id === x.id)}" title="${esc(x.name)}"><span class="g-bq-fth">${cardHtml(x)}</span><b class="g-bq-sr">${esc(x.name)}</b></button>${tryBtn(x) ? `<button type="button" class="g-wd-ftry" data-wd-try="${x.id}" aria-label="Try on ${esc(x.name)}" title="Try it on">▶</button>` : ''}</li>`).join('') || '<li class="g-note">Nothing featured is ready yet.</li>'}</ul>
         <div class="g-bq-side">
           <div class="g-bq-pity"><div class="g-bq-meters">${meter('SR', 'Super Rare+', srL, BAN.pitySR)}${meter('UR', 'Ultra', urL, BAN.pityUR)}</div>
             <p class="g-ga-pity">Super Rare or better within <b>${srL}</b> pull${srL === 1 ? '' : 's'} · an Ultra within <b>${urL}</b>${s.guar ? ' · <span class="g-bq-guar">the next Ultra is featured</span>' : ''}.${all.length > 1 ? ' Pity is shared: it carries over when you switch banners.' : ''}</p></div>
           <details class="g-bq-rules"><summary>Odds &amp; rules</summary><ul class="g-ga-odds">${Object.entries(BAN.odds).map(([k, v]) => `<li style="--rc:${RAR[k].color}">${starsHtml(k)} ${RAR[k].name} <b>${(v * 100).toFixed(0)}%</b></li>`).join('')}</ul>
             <p class="g-note small">Half of each rarity's pulls land on its featured item; an Ultra that isn't featured makes the next one featured. ${n} looks are in the pool (outfits still waiting on art aren't). Repeats give Velvet Plumes back (Rare and Super Rare 1, Ultra 2).</p></details>
-          <div class="g-row g-ga-btns"><button type="button" class="g-btn g-bq-pull one" data-wd-pull${canPull() ? '' : ' disabled'}><span><b>Pull ×1</b><small>${BAN.cost} Velvet Plumes</small></span></button>
-            <button type="button" class="g-btn pink g-ga-x10 g-bq-pull ten" data-wd-pull10${canPull(10) ? '' : ` disabled title="${esc(pullWhy(10))}"`}><span><b>Pull ×10</b><small>${canPull(10) ? `${BAN.cost * 10} Plumes · a Super Rare or better` : esc(pullWhy(10))}</small></span></button></div>
+          <div class="g-row g-ga-btns"><button type="button" class="g-btn g-bq-pull one" data-wd-pull${canPull() && !soon ? '' : ' disabled'}><span><b>Pull ×1</b><small>${soon ? esc(soonWord(b)) : `${BAN.cost} Velvet Plumes`}</small></span></button>
+            <button type="button" class="g-btn pink g-ga-x10 g-bq-pull ten" data-wd-pull10${soon ? ' disabled' : canPull(10) ? '' : ` disabled title="${esc(pullWhy(10))}"`}><span><b>Pull ×10</b><small>${soon ? esc(soonWord(b)) : canPull(10) ? `${BAN.cost * 10} Plumes · a Super Rare or better` : esc(pullWhy(10))}</small></span></button></div>
           <span class="g-ga-own"><span>Velvet Plumes <b>${plumes()}</b></span><span>Pulls <b>${s.pulls}</b></span></span></div>
         <i class="g-bq-wipe" aria-hidden="true"></i><i class="g-bq-wipe w2" aria-hidden="true"></i>
       </div>
@@ -936,7 +966,7 @@ window.FemcCosmetics = (() => {
   const gsafe = () => cs();
   function wire(el, rerender) {
     el.querySelectorAll('[data-wd-view]').forEach(b => b.addEventListener('click', () => { view = b.dataset.wdView; fresh = null; G.sfx('femc-click'); rerender(`[data-wd-view="${view}"]`); }));
-    el.querySelectorAll('[data-wd-ban]').forEach(b => b.addEventListener('click', () => { if (pickBanner(b.dataset.wdBan)) { fresh = null; G.sfx('femc-click'); rerender(`[data-wd-ban="${b.dataset.wdBan}"]`); } }));
+    el.querySelectorAll('[data-wd-ban]').forEach(b => b.addEventListener('click', () => { const id = b.dataset.wdBan; if (pickBanner(id) ? !(viewBan = null) : BANNERS.some(x => x.id === id) && (viewBan = id)) { fresh = null; G.sfx('femc-click'); rerender(`[data-wd-ban="${b.dataset.wdBan}"]`); } }));
     // The fitting room's booth first (its buttons are wired below with the rest).
     const slot = el.querySelector('[data-fr-booth]');
     if (slot && window.FemcFitting) window.FemcFitting.mount(slot, frBooth());

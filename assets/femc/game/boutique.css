@@ -315,3 +315,12 @@
 
 /* Kat's card art (Nov 5): square item pictures on the pull cards and tiles. */
 .g-bq-fth img.art, .g-bq-cth img.art { top: 12%; width: 76%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }
+
+/* Every banner is listed (Kat, Nov 7): ones not running are viewable, not pullable; looks of fighters Solar hasn't met show,
+   dimmed, with a small lock. */
+.g-fm-body .g-bq-ban .g-bq-tabs button.soon { opacity: .62; }
+.g-fm-body .g-bq-ban .g-bq-tabs button.soon.on, .g-fm-body .g-bq-ban .g-bq-tabs button.soon:hover { opacity: .9; }
+.g-fm-body .g-bq-ban .g-bq-tabs button.soon small { color: var(--pink-3, #ffb3d6); }
+.g-bq-strip li.unmet .g-bq-fth { filter: saturate(.55) brightness(.8); }
+.g-bq-strip li.unmet::after { content: "🔒"; position: absolute; right: 4px; bottom: 4px; font-size: 11px; line-height: 1; pointer-events: none; }
+.g-bq-hero-tag .g-bq-meet { display: block; margin-top: 2px; color: var(--pink-3, #ffb3d6); font-style: italic; }

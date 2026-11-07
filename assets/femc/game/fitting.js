@@ -285,7 +285,7 @@ window.FemcFitting = (() => {
   }
   function partner(outfit) {
     const Cs = C(), o = opt(), stage = $('.g-fr-stage'), box = $('.g-fr-partner');
-    const mate = o.fx && outfit && outfit.couple && Cs.ITEMS.find(i => i.couple === outfit.couple && i.id !== outfit.id && Cs.ready(i) && Cs.metOk(i));
+    const mate = o.fx && outfit && outfit.couple && Cs.ITEMS.find(i => i.couple === outfit.couple && i.id !== outfit.id && Cs.ready(i));
     if (!mate) {
       if (bt.partner) {
         stage.classList.remove('duo'); bt.partner = null;
