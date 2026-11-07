@@ -192,8 +192,12 @@ button, input, select { font: inherit; color: inherit; }
   function draw() { $('[data-stage]', big).innerHTML = scene(cur); $('[data-name]', big).textContent = label(cur); $('[data-vals]', big).textContent = tag(cur) || 'not adjusted'; }
   function close() { big.hidden = true; const id = cur; cur = null; render(); $(`.card[data-id="${id}"]`)?.focus(); }
   function step(d) { const o = order(), i = o.indexOf(cur); if (o.length) { cur = o[(i + d + o.length) % o.length]; draw(); } }
+  /* An outfit not placed yet borrows its base's placement (look(): cherry-hoax-party shows cherry-hoax's). The first change
+     starts from that borrowed placement, not from zero (Kat, Nov 7: the first arrow dropped the borrowed size, so Cherry's
+     new outfits shrank and it looked like the arrows resized her). */
+  const seed = t => { if (!adj[t]) { const b = t.replace(/-[^-]+$/, ''); adj[t] = FACES[b] && adj[b] ? JSON.parse(JSON.stringify(adj[b])) : {}; } return adj[t]; };
   function nudge(k, d) {
-    const t = target(cur), a = adj[t] = adj[t] || {};
+    const t = target(cur), a = seed(t);
     if (k === 's') a.s = Math.round(((a.s || 1) + d * .02) * 100) / 100;
     else a[k] = Math.round(((a[k] || 0) + d * .5) * 10) / 10;
     for (const key of Object.keys(a)) if (!a[key] || (key === 's' && a[key] === 1)) delete a[key];
@@ -202,7 +206,7 @@ button, input, select { font: inherit; color: inherit; }
   }
   grid.addEventListener('click', e => { const c = e.target.closest('.card'); if (c) open(c.dataset.id); });
   $$('[data-n]', big).forEach(b => b.addEventListener('click', () => { const [k, d] = b.dataset.n.split(','); nudge(k, +d); }));
-  function mirror() { const t = target(cur), a = adj[t] = adj[t] || {}; if (a.m) delete a.m; else a.m = 1; if (!Object.keys(a).length) delete adj[t]; save(); draw(); }
+  function mirror() { const t = target(cur), a = seed(t); if (a.m) delete a.m; else a.m = 1; if (!Object.keys(a).length) delete adj[t]; save(); draw(); }
   $('[data-mirror]', big).addEventListener('click', mirror);
   $('[data-reset]', big).addEventListener('click', () => { delete adj[target(cur)]; save(); draw(); });
   $('[data-close]', big).addEventListener('click', close);
