@@ -785,10 +785,18 @@ window.FemcCosmetics = (() => {
   }
   // After a render: the slash wipe when the banner changed, the slam when the banner or the hero did, and the pointer drift.
   let lastHero = null;
-  function bqFit(root) {
-    try { const z = parseFloat(document.documentElement.style.zoom) || 1, top = root.getBoundingClientRect().top;
-      const h = Math.round((innerHeight - top) / z - 70); if (h > 0) root.style.setProperty('--bq-h', `${Math.max(340, Math.min(900, h))}px`); } catch (e) {}
+  /* Fit a page piece to the page body's visible height (Kat, Nov 7): from where it sits with the body scrolled to the top
+     down to the body's bottom edge (above the key bar). Measured against the scroll box, not the window, so a scrolled
+     page can't make it taller than what shows (the Wardrobe booth came out too tall and zoomed in). */
+  function fitTo(node, prop, min) {
+    try {
+      const body = node.closest('.g-fm-body') || node.parentElement, z = parseFloat(document.documentElement.style.zoom) || 1;
+      const br = body.getBoundingClientRect(), top = node.getBoundingClientRect().top + body.scrollTop * z;
+      const h = Math.round((br.bottom - top) / z - 14);
+      if (h > 0) node.style.setProperty(prop, `${Math.max(min, Math.min(900, h))}px`);
+    } catch (e) {}
   }
+  const bqFit = root => fitTo(root, '--bq-h', 340);
   function bannerMotion(el) {
     const root = el.querySelector('.g-bq-ban'); if (!root) return;
     // Its height from the real window (Kat, Nov 7: at 125% the bottom was cut off; CSS guessed 100dvh − 306 px): from the
@@ -979,7 +987,7 @@ window.FemcCosmetics = (() => {
     // The fitting room's booth first (its buttons are wired below with the rest).
     const slot = el.querySelector('[data-fr-booth]');
     // The booth's height from the real window (Kat, Nov 7), like the Boutique's bqFit: CSS --fr-h is the fallback.
-    const fr = el.querySelector('.g-fr'); if (fr) { try { const z = parseFloat(document.documentElement.style.zoom) || 1, h = Math.round((innerHeight - fr.getBoundingClientRect().top) / z - 70); if (h > 0) fr.style.setProperty('--fr-h', `${Math.max(320, Math.min(900, h))}px`); } catch (e) {} }
+    const fr = el.querySelector('.g-fr'); if (fr) fitTo(fr, '--fr-h', 320);
     if (slot && window.FemcFitting) window.FemcFitting.mount(slot, frBooth());
     el.querySelectorAll('[data-fr-who]').forEach(b => b.addEventListener('click', () => { if (b.dataset.frWho === frWho) return; frWho = b.dataset.frWho; frKind = 'skin'; sel = null; G.sfx('femc-click'); rerender(`[data-fr-who="${frWho}"]`); }));
     el.querySelectorAll('[data-fr-kind]').forEach(b => b.addEventListener('click', () => { if (b.dataset.frKind === frKind) return; frKind = b.dataset.frKind; sel = null; G.sfx('femc-click'); rerender(`[data-fr-kind="${frKind}"]`); }));

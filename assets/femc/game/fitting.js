@@ -305,11 +305,11 @@ window.FemcFitting = (() => {
     const nm = mate.who === 'solar' ? 'Solar' : (G.LINKS && G.LINKS[mate.who] && G.LINKS[mate.who].short) || mate.who;
     const bub = `<span class="g-fr-bub" style="right:${W * 0.04}px;bottom:${H * 0.06}px">${esc(nm)} · ${esc(mate.name)}</span>`;
     if (p) {
-      const h = H * 1.8 * 0.84; // standing behind her: smaller (Kat, Nov 7)
+      const h = H * 1.8 * 0.9; // standing behind her right shoulder: a touch smaller, head a little higher than hers (Kat, Nov 7)
       box.innerHTML = `<div class="g-fr-pin" data-mate="${esc(mate.id)}"><img src="${SK(mate.id)}hd/${p}.webp?v=${R.hdv || 1}" alt="" style="height:${h}px;width:auto;visibility:hidden">${bub}</div>`;
       const img = box.querySelector('img');
       const put = m => { if (!img.isConnected) return; const w = h * (m.ar || (img.naturalWidth / img.naturalHeight) || 0.45);
-        img.style.width = `${w}px`; img.style.left = `${-W * 0.33 - (m.hx ?? 0.5) * w}px`; img.style.top = `${H * 0.1 - (m.ht ?? 0.012) * h - H}px`; img.style.visibility = ''; };
+        img.style.width = `${w}px`; img.style.left = `${-W * 0.36 - (m.hx ?? 0.5) * w}px`; img.style.top = `${H * 0.015 - (m.ht ?? 0.012) * h - H}px`; img.style.visibility = ''; };
       figsFor(`${SK(mate.id)}hd/fig.json?v=${R.hdv || 1}`).then(f => put(f[p] || {}));
     } else {
       const w = H * 0.72;

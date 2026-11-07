@@ -175,8 +175,7 @@
 
 /* A couple set (Kat, Nov 7): the worn person a little bigger, centre-left in front; the partner smaller and dimmed behind
    them to the right, clickable (their closet, flipped). */
-.g-fr-stage.duo .g-fr-fig { left: 42%; z-index: 2; }
-.g-fr-stage.duo .g-fr-walk { scale: 1.05; transform-origin: 50% 100%; }
+.g-fr-stage.duo .g-fr-fig { left: 44%; z-index: 2; }
 .g-fr-partner { pointer-events: none; }
 .g-fr-pin { pointer-events: auto; cursor: pointer; }
 .g-fr-pin img { filter: drop-shadow(0 14px 18px rgba(0, 0, 0, .55)) brightness(.68) saturate(.7); transition: filter .25s; }
