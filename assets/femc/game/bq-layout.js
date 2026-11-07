@@ -35,18 +35,21 @@ window.FemcBqLayout = (() => {
     const a = L.art;
     bg.style.background = `linear-gradient(90deg, rgba(0, 0, 0, .86) 0, rgba(0, 0, 0, .55) 30%, transparent 52%), var(--bq-art) ${a.x}% ${a.y}% / auto ${a.z}% no-repeat, #000`;
   }
-  function paintPiece(sp, el, p, h) {
+  // The title's and plate's text already grows with the splash (cqh in boutique.css), so only the px-sized pieces (strip,
+  // buttons, wallet) are scaled by splash height / h; scaling the title too grew it twice on a taller screen.
+  const GROWS = ['title', 'plate'];
+  function paintPiece(sp, el, p, h, k) {
     if (!el) return;
     if (!p) { ['left', 'top', 'right', 'bottom', 'scale', 'transformOrigin', 'maxWidth'].forEach(k => { el.style[k] = ''; }); return; }
     el.style.left = `${p.l}%`; el.style.top = `${p.t}%`; el.style.right = 'auto'; el.style.bottom = 'auto';
-    el.style.transformOrigin = '0 0'; el.style.scale = String(r2(p.s * (sp.clientHeight / (h || sp.clientHeight))) || 1);
+    el.style.transformOrigin = '0 0'; el.style.scale = String(r2(p.s * (GROWS.includes(k) ? 1 : sp.clientHeight / (h || sp.clientHeight))) || 1);
   }
   // From cosmetics.js bannerMotion (after every render of the Boutique page).
   function apply(root) {
     const sp = root && root.querySelector('.g-bq-splash'); if (!sp) return;
     const id = root.dataset.ban, L = layoutOf(id);
     paintArt(sp, L);
-    Object.entries(PIECES).forEach(([k, sel]) => paintPiece(sp, sp.querySelector(sel), L && L[k], L && L.h));
+    Object.entries(PIECES).forEach(([k, sel]) => paintPiece(sp, sp.querySelector(sel), L && L[k], L && L.h, k));
     if (editing) editor(root, sp, id);
   }
 
@@ -62,7 +65,7 @@ window.FemcBqLayout = (() => {
       out[k] = { l: r2(el.offsetLeft / W * 100), t: r2(el.offsetTop / H * 100), s: 1 };
     });
     // Positions are kept for the height they were placed at: rescale sizes to this splash.
-    if (out.h !== H) { Object.keys(PIECES).forEach(k => { if (out[k]) out[k].s = r2(out[k].s * H / out.h); }); out.h = H; }
+    if (out.h !== H) { Object.keys(PIECES).forEach(k => { if (out[k] && !GROWS.includes(k)) out[k].s = r2(out[k].s * H / out.h); }); out.h = H; }
     return out;
   }
   function store(id, L) { const all = local(); all[id] = L; saveLocal(all); }
