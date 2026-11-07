@@ -334,10 +334,17 @@
 .g-bq-splash .g-bq-hero-tag b { font-size: clamp(18px, min(2.4cqw, 4.6cqh), 34px); }
 .g-bq-sbg .g-bq-ghost { font-size: clamp(100px, min(20cqw, 40cqh), 300px); }
 @container bqsplash (min-aspect-ratio: 3 / 2) {
-  .g-bq-splash.has-art .g-bq-sbg { background: linear-gradient(90deg, #000 0, #000 calc(100% - 150cqh), rgba(0, 0, 0, .55) calc(100% - 150cqh + 10cqh), rgba(0, 0, 0, .25) calc(100% - 92cqh), transparent calc(100% - 70cqh)), var(--bq-art) right center / auto 100% no-repeat, #000; }
-  .g-fm-body .g-bq-ban .g-bq-title { max-width: max(44%, calc(100cqw - 150cqh + 8cqh)); }
-  .g-fm-body .g-bq-ban .g-bq-strip { max-width: max(50%, calc(100cqw - 150cqh - 4%)); }
-  .g-bq-desc { max-width: max(34%, calc(100cqw - 150cqh - 8%)); }
-  .g-bq-splash .g-bq-hero-tag { top: auto; bottom: calc(150px + 4cqh); max-width: max(40%, calc(100cqw - 150cqh - 6%)); }
-  .g-bq-desc { top: auto; bottom: calc(16px + 96px); }
+  /* Wider than the art: fill the width, anchored at the top so faces stay in (the bottom of the picture is what's cut),
+     dark on the left under the title, plate and strip (Kat, Nov 7: full height left a black gap in the middle). */
+  .g-bq-splash.has-art .g-bq-sbg { background: linear-gradient(90deg, rgba(0, 0, 0, .86) 0, rgba(0, 0, 0, .55) 30%, transparent 52%), var(--bq-art) right top / cover no-repeat, #000; }
+}
+@container bqsplash (max-height: 720px) {
+  /* Short splash: a smaller title, no "Featured … · ends" line (the countdown says it), the plate under the title and
+     above the strip, no description (it's on the plate's look in the Wardrobe). */
+  .g-fm-body .g-bq-ban .g-bq-title { top: 4%; gap: 6px; }
+  .g-fm-body .g-bq-ban .g-bq-title .g-wd-bhead b { font-size: clamp(34px, min(6.6cqw, 10.5cqh), 112px); }
+  .g-fm-body .g-bq-ban .g-bq-title .g-wd-bhead small { display: none; }
+  .g-bq-splash .g-bq-hero-tag { top: auto; bottom: calc(112px + 2cqh); padding: 6px 16px 8px 12px; }
+  .g-bq-splash .g-bq-hero-tag b { font-size: clamp(16px, min(2.4cqw, 4.2cqh), 30px); }
+  .g-bq-desc { display: none; }
 }
