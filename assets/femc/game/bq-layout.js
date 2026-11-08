@@ -42,7 +42,15 @@ window.FemcBqLayout = (() => {
     if (!el) return;
     if (!p) { ['left', 'top', 'right', 'bottom', 'scale', 'transformOrigin', 'maxWidth'].forEach(k => { el.style[k] = ''; }); return; }
     el.style.left = `${p.l}%`; el.style.top = `${p.t}%`; el.style.right = 'auto'; el.style.bottom = 'auto';
-    el.style.transformOrigin = '0 0'; el.style.scale = String(r2(p.s * (GROWS.includes(k) ? 1 : sp.clientHeight / (h || sp.clientHeight))) || 1);
+    let sc = r2(p.s * (GROWS.includes(k) ? 1 : sp.clientHeight / (h || sp.clientHeight))) || 1;
+    // Kept inside the splash (Nov 7: Kat's layouts were placed on a wide, short splash; on a 16:9 window the height-scaled
+    // buttons ran off the right edge). Not while editing, so the editor shows exactly what's stored.
+    // Only the buttons and the wallet, only the right edge: the strip scrolls sideways, and a few px at the bottom is fine.
+    if (!editing && (k === 'side' || k === 'wallet')) {
+      const W = sp.clientWidth, x = p.l / 100 * W, w = el.offsetWidth, fit = w ? (W - x - 6) / w : sc;
+      if (fit > 0 && sc > fit) sc = r2(fit);
+    }
+    el.style.transformOrigin = '0 0'; el.style.scale = String(sc);
   }
   // From cosmetics.js bannerMotion (after every render of the Boutique page).
   function apply(root) {
