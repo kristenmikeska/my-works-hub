@@ -51,7 +51,7 @@
       bg: [
         ['Syracuse · Alpha Phi House · Her Room', 'epi-r-her-room', 'epi-r-her-room-night'],   // batch 77
         ["Syracuse · Alpha Phi House · Hanni and Hyein's Room", 'epi-r-hanni-hyein-room', 'epi-r-hanni-hyein-room'], // batch 77: fairy-lit dusk, both slots
-        ['Syracuse · Alpha Phi House · Kitchen', 'epi-r-alpha-kitchen', null],
+        ['Syracuse · Alpha Phi House · Kitchen', 'epi-r-alpha-kitchen', 'epi-r-alpha-kitchen-night'],  // Kat's remakes, Nov 5 (from Epilogue Backgrounds/, wired Nov 7)
         // The stairs are indoors (the house's own art is outside, in the snow); batch 77: the second landing, day and night.
         ['Syracuse · Alpha Phi House · Stairs', 'epi-r-alpha-landing', 'epi-r-alpha-landing-night'],
         // Stand-ins (Nov 3): each copies the rule below it until its art comes (FEMC-ART-TODO 23; FEMC-ART-WIRING "23").

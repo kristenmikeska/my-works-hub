@@ -1026,7 +1026,7 @@ window.FemcGame = (() => {
      flashbacks) stays as chosen. By day, or in the Dark Hour / Velvet Room / Tartarus, it shows as it is. */
   // Bump BG_V whenever a background file is replaced under the same name (Kat, Nov 7: a remade Studio 4B stayed cached
   // through a hard refresh, since backgrounds are set from script). booth.js / scene.js / weather.js read slugs up to '.webp'.
-  const BG_V = 2;
+  const BG_V = 3;
   function background(place = '', time = '', override) {
     const rule = D.places.bg.find(([at]) => at[0] === '*' ? place.includes(at.slice(1)) : place.startsWith(at));
     // The Dark Hour is midnight: a place with night art uses it (Kat, Nov 1: the 4/6 konbini showed its sunny street).
