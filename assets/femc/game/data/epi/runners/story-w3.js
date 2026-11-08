@@ -303,12 +303,13 @@
   ] },
 
   // ───────────────────────────── 12/18, morning: the clocks ─────────────────────────────
-  { id: 'epi-r-clocks', date: '12/18', slot: 'early', consumes: true, title: 'twelve', place: 'Syracuse · Alpha Phi House · Kitchen', time: 'Morning', scene: [
+  { id: 'epi-r-clocks', date: '12/18', slot: 'early', consumes: true, title: 'twelve', place: 'Syracuse · Alpha Phi House · Her Room', time: 'Morning', scene: [
     { music: 'epi-r-bleed' },
     { n: "Hyein found it first, because Hyein was always up first during finals, because she didn't really sleep during finals, she lay down at four and got up at six and called it a nap. She came into Solar's room without knocking with her hair in a claw clip and her face doing something Solar had never seen it do." },
     { s: 'hyein', f: 'surprised', t: "Come downstairs. Don't ask. Just come." },
     { glitch: { stage: 3 } },
     { glitch: 'epi-r-g-clocks' },
+    { place: 'Syracuse · Alpha Phi House · Kitchen', time: 'Morning' }, // she wakes Solar upstairs, then they go down (Nov 7: was the kitchen from the first line)
     { n: "Every clock in the house said 12:00." },
     { n: "The microwave. The oven. The cable box in the living room, the old brass clock on the mantel that had been in the house since 1964 and was wound by the house mother every Sunday whether it needed it or not, the cheap plastic one over the pantry door, the alarm clock on the chapter-room desk, the little digital readout on the coffee maker blinking 12:00, 12:00, 12:00 like it was trying to tell them something very slowly. Hanni's watch. Hyein's watch. The grandfather clock at the foot of the stairs that Danielle had once called *a liability* in a budget meeting, both hands straight up, not ticking." },
     { n: "Their phones said 7:42. Their phones were fine. Every clock that could stop had stopped at exactly the same minute, and no clock that couldn't had." },
