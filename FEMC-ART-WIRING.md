@@ -453,3 +453,10 @@ Art batch 144 (Nov 7) put in all of HOAX (H1-H19) and strangers but S14 (the sun
 
 Still to wire:
 - **Stay St1-St10** replace main-game files of the same name (`iwatodaidorm-livingroom`, `-kitchen`, `-diningroom`, `-laundryroom`, `iwotodaidorm-outside`, `iwatodaidorm-commandroom`, `iwatodaidorm-hallway`, `pink-bedroom`, `paulownia-mall`, `wilduckburger`): straight swaps that change the main game too. The lounge has seasonal variants in places.js `seasons` (art batch 138/140); check the day base still matches them.
+
+
+### 40. Runners Christmas faces (Nov 7)
+Sheets `solar-runners-xmas`, `solar-runners-reception` (+ optional `jaehyun-runners-xmas`, `-reception`) → `femc-portraits.py` / the event-faces cut like `runners-holiday` (portraits/<id>/, scale.js, placements: borrow the base id's), then `data/epi/runners/world.js eventFaces`: `'runners-xmas': { solar, jaehyun }` and `'runners-reception': { solar, jaehyun }`, and `faces: 'runners-xmas'` on `epi-r-christmas-eve` (story-nyc1), `faces: 'runners-reception'` on `epi-r-reception`. DATA_V bump.
+
+### 41. Epilogue side-character faces (Nov 7)
+One portrait folder per sheet, named `<speaker id>-<world>` (marco-runners, mrskwon-runners, mrkwon-runners, han-runners, mrsoh-runners, chungha-runners, grace-runners, sophie-runners, bree-runners, kai-runners; gong-strangers, wu-strangers, mrspark-strangers; dohyun-hoax, yuna-hoax, seoyeon-hoax, minho-hoax, jwmom-hoax), cut with `femc-portraits.py`; add each to the world's `faces` map in world.js (the speaker ids already exist in the scenes and `cast`), a scale.js size and a placements-data.js face centre, then `femc-placements.py`; Kat places them in `mockups/solstice-ui/placements.html`. `han` is also the phone contact Ms. Han: check her avatar picks up the portrait (ui.js faceImg).

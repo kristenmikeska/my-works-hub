@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 7, after art batch 146):** ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: pose sheets and faces for 60 new outfits (the 13 collabs and Kat's Nov 7 list of 47), 104 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: Stay: 3 optional CGs (section 37) · 11 polaroids for strangers, HOAX and Stay (section 39: 1 / 5 / 5) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom and the 10 Stay ones left in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners only an optional night café in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
+**To make (updated Nov 7, after art batch 146):** ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: pose sheets and faces for 60 new outfits (the 13 collabs and Kat's Nov 7 list of 47), 104 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **Runners Christmas faces** (section 40: Solar's two, Jaehyun's two optional) · **faces for 18 epilogue side characters** (section 41: Marco, the Kwons and the rest) · Stay: 3 optional CGs (section 37) · 11 polaroids for strangers, HOAX and Stay (section 39: 1 / 5 / 5) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom and the 10 Stay ones left in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners only an optional night café in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
 
 ## ⭐ Outfits, HD poses and banners: in `FEMC-SKIN-ART.md` (Nov 7)
 
@@ -135,6 +135,75 @@ Save as: `polaroid-stay-april-fool.png`
 ```
 A square 1:1 instant-camera polaroid photo in the exact style of the FIRST attached image (Persona 3 Reload official art: clean crisp lineart, flat cel shading with hard-edged shadows, rich colour, high detail on faces and hair), drawn as a candid, slightly imperfect snapshot with a little flash glare and warm film colour, set in the place shown in the SECOND image. A booth at a burger restaurant in the afternoon: Junpei (cap, baseball T-shirt) holding up two large chocolate milkshakes like a white flag, grinning sheepishly; Solar (dark hair) across from him, accepting one with an arched eyebrow and a smile she's trying to hide. Fries on a tray, spring light through the window. The people are the same as the other attached images, in this order: Solar, Junpei; same faces, eyes and hair. The photo sits inside a clean white polaroid frame with a thicker blank strip at the bottom. No text, no writing on the polaroid.
 ```
+
+---
+
+## 40. Runners: Christmas in Manhattan faces (ChatGPT; realistic; Kat, Nov 7)
+
+In Manhattan Solar still wears her Runners hoodie faces, even at her family's Christmas Eve dinner and the Foundation reception, where the story dresses her up. These give those two scenes their own faces (like the holiday party's): **40A and 40B first**; Jaehyun's two are optional (his suits are in the same two scenes). Each one is the same six faces as the regular sheet, only the outfit and hair change. Faces in order: neutral, happy, sad, serious, surprised, flustered.
+
+**[ ] 40A. Solar: Christmas Eve (the green velvet)**  
+Her faces at the family dinner on 12/24.  
+Attach: `Solar (Runners).png`  
+Save as: `solar-runners-xmas-portraits.png`
+```
+A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. The SAME young woman as the attached image in all six cells: same face, eyes and features, same realistic painted style, same head-and-shoulders framing and size in every cell, facing the camera. Change only the outfit and hair: a fitted emerald-green velvet dress with a modest square neckline and long sleeves, tailored to her exactly, small gold drop earrings, a thin gold necklace; her long jet-black hair blown out smooth and glossy, swept back from her face on one side and pinned with a small gold clip, polished and old-money, like a daughter dressed for her parents' Christmas Eve dinner on the Upper East Side. Warm, low candle and chandelier light. Cells, in order: neutral (composed, a practiced polite smile that doesn't reach her eyes), happy, sad, serious, surprised, flustered. Realistic, NOT anime, NOT cel shading. No text.
+```
+
+**[ ] 40B. Solar: the Foundation reception (navy and pearls)**  
+Her faces at the Lee Foundation Christmas Reception on 12/25.  
+Attach: `Solar (Runners).png`  
+Save as: `solar-runners-reception-portraits.png`
+```
+A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. The SAME young woman as the attached image in all six cells: same face, eyes and features, same realistic painted style, same head-and-shoulders framing and size in every cell, facing the camera. Change only the outfit and hair: a simple, elegant navy long-sleeved dress with a high round neckline, pearl stud earrings, nothing else; her long jet-black hair in a sleek low bun at the nape of her neck, not a strand out of place, very understated, like an heiress at her family foundation's charity reception. Bright, even daytime event light. Cells, in order: neutral (the composed public face), happy, sad, serious, surprised, flustered. Realistic, NOT anime, NOT cel shading. No text.
+```
+
+**[ ] 40C. Jaehyun: Christmas Eve (optional)**  
+Attach: `CG - Jaehyun (Runners).png`  
+Save as: `jaehyun-runners-xmas-portraits.png`
+```
+A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. The SAME young man as the attached image in all six cells: same face, eyes and hair, same realistic painted style, same head-and-shoulders framing and size in every cell, facing the camera. Change only the outfit: a well-cut navy suit over a crisp white shirt open at the collar, no tie, a slim watch. Warm candle and chandelier light. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Realistic, NOT anime, NOT cel shading. No text.
+```
+
+**[ ] 40D. Jaehyun: the reception (optional)**  
+Attach: `CG - Jaehyun (Runners).png`  
+Save as: `jaehyun-runners-reception-portraits.png`
+```
+A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. The SAME young man as the attached image in all six cells: same face, eyes and hair, same realistic painted style, same head-and-shoulders framing and size in every cell, facing the camera. Change only the outfit: a charcoal suit, white shirt and a dark tie, perfectly knotted, the polished heir at his family foundation's reception. Bright, even daytime event light. Cells, in order: neutral (the annual-report smile), happy, sad, serious, surprised, flustered. Realistic, NOT anime, NOT cel shading. No text.
+```
+
+## 41. Faces for the epilogues' side characters (ChatGPT; realistic; Kat, Nov 7)
+
+People who talk in the epilogues but have no face yet (their lines show a name only). Most-lines first in each world; skip any you don't care about. Voices that are never seen (radios, the forum, the stream, the Velvet girl, the night nurse on the phone) aren't here. **Each is a NEW person**: the attached picture is only for the style, size and framing; the prompt says not to copy its face.
+
+**For every one:** 3 × 2 sheet on plain white, head and shoulders, faces in order neutral, happy, sad, serious, surprised, flustered. The prompt pattern (the bracket is each item's own line):
+```
+A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. A NEW character, NOT the person in the attached image: copy only that image's realistic painted style, lighting, head-and-shoulders framing and size. The same person in all six cells, facing the camera: [WHO]. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Realistic, NOT anime, NOT cel shading. No text, no logos, no name tags with writing.
+```
+
+**Runners** (Attach: `CG - Solji (Runners).png` for the grown-ups, `CG - Hanni (Runners).png` for the college students)
+- **[ ] 41A. Marco** (the building's doorman, 36 lines) · Save as `marco-runners-portraits.png` · [WHO]: a warm Italian-American man in his late fifties, the front-desk doorman of a grand Upper East Side building for nineteen years, neat silver-grey hair, clean-shaven, kind crinkled eyes, wearing a dark navy doorman's uniform jacket with brass buttons over a white shirt and dark tie
+- **[ ] 41B. Mrs. Kwon** (family friend, Christmas Eve) · Save as `mrskwon-runners-portraits.png` · [WHO]: a Korean-American woman in her sixties, an old friend of the family, a big generous laugh in her face, softly curled short dark hair with some grey, red lipstick, a festive cream silk blouse and a gold brooch
+- **[ ] 41C. Mr. Kwon** (family friend, Christmas Eve) · Save as `mrkwon-runners-portraits.png` · [WHO]: a Korean-American man in his late sixties, her husband, mild and courteous, thinning grey hair combed back, reading glasses hanging on a cord round his neck, a dark grey suit with a burgundy Christmas tie
+- **[ ] 41D. Ms. Han** (her father's assistant) · Save as `han-runners-portraits.png` · [WHO]: a Korean woman in her early forties, an executive assistant of eleven years, immaculate and unreadable, black hair in a smooth low bun, minimal makeup, a tailored black blazer over a cream blouse, small gold earrings
+- **[ ] 41E. Mrs. Oh** (the Lees' housekeeper) · Save as `mrsoh-runners-portraits.png` · [WHO]: a Korean woman in her early sixties, the family's longtime housekeeper, brisk and quietly kind, short permed dark hair, a soft grey cardigan over a plain blouse with a neat apron tied over it
+- **[ ] 41F. Chungha** (Alpha Phi's president) · Save as `chungha-runners-portraits.png` · [WHO]: a Korean-American college senior, the sorority's president, confident and a little tired, long glossy dark-brown hair with a center part, a pink sweater with a small pearl necklace
+- **[ ] 41G. Grace** (a senior at Alpha Phi) · Save as `grace-runners-portraits.png` · [WHO]: a college senior who runs the house from the couch, effortlessly cool, warm brown skin, shoulder-length curly dark hair, gold hoops, an oversized cream knit sweater
+- **[ ] 41H. Sophie** (a senior at Alpha Phi) · Save as `sophie-runners-portraits.png` · [WHO]: a college senior, Grace's best friend, wry and sharp, long straight auburn hair, light freckles, a black turtleneck and small silver earrings
+- **[ ] 41I. Bree** (a girl at a Sigma party) · Save as `bree-runners-portraits.png` · [WHO]: a confident, very pretty college junior at a holiday frat party, long honey-blonde waves, glossy lips, a sparkly silver party top
+- **[ ] 41J. Kai** (a guy at a Sigma party) · Save as `kai-runners-portraits.png` · [WHO]: a smug, good-looking college guy at a house party, tousled dark hair, a little stubble, a backwards cap, a black zip-up hoodie over a white T-shirt, a red plastic cup in one hand in every cell
+
+**strangers** (Incheon, 2013; Attach: `CG - Mrs. Bang (Strangers).png`)
+- **[ ] 41K. Mrs. Gong** (the nut stall at the market) · Save as `gong-strangers-portraits.png` · [WHO]: a loud, cheerful Korean grandmother in her seventies who has run a nut-and-grain stall in Incheon's old market for thirty years, a short tight perm, weathered cheeks, a padded floral vest over a thick sweater, cotton arm sleeves, a big cracked laugh
+- **[ ] 41L. Auntie Wu** (the mahjong room in Chinatown) · Save as `wu-strangers-portraits.png` · [WHO]: a sharp-eyed Chinese-Korean woman in her sixties who keeps the mahjong back room of a shop in Incheon's Chinatown, dark hair pinned up with a plain clip, reading glasses pushed up on her head, a quilted maroon jacket, a jade bangle
+- **[ ] 41M. Mrs. Park** · Save as `mrspark-strangers-portraits.png` · [WHO]: a quiet, gentle Korean woman in her seventies, small and neat, white hair in a low bun, a soft brown cardigan buttoned to the top, a small knowing smile
+
+**HOAX** (Attach: `CG - Halmeoni (HOAX).png` for Mrs. Yang, `CG - Jake (HOAX).png` for the students)
+- **[ ] 41N. Dohyun** (swim team, the party's host) · Save as `dohyun-hoax-portraits.png` · [WHO]: a Korean high-school third-year on the swim team, very broad shoulders, short neat black hair, a big gentle build and the anxious face of someone hosting a party while his parents are away, a navy crewneck sweatshirt
+- **[ ] 41O. Yuna** (chemistry classmate) · Save as `yuna-hoax-portraits.png` · [WHO]: a Korean high-school girl, sweet and curious, shoulder-length dark hair with see-through bangs, a cream knit cardigan over a white T-shirt, small pearl earrings
+- **[ ] 41P. Seoyeon** (chemistry classmate) · Save as `seoyeon-hoax-portraits.png` · [WHO]: a Korean high-school girl, dramatic and funny, long dark hair in a high ponytail, a chunky hand-knitted pink scarf round her neck, a grey hoodie
+- **[ ] 41Q. Minho** (the forum poster) · Save as `minho-hoax-portraits.png` · [WHO]: a skinny sixteen-year-old Korean boy, messy black hair, a little awkward, wearing a slightly too-big black button-up shirt that is clearly his older brother's
+- **[ ] 41R. Mrs. Yang** (Jungwon's mother; one line, optional) · Save as `jwmom-hoax-portraits.png` · [WHO]: an elegant, cool Korean woman in her late forties, Jungwon's mother, sleek shoulder-length black hair, a camel cashmere coat over a black turtleneck, pearl earrings, a face that gives nothing away
 
 ---
 ## 31. Low-res pictures to look at (assess later)
