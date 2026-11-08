@@ -1477,6 +1477,10 @@
       { n: "Nobody blessed anything. Nobody said it was okay. Three people ate kimchi fried rice in silence at a stone island on the eleventh floor on Christmas morning with the snow coming down outside, and none of them was pretending anymore that it wasn't happening, and that, she thought, with her spoon halfway to her mouth, was going to have to be enough for now. It was more than she'd had yesterday." },
       { s: 'jaehyun', f: 'neutral', t: "It's good." },
       { s: 'haechan', f: 'neutral', t: "I know." },
+      // Nov 7 (Kat asked where he is during the reception): he goes to his paid session in Brooklyn; back at ten (epi-r-gifts).
+      { n: "At half past ten he rinsed the three bowls and stacked them in the sink in the order he'd filled them, and put his coat on in the hall, and checked the time the way he did before anything that paid. Brooklyn. The woman with the record she couldn't finish, a bassist with opinions, eight hours in a room with the faders up. It was a job. It was his." },
+      { s: 'haechan', f: 'neutral', t: "Session. I'll be back after your thing. Same way." },
+      { n: "He didn't kiss her in front of her brother. He tugged the sleeve of his own shirt where it hung past her hand, once, the way you'd straighten a picture, and went out by the service door, and the lift took him down eleven floors, and she stood in the kitchen with Jaehyun and three bowls and the smell of red pepper, and found she could breathe." },
       { bond: { jaehyun: 1 } }
     ] },
 
@@ -1521,7 +1525,7 @@
       { s: 'solar', f: 'surprised', t: "You're not?" },
       { s: 'jaehyun', f: 'neutral', t: "Dad doesn't need to know." },
       { s: 'solar', f: 'neutral', t: "Neither did you." },
-      { n: "He almost smiled. On him it was a whole event, a thing happening at the corner of his mouth and then being overruled." },
+      { n: "He almost smiled. It got further than it usually did, all the way to one corner of his mouth, before he overruled it, and she counted that as a win for Christmas." },
       { n: "Minji was in the doorway. Hat on, blanket around her shoulders like a cape, the cameraman's stillness all over her. She'd heard enough. She looked at Jaehyun, and at the camera under his hand, and didn't apologize for it and didn't explain it." },
       { s: 'minji', f: 'neutral', t: "Hi. Sorry. Can I have my camera back? I'd like to put it somewhere safe." },
       { n: "Jaehyun looked at her for a long moment. Then he picked the camera up off the island with both hands, carefully, the way he'd once handed their mother a crystal thing from the Foundation, and held it out." },
