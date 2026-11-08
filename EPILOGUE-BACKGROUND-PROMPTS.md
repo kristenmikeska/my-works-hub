@@ -33,6 +33,31 @@ New places that still borrow another picture (Jihoon's car, Yeobo's back door) a
 
 All 19 are in (art batch 144, Nov 7).
 
+**Found playtesting (Nov 8):** two places in Solar's house still borrow the living room or the street.
+
+**[ ] H20. The Kims' kitchen** (3 scenes: Nana leaning on her mother before seven, New Year's tteokguk; it shows the living room now)  
+Attach: `BG - style 1 (HOAX).png`, `BG - style 2 (HOAX).png`  
+Save as: `epi-h-kim-kitchen.png` (new)
+```
+Paint a background in the art style of the attached images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; warm cinematic lighting from real light sources with glowing highlights and soft deep shadows; like a still from a high-budget animated film that leans toward realism. The attached images only show the style; do not copy their place. Leave out all people. No readable text. 16:9, high resolution.
+
+The place: the kitchen of an ordinary, warm, middle-class family house in a Korean town in January, early morning: a modern but lived-in kitchen with white cabinets and light wood counters, a window over the sink showing a dark-blue winter dawn with snow on the sill, a pot on the stove with steam rising, a rice cooker, a fridge covered in magnets and school notices with no readable writing, a small wooden table with four chairs and a cardigan over one of them, a dog bowl and a big fluffy dog bed by the radiator, a few tangerines in a bowl. Warm yellow kitchen light against the cold blue window.
+```
+
+**[ ] H20n. The Kims' kitchen, night** (optional)  
+Attach: your new `epi-h-kim-kitchen.png` first, then the two style pictures  
+Save as: `epi-h-kim-kitchen-night.png` (new)
+```
+Paint the SAME place as the FIRST image at night, in the art style of the SECOND and THIRD images. Keep the room, layout, camera angle and every object exactly where they are; change only the time: deep-blue snowy night outside the window, only the light over the stove and one under-cabinet light on, warm pools of light on the counter, soft deep shadows, the fridge's faint glow.
+```
+
+**[ ] H21. The front step, day** (it shows the winter street by day now)  
+Attach: `epi-h-front-step-night.png` (in Place Prompt Attachments), then the two style pictures  
+Save as: `epi-h-front-step-day.png` (new)
+```
+Paint the SAME place as the FIRST image by day, in the art style of the SECOND and THIRD images. Keep the house front, the step, the door, the railing and the camera angle exactly as they are; change only the time: a bright grey-white January afternoon, snow on the step and the hedge, the porch light off, soft daylight with gentle shadows, a few Christmas lights still strung along the gutter, unlit.
+```
+
 ## strangers (Incheon)
 
 All in but the sunroom (art batch 144, Nov 7).

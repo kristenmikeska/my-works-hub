@@ -463,3 +463,6 @@ One portrait folder per sheet, named `<speaker id>-<world>` (marco-runners, mrsk
 
 ### R20 / R21. Manhattan café and study (Nov 8)
 `epi-r-nyc-cafe` → world.js rule `Manhattan · Madison Avenue · Café` (both slots) and the `epi-r-nyc-coffee` activity's `bg`; `epi-r-nyc-study` → the `Manhattan · The Lee Apartment · Study` rule (both slots). WebP q86 native, DATA_V bump.
+
+### H20 / H21. HOAX kitchen and front step by day (Nov 8)
+`epi-h-kim-kitchen` (+ `-night`) → new hoax/world.js rule `['Hanlim · Home · Kitchen', 'epi-h-kim-kitchen', 'epi-h-kim-kitchen-night' (or the day one)]` above the plain `Hanlim · Home` rule (rules match by prefix, more specific first). `epi-h-front-step-day` → the `Hanlim · Home · Front Step` rule's day slot (now `epi-h-winter-street-day`). DATA_V bump.
