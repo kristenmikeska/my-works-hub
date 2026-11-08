@@ -1,0 +1,200 @@
+{
+ "arms-crossed": {
+  "ar": 0.645,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.469,
+  "size": [
+   990,
+   1536
+  ],
+  "src": "veil-armscrossed.png"
+ },
+ "cheer": {
+  "ar": 0.65,
+  "hf": 0.138,
+  "ht": 0.015,
+  "hx": 0.378,
+  "size": [
+   998,
+   1536
+  ],
+  "src": "veil-fist.png"
+ },
+ "evoker": {
+  "ar": 0.667,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.261,
+  "size": [
+   1024,
+   1536
+  ],
+  "src": "veil-evoker.png"
+ },
+ "hair": {
+  "ar": 0.651,
+  "hf": 0.137,
+  "ht": 0.018,
+  "hx": 0.392,
+  "size": [
+   1000,
+   1536
+  ],
+  "src": "veil-handinhair.png"
+ },
+ "heart": {
+  "ar": 0.629,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.443,
+  "size": [
+   966,
+   1536
+  ],
+  "src": "veil-hearthands.png"
+ },
+ "jump": {
+  "ar": 0.661,
+  "hf": 0.136,
+  "ht": 0.007,
+  "hx": 0.301,
+  "size": [
+   1016,
+   1536
+  ],
+  "src": "veil-jump.png"
+ },
+ "lookback": {
+  "ar": 0.613,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.447,
+  "size": [
+   941,
+   1536
+  ],
+  "src": "veil-overshoulder.png"
+ },
+ "peace": {
+  "ar": 0.652,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.445,
+  "size": [
+   1002,
+   1536
+  ],
+  "src": "veil-peace.png"
+ },
+ "phone": {
+  "ar": 0.622,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.392,
+  "size": [
+   956,
+   1536
+  ],
+  "src": "veil-phone.png"
+ },
+ "ramen": {
+  "ar": 0.666,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.471,
+  "size": [
+   1023,
+   1536
+  ],
+  "src": "veil-ramen.png"
+ },
+ "sewing": {
+  "ar": 0.633,
+  "hf": 0.139,
+  "ht": 0.008,
+  "hx": 0.417,
+  "size": [
+   972,
+   1536
+  ],
+  "src": "veil-sewing.png"
+ },
+ "shy": {
+  "ar": 0.592,
+  "hf": 0.138,
+  "ht": 0.016,
+  "hx": 0.417,
+  "size": [
+   909,
+   1536
+  ],
+  "src": "veil-shy.png"
+ },
+ "stretch": {
+  "ar": 0.633,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.585,
+  "size": [
+   972,
+   1536
+  ],
+  "src": "veil-yawn.png"
+ },
+ "study": {
+  "ar": 0.635,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.414,
+  "size": [
+   976,
+   1536
+  ],
+  "src": "veil-reading.png"
+ },
+ "tease": {
+  "ar": 0.624,
+  "hf": 0.139,
+  "ht": 0.006,
+  "hx": 0.447,
+  "size": [
+   959,
+   1536
+  ],
+  "src": "veil-handonhip.png"
+ },
+ "thinking": {
+  "ar": 0.645,
+  "hf": 0.138,
+  "ht": 0.014,
+  "hx": 0.416,
+  "size": [
+   991,
+   1536
+  ],
+  "src": "veil-thinking.png"
+ },
+ "watering": {
+  "ar": 0.625,
+  "hf": 0.139,
+  "ht": 0.009,
+  "hx": 0.408,
+  "size": [
+   960,
+   1536
+  ],
+  "src": "veil-watering.png"
+ },
+ "wave": {
+  "ar": 0.648,
+  "hf": 0.138,
+  "ht": 0.011,
+  "hx": 0.33,
+  "size": [
+   996,
+   1536
+  ],
+  "src": "veil-wave.png"
+ }
+}

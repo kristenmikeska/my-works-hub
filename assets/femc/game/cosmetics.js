@@ -163,6 +163,12 @@ window.FemcCosmetics = (() => {
     c('sk-cottage-bakery', 'skin', 'Bakery Morning', 'SR', 'Pink gingham, a kerchief and flour on her cheek. Shinjiro approves.', { who: 'solar', art: true }), // series: Wildflower Cottage (Kat's art, Nov 5)
     c('sk-cottage-greenhouse', 'skin', 'Rainy Greenhouse', 'SR', 'A cream cardigan, pink rain boots and a clear umbrella among the ferns.', { who: 'solar', art: true }), // series: Wildflower Cottage (Kat's art, Nov 5)
     c('sk-cottage-harvest', 'skin', 'Harvest Festival', 'UR', 'A laced bodice, a tiered skirt and a crown of dahlias and wheat.', { who: 'solar', art: true }), // series: Wildflower Cottage (Kat's art, Nov 5)
+    // Art batch 147 (Nov 7; FEMC-ART-WIRING 21): Solar's first four cosplay looks. Sailor Moon and Draculaura get `couple`
+    // ('col-moon', 'col-ghoul') once Haechan's Tuxedo Mask and Clawd are in; until then they're plain looks.
+    c('sk-collab-stella', 'skin', 'Stella Cosplay', 'UR', 'Orange satin, little wings and Stella’s golden hair. Hyein picked it; it stuck.', { who: 'solar', art: true }), // series: Collab
+    c('sk-collab-sailor', 'skin', 'Sailor Moon Cosplay', 'UR', 'Odango buns, a red bow and a moon wand. In the name of the moon.', { who: 'solar', art: true }), // series: Collab
+    c('sk-collab-ghoul', 'skin', 'Draculaura Cosplay', 'UR', 'Pink and black, bat bows and the cutest fangs at Gekkoukan.', { who: 'solar', art: true }), // series: Collab
+    c('sk-collab-sukajan', 'skin', 'Sukajan Kiriko', 'UR', 'Her main again, street style: a fox-embroidered souvenir jacket and cargo pants.', { who: 'solar', art: true }), // series: Collab
     // Weapon skins (art pending: 8C).
     c('wpn-sakura', 'weapon', 'Sakura Naginata', 'SR', 'A pale wood haft wrapped in pink silk, blossoms etched on the blade.', { who: 'solar', art: true }),
     c('wpn-phantom', 'weapon', 'Phantom Naginata', 'UR', 'Black lacquer and a red tassel, to go with the coat.', { who: 'solar', art: true }),
@@ -247,11 +253,11 @@ window.FemcCosmetics = (() => {
      butterflies, foxfire, confetti (battle.js THEME_ART draws each one; art/fx/theme-<id>.webp and art/frames/<id>.webp
      replace the drawing once Kat's art is in). */
   const THEMES = {
-    hearts: ['sk-arcana-lovers', 'sk-date', 'sk-sugarrush', 'sk-strawberry', 'sk-cp-drive', 'sk-haechan-cp-drive', 'sk-cp-moviedate', 'sk-jungwon-cp-moviedate', 'sk-cp-afterhours',
+    hearts: ['sk-arcana-lovers', 'sk-collab-ghoul', 'sk-date', 'sk-sugarrush', 'sk-strawberry', 'sk-cp-drive', 'sk-haechan-cp-drive', 'sk-cp-moviedate', 'sk-jungwon-cp-moviedate', 'sk-cp-afterhours',
       'sk-jungwon-cp-afterhours', 'sk-cp-ringside', 'sk-akihiko-cp-ringside', 'sk-haechan-sweater', 'sk-jungwon-sweater', 'sk-jungwon-angel'],
-    sunmoon: ['sk-arcana-moon', 'sk-cp-sunmoon', 'sk-haechan-cp-sunmoon', 'sk-arcana-sun', 'sk-hanbok', 'sk-swim-night', 'sk-cp-festival', 'sk-akihiko-cp-festival'],
+    sunmoon: ['sk-arcana-moon', 'sk-collab-sailor', 'sk-cp-sunmoon', 'sk-haechan-cp-sunmoon', 'sk-arcana-sun', 'sk-hanbok', 'sk-swim-night', 'sk-cp-festival', 'sk-akihiko-cp-festival'],
     petals: ['sk-cottage-meadow', 'sk-cottage-greenhouse', 'sk-cottage-harvest', 'sk-chapel-picnic', 'sk-yukata', 'sk-alphaphi', 'sk-yukari-kyudo'],
-    stars: ['sk-arcana-star', 'sk-halloween', 'sk-yukari-pink'],
+    stars: ['sk-arcana-star', 'sk-halloween', 'sk-yukari-pink', 'sk-collab-stella'],
     bubbles: ['sk-swim-lagoon', 'sk-swim-lifeguard', 'sk-haechan-swim', 'sk-jungwon-swim', 'sk-yukari-swim', 'sk-akihiko-swim'],
     notes: ['sk-haechan-stage', 'sk-jungwon-stage', 'sk-haechan-garage', 'sk-haechan-headphones', 'sk-summersession', 'sk-jungwon-soundcheck', 'sk-haechan-runners'],
     glitter: ['sk-idol', 'sk-y2k', 'sk-oops', 'sk-snake', 'sk-limelight', 'sk-haechan-limelight', 'sk-haechan-fairground'],
@@ -259,7 +265,7 @@ window.FemcCosmetics = (() => {
     thorns: ['sk-chapel-rose', 'sk-chapel-veil', 'sk-chapel-vampire', 'sk-emo', 'sk-jihoon-emo', 'sk-haechan-unravelled', 'sk-jungwon-sheer', 'sk-prowl', 'sk-haechan-bad'],
     cards: ['sk-phantom', 'sk-haechan-suit', 'sk-jungwon-heir', 'sk-jungwon-pinstripe'],
     butterflies: ['sk-velvet'],
-    foxfire: ['sk-kiriko'],
+    foxfire: ['sk-kiriko', 'sk-collab-sukajan'],
     confetti: ['sk-cottage-bakery', 'sk-esports', 'sk-junpei-baseball', 'sk-akihiko-champ', 'sk-roadwork'],
   };
   Object.entries(THEMES).forEach(([t, ids]) => ids.forEach(id => { const x = byId(id); if (x && !x.theme) x.theme = t; }));
@@ -268,14 +274,14 @@ window.FemcCosmetics = (() => {
     // Art-pending items wait in their banner and join its featured list by themselves once their art is in (featured()).
     { id: 'bloom', name: 'Spring Bloom', months: [4, 5], color: '#ff8cc0', featured: ['sk-cottage-meadow', 'sk-cottage-bakery', 'sk-cottage-greenhouse', 'sk-date', 'tt-sakura', 'ui-sakura', 'sk-jihoon-pilates', 'sk-junpei-baseball', 'sk-yukari-kyudo', 'sk-aigis-uniform', 'wpn-hoax', 'sk-minji-su', 'sk-vp', 'sk-sugarrush', 'sk-strawberry', 'sk-jungwon-soundcheck'] },
     { id: 'summer', name: 'Summer Nights', months: [6, 7, 8], color: '#4fd8ff', featured: ['sk-yukata', 'wp-fireworks', 'ui-mint', 'sk-haechan-runners', 'sk-minji-crew', 'sk-akihiko-hoodie', 'wpn-runners', 'sk-esports', 'sk-roadwork', 'sk-y2k', 'sk-snake', 'sk-strawberry', 'sk-summersession', 'sk-haechan-windowseat', 'sk-haechan-fairground', 'sk-swim-lifeguard', 'sk-cp-festival', 'sk-akihiko-cp-festival'] },
-    { id: 'masquerade', name: 'Masquerade', months: [9, 10], color: '#c58bff', featured: ['sk-chapel-rose', 'sk-chapel-vampire', 'sk-chapel-picnic', 'sk-arcana-moon', 'sk-cottage-harvest', 'sk-phantom', 'wpn-phantom', 'sk-halloween', 'bui-velvet', 'evk-jade', 'wpn-kiriko', 'wpn-emo', 'sk-yukari-pink', 'sk-jihoon-emo', 'sk-velvet', 'sk-oops', 'sk-prowl', 'sk-haechan-bad', 'sk-haechan-unravelled', 'sk-emo', 'sk-jungwon-sheer', 'wpn-velvet', 'sk-jungwon-pinstripe', 'sk-jungwon-angel', 'sk-swim-night'] },
+    { id: 'masquerade', name: 'Masquerade', months: [9, 10], color: '#c58bff', featured: ['sk-chapel-rose', 'sk-chapel-vampire', 'sk-chapel-picnic', 'sk-collab-ghoul', 'sk-arcana-moon', 'sk-cottage-harvest', 'sk-phantom', 'wpn-phantom', 'sk-halloween', 'bui-velvet', 'evk-jade', 'wpn-kiriko', 'wpn-emo', 'sk-yukari-pink', 'sk-jihoon-emo', 'sk-velvet', 'sk-oops', 'sk-prowl', 'sk-haechan-bad', 'sk-haechan-unravelled', 'sk-emo', 'sk-jungwon-sheer', 'wpn-velvet', 'sk-jungwon-pinstripe', 'sk-jungwon-angel', 'sk-swim-night'] },
     { id: 'lights', name: 'Winter Lights', months: [11, 12, 1], color: '#bfe3ff', featured: ['sk-chapel-veil', 'sk-wintercoat', 'wp-xmas', 'tt-snow', 'evk-rose', 'sk-shinjiro-apron', 'sk-mitsuru-rider', 'wpn-strangers', 'sk-harbourcoat', 'sk-haechan-arrivals', 'wpn-haechan-suit', 'wpn-jungwon-heir', 'sk-haechan-sweettooth', 'sk-jungwon-pinstripe', 'sk-haechan-suit', 'sk-jungwon-heir', 'sk-cp-moviedate', 'sk-jungwon-cp-moviedate'] },
     { id: 'sunrise', name: 'Golden Sunrise', months: [2], color: '#ffd36b', featured: ['ui-sunrise', 'bui-gold', 'evk-gold', 'wp-keyart', 'sk-akihiko-champ', 'wpn-akihiko-champ', 'sk-jungwon-council', 'wpn-jungwon-council', 'sk-hanbok', 'wpn-hanbok', 'sk-arcana-sun'] },
     // March's main banner (Kat's ruling, 2026-10-29: it took Golden Sunrise's March slot). Its other planned looks (FEMC-ART-WIRING
     // section 7) are all in since art batch 106: Encore Stage and Center Stage joined.
-    { id: 'solar', name: 'Solar Spotlight', kind: 'Spotlight', months: [3], color: '#ffb84d', featured: ['sk-arcana-star', 'sk-idol', 'sk-alphaphi', 'sk-hanbok', 'sk-velvet', 'sk-y2k', 'sk-oops', 'sk-snake', 'sk-sugarrush', 'sk-limelight', 'wpn-velvet', 'wpn-idol', 'wpn-hanbok', 'wpn-haechan-stage', 'wpn-jungwon-stage', 'sk-haechan-stage', 'sk-jungwon-stage', 'sk-swim-lagoon'] },
+    { id: 'solar', name: 'Solar Spotlight', kind: 'Spotlight', months: [3], color: '#ffb84d', featured: ['sk-arcana-star', 'sk-collab-sailor', 'sk-idol', 'sk-alphaphi', 'sk-hanbok', 'sk-velvet', 'sk-y2k', 'sk-oops', 'sk-snake', 'sk-sugarrush', 'sk-limelight', 'wpn-velvet', 'wpn-idol', 'wpn-hanbok', 'wpn-haechan-stage', 'wpn-jungwon-stage', 'sk-haechan-stage', 'sk-jungwon-stage', 'sk-swim-lagoon'] },
     // Side banners, November–March (2026-10-27): they run beside the month's main banner above (always first, the default).
-    { id: 'runners', name: 'Runners World', kind: 'World', months: [11], color: '#ff9a5c', featured: ['sk-haechan-runners', 'wpn-runners', 'sk-minji-su', 'wp-rooftop', 'sk-alphaphi', 'sk-esports', 'sk-summersession', 'sk-haechan-headphones', 'sk-haechan-windowseat', 'sk-haechan-garage'] },
+    { id: 'runners', name: 'Runners World', kind: 'World', months: [11], color: '#ff9a5c', featured: ['sk-haechan-runners', 'sk-collab-stella', 'sk-collab-sukajan', 'wpn-runners', 'sk-minji-su', 'wp-rooftop', 'sk-alphaphi', 'sk-esports', 'sk-summersession', 'sk-haechan-headphones', 'sk-haechan-windowseat', 'sk-haechan-garage'] },
     { id: 'sees', name: 'S.E.E.S. Spotlight', kind: 'Spotlight', months: [11, 12], color: '#6ab0ff', featured: ['sk-yukari-kyudo', 'sk-yukari-pink', 'sk-junpei-baseball', 'sk-mitsuru-rider', 'sk-shinjiro-apron', 'sk-aigis-uniform', 'sk-akihiko-hoodie', 'tt-darkhour', 'wp-dorm', 'sk-yukari-swim'] },
     { id: 'haechan', name: 'Haechan Spotlight', kind: 'Spotlight', months: [12, 1], color: '#ff6f7d', featured: ['sk-haechan-runners', 'wpn-runners', 'wpn-strangers', 'evk-midnight', 'wp-rooftop', 'sk-haechan-sweater', 'sk-haechan-headphones', 'sk-haechan-arrivals', 'sk-haechan-garage', 'sk-haechan-limelight', 'wpn-haechan-suit', 'wpn-haechan-stage', 'sk-haechan-fairground', 'sk-haechan-sweettooth', 'sk-haechan-suit', 'sk-haechan-stage', 'sk-haechan-swim', 'sk-cp-sunmoon', 'sk-haechan-cp-sunmoon', 'sk-cp-drive', 'sk-haechan-cp-drive'] },
     { id: 'hoax', name: 'HOAX World', kind: 'World', months: [1, 2], color: '#9fe06a', featured: ['sk-jungwon-council', 'wpn-jungwon-council', 'wpn-hoax', 'sk-jihoon-pilates', 'sk-jihoon-emo', 'ui-velvet', 'sk-vp', 'wpn-jungwon-heir', 'sk-jungwon-soundcheck', 'sk-jungwon-angel', 'sk-jungwon-heir', 'sk-jungwon-swim', 'sk-cp-afterhours', 'sk-jungwon-cp-afterhours'] },
@@ -289,6 +295,11 @@ window.FemcCosmetics = (() => {
     // Midnight Chapel and Wildflower Cottage (art batch 142, Nov 5; FEMC-ART-WIRING section 19): side banners beside Masquerade and Spring Bloom.
     { id: 'chapel', name: 'Midnight Chapel', kind: 'Seasonal', months: [10], color: '#b0306a', featured: ['sk-chapel-vampire', 'sk-chapel-rose', 'sk-chapel-veil', 'sk-chapel-picnic'] },
     { id: 'cottage', name: 'Wildflower Cottage', kind: 'Seasonal', months: [5], color: '#ffa8c8', featured: ['sk-cottage-harvest', 'sk-cottage-meadow', 'sk-cottage-bakery', 'sk-cottage-greenhouse'] },
+    // Kat's Nov 7 banners (FEMC-SKIN-ART "New outfits"), each added with its first look (art batch 147). The rest of each
+    // banner's outfits join its featured list as their art comes in.
+    { id: 'magical', name: 'Magical Girls', kind: 'Collab', months: [4], color: '#ff9ad5', featured: ['sk-collab-sailor', 'sk-collab-stella'] },
+    { id: 'anime', name: 'Anime Night', kind: 'Collab', months: [9], color: '#ff6f9e', featured: ['sk-collab-sukajan'] },
+    { id: 'ghoul', name: 'Ghoul School', kind: 'Collab', months: [10], color: '#ff4f8b', featured: ['sk-collab-ghoul'] },
   ];
 
   /* ── Art ── */
@@ -603,6 +614,7 @@ window.FemcCosmetics = (() => {
     ['Arcana & otherworldly', x => /arcana|velvet|phantom|angel/.test(x.id)],
     ['Midnight Chapel', x => /chapel/.test(x.id)],
     ['Wildflower Cottage', x => /cottage/.test(x.id)],
+    ['Cosplay', x => /collab/.test(x.id)],
     ['Everyday', () => true],
   ];
   const FR_KINDS = ['skin', 'weapon', 'evoker', 'battleui', 'uitheme', 'title', 'wallpaper'];

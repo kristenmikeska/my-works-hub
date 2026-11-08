@@ -2,9 +2,9 @@
 
 *Persona 3: Solstice · split out Nov 7 2026 (Kat's plan). Make this list first: everything here is what the Wardrobe, the Boutique, the fitting room, the home screen and the win screen show, so an outfit looks finished everywhere but in battle. Battle pieces wait in `FEMC-BATTLE-ART.md`, to do all together at the end.*
 
-**Order for each outfit:** 1. pose sheet → 2. scene portraits → 3. HD poses (only what's still missing is listed; the 11 skin-series looks need only their HD poses). **Banner art** is at the bottom: make a banner once its outfits exist.
+**Order for each outfit:** 1. pose sheet → 2. scene portraits → 3. HD poses (only what's still missing is listed). **Banner art** is at the bottom: make a banner once its outfits exist.
 
-**What's here (Nov 7, with Kat's new list):** 60 pose sheets and 63 scene-portrait sheets (the 13 collab outfits, Kat's 47 new outfits, plus faces for Off-Day Hoodie, Beanie & Apron and Gekkoukan Uniform), 104 HD pose sets, 14 banner pictures (8 older, 6 for the new banners: Ghoul School, Anime Night, Magical Girls, Wonderland, Live Concert, Pastel Ponies).
+**What's here (Nov 7, after art batch 147):** 56 pose sheets and 60 scene-portrait sheets (the collab outfits, Kat's 47 new outfits, plus faces for Off-Day Hoodie, Beanie & Apron and Gekkoukan Uniform), 95 HD pose sets, 14 banner pictures (8 older, 6 for the new banners: Ghoul School, Anime Night, Magical Girls, Wonderland, Live Concert, Pastel Ponies).
 
 **How:** open a new ChatGPT message, attach the files on the **Attach** line in that order (all in `Femc Mode Images/`, mostly `Place Prompt Attachments/`), paste the prompt, send. Save into **New Adds** under its **Save as** name (HD poses: a folder per outfit) and tell Claude. One picture per message.
 
@@ -32,122 +32,6 @@ Other fighters get six victory poses per outfit (for the win screen); each one's
 
 ## Solar
 
-### Skin series: Tarot Arcana, Midnight Chapel, Wildflower Cottage
-
-These 11 are in the game already (pose sheet and faces): only their HD poses are left here. The Moon, The Star, The Lovers and Black Rose have theirs (Nov 7).
-
-### Cathedral Veil · `sk-chapel-veil`
-
-Midnight Chapel. A long black lace gown, a cathedral-length veil and a pink bead belt; a sleek low bun under the veil.
-
-> **Look bible.** Palette: black lace, candle gold, rosary pink and stained-glass violet. Vibe: a vigil in a cathedral: solemn, beautiful, a little haunted.  
-> Motifs: candle flames, lace veils, rosary beads and stained-glass shards. Light: candle gold through violet stained glass. Scene: a vast cathedral nave at night, rows of candles and stained-glass windows.
-
-#### 1. HD poses
-
-Her evening and win-screen poses in Cathedral Veil.  
-Attach: `Cathedral Veil [sk-chapel-veil] - pose sheet.png`, then `Solar.png`  
-Save as: `skin-sk-chapel-veil-hd-<pose>.png` in a folder `Cathedral Veil`
-```
-A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (Cathedral Veil: a long black lace gown, a trailing black lace veil and a pink bead belt with little silver crosses). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-### Vampire Ball · `sk-chapel-vampire`
-
-Midnight Chapel. A red velvet off-shoulder gown and a high-collared cape; a dramatic half-up updo with a deep red streak.
-
-> **Look bible.** Palette: blood red, velvet black, gold and moon white. Vibe: a vampire's ball: decadent, dangerous, and she was invited.  
-> Motifs: bats, blood-red rose petals, gold candelabras and a red moon. Light: red moonlight and gold candelabra glow. Scene: a gothic ballroom at midnight, a red moon in the tall windows.
-
-#### 1. HD poses
-
-Her evening and win-screen poses in Vampire Ball.  
-Attach: `Vampire Ball [sk-chapel-vampire] - pose sheet.png`, then `Solar.png`  
-Save as: `skin-sk-chapel-vampire-hd-<pose>.png` in a folder `Vampire Ball`
-```
-A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (Vampire Ball: a red velvet off-shoulder ball gown, a black high-collared cape lined in red and long black gloves). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-### Graveyard Picnic · `sk-chapel-picnic`
-
-Midnight Chapel. A black pinafore with pink cross-stitch, a parasol and a picnic basket; two fluffy space buns with pink ribbons.
-
-> **Look bible.** Palette: black, candy pink, cream and moss green. Vibe: a picnic in the quietest spot in town: cute and spooky.  
-> Motifs: little ghosts, pink ribbons, black lace and moss. Light: soft overcast twilight with a pink glow. Scene: an old mossy churchyard at dusk, a picnic blanket among the headstones.
-
-#### 1. HD poses
-
-Her evening and win-screen poses in Graveyard Picnic.  
-Attach: `Graveyard Picnic [sk-chapel-picnic] - pose sheet.png`, then `Solar.png`  
-Save as: `skin-sk-chapel-picnic-hd-<pose>.png` in a folder `Graveyard Picnic`
-```
-A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (Graveyard Picnic: a black pinafore with pink cross-stitch over a white blouse, frilly socks and a little picnic basket). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-### Meadow Picnic · `sk-cottage-meadow`
-
-Wildflower Cottage. A puff-sleeved floral prairie dress and a straw basket; two loose braids woven with wildflowers.
-
-> **Look bible.** Palette: cream, wildflower pink, butter yellow and meadow green. Vibe: a sunny meadow picnic: soft, sweet and slow.  
-> Motifs: daisies, wildflowers, butterflies and drifting dandelion seeds. Light: warm late-morning sunshine. Scene: a wildflower meadow on a sunny hill, a picnic blanket in the grass.
-
-#### 1. HD poses
-
-Her evening and win-screen poses in Meadow Picnic.  
-Attach: `Meadow Picnic [sk-cottage-meadow] - pose sheet.png`, then `Solar.png`  
-Save as: `skin-sk-cottage-meadow-hd-<pose>.png` in a folder `Meadow Picnic`
-```
-A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (Meadow Picnic: a puff-sleeved cream prairie dress with little wildflowers, brown boots and braids full of flowers). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-### Bakery Morning · `sk-cottage-bakery`
-
-Wildflower Cottage. A pink gingham apron over a cream blouse, flour on her cheek; a messy bun with a pink kerchief.
-
-> **Look bible.** Palette: gingham pink, cream, crust brown and butter yellow. Vibe: a cottage bakery at dawn: warm, floury, cosy.  
-> Motifs: flour puffs, little pastries, wheat ears and pink gingham hearts. Light: a warm golden oven glow and early morning sun. Scene: a cottage bakery kitchen in the morning, bread on wooden shelves.
-
-#### 1. HD poses
-
-Her evening and win-screen poses in Bakery Morning.  
-Attach: `Bakery Morning [sk-cottage-bakery] - pose sheet.png`, then `Solar.png`  
-Save as: `skin-sk-cottage-bakery-hd-<pose>.png` in a folder `Bakery Morning`
-```
-A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (Bakery Morning: a pink gingham apron over a cream blouse, a brown skirt, a pink kerchief and flour on her cheek). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-### Rainy Greenhouse · `sk-cottage-greenhouse`
-
-Wildflower Cottage. A cream knit cardigan, rain boots and a clear umbrella; half-up hair with a butterfly clip and pink sun-kissed ends.
-
-> **Look bible.** Palette: fern green, cream, rain-boot pink and glass grey-blue. Vibe: a rainy afternoon in a greenhouse: soft, green, peaceful.  
-> Motifs: raindrops, fern leaves, little butterflies and glass reflections. Light: soft grey rain light through glass with a green glow. Scene: an old glass greenhouse full of ferns, rain on the roof.
-
-#### 1. HD poses
-
-Her evening and win-screen poses in Rainy Greenhouse.  
-Attach: `Rainy Greenhouse [sk-cottage-greenhouse] - pose sheet.png`, then `Solar.png`  
-Save as: `skin-sk-cottage-greenhouse-hd-<pose>.png` in a folder `Rainy Greenhouse`
-```
-A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (Rainy Greenhouse: a chunky cream cardigan over a pale pink sundress, pink rain boots and a clear bubble umbrella). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-### Harvest Festival · `sk-cottage-harvest`
-
-Wildflower Cottage. A laced bodice over a long tiered skirt and a flower crown; a long waterfall braid.
-
-> **Look bible.** Palette: rust, mustard, dahlia pink and wheat gold. Vibe: an autumn harvest festival: warm, golden, a dance at dusk.  
-> Motifs: dahlias, wheat ears, autumn leaves and lantern glow. Light: warm lantern light at dusk. Scene: a harvest fair at dusk, hay bales and strings of lanterns.
-
-#### 1. HD poses
-
-Her evening and win-screen poses in Harvest Festival.  
-Attach: `Harvest Festival [sk-cottage-harvest] - pose sheet.png`, then `Solar.png`  
-Save as: `skin-sk-cottage-harvest-hd-<pose>.png` in a folder `Harvest Festival`
-```
-A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (Harvest Festival: a laced brown bodice, a long tiered rust, mustard and pink skirt, a woven shawl and a crown of dahlias and wheat). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
 ### Later: Magical Girl Solstice (pitch, not written yet)
 
 Kat likes it; saved for a later series.
@@ -160,72 +44,6 @@ Kat likes it; saved for a later series.
 
 Cosplay looks (it's a fan game). The prompts describe the outfits only by how they look: no logos, no printed names. Order for each: pose sheet, then scene portraits, then HD poses. Five are couple sets with Haechan or Jungwon: make both pose sheets of a set in the same chat so the colours match.
 
-### Stella, Winx Club · `sk-collab-stella`
-
-The sun fairy, the costume Hyein picked for her that Runners Halloween: glittering orange and pink, little wings, and Stella's long golden hair.
-
-> **Look bible.** Palette: sun orange, fairy pink, gold and soft cream. Vibe: a sun fairy: bright, glittery and a little extra.  
-> Motifs: sun rays, gold fairy dust, sparkles and little sun orbs. Light: bright golden sunlight through a glittery haze. Scene: a sparkling sky above the clouds at sunrise.
-
-#### 1. Pose sheet
-
-Attach: `solar-posesheet.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-collab-stella-posesheet.png`
-```
-Cosplay of Stella from Winx Club. Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a glittering orange satin halter crop top, a short sparkly orange-and-pink mini skirt, small clear sheer fairy wings edged in gold on her back, a thin gold tiara band across her forehead with a small sun gem, gold sparkle make-up under her eyes, orange-and-pink platform sandals with straps up the calf, gold wrist cuffs. Hair: long golden-blonde hair to her waist (her face stays exactly the same), styled in a high half-up with the top section tied in a small bun behind the tiara, glossy and full. Her naginata styled like a golden sun sceptre, a glowing sun orb at the base of the blade. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text, no logos.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-#### 2. Scene portraits
-
-Attach: `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-collab-stella-portraits.png`
-```
-Cosplay of Stella from Winx Club. A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a glittering orange satin halter top, small clear sheer fairy wings edged in gold behind her shoulders, a thin gold tiara band with a small sun gem, gold sparkle make-up under her eyes, warm golden sparkle light. Hair: long golden-blonde hair to her waist (her face stays exactly the same), styled in a high half-up with the top section tied in a small bun behind the tiara, glossy and full. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text, no logos.
-```
-
-#### 3. HD poses
-
-Her evening and win-screen poses in Stella, Winx Club.  
-Attach: `skin-sk-collab-stella-posesheet.png` (your finished pose sheet above), then `Solar.png`  
-Save as: `skin-sk-collab-stella-hd-<pose>.png` in a folder `Stella, Winx Club`
-```
-Cosplay of Stella from Winx Club. A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face and eyes, with the hair and exactly the outfit of the FIRST attached image (Stella, Winx Club: a glittering orange halter top and orange-and-pink mini skirt, little gold-edged fairy wings, a gold tiara and long golden hair). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-### Sailor Moon · `sk-collab-sailor`
-
-Couple set with Haechan's Tuxedo Mask. The classic sailor-guardian uniform; odango buns and very long twin tails in her own black hair, tipped gold.
-
-> **Look bible.** Palette: sailor navy, white, red and moon gold. Vibe: a magical-girl transformation: fighting by moonlight.  
-> Motifs: crescent moons, sparkles, ribbons and little pink hearts. Light: bright moonlight with a pink-gold transformation glow. Scene: a city rooftop at night under a full moon.
-
-#### 1. Pose sheet
-
-Attach: `solar-posesheet.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-collab-sailor-posesheet.png`
-```
-Cosplay of Sailor Moon. Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a white sailor-guardian leotard with a navy-blue sailor collar edged in white stripes, a big red bow at the chest with a gold crescent brooch, a short navy pleated mini skirt, a small red bow at the back, long white gloves with red cuffs, red knee-high boots with a white crescent at the top, a gold tiara with a red gem, red crescent earrings. Hair: her own jet-black hair in the classic odango style: two round buns on top of her head with very long twin tails falling from each to her knees, the ends dipped pale gold, small red gem clips on the buns. Her naginata's top styled like a pink-and-gold moon wand, a gold crescent at the base of the blade. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text, no logos.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-#### 2. Scene portraits
-
-Attach: `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-collab-sailor-portraits.png`
-```
-Cosplay of Sailor Moon. A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a white sailor-guardian top with a navy sailor collar and a big red bow with a gold crescent brooch, a gold tiara with a red gem, red crescent earrings, soft pink moonlight sparkle. Hair: her own jet-black hair in the classic odango style: two round buns on top of her head with very long twin tails falling from each to her knees, the ends dipped pale gold, small red gem clips on the buns. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text, no logos.
-```
-
-#### 3. HD poses
-
-Her evening and win-screen poses in Sailor Moon.  
-Attach: `skin-sk-collab-sailor-posesheet.png` (your finished pose sheet above), then `Solar.png`  
-Save as: `skin-sk-collab-sailor-hd-<pose>.png` in a folder `Sailor Moon`
-```
-Cosplay of Sailor Moon. A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face and eyes, with the hair and exactly the outfit of the FIRST attached image (Sailor Moon: a white sailor-style leotard with a navy collar, a big red bow, a navy pleated skirt, red boots and a gold tiara). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
 ### Draculaura, Monster High · `sk-collab-ghoul`
 
 Couple set with Haechan's Clawd. The sweet vampire in pink and black, bat bows and heart details; black pigtails with hot-pink streaks.
@@ -233,27 +51,10 @@ Couple set with Haechan's Clawd. The sweet vampire in pink and black, bat bows a
 > **Look bible.** Palette: bubblegum pink, black, lace white and cherry red. Vibe: a sweet vampire: cute, pink and a little spooky.  
 > Motifs: tiny bats, pink hearts, black lace and sparkles. Light: a pink neon glow in the dark. Scene: a spooky-cute high school hallway at night, pink-and-black lockers.
 
-#### 1. Pose sheet
-
-Attach: `solar-posesheet.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-collab-ghoul-posesheet.png`
-```
-Cosplay of Draculaura from Monster High. Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a black off-shoulder top with pink lace trim and a little bat-wing collar, a layered pink-and-black tulle mini skirt printed with tiny bats and hearts, black lace fingerless gloves, a black choker with a pink heart and bat charm, pink heart earrings, black lace-up platform boots with pink hearts on the sides, a small pink heart drawn under one eye, two tiny cute vampire fangs in her smile. Hair: her own jet-black hair with bold hot-pink streaks, in two high bouncy pigtails tied with black bat-shaped bows, a straight blunt fringe. Her naginata's haft striped pink and black, a pink bat charm at the collar. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text, no logos.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-#### 2. Scene portraits
-
-Attach: `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-collab-ghoul-portraits.png`
-```
-Cosplay of Draculaura from Monster High. A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a black off-shoulder top with pink lace trim and a bat-wing collar, a black choker with a pink heart and bat charm, pink heart earrings, a small pink heart under one eye, tiny cute vampire fangs, a spooky pink-and-purple glow. Hair: her own jet-black hair with bold hot-pink streaks, in two high bouncy pigtails tied with black bat-shaped bows, a straight blunt fringe. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text, no logos.
-```
-
-#### 3. HD poses
+#### 1. HD poses
 
 Her evening and win-screen poses in Draculaura, Monster High.  
-Attach: `skin-sk-collab-ghoul-posesheet.png` (your finished pose sheet above), then `Solar.png`  
+Attach: `Draculaura Cosplay [sk-collab-ghoul] - pose sheet.png`, then `Solar.png`  
 Save as: `skin-sk-collab-ghoul-hd-<pose>.png` in a folder `Draculaura, Monster High`
 ```
 Cosplay of Draculaura from Monster High. A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face and eyes, with the hair and exactly the outfit of the FIRST attached image (Draculaura, Monster High: a black-and-pink lace top, a pink-and-black tulle skirt with tiny bats and hearts, bat bows in her pigtails). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
@@ -266,16 +67,7 @@ Her main again, street style this time (she already has the shrine-robe Kiriko C
 > **Look bible.** Palette: jacket black, cherry red, fox white and blossom pink. Vibe: a street-style shrine kid: quick, cocky and kind.  
 > Motifs: white foxes, cherry blossoms, blank paper charms and kunai. Light: red and pink neon on a night street. Scene: a neon back alley at night with paper lanterns and a small shrine gate.
 
-#### 1. Pose sheet
-
-Attach: `solar-posesheet.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-collab-sukajan-posesheet.png`
-```
-Cosplay of Sukajan Kiriko from Overwatch. Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: an oversized black-and-red satin souvenir jacket embroidered with a white fox and cherry blossoms on the sleeves, worn slipping off one shoulder, a fitted black crop top, high-waisted wide black cargo pants with red straps, black-and-white sneakers, black fingerless gloves, a kunai holster at the thigh, a small red fox-mask charm at the belt. Hair: her own jet-black hair in a high ponytail with a short blunt fringe, two bright red streaks through the ponytail, tied with a red ribbon. Blank paper ofuda charms (no writing) streaming from her naginata's collar, a fox-mask charm on the haft. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text, no logos.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-#### 2. Scene portraits
+#### 1. Scene portraits
 
 Attach: `Place Prompt Attachments/Solar.png`  
 Save as: `skin-sk-collab-sukajan-portraits.png`
@@ -283,10 +75,10 @@ Save as: `skin-sk-collab-sukajan-portraits.png`
 Cosplay of Sukajan Kiriko from Overwatch. A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: an oversized black-and-red satin souvenir jacket embroidered with a white fox and cherry blossoms, slipping off one shoulder, a fitted black crop top, neon street-night light. Hair: her own jet-black hair in a high ponytail with a short blunt fringe, two bright red streaks through the ponytail, tied with a red ribbon. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text, no logos.
 ```
 
-#### 3. HD poses
+#### 2. HD poses
 
 Her evening and win-screen poses in Sukajan Kiriko, Overwatch.  
-Attach: `skin-sk-collab-sukajan-posesheet.png` (your finished pose sheet above), then `Solar.png`  
+Attach: `Sukajan Kiriko [sk-collab-sukajan] - pose sheet.png`, then `Solar.png`  
 Save as: `skin-sk-collab-sukajan-hd-<pose>.png` in a folder `Sukajan Kiriko, Overwatch`
 ```
 Cosplay of Sukajan Kiriko from Overwatch. A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face and eyes, with the hair and exactly the outfit of the FIRST attached image (Sukajan Kiriko, Overwatch: an oversized black-and-red embroidered souvenir jacket off one shoulder, a black crop top and wide black cargo pants). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
@@ -2730,7 +2522,7 @@ A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload 
 
 **[ ] 28R. Ghoul School** (October)
 The Ghoul School banner's picture (new banner). Make it once these three pose sheets exist.
-Attach: `Banner - style.png`, `skin-sk-collab-ghoul-posesheet.png`, `skin-sk-haechan-collab-wolf-posesheet.png`, `skin-sk-mitsuru-collab-frankie-posesheet.png` (all three when made), then `Solar.png`, `Haechan.png`, `Mitsuru.png`
+Attach: `Banner - style.png`, `Draculaura Cosplay [sk-collab-ghoul] - pose sheet.png`, `skin-sk-haechan-collab-wolf-posesheet.png`, `skin-sk-mitsuru-collab-frankie-posesheet.png` (all three when made), then `Solar.png`, `Haechan.png`, `Mitsuru.png`
 Save as: `banner-ghoul.png`
 ```
 A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload / Persona 5 X key art, matching the art style, finish and energy of the FIRST attached image (a banner from the same set: copy its style only, not its people, outfits, colours or setting). The SAME people as the other attached images, each in EXACTLY the outfit from their attached pose sheet (the outfit sheets come next, in this order, then the character references): Solar (a black off-shoulder top with pink lace and a little bat-wing collar, a layered pink-and-black tulle mini skirt with tiny bats and hearts, black lace-up platform boots, her black hair with hot-pink streaks in two high pigtails tied with bat-shaped bows) front and centre, large, a peace sign by her cheek and a sweet smile showing two tiny fangs; Haechan (a purple-and-black varsity jacket with tan sleeves and a fur collar, a black tee, ripped jeans, a dark brown wolf-ear headband) to the right, one arm slung round her shoulders, grinning and making a playful claw hand; Mitsuru (a cropped mint-green stitched jacket over a black-and-white striped top, a black-and-white plaid mini skirt, small silver bolts at her neck, long red hair with two white streaks) behind on the left, smaller, leaning back against a locker with her arms folded and a cool smile, tiny blue sparks at her fingertips. Setting: a spooky-cute high school hallway at night: pink-and-black lockers, cobwebs in the corners, a huge full moon through a tall arched window, little bats and lightning flickering outside. Dynamic diagonal composition with bold slanted graphic shapes in bubblegum pink, varsity purple, mint green and black (the outfits' own colours), halftone dots and light streaks; the characters overlap a little like a group key visual, shown from about the knees up, faces sharp and detailed. Keep the LEFT third of the image darker and less busy, with no faces there (a title goes there). Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
@@ -2748,7 +2540,7 @@ A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload 
 
 **[ ] 28T. Magical Girls** (April)  
 The Magical Girls banner's picture (new banner `magical`), with three of its outfits. Make it once these three pose sheets exist.  
-Attach: `Banner - style.png`, `skin-sk-collab-sailor-posesheet.png`, `skin-sk-haechan-collab-tuxedo-posesheet.png`, `skin-sk-collab-stella-posesheet.png`, then `Solar.png`, `Haechan.png`  
+Attach: `Banner - style.png`, `Sailor Moon Cosplay [sk-collab-sailor] - pose sheet.png`, `skin-sk-haechan-collab-tuxedo-posesheet.png`, `Stella Cosplay [sk-collab-stella] - pose sheet.png`, then `Solar.png`, `Haechan.png`  
 Save as: `banner-magical.png`
 ```
 A wide landscape 3:2 gacha banner illustration in the style of Persona 3 Reload / Persona 5 X key art, matching the art style, finish and energy of the FIRST attached image (a banner from the same set: copy its style only, not its people, outfits, colours or setting). The SAME people as the other attached images, each in EXACTLY the outfit from their attached pose sheet (the outfit sheets come next, in this order, then the character references): Solar (the moon guardian look: a white sailor-style leotard with a navy collar, a big red bow with a gold crescent brooch, a navy pleated skirt, red boots, a gold tiara, odango buns with very long gold-tipped twin tails) front and centre, large, her pink-and-gold moon wand raised high, a bright brave smile, her twin tails flying; Haechan (the masked hero look: a black tuxedo with tails, a black top hat, a white domino mask, a long black cape lined in red) to the right, the cape sweeping, holding out a single red rose; Solar again (the sun fairy look: a glittering orange halter top and orange-and-pink mini skirt, little gold-edged fairy wings, a gold tiara and long golden hair) behind on the left, smaller, hovering on her little wings with a sun orb glowing in one palm, as a second look of the same girl (same face). Setting: a magical night sky over the city: a huge full moon, a transformation glow of ribbons and sparkles, crescent moons, red rose petals and gold fairy dust swirling in the air. Dynamic diagonal composition with bold slanted graphic shapes in sailor navy, moon gold, rose red and sun orange (the outfits' own colours), halftone dots and light streaks; the characters overlap a little like a group key visual, shown from about the knees up, faces sharp and detailed. Keep the LEFT third of the image darker and less busy, with no faces there (a title goes there). Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.

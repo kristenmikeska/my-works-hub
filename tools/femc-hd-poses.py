@@ -40,7 +40,7 @@ NAMES = {'armscrossed': 'arms-crossed', 'evoker': 'evoker', 'fistpump': 'cheer',
          # Akihiko's and Jungwon's couple victory poses (art batch 143): fist to the sky, boxing stance, hand behind the neck, towel on the
          # shoulder, tie, bow, car keys, two movie tickets, scarf
          'victory': 'victory', 'boxing': 'boxing', 'behindneck': 'neck', 'towel': 'towel', 'adjustingtie': 'tie', 'bow': 'bow',
-         'carkey': 'keys', 'tickets': 'tickets', 'adjustscarf': 'scarf'}
+         'carkey': 'keys', 'tickets': 'tickets', 'adjustscarf': 'scarf', 'hearts': 'heart'}
 AIR = {'jump'}
 # Wardrobe looks with an HD set: look id -> (folder in New Adds, file prefix). Kat names a folder after the outfit.
 # A set may be partial (ChatGPT blocked some poses): the game uses only the poses a set has (FEMC-ART-WIRING).
@@ -87,7 +87,16 @@ LOOKS = {'sk-cp-afterhours': ('Solar-After Hours-Menu Poses', 'afterhr-'),
          'sk-arcana-moon': ('The Moon Poses', 'moon-'),
          'sk-arcana-star': ('The Star Poses', 'star-'),
          'sk-arcana-lovers': ('The Lovers Poses', 'lovers-'),
-         'sk-chapel-rose': ('Black Rose Poses', 'rose-')}
+         'sk-chapel-rose': ('Black Rose Poses', 'rose-'),
+         'sk-chapel-veil': ('Cathedral Veil Poses', 'veil-'),
+         'sk-chapel-vampire': ('Vampire Ball Poses', 'vampire-'),
+         'sk-chapel-picnic': ('Graveyard Picnic Poses', 'graveyard-'),
+         'sk-cottage-meadow': ('Meadow Picnic Poses', 'meadow-'),
+         'sk-cottage-bakery': ('Bakery Morning Poses', 'bakery-'),
+         'sk-cottage-greenhouse': ('Rainy Greenhouse Poses', 'rainy-'),
+         'sk-cottage-harvest': ('Harvest Festival Poses', 'harvest-'),
+         'sk-collab-stella': ('Stella Poses', 'stella-'),
+         'sk-collab-sailor': ('Sailor Moon Poses', 'sailor-')}
 QUALITY, ALPHA_MIN, SPECK = 92, 16, 3
 
 
