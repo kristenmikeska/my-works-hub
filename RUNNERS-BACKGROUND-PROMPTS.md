@@ -23,3 +23,19 @@ Paint the SAME place as the FIRST image at night, in the art style of the SECOND
 
 Night lighting: dark deep-blue night outside the big windows with snow falling through the glow of the streetlamps and the lit shop signs across the street, the café lit only by its warm pendant lamps, string lights and the pastry case, pools of golden light on the wooden tables with soft deep shadows between them, warm reflections in the windows and on the mugs. Late, quiet, almost closing. Leave out all people. No readable text. 16:9, high resolution.
 ```
+
+---
+
+**Found playtesting (Nov 8):** two Manhattan places still borrow another picture. Both are made the usual way: attach `BG - style 1 (Runners).png` and `BG - style 2 (Runners).png`, then paste.
+
+**[ ] R20. The café on Madison Avenue** (it shows the main game's Chagall Café right now)  
+Save as: `epi-r-nyc-cafe.png` (new)
+```
+A wide 16:9 background painting, no people, in the art style of the attached images (semi-realistic digital painting, soft painterly rendering, no outlines or line art). The inside of a small, expensive café on Madison Avenue on the Upper East Side of New York in December, seen from just inside the door: little round white-marble tables with thin brass legs, bentwood chairs, a long counter of pale wood and brass with a gleaming espresso machine and a glass case of pastries and small wrapped cookies, a chalkboard menu with no readable writing, pendant lamps with warm glass shades. Tall front windows steamed up halfway, and through the clear top half a snowy Madison Avenue at dusk: a townhouse façade, a wreath on a black railing, warm lit shop windows across the street, a few snowflakes. A window table for two in the foreground with an iced coffee and a black coffee on it. Warm golden light inside against the cool blue evening outside, quiet, old-money cozy. No text, no logos, no people.
+```
+
+**[ ] R21. The study in the Lee apartment** (it shows the hall right now)  
+Save as: `epi-r-nyc-study.png` (new)
+```
+A wide 16:9 background painting, no people, in the art style of the attached images (semi-realistic digital painting, soft painterly rendering, no outlines or line art). A grand private study in a Fifth Avenue apartment on a gray December afternoon: three walls of floor-to-ceiling dark walnut bookshelves holding thousands of books, rising up into shadow where the lamps don't reach, a rolling library ladder; one long, very tidy walnut desk in the middle with almost nothing on it, a black desk phone, a fountain pen and a yellow legal pad, a green-shaded banker's lamp switched on; behind the desk a shelf of framed awards and a small framed concert program; a leather wing chair, a thick old rug, a radiator under a tall window with snow falling past and the bare trees of Central Park beyond. The door at the side left open about a foot onto a dim hallway. Warm lamplight pooling on the desk, the corners and the high shelves in soft deep shadow, quiet and expensive. No text, no readable book spines, no people.
+```

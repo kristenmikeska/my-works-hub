@@ -460,3 +460,6 @@ Sheets `solar-runners-xmas`, `solar-runners-reception` (+ optional `jaehyun-runn
 
 ### 41. Epilogue side-character faces (Nov 7)
 One portrait folder per sheet, named `<speaker id>-<world>` (marco-runners, mrskwon-runners, mrkwon-runners, han-runners, mrsoh-runners, chungha-runners, grace-runners, sophie-runners, bree-runners, kai-runners; gong-strangers, wu-strangers, mrspark-strangers; dohyun-hoax, yuna-hoax, seoyeon-hoax, minho-hoax, jwmom-hoax), cut with `femc-portraits.py`; add each to the world's `faces` map in world.js (the speaker ids already exist in the scenes and `cast`), a scale.js size and a placements-data.js face centre, then `femc-placements.py`; Kat places them in `mockups/solstice-ui/placements.html`. `han` is also the phone contact Ms. Han: check her avatar picks up the portrait (ui.js faceImg).
+
+### R20 / R21. Manhattan café and study (Nov 8)
+`epi-r-nyc-cafe` → world.js rule `Manhattan · Madison Avenue · Café` (both slots) and the `epi-r-nyc-coffee` activity's `bg`; `epi-r-nyc-study` → the `Manhattan · The Lee Apartment · Study` rule (both slots). WebP q86 native, DATA_V bump.
