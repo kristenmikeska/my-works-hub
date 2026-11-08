@@ -148,7 +148,8 @@
       dohyun: 'Dohyun', yuna: 'Yuna', seoyeon: 'Seoyeon', minho: 'Minho'
     },
     // This world's own faces (core.js worldFace): Solar's HOAX look, the four's HOAX outfits and Solar's parents (FEMC-ART-WIRING).
-    faces: { nana: 'nana-hoax', solar: 'solar-hoax', sakura: 'sakura-hoax', eunchae: 'eunchae-hoax', kazuha: 'kazuha-hoax', chaewon: 'chaewon-hoax', mom: 'kim-mom', dad: 'kim-dad', jungwon: 'jungwon-hoax',
+    faces: { dohyun: 'dohyun-hoax', yuna: 'yuna-hoax', seoyeon: 'seoyeon-hoax', minho: 'minho-hoax', jwmom: 'jwmom-hoax', // FEMC-ART-TODO 41 (Nov 8)
+      nana: 'nana-hoax', solar: 'solar-hoax', sakura: 'sakura-hoax', eunchae: 'eunchae-hoax', kazuha: 'kazuha-hoax', chaewon: 'chaewon-hoax', mom: 'kim-mom', dad: 'kim-dad', jungwon: 'jungwon-hoax',
       // Kat's realistic HOAX set (batch 100): HOAX-only, so the main game keeps their year faces. The ENHYPEN boys were drawn in
       // uniform only, so they wear it everywhere.
       jihoon: 'jihoon-hoax', cherry: 'cherry-hoax', asahi: 'asahi-hoax', hyunsuk: 'hyunsuk-hoax', jaehyuk: 'jaehyuk-hoax', junkyu: 'junkyu-hoax',

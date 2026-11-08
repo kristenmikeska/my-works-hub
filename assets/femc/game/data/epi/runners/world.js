@@ -207,6 +207,9 @@
       mark: 'mark-runners', minji: 'minji-runners', hanni: 'hanni-runners', hyein: 'hyein-runners', danielle: 'danielle-runners', jaemin: 'jaemin-runners',
       doyoung: 'doyoung-runners', olivia: 'olivia-runners', haerin: 'haerin-runners', chenle: 'chenle-runners', jaehyun: 'jaehyun-runners', jeno: 'jeno-runners',
       dad: 'jaesang-runners', mom: 'solji-runners',
+      // Side characters (FEMC-ART-TODO 41, Nov 8): Ms. Han is also her phone contact.
+      marco: 'marco-runners', mrskwon: 'mrskwon-runners', mrkwon: 'mrkwon-runners', han: 'han-runners', mrsoh: 'mrsoh-runners',
+      chungha: 'chungha-runners', grace: 'grace-runners', sophie: 'sophie-runners', bree: 'bree-runners', kai: 'kai-runners',
       jisung: 'jisung-runners', renjun: 'renjun-runners', yerim: 'yerim-runners' }, // Solar's parents, Jaesang and Solji
     // Event outfits (core.js eventFaces; FEMC-ART-WIRING "Extras"): an event's `faces: '<key>'` swaps these in for its scenes only.
     // Kat's realistic Runners outfits (batch 102), back from the parked list in the new style; Jisung's sweater is new.
@@ -215,7 +218,9 @@
         minji: 'minji-runners-holiday', mark: 'mark-runners-holiday', jaehyun: 'jaehyun-runners-holiday', chenle: 'chenle-runners-holiday',
         jaemin: 'jaemin-runners-holiday', danielle: 'danielle-runners-holiday', jisung: 'jisung-runners-holiday' }, // epi-r-holiday (12/19, the Sigma party)
       'runners-regionals': { solar: 'solar-runners-regionals', minji: 'minji-runners-regionals', olivia: 'olivia-runners-regionals', haerin: 'haerin-runners-regionals',
-        chenle: 'chenle-runners-regionals' } // epi-r-regionals-1 / -2 (12/6-12/7)
+        chenle: 'chenle-runners-regionals' }, // epi-r-regionals-1 / -2 (12/6-12/7)
+      'runners-xmas': { solar: 'solar-runners-xmas' }, // epi-r-christmas-eve (12/24, the green velvet; a { faces: null } line where she changes)
+      'runners-reception': { solar: 'solar-runners-reception' } // epi-r-reception (12/25, navy and pearls)
     },
     variants: {
       // Manhattan (the Manhattan pass; epilogue.js line() reads nyc.<path> first once places.phases' Manhattan phase starts).

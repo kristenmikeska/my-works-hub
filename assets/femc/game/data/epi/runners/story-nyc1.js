@@ -1011,7 +1011,7 @@
   ] },
 
   // ───────────────────────────── 12/24, evening: Christmas Eve (canon 96, the dinner) ─────────────────────────────
-  { id: 'epi-r-christmas-eve', date: '12/24', slot: 'evening', consumes: true, title: 'christmas eve', place: 'Manhattan · The Lee Apartment · Dining Room', time: 'Evening', scene: [
+  { id: 'epi-r-christmas-eve', date: '12/24', slot: 'evening', consumes: true, faces: 'runners-xmas', title: 'christmas eve', place: 'Manhattan · The Lee Apartment · Dining Room', time: 'Evening', scene: [
     { music: 'epi-r-evening' },
     { n: "The green dress had been taken in. Her mother had stood behind her in the mirror at five o'clock with a pin in her mouth, out of habit, because there was nothing left to pin, and looked at the velvet sitting exactly where it was supposed to sit on her daughter's shoulders and said *there she is,* the way she said it every year, as though Solar were a thing that had been misplaced since August and found at last in the right drawer." },
     { n: "It had snowed a little since four, not much, the fine dry kind that made Fifth Avenue look sifted, and the dining room had been set for eleven. The long table, the good silver, a runner of white flowers and cedar down the middle that made the whole room smell like a forest that had been to finishing school. The dining room sounded terrible. It always had. Anything you said in it came back at you off the ceiling a half-beat later, slightly too loud, so that every person who'd ever eaten in that room had learned to speak a little quieter than they meant to." },
@@ -1096,6 +1096,7 @@
       ], contact: 'minjibear' }
     ] },
     { ifEpiRoute: 'cover', then: [
+      { faces: null }, // out of the green velvet (Kat's 12/24 faces end here)
       { n: "Nobody was coming. She'd known that since the PDF. She went and took the dress off and hung it on the back of the door, and put on jeans and the gray coat, because the apartment was too quiet to stay in and the snow was still coming down outside, fine and dry, and she wanted to walk somewhere that wasn't eleven rooms." }
     ] }
   ] },
@@ -1579,7 +1580,7 @@
   ] },
 
   // ───────────────────────────── 12/25, after: the Lee Foundation reception ─────────────────────────────
-  { id: 'epi-r-reception', date: '12/25', slot: 'after', consumes: true, title: 'one hundred and forty', place: 'Manhattan · Lee Foundation Reception', time: 'Daytime', scene: [
+  { id: 'epi-r-reception', date: '12/25', slot: 'after', consumes: true, faces: 'runners-reception', title: 'one hundred and forty', place: 'Manhattan · Lee Foundation Reception', time: 'Daytime', scene: [
     { music: 'epi-r-day' },
     { n: "The Lee Foundation Christmas Reception was a hundred and forty people in a long room on Fifth Avenue with a string quartet in the corner and about nine photographers, and it started at two and ran to five, and it had happened on the twenty-fifth of December every year of her life. For the first eleven years of it she'd believed it was Christmas." },
     { n: "The wardrobe note had said *navy, long sleeve, the pearl studs, no velvet twice in two days.* She'd read the whole wardrobe note this time. Her mother had looked at her in the doorway of the car at quarter past one, navy, long sleeve, pearls, and said nothing at all, which was a review." },

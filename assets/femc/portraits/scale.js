@@ -289,11 +289,28 @@ window.FEMC_PORTRAIT_SCALE = {
   'jay-hoax-newyear': 0.83,
   'niki-hoax-newyear': 0.8,
   'sunghoon-hoax-newyear': 0.83,
-  'sunoo-hoax-newyear': 0.83
+  'sunoo-hoax-newyear': 0.83,
+  'solar-runners-xmas': 0.94, // Nov 8: Kat's realistic sheet, sized by face height to the cast
+  'solar-runners-reception': 0.82, // Nov 8: Kat's realistic sheet, sized by face height to the cast
+  'marco-runners': 1.03, // Nov 8: Kat's realistic sheet, sized by face height to the cast
+  'mrskwon-runners': 0.94, // Nov 8: Kat's realistic sheet, sized by face height to the cast
+  'mrkwon-runners': 0.97, // Nov 8: Kat's realistic sheet, sized by face height to the cast
+  'han-runners': 0.99, // Nov 8: Kat's realistic sheet, sized by face height to the cast
+  'mrsoh-runners': 1.02, // Nov 8: Kat's realistic sheet, sized by face height to the cast
+  'chungha-runners': 1.01, // Nov 8: Kat's realistic sheet, sized by face height to the cast
+  'grace-runners': 1.05, // Nov 8: Kat's realistic sheet, sized by face height to the cast
+  'sophie-runners': 1.02, // Nov 8: Kat's realistic sheet, sized by face height to the cast
+  'bree-runners': 1.08, // Nov 8: Kat's realistic sheet, sized by face height to the cast
+  'kai-runners': 1.15, // Nov 8: Kat's realistic sheet, sized by face height to the cast
+  'dohyun-hoax': 1.05, // Nov 8: Kat's realistic sheet, sized by face height to the cast
+  'yuna-hoax': 0.99, // Nov 8: Kat's realistic sheet, sized by face height to the cast
+  'seoyeon-hoax': 1.1, // Nov 8: Kat's realistic sheet, sized by face height to the cast
+  'minho-hoax': 1.16, // Nov 8: Kat's realistic sheet, sized by face height to the cast
+  'jwmom-hoax': 1.02, // Nov 8: Kat's realistic sheet, sized by face height to the cast
 };
 
 /* Per-character drop: moves a portrait down by this share of its height, cropping the bottom (Kat, 2026-10-25). */
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 33;
+window.FEMC_PORTRAIT_V = 34;

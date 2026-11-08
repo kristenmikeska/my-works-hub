@@ -456,10 +456,10 @@ Still to wire:
 
 
 ### 40. Runners Christmas faces (Nov 7)
-Sheets `solar-runners-xmas`, `solar-runners-reception` (+ optional `jaehyun-runners-xmas`, `-reception`) → `femc-portraits.py` / the event-faces cut like `runners-holiday` (portraits/<id>/, scale.js, placements: borrow the base id's), then `data/epi/runners/world.js eventFaces`: `'runners-xmas': { solar, jaehyun }` and `'runners-reception': { solar, jaehyun }`, and `faces: 'runners-xmas'` on `epi-r-christmas-eve` (story-nyc1), `faces: 'runners-reception'` on `epi-r-reception`. DATA_V bump.
+Solar's two are in (batch 148): `solar-runners-xmas` / `-reception`, world.js eventFaces `runners-xmas` / `runners-reception`, `faces:` on `epi-r-christmas-eve` (a `{ faces: null }` line where she changes out of the velvet on the cover route) and `epi-r-reception`. Jaehyun's optional two: add `jaehyun: 'jaehyun-runners-xmas'` / `-reception` to those two maps after the usual cut (`femc-sheet-alpha.py` + `femc-portraits.py --same-scale`, scale.js by face height, placements-data.js), DATA_V bump.
 
 ### 41. Epilogue side-character faces (Nov 7)
-One portrait folder per sheet, named `<speaker id>-<world>` (marco-runners, mrskwon-runners, mrkwon-runners, han-runners, mrsoh-runners, chungha-runners, grace-runners, sophie-runners, bree-runners, kai-runners; gong-strangers, wu-strangers, mrspark-strangers; dohyun-hoax, yuna-hoax, seoyeon-hoax, minho-hoax, jwmom-hoax), cut with `femc-portraits.py`; add each to the world's `faces` map in world.js (the speaker ids already exist in the scenes and `cast`), a scale.js size and a placements-data.js face centre, then `femc-placements.py`; Kat places them in `mockups/solstice-ui/placements.html`. `han` is also the phone contact Ms. Han: check her avatar picks up the portrait (ui.js faceImg).
+Runners and HOAX are in (batch 148). Left: strangers `gong-strangers`, `wu-strangers`, `mrspark-strangers`: cut the same way (`femc-sheet-alpha.py <sheet> Gong-Strangers` … then `femc-portraits.py --same-scale <ids> <ids>`), add to strangers/world.js `faces` (speaker ids as in the scenes), scale.js (face height to the cast, see batch 148's lines), placements-data.js face centre + SOLSTICE_WORLDS, `femc-placements.py`; Kat places them in `mockups/solstice-ui/placements.html`.
 
 ### R20 / R21. Manhattan café and study (Nov 8)
 `epi-r-nyc-cafe` → world.js rule `Manhattan · Madison Avenue · Café` (both slots) and the `epi-r-nyc-coffee` activity's `bg`; `epi-r-nyc-study` → the `Manhattan · The Lee Apartment · Study` rule (both slots). WebP q86 native, DATA_V bump.

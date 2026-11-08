@@ -4,7 +4,7 @@
 
 **Order for each outfit:** 1. pose sheet → 2. scene portraits → 3. HD poses (only what's still missing is listed). **Banner art** is at the bottom: make a banner once its outfits exist.
 
-**What's here (Nov 7, after art batch 147):** 56 pose sheets and 60 scene-portrait sheets (the collab outfits, Kat's 47 new outfits, plus faces for Off-Day Hoodie, Beanie & Apron and Gekkoukan Uniform), 95 HD pose sets, 14 banner pictures (8 older, 6 for the new banners: Ghoul School, Anime Night, Magical Girls, Wonderland, Live Concert, Pastel Ponies).
+**What's here (Nov 8, after art batch 148):** 56 pose sheets and 60 scene-portrait sheets (the collab outfits, Kat's 47 new outfits, plus faces for Off-Day Hoodie, Beanie & Apron and Gekkoukan Uniform), 94 HD pose sets, 14 banner pictures (8 older, 6 for the new banners: Ghoul School, Anime Night, Magical Girls, Wonderland, Live Concert, Pastel Ponies).
 
 **How:** open a new ChatGPT message, attach the files on the **Attach** line in that order (all in `Femc Mode Images/`, mostly `Place Prompt Attachments/`), paste the prompt, send. Save into **New Adds** under its **Save as** name (HD poses: a folder per outfit) and tell Claude. One picture per message.
 
@@ -43,22 +43,6 @@ Kat likes it; saved for a later series.
 ### Collab outfits
 
 Cosplay looks (it's a fan game). The prompts describe the outfits only by how they look: no logos, no printed names. Order for each: pose sheet, then scene portraits, then HD poses. Five are couple sets with Haechan or Jungwon: make both pose sheets of a set in the same chat so the colours match.
-
-### Draculaura, Monster High · `sk-collab-ghoul`
-
-Couple set with Haechan's Clawd. The sweet vampire in pink and black, bat bows and heart details; black pigtails with hot-pink streaks.
-
-> **Look bible.** Palette: bubblegum pink, black, lace white and cherry red. Vibe: a sweet vampire: cute, pink and a little spooky.  
-> Motifs: tiny bats, pink hearts, black lace and sparkles. Light: a pink neon glow in the dark. Scene: a spooky-cute high school hallway at night, pink-and-black lockers.
-
-#### 1. HD poses
-
-Her evening and win-screen poses in Draculaura, Monster High.  
-Attach: `Draculaura Cosplay [sk-collab-ghoul] - pose sheet.png`, then `Solar.png`  
-Save as: `skin-sk-collab-ghoul-hd-<pose>.png` in a folder `Draculaura, Monster High`
-```
-Cosplay of Draculaura from Monster High. A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face and eyes, with the hair and exactly the outfit of the FIRST attached image (Draculaura, Monster High: a black-and-pink lace top, a pink-and-black tulle skirt with tiny bats and hearts, bat bows in her pigtails). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
 
 ### Sukajan Kiriko, Overwatch · `sk-collab-sukajan`
 

@@ -96,7 +96,8 @@ LOOKS = {'sk-cp-afterhours': ('Solar-After Hours-Menu Poses', 'afterhr-'),
          'sk-cottage-greenhouse': ('Rainy Greenhouse Poses', 'rainy-'),
          'sk-cottage-harvest': ('Harvest Festival Poses', 'harvest-'),
          'sk-collab-stella': ('Stella Poses', 'stella-'),
-         'sk-collab-sailor': ('Sailor Moon Poses', 'sailor-')}
+         'sk-collab-sailor': ('Sailor Moon Poses', 'sailor-'),
+         'sk-collab-ghoul': ('Draculaura Poses', 'drac-')}
 QUALITY, ALPHA_MIN, SPECK = 92, 16, 3
 
 
