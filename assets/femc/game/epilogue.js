@@ -80,10 +80,10 @@ window.FemcEpilogue = (() => {
   const S = () => G.S, UI = () => W.FemcGameUI;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const clone = o => JSON.parse(JSON.stringify(o));
-  const DATA_V = 70; // data/epi/<world>/*.js ?v=
+  const DATA_V = 71; // data/epi/<world>/*.js ?v=
   // The worlds: the year's route flag that opens each, its name (the button) and place (slot labels), its data files.
   const WORLDS = {
-    runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3', 'story-home', 'story-time', 'people-time', 'story-nyc1', 'story-nyc2', 'people-nyc', 'phone', 'alerts', 'texts-up'] },
+    runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3', 'story-home', 'story-time', 'people-time', 'story-nyc1', 'story-nyc2', 'people-nyc', 'phone', 'alerts', 'texts-up', 'sugram-history', 'sugram'] },
     strangers: { id: 'strangers', flag: 'route-S', name: 'strangers', place: 'Incheon', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-w2', 'story-w3', 'story-end', 'story-home', 'people-night', 'people-time', 'story-car', 'people-girls', 'people-late', 'people-heat', 'phone', 'texts-up'] },
     hoax: { id: 'hoax', flag: 'route-H', name: 'HOAX', place: 'Hanlim', files: ['calendar', 'world', 'glitches', 'people', 'people-crew', 'story-w1', 'story-party', 'story-w2', 'story-w3', 'story-end', 'phone', 'story-days', 'people-late', 'people-crew-late', 'texts-more', 'story-nana', 'people-last', 'people-extra', 'texts-nana', 'alerts', 'texts-up'] },
     // Batch 8: Stay's reverse epilogue (Iwatodai is home) and the true ending's coda (three small days, one per world).
@@ -393,7 +393,7 @@ window.FemcEpilogue = (() => {
       const s = S(), a = alertDue(s);
       if (!a || !UI().newsAlert || document.querySelector('.gs:not(.out), .g-dh, .g-datecard, .g-statup, .gs-rank, .g-epi-card, .g-phone-ov:not(.out)')) return;
       if (!UI().newsAlert(a)) return;
-      (s.epi.alerts ||= []).push(a.id); s.epi.alertDay = s.day; G.saveQuiet();
+      (s.epi.alerts ||= []).push(a.id); s.epi.alertDay = s.day; W.FemcSugram?.log(a.id); G.saveQuiet();
     }, 900);
   }
   // resume: a snapshot from a fight in this event (batch 6), when the scene is rebuilt after it (a reload, or the fight's own way back).

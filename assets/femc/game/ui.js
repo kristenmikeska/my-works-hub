@@ -233,7 +233,7 @@
       el.classList.add('out'); setTimeout(() => el.remove(), 260);
       if (document.querySelector('.gs:not(.out), .g-dh')) return;
       document.querySelectorAll('.g-phone-ov:not(.out) [data-close]').forEach(b => b.click());
-      openPhone();
+      openPhone(window.FemcSugram?.has() ? { gram: a.id } : undefined); // SUgram: straight to the post (Nov 7)
     };
     el.addEventListener('click', go);
     el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); go(); } });
@@ -295,7 +295,7 @@
     // The Memories album (menu.js): every CG a live scene shows is kept in S.album.cg (a replay never calls this).
     seeCg: id => { const a = S().album ||= { v: 1 }; const list = a.cg ||= []; if (id && !list.includes(id)) { list.push(id); G.saveQuiet(); } },
     // …and every post line ({ img: 'post-…' }) in S.album.posts, picture or not yet (Nov 3 2026: the album's Runners posts).
-    seePost: id => { const a = S().album ||= { v: 1 }; const list = a.posts ||= []; if (id && !list.includes(id)) { list.push(id); G.saveQuiet(); } }
+    seePost: id => { const a = S().album ||= { v: 1 }; const list = a.posts ||= []; window.FemcSugram?.log(id); if (id && !list.includes(id)) { list.push(id); G.saveQuiet(); } }
   });
   SC.init(bridge);
 
@@ -1849,14 +1849,20 @@
     /* The phone's apps (2026-11-01): Messages, Who's Free (P5X-style: who's at their spot today and the next few days) and
        Contacts (a card per met link). The tab strip sits at the top of each list; a contact card's ‹ goes back to Contacts. */
     let tab = 'msgs';
-    const tabsHtml = () => `<nav class="g-ph-tabs" aria-label="Phone apps">${(EPI ? [['msgs', 'Messages'], ['people', 'Contacts']] : [['msgs', 'Messages'], ['free', 'Who’s free'], ['jobs', 'Jobs'], ['people', 'Contacts']]).map(([k, t]) => `<button type="button" data-tab="${k}"${tab === k ? ' class="on" aria-current="page"' : ''}>${t}</button>`).join('')}</nav>`;
-    const wireTabs = () => body.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { if (b.dataset.tab === tab) return; tab = b.dataset.tab; G.sfx('femc-click'); home(); focusIn(body.querySelector(`[data-tab="${tab}"]`)); }));
-    const home = () => (tab === 'free' ? freeApp() : tab === 'jobs' ? jobsApp() : tab === 'people' ? (EPI ? epiPeople() : peopleApp()) : list());
+    const tabsHtml = () => `<nav class="g-ph-tabs" aria-label="Phone apps">${(EPI ? [['msgs', 'Messages'], ...(window.FemcSugram?.has() ? [['gram', `SUgram${FemcSugram.unread() ? ' •' : ''}`]] : []), ['people', 'Contacts']] : [['msgs', 'Messages'], ['free', 'Who’s free'], ['jobs', 'Jobs'], ['people', 'Contacts']]).map(([k, t]) => `<button type="button" data-tab="${k}"${tab === k ? ' class="on" aria-current="page"' : ''}>${t}</button>`).join('')}</nav>`;
+    const wireTabs = () => body.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { if (b.dataset.tab === tab) return; tab = b.dataset.tab; delete title.dataset.gram; G.sfx('femc-click'); home(); focusIn(body.querySelector(`[data-tab="${tab}"]`)); }));
+    const home = () => (tab === 'gram' ? gramApp() : tab === 'free' ? freeApp() : tab === 'jobs' ? jobsApp() : tab === 'people' ? (EPI ? epiPeople() : peopleApp()) : list());
     const face = id => { const pic = G.portrait(id, 'neutral'); return `<i>${pic ? `<img src="${pic}" alt="">` : esc((G.LINKS[id]?.short || '?')[0])}</i>`; };
     const rkChip = l => { const p = G.progress(l.id); return `<em class="g-ph-rk">${G.isMaxed(l) ? 'MAX' : `R${p.rank}`}${p.route === 'romance' ? ' <span class="g-ph-heart" aria-label="romance">♥</span>' : ''}</em>`; };
     const hintChip = h => (h && h.label && h.key !== 'max' ? `<small class="g-ph-hint k-${h.key}">${esc(h.label)}</small>` : '');
     const atFree = () => /\bis-(map|city|area|dorm)\b/.test(main.className) && !document.querySelector('.gs:not(.out)');
     const slotWord = (slot, info) => (slot === 'evening' ? 'Evening' : info.type === 'school' || info.type === 'exam' ? 'After school' : 'Daytime');
+    // SUgram (Nov 7 2026; sugram.js documents it): the Runners epilogue's third app. gram = a post key to open on top of the feed.
+    const gramApp = (gram) => {
+      stop(); delete title.dataset.card;
+      reply.replaceChildren(); compose.hidden = true; bar.innerHTML = ''; bar.hidden = true;
+      window.FemcSugram.open({ body, title, back, tabsHtml, wireTabs }, { post: gram });
+    };
     const freeApp = () => {
       stop();
       title.textContent = 'Who’s free'; back.hidden = true; reply.replaceChildren(); compose.hidden = true; bar.innerHTML = ''; bar.hidden = true;
@@ -2176,11 +2182,12 @@
       play(id, th.length - fresh, () => replies(id));
       if (!o.el.classList.contains('g-ph-playing') && !reply.firstChild) focusIn(back);
     };
-    back.addEventListener('click', () => { topicFor = null; if (title.dataset.card) { delete title.dataset.card; tab = cardFrom; } else tab = 'msgs'; home(); focusIn(body.querySelector('.g-ph-row') || body.querySelector('[data-tab]')); });
+    back.addEventListener('click', () => { topicFor = null; if (tab === 'gram' && title.dataset.gram && window.FemcSugram?.back()) return; delete title.dataset.gram; if (title.dataset.card) { delete title.dataset.card; tab = cardFrom; } else tab = 'msgs'; home(); focusIn(body.querySelector('.g-ph-row') || body.querySelector('[data-tab]')); });
     // A tap on the conversation, or Enter / Space on it, fast-forwards what's still arriving.
     body.addEventListener('click', () => anim.skip?.());
     o.el.addEventListener('keydown', e => { if (anim.skip && (e.key === 'Enter' || e.key === ' ') && !e.target.closest?.('button:not([data-skip])')) { e.preventDefault(); anim.skip(); } });
-    if (thread) open(thread); else { list(); focusIn(body.querySelector('.g-ph-row') || $p('[data-close]')); }
+    if (thread && typeof thread === 'object' && thread.gram && window.FemcSugram?.has()) { tab = 'gram'; gramApp(thread.gram === true ? null : thread.gram); focusIn(body.querySelector('[data-tab="gram"]')); }
+    else if (thread && typeof thread === 'string') open(thread); else { list(); focusIn(body.querySelector('.g-ph-row') || $p('[data-close]')); }
   }
 
   /* ── Shops ── */

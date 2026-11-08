@@ -255,3 +255,45 @@
 .g-pola.reduced *, .g-pola.reduced { animation-duration: .01s !important; animation-delay: 0s !important; }
 @keyframes g-pola-dim { from { opacity: 0; } }
 @keyframes g-pola-drop { from { opacity: 0; transform: translateY(-40px) rotate(-12deg) scale(1.08); } }
+
+/* SUgram (Nov 7 2026; sugram.js): the Runners phone's third app. Three tabs when it's there. */
+.g-phone-ov[data-world] .g-ph-tabs:has(> [data-tab="gram"]) { grid-template-columns: 1fr 1fr 1fr; }
+.g-sg { display: grid; gap: 14px; color: var(--ph-ink); }
+.g-sg .g-sg-lede { margin: 6px 2px; font-size: 13px; opacity: .7; }
+.g-sg-sep { margin: 8px 0 -4px; font: 700 12px/1 system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; opacity: .6; }
+.g-sg-post { background: var(--ph-bar); border-radius: 12px; overflow: hidden; box-shadow: 0 1px 0 rgba(0, 0, 0, .06); }
+.g-sg-post > header { padding: 8px 10px; }
+.g-sg-who, .g-sg-cmu { all: unset; cursor: pointer; }
+.g-sg-who { display: flex; align-items: center; gap: 8px; }
+.g-sg-who span { display: grid; line-height: 1.15; }
+.g-sg-who b { font-size: 13px; }
+.g-sg-who small { font-size: 11px; opacity: .6; }
+.g-sg-who:focus-visible, .g-sg-cmu:focus-visible { outline: 2px solid var(--ph-acc); outline-offset: 2px; border-radius: 4px; }
+.g-sg-av { display: grid; place-items: center; width: 32px; height: 32px; flex: none; border-radius: 50%; overflow: hidden; background: var(--ph-acc); color: #fff; font: 700 14px/1 system-ui, sans-serif; box-shadow: 0 0 0 2px var(--ph-bar), 0 0 0 3.5px var(--ph-acc); }
+.g-sg-av img { width: 100%; height: 100%; object-fit: cover; }
+.g-sg-av.big { width: 64px; height: 64px; font-size: 26px; }
+.g-sg-pics { display: flex; aspect-ratio: 4 / 5; background: #111; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.g-sg-pics::-webkit-scrollbar { display: none; }
+.g-sg-pics img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; scroll-snap-align: start; }
+.g-sg-count { display: block; padding: 4px 10px 0; font-size: 11px; opacity: .55; }
+.g-sg-text { display: grid; place-items: center; aspect-ratio: 4 / 3; padding: 18px; background: linear-gradient(150deg, var(--ph-acc), var(--ph-acc-2)); color: #fff; }
+.g-sg .g-sg-text p { margin: 0; font: 600 16px/1.35 system-ui, sans-serif; text-align: center; }
+.g-sg-acts { display: flex; align-items: center; gap: 8px; padding: 6px 10px 2px; font-size: 13px; }
+.g-sg-heart { all: unset; cursor: pointer; font-size: 22px; line-height: 1; color: var(--ph-ink); }
+.g-sg-heart.on { color: var(--ph-acc); }
+.g-sg-heart:focus-visible { outline: 2px solid var(--ph-acc); border-radius: 4px; }
+.g-sg .g-sg-cap, .g-sg .g-sg-cms { margin: 2px 10px 6px; font-size: 13px; line-height: 1.35; }
+.g-sg-cms { padding: 0; list-style: none; display: grid; gap: 3px; }
+.g-sg-cmu { font-weight: 700; }
+.g-sg-more, .g-sg-load { all: unset; cursor: pointer; display: block; margin: 0 10px 10px; font-size: 12px; opacity: .65; }
+.g-sg-load { justify-self: center; margin: 0 0 6px; padding: 8px 18px; border-radius: 999px; background: var(--ph-acc); color: #fff; opacity: 1; font-weight: 700; }
+.g-sg-more:focus-visible, .g-sg-load:focus-visible { outline: 2px solid var(--ph-acc); outline-offset: 2px; }
+.g-sg-ph { display: flex; gap: 12px; align-items: center; padding: 4px 2px 8px; }
+.g-sg-ph b { display: block; font-size: 15px; }
+.g-sg-ph small { font-size: 12px; opacity: .6; }
+.g-sg .g-sg-ph p { margin: 4px 0 0; font-size: 12px; line-height: 1.35; }
+.g-sg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.g-sg-grid button { all: unset; cursor: pointer; aspect-ratio: 1; overflow: hidden; background: linear-gradient(150deg, var(--ph-acc), var(--ph-acc-2)); color: #fff; display: grid; place-items: center; }
+.g-sg-grid img { width: 100%; height: 100%; object-fit: cover; }
+.g-sg-grid span { padding: 6px; font-size: 10px; line-height: 1.2; text-align: center; }
+.g-sg-grid button:focus-visible { outline: 3px solid var(--ph-acc); outline-offset: -3px; }
