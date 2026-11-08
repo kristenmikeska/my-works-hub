@@ -10,6 +10,8 @@
      epi-r-butterfly    12/17 evening  the dark lab, a blue butterfly in December; Haechan says it out loud (every route)
      epi-r-clocks       12/18 early    every clock in the Alpha house at 12:00, the girls see it; Ms. Han's deadline
      epi-r-unheard      12/18 late     fight 3, visible, unheard: the bell tower at midnight; they see her, nobody hears her
+                        (Nov 7, Kat: longer: the walk out of the house after epi-r-what-tells, the wait, then Haechan on the tower
+                        steps and the porch; told / lied branches read epi-r-told-girls; the fight is unchanged)
      epi-r-holiday      12/19 evening  the Sigma holiday party; the midnight toast; fight 4, one second of contact; the footage
      epi-r-footage      12/19 late     Danielle's footage shows something impossible; her choice (the year decides it)
      epi-r-first-snow   12/20 early    the first snow, finals closed, the last SUnews post face down; the bag
@@ -356,15 +358,33 @@
   ] },
 
   // ───────────────────────────── 12/18, late: unheard (fight 3) ─────────────────────────────
-  { id: 'epi-r-unheard', date: '12/18', slot: 'late', title: 'unheard', place: 'Syracuse · The Quad', time: 'Late Night', scene: [
+  { id: 'epi-r-unheard', date: '12/18', slot: 'late', title: 'unheard', place: 'Syracuse · Alpha Phi House · Stairs', time: 'Late Night', scene: [
     { music: 'epi-r-half' },
-    { n: "She didn't wait for it to find her in her room. She couldn't. She put her coat on over her pajamas at a quarter to twelve and went out into the cold, onto the quad, because if it was going to happen she wanted it to happen somewhere with sky over it." },
+    // Nov 7 (Kat: more of a way out of the girls' room, and a longer ending): the walk out picks up from epi-r-what-tells
+    // (story-home.js, 12/18 evening), the wait under the tower, and after the fight Haechan, the steps, the porch.
+    { ifFlag: 'epi-r-told-girls', then: [
+      { n: "The hallway was dark and the house was asleep, really asleep, finals-asleep, the kind where a whole floor of girls has finally stopped pretending they'll get up at five and review. Behind her, through the door she hadn't quite shut, Hyein breathed through her mouth with her arm still held out across the pillow, the list on it facing the ceiling, four lines now instead of three." },
+      { n: "She went down the stairs counting. Not because she was scared of them, she told herself, but because Hyein had heard her count them on Tuesday and she wanted to know what number they were supposed to be. Fourteen to the landing. Fourteen. The banister was a banister. The carpet was carpet. The grandfather clock at the bottom said 12:00, the way it had said it all day, patient, like it was waiting for everything else to catch up." }
+    ], else: [
+      { n: "She stopped outside Hanni's door with her coat over her arm. There was no light under it. She lifted her hand, *you knock, you don't text, you knock,* and held it there an inch from the wood, and the house was so quiet she could hear the radiator at the end of the hall ticking like something counting down." },
+      { n: "If the floor went green under somebody tonight, it wasn't going to be under them. She'd already decided that, in the dark, in her father's voice, and the trouble with deciding things in his voice was that they stayed decided. She put her hand down. She went down the stairs without counting them, which was its own kind of lie." }
+    ] },
+    { n: "Her boots were where she always kicked them, by the front door under the coat hooks, one on its side. She sat on the bottom step and laced them over her pajama legs, double knots, the way you tie them when you're not sure what you're about to have to walk through, and put her coat on, and didn't bother with a hat, and let herself out." },
+    { place: 'Syracuse · Alpha Phi House · Porch', time: 'Late Night', soft: true },
+    { n: "Eleven degrees. The cold got into her teeth before she was off the porch. The snow had stopped and the street was a white held breath under the lamps, every parked car wearing a smooth inch of it, nobody's footprints on anything, and her own went down the steps and out into the middle of it like the first sentence of something." },
+    { n: "If it was going to happen, she wanted it to happen somewhere with sky over it. Somewhere wide. Somewhere nobody she loved was asleep." },
     { ifEpiRoute: 'haechan', then: [
       { phone: [{ from: 'solar', t: 'quad. bell tower. now' }, { from: 'haechan', t: 'coming' }], contact: 'haechanah' }
     ], else: [
       { phone: [{ from: 'solar', t: 'quad. bell tower. you said while' }, { from: 'haechan', t: 'coming' }], contact: 'haechanah' }
     ] },
-    { n: "The bell tower said a quarter to twelve, and then ten to, and then it said midnight, and the first stroke rang out over the snow, and the second didn't." },
+    { n: "*Coming.* Six letters, no punctuation, sent before she'd put the phone back in her pocket. She walked faster." },
+    { place: 'Syracuse · The Quad', time: 'Late Night', soft: true },
+    { n: "Campus at a quarter to midnight in finals week was empty in the way a stage is empty after the audience leaves, every lamp still on for nobody. The library's top floor was lit. One window in the dorms across the way had a string of fairy lights in it, blinking out of time. Her boots squeaked in the snow and it was the loudest thing for a mile." },
+    { n: "She stood at the foot of the bell tower with her bare hands in her pockets and her breath going up white and looked at the clock face, lit gold against the dark, telling the right time like it had never once considered telling any other." },
+    { n: "On Tuesday Akihiko hadn't turned around. She kept coming back to that. The back of his head on the stairs, the dog barking at the step she was standing on, *Koro, what is it, there's nothing there.* She'd been nothing there. She'd shouted his name into it and it had landed nowhere." },
+    { n: "She didn't know what she wanted tonight. To be seen. Not to be. To go. To stay. She stood in the snow and found that she wanted all of them at once, and that this was probably the most honest she'd been with herself since the first of December." },
+    { n: "The bell tower said ten to, and then five to, and then it said midnight, and the first stroke rang out over the snow, and the second didn't." },
     { glitch: { stage: 4 } },
     { dark: true },
     { n: "The quad was green. The lamps were out. The bell tower went up and up and didn't stop, stone giving way to something black-and-gold and impossibly tall, and all along the paths there were coffins, standing upright in the snow where students should have been walking home." },
@@ -388,7 +408,71 @@
     { n: "Her name. Not princess. Not pretty. The real one, which he only ever used when he'd stopped performing altogether, and he was kneeling in the snow in a hoodie with no coat, out of breath, his hands on her shoulders like he was checking she was a solid object." },
     { s: 'haechan', f: 'serious', t: "You weren't here. I got here on the first bell and you weren't here, and then you were. You were *gone*, I was standing where you're standing." },
     { s: 'solar', f: 'sad', t: "They kept my room." },
-    { n: "He didn't know what that meant. He didn't ask. He pulled her up out of the snow and put his hoodie on her over her coat, which made no sense and which she didn't argue with, and walked her back to Alpha with his arm around her the whole way, the bell tower behind them telling the right time." },
+    { n: "He didn't know what that meant. He didn't ask. He looked at her hands instead, bare and red and shaking, and took them both in his and held them against his chest inside the front of his hoodie, where it was warm, and stood like that, kneeling in the snow, as if that were a normal thing to do at midnight on a quad." },
+    { s: 'haechan', f: 'neutral', t: "Four minutes." },
+    { s: 'solar', f: 'surprised', t: "What?" },
+    { s: 'haechan', f: 'neutral', t: "First bell to you. I timed it." },
+    { n: "Of course he had. He'd stood here on a stopwatch while she was gone, looking at the snow where she should have been, and there'd been nothing in it, not even footprints, and he'd timed it, because timing it was something to do with his hands that wasn't panicking. She knew that the way she knew his laugh." },
+    { n: "He got her up. He walked her the six steps to the base of the tower and sat her on the stone step out of the wind and sat on the one below it, between her and the open quad, his back to the snow, like a wall someone had decided to put there." },
+    { n: "And she told him. Not because he asked. Because he didn't." },
+    { n: "The green. The coffins standing up in the snow where people should have been walking home. Akihiko on the chapel steps, turning around this time, his whole face going open when he saw her, her name in his mouth and none of it reaching her the other way. How she'd screamed. How it had landed nowhere. How they'd fought anyway, the two of them, with her pointing and him following, like an argument they'd been having for a year." },
+    { s: 'solar', f: 'sad', t: "He could see me. Tuesday he couldn't. Tonight he could." },
+    { s: 'haechan', f: 'serious', t: "So it's getting louder." },
+    { n: "He said it flat. He said it the way he'd say a vocal was sitting too far forward in the mix, a fact about levels, and she was grateful for it, the way she'd been grateful in the lab, for one person who would just say the ugly thing out loud and let it be ugly." },
+    { s: 'solar', f: 'serious', t: "Tuesday they couldn't see me. Tonight they couldn't hear me." },
+    { s: 'haechan', f: 'serious', t: "And next time they can." },
+    { n: "Neither of them said anything after that for a while. The quad was white and enormous and still. Somewhere behind the library a plow was going by with its orange light turning, slow, painting the snow and taking it back." },
+    { ifEpiRoute: 'haechan', then: [
+      { s: 'haechan', f: 'neutral', t: "You called while." },
+      { s: 'solar', f: 'neutral', t: "You said while." },
+      { s: 'haechan', f: 'neutral', t: "I did." },
+      { n: "He turned around on his step, finally, and put his forehead against hers, cold against cold, and stayed there, and didn't say anything else for a long time, which from him was a whole paragraph. His hands were still around hers. She could feel his pulse in his thumbs, going much too fast for someone who'd said *four minutes* in that voice." },
+      { s: 'haechan', f: 'serious', t: "Next time I get here before the first bell." },
+      { s: 'solar', f: 'sad', t: "You can't know when next time is." },
+      { s: 'haechan', f: 'neutral', t: "Then I get here early every night. It's finals. I don't sleep anyway, princess." }
+    ], else: [
+      { s: 'haechan', f: 'neutral', t: "You called. Good." },
+      { s: 'solar', f: 'neutral', t: "You came." },
+      { s: 'haechan', f: 'neutral', t: "I said I would." },
+      { n: "He let go of her hands once they'd stopped shaking, carefully, like setting something down. He sat on the step below hers with his back to the quad and his elbows on his knees, close enough that she could feel him there, and kept the wind off her, and that was the whole of it, and it was enough to keep her from coming apart on a stone step in eleven degrees." },
+      { s: 'haechan', f: 'serious', t: "Next time, call earlier. Ten to. I'll stand here like an idiot. I don't care." }
+    ] },
+    { n: "Above them the bell tower rang a quarter past. The right quarter. The right past. She listened to every note of it and didn't trust a single one, and was so grateful anyway that her eyes stung." },
+    { n: "Then he pulled his hoodie off over his head, there in the snow, in a T-shirt in eleven degrees, and put it on her over her coat, which made no sense and which she didn't argue with. It smelled like vanilla and the studio and him. He pulled the hood up over her hair himself and tugged it straight, once, the way you'd straighten a picture." },
+    { s: 'haechan', f: 'neutral', t: "Don't. I run hot." },
+    { s: 'solar', f: 'neutral', t: "You're shaking." },
+    { s: 'haechan', f: 'neutral', t: "That's adrenaline. Different department." },
+    { n: "He walked her back to Alpha with his arm around her the whole way, the bell tower behind them telling the right time, the plow's orange light turning somewhere out of sight, and their two lines of footprints going back the way hers had come, the only marks on anything." },
+    { place: 'Syracuse · Alpha Phi House · Porch', time: 'Late Night', soft: true },
+    { ifFlag: 'epi-r-told-girls', then: [
+      { n: "The porch light was on. She'd left it off." },
+      { n: "Hanni and Hyein were sitting on the top step in their coats, zipped to the chin over their pajamas, in boots, both of them, laced. Hyein's left sleeve was pushed up to the elbow in eleven degrees so the list showed, four lines, the last one in Solar's handwriting, and she was holding a family-size bag of shrimp chips in her lap like a weapon." },
+      { n: "Hyein saw her and was off the step before Solar reached the gate. She came down the path in a straight line through the snow and hit Solar so hard they both went back a step, and held on, and said into the hood of Haechan's hoodie, muffled and furious:" },
+      { s: 'hyein', f: 'sad', t: "You don't get to write SORRY on me. You don't. That's not a rule. I didn't agree to that rule." },
+      { s: 'solar', f: 'sad', t: "I know. I'm sorry." },
+      { s: 'hyein', f: 'sad', t: "Stop SAYING it, I'm still mad." },
+      { n: "Hanni came down slower. She looked at Solar, and the snow on her knees, and the hoodie, and then past her at Haechan at the bottom of the steps, standing in a T-shirt in the cold with his hands in his pockets like he was waiting for a bus." },
+      { s: 'hanni', f: 'serious', t: "...Thank you." },
+      { s: 'haechan', f: 'neutral', t: "Didn't do anything. Got there late." },
+      { s: 'hanni', f: 'neutral', t: "You got there." },
+      { n: "He didn't argue with that, which was, for him, the same as accepting it. Hyein let go of Solar long enough to hold up the shrimp chips." },
+      { s: 'hyein', f: 'serious', t: "Rule three. There's always an after. I said write snacks and she wrote snacks." },
+      { place: 'Syracuse · Alpha Phi House · Kitchen', time: 'Late Night', soft: true },
+      { n: "They ate them on the kitchen floor at half past twelve with their backs against the cabinets, the three of them in a row, Hyein still in her coat, while every clock in the house told the right time and nobody looked at any of them. Haechan didn't come in. He stood at the bottom of the porch steps until the front door shut, and she knew without looking that he'd stood there a while after, too." },
+      { n: "At one she went up to her own room, fourteen stairs, counted, and fell asleep in his hoodie before she'd even taken her boots off." }
+    ], else: [
+      { n: "The porch light was off and the house was dark, every window, the whole of Alpha asleep in a row. He walked her up the steps and stopped at the top." },
+      { s: 'haechan', f: 'neutral', t: "Go in. I'll stand here till your light's on." },
+      { n: "She went in. She took her boots off in the hall and carried them up the stairs, all fourteen, and at the top she stopped outside Hanni's door, the way she had at a quarter to twelve, with her hand up an inch from the wood." },
+      { n: "This time she knocked." },
+      { place: 'Syracuse · Alpha Phi House · Stairs', time: 'Late Night', soft: true },
+      { n: "The door opened before the second knock, as if Hanni had been sitting on the other side of it. Maybe she had. She was in her fleece, wide awake, and she looked at the snow on Solar's knees and the boots in her hand and the hoodie that very obviously wasn't Solar's, and didn't say any of the things she could have said." },
+      { s: 'solar', f: 'sad', t: "I knocked." },
+      { s: 'hanni', f: 'sad', t: "You knocked." },
+      { n: "Hanni pulled her inside by the sleeve of his hoodie and shut the door, and Hyein sat up in bed and said *what,* and then saw her, and didn't go back to sleep this time. Solar stood in the middle of their rug with the snow melting off her and, for the first time all day, didn't say the right thing. She said the true one, badly, all of it, and they let her." },
+      { n: "Out the window, at the bottom of the porch steps, a boy in a T-shirt stood in the snow looking up at the wrong window, waiting for a light that wasn't going to come on, and stayed there until Hyein, of all people, went down in her socks and told him to go home." },
+      { n: "Near two Hanni walked her back to her own room and stood in the doorway until she was under the covers, in his hoodie, boots on the floor where she'd dropped them, and said *knock* one more time, softly, like a goodnight." }
+    ] },
     { bond: { haechan: 1 } }
   ] },
 
