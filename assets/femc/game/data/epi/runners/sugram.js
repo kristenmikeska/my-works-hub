@@ -7,7 +7,8 @@
    playthrough, so it can't be the only proof). Newest first by the day it arrived (logged), else by `date` (the post's own
    day; an alert's is the earliest it can drop in), ties in this file's order.
    Nothing here touches a flag, closeness or the story; the comments only talk about the post itself and what every route
-   has already shown by then.
+   has already shown by then. Jaemin crossed too (every playthrough): in public he plays the left-out one to sell the cover
+   (story-w1 l.739), so comments to him tease the act, never treat him as someone who wasn't there.
    posts[key] = { date 'M/D', seen (scene posts: the event / routine id whose line shows it), user (handle), img (a post picture id, shown when art/posts/index.js lists it), cap, likes, comments [[handle, text]] }
    key = the post id (scene lines) or the alert id (alerts.js; its text is the caption, its img the picture). */
 (() => {
@@ -27,10 +28,10 @@
         comments: [['jaemin', 'pt 1 implies a pt 2 and i respect that'], ['renjun', 'the cups are not a lineup'], ['hyein', 'is there a dress code or is it red cup chic'], ['chenle', 'regionals is TOMORROW i will be asleep by ten (lie)'], ['grace.l', 'the red lighting is doing a lot of work'], ['taylorj', 'saving this for evidence']] },
       'post-r-3-stairs-sign': { date: '12/5', seen: 'epi-r-friday', user: 'jaemin', img: 'post-r-3-stairs-sign', likes: '512',
         cap: 'the wall says welcome. the wall means everyone who was NOT on the secret trip 🤫 so everyone. allegedly',
-        comments: [['jen0l33', 'who gave him a marker'], ['renjun', 'that is paint. it is not coming off. i checked.'], ['hanni', 'it was a VACATION jaemin'], ['hyein', 'it was a vacation and you were not invited 🤍'], ['jaemin', '@hyein allegedly'], ['kayla.rose', 'the arrow is so aggressive i love it']] },
+        comments: [['jen0l33', 'who gave him a marker'], ['renjun', 'that is paint. it is not coming off. i checked.'], ['hanni', 'it was a VACATION jaemin'], ['hyein', 'stop telling people there was a list 😭'], ['jaemin', '@hyein there was a list. i was on it. allegedly.'], ['kayla.rose', 'the arrow is so aggressive i love it']] },
       'post-r-4-antlers-selfie': { date: '12/5', seen: 'epi-r-friday', user: 'jaemin', img: 'post-r-4-antlers-selfie', likes: '447',
         cap: 'if u went on the exclusive one dm me the wifi password. asking for a friend (the friend is me)',
-        comments: [['hyein', 'no 🤍'], ['chenle', 'why am i not in this'], ['jen0l33', 'the antlers were MY idea for the record'], ['renjun', 'the friend is you. we know.'], ['audrey.m', 'the flash on this is criminal']] },
+        comments: [['hyein', 'jaemin you know i cannot answer this 🤍'], ['chenle', 'why am i not in this'], ['jen0l33', 'the antlers were MY idea for the record'], ['renjun', "you've said 'the trip' for a week and you still won't say where"], ['audrey.m', 'the flash on this is criminal']] },
       'post-r-5-solchan': { date: '12/12', seen: 'epi-r-sigma', user: 'sollee', img: 'post-r-5-solchan', likes: '9,814',
         cap: 'hi',
         comments: [['hanni', 'FINALLY. i said what i said.'], ['hyein', 'printing this. framing it. hanging it in the hallway.'], ['haechanah', 'hi'], ['jaemin', 'the caption being "hi" is so violent'], ['jen0l33', 'sigma chi group chat is on fire rn'], ['SUnews', "we're not saying anything. (we're saying everything.)"], ['maddie.cho', 'my roommate screamed'], ['sydneyrose', 'soft launch? hard launch. this is a LAUNCH launch']] },
