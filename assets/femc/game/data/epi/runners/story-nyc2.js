@@ -1457,10 +1457,17 @@
       { place: 'Manhattan · Her Old School', time: 'Daytime', soft: true },
       { n: "The school gates were chained for the break. Black iron, snow on the chain, every window dark but one on the third floor." },
       { s: 'hanni', f: 'neutral', t: "What were you like here? At fourteen." },
-      { s: 'solar', f: 'neutral', t: "Busy. I was in choir until junior year. That window. I was good." },
-      { s: 'hyein', f: 'surprised', t: "You *sing?*" },
-      { s: 'solar', f: 'happy', t: "*Sang.*" },
-      { s: 'hyein', f: 'serious', t: "That is not how tenses work, Solar, that's how *denial* works." },
+      { ifFlag: 'epi-r-girls-know-choir', then: [
+        { s: 'solar', f: 'neutral', t: "Busy. That window, third floor. Everything in the cupboard came out of that room." },
+        { s: 'hyein', f: 'serious', t: "The *breathe here* room." },
+        { s: 'solar', f: 'happy', t: "The *breathe here* room." }
+      ], else: [
+        { flag: 'epi-r-girls-know-choir' },
+        { s: 'solar', f: 'neutral', t: "Busy. I was in choir until junior year. That window. I was good." },
+        { s: 'hyein', f: 'surprised', t: "You *sing?*" },
+        { s: 'solar', f: 'happy', t: "*Sang.*" },
+        { s: 'hyein', f: 'serious', t: "That is not how tenses work, Solar, that's how *denial* works." }
+      ] },
       { n: "Hanni looked up at the window and then at Solar, and said nothing, and put her arm through Solar's for the walk back, and that night Solar stood at the window seat counting the seconds between trains coming up through the grate in the sidewalk, and every one of them came on time." }
     ] }
   ] },

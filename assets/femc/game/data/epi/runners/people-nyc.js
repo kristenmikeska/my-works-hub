@@ -439,7 +439,12 @@
       { music: 'epi-r-sisters' },
       { n: "They hadn't been in the apartment long and they'd already done what nobody in her family had managed in eighteen years, which was make it loud. Hyein's suitcase lay open in the hall like it had been shot. Hanni had found the kitchen radio and turned it to a station that played nothing but Christmas songs by people who'd been dead a long time, and left it on, and nobody in eleven rooms was there to turn it off" },
       { n: "Solar found them in her room. Hyein had opened the built-in cupboard beside the window seat, the deep one with the louvred doors that Solar hadn't opened since she was fifteen, the one the decorator had kept when she redid everything else in October because, she'd said, a girl should have somewhere to put the past, and Hyein was on her knees in front of it with the face of somebody who'd found a tomb. Hanni was standing very still in the middle of the rug with a framed thing in her hands." },
-      { s: 'hanni', f: 'surprised', t: "Sol. You were in a choir." },
+      { ifFlag: 'epi-r-girls-know-choir', then: [
+        { s: 'hanni', f: 'surprised', t: "Sol. It's the choir. It's all the choir." }
+      ], else: [
+        { flag: 'epi-r-girls-know-choir' },
+        { s: 'hanni', f: 'surprised', t: "Sol. You were in a choir." }
+      ] },
       { n: "It was a program, framed. *Upper School Chorale, Spring Concert*, and her name in the list of second sopranos, and under it, in a frame that matched, a photograph of thirty girls in white blouses on risers, and her in the second row with her mouth open on a note and her eyes shut, which she had no memory of the photographer catching and which she would have said, if asked, was impossible, because she never shut her eyes in photographs." },
       { s: 'solar', f: 'neutral', t: "For a while. In high school. It's nothing." },
       { s: 'hyein', f: 'serious', t: "There's a whole SHELF of this, Solar. There's sheet music. There's sheet music with your HANDWRITING on it. You wrote *breathe here* on it in pencil eleven times." },
