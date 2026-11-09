@@ -26,16 +26,18 @@ Night lighting: dark deep-blue night outside the big windows with snow falling t
 
 ---
 
-**Found playtesting (Nov 8):** two Manhattan places still borrow another picture. Both are made the usual way: attach `BG - style 1 (Runners).png` and `BG - style 2 (Runners).png`, then paste.
+**Done Nov 9:** R20 (the Madison café) and R21 (the study) are in the game.
 
-**[ ] R20. The café on Madison Avenue** (it shows the main game's Chagall Café right now)  
-Save as: `epi-r-nyc-cafe.png` (new)
+**Still borrowing a picture (Nov 9).** Made the usual way: attach `BG - style 1 (Runners).png` and `BG - style 2 (Runners).png`, then paste.
+
+**[ ] R22. The mix studio on West 26th** (Haechan's 12/29 night scene; it shows the Manhattan street right now)  
+Save as: `epi-r-nyc-studio.png` (new)
 ```
-A wide 16:9 background painting, no people, in the art style of the attached images (semi-realistic digital painting, soft painterly rendering, no outlines or line art). The inside of a small, expensive café on Madison Avenue on the Upper East Side of New York in December, seen from just inside the door: little round white-marble tables with thin brass legs, bentwood chairs, a long counter of pale wood and brass with a gleaming espresso machine and a glass case of pastries and small wrapped cookies, a chalkboard menu with no readable writing, pendant lamps with warm glass shades. Tall front windows steamed up halfway, and through the clear top half a snowy Madison Avenue at dusk: a townhouse façade, a wreath on a black railing, warm lit shop windows across the street, a few snowflakes. A window table for two in the foreground with an iced coffee and a black coffee on it. Warm golden light inside against the cool blue evening outside, quiet, old-money cozy. No text, no logos, no people.
+A wide 16:9 background painting, no people, in the art style of the attached images (semi-realistic digital painting, soft painterly rendering, no outlines or line art). The control room of a small, well-worn recording studio on the fourth floor of an old Chelsea building in New York on a December evening, dark and warm and smaller than you'd expect: a long mixing desk of faders and knobs lit up in soft blue and amber, two big studio monitors on stands, a computer screen with a waveform glowing on it, cables taped along the floor, acoustic foam panels on the walls. In the back wall, a big glass window into a vocal booth where a microphone stands under one warm light, an empty stool beside it and a pair of headphones hanging off the stand. Against the back wall, a dented brown leather couch with a folded blanket on it and a side table with paper coffee cups and an orange peel. One small high window at the side, dark blue night with snow, the brick of the building across the street. Light only from the desk, the screens and the booth, everything else in soft deep shadow, cozy and late. No text, no logos, no people.
 ```
 
-**[ ] R21. The study in the Lee apartment** (it shows the hall right now)  
-Save as: `epi-r-nyc-study.png` (new)
+**[ ] R23. The bookstore on Lexington** (optional; the "bookstore on Lexington" Go Out spot shows the main game's bookstore)  
+Save as: `epi-r-nyc-bookstore.png` (new)
 ```
-A wide 16:9 background painting, no people, in the art style of the attached images (semi-realistic digital painting, soft painterly rendering, no outlines or line art). A grand private study in a Fifth Avenue apartment on a gray December afternoon: three walls of floor-to-ceiling dark walnut bookshelves holding thousands of books, rising up into shadow where the lamps don't reach, a rolling library ladder; one long, very tidy walnut desk in the middle with almost nothing on it, a black desk phone, a fountain pen and a yellow legal pad, a green-shaded banker's lamp switched on; behind the desk a shelf of framed awards and a small framed concert program; a leather wing chair, a thick old rug, a radiator under a tall window with snow falling past and the bare trees of Central Park beyond. The door at the side left open about a foot onto a dim hallway. Warm lamplight pooling on the desk, the corners and the high shelves in soft deep shadow, quiet and expensive. No text, no readable book spines, no people.
+A wide 16:9 background painting, no people, in the art style of the attached images (semi-realistic digital painting, soft painterly rendering, no outlines or line art). The inside of a small, old independent bookstore on Lexington Avenue on the Upper East Side of New York in December, seen from just inside the door: narrow aisles of tall dark-wood shelves packed with books, a rolling ladder, a hand-lettered sign with no readable writing, a wooden counter with an old brass register and a stack of paperbacks, a cast-iron radiator under the front window with a fat orange cat asleep on a folded blanket on top of it. Through the window, a snowy Lexington Avenue at dusk, warm lit shop windows across the street. Warm lamplight on the spines, soft deep shadows between the shelves, quiet and dusty and cozy. No text, no readable book spines, no logos, no people.
 ```

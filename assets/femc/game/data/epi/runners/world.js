@@ -92,7 +92,7 @@
         ['Manhattan · The Lee Apartment · Living Room', 'epi-r-nyc-living', 'epi-r-nyc-living'],  // Kat's art, Nov 5 (the remake batch)
         ['Manhattan · The Lee Apartment · Dining Room', 'epi-r-nyc-dining', 'epi-r-nyc-dining'],  // Kat's art, Nov 5 (the remake batch)
         ['Manhattan · The Lee Apartment · Hall', 'epi-r-nyc-hall', 'epi-r-nyc-hall'],  // Kat's art, Nov 5 (the remake batch)
-        ['Manhattan · The Lee Apartment · Study', 'epi-r-nyc-hall', 'epi-r-nyc-hall'],  // Kat's art, Nov 5 (the remake batch)
+        ['Manhattan · The Lee Apartment · Study', 'epi-r-nyc-study', 'epi-r-nyc-study'],  // Kat's art, Nov 9 (R21)
         ['Manhattan · The Lee Apartment · Roof Terrace', 'epi-r-nyc-terrace', 'epi-r-nyc-terrace'],  // Kat's art, Nov 5 (the remake batch)
         ['Manhattan · The Lee Apartment', 'epi-r-nyc-living', 'epi-r-nyc-living'],  // Kat's art, Nov 5 (the remake batch)
         ['Manhattan · The Building · Lobby', 'epi-r-nyc-lobby', 'epi-r-nyc-lobby'],  // Kat's art, Nov 5 (the remake batch)
@@ -101,7 +101,7 @@
         ['Manhattan · Upper East Side', 'epi-r-nyc-street', 'epi-r-nyc-street-night'],  // Kat's art, Nov 5 (the remake batch)
         ['Manhattan · Her Old School', 'epi-r-nyc-school', 'epi-r-nyc-school'],  // Kat's art, Nov 5 (the remake batch)
         ['Manhattan · Central Park', 'epi-r-nyc-park', 'epi-r-nyc-park'],  // Kat's art, Nov 5 (the remake batch)
-        ['Manhattan · Madison Avenue · Café', 'chagall-cafe-inside', 'chagall-cafe-inside'],
+        ['Manhattan · Madison Avenue · Café', 'epi-r-nyc-cafe', 'epi-r-nyc-cafe'],  // Kat's art, Nov 9 (R20)
         ['Manhattan · Penn Station', 'epi-r-nyc-penn', 'epi-r-nyc-penn'],  // Kat's art, Nov 5 (the remake batch)
         ['Manhattan · Subway', 'epi-r-nyc-subway', 'epi-r-nyc-subway'],  // Kat's art, Nov 5 (the remake batch)
         ['Manhattan', 'epi-r-nyc-street', 'epi-r-nyc-street-night'],  // Kat's art, Nov 5 (the remake batch)
@@ -137,7 +137,7 @@
         { id: 'epi-r-dining', until: '12/20', name: 'Late dinner at the dining hall', place: 'Syracuse · Dining Hall', bg: 'epi-r-dining-hall', slots: ['evening'], cost: 9, stats: { kindness: 1, charm: 1 }, // Kat's art, Nov 5
           text: "A tray, a table by the window, and a freshman she half recognised who sat down across from her because every other seat was taken and then talked for forty minutes about a lab partner. She let him. It was nice to be the one listening." },
         // Manhattan (the Manhattan pass, Nov 5 2026): from 12/21 (winter break, so every day is a day off).
-        { id: 'epi-r-nyc-coffee', from: '12/21', name: 'Coffee on Madison', place: 'Manhattan · Madison Avenue · Café', bg: 'chagall-cafe-inside', slots: ['after', 'evening'], cost: 9, stats: { charm: 1 },
+        { id: 'epi-r-nyc-coffee', from: '12/21', name: 'Coffee on Madison', place: 'Manhattan · Madison Avenue · Café', bg: 'epi-r-nyc-cafe', slots: ['after', 'evening'], cost: 9, stats: { charm: 1 },
           text: "A café on Madison where a latte cost nine dollars and came with a cookie nobody asked for. She sat in the window and watched the Upper East Side walk its dogs in coats that matched the dogs' coats, and nobody looked twice at her, which here was the whole point of the neighborhood." },
         { id: 'epi-r-nyc-park', from: '12/21', name: 'Walk in Central Park', place: 'Manhattan · Central Park', bg: 'epi-r-nyc-park', slots: ['after'], cost: 0, stats: { courage: 1 },
           text: "The park in late December was all bare branches and joggers who'd made it a personality. She walked the reservoir loop with her hands in her pockets and the skyline going gray behind the trees, and it was the first time in a week she'd been somewhere big enough to feel small in." },

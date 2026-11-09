@@ -35,7 +35,7 @@ All 19 are in (art batch 144, Nov 7).
 
 **Found playtesting (Nov 8):** two places in Solar's house still borrow the living room or the street.
 
-**[ ] H20. The Kims' kitchen** (3 scenes: Nana leaning on her mother before seven, New Year's tteokguk; it shows the living room now)  
+**[x] H20. The Kims' kitchen** (done Nov 9, from `kitchen-hoax.png`) (3 scenes: Nana leaning on her mother before seven, New Year's tteokguk; it shows the living room now)  
 Attach: `BG - style 1 (HOAX).png`, `BG - style 2 (HOAX).png`  
 Save as: `epi-h-kim-kitchen.png` (new)
 ```

@@ -60,6 +60,7 @@
         ['Hanlim · Home · Front Step', 'epi-h-winter-street-day', 'epi-h-front-step-night'],  // art batch 143 (36A) at night; day still the winter street (1/12 After School scene) until a day picture exists
         ["Hanlim · Cherry's Room", 'epi-h-cherry-room', null],                              // art batch 143 (36B)
         ["Hanlim · Hyunsuk's Car", 'epi-h-hyunsuk-car', 'epi-h-hyunsuk-car'],                // art batch 143 (36C)
+        ['Hanlim · Home · Kitchen', 'epi-h-kim-kitchen', 'epi-h-kim-kitchen'],          // Kat's art, Nov 9 (H20; a night version is optional, H20n)
         ['Hanlim · Home', 'epi-h-kim-house-day', 'epi-h-kim-house'],                      // batch 77: by day; batch 65: lamp-lit, snowing outside (evening)
         ['Hanlim · School · Council Room', 'epi-h-council-room', 'epi-h-council-room-night'], // art batch 144: night (H15)
         ['Hanlim · School · Classroom', 'epi-h-classroom-exam', null],
