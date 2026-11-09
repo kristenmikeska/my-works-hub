@@ -146,6 +146,18 @@ A portrait sheet: 3 columns × 2 rows on a plain white background, with clear em
 
 
 ---
+## 42. Runners: one more Manhattan CG (ChatGPT; realistic; Kat, Nov 9)
+
+**[ ] 42A. Runners: the edge of the light**  
+For Haechan's "one set" scene, 12/29 late: the goodbye kiss under the awning at 2:30 a.m.  
+Attach: `CG - style (Runners).png`, `BG - Upper East Side at night.png`, `Solar (Runners).png`, `Haechan (Runners).png`  
+Save as: `epi-r-edge-of-light.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: a quiet Upper East Side street off Fifth Avenue at half past two in the morning, a fresh inch of untouched snow on the sidewalk, a dark green building awning with brass poles and warm light spilling from the lobby glass behind it, bare trees wrapped in tiny gold lights, fine snow still falling, the deep-blue night empty in both directions and a traffic light glowing green far down the avenue for nobody. Haechan and Solar stand just at the edge of the awning's pool of light, not under it. Haechan, his black hair messy under the raised hood of a black hoodie worn beneath a long black coat, heavy black headphones around his neck, has pulled her in by the front of her coat with one hand and has his other hand flat on the back of her neck under her hair, kissing her slowly; his face is turned down to hers, eyes closed. Solar, in a long tailored camel wool coat over a cream turtleneck, her long dark hair loose with snow caught in it, is up on her toes in her boots, one gloved hand holding his coat sleeve. Snowflakes caught in both their hair, their breath faintly visible in the cold. Behind them, blurred through the lobby glass, the shape of a night doorman at his desk, not looking. Warm gold light on the side of their faces from the lobby, cool blue night everywhere else. Intimate, cold, quiet. Keep both faces exactly like the attached references. No text, no logos.
+```
+
+---
+
 ## 31. Low-res pictures to look at (assess later)
 
 These are already in the game but look soft or blurry, because they're shown much bigger than the file. No prompts yet: check each one and decide whether to find a bigger copy, redo it, or leave it for the upscale batch. Sizes are width × height in pixels; the newer backgrounds are 1920 wide.
