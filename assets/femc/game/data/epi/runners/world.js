@@ -95,6 +95,7 @@
         ['Manhattan · The Lee Apartment · Study', 'epi-r-nyc-study', 'epi-r-nyc-study'],  // Kat's art, Nov 9 (R21)
         ['Manhattan · The Lee Apartment · Roof Terrace', 'epi-r-nyc-terrace', 'epi-r-nyc-terrace'],  // Kat's art, Nov 5 (the remake batch)
         ['Manhattan · The Lee Apartment', 'epi-r-nyc-living', 'epi-r-nyc-living'],  // Kat's art, Nov 5 (the remake batch)
+        ['Manhattan · The Building · Elevator', 'epi-r-nyc-lobby', 'epi-r-nyc-lobby'],  // stand-in: the lobby until R28 (epi-r-nyc-elevator) is made
         ['Manhattan · The Building · Lobby', 'epi-r-nyc-lobby', 'epi-r-nyc-lobby'],  // Kat's art, Nov 5 (the remake batch)
         ['Manhattan · The Building · Service Elevator', 'epi-r-nyc-service', 'epi-r-nyc-service'],  // Kat's art, Nov 5 (the remake batch)
         ['Manhattan · Lee Foundation Reception', 'epi-r-nyc-reception', 'epi-r-nyc-reception'],  // Kat's art, Nov 5 (the remake batch)

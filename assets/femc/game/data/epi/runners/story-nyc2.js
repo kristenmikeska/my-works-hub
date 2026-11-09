@@ -1476,7 +1476,9 @@
   { id: 'epi-r-marco', date: '12/30', slot: 'early', title: 'who are you visiting', place: 'Manhattan · The Building · Lobby', time: 'Morning', scene: [
     { music: 'epi-r-bleed' },
     { n: "Tuesday was gray, the kind of flat white-gray that sat on top of the buildings like a lid, and at eight she went down for coffee because her mother's machine made coffee that cost more than a meal and tasted like a radiator, and somebody upstairs had said so, and she'd decided he was right." },
+    { place: 'Manhattan · The Building · Elevator', time: 'Morning', soft: true },
     { n: "The lift took eleven seconds. It always took eleven seconds. She'd counted it at six and at twelve and at seventeen, and it had never once taken ten, and she counted it now with her eyes on the brass numbers and her own face in the mirror on the back wall, and it took eleven." },
+    { place: 'Manhattan · The Building · Lobby', time: 'Morning', soft: true },
     { n: "The lobby smelled like floor polish and the white Christmas arrangement by the desk, lilies and something green and expensive, the size of a car. Marco was at the desk with the book open and his reading glasses on, the way he'd been at the desk every morning since she was seven, when he'd been the new one and had called her *Miss Lee* on his first day like she was forty and she'd decided, on the spot, that he was her favorite person in the building." },
     { s: 'solar', f: 'happy', t: "Morning, Marco." },
     { n: "He looked up." },
@@ -1492,9 +1494,11 @@
     { s: 'marco', f: 'surprised', t: "Miss Lee. God. I'm sorry. I'm so sorry, I was up with the Hendersons' dog till four, he ate a ribbon off a present, I don't know what I'm looking at this morning." },
     { s: 'solar', f: 'happy', t: "It's okay." },
     { s: 'marco', f: 'happy', t: "It's not okay, I'd know you in the dark. Coffee? Get the place on Madison, the one on Lex burned it again." },
+    { place: 'Manhattan · Upper East Side', time: 'Morning', soft: true },
     { n: "She said she would. She said goodbye. She went out through the revolving door into the cold and stood on the pavement under the canopy with her hands in her pockets and the gray coming down on her like weather, and didn't move for a while." },
     { n: "He'd known her since she was seven. He'd known her face before she'd known it herself, the way doormen do, every bad haircut, every coat, every year of it. She had thought, without ever having to think it, that it was the one thing in that building that couldn't be lost." },
     { n: "Through the glass, when she finally made herself look back, he was writing something in the book. Small, at the bottom of the day's page. Then he looked up and saw her through the door and waved, warm and ordinary, and she waved back, and went to get the coffee." },
+    { place: 'Manhattan · The Building · Elevator', time: 'Morning', soft: true },
     { n: "On the way back up, the lift took eleven seconds. She counted. She didn't look at the mirror." }
   ] },
 
@@ -1947,9 +1951,10 @@
       { n: "Her stomach did something." },
       { s: 'solar', f: 'neutral', t: "...He's got a key, Marco." },
       { s: 'marco', f: 'neutral', t: "It's not your brother, Miss Lee. He's on the list. I just like to call up on the Lees. He says his name's Mark." },
-      { place: 'Manhattan · The Building · Lobby', time: 'Evening' },
+      { place: 'Manhattan · The Building · Elevator', time: 'Evening' },
       { music: 'epi-r-late' },
       { n: "She didn't remember getting into the lift. She remembered standing in it, and that it took eleven seconds, and that she spent all eleven looking at her own face in the mirror on the back wall and not being able to arrange it into anything." },
+      { place: 'Manhattan · The Building · Lobby', time: 'Evening', soft: true },
       { n: "Mark was standing in the middle of the lobby with snow on his shoulders, very obviously not going to sit down in any of the chairs, and he had four things in his hands. She counted. She'd keep counting, later, for a long time." },
       { n: "A paper cone of flowers. A pink bakery box tied with string, big enough to need both arms. A cool bag with a zip, the kind somebody's mother owns. And an envelope, held flat against the box with one thumb." },
       { s: 'mark', f: 'flustered', t: "Hi. Okay. So first, I know I'm late, I know I said nine. I was at my mom's. In Fort Lee. She found out there was a party and how many people and then it was Tuesday and she was cooking, and there's no stopping her once she's cooking, Sol, there's no—" },
@@ -1973,6 +1978,7 @@
       { s: 'solar', f: 'surprised', t: "My mother isn't *here.* She's at a party till three." },
       { s: 'mark', f: 'flustered', t: "I know. My mom said you don't go to somebody's house empty-handed, and she was very specific that it's still somebody's house if they're out, and I argued about it in a kitchen for ten minutes and I lost." },
       { n: "She took the envelope off the box, because he was about to drop it, and he let her. It had her name on it in blue biro. She put it in her coat pocket, the gray coat, which she'd grabbed off the hook on the way out without thinking, to read later." },
+      { place: 'Manhattan · The Building · Elevator', time: 'Evening', soft: true },
       { n: "In the lift he told her the other thing. It was eleven seconds long." },
       { ifEpiRoute: 'haechan', then: [
         { s: 'mark', f: 'neutral', t: "Can I tell you something about him?" },

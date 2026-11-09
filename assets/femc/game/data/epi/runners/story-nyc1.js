@@ -345,7 +345,7 @@
     { n: "She noticed, for some reason, that she was listening to him say it. Really listening. As if it were the kind of thing you'd want to remember the sound of." },
     { s: 'solar', f: 'neutral', t: "It's good to be back." },
     { n: "Which was the correct thing to say, and was not entirely a lie." },
-    { place: 'Manhattan · The Building · Lobby', time: 'Daytime', soft: true },
+    { place: 'Manhattan · The Building · Elevator', time: 'Daytime', soft: true },
     { n: "The elevator took eleven seconds. It always had. It had a bench in it, upholstered in something green, that nobody in eighteen years had ever sat on, and a mirror on the back wall in a brass frame, and she stood in front of the mirror with her brother beside her and watched the two of them in it: two people in good coats with the same jaw, one holding his right arm a quarter-inch closer than the other, one with four hours of sleep under her eyes, standing very straight." },
     { n: "She counted. One. Two. The numbers above the door going up without a sound. She looked at herself in the mirror the whole time, the way she had in the Alpha bathroom that morning, making sure. She was there. Of course she was there. Nine. Ten." },
     { n: "Eleven. The doors opened on the eleventh floor." },
