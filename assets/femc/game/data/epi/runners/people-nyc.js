@@ -642,7 +642,9 @@
       place: 'Manhattan · Upper East Side', time: 'Late Night', scene: [
       { music: 'epi-r-late' },
       { phone: [{ from: 'haechan', t: 'up' }, { from: 'haechan', t: 'come down. bring the good coat' }], contact: 'haechanah' },
+      { place: 'Manhattan · The Building · Service Elevator', time: 'Late Night', soft: true },
       { n: "She went down the service elevator in her socks with her boots in her hand, because the main car made a soft electronic chime on every floor and her mother slept like a smoke detector, and she put the boots on in the steel box with one shoulder against the wall while it hummed down eleven floors smelling of cardboard, and walked out through the lobby past the night man, who looked up from a paperback, looked at her, and looked back down at the paperback, which at two in the morning on the Upper East Side was a kind of blessing." },
+      { place: 'Manhattan · Fifth Avenue · Park Wall', time: 'Late Night', soft: true },
       { n: "He was across the street against the park wall, under a lamp, hood up, hands in his pockets, headphones round his neck. It had snowed again after midnight, a fine dry inch that hadn't been touched yet by anybody, and Fifth Avenue lay under it white and empty from one end to the other, not a car, not a cab, the lights going green and red over nothing, changing for no one." },
       { s: 'haechan', f: 'neutral', t: "You came." },
       { s: 'solar', f: 'neutral', t: "You said bring the good coat. That's practically a summons." },
@@ -678,10 +680,12 @@
           { stat: { courage: 1 } }
         ] }
       ] },
+      { place: 'Manhattan · Upper East Side', time: 'Late Night', soft: true },
       { n: "At the awning he stopped where he always stopped, at the edge of the light, because the night man was right there behind the glass and because he had a train to catch at three to a couch in Bushwick, and he pulled her in by the front of the good coat and kissed her, slow, cold-mouthed, his hand flat on the back of her neck under her hair, at the edge of an empty Fifth Avenue at half past two in the morning with the lights changing over them for nobody." },
       { s: 'haechan', f: 'neutral', t: "Go in. Socks off before the hall. Your mother hears floors." },
       { s: 'solar', f: 'happy', t: "How do you know my mother hears floors?" },
       { s: 'haechan', f: 'neutral', t: "Everybody's mother hears floors." },
+      { place: 'Manhattan · The Building · Service Elevator', time: 'Late Night', soft: true },
       { n: "She went in. She didn't look back at the sidewalk. She rode the service car up eleven floors with her boots in her hand and her mouth still cold and his voice still going in her head, *listen*, and in the steel wall of the elevator her reflection rode up with her, and kept perfect time, and she didn't trust it at all." }
     ] },
 

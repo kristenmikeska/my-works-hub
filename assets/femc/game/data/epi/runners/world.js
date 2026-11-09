@@ -98,6 +98,7 @@
         ['Manhattan · The Building · Lobby', 'epi-r-nyc-lobby', 'epi-r-nyc-lobby'],  // Kat's art, Nov 5 (the remake batch)
         ['Manhattan · The Building · Service Elevator', 'epi-r-nyc-service', 'epi-r-nyc-service'],  // Kat's art, Nov 5 (the remake batch)
         ['Manhattan · Lee Foundation Reception', 'epi-r-nyc-reception', 'epi-r-nyc-reception'],  // Kat's art, Nov 5 (the remake batch)
+        // ['Manhattan · Fifth Avenue · Park Wall', 'epi-r-nyc-parkwall-night', 'epi-r-nyc-parkwall-night'],  // R27, not made yet: falls back to 'Manhattan' (the street) until then
         ['Manhattan · Upper East Side', 'epi-r-nyc-street', 'epi-r-nyc-street-night'],  // Kat's art, Nov 5 (the remake batch)
         ['Manhattan · Her Old School', 'epi-r-nyc-school', 'epi-r-nyc-school'],  // Kat's art, Nov 5 (the remake batch)
         ['Manhattan · Central Park', 'epi-r-nyc-park', 'epi-r-nyc-park'],  // Kat's art, Nov 5 (the remake batch)
