@@ -30,7 +30,7 @@
     title: 'Syracuse',
     // The Equinox card after the act (epilogue.js finish; batch 9): `line` under the title, a route's own line in its place,
     // and one line per other world (where someone is holding a gap; the private plan §8).
-    equinox: { line: 'Every universe.', routes: { haechan: 'He said every world. He meant this one first.', minji: 'Somewhere, a camera is still rolling.', cover: 'Two hands held hers before his did.' },
+    equinox: { line: 'Every universe.', routes: { haechan: 'He said every universe. He meant this one first.', minji: 'Somewhere, a camera is still rolling.', cover: 'Two hands held hers before his did.' },
       echoes: [
         'Incheon · Yunjin wakes on a bedroom floor that isn’t hers, one hand closed on nothing.',
         'Hanlim · At 2 a.m., Cherry’s phone opens an old group chat by itself.',
