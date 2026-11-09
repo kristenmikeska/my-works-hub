@@ -1957,7 +1957,7 @@
       { n: "A paper cone of flowers. A pink bakery box tied with string, big enough to need both arms. A cool bag with a zip, the kind somebody's mother owns. And an envelope, held flat against the box with one thumb." },
       { s: 'mark', f: 'flustered', t: "Hi. Okay. So first, I know I'm late, I know I said nine. I was at my mom's. In Fort Lee. She found out there was a party and how many people and then it was Tuesday and she was cooking, and there's no stopping her once she's cooking, Sol, there's no—" },
       { s: 'solar', f: 'neutral', t: "Mark." },
-      { s: 'mark', f: 'flustered', t: "And if this is weird I'll leave the stuff and go, genuinely, I've got the car, it's forty minutes—" },
+      { s: 'mark', f: 'flustered', t: "And if you only asked me because it would've been weird not to, that's fine, I'll leave the stuff and go, genuinely, I've got the car, it's forty minutes—" },
       { s: 'solar', f: 'serious', t: "*Mark.*" },
       { n: "He stopped. She was in the lobby of her building in tights and no shoes, because she hadn't stopped for shoes, on a marble floor, in front of a man behind a desk who was doing an extremely good job of reading something." },
       { n: "Mark put the bakery box down on the side table next to the white flowers the size of a car, carefully, with both hands, and then stood up and put his hands in his pockets and looked at the floor for about four seconds." },
@@ -1981,7 +1981,7 @@
       { ifEpiRoute: 'haechan', then: [
         { s: 'mark', f: 'neutral', t: "Can I tell you something about him?" },
         { s: 'solar', f: 'neutral', t: "...Okay." },
-        { s: 'mark', f: 'neutral', t: "He's never done this. Any of it. You're the first. First girlfriend. Not first serious one. First one. I've known him since we were twelve. There's never been one other person he called anything at all." },
+        { s: 'mark', f: 'neutral', t: "He's never done this. Any of it. Whatever you two are calling it, you're the first. Not the first serious one. The first one. I've known him since we were twelve. There's never been one other person he called anything at all." },
         { s: 'solar', f: 'surprised', t: "Mark, everybody says—" },
         { s: 'mark', f: 'neutral', t: "I know what everybody says. Not one of them ever knew what he was doing on a Tuesday." },
         { s: 'solar', f: 'serious', t: "Why are you telling me?" },

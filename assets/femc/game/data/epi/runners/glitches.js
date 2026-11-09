@@ -19,7 +19,8 @@
     chance: [0, 0.1, 0.18, 0.3, 0.45],
     // The held layer (the Manhattan pass, Nov 5 2026): after the roof the world starts losing track of her. From 12/21 the
     // ambient pool is quieter and removes things instead of adding them (glitch.js erase / late).
-    held: { from: '12/21', ambient: [{ kind: 'erase' }, { kind: 'late' }, { kind: 'sound', sound: 'static' }, { kind: 'erase' }, { kind: 'tint' }] },
+    // ramp (Nov 9, Kat: creepier the closer it gets): from each date on, the ambient chance per screen in the held stretch.
+    held: { from: '12/21', ramp: { '12/21': 0.35, '12/25': 0.5, '12/28': 0.65, '12/30': 0.8 }, ambient: [{ kind: 'erase' }, { kind: 'late' }, { kind: 'sound', sound: 'static' }, { kind: 'erase' }, { kind: 'tint' }] },
     ambient: {
       1: [{ kind: 'sound', sound: 'static' }, { kind: 'clock' }],
       2: [{ kind: 'tint' }, { kind: 'sound', sound: 'p3' }, { kind: 'face' }, { kind: 'sound', sound: 'piano' }],
@@ -44,6 +45,32 @@
     { id: 'epi-r-g-album', kind: 'face', inline: true },                        // 12/31, a photo nobody took
     { id: 'epi-r-g-1159', kind: 'clock', inline: true },                        // 12/31, every clock stops at 11:59
     { id: 'epi-r-g-held-out', kind: 'erase', from: '12/22', to: '12/30', at: 'out' },  // Go Out: the place forgets its name
+    // The countdown (Nov 9, Kat: "more creepiness and glitches ... as it gets closer and closer to the date"). Screens:
+    // one or two a day from Christmas, two or three from the 28th. The date card starts flickering to 1/31 on the 24th.
+    { id: 'epi-r-g-m-mom', kind: 'phone', name: 'Mom', msg: 'Who is this?', read: false, time: '12:00 AM', day: '12/23', at: 'late' },
+    { id: 'epi-r-g-m-date1', kind: 'date', md: '1/31', day: '12/24' },
+    { id: 'epi-r-g-m-clock1', kind: 'clock', day: '12/25', at: 'morning' },
+    { id: 'epi-r-g-m-sees', kind: 'phone', name: 'S.E.E.S.', msg: 'Has anyone heard from her?', time: '12:00 AM', day: '12/26', at: 'late' },
+    { id: 'epi-r-g-m-name', kind: 'name', day: '12/27', at: 'morning' },
+    { id: 'epi-r-g-m-piano', kind: 'sound', sound: 'piano', day: '12/27', at: 'late' },
+    { id: 'epi-r-g-m-date2', kind: 'date', md: '1/31', day: '12/28' },
+    { id: 'epi-r-g-m-tear1', kind: 'tear', day: '12/28', at: 'late' },
+    { id: 'epi-r-g-m-tint', kind: 'tint', day: '12/29', at: 'morning' },
+    { id: 'epi-r-g-m-chat', kind: 'phone', name: 'Alpha Phi House', msg: 'Who added this number?', time: '12:00 AM', day: '12/29', at: 'late' },
+    { id: 'epi-r-g-m-date3', kind: 'date', md: '1/31', day: '12/30' },
+    { id: 'epi-r-g-m-ghost', kind: 'face', who: 'aigis', f: 'neutral', day: '12/30', at: 'morning' },
+    { id: 'epi-r-g-m-clock2', kind: 'clock', day: '12/30', at: 'late' },
+    { id: 'epi-r-g-m-date4', kind: 'date', md: '1/31', day: '12/31' },
+    { id: 'epi-r-g-m-self', kind: 'phone', name: 'Solar Lee', msg: 'count to eleven', read: false, time: '12:00 AM', day: '12/31', at: 'morning' },
+    // ...and inside the Manhattan hangouts (inserted before line n; once each).
+    { id: 'epi-r-g-m-gym', kind: 'late', scene: 'epi-r-nyc-jaehyun-gym', line: 11 },          // the mirror wall, two Lees
+    { id: 'epi-r-g-m-honest', kind: 'tint', scene: 'epi-r-nyc-mom-honest', line: 10 },       // the radiator knocks twice
+    { id: 'epi-r-g-m-coffee', kind: 'face', who: 'yukari', f: 'sad', scene: 'epi-r-nyc-haechan-coffee', line: 7 }, // the window table
+    { id: 'epi-r-g-m-tape', kind: 'erase', scene: 'epi-r-nyc-jaehyun-tape', line: 12 },      // the black laptop screen
+    { id: 'epi-r-g-m-exposure', kind: 'clock', scene: 'epi-r-nyc-minji-call', line: 13 },    // four past midnight
+    { id: 'epi-r-g-m-mira', kind: 'tint', scene: 'epi-r-nyc-mom-mira', line: 7 },            // the park a black field
+    { id: 'epi-r-g-m-outfits', kind: 'weather', mode: 'hold', scene: 'epi-r-nyc-hyein-outfits', line: 8 }, // the snow stops in the air
+    { id: 'epi-r-g-m-bridge', kind: 'sound', sound: 'static', scene: 'epi-r-nyc-haechan-session', line: 16 }, // before the bridge
     // In scenes (inline: the scene says where).
     { id: 'epi-r-g-wake', kind: 'tint', inline: true },                         // 12/1, the first morning back
     { id: 'epi-r-g-thumbs', kind: 'sound', sound: 'static', inline: true },     // 12/1, her thumbs type a Gekkoukan word

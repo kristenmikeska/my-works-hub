@@ -150,7 +150,8 @@ window.FemcGlitch = (() => {
     const e = (raw().glitches || []).find(x => fits(x, where, stage, ctx));
     if (e) return { ...e, src: 'schedule' };
     if (stage < 1) return null;
-    const ch = ((cfg().chance || CHANCE)[stage] ?? 0) * (mode() === 'gentle' ? 0.5 : 1);
+    const H = cfg().held, rampAt = H?.ramp && S().day >= G.dayOf(H.from) && Object.keys(H.ramp).filter(md => G.dayOf(md) <= S().day).sort((a, b) => G.dayOf(a) - G.dayOf(b)).pop();
+    const ch = (rampAt ? H.ramp[rampAt] : ((cfg().chance || CHANCE)[stage] ?? 0)) * (mode() === 'gentle' ? 0.5 : 1); // held.ramp: the held stretch's chance by date
     if (rnd(s.day, s.slot, where, 'roll') >= ch) return null;
     const pool = ambientPool(stage).filter(x => KINDS.includes(x.kind) && whereOk(x, where));
     if (!pool.length) return null;

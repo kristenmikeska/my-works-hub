@@ -187,6 +187,13 @@ Save as: `epi-r-arrive-minji.png`
 A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: the long hall of an elegant Fifth Avenue apartment on New Year's Eve, lamps on, a wall of family photographs in silver frames, the sound of a party just out of frame. Minji stands just inside the front door, alone, in a dark winter coat with a dusting of snow on her shoulders and a camera bag over one arm, her hat in her hand, taking in the whole long hall with quiet, wide eyes and the beginning of a smile. Warm lamplight on her face, the open door behind her dim. Candid snapshot framing. Keep her face exactly like the attached reference. No text, no logos.
 ```
 
+**[ ] 42F. Runners: four things** (New Year's Eve, 11 p.m.: Mark in the lobby, every route he's invited on)  
+Attach: `CG - style (Runners).png`, `BG - Lee Building Lobby.png`, `Mark (Runners NYE).png`, `Solar (Runners).png`  
+Save as: `epi-r-mark-lobby.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: the grand marble lobby of an old Fifth Avenue apartment building late on New Year's Eve, polished brass everywhere, a huge white flower arrangement on a side table, snow on the glass of the revolving door behind, a doorman at the front desk in the background with his eyes very carefully on a ledger. Mark stands in the middle of the marble floor, not sitting, with snow melting on the shoulders of his dark coat and in his hair, juggling four things at once: a paper cone of flowers, a big pink bakery box tied with string held in both arms, a zipped insulated cool bag hanging off one wrist, and a white envelope pinned flat against the box with one thumb. His face is nervous, earnest, mid-sentence, a little out of breath. Solar faces him from the foreground, seen from behind and the side, in a dark party dress and sheer black tights with no shoes on, standing on the cold marble, very still. Warm brass lamplight, a cold blue tint from the snowy door, a quiet, held moment. Keep both faces exactly like the attached references. No text, no logos.
+```
+
 ---
 
 ## 31. Low-res pictures to look at (assess later)
