@@ -2105,7 +2105,8 @@
   { id: 'epi-r-midnight', date: '12/31', slot: 'late', consumes: true, ends: true, title: 'every world', place: 'Manhattan · The Lee Apartment · Living Room', time: 'Late Night', scene: [
     { music: 'epi-r-party' },
     { n: "At ten to twelve somebody turned the television on in the front room, the big one in the cabinet her father used for the markets, and the room filled with Times Square: a million people in hats in the cold, a host in a coat shouting over a band, the ball lit up at the top of its pole like a planet waiting for permission." },
-    { n: "Everybody drifted in. Jeno was retrieved from his armchair and propped in the doorway with a glass of water. Olivia climbed onto the arm of a sofa for the view. Hyein had her phone up already, for the album. Renjun had got one of the long windows open an inch so they could hear the city, and the cold came in through the gap smelling of snow that hadn't fallen and the far smoke of somebody's fireworks gone early over the park." },
+    { n: "Everybody drifted in. Jeno was retrieved from his armchair and propped in the doorway with a glass of water. Olivia climbed onto the arm of a sofa for the view. Hyein had her phone up already, for the album." },
+    { n: "Renjun had got one of the long windows open an inch so they could hear the city, and the cold came in through the gap smelling of snow that hadn't fallen and the far smoke of somebody's fireworks gone early over the park." },
     { ifEpiRoute: 'haechan', then: [
       { n: "Haechan was standing next to her with his phone in his hand. On the screen was a timer. 9:48. 9:47." },
       { s: 'solar', f: 'surprised', t: "What's that." },
@@ -2144,19 +2145,26 @@
     ] },
     { dark: true },
     { n: "It wasn't like the roof." },
-    { n: "On the roof it had been a tide going out. This was the floor going. Her feet first, the good floor under her tights gone thin as ice in March, and then her hands, and she looked down and she was coming apart at the edges into light, green and gold, fine as the snow that hadn't fallen, and going up, every piece of her going home. It didn't feel cruel. It never had. It felt like being called in for dinner by someone who had been calling for a very long time, and had stopped being patient." },
+    { n: "On the roof it had been a tide going out. This was the floor going." },
+    { n: "Her feet first, the good floor under her tights gone thin as ice in March, and then her hands, and she looked down and she was coming apart at the edges into light, green and gold, fine as the snow that hadn't fallen, and going up, every piece of her going home." },
+    { n: "It didn't feel cruel. It never had. It felt like being called in for dinner by someone who had been calling for a very long time, and had stopped being patient." },
     { n: "The room hadn't stopped. That was the worst of it. The room was still cheering, for a second, for a whole second, Hyein's arms in the air, the long window full of fireworks, the first gold ones going up over the park, and then somebody saw her face, and then everybody did." },
     { n: "She ran." },
-    { n: "She didn't decide it. Her body did it, the way it had done everything important all year before her mind caught up. Out of the front room, down the forty feet of hall past the photographs where she was always at the edge, past the kitchen, to the narrow door at the end that looked like a cupboard and wasn't. The roof was where she went. Since she was twelve, whenever this apartment had been too much, whenever there was something in it too big to stand in a room with, she went up. If it was going to take her, it was going to take her from somewhere that was hers." },
+    { n: "She didn't decide it. Her body did it, the way it had done everything important all year before her mind caught up." },
+    { n: "Out of the front room, down the forty feet of hall past the photographs where she was always at the edge, past the kitchen, to the narrow door at the end that looked like a cupboard and wasn't." },
+    { n: "The roof was where she went. Since she was twelve, whenever this apartment had been too much, whenever there was something in it too big to stand in a room with, she went up. If it was going to take her, it was going to take her from somewhere that was hers." },
     { place: 'Manhattan · The Lee Apartment · Roof Terrace', time: 'Late Night', soft: true },
-    { n: "The stair was narrow and steep and the light on it was on a timer, and the timer clicked off when she was halfway up, the way it always did, and she went the rest of the way in the dark by memory, by her hand on the wall, and behind her, below her, she could hear them. All of them. Feet on the stair, too many for a stair that narrow, somebody swearing, somebody saying her name, the timer light clicking back on under someone's hand." },
+    { n: "The stair was narrow and steep and the light on it was on a timer, and the timer clicked off when she was halfway up, the way it always did, and she went the rest of the way in the dark by memory, by her hand on the wall, and behind her, below her, she could hear them. All of them." },
+    { n: "Feet on the stair, too many for a stair that narrow, somebody swearing, somebody saying her name, the timer light clicking back on under someone's hand." },
     { ifFlag: 'epi-r-jh-all', then: [
-      { n: "The door at the top was barred and it stuck in winter, it always stuck in winter, you had to put your shoulder into it, and before she could Jaehyun was past her on the top step and put his into it. His right one. The one he'd been holding at his side since Syracuse, the one she'd promised not to tell anybody about. He hit the door with it and the door gave, and she heard him make a sound through his teeth, and he didn't stop." }
+      { n: "The door at the top was barred and it stuck in winter, it always stuck in winter, you had to put your shoulder into it, and before she could Jaehyun was past her on the top step and put his into it." },
+      { n: "His right one. The one he'd been holding at his side since Syracuse, the one she'd promised not to tell anybody about. He hit the door with it and the door gave, and she heard him make a sound through his teeth, and he didn't stop." }
     ], else: [
       { n: "The door at the top was barred and it stuck in winter, it always stuck, and she put her shoulder into it the way she had since she was twelve, and it gave, and the night came in." }
     ] },
     { music: 'world-runners-theme' },
-    { n: "The roof terrace. Her terrace. The planters of black evergreens, the pergola with its little lights, the three tall heaters, the glass rail, and beyond it the park lying dark and enormous under a sky that was going off in every direction at once, fireworks over the reservoir and over the river and over the East Side and one enormous stupid one away west in New Jersey, and the whole city screaming up at the sky for the first seconds of a year she wasn't going to be in." },
+    { n: "The roof terrace. Her terrace." },
+    { n: "The planters of black evergreens, the pergola with its little lights, the three tall heaters, the glass rail, and beyond it the park lying dark and enormous under a sky that was going off in every direction at once, fireworks over the reservoir and over the river and over the East Side and one enormous stupid one away west in New Jersey, and the whole city screaming up at the sky for the first seconds of a year she wasn't going to be in." },
     { n: "And behind the fireworks, over the park, the sky had split like a seam, the way it had over the bell tower, and through it, close enough to touch, green, a tower, and a moon the wrong color, and a city where every clock had stopped at the same time as hers." },
     { n: "They came out of the door behind her, one after another, into the cold, in coats that weren't theirs and no coats at all, and none of them stopped at the door. Not one." },
 
@@ -2173,11 +2181,13 @@
       { n: "Hanni had her hand. Hyein had the other one, sobbing, saying *no, no, no* like it was a spell. Their fingers were closing on light." }
     ] },
     { ifEpiRoute: 'minji', then: [
-      { n: "Minji had filmed the roof in Syracuse all the way through, because Solar had asked her to, and she was filming now, the red light on, the camera steady, and then, at the last, she set it down on the planter still rolling, pointed at all of them, and took Solar's face in both her hands, her cold bare hands, and held it, and didn't let go, and said *I've got you, I've got you, you're in the middle, Sol, you're in the middle of it.*" }
+      { n: "Minji had filmed the roof in Syracuse all the way through, because Solar had asked her to, and she was filming now, the red light on, the camera steady." },
+      { n: "Then, at the last, she set it down on the planter still rolling, pointed at all of them, and took Solar's face in both her hands, her cold bare hands, and held it, and didn't let go, and said *I've got you, I've got you, you're in the middle, Sol, you're in the middle of it.*" }
     ], else: [
       { n: "Minji was filming. Her whole body was shaking and the camera didn't move an inch, because she'd asked, at the door, at a quarter to nine, and Solar had said yes, and Minji had never once in her life not done what Solar asked of her with a camera, and the red light burned in the dark like the one thing on that roof that wasn't going anywhere." }
     ] },
-    { n: "Chenle had her shoulder. Jaemin had Chenle. Jeno, steady as a wall for once, had a fist in the back of her coat. Renjun, saying nothing, had his arms around all of them from the outside. Jisung and Olivia, together, holding her sleeve. A knot of people on a roof in the cold, their arms out and around and through each other, holding on so hard she could see it in their shoulders." },
+    { n: "Chenle had her shoulder. Jaemin had Chenle. Jeno, steady as a wall for once, had a fist in the back of her coat. Renjun, saying nothing, had his arms around all of them from the outside. Jisung and Olivia, together, holding her sleeve." },
+    { n: "A knot of people on a roof in the cold, their arms out and around and through each other, holding on so hard she could see it in their shoulders." },
     { n: "Exactly as it had looked in a photograph nobody took." },
     { ifFlag: 'epi-r-nye-mark', then: [
       { n: "Mark had her other wrist. Both hands. He was saying *Sol, Sol,* like it was the only word he had for her, because it was." }
@@ -2187,29 +2197,54 @@
       { s: 'jaehyun', f: 'serious', t: "I'm here. I said I'd be here. I did it once." }
     ] },
     { ifFlag: 'epi-r-jh-part', then: [
-      { n: "And her brother, last through the door, in his coat, at a run, three hours early, who'd left the Kaplans' without telling anyone why because he hadn't known why, only that at a quarter to twelve, in the Kaplans' living room, he had stood up and found his coat. He didn't slow down. He put his arms around her from the back, over everybody's, and held on." },
+      { n: "And her brother, last through the door, in his coat, at a run, three hours early, who'd left the Kaplans' without telling anyone why because he hadn't known why, only that at a quarter to twelve, in the Kaplans' living room, he had stood up and found his coat. He didn't slow down." },
+      { n: "He put his arms around her from the back, over everybody's, and held on." },
       { s: 'jaehyun', f: 'serious', t: "I'm here. I did it once." }
     ] },
     { n: "It didn't matter." },
-    { n: "She knew it before any of them did. She'd known on the stairs. On the roof in Syracuse it had been a door, and they'd held it shut. This wasn't a door. This was the whole wall coming down, and all of them holding on to the bricks." },
-    { n: "Her hands went through Haechan's coat. She closed them again. They went through again. She closed them again. She was very good at doing a thing over and over until it worked, she'd had a year of practice, and it wasn't working, and she knew it wasn't, and she did it anyway." },
-    { n: "The fireworks went on. She could see them through her own hands." },
-    { s: 'solar', f: 'sad', t: "I'm sorry— I'm sorry, I'm sorry, I didn't want—" },
+    { n: "She knew it before any of them did. She'd known on the stairs." },
+    { n: "On the roof in Syracuse it had been a door, and they'd held it shut. This wasn't a door. This was the whole wall coming down, and all of them holding on to the bricks." },
     { ifEpiRoute: 'haechan', then: [
-      { s: 'haechan', f: 'serious', t: "Don't. Solar. Look at me." }
+      { n: "Her hands went through his coat." },
+      { n: "She closed them again. They went through again." },
+      { s: 'solar', f: 'surprised', t: "Donghyuck—" },
+      { n: "His name. His real one, the one he'd handed her in the gray light of a morning in November like something he didn't need back. It came out of her cracked straight down the middle." },
+      { s: 'haechan', f: 'serious', t: "Hey. Hey, hey. I'm here." },
+      { s: 'solar', f: 'sad', t: "I can't feel your coat. Donghyuck, I can't feel your *coat*—" },
+      { s: 'haechan', f: 'serious', t: "Stay with me, okay? Princess. Stay with me. Look at me." },
+      { n: "She was crying. She hadn't cried on the roof in Syracuse, not once, not with the bell going and the snow stopped in the air." },
+      { n: "She was crying now like she was six, in great ugly gulps that didn't sound like anything she'd ever let another person hear, and he didn't flinch from a single one of them." },
+      { n: "The fireworks went on. She could see them through her own hands." },
+      { s: 'solar', f: 'sad', t: "I'm sorry. I'm sorry, I'm sorry, I didn't want— I don't want to go. I don't want to go, Donghyuck, I don't—" },
+      { s: 'haechan', f: 'sad', t: "I know. I know. I'm right here." },
+      { n: "His face was an inch from hers with the fireworks going gold and green across it, and for once in his whole life he wasn't flat." },
+      { n: "Every single thing he'd ever filed away was on it, all at once. He let her see all of it. He didn't make any of it smaller." },
+      { n: "Whatever his whole thing had been, his midnight, the four seconds of something he'd synced to the actual time, it was gone, and he knew it was gone, and he didn't reach for it." },
+      { n: "He said the other thing instead. The one he'd kept back on the roof in Syracuse, in the snow, when all he'd said was *I've got you.*" },
+      { s: 'haechan', f: 'sad', t: "Listen to me. Solar. Are you listening?" },
+      { s: 'solar', f: 'sad', t: "...Yeah." },
+      { s: 'haechan', f: 'sad', t: "I'll find you." },
+      { s: 'haechan', f: 'sad', t: "Whoever I am. Wherever I am. Whatever you are there. I'll find you, Solar Lee." },
+      { n: "His forehead came down against hers, or where hers should have been, and she felt the warmth of it anyway, his breath gone ragged, his hand in her hair holding on to nothing and holding on." },
+      { s: 'haechan', f: 'sad', t: "In every universe. I'll find you." },
+      { s: 'haechan', f: 'sad', t: "Every single one." }
     ], else: [
-      { s: 'haechan', f: 'serious', t: "Don't. Lee. Look at me." }
+      { n: "Her hands went through Haechan's coat. She closed them again. They went through again." },
+      { s: 'solar', f: 'surprised', t: "Haechan— I can't— my hands—" },
+      { s: 'haechan', f: 'serious', t: "Hey. Hey. I'm here. Stay with me, Lee." },
+      { n: "She was crying. She hadn't cried on the roof in Syracuse, not once. She was crying now in great ugly gulps, and nobody on that roof looked away from her." },
+      { n: "The fireworks went on. She could see them through her own hands." },
+      { s: 'solar', f: 'sad', t: "I'm sorry— I'm sorry, I'm sorry, I didn't want— I don't want to go—" },
+      { s: 'haechan', f: 'serious', t: "Don't. Lee. Look at me." },
+      { n: "She looked at him. His face was an inch from hers with the fireworks going gold and green across it, and for once in his whole life he wasn't flat." },
+      { n: "He'd said *I've got you* on a roof in Syracuse, in the snow, and it had been true then. He didn't say it now." },
+      { n: "He said the other thing, the one a person says when they mean it more than they've meant anything, and he said it like a friend, which was the only way he'd ever said anything to her, and it was enough. It was everything." },
+      { s: 'haechan', f: 'sad', t: "I'll find you." },
+      { s: 'haechan', f: 'sad', t: "Whoever I am. Wherever I am. Whatever you are there. I'll find you, Solar Lee." },
+      { s: 'haechan', f: 'sad', t: "Every world. Every single one." }
     ] },
-    { n: "She looked at him. His face was an inch from hers with the fireworks going gold and green across it, and for once in his whole life he wasn't flat. Every single thing he'd ever filed away was on it, all at once, and he let her see all of it, and he didn't make any of it smaller." },
-    { ifEpiRoute: 'haechan', then: [
-      { n: "Whatever his whole thing had been, his midnight, the four seconds of something he'd synced to the actual time, it was gone, and he knew it was gone, and he didn't reach for it. He said the other thing instead. The one he'd kept back on the roof in Syracuse, in the snow, when all he'd said was *I've got you.*" }
-    ], else: [
-      { n: "He'd said *I've got you* on a roof in Syracuse, in the snow, and it had been true then. He didn't say it now. He said the other thing, the one a person says when they mean it more than they've meant anything, and he said it like a friend, which was the only way he'd ever said anything to her, and it was enough. It was everything." }
-    ] },
-    { s: 'haechan', f: 'sad', t: "I'll find you." },
-    { s: 'haechan', f: 'sad', t: "Wherever it takes you. Whatever you are there. Whoever I am. I'll find you." },
-    { s: 'haechan', f: 'sad', t: "Every world." },
-    { n: "She heard it. Through the fireworks and the train and the whole city screaming at the sky and her own breath going in pieces, she heard every word, flat and sure, the way he said the things he'd already decided were true." },
+    { n: "She heard it." },
+    { n: "Through the fireworks and the train and the whole city screaming at the sky and her own breath going in pieces, she heard every word, flat and sure, the way he said the things he'd already decided were true." },
     { n: "It was the last thing she heard." },
     { dark: false },
     { cg: 'epi-r-hold' },
@@ -2218,7 +2253,8 @@
     { n: "Nobody let go. Not for a long time. Hyein was still saying *no.* Hanni's hands were still closed. On the planter, Minji's camera ran on with its little red light, pointed at all of them, recording the space." },
     { ifFlag: 'epi-r-jh-all', then: [], else: [
       { ifFlag: 'epi-r-jh-part', then: [], else: [
-        { n: "At twenty to one the roof door opened. Jaehyun came through it in his suit, his coat open, out of breath from eleven floors of stairs because he hadn't waited for the lift. He'd left the Kaplans' at midnight with his coat unbuttoned, for no reason he could have said. He stood in the doorway and looked at all of them at the rail, holding on to nothing, and understood it, all of it, in about two seconds, the way he read a field." },
+        { n: "At twenty to one the roof door opened. Jaehyun came through it in his suit, his coat open, out of breath from eleven floors of stairs because he hadn't waited for the lift. He'd left the Kaplans' at midnight with his coat unbuttoned, for no reason he could have said." },
+        { n: "He stood in the doorway and looked at all of them at the rail, holding on to nothing, and understood it, all of it, in about two seconds, the way he read a field." },
         { n: "He didn't ask. He walked across the terrace and put his arms around the outside of all of them, and held on too, to what wasn't there, because he'd said he would. Wherever it was." }
       ] }
     ] },
