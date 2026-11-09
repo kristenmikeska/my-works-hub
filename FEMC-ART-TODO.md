@@ -164,6 +164,29 @@ Save as: `epi-r-dumplings.png`
 A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: a big cream-and-marble kitchen in a Fifth Avenue apartment late on a winter afternoon, low golden sunset light coming through the tall windows over the snowy Manhattan skyline, brass pendant lamps, steam rising softly off a pot on the range. The long marble island is dusted with flour and covered in neat rows of pleated homemade dumplings on silver serving trays, a bowl of filling, a stack of round wrappers, a small dish of water, and a marble rolling pin. Solar sits on a stool at the island, her long dark hair tied back loosely with strands falling out, sleeves of a soft cream sweater pushed up, flour on her hands and a smudge on her cheek, laughing despite herself and a little flustered. Haechan stands close beside her, leaning in over her shoulder, in a black T-shirt with a tea towel slung over one shoulder, his black hair messy, his floury fingers over hers, guiding them along the edge of one dumpling to crimp the pleats; his face is calm and completely absorbed, a very faint smile. In front of her, one lumpy, badly folded dumpling sits apart from his perfect rows. Warm, domestic, cosy, golden. Keep both faces exactly like the attached references. No text, no logos.
 ```
 
+**Arrival snapshots (42C-42E).** New Year's Eve, "They came in two waves." Each one is meant to pop up for just the arrival beat and clear a line or two later, like a photo going off, so they're framed like candid snapshots: a little off-centre, mid-motion, everyone caught mid-sentence. Faces: the "(Runners NYE)" references are in Place Prompt Attachments.
+
+**[ ] 42C. Runners: Miss Lee** (wave one: the girls out of the lift)  
+Attach: `CG - style (Runners).png`, `BG - Lee Apartment Hall.png`, `Solar (Runners).png`, `Hyein (Runners NYE).png`, `Hanni (Runners NYE).png`, `Olivia (Runners NYE).png`  
+Save as: `epi-r-arrive-girls.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the look of the apartment: an elegant Fifth Avenue apartment at night on New Year's Eve, warm lamplight. The scene is the private elevator landing just outside the open front door: brass elevator doors standing open, a wreath on the door. Hyein is bursting out of the elevator at a dead run toward the camera, arms flung wide, mouth open mid-shout, overjoyed, in a sparkly party dress under an open winter coat with snow on the shoulders. Behind her Hanni steps out calmly carrying two overnight bags, in a silver party dress under a long coat, with the patient half-smile of someone who has been managing this all day. Last, Olivia drifts out looking down at her phone, not looking up at all. Solar stands in the open front doorway in the foreground, seen from behind and the side, in a dark party dress, one hand up, laughing. Candid snapshot framing, slight motion blur on Hyein, warm gold light from the apartment spilling onto the landing. Keep every face exactly like the attached references. No text, no logos.
+```
+
+**[ ] 42D. Runners: do not let the one in the gray coat drive** (wave two: five boys out of a car built for four)  
+Attach: `CG - style (Runners).png`, `BG - Upper East Side at night.png`, `Chenle (Runners NYE).png`, `Jeno (Runners NYE).png`, `Jaemin (Runners NYE).png`, `Renjun (Runners NYE).png`, `Jisung (Runners NYE).png`  
+Save as: `epi-r-arrive-boys.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: a snowy Upper East Side street off Fifth Avenue at night on New Year's Eve, a dark green building awning with brass poles and warm light from the lobby glass, bare trees wrapped in tiny gold lights. A small black car is stopped at the curb under the awning with all its doors open and five young men spilling out of a car obviously built for four. Chenle stands on the pavement in a dark coat and scarf rubbing the back of his stiff neck, turning to say something very seriously to a uniformed doorman holding the lobby door. Jeno leans out of the back seat in a gray coat, protesting, one hand raised. Jaemin unfolds himself from the car in a sharp party outfit, grinning. Renjun climbs out the other side holding two big bags of ice. Jisung is last, half out of the back with a rucksack, squinting up at the building. Candid snapshot framing, a little chaotic, everyone mid-motion, snow drifting through the light. Keep every face exactly like the attached references. No text, no logos.
+```
+
+**[ ] 42E. Runners: from her grandmother's** (optional: Minji arrives on her own)  
+Attach: `CG - style (Runners).png`, `BG - Lee Apartment Hall.png`, `Minji (Runners NYE).png`  
+Save as: `epi-r-arrive-minji.png`
+```
+A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: the long hall of an elegant Fifth Avenue apartment on New Year's Eve, lamps on, a wall of family photographs in silver frames, the sound of a party just out of frame. Minji stands just inside the front door, alone, in a dark winter coat with a dusting of snow on her shoulders and a camera bag over one arm, her hat in her hand, taking in the whole long hall with quiet, wide eyes and the beginning of a smile. Warm lamplight on her face, the open door behind her dim. Candid snapshot framing. Keep her face exactly like the attached reference. No text, no logos.
+```
+
 ---
 
 ## 31. Low-res pictures to look at (assess later)
