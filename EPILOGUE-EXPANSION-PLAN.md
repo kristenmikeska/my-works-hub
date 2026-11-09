@@ -28,7 +28,7 @@ Approved in chat. Work through these in order; show Kat writing drafts before wi
 ## 5. Contact pictures (Kat supplies the art)
 Only Runners has real profile pictures. Still needed:
 - **strangers:** Haechan, Jungwon, Yunjin, Jay, Sunghoon, Niki, Eomma, Appa, Mr. Oh, the girls' group chat
-- **HOAX:** Jungwon, Jihoon, Cherry, Jake, Sunoo, Niki, Junkyu, Hyunsuk, Asahi, Jaehyuk, Eunchae, Mom, Dad; group chats: council, club, retreat, Cherry Blossoms, school, forum
+- **HOAX:** Jungwon, Jihoon, Cherry, Jake, Sunoo, Niki, Junkyu, Hyunsuk, Asahi, Jaehyuk, Eunchae, Mom, Dad; group chats: the club ("rip solar kim"), the retreat (council); accounts: Hanlim Unfiltered (Eunchae's), Hanlim Forum, Hanlim High School
 - **Stay:** S.E.E.S. and their group chat (their game portraits may be enough)
 
 ## 6. Then: the thorough epilogue check
