@@ -1513,7 +1513,7 @@
     count('cover', ['Eight. Hanni and Hyein are already in the book.', 'Nine. Hanni and Hyein are already in the book.']),
     { n: "He took the paper and read it with his glasses on, his lips moving very slightly, the way he read everything." },
     { s: 'marco', f: 'neutral', t: "Chenle Zhong. Z-H-O-N-G?" },
-    { s: 'solar', f: 'happy', t: "Z-H-O-N-G. He'll spell it for you twice if you let him. He spelled it for Doyoung on the first day and Doyoung still gets it wrong on purpose." },
+    { s: 'solar', f: 'happy', t: "Z-H-O-N-G. He'll spell it for you twice if you let him." },
     { s: 'marco', f: 'neutral', t: "Mm-hm. And Jeno Lee. And Hyein Lee. Miss Lee, half this list is named Lee." },
     { s: 'solar', f: 'neutral', t: "It's a very common name." },
     { s: 'marco', f: 'happy', t: "Not in this building it isn't." },
