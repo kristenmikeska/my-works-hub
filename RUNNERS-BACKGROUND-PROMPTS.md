@@ -41,3 +41,23 @@ Save as: `epi-r-nyc-bookstore.png` (new)
 ```
 A wide 16:9 background painting, no people, in the art style of the attached images (semi-realistic digital painting, soft painterly rendering, no outlines or line art). The inside of a small, old independent bookstore on Lexington Avenue on the Upper East Side of New York in December, seen from just inside the door: narrow aisles of tall dark-wood shelves packed with books, a rolling ladder, a hand-lettered sign with no readable writing, a wooden counter with an old brass register and a stack of paperbacks, a cast-iron radiator under the front window with a fat orange cat asleep on a folded blanket on top of it. Through the window, a snowy Lexington Avenue at dusk, warm lit shop windows across the street. Warm lamplight on the spines, soft deep shadows between the shelves, quiet and dusty and cozy. No text, no readable book spines, no logos, no people.
 ```
+
+**Found in the Nov 9 check** (same way: the two Runners style pictures, then paste).
+
+**[ ] R24. The residents' gym in the Lees' building** (Jaehyun's shoulder scene, 12/23-25; it shows the service elevator right now)  
+Save as: `epi-r-nyc-gym.png` (new)
+```
+A wide 16:9 background painting, no people, in the art style of the attached images (semi-realistic digital painting, soft painterly rendering, no outlines or line art). A small private residents' gym two floors under the lobby of an old, very expensive Fifth Avenue apartment building in New York, in the evening: a long low room with no windows, one whole wall of mirror, two sleek treadmills nobody uses, a rack of chrome dumbbells arranged by weight and polished spotless, a padded bench, a cable machine, a stack of folded white towels on a shelf, a water cooler, pale wood floor and dark rubber mats. Cool white strip lights on the ceiling with a few warmer lamps, so the mirror doubles the room; a red resistance band looped over the end of the bench and a towel left on it. Quiet, clean, expensive and a little lonely. No text, no logos, no people.
+```
+
+**[ ] R25. The noodle place on Marshall Street** (Solar and Jaehyun, "did you eat"; it shows the street right now)  
+Save as: `epi-r-noodle-shop.png` (new)
+```
+A wide 16:9 background painting, no people, in the art style of the attached images (semi-realistic digital painting, soft painterly rendering, no outlines or line art). The inside of a small, cheap, much-loved noodle shop on Marshall Street by Syracuse University on a snowy December evening: narrow and warm, steamed-up front windows with the dark blue street and falling snow blurred behind them, wooden tables close together, mismatched chairs, a counter at the back with steam rising from big pots, paper lanterns and bare bulbs giving warm golden light, a menu board with no readable writing, coats hanging on hooks by the door dripping melted snow. A table for two against the side wall in the foreground with two big bowls of noodle soup, chopsticks and a pot of tea. Cozy, too warm, a little shabby. No text, no logos, no people.
+```
+
+**[ ] R26. The seminar room in the Hall of Languages** (the confession scene; it shows the music room with the piano right now)  
+Save as: `epi-r-seminar-room.png` (new)
+```
+A wide 16:9 background painting, no people, in the art style of the attached images (semi-realistic digital painting, soft painterly rendering, no outlines or line art). An old third-floor seminar room at the end of a hall in the Hall of Languages at Syracuse University, a 19th-century stone building, on a December evening during finals: one long, scarred wooden table with twelve mismatched wooden chairs around it, a big old cast-iron radiator under tall arched windows with deep sills, dark blue night outside with snow on the glass and the lit campus below, a chalkboard half wiped with ghost marks and nothing readable, somebody else's forgotten scarf over a chair back. Lit by one or two old hanging lamps, warm light pooling on the table, the high ceiling and corners in soft deep shadow. Quiet and old. No text, no logos, no people.
+```

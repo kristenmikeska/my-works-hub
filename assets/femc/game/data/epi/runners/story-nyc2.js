@@ -839,7 +839,7 @@
       { s: 'hanni', f: 'neutral', t: "That's your name." },
       { s: 'hyein', f: 'surprised', t: "Nobody's ever *used* it, Hanni. He said it like I own a *boat.*" },
       { n: "Marco, who had worked that desk for nineteen years and seen every kind of person come through that door, smiled at Hyein like she was the best thing that had happened to him all December, and pressed the button for the elevator, and held it." },
-      { place: 'Manhattan · The Lee Apartment · Living Room', time: 'Daytime', soft: true },
+      { place: 'Manhattan · The Lee Apartment · Roof Terrace', time: 'Daytime', soft: true },
       { n: "She took them up to the roof at four, through the cupboard door and up the timer stair and through the door you had to shoulder. Hyein cried, which Solar had predicted. Hanni stood at the glass rail and said nothing at all and looked at Solar one second longer than she needed to, which Solar had also predicted, and which still went through her like heat." },
       { s: 'hanni', f: 'neutral', t: "You've never brought anyone up here." },
       { s: 'solar', f: 'neutral', t: "How did you know that?" },
