@@ -87,6 +87,8 @@
         { cg: null },
         { n: "When she opened her eyes he wasn't looking at the meters. He was looking at her through the glass with his jaw set so hard she could see it from there, and then he looked down at the desk, and pressed something, and said into the talkback, flat as ever, *one more, if you want,* and she did." },
         // The booth (Nov 11 2026; minigames/sing.js with Kat's own chart, charts/runners.js; flags epi-r-mg-booth-*).
+        // Haechan route only (Kat, Nov 11: "make your best judgment"): on the other routes she sings her old descant, not his
+        // track, so a booth on Kat's Runners chart would contradict the scene. Same for listen (the 2 a.m. walk is his route's).
         { choose: [
           { t: "(Sing the take. Easy.)", then: [{ minigame: 'sing', flags: 'epi-r-mg-booth', opts: { song: 'runners', level: 'easy' } }] },
           { t: "(Sing the take. Normal.)", then: [{ minigame: 'sing', flags: 'epi-r-mg-booth', opts: { song: 'runners', level: 'normal' } }] },

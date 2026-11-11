@@ -8,8 +8,8 @@
    result = { won, rounds: [{ map, won }], elims, soloKills, deaths (Solar), teamDeaths, healed, saves, steps, rushes, potg, grade }
      potg = { kind, text, score } (the Play of the Game: the best moment of the match)
 
-   The view: over Solar's shoulder (Kiriko). The map fills the screen; her team stands in it with their backs to the camera
-   (Chenle on Reinhardt in front, Minji on Ashe, Olivia on Tracer, Haerin on Ana); the other team (Zarya, Genji, Ana, Lúcio,
+   The view: over Solar's shoulder (Kiriko). The map fills the screen; her team stands in it facing the camera (Kat's
+   team art, kept Nov 11 2026) (Chenle on Reinhardt in front, Minji on Ashe, Olivia on Tracer, Haerin on Ana); the other team (Zarya, Genji, Ana, Lúcio,
    Cassidy) pops out of cover, attacks, ducks back. Her hands are at the bottom.
    Controls: aim with the mouse (a crosshair).
      Left click  kunai at the crosshair (15, reload 1.5 s; a head hit crits)    Right click  ofuda heal to the teammate you aim at
