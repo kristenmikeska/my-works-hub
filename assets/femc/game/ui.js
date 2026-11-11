@@ -809,6 +809,7 @@
     let leaving = false;
     putLogo(main.querySelector('.g-logo'));
     titleFx(sec.querySelector('.g-title-fx'));
+    window.FemcEpiSim?.title(sec); // the Epilogues link beside Practice (episim.js; it also ends a sim that came back here)
     // The cursor: one lit item, by mouse or keys (the arrow keys already tick, in navKeys).
     const light = b => items.forEach(x => x.classList.toggle('is-on', x === b));
     items.forEach(b => {

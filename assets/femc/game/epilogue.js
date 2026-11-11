@@ -781,6 +781,7 @@ window.FemcEpilogue = (() => {
     const ttl = raw.title || s.epi.place, wname = (WORLDS[s.epi.world] || {}).name || s.epi.place;
     card('EPILOGUE', ttl, wname && wname !== ttl ? wname : '', 'g-epi-end', () => card('PERSONA 3', 'EQUINOX', eq.line, 'g-epi-equinox', () => {
       finishing = false;
+      if (W.FemcEpiSim?.active()) return W.FemcEpiSim.finished(); // the epilogue sim (episim.js): back to its picker, never the year
       if (leave()) UI().endScreen(); else UI().run();
     }, eq.echoes));
   }

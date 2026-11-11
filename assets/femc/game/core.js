@@ -30,6 +30,8 @@ window.FemcGame = (() => {
   const LEGACY_BATTLE_KEY = 'kg-femc-revamp-battle', PREMERGE_KEY = 'kg-femc-revamp-premerge', MERGE_V = 2, STATS_V = 2, YEAR_V = 2;
   const SLOT_KEY = n => `${KEY}-slot${n}`;
   const SLOTS = Array.from({ length: 10 }, (_, i) => i + 1); // manual save slots (three until 2026-10-30; Kat asked for more)
+  // Where save() writes: KEY, or the epilogue sim's sandbox key while one runs (sandbox() near the saves, episim.js).
+  let SAVE_KEY = KEY;
   // Links removed from the revamp (2026-10-21; migrateRemoved). Declared up here: load() runs before the rest of the file.
   const REMOVED_LINKS = ['leon', 'cloud', 'noctis', 'astarion', 'shadowheart'];
   const VERSION = 1;
@@ -342,9 +344,9 @@ window.FemcGame = (() => {
   }
   const listeners = [];
   const onChange = fn => listeners.push(fn);
-  function save() { S.savedAt = Date.now(); lsSet(KEY, JSON.stringify(S)); listeners.forEach(fn => { try { fn(); } catch (e) { console.error(e); } }); }
+  function save() { S.savedAt = Date.now(); lsSet(SAVE_KEY, JSON.stringify(S)); listeners.forEach(fn => { try { fn(); } catch (e) { console.error(e); } }); }
   // The same, without telling the screens (the battle writes its progress often).
-  function saveQuiet() { S.savedAt = Date.now(); return lsSet(KEY, JSON.stringify(S)); }
+  function saveQuiet() { S.savedAt = Date.now(); return lsSet(SAVE_KEY, JSON.stringify(S)); }
   if (migrated && S.started) saveQuiet();
   function newGame() { S = fresh(); S.started = true; S.phase = 'prologue'; S.runId = newRunId(); save(); }
 
@@ -2924,9 +2926,9 @@ window.FemcGame = (() => {
   }
 
   /* ── Saves ── */
-  function saveSlot(n, label) { const at = Date.now(); const ok = lsSet(SLOT_KEY(n), JSON.stringify({ at, label: label || slotLabel(), state: S })); return ok; }
+  function saveSlot(n, label) { if (SAVE_KEY !== KEY) return false; const at = Date.now(); const ok = lsSet(SLOT_KEY(n), JSON.stringify({ at, label: label || slotLabel(), state: S })); return ok; }
   function readSlot(n) { try { const x = JSON.parse(lsGet(SLOT_KEY(n)) || 'null'); return x && x.state && x.state.v ? x : null; } catch (e) { return null; } }
-  function loadSlot(n) { const x = readSlot(n); if (!x) return false; S = migrate(clone(x.state)); save(); return true; }
+  function loadSlot(n) { const x = readSlot(n); if (!x) return false; SAVE_KEY = KEY; S = migrate(clone(x.state)); save(); return true; }
   function slotLabel(s = S) { if (s.epi) { const e = epiSlotInfo(s); return `Epilogue · ${e.epi} · ${e.mon} ${e.dom}`; } const i = dayInfo(s.day); return `${i.md} ${i.day} · ${slotName(s.slot, i)}`; }
   // What a save slot shows (P3-style): date, time of day, Solar's level, play time, the month's name.
   function slotInfo(s) {
@@ -2952,7 +2954,7 @@ window.FemcGame = (() => {
       const obj = JSON.parse(raw.startsWith('{') ? raw : decodeURIComponent(escape(atob(raw.replace(/\s+/g, '')))));
       const st = obj.state || obj;
       if (!st || typeof st.day !== 'number' || !st.stats) return false;
-      S = migrate(st); save(); return true;
+      SAVE_KEY = KEY; S = migrate(st); save(); return true;
     } catch (e) { return false; }
   }
   /* An epilogue save's slot (P3-style, labelled "Epilogue · Syracuse · Dec 9"): worked out from S.epi alone (year, start, place,
@@ -2967,6 +2969,17 @@ window.FemcGame = (() => {
       lv: b && b.lvl ? b.lvl : null, play: `${Math.floor(mins / 60)}:${String(mins % 60).padStart(2, '0')}`, prologue: false, ngp: s.ngp || 0,
       fight: !!(s.handoff && s.handoff.status === 'pending'), epi: place, world: e.world };
   }
+  /* The epilogue sim (episim.js, Nov 11 2026): sandbox(key, state) points save() at the sim's own key and makes `state` (or what
+     that key holds, migrated like a slot) S; sandbox(null) points it back at KEY and reloads Kat's own autosave (no world).
+     While one runs, saveSlot() refuses, and loading a slot or a backup code ends it (that state goes to KEY, as always). */
+  function sandbox(key, state) {
+    if (!key) { if (SAVE_KEY === KEY) return false; SAVE_KEY = KEY; setWorld(null); S = load() || fresh(); return true; }
+    let s = state || null;
+    if (!s) { try { s = JSON.parse(lsGet(key) || 'null'); } catch (e) { s = null; } if (s && s.v) s = migrate(s); }
+    if (!s || !s.v || key === KEY || /-slot\d+$/.test(key)) return false;
+    SAVE_KEY = key; S = s; save(); return true;
+  }
+  const sandboxed = () => (SAVE_KEY === KEY ? null : SAVE_KEY);
   const hasSave = () => { try { return !!JSON.parse(lsGet(KEY) || 'null')?.started; } catch (e) { return false; } };
   function deleteSave() { lsSet(KEY, null); S = fresh(); }
 
@@ -3021,7 +3034,7 @@ window.FemcGame = (() => {
     lateNightDue, finishLateNight, tripPlan, finishTrip, unread, markAllRead, isGroupThread, freeSlotSpent, nextSlot, sleep,
     available, navigator, tartarusOk, floorCap, makeHandoff, readHandoff, clearHandoff, finishHandoff, simulate, applyResult,
     setBattleSave, ensureBattleSave,
-    SLOTS, saveSlot, readSlot, loadSlot, slotLabel, slotInfo, exportCode, importCode, hasSave, deleteSave,
+    SLOTS, saveSlot, readSlot, loadSlot, slotLabel, slotInfo, exportCode, importCode, hasSave, deleteSave, sandbox, sandboxed,
     setWorld, world, money, freshState, adoptState, noWorld, replayWorld, CLEARS_KEY
   };
 })();
