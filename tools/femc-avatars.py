@@ -49,11 +49,13 @@ PFP_PICKS = {
              'junkyu': 'Hoax PFP/junkyu-1.jpg', 'hyunsuk': 'Hoax PFP/hyunsuk-1.jpg', 'asahi': 'Hoax PFP/asahi-1.jpg',
              'jaehyuk': 'Hoax PFP/jaehyuk-1.jpg', 'eunchae': 'Hoax PFP/eunchae-1.jpg',
              'heeseung': 'Hoax PFP/heeseung-1.jpg', 'jay': 'Hoax PFP/jay-1.jpg', 'sunghoon': 'Hoax PFP/sunghoon-1.jpg',
-             'chaewon': 'Hoax PFP/Chaewon-1.jpg'},
+             'chaewon': 'Hoax PFP/Chaewon-1.jpg', 'retreat': 'Hoax PFP/retreatgc.jpg', 'club': 'Hoax PFP/ripsolarkimgc.png'},
     'strangers': {'haechan': 'Strangers PFP/Haechan-1.jpg', 'jungwon': 'Strangers PFP/Jungwon-1.jpg', 'yunjin': 'Strangers PFP/Yunjin-1.jpg',
                   'appa': 'Strangers PFP/Taesang-1.png', 'eomma': 'Strangers PFP/Miyeon-1.png', 'mroh': 'Strangers PFP/Mroh-1.jpg',
                   'jay': 'Strangers PFP/Jay-1.jpg', 'sunghoon': 'Strangers PFP/Sunghoon-1.jpg', 'niki': 'Strangers PFP/Niki-1.jpg',
-                  'girls': 'Strangers PFP/girlsgc.jpg'},
+                  'girls': 'Strangers PFP/girlsgc.jpg', 'aunt': 'Strangers PFP/auntiesong.png', 'chaewon': 'Strangers PFP/chaewon.jpg',
+                  'eunchae': 'Strangers PFP/eunchae.jpg', 'kazuha': 'Strangers PFP/kazuha.jpg', 'sakura': 'Strangers PFP/sakura.jpg'},
+    'runners': {'jaehyun': 'Runners PFP/jaehyun.jpg', 'dad': 'Runners PFP/jaesang.jpg', 'mom': 'Runners PFP/solji.jpg'},
 }
 
 
