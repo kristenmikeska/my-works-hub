@@ -467,3 +467,6 @@ Runners and HOAX are in (batch 148). Left: strangers `gong-strangers`, `wu-stran
 
 ### H20 / H21. HOAX kitchen and front step by day (Nov 8)
 `epi-h-kim-kitchen` (+ `-night`) → new hoax/world.js rule `['Hanlim · Home · Kitchen', 'epi-h-kim-kitchen', 'epi-h-kim-kitchen-night' (or the day one)]` above the plain `Hanlim · Home` rule (rules match by prefix, more specific first). `epi-h-front-step-day` → the `Hanlim · Home · Front Step` rule's day slot (now `epi-h-winter-street-day`). DATA_V bump.
+
+## 45. The booth (singing rhythm game, Nov 10)
+`python3 tools/femc-minigame-art.py` turns `New Adds/sing-*.png` into `assets/femc/game/art/minigames/sing/<name>.webp`. Already read by `minigames/sing.js` (drawn stand-ins until then): `booth` (the room, cover), `haechan-desk` (inside the glass window), `solar-mic` (right side, bottom-anchored). Not wired yet, cut them when they arrive: `solar-faces` / `haechan-faces` (3 × 2 sheets → per-face files, swap into `FACE()`; faces: neutral, singing, belting, happy, wince, flustered / neutral, talking, impressed, happy, wince, soft), `notes` (gems for `.sg-note` l0-l2, bursts for `.sg-lane.hit`, ribbon for hold tails), `title` (a start card before the count-in), `grades` (the end screen's letter).

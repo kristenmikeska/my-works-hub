@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Kat's Regionals minigame art (FEMC-ART-TODO 43, Nov 10 2026) -> assets/femc/game/art/minigames/ow/<name>.webp.
+"""Kat's minigame art: Regionals (mg-ow-*), the dumpling game (cook-*), the booth (sing-*, FEMC-ART-TODO 45).
+Regionals (FEMC-ART-TODO 43, Nov 10 2026) -> assets/femc/game/art/minigames/ow/<name>.webp.
 
   python3 tools/femc-minigame-art.py        every New Adds/mg-ow-*.png|jpg|webp that's there (re-run any time; it replaces)
 
@@ -49,6 +50,14 @@ def main():
     for f in sorted(NEW.glob('cook-*')):
         if f.suffix.lower() not in ('.png', '.jpg', '.jpeg', '.webp'): continue
         dst = COOK / f'{f.stem[len("cook-"):]}.webp'; fit(Image.open(f).convert('RGB')).save(dst, 'WEBP', quality=88); print(f.name, '->', dst.relative_to(ROOT))
+    # the booth singing game (FEMC-ART-TODO 45): New Adds/sing-*.png -> art/minigames/sing/*.webp
+    SING = ROOT / 'assets/femc/game/art/minigames/sing'; SING.mkdir(parents=True, exist_ok=True)
+    for f in sorted(NEW.glob('sing-*')):
+        if f.suffix.lower() not in ('.png', '.jpg', '.jpeg', '.webp'): continue
+        name = f.stem[len('sing-'):]; dst = SING / f'{name}.webp'; im = Image.open(f)
+        if name in ('booth', 'haechan-desk', 'title'): fit(im.convert('RGB')).save(dst, 'WEBP', quality=88)
+        else: fit(alpha(im)).save(dst, 'WEBP', quality=90, alpha_quality=100)
+        print(f.name, '->', dst.relative_to(ROOT))
     for f in sorted(NEW.glob('mg-ow-*')):
         if f.suffix.lower() not in ('.png', '.jpg', '.jpeg', '.webp'): continue
         name = f.stem[len('mg-ow-'):]; im = Image.open(f); dst = OUT / f'{name}.webp'

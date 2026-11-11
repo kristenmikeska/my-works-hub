@@ -339,6 +339,66 @@ A cute splash illustration in the Persona 3: Solstice style: clean anime illustr
 
 ---
 
+## 45. The booth: singing rhythm game (Kat, Nov 10)
+
+For the Studio 4B singing game, played to "Runners" by CAMO. Solar sings in the booth, Haechan listens behind the glass. The notes, lanes and waveform are drawn by the game; these pictures dress the room. Optional: the game already plays without them.
+
+**[ ] 45A. The booth, looking out through the glass**  
+Attach: `BG - Studio 4B.png`  
+Save as: `sing-booth.png`
+```
+A wide 16:9 background in the Persona 3: Solstice style: clean anime illustration, soft cel shading, moody and warm, pink accents, like a rhythm game, no people: the inside of a small recording booth, looking out through a big rectangular window of thick glass in the upper part of the picture into the dim control room of the attached studio (mixing desk lights, monitors glowing pink and amber). The booth walls are dark charcoal acoustic foam in a square pattern, a pink "ON AIR" light above the window, a music stand with a printed lyric sheet covered in pencil marks, a pair of headphones hanging on a hook, warm low light pooling on the floor. Keep the lower middle fairly dark and plain (the note lanes go there). No text but ON AIR.
+```
+
+**[ ] 45B. Haechan at the desk, through the glass**  
+Attach: `Haechan (Runners).png`, `BG - Studio 4B.png`  
+Save as: `sing-haechan-desk.png`
+```
+A wide 16:9 picture in the Persona 3: Solstice style: clean anime illustration, soft cel shading, moody and warm, pink accents, like a rhythm game: the young man in the attached image seen from the front, through a slightly reflective glass window, sitting at the attached studio's big mixing desk at night. Black hoodie, big studio headphones around his neck, one finger resting on the talkback button, elbow on the desk, chin propped on his other hand, watching the booth with a flat, focused look that is very nearly a smile. Pink and amber desk lights under his face, faders and meters glowing, a can of coffee by his hand. A faint reflection of the booth's foam on the glass. No text.
+```
+
+**[ ] 45C. Solar at the mic**  
+Attach: `Solar (Runners).png`  
+Save as: `sing-solar-mic.png`
+```
+A tall 2:3 picture in the Persona 3: Solstice style: clean anime illustration, soft cel shading, moody and warm, pink accents, like a rhythm game, transparent background (or plain white): the young woman in the attached image standing at a studio microphone with a round pop filter, seen from her left side at three-quarters, from the knees up. Big black studio headphones over her long dark hair, eyes closed, mouth open mid-note, one hand pressing an ear cup, the other hand loose at her side with the fingers spread like she's feeling the beat. Oversized cream knit sweater, sleeves over her wrists. Soft pink rim light from behind. Only her and the mic on its stand; nothing else. No text.
+```
+
+**[ ] 45D. Solar singing, six faces**  
+Attach: `Solar (Runners).png`  
+Save as: `sing-solar-faces.png`
+```
+A 3 × 2 portrait sheet in the Persona 3: Solstice style: clean anime illustration, soft cel shading, moody and warm, pink accents, like a rhythm game, plain transparent background (or plain white), clear space between cells, nothing overlapping: the young woman in the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, big black studio headphones on, cream knit sweater. In reading order: neutral (listening to the count-in, eyes on the lyric sheet), singing (eyes closed, mouth open on a clear note), belting (head tipped back, the big note), happy (grinning between lines), wince (she cracked a note, one eye shut), flustered (pressing the headphones, looking away, caught smiling at the glass). No text.
+```
+
+**[ ] 45E. Haechan on talkback, six faces**  
+Attach: `Haechan (Runners).png`  
+Save as: `sing-haechan-faces.png`
+```
+A 3 × 2 portrait sheet in the Persona 3: Solstice style: clean anime illustration, soft cel shading, moody and warm, pink accents, like a rhythm game, plain transparent background (or plain white), clear space between cells, nothing overlapping: the young man in the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, black hoodie, studio headphones pushed half off one ear, a pink desk glow on his face. In reading order: neutral (flat, listening), talking (leaning to the talkback mic, mid-word), impressed (eyebrows up, very still), happy (a small reluctant smile), wince (hand over his eyes at a missed note), soft (chin on his hand, looking at her like the song is finished and he doesn't want it to be). No text.
+```
+
+**[ ] 45F. Note gems and the hit burst**  
+Save as: `sing-notes.png`
+```
+A 3 × 2 sheet of six game effects in the Persona 3: Solstice style: clean anime illustration, soft cel shading, moody and warm, pink accents, like a rhythm game, on a plain solid black background, each centred in its cell with clear space around it, all glowing: 1 a soft pink rounded pill-shaped note gem, 2 a hot pink note gem, 3 a pale blush note gem (all three the same shape and size, like glowing glass), 4 a ring-shaped burst of pink light with tiny music notes flying out (a perfect hit), 5 a smaller softer burst (a good hit), 6 a long glowing pink ribbon of light (a held note's tail). No text.
+```
+
+**[ ] 45G. Title card: the take**  
+Attach: `Solar (Runners).png`, `Haechan (Runners).png`, `BG - Studio 4B.png`  
+Save as: `sing-title.png`
+```
+A splash illustration in the Persona 3: Solstice style: clean anime illustration, soft cel shading, moody and warm, pink accents, like a rhythm game, landscape 16:9: split by the booth's glass window down the middle. On the right, the young woman (first attached image) in big headphones at the microphone, eyes closed, singing, warm pink light. On the left, the young man (second image) at the attached studio's mixing desk, headphones on, one hand on a fader, watching her through the glass. Pink soundwaves cross the glass between them. Leave the top third fairly clear for a title. No text.
+```
+
+**[ ] 45H. Grade records**  
+Save as: `sing-grades.png`
+```
+A 2 × 2 sheet of four vinyl-record style badges in the Persona 3: Solstice style: clean anime illustration, soft cel shading, moody and warm, pink accents, like a rhythm game, on a plain transparent background (or plain white), clear space between them: S, a glittering pink vinyl with a gold label and a tiny star; A, a black vinyl with a pink label and a heart; B, a black vinyl with a grey label and a little music note; C, a scuffed grey vinyl with a crack and a sweat drop. Put the big letter S, A, B or C on each label. No other text.
+```
+
+---
+
 ## 31. Low-res pictures to look at (assess later)
 
 These are already in the game but look soft or blurry, because they're shown much bigger than the file. No prompts yet: check each one and decide whether to find a bigger copy, redo it, or leave it for the upscale batch. Sizes are width × height in pixels; the newer backgrounds are 1920 wide.
