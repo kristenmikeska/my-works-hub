@@ -419,7 +419,7 @@ window.FemcScene = (() => {
         });
       });
     }
-    const MINIGAME_V = 4;
+    const MINIGAME_V = 5;
     function giftAsk(line) {
       const who = line.giftAsk;
       if (replay || !G.giftBag || !G.giftBag().length) return next();

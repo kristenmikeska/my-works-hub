@@ -126,3 +126,15 @@
 .mg-ow .mg-pause button { padding: 12px 26px; border: 0; background: var(--pk); color: var(--nt); font: italic 900 18px/1 var(--cond, sans-serif); transform: skewX(-12deg); cursor: pointer; }
 @media (max-width: 760px) { .ow-feed { display: none; } .ow-kit { right: 8px; bottom: 8px; gap: 6px; } .ow-ab { min-width: 58px; padding: 8px; font-size: 11px; } .ow-me { left: 8px; bottom: 70px; } .ow-stats { grid-template-columns: repeat(3, auto); } .ow-stats dt { grid-row: auto; } .ow-stats dd { grid-row: auto; } .ow-stage { cursor: auto; } .ow-cross { display: none; } }
 .mg-ow.still * { animation: none !important; transition: none !important; }
+
+/* the player cards on the end screen (art card-*), Nov 11 */
+.ow-cards { display: flex; justify-content: center; gap: clamp(6px, 1vw, 14px); margin: 0; padding: 0; list-style: none; justify-self: stretch; }
+.ow-cards li { position: relative; width: clamp(64px, 9vw, 120px); animation: ow-card-in .4s cubic-bezier(.2, .8, .3, 1) both; }
+.ow-cards li:nth-child(2) { animation-delay: .06s; } .ow-cards li:nth-child(3) { animation-delay: .12s; } .ow-cards li:nth-child(4) { animation-delay: .18s; } .ow-cards li:nth-child(5) { animation-delay: .24s; }
+.ow-cards img { display: block; width: 100%; aspect-ratio: 417 / 601; object-fit: contain; filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .5)); }
+.ow-cards b { display: block; margin-top: 4px; text-align: center; font: italic 900 clamp(11px, 1vw, 14px)/1 var(--cond, sans-serif); color: #fff; }
+.ow-cards li.me { transform: translateY(-6px) scale(1.08); }
+.ow-cards li.me b { color: var(--pk); }
+@keyframes ow-card-in { from { opacity: 0; transform: translateY(20px); } }
+@media (prefers-reduced-motion: reduce) { .ow-cards li { animation: none; } }
+@media (max-height: 760px) { .ow-cards li { width: clamp(52px, 7vw, 84px); } }

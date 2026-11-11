@@ -197,3 +197,15 @@
 .sg-booth-art ~ .sg-glass .sg-hc:has(.sg-hc-bop) .sg-hc-face { display: none !important; }
 .sg-booth-art ~ .sg-talk { left: 2%; top: 3%; width: 22%; }
 @media (max-width: 760px) { .sg-booth-art ~ .sg-glass { left: 25%; width: 50%; height: 40%; } .sg-booth-art ~ .sg-talk { top: auto; bottom: 90px; width: 92%; } }
+
+/* the title card (art title) and Haechan's talkback faces (art hc-*), Nov 11 */
+.sg-title { position: absolute; inset: 0; z-index: 30; display: grid; place-items: center; background: #14070f; cursor: pointer; animation: sg-tt-in .35s ease-out; }
+.sg-title img { width: 100%; height: 100%; object-fit: cover; }
+.sg-title.out { animation: sg-tt-out .45s ease-in forwards; }
+@keyframes sg-tt-in { from { opacity: 0; transform: scale(1.04); } }
+@keyframes sg-tt-out { to { opacity: 0; } }
+.mg-sing.still .sg-title, .mg-sing.still .sg-title.out { animation-duration: .01s; }
+.sg-tb { flex: none; align-self: center; width: clamp(48px, 5.2vw, 76px); aspect-ratio: 1; object-fit: cover; border: 2px solid var(--pk); box-shadow: 0 2px 8px rgba(0, 0, 0, .5); transform: skewX(-6deg); }
+.sg-tb[hidden] { display: none; }
+/* Kat's singing poses (45C) are wide frames (arm reaches), so her figure gets a bigger box when they're in (Nov 11) */
+@media (min-width: 761px) { .sg-solar:has(.p-idle) { left: 3%; width: 50%; height: 84%; } }

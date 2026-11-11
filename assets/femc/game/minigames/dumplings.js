@@ -31,7 +31,8 @@
      icon-perfect / -okay / -bag   the tray (top bar, .dmp-tray): one slot per dumpling, its wrap result once made;
      icon-golden / -burnt / -steamed   after the pan every slot shows how they cooked (pale = steamed). Fallback: a mini SVG dumpling.
      stamp-s / -a / -b / -c   the grade badge on the end screen (fallback: the big letter)
-   Sounds: Web Audio, no files. Esc pauses. */
+   Sounds: Web Audio, no files. Esc pauses.
+   title (44G): a title card held 1.8 s before the filling (click / a key skips; none without the art). */
 window.FemcDumplings = (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -547,7 +548,13 @@ window.FemcDumplings = (() => {
       $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') { R.paused = false; $('.mg-pause').hidden = true; } if (b === 'quit') { R.paused = false; $('.mg-pause').hidden = true; finish(true); } };
       window.addEventListener('keydown', key, true); window.addEventListener('keyup', keyUp, true);
       raf = requestAnimationFrame(tick);
-      tray(); pickFilling();
+      tray();
+      // the title card (FEMC-ART-TODO 44G, art title): held 1.8 s over the kitchen (click / any key skips), then the filling
+      const tt = document.createElement('div'); tt.className = 'dmp-title'; tt.innerHTML = `<img src="${ART('title')}" alt="">`; el.appendChild(tt);
+      let begun = false; const begin = () => { if (begun) return; begun = true; window.removeEventListener('keydown', skipT, true); tt.classList.add('out'); setTimeout(() => tt.remove(), 450); pickFilling(); };
+      const skipT = e => { if (e.key !== 'Escape') begin(); };
+      tt.querySelector('img').onerror = () => { tt.remove(); begin(); };
+      tt.onclick = begin; window.addEventListener('keydown', skipT, true); setTimeout(begin, 1800);
     });
   }
   return { play, FILLINGS, SAUCES, GARNISH, PLATES };

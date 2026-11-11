@@ -3,6 +3,10 @@
 
   python3 tools/femc-minigame-art.py        every New Adds/mg-ow-* | cook-* | sing-* (.png .jpg .jpeg .webp) that's there
                                              (re-run any time; it replaces). Kat's files are only read.
+  python3 tools/femc-minigame-art.py FILE…  only these files, from anywhere (named as above; Kat's WIP folder, a lifted copy)
+
+Opaque sheets on a dark background (Kat's sing-solar-poses came on purple): lift a copy first with macOS Vision
+(swiftc tools/femc-lift.swift -o lift; ./lift SRC scratch/sing-solar-poses.png) and pass that copy.
 
 Regionals -> assets/femc/game/art/minigames/ow/<name>.webp (New Adds/mg-ow-<name>.*):
   map-<id>-<n>   16:9 backgrounds (Kat made 3 per map: map-busan-1..3, map-lijiang-1..3): at most 1920 wide, RGB, q86
@@ -46,6 +50,12 @@ SING_SHEETS = {  # name: (cols, rows, frame names in reading order, canvas mode,
 LISTEN_SHEETS = {  # the listen game (FEMC-ART-TODO 47): the six things and their stickers, in listen.js THINGS order
     'things': (3, 2, ['obj-heat', 'obj-train', 'obj-light', 'obj-cab', 'obj-steam', 'obj-rad'], 'center', {}),
     'stickers': (3, 2, ['sticker-heat', 'sticker-train', 'sticker-light', 'sticker-cab', 'sticker-steam', 'sticker-rad'], 'center', {}),
+}
+OW_SHEETS = {  # the player cards (FEMC-ART-TODO 43N), in the prompt's order; 'solid' drops the faint glow around each card
+    'cards': (5, 1, ['card-solar', 'card-chenle', 'card-minji', 'card-olivia', 'card-haerin'], None, {'solid': 160}),
+}
+GRID_RGB = {  # opaque sheets cut on an even grid, each cell kept as a square picture (the talkback window shows its background)
+    'haechan-faces': (3, 2, ['hc-neutral', 'hc-talking', 'hc-impressed', 'hc-happy', 'hc-wince', 'hc-soft']),
 }
 COOK_SHEETS = {
     'icons': (3, 2, ['icon-perfect', 'icon-okay', 'icon-bag', 'icon-golden', 'icon-burnt', 'icon-steamed'], 'center', {}),
@@ -115,7 +125,9 @@ def trim(c):
 
 def sheet(src, spec, out):
     cols, rows, names, mode, opt = spec
-    im = alpha(Image.open(src)); W, H = im.size; a = np.asarray(im.getchannel('A')) > 16
+    im = alpha(Image.open(src))
+    if opt.get('solid'): px = np.asarray(im).copy(); px[..., 3] = np.where(px[..., 3] < opt['solid'], 0, px[..., 3]); im = Image.fromarray(px)
+    W, H = im.size; a = np.asarray(im.getchannel('A')) > 16
     ys = cuts(a.sum(1), rows); cells = []
     for r in range(rows):
         band = a[ys[r]:ys[r + 1]]; xs = cuts(band.sum(0), cols)
@@ -148,8 +160,12 @@ def fit(im, w=1920):
     return im if im.width <= w else im.resize((w, round(im.height * w / im.width)), Image.LANCZOS)
 
 
+PICK = [Path(a) for a in __import__('sys').argv[1:]]
+
+
 def files(prefix):
-    return [f for f in sorted(NEW.glob(prefix + '*')) if f.suffix.lower() in EXTS]
+    src = [f for f in PICK if f.name.startswith(prefix)] if PICK else sorted(NEW.glob(prefix + '*'))
+    return [f for f in src if f.suffix.lower() in EXTS]
 
 
 def main():
@@ -165,6 +181,13 @@ def main():
     for f in files('sing-'):
         name = f.stem[len('sing-'):]
         if name in SING_SHEETS: sheet(f, SING_SHEETS[name], SING); continue
+        if name in GRID_RGB:
+            cols, rows, names = GRID_RGB[name]; im = Image.open(f).convert('RGB'); cw, ch = im.width / cols, im.height / rows
+            for i, n in enumerate(names):
+                x, y = (i % cols) * cw, (i // cols) * ch; s = min(cw, ch) * 0.96
+                cell = im.crop((round(x + (cw - s) / 2), round(y + (ch - s) / 2), round(x + (cw + s) / 2), round(y + (ch + s) / 2)))
+                cell.resize((480, 480), Image.LANCZOS).save(SING / f'{n}.webp', 'WEBP', quality=88); print(f.name, '->', n)
+            continue
         dst = SING / f'{name}.webp'; im = Image.open(f)
         if name in ('booth', 'haechan-desk', 'title'): fit(im.convert('RGB')).save(dst, 'WEBP', quality=88)
         else: fit(alpha(im)).save(dst, 'WEBP', quality=90, alpha_quality=100)
@@ -178,7 +201,9 @@ def main():
         else: fit(alpha(im)).save(dst, 'WEBP', quality=90, alpha_quality=100)
         print(f.name, '->', dst.relative_to(ROOT))
     for f in files('mg-ow-'):
-        name = f.stem[len('mg-ow-'):]; im = Image.open(f); dst = OW / f'{name}.webp'
+        name = f.stem[len('mg-ow-'):]
+        if name in OW_SHEETS: sheet(f, OW_SHEETS[name], OW); continue
+        im = Image.open(f); dst = OW / f'{name}.webp'
         if name.startswith('map-') or name in ('victory', 'defeat'): fit(im.convert('RGB')).save(dst, 'WEBP', quality=86)
         elif name.startswith('potg'): fit(im.convert('RGB')).save(dst, 'WEBP', quality=88)
         elif name == 'hands': fit(alpha(im)).save(dst, 'WEBP', quality=90, alpha_quality=100)

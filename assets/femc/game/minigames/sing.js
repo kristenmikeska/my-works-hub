@@ -105,7 +105,7 @@ window.FemcSing = (() => {
         <div class="sg-stage">
           ${img('sg-booth-art', 'booth')}<div class="sg-room"><i class="foam"></i><i class="glow"></i></div>
           <div class="sg-glass">${img('sg-hc-art', 'haechan-desk')}<div class="sg-hc">${img('sg-hc-bop b0', 'haechan-bop-0')}${img('sg-hc-bop b1', 'haechan-bop-1')}<img class="sg-hc-face" src="${FACE('haechan', 'neutral')}" alt="Haechan"></div><span class="sg-desk"></span><span class="sg-onair">ON AIR</span></div>
-          <p class="sg-talk" aria-live="polite"><b>Haechan</b><span></span></p>
+          <p class="sg-talk" aria-live="polite"><img class="sg-tb" alt="" hidden><b>Haechan</b><span></span></p>
           <div class="sg-solar" data-pose="idle">${DIRS.concat('idle', 'miss').map(p => img(`sg-pose p-${p}`, `solar-${p}`)).join('')}<img class="sg-sl-face" src="${FACE('solar', 'neutral')}" alt="Solar"><span class="sg-mic"></span><i class="sg-notes-fx"></i></div>
           <div class="sg-pop"></div>
         </div>
@@ -127,7 +127,8 @@ window.FemcSing = (() => {
             <label>Offset <input type="range" min="-200" max="200" step="5" data-o="offset"><output></output> ms</label>
           </div>
           ${REC ? '' : '<button type="button" data-mg="quit">Quit</button>'}</div>
-        <div class="mg-end" hidden></div>`;
+        <div class="mg-end" hidden></div>
+        ${REC || FROM ? '' : `<div class="sg-title"><img src="${ART('title')}" alt=""></div>`}`;
       host.appendChild(el);
       const $ = s => el.querySelector(s), cols = [...el.querySelectorAll('.sg-col')], noteBox = $('.sg-notes'), solar = $('.sg-solar'), hcBox = $('.sg-hc');
       let mic = null, talker = 'haechan';
@@ -176,7 +177,10 @@ window.FemcSing = (() => {
       };
       const now = () => songT() - O.offset / 1000;
 
-      const say = (k, face = 'neutral') => { if (!k) return; $('.sg-talk span').textContent = typeof k === 'string' ? k : pick(k); const im = $('.sg-hc-face'); if (im && !im.src.endsWith(face + '.webp')) im.src = FACE(talker, face); el.classList.remove('talk'); void el.offsetWidth; el.classList.add('talk'); };
+      // Haechan's talkback faces (FEMC-ART-TODO 45E, art hc-<face>): a square picture beside his line; none while Solar talks back
+      const TB = { neutral: 'talking', happy: 'happy', serious: 'wince' };
+      const say = (k, face = 'neutral', tb) => { if (!k) return;
+        const tbi = $('.sg-tb'); if (tbi) { const n = tb || TB[face] || 'talking'; if (talker !== 'haechan' || tbi.dataset.bad) tbi.hidden = true; else { tbi.hidden = false; tbi.onerror = () => { tbi.hidden = true; tbi.dataset.bad = 1; }; tbi.src = ART('hc-' + n); } } $('.sg-talk span').textContent = typeof k === 'string' ? k : pick(k); const im = $('.sg-hc-face'); if (im && !im.src.endsWith(face + '.webp')) im.src = FACE(talker, face); el.classList.remove('talk'); void el.offsetWidth; el.classList.add('talk'); };
       let poseT = 0;
       const pose = (p, ms = 380) => { solar.dataset.pose = p; solar.classList.remove('hitpose'); void solar.offsetWidth; solar.classList.add('hitpose'); clearTimeout(poseT); if (ms) poseT = setTimeout(() => { if (!notes.some(n => n.held)) solar.dataset.pose = 'idle'; }, ms); };
       const popRating = (r, combo) => {
@@ -211,7 +215,7 @@ window.FemcSing = (() => {
         if (r === 'perfect') splash(lane);
         popRating(r, st.combo); pose(DIRS[lane], cand.len ? 0 : 380);
         if (cand.len) { cand.held = true; cand.el.classList.add('holding'); } else { cand.done = true; cand.el.remove(); }
-        if (st.combo && st.combo % 50 === 0) say(T().streak, 'happy');
+        if (st.combo && st.combo % 50 === 0) say(T().streak, 'happy', 'impressed');
         stats();
       };
       const release = lane => {
@@ -288,7 +292,7 @@ window.FemcSing = (() => {
         if (st.over) return; st.over = true; fade();
         const acc = stats(), fc = st.miss === 0;
         const grade = quit ? 'C' : acc >= 95 && st.miss <= 2 ? 'S' : acc >= 85 ? 'A' : acc >= 70 ? 'B' : 'C';
-        say(T().end[grade], grade === 'S' || grade === 'A' ? 'happy' : 'neutral'); pose(grade === 'C' ? 'miss' : 'up', 0);
+        say(T().end[grade], grade === 'S' || grade === 'A' ? 'happy' : 'neutral', grade === 'S' ? 'soft' : grade === 'A' ? 'happy' : grade === 'C' ? 'wince' : 'neutral'); pose(grade === 'C' ? 'miss' : 'up', 0);
         const end = $('.mg-end'); end.hidden = false;
         end.innerHTML = `<b class="mg-grade">${grade}</b>${fc && !quit ? '<b class="sg-fc">FULL COMBO</b>' : ''}<dl><dt>Score</dt><dd>${Math.round(st.score).toLocaleString()}</dd><dt>Accuracy</dt><dd>${acc.toFixed(2)}%</dd><dt>Perfect</dt><dd>${st.perfect}</dd><dt>Good</dt><dd>${st.good}</dd><dt>OK</dt><dd>${st.ok}</dd><dt>Missed</dt><dd>${st.miss}</dd><dt>Best combo</dt><dd>${st.maxCombo}</dd></dl><p class="mg-end-say">Haechan: ${esc(T().end[grade])}</p><div class="sg-end-btns"><button type="button" data-c>Continue</button><button type="button" data-r>Again</button></div>`;
         end.querySelector('[data-c]').focus();
@@ -354,7 +358,15 @@ window.FemcSing = (() => {
       const recCount = () => { if (REC) $('.sg-stats').textContent = `Recording · ${notes.filter(n => !n.done).length} notes · Esc to go back or save`; };
       const recMode = () => { if (!REC) return; el.classList.add('rec'); recCount(); $('.sg-health').style.display = 'none'; };
       cast(whoAt(FROM)); health(0); stats(); say(REC ? T().rec : T().intro); recMode();
-      raf = requestAnimationFrame(loop);
+      // the title card (FEMC-ART-TODO 45J, art title): held 1.8 s (click to skip), then the count-in starts; none without the art
+      let going = false; const go = () => { if (going) return; going = true; raf = requestAnimationFrame(loop); };
+      const tt = $('.sg-title');
+      if (!tt) go();
+      else {
+        const out = () => { tt.classList.add('out'); go(); setTimeout(() => tt.remove(), 450); };
+        tt.querySelector('img').onerror = () => { tt.remove(); go(); };
+        tt.onclick = out; setTimeout(out, reduced.matches ? 1200 : 1800);
+      }
     });
   }
   return { play, draft, opts };

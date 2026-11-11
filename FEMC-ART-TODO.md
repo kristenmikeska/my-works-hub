@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 10, after art batch 150):** ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (sections 43-45: the Regionals player cards; Haechan's apron faces and the dumpling title card; 8 booth pieces: both singers' poses and bops, Haechan's talkback faces, the two health-bar icons, the title card; section 47: the listen game's street, its six things, their stickers and Haechan) · Runners: 4 Manhattan CGs (section 42) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · **the epilogue scrapbook** (section 46, Nov 10: 110 "Previously" photos, Runners 40 / strangers 35 / HOAX 35, plus 11 covers, paper, dividers, tape and sticker sheets) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
+**To make (updated Nov 11, after art batch 151):** ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (sections 44-45: Haechan's apron faces; 3 booth pieces for his songs: his singing poses, Solar bopping behind the glass, his health-bar icon; section 47: the listen game's street, its six things, their stickers and Haechan) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · **the epilogue scrapbook** (section 46, Nov 10: 110 "Previously" photos, Runners 40 / strangers 35 / HOAX 35, plus 11 covers, paper, dividers, tape and sticker sheets) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
 
 ## ⭐ Outfits, HD poses and banners: in `FEMC-SKIN-ART.md` (Nov 7)
 
@@ -146,49 +146,6 @@ A portrait sheet: 3 columns × 2 rows on a plain white background, with clear em
 
 
 ---
-## 42. Runners: one more Manhattan CG (ChatGPT; realistic; Kat, Nov 9)
-
-**Arrival snapshots (42C-42E).** New Year's Eve, "They came in two waves." Each one is meant to pop up for just the arrival beat and clear a line or two later, like a photo going off, so they're framed like candid snapshots: a little off-centre, mid-motion, everyone caught mid-sentence. Faces: the "(Runners NYE)" references are in Place Prompt Attachments.
-
-**[ ] 42C. Runners: Miss Lee** (wave one: the girls out of the lift)  
-Attach: `CG - style (Runners).png`, `BG - Lee Apartment Hall.png`, `Solar (Runners).png`, `Hyein (Runners NYE).png`, `Hanni (Runners NYE).png`, `Olivia (Runners NYE).png`  
-Save as: `epi-r-arrive-girls.png`
-```
-A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the look of the apartment: an elegant Fifth Avenue apartment at night on New Year's Eve, warm lamplight. The scene is the private elevator landing just outside the open front door: brass elevator doors standing open, a wreath on the door. Hyein is bursting out of the elevator at a dead run toward the camera, arms flung wide, mouth open mid-shout, overjoyed, in a sparkly party dress under an open winter coat with snow on the shoulders. Behind her Hanni steps out calmly carrying two overnight bags, in a silver party dress under a long coat, with the patient half-smile of someone who has been managing this all day. Last, Olivia drifts out looking down at her phone, not looking up at all. Solar stands in the open front doorway in the foreground, seen from behind and the side, in a dark party dress, one hand up, laughing. Candid snapshot framing, slight motion blur on Hyein, warm gold light from the apartment spilling onto the landing. Keep every face exactly like the attached references. No text, no logos.
-```
-
-**[ ] 42D. Runners: do not let the one in the gray coat drive** (wave two: five boys out of a car built for four)  
-Attach: `CG - style (Runners).png`, `BG - Upper East Side at night.png`, `Chenle (Runners NYE).png`, `Jeno (Runners NYE).png`, `Jaemin (Runners NYE).png`, `Renjun (Runners NYE).png`, `Jisung (Runners NYE).png`  
-Save as: `epi-r-arrive-boys.png`
-```
-A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: a snowy Upper East Side street off Fifth Avenue at night on New Year's Eve, a dark green building awning with brass poles and warm light from the lobby glass, bare trees wrapped in tiny gold lights. A small black car is stopped at the curb under the awning with all its doors open and five young men spilling out of a car obviously built for four. Chenle stands on the pavement in a dark coat and scarf rubbing the back of his stiff neck, turning to say something very seriously to a uniformed doorman holding the lobby door. Jeno leans out of the back seat in a gray coat, protesting, one hand raised. Jaemin unfolds himself from the car in a sharp party outfit, grinning. Renjun climbs out the other side holding two big bags of ice. Jisung is last, half out of the back with a rucksack, squinting up at the building. Candid snapshot framing, a little chaotic, everyone mid-motion, snow drifting through the light. Keep every face exactly like the attached references. No text, no logos.
-```
-
-**[ ] 42E. Runners: from her grandmother's** (optional: Minji arrives on her own)  
-Attach: `CG - style (Runners).png`, `BG - Lee Apartment Hall.png`, `Minji (Runners NYE).png`  
-Save as: `epi-r-arrive-minji.png`
-```
-A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: the long hall of an elegant Fifth Avenue apartment on New Year's Eve, lamps on, a wall of family photographs in silver frames, the sound of a party just out of frame. Minji stands just inside the front door, alone, in a dark winter coat with a dusting of snow on her shoulders and a camera bag over one arm, her hat in her hand, taking in the whole long hall with quiet, wide eyes and the beginning of a smile. Warm lamplight on her face, the open door behind her dim. Candid snapshot framing. Keep her face exactly like the attached reference. No text, no logos.
-```
-
-**[ ] 42F. Runners: four things** (New Year's Eve, 11 p.m.: Mark in the lobby, every route he's invited on)  
-Attach: `CG - style (Runners).png`, `BG - Lee Building Lobby.png`, `Mark (Runners NYE).png`, `Solar (Runners).png`  
-Save as: `epi-r-mark-lobby.png`
-```
-A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: the grand marble lobby of an old Fifth Avenue apartment building late on New Year's Eve, polished brass everywhere, a huge white flower arrangement on a side table, snow on the glass of the revolving door behind, a doorman at the front desk in the background with his eyes very carefully on a ledger. Mark stands in the middle of the marble floor, not sitting, with snow melting on the shoulders of his dark coat and in his hair, juggling four things at once: a paper cone of flowers, a big pink bakery box tied with string held in both arms, a zipped insulated cool bag hanging off one wrist, and a white envelope pinned flat against the box with one thumb. His face is nervous, earnest, mid-sentence, a little out of breath. Solar faces him from the foreground, seen from behind and the side, in a dark party dress and sheer black tights with no shoes on, standing on the cold marble, very still. Warm brass lamplight, a cold blue tint from the snowy door, a quiet, held moment. Keep both faces exactly like the attached references. No text, no logos.
-```
-
-## 43. Regionals minigame: Overwatch (Kat, Nov 10)
-
-For the playable Regionals match (the support minigame, version C: over the shoulder, Solar's hands at the bottom of the screen, her team standing in the map, the other team popping out of cover). Kat's picks: Solar on Kiriko, Haerin on Ana, Chenle on Reinhardt, Minji on Ashe, Olivia on Tracer; the other team Zarya, Genji, Ana, Lúcio and Cassidy (the comp the story's Regionals scenes call out). Each figure: one picture, transparent or plain white, like the HD poses. The game cuts the kill-feed icons from these figures' heads, so no icon sheet is needed. More heroes from each player's pool can come later as swaps. **In since art batch 150 (Nov 10):** both maps (three pictures each), Solar's hands, all nine figures, the Play of the Game and the victory / defeat cards; only the player cards are left.
-
-**[ ] 43N. Player cards: the Syracuse team** (the scoreboard and the end screen of the Regionals match)  
-Attach: `Solar (Regionals).png`, `Chenle (Regionals).png`, `Minji (Regionals).png`, `Olivia (Regionals).png`, `Haerin (Regionals).png`  
-Save as: `mg-ow-cards.png`
-```
-A 5 × 1 sheet of five esports player cards in the same anime style as the attached faces, on a plain transparent background (or plain white), equal size, clear space between them: each is one of the attached people from the chest up, in a Syracuse esports jersey (orange and navy with a white "S" and a small number), a gaming headset around the neck, at a tournament, behind them a slanted pink-and-black card frame. In order: the girl from the first image (calm, confident smile), the boy from the second (cheerful, serious-eyed), the girl from the third (cool, focused), the girl from the fourth (loud, mid-laugh), the girl from the fifth (quiet, level look). No text, no names.
-```
-
 ## 44. Dumpling cooking minigame (Kat, Nov 10)
 
 For the New Year's Eve dumpling game (12/31). The dumpling itself is drawn by the game so it can roll, fill, fold, pleat, plump and brown; Kat's pictures dress the kitchen around it. Optional: the game already looks finished without them. **In since art batch 150 (Nov 10):** the counter, the pan, Solar's hands with the rolling pin, the dumpling icons and the grade stamps; Haechan's faces and the title card are left.
@@ -200,53 +157,11 @@ Save as: `cook-haechan-faces.png`
 A 3 × 2 portrait sheet in the Persona 3: Solstice style: clean anime illustration, soft cel shading, bright and cosy, pink accents, like a cute cooking game, on a plain transparent background (or plain white), clear space between cells, nothing overlapping: the same young man as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell. He wears a plain black T-shirt with a pink apron over it and a white tea towel slung over one shoulder, his black hair messy, a little flour on one cheek. Expressions in reading order: neutral (flat, unimpressed), happy (a small reluctant smile), sad (pained, looking at a ruined dumpling), serious (deadpan judging), surprised (eyebrows up, actually impressed), flustered (looking away, caught smiling). No text.
 ```
 
-**[ ] 44G. Title card: dumpling time**  
-Attach: `Solar (Runners).png`, `Haechan (Runners).png`  
-Save as: `cook-title.png`
-```
-A cute splash illustration in the Persona 3: Solstice style: clean anime illustration, soft cel shading, bright and cosy, pink accents, like a cute cooking game, landscape 16:9: chibi versions of the two attached people side by side in pink aprons behind a floury kitchen counter, the girl holding up a slightly lopsided dumpling proudly and the boy holding a perfect one with a deadpan face, a tray of dumplings, steam curls and little sparkles around them, a soft pink-and-cream background with gingham patterns. Leave the top third fairly clear for a title. No text.
-```
-
 ---
 
 ## 45. The booth: singing rhythm game (Kat, Nov 10)
 
 For the Studio 4B singing game, a rhythm game played to "Runners" by CAMO: arrows rise to targets and whoever is singing strikes a pose for each one while the other bops behind the glass (Solar sings "Runners"; Haechan sings YOU, WANTCHU and Grey Rain). Every piece is optional: the game draws its own until yours arrive. **In since art batch 150 (Nov 10):** the booth, the control room, the arrows, the rating pop-ups and the count-in.
-
-**[ ] 45C. Solar's singing poses** (she strikes one for each arrow, like a rhythm game)  
-Attach: `Solar (Runners).png`  
-Save as: `sing-solar-poses.png`
-```
-A 3 × 2 character pose sheet in the Persona 3: Solstice style: clean anime illustration, bold clean lineart, soft cel shading, punchy pink-and-black rhythm-game look, plain transparent background (or plain white), clear space between cells, nothing overlapping, the same young woman as the attached image in all six, the same size, full body from the knees up, feet/legs cut at the same height in every cell. She wears big black studio headphones over her long dark hair, an oversized cream knit sweater with the sleeves over her wrists, a short pleated black skirt, and holds a wireless microphone in her right hand. Big, readable, bouncy rhythm-game poses, in reading order: 1 IDLE (relaxed bounce, mic at her chin, eyes half closed, swaying to the beat), 2 LEFT (leaning hard to her left, mic pointed left, hair swinging), 3 DOWN (crouched low and punchy, knees bent, singing down into the mic), 4 UP (stretched tall on her toes, chin up, belting, free arm thrown up), 5 RIGHT (leaning hard to her right, free hand flung out to the right), 6 MISS (flinching, one eye shut, a wobbly mouth, a little grey scribble cloud by her head). Strong silhouettes, motion in the hair and sleeves. No text.
-```
-
-**[ ] 45D. Haechan bopping behind the glass** (two frames, alternating on the beat)  
-Attach: `Haechan (Runners).png`  
-Save as: `sing-haechan-bop.png`
-```
-A 2 × 1 sheet of two frames in the Persona 3: Solstice style: clean anime illustration, bold clean lineart, soft cel shading, punchy pink-and-black rhythm-game look, plain transparent background (or plain white), clear space between them, the same young man as the attached image in both, the same size and framing, from the waist up, sitting at a mixing desk seen from the front (only the desk's front edge with a few glowing pink faders at the bottom of each frame). Black hoodie, big studio headphones on, nodding to the music with a flat cool face that's trying not to smile. Frame 1: head up, shoulders up, on the beat. Frame 2: head dipped in a nod, shoulders down, eyes closed. Everything else identical between the two frames so they loop smoothly. No text.
-```
-
-**[ ] 45E. Haechan on talkback, six faces**  
-Attach: `Haechan (Runners).png`  
-Save as: `sing-haechan-faces.png`
-```
-A 3 × 2 portrait sheet in the Persona 3: Solstice style: clean anime illustration, bold clean lineart, soft cel shading, punchy pink-and-black rhythm-game look, plain transparent background (or plain white), clear space between cells, nothing overlapping: the young man in the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, black hoodie, studio headphones pushed half off one ear, a pink desk glow on his face. In reading order: neutral (flat, listening), talking (leaning to the talkback mic, mid-word), impressed (eyebrows up, very still), happy (a small reluctant smile), wince (hand over his eyes at a missed note), soft (chin on his hand, looking at her like the song is finished and he doesn't want it to be). No text.
-```
-
-**[ ] 45I. Solar's health-bar icon**  
-Attach: `Solar (Runners).png`  
-Save as: `sing-icon-solar.png`
-```
-A small square icon in the Persona 3: Solstice style: clean anime illustration, bold clean lineart, soft cel shading, punchy pink-and-black rhythm-game look, plain transparent background: the young woman in the attached image as a cute chibi head, big black studio headphones on, singing happily with her eyes closed and a little music note beside her, a thick dark outline around the whole head so it reads at small size. Centred, nothing else. No text.
-```
-
-**[ ] 45J. Title card: the take**  
-Attach: `Solar (Runners).png`, `Haechan (Runners).png`, `BG - Studio 4B.png`  
-Save as: `sing-title.png`
-```
-A splash illustration in the Persona 3: Solstice style: clean anime illustration, bold clean lineart, soft cel shading, punchy pink-and-black rhythm-game look, landscape 16:9: split by the booth's glass window down the middle. On the right, the young woman (first attached image) in big headphones at the microphone mid-pose, singing, pink light and four big glowing arrows (left, down, up, right) rising behind her. On the left, the young man (second image) at the attached studio's mixing desk, headphones on, nodding along, watching her through the glass. Pink soundwaves cross the glass between them. Leave the top third fairly clear for a title. No text.
-```
 
 **[ ] 45K. Haechan's singing poses** (his songs: he takes the mic)  
 Attach: `Haechan (Runners).png`  

@@ -98,3 +98,11 @@
 .mg-dmp .mg-end ~ .dmp-talk, .mg-dmp:has(.mg-end:not([hidden])) .dmp-talk { z-index: 7; }
 @media (max-width: 760px) { .dmp-tray li { width: 26px; } .dmp-talk { bottom: auto; top: 46px; max-width: 48vw; } .dmp-talk img { width: 56px; } .dmp-talk p { margin-bottom: 4px; font-size: 13px; } .dmp-prog { display: none; } }
 .mg-dmp.still * { animation: none !important; transition: none !important; }
+
+/* the title card (art title), Nov 11 */
+.dmp-title { position: absolute; inset: 0; z-index: 40; background: #fbe8f0; cursor: pointer; animation: dmp-tt-in .35s ease-out; }
+.dmp-title img { width: 100%; height: 100%; object-fit: cover; }
+.dmp-title.out { animation: dmp-tt-out .45s ease-in forwards; pointer-events: none; }
+@keyframes dmp-tt-in { from { opacity: 0; transform: scale(1.04); } }
+@keyframes dmp-tt-out { to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .dmp-title, .dmp-title.out { animation-duration: .01s; } }

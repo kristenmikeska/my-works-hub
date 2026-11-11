@@ -283,6 +283,8 @@ window.FemcRegionals = (() => {
           else startRound();
         }, 2600);
       };
+      // the player cards (FEMC-ART-TODO 43N, art card-<id>; Nov 11): the team along the end screen, Solar first; a card without art drops out
+      const CARDS = [['solar', 'sollee'], ['chenle', 'chenle'], ['minji', 'minjibear'], ['olivia', 'oliviahye'], ['haerin', 'haerin.k']];
       const potg = () => {
         const best = M.moments.sort((a, b) => b.score - a.score)[0];
         return best ? { kind: best.kind, text: best.text, score: best.score } : { kind: 'heal', text: `${Math.round(M.healed)} healing, kept the team standing`, score: 10 };
@@ -294,6 +296,7 @@ window.FemcRegionals = (() => {
         const res = { won, rounds: M.rounds, elims: M.elims, soloKills: M.soloKills, deaths: M.deaths, teamDeaths: M.teamDeaths, healed: Math.round(M.healed), saves: M.saves, steps: M.steps, rushes: M.rushes, potg: p, grade, quit };
         const card = $('.ow-card'); card.hidden = false; card.classList.add('potg');
         card.innerHTML = `${img(won ? 'victory' : 'defeat', '', [], 'ow-card-bg')}<div class="ow-potg">${img('potg-kiriko', 'Kiriko')}<div class="ow-potg-stand"></div><div class="ow-potg-copy"><small>PLAY OF THE GAME</small><b>sollee</b><span>Kiriko</span><p>${esc(p.text)}</p></div></div>
+          <ol class="ow-cards" aria-label="Syracuse">${CARDS.map(([id, tag], i) => `<li${i === 0 ? ' class="me"' : ''}><img src="${ART('card-' + id)}" alt="" draggable="false" onerror="this.parentNode.remove()"><b>${esc(tag)}</b></li>`).join('')}</ol>
           <dl class="ow-stats"><dt>Eliminations</dt><dd>${M.elims}</dd><dt>Healing</dt><dd>${Math.round(M.healed)}</dd><dt>Suzu saves</dt><dd>${M.saves}</dd><dt>Deaths</dt><dd>${M.deaths}</dd><dt>Series</dt><dd>${M.rounds.filter(r => r.won).length} – ${M.rounds.filter(r => !r.won).length}</dd><dt>Grade</dt><dd class="g">${grade}</dd></dl>
           <button type="button">Continue</button>`;
         card.querySelector('button').focus();

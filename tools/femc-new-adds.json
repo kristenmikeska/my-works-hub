@@ -42402,6 +42402,149 @@
    "destination": "assets/femc/game/art/skins/sk-collab-sukajan/portraits/solar/",
    "conversion": "femc-skin-portraits.py (order serious, flustered, neutral, sad, happy, surprised; shared scale 0.55 on her 862 x 851 canvas) + femc-wardrobe.py portraits; replaces batch 149's lifted faces",
    "placement": "scene faces while she wears Sukajan Kiriko (Kat's redo, FEMC-SKIN-ART)"
+  },
+  {
+   "batch": 151,
+   "source": "WIP/sing-solar-poses.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "6ca17cb6b21350e969e4fcbc789d4e5324257b6f069bb2d326e7c4be93a2193a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/sing/solar-{idle,left,down,up,right,miss}.webp",
+   "conversion": "tools/femc-minigame-art.py on a Vision-lifted copy (tools/femc-lift.swift): 3 x 2, feet canvas",
+   "placement": "sing.js Solar at the mic (45C)"
+  },
+  {
+   "batch": 151,
+   "source": "WIP/sing-haechan-bop.png",
+   "size": [
+    1774,
+    887
+   ],
+   "sha256": "eba2cd8c56f8e19a78ebcfff458f796f61d25a023fe5331c021d5566d55f7b2d",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/sing/haechan-bop-{0,1}.webp",
+   "conversion": "tools/femc-minigame-art.py: 2 x 1, feet canvas",
+   "placement": "sing.js Haechan behind the glass (45D)"
+  },
+  {
+   "batch": 151,
+   "source": "WIP/sing-haechan-faces.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "70e945da3604a133ba470a2bf3d039c5c300833b3ce9e22f2561914937c9c15c",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/sing/hc-{neutral,talking,impressed,happy,wince,soft}.webp",
+   "conversion": "tools/femc-minigame-art.py GRID_RGB: even 3 x 2, square RGB 480 px q88",
+   "placement": "sing.js beside his talkback line (45E)"
+  },
+  {
+   "batch": 151,
+   "source": "WIP/sing-icon-solar.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "02ff8adef3eae11fa247f1c864726b18a86928169d6fb17d1cce4aa8095c45f7",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/sing/icon-solar.webp",
+   "conversion": "tools/femc-minigame-art.py: alpha, q90",
+   "placement": "sing.js health bar (45I)"
+  },
+  {
+   "batch": 151,
+   "source": "WIP/sing-title.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "725a1be05d30696a841136b40ed7027c5501823dbb604b67c7e02564a316c363",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/sing/title.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB q88",
+   "placement": "sing.js title card before the count-in (45J)"
+  },
+  {
+   "batch": 151,
+   "source": "WIP/cook-title.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "db9413e66cbbd3dc3db87d27d1c15c6adc526b890f411cb1fefdeb4e87fc7499",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cook/title.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB q88",
+   "placement": "dumplings.js title card before the filling (44G)"
+  },
+  {
+   "batch": 151,
+   "source": "WIP/mg-ow-cards.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "d8c35820009a469c268888ff1910c45894864022a4b64c36621c1b082b5d8ee1",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/card-{solar,chenle,minji,olivia,haerin}.webp",
+   "conversion": "tools/femc-minigame-art.py OW_SHEETS: 5 x 1, solid 160",
+   "placement": "regionals.js end screen row (43N)"
+  },
+  {
+   "batch": 151,
+   "source": "WIP/epi-r-arrive-girls.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "289bb12fee70b8c80a11a05f254278872b98a82cc259869146199de248eed105",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-r-arrive-girls.webp",
+   "conversion": "WebP q86 native",
+   "placement": "story-nyc2.js NYE arrivals, both branches; cgFocus; ALBUM (42C)"
+  },
+  {
+   "batch": 151,
+   "source": "WIP/epi-r-arrive-boys.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "c826b930a3786d53ab8bbb233ef00051d7231c7ff196517289ab92bb63ef20a7",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-r-arrive-boys.webp",
+   "conversion": "WebP q86 native",
+   "placement": "story-nyc2.js the car at 8:20; cgFocus; ALBUM (42D)"
+  },
+  {
+   "batch": 151,
+   "source": "WIP/epi-r-arrive-minji.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "db58d59334b81ee029872446583a195df783759e5e6d327e73b45bb428a90d5d",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-r-arrive-minji.webp",
+   "conversion": "WebP q86 native",
+   "placement": "story-nyc2.js Minji at 8:45; cgFocus; ALBUM (42E)"
+  },
+  {
+   "batch": 151,
+   "source": "WIP/epi-r-mark-lobby.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "42390b8b96420d601ac193e0a2877dfc03cdbb33beb2eb55080c35d381e6a54a",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-r-mark-lobby.webp",
+   "conversion": "WebP q86 native",
+   "placement": "story-nyc2.js the 11 p.m. lobby; cgFocus; ALBUM (42F)"
   }
  ],
  "batch1Validation": {

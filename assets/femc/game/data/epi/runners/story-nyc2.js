@@ -1788,17 +1788,21 @@
     { n: "They came in two waves." },
     { ifEpiRoute: 'cover', then: [
       { n: "Hanni and Hyein had gone to Penn Station at seven to meet Olivia's train, because Olivia had texted *what is a penn* and Hyein had decided that was a cry for help, and the three of them came back up together at half past eight with Olivia's bag and a box of something from a bakery in the station that had been crushed in the cab." },
+      { cg: 'epi-r-arrive-girls' }, // 42C, the girls out of the lift (Nov 11)
       { n: "She heard them from the lift. From *inside the lift,* through a closed front door, from the eleventh floor, which should not have been physically possible." },
       { s: 'hyein', f: 'happy', t: "SOLAR. HE DID IT AGAIN. HE SAID *MISS LEE.* I'VE BEEN HERE FOUR DAYS AND HE STILL SAYS *MISS LEE—*" },
       { s: 'solar', f: 'flustered', t: "Hyein, there are *neighbors—*" },
+      { cg: null },
       { s: 'hyein', f: 'happy', t: "I'M MISS LEE, SOLAR. *I'M* MISS LEE." }
     ], else: [
       { n: "The train got in first. Hanni, Hyein and Olivia, who had come five and a half hours from three separate directions to meet at Albany and had, by their own account, been asked to leave the quiet car." },
+      { cg: 'epi-r-arrive-girls' }, // 42C, the girls out of the lift (Nov 11)
       { n: "She heard them from the lift. From *inside the lift,* through a closed front door, from the eleventh floor, which should not have been physically possible, and she opened the front door and stood in it, and Hyein came out of that lift at a dead run and hit her at roughly the speed of a cab." },
       { s: 'hyein', f: 'happy', t: "SOLAR—" },
       { s: 'solar', f: 'happy', t: "HYEIN—" },
       { s: 'hyein', f: 'happy', t: "THERE'S A MAN DOWNSTAIRS WITH A *BOOK.* HE HAD MY NAME IN A BOOK. HE CALLED ME *MISS LEE.* SOLAR, I'M *MISS LEE—*" },
       { s: 'solar', f: 'flustered', t: "Hyein, there are *neighbors—*" },
+      { cg: null },
       { s: 'hyein', f: 'happy', t: "NOBODY HAS EVER CALLED ME MISS ANYTHING IN MY *LIFE—*" },
       { n: "Hanni came out of the lift behind her with two bags and the expression of a woman who had been managing this since Syracuse, and put one bag down, and hugged Solar without saying anything for about six seconds." },
       { s: 'hanni', f: 'happy', t: "Hi." },
@@ -1809,8 +1813,10 @@
     ] },
     { n: "Olivia came out last, looking at her phone, and walked straight past all of them into the apartment without stopping, and said, to nobody:" },
     { s: 'olivia', f: 'surprised', t: "Oh. This is a *penthouse.*" },
+    { cg: 'epi-r-arrive-boys' }, // 42D, the boys out of the car (Nov 11)
     { n: "The car came at twenty past eight, and there were five people in it, and it had been built for four." },
     { n: "Chenle got out on Fifth and stood on the pavement doing something to his neck, and then said to the doorman, with complete sincerity, *do not let the one in the gray coat drive home,* and from inside the car Jeno said *I'M NOT TRYING TO DRIVE,* and Chenle said *he's had nothing, he's like this anyway,* and the doorman said *understood, sir,* in a voice that had seen a great many New Year's Eves." },
+    { cg: null },
     { n: "She met them at the lift. Jaemin walked into the apartment, took four steps down the hall, stopped, turned around, and walked straight back out onto the landing." },
     { s: 'solar', f: 'surprised', t: "Jaemin—" },
     { ifFlag: 'epi-r-jh-all', then: [
@@ -1824,6 +1830,7 @@
     ] },
     { n: "Renjun came in past him with two bags of ice and said *he'll be fine, he did this at Chenle's,* and put the ice in the kitchen, and then came back out and stood in the front room for a while looking at the windows and didn't say anything at all. Jisung came in last with a rucksack, and stopped dead when he saw Olivia on a sofa, and said *oh, hey* in a voice about four notes higher than he'd meant it to come out, and went and sat on the opposite side of the room." },
     { n: "Hyein, from the doorway, mouthed something at Hanni that could have got her arrested." },
+    { cg: 'epi-r-arrive-minji' }, // 42E, Minji at the door (Nov 11)
     { n: "Minji came at a quarter to nine, from her grandmother's in New Jersey, on her own, with snow-dust on her shoulders from somewhere it had still been snowing and the camera bag over one arm like it was part of her coat. She stood in the hall and looked at all of it, the lamps, the forty feet, the photographs, the noise already coming out of the front room, and she didn't lift the camera. She looked first. She always looked first." },
     { ifEpiRoute: 'minji', then: [
       { s: 'minji', f: 'happy', t: "Hi. Sorry. Hi. My grandmother asked me four times tonight if I had a boyfriend, and the fourth time my cousin said *or a girlfriend,* and I've never loved anybody the way I love that boy." },
@@ -1832,6 +1839,7 @@
     ], else: [
       { s: 'minji', f: 'happy', t: "My grandmother asked me four times if I had a boyfriend. The fourth time my cousin said *or a girlfriend.* I've never loved anybody the way I love that boy." }
     ] },
+    { cg: null },
     { s: 'minji', f: 'neutral', t: "Can I film tonight? The room. Not you, unless you say. Not anybody unless they say." },
     { s: 'solar', f: 'happy', t: "You can film tonight." },
     { n: "Minji nodded once, and took the lens cap off, and put it in her pocket, and then went round the apartment for ten minutes asking every single person in it the same question in the same voice, Jeno and Chenle and Olivia and Jaemin on the landing, and every one of them said yes, and she wrote something down in a small notebook after each yes, and Solar watched her do it from the hall and had to look at the ceiling for a second." },
@@ -2081,6 +2089,7 @@
       { s: 'solar', f: 'neutral', t: "Mark." },
       { s: 'mark', f: 'flustered', t: "And if you only asked me because it would've been weird not to, that's fine, I'll leave the stuff and go, genuinely, I've got the car, it's forty minutes—" },
       { s: 'solar', f: 'serious', t: "*Mark.*" },
+      { cg: 'epi-r-mark-lobby' }, // 42F, four things (Nov 11)
       { n: "He stopped. She was in the lobby of her building in tights and no shoes, because she hadn't stopped for shoes, on a marble floor, in front of a man behind a desk who was doing an extremely good job of reading something." },
       { n: "Mark put the bakery box down on the side table next to the white flowers the size of a car, carefully, with both hands, and then stood up and put his hands in his pockets and looked at the floor for about four seconds." },
       { s: 'mark', f: 'serious', t: "Can I say a thing first. Before I come up. Because if I come up I won't, and I've had it since the kitchen, and I've had four goes at it in my head and they're all bad, so I'm going to do the bad one." },
@@ -2098,6 +2107,7 @@
       { s: 'solar', f: 'surprised', t: "My mother isn't *here.* She's at a party till three." },
       { s: 'mark', f: 'flustered', t: "I know. My mom said you don't go to somebody's house empty-handed, and she was very specific that it's still somebody's house if they're out, and I argued about it in a kitchen for ten minutes and I lost." },
       { n: "She took the envelope off the box, because he was about to drop it, and he let her. It had her name on it in blue biro. She put it in her coat pocket, the gray coat, which she'd grabbed off the hook on the way out without thinking, to read later." },
+      { cg: null },
       { place: 'Manhattan · The Building · Elevator', time: 'Evening', soft: true },
       { n: "In the lift he told her the other thing. It was eleven seconds long." },
       { ifEpiRoute: 'haechan', then: [
