@@ -42545,6 +42545,168 @@
    "destination": "assets/femc/cg/epi-r-mark-lobby.webp",
    "conversion": "WebP q86 native",
    "placement": "story-nyc2.js the 11 p.m. lobby; cgFocus; ALBUM (42F)"
+  },
+  {
+   "batch": 152,
+   "source": "nana-3.jpg",
+   "sourceNow": "~/Documents/UniverseHub-Images/Femc Mode Images/Text Photos/HOAX/nana-3.jpg",
+   "size": [
+    900,
+    1200
+   ],
+   "sha256": "70f34590ab928afa869e4114bc8a2eea32c7479a44b0071095d0d600182940c9",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/texts/hoax/snow-sit.webp",
+   "conversion": "EXIF rotation, longest side at most 1080, WebP q82",
+   "placement": "text photo slot tp-hoax-snow-sit (FEMC-TEXT-PHOTOS.md): a photo bubble in the epilogue phone / scene phone, its banner thumbnail",
+   "tool": "python3 tools/femc-text-photos.py tp-hoax-snow-sit <source>",
+   "outputs": {
+    "assets/femc/game/art/texts/hoax/snow-sit.webp": "1b2811df0bec296a6dcc37c68db58dc402a19bb5d825e0749491448800f55f7a"
+   }
+  },
+  {
+   "batch": 152,
+   "source": "nana-3.jpg",
+   "sourceNow": "~/Documents/UniverseHub-Images/Femc Mode Images/Text Photos/HOAX/nana-3.jpg",
+   "size": [
+    900,
+    1200
+   ],
+   "sha256": "70f34590ab928afa869e4114bc8a2eea32c7479a44b0071095d0d600182940c9",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/texts/hoax/jihoon-snow.webp",
+   "conversion": "EXIF rotation, longest side at most 1080, WebP q82",
+   "placement": "text photo slot tp-hoax-jihoon-snow (FEMC-TEXT-PHOTOS.md): a photo bubble in the epilogue phone / scene phone, its banner thumbnail",
+   "tool": "python3 tools/femc-text-photos.py tp-hoax-jihoon-snow <source>",
+   "outputs": {
+    "assets/femc/game/art/texts/hoax/jihoon-snow.webp": "1b2811df0bec296a6dcc37c68db58dc402a19bb5d825e0749491448800f55f7a"
+   }
+  },
+  {
+   "batch": 152,
+   "source": "nana.jpg",
+   "sourceNow": "~/Documents/UniverseHub-Images/Femc Mode Images/Text Photos/HOAX/nana.jpg",
+   "size": [
+    736,
+    981
+   ],
+   "sha256": "224b73a1532c499e609f0a406bcf75f8c98379a391781243078b9ba7bd990d5e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/texts/hoax/mom-pillow.webp",
+   "conversion": "EXIF rotation, longest side at most 1080, WebP q82",
+   "placement": "text photo slot tp-hoax-mom-pillow (FEMC-TEXT-PHOTOS.md): a photo bubble in the epilogue phone / scene phone, its banner thumbnail",
+   "tool": "python3 tools/femc-text-photos.py tp-hoax-mom-pillow <source>",
+   "outputs": {
+    "assets/femc/game/art/texts/hoax/mom-pillow.webp": "ae80242dd82b360e75f6af040d46a6e53f566097961a4fa253ae67da92bad322"
+   }
+  },
+  {
+   "batch": 152,
+   "source": "nana-4.jpg",
+   "sourceNow": "~/Documents/UniverseHub-Images/Femc Mode Images/Text Photos/HOAX/nana-4.jpg",
+   "size": [
+    1080,
+    1884
+   ],
+   "sha256": "9ceed11ac4bc9cfdd0dce9c75b0278dbfe94eff4e0d91d4e5859ab3e918253ef",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/texts/hoax/window.webp",
+   "conversion": "EXIF rotation, longest side at most 1080, WebP q82",
+   "placement": "text photo slot tp-hoax-window (FEMC-TEXT-PHOTOS.md): a photo bubble in the epilogue phone / scene phone, its banner thumbnail",
+   "tool": "python3 tools/femc-text-photos.py tp-hoax-window <source>",
+   "outputs": {
+    "assets/femc/game/art/texts/hoax/window.webp": "20d81a009085efbde7688d35d95ec1505e0c24cf5a168dcbef3fdc94668564de"
+   }
+  },
+  {
+   "batch": 152,
+   "source": "solar and nana.jpg",
+   "sourceNow": "~/Documents/UniverseHub-Images/Femc Mode Images/Text Photos/HOAX/solar and nana.jpg",
+   "size": [
+    736,
+    981
+   ],
+   "sha256": "e4cd16d07ea4936c2e85404de95bbd58737b24c3f3e1cd6a1422892d5218940b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/texts/hoax/feet.webp",
+   "conversion": "EXIF rotation, longest side at most 1080, WebP q82",
+   "placement": "text photo slot tp-hoax-feet (FEMC-TEXT-PHOTOS.md): a photo bubble in the epilogue phone / scene phone, its banner thumbnail",
+   "tool": "python3 tools/femc-text-photos.py tp-hoax-feet <source>",
+   "outputs": {
+    "assets/femc/game/art/texts/hoax/feet.webp": "53bdc72f6da711d11e711f07cfd7f0cec88874720b60bf37b35edf642ed4e92a"
+   }
+  },
+  {
+   "batch": 152,
+   "source": "jungwon and maeumi.jpg",
+   "sourceNow": "~/Documents/UniverseHub-Images/Femc Mode Images/Text Photos/HOAX/jungwon and maeumi.jpg",
+   "size": [
+    560,
+    1200
+   ],
+   "sha256": "48ba6645b64bb41bf91c82c23993fd3b58580e86a4ffae3c9a8ec6f37f3330f4",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/texts/hoax/gram-maeumi.webp",
+   "conversion": "EXIF rotation, longest side at most 1080, WebP q82",
+   "placement": "text photo slot tp-hoax-gram-maeumi (FEMC-TEXT-PHOTOS.md): a photo bubble in the epilogue phone / scene phone, its banner thumbnail",
+   "tool": "python3 tools/femc-text-photos.py tp-hoax-gram-maeumi <source>",
+   "outputs": {
+    "assets/femc/game/art/texts/hoax/gram-maeumi.webp": "20164acd96c999fcb891fcd24fcac5d5f7f2edc0fdc5aa9797d26608664bdd59"
+   }
+  },
+  {
+   "batch": 152,
+   "source": "jungwon-8.jpg",
+   "sourceNow": "~/Documents/UniverseHub-Images/Femc Mode Images/Text Photos/HOAX/jungwon-8.jpg",
+   "size": [
+    736,
+    1104
+   ],
+   "sha256": "95b4125187861bc8b58fa56b9c8ac2092135b224aee25ae96bd7caf45385a4c8",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/texts/hoax/gram-container.webp",
+   "conversion": "EXIF rotation, longest side at most 1080, WebP q82",
+   "placement": "text photo slot tp-hoax-gram-container (FEMC-TEXT-PHOTOS.md): a photo bubble in the epilogue phone / scene phone, its banner thumbnail",
+   "tool": "python3 tools/femc-text-photos.py tp-hoax-gram-container <source>",
+   "outputs": {
+    "assets/femc/game/art/texts/hoax/gram-container.webp": "ed3352fb4f2f932e071d3b6fbd24551c08cb73f65a7dd382efe01a7f7d30f962"
+   }
+  },
+  {
+   "batch": 152,
+   "source": "jungwon-6.jpg",
+   "sourceNow": "~/Documents/UniverseHub-Images/Femc Mode Images/Text Photos/HOAX/jungwon-6.jpg",
+   "size": [
+    1168,
+    1731
+   ],
+   "sha256": "69165ec721da63ca2c3d870cc04cafc6f100d084764fb16e363262b202a3f3ba",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/texts/hoax/gram-chapter-six.webp",
+   "conversion": "EXIF rotation, longest side at most 1080, WebP q82",
+   "placement": "text photo slot tp-hoax-gram-chapter-six (FEMC-TEXT-PHOTOS.md): a photo bubble in the epilogue phone / scene phone, its banner thumbnail",
+   "tool": "python3 tools/femc-text-photos.py tp-hoax-gram-chapter-six <source>",
+   "outputs": {
+    "assets/femc/game/art/texts/hoax/gram-chapter-six.webp": "fd79ba2f33f8ce3109e6cd760d95aac6a02a9580ad25c0da28fa6af486a6eea1"
+   }
+  },
+  {
+   "batch": 152,
+   "source": "solar and cherry.jpg",
+   "sourceNow": "~/Documents/UniverseHub-Images/Femc Mode Images/Text Photos/HOAX/solar and cherry.jpg",
+   "size": [
+    736,
+    901
+   ],
+   "sha256": "147f8e8e4fa1fff40b1b8d56c9ed4ee86675be9bad917c717b93648cd04c66f4",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/texts/hoax/gram-cherry-ready.webp",
+   "conversion": "EXIF rotation, longest side at most 1080, WebP q82",
+   "placement": "text photo slot tp-hoax-gram-cherry-ready (FEMC-TEXT-PHOTOS.md): a photo bubble in the epilogue phone / scene phone, its banner thumbnail",
+   "tool": "python3 tools/femc-text-photos.py tp-hoax-gram-cherry-ready <source>",
+   "outputs": {
+    "assets/femc/game/art/texts/hoax/gram-cherry-ready.webp": "a87e29fd61a40c2c2606b436c75d50b28f72852222300a86ec8f2d930d7c875d"
+   }
   }
  ],
  "batch1Validation": {
