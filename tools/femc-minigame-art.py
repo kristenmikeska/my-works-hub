@@ -44,6 +44,11 @@ def fit(im, w=1920):
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
+    # the dumpling game's counter and pan (FEMC-ART-TODO 44): New Adds/cook-*.png -> art/minigames/cook/*.webp
+    COOK = ROOT / 'assets/femc/game/art/minigames/cook'; COOK.mkdir(parents=True, exist_ok=True)
+    for f in sorted(NEW.glob('cook-*')):
+        if f.suffix.lower() not in ('.png', '.jpg', '.jpeg', '.webp'): continue
+        dst = COOK / f'{f.stem[len("cook-"):]}.webp'; fit(Image.open(f).convert('RGB')).save(dst, 'WEBP', quality=88); print(f.name, '->', dst.relative_to(ROOT))
     for f in sorted(NEW.glob('mg-ow-*')):
         if f.suffix.lower() not in ('.png', '.jpg', '.jpeg', '.webp'): continue
         name = f.stem[len('mg-ow-'):]; im = Image.open(f); dst = OUT / f'{name}.webp'

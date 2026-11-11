@@ -276,6 +276,22 @@ Save as: `mg-ow-potg-kiriko.png`
 A dramatic landscape 16:9 splash in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light: Kiriko from Overwatch mid-action, leaping forward with kunai in one hand and glowing ofuda fanned in the other, her spirit fox Kitsune swirling behind her in blue light, cherry-blossom petals in the air, a bold dark background with sweeping orange and pink light. Leave the left third darker for the "Play of the Game" title. No text, no logos, no UI.
 ```
 
+## 44. Dumpling cooking minigame (Kat, Nov 10)
+
+For the New Year's Eve dumpling game (12/31). The dumpling itself is drawn by the game so it can roll, fill, fold, pleat, plump and brown; these two pictures dress the kitchen around it. Optional: the game already looks finished without them.
+
+**[ ] 44A. The counter, top-down**  
+Save as: `cook-counter.png`
+```
+A wide 16:10 top-down view of a kitchen counter in the Persona 3: Solstice style: clean anime illustration, soft cel shading, bright and cosy, pink accents, like a cute cooking game, no people, no hands: a pale marble countertop dusted with flour, a round wooden cutting board in the middle left EMPTY (the dumpling goes there), and around the edges a bowl of pink-tinged pork-and-chive filling with a spoon, a stack of round dumpling wrappers, a small dish of water, a marble rolling pin with a little pink price sticker still on it, a folded tea towel, a few finished dumplings in neat rows on a silver tray in one corner. Soft warm golden-hour light from one side. Keep the centre of the board clear. No text, no logos.
+```
+
+**[ ] 44B. The pan, top-down**  
+Save as: `cook-pan.png`
+```
+A wide 16:10 top-down view of a black cast-iron frying pan on a stove in the Persona 3: Solstice style: clean anime illustration, soft cel shading, bright and cosy, pink accents, like a cute cooking game, no people: the pan round and empty in the middle (the dumplings go inside it), a little oil shimmering, a long handle to the right, the stove's grate and a soft orange flame glow around it, a glass lid with a pink knob resting at the edge of the picture. Warm cosy kitchen light. Leave the inside of the pan empty. No text, no logos.
+```
+
 ---
 
 ## 31. Low-res pictures to look at (assess later)
