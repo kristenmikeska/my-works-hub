@@ -44,7 +44,6 @@
   <script src="../../assets/femc/game/minigames/charts/you.js?v=1"></script>
   <script src="../../assets/femc/game/minigames/charts/wantchu.js?v=1"></script>
   <script src="../../assets/femc/game/minigames/charts/greyrain.js?v=1"></script>
-  <script src="../../assets/femc/game/minigames/charts/boyfriend.js?v=1"></script>
   <script src="../../assets/femc/game/minigames/sing.js?v=9"></script>
   <script>
     const G = { support: () => FemcSupport.play({}), dumplings: () => FemcDumplings.play({ mute: document.getElementById('mute').checked }), studio: () => FemcStudio.play({ mute: document.getElementById('mute').checked }), listen: () => FemcListen.play({ mute: document.getElementById('mute').checked }), singrec: () => FemcSing.play({ song: sgSong(), record: true, mute: document.getElementById('mute').checked }).then(r => { sgNote(); if (r && r.play) { document.getElementById('sgdraft').checked = true; G.sing(); } }),
