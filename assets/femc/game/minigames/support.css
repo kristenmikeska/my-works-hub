@@ -1,0 +1,50 @@
+/* FemcSupport (minigames/support.js): the Kiriko support minigame. Pink and black (game.css palette). */
+.mg-sup { --pk: #ff4f9e; --pk2: #ff9ac8; --nt: #14070f; position: fixed; inset: 0; z-index: 3000; display: grid; grid-template-rows: auto auto 1fr auto auto; gap: 14px; padding: clamp(14px, 3vh, 32px) clamp(16px, 4vw, 56px); color: #fff; background: radial-gradient(ellipse at 50% 120%, rgba(255, 79, 158, .22), transparent 60%), linear-gradient(180deg, #1d0a16, var(--nt)); font-family: inherit; user-select: none; -webkit-user-select: none; touch-action: manipulation; }
+.mg-sup.suzu-on { box-shadow: inset 0 0 0 4px var(--pk2), inset 0 0 120px rgba(255, 154, 200, .45); }
+.mg-top { display: flex; align-items: center; justify-content: center; gap: 14px; font: italic 900 clamp(14px, 1.6vw, 20px)/1 var(--cond, sans-serif); letter-spacing: .12em; }
+.mg-live { background: var(--pk); padding: 4px 8px; font-size: .7em; transform: skewX(-12deg); }
+.mg-clock { min-width: 4ch; text-align: center; padding: 6px 14px; background: rgba(255, 255, 255, .08); transform: skewX(-12deg); }
+.mg-call { margin: 0; min-height: 1.6em; text-align: center; font: italic 800 clamp(16px, 2vw, 24px)/1.3 var(--cond, sans-serif); opacity: 0; transition: opacity .15s; }
+.mg-call.on { opacity: 1; } .mg-call.warn { color: #ffd166; } .mg-call.bad { color: #ff6b6b; } .mg-call.good { color: var(--pk2); }
+.mg-team { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(8px, 1.6vw, 20px); align-content: center; }
+.mg-team li { position: relative; display: grid; gap: 6px; padding: 16px 14px 14px; background: rgba(255, 255, 255, .06); border-left: 4px solid var(--pk); transform: skewX(-6deg); cursor: pointer; outline: none; transition: background .15s, transform .15s; }
+.mg-team li:hover, .mg-team li:focus-visible { background: rgba(255, 79, 158, .16); }
+.mg-team li > * { transform: skewX(6deg); }
+.mg-team b { font: italic 900 clamp(18px, 2.2vw, 28px)/1 var(--cond, sans-serif); }
+.mg-team small { color: var(--pk2); font-weight: 800; letter-spacing: .15em; font-size: 11px; }
+.mg-key { position: absolute; top: 6px; right: 10px; opacity: .5; font-weight: 900; }
+.mg-hp { position: relative; height: 18px; background: rgba(0, 0, 0, .5); overflow: hidden; }
+.mg-hp i { position: absolute; inset: 0 auto 0 0; background: linear-gradient(90deg, var(--pk), var(--pk2)); transition: width .12s linear; }
+.mg-hp em { position: absolute; right: 6px; top: 0; font: 800 13px/18px sans-serif; font-style: normal; }
+.mg-tag { min-height: 1.1em; font: 800 11px/1.1 sans-serif; letter-spacing: .12em; color: #ffd166; }
+.mg-team li.low .mg-hp i { background: #ff6b6b; }
+.mg-team li.anti { border-left-color: #b46cff; } .mg-team li.anti .mg-hp i { background: #8a5cff; }
+.mg-team li.inv { box-shadow: 0 0 0 2px var(--pk2), 0 0 24px rgba(255, 154, 200, .6); }
+.mg-team li.down { opacity: .4; cursor: default; } .mg-team li.down .mg-tag { color: #ff6b6b; }
+.mg-team li.marked { animation: mg-mark .5s ease-in-out 3; }
+.mg-team li.hit { animation: mg-hit .25s ease; }
+.mg-team li.charm { background: rgba(255, 154, 200, .25); }
+@keyframes mg-mark { 50% { box-shadow: 0 0 0 3px #ffd166; } }
+@keyframes mg-hit { 30% { transform: skewX(-6deg) translateX(-5px); } 60% { transform: skewX(-6deg) translateX(4px); } }
+.mg-pop { position: absolute; left: 50%; top: 30%; font: 900 18px/1 sans-serif; pointer-events: none; animation: mg-pop .8s ease-out forwards; transform: skewX(6deg); }
+.mg-pop.heal { color: #9dffc0; } .mg-pop.dmg { color: #ff8a8a; } .mg-pop.anti { color: #c9a2ff; font-size: 13px; }
+@keyframes mg-pop { to { opacity: 0; translate: 0 -34px; } }
+.mg-kit { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px; }
+.mg-ammo { font: italic 900 22px/1 var(--cond, sans-serif); padding: 10px 16px; background: rgba(255, 255, 255, .06); transform: skewX(-12deg); }
+.mg-ammo small { font-size: 12px; color: var(--pk2); letter-spacing: .1em; }
+.mg-kit button { position: relative; overflow: hidden; padding: 14px 22px; border: 0; color: var(--nt); background: var(--pk); font: italic 900 18px/1 var(--cond, sans-serif); transform: skewX(-12deg); cursor: pointer; }
+.mg-kit button small { display: block; font-size: 11px; opacity: .7; margin-top: 4px; }
+.mg-kit button:disabled { background: rgba(255, 255, 255, .12); color: #fff; cursor: default; }
+.mg-suzu:disabled::after { content: ''; position: absolute; inset: 0; background: rgba(255, 79, 158, .35); transform-origin: left; transform: scaleX(calc(1 - var(--cd, 0))); }
+.mg-rush:disabled::after { content: ''; position: absolute; inset: 0; background: rgba(255, 154, 200, .3); transform-origin: left; transform: scaleX(var(--fill, 0)); }
+.mg-rush.on { background: var(--pk2); }
+.mg-help { margin: 0; text-align: center; font-size: 13px; opacity: .6; }
+.mg-pause, .mg-end { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 14px; background: rgba(20, 7, 15, .86); }
+.mg-pause[hidden], .mg-end[hidden] { display: none; }
+.mg-pause b { font: italic 900 40px/1 var(--cond, sans-serif); }
+.mg-pause button, .mg-end button { padding: 12px 26px; border: 0; background: var(--pk); color: var(--nt); font: italic 900 18px/1 var(--cond, sans-serif); transform: skewX(-12deg); cursor: pointer; }
+.mg-grade { font: italic 900 clamp(90px, 16vw, 180px)/1 var(--cond, sans-serif); color: var(--pk); text-shadow: .05em .05em 0 var(--pk2); }
+.mg-end dl { display: grid; grid-template-columns: auto auto; gap: 6px 20px; margin: 0; font-weight: 800; }
+.mg-end dd { margin: 0; text-align: right; color: var(--pk2); }
+@media (max-width: 700px) { .mg-team { grid-template-columns: repeat(2, minmax(0, 1fr)); } .mg-help { display: none; } }
+.mg-sup.still * { animation: none !important; transition: none !important; }

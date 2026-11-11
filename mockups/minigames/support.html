@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support Minigame</title>
+<link rel="stylesheet" href="../../assets/femc/game/minigames/support.css?v=1">
+<style>
+  body { margin: 0; min-height: 100vh; background: #14070f; color: #fff; font-family: system-ui, sans-serif; display: grid; place-content: center; gap: 16px; text-align: center; }
+  h1 { font: italic 900 40px/1 system-ui; color: #ff4f9e; margin: 0; }
+  p { max-width: 520px; margin: 0 auto; opacity: .8; line-height: 1.5; }
+  .row { display: flex; gap: 10px; justify-content: center; }
+  button { padding: 12px 22px; border: 0; background: #ff4f9e; color: #14070f; font: italic 900 18px/1 system-ui; cursor: pointer; }
+  button.alt { background: rgba(255,255,255,.12); color: #fff; }
+  pre { text-align: left; background: rgba(255,255,255,.06); padding: 12px; min-height: 2em; }
+</style>
+</head>
+<body>
+  <h1>Regionals: support</h1>
+  <p>Keep Syracuse alive for seventy seconds. Tap a teammate (or press 1–4) to throw a healing ofuda. Space rings the Suzu: it heals everyone a little, cleanses anti-heal, and saves anyone about to take a big hit if you time it with the callout. Q is Kitsune Rush once its meter fills.</p>
+  <div class="row"><button data-d="easy" class="alt">Easy</button><button data-d="normal">Normal</button><button data-d="hard" class="alt">Hard</button></div>
+  <pre id="out">Last result shows here.</pre>
+  <script src="../../assets/femc/game/minigames/support.js?v=1"></script>
+  <script>
+    document.querySelectorAll('[data-d]').forEach(b => b.onclick = () => FemcSupport.play({ difficulty: b.dataset.d }).then(r => { document.getElementById('out').textContent = JSON.stringify(r, null, 1); }));
+  </script>
+</body>
+</html>

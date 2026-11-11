@@ -3,8 +3,8 @@
 Approved in chat. Work through these in order; show Kat writing drafts before wiring them.
 
 ## 1. Runners, Haechan route: romance and honesty
-- [ ] **The New Year's ask.** Draft: `drafts/RUNNERS-NYE-ASK-DRAFT.md`. It comes after the song (~11:40), with the headphones track built from the 12/29 2 a.m. walk and three ways to say yes. The 11:50 timer becomes the kiss at real midnight, and the roof remembers her answer.
-- [ ] **"Tell him" choice** (around 12/22–12/26), since they promised to tell each other things. Two branches:
+- [ ] **The New Year's ask.** (drafted, waiting on Kat) Draft: `drafts/RUNNERS-NYE-ASK-DRAFT.md`. It comes after the song (~11:40), with the headphones track built from the 12/29 2 a.m. walk and three ways to say yes. The 11:50 timer becomes the kiss at real midnight, and the roof remembers her answer.
+- [ ] **"Tell him" choice** (drafted with the quiet scenes, waiting on Kat: `drafts/RUNNERS-TELL-HIM-DRAFT.md`) (around 12/22–12/26), since they promised to tell each other things. Two branches:
   - She tells him: he's watching the snow and clocks with her, ready on the roof.
   - She keeps it: he notices anyway, and it comes out as a fight.
   - Hanni or Minji get the same choice on their routes.
@@ -12,7 +12,7 @@ Approved in chat. Work through these in order; show Kat writing drafts before wi
 - [ ] Optional: Marco's guest list asks "Who do I put him down as?" (Kat to decide alongside the ask).
 
 ## 2. Minigames (epilogue-flavoured, instead of battles)
-- [ ] **Regionals: Kiriko support sim.** Heal teammates' health bars and save the cleanse for the enemy's all-in. Chenle and Minji call targets. The score changes the scene (MVP, Doyoung, the forty-one).
+- [ ] **Regionals: Kiriko support sim.** (prototype built Nov 10, not wired: `mockups/minigames/support.html`, code `assets/femc/game/minigames/support.js`; Kat to try it) Heal teammates' health bars and save the cleanse for the enemy's all-in. Chenle and Minji call targets. The score changes the scene (MVP, Doyoung, the forty-one).
 - [ ] **Cooking: dumplings** on 12/31 (crimp timing; a bad score makes a "bag").
 - [ ] **Studio:** pick the take / match the faders. Haechan grades you.
 - [ ] **The listening walk** (12/29, 2 a.m.): find the sounds he names.
