@@ -11,6 +11,11 @@
      record true = Kat's "make my own chart": no notes come; the song plays and every tap (D F J K, held = a long note) becomes
             a note, snapped to the 16th grid. Stop / the song's end → Save as my chart (localStorage draft: Normal and Hard = her
             taps, Easy = them thinned to a beat apart), Play it now, Copy for Claude. Result { record: notes, saved }.
+     singers  optional [{ t, who }] overriding the song's (her draft's); who = 'solar' | 'haechan' | 'both' (Haechan at the
+            mic swaps the stage: he sings, Solar bops behind the glass on talkback; 'both' = a duet at the mic). While recording,
+            1 / 2 / 3 mark Solar / Haechan / both from that moment.
+     Songs: one file per song in minigames/charts/<id>.js ({ id, title, artist, src, bpm, offset, duration (the clip's end),
+            snap (false = taps kept as played), singer, singers, charts }); only Kat's recorded Hard + its thinned Normal / Easy.
      from   start the song at this second (the editor's Test from here); notes before it are dropped
      song   chart id in window.FEMC_CHARTS (default 'runners', minigames/charts/runners.js)
      level  'easy' | 'normal' | 'hard' (default 'normal')
@@ -57,13 +62,31 @@ window.FemcSing = (() => {
     end: { S: "...Don't touch it. That's the take.", A: "That's the song. I'm keeping that one.", B: "It's a take. We'll comp it.", C: "Again. You know it, you just don't trust it yet." },
   };
 
+  const TALK_S = { // Solar on the talkback while Haechan sings
+    intro: ["You're on. Don't make it weird.", "Headphones on, Lee. I'm rolling."],
+    verse: ["Okay. That's... good.", "Keep going. Don't look at me."],
+    breath: ['Breathe. You always forget to breathe.'],
+    chorus: ['Here it comes. Show-off.', "Open up. You're holding back."],
+    bridge: ["Bridge. Slow down, you're rushing it."],
+    last: ['Last one. All of it.'],
+    outro: ["Let it go. ...Don't smirk."],
+    streak: ["Show-off.", "...Okay. That one got me.", "Don't let it go to your head."],
+    slip: ["You're behind the kick.", "Again. You're better than that.", 'Find it again.'],
+    rec: "I'm recording. Tap it how it feels: D F J K, hold for the long ones. Mess up? Esc, go back, play over it.",
+    fail: "Stop. You're overthinking it. From the top.",
+    end: { S: "...I'm keeping that. Don't argue.", A: "That's the take. Obviously.", B: "It's a take. We'll comp it.", C: "Again. You know this one." },
+  };
+  const NAME = { solar: 'Solar', haechan: 'Haechan' };
+
   function play(o = {}) {
     return new Promise(done => {
       const C = (window.FEMC_CHARTS || {})[o.song || 'runners'];
       if (!C) { done({ quit: true, error: 'no chart' }); return; }
       const level = o.level || 'normal', REC = !!o.record;
       // record mode starts from her saved chart (else the game's) and replaces only what she plays over
-      const recBase = REC ? ((draft(C.id) || {}).charts || C.charts).hard || [] : null;
+      const D0 = draft(C.id), recBase = REC ? ((D0 || {}).charts || C.charts).hard || [] : null;
+      // who sings when: [{ t, who: 'solar' | 'haechan' | 'both' }] (Kat marks it while recording: 1 / 2 / 3)
+      const sing = ((REC ? (D0 || {}).singers : o.singers) || C.singers || [{ t: 0, who: C.singer || 'solar' }]).map(x => ({ t: x.t, who: x.who, pass: -1 }));
       const src = REC ? recBase : (o.chart && o.chart[level]) || C.charts[level] || C.charts.normal;
       const O = opts(), host = o.host || document.body, ART = id => `${base()}assets/femc/game/art/minigames/sing/${id}.webp`;
       const FACE = (w, f) => `${base()}assets/femc/portraits/${w}-runners/${f}.webp`;
@@ -100,7 +123,19 @@ window.FemcSing = (() => {
           ${REC ? '' : '<button type="button" data-mg="quit">Quit</button>'}</div>
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
-      const $ = s => el.querySelector(s), cols = [...el.querySelectorAll('.sg-col')], noteBox = $('.sg-notes'), solar = $('.sg-solar');
+      const $ = s => el.querySelector(s), cols = [...el.querySelectorAll('.sg-col')], noteBox = $('.sg-notes'), solar = $('.sg-solar'), hcBox = $('.sg-hc');
+      let mic = null, talker = 'haechan';
+      const T = () => (talker === 'solar' ? TALK_S : TALK);
+      const cast = who => {
+        if (who === mic) return; mic = who; el.dataset.mic = who;
+        const singer = who === 'haechan' ? 'haechan' : 'solar', other = who === 'haechan' ? 'solar' : 'haechan', pose = solar.dataset.pose || 'idle';
+        solar.innerHTML = DIRS.concat('idle', 'miss').map(p => img(`sg-pose p-${p}`, `${singer}-${p}`)).join('') + `<img class="sg-sl-face" src="${FACE(singer, 'neutral')}" alt="${NAME[singer]}">` + (who === 'both' ? `<img class="sg-duo" src="${FACE('haechan', 'happy')}" alt="Haechan">` : '') + '<span class="sg-mic"></span><i class="sg-notes-fx"></i>';
+        solar.dataset.pose = pose;
+        hcBox.innerHTML = who === 'both' ? '' : `${img('sg-hc-bop b0', other + '-bop-0')}${img('sg-hc-bop b1', other + '-bop-1')}<img class="sg-hc-face" src="${FACE(other, 'neutral')}" alt="${NAME[other]}">`;
+        talker = other; $('.sg-talk b').textContent = NAME[other]; el.classList.toggle('duet', who === 'both');
+        const ic = $('.sg-icon img'); ic.onerror = () => { ic.onerror = null; ic.src = FACE(singer, 'happy'); }; ic.src = ART('icon-' + singer);
+      };
+      const whoAt = t => sing.reduce((a, x) => (!x.dead && x.t <= t + 1e-3 ? x.who : a), sing[0] ? sing[0].who : 'solar');
       let notes;
       const st = { score: 0, combo: 0, maxCombo: 0, perfect: 0, good: 0, ok: 0, miss: 0, hp: 50, paused: false, over: false, sec: -1, held: [false, false, false, false], beat: -99, count: -1 };
       const mkEl = n => {
@@ -135,7 +170,7 @@ window.FemcSing = (() => {
       };
       const now = () => songT() - O.offset / 1000;
 
-      const say = (k, face = 'neutral') => { $('.sg-talk span').textContent = typeof k === 'string' ? k : pick(k); const im = $('.sg-hc-face'); if (!im.src.endsWith(face + '.webp')) im.src = FACE('haechan', face); el.classList.remove('talk'); void el.offsetWidth; el.classList.add('talk'); };
+      const say = (k, face = 'neutral') => { if (!k) return; $('.sg-talk span').textContent = typeof k === 'string' ? k : pick(k); const im = $('.sg-hc-face'); if (im && !im.src.endsWith(face + '.webp')) im.src = FACE(talker, face); el.classList.remove('talk'); void el.offsetWidth; el.classList.add('talk'); };
       let poseT = 0;
       const pose = (p, ms = 380) => { solar.dataset.pose = p; solar.classList.remove('hitpose'); void solar.offsetWidth; solar.classList.add('hitpose'); clearTimeout(poseT); if (ms) poseT = setTimeout(() => { if (!notes.some(n => n.held)) solar.dataset.pose = 'idle'; }, ms); };
       const popRating = (r, combo) => {
@@ -148,7 +183,7 @@ window.FemcSing = (() => {
       const stats = () => { const tot = st.perfect + st.good + st.ok + st.miss, acc = tot ? (st.perfect + st.good * 0.75 + st.ok * 0.4) / tot * 100 : 100; $('.sg-stats').textContent = `Score ${Math.round(st.score).toLocaleString()} · Misses ${st.miss} · ${acc.toFixed(2)}%`; return acc; };
 
       /* hitting */
-      const snap16 = t => { const g = BEAT / 4; return Math.max(0, +(C.offset + Math.round((t - C.offset) / g) * g).toFixed(3)); };
+      const snap16 = t => { if (C.snap === false) return Math.max(0, +t.toFixed(3)); const g = BEAT / 4; return Math.max(0, +(C.offset + Math.round((t - C.offset) / g) * g).toFixed(3)); };
       const recDown = [null, null, null, null];
       const press = lane => {
         if (st.over || st.paused) return;
@@ -170,7 +205,7 @@ window.FemcSing = (() => {
         if (r === 'perfect') splash(lane);
         popRating(r, st.combo); pose(DIRS[lane], cand.len ? 0 : 380);
         if (cand.len) { cand.held = true; cand.el.classList.add('holding'); } else { cand.done = true; cand.el.remove(); }
-        if (st.combo && st.combo % 50 === 0) say(TALK.streak, 'happy');
+        if (st.combo && st.combo % 50 === 0) say(T().streak, 'happy');
         stats();
       };
       const release = lane => {
@@ -180,7 +215,7 @@ window.FemcSing = (() => {
         if (h) { h.held = false; h.done = true; h.el.remove(); if (now() < h.t + h.len - 0.12) health(-1.5); pose('idle', 1); }
       };
       const miss = n => {
-        n.hit = 'miss'; st.miss++; if (st.combo >= 20) say(TALK.slip, 'serious'); st.combo = 0; health(-4); crack(); popRating('miss', 0);
+        n.hit = 'miss'; st.miss++; if (st.combo >= 20) say(T().slip, 'serious'); st.combo = 0; health(-4); crack(); popRating('miss', 0);
         n.el.classList.add('missed'); pose('miss', 450); stats();
       };
 
@@ -219,10 +254,11 @@ window.FemcSing = (() => {
           // beat and bar bops
           const b = Math.floor((T - C.offset) / BEAT);
           if (b !== st.beat) { st.beat = b; el.classList.remove('bop'); void el.offsetWidth; el.classList.add('bop'); el.classList.toggle('odd', b % 2 !== 0); if (((b % 4) + 4) % 4 === 0) { el.classList.remove('barbop'); void el.offsetWidth; el.classList.add('barbop'); } }
-          if (REC && started && t > wipeFrom) { for (const n of notes) if (!n.done && n.pass !== pass && n.t >= wipeFrom && n.t < t) drop(n); wipeFrom = t; recCount(); }
+          if (REC && started && t > wipeFrom) { for (const n of notes) if (!n.done && n.pass !== pass && n.t >= wipeFrom && n.t < t) drop(n); for (const x of sing) if (x.t > 0 && x.pass !== pass && x.t >= wipeFrom && x.t < t) x.dead = true; wipeFrom = t; recCount(); }
+          cast(whoAt(t));
           place(t);
           const si = (C.sections || []).reduce((a, s, i) => (t >= s.t ? i : a), -1);
-          if (si !== st.sec && si >= 0) { st.sec = si; const nm = C.sections[si].name; if (si > 0) say(TALK[{ verse: 'verse', breath: 'breath', chorus: 'chorus', bridge: 'bridge', 'last chorus': 'last', outro: 'outro' }[nm] || 'verse']); }
+          if (si !== st.sec && si >= 0) { st.sec = si; const nm = C.sections[si].name; if (si > 0) say(T()[{ verse: 'verse', breath: 'breath', chorus: 'chorus', bridge: 'bridge', 'last chorus': 'last', outro: 'outro' }[nm] || 'verse']); }
           const left = Math.max(0, C.duration - Math.max(0, t));
           $('.sg-time i').style.width = `${Math.min(100, Math.max(0, t) / C.duration * 100)}%`;
           $('.sg-time span').textContent = `${Math.floor(left / 60)}:${String(Math.floor(left % 60)).padStart(2, '0')}`;
@@ -233,9 +269,9 @@ window.FemcSing = (() => {
 
       const fade = () => { if (!audio) return; const a = audio; let v = 0.9; const f = setInterval(() => { v -= 0.1; if (gain) gain.gain.value = Math.max(0, v); else a.volume = Math.max(0, v); if (v <= 0) { clearInterval(f); a.pause(); } }, 50); };
       const fail = () => {
-        if (st.over) return; st.over = true; fade(); say(TALK.fail, 'serious'); pose('miss', 0); el.classList.add('failed');
+        if (st.over) return; st.over = true; fade(); say(T().fail, 'serious'); pose('miss', 0); el.classList.add('failed');
         const end = $('.mg-end'); end.hidden = false;
-        end.innerHTML = `<b class="sg-fail">Take stopped</b><p class="mg-end-say">Haechan: ${esc(TALK.fail)}</p><div class="sg-end-btns"><button type="button" data-r>Retry</button><button type="button" data-q>Quit</button></div>`;
+        end.innerHTML = `<b class="sg-fail">Take stopped</b><p class="mg-end-say">Haechan: ${esc(T().fail)}</p><div class="sg-end-btns"><button type="button" data-r>Retry</button><button type="button" data-q>Quit</button></div>`;
         end.querySelector('[data-r]').focus();
         end.querySelector('[data-r]').onclick = restart;
         end.querySelector('[data-q]').onclick = () => out({ failed: true });
@@ -246,9 +282,9 @@ window.FemcSing = (() => {
         if (st.over) return; st.over = true; fade();
         const acc = stats(), fc = st.miss === 0;
         const grade = quit ? 'C' : acc >= 95 && st.miss <= 2 ? 'S' : acc >= 85 ? 'A' : acc >= 70 ? 'B' : 'C';
-        say(TALK.end[grade], grade === 'S' || grade === 'A' ? 'happy' : 'neutral'); pose(grade === 'C' ? 'miss' : 'up', 0);
+        say(T().end[grade], grade === 'S' || grade === 'A' ? 'happy' : 'neutral'); pose(grade === 'C' ? 'miss' : 'up', 0);
         const end = $('.mg-end'); end.hidden = false;
-        end.innerHTML = `<b class="mg-grade">${grade}</b>${fc && !quit ? '<b class="sg-fc">FULL COMBO</b>' : ''}<dl><dt>Score</dt><dd>${Math.round(st.score).toLocaleString()}</dd><dt>Accuracy</dt><dd>${acc.toFixed(2)}%</dd><dt>Perfect</dt><dd>${st.perfect}</dd><dt>Good</dt><dd>${st.good}</dd><dt>OK</dt><dd>${st.ok}</dd><dt>Missed</dt><dd>${st.miss}</dd><dt>Best combo</dt><dd>${st.maxCombo}</dd></dl><p class="mg-end-say">Haechan: ${esc(TALK.end[grade])}</p><div class="sg-end-btns"><button type="button" data-c>Continue</button><button type="button" data-r>Again</button></div>`;
+        end.innerHTML = `<b class="mg-grade">${grade}</b>${fc && !quit ? '<b class="sg-fc">FULL COMBO</b>' : ''}<dl><dt>Score</dt><dd>${Math.round(st.score).toLocaleString()}</dd><dt>Accuracy</dt><dd>${acc.toFixed(2)}%</dd><dt>Perfect</dt><dd>${st.perfect}</dd><dt>Good</dt><dd>${st.good}</dd><dt>OK</dt><dd>${st.ok}</dd><dt>Missed</dt><dd>${st.miss}</dd><dt>Best combo</dt><dd>${st.maxCombo}</dd></dl><p class="mg-end-say">Haechan: ${esc(T().end[grade])}</p><div class="sg-end-btns"><button type="button" data-c>Continue</button><button type="button" data-r>Again</button></div>`;
         end.querySelector('[data-c]').focus();
         end.querySelector('[data-c]').onclick = () => out({ grade, quit, fc: fc && !quit });
         end.querySelector('[data-r]').onclick = restart;
@@ -257,10 +293,11 @@ window.FemcSing = (() => {
         if (st.over) return; st.over = true; fade(); for (let l = 0; l < 4; l++) if (recDown[l]) release(l);
         const rec = notes.filter(n => !n.done).map(n => ({ t: n.t, lane: n.lane, len: n.len })).sort((a, b) => a.t - b.t);
         const thin = gap => { const out = []; let lastEnd = -9; for (const n of rec) if (n.t - lastEnd >= gap - 0.01) { out.push({ ...n }); lastEnd = n.t + (n.len || 0); } return out; };
-        const js = JSON.stringify({ song: C.id, charts: { easy: thin(BEAT), normal: rec, hard: rec } });
+        const singers = sing.filter(x => !x.dead).map(x => ({ t: x.t, who: x.who })).sort((a, b) => a.t - b.t);
+        const js = JSON.stringify({ song: C.id, charts: { easy: thin(BEAT), normal: rec, hard: rec }, singers });
         const end = $('.mg-end'); end.hidden = false;
         end.innerHTML = `<b class="sg-fail" style="color:var(--pk2)">${rec.length} notes</b><p class="mg-end-say">That's your chart. Save it, then play it.</p><div class="sg-end-btns"><button type="button" data-s>Save as my chart</button><button type="button" data-p>Save and play it</button></div><div class="sg-end-btns"><button type="button" data-a>Record again</button><button type="button" data-x>Close without saving</button></div><button type="button" data-k>Copy for Claude</button>`;
-        const saveIt = () => { try { localStorage.setItem(DRAFT_KEY(C.id), JSON.stringify({ v: 2, charts: JSON.parse(js).charts, saved: new Date().toISOString() })); } catch (e) {} };
+        const saveIt = () => { try { localStorage.setItem(DRAFT_KEY(C.id), JSON.stringify({ v: 2, charts: JSON.parse(js).charts, singers, saved: new Date().toISOString() })); } catch (e) {} };
         end.querySelector('[data-s]').focus();
         end.querySelector('[data-s]').onclick = e => { saveIt(); e.target.textContent = 'Saved ✓'; };
         end.querySelector('[data-p]').onclick = () => { saveIt(); cleanup(); const r = { record: rec, saved: true, play: true }; o.onDone?.(r); done(r); };
@@ -269,12 +306,12 @@ window.FemcSing = (() => {
         end.querySelector('[data-k]').onclick = e => { saveIt(); navigator.clipboard?.writeText(js); e.target.textContent = 'Copied ✓ (and saved)'; };
       };
       const restart = () => {
-        recDown.fill(null); from = FROM; pass = 0; wipeFrom = FROM;
+        recDown.fill(null); from = FROM; pass = 0; wipeFrom = FROM; for (let i = sing.length - 1; i >= 0; i--) { if (sing[i].pass >= 0) sing.splice(i, 1); else sing[i].dead = false; } mic = null;
         try { audio && audio.pause(); } catch (e) {}
         Object.assign(st, { score: 0, combo: 0, maxCombo: 0, perfect: 0, good: 0, ok: 0, miss: 0, hp: 50, paused: false, over: false, sec: -1, held: [false, false, false, false], beat: -99, count: -1 });
         started = false; pre = from - PRE; sync = { a: -1, p: 0 }; if (audio) { audio.currentTime = from; if (gain) gain.gain.value = 0.9; }
         $('.mg-end').hidden = true; $('.mg-pause').hidden = true; el.classList.remove('failed', 'low'); el.classList.toggle('down', O.down);
-        build(); health(0); stats(); pose('idle', 1); say(REC ? TALK.rec : TALK.intro); recMode();
+        build(); health(0); stats(); pose('idle', 1); say(REC ? T().rec : T().intro); recMode();
         cancelAnimationFrame(raf); last = 0; raf = requestAnimationFrame(loop);
       };
 
@@ -285,6 +322,7 @@ window.FemcSing = (() => {
         e.stopPropagation();
         if (e.key === 'Escape' || e.key === 'Enter') { e.preventDefault(); setPause(!st.paused); return; }
         if (st.paused) return;
+        if (REC && started && ['1', '2', '3'].includes(e.key)) { const who = { 1: 'solar', 2: 'haechan', 3: 'both' }[e.key], t = now(); for (const x of sing) if (x.pass === pass && Math.abs(x.t - t) < 0.3) x.dead = true; sing.push({ t: +Math.max(0, t).toFixed(3), who, pass }); sing.sort((a, b) => a.t - b.t); say(`${NAME[who] || 'Both'} from here.`); return; }
         const l = laneOf(e.key); if (l < 0) return; e.preventDefault(); if (e.repeat) return; press(l);
       };
       const keyUp = e => { const l = laneOf(e.key); if (l >= 0) release(l); };
@@ -309,7 +347,7 @@ window.FemcSing = (() => {
       window.addEventListener('keydown', key, true); window.addEventListener('keyup', keyUp, true);
       const recCount = () => { if (REC) $('.sg-stats').textContent = `Recording · ${notes.filter(n => !n.done).length} notes · Esc to go back or save`; };
       const recMode = () => { if (!REC) return; el.classList.add('rec'); recCount(); $('.sg-health').style.display = 'none'; };
-      health(0); stats(); say(REC ? TALK.rec : TALK.intro); recMode();
+      cast(whoAt(FROM)); health(0); stats(); say(REC ? T().rec : T().intro); recMode();
       raf = requestAnimationFrame(loop);
     });
   }

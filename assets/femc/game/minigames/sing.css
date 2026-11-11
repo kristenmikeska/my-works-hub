@@ -180,3 +180,7 @@
 /* record mode: notes already in the chart scroll by dimmed; play over them to replace them */
 .mg-sing.rec .sg-note.ghost { opacity: .4; filter: saturate(.5); }
 .sg-rec-help { margin: 0; max-width: 420px; text-align: center; opacity: .85; }
+/* duets: Haechan leans in beside Solar at the mic; nobody on talkback */
+.sg-duo { position: absolute; bottom: 0; left: -34%; height: 80%; object-fit: contain; z-index: -1; filter: brightness(.95); }
+.sg-solar:has(.p-idle) .sg-duo { display: none; }
+.mg-sing.duet .sg-talk { visibility: hidden; }

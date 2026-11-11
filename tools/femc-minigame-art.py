@@ -55,6 +55,8 @@ def main():
     SHEETS = {  # sheet name: (cols, rows, frame names in reading order, same canvas + feet on the bottom?)
         'solar-poses': (3, 2, ['solar-idle', 'solar-left', 'solar-down', 'solar-up', 'solar-right', 'solar-miss'], True),
         'haechan-bop': (2, 1, ['haechan-bop-0', 'haechan-bop-1'], True),
+        'haechan-poses': (3, 2, ['haechan-idle', 'haechan-left', 'haechan-down', 'haechan-up', 'haechan-right', 'haechan-miss'], True),
+        'solar-bop': (2, 1, ['solar-bop-0', 'solar-bop-1'], True),
         'arrows': (3, 2, ['arrow-0', 'arrow-1', 'arrow-2', 'arrow-3', 'target', 'splash'], False),
         'ratings': (2, 2, ['rating-perfect', 'rating-good', 'rating-ok', 'rating-miss'], False),
         'countdown': (3, 1, ['ready', 'set', 'sing'], False),
