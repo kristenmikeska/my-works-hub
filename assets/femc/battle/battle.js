@@ -4462,7 +4462,7 @@
   const OWN_HD = { dir: 'assets/femc/profile/solar-poses/', have: ['peace'] }; // practice (no Wardrobe data): her own HD poses
   function winHd(mid, worn) {
     const H = worn ? LOOKS.hd && LOOKS.hd[mid] : mid === 'solar' ? (LOOKS && LOOKS.hdOwn) || OWN_HD : null;
-    const p = H && ['peace', 'cheer', 'jump'].find(k => (H.have || []).includes(k));
+    const p = H && ['peace', 'cheer', 'jump', 'victory'].find(k => (H.have || []).includes(k));
     return p ? `${H.dir}${p}.webp?v=${H.v || ART_V}` : null;
   }
   /* The couple win screen (FEMC-ART-TODO 27, Kat's yes of Nov 4): Solar and a partner who both fought, each in their half of the

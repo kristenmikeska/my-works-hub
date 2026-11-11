@@ -26,9 +26,9 @@ Approved in chat. Work through these in order; show Kat writing drafts before wi
 - [ ] HOAX is a social media AU, even more than Runners, so it needs its own Instagram-style app like SUgram, with its own name (Kat to pick or approve). Character posts, profiles, comments.
 
 ## 5. Contact pictures (Kat supplies the art)
-Only Runners has real profile pictures. Still needed:
-- **strangers:** Haechan, Jungwon, Yunjin, Jay, Sunghoon, Niki, Eomma, Appa, Mr. Oh, the girls' group chat
-- **HOAX:** Jungwon, Jihoon, Cherry, Jake, Sunoo, Niki, Junkyu, Hyunsuk, Asahi, Jaehyuk, Eunchae, Mom, Dad; group chats: the club ("rip solar kim"), the retreat (council); accounts: Hanlim Unfiltered (Eunchae's), Hanlim Forum, Hanlim High School
+Runners has all of its pictures. HOAX got 14 on Nov 10 (Solar, Mom, Dad, Jungwon, Jihoon, Cherry, Jake, Sunoo, Niki, Junkyu, Hyunsuk, Asahi, Jaehyuk, Eunchae: the `-1` option of each; swap a pick in `tools/femc-avatars.py PFP_PICKS`) and strangers 1 (Haechan). Still needed:
+- **strangers:** Jungwon, Yunjin, Jay, Sunghoon, Niki, Eomma, Appa, Mr. Oh, the girls' group chat
+- **HOAX:** Heeseung, Jay, Sunghoon, Chaewon; group chats: the club ("rip solar kim"), the retreat (council); accounts: Hanlim Unfiltered (Eunchae's), Hanlim Forum, Hanlim High School
 - **Stay:** S.E.E.S. and their group chat (their game portraits may be enough)
 
 ## 6. Then: the thorough epilogue check

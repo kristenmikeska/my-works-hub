@@ -97,7 +97,34 @@ LOOKS = {'sk-cp-afterhours': ('Solar-After Hours-Menu Poses', 'afterhr-'),
          'sk-cottage-harvest': ('Harvest Festival Poses', 'harvest-'),
          'sk-collab-stella': ('Stella Poses', 'stella-'),
          'sk-collab-sailor': ('Sailor Moon Poses', 'sailor-'),
-         'sk-collab-ghoul': ('Draculaura Poses', 'drac-')}
+         'sk-collab-ghoul': ('Draculaura Poses', 'drac-'),
+         'sk-collab-sukajan': ('Sukajan Poses', 'suka-'),
+         # Haechan's win-screen sets (FEMC-SKIN-ART "Wardrobe looks already in the game"): the list's folder / prefix for the
+         # six poses; Kat's first single victory pose per look came loose in New Adds under other names (EXTRA below).
+         'sk-haechan-sweater': ('HC-Sweater Date-Victory Poses', 'haechan-sweaterdate-hd-'),
+         'sk-haechan-headphones': ('HC-Headphones On-Victory Poses', 'haechan-headphoneson-hd-'),
+         'sk-haechan-arrivals': ('HC-Arrivals Gate-Victory Poses', 'haechan-arrivalsgate-hd-'),
+         'sk-haechan-windowseat': ('HC-Window Seat-Victory Poses', 'haechan-windowseat-hd-'),
+         'sk-haechan-bad': ('HC-Bad Influence-Victory Poses', 'haechan-badinfluence-hd-'),
+         'sk-haechan-garage': ('HC-Garage Band-Victory Poses', 'haechan-garageband-hd-'),
+         'sk-haechan-limelight': ('HC-Limelight-Victory Poses', 'haechan-limelight-hd-'),
+         'sk-haechan-unravelled': ('HC-Unravelled-Victory Poses', 'haechan-unravelled-hd-'),
+         'sk-haechan-fairground': ('HC-Fairground Lights-Victory Poses', 'haechan-fairgroundlights-hd-'),
+         'sk-haechan-sweettooth': ('HC-Sweet Tooth-Victory Poses', 'haechan-sweettooth-hd-'),
+         'sk-haechan-suit': ('HC-Black Suit-Victory Poses', 'haechan-blacksuit-hd-')}
+# Loose single pictures per look (New Adds file names; identified by looking, Nov 10: Kat's `haechan-bad-victory` is Bad
+# Influence and `haechan-badinfluence-victory` is Garage Band). They fill in poses the folder doesn't have.
+EXTRA = {'sk-haechan-sweater': {'victory': 'haechan-sweaterdate-victorypose.png'},
+         'sk-haechan-headphones': {'victory': 'haechan-headphoneson-victorypose.png'},
+         'sk-haechan-arrivals': {'victory': 'haechan-arrivals-victorypose.png'},
+         'sk-haechan-windowseat': {'victory': 'haechan-windowseat-victory.png'},
+         'sk-haechan-bad': {'victory': 'haechan-bad-victory.png'},
+         'sk-haechan-garage': {'victory': 'haechan-badinfluence-victory.png'},
+         'sk-haechan-limelight': {'victory': 'haechan-limelight-victory.png'},
+         'sk-haechan-unravelled': {'victory': 'haechan-unravelled-victory.png'},
+         'sk-haechan-fairground': {'victory': 'haechan-fairgroundlights-victory.png'},
+         'sk-haechan-sweettooth': {'victory': 'haechan-sweettooth-victory.png'},
+         'sk-haechan-suit': {'victory': 'haechan-blacksuit-victory.png'}}
 QUALITY, ALPHA_MIN, SPECK = 92, 16, 3
 
 
@@ -180,6 +207,8 @@ def look(lid):
     loose.update({k: v for k, v in sources(NEW.parent / 'WIP', prefix, quiet=True).items() if k not in loose})  # or in WIP (Nov 5)
     if loose: print('  loose in New Adds:', ', '.join(sorted(f.name for f in loose.values())))
     srcs.update(loose)
+    for pose, fname in EXTRA.get(lid, {}).items():
+        if pose not in srcs and (NEW / fname).exists(): srcs[pose] = NEW / fname
     missing = sorted(set(NAMES.values()) - set(srcs))
     if missing: print(f'  {lid}: missing', ', '.join(missing), '(fine: the game uses only the poses the set has)')
     return run_set(srcs, SKINS / lid / 'hd')

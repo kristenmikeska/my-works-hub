@@ -39,6 +39,32 @@ CUSTOM = {
     ('runners', 'girls'): ('sugram/solars posts/solar-carousel-19/alphaphi-christmas-selfie-tree.jpg', (76, 200, 836, 960)),
 }
 
+# Kat's own profile pictures for the other worlds (Nov 10): Femc Mode Images/Epilogue PFP/<folder>/<file>, face-cropped like
+# Runners'. `--pfp` runs only these. Where Kat gave options (jihoon-1..4), the pick is the file named here; swap it to change.
+PFP = os.path.join(os.path.expanduser('~'), 'Documents/UniverseHub-Images/Femc Mode Images/Epilogue PFP')
+PFP_PICKS = {
+    'hoax': {'solar': 'Hoax PFP/solar-1.jpg', 'mom': 'Hoax PFP/solar-mom.jpg', 'dad': 'Hoax PFP/solar-dad.jpg',
+             'jungwon': 'Hoax PFP/jungwon-1.jpg', 'jihoon': 'Hoax PFP/jihoon-1.jpg', 'cherry': 'Hoax PFP/cherry-1.jpg',
+             'jake': 'Hoax PFP/jake-1.jpg', 'sunoo': 'Hoax PFP/sunoo-1.jpg', 'niki': 'Hoax PFP/niki-1.jpg',
+             'junkyu': 'Hoax PFP/junkyu-1.jpg', 'hyunsuk': 'Hoax PFP/hyunsuk-1.jpg', 'asahi': 'Hoax PFP/asahi-1.jpg',
+             'jaehyuk': 'Hoax PFP/jaehyuk-1.jpg', 'eunchae': 'Hoax PFP/eunchae-1.jpg'},
+    'strangers': {'haechan': 'Strangers PFP/14b9ebf1133e15a39058e4152facf886.jpg'},
+}
+
+
+def pfp():
+    for world, picks in PFP_PICKS.items():
+        d = os.path.join(OUT, world)
+        os.makedirs(d, exist_ok=True)
+        for gid, rel in picks.items():
+            src = os.path.join(PFP, rel)
+            if not os.path.exists(src):
+                print('missing', src)
+                continue
+            im, found = crop(src, gid)
+            im.save(os.path.join(d, gid + '.webp'), 'WEBP', quality=84)
+            print(world, gid, 'face' if found else 'centre')
+
 
 def custom():
     for (world, gid), (rel, box) in CUSTOM.items():
@@ -109,6 +135,8 @@ def index():
 if __name__ == '__main__':
     if '--custom' in sys.argv:
         custom()
+    elif '--pfp' in sys.argv:
+        pfp()
     elif '--index' not in sys.argv:
         custom()
         d = os.path.join(OUT, 'runners')
