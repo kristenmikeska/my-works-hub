@@ -85,7 +85,7 @@
         rel: 'jihoney · her oldest friend',
         known: [
           { t: 'Her oldest friend. He has been in her mother’s kitchen since before either of them could reach the counter.' },
-          { t: 'He texts With Every Word Capitalised, which he says is a brand.' },
+          { t: 'He texts like a mess, mostly, until he wants to be Dramatic About Something, and then the capitals come out. He says it is a brand.' },
           { t: 'He and Jungwon do not get along. "Preppy" is the nicest thing he calls him.' },
           { t: 'Christmas cocoa from the same stand, every year since they were small. He brought it again this year.', events: ['epi-h-christmas'] },
           { t: 'Her mother likes him. He brings this up a lot.', events: ['epi-h-christmas'] }
@@ -124,16 +124,16 @@
         topics: [
           { id: 'epi-h-tp-jihoon-1', label: 'Who renamed the chat', after: '12/21', events: ['epi-h-home'], msgs: [
             { me: 'i know it was u' },
-            { them: 'I Have No Idea What You Mean' }, { them: 'Respectfully' }, { them: 'Welcome Home' }
+            { them: 'i have no idea what u mean' }, { them: 'Respectfully' }, { them: 'welcome home' }
           ] },
           { id: 'epi-h-tp-jihoon-2', label: "Send him a picture of Nana in the snow", after: '12/26', msgs: [
             { me: '[photo]', img: 'tp-hoax-jihoon-snow' },
-            { them: 'Better Looking Than You' }, { them: 'Save That. Send It To Me Again Tomorrow In Case I Lose It' }
+            { them: 'better looking than u' }, { them: 'save that. send it to me again tomorrow in case i lose it' }
           ] },
           { id: 'epi-h-tp-jihoon-3', label: 'Calculus panic', after: '1/6', msgs: [
             { me: 'i dont understand derivatives and the exam is monday' },
-            { them: 'Nobody Understands Derivatives. They Just Do Them' }, { them: 'Do Five. Text Me After Each One. I Will Insult Every One Personally' },
-            { me: 'thats not help' }, { them: 'Its The Only Help I Have. Five' }
+            { them: 'nobody understands derivatives. they just do them' }, { them: 'do five. text me after each one. i will insult Every One Personally' },
+            { me: 'thats not help' }, { them: 'its the only help i have. five' }
           ] }
         ]
       },
@@ -384,7 +384,7 @@
         calls: [
           { id: 'epi-h-call-niki-1', after: '12/29', events: ['epi-h-emergency'], scene: [
             { s: 'them', f: 'happy', t: "LMAOOO." },
-            { s: 'solar', f: 'neutral', t: "I haven't said anything yet." },
+            { s: 'solar', f: 'neutral', t: "Niki. You can't say that out loud. Those are letters. Also I haven't said anything yet." },
             { s: 'them', f: 'happy', t: "I'm getting ahead of it. Okay. Don't be mad. I posted something." },
             { s: 'solar', f: 'serious', t: "Niki." },
             { s: 'them', f: 'neutral', t: "It's nice! It's a picture of a temple. A real one. From the internet. With the caption 'miss it here.'" },

@@ -16,7 +16,7 @@
               question one is a ladder); 1/8 is after it (the snow went up past both their windows; he doesn't make her say
               anything; tomorrow's paper instead). Nana eats a flashcard. Choice: ask what he's scared of / hang up first.
      jihoon   epi-h-jihoon-late-1 'proof of life'       12/22-12/23 late, after epi-h-home, every route (before the lock)
-              Front Step. One a.m.: "Send Proof Of Life", then Nana at the front door; Jihoon on the step with a convenience-
+              Front Step. One a.m.: "send Proof Of Life", then Nana at the front door; Jihoon on the step with a convenience-
               store bag of dog treats for his son; father Jihoon; the mock-royal voice; he plays along with the temple and nothing
               else ("I was home"); sober, and his hands never stop (the receipt folded smaller and smaller, the treats torn into
               exact halves). { ifEvent: 'epi-h-study-plans' } touch (twelve hours after he lay on her carpet). Choice: give him the
@@ -66,7 +66,7 @@
        hasn't worked out what to tell his mother about Christmas lunch ("I have until Monday": 12/25/2023 was a Monday);
        Maeumi sleeps on his feet under the duvet; on 1/7-1/8 he calls from the dry bathtub in his en-suite (farthest from his
        parents' door); Nana eats the chain-rule flashcard.
-     - Jihoon: his text "Send Proof Of Life"; beef jerky sticks and a chew shaped like a toothbrush from the convenience store;
+     - Jihoon: his text "send Proof Of Life"; beef jerky sticks and a chew shaped like a toothbrush from the convenience store;
        he drives off with his headlights off until the corner so they won't sweep her parents' window.
      - Cherry: her grandmother started the Care Bear collection (one every Christmas since Cherry was four); her grandmother
        calls Solar "the little one with the green eyes" (saw her at chuseok) and sends her a Bedtime Bear; Cherry slept at her grandmother's on
@@ -216,20 +216,20 @@
       place: 'Hanlim · Home · Front Step', time: 'Late Night', scene: [
       { music: 'epi-h-jihoon' },
       { phone: [
-        { from: 'jihoon', t: "Send Proof Of Life" },
+        { from: 'jihoon', t: "send Proof Of Life" },
         { from: 'solar', t: "its 1am" },
-        { from: 'jihoon', t: "That's Not Proof. Anyone Could Type That. A Ghost Could Type That" }
+        { from: 'jihoon', t: "thats not proof. anyone could type that. a ghost could type that" }
       ], contact: 'jihoney' },
       { n: "She didn't have to send anything. Nana had already gone, off the end of her bed and down the stairs in the dark, and by the time she got to the hall in her socks he was at the front door with his nose to the crack, not barking, never barking at this one, his whole back half going so hard his front half could barely stay on the floor, whining in the high thin voice he only had for one person in the world." },
       { n: "She opened the door. Cold came in like a held breath let go. And on the top step, in the snow, under the porch light, in a leather jacket that wasn't warm enough for any of it, Park Jihoon was sitting with a convenience-store bag in his lap like a man waiting for a very late bus." },
-      { s: 'jihoon', f: 'happy', t: "Ah. There He Is. My Son. My Beloved. Come To Father." },
+      { s: 'jihoon', f: 'happy', t: "Ah. There he is. My son. My beloved. Come to Father." },
       { cg: 'epi-h-proof-of-life' },
       { n: "Nana lost his entire mind. He hit Jihoon in the chest so hard Jihoon went over backwards into the snow, and lay there being trampled, hissing *shh, your grandparents are asleep, my son, have some dignity*, while Nana tried to fit his whole face into the leather collar and cried about it." },
       { s: 'solar', f: 'happy', t: "You're going to wake my mom." },
       { s: 'jihoon', f: 'neutral', t: "She'd make me soup. That's the risk I'm taking." },
       { cg: null },
       { n: "He sat back up on the step with all of the dog in his lap and opened the bag. Jerky sticks. A chew shaped like a toothbrush. Tiny bone-shaped biscuits in a pink packet clearly meant for a much smaller, much more fashionable dog, whose back he read out loud like a herald at court." },
-      { s: 'jihoon', f: 'happy', t: "*Supports healthy teeth and a shiny coat.* Hear that? A Shiny Coat. Father Jihoon Provides. Sit. Sit. Nana. Your Highness. *Sit.*" },
+      { s: 'jihoon', f: 'happy', t: "*Supports healthy teeth and a shiny coat.* Hear that? A shiny coat. Father Jihoon provides. Sit. Sit. Nana. Your Highness. *Sit.*" },
       { n: "Nana did not sit. Nana had never once in his life sat for anybody. Jihoon gave him the biscuit anyway." },
       { ifEvent: 'epi-h-study-plans', then: [
         { n: "Twelve hours ago he'd lain on her carpet with this exact dog on his chest and told Junkyu he got carsick at the mall. She didn't know which one was the lie. She thought it might be both." }
@@ -237,22 +237,22 @@
       { n: "She sat down next to him. The step was so cold it went straight through her pajama pants, and she sucked in a breath, and he moved over without looking at her to give her the half that wasn't wet." },
       { n: "He was sober. She knew it the way she knew his doorbell ring, before she'd even thought the word. His eyes were the right size under the porch light. He was properly cold, red at the ears and the knuckles, the way you only got cold when there was nothing in you to keep it out. And his hands wouldn't stop." },
       { n: "He tore the jerky sticks into exact halves, lining the ends up before he tore, and fed them to Nana one at a time. When that ran out he folded the receipt in half, and in half again, until it was a hard little square the size of a fingernail, and tried to fold it once more, and couldn't, and kept trying." },
-      { s: 'jihoon', f: 'neutral', t: "So. The Temple." },
+      { s: 'jihoon', f: 'neutral', t: "So. The temple." },
       { s: 'solar', f: 'neutral', t: "The temple?" },
-      { s: 'jihoon', f: 'happy', t: "The Temple, Sol. In Gangwon-do. That You Went To. With Your Little Council. I Was Home, Obviously. I'm Always Home. I Read About It On The Forum Like A Peasant. So Tell Me. Was It Very Spiritual." },
+      { s: 'jihoon', f: 'happy', t: "The temple, Sol. In Gangwon-do. That you went to. With your little council. I was home, obviously. I'm always home. I read about it on the forum like a peasant. So tell me. Was it very spiritual." },
       { n: "He was offering it to her, holding the story out like the bag of treats, a thing they could both stand on. Not the dorm, not the stairs, not the year she'd watched him live in a town that didn't exist. Just a temple and some bowing and a boy who'd been home the whole time." },
       { choose: [
         { t: "(Give him the temple. All of it.)", stat: { charm: 1 }, then: [
           { s: 'solar', f: 'happy', t: "So spiritual. The bell went at four. Four, Jihoon. Rice porridge every morning. They took our phones at the gate. Sunoo cried. Heeseung says he didn't but he did. I swept a step for an hour." },
           { glitch: { strain: 1 } },
           { n: "It came out easy, and something at the back of her neck went thin and cold, a wire pulled from very far off, and she kept going anyway, because his hands had stopped. The receipt sat still between his fingers. He was listening the way he'd listened to her stories when they were six, in a blanket fort, mouth a little open, like it was all true." },
-          { s: 'jihoon', f: 'happy', t: "Four. Disgusting. I Would Have Died. I Would Have Simply Lain Down In The Snow And Let The Monks Bury Me." },
+          { s: 'jihoon', f: 'happy', t: "Four. Disgusting. I would have died. I would have simply lain down in the snow and let the monks bury me." },
           { s: 'solar', f: 'happy', t: "You'd have been the worst monk." },
-          { s: 'jihoon', f: 'happy', t: "I'd Have Been The *Best* Monk. The Most Handsome Monk In Gangwon-do. They'd Have Put Me On A Postcard." }
+          { s: 'jihoon', f: 'happy', t: "I'd have been the *best* monk. The most handsome monk in Gangwon-do. They'd have put me on a postcard." }
         ] },
         { t: "(Don't answer. Take the bag and hold it for him.)", stat: { kindness: 1 }, then: [
           { n: "She didn't answer. She took the bag out of his lap and held it on her knees, open, so he could keep reaching into it, and he looked at her doing it for a long second, and then he did. Reached in. Tore a jerky stick in half. Held the halves up against each other in the porch light to check they matched." },
-          { s: 'jihoon', f: 'neutral', t: "...That's Rude. I Asked You A Question. About Your Spiritual Journey." },
+          { s: 'jihoon', f: 'neutral', t: "...That's rude. I asked you a question. About your spiritual journey." },
           { s: 'solar', f: 'neutral', t: "I know." },
           { n: "He fed Nana the half. He kept the other half in his fist for a while, like he'd forgotten it was there. Nana put his chin on Jihoon's knee and waited for it with enormous, smiling patience, the way he'd waited for things all his life." }
         ] }

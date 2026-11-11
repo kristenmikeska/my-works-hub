@@ -437,7 +437,7 @@
       { n: "Junkyu, small and round-faced, who had hugged her around the middle in the middle of the green street the night he came through and had not, as far as she could tell, fully stopped hugging her since. Asahi, who sat on the back of a bench with his hood up saying the meanest possible thing about everything in a voice so quiet you had to lean in to be insulted. Hyunsuk, who laughed at Asahi's every word like it was a tremendous gift, and kept one eye on Jihoon the whole time, the way you'd watch a pot. Jaehyuk, who said *please* and *thank you* to the change machine, and had asked Jihoon twice already whether he'd been sleeping, and whom everyone, she'd noticed, went quiet for when he actually talked." },
       { n: "And Jihoon, in the middle of it, loudest, with one arm around her neck like she was a trophy he'd won and was refusing to give back." },
       { s: 'junkyu', f: 'happy', t: "Sol! Sol, do you need ice cream and hugs? I already did the hug. Jihoon has the ice cream money." },
-      { s: 'jihoon', f: 'serious', t: "I do NOT have the ice cream money. I've spent the ice cream money. I've invested the ice cream money in a crane game. Do Not question my portfolio." },
+      { s: 'jihoon', f: 'serious', t: "I do NOT have the ice cream money. I've spent the ice cream money. I've invested the ice cream money in a crane game. Do not question my portfolio." },
       { s: 'asahi', f: 'neutral', t: "He's been investing in that crane game for a month. It's the worst portfolio in Asia. Nobody asked, by the way. Nobody ever asks." },
       { s: 'hyunsuk', f: 'happy', t: "LMAO. Asahi. Asahi." },
       { s: 'jaehyuk', f: 'serious', t: "Please don't say *LMAO* out loud, Hyunsuk." },

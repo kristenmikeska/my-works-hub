@@ -420,7 +420,7 @@
       { s: 'mitsuru', f: 'neutral', t: "I've told him the guesthouse has heating and beds. He's thanked me for the information." },
       { n: "He stood up when they came in. He counted them. Solar saw him do it, his lips moving, his eyes going from face to face, one, two, three, all the way along. He got to Jihoon and stopped, and his whole body loosened, and then he saw the bandage on Jihoon's arm and tightened again." },
       { s: 'junkyu', f: 'surprised', t: "Jihoon! Your arm!" },
-      { s: 'jihoon', f: 'neutral', t: "It's nothing. It's a scratch. It's a big scratch. Do Not fret. I'm going back to the guesthouse. Light of all your lives. Goodnight." },
+      { s: 'jihoon', f: 'neutral', t: "It's nothing. It's a scratch. It's a big scratch. Do not fret. I'm going back to the guesthouse. Light of all your lives. Goodnight." },
       { n: "He went out the front door toward the station at a walk so normal it was obviously costing him, swinging the arm a little to prove it didn't hurt, which was how Solar knew it did. Junkyu watched him go with his hands pressed together in front of his mouth, and then turned to Solar, still in her armband, still smelling of the tower." },
       { s: 'junkyu', f: 'sad', t: "Is he okay? Really? He won't tell me. He never tells me. He tells you." },
       { choose: [

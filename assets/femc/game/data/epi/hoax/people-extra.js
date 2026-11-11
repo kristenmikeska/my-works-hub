@@ -114,7 +114,7 @@
         { s: 'jungwon', f: 'neutral', t: "Give it to me. For twenty minutes. If he calls, I'll hand it to you myself. I promise. I'll watch it the whole time." },
         { n: "She gave it to him. He put it in his inside pocket, over his heart, and kept his hand on the outside of the pocket the whole twenty minutes, she noticed, the way you keep your hand on something you've promised to look after. Then he looked at the index card for a long moment, and folded it in half, and put it away with item four unticked." },
         { s: 'jungwon', f: 'neutral', t: "Later. When you're all the way here." },
-        { n: "He kissed the back of her glove instead, quickly, like he was embarrassed to have thought of it, and when the timer went off he gave her the phone back first, before anything else, and there was a message on it from Jihoon that said *Alive. Don't Be Dramatic.*, and Jungwon read it upside down and smiled, very slightly, like he was glad, and he was." }
+        { n: "He kissed the back of her glove instead, quickly, like he was embarrassed to have thought of it, and when the timer went off he gave her the phone back first, before anything else, and there was a message on it from Jihoon that said *alive. dont be Dramatic.*, and Jungwon read it upside down and smiled, very slightly, like he was glad, and he was." }
       ] },
       { ifEpiRoute: 'council', then: [
         { n: "She was reading item four for the second time when a small white flash went off behind the big pine by the toilets." },

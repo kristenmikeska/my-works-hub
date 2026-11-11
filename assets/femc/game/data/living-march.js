@@ -260,9 +260,9 @@
       { t: 'hide it from jihoon lol', then: [{ from: 'hyein', t: 'hyein: too late. he has a nose like a dog' }, { from: 'hanni', t: "hanni: don't say that to koromaru" }] }] },
     { id: 'am-hateclub-windowsill', thread: 'hateclub', from: '2/15', to: '2/20', flag: 'year-goes-on', msgs: [
       { from: 'asahi', t: 'asanoonecares: jihoon has lined up his valentines on the guesthouse windowsill' }, { from: 'asahi', t: 'asanoonecares: for display' },
-      { from: 'junkyu', t: 'junkyute: two of them are from me!!!' }, { from: 'jihoon', t: 'jihoney: They Are Separate Gestures And I Value Them Separately' }
+      { from: 'junkyu', t: 'junkyute: two of them are from me!!!' }, { from: 'jihoon', t: 'jihoney: they are separate gestures and i value them Separately' }
     ], reply: [{ t: 'HEHEHEHE kyu ur an angel', then: [{ from: 'junkyu', t: 'junkyute: :D!!!!' }] },
-      { t: 'JIHOON THATS SO SAD', then: [{ from: 'jihoon', t: "jihoney: It's Called A Collection" }, { from: 'hyunsuk', t: "geniusuk: it's called a windowsill" }] }] },
+      { t: 'JIHOON THATS SO SAD', then: [{ from: 'jihoon', t: "jihoney: its called a Collection" }, { from: 'hyunsuk', t: "geniusuk: it's called a windowsill" }] }] },
     { id: 'am-akihiko-rehearsal', thread: 'akihiko', from: '2/22', to: '3/3', flag: 'year-goes-on', msgs: [
       { from: 'akihiko', t: 'graduation rehearsal. two hours of standing up and sitting down' }, { from: 'akihiko', t: "i'm the best at it. this is not a joke" }],
       reply: [{ t: 'u trained ur whole life for this', link: 'akihiko', notes: 2, then: [{ from: 'akihiko', t: 'i did. squats' }] },
@@ -279,8 +279,8 @@
     { id: 'am-searchparty-warm', thread: 'searchparty', from: '3/1', to: '3/4', flag: 'year-goes-on', msgs: [
       { from: 'hanni', t: "hanni: IT'S WARM OUT" }, { from: 'hanni', t: 'hanni: sol go outside right now. the plum trees by the river!!!' },
       { from: 'hyein', t: "hyein: i'm not putting the coat away. i REFUSE. it's been through too much" },
-      { from: 'jihoon', t: 'jihoney: It Is Fourteen Degrees. Calm Down. Embarrassing' }, { from: 'hanni', t: 'hanni: jihoon is wearing shorts' }
-    ], reply: [{ t: 'HEHEHEHE JIHOON SHORTS', then: [{ from: 'jihoon', t: 'jihoney: My Legs Deserve Sunlight Too' }] },
+      { from: 'jihoon', t: 'jihoney: it is fourteen degrees. calm down. Embarrassing' }, { from: 'hanni', t: 'hanni: jihoon is wearing shorts' }
+    ], reply: [{ t: 'HEHEHEHE JIHOON SHORTS', then: [{ from: 'jihoon', t: 'jihoney: my legs Deserve Sunlight too' }] },
       { t: 'its so warm omg. going rn', then: [{ from: 'hanni', t: 'hanni: take a picture!!! for us!!!' }, { from: 'hyein', t: 'hyein: wear the coat' }] }] }
   );
 

@@ -93,10 +93,10 @@
       { n: "That was the whole conversation. It was, Solar thought, the longest the two of them had managed all year without anybody bleeding." }
     ], else: [
       { phone: [
-        { from: 'jihoon', t: "Heard You're Trapped At Yeobo's. Enjoy Your Snow Prison" },
-        { from: 'jihoon', t: "Some Of Us Are Home. Some Of Us Are Warm. Some Of Us Did Not Leave The House For Hot Chocolate Like Peasants" },
+        { from: 'jihoon', t: "heard ur trapped at yeobos. enjoy ur snow prison" },
+        { from: 'jihoon', t: "some of us are home. some of us are warm. some of us did not leave the house for hot chocolate Like Peasants" },
         { from: 'solar', t: "we have croissants. u have NOTHING" },
-        { from: 'jihoon', t: "I Have Dignity" },
+        { from: 'jihoon', t: "i have dignity" },
         { from: 'solar', t: "u have a bag of frozen peas and u know it" }
       ], contact: 'jihoon' }
     ] },

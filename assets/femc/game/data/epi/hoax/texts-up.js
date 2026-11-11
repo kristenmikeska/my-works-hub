@@ -18,12 +18,12 @@
       { from: 'jungwon', t: "don't answer. i'll call." }
     ] },
     { id: 'epi-h-up-jh-step', who: 'jihoon', hang: 'epi-h-jihoon-late-1', msgs: [
-      { from: 'jihoon', t: 'Are You Awake' },
-      { from: 'jihoon', t: 'Asking For Nana. He Knows Something' }
+      { from: 'jihoon', t: 'are u awake' },
+      { from: 'jihoon', t: 'asking for nana. he knows something' }
     ] },
     { id: 'epi-h-up-jh-swings', who: 'jihoon', hang: 'epi-h-jihoon-5', msgs: [
-      { from: 'jihoon', t: 'The Swings Are Free If Anyone Is Looking For Me' },
-      { from: 'jihoon', t: 'Nobody Is. Just Information' }
+      { from: 'jihoon', t: 'the swings are free if anyone is looking for me' },
+      { from: 'jihoon', t: 'nobody is. just information' }
     ] },
     { id: 'epi-h-up-suk-way', who: 'hyunsuk', hang: 'epi-h-hyunsuk-long-way', msgs: [
       { from: 'hyunsuk', t: "u up" },
@@ -76,7 +76,7 @@
     ] },
     { id: 'epi-h-up-jh-hoon', who: 'jihoon', msgs: [
       { from: 'jihoon', t: 'The Almighty Hoon Cannot Sleep' },
-      { from: 'jihoon', t: 'This Is Your Problem Now' }
+      { from: 'jihoon', t: 'this is ur problem now' }
     ] },
     // ── the group chats ──
     { id: 'epi-h-up-club-who', who: CLUB, thread: 'club', events: ['epi-h-home'], msgs: [
@@ -85,10 +85,10 @@
       { from: 'jaehyuk', t: 'jaehyukkie: go to sleep, kyu' }
     ] },
     { id: 'epi-h-up-club-roll', who: CLUB, thread: 'club', events: ['epi-h-home'], msgs: [
-      { from: 'jihoon', t: 'jihoney: Roll Call' },
+      { from: 'jihoon', t: 'jihoney: roll call' },
       { from: 'cherry', t: 'cherryblossoms: here unfortunately' },
       { from: 'hyunsuk', t: 'geniusuk: here' },
-      { from: 'jihoon', t: 'jihoney: Solar Is Online And Silent. Noted' }
+      { from: 'jihoon', t: 'jihoney: solar is online and silent. Noted' }
     ] },
     { id: 'epi-h-up-ret-sleep', who: RETREAT, thread: 'retreat', events: ['epi-h-emergency'], msgs: [
       { from: 'sunoo', t: 'sunooshine: is anyone up' },

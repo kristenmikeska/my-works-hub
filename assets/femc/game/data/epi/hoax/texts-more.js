@@ -5,7 +5,7 @@
    checker, which loads alphabetically).
    Texts (dated: thread, date, slot · ambient: thread, window):
      epi-h-tx-mom-pillow     mom      12/22 after     Nana on her pillow, legs in the air; "I didn't put him there."
-     epi-h-tx-jh-son         jihoon   12/26 evening   "How Is My Son"; proof of life, round two
+     epi-h-tx-jh-son         jihoon   12/26 evening   "how is my son"; proof of life, round two
      epi-h-tx-jw-maeumi      jungwon  12/27 evening   Maeumi at his front door since Christmas, waiting for Nana
      epi-h-tx-kyu-snow       junkyu   1/4 after       the snow day: is Nana okay in the snow
      epi-h-tx-dad-luck       dad      1/9 evening     good luck from her mother, and Nana lying by the door
@@ -32,12 +32,12 @@
       { t: "MY ROOM", then: [{ from: 'mom', t: "It's his room now. He has squatter's rights." }] }
     ] },
     { id: 'epi-h-tx-jh-son', thread: 'jihoon', date: '12/26', slot: 'evening', events: ['epi-h-christmas'], msgs: [
-      { from: 'jihoon', t: 'How Is My Son' },
-      { from: 'jihoon', t: 'He Has Not Called' },
-      { from: 'jihoon', t: 'Send Proof Of Life Or I Am Coming Over' }
+      { from: 'jihoon', t: 'how is my son' },
+      { from: 'jihoon', t: 'he has not called' },
+      { from: 'jihoon', t: 'send Proof Of Life or i am coming over' }
     ], reply: [
-      { t: "[Photo: Nana on the heated floor, one ear inside out]", img: 'tp-hoax-ear', then: [{ from: 'jihoon', t: 'His Ear' }, { from: 'jihoon', t: 'Fix His Ear. This Is A Hostage Situation. I Want Him Treated With Dignity' }] },
-      { t: "he's asleep jihoon he's a dog", then: [{ from: 'jihoon', t: 'He Is A Prince' }, { from: 'jihoon', t: 'Wake Him And Tell Him Father Says Goodnight' }] }
+      { t: "[Photo: Nana on the heated floor, one ear inside out]", img: 'tp-hoax-ear', then: [{ from: 'jihoon', t: 'his ear' }, { from: 'jihoon', t: 'fix his ear. this is a Hostage Situation. i want him treated with dignity' }] },
+      { t: "he's asleep jihoon he's a dog", then: [{ from: 'jihoon', t: 'he is a prince' }, { from: 'jihoon', t: 'wake him and tell him Father says goodnight' }] }
     ] },
     { id: 'epi-h-tx-jw-maeumi', thread: 'jungwon', date: '12/27', slot: 'evening', events: ['epi-h-christmas'], msgs: [
       { from: 'jungwon', t: "maeumi has been sitting at the front door since christmas." },
@@ -116,8 +116,8 @@
   more('jihoon', 'topics', [
     { id: 'epi-h-tp-jihoon-nana', label: 'Send him a picture of Nana', after: '12/22', events: ['epi-h-home'], msgs: [
       { me: '[Photo: Nana letting her use him as a pillow]', img: 'tp-hoax-feet' },
-      { them: 'My Son' }, { them: 'My Beloved' }, { them: 'He Has Gotten Bigger In Your Absence. Out Of Grief' },
-      { me: 'he got bigger bc my mom fed him every time he looked sad' }, { them: 'Same Thing' }
+      { them: 'MY SON' }, { them: 'my beloved' }, { them: 'he has gotten bigger in ur absence. Out Of Grief' },
+      { me: 'he got bigger bc my mom fed him every time he looked sad' }, { them: 'same thing' }
     ] }
   ]);
   more('jungwon', 'topics', [

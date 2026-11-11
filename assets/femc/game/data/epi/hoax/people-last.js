@@ -126,33 +126,33 @@
       { music: 'epi-h-jihoon' },
       { n: "At one she gave up. She put her coat on over her pajamas, the left pocket still heavy, and went down the stairs in her socks with her boots in her hand, and Nana came after her, because Nana came after her everywhere now, and she didn't have it in her to tell him no." },
       { n: "The car was exactly where it had been. Engine running for the heat, headlights off, the snow going up past the windscreen in that slow steady way it did now. She opened the passenger door and got in, and Nana got in the back, all of him, with a sound like a sofa being delivered, and put his head between the two front seats." },
-      { s: 'jihoon', f: 'surprised', t: "I Said I'd Leave When Your Light Was Off." },
+      { s: 'jihoon', f: 'surprised', t: "I said I'd leave when your light was off." },
       { s: 'solar', f: 'neutral', t: "It's off." },
-      { s: 'jihoon', f: 'neutral', t: "And Yet Here You Are. In My Vehicle. With My Son. Who Is Shedding On The Upholstery." },
+      { s: 'jihoon', f: 'neutral', t: "And yet here you are. In my vehicle. With my son. Who is shedding on the upholstery." },
       { n: "He put his hand back without looking and found Nana's head and left it there, scratching behind one ear in a slow, absent circle, and Nana shut his eyes and sighed through his nose so the windscreen fogged." },
-      { s: 'jihoon', f: 'happy', t: "He Missed Me. Obviously. Look At Him. He's Been Starved Of Paternal Affection." },
+      { s: 'jihoon', f: 'happy', t: "He missed me. Obviously. Look at him. He's been starved of paternal affection." },
       { n: "There was a convenience-store bag on the dashboard with two melon bars in it, sweating slightly in the heat. He'd bought two. He'd sat out here for two hours with two." },
       { ifFlag: 'epi-h-jihoon-speaks', then: [
-        { s: 'jihoon', f: 'serious', t: "...Did I Do Okay. Today. When I Stood Up." },
+        { s: 'jihoon', f: 'serious', t: "...Did I do okay. Today. When I stood up." },
         { s: 'solar', f: 'sad', t: "You did really okay, Jihoon." },
-        { s: 'jihoon', f: 'neutral', t: "Don't Say It Like That. Say It Like I Was Amazing. I Was Amazing." },
+        { s: 'jihoon', f: 'neutral', t: "Don't say it like that. Say it like I was amazing. I was amazing." },
         { s: 'solar', f: 'happy', t: "You were amazing." },
         { s: 'jihoon', f: 'sad', t: "...Thanks." }
       ] },
       { ifFlag: 'epi-h-jihoon-remembers', then: [
-        { s: 'jihoon', f: 'serious', t: "Don't Explain The Clip To Me. Not Me. Of All People. I Know What I Saw. I've Seen Weirder. I've Been Weirder." },
+        { s: 'jihoon', f: 'serious', t: "Don't explain the clip to me. Not me. Of all people. I know what I saw. I've seen weirder. I've been weirder." },
         { n: "He didn't look at her when he said it. He looked at the snow going up. She remembered the porch, the pots, *I remember. All of it.* She didn't explain anything." }
       ], else: [
-        { s: 'jihoon', f: 'neutral', t: "Don't Explain. I Don't Want The Explanation. I Want A Melon Bar And Five Minutes And My Son." }
+        { s: 'jihoon', f: 'neutral', t: "Don't explain. I don't want the explanation. I want a melon bar and five minutes and my son." }
       ] },
       { choose: [
         { t: "(Eat the melon bar.)", stat: { kindness: 1 }, then: [
           { n: "They ate the melon bars in the car with the heater roaring, like they were nine and it was July and his mother was going to come out on the porch any second and tell them they'd ruin their dinner, which neither of them said, and Nana watched every bite with total, tragic attention, and Jihoon gave him the stick to lick, and called it a Grave Sin, and did it anyway." }
         ] },
         { t: "Jihoon. Go home and sleep. Please.", stat: { courage: 1 }, then: [
-          { s: 'jihoon', f: 'neutral', t: "I Will. I Will. Once I've Seen Your Light Go Off Again. I'm Very Literal. It's A Condition." },
+          { s: 'jihoon', f: 'neutral', t: "I will. I will. Once I've seen your light go off again. I'm very literal. It's a condition." },
           { s: 'solar', f: 'sad', t: "Promise?" },
-          { s: 'jihoon', f: 'serious', t: "I Promise, Sol. Look At Me. I'm Promising. Sober, Even. Write It Down." }
+          { s: 'jihoon', f: 'serious', t: "I promise, Sol. Look at me. I'm promising. Sober, even. Write it down." }
         ] }
       ] },
       { n: "She went back in at half past one. She went up and turned the light on and then off again, on purpose, so he'd see it go, and stood at the curtain. The car sat there for a minute longer. Then it pulled away from the curb, slowly, headlights off until the corner, so they wouldn't sweep her parents' window, the way he'd always done it, since he got his licence, since before." }
@@ -174,14 +174,14 @@
       ], contact: "rip solar kim (she's fine probably)", group: true },
       { ifEpiRoute: 'jihoon', then: [
         { phone: [
-          { from: 'jihoon', t: "jihoney: Am Outside Her House. Do Not Ask Why. Simply Respect It" },
+          { from: 'jihoon', t: "jihoney: am outside her house. do not ask why. Simply Respect It" },
           { from: 'hyunsuk', t: "geniusuk: man" },
           { from: 'hyunsuk', t: "geniusuk: ok. respect" }
         ], contact: "rip solar kim (she's fine probably)", group: true }
       ], else: [
         { phone: [
-          { from: 'jihoon', t: "jihoney: Go To Sleep Sol" },
-          { from: 'jihoon', t: "jihoney: That's All. That Was The Message" }
+          { from: 'jihoon', t: "jihoney: go to sleep sol" },
+          { from: 'jihoon', t: "jihoney: thats all. that was the message" }
         ], contact: "rip solar kim (she's fine probably)", group: true }
       ] },
       { n: "Nobody said the word. Nobody said *clip* or *hearing* or *gym* or *see-through.* Junkyu sent eleven pictures of his ceiling. Asahi sent one song with no comment. Jaehyuk sent a photo of his desk lamp with no caption, which nobody needed, which was the point. For twenty minutes the old chat talked about nothing at one in the morning, the way it used to every night in ninth grade, and she lay there reading it with Nana's head on her stomach and her thumb hovering, not typing anything, just letting it hold her." },

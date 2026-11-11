@@ -568,17 +568,17 @@
       place: 'Hanlim · Karaoke', time: 'Evening', scene: [
       { music: 'epi-h-jihoon' },
       { n: "Room six at the noraebang smelled like it always had, cigarette ghosts and lemon cleaner and the plastic of the cracked leather couch, and the disco ball in the ceiling was going round, which meant somebody had already hit the wall beside it, throwing blue and pink dots across the sticky table and the tambourine that was missing half its jingles, and Jihoon was already in there, sprawled across the couch like a sultan, with two cans of Coke sweating on the table in front of him." },
-      { s: 'jihoon', f: 'happy', t: "The Lady At The Desk Asked If We Wanted The Soju Set. I Said Two Cokes. She Looked At Me Like I'd Told Her I Was Dying." },
+      { s: 'jihoon', f: 'happy', t: "The lady at the desk asked if we wanted the soju set. I said two cokes. She looked at me like I'd told her I was dying." },
       { s: 'solar', f: 'happy', t: "Were you?" },
-      { s: 'jihoon', f: 'neutral', t: "A Little. Spiritually. Sit Down, Ghost. You're Letting The Hallway In." },
+      { s: 'jihoon', f: 'neutral', t: "A little. Spiritually. Sit down, ghost. You're letting the hallway in." },
       { n: "She sat down. It was the first place they'd been since the gym where nobody was looking at her, where there was no phone pointed at her and no clip of her going thin playing on somebody's screen two tables over, just the two of them and a machine with a song list as thick as a phone book, and she felt her shoulders come down for the first time all day." },
       { ifFlag: 'epi-h-jihoon-speaks', then: [
         { n: "He didn't mention standing up in the gym. Saying *it was my comment, the tin thing, it was me, I was being a dick*, out loud, in front of two hundred people and Do Hayoon and a principal who'd written his name down. He'd walked out afterwards with his hands in his pockets like it was nothing, and his hands had been shaking, and he'd kept them in there." },
         { s: 'solar', f: 'serious', t: "You stood up." },
-        { s: 'jihoon', f: 'neutral', t: "My Legs Did That. I Was Not Consulted." }
+        { s: 'jihoon', f: 'neutral', t: "My legs did that. I was not consulted." }
       ] },
       { ifFlag: 'epi-h-porch-pot', then: [
-        { s: 'jihoon', f: 'neutral', t: "The White One's Green At The Bottom. On The Porch. I Checked With A Flashlight Like A Lunatic. Don't Make It A Thing." },
+        { s: 'jihoon', f: 'neutral', t: "The white one's green at the bottom. On the porch. I checked with a flashlight like a lunatic. Don't make it a thing." },
         { n: "She didn't make it a thing. She'd poured the last kettle into that pot herself, the night he'd said *I remember*, and she looked at the disco light for a while so her face could do what it wanted in the dark." }
       ] },
       { n: "He picked the song. Of course he picked the song: hers, the emo one, the one Asahi had done with his hand on his heart in this exact room before Christmas, and he stood up on the couch to do it, beanie and chains and both hands round the mic, and he was terrible, completely and committedly terrible, flat on every high note and a half-beat ahead on every low one, singing the sad parts with his eyes closed and a hand on his heart like a man at a funeral he'd been paid to attend." },
@@ -591,13 +591,13 @@
         ] }
       ] },
       { n: "The screen thought about it, played a drum roll, and gave them a ninety-eight." },
-      { s: 'jihoon', f: 'surprised', t: "NINETY-EIGHT. Sol. The Machine Has Chosen Me." },
+      { s: 'jihoon', f: 'surprised', t: "NINETY-EIGHT. Sol. The machine has chosen me." },
       { s: 'solar', f: 'happy', t: "The machine is broken. It gave Jaehyuk a hundred for a trot song." },
-      { s: 'jihoon', f: 'happy', t: "The Machine Is A Prophet And You Are A Hater. Write That Down." },
+      { s: 'jihoon', f: 'happy', t: "The machine is a prophet and you are a hater. Write that down." },
       { n: "He sat down hard on the couch next to her. The disco ball went round, slower now, running down. Neither of them picked another song. The hour ticked down on the screen in the corner, forty minutes, thirty-nine, and he cracked his can open and didn't drink it, just held it, the way she held hers." },
-      { s: 'jihoon', f: 'sad', t: "Whatever Happens." },
+      { s: 'jihoon', f: 'sad', t: "Whatever happens." },
       { s: 'solar', f: 'sad', t: "Jihoon." },
-      { s: 'jihoon', f: 'neutral', t: "No, Listen. Whatever Happens, Whenever It Happens, I Am Going To Be Insufferable About This Ninety-Eight For The Rest Of My Life. So You Have To Be There For It. That's All. That's The Whole Speech." },
+      { s: 'jihoon', f: 'neutral', t: "No, listen. Whatever happens, whenever it happens, I am going to be insufferable about this ninety-eight for the rest of my life. So you have to be there for it. That's all. That's the whole speech." },
       { n: "She put her head on his shoulder. He let her. The screen said thirty-six minutes, and they sat there for every one of them without singing, two people in a small room with the lights going round, and when the woman from the desk knocked he told her, very politely, that they'd like another hour, and paid for it, and they didn't sing in that one either." },
       { flag: 'epi-h-ninety-eight' }
     ] }
@@ -932,15 +932,15 @@
       { t: "(Leave it on read.)", silent: true, then: [{ from: 'mom', t: 'I can see that you read it, Solar.' }] }
     ] },
     { id: 'epi-h-tx-club-back', thread: 'club', date: '12/21', slot: 'late', events: ['epi-h-home'], msgs: [
-      { from: 'jihoon', t: 'jihoney: Welcome Back To The Land Of The Living' },
+      { from: 'jihoon', t: 'jihoney: welcome back to the land of the living' },
       { from: 'cherry', t: 'cherryblossoms: shes been back one day and ur already like this' },
       { from: 'junkyu', t: "junkyute: SOLAR!!!!! i'm so glad ur ok!!!!" },
       { from: 'asahi', t: 'asanoonecares: who renamed the chat' },
-      { from: 'jihoon', t: 'jihoney: Not Me' },
+      { from: 'jihoon', t: 'jihoney: not me' },
       { from: 'hyunsuk', t: 'geniusuk: it literally says jihoney renamed the chat' },
-      { from: 'jihoon', t: 'jihoney: Hacked. Grave Sin. Very Sad For Me' }
+      { from: 'jihoon', t: 'jihoney: hacked. Grave Sin. very sad for me' }
     ], reply: [
-      { t: "WHO RENAMED THE CHAT", then: [{ from: 'jihoon', t: 'jihoney: The Hacker' }, { from: 'jaehyuk', t: "jaehyukkie: it was jihoon. the timestamp's the night you went missing." }, { from: 'jihoon', t: 'jihoney: Snitch' }] },
+      { t: "WHO RENAMED THE CHAT", then: [{ from: 'jihoon', t: 'jihoney: the hacker' }, { from: 'jaehyuk', t: "jaehyukkie: it was jihoon. the timestamp's the night you went missing." }, { from: 'jihoon', t: 'jihoney: Snitch' }] },
       { t: "i missed u guys", then: [{ from: 'junkyu', t: 'junkyute: WE MISSED U MORE!!!' }, { from: 'asahi', t: 'asanoonecares: speak for yourself' }, { from: 'asahi', t: 'asanoonecares: (i missed you)' }] },
       { t: "(Leave it on read.)", silent: true, then: [{ from: 'asahi', t: 'asanoonecares: she left us on read. iconic' }] }
     ] },
@@ -980,9 +980,9 @@
       { from: 'junkyu', t: 'junkyute: are u ok solar!!! :(' },
       { from: 'asahi', t: 'asanoonecares: no one cares' },
       { from: 'asahi', t: 'asanoonecares: (it was weird though)' },
-      { from: 'jihoon', t: 'jihoney: The Machine Has Chosen You. Accept Your Destiny' }
+      { from: 'jihoon', t: 'jihoney: the machine has chosen u. Accept Your Destiny' }
     ], reply: [
-      { t: "IT'S NOT FUNNY", then: [{ from: 'cherry', t: "cherryblossoms: it's a little funny" }, { from: 'jihoon', t: 'jihoney: Its Extremely Funny. Goodnight Chosen One' }] },
+      { t: "IT'S NOT FUNNY", then: [{ from: 'cherry', t: "cherryblossoms: it's a little funny" }, { from: 'jihoon', t: 'jihoney: its extremely funny. goodnight chosen one' }] },
       { t: "im fine kyu", then: [{ from: 'junkyu', t: 'junkyute: ok!!! drink water not haunted cans!!!' }] },
       { t: "(Leave it on read.)", silent: true, then: [{ from: 'cherry', t: "cherryblossoms: she's scared. i love it here" }] }
     ] },
@@ -1002,12 +1002,12 @@
       { t: "merry christmas eve won", then: [{ from: 'jungwon', t: 'go to sleep. santa is watching. so is my mother.' }] }
     ] },
     { id: 'epi-h-tx-eve-jh', thread: 'jihoon', date: '12/24', slot: 'late', flag: 'epi-route-jihoon', events: ['epi-h-eve'], msgs: [
-      { from: 'jihoon', t: 'Merry Christmas Eve Skank' },
-      { from: 'jihoon', t: "Don't Get Used To It" },
-      { from: 'jihoon', t: "Cocoa Tomorrow. Tell Your Mom Not To Buy Any, She Buys The Wrong Kind And Then Pretends It's Fine" }
+      { from: 'jihoon', t: 'merry christmas eve skank' },
+      { from: 'jihoon', t: "dont get used to it" },
+      { from: 'jihoon', t: "cocoa tomorrow. tell ur mom not to buy any, she buys the wrong kind and then pretends its fine" }
     ], reply: [
-      { t: "merry christmas eve ungrateful rug", then: [{ from: 'jihoon', t: 'Thats My Line. Thief' }] },
-      { t: "(Leave it on read.)", silent: true, then: [{ from: 'jihoon', t: 'Rude. Sleep Well. I Mean That Normally' }] }
+      { t: "merry christmas eve ungrateful rug", then: [{ from: 'jihoon', t: 'thats my line. Thief' }] },
+      { t: "(Leave it on read.)", silent: true, then: [{ from: 'jihoon', t: 'rude. sleep well. i mean that normally' }] }
     ] },
     { id: 'epi-h-tx-eve-council', thread: 'retreat', date: '12/24', slot: 'late', flag: 'epi-route-council', events: ['epi-h-eve'], msgs: [
       { from: 'sunoo', t: 'sunooshine: we used SO much tinsel tonight' },
@@ -1020,11 +1020,11 @@
       { t: "(Leave it on read.)", silent: true, then: [{ from: 'sunoo', t: 'sunooshine: merry christmas solar!!!!' }] }
     ] },
     { id: 'epi-h-tx-xmas-jh', thread: 'jihoon', date: '12/25', slot: 'evening', events: ['epi-h-christmas'], msgs: [
-      { from: 'jihoon', t: "Your Boyfriend Said 'Merry Christmas, Jihoon' Like A Threat" },
-      { from: 'jihoon', t: 'Love That For Him. Very Festive. Very Hostage Video' }
+      { from: 'jihoon', t: "ur boyfriend said 'merry christmas, jihoon' like a threat" },
+      { from: 'jihoon', t: 'love that for him. very festive. Very Hostage Video' }
     ], reply: [
-      { t: "he was being NICE", then: [{ from: 'jihoon', t: 'He Was Being Polite. Polite Is Different. Ask Your Mom, She Knows The Difference. She Likes Me' }] },
-      { t: "(Leave it on read.)", silent: true, then: [{ from: 'jihoon', t: 'Cocoa Was Better This Year. Say It' }] }
+      { t: "he was being NICE", then: [{ from: 'jihoon', t: 'he was being polite. polite is different. ask ur mom, she knows the difference. she likes me' }] },
+      { t: "(Leave it on read.)", silent: true, then: [{ from: 'jihoon', t: 'cocoa was better this year. Say It' }] }
     ] },
     { id: 'epi-h-tx-xmas-jw', thread: 'jungwon', date: '12/25', slot: 'late', events: ['epi-h-christmas'], msgs: [
       { from: 'jungwon', t: 'thank you for today.' },
@@ -1036,7 +1036,7 @@
     { id: 'epi-h-tx-club-doc', thread: 'club', date: '12/26', slot: 'after', msgs: [
       { from: 'jaehyuk', t: "jaehyukkie: i made a doc for the make-ups. everything from the week we missed. it's shared." },
       { from: 'jaehyuk', t: 'jaehyukkie: please do not edit it, jihoon' },
-      { from: 'jihoon', t: 'jihoney: Edited It' },
+      { from: 'jihoon', t: 'jihoney: edited it' },
       { from: 'jaehyuk', t: 'jaehyukkie: you changed every heading to NANA' },
       { from: 'hyunsuk', t: "geniusuk: honestly it's easier to study now" }
     ], reply: [
@@ -1061,12 +1061,12 @@
       { from: 'asahi', t: 'asanoonecares: kazuha says thank you for having her and also that the board liked us' },
       { from: 'cherry', t: "cherryblossoms: kazuha did it. we all agree kazuha did it" },
       { from: 'junkyu', t: "junkyute: i didn't sleep :(" },
-      { from: 'jihoon', t: 'jihoney: For The Record I Have Never Heard The Word Iwatodai In My Life' },
+      { from: 'jihoon', t: 'jihoney: for the record i have never heard the word iwatodai in my life' },
       { from: 'hyunsuk', t: 'geniusuk: nobody asked you' },
-      { from: 'jihoon', t: 'jihoney: Just Getting Ahead Of It' }
+      { from: 'jihoon', t: 'jihoney: just getting ahead of it' }
     ], reply: [
       { t: "kazuha did it", then: [{ from: 'asahi', t: "asanoonecares: she's going to frame that sentence" }] },
-      { t: "@jihoney sure jan", then: [{ from: 'jihoon', t: "jihoney: Who's Jan" }] },
+      { t: "@jihoney sure jan", then: [{ from: 'jihoon', t: "jihoney: whos jan" }] },
       { t: "(Leave it on read.)", silent: true, then: [] }
     ] },
     { id: 'epi-h-tx-retreat-rehab', thread: 'retreat', date: '12/28', slot: 'evening', msgs: [
@@ -1090,8 +1090,8 @@
     { id: 'epi-h-tx-party-jh', thread: 'jihoon', date: '12/29', slot: 'late', flag: 'epi-route-jihoon', events: ['epi-h-party'], msgs: [
       { from: 'jihoon', t: 'Home?' }
     ], reply: [
-      { t: "home", then: [{ from: 'jihoon', t: "Good. Don't Tell Anyone I Was Nice Tonight" }, { from: 'jihoon', t: 'I Have A Brand' }] },
-      { t: "thank you jihoon", then: [{ from: 'jihoon', t: "Don't" }, { from: 'jihoon', t: 'Go To Sleep' }] }
+      { t: "home", then: [{ from: 'jihoon', t: "good. dont tell anyone i was nice tonight" }, { from: 'jihoon', t: 'I Have A Brand' }] },
+      { t: "thank you jihoon", then: [{ from: 'jihoon', t: "Don't" }, { from: 'jihoon', t: 'go to sleep' }] }
     ] },
     { id: 'epi-h-tx-party-council', thread: 'retreat', date: '12/29', slot: 'late', flag: 'epi-route-council', events: ['epi-h-party'], msgs: [
       { from: 'jay', t: "jbird: rumor's dead" },
@@ -1114,7 +1114,7 @@
       { from: 'hyunsuk', t: "geniusuk: eunchae's doing a live about the council tonight lmao" },
       { from: 'cherry', t: 'cherryblossoms: oh i am WATCHING that' },
       { from: 'asahi', t: 'asanoonecares: i hate new years. i hate it here' },
-      { from: 'jihoon', t: 'jihoney: Happy New Year To Everyone Except The Forum' }
+      { from: 'jihoon', t: 'jihoney: happy new year to everyone except The Forum' }
     ], reply: [
       { t: "pls dont watch the live", then: [{ from: 'cherry', t: 'cherryblossoms: we are ALL watching the live' }, { from: 'junkyu', t: "junkyute: i'll watch with u solar!!! moral support!!!" }] },
       { t: "(Leave it on read.)", silent: true, then: [] }
@@ -1157,12 +1157,12 @@
     ] },
     { id: 'epi-h-tx-club-democracy', thread: 'club', date: '1/3', slot: 'late', msgs: [
       { from: 'cherry', t: 'cherryblossoms: @jihoney stop commenting on the motion' },
-      { from: 'jihoon', t: 'jihoney: I Am Engaging In Democracy' },
+      { from: 'jihoon', t: 'jihoney: i am engaging in Democracy' },
       { from: 'jaehyuk', t: "jaehyukkie: you wrote 'where's the tin, preppy' forty times" },
-      { from: 'jihoon', t: 'jihoney: Forty One. Democracy Is A Marathon' },
+      { from: 'jihoon', t: 'jihoney: forty one. democracy is a marathon' },
       { from: 'hyunsuk', t: "geniusuk: bro it's literally your best friend's council" }
     ], reply: [
-      { t: "PARK JIHOON", then: [{ from: 'jihoon', t: "jihoney: Full Name. She's Upset. Logging Off. (Not Logging Off)" }] },
+      { t: "PARK JIHOON", then: [{ from: 'jihoon', t: "jihoney: full name. shes upset. logging off. (not logging off)" }] },
       { t: "(Leave it on read.)", silent: true, then: [{ from: 'asahi', t: 'asanoonecares: no one cares about the tin' }] }
     ] },
     { id: 'epi-h-tx-retreat-clocks', thread: 'retreat', date: '1/6', slot: 'after', events: ['epi-h-clocks'], msgs: [
@@ -1213,11 +1213,11 @@
       { t: "my scarf has never looked better", then: [{ from: 'jungwon', t: 'it was crooked. it was bothering me.' }, { from: 'jungwon', t: "that's not the only reason." }] }
     ] },
     { id: 'epi-h-tx-witness-jh', thread: 'jihoon', date: '1/10', slot: 'late', flag: 'epi-h-jihoon-speaks', msgs: [
-      { from: 'jihoon', t: "I'm Wearing A Tie Tomorrow" },
-      { from: 'jihoon', t: 'Do Not Make It A Thing' }
+      { from: 'jihoon', t: "im wearing a tie tomorrow" },
+      { from: 'jihoon', t: 'do not make it a thing' }
     ], reply: [
-      { t: "do you even own a tie", then: [{ from: 'jihoon', t: "It's Your Dad's. Your Mom Gave It To Me. Years Ago. Don't Make That A Thing Either" }] },
-      { t: "thank you jihoon", then: [{ from: 'jihoon', t: 'I Said Do Not Make It A Thing' }, { from: 'jihoon', t: 'Night Sol' }] }
+      { t: "do you even own a tie", then: [{ from: 'jihoon', t: "its ur dads. ur mom gave it to me. years ago. dont make that a thing either" }] },
+      { t: "thank you jihoon", then: [{ from: 'jihoon', t: 'i said Do Not Make It A Thing' }, { from: 'jihoon', t: 'night sol' }] }
     ] },
     { id: 'epi-h-tx-gym-council', thread: 'retreat', date: '1/10', slot: 'late', flag: 'epi-h-gym-done', msgs: [
       { from: 'heeseung', t: 'heeheeseung: the gym is done. go to sleep. all of you.' },
@@ -1254,10 +1254,10 @@
       { from: 'asahi', t: "asanoonecares: i'll be there. not because i care" },
       { from: 'hyunsuk', t: "geniusuk: i'll drive" },
       { from: 'jaehyuk', t: 'jaehyukkie: congrats on calculus, by the way. i saw.' },
-      { from: 'jihoon', t: 'jihoney: Tomorrow. All Of Us. Nobody Is Allowed To Be Weird Or Vanish' }
+      { from: 'jihoon', t: 'jihoney: tomorrow. all of us. nobody is allowed to be weird or vanish' }
     ], reply: [
       { t: "tomorrow. i promise", then: [{ from: 'cherry', t: "cherryblossoms: screenshotted. that's legally binding" }, { from: 'junkyu', t: 'junkyute: YAYYYY!!!' }] },
-      { t: "i love you guys", then: [{ from: 'asahi', t: 'asanoonecares: gross' }, { from: 'asahi', t: 'asanoonecares: (same)' }, { from: 'jihoon', t: "jihoney: Why Does That Sound Like A Goodbye. Stop It" }] }
+      { t: "i love you guys", then: [{ from: 'asahi', t: 'asanoonecares: gross' }, { from: 'asahi', t: 'asanoonecares: (same)' }, { from: 'jihoon', t: "jihoney: why does that sound like a goodbye. stop it" }] }
     ] }
   );
   (T.ambient ||= []).push(
@@ -1327,11 +1327,11 @@
       { t: "what are we studying", then: [{ from: 'jungwon', t: 'chapter six.' }, { from: 'jungwon', t: "and you. mostly you. don't tell my mother." }] }
     ] },
     { id: 'epi-h-am-jh-awake', thread: 'jihoon', from: '1/4', to: '1/10', flag: 'epi-route-jihoon', msgs: [
-      { from: 'jihoon', t: 'Are You Awake' },
-      { from: 'jihoon', t: 'Never Mind. Go To Sleep. That Was A Test' }
+      { from: 'jihoon', t: 'are u awake' },
+      { from: 'jihoon', t: 'never mind. go to sleep. that was A Test' }
     ], reply: [
-      { t: "im awake. are you ok", then: [{ from: 'jihoon', t: "I'm Fine. I'm Watering Plants. In January. Don't Ask" }, { from: 'jihoon', t: 'Night Sol' }] },
-      { t: "(Leave it on read.)", silent: true, then: [{ from: 'jihoon', t: 'Passed The Test. Proud Of You. Sleep' }] }
+      { t: "im awake. are you ok", then: [{ from: 'jihoon', t: "im fine. im watering plants. in january. dont ask" }, { from: 'jihoon', t: 'night sol' }] },
+      { t: "(Leave it on read.)", silent: true, then: [{ from: 'jihoon', t: 'passed the test. proud of u. sleep' }] }
     ] }
   );
 })();

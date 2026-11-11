@@ -124,13 +124,13 @@
   { id: 'epi-h-witness', date: '1/10', slot: 'evening', consumes: true, flag: 'epi-route-jihoon', title: 'concerned citizen', place: 'Hanlim · Arcade', time: 'Evening', scene: [
     { music: 'epi-h-jihoon' },
     { phone: [
-      { from: 'jihoon', t: "Arcade. Now. I Have Something Of Grave Importance To Confess" },
-      { from: 'jihoon', t: "Also I Need Tokens" },
+      { from: 'jihoon', t: "arcade. now. i have something of Grave Importance to confess" },
+      { from: 'jihoon', t: "also i need tokens" },
       { from: 'solar', t: "which one is the real reason" },
-      { from: 'jihoon', t: "Both. Bring Cash" }
+      { from: 'jihoon', t: "both. bring cash" }
     ], contact: 'jihoon' },
     { n: "He was at the crane game, of course he was, the one in the back by the broken air-hockey table, feeding it coins with the focus of a man defusing a bomb, in his black coat with his beanie pushed back and his chains clinking every time he slapped the button, and the claw was going down, and the claw was closing, and the claw was opening again an inch above a plush hamburger like it had just remembered something important." },
-    { s: 'jihoon', f: 'neutral', t: "Rigged. This Machine Is A Grave Sin. I'm Reporting It To The Forum." },
+    { s: 'jihoon', f: 'neutral', t: "Rigged. This machine is a grave sin. I'm reporting it to the forum." },
     { s: 'solar', f: 'happy', t: "You'd love that. You love the forum." },
     { ifYear: { xmas: 'jihoon' }, then: [
       { n: "The plush dog with Nana's face was clipped to her bag. He looked at it, the way he'd looked at it every day for three weeks, like it was a thing he'd done once and couldn't believe had worked, and then he looked back at the claw." },
@@ -142,7 +142,7 @@
     { s: 'jihoon', f: 'neutral', t: "*Us* is strong. Them. Yang. You're the VP, you're like— collateral. You're a side character in your own impeachment, honestly it's very you." },
     { s: 'solar', f: 'serious', t: "Park Jihoon." },
     { n: "He fed the machine another coin. He didn't look at her. The claw went down." },
-    { s: 'jihoon', f: 'neutral', t: "That Was Me." },
+    { s: 'jihoon', f: 'neutral', t: "That was me." },
     { s: 'solar', f: 'serious', t: "...What was you." },
     { s: 'jihoon', f: 'happy', t: "New Year's Eve. Eunchae's stream. I have an alt. h_almighty. *Did They Take The Bake Sale Money To The Temple Too.* The whole chat spammed it for ten minutes, Sol. Four hundred people. I've never been so respected." },
     { s: 'jihoon', f: 'neutral', t: "And then some girl I have literally never spoken to in my life made it a whole motion. With *counts*. She did formatting. I was being funny and she did formatting." },
@@ -401,7 +401,7 @@
         { s: 'chaewon', t: "You don't have a—" },
         { s: 'jihoon', f: 'neutral', t: "I started it." },
         { n: "He came down the bleachers two at a time with his chains clinking, onto the gym floor, into the space between the council table and Hayoon's chair, and stood there in the gold lights in his black coat in front of the entire school, and spread his arms like a man presenting himself for arrest." },
-        { s: 'jihoon', f: 'happy', t: "The tin thing. That Was Me. h_almighty, New Year's Eve, *Did They Take The Bake Sale Money To The Temple Too.* I Was Being Funny. I'm Very Funny. And Hayoon here is the only person in eighteen years who's ever taken me seriously, and frankly, Hayoon, I'm moved." },
+        { s: 'jihoon', f: 'happy', t: "The tin thing. That was me. h_almighty, New Year's Eve, *Did They Take The Bake Sale Money To The Temple Too.* I was being funny. I'm very funny. And Hayoon here is the only person in eighteen years who's ever taken me seriously, and frankly, Hayoon, I'm moved." },
         { s: 'hayoon', f: 'surprised', t: "...You're welcome?" },
         { n: "The gym laughed. He let it. Then he turned around, away from the bleachers, and looked at Solar, and the joke went out of his face like a light off." },
         { s: 'jihoon', f: 'serious', t: "She didn't skip anything. She was somewhere none of you would've lasted a day, and she came back. For this. For a fucking *gym*. Respect it." },
@@ -471,7 +471,7 @@
     { ifEpiRoute: 'jihoon', then: [
       { s: 'jihoon', f: 'serious', t: "Sol. Hey. Hey. Look at me. You're here. You're— okay. You're here." }
     ], else: [
-      { s: 'jihoon', f: 'happy', t: "That Was Sick. Do It Again. For The Fans." }
+      { s: 'jihoon', f: 'happy', t: "That was sick. Do it again. For the fans." }
     ] },
     { s: 'kazuha', t: "I told you. I told *everyone*. Nobody listens to me about ghosts." },
     { s: 'eunchae', t: "Sunbae— Solar-sunbae, can I just get a quick statement for the—" },
@@ -536,12 +536,12 @@
     ] },
     { ifEpiRoute: 'jihoon', then: [
       { phone: [
-        { from: 'jihoon', t: "Saw It" },
-        { from: 'jihoon', t: "Was Not Surprised" },
-        { from: 'jihoon', t: "Am Outside" },
+        { from: 'jihoon', t: "saw it" },
+        { from: 'jihoon', t: "was not surprised" },
+        { from: 'jihoon', t: "am outside" },
         { from: 'solar', t: "come UP" },
-        { from: 'jihoon', t: "No. Your Mom Will Make Me Eat Something And I Will Cry Into It" },
-        { from: 'jihoon', t: "Go To Sleep. I'll Leave When Your Light's Off" }
+        { from: 'jihoon', t: "no. ur mom will make me eat something and i will cry into it" },
+        { from: 'jihoon', t: "go to sleep. ill leave when ur lights off" }
       ], contact: 'jihoon' },
       { n: "She went to the window. His car was parked at the curb under the streetlight with its headlights off, the snow going up past it, and he was in the driver's seat with his beanie on, and when he saw her at the glass he lifted one hand off the steering wheel, two fingers, and didn't do anything else." },
       { n: "She turned the light off. The car didn't leave. She watched it not leave for a long time." }
@@ -708,9 +708,9 @@
       { s: 'jihoon', f: 'neutral', t: "It's not *after* me, I didn't touch it, it's a gesture. Take the gesture, Yang." },
       { n: "Jungwon took the gesture. He held it. He didn't drink it. Neither of them said anything else, and it was the nicest thing that had ever happened between them." },
       { ifFlag: 'epi-h-ninety-eight', then: [
-        { s: 'jihoon', f: 'neutral', t: "For The Record, Yang. I Got A Ninety-Eight. At The Noraebang. On The Hardest Song In The Book." },
+        { s: 'jihoon', f: 'neutral', t: "For the record, Yang. I got a ninety-eight. At the noraebang. On the hardest song in the book." },
         { s: 'jungwon', f: 'neutral', t: "...Why are you telling me this." },
-        { s: 'jihoon', f: 'neutral', t: "So Someone Else Knows. In Case." },
+        { s: 'jihoon', f: 'neutral', t: "So someone else knows. In case." },
         { n: "Jungwon looked at him for a long second over the cocoa he wasn't drinking. Then he nodded, once, the way he nodded at a number in the ledger that matched." },
         { s: 'jungwon', f: 'neutral', t: "Noted." }
       ] }

@@ -75,8 +75,8 @@
           { phone: [
             { from: 'solar', t: "solarsystem: [Photo: Nana in reindeer antlers, sitting up very straight, looking into the camera with enormous dignity]", img: 'tp-hoax-antlers-proud' },
             { from: 'junkyu', t: "junkyute: NANA!!!!!!!! MERRY CHRISTMAS NANA!!!!!" },
-            { from: 'jihoon', t: "jihoney: My Son Has Been Humiliated On The Day Of Our Lord" },
-            { from: 'jihoon', t: "jihoney: He Is So Handsome Though" },
+            { from: 'jihoon', t: "jihoney: my son has been humiliated On The Day Of Our Lord" },
+            { from: 'jihoon', t: "jihoney: he is so handsome though" },
             { from: 'asahi', t: "asanoonecares: he looks like he's about to deliver bad news" },
             { from: 'hyunsuk', t: "geniusuk: he looks better than any of u in that pic" },
             { from: 'jaehyuk', t: "jaehyukkie: the left antler is lower than the right. it's bothering me" },
@@ -89,7 +89,7 @@
             { from: 'asahi', t: "asanoonecares: finally someone in this chat who gets it" },
             { from: 'junkyu', t: "junkyute: is he ok!!! is he sad!!! :(" },
             { from: 'solar', t: "solarsystem: he's fine kyu he's being dramatic" },
-            { from: 'jihoon', t: "jihoney: He Gets That From Me" },
+            { from: 'jihoon', t: "jihoney: he gets that from me" },
             { from: 'hyunsuk', t: "geniusuk: he gets that from both of u" },
             { from: 'cherry', t: "cherryblossoms: saving this. this is my new lock screen. this is how i feel every day" },
             { from: 'jaehyuk', t: "jaehyukkie: the left antler is lower than the right. it's bothering me" }

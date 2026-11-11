@@ -155,7 +155,7 @@
     calls: [
       { id: 'pc-jihoon-1', min: 3, scene: [
         { n: "Jihoon called. The noise behind him was unmistakable: coins, jingles, a hundred machines all wanting something." },
-        { s: 'jihoon', f: 'serious', t: "Sol. Emergency. The crane game is Disrespecting me." },
+        { s: 'jihoon', f: 'serious', t: "Sol. Emergency. The crane game is disrespecting me." },
         { s: 'solar', f: 'neutral', t: "That's not an emergency." },
         { s: 'jihoon', f: 'serious', t: "It's an emergency to me. There's a penguin. It's right by the chute. It's been right by the chute for six hundred yen." },
         { choose: [
@@ -170,7 +170,7 @@
           ] }
         ] },
         { s: 'solar', f: 'happy', t: "You called me for this." },
-        { s: 'jihoon', f: 'happy', t: "I called you because you're my Witness. Everybody needs one. Mine is you. Unfortunately for both of us." }
+        { s: 'jihoon', f: 'happy', t: "I called you because you're my witness. Everybody needs one. Mine is you. Unfortunately for both of us." }
       ] },
       { id: 'pc-jihoon-2', min: 3, scene: [
         { n: "He called, and the first thing she heard was breathing. Heavy, deliberate, dramatic." },

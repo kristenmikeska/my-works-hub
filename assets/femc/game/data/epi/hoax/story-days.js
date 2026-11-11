@@ -173,8 +173,8 @@
         { ifEpiRoute: 'jihoon', then: [
           { n: "At seven-thirty Solar's phone buzzed twice on the desk, and Cherry, who had no concept of privacy and never had, read it upside down." },
           { phone: [
-            { from: 'jihoon', t: "Picking You Up At 8:30" },
-            { from: 'jihoon', t: "This Is Not A Question. It's A Prophecy" }
+            { from: 'jihoon', t: "picking u up at 8:30" },
+            { from: 'jihoon', t: "this is not a question. its a Prophecy" }
           ], contact: 'jihoney' },
           { n: "Cherry's face did nothing. Cherry's face only ever did nothing on purpose, the way you'd hold a door shut with your whole back." },
           { n: "She unplugged the iron. She wound the cord round the handle, neatly, which she never did, and put it in the tote." },
@@ -293,11 +293,11 @@
         { ifEpiRoute: 'jihoon', then: [
           { n: "Her phone buzzed in her pocket at nine." },
           { phone: [
-            { from: 'jihoon', t: "Watered Them Without You. Still Brown" },
-            { from: 'jihoon', t: "The White One Looked At Me Like I Was Late" },
-            { from: 'jihoon', t: "Uniform Tomorrow. Tragic. I've Ironed Nothing. I Will Arrive As I Am And They Will Have To Accept It" },
+            { from: 'jihoon', t: "watered them without u. still brown" },
+            { from: 'jihoon', t: "the white one looked at me like i was late" },
+            { from: 'jihoon', t: "uniform tomorrow. tragic. ive ironed nothing. i will arrive as i am and they will Have To Accept It" },
             { from: 'solar', t: "same time tomorrow?" },
-            { from: 'jihoon', t: "Same Time Tomorrow. Bring Your Own Coffee, The Pay Has Been Cut" }
+            { from: 'jihoon', t: "same time tomorrow. bring ur own coffee, the pay has been cut" }
           ], contact: 'jihoney' },
           { n: "She read *the white one looked at me like I was late* three times, and put the phone face down on the table, and didn't laugh, and then did." }
         ], else: [

@@ -88,14 +88,14 @@ window.FEMC_GAME_TEXTS = {
     { id: 't-0925-searchparty', thread: 'searchparty', date: '9/25', slot: 'afternoon', flag: 'arrived-jihoon', msgs: [
       { from: 'hanni', t: 'hanni added jihoon and you to a group' },
       { from: 'hanni', t: "hanni named the group \"sol's search party\"" },
-      { from: 'jihoon', t: 'jihoney: Who Gave Her The Power To Name Things' },
+      { from: 'jihoon', t: 'jihoney: who gave her the power to Name Things' },
       { from: 'hyein', t: "hyein: she's social chair. it's literally her job" },
       { from: 'jihoon', t: 'jihoney: of WHAT' },
       { from: 'hyein', t: 'hyein: of PARTIES' },
       { from: 'jihoon', t: 'jihoney: ok fine. im staying' }
     ], reply: [
       { t: 'why am i in this', then: [{ from: 'hanni', t: "hanni: ur the guest of honor!!!" }, { from: 'jihoon', t: 'jihoney: ur the search' }] },
-      { t: 'im literally in class rn', then: [{ from: 'jihoon', t: 'jihoney: Skipping Is A Sport, Sol' }, { from: 'hanni', t: 'hanni: DO NOT listen to him' }] }
+      { t: 'im literally in class rn', then: [{ from: 'jihoon', t: 'jihoney: skipping is a sport, sol' }, { from: 'hanni', t: 'hanni: DO NOT listen to him' }] }
     ] },
     { id: 't-1002-minji', thread: 'minji', date: '10/2', slot: 'lunch', flag: 'arrived-minji', msgs: [
       { from: 'minji', t: "can i film the station tonight. at sunset. you don't have to be in it" },
@@ -108,7 +108,7 @@ window.FEMC_GAME_TEXTS = {
       { from: 'junpei', t: 'ok so i added some people. house is FULL. its basically a dorm now' },
       { from: 'yukari', t: 'junpei it was already a dorm' },
       { from: 'hanni', t: 'hi everyone!!! :) thank u for having us' },
-      { from: 'jihoon', t: 'Why Am I Here. I Live At The Guesthouse' },
+      { from: 'jihoon', t: 'why am i here. i live at the guesthouse' },
       { from: 'junpei', t: 'ur here every meal bro' },
       { from: 'jihoon', t: 'that is called being a guest. look it up' }
     ], reply: [
@@ -150,7 +150,7 @@ window.FEMC_GAME_TEXTS = {
       { from: 'asahi', t: 'asanoonecares: junkyu has been in it for an hour' },
       { from: 'hyunsuk', t: "geniusuk: we're worried about his fingers" },
       { from: 'jaehyuk', t: "jaehyukkie: please hydrate if you're in there that long, junkyu." },
-      { from: 'jihoon', t: 'jihoney: Grave Sin. Hogging The Bath. I Will Remember This' }
+      { from: 'jihoon', t: 'jihoney: Grave Sin. hogging the bath. i will remember this' }
     ], reply: [
       { t: 'HEHEHEHE junkyu ur a PRUNE', link: 'junkyu', notes: 2, then: [{ from: 'junkyu', t: "junkyute: im a HAPPY prune!!! :D" }] },
       { t: '-salute- carry on soldier', link: 'junkyu', notes: 1, then: [{ from: 'asahi', t: "asanoonecares: oh great she's encouraging him" }] }
@@ -174,7 +174,7 @@ window.FEMC_GAME_TEXTS = {
     { id: 't-1115-hateclub', thread: 'hateclub', date: '11/15', flag: 'arrived-cherry', msgs: [
       { from: 'cherry', t: 'cherryblossoms: SOLAR KIM' },
       { from: 'cherry', t: 'cherryblossoms: why is sunghoon here. why is he HERE. why is he at the cafe in an APRON' },
-      { from: 'jihoon', t: 'jihoney: Cherry Has Seen The Prince' },
+      { from: 'jihoon', t: 'jihoney: cherry has seen The Prince' },
       { from: 'asahi', t: 'asanoonecares: oh goodie' },
       { from: 'asahi', t: 'asanoonecares: cant wait for her to never shut up about this' },
       { from: 'cherry', t: 'cherryblossoms: die' },

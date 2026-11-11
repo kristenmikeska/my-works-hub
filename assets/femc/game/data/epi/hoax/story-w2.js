@@ -97,28 +97,28 @@
         { n: "The kitchen was where Jihoon was. Of course it was. He was up on the counter in a black jacket and the beanie Cherry had once chosen for him as a joke and he'd kept as a personality, holding court over a ring of people who laughed a half second before he finished anything, and beside him, leaning on the fridge, was the guy from sophomore year." },
         { n: "She hadn't seen him in two years. She recognized him from the back of his head, which was its own kind of answer." },
         { n: "Jihoon saw her across the room and lit up like a slot machine. He slid off the counter, and Cherry stepped directly into his path like a bouncer with a grudge." },
-        { s: 'jihoon', f: 'happy', t: "Sol. The Prodigal Monk Returns. Did They Shave Your Head? Turn Around, Let Me See." },
+        { s: 'jihoon', f: 'happy', t: "Sol. The prodigal monk returns. Did they shave your head? Turn around, let me see." },
         { s: 'cherry', f: 'serious', t: "Ten feet, Park." },
-        { s: 'jihoon', f: 'neutral', t: "Cherry, Light Of My Life, Thorn In My Side, I Am Simply Greeting My Oldest Friend. Where's Your Little President, Sol? Does He Have A Bedtime?" },
+        { s: 'jihoon', f: 'neutral', t: "Cherry, light of my life, thorn in my side, I am simply greeting my oldest friend. Where's your little president, Sol? Does he have a bedtime?" },
         { s: 'solar', f: 'happy', t: "He has a curfew." },
-        { s: 'jihoon', f: 'happy', t: "Hilarious. Incredible. Write That On His Tombstone." },
+        { s: 'jihoon', f: 'happy', t: "Hilarious. Incredible. Write that on his tombstone." },
         { n: "Then he tapped the inside of his jacket, twice, lightly, the way you'd check for your keys, and a corner of a small plastic bag showed above the pocket's edge and went back down. The guy from sophomore year was watching them over the rim of his cup." },
-        { s: 'jihoon', f: 'neutral', t: "He Says It's The Good Stuff. Like Old Times. I'm Only Telling You Because I'm Generous." },
+        { s: 'jihoon', f: 'neutral', t: "He says it's the good stuff. Like old times. I'm only telling you because I'm generous." },
         { n: "Cherry's grip on her hand went white at the knuckles. The speaker on the island thumped. Somewhere very far behind her ribs something old and patient lifted its head, and she knew it by name, and it was still there." },
         { choose: [
           { t: "No, Jihoon.", flag: 'epi-h-party-refused', stat: { courage: 1 }, then: [
-            { s: 'jihoon', f: 'neutral', t: "Suit Yourself." },
+            { s: 'jihoon', f: 'neutral', t: "Suit yourself." },
             { s: 'solar', f: 'happy', t: "You always say that." },
-            { s: 'jihoon', f: 'happy', t: "Because It Always Fits." },
+            { s: 'jihoon', f: 'happy', t: "Because it always fits." },
             { n: "He went back to the counter. She watched him go, the back of the black jacket, the beanie, the shoulders that had carried her home on a piggyback in the seventh grade when she twisted her ankle at the river, and she didn't follow him, and that was the whole fight. It didn't feel like winning anything." }
           ] },
           { t: "(Hold out your hand. Take it. Don't open it.)", flag: 'epi-h-party-flushed', stat: { courage: 1 }, then: [
             { n: "He looked at her open palm like she'd done a magic trick. Then, because he was Park Jihoon and he could never stand not knowing how a trick ended, he put the bag in it." },
             { n: "She closed her fist, turned around and walked straight up the stairs past the red cups into the bathroom at the end of the hall, and flushed it, and stood there with her hand on the lever until the tank stopped running." },
-            { s: 'jihoon', f: 'surprised', t: "Did You Just— Sol. That Was Not Yours To Flush." },
+            { s: 'jihoon', f: 'surprised', t: "Did you just— Sol. That was not yours to flush." },
             { s: 'solar', f: 'happy', t: "Now it's nobody's." },
             { n: "He was leaning in the bathroom doorway with his mouth open. Then he laughed, one ugly bark of it, and pressed the heel of his hand against his eye like it hurt." },
-            { s: 'jihoon', f: 'neutral', t: "You're A Menace. You Know That? A Grave Sin. I'm Telling Everyone." },
+            { s: 'jihoon', f: 'neutral', t: "You're a menace. You know that? A grave sin. I'm telling everyone." },
             { n: "He didn't tell anyone. He went back downstairs and talked to the guy by the fridge with his back to her for the rest of the night, and she knew what that meant too." }
           ] },
           { t: "(Find Cherry's other hand. Leave.)", flag: 'epi-h-party-left', stat: { kindness: 1 }, then: [
@@ -151,7 +151,7 @@
         { ifEpiRoute: 'jihoon', then: [
           { flag: 'epi-h-jihoon-chose' },
           { n: "Jihoon had picked her up at eight-thirty without asking whether she wanted to go, honking twice outside her house until her mom came to the window and waved at him like he was the paperboy in an old movie, and he'd waved back with his whole arm, the traitor." },
-          { s: 'jihoon', f: 'happy', t: "Your Chariot, Ungrateful Rug. Get In. The Heat Works Now. I Paid A Man." },
+          { s: 'jihoon', f: 'happy', t: "Your chariot, ungrateful rug. Get in. The heat works now. I paid a man." },
           { n: "Inside, he was in his element and she wasn't, and he knew it and liked it. He did a lap of the kitchen like a mayor, Hyunsuk trailing after him with his hands in his pockets and the face of someone who'd already decided to be disappointed and was just waiting for the paperwork. Then the guy from sophomore year by the fridge lifted his chin at Jihoon, and Jihoon lifted his back." },
           { s: 'hyunsuk', f: 'serious', t: "You came with him? Man. Sol." },
           { s: 'solar', f: 'sad', t: "I know." },
@@ -159,16 +159,16 @@
           { n: "She didn't answer that." },
           ...(R.partyMingle || []), // second pass (Nov 6 2026): the mingle, story-party.js
           { n: "She sat on the third stair with her coat still on and watched Jihoon talk to the guy by the fridge, the little hand thing they used to do, the laugh that came too early. When he came back across the room his hand was already in his jacket." },
-          { s: 'jihoon', f: 'neutral', t: "Sol. You Want—" },
+          { s: 'jihoon', f: 'neutral', t: "Sol. You want—" },
           { n: "He stopped." },
           { n: "She watched him stop. He was looking at her, at the snow melting into the shoulders of her coat, at whatever was on her face, and for once in his whole life Park Jihoon didn't finish a sentence just to see where it went. His hand stayed in his pocket. The music thumped on. Behind him Hyunsuk had gone very still with a cup halfway to his mouth." },
-          { s: 'jihoon', f: 'serious', t: "...Forget It. Forget I Said Anything. You Look Like Shit In This Lighting." },
+          { s: 'jihoon', f: 'serious', t: "...Forget it. Forget I said anything. You look like shit in this lighting." },
           { choose: [
             { t: "(Hold out your hand.)", flag: 'epi-h-party-jh-flushed', stat: { courage: 1 }, then: [
               { n: "He looked at her palm for a long time. Long enough that she thought he'd laugh and slap it and call her dramatic. Then he took the bag out of his jacket and put it in her hand and closed her fingers over it with his own, roughly, like he was getting rid of something hot." },
-              { s: 'jihoon', f: 'neutral', t: "Flush It Before I Change My Mind. Quickly. I'm Very Changeable. It's Part Of My Charm." },
+              { s: 'jihoon', f: 'neutral', t: "Flush it before I change my mind. Quickly. I'm very changeable. It's part of my charm." },
               { n: "She went up the stairs two at a time and flushed it in the bathroom at the end of the hall, and when she turned around he was in the doorway with his arms crossed, watching the water like it had personally insulted him." },
-              { s: 'jihoon', f: 'sad', t: "That Was A Grave Sin. Against Me, Specifically. I Want That On Record." },
+              { s: 'jihoon', f: 'sad', t: "That was a grave sin. Against me, specifically. I want that on record." },
               { s: 'solar', f: 'sad', t: "Noted." }
             ] },
             { t: "Take me home, Jihoon.", flag: 'epi-h-party-jh-walked', stat: { kindness: 1 }, then: [
@@ -181,26 +181,26 @@
           { s: 'hyunsuk', f: 'surprised', t: "Dude." },
           { s: 'jihoon', f: 'serious', t: "Don't." },
           { s: 'hyunsuk', f: 'neutral', t: "I didn't say anything, man." },
-          { s: 'jihoon', f: 'neutral', t: "You Said It With Your Face. Your Face Is Very Loud, Suk. Go Inside Before You Die Of Exposure, I'm Not Carrying You." },
+          { s: 'jihoon', f: 'neutral', t: "You said it with your face. Your face is very loud, Suk. Go inside before you die of exposure, I'm not carrying you." },
           { n: "Hyunsuk didn't go inside. He stood there a second longer with his arms round himself and his breath going up, and then he did something she hadn't seen him do in two years: he reached out and knocked his knuckles once against Jihoon's shoulder, light, the way they used to after a game, and went back in without saying anything, and shut the door." },
           { n: "Jihoon stood on the step looking at the shut door. Then at the snow. Then at his own shoulder, like there was something on it." },
-          { s: 'jihoon', f: 'neutral', t: "...He's Always Been Dramatic." },
+          { s: 'jihoon', f: 'neutral', t: "...He's always been dramatic." },
           { s: 'solar', f: 'happy', t: "Sure, Jihoon." },
           { n: "In the car the heater roared and the windshield fogged and he drove with one hand at the top of the wheel, talking the whole way about nothing, the party, the fruit plate, the swim-team guy's tragic haircut, and he didn't look at her once." },
-          { s: 'jihoon', f: 'neutral', t: "Do Not Make This A Thing. If You Make This A Thing I Will Do Twice As Much Tomorrow To Make A Point. I'm Petty Like That." },
+          { s: 'jihoon', f: 'neutral', t: "Do not make this a thing. If you make this a thing I will do twice as much tomorrow to make a point. I'm petty like that." },
           { s: 'solar', f: 'serious', t: "I'm not making it a thing." },
-          { s: 'jihoon', f: 'sad', t: "Good. Because You'd Only Been Back A Week, And I Just—" },
+          { s: 'jihoon', f: 'sad', t: "Good. Because you'd only been back a week, and I just—" },
           { n: "The wipers went across once. Twice." },
-          { s: 'jihoon', f: 'happy', t: "—Wanted To See If You'd Gotten Uglier. You Have. Congratulations." },
+          { s: 'jihoon', f: 'happy', t: "—Wanted to see if you'd gotten uglier. You have. Congratulations." },
           { n: "At the light by the convenience store he stopped, though it was green, and sat there with the indicator ticking for a second, and she looked over at him. His hand had gone to his jacket. Not into it. Just there, flat, over the pocket, the way you'd put your hand over a bruise to see if it still hurt." },
           { ifFlag: 'epi-h-party-jh-flushed', then: [
             { n: "It was empty. She knew it was empty, because she'd watched where it went. He knew she knew. He took his hand back and put it on the wheel, ten and two, like a driving test, like a boy who'd been told to keep his hands where somebody could see them." }
           ], else: [
             { n: "It wasn't empty. She knew it wasn't, and he knew she knew, and he'd walked out of that house anyway with it still in there and her beside him, which was a different thing from throwing it away and also not nothing. He took his hand back and put it on the wheel, ten and two, like a driving test, like a boy who'd been told to keep his hands where somebody could see them." }
           ] },
-          { s: 'jihoon', f: 'neutral', t: "Light's Green." },
+          { s: 'jihoon', f: 'neutral', t: "Light's green." },
           { s: 'solar', f: 'neutral', t: "It's been green." },
-          { s: 'jihoon', f: 'neutral', t: "I Know. I Was Giving It A Moment. It's A Holiday." },
+          { s: 'jihoon', f: 'neutral', t: "I know. I was giving it a moment. It's a holiday." },
           { bond: { jihoon: 1 } },
           { n: "She looked out the window so he wouldn't have to see her face, and he turned the radio up so she wouldn't have to hear his, and they drove the rest of the way like that, both of them pretending, the snow coming down on the hood like something being decided very slowly." }
         ], else: [
@@ -218,11 +218,11 @@
           { s: 'sunoo', f: 'flustered', t: "Why is everyone looking at it like that? It's sealed. Look. It's sealed! It's Evian!" },
           ...(R.partyMingle || []), // second pass (Nov 6 2026): the mingle, story-party.js
           { n: "Then the kitchen. Then Jihoon, on the counter, the guy from sophomore year at his shoulder, a corner of a bag showing at the lip of his jacket and going back down when he saw who'd come in." },
-          { s: 'jihoon', f: 'happy', t: "Oh, Look. The Temple Kids. Did You Bring Incense? Is This A Field Trip?" },
+          { s: 'jihoon', f: 'happy', t: "Oh, look. The temple kids. Did you bring incense? Is this a field trip?" },
           { s: 'heeseung', f: 'neutral', t: "Water?" },
-          { s: 'jihoon', f: 'happy', t: "Everyone Keeps Saying You Lot Went To Rehab. It's Insulting. To Rehab. You'd Be There Two Days Before You Ran For President Of It." },
+          { s: 'jihoon', f: 'happy', t: "Everyone keeps saying you lot went to rehab. It's insulting. To rehab. You'd be there two days before you ran for president of it." },
           { n: "Half the kitchen laughed. Solar almost did, which was the worst part, because he was funny, he was always funny, it was the thing about him that made everything else so much harder to put down." },
-          { s: 'jihoon', f: 'neutral', t: "Ask Sol About Sophomore Year, Though. She Loves That Story. Don't You, Sol?" },
+          { s: 'jihoon', f: 'neutral', t: "Ask Sol about sophomore year, though. She loves that story. Don't you, Sol?" },
           { n: "The kitchen went quiet in a ring around them, the way a pond does." },
           { n: "Jay put the water bottle down on the counter very gently and shoved Jihoon off it with one hand, flat in the chest, not hard, just enough that Jihoon's feet hit the floor and he had to take a step. Hyunsuk, from nowhere, shoved Jay. Jake got between them with both arms out like a crossing guard saying *guys, guys, guys*. Sunghoon caught Jihoon's elbow. Cherry hit Jihoon in the arm with her bag, then hit Jay with it too for good measure, then looked around for anyone else who deserved it." },
           { s: 'cherry', f: 'serious', t: "Anyone else? Park Jihoon, that one was for opening your mouth. You're getting another one for what came out of it." },
@@ -233,7 +233,7 @@
               { n: "She was the smallest person in the kitchen by a head, and she planted herself in the exact middle of it anyway, one hand flat on Jay's chest and the other on Jihoon's." },
               { s: 'solar', f: 'serious', t: "Park Jihoon." },
               { n: "The full name did what it always did. He stopped. He looked down at her hand on his jacket, right over the pocket, and something went across his face too fast to read, and then he put both his hands up like a man in a film." },
-              { s: 'jihoon', f: 'neutral', t: "Fine. Fine. Go Be Hydrated, Temple Girl." }
+              { s: 'jihoon', f: 'neutral', t: "Fine. Fine. Go be hydrated, temple girl." }
             ] },
             { t: "(Take the phone out of Heeseung's pocket.)", stat: { kindness: 1 }, then: [
               { n: "She plucked the phone out of Heeseung's pocket like a pen and walked straight out of the kitchen with it held to her ear." },
@@ -275,7 +275,7 @@
         { ifEpiRoute: 'jihoon', then: [
           { place: "Hanlim · Jihoon's House", time: 'Evening', soft: true },
           { n: "New Year's Eve at Jihoon's was the old club in its natural habitat: the big couch, the bad lamp, Junkyu on the floor with a bowl of shrimp chips in his lap like a cat, Asahi in the armchair in a hoodie with the hood up indoors, Jaehyuk with an actual flashcard ring he was pretending not to be using, Cherry's boots on the coffee table, Hyunsuk on the far end of the couch as far from Cherry as the couch allowed. Jihoon in the middle of all of it with the remote, like a king with a scepter, casting the stream to the TV." },
-          { s: 'jihoon', f: 'happy', t: "Silence, Peasants. Journalism Is Happening." }
+          { s: 'jihoon', f: 'happy', t: "Silence, peasants. Journalism is happening." }
         ], else: [
           { place: "Hanlim · Yeobo's", time: 'Evening', soft: true },
           { n: "Sunoo's grandmother had closed Yeobo's at six and then let eight teenagers back in at seven, because Sunoo had asked, and because, she said, somebody had to watch them. She was watching a different show on her tablet behind the counter with the volume all the way up." },
@@ -337,11 +337,11 @@
         { ifEpiRoute: 'jihoon', then: [
           { n: "Jihoon had been typing on his phone with both thumbs through the whole tin part, grinning at the screen like it had told him a secret, and when she looked over he angled it away from her without even looking up, smooth as anything." },
           { s: 'solar', f: 'serious', t: "What are you doing." },
-          { s: 'jihoon', f: 'happy', t: "Texting My Many Admirers. Mind Your Business." },
+          { s: 'jihoon', f: 'happy', t: "Texting my many admirers. Mind your business." },
           { s: 'junkyu', f: 'happy', t: "Sol, you looked so pretty in the clip!!! Even blurry!!!" },
           { s: 'asahi', f: 'neutral', t: "The temple. Sure. Temples famously have armbands." },
           { s: 'cherry', f: 'serious', t: "Asahi, I will put this boot in your mouth." },
-          { s: 'jihoon', f: 'neutral', t: "What Uniform? I Saw No Uniform. I Wasn't In That Video. I Was Home. I'm Always Home." },
+          { s: 'jihoon', f: 'neutral', t: "What uniform? I saw no uniform. I wasn't in that video. I was home. I'm always home." },
           // Nov 11 2026 (Kat): searchers know
           { n: "Hyunsuk looked at him from the far end of the couch, for a long second, a boy who'd come out of that same gym wall ten feet behind him, and didn't say anything, and Jihoon didn't look back, and the TV played Eunchae's outro music into the room like nothing at all had happened." },
           { n: "She was home by eleven-thirty. It was Mom's one condition for New Year's Eve, and Jihoon drove her, and honked twice, and her mom waved from the window like he was the paperboy." },
@@ -497,10 +497,10 @@
       ], else: [
         { ifEpiRoute: 'jihoon', then: [
           { phone: [
-            { from: 'jihoon', t: "Happy New Year To Me, The Best Thing That Happened To You" },
-            { from: 'jihoon', t: "Study Session At Mine Wednesday. Bring Snacks. Do Not Bring Books, Books Are For The Weak" },
+            { from: 'jihoon', t: "happy new year to me, the best thing that happened to u" },
+            { from: 'jihoon', t: "study session at mine wednesday. bring snacks. do not bring books, Books Are For The Weak" },
             { from: 'solar', t: "jihoon its a STUDY session" },
-            { from: 'jihoon', t: "Correct. We Will Be Studying The Snacks" }
+            { from: 'jihoon', t: "correct. we will be studying the snacks" }
           ], contact: 'jihoney' }
         ], else: [
           { phone: [
@@ -666,7 +666,7 @@
       { phone: [
         { from: 'solar', t: "solarsystem: JIHOON" },
         { from: 'solar', t: "solarsystem: PARK JIHOON DELETE IT" },
-        { from: 'jihoon', t: "jihoney: I Am A Concerned Citizen Exercising My Civic Duty" },
+        { from: 'jihoon', t: "jihoney: i am a Concerned Citizen exercising my civic duty" },
         { from: 'cherry', t: "cherryblossoms: ur a concerned dumbass. delete it or i delete u" },
         { from: 'asahi', t: "asanoonecares: no one cares. except everyone. this time" },
         { from: 'junkyu', t: "junkyute: i didnt sign it!!! i would never!!! :(" },
@@ -781,37 +781,37 @@
       { music: 'epi-h-jihoon' },
       { n: "Jihoon's idea of a study session turned out to be four bags of chips, two family-size bottles of soda, the TV on a racing game paused mid-crash, and her calculus textbook sitting on the coffee table under his can, being used, very specifically, as a coaster." },
       { s: 'solar', f: 'serious', t: "That's my textbook." },
-      { s: 'jihoon', f: 'happy', t: "And It Has Never Been More Useful. Look At It. Serving A Purpose. Unlike You." },
+      { s: 'jihoon', f: 'happy', t: "And it has never been more useful. Look at it. Serving a purpose. Unlike you." },
       { s: 'solar', f: 'sad', t: "Jihoon, I have make-ups on Monday. I'm actually going to fail. Like, for real." },
-      { s: 'jihoon', f: 'neutral', t: "And Whose Fault Is That? Who Went To A Temple In Exam Week? Not Me. I Was Home. I'm Always Home." },
+      { s: 'jihoon', f: 'neutral', t: "And whose fault is that? Who went to a temple in exam week? Not me. I was home. I'm always home." },
       { n: "He said it every time now, *I was home*, like a password, like if he said it enough times the year he'd spent on the other side of a door in a dorm with a dog and a redhead with a rapier would fold itself up and fit back in the drawer of things that hadn't happened. She'd stopped arguing. Arguing just made him say it louder." },
       { s: 'solar', f: 'serious', t: "You were not home. You were in the gym. You're in Eunchae's video, you idiot. You're the tall blur." },
-      { s: 'jihoon', f: 'happy', t: "Many Tall Blurs In This World, Sol. Pass Me The Shrimp Ones." },
+      { s: 'jihoon', f: 'happy', t: "Many tall blurs in this world, Sol. Pass me the shrimp ones." },
       { n: "She went looking for a pen instead, because one of them should at least look like they were studying, and opened the little drawer in the coffee table where he kept pens and takeout menus and dead batteries." },
       { n: "There was a pen. There was also a small plastic bag tucked against the side of the drawer, folded over twice, and a lighter, and a receipt from a pharmacy, and she looked at it for exactly as long as it took him to put his foot against the drawer and push it shut." },
-      { s: 'jihoon', f: 'neutral', t: "Wrong Drawer." },
+      { s: 'jihoon', f: 'neutral', t: "Wrong drawer." },
       { n: "He didn't look at her. He picked up the controller and unpaused the game, and the little car on the screen finished crashing into the wall it had been crashing into all evening." },
       { choose: [
         { t: "Jihoon. The drawer.", stat: { courage: 1 }, then: [
-          { s: 'jihoon', f: 'neutral', t: "Is This An Intervention? Should I Call Hyunsuk? He Loves A Circle. He'll Bring A Talking Stick." },
+          { s: 'jihoon', f: 'neutral', t: "Is this an intervention? Should I call Hyunsuk? He loves a circle. He'll bring a talking stick." },
           { s: 'solar', f: 'serious', t: "I'm serious." },
-          { s: 'jihoon', f: 'serious', t: "So Am I. Don't Look At Me Like That, Sol. It's Unflattering. For Both Of Us." },
+          { s: 'jihoon', f: 'serious', t: "So am I. Don't look at me like that, Sol. It's unflattering. For both of us." },
           { n: "He didn't open the drawer. He didn't promise anything either. But he moved his foot, after a minute, off the front of it, like it cost him something to leave it there and something more to take it away." }
         ] },
         { t: "(Say nothing. Hand him the other controller.)", stat: { kindness: 1 }, then: [
           { n: "She held out the second controller instead. He looked at it, and then at her, for a second too long, like she'd said something he didn't have a joke ready for." },
-          { s: 'jihoon', f: 'happy', t: "You're So Bad At This Game. It's Embarrassing. I Accept." },
+          { s: 'jihoon', f: 'happy', t: "You're so bad at this game. It's embarrassing. I accept." },
           { n: "She was bad at it. He won eleven times in a row and narrated every win like a sports announcer, and the drawer stayed shut, and neither of them looked at it again, which wasn't the same as it not being there." }
         ] }
       ] },
       { n: "Somewhere around ten she fell asleep sideways on his couch with her cheek on chapter six, because she'd barely slept since the night with the council room, and the blister on her palm throbbed in time with the racing game's engine noise, and the couch smelled like his cologne and old popcorn." },
       { n: "She wasn't all the way under. She was in that place just above it, where you can still hear a room. She heard the game go quiet. She heard him put the controller down. She heard him not move for a long time." },
-      { s: 'jihoon', f: 'sad', t: "...Don't Do That Again. Okay? Just— Stay Where I Can See You." },
+      { s: 'jihoon', f: 'sad', t: "...Don't do that again. Okay? Just— stay where I can see you." },
       { n: "His voice was so low she almost didn't catch it. It wasn't any voice she'd heard him use since sophomore year." },
       { n: "She opened her eyes. He was looking at her. Then he wasn't." },
-      { s: 'jihoon', f: 'happy', t: "You Drool. Did You Know That? It's Disgusting. I'm Telling Cherry. I'm Telling The Whole Chat. I'm Putting It On The Forum." },
+      { s: 'jihoon', f: 'happy', t: "You drool. Did you know that? It's disgusting. I'm telling Cherry. I'm telling the whole chat. I'm putting it on the forum." },
       { s: 'solar', f: 'sad', t: "Jihoon." },
-      { s: 'jihoon', f: 'neutral', t: "What. I Didn't Say Anything. You Were Dreaming. Go Back To Sleep, I'll Drive You Home In Twenty." },
+      { s: 'jihoon', f: 'neutral', t: "What. I didn't say anything. You were dreaming. Go back to sleep, I'll drive you home in twenty." },
       { bond: { jihoon: 1 } },
       { n: "She didn't go back to sleep. She lay there with her eyes closed anyway, so he could have it, and listened to him start the race over from the beginning, and crash into the same wall, and start it over again." }
     ] },
@@ -983,15 +983,15 @@
       { phone: [
         { from: 'jihoon', t: "Come Outside" },
         { from: 'solar', t: "its 1am" },
-        { from: 'jihoon', t: "Correct. Come Outside. I Have A Gift For You. It's Melting" }
+        { from: 'jihoon', t: "correct. come outside. i have a gift for u. its melting" }
       ], contact: 'jihoney' },
       { n: "He was on her front step in the snow with two melon bars from the convenience store, the green ones she liked, in January, at one in the morning, because he was insane and also because she'd once, years ago, at the top of her lungs in a group chat, demanded to know where the fuck her ice cream was, and he had never once let it go." },
-      { s: 'jihoon', f: 'happy', t: "Your Ice Cream, Madam. As Is Tradition. Eat It Quickly, It's Cold Out Here And I'm Fragile." },
+      { s: 'jihoon', f: 'happy', t: "Your ice cream, madam. As is tradition. Eat it quickly, it's cold out here and I'm fragile." },
       { s: 'solar', f: 'happy', t: "It's literally colder than the ice cream out here, Jihoon." },
-      { s: 'jihoon', f: 'neutral', t: "Then It'll Last Longer. Science. Sit." },
+      { s: 'jihoon', f: 'neutral', t: "Then it'll last longer. Science. Sit." },
       { n: "They sat on the step with their knees up eating melon bars in the snow, and he talked about nothing, the party, the forum, a video of a cat he'd seen, and then he stopped talking with the stick in his mouth and looked at the street." },
-      { s: 'jihoon', f: 'neutral', t: "Nine Days. Without Me. Must Have Been Hell." },
-      { s: 'jihoon', f: 'sad', t: "...For You, I Mean. For You. Obviously." },
+      { s: 'jihoon', f: 'neutral', t: "Nine days. Without me. Must have been hell." },
+      { s: 'jihoon', f: 'sad', t: "...For you, I mean. For you. Obviously." },
       // Nov 11 2026 (Kat): searchers know
       { n: "He hadn't been without her for one of those nine days. He'd been on the other side of the same door, in the same strange city, under the same green midnight. They both knew it. He said it like this anyway, like a door he'd decided to keep shut, and she let him." },
       { n: "She bumped his shoulder with hers. He bumped back, too hard, so she almost fell off the step, and he caught her by the hood of her coat, and didn't let go of it for a second longer than he needed to." },

@@ -71,8 +71,8 @@
         { n: "Plush, white, overstuffed, with ears that went in two different directions and a face so exactly, stupidly Nana's that Nana himself had apparently spent part of the night staring at it. It was sitting where her head should've been. She didn't remember putting it there. She remembered the arcade, and the crane, and her hand coming down on top of Jihoon's on the button, and the claw holding, for once, for once in its whole rigged life." },
         { n: "He'd handed it to her without a joke. Then he'd made about six of them, one after the other, each one worse, like he was trying to bury the first part under enough noise that she'd forget it happened. She hadn't." },
         { phone: [
-          { from: 'jihoon', t: "Do Not Mention The Dog" },
-          { from: 'jihoon', t: "The Dog Is Between Me And God" }
+          { from: 'jihoon', t: "do not mention the dog" },
+          { from: 'jihoon', t: "the dog is between Me And God" }
         ], contact: 'jihoney' },
         { n: "Under it, from last night, still unanswered, in full sentences with periods at the end, the way only one person she knew ever texted." },
         { phone: [
@@ -86,7 +86,7 @@
         { phone: [
           { from: 'cherry', t: "cherryblossoms: she fell asleep mid keysmash. legend" },
           { from: 'asahi', t: "asanoonecares: we got her back for 6 hours and she already left us on read" },
-          { from: 'jihoon', t: "jihoney: Let Her Rest. The Light Of Her Disgusting Life Has Returned To Her Disgusting Bed" },
+          { from: 'jihoon', t: "jihoney: let her rest. the light of her disgusting life has returned to her Disgusting Bed" },
           { from: 'junkyu', t: "junkyute: does she need ice cream and hugs in the morning!!! i can bring both!!!" },
           { from: 'jaehyuk', t: "jaehyukkie: it's 4am. everyone go to sleep." },
           { from: 'hyunsuk', t: "geniusuk: u go to sleep" }
@@ -101,11 +101,11 @@
     { n: "She laughed. Again. It came out of her the same way it had last night in the gym, too loud, ugly, something knocked loose, and Nana lifted his head to check on her." },
     { phone: [
       { from: 'solar', t: "solarsystem: JIHOON. WHO RENAMED THE CHAT" },
-      { from: 'jihoon', t: "jihoney: It Has Always Been Called That" },
+      { from: 'jihoon', t: "jihoney: it has always been called that" },
       { from: 'solar', t: "solarsystem: IT SAYS U DID IT THE NIGHT I LEFT" },
-      { from: 'jihoon', t: "jihoney: Phones Lie Sol. Look It Up" },
+      { from: 'jihoon', t: "jihoney: phones lie sol. look it up" },
       { from: 'cherry', t: "cherryblossoms: he did it at 11:52 and then called me crying at 11:53" },
-      { from: 'jihoon', t: "jihoney: Cherry Has Been Blocked From My Heart" }
+      { from: 'jihoon', t: "jihoney: cherry has been Blocked From My Heart" }
     ], contact: "rip solar kim (she's fine probably)", group: true },
 
     // Mom.
@@ -207,7 +207,7 @@
     { s: 'cherry', f: 'surprised', t: "...Okay. Nope. Did your phone just go weeb on you." },
     { s: 'solar', f: 'flustered', t: "It's autocorrect. It's broken." },
     { s: 'cherry', f: 'happy', t: "Oh my God. Oh my *God*. We were *all* gone for a year and you're the one who came back *localized*." },
-    { n: "Cherry was laughing so hard she had to put her drink down. She took a screenshot. She took another one. She sent both of them to the chat herself before Solar could stop her, and the chat lost its mind, Junkyu with nine exclamation points, Asahi saying *finally someone in this group is cultured*, Jihoon with *Who Is This Woman. Tell Her I Said Okaeri* and then, a second later, *I Don't Know What That Means I Read It On A Cereal Box*." },
+    { n: "Cherry was laughing so hard she had to put her drink down. She took a screenshot. She took another one. She sent both of them to the chat herself before Solar could stop her, and the chat lost its mind, Junkyu with nine exclamation points, Asahi saying *finally someone in this group is cultured*, Jihoon with *Who Is This Woman. tell her i said okaeri* and then, a second later, *i dont know what that means i read it on a cereal box*." },
     { n: "Solar laughed too. She did. She laughed until Cherry stopped, and then she looked at the little Japanese word sitting there in the chat like a footprint in the snow outside her door going one way, and turned her phone over on the bed, and didn't turn it back for a while." },
     { n: "Cherry's phone buzzed. She looked at it. Her whole face changed, quick, soft, and then she shoved it into her pocket like it had bitten her." },
     { s: 'solar', f: 'serious', t: "Who was that." },
@@ -349,6 +349,9 @@
     { s: 'sunoo', f: 'sad', t: "...Croissants?" },
     { n: "His grandmother looked at him for a long, long moment. Then she set the tray down in the middle of the table, patted his head twice, hard, and walked back to the counter without a word." },
     { s: 'niki', f: 'happy', t: "LMAOOO" },
+    { n: "He said it. Out loud, with his actual mouth, every letter of it, at a volume meant for the back of the café, and the couple by the window turned around to see who had typed something." },
+    { s: 'heeseung', f: 'neutral', t: "Did you just say *lmao.* Out loud. In a restaurant. In front of his grandmother." },
+    { s: 'niki', f: 'happy', t: "It's how I laugh, hyung. It's my laugh. You can't take my laugh." },
     { s: 'niki', f: 'happy', t: "He said croissants. To *her*. She *makes* the croissants." },
     { s: 'heeseung', f: 'neutral', t: "Sunoo's not allowed to talk to any parents. That's agenda item two. Sunoo talks to nobody's parents until after New Year's." },
     { s: 'sunoo', f: 'sad', t: "That's fair. That's so fair. Thank you." },
@@ -451,10 +454,10 @@
     { s: 'jaehyuk', f: 'serious', t: "*We* did four in October. You copied my four in October. It's different." },
     { n: "There was no arguing with that. It was the single most accurate thing anyone had said to her in two days." },
     { s: 'junkyu', f: 'happy', t: "It's so nice we're all back though!!! Like when we were all in—" },
-    { s: 'jihoon', f: 'neutral', t: "In What." },
-    { n: "He was still lying on the carpet with Nana on his chest. He hadn't moved. He'd just said it, flat, to the ceiling, the capital letters audible somehow even out loud." },
+    { s: 'jihoon', f: 'neutral', t: "In what." },
+    { n: "He was still lying on the carpet with Nana on his chest. He hadn't moved. He'd just said it, flat, to the ceiling, no question mark anywhere in it." },
     { s: 'junkyu', f: 'surprised', t: "In, um. In. You know. With the—" },
-    { s: 'jihoon', f: 'neutral', t: "What Retreat. I Was Home. I'm Always Home." },
+    { s: 'jihoon', f: 'neutral', t: "What retreat. I was home. I'm always home." },
     { n: "The room went quiet the way a room goes quiet when somebody drops a glass and nobody wants to be the first to look down. Hyunsuk looked at the carpet. Cherry looked at Jihoon. Asahi looked at his phone so hard it might as well have been a book." },
     { s: 'junkyu', f: 'sad', t: "...You were there, though. You were there for, like, all of it. You carried—" },
     { s: 'jihoon', f: 'happy', t: "Kyu. Buddy. My guy. I have never left this town in my life. I get carsick at the mall." },
@@ -612,15 +615,15 @@
     ] },
     { ifRouteOpen: 'jihoon', then: [
       { phone: [
-        { from: 'jihoon', t: "Get In The Car" },
-        { from: 'jihoon', t: "I'm Outside" },
-        { from: 'jihoon', t: "I Have Been Outside For Ten Minutes. Your Neighbor Thinks I'm A Cop" },
-        { from: 'jihoon', t: "The Lights At The Park Are On. They Are Tacky. We Are Going To Judge Them" }
+        { from: 'jihoon', t: "get in the car" },
+        { from: 'jihoon', t: "im outside" },
+        { from: 'jihoon', t: "i have been outside for ten minutes. ur neighbor thinks im a cop" },
+        { from: 'jihoon', t: "the lights at the park are on. they are Tacky. we are going to judge them" }
       ], contact: 'jihoney' }
     ], else: [
       { phone: [
-        { from: 'jihoon', t: "Merry Xmas Eve Skank" },
-        { from: 'jihoon', t: "Tell My Son I Said Merry Xmas" }
+        { from: 'jihoon', t: "merry xmas eve skank" },
+        { from: 'jihoon', t: "tell my son i said merry xmas" }
       ], contact: 'jihoney' }
     ] },
     { phone: [
@@ -699,11 +702,11 @@
         { s: 'solar', f: 'happy', t: "He's *bowing*. He's being *polite*." },
         { s: 'jihoon', f: 'neutral', t: "He's deflating, Sol. It's a metaphor. Look it up." },
         { n: "She laughed so hard she hit the window with her forehead. He looked pleased with himself in a way he didn't hide fast enough." },
-        { s: 'jihoon', f: 'happy', t: "Angel On The Bank Building. Eight. Tasteful. Restrained. She Has A Wingspan I Respect." },
+        { s: 'jihoon', f: 'happy', t: "Angel on the bank building. Eight. Tasteful. Restrained. She has a wingspan I respect." },
         { s: 'solar', f: 'happy', t: "You gave her an eight last year too." },
-        { s: 'jihoon', f: 'neutral', t: "Consistency Is The Mark Of A Great Critic. Unlike You. You Gave The Bowing Snowman A Ten In Ninth Grade Because You Felt Sorry For Him." },
+        { s: 'jihoon', f: 'neutral', t: "Consistency is the mark of a great critic. Unlike you. You gave the bowing snowman a ten in ninth grade because you felt sorry for him." },
         { s: 'solar', f: 'sad', t: "He looked lonely." },
-        { s: 'jihoon', f: 'neutral', t: "He's Inflatable, Sol. He's Lonely By Design." },
+        { s: 'jihoon', f: 'neutral', t: "He's inflatable, Sol. He's lonely by design." },
         { n: "The radio was on low, some station doing carols with too much saxophone, and the heater was blowing so hard the air smelled like hot dust, and every so often his hand came off the gearstick and hovered near the dial like he was going to change it and then didn't. She knew why. Last time she'd been in this car he'd let her pick, and she'd put on a song he hated, and he'd sung every word of it at the top of his lungs to prove he hated it." },
         { cg: 'epi-h-eve-jihoon' },
         { n: "At the far end of the loop there was a tunnel of white lights, the long one, the one they'd walked through every year since they were small, her holding his sleeve because she was scared of the dark bits between the bulbs, him pretending not to be. He slowed down even more. He didn't say anything about it. Neither did she." },
@@ -849,7 +852,7 @@
     { s: 'cherry', f: 'serious', t: "That was disgusting. Forget I said it. Go inside before Park poisons your boyfriend with kindness." },
     { n: "She went down the path backwards so she could keep pointing at Solar the whole way, and at the gate she stopped and looked at the house for a second, the fogged window, the shape of Jungwon sitting very straight on the sofa, the dog's tail going in the hall, like she was taking a picture of it without her phone. Then she went to her grandmother's." },
     { place: 'Hanlim · Home · Living Room', time: 'Daytime', soft: true },
-    { n: "Jihoon was a dream at lunch. That was the horrible part. He set the table without being asked. He knew where everything went. He told her mother the japchae was better than last year and her mother glowed. He fixed the drip under the kitchen sink that her father had been *getting to* since August with a butter knife and a hair tie. He said *please* and *thank you* in sentences without a single capital letter in the wrong place. He was the nicest he'd been in a year." },
+    { n: "Jihoon was a dream at lunch. That was the horrible part. He set the table without being asked. He knew where everything went. He told her mother the japchae was better than last year and her mother glowed. He fixed the drip under the kitchen sink that her father had been *getting to* since August with a butter knife and a hair tie. He said *please* and *thank you* like somebody's well-raised son, no voices, no bits. He was the nicest he'd been in a year." },
     { n: "Jungwon got quieter. With every nice thing Jihoon did, Jungwon got a little quieter and a little more polite, until he was sitting at the end of the table cutting his food into exact, identical squares and saying *thank you, this is wonderful* every time anyone passed him anything, in a voice so even it could've levelled a shelf. He was furious. She'd never seen him this furious. He was being so courteous about it that her father asked twice if he was feeling alright." },
     { n: "Then her mother put down her chopsticks, and smiled at Jungwon, and Solar knew exactly what was coming, because she'd watched her mother's eyes go to the window at the start of the meal and then come back, slow, like a file being reopened." },
     { s: 'mom', t: "So, Jungwon. This retreat." },

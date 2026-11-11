@@ -198,7 +198,7 @@
     { id: 'jh-ln-window', kind: 'visit', rank: 6, after: '11/2', events: ['a4-crew'], until: '11/30', place: 'Iwatodai Dorm · Front', time: 'Late Night', music: 'night', scene: [
       { n: "Something hit her window. Then something else. Small. A pebble, then another, and she opened the curtain on a tall boy in a hoodie on the pavement below, holding up a sheet of poster board over his head with both arms." },
       { n: "It said, in Junkyu's highlighters, in enormous bubble letters, *U PASSED UR CHEM QUIZ. I CHECKED. THROUGH HANNI.*" },
-      { phone: [{ from: 'jihoon', t: 'Congratulations On Being Smart. Once' }, { from: 'jihoon', t: 'curfew is in 4 minutes. i Must Flee' }], contact: 'Jihoon' },
+      { phone: [{ from: 'jihoon', t: 'congratulations on being smart. Once' }, { from: 'jihoon', t: 'curfew is in 4 minutes. i Must Flee' }], contact: 'Jihoon' },
       { choose: [
         { t: "(Open the window. Shout thank you.)", notes: 2, then: [
           { n: "She shouted it. Down the street a dog started barking. On the fourth floor another window opened, and Mitsuru's voice said *Park-san* into the night with tremendous calm, and Jihoon bowed to the fourth floor with the poster board still over his head and ran, in the dark, holding it like a sail, all the way down the hill." }

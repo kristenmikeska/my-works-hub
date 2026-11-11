@@ -714,7 +714,8 @@
       { choose: [
         { t: "Give me the phone. I'm writing one.", flag: 'epi-h-niki-alt', stat: { charm: 1 }, then: [
           { s: 'forum', t: "ufo_hanlim: update. the aliens sent them back because the president kept correcting their grammar" },
-          { s: 'niki', f: 'surprised', t: "LMAOOOO. Sol. That's the best one. I'm pinning it. I can't pin it. I'm gonna pin it anyway." }
+          { n: "Niki made a sound like a kettle coming to the boil and folded over the fighting-game cabinet, and the ten-year-old took the round off him without even looking." },
+          { s: 'niki', f: 'surprised', t: "Sol. That's the best one. I'm pinning it. I can't pin it. I'm gonna pin it anyway." }
         ] },
         { t: "(Take the phone. Keep the phone.)", stat: { courage: 1 }, then: [
           { s: 'niki', f: 'sad', t: "Give it BACK. I'm literally a child. You're stealing from a child." },
@@ -724,9 +725,10 @@
       { n: "He dragged her to the shooting game after, the one with the plastic guns on cables, and she took the second gun, and something in her hands remembered a year of a different kind of night, the weight, the breath, where to look, and she cleared the whole first stage without him." },
       { n: "Niki stopped shooting. He looked at her, really looked, the youngest, for one second not the youngest at all, like someone who'd seen people aim for real somewhere a long way from here and knew the difference, and then it was gone." },
       // Nov 11 2026 (Kat): searchers know
-      { s: 'niki', f: 'happy', t: "LMAOOO. Okay, Tartarus. We get it. You're so scary. I'm telling Jungwon you're a hitman." },
+      { n: "Then he cackled, high and delighted, loud enough that the whole row of machines seemed to hear it, and he was the youngest again." },
+      { s: 'niki', f: 'happy', t: "Okay, Tartarus. We get it. You're so scary. I'm telling Jungwon you're a hitman." },
       { s: 'solar', f: 'surprised', t: "Please don't." },
-      { s: 'niki', f: 'happy', t: "-skull- too late. I'm typing." }
+      { s: 'niki', f: 'happy', t: "Too late. I'm typing." }
     ] },
 
     { id: 'epi-h-niki-2', title: 'make-ups', hint: "Niki is lying on the hallway floor outside the make-up exam room like he's been shot.",
@@ -751,7 +753,8 @@
       { s: 'niki', f: 'sad', t: "If they kick you off council it's gonna be so boring, Sol. Jungwon's gonna start telling me about agendas. Directly. To my face." },
       { choose: [
         { t: "I'm not going anywhere.", stat: { courage: 1 }, then: [
-          { s: 'niki', f: 'happy', t: "-skull- you said that like a villain." },
+          { n: "Niki wheezed at the ceiling tiles." },
+          { s: 'niki', f: 'happy', t: "You said that like a villain." },
           { n: "She'd meant it. That was the trouble with meaning things this week. He took the crown off his forehead and put it on hers." }
         ] },
         { t: "(Lie down on the floor next to him.)", stat: { kindness: 1 }, then: [
