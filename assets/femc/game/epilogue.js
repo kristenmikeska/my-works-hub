@@ -278,7 +278,9 @@ window.FemcEpilogue = (() => {
       G.adoptState(E);
       cardDay = null;
       document.querySelectorAll('.g-overlay').forEach(x => x.remove());
-      UI().run();
+      // "Previously…": the world's scrapbook plays once, before its first screen (scrapbook.js; skippable)
+      if (W.FemcScrapbook) W.FemcScrapbook.play(id).then(() => UI().run(), () => UI().run());
+      else UI().run();
       return true;
     });
   }
