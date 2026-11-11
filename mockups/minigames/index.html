@@ -40,7 +40,7 @@
   <script src="../../assets/femc/game/minigames/dumplings.js?v=6"></script>
   <script src="../../assets/femc/game/minigames/studio.js?v=1"></script>
   <script src="../../assets/femc/game/minigames/listen.js?v=1"></script>
-  <script src="../../assets/femc/game/minigames/charts/runners.js?v=4"></script>
+  <script src="../../assets/femc/game/minigames/charts/runners.js?v=5"></script>
   <script src="../../assets/femc/game/minigames/sing.js?v=8"></script>
   <script>
     const G = { support: () => FemcSupport.play({}), dumplings: () => FemcDumplings.play({ mute: document.getElementById('mute').checked }), studio: () => FemcStudio.play({ mute: document.getElementById('mute').checked }), listen: () => FemcListen.play({ mute: document.getElementById('mute').checked }), singrec: () => FemcSing.play({ record: true, mute: document.getElementById('mute').checked }).then(r => { sgNote(); if (r && r.play) { document.getElementById('sgdraft').checked = true; G.sing(); } }),
