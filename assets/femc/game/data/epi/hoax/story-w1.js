@@ -193,7 +193,8 @@
     { s: 'solar', f: 'serious', t: "I did not." },
     { s: 'cherry', f: 'neutral', t: "Your signature's on it. Jungwon showed me. He was very upset about it." },
     { n: "That sounded true. That sounded exactly like a thing she'd have signed at four o'clock on a Thursday with a croissant in her other hand." },
-    { s: 'cherry', f: 'happy', t: "Tell the chat you're alive. Officially. They've been in mourning. Jihoon made a playlist." },
+    // Nov 11 2026 (Kat): searchers know
+    { s: 'cherry', f: 'happy', t: "Tell the chat you're home. Officially, in writing, so it counts. Junkyu keeps asking if we're sure it worked. Jihoon made a playlist." },
     { n: "So she opened the chat, still grinning, and typed the most normal sentence in the world. *im home!!!!*" },
     { glitch: 'epi-h-g-autocorrect' },
     { n: "The phone thought about it. It made a tiny noise, a fizz, like static on a radio between stations, which it had never once made in two years of being her phone, and the words in the box rearranged themselves under her thumb, quick as a card trick, into something that wasn't English." },
@@ -201,9 +202,11 @@
     { n: "She knew what it said. That was the problem. She'd said it every evening for a year, kicking her shoes off in a dorm entryway, to whoever was in the lounge, Junpei with a controller, Fuuka with a laptop, a dog's nails clicking over the floor to meet her. *Tadaima*. I'm home. And somebody always said it back." },
     { n: "She deleted it. She typed *im home* again, slower, like the phone was a child she was explaining something to." },
     { n: "*ただいま*" },
-    { s: 'cherry', f: 'surprised', t: "...Did your phone just go weeb on you." },
+    // Nov 11 2026 (Kat): searchers know
+    { n: "Cherry had stopped chewing her straw. She'd heard that word too, a hundred times, called through a dorm door on the nights she'd walked Solar back from the station, and for one second her face knew exactly where it was from, and so did Solar's, and neither of them said so." },
+    { s: 'cherry', f: 'surprised', t: "...Okay. Nope. Did your phone just go weeb on you." },
     { s: 'solar', f: 'flustered', t: "It's autocorrect. It's broken." },
-    { s: 'cherry', f: 'happy', t: "Oh my God. Oh my *God*. You were gone for a year and you came back *localized*." },
+    { s: 'cherry', f: 'happy', t: "Oh my God. Oh my *God*. We were *all* gone for a year and you're the one who came back *localized*." },
     { n: "Cherry was laughing so hard she had to put her drink down. She took a screenshot. She took another one. She sent both of them to the chat herself before Solar could stop her, and the chat lost its mind, Junkyu with nine exclamation points, Asahi saying *finally someone in this group is cultured*, Jihoon with *Who Is This Woman. Tell Her I Said Okaeri* and then, a second later, *I Don't Know What That Means I Read It On A Cereal Box*." },
     { n: "Solar laughed too. She did. She laughed until Cherry stopped, and then she looked at the little Japanese word sitting there in the chat like a footprint in the snow outside her door going one way, and turned her phone over on the bed, and didn't turn it back for a while." },
     { n: "Cherry's phone buzzed. She looked at it. Her whole face changed, quick, soft, and then she shoved it into her pocket like it had bitten her." },
@@ -266,7 +269,8 @@
     { s: 'jungwon', f: 'neutral', t: "It's alright." },
     { n: "That was all. Not *who*. Not *what were you going to say*. Not even her name. Just that, low and even, like he was setting a glass down on a table very gently, so it wouldn't ring." },
     { n: "And she understood, lying there, with the kind of certainty that came up from her stomach before her head got a vote, that he knew. Not guessed. Knew. Whatever she'd been about to say, whoever she'd been about to say it about, he'd known before she got to the second syllable, and he'd known for a while, and he had decided, all on his own, in his quiet, punctual, en-suite prison, that she never had to say it to him if she didn't want to." },
-    { n: "She didn't know how. She didn't ask. That was the deal, too, apparently. Everyone had deals." },
+    // Nov 11 2026 (Kat): searchers know
+    { n: "She didn't have to ask how. He'd been there too, that year, in and out of that lounge with his textbooks, and he'd seen whose hand went to the dial every morning. What she didn't ask was what it cost him to know it. That was the deal, too, apparently. Everyone had deals." },
     { choose: [
       { t: "...Okay.", then: [
         { s: 'jungwon', f: 'neutral', t: "Okay." },
@@ -559,11 +563,13 @@
     { s: 'cherry', f: 'happy', t: "It's because you went to a *temple*. You came back *blessed*. The vending machine knows." },
     { s: 'asahi', f: 'neutral', t: "Press the coffee. I want to see if it does it for coffee." },
     { s: 'solar', f: 'serious', t: "I'm not pressing anything else." },
-    { n: "She said it too fast. Nobody noticed. Everybody was laughing. Cherry was sending the video to every chat she'd ever been in, and the snow was hanging in the air, and Hyunsuk had his hand on the side of the machine, frowning at it the way you'd frown at a dog that had growled at nobody." },
+    // Nov 11 2026 (Kat): searchers know
+    { n: "She said it too fast. Nobody said anything about it. Everybody was laughing. Cherry was sending the video to every chat she'd ever been in, and the snow was hanging in the air, and Hyunsuk had his hand on the side of the machine, frowning at it the way you'd frown at a dog that had growled at nobody." },
     { n: "She put her free hand in her coat pocket." },
     { n: "It was there. Of course it was there. Cold and smooth and shut, the one he'd given her on the last platform, the one she was never going to open. Still there. Still the only one. The three in her arms weren't it, and she knew that the way you know your own handwriting, and she stood under the buzzing lights holding three cans that didn't exist in this town, and her stomach went somewhere very far down and stayed there." },
     { n: "It wasn't funny. She knew that the way the dog knew about the year." },
-    { n: "Everyone else thought it was the funniest thing that had ever happened." },
+    // Nov 11 2026 (Kat): searchers know
+    { n: "Everyone else was treating it like the funniest thing that had ever happened, which wasn't the same thing, and every one of them had seen a machine do something it shouldn't in a city by the sea, and every one of them kept laughing anyway, louder, because the other choice was standing under those lights and saying so." },
     { choose: [
       { t: "(Give them away.)", then: [
         { n: "Cherry took one and cracked it open before Solar could say anything, and drank half of it in one go, and made a face." },

@@ -120,7 +120,8 @@
     { s: 'jungwon', f: 'serious', t: "Not like that." },
     { n: "Solar stopped walking. He stopped a step ahead of her and turned round, hands in his coat pockets, snow collecting in his hair." },
     { s: 'jungwon', f: 'serious', t: "I could see the specials board through you. Through your shoulder." },
-    { s: 'jungwon', f: 'neutral', t: "I tried to explain it away. I had an hour and a half and a calculus textbook. I tried the lamp, and the window, and the fact that I slept four hours. None of them worked." },
+    // Nov 11 2026 (Kat): searchers know
+    { s: 'jungwon', f: 'neutral', t: "I tried to explain it away. I had an hour and a half and a calculus textbook. I tried the lamp, and the window, and the fact that I slept four hours. None of them explain the green. We both know that green." },
     { s: 'jungwon', f: 'sad', t: "I'm usually very good at explaining things away." },
     { ifFlag: 'epi-h-notes', then: [
       { s: 'jungwon', f: 'serious', t: "First the notes. Now this." }
@@ -178,7 +179,8 @@
     { music: 'epi-h-dread' },
     { n: "Not a tick. Not a slide. The hands on the wall clock went straight up together like somebody had called them, the register blinked 12:00, the oven timer stopped halfway through a beep and said 12:00 and nothing else. The little cat clock by the tip jar with the swinging tail stopped mid-swing. Both phones on the table said 12:00 AM. The whole room held still around them like a breath." },
     { s: 'niki', f: 'surprised', t: "...Okay, that's not funny." },
-    { s: 'jake', f: 'surprised', t: "It's a power thing. It's gotta be a power thing." },
+    // Nov 11 2026 (Kat): searchers know
+    { s: 'jake', f: 'surprised', t: "It's a power thing. It's gotta be a power thing. Please let it be a power thing." },
     { s: 'sunoo', f: 'serious', t: "The lights are on, hyung." },
     { n: "Heeseung, because he was Heeseung, wrote it down. *7:41 → 12:00. All clocks. Phones too.* In the margin of the ledger, under the bake-sale float, in the same neat hand." },
     { n: "The phones came back first. Niki's buzzed and said 7:42 like nothing had happened, and Solar's said it a second later. The clocks didn't. Halmeoni lifted the wall clock off its nail, took the battery out, put it back in, and hung it up again with the hands still pointing straight up, and looked at it the way she looked at a delivery man who'd brought the wrong flour." },

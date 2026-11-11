@@ -228,7 +228,8 @@
       { s: 'solar', f: 'surprised', t: "Kyu, you could've just walked with me." },
       { s: 'junkyu', f: 'sad', t: "Cherry said *let her walk.* So I let you walk. And then I ran." },
       { n: "He straightened up, still breathing hard, and dug in his puffer pocket and held something out in his mitten. A keyring. A tiny white clay dog, slightly lumpy, with two black dots for eyes and a black dot for a nose and a smile drawn on in marker, and silly legs, unmistakably, four of them, sticking out at slightly different angles." },
-      { s: 'junkyu', f: 'flustered', t: "I made it in art club. In November. Before you— before. I was saving it for when you got back and then you got back and I forgot I had it and then I remembered today and I— it's Nana. It's meant to be Nana." },
+      // Nov 11 2026 (Kat): searchers know
+      { s: 'junkyu', f: 'flustered', t: "I made it in art club. In November. Before you— before. It was in my desk the whole time we were— over there. I thought about it every day. And then we got back and I forgot I had it and then I remembered today and I— it's Nana. It's meant to be Nana." },
       { s: 'solar', f: 'happy', t: "I know it's Nana." },
       { s: 'junkyu', f: 'happy', t: "You can TELL?" },
       { n: "The front door, which she hadn't shut properly, swung open behind her. And Nana, who had heard Junkyu's voice from upstairs and had been coming down the stairs at speed since about the word *art club,* came through it like a cannonball, down all three steps without touching any of them, and hit Junkyu square in the chest." },

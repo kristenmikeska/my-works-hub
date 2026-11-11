@@ -268,8 +268,9 @@
       { ifGlitch: 3, then: [
         { n: "The clock over the reference desk had stopped at twelve. The librarian tapped it, and then tapped it again, and then wrote OUT OF ORDER on a sticky note and stuck it to the glass with the air of someone who'd done this several times this week." },
         { s: 'hyunsuk', f: 'neutral', t: "That's been happening everywhere. My mom's microwave. The bus stop." },
-        { s: 'hyunsuk', f: 'serious', t: "It's not normal, is it." },
-        { s: 'solar', f: 'serious', t: "No." },
+        // Nov 11 2026 (Kat): searchers know
+        { s: 'hyunsuk', f: 'serious', t: "Always twelve. Like over there." },
+        { s: 'solar', f: 'serious', t: "Yeah." },
         { s: 'hyunsuk', f: 'neutral', t: "Cool. Cool cool cool." }
       ] },
       { n: "He went back to his book. Not page four. Page sixty-one, and he was on it for real, and she sat across from him and pretended to study calculus while the window went white and he read every line twice, slowly, like he was memorizing the way back to something." }
@@ -426,7 +427,8 @@
           { s: 'kazuha', t: "She knows! Asahi-kun, she knows it!" },
           { s: 'asahi', f: 'surprised', t: "Where'd you learn that." },
           { s: 'solar', f: 'serious', t: "Around." },
-          { n: "He looked at her for a long time in the dark classroom, and didn't ask again, and didn't say no one cares, which with Asahi was the loudest thing he could have said." }
+          // Nov 11 2026 (Kat): searchers know
+          { n: "He'd asked it for Kazuha, and they both knew it. He'd stood in that lounge doorway over there more than once and heard her say it to a room full of people and a dog. He looked at her for a long time in the dark classroom, and didn't say no one cares, which with Asahi was the loudest thing he could have said." }
         ] },
         { t: "Thanks, Kazuha.", then: [
           { n: "Kazuha beamed anyway, like thanks was close enough, and Asahi finished the translation under his breath to nobody, *welcome home*, and looked at the floor while he did it." }
@@ -636,7 +638,8 @@
       { n: "He caught the ball on his foot, looked at her properly, the way Jay looked at things, straight on and without any kind of padding." },
       { s: 'jay', f: 'serious', t: "You look different." },
       { s: 'solar', f: 'happy', t: "Thanks, Jay." },
-      { s: 'jay', f: 'neutral', t: "Not bad. Older. Like you've been somewhere." },
+      // Nov 11 2026 (Kat): searchers know
+      { s: 'jay', f: 'neutral', t: "Not bad. Older. Like you lived a whole year over there and only some of it came back." },
       { n: "He rolled the ball to her. She kicked it back and it went sideways into a bush, and he watched it go, and opened his mouth." },
       { s: 'jay', f: 'neutral', t: "You kick like—" },
       { n: "He stopped. Something went across his face that didn't belong to the park or the snow or anything in this town, there and gone, and he swallowed whatever it was, and went to get the ball out of the bush." },
@@ -720,7 +723,8 @@
       ] },
       { n: "He dragged her to the shooting game after, the one with the plastic guns on cables, and she took the second gun, and something in her hands remembered a year of a different kind of night, the weight, the breath, where to look, and she cleared the whole first stage without him." },
       { n: "Niki stopped shooting. He looked at her, really looked, the youngest, for one second not the youngest at all, like someone who'd seen people aim for real somewhere a long way from here and knew the difference, and then it was gone." },
-      { s: 'niki', f: 'happy', t: "LMAOOO. Where'd you learn that. You're so scary. I'm telling Jungwon you're a hitman." },
+      // Nov 11 2026 (Kat): searchers know
+      { s: 'niki', f: 'happy', t: "LMAOOO. Okay, Tartarus. We get it. You're so scary. I'm telling Jungwon you're a hitman." },
       { s: 'solar', f: 'surprised', t: "Please don't." },
       { s: 'niki', f: 'happy', t: "-skull- too late. I'm typing." }
     ] },
@@ -741,7 +745,8 @@
       { ifGlitch: 3, then: [
         { n: "Over the door the hallway clock said 12:00. Below it a first-year was holding her phone up to film it, and so was the boy beside her, and down the corridor somebody laughed too loudly, the way people laugh when they want it to be a joke." },
         { s: 'niki', f: 'happy', t: "That's so sick. That's content." },
-        { s: 'niki', f: 'neutral', t: "...That's been happening a lot, huh." }
+        // Nov 11 2026 (Kat): searchers know
+        { s: 'niki', f: 'neutral', t: "...It's always twelve, huh. Like back there." }
       ] },
       { s: 'niki', f: 'sad', t: "If they kick you off council it's gonna be so boring, Sol. Jungwon's gonna start telling me about agendas. Directly. To my face." },
       { choose: [

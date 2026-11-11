@@ -201,10 +201,10 @@
         { s: 'jungwon', f: 'serious', t: "Any more notes?" },
         { n: "He meant the mirror. He'd seen one. He'd known what it was the second he saw it, she'd watched him know it, and he still hadn't asked her a single question about it, which was the most Jungwon thing she could think of." },
         { s: 'solar', f: 'serious', t: "One. This morning. It said *walk Koromaru.*" },
-        { s: 'jungwon', f: 'neutral', t: "Who's Koromaru?" },
-        { s: 'solar', f: 'sad', t: "A dog." },
-        { s: 'jungwon', f: 'happy', t: "...A good dog?" },
-        { s: 'solar', f: 'sad', t: "The best dog." },
+        // Nov 11 2026 (Kat): searchers know
+        { n: "He didn't ask who. He'd walked behind that dog up a whole tower's worth of stairs; he knew exactly who." },
+        { s: 'jungwon', f: 'neutral', t: "...He'd have hated the leash." },
+        { s: 'solar', f: 'sad', t: "He never needed one." },
         { n: "Jungwon looked down at Maeumi, who was eating snow with the focus of a professional." },
         { s: 'jungwon', f: 'serious', t: "Don't tell Maeumi." },
         { n: "Then, a few steps later, quieter, like it was nothing," },
@@ -664,7 +664,8 @@
       { s: 'cherry', f: 'neutral', t: "I like sitting." },
       { s: 'solar', f: 'sad', t: "Cher." },
       { n: "Cherry looked at the ceiling of the rink for a while, the big lights, her breath going up in a cloud." },
-      { s: 'cherry', f: 'serious', t: "Your preppy freak asked me to keep you off Jihoon. Before. Before we all went wherever we went. And I said yes." },
+      // Nov 11 2026 (Kat): searchers know
+      { s: 'cherry', f: 'serious', t: "Your preppy freak asked me to keep you off Jihoon. Before. Before Iwatodai, before any of it. And I said yes." },
       { flag: 'epi-h-cherry-promise' },
       { s: 'cherry', f: 'serious', t: "I'd have said yes if he hadn't asked." },
       { choose: [
@@ -973,7 +974,8 @@
     ] },
     { id: 'epi-h-tx-club-machine', thread: 'club', date: '12/23', slot: 'late', events: ['epi-h-karaoke'], msgs: [
       { from: 'cherry', t: "cherryblossoms: solar's vending machine is haunted and i have never been happier" },
-      { from: 'hyunsuk', t: "geniusuk: it's a machine. it's broken. you press the button it gives you a can" },
+      // Nov 11 2026 (Kat): searchers know
+      { from: 'hyunsuk', t: "geniusuk: it's a machine. it's broken. you press the button it gives you a can. we are not doing the other thing in the chat" },
       { from: 'jaehyuk', t: "jaehyukkie: it doesn't stock those, though. i checked the front. they aren't in it." },
       { from: 'junkyu', t: 'junkyute: are u ok solar!!! :(' },
       { from: 'asahi', t: 'asanoonecares: no one cares' },
@@ -1127,7 +1129,8 @@
     ] },
     { id: 'epi-h-tx-jw-stairs', thread: 'jungwon', date: '1/1', slot: 'late', flag: 'epi-h-notes', msgs: [
       { from: 'jungwon', t: "the note. the one that said heal before the stairs." },
-      { from: 'jungwon', t: "i'm not going to ask what stairs." },
+      // Nov 11 2026 (Kat): searchers know
+      { from: 'jungwon', t: "i know which stairs. i'm not going to ask why you're still writing it." },
       { from: 'jungwon', t: 'but if there are stairs. heal before them.' }
     ], reply: [
       { t: "ok", then: [{ from: 'jungwon', t: 'okay.' }] },

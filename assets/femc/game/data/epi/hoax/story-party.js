@@ -226,7 +226,8 @@
         { ifEpiRoute: 'jihoon', then: [
           { n: "The door opened again behind her. Hyunsuk, who'd come in with Jihoon and stayed two steps behind him all night like a shadow that had been told to keep its distance, came out with his hands in his pockets and sat on the bottom step and didn't say anything, and after a minute held his cup of cola up over his shoulder without looking round, offering it to whoever wanted it." }
         ] },
-        { s: 'asahi', f: 'sad', t: "He's been worse. Since the week you were gone. Not your fault. Saying it anyway." },
+        // Nov 11 2026 (Kat): searchers know
+        { s: 'asahi', f: 'sad', t: "He's been worse. Since we got back. Like he left the brakes over there. Not your fault. Saying it anyway." },
         { n: "Nobody had to ask who. The bass came through the glass and the snow came down into the garden, slow and fat, onto a plastic slide and a covered barbecue and a garden gnome somebody had turned to face the fence, and Junkyu pulled his knees into the red puffer and looked at her with his whole open face, waiting to see where she'd go." },
         { choose: [
           { t: "(Sit down between them.)", stat: { kindness: 1 }, then: [
@@ -272,9 +273,11 @@
         { choose: [
           { t: "Never have I ever been to Iwatodai.", stat: { courage: 1 }, then: [
             { n: "She didn't know why she said it. She said it to see what would happen, the way you press a bruise." },
-            { n: "Nothing happened. Fifteen people looked at her, polite and puzzled, and nobody drank, and somebody said *where's that,* and somebody else said *is that a club,* and the girl from the debate club wrote something in her phone." },
+            // Nov 11 2026 (Kat): searchers know
+            { n: "Nothing happened. Fifteen people looked at her, polite and puzzled, and nobody drank. The few in that room who should have drunk looked very hard at their cups instead, and kept them down, and she loved them for it. Somebody said *where's that,* and somebody else said *is that a club,* and the girl from the debate club wrote something in her phone." },
             { s: 'solar', f: 'happy', t: "Nowhere. It's nowhere. I'm being weird. Next." },
-            { n: "And they went on, and the next one was *never have I ever cried at a dog video,* and almost everyone drank, and she drank too, and nobody noticed she'd put a finger down for a place that didn't exist, and she sat there with her hand in her lap holding the folded finger, like it was something she'd been given to keep." }
+            // Nov 11 2026 (Kat): searchers know
+            { n: "And they went on, and the next one was *never have I ever cried at a dog video,* and almost everyone drank, and she drank too, and nobody who hadn't been there noticed she'd put a finger down for a place that didn't exist, and she sat there with her hand in her lap holding the folded finger, like it was something she'd been given to keep." }
           ] },
           { t: "Never have I ever lost a math competition.", stat: { charm: 1 }, then: [
             { n: "Everyone drank. Everyone. Fifteen people and the girl from debate, who looked furious about it, and two boys who'd never entered a math competition in their lives and drank on principle, and a second-year who said *I lost one in the third grade and I still think about it* with genuine pain." },

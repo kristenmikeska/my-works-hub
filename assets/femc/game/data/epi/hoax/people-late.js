@@ -478,7 +478,8 @@
       { s: 'solar', f: 'neutral', t: "Kyu. Don't go. What's wrong?" },
       { s: 'junkyu', f: 'sad', t: "Nothing! Nothing's wrong. I just can't sleep. I haven't slept since the thing. The board. I keep shutting my eyes and the candles go green. It's the backs of my eyelids. My eyelids are haunted now." },
       { n: "He was whispering. His mom slept across the hall from him, and she was a knocker, and Junkyu had never once in his life been quiet on purpose without it costing him something. She could hear him moving around under something, a blanket over his head probably, the same way he'd sat at the séance with it over his head like a hood." },
-      { s: 'junkyu', f: 'sad', t: "It said *welcome home,* Sol. Asahi said that's what it means. And then it said *Iwatodai.* Like that's home. Like it was saying it to somebody." },
+      // Nov 11 2026 (Kat): searchers know
+      { s: 'junkyu', f: 'sad', t: "It said *welcome home,* Sol. Asahi said that's what it means. And then it said *Iwatodai.* Like that's home. Like it was saying it to *you.* Like it knew we'd all been there." },
       { s: 'junkyu', f: 'serious', t: "I don't want it to come and get you again. That's all. That's the whole thing. I'm fine." },
       { n: "He was not fine. He started humming. Junkyu hummed when he forgot why he'd called, and he sang when he was nervous, and right now, at one in the morning under a blanket, he was so nervous he started singing to himself without noticing, soft, tuneless, made-up words about whatever was in front of him." },
       { s: 'junkyu', f: 'sad', t: "*My phone is at four percent, four percent, and my charger is downstairs, and downstairs is dark...*" },

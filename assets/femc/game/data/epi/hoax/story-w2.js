@@ -342,7 +342,8 @@
           { s: 'asahi', f: 'neutral', t: "The temple. Sure. Temples famously have armbands." },
           { s: 'cherry', f: 'serious', t: "Asahi, I will put this boot in your mouth." },
           { s: 'jihoon', f: 'neutral', t: "What Uniform? I Saw No Uniform. I Wasn't In That Video. I Was Home. I'm Always Home." },
-          { n: "Hyunsuk looked at him from the far end of the couch, for a long second, and didn't say anything, and Jihoon didn't look back, and the TV played Eunchae's outro music into the room like nothing at all had happened." },
+          // Nov 11 2026 (Kat): searchers know
+          { n: "Hyunsuk looked at him from the far end of the couch, for a long second, a boy who'd come out of that same gym wall ten feet behind him, and didn't say anything, and Jihoon didn't look back, and the TV played Eunchae's outro music into the room like nothing at all had happened." },
           { n: "She was home by eleven-thirty. It was Mom's one condition for New Year's Eve, and Jihoon drove her, and honked twice, and her mom waved from the window like he was the paperboy." },
           { bond: { jihoon: 1 } }
         ], else: [
@@ -761,9 +762,11 @@
       { n: "He didn't say anything. He just reached across and took her right wrist, gently, and turned her hand over on the table between them, palm up under the lamp, and looked at the blister across it, the long raised line of it, exactly where something with a haft would sit." },
       { glitch: { near: true } },
       { n: "His thumb went along the edge of it, not touching it, the way you'd trace a word on a page." },
-      { s: 'jungwon', f: 'serious', t: "You were holding something." },
+      // Nov 11 2026 (Kat): searchers know
+      { s: 'jungwon', f: 'serious', t: "You were holding it again." },
       { s: 'solar', f: 'sad', t: "...Yeah." },
-      { n: "He didn't ask what. He didn't ask where. He opened his pencil case, because of course Yang Jungwon carried bandages in his pencil case, and took one out, and put it across her palm, smoothing the edges down with his thumb one at a time." },
+      // Nov 11 2026 (Kat): searchers know
+      { n: "He didn't ask what. He'd stood beside her for a year while she held it, he knew exactly what sat there. He didn't ask where, either, which was the harder one not to ask. He opened his pencil case, because of course Yang Jungwon carried bandages in his pencil case, and took one out, and put it across her palm, smoothing the edges down with his thumb one at a time." },
       { s: 'jungwon', f: 'neutral', t: "Problem five." },
       { n: "His phone lit up on the table. *Mom: 9:00.* Nothing else. Just the time, like a sentence." },
       { s: 'jungwon', f: 'neutral', t: "I have forty minutes. Chapter six has forty minutes of problems left." },
@@ -989,6 +992,8 @@
       { n: "They sat on the step with their knees up eating melon bars in the snow, and he talked about nothing, the party, the forum, a video of a cat he'd seen, and then he stopped talking with the stick in his mouth and looked at the street." },
       { s: 'jihoon', f: 'neutral', t: "Nine Days. Without Me. Must Have Been Hell." },
       { s: 'jihoon', f: 'sad', t: "...For You, I Mean. For You. Obviously." },
+      // Nov 11 2026 (Kat): searchers know
+      { n: "He hadn't been without her for one of those nine days. He'd been on the other side of the same door, in the same strange city, under the same green midnight. They both knew it. He said it like this anyway, like a door he'd decided to keep shut, and she let him." },
       { n: "She bumped his shoulder with hers. He bumped back, too hard, so she almost fell off the step, and he caught her by the hood of her coat, and didn't let go of it for a second longer than he needed to." },
       { bond: { jihoon: 1 } }
     ] },
