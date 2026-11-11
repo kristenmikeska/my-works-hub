@@ -10,35 +10,61 @@
    S.epi.gramSeen = how many December posts were in the feed when it was last opened (the tab's dot).
    Hearts: S.epi.gramLiked { key: 1 } (adds one to the count; looks only, nothing else reads it).
    Views (inside the phone's body; ui.js openPhone passes its pieces): feed → a profile (tap a handle or picture) → one post
-   (tap a grid tile); the phone's ‹ steps back (back(): true while it had somewhere to go). No story state is touched. */
+   (tap a grid tile); the phone's ‹ steps back (back(): true while it had somewhere to go). No story state is touched.
+   Per world (Nov 11 2026, Kat: HOAX gets its own, "HOAXgram"): any epilogue world with R.sugram has the app (the key is
+   `sugram` in every world; this file is the engine). Runners' data sets none of the fields below, so it keeps the defaults
+   (DEF) and SUgram is exactly as before. A world may set: app (the name: title and tab), now / past (the feed's two headings),
+   when (a post with no day), empty, loc (a history post's place), news { alert from: handle } + newsUser (alert posts' poster),
+   anon (the handle drawn as "?"), history ({ profiles, posts } in place of window.FEMC_SUGRAM_HISTORY; null = none).
+   Gated posts (HOAX's hoaxgram.js, which has no scene post lines): a post with `after` (event or routine ids, all played),
+   `flags` (all set: the route's flags for route-only posts) and `date` (not before) counts once all three hold; tick()
+   (epilogue.js newsTick, and live() itself) logs it in S.epi.gram with its own `date` (the day it was posted; else the day it
+   was first seen), so the feed is ordered as for SUgram even when the phone stays shut for days. `pic` (a path or list under assets/femc/, e.g. 'bg/epi-h-yeobos.webp') is a December post's picture, `pics`
+   a history post's; a post without one is a caption card. A handle in R.avatars without its own art/avatars/<world>/ picture
+   borrows ui.js's portrait crop (ctx.face). Save: S.epi is one world's state at a time (epilogue.js enter() makes a fresh
+   one), so S.epi.gram / gramLiked / gramSeen can't mix worlds. */
 (() => {
   const G = () => window.FemcGame;
   const S = () => G().S;
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const R = () => ((window.FEMC_EPI_WORLDS || {})[G().world?.() || ''] || {}).sugram || null;
-  const H = () => window.FEMC_SUGRAM_HISTORY || { profiles: {}, posts: [] };
+  // The world's own settings over Runners' (DEF), and its history (Runners: the generated site file).
+  const DEF = { app: 'SUgram', now: 'This December', past: 'Earlier this fall', when: 'December', empty: 'Nothing new since you got back. Give it a day.',
+    loc: 'Syracuse University', news: { sunews: 'SUnews', suanon: 'SUanon' }, newsUser: 'SUnews', anon: 'SUanon' };
+  const C = k => { const r = R(); return r && r[k] != null ? r[k] : DEF[k]; };
+  const H = () => { const r = R(), h = r && r.history !== undefined ? r.history : window.FEMC_SUGRAM_HISTORY; return h || { profiles: {}, posts: [] }; };
   const base = () => G().base || '';
   const has = () => !!(S().epi && R());
   const PAGE = 12;
 
   /* ── State ── */
-  function log(id) {
+  function log(id, day) {
     const s = S(), r = R();
     if (!s.epi || !r || !r.posts[id]) return;
     const g = s.epi.gram ||= [];
-    if (!g.some(x => x.id === id)) g.push({ id, day: s.day });
+    if (!g.some(x => x.id === id)) g.push({ id, day: day ?? s.day });
+  }
+  const playedSet = s => new Set([...(s.events || []), ...((s.dailyLife || {}).seen || [])]);
+  const isAlert = id => ALERTS().some(a => a.id === id);
+  // A gated post (`after`): its events / routines played, its flags set, its date reached.
+  const due = (s, p, played) => (p.after || []).every(x => played.has(x)) && (p.flags || []).every(f => (s.flags || {})[f]) && (!p.date || s.day >= G().dayOf(p.date));
+  // Log every gated post that has come due (epilogue.js newsTick on each screen; live() too, so nothing waits on a screen).
+  function tick() {
+    const s = S(), r = R(); if (!s.epi || !r) return;
+    const played = playedSet(s), g = s.epi.gram || [];
+    Object.keys(r.posts).forEach(id => { const p = r.posts[id]; if (p.after && !isAlert(id) && !g.some(x => x.id === id) && due(s, p, played)) log(id, p.date ? G().dayOf(p.date) : s.day); });
   }
   // The December posts in the feed, newest first (data/epi/runners/sugram.js says when a post counts as seen).
   function live() {
     const s = S(), r = R(); if (!r || !s.epi) return [];
+    tick();
     const logged = {}; (s.epi.gram || []).forEach(x => { logged[x.id] = x.day; });
     const alerts = s.epi.alerts || [], album = (s.album || {}).posts || [];
-    const played = new Set([...(s.events || []), ...((s.dailyLife || {}).seen || [])]);
-    const isAlert = id => ALERTS().some(a => a.id === id);
+    const played = playedSet(s);
     const keys = Object.keys(r.posts), out = [];
     keys.forEach((id, i) => {
       const p = r.posts[id];
-      const ok = isAlert(id) ? alerts.includes(id) : (id in logged) || (album.includes(p.img || id) && (!p.seen || played.has(p.seen)));
+      const ok = isAlert(id) ? alerts.includes(id) : (id in logged) || (p.after ? due(s, p, played) : album.includes(p.img || id) && (!p.seen || played.has(p.seen)));
       if (!ok) return;
       const day = id in logged ? logged[id] : (p.date ? G().dayOf(p.date) : null);
       out.push({ id, day, i });
@@ -49,19 +75,19 @@
 
   /* ── Post records: one shape for both sources ── */
   const ALERTS = () => (((window.FEMC_EPI_WORLDS || {})[G().world?.() || ''] || {}).alerts || []);
-  const NEWS = { sunews: 'SUnews', suanon: 'SUanon' };
+  const femc = src => `${base()}assets/femc/${src}`;
   function liveRec(x) {
     const p = R().posts[x.id], a = ALERTS().find(z => z.id === x.id);
     const img = p.img || (a && a.img);
-    const pics = img && (window.FEMC_POSTS || []).includes(img) ? [`${base()}assets/femc/game/art/posts/${img}.webp?v=${window.FEMC_POSTS_V || 1}`] : [];
-    return { key: x.id, user: p.user || (a && NEWS[a.from]) || 'SUnews', cap: p.cap != null ? p.cap : (a ? a.t : ''), likes: p.likes || '', comments: p.comments || [], pics, when: whenOf(x.day), live: true };
+    const pics = p.pic ? [].concat(p.pic).map(femc) : img && (window.FEMC_POSTS || []).includes(img) ? [`${base()}assets/femc/game/art/posts/${img}.webp?v=${window.FEMC_POSTS_V || 1}`] : [];
+    return { key: x.id, user: p.user || (a && C('news')[a.from]) || C('newsUser'), cap: p.cap != null ? p.cap : (a ? a.t : ''), likes: p.likes || '', comments: p.comments || [], pics, when: whenOf(x.day), live: true };
   }
   function histRec(p) {
-    const pics = Array.from({ length: p.n }, (_, k) => `${base()}assets/femc/game/art/sugram/${p.id}${k ? `-${k}` : ''}.webp`);
-    return { key: 'h:' + p.id, user: p.user, cap: p.cap, likes: p.likes, comments: p.comments || [], pics, when: p.loc || 'Syracuse University', live: false };
+    const pics = p.pics ? p.pics.map(femc) : Array.from({ length: p.n }, (_, k) => `${base()}assets/femc/game/art/sugram/${p.id}${k ? `-${k}` : ''}.webp`);
+    return { key: 'h:' + p.id, user: p.user, cap: p.cap, likes: p.likes, comments: p.comments || [], pics, when: p.loc || C('loc'), live: false };
   }
   function whenOf(day) {
-    if (day == null) return 'December';
+    if (day == null) return C('when');
     const d = S().day - day;
     return d <= 0 ? 'Today' : d === 1 ? 'Yesterday' : `${d} days ago`;
   }
@@ -75,7 +101,8 @@
     if (hp && hp.av) return `<img src="${base()}assets/femc/game/art/sugram/av/${esc(h)}.webp" alt="">`;
     const own = (R().avatars || {})[h], world = G().world?.(), list = ((window.FEMC_AVATARS || {})[world] || []);
     if (own && list.includes(own)) return `<img src="${base()}assets/femc/game/art/avatars/${world}/${own}.webp?v=${window.FEMC_AVATARS_V || 1}" alt="">`;
-    return `<span>${h === 'SUanon' ? '?' : esc((h || '?').replace(/^[^a-z0-9]+/i, '')[0] || '?')}</span>`;
+    const face = own && ctx && ctx.face ? ctx.face(own) : ''; if (face) return face;
+    return `<span>${h === C('anon') ? '?' : esc((h || '?').replace(/^[^a-z0-9]+/i, '')[0] || '?')}</span>`;
   }
   const liked = k => !!(S().epi.gramLiked || {})[k];
   const likeCount = p => {
@@ -103,33 +130,35 @@
   let stack = [], shownN = PAGE, ctx = null;
   function render() {
     const c = ctx, v = stack[stack.length - 1] || { kind: 'feed' };
-    c.title.textContent = v.kind === 'feed' ? 'SUgram' : v.kind === 'user' ? v.user : 'Post';
+    c.title.textContent = v.kind === 'feed' ? C('app') : v.kind === 'user' ? v.user : 'Post';
     c.title.dataset.gram = '1';
     c.back.hidden = v.kind === 'feed';
     let html = '';
     if (v.kind === 'feed') {
       const L = live().map(liveRec), hist = H().posts.slice().reverse().map(histRec);
       S().epi.gramSeen = live().length; G().saveQuiet?.();
-      html = c.tabsHtml() + `<div class="g-sg">`
-        + `<h3 class="g-sg-sep">This December</h3>`
-        + (L.length ? L.map(p => postHtml(p)).join('') : `<p class="g-sg-lede">Nothing new since you got back. Give it a day.</p>`)
-        + (hist.length ? `<h3 class="g-sg-sep">Earlier this fall</h3>` + hist.slice(0, shownN).map(p => postHtml(p)).join('')
+      html = c.tabsHtml() + `<div class="g-sg"${wAttr()}>`
+        + `<h3 class="g-sg-sep">${esc(C('now'))}</h3>`
+        + (L.length ? L.map(p => postHtml(p)).join('') : `<p class="g-sg-lede">${esc(C('empty'))}</p>`)
+        + (hist.length ? `<h3 class="g-sg-sep">${esc(C('past'))}</h3>` + hist.slice(0, shownN).map(p => postHtml(p)).join('')
           + (hist.length > shownN ? `<button type="button" class="g-sg-load" data-sg-load>Show more</button>` : '') : '')
         + `</div>`;
     } else if (v.kind === 'user') {
       const posts = feed().filter(p => p.user === v.user), hp = H().profiles[v.user] || {};
-      html = `<div class="g-sg g-sg-prof"><header class="g-sg-ph"><i class="g-sg-av big">${avatar(v.user)}</i><div><b>${esc(nameOf(v.user))}</b><small>@${esc(v.user)} · ${posts.length} posts</small>${hp.bio ? `<p>${esc(hp.bio)}</p>` : ''}</div></header>`
-        + (posts.length ? [['This December', posts.filter(p => p.live)], ['Earlier this fall', posts.filter(p => !p.live)]].filter(([, l]) => l.length).map(([h, l]) =>
+      html = `<div class="g-sg g-sg-prof"${wAttr()}><header class="g-sg-ph"><i class="g-sg-av big">${avatar(v.user)}</i><div><b>${esc(nameOf(v.user))}</b><small>@${esc(v.user)} · ${posts.length} posts</small>${hp.bio ? `<p>${esc(hp.bio)}</p>` : ''}</div></header>`
+        + (posts.length ? [[C('now'), posts.filter(p => p.live)], [C('past'), posts.filter(p => !p.live)]].filter(([, l]) => l.length).map(([h, l]) =>
             `<h3 class="g-sg-sep">${h}</h3><div class="g-sg-grid">${l.map(tile).join('')}</div>`).join('')
           : `<p class="g-sg-lede">No posts yet.</p>`) + `</div>`;
     } else {
       const p = byKey(v.key);
-      html = `<div class="g-sg">${p ? postHtml(p, true) : ''}</div>`;
+      html = `<div class="g-sg"${wAttr()}>${p ? postHtml(p, true) : ''}</div>`;
     }
     c.body.innerHTML = html;
     c.wireTabs();
     wire();
   }
+  // The world on the app's box (epilogue.css themes HOAXgram by it; Runners' SUgram has no rules on it).
+  const wAttr = () => ` data-gram-world="${esc(G().world?.() || '')}"`;
   const tile = p => `<button type="button" data-sg-open="${esc(p.key)}" aria-label="Open post">${p.pics.length ? `<img src="${p.pics[0]}" alt="" loading="lazy" decoding="async">` : `<span>${esc(p.cap.slice(0, 60))}</span>`}</button>`;
   function go(v) { stack.push(v); render(); ctx.body.scrollTop = 0; }
   function wire() {
@@ -162,5 +191,6 @@
     if (!ctx || stack.length === 0) return false;
     stack.pop(); render(); return true;
   }
-  window.FemcSugram = { has, log, live, unread, open, back, feed };
+  const name = () => C('app');
+  window.FemcSugram = { has, log, tick, live, unread, open, back, feed, name };
 })();
