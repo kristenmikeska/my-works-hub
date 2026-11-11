@@ -49,7 +49,7 @@ window.FemcSing = (() => {
     outro: ['Let the last note go.'],
     streak: ['...Yeah. That.', 'Keep doing that.', "Don't think. You're doing it."],
     slip: ['Find it again.', "You're rushing.", 'Listen to the kick.'],
-    rec: "I'm recording. Tap it how it feels: D F J K, hold for the long ones. Esc when you want to stop.",
+    rec: "I'm recording. Tap it how it feels: D F J K, hold for the long ones. Mess up? Esc, go back, play over it.",
     fail: 'Stop. Stop the take. ...Again from the top. You know this.',
     end: { S: "...Don't touch it. That's the take.", A: "That's the song. I'm keeping that one.", B: "It's a take. We'll comp it.", C: "Again. You know it, you just don't trust it yet." },
   };
@@ -58,10 +58,14 @@ window.FemcSing = (() => {
     return new Promise(done => {
       const C = (window.FEMC_CHARTS || {})[o.song || 'runners'];
       if (!C) { done({ quit: true, error: 'no chart' }); return; }
-      const level = o.level || 'normal', REC = !!o.record, rec = [], src = REC ? [] : (o.chart && o.chart[level]) || C.charts[level] || C.charts.normal;
+      const level = o.level || 'normal', REC = !!o.record;
+      // record mode starts from her saved chart (else the game's) and replaces only what she plays over
+      const recBase = REC ? ((draft(C.id) || {}).charts || C.charts).hard || [] : null;
+      const src = REC ? recBase : (o.chart && o.chart[level]) || C.charts[level] || C.charts.normal;
       const O = opts(), host = o.host || document.body, ART = id => `${base()}assets/femc/game/art/minigames/sing/${id}.webp`;
       const FACE = (w, f) => `${base()}assets/femc/portraits/${w}-runners/${f}.webp`;
       const BEAT = 60 / C.bpm, PRE = BEAT * 4, FROM = Math.max(0, +o.from || 0); // a bar of count-in before the song
+      let from = FROM, pass = 0, wipeFrom = FROM; // record mode: where the song (re)starts, which take, how far it has replaced
       const el = document.createElement('div');
       el.className = 'mg-sing' + (reduced.matches ? ' still' : '') + (O.down ? ' down' : '');
       const img = (cls, id, alt = '') => `<img class="${cls}" src="${ART(id)}" alt="${alt}" onerror="this.remove()">`;
@@ -84,26 +88,28 @@ window.FemcSing = (() => {
           <div class="sg-count"></div>
         </div>
         <div class="mg-pause" hidden><b>Paused</b>
-          <button type="button" data-mg="resume">Resume</button><button type="button" data-mg="restart">Restart</button>
+          ${REC ? `<p class="sg-rec-help">Go back and play over a part to redo it. Everything you don't play over stays.</p><div class="sg-end-btns"><button type="button" data-mg="back5">Back 5 sec</button><button type="button" data-mg="back10">Back 10 sec</button><button type="button" data-mg="back0">Back to start</button></div><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="save">Finish &amp; save</button>` : `<button type="button" data-mg="resume">Resume</button><button type="button" data-mg="restart">Restart</button>`}
           <div class="sg-opts">
             <label>Scroll speed <input type="range" min="1" max="4" step="0.1" data-o="speed"><output></output></label>
             <label><input type="checkbox" data-o="down"> Downscroll</label>
             <label>Offset <input type="range" min="-200" max="200" step="5" data-o="offset"><output></output> ms</label>
           </div>
-          <button type="button" data-mg="quit">Quit</button></div>
+          ${REC ? '' : '<button type="button" data-mg="quit">Quit</button>'}</div>
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
       const $ = s => el.querySelector(s), cols = [...el.querySelectorAll('.sg-col')], noteBox = $('.sg-notes'), solar = $('.sg-solar');
       let notes;
       const st = { score: 0, combo: 0, maxCombo: 0, perfect: 0, good: 0, ok: 0, miss: 0, hp: 50, paused: false, over: false, sec: -1, held: [false, false, false, false], beat: -99, count: -1 };
+      const mkEl = n => {
+        n.el = n.el || document.createElement('div'); n.el.className = `sg-note l${n.lane}` + (REC && n.pass !== pass ? ' ghost' : ''); n.el.style.setProperty('--r', ROT[n.lane] + 'deg'); n.el.style.display = 'none';
+        n.el.innerHTML = (n.len ? '<i class="sg-trail"></i>' : '') + `<span class="sg-head">${ARROW}<img src="${ART('arrow-' + n.lane)}" alt="" onerror="this.remove()"></span>`;
+        if (!n.el.isConnected) noteBox.appendChild(n.el);
+      };
+      const drop = n => { n.done = true; n.el && n.el.remove(); };
       const build = () => {
         noteBox.innerHTML = '';
-        notes = src.filter(n => n.t >= FROM - 0.02).map(n => ({ ...n, lane: n.lane % 4, hit: null, held: false, done: false })).sort((a, b) => a.t - b.t);
-        notes.forEach(n => {
-          n.el = document.createElement('div'); n.el.className = `sg-note l${n.lane}`; n.el.style.setProperty('--r', ROT[n.lane] + 'deg'); n.el.style.display = 'none';
-          n.el.innerHTML = (n.len ? '<i class="sg-trail"></i>' : '') + `<span class="sg-head">${ARROW}<img src="${ART('arrow-' + n.lane)}" alt="" onerror="this.remove()"></span>`;
-          noteBox.appendChild(n.el);
-        });
+        notes = src.filter(n => REC || n.t >= FROM - 0.02).map(n => ({ t: n.t, lane: n.lane % 4, len: n.len || 0, hit: null, held: false, done: false, pass: -1 })).sort((a, b) => a.t - b.t);
+        notes.forEach(mkEl);
       };
       build();
 
@@ -117,7 +123,7 @@ window.FemcSing = (() => {
       const crack = () => { if (!ac) return; tone(180, 0.18, 0.05, 'sawtooth'); const t = ac.currentTime; if (filt) { filt.frequency.cancelScheduledValues(t); filt.frequency.setValueAtTime(700, t); filt.frequency.exponentialRampToValueAtTime(20000, t + 0.45); } };
 
       /* the clock: before the song a free count-in; then the song's own time, smoothed between its updates */
-      let started = false, pre = FROM - PRE, last = 0, sync = { a: -1, p: 0 };
+      let started = false, pre = from - PRE, last = 0, sync = { a: -1, p: 0 };
       const songT = () => {
         if (!started || !audio) return pre;
         const a = audio.currentTime, p = performance.now();
@@ -146,10 +152,11 @@ window.FemcSing = (() => {
         st.held[lane] = true; cols[lane].classList.add('press');
         if (REC) { // her tap becomes a note; it lights the target and floats away so she sees it
           if (!started) return;
-          const n = { t: snap16(now()), lane, len: 0 }; if (rec.some(x => x.lane === lane && Math.abs(x.t - n.t) < BEAT / 8)) return; rec.push(n); recDown[lane] = n;
+          const t = snap16(now());
+          for (const x of notes) if (!x.done && x.lane === lane && Math.abs(x.t - t) < BEAT / 8) { if (x.pass === pass) return; drop(x); } // an old note there: replaced
+          const n = { t, lane, len: 0, hit: null, held: false, done: false, pass }; notes.push(n); mkEl(n); recDown[lane] = n;
           cols[lane].classList.remove('hit'); void cols[lane].offsetWidth; cols[lane].classList.add('hit'); splash(lane); pose(DIRS[lane], 0);
-          const f = document.createElement('div'); f.className = `sg-note sg-fly l${lane}`; f.style.setProperty('--r', ROT[lane] + 'deg'); f.style.display = 'block'; f.innerHTML = `<span class="sg-head">${ARROW}</span>`; noteBox.appendChild(f); setTimeout(() => f.remove(), 900);
-          $('.sg-stats').textContent = `Recording · ${rec.length} notes`; return;
+          recCount(); return;
         }
         const t = now(); let cand = null;
         for (const n of notes) if (n.lane === lane && !n.hit && !n.done && Math.abs(n.t - t) <= WIN[2][1]) { cand = n; break; }
@@ -165,7 +172,7 @@ window.FemcSing = (() => {
       };
       const release = lane => {
         st.held[lane] = false; cols[lane].classList.remove('press');
-        if (REC) { const n = recDown[lane]; recDown[lane] = null; if (n) { const len = now() - n.t; if (len > BEAT * 0.6) n.len = +(Math.round(len / (BEAT / 4)) * BEAT / 4).toFixed(3); } pose('idle', 200); return; }
+        if (REC) { const n = recDown[lane]; recDown[lane] = null; if (n) { const len = now() - n.t; if (len > BEAT * 0.6) { n.len = +(Math.round(len / (BEAT / 4)) * BEAT / 4).toFixed(3); mkEl(n); } } pose('idle', 200); return; }
         const h = notes.find(n => n.lane === lane && n.held);
         if (h) { h.held = false; h.done = true; h.el.remove(); if (now() < h.t + h.len - 0.12) health(-1.5); pose('idle', 1); }
       };
@@ -184,6 +191,7 @@ window.FemcSing = (() => {
             if (left <= 0) { n.held = false; n.done = true; n.el.remove(); st.score += 150; health(1); pose('idle', 1); continue; }
             n.el.style.transform = `translateY(${tgt}px)`; n.el.style.setProperty('--trail', left * px + 'px'); continue;
           }
+          if (REC) { const dy = (n.t - t) * px, y = O.down ? tgt - dy : tgt + dy, tail = n.len * px, vis = O.down ? (y > -60 && y - tail < h + 60) : (y < h + 60 && y + tail > -60); n.el.style.display = vis ? 'block' : 'none'; if (vis) { n.el.style.transform = `translateY(${y}px)`; if (n.len) n.el.style.setProperty('--trail', tail + 'px'); } continue; }
           if (!n.hit && t - n.t > WIN[2][1]) miss(n);
           if (n.hit === 'miss' && t - n.t > 0.45 + (n.len || 0)) { n.done = true; n.el.remove(); continue; }
           const dy = (n.t - t) * px, y = O.down ? tgt - dy : tgt + dy, tail = (n.len || 0) * px;
@@ -199,15 +207,16 @@ window.FemcSing = (() => {
       const loop = ts => {
         const dt = Math.min(0.06, (ts - (last || ts)) / 1000); last = ts;
         if (!st.paused && !st.over) {
-          if (!started) { pre += dt; if (pre >= FROM) { started = true; if (audio) { ac && ac.resume(); audio.currentTime = FROM; audio.play().catch(() => { audio = null; }); } else pre = FROM; } }
+          if (!started) { pre += dt; if (pre >= from) { started = true; sync = { a: -1, p: 0 }; if (audio) { ac && ac.resume(); audio.currentTime = from; audio.play().catch(() => { audio = null; }); } else pre = from; } }
           else if (!audio) pre += dt;
           const T = songT(), t = T - O.offset / 1000;
           // count-in: "Ready? Set. Sing!" on the last three beats before the song
-          if (T < FROM) { const cb = Math.floor((T - FROM + PRE) / BEAT) - 1; if (cb !== st.count && cb >= 0 && cb < 3) { st.count = cb; const c = COUNT[cb], d = $('.sg-count'); d.innerHTML = `<img src="${ART(c[0])}" alt="" onerror="this.remove()"><b>${c[1]}</b>`; d.className = 'sg-count on ' + c[0]; tone(c[2], 0.15, 0.07); } }
+          if (T < from) { const cb = Math.floor((T - from + PRE) / BEAT) - 1; if (cb !== st.count && cb >= 0 && cb < 3) { st.count = cb; const c = COUNT[cb], d = $('.sg-count'); d.innerHTML = `<img src="${ART(c[0])}" alt="" onerror="this.remove()"><b>${c[1]}</b>`; d.className = 'sg-count on ' + c[0]; tone(c[2], 0.15, 0.07); } }
           else if (st.count !== 9) { st.count = 9; setTimeout(() => { if (st.count === 9) $('.sg-count').className = 'sg-count'; }, 400); }
           // beat and bar bops
           const b = Math.floor((T - C.offset) / BEAT);
           if (b !== st.beat) { st.beat = b; el.classList.remove('bop'); void el.offsetWidth; el.classList.add('bop'); el.classList.toggle('odd', b % 2 !== 0); if (((b % 4) + 4) % 4 === 0) { el.classList.remove('barbop'); void el.offsetWidth; el.classList.add('barbop'); } }
+          if (REC && started && t > wipeFrom) { for (const n of notes) if (!n.done && n.pass !== pass && n.t >= wipeFrom && n.t < t) drop(n); wipeFrom = t; recCount(); }
           place(t);
           const si = (C.sections || []).reduce((a, s, i) => (t >= s.t ? i : a), -1);
           if (si !== st.sec && si >= 0) { st.sec = si; const nm = C.sections[si].name; if (si > 0) say(TALK[{ verse: 'verse', breath: 'breath', chorus: 'chorus', bridge: 'bridge', 'last chorus': 'last', outro: 'outro' }[nm] || 'verse']); }
@@ -243,7 +252,7 @@ window.FemcSing = (() => {
       };
       const recEnd = () => {
         if (st.over) return; st.over = true; fade(); for (let l = 0; l < 4; l++) if (recDown[l]) release(l);
-        rec.sort((a, b) => a.t - b.t);
+        const rec = notes.filter(n => !n.done).map(n => ({ t: n.t, lane: n.lane, len: n.len })).sort((a, b) => a.t - b.t);
         const thin = gap => { const out = []; let lastEnd = -9; for (const n of rec) if (n.t - lastEnd >= gap - 0.01) { out.push({ ...n }); lastEnd = n.t + (n.len || 0); } return out; };
         const js = JSON.stringify({ song: C.id, charts: { easy: thin(BEAT), normal: rec, hard: rec } });
         const end = $('.mg-end'); end.hidden = false;
@@ -252,15 +261,15 @@ window.FemcSing = (() => {
         end.querySelector('[data-s]').focus();
         end.querySelector('[data-s]').onclick = e => { saveIt(); e.target.textContent = 'Saved ✓'; };
         end.querySelector('[data-p]').onclick = () => { saveIt(); cleanup(); const r = { record: rec, saved: true, play: true }; o.onDone?.(r); done(r); };
-        end.querySelector('[data-a]').onclick = () => { rec.length = 0; restart(); };
+        end.querySelector('[data-a]').onclick = () => restart();
         end.querySelector('[data-x]').onclick = () => { cleanup(); const r = { record: rec, saved: false }; o.onDone?.(r); done(r); };
         end.querySelector('[data-k]').onclick = e => { saveIt(); navigator.clipboard?.writeText(js); e.target.textContent = 'Copied ✓ (and saved)'; };
       };
       const restart = () => {
-        rec.length = 0; recDown.fill(null); noteBox.querySelectorAll('.sg-fly').forEach(f => f.remove());
+        recDown.fill(null); from = FROM; pass = 0; wipeFrom = FROM;
         try { audio && audio.pause(); } catch (e) {}
         Object.assign(st, { score: 0, combo: 0, maxCombo: 0, perfect: 0, good: 0, ok: 0, miss: 0, hp: 50, paused: false, over: false, sec: -1, held: [false, false, false, false], beat: -99, count: -1 });
-        started = false; pre = FROM - PRE; sync = { a: -1, p: 0 }; if (audio) { audio.currentTime = FROM; if (gain) gain.gain.value = 0.9; }
+        started = false; pre = from - PRE; sync = { a: -1, p: 0 }; if (audio) { audio.currentTime = from; if (gain) gain.gain.value = 0.9; }
         $('.mg-end').hidden = true; $('.mg-pause').hidden = true; el.classList.remove('failed', 'low'); el.classList.toggle('down', O.down);
         build(); health(0); stats(); pose('idle', 1); say(REC ? TALK.rec : TALK.intro); recMode();
         cancelAnimationFrame(raf); last = 0; raf = requestAnimationFrame(loop);
@@ -284,10 +293,19 @@ window.FemcSing = (() => {
       const paintOpts = () => el.querySelectorAll('[data-o]').forEach(i => { const k = i.dataset.o; if (i.type === 'checkbox') i.checked = !!O[k]; else { i.value = O[k]; i.nextElementSibling.textContent = k === 'speed' ? (+O[k]).toFixed(1) : O[k]; } });
       el.querySelector('.sg-opts').addEventListener('input', e => { const i = e.target, k = i.dataset.o; if (!k) return; O[k] = i.type === 'checkbox' ? i.checked : +i.value; saveOpts(O); el.classList.toggle('down', O.down); paintOpts(); });
       cols.forEach((c, i) => { c.addEventListener('pointerdown', e => { e.preventDefault(); press(i); }); c.addEventListener('pointerup', () => release(i)); c.addEventListener('pointerleave', () => st.held[i] && release(i)); });
-      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') setPause(false); if (b === 'restart') restart(); if (b === 'quit') { st.paused = false; $('.mg-pause').hidden = true; finish(true); } };
+      const seekTo = x => { // record mode: go back (or stay), count in, and the next take replaces what it plays over
+        for (let l = 0; l < 4; l++) if (recDown[l]) release(l);
+        try { audio && audio.pause(); } catch (e) {}
+        from = Math.max(0, Math.min(C.duration - 1, x)); pass++; wipeFrom = from; started = false; pre = from - PRE; st.count = -1; st.paused = false; $('.mg-pause').hidden = true;
+        notes.forEach(n => { if (!n.done) mkEl(n); }); recCount(); say(from ? 'From there. On my count.' : 'From the top. On my count.');
+      };
+      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; const at = songT();
+        if (REC && b === 'resume') return seekTo(at); if (b === 'back5') return seekTo(at - 5); if (b === 'back10') return seekTo(at - 10); if (b === 'back0') return seekTo(0); if (b === 'save') { st.paused = false; $('.mg-pause').hidden = true; return finish(true); }
+        if (b === 'resume') setPause(false); if (b === 'restart') restart(); if (b === 'quit') { st.paused = false; $('.mg-pause').hidden = true; finish(true); } };
       const cleanup = () => { cancelAnimationFrame(raf); window.removeEventListener('keydown', key, true); window.removeEventListener('keyup', keyUp, true); try { audio && audio.pause(); ac && ac.close(); } catch (e) {} el.remove(); };
       window.addEventListener('keydown', key, true); window.addEventListener('keyup', keyUp, true);
-      const recMode = () => { if (!REC) return; el.classList.add('rec'); $('.sg-stats').textContent = 'Recording · tap along with her voice'; $('.sg-health').style.display = 'none'; };
+      const recCount = () => { if (REC) $('.sg-stats').textContent = `Recording · ${notes.filter(n => !n.done).length} notes · Esc to go back or save`; };
+      const recMode = () => { if (!REC) return; el.classList.add('rec'); recCount(); $('.sg-health').style.display = 'none'; };
       health(0); stats(); say(REC ? TALK.rec : TALK.intro); recMode();
       raf = requestAnimationFrame(loop);
     });

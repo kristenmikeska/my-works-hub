@@ -177,3 +177,6 @@
 .mg-sing.rec .sg-time { outline-color: #e0204f; }
 .mg-sing.rec .sg-time::before { content: '● REC'; position: absolute; right: calc(100% + 10px); top: 0; font: italic 900 15px/22px var(--cond, sans-serif); color: #ff3d6e; animation: sg-low .6s infinite alternate; }
 .mg-sing .mg-end > button[data-k] { background: transparent; color: var(--pk2); border: 1px solid var(--pk2); }
+/* record mode: notes already in the chart scroll by dimmed; play over them to replace them */
+.mg-sing.rec .sg-note.ghost { opacity: .4; filter: saturate(.5); }
+.sg-rec-help { margin: 0; max-width: 420px; text-align: center; opacity: .85; }
