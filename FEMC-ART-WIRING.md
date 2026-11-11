@@ -486,3 +486,13 @@ Built Nov 10 (`assets/femc/game/scrapbook.js`, plays once as each epilogue begin
 
 ## 49. Hwatu cards and table (Nov 11)
 Game: `minigames/hwatu.js` (header: optional art under `assets/femc/game/art/minigames/hwatu/`: `cards/<id>.webp` probed once via `cards/01b`, ids = month 01-12 + b / a / r / j1 j2 (j3) / jd, `back`, `felt`, `title`, `mother` / `auntie` / `solar`). Each month sheet `hwatu-month-MM.png` is 4 cards left to right in the deck's own order (hwatu.js MONTHS `ty`): 01 b r j1 j2 · 02 a r j1 j2 · 03 b r j1 j2 · 04 a r j1 j2 · 05 a r j1 j2 · 06 a r j1 j2 · 07 a r j1 j2 · 08 b a j1 j2 · 09 a r j1 j2 · 10 a r j1 j2 · 11 b jd j1 j2 · 12 b a r jd. Cut with a small tool (split at the white gaps like femc-minigame-art.py's `holes`/emptiest-line seams, trim, 2:3, ~360 px tall WebP) into `cards/MMx.webp`. `felt` tiles (CSS background-repeat). Faces: point `mother` / `auntie` / `solar` at existing strangers portraits instead of new art (eomma = the Miyeon sheet's folder, a Thursday wife = any unused older-woman strangers face, Solar = solar-strangers), copying a face crop into the folder or teaching hwatu.js to take portrait paths.
+
+## 51. CGs for the Nov 11 scenes
+`{ cg }` / `{ cg: null }` pairs + a cgFocus in places.js + an ALBUM tile (epilogue.js), WebP q86 into `assets/femc/cg/`:
+- 51A `epi-h-xmas-dishes`: hoax/story-w1.js `epi-h-christmas`, the Kitchen dishes beat (every route).
+- 51B `epi-h-xmas-desk`: same event, Her Room, the Jungwon-route kiss at the desk, cleared after Nana's line.
+- 51C `epi-h-xmas-rug`: `epi-h-xmas-night` (12/25 late), Jihoon branch, from the rug / her hand over the edge.
+- 51D `epi-h-xmas-presents`: `epi-h-xmas-night` opening (presents on the rug, Nana in tissue paper), every route.
+- 51E `epi-h-eve-call`: `epi-h-eve-night` (12/24 late), Jungwon branch, the call at midnight.
+- 51F `epi-r-piano`: runners/story-nyc2.js `epi-r-hc-piano` (12/27 evening), from her sitting on the bench / bar nine.
+- 51G `epi-s-hwatu`: strangers/people.js `epi-s-eomma-4` 'flower cards', at the deal.

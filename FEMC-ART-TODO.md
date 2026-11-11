@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 11, after art batch 151):** **Solar's HOAX faces remade in Cherry's style** (section 48: 4 sheets + 1 optional) · **Hwatu cards** (section 49: 12 month sheets, a back, a blanket, an optional title) · ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (sections 44-45: Haechan's apron faces; 3 booth pieces for his songs: his singing poses, Solar bopping behind the glass, his health-bar icon; section 47: the listen game's street, its six things, their stickers and Haechan) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · **the epilogue scrapbook** (section 46, Nov 10: 110 "Previously" photos, Runners 40 / strangers 35 / HOAX 35, plus 11 covers, paper, dividers, tape and sticker sheets) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
+**To make (updated Nov 11, after art batch 151):** **Solar's HOAX faces remade in Cherry's style** (section 48: 4 sheets + 1 optional) · **7 CGs for today's new scenes** (section 51) · **Hwatu cards** (section 49: 12 month sheets, a back, a blanket, an optional title) · ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (sections 44-45: Haechan's apron faces; 3 booth pieces for his songs: his singing poses, Solar bopping behind the glass, his health-bar icon; section 47: the listen game's street, its six things, their stickers and Haechan) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · **the epilogue scrapbook** (section 46, Nov 10: 110 "Previously" photos, Runners 40 / strangers 35 / HOAX 35, plus 11 covers, paper, dividers, tape and sticker sheets) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
 
 ## ⭐ Outfits, HD poses and banners: in `FEMC-SKIN-ART.md` (Nov 7)
 
@@ -295,6 +295,66 @@ Save as: `hwatu-title.png`
 A 16:9 realistic painted still, seen from just above a low table in an elegant Korean family's sunroom at night in 2013: a fan of hwatu cards face down on a dark green wool blanket, a few face up (a crane under a red sun, a full moon over a hill), small stacks of coins, a cup of barley tea, a woman's hand with a jade ring and a fountain pen resting nearby. Warm lamp light, cool dark windows behind. No faces, no text.
 ```
 
+---
+## 51. CGs for the Nov 11 scenes (ChatGPT; each world's own style; Kat, Nov 11)
+
+New moments from today's writing: HOAX's longer Christmas, the Runners piano scene and the strangers flower-card afternoon. The scenes play fine without them; each CG drops in when it exists.
+
+**[ ] 51A. HOAX · Christmas Day: the dishes**  
+Every route, Christmas Day at the Kims' kitchen sink after lunch.  
+Attach: `CG - style (HOAX).png`, `BG - Kim Kitchen (HOAX).png`, `CG - Jungwon (HOAX).png`, `CG - Jihoon (HOAX).png`  
+Save as: `epi-h-xmas-dishes.png`
+```
+A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic warm light, high detail). The setting is the SECOND attached image, the Kims' kitchen in Hanlim on a snowy Christmas afternoon, warm overhead light, the window behind fogged and white with snow. The two boys are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). Side by side at the sink: Yang Jungwon (left) in a cream knit sweater with the sleeves pushed up, washing a plate with serious care, rubber gloves a size too big; Park Jihoon (right, taller) in a dark Christmas sweater, drying a bowl with a dish towel over his shoulder, mid-sentence, looking down at Jungwon with an exaggerated put-upon face. A stack of clean bowls, a dish rack, steam off the water, a Christmas card stuck to the fridge. Unspoken rivalry turning into grudging respect. No text.
+```
+
+**[ ] 51B. HOAX · Christmas Day, her room (Jungwon route)**  
+Jungwon route, Christmas Day in Solar's room with the door open, just before Nana walks in.  
+Attach: `CG - style (HOAX).png`, `BG - Solar's Room (HOAX).png`, `CG - Solar (HOAX christmas).png`, `CG - Jungwon (HOAX).png`, `CG - Nana (HOAX).png`  
+Save as: `epi-h-xmas-desk.png`
+```
+A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic warm light, high detail). The setting is the SECOND attached image, Solar's bedroom in the afternoon, snow light through the window, fairy lights over the bed. The people are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). Solar Kim (soft pink Christmas sweater) half sitting on the edge of her desk, hands in Jungwon's sweater, kissing Yang Jungwon (cream knit sweater) who leans in with one hand flat on the desk beside her, eyes closed. In the foreground the bedroom door stands open and a huge fluffy white Samoyed (the FIFTH attached image, Nana) is shouldering it wider, looking straight at them, unimpressed. Tender, a little funny, nothing explicit. No text.
+```
+
+**[ ] 51C. HOAX · Christmas night, her room (Jihoon route)**  
+Jihoon route, late on Christmas night: he came in the back door and is lying on her rug.  
+Attach: `CG - style (HOAX).png`, `BG - Solar's Room at night (HOAX).png`, `CG - Solar (HOAX christmas).png`, `CG - Jihoon (HOAX).png`  
+Save as: `epi-h-xmas-rug.png`
+```
+A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic warm light, high detail). The setting is the SECOND attached image, Solar's bedroom late at night, only the fairy lights and a desk lamp on, glow-in-the-dark stars on the ceiling, snow outside. The people are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). Park Jihoon (dark hoodie, snow melting in his hair) lying on his back on the rug beside her bed, one arm behind his head, looking up at the ceiling stars with an unguarded, quiet face; Solar Kim lying on her side on the bed above him in pajamas, her hand hanging over the edge of the mattress, his hand reaching up to hold it. His car keys and the contents of his pockets scattered on her desk. Intimate, hushed. No text.
+```
+
+**[ ] 51D. HOAX · Christmas night: presents on the rug**  
+Every route, Christmas night, the presents spread on her floor and Nana in the tissue paper.  
+Attach: `CG - style (HOAX).png`, `BG - Solar's Room at night (HOAX).png`, `CG - Solar (HOAX christmas).png`, `CG - Nana (HOAX).png`  
+Save as: `epi-h-xmas-presents.png`
+```
+A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic warm light, high detail). The setting is the SECOND attached image, Solar's bedroom on Christmas night, warm fairy lights, snow outside. The people are the same as the THIRD and FOURTH attached images. Solar Kim sitting cross-legged on the rug in pajamas and the pink sweater, laughing, among opened presents: a planner, framed photos of a white dog, a knit ear-flap hat with a sheep on it, ribbons and torn wrapping; beside her a huge fluffy white Samoyed (Nana) lying in a nest of tissue paper with a squeaky toy croissant in his mouth, looking very pleased. Cosy and happy. No text.
+```
+
+**[ ] 51E. HOAX · Christmas Eve, the late call (Jungwon route)**  
+Jungwon route, near midnight on Christmas Eve: in bed, on the phone with him.  
+Attach: `CG - style (HOAX).png`, `BG - Solar's Room at night (HOAX).png`, `CG - Solar (HOAX christmas).png`  
+Save as: `epi-h-eve-call.png`
+```
+A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic warm light, high detail). The setting is the SECOND attached image, Solar's bedroom just before midnight, the lights off except the fairy lights, glow-in-the-dark stars on the ceiling, snow falling past the window. The girl is the same as the THIRD attached image (same face, eyes and hair). Solar Kim lying in bed under the duvet in pajamas, phone held to her ear, smiling at the ceiling with her eyes half closed, the phone screen lit with a call timer; a huge white Samoyed asleep across the foot of the bed. Soft, private, sweet. No text.
+```
+
+**[ ] 51F. Runners · the piano at night (Haechan route)**  
+Haechan route, 12/27 evening, the Lee apartment's living room: the piano under the soft pedal.  
+Attach: `CG - style (Runners).png`, `BG - Lee Apartment Living Room (Runners).png`, `Haechan (Runners).png`, `Solar (Runners).png`  
+Save as: `epi-r-piano.png`
+```
+A 16:9 realistic CG in the exact style of the FIRST attached image. The setting is the SECOND attached image, an Upper East Side apartment's living room at night, only one lamp on, city lights in the tall windows, a black grand piano. The people are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). Haechan at the piano in a loose black T-shirt, playing softly, his foot on the left pedal, head tilted toward the girl beside him; Solar on the bench next to him in an oversized sweater, her shoulder against his, her left hand resting on the low keys under his, watching his hands. Hushed, warm, falling in love. No text.
+```
+
+**[ ] 51G. strangers · flower cards with Eomma**  
+Every route, a Thursday afternoon in the sunroom: her mother deals her in at hwatu.  
+Attach: `CG - style (Strangers).png`, `BG - Lee House Sunroom (Strangers).png`, `Miseon (Strangers).png`, `CG - Solar (Strangers).png`  
+Save as: `epi-s-hwatu.png`
+```
+A 16:9 realistic CG in the exact style of the FIRST attached image. The setting is the SECOND attached image, the Lee family's sunroom in Incheon in late winter daylight, orchids on the shelves. The people are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). On a dark green army wool blanket spread on the floor: Solar's mother (cream cardigan, hair done, jade ring) kneeling upright and dealing hwatu cards with quick elegant hands, a faint private smile; Solar (her hair pinned up) sitting across from her with her cards fanned close, studying her mother's face instead of her hand. Small stacks of coins, a cup of barley tea, a few face-up cards: a crane under a red sun, a full moon over a hill. Quiet, warm, a little guarded. No text.
+```
 ---
 ## 44. Dumpling cooking minigame (Kat, Nov 10)
 
