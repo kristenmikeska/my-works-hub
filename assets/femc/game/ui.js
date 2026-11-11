@@ -1850,7 +1850,7 @@
     /* The phone's apps (2026-11-01): Messages, Who's Free (P5X-style: who's at their spot today and the next few days) and
        Contacts (a card per met link). The tab strip sits at the top of each list; a contact card's ‹ goes back to Contacts. */
     let tab = 'msgs';
-    const tabsHtml = () => `<nav class="g-ph-tabs" aria-label="Phone apps">${(EPI ? [['msgs', 'Messages'], ...(window.FemcSugram?.has() ? [['gram', `SUgram${FemcSugram.unread() ? ' •' : ''}`]] : []), ['people', 'Contacts']] : [['msgs', 'Messages'], ['free', 'Who’s free'], ['jobs', 'Jobs'], ['people', 'Contacts']]).map(([k, t]) => `<button type="button" data-tab="${k}"${tab === k ? ' class="on" aria-current="page"' : ''}>${t}</button>`).join('')}</nav>`;
+    const tabsHtml = () => `<nav class="g-ph-tabs" aria-label="Phone apps">${(EPI ? [['msgs', 'Messages'], ...(window.FemcSugram?.has() ? [['gram', `${FemcSugram.name?.() || 'SUgram'}${FemcSugram.unread() ? ' •' : ''}`]] : []), ['people', 'Contacts']] : [['msgs', 'Messages'], ['free', 'Who’s free'], ['jobs', 'Jobs'], ['people', 'Contacts']]).map(([k, t]) => `<button type="button" data-tab="${k}"${tab === k ? ' class="on" aria-current="page"' : ''}>${t}</button>`).join('')}</nav>`;
     const wireTabs = () => body.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { if (b.dataset.tab === tab) return; tab = b.dataset.tab; delete title.dataset.gram; G.sfx('femc-click'); home(); focusIn(body.querySelector(`[data-tab="${tab}"]`)); }));
     const home = () => (tab === 'gram' ? gramApp() : tab === 'free' ? freeApp() : tab === 'jobs' ? jobsApp() : tab === 'people' ? (EPI ? epiPeople() : peopleApp()) : list());
     const face = id => { const pic = G.portrait(id, 'neutral'); return `<i>${pic ? `<img src="${pic}" alt="">` : esc((G.LINKS[id]?.short || '?')[0])}</i>`; };
@@ -1859,10 +1859,11 @@
     const atFree = () => /\bis-(map|city|area|dorm)\b/.test(main.className) && !document.querySelector('.gs:not(.out)');
     const slotWord = (slot, info) => (slot === 'evening' ? 'Evening' : info.type === 'school' || info.type === 'exam' ? 'After school' : 'Daytime');
     // SUgram (Nov 7 2026; sugram.js documents it): the Runners epilogue's third app. gram = a post key to open on top of the feed.
+    // Per world since Nov 11 (HOAX's HOAXgram): the tab says FemcSugram.name(); face = the contact-picture crop for handles without their own.
     const gramApp = (gram) => {
       stop(); delete title.dataset.card;
       reply.replaceChildren(); compose.hidden = true; bar.innerHTML = ''; bar.hidden = true;
-      window.FemcSugram.open({ body, title, back, tabsHtml, wireTabs }, { post: gram });
+      window.FemcSugram.open({ body, title, back, tabsHtml, wireTabs, face: faceImg }, { post: gram });
     };
     const freeApp = () => {
       stop();

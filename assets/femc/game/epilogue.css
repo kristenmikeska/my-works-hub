@@ -297,3 +297,16 @@
 .g-sg-grid img { width: 100%; height: 100%; object-fit: cover; }
 .g-sg-grid span { padding: 6px; font-size: 10px; line-height: 1.2; text-align: center; }
 .g-sg-grid button:focus-visible { outline: 3px solid var(--ph-acc); outline-offset: -3px; }
+
+/* HOAXgram (Nov 11 2026; sugram.js, data/epi/hoax/hoaxgram.js): the same app in HOAX's cherry (#d6244f) and night black.
+   sugram.js puts data-gram-world on its box; nothing here reaches Runners' SUgram. */
+.g-phone-ov[data-world="hoax"] [data-gram] { color: #d6244f; font-style: italic; font-weight: 800; letter-spacing: .01em; }
+.g-sg[data-gram-world="hoax"] .g-sg-sep { color: #d6244f; opacity: .9; }
+.g-sg[data-gram-world="hoax"] .g-sg-post { box-shadow: inset 0 3px 0 #d6244f, 0 1px 0 rgba(20, 7, 15, .08); }
+.g-sg[data-gram-world="hoax"] .g-sg-av { background: #14070f; box-shadow: 0 0 0 2px var(--ph-bar), 0 0 0 3.5px #d6244f; }
+.g-sg[data-gram-world="hoax"] .g-sg-heart.on { color: #d6244f; }
+.g-sg[data-gram-world="hoax"] .g-sg-load { background: #d6244f; }
+/* Caption cards (most HOAXgram posts have no picture): cherry into black, sized by the words, long captions smaller. */
+.g-sg[data-gram-world="hoax"] .g-sg-text { aspect-ratio: auto; min-height: 150px; padding: 22px 18px; background: linear-gradient(155deg, #d6244f 0%, #8f1636 52%, #14070f 100%); }
+.g-sg[data-gram-world="hoax"] .g-sg-text p { font-size: clamp(14px, 4.2vw, 17px); text-wrap: balance; overflow-wrap: anywhere; }
+.g-sg[data-gram-world="hoax"] .g-sg-grid button { background: linear-gradient(155deg, #d6244f, #14070f); }
