@@ -4460,6 +4460,15 @@
     }
   }
   const OWN_HD = { dir: 'assets/femc/profile/solar-poses/', have: ['peace'] }; // practice (no Wardrobe data): her own HD poses
+  /* The handoff hub's figure (Kat, Nov 10: the old femc.webp looked outdated): the worn outfit's HD pose, else her own updated
+     HD poses (profile/solar-poses/), else the worn outfit's battle frame; the Evoker pose first, it's Tartarus. */
+  function hubFig() {
+    const worn = !!(LOOKS && LOOKS.pose && LOOKS.pose.solar);
+    const H = worn ? LOOKS.hd && LOOKS.hd.solar : (LOOKS && LOOKS.hdOwn) || { dir: 'assets/femc/profile/solar-poses/', have: ['evoker', 'arms-crossed'] };
+    const p = H && ['evoker', 'arms-crossed', 'tease', 'peace', 'cheer'].find(k => (H.have || []).includes(k));
+    if (p) return `${H.dir}${p}.webp?v=${H.v || ART_V}`;
+    return `assets/femc/profile/femc.webp?v=${V()}`;
+  }
   function winHd(mid, worn) {
     const H = worn ? LOOKS.hd && LOOKS.hd[mid] : mid === 'solar' ? (LOOKS && LOOKS.hdOwn) || OWN_HD : null;
     const p = H && ['peace', 'cheer', 'jump', 'victory'].find(k => (H.have || []).includes(k));
@@ -5275,11 +5284,11 @@
           <button type="button" class="bt-btn${cont ? '' : ' pink'}" data-go="run"><span>${start.fi === 0 && start.bi === 0 ? 'Enter Tartarus' : `Enter at ${esc(start.label)}`}</span><small>${esc(start.block)} · open up to ${esc(top.label)}</small></button>
           ${warpBtn(start.id)}
           <button type="button" class="bt-btn bt-menu-btn" data-go="menu"><span>Menu</span><small>${mates ? `Party ${save.party.length + 1}/4 · ` : ''}Personas · Equipment · Items</small></button>
-          <div class="bt-hub-row"><button type="button" class="bt-btn" data-go="tree"><span>Skills</span><small>Haenim · ${save.pts} SP</small></button><button type="button" class="bt-btn" data-go="dorm"><span>Return to the dorm</span><small>Not tonight</small></button></div>
+          <button type="button" class="bt-btn" data-go="tree"><span>Skills</span><small>Haenim · ${save.pts} SP</small></button>
         </div>
         <p class="bt-hub-hint">${esc(NAVI.name)} is navigating. ${R.condition === 'tired' || R.condition === 'sick' ? 'Solar is already tired; she’ll fight below her best tonight.' : 'Climb as far as you like, then leave at an access point.'}</p>
       </div>
-      <div class="bt-hub-fig" aria-hidden="true"><i class="band"></i><img src="assets/femc/profile/femc.webp?v=${V()}" alt=""></div>
+      <div class="bt-hub-fig" aria-hidden="true"><i class="band"></i><img src="${hubFig()}" alt=""></div>
       ${hubSolar(`<p class="bt-meta"><span class="bt-yen">${ICON.svg('yen')}${yen(save.yen)}</span> · best ${esc(R.bestFloor ? `${R.bestFloor}F` : 'none yet')} · ${save.ops.cleared.length} full moon${save.ops.cleared.length === 1 ? '' : 's'} cleared</p>`)}
       <div class="bt-top" style="justify-content:flex-end"><button type="button" class="bt-tool" data-go="dorm"><span>‹ Return to the dorm</span></button><div class="bt-tools" style="margin-left:8px">${tools()}</div></div>`, 'bt-hub bt-hub-ho');
     wireTools(el);
