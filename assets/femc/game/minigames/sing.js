@@ -36,7 +36,7 @@ window.FemcSing = (() => {
   const OPTS_KEY = 'kg-femc-sing-opts', DRAFT_KEY = id => `kg-femc-sing-draft:${id}`;
   const opts = () => { let o = {}; try { o = JSON.parse(localStorage.getItem(OPTS_KEY)) || {}; } catch (e) {} return { speed: 2.2, down: false, offset: 0, ...o }; };
   const saveOpts = o => { try { localStorage.setItem(OPTS_KEY, JSON.stringify(o)); } catch (e) {} };
-  const draft = id => { try { return JSON.parse(localStorage.getItem(DRAFT_KEY(id))) || null; } catch (e) { return null; } };
+  const draft = id => { try { const d = JSON.parse(localStorage.getItem(DRAFT_KEY(id))); return d && d.v >= 2 ? d : null; } catch (e) { return null; } }; // v2: recorded after the Restart fix
   // the arrow: one path pointing up, rotated per lane (the Solstice take: a chunky cut arrow)
   const ARROW = '<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6 L92 50 L66 50 L66 94 L34 94 L34 50 L8 50 Z"/></svg>';
   const TALK = {
@@ -146,7 +146,7 @@ window.FemcSing = (() => {
         st.held[lane] = true; cols[lane].classList.add('press');
         if (REC) { // her tap becomes a note; it lights the target and floats away so she sees it
           if (!started) return;
-          const n = { t: snap16(now()), lane, len: 0 }; rec.push(n); recDown[lane] = n;
+          const n = { t: snap16(now()), lane, len: 0 }; if (rec.some(x => x.lane === lane && Math.abs(x.t - n.t) < BEAT / 8)) return; rec.push(n); recDown[lane] = n;
           cols[lane].classList.remove('hit'); void cols[lane].offsetWidth; cols[lane].classList.add('hit'); splash(lane); pose(DIRS[lane], 0);
           const f = document.createElement('div'); f.className = `sg-note sg-fly l${lane}`; f.style.setProperty('--r', ROT[lane] + 'deg'); f.style.display = 'block'; f.innerHTML = `<span class="sg-head">${ARROW}</span>`; noteBox.appendChild(f); setTimeout(() => f.remove(), 900);
           $('.sg-stats').textContent = `Recording · ${rec.length} notes`; return;
@@ -248,7 +248,7 @@ window.FemcSing = (() => {
         const js = JSON.stringify({ song: C.id, charts: { easy: thin(BEAT), normal: rec, hard: rec } });
         const end = $('.mg-end'); end.hidden = false;
         end.innerHTML = `<b class="sg-fail" style="color:var(--pk2)">${rec.length} notes</b><p class="mg-end-say">That's your chart. Save it, then play it.</p><div class="sg-end-btns"><button type="button" data-s>Save as my chart</button><button type="button" data-p>Save and play it</button></div><div class="sg-end-btns"><button type="button" data-a>Record again</button><button type="button" data-x>Close without saving</button></div><button type="button" data-k>Copy for Claude</button>`;
-        const saveIt = () => { try { localStorage.setItem(DRAFT_KEY(C.id), JSON.stringify({ charts: JSON.parse(js).charts, saved: new Date().toISOString() })); } catch (e) {} };
+        const saveIt = () => { try { localStorage.setItem(DRAFT_KEY(C.id), JSON.stringify({ v: 2, charts: JSON.parse(js).charts, saved: new Date().toISOString() })); } catch (e) {} };
         end.querySelector('[data-s]').focus();
         end.querySelector('[data-s]').onclick = e => { saveIt(); e.target.textContent = 'Saved ✓'; };
         end.querySelector('[data-p]').onclick = () => { saveIt(); cleanup(); const r = { record: rec, saved: true, play: true }; o.onDone?.(r); done(r); };
@@ -257,6 +257,7 @@ window.FemcSing = (() => {
         end.querySelector('[data-k]').onclick = e => { saveIt(); navigator.clipboard?.writeText(js); e.target.textContent = 'Copied ✓ (and saved)'; };
       };
       const restart = () => {
+        rec.length = 0; recDown.fill(null); noteBox.querySelectorAll('.sg-fly').forEach(f => f.remove());
         try { audio && audio.pause(); } catch (e) {}
         Object.assign(st, { score: 0, combo: 0, maxCombo: 0, perfect: 0, good: 0, ok: 0, miss: 0, hp: 50, paused: false, over: false, sec: -1, held: [false, false, false, false], beat: -99, count: -1 });
         started = false; pre = FROM - PRE; sync = { a: -1, p: 0 }; if (audio) { audio.currentTime = FROM; if (gain) gain.gain.value = 0.9; }
