@@ -4,7 +4,7 @@
 
 **Order for each outfit:** 1. pose sheet → 2. scene portraits → 3. HD poses (only what's still missing is listed). **Banner art** is at the bottom: make a banner once its outfits exist.
 
-**What's here (Nov 10, after art batch 149):** 49 pose sheets and 52 scene-portrait sheets (the collab outfits, Kat's 47 new outfits, plus faces for Off-Day Hoodie, Beanie & Apron and Gekkoukan Uniform), 93 HD pose sets (11 of Haechan's have their first victory pose in), 14 banner pictures (8 older, 6 for the new banners: Ghoul School, Anime Night, Magical Girls, Wonderland, Live Concert, Pastel Ponies).
+**What's here (Nov 10, after art batch 149):** 49 pose sheets and 53 scene-portrait sheets (the collab outfits, Kat's 47 new outfits, plus faces for Off-Day Hoodie, Beanie & Apron and Gekkoukan Uniform), 93 HD pose sets (11 of Haechan's have their first victory pose in), 14 banner pictures (8 older, 6 for the new banners: Ghoul School, Anime Night, Magical Girls, Wonderland, Live Concert, Pastel Ponies).
 
 **How:** open a new ChatGPT message, attach the files on the **Attach** line in that order (all in `Femc Mode Images/`, mostly `Place Prompt Attachments/`), paste the prompt, send. Save into **New Adds** under its **Save as** name (HD poses: a folder per outfit) and tell Claude. One picture per message.
 
@@ -43,6 +43,22 @@ Kat likes it; saved for a later series.
 ### Collab outfits
 
 Cosplay looks (it's a fan game). The prompts describe the outfits only by how they look: no logos, no printed names. Order for each: pose sheet, then scene portraits, then HD poses. Five are couple sets with Haechan or Jungwon: make both pose sheets of a set in the same chat so the colours match.
+
+### Sukajan Kiriko, Overwatch · `sk-collab-sukajan`
+
+Her main again, street style this time (she already has the shrine-robe Kiriko Cosplay): an embroidered souvenir jacket and cargo pants; high ponytail with red streaks.
+
+> **Look bible.** Palette: jacket black, cherry red, fox white and blossom pink. Vibe: a street-style shrine kid: quick, cocky and kind.  
+> Motifs: white foxes, cherry blossoms, blank paper charms and kunai. Light: red and pink neon on a night street. Scene: a neon back alley at night with paper lanterns and a small shrine gate.
+
+#### 1. Scene portraits
+
+Attach: `Place Prompt Attachments/Solar.png`  
+Save as: `skin-sk-collab-sukajan-portraits.png`  
+**Kat is redoing this one (Nov 10):** the sheet came on a dark background. Remove the background in Photoshop and drop it back in New Adds with the same name. The game shows a rough automatic cut of the old sheet until then.
+```
+Cosplay of Sukajan Kiriko from Overwatch. A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: an oversized black-and-red satin souvenir jacket embroidered with a white fox and cherry blossoms, slipping off one shoulder, a fitted black crop top, neon street-night light. Hair: her own jet-black hair in a high ponytail with a short blunt fringe, two bright red streaks through the ponytail, tied with a red ribbon. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text, no logos.
+```
 
 ### Cardcaptor Sakura · `sk-collab-cardcaptor`
 
