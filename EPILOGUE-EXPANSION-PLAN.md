@@ -3,12 +3,12 @@
 Approved in chat. Work through these in order; show Kat writing drafts before wiring them.
 
 ## 1. Runners, Haechan route: romance and honesty
-- [ ] **The New Year's ask.** (drafted, waiting on Kat) Draft: `drafts/RUNNERS-NYE-ASK-DRAFT.md`. It comes after the song (~11:40), with the headphones track built from the 12/29 2 a.m. walk and three ways to say yes. The 11:50 timer becomes the kiss at real midnight, and the roof remembers her answer.
-- [ ] **"Tell him" choice** (drafted with the quiet scenes, waiting on Kat: `drafts/RUNNERS-TELL-HIM-DRAFT.md`) (around 12/22–12/26), since they promised to tell each other things. Two branches:
+- [x] **The New Year's ask.** (in the game, Nov 10) Draft: `drafts/RUNNERS-NYE-ASK-DRAFT.md`. It comes after the song (~11:40), with the headphones track built from the 12/29 2 a.m. walk and three ways to say yes. The 11:50 timer becomes the kiss at real midnight, and the roof remembers her answer.
+- [x] **"Tell him" choice** (in the game with the lazy morning and the phone call, Nov 10) (around 12/22–12/26), since they promised to tell each other things. Two branches:
   - She tells him: he's watching the snow and clocks with her, ready on the roof.
   - She keeps it: he notices anyway, and it comes out as a fight.
   - Hanni or Minji get the same choice on their routes.
-- [ ] **2–3 quiet intimate scenes in Manhattan** where nothing is wrong (falling asleep on the phone on his Bushwick nights, a lazy morning before Mrs. Oh arrives, the piano).
+- [~] **2–3 quiet intimate scenes in Manhattan** (two in: the second pillow, the hang-up; the piano one still open) where nothing is wrong (falling asleep on the phone on his Bushwick nights, a lazy morning before Mrs. Oh arrives, the piano).
 - [ ] Optional: Marco's guest list asks "Who do I put him down as?" (Kat to decide alongside the ask).
 
 ## 2. Minigames (epilogue-flavoured, instead of battles)

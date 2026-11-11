@@ -557,6 +557,31 @@
 
   /* ── Haechan ── */
   add('haechan', 'friend', [
+    // Kat's approved draft (Nov 10 2026, drafts/RUNNERS-TELL-HIM-DRAFT.md): a plain, happy morning. No glitch on purpose.
+    { id: 'epi-r-nyc-haechan-morning', title: 'the second pillow', hint: "It's snowing, nobody's home, and he hasn't moved in an hour.",
+      after: '12/26', until: '12/28', slots: ['after'], route: 'haechan',
+      place: 'Manhattan · The Lee Apartment · Her Room', time: 'Morning', scene: [
+      { music: 'epi-r-romance' },
+      { n: "It snowed all morning and neither of them got up for it." },
+      { n: "She woke up at nine-forty, which was the latest she'd slept in that bed since she was eleven, with the room gone the soft gray-white that snow made of everything, and the radiator knocking, and the heaviest arm in New York across her waist. He was awake. He was reading. He had one of her old books held up over both of them in his other hand, the copy of *Anne of Green Gables* with her name in it in a nine-year-old's round handwriting, and he was halfway through." },
+      { s: 'solar', f: 'surprised', t: "Where did you get that." },
+      { s: 'haechan', f: 'neutral', t: "Your shelf. You underlined things." },
+      { s: 'solar', f: 'flustered', t: "I was nine." },
+      { s: 'haechan', f: 'neutral', t: "You underlined *I'm so glad I live in a world where there are Octobers.* Twice. Different pens." },
+      { s: 'solar', f: 'flustered', t: "Give it back." },
+      { s: 'haechan', f: 'neutral', t: "No. I'm at the part with the hair dye." },
+      { n: "She tried to take it. He held it higher, out of reach, without even looking away from the page, and she ended up half on top of him with her hand around his wrist, laughing into his neck, and he turned the page with his thumb, one-handed, very calmly, like a man who had all the time in the world and intended to spend it here." },
+      { choose: [
+        { t: "(Let him read. Fall back asleep on him.)", then: [
+          { n: "She gave up. She put her head down on his chest instead and listened to him turn pages, slow and even, a sound she'd never once thought of as a sound until right now, and somewhere around the hair dye she fell asleep again, the second time in one morning, which she hadn't done since she was a child. When she woke up the book was face-down on his stomach and he was asleep too, his mouth a little open, snow still coming down past the window, the room the warmest she had ever known it." }
+        ] },
+        { t: "Read it to me.", then: [
+          { n: "He looked at her over the top of the book like she'd asked him to sing. Then he cleared his throat and read it to her, flat, in the exact voice he used to tell Nadia she was rushing the *and*, and it was so funny she had to put her face in the pillow, and he didn't stop. He read the whole chapter in that voice with total commitment, and somewhere in the middle she stopped laughing and just listened, because under the flat there was something careful, the way he slowed down for the lines she'd underlined, every one of them, without being asked." }
+        ] }
+      ] },
+      { n: "They didn't get up until eleven. It was, she'd decide later, the morning she'd keep if she could only keep one." },
+      { bond: { haechan: 1 } }
+    ] },
     { id: 'epi-r-nyc-haechan-coffee', title: 'filtration', hint: "Haechan has tasted your mother's coffee machine and he would like to file a complaint with the city.",
       after: '12/26', until: '12/28', slots: BOTH, route: 'haechan',
       place: 'Manhattan · Madison Avenue · Café', time: 'Daytime', scene: [
@@ -641,6 +666,7 @@
       after: '12/29', until: '12/30', slots: ['late'], route: 'haechan',
       place: 'Manhattan · Upper East Side', time: 'Late Night', scene: [
       { music: 'epi-r-late' },
+      { flag: 'epi-r-walked-2am' }, // read by the New Year's ask (story-nyc2 epi-r-nye)
       { phone: [{ from: 'haechan', t: 'up' }, { from: 'haechan', t: 'come down. bring the good coat' }], contact: 'haechanah' },
       { place: 'Manhattan · The Building · Service Elevator', time: 'Late Night', soft: true },
       { n: "She went down the service elevator in her socks with her boots in her hand, because the main car made a soft electronic chime on every floor and her mother slept like a smoke detector, and she put the boots on in the steel box with one shoulder against the wall while it hummed down eleven floors smelling of cardboard, and walked out through the lobby past the night man, who looked up from a paperback, looked at her, and looked back down at the paperback, which at two in the morning on the Upper East Side was a kind of blessing." },

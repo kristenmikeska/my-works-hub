@@ -47,7 +47,7 @@
      school accounts: you on the stairs at the party before break". Mira is a mention only: "Dad's sister. Nobody says where she is."
    Canon held: Haechan never asks anyone about her (Solji's list of what she eats is his own knowing); he's in NYC for his own work,
      not her father; the track stays untitled ("nothing, it's a thing I do"); Jaehyun knows nothing of camp; nobody explains a glitch;
-     nobody but Solar (and Jaehyun on jh-all) knows what the pull is: his "if she's still here" goes unexplained; Haechan refuses wine
+     nobody but Solar (and Jaehyun on jh-all) knows what the pull is [CHANGED Nov 10 2026, Kat's ruling: on the Haechan route he learns it before New Year's on every path: epi-r-hc-terms 12/26 late, or the fight epi-r-hc-1159 12/30 late; also the New Year's ask in epi-r-nye, flags epi-r-ask-kiss / -tease / -said]: his "if she's still here" goes unexplained; Haechan refuses wine
      (sober-curious); cut away before anything explicit.
    Art ideas (one line each, none wired):
      - Solji at the island at 6:50 a.m., the paper folded, two cups, one already poured for someone not yet in the room.
@@ -922,6 +922,9 @@
       { s: 'haechan', f: 'serious', t: "There's a train." },
       { n: "It went on for about eight seconds, a train standing at a platform under eleven floors of marble and limestone and old money, doors open, waiting for somebody. Then the doors closed, and it pulled out, and the sound went away into the ground in a direction there was no tunnel, and the building ticked, and the radiator knocked once, and there was nothing." },
       { n: "He didn't say anything else. He didn't say *that was weird*, or *it's the pipes*, or any of the things he'd said in the studio in the first week of December. He'd stopped saying those. He just held on, harder than he needed to, until she fell asleep." },
+      { ifFlag: 'epi-r-hc-told', then: [
+        { n: "He'd been told. He found her hand in the dark without looking for it, and said, very low, *one,* the way you'd count a bar in, and she understood that he was counting with her now, out loud, and she'd never once in her life been so relieved to be treated like a song." }
+      ] },
       { bond: { haechan: 1 } }
 
     ], else: [ { ifEpiRoute: 'minji', then: [
@@ -1473,6 +1476,111 @@
   ] },
 
   // ───────────────────────────── 12/30, early: Marco ─────────────────────────────
+  // ───────────────────────────── Telling him (Kat's approved draft, Nov 10 2026: drafts/RUNNERS-TELL-HIM-DRAFT.md) ─────────────────────────────
+  // Haechan route. Kat's ruling: Haechan learns what the pull is before New Year's on every path (it used to be Solar and Jaehyun only).
+  // Flags: epi-r-hc-told (12/26, she tells him) / epi-r-hc-kept (she doesn't); epi-r-hc-told-late (12/30, after the fight).
+  { id: 'epi-r-hc-terms', date: '12/26', slot: 'late', flag: 'epi-route-haechan', title: 'the terms', place: 'Manhattan · The Lee Apartment · Her Room', time: 'Late Night', scene: [
+    { music: 'epi-r-late' },
+    { n: "She couldn't sleep, which was nothing new, and he could, which was. He was on his back on the side of the bed nearest the door with one arm thrown over his eyes and his breathing gone long and even, and she lay on her side and watched the four hundred windows across the street go out one at a time, the way they did after one, like somebody walking down a hallway turning off lamps." },
+    { n: "At 11:58 she reached for her phone. She did it without deciding to. She'd done it every night since the car, the way you check a stove you know you turned off." },
+    { n: "11:59." },
+    { n: "She watched it. She held her breath without meaning to and watched the number sit there, and nothing in the room changed, and the radiator ticked, and the minute turned over to 12:00 the way minutes do, and she let the breath out through her nose very slowly so it wouldn't make a sound." },
+    { s: 'haechan', f: 'neutral', t: "What happens at 11:59?" },
+    { n: "She nearly dropped the phone. He hadn't moved his arm. His voice came out from under it flat and clear and not at all asleep." },
+    { s: 'solar', f: 'surprised', t: "...Nothing." },
+    { s: 'haechan', f: 'neutral', t: "You've done it every night I've been here. Twice in Syracuse. You hold your breath." },
+    { s: 'solar', f: 'flustered', t: "You're supposed to be asleep." },
+    { s: 'haechan', f: 'neutral', t: "I'm supposed to be a lot of things." },
+    { n: "He took his arm off his eyes. He didn't sit up. He turned his head on the pillow and looked at her in the light from the four hundred windows, the way he looked at a waveform he hadn't figured out yet, patient, not pushing." },
+    { s: 'haechan', f: 'neutral', t: "We made rules. On the stairs at Alpha. You made me promise I'd tell you before I disappeared." },
+    { s: 'solar', f: 'neutral', t: "That was about you." },
+    { s: 'haechan', f: 'serious', t: "Yeah. I noticed it was only about me." },
+    { choose: [
+      { t: "(Tell him. All of it.)", flag: 'epi-r-hc-told', then: [
+        { n: "So she told him." },
+        { n: "Not well. She'd told Jaehyun in the study, in order, like a deposition, and she'd thought that would make it easier the second time, and it didn't, because Jaehyun had listened like a man taking notes and Haechan listened like a man being told where the floor was going to give." },
+        { n: "She told him the roof hadn't been the end of it. That it still came, smaller, quieter, in the shape of things forgetting her: the frame in the hall with the snow smooth where she should have been, the girls' group chat telling her she'd left at 3:12 in the morning, her own reflection in the lift half a second behind her. She told him about 11:59. That she checked because one night it was going to stay 11:59, and she'd know. That she thought she knew which night." },
+        { s: 'haechan', f: 'serious', t: "Which night." },
+        { s: 'solar', f: 'sad', t: "Midnight's the door. It's always been midnight. And the biggest midnight there is is in five days." },
+        { n: "He didn't say anything for a long time. Long enough that she thought she'd broken something. Then he reached over in the dark, found her hand on the duvet without looking, and held it, not hard, the way you'd hold something you'd just been told was fragile and didn't want to prove it by squeezing." },
+        { s: 'haechan', f: 'neutral', t: "Okay." },
+        { s: 'solar', f: 'surprised', t: "Okay?" },
+        { s: 'haechan', f: 'neutral', t: "Okay. Now I know. That's the only thing I wanted. I'd rather know where the floor's going to give than find out on my way down." },
+        { s: 'solar', f: 'neutral', t: "You're not going to tell me it's going to be fine." },
+        { s: 'haechan', f: 'neutral', t: "You'd know I was lying. You always know." },
+        { n: "He pulled her in by the hand, and she let him. She put her face against his shoulder, where his T-shirt smelled like her mother's detergent now, which was a strange thing to have done to a person in two days, and felt him breathe in and hold it, and let it out slowly, matching hers on purpose until they were the same." },
+        { s: 'haechan', f: 'neutral', t: "Tomorrow night you check it, I'm checking it with you. Every night. Out loud." },
+        { s: 'solar', f: 'happy', t: "That's insane." },
+        { s: 'haechan', f: 'happy', t: "It's a duet. You're good at those." },
+        { bond: { haechan: 1 } }
+      ] },
+      { t: "Go back to sleep, Haechan.", flag: 'epi-r-hc-kept', then: [
+        { n: "He looked at her for a second longer. He didn't argue. He never argued when she shut a door; he just noted where it was." },
+        { s: 'haechan', f: 'neutral', t: "Okay, princess." },
+        { n: "He put his arm back over his eyes. She lay there and listened to him not fall asleep, and pretended not to know, and he pretended not to know she knew, and outside the four hundred windows went out one by one until there was only one left on, high on the left, someone else who couldn't sleep either." },
+        { n: "She thought: *I'll tell him tomorrow.* She'd thought it in the car, and in the lift, and on the terrace with his coat around her. It was the easiest sentence in the world to think. It was the only one she never got to the end of." }
+      ] }
+    ] }
+  ] },
+
+  { id: 'epi-r-hc-hangup', date: '12/30', slot: 'late', flag: 'epi-r-hc-told', title: 'there it goes', place: 'Manhattan · The Lee Apartment · Her Room', time: 'Late Night', scene: [
+    { music: 'epi-r-late' },
+    { n: "He called at 11:51, which meant he'd done the math." },
+    { s: 'haechan', f: 'neutral', t: "You in bed?" },
+    { s: 'solar', f: 'neutral', t: "Yes." },
+    { s: 'haechan', f: 'neutral', t: "Phone on the pillow. Not in your hand. On the pillow, by your ear." },
+    { n: "She did it. It was ridiculous. She lay on her side with the phone on the pillow next to her face like a person, and his voice came out of it small and close and a little tinny, and behind it she could hear Bushwick: a radiator worse than hers, a bus downshifting, somebody's television through a wall, and once, very far off, a dog with an opinion." },
+    { n: "They talked about nothing. The session, which had gone long. Nadia's bridge, which was fixed. Theo's couch, which had a spring in it in exactly the place a person's spine went. Hyein's outfit options for tomorrow, which Hanni had narrowed to three, which Hyein had then expanded to nine." },
+    { n: "At 11:58 he stopped talking." },
+    { s: 'haechan', f: 'neutral', t: "Okay. Count with me." },
+    { s: 'solar', f: 'sad', t: "Haechan—" },
+    { s: 'haechan', f: 'neutral', t: "Out loud. I'm right here." },
+    { n: "They counted the last minute down together, out loud, on a phone, him on a broken couch in Brooklyn and her on the eleventh floor of a building on Fifth, his voice a quarter-second behind hers down the line, so that she heard every number twice. At *one* she shut her eyes." },
+    { n: "The phone said 12:00." },
+    { s: 'haechan', f: 'neutral', t: "There it goes." },
+    { s: 'solar', f: 'happy', t: "There it goes." },
+    { n: "Neither of them hung up. She meant to. She meant to say goodnight and press the red button like a normal person, and instead she lay there listening to him breathe, and somewhere in the next twenty minutes his breathing went long and even and slow, and she realised he'd fallen asleep with the phone on his own pillow on the other side of the river." },
+    { n: "She didn't hang up. She lay in the dark and listened to Haechan sleep in Brooklyn, and the dog with the opinion, and the bus, and she fell asleep like that, the call still connected: two hours and fourteen minutes on the screen in the morning, which she screenshotted, and never told him she had." },
+    { bond: { haechan: 1 } }
+  ] },
+
+  { id: 'epi-r-hc-1159', date: '12/30', slot: 'late', flag: 'epi-r-hc-kept', title: 'eleven fifty-nine', place: 'Manhattan · The Lee Apartment · Her Room', time: 'Late Night', scene: [
+    { music: 'epi-r-late' },
+    { n: "He was sitting on the window seat when she came out of the bathroom, in his coat still, with his elbows on his knees, and he didn't say hi." },
+    { s: 'haechan', f: 'serious', t: "You looked at your phone at 11:59 on Friday. Saturday. Sunday. Last night in the lift. On the stairs at the reception. In the dark kitchen with your brother. Every night. You hold your breath. When it turns over you let it out like you've been underwater." },
+    { s: 'solar', f: 'surprised', t: "Haechan." },
+    { s: 'haechan', f: 'serious', t: "Marco didn't know you this morning. I watched it from the lobby. I was coming in with coffee and I watched the doorman who's known you since you were seven ask you who you were visiting, and I watched your face, and you came out and you stood under the awning for nine minutes and you didn't call me." },
+    { s: 'solar', f: 'flustered', t: "It was nothing. He was tired, he said, the dog—" },
+    { s: 'haechan', f: 'serious', t: "Don't." },
+    { n: "He'd never once said it like that. Not loud. He didn't get loud. It was worse than loud: it was the voice he used in the studio when a take was ruined and everybody knew it and nobody wanted to say." },
+    { s: 'haechan', f: 'serious', t: "On the stairs at Alpha you made me promise I'd tell you before I disappeared. Before I used. You made me say it out loud. And I meant it, I've kept it. I told you about Thursdays. I told you about my mother. I've told you every single bad thing I've got." },
+    { s: 'haechan', f: 'sad', t: "And the whole time you were the one disappearing." },
+    { n: "The room went very quiet. The four hundred windows, the radiator, the snow." },
+    { s: 'solar', f: 'sad', t: "That's not fair." },
+    { s: 'haechan', f: 'sad', t: "No. It isn't." },
+    { choose: [
+      { t: "Because if I said it out loud it would be true.", then: [
+        { n: "It came out before she could stop it, small and cracked, the truest thing she'd said all week. He looked at her. His jaw did the thing. And then all the hard went out of his shoulders at once, like a cable cut." },
+        { s: 'haechan', f: 'sad', t: "It's true anyway, Solar. It's just true by yourself." }
+      ] },
+      { t: "You'd have tried to fix it. You can't fix this.", then: [
+        { s: 'haechan', f: 'serious', t: "I know I can't fix it." },
+        { s: 'haechan', f: 'sad', t: "I wasn't going to fix it. I was going to be there for it. That's different. You of all people know that's different." },
+        { n: "She knew. That was the worst part. She'd said almost exactly that to him in October about something else, and he'd remembered, and he'd waited two months to hand it back to her at the exact moment it would land." }
+      ] }
+    ] },
+    { n: "So she told him. Sitting on the floor of her childhood bedroom with her back against the bed and him on the window seat above her, not touching, the whole thing: the frame in the hall, the lift, the group chat, Marco, 11:59, midnight being the door, New Year's being the biggest midnight there was." },
+    { flag: 'epi-r-hc-told-late' },
+    { n: "He listened to all of it without interrupting. When she got to the end, he got down off the window seat, slowly, and sat on the floor next to her, shoulder to shoulder, and didn't say anything for a long time." },
+    { s: 'haechan', f: 'neutral', t: "I'm still mad." },
+    { s: 'solar', f: 'sad', t: "I know." },
+    { s: 'haechan', f: 'neutral', t: "I'm going to be mad for like a day. Then I'm going to be here. Both. At the same time. You're going to have to deal with it." },
+    { s: 'solar', f: 'neutral', t: "Okay." },
+    { s: 'haechan', f: 'neutral', t: "Tomorrow night you check it, I'm checking it with you. Out loud. That's the deal now. New deal." },
+    { n: "She leaned her head on his shoulder. He let her. After a minute his hand came up and found the back of her neck, under her hair, and stayed there, still a little angry, holding on anyway." },
+    { bond: { haechan: 1 } }
+  ] },
+
   { id: 'epi-r-marco', date: '12/30', slot: 'early', title: 'who are you visiting', place: 'Manhattan · The Building · Lobby', time: 'Morning', scene: [
     { music: 'epi-r-bleed' },
     { n: "Tuesday was gray, the kind of flat white-gray that sat on top of the buildings like a lid, and at eight she went down for coffee because her mother's machine made coffee that cost more than a meal and tasted like a radiator, and somebody upstairs had said so, and she'd decided he was right." },
@@ -2098,7 +2206,96 @@
     { s: 'haechan', f: 'neutral', t: "Doesn't have one." },
     { s: 'jaemin', f: 'surprised', t: "Come on. Everything has a name." },
     { s: 'haechan', f: 'neutral', t: "Not yet it doesn't." },
-    { n: "And he got up off the stool and went to get a can, and the conversation was over, and Solar watched it close from four feet away, and put her hand flat on the cold black lid of the piano, and took it off again, because there was nothing on the piano, and there was going to be nothing on the piano." }
+    { n: "And he got up off the stool and went to get a can, and the conversation was over, and Solar watched it close from four feet away, and put her hand flat on the cold black lid of the piano, and took it off again, because there was nothing on the piano, and there was going to be nothing on the piano." },
+    // ── The ask (Kat's approved draft, Nov 10 2026: drafts/RUNNERS-NYE-ASK-DRAFT.md). Flags epi-r-ask-kiss / -tease / -said. ──
+    { ifEpiRoute: 'haechan', then: [
+      { place: 'Manhattan · The Lee Apartment · Her Room', time: 'Late Night', soft: true },
+      { n: "He found her in the hall four minutes later, by the photographs, where she'd gone to stand somewhere that wasn't the front room for a second, because her whole body was still ringing from bar nine and she didn't trust her face." },
+      { n: "He didn't say anything. He took her wrist, two fingers, the way he'd taken it on the landing in Syracuse a hundred years ago in November, and walked her down the hall past the kitchen and the noise and Hyein's voice saying *where are they going, Hanni, where are they GOING,* and into her room, and shut the door with his heel." },
+      { n: "The party went to a hum through the wall. The four hundred windows across the street were all lit for the last night of the year, every one of them, like the building had been waiting up for her." },
+      { s: 'solar', f: 'neutral', t: "What are we doing." },
+      { s: 'haechan', f: 'neutral', t: "Sit." },
+      { s: 'solar', f: 'flustered', t: "Haechan, it's twenty to—" },
+      { s: 'haechan', f: 'neutral', t: "I know what time it is, princess. I'm the only person in this apartment who knows what time it is. Sit." },
+      { n: "She sat on the window seat. He took his headphones from round his neck, the heavy black ones, warm, and held them out to her, and when she didn't take them right away he put them on her himself, carefully, moving her hair out of the way with one finger like he was clearing dust off a record." },
+      { s: 'solar', f: 'neutral', t: "Is this the bridge? You said the bridge was—" },
+      { s: 'haechan', f: 'neutral', t: "It's not the bridge. Just listen." },
+      { n: "He pressed something on his phone and sat down on the floor with his back against the bed frame, facing her, his forearms on his knees, and looked at the carpet. Not at her. That was how she knew it was something." },
+      { n: "It started with nothing. Then under the nothing a hum, very low, so low she felt it in her teeth before she heard it, and she knew it before her mind did, the way you know a smell." },
+      { ifFlag: 'epi-r-walked-2am', then: [
+        { n: "Fifth Avenue at two in the morning. The boilers. The low B, ten thousand of them at once, the whole avenue breathing in one note. Then the breath under her boots that was a train somewhere in the dark under Lexington. Then the tick, small, electric, the light at Seventy-Second turning green for nobody. He'd had the recorder on. Of course he had. He'd stood on the white sidewalk and told her to *listen,* and the whole time he'd been listening too, for this." }
+      ], else: [
+        { n: "The radiator in her room at Alpha, knocking twice, the way it had every morning since August. The bell on the quad. Snow, which she hadn't known had a sound, until she heard him find it." }
+      ] },
+      { ifFlag: 'epi-r-term-ask', then: [
+        { n: "Then, small, off to one side, a laugh. Hers. In the snow, in the cold, somewhere he'd been standing next to her with the little recorder in his coat pocket. He'd asked. She remembered now, him holding it up an inch, *can I keep that,* and her saying *keep what,* and him saying *never mind.* He'd kept it." }
+      ] },
+      { ifFlag: 'epi-r-term-none', then: [
+        { n: "There was no voice in it anywhere. Not hers. She noticed the shape of where it wasn't, the way she'd noticed his own all year, and understood that he'd left it out on purpose, because she'd said *nothing, no recordings, not for now,* and he'd built the whole thing around the hole." }
+      ] },
+      { n: "And then the piano. Four bars of it, the thing from the twenty-sixth, the one he'd said was *nothing, it's a thing I do,* sitting on top of the city like it had been written to go there, which, she realised, it had." },
+      { n: "It went on for a while. She didn't know how long. She sat with her hands in her lap and four hundred windows behind her and listened to the city she'd grown up in sound like somewhere she'd want to live." },
+      { n: "Then it all dropped out, the boilers and the train and the piano, all at once, the way he cut things in the studio, clean, and in the silence there was a voice. His. Close to the mic, low, flat, a little rough, the way he sounded at three in the morning when he'd forgotten anyone was listening." },
+      { n: "*\"So. This is the part where you look at me. Don't. I'm on the floor. I'm looking at your carpet.\"*" },
+      { n: "She looked at him. He was on the floor, looking at her carpet." },
+      { n: "*\"I don't say things. You know that. You've known that since the car. So I made it instead, because that's the only way I've ever been any good at saying anything, and you deserve the good version.\"*" },
+      { n: "*\"It's four minutes long. I timed it so you'd still have six minutes left to say no and get back out there before the ball.\"*" },
+      { n: "*\"Be my girlfriend, Solar.\"*" },
+      { n: "*\"That's it. That's the whole track.\"*" },
+      { n: "The silence after it was the real kind. Not the cut. The room's own. The radiator under the window, the party through the wall, Hyein laughing at something, the four hundred windows." },
+      { n: "She took the headphones off. She held them in both hands. They were still warm." },
+      { n: "He looked up." },
+      { choose: [
+        { t: "(Put the headphones down. Kiss him.)", flag: 'epi-r-ask-kiss', then: [
+          { n: "She put them down on the window seat very carefully, like they might go off, and got down off it onto the floor, onto her knees in her dress in front of him, and took his face in both her hands and kissed him. She didn't say anything. She'd decided on the window seat that she wasn't going to say anything, because he'd said it the only way he knew how and she was going to answer the only way she knew he'd hear. He made a sound against her mouth, small, surprised, like something had been let out of him, and his hands came up and held on to her wrists, not to stop her, just to hold on." },
+          { s: 'haechan', f: 'neutral', t: "...That's a yes." },
+          { s: 'solar', f: 'happy', t: "That's a yes." },
+          { s: 'haechan', f: 'neutral', t: "Okay. Just checking. I'm bad at reading you." },
+          { s: 'solar', f: 'happy', t: "You're the best at reading me. You're the only one who can." },
+          { s: 'haechan', f: 'happy', t: "Yeah. I know. I just wanted to hear you say it." }
+        ] },
+        { t: "You made a four-minute track so you wouldn't have to say one sentence.", flag: 'epi-r-ask-tease', then: [
+          { s: 'haechan', f: 'neutral', t: "Yes." },
+          { s: 'solar', f: 'happy', t: "That's insane." },
+          { s: 'haechan', f: 'neutral', t: "It's mixed, though. Did you hear the low end? I spent a whole day on the low end." },
+          { n: "She laughed. She couldn't help it. She laughed with the headphones in her lap and her eyes going hot, and he watched her do it from the floor with the very corner of his mouth doing something he couldn't stop." },
+          { s: 'solar', f: 'happy', t: "Say it." },
+          { s: 'haechan', f: 'neutral', t: "I said it. It's on the track. Track's the official version." },
+          { s: 'solar', f: 'neutral', t: "Haechan. Say it to my face." },
+          { n: "He looked at her for a long second. Then he said it, flat, the way he said things he'd already decided were true, and it didn't sound flat at all." },
+          { s: 'haechan', f: 'neutral', t: "Be my girlfriend, princess." },
+          { ifFlag: 'epi-r-term-no-word', then: [
+            { s: 'solar', f: 'flustered', t: "...Fine. Boyfriend." },
+            { s: 'haechan', f: 'happy', t: "Wow. Out loud and everything." },
+            { s: 'solar', f: 'flustered', t: "Don't make it a thing." },
+            { s: 'haechan', f: 'happy', t: "I'm going to make it the biggest thing. I'm going to put it on a track." }
+          ], else: [
+            { s: 'solar', f: 'happy', t: "Yes. Obviously. You idiot." }
+          ] }
+        ] },
+        { t: "Come here. Say it again. Not on a recording.", flag: 'epi-r-ask-said', then: [
+          { n: "He got up off the floor. It took him a second; his knees had gone stiff, or he was buying time, she couldn't tell. He sat down next to her on the window seat with the four hundred windows behind them both, and didn't look at the carpet anymore. He looked at her." },
+          { s: 'haechan', f: 'neutral', t: "Be my girlfriend." },
+          { n: "It came out different from the track. Not flat. His voice went somewhere at the end of it she'd never heard it go, a quarter-tone off, like the note on the second *stay* in the studio, and he heard it too, and he didn't take it back." },
+          { s: 'solar', f: 'happy', t: "Yes." },
+          { s: 'haechan', f: 'surprised', t: "Yeah?" },
+          { s: 'solar', f: 'happy', t: "Yes. Obviously yes. You're an idiot, yes." },
+          { ifFlag: 'epi-r-term-no-word', then: [
+            { s: 'solar', f: 'flustered', t: "And you're my boyfriend. I'm saying it. Don't look at me like that." },
+            { s: 'haechan', f: 'neutral', t: "Like what." },
+            { s: 'solar', f: 'flustered', t: "Like I just handed you something." },
+            { s: 'haechan', f: 'happy', t: "You did, though." }
+          ] }
+        ] }
+      ] },
+      { n: "Somebody banged on the door. Jaemin, from the sound of it, the flat of his hand, *TEN MINUTES, LOVEBIRDS, THE BALL WAITS FOR NO MAN,* and Hyein behind him saying *don't call them LOVEBIRDS, Jaemin, they'll never come out,* and Hanni saying *leave them alone,* and all of it fading back down the hall toward the television." },
+      { n: "He stood up and held his hand down to her." },
+      { s: 'haechan', f: 'neutral', t: "Come on. I've got a thing at midnight." },
+      { s: 'solar', f: 'happy', t: "Another thing? You just did a thing." },
+      { s: 'haechan', f: 'neutral', t: "That was the eleven-forty thing. The midnight thing's different. The midnight thing's seven seconds early." },
+      { n: "She didn't ask. She took his hand and let him pull her up, and kept it, all the way down the hall, past the photographs where she was always at the edge, into the front room, where everyone she loved was waiting for the year to end." },
+      { bond: { haechan: 1 } }
+    ] },
   ] },
 
   // ───────────────────────────── 12/31, late: midnight (the act's end) ─────────────────────────────
@@ -2114,6 +2311,7 @@
       { s: 'solar', f: 'happy', t: "Why?" },
       { s: 'haechan', f: 'neutral', t: "Because I'm not doing anything seven seconds late, princess." },
       { n: "He didn't say what *anything* was. He put the phone face up on the mantel and stood beside her with his hands in his pockets, and she looked at the side of his face and saw that he had a plan, a whole thing, she could see it on him the way you could see weather coming over a field, and that he was, for the first time since she'd known him, nervous about it." },
+      { n: "She knew what the thing was now. He was going to kiss her at midnight. The real midnight, the one that happened seven seconds before the room's, so the first thing in the year would be theirs and nobody else's, not even the city's." },
       { n: "She took his hand. Not his wrist. His hand. He let her." }
     ] },
     { ifEpiRoute: 'cover', then: [
@@ -2209,8 +2407,27 @@
       { n: "She closed them again. They went through again." },
       { s: 'solar', f: 'surprised', t: "Donghyuck—" },
       { n: "His name. His real one, the one he'd handed her in the gray light of a morning in November like something he didn't need back. It came out of her cracked straight down the middle." },
-      { s: 'haechan', f: 'serious', t: "Hey. Hey, hey. I'm here." },
+      { ifFlag: 'epi-r-ask-kiss', then: [
+        { s: 'haechan', f: 'serious', t: "Hey. Hey, hey. I'm here. You don't get to kiss me like that and then go." }
+      ], else: [
+        { ifFlag: 'epi-r-ask-tease', then: [
+          { s: 'haechan', f: 'serious', t: "Hey. Hey, hey. I'm here. I've got four minutes of you on a track, Solar. You don't get to be four minutes." }
+        ], else: [
+          { ifFlag: 'epi-r-ask-said', then: [
+            { s: 'haechan', f: 'serious', t: "Hey. Hey, hey. I'm here. I said it to your face. I said it *out loud.* You don't get to go now." }
+          ], else: [
+            { s: 'haechan', f: 'serious', t: "Hey. Hey, hey. I'm here." }
+          ] }
+        ] }
+      ] },
       { s: 'solar', f: 'sad', t: "I can't feel your coat. Donghyuck, I can't feel your *coat*—" },
+      { ifFlag: 'epi-r-hc-told', then: [
+        { s: 'haechan', f: 'serious', t: "I know. I know, I know. You told me. I've been ready all week. I'm *here.*" }
+      ], else: [
+        { ifFlag: 'epi-r-hc-told-late', then: [
+          { s: 'haechan', f: 'serious', t: "I know. I was mad for a day. I'm here. I said both. *I'm here.*" }
+        ] }
+      ] },
       { s: 'haechan', f: 'serious', t: "Stay with me, okay? Princess. Stay with me. Look at me." },
       { n: "She was crying. She hadn't cried on the roof in Syracuse, not once, not with the bell going and the snow stopped in the air." },
       { n: "She was crying now like she was six, in great ugly gulps that didn't sound like anything she'd ever let another person hear, and he didn't flinch from a single one of them." },
@@ -2219,7 +2436,7 @@
       { s: 'haechan', f: 'sad', t: "I know. I know. I'm right here." },
       { n: "His face was an inch from hers with the fireworks going gold and green across it, and for once in his whole life he wasn't flat." },
       { n: "Every single thing he'd ever filed away was on it, all at once. He let her see all of it. He didn't make any of it smaller." },
-      { n: "Whatever his whole thing had been, his midnight, the four seconds of something he'd synced to the actual time, it was gone, and he knew it was gone, and he didn't reach for it." },
+      { n: "Whatever his midnight had been, the seven seconds he'd synced so the first thing in the year would be theirs, it was gone, and he knew it was gone, and he didn't reach for it." },
       { n: "He said the other thing instead. The one he'd kept back on the roof in Syracuse, in the snow, when all he'd said was *I've got you.*" },
       { s: 'haechan', f: 'sad', t: "Listen to me. Solar. Are you listening?" },
       { s: 'solar', f: 'sad', t: "...Yeah." },
