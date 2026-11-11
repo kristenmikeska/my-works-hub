@@ -276,6 +276,19 @@ Save as: `mg-ow-potg-kiriko.png`
 A dramatic landscape 16:9 splash in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light: Kiriko from Overwatch mid-action, leaping forward with kunai in one hand and glowing ofuda fanned in the other, her spirit fox Kitsune swirling behind her in blue light, cherry-blossom petals in the air, a bold dark background with sweeping orange and pink light. Leave the left third darker for the "Play of the Game" title. No text, no logos, no UI.
 ```
 
+**[ ] 43N. Player cards: the Syracuse team** (the scoreboard and the end screen of the Regionals match)  
+Attach: `Solar (Regionals).png`, `Chenle (Regionals).png`, `Minji (Regionals).png`, `Olivia (Regionals).png`, `Haerin (Regionals).png`  
+Save as: `mg-ow-cards.png`
+```
+A 5 × 1 sheet of five esports player cards in the same anime style as the attached faces, on a plain transparent background (or plain white), equal size, clear space between them: each is one of the attached people from the chest up, in a Syracuse esports jersey (orange and navy with a white "S" and a small number), a gaming headset around the neck, at a tournament, behind them a slanted pink-and-black card frame. In order: the girl from the first image (calm, confident smile), the boy from the second (cheerful, serious-eyed), the girl from the third (cool, focused), the girl from the fourth (loud, mid-laugh), the girl from the fifth (quiet, level look). No text, no names.
+```
+
+**[ ] 43O. Round cards: victory and defeat**  
+Save as: `mg-ow-victory.png` and `mg-ow-defeat.png` (two pictures)
+```
+A wide 16:9 dramatic background in the official Overwatch art style, no characters, no text: for VICTORY, golden light bursting from the centre, confetti, sweeping pink and orange shapes; for DEFEAT, cold dark blue-grey with cracked light, drifting embers. Leave the middle clear for a big word.
+```
+
 ## 44. Dumpling cooking minigame (Kat, Nov 10)
 
 For the New Year's Eve dumpling game (12/31). The dumpling itself is drawn by the game so it can roll, fill, fold, pleat, plump and brown; these two pictures dress the kitchen around it. Optional: the game already looks finished without them.
@@ -290,6 +303,38 @@ A wide 16:10 top-down view of a kitchen counter in the Persona 3: Solstice style
 Save as: `cook-pan.png`
 ```
 A wide 16:10 top-down view of a black cast-iron frying pan on a stove in the Persona 3: Solstice style: clean anime illustration, soft cel shading, bright and cosy, pink accents, like a cute cooking game, no people: the pan round and empty in the middle (the dumplings go inside it), a little oil shimmering, a long handle to the right, the stove's grate and a soft orange flame glow around it, a glass lid with a pink knob resting at the edge of the picture. Warm cosy kitchen light. Leave the inside of the pan empty. No text, no logos.
+```
+
+**[ ] 44C. Haechan in an apron, six faces** (his corner of the cooking game)  
+Attach: `Haechan (Runners).png`  
+Save as: `cook-haechan-faces.png`
+```
+A 3 × 2 portrait sheet in the Persona 3: Solstice style: clean anime illustration, soft cel shading, bright and cosy, pink accents, like a cute cooking game, on a plain transparent background (or plain white), clear space between cells, nothing overlapping: the same young man as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell. He wears a plain black T-shirt with a pink apron over it and a white tea towel slung over one shoulder, his black hair messy, a little flour on one cheek. Expressions in reading order: neutral (flat, unimpressed), happy (a small reluctant smile), sad (pained, looking at a ruined dumpling), serious (deadpan judging), surprised (eyebrows up, actually impressed), flustered (looking away, caught smiling). No text.
+```
+
+**[ ] 44D. Solar's hands with the rolling pin**  
+Save as: `cook-hands.png`
+```
+A wide first-person view in the Persona 3: Solstice style: clean anime illustration, soft cel shading, bright and cosy, pink accents, like a cute cooking game, landscape 16:9, transparent background: two slim hands in a cream knit sweater with the sleeves pushed up, rising from the bottom corners, holding the two ends of a white marble rolling pin (a little pink price sticker still on it), flour on the fingers. Only the hands, forearms and the pin; the rest of the picture empty. No text.
+```
+
+**[ ] 44E. Dumpling icons** (the tray at the top of the screen)  
+Save as: `cook-icons.png`
+```
+A 3 × 2 sheet of six small cute icons in the Persona 3: Solstice style: clean anime illustration, soft cel shading, bright and cosy, pink accents, like a cute cooking game, on a plain transparent background (or plain white), each centred in its cell with clear space around it, all the same size, seen from the side: 1 a perfect pleated dumpling with a tiny gold sparkle, 2 an okay dumpling with uneven pleats, 3 a sad lumpy "bag" dumpling, 4 a dumpling with a golden fried bottom, 5 a dumpling with a burnt black bottom, 6 a pale steamed dumpling. Chunky, round and adorable. No text.
+```
+
+**[ ] 44F. Grade stamps**  
+Save as: `cook-stamps.png`
+```
+A 2 × 2 sheet of four round rubber-stamp style badges in the Persona 3: Solstice style: clean anime illustration, soft cel shading, bright and cosy, pink accents, like a cute cooking game, on a plain transparent background (or plain white), clear space between them, each a different cute design: S, a gold star badge with a tiny dumpling chef hat; A, a pink heart badge with a happy dumpling; B, a soft blue badge with a shrugging dumpling; C, a grey badge with a squished dumpling and a sweat drop. Put the big letter S, A, B or C in the middle of each badge. No other text.
+```
+
+**[ ] 44G. Title card: dumpling time**  
+Attach: `Solar (Runners).png`, `Haechan (Runners).png`  
+Save as: `cook-title.png`
+```
+A cute splash illustration in the Persona 3: Solstice style: clean anime illustration, soft cel shading, bright and cosy, pink accents, like a cute cooking game, landscape 16:9: chibi versions of the two attached people side by side in pink aprons behind a floury kitchen counter, the girl holding up a slightly lopsided dumpling proudly and the boy holding a perfect one with a deadpan face, a tray of dumplings, steam curls and little sparkles around them, a soft pink-and-cream background with gingham patterns. Leave the top third fairly clear for a title. No text.
 ```
 
 ---
