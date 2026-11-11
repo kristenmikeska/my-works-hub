@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="../../assets/femc/game/minigames/dumplings.css?v=5">
 <link rel="stylesheet" href="../../assets/femc/game/minigames/studio.css?v=1">
 <link rel="stylesheet" href="../../assets/femc/game/minigames/listen.css?v=1">
-<link rel="stylesheet" href="../../assets/femc/game/minigames/sing.css?v=3">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/sing.css?v=5">
 <style>
   :root { color-scheme: dark; }
   body { margin: 0; min-height: 100vh; background: #14070f; color: #fff; font-family: system-ui, sans-serif; display: grid; place-content: center; gap: 18px; padding: 24px 16px; }
@@ -32,7 +32,7 @@
     <div class="card"><small>REGIONALS · 12/6–7</small><h2>Support</h2><p>Keep Syracuse alive for 70 seconds. Tap teammates (1–4) to heal, Space for the Suzu on the callouts, Q for Kitsune Rush.</p><button data-g="support">Play</button></div>
     <div class="card"><small>NEW YEAR'S EVE · 12/31</small><h2>Dumplings</h2><p>Roll the wrapper, spoon the filling, pleat it shut, then pan-fry them golden. Four dumplings. Haechan is grading.</p><button data-g="dumplings">Play</button></div>
     <div class="card"><small>STUDIO 4B</small><h2>The mix</h2><p>Four faders, your song. Play it back and he'll tell you the one thing that's wrong. Fewer playbacks is better.</p><button data-g="studio">Play</button></div>
-    <div class="card"><small>STUDIO 4B · "RUNNERS" BY CAMO</small><h2>The booth</h2><p>Sing the song for real. Notes fall to the mic in time with the track: D F J (or ← ↓ →, or tap). Hold the long ones. He's on talkback.</p><p><label><input type="radio" name="sglv" value="easy"> Easy</label> <label><input type="radio" name="sglv" value="normal" checked> Normal</label> <label><input type="radio" name="sglv" value="hard"> Hard</label></p><button data-g="sing">Play</button></div>
+    <div class="card"><small>STUDIO 4B · "RUNNERS" BY CAMO</small><h2>The booth</h2><p>Sing the song for real, rhythm-game style. Arrows rise to the targets in time with her voice: <b>D F J K</b> (← ↓ ↑ →), hold the trails. Esc pauses (speed, downscroll, offset).</p><p><label><input type="radio" name="sglv" value="easy"> Easy</label> <label><input type="radio" name="sglv" value="normal" checked> Normal</label> <label><input type="radio" name="sglv" value="hard"> Hard</label></p><p><label><input type="checkbox" id="sgdraft"> Use my chart from the editor</label> · <a href="sing-editor.html">Chart editor</a></p><button data-g="sing">Play</button></div>
     <div class="card"><small>FIFTH AVENUE · 12/29, 2 A.M.</small><h2>Listen</h2><p>He names a sound of the city. Tap the lights on the street to hear them, then pick the one he means.</p><button data-g="listen">Play</button></div>
   </div>
   <pre id="out">Last result shows here.</pre>
@@ -40,10 +40,10 @@
   <script src="../../assets/femc/game/minigames/dumplings.js?v=6"></script>
   <script src="../../assets/femc/game/minigames/studio.js?v=1"></script>
   <script src="../../assets/femc/game/minigames/listen.js?v=1"></script>
-  <script src="../../assets/femc/game/minigames/charts/runners.js?v=2"></script>
-  <script src="../../assets/femc/game/minigames/sing.js?v=3"></script>
+  <script src="../../assets/femc/game/minigames/charts/runners.js?v=3"></script>
+  <script src="../../assets/femc/game/minigames/sing.js?v=5"></script>
   <script>
-    const G = { support: () => FemcSupport.play({}), dumplings: () => FemcDumplings.play({ mute: document.getElementById('mute').checked }), studio: () => FemcStudio.play({ mute: document.getElementById('mute').checked }), listen: () => FemcListen.play({ mute: document.getElementById('mute').checked }), sing: () => FemcSing.play({ mute: document.getElementById('mute').checked, level: document.querySelector('[name=sglv]:checked').value, record: /[?&]record=1/.test(location.search) }) };
+    const G = { support: () => FemcSupport.play({}), dumplings: () => FemcDumplings.play({ mute: document.getElementById('mute').checked }), studio: () => FemcStudio.play({ mute: document.getElementById('mute').checked }), listen: () => FemcListen.play({ mute: document.getElementById('mute').checked }), sing: () => FemcSing.play({ mute: document.getElementById('mute').checked, level: document.querySelector('[name=sglv]:checked').value, chart: document.getElementById('sgdraft').checked ? (FemcSing.draft('runners') || {}).charts : null }) };
     document.querySelectorAll('[data-g]').forEach(b => b.onclick = () => G[b.dataset.g]().then(r => { document.getElementById('out').textContent = b.dataset.g + ': ' + JSON.stringify(r); }));
   </script>
 </body>

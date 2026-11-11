@@ -1,202 +1,264 @@
-/* FEMC epilogue minigame: the booth (Nov 10 2026, Kat: the studio game should feel like Solstice / Runners, "sound may be the most
-   important", "syncing it to an actual song would be A plus"; replaces studio.js's fader game). Runners: Studio 4B, Solar in the
-   booth with headphones on, Haechan behind the glass at the desk. Standalone: nothing in the story calls it yet
-   (mockups/minigames/sing.html).
+/* FEMC epilogue minigame: the booth (Nov 10 2026). Kat: "I am a BIG Friday Night Funkin player ... something more like that
+   gameplay wise. DFJK. D is left, F is down, J is up, K is right. The music should be synced to the singer. ... graphics and
+   animations ... our own take on that, Solstice style. No opponent." Runners: Studio 4B, Solar sings "Runners" by CAMO at the mic,
+   Haechan bobs to it behind the glass. Standalone: nothing in the story calls it yet (demo: mockups/minigames/index.html; the chart
+   editor Kat uses to fix the sync: mockups/minigames/sing-editor.html).
 
-   FemcSing.play({ host, song, level, mute, record, onDone })
-     record true = chart-recording mode for Kat: no notes, the song plays, every press (and hold) is logged; the end shows JSON + Copy for Claude -> Promise<result>
-     song   chart id in window.FEMC_CHARTS (default 'runners': "Runners" by CAMO, minigames/charts/runners.js)
-     level  'easy' | 'normal' | 'hard' (default 'normal')   mute  no sound at all (the game still runs on the clock)
-   result = { song, level, score, accuracy (0-100), perfect, good, miss, maxCombo, grade: 'S' | 'A' | 'B' | 'C', quit }
+   FemcSing.play({ host, song, level, mute, chart, from, onDone }) -> Promise<result>
+     from   start the song at this second (the editor's Test from here); notes before it are dropped
+     song   chart id in window.FEMC_CHARTS (default 'runners', minigames/charts/runners.js)
+     level  'easy' | 'normal' | 'hard' (default 'normal')
+     chart  optional { easy, normal, hard } overriding the file's charts (the editor's draft: FemcSing.draft(song))
+     mute   no sound (the game runs on a free clock)
+   result = { song, level, score, accuracy (0-100), perfect, good, ok, miss, maxCombo, fc, grade: 'S'|'A'|'B'|'C', failed, quit }
 
-   How it plays: three lanes (low, mid, high: her voice), notes slide down to the mic line in time with the real song. Press the
-   lane's key as a note reaches the line (D / F / J, or ← ↓ →, or tap the lane); hold through long notes. Perfect ±60 ms, Good
-   ±130 ms. A hit lights her waveform and the lane; a miss dips the music for a moment (her voice dropping out of the mix).
-   "On my count. You come in right away, so be ready." Haechan talks back through the talkback between sections and on streaks and slips.
-   The chart is generated from the track's own onsets (charts/runners.js, header says how), so the notes land on the music.
-   Art (FEMC-ART-TODO 45, art/minigames/sing/): booth.webp (Studio 4B from the booth), solar-mic.webp, haechan-desk.webp;
-   until then a drawn studio with their portraits. Esc pauses (and the song). Reduced motion: no shakes or particles. */
+   Play: arrows rise to the four targets (downscroll: they fall); press D F J K (or ← ↓ ↑ →) as one covers its target, hold through
+   the trails. Ghost tapping is free. PERFECT ±45 ms, GOOD ±90, OK ±135, else MISS. Health (the bar under the strum, Solar's icon)
+   +on hits, −on misses: empty = Haechan stops the take (Retry). A miss dips the track and Solar's pose cracks.
+   Feel: "Ready? / Set. / Sing!" count-in on the beat, the stage bops every bar and the HUD every beat, Solar poses per arrow
+   and holds it through a trail, Haechan bobs every beat (talkback lines between sections), PERFECT splash, rating + combo pop.
+   Options (pause menu, saved in localStorage kg-femc-sing-opts, shared with the editor): scroll speed, downscroll, offset (ms;
+   + if the notes feel early). Clock: the song's own currentTime, smoothed between its updates.
+   Art (FEMC-ART-TODO 45, art/minigames/sing/, cut by tools/femc-minigame-art.py): booth, haechan-desk; solar-idle / -left /
+   -down / -up / -right / -miss (her singing poses); haechan-bop-0 / -1; arrow-0..3, target; rating-perfect / -good / -ok / -miss;
+   ready / set / sing; icon-solar. Each falls back to a drawn stand-in. Reduced motion: no bops or shakes. */
 window.FemcSing = (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const base = () => (window.FemcGame && window.FemcGame.base) || (document.querySelector('script[src*="minigames/sing.js"]')?.src.split('assets/')[0]) || '';
+  const base = () => (window.FemcGame && window.FemcGame.base) || (document.querySelector('script[src*="minigames/sing"]')?.src.split('assets/')[0]) || '';
   const pick = a => a[Math.floor(Math.random() * a.length)];
-  const KEYS = [['d', 'arrowleft'], ['f', 'arrowdown'], ['j', 'arrowright']];
-  const PERFECT = 0.06, GOOD = 0.13, LEAD = 1.6; // seconds a note is on screen before the line
+  const DIRS = ['left', 'down', 'up', 'right'], ROT = [-90, 180, 0, 90];
+  const KEYS = [['d', 'arrowleft'], ['f', 'arrowdown'], ['j', 'arrowup'], ['k', 'arrowright']];
+  const WIN = [['perfect', 0.045, 350, 1, 2.3], ['good', 0.09, 200, 0.75, 1.5], ['ok', 0.135, 100, 0.4, 0.4]];
+  const OPTS_KEY = 'kg-femc-sing-opts', DRAFT_KEY = id => `kg-femc-sing-draft:${id}`;
+  const opts = () => { let o = {}; try { o = JSON.parse(localStorage.getItem(OPTS_KEY)) || {}; } catch (e) {} return { speed: 2.2, down: false, offset: 0, ...o }; };
+  const saveOpts = o => { try { localStorage.setItem(OPTS_KEY, JSON.stringify(o)); } catch (e) {} };
+  const draft = id => { try { return JSON.parse(localStorage.getItem(DRAFT_KEY(id))) || null; } catch (e) { return null; } };
+  // the arrow: one path pointing up, rotated per lane (the Solstice take: a chunky cut arrow)
+  const ARROW = '<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6 L92 50 L66 50 L66 94 L34 94 L34 50 L8 50 Z"/></svg>';
   const TALK = {
-    intro: ["On my count. You come in right away, so be ready.", "Headphones on. Don't look at me, look at the line."],
-    verse: ['Good. Stay in it.', "There you are."],
-    breath: ['Breathe here. You wrote it on the sheet eleven times.', 'Easy. It drops out. Let it.'],
-    chorus: ['Here it comes. Don\'t reach for it.', 'Open up. The room wants it.'],
+    intro: ["On my count. You're in right away.", "Headphones on. Eyes on the arrows, not on me."],
+    verse: ['Good. Stay in it.', 'There you are.'],
+    breath: ['Breathe here.', 'Easy. Let it drop out.'],
+    chorus: ["Here it comes. Don't reach for it.", 'Open up. The room wants it.'],
     bridge: ['Bridge. You always rush the bridge.', "You're rushing the and."],
-    last: ['Last one. Give it everything you didn\'t give the first time.', 'All of it now.'],
-    outro: ['Let the last note go. Don\'t hold on to it.'],
+    last: ['Last one. Give it everything.', 'All of it now.'],
+    outro: ['Let the last note go.'],
     streak: ['...Yeah. That.', 'Keep doing that.', "Don't think. You're doing it."],
-    slip: ['Again from the bridge.', "You're rushing.", "It's fine. Find it again.", 'Listen to the kick.'],
-    end: { S: "...Don't touch it. That's the take.", A: "That's the song. I'll keep that one.", B: "It's a take. We'll comp it.", C: 'Again. From the top. You know it, you just don\'t trust it yet.' },
+    slip: ['Find it again.', "You're rushing.", 'Listen to the kick.'],
+    fail: 'Stop. Stop the take. ...Again from the top. You know this.',
+    end: { S: "...Don't touch it. That's the take.", A: "That's the song. I'm keeping that one.", B: "It's a take. We'll comp it.", C: "Again. You know it, you just don't trust it yet." },
   };
 
   function play(o = {}) {
     return new Promise(done => {
       const C = (window.FEMC_CHARTS || {})[o.song || 'runners'];
       if (!C) { done({ quit: true, error: 'no chart' }); return; }
-      const level = o.level || 'normal', rec = o.record ? [] : null, notes = (rec ? [] : C.charts[level] || C.charts.normal).map(n => ({ ...n, hit: null, held: false, holdOk: false }));
-      const host = o.host || document.body, ART = id => `${base()}assets/femc/game/art/minigames/sing/${id}.webp`;
+      const level = o.level || 'normal', src = (o.chart && o.chart[level]) || C.charts[level] || C.charts.normal;
+      const O = opts(), host = o.host || document.body, ART = id => `${base()}assets/femc/game/art/minigames/sing/${id}.webp`;
       const FACE = (w, f) => `${base()}assets/femc/portraits/${w}-runners/${f}.webp`;
-      const BAR = 240 / C.bpm, BEAT = 60 / C.bpm, FIRST = notes.length ? notes[0].t : 0, START = 0;
-      const st = { t: -(LEAD + BEAT * 3), score: 0, combo: 0, maxCombo: 0, perfect: 0, good: 0, miss: 0, paused: false, over: false, sec: -1, held: [false, false, false] };
+      const BEAT = 60 / C.bpm, PRE = BEAT * 4, FROM = Math.max(0, +o.from || 0); // a bar of count-in before the song
       const el = document.createElement('div');
-      el.className = 'mg-sing' + (reduced.matches ? ' still' : '');
+      el.className = 'mg-sing' + (reduced.matches ? ' still' : '') + (O.down ? ' down' : '');
+      const img = (cls, id, alt = '') => `<img class="${cls}" src="${ART(id)}" alt="${alt}" onerror="this.remove()">`;
       el.innerHTML = `
-        <div class="sg-room"><img class="sg-booth-art" src="${ART('booth')}" alt="" onerror="this.remove()"><div class="sg-room-stand"><i class="foam"></i><i class="glass"></i><i class="light"></i></div>
-          <div class="sg-glass"><img class="sg-hc-art" src="${ART('haechan-desk')}" alt="" onerror="this.remove()"><img class="sg-hc" src="${FACE('haechan', 'neutral')}" alt="Haechan"><span class="sg-desk"></span><span class="sg-redlight"></span></div>
-          <div class="sg-solar"><img class="sg-solar-art" src="${ART('solar-mic')}" alt="" onerror="this.remove()"><img class="sg-sl" src="${FACE('solar', 'neutral')}" alt="Solar"><span class="sg-mic"></span></div></div>
-        <div class="sg-top"><b>Studio 4B · ${esc(C.title)}</b><small>${esc(C.artist || '')}</small><span class="sg-sec"></span><span class="sg-score">0</span></div>
-        <p class="sg-talk" aria-live="polite"><b>Haechan</b><span></span></p>
-        <div class="sg-lanes">${[0, 1, 2].map(i => `<div class="sg-lane" data-l="${i}"><i class="beam"></i><span class="key">${['D', 'F', 'J'][i]}</span></div>`).join('')}<div class="sg-line"></div><div class="sg-count" aria-live="off"></div><div class="sg-notes"></div><div class="sg-judge"></div></div>
-        <canvas class="sg-wave" width="600" height="80" aria-hidden="true"></canvas>
-        <div class="sg-combo"></div><div class="sg-prog"><i></i></div>
-        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="quit">Quit</button></div>
+        <div class="sg-stage">
+          ${img('sg-booth-art', 'booth')}<div class="sg-room"><i class="foam"></i><i class="glow"></i></div>
+          <div class="sg-glass">${img('sg-hc-art', 'haechan-desk')}<div class="sg-hc">${img('sg-hc-bop b0', 'haechan-bop-0')}${img('sg-hc-bop b1', 'haechan-bop-1')}<img class="sg-hc-face" src="${FACE('haechan', 'neutral')}" alt="Haechan"></div><span class="sg-desk"></span><span class="sg-onair">ON AIR</span></div>
+          <p class="sg-talk" aria-live="polite"><b>Haechan</b><span></span></p>
+          <div class="sg-solar" data-pose="idle">${DIRS.concat('idle', 'miss').map(p => img(`sg-pose p-${p}`, `solar-${p}`)).join('')}<img class="sg-sl-face" src="${FACE('solar', 'neutral')}" alt="Solar"><span class="sg-mic"></span><i class="sg-notes-fx"></i></div>
+          <div class="sg-pop"></div>
+        </div>
+        <div class="sg-hud">
+          <div class="sg-time"><i></i><span></span></div>
+          <div class="sg-strum">
+            ${[0, 1, 2, 3].map(i => `<div class="sg-col" data-l="${i}"><div class="sg-target" style="--r:${ROT[i]}deg">${ARROW}${img('sg-t-art', 'target')}</div><i class="sg-splash"></i></div>`).join('')}
+            <div class="sg-notes"></div>
+          </div>
+          <div class="sg-health"><i></i><b class="sg-icon"><img src="${ART('icon-solar')}" alt="" onerror="this.onerror=null;this.src='${FACE('solar', 'happy')}'"></b></div>
+          <p class="sg-stats"></p>
+          <div class="sg-count"></div>
+        </div>
+        <div class="mg-pause" hidden><b>Paused</b>
+          <button type="button" data-mg="resume">Resume</button><button type="button" data-mg="restart">Restart</button>
+          <div class="sg-opts">
+            <label>Scroll speed <input type="range" min="1" max="4" step="0.1" data-o="speed"><output></output></label>
+            <label><input type="checkbox" data-o="down"> Downscroll</label>
+            <label>Offset <input type="range" min="-200" max="200" step="5" data-o="offset"><output></output> ms</label>
+          </div>
+          <button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
-      const $ = s => el.querySelector(s), lanes = [...el.querySelectorAll('.sg-lane')], noteBox = $('.sg-notes');
-      // notes as elements, made once
-      notes.forEach(n => { n.el = document.createElement('i'); n.el.className = `sg-note l${n.lane}${n.len ? ' hold' : ''}`; if (n.len) n.el.style.setProperty('--len', n.len / LEAD); noteBox.appendChild(n.el); });
+      const $ = s => el.querySelector(s), cols = [...el.querySelectorAll('.sg-col')], noteBox = $('.sg-notes'), solar = $('.sg-solar');
+      let notes;
+      const st = { score: 0, combo: 0, maxCombo: 0, perfect: 0, good: 0, ok: 0, miss: 0, hp: 50, paused: false, over: false, sec: -1, held: [false, false, false, false], beat: -99, count: -1 };
+      const build = () => {
+        noteBox.innerHTML = '';
+        notes = src.filter(n => n.t >= FROM - 0.02).map(n => ({ ...n, lane: n.lane % 4, hit: null, held: false, done: false })).sort((a, b) => a.t - b.t);
+        notes.forEach(n => {
+          n.el = document.createElement('div'); n.el.className = `sg-note l${n.lane}`; n.el.style.setProperty('--r', ROT[n.lane] + 'deg'); n.el.style.display = 'none';
+          n.el.innerHTML = (n.len ? '<i class="sg-trail"></i>' : '') + `<span class="sg-head">${ARROW}<img src="${ART('arrow-' + n.lane)}" alt="" onerror="this.remove()"></span>`;
+          noteBox.appendChild(n.el);
+        });
+      };
+      build();
 
-      /* audio: the song through an <audio>, routed via Web Audio so a miss can dip it */
+      /* audio: the song through Web Audio so a miss can dip it; synth for the count-in and misses */
       let audio = null, ac = null, gain = null, filt = null;
       if (!o.mute) {
         audio = new Audio(`${base()}${C.src}`); audio.preload = 'auto';
-        try { ac = new (window.AudioContext || window.webkitAudioContext)(); const src = ac.createMediaElementSource(audio); filt = ac.createBiquadFilter(); filt.type = 'lowpass'; filt.frequency.value = 20000; gain = ac.createGain(); gain.gain.value = 0.9; src.connect(filt); filt.connect(gain); gain.connect(ac.destination); } catch (e) { ac = null; }
+        try { ac = new (window.AudioContext || window.webkitAudioContext)(); const s = ac.createMediaElementSource(audio); filt = ac.createBiquadFilter(); filt.type = 'lowpass'; filt.frequency.value = 20000; gain = ac.createGain(); gain.gain.value = 0.9; s.connect(filt); filt.connect(gain); gain.connect(ac.destination); } catch (e) { }
       }
-      const tick = (f, g = 0.05) => { if (!ac) return; const t = ac.currentTime, os = ac.createOscillator(), v = ac.createGain(); os.type = 'triangle'; os.frequency.value = f; v.gain.setValueAtTime(g, t); v.gain.exponentialRampToValueAtTime(0.0001, t + 0.09); os.connect(v); v.connect(ac.destination); os.start(t); os.stop(t + 0.1); };
-      const dip = () => { if (!ac || !filt) return; const t = ac.currentTime; filt.frequency.cancelScheduledValues(t); filt.frequency.setValueAtTime(900, t); filt.frequency.exponentialRampToValueAtTime(20000, t + 0.5); };
+      const tone = (f, len = 0.12, g = 0.06, type = 'triangle') => { if (!ac) return; const t = ac.currentTime, os = ac.createOscillator(), v = ac.createGain(); os.type = type; os.frequency.value = f; v.gain.setValueAtTime(g, t); v.gain.exponentialRampToValueAtTime(0.0001, t + len); os.connect(v); v.connect(ac.destination); os.start(t); os.stop(t + len + 0.02); };
+      const crack = () => { if (!ac) return; tone(180, 0.18, 0.05, 'sawtooth'); const t = ac.currentTime; if (filt) { filt.frequency.cancelScheduledValues(t); filt.frequency.setValueAtTime(700, t); filt.frequency.exponentialRampToValueAtTime(20000, t + 0.45); } };
 
-      const say = (k, face = 'neutral') => { $('.sg-talk span').textContent = typeof k === 'string' ? k : pick(k); const im = $('.sg-hc'); if (!im.src.endsWith(face + '.webp')) im.src = FACE('haechan', face); el.classList.remove('talk'); void el.offsetWidth; el.classList.add('talk'); };
-      const solarFace = f => { const im = $('.sg-sl'); if (!im.src.endsWith(f + '.webp')) im.src = FACE('solar', f); };
-      const judge = (txt, cls, lane) => { const j = document.createElement('b'); j.className = 'sg-j ' + cls; j.textContent = txt; j.style.left = `${(lane + 0.5) * 33.33}%`; $('.sg-judge').appendChild(j); setTimeout(() => j.remove(), 600); };
-      const burst = lane => { lanes[lane].classList.remove('hit'); void lanes[lane].offsetWidth; lanes[lane].classList.add('hit'); };
-      const comboShow = () => { const c = $('.sg-combo'); c.textContent = st.combo >= 5 ? `${st.combo} COMBO` : ''; c.classList.toggle('big', st.combo >= 20); };
-
-      /* the clock: the song's own time when it plays, else a free clock */
-      let started = false, t0 = 0, lastNow = 0, pauseAt = 0;
-      const now = () => audio && started && !audio.paused ? audio.currentTime : st.t;
-      const start = () => {
-        started = true; t0 = performance.now();
-        if (audio) { ac && ac.resume(); audio.currentTime = START; audio.play().catch(() => { audio = null; }); }
-        say(TALK.intro);
+      /* the clock: before the song a free count-in; then the song's own time, smoothed between its updates */
+      let started = false, pre = FROM - PRE, last = 0, sync = { a: -1, p: 0 };
+      const songT = () => {
+        if (!started || !audio) return pre;
+        const a = audio.currentTime, p = performance.now();
+        if (a !== sync.a) sync = { a, p };
+        return audio.paused ? a : sync.a + (p - sync.p) / 1000;
       };
+      const now = () => songT() - O.offset / 1000;
+
+      const say = (k, face = 'neutral') => { $('.sg-talk span').textContent = typeof k === 'string' ? k : pick(k); const im = $('.sg-hc-face'); if (!im.src.endsWith(face + '.webp')) im.src = FACE('haechan', face); el.classList.remove('talk'); void el.offsetWidth; el.classList.add('talk'); };
+      let poseT = 0;
+      const pose = (p, ms = 380) => { solar.dataset.pose = p; solar.classList.remove('hitpose'); void solar.offsetWidth; solar.classList.add('hitpose'); clearTimeout(poseT); if (ms) poseT = setTimeout(() => { if (!notes.some(n => n.held)) solar.dataset.pose = 'idle'; }, ms); };
+      const popRating = (r, combo) => {
+        const box = $('.sg-pop'), d = document.createElement('div'); d.className = 'sg-rate ' + r;
+        d.innerHTML = `<img src="${ART('rating-' + r)}" alt="" onerror="this.remove()"><b>${{ perfect: 'PERFECT!!', good: 'GOOD', ok: 'OK', miss: 'MISS' }[r]}</b>` + (combo >= 10 ? `<span class="sg-num">${String(combo).padStart(3, '0').split('').map((c, i) => `<i style="--i:${i}">${c}</i>`).join('')}</span>` : '');
+        box.appendChild(d); setTimeout(() => d.remove(), 700); while (box.children.length > 4) box.firstChild.remove();
+      };
+      const splash = lane => { const s = cols[lane].querySelector('.sg-splash'); s.classList.remove('on'); void s.offsetWidth; s.classList.add('on'); };
+      const health = d => { st.hp = Math.max(0, Math.min(100, st.hp + d)); $('.sg-health').style.setProperty('--hp', st.hp); el.classList.toggle('low', st.hp < 25); if (st.hp <= 0) fail(); };
+      const stats = () => { const tot = st.perfect + st.good + st.ok + st.miss, acc = tot ? (st.perfect + st.good * 0.75 + st.ok * 0.4) / tot * 100 : 100; $('.sg-stats').textContent = `Score ${Math.round(st.score).toLocaleString()} · Misses ${st.miss} · ${acc.toFixed(2)}%`; return acc; };
 
       /* hitting */
       const press = lane => {
         if (st.over || st.paused) return;
-        st.held[lane] = true; lanes[lane].classList.add('down');
-        if (rec) { rec.push({ t: +now().toFixed(3), lane, len: 0, down: now() }); burst(lane); tick(990); return; }
-        const t = now(), cand = notes.find(n => n.lane === lane && n.hit == null && !n.held && !n.done && Math.abs(n.t - t) <= GOOD);
-        if (!cand) return;
-        const d = Math.abs(cand.t - t), ok = d <= PERFECT ? 'perfect' : 'good';
-        cand.hit = ok; cand.el.classList.add('gone'); st[ok]++; st.combo++; st.maxCombo = Math.max(st.maxCombo, st.combo);
-        st.score += (ok === 'perfect' ? 300 : 120) * (1 + Math.min(st.combo, 50) / 50);
-        if (cand.len) { cand.hit = null; cand.held = true; cand.el.classList.remove('gone'); cand.el.classList.add('holding'); }
-        judge(ok === 'perfect' ? 'PERFECT' : 'GOOD', ok, lane); burst(lane); tick(ok === 'perfect' ? 1320 : 990);
-        energy = Math.min(1, energy + (ok === 'perfect' ? 0.35 : 0.2)); solarFace(st.combo > 15 ? 'happy' : 'neutral');
-        if (st.combo && st.combo % 25 === 0) say(TALK.streak, 'happy');
-        comboShow();
+        st.held[lane] = true; cols[lane].classList.add('press');
+        const t = now(); let cand = null;
+        for (const n of notes) if (n.lane === lane && !n.hit && !n.done && Math.abs(n.t - t) <= WIN[2][1]) { cand = n; break; }
+        if (!cand) return; // ghost tap: free
+        const d = Math.abs(cand.t - t), [r, , pts, , hp] = WIN.find(x => d <= x[1]);
+        cand.hit = r; st[r]++; st.combo++; st.maxCombo = Math.max(st.maxCombo, st.combo); st.score += pts; health(hp);
+        cols[lane].classList.remove('hit'); void cols[lane].offsetWidth; cols[lane].classList.add('hit');
+        if (r === 'perfect') splash(lane);
+        popRating(r, st.combo); pose(DIRS[lane], cand.len ? 0 : 380);
+        if (cand.len) { cand.held = true; cand.el.classList.add('holding'); } else { cand.done = true; cand.el.remove(); }
+        if (st.combo && st.combo % 50 === 0) say(TALK.streak, 'happy');
+        stats();
       };
       const release = lane => {
-        st.held[lane] = false; lanes[lane].classList.remove('down');
-        if (rec) { const r = [...rec].reverse().find(x => x.lane === lane && x.down != null); if (r) { const d = now() - r.down; r.len = d > 0.35 ? +d.toFixed(3) : 0; delete r.down; } return; }
-        const t = now(), h = notes.find(n => n.lane === lane && n.held && !n.holdOk);
-        if (h) { h.held = false; h.done = true; h.el.classList.add('gone'); if (t >= h.t + h.len - 0.15) { h.holdOk = true; st.score += 200; judge('HOLD!', 'perfect', lane); } }
+        st.held[lane] = false; cols[lane].classList.remove('press');
+        const h = notes.find(n => n.lane === lane && n.held);
+        if (h) { h.held = false; h.done = true; h.el.remove(); if (now() < h.t + h.len - 0.12) health(-1.5); pose('idle', 1); }
       };
       const miss = n => {
-        n.hit = 'miss'; st.miss++; if (st.combo >= 10) say(TALK.slip, 'serious'); st.combo = 0; comboShow(); judge('MISS', 'miss', n.lane); dip(); solarFace('surprised');
-        n.el.classList.add('missed');
+        n.hit = 'miss'; st.miss++; if (st.combo >= 20) say(TALK.slip, 'serious'); st.combo = 0; health(-4); crack(); popRating('miss', 0);
+        n.el.classList.add('missed'); pose('miss', 450); stats();
       };
 
-      /* the waveform: her voice, louder when she's hitting */
-      const cv = $('.sg-wave'), cx = cv.getContext('2d'); let energy = 0, phase = 0;
-      const wave = dt => {
-        energy = Math.max(0.05, energy - dt * 0.9); phase += dt * 9;
-        cx.clearRect(0, 0, 600, 80); cx.lineWidth = 3; cx.strokeStyle = '#ff9ac8'; cx.shadowColor = '#ff4f9e'; cx.shadowBlur = 12; cx.beginPath();
-        for (let x = 0; x <= 600; x += 6) { const y = 40 + Math.sin(x / 26 + phase) * energy * 26 * Math.sin(x / 600 * Math.PI) + Math.sin(x / 9 + phase * 2) * energy * 6; x ? cx.lineTo(x, y) : cx.moveTo(x, y); }
-        cx.stroke();
+      /* drawing: notes are placed by translateY in the strum, the target line 70 px from the top (or the bottom) */
+      const place = t => {
+        const strum = $('.sg-strum'), h = strum.clientHeight, px = O.speed * 0.45 * h, tgt = O.down ? h - 70 : 70;
+        for (const n of notes) {
+          if (n.done) continue;
+          if (n.held) { // the head sits on the target, the trail shortens into it
+            const left = n.t + n.len - t;
+            if (left <= 0) { n.held = false; n.done = true; n.el.remove(); st.score += 150; health(1); pose('idle', 1); continue; }
+            n.el.style.transform = `translateY(${tgt}px)`; n.el.style.setProperty('--trail', left * px + 'px'); continue;
+          }
+          if (!n.hit && t - n.t > WIN[2][1]) miss(n);
+          if (n.hit === 'miss' && t - n.t > 0.45 + (n.len || 0)) { n.done = true; n.el.remove(); continue; }
+          const dy = (n.t - t) * px, y = O.down ? tgt - dy : tgt + dy, tail = (n.len || 0) * px;
+          const vis = O.down ? (y > -60 && y - tail < h + 60) : (y < h + 60 && y + tail > -60);
+          n.el.style.display = vis ? 'block' : 'none';
+          if (vis) { n.el.style.transform = `translateY(${y}px)`; if (n.len) n.el.style.setProperty('--trail', tail + 'px'); }
+        }
       };
 
       /* the loop */
       let raf = 0;
+      const COUNT = [['ready', 'Ready?', 660], ['set', 'Set.', 660], ['sing', 'Sing!', 990]];
       const loop = ts => {
-        const dt = Math.min(0.06, (ts - (lastNow || ts)) / 1000); lastNow = ts;
+        const dt = Math.min(0.06, (ts - (last || ts)) / 1000); last = ts;
         if (!st.paused && !st.over) {
-          if (!started) { st.t += dt; if (st.t >= START) start(); }
-          else if (!audio) st.t += dt; else st.t = audio.currentTime;
-          const t = now();
-          for (const n of notes) {
-            if (n.done) continue;
-            const y = 1 - (n.t - t) / LEAD; // 0 at the top, 1 at the line
-            if (n.held) { // a hold being sung: the head sits on the line, the tail shrinks into it
-              if (t > n.t + n.len) { n.held = false; n.holdOk = true; n.done = true; st.score += 200; n.el.style.display = 'none'; judge('HOLD!', 'perfect', n.lane); }
-              else { n.el.style.display = 'block'; n.el.style.top = '86%'; n.el.style.setProperty('--len', Math.max(0, (n.t + n.len - t) / LEAD)); energy = Math.min(1, energy + dt * 2); }
-              continue;
-            }
-            if (n.hit && n.hit !== 'miss') { n.done = true; n.el.style.display = 'none'; continue; }
-            if (!n.hit && y > 1 + GOOD / LEAD) miss(n);
-            if (n.hit === 'miss' && t - n.t > 0.5) { n.done = true; n.el.style.display = 'none'; continue; }
-            if (y < -0.05) { n.el.style.display = 'none'; continue; }
-            n.el.style.display = 'block'; n.el.style.top = `${y * 86}%`;
-          }
-          // sections and talkback
+          if (!started) { pre += dt; if (pre >= FROM) { started = true; if (audio) { ac && ac.resume(); audio.currentTime = FROM; audio.play().catch(() => { audio = null; }); } else pre = FROM; } }
+          else if (!audio) pre += dt;
+          const T = songT(), t = T - O.offset / 1000;
+          // count-in: "Ready? Set. Sing!" on the last three beats before the song
+          if (T < FROM) { const cb = Math.floor((T - FROM + PRE) / BEAT) - 1; if (cb !== st.count && cb >= 0 && cb < 3) { st.count = cb; const c = COUNT[cb], d = $('.sg-count'); d.innerHTML = `<img src="${ART(c[0])}" alt="" onerror="this.remove()"><b>${c[1]}</b>`; d.className = 'sg-count on ' + c[0]; tone(c[2], 0.15, 0.07); } }
+          else if (st.count !== 9) { st.count = 9; setTimeout(() => { if (st.count === 9) $('.sg-count').className = 'sg-count'; }, 400); }
+          // beat and bar bops
+          const b = Math.floor((T - C.offset) / BEAT);
+          if (b !== st.beat) { st.beat = b; el.classList.remove('bop'); void el.offsetWidth; el.classList.add('bop'); el.classList.toggle('odd', b % 2 !== 0); if (((b % 4) + 4) % 4 === 0) { el.classList.remove('barbop'); void el.offsetWidth; el.classList.add('barbop'); } }
+          place(t);
           const si = (C.sections || []).reduce((a, s, i) => (t >= s.t ? i : a), -1);
-          if (si !== st.sec && si >= 0) { st.sec = si; const nm = C.sections[si].name; $('.sg-sec').textContent = nm; if (si > 0) say(TALK[{ verse: 'verse', breath: 'breath', chorus: 'chorus', bridge: 'bridge', 'last chorus': 'last', outro: 'outro' }[nm] || 'verse']); }
-          $('.sg-score').textContent = Math.round(st.score).toLocaleString();
-          { const left = FIRST - t, cd = $('.sg-count'), k = left > BEAT * 4 ? `Notes in ${Math.ceil(left)}` : left > 0 ? String(Math.ceil(left / BEAT)) : '';
-            if (cd.textContent !== k) { cd.textContent = k; cd.classList.toggle('num', /^\d$/.test(k)); if (/^\d$/.test(k)) { cd.classList.remove('pop'); void cd.offsetWidth; cd.classList.add('pop'); tick(k === '1' ? 1320 : 880, 0.04); } } }
-          if (st.sec === 0) { const bar = Math.floor((t - C.offset) / (240 / C.bpm)) + 1; $('.sg-sec').textContent = t < FIRST ? 'count in' : 'intro'; }
-          $('.sg-prog i').style.width = `${Math.min(100, (t / C.duration) * 100)}%`;
-          el.style.setProperty('--pulse', ((t - C.offset) / (60 / C.bpm)) % 1);
-          wave(dt);
+          if (si !== st.sec && si >= 0) { st.sec = si; const nm = C.sections[si].name; if (si > 0) say(TALK[{ verse: 'verse', breath: 'breath', chorus: 'chorus', bridge: 'bridge', 'last chorus': 'last', outro: 'outro' }[nm] || 'verse']); }
+          const left = Math.max(0, C.duration - Math.max(0, t));
+          $('.sg-time i').style.width = `${Math.min(100, Math.max(0, t) / C.duration * 100)}%`;
+          $('.sg-time span').textContent = `${Math.floor(left / 60)}:${String(Math.floor(left % 60)).padStart(2, '0')}`;
           if (t >= C.duration - 0.3 || (audio && audio.ended)) finish();
         }
         raf = requestAnimationFrame(loop);
       };
 
-      const finish = (quit = false) => {
-        if (st.over) return; st.over = true; cancelAnimationFrame(raf);
-        if (audio) { const a = audio; let v = 1; const f = setInterval(() => { v -= 0.1; if (gain) gain.gain.value = Math.max(0, v); if (v <= 0) { clearInterval(f); a.pause(); } }, 60); }
-        const total = notes.length, acc = total ? (st.perfect + st.good * 0.6) / total * 100 : 0;
-        const grade = quit ? 'C' : acc >= 92 && st.miss <= 3 ? 'S' : acc >= 80 ? 'A' : acc >= 62 ? 'B' : 'C';
-        const res = { song: C.id, level, score: Math.round(st.score), accuracy: Math.round(acc), perfect: st.perfect, good: st.good, miss: st.miss, maxCombo: st.maxCombo, grade, quit };
-        say(TALK.end[grade], grade === 'S' || grade === 'A' ? 'happy' : 'neutral'); solarFace(grade === 'C' ? 'sad' : 'happy');
+      const fade = () => { if (!audio) return; const a = audio; let v = 0.9; const f = setInterval(() => { v -= 0.1; if (gain) gain.gain.value = Math.max(0, v); else a.volume = Math.max(0, v); if (v <= 0) { clearInterval(f); a.pause(); } }, 50); };
+      const fail = () => {
+        if (st.over) return; st.over = true; fade(); say(TALK.fail, 'serious'); pose('miss', 0); el.classList.add('failed');
         const end = $('.mg-end'); end.hidden = false;
-        if (rec) {
-          rec.forEach(r => delete r.down);
-          const js = JSON.stringify({ song: C.id, level, notes: rec });
-          end.innerHTML = `<b>Recorded ${rec.length} notes</b><textarea readonly rows="8" cols="60">${esc(js)}</textarea><button type="button" data-copy>Copy for Claude</button><button type="button" data-done>Done</button>`;
-          end.querySelector('[data-copy]').onclick = e => { navigator.clipboard?.writeText(js); e.target.textContent = 'Copied'; };
-          end.querySelector('[data-done]').onclick = () => { cleanup(); done({ record: rec }); };
-          return;
-        }
-        end.innerHTML = `<b class="mg-grade">${grade}</b><dl><dt>Accuracy</dt><dd>${res.accuracy}%</dd><dt>Perfect</dt><dd>${res.perfect}</dd><dt>Good</dt><dd>${res.good}</dd><dt>Missed</dt><dd>${res.miss}</dd><dt>Best combo</dt><dd>${res.maxCombo}</dd></dl><p class="mg-end-say">Haechan: ${esc(TALK.end[grade])}</p><button type="button">Continue</button>`;
-        end.querySelector('button').focus();
-        end.querySelector('button').onclick = () => { cleanup(); o.onDone?.(res); done(res); };
+        end.innerHTML = `<b class="sg-fail">Take stopped</b><p class="mg-end-say">Haechan: ${esc(TALK.fail)}</p><div class="sg-end-btns"><button type="button" data-r>Retry</button><button type="button" data-q>Quit</button></div>`;
+        end.querySelector('[data-r]').focus();
+        end.querySelector('[data-r]').onclick = restart;
+        end.querySelector('[data-q]').onclick = () => out({ failed: true });
+      };
+      const out = extra => { const total = notes.length, acc = stats(); const res = { song: C.id, level, score: Math.round(st.score), accuracy: Math.round(acc), perfect: st.perfect, good: st.good, ok: st.ok, miss: st.miss, maxCombo: st.maxCombo, fc: st.miss === 0 && st.perfect + st.good + st.ok === total, grade: 'C', failed: false, quit: false, ...extra }; cleanup(); o.onDone?.(res); done(res); };
+      const finish = (quit = false) => {
+        if (st.over) return; st.over = true; fade();
+        const acc = stats(), fc = st.miss === 0;
+        const grade = quit ? 'C' : acc >= 95 && st.miss <= 2 ? 'S' : acc >= 85 ? 'A' : acc >= 70 ? 'B' : 'C';
+        say(TALK.end[grade], grade === 'S' || grade === 'A' ? 'happy' : 'neutral'); pose(grade === 'C' ? 'miss' : 'up', 0);
+        const end = $('.mg-end'); end.hidden = false;
+        end.innerHTML = `<b class="mg-grade">${grade}</b>${fc && !quit ? '<b class="sg-fc">FULL COMBO</b>' : ''}<dl><dt>Score</dt><dd>${Math.round(st.score).toLocaleString()}</dd><dt>Accuracy</dt><dd>${acc.toFixed(2)}%</dd><dt>Perfect</dt><dd>${st.perfect}</dd><dt>Good</dt><dd>${st.good}</dd><dt>OK</dt><dd>${st.ok}</dd><dt>Missed</dt><dd>${st.miss}</dd><dt>Best combo</dt><dd>${st.maxCombo}</dd></dl><p class="mg-end-say">Haechan: ${esc(TALK.end[grade])}</p><div class="sg-end-btns"><button type="button" data-c>Continue</button><button type="button" data-r>Again</button></div>`;
+        end.querySelector('[data-c]').focus();
+        end.querySelector('[data-c]').onclick = () => out({ grade, quit, fc: fc && !quit });
+        end.querySelector('[data-r]').onclick = restart;
+      };
+      const restart = () => {
+        try { audio && audio.pause(); } catch (e) {}
+        Object.assign(st, { score: 0, combo: 0, maxCombo: 0, perfect: 0, good: 0, ok: 0, miss: 0, hp: 50, paused: false, over: false, sec: -1, held: [false, false, false, false], beat: -99, count: -1 });
+        started = false; pre = FROM - PRE; sync = { a: -1, p: 0 }; if (audio) { audio.currentTime = FROM; if (gain) gain.gain.value = 0.9; }
+        $('.mg-end').hidden = true; $('.mg-pause').hidden = true; el.classList.remove('failed', 'low'); el.classList.toggle('down', O.down);
+        build(); health(0); stats(); pose('idle', 1); say(TALK.intro);
+        cancelAnimationFrame(raf); last = 0; raf = requestAnimationFrame(loop);
       };
 
       /* input */
       const laneOf = k => KEYS.findIndex(ks => ks.includes(k.toLowerCase()));
       const key = e => {
-        if (st.over) return; e.stopPropagation();
-        if (e.key === 'Escape') { e.preventDefault(); setPause(!st.paused); return; }
+        if (!el.isConnected || (st.over && !st.paused)) return;
+        e.stopPropagation();
+        if (e.key === 'Escape' || e.key === 'Enter') { e.preventDefault(); setPause(!st.paused); return; }
+        if (st.paused) return;
         const l = laneOf(e.key); if (l < 0) return; e.preventDefault(); if (e.repeat) return; press(l);
       };
       const keyUp = e => { const l = laneOf(e.key); if (l >= 0) release(l); };
-      const setPause = p => { st.paused = p; $('.mg-pause').hidden = !p; if (audio) { if (p) { pauseAt = audio.currentTime; audio.pause(); } else if (started) { audio.currentTime = pauseAt; audio.play().catch(() => {}); } } };
-      lanes.forEach((ln, i) => { ln.addEventListener('pointerdown', e => { e.preventDefault(); press(i); }); ln.addEventListener('pointerup', () => release(i)); ln.addEventListener('pointerleave', () => st.held[i] && release(i)); });
-      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') setPause(false); if (b === 'quit') { st.paused = false; $('.mg-pause').hidden = true; finish(true); } };
+      const setPause = p => {
+        st.paused = p; $('.mg-pause').hidden = !p;
+        if (audio && started) { if (p) audio.pause(); else audio.play().catch(() => {}); }
+        if (p) { $('.mg-pause [data-mg=resume]').focus(); paintOpts(); }
+      };
+      const paintOpts = () => el.querySelectorAll('[data-o]').forEach(i => { const k = i.dataset.o; if (i.type === 'checkbox') i.checked = !!O[k]; else { i.value = O[k]; i.nextElementSibling.textContent = k === 'speed' ? (+O[k]).toFixed(1) : O[k]; } });
+      el.querySelector('.sg-opts').addEventListener('input', e => { const i = e.target, k = i.dataset.o; if (!k) return; O[k] = i.type === 'checkbox' ? i.checked : +i.value; saveOpts(O); el.classList.toggle('down', O.down); paintOpts(); });
+      cols.forEach((c, i) => { c.addEventListener('pointerdown', e => { e.preventDefault(); press(i); }); c.addEventListener('pointerup', () => release(i)); c.addEventListener('pointerleave', () => st.held[i] && release(i)); });
+      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') setPause(false); if (b === 'restart') restart(); if (b === 'quit') { st.paused = false; $('.mg-pause').hidden = true; finish(true); } };
       const cleanup = () => { cancelAnimationFrame(raf); window.removeEventListener('keydown', key, true); window.removeEventListener('keyup', keyUp, true); try { audio && audio.pause(); ac && ac.close(); } catch (e) {} el.remove(); };
       window.addEventListener('keydown', key, true); window.addEventListener('keyup', keyUp, true);
-      say("Headphones on. Count in with me.");
+      health(0); stats(); say(TALK.intro);
       raf = requestAnimationFrame(loop);
     });
   }
-  return { play };
+  return { play, draft, opts };
 })();

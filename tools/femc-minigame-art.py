@@ -50,11 +50,32 @@ def main():
     for f in sorted(NEW.glob('cook-*')):
         if f.suffix.lower() not in ('.png', '.jpg', '.jpeg', '.webp'): continue
         dst = COOK / f'{f.stem[len("cook-"):]}.webp'; fit(Image.open(f).convert('RGB')).save(dst, 'WEBP', quality=88); print(f.name, '->', dst.relative_to(ROOT))
-    # the booth singing game (FEMC-ART-TODO 45): New Adds/sing-*.png -> art/minigames/sing/*.webp
+    # the booth singing game (FEMC-ART-TODO 45): New Adds/sing-*.png -> art/minigames/sing/*.webp; sheets are cut into frames
     SING = ROOT / 'assets/femc/game/art/minigames/sing'; SING.mkdir(parents=True, exist_ok=True)
+    SHEETS = {  # sheet name: (cols, rows, frame names in reading order, same canvas + feet on the bottom?)
+        'solar-poses': (3, 2, ['solar-idle', 'solar-left', 'solar-down', 'solar-up', 'solar-right', 'solar-miss'], True),
+        'haechan-bop': (2, 1, ['haechan-bop-0', 'haechan-bop-1'], True),
+        'arrows': (3, 2, ['arrow-0', 'arrow-1', 'arrow-2', 'arrow-3', 'target', 'splash'], False),
+        'ratings': (2, 2, ['rating-perfect', 'rating-good', 'rating-ok', 'rating-miss'], False),
+        'countdown': (3, 1, ['ready', 'set', 'sing'], False),
+    }
     for f in sorted(NEW.glob('sing-*')):
         if f.suffix.lower() not in ('.png', '.jpg', '.jpeg', '.webp'): continue
-        name = f.stem[len('sing-'):]; dst = SING / f'{name}.webp'; im = Image.open(f)
+        name = f.stem[len('sing-'):]; im = Image.open(f)
+        if name in SHEETS:
+            cols, rows, names, stand = SHEETS[name]; im = alpha(im); W, H = im.size; cells = []
+            for i, n in enumerate(names):
+                c, r = i % cols, i // cols
+                cell = im.crop((W * c // cols, H * r // rows, W * (c + 1) // cols, H * (r + 1) // rows))
+                a = np.asarray(cell.getchannel('A')) > 16; ys, xs = np.nonzero(a.any(1))[0], np.nonzero(a.any(0))[0]
+                if len(ys) == 0: continue
+                cells.append((n, cell.crop((int(xs[0]), int(ys[0]), int(xs[-1]) + 1, int(ys[-1]) + 1))))
+            cw, ch = max(c.width for _, c in cells), max(c.height for _, c in cells)
+            for n, c in cells:
+                if stand: cv = Image.new('RGBA', (cw, ch), (0, 0, 0, 0)); cv.paste(c, ((cw - c.width) // 2, ch - c.height)); c = cv
+                fit(c, 1400).save(SING / f'{n}.webp', 'WEBP', quality=90, alpha_quality=100); print(f.name, '->', n)
+            continue
+        dst = SING / f'{name}.webp'
         if name in ('booth', 'haechan-desk', 'title'): fit(im.convert('RGB')).save(dst, 'WEBP', quality=88)
         else: fit(alpha(im)).save(dst, 'WEBP', quality=90, alpha_quality=100)
         print(f.name, '->', dst.relative_to(ROOT))
