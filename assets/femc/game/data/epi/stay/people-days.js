@@ -69,7 +69,8 @@
       { s: 'fuuka', f: 'sad', t: "...I bought it in December. For Hyein-chan and the others. I thought if I could say even one real thing to them in their own words. I got as far as *where is the bathroom.* And *baby carrots*, for some reason. It's on the food page." },
       { n: "She turned it so Solar could see. The pages were soft with use. Somebody had underlined things in three colors of pen, and in the margin by GOODNIGHT, in Fuuka's tidy handwriting, she'd written *ask Yunjin how she says it, she says it different*, and never crossed it out." },
       { s: 'fuuka', f: 'neutral', t: "I know it doesn't matter now. I just didn't want to stop in the middle. It feels like leaving a sentence." },
-      { n: "Solar sat down next to her on the sofa. Her body knew the shape of the words before she'd decided anything, the way it knew which stair creaked, and it was strange to have them in her mouth again, here, in this lounge, in the dark, for somebody who'd never once heard her say them." },
+      // Nov 11 2026 (Kat): who knows. Fuuka lived a winter beside the searchers; she'd heard Solar's Korean, only never aimed at her.
+      { n: "Solar sat down next to her on the sofa. Her body knew the shape of the words before she'd decided anything, the way it knew which stair creaked, and it was strange to have them in her mouth again, here, in this lounge, in the dark, for somebody who'd only ever heard her say them across a table to someone else." },
       { choose: [
         { t: "(Say it for her. Jal ja.)", then: [
           { s: 'solar', f: 'neutral', t: "Jal ja. That's how you'd say goodnight to a friend. To somebody you're close to." },

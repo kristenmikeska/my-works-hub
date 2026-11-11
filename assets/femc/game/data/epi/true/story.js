@@ -168,7 +168,9 @@
     { s: 'jungwon', f: 'neutral', t: "You came." },
     { s: 'solar', f: 'happy', t: "Cherry made me." },
     { s: 'jungwon', f: 'happy', t: "I'll thank her formally." },
-    { n: "He was the only one in this building who'd stood in the other places too. She knew that every time he looked at her, the way he looked at her now, like a man reading a page he'd read before in another language, and finding it the same." },
+    // Nov 11 2026 (Kat): who knows. Half this gym crossed to Iwatodai and back (the council, Cherry, Jihoon, the crew);
+    // what only Jungwon shares is her other life, the house by the sea.
+    { n: "Half the people in this gym had been to Iwatodai and come home with her, and none of them said so out loud in daylight. He was the only one who'd stood in her other life too, the house by the sea. She knew that every time he looked at her, the way he looked at her now, like a man reading a page he'd read before in another language, and finding it the same." },
     { s: 'jungwon', f: 'neutral', t: "Stay late tonight. We're finishing it. Whatever it was for." },
     { s: 'solar', f: 'neutral', t: "Whatever it was for." }
   ] },

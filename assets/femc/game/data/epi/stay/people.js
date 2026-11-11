@@ -118,7 +118,12 @@
       { s: 'solar', f: 'flustered', t: "If what?" },
       { s: 'akihiko', f: 'serious-3', t: "If something comes. You'd want your hands covered." },
       { n: "He'd heard the bell in the kitchen on the first, the same as everyone, and he hadn't asked her about it once, not at breakfast and not since, which she'd thought at first meant he hadn't noticed and had understood by lunch meant the opposite." },
-      { s: 'akihiko', f: 'serious', t: "I'm not going to ask where you go at night. I know you go somewhere. Your hair was wet the other night and it hadn't rained." },
+      // Nov 11 2026 (Kat): who knows. On the told path she said it at the command room table (epi-st-clocks), so he knows where.
+      { ifFlag: 'epi-st-told', then: [
+        { s: 'akihiko', f: 'serious', t: "I know where you go now. You told us. Their places, the ones who went home. I just can't follow you there." }
+      ], else: [
+        { s: 'akihiko', f: 'serious', t: "I'm not going to ask where you go at night. I know you go somewhere. Your hair was wet the other night and it hadn't rained." }
+      ] },
       { s: 'solar', f: 'flustered', t: "Akihiko." },
       { s: 'akihiko', f: 'blushing', t: "I'm just saying if you go, wear the gloves. That's all. That's all I'm saying." },
       { n: "It wasn't all he was saying. He'd run out of the words he had for it, that was all, and he'd brought the gloves up instead, because a pair of gloves was something you could hold out to a person. She picked them up. She put them on, one and then the other, and held her hands out to him, and he did up the straps for her the way he had in the club in May, quick and careful with his big scarred fingers, and then he didn't let go of her wrists." },
@@ -333,7 +338,12 @@
       { n: "She rode the way she did everything, precisely and a little faster than the law preferred, out across the Moonlight Bridge with the city lit up behind them and the bay black underneath, and Solar held on with both arms and her cheek pressed to the cold leather of Mitsuru's back, and at the midpoint, where you were absolutely not supposed to, Mitsuru pulled onto the shoulder and cut the engine." },
       { n: "The wind. The cables overhead humming in it, one long low note going on and on like something tuning. The lights of Port Island laid out on the water. Mitsuru took her helmet off and shook her hair out and did not look at her." },
       { s: 'mitsuru', f: 'serious', t: "Akihiko tells me your hair was wet the other night. Fuuka tells me Juno is hearing something she can't place. Aigis has logged a signal. And there was a bell in my kitchen." },
-      { s: 'mitsuru', f: 'neutral', t: "I'm not asking you to explain. I'm informing you of something." },
+      // Nov 11 2026 (Kat): who knows. After epi-st-clocks' told choice she's already explained, so Mitsuru says so.
+      { ifFlag: 'epi-st-told', then: [
+        { s: 'mitsuru', f: 'neutral', t: "You've told me what it is. I'm not asking you for more than that. I'm informing you of something." }
+      ], else: [
+        { s: 'mitsuru', f: 'neutral', t: "I'm not asking you to explain. I'm informing you of something." }
+      ] },
       { s: 'solar', f: 'sad', t: "Okay." },
       { s: 'mitsuru', f: 'serious', t: "If something is trying to take you, it will have to go through me. And then through the Kirijo Group. In that order. I'd like that understood. By you, and by it." },
       { n: "She said *it* to the bridge, to the dark water, to the city across the bay, in the clear carrying voice she'd once used to end things that crawled, and the wind took the word and carried it off east, and Solar found she was holding her breath to see if anything would answer." },
@@ -387,7 +397,12 @@
       { s: 'fuuka', f: 'neutral', t: "They only get louder when you sit close." },
       { choose: [
         { t: "They're from home. The other ones.", then: [
-          { s: 'fuuka', f: 'sad', t: "...Oh." },
+          // Nov 11 2026 (Kat): who knows. On the told path she heard it at the command room table already.
+          { ifFlag: 'epi-st-told', then: [
+            { s: 'fuuka', f: 'sad', t: "...I know. You said, upstairs. It's different, hearing them with you right here." }
+          ], else: [
+            { s: 'fuuka', f: 'sad', t: "...Oh." }
+          ] },
           { n: "Fuuka didn't take the headphones off. She listened harder, with her whole face, the way you'd listen to a bad line for a name you needed to catch, and after a while she said they sounded glad to have found her, mostly, and then said *mostly* again, quieter, and didn't explain it." },
           { bond: { fuuka: 1 } }
         ] },

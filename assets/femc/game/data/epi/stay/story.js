@@ -551,8 +551,9 @@
     { n: "He said it to her and not to Haechan, and Haechan didn't look at him, and Jungwon didn't look back, ten steps, even here, even now, and it was so exactly them that she laughed out loud on the platform with her eyes stinging." },
     { s: 'akihiko', f: 'neutral', t: "Lee." },
     { n: "Haechan looked past her at Akihiko. A nod. One. Two boys who'd shared a dorm all winter and never once agreed about anything, with nothing left to settle between them but her, and they both knew it, and neither of them said so." },
+    // Nov 11 2026 (Kat): who knows. "Back home" read as their homes; it's the dorm that knows (epi-st-clocks).
     { ifFlag: 'epi-st-told', then: [
-      { n: "She'd told them. Everyone back home knew. She wanted to say that. She wanted to say all of it, the bell and the harbor and the gym and the socks." }
+      { n: "She'd told them. Everyone at the dorm knew. She wanted to say that. She wanted to say all of it, the bell and the harbor and the gym and the socks." }
     ], else: [
       { n: "She wanted to say all of it. The bell and the harbor and the gym and the socks and the four a.m. phone." }
     ] },
