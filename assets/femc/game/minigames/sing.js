@@ -11,7 +11,7 @@
    How it plays: three lanes (low, mid, high: her voice), notes slide down to the mic line in time with the real song. Press the
    lane's key as a note reaches the line (D / F / J, or ← ↓ →, or tap the lane); hold through long notes. Perfect ±60 ms, Good
    ±130 ms. A hit lights her waveform and the lane; a miss dips the music for a moment (her voice dropping out of the mix).
-   "Five bars. You come in on six." Haechan talks back through the talkback between sections and on streaks and slips.
+   "Three bars. You come in on four." Haechan talks back through the talkback between sections and on streaks and slips.
    The chart is generated from the track's own onsets (charts/runners.js, header says how), so the notes land on the music.
    Art (FEMC-ART-TODO 45, art/minigames/sing/): booth.webp (Studio 4B from the booth), solar-mic.webp, haechan-desk.webp;
    until then a drawn studio with their portraits. Esc pauses (and the song). Reduced motion: no shakes or particles. */
@@ -23,7 +23,7 @@ window.FemcSing = (() => {
   const KEYS = [['d', 'arrowleft'], ['f', 'arrowdown'], ['j', 'arrowright']];
   const PERFECT = 0.06, GOOD = 0.13, LEAD = 1.6; // seconds a note is on screen before the line
   const TALK = {
-    intro: ["Five bars. You come in on six.", "Headphones on. Don't look at me, look at the line."],
+    intro: ["Three bars. You come in on four.", "Headphones on. Don't look at me, look at the line."],
     verse: ['Good. Stay in it.', "There you are."],
     breath: ['Breathe here. You wrote it on the sheet eleven times.', 'Easy. It drops out. Let it.'],
     chorus: ['Here it comes. Don\'t reach for it.', 'Open up. The room wants it.'],
@@ -42,7 +42,8 @@ window.FemcSing = (() => {
       const level = o.level || 'normal', notes = (C.charts[level] || C.charts.normal).map(n => ({ ...n, hit: null, held: false, holdOk: false }));
       const host = o.host || document.body, ART = id => `${base()}assets/femc/game/art/minigames/sing/${id}.webp`;
       const FACE = (w, f) => `${base()}assets/femc/portraits/${w}-runners/${f}.webp`;
-      const st = { t: -2.5, score: 0, combo: 0, maxCombo: 0, perfect: 0, good: 0, miss: 0, paused: false, over: false, sec: -1, held: [false, false, false] };
+      const BAR = 240 / C.bpm, BEAT = 60 / C.bpm, FIRST = notes.length ? notes[0].t : 0, START = Math.max(0, Math.min(FIRST - BAR * 3, C.offset + BAR * 2)) - (C.offset ? 0 : 0);
+      const st = { t: START - 1.2, score: 0, combo: 0, maxCombo: 0, perfect: 0, good: 0, miss: 0, paused: false, over: false, sec: -1, held: [false, false, false] };
       const el = document.createElement('div');
       el.className = 'mg-sing' + (reduced.matches ? ' still' : '');
       el.innerHTML = `
@@ -51,7 +52,7 @@ window.FemcSing = (() => {
           <div class="sg-solar"><img class="sg-solar-art" src="${ART('solar-mic')}" alt="" onerror="this.remove()"><img class="sg-sl" src="${FACE('solar', 'neutral')}" alt="Solar"><span class="sg-mic"></span></div></div>
         <div class="sg-top"><b>Studio 4B · ${esc(C.title)}</b><small>${esc(C.artist || '')}</small><span class="sg-sec"></span><span class="sg-score">0</span></div>
         <p class="sg-talk" aria-live="polite"><b>Haechan</b><span></span></p>
-        <div class="sg-lanes">${[0, 1, 2].map(i => `<div class="sg-lane" data-l="${i}"><i class="beam"></i><span class="key">${['D', 'F', 'J'][i]}</span></div>`).join('')}<div class="sg-line"></div><div class="sg-notes"></div><div class="sg-judge"></div></div>
+        <div class="sg-lanes">${[0, 1, 2].map(i => `<div class="sg-lane" data-l="${i}"><i class="beam"></i><span class="key">${['D', 'F', 'J'][i]}</span></div>`).join('')}<div class="sg-line"></div><div class="sg-count" aria-live="off"></div><div class="sg-notes"></div><div class="sg-judge"></div></div>
         <canvas class="sg-wave" width="600" height="80" aria-hidden="true"></canvas>
         <div class="sg-combo"></div><div class="sg-prog"><i></i></div>
         <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="quit">Quit</button></div>
@@ -81,7 +82,7 @@ window.FemcSing = (() => {
       const now = () => audio && started && !audio.paused ? audio.currentTime : st.t;
       const start = () => {
         started = true; t0 = performance.now();
-        if (audio) { ac && ac.resume(); audio.currentTime = 0; audio.play().catch(() => { audio = null; }); }
+        if (audio) { ac && ac.resume(); audio.currentTime = START; audio.play().catch(() => { audio = null; }); }
         say(TALK.intro);
       };
 
@@ -124,7 +125,7 @@ window.FemcSing = (() => {
       const loop = ts => {
         const dt = Math.min(0.06, (ts - (lastNow || ts)) / 1000); lastNow = ts;
         if (!st.paused && !st.over) {
-          if (!started) { st.t += dt; if (st.t >= 0) start(); }
+          if (!started) { st.t += dt; if (st.t >= START) start(); }
           else if (!audio) st.t += dt; else st.t = audio.currentTime;
           const t = now();
           for (const n of notes) {
@@ -145,7 +146,9 @@ window.FemcSing = (() => {
           const si = (C.sections || []).reduce((a, s, i) => (t >= s.t ? i : a), -1);
           if (si !== st.sec && si >= 0) { st.sec = si; const nm = C.sections[si].name; $('.sg-sec').textContent = nm; if (si > 0) say(TALK[{ verse: 'verse', breath: 'breath', chorus: 'chorus', bridge: 'bridge', 'last chorus': 'last', outro: 'outro' }[nm] || 'verse']); }
           $('.sg-score').textContent = Math.round(st.score).toLocaleString();
-          if (st.sec === 0) { const bar = Math.floor((t - C.offset) / (240 / C.bpm)) + 1; $('.sg-sec').textContent = bar >= 1 && bar <= 5 ? `count in · ${bar} of 5` : 'intro'; }
+          { const left = FIRST - t, cd = $('.sg-count'), k = left > BEAT * 4 ? `Notes in ${Math.ceil(left)}` : left > 0 ? String(Math.ceil(left / BEAT)) : '';
+            if (cd.textContent !== k) { cd.textContent = k; cd.classList.toggle('num', /^\d$/.test(k)); if (/^\d$/.test(k)) { cd.classList.remove('pop'); void cd.offsetWidth; cd.classList.add('pop'); tick(k === '1' ? 1320 : 880, 0.04); } } }
+          if (st.sec === 0) { const bar = Math.floor((t - C.offset) / (240 / C.bpm)) + 1; $('.sg-sec').textContent = t < FIRST ? 'count in' : 'intro'; }
           $('.sg-prog i').style.width = `${Math.min(100, (t / C.duration) * 100)}%`;
           el.style.setProperty('--pulse', ((t - C.offset) / (60 / C.bpm)) % 1);
           wave(dt);

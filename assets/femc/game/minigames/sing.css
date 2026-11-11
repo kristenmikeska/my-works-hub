@@ -97,3 +97,9 @@
 }
 .mg-sing.still .sg-j, .mg-sing.still .sg-lane.hit .beam { animation: none; }
 .mg-sing.still .sg-line, .mg-sing.still .sg-mic { box-shadow: 0 0 8px var(--pk); }
+.sg-count { position: absolute; left: 0; right: 0; top: 34%; text-align: center; font: italic 900 clamp(18px, 2.2vw, 28px)/1 var(--cond, sans-serif); letter-spacing: .08em; color: var(--pk2); text-transform: uppercase; pointer-events: none; animation: sg-blink 1.5s ease-in-out infinite; }
+.sg-count.num { font-size: clamp(60px, 9vw, 120px); color: #fff; text-shadow: 0 0 24px var(--pk); animation: none; }
+.sg-count.pop { animation: sg-pop .5s ease-out; }
+@keyframes sg-pop { from { scale: 1.5; opacity: 0; } 30% { opacity: 1; } }
+@keyframes sg-blink { 50% { opacity: .45; } }
+.mg-sing.still .sg-count { animation: none; }
