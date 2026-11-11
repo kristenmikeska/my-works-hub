@@ -41089,6 +41089,1319 @@
    "destination": "assets/femc/game/art/booth/nana-0.webp",
    "conversion": "tools/femc-booth.py poses nana-booth-poses.png nana (alpha split) -> booth/nana-0..5.webp",
    "placement": "not shown anywhere yet: waits for 38C (Solar's HOAX booth poses) and the HOAX booth (38B; Kat's name nana-booth-poses = booth-nana-poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-defeat.jpeg",
+   "size": [
+    2752,
+    1536
+   ],
+   "sha256": "40b7321024922117fea6381793e0f79f486ec06da365e5bd52dc2c3c8cfa0907",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/defeat.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB, at most 1920 wide, WebP q86",
+   "placement": "regionals.js behind the round card's big word and faintly behind the match end screen (43O)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-foe-ana.png",
+   "size": [
+    1696,
+    2528
+   ],
+   "sha256": "b617d57f341fa0229405c1f163cf04b5c16b686100f6d54b8b2e1ad00f0c4fd9",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/foe-ana.webp",
+   "conversion": "tools/femc-minigame-art.py: transparent, trimmed, feet on the bottom of a 1:2 canvas, q90",
+   "placement": "regionals.js the other team popping out of cover (43D-L)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-foe-cassidy.png",
+   "size": [
+    1696,
+    2528
+   ],
+   "sha256": "c7e032fe6344b4158847b3592419d856714c5ae2d50a8bab394dd7ee9b8efa37",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/foe-cassidy.webp",
+   "conversion": "tools/femc-minigame-art.py: transparent, trimmed, feet on the bottom of a 1:2 canvas, q90",
+   "placement": "regionals.js the other team popping out of cover (43D-L)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-foe-genji.png",
+   "size": [
+    1696,
+    2528
+   ],
+   "sha256": "d565972fb4b4bd43c10f10738b405f85e066dfd93711f5f7289dce9e6978969d",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/foe-genji.webp",
+   "conversion": "tools/femc-minigame-art.py: transparent, trimmed, feet on the bottom of a 1:2 canvas, q90",
+   "placement": "regionals.js the other team popping out of cover (43D-L)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-foe-lucio.png",
+   "size": [
+    1696,
+    2528
+   ],
+   "sha256": "e7cc5f3b64d199c0a6439066d56681a2fc7cd1564ee2b1c3ddd5746174d45939",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/foe-lucio.webp",
+   "conversion": "tools/femc-minigame-art.py: transparent, trimmed, feet on the bottom of a 1:2 canvas, q90",
+   "placement": "regionals.js the other team popping out of cover (43D-L)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-foe-zarya.png",
+   "size": [
+    1696,
+    2528
+   ],
+   "sha256": "2b34d4f2443ddb6d74e2a99b99f53c8d761b120c84fae00aca4fd5c2e28d37d0",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/foe-zarya.webp",
+   "conversion": "tools/femc-minigame-art.py: transparent, trimmed, feet on the bottom of a 1:2 canvas, q90",
+   "placement": "regionals.js the other team popping out of cover (43D-L)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-hands.png",
+   "size": [
+    2752,
+    1536
+   ],
+   "sha256": "51721eaa6bb70150b1d8b7d65395cdd0523a2ec7c632ddee5b5394a888befb80",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/hands.webp",
+   "conversion": "tools/femc-minigame-art.py: kept transparent, at most 1920 wide, q90",
+   "placement": "regionals.js Solar's first-person hands (43C)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-map-busan-1.jpg",
+   "size": [
+    596,
+    335
+   ],
+   "sha256": "0a0d1f2bb6912f1527cf3ffa69d6bafa7dfdf66c3500bdcc1d34d4190792fed6",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/map-busan-1.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB, at most 1920 wide, WebP q86",
+   "placement": "regionals.js round background (one of the map's three, random per round; 43A/B)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-map-busan-2.jpg",
+   "size": [
+    3840,
+    2399
+   ],
+   "sha256": "84d95ea9cb171e9e3371b2651149b6193c317334d63ad7c161f6b843771c7608",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/map-busan-2.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB, at most 1920 wide, WebP q86",
+   "placement": "regionals.js round background (one of the map's three, random per round; 43A/B)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-map-busan-3.jpg",
+   "size": [
+    2800,
+    1575
+   ],
+   "sha256": "4b8e74b5f91ede8c15905b76f4d7c21e7a87a33d1c74ebf95575a233eb7b31cb",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/map-busan-3.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB, at most 1920 wide, WebP q86",
+   "placement": "regionals.js round background (one of the map's three, random per round; 43A/B)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-map-lijiang-1.jpg",
+   "size": [
+    1920,
+    1080
+   ],
+   "sha256": "2b08e26554f41f91d89932be72e0913bfe1753c9387fb13b7f95629f2040223e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/map-lijiang-1.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB, at most 1920 wide, WebP q86",
+   "placement": "regionals.js round background (one of the map's three, random per round; 43A/B)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-map-lijiang-2.jpg",
+   "size": [
+    596,
+    335
+   ],
+   "sha256": "b06d7aa0b7af687724e92966ce0c396e8aeddb30384373190602e9dbbe58cb17",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/map-lijiang-2.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB, at most 1920 wide, WebP q86",
+   "placement": "regionals.js round background (one of the map's three, random per round; 43A/B)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-map-lijiang-3.jpg",
+   "size": [
+    1920,
+    1080
+   ],
+   "sha256": "50779afa7700f20b3c1464e99950b3ef5021e76e96c346ef83fd30ad008df01e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/map-lijiang-3.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB, at most 1920 wide, WebP q86",
+   "placement": "regionals.js round background (one of the map's three, random per round; 43A/B)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-potg-kiriko.jpeg",
+   "size": [
+    2752,
+    1536
+   ],
+   "sha256": "7eb8bd30f46da1bcef2881cebe89a03db6b32a51a854cdf16bd74df178282dcb",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/potg-kiriko.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB, at most 1920 wide, q88",
+   "placement": "regionals.js Play of the Game on the end screen (43M)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-team-chenle.png",
+   "size": [
+    1696,
+    2528
+   ],
+   "sha256": "4205f700cdd382d1711be7e36f4eff93e9aaddb7c457cea1b5b3fbfe3acfe6d2",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/team-chenle.webp",
+   "conversion": "tools/femc-minigame-art.py: transparent, trimmed, feet on the bottom of a 1:2 canvas, q90",
+   "placement": "regionals.js her team in the map (43D-L)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-team-haerin.png",
+   "size": [
+    1696,
+    2528
+   ],
+   "sha256": "e2fea69e699e25a7114a225b468dfb1bf8ef262cfdffab607803f33cc9cbbfe2",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/team-haerin.webp",
+   "conversion": "tools/femc-minigame-art.py: transparent, trimmed, feet on the bottom of a 1:2 canvas, q90",
+   "placement": "regionals.js her team in the map (43D-L)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-team-minji.png",
+   "size": [
+    1696,
+    2528
+   ],
+   "sha256": "44f22187f2c3ff28a5d01216feb73d1efb3ff97def02ba1a90c791d967ced1c3",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/team-minji.webp",
+   "conversion": "tools/femc-minigame-art.py: transparent, trimmed, feet on the bottom of a 1:2 canvas, q90",
+   "placement": "regionals.js her team in the map (43D-L)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-team-olivia.png",
+   "size": [
+    1696,
+    2528
+   ],
+   "sha256": "7b1178f52411f3ed39b8eacd24a780a93e13664ad6d6c10f2c9ff0f631f513c4",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/team-olivia.webp",
+   "conversion": "tools/femc-minigame-art.py: transparent, trimmed, feet on the bottom of a 1:2 canvas, q90",
+   "placement": "regionals.js her team in the map (43D-L)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/mg-ow-victory.jpeg",
+   "size": [
+    2752,
+    1536
+   ],
+   "sha256": "0885f8eaacae7c0cfb80d9aeaa0207de0ed815a745cbaf0beefea13fe1c925cc",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/ow/victory.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB, at most 1920 wide, WebP q86",
+   "placement": "regionals.js behind the round card's big word and faintly behind the match end screen (43O)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/cook-counter.jpeg",
+   "size": [
+    2624,
+    1632
+   ],
+   "sha256": "1ced973994595b56a463f3f781b1cec13f13834bfc5ce218d253677d4a255944",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cook/counter.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB, at most 1920 wide, q88",
+   "placement": "dumplings.js the counter behind every step (44A)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/cook-hands.png",
+   "size": [
+    2752,
+    1536
+   ],
+   "sha256": "6304c69b8a6a301dab4f45e22ed1368e239e1e44fcc1c4142f9705b99be247eb",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cook/hands.webp",
+   "conversion": "tools/femc-minigame-art.py: kept transparent, q90",
+   "placement": "dumplings.js the roll step, Solar's hands with the pin moving with it (44D)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/cook-icons.png",
+   "size": [
+    2528,
+    1696
+   ],
+   "sha256": "58d72f9b106b193ec20c43161e1a38810acf41c335c9f9c6f4216149582258e1",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cook/icon-perfect.webp",
+   "conversion": "tools/femc-minigame-art.py: 3 x 2 sheet cut at the emptiest lines -> icon-perfect / -okay / -bag / -golden / -burnt / -steamed, one square canvas, q90",
+   "placement": "dumplings.js the tray in the top bar (44E)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/cook-pan.jpeg",
+   "size": [
+    2624,
+    1632
+   ],
+   "sha256": "ef3f565a4a5b5ea4b0748bf1b262b95da4aaf2383679ae58eb3948a77d9d0182",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cook/pan.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB, at most 1920 wide, q88",
+   "placement": "dumplings.js the pan step, svg art layer under the drawn dumplings (44B)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/cook-stamps.png",
+   "size": [
+    2752,
+    1536
+   ],
+   "sha256": "a357bc90f3bbba94f3016cb5b3170f36f43fa550c12f1d9fcd1f5e870f839054",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cook/stamp-s.webp",
+   "conversion": "tools/femc-minigame-art.py: 2 x 2 sheet -> stamp-s / -a / -b / -c, one square canvas, q90",
+   "placement": "dumplings.js the end screen's grade badge (44F)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/sing-arrows.png",
+   "size": [
+    2752,
+    1536
+   ],
+   "sha256": "fb882409de113129d4786ffeb4cdc0e53ca3921081f49adf88923d65e72c12c7",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/sing/arrow-0.webp",
+   "conversion": "tools/femc-minigame-art.py: 3 x 2 sheet cut at the emptiest lines -> arrow-0..3 (cut-out white rings filled back in), target, splash; one square canvas, q90",
+   "placement": "sing.js the notes (rotated per lane), the four targets, the PERFECT burst (45F)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/sing-booth.jpeg",
+   "size": [
+    2752,
+    1536
+   ],
+   "sha256": "46ee94d397fcd65abe03e76f3683e56e3a061880400a302634a8154c250a5ff0",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/sing/booth.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB, at most 1920 wide, q88",
+   "placement": "sing.js the booth background (45A)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/sing-countdown.jpeg",
+   "size": [
+    3584,
+    1184
+   ],
+   "sha256": "9f8da6535730c30b3f6d3a02a51b3fbfbf1974b8dfd0cd16dc86c15926bb3620",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/sing/ready.webp",
+   "conversion": "tools/femc-minigame-art.py: 3 x 1 sheet on white, cut at the gaps (not thirds) -> ready / set / sing, q90",
+   "placement": "sing.js the count-in (45H)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/sing-haechan-desk.jpeg",
+   "size": [
+    2752,
+    1536
+   ],
+   "sha256": "dc41c430daf25dfeb355ad346585e2dac10757a3cc52d806d5da4b2de9ccb7bb",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/sing/haechan-desk.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB, at most 1920 wide, q88",
+   "placement": "sing.js the control room through the glass (45B)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/sing-ratings.jpeg",
+   "size": [
+    2752,
+    1536
+   ],
+   "sha256": "694d3733773e41d71e4949845552ef593bf7b3f888fba5bc32f82ef3a09a10c5",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/sing/rating-perfect.webp",
+   "conversion": "tools/femc-minigame-art.py: 2 x 2 sheet on white, keyed from the edge only (white letters kept; GOOD/OK/MISS holes keyed) -> rating-perfect / -good / -ok / -miss, q90",
+   "placement": "sing.js the rating pop (45G)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sophie-Poses/sophie-armscrossed.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "b8880196d7624036db3b36a9f4fe8997e8dbc77072fa09d8182704a9846198e6",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sophie-Poses/sophie-evoker.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "e2061022e92ec4ae0a439d38be3106a44f0eb33ee9723b969b67e656f3ff945b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sophie-Poses/sophie-fist.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "b13216087c75934231083f8604ac6a5e05add369f7a7b33e9a6b3111e13b5e1a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sophie-Poses/sophie-handinhair.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "cdb18b19abce226a8583eeaecce75b8aed7dcd92a54861ade6ef2756d488668a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sophie-Poses/sophie-handonhip.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "4a1dfb654cfd74ea729053563d4b5346fc443524916a302ddae82f4456370b7b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sophie-Poses/sophie-hearthands.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "e3c602a4308b1dd6bac446ce954eb77a5fb9389e432a4a4548f7a099bad46652",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sophie-Poses/sophie-jump.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "84666b37ceb2e679f08dc1df7296006c133e5b4391c7fcc3ab349baeda776230",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sophie-Poses/sophie-overshoulder.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "844acd4eeab9b29b601c21f88b5294c8e2129123faf24d8f2f64fe75aaf36806",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sophie-Poses/sophie-peace.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "8220dff63b01be37e0f4274c6a53672e08bb6f57963486e62988bc01680625fd",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sophie-Poses/sophie-phone.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "5bb8c3c5c9797f46e22856c73bdea49de827b0448ff66ea14c830f538d7df89c",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sophie-Poses/sophie-ramen.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "99f9faa68dc9adefa319a2e542f84425a6463ed60438b447ce0053fe406ee6bb",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sophie-Poses/sophie-reading.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "bfff094a0a8ea62371495b61e778fbe5504798cd454cac28212666973f373f37",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sophie-Poses/sophie-sewing.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "1006468ed48f75ee7cba5248b157fe3d22fc8a1453eebe01bbda6669591a592d",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sophie-Poses/sophie-shy.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "2ebd500148649ea237d2d0dff4a16325bad9d2f9ba2c964f29cb9a9a45926316",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sophie-Poses/sophie-thinking.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "8f4714c5108c18b7edf869856fed54f46de9b328864d0785417fbbe0ddc0ea8b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sophie-Poses/sophie-watering.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "3c68808ddf1a410e55e35be0f497878ab4697601af48c7f269e91c4e2d9a0300",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sophie-Poses/sophie-wave.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "2d0f7213ff8ecad4cd02a7d43d5de4dc784544615bd4faff7597a1ff74bc6509",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sophie-Poses/sophie-yawn.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "b70f7a03a5923708cb8971cd9299e6a6aed09c89a6bcc2d8f509eb2d8ed6966d",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Ghost Spider-Poses/spider-armscrossed.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "fc10b324cc184115d82d9d599210159801a57c232217cbcccb8085ddb252cec3",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Ghost Spider-Poses/spider-evoker.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "02f99bb61fc35999d7826be88c0f3c73991f94e347234c2b62232166de739bcc",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Ghost Spider-Poses/spider-fist.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "0a630045f82b576b59800ea327329ac0aa3ff8da07663d02ac1855754d3c2a9a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Ghost Spider-Poses/spider-handinhair.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "aa1319934904d8b17ff7051c13fc5c5e97c89accab344cd3935a242de6dc613b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Ghost Spider-Poses/spider-handonhip.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "71194fd4c0296870cab0ee5929ab3afe80f12098a8158f690d650b370a4aabd6",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Ghost Spider-Poses/spider-hearthands.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "b2a7ab6778a7f88b1d1b4aaba365838018e1ca60b4428a15bf474397209ae8c7",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Ghost Spider-Poses/spider-jump.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "e16a64111dda077a36bbf7de0d235f974c9d4ae72d01709ea8a6d588af913b3e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Ghost Spider-Poses/spider-overshoulder.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "7520af26a5b44e8d01620385a0869358a86912e31db77e30aae7649570d098eb",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Ghost Spider-Poses/spider-peace.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "29debfc4591613731da30cf5e0245a2f3cd1b05f1b2e997686c1252d2571c403",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Ghost Spider-Poses/spider-phone.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "61b5fb732e5f4369e272dfa5175488c15ff0fd1c2408c9eac5cb8e5af498ca39",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Ghost Spider-Poses/spider-ramen.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "e05152bf7b9c86a49491e9e91a6f4bea52dc618383c4e03931901806b4cff89a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Ghost Spider-Poses/spider-reading.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "68f4d0fa7e34c57fce689ff698cc8b81df244c90e47ce894ce424aff6da63a2b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Ghost Spider-Poses/spider-sewing.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "f4d69640b6329df65650b3fd6e107f874d8ad737feb59db9b4e8f2da68278768",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Ghost Spider-Poses/spider-thinking.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "3eba7ba4dd2268770a130653a2cc9360cebc2e9cffb9cf1ee918848f40eb8122",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Ghost Spider-Poses/spider-watering.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "b5413774ca14ef78c027d46f645cc5f96c94f0e9d238ddab244cb8d61a5d5f68",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Ghost Spider-Poses/spider-wave.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "afa0a58556932f22f97dc6d11a9c0e903114e2dce452eed6318a066c6925dcf0",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Ghost Spider-Poses/spider-yawn.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "73a910156c3078ba906528ea7a4fb8ac672054fcbe26617de83e437f696172d2",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Wednesday-Poses/wed-armscrossed.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "8e9107832fdc0fce5b36e1739d8056ee289fd678b05773ff7c1a1621d9f40d76",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Wednesday-Poses/wed-evoker.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "c360150772e4318fb29ce3eed2ece0bfade2d3c6f8c4a8a7418e0a5cee96292a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Wednesday-Poses/wed-fist.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "073e26ddb979ca123214fb2c916e3f5f1cca7d0109bb76b696e7750093ee3a90",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Wednesday-Poses/wed-handinhair.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "93ae58c716ccb28513156eaf780acffc8ff3f11f7a94f6735c60b5f49192a5ce",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Wednesday-Poses/wed-handonhip.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "41a5d10f0b8f504f02fc8c088764e9ec057c756bba00bbee7c97ac6be84ccd2c",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Wednesday-Poses/wed-hearthands.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "7679b0a7ee9e0e3f6bec9bad91b763c9ea12d371662a2176d6845f725f949213",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Wednesday-Poses/wed-jump.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "6bda5618a8ecdab9917585e1d77c86a69999ef9dfce0f7e5c43428d8f520c6f5",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Wednesday-Poses/wed-overshoulder.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "7a612f4bbf7033e109f0b2165460298152e3e5463498a950f1bae74249ecee70",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Wednesday-Poses/wed-peace.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "754d2997033c3202f2ca1a6e7b66e83e46ccfd31ea76a997033f6554ff568b69",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Wednesday-Poses/wed-phone.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "e457aa83989b046aa2dc292e31e544c913ca9e60ed8a1d8e596d92fd4562aa88",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Wednesday-Poses/wed-ramen.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "323c6c039dd537ba9fb0cf7ec0cdcbb527886a68e6bfe7dcdbb39f36d9b9ae69",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Wednesday-Poses/wed-reading.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "9ae3efd426b7d6711683efe3d7147d6d69646b96934f44e477ec938a11845179",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Wednesday-Poses/wed-sewing.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "a924876ced2355a0d880cca1cdb0d0b29a10e458cc333ed24e4e88312b181a30",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Wednesday-Poses/wed-shy.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "80d6cd47d4bcd7038a69bbb5fb516c3ff0dc805199a566f26bb8fa1f7f1852c8",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Wednesday-Poses/wed-thinking.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "ad1f2e2a35d44d4b7613f98ebd2c3dd6bd125d96a682d47183118bd0931230f7",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Wednesday-Poses/wed-watering.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "4dd8e739899e830ceceaa87e4cbf44c1649ef42c1ce839e44582ecab65e3f1ca",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Wednesday-Poses/wed-wave.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "0a6d62c40c5fb915a395c468d7305161badff4e68fffbdc25cc78cdbeaa8f814",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Wednesday-Poses/wed-yawn.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "4a48ddf5001facac8a39b7e7e99e7883f008f645601c712a3fe3e5071293c741",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sakura Cardcaptor-Poses/card-armscrossed.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "9f611c55df787ba036d972f9b88f188fe83f4f7543cbdf802649af50f384f2c4",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sakura Cardcaptor-Poses/card-evoker.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "ca7c29d4b0e183992d6d482a41b4fbf1ad66964575ca853d9718afe4d3b03bf7",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sakura Cardcaptor-Poses/card-fist.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "13be525fdb983b330c0453ccbb00f71a38aba3619521db6a883e71ce7427a335",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sakura Cardcaptor-Poses/card-handinhair.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "eabc3b9cedd72b34822039730f3e200be916c1613cddbf45188e500527341a37",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sakura Cardcaptor-Poses/card-handonhip.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "e306c3b29ce29d6ea907133c093c658bbdf01d4e9081f693a3e716bb3d595976",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sakura Cardcaptor-Poses/card-hearthands.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "0547133cb82028f9704c07ab068340c704db1ec3f7ba7da130245e455aec8e97",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sakura Cardcaptor-Poses/card-jump.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "369426e16a5cd39959e4ceebafc91de3427ae29b5d57f543a8d9e5fd983b6d5f",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sakura Cardcaptor-Poses/card-overshoulder.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "9c94fd5cf29dcf663a2b66eaa097552c570c50c2b135f77402819bb6591c093f",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sakura Cardcaptor-Poses/card-peace.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "214be3ff024b34d8be55082b3765bdd5a60ce29ded3a6b690c86fa595158d002",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sakura Cardcaptor-Poses/card-phone.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "b0f1c8f9c6ebe35b4ae3fbcca9f43afb14512fa4827fe69fab54c9c41fd0da3f",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sakura Cardcaptor-Poses/card-ramen.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "c5d8a1ced8b7d9ab2bee77dcc28843ece1dd00ee1110ce8b9ea12370c27890de",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sakura Cardcaptor-Poses/card-reading.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "48d6ae8a3512550c5b1400b19246e11450082b9f06e42984763dc99892e9369b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sakura Cardcaptor-Poses/card-sewing.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "98a5289a65bce41ed25c1a673e90ff6fbd0298189985be7d11710bab8e1d32a9",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sakura Cardcaptor-Poses/card-shy.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "4a105947ccb36ba81648aeff7fe3be6d075b55d9e99422f521f49c2ae335bcf6",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sakura Cardcaptor-Poses/card-thinking.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "32f0a62396eaa4834a3ee90b2baaea357e15d63ec0cee2581c3defd8cb9f5633",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sakura Cardcaptor-Poses/card-watering.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "9cde34f6e57585c8fb18c906082394720722162532d9fdf303e66122bdb6dd4b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sakura Cardcaptor-Poses/card-wave.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "1e508927f2b2f3b7cd0ab11c31ef2b35006e2bdeb6085ede4a204160b0b3b680",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/Solar-Sakura Cardcaptor-Poses/card-yawn.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "ebcfd6c378eb0c85092508525c5f9e43aa4f444c9801e9774a883f092d8704d1",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/hd/",
+   "conversion": "native size, feet on the bottom edge, WebP q92 (femc-hd-poses.py)",
+   "placement": "fitting room HD preview, home screen, Solo shoot, win screen (FEMC-SKIN-ART HD poses)"
+  },
+  {
+   "batch": 150,
+   "source": "New Adds/sukajan-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "fe8d1baa6312a8e97b2596f4e07c78fa31451802583d99fb785e4ce56b3fa0c4",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-sukajan/portraits/solar/",
+   "conversion": "femc-skin-portraits.py (order serious, flustered, neutral, sad, happy, surprised; shared scale 0.55 on her 862 x 851 canvas) + femc-wardrobe.py portraits; replaces batch 149's lifted faces",
+   "placement": "scene faces while she wears Sukajan Kiriko (Kat's redo, FEMC-SKIN-ART)"
   }
  ],
  "batch1Validation": {
@@ -42568,5 +43881,10 @@
  "batch134Validation": {
   "tests": "femc_life --only look, femc_skins_battle --only winhd, femc_menu",
   "note": "Nov 3 2026: HD single-figure poses for ten more Solar outfits; partial sets (Lifeguard 17, VP 15, Velvet 11, Winter Coat 11) wired as they are. VP: vp-yawn-v2.png used, vp-yawn.png not. Night Swim and Midnight Drive folders were empty."
+ },
+ "batch150Validation": {
+  "date": "2026-11-10",
+  "checks": "jsc checkSyntax regionals.js, dumplings.js, sing.js, cosmetics.js, fitting.js, ready.js; femc-check-scenes; every cut frame looked at on a contact sheet",
+  "note": "Nov 10 2026: minigame art for Regionals, the dumpling game and the booth; HD sets for Sophie, Ghost-Spider (17, no shy), Wednesday, Cardcaptor Sakura; Sukajan faces redone. Not recorded here: batches 146-149 (see CLAUDE.md). Left in New Adds untouched: Solar-Sophie-Poses/epi-r-edge-of-light.png and epi-r-dumplings.png (42A / 42B CGs, misfiled; not wired). Low-res: mg-ow-map-busan-1 and -lijiang-2 are 596 x 335 (FEMC-ART-TODO 31)."
  }
 }

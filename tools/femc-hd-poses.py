@@ -99,6 +99,10 @@ LOOKS = {'sk-cp-afterhours': ('Solar-After Hours-Menu Poses', 'afterhr-'),
          'sk-collab-sailor': ('Sailor Moon Poses', 'sailor-'),
          'sk-collab-ghoul': ('Draculaura Poses', 'drac-'),
          'sk-collab-sukajan': ('Sukajan Poses', 'suka-'),
+         'sk-collab-castle': ('Solar-Sophie-Poses', 'sophie-'),  # art batch 150 (Nov 10): Sophie = Howl's Moving Castle
+         'sk-collab-spider': ('Solar-Ghost Spider-Poses', 'spider-'),
+         'sk-collab-wednesday': ('Solar-Wednesday-Poses', 'wed-'),
+         'sk-collab-cardcaptor': ('Solar-Sakura Cardcaptor-Poses', 'card-'),
          # Haechan's win-screen sets (FEMC-SKIN-ART "Wardrobe looks already in the game"): the list's folder / prefix for the
          # six poses; Kat's first single victory pose per look came loose in New Adds under other names (EXTRA below).
          'sk-haechan-sweater': ('HC-Sweater Date-Victory Poses', 'haechan-sweaterdate-hd-'),

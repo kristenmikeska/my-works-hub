@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Epilogue Minigames</title>
 <link rel="stylesheet" href="../../assets/femc/game/minigames/support.css?v=1">
-<link rel="stylesheet" href="../../assets/femc/game/minigames/dumplings.css?v=5">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/dumplings.css?v=6">
 <link rel="stylesheet" href="../../assets/femc/game/minigames/studio.css?v=1">
 <link rel="stylesheet" href="../../assets/femc/game/minigames/listen.css?v=1">
-<link rel="stylesheet" href="../../assets/femc/game/minigames/sing.css?v=9">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/sing.css?v=10">
 <style>
   :root { color-scheme: dark; }
   body { margin: 0; min-height: 100vh; background: #14070f; color: #fff; font-family: system-ui, sans-serif; display: grid; place-content: center; gap: 18px; padding: 24px 16px; }
@@ -37,14 +37,14 @@
   </div>
   <pre id="out">Last result shows here.</pre>
   <script src="../../assets/femc/game/minigames/support.js?v=1"></script>
-  <script src="../../assets/femc/game/minigames/dumplings.js?v=6"></script>
+  <script src="../../assets/femc/game/minigames/dumplings.js?v=7"></script>
   <script src="../../assets/femc/game/minigames/studio.js?v=1"></script>
   <script src="../../assets/femc/game/minigames/listen.js?v=1"></script>
   <script src="../../assets/femc/game/minigames/charts/runners.js?v=5"></script>
   <script src="../../assets/femc/game/minigames/charts/you.js?v=1"></script>
   <script src="../../assets/femc/game/minigames/charts/wantchu.js?v=1"></script>
   <script src="../../assets/femc/game/minigames/charts/greyrain.js?v=1"></script>
-  <script src="../../assets/femc/game/minigames/sing.js?v=9"></script>
+  <script src="../../assets/femc/game/minigames/sing.js?v=10"></script>
   <script>
     const G = { support: () => FemcSupport.play({}), dumplings: () => FemcDumplings.play({ mute: document.getElementById('mute').checked }), studio: () => FemcStudio.play({ mute: document.getElementById('mute').checked }), listen: () => FemcListen.play({ mute: document.getElementById('mute').checked }), singrec: () => FemcSing.play({ song: sgSong(), record: true, mute: document.getElementById('mute').checked }).then(r => { sgNote(); if (r && r.play) { document.getElementById('sgdraft').checked = true; G.sing(); } }),
       sing: () => FemcSing.play({ mute: document.getElementById('mute').checked, level: document.querySelector('[name=sglv]:checked').value, song: sgSong(), chart: document.getElementById('sgdraft').checked ? (FemcSing.draft(sgSong()) || {}).charts : null, singers: document.getElementById('sgdraft').checked ? (FemcSing.draft(sgSong()) || {}).singers : null }) };

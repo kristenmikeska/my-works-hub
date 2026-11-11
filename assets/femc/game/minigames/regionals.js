@@ -21,16 +21,19 @@
    Solar (Swift Step or kill him), Dragonblade, Graviton Surge, Lúcio's Sound Barrier. A Suzu inside a big hit's window is a save.
    Kill feed top right, Play of the Game at the end (her best moment: a quick multi-kill, a solo kill on her diver, a Suzu save).
 
-   Art (FEMC-ART-TODO 43; cut by tools/femc-minigame-art.py into assets/femc/game/art/minigames/ow/): map-lijiang, map-busan, hands,
-   team-chenle / -minji / -olivia / -haerin, foe-zarya / -genji / -ana / -lucio / -cassidy, potg-kiriko. Any picture that isn't
-   there yet is drawn as a stand-in (a coloured silhouette with the hero's name), so the game plays before the art exists.
+   Art (FEMC-ART-TODO 43; cut by tools/femc-minigame-art.py into assets/femc/game/art/minigames/ow/; all in since art batch 150
+   but the player cards): map-lijiang-1..3, map-busan-1..3 (each round picks one of its map's three at random; then plain
+   map-<id>), hands, team-chenle / -minji / -olivia / -haerin, foe-zarya / -genji / -ana / -lucio / -cassidy, potg-kiriko,
+   victory / defeat (behind the round card's big word, and faintly behind the match's end screen). Any picture that isn't
+   there is drawn as a stand-in (a coloured silhouette with the hero's name), so the game plays without the art. img() takes
+   fallback names (data-alts), tried in order by one error listener on the game's root before the picture is dropped.
    Sounds: Web Audio, made in the browser (no files). Reduced motion: no shakes. */
 window.FemcRegionals = (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const base = () => (window.FemcGame && window.FemcGame.base) || (document.querySelector('script[src*="minigames/regionals.js"]')?.src.split('assets/')[0]) || '';
   const ART = id => `${base()}assets/femc/game/art/minigames/ow/${id}.webp`;
-  const MAPS = [{ id: 'lijiang', name: 'Lijiang Tower · Night Market', sky: ['#1b1440', '#4a1b3d'] }, { id: 'busan', name: 'Busan · Downtown', sky: ['#ff8a6b', '#5a2a6b'] }];
+  const MAPS = [{ id: 'lijiang', name: 'Lijiang Tower · Night Market', sky: ['#1b1440', '#4a1b3d'], pics: 3 }, { id: 'busan', name: 'Busan · Downtown', sky: ['#ff8a6b', '#5a2a6b'], pics: 3 }];
   // Kat's picks (Nov 10): Chenle tank, Minji and Olivia DPS, Haerin and Solar support. x / y / h: % of the stage (feet at y).
   const TEAM = [
     { id: 'chenle', handle: 'chenle', hero: 'Reinhardt', role: 'tank', hp: 650, dps: 26, x: 42, y: 92, h: 52, col: '#c9d3e0' },
@@ -110,7 +113,12 @@ window.FemcRegionals = (() => {
         <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="quit">Quit</button></div>`;
       host.appendChild(el);
       const $ = s => el.querySelector(s), stage = $('.ow-stage');
-      const img = (id, alt) => `<img src="${ART(id)}" alt="${esc(alt || '')}" draggable="false" onerror="this.remove()">`;
+      const img = (id, alt, alts = [], cls = '') => `<img src="${ART(id)}" alt="${esc(alt || '')}" draggable="false"${cls ? ` class="${cls}"` : ''}${alts.length ? ` data-alts="${alts.join(' ')}"` : ''}>`;
+      el.addEventListener('error', e => { // a missing picture: try its next name, else drop it (the drawn stand-in shows)
+        const i = e.target; if (i.tagName !== 'IMG') return;
+        const a = (i.dataset.alts || '').split(' ').filter(Boolean);
+        if (a.length) { i.dataset.alts = a.slice(1).join(' '); i.src = ART(a[0]); } else i.remove();
+      }, true);
 
       // hands
       $('.ow-hands').innerHTML = `<div class="ow-hands-stand"><span class="l"></span><span class="r"></span></div>${img('hands', '')}`;
@@ -133,7 +141,7 @@ window.FemcRegionals = (() => {
 
       function startRound() {
         const map = MAPS[M.rounds.length % MAPS.length];
-        $('.ow-map').innerHTML = `<div class="ow-map-stand" style="--a:${map.sky[0]};--b:${map.sky[1]}"><span class="pt"></span></div>${img('map-' + map.id, map.name)}`;
+        $('.ow-map').innerHTML = `<div class="ow-map-stand" style="--a:${map.sky[0]};--b:${map.sky[1]}"><span class="pt"></span></div>${img(`map-${map.id}-${1 + Math.floor(Math.random() * map.pics)}`, map.name, ['map-' + map.id])}`;
         $('.ow-round').textContent = `Round ${M.rounds.length + 1} · ${map.name}`;
         const team = TEAM.map(t => ({ ...t, max: t.hp, down: 0, anti: 0, sleep: 0, inv: 0, heal: 0 }));
         const foes = FOES.map((f, i) => ({ ...f, max: Math.round(f.hp * D.hp), hp: Math.round(f.hp * D.hp), down: 0, state: 'hid', t: 1500 + i * 700, spot: -1, target: null, lastHitBy: null }));
@@ -268,7 +276,7 @@ window.FemcRegionals = (() => {
         won ? S.win() : S.lose();
         const w = M.rounds.filter(r => r.won).length, l = M.rounds.length - w;
         const card = $('.ow-card'); card.hidden = false;
-        card.innerHTML = `<b class="ow-big ${won ? 'v' : 'd'}">${won ? 'VICTORY' : 'DEFEAT'}</b><p>Round ${M.rounds.length} · ${esc(R.map.name)}</p><p class="ow-series">SYRACUSE ${w} – ${l} TOP SEED</p>`;
+        card.innerHTML = `${img(won ? 'victory' : 'defeat', '', [], 'ow-card-bg')}<b class="ow-big ${won ? 'v' : 'd'}">${won ? 'VICTORY' : 'DEFEAT'}</b><p>Round ${M.rounds.length} · ${esc(R.map.name)}</p><p class="ow-series">SYRACUSE ${w} – ${l} TOP SEED</p>`;
         setTimeout(() => {
           card.hidden = true;
           if (w >= NEED || l >= NEED || M.rounds.length >= BEST) finish();
@@ -285,7 +293,7 @@ window.FemcRegionals = (() => {
         const grade = quit ? 'C' : won && M.deaths <= 1 && M.elims >= 8 ? 'S' : won ? 'A' : M.rounds.some(r => r.won) ? 'B' : 'C';
         const res = { won, rounds: M.rounds, elims: M.elims, soloKills: M.soloKills, deaths: M.deaths, teamDeaths: M.teamDeaths, healed: Math.round(M.healed), saves: M.saves, steps: M.steps, rushes: M.rushes, potg: p, grade, quit };
         const card = $('.ow-card'); card.hidden = false; card.classList.add('potg');
-        card.innerHTML = `<div class="ow-potg">${img('potg-kiriko', 'Kiriko')}<div class="ow-potg-stand"></div><div class="ow-potg-copy"><small>PLAY OF THE GAME</small><b>sollee</b><span>Kiriko</span><p>${esc(p.text)}</p></div></div>
+        card.innerHTML = `${img(won ? 'victory' : 'defeat', '', [], 'ow-card-bg')}<div class="ow-potg">${img('potg-kiriko', 'Kiriko')}<div class="ow-potg-stand"></div><div class="ow-potg-copy"><small>PLAY OF THE GAME</small><b>sollee</b><span>Kiriko</span><p>${esc(p.text)}</p></div></div>
           <dl class="ow-stats"><dt>Eliminations</dt><dd>${M.elims}</dd><dt>Healing</dt><dd>${Math.round(M.healed)}</dd><dt>Suzu saves</dt><dd>${M.saves}</dd><dt>Deaths</dt><dd>${M.deaths}</dd><dt>Series</dt><dd>${M.rounds.filter(r => r.won).length} – ${M.rounds.filter(r => !r.won).length}</dd><dt>Grade</dt><dd class="g">${grade}</dd></dl>
           <button type="button">Continue</button>`;
         card.querySelector('button').focus();

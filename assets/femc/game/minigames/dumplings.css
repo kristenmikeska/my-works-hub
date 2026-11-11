@@ -3,6 +3,14 @@
   background: radial-gradient(ellipse at 50% -10%, rgba(255, 207, 90, .22), transparent 55%), repeating-linear-gradient(45deg, rgba(255, 79, 158, .06) 0 18px, transparent 18px 36px), linear-gradient(180deg, #2a1220, var(--nt)); user-select: none; -webkit-user-select: none; touch-action: none; }
 .dmp-top { display: flex; align-items: center; gap: 16px; font: italic 900 clamp(14px, 1.5vw, 19px)/1 var(--cond, sans-serif); letter-spacing: .1em; text-transform: uppercase; }
 .dmp-step { color: var(--pk2); }
+/* the tray (Kat's icons: perfect / okay / bag, then golden / burnt / steamed; a mini drawn dumpling without them) */
+.dmp-tray { margin: 0 0 0 auto; padding: 4px 10px; list-style: none; display: flex; gap: 6px; background: rgba(255, 255, 255, .08); border-radius: 14px; box-shadow: inset 0 0 0 2px rgba(255, 154, 200, .25); }
+.dmp-tray li { position: relative; width: clamp(30px, 3.4vw, 46px); aspect-ratio: 1; border-radius: 10px; background: rgba(255, 255, 255, .06); }
+.dmp-tray li.on { background: rgba(255, 211, 230, .14); animation: dmp-drop .45s cubic-bezier(.2, 1.6, .4, 1); }
+.dmp-tray img, .dmp-tray svg { position: absolute; inset: 6%; width: 88%; height: 88%; object-fit: contain; overflow: visible; }
+.dmp-tray img ~ svg { display: none; }
+@keyframes dmp-drop { from { transform: translateY(-14px) scale(.6); opacity: 0; } }
+.dmp-tray + .dmp-prog { margin-left: 0; }
 .dmp-prog { margin: 0 0 0 auto; padding: 6px 10px; list-style: none; display: flex; gap: 6px; background: rgba(255, 255, 255, .06); border-radius: 999px; }
 .dmp-prog li { width: 12px; height: 12px; border-radius: 50%; background: rgba(255, 255, 255, .15); transition: background .3s, transform .3s; }
 .dmp-prog li.done { background: var(--pk2); } .dmp-prog li.now { background: var(--gold); transform: scale(1.35); box-shadow: 0 0 10px var(--gold); }
@@ -79,10 +87,14 @@
 .mg-dmp .mg-pause[hidden], .mg-dmp .mg-end[hidden] { display: none; }
 .mg-dmp .mg-pause b { font: italic 900 40px/1 var(--cond, sans-serif); }
 .mg-dmp .mg-pause button, .mg-dmp .mg-end button { padding: 12px 26px; border: 0; border-radius: 999px; background: var(--pk); color: var(--nt); font: italic 900 18px/1 var(--cond, sans-serif); cursor: pointer; }
+.dmp-stamp { display: grid; place-items: center; }
+.dmp-stamp img { width: clamp(150px, 24vw, 260px); height: auto; filter: drop-shadow(0 10px 24px rgba(0, 0, 0, .5)); animation: dmp-stamp .5s cubic-bezier(.2, 1.5, .4, 1) both; }
+.dmp-stamp img ~ b { display: none; }
+@keyframes dmp-stamp { from { transform: scale(1.8) rotate(-14deg); opacity: 0; } 70% { transform: scale(.94) rotate(3deg); opacity: 1; } }
 .mg-dmp .mg-grade { font: italic 900 clamp(90px, 16vw, 180px)/1 var(--cond, sans-serif); color: var(--pk); text-shadow: .05em .05em 0 var(--pk2); }
 .mg-dmp .mg-end dl { display: grid; grid-template-columns: auto auto; gap: 6px 20px; margin: 0; font-weight: 800; }
 .mg-dmp .mg-end dd { margin: 0; text-align: right; color: var(--pk2); text-transform: capitalize; }
 .mg-dmp .mg-end-say { margin: 0; max-width: 460px; text-align: center; font-style: italic; opacity: .85; }
 .mg-dmp .mg-end ~ .dmp-talk, .mg-dmp:has(.mg-end:not([hidden])) .dmp-talk { z-index: 7; }
-@media (max-width: 760px) { .dmp-talk { bottom: auto; top: 46px; max-width: 48vw; } .dmp-talk img { width: 56px; } .dmp-talk p { margin-bottom: 4px; font-size: 13px; } .dmp-prog { display: none; } }
+@media (max-width: 760px) { .dmp-tray li { width: 26px; } .dmp-talk { bottom: auto; top: 46px; max-width: 48vw; } .dmp-talk img { width: 56px; } .dmp-talk p { margin-bottom: 4px; font-size: 13px; } .dmp-prog { display: none; } }
 .mg-dmp.still * { animation: none !important; transition: none !important; }

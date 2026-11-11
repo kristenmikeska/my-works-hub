@@ -21,7 +21,17 @@
    They talk: Haechan (left) and Solar (right) trade lines between and during the steps, by what you chose and how it's going
    (a little conversation queue, never blocking the game; tap a bubble to skip it).
    Everything is SVG drawn in code (shaded dough, speckled filling, a glossy pan, bubbles, rising steam) so it can move; Kat's
-   art (FEMC-ART-TODO 44, art/minigames/cook/) dresses the kitchen when it exists. Sounds: Web Audio, no files. Esc pauses. */
+   art (FEMC-ART-TODO 44, art/minigames/cook/, cut by tools/femc-minigame-art.py; in since art batch 150) dresses it, each piece
+   falling back to the drawn version when its file isn't there:
+     counter        the counter behind every step (.dmp-counter-art)
+     pan            the pan step: the stove and pan picture (svg <g class="art">, placed so its pan sits where the drawn one
+                    was: centre 160,132; the drawn pan, oil and shadow are skipped; the lid is drawn rounder to match)
+     hands          the roll step: Solar's hands with the rolling pin (svg <g class="over">, above the dough, moving with the pin;
+                    the drawn pin is skipped)
+     icon-perfect / -okay / -bag   the tray (top bar, .dmp-tray): one slot per dumpling, its wrap result once made;
+     icon-golden / -burnt / -steamed   after the pan every slot shows how they cooked (pale = steamed). Fallback: a mini SVG dumpling.
+     stamp-s / -a / -b / -c   the grade badge on the end screen (fallback: the big letter)
+   Sounds: Web Audio, no files. Esc pauses. */
 window.FemcDumplings = (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -148,23 +158,34 @@ window.FemcDumplings = (() => {
     return new Promise(done => {
       const host = o.host || document.body, N = o.count || 3, K = kitchen(!!o.mute);
       const ART = id => `${base()}assets/femc/game/art/minigames/cook/${id}.webp`;
+      const pics = {}; ['pan', 'hands'].forEach(id => { const i = new Image(); i.src = ART(id); pics[id] = i; }); // svg pictures: drawn version until loaded
+      const has = id => pics[id].complete && pics[id].naturalWidth > 0;
       const FACE = (who, f) => `${base()}assets/femc/portraits/${who === 'h' ? 'haechan-runners' : 'solar-runners'}/${f}.webp`;
       const R = { steps: {}, made: [], step: null, paused: false, over: false, filling: 'classic', sauce: 'soy', garnish: 'sesame', plate: 'white' };
       let F = FILLINGS.classic;
       const el = document.createElement('div');
       el.className = 'mg-dmp' + (reduced.matches ? ' still' : '');
       el.innerHTML = `
-        <div class="dmp-top"><b>12/31 · the kitchen</b><span class="dmp-step"></span><ol class="dmp-prog" aria-label="Steps"></ol></div>
+        <div class="dmp-top"><b>12/31 · the kitchen</b><span class="dmp-step"></span><ol class="dmp-tray" aria-label="Dumplings"></ol><ol class="dmp-prog" aria-label="Steps"></ol></div>
         <div class="dmp-talk h"><img alt="Haechan" src="${FACE('h', 'neutral')}"><p aria-live="polite"><b>Haechan</b><span></span></p></div>
         <div class="dmp-talk s"><img alt="Solar" src="${FACE('s', 'neutral')}"><p aria-live="polite"><b>Solar</b><span></span></p></div>
         <div class="dmp-counter"><img class="dmp-counter-art" src="${ART('counter')}" alt="" onerror="this.remove()"><div class="dmp-flour"></div>
-          <svg class="dmp-svg" viewBox="0 0 300 200" aria-hidden="true"><g class="defs"></g><g class="scene"></g></svg><div class="dmp-fx" aria-hidden="true"></div>
+          <svg class="dmp-svg" viewBox="0 0 300 200" aria-hidden="true"><g class="defs"></g><g class="art"></g><g class="scene"></g><g class="over"></g></svg><div class="dmp-fx" aria-hidden="true"></div>
           <div class="dmp-grade" aria-live="polite"></div><div class="dmp-choose" hidden></div></div>
         <div class="dmp-ctl"><div class="dmp-meter"><i class="zone"></i><i class="gold"></i><i class="fillbar"></i><i class="mark"></i></div><p class="dmp-tip"></p><button type="button" class="dmp-go" hidden></button></div>
         <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
-      const $ = s => el.querySelector(s), G = $('.scene'), svgEl = $('.dmp-svg'), FX = $('.dmp-fx');
+      const $ = s => el.querySelector(s), G = $('.scene'), svgEl = $('.dmp-svg'), FX = $('.dmp-fx'), ARTG = $('.art'), OVER = $('.over');
+      // the tray: a slot per dumpling; its wrap result (perfect / okay / bag), then after the pan how they cooked
+      const TRAY = { great: 'perfect', fine: 'okay', poor: 'bag', golden: 'golden', burnt: 'burnt', pale: 'steamed' };
+      const tray = () => {
+        $('.dmp-tray').innerHTML = Array.from({ length: N }, (_, j) => {
+          const d = R.made[j]; if (!d) return '<li></li>';
+          const k = R.cooked ? R.cook : d.quality;
+          return `<li class="on ${k}" title="${TRAY[k]}"><img src="${ART('icon-' + TRAY[k])}" alt="${TRAY[k]}" onerror="this.remove()"><svg viewBox="0 0 60 40" aria-hidden="true">${dumpling({ cx: 30, cy: 28, w: 24, h: 11, pleats: d.pleats, q: d.quality === 'poor' ? 'poor' : null, brown: R.cooked ? { golden: '#d9a25a', burnt: '#5a3420', pale: null }[R.cook] : null })}</svg></li>`;
+        }).join('');
+      };
       const setDefs = () => { $('.defs').innerHTML = defs(F); };
 
       /* the conversation queue: one bubble at a time, never blocking */
@@ -294,10 +315,13 @@ window.FemcDumplings = (() => {
         R.step = 'roll'; prog(`wrap${i + 1}`); talk('roll'); $('.dmp-step').textContent = `Dumpling ${i + 1} of ${N} · Roll`;
         $('.dmp-tip').textContent = 'Drag the rolling pin back and forth (or ← →). Done when the meter is in the pink.';
         let pinX = 0, lastX = null, lastDir = 0;
+        const hands = has('hands'); // Kat's hands: the pin at 69% of the picture's height, handles 17-83% of its width
+        OVER.innerHTML = hands ? `<image href="${ART('hands')}" x="-60" y="-25" width="420" height="234" preserveAspectRatio="none"/>` : '';
         const draw = () => {
+          if (hands) OVER.setAttribute('transform', `translate(${pinX} 0)`);
           const r = 26 + D.roll * 0.6, thin = D.roll > 112;
           G.innerHTML = `${shadow(150, 152, r + 6, 10)}<ellipse cx="150" cy="140" rx="${r}" ry="${r * (0.62 + Math.min(D.roll, 100) / 1000)}" fill="url(#dg-dough)" stroke="#e3cfb5" stroke-width="2"/>${D.roll < 50 ? `<ellipse cx="142" cy="${132 - (50 - D.roll) * 0.2}" rx="${r * 0.55}" ry="${r * 0.35}" fill="#fff6ea" opacity=".75"/>` : ''}${thin ? '<ellipse cx="164" cy="146" rx="10" ry="5" fill="#e9dccb"/>' : ''}${specks(150, 140, r * 0.9, r * 0.5, 10, 'rgba(255,255,255,.7)', 9)}
-            <g transform="translate(${pinX} 0)"><rect x="46" y="126" width="208" height="20" rx="10" fill="#f4f4f6" stroke="#cfcfd6" stroke-width="2"/><rect x="26" y="130" width="26" height="12" rx="6" fill="#e7e7ec"/><rect x="248" y="130" width="26" height="12" rx="6" fill="#e7e7ec"/><circle cx="214" cy="136" r="5" fill="#ff7fb2"/></g>`;
+            ${hands ? '' : `<g transform="translate(${pinX} 0)"><rect x="46" y="126" width="208" height="20" rx="10" fill="#f4f4f6" stroke="#cfcfd6" stroke-width="2"/><rect x="26" y="130" width="26" height="12" rx="6" fill="#e7e7ec"/><rect x="248" y="130" width="26" height="12" rx="6" fill="#e7e7ec"/><circle cx="214" cy="136" r="5" fill="#ff7fb2"/></g>`}`;
           meter({ zone: [85 / 1.4, 112 / 1.4], gold: [92 / 1.4, 104 / 1.4], fill: D.roll / 1.4 });
         };
         const by = dx => {
@@ -306,7 +330,7 @@ window.FemcDumplings = (() => {
           if (d && d !== lastDir) { lastDir = d; D.roll = Math.min(140, D.roll + 7 + Math.random() * 3); K.roll(); if (!reduced.matches) { svgEl.classList.remove('squish'); void svgEl.getBBox(); svgEl.classList.add('squish'); } puff(150 + (Math.random() - 0.5) * 100, 150, 'flour', 2); }
           draw();
         };
-        const doneRoll = () => { if (R.step !== 'roll') return; R.step = 'wait'; const v = D.roll < 85 ? 40 + D.roll * 0.3 : D.roll > 112 ? 100 - (D.roll - 112) * 3 : 100 - Math.abs(D.roll - 98) * 2; D.q.roll = v; score('roll', v); next(spoon, 1100); };
+        const doneRoll = () => { if (R.step !== 'roll') return; R.step = 'wait'; OVER.innerHTML = ''; OVER.removeAttribute('transform'); const v = D.roll < 85 ? 40 + D.roll * 0.3 : D.roll > 112 ? 100 - (D.roll - 112) * 3 : 100 - Math.abs(D.roll - 98) * 2; D.q.roll = v; score('roll', v); next(spoon, 1100); };
         btn('Done', { onclick: doneRoll });
         R.onDrag = (p, ph) => { if (ph === 'move' && lastX != null) by((p.x - lastX) * 2.2); lastX = ph === 'up' ? null : p.x; };
         R.onKey = (k, up) => { if (up) return; if (k === 'ArrowLeft' || k === 'ArrowRight') by(k === 'ArrowLeft' ? -24 : 24); else if (k === ' ') doneRoll(); };
@@ -388,7 +412,7 @@ window.FemcDumplings = (() => {
           R.step = 'wait'; loopFn = null;
           const pq = D.pleats.reduce((s, p) => s + (p === 2 ? 100 : p ? 70 : 10), 0) / P;
           const all = [D.q.roll, D.q.spoon, D.q.fold, pq].reduce((a, b) => a + b, 0) / 4 - (D.overfill ? 15 : 0);
-          const k2 = all >= 82 ? 'great' : all >= 55 ? 'fine' : 'poor'; D.quality = k2; R.made.push(D); R.steps[`wrap${D.i + 1}`] = Math.round(clamp(all, 0, 100));
+          const k2 = all >= 82 ? 'great' : all >= 55 ? 'fine' : 'poor'; D.quality = k2; R.made.push(D); R.steps[`wrap${D.i + 1}`] = Math.round(clamp(all, 0, 100)); tray();
           G.innerHTML = dumpling({ cx: 150, cy: 150, w: W, h: H, pleats: D.pleats, q: k2 });
           svgEl.classList.add('rev-' + k2); talk(k2); pop(k2 === 'great' ? 'PERFECT!' : k2 === 'fine' ? 'OKAY' : 'A BAG', k2); k2 === 'great' ? (K.ding(), setTimeout(K.sparkle, 100)) : k2 === 'poor' ? K.boing() : K.pinch();
           setTimeout(() => { svgEl.classList.remove('rev-' + k2); svgEl.classList.add('slide'); setTimeout(() => { svgEl.classList.remove('slide'); R.made.length >= N ? pan() : roll(); }, 450); }, 1700);
@@ -413,13 +437,15 @@ window.FemcDumplings = (() => {
         const slots = R.made.map((d, j) => ({ d, ...home(j), in: false, tx: 118 + j * 36, ty: 130 + (j % 2) * 8 }));
         let cook = 0, phase = 'place', water = 0, holding = false, drag = null, bubbleAt = 0;
         const brown = () => cook < 0.55 ? `rgb(${Math.round(243 - cook * 60)},${Math.round(226 - cook * 110)},${Math.round(196 - cook * 200)})` : cook < 0.85 ? `rgb(${Math.round(210 - (cook - 0.55) * 120)},${Math.round(150 - (cook - 0.55) * 160)},${Math.round(80 - (cook - 0.55) * 100)})` : `rgb(${Math.round(150 - (cook - 0.85) * 400)},${Math.round(90 - (cook - 0.85) * 300)},${Math.max(10, Math.round(40 - (cook - 0.85) * 200))})`;
+        const art = has('pan'); // Kat's pan: its inside centred at 39% / 50% of the picture, 39% of its width across
+        ARTG.innerHTML = art ? `<image href="${ART('pan')}" x="-45" y="-30" width="523" height="325" preserveAspectRatio="none"/>` : '';
         const draw = () => {
           const lid = phase === 'lid' || phase === 'steam';
-          G.innerHTML = `${shadow(160, 172, 120, 12)}<rect x="250" y="122" width="60" height="12" rx="6" fill="#2a1d18"/><ellipse cx="160" cy="135" rx="112" ry="56" fill="#2b2b31"/><ellipse cx="160" cy="132" rx="102" ry="49" fill="url(#dg-pan)"/>
-            <ellipse cx="150" cy="122" rx="60" ry="14" fill="url(#dg-oil)" opacity=".8"/>${water > 0 ? `<ellipse cx="160" cy="134" rx="${40 + water * 0.55}" ry="${18 + water * 0.26}" fill="rgba(200,230,255,.28)"/>` : ''}
+          G.innerHTML = `${art ? '' : `${shadow(160, 172, 120, 12)}<rect x="250" y="122" width="60" height="12" rx="6" fill="#2a1d18"/><ellipse cx="160" cy="135" rx="112" ry="56" fill="#2b2b31"/><ellipse cx="160" cy="132" rx="102" ry="49" fill="url(#dg-pan)"/>
+            <ellipse cx="150" cy="122" rx="60" ry="14" fill="url(#dg-oil)" opacity=".8"/>`}${water > 0 ? `<ellipse cx="160" cy="134" rx="${40 + water * 0.55}" ry="${18 + water * 0.26}" fill="rgba(200,230,255,.28)"/>` : ''}
             ${slots.map(s => s.in ? dumpling({ cx: s.tx, cy: s.ty, w: 26, h: 12, pleats: s.d.pleats, brown: brown(), q: s.d.quality === 'poor' ? 'poor' : null }) : '').join('')}
             ${slots.map(s => !s.in ? dumpling({ cx: s.x, cy: s.y, w: 22, h: 10, pleats: s.d.pleats, q: s.d.quality === 'poor' ? 'poor' : null }) : '').join('')}
-            ${lid ? `<g class="lid ${phase === 'steam' ? 'up' : ''}"><ellipse cx="160" cy="122" rx="104" ry="50" fill="rgba(220,235,245,.45)" stroke="rgba(255,255,255,.7)" stroke-width="4"/><circle cx="160" cy="98" r="9" fill="#ff4f9e" stroke="#fff" stroke-width="3"/></g>` : ''}`;
+            ${lid ? `<g class="lid ${phase === 'steam' ? 'up' : ''}"><ellipse cx="160" cy="${art ? 128 : 122}" rx="104" ry="${art ? 70 : 50}" fill="rgba(220,235,245,.45)" stroke="rgba(255,255,255,.7)" stroke-width="4"/><circle cx="160" cy="98" r="9" fill="#ff4f9e" stroke="#fff" stroke-width="3"/></g>` : ''}`;
           if (phase === 'place') meter(null);
           if (phase === 'brown') meter({ zone: [55, 85], gold: [62, 78], fill: cook * 100 });
           if (phase === 'water') meter({ zone: [55, 80], gold: [62, 72], fill: water });
@@ -437,7 +463,7 @@ window.FemcDumplings = (() => {
           if (phase !== 'water' || !holding) return; holding = false; K.pourOff();
           R.steps.water = Math.round(clamp(100 - Math.abs(water - 67) * 3, 0, 100)); phase = 'lid'; K.lid(); K.sizzleOff(); K.steam(); btn(null); draw();
           say([['s', 'surprised', 'Is it supposed to be that loud?'], ['h', 'neutral', 'Yes. Don\'t lift it.'], ['s', 'neutral', "I wasn't going to."], ['h', 'neutral', 'You were.']]);
-          setTimeout(() => { phase = 'steam'; puff(160, 90, 'steam', 10); K.bell(); draw(); const v = (R.steps.brown + R.steps.water) / 2; delete R.steps.brown; delete R.steps.water; score('pan', v); next(plate, 1900); }, 3000);
+          setTimeout(() => { phase = 'steam'; puff(160, 90, 'steam', 10); K.bell(); draw(); const v = (R.steps.brown + R.steps.water) / 2; delete R.steps.brown; delete R.steps.water; score('pan', v); R.cooked = true; tray(); next(plate, 1900); }, 3000);
         };
         R.onDrag = (p, ph) => {
           if (phase !== 'place') return;
@@ -456,7 +482,7 @@ window.FemcDumplings = (() => {
 
       /* ── 11. plate it: plate, sauce, garnish, then drizzle and sprinkle ── */
       function plate() {
-        R.step = 'plate'; prog('plate'); talk('plate'); $('.dmp-step').textContent = 'Plate it'; btn(null); meter(null);
+        R.step = 'plate'; prog('plate'); talk('plate'); ARTG.innerHTML = ''; $('.dmp-step').textContent = 'Plate it'; btn(null); meter(null);
         const lines = [], seeds = []; let cur = null;
         const P = () => PLATES[R.plate], S = () => SAUCES[R.sauce], Gn = () => GARNISH[R.garnish];
         const draw = () => {
@@ -495,7 +521,7 @@ window.FemcDumplings = (() => {
         const res = { steps: R.steps, score: Math.round(sc), perfect: q('great'), okay: q('fine'), bags: q('poor'), cook: R.cook || 'pale', filling: R.filling, sauce: R.sauce, garnish: R.garnish, plate: R.plate, grade, quit };
         say(TALK.end[grade]);
         const end = $('.mg-end'); end.hidden = false;
-        end.innerHTML = `<b class="mg-grade">${grade}</b><dl><dt>Score</dt><dd>${res.score}</dd><dt>Filling</dt><dd>${esc(FILLINGS[res.filling].name)}</dd><dt>Perfect dumplings</dt><dd>${res.perfect} / ${N}</dd><dt>Bottoms</dt><dd>${res.cook}</dd><dt>Sauce</dt><dd>${esc(SAUCES[res.sauce].name)}</dd></dl><p class="mg-end-say">Haechan: ${esc(TALK.end[grade][0][2])}</p><button type="button">Continue</button>`;
+        end.innerHTML = `<span class="dmp-stamp"><img src="${ART('stamp-' + grade.toLowerCase())}" alt="Grade ${grade}" onerror="this.remove()"><b class="mg-grade">${grade}</b></span><dl><dt>Score</dt><dd>${res.score}</dd><dt>Filling</dt><dd>${esc(FILLINGS[res.filling].name)}</dd><dt>Perfect dumplings</dt><dd>${res.perfect} / ${N}</dd><dt>Bottoms</dt><dd>${res.cook}</dd><dt>Sauce</dt><dd>${esc(SAUCES[res.sauce].name)}</dd></dl><p class="mg-end-say">Haechan: ${esc(TALK.end[grade][0][2])}</p><button type="button">Continue</button>`;
         end.querySelector('button').focus();
         end.querySelector('button').onclick = () => { cleanup(); o.onDone?.(res); done(res); };
       };
@@ -521,7 +547,7 @@ window.FemcDumplings = (() => {
       $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') { R.paused = false; $('.mg-pause').hidden = true; } if (b === 'quit') { R.paused = false; $('.mg-pause').hidden = true; finish(true); } };
       window.addEventListener('keydown', key, true); window.addEventListener('keyup', keyUp, true);
       raf = requestAnimationFrame(tick);
-      pickFilling();
+      tray(); pickFilling();
     });
   }
   return { play, FILLINGS, SAUCES, GARNISH, PLATES };

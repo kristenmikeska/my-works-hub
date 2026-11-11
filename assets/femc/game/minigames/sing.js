@@ -31,8 +31,9 @@
    Options (pause menu, saved in localStorage kg-femc-sing-opts, shared with the editor): scroll speed, downscroll, offset (ms;
    + if the notes feel early). Clock: the song's own currentTime, smoothed between its updates.
    Art (FEMC-ART-TODO 45, art/minigames/sing/, cut by tools/femc-minigame-art.py): booth, haechan-desk; solar-idle / -left /
-   -down / -up / -right / -miss (her singing poses); haechan-bop-0 / -1; arrow-0..3, target; rating-perfect / -good / -ok / -miss;
-   ready / set / sing; icon-solar. Each falls back to a drawn stand-in. Reduced motion: no bops or shakes. */
+   -down / -up / -right / -miss (her singing poses); haechan-bop-0 / -1; arrow-0..3 (all point up, rotated per lane), target, splash
+   (the PERFECT burst on the target); rating-perfect / -good / -ok / -miss; ready / set / sing; icon-solar. Each falls back to a
+   drawn stand-in. In since art batch 150: booth, haechan-desk, the arrows sheet, ratings, count-in (the rest still to make). Reduced motion: no bops or shakes. */
 window.FemcSing = (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -106,7 +107,7 @@ window.FemcSing = (() => {
         <div class="sg-hud">
           <div class="sg-time"><i></i><span></span></div>
           <div class="sg-strum">
-            ${[0, 1, 2, 3].map(i => `<div class="sg-col" data-l="${i}"><div class="sg-target" style="--r:${ROT[i]}deg">${ARROW}${img('sg-t-art', 'target')}</div><i class="sg-splash"></i></div>`).join('')}
+            ${[0, 1, 2, 3].map(i => `<div class="sg-col" data-l="${i}"><div class="sg-target" style="--r:${ROT[i]}deg">${ARROW}${img('sg-t-art', 'target')}</div><i class="sg-splash">${img('sg-sp-art', 'splash')}</i></div>`).join('')}
             <div class="sg-notes"></div>
           </div>
           <div class="sg-health"><i></i><b class="sg-icon"><img src="${ART('icon-solar')}" alt="" onerror="this.onerror=null;this.src='${FACE('solar', 'happy')}'"></b></div>

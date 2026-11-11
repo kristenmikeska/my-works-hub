@@ -4,7 +4,7 @@
 
 **Order for each outfit:** 1. pose sheet → 2. scene portraits → 3. HD poses (only what's still missing is listed). **Banner art** is at the bottom: make a banner once its outfits exist.
 
-**What's here (Nov 10, after art batch 149):** 49 pose sheets and 53 scene-portrait sheets (the collab outfits, Kat's 47 new outfits, plus faces for Off-Day Hoodie, Beanie & Apron and Gekkoukan Uniform), 93 HD pose sets (11 of Haechan's have their first victory pose in), 14 banner pictures (8 older, 6 for the new banners: Ghoul School, Anime Night, Magical Girls, Wonderland, Live Concert, Pastel Ponies).
+**What's here (Nov 10, after art batch 150):** 49 pose sheets and 52 scene-portrait sheets (the collab outfits, Kat's 47 new outfits, plus faces for Off-Day Hoodie, Beanie & Apron and Gekkoukan Uniform), 89 HD pose sets (11 of Haechan's have their first victory pose in), 14 banner pictures (8 older, 6 for the new banners: Ghoul School, Anime Night, Magical Girls, Wonderland, Live Concert, Pastel Ponies).
 
 **How:** open a new ChatGPT message, attach the files on the **Attach** line in that order (all in `Femc Mode Images/`, mostly `Place Prompt Attachments/`), paste the prompt, send. Save into **New Adds** under its **Save as** name (HD poses: a folder per outfit) and tell Claude. One picture per message.
 
@@ -42,87 +42,7 @@ Kat likes it; saved for a later series.
 
 ### Collab outfits
 
-Cosplay looks (it's a fan game). The prompts describe the outfits only by how they look: no logos, no printed names. Order for each: pose sheet, then scene portraits, then HD poses. Five are couple sets with Haechan or Jungwon: make both pose sheets of a set in the same chat so the colours match.
-
-### Sukajan Kiriko, Overwatch · `sk-collab-sukajan`
-
-Her main again, street style this time (she already has the shrine-robe Kiriko Cosplay): an embroidered souvenir jacket and cargo pants; high ponytail with red streaks.
-
-> **Look bible.** Palette: jacket black, cherry red, fox white and blossom pink. Vibe: a street-style shrine kid: quick, cocky and kind.  
-> Motifs: white foxes, cherry blossoms, blank paper charms and kunai. Light: red and pink neon on a night street. Scene: a neon back alley at night with paper lanterns and a small shrine gate.
-
-#### 1. Scene portraits
-
-Attach: `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-collab-sukajan-portraits.png`  
-**Kat is redoing this one (Nov 10):** the sheet came on a dark background. Remove the background in Photoshop and drop it back in New Adds with the same name. The game shows a rough automatic cut of the old sheet until then.
-```
-Cosplay of Sukajan Kiriko from Overwatch. A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: an oversized black-and-red satin souvenir jacket embroidered with a white fox and cherry blossoms, slipping off one shoulder, a fitted black crop top, neon street-night light. Hair: her own jet-black hair in a high ponytail with a short blunt fringe, two bright red streaks through the ponytail, tied with a red ribbon. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text, no logos.
-```
-
-### Cardcaptor Sakura · `sk-collab-cardcaptor`
-
-Couple set with Jungwon's Syaoran. A pink-and-white battle dress with a winged hat and a star wand; a playful short bob.
-
-> **Look bible.** Palette: candy pink, white, gold and sky blue. Vibe: a magical girl out catching cards: brave, sweet, wings everywhere.  
-> Motifs: pink stars, white feathers, sparkles and cherry blossom petals. Light: a soft pink magic glow at night. Scene: a moonlit town seen from the rooftops at night, a glowing magic circle underfoot.
-
-#### 1. HD poses
-
-Her evening and win-screen poses in Cardcaptor Sakura.  
-Attach: `Cardcaptor Sakura Cosplay [sk-collab-cardcaptor] - pose sheet.png`, then `Solar.png`  
-Save as: `skin-sk-collab-cardcaptor-hd-<pose>.png` in a folder `Cardcaptor Sakura`
-```
-Cosplay of Sakura Kinomoto from Cardcaptor Sakura. A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face and eyes, with the hair and exactly the outfit of the FIRST attached image (Cardcaptor Sakura: a puffy pink-and-white dress with a big bow, a white winged hat and little winged boots). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-### Wednesday · `sk-collab-wednesday`
-
-The black dance dress and the white collar, completely unimpressed; two long braids with one silver streak in the fringe.
-
-> **Look bible.** Palette: black, white, storm grey and a touch of dark purple. Vibe: deadpan gothic: completely unimpressed.  
-> Motifs: cobwebs, black spiders, raven feathers and rain. Light: cold grey storm light with a flash of lightning. Scene: a gothic school hall at night, rain on tall windows.
-
-#### 1. HD poses
-
-Her evening and win-screen poses in Wednesday.  
-Attach: `Wednesday Cosplay [sk-collab-wednesday] - pose sheet.png`, then `Solar.png`  
-Save as: `skin-sk-collab-wednesday-hd-<pose>.png` in a folder `Wednesday`
-```
-Cosplay of Wednesday Addams from Wednesday. A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face and eyes, with the hair and exactly the outfit of the FIRST attached image (Wednesday: a black ruffled dance dress with long sheer sleeves, a white collar and cuffs, chunky black boots and two long braids). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-### Ghost-Spider, Spider-Verse · `sk-collab-spider`
-
-Couple set with Haechan's Miles. The white hooded spider suit, redone in hot pink and black; a platinum undercut bob.
-
-> **Look bible.** Palette: suit white, hot pink, black and electric teal. Vibe: a punk-ballet superhero: graceful and loud.  
-> Motifs: web strands, comic halftone dots, glitch shards and drum-beat shock waves. Light: pink and teal neon city light. Scene: a comic-book city skyline at night, seen from a rooftop.
-
-#### 1. HD poses
-
-Her evening and win-screen poses in Ghost-Spider, Spider-Verse.  
-Attach: `Ghost-Spider Cosplay [sk-collab-spider] - pose sheet.png`, then `Solar.png`  
-Save as: `skin-sk-collab-spider-hd-<pose>.png` in a folder `Ghost-Spider, Spider-Verse`
-```
-Cosplay of Ghost-Spider from Spider-Verse. A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face and eyes, with the hair and exactly the outfit of the FIRST attached image (Ghost-Spider, Spider-Verse: a white hooded superhero bodysuit with hot-pink and black web lines, ballet-style shoes and a platinum bob). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-### Sophie, Howl's Moving Castle · `sk-collab-castle`
-
-Couple set with Jungwon's Howl. A sky-blue dress, a straw hat and a knit shawl; one long braid shot with starlight silver.
-
-> **Look bible.** Palette: sky blue, cream, starlight silver and hearth orange. Vibe: a girl braver than she thinks: soft, starry and windswept.  
-> Motifs: falling stars, flower petals, wind and little hearth flames. Light: soft golden-blue twilight. Scene: a flower field by a mountain lake at twilight.
-
-#### 1. HD poses
-
-Her evening and win-screen poses in Sophie, Howl's Moving Castle.  
-Attach: `Sophie Cosplay [sk-collab-castle] - pose sheet.png`, then `Solar.png`  
-Save as: `skin-sk-collab-castle-hd-<pose>.png` in a folder `Sophie, Howl's Moving Castle`
-```
-Cosplay of Sophie from Howl's Moving Castle. A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face and eyes, with the hair and exactly the outfit of the FIRST attached image (Sophie, Howl's Moving Castle: a long soft sky-blue dress, a cream knit shawl, a wide straw hat with a pink ribbon and one long braid). Pose: [the pose]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
+Cosplay looks (it's a fan game). The prompts describe the outfits only by how they look: no logos, no printed names. Order for each: pose sheet, then scene portraits, then HD poses. Five are couple sets with Haechan or Jungwon: make both pose sheets of a set in the same chat so the colours match. **Solar's halves are all in (art batch 150, Nov 10: the last HD sets and Sukajan's redone faces); what's left is Haechan's and Jungwon's halves below.**
 
 ## Haechan
 

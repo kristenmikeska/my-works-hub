@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 8, after art batch 148):** ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: pose sheets and faces for 60 new outfits (the 13 collabs and Kat's Nov 7 list of 47), 94 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · **the epilogue scrapbook** (section 46, Nov 10: 110 "Previously" photos, Runners 40 / strangers 35 / HOAX 35, plus 11 covers, paper, dividers, tape and sticker sheets) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
+**To make (updated Nov 10, after art batch 150):** ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (sections 43-45: the Regionals player cards; Haechan's apron faces and the dumpling title card; 8 booth pieces: both singers' poses and bops, Haechan's talkback faces, the two health-bar icons, the title card) · Runners: 6 Manhattan CGs (section 42; 42A and 42B were found in New Adds' Sophie poses folder, not wired yet) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · **the epilogue scrapbook** (section 46, Nov 10: 110 "Previously" photos, Runners 40 / strangers 35 / HOAX 35, plus 11 covers, paper, dividers, tape and sticker sheets) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
 
 ## ⭐ Outfits, HD poses and banners: in `FEMC-SKIN-ART.md` (Nov 7)
 
@@ -196,85 +196,7 @@ A realistic painted CG in the style of the FIRST image (the realistic painted st
 
 ## 43. Regionals minigame: Overwatch (Kat, Nov 10)
 
-For the playable Regionals match (the support minigame, version C: over the shoulder, Solar's hands at the bottom of the screen, her team standing in the map, the other team popping out of cover). Kat's picks: Solar on Kiriko, Haerin on Ana, Chenle on Reinhardt, Minji on Ashe, Olivia on Tracer; the other team Zarya, Genji, Ana, Lúcio and Cassidy (the comp the story's Regionals scenes call out). Each figure: one picture, transparent or plain white, like the HD poses. The game cuts the kill-feed icons from these figures' heads, so no icon sheet is needed. More heroes from each player's pool can come later as swaps.
-
-**[ ] 43A. Map: Lijiang Tower, Night Market** (round 1)  
-Save as: `mg-ow-map-lijiang.png`
-```
-A wide 16:9 background in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, no characters: the Night Market control point on Lijiang Tower at night, seen at eye level from just behind the attackers' side as if you are standing in the match: red paper lanterns strung overhead, neon shop signs with no readable writing, food stalls with steam, the glowing capture circle on the stone plaza in the middle distance, low walls and stalls on both sides to take cover behind, the tall tower skyline behind. Warm lantern light against deep blue night. Leave the lower third of the picture fairly clear (the player's hands go there). No text, no logos, no UI.
-```
-
-**[ ] 43B. Map: Busan, Downtown** (round 2)  
-Save as: `mg-ow-map-busan.png`
-```
-A wide 16:9 background in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, no characters: the Downtown control point in Busan at dusk, seen at eye level as if standing in the match: a busy pink-and-neon street with arcade fronts and bright signs with no readable writing, a raised plaza with the glowing capture circle in the middle distance, food carts, planters and pillars to take cover behind, city towers against a pink-orange sky. Leave the lower third fairly clear. No text, no logos, no UI.
-```
-
-**[ ] 43C. Solar's hands (Kiriko, first person)**  
-Save as: `mg-ow-hands.png`
-```
-A wide first-person view in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, landscape 16:9, transparent background: the bottom of the screen in a hero shooter, seen from Kiriko's eyes. On the left, her left hand holding a fan of glowing paper ofuda talismans ready to throw; on the right, her right hand holding three kunai between her fingers. Black-and-white gloves, her white-and-red sleeves at the edges. Only the hands and forearms, rising from the bottom corners; the rest of the picture empty. No text, no logos, no UI.
-```
-
-**[ ] 43D. Teammate: Chenle on Reinhardt** (tank)  
-Save as: `mg-ow-team-chenle.png`
-```
-A single full-body character illustration in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, portrait orientation 2:3, ONE figure only, head to toe, on a plain transparent background (or plain white), nothing else in the picture. Reinhardt from Overwatch: towering armoured knight in silver-white plate with the big rocket hammer, helmet on. Pose: standing ready in the front line, hammer raised, seen from behind and a little to the side, as a teammate standing in front of the camera. No text, no logos, no UI.
-```
-
-**[ ] 43E. Teammate: Minji on Ashe** (damage)  
-Save as: `mg-ow-team-minji.png`
-```
-A single full-body character illustration in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, portrait orientation 2:3, ONE figure only, head to toe, on a plain transparent background (or plain white), nothing else in the picture. Ashe from Overwatch: white-haired gunslinger in a black hat, red-lined coat, holding her lever-action rifle. Pose: aiming down the street, seen from behind and to the side, as a teammate standing a little way in front of the camera. No text, no logos, no UI.
-```
-
-**[ ] 43F. Teammate: Olivia on Tracer** (damage)  
-Save as: `mg-ow-team-olivia.png`
-```
-A single full-body character illustration in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, portrait orientation 2:3, ONE figure only, head to toe, on a plain transparent background (or plain white), nothing else in the picture. Tracer from Overwatch: spiky brown hair, orange leggings, brown bomber jacket, blue glowing chronal accelerator on her chest, twin pistols. Pose: mid-dash, pistols up, seen from behind and to the side. No text, no logos, no UI.
-```
-
-**[ ] 43G. Teammate: Haerin on Ana** (support)  
-Save as: `mg-ow-team-haerin.png`
-```
-A single full-body character illustration in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, portrait orientation 2:3, ONE figure only, head to toe, on a plain transparent background (or plain white), nothing else in the picture. Ana from Overwatch: older sniper in a blue-and-gold hooded outfit with an eye patch, holding her long biotic rifle. Pose: kneeling to aim her rifle, seen from behind and to the side. No text, no logos, no UI.
-```
-
-**[ ] 43H. Opponent: Zarya** (tank)  
-Save as: `mg-ow-foe-zarya.png`
-```
-A single full-body character illustration in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, portrait orientation 2:3, ONE figure only, head to toe, on a plain transparent background (or plain white), nothing else in the picture. Zarya from Overwatch: tall, muscular, pink hair, armour in grey and pink, holding her big particle cannon. Pose: firing the particle cannon toward the viewer, facing the camera. No text, no logos, no UI.
-```
-
-**[ ] 43I. Opponent: Genji** (damage)  
-Save as: `mg-ow-foe-genji.png`
-```
-A single full-body character illustration in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, portrait orientation 2:3, ONE figure only, head to toe, on a plain transparent background (or plain white), nothing else in the picture. Genji from Overwatch: cyborg ninja in silver-and-green armour with a glowing green visor, his sword drawn. Pose: lunging toward the viewer with his sword raised, facing the camera. No text, no logos, no UI.
-```
-
-**[ ] 43J. Opponent: Ana** (support)  
-Save as: `mg-ow-foe-ana.png`
-```
-A single full-body character illustration in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, portrait orientation 2:3, ONE figure only, head to toe, on a plain transparent background (or plain white), nothing else in the picture. Ana from Overwatch: older sniper in a blue-and-gold hooded outfit with an eye patch, holding her long biotic rifle and a biotic grenade. Pose: winding up to throw the biotic grenade toward the viewer, facing the camera. No text, no logos, no UI.
-```
-
-**[ ] 43K. Opponent: Lúcio** (support)  
-Save as: `mg-ow-foe-lucio.png`
-```
-A single full-body character illustration in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, portrait orientation 2:3, ONE figure only, head to toe, on a plain transparent background (or plain white), nothing else in the picture. Lúcio from Overwatch: DJ with green-and-yellow armour, dreadlocks, roller skates and his sonic amplifier. Pose: skating toward the viewer, amplifier raised, facing the camera. No text, no logos, no UI.
-```
-
-**[ ] 43L. Opponent: Cassidy** (damage)  
-Save as: `mg-ow-foe-cassidy.png`
-```
-A single full-body character illustration in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, portrait orientation 2:3, ONE figure only, head to toe, on a plain transparent background (or plain white), nothing else in the picture. Cassidy from Overwatch: cowboy with a hat, serape, beard and mechanical arm, holding his revolver. Pose: drawing his revolver toward the viewer, facing the camera. No text, no logos, no UI.
-```
-
-**[ ] 43M. Play of the Game: Kiriko**  
-Save as: `mg-ow-potg-kiriko.png`
-```
-A dramatic landscape 16:9 splash in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light: Kiriko from Overwatch mid-action, leaping forward with kunai in one hand and glowing ofuda fanned in the other, her spirit fox Kitsune swirling behind her in blue light, cherry-blossom petals in the air, a bold dark background with sweeping orange and pink light. Leave the left third darker for the "Play of the Game" title. No text, no logos, no UI.
-```
+For the playable Regionals match (the support minigame, version C: over the shoulder, Solar's hands at the bottom of the screen, her team standing in the map, the other team popping out of cover). Kat's picks: Solar on Kiriko, Haerin on Ana, Chenle on Reinhardt, Minji on Ashe, Olivia on Tracer; the other team Zarya, Genji, Ana, Lúcio and Cassidy (the comp the story's Regionals scenes call out). Each figure: one picture, transparent or plain white, like the HD poses. The game cuts the kill-feed icons from these figures' heads, so no icon sheet is needed. More heroes from each player's pool can come later as swaps. **In since art batch 150 (Nov 10):** both maps (three pictures each), Solar's hands, all nine figures, the Play of the Game and the victory / defeat cards; only the player cards are left.
 
 **[ ] 43N. Player cards: the Syracuse team** (the scoreboard and the end screen of the Regionals match)  
 Attach: `Solar (Regionals).png`, `Chenle (Regionals).png`, `Minji (Regionals).png`, `Olivia (Regionals).png`, `Haerin (Regionals).png`  
@@ -283,51 +205,15 @@ Save as: `mg-ow-cards.png`
 A 5 × 1 sheet of five esports player cards in the same anime style as the attached faces, on a plain transparent background (or plain white), equal size, clear space between them: each is one of the attached people from the chest up, in a Syracuse esports jersey (orange and navy with a white "S" and a small number), a gaming headset around the neck, at a tournament, behind them a slanted pink-and-black card frame. In order: the girl from the first image (calm, confident smile), the boy from the second (cheerful, serious-eyed), the girl from the third (cool, focused), the girl from the fourth (loud, mid-laugh), the girl from the fifth (quiet, level look). No text, no names.
 ```
 
-**[ ] 43O. Round cards: victory and defeat**  
-Save as: `mg-ow-victory.png` and `mg-ow-defeat.png` (two pictures)
-```
-A wide 16:9 dramatic background in the official Overwatch art style, no characters, no text: for VICTORY, golden light bursting from the centre, confetti, sweeping pink and orange shapes; for DEFEAT, cold dark blue-grey with cracked light, drifting embers. Leave the middle clear for a big word.
-```
-
 ## 44. Dumpling cooking minigame (Kat, Nov 10)
 
-For the New Year's Eve dumpling game (12/31). The dumpling itself is drawn by the game so it can roll, fill, fold, pleat, plump and brown; these two pictures dress the kitchen around it. Optional: the game already looks finished without them.
-
-**[ ] 44A. The counter, top-down**  
-Save as: `cook-counter.png`
-```
-A wide 16:10 top-down view of a kitchen counter in the Persona 3: Solstice style: clean anime illustration, soft cel shading, bright and cosy, pink accents, like a cute cooking game, no people, no hands: a pale marble countertop dusted with flour, a round wooden cutting board in the middle left EMPTY (the dumpling goes there), and around the edges a bowl of pink-tinged pork-and-chive filling with a spoon, a stack of round dumpling wrappers, a small dish of water, a marble rolling pin with a little pink price sticker still on it, a folded tea towel, a few finished dumplings in neat rows on a silver tray in one corner. Soft warm golden-hour light from one side. Keep the centre of the board clear. No text, no logos.
-```
-
-**[ ] 44B. The pan, top-down**  
-Save as: `cook-pan.png`
-```
-A wide 16:10 top-down view of a black cast-iron frying pan on a stove in the Persona 3: Solstice style: clean anime illustration, soft cel shading, bright and cosy, pink accents, like a cute cooking game, no people: the pan round and empty in the middle (the dumplings go inside it), a little oil shimmering, a long handle to the right, the stove's grate and a soft orange flame glow around it, a glass lid with a pink knob resting at the edge of the picture. Warm cosy kitchen light. Leave the inside of the pan empty. No text, no logos.
-```
+For the New Year's Eve dumpling game (12/31). The dumpling itself is drawn by the game so it can roll, fill, fold, pleat, plump and brown; Kat's pictures dress the kitchen around it. Optional: the game already looks finished without them. **In since art batch 150 (Nov 10):** the counter, the pan, Solar's hands with the rolling pin, the dumpling icons and the grade stamps; Haechan's faces and the title card are left.
 
 **[ ] 44C. Haechan in an apron, six faces** (his corner of the cooking game)  
 Attach: `Haechan (Runners).png`  
 Save as: `cook-haechan-faces.png`
 ```
 A 3 × 2 portrait sheet in the Persona 3: Solstice style: clean anime illustration, soft cel shading, bright and cosy, pink accents, like a cute cooking game, on a plain transparent background (or plain white), clear space between cells, nothing overlapping: the same young man as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell. He wears a plain black T-shirt with a pink apron over it and a white tea towel slung over one shoulder, his black hair messy, a little flour on one cheek. Expressions in reading order: neutral (flat, unimpressed), happy (a small reluctant smile), sad (pained, looking at a ruined dumpling), serious (deadpan judging), surprised (eyebrows up, actually impressed), flustered (looking away, caught smiling). No text.
-```
-
-**[ ] 44D. Solar's hands with the rolling pin**  
-Save as: `cook-hands.png`
-```
-A wide first-person view in the Persona 3: Solstice style: clean anime illustration, soft cel shading, bright and cosy, pink accents, like a cute cooking game, landscape 16:9, transparent background: two slim hands in a cream knit sweater with the sleeves pushed up, rising from the bottom corners, holding the two ends of a white marble rolling pin (a little pink price sticker still on it), flour on the fingers. Only the hands, forearms and the pin; the rest of the picture empty. No text.
-```
-
-**[ ] 44E. Dumpling icons** (the tray at the top of the screen)  
-Save as: `cook-icons.png`
-```
-A 3 × 2 sheet of six small cute icons in the Persona 3: Solstice style: clean anime illustration, soft cel shading, bright and cosy, pink accents, like a cute cooking game, on a plain transparent background (or plain white), each centred in its cell with clear space around it, all the same size, seen from the side: 1 a perfect pleated dumpling with a tiny gold sparkle, 2 an okay dumpling with uneven pleats, 3 a sad lumpy "bag" dumpling, 4 a dumpling with a golden fried bottom, 5 a dumpling with a burnt black bottom, 6 a pale steamed dumpling. Chunky, round and adorable. No text.
-```
-
-**[ ] 44F. Grade stamps**  
-Save as: `cook-stamps.png`
-```
-A 2 × 2 sheet of four round rubber-stamp style badges in the Persona 3: Solstice style: clean anime illustration, soft cel shading, bright and cosy, pink accents, like a cute cooking game, on a plain transparent background (or plain white), clear space between them, each a different cute design: S, a gold star badge with a tiny dumpling chef hat; A, a pink heart badge with a happy dumpling; B, a soft blue badge with a shrugging dumpling; C, a grey badge with a squished dumpling and a sweat drop. Put the big letter S, A, B or C in the middle of each badge. No other text.
 ```
 
 **[ ] 44G. Title card: dumpling time**  
@@ -341,21 +227,7 @@ A cute splash illustration in the Persona 3: Solstice style: clean anime illustr
 
 ## 45. The booth: singing rhythm game (Kat, Nov 10)
 
-For the Studio 4B singing game, a rhythm game played to "Runners" by CAMO: arrows rise to targets and whoever is singing strikes a pose for each one while the other bops behind the glass (Solar sings "Runners"; Haechan sings YOU, WANTCHU and Grey Rain). Every piece is optional: the game draws its own until yours arrive.
-
-**[ ] 45A. The booth, looking out through the glass**  
-Attach: `BG - Studio 4B.png`  
-Save as: `sing-booth.png`
-```
-A wide 16:9 background in the Persona 3: Solstice style: clean anime illustration, soft cel shading, moody and warm, pink accents, like a rhythm game, no people: the inside of a small recording booth, looking out through a big rectangular window of thick glass in the upper part of the picture into the dim control room of the attached studio (mixing desk lights, monitors glowing pink and amber). The booth walls are dark charcoal acoustic foam in a square pattern, a pink "ON AIR" light above the window, a music stand with a printed lyric sheet covered in pencil marks, a pair of headphones hanging on a hook, warm low light pooling on the floor. Keep the lower middle fairly dark and plain (the note lanes go there). No text but ON AIR.
-```
-
-**[ ] 45B. The control room, through the glass** (Haechan's bopping frames sit in front of it)  
-Attach: `BG - Studio 4B.png`  
-Save as: `sing-haechan-desk.png`
-```
-A wide 16:9 picture in the Persona 3: Solstice style: clean anime illustration, soft cel shading, moody and warm, pink accents, like a rhythm game, no people: the attached studio's control room seen from the booth, straight on, through a slightly reflective glass window at night: the big mixing desk across the bottom third with glowing pink and amber faders and meters, monitors and a pair of speakers, an empty black office chair in the middle, a can of coffee on the desk. Keep the middle clear (a person is placed there by the game). A faint reflection of the booth's foam on the glass. No text.
-```
+For the Studio 4B singing game, a rhythm game played to "Runners" by CAMO: arrows rise to targets and whoever is singing strikes a pose for each one while the other bops behind the glass (Solar sings "Runners"; Haechan sings YOU, WANTCHU and Grey Rain). Every piece is optional: the game draws its own until yours arrive. **In since art batch 150 (Nov 10):** the booth, the control room, the arrows, the rating pop-ups and the count-in.
 
 **[ ] 45C. Solar's singing poses** (she strikes one for each arrow, like a rhythm game)  
 Attach: `Solar (Runners).png`  
@@ -376,24 +248,6 @@ Attach: `Haechan (Runners).png`
 Save as: `sing-haechan-faces.png`
 ```
 A 3 × 2 portrait sheet in the Persona 3: Solstice style: clean anime illustration, bold clean lineart, soft cel shading, punchy pink-and-black rhythm-game look, plain transparent background (or plain white), clear space between cells, nothing overlapping: the young man in the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, black hoodie, studio headphones pushed half off one ear, a pink desk glow on his face. In reading order: neutral (flat, listening), talking (leaning to the talkback mic, mid-word), impressed (eyebrows up, very still), happy (a small reluctant smile), wince (hand over his eyes at a missed note), soft (chin on his hand, looking at her like the song is finished and he doesn't want it to be). No text.
-```
-
-**[ ] 45F. The arrows**  
-Save as: `sing-arrows.png`
-```
-A 3 × 2 sheet of rhythm-game arrows in the Persona 3: Solstice style: clean anime illustration, bold clean lineart, soft cel shading, punchy pink-and-black rhythm-game look, on a plain transparent background (or plain white), each centred in its cell with clear space around it, all six exactly the same size and ALL POINTING STRAIGHT UP (the game rotates them). Chunky rounded arrow shapes with a thick white outline, a glossy candy shine and a tiny star sparkle on each: 1 hot pink, 2 rose pink, 3 pale blush pink, 4 coral, 5 the empty target: the same arrow as a dark charcoal glass outline with a faint pink rim (the slot the arrows land in), 6 a burst effect: a pink starburst ring with small sparkles and tiny music notes flying out (the hit splash). No text.
-```
-
-**[ ] 45G. Rating pop-ups**  
-Save as: `sing-ratings.png`
-```
-A 2 × 2 sheet of four bold rhythm-game rating words in the Persona 3: Solstice style: clean anime illustration, bold clean lineart, soft cel shading, punchy pink-and-black rhythm-game look, plain transparent background (or plain white), clear space between them, chunky slanted italic letters with a thick black outline and a hard pink drop shadow, little sparkles and music notes around them: "PERFECT!!" (white letters, bright pink glow, gold star sparkle), "GOOD" (pink letters), "OK" (soft pale pink letters), "MISS" (grey letters, a crack through them, a tiny sweat drop). Exactly these words, spelled exactly like this.
-```
-
-**[ ] 45H. Count-in**  
-Save as: `sing-countdown.png`
-```
-A 3 × 1 sheet of three bold count-in words in the Persona 3: Solstice style: clean anime illustration, bold clean lineart, soft cel shading, punchy pink-and-black rhythm-game look, plain transparent background (or plain white), clear space between them, chunky slanted italic letters with a thick black outline and a hard pink drop shadow, decorated with a tiny headphone or microphone doodle and sparkles: "Ready?", "Set.", "Sing!" (the last one biggest and brightest, with music notes bursting from it). Exactly these words, spelled exactly like this.
 ```
 
 **[ ] 45I. Solar's health-bar icon**  
@@ -1304,6 +1158,10 @@ These are already in the game but look soft or blurry, because they're shown muc
 - `Koromaru - finish card.png`: 736 × 414
 - `Shinjiro - finish card.png`: 736 × 414
 - `Akihiko`, `Junpei`, `Mitsuru`, `Yukari - finish card.png`: about 1200 × 675, only slightly soft
+
+**Minigames** (art batch 150; full-screen backgrounds in the Regionals match, one of three per map picked at random)
+- `mg-ow-map-busan-1.jpg`: Busan, 596 × 335
+- `mg-ow-map-lijiang-2.jpg`: Lijiang Tower, 596 × 335
 
 **Shop fronts** (stretched onto the Go Out place cards)
 - `aohigepharmacy-outside`: Aohige Pharmacy storefront, 240 × 240

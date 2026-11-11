@@ -26,7 +26,7 @@ window.FemcFitting = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const base = () => G.base || '';
   const SK = id => `${base()}assets/femc/game/art/skins/${id}/`;
-  const SKIN_V = 4;
+  const SKIN_V = 5;
   const ORDER = ['solar', 'haechan', 'jungwon', 'jihoon', 'minji', 'akihiko', 'yukari', 'junpei', 'mitsuru', 'aigis', 'shinjiro', 'koromaru', 'ken', 'fuuka'];
   // The full-body art that's too small for the booth (Mitsuru's) or an action pose (Shinjiro's): their faces instead.
   const FIG_SKIP = ['mitsuru', 'shinjiro'];
