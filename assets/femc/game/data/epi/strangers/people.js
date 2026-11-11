@@ -50,7 +50,17 @@
      Flag read: epi-s-stair-sat (story-end.js fam-staying) in eomma-3 ("Your father slept" / "Your father hasn't slept").
      No new flags set; { glitch: { near: true } } in haechan-5 and jungwon-5. Inventions: room two at the noraebang, the desk
      man's ten thousand won; Solar takes two sugars (Jungwon won't look, so he can be told); the hill-road jjimjilbang, the
-     lamb towels and egg on the forehead; the white orchid Eomma moved from the study in January blooms (eleven flowers). */
+     lamb towels and egg on the forehead; the white orchid Eomma moved from the study in January blooms (eleven flowers).
+   Hwatu (Nov 11 2026, the Go-Stop minigame in the story):
+     eomma    epi-s-eomma-4   'flower cards'           Thursdays (days [4]) 2/21-3/14 after, after epi-s-eomma (Sunroom; the
+                                                       army blanket, Eomma deals Solar in one-on-one). Reachable 2/28, 3/7, 3/14
+                                                       (2/21 after is epi-s-quay); on 3/7 / 3/14 eomma-2 / -3 go first if unseen.
+     Optional choice "(Play.)" → { minigame: 'hwatu', flags: 'epi-s-mg-hwatu', opts: { seats: 2, bg: 'epi-s-sunroom' } }
+     (scene.js sets epi-s-mg-hwatu-played, -won / -lost, -grade-S|A|B|C, -good); "(Watch her play.)" skips it.
+     Flag read: epi-s-mg-hwatu-won (her dry nod vs "Again."); nothing else reads them. ifAfter 3/4 picks the dust light.
+     Fence call: one-on-one at home in daylight, never the Thursday evening game or anybody outside the house; only her
+     care. Inventions: the grey army blanket from the linen cupboard; Solar watched her count the deck from under the hall
+     table at six; she gives Solar the deck ("A deck that's short a card plays you"); Appa cheats at hwatu. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).strangers ||= {});
   const B = (R.bonds ||= {});
@@ -1130,6 +1140,60 @@
       { n: "On the way out her mother turned her collar down where it had folded under, with two fingers, the way she had every morning for twelve years, and smoothed it flat, and left her hand on Solar's shoulder one second longer than the collar needed." },
       { s: 'eomma', f: 'neutral', t: "You're too thin. Eat something. Mrs. Bang's made too much of everything, she always does when she's frightened." },
       { n: "Then she went back to the orchids. She never asked. She never once had. Solar went out with the smell of the sunroom on her sleeves and understood, somewhere halfway along the hall, that her mother had just told her Mrs. Bang was frightened in the same voice she'd have used to say it might rain, and that it was the closest she would ever come to saying who else was." }
+    ] }
+  ]);
+
+  /* ── Hwatu (Nov 11 2026): Eomma's fourth hangout, Thursdays only (days [4]), Daytime. Appended after eomma-3, so on 3/7 and
+      3/14 it waits behind eomma-2 / eomma-3 when those are unseen; 2/28 is the Thursday with no other Eomma hangout. The
+      minigame is an optional choice; the result lines only colour the scene. ── */
+  add('eomma', 'friend', [
+    { id: 'epi-s-eomma-4', title: 'flower cards', hint: "There's an army blanket on the sunroom floor, your mother's hwatu deck on it, and two cushions. She's only laid out two.",
+      after: '2/21', until: '3/14', slots: ['after'], days: [4], events: ['epi-s-eomma'], noFlags: [], route: null, noRoute: null,
+      place: 'Incheon · The Lee House · Sunroom', time: 'Daytime', scene: [
+      { music: 'epi-s-family' },
+      { n: "There was a blanket on the sunroom floor. Not a rug and not a tablecloth but the grey army blanket from the top of the linen cupboard, the scratchy one nobody had used for anything since Solar was small, folded in four, and in the middle of it a deck of hwatu cards squared into a neat red brick, the corners gone soft as cloth, and a cushion on either side, and her mother on one of them with her legs folded under her and her back very straight, as if this were a ceremony and not the floor of her own sunroom at two in the afternoon." },
+      { ifAfter: '3/4', then: [
+        { n: "The dust had come in off the sea again and lay on the outside of the glass like a fine yellow flour, so that the garden beyond was only shapes and the light in the room was the colour of barley tea. The orchids stood on their shelves with their stems tied to their canes. Two cups sat on the edge of the blanket, steaming, and nobody was drinking either of them yet." }
+      ], else: [
+        { n: "The glass ran with condensation on the inside, and outside the old snow lay grey along the bottom of the garden wall, going to slush where the sun had found it. The orchids stood on their shelves with their stems tied to their canes. Two cups sat on the edge of the blanket, steaming, and nobody was drinking either of them yet." }
+      ] },
+      { n: "Solar knew that deck the way you know a piece of furniture. Her mother's cards. Counted at the little sunroom table for as long as Solar could remember, four of each month, forty-eight, every card turned face up and looked at and turned back, and put away in their lacquer box with the lid set on very straight. In eighteen years she had never once been dealt a hand from it." },
+      { s: 'eomma', f: 'serious', t: "Sit down, Solar." },
+      { s: 'solar', f: 'neutral', t: "I don't know how to play." },
+      { s: 'eomma', f: 'neutral', t: "You've been watching me count them since you were six. From under the hall table. You thought I couldn't see your feet." },
+      { n: "Her face went warm, which was ridiculous, which was a thing that happened to her in this room and nowhere else. She sat. The cushion was the good silk one from the front room, and the blanket under her knees was exactly as scratchy as she remembered, and her mother picked up the deck and shuffled it, not the way men in the kitchen shuffled, splitting it and bending it, but sliding the cards over and under each other in one hand with a soft dry sound like rain beginning on a roof." },
+      { n: "She dealt quickly, one to Solar, one to herself, and laid eight face up on the blanket between them in two short rows, pine and plum and the cherry with its red curtain, the moon over the pampas grass, a little brown boar." },
+      { s: 'eomma', f: 'neutral', t: "Match the month. Pine to pine. Plum to plum. The birds are worth more than they look. The rain is worth less. Don't be greedy with the brights." },
+      { s: 'solar', f: 'surprised', t: "That's it? That's the rules?" },
+      { s: 'eomma', f: 'happy', t: "That's the rules. The rest is people." },
+      { choose: [
+        { t: "(Play.)", then: [
+          // The hwatu minigame (Nov 11 2026; minigames/hwatu.js, flags epi-s-mg-hwatu-*). Eomma deals either way.
+          { minigame: 'hwatu', flags: 'epi-s-mg-hwatu', opts: { seats: 2, bg: 'epi-s-sunroom' } },
+          { ifFlag: 'epi-s-mg-hwatu-won', then: [
+            { n: "Her mother looked at the cards Solar had taken, sorted into their little piles at the edge of the blanket, the birds and the ribbons and the crane with the red sun behind it, for longer than she needed to count them. She picked up her cup at last. She drank from it, which she almost never did." },
+            { s: 'eomma', f: 'neutral', t: "Your father plays baduk like that. He pretends he isn't counting." },
+            { s: 'solar', f: 'happy', t: "I wasn't pretending." },
+            { s: 'eomma', f: 'happy', t: "No. You weren't." }
+          ], else: [
+            { n: "Her mother swept the cards in with the flat of her hand, all forty-eight, and squared them against the blanket, tap, tap, and was shuffling again before Solar had finished working out how she'd lost." },
+            { s: 'eomma', f: 'neutral', t: "Again." },
+            { s: 'solar', f: 'flustered', t: "You didn't even let me look at—" },
+            { s: 'eomma', f: 'serious', t: "You went for the birds. Everybody goes for the birds. Again." },
+            { n: "So they played again, and Solar lost that one too, slower, and her mother said nothing about it at all except to move one of Solar's cards a finger's width to the left on the blanket, so it lined up with the others." }
+          ] }
+        ] },
+        { t: "(Watch her play.)", stat: { knowledge: 1 }, then: [
+          { n: "She didn't pick up her cards. She sat on the silk cushion with her cup, and after a moment her mother picked them up for her and played both hands, hers and Solar's, against each other, turning every card over with the same small clean slap, never hurrying, never once looking up." },
+          { n: "Solar's hand won. Whether it was supposed to, Solar couldn't tell. Her mother turned the last card, the rain, and looked at it, and laid it down on Solar's side." },
+          { s: 'eomma', f: 'neutral', t: "You'd have won. Next time you'll do it yourself." }
+        ] }
+      ] },
+      { n: "They drank the tea while it was still worth drinking. When the cups were empty her mother counted the deck, all of it, face up, four of each month, and put it back in the lacquer box, and set the lid on very straight, and then, instead of getting up to put the box on its shelf, pushed it across the blanket to Solar's side with two fingers." },
+      { s: 'eomma', f: 'neutral', t: "Count them before you play anybody. Four of each. A deck that's short a card plays you." },
+      { s: 'solar', f: 'neutral', t: "Who would I play?" },
+      { s: 'eomma', f: 'happy', t: "Your father. He cheats. Count them first." },
+      { n: "She stood, without using her hands, the way she'd been taught to stand from a floor at some school Solar had never seen, and picked up the little brass mister from the shelf and went to the orchids, and Solar sat on the army blanket a while longer with the lacquer box in her lap, not opening it, the way you hold a thing you've been lent and haven't yet been told you can keep." }
     ] }
   ]);
 

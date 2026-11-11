@@ -1,4 +1,5 @@
-/* FEMC epilogue minigame: hwatu (Go-Stop) (Nov 11 2026). A DEMO: not in the story yet (try it at mockups/minigames/index.html).
+/* FEMC epilogue minigame: hwatu (Go-Stop) (Nov 11 2026). In the strangers story: people.js epi-s-eomma-4 (Thursdays, the sunroom,
+   seats 2, flags epi-s-mg-hwatu); also on mockups/minigames/index.html.
    Built for the strangers epilogue (Incheon, Feb-Mar 2013, the Lee house): Solar plays Go-Stop with her mother, who plays with
    the other wives on Thursdays. Elegant, cool, never raises her voice; a few short dry lines while she plays (no plot).
 

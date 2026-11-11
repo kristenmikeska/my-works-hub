@@ -397,7 +397,8 @@ window.FemcScene = (() => {
        -grade-<S|A|B|C>, -good (S or A), -potg-<kind>, and S.epi.mg[id] keeps the whole result. Replays and missing scripts skip it.
        Sounds follow the SFX setting. `opts` passes extra options to play() (the booth: { song, level }). Games with no `won`
        (dumplings, listen, studio, support, the booth) count as won unless they failed or were quit (Nov 11: every minigame is
-       in the Runners story: support 12/6, the booth 12/9 and the mix 12/10 on the Haechan route, listen 12/29, dumplings 12/31). */
+       in the Runners story: support 12/6, the booth 12/9 and the mix 12/10 on the Haechan route, listen 12/29, dumplings 12/31).
+       hwatu (Nov 11): strangers people.js epi-s-eomma-4, Thursdays, flags epi-s-mg-hwatu; the id maps to FemcHwatu like the rest. */
     function minigame(line) {
       const id = line.minigame, glob = 'Femc' + id[0].toUpperCase() + id.slice(1), pre = line.flags || `mg-${id}`;
       if (replay) return next();
@@ -424,7 +425,7 @@ window.FemcScene = (() => {
         });
       });
     }
-    const MINIGAME_V = 5;
+    const MINIGAME_V = 6;
     function giftAsk(line) {
       const who = line.giftAsk;
       if (replay || !G.giftBag || !G.giftBag().length) return next();
