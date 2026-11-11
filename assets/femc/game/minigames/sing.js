@@ -1,7 +1,10 @@
 /* FEMC epilogue minigame: the booth (Nov 10 2026). Kat: "I am a BIG Friday Night Funkin player ... something more like that
    gameplay wise. DFJK. D is left, F is down, J is up, K is right. The music should be synced to the singer. ... graphics and
    animations ... our own take on that, Solstice style. No opponent." Runners: Studio 4B, Solar sings "Runners" by CAMO at the mic,
-   Haechan bobs to it behind the glass. Standalone: nothing in the story calls it yet (demo: mockups/minigames/index.html; the chart
+   Haechan bobs to it behind the glass.
+   Kat, Nov 10: in the real game the ONLY chart is hers (charts/runners.js). Record mode, `chart` drafts and the editor are her
+   tuning tools on the demo page; when this is wired into a scene, call play({ level }) only: no record, no draft, no editor.
+   Standalone: nothing in the story calls it yet (demo: mockups/minigames/index.html; the chart
    editor Kat uses to fix the sync: mockups/minigames/sing-editor.html).
 
    FemcSing.play({ host, song, level, mute, chart, from, onDone }) -> Promise<result>
