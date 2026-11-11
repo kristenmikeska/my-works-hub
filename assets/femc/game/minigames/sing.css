@@ -169,3 +169,11 @@
   .sg-pop { left: 10%; top: 50%; }
 }
 .mg-sing.still .sg-stage, .mg-sing.still .sg-hud, .mg-sing.still .sg-hc, .mg-sing.still .sg-solar, .mg-sing.still .sg-icon, .mg-sing.still .sg-splash, .mg-sing.still .sg-target { animation: none !important; }
+/* record mode: her taps fly up from the targets */
+.sg-fly { animation: sg-fly .9s ease-out forwards; }
+@keyframes sg-fly { from { transform: translateY(70px); opacity: 1; } to { transform: translateY(-140px); opacity: 0; } }
+.mg-sing.down .sg-fly { animation-name: sg-fly-d; }
+@keyframes sg-fly-d { from { transform: translateY(calc(100vh - 70px)); opacity: 1; } to { transform: translateY(calc(100vh - 280px)); opacity: 0; } }
+.mg-sing.rec .sg-time { outline-color: #e0204f; }
+.mg-sing.rec .sg-time::before { content: '● REC'; position: absolute; right: calc(100% + 10px); top: 0; font: italic 900 15px/22px var(--cond, sans-serif); color: #ff3d6e; animation: sg-low .6s infinite alternate; }
+.mg-sing .mg-end > button[data-k] { background: transparent; color: var(--pk2); border: 1px solid var(--pk2); }

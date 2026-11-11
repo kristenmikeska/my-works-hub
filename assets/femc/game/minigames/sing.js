@@ -5,6 +5,9 @@
    editor Kat uses to fix the sync: mockups/minigames/sing-editor.html).
 
    FemcSing.play({ host, song, level, mute, chart, from, onDone }) -> Promise<result>
+     record true = Kat's "make my own chart": no notes come; the song plays and every tap (D F J K, held = a long note) becomes
+            a note, snapped to the 16th grid. Stop / the song's end → Save as my chart (localStorage draft: Normal and Hard = her
+            taps, Easy = them thinned to a beat apart), Play it now, Copy for Claude. Result { record: notes, saved }.
      from   start the song at this second (the editor's Test from here); notes before it are dropped
      song   chart id in window.FEMC_CHARTS (default 'runners', minigames/charts/runners.js)
      level  'easy' | 'normal' | 'hard' (default 'normal')
@@ -46,6 +49,7 @@ window.FemcSing = (() => {
     outro: ['Let the last note go.'],
     streak: ['...Yeah. That.', 'Keep doing that.', "Don't think. You're doing it."],
     slip: ['Find it again.', "You're rushing.", 'Listen to the kick.'],
+    rec: "I'm recording. Tap it how it feels: D F J K, hold for the long ones. Esc when you want to stop.",
     fail: 'Stop. Stop the take. ...Again from the top. You know this.',
     end: { S: "...Don't touch it. That's the take.", A: "That's the song. I'm keeping that one.", B: "It's a take. We'll comp it.", C: "Again. You know it, you just don't trust it yet." },
   };
@@ -54,7 +58,7 @@ window.FemcSing = (() => {
     return new Promise(done => {
       const C = (window.FEMC_CHARTS || {})[o.song || 'runners'];
       if (!C) { done({ quit: true, error: 'no chart' }); return; }
-      const level = o.level || 'normal', src = (o.chart && o.chart[level]) || C.charts[level] || C.charts.normal;
+      const level = o.level || 'normal', REC = !!o.record, rec = [], src = REC ? [] : (o.chart && o.chart[level]) || C.charts[level] || C.charts.normal;
       const O = opts(), host = o.host || document.body, ART = id => `${base()}assets/femc/game/art/minigames/sing/${id}.webp`;
       const FACE = (w, f) => `${base()}assets/femc/portraits/${w}-runners/${f}.webp`;
       const BEAT = 60 / C.bpm, PRE = BEAT * 4, FROM = Math.max(0, +o.from || 0); // a bar of count-in before the song
@@ -135,9 +139,18 @@ window.FemcSing = (() => {
       const stats = () => { const tot = st.perfect + st.good + st.ok + st.miss, acc = tot ? (st.perfect + st.good * 0.75 + st.ok * 0.4) / tot * 100 : 100; $('.sg-stats').textContent = `Score ${Math.round(st.score).toLocaleString()} · Misses ${st.miss} · ${acc.toFixed(2)}%`; return acc; };
 
       /* hitting */
+      const snap16 = t => { const g = BEAT / 4; return Math.max(0, +(C.offset + Math.round((t - C.offset) / g) * g).toFixed(3)); };
+      const recDown = [null, null, null, null];
       const press = lane => {
         if (st.over || st.paused) return;
         st.held[lane] = true; cols[lane].classList.add('press');
+        if (REC) { // her tap becomes a note; it lights the target and floats away so she sees it
+          if (!started) return;
+          const n = { t: snap16(now()), lane, len: 0 }; rec.push(n); recDown[lane] = n;
+          cols[lane].classList.remove('hit'); void cols[lane].offsetWidth; cols[lane].classList.add('hit'); splash(lane); pose(DIRS[lane], 0);
+          const f = document.createElement('div'); f.className = `sg-note sg-fly l${lane}`; f.style.setProperty('--r', ROT[lane] + 'deg'); f.style.display = 'block'; f.innerHTML = `<span class="sg-head">${ARROW}</span>`; noteBox.appendChild(f); setTimeout(() => f.remove(), 900);
+          $('.sg-stats').textContent = `Recording · ${rec.length} notes`; return;
+        }
         const t = now(); let cand = null;
         for (const n of notes) if (n.lane === lane && !n.hit && !n.done && Math.abs(n.t - t) <= WIN[2][1]) { cand = n; break; }
         if (!cand) return; // ghost tap: free
@@ -152,6 +165,7 @@ window.FemcSing = (() => {
       };
       const release = lane => {
         st.held[lane] = false; cols[lane].classList.remove('press');
+        if (REC) { const n = recDown[lane]; recDown[lane] = null; if (n) { const len = now() - n.t; if (len > BEAT * 0.6) n.len = +(Math.round(len / (BEAT / 4)) * BEAT / 4).toFixed(3); } pose('idle', 200); return; }
         const h = notes.find(n => n.lane === lane && n.held);
         if (h) { h.held = false; h.done = true; h.el.remove(); if (now() < h.t + h.len - 0.12) health(-1.5); pose('idle', 1); }
       };
@@ -216,6 +230,7 @@ window.FemcSing = (() => {
       };
       const out = extra => { const total = notes.length, acc = stats(); const res = { song: C.id, level, score: Math.round(st.score), accuracy: Math.round(acc), perfect: st.perfect, good: st.good, ok: st.ok, miss: st.miss, maxCombo: st.maxCombo, fc: st.miss === 0 && st.perfect + st.good + st.ok === total, grade: 'C', failed: false, quit: false, ...extra }; cleanup(); o.onDone?.(res); done(res); };
       const finish = (quit = false) => {
+        if (REC) return recEnd();
         if (st.over) return; st.over = true; fade();
         const acc = stats(), fc = st.miss === 0;
         const grade = quit ? 'C' : acc >= 95 && st.miss <= 2 ? 'S' : acc >= 85 ? 'A' : acc >= 70 ? 'B' : 'C';
@@ -226,12 +241,27 @@ window.FemcSing = (() => {
         end.querySelector('[data-c]').onclick = () => out({ grade, quit, fc: fc && !quit });
         end.querySelector('[data-r]').onclick = restart;
       };
+      const recEnd = () => {
+        if (st.over) return; st.over = true; fade(); for (let l = 0; l < 4; l++) if (recDown[l]) release(l);
+        rec.sort((a, b) => a.t - b.t);
+        const thin = gap => { const out = []; let lastEnd = -9; for (const n of rec) if (n.t - lastEnd >= gap - 0.01) { out.push({ ...n }); lastEnd = n.t + (n.len || 0); } return out; };
+        const js = JSON.stringify({ song: C.id, charts: { easy: thin(BEAT), normal: rec, hard: rec } });
+        const end = $('.mg-end'); end.hidden = false;
+        end.innerHTML = `<b class="sg-fail" style="color:var(--pk2)">${rec.length} notes</b><p class="mg-end-say">That's your chart. Save it, then play it.</p><div class="sg-end-btns"><button type="button" data-s>Save as my chart</button><button type="button" data-p>Save and play it</button></div><div class="sg-end-btns"><button type="button" data-a>Record again</button><button type="button" data-x>Close without saving</button></div><button type="button" data-k>Copy for Claude</button>`;
+        const saveIt = () => { try { localStorage.setItem(DRAFT_KEY(C.id), JSON.stringify({ charts: JSON.parse(js).charts, saved: new Date().toISOString() })); } catch (e) {} };
+        end.querySelector('[data-s]').focus();
+        end.querySelector('[data-s]').onclick = e => { saveIt(); e.target.textContent = 'Saved ✓'; };
+        end.querySelector('[data-p]').onclick = () => { saveIt(); cleanup(); const r = { record: rec, saved: true, play: true }; o.onDone?.(r); done(r); };
+        end.querySelector('[data-a]').onclick = () => { rec.length = 0; restart(); };
+        end.querySelector('[data-x]').onclick = () => { cleanup(); const r = { record: rec, saved: false }; o.onDone?.(r); done(r); };
+        end.querySelector('[data-k]').onclick = e => { saveIt(); navigator.clipboard?.writeText(js); e.target.textContent = 'Copied ✓ (and saved)'; };
+      };
       const restart = () => {
         try { audio && audio.pause(); } catch (e) {}
         Object.assign(st, { score: 0, combo: 0, maxCombo: 0, perfect: 0, good: 0, ok: 0, miss: 0, hp: 50, paused: false, over: false, sec: -1, held: [false, false, false, false], beat: -99, count: -1 });
         started = false; pre = FROM - PRE; sync = { a: -1, p: 0 }; if (audio) { audio.currentTime = FROM; if (gain) gain.gain.value = 0.9; }
         $('.mg-end').hidden = true; $('.mg-pause').hidden = true; el.classList.remove('failed', 'low'); el.classList.toggle('down', O.down);
-        build(); health(0); stats(); pose('idle', 1); say(TALK.intro);
+        build(); health(0); stats(); pose('idle', 1); say(REC ? TALK.rec : TALK.intro); recMode();
         cancelAnimationFrame(raf); last = 0; raf = requestAnimationFrame(loop);
       };
 
@@ -256,7 +286,8 @@ window.FemcSing = (() => {
       $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') setPause(false); if (b === 'restart') restart(); if (b === 'quit') { st.paused = false; $('.mg-pause').hidden = true; finish(true); } };
       const cleanup = () => { cancelAnimationFrame(raf); window.removeEventListener('keydown', key, true); window.removeEventListener('keyup', keyUp, true); try { audio && audio.pause(); ac && ac.close(); } catch (e) {} el.remove(); };
       window.addEventListener('keydown', key, true); window.addEventListener('keyup', keyUp, true);
-      health(0); stats(); say(TALK.intro);
+      const recMode = () => { if (!REC) return; el.classList.add('rec'); $('.sg-stats').textContent = 'Recording · tap along with her voice'; $('.sg-health').style.display = 'none'; };
+      health(0); stats(); say(REC ? TALK.rec : TALK.intro); recMode();
       raf = requestAnimationFrame(loop);
     });
   }
