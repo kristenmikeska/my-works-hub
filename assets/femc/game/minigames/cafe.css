@@ -256,3 +256,7 @@
   .cf-say img, .cf-say .cf-badge { width: 42px; height: 42px; }
   .mg-cafe kbd { display: none; }
 }
+
+/* Nov 11: the key hint sat on top of the menu item's name on mid-size windows; give it its own room on the right. */
+.cf-item { padding-right: 26px; }
+.cf-item kbd { top: 50%; bottom: auto; transform: translateY(-50%); }
