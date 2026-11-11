@@ -583,6 +583,7 @@
       { s: 'kazuha', t: "A lot of them. Like a team. And they're tired. They look like they've been walking for a long time to get somewhere." },
       { n: "The arcade went on being loud. Somewhere a machine played a victory fanfare for nobody. Solar stood very still, which was what she did, which had always been what she did, the stillness coming up through her like cold through a floor, and she didn't turn round, because she knew exactly what would be there if she did, which was nothing, which was an arcade, which was worse." },
       { ifGlitch: 3, then: [
+        { glitch: 'clock' }, // Nov 11 2026: the screens' 12:00 plays as a glitch (signature + 12:00 on the place plate)
         { n: "For one second, every screen in the place showed the same thing, all of them, the fighting cabinets and the dance machine and the claw machine's little screen: a clock, white on black. 12:00. Then the attract loops came back. Sakura looked at her cabinet. Kazuha didn't look at anything. She just nodded, very slightly, as if something had agreed with her." }
       ] },
       { s: 'yunjin', f: 'serious', t: "She's got a lot of people standing behind her, Kazuha. It's called a family. Most of them are idiots. Leave my wife alone." },

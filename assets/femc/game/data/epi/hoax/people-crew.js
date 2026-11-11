@@ -186,6 +186,7 @@
         ] }
       ] },
       { ifGlitch: 3, then: [
+        { glitch: { kind: 'sound', sound: 'static' } }, // Nov 11 2026: the freeze plays as a glitch (signature + static)
         { n: "Then every screen in the arcade froze. Not the power, the screens, all of them on the same frame at the same time, the racing games and the shooters and the crane game's little jingle cut off in the middle of a note, and the clock on the change machine read 12:00 in green, and for a breath the only sound in the room was the heating." },
         { n: "A kid by the air hockey table said *whoa*. Then everything came back at once, louder than before." },
         { s: 'junkyu', f: 'serious', t: "Sol. Is that... yours?" },

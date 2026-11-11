@@ -51,7 +51,27 @@
      { glitch: '<schedule id>' }  plays that entry (its spec; marks it seen)
      { glitch: { stage: 3 } } / { glitch: { strain: 1 } } / { glitch: { near: true } }   state only, nothing shows
      { ifGlitch: n, then, else }  the stage now is at least n (core.js branch → epilogue.js cond); never true in the year.
-     A glitch line waits for its effect (at most 1.6 s; wait: false, on the line or the spec, goes straight on; so does Skip).
+     A glitch line waits for its effect (at most 1.6 s; a sound at most 1 s; wait: false, on the line or the spec, goes straight
+     on; so does Skip). While it waits the scene HOLDS (holdScene): the text box's ▼ becomes a flickering green glitch glyph,
+     a static band runs through the box, the cursor is not-allowed, and clicks / Enter / Space on the scene are swallowed (not
+     queued) until 0.25 s after the next line starts, so mashing never skips the lines after a glitch. Log / Auto / Skip still work.
+
+   SIGNATURE (Kat, Nov 11 2026: "my game just kinda freezes for a second"). Every glitch that plays (every kind, scenes and
+   screens; a hands choice when its "(Evoke.)" appears; not a map card drawn again) also plays one short signature over the
+   whole game view (signature(), one fixed .g-glx-sig layer appended to body, styles injected once by sigCss()), so a pause
+   reads as a glitch, not lag. Stage = the stage now, at least 1 (a subtle kind like a swapped can still gets stage 1):
+     the split   two copies of the backdrop (or the CG) tinted pink and Dark Hour green, screen-blended, offset ±(2 + stage) px;
+                 the text box / HUD text gets a pink / green text-shadow split (html.g-sig-on)
+     the tear    a band of scanlines sliding down the screen (a second one from stage 3)
+     static      a 128 × 72 canvas of noise scaled up, redrawn every 70 ms while it lasts
+     vignette    a dark pink-edged vignette pulse
+     jitter      the scene layer (.gs, or the screen's .g-stage) shakes 1 px (stage 1-2) / 2 px (3-4) via `translate`
+     crackle     a soft electronic crackle (Web Audio noise bursts, high-passed), through the sfx setting and its volume
+   Length 420 / 560 / 720 / 900 ms by stage; opacity and offsets grow with it. Settings: Full as above. Gentle: 0.6× length,
+   0.6× strength, no jitter, a quieter crackle. Off: nothing (no signature, no hold). Reduce flashes (calm): no hard cuts or
+   flicker steps, everything a slow fade (1.3× length), half the brightness, one still noise frame. Reduced motion: no jitter,
+   the bands hold still, one still noise frame, the split is a still frame that fades. Nothing loops: the layer, its classes
+   and the noise timer end with it (hold(), so clear() ends it too).
 
    SETTINGS: Glitch effects (core.js DEFAULTS glitchFx): Full | Gentle (shorter, softer, half the ambient rolls, no glass
    shards, quieter) | Off (nothing shows or sounds; a pickable hands choice still appears, plainly, since it's the story's).
@@ -200,7 +220,165 @@ window.FemcGlitch = (() => {
     if (spec.kind === 'hands') { armed = { t: spec.t || '(Evoke.)', pickable: !!spec.pickable, then: spec.then || [], id: spec.id || null, day: S().day }; return 0; }
     if (m === 'off') return 0;
     const dur = Math.round((spec.ms || DUR[spec.kind]) * (m === 'gentle' ? 0.6 : 1));
-    return FX[spec.kind](spec, dur, ctx) === false ? 0 : dur;
+    const shown = FX[spec.kind](spec, dur, ctx) !== false;
+    if (ctx.again && !shown) return 0;
+    const sig = ctx.again ? 0 : signature(spec.kind);
+    return Math.max(shown ? dur : 0, sig);
+  }
+
+  /* ── The signature (header: SIGNATURE) ── */
+  const SIG_MS = [0, 420, 560, 720, 900];
+  let sigCssDone = false, sigLive = 0;
+  function sigCss() {
+    if (sigCssDone) return; sigCssDone = true;
+    const st = document.createElement('style');
+    st.id = 'g-glx-sig-css';
+    st.textContent = `
+.g-glx-sig { position: fixed; inset: 0; z-index: 2590; pointer-events: none; overflow: hidden; opacity: 0; animation: g-sig-in var(--d) linear both; }
+.g-glx-sig > * { position: absolute; display: block; }
+.g-glx-sig .sig-ghost { background-repeat: no-repeat; background-blend-mode: multiply; mix-blend-mode: screen; opacity: var(--o); }
+.g-glx-sig .sig-ghost.p { background-color: #ff4f9e; translate: calc(var(--gx) * -1) 0; animation: g-sig-gp var(--d) steps(1, end) both; }
+.g-glx-sig .sig-ghost.g { background-color: #7dffc0; translate: var(--gx) 0; animation: g-sig-gg var(--d) steps(1, end) both; }
+.g-glx-sig .sig-noise { inset: 0; width: 100%; height: 100%; image-rendering: pixelated; mix-blend-mode: screen; opacity: var(--no); }
+.g-glx-sig .sig-band { left: -2%; right: -2%; top: 0; height: var(--bh); opacity: .9;
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, .1) 0 1px, transparent 1px 3px), linear-gradient(rgba(255, 79, 158, .28), rgba(20, 7, 15, .35) 45%, rgba(125, 255, 192, .22));
+  border-top: 1px solid rgba(255, 79, 158, .75); border-bottom: 1px solid rgba(125, 255, 192, .6); animation: g-sig-band var(--d) steps(7, end) both; }
+.g-glx-sig .sig-band.b2 { height: calc(var(--bh) * .5); animation-delay: calc(var(--d) * -.45); animation-direction: reverse; }
+.g-glx-sig .sig-vig { inset: 0; background: radial-gradient(ellipse at 50% 46%, transparent 42%, rgba(20, 7, 15, var(--vo)) 100%); box-shadow: inset 0 0 90px rgba(255, 79, 158, calc(var(--vo) * .45)), inset 0 0 26px rgba(125, 255, 192, calc(var(--vo) * .3)); animation: g-sig-vig var(--d) ease-out both; }
+@keyframes g-sig-in { 0% { opacity: 0; } 6% { opacity: 1; } 12% { opacity: .35; } 18%, 64% { opacity: 1; } 70% { opacity: .5; } 76% { opacity: .9; } 100% { opacity: 0; } }
+@keyframes g-sig-gp { 0% { translate: calc(var(--gx) * -1) 0; } 30% { translate: calc(var(--gx) * -2) 1px; } 55% { translate: calc(var(--gx) * -.5) 0; } 80% { translate: calc(var(--gx) * -1.5) -1px; } }
+@keyframes g-sig-gg { 0% { translate: var(--gx) 0; } 30% { translate: calc(var(--gx) * 2) -1px; } 55% { translate: calc(var(--gx) * .5) 0; } 80% { translate: calc(var(--gx) * 1.5) 1px; } }
+@keyframes g-sig-band { from { translate: 0 -30vh; } to { translate: 0 110vh; } }
+@keyframes g-sig-vig { 0% { opacity: 0; } 30% { opacity: 1; } 100% { opacity: 0; } }
+.g-glx-sig.calm, .g-glx-sig.still { animation-name: g-sig-fade; animation-timing-function: ease-in-out; }
+@keyframes g-sig-fade { 0% { opacity: 0; } 35%, 55% { opacity: 1; } 100% { opacity: 0; } }
+.g-glx-sig.calm .sig-ghost, .g-glx-sig.still .sig-ghost { animation: none; }
+.g-glx-sig.calm .sig-band { animation-timing-function: linear; border-color: rgba(255, 79, 158, .4) rgba(125, 255, 192, .3); }
+.g-glx-sig.still .sig-band { animation: none; translate: 0 38vh; }
+.g-glx-sig.still .sig-band.b2 { translate: 0 64vh; }
+.g-glx-sig.calm .sig-vig, .g-glx-sig.still .sig-vig { animation-timing-function: ease-in-out; }
+html.g-sig-on .gs-text, html.g-sig-on .gs-name, html.g-sig-on .g-hud, html.g-sig-on .g-kicker, html.g-sig-on .g-datecard {
+  text-shadow: calc(var(--sx, 2px) * -1) 0 rgba(255, 79, 158, .8), var(--sx, 2px) 0 rgba(125, 255, 192, .7); }
+.gs.g-glx-holding, .gs.g-glx-holding .gs-box { cursor: not-allowed; }
+.gs.g-glx-holding .gs-tools, .gs.g-glx-holding .gs-tools *, .gs.g-glx-holding .gs-log, .gs.g-glx-holding .gs-log * { cursor: pointer; }
+.gs.g-glx-holding .gs-text::after { content: "▚" !important; opacity: 1 !important; width: auto !important; height: auto !important; clip-path: none !important; background: none !important;
+  color: #7dffc0 !important; font: 700 17px/1 ui-monospace, Menlo, monospace; text-shadow: -2px 0 #ff4f9e, 2px 0 rgba(125, 255, 192, .6); transform: none; animation: g-sig-glyph .26s steps(1, end) infinite !important; }
+@keyframes g-sig-glyph { 0% { content: "▚"; opacity: 1; } 25% { content: "▞"; opacity: .45; } 50% { content: "░"; opacity: 1; } 75% { content: "▓"; opacity: .7; } }
+.gs.g-glx-holding.glx-calm .gs-text::after { animation: g-sig-glow 1.2s ease-in-out infinite !important; }
+.gs.g-glx-holding.glx-still .gs-text::after { animation: none !important; }
+@keyframes g-sig-glow { 50% { opacity: .35; } }
+.g-sig-boxband { position: absolute; left: 0; right: 0; top: 0; height: 26%; pointer-events: none; z-index: 2; mix-blend-mode: screen;
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, .12) 0 1px, transparent 1px 3px), linear-gradient(90deg, transparent, rgba(255, 79, 158, .3), rgba(125, 255, 192, .25), transparent);
+  animation: g-sig-boxband .7s steps(5, end) infinite; }
+@keyframes g-sig-boxband { from { translate: 0 0; } to { translate: 0 285%; } }
+.glx-calm > .gs-box .g-sig-boxband { animation: g-sig-boxband 1.6s linear infinite; opacity: .6; }
+.glx-still > .gs-box .g-sig-boxband { animation: none; translate: 0 150%; opacity: .7; }
+@media (prefers-reduced-motion: reduce) { .g-glx-sig .sig-ghost, .g-glx-sig .sig-band, .g-sig-boxband { animation: none !important; } }`;
+    document.head.appendChild(st);
+  }
+  function noise(cv, stage) {
+    const c = cv.getContext('2d'); if (!c) return;
+    const d = c.createImageData(cv.width, cv.height), px = d.data, tint = 0.02 + stage * 0.015;
+    for (let i = 0; i < px.length; i += 4) {
+      const r = Math.random(), v = r < 0.55 ? 0 : Math.floor(Math.random() * 255);
+      const t = Math.random();
+      if (t < tint) { px[i] = 255; px[i + 1] = 79; px[i + 2] = 158; } else if (t < tint * 2) { px[i] = 125; px[i + 1] = 255; px[i + 2] = 192; } else { px[i] = px[i + 1] = px[i + 2] = v; }
+      px[i + 3] = 255;
+    }
+    c.putImageData(d, 0, 0);
+  }
+  function crackle(stage, ms) {
+    const set = G.settings();
+    if (!set.sfx || localStorage.getItem('kg-femc-sound') === 'off' || (navigator.userActivation && !navigator.userActivation.hasBeenActive)) return;
+    try {
+      const C = W.AudioContext || W.webkitAudioContext; if (!C) return;
+      const c = FX.ctx || (FX.ctx = new C()); if (c.state === 'suspended') c.resume().catch(() => {});
+      const len = Math.min(0.9, ms / 1000 * 0.75), n = Math.floor(c.sampleRate * len), b = c.createBuffer(1, n, c.sampleRate), ch = b.getChannelData(0);
+      const pops = 0.0012 + stage * 0.0009; let burst = 0;
+      for (let i = 0; i < n; i++) {
+        if (Math.random() < pops) burst = Math.floor(c.sampleRate * (0.002 + Math.random() * 0.012));
+        ch[i] = burst > 0 ? (burst--, (Math.random() * 2 - 1) * 0.9) : (Math.random() * 2 - 1) * 0.04;
+      }
+      const s = c.createBufferSource(), hp = c.createBiquadFilter(), g = c.createGain(), t = c.currentTime;
+      const vol = Math.max(0, Math.min(1, (set.sfxVol ?? 100) / 100)) * (0.12 + stage * 0.035) * (mode() === 'gentle' ? 0.5 : 1);
+      if (!vol) return;
+      s.buffer = b; hp.type = 'highpass'; hp.frequency.value = 1600;
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + len);
+      s.connect(hp).connect(g).connect(c.destination); s.start(t); s.stop(t + len + 0.05);
+      setTimeout(() => { try { g.disconnect(); } catch (e) {} }, len * 1000 + 200);
+    } catch (e) {}
+  }
+  // One short layered effect over the whole view; returns its length (ms), 0 when Off.
+  function signature(kind) {
+    if (!active() || mode() === 'off') return 0;
+    sigCss();
+    if (sigLive) end(sigLive);
+    const gentle = mode() === 'gentle', soft = calm(), stil = still();
+    const stage = Math.max(1, Math.min(4, stageNow()));
+    const ms = Math.round(SIG_MS[stage] * (gentle ? 0.6 : 1) * (soft ? 1.3 : 1));
+    const k = (gentle ? 0.6 : 1) * (soft ? 0.5 : 1);
+    const x = el('sig');
+    x.classList.add(`s-${stage}`);
+    x.style.cssText = `--d:${ms}ms;--o:${(0.14 + stage * 0.06) * k};--gx:${2 + stage}px;--no:${(0.04 + stage * 0.035) * k};--bh:${4 + stage * 2.5}%;--vo:${(0.3 + stage * 0.12) * (gentle ? 0.6 : 1)}`;
+    // The split: the backdrop (or the CG on top of it) twice, tinted, where it really is on screen.
+    const sc = sceneEl(), cg = sc?.querySelector('.gs-cg:not([hidden])'), bg = sc ? sc.querySelector('.gs-bg') : document.querySelector('.g-stage .g-bg');
+    const src = cg ? (cg.currentSrc || cg.src) : bg ? (/url\(["']?([^"')]+)/.exec(getComputedStyle(bg).backgroundImage) || [])[1] : '';
+    const box = (cg || bg)?.getBoundingClientRect();
+    if (src) {
+      const cs = cg ? getComputedStyle(cg) : getComputedStyle(bg);
+      const size = cg ? (cs.objectFit === 'contain' ? 'contain' : 'cover') : cs.backgroundSize, pos = cg ? cs.objectPosition : cs.backgroundPosition;
+      ['p', 'g'].forEach(c => {
+        const gh = document.createElement('i');
+        gh.className = `sig-ghost ${c}`;
+        if (box && box.width) Object.assign(gh.style, { left: `${box.left}px`, top: `${box.top}px`, width: `${box.width}px`, height: `${box.height}px` }); else gh.style.inset = '0';
+        Object.assign(gh.style, { backgroundImage: `url("${src}")`, backgroundSize: size, backgroundPosition: pos });
+        x.appendChild(gh);
+      });
+    }
+    const cv = document.createElement('canvas'); cv.className = 'sig-noise'; cv.width = 128; cv.height = 72;
+    x.appendChild(cv); noise(cv, stage);
+    const iv = soft || stil ? null : setInterval(() => noise(cv, stage), 70);
+    x.insertAdjacentHTML('beforeend', `<i class="sig-band"></i>${stage >= 3 ? '<i class="sig-band b2"></i>' : ''}<i class="sig-vig"></i>`);
+    document.body.appendChild(x);
+    const html = document.documentElement;
+    html.style.setProperty('--sx', `${stage >= 3 ? 3 : 2}px`); html.classList.add('g-sig-on');
+    const jit = !gentle && !stil && (sc || document.querySelector('.g-stage'));
+    // Web Animations on `translate` only, so the layer's own CSS animation (the scene's fade-in) is never restarted.
+    const j = stage >= 3 ? 2 : 1, step = { easing: 'steps(1, end)' };
+    let shake = null;
+    try { if (jit && jit.animate) shake = jit.animate([{ translate: `${j}px 0`, ...step }, { translate: `${-j}px ${j}px`, ...step }, { translate: `0 ${-j}px`, ...step }, { translate: '0 0' }], { duration: 90, iterations: Math.max(2, Math.round(ms * 0.6 / 90)) }); } catch (e) {}
+    crackle(stage, ms);
+    const id = hold(() => {
+      clearInterval(iv); x.remove(); html.classList.remove('g-sig-on'); html.style.removeProperty('--sx');
+      try { shake?.cancel(); } catch (e) {}
+      if (sigLive === id) sigLive = 0;
+    }, ms);
+    sigLive = id;
+    return ms;
+  }
+  // A scene holds while a glitch line waits: the ▼ turns into a glitch glyph, a static band in the box, not-allowed cursor,
+  // and clicks / Enter / Space on the scene are swallowed (not queued) until GRACE ms after the next line has started.
+  const GRACE = 250;
+  function holdScene(node, ms, next) {
+    sigCss();
+    const boxEl = node.querySelector('.gs-box'), band = document.createElement('i');
+    band.className = 'g-sig-boxband'; band.setAttribute('aria-hidden', 'true');
+    node.classList.remove('ready');
+    node.classList.add('g-glx-holding');
+    if (calm()) node.classList.add('glx-calm');
+    if (still()) node.classList.add('glx-still');
+    if (boxEl && mode() !== 'off') boxEl.appendChild(band);
+    const free = e => e.target?.closest?.('.gs-tools, .gs-log, .gs-choices');
+    const eat = e => {
+      if (!node.isConnected) return;
+      if (e.type === 'keydown') { if (e.key !== 'Enter' && e.key !== ' ') return; if (free(e)) return; if (document.querySelector('.g-overlay, .g-dh')) return; }
+      else if (!node.contains(e.target) || free(e)) return;
+      e.preventDefault(); e.stopImmediatePropagation();
+    };
+    W.addEventListener('click', eat, true); W.addEventListener('keydown', eat, true);
+    const unhold = () => { node.classList.remove('g-glx-holding', 'glx-calm', 'glx-still'); band.remove(); };
+    const id = hold(() => { unhold(); W.removeEventListener('click', eat, true); W.removeEventListener('keydown', eat, true); }, ms + GRACE);
+    setTimeout(() => { if (live.has(id)) unhold(); next(); }, ms);
   }
   function el(kind, html, tag = 'div') {
     const x = document.createElement(tag);
@@ -406,9 +584,12 @@ window.FemcGlitch = (() => {
       box.addEventListener('click', e => { if (e.target.closest('button') !== b) end(id); }, { capture: true }); // a real choice ends it
     }
     box.appendChild(b);
+    signature('hands');
     return true;
   }
-  // scene.js: a { glitch } line. next() carries on (after the effect, at most 1.6 s).
+  // How long a scene holds for a kind at most: a sound has nothing to watch, so it holds 1 s (the signature carries it).
+  const WAIT_CAP = { sound: 1000 };
+  // scene.js: a { glitch } line. next() carries on (after the effect, at most 1.6 s; the scene holds meanwhile).
   function line(l, sceneNode, next, skipping) {
     if (!active()) return next();
     const v = l.glitch, g = st(), s = S();
@@ -426,7 +607,8 @@ window.FemcGlitch = (() => {
     if (base.id && base.once !== false && !g.seen.includes(base.id)) { g.seen.push(base.id); G.saveQuiet(); }
     const dur = play(base, { where: 'scene' });
     if (!dur || skipping || base.wait === false || l.wait === false) return next();
-    setTimeout(next, Math.min(dur, 1600));
+    if (!sceneNode || !sceneNode.isConnected) return void setTimeout(next, Math.min(dur, WAIT_CAP[base.kind] || 1600));
+    holdScene(sceneNode, Math.min(dur, WAIT_CAP[base.kind] || 1600), next);
   }
   // scene.js: a spoken line. Her constant talking to her today pushes the stage one higher.
   function heard(id) {
