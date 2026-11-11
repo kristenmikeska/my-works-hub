@@ -3,8 +3,8 @@
    its skills and affinities; Haenim's forms; Solar's Echo, drawn by echoes-ui.js), Skills (the skill system: see SKILLS below), Equipment (weapon, armor, accessory
    per member, from the gear bought in shops or found in Tartarus), Items (consumables, gear, books, jobs), Status (Solar's
    social stats, condition, exams), Links (the social links), Journal (memory fragments), Album (the Memories album) and
-   Theater (replays; both described at ALBUM and THEATER below, not in the Dark Hour), Calendar (this month), and the
-   Compendium page.
+   Theater (replays; both described at ALBUM and THEATER below, not in the Dark Hour), Calendar (this month), the Index
+   (people, places and terms met so far: index.js draws it, data/index-*.js), and the Compendium page.
    The battle side's numbers come from the playthrough's battle save (core.js S.battleSave, shape in assets/femc/battle/save.js)
    through the battle engine (engine.js: levels, stats, skills, equipment math) and its data (data.js). Changes made here
    (party, tactics, equipment, Haenim's form) are written straight into S.battleSave, so the next fight uses them.
@@ -49,13 +49,13 @@ window.FemcMenu = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const yen = n => `¥${Math.round(n || 0).toLocaleString('en-US')}`;
   const AFF = { normal: '–', weak: 'Wk', resist: 'Rs', null: 'Nu', drain: 'Dr', repel: 'Rp' };
-  const TABS = [['party', 'Party'], ['personas', 'Personas'], ['skills', 'Skills'], ['equip', 'Equipment'], ['cards', 'Cards'], ['items', 'Items'], ['collection', 'Collection'], ['wardrobe', 'Wardrobe'], ['links', 'Links'], ['bonds', 'Bonds'], ['status', 'Status'], ['calendar', 'Calendar'], ['journal', 'Journal'], ['album', 'Album'], ['theater', 'Theater'], ['tips', 'Tips'], ['compendium', 'Compendium']];
+  const TABS = [['party', 'Party'], ['personas', 'Personas'], ['skills', 'Skills'], ['equip', 'Equipment'], ['cards', 'Cards'], ['items', 'Items'], ['collection', 'Collection'], ['wardrobe', 'Wardrobe'], ['links', 'Links'], ['bonds', 'Bonds'], ['status', 'Status'], ['calendar', 'Calendar'], ['journal', 'Journal'], ['album', 'Album'], ['theater', 'Theater'], ['index', 'Index'], ['tips', 'Tips'], ['compendium', 'Compendium']];
   // The menu's groups (Kat, Nov 3 2026: "better, less messy menu"): the menu screen lists one entry per group (data-home = its
   // first tab), a page's top strip has one button per group and a second strip the group's own tabs. TABS is in group order,
   // so [ ] still steps through every tab one by one.
   const GROUPS = [['party', 'Party', ['party']], ['personas', 'Personas', ['personas']], ['skills', 'Skills', ['skills']], ['equip', 'Equipment', ['equip', 'cards']],
     ['items', 'Items', ['items', 'collection']], ['wardrobe', 'Wardrobe', ['wardrobe']], ['links', 'Links', ['links', 'bonds']], ['status', 'Status', ['status', 'calendar']],
-    ['journal', 'Records', ['journal', 'album', 'theater', 'tips', 'compendium']]];
+    ['journal', 'Records', ['journal', 'album', 'theater', 'index', 'tips', 'compendium']]]; // index: the Index (index.js, Nov 11 2026)
   const groupOf = k => GROUPS.find(g => g[2].includes(k)) || GROUPS[0];
   const BLD = () => window.FemcBuild || null;
   // Kat's tab icons (batch 43, art/icons/<tab>.webp) sit before each label; a tab without one (or a file that fails) is text only.
@@ -1229,10 +1229,10 @@ window.FemcMenu = (() => {
   const HOME_TIP = { party: 'Check on everyone’s condition', personas: 'The Personas you carry', skills: 'Grow Haenim’s sun', cards: 'Your Revelation cards',
     equip: 'Weapons, armor and accessories', items: 'Use or look over your items', collection: 'Everything you’ve gathered', wardrobe: 'Change your look',
     status: 'Social stats at a glance', links: 'Look in on your bonds', bonds: 'What your bonds have taught you', journal: 'Requests and memory fragments',
-    album: 'The memories you’ve kept', theater: 'Watch a scene again', calendar: 'The days ahead', tips: 'Every tip you’ve seen', compendium: 'Every Persona registered · opens in a new tab' };
+    album: 'The memories you’ve kept', theater: 'Watch a scene again', calendar: 'The days ahead', tips: 'Every tip you’ve seen', index: 'People, places and words you’ve come across', compendium: 'Every Persona registered · opens in a new tab' };
   // The menu screen's line for a group, and its other tabs under its name (the first one is the entry's own page).
   const GROUP_TIP = { equip: 'Weapons, armor, accessories and cards', items: 'Your bag and everything you’ve gathered', wardrobe: 'Change your look · the Boutique has new ones',
-    links: 'Your bonds and what they’ve taught you', status: 'Social stats and the days ahead', journal: 'Requests, memories, replays and tips' };
+    links: 'Your bonds and what they’ve taught you', status: 'Social stats and the days ahead', journal: 'Requests, memories, replays, the Index and tips' };
   const homeTip = k => GROUP_TIP[k] || HOME_TIP[k] || '';
   const DAY_WORD = { school: 'Weekday', prologue: 'Weekday', off: 'Day Off', exam: 'Exams', trip: 'Trip' };
   // Solar's full-body pose, measured once: width/height, head top, head-to-chin, head centre x (fractions of the image).
@@ -1373,7 +1373,7 @@ window.FemcMenu = (() => {
      backdrop (the Dark Hour's over a fight or in the late slot, darker over a fight), the page name big and slanted with a
      line under it, a ghost word, the compact tab strip ([ ] still switch), the content in angular panels, the key footer. ── */
   const PAGE_GHOST = { party: 'Team', personas: 'Persona', skills: 'Skill', cards: 'Arcana', equip: 'Gear', items: 'Items', collection: 'Collect', wardrobe: 'Style',
-    status: 'Status', bonds: 'Bonds', journal: 'Memory', album: 'Album', theater: 'Theater', calendar: 'Days', tips: 'Tips' };
+    status: 'Status', bonds: 'Bonds', journal: 'Memory', album: 'Album', theater: 'Theater', calendar: 'Days', tips: 'Tips', index: 'Index' };
   function pageSub() {
     try {
       const n = roster().length, inP = ['solar', ...(bsave().party || [])].filter(id => roster().some(m => m.id === id)).length;
@@ -1383,6 +1383,7 @@ window.FemcMenu = (() => {
       if (tab === 'status') return `Solar · ${G.D.stats.conditions[S().condition]?.name || ''}`;
       if (tab === 'bonds') { const m = Object.values(G.LINKS).filter(l => G.isMet(l.id)).length; return `Perks · ${m} bond${m === 1 ? '' : 's'}`; }
       if (tab === 'journal') { const f = (S().fragments || []).length; return `Fragments · ${f} so far`; }
+      if (tab === 'index' && window.FemcIndex) return window.FemcIndex.summary();
     } catch (e) {}
     return HOME_TIP[tab] || '';
   }
@@ -1430,6 +1431,7 @@ window.FemcMenu = (() => {
     else if (tab === 'theater') html = theaterHtml();
     else if (tab === 'calendar') html = calendarTab();
     else if (tab === 'tips') html = window.FemcTips ? window.FemcTips.pageHtml() : '<p class="g-note">No tips here.</p>';
+    else if (tab === 'index') html = window.FemcIndex ? window.FemcIndex.pageHtml() : '<p class="g-note">Nothing written down yet.</p>';
     const top = body.scrollTop;
     // The Links page is a screen of its own (solstice-links.css): the panel goes full screen while it shows.
     o.el.classList.toggle('is-links', tab === 'links' && view !== 'home');
@@ -1442,6 +1444,7 @@ window.FemcMenu = (() => {
     else if (tab === 'wardrobe') window.FemcCosmetics?.wire(body, render);
     else if (tab === 'album') wireAlbum(body); else if (tab === 'theater') wireTheater(body, o.el, render);
     else if (tab === 'tips') window.FemcTips?.wirePage(body, render);
+    else if (tab === 'index') window.FemcIndex?.wirePage(body, render);
     paintSub();
     o.el.querySelectorAll('[data-tab]').forEach(b => { b.classList.toggle('on', b.dataset.tab === tab); b.setAttribute('aria-selected', b.dataset.tab === tab); });
     o.el.querySelectorAll('[data-grp]').forEach(b => b.classList.toggle('in', b.dataset.grp === groupOf(tab)[0]));
@@ -1492,6 +1495,11 @@ window.FemcMenu = (() => {
       // Down from the tabs (keyboard or a pad's D-pad) steps into the Skills tab's tree, or its open prompt.
       if (onTab && e.key === 'ArrowDown' && tab === 'skills') {
         const f = o.el.querySelector('.g-sk-forget [data-forget], .g-sk-velvet [data-velvet-no], .g-hn.sel, .g-sn.sel, .g-lib-slot.on, .g-lib-sk.on, [data-slot]');
+        if (f) { e.preventDefault(); e.stopPropagation(); f.focus(); return; }
+      }
+      // …and into the Index: the entry being read, or its search box.
+      if (onTab && e.key === 'ArrowDown' && tab === 'index') {
+        const f = o.el.querySelector('.g-ix-row.on, [data-ix-q]');
         if (f) { e.preventDefault(); e.stopPropagation(); f.focus(); return; }
       }
       if (e.key === '[' || e.key === ']' || (onTab && (e.key === 'ArrowLeft' || e.key === 'ArrowRight'))) {
