@@ -1,16 +1,18 @@
 > **Kat: this is a DRAFT for you to cut down.** Every page is cited by chapter and was checked against the manuscript text; anything not confirmed is marked "(unverified)", and pages that spoil a big reveal are marked "(big twist: cuttable)".
 >
 > The scrapbook will be skippable, so length is fine: players who know the book can skip straight to the epilogue.
+>
+> **Nov 10 update (Kat's ruling: the recap runs up to where Solar leaves her world).** Runners now runs past the manuscript: pages 36–48 recap the outlined chapters 67–78 (camping and the week after, through Friday 11/21). Each is tagged "(outline: not yet written)" and cites the outline instead of a chapter. strangers and HOAX needed nothing new: see the note at the top of each section.
 
 # "Previously" scrapbook moments (draft v2)
 
 Each page: **title** · chapter · *caption* (the polaroid text) · Why (context it gives) · Picture (what the polaroid shows). Pages are in story order, grouped into short scrapbook chapters.
 
-Sources: Runners from `Runners_text.md` (through Ch 66), with `runners_state.md` for orientation; strangers from `strangers/chapters/01–65.md`, with `story_so_far.md` for orientation; HOAX from `hoax/hoax_text.md` (through Ch 99), with `hoax_chapter_log.md` for orientation. No epilogue files, no `_oneshots`, no DO-NOT-OPEN files. The Stay section was dropped (not a novel world).
+Sources: Runners from `Runners_text.md` (through Ch 66), with `runners_state.md` for orientation, then `runners_outline_master.md` chapters 67–78 for the outline pages; strangers from `strangers/chapters/01–65.md`, with `story_so_far.md` for orientation; HOAX from `hoax/hoax_text.md` (through Ch 99), with `hoax_chapter_log.md` for orientation. Epilogue data was checked only to find each world's cut-off point; nothing from it (or from any DO-NOT-OPEN file) is in the pages. No `_oneshots`. The Stay section was dropped (not a novel world).
 
 ---
 
-## 1. Runners (Syracuse, through Ch 66)
+## 1. Runners (Syracuse, through Ch 66 + outline to 11/21)
 
 ### Chapter A: Arrival
 
@@ -209,11 +211,86 @@ Sources: Runners from `Runners_text.md` (through Ch 66), with `runners_state.md`
     Why: where the manuscript stops. She likes Mark and still suspects him, she hasn't told Haechan about this Saturday herself, and the no-service camping trip is days away.
     Picture: Solar in a navy scarf with tiny gold suns under a red restaurant sign, her gloved hand in Mark's.
 
-Cast: Solar Lee (Kiriko main, Alpha Phi, Lee Industries heiress), Haechan / Lee Donghyuck (Sigma Chi, music, Masters 1), Mark Lee (Sigma Chi, music, Haechan's childhood best friend), Jaehyun Lee (her brother, Sigma Chi president, football star), Minji (Champion hitscan, her duo, filmmaker), Hanni and Hyein (Alpha Phi sisters), Danielle (Alpha Phi, secretly runs SUnews), plus Chenle, Haerin, Olivia, coach Doyoung, Jeno, Jaemin, Renjun, and Yerim.
+> **From here on: the outline, not the manuscript.** The manuscript ends with Ch 66 (Saturday, November 8). Pages 36–48 come from `runners_outline_master.md`, chapters 67–78 (Sunday 11/9 to Friday 11/21), none of which is written yet, so every one is tagged "(outline: not yet written)" and cites the outline chapter and date instead of a manuscript chapter. Captions only use what the outline actually plans; where the outline offers dialogue as "available, not locked", the caption says so. Rewrite or cut these when the real chapters exist. The recap stops on Friday 11/21, the last night before Thanksgiving break; the outline's Thanksgiving chapters (79–81, 11/22–11/30) are not included.
+
+### Chapter L: The Last Ordinary Days
+
+36. **The one that was true** · Outline Ch 67, Sun 11/9 (outline: not yet written)
+    *SUnews posted Saturday: Mark's hands at her throat, tying the navy scarf. Every other Solar-and-Mark post had been half a picture. This one was true, she couldn't correct a word of it, and it was how Haechan found out about Saturday. It was Sunday, so she climbed the ladder to the roof anyway.*
+    Why: the secret she kept in the valley gets published, and she goes to him anyway. The outline plans that he barely raises it, which is worse than if he did. Minji, left out since Solar stood her up, also comes back into the story this week.
+    Picture: a phone showing an Instagram post of a boy knotting a navy scarf under a girl's chin; behind it, the top rung of a rooftop ladder.
+
+37. **The studio upstairs** · Outline Ch 68, Mon 11/10–Tue 11/11 (outline: not yet written) *(big twist: cuttable)*
+    *After a Monday of Danielle, Mark and him in a row, she saw his studio window lit above the eSports lab, knocked, and he moved his bag off the other chair. He was mixing a client's voice. She talked about Minji asking permission every single time before she filmed her, and he said nothing.*
+    Why: without knowing it, she describes exactly what he did not do, to another girl and to her. His silence is the door he chooses not to walk through, and she comforts him for the wrong reason.
+    Picture: a studio at night, two chairs at a mixing desk, a hand stopped on a fader, a waveform on the screen.
+
+38. **The jacket in the bag** · Outline Ch 69, Wed 11/12–Thu 11/13 (outline: not yet written)
+    *Four days, three nights, November woods, forty people and no cell service. Danielle ran the budget, the inventory and the vans. Solar packed his jacket, the one warm thing she owns, knowing she couldn't wear it once.*
+    Why: the trip arrives as logistics, Danielle quietly gathers the tools she needs, and the jacket becomes the thing Solar can't wear, return or throw away.
+    Picture: an open duffel on a pink bedspread, a man's jacket folded at the very bottom under sweaters.
+
+### Chapter M: No Service
+
+39. **You're supposed to count** · Outline Ch 70, Thu 11/13 (outline: not yet written)
+    *Capture the flag between the houses: to tag someone, put both hands on their shoulders and count to three. On a back route he caught her against a tree and never started counting. She kissed him, took his flag and ran. Later he blamed "poor officiating," and from across the room she said "skill issue."*
+    Why: the first night of camp, Alpha and Sigma starting to thaw through play, and the secret at its most fun. The outline's planned lines are "You're supposed to count." / "You're supposed to be trying to get away."
+    Picture: a cloth flag tied to a pine, two pairs of hands on a girl's shoulders, flashlight beams through the trees.
+
+40. **Cold water** · Outline Ch 71, Fri 11/14 (outline: not yet written)
+    *A day of trail work, then Jaemin and Jeno's secret party in an old picnic shelter, a Bluetooth speaker and smuggled bottles. Neither of them drank. She slipped out to the dock and he followed. One freezing plunge, then towels, shaking hands, laughter, his clothes around her by the boathouse.*
+    Why: the happiest the secret ever gets. Danielle stayed behind with Jaehyun instead of following, and Mark watched them across the shelter.
+    Picture: a wooden dock at night, two piles of clothes, a lantern-lit shelter glowing far back through the trees.
+
+41. **Danielle never heard this** · Outline Ch 72, Sat 11/15 (outline: not yet written) *(big twist: cuttable)*
+    *Danielle got her time alone with Jaehyun; in exchange Mark got Solar alone. He told her his version of last year, about a girl, and played a few seconds of a recording with Haechan's voice in it. Then she found Haechan and asked, "Did you record her?" He couldn't say no.*
+    Why: Mark's story is built almost entirely from true facts in the wrong order, and it breaks the secret relationship. Hanni and Hyein had decided to tell her what they knew after dinner, and lost the race.
+    Picture: a phone held out in a cabin doorway, the screen too dark to see.
+
+42. **Sit down** · Outline Ch 72, Sat 11/15 (outline: not yet written)
+    *She walked out of it and straight into her brother. He didn't ask and didn't say he'd told her so. Sit down. I'm fine. I didn't ask. Please don't ask. I won't. Across the clearing Haechan stood where she could see him and came no closer. There was no signal to text her even if he'd tried.*
+    Why: the sibling moment the whole Jaehyun thread has been building to, and Haechan left with no way to reach her.
+    Picture: a girl on a log bench with a water bottle and her brother's jacket over her shoulders, a figure far off at the tree line.
+
+43. **Every single one of you** · Outline Ch 73, Sun 11/16 (outline: not yet written)
+    *Hanni and Hyein finally told her the words they heard on the doorstep and everything since, and that Minji knew too. "Every single one of you keeps deciding what I can handle." The two houses packed up as something close to friends. The ride home was ruined.*
+    Why: the girls' secret comes out too late, Solar is angry at everyone, and she and Haechan leave without making up. The jacket comes home in the same bag.
+    Picture: a van window fogged from the inside, a girl's forehead against it, pine trees blurring past.
+
+### Chapter N: The Week After
+
+44. **Not today** · Outline Ch 74, Mon 11/17 (outline: not yet written)
+    *Back in range, the camping posts poured in: clean service photos, and Jeno's chaotic dump from the shelter. In Statistics Mark moved his bag off the seat beside him like always. She said not today and sat somewhere else.*
+    Why: her first boundary with Mark, before she has the whole story. Practice, laundry and the Regionals countdown go on around it.
+    Picture: two empty lecture-hall seats side by side, a backpack being lifted off one of them.
+
+45. **The people who love her** · Outline Ch 75, Tue 11/18 (outline: not yet written)
+    *Minji, Hanni and Hyein each owned their own part, three different apologies, not one. Then they just stayed in the same room: VODs, studying, Hyein drawing, Minji editing, Hanni eating, somebody packing for Thanksgiving, nobody waiting for her answer.*
+    Why: the three friendships become one four-girl sisterhood.
+    Picture: four girls on a bedroom floor, laptops, a sketchbook, takeout boxes, a half-packed suitcase.
+
+46. **The unsanitized version** · Outline Ch 76, Wed 11/19 (outline: not yet written) *(big twist: cuttable)*
+    *Haechan told her everything, in order, with nothing taken out: the girl, the recording he made, the file he handed to Mark, and that coming after Solar started partly as a way to get even with Mark. She could count the times she had given him the chance to tell her: three.*
+    Why: she believes him. Believing him isn't the same as being ready to come back, and she doesn't forgive him by the end of it.
+    Picture: two people at opposite ends of an empty practice room, an open door between them.
+
+47. **That's worse** · Outline Ch 77, Thu 11/20 (outline: not yet written)
+    *After Statistics she finally had the argument with Mark. He said nothing he showed her was fake. She said he arranged it until it meant what he wanted her to believe. The outline's planned last lines: "I thought you were my friend." "I am." "That's worse."*
+    Why: the end of the friendship she defended longest, and the hardest part is that some of what Mark felt for her was real.
+    Picture: a campus walkway in late November, two people stopped a few feet apart, a Statistics textbook hugged to her chest.
+
+48. **The party she chose to miss** · Outline Ch 78, Fri 11/21 (outline: not yet written)
+    *Friday meant a Sigma party, and she didn't go. She stayed with Hanni, Hyein and Minji: food, games, packing, a floor full of blankets. Across campus Haechan stood in a loud room without her.*
+    Why: where the recap stops, the night before Thanksgiving break. She isn't back with Haechan, she's done with Mark, and her world is wider than either boy.
+    Picture: a sorority-room floor covered in blankets and snacks, four phones face down, a party glowing through a window far across campus.
+
+Cast: Solar Lee (Kiriko main, Alpha Phi, Lee Industries heiress), Haechan / Lee Donghyuck (Sigma Chi, music, Masters 1), Mark Lee (Sigma Chi, music, Haechan's childhood best friend), Jaehyun Lee (her brother, Sigma Chi president, football star), Minji (Champion hitscan, her duo, filmmaker), Hanni and Hyein (Alpha Phi sisters), Danielle (Alpha Phi, secretly runs SUnews), plus Chenle, Haerin, Olivia, coach Doyoung, Jeno, Jaemin, Renjun, Yerim, and Chungha (Alpha Phi's president).
 
 ---
 
 ## 2. strangers (Incheon 2012–13, through Ch 65)
+
+> **Manuscript vs outline:** the manuscript ends at dawn on Wednesday, February 6, 2013 (Ch 65), and that is where this recap ends. The stretch between that page and the point the epilogue picks up from is the coming night (Ch 66, not written yet), and the planning files have no beats for it beyond its date, so no outline pages were added. Add them once that chapter exists.
 
 ### Chapter A: The back gate
 
@@ -411,6 +488,8 @@ Cast: Solar Lee (Kiriko main, Alpha Phi, Lee Industries heiress), Haechan / Lee 
 ---
 
 ## 3. HOAX (Hanlim High, through Ch 99)
+
+> **Manuscript vs outline:** the manuscript already reaches the point the epilogue picks up from (Ch 99, the Monday of exam week), so nothing was added from `hoax_outline.md`.
 
 ### Chapter A: The dog boy
 
