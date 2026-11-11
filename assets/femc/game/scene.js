@@ -390,7 +390,9 @@ window.FemcScene = (() => {
     /* { minigame: 'regionals', flags: 'epi-r-mg' } (Nov 10 2026): an epilogue minigame (assets/femc/game/minigames/<id>.js + .css,
        loaded on first use; window.Femc<Id>.play). The scene waits; the result becomes flags <flags>-played, -won / -lost,
        -grade-<S|A|B|C>, -good (S or A), -potg-<kind>, and S.epi.mg[id] keeps the whole result. Replays and missing scripts skip it.
-       Sounds follow the SFX setting. */
+       Sounds follow the SFX setting. `opts` passes extra options to play() (the booth: { song, level }). Games with no `won`
+       (dumplings, listen, studio, support, the booth) count as won unless they failed or were quit (Nov 11: every minigame is
+       in the Runners story: support 12/6, the booth 12/9 and the mix 12/10 on the Haechan route, listen 12/29, dumplings 12/31). */
     function minigame(line) {
       const id = line.minigame, glob = 'Femc' + id[0].toUpperCase() + id.slice(1), pre = line.flags || `mg-${id}`;
       if (replay) return next();
@@ -404,8 +406,11 @@ window.FemcScene = (() => {
         const M = window[glob];
         if (!M || !M.play) return next();
         const set = G.settings ? G.settings() : {};
-        M.play({ mute: set.sfx === false, difficulty: line.difficulty || 'normal' }).then(r => {
-          const f = { [`${pre}-played`]: true, [`${pre}-${r.won ? 'won' : 'lost'}`]: true, [`${pre}-grade-${r.grade}`]: true };
+        Music.duck(true); // the game has the floor (the booth plays its own song)
+        M.play({ mute: set.sfx === false, difficulty: line.difficulty || 'normal', ...(line.opts || {}) }).then(r => {
+          Music.duck(false);
+          r = r || {}; const won = r.won ?? !(r.failed || r.quit || r.error);
+          const f = { [`${pre}-played`]: true, [`${pre}-${won ? 'won' : 'lost'}`]: true, [`${pre}-grade-${r.grade || 'C'}`]: true };
           if (r.grade === 'S' || r.grade === 'A') f[`${pre}-good`] = true;
           if (r.potg && r.potg.kind) f[`${pre}-potg-${r.potg.kind}`] = true;
           G.effect({ flag: f });
@@ -414,7 +419,7 @@ window.FemcScene = (() => {
         });
       });
     }
-    const MINIGAME_V = 3;
+    const MINIGAME_V = 4;
     function giftAsk(line) {
       const who = line.giftAsk;
       if (replay || !G.giftBag || !G.giftBag().length) return next();

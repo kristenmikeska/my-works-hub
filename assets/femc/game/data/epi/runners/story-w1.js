@@ -862,6 +862,20 @@
     { match: { map: 'Map 2', score: [1, 0], feed: [{ by: 'haerin.k', how: 'calls', on: 'Beat up', su: true }, { by: 'chenle', how: '▸', on: 'Lucio', su: true }] } },
     { n: "They made the Lucio wait. Every fight, they pulled him to the first one and made him decide, and twenty-two maps of habit made him hold beat for the second fight that Doyoung never let them take, and Haerin called it every single time he had it, flat and exact in the headsets, *beat's up, he's holding,* like a girl reading a train timetable, and by the middle of the second map he was spending it early out of panic and Chenle was saying *there it is, there it is, go* in a voice so quiet and so happy it was barely a voice at all." },
     { match: { home: 'Syracuse', homeTag: 'SU', away: 'Ohio', awayTag: 'OHIO', stage: 'Opening bracket · Bo3', map: 'Map 2', score: [1, 0], feed: [{ by: 'Ana', how: 'nade', on: 'oliviahye', su: false }, { by: 'sollee', how: 'Suzu', on: 'cleanse ×3', su: true }] } },
+    // The Kiriko minigame (Nov 11 2026; minigames/support.js, flags epi-r-mg-kiriko-*). The map goes the same way either way.
+    { choose: [
+      { t: "(Play the Ohio map yourself.)", then: [
+        { match: null },
+        { minigame: 'support', flags: 'epi-r-mg-kiriko' },
+        { match: { home: 'Syracuse', homeTag: 'SU', away: 'Ohio', awayTag: 'OHIO', stage: 'Opening bracket · Bo3', map: 'Map 2', score: [1, 0], feed: [{ by: 'Ana', how: 'nade', on: 'oliviahye', su: false }, { by: 'sollee', how: 'Suzu', on: 'cleanse ×3', su: true }] } },
+        { ifFlag: 'epi-r-mg-kiriko-good', then: [
+          { n: "Haerin said *nice* in comms, the one-word kind, and Chenle said nothing at all, which on a tank meant he hadn't had to look at his own health bar once." }
+        ], else: [
+          { n: "It was messier than it should have been. Somebody went down who shouldn't have, and Haerin covered it without a word, and the map stayed theirs." }
+        ] }
+      ] },
+      { t: "(Let it play out.)", then: [] }
+    ] },
     { n: "Somewhere in the second map against Ohio, Solar threw a Protection Suzu across a choke she couldn't see, off sound alone, the hiss of an enemy Ana's nade still in the air, and it landed on Haerin and Olivia and Chenle a quarter second before the anti did, and cleansed it, and the whole fight turned over like a coin." },
     { n: "She didn't hear the broadcast. Nobody on stage did; their headsets were closed. She found out between maps, when they slid the headsets down and the sound of the hall came back in like water, and the speaker over the stage was playing the caster desk, and a woman's voice was saying her name." },
     { s: 'sakura', f: 'happy', t: "...and that's Solar Lee on the Kiriko, and I need everyone at home to rewind that, because she does not see that nade. She can't see it. She hears it. She hears the Ana pull the pin and she's already throwing." },

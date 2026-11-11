@@ -1693,6 +1693,18 @@
     { n: "He made sixty-one between four and half past six." },
     { n: "He did it standing at the island with the tea towel on his shoulder, entirely absorbed, the way he did anything with his hands, the way he sat at a board with one ear turned to the speaker, and the kitchen filled up slowly with steam and the smell of sesame oil and the sound of the extractor fan, and the window over the sink went from gray to blue to the deep lit dark of a winter city at five, four hundred windows coming on one at a time across the street like a slow applause." },
     { n: "Solar sat on a stool and did the folding, badly, and got shouted at about it." },
+    // The dumplings minigame (Nov 11 2026; minigames/dumplings.js, flags epi-r-mg-dumplings-*). Her bags happen either way.
+    { choose: [
+      { t: "(Make a few start to finish. Your way.)", then: [
+        { minigame: 'dumplings', flags: 'epi-r-mg-dumplings' },
+        { ifFlag: 'epi-r-mg-dumplings-good', then: [
+          { n: "Three of hers came out looking like dumplings. She set them at the end of his row on the good tray, very casually, and he picked one up and turned it over and put it back down without a word, and she decided to count that." }
+        ], else: [
+          { n: "Hers came out looking like what they were, which was her first try. She set them at the end of his row anyway, and he moved one a quarter inch so it lined up with the others, and left it there." }
+        ] }
+      ] },
+      { t: "(Keep folding where he can see.)", then: [] }
+    ] },
     { s: 'haechan', f: 'serious', t: "That's a bag, Solar." },
     { s: 'solar', f: 'flustered', t: "It's a dumpling." },
     { s: 'haechan', f: 'serious', t: "That's a bag with meat in it." },

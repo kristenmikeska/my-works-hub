@@ -1,5 +1,5 @@
 /* FEMC epilogue minigame: the mix (Nov 10 2026, EPILOGUE-EXPANSION-PLAN.md step 2). Runners: Studio 4B, or the West 26th session.
-   Haechan hands Solar the faders and grades the playback flatly. Standalone: nothing in the story calls it yet
+   Haechan hands Solar the faders and grades the playback flatly. In the story since Nov 11 (scene.js { minigame }; see its comment for where)
    (try it at mockups/minigames/studio.html).
 
    FemcStudio.play({ host, tracks, tries, onDone }) -> Promise<result>

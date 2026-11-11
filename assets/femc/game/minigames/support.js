@@ -1,5 +1,5 @@
 /* FEMC epilogue minigame: Kiriko support (Nov 10 2026, Kat: "an Overwatch support simulation" for the Runners Regionals;
-   EPILOGUE-EXPANSION-PLAN.md step 2). Standalone: nothing in the story calls it yet (try it at mockups/minigames/support.html).
+   EPILOGUE-EXPANSION-PLAN.md step 2). In the story since Nov 11 (scene.js { minigame }; see its comment for where) (try it at mockups/minigames/support.html).
 
    FemcSupport.play({ host, team, seconds, calls, difficulty, onDone }) -> Promise<result>
      host        element to draw into (default document.body; a full-screen overlay is added inside it)

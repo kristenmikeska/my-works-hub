@@ -4,7 +4,7 @@
    Haechan bobs to it behind the glass.
    Kat, Nov 10: in the real game the ONLY chart is hers (charts/runners.js). Record mode, `chart` drafts and the editor are her
    tuning tools on the demo page; when this is wired into a scene, call play({ level }) only: no record, no draft, no editor.
-   Standalone: nothing in the story calls it yet (demo: mockups/minigames/index.html; the chart
+   In the story since Nov 11 (scene.js { minigame }; see its comment for where) (demo: mockups/minigames/index.html; the chart
    editor Kat uses to fix the sync: mockups/minigames/sing-editor.html).
 
    FemcSing.play({ host, song, level, mute, chart, from, onDone }) -> Promise<result>
@@ -79,7 +79,12 @@ window.FemcSing = (() => {
   };
   const NAME = { solar: 'Solar', haechan: 'Haechan' };
 
+  // in the game the chart file isn't on the page: load minigames/charts/<song>.js on first use
+  const CHART_V = { runners: 5 };
+  const loadChart = id => new Promise(ok => { const s = document.createElement('script'); s.src = `${base()}assets/femc/game/minigames/charts/${id}.js?v=${CHART_V[id] || 1}`; s.onload = s.onerror = () => ok(); document.head.appendChild(s); });
   function play(o = {}) {
+    const id = o.song || 'runners';
+    if (!(window.FEMC_CHARTS || {})[id] && !o._loaded) return loadChart(id).then(() => play({ ...o, _loaded: true }));
     return new Promise(done => {
       const C = (window.FEMC_CHARTS || {})[o.song || 'runners'];
       if (!C) { done({ quit: true, error: 'no chart' }); return; }

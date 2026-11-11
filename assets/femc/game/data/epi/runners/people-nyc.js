@@ -681,6 +681,18 @@
       { s: 'haechan', f: 'neutral', t: "Listen." },
       { s: 'solar', f: 'neutral', t: "To what? There's nothing." },
       { s: 'haechan', f: 'neutral', t: "There's never nothing. That's the building heat, all the way down the avenue, all of them at once. It's a low B. Under that there's the subway, every four minutes, you can feel it in your feet before you hear it. And the lights. The lights buzz when they change. Listen." },
+      // The listen minigame (Nov 11 2026, Kat: "put all of the minigames into the story"; minigames/listen.js, flags epi-r-mg-listen-*).
+      { choose: [
+        { t: "(Close your eyes. Find them.)", then: [
+          { minigame: 'listen', flags: 'epi-r-mg-listen' },
+          { ifFlag: 'epi-r-mg-listen-good', then: [
+            { s: 'haechan', f: 'happy', t: "...Yeah. Now you can't turn it off either. Sorry." }
+          ], else: [
+            { s: 'haechan', f: 'neutral', t: "Took you a minute. It takes everybody a minute." }
+          ] }
+        ] },
+        { t: "(Just stand there with him.)", then: [] }
+      ] },
       { n: "She stood still on the white sidewalk and listened, and after a while it came up out of the quiet the way a picture comes up in a darkroom: the long low hum of ten thousand boilers, a breath under her boots that was a train going by somewhere in the dark under Lexington, and the faint electric tick of the light at Seventy-Second turning green for nobody. She'd lived her whole life in this city and never once heard it." },
       { s: 'solar', f: 'surprised', t: "It never turns off for you. Does it." },
       { s: 'haechan', f: 'neutral', t: "No. But here it's at least in tune." },

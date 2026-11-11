@@ -1,6 +1,6 @@
 /* FEMC epilogue minigame: listen (Nov 10 2026, EPILOGUE-EXPANSION-PLAN.md step 2; redone the same day: Kat found the first
    version confusing and wanted "find the sound in the picture", more visuals). Runners, 12/29 late, "one set": Fifth Avenue at
-   2 a.m., Haechan says "Listen." Standalone: nothing in the story calls it yet (try it at mockups/minigames/index.html).
+   2 a.m., Haechan says "Listen." In the story since Nov 11 (scene.js { minigame }; see its comment for where) (try it at mockups/minigames/index.html).
 
    FemcListen.play({ host, rounds, mute, onDone }) -> Promise<result>
      rounds  how many sounds he plays (default 5, max 6)   mute  no audio (each sound's caption is shown instead)

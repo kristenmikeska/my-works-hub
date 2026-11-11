@@ -1,7 +1,7 @@
 /* FEMC epilogue minigame: dumplings, a Cooking Mama-style kitchen game (Nov 10 2026, Kat: "a cute solstice style cooking game",
    "more animation and realism", "like one of those Mama's cooking games" (step by step, hands-on, no customers: it's just the two
-   of them cooking), "more customization and for them to actually talk to each other"). Runners, 12/31. Standalone: nothing in the
-   story calls it yet (mockups/minigames/index.html).
+   of them cooking), "more customization and for them to actually talk to each other"). Runners, 12/31: in the story since Nov 11 (story-nyc2.js, the kitchen; scene.js { minigame }); demo at
+   mockups/minigames/index.html.
 
    FemcDumplings.play({ host, count, mute, onDone }) -> Promise<result>
      count  dumplings to wrap (default 3)   mute  no sound

@@ -86,6 +86,16 @@
         { n: "It wasn't the same. The notes were, mostly, but the night in his room she'd sung to a boy with his headphones round his neck who said he wasn't recording, half to herself, half to the ceiling, and this time she sang knowing it would be music, to a red light that said exactly what it was doing, and her voice came out of her steadier than she'd expected and lower than she remembered and entirely hers. Her hands were shaking. Her voice wasn't. She'd take that." },
         { cg: null },
         { n: "When she opened her eyes he wasn't looking at the meters. He was looking at her through the glass with his jaw set so hard she could see it from there, and then he looked down at the desk, and pressed something, and said into the talkback, flat as ever, *one more, if you want,* and she did." },
+        // The booth (Nov 11 2026; minigames/sing.js with Kat's own chart, charts/runners.js; flags epi-r-mg-booth-*).
+        { choose: [
+          { t: "(Sing the take. Easy.)", then: [{ minigame: 'sing', flags: 'epi-r-mg-booth', opts: { song: 'runners', level: 'easy' } }] },
+          { t: "(Sing the take. Normal.)", then: [{ minigame: 'sing', flags: 'epi-r-mg-booth', opts: { song: 'runners', level: 'normal' } }] },
+          { t: "(Sing the take. Hard.)", then: [{ minigame: 'sing', flags: 'epi-r-mg-booth', opts: { song: 'runners', level: 'hard' } }] },
+          { t: "(Just sing it. Don't think about it.)", then: [] }
+        ] },
+        { ifFlag: 'epi-r-mg-booth-good', then: [
+          { n: "At the end of it he didn't say anything into the talkback for a while. Then, flat, *that one,* and she knew it was the take before he'd even marked it." }
+        ] },
         { place: 'Syracuse · Studio 4B · Hallway', time: 'Evening' },
         { n: "She went out for water after the third take, because her throat had gone tight in a way that was only partly singing, and there was a girl in the hallway." },
         { n: "High school, obviously. A senior, maybe, standing in front of the bulletin board with a campus-tour lanyard round her neck and a folded map in one hand, the tour group's voices going away down the far stairs without her. She had the look of someone who'd stopped walking on purpose and was now pretending she'd gotten lost." },
@@ -337,6 +347,21 @@
           ] }
         ] },
         { bond: { haechan: 1 } },
+        // The mix minigame (Nov 11 2026; minigames/studio.js, flags epi-r-mg-mix-*).
+        { choose: [
+          { t: "(Ask if you can touch the faders.)", then: [
+            { s: 'haechan', f: 'neutral', t: "...Go on. It's saved. You can't break it." },
+            { n: "He rolled the chair back and pushed the desk an inch toward her, which in that room was the same as handing somebody the keys." },
+            { minigame: 'studio', flags: 'epi-r-mg-mix' },
+            { ifFlag: 'epi-r-mg-mix-good', then: [
+              { n: "He looked at the faders where she'd left them for a long second, and then at her, and didn't move a single one." }
+            ], else: [
+              { s: 'haechan', f: 'happy', t: "You turned yourself down. Everybody does, the first time." },
+              { n: "He put it back the way it had been, one fader at a time, slowly enough that she could watch where each one went." }
+            ] }
+          ] },
+          { t: "(Leave the desk to him.)", then: [] }
+        ] },
         { n: "Before he closed the session he scrolled up through the track list, without comment, slowly enough that she could read it. The vocal lane didn't say VOX or STEM or a number, the way every other lane said a number. It said SOLAR LEE, both names, in the plain gray type the program used for everything. In the corner, where his tag sat on every file he'd ever made, there were two sets of initials instead of one." },
         { s: 'solar', f: 'surprised', t: "You put my name on it." },
         { s: 'haechan', f: 'serious', t: "It's your voice." },
