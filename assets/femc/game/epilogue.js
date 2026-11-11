@@ -80,7 +80,7 @@ window.FemcEpilogue = (() => {
   const S = () => G.S, UI = () => W.FemcGameUI;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const clone = o => JSON.parse(JSON.stringify(o));
-  const DATA_V = 101; // data/epi/<world>/*.js ?v=
+  const DATA_V = 102; // data/epi/<world>/*.js ?v=
   // The worlds: the year's route flag that opens each, its name (the button) and place (slot labels), its data files.
   const WORLDS = {
     runners: { id: 'runners', flag: 'route-R', name: 'Runners', place: 'Syracuse', files: ['calendar', 'world', 'glitches', 'people', 'story-w1', 'story-w2', 'people-w3', 'story-w3', 'story-home', 'story-time', 'people-time', 'story-nyc1', 'story-nyc2', 'people-nyc', 'phone', 'alerts', 'texts-up', 'sugram-history', 'sugram'] },
@@ -657,6 +657,7 @@ window.FemcEpilogue = (() => {
      Data: data/epi/<world>/phone.js → raw.phone = { order, contacts: { id: { rel, after, until, events, flags, noFlags, route,
      noRoute, ifYear (the contact's own gates), known: [{ t, …gates }], calls: [{ id, …gates, place, time, music, scene }],
      topics: [{ id, label, …gates, msgs: [{ me } | { them }] }], noCall, noMsg } } }; texts.handles names group-chat senders.
+     A topic message may carry a text photo (img / imgs, textphotos.js, FEMC-TEXT-PHOTOS.md); message() copies it (Nov 11 2026).
      The gates are the hangouts' (fits): dates, events (or routines) seen, flags, the LOCKED route, ifYear.
      Rules: free (no slot spent), once a week each (Sunday reset, phoneWeek) for a call and for a message; a call plays its next
      unplayed fitting call as a "· Call" scene (`s: 'them'` = the contact), a message offers up to three unused fitting topics and
@@ -729,7 +730,7 @@ window.FemcEpilogue = (() => {
     const th = (S().phone.threads[id] ||= []), from = th.length;
     const ph = S().phone, seq = Math.max(0, ph.sequence || 0, ...Object.values(ph.threads).flatMap(xs => xs.map(m => m.seq || 0)));
     ph.sequence = seq; // the same numbering as core.js appendPhone, so the list's newest-first order holds
-    th.push(...(t.msgs || []).map(m => ({ from: 'me' in m ? 'solar' : id, t: 'me' in m ? m.me : m.them, ...(m.sticker ? { sticker: m.sticker } : {}), d: S().day, slot: S().slot, seq: ++ph.sequence })));
+    th.push(...(t.msgs || []).map(m => ({ from: 'me' in m ? 'solar' : id, t: 'me' in m ? m.me : m.them, ...(m.sticker ? { sticker: m.sticker } : {}), ...(m.img ? { img: m.img } : {}), ...(m.imgs ? { imgs: m.imgs } : {}), d: S().day, slot: S().slot, seq: ++ph.sequence })));
     r.msg = phoneWeek(); r.topics.push(t.id); G.save();
     return { from, count: S().phone.threads[id].length - from };
   }

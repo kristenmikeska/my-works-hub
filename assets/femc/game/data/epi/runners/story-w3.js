@@ -914,7 +914,7 @@
       { n: "Her phone lit on the nightstand." },
       { phone: [
         { from: 'danielle', t: 'I think you should see this before anyone else does.' },
-        { from: 'danielle', t: '[video · 0:41]' }
+        { from: 'danielle', t: '[video · 0:41]', img: 'tp-runners-footage' }
       ], contact: 'Danielle' },
       { n: "She watched it with the sound off, the brightness all the way down, his arm heavy across her." },
       { cg: 'epi-r-footage' },

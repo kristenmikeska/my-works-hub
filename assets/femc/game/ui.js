@@ -153,7 +153,11 @@
       else if (NOTICE.test(text)) return { group, me, name, notice: true, text };
       else handle = (G.D.texts.handles || {})[m.from] || null; // a world's in-world handles (epilogue phone.js, Nov 3 2026)
     }
-    return { group, me, name, handle: handle && handle.toLowerCase() !== name.toLowerCase() ? handle : null, text };
+    // A text photo (Nov 11 2026, textphotos.js): ready = `photo` holds the raw text for the bubble's caption and `text` (the
+    // list / banner line) is the caption, else "Photo" / "Video" / "11 photos". Not ready: nothing changes.
+    const TP = window.FemcTextPhotos, photo = TP && TP.ready(m) ? text : null;
+    if (photo !== null) text = TP.label(m, text);
+    return { group, me, name, handle: handle && handle.toLowerCase() !== name.toLowerCase() ? handle : null, text, photo };
   }
   const threadName = id => G.D.texts.threads[id] || G.name(id);
   // Kat's group-chat pictures (batch 48, tools/femc-greens.py -> game/art/phone/<group>.webp); everyone else is a portrait.
@@ -191,14 +195,16 @@
   // A text arriving: the notification chime and a banner from the top. Tap / Enter opens the conversation.
   function textBanner(t, i, chime) {
     const th = S().phone.threads[t.thread] || [], last = th[th.length - (t.count || 1)] || { from: t.from, t: t.msg || t.text };
-    const m = msgParts(t.thread, { from: t.from || last.from, t: t.msg || last.t, sticker: t.from ? t.sticker : last.sticker });
+    const src0 = t.from ? t : last;
+    const m = msgParts(t.thread, { from: t.from || last.from, t: t.msg || last.t, sticker: src0.sticker, img: src0.img, imgs: src0.imgs });
+    const tpThumb = m.photo !== null && m.photo !== undefined ? window.FemcTextPhotos.thumb(G.base, src0) : null; // a text photo's thumbnail
     const picId = threadPic(t.thread) || G.isGroupThread(t.thread) ? t.thread : t.from || last.from;
     const el = document.createElement('div');
-    el.className = `g-banner${reduced.matches ? ' calm' : ''}${t.invite ? ' invite' : ''}`;
+    el.className = `g-banner${reduced.matches ? ' calm' : ''}${t.invite ? ' invite' : ''}${tpThumb ? ' has-tp' : ''}`;
     el.setAttribute('role', 'button'); el.tabIndex = 0;
     el.dataset.thread = t.thread;
     const more = (t.count || 1) > 1 ? ` · ${t.count} new` : '';
-    el.innerHTML = `<i class="g-bn-pic">${avatarHtml(picId)}</i><span class="g-bn-body"><span class="g-bn-top"><b>${esc(threadName(t.thread))}</b><small>now${esc(more)}</small></span><span class="g-bn-msg">${m.group && !m.notice ? `<em>${esc(m.name)}:</em> ` : ''}${esc(m.text)}</span></span>`;
+    el.innerHTML = `<i class="g-bn-pic">${avatarHtml(picId)}</i><span class="g-bn-body"><span class="g-bn-top"><b>${esc(threadName(t.thread))}</b><small>now${esc(more)}</small></span><span class="g-bn-msg">${m.group && !m.notice ? `<em>${esc(m.name)}:</em> ` : ''}${esc(m.text)}</span></span>${tpThumb ? `<img class="g-bn-tp" src="${tpThumb}" alt="">` : ''}`;
     el.setAttribute('aria-label', `New message. ${threadName(t.thread)}: ${m.text}. Open the phone.`);
     const go = () => {
       if (el.classList.contains('out')) return;
@@ -2047,6 +2053,7 @@
         p.className = `g-ph-msg ${x.me ? 'me' : 'them'}${x.group && !x.me ? ' group' : ''}`;
         if (x.group && !x.me && lastFrom !== m.from) { const b = document.createElement('b'); b.textContent = x.name; if (x.handle) { const h = document.createElement('small'); h.textContent = x.handle; b.append(' ', h); } p.append(b); }
         if (x.sticker) { p.classList.add('stk'); const im = document.createElement('img'); im.className = 'g-sticker'; im.src = x.sticker; im.alt = x.alt; p.append(im); }
+        else if (x.photo != null) { p.classList.add('g-ph-tp'); p.append(window.FemcTextPhotos.node(G.base, m, x.photo, () => { body.scrollTop = body.scrollHeight; })); } // a text photo
         else p.append(x.text);
         lastFrom = m.from;
       }
@@ -2080,7 +2087,7 @@
       const step = () => {
         if (!alive()) return;
         if (i >= queue.length) return finish();
-        const m = queue[i], text = stickerSrc(m.sticker) ? '' : G.sub(m.t); // a sticker sends at once
+        const m = queue[i], text = stickerSrc(m.sticker) ? '' : window.FemcTextPhotos?.ready(m) ? window.FemcTextPhotos.caption(G.sub(m.t)) : G.sub(m.t); // a sticker sends at once; a photo types only its caption
         if (m.from === 'solar') {
           // Solar's answer types out in the compose bar, then sends.
           compose.hidden = false; draft.textContent = '';
@@ -2118,7 +2125,13 @@
       if (t) t.reply.forEach((r, i) => {
         const b = document.createElement('button'); b.type = 'button';
         const stk = stickerSrc(r.sticker);
-        if (stk) { b.className = 'g-ph-stk'; b.setAttribute('aria-label', `Send a sticker: ${G.sub(r.t) || 'sticker'}`); b.innerHTML = `<img src="${stk}" alt="">`; } else b.textContent = G.sub(r.t);
+        const tpb = !stk && window.FemcTextPhotos?.thumb(G.base, r); // a reply that sends a text photo: its thumbnail and caption
+        if (stk) { b.className = 'g-ph-stk'; b.setAttribute('aria-label', `Send a sticker: ${G.sub(r.t) || 'sticker'}`); b.innerHTML = `<img src="${stk}" alt="">`; }
+        else if (tpb) {
+          const cap = window.FemcTextPhotos.caption(G.sub(r.t));
+          b.className = 'g-ph-tpbtn'; b.setAttribute('aria-label', `Send a photo${cap ? `: ${cap}` : ''}`);
+          b.innerHTML = `<img src="${tpb}" alt="">${cap ? `<span>${esc(cap)}</span>` : ''}`;
+        } else b.textContent = G.sub(r.t);
         b.addEventListener('click', () => { const from = (s.phone.threads[id] || []).length; G.replyText(id, i); reply.replaceChildren(); G.sfx('femc-click'); play(id, from, () => replies(id)); });
         reply.append(b);
       });

@@ -476,7 +476,7 @@
   (T.texts ||= []).push(
     { id: 'epi-s-tx-gc-eyebrows', thread: 'girls', date: '2/24', slot: 'early', flag: 'epi-s-eyebrows-help', events: ['epi-s-girls'], msgs: [
       { from: 'eunchae', t: "eyebrow check. everyone post eyebrows" },
-      { from: 'yunjin', t: "[photo: a girl asleep on a heated floor with two white eyebrows]" },
+      { from: 'yunjin', t: "[photo: a girl asleep on a heated floor with two white eyebrows]", img: 'tp-strangers-eyebrows' },
       { from: 'yunjin', t: "WHO DID THIS" },
       { from: 'chaewon', t: "it was in the plan yunjin. column F" },
       { from: 'kazuha', t: "happy daeboreum ☺ everyone is safe from boils now" },
@@ -535,7 +535,7 @@
   );
   (T.ambient ||= []).push(
     { id: 'epi-s-am-gc-count', thread: 'girls', from: '3/9', to: '3/13', events: ['epi-s-moon'], msgs: [
-      { from: 'sakura', t: "[photo: a handheld game screen, a fighter in a coat lying on the floor]" },
+      { from: 'sakura', t: "[photo: a handheld game screen, a fighter in a coat lying on the floor]", img: 'tp-strangers-game-screen' },
       { from: 'sakura', t: "solar picked the one in the coat again" },
       { from: 'kazuha', t: "she always picks the one in the coat ☺" },
       { from: 'yunjin', t: "she picks the one in the coat IRL too. two of them actually" },

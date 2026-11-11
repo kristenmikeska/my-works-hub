@@ -719,11 +719,11 @@
     { n: "Jaemin was not done. Jaemin was, it turned out, never done. By half past eight he'd moved on from photographs to something he was calling *story time,* a series of videos shot from the arm of the Sigma couch with his face far too close to the lens, and Olivia propped her phone against the lid of the pepperoni box so the whole floor could watch, which nobody had agreed to and everybody did." },
     { phone: [
       { from: 'jaemin', t: "jaemin posted a story." },
-      { from: 'jaemin', t: "[video, jaemin on the couch arm, too close] story time pt 1. it's november. there's a trip. nobody tells me where. i find out from a GROUP CHAT. like a peasant" },
-      { from: 'jaemin', t: "[video, same couch, one reindeer antler now] pt 2. they come back. they have TANS. it's syracuse. in november. explain the tans. you can't. nobody can" },
-      { from: 'jaemin', t: "[video, jeno's hand over the lens, jaemin yelling behind it] pt 3. jeno says i'm not allowed to do pt 3. pt 3 is about the uncle" },
-      { from: 'jaemin', t: "[video, jaemin whispering in a dark hallway, bass behind the wall] pt 4. the vacationers are not here tonight. they're at the LAB. on a FRIDAY. which is honestly more suspicious than the trip" },
-      { from: 'jaemin', t: "[video, jaemin holding a red cup up to the camera like a microphone] pt 5. good luck tomorrow su overwatch. we love you. we will be watching on a stream with forty viewers. we will be twenty of them" }
+      { from: 'jaemin', t: "[video, jaemin on the couch arm, too close] story time pt 1. it's november. there's a trip. nobody tells me where. i find out from a GROUP CHAT. like a peasant", img: 'tp-runners-story-time-1' },
+      { from: 'jaemin', t: "[video, same couch, one reindeer antler now] pt 2. they come back. they have TANS. it's syracuse. in november. explain the tans. you can't. nobody can", img: 'tp-runners-story-time-2' },
+      { from: 'jaemin', t: "[video, jeno's hand over the lens, jaemin yelling behind it] pt 3. jeno says i'm not allowed to do pt 3. pt 3 is about the uncle", img: 'tp-runners-story-time-3' },
+      { from: 'jaemin', t: "[video, jaemin whispering in a dark hallway, bass behind the wall] pt 4. the vacationers are not here tonight. they're at the LAB. on a FRIDAY. which is honestly more suspicious than the trip", img: 'tp-runners-story-time-4' },
+      { from: 'jaemin', t: "[video, jaemin holding a red cup up to the camera like a microphone] pt 5. good luck tomorrow su overwatch. we love you. we will be watching on a stream with forty viewers. we will be twenty of them", img: 'tp-runners-story-time-5' }
     ], contact: 'Stories' },
     { s: 'haerin', f: 'neutral', t: "He's going to run out of parts." },
     { s: 'olivia', f: 'happy', t: "He won't. He has a part nine about Hyein's luggage. He told me. He's saving it." },

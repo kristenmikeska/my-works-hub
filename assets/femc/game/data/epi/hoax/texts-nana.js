@@ -22,7 +22,7 @@
   (T.texts ||= []).push(
     { id: 'epi-h-tx-mom-bed', thread: 'mom', date: '12/23', slot: 'after', events: ['epi-h-home'], msgs: [
       { from: 'mom', t: 'Your father bought Nana a dog bed. It is very expensive. It has memory foam.' },
-      { from: 'mom', t: '[Photo: a large grey dog bed in the corner of the living room, untouched, and in the background, through the doorway, a white tail hanging off the end of a human bed]' },
+      { from: 'mom', t: '[Photo: a large grey dog bed in the corner of the living room, untouched, and in the background, through the doorway, a white tail hanging off the end of a human bed]', img: 'tp-hoax-dog-bed' },
       { from: 'mom', t: 'He has not used it.' }
     ], reply: [
       { t: "he's never going to use it mom", then: [{ from: 'mom', t: 'I know. Your father is using it. He lies in it to show him how.' }, { from: 'mom', t: "It's not working." }] },
@@ -34,7 +34,7 @@
       { from: 'jungwon', t: "he didn't accept that." }
     ], reply: [
       { t: "tell him nana says good luck on his exams too", then: [{ from: 'jungwon', t: "he doesn't take exams. he takes offence." }] },
-      { t: "[Photo: Nana lying across her bedroom doorway, looking at the camera]", then: [{ from: 'jungwon', t: "i showed him." }, { from: 'jungwon', t: "he's been looking at my phone for five minutes. i can't get it back." }] }
+      { t: "[Photo: Nana lying across her bedroom doorway, looking at the camera]", img: 'tp-hoax-doorway', then: [{ from: 'jungwon', t: "i showed him." }, { from: 'jungwon', t: "he's been looking at my phone for five minutes. i can't get it back." }] }
     ] }
   );
   (T.ambient ||= []).push(
@@ -43,14 +43,14 @@
       { from: 'sunoo', t: "she's never met him. she just has a feeling. she has a lot of feelings about dogs she's never met 🥺" }
     ], reply: [
       { t: "tell her he ate a whole sweet potato off the counter yesterday", then: [{ from: 'sunoo', t: 'she says GOOD.' }, { from: 'sunoo', t: "she says that's a dog who knows what he wants" }] },
-      { t: "[Photo: Nana asleep with his head in his food bowl]", then: [{ from: 'sunoo', t: 'she laughed so hard she had to sit down!!!' }, { from: 'sunoo', t: 'she says bring him by the back door. NOT the front' }] }
+      { t: "[Photo: Nana asleep with his head in his food bowl]", img: 'tp-hoax-food-bowl', then: [{ from: 'sunoo', t: 'she laughed so hard she had to sit down!!!' }, { from: 'sunoo', t: 'she says bring him by the back door. NOT the front' }] }
     ] },
     { id: 'epi-h-am-asahi-real', thread: 'asahi', from: '1/1', to: '1/7', events: ['epi-h-seance'], msgs: [
       { from: 'asahi', t: "kazuha wants to know if your dog is real" },
       { from: 'asahi', t: "i said no one cares. she said that's not an answer" },
       { from: 'asahi', t: "send one picture so she leaves me alone" }
     ], reply: [
-      { t: "[Photo: Nana sitting very straight in the snow, looking directly into the camera]", then: [{ from: 'asahi', t: "she's crying" }, { from: 'asahi', t: "thanks. now she won't leave me alone for a different reason" }] },
+      { t: "[Photo: Nana sitting very straight in the snow, looking directly into the camera]", img: 'tp-hoax-snow-sit', then: [{ from: 'asahi', t: "she's crying" }, { from: 'asahi', t: "thanks. now she won't leave me alone for a different reason" }] },
       { t: "you have like eleven pictures of him asahi", then: [{ from: 'asahi', t: "that's private" }, { from: 'asahi', t: "it's twelve" }] }
     ] },
     { id: 'epi-h-am-suk-window', thread: 'hyunsuk', from: '1/2', to: '1/7', events: ['epi-h-motion'], msgs: [

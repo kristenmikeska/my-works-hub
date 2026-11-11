@@ -162,6 +162,45 @@
 .gs-msg .gs-from small { color: #8a7080; font-weight: 500; font-size: 10.5px; }
 .gs-msg.gs-notice { align-self: center; max-width: 90%; padding: 2px 8px; background: none; color: #8a7080; font-size: 12px; text-align: center; }
 
+/* Text photos (Nov 11 2026; textphotos.js, FEMC-TEXT-PHOTOS.md): Kat's real photos in a text, on the phone (.g-ph-msg.g-ph-tp)
+   and in a scene's phone (.gs-msg.gs-tp). A rounded picture inside the bubble's own colour, up to four in a burst (the last
+   "+N"), a ▶ on a video's still, the caption under it. Tap / Enter: .g-tp-view, the full-screen viewer. Pink and black. */
+.g-ph-msg.g-ph-tp, .gs-msg.gs-tp { width: min(240px, 72%); max-width: 72%; padding: 5px; display: grid; gap: 5px; }
+.g-tp { display: grid; gap: 5px; }
+.g-tp-grid { display: grid; gap: 3px; overflow: hidden; border-radius: 13px; background: #14070f; }
+.g-tp.n2 .g-tp-grid, .g-tp.n4 .g-tp-grid { grid-template-columns: 1fr 1fr; }
+.g-tp.n3 .g-tp-grid { grid-template-columns: 1fr 1fr; }
+.g-tp.n3 .g-tp-ph:first-child { grid-column: 1 / -1; }
+.g-tp-ph { position: relative; display: block; margin: 0; padding: 0; border: 0; background: #14070f; cursor: zoom-in; font: inherit; color: inherit; }
+.g-tp-ph img { display: block; width: 100%; max-height: 300px; object-fit: cover; }
+.g-tp.n1 .g-tp-ph img { aspect-ratio: auto; min-height: 90px; }
+.g-tp.n2 .g-tp-ph img, .g-tp.n3 .g-tp-ph img, .g-tp.n4 .g-tp-ph img { aspect-ratio: 1; }
+.g-tp.n3 .g-tp-ph:first-child img { aspect-ratio: 2 / 1; }
+.g-tp-ph:focus-visible { outline: 3px solid #ff4f9e; outline-offset: -3px; }
+.g-tp-play { position: absolute; left: 50%; top: 50%; translate: -50% -50%; display: grid; place-items: center; width: 44px; height: 44px; padding-left: 4px;
+  border-radius: 50%; background: rgba(20, 7, 15, .72); box-shadow: 0 0 0 2px #fff, 0 0 0 4px #ff4f9e; color: #fff; font: normal 18px/1 sans-serif; pointer-events: none; }
+.g-tp-more { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(20, 7, 15, .62); color: #fff; font: italic 900 24px/1 var(--cond, "Arial Narrow", sans-serif); pointer-events: none; }
+.g-tp-cap { display: block; padding: 1px 6px 3px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.g-ph-msg.g-ph-tp > b, .gs-msg.gs-tp > .gs-from { padding: 2px 6px 0; }
+/* A reply that sends a photo: its thumbnail on the button, the caption beside it. */
+.g-ph-reply button.g-ph-tpbtn { display: flex; align-items: center; gap: 10px; justify-self: start; padding: 4px 12px 4px 4px; border-style: dashed; text-align: left; }
+.g-ph-reply button.g-ph-tpbtn img { flex: none; width: 56px; height: 56px; object-fit: cover; border-radius: 10px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ff4f9e; }
+/* A text banner with a photo: its thumbnail on the right, like the SUnews alerts. */
+.g-banner.has-tp { grid-template-columns: 42px minmax(0, 1fr) 46px; }
+.g-bn-tp { width: 46px; height: 58px; object-fit: cover; border-radius: 8px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ff4f9e; }
+/* The viewer: over everything (banners are 3100), the photo as large as fits, ‹ Back top left, ‹ › and n / N for a burst. */
+.g-tp-view { position: fixed; inset: 0; z-index: 5200; display: grid; place-items: center; padding: max(56px, env(safe-area-inset-top)) 16px 40px;
+  background: rgba(12, 3, 9, .94); animation: g-in .2s ease both; cursor: zoom-out; }
+.g-tp-view img { max-width: min(100%, 1080px); max-height: 100%; object-fit: contain; border-radius: 12px; box-shadow: 8px 8px 0 rgba(255, 79, 158, .45); }
+.g-tp-back { position: absolute; top: max(14px, env(safe-area-inset-top)); left: 14px; padding: 7px 16px 7px 12px; border: 0; background: #ff4f9e; color: #fff;
+  font: italic 800 15px/1 var(--cond, "Arial Narrow", sans-serif); transform: skewX(-12deg); box-shadow: 4px 4px 0 #14070f; cursor: pointer; }
+.g-tp-nav { position: absolute; top: 50%; translate: 0 -50%; width: 44px; height: 64px; border: 0; background: rgba(20, 7, 15, .8); color: #ff4f9e;
+  font: 900 34px/1 sans-serif; box-shadow: 0 0 0 2px #ff4f9e; cursor: pointer; }
+.g-tp-nav.prev { left: 10px; } .g-tp-nav.next { right: 10px; }
+.g-tp-back:focus-visible, .g-tp-nav:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.g-tp-count { position: absolute; bottom: 12px; left: 50%; translate: -50% 0; margin: 0; color: #ffd0e6; font: 700 13px/1 -apple-system, "Helvetica Neue", sans-serif; }
+@media (prefers-reduced-motion: reduce) { .g-tp-view { animation: none; } }
+
 /* Frost on the glass (weather.js `frost`, Nov 3 2026: a calendar with frost, the Runners epilogue's December): a snow day in a
    room with a window frosts the picture's edges and corners; a few melting drops run down it (the canvas). No motion. */
 .g-wxfx.frost .g-wx-fog { display: block; inset: 0; animation: none; opacity: 1;

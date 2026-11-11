@@ -22,6 +22,9 @@
        text becomes an image bubble (handle, picture, caption: cap, else the text without its leading [description]); the
        narration gets a small phone-screen card over the scene. Not ready: the line exactly as written. Either way a live
        scene reports the id through G.seePost(id) (S.album.posts, the album's Runners posts).
+     text photos (Nov 11 2026): a text may instead name 'tp-<world>-<slug>' (img) or several (imgs), Kat's real photos
+       (textphotos.js documents them; never posts, never the album). Ready: a photo bubble, `t` its caption without the
+       leading [bracket], a group's sender name kept. Not ready: the line exactly as written.
      { stat } { yen } { flag } { tally } { fragment } { register } { join } { unlock } { setDate }   effects (via the game)
      { ifRank } { ifStat } { ifFlag } { ifMet } { ifRoute } { ifRomance } -> then / else
      { ifCrush: { id: [phases] } } { ifCrushed: { id: 'phase' } } -> then / else; { crush: { id: 'in' | 'out' | n } } an effect (core.js crushes)
@@ -57,6 +60,7 @@ window.FemcScene = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   let G = null;
   const init = game => { G = game; };
+  const isTp = id => typeof id === 'string' && id.startsWith('tp-'); // a text photo, not a post (textphotos.js)
   const postReady = id => typeof id === 'string' && (window.FEMC_POSTS || []).includes(id);
   const postHtml = (cls, id, handle, cap) => `<div class="${cls}-head"><i aria-hidden="true"></i><b>${esc(handle || '')}</b></div>`
     + `<img alt="" src="${G.base || ''}assets/femc/game/art/posts/${id}.webp?v=${window.FEMC_POSTS_V || 1}">${cap ? `<p>${esc(cap)}</p>` : ''}`;
@@ -492,16 +496,25 @@ window.FemcScene = (() => {
       const reveal = () => {
         const m = line.phone[i++];
         if (!m) { box.remove(); el.classList.remove('phoning'); waiting = null; return next(); }
-        const me = m.from === 'solar', gp = group && !m.img ? groupParts(m, G.sub(m.t)) : null, text = gp ? gp.body : G.sub(m.t);
+        const me = m.from === 'solar', tpLine = isTp(m.img) || (!m.img && !!m.imgs), gp = group && (!m.img || tpLine) ? groupParts(m, G.sub(m.t)) : null, text = gp ? gp.body : G.sub(m.t);
         let dots = null;
         const show = () => {
           clearTimeout(typing); typing = null; dots?.remove();
           if (!el.isConnected) return;
           const post = postReady(m.img);
-          const p = document.createElement(post ? 'div' : 'p');
-          if (m.img && !replay) G.seePost?.(m.img);
-          p.className = `gs-msg ${me ? 'me' : 'them'}${post ? ' gs-post' : ''}${reduced.matches ? '' : ' in'}`;
-          if (post) {
+          const photo = !post && tpLine ? window.FemcTextPhotos?.node(G.base || '', m, text, () => { thread.scrollTop = thread.scrollHeight; }) : null;
+          const p = document.createElement(post || photo ? 'div' : 'p');
+          if (m.img && !tpLine && !replay) G.seePost?.(m.img);
+          p.className = `gs-msg ${me ? 'me' : 'them'}${post ? ' gs-post' : ''}${photo ? ' gs-tp' : ''}${reduced.matches ? '' : ' in'}`;
+          if (photo) {
+            // A text photo (textphotos.js): the sender's name in a group, then the picture(s) and the caption.
+            if (gp && !me && lastFrom !== m.from) {
+              const b = document.createElement('b'); b.className = 'gs-from'; b.textContent = gp.name;
+              if (gp.handle) { const s = document.createElement('small'); s.textContent = gp.handle.replace(/^@/, ''); b.append(' ', s); }
+              p.append(b);
+            }
+            p.append(photo);
+          } else if (post) {
             p.innerHTML = postHtml('gs-post', m.img, m.handle || G.name(m.from), m.cap ?? text.replace(/^\s*\[[^\]]*\]\s*/, ''));
             p.querySelector('img').addEventListener('load', () => { thread.scrollTop = thread.scrollHeight; });
           } else if (gp && gp.notice) { p.className = `gs-msg gs-notice${reduced.matches ? '' : ' in'}`; p.textContent = text; }

@@ -190,7 +190,7 @@
         ], else: [
           { n: "At six the council's chat went off like a smoke alarm, and Cherry, who had no concept of privacy and never had, read it over her shoulder." },
           { phone: [
-            { from: 'heeseung', t: "heeheeseung: [image]" },
+            { from: 'heeseung', t: "heeheeseung: [image]", img: 'tp-hoax-agenda' },
             { from: 'heeseung', t: "heeheeseung: Tonight's agenda, attached. Laminated. 8:45 at the corner by the convenience store. We arrive TOGETHER." },
             { from: 'jake', t: "jakeys: it needs a name" },
             { from: 'heeseung', t: "heeheeseung: It does not need a name." },

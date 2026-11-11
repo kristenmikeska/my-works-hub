@@ -129,7 +129,7 @@
       { t: "(Screenshot it. Send it to the girls.)", then: [
         { n: "She screenshotted it with her thumb not quite steady and dropped it in the girls' chat before she could think better of it." },
         { phone: [
-          { from: 'solar', t: "@solar: did i do this" },
+          { from: 'solar', t: "@solar: did i do this", img: 'tp-runners-left-chat' },
           { from: 'hyein', t: "@hyein: do what babe" },
           { from: 'hyein', t: "@hyein: is this about the tupperware. it's MARGOT'S tupperware. she's been on this for a week" },
           { from: 'hanni', t: "@hanni: sol we're on the bus, what are we looking at? it's just the house chat" },
@@ -283,7 +283,7 @@
     ] },
     { ifEpiRoute: 'minji', then: [
       { phone: [
-        { from: 'minji', t: "[photo]" },
+        { from: 'minji', t: "[photo]", img: 'tp-runners-minji-quad' },
         { from: 'minji', t: "one frame. just so you know what you look like from far away. you look like someone who's going somewhere" },
         { from: 'minji', t: "not posting it. ever. it's yours" }
       ], contact: 'minjibear' },
@@ -397,7 +397,7 @@
     { phone: [
       { from: 'han', t: 'Good evening, Solar. Welcome home.' },
       { from: 'han', t: "Your schedule for the week is attached. Mr. Lee asked that you have it tonight." },
-      { from: 'han', t: '[PDF · Lee_S_Dec22-28.pdf]' }
+      { from: 'han', t: '[PDF · Lee_S_Dec22-28.pdf]', img: 'tp-runners-han-schedule' }
     ], contact: 'Ms. Han' },
     { n: "It was a PDF. It was always a PDF. It had her name at the top in the Foundation's typeface and a table under it with four columns, and she read it on the edge of her bed with the tray still on the window seat and the city going dark outside in a matter of minutes, the way it did on the shortest day." },
     { n: "*Mon 22 — Breakfast, in. 7:15 a.m. (Mr. Lee departs 7:45.)*" },
@@ -642,9 +642,9 @@
       { from: 'danielle', t: "I didn't think this should become another SUnews story. I thought you deserved to know." },
     ], contact: 'Danielle Marsh' },
     { ifFlag: 'epi-r-footage-file', then: [
-      { phone: [{ from: 'danielle', t: "[11 photos]" }], contact: 'Danielle Marsh' }
+      { phone: [{ from: 'danielle', t: "[11 photos]", imgs: ['tp-runners-dossier-1', 'tp-runners-dossier-2', 'tp-runners-dossier-3', 'tp-runners-dossier-4'] }], contact: 'Danielle Marsh' }
     ], else: [
-      { phone: [{ from: 'danielle', t: "[12 photos]" }], contact: 'Danielle Marsh' }
+      { phone: [{ from: 'danielle', t: "[12 photos]", imgs: ['tp-runners-dossier-1', 'tp-runners-dossier-2', 'tp-runners-dossier-3', 'tp-runners-dossier-4'] }], contact: 'Danielle Marsh' }
     ] },
     { n: "Her real account. Not SUnews; not the anonymous one that everyone at Syracuse knew was hers and nobody could prove. Her own name, her own photo, a girl in a black coat on a ski lift. That was the first thing he noticed, and the thing he'd remember. She'd come to him with her own face on." },
     { n: "He put the spoon down." },

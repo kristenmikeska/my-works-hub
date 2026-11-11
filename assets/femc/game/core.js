@@ -2078,6 +2078,8 @@ window.FemcGame = (() => {
          and group chats: one may arrive on a random day inside its window (at most one a day), and surely by its last day
          or two; past `to` it's dropped.
      Any message, or a reply option, may carry `sticker: '<pack>-<n>'` (ui.js stickerSrc draws it; `t` is its fallback).
+     Any message, or a reply option, may carry a text photo `img: 'tp-<world>-<slug>'` / `imgs: [...]` (textphotos.js; `t` is
+     its caption, or the whole text until the picture exists). replyText and phoneMessage copy it onto the sent message.
      A text's id goes into phone.done once it's sent or dropped. textById() finds any of them (for replies). */
   const AR_ID = (l, n) => `ar-${l.id}-${n}`;
   function afterRankTexts() {
@@ -2111,7 +2113,7 @@ window.FemcGame = (() => {
     appendPhone(t.thread, t.msgs);
     S.phone.unread[t.thread] = (S.phone.unread[t.thread] || 0) + t.msgs.length;
     if (t.reply) S.phone.pending[t.thread] = t.id;
-    toast('text', `${D.texts.threads[t.thread] || name(t.thread)}: ${t.msgs[0].sticker ? '[sticker]' : t.msgs[0].t}`, { thread: t.thread, from: t.msgs[0].from, msg: t.msgs[0].t, sticker: t.msgs[0].sticker, count: t.msgs.length });
+    toast('text', `${D.texts.threads[t.thread] || name(t.thread)}: ${t.msgs[0].sticker ? '[sticker]' : t.msgs[0].t}`, { thread: t.thread, from: t.msgs[0].from, msg: t.msgs[0].t, sticker: t.msgs[0].sticker, img: t.msgs[0].img, imgs: t.msgs[0].imgs, count: t.msgs.length });
   }
   function nextDated() {
     for (const t of D.texts.texts) {
@@ -2160,7 +2162,7 @@ window.FemcGame = (() => {
     const t = textById(S.phone.pending[thread]);
     if (!t) return;
     const o = t.reply[i];
-    appendPhone(thread, [...(!o.silent ? [{ from: 'solar', t: o.t, ...(o.sticker ? { sticker: o.sticker } : {}) }] : []), ...(o.then || [])]);
+    appendPhone(thread, [...(!o.silent ? [{ from: 'solar', t: o.t, ...(o.sticker ? { sticker: o.sticker } : {}), ...(o.img ? { img: o.img } : {}), ...(o.imgs ? { imgs: o.imgs } : {}) }] : []), ...(o.then || [])]);
     if (o.link && o.notes && isMet(o.link)) progress(o.link).xp += o.notes;
     if (o.crush) crushApply(o.crush);
     if (o.stat) addStats(o.stat);
@@ -2613,7 +2615,7 @@ window.FemcGame = (() => {
     const v = [...((src.find(t => t.id === topicId) || {}).v || [])].reverse().find(x => reachFits(x, p));
     if (!v) return null;
     const th = (S.phone.threads[id] ||= []), from = th.length;
-    appendPhone(id, v.msgs.map(m => ({ from: 'me' in m ? 'solar' : id, t: reachSub(l, 'me' in m ? m.me : m.them), ...(m.sticker ? { sticker: m.sticker } : {}) })));
+    appendPhone(id, v.msgs.map(m => ({ from: 'me' in m ? 'solar' : id, t: reachSub(l, 'me' in m ? m.me : m.them), ...(m.sticker ? { sticker: m.sticker } : {}), ...(m.img ? { img: m.img } : {}), ...(m.imgs ? { imgs: m.imgs } : {}) })));
     reachOf(id).msg = weekOf();
     let invite = null;
     const L = life(), slot = v.end === 'invite' && l.dayInvite?.ask?.length ? dayInviteSlot(l) : null;

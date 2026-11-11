@@ -607,7 +607,7 @@
       LEAVE([{ from: 'jungwon', t: "Thank you for yesterday." }])
     ] },
     { id: 'epi-s-tx-car-tank', thread: 'yunjin', date: '3/12', slot: 'evening', events: ['epi-s-tank'], msgs: [
-      { from: 'yunjin', t: "[photo: a fish tank on a step under a tarp in the dust]" },
+      { from: 'yunjin', t: "[photo: a fish tank on a step under a tarp in the dust]", img: 'tp-strangers-fish-tank' },
       { from: 'yunjin', t: "i asked for a tank and got a MONUMENT" },
       { from: 'yunjin', t: "mrs bang says april. april!!! mr and mrs kim are going to retire in a bucket" }
     ], reply: [

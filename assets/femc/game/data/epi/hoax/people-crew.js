@@ -381,7 +381,7 @@
         ] },
         { t: "(Send him a photo of Asahi.)", stat: { charm: 1 }, then: [
           { phone: [
-            { from: 'solar', t: "[a photo of Asahi under the lights, glaring]" },
+            { from: 'solar', t: "[a photo of Asahi under the lights, glaring]", img: 'tp-hoax-asahi-lights' },
             { from: 'jungwon', t: "is he alright." },
             { from: 'jungwon', t: "tell him merry christmas." }
           ], contact: 'jungwon' },

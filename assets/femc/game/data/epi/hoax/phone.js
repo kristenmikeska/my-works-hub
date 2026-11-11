@@ -127,7 +127,7 @@
             { them: 'I Have No Idea What You Mean' }, { them: 'Respectfully' }, { them: 'Welcome Home' }
           ] },
           { id: 'epi-h-tp-jihoon-2', label: "Send him a picture of Nana in the snow", after: '12/26', msgs: [
-            { me: '[photo]' },
+            { me: '[photo]', img: 'tp-hoax-jihoon-snow' },
             { them: 'Better Looking Than You' }, { them: 'Save That. Send It To Me Again Tomorrow In Case I Lose It' }
           ] },
           { id: 'epi-h-tp-jihoon-3', label: 'Calculus panic', after: '1/6', msgs: [
@@ -311,7 +311,7 @@
         topics: [
           { id: 'epi-h-tp-jake-1', label: 'Ask for the newest meme', after: '12/27', events: ['epi-h-part-four'], msgs: [
             { me: 'send the newest meme' },
-            { them: '[image]' }, { them: "it's heeseung's flashcards but they're the ten commandments" }, { them: "he hasn't seen it. he has. he liked it" }
+            { them: '[image]', img: 'tp-hoax-jake-meme' }, { them: "it's heeseung's flashcards but they're the ten commandments" }, { them: "he hasn't seen it. he has. he liked it" }
           ] },
           { id: 'epi-h-tp-jake-2', label: 'No puns about the motion', after: '1/3', events: ['epi-h-motion'], msgs: [
             { me: 'jake i swear if u make one more impeach pun' },

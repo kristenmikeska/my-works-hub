@@ -1282,7 +1282,7 @@
       { from: 'niki', t: "it's jungwon's yearbook photo with 'where is the council' photoshopped on it like a missing poster -skull-" },
       { from: 'niki', t: 'he hasnt seen it yet. dont tell him' }
     ], reply: [
-      { t: "send it to me", then: [{ from: 'niki', t: "[image]" }, { from: 'niki', t: 'u didnt get this from me' }] },
+      { t: "send it to me", then: [{ from: 'niki', t: "[image]", img: 'tp-hoax-niki-poster' }, { from: 'niki', t: 'u didnt get this from me' }] },
       { t: "im telling him", then: [{ from: 'niki', t: 'snitch. traitor. vice president behavior' }] }
     ] },
     { id: 'epi-h-am-sunoo-eat', thread: 'sunoo', from: '12/26', to: '1/3', msgs: [

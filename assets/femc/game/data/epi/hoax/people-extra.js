@@ -122,7 +122,7 @@
         { n: "Her phone and his buzzed at the same moment, in both their pockets, like an alarm." },
         { phone: [
           { from: 'niki', t: "rikiniki: JOLAR DOG DATE SPOTTED" },
-          { from: 'niki', t: "rikiniki: [Photo: two people on a bench by a frozen pond, very blurry, and two dogs, one very large]" },
+          { from: 'niki', t: "rikiniki: [Photo: two people on a bench by a frozen pond, very blurry, and two dogs, one very large]", img: 'tp-hoax-dog-date' },
           { from: 'jake', t: "jakeys: THE DOGS ARE ALSO DATING??" },
           { from: 'sunoo', t: "sunooshine: that was MY PLAN. did he do number 4" },
           { from: 'heeseung', t: "heeheeseung: we don't discuss things in writing" },

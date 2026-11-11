@@ -73,7 +73,7 @@
       { choose: [
         { t: "(Send the good one, antlers up, to the group chat.)", then: [
           { phone: [
-            { from: 'solar', t: "solarsystem: [Photo: Nana in reindeer antlers, sitting up very straight, looking into the camera with enormous dignity]" },
+            { from: 'solar', t: "solarsystem: [Photo: Nana in reindeer antlers, sitting up very straight, looking into the camera with enormous dignity]", img: 'tp-hoax-antlers-proud' },
             { from: 'junkyu', t: "junkyute: NANA!!!!!!!! MERRY CHRISTMAS NANA!!!!!" },
             { from: 'jihoon', t: "jihoney: My Son Has Been Humiliated On The Day Of Our Lord" },
             { from: 'jihoon', t: "jihoney: He Is So Handsome Though" },
@@ -85,7 +85,7 @@
         ] },
         { t: "(Send the one where he's given up, to the group chat.)", then: [
           { phone: [
-            { from: 'solar', t: "solarsystem: [Photo: Nana lying flat on his side on the floor in reindeer antlers, tongue out, staring at the ceiling]" },
+            { from: 'solar', t: "solarsystem: [Photo: Nana lying flat on his side on the floor in reindeer antlers, tongue out, staring at the ceiling]", img: 'tp-hoax-antlers-flat' },
             { from: 'asahi', t: "asanoonecares: finally someone in this chat who gets it" },
             { from: 'junkyu', t: "junkyute: is he ok!!! is he sad!!! :(" },
             { from: 'solar', t: "solarsystem: he's fine kyu he's being dramatic" },
@@ -195,7 +195,7 @@
         { t: "(Take a picture for Junkyu.)", then: [
           { n: "She crouched in the drift and waited until he came up out of it, a pair of black eyes and a black nose in a wall of white, and took it, and sent it before she could think." },
           { phone: [
-            { from: 'solar', t: "[Photo: Nana up to his eyes in a snowdrift, smiling]" },
+            { from: 'solar', t: "[Photo: Nana up to his eyes in a snowdrift, smiling]", img: 'tp-hoax-snowdrift' },
             { from: 'junkyu', t: "SOLARRRRR" },
             { from: 'junkyu', t: "i'm crying. my mom asked why i'm crying. i showed her. she's crying" },
             { from: 'junkyu', t: "tell him he's the best boy in the whole world!!!!" }

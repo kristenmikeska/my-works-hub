@@ -1557,7 +1557,7 @@
       LEAVE()
     ] },
     { id: 'epi-s-am-yunjin-koi', thread: 'yunjin', from: '3/1', to: '3/12', events: ['epi-s-alone'], msgs: [
-      { from: 'yunjin', t: "[photo: two koi, one bucket, one slipper]" },
+      { from: 'yunjin', t: "[photo: two koi, one bucket, one slipper]", img: 'tp-strangers-koi' },
       { from: 'yunjin', t: "mr and mrs kim say hi" },
       { from: 'yunjin', t: "no news" }
     ], reply: [
@@ -1576,7 +1576,7 @@
       { from: 'jungwon', t: "Sunghoon says I should text 'more casually.' I asked Riki what that means." },
       { from: 'jungwon', t: "He sent me a picture of a banana. I am no closer." }
     ], reply: [
-      { t: "send me the banana", then: [{ from: 'jungwon', t: "[photo: a banana, on a baduk board, very neatly]" }, { from: 'jungwon', t: "Is that casual?" }] },
+      { t: "send me the banana", then: [{ from: 'jungwon', t: "[photo: a banana, on a baduk board, very neatly]", img: 'tp-strangers-banana' }, { from: 'jungwon', t: "Is that casual?" }] },
       LEAVE([{ from: 'jungwon', t: "I'll keep practicing." }])
     ] }
   );

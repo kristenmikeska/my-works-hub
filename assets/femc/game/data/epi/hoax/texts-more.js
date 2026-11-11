@@ -25,7 +25,7 @@
   T.threads = Object.assign(T.threads || {}, { jake: 'jakeys' });
   (T.texts ||= []).push(
     { id: 'epi-h-tx-mom-pillow', thread: 'mom', date: '12/22', slot: 'after', events: ['epi-h-home'], msgs: [
-      { from: 'mom', t: '[Photo: Nana asleep on her pillow, upside down, all four legs in the air, his tongue out of one side]' },
+      { from: 'mom', t: '[Photo: Nana asleep on her pillow, upside down, all four legs in the air, his tongue out of one side]', img: 'tp-hoax-mom-pillow' },
       { from: 'mom', t: "I didn't put him there. I want that on the record." }
     ], reply: [
       { t: "he did that the whole time i was gone didn't he", then: [{ from: 'mom', t: 'Every night.' }, { from: 'mom', t: "Come home before dinner. He's very boring without you." }] },
@@ -36,7 +36,7 @@
       { from: 'jihoon', t: 'He Has Not Called' },
       { from: 'jihoon', t: 'Send Proof Of Life Or I Am Coming Over' }
     ], reply: [
-      { t: "[Photo: Nana on the heated floor, one ear inside out]", then: [{ from: 'jihoon', t: 'His Ear' }, { from: 'jihoon', t: 'Fix His Ear. This Is A Hostage Situation. I Want Him Treated With Dignity' }] },
+      { t: "[Photo: Nana on the heated floor, one ear inside out]", img: 'tp-hoax-ear', then: [{ from: 'jihoon', t: 'His Ear' }, { from: 'jihoon', t: 'Fix His Ear. This Is A Hostage Situation. I Want Him Treated With Dignity' }] },
       { t: "he's asleep jihoon he's a dog", then: [{ from: 'jihoon', t: 'He Is A Prince' }, { from: 'jihoon', t: 'Wake Him And Tell Him Father Says Goodnight' }] }
     ] },
     { id: 'epi-h-tx-jw-maeumi', thread: 'jungwon', date: '12/27', slot: 'evening', events: ['epi-h-christmas'], msgs: [
@@ -51,7 +51,7 @@
       { from: 'junkyu', t: 'SOLAR!!! is nana ok in the snow!!!' },
       { from: 'junkyu', t: "it's SO much snow. can he even see. he's the same colour as it :(" }
     ], reply: [
-      { t: "[Photo: a pair of black eyes and a black nose in a snowbank]", then: [{ from: 'junkyu', t: 'HE IS SO HAPPY' }, { from: 'junkyu', t: "i'm saving this forever!!!" }] },
+      { t: "[Photo: a pair of black eyes and a black nose in a snowbank]", img: 'tp-hoax-snowbank', then: [{ from: 'junkyu', t: 'HE IS SO HAPPY' }, { from: 'junkyu', t: "i'm saving this forever!!!" }] },
       { t: "he's thriving kyu. he's in his element", then: [{ from: 'junkyu', t: 'ok good!!! tell him i said hi!!! :D' }] }
     ] },
     { id: 'epi-h-tx-dad-luck', thread: 'dad', date: '1/9', slot: 'evening', events: ['epi-h-makeup'], msgs: [
@@ -83,7 +83,7 @@
       { from: 'cherry', t: "she's asked every christmas since we were 9. she thinks he's a different dog every year bc he never gets old" }
     ], reply: [
       { t: "tell her he's immortal", then: [{ from: 'cherry', t: 'i told her that in 2019. she lit incense' }] },
-      { t: "[Photo: Nana in the window, smiling]", then: [{ from: 'cherry', t: "sent it to her. she's printing it" }, { from: 'cherry', t: 'she does not know how to print things. this is going to take all day' }] }
+      { t: "[Photo: Nana in the window, smiling]", img: 'tp-hoax-window', then: [{ from: 'cherry', t: "sent it to her. she's printing it" }, { from: 'cherry', t: 'she does not know how to print things. this is going to take all day' }] }
     ] },
     { id: 'epi-h-am-sunoo-bone', thread: 'sunoo', from: '1/1', to: '1/6', events: ['epi-h-sebae'], msgs: [
       { from: 'sunoo', t: 'halmeoni saved a bone from the new year soup for "the big white dog"' },
@@ -115,7 +115,7 @@
   more('dad', 'known', [{ t: 'Washes the dog the way he cleans a fish: carefully, from the head down, talking the whole time.', events: ['epi-h-rt-nana-bath'] }]);
   more('jihoon', 'topics', [
     { id: 'epi-h-tp-jihoon-nana', label: 'Send him a picture of Nana', after: '12/22', events: ['epi-h-home'], msgs: [
-      { me: '[Photo: Nana asleep across her feet]' },
+      { me: '[Photo: Nana asleep across her feet]', img: 'tp-hoax-feet' },
       { them: 'My Son' }, { them: 'My Beloved' }, { them: 'He Has Gotten Bigger In Your Absence. Out Of Grief' },
       { me: 'he got bigger bc my mom fed him every time he looked sad' }, { them: 'Same Thing' }
     ] }
