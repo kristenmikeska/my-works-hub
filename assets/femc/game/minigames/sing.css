@@ -188,3 +188,12 @@
 .sg-duo { position: absolute; bottom: 0; left: -34%; height: 80%; object-fit: contain; z-index: -1; filter: brightness(.95); }
 .sg-solar:has(.p-idle) .sg-duo { display: none; }
 .mg-sing.duet .sg-talk { visibility: hidden; }
+/* Kat's booth picture (art batch 150) has its own window and ON AIR sign: the singer behind the glass stands in THAT window
+   (window ≈ 25-76% across, 15-67% down the picture), the drawn frame, desk and sign go, and the talkback line moves top left. */
+.sg-booth-art ~ .sg-glass { left: 25.5%; top: 15.5%; width: 50%; height: 51%; border: 0; border-radius: 0; background: none; box-shadow: none; }
+.sg-booth-art ~ .sg-glass .sg-hc-art, .sg-booth-art ~ .sg-glass .sg-desk, .sg-booth-art ~ .sg-glass .sg-onair { display: none; }
+.sg-booth-art ~ .sg-glass .sg-hc img { height: 92%; opacity: .92; filter: brightness(.8) saturate(.9); }
+.sg-booth-art ~ .sg-glass .sg-hc-face { display: block !important; }
+.sg-booth-art ~ .sg-glass .sg-hc:has(.sg-hc-bop) .sg-hc-face { display: none !important; }
+.sg-booth-art ~ .sg-talk { left: 2%; top: 3%; width: 22%; }
+@media (max-width: 760px) { .sg-booth-art ~ .sg-glass { left: 25%; width: 50%; height: 40%; } .sg-booth-art ~ .sg-talk { top: auto; bottom: 90px; width: 92%; } }
