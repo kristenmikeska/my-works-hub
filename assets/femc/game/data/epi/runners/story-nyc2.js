@@ -1295,7 +1295,8 @@
                                      (consumes, ends: true; no end card text here, the engine shows it)
    Flags read: the route (ifEpiRoute), epi-r-jh-all / epi-r-jh-part (else = jh-none), epi-r-nye-mark, epi-r-entry-desk /
      epi-r-entry-listed (Marco's "never once" line), epi-r-term-ask (Minji's and Haechan's asking).
-   Flags set: none (the act ends here).
+   Flags set: epi-r-marco-mine / epi-r-marco-friend / epi-r-marco-blank (12/31 after, Haechan route, exactly one: Marco's "Who do I
+     put him down as?"; nobody says "boyfriend" there, and the ask nods to the box once, after her answer). Otherwise none (the act ends here).
    Glitches (inline): epi-r-g-green-train (the-city), epi-r-g-marco (marco), epi-r-g-tenth (the-list), epi-r-g-album (nye),
      epi-r-g-1159 (midnight). No explanation anywhere; only Solar sees them (Haechan notices a quiet platform and a stopped
      timer and says nothing).
@@ -1318,6 +1319,9 @@
        question for him to answer.
      - On the cover route the girls have been staying since 12/27. They meet Olivia's train at Penn and bring her up.
      - The track stays untitled: Jaemin asks what it's called and Haechan says it hasn't got one.
+     - (Nov 11 2026) The board's photocopied sheet for New Year's Eve has a box for what each overnight guest is "to the resident".
+       On the Haechan route Marco asks what to put for him (mine, in the margin / FRIEND / left blank till tomorrow); Marco calls
+       him "the young man who's been bringing the coffee up".
    Canon held:
      - Haechan never asks anyone about her.
      - Chenle's cans go without a word.
@@ -1638,6 +1642,28 @@
     { n: "The lobby, the marble floor, the white flowers the size of a car. She stood in all of it with her coat on and her face doing something she couldn't stop." },
     { s: 'solar', f: 'neutral', t: "I know." },
     { s: 'marco', f: 'happy', t: "About time." },
+    // ── Marco's guest line (Haechan route; Nov 11 2026). No one says "boyfriend" here: the ask at 11:40 owns the word. ──
+    { ifEpiRoute: 'haechan', then: [
+      { n: "He didn't pick the pen up yet. He turned to the back of the book instead, to the board's sheet for tonight, the photocopied one with the columns, and ran one finger down it to a line that already had a name on it in his own capitals." },
+      { s: 'marco', f: 'neutral', t: "And the young man who's been bringing the coffee up. The board wants a line for anybody staying past one tonight, and a box for what they are to the resident." },
+      { s: 'marco', f: 'neutral', t: "Who do I put him down as?" },
+      { n: "There was a word for it. She knew the word. She'd been not saying it since a stairwell in November, very carefully, the way you carry something filled to the brim across a room, and she was not about to spill it for the first time on a photocopied form for the board, in a lobby, at four in the afternoon, to a man in reading glasses who'd once told her mother a bicycle was a scooter." },
+      { choose: [
+        { t: "Put him down as mine.", flag: 'epi-r-marco-mine', then: [
+          { s: 'marco', f: 'surprised', t: "That isn't one of the boxes, Miss Lee." },
+          { s: 'solar', f: 'neutral', t: "Then put it in the margin." },
+          { n: "He looked at her over his glasses for a long second, and then he wrote something in the margin, small and square, and didn't say one word about it, which from Marco was a speech." }
+        ] },
+        { t: "Friend. Put friend.", flag: 'epi-r-marco-friend', then: [
+          { s: 'marco', f: 'neutral', t: "Friend." },
+          { n: "He said it in exactly the voice he'd used in the service corridor when she was eight, *it's a scooter, Mrs. Lee,* and wrote it down in capitals without looking up, and the corner of his mouth was doing something it had no business doing on the clock." }
+        ] },
+        { t: "Leave it blank. Ask me tomorrow.", flag: 'epi-r-marco-blank', then: [
+          { s: 'marco', f: 'happy', t: "Tomorrow, then." },
+          { n: "He capped the pen and left the box empty, the only empty box on the whole sheet, a small white rectangle in a building where nothing had ever once been left blank, and she'd think about it for the rest of the afternoon." }
+        ] }
+      ] }
+    ] },
     { cg: 'epi-r-tenth-name' },
     { n: "He turned the book round to copy them in, his good pen, his small square capitals, one name to a line, the way he'd written every name in that book since before she was born. She watched him do it because she couldn't not. It felt like watching somebody carve something." },
     { n: "He got to the bottom of her list. He kept writing." },
@@ -2312,6 +2338,14 @@
           ] }
         ] }
       ] },
+      // Marco's box at four o'clock (epi-r-marco-*), paid off after the answer, never before it.
+      { ifFlag: 'epi-r-marco-blank', then: [
+        { n: "Downstairs, on the board's sheet, there was still one empty box with his name next to it. She knew what went in it now. Marco could have it in the morning." }
+      ], else: [ { ifFlag: 'epi-r-marco-friend', then: [
+        { n: "Downstairs, on the board's sheet, in Marco's small square capitals, it said *FRIEND.* Marco was going to be unbearable about it in the morning." }
+      ], else: [ { ifFlag: 'epi-r-marco-mine', then: [
+        { n: "Downstairs, in the margin of the board's sheet, whatever Marco had written at four o'clock, it had been right." }
+      ] } ] } ] },
       { n: "Somebody banged on the door. Jaemin, from the sound of it, the flat of his hand, *TEN MINUTES, LOVEBIRDS, THE BALL WAITS FOR NO MAN,* and Hyein behind him saying *don't call them LOVEBIRDS, Jaemin, they'll never come out,* and Hanni saying *leave them alone,* and all of it fading back down the hall toward the television." },
       { n: "He stood up and held his hand down to her." },
       { s: 'haechan', f: 'neutral', t: "Come on. I've got a thing at midnight." },
