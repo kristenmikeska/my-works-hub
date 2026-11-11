@@ -372,6 +372,7 @@ window.FemcRegionals = (() => {
       el.querySelectorAll('[data-ab]').forEach(b => b.onclick = () => ({ step, suzu, rush })[b.dataset.ab]());
       const key = e => {
         if (over) return;
+        e.stopPropagation(); // the scene underneath never sees the match's keys
         if (e.key === 'Escape') { e.preventDefault(); paused = !paused; $('.mg-pause').hidden = !paused; return; }
         if (paused) return;
         if (/^[1-4]$/.test(e.key)) { e.preventDefault(); ofuda(+e.key - 1); }

@@ -966,6 +966,24 @@
     { match: { score: [0, 1], map: 'Map 2' } },
     { n: "In the break between maps, nobody spoke. Doyoung stood behind them with his clipboard and didn't write on it. That was the worst part. He just stood there, and let them sit in it, and then he leaned down between Solar's and Minji's chairs and said one thing, very quietly, so only they could hear." },
     { s: 'doyoung', f: 'serious', t: "You two aren't a weakness because they dive you. You're a weakness because when they dive you, you go separate ways. Stop going separate ways." },
+    // The playable comeback (Nov 10 2026, Kat: the Regionals minigame in the game; scene.js { minigame }, minigames/regionals.js).
+    // Syracuse still wins the final either way; the match only changes how the comeback reads (flags epi-r-mg-*).
+    { choose: [
+      { t: "(Take the comeback yourself.)", then: [
+        { match: null },
+        { minigame: 'regionals', flags: 'epi-r-mg' },
+        { match: { home: 'Syracuse', homeTag: 'SU', away: 'Top Seed', awayTag: 'SEED 1', stage: 'Grand final · Bo5', map: 'Map 3', score: [1, 1] } },
+        { ifFlag: 'epi-r-mg-won', then: [
+          { n: "She came up out of it the way you come up out of deep water: the round cards, Minji's breathing next to her, Chenle saying *again, again,* to nobody. It hadn't been clean. It had been together, which was the only thing Doyoung had asked for." },
+          { ifFlag: 'epi-r-mg-grade-S', then: [
+            { n: "Behind her, for the first time all day, she heard his pen move on the clipboard." }
+          ] }
+        ], else: [
+          { n: "It wasn't clean. They dropped rounds they should have had, and Olivia said a word Doyoung pretended not to hear, and none of it mattered in the end, because the next time Genji came for her, Minji was already turning. That was the whole note. They'd heard it." }
+        ] }
+      ] },
+      { t: "(Let it play out.)", then: [] }
+    ] },
     { n: "Minji looked at her. Solar looked back. Something passed between them that didn't need comms, and they turned back to the screens, and they took the second map, together, so close the whole time that Olivia complained, and the third, and the fourth went to the last fight of the last point with the score tied and the whole hall on its feet." },
     { match: { score: [2, 1], map: 'Map 4 · Numbani · Overtime' } },
     { n: "Numbani. Overtime. The payload six meters from the end. The enemy Lucio, the good one, the one Chenle had watched on film until four in the morning, was sitting on Sound Barrier. Solar had Kitsune Rush. Everyone had everything. It was the fight." },
@@ -1002,6 +1020,9 @@
       { n: "Three-two. Regional champions, the hard way, a map down from the start and level going into the last. Through to Nationals in the spring." }
     ] },
     { n: "There was confetti. Actual confetti, orange and white, from a cannon somebody had rented, and it went everywhere, in her hair, down the back of her shirt, in Olivia's open screaming mouth. Haerin was crying. Haerin was crying and giggling at the same time, which nobody had ever seen, and which Olivia filmed and would later have framed. Chenle stood up so fast he knocked his chair over and then stood there over it looking at the scoreboard with an expression of perfect scientific delight. Doyoung put the clipboard down on the desk. Face down. And walked away from it. And then came back and hugged each of them, one at a time, briefly and very hard, like a man checking the weight of something before he carried it." },
+    { ifFlag: 'epi-r-mg-good', then: [
+      { n: "On the big screen over the stage, between the confetti and the trophy, the broadcast ran the Play of the Game. It was hers. *sollee · Kiriko.* Olivia screamed at it like she hadn't been sitting right there when it happened." }
+    ] },
     { n: "When he got to Haerin she was still giggling, wet-faced, the jersey sleeves pulled over both hands, and she looked past his shoulder at Solar with the flat, level look she gave a support ultimate she'd just seen come up." },
     { s: 'haerin', f: 'happy', t: "You were gone for nine days and you came back better. That's not allowed. I'm putting it in the notes." },
     { s: 'solar', f: 'surprised', t: "What notes?" },

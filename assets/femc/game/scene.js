@@ -387,6 +387,34 @@ window.FemcScene = (() => {
     /* Gifts (core.js giveGift, data/gifts.js): { giftAsk: link } asks "Give a gift?" when Solar carries any (skipping is
        fine), { giftPick: link } lists the bag in the choice box (arrows / Enter / click; "(Never mind.)" goes back to the
        question). The reaction's lines play next and its ♪ join the scene's. Nothing in a replay. */
+    /* { minigame: 'regionals', flags: 'epi-r-mg' } (Nov 10 2026): an epilogue minigame (assets/femc/game/minigames/<id>.js + .css,
+       loaded on first use; window.Femc<Id>.play). The scene waits; the result becomes flags <flags>-played, -won / -lost,
+       -grade-<S|A|B|C>, -good (S or A), -potg-<kind>, and S.epi.mg[id] keeps the whole result. Replays and missing scripts skip it.
+       Sounds follow the SFX setting. */
+    function minigame(line) {
+      const id = line.minigame, glob = 'Femc' + id[0].toUpperCase() + id.slice(1), pre = line.flags || `mg-${id}`;
+      if (replay) return next();
+      const load = () => new Promise(ok => {
+        if (window[glob]) return ok();
+        const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = `${G.base}assets/femc/game/minigames/${id}.css?v=${MINIGAME_V}`; document.head.appendChild(css);
+        const js = document.createElement('script'); js.src = `${G.base}assets/femc/game/minigames/${id}.js?v=${MINIGAME_V}`; js.onload = ok; js.onerror = ok; document.head.appendChild(js);
+      });
+      waiting = null;
+      load().then(() => {
+        const M = window[glob];
+        if (!M || !M.play) return next();
+        const set = G.settings ? G.settings() : {};
+        M.play({ mute: set.sfx === false, difficulty: line.difficulty || 'normal' }).then(r => {
+          const f = { [`${pre}-played`]: true, [`${pre}-${r.won ? 'won' : 'lost'}`]: true, [`${pre}-grade-${r.grade}`]: true };
+          if (r.grade === 'S' || r.grade === 'A') f[`${pre}-good`] = true;
+          if (r.potg && r.potg.kind) f[`${pre}-potg-${r.potg.kind}`] = true;
+          G.effect({ flag: f });
+          const S = G.S; if (S && S.epi) { (S.epi.mg ||= {})[id] = r; G.save?.(); }
+          next();
+        });
+      });
+    }
+    const MINIGAME_V = 3;
     function giftAsk(line) {
       const who = line.giftAsk;
       if (replay || !G.giftBag || !G.giftBag().length) return next();
@@ -569,6 +597,7 @@ window.FemcScene = (() => {
       if (line.glitch !== undefined) { waiting = null; return replay || !window.FemcGlitch ? next() : window.FemcGlitch.line(line, el, next, skipping); }
       if (line.act) return actCard(line);
       if (line.battle) return battle(line);
+      if (line.minigame) return minigame(line);
       if (line.giftAsk) return giftAsk(line);
       if (line.giftPick) return giftPick(line);
       if (line.mingle) return mingle(line);
