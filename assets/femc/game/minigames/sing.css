@@ -103,3 +103,4 @@
 @keyframes sg-pop { from { scale: 1.5; opacity: 0; } 30% { opacity: 1; } }
 @keyframes sg-blink { 50% { opacity: .45; } }
 .mg-sing.still .sg-count { animation: none; }
+.mg-sing .mg-end textarea { width: min(640px, 90vw); background: #0d0409; color: var(--pk2); border: 1px solid var(--pk); font: 12px/1.4 monospace; }

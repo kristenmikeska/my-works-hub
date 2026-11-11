@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="../../assets/femc/game/minigames/dumplings.css?v=5">
 <link rel="stylesheet" href="../../assets/femc/game/minigames/studio.css?v=1">
 <link rel="stylesheet" href="../../assets/femc/game/minigames/listen.css?v=1">
-<link rel="stylesheet" href="../../assets/femc/game/minigames/sing.css?v=2">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/sing.css?v=3">
 <style>
   :root { color-scheme: dark; }
   body { margin: 0; min-height: 100vh; background: #14070f; color: #fff; font-family: system-ui, sans-serif; display: grid; place-content: center; gap: 18px; padding: 24px 16px; }
@@ -40,10 +40,10 @@
   <script src="../../assets/femc/game/minigames/dumplings.js?v=6"></script>
   <script src="../../assets/femc/game/minigames/studio.js?v=1"></script>
   <script src="../../assets/femc/game/minigames/listen.js?v=1"></script>
-  <script src="../../assets/femc/game/minigames/charts/runners.js?v=1"></script>
-  <script src="../../assets/femc/game/minigames/sing.js?v=2"></script>
+  <script src="../../assets/femc/game/minigames/charts/runners.js?v=2"></script>
+  <script src="../../assets/femc/game/minigames/sing.js?v=3"></script>
   <script>
-    const G = { support: () => FemcSupport.play({}), dumplings: () => FemcDumplings.play({ mute: document.getElementById('mute').checked }), studio: () => FemcStudio.play({ mute: document.getElementById('mute').checked }), listen: () => FemcListen.play({ mute: document.getElementById('mute').checked }), sing: () => FemcSing.play({ mute: document.getElementById('mute').checked, level: document.querySelector('[name=sglv]:checked').value }) };
+    const G = { support: () => FemcSupport.play({}), dumplings: () => FemcDumplings.play({ mute: document.getElementById('mute').checked }), studio: () => FemcStudio.play({ mute: document.getElementById('mute').checked }), listen: () => FemcListen.play({ mute: document.getElementById('mute').checked }), sing: () => FemcSing.play({ mute: document.getElementById('mute').checked, level: document.querySelector('[name=sglv]:checked').value, record: /[?&]record=1/.test(location.search) }) };
     document.querySelectorAll('[data-g]').forEach(b => b.onclick = () => G[b.dataset.g]().then(r => { document.getElementById('out').textContent = b.dataset.g + ': ' + JSON.stringify(r); }));
   </script>
 </body>

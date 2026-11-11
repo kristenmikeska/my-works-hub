@@ -3,7 +3,8 @@
    booth with headphones on, Haechan behind the glass at the desk. Standalone: nothing in the story calls it yet
    (mockups/minigames/sing.html).
 
-   FemcSing.play({ host, song, level, mute, onDone }) -> Promise<result>
+   FemcSing.play({ host, song, level, mute, record, onDone })
+     record true = chart-recording mode for Kat: no notes, the song plays, every press (and hold) is logged; the end shows JSON + Copy for Claude -> Promise<result>
      song   chart id in window.FEMC_CHARTS (default 'runners': "Runners" by CAMO, minigames/charts/runners.js)
      level  'easy' | 'normal' | 'hard' (default 'normal')   mute  no sound at all (the game still runs on the clock)
    result = { song, level, score, accuracy (0-100), perfect, good, miss, maxCombo, grade: 'S' | 'A' | 'B' | 'C', quit }
@@ -11,7 +12,7 @@
    How it plays: three lanes (low, mid, high: her voice), notes slide down to the mic line in time with the real song. Press the
    lane's key as a note reaches the line (D / F / J, or ← ↓ →, or tap the lane); hold through long notes. Perfect ±60 ms, Good
    ±130 ms. A hit lights her waveform and the lane; a miss dips the music for a moment (her voice dropping out of the mix).
-   "Three bars. You come in on four." Haechan talks back through the talkback between sections and on streaks and slips.
+   "On my count. You come in right away, so be ready." Haechan talks back through the talkback between sections and on streaks and slips.
    The chart is generated from the track's own onsets (charts/runners.js, header says how), so the notes land on the music.
    Art (FEMC-ART-TODO 45, art/minigames/sing/): booth.webp (Studio 4B from the booth), solar-mic.webp, haechan-desk.webp;
    until then a drawn studio with their portraits. Esc pauses (and the song). Reduced motion: no shakes or particles. */
@@ -23,7 +24,7 @@ window.FemcSing = (() => {
   const KEYS = [['d', 'arrowleft'], ['f', 'arrowdown'], ['j', 'arrowright']];
   const PERFECT = 0.06, GOOD = 0.13, LEAD = 1.6; // seconds a note is on screen before the line
   const TALK = {
-    intro: ["Three bars. You come in on four.", "Headphones on. Don't look at me, look at the line."],
+    intro: ["On my count. You come in right away, so be ready.", "Headphones on. Don't look at me, look at the line."],
     verse: ['Good. Stay in it.', "There you are."],
     breath: ['Breathe here. You wrote it on the sheet eleven times.', 'Easy. It drops out. Let it.'],
     chorus: ['Here it comes. Don\'t reach for it.', 'Open up. The room wants it.'],
@@ -39,11 +40,11 @@ window.FemcSing = (() => {
     return new Promise(done => {
       const C = (window.FEMC_CHARTS || {})[o.song || 'runners'];
       if (!C) { done({ quit: true, error: 'no chart' }); return; }
-      const level = o.level || 'normal', notes = (C.charts[level] || C.charts.normal).map(n => ({ ...n, hit: null, held: false, holdOk: false }));
+      const level = o.level || 'normal', rec = o.record ? [] : null, notes = (rec ? [] : C.charts[level] || C.charts.normal).map(n => ({ ...n, hit: null, held: false, holdOk: false }));
       const host = o.host || document.body, ART = id => `${base()}assets/femc/game/art/minigames/sing/${id}.webp`;
       const FACE = (w, f) => `${base()}assets/femc/portraits/${w}-runners/${f}.webp`;
-      const BAR = 240 / C.bpm, BEAT = 60 / C.bpm, FIRST = notes.length ? notes[0].t : 0, START = Math.max(0, Math.min(FIRST - BAR * 3, C.offset + BAR * 2)) - (C.offset ? 0 : 0);
-      const st = { t: START - 1.2, score: 0, combo: 0, maxCombo: 0, perfect: 0, good: 0, miss: 0, paused: false, over: false, sec: -1, held: [false, false, false] };
+      const BAR = 240 / C.bpm, BEAT = 60 / C.bpm, FIRST = notes.length ? notes[0].t : 0, START = 0;
+      const st = { t: -(LEAD + BEAT * 3), score: 0, combo: 0, maxCombo: 0, perfect: 0, good: 0, miss: 0, paused: false, over: false, sec: -1, held: [false, false, false] };
       const el = document.createElement('div');
       el.className = 'mg-sing' + (reduced.matches ? ' still' : '');
       el.innerHTML = `
@@ -90,6 +91,7 @@ window.FemcSing = (() => {
       const press = lane => {
         if (st.over || st.paused) return;
         st.held[lane] = true; lanes[lane].classList.add('down');
+        if (rec) { rec.push({ t: +now().toFixed(3), lane, len: 0, down: now() }); burst(lane); tick(990); return; }
         const t = now(), cand = notes.find(n => n.lane === lane && n.hit == null && !n.held && !n.done && Math.abs(n.t - t) <= GOOD);
         if (!cand) return;
         const d = Math.abs(cand.t - t), ok = d <= PERFECT ? 'perfect' : 'good';
@@ -103,6 +105,7 @@ window.FemcSing = (() => {
       };
       const release = lane => {
         st.held[lane] = false; lanes[lane].classList.remove('down');
+        if (rec) { const r = [...rec].reverse().find(x => x.lane === lane && x.down != null); if (r) { const d = now() - r.down; r.len = d > 0.35 ? +d.toFixed(3) : 0; delete r.down; } return; }
         const t = now(), h = notes.find(n => n.lane === lane && n.held && !n.holdOk);
         if (h) { h.held = false; h.done = true; h.el.classList.add('gone'); if (t >= h.t + h.len - 0.15) { h.holdOk = true; st.score += 200; judge('HOLD!', 'perfect', lane); } }
       };
@@ -133,14 +136,14 @@ window.FemcSing = (() => {
             const y = 1 - (n.t - t) / LEAD; // 0 at the top, 1 at the line
             if (n.held) { // a hold being sung: the head sits on the line, the tail shrinks into it
               if (t > n.t + n.len) { n.held = false; n.holdOk = true; n.done = true; st.score += 200; n.el.style.display = 'none'; judge('HOLD!', 'perfect', n.lane); }
-              else { n.el.style.display = ''; n.el.style.top = '86%'; n.el.style.setProperty('--len', Math.max(0, (n.t + n.len - t) / LEAD)); energy = Math.min(1, energy + dt * 2); }
+              else { n.el.style.display = 'block'; n.el.style.top = '86%'; n.el.style.setProperty('--len', Math.max(0, (n.t + n.len - t) / LEAD)); energy = Math.min(1, energy + dt * 2); }
               continue;
             }
             if (n.hit && n.hit !== 'miss') { n.done = true; n.el.style.display = 'none'; continue; }
             if (!n.hit && y > 1 + GOOD / LEAD) miss(n);
             if (n.hit === 'miss' && t - n.t > 0.5) { n.done = true; n.el.style.display = 'none'; continue; }
             if (y < -0.05) { n.el.style.display = 'none'; continue; }
-            n.el.style.display = ''; n.el.style.top = `${y * 86}%`;
+            n.el.style.display = 'block'; n.el.style.top = `${y * 86}%`;
           }
           // sections and talkback
           const si = (C.sections || []).reduce((a, s, i) => (t >= s.t ? i : a), -1);
@@ -165,6 +168,14 @@ window.FemcSing = (() => {
         const res = { song: C.id, level, score: Math.round(st.score), accuracy: Math.round(acc), perfect: st.perfect, good: st.good, miss: st.miss, maxCombo: st.maxCombo, grade, quit };
         say(TALK.end[grade], grade === 'S' || grade === 'A' ? 'happy' : 'neutral'); solarFace(grade === 'C' ? 'sad' : 'happy');
         const end = $('.mg-end'); end.hidden = false;
+        if (rec) {
+          rec.forEach(r => delete r.down);
+          const js = JSON.stringify({ song: C.id, level, notes: rec });
+          end.innerHTML = `<b>Recorded ${rec.length} notes</b><textarea readonly rows="8" cols="60">${esc(js)}</textarea><button type="button" data-copy>Copy for Claude</button><button type="button" data-done>Done</button>`;
+          end.querySelector('[data-copy]').onclick = e => { navigator.clipboard?.writeText(js); e.target.textContent = 'Copied'; };
+          end.querySelector('[data-done]').onclick = () => { cleanup(); done({ record: rec }); };
+          return;
+        }
         end.innerHTML = `<b class="mg-grade">${grade}</b><dl><dt>Accuracy</dt><dd>${res.accuracy}%</dd><dt>Perfect</dt><dd>${res.perfect}</dd><dt>Good</dt><dd>${res.good}</dd><dt>Missed</dt><dd>${res.miss}</dd><dt>Best combo</dt><dd>${res.maxCombo}</dd></dl><p class="mg-end-say">Haechan: ${esc(TALK.end[grade])}</p><button type="button">Continue</button>`;
         end.querySelector('button').focus();
         end.querySelector('button').onclick = () => { cleanup(); o.onDone?.(res); done(res); };
