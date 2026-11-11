@@ -181,7 +181,9 @@
     { n: "That was how Solar knew she remembered it. Yunjin had never in her life been loud about everything except one thing. The one thing was always the loudest thing in the room, the way a hole in a fence is the loudest part of the fence." },
     { n: "She bent down, under the noise, and put her mouth by Solar's ear." },
     { s: 'yunjin', f: 'neutral', t: "Later. Not in here. I'm not crying in front of Pyo." },
-    { s: 'yunjin', f: 'happy', t: "Also nice fever. Very convincing. Ten out of ten. I told everyone you threw up on the chandelier." },
+    // Nov 11 2026 (Kat): Yunjin was pulled away too, so she can't have been home spreading the fever; she got her own story at dawn.
+    { s: 'yunjin', f: 'happy', t: "Also, apparently I had it too. Same fever. Your dad told me on the stairs at six this morning, very calm, like a hostage negotiator. We were quarantined. Together. Very romantic." },
+    { s: 'yunjin', f: 'neutral', t: "So if anybody asks, I don't remember anything either. Which, honestly. Not even lying." },
 
     // Mrs. Bang drills the fever.
     { n: "Mrs. Bang put a plate of cooked dumplings in the middle of the table, steam coming off it in a sheet, and wiped her hands on her apron, and looked round the kitchen once, slowly, at all of them, like a schoolteacher checking that the whole class was looking at the board." },

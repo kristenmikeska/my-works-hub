@@ -24,3 +24,6 @@
 /* While a sim runs: no saving into her slots, and a small tag so she always knows it's the sim. */
 .g-episim .g-saves [data-save] { display: none; }
 .g-esim-tag { position: fixed; z-index: 2147483000; left: 10px; bottom: 8px; padding: 4px 9px; background: rgba(20, 7, 15, .78); color: var(--pink-2); font: italic 800 10px/1 var(--cond); letter-spacing: .22em; text-transform: uppercase; transform: skewX(-12deg); pointer-events: none; opacity: .8; }
+
+/* Nov 11, Kat: the sim should look exactly like the real epilogue, so the corner tag is hidden (it sat on the scrapbook bar). */
+.g-esim-tag { display: none !important; }

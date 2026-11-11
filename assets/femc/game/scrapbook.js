@@ -11,7 +11,7 @@
    half = next, ← / click the left half = back, C = chapters list, S or Esc = skip to the epilogue. Page turns are a lift and
    slide (a fade under reduced motion); a soft paper sound plays through the game's sfx when it has one. */
 window.FemcScrapbook = (() => {
-  const W = window, V = 1;
+  const W = window, V = 1; // classes gsb-* (not gs-*: the dialogue owns those)
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const base = () => (W.FemcGame && W.FemcGame.base) || (document.querySelector('script[src*="game/scrapbook.js"]')?.src.split('assets/')[0]) || '';
   const NAME = { runners: 'Runners', strangers: 'strangers', hoax: 'HOAX' };
@@ -36,48 +36,48 @@ window.FemcScrapbook = (() => {
       const el = document.createElement('div');
       el.className = `g-scrap w-${w}` + (reduced ? ' still' : '') + (has('ui/paper') ? ' paper-art' : '');
       if (has('ui/paper')) el.style.setProperty('--paper', `url("${art('ui/paper')}")`);
-      el.innerHTML = `<div class="gs-book"><div class="gs-leaf"></div></div>
-        <div class="gs-bar"><span class="gs-where"></span><span class="gs-keys">← → turn · C chapters</span><button type="button" class="gs-skip">Skip to the epilogue ▸</button></div>
-        <div class="gs-chapters" hidden></div>`;
+      el.innerHTML = `<div class="gsb-book"><div class="gsb-leaf"></div></div>
+        <div class="gsb-bar"><span class="gsb-where"></span><span class="gsb-keys">← → turn · C chapters</span><button type="button" class="gsb-skip">Skip to the epilogue ▸</button></div>
+        <div class="gsb-chapters" hidden></div>`;
       document.body.appendChild(el);
-      const $ = s => el.querySelector(s), leafBox = $('.gs-leaf');
+      const $ = s => el.querySelector(s), leafBox = $('.gsb-leaf');
       let at = 0, busy = false;
       const rnd = (seed, n) => { let x = Math.sin(seed * 9301 + 49297) * 233280; return Math.floor((x - Math.floor(x)) * n); };
       const sfx = () => { try { W.FemcGame?.sfx?.('femc-hover'); } catch (e) {} };
 
       const photo = p => has(`${w}/${String(p.n).padStart(2, '0')}`)
         ? `<img src="${art(`${w}/${String(p.n).padStart(2, '0')}`)}" alt="">`
-        : `<div class="gs-nophoto"><b>${esc(p.title)}</b><i>📷</i></div>`;
-      const tape = (seed, cls) => tapes.length ? `<img class="gs-tape ${cls}" src="${art(tapes[rnd(seed, tapes.length)])}" alt="">` : `<i class="gs-tape ${cls} t${rnd(seed, 3)}"></i>`;
-      const sticker = (seed, cls) => stickers.length ? `<img class="gs-sticker ${cls}" src="${art(stickers[rnd(seed, stickers.length)])}" alt="">` : '';
+        : `<div class="gsb-nophoto"><b>${esc(p.title)}</b><i>📷</i></div>`;
+      const tape = (seed, cls) => tapes.length ? `<img class="gsb-tape ${cls}" src="${art(tapes[rnd(seed, tapes.length)])}" alt="">` : `<i class="gsb-tape ${cls} t${rnd(seed, 3)}"></i>`;
+      const sticker = (seed, cls) => stickers.length ? `<img class="gsb-sticker ${cls}" src="${art(stickers[rnd(seed, stickers.length)])}" alt="">` : '';
       const html = L => {
         if (L.kind === 'cover') return has(`ui/cover-${w}`)
-          ? `<div class="gs-cover art"><img src="${art(`ui/cover-${w}`)}" alt=""><div class="gs-cover-t"><small>Previously in</small><b>${esc(NAME[w])}</b></div></div>`
-          : `<div class="gs-cover"><div class="gs-cover-t"><small>Previously in</small><b>${esc(NAME[w])}</b><em>${esc(PLACE[w])}</em></div><i class="gs-stitch"></i></div>`;
-        if (L.kind === 'div') return `<div class="gs-div${has(`ui/divider-${w}`) ? ' art' : ''}">${has(`ui/divider-${w}`) ? `<img src="${art(`ui/divider-${w}`)}" alt="">` : ''}<div><small>Chapter ${String.fromCharCode(65 + L.ci)}</small><b>${esc(L.c.name)}</b><em>${L.c.pages.length} page${L.c.pages.length === 1 ? '' : 's'}</em></div></div>`;
-        if (L.kind === 'now') return `<div class="gs-now"><b>Now.</b><p>${esc(NAME[w])} picks up where you left her.</p><button type="button" class="gs-go">Begin the epilogue ▸</button></div>`;
+          ? `<div class="gsb-cover art"><img src="${art(`ui/cover-${w}`)}" alt=""><div class="gsb-cover-t"><small>Previously in</small><b>${esc(NAME[w])}</b></div></div>`
+          : `<div class="gsb-cover"><div class="gsb-cover-t"><small>Previously in</small><b>${esc(NAME[w])}</b><em>${esc(PLACE[w])}</em></div><i class="gsb-stitch"></i></div>`;
+        if (L.kind === 'div') return `<div class="gsb-div${has(`ui/divider-${w}`) ? ' art' : ''}">${has(`ui/divider-${w}`) ? `<img src="${art(`ui/divider-${w}`)}" alt="">` : ''}<div><small>Chapter ${String.fromCharCode(65 + L.ci)}</small><b>${esc(L.c.name)}</b><em>${L.c.pages.length} page${L.c.pages.length === 1 ? '' : 's'}</em></div></div>`;
+        if (L.kind === 'now') return `<div class="gsb-now"><b>Now.</b><p>${esc(NAME[w])} picks up where you left her.</p><button type="button" class="gsb-go">Begin the epilogue ▸</button></div>`;
         const p = L.p, tilt = (rnd(p.n, 7) - 3) * 0.8, flip = p.n % 2 === 0;
-        return `<article class="gs-page${flip ? ' flip' : ''}">
-          <figure class="gs-polaroid" style="--tilt:${tilt}deg">${tape(p.n, 'tl')}${tape(p.n + 7, 'tr')}<div class="gs-photo">${photo(p)}</div><figcaption>${esc(p.title)}</figcaption></figure>
-          <div class="gs-text"><small>${esc(p.cite)}${p.outline ? ' · <span class="gs-soon">from the outline</span>' : ''}</small><h2>${esc(p.title)}</h2><p>${esc(p.cap)}</p></div>
+        return `<article class="gsb-page${flip ? ' flip' : ''}">
+          <figure class="gsb-polaroid" style="--tilt:${tilt}deg">${tape(p.n, 'tl')}${tape(p.n + 7, 'tr')}<div class="gsb-photo">${photo(p)}</div><figcaption>${esc(p.title)}</figcaption></figure>
+          <div class="gsb-text"><small>${esc(p.cite)}${p.outline ? ' · <span class="gsb-soon">from the outline</span>' : ''}</small><h2>${esc(p.title)}</h2><p>${esc(p.cap)}</p></div>
           ${sticker(p.n, 's1')}${sticker(p.n + 3, 's2')}</article>`;
       };
       const where = () => {
         const L = leaves[at];
-        $('.gs-where').textContent = L.kind === 'page' ? `${NAME[w]} · Chapter ${String.fromCharCode(65 + L.ci)}: ${L.c.name} · page ${L.p.n} of ${total}` : L.kind === 'div' ? `${NAME[w]} · Chapter ${String.fromCharCode(65 + L.ci)}` : NAME[w];
+        $('.gsb-where').textContent = L.kind === 'page' ? `${NAME[w]} · Chapter ${String.fromCharCode(65 + L.ci)}: ${L.c.name} · page ${L.p.n} of ${total}` : L.kind === 'div' ? `${NAME[w]} · Chapter ${String.fromCharCode(65 + L.ci)}` : NAME[w];
       };
       const show = (n, dir = 1) => {
         if (busy || n < 0 || n >= leaves.length) return;
         busy = true; const old = leafBox.firstElementChild;
-        const nw = document.createElement('div'); nw.className = 'gs-in ' + (dir > 0 ? 'from-r' : 'from-l'); nw.innerHTML = html(leaves[n]);
+        const nw = document.createElement('div'); nw.className = 'gsb-in ' + (dir > 0 ? 'from-r' : 'from-l'); nw.innerHTML = html(leaves[n]);
         leafBox.appendChild(nw); at = n; where(); sfx();
-        if (old) { old.className = 'gs-out ' + (dir > 0 ? 'to-l' : 'to-r'); }
-        setTimeout(() => { old && old.remove(); nw.className = ''; busy = false; const go = el.querySelector('.gs-go'); if (go) go.focus(); }, reduced ? 200 : 520);
+        if (old) { old.className = 'gsb-out ' + (dir > 0 ? 'to-l' : 'to-r'); }
+        setTimeout(() => { old && old.remove(); nw.className = ''; busy = false; const go = el.querySelector('.gsb-go'); if (go) go.focus(); }, reduced ? 200 : 520);
       };
       const next = () => (at >= leaves.length - 1 ? finish() : show(at + 1, 1));
       const back = () => show(at - 1, -1);
       const chapters = () => {
-        const box = $('.gs-chapters'); if (!box.hidden) { box.hidden = true; return; }
+        const box = $('.gsb-chapters'); if (!box.hidden) { box.hidden = true; return; }
         box.innerHTML = `<b>Chapters</b>${B.chapters.map((c, i) => `<button type="button" data-ci="${i}"><small>${String.fromCharCode(65 + i)}</small>${esc(c.name)}</button>`).join('')}<button type="button" data-ci="end">Skip to the epilogue ▸</button>`;
         box.hidden = false; box.querySelector('button').focus();
         box.onclick = e => { const b = e.target.closest('[data-ci]'); if (!b) return; box.hidden = true; if (b.dataset.ci === 'end') return finish(); const i = leaves.findIndex(L => L.kind === 'div' && L.ci === +b.dataset.ci); show(i, i > at ? 1 : -1); };
@@ -86,15 +86,15 @@ window.FemcScrapbook = (() => {
         if (!el.isConnected) return;
         e.stopPropagation();
         const k = e.key.toLowerCase();
-        if (!$('.gs-chapters').hidden) { if (k === 'escape' || k === 'c') { e.preventDefault(); $('.gs-chapters').hidden = true; } return; }
+        if (!$('.gsb-chapters').hidden) { if (k === 'escape' || k === 'c') { e.preventDefault(); $('.gsb-chapters').hidden = true; } return; }
         if (k === 'arrowright' || k === 'enter' || k === ' ' || k === 'd') { e.preventDefault(); next(); }
         else if (k === 'arrowleft' || k === 'a') { e.preventDefault(); back(); }
         else if (k === 'c') { e.preventDefault(); chapters(); }
         else if (k === 's' || k === 'escape') { e.preventDefault(); finish(); }
       };
       const finish = () => { window.removeEventListener('keydown', key, true); el.classList.add('closing'); setTimeout(() => { el.remove(); done(); }, reduced ? 100 : 450); };
-      el.querySelector('.gs-book').addEventListener('click', e => { if (e.target.closest('.gs-go')) return finish(); if (e.target.closest('button')) return; const r = el.querySelector('.gs-book').getBoundingClientRect(); (e.clientX < r.left + r.width * 0.3 ? back : next)(); });
-      $('.gs-skip').onclick = finish;
+      el.querySelector('.gsb-book').addEventListener('click', e => { if (e.target.closest('.gsb-go')) return finish(); if (e.target.closest('button')) return; const r = el.querySelector('.gsb-book').getBoundingClientRect(); (e.clientX < r.left + r.width * 0.3 ? back : next)(); });
+      $('.gsb-skip').onclick = finish;
       window.addEventListener('keydown', key, true);
       leafBox.innerHTML = `<div>${html(leaves[0])}</div>`; where();
     }));
