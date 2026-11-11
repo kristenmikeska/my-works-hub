@@ -341,7 +341,7 @@ A cute splash illustration in the Persona 3: Solstice style: clean anime illustr
 
 ## 45. The booth: singing rhythm game (Kat, Nov 10)
 
-For the Studio 4B singing game, a rhythm game played to "Runners" by CAMO: arrows rise to targets and Solar strikes a pose for each one while Haechan bops behind the glass. Every piece is optional: the game draws its own until yours arrive.
+For the Studio 4B singing game, a rhythm game played to "Runners" by CAMO: arrows rise to targets and whoever is singing strikes a pose for each one while the other bops behind the glass (Solar sings "Runners"; Haechan sings YOU, WANTCHU and Grey Rain). Every piece is optional: the game draws its own until yours arrive.
 
 **[ ] 45A. The booth, looking out through the glass**  
 Attach: `BG - Studio 4B.png`  
@@ -408,6 +408,27 @@ Attach: `Solar (Runners).png`, `Haechan (Runners).png`, `BG - Studio 4B.png`
 Save as: `sing-title.png`
 ```
 A splash illustration in the Persona 3: Solstice style: clean anime illustration, bold clean lineart, soft cel shading, punchy pink-and-black rhythm-game look, landscape 16:9: split by the booth's glass window down the middle. On the right, the young woman (first attached image) in big headphones at the microphone mid-pose, singing, pink light and four big glowing arrows (left, down, up, right) rising behind her. On the left, the young man (second image) at the attached studio's mixing desk, headphones on, nodding along, watching her through the glass. Pink soundwaves cross the glass between them. Leave the top third fairly clear for a title. No text.
+```
+
+**[ ] 45K. Haechan's singing poses** (his songs: he takes the mic)  
+Attach: `Haechan (Runners).png`  
+Save as: `sing-haechan-poses.png`
+```
+A 3 × 2 character pose sheet in the Persona 3: Solstice style: clean anime illustration, bold clean lineart, soft cel shading, punchy pink-and-black rhythm-game look, plain transparent background (or plain white), clear space between cells, nothing overlapping, the same young man as the attached image in all six, the same size, full body from the knees up, legs cut at the same height in every cell. Big black studio headphones around his neck with one ear cup pressed to his ear, black hoodie with the sleeves pushed up, silver rings, a wireless microphone in his right hand, messy black hair. Cool, effortless rhythm-game poses, in reading order: 1 IDLE (a lazy sway, eyes half closed, mic loose at his chin), 2 LEFT (leaning hard to his left, mic pointed left), 3 DOWN (dipping low, singing down into the mic, a smirk), 4 UP (head thrown back on a high note, free hand up), 5 RIGHT (leaning hard to his right, free hand flung out), 6 MISS (wincing, a flat embarrassed laugh, hand over his eyes). Strong silhouettes, motion in the hair and hoodie strings. No text.
+```
+
+**[ ] 45L. Solar bopping behind the glass** (two frames, for his songs)  
+Attach: `Solar (Runners).png`  
+Save as: `sing-solar-bop.png`
+```
+A 2 × 1 sheet of two frames in the Persona 3: Solstice style: clean anime illustration, bold clean lineart, soft cel shading, punchy pink-and-black rhythm-game look, plain transparent background (or plain white), clear space between them, the same young woman as the attached image in both, the same size and framing, from the waist up, sitting at a mixing desk seen from the front (only the desk's front edge with a few glowing pink faders at the bottom of each frame). Big studio headphones on, an oversized cream knit sweater, long dark hair, nodding along with a teasing half-smile, one finger near the talkback button. Frame 1: head up, shoulders up, on the beat. Frame 2: head dipped in a nod, eyes closed, smiling. Everything else identical so the two frames loop smoothly. No text.
+```
+
+**[ ] 45M. Haechan's health-bar icon**  
+Attach: `Haechan (Runners).png`  
+Save as: `sing-icon-haechan.png`
+```
+A small square icon in the Persona 3: Solstice style: clean anime illustration, bold clean lineart, soft cel shading, punchy pink-and-black rhythm-game look, plain transparent background: the young man in the attached image as a cute chibi head, big black studio headphones on, singing with a little smirk and his eyes closed, a music note beside him, a thick dark outline around the whole head so it reads at small size. Centred, nothing else. No text.
 ```
 
 ---
