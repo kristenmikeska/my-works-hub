@@ -209,6 +209,7 @@ window.FemcScene = (() => {
     G.eventFaces?.(vis.faces);
     const placeBefore = G.facePlace ? G.facePlace() : '';
     G.facePlace?.(vis.place);
+    if (!replay) window.FemcIndex?.went(vis.place); // the Index's seen log (index.js): places and speakers met in live scenes
     // Seasonal S.E.E.S. faces (core.js seasonFace): the backdrop and, in a replay, its day; paintVis keeps it current.
     const seasonBefore = G.faceScene ? G.faceScene() : null;
     let gained = opts.resume?.gained || 0;
@@ -455,6 +456,7 @@ window.FemcScene = (() => {
       if (line.music) { Music.set(line.music); picked = true; } else if (!picked && line.place) Music.set(G.moodFor(line.place, line.time), { under: true });
       const apply = () => {
         vis.place = line.place; vis.time = line.time || ''; vis.bg = line.bg || null; vis.cg = null; G.facePlace?.(vis.place);
+        if (!replay) window.FemcIndex?.went(vis.place);
         if (line.date) { if (replay) vis.date = mdLabel(line.date); else { G.setDate(line.date); vis.date = null; } }
         paintVis();
       };
@@ -635,7 +637,7 @@ window.FemcScene = (() => {
         if (line.s === 'solar') { nameEl.textContent = 'Solar'; img.classList.add('dim'); if (!vis.cg) showMe(line.f); }
         else {
           nameEl.textContent = G.name(line.s);
-          if (!replay) window.FemcGlitch?.heard(line.s);
+          if (!replay) { window.FemcGlitch?.heard(line.s); window.FemcIndex?.heard(line.s); }
           if (!vis.cg) showPortrait(line.s, line.f);
           showMe(null);
         }
