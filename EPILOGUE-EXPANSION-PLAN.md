@@ -8,7 +8,7 @@ Approved in chat. Work through these in order; show Kat writing drafts before wi
   - She tells him: he's watching the snow and clocks with her, ready on the roof.
   - She keeps it: he notices anyway, and it comes out as a fight.
   - Hanni or Minji get the same choice on their routes.
-- [~] **2–3 quiet intimate scenes in Manhattan** (two in: the second pillow, the hang-up; the piano one still open) where nothing is wrong (falling asleep on the phone on his Bushwick nights, a lazy morning before Mrs. Oh arrives, the piano).
+- [~] **2–3 quiet intimate scenes in Manhattan** (two in: the second pillow, the hang-up; the piano one in Nov 11) where nothing is wrong (falling asleep on the phone on his Bushwick nights, a lazy morning before Mrs. Oh arrives, the piano).
 - [x] Optional: Marco's guest list asks "Who do I put him down as?" (in the game, Nov 11: 12/31 at the desk, Haechan route; three answers, none says "boyfriend": mine (in the margin), friend, or blank till tomorrow. The ask nods to the box once, after she answers. Flags epi-r-marco-mine / -friend / -blank.)
 
 ## 2. Minigames (epilogue-flavoured, instead of battles)

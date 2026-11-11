@@ -1,6 +1,6 @@
 # Runners epilogue: the piano at night (draft for Kat, Nov 11)
 
-Haechan route only. **Nothing here is in the game yet.** Read it, mark what you'd change, and I'll wire it in.
+Haechan route only. **In the game (Kat approved, Nov 11):** story-nyc2.js `epi-r-hc-piano`.
 
 **Where it goes:** 12/27, Evening, a new event (`epi-r-hc-piano`, title *una corda*), Living Room. That slot is free on the Haechan route. Only the hangouts (filtration, the audible) could fill it.
 - The family is still in Greenwich until Sunday at seven. Jaehyun came back that morning, lost forty-one to one at Widowmaker, and goes to bed early. Mrs. Oh is off.
