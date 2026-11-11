@@ -19,7 +19,7 @@ Approved in chat. Work through these in order; show Kat writing drafts before wi
 - [ ] **"Hold on"** for the glitch nights: keep her in place against the pull.
 
 ## 3. Lore for new players
-- [ ] **Scrapbook "Previously"** (moment lists drafted Nov 10: `drafts/SCRAPBOOK-MOMENTS-DRAFT.md`, Kat to cut) at the start of each epilogue: polaroid pages of real moments from the novel, with captions. Kat picks ~6–10 moments per world (or Claude drafts a list for her to cut).
+- [ ] **Scrapbook "Previously"** (moment lists approved Nov 10: `SCRAPBOOK-MOMENTS.md`, Runners 40 / strangers 35 / HOAX 35 pages; pictures are FEMC-ART-TODO section 46) at the start of each epilogue: polaroid pages of real moments from the novel, with captions. Kat picks ~6–10 moments per world (or Claude drafts a list for her to cut).
 - [ ] **Index** in the menu: people, places and terms, filled in as you meet them.
 
 ## 4. HOAX social app
