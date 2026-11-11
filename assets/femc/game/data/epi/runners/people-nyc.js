@@ -707,10 +707,12 @@
         ] }
       ] },
       { place: 'Manhattan · Upper East Side', time: 'Late Night', soft: true },
+      { cg: 'epi-r-edge-of-light' },
       { n: "At the awning he stopped where he always stopped, at the edge of the light, because the night man was right there behind the glass and because he had a train to catch at three to a couch in Bushwick, and he pulled her in by the front of the good coat and kissed her, slow, cold-mouthed, his hand flat on the back of her neck under her hair, at the edge of an empty Fifth Avenue at half past two in the morning with the lights changing over them for nobody." },
       { s: 'haechan', f: 'neutral', t: "Go in. Socks off before the hall. Your mother hears floors." },
       { s: 'solar', f: 'happy', t: "How do you know my mother hears floors?" },
       { s: 'haechan', f: 'neutral', t: "Everybody's mother hears floors." },
+      { cg: null },
       { place: 'Manhattan · The Building · Service Elevator', time: 'Late Night', soft: true },
       { n: "She went in. She didn't look back at the sidewalk. She rode the service car up eleven floors with her boots in her hand and her mouth still cold and his voice still going in her head, *listen*, and in the steel wall of the elevator her reflection rode up with her, and kept perfect time, and she didn't trust it at all." }
     ] },

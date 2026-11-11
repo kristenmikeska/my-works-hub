@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Kat's minigame art: Regionals (mg-ow-*, FEMC-ART-TODO 43), the dumpling game (cook-*, 44), the booth (sing-*, 45).
+"""Kat's minigame art: Regionals (mg-ow-*, FEMC-ART-TODO 43), the dumpling game (cook-*, 44), the booth (sing-*, 45), the listen game (listen-*, 47: street, things sheet, stickers sheet, haechan).
 
   python3 tools/femc-minigame-art.py        every New Adds/mg-ow-* | cook-* | sing-* (.png .jpg .jpeg .webp) that's there
                                              (re-run any time; it replaces). Kat's files are only read.
@@ -40,8 +40,12 @@ SING_SHEETS = {  # name: (cols, rows, frame names in reading order, canvas mode,
     'solar-bop': (2, 1, ['solar-bop-0', 'solar-bop-1'], 'feet', {}),
     # all four arrows point UP (sing.js rotates them per lane); lane colours hot pink, rose, blush, coral; then the target, the splash
     'arrows': (3, 2, ['arrow-0', 'arrow-1', 'arrow-2', 'arrow-3', 'target', 'splash'], 'center', {'fill': {'arrow-0', 'arrow-1', 'arrow-2', 'arrow-3'}}),
-    'ratings': (2, 2, ['rating-perfect', 'rating-good', 'rating-ok', 'rating-miss'], None, {'holes': {'rating-good': 60, 'rating-ok': 60, 'rating-miss': 500}}  # min px (MISS keeps its drop's shine)),
+    'ratings': (2, 2, ['rating-perfect', 'rating-good', 'rating-ok', 'rating-miss'], None, {'holes': {'rating-good': 60, 'rating-ok': 60, 'rating-miss': 500}}),  # holes: min px (MISS keeps its drop's shine)
     'countdown': (3, 1, ['ready', 'set', 'sing'], None, {}),
+}
+LISTEN_SHEETS = {  # the listen game (FEMC-ART-TODO 47): the six things and their stickers, in listen.js THINGS order
+    'things': (3, 2, ['obj-heat', 'obj-train', 'obj-light', 'obj-cab', 'obj-steam', 'obj-rad'], 'center', {}),
+    'stickers': (3, 2, ['sticker-heat', 'sticker-train', 'sticker-light', 'sticker-cab', 'sticker-steam', 'sticker-rad'], 'center', {}),
 }
 COOK_SHEETS = {
     'icons': (3, 2, ['icon-perfect', 'icon-okay', 'icon-bag', 'icon-golden', 'icon-burnt', 'icon-steamed'], 'center', {}),
@@ -163,6 +167,14 @@ def main():
         if name in SING_SHEETS: sheet(f, SING_SHEETS[name], SING); continue
         dst = SING / f'{name}.webp'; im = Image.open(f)
         if name in ('booth', 'haechan-desk', 'title'): fit(im.convert('RGB')).save(dst, 'WEBP', quality=88)
+        else: fit(alpha(im)).save(dst, 'WEBP', quality=90, alpha_quality=100)
+        print(f.name, '->', dst.relative_to(ROOT))
+    LIS = ART / 'listen'; LIS.mkdir(parents=True, exist_ok=True)
+    for f in files('listen-'):
+        name = f.stem[len('listen-'):]
+        if name in LISTEN_SHEETS: sheet(f, LISTEN_SHEETS[name], LIS); continue
+        dst = LIS / f'{name}.webp'; im = Image.open(f)
+        if name == 'street': fit(im.convert('RGB')).save(dst, 'WEBP', quality=86)
         else: fit(alpha(im)).save(dst, 'WEBP', quality=90, alpha_quality=100)
         print(f.name, '->', dst.relative_to(ROOT))
     for f in files('mg-ow-'):

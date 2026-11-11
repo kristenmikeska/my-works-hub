@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 10, after art batch 150):** ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (sections 43-45: the Regionals player cards; Haechan's apron faces and the dumpling title card; 8 booth pieces: both singers' poses and bops, Haechan's talkback faces, the two health-bar icons, the title card) · Runners: 6 Manhattan CGs (section 42; 42A and 42B were found in New Adds' Sophie poses folder, not wired yet) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · **the epilogue scrapbook** (section 46, Nov 10: 110 "Previously" photos, Runners 40 / strangers 35 / HOAX 35, plus 11 covers, paper, dividers, tape and sticker sheets) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
+**To make (updated Nov 10, after art batch 150):** ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (sections 43-45: the Regionals player cards; Haechan's apron faces and the dumpling title card; 8 booth pieces: both singers' poses and bops, Haechan's talkback faces, the two health-bar icons, the title card; section 47: the listen game's street, its six things, their stickers and Haechan) · Runners: 4 Manhattan CGs (section 42) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · **the epilogue scrapbook** (section 46, Nov 10: 110 "Previously" photos, Runners 40 / strangers 35 / HOAX 35, plus 11 covers, paper, dividers, tape and sticker sheets) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
 
 ## ⭐ Outfits, HD poses and banners: in `FEMC-SKIN-ART.md` (Nov 7)
 
@@ -147,22 +147,6 @@ A portrait sheet: 3 columns × 2 rows on a plain white background, with clear em
 
 ---
 ## 42. Runners: one more Manhattan CG (ChatGPT; realistic; Kat, Nov 9)
-
-**[ ] 42A. Runners: the edge of the light**  
-For Haechan's "one set" scene, 12/29 late: the goodbye kiss under the awning at 2:30 a.m.  
-Attach: `CG - style (Runners).png`, `BG - Upper East Side at night.png`, `Solar (Runners).png`, `Haechan (Runners).png`  
-Save as: `epi-r-edge-of-light.png`
-```
-A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: a quiet Upper East Side street off Fifth Avenue at half past two in the morning, a fresh inch of untouched snow on the sidewalk, a dark green building awning with brass poles and warm light spilling from the lobby glass behind it, bare trees wrapped in tiny gold lights, fine snow still falling, the deep-blue night empty in both directions and a traffic light glowing green far down the avenue for nobody. Haechan and Solar stand just at the edge of the awning's pool of light, not under it. Haechan, his black hair messy under the raised hood of a black hoodie worn beneath a long black coat, heavy black headphones around his neck, has pulled her in by the front of her coat with one hand and has his other hand flat on the back of her neck under her hair, kissing her slowly; his face is turned down to hers, eyes closed. Solar, in a long tailored camel wool coat over a cream turtleneck, her long dark hair loose with snow caught in it, is up on her toes in her boots, one gloved hand holding his coat sleeve. Snowflakes caught in both their hair, their breath faintly visible in the cold. Behind them, blurred through the lobby glass, the shape of a night doorman at his desk, not looking. Warm gold light on the side of their faces from the lobby, cool blue night everywhere else. Intimate, cold, quiet. Keep both faces exactly like the attached references. No text, no logos.
-```
-
-**[ ] 42B. Runners: show me again**  
-For "the list" on 12/31 (after): the dumplings, four to half past six, every route.  
-Attach: `CG - style (Runners).png`, `BG - Lee Apartment Kitchen.png`, `Solar (Runners).png`, `Haechan (Runners).png`  
-Save as: `epi-r-dumplings.png`
-```
-A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: a big cream-and-marble kitchen in a Fifth Avenue apartment late on a winter afternoon, low golden sunset light coming through the tall windows over the snowy Manhattan skyline, brass pendant lamps, steam rising softly off a pot on the range. The long marble island is dusted with flour and covered in neat rows of pleated homemade dumplings on silver serving trays, a bowl of filling, a stack of round wrappers, a small dish of water, and a marble rolling pin. Solar sits on a stool at the island, her long dark hair tied back loosely with strands falling out, sleeves of a soft cream sweater pushed up, flour on her hands and a smudge on her cheek, laughing despite herself and a little flustered. Haechan stands close beside her, leaning in over her shoulder, in a black T-shirt with a tea towel slung over one shoulder, his black hair messy, his floury fingers over hers, guiding them along the edge of one dumpling to crimp the pleats; his face is calm and completely absorbed, a very faint smile. In front of her, one lumpy, badly folded dumpling sits apart from his perfect rows. Warm, domestic, cosy, golden. Keep both faces exactly like the attached references. No text, no logos.
-```
 
 **Arrival snapshots (42C-42E).** New Year's Eve, "They came in two waves." Each one is meant to pop up for just the arrival beat and clear a line or two later, like a photo going off, so they're framed like candid snapshots: a little off-centre, mid-motion, everyone caught mid-sentence. Faces: the "(Runners NYE)" references are in Place Prompt Attachments.
 
@@ -1144,6 +1128,38 @@ Attach: `Stickers - style.png`, `CG - style (HOAX).png`
 Save as: `scrap-stickers-hoax.png`
 ```
 A 3 × 3 sticker sheet in the cute die-cut sticker style of the FIRST attached image, coloured to suit the story world of the SECOND image, on a plain transparent background (or plain white): nine separate stickers, each with a thick white die-cut border and a soft shadow, clear space between cells, nothing overlapping or touching the edges. In reading order: a big fluffy white Samoyed's smiling face; a very tiny fluffy dog; a croissant with a pink icing heart; a large strawberry boba; a little rainbow plush bear; a pair of white ice skates; a ballot box; a heart-shaped cookie dusted with flour; a chalk-drawn heart. Simple, charming, readable at small size. No people, no text, no letters, no logos.
+```
+
+---
+
+## 47. Listen: the 2 a.m. street game (Kat, Nov 10)
+
+For the listen game on Fifth Avenue at 2 a.m.: Haechan plays a sound of the city and you find the thing in the picture making it. The street is the backdrop; the six things are separate pieces placed on it, so each can glow when it's picked. Optional: the game draws its own until yours arrive.
+
+**[ ] 47A. The street**  
+Attach: `BG - Upper East Side at night.png`  
+Save as: `listen-street.png`
+```
+A wide 16:9 background in the Persona 3: Solstice style: clean anime illustration, soft cel shading, moody winter night, pink and warm gold accents, no people, no cars: Fifth Avenue in New York at two in the morning after fresh snow, seen from the sidewalk: grand old apartment buildings with green awnings on the left, the low stone wall of Central Park and bare trees strung with tiny lights on the right, an untouched inch of snow on the sidewalk, the empty avenue running away into soft blue darkness, fine snow drifting. Keep the lower third fairly simple and open (things are placed there by the game). No traffic light, no cab, no steam, no subway entrance (those are separate pieces). No text.
+```
+
+**[ ] 47B. The six things on the street**  
+Save as: `listen-things.png`
+```
+A 3 × 2 sheet of six separate objects in the Persona 3: Solstice style: clean anime illustration, soft cel shading, moody winter night, pink and warm gold accents, each on a plain transparent background (or plain white), each centred in its cell with clear space around it and nothing touching the edges, all drawn from the same eye-level street view and lit by warm streetlamp light with a little snow on top: 1 a single lit apartment window in a stone wall, warm gold light, an old cast-iron radiator visible under the sill inside; 2 a green-railed New York subway stairway entrance with its round green globe lamp; 3 a New York traffic light on a black pole, glowing green; 4 a yellow New York taxi cab seen from the side, headlights on, slush spraying from its tires; 5 a round iron street grate in the snow with soft white steam rising from it; 6 a low basement window with an iron grille, warm orange light and an old radiator behind the glass. No text, no logos, no people.
+```
+
+**[ ] 47C. The sound stickers** (the notebook at the top: one per sound found)  
+Save as: `listen-stickers.png`
+```
+A 3 × 2 sticker sheet in a cute die-cut sticker style, pink-and-black Persona 3: Solstice palette with warm gold, on a plain transparent background (or plain white), each sticker with a thick white die-cut border and a soft shadow, clear space between, nothing touching: 1 a glowing window with a little musical note, 2 a subway entrance with a rumble line under it, 3 a traffic light with a tiny lightning tick, 4 a yellow cab with a splash, 5 a steam grate with curly steam, 6 a radiator with a "knock knock" spark. In reading order. No text except the little doodle lines.
+```
+
+**[ ] 47D. Haechan, listening**  
+Attach: `Haechan (Runners).png`  
+Save as: `listen-haechan.png`
+```
+A waist-up figure in the Persona 3: Solstice style: clean anime illustration, soft cel shading, moody winter night, pink and warm gold accents, plain transparent background (or plain white): the young man in the attached image on a snowy street at night in a long black coat with the collar up and a dark scarf, snowflakes in his messy black hair, his head tilted, eyes half closed, one finger raised as if to say "listen", a small private smile. Facing slightly to the right. No text.
 ```
 
 ---

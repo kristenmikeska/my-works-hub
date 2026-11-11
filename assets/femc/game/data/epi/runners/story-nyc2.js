@@ -1699,8 +1699,10 @@
     { s: 'solar', f: 'flustered', t: "You said *fold it over.*" },
     { s: 'haechan', f: 'neutral', t: "I said fold it over and *pleat.* I demonstrated the pleat four times." },
     { s: 'solar', f: 'flustered', t: "SHOW ME AGAIN." },
+    { cg: 'epi-r-dumplings' },
     { n: "He showed her again, his floury fingers over hers, the little crimp, crimp, crimp along the edge. She did another bag." },
     { s: 'haechan', f: 'neutral', t: "Okay. You do the flat ones." },
+    { cg: null },
     { ifEpiRoute: 'cover', then: [
       { n: "Hyein's came out looking like small hats. Hanni's came out perfect, every one, which nobody had expected and which Hanni refused to explain beyond *my mom.* Haechan picked one of hers up and looked at it for a long time and set it down in the row with his own, without a word, which from him was a medal." }
     ] },
