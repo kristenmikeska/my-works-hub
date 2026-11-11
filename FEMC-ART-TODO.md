@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 11, after art batch 151):** **Solar's HOAX faces remade in Cherry's style** (section 48: 4 sheets + 1 optional) · ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (sections 44-45: Haechan's apron faces; 3 booth pieces for his songs: his singing poses, Solar bopping behind the glass, his health-bar icon; section 47: the listen game's street, its six things, their stickers and Haechan) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · **the epilogue scrapbook** (section 46, Nov 10: 110 "Previously" photos, Runners 40 / strangers 35 / HOAX 35, plus 11 covers, paper, dividers, tape and sticker sheets) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
+**To make (updated Nov 11, after art batch 151):** **Solar's HOAX faces remade in Cherry's style** (section 48: 4 sheets + 1 optional) · **Hwatu cards** (section 49: 12 month sheets, a back, a blanket, an optional title) · ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (sections 44-45: Haechan's apron faces; 3 booth pieces for his songs: his singing poses, Solar bopping behind the glass, his health-bar icon; section 47: the listen game's street, its six things, their stickers and Haechan) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · **the epilogue scrapbook** (section 46, Nov 10: 110 "Previously" photos, Runners 40 / strangers 35 / HOAX 35, plus 11 covers, paper, dividers, tape and sticker sheets) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
 
 ## ⭐ Outfits, HD poses and banners: in `FEMC-SKIN-ART.md` (Nov 7)
 
@@ -183,6 +183,116 @@ Attach: `CG - Cherry (HOAX new year).png`, `CG - Solar (HOAX new year).png`
 Save as: `solar-hoax-newyear-remake-portraits.png`
 ```
 A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. Draw the girl from the SECOND attached image (Solar Kim): keep HER face, eye shape, features and her long dark wavy hair, so she's clearly the same person, but redraw her completely in the art style of the FIRST attached image (Cherry): copy that image's painted rendering, skin, eyes, line, lighting, colour, head-and-shoulders framing and size exactly, so the two girls look like they come from the same game. Do NOT give her Cherry's face. The same person in all six cells, facing the camera. Outfit: a New Year hanbok: a navy jeogori embroidered with gold flowers, a cream collar and navy ribbon tie, a small gold flower hairpin above one ear. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+---
+## 49. Hwatu (Go-Stop) cards and table (strangers minigame; Kat, Nov 11)
+
+The Hwatu game plays now with drawn stand-in cards; these replace them. **The 12 month sheets are the main thing** (4 cards each, always in the order the prompt lists). The back, the blanket and the title card are small extras. No attachments needed. The players' faces use the strangers portraits already in the game (Solar, her mother, and a Thursday wife), so no portraits here.
+
+**[ ] 49-01. January · Pine**  
+Attach: nothing  
+Save as: `hwatu-month-01.png`
+```
+A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Pine suit. Cards, left to right: (1) BRIGHT: a white crane with a red sun behind it, under pine branches; (2) RIBBON: pine branches with a red poetry ribbon that has writing on it; (3) and (4) JUNK: plain pine branches and hills, no animal or ribbon (make the two slightly different). No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
+```
+
+**[ ] 49-02. February · Plum blossom**  
+Attach: nothing  
+Save as: `hwatu-month-02.png`
+```
+A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Plum blossom suit. Cards, left to right: (1) ANIMAL: a small green bush warbler on a plum branch with red blossoms; (2) RIBBON: plum blossoms with a red poetry ribbon that has writing; (3) and (4) JUNK: plain plum branches with red blossoms. No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
+```
+
+**[ ] 49-03. March · Cherry blossom**  
+Attach: nothing  
+Save as: `hwatu-month-03.png`
+```
+A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Cherry blossom suit. Cards, left to right: (1) BRIGHT: a red-and-white festival curtain under pink cherry blossoms; (2) RIBBON: cherry blossoms with a red poetry ribbon that has writing; (3) and (4) JUNK: plain cherry blossoms. No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
+```
+
+**[ ] 49-04. April · Black bush clover (wisteria)**  
+Attach: nothing  
+Save as: `hwatu-month-04.png`
+```
+A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Black bush clover (wisteria) suit. Cards, left to right: (1) ANIMAL: a cuckoo flying under a dark hanging bush-clover branch, a crescent moon; (2) RIBBON: the dark branches with a plain red ribbon (no writing); (3) and (4) JUNK: plain dark hanging branches. No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
+```
+
+**[ ] 49-05. May · Orchid (iris)**  
+Attach: nothing  
+Save as: `hwatu-month-05.png`
+```
+A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Orchid (iris) suit. Cards, left to right: (1) ANIMAL: a wooden eight-plank bridge among purple irises; (2) RIBBON: irises with a plain red ribbon (no writing); (3) and (4) JUNK: plain irises. No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
+```
+
+**[ ] 49-06. June · Peony**  
+Attach: nothing  
+Save as: `hwatu-month-06.png`
+```
+A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Peony suit. Cards, left to right: (1) ANIMAL: two butterflies over red peonies; (2) RIBBON: peonies with a blue ribbon; (3) and (4) JUNK: plain peonies. No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
+```
+
+**[ ] 49-07. July · Red bush clover**  
+Attach: nothing  
+Save as: `hwatu-month-07.png`
+```
+A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Red bush clover suit. Cards, left to right: (1) ANIMAL: a wild boar among red bush clover; (2) RIBBON: red bush clover with a plain red ribbon (no writing); (3) and (4) JUNK: plain red bush clover. No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
+```
+
+**[ ] 49-08. August · Empty mountain (pampas)**  
+Attach: nothing  
+Save as: `hwatu-month-08.png`
+```
+A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Empty mountain (pampas) suit. Cards, left to right: (1) BRIGHT: a huge full moon rising over a grassy hill against a red sky; (2) ANIMAL: three geese flying across a red sky over the hill; (3) and (4) JUNK: the plain grassy hill under a red sky. No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
+```
+
+**[ ] 49-09. September · Chrysanthemum**  
+Attach: nothing  
+Save as: `hwatu-month-09.png`
+```
+A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Chrysanthemum suit. Cards, left to right: (1) ANIMAL: a red sake cup with chrysanthemums; (2) RIBBON: chrysanthemums with a blue ribbon; (3) and (4) JUNK: plain chrysanthemums. No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
+```
+
+**[ ] 49-10. October · Maple**  
+Attach: nothing  
+Save as: `hwatu-month-10.png`
+```
+A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Maple suit. Cards, left to right: (1) ANIMAL: a deer under red maple leaves; (2) RIBBON: maple leaves with a blue ribbon; (3) and (4) JUNK: plain red maple leaves. No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
+```
+
+**[ ] 49-11. November · Paulownia**  
+Attach: nothing  
+Save as: `hwatu-month-11.png`
+```
+A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Paulownia suit. Cards, left to right: (1) BRIGHT: a phoenix (a long-tailed bird of paradise) under paulownia leaves; (2) DOUBLE JUNK: paulownia leaves with a colored bottom band marking it as worth double; (3) and (4) JUNK: plain paulownia leaves. No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
+```
+
+**[ ] 49-12. December · Rain**  
+Attach: nothing  
+Save as: `hwatu-month-12.png`
+```
+A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Rain suit. Cards, left to right: (1) BRIGHT: a man in a straw hat holding an umbrella in the rain, a frog by a willow; (2) ANIMAL: a swallow flying through willow branches in the rain; (3) RIBBON: willow branches with a ribbon in the rain; (4) DOUBLE JUNK: a dark stormy drum-and-lightning design. No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
+```
+
+**[ ] 49-B. The card back**  
+Attach: nothing  
+Save as: `hwatu-back.png`
+```
+The back of one Korean hwatu playing card, alone on a plain white background: a tall rounded rectangle in 2:3 proportion, solid deep red with a thin darker red border and a small, simple traditional emblem in the centre. Flat printed look, no shadow, nothing else in the picture, no text.
+```
+
+**[ ] 49-F. The blanket on the table**  
+Attach: nothing  
+Save as: `hwatu-felt.png`
+```
+A seamless, tileable square texture seen straight from above: a thick, slightly worn dark olive-green wool blanket like the one Korean families spread on the floor or table for Go-Stop, soft fibres, a faint woven pattern, even lighting with no shadows, no objects, no edges, no text.
+```
+
+**[ ] 49-T. Title card (optional)**  
+Attach: `BG - Lee Front Room (Strangers).png` if you have it, otherwise nothing  
+Save as: `hwatu-title.png`
+```
+A 16:9 realistic painted still, seen from just above a low table in an elegant Korean family's sunroom at night in 2013: a fan of hwatu cards face down on a dark green wool blanket, a few face up (a crane under a red sun, a full moon over a hill), small stacks of coins, a cup of barley tea, a woman's hand with a jade ring and a fountain pen resting nearby. Warm lamp light, cool dark windows behind. No faces, no text.
 ```
 
 ---
