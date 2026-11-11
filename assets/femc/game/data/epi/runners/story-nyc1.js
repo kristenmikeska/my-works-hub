@@ -311,7 +311,8 @@
       ] },
       { t: "(I saw it.)", then: [
         { s: 'solar', f: 'serious', t: "I saw it." },
-        { s: 'jaehyun', f: 'serious', t: "That's not a place." },
+        // Nov 11 2026 (Kat): searchers know
+        { s: 'jaehyun', f: 'serious', t: "That's not a place. Not here." },
         { s: 'solar', f: 'neutral', t: "No." },
         { n: "He waited. She didn't say anything else. She couldn't have, and he must have seen that, because he didn't ask. He just turned and looked out the back window again, at the empty road behind them, at the gantry going small, and then at her, and filed it, the way he filed a coverage he'd never seen before: not understood, not dismissed. Kept." },
         { s: 'jaehyun', f: 'neutral', t: "Okay." }
@@ -668,7 +669,8 @@
         { from: 'danielle', t: "I want to be clear, I don't care who she dates. Honestly. Minji Kim is very talented." },
         { from: 'danielle', t: "I care that she tells the house she's in her room and she isn't. Someone should know where she sleeps. I assumed you'd want it to be you." }
       ], contact: 'Danielle Marsh' },
-      { n: "Kim Minji. The film girl. He'd seen her at the lab glass, at Regionals, in the corner of a hundred of his sister's stories with a camera up and her face behind it. He hadn't thought anything of it. That was the thing that went in under his ribs, standing in the dark kitchen. Not the girl. That he hadn't thought anything of it, and somebody else had, and had been standing across the street with a lens." }
+      // Nov 11 2026 (Kat): searchers know
+      { n: "Kim Minji. The film girl. He'd seen her at the lab glass, at Regionals, over there for months in a dormitory with a dog by the door, in the corner of a hundred of his sister's stories with a camera up and her face behind it. He hadn't thought anything of it. That was the thing that went in under his ribs, standing in the dark kitchen. Not the girl. That he hadn't thought anything of it, and somebody else had, and had been standing across the street with a lens." }
     ] },
     { ifEpiRoute: 'cover', then: [
       { n: "Then December. And none of it was a boy." },
@@ -729,7 +731,8 @@
     { n: "Nine days from now." },
     { n: "He didn't know what he was looking at. He'd watched film his whole life, ten thousand hours of it, coverages and blitzes and a hundred ways a play could go wrong in the half-second you weren't looking, and he had never once in all of it not known what he was looking at." },
     { n: "Phones glitched. That was what she'd say, if he asked. She'd say it well, in their father's voice." },
-    { n: "Yesterday a green sign had gone over the car on the Thruway with a word on it that wasn't a place, and he'd turned in his seat and watched it go, and filed it." },
+    // Nov 11 2026 (Kat): searchers know
+    { n: "Yesterday a green sign had gone over the car on the Thruway with a word on it that had no business being in New York, a word he'd last read over there, and he'd turned in his seat and watched it go, and filed it." },
     { ifFlag: 'epi-r-car-fetched', then: [
       { n: "He'd filed a door on the second floor of Alpha Phi with four squares of tape on it, holding nothing." }
     ] },
@@ -1225,7 +1228,8 @@
       { n: "The room went gray-gold. Four hundred windows. Somewhere uptown the midnight bells were finishing, and somewhere on Park her parents were standing in a pew with the Kwons, and on the eleventh floor of a building on Fifth Avenue a boy from Syracuse was sitting on the window seat of the room she'd grown up in, on Christmas, admitted through the front of her life by her own hand, and she knew every reason her brother would object, and had decided anyway." },
       { s: 'haechan', f: 'neutral', t: "Leave them open." },
       { s: 'solar', f: 'neutral', t: "The curtains?" },
-      { s: 'haechan', f: 'neutral', t: "I want to see where you were." },
+      // Nov 11 2026 (Kat): searchers know
+      { s: 'haechan', f: 'neutral', t: "I want to see what you grew up looking at." },
       { n: "She left them open. She crossed the room to him in the not-dark and he stood up off the window seat to meet her, and his hands came up to her face, cold still from the walk, and she pushed the gray coat off her shoulders and let it fall, and under it was his jacket, and he stopped." },
       { n: "He looked at it for a long second. Then he huffed, once, not quite a laugh, into the space between them, and kissed her, slowly, like there was no one on the eleventh floor but them and no clock anywhere in the building." },
       { n: "Nobody had ever been in that bed with her. There was a considerable amount of whispered negotiation about the number of pillows. Then there wasn't." },

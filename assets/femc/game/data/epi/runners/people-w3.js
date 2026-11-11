@@ -360,7 +360,8 @@
       { n: "She pressed play. On the screen the snow fell the way snow fell, slant and slow across the quad, and then it stopped. All of it, every flake, hung in the air over two hundred heads like somebody had pressed pause on the world and forgotten to tell the people. And then it went up. Slowly. Back up into the gray it had come out of, and every face on the quad tipped up after it at once, and every phone came up after the faces." },
       { n: "Then it fell again, the right way, like nothing had happened, and the quad stood there in it." },
       { s: 'minji', f: 'serious', t: "Four seconds. Two hundred and forty frames. I've been through every one." },
-      { s: 'minji', f: 'sad', t: "Last week it was one frame. I could tell myself one frame was the card. I can't tell myself two hundred and forty frames is the card. It's just real. That's what I can't get past. Not what it is. That it's real." },
+      // Nov 11 2026 (Kat): searchers know
+      { s: 'minji', f: 'sad', t: "Last week it was one frame. I could tell myself one frame was the card. I can't tell myself two hundred and forty frames is the card. It's just real, and it's here. That's what I can't get past. Not what it is. That it's here." },
       { n: "The worst part of the footage wasn't the snow. It was the sound. Three seconds in, two hundred people stopped talking at the same time, and the quad went so quiet you could hear the bell tower's clockwork tick across it, and that silence was the thing Solar would hear later, lying awake." },
       { ifEpiRoute: 'minji', then: [
         { s: 'minji', f: 'neutral', t: "Can I hold your hand while it plays again? You can say no." },

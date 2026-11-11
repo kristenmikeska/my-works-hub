@@ -341,7 +341,8 @@
       { n: "She took it on the window seat with her knees up and the curtains open, because the curtains in that room were always open; there was a building across the street with about four hundred windows in it, half of them lit at any given hour, and with the lamps off the whole room went a low gray-gold you could read a clock by." },
       { n: "The call came up in two tiles. Hanni in her mother's kitchen, under a light that made her look like she was in a commercial for something wholesome, a dish towel over her shoulder. Hyein flat on her back on a childhood bed with a lilac duvet, a sheet mask on, the phone held directly above her face, which meant that at any moment it was going to fall on her." },
       { s: 'hyein', f: 'happy', t: "SHE ANSWERED. She's alive. Hanni, she's alive, cancel the search party." },
-      { s: 'hanni', f: 'neutral', t: "There was no search party." },
+      // Nov 11 2026 (Kat): searchers know
+      { s: 'hanni', f: 'neutral', t: "There's no search party. We've done one search party this year. We're retired." },
       { s: 'hyein', f: 'serious', t: "There was a search party in my heart." },
       { s: 'hanni', f: 'happy', t: "How's the tower? Are they treating you like a princess or like a prisoner? Blink twice." },
       { s: 'solar', f: 'happy', t: "The elevator takes eleven seconds. There's a bench in it. And a mirror. Nobody's ever sat on the bench." },
@@ -765,7 +766,8 @@
       ] },
       { n: "His forty minutes ran out at thirty-eight. He checked his phone and stood up and put his coat on, and paused with one hand on the back of the chair, looking out at the avenue, the gray ridges of old snow and the dogs in their jackets." },
       { s: 'haechan', f: 'neutral', t: "You good? Up there. In the tower." },
-      { n: "It was a friend's question. Plain, flat, not a single thing hidden under it, and that was the strange part, because she wanted for a second to tell him, of all people, about the roof and the bell and the group chat that said she'd left it while she slept, and she didn't, because there wasn't a single sentence in the world that would hold it." },
+      // Nov 11 2026 (Kat): searchers know
+      { n: "It was a friend's question. Plain, flat, not a single thing hidden under it, and that was the strange part, because she wanted for a second to tell him, of all people, what the roof had really been, and the bell, and the group chat that said she'd left it while she slept, and she didn't, because there wasn't a single sentence in the world that would hold it." },
       { s: 'solar', f: 'neutral', t: "I'm good." },
       { s: 'haechan', f: 'neutral', t: "Okay. You're a bad liar, but okay." },
       { n: "He went. She watched him through the steamed glass all the way to the corner, headphones going up over his ears at the curb, hood going up after it, and then he was just a dark shape going down into the subway at Seventy-Seventh and gone, and she sat with her iced coffee in a warm café in December and found she'd finished it without noticing, which was, these days, its own kind of good." },

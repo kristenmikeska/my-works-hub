@@ -285,7 +285,8 @@
       { s: 'haechan', f: 'neutral', t: "...I know this color. I don't know how I know it. I've never seen it once in my life and I know it." }
     ], else: [
       { s: 'solar', f: 'serious', t: "Why are you telling me this." },
-      { s: 'haechan', f: 'neutral', t: "Because you're the only other person who knows. And I'd rather you heard it from someone who isn't going to tell you it's the wind." },
+      // Nov 11 2026 (Kat): searchers know
+      { s: 'haechan', f: 'neutral', t: "Because you were there too. You know what that color is. And I'd rather you heard it from someone who isn't going to tell you it's the wind." },
       { n: "He looked at the butterfly and not at her, which was how she knew he'd come down the stairs on purpose, from a studio where he could see the lab's one light, and had been deciding for a while whether to." }
     ] },
     { n: "Then it lifted off and went up into the dark of the drop ceiling, and was gone, the way all of them went, mid-thought, leaving nothing behind but the knowledge that it had been there." },
@@ -408,7 +409,8 @@
     { n: "Her name. Not princess. Not pretty. The real one, which he only ever used when he'd stopped performing altogether, and he was kneeling in the snow in a hoodie with no coat, out of breath, his hands on her shoulders like he was checking she was a solid object." },
     { s: 'haechan', f: 'serious', t: "You weren't here. I got here on the first bell and you weren't here, and then you were. You were *gone*, I was standing where you're standing." },
     { s: 'solar', f: 'sad', t: "They kept my room." },
-    { n: "He didn't know what that meant. He didn't ask. He looked at her hands instead, bare and red and shaking, and took them both in his and held them against his chest inside the front of his hoodie, where it was warm, and stood like that, kneeling in the snow, as if that were a normal thing to do at midnight on a quad." },
+    // Nov 11 2026 (Kat): searchers know
+    { n: "He knew which room she meant, and who *they* were. He didn't ask how she knew. He looked at her hands instead, bare and red and shaking, and took them both in his and held them against his chest inside the front of his hoodie, where it was warm, and stood like that, kneeling in the snow, as if that were a normal thing to do at midnight on a quad." },
     { s: 'haechan', f: 'neutral', t: "Four minutes." },
     { s: 'solar', f: 'surprised', t: "What?" },
     { s: 'haechan', f: 'neutral', t: "First bell to you. I timed it." },
@@ -786,7 +788,8 @@
     { s: 'solar', f: 'neutral', t: "What do you want, Danielle?" },
     { s: 'danielle', f: 'neutral', t: "I want to tell you something, and I want you to know I'm only telling you because I can't work it out." },
     { n: "She turned the phone over in her hand. Once. The way Hyein turned the charm on her wrist. Solar had never once seen Danielle Marsh fidget, and she watched it now with the specific cold attention of someone watching a dog they know sit down for no reason in the middle of a road." },
-    { s: 'danielle', f: 'serious', t: "Every picture I take of you comes out a little wrong lately. The print. The stairs last Friday. Something green at the edge, every time, or something that should be there and isn't. I've tried three phones. I had it developed at the good place on Marshall. It's not the phone." },
+    // Nov 11 2026 (Kat): searchers know
+    { s: 'danielle', f: 'serious', t: "Every picture I take of you comes out a little wrong lately. The print. The stairs last Friday. Something green at the edge, every time, the green from over there, or something that should be there and isn't. I've tried three phones. I had it developed at the good place on Marshall. It's not the phone." },
     { s: 'danielle', f: 'neutral', t: "So I'm going to get the whole room at midnight. From the stairs. All of it, everyone, the toast. And I'm going to look. I wanted you to know that before. It seemed fair. I'm told I'm not fair, so I'm trying it." },
     { n: "Her body knew before she did: the drop under the ribs, the cold at the back of the neck, the knowledge arriving in her hands first, which had gone still at her sides. *Something that should be there and isn't.* Below them, through the turn of the stairs, Jaemin's voice was telling somebody the toast was in forty-five minutes and could they *please* find a glass, and somebody was laughing, and the tree was blinking, and none of it could hear them." },
     { choose: [
@@ -938,12 +941,14 @@
     { ifEpiRoute: 'haechan', then: [
       { phone: [
         { from: 'danielle', t: "I filmed the stairs because I wanted the stairs. You know what I wanted. You can think whatever you want about me." },
-        { from: 'danielle', t: "But I watched it eleven times and I don't know what I'm looking at. And I don't like not knowing what I'm looking at." }
+        // Nov 11 2026 (Kat): searchers know
+        { from: 'danielle', t: "But I watched it eleven times. I know that tower. I don't know what I'm looking at. And I don't like not knowing what I'm looking at." }
       ], contact: 'Danielle' },
       { n: "He'd woken up. He was looking at the screen over her shoulder. He didn't say anything. He just put his arm back round her, tighter, and watched it with her a second time, and at 12:00:00 his breath stopped and so did hers." }
     ], else: [
       { s: 'danielle', f: 'serious', t: "I filmed the toast because I wanted you in the toast. You know why. You can think whatever you want about me." },
-      { s: 'danielle', f: 'serious', t: "But I've watched it eleven times and I don't know what I'm looking at. And I don't like not knowing what I'm looking at." }
+      // Nov 11 2026 (Kat): searchers know
+      { s: 'danielle', f: 'serious', t: "But I've watched it eleven times. I know that tower. I don't know what I'm looking at. And I don't like not knowing what I'm looking at." }
     ] },
     { ifYear: { noFlag: 'arrived-danielle' }, then: [
       { n: "*You never saw me there,* she'd said, in the kitchen, the second morning. *I saw you.* Solar understood now that she'd meant it as a threat and it had been the truth, and that the truth had been frightening her for three weeks too." }

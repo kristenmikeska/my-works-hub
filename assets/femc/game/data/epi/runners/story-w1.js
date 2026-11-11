@@ -495,7 +495,8 @@
     { s: 'jaehyun', f: 'serious', t: "I'm not going to sit here and tell you Lee Donghyuck's a good person because Mark lied about him. I don't know what he is. I know what he was in my living room. I'm not giving him a reference." },
     { s: 'solar', f: 'serious', t: "I didn't ask you to." },
     { s: 'jaehyun', f: 'neutral', t: "You were about to." },
-    { n: "She hadn't been. She'd been about to do something worse, which was ask him whether a person could be the worst thing they'd done and also the one who'd held on to her in the dark when everything else let go. She didn't. He didn't know about the dark. He didn't need to. She ate a noodle instead, aggressively." },
+    // Nov 11 2026 (Kat): searchers know
+    { n: "She hadn't been. She'd been about to do something worse, which was ask him whether a person could be the worst thing they'd done and also the one who'd held on to her in the dark when everything else let go. She didn't. He'd been over there too, the dorm, the dog, the tower, but he hadn't been there for that part of it. He didn't need to have been. She ate a noodle instead, aggressively." },
     { s: 'solar', f: 'serious', t: "Danielle. Did she post the pictures? Of the girl?" },
     { s: 'jaehyun', f: 'neutral', t: "I don't know." },
     { s: 'jaehyun', f: 'serious', t: "I think so. I've thought so for a year. I can't prove it, and I don't say things I can't prove. So I'm not saying it." },
@@ -1209,7 +1210,12 @@
         { s: 'hanni', f: 'happy', t: "She's going to be saying it at the chapter meeting. In front of Danielle." },
         { s: 'hyein', f: 'happy', t: "ESPECIALLY in front of Danielle." },
         { n: "Hanni laughed. Then she didn't, and was quiet for a while, watching the snow, and Solar watched her watching it." },
-        { s: 'hanni', f: 'serious', t: "She's not going to let it go, you know. The trip. She knows. I don't know how she knows, but she knows." },
+        // Nov 11 2026 (Kat): searchers know
+        { ifYear: { noFlag: 'arrived-danielle' }, then: [
+          { s: 'hanni', f: 'serious', t: "She's not going to let it go, you know. The trip. She knows. I don't know how she knows, but she knows." }
+        ], else: [
+          { s: 'hanni', f: 'serious', t: "She's not going to let it go, you know. The trip. She was over there, Sol. Same as us. She doesn't have to guess what it was." }
+        ] },
         { s: 'solar', f: 'serious', t: "I know." },
         { s: 'hyein', f: 'serious', t: "So we hold it. The emergency vacation. All three of us. As long as it takes." },
         { s: 'hanni', f: 'neutral', t: "Don't call it that." },

@@ -15,7 +15,7 @@
    Inventions: the honors dorm's standing guest list (a page at the front of the sign-in binder); Hanni's coffees from the
      cart on the quad; Mark's yellow legal pad; Jeno and Jisung carrying a box of party lights down Marshall Street; Olivia
      calling the trophy "Gregory"; Doyoung's "see you in january". Canon held: Mark gets no conversation and no making-up;
-     Solar doesn't learn about the Dean (that's 12/16); nobody on the team knows about the other world. */
+     Solar doesn't learn about the Dean (that's 12/16); on the team only Minji and Chenle know about the other world (Nov 11 2026: searchers know; Olivia, Haerin and Doyoung don't). */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).runners ||= {});
   (R.events ||= []).push(
@@ -72,7 +72,8 @@
       { n: "Hanni was in the hall in her coat and her boots and last night's mascara, with snow melting off her shoulders and a coffee in each hand from the cart on the quad, the one that opened at seven for people who'd made bad decisions about their eight-thirties. She held one out. She didn't say good morning. She didn't say anything." },
       { n: "Solar took it. It was too hot to drink and exactly how she took it, which she'd never once told Hanni, and which Hanni knew anyway, the way Hanni knew most things she hadn't been told." },
       { n: "Hanni came in and sat on the end of the bed, the way she'd sat on the end of it on Monday morning when they'd pulled her out of it by both wrists, and took the lid off her own cup and blew on it, and looked out the window at the snow, and didn't ask." },
-      { n: "She didn't ask about the shuttle. She didn't ask about the quad, or why Solar had run for the bus like the bus was the last one out of a burning city, or what had been on her face before she'd made it to the steps. She didn't ask about Danielle, or the trip, or anything at all. She drank her coffee. She was very good at it. Solar had never seen anyone not ask a question so thoroughly." },
+      // Nov 11 2026 (Kat): searchers know
+      { n: "She didn't ask about the shuttle. She didn't ask about the quad, or why Solar had run for the bus like the bus was the last one out of a burning city, or what had been on her face before she'd made it to the steps. She didn't ask about Danielle, or how long the cover would hold, or anything at all. She drank her coffee. She was very good at it. Solar had never seen anyone not ask a question so thoroughly." },
       { choose: [
         { t: "(Tell her one true thing.)", then: [
           { s: 'solar', f: 'neutral', t: "I slept. Actually slept. First time since I got back." },

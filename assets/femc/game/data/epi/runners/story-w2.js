@@ -853,7 +853,8 @@
       { s: 'minji', f: 'neutral', t: "I can film the boring version. If you want proof of a boring version. I'm very good at boring. I did a whole short on a laundromat." },
       { s: 'hyein', f: 'happy', t: "Minji, I love you, we're not fabricating evidence in a frat bathroom." },
       { s: 'minji', f: 'happy', t: "It was just an offer." },
-      { n: "It was. It was a real one, and Minji didn't know what she was offering to cover for, only that it needed covering, and she'd offered anyway, and Solar sat on the toilet lid with the ducks on the shower curtain looking at her and had to look away, at the grout, because the kindness was too close to the bone tonight to look at straight." }
+      // Nov 11 2026 (Kat): searchers know
+      { n: "It was. It was a real one, and Minji knew exactly what she'd be covering for, a whole year in a city none of them could put on a map, and she'd offered to make it a laundromat anyway, and Solar sat on the toilet lid with the ducks on the shower curtain looking at her and had to look away, at the grout, because the kindness was too close to the bone tonight to look at straight." }
     ] },
     { ifEpiRoute: 'minji', then: [
       { s: 'hyein', f: 'happy', t: "Point four. Kim Minji has asked consent of every single person at this party. Including Jeno. Twice. Jeno doesn't know what to do with it." },
@@ -892,7 +893,8 @@
       { s: 'chenle', f: 'happy', t: "Minji asked if she could film me. I said no. She said thank you. Nobody's ever thanked me for no before." },
       { s: 'chenle', f: 'neutral', t: "I might say yes next time. Don't tell her. I want it to be a surprise." }
     ] },
-    { n: "They drank their seltzers. The snow landed. Somebody inside screamed with laughter at something and the glass rattled in the door. He didn't ask her anything, not about the trip, not about Saturday, not about why she'd come out here alone in a dress with no coat, and she understood that it was a gift, and that he gave it on purpose, and that he'd never once in his life call it one." },
+    // Nov 11 2026 (Kat): searchers know
+    { n: "They drank their seltzers. The snow landed. Somebody inside screamed with laughter at something and the glass rattled in the door. He didn't ask her anything, not about over there, where he'd been too, not about Saturday, not about why she'd come out here alone in a dress with no coat, and she understood that it was a gift, and that he gave it on purpose, and that he'd never once in his life call it one." },
     { s: 'chenle', f: 'neutral', t: "Go back in. Jaemin's going to look for you, and he's loud when he looks." },
     { place: 'Syracuse · Sigma Chi House', time: 'Evening', soft: true },
     // The old route blocks, from the front hall on.

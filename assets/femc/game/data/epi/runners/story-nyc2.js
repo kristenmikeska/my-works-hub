@@ -1001,7 +1001,8 @@
       { s: 'solar', f: 'neutral', t: "No. The 6 is on Lexington. Three blocks." },
       { s: 'haechan', f: 'serious', t: "There's a train." },
       { n: "It went on for about eight seconds, a train standing at a platform under eleven floors of marble and limestone and old money, doors open, waiting for somebody. Then the doors closed, and it pulled out, and the sound went away into the ground in a direction there was no tunnel, and the building ticked, and the radiator knocked once, and there was nothing." },
-      { n: "He didn't say anything else. He didn't say *that was weird*, or *it's the pipes*, or any of the things he'd said in the studio in the first week of December. He'd stopped saying those. He just held on, harder than he needed to, until she fell asleep." },
+      // Nov 11 2026 (Kat): searchers know
+      { n: "He didn't say anything else. He'd waited on that platform too, every morning from November to March; he knew the three notes as well as she did, and he'd asked about the subway anyway, the way you ask for the boring answer when you need one. He didn't say *that was weird*, or *it's the pipes*, or any of the things he'd said in the studio in the first week of December. He'd stopped saying those. He just held on, harder than he needed to, until she fell asleep." },
       { ifFlag: 'epi-r-hc-told', then: [
         { n: "He'd been told. He found her hand in the dark without looking for it, and said, very low, *one,* the way you'd count a bar in, and she understood that he was counting with her now, out loud, and she'd never once in her life been so relieved to be treated like a song." }
       ] },
@@ -1066,7 +1067,8 @@
         { s: 'jaehyun', f: 'sad', t: "If she's still here. In six years." },
         { s: 'hanni', f: 'serious', t: "...Why wouldn't she be?" },
         { s: 'jaehyun', f: 'neutral', t: "No reason." },
-        { n: "Hanni was the one who'd made the spreadsheet. Nine days in November of looking for her. Solar watched her hear it, in the dark, and not ask again, and knew she'd put it somewhere she'd come back to." }
+        // Nov 11 2026 (Kat): searchers know
+        { n: "Hanni was the one who'd made the spreadsheet, the night Solar went, before she'd followed her somewhere no spreadsheet could go. Solar watched her hear it, in the dark, and not ask again, and knew she'd put it somewhere she'd come back to." }
       ] },
       { s: 'hanni', f: 'neutral', t: "Does she know?" },
       { s: 'jaehyun', f: 'neutral', t: "No. And she won't." },
@@ -1078,7 +1080,8 @@
       { n: "At two the train came." },
       { glitch: 'epi-r-g-train' },
       { n: "Under the building, deep. Brakes, the breath of doors, and a chime, three notes falling, that she'd heard every morning for a year in a city that wasn't on any map." },
-      { s: 'hanni', f: 'surprised', t: "...Sol. Is that the subway?" },
+      // Nov 11 2026 (Kat): searchers know
+      { s: 'hanni', f: 'surprised', t: "...Sol. Tell me that's the subway." },
       { s: 'solar', f: 'neutral', t: "There's no subway under here." },
       { n: "Eight seconds. Then the doors closed and it went away into the ground in a direction there was no tunnel. Hyein slept through it with her mouth open. Hanni reached across the gap between the cot and the bed in the dark and found Solar's hand and held it, and didn't say *it's the pipes,* and didn't say anything, and didn't let go." },
       { bond: { hanni: 1 } }

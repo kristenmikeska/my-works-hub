@@ -484,7 +484,8 @@
       ] },
       { choose: [
         { t: "(Sit down across from him.)", then: [
-          { n: "She sat. He slid the calculator across the desk to the middle, between them, and didn't say anything, and they did the problem set in silence, question by question, him writing an answer and turning it toward her and her checking it and turning it back. He didn't ask her anything. Not how she was, not where she'd been, not what she was doing Saturday. It was the first hour she could remember with him that didn't have a receipt at the end of it." }
+          // Nov 11 2026 (Kat): searchers know
+          { n: "She sat. He slid the calculator across the desk to the middle, between them, and didn't say anything, and they did the problem set in silence, question by question, him writing an answer and turning it toward her and her checking it and turning it back. He didn't ask her anything. Not how she was, not one word about over there, though she could see him not say it, not what she was doing Saturday. It was the first hour she could remember with him that didn't have a receipt at the end of it." }
         ] },
         { t: "I'll find somebody else's notes.", then: [
           { s: 'mark', f: 'serious', t: "Yeah. That's fair." },

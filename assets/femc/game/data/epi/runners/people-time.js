@@ -169,7 +169,8 @@
         ] },
         { t: "If it gets too hard, tell her you can't talk about it. That one's true.", then: [
           { s: 'hanni', f: 'sad', t: "She'll think something bad happened." },
-          { s: 'solar', f: 'neutral', t: "Something did. Just not to you, and not the kind she'd think." },
+          // Nov 11 2026 (Kat): searchers know
+          { s: 'solar', f: 'neutral', t: "Something did. To all of us. Just not the kind she'd think." },
           { n: "Hanni looked at her for a long second over the lid of the suitcase. Then she nodded, slowly, like someone filing a thing she'd take out later and look at properly, in a kitchen, at the end of a long day." },
           { bond: { hanni: 1 } }
         ] }
@@ -831,7 +832,8 @@
       ], else: [
         { s: 'chenle', f: 'neutral', t: "And on the fourth map you went first on the Rush, and it didn't work, and on the fifth you didn't do it again. That's not on the graph either. It's the most important line on it. I just can't draw it." }
       ] },
-      { s: 'chenle', f: 'serious', t: "Your November numbers and your December numbers look like two different players. Both good. Different. I've been trying to figure out what happened in the middle, in the data, and there's nothing in the middle. There's November, and then there's you." },
+      // Nov 11 2026 (Kat): searchers know
+      { s: 'chenle', f: 'serious', t: "Your November numbers and your December numbers look like two different players. Both good. Different. I know what happened in the middle. I was there for some of it. But it isn't in the data. There's nothing in the middle. There's November, and then there's you." },
       { n: "He stopped. Not trailing off. Stopped, like a song that had been written to end exactly there. He looked at the timer on his phone, which she hadn't noticed was running." },
       { s: 'chenle', f: 'flustered', t: "Five minutes eleven. I timed it. I don't, usually." },
       { s: 'chenle', f: 'flustered', t: "That's the longest I've talked since, I think, eighth grade. There was a science fair." },
@@ -1086,7 +1088,8 @@
       { n: "He had the cards in a stack as thick as a sandwich, held together with a hair tie that was very clearly Hyein's, and a phone on his knee with a timer running, and he gave her the whole thing. The welcome. A bit about the run of show that ended with *and there will be a slide here,* and when she asked of what, he said *the fridge,* in a voice that made it clear the question was beneath them both. A section on Jeno and the Pink Punch. And then the emergency vacation." },
       { s: 'jaemin', f: 'happy', t: "Some of us went on an emergency vacation. Some of us were not invited. Some of us are still not over it. I'm some of us." },
       { s: 'jaemin', f: 'happy', t: "Pause for laugh. It's a big pause. You'll laugh like it's the first time." },
-      { n: "She laughed. It came out mostly real, which surprised her. A lodge that didn't exist, a trip nobody took, the best joke on campus, and the man telling it had no idea it was a joke at all." },
+      // Nov 11 2026 (Kat): searchers know
+      { n: "She laughed. It came out mostly real, which surprised her. A lodge that didn't exist, a trip nobody took, the best joke on campus, and the man telling it knew exactly what it was covering, and had decided to be the loudest person in every room about it, so nobody would look anywhere else." },
       { n: "Then the names. Every single one. Both lists, Sigma's and Alpha's, one card at a time, a line for each, *Renjun, who did the decorations under protest and did them beautifully, and who will deny both,* *Olivia, who is the loudest person I've ever loved,* *Chenle, who is driving you home, so be nice to Chenle,* and on and on, through Johnny and Yuta and Jisung and Yerim and Chungha, until the timer on his knee said 11:04 and he looked up at her, breathless and enormously pleased." },
       { s: 'jaemin', f: 'happy', t: "Well?" },
       { s: 'solar', f: 'neutral', t: "The run of show says three minutes." },
@@ -1099,8 +1102,10 @@
           { n: "He said it so simply that she looked up. He wasn't joking. For once in his life Na Jaemin wasn't performing anything at all." }
         ] },
         { t: "Cut the emergency vacation bit.", then: [
-          { s: 'jaemin', f: 'surprised', t: "Absolutely not. It's the only joke I've got that the whole room's in on." },
-          { n: "She didn't say anything to that. There was nothing to say to that that wouldn't take a year to explain." }
+          // Nov 11 2026 (Kat): searchers know
+          { s: 'jaemin', f: 'surprised', t: "Absolutely not. It's the only joke I've got that the whole room thinks it's in on." },
+          // Nov 11 2026 (Kat): searchers know
+          { n: "She didn't say anything to that. He'd been there too. He knew what the joke was holding up better than anyone on that list, and he was going to say it into a microphone anyway, with a straight face, because a room that's laughing isn't asking." }
         ] }
       ] },
       { n: "She cut it anyway. Jeno's third near-death, the bit about the snowflakes, two of the four jokes about the fridge, a long tangent about the velvet. Jaemin ran it. The timer said 9:02. He looked at it for a while." },
