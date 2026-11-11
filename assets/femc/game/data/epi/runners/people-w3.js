@@ -749,8 +749,8 @@
     { id: 'epi-r-tx-girls-upward', thread: 'girls', date: '12/15', slot: 'evening', events: ['epi-r-upward'], msgs: [
       { from: 'hyein', t: 'hyein: has everyone seen the snow video' },
       { from: 'hyein', t: 'hyein: the quad one. its on every single story. jeno posted it four times with four different songs' },
-      { from: 'hanni', t: 'hanni: sol were you out there' },
-      { from: 'hyein', t: 'hyein: she was out there. she had stats' }
+      { from: 'hanni', t: 'hanni: sol you went really quiet after' },
+      { from: 'hyein', t: 'hyein: we were RIGHT next to her. she came straight from her final' }
     ], reply: [
       { t: "i was out there", then: [{ from: 'hanni', t: 'hanni: are you ok' }, { from: 'hyein', t: 'hyein: ARE you ok' }] },
       { t: '(bundled up in the snow, only her eyes showing)', sticker: 'runners-8', then: [{ from: 'hanni', t: "hanni: that's not an answer" }, { from: 'hanni', t: "hanni: coming up with tea. don't argue" }] },

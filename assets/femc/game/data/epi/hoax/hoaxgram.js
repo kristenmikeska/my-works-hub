@@ -91,7 +91,7 @@
         cap: 'this man brought water to a party 💀 hydration king',
         comments: [['seoyeon__', 'rehab kids dont hand out evian'], ['rikiniki', '@seoyeon__ EXACTLY. we won'], ['sunshinesunoo', 'nobody took the last four :('], ['jakeyy', 'hydration is a lifestyle'], ['heeeseung', 'For the record, this is good press.']] },
       'epi-h-al-party': { likes: '577',
-        comments: [['seoyeon__', 'posting mine in five business days'], ['minho.k', 'why is every photo just a ceiling'], ['jakeyy', 'great party great vibes great hydration'], ['asahihi', 'i was not there and i am glad']] },
+        comments: [['seoyeon__', 'posting mine in five business days'], ['minho.k', 'why is every photo just a ceiling'], ['jakeyy', 'great party great vibes great hydration'], ['asahihi', 'i was on the back step and i am glad']] },
       'hg-sunghoon-soon': { date: '12/30', after: ['epi-h-party'], user: 'princesunghoon', likes: '1,107',
         cap: 'Sunghoon has been told patience is a virtue. Sunghoon is working on it. - s',
         comments: [['rikiniki', 'NAHHH'], ['chxrry', '...'], ['parkjay', 'my man'], ['solarkim', 'SOON???'], ['princesunghoon', '@solarkim soon.']] },
