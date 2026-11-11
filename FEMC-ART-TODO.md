@@ -194,6 +194,88 @@ Save as: `epi-r-mark-lobby.png`
 A realistic painted CG in the style of the FIRST image (the realistic painted style of the Runners CGs), 16:9, high resolution. Use the SECOND image for the place, layout and lighting: the grand marble lobby of an old Fifth Avenue apartment building late on New Year's Eve, polished brass everywhere, a huge white flower arrangement on a side table, snow on the glass of the revolving door behind, a doorman at the front desk in the background with his eyes very carefully on a ledger. Mark stands in the middle of the marble floor, not sitting, with snow melting on the shoulders of his dark coat and in his hair, juggling four things at once: a paper cone of flowers, a big pink bakery box tied with string held in both arms, a zipped insulated cool bag hanging off one wrist, and a white envelope pinned flat against the box with one thumb. His face is nervous, earnest, mid-sentence, a little out of breath. Solar faces him from the foreground, seen from behind and the side, in a dark party dress and sheer black tights with no shoes on, standing on the cold marble, very still. Warm brass lamplight, a cold blue tint from the snowy door, a quiet, held moment. Keep both faces exactly like the attached references. No text, no logos.
 ```
 
+## 43. Regionals minigame: Overwatch (Kat, Nov 10)
+
+For the playable Regionals match (the support minigame, version C: over the shoulder, Solar's hands at the bottom of the screen, her team standing in the map, the other team popping out of cover). Kat's picks: Solar on Kiriko, Haerin on Ana, Chenle on Reinhardt, Minji on Ashe, Olivia on Tracer; the other team Zarya, Genji, Ana, Lúcio and Cassidy (the comp the story's Regionals scenes call out). Each figure: one picture, transparent or plain white, like the HD poses. The game cuts the kill-feed icons from these figures' heads, so no icon sheet is needed. More heroes from each player's pool can come later as swaps.
+
+**[ ] 43A. Map: Lijiang Tower, Night Market** (round 1)  
+Save as: `mg-ow-map-lijiang.png`
+```
+A wide 16:9 background in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, no characters: the Night Market control point on Lijiang Tower at night, seen at eye level from just behind the attackers' side as if you are standing in the match: red paper lanterns strung overhead, neon shop signs with no readable writing, food stalls with steam, the glowing capture circle on the stone plaza in the middle distance, low walls and stalls on both sides to take cover behind, the tall tower skyline behind. Warm lantern light against deep blue night. Leave the lower third of the picture fairly clear (the player's hands go there). No text, no logos, no UI.
+```
+
+**[ ] 43B. Map: Busan, Downtown** (round 2)  
+Save as: `mg-ow-map-busan.png`
+```
+A wide 16:9 background in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, no characters: the Downtown control point in Busan at dusk, seen at eye level as if standing in the match: a busy pink-and-neon street with arcade fronts and bright signs with no readable writing, a raised plaza with the glowing capture circle in the middle distance, food carts, planters and pillars to take cover behind, city towers against a pink-orange sky. Leave the lower third fairly clear. No text, no logos, no UI.
+```
+
+**[ ] 43C. Solar's hands (Kiriko, first person)**  
+Save as: `mg-ow-hands.png`
+```
+A wide first-person view in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, landscape 16:9, transparent background: the bottom of the screen in a hero shooter, seen from Kiriko's eyes. On the left, her left hand holding a fan of glowing paper ofuda talismans ready to throw; on the right, her right hand holding three kunai between her fingers. Black-and-white gloves, her white-and-red sleeves at the edges. Only the hands and forearms, rising from the bottom corners; the rest of the picture empty. No text, no logos, no UI.
+```
+
+**[ ] 43D. Teammate: Chenle on Reinhardt** (tank)  
+Save as: `mg-ow-team-chenle.png`
+```
+A single full-body character illustration in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, portrait orientation 2:3, ONE figure only, head to toe, on a plain transparent background (or plain white), nothing else in the picture. Reinhardt from Overwatch: towering armoured knight in silver-white plate with the big rocket hammer, helmet on. Pose: standing ready in the front line, hammer raised, seen from behind and a little to the side, as a teammate standing in front of the camera. No text, no logos, no UI.
+```
+
+**[ ] 43E. Teammate: Minji on Ashe** (damage)  
+Save as: `mg-ow-team-minji.png`
+```
+A single full-body character illustration in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, portrait orientation 2:3, ONE figure only, head to toe, on a plain transparent background (or plain white), nothing else in the picture. Ashe from Overwatch: white-haired gunslinger in a black hat, red-lined coat, holding her lever-action rifle. Pose: aiming down the street, seen from behind and to the side, as a teammate standing a little way in front of the camera. No text, no logos, no UI.
+```
+
+**[ ] 43F. Teammate: Olivia on Tracer** (damage)  
+Save as: `mg-ow-team-olivia.png`
+```
+A single full-body character illustration in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, portrait orientation 2:3, ONE figure only, head to toe, on a plain transparent background (or plain white), nothing else in the picture. Tracer from Overwatch: spiky brown hair, orange leggings, brown bomber jacket, blue glowing chronal accelerator on her chest, twin pistols. Pose: mid-dash, pistols up, seen from behind and to the side. No text, no logos, no UI.
+```
+
+**[ ] 43G. Teammate: Haerin on Ana** (support)  
+Save as: `mg-ow-team-haerin.png`
+```
+A single full-body character illustration in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, portrait orientation 2:3, ONE figure only, head to toe, on a plain transparent background (or plain white), nothing else in the picture. Ana from Overwatch: older sniper in a blue-and-gold hooded outfit with an eye patch, holding her long biotic rifle. Pose: kneeling to aim her rifle, seen from behind and to the side. No text, no logos, no UI.
+```
+
+**[ ] 43H. Opponent: Zarya** (tank)  
+Save as: `mg-ow-foe-zarya.png`
+```
+A single full-body character illustration in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, portrait orientation 2:3, ONE figure only, head to toe, on a plain transparent background (or plain white), nothing else in the picture. Zarya from Overwatch: tall, muscular, pink hair, armour in grey and pink, holding her big particle cannon. Pose: firing the particle cannon toward the viewer, facing the camera. No text, no logos, no UI.
+```
+
+**[ ] 43I. Opponent: Genji** (damage)  
+Save as: `mg-ow-foe-genji.png`
+```
+A single full-body character illustration in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, portrait orientation 2:3, ONE figure only, head to toe, on a plain transparent background (or plain white), nothing else in the picture. Genji from Overwatch: cyborg ninja in silver-and-green armour with a glowing green visor, his sword drawn. Pose: lunging toward the viewer with his sword raised, facing the camera. No text, no logos, no UI.
+```
+
+**[ ] 43J. Opponent: Ana** (support)  
+Save as: `mg-ow-foe-ana.png`
+```
+A single full-body character illustration in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, portrait orientation 2:3, ONE figure only, head to toe, on a plain transparent background (or plain white), nothing else in the picture. Ana from Overwatch: older sniper in a blue-and-gold hooded outfit with an eye patch, holding her long biotic rifle and a biotic grenade. Pose: winding up to throw the biotic grenade toward the viewer, facing the camera. No text, no logos, no UI.
+```
+
+**[ ] 43K. Opponent: Lúcio** (support)  
+Save as: `mg-ow-foe-lucio.png`
+```
+A single full-body character illustration in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, portrait orientation 2:3, ONE figure only, head to toe, on a plain transparent background (or plain white), nothing else in the picture. Lúcio from Overwatch: DJ with green-and-yellow armour, dreadlocks, roller skates and his sonic amplifier. Pose: skating toward the viewer, amplifier raised, facing the camera. No text, no logos, no UI.
+```
+
+**[ ] 43L. Opponent: Cassidy** (damage)  
+Save as: `mg-ow-foe-cassidy.png`
+```
+A single full-body character illustration in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light, portrait orientation 2:3, ONE figure only, head to toe, on a plain transparent background (or plain white), nothing else in the picture. Cassidy from Overwatch: cowboy with a hat, serape, beard and mechanical arm, holding his revolver. Pose: drawing his revolver toward the viewer, facing the camera. No text, no logos, no UI.
+```
+
+**[ ] 43M. Play of the Game: Kiriko**  
+Save as: `mg-ow-potg-kiriko.png`
+```
+A dramatic landscape 16:9 splash in the official Overwatch art style: a polished stylized 3D-render look, bright saturated colours, clean readable shapes, soft studio rim light: Kiriko from Overwatch mid-action, leaping forward with kunai in one hand and glowing ofuda fanned in the other, her spirit fox Kitsune swirling behind her in blue light, cherry-blossom petals in the air, a bold dark background with sweeping orange and pink light. Leave the left third darker for the "Play of the Game" title. No text, no logos, no UI.
+```
+
 ---
 
 ## 31. Low-res pictures to look at (assess later)
