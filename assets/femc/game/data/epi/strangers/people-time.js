@@ -17,7 +17,7 @@
    Flags set: none. Flags read: epi-route-* via ifEpiRoute only.
    Inventions for Kat to confirm (small, structural): during the ten days Mrs. Bang broke the koi ice every hour all night with
      a torch, Pyo lit temple incense at the top of the storeroom stairs, Mr. Oh's car ran out of petrol at the gate on night six
-     and Minseok pushed it up the drive, and Yunjin knocked on the wall every night; Mrs. Park practices scales on the dining
+     and Minseok pushed it up the drive (Yunjin heard it all secondhand: she was away too), and Yunjin knocked twice on Solar's dorm door every night over there (Nov 11); Mrs. Park practices scales on the dining
      table with her fingers; the pojangmacha is an orange tarp tent under a Songdo overpass with red and blue stools; the girls'
      fight is Sakura going to a backup-dancer audition alone that the four had planned to do together in April, and getting a
      callback (Kazuha was sworn to secrecy, Eunchae saw it first); the flounder woman once slipped eleven-year-old Solar an
@@ -46,11 +46,13 @@
       { s: 'yunjin', f: 'neutral', t: "My mother is practicing scales on the dining table. With no piano. With her fingers, on the wood. She's been doing it since Christmas. She won't hear anything till Easter." },
       { n: "There were shrimp crackers in the bag, the big one, the family size, which Yunjin opened with her teeth. They lay on Solar's bed side by side on their backs with the masks on, cold and wet and smelling of cucumber and something chemical underneath it, two white faces with holes cut out for the eyes, and Yunjin fed crackers through the mouth hole of hers one at a time with enormous care, like posting letters." },
       { s: 'yunjin', f: 'serious', t: "Don't laugh. If you laugh it slides and then you look like a sad ghost, and Pyo sees you on the landing, and he dies, and it's your fault." },
-      { n: "Solar waited for the question, her whole body ready for the shape of the word *where*, the fever already lined up behind her teeth. It didn't come. Yunjin crunched a cracker and looked at the ceiling, and Solar felt the readiness go out of her shoulders a little at a time, the way the cold goes out of your hands by a stove." },
+      // Nov 11 2026 (Kat): searchers know. Yunjin was pulled away too, so the ten nights are the house's, told to her since dawn, and Solar waits for Japan, not for "where".
+      { n: "Solar waited for it, the *later* Yunjin had promised her in the kitchen, her whole body ready for the shape of the word *Japan*, for the dorm and the bay and the year, the one thing in this house only the two of them could say out loud. It didn't come. Yunjin crunched a cracker and looked at the ceiling, and Solar felt the readiness go out of her shoulders a little at a time, the way the cold goes out of your hands by a stove." },
       { s: 'yunjin', f: 'neutral', t: "Okay. So. I'm going to tell you about your house. Because nobody else is going to, because everybody in this house thinks feelings are a kind of draught." },
-      { s: 'yunjin', f: 'neutral', t: "Night one. Two in the morning. I hear something in the garden and I think, great, a murderer, finally, something to do. I look out. It's Mrs. Bang. Coat over her nightie, a torch in her teeth, on the back step, breaking the ice on the fish bucket." },
+      { s: 'yunjin', f: 'neutral', t: "I wasn't here for it either, obviously. I got the whole thing this morning. Pyo, by the rice cooker, in four minutes. Then Minseok, who said Pyo had it wrong. Then Mrs. Bang's face, which had it right." },
+      { s: 'yunjin', f: 'neutral', t: "Night one. Two in the morning. Minseok's on the gate, he hears something in the garden and thinks, great, a murderer, finally, something to do. He goes round the side. It's Mrs. Bang. Coat over her nightie, a torch in her teeth, on the back step, breaking the ice on the fish bucket." },
       { s: 'solar', f: 'neutral', t: "She does that every morning." },
-      { s: 'yunjin', f: 'serious', t: "Every *hour*, Sol. All night. Ten nights. Two o'clock, three o'clock, four, tap tap tap with the two fingers. I asked her on the third day and she said the fish would freeze. It was four degrees. The fish were fine. Mr. Kim was thriving. Mr. Kim has never looked better in his life." },
+      { s: 'yunjin', f: 'serious', t: "Every *hour*, Sol. All night. Ten nights. Two o'clock, three o'clock, four, tap tap tap with the two fingers. Minseok asked her on the third day and she said the fish would freeze. It was four degrees. The fish were fine. Mr. Kim was thriving. Mr. Kim has never looked better in his life." },
       { n: "Solar laughed. The mask slid. She pressed it back up with the flat of her hand and lay there with it crooked over one eye, and Yunjin made a small satisfied noise, as if that had been the plan." },
       { s: 'yunjin', f: 'neutral', t: "Pyo. Pyo went to the temple shop and bought a whole packet of incense and lit one at the top of the storeroom stairs every night. For the ghost. I asked him why and he said he was asking it a favor. I asked what favor. He went so red I thought his ears would come off." },
       { s: 'yunjin', f: 'neutral', t: "And Mr. Oh." },
@@ -60,10 +62,11 @@
       { n: "Not one word of it was about who had been missing, or where. Yunjin had built it that way. It was just a house doing ten nights in the cold, each of them in their own idiotic way, at a bucket and a staircase and a gate." },
       { choose: [
         { t: "And you? What did you do?", stat: { kindness: 1 }, then: [
-          { s: 'yunjin', f: 'happy', t: "Me? I was fabulous. I did nothing. I watched dramas and ate your crackers." },
+          // Nov 11 2026 (Kat): searchers know. She was over there with Solar, not home watching dramas.
+          { s: 'yunjin', f: 'happy', t: "Me? Where do you think, wifey. I was fabulous. I ate egg sandwiches in a dorm and lived down the hall from a girl who didn't know my name yet." },
           { n: "Then, without turning her head on the pillow, in the low voice she used when she didn't want her own mouth to hear her." },
-          { s: 'yunjin', f: 'neutral', t: "I knocked. On the wall. Every night before I went to sleep. Twice." },
-          { s: 'yunjin', f: 'neutral', t: "Nobody knocked back. Obviously. I knew nobody would. It's a wall. I just didn't want to be the one who stopped." },
+          { s: 'yunjin', f: 'neutral', t: "I knocked. On your door. Over there. Every night before I went to sleep. Twice." },
+          { s: 'yunjin', f: 'neutral', t: "You never knocked back. Obviously. You didn't know what it meant yet. I just didn't want to be the one who stopped." },
           { n: "Solar found her hand on the duvet. It was cold. Yunjin's hands were always cold, because, she'd said since they were twelve, her heart was too big and used up all the blood. Neither of them said anything else, and the crackers went soft in the bag between them." },
           { bond: { yunjin: 1 } }
         ] },

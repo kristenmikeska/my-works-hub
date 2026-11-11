@@ -309,6 +309,8 @@
       { s: 'haechan', f: 'neutral', t: "...Pitchy." },
       { n: "The whole room stared at him." },
       { s: 'yunjin', f: 'surprised', t: "Did delivery boy just speak *English*?" },
+      // Nov 11 2026 (Kat): searchers know. Yunjin's surprise is for the room; she's heard his English before.
+      { n: "She said it for the four girls, loud and scandalized, the way you throw a coat over something on a chair. Her eyes, across the table, on Solar, said she'd heard that English before, down a dorm corridor, and was putting it in the box with Japan." },
       { s: 'haechan', f: 'flustered', t: "I said nothing. I'm furniture. Furniture doesn't speak English." }
     ] },
     { ifEpiRoute: 'jungwon', then: [

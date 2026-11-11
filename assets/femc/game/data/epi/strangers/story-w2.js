@@ -321,7 +321,8 @@
     { s: 'haechan', f: 'serious', t: "Say what." },
     { s: 'solar', f: 'serious', t: "Whatever it is you've been holding since the moon." },
     { n: "He turned the Discman over again. The cracked lid. Somebody else's old disc inside it, going nowhere. He didn't look at her when he said it. He looked up the garden at her lit window, and he said it slowly, and she knew by how slowly that he'd had it ready for days and had been choosing the moment the way he chose a gap in traffic." },
-    { s: 'haechan', f: 'serious', t: "You were gone ten days. I sat here with this. I knew where it was up to the whole time. Track four. I didn't skip once." },
+    // Nov 11 2026 (Kat): searchers know. He crossed after her, so he only had some of the ten nights here; over there he had no Discman at all.
+    { s: 'haechan', f: 'serious', t: "You were gone ten days. The ones before I came after you, I sat here with this. Over there I didn't even have it. I still knew where it was up to the whole time. Track four. I didn't skip once." },
     { s: 'haechan', f: 'serious', t: "So next time you go somewhere, agasshi, you tell me which track. That's all. I'll wait on that one." },
     { n: "She didn't answer. She couldn't have, not then, and he knew that too, and that was why he'd said it in the dark with his face turned away, so she wouldn't have to." },
     { n: "She took the Discman out of his hand instead, and opened the lid, and looked at the disc inside it, and closed it again, very gently, and put it back on his chest with her hand over it, and his hand over hers." },

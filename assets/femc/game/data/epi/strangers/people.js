@@ -112,8 +112,9 @@
       { s: 'haechan', f: 'happy', t: "No problem." },
       { n: "In English. Clear as a bell, the vowels flat and easy, like somebody who said it twenty times a day somewhere else, to somebody else, in a different life." },
       { n: "They both stopped." },
-      { s: 'solar', f: 'surprised', t: "...Since when do you speak English?" },
-      { s: 'haechan', f: 'surprised', t: "I don't." },
+      // Nov 11 2026 (Kat): searchers know. She knows exactly whose English that is; so does he.
+      { s: 'solar', f: 'surprised', t: "...That wasn't you. That was the other one of you." },
+      { s: 'haechan', f: 'surprised', t: "There's one of me in this car. He doesn't speak English." },
       { n: "He looked at his own hands on the wheel as if somebody had lent them to him. Then at her. Then out at the frost on the hill, very hard." },
       { s: 'haechan', f: 'flustered', t: "Don't tell the Chairman. He'll think I'm going to America." },
       { choose: [

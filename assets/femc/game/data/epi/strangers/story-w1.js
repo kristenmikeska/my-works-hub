@@ -914,7 +914,8 @@
         { s: 'haechan', f: 'neutral', t: "Good visibility. Hear that? For the moon." },
         { s: 'solar', f: 'neutral', t: "You only listen to that for the trot after." },
         { s: 'haechan', f: 'happy', t: "I listen to it for the islands. I like hearing they're all still there. Every night. Baengnyeong, still there. Deokjeok, still there." },
-        { n: "He said it lightly. She thought about ten nights of him on this step with the forecast on low, listening to a woman read out the names of every island in the Yellow Sea, checking them off, one by one, all still there, and nobody on the radio to read out the one name he'd actually been listening for, and she didn't say anything, and neither did he." },
+        // Nov 11 2026 (Kat): searchers know. He went after her, so not all ten nights were spent on this step.
+        { n: "He said it lightly. She thought about the nights he'd had on this step before he came after her, however many there'd been, he'd never said, with the forecast on low, listening to a woman read out the names of every island in the Yellow Sea, checking them off, one by one, all still there, and nobody on the radio to read out the one name he'd actually been listening for, and she didn't say anything, and neither did he." },
         { n: "He didn't argue. He took his jacket off without getting up, one arm and then the other, and put it round her shoulders, and sat there in his sweatshirt in the cold with the radio off on the sill behind them, and neither of them went to bed, and the minute went on for a long time." },
         { bond: { haechan: 1 } }
       ] },
@@ -941,14 +942,15 @@
         { s: 'jungwon', f: 'happy', t: "*No. You make arrangements.*" },
         { s: 'jungwon', f: 'neutral', t: "*So do I. It's a terrible way to live. I recommend it to no one.*" },
         { n: "She laughed. It surprised her, the sound of it in the frozen street. He looked at her laughing with an expression she couldn't read and didn't try to, and he lifted his right hand and took hers off the iron of the gate, and held it, once, his fingers cold, and in the quiet she could hear his watch ticking, and then he let it go." },
-        { s: 'jungwon', f: 'neutral', t: "*I counted the days, while you were gone. I count everything. You know that.*" },
+        // Nov 11 2026 (Kat): searchers know. He was over there too; "gone" is here and then the stretch she didn't know him.
+        { s: 'jungwon', f: 'neutral', t: "*I counted the days, while you were gone. Here, and then over there, until you knew me again. I count everything. You know that.*" },
         { s: 'jungwon', f: 'neutral', t: "*I haven't told anyone the number. I'm not going to tell you either.*" },
         { s: 'solar', f: 'neutral', t: "*Why not?*" },
         { s: 'jungwon', f: 'neutral', t: "*Because then you'd know it.*" },
         { choose: [
           { t: "*Ten. It was ten days.*", stat: { knowledge: 1 }, then: [
             { s: 'solar', f: 'neutral', t: "*Ten. It was ten days. Everybody knows that.*" },
-            { s: 'jungwon', f: 'happy', t: "*Yes. That's the days.*" },
+            { s: 'jungwon', f: 'happy', t: "*Yes. That's the days here.*" },
             { n: "He let it sit there. The days. As if the days were only the outside of it, the box the number came in, and what he'd counted was smaller and there were a great many more of it, and he wasn't going to say which. She looked at the watch on his wrist and thought about it ticking, and him listening to it, and didn't ask." }
           ] },
           { t: "(Don't ask. Let him keep it.)", stat: { kindness: 1 }, then: [
