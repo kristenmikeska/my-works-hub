@@ -113,25 +113,27 @@
          replace its value with a file in assets/femc/music/ (no extension) or an 'assets/audio/…' path, like world-hoax. */
       // The everyday screens (morning, Go Out, evening, late) play this world's own songs, never the Persona tracks (Kat, 2026-10-30).
       screens: { school: 'epi-h-day', class: 'epi-h-day', after: 'epi-h-day', evening: 'epi-h-evening', dorm: 'epi-h-late' },
+      // Nov 11 2026 (Kat: "the same three-ish songs over and over"): the busiest single-song moods are now small pools (they rotate,
+      // never the same file twice running), using songs already in assets/femc/music/ that no other world plays.
       music: {
         'epi-h-day': ['tongue-tied', 'everybody-talks', 'touch-tank', 'crazy-kids', 'colorblind', 'assets/audio/TaylorSwift-Hoax.mp3'], // the everyday screens by day (the theme comes round last, so it doesn't follow the opening)
         'epi-h-evening': ['cigarette-daydreams', 'i-like-you', 'moonlight', 'impatient', 'assets/audio/TaylorSwift-Hoax.mp3'], // evenings
         'epi-h-late': ['evergreen', 'assets/audio/arianagrande-someonelikeu.mp3', 'anthems-for-a-seventeen-year-old-girl'], // late nights
-        'epi-h-home': 'cardigan', // home, Nana, her mom at the door (soft, a little funny)
-        'epi-h-goofy': 'everybody-talks', // the council and the crew being idiots (the retreat story, the group chats)
-        'epi-h-forum': 'tongue-tied', // the forum, Eunchae's channel, the motion going up
-        'epi-h-romance': 'assets/audio/ENHYPEN-moonstruck.mp3', // Jungwon, when it's warm
+        'epi-h-home': ['cardigan', 'sparks', 'touch-tank'], // home, Nana, her mom at the door (soft, a little funny)
+        'epi-h-goofy': ['everybody-talks', 'semi-charmed-life', 'crazy-kids', 'egirls-are-ruining-my-life', 'tongue-tied'], // the council and the crew being idiots (the retreat story, the group chats)
+        'epi-h-forum': ['tongue-tied', 'egirls-are-ruining-my-life'], // the forum, Eunchae's channel, the motion going up
+        'epi-h-romance': ['assets/audio/ENHYPEN-moonstruck.mp3', 'ivy'], // Jungwon, when it's warm
         'epi-h-eve': 'assets/audio/arianagrande-someonelikeu.mp3', // Christmas Eve (the choice)
         'epi-h-christmas': 'touch-tank', // Christmas Day at the Kims'
         'epi-h-seance': 'colorblind', // the Hate Club séance (a joke until it isn't)
         'epi-h-party': ['crazy-kids', 'brooklynbloodpop', 'cha-ching', 'we-r-who-we-r'], // the winter-break party
-        'epi-h-jihoon': 'cigarette-daydreams', // Jihoon, when the act drops (the porch, the drawer)
+        'epi-h-jihoon': ['cigarette-daydreams', 'misery', 'white-tee'], // Jihoon, when the act drops (the porch, the drawer)
         'epi-h-newyear': ['i-like-you', 'everybody-talks', 'impatient'], // New Year's Eve and the livestream
         'epi-h-dread': 'moonlight', // weeks 2-3, unsettling (the notes, the clocks)
         'epi-h-half': 'anthems-for-a-seventeen-year-old-girl', // the half-present pulls (around the four fights)
         'epi-h-exam': 'teenage-losers', // make-up exams
         'epi-h-hearing': 'nail', // the impeachment hearing
-        'epi-h-snow': 'evergreen' // snow days, the quiet before the end
+        'epi-h-snow': ['evergreen', 'sparks'] // snow days, the quiet before the end
         // The gym at midnight plays world-hoax (Kat's pick, the world's own song).
       }
     },
