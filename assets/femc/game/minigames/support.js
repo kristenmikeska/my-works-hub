@@ -22,11 +22,11 @@
 window.FemcSupport = (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  // Roles from the story (story-w1 / SUgram): Haerin is the other support, Minji and Chenle are damage; Olivia on tank is a guess.
+  // Roles (Kat, Nov 10): Chenle tank, Minji and Olivia DPS, Haerin the other support, Solar Kiriko.
   const TEAM = [
-    { id: 'olivia', name: 'Olivia', role: 'tank', hp: 300 },
+    { id: 'chenle', name: 'Chenle', role: 'tank', hp: 300 },
     { id: 'minji', name: 'Minji', role: 'dps', hp: 175 },
-    { id: 'chenle', name: 'Chenle', role: 'dps', hp: 175 },
+    { id: 'olivia', name: 'Olivia', role: 'dps', hp: 175 },
     { id: 'haerin', name: 'Haerin', role: 'support', hp: 175 },
   ];
   const DIFF = { easy: { chip: 0.65, gap: 1.35, burst: 0.8 }, normal: { chip: 1, gap: 1, burst: 1 }, hard: { chip: 1.3, gap: 0.8, burst: 1.2 } };

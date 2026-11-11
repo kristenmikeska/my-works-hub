@@ -1,0 +1,39 @@
+/* FemcDumplings (minigames/dumplings.js). Shares .mg-pause / .mg-end / .mg-grade with support.css; repeated here so it stands alone. */
+.mg-dmp { --pk: #ff4f9e; --pk2: #ff9ac8; --nt: #14070f; --gold: #ffd166; position: fixed; inset: 0; z-index: 3000; display: grid; grid-template-rows: auto auto 1fr auto auto; gap: 12px; padding: clamp(14px, 3vh, 32px) clamp(16px, 4vw, 56px); color: #fff; background: radial-gradient(ellipse at 50% 0%, rgba(255, 209, 102, .16), transparent 55%), linear-gradient(180deg, #2a1420, var(--nt)); user-select: none; -webkit-user-select: none; touch-action: manipulation; }
+.mg-dmp-top { display: flex; justify-content: space-between; font: italic 900 clamp(14px, 1.6vw, 20px)/1 var(--cond, sans-serif); letter-spacing: .12em; text-transform: uppercase; }
+.mg-dmp-count { color: var(--pk2); }
+.mg-dmp-say { margin: 0 auto; max-width: 720px; min-height: 2.6em; display: flex; gap: 12px; align-items: baseline; font-size: clamp(16px, 1.8vw, 21px); line-height: 1.35; }
+.mg-dmp-say b { flex: none; color: var(--nt); background: var(--pk); padding: 4px 10px; transform: skewX(-12deg); font: italic 900 15px/1 var(--cond, sans-serif); }
+.mg-dmp-board { display: grid; grid-template-columns: 1fr; place-items: center; gap: 10px; cursor: pointer; }
+.mg-dmp-svg { width: min(520px, 86vw); height: auto; overflow: visible; }
+.mg-dmp-svg .tray { fill: rgba(255, 255, 255, .07); }
+.mg-dmp-svg .wrap { fill: #f8efe4; stroke: #e7d6c3; stroke-width: 2; }
+.mg-dmp-svg .fill { fill: #d98c7a; opacity: .55; }
+.mg-dmp-svg .p { fill: none; stroke: #cdb8a2; stroke-width: 5; stroke-linecap: round; }
+.mg-dmp-svg .p.gold { stroke: var(--gold); }
+.mg-dmp-svg .p.torn { stroke: #b65b5b; stroke-dasharray: 3 5; }
+.mg-dmp.done-one .mg-dmp-svg { animation: mg-dmp-done .8s ease forwards; }
+@keyframes mg-dmp-done { 60% { transform: translateY(-6px) scale(1.03); } 100% { transform: translateX(40px) scale(.6); opacity: 0; } }
+.mg-dmp.wobble .mg-dmp-svg { animation: mg-dmp-wob .25s ease; }
+@keyframes mg-dmp-wob { 33% { transform: rotate(-2deg); } 66% { transform: rotate(2deg); } }
+.mg-dmp-tray { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 0; padding: 0; }
+.mg-dmp-tray li { width: 34px; height: 22px; border-radius: 34px 34px 6px 6px; background: #f8efe4; box-shadow: inset 0 -4px 0 #e2cfba; }
+.mg-dmp-tray li.perfect { box-shadow: inset 0 -4px 0 var(--gold), 0 0 10px rgba(255, 209, 102, .6); }
+.mg-dmp-tray li.bag { border-radius: 40%; transform: scale(1.05, .8); background: #eadbc9; }
+.mg-dmp-tray li.todo { background: rgba(255, 255, 255, .08); box-shadow: none; }
+.mg-dmp-bar { position: relative; height: 26px; width: min(560px, 90vw); margin: 0 auto; background: rgba(255, 255, 255, .08); transform: skewX(-12deg); cursor: pointer; }
+.mg-dmp-bar i { position: absolute; top: 0; bottom: 0; }
+.mg-dmp-bar .zone { background: rgba(255, 79, 158, .55); }
+.mg-dmp-bar .gold { background: var(--gold); }
+.mg-dmp-bar .mark { width: 4px; margin-left: -2px; top: -6px; bottom: -6px; background: #fff; box-shadow: 0 0 10px #fff; }
+.mg-dmp-help { margin: 0; text-align: center; font-size: 13px; opacity: .6; }
+.mg-dmp .mg-pause, .mg-dmp .mg-end { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 14px; background: rgba(20, 7, 15, .88); }
+.mg-dmp .mg-pause[hidden], .mg-dmp .mg-end[hidden] { display: none; }
+.mg-dmp .mg-pause b { font: italic 900 40px/1 var(--cond, sans-serif); }
+.mg-dmp .mg-pause button, .mg-dmp .mg-end button { padding: 12px 26px; border: 0; background: var(--pk); color: var(--nt); font: italic 900 18px/1 var(--cond, sans-serif); transform: skewX(-12deg); cursor: pointer; }
+.mg-dmp .mg-grade { font: italic 900 clamp(90px, 16vw, 180px)/1 var(--cond, sans-serif); color: var(--pk); text-shadow: .05em .05em 0 var(--pk2); }
+.mg-dmp .mg-end dl { display: grid; grid-template-columns: auto auto; gap: 6px 20px; margin: 0; font-weight: 800; }
+.mg-dmp .mg-end dd { margin: 0; text-align: right; color: var(--pk2); }
+.mg-dmp .mg-end-say { margin: 0; max-width: 460px; text-align: center; font-style: italic; opacity: .85; }
+@media (max-width: 700px) { .mg-dmp-help { display: none; } }
+.mg-dmp.still * { animation: none !important; transition: none !important; }

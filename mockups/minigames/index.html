@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Epilogue Minigames</title>
+<link rel="stylesheet" href="../../assets/femc/game/minigames/support.css?v=1">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/dumplings.css?v=1">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/studio.css?v=1">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/listen.css?v=1">
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; min-height: 100vh; background: #14070f; color: #fff; font-family: system-ui, sans-serif; display: grid; place-content: center; gap: 18px; padding: 24px 16px; }
+  h1 { font: italic 900 clamp(30px, 5vw, 46px)/1 system-ui; color: #ff4f9e; margin: 0; text-align: center; }
+  .sub { text-align: center; opacity: .7; margin: 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; max-width: 1040px; }
+  .card { background: rgba(255,255,255,.05); border-left: 4px solid #ff4f9e; padding: 16px 18px; display: grid; gap: 10px; align-content: start; }
+  .card h2 { margin: 0; font: italic 900 22px/1.1 system-ui; }
+  .card p { margin: 0; font-size: 14px; line-height: 1.45; opacity: .85; }
+  .card small { color: #ff9ac8; font-weight: 700; letter-spacing: .06em; }
+  button { justify-self: start; padding: 10px 20px; border: 0; background: #ff4f9e; color: #14070f; font: italic 900 17px/1 system-ui; cursor: pointer; }
+  pre { max-width: 1040px; margin: 0 auto; width: 100%; box-sizing: border-box; background: rgba(255,255,255,.05); padding: 12px; white-space: pre-wrap; font-size: 13px; }
+  label { text-align: center; font-size: 14px; opacity: .8; }
+</style>
+</head>
+<body>
+  <h1>Epilogue minigames</h1>
+  <p class="sub">Prototypes. None of these are in the story yet. Try them, then tell Claude what to change.</p>
+  <label><input type="checkbox" id="mute"> No sound (captions still show)</label>
+  <div class="grid">
+    <div class="card"><small>REGIONALS · 12/6–7</small><h2>Support</h2><p>Keep Syracuse alive for 70 seconds. Tap teammates (1–4) to heal, Space for the Suzu on the callouts, Q for Kitsune Rush.</p><button data-g="support">Play</button></div>
+    <div class="card"><small>NEW YEAR'S EVE · 12/31</small><h2>Dumplings</h2><p>Crimp each pleat when the marker's in the pink (gold is perfect). Six dumplings. Haechan is grading.</p><button data-g="dumplings">Play</button></div>
+    <div class="card"><small>STUDIO 4B</small><h2>The mix</h2><p>Four faders, your song. Play it back and he'll tell you the one thing that's wrong. Fewer playbacks is better.</p><button data-g="studio">Play</button></div>
+    <div class="card"><small>FIFTH AVENUE · 12/29, 2 A.M.</small><h2>Listen</h2><p>He names a sound of the city. Tap the lights on the street to hear them, then pick the one he means.</p><button data-g="listen">Play</button></div>
+  </div>
+  <pre id="out">Last result shows here.</pre>
+  <script src="../../assets/femc/game/minigames/support.js?v=1"></script>
+  <script src="../../assets/femc/game/minigames/dumplings.js?v=1"></script>
+  <script src="../../assets/femc/game/minigames/studio.js?v=1"></script>
+  <script src="../../assets/femc/game/minigames/listen.js?v=1"></script>
+  <script>
+    const G = { support: () => FemcSupport.play({}), dumplings: () => FemcDumplings.play({}), studio: () => FemcStudio.play({ mute: document.getElementById('mute').checked }), listen: () => FemcListen.play({ mute: document.getElementById('mute').checked }) };
+    document.querySelectorAll('[data-g]').forEach(b => b.onclick = () => G[b.dataset.g]().then(r => { document.getElementById('out').textContent = b.dataset.g + ': ' + JSON.stringify(r); }));
+  </script>
+</body>
+</html>

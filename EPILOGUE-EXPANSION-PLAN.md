@@ -13,13 +13,13 @@ Approved in chat. Work through these in order; show Kat writing drafts before wi
 
 ## 2. Minigames (epilogue-flavoured, instead of battles)
 - [ ] **Regionals: Kiriko support sim.** (prototype built Nov 10, not wired: `mockups/minigames/support.html`, code `assets/femc/game/minigames/support.js`; Kat to try it) Heal teammates' health bars and save the cleanse for the enemy's all-in. Chenle and Minji call targets. The score changes the scene (MVP, Doyoung, the forty-one).
-- [ ] **Cooking: dumplings** on 12/31 (crimp timing; a bad score makes a "bag").
-- [ ] **Studio:** pick the take / match the faders. Haechan grades you.
-- [ ] **The listening walk** (12/29, 2 a.m.): find the sounds he names.
+- [ ] **Cooking: dumplings** (prototype built Nov 10, `mockups/minigames/index.html`) on 12/31 (crimp timing; a bad score makes a "bag").
+- [ ] **Studio:** (prototype built Nov 10) pick the take / match the faders. Haechan grades you.
+- [ ] **The listening walk** (prototype built Nov 10) (12/29, 2 a.m.): find the sounds he names.
 - [ ] **"Hold on"** for the glitch nights: keep her in place against the pull.
 
 ## 3. Lore for new players
-- [ ] **Scrapbook "Previously"** at the start of each epilogue: polaroid pages of real moments from the novel, with captions. Kat picks ~6–10 moments per world (or Claude drafts a list for her to cut).
+- [ ] **Scrapbook "Previously"** (moment lists drafted Nov 10: `drafts/SCRAPBOOK-MOMENTS-DRAFT.md`, Kat to cut) at the start of each epilogue: polaroid pages of real moments from the novel, with captions. Kat picks ~6–10 moments per world (or Claude drafts a list for her to cut).
 - [ ] **Index** in the menu: people, places and terms, filled in as you meet them.
 
 ## 4. HOAX social app
