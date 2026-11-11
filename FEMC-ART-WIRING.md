@@ -480,3 +480,6 @@ Built Nov 10 (`assets/femc/game/scrapbook.js`, plays once as each epilogue begin
 
 ## 47. Listen (Nov 10)
 `python3 tools/femc-minigame-art.py` turns `New Adds/listen-*` into `assets/femc/game/art/minigames/listen/`: `street` (RGB backdrop), `things` (3 × 2 sheet → obj-heat / -train / -light / -cab / -steam / -rad, in listen.js THINGS order), `stickers` (3 × 2 → sticker-<same ids>), `haechan` (alpha). listen.js already loads every name and falls back to its drawn stand-ins; once Kat's street arrives, check each thing's x / y / w in THINGS sits right on it.
+
+## 48. Solar's HOAX faces, remade (Nov 11)
+48A-E are NEW drawings (Cherry's style), not retouches, so `tools/femc-hoax-solar-recut.py` (template match) won't fit. Cut each like a fresh face sheet: `femc-sheet-alpha.py` (if transparent) or `femc-skin-portraits.py`-style seams, order neutral, happy, sad, serious, surprised, flustered, onto the existing canvases of `portraits/solar-hoax`, `-school`, `-christmas`, `-party`, `-newyear`, one scale per sheet chosen so her head matches Cherry's head in the matching `cherry-hoax*` folder (both stand side by side in scenes). Keep the old folders' webps in a backup until Kat approves; update scale.js only if the canvas changes; refresh the `CG - Solar (HOAX…).png` attachments with the new neutrals; bump FEMC_PORTRAIT_V.

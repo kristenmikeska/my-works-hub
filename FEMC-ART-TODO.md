@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 11, after art batch 151):** ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (sections 44-45: Haechan's apron faces; 3 booth pieces for his songs: his singing poses, Solar bopping behind the glass, his health-bar icon; section 47: the listen game's street, its six things, their stickers and Haechan) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · **the epilogue scrapbook** (section 46, Nov 10: 110 "Previously" photos, Runners 40 / strangers 35 / HOAX 35, plus 11 covers, paper, dividers, tape and sticker sheets) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
+**To make (updated Nov 11, after art batch 151):** **Solar's HOAX faces remade in Cherry's style** (section 48: 4 sheets + 1 optional) · ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (sections 44-45: Haechan's apron faces; 3 booth pieces for his songs: his singing poses, Solar bopping behind the glass, his health-bar icon; section 47: the listen game's street, its six things, their stickers and Haechan) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · **the epilogue scrapbook** (section 46, Nov 10: 110 "Previously" photos, Runners 40 / strangers 35 / HOAX 35, plus 11 covers, paper, dividers, tape and sticker sheets) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
 
 ## ⭐ Outfits, HD poses and banners: in `FEMC-SKIN-ART.md` (Nov 7)
 
@@ -144,6 +144,46 @@ A portrait sheet: 3 columns × 2 rows on a plain white background, with clear em
 - **[ ] 41L. Auntie Wu** (the mahjong room in Chinatown) · Save as `wu-strangers-portraits.png` · [WHO]: a sharp-eyed Chinese-Korean woman in her sixties who keeps the mahjong back room of a shop in Incheon's Chinatown, dark hair pinned up with a plain clip, reading glasses pushed up on her head, a quilted maroon jacket, a jade bangle
 - **[ ] 41M. Mrs. Park** · Save as `mrspark-strangers-portraits.png` · [WHO]: a quiet, gentle Korean woman in her seventies, small and neat, white hair in a low bun, a soft brown cardigan buttoned to the top, a small knowing smile
 
+
+---
+## 48. Solar's HOAX faces, remade (ChatGPT; in Cherry's style; Kat, Nov 11)
+
+Kat's plan: redo all of Solar's HOAX portraits from scratch so she matches Cherry's art style. Attach both pictures for each, **Cherry first** (the style) and **Solar second** (who she is). Each sheet is the same six faces as now, in the usual order. The New Year hanbok one is optional (it's her fifth HOAX look).
+
+**[ ] 48A. Solar: everyday**  
+Attach: `CG - Cherry (HOAX).png`, `CG - Solar (HOAX).png`  
+Save as: `solar-hoax-remake-portraits.png`
+```
+A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. Draw the girl from the SECOND attached image (Solar Kim): keep HER face, eye shape, features and her long dark wavy hair, so she's clearly the same person, but redraw her completely in the art style of the FIRST attached image (Cherry): copy that image's painted rendering, skin, eyes, line, lighting, colour, head-and-shoulders framing and size exactly, so the two girls look like they come from the same game. Do NOT give her Cherry's face. The same person in all six cells, facing the camera. Outfit: her everyday look: a fitted pink-and-black striped long-sleeve top with a dark graphic print, a black choker with a small silver heart, a layered thin silver chain with a tiny cross. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 48B. Solar: school**  
+Attach: `CG - Cherry (HOAX school).png`, `CG - Solar (HOAX school).png`  
+Save as: `solar-hoax-school-remake-portraits.png`
+```
+A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. Draw the girl from the SECOND attached image (Solar Kim): keep HER face, eye shape, features and her long dark wavy hair, so she's clearly the same person, but redraw her completely in the art style of the FIRST attached image (Cherry): copy that image's painted rendering, skin, eyes, line, lighting, colour, head-and-shoulders framing and size exactly, so the two girls look like they come from the same game. Do NOT give her Cherry's face. The same person in all six cells, facing the camera. Outfit: Hanlim High's winter uniform: a navy blazer with cream piping and a small gold pin on the lapel, a cream knit vest, a white shirt and a red ribbon bow at the collar. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 48C. Solar: Christmas / holiday**  
+Attach: `CG - Cherry (HOAX christmas).png`, `CG - Solar (HOAX christmas).png`  
+Save as: `solar-hoax-christmas-remake-portraits.png`
+```
+A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. Draw the girl from the SECOND attached image (Solar Kim): keep HER face, eye shape, features and her long dark wavy hair, so she's clearly the same person, but redraw her completely in the art style of the FIRST attached image (Cherry): copy that image's painted rendering, skin, eyes, line, lighting, colour, head-and-shoulders framing and size exactly, so the two girls look like they come from the same game. Do NOT give her Cherry's face. The same person in all six cells, facing the camera. Outfit: a soft pink cable-knit sweater for the holidays, a black choker with a small silver heart. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 48D. Solar: party**  
+Attach: `CG - Cherry (HOAX party).png`, `CG - Solar (HOAX party).png`  
+Save as: `solar-hoax-party-remake-portraits.png`
+```
+A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. Draw the girl from the SECOND attached image (Solar Kim): keep HER face, eye shape, features and her long dark wavy hair, so she's clearly the same person, but redraw her completely in the art style of the FIRST attached image (Cherry): copy that image's painted rendering, skin, eyes, line, lighting, colour, head-and-shoulders framing and size exactly, so the two girls look like they come from the same game. Do NOT give her Cherry's face. The same person in all six cells, facing the camera. Outfit: a party night: a black corset top under a black leather jacket slipping off her shoulders, layered silver chains, a small silver cross earring, her hair a little messier. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
+
+**[ ] 48E. Solar: New Year hanbok (optional)**  
+Attach: `CG - Cherry (HOAX new year).png`, `CG - Solar (HOAX new year).png`  
+Save as: `solar-hoax-newyear-remake-portraits.png`
+```
+A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. Draw the girl from the SECOND attached image (Solar Kim): keep HER face, eye shape, features and her long dark wavy hair, so she's clearly the same person, but redraw her completely in the art style of the FIRST attached image (Cherry): copy that image's painted rendering, skin, eyes, line, lighting, colour, head-and-shoulders framing and size exactly, so the two girls look like they come from the same game. Do NOT give her Cherry's face. The same person in all six cells, facing the camera. Outfit: a New Year hanbok: a navy jeogori embroidered with gold flowers, a cream collar and navy ribbon tie, a small gold flower hairpin above one ear. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+```
 
 ---
 ## 44. Dumpling cooking minigame (Kat, Nov 10)
