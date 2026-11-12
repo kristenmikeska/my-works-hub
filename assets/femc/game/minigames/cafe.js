@@ -6,7 +6,7 @@
    step, a customer who tastes it in front of you), made Yeobo's own: its own menu, people, art and screens. Cameos only;
    nothing of the plot.
 
-   FemcCafe.play({ host, mute, difficulty, seed, bg, nightBg, still, calm, perf, onDone }) -> Promise<result>
+   FemcCafe.play({ host, mute, difficulty, seed, bg, nightBg, still, calm, perf, tutorial, onDone }) -> Promise<result>
      host        element to draw into (default document.body; a full-screen overlay is added inside it)
      mute        no sound at all (no AudioContext is made; every sound also has something on screen)
      difficulty  'easy' | 'normal' | 'hard' (default 'normal'): customers a rush 3-4-5 / 4-5-6 / 5-6-7; the wait before the
@@ -20,9 +20,16 @@
                  views and pop-ups crossfade
      calm, perf  Reduce flashes (no star bursts or flashes) / Performance (no steam, bubbles, coins or music); default: the
                  game's settings (FemcGame.settings().calm / .perf), else off
+     tutorial    true: always start with the practice shift; false: never; default: only the first time (localStorage
+                 'kg-femc-cafe-tutorial' = '1' once it was played or skipped; read and written in try/catch)
      onDone      called with the result too
-     hook        tests only: called with { M (the model), act, setView, render, finish }
-   FemcCafe.shift(opts) -> the model with no DOM (same rules; tests drive it, see "The model" below)
+     hook        tests only: called with { M (the day's model), act, setView, render, finish, model() (the model on screen: the
+                 practice one during the tutorial), view(), tutorial: { start(from), button('next' | 'skip'), active(), key(), coach() } }
+   FemcCafe.shift(opts) -> the model with no DOM (same rules; tests drive it, see "The model" below). opts.tut = the practice
+     shift: one slow customer (Junkyu: small yuzu tea + honey, golden hotteok + seeds, egg / carrot / spinach kimbap), Sunoo off and
+     not assignable, no walk-outs, the griddle at 0.6 speed; it ends with phase 'done' and a 'tutdone' event.
+   FemcCafe.coach(M, view, hello) -> the tutorial's next step for that model ({ key, view, sel, text, btn }; see "The practice
+     shift" below)
 
    result = { won, grade: 'S' | 'A' | 'B' | 'C', quit, score, served, left, customers, tips, stars, fiveStars, burnt, wasted,
               rushes: [{ served, left, tips, stars, event: null }], upgrades: [ids], specials: [[unlocked ids] per rush],
@@ -76,9 +83,36 @@
    HALMEONI   comes in once a day (rush 2 or 3) as a special customer with her own order (yuzu tea L with honey; golden hotteok
               with seeds and syrup), a high bar (her stars are the total less 8, so only near-perfect pleases her) and a big
               tip. She gives the end-of-day verdict. She looks in on rush 1 with a line too.
+   THE PRACTICE SHIFT (tutorial, Nov 11, Kat: "probably some kind of little tutorial at the beginning"): before the first day's
+              brief (first time only), or from "How to play" on the brief / between-rush screens or the pause menu (mid-rush: the
+              day's clock waits). Its own model (shift({ tut: true })) is swapped in while it runs and the day's model swapped back
+              after, so it never touches the result. Sunoo talks you through Junkyu's order in a bubble: take the order → Drinks
+              (chip, cup, hold Pour to the line, honey, Done) → Griddle (put on, wait for the mark, flip, Off) → Build (from the rack,
+              seeds on the circles, Plate; then the kimbap: rice and fillings in order, roll, five cuts) → Order (serve the tray) →
+              the tasting card. A pink ring and a bouncing arrow sit on exactly the thing to click / drag, everything else dims;
+              coach() reads the model every frame, so doing things out of order, binning or burning just changes the next hint.
+              "I know how, skip" ends it at any point; Enter / Space press the bubble's button.
+   THE LOOK (drawn, no art needed; Kat's art replaces pieces as before): the Order view has the café behind the counter (a
+              window with snow drifting past rooftops, the radiator's heat shimmer, a wall clock that keeps the game's time with a
+              ticking second hand, the door that swings open with a bell on every arrival, three tables in the back with every
+              seated customer as a small silhouette sipping), customers' portraits ringed by a draining patience ring with drawn
+              emotes (! tray ready, ♪ chatting with Sunoo, … getting restless, an anger mark and steam puffs when fuming, a ♥ / … /
+              anger mark floating off as they leave), the ticket printer feeding and tearing the ticket, tickets swinging onto the
+              rail (and in the draft when the door opens), coins arcing into a tip jar whose coin pile grows. Drinks: the cup slides
+              in; the level rises with each drink's own liquid (cocoa with foam, yuzu with floating peel, americano with crema,
+              sikhye in a glass with rice grains), a rippling surface and splashes while pouring, a puddle on a spill, steam curls
+              on hot drinks as the cup fills; Done flies the cup off to the counter. Griddle: hotteok and toast go from pale dough
+              to golden to dark through the cook colours with blotches / grill marks and the sugar seeping out of a done hotteok,
+              the griddle glows under what's cooking, oil spits, bubbles, a grease shimmer, a presser on placing, a spatula and a
+              real flip arc (the colours swap as it turns edge-on); Off flies it to the warming rack. Build: textured seaweed, the
+              rice spreading out, fillings dropping in as strips with a bounce, the roll eating the sheet from the near edge with
+              spiral ends, the log coming apart at each cut, and on the last cut the slices tumbling out cut-side up (the spiral
+              cross-section) before flying to the counter; toppings drop and settle with a squash. Star sparks on 4+ star steps and
+              happy tastings. Reduced motion: still frames and fades (no flights, sparks, snow, swinging); Performance: fewer
+              flakes and sparks, no shimmer, oil, spits or steam; Reduce flashes: no sparks, no pulsing ring.
    Keys: 1-4 / Tab views · Space the main action of the view (take the order, hold to pour, roll / cut) · Enter serve / Done /
    Plate · Z X C V add-ins / flip / toppings · A S D F take off · Backspace bin · T Sunoo's station · G hurry · M music ·
-   Esc pause (Resume / Quit). Mouse and touch do everything.
+   Esc pause (Resume / How to play / Quit). Mouse and touch do everything.
 
    ── The model (FemcCafe.shift(o): no DOM) ─────────────────────────────────────────────────────────────────────────────
    { S, tick(dt), startRush(), takeOrder(), drinkStart(tid, li), drinkCup('S'|'L'), pour(on), drinkAdd(id), drinkDone(),
@@ -186,6 +220,9 @@ window.FemcCafe = (() => {
   ];
   const HALMEONI = { id: 'halmeoni', name: 'Halmeoni', face: 'halmeoni-hoax', picky: true, fixed: [D_('yuzu', 'L', ['honey']), G_('hotteok', 'golden', ['seeds', 'syrup'])],
     say: ["Sit. No, you sit. I'm a customer today. A yuzu tea, large, real honey. And a hotteok the way I make it.", 'Hm. Good. ...Good.', 'Hm. I see.'] };
+  // the practice customer (tutorial only): slow, patient, one of each station's work
+  const TUTOR = { id: 'junkyu', name: 'Junkyu', face: 'junkyu-hoax', fixed: [D_('yuzu', 'S', ['honey']), G_('hotteok', 'golden', ['seeds']), K_('egg', 'carrot', 'spinach')],
+    say: ["Um, hi!! Sunoo said you're new? That's okay, I'm not in a hurry at all! A small yuzu tea with honey, a hotteok with seeds, and a kimbap? Please?", 'This is the best thing that happened all week!!!', "It's okay!! It's still nice!!"] };
   const MEH = ['Mm. It\'s fine.', "It's okay. It's food.", 'Hm. Not bad.', 'Thanks. It\'s okay.'];
 
   /* ── Sunoo and Halmeoni ── [expression, line] */
@@ -221,8 +258,9 @@ window.FemcCafe = (() => {
       drink: null, griddle: [null, null], rack: [], kimbap: null, topping: null,
       points: 0, unlocked: [], upgrades: [], specialsLog: [], rushes: [], steps: { wait: [], drinks: [], griddle: [], build: [] },
       sunoo: { at: 'griddle', job: null, chat: 0, chatWith: null, next: range(D.chat), cd: 0, hurried: 0, chats: 0 },
-      halRush: 1 + Math.floor(rnd() * 2), halmeoni: null, out: [], diff, guides: D.guides,
+      halRush: 1 + Math.floor(rnd() * 2), halmeoni: null, out: [], diff, guides: D.guides, tut: !!o.tut,
     };
+    if (S.tut) S.sunoo.at = 'off';
     const emit = (type, x = {}) => S.out.push({ type, ...x });
     const has = u => S.upgrades.includes(u);
     const C = id => S.cust.find(c => c.id === id);
@@ -478,7 +516,7 @@ window.FemcCafe = (() => {
     };
 
     /* Sunoo */
-    function assign(at) { if (!SUNOO_AT.includes(at) || S.sunoo.at === at) return false; S.sunoo.at = at; S.sunoo.job = null; S.sunoo.cd = 0.5; say('sunoo', pick(SUNOO.at[at])); emit('assign', { at }); return true; }
+    function assign(at) { if (S.tut || !SUNOO_AT.includes(at) || S.sunoo.at === at) return false; S.sunoo.at = at; S.sunoo.job = null; S.sunoo.cd = 0.5; say('sunoo', pick(SUNOO.at[at])); emit('assign', { at }); return true; }
     function hurry() { const su = S.sunoo; if (su.chat <= 0) return false; su.chat = 0; su.chatWith = null; su.hurried++; su.cd = 0.3; say('sunoo', pick(SUNOO.hurry)); emit('hurry'); return true; }
     function sunooTick(dt) {
       const su = S.sunoo, sp = D.sunoo * (has('tag') ? 1.15 : 1);
@@ -531,7 +569,8 @@ window.FemcCafe = (() => {
       S.sched = times.map(at => ({ at, who: null }));
       if (S.rush === S.halRush) S.sched[Math.floor(n / 2)].who = HALMEONI;
       S.halLook = S.rush === 0 ? W * 0.4 : -1;
-      emit('rush', { rush: S.rush });
+      if (S.tut) { S.sched = [{ at: 1.2, who: TUTOR }]; S.halLook = -1; }
+      emit('rush', { rush: S.rush, tut: S.tut });
       return true;
     }
     function endRush() {
@@ -540,6 +579,7 @@ window.FemcCafe = (() => {
       S.drink = null; S.kimbap = null; S.topping = null; S.rack = []; S.griddle = S.griddle.map(() => null); S.door = []; S.counter = null;
       S.sunoo.job = null; S.sunoo.chat = 0;
       S.rushes.push({ served: S.rushServed, left: S.rushLeft, tips: S.rushTips, stars: Math.round(avg(S.rushStars) * 10) / 10, event: null });
+      if (S.tut) { S.phase = 'done'; emit('tutdone'); return; }
       if (S.rush >= 2) { S.phase = 'done'; emit('done'); }
       else { S.phase = 'break'; emit('break'); say('sunoo', pick(SUNOO.rush)); }
     }
@@ -553,7 +593,7 @@ window.FemcCafe = (() => {
       for (const c of S.cust) {
         if (c.state === 'walk' && (c.t -= dt) <= 0) { c.state = 'counter'; emit('counter', { id: c.id }); }
         else if (c.state === 'ordering' && (c.t -= dt) <= 0) printTicket(c);
-        else if (c.state !== 'gone' && S.t - c.arrived > D.cap * (has('radiator') ? 1.2 : 1) && c.state !== 'ordering') walkout(c);
+        else if (!S.tut && c.state !== 'gone' && S.t - c.arrived > D.cap * (has('radiator') ? 1.2 : 1) && c.state !== 'ordering') walkout(c);
       }
       // drinks
       const d = S.drink;
@@ -565,13 +605,13 @@ window.FemcCafe = (() => {
       // griddle
       S.griddle.forEach((g, i) => {
         if (!g) return;
-        g.cook[g.side] = Math.min(2.2, g.cook[g.side] + dt * D.cook / GRILL[g.type].time);
+        g.cook[g.side] = Math.min(2.2, g.cook[g.side] + dt * D.cook * (S.tut ? 0.6 : 1) / GRILL[g.type].time);
         const t = T(g.tid), tg = t ? target(t.lines[g.li]) : 1;
         if (g.cook[g.side] > tg + 0.6 && !g.warned[g.side]) { g.warned[g.side] = true; if (!g.warned[1 - g.side]) S.burnt++; emit('burn', { i }); if (rnd() < 0.5) say('sunoo', pick(SUNOO.burnt)); }
       });
       sunooTick(dt);
       if (!S.sched.length && !S.cust.some(c => c.state !== 'gone')) endRush();
-      else if (S.t > D.win[S.rush] + D.cap + 60) { S.cust.filter(c => c.state !== 'gone').forEach(walkout); endRush(); }   // never hangs
+      else if (!S.tut && S.t > D.win[S.rush] + D.cap + 60) { S.cust.filter(c => c.state !== 'gone').forEach(walkout); endRush(); }   // never hangs
     }
 
     /* between rushes */
@@ -595,6 +635,69 @@ window.FemcCafe = (() => {
     const waitFrac = c => { if (!c) return 0; const t = T(c.ticket), n = t ? t.lines.length : 2, g = (40 + 22 * n) * D.grace * (has('radiator') ? 1.2 : 1); return clamp((S.t - c.arrived - c.chatted) / g, 0, 2); };
     return { S, D, tick, startRush, takeOrder, drinkStart, drinkCup, pour, drinkAdd, drinkDone, drinkBin, grillPlace: (t, l) => grillPlace(t, l), grillFlip, grillOff: i => grillOff(i), grillState,
       topStart, topDrop, topDone: () => topDone(), kimStart, kimLay, kimRoll, kimCut, kimBin, serve, owed, assign, hurry, buy, avail, result, drain, target, spots, price, waitFrac, C, T };
+  }
+
+  /* ════════════ the tutorial coach (no DOM) ════════════
+     coach(M, view, hello) → { key, view, sel, text, btn }: what to do next in the practice shift, read off the model's state
+     every frame, so it follows the player whatever order they do things in (and steps back if they bin something). `sel` is
+     the one thing to point at (a selector inside .mg-cafe), `view` the station it lives on (another station → "go there"
+     first), `btn` a button in Sunoo's bubble (hello / the end). Sunoo's voice; nothing of the story. */
+  const TUT_KEY = 'kg-femc-cafe-tutorial';   // localStorage: '1' once the practice shift was played or skipped
+  const tutSeen = () => { try { return localStorage.getItem(TUT_KEY) === '1'; } catch (e) { return false; } };
+  const tutMark = () => { try { localStorage.setItem(TUT_KEY, '1'); } catch (e) {} };
+  const COACH_TAB = {
+    order: 'Back to the counter! Click the Order tab, or press 1.',
+    drinks: "Drinks first. See his ticket up on the rail? Three things on it. Click the Drinks tab down there, or press 2.",
+    griddle: 'Drink, done! Now the griddle. Click Griddle, or press 3.',
+    build: 'Now Build, where things get rolled and topped. Click Build, or press 4.',
+  };
+  function coach(M, view, hello) {
+    const S = M.S, at = (v, sel, text, key) => view !== v ? { key: 'tab-' + v + '-' + key, view, sel: `.cf-tab[data-v="${v}"]`, text: key === 'flipnow' || key === 'burn' ? (key === 'burn' ? "Something's burning on the griddle! Quick, Griddle tab, 3!" : 'The hotteok wants flipping! Griddle tab, 3!') : COACH_TAB[v] } : { key, view: v, sel, text };
+    if (hello) return { key: 'hello', sel: null, text: "Okay! Before the doors open for real, a practice customer. I asked Junkyu to come in slow. He said \"how slow?\" and I said \"yes.\" I'll point at things. You do them!", btn: "Let's go" };
+    if (S.phase === 'done') return { key: 'end', sel: null, text: "That's the whole café! Take the order, make each thing on the ticket at its station, serve the tray. Every step gets stars and the wait counts too. You can send me to any station with the little buttons by my face. Okay. Ready?", btn: 'end' };
+    const c = S.cust[0], t = S.tickets[0];
+    if (!c || c.state === 'door' || c.state === 'walk') return { key: 'wait', sel: null, text: "Here he comes! Hear the bell? That's the door. Customers walk in and come to the counter one at a time." };
+    if (c.state === 'counter') return at('order', '.v-order .cf-take', "He's at the counter! Click him, or Take order. Space works too, if you're a keyboard person. I respect keyboard people.", 'take');
+    if (c.state === 'ordering') return { key: 'ordering', sel: '.v-order .cf-bubble', text: "He's telling you what he wants. Watch the printer, the ticket prints by itself~" };
+    if (!t) return { key: 'wait2', sel: null, text: '' };
+    // anything on the griddle that can't wait comes first
+    const gi = S.griddle.findIndex(g => g), gs = gi >= 0 ? M.grillState(gi) : null;
+    if (gs === 'burning') return at('griddle', `.cf-gslot[data-g="${gi}"] .cf-off`, "Oh no, it's burning! Off, off, off! (It still counts. We just don't talk about it.)", 'burn');
+    const want = t.lines;
+    if (!t.made[0]) {
+      const d = S.drink;
+      if (!d) return at('drinks', '.v-drinks .cf-chips .cf-chip', 'Every drink still owed is in this list on the left. Click his yuzu tea.', 'dchip');
+      if (!d.size) return at('drinks', `.v-drinks .cf-cupbtn.s-${want[0].size}`, `Small cup or large? The ticket says ${want[0].size === 'L' ? 'large' : 'small'}. Click the ${want[0].size === 'L' ? 'large' : 'small'} one!`, 'cup');
+      if (d.pouring || d.level < 0.55) return at('drinks', '.v-drinks .cf-pour', d.level > 0.05 && !d.pouring ? 'A little more! Hold Pour again and let go on the pink dashed line.' : 'Now hold Pour. Hold, hold… and let go right on the pink dashed line. Over the top is a spill. We don\'t talk about spills.', 'pour');
+      const miss = want[0].adds.find(a => !d.adds.includes(a));
+      if (miss) return at('drinks', `.v-drinks .cf-add[data-id="${miss}"]`, `${ADDS[miss]}! Click it. Halmeoni can tell when it's the squeezy bottle. Nobody knows how.`, 'add');
+      return at('drinks', '.v-drinks .cf-acts .cf-done', 'Perfect. Done puts it on his tray (Enter works too). Look, a score! Every step gets one.', 'ddone');
+    }
+    if (!t.made[1]) {
+      const r = S.rack.findIndex(x => x.tid === t.id), p = S.topping;
+      if (p) {
+        const need = TOPS.seeds.spots.length, have = p.drops.filter(x => x.top === 'seeds').length;
+        if (have < need) return at('build', '.v-build .cf-topb[data-top="seeds"]', `Seeds go on the dashed circles. Drag them from Seeds onto each circle, or click Seeds and then click the circles. Closer is better! (${have} / ${need})`, 'seeds');
+        return at('build', '.v-build .cf-topbar .cf-done', 'So pretty. Plate it! Enter works too.', 'plate');
+      }
+      if (r >= 0) return at('build', '.v-build .cf-chip[data-a="topStart"]', "Griddle things wait on the warming rack until they're topped. Click the hotteok to bring it to the board.", 'rack');
+      if (gi < 0) return at('griddle', '.v-griddle .cf-chips .cf-chip', 'Click his hotteok to put it on the griddle. It squishes down. Very satisfying.', 'gchip');
+      const g = S.griddle[gi];
+      if (gs === 'ready') return at('griddle', `.cf-gslot[data-g="${gi}"] .cf-off`, 'Golden on both sides! Click Off. It slides onto the warming rack.', 'off');
+      if (gs === 'flip') return at('griddle', `.cf-gslot[data-g="${gi}"] .cf-gitem`, 'Now! Click the hotteok to flip it!', 'flipnow');
+      return at('griddle', `.cf-gslot[data-g="${gi}"] .cf-m.down`, g.flips ? 'Other side now. Same thing: wait for the bar to reach the pink mark.' : 'Only the side touching the griddle cooks. This bar is that side. When it reaches the pink mark, flip it. While you wait, the tea and the griddle keep going on their own, so you can go do other things later!', g.flips ? 'cook2' : 'cook');
+    }
+    if (!t.made[2]) {
+      const k = S.kimbap;
+      if (!k) return at('build', '.v-build .cf-chip[data-a="kStart"]', 'Last one, the kimbap! Click it in the list.', 'kchip');
+      if (k.stage === 'lay') {
+        const next = ['rice', ...want[2].fill].find(f => !k.laid.includes(f));
+        return at('build', `.v-build .cf-binf[data-ing="${next}"]`, next === 'rice' ? 'Rice first! Drag it onto the seaweed, or just click it.' : `Now the fillings, in the ticket's order. Next: ${FILLS[next]}.`, 'lay-' + next);
+      }
+      if (k.stage === 'roll') return at('build', '.v-build .cf-mat.roll', 'Roll it up! Drag up on the mat, slow and straight. Space rolls a bit too.', 'roll');
+      return at('build', '.v-build .cf-log', `Five slices: tap the log on each dashed mark. Even slices are the whole secret. (${k.cuts.length} / 5)`, 'cut');
+    }
+    return at('order', '.v-order .cf-tray', 'All done! His tray is on the pass. Drag it onto Junkyu, or just click it.', 'serve');
   }
 
   /* ════════════ sounds (Web Audio: effects, two loops and a quiet café music bed) ════════════ */
@@ -701,15 +804,47 @@ window.FemcCafe = (() => {
     if (top === 'cheese') return g('<path d="M-9-8h18v12c-2 4-4 1-5 4s-4 2-5-1-5 1-8-3z" fill="#ffcc33" stroke="#e0a812" stroke-width=".8"/>');
     return '';
   };
-  // hotteok / toast seen from above: the top is the side facing up (--up), the rim glow the side on the griddle (--dn)
+  // hotteok / toast seen from above: the top is the side facing up (--up), the rim the side on the griddle (--dn); --ck (the
+  // up side's cook, set per frame) darkens the blotches / grill marks and lets the sugar seep out of a done hotteok
   const grillSVG = (type, drops = [], opts = {}) => {
     const body = type === 'hotteok'
-      ? `<ellipse cx="50" cy="52" rx="43" ry="40" style="fill:var(--dn,#f6e6c8)"/><ellipse cx="50" cy="50" rx="39" ry="36" style="fill:var(--up,#f6e6c8)"/><path d="M28 44q10-8 22-6M58 62q10 0 16-8M36 66q6 4 12 3" fill="none" stroke="rgba(90,50,20,.25)" stroke-width="2" stroke-linecap="round"/>`
-      : `<rect x="8" y="14" width="84" height="74" rx="14" style="fill:var(--dn,#f3dcae)"/><rect x="11" y="12" width="78" height="70" rx="12" style="fill:var(--up,#f3dcae)"/><rect x="18" y="20" width="64" height="54" rx="8" fill="rgba(255,250,235,.35)"/><path d="M14 70q36 10 72 0" fill="none" stroke="#7cc46a" stroke-width="3" opacity=".7"/>`;
-    const tops = drops.map(d => topSVG(d.top, d.x * 100, d.y * 100, 1.25)).join('');
+      ? `<ellipse cx="50" cy="54" rx="44" ry="40" style="fill:var(--dn,#f6e6c8)"/><path d="M11 50c0-21 17-37 39-37s40 14 39 36c-1 21-18 37-40 37S11 71 11 50z" style="fill:var(--up,#f6e6c8)"/>
+         <g style="opacity:calc(var(--ck, 1) * .6)"><ellipse cx="33" cy="37" rx="10" ry="6" fill="rgba(110,52,16,.35)"/><ellipse cx="63" cy="63" rx="12" ry="7" fill="rgba(110,52,16,.3)"/><ellipse cx="64" cy="33" rx="6" ry="4" fill="rgba(110,52,16,.3)"/><ellipse cx="35" cy="65" rx="7" ry="4" fill="rgba(110,52,16,.26)"/><ellipse cx="50" cy="50" rx="5" ry="3" fill="rgba(110,52,16,.2)"/></g>
+         <path d="M84 44q7 5 1 12q-4 4-2 8" fill="none" stroke="#9a4a12" stroke-width="3.4" stroke-linecap="round" style="opacity:clamp(0, calc((var(--ck, 1) - .85) * 3), .85)"/>
+         <path d="M28 44q10-8 22-6M58 62q10 0 16-8M36 66q6 4 12 3" fill="none" stroke="rgba(90,50,20,.22)" stroke-width="2" stroke-linecap="round"/><ellipse cx="38" cy="29" rx="15" ry="4.5" fill="rgba(255,255,255,.2)" transform="rotate(-18 38 29)"/>`
+      : `<path d="M10 36c0-15 10-24 21-24 7 0 10 4 19 4s12-4 19-4c11 0 21 9 21 24v44c0 6-4 10-10 10H20c-6 0-10-4-10-10z" style="fill:var(--dn,#f3dcae)"/><path d="M15 37c0-12 8-19 17-19 6 0 9 4 18 4s12-4 18-4c9 0 17 7 17 19v41c0 4-3 7-7 7H22c-4 0-7-3-7-7z" style="fill:var(--up,#f3dcae)"/>
+         <g style="opacity:clamp(0, calc(var(--ck, 1) * .8 - .25), .7)" stroke="rgba(70,32,8,.55)" stroke-width="3.2" stroke-linecap="round"><path d="M24 40l18-14M24 58l32-26M26 76l40-32M44 80l32-26M62 80l16-13"/></g>
+         <rect x="21" y="25" width="58" height="56" rx="9" fill="rgba(255,250,235,.16)"/><path d="M19 74q31 9 62 0" fill="none" stroke="#7cc46a" stroke-width="3" opacity=".75"/><path d="M22 70q28 8 56 0" fill="none" stroke="#ffcf3c" stroke-width="2.4" opacity=".8"/>`;
+    const tops = drops.map((d, i) => `<g class="cf-dropg${i === opts.fresh ? ' new' : ''}">${topSVG(d.top, d.x * 100, d.y * 100, 1.25)}</g>`).join('');
     const guide = (opts.guides || []).map(([top, [x, y]]) => `<circle cx="${x * 100}" cy="${y * 100}" r="7" class="cf-guide g-${top}"/>`).join('');
     return `<svg viewBox="0 0 100 100" aria-hidden="true">${body}${guide}${tops}${opts.smoke ? '<g class="cf-smoke"><path d="M35 20q-5-9 2-16M52 18q-5-9 2-16M68 22q-5-9 2-16" fill="none" stroke="#6a5a5a" stroke-width="3" stroke-linecap="round"/></g>' : ''}</svg>`;
   };
+  // a kimbap slice, cut face on: seaweed ring, rice, the spiral of seaweed rolled in, the fillings in the middle
+  const FILL_SHAPE = (f, x, y) => f === 'egg' || f === 'danmuji' ? `<rect x="${x - 3}" y="${y - 2.4}" width="6" height="4.8" rx="1" fill="${FILL_COL[f]}"/>`
+    : f === 'carrot' ? `<rect x="${x - 2.6}" y="${y - 1.6}" width="5.2" height="3.2" rx=".8" fill="${FILL_COL[f]}"/>`
+    : f === 'spinach' ? `<path d="M${x - 3} ${y + 1}q1-4 3-3q2-2 3 2q-2 3-6 1z" fill="${FILL_COL[f]}"/>`
+    : `<circle cx="${x}" cy="${y}" r="2.8" fill="${FILL_COL[f] || '#ccc'}"/>`;
+  const sliceG = (fill = ['egg', 'carrot', 'spinach'], rot = 0) => `<g transform="rotate(${rot})"><circle r="19" fill="#16221a"/><circle r="16.6" fill="#fbf7ee"/>${[[-10, -8], [9, -10], [12, 7], [-12, 6], [-3, 13], [4, -14], [-14, -1]].map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="1.5" ry=".8" fill="#e7dfcc" transform="rotate(${x * 13} ${x} ${y})"/>`).join('')}<path d="M2 -6A6 6 0 0 1 7 3A9 9 0 0 1 -5 9.5A12 12 0 0 1 -12.4 -6A14.8 14.8 0 0 1 6 -15.6" fill="none" stroke="#16221a" stroke-width="1.3" stroke-linecap="round"/>${fill.map((f, i) => FILL_SHAPE(f, [-3.2, 3.4, 0][i], [-2, -1.6, 3.6][i])).join('')}</g>`;
+  const sliceSVG = (fill, rot) => `<svg viewBox="-20 -20 40 40" aria-hidden="true">${sliceG(fill, rot)}</svg>`;
+  // emote bubbles over the customers (drawn, no emoji)
+  const EMO = {
+    heart: '<svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z" fill="#ff4f9e" stroke="#fff4f9" stroke-width="1.6"/></svg>',
+    bang: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#fff4f9" stroke="#ff4f9e" stroke-width="2"/><path d="M12 6v8" stroke="#14070f" stroke-width="3" stroke-linecap="round"/><circle cx="12" cy="17.6" r="1.7" fill="#14070f"/></svg>',
+    anger: '<svg viewBox="0 0 24 24"><g fill="none" stroke="#e2463c" stroke-width="2.8" stroke-linecap="round"><path d="M4 9.5q5.5 0 5.5-5.5"/><path d="M14.5 4q0 5.5 5.5 5.5"/><path d="M20 14.5q-5.5 0-5.5 5.5"/><path d="M9.5 20q0-5.5-5.5-5.5"/></g></svg>',
+    dots: '<svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="13" rx="6.5" fill="#fff4f9" stroke="#3a1d2c" stroke-width="1.4"/><circle cx="7.5" cy="11.5" r="1.6" fill="#3a1d2c"/><circle cx="12" cy="11.5" r="1.6" fill="#3a1d2c"/><circle cx="16.5" cy="11.5" r="1.6" fill="#3a1d2c"/></svg>',
+    note: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#fff4f9" stroke="#ff4f9e" stroke-width="2"/><path d="M10 16.5V7.5l6-1.5v9" fill="none" stroke="#14070f" stroke-width="2"/><circle cx="8.6" cy="16.6" r="2" fill="#14070f"/><circle cx="14.6" cy="15.2" r="2" fill="#14070f"/></svg>',
+  };
+  const emo = (kind, cls = '') => kind ? `<i class="cf-emo e-${kind} ${cls}">${EMO[kind]}</i>` : '';
+  // the café behind the counter: the window with snow, the radiator, the wall clock, the door with its bell, the tables
+  const decorHtml = (n, seed = 7) => {
+    let r = seed; const rn = () => (r = (r * 9301 + 49297) % 233280) / 233280;
+    const flakes = Array.from({ length: n }, () => `<i style="left:${(rn() * 100).toFixed(1)}%;--d:${(5 + rn() * 6).toFixed(2)}s;--dl:${(-rn() * 10).toFixed(2)}s;--s:${(2 + rn() * 3).toFixed(1)}px;--x:${((rn() - 0.5) * 30).toFixed(0)}px"></i>`).join('');
+    return `<div class="cf-win"><div class="cf-pane"><i class="cf-roofs"></i>${flakes}</div><i class="cf-mull"></i><i class="cf-sill"></i></div>
+      <div class="cf-rad"><svg viewBox="0 0 120 44" preserveAspectRatio="none"><rect x="2" y="40" width="116" height="4" rx="2" fill="#b9a9a0"/>${Array.from({ length: 9 }, (_, i) => `<rect x="${4 + i * 12.6}" y="2" width="10" height="40" rx="5" fill="#efe6df" stroke="#c9b9b0" stroke-width="1.2"/>`).join('')}<circle cx="114" cy="8" r="3" fill="#c9a36a"/></svg><i class="cf-heat"></i></div>
+      <div class="cf-wclock"><b></b><i class="h"></i><i class="m"></i><i class="s"></i><u></u></div>
+      <div class="cf-doorart"><i class="cf-dframe"></i><i class="cf-dpanel"><i class="cf-glass"></i><i class="cf-knob"></i><i class="cf-sign">OPEN</i></i><i class="cf-bell"></i></div>`;
+  };
+  const CHAIRS = 6;
   const drinkSVG = (type, size, adds = []) => {
     const col = DRINKS[type] ? DRINKS[type].col : '#a86';
     const L = size === 'L';
@@ -730,7 +865,7 @@ window.FemcCafe = (() => {
     return `<svg viewBox="0 0 100 116" aria-hidden="true">${cup}${liq}${add}</svg>`;
   };
   const kimbapSVG = (sliced = true, fill = ['egg', 'carrot', 'spinach']) => sliced
-    ? `<svg viewBox="0 0 100 100" aria-hidden="true"><ellipse cx="50" cy="70" rx="46" ry="16" fill="#fff4f9" stroke="#e7c9d8" stroke-width="2"/>${[[24, 56], [50, 52], [76, 56], [37, 70], [63, 70]].map(([x, y]) => `<g><circle cx="${x}" cy="${y}" r="13" fill="#1d2a1d"/><circle cx="${x}" cy="${y}" r="10.5" fill="#fbf7ee"/>${fill.map((f, i) => `<circle cx="${x + [-3.5, 3.5, 0][i]}" cy="${y + [-2, -1.5, 3.5][i]}" r="2.6" fill="${FILL_COL[f] || '#ccc'}"/>`).join('')}</g>`).join('')}</svg>`
+    ? `<svg viewBox="0 0 100 100" aria-hidden="true"><ellipse cx="50" cy="70" rx="46" ry="16" fill="#fff4f9" stroke="#e7c9d8" stroke-width="2"/>${[[24, 56], [50, 52], [76, 56], [37, 70], [63, 70]].map(([x, y], i) => `<g transform="translate(${x} ${y}) scale(.68)">${sliceG(fill, i * 47)}</g>`).join('')}</svg>`
     : `<svg viewBox="0 0 100 60" aria-hidden="true"><rect x="4" y="12" width="92" height="36" rx="18" fill="#1d2a1d"/><path d="M14 18h72" stroke="#33463a" stroke-width="3"/></svg>`;
   const lineIcon = l => l.kind === 'drink' ? drinkSVG(l.type, l.size, l.adds) : l.kind === 'grill' ? `<span class="cf-gico" style="--up:${cookCol(DONE[l.done])};--dn:${cookCol(DONE[l.done] + 0.1)}">${grillSVG(l.type, l.tops.map(t => ({ top: t, x: TOPS[t].spots[0][0], y: TOPS[t].spots[0][1] })))}</span>` : kimbapSVG(true, l.fill);
   const lineName = l => l.kind === 'drink' ? DRINKS[l.type].name : l.kind === 'grill' ? GRILL[l.type].name : KIMBAP.name;
@@ -756,7 +891,8 @@ window.FemcCafe = (() => {
 
   function play(o = {}) {
     return new Promise(resolve => {
-      const host = o.host || document.body, M = shift(o), S = M.S, K = sounds(!!o.mute);
+      const host = o.host || document.body, K = sounds(!!o.mute), realM = shift(o);
+      let M = realM, S = M.S;   // the practice shift swaps in its own model (and swaps back), so the day's result never sees it
       const GS = (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {};
       const still = o.still != null ? !!o.still : matchMedia('(prefers-reduced-motion: reduce)').matches;
       const calm = o.calm != null ? !!o.calm : !!GS.calm, perf = o.perf != null ? !!o.perf : !!GS.perf;
@@ -769,16 +905,18 @@ window.FemcCafe = (() => {
       PROBES.forEach(id => { const i = new Image(); i.onload = () => { art[id] = true; dirty = true; if (id.startsWith('bg-')) paintBgs(); }; i.src = ART(id); });
       const img = (id, cls = '') => `<img class="cf-art ${cls}" src="${ART(id)}" alt="" draggable="false">`;
 
+      const wantTut = o.tutorial === true || (o.tutorial !== false && !tutSeen());
       const el = document.createElement('div');
       el.className = 'mg-cafe' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
       el.innerHTML = `
         <header class="cf-hud"></header>
         <div class="cf-rail" aria-label="Tickets"></div>
-        <main class="cf-views">${['order', 'drinks', 'griddle', 'build'].map((v, i) => `<section class="cf-view v-${v}${i ? '' : ' on'}" data-view="${v}" style="--i:${i}" aria-label="${VIEW_NAME[v]}"><div class="cf-sbg"></div><div class="cf-vin"></div></section>`).join('')}</main>
+        <main class="cf-views">${['order', 'drinks', 'griddle', 'build'].map((v, i) => `<section class="cf-view v-${v}${i ? '' : ' on'}" data-view="${v}" style="--i:${i}" aria-label="${VIEW_NAME[v]}"><div class="cf-sbg"></div><div class="cf-vin"></div><div class="cf-fx" aria-hidden="true"></div></section>`).join('')}</main>
         <nav class="cf-tabs" aria-label="Stations"></nav>
         <div class="cf-say" aria-live="polite"></div><div class="cf-pops" aria-live="polite"></div><div class="cf-ann"></div><div class="cf-toast" aria-live="polite"></div>
         <div class="cf-break" hidden></div>
-        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-p="resume">Resume</button><button type="button" data-p="quit">Quit</button></div>
+        <div class="cf-coach" hidden><i class="cf-ring"></i><i class="cf-arrow"></i><div class="cf-cbox" role="dialog" aria-label="Sunoo's lesson"><span class="cf-sayf"><img src="" alt=""></span><div class="cf-ctext"><b>Sunoo</b><p aria-live="polite"></p><span class="cf-cbtns"><button type="button" class="cf-cnext" data-c="next" hidden>Next</button><button type="button" class="cf-cskip" data-c="skip">I know how, skip</button></span></div></div></div>
+        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-p="resume">Resume</button><button type="button" data-p="howto">How to play</button><button type="button" data-p="quit">Quit</button></div>
         <div class="mg-end" hidden></div>
         <div class="cf-title"><div class="cf-title-card">${''}<img src="${ART('title')}" alt="" onerror="this.remove()"><b>Yeobo's</b><small>a day at the café</small></div></div>`;
       host.appendChild(el);
@@ -851,6 +989,42 @@ window.FemcCafe = (() => {
         }
       };
 
+      // a finished thing flies off its station to where it goes next (a copy of it; none under reduced motion)
+      const fly = (node, to, ms = 620) => {
+        if (still || !node || !to || !node.getBoundingClientRect) return;
+        const a = node.getBoundingClientRect(), b = to.getBoundingClientRect(), r = el.getBoundingClientRect();
+        if (!(a.width > 0) || !(b.width > 0)) return;
+        const g = node.cloneNode(true); g.classList.add('cf-fly');
+        g.style.left = (a.left - r.left) + 'px'; g.style.top = (a.top - r.top) + 'px'; g.style.width = a.width + 'px'; g.style.height = a.height + 'px';
+        el.appendChild(g);
+        const dx = b.left + b.width / 2 - (a.left + a.width / 2), dy = b.top + b.height / 2 - (a.top + a.height / 2);
+        g.animate([{ transform: 'translate(0, 0) scale(1)', opacity: 1 }, { transform: `translate(${dx * 0.45}px, ${dy * 0.45 - 90}px) scale(.75) rotate(-10deg)`, opacity: 1, offset: 0.45 }, { transform: `translate(${dx}px, ${dy}px) scale(.18) rotate(8deg)`, opacity: 0.3 }],
+          { duration: ms, easing: 'cubic-bezier(.45,.05,.55,.95)', fill: 'both' }).onfinish = () => { g.remove(); kick(to, 'ping'); };
+      };
+      // star burst (Reduce flashes: none; Performance: a few)
+      const burst = (node, n = 8, chars = '★✦') => {
+        if (still || calm || !node || !node.getBoundingClientRect) return;
+        const a = node.getBoundingClientRect(), r = el.getBoundingClientRect(); if (!(a.width > 0)) return;
+        const x0 = a.left - r.left + a.width / 2, y0 = a.top - r.top + a.height / 2;
+        for (let i = 0, m = perf ? Math.min(3, n) : n; i < m; i++) {
+          const sp = document.createElement('i'); sp.className = 'cf-spark'; sp.textContent = chars[i % chars.length]; el.appendChild(sp);
+          const ang = (i / m) * Math.PI * 2 + Math.random() * 0.5, d = 60 + Math.random() * 50;
+          sp.animate([{ transform: `translate(${x0}px, ${y0}px) scale(.3) rotate(0deg)`, opacity: 1 }, { transform: `translate(${x0 + Math.cos(ang) * d}px, ${y0 + Math.sin(ang) * d}px) scale(1.1) rotate(${(Math.random() - 0.5) * 220}deg)`, opacity: 0 }],
+            { duration: 700 + Math.random() * 250, easing: 'cubic-bezier(.2,.8,.4,1)', fill: 'both' }).onfinish = () => sp.remove();
+        }
+      };
+      // the kimbap's last cut: the slices tumble apart, cut side up, then go to the counter
+      const kimFinale = fill => {
+        const fx = el.querySelector('.v-build .cf-fx'), log = el.querySelector('.v-build .cf-log'); if (!fx) return;
+        const f = document.createElement('div'); f.className = 'cf-kfin';
+        const sec = fx.getBoundingClientRect(), b = log && log.getBoundingClientRect();
+        if (b && b.width > 0) { f.style.left = (b.left - sec.left + b.width / 2) + 'px'; f.style.top = (b.top - sec.top + b.height / 2) + 'px'; }
+        f.innerHTML = Array.from({ length: CUTS + 1 }, (_, i) => `<span style="--i:${i}">${sliceSVG(fill, i * 53)}</span>`).join('');
+        fx.appendChild(f);
+        setTimeout(() => { fly(f, el.querySelector('.cf-tab[data-v="order"]'), 560); f.remove(); }, still ? 900 : 1250);
+      };
+      let dropAt = 0;
+
       /* the customers leaving after tasting (kept on screen for their reaction) */
       const leaving = [];
       const newTk = {};
@@ -862,7 +1036,7 @@ window.FemcCafe = (() => {
         dirty = true;
         switch (e.type) {
           case 'say': pushSay(e); break;
-          case 'arrive': K.door(); kick($('.cf-tab[data-v="order"]'), 'ping'); break;
+          case 'arrive': K.door(); kick($('.cf-tab[data-v="order"]'), 'ping'); kick(el.querySelector('.cf-doorart'), 'open'); if (!still) el.querySelectorAll('.cf-tk').forEach(n => kick(n, 'sway')); break;
           case 'order': K.blip(); break;
           case 'print': K.print(); newTk[e.tid] = performance.now(); kick(el.querySelector('.cf-printer'), 'go'); break;
           case 'nope': K.nope(); toast(e.text); break;
@@ -872,16 +1046,23 @@ window.FemcCafe = (() => {
           case 'overflow': K.overflow(); toast('It spilled over!'); kick(el.querySelector('.cf-cup'), 'slosh'); break;
           case 'place': K.squish(); placed[e.i] = performance.now(); break;
           case 'flip': K.flip(); flipAt[e.i] = performance.now(); break;
-          case 'off': K.off(); break;
+          case 'off': K.off(); if (view === 'griddle') fly(el.querySelector(`.cf-gslot[data-g="${e.i}"] .cf-gitem`), el.querySelector('.v-griddle .cf-rack'), 480); break;
           case 'burn': K.burn(); kick($('.cf-tab[data-v="griddle"]'), 'ping'); break;
           case 'lay': K.lay(); layAt = performance.now(); break;
           case 'chop': K.chop(); chopAt = performance.now(); break;
-          case 'drop': K.drop(); break;
+          case 'drop': K.drop(); dropAt = performance.now(); break;
           case 'bin': K.nope(); break;
           case 'step': {
             const s = stars20(e.score);
             if (e.by !== 'sunoo') { K.star(Math.round(s)); if (e.station === 'build' && e.parts[0][0] === 'Toppings') K.plate(); }
             pop(`<b>${e.by === 'sunoo' ? 'Sunoo · ' : ''}${STEP_NAME[e.station]}</b><span class="cf-st">${starStr(s)}</span><small>${e.parts.map(([n, v]) => `${n} ${Math.round(v)}`).join(' · ')}</small>`, 'step' + (s >= 4.5 ? ' great' : ''));
+            if (s >= 4) setTimeout(() => burst($('.cf-pops').lastElementChild, s >= 4.5 ? 10 : 6), 120);
+            if (e.by !== 'sunoo') {
+              const order = el.querySelector('.cf-tab[data-v="order"]');
+              if (e.station === 'drinks' && view === 'drinks') fly(el.querySelector('.v-drinks .cf-cupw'), order);
+              else if (e.station === 'build' && e.parts[0][0] === 'Toppings' && view === 'build') fly(el.querySelector('.v-build .cf-titem'), order);
+              else if (e.station === 'build' && view === 'build') { const t = M.T(e.tid), m = t && t.made[e.li]; kimFinale(m && m.laid ? m.laid.slice(1, 4) : ['egg', 'carrot', 'spinach']); }
+            }
             break;
           }
           case 'ready': K.blip(); kick($('.cf-tab[data-v="order"]'), 'ping'); break;
@@ -893,13 +1074,15 @@ window.FemcCafe = (() => {
               <dl><dt>Wait</dt><dd>${e.wait}</dd>${e.items.map(i => `<dt>${esc(i.kind === 'drink' ? DRINKS[i.type].name : i.kind === 'grill' ? GRILL[i.type].name : 'Kimbap')}</dt><dd>${i.score}</dd>`).join('')}<dt>Total</dt><dd>${e.total}%</dd></dl>
               <em>${e.tip ? '+' + won(e.tip) + ' tip' : 'No tip'}</em></div>`, 'taste r-' + e.reaction);
             setTimeout(() => coins(e.id, Math.min(6, Math.ceil(e.tip / 600))), 300);
+            if (e.reaction === 'happy') setTimeout(() => burst($('.cf-pops').lastElementChild, e.stars >= 5 ? 14 : 8, e.stars >= 5 ? '★♥✦' : '♥★'), 160);
             break;
           }
           case 'left': K.grumpy(); { const c = S.cust.find(x => x.id === e.id); leaving.push({ c, reaction: 'left', until: performance.now() + 1800 }); } break;
           case 'unlock': K.unlock(); announce('Stamp card: ' + e.name + '!', 'New on the menu, ' + e.note); break;
           case 'assign': K.blip(); break;
           case 'hurry': K.blip(); break;
-          case 'rush': announce(`Rush ${e.rush + 1} of 3`, RUSH_NAME[e.rush]); break;
+          case 'rush': if (e.tut) announce('Practice', 'a slow customer, with Sunoo'); else announce(`Rush ${e.rush + 1} of 3`, RUSH_NAME[e.rush]); break;
+          case 'tutdone': if (tut) tut.endAt = performance.now() + 3000; break;
           case 'break': K.fanfare(); setTimeout(() => showBreak(false), 900); break;
           case 'done': K.fanfare(); setTimeout(() => finish(false), 1000); break;
         }
@@ -932,6 +1115,11 @@ window.FemcCafe = (() => {
         return `<div class="cf-sunlane${chat ? ' chat' : ''}"><img src="${sunooFace(chat ? 'happy' : 'neutral')}" alt="" onerror="this.remove()"><span><b>Sunoo</b>${chat ? 'is chatting… <button type="button" data-a="hurry">Hurry <kbd>G</kbd></button>' : j ? `is making ${j.kind === 'plate' ? 'a plate' : j.kind === 'drink' ? 'a drink' : 'a kimbap'} for ${tnum(j.tid)}` : kind === 'griddle' ? 'is minding the griddle' : kind === 'order' ? 'is at the counter' : 'is waiting for work'}</span>${j ? '<i class="cf-sp"><i></i></i>' : ''}</div>`;
       };
 
+      const DECOR = decorHtml(perf ? 5 : 16);
+      const hueOf = name => [...name].reduce((a, ch) => a + ch.charCodeAt(0), 0) % 5;
+      // a seated customer's mood: their tray's ready / chatting with Sunoo / getting impatient / fuming
+      const seatEmo = (c, ready, w) => ready ? 'bang' : S.sunoo.chat > 0 && S.sunoo.chatWith === c.id ? 'note' : w > 1.25 ? 'anger' : w > 0.85 ? 'dots' : '';
+      const puffs = '<i class="cf-puff"><i></i><i></i><i></i></i>';
       function renderOrder() {
         const cc = C(S.counter);
         const door = S.door.map(id => C(id)).filter(Boolean);
@@ -939,14 +1127,19 @@ window.FemcCafe = (() => {
         const ghosts = leaving.filter(g => performance.now() < g.until);
         const ready = S.tickets.filter(t => t.made.every(Boolean));
         const bubble = cc && cc.state === 'ordering' ? `<div class="cf-bubble">${cc.lines.map(l => `<span class="cf-bi"><span class="cf-ico">${lineIcon(l)}</span><small>${esc(lineName(l))}<br>${esc(lineBits(l).join(' '))}</small></span>`).join('')}</div>` : '';
-        const jar = `${hasArt('tipjar') ? img('tipjar') : '<svg viewBox="0 0 60 70" aria-hidden="true"><path d="M12 10h36v6c6 4 8 10 8 18v24c0 6-4 10-10 10H14C8 68 4 64 4 58V34c0-8 2-14 8-18z" fill="rgba(255,244,249,.25)" stroke="#fff4f9" stroke-width="2.5"/><rect x="10" y="6" width="40" height="7" rx="2" fill="#ff4f9e"/></svg>'}<b>${won(S.money)}</b>${S.upgrades.includes('jar') ? '<small>tips ♥</small>' : ''}`;
+        const jf = clamp(S.money / 30000, 0, 1), jy = 66 - jf * 46;
+        const pile = jf > 0 ? `<g clip-path="url(#cfjarclip)"><rect x="0" y="${jy + 3}" width="60" height="70" fill="#d9a23a"/><rect x="0" y="${jy + 3}" width="60" height="70" fill="url(#cfjarcoin)"/>${[[14, 0], [24, -2], [34, 1], [44, -1], [19, 3], [39, 3], [29, 4]].map(([x, dy]) => `<ellipse cx="${x}" cy="${jy + 3 + dy}" rx="6" ry="2.4" fill="#f4cf6a" stroke="#a8761c" stroke-width=".8"/>`).join('')}</g>` : '';
+        const jar = `${hasArt('tipjar') ? img('tipjar') : `<svg viewBox="0 0 60 70" aria-hidden="true"><defs><clipPath id="cfjarclip"><path d="M13 16c-6 4-8 10-8 18v24c0 5 4 9 9 9h32c5 0 9-4 9-9V34c0-8-2-14-8-18z"/></clipPath><pattern id="cfjarcoin" width="10" height="5" patternUnits="userSpaceOnUse"><ellipse cx="5" cy="2.5" rx="4.6" ry="2" fill="none" stroke="rgba(120,80,10,.45)" stroke-width=".8"/></pattern></defs>${pile}<path d="M12 10h36v6c6 4 8 10 8 18v24c0 6-4 10-10 10H14C8 68 4 64 4 58V34c0-8 2-14 8-18z" fill="rgba(255,244,249,.18)" stroke="#fff4f9" stroke-width="2.5"/><path d="M10 30q0-8 5-12" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.4" stroke-linecap="round"/><rect x="10" y="6" width="40" height="7" rx="2" fill="#ff4f9e"/>${S.upgrades.includes('jar') ? '<rect x="16" y="36" width="28" height="13" rx="3" fill="#fff4f9" transform="rotate(-6 30 42)"/><text x="30" y="46" font-size="8" font-weight="900" text-anchor="middle" fill="#ff4f9e" transform="rotate(-6 30 42)">TIPS ♥</text>' : ''}</svg>`}<b>${won(S.money)}</b>`;
+        const sils = seats.slice(0, CHAIRS).map((c, i) => { const w = M.waitFrac(c), e = seatEmo(c, ready.some(t => t.cid === c.id), w); return { key: 'p' + c.id, html: `<span class="cf-sil c${i} h${hueOf(c.name)}${w > 1.25 ? ' fume' : ''}"><i class="cf-head"></i><i class="cf-body"></i><i class="cf-cuplet"></i>${emo(e)}${w > 1.25 && !perf ? puffs : ''}</span>` }; });
         return [
+          ['deco', DECOR, 'cf-decor'],
+          ['back', { keyed: [{ key: 'tbl', html: '<span class="cf-tbls"><span class="cf-tbl t0"></span><span class="cf-tbl t1"></span><span class="cf-tbl t2"></span></span>' }, ...sils] }, 'cf-back'],
           ['door', `${door.map(c => `<span class="cf-dq">${faceHtml(c)}</span>`).join('')}<small>${door.length ? door.length + ' waiting' : ''}</small>`, 'cf-door'],
           ['stage', cc ? `<div class="cf-cc ${cc.state}${cc.hal ? ' hal' : ''}" data-a="take" data-cid="${cc.id}"><span class="cf-bust">${faceHtml(cc, cc.state === 'ordering' ? 'happy' : 'neutral')}</span><span class="cf-ccn"><b>${esc(cc.name)}</b>${cc.tag ? `<small>${esc(cc.tag)}</small>` : ''}</span>${cc.state === 'counter' ? '<button type="button" class="cf-take" data-a="take">Take order <kbd>Space</kbd></button>' : ''}${bubble}</div>` : `<p class="cf-quiet">${S.phase === 'rush' ? (S.sched.length ? 'The bell will ring…' : 'Nobody at the door.') : ''}</p>`, 'cf-stage'],
           ['printer', '<i class="cf-paper"></i>', 'cf-printer'],
           ['seats', { keyed: [
-            ...seats.map(c => ({ key: 's' + c.id, html: `<div class="cf-seat${ready.some(t => t.cid === c.id) ? ' ready' : ''}${S.sunoo.chat > 0 && S.sunoo.chatWith === c.id ? ' chat' : ''}" data-drop="cust" data-cid="${c.id}"><span class="cf-bust">${faceHtml(c)}</span><b>${tnum(c.ticket)}</b><i class="cf-w"></i></div>` })),
-            ...ghosts.map(g => ({ key: 'g' + g.c.id, html: `<div class="cf-seat gone r-${g.reaction}" data-cid="${g.c.id}"><span class="cf-bust">${faceHtml(g.c, g.reaction === 'happy' ? 'happy' : g.reaction === 'meh' ? 'neutral' : 'sad')}</span><b>${g.reaction === 'happy' ? '♥' : g.reaction === 'meh' ? '…' : g.reaction === 'left' ? 'left' : '✕'}</b></div>` })),
+            ...seats.map(c => { const rd = ready.some(t => t.cid === c.id), w = M.waitFrac(c), e = seatEmo(c, rd, w); return { key: 's' + c.id, html: `<div class="cf-seat${rd ? ' ready' : ''}${e === 'note' ? ' chat' : ''}${w > 1 ? ' late' : ''}" data-drop="cust" data-cid="${c.id}"><span class="cf-pw"><span class="cf-bust">${faceHtml(c)}</span><i class="cf-w"></i></span><b>${tnum(c.ticket)}</b>${emo(e)}${w > 1.25 && !perf ? puffs : ''}</div>` }; }),
+            ...ghosts.map(g => ({ key: 'g' + g.c.id, html: `<div class="cf-seat gone r-${g.reaction}" data-cid="${g.c.id}"><span class="cf-pw"><span class="cf-bust">${faceHtml(g.c, g.reaction === 'happy' ? 'happy' : g.reaction === 'meh' ? 'neutral' : 'sad')}</span></span><b>${g.reaction === 'happy' ? '♥' : g.reaction === 'meh' ? '…' : g.reaction === 'left' ? 'left' : '✕'}</b>${emo(g.reaction === 'happy' ? 'heart' : g.reaction === 'meh' ? 'dots' : 'anger', 'pop')}</div>` })),
           ] }, 'cf-seats'],
           ['ctop', { parts: [
             ['pass', { keyed: ready.length ? ready.map(t => ({ key: 't' + t.id, html: `<button type="button" class="cf-tray${hasArt('tray') ? ' art' : ''}" data-drag="tray" data-a="serveT" data-tid="${t.id}" aria-label="Order ${t.id}: drag to ${esc(C(t.cid)?.name)}">${hasArt('tray') ? img('tray', 'cf-trayart') : ''}<span class="cf-tis">${t.lines.map((l, i) => `<span class="cf-ico">${madeIcon(l, t.made[i])}</span>`).join('')}</span><b>${tnum(t.id)}</b></button>` })) : [{ key: 'none', html: '<p class="cf-none">Finished trays wait here. Drag one onto its customer.</p>' }] }, 'cf-pass'],
@@ -955,6 +1148,7 @@ window.FemcCafe = (() => {
           ['sun', sunLane('order')],
         ];
       }
+      const STEAM = '<i class="cf-steam2"><svg viewBox="0 0 60 70" aria-hidden="true"><path d="M16 68c-9-9 9-15 0-26s9-17 0-28"/><path d="M31 68c-9-9 9-15 0-26s9-17 0-28"/><path d="M46 68c-9-9 9-15 0-26s9-17 0-28"/></svg></i>';
       function renderDrinks() {
         const d = S.drink, t = d && M.T(d.tid), l = t && t.lines[d.li];
         const src = d ? DRINKS[d.type].src : 'kettle';
@@ -962,7 +1156,10 @@ window.FemcCafe = (() => {
         let mid;
         if (!d) mid = `<p class="cf-hint">Pick a drink to make.</p>`;
         else if (!d.size) mid = `<div class="cf-cups"><p>Which cup? <b>${tnum(d.tid)}</b> wants <b>${l.size === 'L' ? 'Large' : 'Small'}</b>.</p>${['S', 'L'].map((s, i) => `<button type="button" class="cf-cupbtn s-${s}" data-a="cup" data-size="${s}">${hasArt('cup-' + s.toLowerCase()) ? img('cup-' + s.toLowerCase()) : `<span class="cf-cup s-${s} empty"></span>`}<b>${s === 'L' ? 'Large' : 'Small'}</b><kbd>${i ? 'W' : 'Q'}</kbd></button>`).join('')}</div>`;
-        else mid = `<div class="cf-cupw"><span class="cf-cup s-${d.size}${d.spilled ? ' spilled' : ''}" style="--col:${DRINKS[d.type].col}"><i class="cf-liq"></i><i class="cf-line"></i>${d.adds.map(a => `<i class="cf-addin a-${a}">${hasArt('add-' + a) ? img('add-' + a) : ''}</i>`).join('')}${d.type !== 'sikhye' ? '<i class="cf-steam"><i></i><i></i><i></i></i>' : ''}</span></div>`;
+        else {
+          const deco = { cocoa: '<i class="cf-foam"></i>', yuzu: '<i class="cf-peel p1"></i><i class="cf-peel p2"></i><i class="cf-peel p3"></i><i class="cf-peel p4"></i>', americano: '<i class="cf-crema"></i>', sikhye: '<i class="cf-grain g1"></i><i class="cf-grain g2"></i><i class="cf-grain g3"></i><i class="cf-grain g4"></i><i class="cf-grain g5"></i><i class="cf-grain g6"></i>' }[d.type];
+          mid = `<div class="cf-cupw s-${d.size} d-${d.type}${d.pouring ? ' pouring' : ''}" style="--col:${DRINKS[d.type].col}">${d.type !== 'sikhye' && !perf ? STEAM : ''}<span class="cf-cup s-${d.size} d-${d.type}${d.spilled ? ' spilled' : ''}" style="--col:${DRINKS[d.type].col}"><i class="cf-liq"><i class="cf-surf"></i>${deco}${d.pouring && !perf ? '<i class="cf-splash"><i></i><i></i><i></i><i></i></i>' : ''}</i><i class="cf-line"></i>${d.adds.map(a => `<i class="cf-addin a-${a}">${hasArt('add-' + a) ? img('add-' + a) : ''}</i>`).join('')}<i class="cf-glint"></i></span>${d.spilled ? '<i class="cf-puddle"></i>' : ''}</div>`;
+        }
         const ctl = d && d.size ? `<div class="cf-dctl"><button type="button" class="cf-pour" data-pour>Hold to pour <kbd>Space</kbd></button>
           <div class="cf-adds">${DRINKS[d.type].adds.filter(a => M.avail('add').includes(a)).map((a, i) => `<button type="button" class="cf-add${d.adds.includes(a) ? ' on' : ''}" data-a="add" data-id="${a}">${hasArt('add-' + a) ? img('add-' + a) : ''}<span>${esc(ADDS[a])}</span><kbd>${'ZXCV'[i]}</kbd></button>`).join('')}</div>
           <div class="cf-acts"><button type="button" class="cf-done" data-a="dDone">Done <kbd>Enter</kbd></button><button type="button" class="cf-bin" data-a="dBin">Bin <kbd>⌫</kbd></button></div></div>` : d ? '<div class="cf-dctl"><button type="button" class="cf-bin" data-a="dBin">Bin <kbd>⌫</kbd></button></div>' : '';
@@ -977,15 +1174,15 @@ window.FemcCafe = (() => {
         const slots = S.griddle.map((g, i) => {
           if (!g) return `<div class="cf-gslot empty" data-g="${i}"><span class="cf-gempty">${i + 1}</span></div>`;
           const t = M.T(g.tid), l = t && t.lines[g.li], tg = l ? M.target(l) : 1, st = M.grillState(i), stage = stageOf(g.cook[1 - g.side], tg);
-          const fresh = placed[i] && performance.now() - placed[i] < 500, flipped = flipAt[i] && performance.now() - flipAt[i] < 420;
-          return `<div class="cf-gslot st-${st}" data-g="${i}"><button type="button" class="cf-gitem${fresh ? ' squish' : ''}${flipped ? ' flipped' : ''}" data-a="flip" data-i="${i}" aria-label="Flip">${hasArt(g.type + '-' + stage) ? img(g.type + '-' + stage) : grillSVG(g.type, [], { smoke: stage === 'burnt' })}${perf ? '' : '<span class="cf-bubs"><i></i><i></i><i></i><i></i><i></i></span><i class="cf-steam"><i></i><i></i><i></i></i>'}</button>
+          const fresh = placed[i] && performance.now() - placed[i] < 500, flipped = flipAt[i] && performance.now() - flipAt[i] < 560;
+          return `<div class="cf-gslot st-${st} k-${stage}" data-g="${i}"><i class="cf-oil"></i><button type="button" class="cf-gitem${fresh ? ' squish' : ''}${flipped ? ' flipped' : ''}" data-a="flip" data-i="${i}" aria-label="Flip">${hasArt(g.type + '-' + stage) ? img(g.type + '-' + stage) : grillSVG(g.type, [], { smoke: stage === 'burnt' })}${perf ? '' : `${stage !== 'raw' ? '<i class="cf-shine"></i>' : ''}<span class="cf-bubs"><i></i><i></i><i></i><i></i><i></i></span><span class="cf-spits"><i></i><i></i><i></i><i></i></span><i class="cf-steam"><i></i><i></i><i></i></i>`}</button><i class="cf-spat${flipped ? ' go' : fresh ? ' press' : ''}"></i>
             <div class="cf-meters">${[0, 1].map(s => `<span class="cf-m${g.side === s ? ' down' : ''}"><i data-m="${s}"></i><u style="left:${(tg / 1.6) * 100}%"></u><em>Side ${s + 1}${g.side === s ? ' ▼' : ''}</em></span>`).join('')}</div>
             <div class="cf-gfoot"><small>${tnum(g.tid)} · ${l ? esc(l.done) : ''}${g.by === 'sunoo' ? ' · Sunoo' : ''}</small><span class="cf-gst">${st === 'burning' ? 'BURNING' : st === 'ready' ? 'READY' : st === 'flip' ? 'FLIP' : ''}</span><button type="button" class="cf-off" data-a="off" data-i="${i}">Off <kbd>${'ASDF'[i]}</kbd></button></div></div>`;
         });
         return [
           ['chips', chips('To the griddle', M.owed('grill'), 'gStart', 'Nothing to put on.')],
           ['plate', { keyed: slots.map((html, i) => ({ key: 'g' + i, html })) }, 'cf-gplate n' + S.griddle.length],
-          ['rack', `<div class="cf-rack"><h3>Warming rack</h3>${S.rack.length ? S.rack.map(r => `<span class="cf-ico" style="--up:${cookCol(r.cook[1])};--dn:${cookCol(r.cook[0])}">${grillSVG(r.type)}</span>`).join('') : '<small>Things you take off wait here for Build.</small>'}</div>`],
+          ['rack', `<div class="cf-rack"><h3>Warming rack</h3>${S.rack.length ? S.rack.map(r => `<span class="cf-ico" style="--up:${cookCol(r.cook[1])};--dn:${cookCol(r.cook[0])};--ck:${r.cook[1].toFixed(2)}">${grillSVG(r.type)}</span>`).join('') : '<small>Things you take off wait here for Build.</small>'}</div>`],
           ['sun', sunLane('griddle')],
         ];
       }
@@ -995,17 +1192,17 @@ window.FemcCafe = (() => {
         if (p) {
           const t = M.T(p.tid), l = t && t.lines[p.li], want = l ? l.tops : [];
           const guides = S.guides ? want.flatMap(top => TOPS[top].spots.map(s => [top, s])) : [];
-          const tops = GRILL[p.type].tops.filter(x => M.avail('top').includes(x));
+          const tops = GRILL[p.type].tops.filter(x => M.avail('top').includes(x)), fresh = performance.now() - dropAt < 460 ? p.drops.length - 1 : -1;
           board = `<div class="cf-topw"><p class="cf-for"><b>${tnum(p.tid)}</b> ${esc(GRILL[p.type].name)}: ${want.length ? 'wants ' + want.map(x => esc(TOPS[x].name)).join(', ') : 'no toppings, just plate it'}</p>
-            <div class="cf-titem${selTop ? ' aim' : ''}${hasArt('plate') ? ' art' : ''}" data-drop="item" style="--up:${cookCol(p.cook[1])};--dn:${cookCol(p.cook[0])}${hasArt('plate') ? `;background-image:url('${ART('plate')}')` : ''}"><div class="cf-tin${hasArt(p.type + '-done') ? ' art' : ''}">${hasArt(p.type + '-done') ? img(p.type + '-' + (p.burnt ? 'burnt' : 'done')) : ''}${grillSVG(p.type, hasArt('top-seeds') ? [] : p.drops, { guides })}${hasArt('top-seeds') ? p.drops.map(d => `<img class="cf-art cf-dropart" src="${ART('top-' + d.top)}" style="left:${d.x * 100}%;top:${d.y * 100}%" alt="">`).join('') : ''}</div></div>
+            <div class="cf-titem${selTop ? ' aim' : ''}${hasArt('plate') ? ' art' : ''}" data-drop="item" style="--up:${cookCol(p.cook[1])};--dn:${cookCol(p.cook[0])};--ck:${p.cook[1].toFixed(2)}${hasArt('plate') ? `;background-image:url('${ART('plate')}')` : ''}"><div class="cf-tin${hasArt(p.type + '-done') ? ' art' : ''}">${hasArt(p.type + '-done') ? img(p.type + '-' + (p.burnt ? 'burnt' : 'done')) : ''}${grillSVG(p.type, hasArt('top-seeds') ? [] : p.drops, { guides, fresh: fresh >= 0 ? fresh : -1 })}${hasArt('top-seeds') ? p.drops.map((d, i) => `<img class="cf-art cf-dropart${i === fresh ? ' new' : ''}" src="${ART('top-' + d.top)}" style="left:${d.x * 100}%;top:${d.y * 100}%" alt="">`).join('') : ''}</div></div>
             <div class="cf-topbar">${tops.map((x, i) => `<button type="button" class="cf-topb${selTop === x ? ' on' : ''}${want.includes(x) ? ' want' : ''}" data-drag="top" data-a="pickTop" data-top="${x}">${hasArt('top-' + x) ? img('top-' + x) : `<svg viewBox="-12 -12 24 24" aria-hidden="true">${topSVG(x)}</svg>`}<span>${esc(TOPS[x].name)}</span><kbd>${'ZXCV'[i]}</kbd></button>`).join('')}<button type="button" class="cf-done" data-a="plate">Plate <kbd>Enter</kbd></button></div></div>`;
         } else if (k) {
           const t = M.T(k.tid), l = t && t.lines[k.li], want = l ? ['rice', ...l.fill] : [];
           const head = `<p class="cf-for"><b>${tnum(k.tid)}</b> Kimbap: ${want.map((f, i) => `<span class="${k.laid[i] === f ? 'ok' : k.laid[i] ? 'bad' : ''}">${i ? i + '. ' : ''}${esc(FILLS[f])}</span>`).join(' ')}</p>`;
-          if (k.stage === 'lay') board = `${head}<div class="cf-mat"><div class="cf-sheet${hasArt('kimbap-seaweed') ? ' art' : ''}" data-drop="sheet" style="${hasArt('kimbap-seaweed') ? `background-image:url('${ART(k.laid.length ? 'kimbap-rice' : 'kimbap-seaweed')}')` : ''}">${k.laid.map((f, i) => `<i class="cf-lay f-${f}${i ? '' : ' rice'}${i === k.laid.length - 1 && performance.now() - layAt < 300 ? ' new' : ''}" style="--n:${i}">${i && hasArt('fill-' + f) ? img('fill-' + f) : ''}</i>`).join('')}<small>${k.laid.length ? '' : 'Rice first, then the fillings in order'}</small></div></div>
+          if (k.stage === 'lay') board = `${head}<div class="cf-mat"><div class="cf-sheet${hasArt('kimbap-seaweed') ? ' art' : ''}" data-drop="sheet" style="${hasArt('kimbap-seaweed') ? `background-image:url('${ART(k.laid.length ? 'kimbap-rice' : 'kimbap-seaweed')}')` : ''}">${k.laid.map((f, i) => `<i class="cf-lay f-${f}${i ? '' : ' rice'}${i === k.laid.length - 1 && performance.now() - layAt < 520 ? ' new' : ''}" style="--n:${i}">${i && hasArt('fill-' + f) ? img('fill-' + f) : ''}</i>`).join('')}<small>${k.laid.length ? '' : 'Rice first, then the fillings in order'}</small></div></div>
               <div class="cf-bins">${['rice', ...M.avail('fill')].map((f, i) => `<button type="button" class="cf-binf${k.laid.includes(f) ? ' used' : ''}" data-drag="ing" data-a="lay" data-ing="${f}">${hasArt('fill-' + f) ? img('fill-' + f) : `<i class="cf-swatch f-${f}"></i>`}<span>${esc(FILLS[f])}</span><kbd>${'ZXCVBNM'[i] || ''}</kbd></button>`).join('')}<button type="button" class="cf-bin" data-a="kBin">Bin <kbd>⌫</kbd></button></div>`;
           else if (k.stage === 'roll') board = `${head}<div class="cf-mat roll" data-roll><div class="cf-sheet rolling${hasArt('kimbap-rice') ? ' art' : ''}" style="${hasArt('kimbap-rice') ? `background-image:url('${ART('kimbap-rice')}')` : ''}">${k.laid.map((f, i) => `<i class="cf-lay f-${f}${i ? '' : ' rice'}" style="--n:${i}"></i>`).join('')}</div><span class="cf-rolled">${hasArt('kimbap-roll') ? img('kimbap-roll') : ''}</span><small class="cf-rollhint">Drag up to roll ↑ <kbd>Space</kbd></small></div>`;
-          else board = `${head}<div class="cf-log" data-cut>${hasArt('kimbap-roll') ? img('kimbap-roll') : '<span class="cf-logbody"></span>'}${Array.from({ length: CUTS }, (_, i) => `<i class="cf-mark" style="left:${(i + 1) / (CUTS + 1) * 100}%"></i>`).join('')}${k.cuts.map(c => `<i class="cf-cut" style="left:${c * 100}%"></i>`).join('')}<i class="cf-knife${performance.now() - chopAt < 200 ? ' go' : ''}" style="left:${(k.cuts.length ? k.cuts[k.cuts.length - 1] : 0.1) * 100}%"></i></div><p class="cf-hint">Tap the log at the five marks to slice (${k.cuts.length} / ${CUTS}) <kbd>Space</kbd></p>`;
+          else board = `${head}<div class="cf-log" data-cut>${hasArt('kimbap-roll') ? img('kimbap-roll') : (() => { const cs = [0, ...[...k.cuts].sort((a, b) => a - b), 1], n = cs.length - 1; return cs.slice(1).map((b, i) => `<span class="cf-seg${i === 0 ? ' first' : ''}${i === n - 1 ? ' last' : ''}" style="left:${cs[i] * 100}%;width:${(b - cs[i]) * 100}%;--o:${((i - (n - 1) / 2) * 4).toFixed(1)}px"></span>`).join(''); })()}${Array.from({ length: CUTS }, (_, i) => `<i class="cf-mark" style="left:${(i + 1) / (CUTS + 1) * 100}%"></i>`).join('')}${k.cuts.map(c => `<i class="cf-cut" style="left:${c * 100}%"></i>`).join('')}<i class="cf-knife${performance.now() - chopAt < 200 ? ' go' : ''}" style="left:${(k.cuts.length ? k.cuts[k.cuts.length - 1] : 0.1) * 100}%"></i></div><p class="cf-hint">Tap the log at the five marks to slice (${k.cuts.length} / ${CUTS}) <kbd>Space</kbd></p>`;
         } else board = `<p class="cf-hint">Pick something from the warming rack to top and plate, or a kimbap to roll.</p>`;
         return [['chips', `<div class="cf-chips"><h3>Warming rack</h3>${S.rack.length ? S.rack.map((r, i) => { const t = M.T(r.tid), l = t && t.lines[r.li]; return `<button type="button" class="cf-chip" data-a="topStart" data-ri="${i}"${p ? ' disabled' : ''}><b>${tnum(r.tid)}</b><span class="cf-ico" style="--up:${cookCol(r.cook[1])};--dn:${cookCol(r.cook[0])}">${grillSVG(r.type)}</span><span>${esc(GRILL[r.type].name)}<small>${l ? esc(lineBits(l).slice(1).join(' ') || 'plain') : ''}</small></span></button>`; }).join('') : '<p class="cf-none">Empty. Griddle things land here.</p>'}
             <h3>Kimbap to roll</h3>${!k && M.owed('kimbap').length ? M.owed('kimbap').map(w => chip(w, 'kStart')).join('') : `<p class="cf-none">${k ? 'Rolling one now.' : 'None owed.'}</p>`}</div>`], ['board', board, 'cf-board'], ['sun', sunLane('build')]];
@@ -1021,14 +1218,15 @@ window.FemcCafe = (() => {
         };
         const su = S.sunoo;
         return `${['order', 'drinks', 'griddle', 'build'].map((v, i) => `<button type="button" class="cf-tab${view === v ? ' on' : ''}" data-a="view" data-v="${v}"><span class="cf-ti t-${v}"></span><b>${VIEW_NAME[v]}</b><kbd>${i + 1}</kbd>${badge[v]}</button>`).join('')}
-          <div class="cf-sunoo${su.chat > 0 ? ' chat' : ''}"><img src="${sunooFace(su.chat > 0 ? 'happy' : 'neutral')}" alt="" onerror="this.remove()"><span><b>Sunoo <kbd>T</kbd></b><span class="cf-sat">${SUNOO_AT.map(a => `<button type="button" class="${su.at === a ? 'on' : ''}" data-a="sunoo" data-at="${a}" aria-label="Sunoo: ${a}">${a === 'off' ? '–' : VIEW_NAME[a][0]}</button>`).join('')}</span></span>${su.chat > 0 ? '<button type="button" class="cf-hurry" data-a="hurry">Hurry <kbd>G</kbd></button>' : ''}</div>`;
+          ${S.tut ? '' : `<div class="cf-sunoo${su.chat > 0 ? ' chat' : ''}"><img src="${sunooFace(su.chat > 0 ? 'happy' : 'neutral')}" alt="" onerror="this.remove()"><span><b>Sunoo <kbd>T</kbd></b><span class="cf-sat">${SUNOO_AT.map(a => `<button type="button" class="${su.at === a ? 'on' : ''}" data-a="sunoo" data-at="${a}" aria-label="Sunoo: ${a}">${a === 'off' ? '–' : VIEW_NAME[a][0]}</button>`).join('')}</span></span>${su.chat > 0 ? '<button type="button" class="cf-hurry" data-a="hurry">Hurry <kbd>G</kbd></button>' : ''}</div>`}`;
       }
+      const clockMin = () => { const W = realM.D.win[Math.max(0, realM.S.rush)], start = [15 * 60 + 40, 17 * 60 + 30, 19 * 60 + 30][Math.max(0, realM.S.rush)]; return start + clamp(realM.S.t / (W * 1.15), 0, 1.4) * 80; };
       function renderHud() {
-        const W = M.D.win[Math.max(0, S.rush)], start = [15 * 60 + 40, 17 * 60 + 30, 19 * 60 + 30][Math.max(0, S.rush)], m = Math.round(start + clamp(S.t / (W * 1.15), 0, 1.4) * 80);
+        const m = Math.round(clockMin());
         const clock = `${((Math.floor(m / 60) + 11) % 12) + 1}:${String(m % 60).padStart(2, '0')} ${m >= 720 ? 'pm' : 'am'}`;
         const nx = UNLOCKS.find(u => !S.unlocked.includes(u.id)), prev = [...UNLOCKS].reverse().find(u => S.unlocked.includes(u.id));
         const p = nx ? clamp((S.points - (prev ? prev.at : 0)) / (nx.at - (prev ? prev.at : 0)), 0, 1) : 1;
-        return `<b class="cf-where">Yeobo's</b><span class="cf-rush">${S.rush >= 0 ? `${RUSH_NAME[S.rush]} · Rush ${S.rush + 1}/3` : 'Before opening'}</span><span class="cf-clock">${clock}</span><span class="cf-money">${won(S.money)}</span>
+        return `<b class="cf-where">Yeobo's</b><span class="cf-rush">${S.tut ? 'Practice · with Sunoo' : S.rush >= 0 ? `${RUSH_NAME[S.rush]} · Rush ${S.rush + 1}/3` : 'Before opening'}</span><span class="cf-clock">${clock}</span><span class="cf-money">${won(S.money)}</span>
           <span class="cf-card" title="Stamp card">${hasArt('stampcard') ? img('stampcard') : '<i class="cf-cardi"></i>'}<span class="cf-meter"><i style="width:${p * 100}%"></i></span><small>${nx ? `${esc(nx.name)} at ${nx.at} · ${S.points}` : 'Every stamp!'}</small></span>
           <button type="button" class="cf-mus${musicOn ? ' on' : ''}" data-a="music" aria-label="Café music"${o.mute ? ' disabled' : ''}>♪</button><button type="button" class="cf-pausebtn" data-a="pause" aria-label="Pause">II</button>`;
       }
@@ -1074,12 +1272,17 @@ window.FemcCafe = (() => {
       // per frame: meters, levels, colours, wait bars
       function live() {
         el.querySelectorAll('.cf-tk').forEach(n => { const t = M.T(+n.dataset.tid), c = t && C(t.cid); n.style.setProperty('--w', Math.min(1, M.waitFrac(c) / 1.6)); n.classList.toggle('late', M.waitFrac(c) > 1); });
-        el.querySelectorAll('.cf-seat[data-cid]').forEach(n => { const c = C(+n.dataset.cid); n.style.setProperty('--w', Math.min(1, M.waitFrac(c) / 1.6)); });
+        el.querySelectorAll('.cf-seat[data-cid]').forEach(n => { const c = C(+n.dataset.cid), w = Math.min(1, M.waitFrac(c) / 1.6); n.style.setProperty('--w', w); n.style.setProperty('--wc', w < 0.45 ? '#ff9ac8' : w < 0.75 ? '#ff4f9e' : '#e2463c'); });
         const d = S.drink;
-        if (d) { el.querySelectorAll('.cf-cup:not(.empty), .cf-gauge').forEach(n => n.style.setProperty('--lv', Math.min(1.08, d.level))); }
+        if (d) { el.querySelectorAll('.cf-cup:not(.empty), .cf-gauge, .cf-cupw').forEach(n => n.style.setProperty('--lv', Math.min(1.08, d.level))); }
+        const wc = el.querySelector('.cf-wclock');
+        if (wc) { const m = clockMin(); wc.style.setProperty('--hh', ((m / 60) % 12) * 30 + 'deg'); wc.style.setProperty('--mm', (m % 60) * 6 + 'deg'); }
         S.griddle.forEach((g, i) => {
           const n = el.querySelector(`.cf-gslot[data-g="${i}"]`); if (!g || !n) return;
-          n.style.setProperty('--up', cookCol(g.cook[1 - g.side])); n.style.setProperty('--dn', cookCol(g.cook[g.side]));
+          // mid-flip the colours swap only when the item turns edge-on
+          const s0 = flipAt[i] && performance.now() - flipAt[i] < 130 ? 1 - g.side : g.side;
+          n.style.setProperty('--up', cookCol(g.cook[1 - s0])); n.style.setProperty('--dn', cookCol(g.cook[s0])); n.style.setProperty('--ck', g.cook[1 - s0].toFixed(3));
+          n.style.setProperty('--heat', clamp(g.cook[g.side], 0, 2).toFixed(2));
           n.querySelectorAll('[data-m]').forEach(m => { const c = g.cook[+m.dataset.m]; m.style.width = Math.min(100, c / 1.6 * 100) + '%'; m.style.background = cookCol(c); });
         });
         const j = S.sunoo.job; el.querySelectorAll('.cf-sp').forEach(n => n.style.setProperty('--p', j ? 1 - j.t / j.T : 0));
@@ -1119,6 +1322,7 @@ window.FemcCafe = (() => {
           case 'pause': if (S.phase === 'rush') setPause(true); break;
           case 'buy': if (M.buy(ds.id)) { K.coins(3); showBreak(S.rush < 0); } else K.nope(); break;
           case 'open': openDoors(); break;
+          case 'howto': if (!tut) startTutorial(S.rush < 0 ? 'brief' : 'break'); break;
         }
         handle(M.drain());
       };
@@ -1130,6 +1334,7 @@ window.FemcCafe = (() => {
       };
       el.addEventListener('pointerdown', e => {
         if (e.button > 0 || over) return;
+        const cb = e.target.closest('.cf-coach [data-c]'); if (cb) { e.preventDefault(); coachBtn(cb.dataset.c); return; }
         const brk = e.target.closest('.cf-break [data-a]'); if (brk) { e.preventDefault(); act(brk.dataset.a, brk.dataset); return; }
         if (paused || S.phase !== 'rush') return;
         const pr = e.target.closest('[data-pour]'); if (pr) { e.preventDefault(); pourPtr = true; M.pour(true); handle(M.drain()); return; }
@@ -1139,7 +1344,7 @@ window.FemcCafe = (() => {
         const it = e.target.closest('[data-drop="item"]'); if (it && selTop) { e.preventDefault(); dropTop(e.clientX, e.clientY); return; }
         const b = e.target.closest('[data-a]'); if (b && !b.disabled) { e.preventDefault(); act(b.dataset.a, b.dataset); }
       });
-      el.addEventListener('click', e => { if (e.detail !== 0) return; const b = e.target.closest('[data-a]'); if (b && !b.disabled && !b.closest('.cf-break') && S.phase === 'rush' && !paused) act(b.dataset.a, b.dataset); });
+      el.addEventListener('click', e => { if (e.detail !== 0) return; const cb = e.target.closest('.cf-coach [data-c]'); if (cb) { coachBtn(cb.dataset.c); return; } const b = e.target.closest('[data-a]'); if (b && !b.disabled && !b.closest('.cf-break') && S.phase === 'rush' && !paused) act(b.dataset.a, b.dataset); });
       const onMove = e => {
         if (rolling) {
           const dy = rolling.y - e.clientY, dx = e.clientX - rolling.x;
@@ -1184,6 +1389,7 @@ window.FemcCafe = (() => {
       const key = e => {
         const k = e.key;
         if (over) return;
+        if (tut && !paused && (tut.key === 'hello' || tut.key === 'end') && (k === 'Enter' || k === ' ')) { e.preventDefault(); e.stopPropagation(); coachBtn('next'); return; }
         if (!$('.cf-break').hidden) {
           if (k === 'Enter' || k === ' ') { e.preventDefault(); e.stopPropagation(); const f = document.activeElement, b = f && f.closest && f.closest('.cf-break [data-a]'); if (b && !b.disabled) act(b.dataset.a, b.dataset); else if (k === 'Enter') openDoors(); }
           return;
@@ -1237,17 +1443,19 @@ window.FemcCafe = (() => {
 
       /* ── pause, breaks, the end ── */
       function setPause(on) {
-        paused = on; $('.mg-pause').hidden = !on; K.pause(on); M.pour(false);
+        paused = on; $('.mg-pause').hidden = !on; K.pause(on); M.pour(false); $('.mg-pause [data-p="howto"]').hidden = !!tut;
         if (on) $('.mg-pause [data-p="resume"]').focus(); else last = performance.now();
       }
-      $('.mg-pause').addEventListener('click', e => { const p = e.target.closest('[data-p]'); if (!p) return; if (p.dataset.p === 'resume') setPause(false); else { setPause(false); finish(true); } });
+      $('.mg-pause').addEventListener('click', e => { const p = e.target.closest('[data-p]'); if (!p) return; if (p.dataset.p === 'resume') setPause(false); else if (p.dataset.p === 'howto') { setPause(false); startTutorial('rush'); } else { setPause(false); finish(true); } });
       function showBreak(first) {
+        if (over || tut || (first ? S.phase !== 'brief' : S.phase !== 'break')) return;   // a late timer after the doors already opened
         const b = $('.cf-break'), r = S.rushes[S.rushes.length - 1];
         const howto = `<ol class="cf-how"><li><b>Order</b> Customers walk up one at a time. Take the order: a ticket prints onto the rail.</li><li><b>Drinks</b> Pick the cup, hold to pour, let go on the line, add the add-ins.</li><li><b>Griddle</b> Hotteok and toast cook on the side touching the griddle. Flip, then take off at the ticket's doneness.</li><li><b>Build</b> Roll kimbap (fillings in order, roll, slice) and top and plate the griddle things.</li><li><b>Serve</b> Drag the finished tray onto the customer. Every step is scored; they taste it and tip.</li></ol>`;
         b.innerHTML = `<div class="cf-brk"><h2>${first ? "Yeobo's" : `Rush ${S.rush + 1} done`}</h2>
-          ${first ? `<p class="cf-sub">Winter break. Sunoo's grandmother's café, three rushes, one day.</p>${howto}` : `<dl class="cf-rs"><dt>Served</dt><dd>${r.served}</dd><dt>Walked out</dt><dd>${r.left}</dd><dt>Tips</dt><dd>${won(r.tips)}</dd><dt>Stars</dt><dd>★ ${r.stars.toFixed(1)}</dd></dl>
+          ${first ? `<p class="cf-sub">Winter break. Sunoo's grandmother's café, three rushes, one day.</p>${howto}<button type="button" class="cf-howbtn" data-a="howto">How to play <small>a practice customer, Sunoo shows you</small></button>` : `<dl class="cf-rs"><dt>Served</dt><dd>${r.served}</dd><dt>Walked out</dt><dd>${r.left}</dd><dt>Tips</dt><dd>${won(r.tips)}</dd><dt>Stars</dt><dd>★ ${r.stars.toFixed(1)}</dd></dl>
           <h3>The shop <span>${won(S.money)} to spend</span></h3><div class="cf-shop">${UPGRADES.map(u => { const own = S.upgrades.includes(u.id); return `<button type="button" class="${own ? 'own' : ''}" data-a="buy" data-id="${u.id}"${own || S.money < u.cost ? ' disabled' : ''}><b>${esc(u.name)}</b><small>${esc(u.note)}</small><em>${own ? 'Bought' : won(u.cost)}</em></button>`; }).join('')}</div>`}
           <h3>Sunoo starts on</h3><div class="cf-sstart">${SUNOO_AT.map(a => `<button type="button" class="${S.sunoo.at === a ? 'on' : ''}" data-a="sunoo" data-at="${a}">${a === 'off' ? 'Nothing' : VIEW_NAME[a]}</button>`).join('')}</div>
+          ${first ? '' : '<button type="button" class="cf-howbtn" data-a="howto">How to play <small>practice with Sunoo</small></button>'}
           <button type="button" class="cf-open" data-a="open">${first ? 'Open the doors' : `Open for ${RUSH_NAME[S.rush + 1].toLowerCase()}`} <kbd>Enter</kbd></button></div>`;
         b.hidden = false; b.querySelector('.cf-open').focus();
       }
@@ -1259,7 +1467,8 @@ window.FemcCafe = (() => {
       }
       function finish(quit) {
         if (over) return; over = true; K.music(false); K.sizzle(0); K.pour(false);
-        const res = M.result(quit), g = res.grade, end = $('.mg-end');
+        if (tut) { tut = null; M = realM; S = M.S; coachEl.hidden = true; el.classList.remove('tut'); }
+        const res = realM.result(quit), g = res.grade, end = $('.mg-end');
         const [hf, hl] = HAL.verdict[g], [sf, sl] = SUNOO.end[g];
         end.innerHTML = `<h2>End of the day</h2><span class="cf-stamp">${hasArt('stamp-s') ? img('stamp-' + g.toLowerCase()) : ''}<b class="mg-grade g-${g}">${g}</b></span>
           <dl><dt>Customers</dt><dd>${res.served} served${res.left ? ` · ${res.left} walked out` : ''}</dd><dt>Tips</dt><dd>${won(res.tips)}</dd><dt>Average</dt><dd>★ ${res.stars.toFixed(1)}</dd><dt>Five-star tables</dt><dd>${res.fiveStars}</dd>
@@ -1273,6 +1482,64 @@ window.FemcCafe = (() => {
       }
       const cleanup = () => { cancelAnimationFrame(raf); window.removeEventListener('keydown', key, true); window.removeEventListener('keyup', keyUp, true); window.removeEventListener('keydown', skipT, true); window.removeEventListener('pointermove', onMove); window.removeEventListener('pointerup', onUp); window.removeEventListener('pointercancel', onUp); K.close(); el.remove(); };
 
+      /* ── the practice shift (the tutorial) ── a model of its own (shift({ tut: true }): one slow customer, Sunoo off, no
+         walk-outs, a slower griddle), drawn by the same views; the coach (above) says what to do next and the ring points at it */
+      const coachEl = $('.cf-coach');
+      let tut = null;
+      function startTutorial(from) {
+        if (tut || over) return;
+        $('.cf-break').hidden = true; if (paused) { paused = false; $('.mg-pause').hidden = true; K.pause(false); }
+        M.pour(false);
+        tut = { from, key: null, hello: true, endAt: 0 };
+        M = shift({ seed: 3, difficulty: 'easy', tut: true }); S = M.S;
+        leaving.length = 0; sayQ.length = 0; nextSay(); selTop = null; drag = null; rolling = null;
+        el.classList.add('tut'); coachEl.hidden = false;
+        const im = coachEl.querySelector('img'); im.onerror = () => { im.onerror = null; im.src = FACE('sunoo-hoax'); }; im.src = sunooFace('happy');
+        M.startRush(); view = ''; setView('order'); handle(M.drain()); dirty = true; last = performance.now();
+        coachLive();
+      }
+      function endTutorial() {
+        if (!tut) return;
+        const from = tut.from; tut = null; tutMark();
+        M.pour(false); M = realM; S = M.S;
+        leaving.length = 0; sayQ.length = 0; nextSay(); selTop = null; drag = null; rolling = null;
+        el.classList.remove('tut'); coachEl.hidden = true;
+        el.querySelectorAll('.cf-fx').forEach(n => { n.innerHTML = ''; });
+        view = ''; setView('order'); dirty = true; last = performance.now();
+        if (from === 'rush') announce('Back to it!', RUSH_NAME[Math.max(0, S.rush)]);
+        else { if (from === 'first') pushSay({ who: 'sunoo', line: SUNOO.open[0] }); showBreak(S.rush < 0); }
+      }
+      function coachBtn(c) {
+        if (!tut) return; K.blip();
+        if (c === 'skip') return endTutorial();
+        if (tut.key === 'hello') { tut.hello = false; dirty = true; return; }
+        if (tut.key === 'end') endTutorial();
+      }
+      function coachLive() {
+        if (!tut) return;
+        let c = coach(M, view, tut.hello);
+        if (c.key === 'end' && performance.now() < tut.endAt) c = { key: 'tasting', sel: '.cf-pops .cf-pop.taste', text: 'And now he tastes it… That card is his score: every step, the wait, the total. Then the tip goes in the jar!' };
+        if (c.key !== tut.key) {
+          tut.key = c.key; coachEl.dataset.k = c.key;
+          coachEl.querySelector('p').textContent = c.text;
+          const nb = coachEl.querySelector('.cf-cnext');
+          nb.hidden = !c.btn; nb.textContent = c.btn === 'end' ? (tut.from === 'rush' ? 'Back to the café' : tut.from === 'first' ? 'Open the café!' : 'Got it') : (c.btn || 'Next');
+          coachEl.querySelector('.cf-cskip').hidden = c.key === 'end';
+          coachEl.querySelector('img').src = sunooFace(c.key === 'burn' || c.key.endsWith('-burn') ? 'surprised' : c.key === 'end' || c.key === 'hello' ? 'happy' : 'neutral');
+          kick(coachEl.querySelector('.cf-cbox'), 'pop');
+          if (c.btn) nb.focus();
+        }
+        const ring = coachEl.querySelector('.cf-ring'), arrow = coachEl.querySelector('.cf-arrow');
+        const tgt = c.sel && el.querySelector(c.sel), r = el.getBoundingClientRect(), b = tgt && tgt.getBoundingClientRect();
+        if (b && b.width > 0 && b.height > 0) {
+          const x = b.left - r.left, y = b.top - r.top, below = y < 170;
+          ring.style.left = (x - 6) + 'px'; ring.style.top = (y - 6) + 'px'; ring.style.width = (b.width + 12) + 'px'; ring.style.height = (b.height + 12) + 'px';
+          arrow.style.left = (x + b.width / 2) + 'px'; arrow.style.top = (below ? y + b.height + 12 : y - 48) + 'px';
+          ring.classList.add('on'); arrow.classList.add('on'); arrow.classList.toggle('up', below);
+          coachEl.classList.toggle('low', y + b.height / 2 < r.height * 0.5);
+        } else { ring.classList.remove('on'); arrow.classList.remove('on'); coachEl.classList.remove('low'); }
+      }
+
       /* ── loop ── */
       const frame = now => {
         const dt = Math.min(0.1, (now - last) / 1000); last = now;
@@ -1285,6 +1552,7 @@ window.FemcCafe = (() => {
           for (let i = leaving.length - 1; i >= 0; i--) if (now > leaving[i].until) { leaving.splice(i, 1); dirty = true; }
           if (dirty || (renderT -= dt) <= 0) { render(); renderT = 0.15; }
           live();
+          if (tut) coachLive();
         }
         raf = requestAnimationFrame(frame);
       };
@@ -1292,14 +1560,15 @@ window.FemcCafe = (() => {
       // the title card (Kat's art when it exists), held 1.8 s; a click or a key skips
       const tt = $('.cf-title');
       let begun = false;
-      const begin = () => { if (begun) return; begun = true; window.removeEventListener('keydown', skipT, true); tt.classList.add('out'); setTimeout(() => tt.remove(), 450); pushSay({ who: 'sunoo', line: SUNOO.open[0] }); showBreak(true); if (musicOn) K.music(true); };
+      const begin = () => { if (begun) return; begun = true; window.removeEventListener('keydown', skipT, true); tt.classList.add('out'); setTimeout(() => tt.remove(), 450); if (musicOn) K.music(true); if (wantTut) startTutorial('first'); else { pushSay({ who: 'sunoo', line: SUNOO.open[0] }); showBreak(true); } };
       function skipT(e) { if (e.key !== 'Escape') { e.stopPropagation(); e.preventDefault(); begin(); } }
       tt.onclick = begin; window.addEventListener('keydown', skipT, true); setTimeout(begin, 1800);
       render();
       raf = requestAnimationFrame(frame);
-      if (typeof o.hook === 'function') o.hook({ M, act, setView, render, finish });   // tests only
+      if (typeof o.hook === 'function') o.hook({ M: realM, act, setView, render, finish, model: () => M, view: () => view,   // tests only
+        tutorial: { start: startTutorial, button: coachBtn, active: () => !!tut, key: () => tut && tut.key, coach: () => tut && coach(M, view, tut.hello) } });
     });
   }
 
-  return { play, shift, DRINKS, GRILL, TOPS, FILLS, UPGRADES, UNLOCKS, ROSTER, DIFF };
+  return { play, shift, coach, DRINKS, GRILL, TOPS, FILLS, UPGRADES, UNLOCKS, ROSTER, DIFF };
 })();
