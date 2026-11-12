@@ -38,6 +38,17 @@
                       the council's second prom meeting after the last paper, his jacket over her uniform, a cigarette on his hood behind the gym;
                       the first-years' phone (epi-h-heat-jh-smoke); Mom smells it on her coat (epi-h-sus-jh-smoke)
                       (Dates picked around story-jungwon.js, written alongside: its 1/1 late, 1/7 late, 1/8 after, 1/11 evening.)
+     epi-h-jh-trip    12/28 evening  flag epi-route-jihoon  consumes  Jihoon's route, The Trip (Nov 11 2026, Kat: the old friends
+                      "have a little too much fun"; Solar falls back into old habits on this route): the night after the séance,
+                      the old table on Asahi's blankets in Hanlim Park; Hyunsuk's bag; Jihoon waits on her. (Take the bag.) →
+                      { minigame: 'trip', flags: 'epi-h-mg-trip', opts: { bg: 'epi-h-park-night' } }, result lines by -good / -won
+                      / else (curdled: Jaehyuk counts her breathing), the park gate (heat), Mom at 1 a.m. (sus), the ceiling.
+                      No. I'll sit with Nana. (confirm: true) → no game; Jihoon gives his back too; the bench, home at 11:00.
+                      Evening only (12/28's late screen still lists Sunoo's and Junkyu's late hangouts); a free evening on this
+                      route, nothing else dated that slot.
+     epi-h-jh-trip-after 12/29 early  flag epi-h-trip  consumes  the morning after: Jungwon's 7:02 (Sunoo saw a story), the
+                      club chat's 3:58 bench video, the glow and the guilt, the party tonight (the jacket); Mom: juk and "Not
+                      again" (epi-h-sus-trip) / two glasses of water / the 11:00!! sticky note (she said no).
    ── Spliced into existing scenes (R.stolen.*; each file's header names its splice) ────────────────────────────────────────
      karaoke   story-w1 epi-h-karaoke (12/23 evening), at the end      ifYear romance jihoon: the curb, the snow in her hair, the
                                                                         porch light; Mom's "eleven minutes" text (the near-miss)
@@ -56,14 +67,21 @@
      epi-h-jh-it-happened / -let-deny (stolen, jihoon), epi-h-jh-again / -left-car (stolen, jungwon / council),
      epi-h-jh-told-night (stolen, the truth to Jungwon), epi-h-jh-closet (closet), epi-h-jh-answered (closet),
      epi-h-jh-coats (coats), epi-h-jh-told-jw / -half-told (honest), epi-h-jh-open (prom), epi-h-jh-real (witness).
+   The Trip (epi-h-jh-trip): epi-h-trip (the event played, either way; gates the morning after), epi-h-trip-took (she took them),
+     epi-h-mg-trip-played / -won / -lost / -grade-<S|A|B|C> / -good (scene.js minigame), epi-h-heat-trip, epi-h-sus-trip.
+     Nothing else reads them yet.
    Stakes (stakes.js lists; header there documents them):
-     heat  epi-h-heat-jh-coats (seen leaving the coat room), epi-h-heat-jh-hall (his hand down the main hall, 1/9)
+     heat  epi-h-heat-jh-coats (seen leaving the coat room), epi-h-heat-jh-hall (his hand down the main hall, 1/9),
+           epi-h-heat-trip (12/28, waves at the park gate)
+     sus   epi-h-sus-trip (12/28, "My eyes always go like this in the cold.")
      sus   epi-h-sus-jh-curb (lies to Mom about the eleven minutes), epi-h-sus-jh-car (lies to Mom about the car on the corner)
      lies  epi-h-lie-jw-night ("slept like a rock"), epi-h-lie-jw-nana ("It's Nana."), epi-h-lie-crew-coats ("Bathroom.")
            (new score: each lie raises the trust the verdict needs; stakes.js R.stakesVerdict)
    Read: epi-route-jihoon (events, ifEpiRoute), epi-h-party-left / -jh-flushed (party splices), epi-h-jihoon-remembers,
      epi-h-jh-kissed, epi-h-jh-told-jw / -half-told (prom), epi-h-jh-real (people-last.js).
    ── Inventions for Kat to confirm ──────────────────────────────────────────────────────────────────────────────────────────
+     The Trip: Hyunsuk's cousin knows somebody (the bag); Asahi's two blankets; the park's lamps hum; Jaehyuk measured the tree
+     in ninth grade; two girls from school at the park gate; Mom's juk the morning after; the 11:00!! sticky note.
      The tunnel lights come down on the 27th; Jihoon's fridge still has his mother's grocery list under a magnet; Mrs. Oh's son
      (a neighbour's car, Solar's lie); Jungwon has counted the car on the corner (four nights); the girl at the coat-room door
      is a second-year from the swim team; Mom's "He has always just taken you."; the old chat's reactions on 1/9.
@@ -442,6 +460,152 @@
         { from: 'jungwon', t: "i'm still going to text you at 7:02. i just wanted you to know that, so you wouldn't wonder." }
       ], contact: 'Won' },
       { bond: { jungwon: 1 } }
+    ] }
+  );
+
+  // ── The Trip (Nov 11 2026, Kat: "one hangout night with the old friends where they have a little too much fun ... only on the
+  // Jihoon route since Solar is supposed to fall back into her drug habits more in that route"). minigames/trip.js, flags
+  // epi-h-mg-trip-*. 12/28 evening (the night after the séance, the night before the party), Jihoon's route only: the old crew
+  // in Hanlim Park; she can take them (the game) or say no and sit it out with Nana (confirm). Stakes: epi-h-heat-trip (seen
+  // at the gate), epi-h-sus-trip (comes home wrong and lies to Mom). The morning after is its own 12/29 early event.
+  const CLUB = "rip solar kim (she's fine probably)";
+  (R.events ||= []).push(
+    { id: 'epi-h-jh-trip', date: '12/28', slot: 'evening', consumes: true, flag: 'epi-route-jihoon', title: 'the park', place: 'Hanlim · The Park', time: 'Evening', scene: [
+      { music: 'epi-h-late' },
+      { phone: [
+        { from: 'hyunsuk', t: "geniusuk: park. 8. the slope above the pond" },
+        { from: 'hyunsuk', t: "geniusuk: we are not talking about last night. we are going outside like normal people" },
+        { from: 'junkyu', t: "junkyute: can we bring blankets!!!" },
+        { from: 'asahi', t: "asanoonecares: no one cares. i'm bringing two" },
+        { from: 'jihoon', t: "jihoney: Bring My Son" }
+      ], contact: CLUB, group: true },
+      { n: "Last night a little wooden heart had slid round a board in Jihoon's living room under eight sets of fingers and spelled something in the dark that nobody would say out loud today, and nobody had slept, and by the afternoon the chat had decided, the way the chat always decided things, by Hyunsuk saying something and nobody saying no, that the cure was cold air." },
+      { n: "Hanlim Park after dark was the hard kind of clear, the sky scraped black, the old snow shoved up grey along the paths and gone to crust on top. The pond was frozen at the edges and black in the middle, and the streetlamps round it hummed, actually hummed, a thin electric note she'd never noticed in daylight. Asahi's two blankets were down on the slope above the water, one on top of the other, and the old table was on them, all of it, for the first time since before." },
+      { n: "Nana lay down in the snow beside the blanket like he'd been personally invited and the invitation had said black tie. Junkyu had brought a third blanket nobody had asked for and put it over Nana. Jaehyuk had brought a textbook, which he said was for the vibes. Cherry sat on the far side from Hyunsuk, and Hyunsuk sat on the far side from Cherry, and nobody said anything about that, which was how you knew everybody had noticed." },
+      { s: 'hyunsuk', f: 'neutral', t: "Okay. So. Don't be weird about it." },
+      { n: "He took a sandwich bag out of his coat. Inside it was something that looked like it had been dug up, because it had, somewhere, by somebody his cousin knew, and Solar knew what it was before he'd opened his mouth. Her stomach knew. The way it knows the stairs in the dark in a house you used to live in." },
+      { s: 'cherry', f: 'serious', t: "Suk. Seriously?" },
+      { s: 'hyunsuk', f: 'neutral', t: "A board spelled a word at us last night, man. In Hoon's living room. I'm not doing tonight as myself. Myself is having a terrible week." },
+      { s: 'jaehyuk', f: 'neutral', t: "It's one night. Statistically the risk is- okay, I don't actually know the statistic." },
+      { s: 'asahi', f: 'neutral', t: "No one cares about the statistic." },
+      { s: 'junkyu', f: 'sad', t: "Is it gonna be scary? I don't want it to be scary. I want it to be nice." },
+      { s: 'hyunsuk', f: 'happy', t: "It's gonna be so nice, Kyu. It's the park. Look at it. It's the nicest park." },
+      { n: "The bag went round the blanket. It got to Jihoon and stopped. He didn't open it. He sat with it on his knee in the lamp light, and he didn't look at the bag, he looked at her, the way he'd been looking at her since Christmas, like she was the weather and he was deciding whether to go out in it." },
+      { s: 'jihoon', f: 'neutral', t: "Your call, Sol. I'm very easily led. It's my one flaw. Top three. Top five, if Cherry's counting." },
+      { n: "They'd promised. All of them, two years ago, on a day nobody talked about, and they'd kept it, most of them, mostly, the way you keep a promise to people who'd know if you didn't. And then there'd been a whole year somewhere else, and a whole autumn of being good before that, very good, the kind of good you have to keep checking on, like a pot, and sitting there in the cold with Nana breathing beside her she was so tired, all of a sudden, of checking." },
+      { choose: [
+        { t: "(Take the bag.)", flag: 'epi-h-trip-took', then: [
+          { n: "She took the bag. They tasted like the floor of a forest, which was all she was planning to remember about that part. Jihoon watched her do it, and then he took his, without a joke, like a boy who'd only been waiting for permission and was a little sorry to get it." },
+          { s: 'jihoon', f: 'happy', t: "Well. If you're going, I'm going. Somebody has to hold your hand. It can't be Cherry, she has terrible circulation." },
+          { s: 'cherry', f: 'serious', t: "Solar Kim. One night. Then we go back to being boring, and I'm holding you to it, and if you make me hold you to it I'll break both your legs." },
+          { n: "For forty minutes nothing happened, and they talked about nothing, the party tomorrow, the swim-team boy's tragic haircut, whether Nana could beat a deer. Then Junkyu said, very quietly, that Nana's fur was sparkling, and nobody laughed at him, because it was." },
+          { minigame: 'trip', flags: 'epi-h-mg-trip', opts: { bg: 'epi-h-park-night' } },
+          { ifFlag: 'epi-h-mg-trip-good', then: [
+            { n: "She got every one of them back. Asahi off the bridge, conducting. Junkyu from the bench he'd been apologising to for twenty minutes. Cherry out of the willow with half of it braided. One by one, hand in hand, a chain of seven across the snow, onto the blanket, and they all sat down at once and the sky went the colour of milk tea, like the sun was coming up just for them." },
+            { n: "It wasn't. It was eleven-forty. Jaehyuk checked twice and said it was impossible and then lay back in the snow and laughed until he cried, and Jihoon's hand was still in hers, and neither of them had let go, and neither of them said anything about it." }
+          ], else: [
+            { ifFlag: 'epi-h-mg-trip-won', then: [
+              { n: "She got them all back in the end. It took the long way. Twice someone let go of her hand and drifted off to stand very still under a lamp, and twice she went and got them, and by the time all seven were on the blanket her hands were shaking and her face hurt from smiling and she wasn't sure, for a second, which of those was the trip." },
+              { s: 'jihoon', f: 'happy', t: "Head count. Seven. And one son. Nobody lost. I'm putting it on my résumé." }
+            ], else: [
+              { n: "Somewhere in the middle it went wrong. The colours drained out of the park like somebody had pulled a plug, and the lamps went out of tune, and at the very edge of the light there was a shape standing where nobody was, not coming closer, just standing, the way something stands that has all night." },
+              { n: "Jaehyuk found her by the pond. He took her face in both his hands, gently, like a textbook he was afraid of creasing, and made her look at him, and counted, four in, four out, until the shape was a tree again. Cherry sat on her other side and didn't say *I told you*, which was the kindest thing Cherry had ever not said." },
+              { s: 'jaehyuk', f: 'serious', t: "Look at me. Not over there. Me. It's a tree, Sol. I measured it once in ninth grade for a worksheet. It's a tree." }
+            ] }
+          ] },
+          { n: "They walked out together at half past midnight, Nana up front like a snowplough, and at the gate by the road there were two girls from school coming the other way with a little dog and their phone torches on, and one of them stopped." },
+          { s: 'solar', f: 'surprised', t: "...Oh no." },
+          { choose: [
+            { t: "(Wave. Big.)", flag: 'epi-h-heat-trip', then: [
+              { n: "She waved with her whole arm, like a woman on a ship, and called *happy holidays!* across the road a lot louder than she'd meant to, and behind her Junkyu said *happy holidays!* too, and then said it to the dog, and then to a bin." },
+              { n: "By morning it was on Hanlim Unfiltered. No picture, just a post. *ghost vp + the old table at hanlim park at like 1am. someone was talking to a BIN.* Forty comments. Someone had written *temple must have been really relaxing*, with the crying face." }
+            ] },
+            { t: "(Hood up. Keep walking.)", then: [
+              { n: "She put her hood up and looked at her boots, and Jihoon, without a word, stepped between her and the road, tall and loud and talking about the swim-team boy's haircut to nobody, so all the girls with the phone saw was the back of his coat and a very large dog." }
+            ] }
+          ] },
+          { place: 'Hanlim · Home · Kitchen', time: 'Late Night', soft: true },
+          { n: "The kitchen light was on. Her mother was at the table in her cardigan with a cup of barley tea gone cold in front of her, reading nothing on her phone, the way she did when she'd been waiting and wanted it to look like she hadn't." },
+          { s: 'mom', f: 'neutral', t: "It's one o'clock." },
+          { s: 'mom', f: 'serious', t: "Come here where I can see you." },
+          { choose: [
+            { t: "It's freezing out. My eyes always go like this in the cold.", flag: 'epi-h-sus-trip', then: [
+              { glitch: { strain: 1 } },
+              { n: "She came into the light, because not coming into the light would have been worse, and her mother looked up at her face for a long time, at her eyes, which she could feel were enormous, which she could feel were the whole of her face." },
+              { s: 'mom', f: 'sad', t: "Your eyes have never done this in the cold, Solar. You've had the same eyes for eighteen years. I was there for all of them." },
+              { s: 'mom', f: 'neutral', t: "Drink a glass of water. Then another one. Then bed. We'll talk when you can look at me properly." }
+            ] },
+            { t: "(Say goodnight from the stairs. Don't turn around.)", then: [
+              { s: 'solar', f: 'neutral', t: "I'm so tired, Mom. Goodnight. Love you." },
+              { n: "She said it to the stairs, already on the third one, Nana's tail in front of her face like a curtain, and her mother didn't call her back, and that was almost worse. There was a long pause in the kitchen. Then the scrape of a chair, and the tap running, and a glass of water left outside her door, the way you'd leave one for somebody who was sick." }
+            ] }
+          ] },
+          { place: ROOM, time: 'Late Night', soft: true },
+          { n: "Her ceiling was still breathing a little. Slowly, in and out, the crack above the window opening and closing like a gill. She lay on top of the covers in her coat with Nana's whole weight across her shins and watched it, and she felt so good. That was the thing. She felt warm all the way to the ends of her fingers, and full of love for everyone, the bin included, and underneath all of it, small and very clear, like a stone at the bottom of a glass of water, the knowledge that two years had just gone, in an evening, on a slope above a pond, and it hadn't felt like losing anything. It had felt like being let back into a party." }
+        ] },
+        { confirm: true, t: "No. I'll sit with Nana.", then: [
+          { n: "She gave the bag back to Hyunsuk without opening it, and he shrugged, *your call, man*, no weirdness, which was the thing about the old table, they'd never once made anybody do anything. She looked over at Jihoon." },
+          { n: "He looked at the bag on his knee for a long moment. Then he leaned across Asahi and dropped it in Hyunsuk's lap like it had bitten him." },
+          { s: 'jihoon', f: 'neutral', t: "Then I'm out. Somebody has to be sober enough to make fun of them. It's a sacred duty. I take it very seriously." },
+          { n: "So she sat on the bench at the top of the slope with Jihoon and Nana between them like a white wall, a thermos of Hyunsuk's terrible cocoa going back and forth, and watched. Asahi conducted the wind from the little bridge, very solemnly, with a stick. Junkyu apologised to a bench for twenty minutes. Jaehyuk read calculus to the moon, out loud, and the moon took it well. Cherry braided a willow. Hyunsuk filmed a duck that was not there." },
+          { s: 'jihoon', f: 'happy', t: "Look at them. Our children. We did a terrible job." },
+          { n: "She laughed into Nana's neck. It was cold and it was stupid and she was sober for all of it, and it was still, somehow, the best night she'd had since she got back, and she wasn't sure what to do with that either." },
+          { place: 'Hanlim · Home · Kitchen', time: 'Late Night', soft: true },
+          { n: "She was home at eleven exactly. Her mother looked up from the table, at the clock, then at her, then at the clock again, and got up without a word and wrote *11:00!!* on a sticky note and put it on the fridge, next to the takeout menus, like a gold star." }
+        ] }
+      ] },
+      { flag: 'epi-h-trip' },
+      { bond: { jihoon: 1 } }
+    ] },
+
+    // 12/29, Morning (the morning after the park; plays only if epi-h-jh-trip did): Jungwon's 7:02, the glow and the guilt, Mom.
+    { id: 'epi-h-jh-trip-after', date: '12/29', slot: 'early', consumes: true, flag: 'epi-h-trip', title: 'seven-oh-two', place: ROOM, time: 'Morning', scene: [
+      { music: 'epi-h-home' },
+      { n: "At 7:02 her phone went on the pillow." },
+      { phone: [
+        { from: 'jungwon', t: "good morning." },
+        { from: 'jungwon', t: "heeseung has sent out a hydration schedule for tonight. you're on it twice. i'm on it four times, which i think is personal." },
+        { from: 'jungwon', t: "sunoo says the old table was at the park last night. he saw a story. how was it?" }
+      ], contact: 'Won' },
+      { ifFlag: 'epi-h-trip-took', then: [
+        { n: "She'd woken at six with a mouth like the bottom of the pond and her coat still on, Nana snoring on her legs, the ceiling back to being a ceiling. In the club chat there was a video from 3:58 a.m. of Junkyu explaining to a bench that it was a good bench and he was sorry, and under it fourteen messages that were just Asahi's name, and one from Jihoon, at 4:10: *Everybody Drink Water. That Is An Order From Your King.*" },
+        { choose: [
+          { t: "it was good. we looked at the pond for like an hour. it's very deep", then: [
+            { phone: [
+              { from: 'solar', t: "it was good. we looked at the pond for like an hour. it's very deep" },
+              { from: 'jungwon', t: "the pond is about a metre." },
+              { from: 'jungwon', t: "i hope you wore a hat." }
+            ], contact: 'Won' }
+          ] },
+          { t: "(Send him the picture of Nana asleep under Junkyu's blanket instead.)", then: [
+            { n: "She sent him the one of Nana asleep in the snow under Junkyu's striped blanket with one paw sticking out, and nothing else, because a picture of a dog wasn't a lie." },
+            { phone: [
+              { from: 'jungwon', t: "he looks like he had a big night." },
+              { from: 'jungwon', t: "eat something before tonight. i'm going to check." }
+            ], contact: 'Won' }
+          ] }
+        ] },
+        { n: "She put the phone face down on her chest and lay there with the glow still in her, faint now, a warm light left on in a room she'd walked out of. She'd laughed so hard last night her stomach still hurt. She'd held seven people's hands. She'd been sixteen for five hours and it had been lovely, and he'd said *i hope you wore a hat*, and that was the part she couldn't look at." },
+        { n: "Tonight was the party. Tonight Jihoon would have something in his jacket, he always did at parties, and she'd know what it was, and he'd know she knew, and she had no idea, lying there, what her face was going to do." },
+        { place: 'Hanlim · Home · Kitchen', time: 'Morning', soft: true },
+        { ifFlag: 'epi-h-sus-trip', then: [
+          { n: "Her mother had made juk. Plain rice porridge, the kind she made for fevers, and set it down in front of Solar with a big glass of water and not one word, and sat across from her and watched her eat every spoonful of it." },
+          { s: 'mom', f: 'serious', t: "I'm not stupid, Solar. I was eighteen. Your eyes were like two dinner plates." },
+          { s: 'mom', f: 'sad', t: "Whatever it was. Not again. Not with that boy and not without him. I'm not asking. I'm telling you I know." }
+        ], else: [
+          { s: 'mom', f: 'neutral', t: "You came in very quietly last night." },
+          { s: 'solar', f: 'neutral', t: "I was tired." },
+          { n: "Her mother said *mm*, the long one, the one that wasn't agreeing, and slid a glass of water across the table to her, and then, after a second, a second glass beside it, and went back to her paper." }
+        ] }
+      ], else: [
+        { n: "She'd slept like a stone, the good kind, and in the club chat there was a video from 3:58 a.m. of Junkyu explaining to a bench that it was a good bench and he was sorry, filmed by Jihoon, narrated by Jihoon, captioned *Sober Witness Testimony*." },
+        { phone: [
+          { from: 'solar', t: "it was good. junkyu apologised to a bench. i was the designated nana" },
+          { from: 'jungwon', t: "was the bench alright?" },
+          { from: 'jungwon', t: "i'm glad you had a good night. you sound like you had a good night." }
+        ], contact: 'Won' },
+        { n: "The sticky note was still on the fridge when she came down. *11:00!!* Her mother had added a second one under it overnight, in the same pen. *see? possible.*" }
+      ] }
     ] }
   );
 

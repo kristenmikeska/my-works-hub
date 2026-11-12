@@ -33,6 +33,19 @@
               epi-h-snowed-in: the specials board) and the 1/2 motion (ifEvent epi-h-motion). Reads epi-h-suk-seat,
               epi-h-party-scuffle. One lie that holds the cover (strain).
 
+     hyunsuk  epi-h-hyunsuk-circle    'the circle'      1/4-1/8 late, after epi-h-motion, every route (Nov 11 2026: Pass It)
+              "Hanlim · Jihoon's House". "get over here" / "bring the son": the old table on Jihoon's rug, one lamp, a lo-fi
+              beat, a joint going round. (Sit in the circle.) → { minigame: 'passit', flags: 'epi-h-mg-passit', opts: { bg:
+              'epi-h-jihoon-house' } }; "(Take the armchair with Nana. Stay out of it.)" has confirm: true. ifEpiRoute jihoon:
+              heavier, her old habits (no speech to herself on the walk over; the Solar-sized dent beside him; her lungs
+              remember; asleep on the rug till five, showers before Mom wakes). Jungwon / council: she passes it on without
+              smoking, every time (the plan she tells Nana), then home at one and Jungwon's 11:59 "goodnight." Result lines
+              by -good / -won / else, colour only. Date lines: ifBefore 1/5 (the snow day), ifEvent epi-h-makeup (after the
+              first make-up), else the night before. Late windows: 1/4, 1/7, 1/8 (Jihoon's route: 1/7, 1/8, since epi-h-jh-
+              honest takes 1/4); a separate bond from Asahi's 1/3-1/4, Jaehyuk's 1/8 and Jungwon's 1/7-1/8, so it only adds
+              a name to those nights. Unlike the rest of this file it names what's going round (Kat approved the game).
+              Flags: epi-h-mg-passit-played / -won / -lost / -grade-<S|A|B|C> / -good (scene.js); nothing else reads them.
+
    Flags set: epi-h-suk-seat (hyunsuk-long-way: she asks Hyunsuk to save her a seat at the window; read by council-tables).
      epi-h-tables-crew / epi-h-tables-council / epi-h-tables-pushed (council-tables: where she sat; nothing reads them yet,
      free for later files). epi-h-jaehyuk-told (an existing local flag from people-crew.js) is also set in jaehyuk-office
@@ -595,6 +608,82 @@
           { s: 'halmeoni', f: 'happy', t: "Good. Eat." },
           { n: "It wasn't fixed. The ridge was still under the plate, and tomorrow the tables would be back by the window and at the back with the aisle between them. But for an hour everybody ate off the border, and when she looked up the fog on the windows had gone gold with somebody's headlights passing, like the whole room had been lit from outside for a second, on purpose." }
         ] }
+      ] }
+    ] }
+  ]);
+
+  /* ── Pass It (Nov 11 2026; minigames/passit.js, flags epi-h-mg-passit-*): the circle on Jihoon's rug, every route. ── */
+  add('hyunsuk', 'friend', [
+    { id: 'epi-h-hyunsuk-circle', title: 'the circle', hint: "The old chat says everyone's on Jihoon's rug. Hyunsuk has texted you twice: \"get over here\" and \"bring the son\".",
+      after: '1/4', until: '1/8', slots: LATE, events: ['epi-h-motion'], noFlags: [], route: null, noRoute: null,
+      place: "Hanlim · Jihoon's House", time: 'Late Night', scene: [
+      { music: 'epi-h-late' },
+      { phone: [
+        { from: 'hyunsuk', t: "get over here" },
+        { from: 'hyunsuk', t: "bring the son" }
+      ], contact: 'geniusuk' },
+      { ifBefore: '1/5', then: [
+        { n: "The snow day's snow was still coming down at half eleven, fat and slow, and the street between her house and Jihoon's had gone soft and blue and silent, no cars, nobody, only Nana ploughing ahead of her on the lead and stopping every four metres to eat some of it." }
+      ], else: [
+        { ifEvent: 'epi-h-makeup', then: [
+          { n: "The first make-up was done. She'd written *feet* on question one and drawn Nana in the box on question five, and that was the whole of what she wanted to think about it, so at half eleven she put her coat on over her pyjamas and walked Nana down the street to Jihoon's, which was the opposite of thinking about it." }
+        ], else: [
+          { n: "The make-ups were tomorrow morning, eight o'clock sharp, and her calculus notes were spread across her bed with Nana asleep on chapter six, and at half eleven she looked at them, and at her phone, and put her coat on over her pyjamas." }
+        ] }
+      ] },
+      { n: "Jihoon's door was unlocked, the way it always was when the old chat was over, and the smell came out into the cold to meet her before the warmth did. The living room was down to one lamp. Somebody's speaker was playing the kind of slow, crackly beat that sounds like rain on a window. And the old table was on the rug in a circle, the way they used to sit when they were fifteen and had nowhere better to be: Hyunsuk, Asahi, Jaehyuk, Junkyu under a blanket, Cherry with her boots off, and Jihoon at the top of it, cross-legged, like a king holding court in a hoodie." },
+      { s: 'jihoon', f: 'happy', t: "She arrives. And she's brought my son. Everybody rise. Not you, Kyu. You'll fall over." },
+      { s: 'junkyu', f: 'happy', t: "I would fall over! I'm so comfy! Hi Nana! Hi Sol!" },
+      { ifEpiRoute: 'jihoon', then: [
+        { n: "She hadn't told herself anything on the walk over. On any other night she would have; she'd have made herself a whole little speech in her head about just stopping by. Tonight she'd just walked. And when the door opened and the smell found her in the cold, her shoulders came down a whole inch, like a coat coming off, and Jihoon saw it, and smiled at the ceiling." }
+      ], else: [
+        { n: "On the walk over she'd told Nana the plan out loud, and Nana had not seemed convinced. She'd sit in the circle and she'd pass it. Left hand to right hand. On the beat, like everybody else. You could sit in a circle and not be in it. People did it all the time, probably." }
+      ] },
+      { s: 'cherry', f: 'neutral', t: "Sit down, you're letting the cold in. And take that dog off my socks." },
+      { choose: [
+        { t: "(Sit in the circle.)", then: [
+          { ifEpiRoute: 'jihoon', then: [
+            { n: "Jihoon moved over without being asked. There'd been a space beside him the whole time, she realised, a Solar-sized dent in the rug, and everybody had been sitting round it." }
+          ], else: [
+            { n: "She sat between Junkyu and Jaehyuk, across the circle from Jihoon, which was a decision, and Jihoon watched her make it and didn't say anything, and Hyunsuk passed her a bag of shrimp chips like a welcome pack." }
+          ] },
+          { minigame: 'passit', flags: 'epi-h-mg-passit', opts: { bg: 'epi-h-jihoon-house' } },
+          { ifEpiRoute: 'jihoon', then: [
+            { ifFlag: 'epi-h-mg-passit-good', then: [
+              { n: "Her lungs remembered. That was the worst of it and the best of it. Slow and smooth and held a second, let out up toward the lamp so it went up and not in anybody's face, like she'd never stopped, like the two years had been a long weekend. Jihoon watched her do it the way you'd watch the lights come back on in a house you grew up in." },
+              { s: 'jihoon', f: 'happy', t: "There she is. Oh, there she is. Hi. Where've you *been*." },
+              { s: 'hyunsuk', f: 'neutral', t: "Don't, man. Don't make it a thing." }
+            ], else: [
+              { ifFlag: 'epi-h-mg-passit-won', then: [
+                { n: "She coughed twice like a first-year, and Hyunsuk thumped her on the back, and Asahi said *no one cares* in a voice that meant the opposite, and by the third time round it was going down easier, which she noticed, and didn't like noticing, and didn't stop." }
+              ], else: [
+                { n: "She lost the beat somewhere round the time Nana took the chips off the table, and fumbled it onto the rug, and held it too long, and coughed until her eyes ran, and Jihoon reached over and took it out of her fingers." },
+                { s: 'jihoon', f: 'serious', t: "You're cut off. By me. Historic. Write it down, Jaehyuk." }
+              ] }
+            ] }
+          ], else: [
+            { ifFlag: 'epi-h-mg-passit-good', then: [
+              { n: "She passed it every single time. On the beat, left hand to right hand, never once to her mouth, and by the third time round nobody held it out to her slowly anymore, nobody raised an eyebrow, they just handed it through her like she was part of the rug, which was honestly the nicest thing anyone had done for her all week." },
+              { s: 'hyunsuk', f: 'happy', t: "Look at her. Customs. Nothing gets through Sol, man." }
+            ], else: [
+              { n: "She fumbled it once onto the rug, and Jaehyuk saved the rug, and Cherry saved the joint, and Nana saved nobody, and she held it every time like it was something hot she'd been asked to carry across a room. But it never once went to her mouth. She passed it on. Every time, late or not, she passed it on." },
+              { s: 'cherry', f: 'happy', t: "Worst rhythm I've ever seen in my life. Proud of you. Shut up." }
+            ] }
+          ] }
+        ] },
+        { confirm: true, t: "(Take the armchair with Nana. Stay out of it.)", then: [
+          { n: "She took the armchair by the lamp instead, and Nana climbed up after her uninvited and arranged all sixty pounds of himself across her lap, and she sat under him and watched the circle go round like the second hand of a clock." },
+          { n: "Every time round, Jihoon looked up across it at her. Every lap, like he was checking she was still in the chair. She was." }
+        ] }
+      ] },
+      { ifEpiRoute: 'jihoon', then: [
+        { n: "She fell asleep on the rug some time after three with her head on Jihoon's hoodie and Nana along her back like a radiator, and woke at five with the lamp still on and everyone asleep in a heap, Junkyu's foot in Asahi's face, and walked home in the blue before morning with the smell of it in her hair. She showered before her mother woke up. Standing under the water with her eyes shut, she had the feeling of somebody who'd been very good for a very long time sitting up in bed in another room, and listening." }
+      ], else: [
+        { n: "She walked home at one with Nana and the smell of it in her hair and stood under the shower until the hot water ran out. When she got out there was a text on the sink from 11:59, which was when he always sent it, so it would still count as today." },
+        { phone: [
+          { from: 'jungwon', t: "goodnight." }
+        ], contact: 'Won' },
+        { n: "She sat on the edge of the bath in her towel and looked at it for a long time, and typed *goodnight*, and sent it, and it said 1:14, and it didn't count as today anymore." }
       ] }
     ] }
   ]);

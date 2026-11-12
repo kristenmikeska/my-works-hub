@@ -78,6 +78,10 @@
            epi-h-heat-late   ('quiet feet', 1/8-1/10 late, walks him home past a doorbell camera)
      trust epi-h-trust-curb  (1/7 late, makes room for him on the old table's curb, next to Hyunsuk)
            epi-h-trust-gate  (1/8 after, waves both tables round him at the gate)
+   The Trip (Nov 11 2026; stolen.js epi-h-jh-trip, 12/28 evening, Jihoon's route, only if she takes them):
+     heat  epi-h-heat-trip   (waves at two girls from school at the park gate at 12:30; a forum post by morning)
+     sus   epi-h-sus-trip    (1 a.m., "My eyes always go like this in the cold."; Mom makes juk in the morning)
+     The careful answers (hood up / goodnight from the stairs) add nothing; saying no adds nothing.
    Light feedback: every new flag's choice carries a line that shows it (a forum post, a comment count, a look, a Mom text);
    the old ✱ choices already had one. Check-ins read the running counts: the motion's signatures (1/2), Eunchae at the gate
    (1/8), the leak (1/9: it only happens if she passed her phone round at the party OR heat ≥ 4), the bleachers and the
@@ -129,7 +133,9 @@
       // the Jihoon thread (stolen.js, Nov 11 2026): seen with him
       'epi-h-heat-jh-coats', 'epi-h-heat-jh-hall', 'epi-h-heat-jh-smoke',
       // Jungwon going out (story-jungwon.js, Nov 11 2026): seen out late with him
-      'epi-h-heat-seen', 'epi-h-heat-late'],
+      'epi-h-heat-seen', 'epi-h-heat-late',
+      // The Trip (stolen.js epi-h-jh-trip, Nov 11 2026): seen at the park gate
+      'epi-h-heat-trip'],
     trust: ['epi-h-tables-pushed', 'epi-h-suk-seat', 'epi-h-jaehyuk-told', 'epi-h-jay-fight', 'epi-h-cherry-dark-truth',
       'epi-h-poster-real-one', 'epi-h-war-sol-receipts', 'epi-h-war-sol-gym', 'epi-h-trust-ledger', 'epi-h-trust-step',
       'epi-h-trust-jay-porch', 'epi-h-trust-crew', 'epi-h-trust-council', 'epi-h-trust-between', 'epi-h-trust-call',
@@ -140,7 +146,9 @@
     sus: ['epi-h-mom-lie', 'epi-h-xmas-bows', 'epi-h-sus-boring', 'epi-h-sus-swept', 'epi-h-sus-party', 'epi-h-sus-ignored',
       'epi-h-sus-armband', 'epi-h-sus-costume', 'epi-h-sus-chair',
       // the Jihoon thread (stolen.js, Nov 11 2026): lies to Mom about him
-      'epi-h-sus-jh-curb', 'epi-h-sus-jh-car', 'epi-h-sus-jh-smoke'],
+      'epi-h-sus-jh-curb', 'epi-h-sus-jh-car', 'epi-h-sus-jh-smoke',
+      // The Trip (stolen.js epi-h-jh-trip, Nov 11 2026): comes home wrong and lies about her eyes
+      'epi-h-sus-trip'],
     // the Jihoon thread (stolen.js, Nov 11 2026): lies to Jungwon or the crew about him. Each one raises the trust the
     // verdict needs (R.stakesVerdict below), so a lie costs trust without any score ever going down.
     lies: ['epi-h-lie-jw-night', 'epi-h-lie-jw-nana', 'epi-h-lie-crew-coats']
