@@ -1,6 +1,8 @@
 /* FemcTrip (minigames/trip.js): The Trip, HOAX. UI chrome is Kat's pink and black (#ff4f9e / #14070f family); only the park
    on the canvas is colourful. --hue (deg, the music's colour) and --curdle (0-1) are set by the JS.
-   States on .mg-tr: still (reduced motion), calm (Reduce flashes), perf (Performance), tut, won, sunrise, curdled, quit. */
+   States on .mg-tr: still (reduced motion), calm (Reduce flashes), perf (Performance), tut, won, sunrise, curdled, quit, fin (the finale), hit (a
+   shadow-thing's touch, re-added each time). Nov 11 rework: the floating head, the moments counter, Bark, the action tasks'
+   pieces (dots, the beat ring, the swinging strand), the finale's skip hint and the end card's scrapbook are at the end. */
 .mg-tr { --pk: #ff4f9e; --pk2: #ff9ac8; --pk3: #ffd1e6; --nt: #14070f; --nt2: #2a0f22; --hue: 320deg; --curdle: 0;
   position: fixed; inset: 0; z-index: 3000; overflow: hidden; color: #fff; background: #0a0306; user-select: none; -webkit-user-select: none;
   touch-action: none; font-family: system-ui, sans-serif; }
@@ -193,3 +195,90 @@
 .mg-tr.still .tr-caps li, .mg-tr.still .tr-say, .mg-tr.still .tr-task { animation: none; }
 .mg-tr.still .tr-title.out { animation: tr-out .3s linear forwards; }
 .mg-tr.still .tr-vibe i { transition: none; }
+
+/* Nov 11 rework: the talking head over whoever speaks */
+.tr-head { position: absolute; left: 0; top: 0; z-index: 2; width: 48px; height: 48px; transform: translate(-50%, -100%); pointer-events: none; }
+.tr-head[hidden] { display: none; }
+.tr-head img { display: block; width: 48px; height: 48px; object-fit: cover; object-position: 50% 16%; border-radius: 50%; background: var(--nt2); border: 3px solid var(--pk);
+  box-shadow: 0 0 0 3px rgba(20, 7, 15, .7), 0 6px 18px rgba(0, 0, 0, .5); }
+.tr-head::after { content: ''; position: absolute; left: 50%; bottom: -9px; margin-left: -7px; border: 7px solid transparent; border-top: 9px solid var(--pk); border-bottom: 0; }
+.tr-head i { position: absolute; right: -10px; top: -6px; padding: 1px 6px; background: var(--nt); border: 1px solid var(--pk); border-radius: 9px; font: 900 11px/1.2 system-ui; font-style: normal; color: var(--pk3); }
+.tr-head i::before { content: '…'; }
+.mg-tr:not(.still) .tr-head img { animation: tr-bob 1.1s ease-in-out infinite; }
+
+/* the good-moments counter */
+.tr-mom { flex: 0 0 auto; display: flex; align-items: baseline; gap: 4px; padding: 7px 12px; background: rgba(20, 7, 15, .86); border-bottom: 3px solid var(--pk); transform: skewX(-8deg); color: var(--pk3); }
+.tr-mom::before { content: '♥'; color: var(--pk); font: 900 15px/1 system-ui; margin-right: 2px; }
+.tr-mom b { font: italic 900 18px/1 system-ui; color: #fff; }
+.tr-mom small { font: 800 12px/1 system-ui; }
+.mg-tr:not(.still) .tr-mom.pop { animation: tr-pop .5s ease-out; }
+
+/* Bark: a cooldown bar, a glow when it's ready and a shadow is near */
+.tr-bark { --cd: 0; }
+.tr-bark i { position: absolute; left: 0; bottom: 0; height: 3px; width: calc(var(--cd) * 100%); background: var(--pk3); }
+.tr-acts .tr-bark:not(.ready) { opacity: .6; }
+.tr-acts .tr-bark.ready.need { background: var(--pk2); color: var(--nt); }
+.mg-tr:not(.still):not(.calm) .tr-acts .tr-bark.ready.need { animation: tr-throb .8s ease-in-out infinite; }
+
+/* the action tasks */
+.tr-task.mini { left: 50%; bottom: auto; top: 150px; width: min(440px, calc(100vw - 20px)); padding-bottom: 8px; background: rgba(20, 7, 15, .82); }
+.tr-task.mini header { margin-bottom: 6px; padding: 5px 14px; }
+.tr-task.mini header img { width: 30px; height: 30px; }
+.tr-task.mini header b { font-size: 16px; }
+.tr-task.mini .tr-tq { font-size: 13px; margin-bottom: 4px; }
+.tr-dots { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.tr-dots i { width: 26px; height: 26px; display: grid; place-items: center; border: 2px solid rgba(255, 79, 158, .35); border-radius: 50%; font: 900 13px/1 system-ui; font-style: normal; color: rgba(255, 209, 230, .35); }
+.tr-dots i.on { background: var(--pk); border-color: var(--pk); color: var(--nt); }
+.mg-tr:not(.still) .tr-dots i.on { animation: tr-pop .35s ease-out; }
+.tr-beatrow { display: flex; align-items: center; gap: 14px; margin: 4px 0 10px; }
+.tr-beat { position: relative; flex: 0 0 auto; width: 64px; height: 64px; display: grid; place-items: center; border-radius: 50%; background: var(--nt2); border: 3px solid var(--pk); }
+.tr-beat b { font: italic 900 22px/1 system-ui; color: var(--pk3); }
+.tr-beat i { --k: 1; position: absolute; inset: 0; border-radius: 50%; border: 3px solid var(--pk2); transform: scale(calc(1 + var(--k) * .9)); opacity: calc(1 - var(--k) * .6); }
+.tr-beatrow .tr-dots { flex: 1; justify-content: flex-start; }
+.tr-stomp { width: 100%; padding: 12px; border: 0; background: var(--pk); color: var(--nt); font: italic 900 18px/1 system-ui; letter-spacing: .1em; text-transform: uppercase; transform: skewX(-10deg); cursor: pointer; }
+.tr-stomp:active { transform: skewX(-10deg) translateY(2px); }
+.tr-sway { position: relative; height: 36px; margin: 4px 0 10px; background: rgba(255, 79, 158, .08); border: 1px solid rgba(255, 79, 158, .3); }
+.tr-sway span { position: absolute; top: 0; bottom: 0; width: 31%; background: rgba(255, 79, 158, .1); }
+.tr-sway span.l { left: 0; } .tr-sway span.r { right: 0; }
+.tr-sway[data-next="l"] span.l, .tr-sway[data-next="r"] span.r { background: rgba(255, 79, 158, .32); box-shadow: inset 0 0 0 2px var(--pk); }
+.tr-sway b { --p: 0; position: absolute; top: 3px; bottom: 3px; left: calc(50% + var(--p) * 46%); width: 10px; margin-left: -5px; background: var(--pk3); border-radius: 5px; box-shadow: 0 0 10px var(--pk); }
+
+/* hit: a cold flinch at the edges */
+.mg-tr.hit::after { content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none; box-shadow: inset 0 0 120px 30px rgba(90, 140, 255, .5); animation: tr-out .6s ease-out forwards; }
+
+/* the finale's skip hint */
+.tr-finskip { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); margin: 0; z-index: 3; padding: 6px 14px; background: rgba(20, 7, 15, .7); font: italic 700 12px/1 system-ui; color: var(--pk3); pointer-events: none; }
+.tr-finskip[hidden] { display: none; }
+.mg-tr.fin .tr-acts, .mg-tr.fin .tr-help, .mg-tr.fin .tr-task, .mg-tr.fin .tr-pins { display: none; }
+
+/* the end card's scrapbook */
+.mg-tr .mg-end { overflow-y: auto; place-content: safe center; padding: 24px 12px; }
+.mg-tr .mg-end > button, .mg-tr .mg-end > .mg-grade, .mg-tr .mg-end > dl, .mg-tr .mg-end > p { justify-self: center; }
+.mg-tr.won .tr-say, .mg-tr.won .tr-head, .mg-tr.sunrise .tr-head, .mg-tr.curdled .tr-head, .mg-tr.quit .tr-head { display: none; }
+.mg-tr.ended .tr-top, .mg-tr.ended .tr-acts, .mg-tr.ended .tr-caps, .mg-tr.ended .tr-pins { display: none; }
+.mg-tr.won .mg-end { background: rgba(20, 7, 15, .78); }
+.tr-book { display: grid; justify-items: center; gap: 8px; max-width: min(900px, 96vw); }
+.tr-book > small { font: italic 900 13px/1 system-ui; letter-spacing: .14em; text-transform: uppercase; color: var(--pk); }
+.tr-book-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.tr-pol { --r: 0deg; margin: 0; width: 132px; padding: 6px 6px 8px; background: #fbf6ef; color: #2a1520; transform: rotate(var(--r)); box-shadow: 0 6px 18px rgba(0, 0, 0, .45); }
+.tr-pol canvas { display: block; width: 120px; height: 100px; background: #2a0f22; }
+.tr-pol figcaption { margin-top: 5px; font: 500 11px/1.25 'Bradley Hand', 'Segoe Print', 'Comic Sans MS', cursive; text-align: center; }
+.tr-pol.none { display: grid; place-items: center; height: 124px; background: rgba(251, 246, 239, .12); box-shadow: none; border: 1px dashed rgba(255, 209, 230, .3); }
+.tr-pol.none i { font: italic 900 28px/1 system-ui; color: rgba(255, 209, 230, .4); font-style: normal; }
+.mg-tr:not(.still) .tr-pol:not(.none) { animation: tr-drop .6s ease-out backwards; }
+.tr-pol:nth-child(2) { animation-delay: .06s; } .tr-pol:nth-child(3) { animation-delay: .12s; } .tr-pol:nth-child(4) { animation-delay: .18s; }
+.tr-pol:nth-child(5) { animation-delay: .24s; } .tr-pol:nth-child(6) { animation-delay: .3s; } .tr-pol:nth-child(n+7) { animation-delay: .36s; }
+
+@keyframes tr-bob { 50% { transform: translateY(-3px); } }
+@keyframes tr-pop { 40% { transform: skewX(-8deg) scale(1.25); } }
+@keyframes tr-drop { from { opacity: 0; transform: translateY(-24px) rotate(calc(var(--r) * -2)); } }
+
+@media (max-width: 720px) {
+  .tr-mom { order: 2; padding: 5px 8px; }
+  .tr-task.mini { top: 170px; }
+  .tr-head, .tr-head img { width: 38px; height: 38px; }
+  .tr-pol { width: 104px; } .tr-pol canvas { width: 92px; height: 77px; }
+}
+.mg-tr.perf .tr-head img { box-shadow: none; }
+.mg-tr.calm.hit::after, .mg-tr.still.hit::after { display: none; }
+.mg-tr.still .tr-pol, .mg-tr.still .tr-mom.pop { animation: none; }

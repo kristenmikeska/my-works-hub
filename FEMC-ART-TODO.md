@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 11, after art batch 151):** **HOAX: Jungwon going out** (section 55, new Nov 11: 2 optional CGs) · **HOAX: the Jihoon thread** (section 54, new Nov 11: 3 optional CGs) · **HOAX: the hearing's hands** (section 53, new Nov 11: 1 optional CG) · **the Yang family for strangers** (section 52: two face sheets, Seojun's photograph, 2 CGs) · **Yeobo's café game** (section 50, new Nov 11: 5 backgrounds, a title card, 13 food / cup / tray / ticket / tip-jar / stamp sheets, Sunoo's apron faces, 6 regulars' faces) · **Solar's HOAX faces remade in Cherry's style** (section 48: 4 sheets + 1 optional) · **7 CGs for today's new scenes** (section 51) · **Hwatu cards** (section 49: 12 month sheets, a back, a blanket, an optional title) · ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (sections 44-45: Haechan's apron faces; 3 booth pieces for his songs: his singing poses, Solar bopping behind the glass, his health-bar icon; section 47: the listen game's street, its six things, their stickers and Haechan) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · **the epilogue scrapbook** (section 46, Nov 10: 110 "Previously" photos, Runners 40 / strangers 35 / HOAX 35, plus 11 covers, paper, dividers, tape and sticker sheets) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
+**To make (updated Nov 11, after art batch 151):** **HOAX: The Trip minigame** (section 56, new Nov 11: 8 walking sprite sheets for Solar, the crew and Nana, the park's ground, props and playground, the blanket, a title card, the finale sky) · **HOAX: Jungwon going out** (section 55, new Nov 11: 2 optional CGs) · **HOAX: the Jihoon thread** (section 54, new Nov 11: 3 optional CGs) · **HOAX: the hearing's hands** (section 53, new Nov 11: 1 optional CG) · **the Yang family for strangers** (section 52: two face sheets, Seojun's photograph, 2 CGs) · **Yeobo's café game** (section 50, new Nov 11: 5 backgrounds, a title card, 13 food / cup / tray / ticket / tip-jar / stamp sheets, Sunoo's apron faces, 6 regulars' faces) · **Solar's HOAX faces remade in Cherry's style** (section 48: 4 sheets + 1 optional) · **7 CGs for today's new scenes** (section 51) · **Hwatu cards** (section 49: 12 month sheets, a back, a blanket, an optional title) · ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (sections 44-45: Haechan's apron faces; 3 booth pieces for his songs: his singing poses, Solar bopping behind the glass, his health-bar icon; section 47: the listen game's street, its six things, their stickers and Haechan) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · **the epilogue scrapbook** (section 46, Nov 10: 110 "Previously" photos, Runners 40 / strangers 35 / HOAX 35, plus 11 covers, paper, dividers, tape and sticker sheets) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
 
 ## ⭐ Outfits, HD poses and banners: in `FEMC-SKIN-ART.md` (Nov 7)
 
@@ -637,6 +637,122 @@ Attach: `CG - style (HOAX).png`, `BG - Hanlim Winter Street.png`, `CG - Solar (H
 Save as: `epi-h-jw-curb.png`
 ```
 A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic light, high detail). The setting is the SECOND attached image, a snowy Korean town street at night; on the right a small convenience store glowing white, with a row of three lit vending machines outside it, and a low curb in front of them. The people are the same as the attached reference images (same faces, eyes and hair). On the curb, under the vending-machine light, sit Choi Hyunsuk (short, a black puffer jacket, knees up) and, pressed shoulder to shoulder beside him, Yang Jungwon (a dark school coat, collar up, snow in his hair, holding a can of coffee in both hands, not drinking it), with Solar Kim (big winter coat, a small nose stud) on Jungwon's other side, looking at him sideways with a small soft smile. Face down on the wet curb next to Jungwon's shoe, a phone, a thin line of white light showing underneath it from an incoming call. Around them: Junkyu (a knit hat with a huge bobble) grinning, Asahi standing with his hood up and his hands in his pockets, Jaehyuk sitting on his school bag with a ring of flashcards, Cherry Kim (boots, blue eyes) perched on a bin swinging her legs. Breath clouds, falling snow, the warm white light of the machines. Tender, a little awkward, belonging. No text.
+```
+
+## 56. The Trip (HOAX minigame; Kat, Nov 11)
+
+For The Trip, the walk-around-the-park game on a HOAX party night (Solar finds the crew all over Hanlim Park and brings everyone back to the blanket before sunrise). Everything here is optional: the game already draws every character, prop and sky itself and swaps each picture in once it exists. **The eight walking sprite sheets matter most** (they make everyone look like themselves as they walk around); then the park pieces, the blanket, the title card and the finale's sky.
+
+**[ ] 56A. Solar's walking sprite sheet**  
+Solar as a little top-down character who walks around the park.  
+Attach: `CG - Solar (HOAX).png`  
+Save as: `trip-sprite-solar.png`
+```
+A sprite sheet for a cosy top-down 2D game: 16 frames in a 4 × 4 grid on a plain white background, clear even white space between the cells, nothing overlapping, every frame the same size, the character the same size in every frame and centred in its cell, the feet always on the same line near the bottom of the cell and the top of the head near the top. The character is the same young woman as the attached image (keep the face, eye colour, hair colour and cut, and the outfit exactly), drawn as a cute chibi (a big head, a small body, about two and a half heads tall) in a soft painted style with clean dark outlines and gentle shading, seen from a slightly high three-quarter top-down angle like a cosy farming RPG. Row 1: walking toward the viewer (facing down). Row 2: walking to the left (side view). Row 3: walking to the right (side view). Row 4: walking away from the viewer (facing up, the back of the head). In each row, left to right: standing, left foot forward, standing, right foot forward, with the arms swinging a little against the legs. Winter night outfit: long wavy dark-brown hair past her shoulders, green eyes, a black and pink striped long-sleeved top, a black choker and a thin silver chain, black trousers, black shoes. No shadow on the ground, no scenery, no text.
+```
+
+**[ ] 56B. Hyunsuk's walking sprite sheet**  
+Hyunsuk as a little top-down character who walks around the park.  
+Attach: `Hyunsuk (HOAX).png`  
+Save as: `trip-sprite-hyunsuk.png`
+```
+A sprite sheet for a cosy top-down 2D game: 16 frames in a 4 × 4 grid on a plain white background, clear even white space between the cells, nothing overlapping, every frame the same size, the character the same size in every frame and centred in its cell, the feet always on the same line near the bottom of the cell and the top of the head near the top. The character is the same young man as the attached image (keep the face, eye colour, hair colour and cut, and the outfit exactly), drawn as a cute chibi (a big head, a small body, about two and a half heads tall) in a soft painted style with clean dark outlines and gentle shading, seen from a slightly high three-quarter top-down angle like a cosy farming RPG. Row 1: walking toward the viewer (facing down). Row 2: walking to the left (side view). Row 3: walking to the right (side view). Row 4: walking away from the viewer (facing up, the back of the head). In each row, left to right: standing, left foot forward, standing, right foot forward, with the arms swinging a little against the legs. Winter night outfit: short spiky dark-red hair, a silver lip ring, a black denim jacket over a black T-shirt, layered silver chains, black jeans, black shoes. He is the shortest of the boys. No shadow on the ground, no scenery, no text.
+```
+
+**[ ] 56C. Asahi's walking sprite sheet**  
+Asahi as a little top-down character who walks around the park.  
+Attach: `Asahi (HOAX).png`  
+Save as: `trip-sprite-asahi.png`
+```
+A sprite sheet for a cosy top-down 2D game: 16 frames in a 4 × 4 grid on a plain white background, clear even white space between the cells, nothing overlapping, every frame the same size, the character the same size in every frame and centred in its cell, the feet always on the same line near the bottom of the cell and the top of the head near the top. The character is the same young man as the attached image (keep the face, eye colour, hair colour and cut, and the outfit exactly), drawn as a cute chibi (a big head, a small body, about two and a half heads tall) in a soft painted style with clean dark outlines and gentle shading, seen from a slightly high three-quarter top-down angle like a cosy farming RPG. Row 1: walking toward the viewer (facing down). Row 2: walking to the left (side view). Row 3: walking to the right (side view). Row 4: walking away from the viewer (facing up, the back of the head). In each row, left to right: standing, left foot forward, standing, right foot forward, with the arms swinging a little against the legs. Winter night outfit: shaggy black hair falling over his eyes, small black ear gauges, a black choker, a black denim jacket with a safety pin over a black T-shirt, a silver chain, black jeans, black shoes. No shadow on the ground, no scenery, no text.
+```
+
+**[ ] 56D. Jaehyuk's walking sprite sheet**  
+Jaehyuk as a little top-down character who walks around the park.  
+Attach: `CG - Jaehyuk (HOAX).png`  
+Save as: `trip-sprite-jaehyuk.png`
+```
+A sprite sheet for a cosy top-down 2D game: 16 frames in a 4 × 4 grid on a plain white background, clear even white space between the cells, nothing overlapping, every frame the same size, the character the same size in every frame and centred in its cell, the feet always on the same line near the bottom of the cell and the top of the head near the top. The character is the same young man as the attached image (keep the face, eye colour, hair colour and cut, and the outfit exactly), drawn as a cute chibi (a big head, a small body, about two and a half heads tall) in a soft painted style with clean dark outlines and gentle shading, seen from a slightly high three-quarter top-down angle like a cosy farming RPG. Row 1: walking toward the viewer (facing down). Row 2: walking to the left (side view). Row 3: walking to the right (side view). Row 4: walking away from the viewer (facing up, the back of the head). In each row, left to right: standing, left foot forward, standing, right foot forward, with the arms swinging a little against the legs. Winter night outfit: straight black hair with neat bangs, thin round glasses, a black hoodie with white drawstrings, a thin silver chain, black trousers, black shoes. No shadow on the ground, no scenery, no text.
+```
+
+**[ ] 56E. Junkyu's walking sprite sheet**  
+Junkyu as a little top-down character who walks around the park.  
+Attach: `CG - Junkyu (HOAX).png`  
+Save as: `trip-sprite-junkyu.png`
+```
+A sprite sheet for a cosy top-down 2D game: 16 frames in a 4 × 4 grid on a plain white background, clear even white space between the cells, nothing overlapping, every frame the same size, the character the same size in every frame and centred in its cell, the feet always on the same line near the bottom of the cell and the top of the head near the top. The character is the same young man as the attached image (keep the face, eye colour, hair colour and cut, and the outfit exactly), drawn as a cute chibi (a big head, a small body, about two and a half heads tall) in a soft painted style with clean dark outlines and gentle shading, seen from a slightly high three-quarter top-down angle like a cosy farming RPG. Row 1: walking toward the viewer (facing down). Row 2: walking to the left (side view). Row 3: walking to the right (side view). Row 4: walking away from the viewer (facing up, the back of the head). In each row, left to right: standing, left foot forward, standing, right foot forward, with the arms swinging a little against the legs. Winter night outfit: soft black hair with a rounded fringe, a black T-shirt over a black and white striped long-sleeved top (the stripes on his arms), a silver chain with a small tag, black trousers, black shoes. No shadow on the ground, no scenery, no text.
+```
+
+**[ ] 56F. Jihoon's walking sprite sheet**  
+Jihoon as a little top-down character who walks around the park.  
+Attach: `CG - Jihoon (HOAX).png`  
+Save as: `trip-sprite-jihoon.png`
+```
+A sprite sheet for a cosy top-down 2D game: 16 frames in a 4 × 4 grid on a plain white background, clear even white space between the cells, nothing overlapping, every frame the same size, the character the same size in every frame and centred in its cell, the feet always on the same line near the bottom of the cell and the top of the head near the top. The character is the same young man as the attached image (keep the face, eye colour, hair colour and cut, and the outfit exactly), drawn as a cute chibi (a big head, a small body, about two and a half heads tall) in a soft painted style with clean dark outlines and gentle shading, seen from a slightly high three-quarter top-down angle like a cosy farming RPG. Row 1: walking toward the viewer (facing down). Row 2: walking to the left (side view). Row 3: walking to the right (side view). Row 4: walking away from the viewer (facing up, the back of the head). In each row, left to right: standing, left foot forward, standing, right foot forward, with the arms swinging a little against the legs. Winter night outfit: black hair with a long side-swept fringe, small silver earrings, a black choker and layered silver chains, a ripped black denim jacket over a grey top, black jeans, black shoes. He is the tallest of the group. No shadow on the ground, no scenery, no text.
+```
+
+**[ ] 56G. Cherry's walking sprite sheet**  
+Cherry as a little top-down character who walks around the park.  
+Attach: `CG - Cherry (HOAX).png`  
+Save as: `trip-sprite-cherry.png`
+```
+A sprite sheet for a cosy top-down 2D game: 16 frames in a 4 × 4 grid on a plain white background, clear even white space between the cells, nothing overlapping, every frame the same size, the character the same size in every frame and centred in its cell, the feet always on the same line near the bottom of the cell and the top of the head near the top. The character is the same young woman as the attached image (keep the face, eye colour, hair colour and cut, and the outfit exactly), drawn as a cute chibi (a big head, a small body, about two and a half heads tall) in a soft painted style with clean dark outlines and gentle shading, seen from a slightly high three-quarter top-down angle like a cosy farming RPG. Row 1: walking toward the viewer (facing down). Row 2: walking to the left (side view). Row 3: walking to the right (side view). Row 4: walking away from the viewer (facing up, the back of the head). In each row, left to right: standing, left foot forward, standing, right foot forward, with the arms swinging a little against the legs. Winter night outfit: long wavy black hair, blue eyes, a black choker, a shiny black leather jacket over a cream top, black jeans, black boots. No shadow on the ground, no scenery, no text.
+```
+
+**[ ] 56H. Nana's walking sprite sheet**  
+Nana, Solar's huge white Samoyed, trotting after her round the park.  
+Attach: `CG - Nana (HOAX).png`  
+Save as: `trip-sprite-nana.png`
+```
+A sprite sheet for a cosy top-down 2D game: 16 frames in a 4 × 4 grid on a plain white background, clear even white space between the cells, nothing overlapping, every frame the same size, the dog the same size in every frame and centred in its cell, the paws always on the same line near the bottom of the cell. The dog is the same huge, very fluffy white Samoyed as the attached image (keep his face, black eyes and nose, pointed ears and big smile), drawn cute and round in a soft painted style with clean outlines and gentle grey shading in the white fur, seen from a slightly high three-quarter top-down angle like a cosy farming RPG; he is big, almost as long as a person is tall. Row 1: trotting toward the viewer (facing down, tongue out). Row 2: trotting to the left (side view, tail curled over his back). Row 3: trotting to the right (side view, tail curled over his back). Row 4: trotting away from the viewer (facing up, the fluffy curled tail on top). In each row, left to right: standing, front left and back right paws forward, standing, the other two paws forward. No shadow on the ground, no scenery, no text.
+```
+
+**[ ] 56I. The park from above (the ground)**  
+The whole map the game is played on, seen straight down: just the ground, no trees or props.  
+Attach: `BG - Hanlim Park.png`  
+Save as: `trip-ground.png`
+```
+A wide top-down game map seen straight down from above, in a soft painted style like a cosy 2D farming RPG, 16:11, the park in the attached image on a winter night under fresh snow but drawn evenly lit (no dark corners, no lamps or light pools; the game adds the lighting). Only the ground, no trees, benches, lamps or people: smooth snow with soft drifts and a few tufts of grass poking through, a wide oval footpath of trodden, slightly bluish snow looping round the middle of the map with footprints in it, six narrower paths running from the centre out to the edges, a large oval pond in the upper middle frozen at the rim with a ring of snowy stones round it (the water itself dark and plain, the game draws on it), a low rounded snowy hill in the lower right with two sled tracks down it, a playground's rubber mat (soft dusty pink under the snow) with a little sandbox in the left middle, dark snowy hedges and a low wooden fence all round the border. No text.
+```
+
+**[ ] 56J. Park pieces: trees, a lamp, a bench**  
+The props the game stands on the map (each cut out on its own).  
+Attach: `BG - Hanlim Park.png`  
+Save as: `trip-props.png`
+```
+A sheet of 4 game props in a 2 × 2 grid on a plain white background, clear white space between them, nothing overlapping, each centred in its cell, in a soft painted style with clean outlines like a cosy top-down 2D farming RPG, seen from a slightly high three-quarter top-down angle, matching the park in the attached image on a winter night. In reading order: (1) a round snowy pine tree, its layered branches tipped with snow, the trunk showing at the bottom; (2) a big weeping willow with long hanging strands brushing the ground, snow on its crown; (3) an old black iron park streetlamp with a glowing round lantern on top and a little snow on it, tall and thin; (4) a wooden park bench with black iron legs and a line of snow along the seat and the backrest. No shadows on the ground, no text.
+```
+
+**[ ] 56K. The playground**  
+Junkyu's corner of the park, where he plays tag.  
+Attach: `BG - Hanlim Park.png`  
+Save as: `trip-playground.png`
+```
+A small children's playground seen from a slightly high three-quarter top-down angle, in a soft painted style with clean outlines like a cosy top-down 2D farming RPG, on a plain white background, the whole playground in one wide 3:2 picture: a swing set with two swings on the left, a short slide with a little ladder platform in the middle, a round spinning roundabout in bright pink, teal and yellow segments at the front, all with fresh snow on top, on a dusty-pink rubber mat dusted with snow, in the style of the park in the attached image at night. No people, no text.
+```
+
+**[ ] 56L. The blanket**  
+The picnic blanket everyone has to get back to, seen from above.  
+Attach: nothing  
+Save as: `trip-blanket.png`
+```
+A picnic blanket seen straight down from above, in a soft painted style with clean outlines like a cosy top-down 2D game, on a plain white background: a big soft plaid wool blanket, pink and deep magenta checks with thin cream lines, a little rumpled, a fringed edge on the two short sides, a light dusting of snow on one corner, a small black portable speaker with a softly glowing pink light lying near the top right corner. A 3:2 rectangle filling most of the picture. No people, no text.
+```
+
+**[ ] 56M. Title card**  
+The picture behind THE TRIP at the start.  
+Attach: `CG - style (HOAX).png`, `BG - Hanlim Park.png`, `CG - Solar (HOAX).png`, `CG - Jihoon (HOAX).png`, `Hyunsuk (HOAX).png`, `Asahi (HOAX).png`, `CG - Jaehyuk (HOAX).png`, `CG - Junkyu (HOAX).png`, `CG - Cherry (HOAX).png`, `CG - Nana (HOAX).png`  
+Save as: `trip-title.png`
+```
+A 16:9 realistic painted key-art still in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic light, high detail). The park in the SECOND attached image at night in winter, fresh snow, but the night has gone dreamlike and surreal: the trees seem to be breathing, the streetlamps glow in soft shifting pink, teal and violet, the frozen pond reflects the sky like a kaleidoscope, fireflies of colour hang in the air and the falling snow catches the light. On a pink plaid blanket in the snow, seen from above at a gentle angle, seven friends lie on their backs in a circle with their heads together, laughing and looking up: the people in the attached reference images (same faces, eyes and hair): Solar Kim, Park Jihoon, Choi Hyunsuk, Asahi, Jaehyuk, Junkyu and Cherry Kim, in winter coats and scarves, and a huge fluffy white Samoyed (the last attached image) lying across several of their legs. Warm, strange, tender. Keep the middle of the upper third calm and dark for the title. No text.
+```
+
+**[ ] 56N. The finale sky**  
+The sky the game draws its constellations on when everyone's back on the blanket.  
+Attach: `CG - style (HOAX).png`  
+Save as: `trip-sky.png`
+```
+A 16:9 painted night sky in the exact style of the attached image, nothing but sky: deep blue-black at the top fading to dark violet near the bottom, thousands of small stars, a soft wide aurora drifting across the middle in ribbons of pink, teal and violet, a faint glow of dawn pink just beginning along the very bottom edge. No ground, no trees, no moon, no constellations, no people, no text. Keep the stars small and even so lines can be drawn between them.
 ```
 
 ## 44. Dumpling cooking minigame (Kat, Nov 10)
