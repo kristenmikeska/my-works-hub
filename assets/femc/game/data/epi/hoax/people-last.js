@@ -269,6 +269,16 @@
       { s: 'halmeoni', f: 'serious', t: "He watches you." },
       { s: 'solar', f: 'sad', t: "He does that lately." },
       { s: 'halmeoni', f: 'neutral', t: "He knows where you are. That's what they're for. Let him keep knowing." },
+      // stakes pass (Nov 11 2026): the falls outcome's cost lands here (story-end.js epi-h-hearing; stakes.js)
+      { ifFlag: 'epi-h-out-falls', then: [
+        { n: "Behind her, on the counter inside, Sunoo's phone was face down next to the till. It buzzed. It buzzed again. He didn't turn it over, and she knew what was on it, because she'd read them too, at two in the morning: the reviews. *★☆☆☆☆. the council's café.* *★☆☆☆☆. ask where the money sat.* Eleven of them since the hearing, from accounts with no pictures, about a place none of them had ever been inside." },
+        { s: 'sunoo', f: 'sad', t: "...It's because I put it in the ballot box. If I'd just— if I'd put it in the safe like a normal person—" },
+        { s: 'halmeoni', f: 'neutral', t: "Kim Sunoo." },
+        { n: "He stopped. She'd never heard Halmeoni use his whole name. From the way his shoulders went, neither had he." },
+        { s: 'halmeoni', f: 'serious', t: "Forty-one years I've had this shop. People have said worse things about it with their mouths, to my face, in my own doorway. I put them on a plate and I fed them a croissant and they came back on Tuesday." },
+        { s: 'halmeoni', f: 'neutral', t: "Phones. Pfft. Phones don't eat." },
+        { n: "Sunoo laughed, wet and surprised, and wiped his face on his apron, and Halmeoni handed Solar a second croissant in the same movement, as if one were payment for the other, and Solar took it and held it and didn't trust her voice to say anything at all." }
+      ] },
       { choose: [
         { t: "(Bow to her. Properly.)", stat: { kindness: 1 }, then: [
           { n: "She bowed, all the way, the way she had at New Year, in the alley in her school coat, and Halmeoni made the small dismissive noise she made at all thanks, and put a croissant in her hand that she hadn't asked for, and one in Sunoo's, and went back inside, and they stood in the alley eating them in the cold while Nana finished the bone, and Sunoo said *she likes you* with his mouth full four times." }

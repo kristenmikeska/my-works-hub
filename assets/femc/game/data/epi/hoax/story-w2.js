@@ -61,9 +61,20 @@
    - Depth pass (2026-10-31), the party: the swim-team boy's goggles photo; her body remembering rooms like this (nothing of
      sophomore year filled in); Cherry's "You did good" on the curb (jungwon route); Hyunsuk's knuckles on Jihoon's shoulder and
      the green light (jihoon route; branches on epi-h-party-jh-flushed); Sunghoon's scarf for Cherry, wordless (council route).
+
+   Stakes pass (Nov 11 2026; stakes.js): epi-h-party splices R.partyCoda by route (jungwon on the curb after "hostage
+     negotiator", jihoon in the car after "It's a holiday.", council on the curb after "I'm alright, Won."); kitchen
+     choices: epi-h-party-flushed / -jh-flushed are now on the heat list (someone sees her take the bag; a line shows it),
+     council "(Get between them.)" sets epi-h-trust-between. New flags on old choices: epi-h-sus-swept (new-year),
+     epi-h-heat-reply (motion), epi-h-trust-ledger (study-council), epi-h-heat-upvote (doomscroll), epi-h-sus-boring
+     (mom-breakfast), each with a feedback line. epi-h-motion: the signature count reads heat (≥ 4: 206 and a graphic), and
+     if epi-h-party-hayoon, hanlim_accountability DMs her (temple → epi-h-heat-hayoon / "ask me thursday" →
+     epi-h-hayoon-thursday / block → epi-h-heat-hayoon + epi-h-hayoon-blocked).
 */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).hoax ||= {});
+  // Stakes pass (Nov 11 2026): stakes.js loads first; without it the { ifCount } lists are empty (the counts read 0).
+  const IF = R.stakesIf || ((sc, range, then, els) => ({ ifCount: { of: [], ...range }, then, else: els || [] }));
 
   (R.events ||= []).push(
 
@@ -119,7 +130,9 @@
             { s: 'solar', f: 'happy', t: "Now it's nobody's." },
             { n: "He was leaning in the bathroom doorway with his mouth open. Then he laughed, one ugly bark of it, and pressed the heel of his hand against his eye like it hurt." },
             { s: 'jihoon', f: 'neutral', t: "You're a menace. You know that? A grave sin. I'm telling everyone." },
-            { n: "He didn't tell anyone. He went back downstairs and talked to the guy by the fridge with his back to her for the rest of the night, and she knew what that meant too." }
+            { n: "He didn't tell anyone. He went back downstairs and talked to the guy by the fridge with his back to her for the rest of the night, and she knew what that meant too." },
+            // stakes pass: the right thing, seen from the wrong side of a kitchen (epi-h-party-flushed is on the heat list)
+            { n: "Somebody else did, though. Halfway down the stairs she passed a second-year coming up with his phone out, and he looked at her hand, the empty one, and then at her face, and then at his phone, and kept going. By morning there was a post: *VP took something off park jihoon in dohyun's kitchen. i SAW it.* Nobody who'd seen the bathroom had seen the bathroom." }
           ] },
           { t: "(Find Cherry's other hand. Leave.)", flag: 'epi-h-party-left', stat: { kindness: 1 }, then: [
             { s: 'solar', f: 'serious', t: "Cher. Let's go." },
@@ -144,6 +157,7 @@
         ], contact: 'Won' },
         { n: "She read it twice. *I believe you.* No question mark, no *are you sure*, no *what do you mean was there*. Just the period, the way he ended everything, like a door being shut gently so it wouldn't wake anyone. Her eyes stung in the cold. She blamed the cigarette." },
         { s: 'cherry', f: 'neutral', t: "He texts like a hostage negotiator. I love that for you. Genuinely. Disgusting." },
+        ...((R.partyCoda || {}).jungwon || []), // stakes pass (Nov 11 2026): Jihoon on the curb, story-party.js
         { bond: { cherry: 1 } },
         { n: "She put the phone back in her coat pocket. Her fingers brushed the can, cold and unopened, the one she carried everywhere and never opened. She didn't think about the two seconds of music. She thought about it the whole way home." }
       ], else: [
@@ -169,7 +183,9 @@
               { s: 'jihoon', f: 'neutral', t: "Flush it before I change my mind. Quickly. I'm very changeable. It's part of my charm." },
               { n: "She went up the stairs two at a time and flushed it in the bathroom at the end of the hall, and when she turned around he was in the doorway with his arms crossed, watching the water like it had personally insulted him." },
               { s: 'jihoon', f: 'sad', t: "That was a grave sin. Against me, specifically. I want that on record." },
-              { s: 'solar', f: 'sad', t: "Noted." }
+              { s: 'solar', f: 'sad', t: "Noted." },
+              // stakes pass: epi-h-party-jh-flushed is on the heat list
+              { n: "On the stairs a girl from her chemistry class stepped aside to let her past and looked at her closed fist on the way up, and at her open hand on the way down, and Solar knew, with the tired certainty of somebody who had been seventeen at a lot of parties, exactly what that had looked like from the stairs." }
             ] },
             { t: "Take me home, Jihoon.", flag: 'epi-h-party-jh-walked', stat: { kindness: 1 }, then: [
               { n: "He turned around and left the guy from sophomore year mid-sentence, a hand still raised in the middle of a story, and walked her out through the shoe landslide with his palm flat on the back of her coat, steering, the way he'd steered her through every crowd since they were four and she was the smallest person at every party." },
@@ -201,6 +217,7 @@
           { s: 'jihoon', f: 'neutral', t: "Light's green." },
           { s: 'solar', f: 'neutral', t: "It's been green." },
           { s: 'jihoon', f: 'neutral', t: "I know. I was giving it a moment. It's a holiday." },
+          ...((R.partyCoda || {}).jihoon || []), // stakes pass (Nov 11 2026): Jungwon calls the car, story-party.js
           { bond: { jihoon: 1 } },
           { n: "She looked out the window so he wouldn't have to see her face, and he turned the radio up so she wouldn't have to hear his, and they drove the rest of the way like that, both of them pretending, the snow coming down on the hood like something being decided very slowly." }
         ], else: [
@@ -229,11 +246,12 @@
           { s: 'jungwon', f: 'serious', t: "Heeseung. What is that noise. Is someone hitting someone." },
           { s: 'heeseung', f: 'flustered', t: "Define hitting." },
           { choose: [
-            { t: "(Get between them.)", stat: { courage: 1 }, then: [
+            { t: "(Get between them.)", stat: { courage: 1 }, flag: 'epi-h-trust-between', then: [
               { n: "She was the smallest person in the kitchen by a head, and she planted herself in the exact middle of it anyway, one hand flat on Jay's chest and the other on Jihoon's." },
               { s: 'solar', f: 'serious', t: "Park Jihoon." },
               { n: "The full name did what it always did. He stopped. He looked down at her hand on his jacket, right over the pocket, and something went across his face too fast to read, and then he put both his hands up like a man in a film." },
-              { s: 'jihoon', f: 'neutral', t: "Fine. Fine. Go be hydrated, temple girl." }
+              { s: 'jihoon', f: 'neutral', t: "Fine. Fine. Go be hydrated, temple girl." },
+              { n: "Behind her, she felt it more than saw it: the council closing up at her back, Jay's hand coming off Jihoon's chest, Jake's arms coming down, Sunghoon letting go of the elbow, all of them stepping in a half step toward her like a line re-forming. Nobody said anything. Heeseung wrote something on his agenda." }
             ] },
             { t: "(Take the phone out of Heeseung's pocket.)", stat: { kindness: 1 }, then: [
               { n: "She plucked the phone out of Heeseung's pocket like a pen and walked straight out of the kitchen with it held to her ear." },
@@ -257,6 +275,7 @@
           { s: 'sunghoon', f: 'neutral', t: "Sunghoon was magnificent in there, for the record. Nobody said it, so Sunghoon is saying it." },
           { s: 'jungwon', f: 'neutral', t: "Is everyone alright. Sol. Are you alright." },
           { s: 'solar', f: 'sad', t: "I'm alright, Won." },
+          ...((R.partyCoda || {}).council || []), // stakes pass (Nov 11 2026): Jihoon and the phone in Heeseung's pocket, story-party.js
           { bond: { council: 1 } },
           { n: "Through the front window she could see the kitchen, Jihoon back up on the counter, laughing at something, the guy by the fridge, the bag still in the jacket. Nobody had won anything. They'd just been loud about it." }
         ] }
@@ -466,12 +485,13 @@
       { s: 'mom', t: "The temple. Was it nice, at least?" },
       { n: "It was softer than the last time. That was the worst part. The last time had been *A retreat? In exam week?* at full volume in a doorway, and this was just her mom, at the kitchen table, with a bowl in her hands, wanting it to have been nice." },
       { choose: [
-        { t: "It was so nice. We woke up at four and swept things.", stat: { charm: 1 }, then: [
+        { t: "It was so nice. We woke up at four and swept things.", stat: { charm: 1 }, flag: 'epi-h-sus-swept', then: [
           { s: 'solar', f: 'happy', t: "We woke up at four every morning and swept things. Leaves. Steps. I swept a step for an hour once. There was a monk who never said anything, he just pointed at stuff. It was very peaceful. Bad food, though." },
           { glitch: { strain: 1 } },
           { s: 'mom', t: "You swept? You? You don't sweep here." },
           { s: 'solar', f: 'happy', t: "It was a spiritual broom, Mom." },
-          { n: "Her mom laughed despite herself, and it was easy, and it was a lie, and somewhere under her ribs something small and patient pressed its thumb against the place where the lie had gone in." }
+          { n: "Her mom laughed despite herself, and it was easy, and it was a lie, and somewhere under her ribs something small and patient pressed its thumb against the place where the lie had gone in." },
+          { n: "Later, clearing the bowls, she saw her mom stop at the counter with her phone and type something with one thumb, and look at it, and not send it, and put the phone face down. Over the screen, for a second, upside down: *temples gangwon-do winter stay*." }
         ] },
         { t: "It was... I missed you guys.", stat: { kindness: 1 }, then: [
           { s: 'solar', f: 'sad', t: "It was okay. I missed you guys. I missed this. I missed the soup." },
@@ -676,10 +696,11 @@
       ], contact: "rip solar kim (she's fine probably)", group: true },
       { n: "*Signatures: 64.* Nana rolled over onto his back and presented his stomach to the ceiling like none of this was any of his business, which it wasn't." },
       { choose: [
-        { t: "(Reply to Jihoon's comment. Publicly.)", stat: { courage: 1 }, then: [
+        { t: "(Reply to Jihoon's comment. Publicly.)", stat: { courage: 1 }, flag: 'epi-h-heat-reply', then: [
           { s: 'forum', t: "solarkim commented: @jihoney go touch grass" },
           { s: 'forum', t: "jihoney commented: @solarkim It's Winter, Sol. The Grass Is Dead. Like Your Campaign." },
-          { n: "Forty people liked his reply in under a minute. Heeseung sent her a single period in a private message, which was somehow worse than a paragraph." }
+          { n: "Forty people liked his reply in under a minute. Heeseung sent her a single period in a private message, which was somehow worse than a paragraph." },
+          { s: 'forum', t: "re: MOTION TO IMPEACH · the VP is IN THE THREAD. she's reading this. hi solar. where's the tin" }
         ] },
         { t: "(Put the phone face down. Chapter five.)", stat: { knowledge: 1 }, then: [
           { n: "She turned the phone over on the duvet and stared at problem three until the numbers stopped swimming, and she did it, she actually did it, and the phone buzzed under her hand the whole time like something trapped." }
@@ -693,7 +714,45 @@
         ], contact: 'RETREAT FACTS (do not leave)', group: true }
       ] },
       { flag: 'epi-h-motion' },
-      { n: "By dinner it had a hundred and forty-two signatures. She hadn't known a hundred and forty-two people at Hanlim knew her name. It turned out the fastest way to find out was to disappear for nine days and come back in somebody else's uniform." }
+      // stakes pass (Nov 11 2026): the signatures read the heat so far (stakes.js)
+      IF('heat', { min: 4 }, [
+        { n: "By dinner it had two hundred and six signatures. By nine it had a second page. Somebody had made a graphic, the counter going up like a stock price, with her face in the corner, a screenshot from Eunchae's gym-door clip, the armband circled in red." },
+        { n: "She hadn't known two hundred people at Hanlim knew her name. It turned out the fastest way to find out was to disappear for nine days and come back in somebody else's uniform, and then give them something to talk about every single day since." }
+      ], [
+        { n: "By dinner it had a hundred and forty-two signatures. She hadn't known a hundred and forty-two people at Hanlim knew her name. It turned out the fastest way to find out was to disappear for nine days and come back in somebody else's uniform." }
+      ]),
+      // stakes pass: the girl on the landing at Dohyun's (story-party.js, the tip's third answer) asks properly
+      { ifFlag: 'epi-h-party-hayoon', then: [
+        { n: "At ten-forty, one more notification. Not the thread. A private message, from the account that had posted it." },
+        { phone: [
+          { from: 'hayoon', t: "hanlim_accountability: You said to ask you. So I'm asking. Properly." },
+          { from: 'hayoon', t: "hanlim_accountability: Where were you?" }
+        ], contact: 'hanlim_accountability' },
+        { n: "She knew who it was before she'd finished reading it. A lanyard of pens. A blazer buttoned over a party dress. *Not here. Not like this.* She'd been asked, properly, and she lay there with Nana on her feet and the phone over her face and realized she didn't have a proper answer. She'd never had one. She'd only ever had a temple." },
+        { choose: [
+          { t: "(\"A temple. Gangwon-do. They took our phones.\")", flag: 'epi-h-heat-hayoon', then: [
+            { glitch: { strain: 1 } },
+            { phone: [
+              { from: 'solar', t: "a temple. gangwon-do. they took our phones at the gate" },
+              { from: 'hayoon', t: "hanlim_accountability: Which temple?" },
+              { from: 'hayoon', t: "hanlim_accountability: I'll check. Thank you." }
+            ], contact: 'hanlim_accountability' },
+            { n: "*I'll check.* Not a threat. A plan. She'd met people who threatened, and she'd met people who planned, and she knew which ones you were supposed to be scared of." }
+          ] },
+          { t: "(\"somewhere I can't explain. it wasn't a crime. ask me thursday.\")", flag: 'epi-h-hayoon-thursday', stat: { courage: 1 }, then: [
+            { phone: [
+              { from: 'solar', t: "somewhere i cant explain. it wasnt a crime. nobody got hurt. ask me in the hearing and ill say the same thing" },
+              { from: 'hayoon', t: "hanlim_accountability: That isn't an answer." },
+              { from: 'hayoon', t: "hanlim_accountability: It's the first true-sounding thing anyone on the council has said to me, though." }
+            ], contact: 'hanlim_accountability' },
+            { n: "She didn't know whether that was good. She lay there with the phone on her chest and decided that, with this girl, it was at least *something*." }
+          ] },
+          { t: "(Block her.)", flag: ['epi-h-heat-hayoon', 'epi-h-hayoon-blocked'], then: [
+            { n: "She blocked the account. It took two taps. It felt like closing a door on somebody's foot." },
+            { n: "Ten minutes later the thread had a new line under the signature counter, in the same neat flat voice: *Update: the Vice President has blocked the filer. Noted for the hearing.* It had three hundred likes by midnight." }
+          ] }
+        ] }
+      ] }
     ] },
 
     // 1/2 late — fight 1: alone --------------------------------------------------------------------------------------------
@@ -842,9 +901,10 @@
       { n: "Between agenda items Jungwon had her calculus open on the corner of the ledger and was walking her through chain rule in a murmur, one step at a time, without looking up from Heeseung's columns, which should have been impossible and wasn't, for him." },
       { s: 'heeseung', f: 'neutral', t: "Solar. Vice President. Your thoughts." },
       { choose: [
-        { t: "We show them every won. Ledger, tin, count. Boring wins.", stat: { knowledge: 1 }, then: [
+        { t: "We show them every won. Ledger, tin, count. Boring wins.", stat: { knowledge: 1 }, flag: 'epi-h-trust-ledger', then: [
           { s: 'heeseung', f: 'happy', t: "Boring wins. I'm writing that on the front." },
-          { n: "He actually did. In the inside cover of the ledger, in block capitals, BORING WINS, and underlined it twice, and Jungwon nodded like a judge." }
+          { n: "He actually did. In the inside cover of the ledger, in block capitals, BORING WINS, and underlined it twice, and Jungwon nodded like a judge." },
+          { n: "And then, round the table, one after another without anybody saying so, they all wrote it too. Jake on his hand. Niki on his phone case in Sharpie. Sunoo on a croissant bag, very small, and he put it in his pocket. It was the first plan all break that everybody at the table had agreed on before Heeseung had finished explaining it." }
         ] },
         { t: "We make them like us first. Then the tin.", stat: { charm: 1 }, then: [
           { s: 'sunghoon', f: 'flustered', t: "Finally. Someone who understands Sunghoon's methods." },
@@ -898,8 +958,9 @@
       { s: 'forum', t: "theory: they went to a different dimension lol (1 upvote)" },
       { n: "She looked at the last one for a long time. The *lol* on the end of it like a hand waving from very far away." },
       { choose: [
-        { t: "(Upvote the dimension one.)", stat: { charm: 1 }, then: [
-          { n: "Two upvotes. It sat at the bottom of the thread with its two upvotes, one of them hers, the only true thing on the whole page, and she turned the phone over on her chest and lay there in the dark feeling like she'd signed something." }
+        { t: "(Upvote the dimension one.)", stat: { charm: 1 }, flag: 'epi-h-heat-upvote', then: [
+          { n: "Two upvotes. It sat at the bottom of the thread with its two upvotes, one of them hers, the only true thing on the whole page, and she turned the phone over on her chest and lay there in the dark feeling like she'd signed something." },
+          { s: 'forum', t: "re: theory: they went to a different dimension lol · reply from minhoneyyy: why does this have 2 upvotes. who upvoted this at 1am. council?? blink twice" }
         ] },
         { t: "(Close the app. Sleep.)", stat: { knowledge: 1 }, then: [
           { n: "She closed it. She didn't sleep. But she lay in the dark not reading the forum, which was a different thing from sleeping and, at one in the morning, about as good." }
@@ -916,11 +977,12 @@
       { s: 'mom', t: "There are a hundred temples in Gangwon-do, Solar." },
       { s: 'dad', t: "Let her eat." },
       { choose: [
-        { t: "(Describe it. Make it so boring she stops asking.)", stat: { charm: 1 }, then: [
+        { t: "(Describe it. Make it so boring she stops asking.)", stat: { charm: 1 }, flag: 'epi-h-sus-boring', then: [
           { s: 'solar', f: 'happy', t: "It was on a mountain. There were a lot of steps. There was a bell. They rang it at four. Then we sat. Then we sat more. Then lunch, which was the soup. Then, and this is my favorite part, we sat." },
           { glitch: { strain: 1 } },
           { s: 'mom', t: "...Eat your rice." },
-          { n: "It worked. It worked so well that her mother's face went soft around the edges, and that sat in her stomach next to the galbi for the rest of the morning." }
+          { n: "It worked. It worked so well that her mother's face went soft around the edges, and that sat in her stomach next to the galbi for the rest of the morning." },
+          { n: "Only, at the sink, her mom said, to the window, not to anybody, *a bell at four*, quietly, the way she repeated a client's figures back to herself when she was going to check them later." }
         ] },
         { t: "(Ask Dad about his tie.)", then: [
           { s: 'solar', f: 'flustered', t: "Dad, is that a new tie? It's a holiday. Why are you wearing a tie?" },

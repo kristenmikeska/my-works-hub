@@ -510,8 +510,9 @@
         { s: 'heeseung', f: 'happy', t: "And we finish the gym Wednesday. I have a schedule. Niki's on balloons. God help us." }
       ] },
       { choose: [
-        { t: "Thank you, Heeseung. Really.", stat: { kindness: 1 }, then: [
-          { s: 'heeseung', f: 'flustered', t: "Don't. I'll cry on the receipts. They're laminated, but still." }
+        { t: "Thank you, Heeseung. Really.", stat: { kindness: 1 }, flag: 'epi-h-trust-heeseung', then: [ // stakes pass: trust
+          { s: 'heeseung', f: 'flustered', t: "Don't. I'll cry on the receipts. They're laminated, but still." },
+          { n: "He didn't cry. But he turned the ledger round on the table so it faced her, the whole of it, every column, and pushed it across, which in three years she'd never once seen him do for anybody, and went back to his noodles like nothing had happened." }
         ] },
         { t: "You'd have made a good VP again.", stat: { charm: 1 }, then: [
           { s: 'heeseung', f: 'neutral', t: "I know. Eat your noodles." }
@@ -574,11 +575,13 @@
         { s: 'jake', f: 'neutral', t: "Okay. Then it's a team thing. We'll figure it out as a team. Layla's on the team." }
       ] },
       { choose: [
-        { t: "Post the Mona Lisa.", stat: { charm: 1 }, then: [
-          { s: 'jake', f: 'happy', t: "Posted. It already has a comment. It's Niki. It says LMAOOO. We're winning." }
+        { t: "Post the Mona Lisa.", stat: { charm: 1 }, flag: 'epi-h-heat-mona', then: [ // stakes pass (Nov 11 2026): heat
+          { s: 'jake', f: 'happy', t: "Posted. It already has a comment. It's Niki. It says LMAOOO. We're winning." },
+          { s: 'forum', t: "re: jakeyy posted a meme · the council is posting MEMES during an impeachment. they think this is a joke. signed the motion twice" }
         ] },
-        { t: "Run it past Heeseung first.", stat: { knowledge: 1 }, then: [
-          { s: 'jake', f: 'sad', t: "Fine. He's going to make me fill out a form. There's going to be a form for memes now." }
+        { t: "Run it past Heeseung first.", stat: { knowledge: 1 }, flag: 'epi-h-trust-jake', then: [ // stakes pass: trust
+          { s: 'jake', f: 'sad', t: "Fine. He's going to make me fill out a form. There's going to be a form for memes now." },
+          { n: "He sent it to Heeseung anyway, right there on the curb. Heeseung replied in nine seconds: *No. But thank you for asking. Nobody ever asks.* Jake read it out loud twice, and the second time he looked a bit like he might frame it." }
         ] }
       ] },
       { n: "He gave Layla a treat for bravery and Solar one too, out of the same bag, without thinking, and she ate it before she realized, and he laughed so hard he had to sit down on the curb." }

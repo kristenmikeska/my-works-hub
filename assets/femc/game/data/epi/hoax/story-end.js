@@ -44,9 +44,23 @@
      - Depth pass (2026-10-31): the gym-lights balloon (Niki's Sharpie); "I'm going to look at you" for the hearing; the final's
        walk (snow going up the whole street), the car (wipers sweeping at nothing, every red light), her fingers keeping the
        shape of Akihiko's taped hand, "I've got you"; the can is found in her coat's left pocket (was "blazer").
+
+   Stakes pass (Nov 11 2026; stakes.js documents the scores and thresholds): the hearing opens on the heat (the forum in the
+     bleachers, or nobody looking), Mom by the doors (sus ≥ 4 → epi-h-mom-hearing), who holds the sign (party backing), Hayoon
+     recognised (epi-h-party-hayoon); each route's block nods to its party coda; R.stakesVerdict plays before "Does the filer
+     wish to proceed to a vote?" and sets one of epi-h-out-turns / -split / -falls. After the flicker (unchanged, every
+     outcome): turns = the old withdrawal; split = hands 98-104, Chaewon's censure (epi-h-censured, apology at assembly, the
+     advisor at every meeting), Jungwon's promise; falls = 131-73, epi-h-removed, Jungwon's resignation (choice:
+     epi-h-falls-stopped / epi-h-falls-jw-said), Heeseung acting (epi-h-heeseung-acting), the crowd on Sunoo and Yeobo's.
+     epi-h-after: forum by outcome, Mom "I was there." (mom-hearing) or "You said Friday" (epi-h-mom-after-exams), route lines
+     by outcome. epi-h-results: Mrs. Yang's second text (falls-jw-said), assembly apology (split), the door card (falls),
+     first-years bowing (turns), who's missing at the gate (falls, by party backing). epi-h-gym: one line by outcome before
+     the stage-4 glitch; nothing else in the final changed.
 */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).hoax ||= {});
+  // Stakes pass (Nov 11 2026; stakes.js documents the scores, the verdict and the three outcomes). stakes.js loads first.
+  const IF = R.stakesIf || ((sc, range, then, els) => ({ ifCount: { of: [], ...range }, then, else: els || [] }));
   (R.events ||= []).push(
 
   // ───────────────────────────────── 1/10, Jungwon's route ─────────────────────────────────
@@ -283,8 +297,28 @@
     { s: 'stream', t: "chaewon would impeach god" },
     { s: 'stream', t: "WHERE IS THE TIN" },
     { s: 'stream', t: "frame 214 truthers we RISE" },
+    // stakes pass: who came, and why (heat), and Mom (sus ≥ 4)
+    IF('heat', { min: 6 }, [
+      { n: "And the forum had come in person. You could tell which ones. They sat together in a block halfway up the second-years' bleachers with their phones already out, and one of them had printed something off the forum on A4 and was holding it on his knees like a sign at an airport, and somebody near him had written WHERE WERE YOU on the back of a chemistry worksheet. They weren't here for the tin. They hadn't been here for the tin in a week." },
+      { s: 'stream', t: "the forum is IN THE BUILDING" }
+    ], [
+      IF('heat', { max: 2 }, [
+        { n: "Most of them were here for the tin, honestly, and a third of them were here for Sunghoon, and the rest were here because it was the last period on a Thursday and the gym was warmer than the library. Nobody was holding a sign about her. She'd never been so grateful to be boring." }
+      ])
+    ]),
+    IF('sus', { min: 4 }, [
+      { flag: 'epi-h-mom-hearing' },
+      { n: "And by the doors, beside the principal, in her good work coat with her bag held in front of her in both hands like a shield, not on her phone, not pretending to be anything, was Solar's mother." },
+      { n: "Solar's whole body went cold, from the scalp down, one long pour. Her mother didn't wave. Her mother looked at her across the whole gym the way she'd looked at the armband on the kitchen table, and then sat down on the end of the last row of folding chairs, next to a teacher, and folded her hands on her bag, and waited, exactly like Chaewon." }
+    ]),
     { n: "The council sat at a long table on the left side of the floor. Solar sat in the middle of it because she was the vice president and the vice president sat in the middle, between Jungwon with his folder of three speeches and Heeseung with his ledger open to a page he'd tabbed in four colours. Sunoo already had a tissue. Jake had a bag of chips until Heeseung took it. Jay had his arms crossed, which was his whole statement. Niki was waving at people in the bleachers. Sunghoon was winking at people in the bleachers, which was how about a third of the bleachers had come." },
     { n: "Over at the old table's end of the bleachers, the crew had taken a whole row. Cherry with her boots up on the seat in front, Asahi with his hood up, Junkyu holding a sign that said #TEAMSOLAR in glitter, Jaehyuk holding the other end of it because Junkyu had asked, Hyunsuk not holding anything. And Jihoon, sitting dead center like a man at the theatre who'd paid for the good seats." },
+    { ifFlag: 'epi-h-party-backed-crew', then: [
+      { n: "Then, as Chaewon tapped the microphone, Hyunsuk reached over without looking at anyone and took a corner of the glitter sign out of Junkyu's hand, and held it, and kept holding it, his face perfectly blank, like a boy who'd been asked to hold somebody's coat for a minute." }
+    ] },
+    { ifFlag: 'epi-h-party-backed-council', then: [
+      { n: "Halfway up the bleachers, the football team had come in a block, still in their training jackets, and Jay, at the council table, lifted two fingers off his crossed arms at them, and eleven boys sat up straighter. Hyunsuk, in the crew's row, didn't look at her once." }
+    ] },
     { ifFlag: 'epi-h-jw-gate', then: [
       { n: "Under the table, Jungwon's knee was against hers. He'd fixed her scarf again that morning at the gate, without a word, like it was a thing he did now. She could still feel where he'd folded it." }
     ] },
@@ -293,6 +327,10 @@
     { n: "Nobody moved. The whole gym looked around. Somebody at the top of the bleachers yelled *it's Niki*, and Niki stood up and bowed, and Heeseung pulled him back down by his blazer." },
     { n: "Then a girl in the fourth row of the second-years stood up. She was small and neat, with her blazer buttoned all the way and a lanyard of pens around her neck like a necklace, and she walked down the steps and across the gym floor and sat in the single chair on the right side of the floor, opposite the council table, and opened a plastic folder, and looked up." },
     { n: "Nobody at the council table knew who she was. You could watch it go down the table, face by face, like a wave at a ballgame. Sunghoon, who knew every girl in school, looked at her the way a man looks at a step that isn't where it was yesterday." },
+    // stakes pass: the girl on the landing at Dohyun's (story-party.js, epi-h-party-hayoon)
+    { ifFlag: 'epi-h-party-hayoon', then: [
+      { n: "Except Solar did. A lanyard of pens. A blazer buttoned over a party dress. A landing at Dohyun's, a can she hadn't drunk, *I'd want it done properly.* Solar looked at her across the gym floor, and the girl looked back, and neither of them pretended they hadn't met." }
+    ] },
     { s: 'sunghoon', f: 'surprised', t: "...Who." },
     { s: 'hayoon', f: 'neutral', t: "Do Hayoon. 2-3. I sit two seats behind you in the library. Every lunch." },
     { s: 'sunghoon', f: 'surprised', t: "Since *when*?" },
@@ -407,7 +445,13 @@
         { s: 'jihoon', f: 'serious', t: "She didn't skip anything. She was somewhere none of you would've lasted a day, and she came back. For this. For a fucking *gym*. Respect it." },
         { s: 'chaewon', t: "Language." },
         { s: 'jihoon', f: 'neutral', t: "Respect it, *please*." },
-        { n: "He went back up the bleachers. Solar's throat had closed up so tight she couldn't have said a word if Chaewon had paid her. Beside her, Jungwon was watching Jihoon climb, with the face of a boy reassessing a problem he'd thought he'd already solved." }
+        { n: "He went back up the bleachers. Solar's throat had closed up so tight she couldn't have said a word if Chaewon had paid her. Beside her, Jungwon was watching Jihoon climb, with the face of a boy reassessing a problem he'd thought he'd already solved." },
+        { ifFlag: 'epi-h-party-jh-speaker', then: [
+          { n: "It was the same face he'd had on, she'd bet, in a quiet house at midnight in December, listening to eight speakers in somebody else's car say *I've been driving her since before you could spell vice president*." }
+        ] },
+        { ifFlag: 'epi-h-party-jh-answered', then: [
+          { n: "*Kim Solar's phone, she's indisposed.* She saw Jungwon remember it. She saw him decide, right there at the council table, to let it go." }
+        ] }
       ] }
     ] },
     { ifEpiRoute: 'jungwon', then: [
@@ -419,12 +463,20 @@
       { n: "The gym made a noise like a stadium when a ball goes over a fence, a long rising *ooooh*, and somebody at the top of the bleachers screamed, and Jake, at the end of the table, cupped his hands around his mouth." },
       { s: 'jake', f: 'happy', t: "JOLAR!!!" },
       { s: 'chaewon', t: "Jake." },
-      { n: "Jungwon sat down. His ears had gone red all the way to the tips. He didn't look at her. Under the table he held her hand, in front of nobody, very hard." }
+      { n: "Jungwon sat down. His ears had gone red all the way to the tips. He didn't look at her. Under the table he held her hand, in front of nobody, very hard." },
+      { ifFlag: 'epi-h-party-jw-jh-talked', then: [
+        { n: "Up in the crew's row Jihoon caught his eye, and Jungwon nodded at him, once, very slightly, the nod of a boy who'd been told something true on a curb at eleven at night by the last person he'd expected, and Jihoon looked away first." }
+      ] }
     ] },
     { ifEpiRoute: 'council', then: [
       { n: "Heeseung stood up first, with the ledger under his arm, and came around behind her chair and stood there. Then Jake. Then Jay, arms still crossed. Then Niki, who stopped waving. Then Sunghoon, who stopped winking. Then Sunoo, with the tissue. Then Jungwon, last, at her shoulder." },
-      { n: "Seven of them, standing behind the vice president's chair, not saying anything, in the gym they'd finished themselves, under lights they'd hung from a ladder Sunghoon refused to hold. Nobody had planned it. Nobody needed to. It was the council, and the council was all it had ever been." }
+      { n: "Seven of them, standing behind the vice president's chair, not saying anything, in the gym they'd finished themselves, under lights they'd hung from a ladder Sunghoon refused to hold. Nobody had planned it. Nobody needed to. It was the council, and the council was all it had ever been." },
+      { ifFlag: 'epi-h-party-cn-talked', then: [
+        { n: "Up in the crew's row Jihoon didn't stand, and didn't heckle either. He just sat with his arms folded and watched the seven of them standing there, and once, when Jungwon put his hand on the back of her chair, Jihoon nodded, very slightly, at nobody, like a man agreeing with something somebody had said into a shirt pocket three weeks ago." }
+      ] }
     ] },
+    // stakes pass (Nov 11 2026): the verdict (stakes.js): exactly one of epi-h-out-turns / -split / -falls
+    ...(R.stakesVerdict || []),
     { s: 'chaewon', t: "Does the filer wish to proceed to a vote?" },
     { n: "Hayoon opened her mouth." },
     { glitch: { stage: 4 } },
@@ -443,6 +495,9 @@
     { s: 'stream', t: "CGI?? on a LIVE??" },
     { s: 'stream', t: "ghost vp ghost vp ghost vp" },
     { flag: 'epi-h-flickered' },
+    { ifFlag: 'epi-h-mom-hearing', then: [
+      { n: "By the doors, her mother had both hands over her mouth." }
+    ] },
     { n: "Jungwon's hand was around her wrist. She didn't know when he'd taken it. He was holding it the way you'd hold someone at the edge of a platform." },
     { n: "Up in the crew's row, Jihoon was looking straight at her." },
     { ifEpiRoute: 'jihoon', then: [
@@ -452,31 +507,182 @@
     ] },
     { n: "Chaewon stood at the podium in the silence for a long time. Then she said, in the most adult voice anyone had ever heard come out of a student," },
     { s: 'chaewon', t: "...Facilities will look at the lights." },
-    { n: "Hayoon was still standing. She'd been standing the whole time. She looked at her folder, and then at Solar, and she had a strange, almost peaceful look on her face, like a girl who'd thrown a coin in a fountain and watched the fountain throw it back." },
-    { s: 'hayoon', f: 'neutral', t: "I withdraw the motion." },
-    { s: 'chaewon', t: "On what grounds?" },
-    { s: 'hayoon', f: 'serious', t: "I wanted something to happen." },
-    { n: "She looked at Solar." },
-    { s: 'hayoon', f: 'neutral', t: "Something happened." },
-    { n: "She sat down." },
-    { flag: 'epi-h-motion-failed' },
-    { s: 'chaewon', t: "The motion is withdrawn. The tin is accounted for. This hearing is closed. Please leave the gym in an orderly fashion." },
-    { s: 'chaewon', t: "...You won't." },
-    { music: 'epi-h-goofy' },
-    { n: "They didn't. The bleachers came down onto the floor like a wave breaking, and the council table was gone under it, and Solar was gone under it, and Cherry came through the crowd like a girl clearing a dance floor with her boots and got both arms around Solar's neck from behind and hung there." },
-    { s: 'cherry', f: 'serious', t: "You stupid bitch. You stupid, stupid— in front of EVERYONE? I'm going to kill you. I love you. I'm going to kill you." },
-    { s: 'asahi', f: 'neutral', t: "You literally glitched. No one cares." },
-    { s: 'junkyu', f: 'sad', t: "Asahi CARES." },
-    { s: 'asahi', f: 'neutral', t: "...I care a little." },
-    { ifEpiRoute: 'jihoon', then: [
-      { s: 'jihoon', f: 'serious', t: "Sol. Hey. Hey. Look at me. You're here. You're— okay. You're here." }
+    // ── stakes pass (Nov 11 2026): what the room does now, by the verdict (stakes.js). turns = the old ending, unchanged ──
+    { ifFlag: 'epi-h-out-falls', then: [
+      // ── FALLS: the vote carries against the vice president ──
+      { n: "Hayoon was still standing. She'd been standing the whole time. But she didn't have the look Solar had half expected, the peaceful one, the coin come back out of the fountain. She looked the way everybody in the bleachers looked. She looked frightened." },
+      { n: "And frightened people, Solar knew, from a whole year of watching them in a hallway that wasn't Hanlim's, wanted one thing more than they wanted the truth. They wanted somebody to be gone." },
+      { s: 'hayoon', f: 'serious', t: "I want the vote." },
+      { s: 'chaewon', t: "On both counts?" },
+      { s: 'hayoon', f: 'serious', t: "On count one. The vice president. Only." },
+      { n: "She looked at her folder and didn't read from it." },
+      { s: 'hayoon', f: 'neutral', t: "Not because of the tin. The tin's fine. Because nobody in this room can tell me where she was for nine days, and I just watched her not be here. In front of me. I'm not— I don't know what that was. I don't think anybody does. I don't think *she* does." },
+      { ifFlag: 'epi-h-hayoon-blocked', then: [
+        { s: 'hayoon', f: 'neutral', t: "And when I asked her properly, she blocked me." }
+      ] },
+      { n: "Chaewon looked at her index cards for a long time. Then she turned one over, and read from the back of it, flatly, the way you read a rule you didn't write and wouldn't have." },
+      { s: 'chaewon', t: "Page forty-one. An officer may be removed by a majority of students present at a properly called hearing. This hearing was properly called. I called it." },
+      { s: 'chaewon', t: "Hands for the motion." },
+      { n: "They went up like a field of something, all at once and then more, the first-years at the top first, the frightened ones, and then the forum block in the second-years with the A4 printout held up in the other hand, and then just people, ordinary people, kids from her chemistry class, a boy who'd said *good luck Thursday* in the cafeteria, a girl she'd lent a pen to in October. Solar stood at the council table and watched it happen, and she could see through her own hand again for a second, very faintly, and nobody was looking at her hand anymore. They were looking at their own." },
+      { s: 'chaewon', t: "Against." },
+      { n: "The crew's row. Cherry with both arms up like a hold-up. Junkyu crying already, holding the glitter sign up with one hand and his other hand up too. Jaehyuk. Asahi, with his hood up, one hand in the air like he was asking to be excused." },
+      { ifFlag: 'epi-h-party-backed-council', then: [
+        { n: "And the football team, the whole block of them, before Jay had even uncrossed his arms. And Hyunsuk, in the crew's row, with his hands in his pockets, looking at the floor. He didn't put his hand up. He didn't put it up for the motion, either. He just didn't." }
+      ], else: [
+        { ifFlag: 'epi-h-party-backed-crew', then: [
+          { n: "And Hyunsuk, first, before any of them, his hand straight up and his face perfectly blank, like a boy answering roll call. Halfway up the bleachers the football team looked at each other, and at Jay, and Jay didn't look at them, and only about half of them put their hands up." }
+        ], else: [
+          { n: "Hyunsuk, slowly, after the rest of the row. Some of the football team. Some of the people from Dohyun's party she'd sat on a sofa arm with. Not enough of anybody." }
+        ] }
+      ] },
+      { ifEpiRoute: 'jihoon', then: [
+        { n: "Jihoon had both arms up, high, and was standing on his seat to make them higher, and turning slowly in a circle to stare at every single hand that was up for the motion, one by one, like he was memorizing them." }
+      ], else: [
+        { n: "Jihoon had one hand up, lazily, the elbow on his knee, like a boy voting on what to have for lunch. He was looking at the hands on the other side. All of them. Slowly." }
+      ] },
+      { n: "Chaewon counted. She did it properly. Row by row, with a pen, out loud, and nobody laughed this time, and nobody drummed, and it took a very long time, and Solar stood there the whole time because nobody had told her to sit down." },
+      { s: 'chaewon', t: "A hundred and thirty-one for. Seventy-three against." },
+      { s: 'chaewon', t: "The motion carries. Kim Solar is removed from the office of vice president." },
+      { flag: 'epi-h-removed' },
+      { n: "Nobody cheered. That was the strangest part. She'd thought, if it happened, they would cheer, the way they'd chanted for the tin. But two hundred people had just voted a girl out of a job because they'd watched her go see-through, and nobody in the gym knew what to do with their hands now that they'd put them down." },
+      { n: "Beside her, Jungwon stood up." },
+      { n: "He didn't pick up a folder. He didn't do the voice. He stood there in the gold light in his blazer with his hands at his sides, and his face had gone completely white, the white it went before he fainted, and she knew, the way you know a step is missing in the dark, exactly what he was about to say." },
+      { s: 'jungwon', f: 'serious', t: "Then I—" },
+      { choose: [
+        { t: "(Grab his sleeve. Stop him.)", flag: 'epi-h-falls-stopped', then: [
+          { n: "She caught his sleeve. Just the cuff of it, between her finger and thumb, the way you'd catch a child at a crossing. She didn't pull. She didn't have to." },
+          { s: 'solar', f: 'serious', t: "Don't. Won. Don't you dare." },
+          { n: "He looked down at her hand on his sleeve. She watched him fight it, the whole speech he'd been about to give going across his face and back again, *I resign, if she goes I go, I'd rather*, and she held on to the cuff, and he sat down. Slowly. Like his knees had been told to by somebody else." },
+          { n: "He didn't look at her. Under the table his hand was shaking so hard she could feel it through the bench." }
+        ] },
+        { t: "(Let him say it.)", flag: 'epi-h-falls-jw-said', then: [
+          { s: 'jungwon', f: 'serious', t: "Then I resign. If the vice president goes, the president goes. I picked her. That was my decision. If it was wrong, it was mine." },
+          { n: "The gym made a noise she'd never heard it make. Not a cheer. A sort of gasp that went on too long. Eunchae's ring light shook. Somewhere in the bleachers somebody said *oh my god he's actually—*" },
+          { s: 'chaewon', t: "Resignations are in writing, Mr. President. Sit down." },
+          { s: 'jungwon', f: 'serious', t: "I'll write it tonight." },
+          { s: 'chaewon', t: "Then I'll read it tomorrow. *Sit down.*" },
+          { n: "He sat down. He'd said it into a live stream with eleven thousand people watching, and one of them, Solar knew with absolute certainty, was a woman in a quiet house with a drama paused on the television, who had just heard her son resign from something, in front of the whole school, for a girl." }
+        ] }
+      ] },
+      { s: 'chaewon', t: "The office of vice president is vacant until the president appoints. Until then the charter says the previous holder serves." },
+      { n: "She didn't say his name. She didn't have to. Every head at the council table turned, slowly, to Heeseung." },
+      { n: "Heeseung was sitting very straight with his ledger closed under his hands. He'd been vice president for a year and a half, until Jungwon fired him for her, and he'd said *it still breaks my heart* about it in the group chat every month since like a joke, and it had never quite been a joke. Now it was his again. It had been handed back to him across a gym floor like a cup of something he'd once wanted very badly and couldn't drink." },
+      { s: 'heeseung', f: 'sad', t: "...Acting. I'm *acting*." },
+      { s: 'chaewon', t: "Noted. This hearing is closed." },
+      { flag: 'epi-h-heeseung-acting' },
+      { music: 'epi-h-dread' },
+      { n: "It didn't break like a wave this time. It drained, like a bath. People went down the bleachers in twos and threes, not looking at the council table, and on the way out, from somewhere near the doors, she heard it start: not *WHERE IS THE TIN*. Something worse, because it was quieter." },
+      { n: "*...the secretary hid it, though. in a ballot box. who does that.*" },
+      { n: "*his grandma owns yeobo's, right? the council's always in there. that's where the money—*" },
+      { n: "*my mom's not going there anymore.*" },
+      { n: "At the end of the council table Sunoo had heard every word. He sat with the tissue in his fist and his face going very red and then very white, and he didn't cry, which was so much worse than if he had, and Jake put an arm round him and he let it stay there and didn't lean into it." },
+      { ifFlag: 'epi-h-mom-hearing', then: [
+        { n: "By the doors, her mother was standing up. She'd seen the hands. She'd seen her daughter go thin and then she'd seen two hundred people vote her out of a room, and she stood there in her good coat with her bag in both hands and her face doing nothing at all, the face she wore for court, and when Solar looked again a second later the doors were swinging and she was gone." }
+      ] },
+      { n: "Then Cherry. Cherry came across the floor through the people going the other way like a girl walking into the sea, and didn't say *you stupid bitch*, and didn't say anything, just got both arms round Solar's neck from behind and hung there with her whole weight, and Solar could feel her shaking." },
+      { s: 'cherry', f: 'serious', t: "I counted. I counted every hand. I know every single one. I'm going to make a list." },
+      { s: 'asahi', f: 'sad', t: "...No one cares." },
+      { s: 'junkyu', f: 'sad', t: "Asahi." },
+      { s: 'asahi', f: 'sad', t: "I mean about *them*. No one cares about *them*." },
+      { ifEpiRoute: 'jihoon', then: [
+        { s: 'jihoon', f: 'serious', t: "I memorized them, Sol. Every hand. I've got a very good memory when I want one. Nobody in this school is ever getting a ride from me again. That's a promise." }
+      ], else: [
+        { s: 'jihoon', f: 'neutral', t: "Hundred and thirty-one. That's a lot of people with no taste." }
+      ] },
+      { ifFlag: 'epi-h-party-backed-council', then: [
+        { n: "Jay came round the council table and stood beside her without saying anything, and the football team, still in the bleachers, didn't leave until he did. Hyunsuk had already gone. She saw the back of his jacket in the doorway, and then she didn't." }
+      ] },
+      { ifFlag: 'epi-h-party-backed-crew', then: [
+        { n: "Hyunsuk came down from the crew's row and stood at the end of the council table with his hands in his pockets, not next to her, not far away, and stayed until the gym was empty, and didn't say a word the whole time, and didn't need to. Jay, across the floor, picked up his bag and left with the team." }
+      ] },
+      { n: "Through all of it Jungwon didn't let go of her wrist. Not when Cherry hung off her, not when Sunoo finally stood up and walked out without his coat, not when Heeseung opened the ledger to a blank page and wrote *acting VP, 1/11* at the top and then just sat there looking at it. He held on until the gym was empty, and the principal had gone, and the lights hummed gold over the folding chairs, and the clock above the scoreboard said 12:00, and it was just the two of them standing by the ballot box." }
     ], else: [
-      { s: 'jihoon', f: 'happy', t: "That was sick. Do it again. For the fans." }
+      { ifFlag: 'epi-h-out-split', then: [
+        // ── SPLIT: a hand vote, 104 to 98; the cost is a censure and a promise ──
+        { n: "Hayoon was still standing. She looked at her folder, and then at Solar, and for a second she had a strange, almost peaceful look, the look of a girl who'd thrown a coin in a fountain and watched the fountain throw it back. Then it went, and she looked at the bleachers instead, at two hundred frightened faces, and set her jaw." },
+        { s: 'hayoon', f: 'neutral', t: "I withdraw count two. The tin's accounted for." },
+        { s: 'chaewon', t: "And count one?" },
+        { s: 'hayoon', f: 'serious', t: "...I want to see hands." },
+        { ifFlag: 'epi-h-hayoon-thursday', then: [
+          { s: 'hayoon', f: 'neutral', t: "She told me she'd say the same thing in here that she said to me. She did. That's the only reason it isn't both of them." }
+        ] },
+        { s: 'chaewon', t: "Page forty-one. An officer may be removed by a majority of students present at a properly called hearing. The motion, as amended, is the vice president only." },
+        { n: "The gym shifted. You could hear it, a whole room of people realizing at once that they were about to be asked to do something with their own hands, and not liking it, and wanting to anyway." },
+        { s: 'jungwon', f: 'serious', t: "Chaewon. May I." },
+        { n: "He didn't wait for her. He stood up, and he didn't do the voice, and he didn't pick up a folder. He looked up at the bleachers, at all of them, the way he looked at a page of a problem before he started it." },
+        { s: 'jungwon', f: 'serious', t: "You saw something. I know. I saw it too. I'm not going to tell you what it was, because I don't know how to tell you in a way you'd believe." },
+        { s: 'jungwon', f: 'serious', t: "But she's not going anywhere. She's staying. I promise you. Not again." },
+        { n: "It was the worst thing he could have said. She knew it the second it left him, the way you know a glass is going to break when it's still in the air. Tomorrow. *It's getting worse.* He'd just promised two hundred people something that neither of them could keep, in front of a live stream, in the speech voice, and they believed him. You could watch them believe him. He was Yang Jungwon. He'd never lied in this gym in his life." },
+        { s: 'chaewon', t: "Hands for the motion." },
+        { n: "A lot of them. The first-years at the top, the frightened ones. The forum block. A girl from her chemistry class, who looked at her and then at the floor. Solar stood at the council table and watched them go up and felt each one, small, like hail." },
+        { s: 'chaewon', t: "Against." },
+        { n: "The crew's row, every hand. Junkyu with the glitter sign up in the other one. Asahi with his hood up, one hand in the air like he was asking to be excused." },
+        { ifFlag: 'epi-h-party-backed-council', then: [
+          { n: "The football team, as a block, before Jay had even moved. Hyunsuk last of the crew's row, slowly, without looking at her." }
+        ] },
+        { ifFlag: 'epi-h-party-backed-crew', then: [
+          { n: "Hyunsuk first, before any of them, straight up. The football team, after a look at Jay, about half." }
+        ] },
+        { n: "Chaewon counted it properly. Row by row, out loud, with a pen. It took forever. Nobody drummed." },
+        { s: 'chaewon', t: "Ninety-eight for. A hundred and four against." },
+        { s: 'chaewon', t: "The motion fails." },
+        { flag: 'epi-h-motion-failed' },
+        { n: "Six votes. Somebody in the bleachers did the maths out loud, *that's three people, if three people had—*, and was shushed. Six. She thought of six people she'd been kind to by accident this month, or six she'd pushed, and couldn't tell which six they were." },
+        { s: 'chaewon', t: "However. The council's absence during exam week was never approved, and that isn't disputed by anyone, including the council. So." },
+        { s: 'chaewon', t: "The president and the vice president will write a formal apology to the student body, to be read at assembly tomorrow morning. The council advisor will attend every council meeting until prom. And this hearing's record goes in the council binder, where the next council can read it." },
+        { flag: 'epi-h-censured' },
+        { s: 'chaewon', t: "This hearing is closed. Please leave in an orderly fashion." },
+        { n: "They left in a reasonably orderly fashion. That was the strangest thing. Nobody came down the bleachers like a wave. Some people did come down onto the floor, but carefully, the way you walk up to an animal you're not sure about." },
+        { ifFlag: 'epi-h-mom-hearing', then: [
+          { n: "By the doors her mother had stood up and was looking at her, across all of it, with her bag held in front of her in both hands. She didn't come over. When Solar looked back again after Cherry got to her, the doors were swinging, and she was gone." }
+        ] },
+        { n: "Cherry came through it with her boots, like always, and got both arms round Solar's neck from behind and hung there." },
+        { s: 'cherry', f: 'serious', t: "Six. Six fucking votes. You stupid— in front of EVERYONE? I'm going to kill you. I love you. I'm going to find out who the six were." },
+        { s: 'asahi', f: 'neutral', t: "You literally glitched. And kept your job. No one cares." },
+        { s: 'junkyu', f: 'sad', t: "Asahi CARES." },
+        { s: 'asahi', f: 'neutral', t: "...I care about six votes' worth." },
+        { ifEpiRoute: 'jihoon', then: [
+          { s: 'jihoon', f: 'serious', t: "Sol. Hey. Look at me. You're here. You're— okay. Six. You're here by six. I'll take six." }
+        ], else: [
+          { s: 'jihoon', f: 'happy', t: "A hundred and four. I'm going to pretend every one of them was me." }
+        ] },
+        { s: 'heeseung', f: 'neutral', t: "Apology. Tonight. I'll draft it. Nobody else draft it." },
+        { n: "Through all of it Jungwon didn't let go of her wrist. Not when Cherry hugged her, not when the crowd came near and backed off, not when Heeseung started reading out the apology's first line and Jake told him to stop. He held on until the gym was empty, and the principal had gone, and the lights hummed gold over the folding chairs, and the clock above the scoreboard said 12:00, and it was just the two of them standing by the ballot box." },
+        { s: 'solar', f: 'sad', t: "You promised them." },
+        { s: 'jungwon', f: 'serious', t: "I promised me." },
+        { n: "She didn't say anything to that. There wasn't anything to say to it that wouldn't have been cruel, and she was so tired of being careful with him, and so tired of him being careful with her, and she stood there with her wrist in his hand and let the promise sit between them in the empty gym, too big for either of them to pick up." }
+      ], else: [
+        // ── TURNS: the room turns for her (as before) ──
+        { n: "Hayoon was still standing. She'd been standing the whole time. She looked at her folder, and then at Solar, and she had a strange, almost peaceful look on her face, like a girl who'd thrown a coin in a fountain and watched the fountain throw it back." },
+        { s: 'hayoon', f: 'neutral', t: "I withdraw the motion." },
+        { s: 'chaewon', t: "On what grounds?" },
+        { s: 'hayoon', f: 'serious', t: "I wanted something to happen." },
+        { n: "She looked at Solar." },
+        { s: 'hayoon', f: 'neutral', t: "Something happened." },
+        { n: "She sat down." },
+        { flag: 'epi-h-motion-failed' },
+        { s: 'chaewon', t: "The motion is withdrawn. The tin is accounted for. This hearing is closed. Please leave the gym in an orderly fashion." },
+        { s: 'chaewon', t: "...You won't." },
+        { music: 'epi-h-goofy' },
+        { n: "They didn't. The bleachers came down onto the floor like a wave breaking, and the council table was gone under it, and Solar was gone under it, and Cherry came through the crowd like a girl clearing a dance floor with her boots and got both arms around Solar's neck from behind and hung there." },
+        { s: 'cherry', f: 'serious', t: "You stupid bitch. You stupid, stupid— in front of EVERYONE? I'm going to kill you. I love you. I'm going to kill you." },
+        { s: 'asahi', f: 'neutral', t: "You literally glitched. No one cares." },
+        { s: 'junkyu', f: 'sad', t: "Asahi CARES." },
+        { s: 'asahi', f: 'neutral', t: "...I care a little." },
+        { ifEpiRoute: 'jihoon', then: [
+        { s: 'jihoon', f: 'serious', t: "Sol. Hey. Hey. Look at me. You're here. You're— okay. You're here." }
+        ], else: [
+        { s: 'jihoon', f: 'happy', t: "That was sick. Do it again. For the fans." }
+        ] },
+        { s: 'kazuha', t: "I told you. I told *everyone*. Nobody listens to me about ghosts." },
+        { s: 'eunchae', t: "Sunbae— Solar-sunbae, can I just get a quick statement for the—" },
+        { s: 'heeseung', f: 'serious', t: "No statements." },
+        { ifFlag: 'epi-h-mom-hearing', then: [
+          { n: "By the doors her mother hadn't moved. She was still sitting on the end of the last row with her bag on her knees, in the middle of all of it, looking at Solar over two hundred heads, and she didn't clap and she didn't cry and she didn't look away, and when Solar looked again after Cherry let go, the chair was empty and the doors were swinging." }
+        ] },
+        { n: "Through all of it Jungwon didn't let go of her wrist. Not when Cherry hugged her, not when the crowd pushed, not when Jake tried to lift her onto his shoulders and Heeseung stopped him. He held on until the gym was empty, and the principal had gone, and the lights hummed gold over the folding chairs, and the clock above the scoreboard said 12:00, and it was just the two of them standing by the ballot box." },
+      ] }
     ] },
-    { s: 'kazuha', t: "I told you. I told *everyone*. Nobody listens to me about ghosts." },
-    { s: 'eunchae', t: "Sunbae— Solar-sunbae, can I just get a quick statement for the—" },
-    { s: 'heeseung', f: 'serious', t: "No statements." },
-    { n: "Through all of it Jungwon didn't let go of her wrist. Not when Cherry hugged her, not when the crowd pushed, not when Jake tried to lift her onto his shoulders and Heeseung stopped him. He held on until the gym was empty, and the principal had gone, and the lights hummed gold over the folding chairs, and the clock above the scoreboard said 12:00, and it was just the two of them standing by the ballot box." },
     { s: 'jungwon', f: 'serious', t: "It's getting worse." },
     { s: 'solar', f: 'sad', t: "I know." },
     { s: 'jungwon', f: 'sad', t: "...Tomorrow?" },
@@ -492,10 +698,41 @@
     { s: 'stream', t: "eunchae literally cannot edit she uses capcut on her phone" },
     { s: 'stream', t: "ghost vp i would die for u" },
     { s: 'stream', t: "the council was NOT at a temple" },
+    // stakes pass (Nov 11 2026): the clip reads differently by the verdict
+    { ifFlag: 'epi-h-out-falls', then: [
+      { s: 'forum', t: "[Hanlim Forum] 131-73: EX-VP (ghost) · 1,904 replies" },
+      { s: 'stream', t: "i voted yes and i feel sick about it ngl" },
+      { s: 'stream', t: "the president tried to RESIGN??? on LIVE???" },
+      { s: 'forum', t: "[Reviews] Yeobo's Café · ★☆☆☆☆ · \"the secretary's grandma's place. ask where the bake sale money sat for 3 weeks\"" },
+      { s: 'forum', t: "[Reviews] Yeobo's Café · ★☆☆☆☆ · \"council hangout. no thanks\"" }
+    ] },
+    { ifFlag: 'epi-h-out-split', then: [
+      { s: 'stream', t: "104-98 LMAO the ghost survived by SIX" },
+      { s: 'stream', t: "'she's not going anywhere. i promise you.' sir she was see through" },
+      { s: 'forum', t: "[Hanlim Forum] apology at assembly tmrw. bring popcorn · 611 replies" }
+    ] },
     { n: "Solar lay on her back in bed with her phone held over her face and Nana's whole weight on her feet, scrolling, with her thumb, past herself going thin over and over and over, from every angle, like a girl watching footage of a car crash she'd walked away from." },
     { n: "There was a knock on her door. Two knocks. Her mom's knock." },
-    { n: "Her mom came in without waiting, in her robe, with her own phone in her hand, and sat down on the edge of the bed, and held it out. It was paused. It was paused on the exact frame, the one everybody had screenshotted, where you could see the gym bleachers through her daughter's chest." },
-    { s: 'mom', t: "Is this you?" },
+    { ifFlag: 'epi-h-mom-hearing', then: [
+      // stakes pass: she was in the gym (sus ≥ 4)
+      { n: "Her mom came in without waiting, in her robe, without her phone. She didn't need her phone. She sat down on the edge of the bed and put her hands in her lap, and Solar saw that she was still wearing her watch, and her earrings, the work ones, like she'd come home from the gym and sat in the kitchen in the dark for five hours and only just remembered to change." },
+      { s: 'mom', t: "I was there." },
+      { s: 'mom', t: "I sat by the doors. I watched you stand up. I watched you— I watched the lights go, and you go with them. I watched two hundred children look at you like that." },
+      { ifFlag: 'epi-h-out-falls', then: [
+        { s: 'mom', t: "And then I watched them put their hands up." },
+        { n: "Her mother's voice didn't break. It didn't do anything. It was the courtroom voice, the level one, and it was so much worse than anything else she could have done with it." }
+      ] },
+      { ifFlag: 'epi-h-mom-after-exams', then: [
+        { s: 'mom', t: "You said Friday. You said you'd tell me Friday. It's Thursday, Solar." }
+      ] },
+      { s: 'mom', t: "So I'm asking. Was that you?" }
+    ], else: [
+      { n: "Her mom came in without waiting, in her robe, with her own phone in her hand, and sat down on the edge of the bed, and held it out. It was paused. It was paused on the exact frame, the one everybody had screenshotted, where you could see the gym bleachers through her daughter's chest." },
+      { ifFlag: 'epi-h-mom-after-exams', then: [
+        { s: 'mom', t: "You said Friday. I know. I'm asking anyway." }
+      ] },
+      { s: 'mom', t: "Is this you?" }
+    ] },
     { choose: [
       { t: "It's the lights. Facilities is looking at them.", flag: 'epi-h-mom-lights', then: [
         { s: 'mom', t: "Facilities." },
@@ -532,7 +769,27 @@
       { n: "He didn't say anything. She could hear him breathing, and a clock somewhere in his very quiet house, and then the clock stopped, and they both heard it stop." },
       { s: 'jungwon', f: 'serious', t: "Stay on the phone." },
       { s: 'solar', f: 'sad', t: "You'll get caught." },
-      { s: 'jungwon', f: 'sad', t: "Stay on the phone, Sol." }
+      { s: 'jungwon', f: 'sad', t: "Stay on the phone, Sol." },
+      { ifFlag: 'epi-h-out-split', then: [
+        { s: 'solar', f: 'sad', t: "...You told them I'm not going anywhere." },
+        { s: 'jungwon', f: 'serious', t: "I know what I told them." },
+        { s: 'solar', f: 'sad', t: "Won." },
+        { s: 'jungwon', f: 'sad', t: "If I said it out loud enough times in enough rooms, I thought maybe it would have to be true. That's not how anything works. I know that. I'm the one who knows that." },
+        { n: "She didn't say anything. She held the phone against her ear so hard it hurt, and listened to him breathe, and to the quiet house around him, and didn't tell him he was wrong, because he wasn't, and didn't tell him he was right, because she couldn't." }
+      ] },
+      { ifFlag: 'epi-h-out-falls', then: [
+        { ifFlag: 'epi-h-falls-jw-said', then: [
+          { s: 'jungwon', f: 'serious', t: "My mother watched the stream." },
+          { s: 'solar', f: 'surprised', t: "Won— what did she—" },
+          { s: 'jungwon', f: 'neutral', t: "Nothing. She hasn't said anything. She's been sitting in the kitchen since four. With the television off." },
+          { s: 'jungwon', f: 'sad', t: "I wrote the letter anyway. It's on my desk. Chaewon can have it tomorrow." }
+        ], else: [
+          { s: 'jungwon', f: 'serious', t: "You stopped me." },
+          { s: 'solar', f: 'sad', t: "Somebody has to be president tomorrow. It might as well be the one who knows where the tin is." },
+          { s: 'jungwon', f: 'sad', t: "...I'd have quit. For you. In a second. I need you to know I'd have done it." },
+          { s: 'solar', f: 'sad', t: "I know. That's why I grabbed your sleeve." }
+        ] }
+      ] }
     ] },
     { ifEpiRoute: 'jihoon', then: [
       { phone: [
@@ -544,7 +801,14 @@
         { from: 'jihoon', t: "go to sleep. ill leave when ur lights off" }
       ], contact: 'jihoon' },
       { n: "She went to the window. His car was parked at the curb under the streetlight with its headlights off, the snow going up past it, and he was in the driver's seat with his beanie on, and when he saw her at the glass he lifted one hand off the steering wheel, two fingers, and didn't do anything else." },
-      { n: "She turned the light off. The car didn't leave. She watched it not leave for a long time." }
+      { n: "She turned the light off. The car didn't leave. She watched it not leave for a long time." },
+      { ifFlag: 'epi-h-out-falls', then: [
+        { phone: [
+          { from: 'jihoon', t: "also. i have the list. all 131" },
+          { from: 'jihoon', t: "not going to Do anything with it" },
+          { from: 'jihoon', t: "just going to Know" }
+        ], contact: 'jihoney' }
+      ] }
     ] },
     { ifEpiRoute: 'council', then: [
       { phone: [
@@ -563,7 +827,22 @@
         { from: 'jungwon', t: "tomorrow." },
         { from: 'solar', t: "i know." },
         { from: 'jungwon', t: "we'll all be there." }
-      ], contact: 'jungwon' }
+      ], contact: 'jungwon' },
+      { ifFlag: 'epi-h-out-falls', then: [
+        { phone: [
+          { from: 'heeseung', t: "heeheeseung: For the record, I did not want it like this." },
+          { from: 'heeseung', t: "heeheeseung: I'm not changing the name on the door. I don't care what the charter says." },
+          { from: 'sunoo', t: "sunooshine: halmeoni says the reviews dont matter" },
+          { from: 'sunoo', t: "sunooshine: she says that in her reading glasses. reading them" }
+        ], contact: 'RETREAT FACTS (do not leave)', group: true }
+      ] },
+      { ifFlag: 'epi-h-out-split', then: [
+        { phone: [
+          { from: 'heeseung', t: "heeheeseung: Apology, draft 4 of 9, attached. Do not reply-all with edits. Niki." },
+          { from: 'niki', t: "rikiniki: 'we're sorry we were haunted'" },
+          { from: 'heeseung', t: "heeheeseung: NIKI." }
+        ], contact: 'RETREAT FACTS (do not leave)', group: true }
+      ] }
     ] },
     { n: "She got up to close the curtains." },
     { n: "Outside the snow was going up. All of it now, not just above the steps; the whole sky of it streaming upward past the streetlight, slow and steady and silent, like the world was being poured back into the bottle it came from. She put her hand on the windowsill." },
@@ -596,6 +875,10 @@
     { s: 'jungwon', f: 'happy', t: "I know." },
     { n: "His phone buzzed in his hand. He looked at it. She saw the name. *Mom.* She saw the message, because he didn't angle the phone away, which she understood, later, was on purpose." },
     { n: "It said *Good.* With the period." },
+    // stakes pass (Nov 11 2026): the resignation he said into the stream (falls outcome, "Let him say it.")
+    { ifFlag: 'epi-h-falls-jw-said', then: [
+      { n: "Under it there was a second one. Sent at 6:02 that morning, which meant she'd typed it at the kitchen table before he was up, and then waited two hours to send the first. *We will discuss the letter.*" }
+    ] },
     { n: "He put the phone in his blazer pocket. His face didn't do anything at all." },
     { s: 'solar', f: 'serious', t: "That's it?" },
     { s: 'jungwon', f: 'sad', t: "That's a lot, for her." },
@@ -612,6 +895,24 @@
         { s: 'solar', f: 'surprised', t: "How do you KNOW that?" },
         { s: 'jungwon', f: 'happy', t: "Because I know which one you'd guess." }
       ] }
+    ] },
+    // stakes pass (Nov 11 2026): the day after the hearing, by the verdict
+    { ifFlag: 'epi-h-out-split', then: [
+      { place: 'Hanlim · School · Gym', time: 'Morning', soft: true },
+      { n: "Assembly was at eight-forty. They read the apology together, standing at the podium where Chaewon had stood, Jungwon's half and then hers, draft nine of nine, laminated, because Heeseung had laminated it, which made the paper shine under the lights so that she had to tilt it to read her own words." },
+      { s: 'solar', f: 'serious', t: "...and we left during exam week without approval, and without telling anyone how to reach us, and that was wrong. We're sorry. We're sitting every exam we missed. We'll be better at telling you where we are." },
+      { n: "That last line had been hers. Heeseung had wanted to cut it. She'd fought him for it at eleven at night over text and won, and now she stood at the podium and read it out to the whole school and felt it go off in her mouth like a lie and a promise at the same time, and couldn't tell which, and the advisor stood at the side of the stage with her arms folded, already, on day one of attending everything, looking like a woman who'd been told about a retreat she never approved by a forum and a parent in the same week." },
+      { n: "Nobody clapped. Somebody at the back said *six votes* not quite under their breath. Then it was over, and the first bell went, and that was that." }
+    ] },
+    { ifFlag: 'epi-h-out-falls', then: [
+      { place: 'Hanlim · School', time: 'Morning', soft: true },
+      { n: "On the way to homeroom she went the long way, past the council room, which she hadn't meant to do and did anyway." },
+      { n: "The door had a little plastic sleeve on it at eye level with a card in it that Sunoo had made in September on the laminator: names, in his round handwriting, PRESIDENT YANG JUNGWON, VICE PRESIDENT KIM SOLAR, and the rest underneath. Somebody had taken the card out in the night and put a new one in, typed, the same list, except that the second line said VICE PRESIDENT (ACTING), and the name after it was Heeseung's." },
+      { n: "And then, under it, taped crooked to the door with a whole roll's worth of tape, Sunoo's old card, the handwritten one, her name still on it. Nobody had told anyone to do that. She knew whose tape it was." },
+      { n: "She stood in front of the door for a while. Then she went to homeroom, where Kazuha had put a dish of salt on her desk and bowed to it, and the boy behind her said *sorry about yesterday* without saying which part, and she said *it's fine*, which it wasn't, and which was the only thing anybody said all day." }
+    ] },
+    { ifFlag: 'epi-h-out-turns', then: [
+      { n: "In the hallway after the list, two first-years she'd never seen before stopped dead in front of her, looked at each other, and bowed, deeply, from the waist, in unison, like she was a shrine. Then they ran. She heard one of them say *GHOST VP* to the other at a pitch only dogs should have been able to hear." }
     ] },
     { place: 'Hanlim · School', time: 'Daytime', soft: true },
     { n: "It was the last ordinary day. Nobody said so. Everybody knew." },
@@ -637,6 +938,18 @@
       { n: "Across the cafeteria, at the old table, Jihoon looked over once. Just once. Then he looked away, with the bored face." }
     ] },
     { n: "At the last bell nobody went home. They walked her to the gate, all of them, the old table and the council in one long untidy line through the snow going up, Niki on Jay's back, Junkyu holding her hand, Cherry holding her sleeve, and at the gate they all stopped, and stood there, like people waiting for a train that hadn't been announced." },
+    // stakes pass: who came, on the bad day (falls), follows who she stood with at Dohyun's
+    { ifFlag: 'epi-h-out-falls', then: [
+      { ifFlag: 'epi-h-party-backed-council', then: [
+        { n: "Almost all of them. Hyunsuk wasn't there. She'd looked for him at the bell and his desk had been empty, his bag already gone, and she found she couldn't blame him, and found that not blaming him hurt more." }
+      ], else: [
+        { ifFlag: 'epi-h-party-backed-crew', then: [
+          { n: "Almost all of them. Jay had walked as far as the steps, with Niki on his back, and set Niki down there, and said *I've got practice* to nobody, and gone, and she'd watched the back of his jacket go across the courtyard and understood it was a porch in December he was walking away from, and that she'd chosen that, and would again." }
+        ], else: [
+          { n: "Even Sunoo, who hadn't said a word all day, who'd spent lunch in the library with his phone face down. He stood at the very end of the line with his hands in his coat pockets, and when she looked at him, he tried very hard to smile, and nearly did." }
+        ] }
+      ] }
+    ] },
     { s: 'solar', f: 'serious', t: "...It's a gate. I go home through it every day." },
     { s: 'cherry', f: 'neutral', t: "Yeah. And we're watching you do it. Go. Walk. We're watching." },
     { n: "She walked. She could feel them watching her all the way down the street, until the corner, and at the corner she turned around, and they were all still there." }
@@ -655,6 +968,13 @@
       { n: "In her right coat pocket, Nana's spare leash, wound small. Collateral. *You want it back, you come get it. From me. In person.* She put her hand on it going down the stairs, and on the can in the left one, and walked out of her house holding both, one in each pocket, like a girl being weighed." }
     ] },
     { n: "Outside the snow was going up. All of it, the whole sky of it, past every streetlight on her street, so steadily that after a minute it stopped looking strange and started looking like the way snow had always gone, and that was the part that frightened her. The street was so quiet her boots sounded like somebody else's. Every house was dark. Every clock in every one of them, she knew without checking, said the same thing." },
+    // stakes pass (Nov 11 2026): one line for what yesterday cost, by the verdict (nothing else in the final changes)
+    { ifFlag: 'epi-h-out-falls', then: [
+      { n: "She wasn't the vice president of anything anymore. It was such a small thing to think, walking to the end of the world at midnight, and she thought it anyway, and found it didn't matter at all, and found that it did." }
+    ] },
+    { ifFlag: 'epi-h-out-split', then: [
+      { n: "*She's not going anywhere. I promise you.* She'd been hearing it all day, in his voice, in the speech voice, and she heard it again now on the empty street, and walked a little faster, as if she could get there before it stopped being true." }
+    ] },
     { glitch: { stage: 4 } },
 
     // ── Jungwon ──

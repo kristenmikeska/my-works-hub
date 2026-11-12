@@ -498,11 +498,12 @@
           { n: "He wanted it so badly that she could hear him take it, the whole lie, in both hands, and hold it to his chest like the snack bag in her doorway. It was everybody's lie. They'd all agreed on it, round the candles, like a vote. It was a kind one. She told herself that." },
           { s: 'junkyu', f: 'happy', t: "Okay. Okay. Kazuha. I'm gonna say thank you to her. For being scary on purpose." }
         ] },
-        { t: "I don't know what it was. But I'm not going anywhere tonight.", stat: { kindness: 1 }, then: [
+        { t: "I don't know what it was. But I'm not going anywhere tonight.", stat: { kindness: 1 }, flag: 'epi-h-trust-kyu', then: [
           { s: 'junkyu', f: 'sad', t: "...You don't know?" },
           { s: 'solar', f: 'neutral', t: "No. I'm in my bed. With a very loud dog. You can hear him. That's where I am." },
           { n: "He was quiet. Then he said *okay* very small, and she heard him take that instead, which was smaller and heavier and true, and put it somewhere he could keep it." },
-          { s: 'junkyu', f: 'neutral', t: "Okay. Then I'll just listen to where you are." }
+          { s: 'junkyu', f: 'neutral', t: "Okay. Then I'll just listen to where you are." },
+          { n: "In the morning there was a message in the old chat from him, sent at 4:12, to everyone: *if anybody says anything bad about solar this week tell me. i won't do anything. i'll just know.* Asahi had replied *ok*. So had Hyunsuk. That was the part she kept looking at." }
         ] },
         { t: "(Sing with him. Badly.)", stat: { courage: 1 }, then: [
           { s: 'solar', f: 'happy', t: "*And Nana is snoring, he's snoring so loud, and Kyu is a baby who's scared of a board...*" },

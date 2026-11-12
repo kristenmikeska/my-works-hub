@@ -71,6 +71,9 @@
    Canon held: Haechan is never named or reached for by name; nothing of sophomore year is filled in ("the last time" and "that
      party" stay unsaid); no drugs on the page; nobody mentions Jihoon's parents; no Danielle, no video; Cherry and Sunghoon stay
      "soon"; Hyunsuk is hurt; Mom doesn't ask about the temple; no { glitch: 'id' } lines.
+
+   Stakes pass (Nov 11 2026; stakes.js): epi-h-sunday reads epi-h-mom-called / epi-h-mom-after-exams (one line each) and its
+     "just a chair" answer sets epi-h-sus-chair.
 */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).hoax ||= {});
@@ -255,12 +258,19 @@
       { n: "Afterwards she dried while her mother finished the skirt, and the kitchen smelled of starch and hot cotton and sesame oil, and the radiator ticked, and her father went to the living room and turned the news on low and fell asleep in front of it inside ten minutes, the way he did every Sunday he was home." },
       { n: "Her mother set the iron on its heel. She didn't look up from the pleats." },
       { s: 'mom', f: 'neutral', t: "I'm not going to ask you anything tonight." },
+      // stakes pass (Nov 11 2026): she called the school on Friday (stakes.js epi-h-armband, sus ≥ 3)
+      { ifFlag: 'epi-h-mom-called', then: [
+        { n: "She'd called the school on Friday. She knew there'd been no retreat. Neither of them had said a word about it since, and it stood in the kitchen with them now like a third person at the ironing board, holding the other end of the skirt." }
+      ] },
+      { ifFlag: 'epi-h-mom-after-exams', then: [
+        { n: "*Friday,* her mother had said, with the armband buttoned into her cardigan pocket. The cardigan was on the back of the kitchen chair. The pocket was still buttoned." }
+      ] },
       { n: "Solar's hands stopped on the bowl she was drying." },
       { s: 'mom', f: 'sad', t: "You sat in your father's chair. You've been sitting there since you came home. Where you can see the door. You never used to care where you sat. You used to sit wherever the dog wasn't." },
       { s: 'mom', f: 'sad', t: "I'm not asking. I'm telling you I see it." },
       { n: "The radiator ticked. In the living room the news murmured about the roads. Under the table, Nana lifted his head." },
       { choose: [
-        { t: "\"It's nothing, Mom. It's just a chair.\"", then: [
+        { t: "\"It's nothing, Mom. It's just a chair.\"", flag: 'epi-h-sus-chair', then: [
           { s: 'mom', f: 'neutral', t: "Okay." },
           { n: "It was the kind of okay that meant the opposite and had decided to wait. Her mother picked the iron back up and finished the last pleat, and hung the skirt beside the blazer, and smoothed it once with her palm, and the okay stayed in the kitchen with them, folded small, like a receipt in a coat pocket." }
         ] },

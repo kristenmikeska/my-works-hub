@@ -893,6 +893,14 @@
       { s: 'jungwon', f: 'serious', t: "All in favour of being there. In the gym. At midnight, when it comes. All of us." },
       { s: 'solar', f: 'surprised', t: "Won—" },
       { s: 'jungwon', f: 'neutral', t: "It's a council matter. The vice president can abstain." },
+      // stakes pass (Nov 11 2026): if the hearing removed her (story-end.js, the falls outcome)
+      { ifFlag: 'epi-h-removed', then: [
+        { s: 'solar', f: 'sad', t: "I'm not the vice president, Won. A hundred and thirty-one people said so. It's on the stream." },
+        { s: 'heeseung', f: 'serious', t: "The acting vice president has reviewed the stream and overrules it. On this roof. Tonight. For the record." },
+        { s: 'jay', f: 'neutral', t: "Can he do that?" },
+        { s: 'heeseung', f: 'serious', t: "He's acting. He can act however he wants." },
+        { n: "He wrote it on the clipboard. She saw it later, over his arm: under *acting VP, 1/11*, in smaller writing, *(not really)*, and then her name, and a line under it, twice." }
+      ] },
       { n: "Seven hands went up. Niki put up both again, and then Sunghoon's other one, and Sunghoon let him again. Sunoo was crying already, quietly, into a croissant, with his hand straight up in the air like he was afraid it would be missed." },
       { s: 'heeseung', f: 'serious', t: "Motion carries. Seven to nothing. One abstention. I'm writing it down." },
       { choose: [

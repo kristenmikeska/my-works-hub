@@ -521,3 +521,8 @@ Scenes: `data/epi/strangers/story-yang.js` (header documents them), plus small a
 - 52D `epi-s-yang-dinner`: `{ cg }` before "He put it in Haechan's bowl." and `{ cg: null }` after the line ending "…a dog that had done something right."; cgFocus; ALBUM (date order: 2/21, after `epi-s-quay`'s).
 - 52E `epi-s-camellias`: `{ cg }` before "She taught her." and `{ cg: null }` after Madam Kang's "We'll see."; cgFocus; ALBUM (3/9).
 - Backgrounds are stand-ins (world.js): Garden Room → `epi-s-sunroom`, Dining Room / Living Room → `epi-s-yang-house` (the hall). Real ones would go in EPILOGUE-BACKGROUND-PROMPTS.md if Kat wants them. WebP q86, DATA_V bump.
+
+## 53. HOAX stakes pass (Nov 11)
+Scenes: `data/epi/hoax/story-end.js` `epi-h-hearing` (the outcomes are documented in `data/epi/hoax/stakes.js`).
+- 53A `epi-h-hands`: only in the falls outcome (`{ ifFlag: 'epi-h-out-falls' }` branch): a `{ cg: 'epi-h-hands' }` before the line beginning "They went up like a field of something" and `{ cg: null }` after Chaewon's "The motion carries. Kim Solar is removed from the office of vice president."; cgFocus in places.js; `ALBUM.hoax` tile after `epi-h-hearing` (the album shows it locked on saves that never got this outcome). WebP q86, DATA_V bump.
+

@@ -48,9 +48,66 @@
        socks, the recycling-bin plan, his texts from inside; the porch: the lamp left on in the front room, the dented kettle,
        Jihoon on the dorm's front step at 3 a.m. from the guesthouse with Koromaru on his feet, "same time tomorrow"
        until the pots are green.
+
+   Stakes pass (Nov 11 2026; stakes.js): epi-h-makeup reads heat at lunch (≥ 5 / ≤ 2) and the party debt
+     (epi-h-party-owe-eunchae: paid by the quote, else Eunchae posts the photo → epi-h-heat-owed); epi-h-prom: Chaewon's nod
+     (epi-h-party-chaewon), epi-h-trust-prom on the laminator, and the leak (if epi-h-party-phone, from her phone; else if heat
+     ≥ 4, from Jake's, shown to Taeoh at the party): own it (epi-h-trust-owned) / call it fake (epi-h-heat-deny) / let
+     Heeseung take it (epi-h-leak-heeseung).
 */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).hoax ||= {});
+  // Stakes pass (Nov 11 2026; stakes.js documents the scores). IF = { ifCount } on a score (stakes.js loads first).
+  const IF = R.stakesIf || ((sc, range, then, els) => ({ ifCount: { of: [], ...range }, then, else: els || [] }));
+  // The leak (1/9, epi-h-prom): RETREAT FACTS screenshotted. mine = from her own phone (the Nana picture went round the den at
+  // Dohyun's, story-party.js: epi-h-party-phone); else from Jake's, shown to the football team at the party.
+  const leak = mine => [
+    { n: "Jake had got his phone back. He was reading the forum out loud again, in the newscaster voice, under his breath, to annoy Jungwon, and then he stopped in the middle of a word, and the newscaster voice went, and what was left was just Jake." },
+    { s: 'jake', f: 'surprised', t: "...Uh. Guys." },
+    { s: 'forum', t: "NEW THREAD · RETREAT FACTS (do not leave) — the council's group chat. they REHEARSED it. (screenshots, 4)" },
+    { n: "Four screenshots. Heeseung's drill, every line of it, the way they'd all had it laminated in their heads since the twenty-second: *if asked about the bell: 4 a.m. if asked about food: rice, soup, radish. if asked about phones: basket at the gate. if asked WHICH temple: small, no sign, you wouldn't know it.* And under it, Niki's *what if they ask about the monks' names*, and Heeseung's *They will not ask about the monks' names, Niki.*" },
+    { n: "It had four hundred replies. It had been up for nineteen minutes." },
+    ...(mine ? [
+      { n: "She knew whose phone it was before anybody else did. In a group chat your own messages sit on the right, and in all four screenshots the messages on the right were hers. *ok. bell 4am. radish. got it.* Her own words, in her own blue bubbles, under the date of the twenty-second." },
+      { n: "Eight minutes. Dohyun's den. Her phone going round the room with Nana on the screen, unlocked, out into the hall and back with a smudge and a crack in the case. Somebody had swiped left." },
+      { n: "One by one, round the table, they worked it out too. She watched it go round, face by face. Heeseung last, because Heeseung was reading the screenshots for errors first." }
+    ] : [
+      { n: "In a group chat your own messages sit on the right. In all four screenshots, the messages on the right were Jake's. *got it got it got it. 4am. radish. very spiritual.*" },
+      { s: 'jake', f: 'sad', t: "...I showed Taeoh. At the party. For like a second. He asked if the temple was real and I was like, look, we have *facts*, and I— he must've— oh my God. Oh my God, I'm the leak. I'm the guy. I'm the guy in the movie." },
+      { n: "Nobody said anything. Jake put his phone face down on the table like it was hot, and then picked it up again, because it wasn't going to stop being true face down." }
+    ]),
+    { s: 'heeseung', f: 'serious', t: "Two days. Two days before the hearing." },
+    { n: "Jungwon hadn't said anything. He was looking at the whiteboard. PROM, and the box, and nothing, and the snow behind it, and she could see him doing the maths, the way he did any maths, quickly and without wanting to: how many people had seen it, how many would by Thursday, what Chaewon would say about a story that came with a script." },
+    { choose: [
+      { t: mine ? "\"It's from my phone. That's on me. I'll own it.\"" : "\"It doesn't matter whose phone. We all wrote it. We own it.\"", flag: 'epi-h-trust-owned', stat: { courage: 1 }, then: [
+        { s: 'solar', f: 'serious', t: mine ? "It's my phone. I passed it round at a party to show people my dog, like an idiot. That's on me. Not Jake, not Heeseung. Me." : "It doesn't matter whose phone it was. Jake didn't write it. We all wrote it. We all said *radish* to our parents' faces. We own it. All of us." },
+        { n: "Nobody spoke for a second. Then Heeseung, very slowly, put his clipboard down on the table, face down, which he had never done in the whole time she'd known him." },
+        { s: 'heeseung', f: 'neutral', t: "Rehearsed isn't the same as lying." },
+        { s: 'jay', f: 'neutral', t: "Bro. It's exactly the same as lying." },
+        { s: 'heeseung', f: 'neutral', t: "I know. I'm workshopping it." },
+        { n: "But something had changed in the room. She could feel it, the way you feel a draught stop. Jake had his head up again. Niki had stopped pretending to look at his phone. Sunoo had come round the end of the table to stand beside her chair, which he did when he didn't know what else to do, and then Jungwon reached out without looking and put his hand flat on the table next to hers, not on it, next to it, like a man putting his name on a list." },
+        { s: 'jungwon', f: 'neutral', t: "Then Thursday we don't pretend it wasn't rehearsed. We say why." },
+        { s: 'niki', f: 'neutral', t: "And why WAS it rehearsed?" },
+        { s: 'jungwon', f: 'neutral', t: "...I'm working on that part." }
+      ] },
+      { t: "\"Say it's fake. Look at the font. Nobody can prove anything.\"", flag: 'epi-h-heat-deny', then: [
+        { s: 'solar', f: 'serious', t: "It's fake. Say it's fake. Look at it, the font's weird, the timestamps are weird, anybody can make a group chat screenshot. Jake, post that it's fake." },
+        { n: "Jake looked at Heeseung. Heeseung looked at the ceiling. Jake posted it." },
+        { s: 'forum', t: "jakeyy commented: lol this is so photoshopped. the font is literally wrong. nice try" },
+        { n: "It took forty minutes. Somebody with nothing to do on a Tuesday night put the screenshots side by side with a real screenshot of the same app, same font, same bubbles, same everything, and drew arrows, and posted it under Jake's comment with the single word *wrong*, and it had more likes than the leak." },
+        { s: 'forum', t: "re: RETREAT FACTS (leaked) · ok so not only did they rehearse it, they're lying about rehearsing it. respectfully what is going ON" },
+        { n: "Heeseung didn't say anything. He didn't have to. He picked his clipboard back up and wrote something on it, and she didn't need to read it to know it was a number, and that the number was worse." }
+      ] },
+      { t: "(Let Heeseung handle it. It's his forum.)", flag: 'epi-h-leak-heeseung', then: [
+        { n: "She looked at Heeseung. Everybody looked at Heeseung. He was a forum moderator; he could lock it, delete it, make it go away in two taps. She watched him think about it." },
+        { n: "He didn't delete it. He locked it, and under it, from his own account, not the moderator one, he posted a single line." },
+        { s: 'forum', t: "heeeseung commented: I wrote the facts. It's my document. If anyone has questions about it, they can ask me on Thursday." },
+        { n: "Then he put his phone in his bag and zipped the bag, and sat back, and folded his arms, and looked at the whiteboard, and he looked, Solar thought, exactly like a boy who'd been fired from a job once for somebody else and had found out, just now, that he'd do it again." },
+        { s: 'sunoo', f: 'sad', t: "...Hyung." },
+        { s: 'heeseung', f: 'neutral', t: "Plug in the laminator, Sunoo." }
+      ] }
+    ] }
+  ];
   (R.events ||= []).push(
 
   // ───────────────────────────── 1/4, after: snowed in ─────────────────────────────
@@ -522,6 +579,14 @@
     { place: 'Hanlim · School', time: 'Daytime', soft: true },
     { music: 'epi-h-goofy' },
     { n: "By lunch every first-year at Hanlim had a video of the upward snow, the forum had a thread called INVERSION OR GHOST COUNCIL (poll), and Solar's phone buzzed twice on the cafeteria table before she'd even sat down." },
+    // stakes pass (Nov 11 2026): how loud it's got (heat so far)
+    IF('heat', { min: 5 }, [
+      { n: "And everybody was looking. Not glancing; looking, the way you look at a car with its hazards on. Two girls at the next table moved one table further away when she sat down, and then, ashamed of themselves, moved back. A boy she'd never spoken to said *good luck Thursday* on his way past in the voice you'd use at a funeral. Every single thing she'd given the forum since the twenty-ninth was in the room with her, sitting at the other tables, holding its phone." }
+    ], [
+      IF('heat', { max: 2 }, [
+        { n: "And for once, at lunch, nobody was looking. The forum had the snow; the snow was weirder than she was. A first-year at the next table was arguing that it was a sign of the end times and her friend was arguing that it was a sign of climate change, and neither of them had glanced at the vice president once, and Solar sat in the middle of it and ate her rice and felt, for ten whole minutes, like furniture. It was lovely." }
+      ])
+    ]),
     { phone: [
       { from: 'school', t: "Notice: A motion concerning the Student Council has been formally filed with the Student Affairs Office. A hearing will be held Thursday, January 11, in the gymnasium after the final period. Moderator: Kim Chaewon (Debate Society). Attendance is open to all students." }
     ], contact: 'school' },
@@ -555,6 +620,20 @@
         { n: "She was gone as fast as she'd come, off to ambush Heeseung by the vending machine. Heeseung saw her coming and walked directly into a wall." }
       ] }
     ] },
+    // stakes pass: the party debt (story-party.js, the tip: epi-h-party-owe-eunchae)
+    { ifFlag: 'epi-h-party-owe-eunchae', then: [
+      { ifFlag: 'epi-h-eunchae-quote', then: [
+        { n: "On her way out of the cafeteria Eunchae caught her eye across three tables and held up one finger, and then, slowly, crossed it out in the air with the other hand. *Paid.* Solar had never been so glad to owe a first-year nothing." }
+      ], else: [
+        { flag: 'epi-h-heat-owed' },
+        { n: "Eunchae came back. She came back on her own, at the end of lunch, without the ring light, and stood at the end of the table with her phone held against her chest, the way she had at Dohyun's." },
+        { s: 'eunchae', f: 'sad', t: "I asked for a real one, unnie. You owed me a real one." },
+        { s: 'solar', f: 'surprised', t: "Eunchae—" },
+        { s: 'eunchae', f: 'serious', t: "Someone else sent it in again. This morning. Unblurred. I've been sitting on it for ten days for you. I'm not sitting on it anymore. I'm posting mine, so at least it's blurred." },
+        { n: "She did. Right there, at the end of the table, with her thumb. *VP AT DOHYUN'S, 12/29 (blurred) (she asked me not to) (she owed me)*. The hallway. The goggles photo. Her own face, looking toward the kitchen, and behind her, smeared to a thumbprint, a head that half of Hanlim was already sure it knew." },
+        { n: "It had five hundred likes by fifth period. Every one of them felt like somebody tapping on glass." }
+      ] }
+    ] },
     { n: "Three days. She looked out the cafeteria window. The snow was coming down the right way now, slow and ordinary and white, and she watched it for a long while to make sure it stayed that way." }
   ] },
 
@@ -581,6 +660,9 @@
     { n: "Everybody drank. They were drinking milk cartons from the vending machine, but it was the principle of the thing. Sunghoon put his face in his hands. Solar was laughing, and Jungwon was looking at the whiteboard with the expression of a president watching his administration fall apart in real time, when somebody knocked on the open door." },
     { n: "Three knocks. Precise. Evenly spaced." },
     { s: 'chaewon', t: "Is this a bad time?" },
+    { ifFlag: 'epi-h-party-chaewon', then: [
+      { n: "Solar thought, at once, of a stack of index cards on a landing, and a card turned round for her to read. *4. Nobody is removed for a rumour.* Chaewon caught her eye for exactly one second, and nodded, and didn't do it again." }
+    ] },
     { n: "Kim Chaewon, captain of the debate society, stood in the doorway with a binder under her arm and her school jacket buttoned all the way up, and the whole council room sat up straight like a teacher had walked in. She wasn't a teacher. She just had the kind of face that made you check whether your tie was on right." },
     { s: 'jungwon', f: 'neutral', t: "No. Come in." },
     { s: 'chaewon', t: "I won't take long. I'm moderating Thursday, and I'd rather you heard the rules from me than from the forum." },
@@ -602,11 +684,14 @@
         { s: 'jungwon', f: 'happy', t: "She is." },
         { n: "He said it like he'd decided something. He looked at the whiteboard. PROM, and the box, and nothing else." }
       ] },
-      { t: "\"Okay. Nobody panic. Sunoo, plug the laminator back in.\"", stat: { kindness: 1 }, then: [
+      { t: "\"Okay. Nobody panic. Sunoo, plug the laminator back in.\"", stat: { kindness: 1 }, flag: 'epi-h-trust-prom', then: [
         { s: 'sunoo', f: 'happy', t: "Okay!!" },
-        { n: "He plugged it back in. It warmed up with a hopeful little click. It still had nothing to laminate, but it was the principle of the thing." }
+        { n: "He plugged it back in. It warmed up with a hopeful little click. It still had nothing to laminate, but it was the principle of the thing." },
+        { n: "And just like that the room came back. Jake reached for the marker. Niki wrote *HAUNTED* under PROM and Heeseung didn't stop him. Jay said *no sequins* and wrote that too. It wasn't a plan. It was seven people writing on a whiteboard because she'd told them nobody was allowed to panic, and they'd believed her." }
       ] }
     ] },
+    // stakes pass (Nov 11 2026): the leak. It comes if her phone went round at Dohyun's, or if the forum is hot enough anyway.
+    { ifFlag: 'epi-h-party-phone', then: leak(true), else: [IF('heat', { min: 4 }, leak(false))] },
     { n: "When she left at five, the whiteboard still said PROM and nothing else, and through the window behind it the snow was coming down slow and ordinary over the courtyard, and she caught herself watching it for a long time, waiting to see which way it went." }
   ] },
 
