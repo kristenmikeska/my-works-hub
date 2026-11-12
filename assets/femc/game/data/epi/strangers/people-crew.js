@@ -1,7 +1,9 @@
 /* Nov 11 2026 (Kat): length ("look for scenes that need length, more dialogue"). Marked "// Nov 11 2026 (Kat): length"; no id,
    gate, choice, flag or outcome changed. house-1 'pleats' (Haechan's nine-pleat dumpling, Pyo's cat, Mr. Oh's bridge day),
    mroh-1 'ten and two' (four men at the ferry-terminal lights; the locks; the long way up the hill), sunghoon-1 'the limit'
-   (up the path with Haechan: "One of us is a professional."), niki-1 'the wall' (Yunjin at her window; Minseok bolts the gate). */
+   (up the path with Haechan: "One of us is a professional."), niki-1 'the wall' (Yunjin at her window; Minseok bolts the gate).
+   Week 2: girls-1 'four frames' (Haechan with the bags by the fountain; seven in the booth; "Evidence."), mroh-2 'the front
+   seat' (Mrs. Bang and the towel; soup for Mr. Oh). */
 /* The strangers epilogue (2/17-3/16/2013, Incheon): the other home bonds (R.bonds), two hangouts each, and the act's routines
    (R.routines). Writer F, epilogue batch 7 (2026-10-28). Data only; loaded with the world (epilogue.js). Bonds go through add()
    so they merge with people.js (Writer E: haechan, jungwon, yunjin, appa, eomma) in either load order. Role 'friend' for all.
@@ -555,7 +557,16 @@
         ] }
       ] },
       { n: "At the steps he got out and came round and opened her door, the front one, as if it was the door he'd been opening all his life." },
-      { s: 'mroh', f: 'neutral', t: "Home now." }
+      { s: 'mroh', f: 'neutral', t: "Home now." },
+      // Nov 11 2026 (Kat): length. Wet hair on a March night, and Mrs. Bang.
+      { n: "Mrs. Bang was in the open front door with a towel over her arm, as if she'd been there since the car turned in at the bottom of the hill, which she had." },
+      { s: 'mrsbang', f: 'serious', t: "Wet hair. In March. In the dust. In the front seat." },
+      { s: 'solar', f: 'neutral', t: "How do you know I sat in the front?" },
+      { s: 'mrsbang', f: 'neutral', t: "Because he's moved his newspaper. Look at him. He's never moved that newspaper for anybody. Not for your mother. Not for me." },
+      { n: "Mr. Oh, at the car door, looked at the newspaper on the back seat. He looked at Mrs. Bang. Something passed between the two of them over Solar's head that was older than anything she'd ever been told about either of them, and neither of them was going to tell her a word of it." },
+      { s: 'mroh', f: 'neutral', t: "She asked." },
+      { s: 'mrsbang', f: 'neutral', t: "Hm." },
+      { n: "Mrs. Bang put the towel over Solar's head, hat and all, and rubbed, hard, the way she'd rubbed her dry after the bath when she was four, and steered her in by the back of the neck, and over her shoulder, to the drive, in a voice she didn't use in the kitchen, said *there's soup, Oh-ssi, if you want it,* and Mr. Oh said *thank you,* and came in for it, which Solar had never once seen him do." }
     ] }
   ]);
 
@@ -606,7 +617,21 @@
           { n: "In the last frame everyone was looking at the lens except her. She was looking at Yunjin, who was laughing with her whole face, head back, the way she hadn't laughed since December. When the strips came out of the slot, Yunjin looked at that frame for a long time. She tore it off along the line very carefully, and put it in the clear pocket of her phone case, behind the phone, and didn't say anything about it at all." }
         ] }
       ] },
-      { n: "There were six strips, one each. Kazuha held hers up to the light and squinted at the third frame and announced, with total serenity, that there was somebody standing behind Solar in it. Everybody looked. It was the curtain. Sakura told her it was the curtain. Kazuha said that was what it wanted them to think." }
+      { n: "There were six strips, one each. Kazuha held hers up to the light and squinted at the third frame and announced, with total serenity, that there was somebody standing behind Solar in it. Everybody looked. It was the curtain. Sakura told her it was the curtain. Kazuha said that was what it wanted them to think." },
+      // Nov 11 2026 (Kat): length. Somebody has been holding the shopping bags.
+      { n: "By the escalator, with four shopping bags that weren't his hanging off his fingers and a fifth in his teeth by its string handles, the house's driver for the afternoon was standing with his back to the photobooth, very carefully looking at a fountain." },
+      { n: "Haechan. The house had sent Haechan, because Mr. Oh had taken her mother to the bank, and he had been standing by that fountain holding the girls' bags for forty minutes with the expression of a man guarding a shipment of something that might go off." },
+      { s: 'eunchae', t: "Is that your bodyguard?" },
+      { s: 'solar', f: 'neutral', t: "He's the driver." },
+      { s: 'kazuha', t: "He looks like he would fight a duck. And win. But feel bad after." },
+      { s: 'sakura', t: "He's been looking at that fountain since we came. Nobody looks at a fountain that long. He's looking at us in the glass." },
+      { n: "Sakura was right. Solar had seen it already. The glass wall behind the fountain held the whole photobooth, the pink curtain, the six of them spilling out of it; he could see every one of them without turning his head, and he'd been doing exactly that, for forty minutes, the bag string in his teeth." },
+      { s: 'chaewon', t: "One more frame. Seven people. It's a guideline." },
+      { s: 'yunjin', f: 'happy', t: "DELIVERY BOY. GET IN THE BOOTH." },
+      { n: "He took the bag out of his teeth. He looked at the booth, the curtain, the six of them, as if he'd been asked to climb into a washing machine. Then he looked at Solar, once, the quick look he used on doors, and put the bags down in a neat row by the fountain, and came." },
+      { n: "Seven didn't fit. They made it fit. He ended up crouched at the front with Eunchae standing on his thigh and Kazuha's elbow on his head, very still, very dignified, being used as furniture, and in the last frame, when Chaewon counted three, he did the cute pose, both hands, the heart, the tilt, the full thing, with an absolutely dead face, and the booth exploded." },
+      { n: "Seven strips. The machine only made six. Chaewon fed it another coin without a word and gave the seventh to him, and he looked at it for a long time, the frame with his dead face and his heart hands and all six of them screaming behind him, and Solar in the corner of it, laughing so hard she was blurred, and put it inside his jacket, in the pocket over his heart, the way you'd put away a receipt you meant to keep for tax." },
+      { s: 'haechan', f: 'neutral', t: "Evidence." }
     ] },
 
     { id: 'epi-s-girls-2', title: 'high score', hint: "The girls have found an arcade on the top floor in Songdo. Sakura is already winning.",
