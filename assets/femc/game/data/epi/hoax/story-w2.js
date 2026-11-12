@@ -777,6 +777,9 @@
       { n: "The last time she'd stood in this room it had been a Monday, two lunches on the table going cold, something left unfinished that she still hadn't let herself finish thinking about. Then the world had come apart, and she'd been gone a year." },
       { n: "Past the whiteboard, where the wall should have been, the floor kept going. Black and gold tile, a long corridor of it, the light at the end the particular wrong gold she knew the way you know your own handwriting." },
       { n: "Tartarus. Coming through Hanlim's council room like water through a ceiling." },
+      // Nov 11 2026 (Kat): the gym
+      { n: "Behind her the council-room door stood open on the corridor, and the corridor ran dark all the way down to the gym. The gym's double doors were the only thing in the whole school that hadn't gone green. They were just dark, and humming, low and even, like a fridge left running in an empty house, a note she felt in her back teeth before she heard it, the same note that had been under her shoes three weeks ago, a second before the far wall of that gym stopped being a wall." },
+      { n: "She turned her back on them. It felt like turning your back on a dog you didn't know." },
       { n: "Her hand went to her hip, where there was nothing. Then there was something, the long smooth haft of it, cold and exactly the right weight, the blade end tipping past her shoulder, and she didn't look at it, because if she looked at it she'd have to decide what it meant that it was here." },
       { n: "Something came out of the gold end of the corridor, low and too wide, dragging itself along on hands." },
       { n: "Haenim. She called it the way you'd say your own name in the dark to prove you still had one, and something answered, far away and fizzing, the name coming apart in her mouth like a radio between stations, *Hae-, Haen-, H—*, and the light came anyway. Not all of it. Enough." },

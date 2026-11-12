@@ -297,6 +297,8 @@
     ] },
     { n: "The whole school was in the bleachers. The first-years at the top, the third-years at the bottom where they could leave first, teachers along the walls with their arms crossed and their faces arranged into neutrality, the principal by the doors pretending to be on her phone. The folding chairs from assembly were out in rows on the floor, and every one of them was taken." },
     { n: "Up on the wall above the scoreboard the gym clock said 12:00. It had said 12:00 since that morning. Facilities had been told. Nobody looked at it anymore." },
+    // Nov 11 2026 (Kat): the gym
+    { n: "This was the room. She'd known it for three weeks the way you know which stair creaks, and she let herself think it now, all the way through, with the whole school sitting on top of it: this was the room. Out there under the folding chairs was the free-throw line where she'd landed. At the far end, past the stage, was a stretch of painted cinderblock that had been a door for exactly as long as it took all of them to walk through it. The floor still smelled of the same polish. The cold still came in under the side doors in a flat line. And under all the noise of the bleachers, so low she'd stopped being sure anyone else could hear it, the room was humming." },
     { n: "Front row center, with her phone on a little gimbal and a ring light clipped to it that was technically against at least three rules, Eunchae was live." },
     { s: 'eunchae', t: "We are LIVE, chat. We are so back. Chaewon has index cards. *Chaewon has index cards.* This is the most important day in Hanlim history and I'm wearing my lucky socks." },
     { s: 'stream', t: "chaewon would impeach god" },
@@ -988,6 +990,11 @@
       { s: 'jungwon', f: 'serious', t: "I left a note on the kitchen counter. It says where I am." },
       { s: 'solar', f: 'surprised', t: "Won. Your *parents*—" },
       { s: 'jungwon', f: 'serious', t: "I'm not lying about this one." },
+      // Nov 11 2026 (Kat): the gym
+      { s: 'solar', f: 'serious', t: "How did you know? I didn't text you. I didn't text anyone." },
+      { s: 'jungwon', f: 'serious', t: "I woke up at eleven-forty." },
+      { n: "He said it to the windshield, both hands on the wheel." },
+      { s: 'jungwon', f: 'serious', t: "My clock said twelve. Then it didn't. And the snow outside my window was going up, and I knew where you'd go, because it's where we came out. I've taken the back stairs all week so I wouldn't have to walk past it. I thought tonight I'd better not." },
       { n: "His mom's car smelled like a hotel lobby and like him underneath it, and the heater was on full and the wipers were going and the snow wasn't landing on the windshield. It came up off the hood and went past the glass the wrong way, and the wipers swept at nothing, back and forth, back and forth, very faithfully, and neither of them said anything about it." },
       { n: "He drove with both hands at ten and two and his eyes on the road and his jaw set, at exactly the speed limit, through a town where nobody else was awake to be speeding, and at every red light he stopped, and waited, and looked at the light like it might do something, and went when it went green. She'd never loved anything as much as she loved him stopping at those red lights." },
       { ifFlag: 'epi-h-rink', then: [
@@ -1017,6 +1024,11 @@
       { s: 'jihoon', f: 'neutral', t: "Took you long enough." },
       { s: 'solar', f: 'surprised', t: "How did you know?" },
       { s: 'jihoon', f: 'neutral', t: "Sol. I've known you since you ate glue. You think I don't know when you're about to do something stupid at midnight?" },
+      // Nov 11 2026 (Kat): the gym
+      { n: "He said it like a joke. Then he looked down at the lids of the cocoas and picked at one with his thumbnail, and the joke went out of his face a little at a time, like a room after a party." },
+      { s: 'jihoon', f: 'sad', t: "...My ears popped. Eleven-forty. Like a plane. I was on the couch and the snow outside went the wrong way, up, and I said out loud, to nobody, *nope, I don't believe in that*, and then I was in the car, and I don't remember buying the cocoas." },
+      { s: 'jihoon', f: 'neutral', t: "I didn't decide where. My hands just drove here. Don't make it a thing. I've parked with my back to this building all week, Sol. I hate this building. I don't know anything about doors." },
+      { n: "He knew exactly where the door was. He'd spent three weeks facing away from it. She didn't say so, and he saw her not say it." },
       { ifFlag: 'epi-h-jihoon-remembers', then: [
         { s: 'jihoon', f: 'sad', t: "...And I remember. I told you. All of it. I know what midnight is." }
       ] },
@@ -1026,6 +1038,10 @@
       { s: 'jihoon', f: 'neutral', t: "Oh, great. The hall monitor." },
       { s: 'jungwon', f: 'serious', t: "Did you bring her here?" },
       { s: 'jihoon', f: 'neutral', t: "She brought herself. She's a grown woman. She's eighteen. She can vote." },
+      // Nov 11 2026 (Kat): the gym
+      { s: 'jihoon', f: 'neutral', t: "And how'd *you* know, Yang? She didn't text you. I'd know." },
+      { s: 'jungwon', f: 'serious', t: "Eleven-forty. The snow." },
+      { n: "Jihoon's mouth opened on a joke and shut on nothing. For one second they looked at each other like two boys who'd heard the same noise in the same empty house. Then it was gone." },
       { n: "Jungwon walked straight to her. Jihoon slid off the table into his way, shoulder first, not hard, the way boys do when they want to see if you'll move. Jungwon didn't move. They stood there chest to chest in the dark gym, Jihoon a head taller and Jungwon not caring, two boys who'd fought in a hallway and a parking lot and on a forum and would do it again." },
       { s: 'solar', f: 'serious', t: "If you two do this tonight, I will haunt you. Both of you. Literally. I'm halfway there already." },
       { n: "A long second. Then Jihoon stepped back, and picked up the other cocoa, the one that was his, and held it out to Jungwon without looking at him." },
@@ -1055,7 +1071,13 @@
       { s: 'niki', f: 'surprised', t: "You WHAT." },
       { s: 'jay', f: 'neutral', t: "He's dead. He's a dead man. Rest in peace." },
       { s: 'niki', f: 'happy', t: "He's so brave. He's like a soldier. He's like a soldier who's also a dead man." },
-      { s: 'jungwon', f: 'serious', t: "I'm not lying about this one." }
+      { s: 'jungwon', f: 'serious', t: "I'm not lying about this one." },
+      // Nov 11 2026 (Kat): the gym
+      { s: 'solar', f: 'surprised', t: "How are you all *here*? I didn't tell anyone. I didn't even tell Cherry." },
+      { s: 'heeseung', f: 'serious', t: "Eleven-forty. Every clock in every one of our houses said twelve. Niki sent a video of the snow going up past his window to RETREAT FACTS." },
+      { s: 'niki', f: 'neutral', t: "Eleven seconds. No caption. I'm a professional." },
+      { s: 'jay', f: 'neutral', t: "I typed *gym*. Nobody typed anything after that." },
+      { s: 'heeseung', f: 'serious', t: "We all came out of that wall, Solar. Where else were you going to go." }
     ] },
     { ifEpiRoute: 'council', then: [
       { ifFlag: 'epi-h-roof-vote', then: [
@@ -1151,6 +1173,9 @@
     { n: "Through the green. Not from the seam. From somewhere else, from behind it, from beside it, warm, the colour of a hallway light someone had left on for you, and it came through the bleed in the air like light under a door, and with it, so faint she thought for a second she'd made it up, a voice." },
     { s: 'bleed', t: "Sol." },
     { n: "She knew it before the second word. Every part of her that was going knew it, and turned toward it, the way a plant turns." },
+    // Nov 11 2026 (Kat): the gym
+    { n: "And she knew where it was coming from. Not the gym, and not the tower. The pull wasn't reaching into one world for her; it was reaching into all three of hers at once, and for this one instant the walls between them had gone thin right where she was standing, thin as the wall between two hotel rooms at three in the morning, and sound was carrying through." },
+    { n: "He wasn't here. He'd never been here. He was in his own world, at the same midnight, on the other side of that wall, a rooftop in Syracuse or a back step in Incheon, she couldn't have said which and it didn't matter, reaching from his side with the only part of him that fit through, which was his voice." },
     { s: 'bleed', t: "I said I wouldn't come looking. That was if you picked. You didn't pick this." },
     { n: "Jungwon went very still." },
     { n: "Not loose. Still. The way he went still over a problem when he'd seen the answer before he'd finished reading the question. She felt it go through his whole body, his arms, his chest against her, his breath stopping." },

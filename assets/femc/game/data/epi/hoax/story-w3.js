@@ -583,6 +583,20 @@
     ] },
     { n: "The snow fell up for nine minutes, and then it just stopped, and hung there a moment, and came down properly, like it was embarrassed. She did question four. She showed her working." },
     { place: 'Hanlim · School', time: 'Daytime', soft: true },
+    // Nov 11 2026 (Kat): the gym
+    { n: "The way from Room 3-4 to the cafeteria went down the main stairs and along the corridor past the gym, and she'd walked it a thousand times, and she walked it now with Cherry hanging off her arm complaining about question two, and slowed down without meaning to at the double doors." },
+    { n: "They were shut. The wired glass in each was dark. And the cold was coming under them, not a draft, a cold, flat and steady across the toes of her shoes, the cold of a window left open somewhere a very long way off, and it smelled of floor polish, sharp and sweet, exactly the smell of three weeks ago, of the free-throw line and the snow melting off her shoulders into the varnish. Behind the doors, low and even, something hummed. She'd heard that hum before. In a council room at midnight that hadn't been one." },
+    { n: "Cherry tugged her arm and didn't slow down at all. Either Cherry didn't feel it, or she felt it and had decided, the way Cherry decided things, that it could fuck off." },
+    { n: "Jihoon wasn't with them. She looked back for him and found him through the corridor windows instead, outside, cutting across the courtyard in the snow in his shirtsleeves with his hands in his pockets, taking the long way round to the cafeteria's side door, which added a whole building." },
+    { ifEpiRoute: 'jihoon', then: [
+      { n: "He was holding the side door open for her when she got there, his ears red, snow in his hair, grinning like he'd won something." },
+      { s: 'jihoon', f: 'happy', t: "Fresh air. I'm a fresh air guy now. It's a pilates thing." },
+      { s: 'solar', f: 'neutral', t: "Your lips are blue." },
+      { s: 'jihoon', f: 'neutral', t: "That's the fresh air working." },
+      { n: "He didn't look down the corridor toward the gym once. She watched him not look." }
+    ], else: [
+      { n: "By the time she got to the cafeteria he was already at the old table with snow melting in his hair, and when Hyunsuk asked why he'd gone round he said *fresh air, it's a pilates thing*, loud enough for the next three tables, and didn't look toward the corridor once." }
+    ] },
     { music: 'epi-h-goofy' },
     { n: "By lunch every first-year at Hanlim had a video of the upward snow, the forum had a thread called INVERSION OR GHOST COUNCIL (poll), and Solar's phone buzzed twice on the cafeteria table before she'd even sat down." },
     // stakes pass (Nov 11 2026): how loud it's got (heat so far)
@@ -651,6 +665,17 @@
     { ifFlag: 'epi-h-gym-plan', then: [
       { n: "Under PROM, Heeseung uncapped the marker and wrote, very small, *gym → Wed night*, and drew a box around it, and nobody said anything, and everybody looked at it." }
     ] },
+    // Nov 11 2026 (Kat): the gym
+    { n: "She'd come up the main corridor, past the gym. Jungwon had come up the back stairs by the art room, two flights and a fire door and four extra minutes, the way he'd come up them yesterday at the make-ups too, and she'd only put it together this morning, watching him peel off at the bottom of the main stairs like the corridor was wet paint." },
+    { n: "She leaned over while Heeseung was handing out agendas nobody had asked for, and said it very low, so only he'd hear." },
+    { s: 'solar', f: 'neutral', t: "You came up the back stairs again." },
+    { s: 'jungwon', f: 'neutral', t: "It's quicker." },
+    { s: 'solar', f: 'neutral', t: "It's four minutes slower, Won. You'd know. You've timed it." },
+    { n: "He looked at the whiteboard. PROM, and the underline. He was quiet long enough that she thought he wasn't going to answer, and then he did, in the voice he kept for true things, flat and careful, like a glass set down on a table he didn't trust." },
+    { s: 'jungwon', f: 'serious', t: "I don't go past it. Not since we came back. The doors are cold, and it hums, Sol, and nobody in the hallway seems to hear it. I came out of that wall right behind you. I'd like very much not to stand next to it until I have to." },
+    { s: 'solar', f: 'sad', t: "...It hums at you too." },
+    { s: 'jungwon', f: 'serious', t: "Since New Year's. I thought it was only me." },
+    { n: "Under the table his knee found hers and stayed. Then he squared his agenda against the edge of the table and said, in the president voice, as if nothing had been said at all," },
     { s: 'jungwon', f: 'neutral', t: "Prom. Ideas." },
     { s: 'niki', f: 'happy', t: "Haunted house theme. We're already the ghost council. Lean in." },
     { s: 'jake', f: 'happy', t: "'A Night to Dismember.'" },
