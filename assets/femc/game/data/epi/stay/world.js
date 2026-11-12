@@ -20,7 +20,8 @@
     title: 'Iwatodai',
     // The Equinox card after the act (epilogue.js finish; batch 9): `line` under the title, a route's own line in its place,
     // and one line per other world (where someone is holding a gap; the private plan §8).
-    equinox: { line: 'Every universe.', routes: { akihiko: 'He held on. Something still came loose.', shinjiro: 'One hand, as hard as it could.', sees: 'It took all of them. For now, it was enough.' },
+    // Nov 11 2026 (Kat): she's gone (route lines no longer say the holding kept her).
+    equinox: { line: 'Every universe.', routes: { akihiko: 'He held on. His arms are still closed.', shinjiro: 'One hand, as hard as it could. It’s still closed.', sees: 'It took all of them. It wasn’t enough. They kept the room.' },
       echoes: [
         'Syracuse · On a rooftop in the snow, a phone’s timer is still running.',
         'Incheon · The tide stops, once, and starts again.',

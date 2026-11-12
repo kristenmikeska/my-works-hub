@@ -7,7 +7,7 @@
      epi-h-hearing      1/11 after (consumes)                   the impeachment hearing in the gym; Chaewon moderates; Do Hayoon; the stat checks; "(Evoke.)"; she flickers in front of everyone
      epi-h-after        1/11 late                               the clip goes round; Mom ("Is this you?"); the pull close; the can goes in her coat pocket
      epi-h-results      1/12 early (consumes)                   results; Jungwon first, Mrs. Yang's one-word text; Solar passes calculus by one point; the last ordinary day
-     epi-h-gym          1/12 late (ends: true)                  the final: the gym at midnight, fight 4 (One Second), the pull, Haechan's voice through the bleed, Jungwon holds on
+     epi-h-gym          1/12 late (ends: true)                  the final: the gym at midnight, fight 4 (One Second), the pull, Haechan's voice through the bleed, Jungwon holds on; the pull takes her anyway (Nov 11 2026); aftermath, CG epi-h-gone
 
    Flags set
      epi-h-jw-gate (last-paper) · epi-h-jihoon-speaks (witness) · epi-h-gym-done (gym-lights) ·
@@ -60,7 +60,19 @@
      epi-h-witness ends with ...R.stolen.witness ("I like you", said back or kissed; sets epi-h-jh-real); epi-h-gym's jihoon
      branch splices ...R.stolen.gym after "the nicest thing that had ever happened between them" (her hand in Jihoon's when
      Jungwon comes in). The gym's structure, the pull and Jungwon holding on are unchanged. world.js's equinox line for the
-     jihoon route changed with it. */
+     jihoon route changed with it.
+   Nov 11 2026 (Kat): she's gone. Solar disappears at the end of every epilogue (Runners' epi-r-midnight is the model), and
+     Kat's "way too rushed, a lot more romance for both routes": epi-h-gym gains, before midnight, the one coat, Jihoon's three
+     texts and a small choice (no flag) and the kiss he'd saved (ifFlag epi-h-jw-door: New Year's, forty minutes late) on
+     Jungwon's route; the jacket, "I remember", the kiss that isn't stolen and the three on the bleachers on Jihoon's route; a
+     held hand and "somewhere nobody has a clipboard" on the council route. After "he didn't count anything at all": the can
+     stays in his hand as she goes; Jihoon drops the denial (his route), Sunoo answers "present" (council); Haechan's voice
+     "I'll find you. Every world.", Jungwon's "Me too. In every one I'm in." is the last thing she hears; aftermath (the hum
+     stops, the clock moves to 12:01, the snow comes down; Jungwon alone at the free-throw line and Jihoon arriving at 12:20 to
+     hold on too (Jungwon's route) / the two boys and the two cocoas (Jihoon's) / the seven and Heeseung's empty attendance box
+     (council); the can in his hand; the leash (cherry-leash); Nana across the door; Cherry's 12:01 (one letter if
+     cherry-swore); Mom's texts to a phone that isn't anywhere). New CG pair { cg: 'epi-h-gone' } / { cg: null } (FEMC-ART-TODO
+     57B). No id, date, gate, existing choice, flag or outcome changed. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).hoax ||= {});
   // Stakes pass (Nov 11 2026; stakes.js documents the scores, the verdict and the three outcomes). stakes.js loads first.
@@ -1014,7 +1026,40 @@
       ], else: [
         { n: "They sat on the bottom row of the bleachers in their coats. For a while they didn't say anything. She started to say something, and it started with a sound like *Hae—*, and she stopped." },
         { n: "He didn't ask. He took her hand, inside his coat pocket, and kept it there." }
-      ] }
+      ] },
+      // Nov 11 2026 (Kat): she's gone. The romance before the end, slowed down (Kat: "way too rushed … a lot more romance").
+      { n: "The gym was cold. Not outside cold, the other kind, the big-building kind that settles into a place when the heating goes off at six and nobody's breathed in it since, and it came up through the bleacher into the backs of her legs, and she shivered, and didn't mean to." },
+      { n: "He noticed. He noticed everything about her the way he noticed a sign error in a printed question, before he'd finished reading it. He unbuttoned his coat, one button at a time, top to bottom, the way he did everything, and opened it, and waited." },
+      { s: 'jungwon', f: 'flustered', t: "It's warmer. Statistically. Two people in one coat." },
+      { s: 'solar', f: 'happy', t: "Statistically." },
+      { s: 'jungwon', f: 'flustered', t: "I didn't look it up. I'd like credit for not looking it up." },
+      { n: "She went in under his arm, into the coat, against his side, and he closed it round both of them as far as it would go, which wasn't far, and held the two edges together over her shoulder with his hand, and they sat there wrapped in one coat on the bottom row of the bleachers like two kids at a bus stop." },
+      { n: "He was so warm. That was the thing she kept noticing. Everything in the gym was cold, the air and the bench and the light off the exit signs, and he was warm all the way down, through his sweater, through hers, his heart going against her shoulder much faster than his face was letting on." },
+      { s: 'solar', f: 'neutral', t: "Your heart's going really fast, Mr. President." },
+      { s: 'jungwon', f: 'serious', t: "It does that around you. I've stopped filing complaints about it." },
+      { n: "She laughed into his sweater. He let her. He put his chin on top of her head, very carefully, the way you'd put something down on a table you'd been told was antique, and left it there." },
+      { n: "Her phone buzzed in her coat. Once. She knew who it was before she looked, the way you know your own front door in the dark." },
+      { phone: [
+        { from: 'jihoon', t: "my ears popped" },
+        { from: 'jihoon', t: "ur not doing anything Stupid right" },
+        { from: 'jihoon', t: "sol" }
+      ], contact: 'jihoney' },
+      { n: "She looked at it for a long time. Jungwon didn't. He kept his eyes on the far wall, on the exit sign, very deliberately, the way he looked away from other people's report cards, and that was worse. That was so much worse than if he'd looked." },
+      { choose: [
+        { t: "(Type back: im ok. go to sleep hoon.)", then: [
+          { n: "*im ok. go to sleep hoon.* She sent it. It was the first lie she'd told him since preschool that he couldn't check, and she put the phone face down on the bleacher, and Jungwon's hand on the coat's edge tightened a little, and didn't let go." }
+        ] },
+        { t: "(Put the phone away without answering.)", then: [
+          { n: "She put it back in her pocket. It buzzed again against her hip, once, twice, and stopped. Somewhere across town, she knew, a boy was sitting in a car with the engine running and no idea which way to drive, and she'd done that to him, and she would have to carry it." }
+        ] }
+      ] },
+      { s: 'jungwon', f: 'neutral', t: "He'd come. If you asked him." },
+      { s: 'solar', f: 'sad', t: "I know." },
+      { s: 'jungwon', f: 'serious', t: "I'm not saying it to be noble. I'm saying it because it's true, and you'd want it said, and I'd rather be the one who says it." },
+      { n: "He said it to the exit sign. Then he turned and looked at her, finally, close, under the edge of the coat, and the dimples weren't there. Just his face. His plain, tired, serious face, with the eye bags and the hair in his eyes, the face he had under the speech voice, the one almost nobody at Hanlim had ever been shown." },
+      { s: 'jungwon', f: 'serious', t: "I left a note on the counter, Solar. My mother will read it at six. I've thought about what she'll say. I don't care. I wanted you to know I've thought about it and I don't care. That's new." },
+      { s: 'solar', f: 'sad', t: "Won..." },
+      { s: 'jungwon', f: 'flustered', t: "I'm telling you because if something happens tonight, I want you to have that. That I did one thing all the way. For a reason I picked." }
     ] },
 
     // ── Jihoon ──
@@ -1033,6 +1078,29 @@
         { s: 'jihoon', f: 'sad', t: "...And I remember. I told you. All of it. I know what midnight is." }
       ] },
       { n: "He held out a cocoa. She took it. It was too hot to drink, and she held it in both hands, and it was the warmest thing in the gym." },
+      // Nov 11 2026 (Kat): she's gone. The romance before the end, slowed down (Kat: "way too rushed … a lot more romance").
+      { n: "Second warmest. He was sitting on the folding table with his legs hanging and his knees apart, and she'd walked straight into the space between them without deciding to, the way she'd walked into his house without knocking since she was four, and stood there with the cocoa, and his knees closed a little on either side of her hips, and stayed." },
+      { s: 'jihoon', f: 'neutral', t: "You're shaking. Is that me? Am I that powerful? Don't answer. I know I'm that powerful." },
+      { s: 'solar', f: 'happy', t: "It's the gym. It's freezing in here." },
+      { s: 'jihoon', f: 'neutral', t: "It's ambience. It's a gym at midnight. What did you want, a fireplace? Here." },
+      { n: "He was already shrugging out of it. The leather jacket, the one he said was ugly on him, warm all the way through from his back, and he put it round her shoulders over her coat and pulled the collar up round her ears with both hands and held it there, holding her face in his jacket, looking at her." },
+      { n: "He'd stopped talking. That was how she knew. Park Jihoon could talk through a fire alarm, through a funeral, through a nosebleed in the middle of the cafeteria, and he'd stopped, and he was just looking at her with his hands holding the collar of his jacket up round her face, and his thumbs were cold against her jaw, and his eyes were wet, and he wasn't doing a bit about it." },
+      { s: 'jihoon', f: 'sad', t: "...I hate this building, Sol." },
+      { s: 'solar', f: 'sad', t: "I know." },
+      { s: 'jihoon', f: 'sad', t: "I've hated it since we came out of it. I park facing the bins. I go round by the field. I said *what retreat* to Hyunsuk's face like eleven times. I'm a liar. I've been a liar the whole time. I was there. I remember all of it." },
+      { n: "He said it fast, like pulling a plaster. Then he put his forehead down against hers, hard, and breathed, and she could feel him shaking too, and it wasn't the gym." },
+      { s: 'jihoon', f: 'sad', t: "I remember you in a uniform with a gun to your head every night for a year and me standing there not able to do anything. That's what I remember. So don't tell me it's the gym." },
+      { n: "She put the cocoa down on the table beside his knee without looking. She put both her hands up inside the jacket, flat on his chest, over his heart, which was going like he'd run here, and he hadn't run anywhere, he'd been sitting on a table in the dark for twenty minutes, waiting." },
+      { s: 'solar', f: 'sad', t: "Hoon." },
+      { s: 'jihoon', f: 'neutral', t: "Don't say Hoon like that. When you say it like that I do stupid things." },
+      { s: 'solar', f: 'happy', t: "So do one." },
+      { n: "He kissed her." },
+      { n: "Not the way he had at Christmas, on her rug, like a boy stealing something off a counter and waiting to be caught. Nobody was going to walk in. There was nothing to get caught at. It was the first time he'd ever kissed her like it was allowed." },
+      { n: "Slow. He was slow about it, which she would never have believed of him, his hand coming up off the collar into her hair, under it, at the back of her neck where she was coldest, and his mouth warm and tasting of cocoa, and her fingers closing in his shirt, and the table creaking under the two of them, and the snow going up past the high windows in the dark like the whole sky was being let out of a box." },
+      { n: "When he pulled back it was only an inch. His mouth went to her temple and stayed there, pressed, the way you'd press your hand over a cut." },
+      { s: 'jihoon', f: 'sad', t: "Not stolen. You saw. That one was mine. I'm keeping it." },
+      { s: 'solar', f: 'sad', t: "Keep it." },
+      { s: 'jihoon', f: 'neutral', t: "I'm keeping all of them. I've got a list. It's long. I'm very organised now, I've been hanging round the council." },
       { n: "The side door banged. Somebody came in fast out of the snow, out of breath, coat open, snow on his shoulders and in his hair, and stopped dead at the sight of the two of them." },
       { s: 'jungwon', f: 'serious', t: "Park." },
       { s: 'jihoon', f: 'neutral', t: "Oh, great. The hall monitor." },
@@ -1097,6 +1165,11 @@
     { n: "Ten to midnight. She ended up on the bottom row of the bleachers with Jungwon beside her, the way she always seemed to end up there, and the gym was so quiet she could hear the snow going up past the high windows, which shouldn't have been possible, which made a sound like a page turning, over and over." },
     { n: "The exit signs made their two green islands. The bleachers creaked once on their own, settling, the way old wood does in the cold. Somewhere above the stage a heater pipe ticked, twice, and gave up, exactly like the radiator in her room, and she thought of Nana on the duvet with his head down and had to look at the floor for a while, at the painted lines of the court, at the place on the free-throw line where she'd landed three weeks ago with a can in her hand." },
     { n: "Jungwon's knee was against hers. He was sitting the way he always sat, cross-legged on the bench, leaning on his elbows, except his hands weren't loose. They were holding each other. She'd seen him sit like that before every competition he'd ever told her about and she'd never actually seen it, and now she had, and it was this." },
+    // Nov 11 2026 (Kat): she's gone (the triangle on the bleachers, Jihoon's route)
+    { ifEpiRoute: 'jihoon', then: [
+      { n: "Jihoon was on her other side. Not cross-legged. Sprawled, one boot up on the row behind, his arm along the bench behind her back not quite round her, in a T-shirt in a freezing gym because his jacket was on her, and he'd have died before he said he was cold." },
+      { n: "Two boys. One on each side. Neither of them looking at the other one, both of them so aware of the other one she could feel it go across her lap like a draught." }
+    ] },
     { choose: [
       { t: "If it takes me— hold on. Okay? Just hold on.", flag: 'epi-h-ask-hold', then: [
         { s: 'jungwon', f: 'neutral', t: "Okay." },
@@ -1113,6 +1186,49 @@
         { s: 'jungwon', f: 'happy', t: "I answered both. The one that was asked, and the one they meant." },
         { n: "She put her head on his shoulder. He kept talking about question nine, very quietly, all the way through, until it was midnight." }
       ] }
+    ] },
+
+    // Nov 11 2026 (Kat): she's gone. The last minutes before midnight, by route (Kat: more romance, intimacy and physicality).
+    { ifEpiRoute: 'jungwon', then: [
+      { n: "Eleven fifty-eight. He looked at his watch. Then he did something she'd never once seen him do. He took it off." },
+      { n: "He unbuckled it and slid it off his wrist and put it face down on the bleacher beside him, and left it there, and turned to her inside the coat, and put his hands on her face." },
+      { n: "Both of them. Very carefully, like he'd practiced, which he probably had. His palms on her cheeks, his fingers in her hair behind her ears, cold at the tips and warm everywhere else, and his thumbs moving once, under her eyes, where she hadn't known she was wet." },
+      { ifFlag: 'epi-h-jw-door', then: [
+        { s: 'jungwon', f: 'flustered', t: "On New Year's I missed midnight by forty minutes. I was standing in my hall in my school shoes working up to the front door." },
+        { s: 'jungwon', f: 'serious', t: "I've been saving it. I didn't know for what. I'd like to not miss this one." }
+      ], else: [
+        { s: 'jungwon', f: 'flustered', t: "I read that you're supposed to, at midnight. I've never been anywhere at midnight. I was always at home, being where I was told." },
+        { s: 'jungwon', f: 'serious', t: "I've been saving it. I'd like to not be at home for this one." }
+      ] },
+      { s: 'solar', f: 'sad', t: "It's two minutes to." },
+      { s: 'jungwon', f: 'serious', t: "I took the watch off. It's whenever I say it is." },
+      { n: "He leaned in and put his forehead against hers first. Just that. Breathing. His breath and hers in the cold between them, going white and mixing, his eyes closed, and she could feel his hands trembling on her face, very slightly, the way they never trembled holding a pen." },
+      { s: 'jungwon', f: 'sad', t: "You're the only thing I ever did on purpose." },
+      { n: "Then he kissed her." },
+      { n: "Not careful. That was what undid her. Every single thing Yang Jungwon had ever done in his life had been careful, and this wasn't. He kissed her like a boy who'd been counting down to something for weeks and had just thrown the count away, his hands pulling her face to his, the coat sliding off both their shoulders, her fingers knotting in his sweater and pulling him down against her until her back was against the bleacher behind and his whole weight was leaning into her, warm, so warm, the cold of the gym against her back and the heat of him against everything else." },
+      { n: "She could feel his heart through both their sweaters. She could feel it slam. He made a small sound against her mouth, surprised, like he hadn't known he could make it, and didn't stop." },
+      { n: "When he finally pulled back an inch he didn't let go of her face. He looked at her like a page he'd read a hundred times and had only just understood." },
+      { s: 'jungwon', f: 'flustered', t: "...That was the one I'd been saving." },
+      { s: 'solar', f: 'happy', t: "Was it worth it?" },
+      { s: 'jungwon', f: 'serious', t: "I'll let you know. I'd need a larger sample." }
+    ] },
+    { ifEpiRoute: 'jihoon', then: [
+      { n: "Eleven fifty-eight. Jihoon's arm came off the bench behind her and round her, finally, all the way, and pulled her in against his side so hard her cheek hit his shoulder, and he put his mouth against her hair at the temple and left it there." },
+      { s: 'jihoon', f: 'neutral', t: "For the record. This is me holding on early. In case there's a rule about it." },
+      { n: "On her other side Jungwon didn't move. Then, without looking, he reached over and took her hand off her knee, the left one, and held it, palm to palm, in the space between them, the way he held a pen when he'd decided what to write." },
+      { n: "Jihoon saw. She felt him see it, felt his jaw go tight against her hair. He didn't say anything. He pulled her in a little harder instead, and turned his face into her hair, and she heard him breathe out, long and ragged, a sound with a whole year in it." },
+      { s: 'jihoon', f: 'sad', t: "...I'd fight him for you. You know that. Any other night." },
+      { s: 'jungwon', f: 'neutral', t: "I know." },
+      { s: 'jihoon', f: 'sad', t: "Not tonight." },
+      { s: 'jungwon', f: 'serious', t: "No. Not tonight." },
+      { n: "She turned her face up. Jihoon was already there. He kissed her once more, short, hard, on the mouth, with Yang Jungwon holding her other hand six inches away, and it was the most honest thing any of the three of them had ever done, and nobody looked away from it, and nobody let go." }
+    ] },
+    { ifEpiRoute: 'council', then: [
+      { n: "Eleven fifty-eight. Somebody had turned the string lights down to the lowest setting, so the gym was gold and dim. Sunoo was asleep against Jake's shoulder on the row above with half a croissant in his hand. Niki had put the scooter away. Nobody said anything about it." },
+      { n: "Jungwon's hand found hers on the bench, under the edge of her coat, where nobody could see, and laced its fingers through hers, and stayed. He didn't look at her. He was looking at the clock. His thumb moved over her knuckles, once, slow, and that was all, and it went all the way through her." },
+      { s: 'jungwon', f: 'neutral', t: "When this is over I'm going to take you somewhere nobody has a clipboard." },
+      { s: 'heeseung', f: 'serious', t: "I heard that." },
+      { s: 'jungwon', f: 'neutral', t: "You were meant to." }
     ] },
 
     { n: "Above the scoreboard the gym clock had said 12:00 all day. At midnight, it started to blink." },
@@ -1213,7 +1329,79 @@
     { s: 'jungwon', f: 'serious', t: "I've got you." },
     { n: "He said it into her hair. Not loud. Not a promise. Just a fact, the way he said everything, a number checked twice and written down, and the green pulled, and the gold waited, and his arms didn't move." },
     { n: "Up in the high windows the moon was too big. Above the scoreboard the clock said 12:00. The light came off her like snow off a roof, green and gold, going up, and the seam in the air waited, very patient, and the gold on the other side of it waited too, and didn't leave, and the gym hummed, and his arms were around her, and every hand that could reach was holding on to someone who was holding on to her—" },
-    { n: "—and Yang Jungwon, who had counted every won in the tin twice, and every day toward a date he'd never told her about, and every one of her breaths since she'd come home, held on, and for the first time in his whole life, he didn't count anything at all." }
+    { n: "—and Yang Jungwon, who had counted every won in the tin twice, and every day toward a date he'd never told her about, and every one of her breaths since she'd come home, held on, and for the first time in his whole life, he didn't count anything at all." },
+
+    // Nov 11 2026 (Kat): she's gone. The pull takes her despite the holding on (as Runners' epi-r-midnight); the aftermath in
+    // the third person. Everything above is unchanged.
+    { n: "It didn't matter." },
+    { n: "She knew it before he did. She'd known in the car, at the red lights, watching him stop at every one of them for nobody." },
+    { n: "His arms didn't go through her. That was true. They were the only arms in any world that didn't, and they held, and they kept holding, and it was like holding on to a rope that was holding on to a cliff: it didn't matter how good your grip was. The cliff was going." },
+    { n: "The can went first. She felt it go out of her fist, not falling, just staying where it was while her hand went on without it, so that it was in his hand alone, inside his fingers, and hers were somewhere further off, closing on the place it had been." },
+    { s: 'solar', f: 'sad', t: "Won— Won, I can't feel your hand—" },
+    { s: 'jungwon', f: 'serious', t: "I can feel yours. That's enough for both of us. I'm good at doing enough for both of us." },
+    { n: "His voice did something then. It went, in the middle. The speech voice and the monotone and the voice for teachers and the voice for his mother, all of them, gone, and what was under them was a boy, eighteen, in a gym at midnight, very frightened, holding on." },
+    { n: "She was crying. She'd promised herself on the stairs at home, looking at Nana, that she wouldn't. She cried like she was five and lost in the big supermarket, in great ugly gulps, into his sweater, and he put his face down into her hair and didn't flinch from one of them." },
+    { s: 'solar', f: 'sad', t: "I picked here. I *picked* it. I'm sorry, I'm sorry, I don't want to go, I don't—" },
+    { s: 'jungwon', f: 'sad', t: "I know. I know you picked. I was there when you picked." },
+    { ifEpiRoute: 'jihoon', then: [
+      { n: "Jihoon let go of Jungwon's coat." },
+      { n: "He came round, on his knees, on the gym floor, and put both his hands up to where her face was, where it should have been, his cold bare hands, and held nothing, and held it like it was her face anyway." },
+      { s: 'jihoon', f: 'sad', t: "Hey. Hey. Kim Solar. Look at me. I'm not lying anymore, okay? I was there. I was in the tower. I remember all of it. I'll say it to anybody. I'll say it to your mom. I'll say it on the forum. Just—" },
+      { s: 'jihoon', f: 'sad', t: "Come back and I'll be good. I swear on Nana. I swear on my mom's flowers. I'll be so good, Sol. I'll be so good you won't recognise me." }
+    ] },
+    { ifEpiRoute: 'council', then: [
+      { n: "Heeseung was still saying it. Her name, flat and steady, over and over, the attendance voice, like if he just kept calling it somebody would have to answer." },
+      { s: 'heeseung', f: 'serious', t: "Kim Solar. Kim Solar. Kim Solar." },
+      { n: "Sunoo answered for her. Through the crying. The way you answer for a friend who's late, in homeroom, so they won't be marked." },
+      { s: 'sunoo', f: 'sad', t: "...Present. She's present. She's *here*, hyung, write it down—" }
+    ] },
+    { n: "And through the wall, through the gold, the other voice. Not laughing now. Close, as close as a voice gets through a wall at three in the morning, a boy on the other side of it with his forehead against it." },
+    { s: 'hcvoice', t: "I'll find you." },
+    { s: 'hcvoice', t: "Every world. Wherever it takes you. I'll find you, Sol." },
+    { n: "Jungwon's arms closed on her one more time, as hard as they'd ever closed on anything. He said it into her hair, quietly, to her and to the voice on the other side of the light, the only promise she'd ever heard him make that he couldn't check twice first." },
+    { s: 'jungwon', f: 'sad', t: "...Me too. In every one I'm in." },
+    { n: "It was the last thing she heard." },
+    { cg: 'epi-h-gone' },
+    { n: "In a gym in Hanlim, at one minute past midnight on a Saturday in January, the green went out of the air all at once, like a switch, and the humming stopped." },
+    { n: "Nobody had noticed the hum until it stopped. It had been in the building for a week, under everything, under the exams and the hearing and the bells. Now the gym was only a gym, cold and dark and too big, the exit signs making their two green islands, and above the scoreboard the clock that had said twelve all week said 12:01, and then, while nobody was looking at it, 12:02." },
+    { n: "Outside the high windows the snow had turned round. It was coming down. Slowly, the ordinary way, the way it had always come down, landing on the sills and staying." },
+    { ifEpiRoute: 'jungwon', then: [
+      { n: "Yang Jungwon was on his knees on the free-throw line with his arms closed around nothing, his coat half off his shoulders, his face down where her hair had been." },
+      { n: "There was nobody else there. Nobody to see it. He didn't move. He didn't open his arms. On the bleacher behind him his watch lay face down where he'd put it, ticking, counting for him, since he'd stopped." },
+      { n: "At twenty past twelve the side door banged." },
+      { n: "Park Jihoon came in out of the snow at a run, no jacket, his car still running in the lot behind him with the door hanging open, a convenience-store bag in his hand with two cocoas in it. He'd driven round for forty minutes. He'd driven past the gym four times with his back to it. He stopped dead three steps in." },
+      { n: "He looked at Jungwon on the free-throw line, holding on to nothing, and he understood it, all of it, in about a second. He'd known since eleven-forty. He'd known since the tower." },
+      { n: "He didn't say anything. Not one word, which in eighteen years nobody had ever seen him manage. He put the bag down on the floor. He walked across the court and got down on his knees behind the boy he'd punched in a hallway and fought in a parking lot and hated on a forum, and put his arms around the outside of him, and held on too, to what wasn't there, because she'd have wanted somebody to." }
+    ] },
+    { ifEpiRoute: 'jihoon', then: [
+      { n: "Two boys were on their knees on the free-throw line. Yang Jungwon with his arms closed around nothing. Park Jihoon in a T-shirt in a freezing gym with his hands up in front of him, cupped, holding the shape of a face that wasn't there." },
+      { n: "His jacket was gone. It had been round her shoulders, and it had gone where she went, the ugly one, the leather one he'd said was ugly on him. He didn't look for it. He knew." },
+      { n: "Neither of them moved. After a long time Jihoon let his hands down, slowly, and put one of them on Jungwon's back, flat, between the shoulder blades, and left it there, and Jungwon let him." },
+      { n: "On the folding table by the ballot box the two cocoas stood side by side in the dark with their lids on. One of them was still full. Nobody had drunk after anybody. It had been a gesture." }
+    ] },
+    { ifEpiRoute: 'council', then: [
+      { n: "Seven people were on the gym floor at the free-throw line, under the string lights, in a knot, holding on to the one boy in the middle, who was holding on to nothing." },
+      { n: "Nobody let go. Not for a long time. Sunoo was still crying. Jake still didn't have a joke. Niki had sat down on the floor with his knees up and his face in them. Jay and Sunghoon and Niki didn't look at each other again." },
+      { n: "Heeseung's clipboard was on the floor where he'd dropped it. On the attendance sheet, at the end of the list, beside *Kim Solar*, the box was empty. He didn't tick it. He didn't mark her absent either. He picked the clipboard up, later, much later, and looked at the box for a long time, and put the pen away, and left it the way it was." },
+      { n: "Up against the high window over the stage the silver balloon still turned a little in the draught, and the gold lights were still on, and nobody turned them off. Nobody turned them off all night." }
+    ] },
+    { ifEpiRoute: 'council', then: [], else: [
+      { n: "Over the bleachers the half-strung lights hung down in their sulk, blue and silver, for the thing the council had voted on in a week nobody remembered, and the balloons had gone soft on every surface, and nobody was ever going to finish them now." }
+    ] },
+    { n: "Jungwon's right hand was closed. He didn't open it. Inside it, pink and black, a can from a world none of the people in that gym had been born in, never opened, so cold it burned, and he held on to that too." },
+    { ifFlag: 'epi-h-cherry-leash', then: [
+      { n: "In the right pocket of a coat that was no longer in that gym there had been a dog's spare leash, wound small. Collateral. *You want it back, you come get it. From me. In person.*" }
+    ] },
+    { n: "Three streets away, in a dark house, a big white dog with silly legs got down off a bed at one minute past twelve and went to the bedroom door and lay down across it, with his nose to the crack, the way he did when she was late, and didn't go back to the bed." },
+    { ifFlag: 'epi-h-cherry-swore', then: [
+      { n: "Across town, on Cherry Kim's nightstand, a phone lit up at 12:01 with a message from *solarsystem*. One letter. *c*. A letter that had been typed on a landing an hour ago and deleted, and sent itself anyway." },
+      { n: "Cherry was out of bed with her boots on before the screen went dark." }
+    ], else: [
+      { n: "Across town Cherry Kim woke up at 12:01 for no reason at all, and lay there in the dark with her heart going, and typed *u up* into the old chat, and watched it sit there with no little face under it, not read, not read, not read." }
+    ] },
+    { n: "At twenty-six minutes past twelve, in a house three streets from the gym, a woman got up for a glass of water and saw a bedroom door open and a dog lying across the threshold, and the bed behind him empty, and the coat gone off the back of the door." },
+    { n: "She texted a phone that was no longer anywhere. *Where are you.* Then: *Solar.* Then, after a long time, standing in the hall in her grey cardigan with the glass in her other hand: *I'm not angry. Just come home.*" },
+    { cg: null }
   ] }
 
   );

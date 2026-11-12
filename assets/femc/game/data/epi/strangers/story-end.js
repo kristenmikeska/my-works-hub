@@ -10,7 +10,7 @@
      epi-s-fam-staying  3/13 evening (consumes; route family)  are you staying: the seventh stair; the one question; he nods as if she'd answered
      epi-s-contact      3/14 late                              one second: fight 4 (epi-strangers-4) on the mudflats at midnight; Akihiko says her name back; the garden, both boys
      epi-s-last         3/15 after (consumes)                  the last ordinary day: the koi, Pyo, Auntie Song, Appa and the tide she was born on, Mr. Oh, the girls' call, Eomma's pins
-     epi-s-held         3/16 early (consumes; ends: true)      hold on: before light at the bottom of the tide; both boys hold on, one hand each; the tide stops; it ends mid-pull
+     epi-s-held         3/16 early (consumes; ends: true)      hold on: before light at the bottom of the tide; both boys hold on, one hand each; the tide stops; the pull takes her anyway (Nov 11 2026, Kat: she's gone); aftermath, CG epi-s-gone
 
    Flags set
      epi-s-flickered (dinner) · epi-s-contact (contact) · epi-s-held (held)
@@ -52,6 +52,12 @@
      a second chair by Jungwon's window with a blanket; the sugar question ("I still don't know"); the 1971 harbor photo's
      third boat is Appa's father's, the one the study cleat came off.
 
+   Nov 11 2026 (Kat): she's gone. Solar disappears at the end of every epilogue (Runners' epi-r-midnight is the model):
+     epi-s-held keeps everything up to the tide stopping, then the pull takes her despite both hands; the last thing she hears is
+     the tide turning; aftermath in the third person (the two boys on their knees in the beds, the flood coming back, Appa on the
+     seventh stair, Yunjin in the empty bed or on the back step (family), Mr. Oh's engine at the gate, the calendar at 28, the
+     eleven pins). New CG pair { cg: 'epi-s-gone' } / { cg: null } (FEMC-ART-TODO 57A; scene.js hides a CG whose file is missing).
+     No id, date, gate, choice, flag or outcome changed.
    Nov 11 2026 (Kat: the Yang family; story-yang.js has the new scenes): epi-s-jw-window gains why the Yang house is quiet
      (Dokyun at the quay), a second photograph on the landing, and his mother's text from the garden room (a { phone } line
      from 'madamkang'). No flag, gate, id, date or outcome changed.
@@ -764,7 +770,48 @@
     { n: "It didn't turn." },
     { n: "Out past the seawall, the sea stopped. All of it, all the way out to the islands, at the bottom of itself. The mud lay out under the stars and didn't shine. On the back step the two fish in the bucket stopped going round, and hung there in the dark water under the ice, side by side, as if listening. The frost on the grass stopped glittering. Jungwon's watch, against her wrist, stopped ticking." },
     { flag: 'epi-s-held' },
-    { n: "And everything waited at the bottom of the tide, the house and the garden and the sea gone out to the end of the world, and the green went up off her like breath on a cold morning, and two men who would never be friends, who had never once agreed on anything in their lives, held on to the same girl, one hand each, and leaned back against the whole of the sky, and didn't let go, and didn't let go, and the pull went on, and—" }
+    { n: "And everything waited at the bottom of the tide, the house and the garden and the sea gone out to the end of the world, and the green went up off her like breath on a cold morning, and two men who would never be friends, who had never once agreed on anything in their lives, held on to the same girl, one hand each, and leaned back against the whole of the sky, and didn't let go, and didn't let go, and the pull went on, and—" },
+    // Nov 11 2026 (Kat): she's gone. The pull takes her despite the holding on (as Runners' epi-r-midnight); the aftermath in
+    // the third person. Fences kept: nothing of the house's business, the night of the sixth, the wedding or the novel's answers.
+    { n: "—and it didn't matter." },
+    { n: "She knew it before either of them did. She'd known on the stairs, on the seventh one, standing on it in her socks and letting it creak." },
+    { n: "You couldn't hold the tide. Every child on that shore knew it. You could stand on the seawall and shout at it, you could build a wall in front of it a hundred years high, and it went out anyway, when it went, and it took what it took." },
+    { n: "Her hands were going in theirs." },
+    { n: "Not slipping. Going. She could still see them, the scar, the jade ring, and she could see through them the two hands closed round them, Haechan's split knuckles, Jungwon's watch, and the frost on the stone under all of it, and the hands holding hers were getting further away without either of them moving an inch." },
+    { s: 'solar', f: 'sad', t: "Donghyuck-ah—" },
+    { n: "It came out of her cracked. In front of Jungwon. She didn't care. She'd stopped caring about the right name in the right room about a minute ago, at the bottom of the tide, which was the last place anyone had ever asked her to be careful." },
+    { s: 'haechan', f: 'serious', t: "I've got you. I've got you, I've got you. Agasshi. Look at me. Look at me, not at the sea." },
+    { n: "His voice did something it had never once done in seven years of standing in doorways for her. It broke, in the middle, like a stick, and he didn't stop talking through it." },
+    { s: 'jungwon', f: 'serious', t: "Solar-ssi." },
+    { n: "Formal. Of course formal. His hand closed tighter round hers, palm to palm, exactly as hard as it could, and she felt him lose the count he'd been keeping under his breath, felt the numbers stop in him like a clock, and he didn't pick them up again." },
+    { s: 'jungwon', f: 'sad', t: "...Solar-ya." },
+    { n: "Banmal. From him it was an event every single time, and every time it had been to her, and he didn't try to take this one back." },
+    { n: "She was crying. She hadn't meant to. She'd decided upstairs, with her hair down and eleven pins in a row in front of her, that she wasn't going to, that she'd go the way her mother sat for the pins, still, so they'd remember her still. It didn't work. Nothing about her had ever been still, in the end, not one thing." },
+    { s: 'solar', f: 'sad', t: "I don't want to go. I don't— tell Appa. Tell him I didn't want to. Tell him I got there first. The calendar. Tell him I turned it—" },
+    { s: 'haechan', f: 'sad', t: "You tell him. You hear me? You come back and you tell him yourself." },
+    { n: "Out past the seawall, at the very bottom of the world, something moved." },
+    { n: "A sound. So small. Under the frost and the breathing and the bells she could hear ringing from somewhere that wasn't Incheon, a sound she'd known before she knew words, before she knew her own name: the first thin edge of the sea coming back across the mud, whispering, the way it did every morning of her life before light." },
+    { n: "The tide was turning." },
+    { n: "It was the last thing she heard." },
+    { dark: false },
+    { cg: 'epi-s-gone' },
+    { n: "At the bottom of a garden in Incheon, at fourteen minutes past four on a Saturday morning in March, the frost had started to melt on the dead beds, and two men were on their knees in the mud between them with their arms out, one on each side of a place where nobody was standing." },
+    { n: "They'd gone down off the step together, leaning back against the pull, and when it let go they'd fallen forward into the beds, onto their knees, and they had not got up." },
+    { n: "Haechan's left hand was closed. Jungwon's right hand was closed. Neither of them opened them. Neither of them looked at the other one. There was nothing in either hand but cold, and they held on to it." },
+    { n: "Out past the wall the flood came back across the flats the way it always came, at a walking pace, then faster than a man can run, silver in the first gray, filling the channels and the footprints and the long shine of the mud, all the way in from the islands, as if nothing in the world had ever stopped it." },
+    { n: "On the back step the two koi began to go round again in the bucket under the ice. On Jungwon's wrist the watch started, and ticked, and he didn't look at it." },
+    { ifEpiRoute: 'family', then: [
+      { n: "Up at the house the man at the kitchen window had not moved. His hands were still flat on the counter. On the back step, barefoot on the frost, the girl in the yellow puffer had her hand over her mouth, and then she didn't, and the sound she made carried all the way down the garden, and neither of the men in the mud turned round." },
+      { n: "Lee Taejoon took his glasses off, and folded them, and laid them down on the counter by the sink, square to the edge. Then he went out through the hall, past the calendar, and up the stairs as far as the seventh one, and sat down on it, in his cardigan, in the dark, and the stair creaked once under him, and didn't creak again." }
+    ], else: [
+      { n: "At half past four, as he had every morning of his life, her father came down the stairs in his cardigan with his glasses on their cord, and the seventh stair creaked under him, and he stopped on it." },
+      { n: "He stood there a long time. Then he sat down on it, in the dark, where he could see the kitchen door and the calendar beyond it, and didn't go any further, and didn't go back up, the way a man sits down on a seawall to wait for a boat that's late." },
+      { n: "At five Yunjin came down the hall in her rabbit socks, and opened Solar's door, and stood in it. Then she went in, and got into the empty bed, and pulled the duvet up over her head, and stayed there." }
+    ] },
+    { n: "At the gate Mr. Oh's car was idling, the way it idled every morning at five whether anyone was going anywhere or not, the engine running low and steady in the cold, the headlights on the frost, the heater going for a passenger who would want it warm." },
+    { n: "In the kitchen the barley tea sat cold in its pot. On the wall the calendar said twenty-eight, circled twice in somebody else's red pen, turned by a hand that had got there first, for once, and there was nobody in the house who could bear to turn it back." },
+    { n: "Upstairs, on a dressing table, under a window where the lamp had been left on all night, eleven long black pins lay in a row, square to the edge, waiting for hair to put up." },
+    { cg: null }
   ] }
 
   );

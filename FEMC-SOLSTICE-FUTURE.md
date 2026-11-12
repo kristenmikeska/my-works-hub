@@ -189,6 +189,8 @@ Check every novel character against current canon before building them.
 
 Equinox opens with all three moments from the Personaverse's side.
 
+**Kat, 2026-11-11 (ruling):** Solar actually disappears at the end of every epilogue (Runners, strangers, HOAX, Stay and the true coda), the way she does in Runners. Holding on is the thread back, not a rescue: the people who hold on can't keep her, and the endings stay on them afterward. Equinox opens with her already taken.
+
 **Kat, 2026-10-26:**
 - **strangers:** tie into canon events without following them closely. Claude picks the best pickup point (possibly later than the current manuscript) and records it privately, so Kat isn't spoiled.
 - **HOAX gap, corrected:** Jungwon carries both lives and knows exactly who Solar is reaching for. He's the one person in HOAX she doesn't have to explain it to. At the end he recognizes Haechan's voice through the bleed, so his choice to hold on, or let go, is fully informed.

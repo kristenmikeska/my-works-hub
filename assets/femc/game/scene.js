@@ -245,6 +245,10 @@ window.FemcScene = (() => {
     document.documentElement.classList.add('g-in-scene');
     const $ = s => el.querySelector(s);
     const img = $('.gs-portrait'), sil = $('.gs-silhouette'), meEl = $('.gs-solar'), nameEl = $('.gs-name'), textEl = $('.gs-text'), choices = $('.gs-choices'), boxEl = $('.gs-box'), cgEl = $('.gs-cg');
+    // A { cg } whose picture isn't made yet (Nov 11 2026: the endings' aftermath CGs are wired before their art): the file 404s,
+    // so the scene carries on as if there were no CG (portraits back, no broken image). Remembered for the page's life.
+    const CG_GONE = (window.__femcCgGone ||= new Set());
+    cgEl.addEventListener('error', () => { const s = cgEl.getAttribute('src'); if (!s || !vis.cg) return; CG_GONE.add(s); vis.cg = null; paintVis(); });
     const fit = () => el.style.setProperty('--boxh', `${boxEl.offsetHeight}px`);
     if (window.ResizeObserver) new ResizeObserver(fit).observe(boxEl); else fit();
     const queue = opts.resume?.queue ? [...opts.resume.queue] : [...opts.scene];
@@ -262,6 +266,7 @@ window.FemcScene = (() => {
       G.faceScene?.({ bg: (/\/bg\/([^/?#]+)\.webp/.exec(b?.url || '') || [])[1] || '', md: replay ? vis.date?.md || null : null });
       bg.className = `gs-bg${b ? ' on' : ''}${b?.mood ? ` ${b.mood}` : ''}`;
       bg.style.backgroundImage = b ? `url("${b.url}")` : '';
+      if (vis.cg && CG_GONE.has(`${G.base}assets/femc/cg/${vis.cg}.webp`)) vis.cg = null;
       if (vis.cg) { const src = `${G.base}assets/femc/cg/${vis.cg}.webp`; if (cgEl.getAttribute('src') !== src) cgEl.src = src; cgEl.style.setProperty('--focus', (window.FEMC_GAME_PLACES.cgFocus || {})[vis.cg] || 'center'); cgEl.hidden = false; el.classList.add('gs-cg-on'); }
       else { cgEl.hidden = true; el.classList.remove('gs-cg-on'); }
       const d = vis.date || G.dateLabel();

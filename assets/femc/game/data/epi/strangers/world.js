@@ -26,8 +26,9 @@
     title: 'Incheon',
     // The Equinox card after the act (epilogue.js finish): `line` under the title, a route's own line in its place, and one
     // line per other world (where someone is holding a gap; the private plan §8).
+    // Nov 11 2026 (Kat): she's gone (the haechan line no longer says he kept her).
     equinox: { line: 'Every universe.', routes: {
-        haechan: 'He kept the left hand. He’s still counting.',
+        haechan: 'He had the left hand. It’s still closed.',
         jungwon: 'Near. He said it once, and the tide heard him.',
         family: 'On the seventh stair, a light is still on.'
       },

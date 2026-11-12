@@ -55,7 +55,15 @@
      'epi-st-told' } blocks (Yukari, Fuuka and Koromaru in her room before midnight, Akihiko in the hall; the three faces when
      she comes back), so the clocks' "you won't be alone in your room" holds; epi-st-witness "School tomorrow" → "School on
      Wednesday" (term starts 4/7); epi-st-last-day Ken's bag "packed since Sunday" → "since last Tuesday" (his phone topic).
-     No flag, gate, fight line, glitch id or date changed. New scenes around these: story-days.js. */
+     No flag, gate, fight line, glitch id or date changed. New scenes around these: story-days.js.
+   Nov 11 2026 (Kat): she's gone. Solar disappears at the end of every epilogue (Runners' epi-r-midnight is the model; the plan's
+     "takes something of her" is superseded): epi-st-held keeps everything up to "she was held" (one change: "It didn't take
+     her. Not yet."), then at 12:01 the three lights take her; the last thing she hears is Akihiko's "Stay." / Shinjiro (awake:
+     "come back"; asleep: his hand closes) / Mitsuru and Junpei ("We'll keep the room"); aftermath: the roof (Akihiko or
+     Mitsuru and Junpei holding nothing, the others up the stairs, Koromaru on her spot, Fuuka can't find her anywhere) or the
+     ward (the warm chair, his closed hand, Akihiko at 12:40); then her room, kept made up, the surname box (pencil flag), its
+     light at midnight. New CG pairs { cg: 'epi-stay-gone' } (roof) / { cg: 'epi-stay-gone-ward' } (Shinjiro) / { cg: null }
+     (FEMC-ART-TODO 57C / 57D). The flag epi-st-held is still set where it was. No id, date, gate, choice or outcome changed. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).stay ||= {});
   const awake = { anyFlag: ['shinji-awake', 'ending-shinjiro'] };
@@ -648,7 +656,7 @@
     { s: 'yunjin', f: 'neutral', t: "Sol." },
     { n: "Out of the white, last. Formal. Quiet. One word, the way he'd say a thing he'd checked three times." },
     { s: 'jungwon', f: 'neutral', t: "Solar." },
-    { n: "The pull went through her like a tide going out. It wanted her. It didn't take her." },
+    { n: "The pull went through her like a tide going out. It wanted her. It didn't take her. Not yet." }, // Nov 11 2026 (Kat): she's gone ("Not yet." added)
     { n: "It took something. Behind her, Haenim's veil lifted, by itself, a finger's width. No more. A line of light at the bottom of it, a sliver of a jaw, the edge of a mouth she knew from mirrors, and the cool air of three worlds coming in under it. Then it hung there, lifted, and didn't fall back." },
     { ifFlag: 'epi-st-rooms-keep', then: [
       { n: "Downstairs, in her room, the thing she'd kept from their rooms was ringing too, very faintly, the way glass rings, the way a thing rings when somebody on the other end has picked up." },
@@ -675,7 +683,78 @@
       { n: "And the arms around her were still holding." }
     ] },
     { n: "The three lights hung there, gold and green and white, very patient. The bells rang. Her hands were half light and half hers. Nobody let go. Nobody had decided anything. It was one year to the night, and every clock in Iwatodai said twelve, and stayed there, and she was held." },
-    { flag: 'epi-st-held' }
+    { flag: 'epi-st-held' },
+    // Nov 11 2026 (Kat): she's gone. The plan had the pull take only "something of her"; Kat: she disappears at the end of every
+    // epilogue (Runners' epi-r-midnight is the model). The pull takes her from this world too; the aftermath in the third person.
+    { n: "Then the clock in the stairwell ticked over." },
+    { n: "Twelve oh one. Somewhere below them, in the lounge, the old clock over the television that had stopped every night for a year at midnight and started again in the morning like nothing had happened, ticked, once, and went on." },
+    { n: "And the three lights stopped being patient." },
+    { n: "She felt them decide. All three at once, the gold and the green and the white, the way three people pick up one end of a heavy thing together on a count nobody says out loud. The floor under her went from thin to nothing. Her hands went from half hers to not hers at all." },
+    { ifEpiRoute: 'shinjiro', then: [
+      { n: "The hand on her wrist didn't let go. It didn't need to. Her wrist went out of it the way water goes out of a fist, and the fingers stayed closed, round the shape of it, on the blanket, and held the shape." },
+      { s: 'solar', f: 'sad', t: "Shinji— Shinjiro, I'm sorry, I don't want—" },
+      { ifYear: awake, then: [
+        { n: "His eyes were open. He was looking at her. He'd seen worse things than this, and done worse, and come back from further than this, and his face didn't move, except his jaw, once." },
+        { s: 'shinjiro', f: 'neutral', t: "...Hey. Eat something. Wherever it is." },
+        { s: 'shinjiro', f: 'serious', t: "...And come back. You hear? Don't make me come get you. I'll do it. Took me a year to hold a spoon. I'll do it anyway." }
+      ], else: [
+        { n: "He didn't wake. His face didn't change. Only his hand, the bad one, closed a little tighter on the shape of her wrist as it went out of it, the way a sleeping hand closes when someone tries to take something out of it." },
+        { n: "The monitor by his bed went on beeping. Slow. Steady. The most patient sound in the building." }
+      ] }
+    ], else: [
+      { n: "The arms around her didn't open. She went out of them anyway, the way smoke goes through a fence, and they stayed closed round the place she'd been, braced, holding." },
+      { s: 'solar', f: 'sad', t: "I'm sorry. I'm sorry, I'm sorry, I stayed, I *stayed*, I don't want to—" },
+      { ifEpiRoute: 'akihiko', then: [
+        { n: "He didn't let go. He held tighter, if anything, his chin still over her shoulder, his breath in her ear going hard and fast like the last round of a fight he already knew he was losing on points, and he said the thing. One word. The one he'd been holding back all year so it would be hers to say first." },
+        { s: 'akihiko', f: 'serious', t: "Stay." },
+        { s: 'akihiko', f: 'sad', t: "...Sol. Stay." }
+      ] },
+      { ifEpiRoute: 'sees', then: [
+        { n: "Koromaru had stopped barking. That was how she knew. He was standing with his front paws on her feet, on what had been her feet, whining, very small, the way he whined at the shrine when it rained." },
+        { s: 'mitsuru', f: 'serious', t: "Solar. You came back to us once. We'll be here." },
+        { s: 'junpei', f: 'sad', t: "We kept your room, okay? We're gonna keep your room. Nobody's touching it. Senpai, tell her—" },
+        { s: 'mitsuru', f: 'sad', t: "...We'll keep the room." }
+      ] }
+    ] },
+    { n: "It was the last thing she heard." },
+    { dark: false },
+    { ifEpiRoute: 'shinjiro', then: [
+      { cg: 'epi-stay-gone-ward' },
+      { n: "On the third floor of Tatsumi Memorial, at two minutes past midnight, the corridor lights were turned down and the night nurse was at her desk writing up her notes, and in the last bed by the window a young man lay with his right hand closed on the blanket, round nothing, very tight." },
+      { n: "The chair beside the bed was empty. It was still warm. The visitor's coat wasn't on the back of it anymore, and the paper cup of vending-machine tea on the windowsill was still steaming, a little, into the dark." },
+      { ifYear: awake, then: [
+        { n: "He didn't call anyone. He didn't press the button. He lay on his back with his eyes open and his bad hand closed and looked at the ceiling, and when the nurse came round at one she found him exactly like that, and he said *don't,* before she'd said anything at all, and she didn't." }
+      ], else: [
+        { n: "When the nurse came round at one she found his hand closed on the blanket, and tried, gently, to open it, the way she straightened all the sleepers' hands at night, and it wouldn't open. She left it. She sat in the empty chair for a minute, for no reason she could have written in her notes." }
+      ] },
+      { n: "At twenty to one the lift doors opened at the end of the corridor and Sanada Akihiko came out of them at a run, in his tracksuit, no coat, his breath still steaming from outside. He'd been asleep. He'd woken up at midnight on his feet." },
+      { n: "He stopped in the doorway. He looked at the empty chair, and at the hand on the blanket, and at the tea on the sill, and he didn't ask. He sat down on the edge of the bed, and put his own hand over his friend's closed one, and held on to that." }
+    ], else: [
+      { cg: 'epi-stay-gone' },
+      { n: "On the roof of a dormitory in Iwatodai, at two minutes past midnight, the city lay gold all the way down to the bay, and the tomatoes Fuuka had planted in March were just coming up in their pots, and the three lights had gone out of the sky as if they'd never been in it." },
+      { ifEpiRoute: 'akihiko', then: [
+        { n: "Sanada Akihiko stood at the railing with his arms closed around nothing, his chin over a shoulder that wasn't there, braced back against a weight that had gone." },
+        { n: "He didn't let go. Not when the bells stopped. Not when the door at the top of the stairs banged open behind him and the others came out onto the roof one after another in their pajamas and their socks, Junpei first, Yukari with her hand over her mouth, Fuuka already holding her head, Ken, Aigis, Mitsuru last, very straight, and stopped. Not when Koromaru went past all of them and lay down at his feet, on the spot where she'd stood, and put his chin on his paws." }
+      ] },
+      { ifEpiRoute: 'sees', then: [
+        { n: "Mitsuru and Junpei were on their knees on the roof with their arms out, each with both hands closed on nothing, the way you'd hold the two ends of a rope across a gap." },
+        { n: "Neither of them let go. Not when the bells stopped. Not when the others came out of the stairwell behind them, in their pajamas and their socks, and stopped. Koromaru lay down on the spot where she'd stood, and put his chin on his paws, and didn't bark again." }
+      ] },
+      { n: "Fuuka had her eyes shut. She'd had them shut since the door. She was reaching the way she reached in the tower, all of her, out over the city and the bay and the dark water past the island, further than she'd ever tried." },
+      { s: 'fuuka', f: 'sad', t: "...I can't find her." },
+      { s: 'fuuka', f: 'sad', t: "She isn't anywhere. She isn't anywhere I can reach." },
+      { n: "Nobody said anything. Nobody went back in. They stood on the roof in the cold, all of them, in a knot around the one in the middle holding on to the space where she'd been, until the sky over the bay went gray." }
+    ] },
+    { n: "Downstairs, on the second floor, at the end of the hall, a door stood half open on a room that was made up." },
+    { n: "The bed made, square. The uniform in the closet with the ribbon folded over the hanger. On the desk, under the lamp, a form with a sticky note on it in Mitsuru's handwriting, and two boxes." },
+    { ifFlag: 'epi-st-form-pencil', then: [
+      { n: "In the box for a surname, a small pale pencil mark. Not a name. Gone a little darker than she'd left it, as if somebody had gone over it once, from the other side, and then stopped." }
+    ], else: [
+      { n: "The box for a surname was empty. Nothing anyone had given her. A decision not yet, which she'd been allowed, and which nobody in that building would ever fill in for her." }
+    ] },
+    { n: "In the morning Mitsuru stopped packing. Her boxes stayed in the hall, neatly taped, and nobody moved them, and nobody touched the room at the end of it. They kept it made up. That was all they could keep." },
+    { n: "At midnight, the next night, and the one after that, its light came on by itself." },
+    { cg: null }
   ] }
 
   );

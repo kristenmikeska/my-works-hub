@@ -14,7 +14,11 @@
    her as herself, never as a separate girl. strangers: fence-free only (the kitchen, the tide, the annex step, the radio, the
    Discman that never plays; nothing of the house's business, injuries, outsiders, the wedding or any particular night).
    Flags set: epi-tr-r-held, epi-tr-s-held, epi-tr-h-held. Reads: ifYear romance haechan / jungwon, xmas haechan / jungwon.
-   Glitch ids (glitches.js, each once): epi-tr-g-aki, -snow, -r-pull, -radio, -tide, -s-pull, -koro, -h-pull, -voice. */
+   Glitch ids (glitches.js, each once): epi-tr-g-aki, -snow, -r-pull, -radio, -tide, -s-pull, -koro, -h-pull, -voice.
+   Nov 11 2026 (Kat): she's gone. Solar disappears at the end of every epilogue: epi-tr-h-held keeps everything up to "And all
+     three held.", then the pull takes her from all three at once (the last thing she hears: the three boys as one chord, and a
+     train); aftermath in the gym, on the roof, in the garden; new CG pair { cg: 'epi-true-gone' } / { cg: null } (FEMC-ART-TODO
+     57E); then the bench as before. epi-tr-r-held and epi-tr-s-held are unchanged (held mid-pull). No id, date, flag changed. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).true ||= {});
   // Between the worlds: Iwatodai, where nobody remembers her.
@@ -202,6 +206,23 @@
     { n: "She was being held in three places at once. In all of them. Somewhere in the middle of her, where a frightened girl had sat on a bench all year waiting for a train she was scared of, someone small and hers reached out too, and held on, and didn't let go either." },
     { n: "The lights over the bleachers went gold, and green, and white. Her edges came apart into all three. And all three held." },
     { flag: 'epi-tr-h-held' },
+    // Nov 11 2026 (Kat): she's gone. Solar disappears at the end of every epilogue (Runners' epi-r-midnight is the model): on
+    // the true route the pull that every world felt takes her from all three at once. The roof and the garden scenes stay held
+    // mid-pull; this is where all three let go of nothing.
+    { n: "And it didn't matter." },
+    { n: "She'd known it on the roof, and at the bottom of the garden, and she knew it here. Three places held her as hard as anything in any world had ever been held, and the pull wasn't in any of the three. It was in her. It had always been in her, since a bench and a train and a girl who was scared of it." },
+    { n: "Her arms went out of Jungwon's hands the way breath goes out of a glass. On a roof in the snow, she went out of Haechan's arms. At the bottom of a tide, out of two hands at once, the left and the right, the jade ring last." },
+    { s: 'solar', f: 'sad', t: "Won— I'm sorry, I'm sorry, tell them— tell all of them I—" },
+    { s: 'jungwon', f: 'serious', t: "You'll tell them. I'll hold the door. Solar. Look at me." },
+    { n: "She heard all of them at once, the way she'd woken every morning for three weeks: three notes, one chord. A boy on a roof saying *every world*. A boy in a garden saying *don't go* in a language nobody in his house could follow. A boy in a gym saying her name like a number he'd checked three times and found right." },
+    { n: "And under them, a long way off, coming, the sound of a train." },
+    { n: "It was the last thing she heard." },
+    { cg: 'epi-true-gone' },
+    { n: "In a gym in Hanlim, at one minute past midnight, the lights over the bleachers went back to blue and silver, and a boy sat on the bottom row with his arms closed around nothing, and didn't open them." },
+    { n: "On a roof in Syracuse the snow began to fall again, all of it at once, every held flake let go, and came down on a boy on his knees by a ledge with his arms around nothing, and on a can of Monster Pink Punch beside him, sweating in the cold, unopened." },
+    { n: "At the bottom of a garden in Incheon, the tide turned, and came back in across the flats the way it always had, silver, faster than a man can run, and two men who would never be friends knelt on either side of nothing with one hand each still closed, and didn't look at each other, and didn't let go." },
+    { n: "Three places, at three different hours, in three different seasons, and in every one of them the same space in the middle, where nobody was standing, being held as hard as anybody could hold it." },
+    { cg: null },
     ...bench([
       { n: "In a city by a bay, where it was nearly spring, a boy in a red scarf ran to the far end of Iwatodai Station on the third morning, and this time he sat down. On the last bench, under the timetable, the place he didn't know why he stopped at. He sat with his elbows on his knees and his breath going up white and the ribbon in his glove, and a train horn sounded somewhere down the line, a long way off, not coming any closer." },
       { n: "He didn't know who he was waiting for. He waited anyway. It felt, for no reason at all, like being on time." }

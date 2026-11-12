@@ -12,7 +12,8 @@
     title: 'Every world',
     // The Equinox card after the act (epilogue.js finish; batch 9): `line` under the title, a route's own line in its place,
     // and one line per other world (where someone is holding a gap; the private plan §8).
-    equinox: { line: 'Held in three places at once.', routes: {  },
+    // Nov 11 2026 (Kat): she's gone (the line gained its second sentence).
+    equinox: { line: 'Held in three places at once. Gone from all three.', routes: {  },
       echoes: [
         'Iwatodai · Akihiko keeps a ribbon in his pocket and can’t say whose.'
       ] },
