@@ -422,7 +422,7 @@
         { s: 'mitsuru', f: 'neutral', t: "Thank you. ...Then at midnight, from now on, you won't be alone in your room. That's not a request." },
         { s: 'koromaru', f: 'serious', t: "Arf." }
       ] },
-      { t: "Keep it. \"It's probably nothing. Leftovers.\"", flag: 'epi-st-kept', then: [
+      { t: "(Keep it.) It's probably nothing. Leftovers.", flag: 'epi-st-kept', then: [
         { s: 'solar', f: 'serious', t: "It's probably leftovers. The end of something. It'll stop." },
         { glitch: { strain: 1 } },
         { n: "Mitsuru looked at her the way she looked at a report she knew had been edited. Akihiko didn't take his gloves off. Fuuka looked at her hands." },

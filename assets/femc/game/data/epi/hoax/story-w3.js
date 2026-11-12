@@ -92,7 +92,7 @@
         { s: 'niki', f: 'neutral', t: "And why WAS it rehearsed?" },
         { s: 'jungwon', f: 'neutral', t: "...I'm working on that part." }
       ] },
-      { t: "\"Say it's fake. Look at the font. Nobody can prove anything.\"", flag: 'epi-h-heat-deny', then: [
+      { t: "Say it's fake. Look at the font. Nobody can prove anything.", flag: 'epi-h-heat-deny', then: [
         { s: 'solar', f: 'serious', t: "It's fake. Say it's fake. Look at it, the font's weird, the timestamps are weird, anybody can make a group chat screenshot. Jake, post that it's fake." },
         { n: "Jake looked at Heeseung. Heeseung looked at the ceiling. Jake posted it." },
         { s: 'forum', t: "jakeyy commented: lol this is so photoshopped. the font is literally wrong. nice try" },
@@ -195,7 +195,7 @@
         { s: 'jungwon', f: 'happy', t: "Okay. Then we'll both not know. That's more efficient than you not knowing by yourself." },
         { bond: { jungwon: 1 } }
       ] },
-      { t: "\"It's nothing. I'm just tired.\"", flag: 'epi-h-snow-nothing', then: [
+      { t: "It's nothing. I'm just tired.", flag: 'epi-h-snow-nothing', then: [
         { n: "He looked at her for a long time. Long enough for the snow to settle on her eyelashes and melt." },
         { s: 'jungwon', f: 'neutral', t: "Okay." },
         { n: "He didn't believe her. He let her have it anyway, which was worse, and also kind. Then he took her hand and put it in his coat pocket with his, like that had been the plan all along." }
@@ -249,7 +249,7 @@
     { s: 'halmeoni', f: 'happy', t: "It's not creepy. It's polite. The house is saying welcome back." },
     { n: "Solar's hand was in her coat pocket. She didn't remember putting it there. Her fingers had closed around the can, cold through the lining, the ridges of the pull-tab she had never pulled." },
     { choose: [
-      { t: "\"What happens after that? When somebody comes home?\"", stat: { courage: 1 }, then: [
+      { t: "What happens after that? When somebody comes home?", stat: { courage: 1 }, then: [
         { s: 'halmeoni', f: 'happy', t: "After that? You feed them." },
         { n: "She said it like it was obvious, like it was the end of the story and the whole point of it, and pushed the plate an inch closer." }
       ] },
@@ -468,7 +468,7 @@
         { s: 'jihoon', f: 'neutral', t: "That's not how orders work. You say yes, Your Majesty." },
         { bond: { jihoon: 1 } }
       ] },
-      { t: "\"For the record, the dog liked me better.\"", flag: 'epi-h-porch-joke', stat: { charm: 1 }, then: [
+      { t: "For the record, the dog liked me better.", flag: 'epi-h-porch-joke', stat: { charm: 1 }, then: [
         { s: 'jihoon', f: 'happy', t: "LIES. Slander. He licked my face every single morning—" },
         { s: 'solar', f: 'happy', t: "Because you smelled like curry." },
         { s: 'jihoon', f: 'happy', t: "Because he RESPECTED me." },
@@ -537,13 +537,13 @@
     { n: "Everyone turned. He was still writing." },
     { s: 'jungwon', f: 'happy', t: "I'm the president. It's my gym." },
     { choose: [
-      { t: "\"I'll write the post. Our side, on the forum.\"", flag: 'epi-h-war-sol-post', stat: { charm: 1 }, then: [
+      { t: "I'll write the post. Our side, on the forum.", flag: 'epi-h-war-sol-post', stat: { charm: 1 }, then: [
         { n: "She took Jake's laptop and wrote it, and deleted it, and wrote it again, and Heeseung read it over her shoulder and only changed two words, which from Heeseung was a standing ovation." }
       ] },
-      { t: "\"I'll go through the receipts with Heeseung. Every won.\"", flag: 'epi-h-war-sol-receipts', stat: { knowledge: 1 }, then: [
+      { t: "I'll go through the receipts with Heeseung. Every won.", flag: 'epi-h-war-sol-receipts', stat: { knowledge: 1 }, then: [
         { n: "She pulled her chair round next to Heeseung and he looked so relieved he nearly hugged her, and for an hour they matched paper to pencil while Niki narrated it like a sports commentator." }
       ] },
-      { t: "\"I'll do the gym. The lights are mine.\"", flag: 'epi-h-war-sol-gym', stat: { proficiency: 1 }, then: [
+      { t: "I'll do the gym. The lights are mine.", flag: 'epi-h-war-sol-gym', stat: { proficiency: 1 }, then: [
         { n: "She started a list on a napkin. String lights, the box of balloons from the storage room, the silver ones and the blue ones, and Sunoo leaned over and added *glitter* in pink pen, and Jay crossed it out, and Sunoo added it again." }
       ] }
     ] },
@@ -613,7 +613,7 @@
     { n: "A first-year with a ring light clipped to her phone had materialised at the end of the table like a jump scare, already filming, already live, the little red dot glowing in the corner and the comments scrolling up the side faster than anyone could read." },
     { s: 'eunchae', t: "Where were you during exam week, what's in the tin, did you see the snow, is the council haunted, are you two dating, okay that one I know, go!" },
     { choose: [
-      { t: "\"The council will be in the gym on Thursday. Every won.\"", flag: 'epi-h-eunchae-quote', stat: { courage: 1 }, then: [
+      { t: "The council will be in the gym on Thursday. Every won.", flag: 'epi-h-eunchae-quote', stat: { courage: 1 }, then: [
         { s: 'eunchae', t: "OHHHH. Okay. Okay! Chat, she said EVERY WON. Clip it! Somebody clip it!" },
         { n: "Jungwon, next to her, very quietly put his chopsticks down, which from him was applause." }
       ] },
@@ -621,7 +621,7 @@
         { s: 'eunchae', t: "She's WAVING. Chat, is that a yes? That feels like a yes. I'm calling it a yes." },
         { n: "The comments went up the side of the screen in a waterfall. One of them said *ghost VP smile is so real*. She tried very hard not to think about that one." }
       ] },
-      { t: "\"No comment.\"", flag: 'epi-h-eunchae-nocomment', then: [
+      { t: "No comment.", flag: 'epi-h-eunchae-nocomment', then: [
         { s: 'eunchae', t: "'No comment.' Chat, she said no comment. That's so suspicious. I love that. Thank you, unnie!!" },
         { n: "She was gone as fast as she'd come, off to ambush Heeseung by the vending machine. Heeseung saw her coming and walked directly into a wall." }
       ] }
@@ -686,11 +686,11 @@
     { s: 'chaewon', t: "Tell me who's speaking for the council by Wednesday." },
     { n: "She closed the binder and left as precisely as she'd come, and three seconds after the door shut Niki said *I'm scared of her* and Jay said *same* and Jake said *I'd let her impeach me*, and Heeseung threw a whiteboard marker at him." },
     { choose: [
-      { t: "\"She's fair. That's better than nice.\"", stat: { knowledge: 1 }, then: [
+      { t: "She's fair. That's better than nice.", stat: { knowledge: 1 }, then: [
         { s: 'jungwon', f: 'happy', t: "She is." },
         { n: "He said it like he'd decided something. He looked at the whiteboard. PROM, and the box, and nothing else." }
       ] },
-      { t: "\"Okay. Nobody panic. Sunoo, plug the laminator back in.\"", stat: { kindness: 1 }, flag: 'epi-h-trust-prom', then: [
+      { t: "Okay. Nobody panic. Sunoo, plug the laminator back in.", stat: { kindness: 1 }, flag: 'epi-h-trust-prom', then: [
         { s: 'sunoo', f: 'happy', t: "Okay!!" },
         { n: "He plugged it back in. It warmed up with a hopeful little click. It still had nothing to laminate, but it was the principle of the thing." },
         { n: "And just like that the room came back. Jake reached for the marker. Niki wrote *HAUNTED* under PROM and Heeseung didn't stop him. Jay said *no sequins* and wrote that too. It wasn't a plan. It was seven people writing on a whiteboard because she'd told them nobody was allowed to panic, and they'd believed her." }

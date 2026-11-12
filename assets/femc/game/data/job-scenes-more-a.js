@@ -152,7 +152,7 @@ Object.assign((window.FEMC_GAME_JOB_SCENES_MORE ||= {}), {
         { n: "Shiori arrived at four, for her weekly volume, and inspected the table with the air of a judge at a dog show." },
         { s: 'shiori', t: "Which one's yours? What does your card say? I'm going to read your card." },
         { choose: [
-          { t: "(Write the honest card. “I only read one page. It was a very good page.”)", stat: { charm: 1 }, then: [
+          { t: "(Write the honest card.) I only read one page. It was a very good page.", stat: { charm: 1 }, then: [
             { s: 'shiori', t: "That's not a review. That's barely a sentence." },
             { n: "And then she bought the book, stood at the counter flipping to page twelve, read the line, and said nothing at all about it, which from Shiori was a standing ovation." }
           ] },

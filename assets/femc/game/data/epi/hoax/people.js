@@ -909,7 +909,7 @@
           { s: 'heeseung', f: 'neutral', t: "Eight to nothing. The abstention has been withdrawn. Unanimous." },
           { s: 'jake', f: 'happy', t: "First unanimous vote in council history. Somebody frame it." }
         ] },
-        { t: "\"You're all idiots.\"", stat: { charm: 1 }, then: [
+        { t: "You're all idiots.", stat: { charm: 1 }, then: [
           { s: 'jay', f: 'neutral', t: "Yeah. Bro. We know." },
           { s: 'sunghoon', f: 'neutral', t: "Sunghoon has never been called an idiot by someone he would follow into a gym at midnight before. It's a new feeling. Sunghoon will allow it." }
         ] }

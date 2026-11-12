@@ -114,7 +114,7 @@
       { n: "The curl came off the iron and bounced, and Cherry pinned it and took the next, quick and rough and gentle, and the hiss and the vanilla and the tug at her scalp went down through Solar like a song she didn't know she still had memorised." },
       { n: "The last time Cherry had done her hair for a party like this, they'd been sixteen. The same iron, with the same burn on the handle. The same spray. The same mirror, the same *chin up*. Neither of them said so. Cherry's hands said it. They slowed on the piece of hair over Solar's left ear, the way they'd slowed on it then, and stayed there one second longer than a curl needed, and in the mirror Cherry's eyes came up and found hers." },
       { choose: [
-        { t: "\"It's not like last time, Cher.\"", stat: { courage: 1 }, then: [
+        { t: "It's not like last time, Cher.", stat: { courage: 1 }, then: [
           { s: 'cherry', f: 'serious', t: "No. It's not." },
           { n: "She said it to the iron, flat, the way you'd agree with a teacher to make them stop talking, and then she said it again, quieter, like she was signing it." },
           { s: 'cherry', f: 'neutral', t: "It's not. Last time I let you do your own eyeliner. Look how that turned out. Look up." }
@@ -270,11 +270,11 @@
       { s: 'mom', f: 'sad', t: "I'm not asking. I'm telling you I see it." },
       { n: "The radiator ticked. In the living room the news murmured about the roads. Under the table, Nana lifted his head." },
       { choose: [
-        { t: "\"It's nothing, Mom. It's just a chair.\"", flag: 'epi-h-sus-chair', then: [
+        { t: "It's nothing, Mom. It's just a chair.", flag: 'epi-h-sus-chair', then: [
           { s: 'mom', f: 'neutral', t: "Okay." },
           { n: "It was the kind of okay that meant the opposite and had decided to wait. Her mother picked the iron back up and finished the last pleat, and hung the skirt beside the blazer, and smoothed it once with her palm, and the okay stayed in the kitchen with them, folded small, like a receipt in a coat pocket." }
         ] },
-        { t: "\"I know. I'm trying to stop.\"", stat: { courage: 1 }, then: [
+        { t: "I know. I'm trying to stop.", stat: { courage: 1 }, then: [
           { n: "Her mother reached over and switched the iron off at the wall, and stood there with her hand on the plug." },
           { s: 'mom', f: 'sad', t: "Don't stop on my account." },
           { s: 'mom', f: 'sad', t: "Sit wherever you want. Sit on the roof if you want. Just sit at this table." },
@@ -352,13 +352,13 @@
           { s: 'mom', f: 'neutral', t: "Traitor." },
           { n: "She said it to the dog. On her way past to the hall she put her hand on the top of Solar's head, once, briefly, the way you'd touch a banister on the stairs in the dark to be sure it was still there." }
         ] },
-        { t: "\"Either?\"", stat: { courage: 1 }, then: [
+        { t: "Either?", stat: { courage: 1 }, then: [
           { s: 'mom', f: 'neutral', t: "I have to go." },
           { n: "She picked up her bag. At the kitchen door she stopped with her back to Solar, and said the next thing to the hall." },
           { s: 'mom', f: 'neutral', t: "Feed him. He didn't eat properly for nine days. He'll eat now." },
           { n: "The front door shut. Nana went and lay down against it, nose to the crack, for about a minute, out of habit. Then he came back and sat in front of his bowl and looked at Solar until she filled it." }
         ] },
-        { t: "\"He's a dog, Mom. He doesn't believe in temples.\"", stat: { charm: 1 }, then: [
+        { t: "He's a dog, Mom. He doesn't believe in temples.", stat: { charm: 1 }, then: [
           { s: 'mom', f: 'happy', t: "He's smarter than the school office." },
           { n: "It came out almost a laugh. Her mother pressed her lips together to put it away, and didn't quite manage, and bent down and kissed the top of the dog's head instead of her daughter's, which in this house was very nearly the same thing." }
         ] }
@@ -379,7 +379,7 @@
       { s: 'dad', f: 'neutral', t: "Then I'll teach him. That's what the reservoir's for." },
       { n: "Then three towels and the hair dryer on low, Nana flat on the heated floor with the face of a dog at his own funeral while the fur came back up off him in slow white drifts, like bread rising, until the whole bathroom was snowing and her father had fluff in his eyebrows. Neither of them said anything for a while. The dryer was loud enough to say it for them." },
       { choose: [
-        { t: "\"Take me in March too.\"", stat: { kindness: 1 }, then: [
+        { t: "Take me in March too.", stat: { kindness: 1 }, then: [
           { s: 'dad', f: 'neutral', t: "You'll talk to the fish. You talked to the fish when you were six. You told them about your teacher." },
           { s: 'solar', f: 'happy', t: "I'll talk to them quietly." },
           { n: "He looked at her over the dryer for a moment, at her hair full of dog, the way he'd looked at her across the boat when she was small and had been quiet for a whole minute and he'd thought something was wrong." },

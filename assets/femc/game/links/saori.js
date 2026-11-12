@@ -397,7 +397,7 @@
       { n: "*They were squinting,* it said, *so that they could keep looking.*" },
       { n: "Solar put the page down on the desk, very flat, and kept her hand on it. The fan came round and lifted the corner under her fingers and let it go. She didn't know why her eyes stung. She knew exactly why. She didn't know which of those was true." },
       { choose: [
-        { t: "\"So that they could keep looking.\"", notes: 3, then: [
+        { t: "So that they could keep looking.", notes: 3, then: [
           { n: "She said it back, just that, the last line, quietly, the way you'd say the name of a place you'd been to." },
           { s: 'saori', f: 'surprised', t: "...You picked the line I almost cut." },
           { s: 'saori', f: 'happy', t: "I'm not going to cut it now." }

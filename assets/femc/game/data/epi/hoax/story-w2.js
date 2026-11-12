@@ -738,7 +738,7 @@
         ], contact: 'hanlim_accountability' },
         { n: "She knew who it was before she'd finished reading it. A lanyard of pens. A blazer buttoned over a party dress. *Not here. Not like this.* She'd been asked, properly, and she lay there with Nana on her feet and the phone over her face and realized she didn't have a proper answer. She'd never had one. She'd only ever had a temple." },
         { choose: [
-          { t: "(\"A temple. Gangwon-do. They took our phones.\")", flag: 'epi-h-heat-hayoon', then: [
+          { t: "A temple. Gangwon-do. They took our phones.", flag: 'epi-h-heat-hayoon', then: [
             { glitch: { strain: 1 } },
             { phone: [
               { from: 'solar', t: "a temple. gangwon-do. they took our phones at the gate" },
@@ -747,7 +747,7 @@
             ], contact: 'hanlim_accountability' },
             { n: "*I'll check.* Not a threat. A plan. She'd met people who threatened, and she'd met people who planned, and she knew which ones you were supposed to be scared of." }
           ] },
-          { t: "(\"somewhere I can't explain. it wasn't a crime. ask me thursday.\")", flag: 'epi-h-hayoon-thursday', stat: { courage: 1 }, then: [
+          { t: "somewhere I can't explain. it wasn't a crime. ask me thursday.", flag: 'epi-h-hayoon-thursday', stat: { courage: 1 }, then: [
             { phone: [
               { from: 'solar', t: "somewhere i cant explain. it wasnt a crime. nobody got hurt. ask me in the hearing and ill say the same thing" },
               { from: 'hayoon', t: "hanlim_accountability: That isn't an answer." },

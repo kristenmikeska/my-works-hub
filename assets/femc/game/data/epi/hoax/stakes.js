@@ -225,7 +225,7 @@
             ], contact: 'Mom' }
           ] }
         ] },
-        { t: "(Take it back. \"After exams. I'll tell you after exams.\")", flag: 'epi-h-mom-after-exams', stat: { courage: 1 }, then: [
+        { t: "(Take it back.) After exams. I'll tell you after exams.", flag: 'epi-h-mom-after-exams', stat: { courage: 1 }, then: [
           { n: "She crossed the kitchen and put her hand over the armband, on top of her mother's hand, which was on top of it too, and for a second the two of them were holding the same strip of cloth across a table like it was something they were dividing between them." },
           { s: 'solar', f: 'serious', t: "After exams. I'll tell you after exams. I can't before. I'm not— it's not bad, Mom. Nobody hurt me. I didn't do anything wrong. I just can't yet." },
           { n: "Her mom looked at her for a long time. At her face, and her one sock, and her hand." },

@@ -484,7 +484,7 @@
       { s: 'teacher', t: "Solar." },
       { n: "Just that. The teacher looked at the line a moment longer, where something else should have come next, and the gym waited, three hundred people and the ticking heaters, and nothing else came. It had been blank in April. It was blank now. She'd stopped noticing sometime around June. She noticed it now." },
       { choose: [
-        { t: '"Here."', then: [
+        { t: "Here.", then: [
           { n: "She stood and said it clearly, to the whole gym, the way you answer to a name you've decided is enough. Somewhere at the back somebody started clapping, which you were not supposed to do, and Yukari hissed at Junpei, and Junpei kept going, and by the time Solar sat down half the second year was doing it too." }
         ] },
         { t: '(Stand. Let the quiet be what it is.)', then: [

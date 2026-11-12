@@ -99,7 +99,7 @@
     { n: "Three packets. The strong ones. Mrs. Bang had come down here, on a holiday, in the snow, with the shops half shut, and bought fever powders for a girl who wasn't in the house, so that one old man behind one counter by the market would know, and say it to his wife, and his wife would say it to whoever came in next. Her father hadn't just told the relatives. He'd built it. He'd built it out of things you could buy." },
     { n: "Her chest did something small and painful that she didn't look at." },
     { choose: [
-      { t: "\"Thirty-nine point four. I couldn't keep rice down.\"", then: [
+      { t: "Thirty-nine point four. I couldn't keep rice down.", then: [
         { n: "It came out of her in Mrs. Bang's exact rhythm, the one she'd been drilled in at the kitchen table in front of everyone on her first morning home, and she heard it come out and was faintly impressed with herself and faintly sick about it, both at once." },
         { s: 'man', t: "Thirty-nine point four! At your age. Aigo. And you're out in this dust." },
         { s: 'solar', f: 'neutral', t: "Mrs. Bang sent me. Masks for the house." },
@@ -112,7 +112,7 @@
         { s: 'yunjin', f: 'serious', t: "I still have flashbacks. I'm going to need the eye drops too, honestly. For the trauma." },
         { n: "The old man laughed so hard behind his mask he had to take his glasses off his forehead and wipe them, and put in a ginseng drink for each of them, free, and didn't ask anything else at all." }
       ] },
-      { t: "\"Mrs. Bang worries. Did she clear you out of the strong ones?\"", needs: { charm: 2 }, stat: { charm: 1 }, then: [
+      { t: "Mrs. Bang worries. Did she clear you out of the strong ones?", needs: { charm: 2 }, stat: { charm: 1 }, then: [
         { n: "Light, a little rueful, the voice for her mother's friends at weddings. She turned it the way you turn a cup so the chip is at the back." },
         { s: 'man', t: "Three packets! I said to her, Mrs. Bang, the girl's not a horse." },
         { s: 'solar', f: 'happy', t: "She'd have bought the horse ones if you had them." },
@@ -148,7 +148,7 @@
     { n: "Yunjin, who had an opinion about everything, who had once talked for forty minutes on the phone about a pigeon on her balcony because the alternative was silence, who had never once in five years let a strange thing go past her without naming it something worse, didn't say anything." },
     { n: "A delivery truck went by behind them, and the glass went dark with it, and when it came back it was just a closed shop window with a girl in a black coat in it. Two girls. One of them in orange." },
     { choose: [
-      { t: "\"You saw it.\"", flag: 'epi-s-dust-said', then: [
+      { t: "You saw it.", flag: 'epi-s-dust-said', then: [
         { s: 'solar', f: 'serious', t: "You saw it." },
         { n: "Yunjin didn't answer for long enough that the answer was the not answering. Then she slid her arm through Solar's, the camera swinging between them, and pulled her in tight against the orange puffer." },
         { s: 'yunjin', f: 'serious', t: "I saw a sad shop. That's all I saw. A sad little shop that closed in October." },
@@ -393,7 +393,7 @@
       { s: 'jungwon', f: 'serious', t: "It doesn't open until three." }
     ] },
     { choose: [
-      { t: "\"They couldn't see me. Any of them. The dog could.\"", then: [
+      { t: "They couldn't see me. Any of them. The dog could.", then: [
         { n: "She told him. All of it, plainly, in order, the ice and the coffins and the gull and the boxer's back going past her. She didn't leave anything out. She didn't leave things out with either of them, that was the rule, she'd made it in a harder month than this one and it had held through worse." },
         { ifEpiRoute: ['haechan', 'family'], then: [
           { n: "He listened the way he listened to the Chairman: all the way through, without moving, with his eyes on the middle distance. When she got to the dog he looked away down the garden at the annex for a while." },
@@ -559,7 +559,7 @@
         { n: "She stayed where she was, with her hand on the door handle and the hazards ticking and the black on both sides of the car, and turned in her seat, and looked at him until he had to look back." },
         { s: 'solar', f: 'serious', t: "Talk, Donghyuck-ah. You didn't drive me to the middle of the sea for the view." }
       ] },
-      { t: "\"If this is about the mud—\"", stat: { charm: 1 }, then: [
+      { t: "If this is about the mud—", stat: { charm: 1 }, then: [
         { s: 'solar', f: 'serious', t: "If this is about the mud, I said I was sorry." },
         { s: 'haechan', f: 'happy', t: "You didn't, actually." },
         { s: 'solar', f: 'happy', t: "I said it with my face." },
@@ -699,7 +699,7 @@
     { n: "Yunjin didn't let go. She didn't make a joke." },
     { n: "That was how Solar knew it was bad. In five years she had never once seen Yunjin miss a joke. Not at the ICU, not at her father's altar. Yunjin made jokes the way other people breathed, she made them the way the tide came in, and she was sitting on her bed with Solar's hand clamped in her lap and her face perfectly still and her mouth shut, and there was no joke coming. Not even a bad one." },
     { choose: [
-      { t: "\"I don't know what it is, Jin. I don't know.\"", then: [
+      { t: "I don't know what it is, Jin. I don't know.", then: [
         { s: 'solar', f: 'sad', t: "I don't know what it is. I'm not lying. I don't know." },
         { s: 'yunjin', f: 'sad', t: "I know you don't. You'd tell me. You tell me everything, you're disgusting like that." },
         { n: "Her hands tightened." },
@@ -753,7 +753,7 @@
     { s: 'fkvoice', t: "Hello? Iwatodai Dormitory..." },
     { n: "Japanese. Soft. Polite, apologetic, the voice for answering a phone in a house full of people who might be asleep. Behind it, very faint, a television. A dog's tags jingling across a wooden floor." },
     { choose: [
-      { t: "\"Fuuka. It's me.\"", stat: { courage: 1 }, then: [
+      { t: "Fuuka. It's me.", stat: { courage: 1 }, then: [
         { n: "She said it in Japanese. It came out of her without having to be found, the way her own name would have." },
         { s: 'solar', f: 'sad', t: "Fuuka. It's me." }
       ] },

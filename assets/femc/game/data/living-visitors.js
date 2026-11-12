@@ -218,7 +218,7 @@
             { n: "Solar stayed at the back. She stood at the foot of the steps where Kiriko could see her if she turned around, and didn't say anything, and didn't come any closer, and after a long moment Kiriko looked over her shoulder at her, and saw her there, at the back, standing, and turned around again, and swung the log." },
             { n: "The bell spoke. The line went silent. Kiriko didn't let go of the rope until the note was completely gone, and when she came down the steps her face was wet, and she was grinning, and she walked straight into Solar and stayed there." }
           ] },
-          { t: "Count for her. \"One.\"", notes: 2, then: [
+          { t: "(Count for her.) One.", notes: 2, then: [
             { n: "Solar said it out loud. One. Like the start of something. Kiriko laughed, a short shocked laugh, and swung the log, and the bell spoke, and while it was still going she said, two, under her breath, and Solar realized she was counting the next one already." }
           ] }
         ] },

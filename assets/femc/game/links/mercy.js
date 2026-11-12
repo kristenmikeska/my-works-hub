@@ -684,7 +684,7 @@
         { s: 'mercy', f: 'neutral', t: "...Four knots in an orange. In July. You think I've forgotten. I haven't." }
       ] },
       { choose: [
-        { t: "(Take the needle. \"Hold still.\")", notes: 3, then: [
+        { t: "(Take the needle.) Hold still.", notes: 3, then: [
           { n: "Angela looked at her for a long moment over the needle, the look she gave charts, and then she turned it round and put it in Solar's palm handle first, and sat down on the stool, and laid her hand flat on the steel tray, palm up, and held still. Genji got up off the bed without a word and took the penlight from the drawer and held it over them, steady, in the place where Solar had once held it for him." }
         ] },
         { t: "Talk me through it. You're the doctor.", notes: 2, then: [

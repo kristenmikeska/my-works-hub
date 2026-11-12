@@ -92,7 +92,7 @@
     ] },
     { n: "Three words. A question mark, which he used the way other people used exclamation points, sparingly and only when he meant it. She lay there and looked at it until the screen went dark, and then she touched it so it would light again, and looked at it some more." },
     { choose: [
-      { t: "\"slept like a rock. nana stole the blanket\"", flag: 'epi-h-lie-jw-night', then: [
+      { t: "slept like a rock. nana stole the blanket", flag: 'epi-h-lie-jw-night', then: [
         { phone: [
           { from: 'solar', t: "slept like a rock. nana stole the blanket" },
           { from: 'jungwon', t: "good. he's earned it." },
@@ -152,7 +152,7 @@
         { s: 'solar', f: 'sad', t: "You kissed me on my floor." },
         { s: 'jihoon', f: 'neutral', t: "Allegedly." },
         { choose: [
-          { t: "\"It happened.\"", flag: 'epi-h-jh-it-happened', then: [
+          { t: "It happened.", flag: 'epi-h-jh-it-happened', then: [
             { s: 'solar', f: 'serious', t: "It happened, Jihoon. I was there. I was the one on the floor." },
             { n: "He looked at her for a long time. Then he laughed, the real one, the one that got them thrown out of libraries, except it came out low and wrecked and he put his hand over his face in the middle of it." },
             { s: 'jihoon', f: 'happy', t: "Okay. Okay. It happened. Don't tell anyone, I've got a reputation. People think I'm a monk now. I went to a temple." },
@@ -261,7 +261,7 @@
           { n: "Then Nana, who had had enough, got up off the end of the bed and walked straight up the middle of it, across both of them, all sixty pounds, and planted one enormous paw in the centre of Jihoon's back, and Jihoon said a word. Not loud. Into her shoulder. But the room was very quiet, and the bathtub carried everything." },
           { s: 'jungwon', f: 'serious', t: "...Is someone there?" },
           { choose: [
-            { t: "\"It's Nana.\"", flag: 'epi-h-lie-jw-nana', then: [
+            { t: "It's Nana.", flag: 'epi-h-lie-jw-nana', then: [
               { s: 'solar', f: 'neutral', t: "It's Nana. He stood on me." },
               { n: "The silence went on a long time. Long enough for her to hear him decide, the way she'd heard him decide on Christmas Eve which answer to leave on the card." },
               { s: 'jungwon', f: 'neutral', t: "Nana doesn't swear." },
@@ -269,7 +269,7 @@
               { n: "And he laughed. That was the worst part. One of the rare ones, short, surprised out of him, and she lay there under two bodies and a dog listening to Yang Jungwon laugh at her lie because it was funny, because she was funny, because he'd decided a long time ago to believe the girl who said it." },
               { s: 'jungwon', f: 'happy', t: "Tell him goodnight from me. And Maeumi. Maeumi is very disappointed in his language." }
             ] },
-            { t: "\"Mom's coming up. I have to go.\"", then: [
+            { t: "Mom's coming up. I have to go.", then: [
               { s: 'solar', f: 'neutral', t: "My mom's coming up. I have to go. Sorry. Sorry, Won." },
               { s: 'jungwon', f: 'neutral', t: "Okay. Go. Goodnight, Sol." },
               { n: "It was true, as it turned out. That was the only reason it worked. Her mother's bath had been draining for a full minute and Solar hadn't heard it over her own heart, and now there were feet on the landing, and the bathroom door, and the two quick knocks she'd known her whole life." }
@@ -293,7 +293,7 @@
       { n: "Her mother was in her dressing gown with a towel round her hair, and she didn't come in. She stood in the doorway and looked at the room the way she looked at a spreadsheet somebody had told her was finished: the beanie on the floor by the bed, which Solar saw at the exact same second she did, and the wet patch on the carpet by the door the shape of two boots, and the dog, sitting up very straight at the end of the bed staring at the closet with his ears all the way forward." },
       { s: 'mom', f: 'serious', t: "Whose car is that on the corner? It's been there since eleven. Engine running. Your father thinks it's a burglar. I think a burglar would turn the engine off." },
       { choose: [
-        { t: "\"Mrs. Oh's son's. He visits on Saturdays.\"", flag: 'epi-h-sus-jh-car', then: [
+        { t: "Mrs. Oh's son's. He visits on Saturdays.", flag: 'epi-h-sus-jh-car', then: [
           { glitch: { strain: 1 } },
           { s: 'solar', f: 'neutral', t: "Mrs. Oh's son. From across the road. He visits." },
           { s: 'mom', f: 'neutral', t: "Mrs. Oh's son lives in Daegu." },
@@ -303,7 +303,7 @@
           { n: "Her mother looked at her for a long time. Then she looked at the beanie on the floor, black, with the little silver chain on the fold that Cherry had picked out in ninth grade as a joke and he'd worn every winter since as a personality. Solar watched her see it. She watched her not say anything about it, which was worse, which was so much worse." },
           { s: 'mom', f: 'neutral', t: "Mm." }
         ] },
-        { t: "\"It's Jihoon's. He drives round at night. You know he does.\"", then: [
+        { t: "It's Jihoon's. He drives round at night. You know he does.", then: [
           { s: 'solar', f: 'sad', t: "It's Jihoon's. He drives round at night when he can't sleep. You know he does, Mom." },
           { n: "Her mother's face did the thing it only did for one boy who wasn't hers. It went soft, all at once, the whole of it, like something had been unpinned." },
           { s: 'mom', f: 'sad', t: "That boy. Text him. Tell him to go home and sleep. Tell him there's japchae, he can come for it tomorrow, I made too much." },
@@ -374,13 +374,13 @@
       { s: 'mom', f: 'neutral', t: "Your coat smells like cigarettes." },
       { s: 'mom', f: 'serious', t: "Your coat, Solar. Not his. I know what his car smells like. I've known what his car smells like since he got it." },
       { choose: [
-        { t: "\"Cherry was smoking. I was standing next to her.\"", flag: 'epi-h-sus-jh-smoke', then: [
+        { t: "Cherry was smoking. I was standing next to her.", flag: 'epi-h-sus-jh-smoke', then: [
           { glitch: { strain: 1 } },
           { s: 'mom', f: 'neutral', t: "Cherry was smoking. Next to you. In your coat pocket." },
           { n: "She held up the lighter. It had been in the pocket. It was purple. It wasn't Cherry's. It wasn't even Jihoon's. It was the one she'd had in tenth grade, the one that had burned the cuff of her mother's grey cardigan, which she'd found that morning at the back of her desk drawer and put in her pocket without asking herself why." },
           { s: 'mom', f: 'sad', t: "I'll keep this one too. With the armband. I'm running out of pocket." }
         ] },
-        { t: "\"It's mine. I had one. Just one.\"", then: [
+        { t: "It's mine. I had one. Just one.", then: [
           { s: 'solar', f: 'neutral', t: "It's mine. I had one. Behind the gym. Just one." },
           { n: "Her mother looked at her for a long time over her reading glasses. Then she peeled a tangerine, all the way, in one piece, the way she did when she was deciding something, and put half of it on the table in front of Solar's chair." },
           { s: 'mom', f: 'sad', t: "...Not in the house. Not near the dog. And not *just one*, Solar. I was eighteen once. It's never just one." }
@@ -418,7 +418,7 @@
           { s: 'solar', f: 'sad', t: "Don't say that. Don't *thank* me." },
           { s: 'jungwon', f: 'sad', t: "I'm going to. You could have let me keep counting. That would have been easier for you. You didn't." }
         ] },
-        { t: "\"I don't know what it is yet. That's the truth too.\"", flag: 'epi-h-jh-half-told', stat: { kindness: 1 }, then: [
+        { t: "I don't know what it is yet. That's the truth too.", flag: 'epi-h-jh-half-told', stat: { kindness: 1 }, then: [
           { s: 'solar', f: 'sad', t: "It's Jihoon's car. You know it is. And I don't know what it is yet, Won, I don't, and I'm not going to stand here and give you a word for it that's wrong. That's the truth too. That's the most true thing I've got." },
           { n: "He looked at her for a long time. Then he nodded, once, the way he nodded at a number in the ledger that didn't match and that he'd have to go back and find the mistake in later, on his own, with a pencil." },
           { s: 'jungwon', f: 'neutral', t: "Okay. Then I'll wait for the word. I'm good at waiting. I'm very bad at most things that aren't maths, but I'm good at that." }
@@ -491,14 +491,14 @@
           { from: 'mom', t: "In the car. I timed it. I'm not asking. I'm telling you I timed it." }
         ], contact: 'Mom' },
         { choose: [
-          { t: "\"he was showing me a video. of a cat\"", flag: 'epi-h-sus-jh-curb', then: [
+          { t: "he was showing me a video. of a cat", flag: 'epi-h-sus-jh-curb', then: [
             { phone: [
               { from: 'solar', t: "he was showing me a video. of a cat" },
               { from: 'mom', t: "An eleven minute cat." },
               { from: 'mom', t: "I'll add it to the list." }
             ], contact: 'Mom' }
           ] },
-          { t: "\"he drove me home. we talked. thats all mom\"", then: [
+          { t: "he drove me home. we talked. thats all mom", then: [
             { phone: [
               { from: 'solar', t: "he drove me home. we talked. thats all mom" },
               { from: 'mom', t: "Mm. He's a good boy." },
@@ -597,14 +597,14 @@
           { from: 'mom', t: "That other boy ate my japchae, Solar. Twice. Be kind to him." }
         ], contact: 'Mom' },
         { choose: [
-          { t: "\"i am. i'm trying to be\"", then: [
+          { t: "i am. i'm trying to be", then: [
             { phone: [
               { from: 'solar', t: "i am. i'm trying to be" },
               { from: 'mom', t: "I know. That's why I'm worried." },
               { from: 'mom', t: "Come down and eat. Both your boys can wait until after dinner." }
             ], contact: 'Mom' }
           ] },
-          { t: "\"mom he's not my— it's not\"", then: [
+          { t: "mom he's not my— it's not", then: [
             { phone: [
               { from: 'solar', t: "mom he's not my— it's not like that. jungwon and i aren't. i don't know what we are" },
               { from: 'mom', t: "Then find out. Kindly." },
@@ -700,11 +700,11 @@
         : { n: "Cherry was at the bottom of the stairs, with her arms folded and her bag on her shoulder and the face of a woman who had been made to swear something in a bathroom and had come out to find the person she'd sworn it about missing." },
       asker === 'hyunsuk' ? { s: 'hyunsuk', f: 'serious', t: "Where'd you go, Sol?" } : { s: 'cherry', f: 'serious', t: "Where the fuck did you go." },
       { choose: [
-        { t: "\"Bathroom. The line was insane.\"", flag: 'epi-h-lie-crew-coats', then: [
+        { t: "Bathroom. The line was insane.", flag: 'epi-h-lie-crew-coats', then: [
           asker === 'hyunsuk' ? { s: 'hyunsuk', f: 'sad', t: "Bathroom's the other way, man." } : { s: 'cherry', f: 'serious', t: "I was IN the bathroom, Solar. There was no line. I was the line." },
           { n: "Nobody said anything else about it. That was worse than if they had. It sat there between them the rest of the night like a third person, a lie about a bathroom, the stupidest lie she'd ever told, to someone who'd known her since before either of them could spell." }
         ] },
-        { t: "\"Getting my coat. He was up there. Don't.\"", then: [
+        { t: "Getting my coat. He was up there. Don't.", then: [
           asker === 'hyunsuk'
             ? { s: 'hyunsuk', f: 'sad', t: "I wasn't gonna say anything. I've never said anything. Fifteen years I haven't said anything, man." }
             : { s: 'cherry', f: 'serious', t: "Don't? DON'T? I did a thumb kiss, Sol. In a BATHROOM. For a man who texts with PERIODS." },

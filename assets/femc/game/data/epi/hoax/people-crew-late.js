@@ -138,14 +138,14 @@
       { s: 'hyunsuk', f: 'serious', t: "He looks like he irons his socks, Sol. And we're just at the window. Ditching us for those preppy losers. That's what it looked like. From the window." },
       { n: "He'd tried to make the end of it a joke on the way out, and it hadn't come. It just sat there in the roar of the heater with nothing round it to make it smaller." },
       { choose: [
-        { t: "\"I'm in your car, Suk.\"", stat: { kindness: 1 }, flag: 'epi-h-suk-seat', then: [
+        { t: "I'm in your car, Suk.", stat: { kindness: 1 }, flag: 'epi-h-suk-seat', then: [
           { s: 'hyunsuk', f: 'neutral', t: "You sat at their table for a month." },
           { s: 'solar', f: 'neutral', t: "And now I'm in your car. Save me a seat at Yeobo's. The window. I'll sit in it." },
           { s: 'hyunsuk', f: 'neutral', t: "I'm not saving you anything." },
           { n: "Two streets on, without looking at her," },
           { s: 'hyunsuk', f: 'neutral', t: "...I'll put my coat on it." }
         ] },
-        { t: "\"You stopped answering too.\"", stat: { courage: 1 }, then: [
+        { t: "You stopped answering too.", stat: { courage: 1 }, then: [
           { n: "He turned the heater dial all the way down, hard, like that would end the conversation. The fan roared on exactly as before." },
           { s: 'solar', f: 'neutral', t: "It only does high." },
           { s: 'hyunsuk', f: 'sad', t: "I know it only does high." },
@@ -207,7 +207,7 @@
       { s: 'sunoo', f: 'flustered', t: "...Will you still come on Saturdays?" },
       { n: "That wasn't the question. They both heard that it wasn't. He looked at the crack in the tile like it might open up and take him, and the four clocks ticked in their four slightly different opinions on the wall." },
       { choose: [
-        { t: "\"Every Saturday, Sunoo.\"", stat: { kindness: 1 }, then: [
+        { t: "Every Saturday, Sunoo.", stat: { kindness: 1 }, then: [
           { n: "His whole face came undone with relief, all at once, the way his face did everything, and he laughed, too loud, and slapped his own hand over his mouth and looked at the ceiling." },
           { s: 'sunoo', f: 'happy', t: "Okay. Okay! Good. Halmeoni'll put two under the napkin." },
           { n: "She hadn't answered the other one. He knew she hadn't. He let her not, and went back to the floor, humming, and mopped the cracked tile one last time, gently, like he was tucking it in." }
@@ -481,11 +481,11 @@
       ] },
       { s: 'heeseung', f: 'neutral', t: "Vice President. You haven't given one." },
       { choose: [
-        { t: "\"Keep the story straight.\"", stat: { charm: 1 }, then: [
+        { t: "Keep the story straight.", stat: { charm: 1 }, then: [
           { s: 'heeseung', f: 'happy', t: "Thank you. Finally. A normal resolution. I'm putting a star next to it." },
           { n: "He did, on paper, on camera, a big one. Jay's ceiling didn't say anything. Jay's ceiling didn't have to. Her mom's face over the kitchen table sat in her chest where his question had put it, and stayed." }
         ] },
-        { t: "\"Tell my mom one true thing.\"", stat: { courage: 1 }, then: [
+        { t: "Tell my mom one true thing.", stat: { courage: 1 }, then: [
           { n: "Silence, the whole grid of it, seven little lit rooms all holding their breath at once." },
           { s: 'heeseung', f: 'serious', t: "...Which thing." },
           { s: 'solar', f: 'sad', t: "I don't know yet." },
@@ -494,7 +494,7 @@
           { s: 'solar', f: 'sad', t: "Like what?" },
           { s: 'jungwon', f: 'sad', t: "Like that you missed her." }
         ] },
-        { t: "\"Sleep eight hours. Because Sunoo said.\"", stat: { kindness: 1 }, then: [
+        { t: "Sleep eight hours. Because Sunoo said.", stat: { kindness: 1 }, then: [
           { s: 'sunoo', f: 'happy', t: "YES!" },
           { n: "Six people said *shh* at him at once, and Jungwon said it twice, and somewhere off his square a door handle turned, and didn't open, and every single square on the call froze like deer." }
         ] }

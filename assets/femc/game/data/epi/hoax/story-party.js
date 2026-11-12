@@ -325,7 +325,7 @@
         { n: "*i'm just saying. nine days. and she comes back looking like THAT. and he's downstairs right now with—*" },
         { n: "The tap went off. The line went very, very quiet, the specific quiet of eight girls and one regretful boy pretending they hadn't heard something, and Chaewon turned an index card over without looking at it." },
         { choose: [
-          { t: "(Knock. \"I can hear you.\")", stat: { courage: 1 }, flag: 'epi-h-heat-door', then: [
+          { t: "(Knock.) I can hear you.", stat: { courage: 1 }, flag: 'epi-h-heat-door', then: [
             { n: "She knocked. Twice. Politely, the way you knock on a teacher's door." },
             { s: 'solar', f: 'happy', t: "Hi! It's me! I can hear you! The door's really thin!" },
             { n: "Total silence from the bathroom. Then a whisper, *oh my GOD*, and the sound of somebody sitting down on the edge of a bathtub very hard. The boy in the line made a noise like a kettle. The girl in front of her turned around again, owl-slow, with her phone already up." },
@@ -362,7 +362,7 @@
         { n: "*So are you and Jungwon, like, actually dating? Or is it a council thing? Like a, like a political marriage?*" },
         { n: "Six boys on the porch went very still. Somebody coughed into his elbow. Jay closed his eyes, slowly, like a man watching a pass get intercepted in slow motion." },
         { choose: [
-          { t: "\"Yes. Actually dating. Tell everyone.\"", stat: { charm: 1 }, flag: 'epi-h-heat-loud', then: [
+          { t: "Yes. Actually dating. Tell everyone.", stat: { charm: 1 }, flag: 'epi-h-heat-loud', then: [
             { s: 'solar', f: 'happy', t: "Yes. Actually dating. Not political. Not a council thing. I'd marry him in a temple if they'd let me back in. Tell everyone. Tell your cousin's girlfriend." },
             { n: "The porch erupted. Somebody howled at the sky. Taeoh lifted her off the top step in a hug she had not asked for and put her down again a step lower, and two of the team were already typing, and by the time she'd got her feet back under her, *JOLAR IS REAL (confirmed by the VP on a porch)* was the top post on the forum, and under it, at the top of the replies, somebody had written *ok but then what were they doing for nine days* and it had two hundred likes." },
             { s: 'jay', f: 'neutral', t: "...Bro. You just fed the thread." },
@@ -411,7 +411,7 @@
       { n: "There was nobody to read it over her shoulder. Cherry was at home in a face mask. Jihoon was in the kitchen, in the photo, more or less, a shape at the edge of the doorway with a hand up mid-story. She looked at the picture and understood that she was the only person at this party whose job it was to decide what happened to it." }
     ] },
     { choose: [
-      { t: "\"Please don't post it.\"", flag: 'epi-h-party-owe-eunchae', then: [
+      { t: "Please don't post it.", flag: 'epi-h-party-owe-eunchae', then: [
         { s: 'solar', f: 'sad', t: "Please don't. Please. It's a hallway, but it's— please." },
         { n: "Eunchae looked at her. Not at her face, exactly. At the *please*, like it was a thing she'd been handed and didn't know where to put down." },
         { s: 'eunchae', f: 'serious', t: "Okay. I'll sit on it." },
@@ -419,7 +419,7 @@
         { s: 'solar', f: 'neutral', t: "...Deal." },
         { n: "Eunchae deleted the tip from her inbox in front of her, and showed her the empty inbox, and went back up the stairs with the phone held out in front of her again where it belonged. Solar stood by the goggles and felt like she'd sold something and wasn't sure yet what." }
       ] },
-      { t: "\"Post it. It's a hallway. I'm standing in a hallway.\"", stat: { courage: 1 }, flag: 'epi-h-heat-photo', then: [
+      { t: "Post it. It's a hallway. I'm standing in a hallway.", stat: { courage: 1 }, flag: 'epi-h-heat-photo', then: [
         { s: 'solar', f: 'neutral', t: "Post it. Seriously. It's a hallway. I'm standing in a hallway with my coat on. That's the scandal. Write *VP stands in hallway.* Let them have it." },
         { s: 'eunchae', f: 'surprised', t: "...You're sure?" },
         { s: 'solar', f: 'happy', t: "If you don't, someone worse does. You said so." },
@@ -493,7 +493,7 @@
       { from: 'mom', t: "I'm not checking up on you. I'm asking where you are." }
     ], contact: 'Mom' },
     { choose: [
-      { t: "(\"movie night. home by 12:30 i promise\")", flag: 'epi-h-sus-party', then: [
+      { t: "movie night. home by 12:30 i promise", flag: 'epi-h-sus-party', then: [
         { phone: [
           { from: 'solar', t: "movie night!! home by 12:30 i promise" },
           { from: 'mom', t: "Which movie?" },
@@ -503,7 +503,7 @@
         { glitch: { strain: 1 } },
         { n: "*Mm.* By text. Her mother had never once in her life sent the word *Mm.* by text. The bass came up through the floor and into her feet, and she put the phone away and felt the *Mm.* sitting in her coat pocket next to the can, small and heavy, the way a receipt sits in a pocket when you know you're going to have to show it to someone." }
       ] },
-      { t: "(\"at a party. the swim team kid's. home by 12:30\")", then: [
+      { t: "at a party. the swim team kid's. home by 12:30", then: [
         { phone: [
           { from: 'solar', t: "at a party. a swim team kid's house. home by 12:30. im ok" },
           { from: 'mom', t: "Thank you for telling me." },
@@ -609,7 +609,7 @@
             { from: 'jungwon', t: "i didn't hate it." }
           ], contact: 'Won' }
         ] },
-        { t: "\"No, Jihoon. Go inside.\"", flag: 'epi-h-party-jh-nophone', then: [
+        { t: "No, Jihoon. Go inside.", flag: 'epi-h-party-jh-nophone', then: [
           { n: "He looked at her. Then at the phone. Then he laughed, short, through his nose, and put his hands back in his pockets." },
           { s: 'jihoon', f: 'neutral', t: "Fair. Fair. Tell him I said hi. Tell him I said *drive safe*." },
           { s: 'jihoon', f: 'happy', t: "Oh, wait. He can't. Mommy has the keys." },
