@@ -580,6 +580,12 @@
           { n: "He looked at her over the top of the book like she'd asked him to sing. Then he cleared his throat and read it to her, flat, in the exact voice he used to tell Nadia she was rushing the *and*, and it was so funny she had to put her face in the pillow, and he didn't stop. He read the whole chapter in that voice with total commitment, and somewhere in the middle she stopped laughing and just listened, because under the flat there was something careful, the way he slowed down for the lines she'd underlined, every one of them, without being asked." }
         ] }
       ] },
+      // Nov 11 2026 (Kat): two lives
+      { n: "At some point he started humming. Not one of his. Something old and swooping, with a catch in the long note, the kind of song taxi drivers played and uncles sang at weddings, and he hummed it very well and completely without noticing, the way you'd hum something you'd sung in a car a thousand times to annoy the man in the passenger seat." },
+      { s: 'solar', f: 'neutral', t: "That's trot." },
+      { s: 'haechan', f: 'neutral', t: "Is it." },
+      { s: 'solar', f: 'sad', t: "That's my dad's song. The other one's." },
+      { n: "He stopped. He didn't apologise. He found her hand under the covers and held it, and after a while, very quietly, flatter than he'd ever have sung it in that car, he did the second verse all the way through, for her, and she lay with her face in his shoulder and let him." },
       { n: "They didn't get up until eleven. It was, she'd decide later, the morning she'd keep if she could only keep one." },
       { bond: { haechan: 1 } }
     ] },
@@ -594,6 +600,8 @@
       { s: 'haechan', f: 'neutral', t: "You drink iced in the day. You don't drink hot unless you've watched somebody make it. You watched him. You'd still rather have iced." },
       { n: "She hadn't told him that. She had never once in her life said that out loud to anybody, she was fairly sure, and she stood at the counter on Madison Avenue with her mouth slightly open while he paid, with his own card, from his own money, the session money, and didn't look at her, and didn't explain, and didn't ask anybody anything." },
       { n: "They took the window table. Outside the snow from Christmas had gone gray at the curbs and been shovelled into hard little ridges along the avenue, and a woman went past with a tiny dog in a red quilted jacket, and then another woman with an identical dog in an identical jacket going the other way, and the two dogs looked at each other through the glass of the café like they'd been betrayed." },
+      // Nov 11 2026 (Kat): two lives
+      { n: "He took the chair with its back to the wall and the door in front of him. He always did. She'd watched him do it in every room in Syracuse without seeming to think about it, and under a tarp at a pojangmacha by a harbor in a different winter, with the heater ticking in the middle of the tables and the cold coming in round everybody's ankles, and she'd stopped thinking of it as a habit. It was just where he sat, so that nothing came in that he hadn't seen first." },
       { n: "He tasted the coffee. He tasted it again. Something happened very slightly at the corner of his mouth." },
       { s: 'solar', f: 'happy', t: "Well?" },
       { s: 'haechan', f: 'neutral', t: "It's fine. The water's good. They've got a decent—" },
@@ -700,6 +708,15 @@
       { s: 'solar', f: 'neutral', t: "Where isn't it?" },
       { s: 'haechan', f: 'neutral', t: "Fort Lee. Across the bridge. Fourth floor, no lift. The front door's held open with a brick. You can hear the whole building fight through it." },
       { n: "He said it to the snow, flat, like a man reading a weather report off a sign. Twenty minutes over the river, a bus she'd never taken, and he was sleeping on a stranger's couch in Bushwick this week instead. She didn't ask why. She'd learned what he sounded like when a door was shut, and this was a door being shown to her shut, which was different, and she held still for it." },
+      // Nov 11 2026 (Kat): two lives
+      { s: 'solar', f: 'neutral', t: "And over there? Is it in tune?" },
+      { n: "She didn't say where. She didn't have to. He looked down the white avenue for a long time, the way he'd looked at the thin gold light on the roof in Syracuse." },
+      { s: 'haechan', f: 'neutral', t: "No. Never. It's diesel and gulls and the cranes groaning when the wind gets into them, and a boat engine at two in the morning that misses every fourth beat. The Chairman's men all whistle flat. The whole port's a quarter-tone under." },
+      { s: 'haechan', f: 'neutral', t: "I used to lie in that annex and try to mix it in my head." },
+      { s: 'solar', f: 'sad', t: "Do you miss it?" },
+      { s: 'haechan', f: 'neutral', t: "I don't have to miss it. I've got all of it. Every bit of both, princess, all the time. Same as you." },
+      { s: 'haechan', f: 'serious', t: "I'm not going to make you talk about it. I just didn't want you walking round this city thinking you're the only one with two of them in your feet." },
+      { n: "He'd aimed it. He always aimed it. She stood on the untouched snow of Fifth Avenue at two in the morning beside a boy who knew what the tide was doing on the other side of the world, and for the first time since she'd come home she felt like somebody else was holding the other end of something." },
       { n: "His phone lit in his pocket while they stood there. He took it out and looked at it and, after a second, tilted it so she could see: *Mark's mom*, three texts, all the same, a day apart. *Have you eaten?* And under them one from *Mark's dad*, from the afternoon, a whole sentence with a full stop: *There's a light out in the garage.*" },
       { s: 'haechan', f: 'neutral', t: "That means come over. He's never once said come over." },
       { n: "He put the phone away. He didn't say where the garage was, or whose house, or what it meant that he hadn't gone. She'd been to enough of the wrong doors with him this winter to read the right one from across a street: a house up a hill somewhere with a bed made in it, and two people who'd kept it made, and a reason he wasn't in it that had Mark's name on it." },

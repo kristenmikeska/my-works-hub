@@ -576,10 +576,14 @@
       { s: 'sakura', t: "I'm being efficient. Next." },
       { n: "Eunchae was on the dance machine with her coat still on, getting a B on a song she clearly considered an A. Yunjin was feeding tokens into a claw machine full of sad pastel bears and narrating every attempt like a war correspondent. And the house had sent someone, of course, because the house sent someone everywhere now." },
       { ifEpiRoute: 'haechan', then: [
-        { n: "Haechan, leaning on the claw machine next to Yunjin with his arms crossed and his gum going, offering expert advice nobody had asked for and losing a token every time he proved it." }
+        { n: "Haechan, leaning on the claw machine next to Yunjin with his arms crossed and his gum going, offering expert advice nobody had asked for and losing a token every time he proved it." },
+        // Nov 11 2026 (Kat): two lives
+        { n: "On his way past the gun cabinet he fed it one token and cleared the whole first stage without seeming to aim, the plastic pistol held loose and low, half his attention on Yunjin's bears, the way he'd play a backline hunter from the far end of a map at eleven at night in a dorm room in Syracuse. Yunjin said *you're a terrible shot, the Chairman says so*, and he said *with a real one*, and hung the pistol back in its holster, and didn't look at Solar at all, which was how she knew he knew she'd seen." },
       ], else: [
         { ifEpiRoute: 'jungwon', then: [
-          { n: "Jungwon, by the change machine in his dark coat, perfectly still, looking at the arcade the way another man might look at a hostile foreign parliament, which was somehow worse than anything Haechan could have done." }
+          { n: "Jungwon, by the change machine in his dark coat, perfectly still, looking at the arcade the way another man might look at a hostile foreign parliament, which was somehow worse than anything Haechan could have done." },
+          // Nov 11 2026 (Kat): two lives
+          { n: "He'd counted the exits before she'd counted the bears. She watched him do it, and then watched him, out of some other habit from some other building, square a loose stack of leaflets on top of the change machine into one neat pile, edges tapped level, the way a student council president squares the agenda before he calls a meeting to order." },
         ], else: [
           { n: "Minseok, on a stool by the air hockey table, pretending to read a newspaper in an arcade, which convinced no one, least of all Minseok." }
         ] }

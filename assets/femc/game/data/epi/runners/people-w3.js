@@ -116,10 +116,12 @@
       { s: 'haechan', f: 'neutral', t: "Fifty-two minutes." },
       { s: 'solar', f: 'flustered', t: "You timed it." },
       { s: 'haechan', f: 'happy', t: "You do a thing when you sleep. It's not snoring. I'd mix it out." },
-      { n: "While she looked for her other shoe he stood up, and his hand went to his hip, quick, the way you'd go for a phone that had buzzed, and closed on nothing. He looked down at it. He didn't have anything on that hip. He never had." },
+      // Nov 11 2026 (Kat): two lives
+      { n: "While she looked for her other shoe he stood up, and his hand went to his hip, quick, the way you'd go for a phone that had buzzed, and closed on nothing. He looked down at it. He didn't have anything on that hip. Not in this life." },
       { s: 'haechan', f: 'serious', t: "...I keep thinking I left the radio on." },
+      // Nov 11 2026 (Kat): two lives
       { s: 'solar', f: 'serious', t: "You don't have a radio." },
-      { s: 'haechan', f: 'neutral', t: "No." },
+      { s: 'haechan', f: 'neutral', t: "Not here." },
       { n: "He put the hand in his pocket and left it there. She knew that gesture from somewhere that wasn't here. She didn't say where from. Some things you didn't hand a person in the dark." },
       { s: 'haechan', f: 'happy', t: "Go home, pretty. Sleep. Actually sleep. I'll know." }
     ] },

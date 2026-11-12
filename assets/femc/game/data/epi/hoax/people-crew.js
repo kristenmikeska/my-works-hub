@@ -596,6 +596,8 @@
       { music: 'epi-h-snow' },
       { n: "The rink was empty except for him, and he was not doing what anybody at Hanlim thought Park Sunghoon did with his free time, he was skating, really skating, long clean arcs that hissed on the ice, and as she watched he gathered himself on one foot and went up and turned twice in the air and came down on a blade and held it, arms out, perfectly still, for no one." },
       { n: "Then he saw her. He did not fall over, which was a credit to him." },
+      // Nov 11 2026 (Kat): two lives
+      { n: "He did put a hand to his left knee coming out of it. Just for a second, flat, the way you'd check a pocket for your keys, and then took it away as if it had never been there. There was nothing wrong with Park Sunghoon's left knee. Not in this town. She'd seen him stand on it very carefully in a colder one, facing a door, and she looked at the ice instead of at him, because he'd seen her see it." },
       { s: 'sunghoon', f: 'flustered', t: "Park Sunghoon would like it noted that he landed that." },
       { s: 'solar', f: 'neutral', t: "Noted." },
       { s: 'sunghoon', f: 'neutral', t: "Park Sunghoon would also like it noted that you didn't see it. Lace up." },
@@ -735,6 +737,8 @@
       { s: 'niki', f: 'neutral', t: "It's misinformation, Sol. It's so wrong it protects the truth. It's strategy." },
       { s: 'solar', f: 'happy', t: "Heeseung's going to kill you." },
       { s: 'niki', f: 'happy', t: "Heeseung doesn't know about ufo_hanlim. Heeseung knows about the other four." },
+      // Nov 11 2026 (Kat): two lives
+      { n: "He'd eaten a banana at some point during all this. She only noticed because he folded the peel when he was done, strip by strip, down into a small neat square, and put it in his coat pocket like a receipt, without looking, which was not a thing anybody at Hanlim had ever seen Niki do. She'd seen him do it on top of a garden wall at one in the morning, in a thin silver puffer, in another city. She didn't say so. Neither did he." },
       { choose: [
         { t: "Give me the phone. I'm writing one.", flag: 'epi-h-niki-alt', stat: { charm: 1 }, then: [
           { s: 'forum', t: "ufo_hanlim: update. the aliens sent them back because the president kept correcting their grammar" },

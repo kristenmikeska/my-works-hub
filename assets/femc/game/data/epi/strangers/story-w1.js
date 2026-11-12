@@ -566,6 +566,8 @@
     { n: "He bowed, much too low, the banana still in his hand, and straightened up, and folded the banana peel down over the fruit very neatly, one strip at a time, as if that had been what he'd come in to do, and went straight back out through the door he'd come in by. It banged. She heard his feet on the gravel outside, running." },
     { n: "The auntie at the sink went on peeling squid. Jay looked at the door, and then at her, and didn't say a word about it, which she was beginning to understand was how all of them were going to do this. Not a word. A look that went on a second too long, and then the squid." },
     { s: 'jay', f: 'neutral', t: "I'll go and tell the rice man it's his rice." },
+    // Nov 11 2026 (Kat): two lives
+    { n: "On his way past the fruit bowl he picked out a mandarin and, without looking, sent it through the back door after Riki in a tight perfect spiral, the way you'd throw a football, and from the yard came the slap of it landing in two hands and a wounded *hyung!* Nobody in the Yang house played football. Solar thought of a field with HANLIM painted across one end of it, and a boy who was mutuals with the whole school, and looked at the squid." },
 
     // Sunghoon.
     { place: 'Incheon · The Yang House', time: 'Daytime', soft: true },

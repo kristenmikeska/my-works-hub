@@ -324,6 +324,12 @@
       { s: 'solar', f: 'happy', t: "Yang Jungwon. You're good at sneaking out." },
       { n: "He thought about it, seriously, the way he thought about everything she said to him, like it might be on a test." },
       { s: 'jungwon', f: 'sad', t: "Yes. That's the worst part. I'm good at it. I didn't want to be good at it, I wanted to not have to." },
+      // Nov 11 2026 (Kat): two lives
+      { s: 'solar', f: 'neutral', t: "You didn't learn that here." },
+      { n: "He was quiet for a moment, watching his own breath go up past the porch light." },
+      { s: 'jungwon', f: 'neutral', t: "No. My father's house over there doesn't creak anywhere. You learn to be quieter than it, or it hears you. I was quiet before I could read." },
+      { s: 'jungwon', f: 'sad', t: "I didn't think I'd ever be glad of it." },
+      { n: "She didn't say anything. She knew that house, the long cold hall and the stairs that didn't creak and a small woman in black at the end of a corridor whom nobody ever heard coming. She'd been quiet in it herself. She bumped her shoulder against his, once, which was all the answer it needed." },
       { n: "She sat down next to him on the step. The snow was cold through her pyjamas in about two seconds and she didn't move. Nana squeezed out through the gap in the door behind them and lay down across both of their feet like a duvet somebody had dropped on the stairs." },
       { s: 'jungwon', f: 'neutral', t: "He still isn't speaking to me. My father. Not since I stopped asking for things I'd already decided." },
       { s: 'solar', f: 'sad', t: "Won." },

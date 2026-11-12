@@ -77,7 +77,8 @@
             { me: 'what flavour is the gum' }, { them: 'not mint' }, { them: 'never mint. never again agasshi' }, { me: 'noted' }
           ] },
           { id: 'epi-s-tp-haechan-3', label: 'Say something in English', flags: ['epi-s-nowhere'], msgs: [
-            { me: 'say something in english' }, { them: 'no' }, { them: 'dont know any' }, { them: 'it was a stroke. drop it' }
+            // Nov 11 2026 (Kat): two lives
+            { me: 'say something in english' }, { them: 'no' }, { them: 'not on the chairmans phone' }, { them: 'ask me in a different city agasshi. ill say a whole paragraph' }
           ] },
           { id: 'epi-s-tp-haechan-4', label: 'The islands', route: 'haechan', events: ['epi-s-hc-annex'], msgs: [
             { me: 'how is it off socheong tonight' }, { them: 'moderate' }, { them: 'go to sleep' }, { them: '...slight later' }

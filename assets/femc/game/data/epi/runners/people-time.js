@@ -559,6 +559,8 @@
       { music: 'epi-r-snow' },
       { n: "He was at the bottom of the Archbold steps, off to one side by the bike rack, where the crowd thinned out, hood up and hands in his pockets and his headphones round his neck, looking at the sky like it had a scoreboard on it. Four hundred people came out of the gym around him laughing and shouting and already playing music off phones, and he stood in the middle of them like a rock in a stream and didn't look for her once. Which was how she knew he'd been there since before four." },
       { n: "She came down the steps. He fell in beside her without a word, a foot of air between them, the careful foot, because the party was in four hours and they'd agreed on careful, and the two of them walked out across the quad in the snow, not touching, the way two people from the same class might walk if they happened to be going the same way." },
+      // Nov 11 2026 (Kat): two lives
+      { n: "He had gum going, cinnamon, which was new this month and which he'd never once explained. He'd stopped carrying a lighter. He'd started carrying cinnamon gum instead, the way she'd watched him chew it on a quay in another winter, always quitting something and never quite managing, and she didn't say a word about it, because a boy trying to quit something gets to choose what he chews." },
       { s: 'haechan', f: 'neutral', t: "How was it." },
       { s: 'solar', f: 'neutral', t: "Clear." },
       { s: 'haechan', f: 'happy', t: "Is that a grade or a weather report." },

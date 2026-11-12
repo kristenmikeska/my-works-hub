@@ -1840,6 +1840,8 @@
     ] },
 
     { n: "He made sixty-one between four and half past six." },
+    // Nov 11 2026 (Kat): two lives
+    { n: "Somewhere in the middle of it he took the whole fish off the caterer's platter, looked at it with open contempt, and took it down to the bone with her mother's good knife in about a minute, quick and clean and barely looking, the blade sitting in his hand like it had always lived there, the fillets laid out on the board like two white pages and the frame dropped in a pot for later. His hands didn't shake. They never shook with a knife in them. Solar watched from her stool and knew exactly which fish market at four in the morning had taught them that, and in which city, and kept folding." },
     { n: "He did it standing at the island with the tea towel on his shoulder, entirely absorbed, the way he did anything with his hands, the way he sat at a board with one ear turned to the speaker, and the kitchen filled up slowly with steam and the smell of sesame oil and the sound of the extractor fan, and the window over the sink went from gray to blue to the deep lit dark of a winter city at five, four hundred windows coming on one at a time across the street like a slow applause." },
     { n: "Solar sat on a stool and did the folding, badly, and got shouted at about it." },
     // The dumplings minigame (Nov 11 2026; minigames/dumplings.js, flags epi-r-mg-dumplings-*). Her bags happen either way.
@@ -2015,6 +2017,12 @@
         { s: 'chenle', f: 'serious', t: "I can't make dumplings. Nobody here can make dumplings. Jeno, can you make dumplings?" },
         { s: 'jeno', f: 'neutral', t: "No." },
         { s: 'chenle', f: 'serious', t: "Jeno can't make dumplings." },
+        // Nov 11 2026 (Kat): two lives
+        { n: "Jeno, reaching past Renjun for the last plate, caught a glass with his elbow, and it went off the edge of the island, and Haechan's hand was under it before it had fallen a foot, without turning his head, without putting anything down, and set it back on the counter upright with the drink still in it." },
+        { s: 'jeno', f: 'surprised', t: "...Dude." },
+        { s: 'chenle', f: 'serious', t: "Where did you *learn* that?" },
+        { s: 'haechan', f: 'neutral', t: "Kitchens." },
+        { n: "It wasn't a lie. It just wasn't the kitchen any of them were picturing. Solar pictured a different one, a restaurant kitchen behind a harbor office with a five-foot cook in rubber boots who listened at doors, full of men who'd all learned to catch things before they hit the floor, because in that house a dropped thing was a noise, and a noise was a problem." },
         { n: "Haechan turned round to the stove with his back to all of them and did something completely unnecessary to an empty pan for about thirty seconds. Solar knew that move. She'd learned it this week, in this kitchen. She let him have it." }
       ] },
 

@@ -56,6 +56,8 @@
       { s: 'solar', f: 'happy', t: "Won. Nana's sixty pounds. Maeumi's like four." },
       { s: 'jungwon', f: 'neutral', t: "It's not about weight. It's about confidence." },
       { n: "He'd set the timer on his watch at the gate. She could see it going, forty-five minutes counting down, because a dog walk was an errand and an errand was allowed and nobody in the Yang house had said anything about how long, so he'd asked for an hour and been given forty-five and had decided that was a victory. He reached into the tote bag and took out an index card and looked at it, and she saw the handwriting on it from where she stood, the round bubbly letters with hearts over the i's." },
+      // Nov 11 2026 (Kat): two lives
+      { n: "He touched the watch with two fingers once it was running, the way he did when he was thinking, and kept them on the strap a second too long, at the place where on another wrist, in another house, a link had been taken out so it would fit. This one had always fit. His mother had bought it for his sixteenth birthday. He wore it like it had been somebody else's first, and Solar knew whose, and didn't say." },
       { s: 'solar', f: 'surprised', t: "Is that Sunoo's writing?" },
       { s: 'jungwon', f: 'flustered', t: "...No." },
       { s: 'solar', f: 'happy', t: "Won. There's a heart over the i." },
@@ -64,6 +66,10 @@
       { s: 'jungwon', f: 'neutral', t: "Item one. A walk. Item two." },
       { n: "In the paper bag were dog biscuits. Homemade, lumpy, bone-shaped more or less, a little too brown on the bottoms. He'd made them. She could tell he'd made them because each one was almost exactly the same size as every other one, the way only someone who'd weighed the dough on a kitchen scale could get them." },
       { s: 'jungwon', f: 'neutral', t: "Oat flour, pumpkin, one egg. No salt, no sugar. I found a recipe from a veterinary college. There was a first tray. We don't talk about the first tray." },
+      // Nov 11 2026 (Kat): two lives
+      { s: 'solar', f: 'happy', t: "You burnt a tray? You can cook, Won. I know you can." },
+      { s: 'jungwon', f: 'flustered', t: "I can cook fish. Baking is chemistry. Jay says chemistry is best left to professionals." },
+      { n: "He heard it as it came out, and so did she, and for one second on the salted path neither of them could look at the other. Then she laughed so hard that Maeumi screamed at her." },
       { s: 'solar', f: 'happy', t: "You baked for my dog." },
       { s: 'jungwon', f: 'flustered', t: "I baked for both dogs. It's not favouritism. It's a dog date." },
       { n: "They walked. The path round the pond was salted and grey and the pond was white and the benches had little caps of old snow on them, and the dogs walked the way they'd always walk, she thought, if she and Jungwon were walking them together for the rest of their lives: Maeumi in a straight, furious line at Jungwon's ankle, and Nana in loops, wide happy loops, out and back, out and back, round Maeumi like a planet with a very small, very bad-tempered sun." },

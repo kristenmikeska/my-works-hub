@@ -77,6 +77,8 @@
       { s: 'solar', f: 'neutral', t: "Of what?" },
       { s: 'jungwon', f: 'serious', t: "Whether I come home without them, or whether I go to the post office. The post office closes at six." },
       { n: "They both looked at the clock above the register. It was ten past." },
+      // Nov 11 2026 (Kat): two lives
+      { n: "Beside the register there was a stack of free calendars from the pharmacy next door, next year's, the cheap kind with a cartoon dragon on the front. He took one without looking at it, the way you take a receipt, and while she was talking he'd turned it to April, and his thumb had come to rest on a Saturday near the middle of the month, and he didn't seem to know it had. She did. She looked at the ramyeon before he could catch her looking." },
       { s: 'solar', f: 'happy', t: "So you fail either way." },
       { s: 'jungwon', f: 'happy', t: "That's usually how it works." },
       { n: "He said it like a weather report and put the soap in the basket, and she decided right there, under the buzzing lights, that she wasn't going to ask about the rest of it, the *just wait till you get home* that had finally gotten home and sat down at the dinner table, because he'd tell her when he wanted to and he never wanted to, and because the girl at the register was watching them over the top of a manga and Solar didn't feel like giving the Hanlim forum part five." },
@@ -159,6 +161,9 @@
       { n: "It was out before she could stop it. And then it was just there on the table between them, on the quiet floor, in front of a hundred people not breathing, and she didn't know where to put it." },
       { n: "Jungwon didn't look up. He didn't ask who. He finished the line he was writing, crossed a t, and turned the page." },
       { s: 'jungwon', f: 'neutral', t: "Probably." },
+      // Nov 11 2026 (Kat): two lives
+      { s: 'jungwon', f: 'neutral', t: "He'd have changed the station to something older than both of us and sung it at you until you begged. Very well. On purpose." },
+      { n: "Her pencil stopped. Not this boy, the one with the song she'd hummed. The same boy, the other one, at the wheel of a car on a harbor road with a man in reading glasses beside him, singing trot to annoy the whole car. Jungwon knew that car. Everybody in both houses knew that car. He didn't look up. He'd said it to the page, so she could pick it up or leave it." },
       { glitch: { near: true } },
       { n: "He pushed the next problem across to her. That was all. That was the whole thing. She looked at it for a long time, longer than the problem needed, and it was a while before she could read the numbers." },
       { n: "At five the lights flickered for closing. He wound his scarf around her neck without asking, twice, because hers was the thin one with the bobbles, and tucked the end in." },
@@ -214,6 +219,16 @@
         { n: "They walked. The dogs walked, more or less, Maeumi in a straight line and Nana in a series of loops around him, and Solar told him about the forum's newest theory, that the council had been in witness protection, and he said that was the most flattering thing anyone had ever said about them." }
       ] },
       { glitch: { near: true } },
+      // Nov 11 2026 (Kat): two lives
+      { n: "On the way round the pond they passed the stone tables by the pavilion, where two old men in earflap hats were playing baduk in the snow with their gloves off and a thermos between them, and Jungwon slowed down without meaning to, the way Nana slowed down for a smell." },
+      { n: "He looked at the board for about four seconds. Then he said, under his breath, to nobody, *white's in atari*, and the old man playing white looked up sharply, and then down, and moved." },
+      { s: 'solar', f: 'happy', t: "You don't play." },
+      { s: 'jungwon', f: 'neutral', t: "Not here." },
+      { n: "He said it the way you'd say *not in this weather*, and walked on, and she walked beside him and thought about an old board in a glass room over the water, and a boy playing both sides of it at one in the morning, black and then white and then black, because there was nobody in that city he'd let sit across from him." },
+      { s: 'solar', f: 'serious', t: "You play against yourself. Over there." },
+      { s: 'jungwon', f: 'happy', t: "I never lose." },
+      { s: 'solar', f: 'happy', t: "Won, that's cheating." },
+      { s: 'jungwon', f: 'neutral', t: "It's the only way I've found to keep it fair." },
       { n: "He stopped walking. He held out Maeumi's leash, the thin red one, across the space between them." },
       { s: 'jungwon', f: 'happy', t: "Walk this one." },
       { choose: [
@@ -305,6 +320,10 @@
       { s: 'jungwon', f: 'flustered', t: "It's mostly centre of mass. You keep it over your feet." },
       { s: 'solar', f: 'happy', t: "Where's yours right now?" },
       { s: 'jungwon', f: 'flustered', t: "Somewhere behind me." },
+      // Nov 11 2026 (Kat): two lives
+      { s: 'solar', f: 'happy', t: "You should've asked Sunghoon." },
+      { s: 'jungwon', f: 'flustered', t: "He'd tell me to stop locking my knee. Then he'd stand on his own very carefully for the rest of the night and pretend he wasn't." },
+      { n: "There was nothing wrong with Sunghoon's knee. Not here. She knew which knee he meant anyway, and which winter, and which stairwell, and Jungwon saw her know it and looked down at his skates." },
       { n: "She went out after him, which was a mistake, because she was only better than him in the way that a person holding a wall is better than a person holding a wall slightly worse, and for five minutes they went round the bright end in a slow shuffling procession, her gloved hand on the boards and her other hand in his, his free hand on the boards too, two people dragging themselves around a rink like it was the edge of a ship." },
       { n: "Neither of them said anything about the gym. About the bleachers through her chest, or a hundred thousand views, or *Tomorrow?* in an empty room. His thumb was on the inside of her wrist, through the glove, exactly where he'd held it in the gym, and she didn't think he knew it was there." },
       { choose: [
@@ -834,6 +853,13 @@
       { s: 'jungwon', f: 'serious', t: "I'm not going to *say* it's all there. I'm going to *know* it's all there." },
       { s: 'sunghoon', f: 'neutral', t: "Sunghoon would simply look at them until they believed him." },
       { s: 'heeseung', f: 'neutral', t: "That works for exactly one person, Sunghoon, and it's not the person who has to read the ledger out loud." },
+      // Nov 11 2026 (Kat): two lives
+      { n: "Nobody had arranged it. Nobody ever did. But Sunghoon had taken the chair by the door and turned it round to face the door, the way he always ended up facing doors, and Jay had a container of something he'd made at home open at Jungwon's elbow and moved it an inch closer every time Jungwon reached for a coin instead, and Niki, for all his numbers, was on his feet the second Jungwon looked up, already halfway to the door before anybody had said what he was going for. Three boys arranged round one at a table like they'd done it a hundred times before, somewhere with harder chairs. Solar watched it and didn't say a word. Heeseung, who'd sat at a council table with all four of them for two years, watched it and frowned like it was a sum that didn't come out." },
+      { s: 'solar', f: 'neutral', t: "Jay. What is that?" },
+      { s: 'jay', f: 'neutral', t: "Japchae. Sixty grams of noodles a person. Soy at two percent of the weight. Don't look at me like that, it's how you get it the same every time." },
+      { s: 'jake', f: 'surprised', t: "Since when do you *cook*, bro?" },
+      { s: 'jay', f: 'neutral', t: "Since I started. Eat, Jungwon." },
+      { n: "Jungwon ate. He didn't argue. He took the chopsticks Jay held out without looking up from the coins, the way you'd take something from somebody who'd been handing you things your whole life, and that, more than anything, was what made Heeseung put his pen down and stare." },
       { s: 'solar', f: 'serious', t: "Who even put it in the ballot box?" },
       { s: 'niki', f: 'happy', t: "Me." },
       { s: 'heeseung', f: 'serious', t: "It was not you." },
@@ -1038,7 +1064,8 @@
       { from: 'jungwon', t: 'thank you for today.' },
       { from: 'jungwon', t: 'your mother gave me the leftovers in a container. i have to return the container. is that a test.' }
     ], reply: [
-      { t: "its a test. you have to bring it back with something in it", then: [{ from: 'jungwon', t: 'understood.' }, { from: 'jungwon', t: "i'm going to need to learn to cook." }] },
+      // Nov 11 2026 (Kat): two lives
+      { t: "its a test. you have to bring it back with something in it", then: [{ from: 'jungwon', t: 'understood.' }, { from: 'jungwon', t: "i know how to cook, actually." }, { from: 'jungwon', t: "i learned in a different kitchen. a long time ago. i'll bring it back with something good in it." }] },
       { t: "she likes you won", then: [{ from: 'jungwon', t: "she said his name eleven times." }, { from: 'jungwon', t: "but she gave me the container." }] }
     ] },
     { id: 'epi-h-tx-club-doc', thread: 'club', date: '12/26', slot: 'after', msgs: [

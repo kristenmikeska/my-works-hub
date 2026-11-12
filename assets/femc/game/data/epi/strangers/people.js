@@ -114,6 +114,10 @@
       { s: 'solar', f: 'happy', t: "That's what you think about." },
       { s: 'haechan', f: 'happy', t: "Every day, agasshi. I've got trauma." },
       { n: "He put another walnut cake in his mouth whole. Down on the road below a truck went past and the whole hill shook a little under them, the paper bag rustling on the handbrake like something alive." },
+      // Nov 11 2026 (Kat): two lives
+      { n: "There was frost on the hill and not a flake of snow anywhere. He looked at it out of the windscreen the way he'd look at a bad mix." },
+      { s: 'haechan', f: 'neutral', t: "This isn't winter." },
+      { n: "He said it like somebody who'd walked across a quad in lake-effect snow up to his shins, and heard himself, and ate another cake so he wouldn't have to hear himself again." },
       { s: 'haechan', f: 'neutral', t: "Nobody understood a word I said. A whole country. I'd go in a shop and say a thing and they'd bow and say a thing back and we'd just stand there." },
       { s: 'solar', f: 'flustered', t: "I understood you." },
       { s: 'haechan', f: 'flustered', t: "Yeah. So I followed one girl round for a year because she was the only person in the whole place who knew what I was saying." },
@@ -137,8 +141,10 @@
           { s: 'haechan', f: 'flustered', t: "It's not a secret. It's a stroke. I'm having a stroke, agasshi, and you're eating my cake." }
         ] },
         { t: "Say something else.", stat: { courage: 1 }, then: [
-          { n: "He opened his mouth. Nothing came out but Korean, and then some quay Korean, and then he laughed, the loud one, the real one, and knocked his forehead gently on the steering wheel twice." },
-          { s: 'haechan', f: 'happy', t: "Gone. It's gone. It was a fluke. Put your belt on." }
+          // Nov 11 2026 (Kat): two lives
+          { n: "He opened his mouth, and she watched him choose. Korean came out, and then some quay Korean, and then he laughed, the loud one, the real one, and knocked his forehead gently on the steering wheel twice." },
+          // Nov 11 2026 (Kat): two lives
+          { s: 'haechan', f: 'happy', t: "Not in this car. In this car I'm a Korean man in a Korean car with a trot tape. Put your belt on." }
         ] }
       ] },
       { n: "He turned the car round at a sign that said INCHEON 38 and drove them home the long way, under a sky going the color of the inside of a shell, and the tape played the same trot song three times because neither of them would be the one to touch it. At the gate he leaned across and opened her door for her again. Gently, this time." },
@@ -197,6 +203,8 @@
       ] },
       { n: "It took him forty minutes, two more washers and a strip of Mrs. Bang's plumber's tape that she'd had since 1994 and handed over like a relic. When he turned the water back on the tap held. Then, after a long pause in which the whole kitchen watched it, it dripped." },
       { n: "Once. Then nothing. Then once more." },
+      // Nov 11 2026 (Kat): two lives
+      { n: "He tilted his head at it. Not at the sink: at the sound, the way she'd seen him tilt it at a pair of monitors on the fourth floor of a building in Syracuse, with good headphones round his neck, hearing a room whether he wanted to or not. Mrs. Bang thought he was sulking. Pyo thought he was listening for the ghost. Solar knew he was working out what note it was." },
       { s: 'haechan', f: 'happy', t: "It's a different drip. That's progress." },
       { n: "Mrs. Bang took the hall rug out into the yard and beat it, hard, for some time. Her father appeared in the doorway with his reading glasses on their cord, looked at the ceiling, looked at the floor, looked at Haechan dripping in the middle of it." },
       { s: 'appa', f: 'serious', t: "Son." },
@@ -205,6 +213,8 @@
       { s: 'haechan', f: 'neutral', t: "Yes, Chairman." },
       { n: "When he'd gone Haechan wiped his face on his sleeve and leaned on the counter beside her, close enough that his wet shoulder was nearly against hers, and lowered his voice under the sound of the rug." },
       { s: 'haechan', f: 'happy', t: "Seven seconds now. I timed it." },
+      // Nov 11 2026 (Kat): two lives
+      { s: 'haechan', f: 'neutral', t: "And it's flat. A B, near enough. Over there I'd have had it out of the mix by lunch." },
       { s: 'haechan', f: 'happy', t: "Count that tonight. Takes longer. You'll be asleep by forty." }
     ] },
 
@@ -271,6 +281,15 @@
       { ifGlitch: 3, then: [
         { n: "For one second the tea-colored light in the window went another color, the one she didn't have a word for in Korean, and the radio on the sill said a word that wasn't a wind speed. Then it was the forecast again, *sea state four*, and the dust. He was looking at the window too. Neither of them said so." }
       ] },
+      // Nov 11 2026 (Kat): two lives
+      { s: 'solar', f: 'neutral', t: "Do you miss the studio?" },
+      { n: "She asked it at the ceiling. He didn't pretend not to know which studio, or which building, or which snow." },
+      { s: 'haechan', f: 'neutral', t: "I miss the headphones. Mine over there are good." },
+      { n: "He tipped his chin at the bedside drawer, where the Discman with the cracked lid lived and didn't play." },
+      { s: 'haechan', f: 'neutral', t: "Over there I make things out of noise. Here I carry things for your father. I don't know which one I'm better at." },
+      { s: 'solar', f: 'happy', t: "Both." },
+      { s: 'haechan', f: 'flustered', t: "Don't flatter me in my own bed, agasshi. It goes straight to my head, and Mrs. Bang already thinks I'm too big for the step." },
+      { n: "But he'd said it. In this house, where he'd never once said a word about Syracuse to anybody, not to Yunjin, not to the Chairman, not to the koi, he'd said it to her like it was the weather, and she put her cold feet on his shins and let it be the weather." },
       { n: "Afterwards she pinned her hair back up at the little square of mirror by the door, by feel, the way she'd done it in the back of cars and in hospital toilets all winter. He lay on his back in the iron bed with his hands behind his head and watched her do it in the mirror." },
       { s: 'haechan', f: 'neutral', t: "Leave one." },
       { n: "She looked at him in the glass. Then she took the last pin back out and put it on the sill, beside the radio, and went up the garden through the dust with one piece of her hair down against her neck where anyone at all could see it." }
@@ -363,6 +382,13 @@
       { s: 'solar', f: 'happy', t: "*You learned Japanese from your grandfather's baduk books.*" },
       { s: 'jungwon', f: 'happy', t: "*I learned the Japanese for 'atari' and 'the stone is dead.' I had to work up from there.*" },
       { n: "She laughed, and the wind took it. He looked pleased about that. Which meant his face did nothing at all." },
+      // Nov 11 2026 (Kat): two lives
+      { n: "Further along, a woman came past with a tiny dog in a padded coat, a white scrap of a thing that took one look at them and screamed, and Jungwon's left hand went down and closed on a leash that wasn't there. He looked at the hand. He put it in his pocket." },
+      { s: 'solar', f: 'happy', t: "*He's fine, you know. The small one.*" },
+      { s: 'jungwon', f: 'happy', t: "*He'll be yelling at your dog.*" },
+      { n: "*Your* dog. Sixty pounds of white, in a town with a curfew in it and a council room and a boy who timed his walks. She'd never had a dog in this house. He said it like he'd just seen him." },
+      { s: 'jungwon', f: 'sad', t: "*Over there I get forty minutes to walk him, and I time them. Here nobody asks me where I go at all.*" },
+      { s: 'jungwon', f: 'neutral', t: "*I haven't decided which is worse.*" },
       { ifYear: { xmas: 'jungwon' }, then: [
         { n: "She thought about him at the gate that first morning, in the cold, with his watch ticking and one word in his mouth that he'd never used in daylight. He hadn't used it since. He was very careful, these days, to be exactly as polite as he'd always been, and she'd started to understand that this was how he kept it safe." }
       ] },
@@ -1384,7 +1410,9 @@
     ] },
     { id: 'epi-s-tx-sunghoon-home', thread: 'sunghoon', date: '2/27', slot: 'late', events: ['epi-s-gun'], msgs: [
       { from: 'sunghoon', t: "He's home. He asked me to tell you that." },
-      { from: 'sunghoon', t: "Only that." }
+      { from: 'sunghoon', t: "Only that." },
+      // Nov 11 2026 (Kat): two lives
+      { from: 'sunghoon', t: "- s" },
     ], reply: [
       { t: "thank you sunghoon", then: [{ from: 'sunghoon', t: "Don't." }] },
       LEAVE()
@@ -1498,7 +1526,9 @@
     ] },
     { id: 'epi-s-tx-jw-cook', thread: 'jungwon', date: '3/8', slot: 'evening', events: ['epi-s-clocks'], msgs: [
       { from: 'jungwon', t: "Our cook tells me that a cook from your house told her that every clock in your house stopped this morning at the same time." },
-      { from: 'jungwon', t: "Our cook has been crossing herself since noon. I've told her it was the electricity. I'd like you to know that I said it very politely." }
+      { from: 'jungwon', t: "Our cook has been crossing herself since noon. I've told her it was the electricity. I'd like you to know that I said it very politely." },
+      // Nov 11 2026 (Kat): two lives
+      { from: 'jungwon', t: "I also took minutes. I don't know who for. It's a habit from a room with a gavel in it." },
     ], reply: [
       { t: "it wasn't the electricity", then: [{ from: 'jungwon', t: "No. I didn't think so." }] },
       LEAVE([{ from: 'jungwon', t: "Good night. Please look at your watch before you sleep. I'll be looking at mine." }])
@@ -1639,7 +1669,8 @@
       { from: 'niki', t: "for research" },
       { from: 'niki', t: "not bananas. i asked. she laughed" }
     ], reply: [
-      { t: "strawberries. probably", then: [{ from: 'niki', t: "ok" }, { from: 'niki', t: "strawberries are expensive in march noona" }, { from: 'niki', t: "ok" }] },
+      // Nov 11 2026 (Kat): two lives
+      { t: "strawberries. probably", then: [{ from: 'niki', t: "ok" }, { from: 'niki', t: "strawberries are expensive in march noona" }, { from: 'niki', t: "LMAOOO im so broke" }, { from: 'niki', t: "sorry. thats not a word here. wrong phone in my head" }, { from: 'niki', t: "ok" }] },
       { t: "ask her yourself", then: [{ from: 'niki', t: "i DID. she laughed. weren't you listening" }] }
     ] },
     { id: 'epi-s-am-girls-rank', thread: 'girls', from: '2/26', to: '3/12', events: ['epi-s-moon'], msgs: [

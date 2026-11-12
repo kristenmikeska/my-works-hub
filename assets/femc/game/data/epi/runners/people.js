@@ -127,7 +127,8 @@
       { choose: [
         { t: "Where's the tide, Donghyuck?", then: [
           { n: "His name, the real one, in the cold. He didn't retreat to a pet name this time. He just looked at the sky." },
-          { s: 'haechan', f: 'sad', t: "Nowhere. I don't know why I said it. Sometimes I know what time it is somewhere I've never been." },
+          // Nov 11 2026 (Kat): two lives
+          { s: 'haechan', f: 'sad', t: "Incheon. I always know what the water's doing there. Even here. It doesn't help anybody on a roof in Syracuse." },
           { s: 'haechan', f: 'neutral', t: "Forget it." }
         ] },
         { t: "(Let it go.)", then: [
@@ -163,12 +164,19 @@
       { n: "He'd asked. He'd asked like it was the most important word in the room, which, she supposed, it was. Then he stood up and took her with him, and the lamp went out, and the rest of the night belonged to nobody but the two of them." },
       { cg: null },
       { place: 'Syracuse · Sigma Chi House · His Room', time: 'Late Night' },
-      { n: "She woke because he was talking. Low, in the dark, into the back of her neck, a run of soft words in Korean she didn't know, a name or a place or a time, she couldn't tell, his arm heavy across her ribs. When she turned over he was asleep, frowning, and when she said his name he woke up all at once and looked at her like he'd been very far away and was surprised to have landed here." },
+      // Nov 11 2026 (Kat): two lives
+      { n: "She woke because he was talking. Low, in the dark, into the back of her neck, a run of soft low Korean, port Korean, the ends of the words bitten off the way the men on the quays bit them, and she understood every word of it, which was the problem: *water's going out, agasshi, go back to sleep.* His arm was heavy across her ribs. When she turned over he was asleep, frowning, and when she said his name he woke up all at once and looked at her like he'd been very far away and was surprised to have landed here." },
       { s: 'haechan', f: 'surprised', t: "...What." },
       { s: 'solar', f: 'serious', t: "You were talking." },
       { s: 'haechan', f: 'flustered', t: "I don't talk." },
       { s: 'solar', f: 'surprised', t: "In Korean." },
       { n: "He didn't have anything to say to that. He put his face back in her hair instead, and she let him, and the clock on the desk said 3:20, which meant the house would start waking at seven and there was a decision to make, one they'd made rules about, out loud, in 4B, in the daylight." },
+      // Nov 11 2026 (Kat): two lives
+      { s: 'solar', f: 'serious', t: "You called me agasshi." },
+      { n: "He went still against her back. Not asleep-still. The other kind." },
+      { s: 'haechan', f: 'neutral', t: "...Did I." },
+      { s: 'haechan', f: 'neutral', t: "Sorry. Wrong house." },
+      { n: "He said it into her hair, flat, and he'd aimed it, and she lay in the dark in a Sigma Chi bedroom with the radiator knocking and thought about a narrow bed at the bottom of a garden by the sea, and didn't say anything, because there wasn't a single person in either city she could have said it to but him." },
       { choose: [
         { t: "(Stay till morning.)", then: [
           { n: "She stayed. She slept again, properly, the heavy kind, and woke at eight to gray light and the smell of somebody burning toast downstairs and his side of the bed already cold, and him at the desk in a hoodie with one earbud in and the volume so low it might as well have been nothing, not working, just keeping her company with his back turned." },

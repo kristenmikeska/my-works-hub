@@ -184,6 +184,17 @@
       { n: "Then he stopped. Not because he'd run out. She could hear him not run out, the small sound of a boy deciding which answers to leave on the card, and down the line his finger was tapping on the side of the bath, small and steady, one tap after another, like counting under his breath without the breath. She almost said something. A name came up her throat, the way it did, warm and stupid and sure of itself, a person who'd have made this whole call unbearable and perfect, and she held it there behind her teeth until it went back down." },
       { s: 'jungwon', f: 'neutral', t: "That's four. Four's a good score." },
       { s: 'solar', f: 'sad', t: "Four's a good score." },
+      // Nov 11 2026 (Kat): two lives
+      { n: "Then, because it was late, and because the bathtub made everything sound like it was being said in a smaller room than the world, she said the next card before she'd decided to." },
+      { s: 'solar', f: 'neutral', t: "Card five. Off this exam and every other one. Who's faster with a fish knife." },
+      { n: "The tapping on the bath stopped dead. For a long moment there was only the tile and the radiator and, very faintly, Maeumi snoring." },
+      { s: 'jungwon', f: 'neutral', t: "You are." },
+      { s: 'jungwon', f: 'sad', t: "Thirty-three seconds. I had thirty-five. I've never said that out loud in this house." },
+      { s: 'solar', f: 'happy', t: "You remember." },
+      { s: 'jungwon', f: 'neutral', t: "All of it, Sol. Both kitchens. I just don't say it here. Nobody here has anywhere to put it." },
+      { n: "He said it flat, the weather-report voice, from an empty bathtub in a house where every room was too quiet, and she lay very still with a dog on her calculus and understood that he'd been carrying it on his own since the door, and that he'd waited for her to ask for it first." },
+      { s: 'solar', f: 'sad', t: "You can put it with me." },
+      { s: 'jungwon', f: 'happy', t: "I know. That's why I answered." },
       { choose: [
         { t: "Your turn. Off the exam. What are you scared of?", stat: { kindness: 1 }, then: [
           { n: "The tapping stopped." },
