@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 11, after art batch 151):** **Solar's HOAX faces remade in Cherry's style** (section 48: 4 sheets + 1 optional) · **7 CGs for today's new scenes** (section 51) · **Hwatu cards** (section 49: 12 month sheets, a back, a blanket, an optional title) · ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (sections 44-45: Haechan's apron faces; 3 booth pieces for his songs: his singing poses, Solar bopping behind the glass, his health-bar icon; section 47: the listen game's street, its six things, their stickers and Haechan) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · **the epilogue scrapbook** (section 46, Nov 10: 110 "Previously" photos, Runners 40 / strangers 35 / HOAX 35, plus 11 covers, paper, dividers, tape and sticker sheets) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
+**To make (updated Nov 11, after art batch 151):** **Yeobo's café game** (section 50, new Nov 11: 5 backgrounds, a title card, 13 food / cup / tray / ticket / tip-jar / stamp sheets, Sunoo's apron faces, 6 regulars' faces) · **Solar's HOAX faces remade in Cherry's style** (section 48: 4 sheets + 1 optional) · **7 CGs for today's new scenes** (section 51) · **Hwatu cards** (section 49: 12 month sheets, a back, a blanket, an optional title) · ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (sections 44-45: Haechan's apron faces; 3 booth pieces for his songs: his singing poses, Solar bopping behind the glass, his health-bar icon; section 47: the listen game's street, its six things, their stickers and Haechan) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · **the epilogue scrapbook** (section 46, Nov 10: 110 "Previously" photos, Runners 40 / strangers 35 / HOAX 35, plus 11 covers, paper, dividers, tape and sticker sheets) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
 
 ## ⭐ Outfits, HD poses and banners: in `FEMC-SKIN-ART.md` (Nov 7)
 
@@ -355,6 +355,186 @@ Save as: `epi-s-hwatu.png`
 ```
 A 16:9 realistic CG in the exact style of the FIRST attached image. The setting is the SECOND attached image, the Lee family's sunroom in Incheon in late winter daylight, orchids on the shelves. The people are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). On a dark green army wool blanket spread on the floor: Solar's mother (cream cardigan, hair done, jade ring) kneeling upright and dealing hwatu cards with quick elegant hands, a faint private smile; Solar (her hair pinned up) sitting across from her with her cards fanned close, studying her mother's face instead of her hand. Small stacks of coins, a cup of barley tea, a few face-up cards: a crane under a red sun, a full moon over a hill. Quiet, warm, a little guarded. No text.
 ```
+---
+## 50. Yeobo's café game (HOAX minigame; Kat, Nov 11)
+
+For the café game at Yeobo's, Sunoo's grandmother's café (a restaurant game: customers at the counter, a drinks station, a griddle, a build board, then the tasting). Everything here is optional: the game already draws its own stand-ins and swaps each picture in once it exists. **The four station backgrounds and the food sheets matter most**; the faces at the end give the neighbourhood regulars real faces (the HOAX cast already have theirs). Backgrounds are in the realistic HOAX CG style; the item sheets are realistic painted food on white, for cutting.
+
+**[ ] 50A. The counter (Order station background)**  
+Attach: `CG - style (HOAX).png`, `BG - Yeobo's Café.png`  
+Save as: `cafe-bg-order.png`
+```
+A 16:9 realistic background in the exact style of the FIRST attached image, with no people in it. The place is the café in the SECOND attached image (Yeobo's, a small, cosy Korean neighbourhood café run by an old woman, in winter): keep its colours, wood, lighting and details. The view is from behind the counter, looking out at the café: the empty wooden counter top runs along the very bottom of the picture; behind it a small seating area with a few little tables and chairs, the glass front door on the left with a small brass bell above it, a fogged window looking out on a snowy street in late-afternoon light, a radiator under the window, hanging plants and warm pendant lamps, a glass pastry case at the far right edge. Keep the middle of the picture open and uncluttered (customers will stand there), nothing tall in the centre. No people, no text, no signs with writing.
+```
+
+**[ ] 50B. The counter after dark**  
+Attach: `CG - style (HOAX).png`, `BG - Yeobo's Café.png`, `cafe-bg-order.png` (50A, once you've made it)  
+Save as: `cafe-bg-order-night.png`
+```
+A 16:9 realistic background in the exact style of the FIRST attached image, with no people in it: the same view as the THIRD attached image (the café in the SECOND attached image, seen from behind the counter, the empty wooden counter top along the very bottom), but after dark on a winter night. The street outside the fogged window and the glass door is deep blue-black with streetlamps, falling snow and a lit shop sign far away; inside, the pendant lamps glow warm and golden, a candle on one table, the room cosier and a little emptier. Keep everything else in the same place, and keep the middle of the picture open. No people, no text.
+```
+
+**[ ] 50C. The drinks station**  
+Attach: `CG - style (HOAX).png`, `BG - Yeobo's Café.png`  
+Save as: `cafe-bg-drinks.png`
+```
+A 16:9 realistic background in the exact style of the FIRST attached image, with no people in it, inside the café in the SECOND attached image (keep its colours and wood). A close view of the back counter where the drinks are made: a white tiled wall, wooden shelves with stacked ceramic mugs, paper takeaway cups, jars of yuzu marmalade and a tin of cocoa, a small espresso grinder, a pink tea towel on a hook, a window with soft winter light at one side. A warm wooden counter fills the bottom third of the picture. The left third and the centre of the counter are clear and empty (the game puts the kettle and the cup there). No people, no text, no labels with writing.
+```
+
+**[ ] 50D. The griddle station**  
+Attach: `CG - style (HOAX).png`, `BG - Yeobo's Café.png`  
+Save as: `cafe-bg-griddle.png`
+```
+A 16:9 realistic background in the exact style of the FIRST attached image, with no people in it, in the little cooking corner of the café in the SECOND attached image: a cream tiled wall with a brushed-steel backsplash, a steel extractor hood at the top edge, spatulas, tongs and a ladle hanging from a rail, a shelf with bottles of oil and honey, a stack of paper plates and a jar of brown sugar, a little steam in the warm light. A stainless-steel counter fills the bottom third of the picture. The middle of the picture is clear and plain (the game draws the griddle there). No people, no text.
+```
+
+**[ ] 50E. The build board (kimbap and plating)**  
+Attach: `CG - style (HOAX).png`, `BG - Yeobo's Café.png`  
+Save as: `cafe-bg-build.png`
+```
+A 16:9 realistic background in the exact style of the FIRST attached image, with no people in it, in the café in the SECOND attached image: the prep counter where kimbap is rolled and plates are finished, seen from a little above. A warm butcher-block wooden counter fills the bottom half of the picture; along its back edge small ceramic bowls of prepared fillings (yellow egg strips, julienned carrot, spinach, bright yellow pickled radish, pink ham), a small rice cooker, a bottle of sesame oil, a roll of plastic wrap and a stack of small white plates; a tiled wall and a little window behind. The centre of the counter is clear and empty (the game puts the bamboo mat and the plates there). No people, no text.
+```
+
+**[ ] 50F. Title card**  
+Attach: `CG - style (HOAX).png`, `BG - Yeobo's Café.png`, `CG - Sunoo (HOAX).png`  
+Save as: `cafe-title.png`
+```
+A 16:9 realistic key-art still in the exact style of the FIRST attached image: the front of the café in the SECOND attached image at winter dusk, warm golden light through fogged windows, snow on the awning and the window ledge, a little chalkboard easel by the door, steam rising from a takeaway cup on the sill. The young man in the THIRD attached image (Sunoo; keep his face and hair exactly) leans out of the open door in a pink café apron over a cream knit sweater, waving with a big, bright smile. A painted wooden sign above the door reads YEOBO'S in friendly hand-lettered letters, and on a small paper banner under it: a day at the café. Keep the lower third calm. Real-looking proportions; NOT anime and NOT cel shading. No other text.
+```
+
+**[ ] 50G. The four drinks, finished**  
+Attach: nothing  
+Save as: `cafe-drinks.png`
+```
+A sheet of 4 pictures in a 2 × 2 grid on a plain white background, clear white space between them, nothing overlapping, every item the same scale and centred in its cell, seen from the front and a little above. Realistic painted food illustration like a cosy, high-quality café cooking game: soft warm light from above, rich texture, only a faint shadow under each item, clean edges so each can be cut out. In reading order: (1) hot chocolate in a chunky pink ceramic mug, plain, no cream on top; (2) yuzu tea in a clear glass mug, golden with shreds of yuzu peel; (3) an americano in a white takeaway cup with a black lid and a pink cardboard sleeve; (4) sikhye, the Korean sweet rice drink, in a clear glass, pale gold with a few rice grains floating. No text, no logos, nothing else in the picture.
+```
+
+**[ ] 50H. The two empty cups**  
+Attach: nothing  
+Save as: `cafe-cups.png`
+```
+A sheet of 2 pictures side by side on a plain white background, clear white space between them, nothing overlapping, seen straight from the front at the same scale. Realistic painted illustration like a cosy, high-quality café cooking game, clean edges for cutting, only a faint shadow under each. (1) A small, chunky, empty ceramic mug, cream with a pink rim and a round handle. (2) A tall, empty white takeaway cup without a lid. No text, no logos.
+```
+
+**[ ] 50I. The add-ins**  
+Attach: nothing  
+Save as: `cafe-addins.png`
+```
+A sheet of 9 small pictures in a 3 × 3 grid on a plain white background, clear white space between them, nothing overlapping, every item the same scale and centred in its cell. Realistic painted food illustration like a cosy, high-quality café cooking game, soft warm light, clean edges for cutting, only a faint shadow under each. In reading order: (1) a swirl of whipped cream; (2) three pink and white mini marshmallows; (3) a little pile of ground cinnamon with a cinnamon stick; (4) a drip of golden honey from a small wooden honey dipper; (5) three thin slices of fresh ginger; (6) a tiny glass of espresso with crema; (7) a small bottle of vanilla syrup with a pump top; (8) a little pile of pine nuts; (9) three clear ice cubes. No text, no labels.
+```
+
+**[ ] 50J. Hotteok, four stages**  
+Attach: nothing  
+Save as: `cafe-hotteok.png`
+```
+A sheet of 4 pictures in a 2 × 2 grid on a plain white background, clear white space between them, nothing overlapping, all four seen from DIRECTLY ABOVE, the same size and the same round shape, centred in their cells. Realistic painted food illustration like a cosy, high-quality cooking game, soft light, clean edges for cutting, no plate, no shadow. The same hotteok (a Korean sweet filled pancake, flattened round) in four stages, in reading order: (1) RAW: a flat disc of pale, glossy, uncooked dough; (2) COOKING: still pale with the first light golden patches; (3) DONE: evenly golden brown with crisp edges and a little dark sugar syrup peeking out at one edge; (4) BURNT: dark brown to black, dry and cracked, a wisp of smoke. No text.
+```
+
+**[ ] 50K. Street toast, four stages**  
+Attach: nothing  
+Save as: `cafe-toast.png`
+```
+A sheet of 4 pictures in a 2 × 2 grid on a plain white background, clear white space between them, nothing overlapping, all four seen from DIRECTLY ABOVE, the same size and shape, centred in their cells. Realistic painted food illustration like a cosy, high-quality cooking game, soft light, clean edges for cutting, no plate, no shadow. The same Korean street toast (a thick slice of white bread topped with an egg-and-shredded-cabbage omelette patty) in four stages, in reading order: (1) RAW: soft pale bread, a pale, wet-looking patty; (2) COOKING: the bread just starting to toast, the patty setting; (3) DONE: golden toasted bread with buttery edges, a golden patty with green cabbage flecks; (4) BURNT: blackened bread edges and a dark, dry patty, a wisp of smoke. No text.
+```
+
+**[ ] 50L. Kimbap, four stages**  
+Attach: nothing  
+Save as: `cafe-kimbap.png`
+```
+A sheet of 4 pictures in a 2 × 2 grid on a plain white background, clear white space between them, nothing overlapping, centred in their cells. Realistic painted food illustration like a cosy, high-quality cooking game, soft light, clean edges for cutting. In reading order: (1) a single rectangular sheet of dried seaweed (gim), dark green and slightly glossy, seen from DIRECTLY ABOVE, filling most of the cell; (2) the same sheet seen from directly above with a thin, even layer of white rice spread over it, a bare strip of seaweed left along the top edge; (3) one whole rolled kimbap, uncut, lying HORIZONTALLY across the cell, glossy with sesame oil and a few sesame seeds, seen from a little above; (4) the kimbap sliced into round pieces in a neat row on a small white plate, the cut faces showing white rice around yellow egg, orange carrot, green spinach, yellow pickled radish and pink ham. No text.
+```
+
+**[ ] 50M. Kimbap fillings**  
+Attach: nothing  
+Save as: `cafe-fillings.png`
+```
+A sheet of 8 cells in a 4 × 2 grid on a plain white background, clear white space between them, nothing overlapping, every item the same scale, lying HORIZONTALLY and centred in its cell, seen from directly above. Realistic painted food illustration like a cosy, high-quality cooking game, soft light, clean edges for cutting, no bowls, no shadow. In reading order: (1) a small neat mound of white cooked rice; (2) a long thin strip of yellow egg omelette; (3) a long bundle of thin julienned carrot; (4) a long bundle of seasoned spinach; (5) a long strip of bright yellow pickled radish (danmuji); (6) a long thin strip of pink ham; (7) a long strip of tuna mixed with mayonnaise; (8) leave this last cell empty. No text.
+```
+
+**[ ] 50N. Toppings**  
+Attach: nothing  
+Save as: `cafe-toppings.png`
+```
+A sheet of 6 small pictures in a 3 × 2 grid on a plain white background, clear white space between them, nothing overlapping, every item the same scale and centred in its cell, seen from DIRECTLY ABOVE, each a small amount the size of a spoonful, as it would sit on top of a pancake. Realistic painted food illustration like a cosy, high-quality cooking game, soft light, clean edges for cutting, no plate, no shadow. In reading order: (1) a small scatter of sunflower and pumpkin seeds; (2) a glossy little puddle of golden honey syrup; (3) a soft dusting of powdered sugar; (4) a small sprinkle of white sugar crystals; (5) a squiggly zigzag of ketchup; (6) a square slice of yellow cheese just starting to melt at the corners. No text.
+```
+
+**[ ] 50O. The serving tray and a plate**  
+Attach: nothing  
+Save as: `cafe-tray.png`
+```
+A sheet of 2 pictures side by side on a plain white background, clear white space between them, nothing overlapping, both seen from DIRECTLY ABOVE. Realistic painted illustration like a cosy, high-quality café cooking game, soft light, clean edges for cutting, no shadow. (1) An empty rectangular wooden serving tray with low raised edges and two cut-out handles, warm honey-coloured wood, wider than it is tall. (2) An empty small round white ceramic plate with a thin pink rim. Nothing on either, no text.
+```
+
+**[ ] 50P. The order ticket**  
+Attach: nothing  
+Save as: `cafe-ticket.png`
+```
+A single blank café order ticket on a plain white background, seen flat from the front: a tall, narrow strip of warm cream receipt paper with a zigzag torn bottom edge, a small pink rubber-stamp heart at the top centre, a few faint pale-grey printed lines across it, a slight paper texture and a tiny curl at one corner. Otherwise completely blank (the game writes the order on it). Portrait, about 1:1.4. No writing, no numbers, no shadow, nothing else in the picture.
+```
+
+**[ ] 50Q. The tip jar and a coin**  
+Attach: nothing  
+Save as: `cafe-tipjar.png`
+```
+A sheet of 2 pictures side by side on a plain white background, clear white space between them, nothing overlapping. Realistic painted illustration like a cosy, high-quality café cooking game, soft warm light, clean edges for cutting, only a faint shadow under the jar. (1) A clear glass jar with a wide open mouth, seen from the front, a hand-drawn paper label taped to it with a big pink heart and little doodled hearts around it, a few gold coins and folded paper notes inside, about a third full. (2) A single shiny gold coin seen face-on, a simple café token with a small heart embossed in the middle (not real money). No letters or numbers anywhere.
+```
+
+**[ ] 50R. The stamp card**  
+Attach: nothing  
+Save as: `cafe-stampcard.png`
+```
+A single café loyalty stamp card on a plain white background, seen flat from the front: a small cream card with rounded corners, landscape, a row of ten empty circles across it, three of them stamped with pink ink hearts, a tiny drawing of a steaming cup in one corner, a little paper texture. No writing, no numbers, no shadow.
+```
+
+**[ ] 50S. The grade stamps (end of the day)**  
+Attach: nothing  
+Save as: `cafe-stamps.png`
+```
+A sheet of 4 rubber-stamp marks in a 2 × 2 grid on a plain white background, clear white space between them, nothing overlapping, all the same size. Each is a big, bold letter inside a slightly uneven circle, stamped in bright pink ink, slightly rotated, with the rough, uneven, speckled texture of a real rubber stamp on paper. In reading order: S, A, B, C. Nothing else in the picture.
+```
+
+**[ ] 50T. Sunoo in his café apron, six faces**  
+Attach: `CG - style (HOAX).png`, `CG - Sunoo (HOAX).png`  
+Save as: `cafe-sunoo-apron-portraits.png`
+```
+A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. Draw the young man from the SECOND attached image (Sunoo): keep his face, features and soft hair exactly, in the realistic painted style, lighting, head-and-shoulders framing and size of the FIRST attached image. The same person in all six cells, facing the camera. He wears a cream knit sweater with the sleeves pushed up under a pink café apron, a pen tucked behind one ear, a little flour on one sleeve. Cells, in order: neutral (friendly), happy (a big, bright smile), surprised, flustered (laughing and embarrassed), sad (a sympathetic pout), serious (trying very hard to look focused). Realistic, NOT anime, NOT cel shading. No text, no name tag with writing.
+```
+
+**The neighbourhood regulars** (they have only a letter badge now). **Each is a NEW person**: the attached picture is only for the style, size and framing. For every one: a 3 × 1 sheet, faces in order neutral, happy, grumpy. The prompt pattern (the bracket is each item's own line):
+```
+A portrait sheet: 3 columns × 1 row on a plain white background, with clear empty space between every cell, nothing overlapping. A NEW character, NOT the person in the attached image: copy only that image's realistic painted style, lighting, head-and-shoulders framing and size. The same person in all three cells, facing the camera: [WHO]. Cells, in order: neutral, happy (delighted with their order), grumpy (disappointed, frowning). Realistic, NOT anime, NOT cel shading. No text, no logos, no name tags with writing.
+```
+
+**[ ] 50U. Mr. Kang** (the mail carrier)  
+Attach: `CG - Halmeoni (HOAX).png`  
+Save as: `cafe-regular-mrkang.png`  
+[WHO]: a brisk, friendly Korean man in his fifties who delivers the neighbourhood's mail, weathered cheeks red from the cold, a dark postal uniform jacket with a fleece collar, a knit cap, a mail bag strap across his chest
+
+**[ ] 50V. Nurse Lim** (off a night shift)  
+Attach: `CG - Halmeoni (HOAX).png`  
+Save as: `cafe-regular-nurse.png`  
+[WHO]: an exhausted but kind Korean woman in her early thirties coming off a hospital night shift, hair in a messy low bun, light blue scrubs under a long padded coat, tired eyes, a lanyard with a blank badge
+
+**[ ] 50W. The middle schoolers** (two of them, one wallet)  
+Attach: `CG - Junkyu (HOAX).png`  
+Save as: `cafe-regular-kids.png`  
+[WHO]: TWO Korean middle-school kids about thirteen squeezed side by side in each cell, sharing the frame, a boy and a girl in navy school uniforms and puffy winter jackets, rosy cheeks, the girl holding a small wallet, both full of energy
+
+**[ ] 50X. Mr. Choi** (the hardware store)  
+Attach: `CG - Halmeoni (HOAX).png`  
+Save as: `cafe-regular-mrchoi.png`  
+[WHO]: a gruff Korean man in his sixties who runs the hardware store down the street, thick grey eyebrows, short grey hair, reading glasses on a cord, a canvas work vest over a flannel shirt, a pencil behind his ear; his happy face is a reluctant, tiny smile
+
+**[ ] 50Y. Mr. Yoon** (drives the 7 bus)  
+Attach: `CG - Halmeoni (HOAX).png`  
+Save as: `cafe-regular-mryoon.png`  
+[WHO]: a round-faced, warm Korean man in his fifties who drives a city bus, a navy bus-company jacket with a zip-up collar, a thermos-tired smile, neat short hair going grey at the sides
+
+**[ ] 50Z. Mrs. Bae** (the flower shop)  
+Attach: `CG - Halmeoni (HOAX).png`  
+Save as: `cafe-regular-mrsbae.png`  
+[WHO]: an elegant, particular Korean grandmother in her seventies who owns the flower shop next door, silver hair set in soft curls, pearl earrings, a camel wool coat with a brooch, a sprig of baby's breath tucked in her buttonhole; her happy face is a small, approving nod-smile
+
 ---
 ## 44. Dumpling cooking minigame (Kat, Nov 10)
 
