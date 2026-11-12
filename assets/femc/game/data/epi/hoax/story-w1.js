@@ -1821,6 +1821,32 @@
     { s: 'cherry', f: 'neutral', t: "My boot. It's tired. It's had a long week." },
     { n: "Jihoon looked at the boot. Looked at Cherry. Something passed between them, quick and hard, the look of two people who both knew exactly what a promise was and to whom it had been made. Then he sat down across the circle instead, between Hyunsuk and Jaehyuk, and smiled at Solar through the candles like it was his idea." },
     { s: 'kazuha', t: "Okay! Two fingers. Lightly, lightly. Like you're touching a butterfly. And nobody pushes. If you push, the spirit knows, and it's very rude." },
+    // The planchette (Nov 11 2026; minigames/planchette.js, flags epi-h-mg-planchette-*). A Hate Club practice round before
+    // Kazuha's real question; the result lines only colour the room, the scene below plays the same either way.
+    { s: 'jihoon', f: 'happy', t: "Practice round first. Hate Club rules. We ask the questions, we pick the answers, the ghost does what it's told. Sol drives. Sol always drives." },
+    { s: 'cherry', f: 'neutral', t: "And we say goodbye at the end. Properly. Nobody lets go till it's on goodbye." },
+    { choose: [
+      { t: "(Put your fingers on it. Steer.)", then: [
+        { minigame: 'planchette', flags: 'epi-h-mg-planchette', opts: { bg: 'epi-h-jihoon-house' } },
+        { ifFlag: 'epi-h-mg-planchette-won', then: [
+          { ifFlag: 'epi-h-mg-planchette-good', then: [
+            { n: "It went where she told it, mostly, YES and BOB and a very slow, very shaky SNACKS, and then all the way across to GOODBYE, where it sat, and the circle let go all at once and laughed too loud, the way you laugh coming off a roller coaster." },
+            { s: 'junkyu', f: 'happy', t: "It said bye! It's gone! It was nice! It was a nice ghost named Bob!" }
+          ], else: [
+            { n: "It got to GOODBYE in the end. It took the long way. Twice it had wandered off to a letter nobody had asked for and sat there, patient, like it was waiting for somebody to read it out, and nobody did, and Solar had dragged it back each time with her wrist aching like she'd been steering against something." },
+            { s: 'hyunsuk', f: 'neutral', t: "Hoon. Stop pushing it." },
+            { s: 'jihoon', f: 'happy', t: "I would never. I'm a butterfly." }
+          ] }
+        ], else: [
+          { n: "It never got to GOODBYE. It went where it wanted for the last few letters, smooth as anything, and stopped, and everybody looked at each other over the board and nobody read it out, and Solar's fingers were cold to the knuckle." },
+          { s: 'kazuha', t: "Oh! It's shy. That's okay. We'll open it properly this time." },
+          { n: "She said it so kindly, and slid the planchette back to the middle of the board like she was tucking it in, and Cherry's knee found Solar's and stayed there." }
+        ] }
+      ] },
+      { confirm: true, t: "(Let Kazuha run it.)", then: [
+        { n: "She let Kazuha run it. Two fingers, lightly, a butterfly. The practice round was YES, and then BOB because Jihoon insisted, and then Junkyu asked if they could stop now and the planchette went straight to YES so fast that everybody blamed Hyunsuk, and then GOODBYE, politely, and everyone let go." }
+      ] }
+    ] },
     { s: 'jaehyuk', f: 'neutral', t: "It's the ideomotor effect. Your hands move without you noticing. It's been studied. It's science." },
     { s: 'kazuha', t: "Science is a spirit too." },
     { s: 'jaehyuk', f: 'surprised', t: "That's not—" },
