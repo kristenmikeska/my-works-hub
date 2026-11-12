@@ -73,6 +73,11 @@
            epi-h-lie-crew-coats (12/29, "Bathroom."). Lies cost trust: the verdict adds min(lies, 2) to both trust thresholds
            (turns needs trust ≥ 5 + k, falls takes trust ≤ 6 + k). Only players with the year's Jihoon romance can lie here, so
            every other run's verdict is unchanged.
+   Jungwon going out (Nov 11 2026, Kat: more rebellion from him; story-jungwon.js sets every one, its header documents them):
+     heat  epi-h-heat-seen   (1/1 late, walks him round the block at 1 a.m.; a forum thread the next morning)
+           epi-h-heat-late   ('quiet feet', 1/8-1/10 late, walks him home past a doorbell camera)
+     trust epi-h-trust-curb  (1/7 late, makes room for him on the old table's curb, next to Hyunsuk)
+           epi-h-trust-gate  (1/8 after, waves both tables round him at the gate)
    Light feedback: every new flag's choice carries a line that shows it (a forum post, a comment count, a look, a Mom text);
    the old ✱ choices already had one. Check-ins read the running counts: the motion's signatures (1/2), Eunchae at the gate
    (1/8), the leak (1/9: it only happens if she passed her phone round at the party OR heat ≥ 4), the bleachers and the
@@ -122,12 +127,16 @@
       'epi-h-heat-hayoon', 'epi-h-heat-mona', 'epi-h-niki-alt', 'epi-h-war-sol-post', 'epi-h-eunchae-nocomment', 'epi-h-heat-owed',
       'epi-h-heat-deny',
       // the Jihoon thread (stolen.js, Nov 11 2026): seen with him
-      'epi-h-heat-jh-coats', 'epi-h-heat-jh-hall', 'epi-h-heat-jh-smoke'],
+      'epi-h-heat-jh-coats', 'epi-h-heat-jh-hall', 'epi-h-heat-jh-smoke',
+      // Jungwon going out (story-jungwon.js, Nov 11 2026): seen out late with him
+      'epi-h-heat-seen', 'epi-h-heat-late'],
     trust: ['epi-h-tables-pushed', 'epi-h-suk-seat', 'epi-h-jaehyuk-told', 'epi-h-jay-fight', 'epi-h-cherry-dark-truth',
       'epi-h-poster-real-one', 'epi-h-war-sol-receipts', 'epi-h-war-sol-gym', 'epi-h-trust-ledger', 'epi-h-trust-step',
       'epi-h-trust-jay-porch', 'epi-h-trust-crew', 'epi-h-trust-council', 'epi-h-trust-between', 'epi-h-trust-call',
       'epi-h-trust-heeseung', 'epi-h-trust-jake', 'epi-h-trust-kyu', 'epi-h-trust-prom', 'epi-h-trust-owned',
-      'epi-h-hearing-charm', 'epi-h-hearing-courage', 'epi-h-hearing-knowledge'],
+      'epi-h-hearing-charm', 'epi-h-hearing-courage', 'epi-h-hearing-knowledge',
+      // Jungwon going out (story-jungwon.js, Nov 11 2026): both tables round him
+      'epi-h-trust-curb', 'epi-h-trust-gate'],
     sus: ['epi-h-mom-lie', 'epi-h-xmas-bows', 'epi-h-sus-boring', 'epi-h-sus-swept', 'epi-h-sus-party', 'epi-h-sus-ignored',
       'epi-h-sus-armband', 'epi-h-sus-costume', 'epi-h-sus-chair',
       // the Jihoon thread (stolen.js, Nov 11 2026): lies to Mom about him

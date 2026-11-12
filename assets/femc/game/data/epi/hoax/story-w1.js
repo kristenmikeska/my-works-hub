@@ -301,6 +301,11 @@
     { s: 'jungwon', f: 'neutral', t: "I'm allowed out for studying and errands. I'm allowed to use her car for both. I'm not allowed out after nine. She checks on me every forty minutes. She's very punctual. So I have until 11:20." },
     { s: 'solar', f: 'surprised', t: "Won. That's prison." },
     { s: 'jungwon', f: 'happy', t: "It's a very nice prison. There's an en-suite." },
+    // Nov 11 2026 (Kat): Jungwon (story-jungwon.js): the grounding is a consequence he's paying, not a place he's staying
+    { s: 'solar', f: 'sad', t: "Do you regret it? Running. At the bake sale." },
+    { s: 'jungwon', f: 'neutral', t: "No." },
+    { n: "He said it straight away, the way he answered a sum he'd already done in his head, before she'd got to the end of the question." },
+    { s: 'jungwon', f: 'neutral', t: "I'm going to do as I'm told for a little while. Then I'm going to stop. I haven't picked the day yet." },
     { n: "She laughed into her pillow so it wouldn't carry down the hall. Nana lifted his head at the noise, decided it wasn't food, and put it down again." },
     { s: 'solar', f: 'neutral', t: "Did you eat?" },
     { s: 'jungwon', f: 'happy', t: "Define eat." },
@@ -1675,6 +1680,8 @@
       { s: 'jungwon', f: 'serious', t: "I can't. The stairs creak. The front door beeps. My mother can hear the front door beep from inside a dream." },
       { s: 'solar', f: 'happy', t: "Climb out the window." },
       { s: 'jungwon', f: 'serious', t: "I can't climb, Sol. I've never climbed anything in my life. I'd get onto the garage roof and lose my nerve and they'd find me there in the morning, frozen, holding a container." },
+      // Nov 11 2026 (Kat): Jungwon
+      { n: "But he said *can't* the way he said it about most things he'd never been allowed to try, she noticed: not like a wall. Like a thing he hadn't looked up yet." },
       { choose: [
         { t: "I liked you in my room.", stat: { courage: 1 }, then: [
           { s: 'solar', f: 'flustered', t: "I liked you in my room. With the door open and everything." },

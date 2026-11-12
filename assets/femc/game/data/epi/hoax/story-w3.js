@@ -24,7 +24,8 @@
                  epi-h-porch-joke (1/6 porch), epi-h-porch-pot (1/6 porch, depth pass: she holds the white one's pot while he
                  pours; read by epi-h-jihoon-6 in people.js), epi-h-war-sol-post / -sol-receipts / -sol-gym (her forum-war job),
                  epi-h-eunchae-quote / -smile / -nocomment (1/8 lunch).
-   Flags read    epi-route-jungwon / -jihoon / -council (event gates and ifEpiRoute), epi-h-notes, epi-h-alone, epi-h-unseen,
+   Flags read    epi-h-jw-door (Nov 11 2026, the window: the New Year's beep; story-jungwon.js sets it),
+                 epi-route-jungwon / -jihoon / -council (event gates and ifEpiRoute), epi-h-notes, epi-h-alone, epi-h-unseen,
                  epi-h-jihoon-chose, epi-h-said-name, epi-h-jihoon-remembers, epi-h-gym-plan, epi-h-retreat
    ifYear read   { xmas: 'jungwon' } (window: the croissant), { xmas: 'jihoon' } (porch: the plush dog)
    Glitches      epi-h-g-flicker (snowed-in), epi-h-g-clocks (clocks), epi-h-g-unseen (unseen), epi-h-g-jihoon (porch),
@@ -311,6 +312,10 @@
     { s: 'jungwon', f: 'surprised', t: "Go home. You'll get frostbite." },
     { s: 'solar', f: 'happy', t: "Come down, then." },
     { s: 'jungwon', f: 'serious', t: "The stairs creak. The front door beeps. My mother can hear the front door beep from inside a dream." },
+    // Nov 11 2026 (Kat): Jungwon (story-jungwon.js epi-h-jw-door, 1/1)
+    { ifFlag: 'epi-h-jw-door', then: [
+      { s: 'jungwon', f: 'neutral', t: "It beeped on New Year's. She asked about it at breakfast. I told her it was Maeumi. I don't think it gets to be Maeumi twice." }
+    ] },
     { s: 'solar', f: 'happy', t: "Won. There's a garage roof right there." },
     { n: "He looked at the garage roof. He looked at her. He looked at the garage roof again with the specific face of somebody running the numbers and not liking any of them." },
     { n: "It took him four minutes. He got one leg over the sill, then the other, then sat on the edge of the roof in the snow for a long time with both hands flat beside him like the roof might buck him off, and then he slid, not on purpose, the last metre, and landed in the drift by the drainpipe up to his hips, and somewhere in the house next door a dog started barking, and from inside his own house, faint and furious, Maeumi joined in." },

@@ -24,6 +24,9 @@
           { t: 'President of the student council. She is his vice president, and the pin is on her cardigan.' },
           { t: 'He texts in lowercase with a full stop at the end of everything, like each message is signing off.' },
           { t: 'Grounded since he got home: out only for studying and errands, in his mother’s car, nothing after nine. She checks every forty minutes. He has until 11:20.', events: ['epi-h-curfew'] },
+          // Nov 11 2026 (Kat): Jungwon (story-jungwon.js)
+          { t: 'Walked out his own front door on New Year’s night and let it beep. He keeps a note on his phone titled *if asked*.', events: ['epi-h-jw-door'] },
+          { t: 'Told his mother “No, thank you” at the school gate and went to Yeobo’s with both tables. His father stopped speaking to him that night. He still says good morning.', events: ['epi-h-jw-no'] },
           { t: 'He met her parents properly on Christmas. Her mother sent him home with leftovers in a container he has to bring back.', events: ['epi-h-christmas'] },
           { t: 'Every won is in the bake-sale tin. He says it the way other people say good morning.', events: ['epi-h-motion'] }
         ],

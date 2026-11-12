@@ -109,7 +109,7 @@
       ] },
       { n: "Before she left his grandmother pressed a paper bag into her hands, still warm through the bottom, the top folded twice." },
       { s: 'halmeoni', f: 'neutral', t: "For the president. His mother doesn't feed him." },
-      { s: 'solar', f: 'sad', t: "He's not allowed out." },
+      { s: 'solar', f: 'sad', t: "He's not allowed out. He's working on it." }, // Nov 11 2026 (Kat): Jungwon
       { s: 'halmeoni', f: 'serious', t: "Then it goes through a window. You're young. Figure it out." },
       { s: 'sunoo', f: 'sad', t: "I cried for like an hour when we got back. In the walk-in. She thought I failed something." },
       { s: 'solar', f: 'serious', t: "Did you tell her—" },

@@ -100,7 +100,9 @@
           { from: 'jungwon', t: "are you there yet." },
           { from: 'solar', t: "yes!! cher is holding my hand like im 5" },
           { from: 'jungwon', t: "good. please let her." },
-          { from: 'jungwon', t: "i'm sorry i can't come. my mom is watching a drama in the living room with the door open. i think it's a strategy." },
+          // Nov 11 2026 (Kat): Jungwon (story-jungwon.js): he asked; he's going to stop asking
+          { from: 'jungwon', t: "i'm sorry i'm not there. i asked her properly. she said no and then sat down in the living room with a drama and the door open. i think it's a strategy." },
+          { from: 'jungwon', t: "i'm going to stop asking her things i've already decided. not tonight. soon." },
           { from: 'solar', t: "a tactical drama" },
           { from: 'jungwon', t: "text me when you leave. and if anything happens. i'm not trying to be controlling. i just can't be there." }
         ], contact: 'Won' },
@@ -232,7 +234,7 @@
           { s: 'jake', f: 'happy', t: "Operation Normal Teenagers. We go in, we're normal, we're visible, we're hydrated. Nobody does rehab and then comes to a party with a crate of bottled water." },
           { s: 'jay', f: 'neutral', t: "Bro, that's exactly what people who did rehab would do." },
           { s: 'jake', f: 'surprised', t: "...Okay, nobody say that inside." },
-          { n: "Jungwon was not there, because Jungwon had a curfew and a mother. Jungwon was on speakerphone in Heeseung's breast pocket, a small square glow over his heart, contributing." },
+          { n: "Jungwon was not there, because Jungwon had a curfew and a mother and had said, in the group chat, in full sentences, that when he finally broke it, it wasn't going to be for a party. Jungwon was on speakerphone in Heeseung's breast pocket, a small square glow over his heart, contributing." },
           { s: 'jungwon', f: 'happy', t: "Heeseung. Turn me around. I'm facing your shirt." },
           { s: 'heeseung', f: 'serious', t: "You're facing the objective." },
           { n: "So they went in. Sunoo carried the crate of water like a ring bearer and gave a bottle to everyone who looked at him, which was everyone. Jay knew every single person in the house and said *bro* to all of them in a slightly different key. Niki vanished into the crowd in under eight seconds and was later seen on a bannister. Sunghoon, who hadn't looked at another girl since Cherry, spread the word exclusively to boys, using exactly the same smile, to deeply confusing effect." },
@@ -292,7 +294,7 @@
     { id: 'epi-h-livestream', date: '12/31', slot: 'evening', consumes: true, title: 'unfiltered', place: 'Hanlim · Home · Her Room', time: 'Evening', scene: [
       { music: 'epi-h-newyear' },
       { ifEpiRoute: 'jungwon', then: [
-        { n: "New Year's Eve, and her boyfriend was on her pillow. On FaceTime, propped against her stuffed rabbit, lit from one side by his desk lamp, a textbook open under his chin, because his parents had allowed him New Year's Eve in the sense that they hadn't technically forbidden it." },
+        { n: "New Year's Eve, and her boyfriend was on her pillow. On FaceTime, propped against her stuffed rabbit, lit from one side by his desk lamp, a textbook open under his chin, because his parents had allowed him New Year's Eve in the sense that they hadn't technically forbidden it. He'd asked to come over. He'd been told no. He'd said *alright*, and she'd learned by now that when he said it like that it meant *for now*." },
         { s: 'jungwon', f: 'neutral', t: "Are you watching it." },
         { s: 'solar', f: 'happy', t: "Obviously I'm watching it, the whole school's watching it. Are YOU watching it?" },
         { s: 'jungwon', f: 'happy', t: "I have it open in another tab. For research." }
