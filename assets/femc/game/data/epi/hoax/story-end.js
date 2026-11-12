@@ -56,7 +56,11 @@
      by outcome. epi-h-results: Mrs. Yang's second text (falls-jw-said), assembly apology (split), the door card (falls),
      first-years bowing (turns), who's missing at the gate (falls, by party backing). epi-h-gym: one line by outcome before
      the stage-4 glitch; nothing else in the final changed.
-*/
+   The Jihoon thread (Nov 11 2026; stolen.js; Kat: on Jihoon's route it becomes real by the end, and the triangle always stays):
+     epi-h-witness ends with ...R.stolen.witness ("I like you", said back or kissed; sets epi-h-jh-real); epi-h-gym's jihoon
+     branch splices ...R.stolen.gym after "the nicest thing that had ever happened between them" (her hand in Jihoon's when
+     Jungwon comes in). The gym's structure, the pull and Jungwon holding on are unchanged. world.js's equinox line for the
+     jihoon route changed with it. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).hoax ||= {});
   // Stakes pass (Nov 11 2026; stakes.js documents the scores, the verdict and the three outcomes). stakes.js loads first.
@@ -196,7 +200,8 @@
     { s: 'solar', f: 'sad', t: "...I would, though." },
     { flag: 'epi-h-jihoon-speaks' },
     { n: "He put her coin in the machine. The claw went down over the plush hamburger, and closed, and lifted it, and carried it, wobbling, all the way to the chute, and dropped it a centimetre short, where it sat on the lip of the hole like it was thinking about it." },
-    { s: 'jihoon', f: 'neutral', t: "...Yeah. That's about right." }
+    { s: 'jihoon', f: 'neutral', t: "...Yeah. That's about right." },
+    ...((R.stolen || {}).witness || []) // the Jihoon thread (Nov 11 2026): "I like you", said back (stolen.js)
   ] },
 
   // ───────────────────────────────── 1/10, the council's route ─────────────────────────────────
@@ -1027,6 +1032,7 @@
       { s: 'jungwon', f: 'flustered', t: "...I'm not drinking after you." },
       { s: 'jihoon', f: 'neutral', t: "It's not *after* me, I didn't touch it, it's a gesture. Take the gesture, Yang." },
       { n: "Jungwon took the gesture. He held it. He didn't drink it. Neither of them said anything else, and it was the nicest thing that had ever happened between them." },
+      ...((R.stolen || {}).gym || []), // the Jihoon thread (Nov 11 2026): her hand in Jihoon's (stolen.js)
       { ifFlag: 'epi-h-ninety-eight', then: [
         { s: 'jihoon', f: 'neutral', t: "For the record, Yang. I got a ninety-eight. At the noraebang. On the hardest song in the book." },
         { s: 'jungwon', f: 'neutral', t: "...Why are you telling me this." },

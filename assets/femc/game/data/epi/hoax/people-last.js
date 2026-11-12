@@ -30,7 +30,9 @@
    - Halmeoni finally meets Nana in person at the back door on the last afternoon.
    - Asahi shares one earbud on the walk (the song is never named).
    Canon held: no Haechan by name; no Danielle, no video; the gym tonight is never mentioned (she doesn't know yet: she wakes
-   at 11:40 "knowing", story-end.js); Jungwon still doesn't ask; Hyunsuk is softer, not healed. */
+   at 11:40 "knowing", story-end.js); Jungwon still doesn't ask; Hyunsuk is softer, not healed.
+   The Jihoon thread (Nov 11 2026; stolen.js): epi-h-jihoon-late-2 gains one gated line before she goes in (ifFlag epi-h-jh-real:
+     she kisses him across the gearstick). Inline, not spliced, because this file loads before stolen.js in the checker. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).hoax ||= {});
   const B = (R.bonds ||= {});
@@ -154,6 +156,10 @@
           { s: 'solar', f: 'sad', t: "Promise?" },
           { s: 'jihoon', f: 'serious', t: "I promise, Sol. Look at me. I'm promising. Sober, even. Write it down." }
         ] }
+      ] },
+      // the Jihoon thread (Nov 11 2026; stolen.js): after the arcade it's said, so it isn't stolen anymore
+      { ifFlag: 'epi-h-jh-real', then: [
+        { n: "She kissed him before she got out. Quickly, on the mouth, across the gearstick, with the dog's head between the seats and the melon-bar sticks on the dashboard, like a thing she'd been allowed to do for years and had only just remembered she could. He didn't say anything. He put his hand flat on the top of her head for a second, the way you'd check a kid had a hat on, and let her go." }
       ] },
       { n: "She went back in at half past one. She went up and turned the light on and then off again, on purpose, so he'd see it go, and stood at the curtain. The car sat there for a minute longer. Then it pulled away from the curb, slowly, headlights off until the corner, so they wouldn't sweep her parents' window, the way he'd always done it, since he got his licence, since before." }
     ] }

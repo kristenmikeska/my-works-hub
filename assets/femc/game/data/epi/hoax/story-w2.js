@@ -70,7 +70,10 @@
      (mom-breakfast), each with a feedback line. epi-h-motion: the signature count reads heat (≥ 4: 206 and a graphic), and
      if epi-h-party-hayoon, hanlim_accountability DMs her (temple → epi-h-heat-hayoon / "ask me thursday" →
      epi-h-hayoon-thursday / block → epi-h-heat-hayoon + epi-h-hayoon-blocked).
-*/
+   The Jihoon thread (Nov 11 2026; stolen.js): epi-h-party splices R.stolenCoats(route) in each route branch (jungwon before the
+     curb, unless epi-h-party-left; jihoon before the step, only after epi-h-party-jh-flushed; council after epi-h-party-scuffle):
+     ifYear romance jihoon, the coat room, the girl at the door (epi-h-heat-jh-coats), the crew's question (epi-h-lie-crew-coats).
+     No existing line, flag, gate or date changed. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).hoax ||= {});
   // Stakes pass (Nov 11 2026): stakes.js loads first; without it the { ifCount } lists are empty (the counts read 0).
@@ -140,6 +143,7 @@
             { n: "They went. Jihoon called after them over the music, \"Bye, Bitch! Love You! Tell The Princess I Said Hi!\", and half the room laughed, and she didn't turn around, because if she turned around she'd see his face, and his face was the whole problem." }
           ] }
         ] },
+        ...(R.stolenCoats ? R.stolenCoats('jungwon') : []), // the Jihoon thread (Nov 11 2026): the coat room (stolen.js)
         { place: 'Hanlim · The Party · Outside', time: 'Evening', soft: true },
         { n: "Outside it was snowing in the slow, fat way that made streetlights look like they were being lowered on strings. Cherry lit a cigarette and held it away from Solar's face out of courtesy, and they stood on the curb in a fog of cold and smoke and somebody else's bass." },
         { n: "The house was louder from out here, somehow. Every window was lit and every window was shaking a little in its frame, and through the front one she could see the kitchen counter, and the back of a black jacket, and a beanie, and she made herself turn round and look at the street instead, at the parked cars wearing their little hats of snow, at a cat on a wall that looked at her like it had seen everything and been impressed by none of it." },
@@ -192,6 +196,7 @@
               { n: "Behind them somebody said *Jihoon?* and he didn't look back." }
             ] }
           ] },
+          ...(R.stolenCoats ? R.stolenCoats('jihoon') : []), // the Jihoon thread (Nov 11 2026): the coat room (stolen.js)
           { place: 'Hanlim · The Party · Outside', time: 'Evening', soft: true },
           { n: "Hyunsuk followed them out onto the step without his coat and stood there in the snow with his arms wrapped around himself, looking at Jihoon like he was a word in a language he used to speak." },
           { s: 'hyunsuk', f: 'surprised', t: "Dude." },
@@ -262,6 +267,7 @@
             ] }
           ] },
           { flag: 'epi-h-party-scuffle' },
+          ...(R.stolenCoats ? R.stolenCoats('council') : []), // the Jihoon thread (Nov 11 2026): the coat room (stolen.js)
           { place: 'Hanlim · The Party · Outside', time: 'Evening', soft: true },
           { n: "Afterwards they stood in a row on the curb, the whole council and her, steaming in the cold like horses. Jay's knuckles were fine. Jake's dignity was not. Sunoo still had four bottles of water." },
           { s: 'sunoo', f: 'sad', t: "...Nobody took the last four. I'm going to be honest, that hurt." },

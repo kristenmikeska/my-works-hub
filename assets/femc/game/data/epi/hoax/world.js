@@ -19,8 +19,15 @@
    Shape: as data/epi/runners/world.js (its header documents every field; epilogue.js the engine side).
    The routes: Jungwon (his romance or Christmas pick in the year), Jihoon's redemption (his), the council (everyone else; always
    open). The 12/24 evening event is the Christmas Eve choice (the crossroads: options gated by { ifRouteOpen }); the route
-   locks that night (lockAfter). At home she is Jungwon's girlfriend on every route (Kat's HOAX ruling 5); Jihoon's route never
-   makes him her boyfriend, it makes him the friend who chooses differently.
+   locks that night (lockAfter). At home she is Jungwon's girlfriend on every route (Kat's HOAX ruling 5), and the triangle
+   always stays open (Kat, Nov 11 2026: "I want my beloved love triangle to always remain"). The Jihoon thread (Nov 11 2026,
+   stolen.js documents it; these rulings override ruling 5 where they conflict): with the year's Jihoon romance, Jihoon is a
+   scandalous romance on every route (stolen moments, a kiss she shouldn't have let happen, the closet, the lies, all in the
+   stakes); on Jihoon's own route she comes to favor Jihoon and it becomes real by the end (the Christmas kiss, she tells
+   Jungwon on 1/4, out in the open on 1/9, said out loud at the arcade on 1/10, her hand in his at the gym), and her rebellious
+   side comes back out (smoking, skipping a meeting, 1/10); the triangle stays open: Jungwon is not ended, he stays, and he still
+   holds on at the gym. Ending changes: equinox.routes.jihoon (was "Someone chose differently. It counted."); the jihoon
+   branches of epi-h-witness and epi-h-gym gain spliced lines (story-end.js header).
    Places that don't have their own art yet borrow the nearest existing background (FEMC-ART-TODO "The epilogue: HOAX" lists the
    real ones; FEMC-ART-WIRING says which rule each replaces). */
 (() => {
@@ -30,7 +37,7 @@
     title: 'Hanlim',
     // The Equinox card after the act (epilogue.js finish; batch 9): `line` under the title, a route's own line in its place,
     // and one line per other world (where someone is holding a gap; the private plan §8).
-    equinox: { line: 'Every universe.', routes: { jungwon: 'He didn’t let go. He knew whose voice it was, and he didn’t let go.', jihoon: 'Someone chose differently. It counted.', council: 'The gym lights are still on.' },
+    equinox: { line: 'Every universe.', routes: { jungwon: 'He didn’t let go. He knew whose voice it was, and he didn’t let go.', jihoon: 'She leaned toward him a little more every day. Both of them held on.', council: 'The gym lights are still on.' },
       echoes: [
         'Syracuse · Hyein starts a text that says drink water, to no one, and doesn’t finish it.',
         'Incheon · The old radio on the annex sill catches two seconds of a school bell.',

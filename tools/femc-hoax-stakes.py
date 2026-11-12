@@ -1,7 +1,8 @@
 """HOAX epilogue stakes check (Nov 11 2026; data/epi/hoax/stakes.js documents the scores). No browser: jsc loads the
 HOAX world files, then this script checks
   1. every flag on R.stakes.heat / .trust / .sus is set somewhere in the world (a choice's flag or a { flag } line);
-  2. R.stakesVerdict sets exactly one of epi-h-out-turns / -split / -falls for every heat x trust count;
+  2. R.stakesVerdict sets exactly one of epi-h-out-turns / -split / -falls for every heat x trust (x lies, the Jihoon
+     thread's score, Nov 11 2026) count;
   3. on each route (jungwon, jihoon, council) every verdict is reachable: the choice blocks are walked by route
      (event flag gates, ifEpiRoute branches, hangout route / noRoute), each block is one pick (or skipped, since hangouts,
      mingle rooms and conditional beats can be missed), and the reachable (heat, trust) pairs are collected;
@@ -91,28 +92,31 @@ def run(lines, flags):
         elif 'flag' in l:
             flags.update(flags_of(l['flag']))
 table = {}
+LIES = ST.get('lies', [])
 for h in range(len(ST['heat']) + 1):
     for tr in range(len(ST['trust']) + 1):
-        fl = set(ST['heat'][:h]) | set(ST['trust'][:tr]); before = set(fl)
-        run(R['stakesVerdict'], fl)
-        got = [o for o in OUT if o in fl and o not in before]
-        if len(got) != 1: fails.append(f'verdict heat {h} trust {tr}: {got}')
-        table[(h, tr)] = got[0] if got else None
+        for li in range(len(LIES) + 1):
+            fl = set(ST['heat'][:h]) | set(ST['trust'][:tr]) | set(LIES[:li]); before = set(fl)
+            run(R['stakesVerdict'], fl)
+            got = [o for o in OUT if o in fl and o not in before]
+            if len(got) != 1: fails.append(f'verdict heat {h} trust {tr} lies {li}: {got}')
+            table[(h, tr, li)] = got[0] if got else None
 
 # 3. reachability per route: the pick per block (or none), counting heat / trust (capped)
 CAP = 12
 for r in ROUTES:
     blocks = groups[r]
-    states = {(0, 0)}
+    states = {(0, 0, 0)}
+    LCAP = len(LIES)
     for sid, opts in blocks:
         nxt = set(states)
-        for (h, t) in states:
+        for (h, t, l) in states:
             for f in opts:
-                nxt.add((min(CAP, h + len(f & set(ST['heat']))), min(CAP, t + len(f & set(ST['trust'])))))
+                nxt.add((min(CAP, h + len(f & set(ST['heat']))), min(CAP, t + len(f & set(ST['trust']))), min(LCAP, l + len(f & set(LIES)))))
         states = nxt
-    reach = {table.get((h, t)) for (h, t) in states}
-    mh = max(h for h, _ in states); mt = max(t for _, t in states)
-    print(f'{r:8s} max heat {mh}  max trust {mt}  verdicts reachable: {sorted(x for x in reach if x)}')
+    reach = {table.get((h, t, l)) for (h, t, l) in states}
+    mh = max(s[0] for s in states); mt = max(s[1] for s in states); ml = max(s[2] for s in states)
+    print(f'{r:8s} max heat {mh}  max trust {mt}  max lies {ml}  verdicts reachable: {sorted(x for x in reach if x)}')
     for o in OUT:
         if o not in reach: fails.append(f'{r}: {o} unreachable')
 
@@ -126,10 +130,10 @@ def reads_of(lines):
 for _, _, sc in scenes: reads_of(sc)
 reads_of(R.get('partyMingle'))
 for r in ROUTES: reads_of((R.get('partyCoda') or {}).get(r))
-new = [f for f in reads if f.startswith(('epi-h-out-', 'epi-h-mom-', 'epi-h-party-', 'epi-h-falls-', 'epi-h-hayoon-', 'epi-h-removed', 'epi-h-heat-', 'epi-h-trust-', 'epi-h-sus-'))]
+new = [f for f in reads if f.startswith(('epi-h-out-', 'epi-h-mom-', 'epi-h-party-', 'epi-h-falls-', 'epi-h-hayoon-', 'epi-h-removed', 'epi-h-heat-', 'epi-h-trust-', 'epi-h-sus-', 'epi-h-lie-', 'epi-h-jh-'))]
 engine = {'epi-h-mom-hearing'}  # set inside an IF in the hearing (counted above via walk)
 for f in sorted(new):
     if f not in set_anywhere and f not in engine: fails.append(f'read but never set: {f}')
-print(f"lists: heat {len(ST['heat'])}, trust {len(ST['trust'])}, sus {len(ST['sus'])}; choice blocks walked: " + ', '.join(f'{r} {len(groups[r])}' for r in ROUTES))
+print(f"lists: heat {len(ST['heat'])}, trust {len(ST['trust'])}, sus {len(ST['sus'])}, lies {len(LIES)}; choice blocks walked: " + ', '.join(f'{r} {len(groups[r])}' for r in ROUTES))
 print('FAIL\n  ' + '\n  '.join(fails) if fails else 'OK: stakes check passed')
 sys.exit(1 if fails else 0)

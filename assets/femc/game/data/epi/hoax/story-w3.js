@@ -54,7 +54,8 @@
      (epi-h-party-chaewon), epi-h-trust-prom on the laminator, and the leak (if epi-h-party-phone, from her phone; else if heat
      ≥ 4, from Jake's, shown to Taeoh at the party): own it (epi-h-trust-owned) / call it fake (epi-h-heat-deny) / let
      Heeseung take it (epi-h-leak-heeseung).
-*/
+   The Jihoon thread (Nov 11 2026; stolen.js): epi-h-prom ends with ...R.stolen.prom (Jihoon's route: out in the open at the
+     council-room door; sets epi-h-jh-open, maybe epi-h-heat-jh-hall; the council, the old chat, Mom). No existing line changed. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).hoax ||= {});
   // Stakes pass (Nov 11 2026; stakes.js documents the scores). IF = { ifCount } on a score (stakes.js loads first).
@@ -692,7 +693,8 @@
     ] },
     // stakes pass (Nov 11 2026): the leak. It comes if her phone went round at Dohyun's, or if the forum is hot enough anyway.
     { ifFlag: 'epi-h-party-phone', then: leak(true), else: [IF('heat', { min: 4 }, leak(false))] },
-    { n: "When she left at five, the whiteboard still said PROM and nothing else, and through the window behind it the snow was coming down slow and ordinary over the courtyard, and she caught herself watching it for a long time, waiting to see which way it went." }
+    { n: "When she left at five, the whiteboard still said PROM and nothing else, and through the window behind it the snow was coming down slow and ordinary over the courtyard, and she caught herself watching it for a long time, waiting to see which way it went." },
+    ...((R.stolen || {}).prom || []) // the Jihoon thread (Nov 11 2026): out in the open, Jihoon's route (stolen.js)
   ] },
 
   // ───────────────────────────── 1/9, late: fight 3, unheard ─────────────────────────────

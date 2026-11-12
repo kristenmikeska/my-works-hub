@@ -12,7 +12,7 @@
      sus    her mom getting close to the truth                                       R.stakes.sus
 
    ── Where each one moves (✱ = flag that existed before this pass; everything else is new) ─────────────────────────────────
-   heat (19)
+   heat (22; 19 + the Jihoon thread below)
      epi-h-heat-upvote     story-w2 rt-doomscroll         upvotes "a different dimension lol" (a reply turns up under it)
      epi-h-heat-cult       story-party mingle, living rm  "I joined a cult. The robes were cute." (on the forum by midnight)
      epi-h-heat-quote      story-party mingle, stairs     gives Eunchae a quote on stream
@@ -54,7 +54,7 @@
      epi-h-trust-prom      story-w3 prom                  "Nobody panic. Sunoo, plug the laminator back in."
      epi-h-trust-owned     story-w3 prom (the leak)       owns the leaked screenshot in the council room
      epi-h-hearing-charm ✱ / -courage ✱ / -knowledge ✱  story-end hearing  any of the three stat speeches (the plain one adds nothing)
-   sus (9)
+   sus (12; 9 + the Jihoon thread below)
      epi-h-mom-lie ✱       story-w1 home                  "It was a council thing. The advisor set it up."
      epi-h-xmas-bows ✱     story-w1 christmas             "a hundred and eight bows"
      epi-h-sus-boring      story-w2 rt-mom-breakfast      describes the temple until she stops asking
@@ -64,6 +64,15 @@
      epi-h-sus-armband     stakes.js epi-h-armband 1/5    "Volunteers wear them. At the temple."
      epi-h-sus-costume     stakes.js epi-h-armband 1/5    "It's a costume. From the party."
      epi-h-sus-chair       story-days sunday 1/7          "It's nothing, Mom. It's just a chair."
+   heat / sus / lies, the Jihoon thread (Nov 11 2026, Kat's rulings; stolen.js sets every one, its header documents them):
+     heat  epi-h-heat-jh-coats  (party coat room, seen leaving)   epi-h-heat-jh-hall (1/9, his hand down the main hall)
+           epi-h-heat-jh-smoke  (1/10, smoking behind the gym, photographed)
+     sus   epi-h-sus-jh-curb    (12/23, "a video of a cat")       epi-h-sus-jh-car (12/30, "Mrs. Oh's son")
+           epi-h-sus-jh-smoke   (1/10, "Cherry was smoking")
+     lies (new score, R.stakes.lies) epi-h-lie-jw-night (12/26, "slept like a rock"), epi-h-lie-jw-nana (12/30, "It's Nana."),
+           epi-h-lie-crew-coats (12/29, "Bathroom."). Lies cost trust: the verdict adds min(lies, 2) to both trust thresholds
+           (turns needs trust ≥ 5 + k, falls takes trust ≤ 6 + k). Only players with the year's Jihoon romance can lie here, so
+           every other run's verdict is unchanged.
    Light feedback: every new flag's choice carries a line that shows it (a forum post, a comment count, a look, a Mom text);
    the old ✱ choices already had one. Check-ins read the running counts: the motion's signatures (1/2), Eunchae at the gate
    (1/8), the leak (1/9: it only happens if she passed her phone round at the party OR heat ≥ 4), the bleachers and the
@@ -74,8 +83,9 @@
      Mom at the hearing     sus ≥ 4 when the hearing starts                   → epi-h-mom-hearing (she's by the gym doors)
      The leak               epi-h-party-phone (the Nana picture went round Dohyun's den) or heat ≥ 4, on 1/9
      The verdict (R.stakesVerdict, played in epi-h-hearing after her speech, so the stat speeches count):
-       turns  heat ≤ 4 and trust ≥ 5        epi-h-out-turns   the room turns for her; Hayoon withdraws (the old ending)
-       falls  heat ≥ 7 and trust ≤ 6        epi-h-out-falls   the vote carries against the VP; Heeseung acting VP; Yeobo's pays
+       (k = min(lies, 2), the Jihoon thread; 0 for everyone else)
+       turns  heat ≤ 4 and trust ≥ 5 + k    epi-h-out-turns   the room turns for her; Hayoon withdraws (the old ending)
+       falls  heat ≥ 7 and trust ≤ 6 + k    epi-h-out-falls   the vote carries against the VP; Heeseung acting VP; Yeobo's pays
        split  anything else                 epi-h-out-split   a hand vote, 104 to 98; a censure, an apology at assembly, the
                                                               advisor in every meeting until prom; Jungwon promises the gym she
                                                               won't leave again (a promise he can't keep)
@@ -110,14 +120,21 @@
     heat: ['epi-h-heat-upvote', 'epi-h-heat-cult', 'epi-h-heat-quote', 'epi-h-heat-iwatodai', 'epi-h-heat-door', 'epi-h-heat-loud',
       'epi-h-heat-photo', 'epi-h-heat-hunt', 'epi-h-heat-scene', 'epi-h-party-flushed', 'epi-h-party-jh-flushed', 'epi-h-heat-reply',
       'epi-h-heat-hayoon', 'epi-h-heat-mona', 'epi-h-niki-alt', 'epi-h-war-sol-post', 'epi-h-eunchae-nocomment', 'epi-h-heat-owed',
-      'epi-h-heat-deny'],
+      'epi-h-heat-deny',
+      // the Jihoon thread (stolen.js, Nov 11 2026): seen with him
+      'epi-h-heat-jh-coats', 'epi-h-heat-jh-hall', 'epi-h-heat-jh-smoke'],
     trust: ['epi-h-tables-pushed', 'epi-h-suk-seat', 'epi-h-jaehyuk-told', 'epi-h-jay-fight', 'epi-h-cherry-dark-truth',
       'epi-h-poster-real-one', 'epi-h-war-sol-receipts', 'epi-h-war-sol-gym', 'epi-h-trust-ledger', 'epi-h-trust-step',
       'epi-h-trust-jay-porch', 'epi-h-trust-crew', 'epi-h-trust-council', 'epi-h-trust-between', 'epi-h-trust-call',
       'epi-h-trust-heeseung', 'epi-h-trust-jake', 'epi-h-trust-kyu', 'epi-h-trust-prom', 'epi-h-trust-owned',
       'epi-h-hearing-charm', 'epi-h-hearing-courage', 'epi-h-hearing-knowledge'],
     sus: ['epi-h-mom-lie', 'epi-h-xmas-bows', 'epi-h-sus-boring', 'epi-h-sus-swept', 'epi-h-sus-party', 'epi-h-sus-ignored',
-      'epi-h-sus-armband', 'epi-h-sus-costume', 'epi-h-sus-chair']
+      'epi-h-sus-armband', 'epi-h-sus-costume', 'epi-h-sus-chair',
+      // the Jihoon thread (stolen.js, Nov 11 2026): lies to Mom about him
+      'epi-h-sus-jh-curb', 'epi-h-sus-jh-car', 'epi-h-sus-jh-smoke'],
+    // the Jihoon thread (stolen.js, Nov 11 2026): lies to Jungwon or the crew about him. Each one raises the trust the
+    // verdict needs (R.stakesVerdict below), so a lie costs trust without any score ever going down.
+    lies: ['epi-h-lie-jw-night', 'epi-h-lie-jw-nana', 'epi-h-lie-crew-coats']
   };
   const ST = R.stakes;
   // { ifCount } helpers (plain data at load time; nothing here runs in a scene).
@@ -126,12 +143,15 @@
 
   // The verdict: exactly one outcome flag (epi-h-hearing plays it right after her speech and the backers). Mom's presence
   // (epi-h-mom-hearing, sus ≥ 4) is decided at the top of the hearing instead, so she can be seen in the room from the start.
+  // The Jihoon thread (Nov 11 2026): k = lies told (capped at 2) is subtracted from trust, i.e. added to each trust threshold.
+  // With no lies (every route without the year's Jihoon romance) this is exactly the old verdict.
+  const verdict = k => IF('heat', { max: 4 },
+    [IF('trust', { min: 5 + k }, [{ flag: 'epi-h-out-turns' }], [{ flag: 'epi-h-out-split' }])],
+    [IF('heat', { min: 7 },
+      [IF('trust', { max: 6 + k }, [{ flag: 'epi-h-out-falls' }], [{ flag: 'epi-h-out-split' }])],
+      [{ flag: 'epi-h-out-split' }])]);
   R.stakesVerdict = [
-    IF('heat', { max: 4 },
-      [IF('trust', { min: 5 }, [{ flag: 'epi-h-out-turns' }], [{ flag: 'epi-h-out-split' }])],
-      [IF('heat', { min: 7 },
-        [IF('trust', { max: 6 }, [{ flag: 'epi-h-out-falls' }], [{ flag: 'epi-h-out-split' }])],
-        [{ flag: 'epi-h-out-split' }])])
+    IF('lies', { max: 0 }, [verdict(0)], [IF('lies', { max: 1 }, [verdict(1)], [verdict(2)])])
   ];
 
   // ── 1/5 morning: the armband (new decision point; something real can go wrong) ──────────────────────────────────────────

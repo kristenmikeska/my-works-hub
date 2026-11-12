@@ -50,7 +50,7 @@
      sale tin's exact total is never stated (Jungwon's count matches Heeseung's ledger, nobody says the number); who put the tin
      in the ballot box is never said (Niki claims it, Heeseung says no). The vending-machine can, the séance words and the notes
      are referred to only as the story files stage them.
-   Canon held: Jungwon is her boyfriend on every route; Jihoon's route never makes him one; Cherry and Sunghoon stay 'soon';
+   Canon held: Jungwon is her boyfriend on every route; Jihoon's route never makes him one (superseded Nov 11 2026: on his route she comes to favor him and the triangle stays open, stolen.js); Cherry and Sunghoon stay 'soon';
      the feud stays a feud; drugs named (a baggie, a pill bottle, a caller from sophomore year), never used on the page; nothing
      of sophomore year filled in; nobody mentions Jihoon's parents to him; the video and Danielle never come up; Haechan is
      never named here (the name is the 1/6 window's), only reached for. */

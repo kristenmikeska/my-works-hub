@@ -526,3 +526,14 @@ Scenes: `data/epi/strangers/story-yang.js` (header documents them), plus small a
 Scenes: `data/epi/hoax/story-end.js` `epi-h-hearing` (the outcomes are documented in `data/epi/hoax/stakes.js`).
 - 53A `epi-h-hands`: only in the falls outcome (`{ ifFlag: 'epi-h-out-falls' }` branch): a `{ cg: 'epi-h-hands' }` before the line beginning "They went up like a field of something" and `{ cg: null }` after Chaewon's "The motion carries. Kim Solar is removed from the office of vice president."; cgFocus in places.js; `ALBUM.hoax` tile after `epi-h-hearing` (the album shows it locked on saves that never got this outcome). WebP q86, DATA_V bump.
 
+## 54. Jihoon (HOAX, Nov 11)
+Scenes: `data/epi/hoax/stolen.js` (header documents the Jihoon thread). Each a `{ cg }` / `{ cg: null }` pair, a cgFocus in places.js and an `ALBUM.hoax` tile in date order; WebP q86, DATA_V bump. None is wired yet (no placeholders until the art exists).
+- 54A `epi-h-jh-pond`: `epi-h-jh-stolen` (12/26 late), the non-Jihoon-route branch: `{ cg: 'epi-h-jh-pond' }` before the line beginning "He didn't. She did. She leaned across the gearstick" and `{ cg: null }` after "...neither of them made a sound." (the album shows it locked on Jihoon-route saves).
+- 54B `epi-h-jh-closet`: `epi-h-jh-closet` (12/30 late): `{ cg }` before her mother's "Whose car is that on the corner?" and `{ cg: null }` after the choice block that follows it (before "Goodnight, Solar. Lamp off by twelve.").
+- 54C `epi-h-jh-hallway`: `R.stolen.prom` (spliced into story-w3 `epi-h-prom`, Jihoon's route): `{ cg }` before the line beginning "Jihoon held out the second melon bar." and `{ cg: null }` after Jungwon's "Go. I'll lock up." (needs a small reorder: the CG shows Jungwon in the doorway, so either move the `{ cg }` to just before "And in the doorway, last" or accept him appearing early).
+- New attachments copied to Place Prompt Attachments (Nov 11): `BG - Hanlim Hallway.png` (from `bg/epi-h-hallway.webp`), `BG - Jihoon's Car (HOAX).png` (from `bg/epi-h-jihoon-car.webp`).
+
+## 55. Jungwon (HOAX, Nov 11)
+Scenes: `data/epi/hoax/story-jungwon.js` (header documents them). Each a `{ cg }` / `{ cg: null }` pair, a cgFocus in places.js and an `ALBUM.hoax` tile in date order; WebP q86, DATA_V bump. Not wired yet (no placeholders until the art exists).
+- 55A `epi-h-jw-door`: `epi-h-jw-door` (1/1 late): `{ cg: 'epi-h-jw-door' }` before the line beginning "Yang Jungwon, at her gate, at twenty to one" and `{ cg: null }` before the line beginning "She got her boots on the wrong feet".
+- 55B `epi-h-jw-curb`: `epi-h-jw-curb` (1/7 late): `{ cg }` after the curb choice block (before "He stayed forty minutes.") and `{ cg: null }` after Asahi's "Bye, president. No one cares." (the picture shows him seated beside Hyunsuk, which the first option stages; on the other two options he's seated on the curb with them too by then).

@@ -75,7 +75,11 @@
        photo, two frames); Nana's squeaky croissant; Jihoon pre-orders the four cups at the stand on Christmas Eve, "since we
        were nine"; the snowballs as their old signal; the glow-in-the-dark stars (he made the Big Dipper wrong at ten); the
        blue container's cracked lid ("I made the crack"); Dad's spinning reel was his father's (a Daiwa); the heron; Solar's
-       presents for the boys (Jungwon: a litre water bottle with the hours on it; Jihoon: a pine air freshener). */
+       presents for the boys (Jungwon: a litre water bottle with the hours on it; Jihoon: a pine air freshener).
+   The Jihoon thread (Nov 11 2026, Kat's rulings; stolen.js documents it): epi-h-karaoke ends with ...R.stolen.karaoke (ifYear
+     romance jihoon: the curb, the porch light, Mom's "eleven minutes"); epi-h-xmas-night's jihoon branch splices ...R.stolen.xmasKiss
+     after "Somebody has to sleep in that house." (the kiss on her rug; sets epi-h-jh-kissed and -xmas-kiss / -xmas-stopped). No
+     existing line, flag, gate or date changed. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).hoax ||= {});
   (R.events ||= []).push(
@@ -636,7 +640,8 @@
       ] }
     ] },
     { bond: { cherry: 1 } },
-    { n: "Behind them the machines went on humming in the snow, patient, lit up, full of exactly what they said they were full of, as far as anyone could tell." }
+    { n: "Behind them the machines went on humming in the snow, patient, lit up, full of exactly what they said they were full of, as far as anyone could tell." },
+    ...((R.stolen || {}).karaoke || []) // the Jihoon thread (Nov 11 2026): the curb; ifYear romance jihoon (stolen.js)
   ] },
 
   // ───────────────────────────── 12/24, evening: Christmas Eve (the route) ─────────────────────────────
@@ -1744,6 +1749,7 @@
         ] },
         { n: "At half past eleven he sat up. Nana slid off him onto the tissue paper in one long white avalanche and didn't wake." },
         { s: 'jihoon', f: 'neutral', t: "Okay. I'm going home. Somebody has to sleep in that house. It gets ideas otherwise." },
+        ...((R.stolen || {}).xmasKiss || []), // the Jihoon thread (Nov 11 2026): the kiss on her rug (stolen.js)
         { n: "He stood and put everything back in his pockets in the same order, keys, wallet, lighter, gum, the air freshener last, and kept his hand on the outside of that pocket for a second, flat, the way he had on the step." },
         { s: 'jihoon', f: 'neutral', t: "Suk's driving round. He does that on Christmas. He doesn't think anyone knows. I told him you'd be up." },
         { s: 'solar', f: 'surprised', t: "Jihoon." },
