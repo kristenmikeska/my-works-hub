@@ -44,7 +44,12 @@
      Port Island that's asked, a man who keeps calling Mitsuru about me" (she won't say who). Ken starts sixth grade on the 7th.
      Junpei's April Fool's prank was salt in the sugar bowl (the story writer owns the breakfast; if theirs differs, change
      junpei-2's two lines). Aigis gives the bell's frequency in the group chat as 1318 hertz. Fuuka made one bento box too many
-     on purpose. No new named extras. */
+     on purpose. No new named extras.
+   Nov 11 2026 (Kat): length. Every hangout under ~17 lines lengthened (marked `// Nov 11 2026 (Kat): length`): akihiko-3 (the kiss
+     on the roof bench, Junpei on the stairs; cut away), shinjiro-1 (butter that stops talking / her hand on his), yukari-1, yukari-2,
+     junpei-1 (Ken, Mitsuru's "Noted. Overruled."), junpei-2, mitsuru-1 (the label maker, the server's hum), mitsuru-2 (the white
+     helmet, her father and the bridge), fuuka-1, fuuka-2 (the Tartarus logs, a spring log), ken-1 (the compass pencil case), aigis-1.
+     Lines added inside choice branches or before / after the choices only; no new flags, no id, date, gate, choice or outcome changed. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).stay ||= {});
   const B = (R.bonds ||= {});
@@ -132,6 +137,18 @@
       { s: 'akihiko', f: 'happy', t: "You're getting water in your shoe." },
       { s: 'solar', f: 'happy', t: "I know." },
       { n: "He laughed, a short surprised breath into her hair, and his arms went around her slowly, the way you'd close your hands around something that had landed on you of its own accord and might, if you were very still, decide to stay there. The light over the stairwell door went off on its timer. Nobody went down to turn it back on." },
+      // Nov 11 2026 (Kat): length. The roof after the timer light: the kiss, the bench, Junpei on the stairs; cut away.
+      { s: 'akihiko', f: 'neutral', t: "...Your hands are shaking." },
+      { s: 'solar', f: 'neutral', t: "It's cold. You're the one in a T-shirt." },
+      { s: 'akihiko', f: 'blushing', t: "I'm not cold." },
+      { n: "He wasn't. That was the problem with him, it had always been the problem, he ran hot like an engine left on, and through the thin cotton she could feel his heart going under her cheek a lot faster than a man standing still had any reason for. She tipped her head back to tell him so and he was already looking down, and whatever she'd been going to say about it went somewhere and didn't come back." },
+      { n: "He kissed her the way he did most things he'd decided on, all at once and then very carefully, as if the first half had surprised him. His hand came up to the side of her face and stopped there, the scar across his knuckles rough against her jaw, and she curled the gloved fingers into the front of his shirt and pulled, and he made a sound low in his throat that she felt more than heard and walked her back two steps until the backs of her knees met the bench." },
+      { n: "They sat down on it badly. She ended up half in his lap with her shoe full of water and his hand spread warm across the small of her back under the hem of her sweater, and the herbs in Mitsuru's planters were bruised somewhere under somebody's elbow, so the whole roof smelled of crushed mint and honey and the cold coming off the bay, and he kept stopping to look at her, close, a breath away, like he was checking she was still the one there." },
+      { s: 'akihiko', f: 'serious-3', t: "...Stay where I can see you. That's all. That's the whole thing." },
+      { s: 'solar', f: 'happy', t: "I'm right here. You're practically holding me down." },
+      { s: 'akihiko', f: 'blushing', t: "That's... a strategy." },
+      { n: "Somewhere under them a door banged, and Junpei's voice came up the stairwell asking the whole building if anybody had seen the good scissors, and then, closer, at the landing, stopping, the particular silence of a man who has seen a pair of shoes and a tipped-over watering can through the gap in a door and has done the math." },
+      { n: "*Nope,* Junpei told the stairwell, loudly. *Nobody up here. Just checked.* His footsteps went back down two at a time. Akihiko put his forehead against her shoulder and shook with laughing and didn't let go, and she didn't make him, and the stairwell light stayed off for a long time after that." },
       { cg: null },
       { bond: { akihiko: 1 } }
     ] }
@@ -154,6 +171,12 @@
         { s: 'shinjiro', f: 'sad', t: "...Aki says you're still here. Like, here here." },
         { s: 'solar', f: 'neutral', t: "I told you that myself." },
         { s: 'shinjiro', f: 'neutral', t: "...Wanted to hear somebody else say it. So I'd know you weren't just being nice to a guy in a bed." },
+        // Nov 11 2026 (Kat): length. The kitchen he can't get to; Junpei's breakfasts.
+        { s: 'solar', f: 'happy', t: "Junpei burnt the toast again. All of it. He said it was a style." },
+        { s: 'shinjiro', f: 'neutral', t: "...Pan's too hot. He never waits. Tell him to wait till the butter stops talking." },
+        { s: 'solar', f: 'happy', t: "Till the butter stops talking." },
+        { s: 'shinjiro', f: 'sad', t: "...You'll know it when you hear it. ...I'll show him. When I'm out." },
+        { n: "*When.* He said it to the rice, not to her, and went on chewing like he hadn't said anything, and she didn't make him look up, because if he looked up he'd see her face and then he'd have to do something about it." },
         { flag: 'epi-st-shinji-up' }
       ], else: [
         { n: "He was asleep. Mostly asleep, the doctors said, in the careful way doctors said things that could still go either way, and the machines breathed for the room, and the beanie sat folded on the bedside table where she'd folded it, the last time, and the time before that." },
@@ -161,7 +184,9 @@
         { n: "Under her hand his fingers moved. A twitch, then nothing, then again, the forefinger drawing a short line across her knuckle and stopping, like someone writing a word in the dark and losing the pen halfway through." },
         { s: 'nurse', t: "He does that when you talk. Only when you talk. I've been writing it down." },
         { s: 'solar', f: 'sad', t: "What else do you write down?" },
-        { s: 'nurse', t: "That you came. Every day. It's on the chart, under visitors. It's a long list now." }
+        { s: 'nurse', t: "That you came. Every day. It's on the chart, under visitors. It's a long list now." },
+        // Nov 11 2026 (Kat): length.
+        { n: "The nurse went out. Solar turned his hand over on the blanket, palm up, the way he used to hold it out for a bowl to be put in, and laid her own across it, and sat like that, and told him the rest of it, the bit she hadn't told the dorm, how she still woke at midnight every night and lay there waiting for the green to come and felt, when it didn't, something she didn't have a word for that wasn't relief. He didn't move for that part. She told herself it was because he was listening." }
       ] },
       { n: "On the way out she stopped at the window at the end of the corridor, where you could see the bay and the bridge and, if you knew where to look, the roof of the dorm. She looked. She always looked. Then she went down in the elevator with her hands in her pockets, and one of them was warm, and she kept it in there all the way to the bus." },
       { stat: { kindness: 1 } }
@@ -213,6 +238,15 @@
       { s: 'yukari', f: 'neutral', t: "Third year. Wednesday. I'm going to be a senpai. Junpei's going to be a senpai. Somebody should really stop this." },
       { s: 'solar', f: 'happy', t: "You'll be good at it." },
       { s: 'yukari', f: 'serious', t: "I'll be scary at it. That's a different thing." },
+      // Nov 11 2026 (Kat): length. The mall on spring break; Junpei's Hagakure plan.
+      { n: "The mall was full of spring break. Gekkoukan kids in tracksuits who'd forgotten they didn't have to wear them, the arcade's jingle going round and round on a loop nobody could hear anymore, a little boy trying to climb into the fountain while his mother said his full name in a voice that meant business. A pair of girls by the shoe shop in brand-new uniforms, still creased from the packet, taking a picture of each other in front of a poster for nothing in particular." },
+      { s: 'yukari', f: 'neutral', t: "Look at them. Those are going to be first-years. That one's eating a crêpe with a fork." },
+      { s: 'solar', f: 'happy', t: "You eat yours with a fork." },
+      { s: 'yukari', f: 'serious', t: "At home. Where nobody can see me. There's a difference, and the difference is dignity." },
+      { s: 'yukari', f: 'neutral', t: "Junpei asked me yesterday if senpai get a discount at Hagakure. Like, automatically. Like it's in the rules. I told him yes." },
+      { s: 'solar', f: 'surprised', t: "Yukari." },
+      { s: 'yukari', f: 'blushing', t: "He's going to try it on the seventh. In uniform. I'm going to be there with Fuuka's camera. Don't look at me like that, you're coming too." },
+      { n: "Solar laughed with her mouth full and got cream on her chin, and Yukari handed her a napkin without being asked, and for a minute it was just a Wednesday, sun on the tiles, a crêpe, a girl beside her planning a small cruelty with enormous love. She'd sat on this exact rim a year ago with her head full of three cities and an hour that didn't exist. She tried to remember what that had felt like and found, to her surprise, that she had to reach for it." },
       { n: "She ate. She picked at the paper around her crêpe, too casually, folding the corner down and down again, which was how Yukari asked things she'd already decided to ask." },
       { s: 'yukari', f: 'neutral', t: "Mitsuru-senpai says there's a form. For whatever you do next. University, a job, anything. There's always a form." },
       { s: 'solar', f: 'neutral', t: "There's a form." },
@@ -229,13 +263,24 @@
           { n: "Yukari went stiff for exactly one second, the way she always did, and then didn't, and rested her chin on top of Solar's head and said *you're getting cream on my jacket* in a voice that did not care about the jacket at all." },
           { bond: { yukari: 1 } }
         ] }
-      ] }
+      ] },
+      // Nov 11 2026 (Kat): length.
+      { n: "They walked home the long way, over the bridge to the station and the strip of shops under it, Yukari with her hands in her jacket pockets talking about the archery club's new bows and which first-years she'd let near them, which was none, and Solar beside her not quite listening, the word *Takeba* sitting in her pocket like a coin from a country she'd never been to, warm from somebody else's hand." }
     ] },
 
     { id: 'epi-st-yukari-2', title: 'the front step', hint: "Yukari is sitting on the dorm's front step after dark with her arms around her knees. She's not waiting for anybody, she says.",
       after: '4/1', until: '4/5', slots: ['evening'], events: ['epi-st-charms'], place: 'Iwatodai Dorm · Front', time: 'Evening', scene: [
       { n: "April, and the evenings were almost warm enough to sit out in if you didn't mind your hands. Yukari had the step. When the door opened behind her she moved over half a width without turning round, which meant she'd been waiting for somebody, and that it was Solar." },
       { n: "Nobody had said the word *bell* at dinner. Everybody at the table had been thinking it so hard it was practically a guest." },
+      // Nov 11 2026 (Kat): length. The step, Koromaru, the small talk before the question.
+      { n: "Solar sat. The stone was still holding a little of the day's warmth, and the street below was blue with evening, the streetlights coming on one after another down the hill toward the station. Behind them the door bumped open an inch and Koromaru's nose came through the gap, then the rest of him, and he climbed down between them with a great sigh and put his chin on Yukari's knee as though he'd been invited." },
+      { s: 'yukari', f: 'neutral', t: "Oh, sure. Come on in. It's not like this was private." },
+      { s: 'solar', f: 'happy', t: "He thinks everything's his." },
+      { s: 'yukari', f: 'neutral', t: "He's not wrong. He's the only one in that building with a clear claim to anything." },
+      { n: "She scratched behind his ears with the hand that had the calluses, the archer's ones, hard pads on the first two fingers, and Koromaru shut his eyes. For a while that was all. A dog breathing. Yukari's thumb going back and forth. Somebody's dinner downhill, frying, garlic on the air. Upstairs a window was open and Fuuka's music was coming out of it very faintly, something with a piano in it, and stopping, and starting the same bar again." },
+      { s: 'yukari', f: 'serious', t: "You didn't eat. At dinner. You moved it around. I watched you do the thing with the rice where you make a wall." },
+      { s: 'solar', f: 'neutral', t: "I wasn't hungry." },
+      { s: 'yukari', f: 'neutral', t: "Mm-hm." },
       { s: 'yukari', f: 'neutral', t: "So. The bell." },
       { s: 'solar', f: 'serious', t: "Yukari." },
       { s: 'yukari', f: 'serious', t: "I'm not asking what it was. I'm asking something else." },
@@ -253,7 +298,12 @@
           { bond: { yukari: 1 } }
         ] }
       ] },
-      { n: "They stayed out until Junpei opened the door behind them and asked if this was a girls thing, and Yukari said yes without turning around, and he said *cool, cool, cool* and sat down on the step anyway, one below them, and nobody made him leave." }
+      { n: "They stayed out until Junpei opened the door behind them and asked if this was a girls thing, and Yukari said yes without turning around, and he said *cool, cool, cool* and sat down on the step anyway, one below them, and nobody made him leave." },
+      // Nov 11 2026 (Kat): length.
+      { s: 'junpei', f: 'happy', t: "So what are we talking about. Boys? Is it boys? I can contribute." },
+      { s: 'yukari', f: 'serious', t: "You can contribute by being quiet." },
+      { s: 'junpei', f: 'neutral', t: "...Yeah okay. I can do that. I'm great at that. Watch." },
+      { n: "He was terrible at it. He lasted nearly a minute, then started telling them about a dream he'd had where Mitsuru-senpai was a vending machine, and Yukari told him to shut up, and laughed anyway, and Koromaru rolled over between the three of them so somebody would deal with his stomach, and Solar sat in the middle of it with Yukari still holding on to her, one way or another, and felt the cold come up out of the step through her jeans and didn't move for that either." }
     ] }
   ] };
 
@@ -265,6 +315,13 @@
       { s: 'junpei', f: 'happy', t: "Okay so. Day one, nap. Day two, nap, but outside. Day four, hanami. Fuuka's on bento, I'm on morale. Day nine, karaoke. No opera from Mitsuru-senpai. That's a rule now, I wrote it down." },
       { s: 'solar', f: 'happy', t: "What's day three?" },
       { s: 'junpei', f: 'serious', t: "Recovery from day two. You gotta pace yourself, Sol. You're new at this." },
+      // Nov 11 2026 (Kat): length. Ken and Koromaru drift in to the planning.
+      { n: "Ken came through from the kitchen with a glass of milk and Koromaru at his heel, read the page upside down over the back of the couch without being asked, and frowned at it the way he frowned at word problems." },
+      { s: 'ken', f: 'serious', t: "Day nine is the seventh. I have school on the seventh. So does Junpei-san." },
+      { s: 'junpei', f: 'flustered', t: "Day nine is karaoke for people who don't have school. For people who do, day nine is karaoke at four-thirty." },
+      { s: 'ken', f: 'neutral', t: "That's the same day." },
+      { s: 'junpei', f: 'happy', t: "It's a different day spiritually, Ken." },
+      { n: "Ken considered this with the expression of a ten-year-old deciding whether an adult was worth correcting, and decided he wasn't, and sat on the floor by Solar's feet to drink his milk. Koromaru lay down on Junpei's sneakers. The lounge was warm and smelled of the toast somebody had burnt an hour ago, and the TV was on with the sound off, a weather girl pointing at a map of the whole country gone pink with blossom forecasts, and nobody in the room needed to be anywhere at all." },
       { n: "New at what, she nearly asked, and didn't, because she knew. A week with nothing in it. No operation, no full moon, no train to catch home, no exam, no tournament, nobody who needed her at midnight. She had never once had one. Not here, not in any of the others." },
       { n: "On the inside cover of the notebook, upside down, there was a column of names in his blocky capitals, crossed out very neatly, one ruler-straight line through each. She knew whose they were before she'd read them." },
       { s: 'junpei', f: 'sad', t: "...I was doing seating for the hanami. Old habits. Wrote 'em all down before I remembered." },
@@ -279,17 +336,28 @@
           { n: "It was the smartest thing she'd ever heard him say, and he knew it, she could see him know it, and he ruined it on purpose a second later by asking if she thought Mitsuru would notice a whole cake hidden in the hanami basket." },
           { bond: { junpei: 1 } }
         ] }
-      ] }
+      ] },
+      // Nov 11 2026 (Kat): length.
+      { n: "Mitsuru passed through on her way to the stairs with a box in her arms, paused behind the couch, and read the notebook over Junpei's shoulder. Her eyes went down the column and stopped at *No opera from Mitsuru-senpai.* Junpei went very still, like a rabbit in a field." },
+      { s: 'mitsuru', f: 'neutral', t: "May I?" },
+      { n: "She took the pen from behind his ear, wrote something under the rule in small, perfect handwriting, put the pen back behind his ear exactly where it had been, and went upstairs. Junpei waited until her door shut before he looked. *Noted. Overruled.* He stared at it for a long moment. Then he drew a little crown next to it, and Ken laughed into his milk so hard it came out of his nose." }
     ] },
 
     { id: 'epi-st-junpei-2', title: 'april fool', hint: "Junpei is outside Wild-Duck Burger holding two milkshakes like a white flag.",
       after: '4/1', until: '4/5', slots: BOTH, events: ['epi-st-charms'], place: 'Iwatodai Strip · Wild-Duck Burger', time: 'Daytime', scene: [
       { n: "He'd bought her a milkshake. Chocolate, large, the expensive one, which from Junpei was a formal apology on letterhead." },
+      // Nov 11 2026 (Kat): length. The Strip, the table, the stalling.
+      { n: "They took the table by the window, the one with the wobble Junpei fixed every time with a folded receipt and that came back every time anyway. The Strip outside was loud with spring break, a crowd of middle schoolers around the claw machine by the arcade, a man hosing down the pavement in front of the karaoke place, the bins behind Wild-Duck smelling of fryer oil in the sun. Junpei folded a fresh receipt and shoved it under the table leg and pressed down on the tabletop to test it, twice, like that was the hard part of the afternoon." },
+      { s: 'junpei', f: 'neutral', t: "There. Stable. Structurally sound. Unlike some people's breakfasts." },
+      { s: 'solar', f: 'happy', t: "You're stalling." },
+      { s: 'junpei', f: 'flustered', t: "I'm not stalling. I'm doing a pre-apology. It's a whole ritual. You wouldn't get it." },
       { s: 'junpei', f: 'flustered', t: "So the prank. I want it on the record the prank was good. Salt in the sugar bowl. It's a classic. My grandpa did it to me when I was six and I cried." },
       { s: 'solar', f: 'happy', t: "It was a good prank." },
       { s: 'junpei', f: 'serious', t: "It was a GREAT prank. And nobody even got to taste their coffee, 'cause there was a bell. In the kitchen. And Aigis said the frequency out loud, and Mitsuru-senpai dropped a cup. Mitsuru-senpai doesn't drop stuff." },
       { n: "He stirred the milkshake with the straw, around and around, not drinking it. He'd been working up to this since breakfast. She could see it on him the way you could see weather on the bay, a long way off and coming." },
       { s: 'junpei', f: 'sad', t: "Was it them? Like. Your guys. Saying hi." },
+      // Nov 11 2026 (Kat): length.
+      { n: "The milkshake was very cold in her hand. She held on to it. Across the table Junpei had stopped stirring and was looking at her with the cap pushed back off his forehead, the way he looked at the last question on a test he actually wanted to get right, and the claw machine outside played its little losing song for somebody, and the sound went right through her." },
       { choose: [
         { t: "Maybe. I think so.", then: [
           { s: 'junpei', f: 'happy', t: "...Cool. Okay. That's, okay, that's actually kinda nice? Like a doorbell. Like they rang and ran." },
@@ -301,7 +369,12 @@
           { s: 'junpei', f: 'neutral', t: "The pipes. Sure. Yeah. Old building." },
           { n: "He didn't believe her. He let her have it anyway, the way you let a friend take the last fry, and she drank the milkshake and felt every degree of it go down cold and stay there." }
         ] }
-      ] }
+      ] },
+      // Nov 11 2026 (Kat): length.
+      { s: 'junpei', f: 'serious', t: "Hey. If it rings again. You don't gotta tell me what it is. Just... tell me it rang. So I'm not the only idiot at the table pretending he didn't hear it." },
+      { s: 'solar', f: 'neutral', t: "You're not an idiot." },
+      { s: 'junpei', f: 'happy', t: "Sol. I put salt in a sugar bowl and wrote a speech about it. Let's not get crazy." },
+      { n: "He finished his shake in one long rattling pull and stole a long sip of hers while she was looking out the window, and they walked back up the hill with the sun going orange behind the station, and he did the whole speech for her again, the sugar bowl one, from the top, with gestures, so it would at least have been performed once all the way through. It was a good speech. She told him so. He said he knew." }
     ] }
   ] };
 
@@ -314,6 +387,13 @@
       { s: 'solar', f: 'serious', t: "You didn't ask. You told me there was a deadline." },
       { s: 'mitsuru', f: 'serious', t: "That is how I ask. I'm told it needs work." },
       { n: "She set the clipboard down on a box marked FRAGILE · SENSORS · DO NOT LET JUNPEI CARRY, and squared it to the edge, and then squared it again." },
+      // Nov 11 2026 (Kat): length. The room coming apart; the label maker; the chair.
+      { n: "Solar looked round. She'd stood in this room the night before every full moon for a year, listening to Mitsuru read out floor numbers and Fuuka read out weaknesses, and it had always seemed bigger than it was, the way a room does when the most important thing in your life keeps happening in it. Now it was just carpet with pale squares on it where the equipment had stood, and a smell of dust and warm plastic, and the evening coming in yellow through blinds nobody had opened in months." },
+      { n: "Fuuka's chair was still at the console. Nobody had boxed it. It was turned slightly toward the door, the way she'd always left it, ready to swing round and say *senpai, there's something on the next floor.*" },
+      { s: 'mitsuru', f: 'neutral', t: "Hold this, please. The label maker. Akihiko labelled four boxes this afternoon and all four say STUFF." },
+      { s: 'solar', f: 'happy', t: "Is it stuff?" },
+      { s: 'mitsuru', f: 'serious', t: "It is a great deal of very specific stuff. That is rather the point of a label." },
+      { n: "So Solar labelled. CABLES · MONITOR 2. CABLES · MONITOR 3. BINDERS · OPERATIONS · APRIL-JUNE. She held that last one a little longer than she needed to before she pressed it down on the cardboard, and Mitsuru, across the room with her back turned, said nothing, which was how Solar knew she'd seen." },
       { s: 'mitsuru', f: 'neutral', t: "The dorm passes to the school's housing office after the term begins. The rooms will be assigned to new students. Yours will not. I've arranged it." },
       { s: 'solar', f: 'serious', t: "Mitsuru." },
       { s: 'mitsuru', f: 'serious', t: "The Group owns the building. The housing office owed the Group a number of favors, and as of this morning it owes one fewer. You'll have the room for as long as you want it. If you want it." },
@@ -330,11 +410,20 @@
           { n: "From Mitsuru that was a vow, and they both knew it, and she picked up the pen at last and went back to the clipboard and ticked something off that Solar was fairly sure hadn't been on it a minute ago." },
           { bond: { mitsuru: 1 } }
         ] }
-      ] }
+      ] },
+      // Nov 11 2026 (Kat): length.
+      { n: "They worked until it was dark out. Junpei brought up two cups of tea at nine without being asked, looked at the room, said *whoa,* quietly, like he was in a church, and went back down without making a single joke, which was so unlike him that Mitsuru watched the door for a moment after it closed." },
+      { n: "At the end Mitsuru unplugged the last thing on the wall, the old server under the console that had hummed for as long as Solar had lived there, a sound so constant she'd stopped hearing it in May. The hum stopped. The quiet it left was enormous. They both stood there in it, and neither of them said anything, and then Mitsuru switched off the light, and they went downstairs in the dark the way they had a hundred times, one after the other, her hand on the rail." }
     ] },
 
     { id: 'epi-st-mitsuru-2', title: 'in that order', hint: "Mitsuru is in the front lot in a riding jacket, holding a second helmet. She doesn't explain the second helmet.",
       after: '4/1', until: '4/5', slots: ['evening'], place: 'Moonlight Bridge', time: 'Evening', scene: [
+      // Nov 11 2026 (Kat): length. The front lot before they leave.
+      { n: "The second helmet was white and had never been worn; the sticker was still on the visor. Mitsuru held it out in the front lot without a word of explanation, and when Solar took it she peeled the sticker off for her first, carefully, with one nail, and folded it into her own pocket rather than drop it on the ground." },
+      { s: 'mitsuru', f: 'neutral', t: "Arms round my waist. Lean when I lean. Don't lean when I don't. If you need me to stop, hit my shoulder twice." },
+      { s: 'solar', f: 'happy', t: "And if I want you to go faster?" },
+      { s: 'mitsuru', f: 'serious', t: "You won't." },
+      { n: "Up on the second floor a curtain moved. Akihiko, in the window of his room, watching them with his arms folded, and below him in the lounge window Junpei with both hands pressed to the glass and his mouth going, saying something that was almost certainly *no fair.* Mitsuru looked up at the pair of them for exactly one second, and put her own helmet on, and started the engine, and the sound of it came up off the tarmac and through Solar's shoes and into her chest like a second heartbeat." },
       { n: "She rode the way she did everything, precisely and a little faster than the law preferred, out across the Moonlight Bridge with the city lit up behind them and the bay black underneath, and Solar held on with both arms and her cheek pressed to the cold leather of Mitsuru's back, and at the midpoint, where you were absolutely not supposed to, Mitsuru pulled onto the shoulder and cut the engine." },
       { n: "The wind. The cables overhead humming in it, one long low note going on and on like something tuning. The lights of Port Island laid out on the water. Mitsuru took her helmet off and shook her hair out and did not look at her." },
       { s: 'mitsuru', f: 'serious', t: "Akihiko tells me your hair was wet the other night. Fuuka tells me Juno is hearing something she can't place. Aigis has logged a signal. And there was a bell in my kitchen." },
@@ -357,7 +446,13 @@
           { n: "It wasn't a joke. Mitsuru didn't make jokes on bridges. Solar put her arms back around her waist, and held on tighter than she needed to for a bike that wasn't moving, and Mitsuru let her." },
           { bond: { mitsuru: 1 } }
         ] }
-      ] }
+      ] },
+      // Nov 11 2026 (Kat): length.
+      { s: 'mitsuru', f: 'neutral', t: "When I was small my father brought me out here in the car. Before the bridge was finished. You could see the steel going up from the shore. He said one day I'd own a piece of it." },
+      { s: 'solar', f: 'neutral', t: "Do you?" },
+      { s: 'mitsuru', f: 'sad', t: "Several pieces. None of the ones I'd want." },
+      { n: "She started the engine. They rode back slower than they'd come, which for Mitsuru was a kind of speech, the city getting bigger in front of them, the dorm's lights coming up out of the dark on the hill, every window lit, somebody having turned them all on while they were gone. Solar counted them from the bottom of the street. All of them. Even the ones that had nobody in them anymore." },
+      { n: "In the lot Mitsuru took the white helmet back and hung it on the handlebar beside her own, and stood there a moment with her hand on it, and said Sunday dinner, and that Solar would set her place, and went in without waiting to hear yes, because she'd already written it down." }
     ] }
   ] };
 
@@ -368,6 +463,12 @@
       { n: "Fuuka was making the hanami bento. She'd been making it since Monday, in drafts, the way other people wrote essays, and attempt nine was tamagoyaki, rolled in the square pan with a pair of long chopsticks and a concentration so total that the tip of her tongue showed, and a ruler on the counter beside the board because the slices were going to be the same width this time if it killed everyone." },
       { s: 'fuuka', f: 'happy', t: "Senpai! You can be a taster. Sit. Please. I mean, if you want. Sit if you want." },
       { n: "She cut a slice and held it out on the chopsticks. Burnt on one side, gold on the other, sweet, the layers coming apart in her mouth the way they were supposed to. It was good. It was, genuinely and for the first time in a year of trying, good, and Solar told her so with her mouth full, and Fuuka wrote it down." },
+      // Nov 11 2026 (Kat): length. The kitchen fills up: Junpei, Koromaru, Aigis's opinion.
+      { n: "The smell had got out into the hall. Junpei arrived first, drawn in by it like something in a cartoon, and tried to take a slice off the board, and Fuuka rapped his knuckles with the ruler without looking up, a reflex so fast and so unlike her that all three of them stood there for a second in silence afterwards." },
+      { s: 'junpei', f: 'surprised', t: "...Ow? Fuuka?" },
+      { s: 'fuuka', f: 'surprised', t: "Oh! Oh no, I'm so sorry, I don't know why I, those are for the photo, I'm photographing them for, I'm sorry." },
+      { s: 'junpei', f: 'happy', t: "Nah, that was amazing. Do it again. No, don't." },
+      { n: "Koromaru came in behind him and sat down in the exact middle of the kitchen floor, where everybody would have to step around him, and looked up at the pan with the patience of a dog who has learned that the universe provides, eventually, if you sit where it can see you. Aigis looked in from the doorway, said that the egg was at one hundred and sixty-three degrees and that this was ideal, and left again, and Fuuka wrote that down too." },
       { s: 'fuuka', f: 'neutral', t: "I'm doing one for everyone. Seven. Eight, with Koromaru's. His has no salt." },
       { n: "She counted the boxes out along the counter, lacquered and borrowed from three different cupboards, and stopped at eight, and looked at the counter beside them where there was room for more, a lot more, and her hand did a small thing in the air over the empty space, like it was setting something down that wasn't there." },
       { s: 'fuuka', f: 'sad', t: "...I keep counting too many. Every time. I get to eight and my hands keep going." },
@@ -382,12 +483,20 @@
           { n: "She handed her the ruler. Fuuka took it and measured the next slice to the millimeter, very seriously, and they didn't talk about the counting again, and at some point Fuuka started humming, and the kitchen filled up with the smell of sugar going brown, and that was enough of an answer for both of them." },
           { bond: { fuuka: 1 } }
         ] }
-      ] }
+      ] },
+      // Nov 11 2026 (Kat): length.
+      { n: "Junpei ate the burnt ends. All of them, standing at the counter, declaring each one better than the last, until Fuuka laughed so hard she had to put the chopsticks down. Koromaru got the one that fell. The window over the sink was open an inch and the air coming in was soft and damp and smelled of somebody's garden, and on the sill Fuuka had put a jam jar with one early branch of cherry in it, three blossoms open, the rest still shut tight and pink at the tips, like they were thinking about it." }
     ] },
 
     { id: 'epi-st-fuuka-2', title: 'three bells', hint: "Fuuka is on the roof with her headphones on and her laptop open. She hasn't typed anything in a while.",
       after: '4/1', until: '4/5', slots: BOTH, place: 'Iwatodai Dorm · Rooftop', time: 'Evening', scene: [
       { n: "Juno didn't have anything to listen for anymore. That had been the point, of the seventh, of all of it. Fuuka had told Solar once in February that the quiet was the strangest thing, stranger than the hour had ever been, like living next to a train line for a year and then one night the trains just stop." },
+      // Nov 11 2026 (Kat): length. The roof at night; the logs she can't delete.
+      { n: "She was on the bench by Mitsuru's planters with her knees drawn up and the laptop balanced on them, the screen the only light up there besides the city, and on it a long scrolling list of dates and floor numbers in her tidy file names. TARTARUS LOG 04-09. TARTARUS LOG 04-10. A year of them. She'd been trying to delete them since February." },
+      { s: 'fuuka', f: 'sad', t: "I keep opening them instead. I read them like a diary. Floor sixty-four, Junpei-kun tripped on the stairs. Floor ninety, you found the chest with the bead in it and did a little dance and thought nobody saw." },
+      { s: 'solar', f: 'flustered', t: "Nobody did see." },
+      { s: 'fuuka', f: 'happy', t: "Juno saw. Juno sees everything. She thought it was very good dancing." },
+      { n: "The wind came up off the bay and riffled the herbs, and somewhere below a train went over the bridge into the station, its sound arriving late and soft, the ordinary night going on all round them. Fuuka pulled the sleeves of her cardigan down over her hands and looked at the screen and didn't delete anything." },
       { s: 'fuuka', f: 'neutral', t: "Senpai, could you sit here? Just for a minute. Closer, maybe?" },
       { n: "Solar sat. Fuuka shut her eyes, and for a while there was nothing, and then there was a little of something, a cool presence at the edge of the air like the inside of a shell held up to an ear." },
       { ifGlitch: 3, then: [{ glitch: 'sound' }] },
@@ -409,7 +518,12 @@
         { t: "(Don't say anything. Listen with her.)", then: [
           { n: "She didn't say anything. She sat close, the way Fuuka had asked, and listened to nothing she could hear, and Fuuka listened to everything she couldn't, and after a while Fuuka closed the laptop and leaned her head against Solar's shoulder, and said, to nobody in particular, that she'd tell Mitsuru-senpai in the morning, and didn't move." }
         ] }
-      ] }
+      ] },
+      // Nov 11 2026 (Kat): length.
+      { s: 'fuuka', f: 'neutral', t: "Senpai. I'm going to make a new log. Not for Tartarus. Just a normal one. Spring." },
+      { s: 'solar', f: 'neutral', t: "What goes in it?" },
+      { s: 'fuuka', f: 'happy', t: "Things that happened. Tonight. You sat on the roof. Nothing came up the stairs. Junpei-kun burnt the rice. That kind of thing." },
+      { n: "She opened a new file then and there and typed the date and the time, and under it, after a moment's thought, *Senpai was here.* Then she saved it, and looked at it, and didn't say anything about why that was the first entry, and Solar didn't ask, and the stairwell light went off on its timer and left them in the blue of the screen." }
     ] }
   ] };
 
@@ -420,6 +534,11 @@
       { music: 'epi-st-spring' },
       { n: "Koromaru took the shrine steps two at a time, the way he always did, straight up to the flat stone by the offering box where he'd waited for the old priest, and sat down on it with his tongue out and the air of a dog checking in. The plum over the box was finished. The cherries along the wall were just beginning, a few at a time, like they were testing the water." },
       { n: "Ken stood at the bottom of the steps holding the slack of the leash in both hands. He'd grown over the winter. Not a lot. Enough that his sleeves didn't reach anymore, and he kept tugging them down, and they kept not reaching." },
+      // Nov 11 2026 (Kat): length. The walk up, the pencil case, the priest's stone.
+      { n: "They'd come the back way from the dorm, past the konbini and the laundromat and the house with the bad-tempered cat in the window that Koromaru had a long-running disagreement with, and Ken had talked the whole way, which he never did. About the sixth-grade class list, which was posted already, and which he'd memorized. About his new pencil case, which had a compass built into the lid, which was not allowed, probably, but which he'd bought anyway because it had been on sale and because, he said, very seriously, a person should know which way north was." },
+      { s: 'solar', f: 'happy', t: "Which way is north?" },
+      { s: 'ken', f: 'neutral', t: "That way. Toward the school. It's a coincidence." },
+      { n: "Up at the top Koromaru was still on the priest's stone, ears up, watching the path behind them in case the old man came round the corner with the bag of dried sardines he'd kept in his sleeve. He'd been gone more than a year. Koromaru checked anyway, every time. Ken had told her once that he didn't think the dog was waiting, exactly. He thought he was just saying hello to the place where somebody used to be." },
       { s: 'ken', f: 'neutral', t: "Solar-san. Can I ask you something? You don't have to answer." },
       { s: 'ken', f: 'serious', t: "Mitsuru-san is moving out. Akihiko-san is going somewhere. They said they'd visit, and I believe them. But everyone keeps graduating except me. I start sixth grade on Wednesday. I'm the only one going the other way." },
       { s: 'ken', f: 'sad', t: "Will you still be at the dorm? When I get home from school?" },
@@ -436,7 +555,9 @@
           { n: "He held her eyes a moment longer than a ten-year-old should have been able to. Then he nodded, once, like a man accepting terms he'd read the small print on, and handed her the leash, which was a bigger thing than it looked." }
         ] }
       ] },
-      { n: "They took the long way home, along the river, and Koromaru walked between them exactly in the middle, and every time one of them fell half a step behind he stopped and waited until they were level again." }
+      { n: "They took the long way home, along the river, and Koromaru walked between them exactly in the middle, and every time one of them fell half a step behind he stopped and waited until they were level again." },
+      // Nov 11 2026 (Kat): length.
+      { n: "At dinner Ken announced, to the table in general and without looking at anyone, that he would be home at three-forty on school days, and that he would be needing a snack, and Junpei said *who's he talking to,* and Ken said *it's handled,* and went back to his curry, and under the table Koromaru's tail hit Solar's ankle twice, steady as a clock." }
     ] }
   ] };
 
@@ -451,6 +572,13 @@
       { s: 'solar', f: 'happy', t: "Triangulating what?" },
       { s: 'aigis', f: 'serious', t: "You." },
       { n: "She said it the way she said everything, as a fact, laid down plainly on the railing between them for Solar to pick up or not." },
+      // Nov 11 2026 (Kat): length. Aigis on spring, then the bearings.
+      { s: 'solar', f: 'neutral', t: "You could have just asked me where I was." },
+      { s: 'aigis', f: 'neutral', t: "I know where you are. You are here. That is not the measurement I am taking." },
+      { n: "A pair of first-year girls went past behind them with ice creams, giggling about a boy, and a petal from the row of trees along the promenade came loose and went over the railing and down toward the water, turning. Aigis's head followed it all the way down." },
+      { s: 'aigis', f: 'neutral', t: "The cherry trees have opened eleven percent since yesterday. Fuuka-san says this is the best part. Before it is finished. I asked her how one knows which part is the best part while it is still happening." },
+      { s: 'solar', f: 'happy', t: "What did she say?" },
+      { s: 'aigis', f: 'happy', t: "She said one does not. One finds out afterwards, and is glad one was there. I found that answer very inefficient. I have been thinking about it for four days." },
       { s: 'aigis', f: 'neutral', t: "Your signal has always been unusual. In April it was one, and very strong. At the end, in March, it was four. Then it was one again. Since Monday it has begun to be four again. One here. Three elsewhere, at bearings that do not correspond to anything on the globe." },
       { ifGlitch: 3, then: [
         { s: 'aigis', f: 'surprised', t: "The three are stronger this week. They are also closer together. I do not know what that means. I dislike not knowing what it means. That is new." }
@@ -466,7 +594,11 @@
           { n: "The ferry sounded its horn out on the water, long and low, and Aigis turned her head toward it, and then back, and didn't say anything else, and after a while she took Solar's hand at the railing, precisely, the way she'd once learned to, and held it like an instrument she was reading." },
           { bond: { aigis: 1 } }
         ] }
-      ] }
+      ] },
+      // Nov 11 2026 (Kat): length.
+      { n: "They took the monorail back. Aigis sat very upright with her hands on her knees and named each stop a half second before the announcement did, under her breath, not to show off, Solar thought, but the way you'd touch the doorframes of a house in the dark to know where you were. At Iwatodai she stood before the doors opened." },
+      { s: 'aigis', f: 'neutral', t: "Solar-san. It is spring, and you are here. I will go on taking that measurement. Every day. In case." },
+      { n: "She didn't say in case of what. She didn't need to. They walked up the hill to the dorm with the streetlights coming on, and Aigis kept exactly half a step behind her the whole way, the way she had a year ago when she'd still thought her only purpose was to stand between Solar and whatever came, and Solar didn't tell her to walk beside her this time. She let her keep the old place. It seemed to be the one she wanted." }
     ] }
   ] };
 

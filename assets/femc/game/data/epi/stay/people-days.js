@@ -41,7 +41,9 @@
      hill, hidden behind the miso; Junpei cuts it into one more piece than there are forks; the stairs' third step creaks
      (people.js); the night nurse's cordless phone; Akihiko's "I wasn't asleep"; Junpei's note on the blanket; Ken's
      kanji for the first week (spring, bridge, return); Junpei's scorch is iron-shaped, on the back of the shirt; Mitsuru's
-     planner page lists every Sunday to December in ink; Ken's school gate at 8:10; Aigis has never waved goodbye. */
+     planner page lists every Sunday to December in ink; Ken's school gate at 8:10; Aigis has never waved goodbye.
+   Nov 11 2026 (Kat): length. epi-st-rt-petals (Akihiko times the petals, Yukari at the window) and epi-st-rt-game (the manual,
+     the lounge around it) lengthened; marked `// Nov 11 2026 (Kat): length`. Nothing else changed. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).stay ||= {});
   const B = (R.bonds ||= {});
@@ -471,6 +473,11 @@
     { id: 'epi-st-rt-petals', slot: 'early', after: '4/2', until: '4/6', place: 'Iwatodai Dorm · Front', time: 'Morning', scene: [
       { n: "Overnight the cherry trees along the street had let go of something, and the front step was white with it, the petals drifted in the corners like snow that didn't melt, and stuck to the doormat, and to the bottom of Junpei's shoes, and to Koromaru, who stood in the middle of the step in the low sun snapping at the ones still coming down, one after another, and missing every single one." },
       { n: "Akihiko had the broom. He'd swept the step twice already. It was white again. He was looking at it with the face of a man who'd lost a fight fairly." },
+      // Nov 11 2026 (Kat): length.
+      { s: 'akihiko', f: 'neutral', t: "Third time. I timed it. They come back in under four minutes." },
+      { s: 'solar', f: 'happy', t: "You timed the petals." },
+      { s: 'akihiko', f: 'blushing', t: "Somebody had to." },
+      { n: "Upstairs a window went up and Yukari leaned out in her pajamas with a toothbrush in her mouth, looked at the step, looked at Akihiko with the broom, and said something round the toothbrush that sounded a lot like *give up,* and went back in. Down the street the trees were letting go all at once in the breeze, a long slow pour of white across the road, and an old man on a bicycle rode straight through it with his face turned up, ringing his bell at nothing, the way you would." },
       { choose: [
         { t: "(Take the broom. Sweep.)", then: [
           { n: "She swept. It made no difference. It was the least useful thing she'd done in a year, and she did it with her whole heart, and Akihiko leaned on the rail and timed her, and Koromaru ran through the pile she'd made as soon as she'd made it." }
@@ -484,6 +491,11 @@
       { n: "Junpei and Ken were on the lounge floor with the old console, playing the fighting game Junpei had been losing to Ken at since November. Ken played with his tongue between his teeth and no mercy. Junpei played like it was a personal insult every time. Koromaru lay between them and turned his head to whoever was shouting." },
       { s: 'junpei', f: 'flustered', t: "He's doing the thing. Sol, he's doing the thing again. Ken, that's a cheap move. That's an illegal move." },
       { s: 'ken', f: 'neutral', t: "It's in the manual." },
+      // Nov 11 2026 (Kat): length.
+      { s: 'junpei', f: 'serious', t: "Nobody reads the manual, Ken. The manual is a myth. Sol, back me up." },
+      { s: 'solar', f: 'happy', t: "I read the manual." },
+      { s: 'junpei', f: 'flustered', t: "Of course you did. Of course. I live in a house of people who read the manual." },
+      { n: "From the kitchen came the smell of Fuuka trying the curry again, and Yukari's voice telling her it was fine, it was good, it didn't need more honey, and then a pause, and then *okay a little more honey.* Aigis sat on the arm of the couch with a notebook keeping score in two neat columns, because nobody had asked her to and somebody had to. The windows had gone dark. The lounge lamp made a warm circle on the rug with all of them inside it, and the controllers clicked, and Koromaru sighed through his nose like an old man settling into a bath." },
       { choose: [
         { t: "(Take Junpei's controller.)", then: [
           { n: "She took the controller. She lost in forty seconds. Ken said *thank you for playing* very politely, and Junpei laughed so hard he rolled over onto Koromaru, who didn't mind, and then they made her play again, and she lost faster, and it was the best she'd felt all day." }

@@ -6,7 +6,9 @@
    Inventions: the S.E.E.S. members' in-world handles below (the main game's 'sees' chat has none); hyein / hanni reuse the
    handles their group texts carry in the main game. Small habits: Akihiko calls mid-run and counts out loud, Junpei calls from
    one floor up instead of walking down, Aigis asks "is this a good time" because Junpei told her to, Ken calls to ask for a
-   kanji quiz, Fuuka's list has a page two, Mitsuru's clock repairman. No plot. */
+   kanji quiz, Fuuka's list has a page two, Mitsuru's clock repairman. No plot.
+   Nov 11 2026 (Kat): length. Calls epi-st-call-akihiko-3 (the landing), epi-st-call-shinjiro-2 (bring a coat) and
+     epi-st-call-ken-2 (Koromaru didn't bark) lengthened; marked `// Nov 11 2026 (Kat): length`. No gate changed. */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).stay ||= {});
   const T = (R.texts ||= {});
@@ -65,7 +67,14 @@
             { s: 'them', f: 'neutral', t: "So you'd know where I was. Without having to come up." },
             { n: "Neither of them said anything for a while. She could hear the city through his phone, and through her window, the same traffic, half a second apart." },
             { s: 'them', f: 'happy', t: "...You can hang up. I'm going to stay on a bit." },
-            { s: 'solar', f: 'happy', t: "So am I." }
+            { s: 'solar', f: 'happy', t: "So am I." },
+            // Nov 11 2026 (Kat): length.
+            { s: 'them', f: 'blushing', t: "...About Sunday. On the roof. I didn't plan that. I want that on the record. I plan everything." },
+            { s: 'solar', f: 'flustered', t: "Are you apologizing?" },
+            { s: 'them', f: 'serious', t: "No. I'm saying I'd like to plan the next one." },
+            { n: "She sat down on the edge of the bed with the toothbrush still in her other hand and her face doing something she was glad he couldn't see. On the line the wind dropped, and she heard him laugh at himself under his breath, and the roof door creak, and his footsteps on the stairs coming down, one flight, toward her floor, and stop on the landing, and stay there." },
+            { s: 'them', f: 'happy', t: "...Goodnight, Solar. I'm on the landing. That's as far as I'm going." },
+            { s: 'solar', f: 'happy', t: "Goodnight. I can hear you breathing through the door." }
           ] }
         ],
         topics: [
@@ -117,7 +126,13 @@
             { s: 'solar', f: 'neutral', t: "Do you like it?" },
             { s: 'them', f: 'neutral', t: "...It's pink. There's a lot of it." },
             { n: "A pause, long enough that she checked the screen to see if the call had dropped." },
-            { s: 'them', f: 'happy', t: "Yeah. ...Come see it before it's done." }
+            { s: 'them', f: 'happy', t: "Yeah. ...Come see it before it's done." },
+            // Nov 11 2026 (Kat): length.
+            { s: 'solar', f: 'happy', t: "Are you asking me to come see you?" },
+            { s: 'them', f: 'neutral', t: "...I'm asking you to come see a tree." },
+            { s: 'solar', f: 'happy', t: "Okay. A tree." },
+            { s: 'them', f: 'sad', t: "...Bring a coat. If they let me down there, somebody's gotta push. ...Don't make it a thing." },
+            { n: "She didn't make it a thing. She hung up and stood in her room with the phone still warm in her hand and her face doing something she was glad nobody could see, and then went and checked the bus timetable she already knew by heart, in case it had changed since the last time, and it hadn't, and she checked it again anyway." }
           ] }
         ],
         topics: [
@@ -411,7 +426,11 @@
             { s: 'them', f: 'serious', t: "He came out from under the table at lunch. He's on his stone now. He looks normal." },
             { s: 'them', f: 'sad', t: "...Are you okay? You don't have to say the long answer." },
             { s: 'solar', f: 'happy', t: "The short answer is yes." },
-            { s: 'them', f: 'happy', t: "Okay. We're coming home the long way." }
+            { s: 'them', f: 'happy', t: "Okay. We're coming home the long way." },
+            // Nov 11 2026 (Kat): length.
+            { s: 'them', f: 'neutral', t: "Solar-san. Can I say one more thing. When the bell rang, Koromaru didn't bark. He always barks at the doorbell. He just looked at you. Like he knew who it was." },
+            { s: 'solar', f: 'neutral', t: "...Maybe he did." },
+            { s: 'them', f: 'serious', t: "I'm going to think about that the whole way home. That's fine. It's a long way." }
           ] }
         ],
         topics: [
