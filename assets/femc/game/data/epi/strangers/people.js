@@ -1,5 +1,9 @@
 /* Nov 11 2026 (Kat): length. appa-1 'seven down' gains Eomma at the study door with citron tea and pears (the two of them in
-   one room, "She's too thin. Tell her."); marked "// Nov 11 2026 (Kat): length"; nothing else changed. */
+   one room, "She's too thin. Tell her."); marked "// Nov 11 2026 (Kat): length"; nothing else changed.
+   Spice + length, the last week (marked "spice + length" / "length"): haechan-5 'room two' (the ten more: the microphone left
+   on, her in his lap on the green couch, the pins in a row, "Ten more." again, the machine gives them a hundred), jungwon-5
+   'the glass city, by day' (a florist's doorway out of the dust, "Two.", Sunghoon's car at the curb), yunjin-5 'lamb'
+   (Yunjin guesses in the dark, ifEpiRoute haechan / jungwon / family). No id, gate, choice, flag or outcome changed. */
 /* Nov 11 2026: baduk puzzles (minigame baduk, flags epi-s-mg-baduk-*) are an optional choice near the end of epi-s-appa-2 (Appa's corner problems); hwatu's skip (epi-s-eomma-4) now has a confirm. */
 /* The strangers epilogue (2/17-3/16/2013, Incheon): the home bonds Haechan, Jungwon, Yunjin, Appa and Eomma (R.bonds) and all
    of the act's texts (R.texts). Writer E, epilogue batch 7. Data only; loaded with the world (epilogue.js WORLDS.strangers.files).
@@ -1129,7 +1133,22 @@
       { n: "With ten minutes left on the clock he put the microphone down on the table, carefully, the way you put down something that's not yours, and sat back beside her on the green couch with his shoulder against hers, and let the screen run its waterfall and its beach and its couple walking in slow motion toward a sea that never came any closer." },
       { glitch: { near: true } },
       { n: "He didn't say anything. She'd learned the difference between his quiets this winter. This was the one where he'd brought her somewhere with a door that locked and a clock that told you exactly how much was left, and was sitting very still in the middle of it, using every minute." },
-      { n: "When the man knocked on the door to say time, Haechan said *ten more* through it without moving, and paid him through the gap, and the man went away, and didn't come back." }
+      { n: "When the man knocked on the door to say time, Haechan said *ten more* through it without moving, and paid him through the gap, and the man went away, and didn't come back." },
+      // Nov 11 2026 (Kat): spice + length. The ten more.
+      { s: 'solar', f: 'happy', t: "Ten more what?" },
+      { s: 'haechan', f: 'neutral', t: "Minutes, agasshi. They come in tens here. It's a very organized country." },
+      { n: "He picked up the microphone again. He didn't punch in a song. He held it loosely between them with the switch on, so that the little room was full of the sound of the two of them breathing, enormous, through the speakers, and the echo the machine put on everything, and he looked at her over it with his eyebrows up, the scar going up with the left one, daring her." },
+      { s: 'solar', f: 'flustered', t: "Turn it off." },
+      { s: 'haechan', f: 'happy', t: "Make me." },
+      { n: "She climbed into his lap to make him. That was the excuse, and it lasted about as long as it took for her knees to find the green couch either side of his hips and the patched tape to crackle under them. He let her take the microphone. He let her drop it. It hit the floor with a boom that went through every speaker in room two like a door slamming in a cathedral, and neither of them looked to see where it had gone." },
+      { n: "The disco ball went round. Little squares of light crossed his face and her hands on his face, slow, white, white, white, like the lamps on the bridge going past at sixty. He kissed her under them without any hurry at all, the way you'd do something you'd booked an hour for, his hands spread on her back under her sweater, warm, and then lower, at her waist, holding her down onto him as if the couch might tip, and she felt him laugh into her mouth when the waterfall on the screen gave way, behind her head, to the couple on the beach, still walking, still never arriving." },
+      { n: "He took the pins out. One by one. He put them in a neat row on the table beside the tambourine with half its bells, without looking, by feel, as if he'd done it a thousand times, and she realized with a small shock that he had, that he'd been doing it all winter, in cars and annexes and against walls, and that his hands knew the shape of the back of her head now the way they knew the Rexton's gearstick." },
+      { s: 'haechan', f: 'serious', t: "Solar." },
+      { n: "Against her throat. Under her jaw. Low enough that the microphone on the floor couldn't have caught it if it had tried." },
+      { s: 'haechan', f: 'serious', t: "The clock on that wall says four minutes. I want you to know I can see it. I'm going to use all four." },
+      { n: "He used all four. He used them so carefully, so slowly, his mouth along her collarbone where the sweater had pulled aside and his breath going ragged against it and his hands not moving from her waist, holding, only holding, as if four minutes were a thing you could put your arms round and keep, that when the man knocked again she didn't hear it, and Haechan did, and reached out with one long arm and turned the lock on the door without taking his face out of her neck." },
+      { s: 'haechan', f: 'flustered', t: "Ten more." },
+      { n: "Through the door the man said something about it being a noraebang. Haechan said *I know what it is, ajeossi,* and slid another note under the door with his foot, and the note went, and the man went, and on the screen the couple on the beach finally, after all of it, reached the sea, and the song ended, and the machine, in the silence, all by itself, gave them a hundred." }
     ] }
   ]);
   add('jungwon', 'friend', [
@@ -1158,7 +1177,23 @@
         ] }
       ] },
       { glitch: { near: true } },
-      { n: "When they went out the lights in the lobby flickered, once, the way lights do in any building, and his right hand was round hers before she'd seen it move. He didn't look at the lights. He didn't say anything. He held on until the doors had closed behind them and they were out in the dust on the pavement, where nothing could go out, and then he let go, and bowed, slightly, to her, as if to apologise for something nobody had seen." }
+      { n: "When they went out the lights in the lobby flickered, once, the way lights do in any building, and his right hand was round hers before she'd seen it move. He didn't look at the lights. He didn't say anything. He held on until the doors had closed behind them and they were out in the dust on the pavement, where nothing could go out, and then he let go, and bowed, slightly, to her, as if to apologise for something nobody had seen."},
+      // Nov 11 2026 (Kat): spice + length. Nobody had seen; he'd rather they had.
+      { s: 'solar', f: 'neutral', t: "Don't apologize." },
+      { s: 'jungwon', f: 'neutral', t: "I held your hand in a lobby. In Songdo. In front of a security guard and a man with a very small dog." },
+      { s: 'solar', f: 'happy', t: "The dog didn't mind." },
+      { s: 'jungwon', f: 'neutral', t: "The dog has nothing to lose." },
+      { n: "She took his sleeve. The good dark wool at the wrist, his right, and pulled him two steps along the pavement into the doorway of a florist that had closed for the dust, its window full of white lilies in tall zinc buckets with the yellow light coming through them, and its steel shutter half down, so that the doorway was a small dim box out of the wind." },
+            { s: 'jungwon', f: 'flustered', t: "Solar-ssi. We're in the street." },
+      { s: 'solar', f: 'neutral', t: "We're in a doorway." },
+      { n: "He kissed her in it. Against the cold glass, with the white lilies standing behind her in their buckets like a congregation and the dust going past the end of the doorway in long slow yellow scarves. Careful and then not, his hand at her jaw, her hands inside his coat; and he tasted of black coffee, and she tasted, she realized, of hers, because he stopped, and pulled back a centimeter, and looked at her mouth with the stillness all over his face." },
+      { s: 'jungwon', f: 'neutral', t: "*Two.*" },
+      { s: 'solar', f: 'flustered', t: "*That's cheating.*" },
+      { s: 'jungwon', f: 'happy', t: "*You said you'd rather I was told. I've been told.*" },
+      { n: "His forehead came down against hers. Out on the pavement Sunghoon's car slid up to the curb at the limit and stopped, exactly level with the doorway, not a hand's width past it, and its engine idled, and nobody got out, and through the dusty glass of the driver's window Park Sunghoon looked straight ahead down the street with tremendous concentration, as if the road were a matter of state." },
+      { s: 'jungwon', f: 'flustered', t: "...He'll say nothing." },
+      { s: 'solar', f: 'happy', t: "He never says anything." },
+      { s: 'jungwon', f: 'neutral', t: "That's how I'll know he saw. He'll say nothing very loudly all the way home." }
     ] }
   ]);
   add('yunjin', 'friend', [
@@ -1180,6 +1215,29 @@
           { n: "She took the egg out of Yunjin's hand and cracked it on Yunjin's forehead before she could duck, *tok*, and Yunjin shrieked so loud that half the hall lifted its towels, and lay there clutching her head with both hands, outraged, delighted, saying that was assault, that was an egg assault, she was going to tell Mr. Oh." },
           { s: 'yunjin', f: 'happy', t: "First I crack a walnut on the delivery boy and now this. It's karma. You're karma, Sol." }
         ] }
+      ] },
+      // Nov 11 2026 (Kat): length. Lambs talk in the dark.
+      { n: "They ate the rest of the eggs lying down, which was against the rules of every jjimjilbang in Korea, and drank the sikhye down to the rice at the bottom, and Yunjin propped herself on one elbow and looked at her with the lamb ear falling over one eye." },
+      { s: 'yunjin', f: 'neutral', t: "So. Are we going to talk about it, or am I going to have to guess, because I'll guess, Sol, I'll guess out loud, in here, in front of the ajusshis." },
+      { s: 'solar', f: 'neutral', t: "Talk about what." },
+      { ifEpiRoute: 'haechan', then: [
+        { s: 'yunjin', f: 'happy', t: "You smell of cinnamon. Constantly. Since the moon. Your *hair* smells of cinnamon. I hugged you on Tuesday and I nearly put a stick of gum in my mouth by reflex." },
+        { s: 'solar', f: 'flustered', t: "Yunjin." },
+        { s: 'yunjin', f: 'happy', t: "And the delivery boy sings to your window. Don't say he doesn't. My room's on the same side, babe. Every night. Under his breath. Trot. He thinks the radio covers it. The radio doesn't cover it." },
+        { n: "Solar put the towel over her face. Under it she could hear Yunjin laughing, very quietly, and then not laughing, and then a hand on her arm through the orange uniform." },
+        { s: 'yunjin', f: 'neutral', t: "He looks at you like you're the last bus. Like he's been running for it his whole life. I'm just saying. I'd let him catch it." }
+      ] },
+      { ifEpiRoute: 'jungwon', then: [
+        { s: 'yunjin', f: 'happy', t: "You've worn his scarf for two weeks. It's cashmere, Sol. I checked the label while you were in the shower. It's nicer than anything I own, and I own a lot of things that are too nice." },
+        { s: 'solar', f: 'flustered', t: "It's warm." },
+        { s: 'yunjin', f: 'happy', t: "It's *warm*. Oh my God. And he bows to you now like he's leaving church. Every time. He bowed to you over a plate of mandu on Sunday. Pyo nearly bowed back." },
+        { n: "Solar put the towel over her face. Yunjin pulled it off again." },
+        { s: 'yunjin', f: 'neutral', t: "He's so careful with you, Sol. He's careful like it costs him. I didn't think I'd like him. I don't. But I'd let him be careful." }
+      ] },
+      { ifEpiRoute: 'family', then: [
+        { s: 'yunjin', f: 'happy', t: "The boys. Both of them. Following you round the house like two ducks. One of them's a very rich duck." },
+        { s: 'solar', f: 'happy', t: "Nobody's following anybody." },
+        { s: 'yunjin', f: 'neutral', t: "Good. Then you're mine this week. Nobody gets you but me and your dad and Mrs. Bang's soup. I've decided." }
       ] },
       { n: "Later the hall went dim for the night, the big lights off and the little ones on, and the quiz on the television went to the news with the sound down, and they lay side by side on the hot floor with the lamb ears gone flat and the sikhye cups empty between them, and Yunjin turned her head on the floor and looked at Solar for a while without saying anything at all." },
       { s: 'yunjin', f: 'neutral', t: "Sol." },

@@ -558,3 +558,11 @@ Kat's ruling (Nov 11): Solar disappears at the end of every epilogue (Runners' `
 - 57D `epi-stay-gone-ward`: same scene, the Shinjiro branch, `{ cg }` before "On the third floor of Tatsumi Memorial…"; same `{ cg: null }`. ALBUM.stay after 57C.
 - 57E `epi-true-gone`: `data/epi/true/story.js` `epi-tr-h-held` (3/10 late), `{ cg }` after "It was the last thing she heard.", `{ cg: null }` before the bench. ALBUM.true after `epi-true-coda`.
 - New attachments copied to Place Prompt Attachments (Nov 11): `BG - Dorm Rooftop at night.png` (from `bg/iwatodaidorm-roof-night.webp`), `BG - Tatsumi Hospital Ward at night.png` (from `bg/hospital-ward-night.webp`).
+
+## 58. strangers heat (Nov 11)
+Kat's spice pass (Nov 11). All four CGs are **already wired** as `{ cg: '<id>' }` / `{ cg: null }` pairs; scene.js's missing-CG guard drops each until its file exists. On install: WebP q86 at native size → `assets/femc/cg/<id>.webp`, a cgFocus in `data/places.js`, an `ALBUM.strangers` tile in date order in `epilogue.js`, DATA_V bump.
+- 58A `epi-s-viking`: `data/epi/strangers/story-w2.js` `epi-s-moon` (2/24 evening), the `ifEpiRoute: 'haechan'` coda: `{ cg }` before "He kissed her. Not the way she'd thought…", `{ cg: null }` after "Not tonight. Your mother's waiting up…". ALBUM after `epi-s-moon`.
+- 58B `epi-s-persimmon`: `data/epi/strangers/people-spice.js` `epi-s-jungwon-persimmon` (2/24-2/25 late, route jungwon): `{ cg }` after "He kissed her properly.", `{ cg: null }` before "Then he opened his eyes…". ALBUM after 58A.
+- 58C `epi-s-soft`: `people-spice.js` `epi-s-jungwon-soft` (3/3-3/6 late, route jungwon): `{ cg }` after "She woke because something was looking at her.", `{ cg: null }` after "That's so much worse.". ALBUM in date order (early March).
+- 58D `epi-s-sweatshirt`: `people-spice.js` `epi-s-haechan-sweatshirt` (3/12-3/14 evening, route haechan): `{ cg }` before "She sat down beside him on the bed…", `{ cg: null }` before "She reached past his head for the bolt.". ALBUM after `epi-s-tank`'s place in date order.
+- Attachments: all already in Place Prompt Attachments (`CG - style (Strangers).png`, `BG - Wolmido Daeboreum.png`, `BG - Lee House Garden at night.png`, `BG - Solar's Room (Lee House).png`, `BG - Lee House Annex at night.png`, `CG - Haechan (Strangers).png`, `CG - Jungwon (Strangers).png`, `CG - Solar (Strangers).png`).

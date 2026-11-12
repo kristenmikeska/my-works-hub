@@ -16,8 +16,19 @@
      jungwon  epi-s-jungwon-persimmon 'nobody hung it up' 2/24-2/25 late, route jungwon, after epi-s-moon (Gate → Garden):
                                                         the epilogue's first kiss on his route, under the moon; Haechan on
                                                         the step sees through the bare persimmon
+     jungwon  epi-s-jungwon-soft 'soft, please'           3/3-3/6 late, route jungwon, after epi-s-jw-tea + epi-s-even
+                                                        (Kitchen → Her Room → Morning): his watch ends at four; he sleeps in
+                                                        her bed on top of the covers; "Soft, please." to Mrs. Bang through
+                                                        the door; out the front past Appa ("Don't let me win.") or the back;
+                                                        Haechan on the front step ("She takes all the quilt."); queues after
+                                                        'the gate lamp' (people-night) in his late list
+     haechan  epi-s-haechan-sweatshirt 'his sweatshirt'   3/12-3/14 evening, route haechan, after epi-s-tank (Annex): "You
+                                                        smell of nothing."; ifFlag epi-s-tank-coat-jw (story-car) picks one
+                                                        line; "Mine."; the bolt; she keeps the sweatshirt
    Texts (route-gated, the locked route): epi-s-tx-spice-hc-tuesday (2/25 late, haechan: "coast weather says tuesday clear"),
-     epi-s-tx-spice-jw-scarf (2/25 evening, jungwon: the grey scarf, his mother asked).
+     epi-s-tx-spice-jw-scarf (2/25 evening, jungwon: the grey scarf, his mother asked), epi-s-tx-spice-hc-step and
+     epi-s-tx-spice-jw-near (3/14 evening, the last ordinary night: the step / his window across the water).
+   Flags read: epi-s-tank-coat-jw (story-car epi-s-tank) in 'his sweatshirt'.
    Flags set (local, read nowhere else): epi-s-pantry-hand (pantry: her hand over his mouth), epi-s-sunroom-watch (sunroom:
      she took his watch off).
    Texts: { later } lines (core.js laterText) the next morning in both (coded, because the phones are listened to).
@@ -218,12 +229,14 @@
       { s: 'jungwon', f: 'neutral', t: "I'm asking again. I'll ask every time. I'd like you to get very tired of it." },
       { s: 'solar', f: 'neutral', t: "Yes." },
       { n: "He kissed her properly." },
+      { cg: 'epi-s-persimmon' }, // FEMC-ART-TODO 58B
       { n: "That was the only word for it, and it was his word, and he meant it. Slowly, and completely, with his whole attention, as if there were nothing else he was supposed to be doing anywhere in the world and never had been; his mouth cold and then not cold, his breath warm in the cold air between them, his thumb at the hinge of her jaw tipping her face up a degree further, then another, as if he were finding the exact angle of something and would not stop until he had it. He had it. She felt him find it. She felt the moment he knew, because his hand at her jaw shook, once, and then went very steady." },
       { n: "Her back met the trunk of the persimmon. She didn't know when. The bark was rough and cold through her coat and his body was against the front of her, all of him, the good wool and the shirt under it and the heat under that, which she'd never once felt from him, never in a whole winter, the man who gave off no warmth and no scent, and here it was, coming off him in waves through two coats under a tree in February, and it had been there the whole time." },
       { n: "He made a sound when she put her hands inside his coat. Low. In his chest. It wasn't polite. It wasn't anything she'd heard a Yang make, and he heard himself make it and didn't stop, and kissed her harder, his hand going from her jaw into her hair, the scarf coming loose between them and sliding down her front into the frost at their feet, and neither of them going after it." },
       { n: "When he pulled back it was only far enough to breathe. His forehead on hers. His eyes shut. Breathing as if he'd walked the whole hour and forty minutes at a run." },
       { s: 'jungwon', f: 'neutral', t: "*Solar.*" },
       { n: "Just her name. No -ssi. No ending on it at all. In Mandarin, the way her name sounded in his mouth in Mandarin, which was a way she'd never heard it sound in anyone's." },
+      { cg: null },
       { n: "Then he opened his eyes, and looked past her shoulder, down, and his face changed. Not much. A degree. The way it had changed at the railing on the promenade." },
       { n: "She knew what he was looking at before she turned. The bottom of the garden. The annex. The one small yellow window, and the step under it, and on the step, a shape in a black jacket with its forearms on its knees, looking up the terraces at a persimmon tree that had no leaves on it at all, so that anyone sitting on that step could see straight through every branch of it to whatever was underneath." },
       { n: "The shape didn't move. It didn't look away either." },
@@ -255,6 +268,169 @@
     ] }
   ]);
 
+
+  /* ── Week 3: Jungwon, his route (Nov 11 2026 (Kat): spice): waking up together ── */
+  add('jungwon', 'friend', [
+    { id: 'epi-s-jungwon-soft', title: 'soft, please', hint: "His watch ends at four. The kitchen door is on the latch, and the back stairs know which step to skip.",
+      after: '3/3', until: '3/6', slots: LATE, events: ['epi-s-jw-tea', 'epi-s-even'], noFlags: [], route: 'jungwon', noRoute: null,
+      place: 'Incheon · The Lee House · Kitchen', time: 'Before Light', scene: [
+      { music: 'epi-s-jungwon' },
+      { place: 'Incheon · The Lee House · Kitchen', time: 'Before Light', soft: true, bg: 'epi-s-lee-kitchen' },
+      { n: "His watch ended at four. She was in the kitchen at four minutes to, in the dark, with the back door on the latch and her coat over her pajamas and her heart going in a way she'd have been ashamed of in a girl of fifteen." },
+      { n: "He came in from the garden with the cold on him and the dust in the cold, the yellow grit of it on the shoulders of the dark coat, and stopped on the mat when he saw her, and didn't bow, for once. He looked too tired to bow. Four hours on a gate in the dust, standing, facing the road, the way he stood everything, and the whites of his eyes gone pink with it, and his face doing nothing at all because there was nothing left in it to do anything with." },
+      { s: 'jungwon', f: 'neutral', t: "Solar-ssi. You should be asleep." },
+      { s: 'solar', f: 'neutral', t: "So should you. You've got a forty-minute drive." },
+      { s: 'jungwon', f: 'neutral', t: "Forty-one. There's a light at Sinpo that's always red." },
+      { s: 'solar', f: 'neutral', t: "Come up." },
+      { n: "He didn't move. He stood on the mat in the dark kitchen with the dust on his coat and looked at her as if she'd asked him to sign something without reading it, and she watched him read it anyway, every clause, the house and her father and the seventh stair and Mrs. Bang asleep behind the door four meters away, and come to the bottom of the page." },
+      { s: 'jungwon', f: 'neutral', t: "*Two hours. I'll go at six. Before your father's paper.*" },
+      { s: 'solar', f: 'neutral', t: "*He reads the paper at half past four.*" },
+      { s: 'jungwon', f: 'neutral', t: "*...Then I'll go at a time I'll think of on the stairs.*" },
+      { place: 'Incheon · The Lee House · Her Room', time: 'Before Light', soft: true },
+      { n: "He took his shoes off at the bottom of the back stairs and carried them, the way she carried her boots, and went up behind her in his socks, and she stopped him on the sixth stair with a hand flat on his chest, and pointed, in the dark, at the seventh, and stepped over it. He stepped over it. She felt him memorize it. She'd have bet her mother's ring he'd never forget where it was as long as he lived." },
+      { n: "Her room. The lamp she always left on, low. He stood just inside the door and looked at it, her room, the dresser with the pins in their row and the window over the black water and the bed, and his eyes went round all of it once, slowly, the way he'd look round a room where a meeting was going to be held, and then came back to her, and stopped." },
+      { n: "He took his coat off and folded it. She'd known he would. Lengthwise, then in half, over the back of her desk chair. Then his jacket. Then he stood there in his shirt, the white one, creased from the gate, with his tie loosened by somebody who'd been too cold to loosen it properly, and looked at her bed as if it were a body of water and he had never been taught to swim." },
+      { s: 'jungwon', f: 'flustered', t: "I'll sleep on top of the covers." },
+      { s: 'solar', f: 'happy', t: "You'll sleep wherever you fall over." },
+      { n: "She undid his tie. He let her. The silk went through the knot with a long soft sound and she laid it on the dresser beside her pins, and undid the top button of his shirt, and the second, slowly, and stopped there, with her fingers on the third, and felt him stop breathing under them." },
+      { n: "He put his right hand over hers. Not to stop it. To keep it there." },
+      { s: 'jungwon', f: 'neutral', t: "*Solar. I've been awake for twenty-two hours.*" },
+      { s: 'solar', f: 'neutral', t: "*I know.*" },
+      { s: 'jungwon', f: 'neutral', t: "*I'd like to be awake for this. All of it. I'd like to be very awake.*" },
+      { n: "It was the most devastating thing anyone had ever said to her with his hand over hers on a shirt button, and he'd said it completely sincerely, and he meant it as a promise and not as a refusal, and she heard both, and her face went hot to the roots of her hair." },
+      { n: "So they lay down on top of the covers. Him in his shirt, her in her pajamas, her mother's grey quilt pulled over both of them from the foot of the bed, and his arm went under her neck, and she turned her face into his shirt, which smelled of nothing but the cold and, very faintly, of the dust, and of her own soap, from her hands on him at the gate, and his heart was slow, slow, slower, and then he was asleep." },
+      { n: "Just like that. Mid-breath. A man who had decided to sleep and had slept, the way he'd decided to lose by one and a half." },
+      { n: "She lay there a long time, watching it. Yang Jungwon, asleep in her bed, his face gone completely still, not the polite still or the pleased one but a third one she'd never seen, without anybody inside it holding it up. His mouth slightly open. His watch on the wrist across her pillow, ticking by her ear. She fell asleep counting it." },
+      { place: 'Incheon · The Lee House · Her Room', time: 'Morning', soft: true },
+      { n: "She woke because something was looking at her." },
+      { cg: 'epi-s-soft' }, // FEMC-ART-TODO 58C
+      { n: "Grey light. The window gone pale over the water. His face very close on the pillow, awake, his eyes on her, and on his face the most enormous embarrassment she'd ever seen on anybody, as if he'd woken up in a stranger's house wearing her clothes." },
+      { s: 'jungwon', f: 'flustered', t: "Good morning. I'm so sorry. I've slept in your bed." },
+      { s: 'solar', f: 'happy', t: "You have." },
+      { s: 'jungwon', f: 'flustered', t: "It's six forty. I looked. I had a time. I was going to think of it on the stairs. I fell asleep before the stairs." },
+      { s: 'solar', f: 'happy', t: "You fell asleep after the stairs." },
+      { s: 'jungwon', f: 'flustered', t: "That's worse, Solar-ssi. That's so much worse." },
+      { cg: null },
+      { n: "She kissed him to make him stop apologising. It worked on the first try, which she noted for later. He made a small sound into her mouth, surprised, and then not surprised at all, and his hand came up into her hair, which had come down in the night all over both of them, and the kiss went slow and warm and sleepy and then not sleepy, his weight turning toward her under the grey quilt, his shirt open at the throat where she'd left it, the creases of the gate in it and the warmth of her bed in it, and her hand going flat on his chest over his heart, which was not slow now, which was not slow at all." },
+      { n: "He stopped at the third button. His own hand on hers this time, the way he had at four, and he looked at her from about three centimeters, flushed to the ears, very awake." },
+      { s: 'jungwon', f: 'neutral', t: "*I'm awake now.*" },
+      { s: 'solar', f: 'flustered', t: "*I can tell.*" },
+      { n: "There was a knock on the door." },
+      { n: "Two knocks, flat, the way Mrs. Bang knocked when she was leaving a tray. They both froze, his hand on hers on his shirt, her leg over his, the quilt everywhere. Then the clink of a tray going down on the hall floor outside, and Mrs. Bang's voice through the door, absolutely ordinary, the voice for weather." },
+      { s: 'mrsbang', f: 'neutral', t: "Breakfast at seven. Eggs." },
+      { s: 'mrsbang', f: 'neutral', t: "How does the young master take his?" },
+      { s: 'jungwon', f: 'neutral', t: "Soft, please." },
+      { n: "He said it before he could stop himself. In his best voice. The correct one, every ending on, the voice for people's mothers, from the middle of her bed with his shirt half open and his hair standing up at the back." },
+      { n: "There was a silence on the other side of the door that went on for about a year." },
+      { s: 'mrsbang', f: 'neutral', t: "Soft." },
+      { n: "Her footsteps went away down the hall. Solar got her face into the pillow just in time. Beside her he lay flat on his back with both his hands over his face and said nothing whatsoever for a long time, his whole chest shaking, and she couldn't tell whether he was laughing or dying, and suspected he couldn't either." },
+      { choose: [
+        { t: "(Walk him out the front, past the study, like a guest.)", stat: { courage: 1 }, then: [
+          { place: 'Incheon · The Lee House · Stairs', time: 'Morning', soft: true },
+          { n: "She took him down the main stairs. In daylight. Dressed, tie on, coat folded over his arm, his shoes in his hand, which was the only thing that gave him away, and she let it. On the seventh stair he stepped over it without being told. The study door was open a hand's width, and through the gap her father was at his desk with his glasses on the end of his nose, writing in the margin of something, and he didn't look up as they passed." },
+          { n: "Then, as they reached the hall, he spoke without looking up, in the voice nobody in the port had interrupted in thirty years." },
+          { s: 'appa', f: 'neutral', t: "Tuesday. The board. Don't let me win." },
+          { s: 'jungwon', f: 'flustered', t: "...Yes, Chairman." },
+          { bond: { jungwon: 1 } }
+        ] },
+        { t: "(Take him down the back stairs and out through the garden.)", stat: { proficiency: 1 }, then: [
+          { place: 'Incheon · The Lee House · Garden', time: 'Morning', soft: true },
+          { n: "The back stairs. The kitchen, where Mrs. Bang was at the stove with her back very square to them, cracking eggs into a bowl one-handed with tremendous concentration, and did not turn round, and said *the soft ones take four minutes* to the eggs. The garden, grey with dust, every leaf of it furred yellow. The path round the side of the house to the gate." },
+          { n: "And on the front step, in the black jacket, with a cigarette he'd quit and a cup of Mrs. Bang's coffee on the stone beside him, Haechan." }
+        ] }
+      ] },
+      { place: 'Incheon · The Lee House · Gate', time: 'Morning', soft: true },
+      { n: "He was there either way. On the step by the front door with the morning, as if he'd been put there with it: up from the annex for breakfast, his hair wet from the outdoor tap, the unlit cigarette in his fingers going round and round. He looked at Jungwon. At his shoes, in his hand. At his collar, where she had not done the button back up quite straight." },
+      { s: 'jungwon', f: 'neutral', t: "Good morning, Donghyuck." },
+      { s: 'haechan', f: 'neutral', t: "Yang." },
+      { n: "A long pause. The dust coming down the street in the low sun. The cigarette going round." },
+      { s: 'haechan', f: 'neutral', t: "Your collar." },
+      { n: "Jungwon put his hand to his collar. He did the button. He did it correctly, without hurrying, looking Haechan in the eye the whole time, the way you'd straighten a piece on a board that someone had nudged." },
+      { s: 'haechan', f: 'neutral', t: "She takes all the quilt. Round about five. Hold on to your end or you'll freeze." },
+      { n: "He said it to the street. Flat, helpful, like the tide. And she watched it go into Jungwon like a nail, and watched Jungwon not let it show, except that his ears went red, and stayed red, and he bowed, to Haechan, slightly, the bow for a man who has said something true." },
+      { s: 'jungwon', f: 'neutral', t: "Thank you. I'll remember." },
+      { n: "Then he went down the steps to his car. Haechan put the cigarette behind his ear and picked up the coffee and held it out to her without looking, up over his shoulder, at the height of her hand, the way he'd held out gum to her on a step a hundred times, and she took it." },
+      { s: 'haechan', f: 'neutral', t: "Eggs are soft today, I hear. Very soft. The whole house is having them soft." },
+      { s: 'solar', f: 'flustered', t: "Donghyuck-ah." },
+      { s: 'haechan', f: 'serious', t: "I'm fine, agasshi. Drink the coffee. It's got two sugars in. I know how you take it." },
+      { n: "She drank it. It was exactly right. That was the cruellest thing he could have done, and the kindest, and he'd done it on purpose, and he sat on the step in the dust with his back to her and let her drink it." },
+      { later: { delay: 0, slot: 'after', thread: 'jungwon', msgs: [
+        { from: 'jungwon', t: "I'm home. 41 minutes. The light at Sinpo was red." },
+        { from: 'jungwon', t: "Thank you for the eggs. Please thank Mrs. Bang. Please don't tell her I said soft twice in the car on the way home, out loud, by myself." }
+      ] } }
+    ] }
+  ]);
+
+  /* ── Week 4: Haechan, his route (Nov 11 2026 (Kat): spice): his sweatshirt ── */
+  add('haechan', 'friend', [
+    { id: 'epi-s-haechan-sweatshirt', title: 'his sweatshirt', hint: "There's a grey sweatshirt folded on the annex step. It wasn't there this morning. It's his.",
+      after: '3/12', until: '3/14', slots: ['evening'], events: ['epi-s-tank'], noFlags: [], route: 'haechan', noRoute: null,
+      place: 'Incheon · The Lee House · Annex', time: 'Evening', scene: [
+      { music: 'epi-s-haechan' },
+      { n: "There was a grey sweatshirt folded on the annex step, square, the sleeves tucked under, the way Mrs. Bang folded things, except that Mrs. Bang hadn't folded it. It was his. It had the hole in the left cuff where he put his thumb through. And it was folded on the step the way you'd leave a thing on a step for somebody who was going to come down a garden." },
+      { n: "She picked it up. It was warm. He'd had it on a minute ago." },
+      { n: "The steel door was open a hand's width. The heater going, the radio low, the weather; and him, on the edge of the iron bed in his undershirt with his elbows on his knees, looking at the floor between his boots as if he'd dropped something there in about 2006." },
+      { s: 'haechan', f: 'neutral', t: "Put it on." },
+      { s: 'solar', f: 'neutral', t: "I've got a coat." },
+      { s: 'haechan', f: 'neutral', t: "I know you've got a coat, agasshi. You've had a lot of coats this week." },
+      { ifFlag: 'epi-s-tank-coat-jw', then: [
+        { n: "There it was. Flat, to the floor. She'd had Jungwon's coat over her knees all the way back from Guwol-dong in the dust, and he'd driven the whole way with it in his mirror, and said nothing, and come down here, and taken off his own sweatshirt and folded it, and waited." }
+      ], else: [
+        { n: "There it was. Flat, to the floor. She'd kept his jacket all the way back from Guwol-dong, and the other one had sat behind her in his good coat being very warm at the back of her neck, politely, for forty minutes, and he'd driven the whole way with that in his mirror." }
+      ] },
+      { s: 'haechan', f: 'serious', t: "He smells of nothing. You know that? I sat behind him at a dinner once and couldn't tell he was there. You come back from a car with him and you smell of nothing, and I can't stand it. I can't stand you smelling of nothing." },
+      { n: "He said it to the floor. He'd aimed it. It wasn't jealousy, exactly, the way he said it; it was worse, it was honest, a man reporting a fault in the engine he couldn't fix and couldn't stop listening to." },
+      { s: 'haechan', f: 'flustered', t: "That's a stupid thing to say. Forget I said it. Put the sweatshirt on." },
+      { choose: [
+        { t: "(Take your coat off. Put it on.)", stat: { kindness: 1 }, then: [
+          { n: "She took her coat off and hung it on the hook over his jacket, and pulled the sweatshirt over her head, and it came down over her hands and to the middle of her thighs, warm all through, cinnamon and diesel and Mrs. Bang's soap and him, and she pushed her thumb through the hole in the left cuff, and stood in the middle of his little room in it, and let him look." },
+          { n: "He looked. Something in his shoulders let go that had been held up since Guwol-dong." },
+          { s: 'haechan', f: 'neutral', t: "...Better." },
+          { bond: { haechan: 1 } }
+        ] },
+        { t: "You can't make me smell of you, Donghyuck-ah.", stat: { courage: 1 }, then: [
+          { s: 'solar', f: 'serious', t: "You can't make me smell of you, Donghyuck-ah. It's not a fence. You can't put it round me." },
+          { n: "He looked up then. Finally. His eyes red at the rims, from the dust or from something else." },
+          { s: 'haechan', f: 'serious', t: "I know. I'm asking." },
+          { n: "So she put it on. Over her head, down over her hands, warm all through, him, and pushed her thumb through the hole in the left cuff, and he watched her do it with a face she'd only ever seen on him once, at a crossroads, in the dark, when she'd come down the garden instead of going to the gate." }
+        ] }
+      ] },
+      { cg: 'epi-s-sweatshirt' }, // FEMC-ART-TODO 58D
+      { n: "She sat down beside him on the bed. Then in his lap, sideways, her legs over his, the sweatshirt rucking up, and he put his arms round her and his face into the side of her neck, into the collar of his own sweatshirt, and breathed in, long, the way you'd breathe in at a window you'd just opened in a stuffy room, and held it." },
+      { s: 'haechan', f: 'neutral', t: "There you are." },
+      { n: "Muffled. Into her neck. As if she'd been somewhere and he'd found her. And then he kissed her there, slowly, under her ear, where the sweatshirt's collar met her skin, and she felt it go down her whole spine like warm water poured from the top of her head." },
+      { n: "It was slow. That was what she would keep of it, later. Not hungry, not the car or the bridge or the wall. Slow, his hands under the sweatshirt on her back, flat, warm, not moving, just there, as if he were checking the weather off her skin; and his mouth on hers when she turned her head, unhurried, deep, the kiss of a man who had decided that if the world was going to end it could wait until he'd finished this; and her hands in his wrecked hair, and the heater ticking, and the woman on the radio reading out the islands one by one, all still there." },
+      { n: "He lay back on the iron bed and took her with him, and the springs said their long low complaint, and he laughed into her mouth at them, the way he always did, and the laugh went out of him the way it always did when something was real." },
+      { cg: null },
+      { n: "She reached past his head for the bolt. He caught her wrist. Turned it over. Kissed the inside of it, where the pulse was, and stayed there a long time, his mouth on it, his eyes shut, as if he were counting it himself and kept losing his place on purpose." },
+      { s: 'haechan', f: 'serious', t: "Mine." },
+      { n: "One word. Into her wrist. And then, as if he'd heard himself, before she could say anything, he lifted his head." },
+      { s: 'haechan', f: 'flustered', t: "That's not— You're not a, I didn't mean like a car. I meant— I don't know what I meant. Forget it. It's the sweatshirt talking. It's a very possessive sweatshirt." },
+      { choose: [
+        { t: "Say it again.", stat: { courage: 1 }, then: [
+          { s: 'solar', f: 'neutral', t: "Say it again." },
+          { n: "He looked at her for a long time from the pillow. Then he said it again. Not into her wrist this time. To her face, in the lamplight, very low, with all the jokes gone out of him, the way he said the tide was out, as if it were simply the state of the water." },
+          { s: 'haechan', f: 'serious', t: "Mine. For as long as you'll have it. Longer, if you let me." },
+          { n: "She shot the bolt. It went home with the sound like a full stop." }
+        ] },
+        { t: "(Shoot the bolt instead of answering.)", stat: { charm: 1 }, then: [
+          { n: "She didn't answer. She reached past his head and shot the bolt on the steel door, and it went home with a sound like a full stop, and that was the answer, and he heard it, and shut his eyes, and pulled her down." }
+        ] }
+      ] },
+      { n: "What happened after that was nobody's business but the cranes'." },
+      { place: 'Incheon · The Lee House · Annex', time: 'Late Night', soft: true },
+      { n: "Later, she was still in the sweatshirt. Only the sweatshirt, rucked to her ribs under the crane quilt, his arm over her and his breath going slow into her hair, and the window over the bed fogged so thick that the house at the top of the garden was only a smear of light." },
+      { n: "He was tracing the hole in the cuff with one finger. Round and round. Her thumb through it, his finger going round her thumb." },
+      { s: 'haechan', f: 'neutral', t: "Keep it." },
+      { s: 'solar', f: 'neutral', t: "It's your only grey one." },
+      { s: 'haechan', f: 'neutral', t: "I know. That's why." },
+      { n: "Up the garden, through the fog, the kitchen light went out, and then the landing, the small one her father turned off last, after the seventh stair. He listened to it go with his face in her hair. She felt him count it." },
+      { s: 'haechan', f: 'neutral', t: "Mrs. Bang's going to see you in this tomorrow." },
+      { s: 'solar', f: 'happy', t: "Mrs. Bang washed it. Mrs. Bang knows every hole in it." },
+      { s: 'haechan', f: 'flustered', t: "...Oh, God. She does. She darned the other cuff." },
+      { n: "He put his face in the pillow. She laughed, very quietly, with her thumb through his sleeve, and the heater ticked, and the radio went round the coast again and came back to the islands, and she fell asleep before Deokjeok, warm, in a sweatshirt that smelled of everything." }
+    ] }
+  ]);
   /* ── Texts (Nov 11 2026 (Kat): spice): the night before the annex / after the moon, by route ── */
   const T = (R.texts ||= {});
   const LEAVE = (then = []) => ({ t: '(Leave it on read.)', silent: true, then });
@@ -276,6 +452,23 @@
       { t: "do you want it back", then: [{ from: 'jungwon', t: "No." }, { from: 'jungwon', t: "I'd like to know where it is. That's different." }] },
       { t: "(Send a photo of the scarf folded on your pillow.)", silent: true, then: [{ from: 'jungwon', t: "..." }, { from: 'jungwon', t: "Thank you. I'll be at the board with your father tomorrow and I'll have to look at him. Please don't do that again before then." }] },
       LEAVE([{ from: 'jungwon', t: "Goodnight, Solar-ssi." }])
+    ] },
+    // The last ordinary nights (3/14), by route. Soft; nothing said about what's coming.
+    { id: 'epi-s-tx-spice-hc-step', thread: 'haechan', date: '3/14', slot: 'evening', events: ['epi-s-dinner'], route: 'haechan', msgs: [
+      { from: 'haechan', t: "step's cold tonight" },
+      { from: 'haechan', t: "bring the sweatshirt. or dont. if youre in it you can come too" }
+    ], reply: [
+      { t: "coming", then: [{ from: 'haechan', t: "ok" }, { from: 'haechan', t: "warm half's yours" }] },
+      { t: "you want it back", then: [{ from: 'haechan', t: "no" }, { from: 'haechan', t: "i want to see it on the step. thats different" }] },
+      LEAVE([{ from: 'haechan', t: "radio says clear. islands all there. thought youd want to know" }])
+    ] },
+    { id: 'epi-s-tx-spice-jw-near', thread: 'jungwon', date: '3/14', slot: 'evening', events: ['epi-s-dinner'], route: 'jungwon', msgs: [
+      { from: 'jungwon', t: "Good evening. I've been sitting at my window for an hour looking at your lit one across the water." },
+      { from: 'jungwon', t: "I'm told that's what people do. I thought it was only something people said." }
+    ], reply: [
+      { t: "turn your light off so i can see you", then: [{ from: 'jungwon', t: "Done." }, { from: 'jungwon', t: "I can't see anything now. I hope you can. Please don't tell me if you can't." }] },
+      { t: "come over", then: [{ from: 'jungwon', t: "It's not my night." }, { from: 'jungwon', t: "I'm putting my coat on anyway." }] },
+      LEAVE([{ from: 'jungwon', t: "Goodnight. I'll stay at the window a little longer. It's acceptable." }])
     ] }
   );
 })();

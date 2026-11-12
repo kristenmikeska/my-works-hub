@@ -275,6 +275,7 @@
       { n: "He had her against the cold flank of the boat. Not hard. His hands on either side of her on the painted wood and his face very close, the moon behind his head making a gold ring of his hair, and his breath going up white between them, quick, and the gum gone, she didn't know where." },
       { s: 'haechan', f: 'serious', t: "It's after the moon." },
       { n: "She'd asked him where, on the step, the night before. She'd thought he hadn't been listening. He'd been counting the hours." },
+      { cg: 'epi-s-viking' }, // Nov 11 2026 (Kat): spice. FEMC-ART-TODO 58A; dropped by scene.js until the art exists.
       { n: "He kissed her. Not the way she'd thought he would, after a week of not; not hungry, not at first. Slowly, his cold mouth on hers, almost careful, almost a question, as if after all this time he needed to check she was real, and she was, and he made a sound into her mouth when he found out, low and wrecked, and then it wasn't careful, his hand in the back of her hair under the hat her mother had laid out, the hat going, his whole weight leaning her into the side of the boat until the old timbers creaked and she could feel the cold of the paint through her coat and the heat of him through everything else." },
       { n: "Over their heads the sparks from the moon house went up past the dragon's tarp and out over the water, and the crowd on the promenade went *ohhh*, all of them together, and he laughed against her teeth, and she bit his lip for it, and he stopped laughing." },
       { s: 'haechan', f: 'flustered', t: "Agasshi." },
@@ -282,6 +283,7 @@
       { s: 'haechan', f: 'serious', t: "The annex has a bolt." },
       { n: "He said it against her mouth. Like a fact. Like the tide. And then he pulled back, one centimeter, and looked at her with the green still somewhere in the back of his eyes, and the gold over the top of it, and something under both that was so frightened and so certain at the same time that she had to shut her eyes." },
       { s: 'haechan', f: 'neutral', t: "Not tonight. Your mother's waiting up with the lantern count. Tuesday. When there's nobody watching the step but me." },
+      { cg: null },
       { n: "When they came out from behind the Viking her hat was in his pocket and her mouth felt like it belonged to somebody else, and the girls were a knot of scarves at the fish-cake cart forty meters off, and at the railing between, alone, with his back to them and his face to the sea, Jungwon was standing very straight looking at the moon on the water with tremendous interest." },
       { n: "He didn't turn round. He'd seen. She knew from the angle of his shoulders, which was exactly, perfectly, one degree more correct than it had been before." },
       { s: 'jungwon', f: 'neutral', t: "The tide's very high tonight, Solar-ssi. You might want to stay back from the edge." },
