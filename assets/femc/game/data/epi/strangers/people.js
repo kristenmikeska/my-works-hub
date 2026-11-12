@@ -1,3 +1,4 @@
+/* Nov 11 2026: baduk puzzles (minigame baduk, flags epi-s-mg-baduk-*) are an optional choice near the end of epi-s-appa-2 (Appa's corner problems); hwatu's skip (epi-s-eomma-4) now has a confirm. */
 /* The strangers epilogue (2/17-3/16/2013, Incheon): the home bonds Haechan, Jungwon, Yunjin, Appa and Eomma (R.bonds) and all
    of the act's texts (R.texts). Writer E, epilogue batch 7. Data only; loaded with the world (epilogue.js WORLDS.strangers.files).
    Bonds go through add() so they merge with people-crew.js whichever loads first. Story events live in story-w1/w2/w3/end.js.
@@ -895,6 +896,20 @@
         { n: "When her father went to turn the tape over, Haechan reached over from Dal's chair without getting up and moved one of her white stones half an inch, to a better place, with one finger, and was back in the chair with his arms folded before her father turned round. She looked at him. He looked at the ceiling and sang." }
       ] },
       { n: "She lost. Of course she lost. Her father counted it out for her, stone by stone, and wrote the score on the margin of his crossword in small square blue figures, and then, under it, as if it were nothing, the date. He did that. She'd only just noticed. Every game, the date." },
+      // Baduk puzzles (Nov 11 2026; minigames/baduk.js, flags epi-s-mg-baduk-*). Appa sets them either way.
+      { n: "Then he swept the stones back into their bowls with the side of his hand, black and white, and laid a few out again in the near corner, quickly, from memory, the way he'd laid them out for her on Sunday mornings when her feet didn't reach the floor. A little white group. A little black one. A problem." },
+      { s: 'appa', f: 'neutral', t: "Black to play. Count first." },
+      { choose: [
+        { t: "(Solve them.)", then: [
+          { minigame: 'baduk', flags: 'epi-s-mg-baduk' },
+          { ifFlag: 'epi-s-mg-baduk-good', then: [
+            { n: "She solved them. Not fast, and not every one the first time, but she solved them, and her father watched each one go with his chin on his hand and said nothing at all, and when she looked up he was smiling at the board, not at her, which was where he kept it." }
+          ], else: [
+            { n: "He put the stones away one at a time and left the last problem standing in the corner of the board under the lamp, for her to think about in bed, which was either kindness or cruelty and was, with her father, usually both." }
+          ] }
+        ] },
+        { confirm: true, t: "(Not tonight, Appa.)", then: [] }
+      ] },
       { s: 'appa', f: 'neutral', t: "Same time tomorrow, Sol-ah." },
       { s: 'haechan', f: 'happy', t: "I'll be here, Chairman." },
       { s: 'appa', f: 'serious', t: "You weren't asked, son." },
@@ -1208,7 +1223,7 @@
             { n: "So they played again, and Solar lost that one too, slower, and her mother said nothing about it at all except to move one of Solar's cards a finger's width to the left on the blanket, so it lined up with the others." }
           ] }
         ] },
-        { t: "(Watch her play.)", stat: { knowledge: 1 }, then: [
+        { confirm: true, t: "(Watch her play.)", stat: { knowledge: 1 }, then: [
           { n: "She didn't pick up her cards. She sat on the silk cushion with her cup, and after a moment her mother picked them up for her and played both hands, hers and Solar's, against each other, turning every card over with the same small clean slap, never hurrying, never once looking up." },
           { n: "Solar's hand won. Whether it was supposed to, Solar couldn't tell. Her mother turned the last card, the rain, and looked at it, and laid it down on Solar's side." },
           { s: 'eomma', f: 'neutral', t: "You'd have won. Next time you'll do it yourself." }

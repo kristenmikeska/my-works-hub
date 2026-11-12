@@ -1,3 +1,4 @@
+/* Nov 11 2026: The Seventh Stair (minigame stair, flags epi-s-mg-stair-*) is an optional choice at the start of epi-s-eomma-sunroom (the trip down for water); the skip has a confirm. */
 /* The strangers epilogue (2/17-3/16/2013, Incheon): ten Late Night hangouts (R.bonds, slots ['late'], time 'Late Night').
    The Nov 5-6 expansion pass, writer 2 of 3. Data only; loaded with the world (epilogue.js WORLDS.strangers.files). Bonds go
    through add() so they merge with people.js and people-crew.js in any load order. These play on the quiet nights (raw.lateOpen);
@@ -396,6 +397,19 @@
       place: 'Incheon · The Lee House · Sunroom', time: 'Late Night', scene: [
       { music: 'epi-s-family' },
       { n: "Low water at a quarter to three, and she was awake for it the way she was always awake for it, lying on her back with her eyes open and her whole body tilted very slightly toward the sea as if the bed were on a slope, and her mouth so dry that in the end it was thirst, and not the tide, that got her up." },
+      // The seventh stair (Nov 11 2026; minigames/stair.js, flags epi-s-mg-stair-*). She goes down either way.
+      { n: "The house had rules at night, and she'd known them since she was small enough to sit under the hall table: move when the radiator knocks, stand still when it doesn't, and never put your weight on the seventh stair unless something louder is happening somewhere else." },
+      { choose: [
+        { t: "(Go down the way you used to. Listen to the house.)", then: [
+          { minigame: 'stair', flags: 'epi-s-mg-stair', opts: { bg: 'epi-s-stairs-night', kitchenBg: 'epi-s-lee-kitchen' } },
+          { ifFlag: 'epi-s-mg-stair-won', then: [
+            { n: "Her feet still knew it. A whole other world in between, a whole year of other stairs, and her feet still knew exactly where the house would cover her, and she stood at the bottom with her heart going and felt, absurdly, very pleased with herself." }
+          ], else: [
+            { n: "Somewhere on the way the house heard her. She knew it the way you know a door's been opened in another room, a change in the air, and she stood very still in the dark for a long moment, waiting for a light that didn't come." }
+          ] }
+        ] },
+        { confirm: true, t: "(Just go down.)", then: [] }
+      ] },
       { n: "She went down the main stairs in her socks, on the edges of the treads, over the seventh, and through the dark hall toward the kitchen, and on the way past the sunroom door she stopped, because it was open, and it was never open at night, and there was somebody inside." },
       { n: "Her mother was sitting on the window seat in the dark." },
       { n: "No lamp. The only light was what came off the garden through the glass, grey, from nowhere in particular, and in it the orchids stood along the shelves in their white pots like a row of people who'd been told to wait quietly and were doing it very well. The room was cold. The glass gave the cold back into it. And her mother sat at the end of the window seat in a cream cardigan over her nightdress with her feet drawn up under her, holding a cup in both hands in her lap, not drinking from it, and her hair was down." },

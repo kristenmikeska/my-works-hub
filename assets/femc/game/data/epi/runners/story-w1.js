@@ -875,7 +875,7 @@
           { n: "It was messier than it should have been. Somebody went down who shouldn't have, and Haerin covered it without a word, and the map stayed theirs." }
         ] }
       ] },
-      { t: "(Let it play out.)", then: [] }
+      { confirm: true, t: "(Let it play out.)", then: [] }
     ] },
     { n: "Somewhere in the second map against Ohio, Solar threw a Protection Suzu across a choke she couldn't see, off sound alone, the hiss of an enemy Ana's nade still in the air, and it landed on Haerin and Olivia and Chenle a quarter second before the anti did, and cleansed it, and the whole fight turned over like a coin." },
     { n: "She didn't hear the broadcast. Nobody on stage did; their headsets were closed. She found out between maps, when they slid the headsets down and the sound of the hall came back in like water, and the speaker over the stage was playing the caster desk, and a woman's voice was saying her name." },
@@ -997,7 +997,7 @@
           { n: "It wasn't clean. They dropped rounds they should have had, and Olivia said a word Doyoung pretended not to hear, and none of it mattered in the end, because the next time Genji came for her, Minji was already turning. That was the whole note. They'd heard it." }
         ] }
       ] },
-      { t: "(Let it play out.)", then: [] }
+      { confirm: true, t: "(Let it play out.)", then: [] }
     ] },
     { n: "Minji looked at her. Solar looked back. Something passed between them that didn't need comms, and they turned back to the screens, and they took the second map, together, so close the whole time that Olivia complained, and the third, and the fourth went to the last fight of the last point with the score tied and the whole hall on its feet." },
     { match: { score: [2, 1], map: 'Map 4 · Numbani · Overtime' } },

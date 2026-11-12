@@ -93,7 +93,7 @@
           { t: "(Sing the take. Easy.)", then: [{ minigame: 'sing', flags: 'epi-r-mg-booth', opts: { song: 'runners', level: 'easy' } }] },
           { t: "(Sing the take. Normal.)", then: [{ minigame: 'sing', flags: 'epi-r-mg-booth', opts: { song: 'runners', level: 'normal' } }] },
           { t: "(Sing the take. Hard.)", then: [{ minigame: 'sing', flags: 'epi-r-mg-booth', opts: { song: 'runners', level: 'hard' } }] },
-          { t: "(Just sing it. Don't think about it.)", then: [] }
+          { confirm: true, t: "(Just sing it. Don't think about it.)", then: [] }
         ] },
         { ifFlag: 'epi-r-mg-booth-good', then: [
           { n: "At the end of it he didn't say anything into the talkback for a while. Then, flat, *that one,* and she knew it was the take before he'd even marked it." }
@@ -362,7 +362,7 @@
               { n: "He put it back the way it had been, one fader at a time, slowly enough that she could watch where each one went." }
             ] }
           ] },
-          { t: "(Leave the desk to him.)", then: [] }
+          { confirm: true, t: "(Leave the desk to him.)", then: [] }
         ] },
         { n: "Before he closed the session he scrolled up through the track list, without comment, slowly enough that she could read it. The vocal lane didn't say VOX or STEM or a number, the way every other lane said a number. It said SOLAR LEE, both names, in the plain gray type the program used for everything. In the corner, where his tag sat on every file he'd ever made, there were two sets of initials instead of one." },
         { s: 'solar', f: 'surprised', t: "You put my name on it." },

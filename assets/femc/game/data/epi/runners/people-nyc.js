@@ -692,7 +692,7 @@
             { s: 'haechan', f: 'neutral', t: "Took you a minute. It takes everybody a minute." }
           ] }
         ] },
-        { t: "(Just stand there with him.)", then: [] }
+        { confirm: true, t: "(Just stand there with him.)", then: [] }
       ] },
       { n: "She stood still on the white sidewalk and listened, and after a while it came up out of the quiet the way a picture comes up in a darkroom: the long low hum of ten thousand boilers, a breath under her boots that was a train going by somewhere in the dark under Lexington, and the faint electric tick of the light at Seventy-Second turning green for nobody. She'd lived her whole life in this city and never once heard it." },
       { s: 'solar', f: 'surprised', t: "It never turns off for you. Does it." },

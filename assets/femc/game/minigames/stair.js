@@ -1,3 +1,4 @@
+/* In the story since Nov 11 2026 (the "DEMO" wording in the header below is older): strangers people-night.js epi-s-eomma-sunroom (2/21-2/25 late, the glass of water), flags epi-s-mg-stair; optional, with a confirmed skip. */
 /* FEMC epilogue minigame: the seventh stair (Nov 11 2026). A DEMO: not in the story (try it at mockups/minigames/index.html once
    the main session adds its card). The strangers epilogue's horror game, a listening / stealth game, made to feel unlike Hold On
    (no gripping, no anchors): Solar goes down the dark stairs of the Lee house at night to the kitchen for a glass of water and

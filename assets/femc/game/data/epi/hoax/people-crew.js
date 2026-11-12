@@ -1,3 +1,4 @@
+/* Nov 11 2026: Yeobo's café (minigame cafe, flags epi-h-mg-cafe-*) is an optional choice in epi-h-sunoo-1 (short-handed, Sunoo asks); the skip has a confirm. */
 /* The HOAX epilogue (12/21/2023-1/12/2024): the crew's and the council's home bonds (R.bonds), two hangouts each.
    Writer F, epilogue batch 5. Data only; loaded with the world (epilogue.js). Bonds go through add() so they merge with
    people.js (Writer E: jungwon, jihoon, cherry, council) in either load order. Role 'friend' for all.
@@ -85,6 +86,25 @@
           { n: "His grandmother looked at him for a long moment, and then at Solar, and then back at him, with the face of a woman who had raised one boy already and was not about to be outwitted by his son." },
           { s: 'halmeoni', f: 'serious', t: "Eat your croissant, Solar." },
           { n: "Which, in this house, meant the matter was closed. It also meant she knew. Sunoo put his forehead on the table." }
+        ] }
+      ] },
+      // Yeobo's (Nov 11 2026; minigames/cafe.js, flags epi-h-mg-cafe-*). Short-handed over winter break; Sunoo asks.
+      { n: "Then the bell coughed four times in a row, and then six, a whole church youth group in matching scarves stamping snow off their boots, and the girl who did afternoons was home with the flu, and Halmeoni looked at the line, and at Sunoo, and at Solar, in that order." },
+      { s: 'sunoo', f: 'flustered', t: "Sol. Do you maybe, I mean you don't have to, you literally just got back from- you don't have to." },
+      { s: 'halmeoni', f: 'neutral', t: "Apron's on the hook." },
+      { choose: [
+        { t: "(Put the apron on.)", then: [
+          { minigame: 'cafe', flags: 'epi-h-mg-cafe', opts: { bg: 'epi-h-yeobos', nightBg: 'epi-h-yeobos-night' } },
+          { ifFlag: 'epi-h-mg-cafe-good', then: [
+            { s: 'halmeoni', f: 'neutral', t: "Hm. You can come back." },
+            { n: "From Halmeoni that was a job offer, and Sunoo knew it, and he did a little shuffle behind the counter with the dish towel over his shoulder that he absolutely thought nobody saw." }
+          ], else: [
+            { n: "Somewhere around the third tray she put cinnamon on a latte nobody had asked cinnamon on and gave a very small girl the wrong croissant, and Halmeoni fixed both without a word and patted Solar's cheek on her way past with a floury hand, which was so much worse than a word." },
+            { s: 'sunoo', f: 'happy', t: "You were amazing. You were so bad. You were amazing." }
+          ] }
+        ] },
+        { confirm: true, t: "(Stay in the booth. Moral support.)", then: [
+          { n: "She stayed in the booth, because Halmeoni's face said that was allowed too, and watched Sunoo run the whole line by himself with his ears going pinker by the minute, and gave him a thumbs-up every time he looked over, which was constantly." }
         ] }
       ] },
       { n: "Before she left his grandmother pressed a paper bag into her hands, still warm through the bottom, the top folded twice." },

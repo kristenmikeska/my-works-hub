@@ -1,3 +1,4 @@
+/* In the story since Nov 11 2026 (the "DEMO" wording in the header below is older): HOAX people-crew.js epi-h-sunoo-1 (12/23-12/31 after, short-handed at Yeobo's), flags epi-h-mg-cafe; optional, with a confirmed skip. */
 /* FEMC epilogue minigame: Yeobo's, a day at the café (reworked Nov 11 2026). A DEMO: not in the story (play it on
    mockups/minigames/index.html). HOAX, winter break: Solar helps Sunoo at his grandmother's café. Kat, on the first
    version: "It needs visuals and animations and sound effects, etc. I think it should feel like a Papa's game." So this is a

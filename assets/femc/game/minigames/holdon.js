@@ -1,3 +1,4 @@
+/* In the story since Nov 11 2026 (the "DEMO" wording in the header below is older): Runners story-nyc2.js epi-r-dark-kitchen (12/27 late, the 2 a.m. train, every route), flags epi-r-mg-holdon; optional, with a confirmed skip. */
 /* FEMC epilogue minigame: hold on (Nov 11 2026, EPILOGUE-EXPANSION-PLAN.md: "'Hold on' for the glitch nights: keep her in place
    against the pull"). A DEMO: not in the story yet (try it at mockups/minigames/index.html). Horror pass (Nov 11, Kat: "I want
    it creepier ... psychological horror"): built for the Runners held stretch (the apartment at night, the world losing track of

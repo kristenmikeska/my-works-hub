@@ -1,3 +1,4 @@
+/* In the story since Nov 11 2026 (the "DEMO" wording in the header below is older): strangers people.js epi-s-appa-2 (2/25-3/9 evening, Appa's corner problems), flags epi-s-mg-baduk; optional, with a confirmed skip. */
 /* FEMC epilogue minigame: baduk (Nov 11 2026). Go capture puzzles (tsumego) at the board in the house, for the strangers epilogue
    (Incheon, Feb-Mar 2013). A DEMO: not in the story (try it at mockups/minigames/index.html once the card is added). Someone sits
    across the board and doesn't say much; the voice is never named and the puzzles carry no plot.

@@ -1,3 +1,4 @@
+/* Nov 11 2026 (Kat approved): cover stories for the boys' own absences. epi-s-kitchen: Pyo and Mr. Oh, Haechan 'came back from Busan' (only Appa and Mr. Oh know there was no job). epi-s-step: in private, Haechan's Busan and Jungwon's 'Seoul. My father's idea. Nobody checked.' No flag, gate or choice changed. */
 /* The strangers epilogue, week 1 (Sun 2/17 - Sat 2/23/2013): the story events. Epilogue batch 7, writer A.
    Home and the cover. Stage 0, then 1 from 2/20. The house holds a lie for her (the fever over Seollal) and she learns to hold
    it back; the three of them who remember the year (Solar, Haechan, Jungwon) find out they share it; the first small wrong
@@ -156,6 +157,10 @@
     { n: "Mrs. Bang was everywhere. That was her gift. She was at the stove and the sink and the rice cooker and the back step all inside the same minute, and every time she passed the back step she bent and dropped a pinch of something into the bucket out there, where two koi went round and round under the snow, orange and white, slow, like they'd decided the winter was somebody else's problem." },
     { s: 'mrsbang', f: 'serious', t: "Ten people and a bucket of fish in my kitchen, and not one of you can find the sesame oil." },
     { n: "Solar counted, because she counted. Mrs. Bang, Auntie Song, Pyo, Mr. Oh, Minseok, herself. Her father in the study with the door open an inch. Yunjin and Yunjin's mother in the room next to hers upstairs. Haechan, out since nine in the Rexton on some errand of her father's that nobody had named in front of her. That made ten, if you were generous, and Mrs. Bang was generous, and the fish didn't count, Mrs. Bang said, though she fed them first." },
+    // Nov 11 2026 (Kat): the house's story for Haechan's own ten days. Only Appa and Mr. Oh know there was no job.
+    { s: 'pyo', f: 'happy', t: "He's back from Busan, agasshi. Haechan-hyung. Ten days on a job for the Chairman, and he didn't bring anybody a single thing. Not even fishcake." },
+    { s: 'mroh', f: 'neutral', t: "He came back from Busan." },
+    { n: "Mr. Oh said it to his coffee. Then he looked up at her over the rim of the cup, once, at the end of the long table, for exactly as long as it took her to understand that there had been no Busan, no job, no ten days of anything, and that he knew it, and would go on knowing it in that same flat way for the rest of his life, the way he knew where every car in the house was parked. Then he looked out at the snow again." },
     { n: "It was the loudest the kitchen had ever been, and she sat in the middle of it at the end of the long table with her hair pinned up again, properly, the long black pin, and let it go on round her like weather." },
     { s: 'auntie', f: 'neutral', t: "*Little moon.*" },
     { n: "Auntie Song said it in Mandarin without looking up from the dumplings, the way she'd said it since Solar was nine and standing on a crate at her elbow with a fish knife too big for her hand. *Xiao yueliang.* Then a dumpling arrived on the table in front of her, pleated, perfect, raw, as if it had been flicked there." },
@@ -281,6 +286,12 @@
     { s: 'jungwon', f: 'neutral', t: "You never asked." },
     { s: 'haechan', f: 'neutral', t: "I don't ask you things, Yang." },
     { s: 'jungwon', f: 'happy', t: "No. You point at dogs." },
+    // Nov 11 2026 (Kat): the cover stories for their own absences; in private, among the three who went (searchers know).
+    { s: 'solar', f: 'serious', t: "What did they tell the house? About you two. While you were gone." },
+    { s: 'haechan', f: 'neutral', t: "Busan. A job for the Chairman. Ten days collecting off a boat that doesn't exist. Pyo thinks I was very frightening." },
+    { n: "He said it flat, to the radio, and she heard what sat under it: her father had stood in his own house and put Haechan's name inside a lie, the same night he'd put a fever inside hers, and had told nobody but Mr. Oh where the lie ended." },
+    { s: 'jungwon', f: 'neutral', t: "Seoul. My father's idea. Nobody checked." },
+    { n: "Of course nobody had. The houses didn't ask each other things. It was older than the truce, older than the wedding, and a boy could be gone from the Yang house for ten days and come back with a study camp in Seoul in his mouth, and the Lees would only nod, and pass the plate, and not ask which camp." },
     { n: "It should have been funny. It was, a little. She laughed, and it came out of her wrong, too short, a sound like something dropped, and both of them looked at her at once, and the laugh stopped." },
     { n: "Ten days here. A year there. A dormitory by a bay and a moon that was too big, and three people standing in a frozen garden in Incheon who all had it in them at the same time, in the same order, the same green, the same midnight, and nobody else in the whole house did. Not her father. Not Mrs. Bang. Not the koi. Nobody had a word for the arithmetic of it, and none of them tried to find one." },
     { n: "Jungwon asked her something, then, very quietly, in Mandarin." },

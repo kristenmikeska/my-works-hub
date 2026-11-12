@@ -5,6 +5,7 @@
      { choose: [{ t, notes, then, say, flag, tally, stat, needs, reverse, route, ifFlag, when }] }
                                  (when: a condition object; the option shows only while it holds)
                                  a choice; "(...)" options aren't spoken; needs: { stat: rank } locks an option
+                                 confirm: '<question>' | true asks first ([Skip it] [Go back]; see confirmChoice)
        { mingle: { pick, min }, choose: [options] }   a party loop: asks the options not yet taken, again and again (at most
                                  pick; an option with leave: true ends it once min are taken); see mingle() below
      { christmasOptions: true }  an entry in a choice list (the 12/24 story picker) that expands into one "(Text <name>.)"
@@ -357,9 +358,7 @@ window.FemcScene = (() => {
         b.innerHTML = `<span></span>${lock ? `<small>${esc(lock)}</small>` : ''}`;
         b.querySelector('span').textContent = G.sub(o.t);
         if (lock) { b.disabled = true; b.classList.add('locked'); }
-        b.addEventListener('click', e => {
-          e.stopPropagation();
-          if (lock) return;
+        const take = () => {
           choices.replaceChildren();
           G.sfx('femc-click');
           if (replay) { if (o.flag) overFlags(o.flag); } // for show: nothing reaches the save
@@ -367,6 +366,12 @@ window.FemcScene = (() => {
           const spoken = o.say || (o.t.trim().startsWith('(') ? null : o.t);
           queue.unshift(...(spoken ? [{ s: 'solar', t: spoken }] : []), ...(o.christmas ? G.christmasLines(o.christmas) : []), ...(o.then || []));
           next();
+        };
+        b.addEventListener('click', e => {
+          e.stopPropagation();
+          if (lock) return;
+          if (o.confirm && !replay) return confirmChoice(o.confirm, take, () => ask(options));
+          take();
         });
         return b;
       }));
@@ -374,6 +379,35 @@ window.FemcScene = (() => {
       window.FemcGlitch?.hands(choices, replay, lines => { choices.replaceChildren(); G.sfx('femc-click'); queue.unshift(...(lines || [])); next(); });
       choices.querySelector('button:not(:disabled)')?.focus({ preventScroll: true });
       G.sfx('femc-hover');
+    }
+    /* { choose: [{ t, confirm: '<question>' | true, ... }] } (Nov 11 2026, Kat: minigames "skippable ... but have a confirm
+       message so it can't accidentally be pressed"): picking an option with `confirm` first asks, in the choice box, the
+       question (true = CONFIRM_Q) with [Skip it] [Go back]. Skip it takes the option as usual; Go back (or Esc) shows the
+       choice again. Focus starts on Go back, arrows / Tab move, Enter / click / tap pick. Never in a replay. Every minigame
+       choice in the epilogues marks its skip option with confirm: true; the play option itself never asks. */
+    const CONFIRM_Q = "Skip the game? You can't come back to it this time.";
+    function confirmChoice(q, yes, back) {
+      G.sfx('femc-hover');
+      let done = false;
+      const close = fn => { if (done) return; done = true; removeEventListener('keydown', onEsc, true); choices.classList.remove('gs-confirm'); choices.replaceChildren(); fn(); };
+      const onEsc = e => {
+        if (e.key !== 'Escape' || !choices.classList.contains('gs-confirm')) return;
+        e.preventDefault(); e.stopPropagation(); G.sfx('femc-click'); close(back);
+      };
+      const line = document.createElement('p');
+      line.className = 'gs-confirm-q'; line.setAttribute('role', 'alert');
+      line.innerHTML = '<span></span>'; line.firstChild.textContent = typeof q === 'string' ? q : CONFIRM_Q;
+      const btn = (label, fn, cls) => {
+        const b = document.createElement('button'); b.type = 'button'; b.className = cls;
+        b.innerHTML = '<span></span>'; b.querySelector('span').textContent = label;
+        b.addEventListener('click', e => { e.stopPropagation(); close(fn); });
+        return b;
+      };
+      const goBack = btn('Go back', () => { G.sfx('femc-click'); back(); }, 'gs-confirm-back');
+      choices.classList.add('gs-confirm');
+      choices.replaceChildren(line, btn('Skip it', yes, 'gs-confirm-yes'), goBack);
+      addEventListener('keydown', onEsc, true);
+      goBack.focus({ preventScroll: true });
     }
     /* A party's mingle loop (the Runners Manhattan pass, Nov 5 2026): { mingle: { pick, min }, choose: [options] } asks the
        options not yet taken (ordinary choice options, so every scene walker follows them), plays the one picked, then asks
@@ -400,7 +434,7 @@ window.FemcScene = (() => {
        in the Runners story: support 12/6, the booth 12/9 and the mix 12/10 on the Haechan route, listen 12/29, dumplings 12/31).
        hwatu (Nov 11): strangers people.js epi-s-eomma-4, Thursdays, flags epi-s-mg-hwatu; the id maps to FemcHwatu like the rest. */
     function minigame(line) {
-      const id = line.minigame, glob = 'Femc' + id[0].toUpperCase() + id.slice(1), pre = line.flags || `mg-${id}`;
+      const id = line.minigame, glob = MG_GLOB[id] || 'Femc' + id[0].toUpperCase() + id.slice(1), pre = line.flags || `mg-${id}`;
       if (replay) return next();
       const load = () => new Promise(ok => {
         if (window[glob]) return ok();
@@ -425,7 +459,8 @@ window.FemcScene = (() => {
         });
       });
     }
-    const MINIGAME_V = 6;
+    const MINIGAME_V = 7;
+    const MG_GLOB = { holdon: 'FemcHoldOn' }; // ids whose global isn't Femc + Capitalised id
     function giftAsk(line) {
       const who = line.giftAsk;
       if (replay || !G.giftBag || !G.giftBag().length) return next();

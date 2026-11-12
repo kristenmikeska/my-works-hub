@@ -1,3 +1,4 @@
+/* In the story since Nov 11 2026 (the "DEMO" wording in the header below is older): strangers people-time.js epi-s-house-market (3/2-3/7 after, Mrs. Bang), flags epi-s-mg-market; optional, with a confirmed skip. */
 /* FEMC epilogue minigame: the fish market at Incheon (Nov 11 2026). A DEMO: not in the story (try it at
    mockups/minigames/index.html). strangers, Feb-Mar 2013: Solar Lee (a shipping family the whole quay knows; she has read these
    tides since she was six) goes down to the fish market with the household's cook, Mrs. Bang, who tells the fish man what his

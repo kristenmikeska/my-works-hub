@@ -84,3 +84,9 @@
 @keyframes gs-postcard-in { from { opacity: 0; transform: translateY(14px) rotate(-2deg); } }
 @media (prefers-reduced-motion: reduce) { .gs-postcard { animation: none; } }
 @media (max-width: 700px) { .gs-postcard { top: 96px; width: min(230px, 60vw); } }
+
+/* Skip-confirm (scene.js confirmChoice, Nov 11 2026): the question as a paper plate above [Skip it] [Go back]. */
+.gs-choices.gs-confirm .gs-confirm-q { margin: 0; padding: 9px 22px; background: #fff4f9; color: #14070f; font: italic 800 clamp(14px, 1.35vw, 17px)/1.3 var(--cond); letter-spacing: .02em; transform: skewX(-14deg); box-shadow: 5px 5px 0 #ff4f9e; animation: gs-choice .3s cubic-bezier(.2, 1.2, .4, 1) both; }
+.gs-choices.gs-confirm .gs-confirm-q > span { display: inline-block; transform: skewX(14deg); }
+.gs-choices.gs-confirm .gs-confirm-yes { opacity: .9; }
+@media (prefers-reduced-motion: reduce) { .gs-choices.gs-confirm .gs-confirm-q { animation: none; } }

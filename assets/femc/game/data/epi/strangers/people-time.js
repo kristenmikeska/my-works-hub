@@ -1,3 +1,4 @@
+/* Nov 11 2026: the fish market (minigame market, flags epi-s-mg-market-*) is an optional choice at the start of epi-s-house-market (Mrs. Bang's tide table); the skip has a confirm. */
 /* The strangers epilogue (2/17-3/16/2013, Incheon): seven more home hangouts (R.bonds), the Nov 5-6 expansion pass, writer 3
    of 3. Data only; loaded with the world (epilogue.js WORLDS.strangers.files). Bonds go through add() so they merge with
    people.js and people-crew.js in either load order. Hangouts are Daytime / Evening only.
@@ -244,6 +245,21 @@
       after: '3/2', until: '3/7', slots: ['after'], events: ['epi-s-gun'], noFlags: [], route: null, noRoute: null,
       place: 'Incheon · Fish Market', time: 'Daytime', scene: [
       { music: 'epi-s-house' },
+      // The fish market (Nov 11 2026; minigames/market.js, flags epi-s-mg-market-*). The flounder war happens either way.
+      { n: "Before they went, Mrs. Bang laid the tide table open on the kitchen table between the rice cooker and the radio, put her finger on the page, took it off again, and pushed the book across to Solar without a word. It had been a test since Solar was six. It was still a test." },
+      { choose: [
+        { t: "(Read the tide. Do the buying.)", then: [
+          { minigame: 'market', flags: 'epi-s-mg-market', opts: { bg: 'epi-s-harbor-tide', stallBg: 'flashback-fish-market' } },
+          { ifFlag: 'epi-s-mg-market-good', then: [
+            { s: 'mrsbang', f: 'neutral', t: "Hm." },
+            { n: "From Mrs. Bang, *hm* was a medal. Solar had been given perhaps four in her life. She put this one somewhere safe." }
+          ], else: [
+            { s: 'mrsbang', f: 'neutral', t: "You knew that tide when you were nine." },
+            { n: "She didn't say anything else about it, all the way to the car, which was worse." }
+          ] }
+        ] },
+        { confirm: true, t: "(Let Mrs. Bang read it.)", then: [] }
+      ] },
       { n: "Mr. Oh parked where he always parked, by the side door of the shed, and set the handbrake, and put his hands back on the wheel at ten and two as if they had somewhere further to go, and Pyo, in the front seat beside him, reached across without a word and pushed down the lock on his own door." },
       { s: 'pyo', f: 'flustered', t: "I'll stay with Mr. Oh. In case. Somebody should stay with Mr. Oh." },
       { s: 'mrsbang', f: 'neutral', t: "Mr. Oh has been sitting in cars for thirty years without you, Pyo." },

@@ -1,3 +1,4 @@
+/* Nov 11 2026: Hold On (minigame holdon, flags epi-r-mg-holdon-*) is an optional choice after the 2 a.m. train in epi-r-dark-kitchen, all three route branches; the skip has a confirm. Result lines only colour the scene. */
 /* The Runners epilogue, the Manhattan pass (Nov 5 2026, FEMC-RUNNERS-MANHATTAN-PLAN.md; summary: RUNNERS-EPILOGUE-MANHATTAN-PASS.md). 12/26-12/31: he stays, the invitation, the quiet days, New Year's Eve and the final (epi-r-midnight ends the act).
    Each part below keeps its writer's header (events, flags, inventions, art ideas). */
 /* The Runners epilogue, the Manhattan pass, Writer D: Fri 12/26 - Sun 12/28 ("he stays a while"; FEMC-RUNNERS-MANHATTAN-PLAN §3).
@@ -996,6 +997,19 @@
       { n: "At two the train came." },
       { glitch: 'epi-r-g-train' },
       { n: "Under the building. Deep. The long iron sound of a train coming into a station, the brakes, the breath of doors, and under it, so faint it was almost inside her own ears, a chime: three notes, falling. She knew those three notes. She'd heard them every morning for a year on a platform in a city that wasn't on any map." },
+      // Hold On (Nov 11 2026; minigames/holdon.js, flags epi-r-mg-holdon-*). The train comes and goes either way.
+      { choose: [
+        { t: "(Hold on.)", then: [
+          { n: "It wanted somebody. She could feel it wanting, the way you feel a draft before you find the window, a pull at the very middle of her that had nothing to do with the bed or the dark or the eleventh floor." },
+          { minigame: 'holdon', flags: 'epi-r-mg-holdon', opts: { bg: 'epi-r-nyc-kitchen' } },
+          { ifFlag: 'epi-r-mg-holdon-won', then: [
+            { n: "When she came back to herself her fingers were locked in the sheet so hard her knuckles had gone white, and the room was only the room, the window, the radiator, the snow, and she counted all of it twice before she let go of anything." }
+          ], else: [
+            { n: "For a second, a long one, she didn't know which bed she was in. Then the radiator, and the window, and somebody breathing in the dark who wasn't her, and the eleventh floor came back around her one piece at a time, like a room after a power cut." }
+          ] }
+        ] },
+        { confirm: true, t: "(Lie still. Let it pass.)", then: [] }
+      ] },
       { n: "His arm had gone tight over her." },
       { s: 'haechan', f: 'serious', t: "...Is there a subway under this building?" },
       { s: 'solar', f: 'neutral', t: "No. The 6 is on Lexington. Three blocks." },
@@ -1044,6 +1058,19 @@
       { n: "At two the train came." },
       { glitch: 'epi-r-g-train' },
       { n: "Under the building, deep. Brakes. Doors breathing open. And under it, very faint, a chime, three notes falling, that she'd heard every morning for a year on a platform in a city that wasn't on any map." },
+      // Hold On (Nov 11 2026; minigames/holdon.js, flags epi-r-mg-holdon-*). The train comes and goes either way.
+      { choose: [
+        { t: "(Hold on.)", then: [
+          { n: "It wanted somebody. She could feel it wanting, the way you feel a draft before you find the window, a pull at the very middle of her that had nothing to do with the bed or the dark or the eleventh floor." },
+          { minigame: 'holdon', flags: 'epi-r-mg-holdon', opts: { bg: 'epi-r-nyc-kitchen' } },
+          { ifFlag: 'epi-r-mg-holdon-won', then: [
+            { n: "When she came back to herself her fingers were locked in the sheet so hard her knuckles had gone white, and the room was only the room, the window, the radiator, the snow, and she counted all of it twice before she let go of anything." }
+          ], else: [
+            { n: "For a second, a long one, she didn't know which bed she was in. Then the radiator, and the window, and somebody breathing in the dark who wasn't her, and the eleventh floor came back around her one piece at a time, like a room after a power cut." }
+          ] }
+        ] },
+        { confirm: true, t: "(Lie still. Let it pass.)", then: [] }
+      ] },
       { n: "Minji was sitting up. She had her phone out, the voice memo going, the red dot, holding it out toward the floor like you'd hold it out to a bird. Eight seconds. The doors closed. The sound went away into the ground in a direction there was no tunnel." },
       { n: "Minji played it back. The waveform was flat. A straight line, the whole way, eight seconds of a quiet room. She looked at it for a long time, and then at Solar, and didn't say anything, and put the phone face down on the window seat, and lay back down, and held on." },
       { bond: { minji: 1 } }
@@ -1080,6 +1107,19 @@
       { n: "At two the train came." },
       { glitch: 'epi-r-g-train' },
       { n: "Under the building, deep. Brakes, the breath of doors, and a chime, three notes falling, that she'd heard every morning for a year in a city that wasn't on any map." },
+      // Hold On (Nov 11 2026; minigames/holdon.js, flags epi-r-mg-holdon-*). The train comes and goes either way.
+      { choose: [
+        { t: "(Hold on.)", then: [
+          { n: "It wanted somebody. She could feel it wanting, the way you feel a draft before you find the window, a pull at the very middle of her that had nothing to do with the bed or the dark or the eleventh floor." },
+          { minigame: 'holdon', flags: 'epi-r-mg-holdon', opts: { bg: 'epi-r-nyc-kitchen' } },
+          { ifFlag: 'epi-r-mg-holdon-won', then: [
+            { n: "When she came back to herself her fingers were locked in the sheet so hard her knuckles had gone white, and the room was only the room, the window, the radiator, the snow, and she counted all of it twice before she let go of anything." }
+          ], else: [
+            { n: "For a second, a long one, she didn't know which bed she was in. Then the radiator, and the window, and somebody breathing in the dark who wasn't her, and the eleventh floor came back around her one piece at a time, like a room after a power cut." }
+          ] }
+        ] },
+        { confirm: true, t: "(Lie still. Let it pass.)", then: [] }
+      ] },
       // Nov 11 2026 (Kat): searchers know
       { s: 'hanni', f: 'surprised', t: "...Sol. Tell me that's the subway." },
       { s: 'solar', f: 'neutral', t: "There's no subway under here." },
@@ -1812,7 +1852,7 @@
           { n: "Hers came out looking like what they were, which was her first try. She set them at the end of his row anyway, and he moved one a quarter inch so it lined up with the others, and left it there." }
         ] }
       ] },
-      { t: "(Keep folding where he can see.)", then: [] }
+      { confirm: true, t: "(Keep folding where he can see.)", then: [] }
     ] },
     { s: 'haechan', f: 'serious', t: "That's a bag, Solar." },
     { s: 'solar', f: 'flustered', t: "It's a dumpling." },
