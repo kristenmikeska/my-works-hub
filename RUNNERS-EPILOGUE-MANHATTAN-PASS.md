@@ -13,7 +13,7 @@ You approved the Manhattan extension (`FEMC-RUNNERS-MANHATTAN-PLAN.md`, with you
 
 ## Two things you asked about
 
-- **Haechan's mother (fixed):** the one line borrowed from Better Photography ("my mother isn't well") is gone. Now, in your mother's 6:40 a.m. kitchen questions on Dec 26, he says it once, flat: *"And my mother drinks. She isn't kind when she does, and she does most days. I haven't been home in a while."* He doesn't name her or say more, and no new history was added. Her name, Hyesook, is recorded for later and isn't used yet.
+- **Haechan's mother (fixed):** the one line borrowed from Better Photography ("my mother isn't well") is gone. Now, in your mother's 6:40 a.m. kitchen questions on Dec 26, he says it once, flat: *"And my mother drinks. She isn't kind when she does, and she does most days. I haven't been home in a while."* He doesn't name her or say more, and no new history was added. Her name, Miyoung, is recorded for later and isn't used yet.
 - **Hyein's surname is Lee.** Marco calls her "Miss Lee" (and "another Miss Lee" when the girls arrive together). There's no "Miss Kang" anywhere.
 
 ## Family lore added (Nov 5, after your OK; source: `FEMC-RUNNERS-FAMILY-LORE.md`)
@@ -27,7 +27,7 @@ I added light touches only: no new scenes, choices or flags.
   - Solar reads the rest: a house up the hill, a bed kept made, and a reason he isn't in it that has Mark's name on it. No names, places or history beyond that.
 - **New Year's Eve, if Mark comes** (`story-nyc2.js`): after the container taped for Haechan, Mark adds one line: "It's galbijjim. She's had a pan of it in the oven on low all week. In case."
 - **New Year's Eve, the piano** (`story-nyc2.js`): one line of Solar's reading, every route. He never sings, there's no voice on any of his tracks, and whatever shut that door shut it long ago, when he was small. She doesn't know the story, so the line doesn't tell it.
-- **His mother** stays as you ruled (Hyesook; she drinks and isn't kind; he's half estranged). The Dec 26 line already fits, so it's unchanged.
+- **His mother** stays as you ruled (Miyoung; she drinks and isn't kind; he's half estranged). The Dec 26 line already fits, so it's unchanged.
 - **Fixes for the lore:**
   - Minji's grandmother is in **Leonia** now in every scene; two scenes had said Fort Lee, which is now Haechan's and Mark's town.
   - Nothing already written names Haechan's father or contradicts the town or the names. Mark's mother's bakery box was already from Fort Lee's Main Street.
@@ -167,7 +167,7 @@ I added light touches only: no new scenes, choices or flags.
   - `epi-r-landing-dare` / `-ask`
   - `epi-r-gift-*`
 - **Canon rulings (Kat, Nov 5):**
-  - Haechan's mother is Hyesook: emotionally abusive and an alcoholic, not ill. He says little.
+  - Haechan's mother is Miyoung: emotionally abusive and an alcoholic, not ill. He says little.
   - Hyein's surname is Lee.
   - The housekeeper is Mrs. Oh (the old "Rosa" lines were renamed).
 - **Totals:** events 41 → 64, hangouts 55 → 69, words about 108k → 200k (all branches).

@@ -39,7 +39,7 @@
    Inventions (Kat may change any): Mrs. Oh told Solji about the coffee poured down the sink; the service door keeps its log in pencil;
      Ms. Han reads Jaesang the building log at seven with the weather, so he's known the name since Thursday; Jaesang goes ahead to
      Greenwich in his own car at seven, the rest at nine; Haechan's session is for a woman in Brooklyn with a record she can't finish;
-     "my mother drinks. She isn't kind when she does" (Kat, Nov 5: Hyesook, emotionally abusive and an alcoholic; Haechan is half estranged from her. Said once, flat, nothing more; replaces BP 25's "isn't well"); Haechan's places make "three now"
+     "my mother drinks. She isn't kind when she does" (Kat, Nov 5: Miyoung, emotionally abusive and an alcoholic; Haechan is half estranged from her. Said once, flat, nothing more; replaces BP 25's "isn't well"); Haechan's places make "three now"
      (the rooftop, the valley, her terrace); the ski photo in Vermont (the gap); Mrs. Aristov and the A below middle C; Minji's
      grandmother's soup behind Solji's broth, from Leonia; Minji's audio memo of the train comes back flat; Jaehyun's right
      shoulder propped on a cushion for the mouse; Jaehyun stops at a rest stop to add Pham and the other Lee (cover, jh-all); the cover's

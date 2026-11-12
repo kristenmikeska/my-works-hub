@@ -1,10 +1,10 @@
 # Runners: Haechan's and Mark's families (lore reference)
 
-*Gathered Nov 5 2026 from Kat's what-if **Better Photography** (`~/Claude/Projects/Runners Writing Archive/Long Form Series/Better Photography Series/`). Kat said on Nov 5 2026 that the game may use it ("Yes, use it"). Her own rulings below come first, the book's scholarship story wins over Better Photography's, and her name stays **Hyesook**, not Miyoung.*
+*Gathered Nov 5 2026 from Kat's what-if **Better Photography** (`~/Claude/Projects/Runners Writing Archive/Long Form Series/Better Photography Series/`). Kat said on Nov 5 2026 that the game may use it ("Yes, use it"). Her own rulings below come first, the book's scholarship story wins over Better Photography's, and her name stays **Miyoung**, not Miyoung.*
 
 ## Kat's rulings (canon for the game)
 - **Haechan's mother:**
-  - She's **Hyesook** in the game. Kat's name for her is Miyeon, and Better Photography uses Miyoung Park, but strangers already has a Miyeon.
+  - She's **Miyoung** in the game (Better Photography's Miyoung Park; Kat, Nov 11 2026). Kat's own name for her is Miyeon, but strangers already has a Miyeon, and Miyoung (the earlier pick) is Jungwon's mother in strangers.
   - She is **not ill**. She is very emotionally abusive and has an alcoholism problem.
   - Haechan is somewhat estranged from her.
 - **Hyein's surname is Lee.**
