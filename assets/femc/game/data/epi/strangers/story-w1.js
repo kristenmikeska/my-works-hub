@@ -9,6 +9,7 @@
      epi-s-eomma       2/18 evening  the right hand: Eomma, the hanbok, the pins; Aunt Hyesun on the phone (consumes)
      epi-s-stair       2/19 late     the seventh stair: barley tea at midnight; he asks about the fever; the tea goes cold
      epi-s-trio        2/20 after    errands: a plate back to the Yang house; Jay, Riki, Sunghoon, one beat each; Jungwon (consumes)
+                                     (Nov 11: Madam Kang in the hall, tomorrow's dinner, story-yang.js; no flag or gate changed)
      epi-s-humming     2/20 late     molihua: somebody singing in the dark kitchen; nobody there
      epi-s-quay        2/21 after    an hour: the harbor with Haechan; her tide is an hour wrong; he pulls her back (consumes)
      epi-s-girls       2/22 after    the studio girls: Songdo, Yunjin and the four; Riki runs past; the Wolmido plan (consumes)
@@ -574,6 +575,18 @@
     { n: "The dimples. Both of them. Deep and sweet and completely for the auntie in the doorway." },
     { s: 'solar', f: 'neutral', t: "Mrs. Bang says the jeon was very good." },
     { s: 'jungwon', f: 'happy', t: "Mrs. Bang is too kind. I'll tell them. My father is out, I'm afraid, or he'd want to come down himself. May I see you to the car?" },
+    // Nov 11 2026 (Kat: the Yang family, story-yang.js): his mother in the hall, and the dinner the next night.
+    { n: "Somebody had come into the far end of the hall while he was talking. Solar hadn't heard her. Nobody ever did, in this house where the stairs didn't creak: a small woman in black at the mouth of the east corridor, with her hair pulled back so hard it lifted the corners of her eyes and her hands folded in front of her, very still, the way you'd stand at the back of a room where somebody was being buried." },
+    { n: "Madam Kang Hyesook. Jungwon's mother. She didn't come any closer. She looked at Solar down the whole length of the cold hall, from her pinned hair to her shoes, slowly, all of her, and Solar felt it the way you feel a hand laid flat on the back of your neck." },
+    { s: 'madamkang', f: 'neutral', t: "You were ill." },
+    { s: 'solar', f: 'neutral', t: "Over Seollal, Madam Kang. I'm better now. Thank you for the jeon." },
+    { n: "Madam Kang didn't say anything to that. She looked at her for one second longer than the answer needed, with the sad, kind eyes, and Solar's stomach dropped a step, the small cold stone of every lie she'd told that week finding the bottom of the well." },
+    { s: 'madamkang', f: 'neutral', t: "Tomorrow night. My husband wants you at his table. Seven o'clock." },
+    { s: 'madamkang', f: 'neutral', t: "Bring Donghyuck. He won't come in unless somebody makes him. Make him." },
+    { n: "Then she turned and went back down the east corridor the way she'd come, without a sound, and Jungwon, who had gone very straight at the first word, let out a breath through his nose that might in another man have been a laugh." },
+    { s: 'jungwon', f: 'neutral', t: "*That was an invitation. I'd advise you to accept it. Nobody has ever successfully declined one.*" },
+    { s: 'solar', f: 'happy', t: "*Has anybody tried?*" },
+    { s: 'jungwon', f: 'happy', t: "*My father. Once. In nineteen eighty-nine. He still talks about it.*" },
     { n: "He walked her out. Down the front steps, across the gravel, to where Mr. Oh had the car waiting with the engine running and the back door already open. He walked at exactly the right distance from her, a correct distance, a distance you could have measured and filed, with Sunghoon in the doorway behind them watching the drive and not them." },
     { n: "At the car, with his back to the house, where nobody in it could see his mouth, he spoke to her in Mandarin, very low." },
     { s: 'jungwon', f: 'neutral', t: "*You came across the water.*" },

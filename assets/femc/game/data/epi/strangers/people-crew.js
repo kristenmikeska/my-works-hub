@@ -45,7 +45,10 @@
      on the top floor of a Songdo mall; Taejoon fills in the crossword on the torn calendar page; Mrs. Bang writes names on the
      dust masks; Mrs. Moon (the book's Yang-house cook at the sink) runs the Yang kitchen and stirs against Jay's advice; Auntie
      Song's gossip that Mr. Oh wears his aftershave for a toll-booth woman on the bridge; Riki goes over the Lee wall beside the
-     open gate every time (Minseok in the gatehouse). */
+     open gate every time (Minseok in the gatehouse).
+   Nov 11 2026 (Kat: the Yang family; story-yang.js): jay-1 'reactions' gains Dokyun through the kitchen, stealing the
+     end of Mrs. Moon's kimbap. No flag, gate or outcome changed.
+   */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).strangers ||= {});
   const B = (R.bonds ||= {});
@@ -193,6 +196,15 @@
           { n: "He said it at the exact second Mrs. Moon turned her back, and she heard it anyway, and hit him on the Tyvek with the spoon without turning round, which seemed to be a thing that happened in this kitchen a lot." }
         ] }
       ] },
+      // Nov 11 2026 (Kat: the Yang family, story-yang.js): Dokyun through the kitchen.
+      { n: "The hall door swung open and the kitchen filled up, the way a room fills when a big man comes into it talking: Yang Dokyun, in a persimmon-coloured cardigan over his shirt, house slippers, reading glasses pushed up on his head, a telephone at his ear that he was shouting into about a crane." },
+      { n: "He didn't stop shouting. He came straight across the tile to the counter where Mrs. Moon had just cut a roll of kimbap into neat rounds on the board, and with the phone still at his ear and his voice still going he reached past her elbow and took the end. The rough end, the heel, with the spinach and the egg sticking out of it in a ragged fringe, the bit you were supposed to eat yourself in the kitchen. He ate it in one bite." },
+      { n: "Mrs. Moon hit his wrist with the flat of the knife. He didn't notice. He saw Solar, and his whole face opened like a door." },
+      { s: 'dokyun', f: 'happy', t: "—call you back. Daughter-in-law! In my kitchen with a jar. Moon-ah, give her the other end." },
+      { n: "Mrs. Moon, with a look that had thirty years in it, took the other end of the roll off the board and put it in Solar's hand." },
+      { s: 'dokyun', f: 'happy', t: "The ends are the best part. Everybody knows it, nobody admits it. You steal the ends, you learn everything worth knowing about a kitchen. I taught my— I've taught everybody in this house. Eat. Eat it here, where I can see." },
+      { n: "She ate it, standing at the counter in her coat, while he watched with enormous satisfaction and Jay looked at the ceiling. Then the phone rang again in his hand and he was gone the way he'd come, through the hall door, shouting about the crane, and the door swung twice behind him and was still." },
+      { s: 'jay', f: 'neutral', t: "Every roll. Every single roll that woman cuts. She's started making them a centimeter longer so there's still a full one after." },
       { n: "On the way out he walked her to the kitchen door, which he didn't need to do. The empty jar from last time was waiting there for her to take back, washed, with something already in it, wrapped in a cloth." },
       { s: 'jay', f: 'neutral', t: "Tell Mrs. Bang it's not as good as hers. She'll want to hear that." },
       { s: 'solar', f: 'happy', t: "Is it?" },

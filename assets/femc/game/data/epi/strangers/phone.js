@@ -9,7 +9,10 @@
    waits for her to hang up first; Mrs. Moon makes Jay wear two masks in the dust; Riki answers calls mid-run; Kazuha's
    grandmother says ghosts are mostly polite; Sakura's handheld; Eunchae keeps count of Solar's sentences.
    Nov 6 pass: card lines read the new hangout flags epi-s-oh-harbor, epi-s-umbrella, epi-s-chaewon-counts, epi-s-sakura-nihongo,
-   epi-s-kazuha-morning, epi-s-eyebrows, epi-s-eunchae-forty (people-late.js, people-girls.js). */
+   epi-s-kazuha-morning, epi-s-eyebrows, epi-s-eunchae-forty (people-late.js, people-girls.js).
+   Nov 11 2026 (Kat: the Yang family; story-yang.js): contacts dokyun (a call, a topic) and madamkang (noCall, a topic);
+     card lines read epi-s-yang-high and epi-s-kang-true.
+   */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).strangers ||= {});
   const T = (R.texts ||= {});
@@ -17,7 +20,7 @@
     chaewon: 'chae_committee', yunjin: 'yunjinnie', sakura: 'sakura_afk', kazuha: 'kazuha_obake', eunchae: 'eunchae.seen'
   });
   R.phone = Object.assign(R.phone || {}, {
-    order: ['haechan', 'jungwon', 'yunjin', 'appa', 'eomma', 'mroh', 'aunt', 'sunghoon', 'jay', 'niki', 'chaewon', 'sakura', 'kazuha', 'eunchae'],
+    order: ['haechan', 'jungwon', 'yunjin', 'appa', 'eomma', 'mroh', 'aunt', 'sunghoon', 'jay', 'niki', 'dokyun', 'madamkang', 'chaewon', 'sakura', 'kazuha', 'eunchae'],
     contacts: {
 
       /* ── Haechan ── */
@@ -420,6 +423,59 @@
           ] },
           { id: 'epi-s-tp-jay-2', label: 'A cooking question', events: ['epi-s-trio'], after: '2/22', msgs: [
             { me: 'why does rice go hard in the fridge' }, { them: 'starch retrogradation' }, { them: 'it’s remembering what it was before you cooked it' }, { them: 'reheat it with a splash of water. forgive it' }
+          ] }
+        ]
+      },
+
+      /* ── Yang Dokyun (Nov 11, story-yang.js) ── */
+      dokyun: {
+        rel: 'The Yang house · Jungwon’s father',
+        events: ['epi-s-yang-dinner'],
+        known: [
+          { t: 'Calls you daughter-in-law. Hugs everybody, especially the people he’s warning.', events: ['epi-s-yang-dinner'] },
+          { t: 'Saved his own number in your phone while you were putting your coat on. Texts in capitals.', events: ['epi-s-yang-dinner'] },
+          { t: 'Pours a cup of barley tea at the end of the table every meal. Nobody remarks on it.', events: ['epi-s-yang-dinner'] },
+          { t: 'Karaoke on Fridays. Tears of Mokpo, all six verses, every time.', events: ['epi-s-yang-karaoke'] },
+          { t: 'His son sang the high part. He hasn’t got over it.', flags: ['epi-s-yang-high'] }
+        ],
+        calls: [
+          { id: 'epi-s-call-dokyun-1', after: '2/23', events: ['epi-s-yang-dinner'], scene: [
+            { n: 'He picks up on the first ring, already talking, somewhere with wind and gulls.' },
+            { s: 'them', f: 'happy', t: 'Daughter-in-law! She rings me! Pilsu, she rings me. Did you eat?' },
+            { s: 'solar', f: 'happy', t: 'I ate, Father.' },
+            { choose: [
+              { t: 'Where are you?', then: [
+                { s: 'them', f: 'happy', t: 'On the quay, in the wind, feeding a gull a kimbap end. Don’t tell my wife. She says I make them fat.' }
+              ] },
+              { t: 'How are the koi?', then: [
+                { s: 'them', f: 'happy', t: 'The greedy one ate everything and looked at me like I owed him. The others are fine. The others don’t matter. Don’t tell them.' }
+              ] }
+            ] },
+            { s: 'them', f: 'happy', t: 'Friday the first. Everyone sings. Bring the girl with the horn.' }
+          ] }
+        ],
+        topics: [
+          { id: 'epi-s-tp-dokyun-1', label: 'Thank you for dinner', events: ['epi-s-yang-dinner'], msgs: [
+            { me: 'thank you for dinner, father' }, { them: 'NEVER THANK ME FOR FOOD. ONLY EAT IT' }, { them: 'THANK MY WIFE. SHE MADE THE HAIRTAIL. SHE PRETENDS SHE DIDN’T' }
+          ] }
+        ]
+      },
+
+      /* ── Madam Kang (Nov 11, story-yang.js) ── */
+      madamkang: {
+        rel: 'The Yang house · Jungwon’s mother',
+        events: ['epi-s-yang-dinner'],
+        known: [
+          { t: 'Always in black. Eats almost nothing. Says less.', events: ['epi-s-yang-dinner'] },
+          { t: 'Her hands fold napkins into boats without her looking.', events: ['epi-s-yang-dinner'] },
+          { t: 'Keeps a garden room of camellias. Jujube tea, for grief, and for other things.', events: ['epi-s-camellias'] },
+          { t: 'Taught you to fold a boat. Yours was terrible. It floated.', events: ['epi-s-camellias'] },
+          { t: 'Knows you weren’t ill. Didn’t ask where.', flags: ['epi-s-kang-true'] }
+        ],
+        noCall: 'She’d let it ring. She’d send the car instead.',
+        topics: [
+          { id: 'epi-s-tp-kang-1', label: 'The camellias', events: ['epi-s-camellias'], msgs: [
+            { me: 'are the camellias still out?' }, { them: 'Two more fell this morning. Whole. They always do.' }, { them: 'Come before they’ve all gone. Kang Hyesook.' }
           ] }
         ]
       },

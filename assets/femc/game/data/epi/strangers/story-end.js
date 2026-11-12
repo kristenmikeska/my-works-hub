@@ -51,7 +51,11 @@
      dorm table; Jay in the Yang kitchen salutes with a knife and sends a warm container home; the Yang stairs don't creak;
      a second chair by Jungwon's window with a blanket; the sugar question ("I still don't know"); the 1971 harbor photo's
      third boat is Appa's father's, the one the study cleat came off.
-*/
+
+   Nov 11 2026 (Kat: the Yang family; story-yang.js has the new scenes): epi-s-jw-window gains why the Yang house is quiet
+     (Dokyun at the quay), a second photograph on the landing, and his mother's text from the garden room (a { phone } line
+     from 'madamkang'). No flag, gate, id, date or outcome changed.
+   */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).strangers ||= {});
   (R.events ||= []).push(
@@ -304,6 +308,10 @@
     { n: "Her father had sent her across with a crossword dictionary. That was the reason. It was an old one with a broken spine and his name inside the cover in blue ballpoint, and Jungwon had asked on Sunday, very politely, whether he might borrow it, and her father had looked at him over his glasses for a long time and then said Solar would bring it round, and that was how she knew her father knew exactly what the dictionary was for." },
     { n: "Sunghoon let her in. He was at the door when Mr. Oh pulled up, as if he'd been there since lunch, in a black coat, facing the door, and he looked at her for exactly one second longer than he needed to and then said Jungwon was upstairs, and stepped aside, and didn't follow her up." },
     { n: "The Yang house was quiet in the way of houses where nobody raises their voice because nobody needs to. Long dark floors, polished till the lamps lay in them. A smell of ginger and soy from somewhere at the back, and the clean tick of a good clock, and through a half-open door on the left the kitchen, bright, and Jay at the counter in an apron over a black sweater, slicing something very thin with great concentration. He didn't look up. He lifted the knife an inch off the board, in her direction, a sort of salute, and went back to it, and she heard him start to hum under his breath, badly, something that wasn't a song yet." },
+    // Nov 11 2026 (Kat: the Yang family, story-yang.js): why the house is quiet; the photograph; his mother.
+    { n: "It was quiet because his father was out. She understood that now. When Yang Dokyun was home the whole house knew it, every room of it, his voice coming through the walls like weather; tonight he was at the quay with Pilsu and the black Equus, and without him the place went back to what it had been built to be, glass and dark wood and the sea, a house holding its breath. Across the courtyard the garden room was lit, one lamp among the camellias, and in it a small figure in black sat at a low table with her back to the glass and didn't turn round." },
+    { n: "On the landing, on a narrow shelf where the stairs turned, there was a photograph in a plain silver frame. The same boy as the one on the dining-room sideboard, younger here, fifteen or so, on a harbor wall in a school shirt with the sleeves rolled, squinting into the sun with a smaller boy in round glasses on his back, his arms locked round the bigger one's neck, both of them laughing at whoever held the camera. Solar knew the smaller boy's ears. She'd watched them go red across a baduk board." },
+    { n: "She didn't stop at it. You didn't, on these stairs. But she felt it go past her shoulder like a draught from an open window." },
     { n: "She went up. The stairs here didn't creak. She'd noticed that the first time, months ago, and it had bothered her in a way she couldn't explain, a house where you couldn't hear anybody coming, and then she'd understood that it was the point." },
     { n: "His room was at the end of the west wing. She'd been in it before. It never changed, except for one thing: a second chair. A plain wooden one, from some dining room downstairs, set by the window at an angle to the glass, with a folded blanket over its back. She'd never seen it there before. She knew at once, without being told, that he sat in it at night, and that the blanket was for after two, when the house's heating went down." },
     { n: "Apart from that it never changed. A narrow bed made so tight you could have bounced a coin on it. A kaya board on a low stand by the window with a game half played on it, black and white, against himself, the way he played. No pictures. Nothing on the walls at all. A room like a held breath." },
@@ -361,6 +369,16 @@
     { s: 'solar', f: 'happy', t: "It's a sleeve." },
     { s: 'jungwon', f: 'flustered', t: "It's your sleeve." },
     { n: "He smoothed it once more anyway, as if the wool might remember, and she let him, and watched the tips of his ears go a colour his face would never have allowed, with the glass cold at her back and her own house somewhere behind her, small and gold, across the water." },
+    { n: "His phone buzzed once on the kaya board, face down, against the wood. He looked at it as if it had said something rude. Then he turned it over with one finger, read it, and closed his eyes for a moment." },
+    { s: 'solar', f: 'neutral', t: "Who is it?" },
+    { s: 'jungwon', f: 'neutral', t: "My mother." },
+    { s: 'solar', f: 'surprised', t: "She's downstairs." },
+    { s: 'jungwon', f: 'flustered', t: "She's in the garden room. She texts from the garden room. She says it saves her shouting, and she has never shouted in her life." },
+    { n: "He held it out so she could see. One line, with the punctuation all in its proper places, signed." },
+    { phone: [{ from: 'madamkang', t: "Ask her if she has eaten. The pears are in the hall, the box with the blue cloth. Give them to her. Don't keep her past nine. Kang Hyesook." }], contact: 'Madam Kang' },
+    { s: 'jungwon', f: 'neutral', t: "It's ten past eight. She's being generous." },
+    { s: 'solar', f: 'happy', t: "*I ate.*" },
+    { s: 'jungwon', f: 'happy', t: "*I'll tell her. She won't believe me. She'll ask Mr. Oh.*" },
     { n: "Somebody knocked on the door. Twice." },
     { s: 'sunghoon', f: 'neutral', t: "Mr. Oh is at the gate." },
     { n: "Sunghoon's voice, flat, through the wood. He didn't open the door. She could tell from the voice that he was standing with his back to it." },

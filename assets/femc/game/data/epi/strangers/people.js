@@ -60,7 +60,11 @@
      Flag read: epi-s-mg-hwatu-won (her dry nod vs "Again."); nothing else reads them. ifAfter 3/4 picks the dust light.
      Fence call: one-on-one at home in daylight, never the Thursday evening game or anybody outside the house; only her
      care. Inventions: the grey army blanket from the linen cupboard; Solar watched her count the deck from under the hall
-     table at six; she gives Solar the deck ("A deck that's short a card plays you"); Appa cheats at hwatu. */
+     table at six; she gives Solar the deck ("A deck that's short a card plays you"); Appa cheats at hwatu.
+   Nov 11 2026 (Kat: the Yang family; story-yang.js): jungwon-3 'west wing' ends at lunch (Dokyun's hand on his son's neck,
+     Madam Kang turns his collar out); jungwon-4 'two syllables' opens on the Yang front step (her umbrella, his father's
+     push). No flag, gate, id or outcome changed.
+   */
 (() => {
   const R = ((window.FEMC_EPI_WORLDS ||= {}).strangers ||= {});
   const B = (R.bonds ||= {});
@@ -501,13 +505,34 @@
       ] },
       { n: "Before they went down he sat back at the board and looked at it, and took a white stone from the bowl, and held it out to her across the little table without a word." },
       { n: "She took it. She looked at the game, his against himself, at all the places it could go. Then she put it down in a corner, because corners were easy to hold, and he made a small sound that in another man would have been a laugh." },
-      { s: 'jungwon', f: 'flustered', t: "Your move, then. I'll be thinking about it all afternoon." }
+      { s: 'jungwon', f: 'flustered', t: "Your move, then. I'll be thinking about it all afternoon." },
+      // Nov 11 2026 (Kat: the Yang family, story-yang.js): lunch, his father, his mother.
+      { place: 'Incheon · The Yang House', time: 'Daytime', soft: true },
+      { n: "His father was at the bottom of the stairs." },
+      { n: "In the persimmon cardigan, in his slippers, with a newspaper under one arm and his reading glasses on his head, as if he'd been passing, which in a house where the stairs didn't creak nobody ever was. He looked up at the two of them coming down, at his son's hair, which had been mussed and then very carefully un-mussed, and at the tips of his son's ears, and his whole big face went slowly, enormously delighted." },
+      { s: 'dokyun', f: 'happy', t: "Daughter-in-law. You came to play baduk." },
+      { s: 'solar', f: 'neutral', t: "Yes, Father." },
+      { s: 'dokyun', f: 'happy', t: "Who's winning?" },
+      { s: 'jungwon', f: 'neutral', t: "It's an unfinished game, Father." },
+      { s: 'dokyun', f: 'happy', t: "Unfinished. He says unfinished." },
+      { n: "He reached up as his son came off the last stair and put his hand on the back of Jungwon's neck. Just his hand, big and warm, at the nape, under the collar of the grey sweater, the way you'd take hold of a boy who'd grown taller than you'd planned for, and he left it there, and steered him toward the dining room by it, talking about lunch, and Jungwon let himself be steered with his face perfectly composed and his ears the colour of the cardigan." },
+      { n: "At the dining-room door Madam Kang was waiting, small and black and still, with her hands folded. She didn't say anything. She looked at her son's collar, and reached up, and turned it out where it had folded under against a window, and smoothed it once with two fingers. Then she looked at Solar, for one second longer than she needed to." },
+      { s: 'madamkang', f: 'neutral', t: "Sit down, both of you. It's going cold." },
+      { n: "Solar sat. She could feel her own ears now. Across the table Jungwon picked up his chopsticks, set them square to his bowl, and would not look at her, or his mother, or his father, who was humming." }
     ] },
 
     { id: 'epi-s-jungwon-4', title: 'two syllables', hint: "Mr. Oh is taking you home from the Yang house in the dust-rain. Jungwon has asked, very politely, to see you to your gate.",
       after: '3/10', until: '3/14', slots: ['evening'], events: ['epi-s-dinner'], noFlags: [], route: 'jungwon', noRoute: null,
       place: 'Incheon · The Car', time: 'Evening', scene: [
       { music: 'epi-s-jungwon' },
+      // Nov 11 2026 (Kat: the Yang family, story-yang.js): leaving the Yang house.
+      { place: 'Incheon · The Yang House', time: 'Evening', soft: true },
+      { n: "On the Yang front step, under the porch light, with the brown rain coming down past the edge of the roof in strings, his mother put an umbrella into Solar's hand without a word, a black one with a bamboo handle worn pale where somebody's hand had held it for years, and his father put his own hand on the back of his son's neck." },
+      { s: 'dokyun', f: 'happy', t: "Go on. Go on, see her to her gate. A man sees a girl home. When your brother was your age he walked a girl home across the whole—" },
+      { n: "He stopped. The rain went on. Then he laughed, and pushed, gently, the hand on Jungwon's neck sending him down the first step toward Mr. Oh's car like a boat off a slipway." },
+      { s: 'dokyun', f: 'happy', t: "Go! Before she changes her mind about you." },
+      { n: "Madam Kang said nothing. She stood in the doorway with her hands folded and watched them down the steps, and when Solar looked back from the car door, the umbrella open over her head, she was still there, small and black against the lit hall, and didn't wave, and didn't go in." },
+      { place: 'Incheon · The Car', time: 'Evening' },
       { n: "It was raining, and the rain was brown. It came down through the yellow dust and brought it with it, so that it ran down the windscreen of Mr. Oh's car in muddy threads that the wipers pushed aside and the next rain brought back, and the streetlights over the coast road were smeared and orange and soft, like lights seen through tears." },
       { n: "Jungwon had asked whether he might see her home. Not to the car. Home. To the gate. It wasn't done. A man who was to be married didn't ride in the back of his fiancée's family's car to see her to her own front gate like a schoolboy walking a girl home from cram school, and Mr. Oh had looked at him in the rearview mirror for one long second when he got in, and then said nothing at all, and pulled out of the Yang drive so gently she didn't feel the car start." },
       { n: "Mr. Oh's menthol aftershave. The heater. The wipers. Jungwon on the other side of the back seat, upright, his coat buttoned, his right hand on the seat between them, palm down, not touching hers." },

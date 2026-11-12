@@ -9,6 +9,7 @@
      story-w1.js    week 1 (2/17-2/23): home, the cover, the step, the night before Daeboreum (the crossroads)
      story-w2.js    week 2 (2/24-3/1): Daeboreum, the hammer, the first pull     story-w3.js  week 3 (3/4-3/9): the dust, the tide
      story-end.js   3/10-3/16: the dinner, the last pull, the bottom of the tide (the final)
+     story-yang.js  Nov 11: the Yang house (2/21 dinner, 3/1 karaoke, 3/9 the garden room); Dokyun and Madam Kang (cast below)
    Shape: as data/epi/runners/world.js (its header documents every field; epilogue.js the engine side).
    The routes: Haechan (his romance, Christmas pick or strangers lean in the year), Jungwon (his romance or Christmas pick), the
    family (always open). The 2/23 late event is the crossroads (who she sits with on the night before Daeboreum: options gated
@@ -61,6 +62,9 @@
         ['Incheon · The Lee House', 'epi-s-front-room', 'epi-s-front-room'],       // art batch 144: the front room with the piano (S13), lamp-lit
         ["Incheon · The Yang House · Jungwon's Room", 'epi-s-jungwon-room', null],         // batch 78
         ['Incheon · The Yang House · Kitchen', 'epi-s-yang-kitchen', null],
+        ['Incheon · The Yang House · Garden Room', 'epi-s-sunroom', null],             // Nov 11 (the Yang family): stand-in, the Lee sunroom's glass and plants
+        ['Incheon · The Yang House · Dining Room', 'epi-s-yang-house', 'epi-s-yang-house'], // Nov 11: stand-in, the hall (the dinner)
+        ['Incheon · The Yang House · Living Room', 'epi-s-yang-house', 'epi-s-yang-house'], // Nov 11: stand-in, the hall (karaoke Friday)
         ['Incheon · The Yang House', 'epi-s-yang-house', null],
         ['Incheon · Harbor at Midnight', 'epi-s-harbor-night', null],
         ['Incheon · Harbor', 'epi-s-harbor-day', 'epi-s-harbor-night'],          // art batch 144: night (S16)
@@ -134,7 +138,8 @@
       mrspark: 'Mrs. Park', seo: 'Inspector Seo', chaewon: 'Chaewon', sakura: 'Sakura', kazuha: 'Kazuha', eunchae: 'Eunchae',
       girls: 'The girls', house: 'The kitchen', man: 'A man', fisherman: 'A fisherman', aunt: 'Aunt Hyesun', radio: 'The radio',
       fkvoice: 'Fuuka', flounder: 'The flounder woman', ajumma: 'The ajumma', // the last two: the expansion pass
-      gong: 'Mrs. Gong', tankman: 'The fish-tank man', wu: 'Auntie Wu', moon: 'Mrs. Moon', watchman: 'The watchman' // the Nov 6 pass
+      gong: 'Mrs. Gong', tankman: 'The fish-tank man', wu: 'Auntie Wu', moon: 'Mrs. Moon', watchman: 'The watchman', // the Nov 6 pass
+      dokyun: 'Yang Dokyun', madamkang: 'Madam Kang' // Nov 11 (story-yang.js): name only until FEMC-ART-TODO 52A / 52B, then faces dokyun-strangers / madamkang-strangers
     },
     // This world's own faces (core.js worldFace): Solar's strangers look, the four's strangers outfits and Solar's parents (FEMC-ART-WIRING).
     faces: { solar: 'solar-strangers', chaewon: 'chaewon-strangers', sakura: 'sakura-strangers', kazuha: 'kazuha-strangers', eunchae: 'eunchae-strangers', appa: 'taesang-strangers', eomma: 'miyeon-strangers', yunjin: 'yunjin-strangers', haechan: 'haechan-strangers', jungwon: 'jungwon-strangers',
