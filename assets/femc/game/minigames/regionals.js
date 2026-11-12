@@ -35,7 +35,29 @@
      stands still, right-click / 3 to heal Olivia, Suzu on a naded Minji, Swift Step out of a Genji dive, Kitsune Rush. Nothing
      shoots back, the point doesn't move; afterwards the match stats are cleared and round 1 starts fresh. Pause → How to play
      replays it as a walkthrough over the paused match. result.tutorial = 'done' | 'skipped' | 'seen' (not shown).
-     o.hook(fn) gets test handles (jsc runs). */
+     o.hook(fn) gets test handles (jsc runs).
+
+   Visual pass (Nov 11 2026, Kat: "every minigame needs as many visuals as possible, as much animation as possible"; the rules,
+   numbers, timings and result are unchanged, all of it is drawn on top):
+     the map  drifts a little against the crosshair (parallax), lanterns / embers rise through it, a light sweep crosses it.
+     kunai    a streak from her right hand to the crosshair; white sparks on a hit, a gold star and a flash ring on a crit
+              (no flash with Reduce flashes), a dust puff on a miss; the foe flinches; an elimination leaves a dissolving ghost
+              and shards; two or more quick kills put up DOUBLE / TRIPLE ELIM.
+     ofuda    a talisman flies from her left hand to the teammate with a streak, then a heal burst.
+     foes     rise out of cover with a dust puff (the pop-out), flash at the muzzle and send a tracer at whoever they shoot;
+              teammates shoot back with tracers. Telegraphs during each call's windup: a reticle and the play's name on the
+              target (SLEEP / NADE / BLADE / GRAV), a red edge while Genji dives her, a vortex gathering over the team before
+              Graviton, green rings on the foes for Lúcio's beat; then the landing (dart, splash, double slash, implosion).
+              A blocked play shows a shield ripple.
+     her kit  Suzu: the bell flies up and its cleanse ring sweeps the team, sparkles on each mate. Swift Step: a streak to a
+              teammate with paper at both ends. Kitsune Rush: a fox runs down a corridor of torii that glow for the 6 s.
+     HUD      the point bar glows and throbs near 100%, a low-HP edge on her, ability squash and ready shimmer, kill feed flash.
+     rounds   a ROUND n banner with the map name and FIGHT!; the VICTORY / DEFEAT card slams in with a glint and series pips.
+     the end  Play of the Game plays a little looping replay over Kat's art (REPLAY tag, letterbox, Ken Burns, an animation
+              of that kind of moment), the stats count up and the grade stamps down.
+   Settings: reduced motion = no motion (no shakes, particles, parallax or replay loop; crossfades), Reduce flashes (o.calm,
+   else the game's) = no white flashes or crit rings, softer glows, Performance (o.perf, else the game's) = a third of the
+   particles, fewer tracers, no blur or parallax. */
 window.FemcRegionals = (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -65,6 +87,8 @@ window.FemcRegionals = (() => {
   const SPOTS = [{ x: 14, y: 52, h: 24 }, { x: 31, y: 47, h: 21 }, { x: 50, y: 44, h: 19 }, { x: 68, y: 47, h: 21 }, { x: 86, y: 52, h: 24 }, { x: 40, y: 56, h: 27 }, { x: 60, y: 56, h: 27 }];
   const DIFF = { easy: { dmg: 0.65, gap: 1.35, hp: 0.85 }, normal: { dmg: 1, gap: 1, hp: 1 }, hard: { dmg: 1.3, gap: 0.8, hp: 1.15 } };
   const pick = a => a[Math.floor(Math.random() * a.length)];
+  // the drawn side (Nov 11 visual pass): Kitsune Rush's fox, the Suzu's bell
+  const FOX = '<svg viewBox="0 0 120 60" aria-hidden="true"><path d="M8 40c10-2 20-10 34-10 10 0 18 4 26 4l10-14 4 12 8-10 2 14c6 2 10 6 12 10-6 0-12 2-16 4-8 4-20 6-30 4l-10 8-4-8c-10 0-24-6-36-14z" fill="#ff9ac8"/><path d="M8 40c-4-6-2-14 4-18 0 6 2 10 6 12" fill="#ffd1e6"/><circle cx="92" cy="36" r="2" fill="#14070f"/></svg>';
 
   /* ── sounds (Web Audio, no files) ── */
   function sfx(muted) {
@@ -106,13 +130,16 @@ window.FemcRegionals = (() => {
       const S = sfx(!!o.mute);
       const M = { rounds: [], elims: 0, soloKills: 0, deaths: 0, teamDeaths: 0, healed: 0, saves: 0, steps: 0, rushes: 0, moments: [] };
       const el = document.createElement('div');
-      el.className = 'mg-ow' + (reduced.matches ? ' still' : '');
+      const GS0 = (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {};
+      const still = reduced.matches, calm = o.calm ?? !!GS0.calm, perf = o.perf ?? !!GS0.perf;
+      el.className = 'mg-ow' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
       el.innerHTML = `
-        <div class="ow-stage"><div class="ow-map"></div><div class="ow-foes"></div><div class="ow-team"></div><div class="ow-fx"></div><div class="ow-hands"></div>
+        <div class="ow-stage"><div class="ow-map"></div><div class="ow-amb" aria-hidden="true"></div><div class="ow-torii" aria-hidden="true">${[0, 1, 2, 3, 4, 5].map(k => `<i style="--k:${k}"></i>`).join('')}</div><div class="ow-foes"></div><div class="ow-team"></div><div class="ow-fx"></div><div class="ow-hands"></div>
           <div class="ow-cross" aria-hidden="true"><i></i></div></div>
         <div class="ow-hud">
           <div class="ow-obj"><span class="us">SYRACUSE</span><div class="bar"><i class="u"></i><i class="t"></i></div><span class="them">TOP SEED</span><small class="ow-round"></small></div>
           <p class="ow-call" aria-live="assertive"></p>
+          <div class="ow-banner" aria-hidden="true"></div>
           <ol class="ow-feed" aria-label="Kill feed"></ol>
           <div class="ow-me"><b>Kiriko</b><small>sollee</small><span class="ow-mehp"><i></i><em></em></span></div>
           <div class="ow-kit">
@@ -154,6 +181,50 @@ window.FemcRegionals = (() => {
       };
       const moment = (kind, text, score) => M.moments.push({ kind, text, score, round: M.rounds.length + 1 });
 
+      /* ── the drawn side (Nov 11 visual pass): particles, tracers, telegraphs. Positions are % of the stage. Nothing here
+         changes a number the match reads. ── */
+      const timers = new Set();
+      const later = (fn, ms) => { const id = setTimeout(() => { timers.delete(id); fn(); }, ms); timers.add(id); return id; };
+      const rnd = (a, b) => a + Math.random() * (b - a);
+      let live = 0; const CAP = perf ? 26 : 80;
+      const spawn = (cls, x, y, life, vars) => {
+        if (still || live >= CAP) return null;
+        const n = document.createElement('i'); n.className = cls; n.style.left = `${x.toFixed(2)}%`; n.style.top = `${y.toFixed(2)}%`;
+        if (vars) Object.keys(vars).forEach(k => n.style.setProperty(k, vars[k]));
+        $('.ow-fx').appendChild(n); live++; later(() => { n.remove(); live--; }, life); return n;
+      };
+      const burst = (x, y, n, cls, spread = 50, life = 700) => {
+        n = perf ? Math.ceil(n / 3) : n;
+        for (let k = 0; k < n; k++) { const a = Math.random() * Math.PI * 2, d = rnd(spread * 0.35, spread); spawn('ow-pt ' + cls, x, y, life, { '--dx': `${(Math.cos(a) * d).toFixed(1)}px`, '--dy': `${(Math.sin(a) * d - spread * 0.25).toFixed(1)}px`, '--del': `${rnd(0, 70).toFixed(0)}ms` }); }
+      };
+      const SW = () => { const r = stage.getBoundingClientRect(); return { w: r.width || (r.right - r.left) || 1, h: r.height || (r.bottom - r.top) || 1 }; };
+      // a line from a to b (stage %): kunai streaks, tracers, the Swift Step blink
+      const line = (a, b, cls, ms) => {
+        const z = SW(), dx = (b.x - a.x) / 100 * z.w, dy = (b.y - a.y) / 100 * z.h;
+        return spawn(cls, a.x, a.y, ms + 200, { '--len': `${Math.hypot(dx, dy).toFixed(0)}px`, '--ang': `${(Math.atan2(dy, dx) * 180 / Math.PI).toFixed(1)}deg`, '--ms': `${ms}ms` });
+      };
+      const toss = (a, b, cls, ms) => { const z = SW(); return spawn(cls, a.x, a.y, ms, { '--dx': `${((b.x - a.x) / 100 * z.w).toFixed(1)}px`, '--dy': `${((b.y - a.y) / 100 * z.h).toFixed(1)}px`, '--ms': `${ms}ms` }); };
+      const restart = (node, cls, ms) => { if (!node || still) return; node.classList.remove(cls); void node.offsetWidth; node.classList.add(cls); if (ms) later(() => node.classList.remove(cls), ms); };
+      const mateMid = i => { const t = TEAM[i]; return { x: t.x, y: t.y - t.h * 0.55 }; };
+      const foeMid = j => { const f = R && R.foes[j], sp = f && SPOTS[f.spot]; return sp ? { x: sp.x, y: sp.y - sp.h * 0.6 } : null; };
+      const HAND_R = { x: 62, y: 90 }, HAND_L = { x: 38, y: 90 }, ME = { x: 50, y: 97 };
+      const banner = (big, small = '', cls = '') => {
+        const b = $('.ow-banner'); b.className = 'ow-banner ' + cls; b.innerHTML = `<b>${esc(big)}</b>${small ? `<small>${esc(small)}</small>` : ''}`;
+        if (still) { b.classList.add('on'); later(() => b.classList.remove('on'), 1500); } else restart(b, 'on', 1600);
+      };
+      const shake = big => restart(el, big ? 'shake-big' : 'shake', 500);
+      // a mark on a teammate for a call's windup (reticle + the play's name)
+      const tele = (i, word, cls = '') => { const m = mates()[i]; if (!m) return; m.dataset.tele = word; m.dataset.teleK = cls; later(() => { if (m.dataset.tele === word) { delete m.dataset.tele; delete m.dataset.teleK; } }, 1500); };
+      let tracers = 0;
+      const tracer = (a, b, side) => { // gunfire both ways (Performance: one in three)
+        if (!a || !b || (perf && tracers++ % 3)) return;
+        line(a, b, 'ow-tracer ' + side, 90); spawn('ow-flash ' + side, a.x, a.y, 160);
+      };
+      const ambient = map => { // lanterns (Lijiang) or embers (Busan) rising through the map, per round
+        const n = perf ? 6 : 18, k = map.id === 'lijiang' ? 'lantern' : 'ember';
+        $('.ow-amb').innerHTML = `<span class="ow-sweep"></span>` + Array.from({ length: n }, () => `<i class="${k}" style="left:${rnd(2, 98).toFixed(1)}%;--dur:${rnd(10, 22).toFixed(1)}s;--del:${(-rnd(0, 22)).toFixed(1)}s;--sx:${rnd(-50, 50).toFixed(0)}px;--sz:${rnd(4, k === 'lantern' ? 14 : 6).toFixed(1)}px"></i>`).join('');
+      };
+
       function startRound() {
         const map = MAPS[M.rounds.length % MAPS.length];
         $('.ow-map').innerHTML = `<div class="ow-map-stand" style="--a:${map.sky[0]};--b:${map.sky[1]}"><span class="pt"></span></div>${img(`map-${map.id}-${1 + Math.floor(Math.random() * map.pics)}`, map.name, ['map-' + map.id])}`;
@@ -166,6 +237,10 @@ window.FemcRegionals = (() => {
           events: [], next: 6000, killsAt: [], over: false };
         say(pick(['Haerin: Same as practice. Keep them up, Sol.', 'Chenle: Shield up. Walking in.', 'Minji: I\'ve got high ground.']));
         S.horn();
+        // drawn: lanterns / embers for this map, the round banner, the team walks in
+        ambient(map); el.classList.remove('rushing', 'dead', 'dove', 'lowhp');
+        if (!prac) { banner(`ROUND ${M.rounds.length + 1}`, map.name); later(() => !over && banner('FIGHT!', '', 'fight'), 1500); }
+        mates().forEach((m, i) => restart(m, 'enter', 800 + i * 90));
       }
       const mates = () => [...el.querySelectorAll('.ow-mate')], foeEls = () => [...el.querySelectorAll('.ow-foe')];
       const aliveUs = () => R.team.filter(t => !t.down).length + (R.me.down ? 0 : 1);
@@ -176,11 +251,11 @@ window.FemcRegionals = (() => {
         const t = R.team[i]; if (t.down || t.inv > 0) return;
         n *= D.dmg * (R.rushOn > 0 ? 0.6 : 1); t.hp -= n;
         if (!reduced.matches) { const m = mates()[i]; m.classList.remove('hit'); void m.offsetWidth; m.classList.add('hit'); }
-        if (t.hp <= 0) { t.hp = 0; t.down = 8000; t.anti = 0; t.sleep = 0; M.teamDeaths++; feed(by || 'Top Seed', '✕', t.handle, false); S.down(); }
+        if (t.hp <= 0) { t.hp = 0; t.down = 8000; t.anti = 0; t.sleep = 0; M.teamDeaths++; feed(by || 'Top Seed', '✕', t.handle, false); S.down(); const c = mateMid(i); burst(c.x, c.y, 10, 'down', 60, 900); }
       };
       const hurtMe = (n, by) => {
         if (R.me.down || R.me.inv > 0) return;
-        n *= D.dmg * (R.rushOn > 0 ? 0.6 : 1); R.me.hp -= n; el.classList.remove('ouch'); void el.offsetWidth; el.classList.add('ouch');
+        n *= D.dmg * (R.rushOn > 0 ? 0.6 : 1); R.me.hp -= n; el.classList.remove('ouch'); void el.offsetWidth; el.classList.add('ouch'); if (n >= 40) shake();
         if (R.me.hp <= 0) { R.me.hp = 0; R.me.down = 8000; R.me.dove = null; M.deaths++; feed(by || 'Top Seed', '✕', 'sollee', false); say(`You were eliminated by ${by || 'Top Seed'}.`, 'bad'); S.down(); el.classList.add('dead'); }
       };
       const mend = (i, n) => {
@@ -190,13 +265,18 @@ window.FemcRegionals = (() => {
       };
       const killFoe = (j, by, solar) => {
         const f = R.foes[j]; if (f.down) return;
+        const at = foeMid(j), sp = SPOTS[f.spot];
+        if (at && sp && !still) { // drawn: the foe's ghost dissolves where it stood, shards fly
+          const g = spawn('ow-ghost', sp.x, sp.y, 900, { '--h': `${sp.h}%` }); if (g) g.innerHTML = fig(f, 'foe');
+          burst(at.x, at.y, 14, 'shard', 80, 900); spawn('ow-ring elim', at.x, at.y, 700);
+        }
         f.hp = 0; f.down = 9000; f.state = 'hid'; f.spot = -1; foeEls()[j].hidden = true;
         feed(by.handle || by, solar ? 'kunai' : '▸', f.hero, true); S.elim();
         act?.('kill', j);
         if (solar) {
           M.elims++; R.killsAt.push(R.t); R.rush = Math.min(100, R.rush + 12);
           const quick = R.killsAt.filter(t => R.t - t < 4000).length;
-          if (quick >= 2) moment('multi', `${quick} eliminations in 4 seconds`, 40 * quick);
+          if (quick >= 2) { moment('multi', `${quick} eliminations in 4 seconds`, 40 * quick); banner(['', '', 'DOUBLE ELIM', 'TRIPLE ELIM', 'QUAD ELIM'][quick] || 'TEAM WIPE', '', 'multi'); }
           if (R.me.dove === j) { M.soloKills++; moment('solo', `Killed her own diver, ${f.hero}, before he could finish`, 70); R.me.dove = null; }
           pop(mouse.x, mouse.y - 4, 'ELIMINATED', 'big');
         }
@@ -206,6 +286,7 @@ window.FemcRegionals = (() => {
         const f = R.foes[j]; if (f.down || f.state === 'hid') return;
         n *= R.rushOn > 0 ? 1.5 : 1; f.hp -= n; f.lastHitBy = by;
         if (solar) { R.rush = Math.min(100, R.rush + n / 40); crit ? S.crit() : S.hit(); }
+        restart(foeEls()[j], 'hit', 240);
         if (f.hp <= 0) killFoe(j, by, solar);
       };
 
@@ -214,13 +295,20 @@ window.FemcRegionals = (() => {
         if (!R || R.over || paused || R.me.down || R.kReload > 0 || R.kCd > 0 || R.kAmmo <= 0) return;
         act?.('kunai'); R.kAmmo--; R.kCd = R.rushOn > 0 ? 260 : 520; S.kunai(); if (!R.kAmmo) R.kReload = 1500;
         $('.ow-hands').classList.remove('throw'); void $('.ow-hands').offsetWidth; $('.ow-hands').classList.add('throw');
-        const hit = foeAt(mouse);
-        if (hit) { hurtFoe(hit.j, hit.head ? 95 : 40, { handle: 'sollee' }, true, hit.head); pop(mouse.x, mouse.y, hit.head ? '✦ 95' : '40', hit.head ? 'crit' : 'dmg'); }
+        const hit = foeAt(mouse), at = { x: mouse.x, y: mouse.y };
+        line(HAND_R, at, 'ow-streak kunai', 110); // drawn: the kunai's streak, then sparks / a crit star / a puff
+        if (hit) {
+          later(() => { burst(at.x, at.y, hit.head ? 12 : 7, hit.head ? 'crit' : 'spark', hit.head ? 70 : 44, 600); if (hit.head) { spawn('ow-star', at.x, at.y, 500); if (!calm) spawn('ow-ring crit', at.x, at.y, 500); restart(el, 'critflash', 160); } }, 90);
+          hurtFoe(hit.j, hit.head ? 95 : 40, { handle: 'sollee' }, true, hit.head); pop(mouse.x, mouse.y, hit.head ? '✦ 95' : '40', hit.head ? 'crit' : 'dmg');
+        } else later(() => spawn('ow-puff', at.x, at.y, 500), 100);
       };
       const ofuda = i => {
         if (!R || R.over || paused || R.me.down || R.hReload > 0 || R.hAmmo <= 0 || i == null || R.team[i].down) return;
         act?.('heal', i); R.hAmmo--; R.team[i].heal += 40; S.heal(); if (!R.hAmmo) R.hReload = 1400;
         const m = mates()[i]; m.classList.add('charm'); setTimeout(() => m.classList.remove('charm'), 260);
+        const to = mateMid(i); line(HAND_L, to, 'ow-streak heal', 260); toss(HAND_L, to, 'ow-ofuda', 260); // drawn: the talisman flies
+        later(() => { burst(to.x, to.y, 9, 'heal', 50, 800); spawn('ow-ring heal', to.x, to.y, 600); }, 260);
+        $('.ow-hands').classList.remove('throw-l'); void $('.ow-hands').offsetWidth; $('.ow-hands').classList.add('throw-l');
       };
       const suzu = () => {
         if (!R || R.over || paused || R.me.down || R.suzu > 0) return;
@@ -229,16 +317,25 @@ window.FemcRegionals = (() => {
         R.events.forEach(e => { if (e.at - R.t < 750 && e.at - R.t > -150 && e.big) { e.blocked = true; saved++; } });
         R.team.forEach((t, i) => { if (t.down) return; if (t.anti > 0 || t.sleep > 0) saved++; t.anti = 0; t.sleep = 0; t.inv = 900; mend(i, 30); });
         if (saved) { M.saves++; say('Suzu! Cleansed.', 'good'); moment('suzu', `Suzu saved ${saved > 1 ? 'the team' : 'a teammate'} from ${R.lastBig || 'a big play'}`, 30 + saved * 15); }
+        // drawn: the bell flies up over the team and its ring sweeps out; sparkles on every mate
+        const mid = { x: 50, y: 62 }; toss(HAND_L, mid, 'ow-bell', 220);
+        later(() => { spawn('ow-bell ring', mid.x, mid.y, 800); spawn('ow-cleanse', mid.x, mid.y, 1000); spawn('ow-cleanse two', mid.x, mid.y, 1100);
+          R && R.team.forEach((t, i) => { if (!t.down) { const c = mateMid(i); later(() => burst(c.x, c.y, 6, 'suzu', 36, 650), 80 + i * 60); } }); }, 220);
+        if (saved) banner('SAVE', '', 'save');
       };
       const step = () => {
         if (!R || R.over || paused || R.me.down || R.step > 0) return;
         act?.('step'); R.step = 7000; M.steps++; S.step(); R.me.inv = 600;
         if (R.me.dove != null) { say('Swift Step. Missed her.', 'good'); moment('step', `Swift Stepped away from ${R.foes[R.me.dove].hero}`, 25); R.events = R.events.filter(e => e.kind !== 'dive'); R.me.dove = null; }
         el.classList.add('stepping'); setTimeout(() => el.classList.remove('stepping'), 350);
+        // drawn: a streak to a teammate, paper at both ends
+        const up = R.team.map((t, i) => i).filter(i => !R.team[i].down), to = up.length ? mateMid(pick(up)) : { x: 50, y: 60 };
+        line(ME, to, 'ow-streak step', 200); burst(ME.x, ME.y - 6, 8, 'paper', 60, 700); later(() => burst(to.x, to.y, 10, 'paper', 60, 800), 180);
       };
       const rush = () => {
         if (!R || R.over || paused || R.me.down || R.rush < 100) return;
         act?.('rush'); R.rush = 0; R.rushOn = 6000; M.rushes++; S.rush(); say('Kitsune Rush!', 'good'); el.classList.add('rushing');
+        const fx = spawn('ow-fox', 50, 96, 1600); if (fx) fx.innerHTML = FOX; banner('KITSUNE RUSH', '', 'rush'); // drawn: the fox runs the corridor
       };
       // what's under the crosshair
       const foeAt = p => {
@@ -276,8 +373,25 @@ window.FemcRegionals = (() => {
         if (kind === 'blade') { const pool = upMates.filter(i => R.team[i].role !== 'tank'); const i = pick(pool.length ? pool : upMates); say(`${nm}BLADE! He's on ${R.team[i].id[0].toUpperCase() + R.team[i].id.slice(1)}!`, 'warn'); R.events.push({ kind, i, at: R.t + 1500, big: true }); R.lastBig = 'Dragonblade'; }
         if (kind === 'grav') { say(`${nm}GRAV GRAV GRAV`, 'warn'); R.events.push({ kind, at: R.t + 1500, big: true }); R.lastBig = 'Graviton Surge'; }
         if (kind === 'beat') { say(`${nm}Lúcio beat. Don't let them fight in it.`, 'warn'); R.events.push({ kind, at: R.t + 1200, big: false }); }
+        // drawn: the windup
+        const e = R.events[R.events.length - 1]; restart($('.ow-call'), 'slam');
+        if (kind === 'sleep') tele(0, 'SLEEP', 'ana');
+        if ((kind === 'nade' || kind === 'blade') && e.i != null) tele(e.i, kind === 'nade' ? 'NADE' : 'BLADE', kind === 'nade' ? 'ana' : 'genji');
+        if (kind === 'grav') { R.team.forEach((t, i) => !t.down && tele(i, 'GRAV', 'grav')); spawn('ow-vortex', 50, 70, 1900); }
+        if (kind === 'beat') R.foes.forEach((f, j) => { const c = !f.down && f.state !== 'hid' && foeMid(j); if (c) { spawn('ow-beat', c.x, c.y, 1200); spawn('ow-beat two', c.x, c.y, 1300); } });
+      };
+      const anaAt = () => { const j = R.foes.findIndex(f => f.id === 'ana'); return (j >= 0 && foeMid(j)) || { x: 70, y: 30 }; };
+      const landFx = e => { // drawn: the play landing (or the Suzu's shield taking it)
+        const tg = e.kind === 'grav' ? R.team.map((t, i) => i) : e.kind === 'sleep' ? [0] : e.i != null ? [e.i] : [];
+        if (e.blocked) { tg.forEach(i => { const c = mateMid(i); spawn('ow-shield', c.x, c.y, 700); }); return; }
+        if (e.kind === 'sleep') { const c = mateMid(0); line(anaAt(), c, 'ow-streak dart', 160); later(() => { spawn('ow-zzz', c.x, c.y - 8, 1400); burst(c.x, c.y, 6, 'anti', 30, 700); }, 160); }
+        if (e.kind === 'nade' && e.i != null) { const c = mateMid(e.i); toss(anaAt(), c, 'ow-nade', 280); later(() => { spawn('ow-splash', c.x, c.y, 800); burst(c.x, c.y, 12, 'anti', 70, 900); }, 280); }
+        if (e.kind === 'blade' && e.i != null) { const c = mateMid(e.i); spawn('ow-slash', c.x, c.y, 500); later(() => spawn('ow-slash two', c.x, c.y, 500), 450); shake(); }
+        if (e.kind === 'grav') { spawn('ow-implode', 50, 70, 700); shake(true); restart(el, 'gravhit', 700); }
+        if (e.kind === 'dive' && R.me.dove === e.j) { [0, 350, 700].forEach(d => later(() => { if (!over && R && R.me.dove === e.j) { burst(rnd(42, 58), rnd(80, 92), 6, 'spark', 50, 500); spawn('ow-slash', rnd(44, 56), rnd(78, 88), 450); } }, d)); }
       };
       const land = e => {
+        landFx(e);
         if (e.blocked) { if (e.kind === 'nade' && e.i != null) R.team[e.i].anti = 0; return; }
         if (e.kind === 'sleep' && !R.team[0].down) { R.team[0].sleep = 3500; feed('Ana', 'sleep', 'chenle', false); }
         if (e.kind === 'nade' && e.i != null) { hurtMate(e.i, 60, 'Ana'); if (!R.team[e.i].down) R.team[e.i].anti = 3500; }
@@ -292,7 +406,9 @@ window.FemcRegionals = (() => {
         won ? S.win() : S.lose();
         const w = M.rounds.filter(r => r.won).length, l = M.rounds.length - w;
         const card = $('.ow-card'); card.hidden = false;
-        card.innerHTML = `${img(won ? 'victory' : 'defeat', '', [], 'ow-card-bg')}<b class="ow-big ${won ? 'v' : 'd'}">${won ? 'VICTORY' : 'DEFEAT'}</b><p>Round ${M.rounds.length} · ${esc(R.map.name)}</p><p class="ow-series">SYRACUSE ${w} – ${l} TOP SEED</p>`;
+        const pips = M.rounds.map(r => `<i class="${r.won ? 'w' : 'l'}"></i>`).join('') + '<i></i>'.repeat(Math.max(0, BEST - M.rounds.length));
+        card.innerHTML = `${img(won ? 'victory' : 'defeat', '', [], 'ow-card-bg')}<b class="ow-big ${won ? 'v' : 'd'}" data-t="${won ? 'VICTORY' : 'DEFEAT'}">${won ? 'VICTORY' : 'DEFEAT'}</b><p>Round ${M.rounds.length} · ${esc(R.map.name)}</p><p class="ow-series">SYRACUSE ${w} – ${l} TOP SEED</p><p class="ow-pips" aria-hidden="true">${pips}</p>`;
+        restart(card, 'in'); el.classList.remove('rushing', 'dove', 'lowhp');
         setTimeout(() => {
           card.hidden = true;
           if (w >= NEED || l >= NEED || M.rounds.length >= BEST) finish();
@@ -310,11 +426,16 @@ window.FemcRegionals = (() => {
         const won = M.rounds.filter(r => r.won).length >= NEED && !quit, p = potg();
         const grade = quit ? 'C' : won && M.deaths <= 1 && M.elims >= 8 ? 'S' : won ? 'A' : M.rounds.some(r => r.won) ? 'B' : 'C';
         const res = { won, rounds: M.rounds, elims: M.elims, soloKills: M.soloKills, deaths: M.deaths, teamDeaths: M.teamDeaths, healed: Math.round(M.healed), saves: M.saves, steps: M.steps, rushes: M.rushes, potg: p, grade, quit, tutorial: tutRes };
-        const card = $('.ow-card'); card.hidden = false; card.classList.add('potg');
-        card.innerHTML = `${img(won ? 'victory' : 'defeat', '', [], 'ow-card-bg')}<div class="ow-potg">${img('potg-kiriko', 'Kiriko')}<div class="ow-potg-stand"></div><div class="ow-potg-copy"><small>PLAY OF THE GAME</small><b>sollee</b><span>Kiriko</span><p>${esc(p.text)}</p></div></div>
+        const card = $('.ow-card'); card.hidden = false; card.classList.add('potg'); el.classList.remove('rushing', 'dove', 'lowhp', 'dead');
+        const n = v => `<dd data-n="${v}">${still ? v : 0}</dd>`;
+        // the replay (drawn, Nov 11): a looping little animation of that kind of moment over Kat's art
+        const kind = ['multi', 'solo', 'suzu', 'step', 'heal'].includes(p.kind) ? p.kind : 'heal';
+        const replay = `<div class="ow-potg-fx k-${kind}" aria-hidden="true"><span class="lb t"></span><span class="lb b"></span><em class="rec">REPLAY</em>${'<i></i>'.repeat(6)}<b class="e1">ELIMINATED</b><b class="e2">ELIMINATED</b></div>`;
+        card.innerHTML = `${img(won ? 'victory' : 'defeat', '', [], 'ow-card-bg')}<div class="ow-potg">${img('potg-kiriko', 'Kiriko')}<div class="ow-potg-stand"></div>${replay}<div class="ow-potg-copy"><small>PLAY OF THE GAME</small><b>sollee</b><span>Kiriko</span><p>${esc(p.text)}</p></div></div>
           <ol class="ow-cards" aria-label="Syracuse">${CARDS.map(([id, tag], i) => `<li${i === 0 ? ' class="me"' : ''}><img src="${ART('card-' + id)}" alt="" draggable="false" onerror="this.parentNode.remove()"><b>${esc(tag)}</b></li>`).join('')}</ol>
-          <dl class="ow-stats"><dt>Eliminations</dt><dd>${M.elims}</dd><dt>Healing</dt><dd>${Math.round(M.healed)}</dd><dt>Suzu saves</dt><dd>${M.saves}</dd><dt>Deaths</dt><dd>${M.deaths}</dd><dt>Series</dt><dd>${M.rounds.filter(r => r.won).length} – ${M.rounds.filter(r => !r.won).length}</dd><dt>Grade</dt><dd class="g">${grade}</dd></dl>
+          <dl class="ow-stats"><dt>Eliminations</dt>${n(M.elims)}<dt>Healing</dt>${n(Math.round(M.healed))}<dt>Suzu saves</dt>${n(M.saves)}<dt>Deaths</dt>${n(M.deaths)}<dt>Series</dt><dd>${M.rounds.filter(r => r.won).length} – ${M.rounds.filter(r => !r.won).length}</dd><dt>Grade</dt><dd class="g g-${grade}">${grade}</dd></dl>
           <button type="button">Continue</button>`;
+        if (!still) [...card.querySelectorAll('dd[data-n]')].forEach((dd, k) => { const v = +dd.dataset.n || 0; for (let f = 1; f <= 20; f++) later(() => { dd.textContent = Math.round(v * f / 20); }, 900 + k * 150 + f * 34); });
         card.querySelector('button').focus();
         card.querySelector('button').onclick = () => { cleanup(); o.onDone?.(res); done(res); };
       };
@@ -330,8 +451,9 @@ window.FemcRegionals = (() => {
         });
         foeEls().forEach((e, j) => {
           const f = R.foes[j], show = !f.down && f.state !== 'hid' && f.spot >= 0;
-          e.hidden = !show; if (!show) return;
+          e.hidden = !show; if (!show) { f._at = -1; return; }
           const sp = SPOTS[f.spot]; e.style.left = sp.x + '%'; e.style.top = sp.y + '%'; e.style.setProperty('--h', sp.h + '%');
+          if (f._at !== f.spot) { f._at = f.spot; restart(e, 'peek', 450); burst(sp.x, sp.y - 1, 5, 'dust', 34, 600); } // drawn: the pop-out
           e.querySelector('.hp i').style.width = `${(f.hp / f.max) * 100}%`; e.classList.toggle('diving', R.me.dove === j);
         });
         $('.ow-mehp i').style.width = `${(R.me.hp / R.me.max) * 100}%`; $('.ow-mehp em').textContent = R.me.down ? `${Math.ceil(R.me.down / 1000)}` : Math.ceil(R.me.hp);
@@ -341,6 +463,11 @@ window.FemcRegionals = (() => {
         const rb = el.querySelector('[data-ab="rush"]'); rb.disabled = R.rush < 100 || !!R.me.down; rb.style.setProperty('--fill', R.rush / 100);
         $('.ow-obj .u').style.width = `${R.us / 2}%`; $('.ow-obj .t').style.width = `${R.them / 2}%`;
         const c = $('.ow-cross'); c.style.left = mouse.x + '%'; c.style.top = mouse.y + '%';
+        // drawn: parallax, the point bar's glow, her low-HP edge, the dive edge, ult ready
+        if (!still && !perf) { el.style.setProperty('--mx', ((mouse.x - 50) / 50).toFixed(3)); el.style.setProperty('--my', ((mouse.y - 50) / 50).toFixed(3)); }
+        const ob = $('.ow-obj'); ob.classList.toggle('near', R.us >= 80 || R.them >= 80); ob.classList.toggle('lead-us', aliveUs() > aliveThem()); ob.classList.toggle('lead-them', aliveThem() > aliveUs());
+        el.classList.toggle('lowhp', !R.me.down && R.me.hp / R.me.max < 0.35); el.classList.toggle('dove', R.me.dove != null);
+        rb.classList.toggle('ready', R.rush >= 100 && !R.me.down && !(R.rushOn > 0));
         c.classList.toggle('on-foe', !!foeAt(mouse)); c.classList.toggle('on-mate', mateAt(mouse) != null);
       };
       const tick = now => {
@@ -360,7 +487,7 @@ window.FemcRegionals = (() => {
             t.anti = Math.max(0, t.anti - dt); t.sleep = Math.max(0, t.sleep - dt); t.inv = Math.max(0, t.inv - dt);
             if (t.heal > 0) { const st = Math.min(t.heal, dt * 0.08); t.heal -= st; mend(i, st); }
             if (t.id === 'haerin' && !t.down) { const low = R.team.filter(x => !x.down && x.hp < x.max).sort((a, b) => a.hp / a.max - b.hp / b.max)[0]; if (low) low.hp = Math.min(low.max, low.hp + dt * 0.018); }
-            if (!prac && !t.down && !t.sleep) { const vis = R.foes.map((f, j) => j).filter(j => !R.foes[j].down && R.foes[j].state !== 'hid'); if (vis.length && Math.random() < dt / 600) hurtFoe(pick(vis), t.dps * 0.6 * (0.7 + Math.random() * 0.6), t, false); }
+            if (!prac && !t.down && !t.sleep) { const vis = R.foes.map((f, j) => j).filter(j => !R.foes[j].down && R.foes[j].state !== 'hid'); if (vis.length && Math.random() < dt / 600) { const j = pick(vis); tracer(mateMid(i), foeMid(j), 'us'); hurtFoe(j, t.dps * 0.6 * (0.7 + Math.random() * 0.6), t, false); } }
           });
           // the other team: peek, shoot, duck
           if (!prac) R.foes.forEach((f, j) => {
@@ -372,8 +499,9 @@ window.FemcRegionals = (() => {
             }
             if (f.state === 'up' && Math.random() < dt / 400) {
               const pool = R.team.map((t, i) => i).filter(i => !R.team[i].down); const tank = pool.includes(0) && Math.random() < 0.45;
-              if (Math.random() < 0.18 && !R.me.down) hurtMe(f.dps * 0.5, f.hero);
-              else if (pool.length) hurtMate(tank ? 0 : pick(pool), f.dps * 0.75 * (0.7 + Math.random() * 0.6), f.hero);
+              const from = foeMid(j); restart(foeEls()[j], 'fire', 180);
+              if (Math.random() < 0.18 && !R.me.down) { tracer(from, { x: rnd(40, 60), y: 98 }, 'them'); hurtMe(f.dps * 0.5, f.hero); }
+              else if (pool.length) { const i = tank ? 0 : pick(pool); tracer(from, mateMid(i), 'them'); hurtMate(i, f.dps * 0.75 * (0.7 + Math.random() * 0.6), f.hero); }
             }
           });
           if (!prac && R.t >= R.next) { plan(); R.next = R.t + (3600 + Math.random() * 3000) * D.gap; }
@@ -401,7 +529,7 @@ window.FemcRegionals = (() => {
         if (over) return;
         e.stopPropagation(); // the scene underneath never sees the match's keys
         const T = TUT(); if (T && T.open() && (e.key === 'Escape' || T.blocking())) return; // the tutorial has the keys
-        if (e.key === 'Escape') { e.preventDefault(); paused = !paused; $('.mg-pause').hidden = !paused; return; }
+        if (e.key === 'Escape') { e.preventDefault(); paused = !paused; $('.mg-pause').hidden = !paused; el.classList.toggle('paused', paused); return; }
         if (paused) return;
         if (/^[1-4]$/.test(e.key)) { e.preventDefault(); ofuda(+e.key - 1); }
         else if (e.key === ' ') { e.preventDefault(); suzu(); }
@@ -409,8 +537,8 @@ window.FemcRegionals = (() => {
         else if (e.key === 'q' || e.key === 'Q') rush();
         else if (e.key === 'r' || e.key === 'R') { if (R && R.kAmmo < 15 && !R.kReload) R.kReload = 1500; }
       };
-      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') { paused = false; $('.mg-pause').hidden = true; } if (b === 'howto') howTo(); if (b === 'quit') { paused = false; $('.mg-pause').hidden = true; finish(true); } };
-      const cleanup = () => { cancelAnimationFrame(raf); window.removeEventListener('keydown', key, true); S.close(); el.remove(); };
+      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') { paused = false; $('.mg-pause').hidden = true; el.classList.remove('paused'); } if (b === 'howto') howTo(); if (b === 'quit') { paused = false; $('.mg-pause').hidden = true; finish(true); } };
+      const cleanup = () => { cancelAnimationFrame(raf); timers.forEach(clearTimeout); timers.clear(); window.removeEventListener('keydown', key, true); S.close(); el.remove(); };
       window.addEventListener('keydown', key, true);
 
       /* the tutorial: a practice round with Minji (nothing shoots back, the point holds still); live = it sets up each moment

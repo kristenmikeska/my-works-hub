@@ -138,3 +138,212 @@
 @keyframes ow-card-in { from { opacity: 0; transform: translateY(20px); } }
 @media (prefers-reduced-motion: reduce) { .ow-cards li { animation: none; } }
 @media (max-height: 760px) { .ow-cards li { width: clamp(52px, 7vw, 84px); } }
+
+/* ── Visual pass (Nov 11 2026, Kat: "as many visuals as possible, as much animation as possible"). All drawn on top of the
+   rules. .still = no motion (the rule above), .calm = no white flashes / crit rings, softer glows, .perf = fewer particles
+   and tracers (JS), no blur or parallax. Effects live in .ow-fx (left / top in % of the stage, set inline). ── */
+.mg-ow.shake .ow-stage { animation: ow-shake .34s steps(4); } .mg-ow.shake-big .ow-stage { animation: ow-shake-big .5s steps(6); }
+@keyframes ow-shake { 25% { translate: -6px 3px; } 50% { translate: 5px -2px; } 75% { translate: -2px 1px; } }
+@keyframes ow-shake-big { 20% { translate: -11px 5px; } 40% { translate: 9px -4px; } 60% { translate: -6px 3px; } 80% { translate: 3px -1px; } }
+.mg-ow.paused .ow-stage *, .mg-ow.paused .ow-card * { animation-play-state: paused !important; }
+/* the map: parallax against the crosshair, lanterns / embers, a light sweep */
+.ow-map { transform: translate(calc(var(--mx, 0) * -1.3%), calc(var(--my, 0) * -.9%)) scale(1.05); transition: transform .35s ease-out; }
+.ow-amb { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.ow-amb i { position: absolute; bottom: -4%; width: var(--sz); aspect-ratio: 1; border-radius: 50%; opacity: 0; animation: ow-rise var(--dur) linear var(--del) infinite; }
+.ow-amb i.ember { background: radial-gradient(circle, #fff1e0, #ff8a5c 45%, transparent 70%); }
+.ow-amb i.lantern { aspect-ratio: 3 / 4; border-radius: 40%; background: radial-gradient(circle at 50% 60%, #ffe2c0, #ff6a6a 55%, rgba(255, 79, 158, 0) 75%); filter: blur(.5px); }
+@keyframes ow-rise { 0% { opacity: 0; transform: translate(0, 0); } 10% { opacity: .75; } 80% { opacity: .5; } 100% { opacity: 0; transform: translate(var(--sx), -95vh); } }
+.ow-sweep { position: absolute; inset: 0; background: linear-gradient(105deg, transparent 42%, rgba(255, 220, 235, .08) 49%, rgba(255, 240, 246, .12) 50%, rgba(255, 220, 235, .08) 51%, transparent 58%) 0 0 / 320% 100%; mix-blend-mode: screen; animation: ow-sweep 13s linear infinite; }
+@keyframes ow-sweep { from { background-position: 100% 0; } to { background-position: -60% 0; } }
+/* the torii corridor (lit during Kitsune Rush) */
+.ow-torii { position: absolute; inset: 0; pointer-events: none; }
+.ow-torii i { --tc: #ff6a9a; position: absolute; left: 50%; bottom: calc(1% + var(--k) * 7%); width: calc(64% - var(--k) * 9.5%); height: calc(48% - var(--k) * 6.8%); translate: -50% 0; opacity: 0;
+  border-left: calc(16px - var(--k) * 2.2px) solid var(--tc); border-right: calc(16px - var(--k) * 2.2px) solid var(--tc); transition: opacity .3s calc(var(--k) * 80ms); }
+.ow-torii i::before, .ow-torii i::after { content: ''; position: absolute; background: var(--tc); }
+.ow-torii i::before { top: 0; left: -14%; right: -14%; height: calc(18px - var(--k) * 2.4px); border-radius: 40% 40% 0 0 / 100% 100% 0 0; }
+.ow-torii i::after { top: 16%; left: -3%; right: -3%; height: calc(10px - var(--k) * 1.3px); }
+.mg-ow.rushing .ow-torii i { opacity: calc(.78 - var(--k) * .1); filter: drop-shadow(0 0 16px rgba(255, 106, 154, .95)); animation: ow-torii 1s ease-in-out calc(var(--k) * -.15s) infinite alternate; }
+@keyframes ow-torii { to { filter: drop-shadow(0 0 30px rgba(255, 170, 200, 1)); } }
+.mg-ow.rushing .ow-stage::after { background: radial-gradient(ellipse at 50% 120%, rgba(255, 120, 150, .3), transparent 60%), linear-gradient(0deg, rgba(255, 79, 158, .12), transparent 40%); }
+/* figures: walk in, flinch, pop out of cover, muzzle flash, telegraph reticles */
+.ow-mate.enter .ow-body > * { animation: ow-enter .7s cubic-bezier(.2, .9, .3, 1.15) both; } /* children only: hit tests read .ow-body's box */
+@keyframes ow-enter { from { opacity: 0; translate: 0 8%; } }
+.ow-mate .ow-body img, .ow-mate .ow-stand { animation: ow-breathe 2.8s ease-in-out infinite; transform-origin: 50% 100%; }
+.ow-mate:nth-child(2) .ow-body img { animation-delay: -.7s; } .ow-mate:nth-child(3) .ow-body img { animation-delay: -1.4s; } .ow-mate:nth-child(4) .ow-body img { animation-delay: -2.1s; }
+@keyframes ow-breathe { 50% { scale: 1.012 1.025; } }
+.ow-foe.hit .ow-body { animation: none; } .ow-foe.hit .ow-body > * { animation: ow-hit .24s ease; }
+.ow-foe.peek .ow-body > * { animation: ow-peek .42s cubic-bezier(.2, .9, .3, 1.2); }
+@keyframes ow-peek { from { translate: 0 45%; clip-path: inset(0 0 45% 0); opacity: .3; } }
+.ow-foe.fire .ow-body > * { animation: ow-recoil .18s ease-out; }
+@keyframes ow-recoil { 40% { translate: 0 -2px; filter: brightness(1.4); } }
+.ow-mate[data-tele]::after { content: attr(data-tele); position: absolute; left: 50%; top: 40%; width: clamp(54px, 7vw, 96px); aspect-ratio: 1; translate: -50% -50%; display: grid; place-items: end center;
+  border: 2px dashed #ff5a4f; border-radius: 50%; color: #ff8a80; font: italic 900 12px/1 var(--cond, sans-serif); letter-spacing: .12em; text-shadow: 0 1px 3px #000; pointer-events: none; animation: ow-reticle 1.5s linear forwards; }
+@keyframes ow-reticle { from { scale: 1.8; rotate: -90deg; opacity: 0; } 30% { scale: 1; rotate: 0deg; opacity: 1; } 100% { scale: .82; rotate: 40deg; } }
+.mg-ow.gravhit .ow-mate .ow-body > * { animation: ow-gravhit .6s ease-out; }
+@keyframes ow-gravhit { 25% { translate: 0 -8px; filter: brightness(1.3); } }
+/* her: a low-HP edge, a red edge while Genji dives her, a crit flash */
+.mg-ow.lowhp .ow-stage::before { content: ''; position: absolute; inset: 0; z-index: 3; pointer-events: none; box-shadow: inset 0 0 140px rgba(255, 50, 90, .45); animation: ow-lowhp .8s ease-in-out infinite alternate; }
+@keyframes ow-lowhp { to { box-shadow: inset 0 0 200px rgba(255, 50, 90, .6); } }
+.mg-ow.dove .ow-hud::before { content: '⚠ DIVE'; position: absolute; left: 50%; bottom: 30%; translate: -50% 0; padding: 6px 16px; background: rgba(20, 7, 15, .85); border: 2px solid var(--pk); color: var(--pk2); font: italic 900 16px/1 var(--cond, sans-serif); letter-spacing: .2em; animation: ow-blink .35s steps(2) infinite; }
+.mg-ow.dove .ow-stage { box-shadow: inset 0 0 0 3px rgba(141, 255, 176, .6), inset 0 -120px 120px -60px rgba(141, 255, 176, .25); }
+@keyframes ow-blink { 50% { opacity: .35; } }
+.mg-ow.critflash .ow-stage { animation: ow-critflash .16s ease-out; }
+@keyframes ow-critflash { 30% { filter: brightness(1.35) contrast(1.1); } }
+.mg-ow.calm.critflash .ow-stage { animation: none; }
+/* hands: the left throws ofuda */
+.ow-hands { animation: ow-bob 3.2s ease-in-out infinite; }
+@keyframes ow-bob { 50% { translate: 0 5px; } }
+.ow-hands.throw { animation: ow-throw-r .2s ease; } .ow-hands.throw-l { animation: ow-throw-l .24s ease; }
+@keyframes ow-throw-r { 40% { transform: translate(8px, -14px) rotate(1.5deg); } }
+@keyframes ow-throw-l { 40% { transform: translate(-8px, -14px) rotate(-1.5deg); } }
+/* HUD: point bar glow, kit squash and shimmer, banner, feed flash */
+.ow-obj .bar i { transition: width .2s ease-out; box-shadow: 0 0 10px currentColor; } .ow-obj .u { color: var(--us); } .ow-obj .t { color: var(--them); }
+.ow-obj.lead-us .bar { box-shadow: 0 0 14px rgba(255, 79, 158, .55); } .ow-obj.lead-them .bar { box-shadow: 0 0 14px rgba(255, 90, 79, .55); }
+.ow-obj.near .bar { animation: ow-near .45s ease-in-out infinite alternate; }
+@keyframes ow-near { to { scale: 1.04 1.25; } }
+.ow-ab:active { animation: ow-press .2s ease-out; }
+@keyframes ow-press { 35% { scale: .9 1.08; } 70% { scale: 1.05 .96; } }
+.ow-ab:not(:disabled)::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, .5) 50%, transparent 65%) 0 0 / 260% 100%; animation: ow-shine 2.4s ease-in-out infinite; }
+@keyframes ow-shine { from { background-position: 130% 0; } 60%, to { background-position: -30% 0; } }
+.ow-ab.ult.ready { animation: ow-ult 1s ease-in-out infinite alternate; }
+@keyframes ow-ult { to { box-shadow: 0 0 22px var(--pk), 0 0 46px rgba(255, 154, 200, .55); } }
+.ow-call.slam { animation: ow-slam .35s cubic-bezier(.2, .9, .3, 1.3); }
+@keyframes ow-slam { from { scale: 1.4; } }
+.ow-feed li { animation: ow-in .3s cubic-bezier(.2, .9, .3, 1.2), ow-feedflash .6s ease-out; }
+@keyframes ow-feedflash { from { background: rgba(255, 79, 158, .55); } }
+.ow-banner { position: absolute; left: 50%; top: 34%; z-index: 4; display: grid; justify-items: center; gap: 6px; translate: -50% -50%; pointer-events: none; opacity: 0; text-align: center; }
+.ow-banner b { font: italic 900 clamp(38px, 6.5vw, 88px)/1 var(--cond, sans-serif); letter-spacing: .05em; color: #fff; text-shadow: 4px 4px 0 var(--pk), 0 0 30px rgba(0, 0, 0, .7); transform: skewX(-10deg); }
+.ow-banner small { padding: 5px 14px; background: rgba(20, 7, 15, .85); border-left: 3px solid var(--pk); font: italic 800 14px/1 var(--cond, sans-serif); letter-spacing: .16em; color: var(--pk2); transform: skewX(-10deg); }
+.ow-banner.fight b { color: var(--pk); text-shadow: 4px 4px 0 var(--nt), 0 0 40px rgba(255, 79, 158, .6); font-size: clamp(54px, 9vw, 120px); }
+.ow-banner.multi { top: 24%; } .ow-banner.multi b, .ow-banner.save b, .ow-banner.rush b { font-size: clamp(28px, 4vw, 52px); color: var(--pk2); }
+.ow-banner.on { animation: ow-banner 1.5s cubic-bezier(.2, .9, .3, 1) forwards; }
+@keyframes ow-banner { 0% { opacity: 0; scale: 1.7; } 12% { opacity: 1; scale: 1; } 80% { opacity: 1; translate: -50% -50%; } 100% { opacity: 0; translate: -36% -50%; } }
+.mg-ow.still .ow-banner.on { opacity: 1; }
+/* the fx layer */
+.ow-fx > i { position: absolute; display: block; pointer-events: none; }
+.ow-pt { width: 7px; height: 7px; margin: -3.5px; border-radius: 50%; opacity: 0; animation: ow-pt .7s ease-out var(--del, 0ms) forwards; }
+@keyframes ow-pt { 0% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(.3); } }
+.ow-pt.spark { width: 11px; height: 3px; border-radius: 2px; background: #fff; box-shadow: 0 0 6px #ffd1e6; }
+.ow-pt.crit { width: 12px; height: 3px; border-radius: 2px; background: #ffe39a; box-shadow: 0 0 8px #ffd166; }
+.ow-pt.heal { background: #9dffc0; box-shadow: 0 0 8px #9dffc0; } .ow-pt.anti { background: #c9a2ff; box-shadow: 0 0 8px #a07bff; }
+.ow-pt.suzu { background: #ffd1e6; box-shadow: 0 0 10px var(--pk2); } .ow-pt.down { background: #ff8a80; }
+.ow-pt.shard { width: 9px; height: 9px; border-radius: 1px; background: var(--them); transform: rotate(45deg); animation-duration: .9s; }
+.ow-pt.dust { width: 14px; height: 14px; margin: -7px; background: radial-gradient(circle, rgba(220, 200, 190, .55), transparent 70%); animation-duration: .6s; }
+.ow-pt.paper { width: 7px; height: 11px; border-radius: 1px; background: #fff7d6; box-shadow: 0 0 6px #9dffc0; }
+.ow-streak { height: 3px; margin-top: -1.5px; width: var(--len); transform-origin: 0 50%; transform: rotate(var(--ang)); border-radius: 2px; animation: ow-streak var(--ms) ease-out forwards; }
+.ow-streak.kunai { height: 2px; background: linear-gradient(90deg, rgba(255, 255, 255, 0), #fff); box-shadow: 0 0 6px rgba(255, 154, 200, .9); }
+.ow-streak.heal { background: linear-gradient(90deg, rgba(157, 255, 192, 0), #e8fff0); box-shadow: 0 0 8px #9dffc0; }
+.ow-streak.step { height: 10px; margin-top: -5px; background: linear-gradient(90deg, rgba(255, 154, 200, 0), #ffe3ef 70%, #fff); box-shadow: 0 0 20px var(--pk); filter: blur(1px); }
+.ow-streak.dart { height: 2px; background: linear-gradient(90deg, rgba(201, 162, 255, 0), #e2ccff); box-shadow: 0 0 6px #a07bff; }
+@keyframes ow-streak { 0% { clip-path: inset(0 100% 0 0); } 65% { clip-path: inset(0 0 0 0); opacity: 1; } 100% { clip-path: inset(0 0 0 100%); opacity: 0; } }
+.ow-tracer { height: 2px; margin-top: -1px; width: var(--len); transform-origin: 0 50%; transform: rotate(var(--ang)); animation: ow-tracer var(--ms) linear forwards; }
+.ow-tracer.us { background: linear-gradient(90deg, transparent, rgba(255, 200, 225, .9)); } .ow-tracer.them { background: linear-gradient(90deg, transparent, rgba(255, 140, 120, .95)); }
+@keyframes ow-tracer { 0% { clip-path: inset(0 100% 0 0); } 50% { clip-path: inset(0 0 0 40%); } 100% { clip-path: inset(0 0 0 100%); } }
+.ow-flash { width: 18px; height: 18px; margin: -9px; border-radius: 50%; animation: ow-muzzle .16s ease-out forwards; }
+.ow-flash.us { background: radial-gradient(circle, #fff, rgba(255, 154, 200, .7) 40%, transparent 70%); } .ow-flash.them { background: radial-gradient(circle, #fff3e0, rgba(255, 120, 90, .8) 40%, transparent 70%); }
+@keyframes ow-muzzle { from { transform: scale(1.4); } to { transform: scale(.3); opacity: 0; } }
+.ow-ofuda, .ow-nade { width: 13px; height: 22px; margin: -11px -6px; background: linear-gradient(180deg, #fff7d6 0 30%, #ff4f9e 30% 38%, #fff7d6 38%); box-shadow: 0 0 12px #9dffc0; animation: ow-fly var(--ms) cubic-bezier(.3, .6, .4, 1) forwards; }
+.ow-nade { width: 12px; height: 12px; margin: -6px; border-radius: 50%; background: #c9a2ff; box-shadow: 0 0 12px #a07bff; animation-name: ow-lob; }
+@keyframes ow-fly { to { transform: translate(var(--dx), var(--dy)) rotate(720deg); } }
+@keyframes ow-lob { 50% { transform: translate(calc(var(--dx) / 2), calc(var(--dy) / 2 - 60px)); } to { transform: translate(var(--dx), var(--dy)); } }
+.ow-bell { width: 38px; height: 38px; margin: -19px; border-radius: 50% 50% 18% 18%; background: radial-gradient(circle at 50% 86%, var(--pk) 0 4px, transparent 5px), linear-gradient(180deg, #fff, #ffd1e6); box-shadow: 0 0 14px var(--pk2); animation: ow-fly var(--ms) cubic-bezier(.2, .8, .4, 1) forwards; }
+.ow-bell.ring { animation: ow-bell .8s ease-out forwards; }
+@keyframes ow-bell { 0% { rotate: -26deg; scale: 1.25; } 20% { rotate: 22deg; } 40% { rotate: -14deg; } 60% { rotate: 8deg; opacity: 1; } 100% { rotate: 0deg; opacity: 0; translate: 0 -24px; } }
+.ow-cleanse { width: 80px; height: 30px; margin: -15px -40px; border-radius: 50%; border: 4px solid var(--pk2); box-shadow: 0 0 30px var(--pk2), inset 0 0 20px rgba(255, 154, 200, .5); animation: ow-cleanse 1s cubic-bezier(.2, .7, .3, 1) forwards; }
+.ow-cleanse.two { animation-delay: .15s; opacity: 0; }
+@keyframes ow-cleanse { 0% { opacity: 1; transform: scale(.2); } 100% { opacity: 0; transform: scale(14); border-width: 1px; } }
+.ow-ring { width: 20px; height: 20px; margin: -10px; border-radius: 50%; border: 3px solid #9dffc0; animation: ow-ringout .6s ease-out forwards; }
+.ow-ring.crit { border-color: #ffd166; } .ow-ring.elim { border-color: var(--pk); border-width: 4px; }
+@keyframes ow-ringout { to { transform: scale(5); opacity: 0; border-width: 1px; } }
+.ow-star { width: 44px; height: 44px; margin: -22px; background: conic-gradient(from 0deg, #ffe39a 0 8%, transparent 8% 25%, #ffe39a 25% 33%, transparent 33% 50%, #ffe39a 50% 58%, transparent 58% 75%, #ffe39a 75% 83%, transparent 83%); border-radius: 50%; -webkit-mask: radial-gradient(circle, #000 15%, transparent 70%); mask: radial-gradient(circle, #000 15%, transparent 70%); animation: ow-star .5s ease-out forwards; }
+@keyframes ow-star { from { transform: scale(.4) rotate(0); } 40% { transform: scale(1.4) rotate(40deg); opacity: 1; } to { transform: scale(1.6) rotate(70deg); opacity: 0; } }
+.ow-puff { width: 26px; height: 26px; margin: -13px; border-radius: 50%; background: radial-gradient(circle, rgba(230, 210, 200, .55), transparent 70%); animation: ow-puff .5s ease-out forwards; }
+@keyframes ow-puff { to { transform: scale(2.2); opacity: 0; } }
+.ow-ghost { height: var(--h); aspect-ratio: 1 / 2; transform: translate(-50%, -100%); animation: ow-ghost .9s ease-in forwards; }
+.ow-ghost .ow-body { height: 100%; }
+@keyframes ow-ghost { 0% { filter: brightness(2.4) saturate(0); } 30% { filter: brightness(1.5) saturate(.3); clip-path: inset(0 0 0 0); } 100% { opacity: 0; filter: brightness(1) blur(4px); clip-path: inset(0 0 100% 0); translate: 0 -10px; } }
+.ow-vortex { width: 340px; height: 200px; margin: -100px -170px; border-radius: 50%; background: conic-gradient(from 0deg, transparent, rgba(190, 90, 255, .55), transparent 35%, rgba(255, 79, 158, .5) 60%, transparent 80%); -webkit-mask: radial-gradient(ellipse, transparent 16%, #000 30%, transparent 70%); mask: radial-gradient(ellipse, transparent 16%, #000 30%, transparent 70%); animation: ow-vortex 1.9s ease-in forwards; }
+@keyframes ow-vortex { 0% { opacity: 0; transform: scale(.3) rotate(0); } 30% { opacity: 1; } 78% { opacity: 1; transform: scale(1.3) rotate(560deg); } 100% { opacity: 0; transform: scale(.1) rotate(900deg); } }
+.ow-implode { width: 60px; height: 60px; margin: -30px; border-radius: 50%; background: radial-gradient(circle, #fff, rgba(190, 90, 255, .8) 40%, transparent 70%); animation: ow-implode .7s ease-out forwards; }
+@keyframes ow-implode { 0% { transform: scale(7); opacity: .9; } 100% { transform: scale(.2); opacity: 0; } }
+.ow-splash { width: 130px; height: 90px; margin: -45px -65px; border-radius: 46% 54% 40% 60%; background: radial-gradient(ellipse, rgba(201, 162, 255, .7), rgba(140, 90, 255, .25) 55%, transparent 70%); animation: ow-splash .8s ease-out forwards; }
+@keyframes ow-splash { from { transform: scale(.2); opacity: 1; } to { transform: scale(1.5) rotate(20deg); opacity: 0; } }
+.ow-slash { width: 220px; height: 5px; margin: -2px -110px; background: linear-gradient(90deg, transparent, #d6ffe4 40%, #fff 50%, #d6ffe4 60%, transparent); box-shadow: 0 0 14px #8dffb0; transform: rotate(-32deg) scaleX(0); animation: ow-slash .45s ease-out forwards; }
+.ow-slash.two { animation-name: ow-slash2; }
+@keyframes ow-slash { 30% { transform: rotate(-32deg) scaleX(1); opacity: 1; } 100% { transform: rotate(-32deg) scaleX(1.1); opacity: 0; } }
+@keyframes ow-slash2 { 0% { transform: rotate(28deg) scaleX(0); } 30% { transform: rotate(28deg) scaleX(1); opacity: 1; } 100% { transform: rotate(28deg) scaleX(1.1); opacity: 0; } }
+.ow-shield { width: 120px; height: 150px; margin: -75px -60px; border: 3px solid var(--pk2); border-radius: 46% 46% 40% 40% / 30% 30% 70% 70%; background: rgba(255, 154, 200, .12); box-shadow: 0 0 22px var(--pk2), inset 0 0 22px rgba(255, 154, 200, .4); animation: ow-shield .7s ease-out forwards; }
+@keyframes ow-shield { 0% { transform: scale(.6); opacity: 0; } 25% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(1.3); opacity: 0; } }
+.ow-beat { width: 50px; height: 50px; margin: -25px; border-radius: 50%; border: 3px solid #b8ff4f; animation: ow-ringout 1.1s ease-out forwards; } .ow-beat.two { animation-delay: .35s; opacity: 0; }
+.ow-zzz { translate: -50% 0; font: italic 900 22px/1 var(--cond, sans-serif); color: #e2ccff; text-shadow: 0 0 10px #a07bff; animation: ow-zzz 1.4s ease-out forwards; }
+.ow-zzz::before { content: 'Z z z'; }
+@keyframes ow-zzz { from { opacity: 0; translate: -50% 10px; } 20% { opacity: 1; } to { opacity: 0; translate: -30% -50px; } }
+.ow-fox { width: clamp(140px, 16vw, 220px); margin: -70px 0 0 -100px; filter: drop-shadow(0 0 18px var(--pk)) drop-shadow(0 20px 20px rgba(255, 154, 200, .5)); animation: ow-fox 1.6s cubic-bezier(.3, .1, .5, 1) forwards; }
+.ow-fox svg { display: block; width: 100%; height: auto; }
+@keyframes ow-fox { 0% { transform: translateY(0) scale(1.4); opacity: 1; } 25% { transform: translateY(-14vh) scale(1) translateX(-10px); } 50% { transform: translateY(-26vh) scale(.62) translateX(10px); } 80% { opacity: 1; } 100% { transform: translateY(-40vh) scale(.2); opacity: 0; } }
+/* round card: slam, glint, series pips */
+.ow-card.in .ow-big { animation: ow-bigslam .55s cubic-bezier(.3, 1.4, .5, 1) both; }
+@keyframes ow-bigslam { from { scale: 2.6; opacity: 0; letter-spacing: .3em; } }
+.ow-card.in .ow-big::after { content: attr(data-t); position: absolute; inset: 0; color: transparent; background: linear-gradient(110deg, transparent 40%, rgba(255, 255, 255, .85) 50%, transparent 60%) 0 0 / 300% 100%; -webkit-background-clip: text; background-clip: text; animation: ow-glint 1.1s ease-in-out .5s both; }
+.ow-big { position: relative; }
+@keyframes ow-glint { from { background-position: 120% 0; } to { background-position: -40% 0; } }
+.ow-card.in > p { animation: ow-enter .45s ease-out .25s both; } .ow-card.in > .ow-card-bg { animation: ow-kb 3s ease-out both; }
+@keyframes ow-kb { from { transform: scale(1.12); filter: brightness(1.5); } }
+.ow-pips { display: flex; gap: 8px; justify-content: center; } .ow-pips i { width: 26px; height: 8px; background: rgba(255, 255, 255, .2); transform: skewX(-14deg); }
+.ow-pips i.w { background: var(--pk); box-shadow: 0 0 10px var(--pk); } .ow-pips i.l { background: #ff6b6b; }
+.ow-card.in .ow-pips i:last-of-type.w, .ow-card.in .ow-pips i:last-of-type.l { animation: ow-pip .5s ease-out .5s both; }
+@keyframes ow-pip { from { scale: 2 2; opacity: 0; } }
+/* Play of the Game: a looping replay over the art */
+.ow-potg > img { animation: ow-kb2 9s ease-in-out infinite alternate; transform-origin: 70% 40%; }
+@keyframes ow-kb2 { from { transform: scale(1.02); } to { transform: scale(1.14) translateX(-2%); } }
+.ow-potg-fx { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.ow-potg-fx .lb { position: absolute; left: 0; right: 0; height: 9%; background: #000; } .ow-potg-fx .lb.t { top: 0; } .ow-potg-fx .lb.b { bottom: 0; }
+.ow-potg-fx .rec { position: absolute; right: 3%; top: 12%; font: italic 900 14px/1 var(--cond, sans-serif); letter-spacing: .2em; color: #fff; text-shadow: 0 1px 3px #000; font-style: normal; }
+.ow-potg-fx .rec::before { content: ''; display: inline-block; width: 10px; height: 10px; margin-right: 8px; border-radius: 50%; background: #ff3b5c; animation: ow-blink .9s steps(2) infinite; }
+.ow-potg-fx::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0, 0, 0, .14) 0 1px, transparent 1px 3px); }
+.ow-potg-fx i { position: absolute; display: block; opacity: 0; }
+.ow-potg-fx b { position: absolute; opacity: 0; font: italic 900 clamp(18px, 2.2vw, 28px)/1 var(--cond, sans-serif); color: var(--pk); letter-spacing: .08em; text-shadow: 0 2px 6px #000; }
+.ow-potg-fx b.e1 { left: 62%; top: 30%; } .ow-potg-fx b.e2 { left: 70%; top: 52%; }
+/* multi / solo: kunai streaks and ELIMINATED pops */
+.k-multi i, .k-solo i { left: 30%; height: 3px; width: 46%; background: linear-gradient(90deg, transparent, #fff); box-shadow: 0 0 8px var(--pk2); animation: ow-pk 3s ease-out infinite; }
+.k-multi i:nth-of-type(1), .k-solo i:nth-of-type(1) { top: 34%; rotate: -6deg; } .k-multi i:nth-of-type(2), .k-solo i:nth-of-type(2) { top: 44%; rotate: 2deg; animation-delay: .15s; }
+.k-multi i:nth-of-type(3) { top: 56%; rotate: 8deg; animation-delay: 1s; } .k-multi i:nth-of-type(4) { top: 40%; rotate: -2deg; animation-delay: 1.15s; }
+.k-multi b.e1, .k-solo b.e1 { animation: ow-pkpop 3s ease-out .3s infinite; } .k-multi b.e2 { animation: ow-pkpop 3s ease-out 1.3s infinite; }
+@keyframes ow-pk { 0% { opacity: 0; clip-path: inset(0 100% 0 0); } 5% { opacity: 1; } 15% { clip-path: inset(0 0 0 0); } 28%, 100% { opacity: 0; clip-path: inset(0 0 0 100%); } }
+@keyframes ow-pkpop { 0% { opacity: 0; scale: 1.6; } 6% { opacity: 1; scale: 1; } 30% { opacity: 1; translate: 0 -8px; } 40%, 100% { opacity: 0; translate: 0 -16px; } }
+.k-solo i:nth-of-type(n+3) { left: 20%; top: 60%; width: 60%; height: 12px; background: linear-gradient(90deg, transparent, #ffe3ef); filter: blur(1px); animation-delay: .9s; }
+/* suzu: bell rings out waves */
+.k-suzu i { left: 62%; top: 46%; width: 30px; height: 30px; margin: -15px; border-radius: 50%; border: 3px solid var(--pk2); animation: ow-pw 2.4s ease-out infinite; }
+.k-suzu i:nth-of-type(2) { animation-delay: .4s; } .k-suzu i:nth-of-type(3) { animation-delay: .8s; } .k-suzu i:nth-of-type(n+4) { display: none; }
+@keyframes ow-pw { 0% { opacity: .9; transform: scale(.3); } 100% { opacity: 0; transform: scale(9); } }
+/* step: a blink streak back and forth */
+.k-step i { left: 10%; top: 50%; width: 80%; height: 10px; background: linear-gradient(90deg, transparent, #ffe3ef 70%, #fff); box-shadow: 0 0 18px var(--pk); animation: ow-pk 2.2s ease-out infinite; } .k-step i:nth-of-type(2) { top: 58%; animation-delay: .1s; height: 4px; } .k-step i:nth-of-type(n+3) { display: none; }
+/* heal: sparkles rising */
+.k-heal i { bottom: 10%; width: 8px; height: 8px; border-radius: 50%; background: #9dffc0; box-shadow: 0 0 10px #9dffc0; animation: ow-hrise 2.6s ease-out infinite; }
+.k-heal i:nth-of-type(1) { left: 55%; } .k-heal i:nth-of-type(2) { left: 62%; animation-delay: .4s; } .k-heal i:nth-of-type(3) { left: 70%; animation-delay: .8s; } .k-heal i:nth-of-type(4) { left: 78%; animation-delay: 1.2s; } .k-heal i:nth-of-type(5) { left: 66%; animation-delay: 1.6s; } .k-heal i:nth-of-type(6) { left: 58%; animation-delay: 2s; }
+@keyframes ow-hrise { 0% { opacity: 0; transform: none; } 15% { opacity: 1; } 100% { opacity: 0; transform: translateY(-30vh); } }
+.k-suzu b, .k-step b, .k-heal b { display: none; }
+.ow-card.potg .ow-potg { animation: ow-enter .5s ease-out both; } .ow-potg-copy > * { animation: ow-copy .5s cubic-bezier(.2, .9, .3, 1.2) both; }
+.ow-potg-copy > :nth-child(2) { animation-delay: .12s; } .ow-potg-copy > :nth-child(3) { animation-delay: .22s; } .ow-potg-copy > :nth-child(4) { animation-delay: .34s; }
+@keyframes ow-copy { from { opacity: 0; translate: -40px 0; } }
+.ow-stats > * { animation: ow-enter .4s ease-out .7s both; }
+.ow-stats dd.g { display: inline-block; animation: ow-stamp .55s cubic-bezier(.3, 1.4, .5, 1) 1.8s both; rotate: -6deg; justify-self: center; }
+.ow-stats dd.g.g-S { text-shadow: 0 0 20px var(--pk); }
+@keyframes ow-stamp { from { scale: 3; rotate: -24deg; opacity: 0; } 70% { scale: .9; opacity: 1; } to { scale: 1; rotate: -6deg; } }
+/* Reduce flashes: no white bursts, rings or glints, softer glows */
+.mg-ow.calm .ow-implode { background: radial-gradient(circle, rgba(190, 90, 255, .5), transparent 70%); }
+.mg-ow.calm .ow-flash { background: radial-gradient(circle, rgba(255, 154, 200, .5), transparent 70%); }
+.mg-ow.calm .ow-star, .mg-ow.calm .ow-ab::before, .mg-ow.calm .ow-card.in .ow-big::after, .mg-ow.calm .ow-sweep { display: none; }
+.mg-ow.calm .ow-cleanse { box-shadow: none; } .mg-ow.calm .ow-slash { background: linear-gradient(90deg, transparent, #8dffb0, transparent); box-shadow: none; }
+.mg-ow.calm .ow-ghost { animation-name: ow-ghost-calm; }
+@keyframes ow-ghost-calm { to { opacity: 0; clip-path: inset(0 0 100% 0); } }
+.mg-ow.calm.dove .ow-hud::before { animation: none; }
+.mg-ow.calm .ow-card.in > .ow-card-bg { animation-name: ow-kb-calm; }
+@keyframes ow-kb-calm { from { transform: scale(1.12); } }
+/* Performance: no blur, no parallax, lighter layers */
+.mg-ow.perf .ow-map { transform: scale(1.05); transition: none; } .mg-ow.perf .ow-sweep { display: none; }
+.mg-ow.perf .ow-amb i.lantern, .mg-ow.perf .ow-streak.step, .mg-ow.perf .ow-fox, .mg-ow.perf .ow-ghost, .mg-ow.perf.stepping .ow-stage { filter: none; }
+.mg-ow.perf.stepping .ow-stage { animation: none; } .mg-ow.perf .ow-torii i { filter: none !important; animation: none !important; }
+.mg-ow.perf .ow-mate .ow-body img, .mg-ow.perf .ow-mate .ow-stand { animation: none; }
+@media (max-width: 760px) { .ow-banner b { font-size: clamp(30px, 10vw, 54px); } .mg-ow.dove .ow-hud::before { bottom: 36%; } }
+@media (prefers-reduced-motion: reduce) { .ow-amb, .ow-potg-fx i, .ow-potg-fx b { display: none; } }

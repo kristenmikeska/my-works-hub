@@ -56,7 +56,24 @@
    step): hold (Space / mouse / finger) → the Slipping meter and pips → let go to refill breath → while holding, rest on one
    glowing anchor → a real one and a false one (bone-white glow, misspelled words): take the real one → Esc pauses. Then the
    real run starts fresh. result.tutorial = 'done' | 'skipped' | 'seen' (not shown). Pause menu → How to play replays it as a
-   walkthrough over the paused room (Next on every step) and returns to the pause menu. */
+   walkthrough over the paused room (Next on every step) and returns to the pause menu.
+
+   Visual pass (Nov 11 2026, Kat: "as many visuals as possible, as much animation as possible", here with restraint: creepy, not
+   busy; the rules, tells and result are unchanged, the extra tells only repeat the existing ones):
+     the room   dust motes in the lamp's light that drift slowly, get pulled toward the pull's side in a surge and stop dead in
+                the silence before one; shadows in the corners that breathe (slow in the quiet, quicker as it builds); the
+                lamp's glow flickers during the pull, more as the glitch grows (never in the silence); a dark creep from the
+                pull's side across the build; the room leans a little toward the pull in a surge; one slow heartbeat of the
+                vignette in the silence. The window: snow falling, breath-fog on the glass; once her reflection freezes, its
+                head tilts, very slowly.
+     her        a slow breath; quicker and tense while holding, shaky when out of breath.
+     anchors    the icon breathes with the ring (so a lagging one is out of step in both: the same tell), a few motes in its
+                own glow colour (the same colour tell), a faint thread to her that fills with the ring; taken = a soft bloom and
+                motes that drift to her; a false one taken = it cracks and bone flakes fall.
+     HUD        meters ease; Slipping glows past 70%; a lost pip shakes. End: the grade presses in slowly, the stats count up;
+                held = warm light and rising motes, slipped = the motes settle.
+   Settings: reduced motion = none of the motion (static motes and shadows, no lean / tilt / thread growth beyond a fade),
+   Reduce flashes = the flicker only dims softly, no thump, Performance = a third of the motes, no fog blur. */
 window.FemcHoldOn = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const base = () => (window.FemcGame && window.FemcGame.base) || (document.querySelector('script[src*="minigames/holdon"]')?.src.split('assets/')[0]) || '';
@@ -113,7 +130,7 @@ window.FemcHoldOn = (() => {
   const REFL = `<svg viewBox="0 0 200 240" aria-hidden="true"><path d="${BODY}" fill="rgba(232,221,208,.5)"/></svg>`;
   // the room's props (scenery, never clickable)
   const PROPS = `
-    <div class="hp hp-window"><div class="hp-snow"></div><div class="hp-refl">${REFL}</div></div>
+    <div class="hp hp-window"><div class="hp-snow"></div><div class="hp-snow two"></div><div class="hp-refl">${REFL}</div><div class="hp-fog"></div></div>
     <div class="hp hp-coat"><svg viewBox="0 0 40 60" aria-hidden="true"><path d="M8 4h24" stroke="#4a1f30" stroke-width="3" stroke-linecap="round"/><path d="M20 4v5" stroke="#4a1f30" stroke-width="2"/><path d="M20 9c-6 0-11 4-12 10l-4 36h32l-4-36c-1-6-6-10-12-10z" fill="#2a1018" stroke="#5a2a3c" stroke-width="1.2"/></svg></div>
     <div class="hp hp-clock"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#1a0b12" stroke="#cfc3b6" stroke-width="2" opacity=".85"/>${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(i => `<path d="M24 5v3" stroke="#cfc3b6" stroke-width="1.6" transform="rotate(${i * 30} 24 24)"/>`).join('')}<path class="hh" d="M24 24v-10" stroke="#e8ddd0" stroke-width="2.6" stroke-linecap="round"/><path class="mh" d="M24 24v-15" stroke="#e8ddd0" stroke-width="1.8" stroke-linecap="round"/><path class="sh" d="M24 27v-19" stroke="#ff4f9e" stroke-width="1" stroke-linecap="round"/><circle cx="24" cy="24" r="1.6" fill="#ff4f9e"/></svg></div>
     <div class="hp hp-frame"><svg viewBox="0 0 64 48" aria-hidden="true"><rect x="2" y="2" width="60" height="44" fill="#1a0b12" stroke="#5a2a3c" stroke-width="3"/><rect x="6" y="6" width="52" height="36" fill="#3a1a26"/>${[14, 26, 38, 50].map((x, i) => `<g data-f="${i}"><circle cx="${x}" cy="${i === 3 ? 24 : 20}" r="${i === 3 ? 3.4 : 4.2}" fill="#cfc3b6" opacity=".7"/><path d="M${x - 6} 42a6 ${i === 3 ? 9 : 12} 0 0 1 12 0z" fill="#cfc3b6" opacity=".6"/></g>`).join('')}</svg></div>
@@ -150,6 +167,8 @@ window.FemcHoldOn = (() => {
       const pts = new Map(); let mouse = null, space = false;
       const holding = () => !st.paused && (pts.size > 0 || space);
       const bg = BG(o.bg || 'epi-r-her-room-night');
+      // dust in the lamp's light (Nov 11 visual pass): each mote its own slow path
+      const motes = Array.from({ length: perf ? 7 : 22 }, () => `<i style="left:${(Math.random() * 100).toFixed(1)}%;top:${(Math.random() * 100).toFixed(1)}%;--sz:${(1 + Math.random() * 2.4).toFixed(1)}px;--dur:${(14 + Math.random() * 16).toFixed(1)}s;--del:${(-Math.random() * 30).toFixed(1)}s;--mx:${(Math.random() * 60 - 30).toFixed(0)}px;--my:${(Math.random() * 50 - 25).toFixed(0)}px"></i>`).join('');
       const timers = new Set();
       const later = (fn, ms) => { const id = setTimeout(() => { timers.delete(id); fn(); }, ms); timers.add(id); return id; };
       const el = document.createElement('div');
@@ -160,12 +179,13 @@ window.FemcHoldOn = (() => {
         <div class="ho-scene">
           <div class="ho-room"><img class="ho-bg" src="${bg}" alt="" onerror="this.remove()"></div>
           <div class="ho-props">${PROPS}</div>
-          <div class="ho-sick"></div>
+          <div class="ho-lamp"></div><div class="ho-shaft">${motes}</div>
+          <div class="ho-sick"></div><div class="ho-shade"></div><div class="ho-creep"></div>
           <div class="ho-split"><i style="background-image:url('${bg}')"></i></div>
           ${[0, 1, 2].map(() => `<div class="ho-band" style="background-image:url('${bg}')"></div>`).join('')}
           <div class="ho-her"><img src="${ART('solar')}" alt="" onerror="this.remove()">${FIGURE}</div>
           <div class="ho-streaks"></div><div class="ho-static"></div><div class="ho-scan"></div><div class="ho-edge"></div>
-          <div class="ho-anchors"></div>
+          <div class="ho-anchors"></div><div class="ho-fx"></div>
         </div>
         <div class="ho-black"></div><div class="ho-sting"></div>
         <div class="ho-top"><b class="ho-name" data-t="HOLD ON">HOLD ON</b><span class="ho-phase" data-t="Quiet">Quiet</span><span class="ho-clock">1:15</span></div>
@@ -185,6 +205,18 @@ window.FemcHoldOn = (() => {
       const bands = [...el.querySelectorAll('.ho-band')], her = $('.ho-her'), anchorsEl = $('.ho-anchors'), refl = $('.hp-refl');
       const hands = { h: $('.hp-clock .hh'), m: $('.hp-clock .mh'), s: $('.hp-clock .sh') };
       const say = (txt, kind = '') => { const c = $('.ho-say'); c.textContent = txt; c.className = 'ho-say on ' + kind; clearTimeout(say.t); say.t = later(() => c.classList.remove('on'), 2200); };
+      /* the drawn side (Nov 11 visual pass): a few soft particles, the lamp's flicker. V never feeds the rules. */
+      const V = { flick: 1, flickEnd: 0, flickAt: 4000 };
+      const fxL = $('.ho-fx');
+      const motesAt = (x, y, n, cls, tx, ty) => { // x / y in % of the screen; tx / ty = where they drift (px)
+        if (still) return;
+        n = perf ? Math.ceil(n / 3) : n;
+        for (let k = 0; k < n; k++) {
+          const m = document.createElement('i'); m.className = 'ho-mote ' + cls; m.style.left = `${x.toFixed(1)}%`; m.style.top = `${y.toFixed(1)}%`;
+          m.style.setProperty('--tx', `${(tx + (Math.random() - 0.5) * 50).toFixed(0)}px`); m.style.setProperty('--ty', `${(ty + (Math.random() - 0.5) * 40).toFixed(0)}px`);
+          m.style.setProperty('--del', `${(k * 70).toFixed(0)}ms`); fxL.appendChild(m); later(() => m.remove(), 1900);
+        }
+      };
 
       /* sound: Web Audio, made here */
       let ac = null, A = null;
@@ -359,7 +391,11 @@ window.FemcHoldOn = (() => {
         b.style.left = a.slot[0] + '%'; b.style.top = a.slot[1] + '%';
         const cap = T.includes('text') ? (th.bad2 && Math.random() < 0.5 ? th.bad2 : th.bad) : th.cap;
         const art = T.includes('odd') ? SVG_ODD[th.id] : SVG[th.id];
-        b.innerHTML = `<span class="ho-ring"></span><svg viewBox="0 0 48 48" aria-hidden="true">${art}</svg><b>${a.key}</b><small>${esc(th.sense)}</small><em>${esc(cap)}</em>`;
+        // drawn (Nov 11): a faint thread to her that fills with the ring (ho-tether), a few motes in its own glow colour (ho-dots)
+        const E = el.getBoundingClientRect(), W = E.width || innerWidth || 1, H = E.height || innerHeight || 1;
+        const tx = (50 - a.slot[0]) / 100 * W, ty = (78 - a.slot[1]) / 100 * H;
+        const tether = `<i class="ho-tether" style="--len:${Math.hypot(tx, ty).toFixed(0)}px;--ang:${(Math.atan2(ty, tx) * 180 / Math.PI).toFixed(1)}deg"></i>`;
+        b.innerHTML = `${tether}<span class="ho-ring"></span><i class="ho-dots"></i><svg viewBox="0 0 48 48" aria-hidden="true">${art}</svg><b>${a.key}</b><small>${esc(th.sense)}</small><em>${esc(cap)}</em>`;
         b.setAttribute('aria-label', `${th.sense}: ${cap} (key ${a.key})`);
         // every real one pulses in step; a lagging one is out of step
         const now = (window.performance ? performance.now() : Date.now()) % 1400;
@@ -378,6 +414,7 @@ window.FemcHoldOn = (() => {
             return;
           }
           a.state = 'got'; a.node.classList.add('got'); const n = a.node; later(() => n.remove(), 900);
+          motesAt(a.slot[0], a.slot[1], 6, 'warm', 0, -60);
           say(a.th.say, 'good'); K.chime(0); if (tp && tp.kind === 'anchor') tp.ok();
           return;
         }
@@ -385,12 +422,14 @@ window.FemcHoldOn = (() => {
           a.state = 'lured'; st.lured++; st.slip += D.lure; st.kick = 0.45; st.breath = Math.max(0, st.breath - 12);
           a.node.querySelector('svg').innerHTML = SVG_ODD[a.th.id] || SVG[a.th.id]; a.node.querySelector('em').textContent = a.th.bad;
           a.node.classList.add('lured', 'wc'); const n = a.node; later(() => n.remove(), 1100);
+          motesAt(a.slot[0], a.slot[1], 7, 'flake', 0, 90);
           el.classList.remove('sting'); void el.offsetWidth; el.classList.add('sting'); later(() => el.classList.remove('sting'), 500);
           say(a.th.lie, 'bad'); K.wrong();
           return;
         }
         a.state = 'got'; st.wave.got++; st.anchors++; st.slip = Math.max(0, st.slip - 6);
         a.node.classList.add('got'); const n = a.node; later(() => n.remove(), 900);
+        { const E = el.getBoundingClientRect(), W = E.width || innerWidth || 1, H = E.height || innerHeight || 1; motesAt(a.slot[0], a.slot[1], 8, 'warm', (50 - a.slot[0]) / 100 * W, (74 - a.slot[1]) / 100 * H); }
         say(a.th.say, 'good'); K.chime(st.wave.got - 1);
       };
       const drop = a => {
@@ -411,6 +450,7 @@ window.FemcHoldOn = (() => {
       const slipNow = () => {
         st.slips++; st.slip = 25; K.slip();
         el.classList.remove('slipped'); void el.offsetWidth; el.classList.add('slipped'); later(() => el.classList.remove('slipped'), 1300);
+        motesAt(50, 70, 10, 'flake', 0, 120);
         if (st.slips >= D.maxSlips) return finish(false);
         say(D.maxSlips - st.slips === 1 ? 'She almost went. Once more and she’s gone.' : 'She slipped. Pull her back.', 'bad');
       };
@@ -501,6 +541,17 @@ window.FemcHoldOn = (() => {
           else endWave();
         }
         if (st.phase === 'calm' && st.t >= LEN) return finish(true);
+        // the lamp flickers while it pulls (more as the glitch grows); never in the silence; soft dims only with Reduce flashes /
+        // reduced motion (drawn, Nov 11)
+        if (V.flick < 1 && st.t >= V.flickEnd) V.flick = 1;
+        if (st.t >= V.flickAt) {
+          const hushed = el.classList.contains('hush');
+          V.flickAt = st.t + (pulling ? 260 + Math.random() * 900 * (1.2 - st.gl) : 2500 + Math.random() * 6000 * (1 - prog() * 0.6));
+          if (!hushed && (pulling || prog() > 0.35) && Math.random() < (pulling ? 0.35 + st.gl * 0.5 : 0.25)) {
+            const soft = calm || still; V.flick = soft ? 0.72 + Math.random() * 0.12 : 0.25 + Math.random() * 0.35; V.flickEnd = st.t + (soft ? 420 : 50 + Math.random() * 120);
+          }
+        }
+        if (el.classList.contains('hush')) V.flick = 1;
         // tears (not with reduced motion or Performance)
         if (!still && !perf && st.t - tearAt > 90) {
           tearAt = st.t;
@@ -516,6 +567,8 @@ window.FemcHoldOn = (() => {
         const h = holding();
         el.style.setProperty('--g', st.gl.toFixed(3)); el.style.setProperty('--pull', Math.min(1, st.pull).toFixed(3)); el.style.setProperty('--slip', Math.min(1, st.slip / 100).toFixed(3));
         el.style.setProperty('--dark', st.dark.toFixed(3));
+        el.style.setProperty('--flick', V.flick.toFixed(2));
+        el.style.setProperty('--k', (st.phase === 'build' ? Math.min(1, (st.t - st.pStart) / Math.max(1, st.pEnd - st.pStart)) : st.phase === 'surge' ? 1 : 0).toFixed(3));
         el.classList.toggle('gl-2', st.gl > 0.35); el.classList.toggle('gl-3', st.gl > 0.7);
         el.classList.toggle('holding', h); el.classList.toggle('tired', st.tired);
         $('.ho-slipm i').style.width = `${Math.min(100, st.slip)}%`;
@@ -566,14 +619,17 @@ window.FemcHoldOn = (() => {
           else { A.g.gain.setTargetAtTime(0.0001, t, 0.08); A.master.gain.setTargetAtTime(0.9, t, 0.05); if (!quit) later(() => fall3(1, true), 900); }
         }
         if (won) { el.classList.add('snap'); restoreRoom(); paintClock(); later(() => el.classList.remove('snap'), 60); }
-        el.classList.add(won ? 'won' : 'lost'); el.style.setProperty('--dark', won ? '0' : '1');
+        el.classList.add(won ? 'won' : 'lost'); el.style.setProperty('--dark', won ? '0' : '1'); el.style.setProperty('--flick', '1'); el.style.setProperty('--k', '0');
+        if (won && !quit) later(() => motesAt(50, 82, 14, 'warm', 0, -220), 400); // drawn: held = warm motes rise
         const end = $('.mg-end');
         const show = () => {
           if (!el.isConnected) return;
           end.hidden = false;
           end.innerHTML = `<p class="ho-end-head">${won ? 'You held on.' : quit ? 'You let go.' : 'You slipped.'}</p><b class="mg-grade">${grade}</b>
-            <dl><dt>Anchors</dt><dd>${st.anchors} / ${st.offered}</dd><dt>False ones taken</dt><dd>${st.lured}</dd><dt>Slips</dt><dd>${st.slips}</dd><dt>Held</dt><dd>${res.held}s</dd></dl>
+            <dl><dt>Anchors</dt><dd><span data-n="${st.anchors}">${still ? st.anchors : 0}</span> / ${st.offered}</dd><dt>False ones taken</dt><dd><span data-n="${st.lured}">${still ? st.lured : 0}</span></dd><dt>Slips</dt><dd><span data-n="${st.slips}">${still ? st.slips : 0}</span></dd><dt>Held</dt><dd><span data-n="${res.held}">${still ? res.held : 0}</span>s</dd></dl>
             <p class="mg-end-say">${won ? 'The light is just a light. The clock ticks forward. She’s still here.' : 'The room is empty. It looks like it always was.'}</p><button type="button">Continue</button>`;
+          // drawn (Nov 11): the numbers count up, slowly
+          if (!still) [...end.querySelectorAll('[data-n]')].forEach((n, k) => { const v = +n.dataset.n || 0; for (let f = 1; f <= 16; f++) later(() => { n.textContent = Math.round(v * f / 16); }, 900 + k * 220 + f * 55); });
           end.querySelector('button').focus();
           end.querySelector('button').onclick = () => { cleanup(); o.onDone?.(res); done(res); };
         };

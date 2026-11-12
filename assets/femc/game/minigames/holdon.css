@@ -252,3 +252,104 @@
 .mg-ho.tut .ho-bg { filter: brightness(.85) saturate(.95) contrast(1.02); }
 .mg-ho.tut .ho-room::after { background: radial-gradient(ellipse at 50% 60%, transparent 55%, rgba(6, 2, 4, .35)); }
 .mg-ho.tut .ho-sick, .mg-ho.tut .ho-static, .mg-ho.tut .ho-streaks, .mg-ho.tut .ho-scan, .mg-ho.tut .ho-band, .mg-ho.tut .ho-ghost, .mg-ho.tut .ho-help { display: none; }
+
+/* ── Visual pass (Nov 11 2026): more atmosphere, with restraint (creepy, not busy). --flick = the lamp 0-1, --k = how far the
+   build has come (0 in the quiet, 1 in a surge); both set by the JS. Nothing here is a new tell: the anchor's breathing icon
+   and motes follow its own ring (--ph) and glow colour (--ac). .still / .calm / .perf rules at the end. ── */
+.mg-ho { --flick: 1; --k: 0; }
+.ho-room { filter: brightness(calc(.72 + var(--flick) * .28)); transition: transform 1.4s ease-in-out; }
+.mg-ho.calm .ho-room, .mg-ho.still .ho-room, .mg-ho.calm .ho-lamp, .mg-ho.still .ho-lamp { transition: filter .35s, opacity .35s, transform 1.4s ease-in-out; }
+/* the lamp's light and the dust in it */
+.ho-lamp { position: absolute; left: 4%; top: 0; width: 52%; height: 78%; pointer-events: none; mix-blend-mode: screen;
+  background: radial-gradient(ellipse at 38% 26%, rgba(255, 196, 220, .2), rgba(255, 154, 200, .06) 40%, transparent 66%); opacity: calc(var(--flick) * (1 - var(--dark) * .55)); }
+.ho-shaft { position: absolute; left: 6%; top: 0; width: 48%; height: 88%; pointer-events: none; clip-path: polygon(22% 0, 52% 0, 100% 100%, 0 100%);
+  background: linear-gradient(172deg, rgba(255, 214, 230, .07), rgba(255, 214, 230, .02) 60%, transparent 85%); opacity: calc(var(--flick) * (1 - var(--dark) * .5)); }
+.ho-shaft i { position: absolute; width: var(--sz); aspect-ratio: 1; border-radius: 50%; background: rgba(255, 236, 244, .75); box-shadow: 0 0 4px rgba(255, 214, 230, .7);
+  animation: ho-dust var(--dur) ease-in-out var(--del) infinite alternate; transition: translate 1.6s ease-in-out, opacity 2s; }
+@keyframes ho-dust { 0% { transform: translate(0, 0); opacity: .25; } 50% { opacity: .8; } 100% { transform: translate(var(--mx), var(--my)); opacity: .35; } }
+/* a surge drags the dust toward the pull; the silence stops it dead */
+.mg-ho[data-phase="surge"][data-dir="l"] .ho-shaft i { translate: calc(var(--pull) * -140px) 0; }
+.mg-ho[data-phase="surge"][data-dir="r"] .ho-shaft i { translate: calc(var(--pull) * 140px) 0; }
+.mg-ho[data-phase="surge"][data-dir="u"] .ho-shaft i { translate: 0 calc(var(--pull) * -120px); }
+.mg-ho.hush .ho-shaft i, .mg-ho.hush .ho-shade, .mg-ho.hush .ho-anchor svg, .mg-ho.hush .ho-dots, .mg-ho.hush .hp-snow, .mg-ho.hush .hp-fog { animation-play-state: paused; }
+/* shadows in the corners that breathe: slow in the quiet, quicker as it builds */
+.ho-shade { position: absolute; inset: -12%; pointer-events: none; opacity: calc(.35 + var(--dark) * .55);
+  background: radial-gradient(ellipse 48% 42% at 0 0, rgba(3, 0, 2, .85), transparent 70%), radial-gradient(ellipse 40% 50% at 100% 0, rgba(3, 0, 2, .8), transparent 70%),
+    radial-gradient(ellipse 46% 40% at 0 100%, rgba(3, 0, 2, .85), transparent 70%), radial-gradient(ellipse 44% 46% at 100% 100%, rgba(3, 0, 2, .8), transparent 70%);
+  animation: ho-shade 6.5s ease-in-out infinite; }
+@keyframes ho-shade { 50% { scale: .93; } }
+.mg-ho[data-phase="build"] .ho-shade { animation-duration: 2.6s; } .mg-ho[data-phase="surge"] .ho-shade { animation-duration: 1.6s; }
+/* the dark creeping in from the pull's side across the build */
+.ho-creep { position: absolute; inset: 0; pointer-events: none; opacity: calc(var(--k) * (.55 + var(--pull) * .35)); transition: opacity .9s ease-in-out;
+  background: linear-gradient(to right, rgba(4, 0, 2, .95), rgba(4, 0, 2, .5) 18%, transparent 42%), repeating-linear-gradient(92deg, rgba(4, 0, 2, .55) 0 2px, transparent 2px 15px);
+  -webkit-mask: linear-gradient(to right, #000 0 30%, transparent 46%); mask: linear-gradient(to right, #000 0 30%, transparent 46%); }
+.mg-ho[data-dir="r"] .ho-creep { transform: scaleX(-1); }
+.mg-ho[data-dir="u"] .ho-creep { background: linear-gradient(to bottom, rgba(4, 0, 2, .95), rgba(4, 0, 2, .5) 20%, transparent 46%), repeating-linear-gradient(2deg, rgba(4, 0, 2, .55) 0 2px, transparent 2px 15px);
+  -webkit-mask: linear-gradient(to bottom, #000 0 30%, transparent 48%); mask: linear-gradient(to bottom, #000 0 30%, transparent 48%); }
+/* the room leans toward the pull in a surge */
+.mg-ho[data-phase="surge"][data-dir="l"] .ho-room { transform: translateX(calc(var(--pull) * -10px)) scale(1.015); }
+.mg-ho[data-phase="surge"][data-dir="r"] .ho-room { transform: translateX(calc(var(--pull) * 10px)) scale(1.015); }
+.mg-ho[data-phase="surge"][data-dir="u"] .ho-room { transform: translateY(calc(var(--pull) * -8px)) scale(1.015); }
+/* one slow heartbeat of the dark in the silence */
+.ho-edge::after { content: ''; position: absolute; inset: 0; opacity: 0; box-shadow: inset 0 0 180px 60px rgba(2, 0, 1, .9); }
+.mg-ho.hush .ho-edge::after { animation: ho-thump 1.2s ease-out forwards; }
+@keyframes ho-thump { 0% { opacity: 0; } 22% { opacity: 1; } 40% { opacity: .55; } 55% { opacity: .9; } 100% { opacity: .5; } }
+/* the window: snow falling, breath-fog on the glass; a frozen reflection's head tilts, very slowly */
+.hp-snow { animation: ho-snow 11s linear infinite; } .hp-snow.two { animation-delay: -5.5s; opacity: .35; }
+@keyframes ho-snow { from { transform: translateY(-100%); } to { transform: translateY(100%); } }
+.hp-fog { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse 70% 50% at 50% 72%, rgba(232, 221, 208, .16), transparent 70%); filter: blur(2px); animation: ho-fog 7.5s ease-in-out infinite; }
+@keyframes ho-fog { 50% { opacity: .35; scale: 1.08 1; } }
+.hp-refl svg { transform-origin: 50% 30%; transition: transform 18s ease-in; }
+.mg-ho.refl-frozen .hp-refl svg { transform: rotate(6deg) translateY(-2%); }
+/* her: a slow breath; tense while holding; shaky out of breath */
+.ho-her img, .ho-her svg { transform-origin: 50% 100%; animation: ho-breathe 5.2s ease-in-out infinite; }
+@keyframes ho-breathe { 50% { scale: 1.006 1.016; } }
+.mg-ho.holding .ho-her img, .mg-ho.holding .ho-her svg { animation: ho-tense 1.5s ease-in-out infinite; }
+@keyframes ho-tense { 0%, 100% { scale: .99 .985; } 50% { scale: .995 .992; } }
+.mg-ho.tired .ho-her img, .mg-ho.tired .ho-her svg { animation: ho-shiver .22s steps(2) infinite; }
+@keyframes ho-shiver { 50% { translate: 1px 0; scale: .99 .98; } }
+/* anchors: the icon breathes with its own ring; motes in its own glow; a faint thread to her fills with the ring */
+.ho-anchor svg { animation: ho-beat 1.4s ease-in-out var(--ph) infinite; }
+@keyframes ho-beat { 0%, 100% { scale: 1; } 12% { scale: 1.09; } }
+.ho-dots { position: absolute; left: 50%; top: 50%; width: 3px; height: 3px; margin: -1.5px; border-radius: 50%; pointer-events: none; background: var(--ac);
+  box-shadow: 14px 6px 0 -.5px var(--ac), -12px 10px 0 -.5px var(--ac), 4px -14px 0 -1px var(--ac); animation: ho-dots 2.8s ease-in-out var(--ph) infinite; }
+@keyframes ho-dots { 0% { opacity: 0; translate: 0 10px; } 40% { opacity: .7; } 100% { opacity: 0; translate: 0 -26px; } }
+.ho-tether { position: absolute; left: 50%; top: 50%; width: var(--len); height: 1px; transform-origin: 0 50%; transform: rotate(var(--ang)); pointer-events: none;
+  background: linear-gradient(90deg, var(--ac), transparent); opacity: calc(var(--d) * .65); clip-path: inset(0 calc((1 - var(--d)) * 100%) 0 0); }
+.ho-anchor.got .ho-tether { opacity: .8; transition: opacity .6s .2s; } .ho-anchor.lured .ho-tether, .ho-anchor.lost .ho-tether, .ho-anchor.faded .ho-tether { opacity: 0; }
+.ho-anchor.lured svg { animation: ho-crack .9s steps(3) forwards; }
+@keyframes ho-crack { 30% { clip-path: polygon(0 0, 55% 0, 45% 50%, 60% 100%, 0 100%); translate: -2px 0; } 60% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); translate: 2px 2px; } 100% { clip-path: polygon(0 0, 50% 0, 42% 55%, 55% 100%, 0 100%); translate: -4px 6px; } }
+/* the soft particles (ho-fx) */
+.ho-fx { position: absolute; inset: 0; pointer-events: none; }
+.ho-mote { position: absolute; width: 3px; height: 3px; margin: -1.5px; border-radius: 50%; opacity: 0; animation: ho-motefx 1.7s ease-out var(--del, 0ms) forwards; }
+.ho-mote.warm { background: var(--pk3); box-shadow: 0 0 6px var(--pk); }
+.ho-mote.flake { width: 2px; height: 4px; background: var(--bone); box-shadow: none; animation-timing-function: ease-in; }
+@keyframes ho-motefx { 0% { opacity: 0; transform: none; } 15% { opacity: .9; } 100% { opacity: 0; transform: translate(var(--tx), var(--ty)); } }
+/* HUD: meters ease, Slipping glows as it fills, a lost pip shakes */
+.ho-m i { transition: width .22s ease-out; }
+.ho-slipm i { box-shadow: 0 0 calc(var(--slip) * 16px) var(--pk); }
+.ho-slipm > span { border-color: rgba(255, 79, 158, calc(.3 + var(--slip) * .7)); }
+.mg-ho:not(.holding) .ho-breathm i { animation: ho-inhale 2.4s ease-in-out infinite; }
+@keyframes ho-inhale { 50% { opacity: .65; } }
+.mg-ho.slipped .ho-pips { display: inline-block; animation: ho-pip .5s steps(4); }
+@keyframes ho-pip { 25% { translate: -3px 0; } 50% { translate: 3px 0; } 75% { translate: -2px 0; } }
+/* the end: the grade presses in slowly; held = warm light, slipped = the dust settles */
+.mg-ho .mg-end .mg-grade { animation: ho-press 1.4s ease-out .3s both; }
+@keyframes ho-press { from { opacity: 0; scale: 1.25; filter: blur(6px); } to { opacity: 1; scale: 1; filter: blur(0); } }
+.mg-ho .mg-end dl, .mg-ho .mg-end .mg-end-say { animation: ho-tt-in 1.2s ease-out .7s both; }
+.mg-ho.won .ho-lamp { opacity: 1; background: radial-gradient(ellipse 70% 70% at 45% 40%, rgba(255, 206, 190, .28), rgba(255, 154, 200, .08) 50%, transparent 72%); transition: opacity 1.2s, background 1.2s; }
+.mg-ho.won .ho-shade, .mg-ho.won .ho-creep { opacity: 0; transition: opacity 1s; }
+.mg-ho.lost .ho-shaft i { animation-play-state: paused; translate: 0 60px; opacity: .15; transition: translate 5s ease-in, opacity 5s; }
+.mg-ho.lost .ho-lamp { opacity: 0; transition: opacity 2.4s; }
+/* the practice room stays calm */
+.mg-ho.tut .ho-creep, .mg-ho.tut .ho-shade { display: none; }
+/* Reduce flashes: no heartbeat (the lamp only dims softly: the JS) */
+.mg-ho.calm.hush .ho-edge::after { animation: none; opacity: .4; transition: opacity .6s; }
+/* Performance: no fog blur, no grade blur */
+.mg-ho.perf .hp-fog { filter: none; } .mg-ho.perf .mg-end .mg-grade { animation-name: ho-tt-in; }
+/* reduced motion: still dust and shadows, no lean or tilt, fades only */
+.mg-ho.still .ho-shaft i, .mg-ho.still .ho-shade, .mg-ho.still .ho-her img, .mg-ho.still .ho-her svg, .mg-ho.still .ho-anchor svg, .mg-ho.still .ho-dots,
+.mg-ho.still .hp-snow, .mg-ho.still .hp-fog, .mg-ho.still .ho-breathm i, .mg-ho.still.slipped .ho-pips, .mg-ho.still.hush .ho-edge::after { animation: none; }
+.mg-ho.still .ho-shaft i { translate: none !important; transition: none; } .mg-ho.still .ho-room { transform: none !important; }
+.mg-ho.still .hp-refl svg { transform: none; transition: none; } .mg-ho.still .ho-dots { opacity: .4; }
+.mg-ho.still .ho-anchor.lured svg { animation: none; } .mg-ho.still .mg-end .mg-grade { animation-name: ho-tt-in; }
