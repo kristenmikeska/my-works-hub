@@ -5,20 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Epilogue Minigames</title>
 <link rel="stylesheet" href="../../assets/femc/game/minigames/tutorial.css?v=1">
-<link rel="stylesheet" href="../../assets/femc/game/minigames/support.css?v=1">
-<link rel="stylesheet" href="../../assets/femc/game/minigames/dumplings.css?v=7">
-<link rel="stylesheet" href="../../assets/femc/game/minigames/studio.css?v=1">
-<link rel="stylesheet" href="../../assets/femc/game/minigames/listen.css?v=2">
-<link rel="stylesheet" href="../../assets/femc/game/minigames/sing.css?v=12">
-<link rel="stylesheet" href="../../assets/femc/game/minigames/holdon.css?v=3">
-<link rel="stylesheet" href="../../assets/femc/game/minigames/hwatu.css?v=2">
-<link rel="stylesheet" href="../../assets/femc/game/minigames/market.css?v=2">
-<link rel="stylesheet" href="../../assets/femc/game/minigames/stair.css?v=2">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/support.css?v=2">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/dumplings.css?v=8">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/studio.css?v=2">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/listen.css?v=3">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/sing.css?v=13">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/holdon.css?v=4">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/hwatu.css?v=3">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/market.css?v=3">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/stair.css?v=3">
 <link rel="stylesheet" href="../../assets/femc/game/minigames/cafe.css?v=5">
-<link rel="stylesheet" href="../../assets/femc/game/minigames/baduk.css?v=1">
-<link rel="stylesheet" href="../../assets/femc/game/minigames/planchette.css?v=2">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/baduk.css?v=2">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/planchette.css?v=3">
 <link rel="stylesheet" href="../../assets/femc/game/minigames/trip.css?v=1">
-<link rel="stylesheet" href="../../assets/femc/game/minigames/passit.css?v=1">
+<link rel="stylesheet" href="../../assets/femc/game/minigames/passit.css?v=2">
 <style>
   :root { color-scheme: dark; }
   body { margin: 0; min-height: 100vh; background: #14070f; color: #fff; font-family: system-ui, sans-serif; display: grid; place-content: center; gap: 18px; padding: 24px 16px; }
@@ -57,24 +57,24 @@
   </div>
   <pre id="out">Last result shows here.</pre>
   <script src="../../assets/femc/game/minigames/tutorial.js?v=1"></script>
-  <script src="../../assets/femc/game/minigames/support.js?v=2"></script>
-  <script src="../../assets/femc/game/minigames/dumplings.js?v=9"></script>
-  <script src="../../assets/femc/game/minigames/studio.js?v=2"></script>
-  <script src="../../assets/femc/game/minigames/listen.js?v=3"></script>
+  <script src="../../assets/femc/game/minigames/support.js?v=3"></script>
+  <script src="../../assets/femc/game/minigames/dumplings.js?v=10"></script>
+  <script src="../../assets/femc/game/minigames/studio.js?v=3"></script>
+  <script src="../../assets/femc/game/minigames/listen.js?v=4"></script>
   <script src="../../assets/femc/game/minigames/charts/runners.js?v=5"></script>
   <script src="../../assets/femc/game/minigames/charts/you.js?v=1"></script>
   <script src="../../assets/femc/game/minigames/charts/wantchu.js?v=1"></script>
   <script src="../../assets/femc/game/minigames/charts/greyrain.js?v=1"></script>
-  <script src="../../assets/femc/game/minigames/sing.js?v=12"></script>
-  <script src="../../assets/femc/game/minigames/holdon.js?v=3"></script>
-  <script src="../../assets/femc/game/minigames/hwatu.js?v=2"></script>
-  <script src="../../assets/femc/game/minigames/market.js?v=2"></script>
-  <script src="../../assets/femc/game/minigames/stair.js?v=2"></script>
+  <script src="../../assets/femc/game/minigames/sing.js?v=13"></script>
+  <script src="../../assets/femc/game/minigames/holdon.js?v=4"></script>
+  <script src="../../assets/femc/game/minigames/hwatu.js?v=3"></script>
+  <script src="../../assets/femc/game/minigames/market.js?v=3"></script>
+  <script src="../../assets/femc/game/minigames/stair.js?v=3"></script>
   <script src="../../assets/femc/game/minigames/cafe.js?v=3"></script>
-  <script src="../../assets/femc/game/minigames/baduk.js?v=2"></script>
-  <script src="../../assets/femc/game/minigames/planchette.js?v=2"></script>
+  <script src="../../assets/femc/game/minigames/baduk.js?v=3"></script>
+  <script src="../../assets/femc/game/minigames/planchette.js?v=3"></script>
   <script src="../../assets/femc/game/minigames/trip.js?v=1"></script>
-  <script src="../../assets/femc/game/minigames/passit.js?v=1"></script>
+  <script src="../../assets/femc/game/minigames/passit.js?v=2"></script>
   <script>
     const G = { trip: () => FemcTrip.play({ mute: document.getElementById('mute').checked, difficulty: document.querySelector('[name=triplv]:checked').value }), passit: () => FemcPassit.play({ mute: document.getElementById('mute').checked, difficulty: document.querySelector('[name=passitlv]:checked').value }), planchette: () => FemcPlanchette.play({ mute: document.getElementById('mute').checked, difficulty: document.querySelector('[name=pllv]:checked').value, calm: document.getElementById('plcalm').checked || undefined }), baduk: () => FemcBaduk.play({ mute: document.getElementById('mute').checked, difficulty: document.querySelector('[name=bdlv]:checked').value }), hwatu: () => FemcHwatu.play({ mute: document.getElementById('mute').checked, difficulty: document.querySelector('[name=hwlv]:checked').value, seats: document.getElementById('hw3').checked ? 3 : 2 }), market: () => FemcMarket.play({ mute: document.getElementById('mute').checked, difficulty: document.querySelector('[name=mklv]:checked').value }), stair: () => FemcStair.play({ mute: document.getElementById('mute').checked, difficulty: document.querySelector('[name=stlv]:checked').value, calm: document.getElementById('stcalm').checked || undefined }), cafe: () => FemcCafe.play({ mute: document.getElementById('mute').checked, difficulty: document.querySelector('[name=cflv]:checked').value }), support: () => FemcSupport.play({}), dumplings: () => FemcDumplings.play({ mute: document.getElementById('mute').checked }), studio: () => FemcStudio.play({ mute: document.getElementById('mute').checked }), listen: () => FemcListen.play({ mute: document.getElementById('mute').checked }), holdon: () => FemcHoldOn.play({ mute: document.getElementById('mute').checked, difficulty: document.querySelector('[name=holv]:checked').value, calm: document.getElementById('hocalm').checked || undefined }), singrec: () => FemcSing.play({ song: sgSong(), record: true, mute: document.getElementById('mute').checked }).then(r => { sgNote(); if (r && r.play) { document.getElementById('sgdraft').checked = true; G.sing(); } }),
       sing: () => FemcSing.play({ mute: document.getElementById('mute').checked, level: document.querySelector('[name=sglv]:checked').value, song: sgSong(), chart: document.getElementById('sgdraft').checked ? (FemcSing.draft(sgSong()) || {}).charts : null, singers: document.getElementById('sgdraft').checked ? (FemcSing.draft(sgSong()) || {}).singers : null }) };
