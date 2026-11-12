@@ -1,0 +1,199 @@
+/* FemcPlanchette (minigames/planchette.js): a spirit board by candlelight. UI chrome pink, near-black and bone only; the scene is
+   candlelit (warm flames and wood, never UI). --flick 0-1 (the candle tell), --lit 0-1 (how bright the candles are), --hold 0-1
+   (the board's meter), --stage 0-1 (how far into the night), set by the JS.
+   States on .mg-pl: still (reduced motion), calm (Reduce flashes), perf (Performance), eighth (the pale hand), auto (it's spelling
+   by itself), outro (the board won), dark (every candle out), relit, shake (a jerk), creep (impatience), won, lost, quit;
+   data-phase ask / spell / react. */
+.mg-pl { --pk: #ff4f9e; --pk2: #ff9ac8; --pk3: #ffd1e6; --nt: #14070f; --bone: #e8ddd0; --flick: 0; --lit: 1; --hold: 0; --stage: 0;
+  position: fixed; inset: 0; z-index: 3000; overflow: hidden; color: #fff; background: #070203; user-select: none; -webkit-user-select: none;
+  touch-action: none; cursor: grab; font-family: system-ui, sans-serif; }
+.mg-pl:active { cursor: grabbing; }
+.mg-pl.auto, .mg-pl.dark { cursor: default; }
+
+/* the room: Jihoon's living room in the dark, the board on the floor */
+.pl-scene { position: absolute; inset: 0; }
+.pl-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(calc(.22 + var(--lit) * .1 - var(--stage) * .08)) saturate(.55) blur(3px); transform: scale(1.04); }
+.pl-scene::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 55%, #2a110c 0%, #12060a 60%, #050102 100%); opacity: .82; }
+.pl-moon { position: absolute; left: -10%; top: 30%; width: 120%; height: 26%; transform: rotate(-14deg); pointer-events: none; mix-blend-mode: screen;
+  background: linear-gradient(transparent, rgba(232, 221, 208, .07) 30%, rgba(232, 221, 208, .1) 50%, rgba(232, 221, 208, .06) 70%, transparent); filter: blur(10px); }
+.pl-stage { position: absolute; left: 50%; top: calc(50% + 28px); width: min(94vw, calc((100vh - 200px) * 1.5625)); aspect-ratio: 1000 / 640; transform: translate(-50%, -50%); }
+.pl-board { display: block; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 18px 30px rgba(0, 0, 0, .8)) brightness(calc(.55 + var(--lit) * .45)); transition: filter .25s; }
+.pl-glow { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; opacity: calc(var(--lit) * (1 - var(--stage) * .3));
+  background: radial-gradient(circle at 8% 78%, rgba(255, 170, 90, .16), transparent 30%), radial-gradient(circle at 92% 76%, rgba(255, 170, 90, .14), transparent 30%),
+    radial-gradient(circle at 27% 96%, rgba(255, 160, 80, .14), transparent 26%), radial-gradient(circle at 73% 96%, rgba(255, 160, 80, .14), transparent 26%),
+    radial-gradient(ellipse 50% 40% at 50% 60%, rgba(255, 150, 80, .07), transparent 70%); transition: opacity .2s; }
+.pl-vig { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 55%, transparent calc(52% - var(--stage) * 14% - var(--hold) * 10%), rgba(4, 1, 2, .92)); }
+.pl-black { position: absolute; inset: 0; z-index: 6; background: #000; opacity: 0; pointer-events: none; }
+.mg-pl.dark .pl-black { opacity: .96; }
+.mg-pl.relit .pl-glow { animation: pl-relit .9s ease-out; }
+@keyframes pl-relit { 0% { opacity: 1.4; filter: brightness(1.6); } }
+
+/* the board (SVG): letters in bone, the one under the glass brighter */
+.pl-surface { stroke: rgba(0, 0, 0, .6); stroke-width: 3; }
+.pl-deco { fill: none; stroke: rgba(232, 221, 208, .5); stroke-width: 2.5; stroke-linecap: round; }
+.pl-tok { fill: #e3d4c0; font-family: Georgia, 'Times New Roman', serif; font-weight: 700; text-anchor: middle; dominant-baseline: central; opacity: .88; transition: fill .2s, opacity .4s; }
+.pl-tok.on { fill: #fff6ea; opacity: 1; }
+.pl-tok[data-k="YES"], .pl-tok[data-k="NO"], .pl-tok[data-k="GOODBYE"] { letter-spacing: .12em; }
+/* swapped labels (the lie): the tell is how far off their line they sit and their colour */
+.pl-tok.sw-loud { fill: var(--bone); translate: 0 9px; opacity: .7; animation: pl-shimmer .5s steps(2) infinite; }
+.pl-tok.sw-soft { fill: #cbbfb2; translate: 0 4px; }
+.pl-tok.sw-faint { translate: 0 1.5px; }
+@keyframes pl-shimmer { 50% { opacity: .35; } }
+.pl-burn { font: italic 700 70px Georgia, 'Times New Roman', serif; text-anchor: middle; letter-spacing: .32em; fill: none; stroke: var(--bone); stroke-width: 1.4; opacity: 0; pointer-events: none; }
+.pl-burn.on { animation: pl-burn 7s ease-out forwards; }
+@keyframes pl-burn { 0% { opacity: 0; } 12% { opacity: .5; } 55% { opacity: .3; } 100% { opacity: 0; } }
+
+/* the planchette and the hands on it */
+.pl-heart { fill: #6a3527; stroke: #e3d4c0; stroke-width: 2.5; filter: drop-shadow(0 6px 6px rgba(0, 0, 0, .7)); }
+.pl-lens { fill: url(#pl-lensg); stroke: #e3d4c0; stroke-width: 2.5; }
+.pl-ring { fill: none; stroke: var(--pk); stroke-width: 5; stroke-linecap: round; transition: stroke .2s; }
+.pl-ring.wrong { stroke: var(--bone); }
+.pl-ring.its { stroke: var(--bone); stroke-width: 3; }
+.pl-dot { fill: var(--pk); }
+.pl-hand { opacity: .84; pointer-events: none; }
+.pl-hand.her { stroke: var(--pk); }
+.pl-eighth { opacity: 0; transition: opacity 5s ease-in; }
+.pl-eighth.on { opacity: .62; }
+.mg-pl.shake .pl-stage { animation: pl-shake .4s ease-out; }
+@keyframes pl-shake { 15% { transform: translate(calc(-50% - 7px), calc(-50% + 3px)); } 35% { transform: translate(calc(-50% + 6px), calc(-50% - 2px)); } 60% { transform: translate(calc(-50% - 3px), -50%); } }
+
+/* candles: warm wax and flame (scene, not UI); they flicker with --flick and go out in the dark */
+.pl-candle { position: absolute; width: calc(15px * var(--s)); height: calc(48px * var(--s)); transform: translate(-50%, -100%); pointer-events: none; z-index: 1;
+  background: linear-gradient(90deg, #b59a82, #eadbc8 40%, #cdb59d); border-radius: 3px 3px 2px 2px; box-shadow: 0 6px 10px rgba(0, 0, 0, .7); }
+.pl-candle::before { content: ''; position: absolute; left: 50%; top: -5px; width: 2px; height: 7px; margin-left: -1px; background: #2a1810; }
+.pl-candle b { position: absolute; left: 50%; bottom: 100%; width: calc(12px * var(--s)); height: calc(26px * var(--s)); margin-bottom: 2px; transform: translateX(-50%); transform-origin: 50% 90%;
+  border-radius: 50% 50% 45% 45% / 62% 62% 38% 38%; background: radial-gradient(ellipse at 50% 72%, #fffbe8 0 18%, #ffd27a 38%, rgba(255, 140, 60, .7) 62%, transparent 72%);
+  opacity: calc(.45 + var(--lit) * .55); animation: pl-flame calc(1.4s - var(--flick) * 1.15s) ease-in-out infinite alternate; animation-delay: var(--d); transition: opacity .12s; }
+.pl-candle b::after { content: ''; position: absolute; left: 50%; top: 50%; width: 900%; height: 600%; transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 170, 90, .2), transparent 62%); opacity: var(--lit); }
+@keyframes pl-flame { 0% { transform: translateX(-50%) scale(1, 1) skewX(0); } 50% { transform: translateX(-50%) scale(calc(1 - var(--flick) * .25), calc(1 + var(--flick) * .2)) skewX(calc(var(--flick) * 9deg)); }
+  100% { transform: translateX(-50%) scale(calc(1 + var(--flick) * .1), calc(.94 - var(--flick) * .4)) skewX(calc(var(--flick) * -7deg)); } }
+.mg-pl.dark .pl-candle b { opacity: 0; transition: none; }
+.mg-pl.dark .pl-glow { opacity: 0; transition: none; }
+
+/* HUD */
+.pl-top { position: absolute; left: 16px; right: 16px; top: 12px; display: flex; align-items: center; gap: 14px; z-index: 3; pointer-events: none; }
+.pl-name, .pl-title b { font: italic 900 clamp(18px, 2.4vw, 28px)/1 system-ui; letter-spacing: .06em; color: var(--pk); text-shadow: 2px 0 rgba(232, 221, 208, .35), -2px 0 var(--nt); }
+.pl-qn, .pl-hands { padding: 4px 12px; background: rgba(10, 3, 6, .85); border: 1px solid rgba(255, 154, 200, .35); font: italic 800 13px/1 system-ui; transform: skewX(-10deg); text-transform: uppercase; letter-spacing: .1em; }
+.pl-hands { margin-left: auto; }
+.pl-q { position: absolute; left: 16px; top: 50px; z-index: 3; pointer-events: none; width: min(340px, 46vw); padding: 10px 14px 12px; background: rgba(10, 3, 6, .84); border-left: 4px solid var(--pk); }
+.pl-who { display: block; font: italic 900 11px/1 system-ui; letter-spacing: .14em; text-transform: uppercase; color: var(--pk2); }
+.pl-qt { margin: 4px 0 8px; font: italic 500 clamp(14px, 1.5vw, 17px)/1.3 Georgia, 'Times New Roman', serif; color: var(--pk3); }
+.pl-ans { display: flex; align-items: baseline; gap: 10px; }
+.pl-ans small { font: italic 800 11px/1 system-ui; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
+.pl-slots { display: flex; gap: 6px; font: 900 clamp(18px, 2vw, 24px)/1 Georgia, 'Times New Roman', serif; letter-spacing: .06em; }
+.pl-slots b { color: var(--pk); }
+.pl-slots i { font-style: normal; color: rgba(255, 209, 230, .35); }
+.pl-slots b.lie { color: var(--bone); }
+.pl-read { margin: 8px 0 0; font: italic 600 12px/1 system-ui; opacity: .8; }
+.pl-read b { font: 900 15px/1 Georgia, 'Times New Roman', serif; color: var(--pk2); }
+.mg-pl .lie { color: var(--bone) !important; }
+.pl-meter { position: absolute; right: 16px; top: 50px; z-index: 3; pointer-events: none; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 8px; width: min(260px, 40vw); }
+.pl-meter small { font: italic 800 12px/1 system-ui; letter-spacing: .1em; text-transform: uppercase; opacity: .85; }
+.pl-meter span { position: relative; height: 12px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(232, 221, 208, .35); transform: skewX(-14deg); }
+.pl-meter i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--pk2), var(--bone)); transition: width .25s linear; }
+.mg-pl.creep .pl-meter span { animation: pl-creep 1.2s ease-in-out infinite; }
+@keyframes pl-creep { 50% { box-shadow: 0 0 10px rgba(232, 221, 208, .55); } }
+
+/* captions: every sound gets one; speech names its speaker */
+.pl-caps { position: absolute; left: 16px; bottom: 74px; margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; z-index: 3; pointer-events: none; width: min(400px, 72vw); }
+.pl-cap { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 8px; padding: 5px 10px; background: rgba(10, 3, 6, .86); border-left: 3px solid var(--pk2);
+  font: italic 600 13px/1.25 system-ui; transform: skewX(-8deg); animation: pl-cap-in .25s ease-out; }
+.pl-cap b { font-style: normal; font-weight: 900; color: var(--pk2); }
+.pl-cap.snd { color: var(--bone); border-left-color: var(--bone); }
+.pl-cap.snd b { color: var(--bone); }
+.pl-cap.talk span { color: var(--pk3); font-family: Georgia, 'Times New Roman', serif; font-style: italic; }
+.pl-cap.quiet { opacity: .7; }
+.pl-cap.quiet span { color: rgba(232, 221, 208, .55); }
+@keyframes pl-cap-in { from { opacity: 0; transform: skewX(-8deg) translateX(-10px); } }
+.pl-say { position: absolute; left: 50%; bottom: 44px; transform: translateX(-50%) skewX(-8deg); max-width: min(560px, 86vw); margin: 0; padding: 9px 18px; z-index: 4; pointer-events: none;
+  background: rgba(10, 3, 6, .9); border-left: 4px solid var(--pk); font: italic 700 clamp(14px, 1.5vw, 17px)/1.3 system-ui; text-align: center; opacity: 0; transition: opacity .25s; }
+.pl-say.on { opacity: 1; }
+.pl-say.bone { border-color: var(--bone); color: var(--bone); }
+.pl-ghost { position: absolute; left: 50%; top: 21%; transform: translateX(-50%); margin: 0; z-index: 3; pointer-events: none; max-width: 70vw; text-align: center;
+  font: italic 500 clamp(16px, 1.9vw, 22px)/1.3 Georgia, 'Times New Roman', serif; letter-spacing: .04em; color: rgba(232, 221, 208, .72); text-shadow: 0 0 10px #000, 0 0 2px #000; }
+.pl-ghost.on::after { content: '▍'; color: var(--pk); animation: pl-caret .9s steps(2) infinite; }
+@keyframes pl-caret { 50% { opacity: 0; } }
+.pl-let { position: absolute; left: 50%; bottom: 92px; transform: translateX(-50%) skewX(-12deg); z-index: 5; overflow: hidden; padding: 12px 26px; border: 2px solid var(--bone); background: rgba(10, 3, 6, .9);
+  color: var(--bone); font: italic 900 16px/1 system-ui; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; touch-action: manipulation; }
+.pl-let[hidden] { display: none; }
+.pl-let kbd { margin-left: 8px; padding: 1px 6px; border: 1px solid rgba(232, 221, 208, .5); font: 800 12px/1 system-ui; }
+.pl-let i { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--pk); }
+.pl-let:hover, .pl-let:focus-visible { background: var(--bone); color: var(--nt); outline: none; }
+.pl-help { position: absolute; left: 16px; right: 16px; bottom: 6px; margin: 0; z-index: 3; pointer-events: none; text-align: center; font-size: 12px; opacity: .5; }
+
+/* title card (art title.webp over the drawn one), with the content note */
+.pl-title { position: absolute; inset: 0; z-index: 8; display: grid; place-content: center; justify-items: center; gap: 12px; cursor: pointer;
+  background: radial-gradient(ellipse at 50% 60%, rgba(255, 150, 80, .1), transparent 40%), radial-gradient(ellipse at 50% 50%, #2a0c1c, #050103 72%); animation: pl-tt-in .35s ease-out; }
+.pl-title b { font-size: clamp(44px, 8.5vw, 108px); animation: pl-tt-breathe 2.4s ease-in-out infinite; }
+.pl-title small { font: italic 600 clamp(14px, 1.7vw, 19px)/1 Georgia, 'Times New Roman', serif; letter-spacing: .14em; color: var(--bone); }
+.pl-title img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pl-note { position: absolute; left: 50%; bottom: 7%; transform: translateX(-50%); margin: 0; z-index: 1; padding: 6px 14px; white-space: nowrap; max-width: 92vw; overflow: hidden; text-overflow: ellipsis;
+  background: rgba(5, 1, 3, .82); border: 1px solid rgba(232, 221, 208, .35); font: 600 clamp(11px, 1.2vw, 13px)/1.2 system-ui; letter-spacing: .1em; text-transform: uppercase; color: var(--bone); }
+.pl-title.out { animation: pl-tt-out .45s ease-in forwards; pointer-events: none; }
+@keyframes pl-tt-in { from { opacity: 0; } }
+@keyframes pl-tt-out { to { opacity: 0; filter: blur(6px); } }
+@keyframes pl-tt-breathe { 50% { opacity: .78; text-shadow: 2px 0 rgba(232, 221, 208, .2), -2px 0 var(--nt), 0 0 22px rgba(255, 79, 158, .35); } }
+
+/* the end: goodbye = warm and still; the board won = the candles burn down */
+.mg-pl.won .pl-glow { opacity: 1.2; transition: opacity 1.2s; }
+.mg-pl.won .pl-vig { background: radial-gradient(ellipse at 50% 55%, transparent 55%, rgba(20, 7, 4, .7)); transition: background 1s; }
+.mg-pl.won .pl-pl { transition: opacity 1.4s; opacity: .55; }
+.mg-pl.won .pl-candle b { animation: none; }
+.mg-pl.lost .pl-candle b { animation: pl-gutter 3.2s ease-in forwards; }
+@keyframes pl-gutter { 30% { opacity: .8; transform: translateX(-50%) scale(.9, .7); } 100% { opacity: 0; transform: translateX(-50%) scale(.4, .2); } }
+.mg-pl.lost .pl-glow { opacity: 0; transition: opacity 3.2s ease-in; }
+.mg-pl.lost .pl-board { filter: brightness(.35) saturate(.6); transition: filter 3.2s; }
+.mg-pl.won .pl-top, .mg-pl.won .pl-q, .mg-pl.won .pl-meter, .mg-pl.won .pl-help,
+.mg-pl.lost .pl-top, .mg-pl.lost .pl-q, .mg-pl.lost .pl-meter, .mg-pl.lost .pl-help { opacity: 0; transition: opacity .8s; }
+
+/* pause / end (same shapes as the other minigames) */
+.mg-pl .mg-pause, .mg-pl .mg-end { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 14px; background: rgba(8, 2, 5, .9); z-index: 9; cursor: default; }
+.mg-pl .mg-end { background: rgba(8, 2, 5, .74); animation: pl-tt-in .8s ease-out; }
+.mg-pl.won .mg-end { background: rgba(20, 7, 15, .6); }
+.mg-pl .mg-pause[hidden], .mg-pl .mg-end[hidden] { display: none; }
+.mg-pl .mg-pause b { font: italic 900 40px/1 system-ui; }
+.mg-pl .mg-pause button, .mg-pl .mg-end button { padding: 12px 26px; border: 0; background: var(--pk); color: var(--nt); font: italic 900 18px/1 system-ui; transform: skewX(-12deg); cursor: pointer; }
+.mg-pl .pl-end-head { margin: 0; font: italic 900 clamp(30px, 5vw, 54px)/1 system-ui; color: var(--pk); text-shadow: 3px 0 rgba(232, 221, 208, .4); text-align: center; }
+.mg-pl.lost .pl-end-head, .mg-pl.quit .pl-end-head { color: var(--bone); text-shadow: none; font: 700 clamp(28px, 4.4vw, 46px)/1.1 Georgia, 'Times New Roman', serif; letter-spacing: .04em; }
+.mg-pl .mg-grade { font: italic 900 72px/1 system-ui; color: var(--pk3); }
+.mg-pl.lost .mg-grade, .mg-pl.quit .mg-grade { color: rgba(232, 221, 208, .55); }
+.mg-pl .mg-end dl { display: grid; grid-template-columns: auto auto; gap: 6px 20px; margin: 0; font-weight: 800; }
+.mg-pl .mg-end dd { margin: 0; text-align: right; color: var(--pk2); }
+.mg-pl .mg-end-say { margin: 0; max-width: 470px; text-align: center; font: italic 500 17px/1.4 Georgia, 'Times New Roman', serif; opacity: .88; }
+
+/* phones */
+@media (max-width: 620px) {
+  .pl-stage { width: 98vw; top: calc(50% + 40px); }
+  .pl-q { top: 44px; width: calc(100vw - 32px); padding: 8px 12px; }
+  .pl-meter { top: auto; bottom: 150px; right: 16px; width: 46vw; }
+  .pl-hands { display: none; }
+  .pl-caps { bottom: 64px; width: calc(100vw - 32px); }
+  .pl-cap { font-size: 12px; }
+  .pl-help { font-size: 11px; }
+  .pl-candle:nth-of-type(n + 5) { display: none; }
+}
+@media (max-height: 520px) { .pl-q { width: min(280px, 34vw); } .pl-qt { font-size: 13px; } .pl-caps { bottom: 54px; } }
+
+/* Performance: no blur, glow or moonlight layers, fewer candles */
+.mg-pl.perf .pl-bg { filter: brightness(.25) saturate(.5); }
+.mg-pl.perf .pl-moon, .mg-pl.perf .pl-candle b::after { display: none; }
+.mg-pl.perf .pl-board, .mg-pl.perf .pl-heart { filter: none; }
+.mg-pl.perf .pl-candle:nth-of-type(n + 5) { display: none; }
+
+/* Reduce flashes: the blackout is a slow dim, no relight flash, a steady title */
+.mg-pl.calm .pl-black { transition: opacity .9s ease-in-out; }
+.mg-pl.calm.dark .pl-black { opacity: .85; }
+.mg-pl.calm.dark .pl-candle b, .mg-pl.calm.dark .pl-glow { transition: opacity .9s; }
+.mg-pl.calm .pl-glow, .mg-pl.calm .pl-board { transition: opacity .6s, filter .6s; }
+.mg-pl.calm.relit .pl-glow { animation: none; }
+.mg-pl.calm .pl-title b, .mg-pl.calm .pl-tok.sw-loud { animation: none; }
+
+/* reduced motion: no shake, no flicker or shimmer (the candles dim instead), crossfades */
+.mg-pl.still .pl-candle b { animation: none; }
+.mg-pl.still.shake .pl-stage { animation: none; }
+.mg-pl.still .pl-tok.sw-loud, .mg-pl.still .pl-title b, .mg-pl.still .pl-ghost.on::after { animation: none; }
+.mg-pl.still .pl-black { transition: opacity .4s; }
+.mg-pl.still.relit .pl-glow { animation: none; }
+.mg-pl.still .pl-cap { animation: none; }
+.mg-pl.still.lost .pl-candle b { animation: none; opacity: 0; transition: opacity 3s; }
