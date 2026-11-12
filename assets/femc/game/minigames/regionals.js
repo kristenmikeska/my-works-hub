@@ -27,12 +27,26 @@
    victory / defeat (behind the round card's big word, and faintly behind the match's end screen). Any picture that isn't
    there is drawn as a stand-in (a coloured silhouette with the hero's name), so the game plays without the art. img() takes
    fallback names (data-alts), tried in order by one error listener on the game's root before the picture is dropped.
-   Sounds: Web Audio, made in the browser (no files). Reduced motion: no shakes. */
+   Sounds: Web Audio, made in the browser (no files). Reduced motion: no shakes.
+
+   Tutorial (Nov 11 2026, Kat: every minigame teaches itself; tutorial.js, FemcTutorial, loaded on demand from this folder):
+     play({ tutorial }) true = always, false = never, else only the first time (localStorage kg-femc-tutorials 'regionals').
+     Minji (minji-runners-regionals faces) runs a practice round before round 1: the point bar, aim + kunai on one Cassidy who
+     stands still, right-click / 3 to heal Olivia, Suzu on a naded Minji, Swift Step out of a Genji dive, Kitsune Rush. Nothing
+     shoots back, the point doesn't move; afterwards the match stats are cleared and round 1 starts fresh. Pause → How to play
+     replays it as a walkthrough over the paused match. result.tutorial = 'done' | 'skipped' | 'seen' (not shown).
+     o.hook(fn) gets test handles (jsc runs). */
 window.FemcRegionals = (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const base = () => (window.FemcGame && window.FemcGame.base) || (document.querySelector('script[src*="minigames/regionals.js"]')?.src.split('assets/')[0]) || '';
   const ART = id => `${base()}assets/femc/game/art/minigames/ow/${id}.webp`;
+  // the shared first-time tutorial (tutorial.js / .css, loaded once from this folder; null = play without one)
+  const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
+    const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
+    l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
+    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+  }));
   const MAPS = [{ id: 'lijiang', name: 'Lijiang Tower · Night Market', sky: ['#1b1440', '#4a1b3d'], pics: 3 }, { id: 'busan', name: 'Busan · Downtown', sky: ['#ff8a6b', '#5a2a6b'], pics: 3 }];
   // Kat's picks (Nov 10): Chenle tank, Minji and Olivia DPS, Haerin and Solar support. x / y / h: % of the stage (feet at y).
   const TEAM = [
@@ -110,7 +124,7 @@ window.FemcRegionals = (() => {
           </div>
         </div>
         <div class="ow-card" hidden></div>
-        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="quit">Quit</button></div>`;
+        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>`;
       host.appendChild(el);
       const $ = s => el.querySelector(s), stage = $('.ow-stage');
       const img = (id, alt, alts = [], cls = '') => `<img src="${ART(id)}" alt="${esc(alt || '')}" draggable="false"${cls ? ` class="${cls}"` : ''}${alts.length ? ` data-alts="${alts.join(' ')}"` : ''}>`;
@@ -124,7 +138,8 @@ window.FemcRegionals = (() => {
       $('.ow-hands').innerHTML = `<div class="ow-hands-stand"><span class="l"></span><span class="r"></span></div>${img('hands', '')}`;
       const fig = (who, kind) => `<div class="ow-body" style="--c:${who.col}"><div class="ow-stand"><span class="hd"></span><span class="bd"></span><b>${esc(who.hero)}</b></div>${img(`${kind}-${who.id}`, who.hero)}</div>`;
 
-      let R = null, raf = 0, last = 0, paused = false, over = false, mouse = { x: 50, y: 50 };
+      let R = null, raf = 0, last = 0, paused = false, over = false, mouse = { x: 50, y: 50 }, prac = false, tutRes = 'seen', act = null;
+      const TUT = () => window.FemcTutorial;
       const say = (t, kind = '') => { const c = $('.ow-call'); c.textContent = t; c.className = 'ow-call on ' + kind; clearTimeout(say.t); say.t = setTimeout(() => c.classList.remove('on'), 1800); };
       const feed = (by, how, on, us) => {
         const li = document.createElement('li'); li.className = us ? 'us' : 'them';
@@ -177,6 +192,7 @@ window.FemcRegionals = (() => {
         const f = R.foes[j]; if (f.down) return;
         f.hp = 0; f.down = 9000; f.state = 'hid'; f.spot = -1; foeEls()[j].hidden = true;
         feed(by.handle || by, solar ? 'kunai' : '▸', f.hero, true); S.elim();
+        act?.('kill', j);
         if (solar) {
           M.elims++; R.killsAt.push(R.t); R.rush = Math.min(100, R.rush + 12);
           const quick = R.killsAt.filter(t => R.t - t < 4000).length;
@@ -196,19 +212,19 @@ window.FemcRegionals = (() => {
       // Solar's kit
       const kunai = () => {
         if (!R || R.over || paused || R.me.down || R.kReload > 0 || R.kCd > 0 || R.kAmmo <= 0) return;
-        R.kAmmo--; R.kCd = R.rushOn > 0 ? 260 : 520; S.kunai(); if (!R.kAmmo) R.kReload = 1500;
+        act?.('kunai'); R.kAmmo--; R.kCd = R.rushOn > 0 ? 260 : 520; S.kunai(); if (!R.kAmmo) R.kReload = 1500;
         $('.ow-hands').classList.remove('throw'); void $('.ow-hands').offsetWidth; $('.ow-hands').classList.add('throw');
         const hit = foeAt(mouse);
         if (hit) { hurtFoe(hit.j, hit.head ? 95 : 40, { handle: 'sollee' }, true, hit.head); pop(mouse.x, mouse.y, hit.head ? '✦ 95' : '40', hit.head ? 'crit' : 'dmg'); }
       };
       const ofuda = i => {
         if (!R || R.over || paused || R.me.down || R.hReload > 0 || R.hAmmo <= 0 || i == null || R.team[i].down) return;
-        R.hAmmo--; R.team[i].heal += 40; S.heal(); if (!R.hAmmo) R.hReload = 1400;
+        act?.('heal', i); R.hAmmo--; R.team[i].heal += 40; S.heal(); if (!R.hAmmo) R.hReload = 1400;
         const m = mates()[i]; m.classList.add('charm'); setTimeout(() => m.classList.remove('charm'), 260);
       };
       const suzu = () => {
         if (!R || R.over || paused || R.me.down || R.suzu > 0) return;
-        R.suzu = 12000; S.suzu(); el.classList.add('suzu-on'); setTimeout(() => el.classList.remove('suzu-on'), 600);
+        act?.('suzu'); R.suzu = 12000; S.suzu(); el.classList.add('suzu-on'); setTimeout(() => el.classList.remove('suzu-on'), 600);
         let saved = 0;
         R.events.forEach(e => { if (e.at - R.t < 750 && e.at - R.t > -150 && e.big) { e.blocked = true; saved++; } });
         R.team.forEach((t, i) => { if (t.down) return; if (t.anti > 0 || t.sleep > 0) saved++; t.anti = 0; t.sleep = 0; t.inv = 900; mend(i, 30); });
@@ -216,13 +232,13 @@ window.FemcRegionals = (() => {
       };
       const step = () => {
         if (!R || R.over || paused || R.me.down || R.step > 0) return;
-        R.step = 7000; M.steps++; S.step(); R.me.inv = 600;
+        act?.('step'); R.step = 7000; M.steps++; S.step(); R.me.inv = 600;
         if (R.me.dove != null) { say('Swift Step. Missed her.', 'good'); moment('step', `Swift Stepped away from ${R.foes[R.me.dove].hero}`, 25); R.events = R.events.filter(e => e.kind !== 'dive'); R.me.dove = null; }
         el.classList.add('stepping'); setTimeout(() => el.classList.remove('stepping'), 350);
       };
       const rush = () => {
         if (!R || R.over || paused || R.me.down || R.rush < 100) return;
-        R.rush = 0; R.rushOn = 6000; M.rushes++; S.rush(); say('Kitsune Rush!', 'good'); el.classList.add('rushing');
+        act?.('rush'); R.rush = 0; R.rushOn = 6000; M.rushes++; S.rush(); say('Kitsune Rush!', 'good'); el.classList.add('rushing');
       };
       // what's under the crosshair
       const foeAt = p => {
@@ -293,7 +309,7 @@ window.FemcRegionals = (() => {
         if (over) return; over = true; cancelAnimationFrame(raf);
         const won = M.rounds.filter(r => r.won).length >= NEED && !quit, p = potg();
         const grade = quit ? 'C' : won && M.deaths <= 1 && M.elims >= 8 ? 'S' : won ? 'A' : M.rounds.some(r => r.won) ? 'B' : 'C';
-        const res = { won, rounds: M.rounds, elims: M.elims, soloKills: M.soloKills, deaths: M.deaths, teamDeaths: M.teamDeaths, healed: Math.round(M.healed), saves: M.saves, steps: M.steps, rushes: M.rushes, potg: p, grade, quit };
+        const res = { won, rounds: M.rounds, elims: M.elims, soloKills: M.soloKills, deaths: M.deaths, teamDeaths: M.teamDeaths, healed: Math.round(M.healed), saves: M.saves, steps: M.steps, rushes: M.rushes, potg: p, grade, quit, tutorial: tutRes };
         const card = $('.ow-card'); card.hidden = false; card.classList.add('potg');
         card.innerHTML = `${img(won ? 'victory' : 'defeat', '', [], 'ow-card-bg')}<div class="ow-potg">${img('potg-kiriko', 'Kiriko')}<div class="ow-potg-stand"></div><div class="ow-potg-copy"><small>PLAY OF THE GAME</small><b>sollee</b><span>Kiriko</span><p>${esc(p.text)}</p></div></div>
           <ol class="ow-cards" aria-label="Syracuse">${CARDS.map(([id, tag], i) => `<li${i === 0 ? ' class="me"' : ''}><img src="${ART('card-' + id)}" alt="" draggable="false" onerror="this.parentNode.remove()"><b>${esc(tag)}</b></li>`).join('')}</ol>
@@ -344,10 +360,10 @@ window.FemcRegionals = (() => {
             t.anti = Math.max(0, t.anti - dt); t.sleep = Math.max(0, t.sleep - dt); t.inv = Math.max(0, t.inv - dt);
             if (t.heal > 0) { const st = Math.min(t.heal, dt * 0.08); t.heal -= st; mend(i, st); }
             if (t.id === 'haerin' && !t.down) { const low = R.team.filter(x => !x.down && x.hp < x.max).sort((a, b) => a.hp / a.max - b.hp / b.max)[0]; if (low) low.hp = Math.min(low.max, low.hp + dt * 0.018); }
-            if (!t.down && !t.sleep) { const vis = R.foes.map((f, j) => j).filter(j => !R.foes[j].down && R.foes[j].state !== 'hid'); if (vis.length && Math.random() < dt / 600) hurtFoe(pick(vis), t.dps * 0.6 * (0.7 + Math.random() * 0.6), t, false); }
+            if (!prac && !t.down && !t.sleep) { const vis = R.foes.map((f, j) => j).filter(j => !R.foes[j].down && R.foes[j].state !== 'hid'); if (vis.length && Math.random() < dt / 600) hurtFoe(pick(vis), t.dps * 0.6 * (0.7 + Math.random() * 0.6), t, false); }
           });
           // the other team: peek, shoot, duck
-          R.foes.forEach((f, j) => {
+          if (!prac) R.foes.forEach((f, j) => {
             if (f.down) { if ((f.down -= dt) <= 0) { f.down = 0; f.hp = f.max; f.state = 'hid'; f.t = 800; } return; }
             f.t -= dt;
             if (f.t <= 0) {
@@ -360,11 +376,11 @@ window.FemcRegionals = (() => {
               else if (pool.length) hurtMate(tank ? 0 : pick(pool), f.dps * 0.75 * (0.7 + Math.random() * 0.6), f.hero);
             }
           });
-          if (R.t >= R.next) { plan(); R.next = R.t + (3600 + Math.random() * 3000) * D.gap; }
+          if (!prac && R.t >= R.next) { plan(); R.next = R.t + (3600 + Math.random() * 3000) * D.gap; }
           R.events = R.events.filter(e => { if (R.t >= e.at) { land(e); return false; } return true; });
           // the point
           const a = aliveUs(), b = aliveThem(), rate = dt / 1000 * 1.15;
-          if (a > b) R.us = Math.min(100, R.us + rate * (a - b)); else if (b > a) R.them = Math.min(100, R.them + rate * (b - a));
+          if (prac) {} else if (a > b) R.us = Math.min(100, R.us + rate * (a - b)); else if (b > a) R.them = Math.min(100, R.them + rate * (b - a));
           if (R.us >= 100) endRound(true); else if (R.them >= 100) endRound(false);
           paint();
         }
@@ -375,7 +391,7 @@ window.FemcRegionals = (() => {
       stage.addEventListener('pointermove', e => { const r = stage.getBoundingClientRect(); mouse = { x: (e.clientX - r.left) / r.width * 100, y: (e.clientY - r.top) / r.height * 100 }; });
       stage.addEventListener('contextmenu', e => e.preventDefault());
       stage.addEventListener('pointerdown', e => {
-        e.preventDefault(); const r = stage.getBoundingClientRect(); mouse = { x: (e.clientX - r.left) / r.width * 100, y: (e.clientY - r.top) / r.height * 100 };
+        e.preventDefault(); if (TUT()?.blocking()) return; const r = stage.getBoundingClientRect(); mouse = { x: (e.clientX - r.left) / r.width * 100, y: (e.clientY - r.top) / r.height * 100 };
         if (e.button === 2) return ofuda(mateAt(mouse));
         if (e.pointerType === 'touch') { const m = mateAt(mouse); if (m != null) return ofuda(m); }
         kunai();
@@ -384,6 +400,7 @@ window.FemcRegionals = (() => {
       const key = e => {
         if (over) return;
         e.stopPropagation(); // the scene underneath never sees the match's keys
+        const T = TUT(); if (T && T.open() && (e.key === 'Escape' || T.blocking())) return; // the tutorial has the keys
         if (e.key === 'Escape') { e.preventDefault(); paused = !paused; $('.mg-pause').hidden = !paused; return; }
         if (paused) return;
         if (/^[1-4]$/.test(e.key)) { e.preventDefault(); ofuda(+e.key - 1); }
@@ -392,10 +409,49 @@ window.FemcRegionals = (() => {
         else if (e.key === 'q' || e.key === 'Q') rush();
         else if (e.key === 'r' || e.key === 'R') { if (R && R.kAmmo < 15 && !R.kReload) R.kReload = 1500; }
       };
-      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') { paused = false; $('.mg-pause').hidden = true; } if (b === 'quit') { paused = false; $('.mg-pause').hidden = true; finish(true); } };
+      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') { paused = false; $('.mg-pause').hidden = true; } if (b === 'howto') howTo(); if (b === 'quit') { paused = false; $('.mg-pause').hidden = true; finish(true); } };
       const cleanup = () => { cancelAnimationFrame(raf); window.removeEventListener('keydown', key, true); S.close(); el.remove(); };
       window.addEventListener('keydown', key, true);
-      startRound(); raf = requestAnimationFrame(tick);
+
+      /* the tutorial: a practice round with Minji (nothing shoots back, the point holds still); live = it sets up each moment
+         (the first time), else a walkthrough over the paused match (How to play) */
+      const FACE = f => `${base()}assets/femc/portraits/minji-runners-regionals/${f}.webp`;
+      const until = (kind, want) => () => new Promise(ok => { const prev = act; act = (k, i) => { prev?.(k, i); if (k === kind && (want == null || i === want)) { act = prev; ok(); } }; });
+      const fj = id => FOES.findIndex(f => f.id === id);
+      const steps = live => [
+        { target: '.ow-obj', say: 'Practice round, Sol. Nobody\'s shooting yet. The point: whoever has more players up takes it.', face: FACE('happy') },
+        { target: () => foeEls()[fj('cassidy')], say: 'Cassidy peeked. <b>Aim and left click</b> (tap on a phone) to throw kunai. Headshots crit.', wait: live ? until('kill', fj('cassidy')) : 'click', face: FACE('serious'),
+          before: () => { if (!live) return; const j = fj('cassidy'), f = R.foes[j]; Object.assign(f, { state: 'up', spot: 2, t: 1e9, hp: 70, down: 0 }); paint(); } },
+        { target: () => mates()[2], say: 'Olivia\'s hurt. <b>Right click</b> her, or press <b>3</b>, for a healing ofuda.', wait: live ? until('heal', 2) : 'click', face: FACE('neutral'),
+          before: () => { if (live) { R.team[2].hp = 50; paint(); } } },
+        { target: '[data-ab="suzu"]', say: 'Nade on me: no heals land. <b>Space</b> rings the Suzu: it cleanses, and right before a big hit it\'s a save.', wait: live ? until('suzu') : 'click', face: FACE('surprised'),
+          before: () => { if (live) { R.team[1].hp = 140; R.team[1].anti = 1e9; R.suzu = 0; paint(); } } },
+        { target: '[data-ab="step"]', say: 'Genji\'s diving you! <b>Shift</b> for Swift Step: you blink to us and he misses.', wait: live ? until('step') : 'click', face: FACE('serious'),
+          before: () => { if (!live) return; const j = fj('genji'), f = R.foes[j]; Object.assign(f, { state: 'dive', spot: 5, t: 1e9, down: 0 }); R.me.dove = j; R.step = 0; paint(); },
+          after: () => { if (live && R) { const f = R.foes[fj('genji')]; Object.assign(f, { state: 'hid', spot: -1 }); R.me.dove = null; } } },
+        { target: '[data-ab="rush"]', say: 'Healing and hits fill <b>Kitsune Rush</b>. It\'s full: press <b>Q</b>.', wait: live ? until('rush') : 'click', face: FACE('happy'),
+          before: () => { if (live) { R.rush = 100; paint(); } } },
+        { target: '.ow-call', say: 'Calls come in up here before their big plays. Best of three. Esc pauses. Let\'s go.', face: FACE('happy') },
+      ];
+      const tutOpts = () => { const GS = (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {}; return { who: 'Minji', calm: o.calm ?? !!GS.calm, perf: o.perf ?? !!GS.perf }; };
+      const howTo = () => {
+        const T = TUT(); if (!T) return;
+        $('.mg-pause').hidden = true;
+        T.run(el, { ...tutOpts(), id: 'regionals', replay: true, steps: steps(false) }).then(() => { if (!over) { $('.mg-pause').hidden = false; $('.mg-pause [data-mg=resume]').focus(); } });
+      };
+      const begin = () => { // the real match, from a clean slate
+        prac = false; act = null; el.classList.remove('rushing', 'dead', 'practice');
+        Object.assign(M, { rounds: [], elims: 0, soloKills: 0, deaths: 0, teamDeaths: 0, healed: 0, saves: 0, steps: 0, rushes: 0, moments: [] });
+        $('.ow-feed').innerHTML = ''; startRound();
+      };
+      o.hook?.({ get R() { return R; }, M, el, act: { kunai, ofuda, suzu, step, rush }, aim: p => { mouse = p; }, paused: () => paused });
+      (o.tutorial === false ? Promise.resolve(null) : tutLib()).then(T => {
+        if (over) return;
+        if (!T || !T.should('regionals', o.tutorial)) return begin();
+        prac = true; el.classList.add('practice'); startRound(); $('.ow-round').textContent = 'Practice';
+        T.run(el, { ...tutOpts(), id: 'regionals', steps: steps(true) }).then(r => { tutRes = r; begin(); });
+      });
+      raf = requestAnimationFrame(tick);
     });
   }
   return { play, TEAM, FOES };

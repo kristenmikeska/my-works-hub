@@ -191,3 +191,8 @@
 .mg-st.still .st-sit, .mg-st.still .st-sitter { transition: opacity .4s; }
 .mg-st.still .st-black { transition: opacity .4s; }
 .mg-st.still.sting .st-sting { animation: st-sting-soft .8s ease-out; }
+/* the first-time tutorial's practice stairs (Nov 11 2026): calm and lit, no grain, no ghost captions */
+.mg-st.tut .st-bg { filter: brightness(.78) saturate(.75) contrast(1.02); }
+.mg-st.tut .st-shade { opacity: .12; }
+.mg-st.tut .st-vig { opacity: .4; }
+.mg-st.tut .st-grain, .mg-st.tut .st-ghost, .mg-st.tut .st-help, .mg-st.tut .st-sit { display: none; }

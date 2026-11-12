@@ -67,7 +67,16 @@
                                                so their hit spots line up)
      art/minigames/planchette/planchette.webp  the planchette, tip up, the glass at the image centre, about 140 x 150 board units
    Test hooks: FemcPlanchette.state() (the live state), .ctl() ({ aim(x, y), release(), steady(on), letIt(), pause(on), quit(),
-   cont(), skip() }: board coordinates 1000 x 640), TOK (token positions), QUESTIONS, WORDS, DIFF. */
+   cont(), skip() }: board coordinates 1000 x 640), TOK (token positions), QUESTIONS, WORDS, DIFF.
+
+   First-time tutorial (Nov 11 2026, Kat: every minigame teaches itself; tutorial.js / FemcTutorial, loaded on demand from this
+   folder): after the title card, the first time ever (FemcTutorial.seen('planchette')) or with play option `tutorial: true`
+   (`false` never shows it; the story passes neither). Cherry talks you through it (cherry-hoax faces) on a warm, well-lit
+   board (`.tut`; st.tut runs tutStep: no jerks, swaps, blackout, eighth hand, whispers, lies, meter or strays): drag the glass
+   onto YES → rest there until the ring fills → GOODBYE (the longer hold) → the board's push (a gentle drift and a shove away
+   from NO while you take it there) → "let it spell" (L / the button; it spells HI by itself) → the board's meter → Esc pauses.
+   Then the séance starts fresh. result.tutorial = 'done' | 'skipped' | 'seen' (not shown). Pause menu → How to play replays
+   it as a walkthrough over the paused board (Next on every step) and returns to the pause menu. */
 window.FemcPlanchette = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const base = () => (window.FemcGame && window.FemcGame.base) || (document.querySelector('script[src*="minigames/planchette"]')?.src.split('assets/')[0]) || '';
@@ -149,6 +158,13 @@ window.FemcPlanchette = (() => {
   };
   const CANDLES = [[7, 76, 1], [93, 74, .9], [4, 34, .8], [96, 30, .85], [26, 93, 1.05], [74, 94, 1], [50, 5, .7]];
 
+  // the shared first-time tutorial (tutorial.js + .css, loaded once from this folder)
+  const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
+    const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
+    l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
+    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+  }));
+
   let cur = null;
   function play(o = {}) {
     return new Promise(done => {
@@ -168,6 +184,8 @@ window.FemcPlanchette = (() => {
         capT: {}, ending: null, ctl: null,
       };
       cur = st;
+      const tutP = o.tutorial === false ? Promise.resolve(null) : tutLib(); // starts loading during the title card
+      let tutRes = 'seen', tp = null; // tp = the practice the tutorial is waiting on
       const timers = new Set();
       const later = (fn, ms) => { const id = setTimeout(() => { timers.delete(id); fn(); }, ms); timers.add(id); return id; };
       const el = document.createElement('div');
@@ -192,7 +210,7 @@ window.FemcPlanchette = (() => {
         <p class="pl-say" aria-live="polite"></p>
         <button type="button" class="pl-let" hidden>Let it spell <kbd>L</kbd><i></i></button>
         <p class="pl-help">Hold and drag (mouse or finger), or arrows / WASD, to steer the planchette. Keep the glass on a letter until its ring fills. Space holds it steady. Esc pauses.</p>
-        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="quit">Quit</button></div>
+        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
       const $ = s => el.querySelector(s);
@@ -565,7 +583,7 @@ window.FemcPlanchette = (() => {
         const fillR = st.dw.tok && st.dw.ms > 0 ? clamp(st.dw.ms / dwellNeed(), 0, 1) : 0;
         if (ringEl) {
           ringEl.style.strokeDasharray = `${RING}`; ringEl.style.strokeDashoffset = `${(RING * (1 - fillR)).toFixed(1)}`;
-          ringEl.classList.toggle('wrong', D.tell === 2 && !!st.dw.tok && st.dw.tok !== want() && !st.auto);
+          ringEl.classList.toggle('wrong', !st.tut && D.tell === 2 && !!st.dw.tok && st.dw.tok !== want() && !st.auto);
           ringEl.classList.toggle('its', st.auto);
         }
         // the candles
@@ -591,7 +609,7 @@ window.FemcPlanchette = (() => {
       let last = 0, raf = 0;
       const tick = now => {
         const dt = Math.min(60, now - (last || now)); last = now;
-        if (!st.paused && !st.over) { step(dt); if (!st.over) paint(); }
+        if (!st.paused && !st.over) { st.tut ? tutStep(dt) : step(dt); if (!st.over) paint(); }
         if (!st.over) raf = requestAnimationFrame(tick);
       };
 
@@ -602,7 +620,7 @@ window.FemcPlanchette = (() => {
         const won = ending === 'goodbye', quit = ending === 'quit';
         const grade = !won ? 'C' : st.let > 0 ? 'B' : st.hold <= 30 && st.boardWords === 0 && st.strays <= 2 ? 'S' : st.hold <= 60 && st.boardWords <= 1 ? 'A' : 'B';
         const res = { won, grade, ending, quit, asked: st.asked, answered: st.answered, strays: st.strays, boardLetters: st.boardLetters, boardWords: st.boardWords,
-          words: st.words.slice(), let: st.let, listened: st.let > 0, fooled: st.fooled, hold: Math.round(clamp(st.hold, 0, 100)), secs: Math.round(st.t / 1000) };
+          words: st.words.slice(), let: st.let, listened: st.let > 0, fooled: st.fooled, hold: Math.round(clamp(st.hold, 0, 100)), secs: Math.round(st.t / 1000), tutorial: tutRes };
         st.result = res;
         if (A) { SND.hush(false); if (won) SND.warm(); else SND.down(); }
         if (won) cap('the room tone settles'); else if (!quit) cap('the hum stops');
@@ -648,6 +666,7 @@ window.FemcPlanchette = (() => {
       const pause = on => {
         if (st.over) return;
         st.paused = on; $('.mg-pause').hidden = !on; blur();
+        if (!on && st.afterPause) { const f = st.afterPause; st.afterPause = null; later(f, 0); }
         if (ac) { try { on ? ac.suspend() : ac.resume(); } catch (e) {} }
         if (on) $('.mg-pause button').focus?.();
       };
@@ -656,6 +675,7 @@ window.FemcPlanchette = (() => {
         if (!el.isConnected || st.over) return;
         e.stopPropagation();
         if (!st.begun) { e.preventDefault(); begin(); if (e.key === 'Escape') pause(true); return; }
+        const T = window.FemcTutorial; if ((T && T.open() && (e.key === 'Escape' || T.blocking())) || (st.tut && !st.paused && e.key === 'Escape')) return; // the tutorial has the keys (Esc on the title card pauses; the tutorial waits for Resume)
         if (e.key === 'Escape') { e.preventDefault(); pause(!st.paused); return; }
         if (st.paused) return;
         if (e.key === 'l' || e.key === 'L') { e.preventDefault(); letIt(); return; }
@@ -672,9 +692,82 @@ window.FemcPlanchette = (() => {
         window.removeEventListener('keydown', key, true); window.removeEventListener('keyup', keyUp, true); window.removeEventListener('blur', blur);
         try { ac && ac.close(); } catch (e) {} el.remove();
       };
-      $('.mg-pause').onclick = e => { const b = e.target.dataset && e.target.dataset.mg; if (b === 'resume') pause(false); if (b === 'quit') { pause(false); finish('quit'); } };
+      $('.mg-pause').onclick = e => { const b = e.target.dataset && e.target.dataset.mg; if (b === 'resume') pause(false); if (b === 'howto') howTo(); if (b === 'quit') { pause(false); finish('quit'); } };
       $('.pl-let').onclick = e => { e.stopPropagation(); letIt(); };
       window.addEventListener('keydown', key, true); window.addEventListener('keyup', keyUp, true);
+
+      /* the first-time tutorial: a warm, lit practice board (st.tut), each action done once */
+      const FACE = `${base()}assets/femc/portraits/cherry-hoax/neutral.webp`;
+      const practice = (kind, tok) => new Promise(ok => { tp = { kind, tok, ok: () => { tp = null; ok(); } }; });
+      const tutStep = dt => {
+        st.t += dt; const s = dt / 1000;
+        let ax = 0, ay = 0;
+        if (tp && tp.kind === 'push') { // a gentle drift, and a shove away from the letter as the glass gets close
+          st.drift += (Math.random() - 0.5) * s * 4;
+          const F = D.force * 0.3; ax += Math.cos(st.drift) * F; ay += Math.sin(st.drift) * F;
+          const t = TOK[tp.tok], dx = st.p.x - t.x, dy = st.p.y - t.y, d = Math.hypot(dx, dy), R = 90;
+          if (d < R) { const a = d > 2 ? Math.atan2(dy, dx) : st.drift, k = D.resist * 0.7 * (1 - d / R); ax += Math.cos(a) * k; ay += Math.sin(a) * k; }
+        }
+        const it = st.auto ? TOK[itsNext()] : null;
+        if (it) {
+          const dx = it.x - st.p.x, dy = it.y - st.p.y, d = Math.hypot(dx, dy) || 1, k = 2200 * Math.min(1, d / 40);
+          ax += dx / d * k; ay += dy / d * k; if (d < 30) { st.v.x *= Math.exp(-14 * s); st.v.y *= Math.exp(-14 * s); }
+        }
+        if (!st.auto) { // her fingers, as in the real thing
+          if (st.keys.size) {
+            let kx = 0, ky = 0; st.keys.forEach(k => { if (k === 'l') kx--; if (k === 'r') kx++; if (k === 'u') ky--; if (k === 'd') ky++; });
+            const m = Math.hypot(kx, ky) || 1; st.aim = { x: st.p.x + kx / m * 150, y: st.p.y + ky / m * 150 }; st.lastIn = st.t;
+          } else if (st.aim && !st.held && !st.steady && st.t - st.lastIn > 400) {
+            st.aim.x += (st.p.x - st.aim.x) * Math.min(1, s * 2.5); st.aim.y += (st.p.y - st.aim.y) * Math.min(1, s * 2.5);
+          }
+          if (st.aim) { const dx = st.aim.x - st.p.x, dy = st.aim.y - st.p.y, d = Math.hypot(dx, dy); if (d > 0.01) { const a = Math.min(GRIP, KP * d); ax += dx / d * a; ay += dy / d * a; } }
+        }
+        st.fmag = 0;
+        st.v.x = st.v.x * Math.exp(-DAMP * s) + ax * s; st.v.y = st.v.y * Math.exp(-DAMP * s) + ay * s;
+        st.p.x = clamp(st.p.x + st.v.x * s, 40, W - 40); st.p.y = clamp(st.p.y + st.v.y * s, 40, H - 30);
+        st.speed = Math.hypot(st.v.x, st.v.y);
+        st.under = hit(st.p.x, st.p.y);
+        if (tp && tp.kind === 'move' && st.under === tp.tok) return tp.ok();
+        // the ring: only the letter being practised (or its word, while it spells) counts
+        const goal = st.auto ? itsNext() : tp && tp.kind !== 'move' ? tp.tok : null;
+        if (goal && st.under === goal) {
+          if (st.dw.tok !== goal) st.dw = { tok: goal, ms: 0 };
+          st.dw.ms += dt;
+          if (st.dw.ms >= D.dwell * (goal === 'GOODBYE' ? 1.5 : 1)) { st.dw.ms = -450; tutTake(goal); }
+        } else { st.dw.ms -= dt * 1.4; if (st.dw.ms <= 0) st.dw = { tok: st.under, ms: 0 }; }
+        st.flick = 0;
+      };
+      const tutTake = k => {
+        if (st.auto) {
+          st.bi++;
+          if (st.bi >= st.its.length) { st.auto = false; el.classList.remove('auto'); st.aim = { x: st.p.x, y: st.p.y }; say(`It spelled ${st.its}.`, ''); if (tp && tp.kind === 'let') tp.ok(); }
+          return;
+        }
+        say(k === 'GOODBYE' ? 'Goodbye. That ends it.' : `${k}. That’s it.`, ''); if (tp) tp.ok();
+      };
+      const tutEnd = () => { // the séance starts fresh
+        st.tut = false; tp = null; closeOffer(); el.classList.remove('tut', 'auto');
+        Object.assign(st, { t: 0, p: { x: 500, y: 420 }, v: { x: 0, y: 0 }, aim: null, held: false, steady: false, lastIn: -9999, its: WORDS[0].replace(/ /g, ''), bi: 0, wi: 0,
+          hold: 0, let: 0, auto: false, offers: 0, offeredQ: -1, dw: { tok: null, ms: 0 }, under: null, speed: 0, silent: false });
+        st.keys.clear();
+      };
+      const tutSteps = replay => [
+        { target: null, say: 'Okay. Fingers on it, lightly. Let me show you how to steer before everyone starts asking it things.' },
+        { target: '.pl-stage', say: 'Hold and drag (or arrows / WASD). It follows a little behind your hand. Take the glass to <b>YES</b>, top left.', wait: replay ? 'click' : () => practice('move', 'YES') },
+        { target: '.pl-stage', say: 'Now rest there until the <b>ring</b> fills: that letter counts. Space holds it steady.', wait: replay ? 'click' : () => practice('dwell', 'YES') },
+        { target: '.pl-stage', say: 'Last thing every night: <b>GOODBYE</b>, at the bottom. It needs a longer hold. Try it.', wait: replay ? 'click' : () => practice('dwell', 'GOODBYE') },
+        { target: '.pl-stage', say: 'Something else pushes too: it drifts, and it <b>shoves you away</b> from the right letter. Hold on and take it to <b>NO</b>.', wait: replay ? 'click' : () => practice('push', 'NO') },
+        { target: '.pl-let', before: () => { if (!replay) { st.its = 'HI'; st.bi = 0; st.offer = { end: Infinity }; const b = $('.pl-let'); b.hidden = false; b.classList.add('on'); } },
+          say: 'Sometimes it starts a word, and you could <b>let it spell</b> (L or this button). It finishes by itself, but you lose the question, and the best grades. Try it once.', wait: replay ? 'click' : () => practice('let') },
+        { target: '.pl-meter', say: 'Letters it takes for itself fill <b>the board</b>. If it fills, it wins. Esc pauses, and How to play shows this again. Ready?' },
+      ];
+      const howTo = () => {
+        tutLib().then(T => {
+          if (!T || !st.paused || st.over) return;
+          $('.mg-pause').hidden = true;
+          T.run(el, { steps: tutSteps(true), who: 'Cherry', face: FACE, calm, perf, replay: true }).then(() => { if (st.paused && !st.over) { $('.mg-pause').hidden = false; $('.mg-pause button').focus?.(); } });
+        });
+      };
 
       /* the title card: ~1.8 s (click / any key skips; Esc skips and pauses) */
       const note = ['Psychological horror', calm ? 'Flashes reduced' : 'Flashing lights', 'Sudden darkness', still ? 'Reduced motion' : '', o.mute ? 'Captions on' : 'Best with sound'].filter(Boolean).join(' · ');
@@ -685,9 +778,20 @@ window.FemcPlanchette = (() => {
         if (st.begun || !el.isConnected && !o.__sim) return; st.begun = true;
         tt.classList.add('out'); later(() => tt.remove(), 450);
         audio();
-        st.jerkAt = 9000 + rnd(D.jerk) * 1000; st.swapAt = 14000 + rnd(D.swap) * 1000; st.chatAt = 5000; st.whisperAt = 12000; st.ghostAt = 30000; st.readAt = 20000;
-        nextQ();
-        paint(); raf = requestAnimationFrame(tick);
+        const start = () => {
+          if (st.over || (!el.isConnected && !o.__sim)) return;
+          tutEnd();
+          st.jerkAt = 9000 + rnd(D.jerk) * 1000; st.swapAt = 14000 + rnd(D.swap) * 1000; st.chatAt = 5000; st.whisperAt = 12000; st.ghostAt = 30000; st.readAt = 20000;
+          nextQ();
+          paint(); if (!raf) raf = requestAnimationFrame(tick);
+        };
+        st.tut = true; $('.pl-qn').textContent = 'Practice'; paint(); raf = requestAnimationFrame(tick); // the warm practice board until the real start
+        tutP.then(T => {
+          if (!T || (!el.isConnected && !o.__sim) || !T.should('planchette', o.tutorial)) return start();
+          el.classList.add('tut');
+          const go = () => T.run(el, { id: 'planchette', steps: tutSteps(false), who: 'Cherry', face: FACE, calm, perf }).then(r => { tutRes = r; start(); });
+          if (st.paused) st.afterPause = go; else go();
+        });
       };
       tt.onclick = begin; later(begin, 1800);
       paintToks();

@@ -47,7 +47,16 @@
    End: held = the room snaps back warm and whole; slipped = the room empties, a quiet card.
    Title card: art title.webp if present (art/minigames/holdon/), a content note under it, held 2.6 s (click / a key skips).
    Settings: reduced motion = no tearing, shaking, drifting or moving figure (crossfades instead of cuts); Reduce flashes (calm) =
-   no hard cuts or stings, softer static; Performance = no static / tearing layers. Pink, near-black and bone only. */
+   no hard cuts or stings, softer static; Performance = no static / tearing layers. Pink, near-black and bone only.
+
+   First-time tutorial (Nov 11 2026, Kat: every minigame teaches itself; tutorial.js / FemcTutorial, loaded on demand from this
+   folder): after the title card, before the first quiet, the first time ever (FemcTutorial.seen('holdon')) or with play option
+   `tutorial: true` (`false` never shows it; the story passes neither). Solar talks you through it (solar-runners faces), in a
+   calm, well-lit practice room (`.tut`: no pull, lies, ghosts, room changes, slips or stings; st.tut runs tutStep instead of
+   step): hold (Space / mouse / finger) → the Slipping meter and pips → let go to refill breath → while holding, rest on one
+   glowing anchor → a real one and a false one (bone-white glow, misspelled words): take the real one → Esc pauses. Then the
+   real run starts fresh. result.tutorial = 'done' | 'skipped' | 'seen' (not shown). Pause menu → How to play replays it as a
+   walkthrough over the paused room (Next on every step) and returns to the pause menu. */
 window.FemcHoldOn = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const base = () => (window.FemcGame && window.FemcGame.base) || (document.querySelector('script[src*="minigames/holdon"]')?.src.split('assets/')[0]) || '';
@@ -115,6 +124,12 @@ window.FemcHoldOn = (() => {
   // a caption that types itself and takes it back
   const GHOST = ['Who’s there?', 'There’s no one in that room.', 'Go back to bed.', 'Nobody’s awake.', 'It’s only the train.', 'You don’t live here.', 'Come down.', 'How many of you were there?', 'Don’t turn around.'];
   const START = 2 * 3600; // the wall clock starts at 2:00 a.m.
+  // the shared first-time tutorial (tutorial.js + .css, loaded once from this folder)
+  const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
+    const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
+    l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
+    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+  }));
 
   let cur = null; // test hook: FemcHoldOn.state()
   function play(o = {}) {
@@ -130,6 +145,8 @@ window.FemcHoldOn = (() => {
         missWave: Math.max(3, Math.min(5, Math.round(expect * 0.7))), missDone: false,
         lieAt: 9000, clockLie: null, ghost: null, ghosts: 0, whisperAt: 0, drift: { x: 0, y: 0 }, hist: [], reflAt: { x: 0, y: 0 } };
       cur = st;
+      const tutP = o.tutorial === false ? Promise.resolve(null) : tutLib(); // starts loading during the title card
+      let tutRes = 'seen', tp = null; // tp = the practice the tutorial is waiting on
       const pts = new Map(); let mouse = null, space = false;
       const holding = () => !st.paused && (pts.size > 0 || space);
       const bg = BG(o.bg || 'epi-r-her-room-night');
@@ -161,7 +178,7 @@ window.FemcHoldOn = (() => {
         <p class="ho-ghost" aria-hidden="true"></p>
         <p class="ho-say" aria-live="polite"></p>
         <p class="ho-help">Hold (mouse, finger or Space) when it pulls. Let go in the quiet to breathe. While holding, rest on the glowing things (or 1–6). Not everything that glows is real. Esc pauses.</p>
-        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="quit">Quit</button></div>
+        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
       const $ = s => el.querySelector(s);
@@ -338,7 +355,7 @@ window.FemcHoldOn = (() => {
       const spawn = a => {
         a.state = 'up';
         const th = a.th, T = a.tells, b = document.createElement('button'); b.type = 'button'; b.tabIndex = -1;
-        b.className = 'ho-anchor' + (T.includes('colour') ? ' wc' : '') + (D.subtle ? ' subtle' : '');
+        b.className = 'ho-anchor' + (T.includes('colour') ? ' wc' : '') + (D.subtle && !st.tut ? ' subtle' : '');
         b.style.left = a.slot[0] + '%'; b.style.top = a.slot[1] + '%';
         const cap = T.includes('text') ? (th.bad2 && Math.random() < 0.5 ? th.bad2 : th.bad) : th.cap;
         const art = T.includes('odd') ? SVG_ODD[th.id] : SVG[th.id];
@@ -354,6 +371,16 @@ window.FemcHoldOn = (() => {
       };
       const grab = a => {
         if (a.state !== 'up') return;
+        if (st.tut) { // practice: no slips, no sting, no wrong sound
+          if (a.lie) {
+            a.state = 'lured'; a.node.querySelector('em').textContent = a.th.bad; a.node.classList.add('lured', 'wc');
+            const n = a.node; later(() => n.remove(), 1100); say('That one was false. See the bone-white glow? Take the pink one.', 'warn');
+            return;
+          }
+          a.state = 'got'; a.node.classList.add('got'); const n = a.node; later(() => n.remove(), 900);
+          say(a.th.say, 'good'); K.chime(0); if (tp && tp.kind === 'anchor') tp.ok();
+          return;
+        }
         if (a.lie) {
           a.state = 'lured'; st.lured++; st.slip += D.lure; st.kick = 0.45; st.breath = Math.max(0, st.breath - 12);
           a.node.querySelector('svg').innerHTML = SVG_ODD[a.th.id] || SVG[a.th.id]; a.node.querySelector('em').textContent = a.th.bad;
@@ -519,7 +546,7 @@ window.FemcHoldOn = (() => {
       let last = 0, raf = 0;
       const tick = now => {
         const dt = Math.min(100, now - (last || now)); last = now;
-        if (!st.paused && !st.over) { step(dt); if (!st.over) paint(); }
+        if (!st.paused && !st.over) { st.tut ? tutStep(dt) : step(dt); if (!st.over) paint(); }
         if (!st.over) raf = requestAnimationFrame(tick);
       };
 
@@ -532,7 +559,7 @@ window.FemcHoldOn = (() => {
         el.classList.remove('black', 'hush', 'vanish', 'sting', 'gl-2', 'gl-3', 'holding', 'tired');
         const ratio = st.offered ? st.anchors / st.offered : 1;
         const grade = !won ? 'C' : st.slips === 0 && ratio >= 0.85 && st.lured === 0 ? 'S' : st.slips <= 1 && ratio >= 0.6 && st.lured <= 1 ? 'A' : 'B';
-        const res = { won, grade, slips: st.slips, anchors: st.anchors, offered: st.offered, missed: st.missed, held: Math.round(Math.min(st.t, LEN) / 1000), quit, lured: st.lured, lies: st.lies };
+        const res = { won, grade, slips: st.slips, anchors: st.anchors, offered: st.offered, missed: st.missed, held: Math.round(Math.min(st.t, LEN) / 1000), quit, lured: st.lured, lies: st.lies, tutorial: tutRes };
         if (A) {
           const t = ac.currentTime; A.master.gain.cancelScheduledValues(t); A.ng.gain.setTargetAtTime(0, t, 0.05);
           if (won) { A.master.gain.setTargetAtTime(0.9, t, 0.05); A.o2.detune.setTargetAtTime(0, t, 0.2); A.o3.detune.setTargetAtTime(0, t, 0.2); A.o1.frequency.setTargetAtTime(58, t, 0.2); A.g.gain.setTargetAtTime(0.02, t, 0.4); K.warm(); }
@@ -576,6 +603,7 @@ window.FemcHoldOn = (() => {
         if (!el.isConnected || st.over) return;
         e.stopPropagation();
         if (!st.begun) return;
+        const T = window.FemcTutorial; if ((T && T.open() && (e.key === 'Escape' || T.blocking())) || (st.tut && e.key === 'Escape')) return; // the tutorial has the keys
         if (e.key === 'Escape') { e.preventDefault(); pause(!st.paused); return; }
         if (st.paused) return;
         if (e.key === ' ') { e.preventDefault(); space = true; return; }
@@ -593,8 +621,59 @@ window.FemcHoldOn = (() => {
         window.removeEventListener('blur', blur); window.removeEventListener('keydown', skipT, true);
         try { ac && ac.close(); } catch (e) {} el.remove();
       };
-      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') pause(false); if (b === 'quit') { pause(false); finish('quit'); } };
+      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') pause(false); if (b === 'howto') howTo(); if (b === 'quit') { pause(false); finish('quit'); } };
       window.addEventListener('keydown', key, true); window.addEventListener('keyup', keyUp, true);
+
+      /* the first-time tutorial: a calm practice room (st.tut), each action done once */
+      const FACE = `${base()}assets/femc/portraits/solar-runners/neutral.webp`;
+      const practice = kind => new Promise(ok => { tp = { kind, acc: 0, ok: () => { tp = null; ok(); } }; });
+      const tutWave = list => {
+        anchorsEl.innerHTML = '';
+        st.wave = { I: 0, n: list.length, got: 0, dir: 'u', final: false, list: list.map((x, i) => ({ th: THINGS.find(t => t.id === x.id), lie: !!x.lie, tells: x.lie ? ['colour', 'text'] : [], key: i + 1, slot: x.slot, at: 0, dwell: 0, state: 'wait', node: null })) };
+        st.wave.list.forEach(spawn);
+      };
+      const tutStep = dt => {
+        const h = holding();
+        if (h) st.breath = Math.max(0, st.breath - D.drain * dt / 1000); else st.breath = Math.min(100, st.breath + D.regen * 1.5 * dt / 1000);
+        st.tired = false; st.dark = 0; st.gl = 0;
+        const want = tp && tp.kind === 'hold' ? 0.45 : 0.06;
+        st.pull += (want - st.pull) * Math.min(1, dt / 300);
+        if (tp && tp.kind === 'hold' && h && (tp.acc += dt) >= 1200) tp.ok();
+        if (tp && tp.kind === 'breathe' && !h && st.breath >= 95) tp.ok();
+        const w = st.wave;
+        if (w) w.list.forEach(a => {
+          if (a.state !== 'up') return;
+          const spots = [...pts.values()]; if (space && mouse) spots.push(mouse);
+          let on = false;
+          if (h) { const r = a.node.getBoundingClientRect(), m = 12; on = spots.some(p => p.x >= r.left - m && p.x <= r.right + m && p.y >= r.top - m && p.y <= r.bottom + m); }
+          a.dwell = on ? a.dwell + dt : Math.max(0, a.dwell - dt * 0.5);
+          a.node.style.setProperty('--d', Math.min(1, a.dwell / D.dwell).toFixed(3)); a.node.classList.toggle('touch', on);
+          if (a.dwell >= D.dwell) grab(a);
+        });
+      };
+      const tutEnd = () => { // the real run starts fresh
+        st.tut = false; tp = null; el.classList.remove('tut');
+        Object.assign(st, { pull: 0, slip: 0, breath: 100, tired: false, kick: 0, anchors: 0, offered: 0, missed: 0, lured: 0, lies: 0, wave: null, dark: 0, gl: 0 });
+        anchorsEl.innerHTML = ''; pts.clear(); space = false;
+      };
+      const tutSteps = replay => [
+        { target: null, say: 'Some nights the room starts to forget me. This is how I stay. Practice first: nothing happens in here.' },
+        { target: '.ho-grip', say: 'When it pulls, <b>hold on</b>: hold the mouse button, a finger, or Space. Try it now.', wait: replay ? 'click' : () => practice('hold') },
+        { target: '.ho-meters', say: 'If the pull gets stronger than my grip, <b>Slipping</b> fills. Full = a slip. The diamonds are how many I can take.', before: () => { if (!replay) st.slip = 45; }, after: () => { if (!replay) st.slip = 0; } },
+        { target: '.ho-breathm', say: 'Holding costs <b>breath</b>. In the quiet, let go and it comes back. Let go now and watch it fill.', before: () => { if (!replay) st.breath = Math.min(st.breath, 35); }, wait: replay ? 'click' : () => practice('breathe') },
+        { target: replay ? null : () => st.wave && st.wave.list[0].node, before: () => { if (!replay) tutWave([{ id: 'lamp', slot: [62, 40] }]); },
+          say: 'When it pulls, real things glow. <b>While holding</b>, rest on one until its ring fills (or press its number).', wait: replay ? 'click' : () => practice('anchor') },
+        { target: null, before: () => { if (!replay) tutWave(shuffle([{ id: 'mug', slot: [32, 40] }, { id: 'photo', slot: [68, 40], lie: true }])); },
+          say: 'Not all of them are real. A false one glows <b>bone-white</b>, has the wrong words, or pulses out of step. Take only the real one.', wait: replay ? 'click' : () => practice('anchor') },
+        { target: '.ho-clock', say: 'Make it to the end and I’m held. Esc pauses, and How to play shows this again. It starts quiet.' },
+      ];
+      const howTo = () => {
+        tutLib().then(T => {
+          if (!T || !st.paused || st.over) return;
+          $('.mg-pause').hidden = true;
+          T.run(el, { steps: tutSteps(true), who: 'Solar', face: FACE, calm, perf, replay: true }).then(() => { if (st.paused && !st.over) { $('.mg-pause').hidden = false; $('.mg-pause button').focus(); } });
+        });
+      };
 
       /* the title card: held 2.6 s (click / any key skips), then the quiet */
       const note = ['Psychological horror', calm ? 'Flashes reduced' : 'Flashing lights', still ? 'Reduced motion' : '', o.mute ? '' : 'Best with sound'].filter(Boolean).join(' · ');
@@ -604,9 +683,19 @@ window.FemcHoldOn = (() => {
       const begin = () => {
         if (st.begun || !el.isConnected) return; st.begun = true; window.removeEventListener('keydown', skipT, true);
         tt.classList.add('out'); later(() => tt.remove(), 450);
-        audio(); setPhase('calm', 3200); el.dataset.dir = 'u';
-        say('Quiet for now. Let go and breathe. When it pulls, hold on.', '');
-        paint(); raf = requestAnimationFrame(tick);
+        audio(); el.dataset.dir = 'u';
+        const start = () => {
+          if (st.over || !el.isConnected) return;
+          tutEnd(); setPhase('calm', 3200);
+          say('Quiet for now. Let go and breathe. When it pulls, hold on.', '');
+          paint(); if (!raf) raf = requestAnimationFrame(tick);
+        };
+        st.tut = true; paint(); raf = requestAnimationFrame(tick); // the loop runs the calm practice room until the real start
+        tutP.then(T => {
+          if (!T || !el.isConnected || !T.should('holdon', o.tutorial)) return start();
+          el.classList.add('tut');
+          T.run(el, { id: 'holdon', steps: tutSteps(false), who: 'Solar', face: FACE, calm, perf }).then(r => { tutRes = r; start(); });
+        });
       };
       const skipT = e => { if (e.key !== 'Escape') { e.preventDefault(); begin(); } };
       tt.onclick = begin; window.addEventListener('keydown', skipT, true); later(begin, 2600);

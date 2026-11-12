@@ -191,3 +191,23 @@
 }
 .mg-hw.still *, .mg-hw.still *::before { animation: none !important; transition: none !important; }
 @media (prefers-reduced-motion: reduce) { .hw-tt, .hw-tt.out { animation-duration: .01s; } }
+/* the tutorial's practice table (Nov 11 2026; hwatu.js practice(), FemcTutorial over it) */
+.hw-prac { position: absolute; z-index: 82; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(560px, calc(100% - 24px)); box-sizing: border-box;
+  display: grid; gap: 14px; justify-items: center; padding: 18px; background: var(--felt); border: 2px solid var(--pk); border-radius: 18px; box-shadow: 0 20px 60px rgba(0, 0, 0, .7); }
+.hw-prac-felt { display: flex; align-items: center; gap: 22px; --cw: clamp(44px, 9vw, 64px); }
+.hw-prac-pile { width: var(--cw); aspect-ratio: 5 / 8; border: 0; padding: 0; cursor: pointer; border-radius: calc(var(--cw) * .08); background: var(--back, none) center / cover, repeating-linear-gradient(45deg, #8e0b20 0 6px, var(--red) 6px 12px);
+  box-shadow: inset 0 0 0 calc(var(--cw) * .04) #8e0b20, 3px 3px 0 #5a0816, 0 4px 10px rgba(0, 0, 0, .5); }
+.hw-prac-pile:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.hw-prac-hand { display: flex; gap: 10px; --cw: clamp(48px, 10vw, 72px); }
+.hw-prac-hand .hw-card { cursor: pointer; }
+.hw-prac-hand .hw-card.sel { transform: translateY(-8px); }
+.hw-prac-hand .hw-card.sel .hw-face { outline: 2px solid #fff; outline-offset: 2px; }
+.hw-prac-hand .hw-card.can .hw-face { box-shadow: inset 0 0 0 2px #1b1214, 0 0 0 2px var(--pk), 0 0 14px rgba(255, 79, 158, .7); }
+.hw-prac-caps { justify-content: center; --cw: clamp(22px, 3.4vw, 30px); }
+.hw-prac-ask { display: grid; justify-items: center; gap: 8px; text-align: center; }
+.hw-prac-ask[hidden] { display: none; }
+.hw-prac-ask b { font: italic 900 34px/1 system-ui; color: var(--pk); text-shadow: 2px 2px 0 #000; }
+.hw-prac-ask p { margin: 0; color: var(--pk3); }
+.hw-prac-ask div { display: flex; gap: 10px; }
+.hw-prac-ask button { padding: 10px 26px; border: 0; background: var(--pk); color: var(--nt); font: italic 900 20px/1 system-ui; cursor: pointer; }
+.hw-prac-ask button + button { background: #fff; }

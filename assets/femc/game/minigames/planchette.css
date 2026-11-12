@@ -197,3 +197,8 @@
 .mg-pl.still.relit .pl-glow { animation: none; }
 .mg-pl.still .pl-cap { animation: none; }
 .mg-pl.still.lost .pl-candle b { animation: none; opacity: 0; transition: opacity 3s; }
+/* the first-time tutorial's practice board (Nov 11 2026): warm and lit, no ghost captions */
+.mg-pl.tut .pl-bg { filter: brightness(.55) saturate(.7) blur(3px); }
+.mg-pl.tut .pl-board { filter: drop-shadow(0 18px 30px rgba(0, 0, 0, .6)) brightness(1.05); }
+.mg-pl.tut .pl-vig { background: radial-gradient(ellipse at 50% 55%, transparent 60%, rgba(20, 7, 4, .55)); }
+.mg-pl.tut .pl-ghost, .mg-pl.tut .pl-help, .mg-pl.tut .pl-eighth { display: none; }

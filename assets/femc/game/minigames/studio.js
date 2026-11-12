@@ -10,7 +10,14 @@
    Press Play back: the meters bounce (Web Audio: a soft synth loop per track at the fader's level, quiet; muted if the page says
    so) and Haechan says the one thing that's most wrong ("Vocal's buried." / "Too much low end." / "Drums are in the way.").
    Get every fader within reach of his mix and he says "...Yeah. That." Fewer playbacks = a better grade. Keys: 1-4 pick a fader,
-   ↑ / ↓ move it, Space plays back, Esc pauses. */
+   ↑ / ↓ move it, Space plays back, Esc pauses.
+
+   Tutorial (Nov 11 2026, Kat: every minigame gets one; tutorial.js FemcTutorial, loaded on demand from this folder):
+     play({ tutorial: true | false })  true = always show it, false = never; default = only the first time (id 'studio').
+     Haechan guides a practice round on the real desk before the mix starts: move a fader (drag, or 1-4 then ↑ ↓), play it
+     back once (that playback doesn't count), read his note, then the playbacks counter. After it the faders reset, his mix is
+     new, and the count starts at 0. result.tutorial = 'done' | 'skipped' | 'seen' (not shown).
+     Pause (Esc) → How to play replays it as a walkthrough over the paused desk (Next on every step, nothing to do). */
 window.FemcStudio = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const TRACKS = [{ id: 'vox', name: 'Vocal' }, { id: 'keys', name: 'Piano' }, { id: 'bass', name: 'Bass' }, { id: 'drums', name: 'Drums' }];
@@ -18,13 +25,23 @@ window.FemcStudio = (() => {
   const QUIET = { vox: ["Vocal's buried. Bring yourself up.", "I can't hear you. That's the whole point, Solar."], keys: ['Where\'d the piano go?', 'Bring the piano up. It\'s holding the chords.'], bass: ['There\'s no bottom. It\'s floating.', 'More bass. Not a lot.'], drums: ['Drums are too shy.', "I can't feel the beat. Bring them up."] };
   const NEAR = ['Closer.', 'Almost. Listen to the second verse.', 'It\'s nearly there.'];
   const pick = a => a[Math.floor(Math.random() * a.length)];
+  const base = () => (window.FemcGame && window.FemcGame.base) || (typeof document !== 'undefined' && document.querySelector('script[src*="minigames/studio"]')?.src.split('assets/')[0]) || '';
+  // first-time tutorial (Nov 11 2026): tutorial.js + .css load once, from this folder
+  const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
+    const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
+    l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
+    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+  }));
+  const tutBusy = e => { const T = window.FemcTutorial; return !!(T && T.open() && (e.key === 'Escape' || T.blocking())); };
 
   function play(o = {}) {
     return new Promise(done => {
       const host = o.host || document.body, tracks = o.tracks || TRACKS, TRIES = o.tries || 4;
       const target = {}, lvl = {};
       tracks.forEach(t => { target[t.id] = 0.25 + Math.random() * 0.6; lvl[t.id] = 0.5; });
-      const st = { tries: 0, sel: 0, notes: [], over: false, paused: false, playing: false };
+      const st = { tries: 0, sel: 0, notes: [], over: false, paused: false, playing: false, tut: false, tutRes: 'seen' };
+      const tutOn = {}; // practice hooks: moved / played
+      const tutHit = k => { const f = tutOn[k]; delete tutOn[k]; f && f(); };
       const el = document.createElement('div');
       el.className = 'mg-mix';
       el.innerHTML = `
@@ -34,7 +51,7 @@ window.FemcStudio = (() => {
           <input type="range" min="0" max="100" value="50" aria-label="${esc(t.name)}" data-id="${t.id}"><b>${esc(t.name)}</b><small>${i + 1}</small></div>`).join('')}</div>
         <div class="mg-mix-go"><button type="button" class="mg-play">▶ Play back <small>Space</small></button></div>
         <p class="mg-mix-help">Drag the faders (or 1–4 then ↑ ↓), then play it back. He'll say what's wrong. Esc pauses.</p>
-        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="quit">Quit</button></div>
+        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
       const $ = s => el.querySelector(s), chs = [...el.querySelectorAll('.mg-ch')];
@@ -42,7 +59,7 @@ window.FemcStudio = (() => {
       const paintTries = () => { $('.mg-mix-tries').textContent = `Playbacks ${st.tries} / ${TRIES}`; };
       chs.forEach((c, i) => {
         const r = c.querySelector('input');
-        r.oninput = () => { lvl[r.dataset.id] = r.value / 100; st.sel = i; mark(); };
+        r.oninput = () => { lvl[r.dataset.id] = r.value / 100; st.sel = i; mark(); if (st.tut) tutHit('moved'); };
       });
       const mark = () => chs.forEach((c, i) => c.classList.toggle('sel', i === st.sel));
       const err = () => tracks.map(t => ({ id: t.id, d: lvl[t.id] - target[t.id] })).sort((a, b) => Math.abs(b.d) - Math.abs(a.d));
@@ -69,12 +86,14 @@ window.FemcStudio = (() => {
       };
       const playback = () => {
         if (st.over || st.paused || st.playing) return;
-        st.playing = true; st.tries++; paintTries(); el.classList.add('on');
+        const practice = st.tut;
+        st.playing = true; if (!practice) st.tries++; paintTries(); el.classList.add('on');
         sound(3000);
         chs.forEach((c, i) => c.querySelector('.mg-meter i').style.setProperty('--lv', lvl[tracks[i].id]));
         setTimeout(() => {
           st.playing = false; el.classList.remove('on');
           const e = err(), worst = e[0], sc = score();
+          if (practice) { $('.mg-mix-say span').textContent = Math.abs(worst.d) < 0.16 ? pick(NEAR) : pick(worst.d > 0 ? LOUD[worst.id] : QUIET[worst.id]); return tutHit('played'); }
           if (Math.abs(worst.d) < 0.09) return finish(sc);
           say(Math.abs(worst.d) < 0.16 ? pick(NEAR) : pick(worst.d > 0 ? LOUD[worst.id] : QUIET[worst.id]));
           if (st.tries >= TRIES) setTimeout(() => finish(sc), 1200);
@@ -85,14 +104,14 @@ window.FemcStudio = (() => {
         const g = quit ? 'C' : sc >= 88 && st.tries <= 2 ? 'S' : sc >= 80 ? 'A' : sc >= 62 ? 'B' : 'C';
         const line = { S: '...Yeah. That. Don\'t touch it.', A: "Yeah. That's the song.", B: "It's a mix. I'll fix the low end later.", C: "Okay. I'll do it. You sing." }[g];
         st.notes.push(line);
-        const res = { score: sc, tries: st.tries, grade: g, notes: st.notes, quit };
+        const res = { score: sc, tries: st.tries, grade: g, notes: st.notes, quit, tutorial: st.tutRes };
         const end = $('.mg-end'); end.hidden = false;
         end.innerHTML = `<b class="mg-grade">${g}</b><dl><dt>How close</dt><dd>${sc}%</dd><dt>Playbacks</dt><dd>${st.tries}</dd></dl><p class="mg-end-say">Haechan: ${esc(line)}</p><button type="button">Continue</button>`;
         end.querySelector('button').focus();
         end.querySelector('button').onclick = () => { cleanup(); o.onDone?.(res); done(res); };
       };
       const key = e => {
-        if (st.over) return;
+        if (st.over || tutBusy(e)) return;
         if (e.key === 'Escape') { e.preventDefault(); st.paused = !st.paused; $('.mg-pause').hidden = !st.paused; return; }
         if (st.paused) return;
         if (/^[1-4]$/.test(e.key)) { st.sel = +e.key - 1; mark(); }
@@ -103,9 +122,37 @@ window.FemcStudio = (() => {
       };
       const cleanup = () => { window.removeEventListener('keydown', key, true); try { ac && ac.close(); } catch (e) {} el.remove(); };
       $('.mg-play').onclick = playback;
-      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') { st.paused = false; $('.mg-pause').hidden = true; } if (b === 'quit') { st.paused = false; finish(score(), true); } };
+      /* the tutorial: Haechan walks her through the desk once, on the real faders; replay = the same words as a walkthrough */
+      const face = f => `${base()}assets/femc/portraits/haechan-runners/${f}.webp`;
+      const tutSteps = replay => {
+        const doIt = (k, extra) => replay ? {} : { wait: () => new Promise(ok => { tutOn[k] = ok; }), ...extra };
+        return [
+          { target: '.mg-mix-desk', face: face('neutral'), say: 'Your song, four parts: vocal, piano, bass, drums. Each fader is how loud that part is.' },
+          { target: () => chs[0], face: face('neutral'), say: 'Move one. Drag a fader up or down, or press <b>1–4</b> to pick one and <b>↑ ↓</b> to move it.', ...doIt('moved') },
+          { target: '.mg-play', face: face('happy'), say: 'Now <b>Play back</b> (or Space). This one is practice: it doesn\'t count.', ...doIt('played') },
+          { target: '.mg-mix-say', face: face('serious'), say: 'After every playback I tell you the one thing that\'s most wrong. Fix that, then play it again.' },
+          { target: '.mg-mix-tries', face: face('neutral'), say: 'You get four playbacks. The fewer you need, the better the grade. Esc pauses.' },
+        ];
+      };
+      const settings = () => { try { return (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {}; } catch (e) { return {}; } };
+      const runTut = (T, replay) => T.run(el, { id: 'studio', who: 'Haechan', steps: tutSteps(replay), replay, calm: o.calm ?? !!settings().calm, perf: o.perf ?? !!settings().perf });
+      const fresh = () => { // the real mix starts clean: faders at half, a new mix in his head, no playbacks
+        tracks.forEach((t, i) => { target[t.id] = 0.25 + Math.random() * 0.6; lvl[t.id] = 0.5; const r = chs[i] && chs[i].querySelector('input'); if (r) r.value = 50; });
+        st.sel = 0; st.tries = 0; st.notes = []; $('.mg-mix-say span').textContent = "Your song. You mix it. I'll tell you when it's right."; paintTries(); mark();
+      };
+      const howTo = () => tutLib().then(T => {
+        if (!T || st.over) return;
+        $('.mg-pause').hidden = true;
+        runTut(T, true).then(() => { if (st.over) return; $('.mg-pause').hidden = false; $('.mg-pause button').focus(); });
+      });
+      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') { st.paused = false; $('.mg-pause').hidden = true; } if (b === 'howto') howTo(); if (b === 'quit') { st.paused = false; finish(score(), true); } };
       window.addEventListener('keydown', key, true);
       paintTries(); mark();
+      tutLib().then(T => {
+        if (!T || !T.should('studio', o.tutorial)) return;
+        st.tut = true;
+        runTut(T, false).then(r => { st.tut = false; st.tutRes = r; for (const k in tutOn) delete tutOn[k]; const wait = () => st.playing ? setTimeout(wait, 100) : fresh(); wait(); });
+      });
     });
   }
   return { play };

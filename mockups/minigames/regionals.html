@@ -31,7 +31,7 @@
   </table>
   <div class="row"><button data-d="easy" class="alt">Easy</button><button data-d="normal">Normal</button><button data-d="hard" class="alt">Hard</button><label><input type="checkbox" id="mute"> No sound</label></div>
   <pre id="out">Last result shows here.</pre>
-  <script src="../../assets/femc/game/minigames/regionals.js?v=4"></script>
+  <script src="../../assets/femc/game/minigames/regionals.js?v=5"></script>
   <script>
     document.querySelectorAll('[data-d]').forEach(b => b.onclick = () => FemcRegionals.play({ difficulty: b.dataset.d, mute: document.getElementById('mute').checked }).then(r => { document.getElementById('out').textContent = JSON.stringify(r, null, 1); }));
   </script>

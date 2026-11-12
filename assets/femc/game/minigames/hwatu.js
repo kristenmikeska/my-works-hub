@@ -49,7 +49,14 @@
      back        the card back
      cards/<id>  card faces, probed once with cards/01b: id = month 01-12 + type: b bright, a animal, r ribbon, j1 j2 (j3) junk,
                  jd double junk. e.g. 08b (the moon), 08a (the geese), 12jd. Full list: FemcHwatu.DECK.map(c => c.id)
-   Test hooks: FemcHwatu.engine (deal, runTurn, score, ai, settle) runs a whole game with no DOM. */
+   Tutorial (Nov 11 2026, Kat: every minigame teaches itself first): after the title card, the first time only (FemcTutorial seen-state
+     'hwatu'), Eomma walks Solar through a staged practice hand on its own little table over the real one (the real deal hasn't
+     happened yet, so nothing of the game changes): the month in the corner, play the glowing match, tap the pile to flip, the pairs
+     sorting into 광 / 열 / 띠 / 피, how points come, then Go or Stop on a pretend 3 points. play({ tutorial: true | false }) forces /
+     skips it (the story passes neither). Esc → Pause → How to play replays it over the paused game (Next on every step).
+     result.tutorial = 'done' | 'skipped' | 'seen' (not shown). Helper: minigames/tutorial.js (FemcTutorial), loaded on demand.
+   Test hooks: FemcHwatu.engine (deal, runTurn, score, ai, settle) runs a whole game with no DOM; state().prac is the practice table
+     while a tutorial is up ({ hand, pile, ask: [go, stop], key }). */
 window.FemcHwatu = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const base = () => (window.FemcGame && window.FemcGame.base) || (typeof document !== 'undefined' && document.querySelector('script[src*="minigames/hwatu"]')?.src.split('assets/')[0]) || '';
@@ -59,6 +66,12 @@ window.FemcHwatu = (() => {
   const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const ART = id => `${base()}assets/femc/game/art/minigames/hwatu/${id}.webp`;
   const BG = id => `${base()}assets/femc/bg/${id}.webp`;
+  // the first-time tutorial's helper (tutorial.js + .css), loaded once from this folder; null = play without one
+  const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
+    const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
+    l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
+    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+  }));
 
   /* ── the deck ── */
   const MONTHS = [null,
@@ -377,7 +390,7 @@ window.FemcHwatu = (() => {
           <p><b>${G.target} points:</b> Stop to win, or Go for more (+1 a Go; three Gos double). If you Go and someone else then reaches ${G.target} and stops, they score double.</p>
           <p class="hw-keys">Keys: ← → Enter · G / S · R rules · Esc pause</p></aside>
         <div class="hw-ask" hidden></div>
-        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="quit">Quit</button></div>
+        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
       const $ = s => el.querySelector(s);
@@ -633,7 +646,7 @@ window.FemcHwatu = (() => {
         const sc = score(G.seats[0].cap);
         const grade = !won ? 'C' : r.points >= 7 || r.gos >= 2 ? 'S' : r.points >= 4 || r.gos >= 1 ? 'A' : 'B';
         const res = { won, grade, quit: !!quit, draw, how: r.how, winner: r.winner == null ? null : WHO[r.winner], points: r.points, base: r.base, gos: r.gos, goBak: r.goBak,
-          scores: G.seats.map(s => s.score), captured: { bright: sc.n.b, animal: sc.n.a, ribbon: sc.n.r, junk: sc.n.j }, sets: sc.sets, turns: G.turns, seats: N, difficulty: diff };
+          scores: G.seats.map(s => s.score), captured: { bright: sc.n.b, animal: sc.n.a, ribbon: sc.n.r, junk: sc.n.j }, sets: sc.sets, turns: G.turns, seats: N, difficulty: diff, tutorial: st.tut || 'seen' };
         el.classList.add(won ? 'won' : 'lost');
         if (!quit) { (won ? S.win : S.lose)(); if (r.winner === 2) say(2, AUNT.win, true); else say(1, won ? LINES.youWin : draw ? LINES.draw : LINES.youLose, true); }
         const head = quit ? 'You left the table.' : won ? `You win${r.how === 'out' ? ' (your Go held)' : ''}.` : draw ? 'Nobody wins (nagari).' : `${NAME[r.winner]} wins.`;
@@ -656,7 +669,7 @@ window.FemcHwatu = (() => {
       const playSel = () => { const c = G.seats[0].hand[st.sel]; if (c && st.resolve) st.resolve(c); };
       el.addEventListener('click', e => {
         const b = e.target.closest('[data-hw]');
-        if (b) { if (b.dataset.hw === 'rules') toggleRules(); if (b.dataset.hw === 'pause' && st.begun && !st.over) pause(true); return; }
+        if (b) { if (b.dataset.hw === 'rules') toggleRules(); if (b.dataset.hw === 'pause' && st.begun && !st.over && !tutOpen()) pause(true); return; }
         if (st.paused || st.over) return;
         const n = e.target.closest('.hw-card');
         if (st.mode === 'hand' && n && n.parentElement.closest('.hw-seat.me .hw-hand')) { const c = n._c; st.sel = G.seats[0].hand.indexOf(c); st.resolve(c); return; }
@@ -679,6 +692,7 @@ window.FemcHwatu = (() => {
         if (!el.isConnected || st.over) return;
         e.stopPropagation();
         if (!st.begun) return;
+        if (tutOpen()) { if (st.prac && !window.FemcTutorial.blocking()) st.prac.key(e); return; } // Esc and Next belong to the tutorial
         if (e.key === 'Escape') { e.preventDefault(); if (!$('.hw-rules').hidden && !st.paused) toggleRules(); else pause(!st.paused); return; }
         if (st.paused) return;
         const k = e.key.toLowerCase();
@@ -698,9 +712,93 @@ window.FemcHwatu = (() => {
         window.removeEventListener('keydown', key, true); window.removeEventListener('keydown', skipT, true);
         try { ac && ac.close(); } catch (e) {} el.remove();
       };
-      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') pause(false); if (b === 'quit') { pause(false); finish(true); } };
+      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') pause(false); if (b === 'howto') howTo(); if (b === 'quit') { pause(false); finish(true); } };
       window.addEventListener('keydown', key, true);
       el.addEventListener('pointerdown', () => { if (ac && ac.state === 'suspended' && !st.paused) ac.resume().catch(() => {}); });
+
+      /* the tutorial (Nov 11 2026): Eomma and a staged practice hand on its own little table (.hw-prac) over the real one.
+         Nothing here touches G; the practice cards are their own nodes (never in `nodes`). */
+      const GS = (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {};
+      const tutOpen = () => !!(window.FemcTutorial && window.FemcTutorial.open());
+      if (o.tutorial !== false) tutLib(); // start loading early
+      const practice = () => {
+        const C = id => DECK.find(c => c.id === id);
+        const P = document.createElement('div'); P.className = 'hw-prac';
+        const pcard = c => { const n = document.createElement('div'); n.className = 'hw-card hw-pcard'; n._c = c; n.dataset.m = c.m; n.dataset.t = c.t; n.title = cardName(c);
+          n.innerHTML = `<div class="hw-in"><div class="hw-face">${faceSVG(c)}<b class="hw-m">${c.m}</b><i class="hw-k k-${c.t}">${KO[c.t]}</i></div><div class="hw-back"></div></div>`;
+          if (cardArt) { const im = document.createElement('img'); im.alt = ''; im.src = ART('cards/' + c.id); im.onerror = () => im.remove(); n.querySelector('.hw-face').appendChild(im); }
+          return n; };
+        const row = cls => { const r = document.createElement('div'); r.className = cls; P.appendChild(r); return r; };
+        const feltR = row('hw-prac-felt'), handR = row('hw-prac-hand'), capsR = row('hw-prac-caps hw-caps');
+        const pileN = document.createElement('button'); pileN.type = 'button'; pileN.className = 'hw-prac-pile'; pileN.setAttribute('aria-label', 'The pile: tap to flip'); feltR.appendChild(pileN);
+        const slots = {};
+        ['03b', '08j1'].forEach(id => { const c = C(id), sl = document.createElement('div'); sl.className = 'hw-slot'; sl.dataset.m = c.m; sl.appendChild(pcard(c)); feltR.appendChild(sl); slots[c.m] = sl; });
+        const hand = ['07a', '03j1', '11j1'].map(id => { const n = pcard(C(id)); handR.appendChild(n); return n; });
+        const match = hand[1]; match.classList.add('can');
+        const flipC = pcard(C('08a'));
+        const grp = {}; ['b', 'a', 'r', 'j'].forEach(t => { const g = document.createElement('div'); g.className = 'hw-grp'; g.dataset.t = t; g.innerHTML = `<i>${KO[t]}<em>0</em></i>`; const k = document.createElement('div'); k.className = 'hw-stk'; g.appendChild(k); g._k = k; capsR.appendChild(g); grp[t] = g; });
+        const ask = document.createElement('div'); ask.className = 'hw-prac-ask'; ask.hidden = true;
+        ask.innerHTML = '<b>3 points</b><p>Stop: win now. Go: play on for more.</p>';
+        const goB = document.createElement('button'), stopB = document.createElement('button');
+        goB.type = stopB.type = 'button'; goB.textContent = 'Go'; stopB.textContent = 'Stop'; goB.dataset.a = 'go'; stopB.dataset.a = 'stop';
+        const btns = document.createElement('div'); btns.append(goB, stopB); ask.appendChild(btns); P.appendChild(ask);
+        el.appendChild(P);
+        const pr = st.prac = { node: P, hand, pile: pileN, ask: [goB, stopB], sel: 1, step: null, key: () => {} };
+        let played = false, flipped = false, sorted = false, choice = null, waiter = null;
+        const markSel = () => hand.forEach((n, i) => n.classList.toggle('sel', pr.step === 'hand' && i === pr.sel));
+        const doPlay = () => { if (played) return; played = true; match.classList.remove('can', 'sel'); slots[3].appendChild(match); slap(match, 0.8); markSel(); };
+        const doFlip = () => { if (flipped) return; doPlay(); flipped = true; slots[8].appendChild(flipC); flipC.classList.add('lift'); S.flip(); later(() => { flipC.classList.remove('lift'); slap(flipC, 0.8); }, 260); };
+        const doSort = () => { if (sorted) return; doFlip(); sorted = true;
+          [[slots[3], 'b'], [slots[8], 'a']].forEach(([sl]) => [...sl.children].forEach(n => { grp[n._c.t]._k.appendChild(n); }));
+          ['b', 'a', 'r', 'j'].forEach(t => { grp[t].querySelector('em').textContent = grp[t]._k.children.length; });
+          slots[3].remove(); slots[8].remove(); S.clack(0); later(() => S.clack(1), 90); };
+        const resolve = () => { const w = waiter; waiter = null; w && w(); };
+        const tryCard = n => {
+          if (pr.step !== 'hand' || played) return;
+          if (n === match) { doPlay(); resolve(); }
+          else pr.say && pr.say(`No ${MONTHS[n._c.m].en} (${n._c.m}) on the felt yet. Look for the glowing card.`);
+        };
+        hand.forEach((n, i) => { n.onclick = () => { pr.sel = i; tryCard(n); }; n.onpointerover = () => { if (pr.step === 'hand') hint(null); }; });
+        pileN.onclick = () => { if (pr.step === 'pile' && !flipped) { doFlip(); later(resolve, 420); } };
+        const pickGo = g => { if (pr.step !== 'ask' || choice != null) return; choice = g; (g ? S.go : S.stop)(); resolve(); };
+        goB.onclick = () => pickGo(true); stopB.onclick = () => pickGo(false);
+        pr.key = e => {
+          const k = e.key.toLowerCase();
+          if (pr.step === 'hand' && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) { e.preventDefault(); pr.sel = (pr.sel + (e.key === 'ArrowLeft' ? 2 : 1)) % 3; markSel(); }
+          else if (pr.step === 'hand' && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); tryCard(hand[pr.sel]); }
+          else if (pr.step === 'pile' && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pileN.onclick(); }
+          else if (pr.step === 'ask' && (k === 'g' || k === 's')) { e.preventDefault(); pickGo(k === 'g'); }
+        };
+        const until = (name, ready) => ctx => new Promise(ok => { pr.step = name; pr.say = ctx.say; markSel(); waiter = ok; if (ready && ready()) resolve(); });
+        const steps = [
+          { target: feltR, say: 'Every card belongs to a <b>month</b>: the number in its corner. Same month, same flower.' },
+          { target: handR, say: 'Play a card onto one of the <b>same month</b> on the felt. A card with a match glows. Go on.', wait: until('hand', () => played), before: () => { pr.step = 'hand'; markSel(); } },
+          { target: pileN, say: 'Then the <b>pile</b> flips its top card, and it matches the same way. Tap the pile.', wait: until('pile', () => flipped), before: () => { doPlay(); pr.step = 'pile'; } },
+          { target: capsR, say: 'Both pairs are yours. They sort by type: <b>광</b> brights, <b>열</b> animals, <b>띠</b> ribbons, <b>피</b> junk.', before: () => { pr.step = null; doSort(); } },
+          { target: capsR, say: 'Points come from sets: <b>three brights</b>, five animals or five ribbons, <b>ten junk</b>, and a few special trios. The Rules button (R) lists them.' },
+          { target: ask, say: 'Reach the target and you choose. <b>Stop</b> wins now. <b>Go</b> plays on for more, but if I stop after that, I score double. Pick one (G / S).', wait: until('ask', () => choice != null),
+            before: () => { doSort(); ask.hidden = false; }, after: () => { ask.hidden = true; pr.step = null; } },
+          { target: null, say: `First to ${G.target} points. Esc pauses; How to play is in there. You lead.`, next: 'Deal', before: ctx => ctx.say(choice === true ? 'Bold. We’ll see. First to ' + G.target + ' points. Esc pauses; How to play is in there. You lead.' : 'Sensible. First to ' + G.target + ' points. Esc pauses; How to play is in there. You lead.') },
+        ];
+        return { node: P, steps };
+      };
+      const tutor = async replay => {
+        const T = await tutLib(); if (!T || !el.isConnected || st.over) return null;
+        const P = practice();
+        try { return await T.run(el, { id: 'hwatu', who: 'Eomma', face: `${base()}assets/femc/portraits/lee-eomma/neutral.webp`, calm: !!GS.calm, perf: !!GS.perf, replay, steps: P.steps }); }
+        finally { P.node.remove(); st.prac = null; }
+      };
+      const firstTut = async () => {
+        if (o.tutorial === false) return 'seen';
+        const T = await tutLib(); if (!T || !T.should('hwatu', o.tutorial)) return 'seen';
+        return (await tutor(false)) || 'seen';
+      };
+      const howTo = async () => {
+        if (tutOpen()) return;
+        $('.mg-pause').hidden = true;
+        await tutor(true);
+        if (!st.over && el.isConnected && st.paused) { $('.mg-pause').hidden = false; $('.mg-pause button').focus(); }
+      };
 
       /* the title card: held 1.8 s (click / any key skips), then the deal */
       const tt = document.createElement('div'); tt.className = 'hw-tt';
@@ -710,7 +808,8 @@ window.FemcHwatu = (() => {
         if (st.begun || !el.isConnected) return; st.begun = true; window.removeEventListener('keydown', skipT, true);
         tt.classList.add('out'); later(() => tt.remove(), 450);
         audio();
-        run().catch(err => { console.error('hwatu', err); if (!st.over) { G.over = true; finish(true); } });
+        const go = () => run().catch(err => { console.error('hwatu', err); if (!st.over) { G.over = true; finish(true); } });
+        firstTut().then(r => { st.tut = r; if (!st.over && el.isConnected) go(); });
       };
       const skipT = e => { if (e.key !== 'Escape') { e.preventDefault(); begin(); } };
       tt.onclick = begin; window.addEventListener('keydown', skipT, true); later(begin, 1800);

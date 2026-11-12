@@ -171,3 +171,14 @@
   .mk-talk img { width: 48px; height: 48px; }
   .mk-talk p { font-size: 13px; }
 }
+/* the tutorial's practice card (Nov 11 2026; market.js practice(), FemcTutorial over it): its own tide, fish and stall */
+.mk-prac { position: absolute; z-index: 40; left: 50%; top: 50%; translate: -50% -50%; width: min(640px, calc(100% - 24px)); max-height: calc(100% - 24px); overflow: auto; box-sizing: border-box;
+  display: grid; gap: 12px; padding: 16px; background: rgba(20, 7, 15, .96); border: 2px solid var(--pk); border-radius: 8px; box-shadow: 0 20px 60px rgba(0, 0, 0, .7); }
+.mk-prac [hidden] { display: none !important; }
+.mk-pr-tide { display: grid; gap: 10px; }
+.mk-pr-call { margin-left: auto; padding: 5px 12px; font: italic 900 14px/1 system-ui; color: var(--nt); background: var(--pk3); transform: skewX(-10deg); }
+.mk-pr-call.ontime { background: var(--pk); }
+.mk-pr-fish { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(170px, 1fr); gap: 12px; align-items: center; }
+.mk-pr-fish .mk-big { cursor: pointer; touch-action: none; }
+.mk-pr-hag .mk-say { min-height: 0; }
+@media (max-width: 620px) { .mk-pr-fish { grid-template-columns: 1fr; } }

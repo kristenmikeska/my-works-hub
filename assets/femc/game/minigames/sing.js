@@ -33,7 +33,15 @@
    Art (FEMC-ART-TODO 45, art/minigames/sing/, cut by tools/femc-minigame-art.py): booth, haechan-desk; solar-idle / -left /
    -down / -up / -right / -miss (her singing poses); haechan-bop-0 / -1; arrow-0..3 (all point up, rotated per lane), target, splash
    (the PERFECT burst on the target); rating-perfect / -good / -ok / -miss; ready / set / sing; icon-solar. Each falls back to a
-   drawn stand-in. In since art batch 150: booth, haechan-desk, the arrows sheet, ratings, count-in (the rest still to make). Reduced motion: no bops or shakes. */
+   drawn stand-in. In since art batch 150: booth, haechan-desk, the arrows sheet, ratings, count-in (the rest still to make). Reduced motion: no bops or shakes.
+
+   Tutorial (Nov 11 2026, Kat: every minigame teaches itself; tutorial.js, FemcTutorial, loaded on demand from this folder):
+     play({ tutorial }) true = always, false = never, else only the first time (localStorage kg-femc-tutorials 'sing'); never by
+     itself in record mode or with `from` (the editor). After the title card, whoever's on talkback (Haechan; Solar when he's at
+     the mic) runs a practice take on a free clock with no song: the targets and keys, four slow arrows (one per lane; a missed
+     one comes round again), one held note, the health bar, the pause options. Health can't run out in practice. Then the score
+     and notes are reset and the real count-in starts the song from the top. Pause → How to play replays it as a walkthrough
+     (the song stays paused). result.tutorial = 'done' | 'skipped' | 'seen' (not shown). o.hook(fn) gets test handles (jsc). */
 window.FemcSing = (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -81,6 +89,12 @@ window.FemcSing = (() => {
 
   // in the game the chart file isn't on the page: load minigames/charts/<song>.js on first use
   const CHART_V = { runners: 5 };
+  // the shared first-time tutorial (tutorial.js / .css, loaded once from this folder; null = play without one)
+  const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
+    const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
+    l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
+    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+  }));
   const loadChart = id => new Promise(ok => { const s = document.createElement('script'); s.src = `${base()}assets/femc/game/minigames/charts/${id}.js?v=${CHART_V[id] || 1}`; s.onload = s.onerror = () => ok(); document.head.appendChild(s); });
   function play(o = {}) {
     const id = o.song || 'runners';
@@ -120,7 +134,7 @@ window.FemcSing = (() => {
           <div class="sg-count"></div>
         </div>
         <div class="mg-pause" hidden><b>Paused</b>
-          ${REC ? `<p class="sg-rec-help">Go back and play over a part to redo it. Everything you don't play over stays.</p><div class="sg-end-btns"><button type="button" data-mg="back5">Back 5 sec</button><button type="button" data-mg="back10">Back 10 sec</button><button type="button" data-mg="back0">Back to start</button></div><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="save">Finish &amp; save</button>` : `<button type="button" data-mg="resume">Resume</button><button type="button" data-mg="restart">Restart</button>`}
+          ${REC ? `<p class="sg-rec-help">Go back and play over a part to redo it. Everything you don't play over stays.</p><div class="sg-end-btns"><button type="button" data-mg="back5">Back 5 sec</button><button type="button" data-mg="back10">Back 10 sec</button><button type="button" data-mg="back0">Back to start</button></div><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="save">Finish &amp; save</button>` : `<button type="button" data-mg="resume">Resume</button><button type="button" data-mg="restart">Restart</button><button type="button" data-mg="howto">How to play</button>`}
           <div class="sg-opts">
             <label>Scroll speed <input type="range" min="1" max="4" step="0.1" data-o="speed"><output></output></label>
             <label><input type="checkbox" data-o="down"> Downscroll</label>
@@ -169,7 +183,9 @@ window.FemcSing = (() => {
 
       /* the clock: before the song a free count-in; then the song's own time, smoothed between its updates */
       let started = false, pre = from - PRE, last = 0, sync = { a: -1, p: 0 };
+      let prac = null, tutRes = 'seen'; const TUT = () => window.FemcTutorial; // the practice take: its own free clock, no song
       const songT = () => {
+        if (prac) return prac.t;
         if (!started || !audio) return pre;
         const a = audio.currentTime, p = performance.now();
         if (a !== sync.a) sync = { a, p };
@@ -189,7 +205,7 @@ window.FemcSing = (() => {
         box.appendChild(d); setTimeout(() => d.remove(), 700); while (box.children.length > 4) box.firstChild.remove();
       };
       const splash = lane => { const s = cols[lane].querySelector('.sg-splash'); s.classList.remove('on'); void s.offsetWidth; s.classList.add('on'); };
-      const health = d => { st.hp = Math.max(0, Math.min(100, st.hp + d)); $('.sg-health').style.setProperty('--hp', st.hp); el.classList.toggle('low', st.hp < 25); if (st.hp <= 0) fail(); };
+      const health = d => { st.hp = Math.max(0, Math.min(100, st.hp + d)); $('.sg-health').style.setProperty('--hp', st.hp); el.classList.toggle('low', st.hp < 25); if (st.hp <= 0 && !prac) fail(); };
       const stats = () => { const tot = st.perfect + st.good + st.ok + st.miss, acc = tot ? (st.perfect + st.good * 0.75 + st.ok * 0.4) / tot * 100 : 100; $('.sg-stats').textContent = `Score ${Math.round(st.score).toLocaleString()} · Misses ${st.miss} · ${acc.toFixed(2)}%`; return acc; };
 
       /* hitting */
@@ -236,7 +252,7 @@ window.FemcSing = (() => {
           if (n.done) continue;
           if (n.held) { // the head sits on the target, the trail shortens into it
             const left = n.t + n.len - t;
-            if (left <= 0) { n.held = false; n.done = true; n.el.remove(); st.score += 150; health(1); pose('idle', 1); continue; }
+            if (left <= 0) { n.held = false; n.done = true; n.ok = true; n.el.remove(); st.score += 150; health(1); pose('idle', 1); continue; }
             n.el.style.transform = `translateY(${tgt}px)`; n.el.style.setProperty('--trail', left * px + 'px'); continue;
           }
           if (REC) { const dy = (n.t - t) * px, y = O.down ? tgt - dy : tgt + dy, tail = n.len * px, vis = O.down ? (y > -60 && y - tail < h + 60) : (y < h + 60 && y + tail > -60); n.el.style.display = vis ? 'block' : 'none'; if (vis) { n.el.style.transform = `translateY(${y}px)`; if (n.len) n.el.style.setProperty('--trail', tail + 'px'); } continue; }
@@ -254,15 +270,16 @@ window.FemcSing = (() => {
       const COUNT = [['ready', 'Ready?', 660], ['set', 'Set.', 660], ['sing', 'Sing!', 990]];
       const loop = ts => {
         const dt = Math.min(0.06, (ts - (last || ts)) / 1000); last = ts;
-        if (!st.paused && !st.over) {
+        if (!st.paused && !st.over && prac) { prac.t += dt; const t = prac.t - O.offset / 1000; place(t); prac.tick?.(t); }
+        else if (!st.paused && !st.over) {
           if (!started) { pre += dt; if (pre >= from) { started = true; sync = { a: -1, p: 0 }; if (audio) { ac && ac.resume(); audio.currentTime = from; audio.play().catch(() => { audio = null; }); } else pre = from; } }
           else if (!audio) pre += dt;
-          const T = songT(), t = T - O.offset / 1000;
+          const ST = songT(), t = ST - O.offset / 1000;
           // count-in: "Ready? Set. Sing!" on the last three beats before the song
-          if (T < from) { const cb = Math.floor((T - from + PRE) / BEAT) - 1; if (cb !== st.count && cb >= 0 && cb < 3) { st.count = cb; const c = COUNT[cb], d = $('.sg-count'); d.innerHTML = `<img src="${ART(c[0])}" alt="" onerror="this.remove()"><b>${c[1]}</b>`; d.className = 'sg-count on ' + c[0]; tone(c[2], 0.15, 0.07); } }
+          if (ST < from) { const cb = Math.floor((ST - from + PRE) / BEAT) - 1; if (cb !== st.count && cb >= 0 && cb < 3) { st.count = cb; const c = COUNT[cb], d = $('.sg-count'); d.innerHTML = `<img src="${ART(c[0])}" alt="" onerror="this.remove()"><b>${c[1]}</b>`; d.className = 'sg-count on ' + c[0]; tone(c[2], 0.15, 0.07); } }
           else if (st.count !== 9) { st.count = 9; setTimeout(() => { if (st.count === 9) $('.sg-count').className = 'sg-count'; }, 400); }
           // beat and bar bops
-          const b = Math.floor((T - C.offset) / BEAT);
+          const b = Math.floor((ST - C.offset) / BEAT);
           if (b !== st.beat) { st.beat = b; el.classList.remove('bop'); void el.offsetWidth; el.classList.add('bop'); el.classList.toggle('odd', b % 2 !== 0); if (((b % 4) + 4) % 4 === 0) { el.classList.remove('barbop'); void el.offsetWidth; el.classList.add('barbop'); } }
           if (REC && started && t > wipeFrom) { for (const n of notes) if (!n.done && n.pass !== pass && n.t >= wipeFrom && n.t < t) drop(n); for (const x of sing) if (x.t > 0 && x.pass !== pass && x.t >= wipeFrom && x.t < t) x.dead = true; wipeFrom = t; recCount(); }
           cast(whoAt(t));
@@ -286,7 +303,7 @@ window.FemcSing = (() => {
         end.querySelector('[data-r]').onclick = restart;
         end.querySelector('[data-q]').onclick = () => out({ failed: true });
       };
-      const out = extra => { const total = notes.length, acc = stats(); const res = { song: C.id, level, score: Math.round(st.score), accuracy: Math.round(acc), perfect: st.perfect, good: st.good, ok: st.ok, miss: st.miss, maxCombo: st.maxCombo, fc: st.miss === 0 && st.perfect + st.good + st.ok === total, grade: 'C', failed: false, quit: false, ...extra }; cleanup(); o.onDone?.(res); done(res); };
+      const out = extra => { const total = notes.length, acc = stats(); const res = { song: C.id, level, score: Math.round(st.score), accuracy: Math.round(acc), perfect: st.perfect, good: st.good, ok: st.ok, miss: st.miss, maxCombo: st.maxCombo, fc: st.miss === 0 && st.perfect + st.good + st.ok === total, grade: 'C', failed: false, quit: false, ...extra, tutorial: tutRes }; cleanup(); o.onDone?.(res); done(res); };
       const finish = (quit = false) => {
         if (REC) return recEnd();
         if (st.over) return; st.over = true; fade();
@@ -330,6 +347,7 @@ window.FemcSing = (() => {
       const key = e => {
         if (!el.isConnected || (st.over && !st.paused)) return;
         e.stopPropagation();
+        const TT = TUT(); if (TT && TT.open() && (e.key === 'Escape' || e.key === 'Enter' || TT.blocking())) return; // the tutorial has the keys
         if (e.key === 'Escape' || e.key === 'Enter') { e.preventDefault(); setPause(!st.paused); return; }
         if (st.paused) return;
         if (REC && started && ['1', '2', '3'].includes(e.key)) { const who = { 1: 'solar', 2: 'haechan', 3: 'both' }[e.key], t = now(); for (const x of sing) if (x.pass === pass && Math.abs(x.t - t) < 0.3) x.dead = true; sing.push({ t: +Math.max(0, t).toFixed(3), who, pass }); sing.sort((a, b) => a.t - b.t); say(`${NAME[who] || 'Both'} from here.`); return; }
@@ -343,7 +361,7 @@ window.FemcSing = (() => {
       };
       const paintOpts = () => el.querySelectorAll('[data-o]').forEach(i => { const k = i.dataset.o; if (i.type === 'checkbox') i.checked = !!O[k]; else { i.value = O[k]; i.nextElementSibling.textContent = k === 'speed' ? (+O[k]).toFixed(1) : O[k]; } });
       el.querySelector('.sg-opts').addEventListener('input', e => { const i = e.target, k = i.dataset.o; if (!k) return; O[k] = i.type === 'checkbox' ? i.checked : +i.value; saveOpts(O); el.classList.toggle('down', O.down); paintOpts(); });
-      cols.forEach((c, i) => { c.addEventListener('pointerdown', e => { e.preventDefault(); press(i); }); c.addEventListener('pointerup', () => release(i)); c.addEventListener('pointerleave', () => st.held[i] && release(i)); });
+      cols.forEach((c, i) => { c.addEventListener('pointerdown', e => { e.preventDefault(); if (TUT()?.blocking()) return; press(i); }); c.addEventListener('pointerup', () => release(i)); c.addEventListener('pointerleave', () => st.held[i] && release(i)); });
       const seekTo = x => { // record mode: go back (or stay), count in, and the next take replaces what it plays over
         for (let l = 0; l < 4; l++) if (recDown[l]) release(l);
         try { audio && audio.pause(); } catch (e) {}
@@ -352,14 +370,55 @@ window.FemcSing = (() => {
       };
       $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; const at = songT();
         if (REC && b === 'resume') return seekTo(at); if (b === 'back5') return seekTo(at - 5); if (b === 'back10') return seekTo(at - 10); if (b === 'back0') return seekTo(0); if (b === 'save') { st.paused = false; $('.mg-pause').hidden = true; return finish(true); }
+        if (b === 'howto') return howTo();
         if (b === 'resume') setPause(false); if (b === 'restart') restart(); if (b === 'quit') { st.paused = false; $('.mg-pause').hidden = true; finish(true); } };
       const cleanup = () => { cancelAnimationFrame(raf); window.removeEventListener('keydown', key, true); window.removeEventListener('keyup', keyUp, true); try { audio && audio.pause(); ac && ac.close(); } catch (e) {} el.remove(); };
       window.addEventListener('keydown', key, true); window.addEventListener('keyup', keyUp, true);
       const recCount = () => { if (REC) $('.sg-stats').textContent = `Recording · ${notes.filter(n => !n.done).length} notes · Esc to go back or save`; };
       const recMode = () => { if (!REC) return; el.classList.add('rec'); recCount(); $('.sg-health').style.display = 'none'; };
       cast(whoAt(FROM)); health(0); stats(); say(REC ? T().rec : T().intro); recMode();
+      /* the tutorial: a practice take on its own clock (no song); live = practice notes come and must be played (the first
+         time), else a walkthrough over the paused song (How to play) */
+      const tutP = o.tutorial === true || (o.tutorial !== false && !REC && !FROM) ? tutLib() : Promise.resolve(null);
+      const LANE_KEY = ['D (←)', 'F (↓)', 'J (↑)', 'K (→)'];
+      const spawn = list => list.forEach(x => { const n = { t: prac.t + x.t, lane: x.lane, len: x.len || 0, hit: null, held: false, done: false, pass: -1 }; notes.push(n); mkEl(n); });
+      const practice = (list, isOk) => () => new Promise(ok => { // spawn the notes; a missed one comes round again
+        spawn(list); const want = notes.slice(-list.length);
+        prac.tick = () => {
+          want.forEach((n, k) => { if (n.done && !isOk(n) || n.hit === 'miss') { if (!n.done) { n.done = true; n.el.remove(); } const again = { ...list[k], t: 1.6 }; spawn([again]); want[k] = notes[notes.length - 1]; } });
+          if (want.every(isOk)) { prac.tick = null; ok(); }
+        };
+      });
+      const FACE_T = f => FACE(talker, f);
+      const steps = live => [
+        { target: '.sg-strum', say: `Quick run first, no song. Arrows ${O.down ? 'fall onto' : 'rise to'} these targets: <b>D F J K</b>, or the arrow keys.`, face: FACE_T('neutral') },
+        { target: '.sg-strum', say: 'Four slow ones. Hit each key as its arrow covers the target.', wait: live ? practice([0, 1, 2, 3].map(l => ({ lane: l, t: 2 + l * 1.3 })), n => n.hit && n.hit !== 'miss') : 'click', face: FACE_T('happy'), pos: 'right' },
+        { target: '.sg-strum', say: `This one has a tail. Press <b>${LANE_KEY[2]}</b> and hold it until the tail's gone.`, wait: live ? practice([{ lane: 2, t: 2.2, len: 1.6 }], n => !!n.ok) : 'click', face: FACE_T('neutral'), pos: 'right' },
+        { target: '.sg-health', say: 'Hits fill this bar, misses drain it. Run it dry and the take stops. Extra taps are free.', face: FACE_T('serious') },
+        { target: null, say: 'Esc pauses. Scroll speed, downscroll and timing offset are in there. Okay. On my count.', face: FACE_T('happy') },
+      ];
+      const tutOpts = () => { const GS = (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {}; return { who: NAME[talker], calm: o.calm ?? !!GS.calm, perf: o.perf ?? !!GS.perf }; };
+      const howTo = () => {
+        const TT = TUT(); if (!TT) return;
+        $('.mg-pause').hidden = true;
+        TT.run(el, { ...tutOpts(), id: 'sing', replay: true, steps: steps(false) }).then(() => { if (el.isConnected && st.paused) { $('.mg-pause').hidden = false; $('.mg-pause [data-mg=resume]').focus(); } });
+      };
+      o.hook?.({ st, notes: () => notes, now, press, release, el, prac: () => prac });
       // the title card (FEMC-ART-TODO 45J, art title): held 1.8 s (click to skip), then the count-in starts; none without the art
-      let going = false; const go = () => { if (going) return; going = true; raf = requestAnimationFrame(loop); };
+      let going = false; const go = () => {
+        if (going) return; going = true;
+        tutP.then(TT => {
+          if (!el.isConnected) return;
+          if (!TT || !TT.should('sing', o.tutorial)) { raf = requestAnimationFrame(loop); return; }
+          notes.forEach(drop); notes = []; prac = { t: 0, tick: null }; raf = requestAnimationFrame(loop);
+          TT.run(el, { ...tutOpts(), id: 'sing', steps: steps(true) }).then(r => { // then the real take from a clean slate
+            tutRes = r; prac = null; for (let l = 0; l < 4; l++) if (st.held[l]) release(l);
+            Object.assign(st, { score: 0, combo: 0, maxCombo: 0, perfect: 0, good: 0, ok: 0, miss: 0, hp: 50, sec: -1, held: [false, false, false, false], beat: -99, count: -1 });
+            started = false; pre = from - PRE; sync = { a: -1, p: 0 }; el.classList.remove('low');
+            build(); health(0); stats(); pose('idle', 1); say(T().intro);
+          });
+        });
+      };
       const tt = $('.sg-title');
       if (!tt) go();
       else {

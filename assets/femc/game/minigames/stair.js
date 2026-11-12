@@ -67,7 +67,17 @@
    drawn silhouette otherwise). Nothing else is needed.
    Settings: reduced motion = no shake, no bobbing, no typed captions moving, crossfades only; Reduce flashes (calm) = no hard
    cut to dark, the sit moment fades in and out slowly, no sting; Performance = no grain or flicker layers. Pink, near-black and
-   bone only; the scene dark and drained of colour. */
+   bone only; the scene dark and drained of colour.
+
+   First-time tutorial (Nov 11 2026, Kat: every minigame teaches itself; tutorial.js / FemcTutorial, loaded on demand from this
+   folder): after the title card, the first time ever (FemcTutorial.seen('stair')) or with play option `tutorial: true`
+   (`false` never shows it; the story passes neither). Solar talks you through it (solar-strangers faces) on a calm, lit
+   staircase (`.tut`; st.tut runs tutStep: no stages, lies, echoes that lag, light going off, sitter or answering steps, and
+   Listening never fills up): the House meter and its notch → one step under the radiator's cover → freeze in the quiet
+   (2.5 s still) → the Listening meter → the seventh stair under Mr. Oh's engine (step on it, or long-step over it) → a wrong
+   sound with every tell (freeze until it passes) → Esc pauses. Then the night starts fresh from her door, clock at 2:07.
+   result.tutorial = 'done' | 'skipped' | 'seen' (not shown). Pause menu → How to play replays it as a walkthrough over the
+   paused house (Next on every step) and returns to the pause menu. */
 window.FemcStair = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const base = () => (window.FemcGame && window.FemcGame.base) || (document.querySelector('script[src*="minigames/stair"]')?.src.split('assets/')[0]) || '';
@@ -104,6 +114,12 @@ window.FemcStair = (() => {
     [7, 1], [7, 1], [7, 1], [4, .5], [7, .5], [9, 1], [9, 1], [7, 2], [4, 1], [2, .5], [4, .5], [7, 1], [4, .5], [2, .5], [0, 1], [0, .5], [2, .5], [0, 2]];
   const GHOST = ['Seven.', 'Eight.', 'Who counted that one?', 'Go back to bed.', 'It’s only the house.', 'Don’t count out loud.', 'Nobody’s up.', 'You missed one.'];
   const START = 127, SPAN = 143; // 2:07 a.m. → 4:30 a.m.
+  // the shared first-time tutorial (tutorial.js + .css, loaded once from this folder)
+  const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
+    const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
+    l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
+    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+  }));
 
   /* the house map (viewBox 0 0 330 400) */
   const STX = 120, STY = 80, STW = 140, STH = 240; // the flight: from the landing's edge down to the hall floor
@@ -163,6 +179,8 @@ window.FemcStair = (() => {
         light: 'on', lightOff: false, lightBack: false, sat: false, sit: null, clockSaid: false, mIdx: 0, mPlays: 0,
         lieAt: 12000, cntLie: null, clockLie: null, ghost: null, ghostAt: 0, ghosts: 0, dark: null, lastStep: -9999 };
       cur = st;
+      const tutP = o.tutorial === false ? Promise.resolve(null) : tutLib(); // starts loading during the title card
+      let tutRes = 'seen', tp = null; // tp = the practice the tutorial is waiting on
       const timers = new Set();
       const later = (fn, ms) => { const id = setTimeout(() => { timers.delete(id); fn(); }, ms); timers.add(id); return id; };
       const el = document.createElement('div');
@@ -191,7 +209,7 @@ window.FemcStair = (() => {
         <p class="st-say" aria-live="polite"></p>
         <div class="st-btns"><button type="button" class="st-step" tabindex="-1">Step</button><button type="button" class="st-long" tabindex="-1">Long step</button></div>
         <p class="st-help">Step (Space, ↓ / ↑ or the button) only while the house is louder than the notch. Freeze in the quiet. Shift + Step or L steps over a stair. Nothing real comes from upstairs. Esc pauses.</p>
-        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="quit">Quit</button></div>
+        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
       const $ = s => el.querySelector(s);
@@ -373,11 +391,12 @@ window.FemcStair = (() => {
         long: canLong() ? noiseOf(nextNode(true), true, true) : null });
 
       /* the house's sounds */
-      const startEv = () => {
+      const startEv = force => {
         const s = st.stage;
         let key, wrong = false, tells = [];
-        const canWrong = s >= D.wrongFrom && st.t > 12000;
-        if (canWrong && !st.taught) { key = 'radio'; wrong = true; st.taught = true; tells = ['dark', 'up', 'text', 'colour'].concat(A ? ['late'] : []); }
+        const canWrong = !force && s >= D.wrongFrom && st.t > 12000;
+        if (force) { key = force.key; wrong = !!force.wrong; tells = force.tells || []; }
+        else if (canWrong && !st.taught) { key = 'radio'; wrong = true; st.taught = true; tells = ['dark', 'up', 'text', 'colour'].concat(A ? ['late'] : []); }
         else {
           const pool = Object.keys(SRC).filter(k => SRC[k].from <= s && k !== st.lastSrc);
           const ws = pool.map(k => SRC[k].w * (k === 'engine' ? D.engine : 1)), sum = ws.reduce((a, b) => a + b, 0);
@@ -385,7 +404,7 @@ window.FemcStair = (() => {
           for (let i = 0; i < pool.length; i++) { r -= ws[i]; if (r <= 0) { key = pool[i]; break; } }
           if (canWrong && Math.random() < D.wrong[s]) { wrong = true; tells = shuffle(['dark', 'up', 'text', 'colour'].concat(A ? ['late'] : [])).slice(0, D.tells); }
         }
-        const S = SRC[key], len = rnd(S.dur) * (1 - 0.12 * prog());
+        const S = SRC[key], len = force ? force.len : rnd(S.dur) * (1 - 0.12 * prog());
         const ev = { key, wrong, tells, up: tells.includes('up'), start: st.t, end: st.t + len, lvl: 0, stop: null, chip: null };
         st.ev = ev; st.lastSrc = key; if (wrong) st.wrong++;
         const T = tells, loc = ev.up ? 'up' : S.loc;
@@ -397,7 +416,7 @@ window.FemcStair = (() => {
         const vol = ev.up ? 0.7 : NEAR[S.loc][zone(node())];
         ev.stop = playSrc(ev, vol, false);
         if (T.includes('late')) { const s2 = playSrc(ev, vol * 0.45, true); const s1 = ev.stop; ev.stop = f => { s1(f); s2(f); }; }
-        if (wrong && T.length >= 4) say('The radio. Look at it.', 'warn');
+        if (wrong && T.length >= 4 && !st.tut) say('The radio. Look at it.', 'warn');
       };
       const endEv = (dead = false) => {
         const ev = st.ev; if (!ev) return;
@@ -438,6 +457,7 @@ window.FemcStair = (() => {
           else if (nd.odd) { chip('▼', 'A creak, under you', 'odd', 1800); if (A) K.creak(3, false, 0, 2.2, 0.3); }
           if (skipped && skipped.creaky) chip('●', 'Over the seventh stair', 'good', 1300);
         }
+        if (st.tut) return tutStepped(nz, cover, ev);
         // the house hears what it doesn't cover
         if (nz > cover) {
           st.listen += (nz - cover) * D.k;
@@ -586,7 +606,7 @@ window.FemcStair = (() => {
       let last = 0, raf = 0;
       const tick = now => {
         const dt = Math.min(100, now - (last || now)); last = now;
-        if (!st.paused && !st.over) { step(dt); if (!st.over) paint(); }
+        if (!st.paused && !st.over) { st.tut ? tutStep(dt) : step(dt); if (!st.over) paint(); }
         if (!st.over) raf = requestAnimationFrame(tick);
       };
 
@@ -598,7 +618,7 @@ window.FemcStair = (() => {
         st.answer = null; st.ghost = null; $('.st-ghost').textContent = '';
         el.classList.remove('black', 'sitting', 'sting');
         const grade = !won ? 'C' : st.heard < 40 && st.lured === 0 && st.creaks === 0 ? 'S' : st.heard < 70 && st.lured <= 1 && st.creaks <= 1 ? 'A' : 'B';
-        const res = { won, grade, quit, dawn, heard: Math.round(st.heard), lured: st.lured, wrong: st.wrong, creaks: st.creaks, answered: st.answered, steps: st.steps, stairs: st.n, secs: Math.round(Math.min(st.t, LEN) / 1000) };
+        const res = { won, grade, quit, dawn, heard: Math.round(st.heard), lured: st.lured, wrong: st.wrong, creaks: st.creaks, answered: st.answered, steps: st.steps, stairs: st.n, secs: Math.round(Math.min(st.t, LEN) / 1000), tutorial: tutRes };
         if (A) {
           const t = ac.currentTime; A.rg.gain.setTargetAtTime(0, t, 0.05);
           if (won) { A.o2.detune.setTargetAtTime(0, t, 0.3); A.o1.frequency.setTargetAtTime(52, t, 0.3); K.warm(); }
@@ -635,6 +655,7 @@ window.FemcStair = (() => {
         if (!el.isConnected || st.over) return;
         e.stopPropagation();
         if (!st.begun) return;
+        const T = window.FemcTutorial; if ((T && T.open() && (e.key === 'Escape' || T.blocking())) || (st.tut && e.key === 'Escape')) return; // the tutorial has the keys
         if (e.key === 'Escape') { e.preventDefault(); pause(!st.paused); return; }
         if (st.paused) return;
         if (STEP_KEYS.includes(e.key) || e.key === 'l' || e.key === 'L') {
@@ -651,8 +672,54 @@ window.FemcStair = (() => {
         window.removeEventListener('keydown', key, true); window.removeEventListener('keydown', skipT, true);
         try { ac && ac.close(); } catch (e) {} el.remove();
       };
-      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') pause(false); if (b === 'quit') { pause(false); finish('quit'); } };
+      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') pause(false); if (b === 'howto') howTo(); if (b === 'quit') { pause(false); finish('quit'); } };
       window.addEventListener('keydown', key, true);
+
+      /* the first-time tutorial: lit practice stairs (st.tut), each action done once */
+      const FACE = `${base()}assets/femc/portraits/solar-strangers/neutral.webp`;
+      const practice = (kind, x = {}) => new Promise(ok => { tp = Object.assign({ kind, from: st.t, ok: () => { tp = null; ok(); } }, x); });
+      const tutEv = (key, x = {}) => { if (st.ev) endEv(true); startEv(Object.assign({ key, len: 600000 }, x)); };
+      const tutStep = dt => {
+        st.t += dt; st.stage = 0;
+        if (st.ev) { const ev = st.ev; ev.lvl = clamp((st.t - ev.start) / 350) * (st.t > ev.end ? clamp(1 - (st.t - ev.end) / 450) : 1); if (st.t >= ev.end + 450) endEv(); }
+        st.listen = Math.max(0, st.listen - D.decay * 2 * dt / 1000);
+        if (tp && tp.kind === 'freeze' && st.t - tp.from >= 2500) tp.ok();
+        if (tp && tp.kind === 'wrong' && !st.ev) tp.ok();
+      };
+      const tutStepped = (nz, cover, ev) => {
+        if (nz > cover) st.listen = Math.min(85, st.listen + (nz - cover) * D.k * 0.6);
+        if (tp && tp.kind === 'step') { if (nz <= cover) { endEv(); tp.ok(); } else say('Too loud for that cover. Wait for the meter to pass the notch.', 'warn'); }
+        else if (tp && tp.kind === 'freeze') { tp.from = st.t; say('Shh. Freeze. Let the quiet pass.', 'warn'); }
+        else if (tp && tp.kind === 'creak') { if (st.pos >= tp.past) { endEv(); tp.ok(); } }
+        else if (tp && tp.kind === 'wrong') say('That one isn’t the house. Freeze until it’s gone.', 'warn');
+        st.lastStep = st.t; paint();
+      };
+      const tutEnd = () => { // the night starts fresh from her door
+        st.tut = false; tp = null; if (st.ev) endEv(true); el.classList.remove('tut');
+        Object.assign(st, { t: 0, pos: 0, dir: 'down', lock: 0, listen: 0, heard: 0, lured: 0, wrong: 0, creaks: 0, answered: 0, steps: 0, stage: 0,
+          evNext: 2200, lastSrc: '', taught: false, answer: null, lastStep: -9999 });
+        capsEl.innerHTML = ''; map.querySelectorAll('.st-src.on').forEach(n => n.classList.remove('on'));
+      };
+      const at = i => st.route.findIndex(n => n.kind === 'tread' && n.i === i); // the route index of stair i (from the top)
+      const tutSteps = replay => [
+        { target: null, say: 'Down to the kitchen for a glass of water, then back up to bed, without the house hearing. Let’s practise with the lights on.' },
+        { target: '.st-housem', say: 'The <b>House</b> meter is how loud the house is where you stand. The notch is how loud your next step will be.' },
+        { target: '.st-btns', before: () => { if (!replay) tutEv('radiator'); }, say: 'The radiator is knocking: the meter is past the notch. <b>Take one step</b> now (Space, ↓ or Step).', wait: replay ? 'click' : () => practice('step') },
+        { target: '.st-phase', say: 'Now it’s quiet. <b>Freeze</b>: don’t step. Wait until the house is loud again.', wait: replay ? 'click' : () => practice('freeze') },
+        { target: '.st-listenm', say: '<b>Listening</b> fills when the house hears a step it didn’t cover. Stay still and it drains. Full means you’re heard.' },
+        { target: '.st-map', before: () => { if (!replay) { st.pos = at(CREAK - 1); tutEv('engine'); paint(); } },
+          say: 'The <b>seventh stair</b> creaks (the worn tread). Only Mr. Oh’s engine covers it, and it’s idling now: step on it, or <b>long-step</b> over it (Shift + Step, L).', wait: replay ? 'click' : () => practice('creak', { past: at(CREAK) }) },
+        { target: '.st-caps', before: () => { if (!replay) tutEv('radio', { wrong: true, tells: ['dark', 'up', 'text', 'colour'], len: 4500 }); },
+          say: 'Some sounds aren’t the house: its place stays dark, it comes from upstairs, the caption is wrong, the meter goes bone. <b>Freeze</b> until it passes.', wait: replay ? 'click' : () => practice('wrong') },
+        { target: null, say: 'If you hear steps that aren’t yours, freeze until they stop. Esc pauses, and How to play shows this again. Lights off now.' },
+      ];
+      const howTo = () => {
+        tutLib().then(T => {
+          if (!T || !st.paused || st.over) return;
+          $('.mg-pause').hidden = true;
+          T.run(el, { steps: tutSteps(true), who: 'Solar', face: FACE, calm, perf, replay: true }).then(() => { if (st.paused && !st.over) { $('.mg-pause').hidden = false; $('.mg-pause button').focus(); } });
+        });
+      };
 
       /* the title card: held 1.8 s (click / any key skips), then the stairs */
       map.querySelector('.st-stairs').innerHTML = stairsSvg(13, 0);
@@ -664,8 +731,17 @@ window.FemcStair = (() => {
         if (st.begun || !el.isConnected) return; st.begun = true; window.removeEventListener('keydown', skipT, true);
         tt.classList.add('out'); later(() => tt.remove(), 450);
         audio();
-        say('Move while the house is loud. Freeze when it’s quiet.', '');
-        paint(); raf = requestAnimationFrame(tick);
+        const start = () => {
+          if (st.over || !el.isConnected) return;
+          tutEnd(); say('Move while the house is loud. Freeze when it’s quiet.', '');
+          paint(); if (!raf) raf = requestAnimationFrame(tick);
+        };
+        st.tut = true; paint(); raf = requestAnimationFrame(tick); // the loop runs the lit practice stairs until the real start
+        tutP.then(T => {
+          if (!T || !el.isConnected || !T.should('stair', o.tutorial)) return start();
+          el.classList.add('tut');
+          T.run(el, { id: 'stair', steps: tutSteps(false), who: 'Solar', face: FACE, calm, perf }).then(r => { tutRes = r; start(); });
+        });
       };
       const skipT = e => { if (e.key !== 'Escape') { e.preventDefault(); e.stopPropagation(); begin(); } };
       tt.onclick = begin; window.addEventListener('keydown', skipT, true); later(begin, 1800);

@@ -32,13 +32,28 @@
      icon-golden / -burnt / -steamed   after the pan every slot shows how they cooked (pale = steamed). Fallback: a mini SVG dumpling.
      stamp-s / -a / -b / -c   the grade badge on the end screen (fallback: the big letter)
    Sounds: Web Audio, no files. Esc pauses.
-   title (44G): a title card held 1.8 s before the filling (click / a key skips; none without the art). */
+   title (44G): a title card held 1.8 s before the filling (click / a key skips; none without the art).
+
+   Tutorial (Nov 11 2026, Kat: every minigame gets one; tutorial.js FemcTutorial, loaded on demand from this folder):
+     play({ tutorial: true | false })  true = always show it, false = never; default = only the first time (id 'dumplings').
+     After the title card, Haechan walks her through one practice dumpling with the real steps (R.practice): roll it, spoon the
+     filling, pleat it, then fry it (into the pan, brown, water to the line, lid); wetting / folding, the prep (chop, stir,
+     season) and plating are named on the last card. Practice scores nothing (no R.steps, no tray, no talk) and every practice
+     timer is dropped after (R.gen); then the real game starts at the filling. result.tutorial = 'done' | 'skipped' | 'seen'.
+     Pause (Esc) → How to play replays it as a walkthrough over the paused kitchen (Next on every step, nothing to do). */
 window.FemcDumplings = (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const base = () => (window.FemcGame && window.FemcGame.base) || (document.querySelector('script[src*="minigames/dumplings.js"]')?.src.split('assets/')[0]) || '';
   const pick = a => Array.isArray(a) ? a[Math.floor(Math.random() * a.length)] : a;
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  // first-time tutorial (Nov 11 2026): tutorial.js + .css load once, from this folder
+  const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
+    const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
+    l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
+    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+  }));
+  const tutBusy = e => { const T = window.FemcTutorial; return !!(T && T.open() && (e.key === 'Escape' || T.blocking())); };
 
   /* ── choices ── */
   const FILLINGS = {
@@ -162,7 +177,8 @@ window.FemcDumplings = (() => {
       const pics = {}; ['pan', 'hands'].forEach(id => { const i = new Image(); i.src = ART(id); pics[id] = i; }); // svg pictures: drawn version until loaded
       const has = id => pics[id].complete && pics[id].naturalWidth > 0;
       const FACE = (who, f) => `${base()}assets/femc/portraits/${who === 'h' ? 'haechan-runners' : 'solar-runners'}/${f}.webp`;
-      const R = { steps: {}, made: [], step: null, paused: false, over: false, filling: 'classic', sauce: 'soy', garnish: 'sesame', plate: 'white' };
+      const R = { steps: {}, made: [], step: null, paused: false, over: false, filling: 'classic', sauce: 'soy', garnish: 'sesame', plate: 'white', practice: false, gen: 0, tutRes: 'seen' };
+      const tutOn = {}; const tutHit = k => { const f = tutOn[k]; delete tutOn[k]; f && f(); }; // practice: 'next' = a step finished, 'brown' = all in the pan
       let F = FILLINGS.classic;
       const el = document.createElement('div');
       el.className = 'mg-dmp' + (reduced.matches ? ' still' : '');
@@ -174,7 +190,7 @@ window.FemcDumplings = (() => {
           <svg class="dmp-svg" viewBox="0 0 300 200" aria-hidden="true"><g class="defs"></g><g class="art"></g><g class="scene"></g><g class="over"></g></svg><div class="dmp-fx" aria-hidden="true"></div>
           <div class="dmp-grade" aria-live="polite"></div><div class="dmp-choose" hidden></div></div>
         <div class="dmp-ctl"><div class="dmp-meter"><i class="zone"></i><i class="gold"></i><i class="fillbar"></i><i class="mark"></i></div><p class="dmp-tip"></p><button type="button" class="dmp-go" hidden></button></div>
-        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="quit">Quit</button></div>
+        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
       const $ = s => el.querySelector(s), G = $('.scene'), svgEl = $('.dmp-svg'), FX = $('.dmp-fx'), ARTG = $('.art'), OVER = $('.over');
@@ -201,7 +217,7 @@ window.FemcDumplings = (() => {
         talkT = setTimeout(showLine, 1300 + t.length * 38);
       };
       const say = (lines, now = true) => { if (!lines) return; if (now) talkQ.length = 0; talkQ.push(...lines); if (now || !el.querySelector('.dmp-talk.on')) showLine(); };
-      const talk = key => say(pick(TALK[key]));
+      const talk = key => { if (!R.practice) say(pick(TALK[key])); };
       el.querySelectorAll('.dmp-talk').forEach(b => b.addEventListener('click', showLine));
 
       const meter = m => {
@@ -217,9 +233,9 @@ window.FemcDumplings = (() => {
       const pop = (txt, kind) => { const g = $('.dmp-grade'); g.textContent = txt; g.className = 'dmp-grade on ' + kind; clearTimeout(pop.t); pop.t = setTimeout(() => g.classList.remove('on'), 1100); };
       const STEPS = ['pick', 'chop', 'stir', 'season', ...Array.from({ length: N }, (_, i) => `wrap${i + 1}`), 'pan', 'plate'];
       const prog = cur => { $('.dmp-prog').innerHTML = STEPS.map(s => `<li class="${s === cur ? 'now' : R.steps[s] != null || (s.startsWith('wrap') && R.made[+s.slice(4) - 1]) || (s === 'pick' && cur !== 'pick') ? 'done' : ''}"></li>`).join(''); };
-      const score = (id, v) => { R.steps[id] = Math.round(clamp(v, 0, 100)); const k = v >= 85 ? 'great' : v >= 55 ? 'fine' : 'poor'; talk(k); pop(k === 'great' ? 'GREAT!' : k === 'fine' ? 'OKAY' : 'OOPS', k); k === 'great' ? (K.ding(), setTimeout(K.sparkle, 100)) : k === 'poor' ? K.boing() : K.pinch(); return k; };
+      const score = (id, v) => { if (!R.practice) R.steps[id] = Math.round(clamp(v, 0, 100)); const k = v >= 85 ? 'great' : v >= 55 ? 'fine' : 'poor'; talk(k); pop(k === 'great' ? 'GREAT!' : k === 'fine' ? 'OKAY' : 'OOPS', k); k === 'great' ? (K.ding(), setTimeout(K.sparkle, 100)) : k === 'poor' ? K.boing() : K.pinch(); return k; };
       let loopFn = null;
-      const next = (fn, ms = 1300) => { loopFn = null; setTimeout(() => !R.over && fn(), ms); };
+      const next = (fn, ms = 1300) => { loopFn = null; const g = R.gen; if (R.practice) return void setTimeout(() => g === R.gen && tutHit('next'), Math.min(ms, 900)); setTimeout(() => !R.over && g === R.gen && fn(), ms); };
       const choose = (title, opts, onPick) => {
         const c = $('.dmp-choose'); c.hidden = false;
         c.innerHTML = `<b>${esc(title)}</b><div>${Object.entries(opts).map(([id, x]) => `<button type="button" data-id="${id}"><i style="--c:${x.a || x.col || x.body}"></i>${esc(x.name)}</button>`).join('')}</div>`;
@@ -413,10 +429,11 @@ window.FemcDumplings = (() => {
           R.step = 'wait'; loopFn = null;
           const pq = D.pleats.reduce((s, p) => s + (p === 2 ? 100 : p ? 70 : 10), 0) / P;
           const all = [D.q.roll, D.q.spoon, D.q.fold, pq].reduce((a, b) => a + b, 0) / 4 - (D.overfill ? 15 : 0);
-          const k2 = all >= 82 ? 'great' : all >= 55 ? 'fine' : 'poor'; D.quality = k2; R.made.push(D); R.steps[`wrap${D.i + 1}`] = Math.round(clamp(all, 0, 100)); tray();
+          const k2 = all >= 82 ? 'great' : all >= 55 ? 'fine' : 'poor'; D.quality = k2; if (!R.practice) { R.made.push(D); R.steps[`wrap${D.i + 1}`] = Math.round(clamp(all, 0, 100)); tray(); }
           G.innerHTML = dumpling({ cx: 150, cy: 150, w: W, h: H, pleats: D.pleats, q: k2 });
           svgEl.classList.add('rev-' + k2); talk(k2); pop(k2 === 'great' ? 'PERFECT!' : k2 === 'fine' ? 'OKAY' : 'A BAG', k2); k2 === 'great' ? (K.ding(), setTimeout(K.sparkle, 100)) : k2 === 'poor' ? K.boing() : K.pinch();
-          setTimeout(() => { svgEl.classList.remove('rev-' + k2); svgEl.classList.add('slide'); setTimeout(() => { svgEl.classList.remove('slide'); R.made.length >= N ? pan() : roll(); }, 450); }, 1700);
+          const g = R.gen; if (R.practice) return void setTimeout(() => { svgEl.classList.remove('rev-' + k2); if (g === R.gen) tutHit('next'); }, 1100);
+          setTimeout(() => { svgEl.classList.remove('rev-' + k2); svgEl.classList.add('slide'); setTimeout(() => { svgEl.classList.remove('slide'); if (g === R.gen) R.made.length >= N ? pan() : roll(); }, 450); }, 1700);
         };
         R.onDrag = (p, ph) => {
           if (ph === 'up') { last = null; return; } if (k >= P) return;
@@ -453,7 +470,7 @@ window.FemcDumplings = (() => {
         };
         const drop = j => {
           const s = slots[j]; if (!s || s.in) return; s.in = true; K.sizzleOn(); K.crackle(); puff(s.tx, s.ty - 10, 'oil', 3);
-          if (slots.every(x => x.in)) { phase = 'brown'; talk('brown'); $('.dmp-step').textContent = 'Brown the bottoms'; $('.dmp-tip').textContent = 'Wait for golden, then hold Add water (Space).'; btn('Add water', { onpointerdown: e => { e.preventDefault(); startWater(); }, onpointerup: () => stopWater() }); }
+          if (slots.every(x => x.in)) { phase = 'brown'; talk('brown'); if (R.practice) tutHit('brown'); $('.dmp-step').textContent = 'Brown the bottoms'; $('.dmp-tip').textContent = 'Wait for golden, then hold Add water (Space).'; btn('Add water', { onpointerdown: e => { e.preventDefault(); startWater(); }, onpointerup: () => stopWater() }); }
           draw();
         };
         const startWater = () => {
@@ -463,8 +480,9 @@ window.FemcDumplings = (() => {
         const stopWater = () => {
           if (phase !== 'water' || !holding) return; holding = false; K.pourOff();
           R.steps.water = Math.round(clamp(100 - Math.abs(water - 67) * 3, 0, 100)); phase = 'lid'; K.lid(); K.sizzleOff(); K.steam(); btn(null); draw();
-          say([['s', 'surprised', 'Is it supposed to be that loud?'], ['h', 'neutral', 'Yes. Don\'t lift it.'], ['s', 'neutral', "I wasn't going to."], ['h', 'neutral', 'You were.']]);
-          setTimeout(() => { phase = 'steam'; puff(160, 90, 'steam', 10); K.bell(); draw(); const v = (R.steps.brown + R.steps.water) / 2; delete R.steps.brown; delete R.steps.water; score('pan', v); R.cooked = true; tray(); next(plate, 1900); }, 3000);
+          if (!R.practice) say([['s', 'surprised', 'Is it supposed to be that loud?'], ['h', 'neutral', 'Yes. Don\'t lift it.'], ['s', 'neutral', "I wasn't going to."], ['h', 'neutral', 'You were.']]);
+          const g = R.gen;
+          setTimeout(() => { if (g !== R.gen) return; phase = 'steam'; puff(160, 90, 'steam', 10); K.bell(); draw(); const v = (R.steps.brown + R.steps.water) / 2; delete R.steps.brown; delete R.steps.water; score('pan', v); R.cooked = true; tray(); next(plate, 1900); }, 3000);
         };
         R.onDrag = (p, ph) => {
           if (phase !== 'place') return;
@@ -519,7 +537,7 @@ window.FemcDumplings = (() => {
         const vals = Object.values(R.steps), sc = vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : 0;
         const q = k => R.made.filter(d => d.quality === k).length;
         const grade = quit ? 'C' : sc >= 88 ? 'S' : sc >= 74 ? 'A' : sc >= 55 ? 'B' : 'C';
-        const res = { steps: R.steps, score: Math.round(sc), perfect: q('great'), okay: q('fine'), bags: q('poor'), cook: R.cook || 'pale', filling: R.filling, sauce: R.sauce, garnish: R.garnish, plate: R.plate, grade, quit };
+        const res = { steps: R.steps, score: Math.round(sc), perfect: q('great'), okay: q('fine'), bags: q('poor'), cook: R.cook || 'pale', filling: R.filling, sauce: R.sauce, garnish: R.garnish, plate: R.plate, grade, quit, tutorial: R.tutRes };
         say(TALK.end[grade]);
         const end = $('.mg-end'); end.hidden = false;
         end.innerHTML = `<span class="dmp-stamp"><img src="${ART('stamp-' + grade.toLowerCase())}" alt="Grade ${grade}" onerror="this.remove()"><b class="mg-grade">${grade}</b></span><dl><dt>Score</dt><dd>${res.score}</dd><dt>Filling</dt><dd>${esc(FILLINGS[res.filling].name)}</dd><dt>Perfect dumplings</dt><dd>${res.perfect} / ${N}</dd><dt>Bottoms</dt><dd>${res.cook}</dd><dt>Sauce</dt><dd>${esc(SAUCES[res.sauce].name)}</dd></dl><p class="mg-end-say">Haechan: ${esc(TALK.end[grade][0][2])}</p><button type="button">Continue</button>`;
@@ -536,22 +554,62 @@ window.FemcDumplings = (() => {
       const up = e => { if (!down) return; down = false; R.onDrag?.(pt(e), 'up'); const f = R.onTapUp; R.onTapUp = null; f?.(); };
       svgEl.addEventListener('pointerup', up); svgEl.addEventListener('pointercancel', up);
       const key = e => {
-        if (R.over) return; e.stopPropagation();
+        if (R.over || tutBusy(e)) return; e.stopPropagation();
         if (e.key === 'Escape') { e.preventDefault(); R.paused = !R.paused; $('.mg-pause').hidden = !R.paused; return; }
         if (R.paused) return;
         if ([' ', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) e.preventDefault();
         if (e.repeat) return;
         R.onKey?.(e.key, false);
       };
-      const keyUp = e => { if (R.over || R.paused) return; R.onKey?.(e.key, true); };
+      const keyUp = e => { if (R.over || R.paused || tutBusy(e)) return; R.onKey?.(e.key, true); };
       const cleanup = () => { cancelAnimationFrame(raf); clearTimeout(talkT); window.removeEventListener('keydown', key, true); window.removeEventListener('keyup', keyUp, true); K.close(); el.remove(); };
-      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') { R.paused = false; $('.mg-pause').hidden = true; } if (b === 'quit') { R.paused = false; $('.mg-pause').hidden = true; finish(true); } };
+      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') { R.paused = false; $('.mg-pause').hidden = true; } if (b === 'howto') howTo(); if (b === 'quit') { R.paused = false; $('.mg-pause').hidden = true; finish(true); } };
       window.addEventListener('keydown', key, true); window.addEventListener('keyup', keyUp, true);
       raf = requestAnimationFrame(tick);
       tray();
+
+      /* the tutorial: one practice dumpling through the real steps (R.practice), Haechan guiding; replay = the same words as a walkthrough */
+      const hc = f => FACE('h', f);
+      const tutSteps = replay => {
+        const doIt = (k, setup) => replay ? {} : { before: setup, wait: () => new Promise(ok => { tutOn[k] = ok; }) };
+        const tag = t => { if (!replay) $('.dmp-step').textContent = `Practice · ${t}`; };
+        return [
+          { target: '.dmp-counter', face: hc('neutral'), say: "We make them together, one step at a time. Each step has its own little move. Let's practise one dumpling first." },
+          { target: '.dmp-counter', pos: 'top', face: hc('neutral'), say: 'Roll: drag the pin back and forth (or <b>← →</b>). When the bar reaches the pink, press <b>Done</b> (or Space).',
+            ...doIt('next', () => { roll(); tag('Roll'); }) },
+          { target: '.dmp-counter', pos: 'top', face: hc('happy'), say: 'Filling: hold the button (or Space) to spoon it on. Let go when the bar is in the pink.',
+            ...doIt('next', () => { spoon(); tag('Filling'); }) },
+          { target: '.dmp-counter', pos: 'top', face: hc('neutral'), say: 'Pleat: tap <b>Space</b> on the pulse, or swipe across each glowing point along the rim, in order.',
+            ...doIt('next', () => { D.q.fold = 85; D.wet = 1; pleat(); tag('Pleat'); }) },
+          { target: '.dmp-counter', pos: 'top', face: hc('neutral'), say: 'Fry: drag the dumpling into the pan (or Space).',
+            ...doIt('brown', () => { D.quality = D.quality || 'fine'; R.made = [D]; pan(); tag('Fry'); }) },
+          { target: '.dmp-ctl', face: hc('happy'), say: "Wait for golden on the bar, then hold <b>Add water</b> (or Space) and let go at the line. Lid on. Don't lift it.",
+            ...doIt('next', () => { tag('Fry'); }) },
+          { target: '.dmp-tip', face: hc('neutral'), say: "For real there's chopping, stirring and seasoning first, wetting and folding each one, and plating at the end. This line always says what to do. Esc pauses." },
+        ];
+      };
+      const settings = () => { try { return (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {}; } catch (e) { return {}; } };
+      const runTut = (T, replay) => T.run(el, { id: 'dumplings', who: 'Haechan', steps: tutSteps(replay), replay, calm: o.calm ?? !!settings().calm, perf: o.perf ?? !!settings().perf });
+      const unPractice = () => { // drop every practice timer, handler and piece; the kitchen as it was
+        R.practice = false; R.gen++; loopFn = null; R.onKey = R.onTap = R.onTapUp = R.onDrag = null; R.step = null;
+        for (const k in tutOn) delete tutOn[k];
+        K.sizzleOff(); K.pourOff(); ARTG.innerHTML = ''; OVER.innerHTML = ''; OVER.removeAttribute('transform'); G.innerHTML = '';
+        R.made = []; R.steps = {}; R.cooked = false; delete R.cook; D = null; btn(null); meter(null); tray();
+      };
+      const firstTime = () => tutLib().then(T => {
+        if (R.over) return;
+        if (!T || !T.should('dumplings', o.tutorial)) return pickFilling();
+        R.practice = true; setDefs(); prog('pick'); $('.dmp-step').textContent = 'Practice'; $('.dmp-tip').textContent = ''; meter(null);
+        runTut(T, false).then(r => { R.tutRes = r; unPractice(); if (!R.over) pickFilling(); });
+      });
+      const howTo = () => tutLib().then(T => {
+        if (!T || R.over) return;
+        $('.mg-pause').hidden = true;
+        runTut(T, true).then(() => { if (R.over) return; $('.mg-pause').hidden = false; $('.mg-pause button').focus(); });
+      });
       // the title card (FEMC-ART-TODO 44G, art title): held 1.8 s over the kitchen (click / any key skips), then the filling
       const tt = document.createElement('div'); tt.className = 'dmp-title'; tt.innerHTML = `<img src="${ART('title')}" alt="">`; el.appendChild(tt);
-      let begun = false; const begin = () => { if (begun) return; begun = true; window.removeEventListener('keydown', skipT, true); tt.classList.add('out'); setTimeout(() => tt.remove(), 450); pickFilling(); };
+      let begun = false; const begin = () => { if (begun) return; begun = true; window.removeEventListener('keydown', skipT, true); tt.classList.add('out'); setTimeout(() => tt.remove(), 450); firstTime(); };
       const skipT = e => { if (e.key !== 'Escape') begin(); };
       tt.querySelector('img').onerror = () => { tt.remove(); begin(); };
       tt.onclick = begin; window.addEventListener('keydown', skipT, true); setTimeout(begin, 1800);

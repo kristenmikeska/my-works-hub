@@ -459,7 +459,7 @@ window.FemcScene = (() => {
         });
       });
     }
-    const MINIGAME_V = 7;
+    const MINIGAME_V = 8;
     const MG_GLOB = { holdon: 'FemcHoldOn' }; // ids whose global isn't Femc + Capitalised id
     function giftAsk(line) {
       const who = line.giftAsk;

@@ -1,0 +1,55 @@
+/* FEMC minigames: the first-time tutorial (tutorial.js, FemcTutorial). Kat's pink and black only. */
+.ftut { position: fixed; inset: 0; z-index: 3600; pointer-events: none; font-family: system-ui, -apple-system, 'Helvetica Neue', sans-serif; color: #fff; }
+.ftut-block { position: absolute; inset: 0; pointer-events: auto; background: transparent; }
+.ftut.practice .ftut-block { pointer-events: none; }
+.ftut.dim-all .ftut-block { background: rgba(10, 2, 7, .62); }
+.ftut.dim-all.practice .ftut-block { background: rgba(10, 2, 7, .28); }
+.ftut-hole { position: absolute; border-radius: 10px; box-shadow: 0 0 0 200vmax rgba(10, 2, 7, .62); outline: 3px solid #ff4f9e; outline-offset: 0; pointer-events: none;
+  transition: left .22s ease, top .22s ease, width .22s ease, height .22s ease, box-shadow .2s; animation: ftut-pulse 1.4s ease-in-out infinite; }
+.ftut.practice .ftut-hole { box-shadow: 0 0 0 200vmax rgba(10, 2, 7, .3); }
+@keyframes ftut-pulse { 0%, 100% { outline-color: #ff4f9e; outline-offset: 0; } 50% { outline-color: #ff9ac8; outline-offset: 5px; } }
+.ftut-arrow { position: absolute; width: 0; height: 0; border: 11px solid transparent; }
+.ftut[data-pos=bottom] .ftut-arrow { left: 50%; bottom: -26px; margin-left: -11px; border-bottom-color: #ff4f9e; }
+.ftut[data-pos=top] .ftut-arrow { left: 50%; top: -26px; margin-left: -11px; border-top-color: #ff4f9e; }
+.ftut[data-pos=right] .ftut-arrow { top: 50%; right: -26px; margin-top: -11px; border-right-color: #ff4f9e; }
+.ftut[data-pos=left] .ftut-arrow { top: 50%; left: -26px; margin-top: -11px; border-left-color: #ff4f9e; }
+.ftut[data-pos=inside] .ftut-arrow, .ftut[data-pos=center] .ftut-arrow { display: none; }
+.ftut-bubble { position: absolute; left: 16px; top: 16px; width: min(420px, calc(100vw - 28px)); box-sizing: border-box; display: flex; gap: 12px; align-items: flex-start;
+  padding: 14px 16px 12px; background: #14070f; border: 2px solid #ff4f9e; border-left-width: 6px; box-shadow: 6px 6px 0 rgba(255, 79, 158, .35), 0 10px 30px rgba(0, 0, 0, .5);
+  pointer-events: auto; transform: skewX(-2deg); transition: left .22s ease, top .22s ease; }
+.ftut-bubble > * { transform: skewX(2deg); }
+.ftut.pop .ftut-bubble { animation: ftut-in .25s ease-out; }
+@keyframes ftut-in { from { opacity: 0; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
+.ftut-face { flex: 0 0 64px; width: 64px; height: 64px; object-fit: cover; object-position: 50% 18%; border-radius: 50%; background: #2a0f22; border: 2px solid #ff4f9e; }
+.ftut-txt { flex: 1; min-width: 0; }
+.ftut-who { display: block; font: italic 900 14px/1.1 inherit; color: #ff4f9e; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 4px; }
+.ftut-who[hidden] { display: none; }
+.ftut-say { margin: 0 0 10px; font-size: 16px; line-height: 1.4; }
+.ftut-say b { color: #ff9ac8; }
+.ftut-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.ftut-count { font-size: 12px; opacity: .6; margin-right: auto; }
+.ftut-try { font: italic 900 12px/1 inherit; color: #14070f; background: #ff9ac8; padding: 4px 8px; animation: ftut-blink 1.2s ease-in-out infinite; }
+.ftut-try[hidden] { display: none; }
+@keyframes ftut-blink { 50% { opacity: .55; } }
+.ftut button { font: italic 900 15px/1 inherit; border: 0; cursor: pointer; padding: 9px 16px; touch-action: manipulation; }
+.ftut-next { background: #ff4f9e; color: #14070f; }
+.ftut-next[hidden] { display: none; }
+.ftut-skip { background: transparent; color: #ff9ac8; padding: 9px 8px !important; font-size: 13px !important; text-decoration: underline; }
+.ftut button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.ftut-confirm { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(10, 2, 7, .7); pointer-events: auto; }
+.ftut-confirm[hidden] { display: none; }
+.ftut-confirm > div { background: #14070f; border: 2px solid #ff4f9e; padding: 18px 20px; max-width: min(340px, calc(100vw - 32px)); display: grid; gap: 10px; }
+.ftut-confirm b { font: italic 900 20px/1.1 inherit; color: #ff4f9e; }
+.ftut-confirm p { margin: 0; font-size: 14px; opacity: .8; }
+.ftut-confirm button[data-t=skip] { background: transparent; color: #fff; border: 2px solid #ff4f9e; }
+.ftut-confirm button[data-t=stay] { background: #ff4f9e; color: #14070f; }
+/* still (reduced motion), calm (Reduce flashes), perf (Performance): no pulse, no slide */
+.ftut.still .ftut-hole, .ftut.calm .ftut-hole, .ftut.perf .ftut-hole { animation: none; transition: none; }
+.ftut.still .ftut-bubble, .ftut.perf .ftut-bubble { transition: none; }
+.ftut.still.pop .ftut-bubble, .ftut.perf.pop .ftut-bubble { animation: none; }
+.ftut.still .ftut-try, .ftut.calm .ftut-try { animation: none; }
+@media (prefers-reduced-motion: reduce) { .ftut-hole, .ftut-try, .ftut.pop .ftut-bubble { animation: none !important; transition: none !important; } }
+@media (max-width: 520px) {
+  .ftut-face { flex-basis: 44px; width: 44px; height: 44px; }
+  .ftut-say { font-size: 15px; }
+}

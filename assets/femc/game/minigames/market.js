@@ -57,7 +57,15 @@
    Faces in the talk strip: portraits/mrsbang-strangers/ and solar-strangers/ (neutral, happy, sad, serious, surprised, flustered).
    Sounds: Web Audio made here (sea, gulls, horn, ice, taps, coins, a grunt, a bell). Esc pauses (Resume / Quit). Touch works
    everywhere (pointer events). Reduced motion: no slides or bobbing, the morning plays out in a blink.
-   Test hooks: FemcMarket.state(); FemcMarket.logic (the pure rules: tide, stalls, haggling, scoring). */
+   Tutorial (Nov 11 2026, Kat: every minigame teaches itself first): after the title card, the first time only (FemcTutorial seen-state
+     'market'), Mrs. Bang runs a practice morning on its own card (.mk-prac) before the real tide: drag the pin on a practice tide
+     chart until it's first pick (early / late are called out), the eyes of an old flounder, lift its gills, press its flesh (the
+     dent stays), then one offer at a practice stall (his answer and the patience pips). Its own tide, fish and purse: nothing of the
+     real morning changes. play({ tutorial: true | false }) forces / skips it (the story passes neither). Esc → Pause → How to play
+     replays it over the paused morning (Next on every step). result.tutorial = 'done' | 'skipped' | 'seen' (not shown).
+     Helper: minigames/tutorial.js (FemcTutorial), loaded on demand.
+   Test hooks: FemcMarket.state() (.prac while a tutorial is up: { setT(min), T, sp, tool(name), offer(won), h }); FemcMarket.logic
+     (the pure rules: tide, stalls, haggling, scoring). */
 window.FemcMarket = (() => {
   const reduced = typeof matchMedia === 'function' ? matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -67,6 +75,12 @@ window.FemcMarket = (() => {
   const won = v => '₩' + Math.round(v).toLocaleString('en-US');
   const hhmm = m => { const t = Math.round(m); return `${4 + Math.floor(t / 60)}:${String(((t % 60) + 60) % 60).padStart(2, '0')}`; }; // minutes from 4:00
   const mulberry = a => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+  // the first-time tutorial's helper (tutorial.js + .css), loaded once from this folder; null = play without one
+  const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
+    const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
+    l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
+    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+  }));
   const mix = (a, b, k) => { const p = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)), A = p(a), B = p(b); return '#' + A.map((v, i) => Math.round(v + (B[i] - v) * clamp(k, 0, 1)).toString(16).padStart(2, '0')).join(''); };
 
   const DIFF = {
@@ -336,7 +350,7 @@ window.FemcMarket = (() => {
         <div class="mk-top"><b>Incheon · the fish market</b><span class="mk-step"></span><ol class="mk-list" aria-label="Mrs. Bang's list"></ol><span class="mk-purse"></span></div>
         <div class="mk-main"></div>
         <div class="mk-talk"><img alt=""><p aria-live="polite"><b></b><span></span></p></div>
-        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="quit">Quit</button></div>
+        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
       const $ = s => el.querySelector(s), main = $('.mk-main');
@@ -482,6 +496,7 @@ window.FemcMarket = (() => {
       let raf = 0, last = performance.now();
       const tick = now => {
         const dt = Math.min(60, now - last) / 1000; last = now;
+        if (R.prac && R.prac.anim) R.prac.anim(now, dt);
         if (!R.paused && !R.over && R.phase === 'stall' && R.stall) {
           let dirty = false;
           R.stall.specs.forEach(sp => {
@@ -583,7 +598,7 @@ window.FemcMarket = (() => {
         const grade = quit ? 'C' : sc.grade;
         const res = { won: !quit && sc.list >= 4 && grade !== 'C', grade, score: sc.score, tide: t.score, arrived: hhmm(R.arrive), landed: hhmm(T.land), timing: t.timing, minutes: t.minutes,
           quality: sc.quality, money: sc.money, list: sc.list, of: sc.of, bought: R.bought.filter(Boolean).map(({ looked, ...b }) => b), spent: R.budget - R.purse,
-          saved: mine.reduce((s, b) => s + b.ask - b.paid, 0), left: R.purse, budget: R.budget, wavedOff: R.bought.filter(b => b && b.wavedOff).length, whispers: R.used, difficulty: diff, quit };
+          saved: mine.reduce((s, b) => s + b.ask - b.paid, 0), left: R.purse, budget: R.budget, wavedOff: R.bought.filter(b => b && b.wavedOff).length, whispers: R.used, difficulty: diff, quit, tutorial: R.tut || 'seen' };
         R.result = res;
         say(TALK.end[grade]);
         const end = $('.mg-end'); end.hidden = false;
@@ -599,6 +614,7 @@ window.FemcMarket = (() => {
       const pause = on => { if (R.over || R.phase === 'title') return; R.paused = on; $('.mg-pause').hidden = !on; if (on) $('.mg-pause button').focus(); };
       const key = e => {
         if (R.over || R.phase === 'title') return; e.stopPropagation();
+        if (tutOpen()) { if (R.prac && e.key !== 'Escape' && !window.FemcTutorial.blocking() && R.prac.onKey(e)) e.preventDefault(); return; } // Esc and Next belong to the tutorial
         if (e.key === 'Escape') { e.preventDefault(); pause(!R.paused); return; }
         if (R.paused) return;
         const onBtn = e.target && e.target.tagName === 'BUTTON';
@@ -607,15 +623,141 @@ window.FemcMarket = (() => {
         if (R.onKey && R.onKey(e)) e.preventDefault();
       };
       const cleanup = () => { cancelAnimationFrame(raf); R.stopAnim?.(); clearTimeout(talkT); window.removeEventListener('keydown', key, true); window.removeEventListener('keydown', skipT, true); K.close(); el.remove(); cur = null; };
-      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') pause(false); if (b === 'quit') { pause(false); finish(true); } };
+      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') pause(false); if (b === 'howto') howTo(); if (b === 'quit') { pause(false); finish(true); } };
       window.addEventListener('keydown', key, true);
       list();
+
+      /* ── the tutorial (Nov 11 2026): a practice morning on its own card, with its own tide, fish and purse ── */
+      const GS = (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {};
+      const tutOpen = () => !!(window.FemcTutorial && window.FemcTutorial.open());
+      if (o.tutorial !== false) tutLib(); // start loading early
+      const practice = () => {
+        const PD = DIFF.easy, PT = makeTide(mulberry(11)), fl = ITEMS[0], S = SELLERS[fl.seller];
+        const P = document.createElement('div'); P.className = 'mk-prac';
+        P.innerHTML = `<div class="mk-pr-tide"><svg class="mk-chart" viewBox="0 0 600 250" role="img" aria-label="Practice tide chart"></svg>
+            <div class="mk-ctl"><button type="button" data-t="-" aria-label="Earlier">‹</button><output class="mk-when"></output><button type="button" data-t="+" aria-label="Later">›</button><span class="mk-pr-call"></span></div></div>
+          <div class="mk-pr-fish" hidden><svg class="mk-big" viewBox="0 0 240 130" aria-label="A practice flounder"></svg>
+            <div class="mk-tools"><button type="button" data-tool="gill">Lift the gills <kbd>G</kbd></button><button type="button" data-tool="press">Press the flesh <kbd>P</kbd></button></div></div>
+          <div class="mk-pr-hag mk-hag" hidden><div class="mk-say"><b>${esc(S.name)} (practice)</b><span>${esc(S.open)}</span></div><ol class="mk-temper" aria-label="Patience"></ol>
+            <p class="mk-hhead">Your offer: <b class="mk-offer"></b> <span>his price <b class="mk-price"></b></span></p>
+            <div class="mk-mtr" role="slider" tabindex="0" aria-label="Your offer"><i class="fill"></i><span class="ticks"></span><i class="knob"></i><i class="cap"></i></div>
+            <div class="mk-hbtn"><button type="button" data-h="offer">Offer <kbd>Enter</kbd></button></div></div>`;
+        el.appendChild(P);
+        const q = s2 => P.querySelector(s2), ch = q('.mk-chart'), fishEl = q('.mk-big'), hagEl = q('.mk-pr-hag');
+        // the tide
+        let arrive = 45, tideOk = false, part = 'tide', waiter = null, sayStep = null;
+        const resolve = () => { const w = waiter; waiter = null; w && w(); };
+        const call = () => tideScore(arrive, PT.land, PD.window);
+        const drawT = () => {
+          ch.innerHTML = chartSvg(PT, PD, arrive); q('.mk-when').textContent = `On the quay at ${hhmm(arrive)}`;
+          const c = call(); q('.mk-pr-call').textContent = c.timing === 'ontime' ? 'First pick!' : c.timing === 'early' ? 'Too early' : 'Too late';
+          q('.mk-pr-call').className = 'mk-pr-call ' + c.timing;
+        };
+        let settle = 0;
+        const setT = v => {
+          const n = clamp(Math.round(v / 5) * 5, 30, 360); if (n === arrive) return; arrive = n; K.tick(); drawT();
+          clearTimeout(settle);
+          if (part === 'tide' && waiter) settle = setTimeout(() => {
+            const c = call(); if (c.timing === 'ontime') { tideOk = true; resolve(); }
+            else sayStep && sayStep(c.timing === 'early' ? 'Too early: the Haesong is still waiting on the water. Later.' : 'Too late: the restaurant buyers beat us. Earlier.');
+          }, 700);
+        };
+        let drag = false;
+        ch.addEventListener('pointerdown', e => { if (part !== 'tide') return; e.preventDefault(); drag = true; ch.setPointerCapture?.(e.pointerId); setT(CT(svgPt(ch, e, 600, 250).x)); });
+        ch.addEventListener('pointermove', e => { if (drag) setT(CT(svgPt(ch, e, 600, 250).x)); });
+        const up = () => { drag = false; }; ch.addEventListener('pointerup', up); ch.addEventListener('pointercancel', up);
+        q('[data-t="-"]').onclick = () => setT(arrive - 5); q('[data-t="+"]').onclick = () => setT(arrive + 5);
+        // the fish: an old flounder, every tell on, full strength
+        const sp = { i: 0, q: 'bad', bad: { eye: true, gill: true, firm: true }, ask: 20000, worth: 6000, seed: 7, gill: false, dent: null, tap: 0, gaps: [], looked: {} };
+        const drawF = () => { fishEl.innerHTML = specSvg(fl, sp, 1); };
+        const tool = (name, p) => {
+          if (part !== 'fish') return;
+          if (name === 'gill') { sp.gill = !sp.gill; sp.looked.gill = true; K.flap(); }
+          if (name === 'press') { const pt = p || { x: 140, y: 70 }; sp.dent = { x: pt.x, y: pt.y, v: 1 }; sp.looked.firm = true; K.squish(); }
+          drawF(); if (waiter && pr.want && sp.looked[pr.want]) setTimeout(resolve, 600);
+        };
+        q('[data-tool="gill"]').onclick = () => tool('gill'); q('[data-tool="press"]').onclick = () => tool('press');
+        fishEl.addEventListener('pointerdown', e => {
+          if (part !== 'fish') return; e.preventDefault(); const p = svgPt(fishEl, e, 240, 130), K2 = KIND.flounder;
+          if (Math.hypot(p.x - K2.gill[0], p.y - K2.gill[1]) < 20) return tool('gill');
+          if (K2.eye.some(([x, y, r]) => Math.hypot(p.x - x, p.y - y) < r + 6)) { K.tap(); return; }
+          if (p.x > 30 && p.x < 225 && p.y > 25 && p.y < 110) tool('press', p);
+        });
+        // one haggle round (a good flounder at a practice stall)
+        const good = { ask: 23000, worth: 15000, q: 'good' }, h = haggleStart(good, S, PD, false); h.offer = r500(h.price * 0.45);
+        const lo = () => r500(h.ask * 0.3), pct = v => clamp((v - lo()) / (h.ask - lo()) * 100, 0, 100);
+        const paintH = () => {
+          h.offer = clamp(h.offer, lo(), h.price);
+          q('.mk-offer').textContent = won(h.offer); q('.mk-price').textContent = won(h.price);
+          q('.mk-mtr .knob').style.left = q('.mk-mtr .fill').style.width = pct(h.offer) + '%'; q('.mk-mtr .cap').style.left = pct(h.price) + '%';
+          q('.mk-mtr .ticks').innerHTML = h.offers.map(v => `<i style="left:${pct(v)}%"></i>`).join('');
+          q('.mk-temper').innerHTML = Array.from({ length: h.max }, (_, i) => `<li class="${i < h.patience ? 'on' : ''}"></li>`).join('');
+        };
+        const mtr = q('.mk-mtr'); let mdrag = false;
+        const setX = e => { const r = mtr.getBoundingClientRect(), k = clamp((e.clientX - r.left) / r.width, 0, 1); const v = r500(lo() + k * (h.ask - lo())); if (v !== h.offer) K.tick(); h.offer = v; paintH(); };
+        mtr.addEventListener('pointerdown', e => { if (part !== 'hag') return; e.preventDefault(); mdrag = true; mtr.setPointerCapture?.(e.pointerId); setX(e); });
+        mtr.addEventListener('pointermove', e => { if (mdrag) setX(e); });
+        mtr.addEventListener('pointerup', () => { mdrag = false; }); mtr.addEventListener('pointercancel', () => { mdrag = false; });
+        let offered = false;
+        const offer = () => {
+          if (part !== 'hag' || offered) return; offered = true;
+          const r = respond(h, h.offer, Math.random), line = q('.mk-say span');
+          if (r.kind === 'deal') { K.coin(); line.textContent = S.deal; }
+          else { K.grunt(); line.textContent = `${S[r.tier][0]} ${won(r.price)}.`; }
+          paintH(); setTimeout(() => { if (waiter) resolve(); }, 900);
+          pr.answer = r;
+        };
+        q('[data-h="offer"]').onclick = offer;
+        const show = name => { part = name; q('.mk-pr-tide').hidden = name !== 'tide'; q('.mk-pr-fish').hidden = name !== 'fish'; hagEl.hidden = name !== 'hag'; };
+        const pr = R.prac = {
+          T: PT, sp, h, want: null, answer: null, setT, tool, offer: v => { h.offer = v; paintH(); offer(); },
+          onKey: e => {
+            const k = e.key.toLowerCase();
+            if (part === 'tide' && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) { setT(arrive + (e.key === 'ArrowRight' ? 1 : -1) * (e.shiftKey ? 15 : 5)); return true; }
+            if (part === 'fish' && (k === 'g' || k === 'p')) { tool(k === 'g' ? 'gill' : 'press'); return true; }
+            if (part === 'hag' && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) { h.offer += (e.key === 'ArrowRight' ? 1 : -1) * (e.shiftKey ? 2000 : 500); K.tick(); paintH(); return true; }
+            if (part === 'hag' && e.key === 'Enter') { offer(); return true; }
+          },
+          anim: (now, dt) => { if (sp.dent && sp.dent.v > 0.2) { sp.dent.v = Math.max(0.2, sp.dent.v - dt / 0.3); drawF(); } }, // old flesh: the dent stays
+        };
+        const until = (want, ready) => ctx => new Promise(ok => { pr.want = want; sayStep = ctx.say; waiter = ok; if (ready()) resolve(); });
+        drawT(); drawF(); paintH();
+        return { node: P, steps: [
+          { target: ch, say: 'The tide chart. The Haesong ties up once the water reaches its <b>pink line</b>, and not before it’s in off the breakwater.', before: () => show('tide') },
+          { target: q('.mk-pr-tide'), say: 'Drag the pin (or ← →) to when we’re on the quay. Right after it can tie up is <b>first pick</b>.', before: () => show('tide'), wait: until('tide', () => tideOk),
+            after: () => { if (!tideOk) { arrive = clamp(Math.round((PT.land + 10) / 5) * 5, 30, 360); tideOk = true; drawT(); } } },
+          { target: fishEl, say: 'At the stalls we judge before we pay. <b>Eyes</b> first: clear and full is fresh. These are cloudy.', before: () => show('fish') },
+          { target: q('.mk-pr-fish'), say: 'Lift the <b>gills</b> (G, or tap them). Bright red is fresh. Brown is old.', before: () => show('fish'), wait: until('gill', () => sp.looked.gill) },
+          { target: q('.mk-pr-fish'), say: 'Now <b>press the flesh</b> (P, or tap the body). Fresh springs back. See if this dent stays.', before: () => show('fish'), wait: until('firm', () => sp.looked.firm) },
+          { target: fishEl, say: 'Cloudy, brown, soft. That one’s old. A stall puts three on the ice: pick the best of them.', before: () => { show('fish'); if (!sp.looked.firm) tool('press'); } },
+          { target: hagEl, say: 'Then we talk money. Slide your <b>offer</b> (drag, or ← →), then Offer (Enter). Too low costs his <b>patience</b>: the pips.', before: () => show('hag'), wait: until('offer', () => offered) },
+          { target: null, say: 'That’s the morning: be on the quay in time, pick well, don’t overpay. Esc pauses; How to play is in there.', next: 'Let’s go', before: () => show('hag') },
+        ] };
+      };
+      const tutor = async replay => {
+        const T = await tutLib(); if (!T || !el.isConnected || R.over) return null;
+        const P = practice();
+        try { return await T.run(el, { id: 'market', who: 'Mrs. Bang', face: `${base()}assets/femc/portraits/mrsbang-strangers/neutral.webp`, calm: !!GS.calm, perf: !!GS.perf, replay, steps: P.steps }); }
+        finally { P.node.remove(); R.prac = null; }
+      };
+      const firstTut = async () => {
+        if (o.tutorial === false) return 'seen';
+        const T = await tutLib(); if (!T || !T.should('market', o.tutorial)) return 'seen';
+        return (await tutor(false)) || 'seen';
+      };
+      const howTo = async () => {
+        if (tutOpen() || R.over) return;
+        $('.mg-pause').hidden = true;
+        await tutor(true);
+        if (!R.over && el.isConnected && R.paused) { $('.mg-pause').hidden = false; $('.mg-pause button').focus(); }
+      };
 
       /* the title card: held 1.8 s (click / any key but Esc skips), then the tide */
       const tt = document.createElement('div'); tt.className = 'mk-title';
       tt.innerHTML = `<b>THE FISH MARKET</b><small>Incheon · early March, 2013</small><img src="${ART('title')}" alt="" onerror="this.remove()">`;
       el.appendChild(tt);
-      let begun = false; const begin = () => { if (begun || !el.isConnected) return; begun = true; window.removeEventListener('keydown', skipT, true); tt.classList.add('out'); setTimeout(() => tt.remove(), still ? 0 : 450); tide(); };
+      let begun = false; const begin = () => { if (begun || !el.isConnected) return; begun = true; window.removeEventListener('keydown', skipT, true); tt.classList.add('out'); setTimeout(() => tt.remove(), still ? 0 : 450);
+        R.phase = 'learn'; firstTut().then(r => { R.tut = r; if (!R.over && el.isConnected) tide(); }); };
       const skipT = e => { if (e.key !== 'Escape') { e.preventDefault(); e.stopPropagation(); begin(); } };
       tt.onclick = begin; window.addEventListener('keydown', skipT, true); setTimeout(begin, 1800);
     });

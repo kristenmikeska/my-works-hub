@@ -248,3 +248,7 @@
 .mg-ho.still.vanish .ho-her { transition: opacity .3s; }
 .mg-ho.still .ho-grip { transform: translateX(-50%); }
 .mg-ho.still .hp-mug.moved { transform: none; }
+/* the first-time tutorial's practice room (Nov 11 2026): calm and well lit, no glitch layers */
+.mg-ho.tut .ho-bg { filter: brightness(.85) saturate(.95) contrast(1.02); }
+.mg-ho.tut .ho-room::after { background: radial-gradient(ellipse at 50% 60%, transparent 55%, rgba(6, 2, 4, .35)); }
+.mg-ho.tut .ho-sick, .mg-ho.tut .ho-static, .mg-ho.tut .ho-streaks, .mg-ho.tut .ho-scan, .mg-ho.tut .ho-band, .mg-ho.tut .ho-ghost, .mg-ho.tut .ho-help { display: none; }

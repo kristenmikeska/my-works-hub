@@ -47,12 +47,26 @@
    harness, not in the repo; sound mode: White may answer anywhere in the area, no shortcuts): every correct move wins against
    every defence, every wrong move's in-game reply refutes it (moves outside the area too), and no other move wins, so a
    "wrong" answer never secretly works. Several puzzles accept more than one correct move (the ladder can also be laddered the
-   other way or netted; the corner lives two ways). FemcBaduk.check() replays every authored line and reports problems. */
+   other way or netted; the corner lives two ways). FemcBaduk.check() replays every authored line and reports problems.
+   Tutorial (Nov 11 2026, Kat: every minigame teaches itself first): after the title card, the first time only (FemcTutorial seen-state
+   'baduk'), Appa (lee-appa's face; in the story he's the one across the board) walks a staged practice position on the real board,
+   before puzzle 1 loads: Black to play, put a stone on the ring, liberties (the white stone's last one marked), take it on the dot
+   (it lifts into the lid), play a wrong move on purpose and see his answer, press Again, and where Pass is. Nothing counts: the lids
+   and pips are put back and puzzle 1 loads fresh. play({ tutorial: true | false }) forces / skips it (the story passes neither).
+   Esc → Pause → How to play replays it over the paused puzzle (its position is saved and put back after; Next on every step).
+   result.tutorial = 'done' | 'skipped' | 'seen' (not shown). Helper: minigames/tutorial.js (FemcTutorial), loaded on demand.
+   state().prac is the practice while it's up ({ ring, lib } as points; place(p) plays like a click). */
 window.FemcBaduk = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const base = () => (window.FemcGame && window.FemcGame.base) || (typeof document !== 'undefined' && document.querySelector('script[src*="minigames/baduk"]')?.src.split('assets/')[0]) || '';
   const ART = id => `${base()}assets/femc/game/art/minigames/baduk/${id}.webp`;
   const pick = a => a[Math.floor(Math.random() * a.length)];
+  // the first-time tutorial's helper (tutorial.js + .css), loaded once from this folder; null = play without one
+  const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
+    const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
+    l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
+    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+  }));
 
   /* ── the rules: a small Go engine (captures, liberties, suicide, simple ko) ──
      A position is { n, b, ko, caps }: b = Int8Array(n*n) (0 empty, 1 black, 2 white), ko = the point the next player may not
@@ -388,7 +402,7 @@ window.FemcBaduk = (() => {
             <p class="bd-help">Click a point to play. Touch: tap, then tap again. Keys: arrows and Enter. Esc pauses.</p>
           </aside>
         </div>
-        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="quit">Quit</button></div>
+        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
       const $ = s => el.querySelector(s);
@@ -493,8 +507,8 @@ window.FemcBaduk = (() => {
         caps.forEach((p, i) => SFX.lift(i));
         const er = el.getBoundingClientRect(), sr = svg.getBoundingClientRect(), lr = el.querySelector(`[data-lid="${which}"] svg`).getBoundingClientRect();
         const k = sr.width / (S9 * (st.n + 1)), size = 37 * k;
-        let landed = 0;
-        const land = () => { landed++; if (which === 'taken') st.taken++; else st.lost++; lidDraw(which); if (landed === 1) SFX.clatter(Math.min(3, caps.length)); };
+        let landed = 0; const inPrac = st.prac;
+        const land = () => { if (inPrac && st.prac !== inPrac) return; landed++; if (which === 'taken') st.taken++; else st.lost++; lidDraw(which); if (landed === 1) SFX.clatter(Math.min(3, caps.length)); };
         caps.forEach((p, i) => {
           const [x, y] = xy(p), d = document.createElement('i');
           d.className = 'bd-fly ' + (colour === 1 ? 'b' : 'w');
@@ -503,7 +517,7 @@ window.FemcBaduk = (() => {
           el.appendChild(d);
           const tx = lr.left - er.left + lr.width / 2 - size / 2 - lx + (Math.random() - 0.5) * 30, ty = lr.top - er.top + lr.height * 0.5 - size / 2 - ly + (Math.random() - 0.5) * 8;
           const fin = () => { d.remove(); land(); };
-          if (still || !d.animate) { d.style.opacity = '0'; d.style.transition = 'opacity .25s'; later(fin, 260); return; }
+          if (still || !d.animate) { d.style.opacity = '0'; d.style.transition = 'opacity .25s'; (st.prac ? setTimeout : later)(fin, 260); return; }
           const a = d.animate([
             { transform: 'translate(0,0) scale(1)', opacity: 1 },
             { transform: 'translate(0,-16px) scale(1.14)', opacity: 1, offset: 0.22 },
@@ -535,6 +549,7 @@ window.FemcBaduk = (() => {
         if (!still) { const b = $('.bd-board'); b.classList.remove('deal'); void b.offsetWidth; b.classList.add('deal'); }
       };
       const reset = () => {
+        if (st.prac) return st.prac.reset();
         st.pos = E.parse(st.pz.board); st.node = TREES[st.pz.id]; st.mode = 'play'; st.last = -1; st.libs = []; st.armed = null;
         $('[data-bd="again"]').hidden = true; el.classList.remove('is-wrong');
         draw(); if (st.cursor != null) svg.focus?.();
@@ -575,7 +590,8 @@ window.FemcBaduk = (() => {
         const r = st.results[st.i]; r.skipped = true; say(VOICE.pass); next();
       };
       const place = p => {
-        if (st.mode !== 'play' || st.paused || !st.begun || st.over || p == null) return;
+        if (st.mode !== 'play' || (st.paused && !st.prac) || !st.begun || st.over || p == null) return;
+        if (st.prac) return st.prac.place(p);
         const n = st.n, q = E.play(st.pos, p, 1);
         if (!q) { if (!st.pos.b[p]) { say(p === st.pos.ko ? VOICE.ko : VOICE.suicide); SFX.nope(); } return; }
         const key = E.name(p, n), node = st.node, ok = node.ok && Object.prototype.hasOwnProperty.call(node.ok, key);
@@ -603,7 +619,7 @@ window.FemcBaduk = (() => {
         const ratio = firstN / N;
         const grade = ratio >= 0.9 && !skipped && !quit ? 'S' : ratio >= 0.7 ? 'A' : ratio >= 0.45 ? 'B' : 'C';
         const won = !quit && solvedN >= Math.ceil(N * 2 / 3);
-        const res = { won, grade, puzzles: N, played, solved: solvedN, firstTry: firstN, misses, skipped, quit: !!quit, difficulty: lvl, results: R };
+        const res = { won, grade, puzzles: N, played, solved: solvedN, firstTry: firstN, misses, skipped, quit: !!quit, difficulty: lvl, results: R, tutorial: st.tut || 'seen' };
         pips();
         const end = $('.mg-end');
         end.hidden = false;
@@ -631,7 +647,7 @@ window.FemcBaduk = (() => {
       });
       svg.addEventListener('pointerleave', e => { if (e.pointerType !== 'touch') { st.ghost = null; drawGhost(); } });
       svg.addEventListener('pointerup', e => {
-        if (st.mode !== 'play' || st.paused || !st.begun) return;
+        if (st.mode !== 'play' || (st.paused && !st.prac) || !st.begun) return;
         const p = pointAt(e); if (p == null) return;
         st.cursor = null;
         if (e.pointerType === 'touch' || e.pointerType === 'pen') {
@@ -643,8 +659,9 @@ window.FemcBaduk = (() => {
       });
       svg.addEventListener('contextmenu', e => e.preventDefault());
       const acts = e => {
-        const b = e.target.closest('[data-bd]'); if (!b || st.paused || st.over) return;
+        const b = e.target.closest('[data-bd]'); if (!b || (st.paused && !st.prac) || st.over) return;
         const k = b.dataset.bd;
+        if (st.prac && k !== 'again') return; // practice: only Again works (Pause, Pass and Next wait for the real puzzles)
         if (k === 'pause') pause(true);
         if (k === 'again' && st.mode === 'wrong') reset();
         if (k === 'next' && st.mode === 'solved') next();
@@ -657,13 +674,14 @@ window.FemcBaduk = (() => {
         if (ac) { try { on ? ac.suspend() : ac.resume(); } catch (e) {} }
         if (on) $('.mg-pause button').focus();
       };
-      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') pause(false); if (b === 'quit') { pause(false); finish(true); } };
+      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') pause(false); if (b === 'howto') howTo(); if (b === 'quit') { pause(false); finish(true); } };
       const key = e => {
         if (!el.isConnected || st.over) return;
         e.stopPropagation();
         if (!st.begun) return;
+        if (tutOpen() && (!st.prac || e.key === 'Escape' || window.FemcTutorial.blocking())) return; // Esc and Next belong to the tutorial
         if (e.key === 'Escape') { e.preventDefault(); pause(!st.paused); return; }
-        if (st.paused) return;
+        if (st.paused && !st.prac) return;
         const onBtn = document.activeElement && el.contains(document.activeElement) && document.activeElement.tagName === 'BUTTON';
         if ((e.key === 'Enter' || e.key === ' ') && st.mode === 'wrong' && !onBtn) { e.preventDefault(); reset(); return; }
         if ((e.key === 'Enter' || e.key === ' ') && st.mode === 'solved' && !onBtn) { e.preventDefault(); next(); return; }
@@ -685,6 +703,91 @@ window.FemcBaduk = (() => {
         try { ac && ac.close(); } catch (e) {} el.remove(); if (cur === st) cur = null;
       };
 
+      /* the tutorial (Nov 11 2026): a staged position on the real board, before puzzle 1 (or over a paused puzzle, saved and put back) */
+      const GS = (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {};
+      const tutOpen = () => !!(window.FemcTutorial && window.FemcTutorial.open());
+      if (o.tutorial !== false) tutLib(); // start loading early
+      const practice = () => {
+        const N = 9, P = s => E.pt(s, N);
+        const rows = [...Array(N)].map(() => '.'.repeat(N).split(''));
+        [['ee', 'O'], ['de', 'X'], ['ed', 'X']].forEach(([s, c]) => { rows[s.charCodeAt(1) - 97][s.charCodeAt(0) - 97] = c; });
+        const ring = P('fe'), lib = P('ef'), W = P('ee');
+        const keep = { pz: st.pz, n: st.n, pos: st.pos, node: st.node, mode: st.mode, last: st.last, libs: st.libs, ring: st.ring, ghost: st.ghost, armed: st.armed,
+          cursor: st.cursor, taken: st.taken, lost: st.lost, texts: ['.bd-count', '.bd-lesson', '.bd-title'].map(q => $(q).textContent), goal: $('.bd-goal').innerHTML,
+          btns: ['again', 'next', 'skip'].map(k => $(`[data-bd="${k}"]`).hidden), cls: ['is-wrong', 'is-solved'].map(c => el.classList.contains(c)), voice: voiceEl.textContent };
+        st.pz = { id: 'practice', board: rows.map(r => r.join('')), goal: { type: 'capture', stones: ['ee'] }, hints: [''], done: '' };
+        st.n = N; st.pos = E.parse(st.pz.board); st.node = { ok: {} }; st.mode = 'play'; st.last = -1; st.libs = []; st.ring = null; st.ghost = null; st.armed = null; st.cursor = null;
+        $('.bd-count').textContent = 'Practice'; $('.bd-lesson').textContent = 'Practice'; $('.bd-title').textContent = 'The basics';
+        $('.bd-goal').innerHTML = '<b>Black to play.</b> Nothing counts yet.';
+        $('[data-bd="again"]').hidden = true; $('[data-bd="next"]').hidden = true; $('[data-bd="skip"]').hidden = false;
+        el.classList.remove('is-wrong', 'is-solved');
+        drawBase(); draw();
+        let phase = null, waiter = null, safe = null, sayStep = null;
+        const resolve = () => { const w = waiter; waiter = null; w && w(); };
+        const put = (p, c) => { const q = E.play(st.pos, p, c); if (!q) return null; st.pos = q; st.last = p; draw(p); SFX.clack(c === 2); return q; };
+        const doRing = () => { if (!st.pos.b[ring]) put(ring, 1); st.ring = null; };
+        const doCap = () => { doRing(); if (st.pos.b[W] === 2) { const q = put(lib, 1); if (q) fly(q.caps, 'taken', 2); } st.libs = []; draw(); safe = st.pos; };
+        const pr = st.prac = {
+          ring, lib,
+          place: p => {
+            if (phase === 'ring') { if (p !== ring) { sayStep && sayStep('On the ring, for now.'); SFX.nope(); return; } doRing(); draw(); return resolve(); }
+            if (phase === 'cap') { if (p !== lib) { sayStep && sayStep('The dot. That’s its last breath.'); SFX.nope(); return; } doCap(); return setTimeout(resolve, 500); }
+            if (phase === 'wrong') {
+              if (!put(p, 1)) { SFX.nope(); return; }
+              st.mode = 'busy'; phase = null;
+              setTimeout(() => {
+                const w = ['cc', 'gg', 'cg', 'gc', 'gd'].map(P).find(x => !st.pos.b[x] && E.play(st.pos, x, 2)); if (w != null) put(w, 2);
+                st.mode = 'wrong'; say('Not that. Again.', 'miss'); SFX.miss(); el.classList.add('is-wrong'); $('[data-bd="again"]').hidden = false;
+                resolve();
+              }, still ? 200 : 450);
+            }
+          },
+          reset: () => {
+            if (st.mode !== 'wrong') return;
+            st.pos = safe || st.pos; st.last = -1; st.mode = 'play'; el.classList.remove('is-wrong'); $('[data-bd="again"]').hidden = true; draw();
+            if (phase === 'again') { phase = null; resolve(); }
+          },
+          restore: () => {
+            Object.assign(st, { pz: keep.pz, n: keep.n, pos: keep.pos, node: keep.node, mode: keep.mode, last: keep.last, libs: keep.libs, ring: keep.ring, ghost: keep.ghost, armed: keep.armed, cursor: keep.cursor, taken: keep.taken, lost: keep.lost });
+            ['.bd-count', '.bd-lesson', '.bd-title'].forEach((q, i) => { $(q).textContent = keep.texts[i]; }); $('.bd-goal').innerHTML = keep.goal;
+            ['again', 'next', 'skip'].forEach((k, i) => { $(`[data-bd="${k}"]`).hidden = keep.btns[i]; });
+            ['is-wrong', 'is-solved'].forEach((c, i) => el.classList.toggle(c, keep.cls[i]));
+            voiceEl.textContent = keep.voice; lidDraw('taken'); lidDraw('lost');
+            if (st.pos) { drawBase(); draw(); }
+          },
+        };
+        const until = (name, ready) => ctx => new Promise(ok => { phase = name; sayStep = ctx.say; waiter = ok; if (ready()) resolve(); });
+        const board = $('.bd-board');
+        return [
+          { target: board, say: 'Black to play. Always. That’s you.' },
+          { target: board, say: 'Put a stone on the <b>ring</b>. Click it (or arrows, then Enter).', before: () => { st.ring = ring; draw(); }, wait: until('ring', () => !!st.pos.b[ring]), after: () => { phase = null; doRing(); draw(); } },
+          { target: board, say: 'A stone breathes through the empty points beside it: its <b>liberties</b>. The white one has one left. The dot.', before: () => { doRing(); st.libs = [lib]; draw(); } },
+          { target: board, say: 'Take it. Play on the <b>dot</b>.', before: () => { st.libs = [lib]; draw(); }, wait: until('cap', () => st.pos.b[W] !== 2), after: () => { phase = null; doCap(); } },
+          { target: '.bd-lids', say: 'Captured. It goes in the lid. Each puzzle says what it wants under its title.', before: doCap },
+          { target: board, say: 'Now a <b>wrong</b> move, on purpose. Anywhere. I’ll answer.', before: () => { doCap(); st.mode = 'play'; }, wait: until('wrong', () => st.mode === 'wrong'), after: () => { if (phase === 'wrong') phase = null; } },
+          { target: '[data-bd="again"]', say: 'Press <b>Again</b> (or Enter) to put it back and try again.', wait: until('again', () => st.mode !== 'wrong'),
+            before: () => { if (st.mode !== 'wrong') { st.mode = 'wrong'; $('[data-bd="again"]').hidden = false; } }, after: () => { if (st.mode === 'wrong') { phase = null; pr.reset(); } } },
+          { target: '[data-bd="skip"]', say: 'Stuck, you can <b>Pass</b>. It counts as unsolved. Esc pauses; How to play is in there.', next: 'Begin' },
+        ];
+      };
+      const tutor = async replay => {
+        const T = await tutLib(); if (!T || !el.isConnected || st.over) return null;
+        const steps = practice();
+        try { return await T.run(el, { id: 'baduk', who: 'Appa', face: `${base()}assets/femc/portraits/lee-appa/neutral.webp`, calm: !!GS.calm, perf: !!GS.perf, replay, steps }); }
+        finally { const pr = st.prac; st.prac = null; pr && pr.restore(); }
+      };
+      const firstTut = async () => {
+        if (o.tutorial === false) return 'seen';
+        const T = await tutLib(); if (!T || !T.should('baduk', o.tutorial)) return 'seen';
+        return (await tutor(false)) || 'seen';
+      };
+      const howTo = async () => {
+        if (tutOpen() || st.over) return;
+        $('.mg-pause').hidden = true;
+        await tutor(true);
+        if (!st.over && el.isConnected && st.paused) { $('.mg-pause').hidden = false; $('.mg-pause button').focus(); }
+      };
+
       /* the title card: held 1.8 s (click / any key skips) */
       lidDraw('taken'); lidDraw('lost');
       const tt = document.createElement('div'); tt.className = 'bd-title-card';
@@ -694,7 +797,8 @@ window.FemcBaduk = (() => {
       const begin = () => {
         if (st.begun || !el.isConnected) return; st.begun = true; window.removeEventListener('keydown', skipT, true);
         tt.classList.add('out'); setTimeout(() => tt.remove(), 450);
-        audio(); load(0); say(pick(VOICE.open));
+        audio();
+        firstTut().then(r => { st.tut = r; if (st.over || !el.isConnected) return; load(0); say(pick(VOICE.open)); });
       };
       const skipT = e => { if (e.key !== 'Escape') { e.preventDefault(); e.stopPropagation(); begin(); } };
       tt.onclick = begin; window.addEventListener('keydown', skipT, true); setTimeout(begin, 1800);

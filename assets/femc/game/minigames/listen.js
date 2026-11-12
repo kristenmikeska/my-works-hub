@@ -14,12 +14,26 @@
    guesses = better grade. Keyboard: Tab / arrows move between things, Enter picks, Space replays, Esc pauses.
    Art (FEMC-ART-TODO 47, art/minigames/listen/): street.webp (the avenue, 16:9, no objects needed), obj-<id>.webp (each
    thing, transparent), sticker-<id>.webp (the notebook stickers), haechan.webp (his figure, bottom left). Until then: the
-   background epi-r-nyc-street-night, drawn objects and his portrait. Reduced motion: no shakes, no drifting snow. */
+   background epi-r-nyc-street-night, drawn objects and his portrait. Reduced motion: no shakes, no drifting snow.
+
+   Tutorial (Nov 11 2026, Kat: every minigame gets one; tutorial.js FemcTutorial, loaded on demand from this folder):
+     play({ tutorial: true | false })  true = always show it, false = never; default = only the first time (id 'listen').
+     After Start, Haechan guides one practice sound on the real street (the steam grate's hiss): hear it again (▶ / Space),
+     hover or tap a glowing thing to hear it quietly, pick the one making his sound (a wrong pick just gets a hint), then the
+     notebook. Practice picks count for nothing; the real rounds start after. result.tutorial = 'done' | 'skipped' | 'seen'.
+     Pause (Esc) → How to play replays it as a walkthrough over the paused street (Next on every step, nothing to do). */
 window.FemcListen = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const base = () => (window.FemcGame && window.FemcGame.base) || (document.querySelector('script[src*="minigames/listen"]')?.src.split('assets/')[0]) || '';
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const pick = a => a[Math.floor(Math.random() * a.length)];
+  // first-time tutorial (Nov 11 2026): tutorial.js + .css load once, from this folder
+  const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
+    const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
+    l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
+    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+  }));
+  const tutBusy = e => { const T = window.FemcTutorial; return !!(T && T.open() && (e.key === 'Escape' || T.blocking())); };
   // the things in the street; x / y = where they stand (% of the scene), w = width (% of the scene)
   const THINGS = [
     { id: 'heat', name: 'The lit window', cap: 'a low hum, everywhere at once', x: 30, y: 30, w: 9,
@@ -57,7 +71,10 @@ window.FemcListen = (() => {
     return new Promise(done => {
       const host = o.host || document.body, ROUNDS = Math.max(1, Math.min(o.rounds || 5, THINGS.length));
       const order = [...THINGS].sort(() => Math.random() - 0.5).slice(0, ROUNDS);
-      const st = { r: 0, tries: 0, wrongs: 0, roundWrong: 0, found: [], over: false, paused: false, busy: false };
+      const st = { r: 0, tries: 0, wrongs: 0, roundWrong: 0, found: [], over: false, paused: false, busy: false, tut: null, tutRes: 'seen' };
+      // practice (the tutorial): st.tut = 'again' | 'hover' | 'pick' while that step waits; tutOn[step] resolves it
+      const PRACTICE = THINGS.find(t => t.id === 'steam'), tutOn = {};
+      const tutHit = k => { if (st.tut !== k) return; const f = tutOn[k]; delete tutOn[k]; st.tut = 'wait'; f && f(); };
       const el = document.createElement('div');
       el.className = 'mg-lis' + (reduced.matches ? ' still' : '');
       const B = base();
@@ -74,7 +91,7 @@ window.FemcListen = (() => {
           <p aria-live="polite"><b>Haechan</b><span></span><em class="ls-cap"></em></p>
           <button type="button" class="ls-again">▶ Hear it again</button></div>
         <div class="ls-intro"><div><b>Listen</b><p>It's two in the morning and the city is almost silent. Haechan says it never really is.</p><ol><li><b>1</b> He plays you a sound of the street.</li><li><b>2</b> Find the thing in the picture making it. Hover anything to hear it.</li></ol><button type="button" class="ls-start">Start</button></div></div>
-        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="quit">Quit</button></div>
+        <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
       const $ = s => el.querySelector(s), things = [...el.querySelectorAll('.ls-thing')];
@@ -108,8 +125,8 @@ window.FemcListen = (() => {
       const chime = ok => { if (o.mute) return; try { ctx(); const out = ac.createGain(); out.gain.value = 0.25; out.connect(ac.destination); (ok ? [880, 1108, 1318] : [330, 262]).forEach((f, i) => tone(f, i * 0.09, ok ? 0.5 : 0.25, 'triangle', 0.3, out)); } catch (e) {} };
 
       /* the rounds */
-      const target = () => order[st.r];
-      const playTarget = () => { sound(target().id, 0.5); el.classList.add('listening'); setTimeout(() => el.classList.remove('listening'), 1600); };
+      const target = () => st.tut ? PRACTICE : order[st.r];
+      const playTarget = () => { if (!target() || st.over) return; sound(target().id, 0.5); el.classList.add('listening'); setTimeout(() => el.classList.remove('listening'), 1600); };
       const round = () => {
         st.roundWrong = 0; st.busy = false; things.forEach(b => b.classList.remove('right', 'wrong'));
         el.querySelectorAll('.ls-book li').forEach((li, i) => li.classList.toggle('now', i === st.r));
@@ -117,8 +134,16 @@ window.FemcListen = (() => {
         setTimeout(playTarget, 500);
       };
       let hoverT = 0;
-      const preview = i => { if (st.busy || st.over || st.paused) return; clearTimeout(hoverT); hoverT = setTimeout(() => sound(THINGS[i].id, 0.18), 120); if (o.mute) things[i].querySelector('.ls-tag').dataset.cap = THINGS[i].cap; };
+      const preview = i => { if (st.busy || st.over || st.paused) return; if (st.tut === 'hover') setTimeout(() => tutHit('hover'), 700); clearTimeout(hoverT); hoverT = setTimeout(() => sound(THINGS[i].id, 0.18), 120); if (o.mute) things[i].querySelector('.ls-tag').dataset.cap = THINGS[i].cap; };
+      const tutChoose = i => { // a practice pick: right lights it up, wrong shakes with his hint; nothing is counted
+        const t = THINGS[i], b = things[i];
+        if (st.tut === 'hover') return preview(i);
+        if (st.tut !== 'pick') return;
+        if (t.id === PRACTICE.id) { b.classList.add('right'); chime(true); sound(t.id, 0.5); face('happy'); say(t.got); tutHit('pick'); }
+        else { b.classList.remove('wrong'); void b.offsetWidth; b.classList.add('wrong'); chime(false); face('serious'); say(`${PRACTICE.miss} Listen again.`, o.mute ? `(the sound: ${PRACTICE.cap})` : ''); }
+      };
       const choose = i => {
+        if (st.tut) return tutChoose(i);
         if (st.busy || st.over || st.paused) return;
         st.tries++; const t = THINGS[i], b = things[i];
         if (t.id === target().id) {
@@ -135,7 +160,7 @@ window.FemcListen = (() => {
         if (st.over) return; st.over = true;
         const g = quit ? 'C' : st.wrongs === 0 ? 'S' : st.wrongs <= 2 ? 'A' : st.wrongs <= 4 ? 'B' : 'C';
         const line = { S: "She'd lived her whole life in this city and never once heard it. Now she couldn't stop.", A: 'It came up out of the quiet the way a picture comes up in a darkroom.', B: 'Some of it came up out of the quiet. Enough.', C: '"It never turns off for you," she said. "Does it."' }[g];
-        const res = { found: st.found.length, rounds: ROUNDS, tries: st.tries, wrongs: st.wrongs, grade: g, quit };
+        const res = { found: st.found.length, rounds: ROUNDS, tries: st.tries, wrongs: st.wrongs, grade: g, quit, tutorial: st.tutRes };
         const end = $('.mg-end'); end.hidden = false; face(g === 'C' ? 'neutral' : 'happy');
         end.innerHTML = `<b class="mg-grade">${g}</b><ol class="ls-book big">${st.found.map(id => `<li class="got"><img src="${ART('sticker-' + id)}" alt="" onerror="this.remove()"><span>${STICK[id]}</span><small>${esc(THINGS.find(t => t.id === id).name.replace(/^The /, ''))}</small></li>`).join('')}</ol><dl><dt>Sounds found</dt><dd>${st.found.length} / ${ROUNDS}</dd><dt>Wrong guesses</dt><dd>${st.wrongs}</dd></dl><p class="mg-end-say">${esc(line)}</p><button type="button">Continue</button>`;
         end.querySelector('button').focus();
@@ -144,11 +169,43 @@ window.FemcListen = (() => {
 
       /* input */
       things.forEach((b, i) => { b.addEventListener('pointerenter', () => preview(i)); b.addEventListener('focus', () => preview(i)); b.addEventListener('pointerleave', () => clearTimeout(hoverT)); b.onclick = () => choose(i); });
-      $('.ls-again').onclick = () => { if (!st.busy && !st.over) playTarget(); };
-      const start = () => { $('.ls-intro').remove(); el.classList.add('on'); ctx(); round(); things[0].focus({ preventScroll: true }); };
+      $('.ls-again').onclick = () => { if (!st.busy && !st.over) { playTarget(); if (st.tut === 'again') setTimeout(() => tutHit('again'), 1200); } };
+      /* the tutorial: one practice sound on the real street; replay = the same words as a walkthrough */
+      const hcFace = f => `${B}assets/femc/portraits/haechan-runners/${f}.webp`;
+      const tutSteps = replay => {
+        const doIt = k => replay ? {} : { before: () => { st.tut = k; }, wait: () => new Promise(ok => { tutOn[k] = ok; }) };
+        return [
+          { target: '.ls-talk', face: hcFace('neutral'), say: 'The city never really goes quiet. I play you one sound, and you find what\'s making it.',
+            before: () => { if (!replay) { face('neutral'); say(PRACTICE.ask[0], o.mute ? `(the sound: ${PRACTICE.cap})` : ''); } } },
+          { target: '.ls-again', face: hcFace('neutral'), say: o.mute ? 'Sound\'s off, so the sound is written under my line. Press <b>▶ Hear it again</b> (or Space) anyway.' : 'Hear it once more: press <b>▶ Hear it again</b> (or Space).', ...doIt('again') },
+          { target: '.ls-scene', face: hcFace('happy'), say: 'The glowing things are what could be making it. Hover one (or tap it, or Tab to it) to hear it quietly and see its name.', pos: 'center', ...doIt('hover') },
+          { target: '.ls-scene', face: hcFace('neutral'), say: 'Now click the one making my sound: a soft, steady hiss. Wrong ones shake and I give you a hint.', pos: 'center', ...doIt('pick') },
+          { target: '.ls-book', face: hcFace('happy'), say: 'Every sound you find goes in the notebook. Fewer wrong guesses, better grade. Esc pauses.' },
+        ];
+      };
+      const settings = () => { try { return (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {}; } catch (e) { return {}; } };
+      const runTut = (T, replay) => T.run(el, { id: 'listen', who: 'Haechan', steps: tutSteps(replay), replay, calm: o.calm ?? !!settings().calm, perf: o.perf ?? !!settings().perf });
+      const howTo = () => tutLib().then(T => {
+        if (!T || st.over) return;
+        $('.mg-pause').hidden = true;
+        runTut(T, true).then(() => { if (st.over) return; $('.mg-pause').hidden = false; $('.mg-pause button').focus(); });
+      });
+      const begin = () => { el.classList.add('on'); round(); things[0].focus({ preventScroll: true }); };
+      const start = () => {
+        if (!$('.ls-intro')) return; $('.ls-intro').remove(); try { ctx(); } catch (e) {}
+        tutLib().then(T => {
+          if (!T || !T.should('listen', o.tutorial)) return begin();
+          st.tut = 'wait'; el.classList.add('on');
+          runTut(T, false).then(r => {
+            st.tutRes = r; st.tut = null; for (const k in tutOn) delete tutOn[k];
+            things.forEach(b => b.classList.remove('right', 'wrong'));
+            setTimeout(begin, 300);
+          });
+        });
+      };
       $('.ls-start').onclick = start;
       const key = e => {
-        if (!el.isConnected || st.over) return;
+        if (!el.isConnected || st.over || tutBusy(e)) return;
         e.stopPropagation();
         if ($('.ls-intro')) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); start(); } return; }
         if (e.key === 'Escape') { e.preventDefault(); st.paused = !st.paused; $('.mg-pause').hidden = !st.paused; if (st.paused) $('.mg-pause button').focus(); return; }
@@ -157,7 +214,7 @@ window.FemcListen = (() => {
         if (e.key.startsWith('Arrow')) { e.preventDefault(); const i = Math.max(0, things.indexOf(document.activeElement)); const n = (i + (e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : -1) + things.length) % things.length; things[n].focus(); }
       };
       const cleanup = () => { window.removeEventListener('keydown', key, true); try { ac && ac.close(); } catch (e) {} el.remove(); };
-      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') { st.paused = false; $('.mg-pause').hidden = true; } if (b === 'quit') { st.paused = false; $('.mg-pause').hidden = true; finish(true); } };
+      $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') { st.paused = false; $('.mg-pause').hidden = true; } if (b === 'howto') howTo(); if (b === 'quit') { st.paused = false; $('.mg-pause').hidden = true; finish(true); } };
       window.addEventListener('keydown', key, true);
       $('.ls-start').focus();
     });
