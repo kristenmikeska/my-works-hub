@@ -756,3 +756,7 @@
   .cf-coach.low .cf-cbox { right: 8px; bottom: 60px; }
 }
 .mg-cafe.tut .cf-pops { top: clamp(250px, 36vh, 300px); }
+
+/* Nov 11: Kat's café picture already has its own window, clock and door, so the drawn ones doubled up on top of it. Hidden;
+   the door bell still rings. (Seated customers at the back tables stay.) */
+.cf-win, .cf-rad, .cf-wclock, .cf-doorart { display: none !important; }
