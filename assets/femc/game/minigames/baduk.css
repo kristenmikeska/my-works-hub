@@ -128,3 +128,63 @@
 @media (prefers-reduced-motion: reduce) {
   .mg-bd *, .mg-bd *::before { animation-duration: .01s !important; animation-iteration-count: 1 !important; }
 }
+
+/* ── polish (Nov 11 2026; baduk.js "polish" block): ripples, a dropped stone's weight, the lid's bump, lamplight over the grain,
+   the face across the board, the solve's glow, the end card. .still: none of it; .calm: no glows; .perf: no lamplight motion. ── */
+.bd-board::before { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: repeating-radial-gradient(ellipse 260% 40% at -30% 120%, transparent 0 7px, rgba(110, 60, 16, .07) 7px 8px, transparent 8px 15px); mix-blend-mode: multiply; }
+.bd-lamp { position: absolute; inset: -6%; pointer-events: none; border-radius: 12px; z-index: 0;
+  background: radial-gradient(ellipse 70% 60% at 32% 18%, rgba(255, 226, 170, .28), transparent 62%), radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(40, 14, 4, .32));
+  mix-blend-mode: soft-light; animation: bd-lamp 6s ease-in-out infinite; }
+.bd-lamp::after { content: ''; position: absolute; inset: 0; opacity: .45;
+  background-image: radial-gradient(circle, rgba(255, 236, 200, .9) 0 1px, transparent 1.5px), radial-gradient(circle, rgba(255, 220, 190, .7) 0 1px, transparent 1.3px);
+  background-size: 150px 170px, 210px 190px; background-position: 10px 20px, 80px 60px; animation: bd-motes 34s linear infinite; mix-blend-mode: screen; }
+@keyframes bd-lamp { 0%, 100% { opacity: .85; } 30% { opacity: 1; } 55% { opacity: .78; } 62% { opacity: .92; } }
+@keyframes bd-motes { to { background-position: 160px -150px, -130px -320px; } }
+.bd-svg { position: relative; z-index: 1; }
+.bd-st.new { animation: bd-drop2 .32s cubic-bezier(.25, 1.5, .5, 1); }
+@keyframes bd-drop2 { 0% { transform: scale(1.32) translate(-2px, -10px); opacity: .55; } 55% { transform: scale(.95); opacity: 1; } 75% { transform: scale(1.03); } }
+.bd-st.new .sh { animation: bd-shadow .32s ease-out; transform-box: fill-box; transform-origin: center; }
+@keyframes bd-shadow { 0% { transform: translate(6px, 10px) scale(1.25); opacity: .25; } }
+.bd-rip { fill: none; stroke: rgba(70, 36, 8, .45); stroke-width: 2.4; transform-box: fill-box; transform-origin: center; animation: bd-rip .8s ease-out forwards; }
+.bd-rip.two { stroke: rgba(255, 230, 190, .5); stroke-width: 1.4; animation-delay: .12s; opacity: 0; }
+@keyframes bd-rip { 0% { transform: scale(.9); opacity: .9; } 100% { transform: scale(2.1); opacity: 0; } }
+.bd-ring { animation: bd-ringspin 6s linear infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes bd-ringspin { to { transform: rotate(360deg); } }
+.bd-lib { filter: drop-shadow(0 0 3px rgba(255, 79, 158, .8)); }
+.bd-lid.bump svg { animation: bd-bump .35s cubic-bezier(.3, 1.6, .5, 1); transform-origin: 50% 80%; }
+@keyframes bd-bump { 30% { transform: scale(1.06, .92) translateY(2px); } 60% { transform: scale(.98, 1.04); } }
+.bd-lid.bump figcaption b { display: inline-block; animation: bd-num .45s cubic-bezier(.2, 1.8, .4, 1); }
+@keyframes bd-num { 0% { transform: scale(1.8); color: var(--pk); } }
+.mg-bd.is-solved .bd-board { animation: bd-solved 1.6s ease-out; }
+@keyframes bd-solved { 25% { box-shadow: 0 2px 0 #8a5a24, 0 6px 0 #6e4519, 0 18px 40px rgba(0, 0, 0, .55), inset 0 0 40px rgba(110, 60, 16, .35), 0 0 0 3px rgba(255, 79, 158, .7), 0 0 50px rgba(255, 79, 158, .45); } }
+.mg-bd.is-wrong .bd-board { animation: bd-wrong .45s ease-in-out; }
+@keyframes bd-wrong { 25% { transform: translateX(-3px); } 60% { transform: translateX(2px); } }
+.bd-pips li.first, .bd-pips li.solved { animation: bd-pip .5s cubic-bezier(.2, 1.8, .4, 1); }
+@keyframes bd-pip { 0% { transform: scale(1.9); } }
+/* the face across the board */
+.bd-voice { display: grid; grid-template-columns: auto 1fr; column-gap: 12px; align-items: center; }
+.bd-voice cite { grid-column: 1 / -1; }
+.bd-voice > span:not(.bd-face) { grid-column: 2; }
+.bd-face { grid-row: 1; width: 52px; height: 52px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 2px var(--pk), 0 3px 8px rgba(0, 0, 0, .5); background: #2a0f1c; }
+.bd-face img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 14%; animation: bd-faceb 6s ease-in-out infinite; transform-origin: 50% 90%; }
+@keyframes bd-faceb { 50% { transform: scale(1.03) translateY(-1px); } }
+.bd-face[data-mood="nod"] img { animation: bd-nod 1.4s ease-in-out; }
+@keyframes bd-nod { 20% { transform: translateY(3px) rotate(1deg); } 45% { transform: translateY(0); } 65% { transform: translateY(2px); } }
+.bd-face[data-mood="look"] img { animation: bd-look 1.6s ease-in-out; }
+@keyframes bd-look { 30%, 70% { transform: translateX(-2px) rotate(-2deg); } }
+/* the end card: the grade set down like a stone */
+.mg-bd .mg-end:not([hidden]) .mg-grade { animation: bd-gradein .65s .1s cubic-bezier(.25, 1.5, .5, 1) both; }
+@keyframes bd-gradein { 0% { transform: translateY(-40px) scale(1.5); opacity: 0; } 60% { transform: translateY(0) scale(.94); opacity: 1; } }
+.mg-bd .mg-end:not([hidden]) .mg-grade::after { content: ''; display: block; height: 4px; margin: -6px auto 0; width: 60%; border-radius: 50%; background: rgba(255, 79, 158, .5); filter: blur(3px); animation: bd-endrip .9s .4s ease-out both; }
+@keyframes bd-endrip { 0% { transform: scaleX(.2); opacity: 0; } 40% { opacity: 1; } 100% { transform: scaleX(1.4); opacity: 0; } }
+.mg-bd .mg-end:not([hidden]) dl > * { animation: bd-pop .4s ease-out both; animation-delay: .4s; }
+.mg-bd .mg-end:not([hidden]) dl > :nth-child(n+3) { animation-delay: .55s; } .mg-bd .mg-end:not([hidden]) dl > :nth-child(n+5) { animation-delay: .7s; }
+.mg-bd .mg-end:not([hidden]) .bd-end-art { animation: bd-banana 3s ease-in-out infinite; }
+@keyframes bd-banana { 50% { transform: rotate(2deg) translateY(-3px); } }
+/* settings */
+.mg-bd.calm .bd-lib { filter: none; }
+.mg-bd.calm.is-solved .bd-board, .mg-bd.calm .mg-grade::after { animation: none; }
+.mg-bd.perf .bd-lamp, .mg-bd.perf .bd-lamp::after, .mg-bd.perf .bd-face img, .mg-bd.perf .bd-ring, .mg-bd.perf .mg-end .bd-end-art { animation: none; }
+.mg-bd.perf .bd-lamp::after { display: none; }
+.mg-bd.still *, .mg-bd.still *::before, .mg-bd.still *::after { animation: none !important; transition: none !important; }

@@ -155,6 +155,16 @@ window.FemcStair = (() => {
     <circle class="st-echo" cx="86" cy="76" r="6" fill="none" stroke="${P}" stroke-width="1.5" opacity="0"/>
     <circle class="st-pip" cx="100" cy="76" r="4" fill="${B}" opacity="0"/>
     <g class="st-sitter" opacity="0"><path d="M0 -26c-6 0-9 4-9 9 0 4 2 7 3 9-6 2-9 7-9 14h30c0-7-3-12-9-14 1-2 3-5 3-9 0-5-3-9-9-9z" fill="${B}" opacity=".85"/></g>
+    <g class="st-life" aria-hidden="true">
+      <rect class="st-moon" x="74" y="32" width="18" height="26" fill="${B}"/>
+      <path class="st-heat" d="M133 287q2-3 0-6t0-6t0-6M139 287q2-3 0-6t0-6t0-6M145 287q2-3 0-6t0-6t0-6" stroke="${P}" stroke-width=".9" fill="none"/>
+      <ellipse class="st-rip" cx="111" cy="304" rx="3" ry="1" fill="none" stroke="${B}" stroke-width=".6"/><ellipse class="st-rip two" cx="113" cy="304" rx="3" ry="1" fill="none" stroke="${B}" stroke-width=".6"/>
+      <path class="st-koi" d="M105 304q3-1.6 6 0q-3 1.6-6 0zM111 304l2-1.4v2.8z" fill="#c86a4a"/>
+      <rect class="st-dial" x="78" y="275" width="10" height="2" fill="#ffcf9a"/>
+      <g class="st-pend"><path d="M300 274v9" stroke="${B}" stroke-width=".9"/><circle cx="300" cy="284" r="2" fill="${B}"/></g>
+      <path class="st-draft" d="M76 62q4 6 0 12t0 12" stroke="${B}" stroke-width=".7" fill="none"/>
+    </g>
+    <g class="st-prints"></g>
     <g class="st-me"><circle r="9" fill="${PK}" opacity=".22"/><circle r="4.5" fill="${PK}"/><circle r="4.5" fill="none" stroke="#fff" stroke-width="1" opacity=".7"/></g>
     <text class="st-lbl" x="35" y="96">her room</text><text class="st-lbl" x="232" y="336">hall</text><text class="st-lbl" x="70" y="336">kitchen</text><text class="st-lbl" x="296" y="276">gate</text>
     <defs><radialGradient id="st-warm"><stop offset="0" stop-color="#ffcf9a" stop-opacity=".55"/><stop offset="1" stop-color="#ffcf9a" stop-opacity="0"/></radialGradient></defs>`;
@@ -191,7 +201,7 @@ window.FemcStair = (() => {
         <div class="st-scene">
           <img class="st-bg st-bg-stairs" src="${BG(o.bg || 'epi-s-stairs-night')}" alt="" onerror="this.remove()">
           <img class="st-bg st-bg-kitchen" src="${BG(o.kitchenBg || 'epi-s-lee-kitchen')}" alt="" onerror="this.remove()">
-          <div class="st-halllight"></div><div class="st-shade"></div>
+          <div class="st-halllight"></div><div class="st-dust" aria-hidden="true"></div><div class="st-shade"></div><div class="st-breath" aria-hidden="true"></div>
           <div class="st-sit"><img src="${ART('sit')}" alt="" onerror="this.remove()">${SIT}</div>
           <div class="st-grain"></div><div class="st-vig"></div>
           <b class="st-num" aria-hidden="true"></b>
@@ -456,6 +466,13 @@ window.FemcStair = (() => {
           if (loud) chip('●', 'CREAK. The seventh stair.', nz > cover ? 'bad' : '', 1800);
           else if (nd.odd) { chip('▼', 'A creak, under you', 'odd', 1800); if (A) K.creak(3, false, 0, 2.2, 0.3); }
           if (skipped && skipped.creaky) chip('●', 'Over the seventh stair', 'good', 1300);
+          // polish (Nov 11 2026): a fading print where she set her foot, the counter ticking, a small weight in the view
+          if (!still) {
+            const pt = spot(nd), pr = map.querySelector('.st-prints'), id = (stepNow.n = (stepNow.n || 0) + 1);
+            if (pr && pr.insertAdjacentHTML) { pr.insertAdjacentHTML('beforeend', `<circle class="st-print${loud ? ' loud' : ''}" data-p="${id}" cx="${pt.x.toFixed(1)}" cy="${(pt.y - 2).toFixed(1)}" r="${long ? 5 : 3.5}"/>`); later(() => pr.querySelectorAll(`[data-p="${id}"]`).forEach(c => c.remove()), 1600); }
+            const cn = $('.st-count'); cn.classList.remove('tick'); void cn.offsetWidth; cn.classList.add('tick');
+            el.classList.remove('stepped', 'stepped-long'); void el.offsetWidth; el.classList.add(long ? 'stepped-long' : 'stepped');
+          }
         }
         if (st.tut) return tutStepped(nz, cover, ev);
         // the house hears what it doesn't cover
@@ -582,6 +599,7 @@ window.FemcStair = (() => {
         hm.classList.toggle('over', shown >= nn);
         $('.st-listenm i').style.width = `${Math.min(100, st.listen)}%`;
         el.style.setProperty('--listen', (Math.min(100, st.listen) / 100).toFixed(3));
+        el.classList.toggle('near-heard', st.listen > 60);
         el.style.setProperty('--dark', Math.min(1, 0.15 + 0.6 * along() + 0.25 * prog()).toFixed(3));
         if (ev) { const c = ev.chip?.querySelector('i'); if (c) c.style.width = `${(shown * 100).toFixed(0)}%`; }
         const ph = $('.st-phase'); ph.dataset.t = st.answer ? 'Freeze' : shown >= nn ? 'Move' : 'Freeze'; if (!ph._lie) ph.textContent = ph.dataset.t;

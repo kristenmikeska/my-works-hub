@@ -397,6 +397,70 @@ window.FemcHwatu = (() => {
       const seatEl = i => el.querySelector(`.hw-seat[data-s="${i}"]`);
       const pile = $('.hw-pile'), field = $('.hw-field');
 
+      /* polish (Nov 11 2026, Kat: "every minigame needs as many visuals as possible, as much animation as possible"): a particle /
+         stamp layer (.hw-fx) over the table: dust puffs on every slap, sparks on a bright, coins sliding to a seat when its points rise,
+         a flourish when a set completes (godori: three birds fly across), portrait moods (.hw-pic[data-mood]: talk, smug, stung, glow),
+         the Go / Stop stamp, petals on a win, a ticking end card. Ambient: sunroom light and drifting motes (CSS). None of it changes
+         play. still (reduced motion): none of it; calm (Reduce flashes, .calm): no flashes or glows; perf (Performance, .perf): no
+         ambient motion, fewer particles. */
+      const GS0 = (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {};
+      const calm = !!(o.calm ?? GS0.calm), perf = !!(o.perf ?? GS0.perf);
+      if (calm) el.classList.add('calm');
+      if (perf) el.classList.add('perf');
+      const fxL = document.createElement('div'); fxL.className = 'hw-fx'; fxL.setAttribute('aria-hidden', 'true'); el.appendChild(fxL);
+      const at = n => { const a = n.getBoundingClientRect(), b = el.getBoundingClientRect(); return { x: a.left - b.left + a.width / 2, y: a.top - b.top + a.height / 2, w: a.width, h: a.height }; };
+      const spawn = (cls, x, y, life, vars) => {
+        const p = document.createElement('i'); p.className = cls; p.style.left = x.toFixed(1) + 'px'; p.style.top = y.toFixed(1) + 'px';
+        if (vars) for (const k in vars) p.style.setProperty(k, vars[k]);
+        fxL.appendChild(p); later(() => p.remove(), life); return p;
+      };
+      const px = v => v.toFixed(1) + 'px';
+      const puff = (n, v = 1) => {
+        if (still || !n || !n.isConnected) return;
+        const c = at(n), k = perf ? 3 : Math.round(6 * v) + 3;
+        for (let i = 0; i < k; i++) {
+          const a = Math.PI * (i / (k - 1)) + (Math.random() - 0.5) * 0.4, r = 16 + Math.random() * 24;
+          spawn('hw-dust', c.x + Math.cos(a) * c.w * 0.4, c.y + c.h * 0.4, 760, { '--dx': px(Math.cos(a) * r), '--dy': px(-Math.sin(a) * (5 + Math.random() * 12)), '--s': (0.6 + Math.random() * 0.9).toFixed(2) });
+        }
+      };
+      const sparks = (n, k = 10) => {
+        if (still || calm || !n || !n.isConnected) return;
+        const c = at(n); k = perf ? Math.ceil(k / 3) : k;
+        for (let i = 0; i < k; i++) { const a = Math.random() * Math.PI * 2, r = 22 + Math.random() * 34; spawn('hw-spark', c.x, c.y, 650, { '--dx': px(Math.cos(a) * r), '--dy': px(Math.sin(a) * r) }); }
+      };
+      const coins = (i, k) => {
+        if (still || !st.begun || k <= 0) return;
+        const from = at(field), to = at(seatEl(i).querySelector('.hw-pts'));
+        k = Math.min(perf ? 2 : 6, k + 1);
+        for (let j = 0; j < k; j++) later(() => {
+          const x = from.x + (Math.random() - 0.5) * 80, y = from.y + (Math.random() - 0.5) * 24;
+          spawn('hw-coin', x, y, 950, { '--tx': px(to.x - x), '--ty': px(to.y - y), '--arc': px(-30 - Math.random() * 40) }); S.coin(j % 3);
+        }, j * 80);
+      };
+      const mood = (i, m, ms = 1600) => {
+        const se = seatEl(i); if (!se || still) return; const p = se.querySelector('.hw-pic');
+        p.dataset.mood = m; clearTimeout(p._m); p._m = later(() => { if (p.dataset.mood === m) delete p.dataset.mood; }, ms);
+      };
+      const stamp = (txt, kind) => {
+        if (still) return;
+        fxL.querySelectorAll('.hw-stamp').forEach(x => x.remove());
+        const b = document.createElement('div'); b.className = 'hw-stamp ' + kind; b.innerHTML = `<b>${esc(txt)}</b>`; fxL.appendChild(b); later(() => b.remove(), 1300);
+      };
+      const BIRD_SVG = '<svg viewBox="0 0 60 30" aria-hidden="true"><path class="w1" d="M30 16Q18 2 2 8Q16 10 30 18Z"/><path class="w2" d="M30 16Q42 2 58 8Q44 10 30 18Z"/><ellipse cx="30" cy="17" rx="7" ry="3.4"/></svg>';
+      const flourish = (i, k) => {
+        if (still) return;
+        S.set();
+        const b = document.createElement('div'); b.className = 'hw-flour k-' + k;
+        b.innerHTML = `<p><b>${k === 'godori' ? '고도리' : k === 'red' ? '홍단' : k === 'blue' ? '청단' : '초단'}</b><small>${esc(SETNAME[k])}${i ? ' · ' + esc(NAME[i]) : ''}</small></p>`
+          + (k === 'godori' ? [0, 1, 2].map(j => `<span class="hw-bird" style="--d:${j * 0.18}s;--y:${18 + j * 14}%">${BIRD_SVG}</span>`).join('') : [0, 1, 2].map(j => `<span class="hw-rib" style="--d:${j * 0.12}s;--y:${30 + j * 16}%"></span>`).join(''));
+        fxL.appendChild(b); later(() => b.remove(), perf ? 1600 : 2400);
+        mood(1, i === 0 ? 'stung' : 'smug', 2200);
+      };
+      const petals = () => {
+        if (still || calm && perf) return;
+        for (let j = 0; j < (perf ? 10 : 26); j++) spawn('hw-petal', Math.random() * (el.clientWidth || 800), -20, 5200, { '--d': (Math.random() * 1.8).toFixed(2) + 's', '--sx': px((Math.random() - 0.5) * 160), '--r': Math.round(Math.random() * 720 - 360) + 'deg' });
+      };
+
       /* sound: Web Audio, made here */
       let ac = null, nbuf = null, master = null;
       const audio = () => {
@@ -423,6 +487,8 @@ window.FemcHwatu = (() => {
         go: () => { if (!ac) return; const t = ac.currentTime; tone(t, 523, 0.18, 0.18, 'triangle'); tone(t + 0.12, 784, 0.32, 0.18, 'triangle'); },
         stop: () => { if (!ac) return; const t = ac.currentTime; tone(t, 196, 1.3, 0.22); tone(t, 294, 1.1, 0.12); noise(t, 0.05, 'lowpass', 800, 0.7, 0.4); },
         pop: () => { if (!ac) return; const t = ac.currentTime; tone(t, 880, 0.12, 0.08, 'sine', 1320); },
+        coin: (i = 0) => { if (!ac) return; const t = ac.currentTime + i * 0.05; tone(t, 1900 + i * 140, 0.07, 0.035, 'triangle'); tone(t + 0.02, 2600, 0.05, 0.02, 'sine'); },
+        set: () => { if (!ac) return; const t = ac.currentTime; [659, 784, 988, 1319].forEach((f, i) => tone(t + i * 0.07, f, 0.35, 0.09, 'triangle')); noise(t, 0.4, 'highpass', 6000, 0.6, 0.05); },
         win: () => { if (!ac) return; const t = ac.currentTime; [523, 659, 784, 1047].forEach((f, i) => tone(t + i * 0.11, f, 0.5, 0.14, 'triangle')); },
         lose: () => { if (!ac) return; const t = ac.currentTime; tone(t, 330, 0.5, 0.14, 'triangle'); tone(t + 0.25, 247, 0.8, 0.14, 'triangle'); },
       };
@@ -471,7 +537,7 @@ window.FemcHwatu = (() => {
       };
       const slap = (n, v = 1) => {
         S.thwack(v); if (still) return;
-        n.classList.remove('slap'); void n.offsetWidth; n.classList.add('slap');
+        n.classList.remove('slap'); void n.offsetWidth; n.classList.add('slap'); puff(n, v);
         const s = n.parentElement; s && s.classList.remove('jolt'); s && void s.offsetWidth; s && s.classList.add('jolt');
       };
 
@@ -480,9 +546,12 @@ window.FemcHwatu = (() => {
         G.seats.forEach((s, i) => {
           const se = seatEl(i), sc = score(s.cap), pts = se.querySelector('.hw-pts');
           if (pts.textContent !== String(sc.total)) {
+            const was = +pts.textContent || 0;
             pts.textContent = sc.total;
-            if (!still && st.begun) { pts.classList.remove('pop'); void pts.offsetWidth; pts.classList.add('pop'); S.pop(); }
+            if (!still && st.begun) { pts.classList.remove('pop'); void pts.offsetWidth; pts.classList.add('pop'); S.pop(); if (sc.total > was) coins(i, sc.total - was); }
           }
+          const seen = (st.setsSeen ||= [[], [], []])[i];
+          sc.sets.forEach(k => { if (!seen.includes(k)) { seen.push(k); if (st.begun) flourish(i, k); } });
           ['b', 'a', 'r', 'j'].forEach(t => { se.querySelector(`.hw-grp[data-t="${t}"] em`).textContent = sc.n[t]; });
           const chips = [];
           if (sc.n.b >= 2) chips.push(`<i class="${sc.n.b >= 3 ? 'done' : ''}">광 ${sc.n.b}${sc.n.b < 3 ? '/3' : ''}</i>`);
@@ -503,10 +572,10 @@ window.FemcHwatu = (() => {
         if (!force && G.turns - st.lineAt < 2) return;
         st.lineAt = G.turns;
         const b = seatEl(i).querySelector('.hw-bub');
-        b.textContent = pick(list); b.classList.add('on');
+        b.textContent = pick(list); b.classList.add('on'); mood(i, list === LINES.youBig || list === LINES.block || list === AUNT.hurt ? 'stung' : list === LINES.herBig || list === LINES.herGo || list === LINES.youWin ? 'smug' : 'talk');
         clearTimeout(b._t); b._t = later(() => b.classList.remove('on'), 2600);
       };
-      const toast = txt => { const t = $('.hw-toast'); t.textContent = txt; t.classList.remove('on'); void t.offsetWidth; t.classList.add('on'); clearTimeout(toast.t); toast.t = later(() => t.classList.remove('on'), 2200); };
+      const toast = txt => { const t = $('.hw-toast'); t.textContent = txt; if (/Stuck|Kiss|Ttadak|Sweep|stuck three/.test(txt)) stamp(/Stuck/.test(txt) && !/Took/.test(txt) ? '뻑!' : /Kiss/.test(txt) ? '쪽!' : /Ttadak/.test(txt) ? '따닥!' : /Sweep/.test(txt) ? '쓸!' : '!', 'small'); t.classList.remove('on'); void t.offsetWidth; t.classList.add('on'); clearTimeout(toast.t); toast.t = later(() => t.classList.remove('on'), 2200); };
       const SPECIAL = { stuck: 'Stuck! Three of a month wait on the felt.', kiss: 'Kiss! A junk from each.', ttadak: 'Ttadak! A junk from each.', unstick: 'Took the stuck three! A junk from each.', sweep: 'Sweep! The felt is clear: a junk from each.' };
 
       /* the table's events (the engine calls these) */
@@ -521,7 +590,7 @@ window.FemcHwatu = (() => {
           await wait(ms * 0.85); slap(n, d.onto ? 1 : 0.75); n.classList.remove('mv');
           await wait(name === 'play' ? 280 : 340);
         } else if (name === 'flip') {
-          const n = node(d.card); n.classList.add('lift'); pile.appendChild(n); reveal(n); S.flip(); upd();
+          const n = node(d.card); n.classList.add('lift', 'flip'); pile.appendChild(n); reveal(n); S.flip(); upd(); later(() => n.classList.remove('flip'), 620);
           await wait(480);
         } else if (name === 'capture') {
           const sp = d.special;
@@ -536,6 +605,9 @@ window.FemcHwatu = (() => {
             cards.forEach((c, i) => later(() => S.clack(0), (still ? 0 : 380) + i * 70));
             await wait(460 + cards.length * 70);
             cards.forEach(c => node(c).classList.remove('mv'));
+            if (!still) [...new Set(cards.map(c => c.t))].forEach(t => { const g = se.querySelector(`.hw-grp[data-t="${t}"]`); g.classList.remove('got'); void g.offsetWidth; g.classList.add('got'); });
+            cards.filter(c => c.t === 'b').forEach(c => sparks(node(c), 12));
+            if (d.pi === 0 && cards.some(c => c.t === 'b')) mood(1, 'stung');
             upd();
             // what they say about it
             const big = cards.some(c => c.t === 'b') || cards.length >= 4 || Object.keys(SETS).some(k => cards.some(SETS[k]) && G.seats[d.pi].cap.filter(SETS[k]).length >= 3);
@@ -557,7 +629,7 @@ window.FemcHwatu = (() => {
         } else if (name === 'score') {
           upd(); await wait(120);
         } else if (name === 'go') {
-          upd(); S.go();
+          upd(); S.go(); stamp('GO!', 'go'); mood(d.pi, 'glow');
           toast(`${d.pi === 0 ? 'You' : NAME[d.pi]}: Go! (${G.seats[d.pi].go})`);
           const se = seatEl(d.pi); se.classList.remove('went'); void se.offsetWidth; se.classList.add('went');
           say(1, d.pi === 0 ? LINES.youGo : d.pi === 1 ? LINES.herGo : AUNT.happy, true);
@@ -593,14 +665,14 @@ window.FemcHwatu = (() => {
           const s = G.seats[0], a = $('.hw-ask'), next = s.go + 1;
           a.innerHTML = `<b>${s.score} points</b><p>Stop and win with ${s.score + Math.min(s.go, 2)}${s.go >= 3 ? ' ×' + 2 ** (s.go - 2) : ''}. Or Go: play on for ${next >= 3 ? 'double' : '+' + next}, but if ${N === 3 ? 'someone else' : 'Eomma'} reaches ${G.target} and stops, ${N === 3 ? 'they score' : 'she scores'} double.</p>
             <div><button type="button" data-a="go">Go</button><button type="button" data-a="stop">Stop</button></div>`;
-          a.hidden = false; a.querySelector('[data-a="stop"]').focus();
-          st.resolve = go => { a.hidden = true; st.mode = null; st.resolve = null; if (go) { say(1, LINES.youGo, true); } else { S.stop(); say(1, LINES.youStop, true); } r(go); };
+          a.hidden = false; a.querySelector('[data-a="stop"]').focus(); el.classList.add('asking'); mood(1, 'watch', 60000);
+          st.resolve = go => { a.hidden = true; el.classList.remove('asking'); st.mode = null; st.resolve = null; if (go) { say(1, LINES.youGo, true); } else { S.stop(); stamp('STOP', 'stop'); say(1, LINES.youStop, true); } r(go); };
         }),
       };
       const bot = i => ({
         pickHand: async () => { await wait(rnd(D.think) * (i === 2 ? 0.8 : 1)); return ai.hand(G, i, i === 1 ? D : DIFF.normal); },
         pickField: async (pi, opts) => { await wait(450); return ai.field(G, i, opts, i === 1 ? D : DIFF.normal); },
-        goStop: async () => { await wait(800); const g = ai.go(G, i, i === 1 ? D : DIFF.normal); if (!g) { S.stop(); toast(`${NAME[i]}: Stop.`); say(i, i === 1 ? LINES.herStop : AUNT.win, true); await wait(700); } return g; },
+        goStop: async () => { await wait(800); const g = ai.go(G, i, i === 1 ? D : DIFF.normal); if (!g) { S.stop(); stamp('STOP', 'stop'); mood(i, 'smug', 2400); toast(`${NAME[i]}: Stop.`); say(i, i === 1 ? LINES.herStop : AUNT.win, true); await wait(700); } return g; },
       });
       const players = [human, bot(1), bot(2)];
       const H = {
@@ -654,12 +726,16 @@ window.FemcHwatu = (() => {
           if (!el.isConnected) return;
           const end = $('.mg-end'); end.hidden = false;
           end.innerHTML = `<p class="hw-end-head">${esc(head)}</p><b class="mg-grade">${grade}</b>
-            <dl>${r.winner != null ? `<dt>${r.winner === 0 ? 'Your points' : NAME[r.winner] + '’s points'}</dt><dd>${r.points}${r.points !== r.base ? ` <small>(${r.base}${r.gos ? ` +${r.gos} Go` : ''}${r.goBak ? ', go-bak ×2' : ''})</small>` : ''}</dd>` : ''}
+            <dl>${r.winner != null ? `<dt>${r.winner === 0 ? 'Your points' : NAME[r.winner] + '’s points'}</dt><dd><span class="hw-tick" data-n="${r.points}">${still ? r.points : 0}</span>${r.points !== r.base ? ` <small>(${r.base}${r.gos ? ` +${r.gos} Go` : ''}${r.goBak ? ', go-bak ×2' : ''})</small>` : ''}</dd>` : ''}
               <dt>Scores</dt><dd>${G.seats.map((s, i) => `${NAME[i]} ${s.score}`).join(' · ')}</dd>
               <dt>Your piles</dt><dd>광 ${sc.n.b} · 열 ${sc.n.a} · 띠 ${sc.n.r} · 피 ${sc.n.j}</dd>
               ${sc.sets.length ? `<dt>Sets</dt><dd>${sc.sets.map(k => SETNAME[k]).join(', ')}</dd>` : ''}</dl>
             <p class="mg-end-say">${quit ? 'She gathers the cards without a word.' : won ? 'She squares the deck. Something in her face almost approves.' : draw ? 'The cards go back in the box. Next Thursday, then.' : 'She shuffles. The cards make a sound like rain.'}</p><button type="button">Continue</button>`;
           end.querySelector('button').focus();
+          if (!still) {
+            end.querySelectorAll('.hw-tick').forEach(t => { const n = +t.dataset.n; for (let k = 1; k <= 12; k++) later(() => { t.textContent = Math.round(n * k / 12); if (k % 3 === 0) S.coin(k % 2); }, 260 + k * 55); });
+            if (won) later(petals, 300);
+          }
           end.querySelector('button').onclick = () => { cleanup(); o.onDone?.(res); done(res); };
         };
         quit ? show() : later(show, still ? 400 : 1600);

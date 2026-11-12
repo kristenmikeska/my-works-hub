@@ -196,3 +196,63 @@
 .mg-st.tut .st-shade { opacity: .12; }
 .mg-st.tut .st-vig { opacity: .4; }
 .mg-st.tut .st-grain, .mg-st.tut .st-ghost, .mg-st.tut .st-help, .mg-st.tut .st-sit { display: none; }
+
+/* ── polish (Nov 11 2026; stair.js "polish" notes), with restraint: dust turning in the hall light, a shadow at the top of the
+   stairs that breathes, the house map's small lives (moonlight in the window, a draught, the radiator's shimmer, the koi's
+   ripples, the radio's dial, the hall clock's pendulum), a print where she sets her foot, the counter ticking, a small weight in
+   the view on each step, the meters easing, Listening's heartbeat once it's past 60. None of these is a tell: they run the same
+   whatever the house is doing. .still: none of it; .calm: no heartbeat glow; .perf: no dust, breath or map lives. ── */
+.st-dust { position: absolute; inset: 0; pointer-events: none; opacity: calc(.35 - var(--dark, .2) * .2);
+  background-image: radial-gradient(circle, rgba(255, 220, 190, .8) 0 1px, transparent 1.4px), radial-gradient(circle, rgba(255, 220, 190, .55) 0 .8px, transparent 1.2px);
+  background-size: 190px 230px, 260px 210px; background-position: 20px 40px, 120px 0;
+  mask-image: radial-gradient(ellipse 40% 45% at 60% 90%, #000, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 40% 45% at 60% 90%, #000, transparent 75%);
+  animation: st-dust 46s linear infinite; }
+@keyframes st-dust { to { background-position: 80px -190px, 30px -260px; } }
+.mg-st.lights-off .st-dust { opacity: 0; transition: opacity .25s; }
+.st-breath { position: absolute; left: 10%; top: -10%; width: 60%; height: 60%; pointer-events: none; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(8, 2, 5, .55), transparent 65%); opacity: calc(.25 + var(--dark, .2) * .5); animation: st-breath 9s ease-in-out infinite; }
+@keyframes st-breath { 0%, 100% { transform: scale(1) translate(0, 0); } 45% { transform: scale(1.08, 1.12) translate(1%, 2%); } 55% { transform: scale(1.07, 1.1) translate(1%, 2%); } }
+.mg-st.won .st-breath { opacity: 0; transition: opacity .8s; }
+.st-scene { transition: transform .2s; }
+.mg-st.stepped .st-scene { animation: st-weight .42s ease-out; }
+.mg-st.stepped-long .st-scene { animation: st-weight .75s ease-out; }
+@keyframes st-weight { 35% { transform: translateY(2px) scale(1.004); } }
+/* the map's small lives */
+.st-moon { opacity: .07; animation: st-moon 11s ease-in-out infinite; }
+@keyframes st-moon { 50% { opacity: .14; } }
+.st-draft { opacity: 0; animation: st-draft 7s ease-in-out infinite; }
+@keyframes st-draft { 0%, 40% { opacity: 0; transform: translate(0, 0); } 60% { opacity: .25; } 100% { opacity: 0; transform: translate(10px, 4px); } }
+.st-heat { opacity: .16; animation: st-heat 2.8s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+@keyframes st-heat { 50% { opacity: .32; transform: translateY(-1.5px) skewX(6deg); } }
+.st-rip { opacity: 0; transform-box: fill-box; transform-origin: center; animation: st-ripple 5.5s ease-out infinite; }
+.st-rip.two { animation-delay: 2.6s; }
+@keyframes st-ripple { 0% { opacity: .5; transform: scale(.5); } 60%, 100% { opacity: 0; transform: scale(2.6); } }
+.st-koi { opacity: .5; animation: st-koi 13s ease-in-out infinite; }
+@keyframes st-koi { 0%, 100% { transform: translateX(0); } 45% { transform: translateX(6px) scaleX(-1); } 50% { transform: translateX(6px); } }
+.st-dial { opacity: .3; animation: st-dial 4.4s steps(1) infinite; }
+@keyframes st-dial { 0%, 100% { opacity: .3; } 41% { opacity: .18; } 43% { opacity: .34; } 70% { opacity: .26; } }
+.st-pend { transform-origin: 300px 274px; animation: st-pend 2s ease-in-out infinite alternate; }
+@keyframes st-pend { from { transform: rotate(-9deg); } to { transform: rotate(9deg); } }
+.st-print { fill: none; stroke: var(--pk2); stroke-width: 1; opacity: 0; transform-box: fill-box; transform-origin: center; animation: st-print 1.6s ease-out forwards; }
+.st-print.loud { stroke: var(--bone); stroke-width: 1.4; }
+@keyframes st-print { 0% { opacity: .7; transform: scale(.6); } 100% { opacity: 0; transform: scale(2.2); } }
+/* the HUD */
+.st-housem u { transition: left .25s ease-out; }
+.st-m i { transition: width .18s ease-out; }
+.st-count.tick { animation: st-tick .35s ease-out; }
+@keyframes st-tick { 0% { transform: translateY(-4px); opacity: .4; } }
+.mg-st.near-heard .st-listenm > span { animation: st-heart 1s ease-in-out infinite; }
+@keyframes st-heart { 0%, 40%, 100% { transform: skewX(-14deg) scale(1); } 10% { transform: skewX(-14deg) scale(1.04, 1.3); } 22% { transform: skewX(-14deg) scale(1.02, 1.12); } }
+.mg-st.near-heard .st-listenm i { box-shadow: 0 0 10px rgba(232, 221, 208, .55); }
+.mg-st.near-heard .st-listenm small { animation: st-heartc 1s ease-in-out infinite; }
+@keyframes st-heartc { 10% { color: var(--bone); } }
+.mg-st .mg-end:not([hidden]) .mg-grade { animation: st-grade 1.2s ease-out both; }
+@keyframes st-grade { 0% { opacity: 0; filter: blur(8px); transform: scale(1.15); } }
+.mg-st .mg-end:not([hidden]) dl > * { animation: st-tt-in .6s ease-out both; animation-delay: .6s; }
+/* settings */
+.mg-st.calm .mg-st.near-heard .st-listenm i, .mg-st.calm.near-heard .st-listenm i { box-shadow: none; }
+.mg-st.calm.near-heard .st-listenm small { animation: none; }
+.mg-st.perf .st-dust, .mg-st.perf .st-breath, .mg-st.perf .st-life { display: none; }
+.mg-st.perf.stepped .st-scene, .mg-st.perf.stepped-long .st-scene { animation: none; }
+.mg-st.tut .st-breath { display: none; }
+.mg-st.still .st-dust, .mg-st.still .st-breath, .mg-st.still .st-life *, .mg-st.still .st-scene, .mg-st.still .st-count, .mg-st.still .st-listenm > span, .mg-st.still .st-listenm small, .mg-st.still .mg-end * { animation: none !important; transition: none !important; }

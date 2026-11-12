@@ -278,3 +278,74 @@
   .mg-pi *, .mg-pi *::before, .mg-pi *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
   .mg-pi .pi-card { transition-duration: var(--sw) !important; }
 }
+
+/* ── polish (Nov 11 2026; passit.js "polish" block): the crew swaying and reacting, smoke curls, the ceiling haze, the beat's
+   ring on the rug, the lighter's flick, chips rustling, Nana trotting through, the end card. .still: none of it; .calm: no
+   flashes or glows; .perf: no curls, ceiling haze, trotting or sway. ── */
+.pi-seat:not(.asleep) { animation: pi-sway 3.6s ease-in-out infinite; }
+.pi-seat:nth-child(2n):not(.asleep) { animation-duration: 4.2s; animation-direction: reverse; }
+.pi-seat:nth-child(3n):not(.asleep) { animation-duration: 3.1s; }
+@keyframes pi-sway { 0%, 100% { rotate: -2deg; } 50% { rotate: 2.4deg; } }
+.pi-seat.laugh { animation: pi-laugh .18s ease-in-out 6 !important; }
+@keyframes pi-laugh { 0%, 100% { rotate: -3deg; scale: 1; } 50% { rotate: 3deg; scale: 1.06 .96; } }
+.pi-seat.cough { animation: pi-cough .25s ease-in-out 3 !important; }
+@keyframes pi-cough { 0%, 100% { scale: 1; translate: 0 0; } 40% { scale: .92 1.04; translate: 0 5px; } }
+.pi-seat.cough::after { content: ''; position: absolute; left: 50%; top: 30%; width: 90%; height: 70%; margin-left: -45%; border-radius: 50%; pointer-events: none; z-index: 5;
+  background: radial-gradient(circle at 35% 55%, rgba(255, 236, 244, .65) 0 18%, transparent 40%), radial-gradient(circle at 65% 45%, rgba(255, 236, 244, .55) 0 16%, transparent 38%), radial-gradient(circle at 50% 30%, rgba(255, 236, 244, .45) 0 14%, transparent 34%);
+  animation: pi-cloud 1s ease-out forwards; }
+@keyframes pi-cloud { 0% { opacity: .9; scale: .4; } 100% { opacity: 0; scale: 2; translate: 0 -40px; } }
+/* smoke off the joint, the haze under the ceiling */
+.pi-joint::after { content: ''; position: absolute; right: 2%; bottom: 60%; width: 18px; height: 60px; pointer-events: none; transform-origin: 50% 100%;
+  background: radial-gradient(ellipse 30% 22% at 50% 92%, rgba(255, 236, 244, .45), transparent 80%), radial-gradient(ellipse 40% 20% at 35% 62%, rgba(255, 236, 244, .3), transparent 80%), radial-gradient(ellipse 50% 22% at 62% 30%, rgba(255, 236, 244, .2), transparent 80%);
+  filter: blur(1.5px); animation: pi-curl 3.2s ease-in-out infinite; }
+@keyframes pi-curl { 0% { opacity: 0; transform: translateY(4px) scaleY(.6) skewX(0); } 25% { opacity: .9; } 55% { transform: translateY(-10px) scaleY(1) skewX(14deg); } 100% { opacity: 0; transform: translateY(-26px) scaleY(1.3) skewX(-12deg); } }
+.pi-ceiling { position: absolute; left: -10%; right: -10%; top: 0; height: 46%; pointer-events: none; z-index: 1; opacity: calc(var(--haze) * .85);
+  background: radial-gradient(ellipse 50% 60% at 30% 0%, rgba(255, 220, 236, .22), transparent 70%), radial-gradient(ellipse 45% 55% at 75% 5%, rgba(255, 220, 236, .18), transparent 70%);
+  filter: blur(6px); animation: pi-ceil 26s ease-in-out infinite alternate; }
+@keyframes pi-ceil { to { translate: 6% 2%; scale: 1.1 1.15; } }
+/* the beat off the rug */
+.pi-rug::after { content: ''; position: absolute; left: 50%; top: 50%; width: 30%; height: 30%; margin: -15% 0 0 -15%; border-radius: 50%; border: 2px solid rgba(255, 79, 158, .55); opacity: 0; pointer-events: none; }
+.ba .pi-rug::after { animation: pi-wave-a .55s ease-out; } .bb .pi-rug::after { animation: pi-wave-b .55s ease-out; }
+@keyframes pi-wave-a { 0% { opacity: .8; scale: .5; } 100% { opacity: 0; scale: 3.2; } }
+@keyframes pi-wave-b { 0% { opacity: .8; scale: .5; } 100% { opacity: 0; scale: 3.2; } }
+.ba .pi-dots i.on, .bb .pi-dots i.on { animation: pi-dot .3s ease-out; }
+@keyframes pi-dot { from { scale: 1.6; } }
+/* the lighter at the count-in */
+.pi-lighter { position: absolute; right: -6%; top: 40%; width: 14px; height: 22px; z-index: 6; pointer-events: none; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+  background: radial-gradient(ellipse at 50% 75%, #fffbe8, #ffc27a 45%, rgba(255, 120, 60, .6) 70%, transparent 75%); transform-origin: 50% 100%; animation: pi-flick 1.5s ease-out forwards; }
+.pi-lighter::before { content: ''; position: absolute; left: 50%; top: 50%; width: 40px; height: 40px; margin: -20px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 200, 140, .4), transparent 65%); }
+@keyframes pi-flick { 0% { opacity: 0; scale: .2; } 8% { opacity: 1; scale: 1.3 .8; } 14% { scale: .9 1.15; } 30%, 75% { opacity: 1; scale: 1; rotate: 3deg; } 50% { rotate: -4deg; scale: 1 1.1; } 100% { opacity: 0; scale: .5; } }
+/* the chips */
+.pi-chips:not([hidden]) svg, .pi-chips:not([hidden]) .pi-cart { animation: pi-rustle .9s ease-in-out infinite; transform-origin: 50% 90%; }
+@keyframes pi-rustle { 0%, 100% { rotate: 0deg; } 20% { rotate: -5deg; } 35% { rotate: 4deg; } 50% { rotate: -2deg; } }
+.ba .pi-chips:not([hidden])::after, .bb .pi-chips:not([hidden])::after { content: ''; position: absolute; left: 30%; top: 70%; width: 40%; height: 20%; pointer-events: none;
+  background: radial-gradient(circle at 20% 50%, #f2c46a 0 2px, transparent 2.5px), radial-gradient(circle at 70% 30%, #e8b45a 0 1.6px, transparent 2px), radial-gradient(circle at 50% 80%, #f2c46a 0 1.4px, transparent 2px); }
+.ba .pi-chips:not([hidden])::after { animation: pi-crumb-a .5s ease-in forwards; } .bb .pi-chips:not([hidden])::after { animation: pi-crumb-b .5s ease-in forwards; }
+@keyframes pi-crumb-a { to { translate: 0 14px; opacity: 0; } } @keyframes pi-crumb-b { to { translate: 0 14px; opacity: 0; } }
+/* Nana, trotting through (scenery) */
+.pi-trot { position: absolute; bottom: 3%; left: 0; width: clamp(54px, 9vmin, 90px); z-index: 1; pointer-events: none; opacity: .9; }
+.pi-trot[hidden] { display: none; }
+.pi-trot span { display: block; animation: pi-trotbob .32s ease-in-out infinite alternate; }
+.pi-trot svg { display: block; width: 100%; height: auto; }
+.pi-trot.go.ltr { animation: pi-trot-l 5s linear forwards; } .pi-trot.go.rtl { animation: pi-trot-r 5s linear forwards; }
+.pi-trot.go.rtl span { scale: -1 1; }
+@keyframes pi-trot-l { from { translate: -15vw 0; } to { translate: 112vw 0; } }
+@keyframes pi-trot-r { from { translate: 112vw 0; } to { translate: -15vw 0; } }
+@keyframes pi-trotbob { to { translate: 0 -5px; rotate: 3deg; } }
+/* the end card */
+.mg-pi .mg-end:not([hidden]) .pi-awake figure { animation: pi-figin .45s cubic-bezier(.2, 1.5, .4, 1) both; }
+.pi-awake figure:nth-child(2) { animation-delay: .08s !important; } .pi-awake figure:nth-child(3) { animation-delay: .16s !important; } .pi-awake figure:nth-child(4) { animation-delay: .24s !important; }
+.pi-awake figure:nth-child(5) { animation-delay: .32s !important; } .pi-awake figure:nth-child(6) { animation-delay: .4s !important; } .pi-awake figure:nth-child(7) { animation-delay: .48s !important; }
+@keyframes pi-figin { 0% { opacity: 0; translate: 0 18px; scale: .8; } }
+.mg-pi .mg-end:not([hidden]) .pi-awake figure.asleep .pi-face { animation: pi-snooze 3s ease-in-out infinite; }
+@keyframes pi-snooze { 50% { rotate: -8deg; translate: 0 2px; } }
+.mg-pi .mg-end:not([hidden]) .mg-grade { animation: pi-grade .7s .6s cubic-bezier(.2, 1.5, .4, 1) both; }
+@keyframes pi-grade { 0% { opacity: 0; scale: 3; rotate: -20deg; } 60% { opacity: 1; scale: .9; rotate: -5deg; } 100% { scale: 1; rotate: -6deg; } }
+.mg-pi .mg-end:not([hidden]) dl > * { animation: pi-figin .4s ease-out both; animation-delay: .9s; }
+/* settings */
+.calm .pi-lighter::before { display: none; }
+.perf .pi-joint::after, .perf .pi-ceiling, .perf .pi-trot, .perf .pi-chips::after { display: none; }
+.perf .pi-seat:not(.asleep) { animation: none; }
+.still .pi-seat, .still .pi-seat::after, .still .pi-joint::after, .still .pi-ceiling, .still .pi-rug::after, .still .pi-dots i, .still .pi-lighter, .still .pi-chips svg, .still .pi-chips .pi-cart, .still .pi-chips::after, .still .pi-trot, .still .mg-end * { animation: none !important; }
+.still .pi-trot, .still .pi-lighter { display: none; }
+.tut .pi-trot { display: none; }

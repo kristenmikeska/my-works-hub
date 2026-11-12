@@ -389,7 +389,7 @@ window.FemcBaduk = (() => {
             <p class="bd-lesson"></p>
             <h2 class="bd-title"></h2>
             <p class="bd-goal"></p>
-            <blockquote class="bd-voice" aria-live="polite"><span></span><cite>across the board</cite></blockquote>
+            <blockquote class="bd-voice" aria-live="polite"><span class="bd-face" aria-hidden="true"><img alt="" src="${base()}assets/femc/portraits/lee-appa/neutral.webp" onerror="this.parentNode.remove()"></span><span></span><cite>across the board</cite></blockquote>
             <div class="bd-acts">
               <button type="button" class="bd-btn main" data-bd="again" hidden>Again</button>
               <button type="button" class="bd-btn main" data-bd="next" hidden>Next</button>
@@ -406,7 +406,30 @@ window.FemcBaduk = (() => {
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
       const $ = s => el.querySelector(s);
-      const svg = $('.bd-svg'), voiceEl = $('.bd-voice span');
+      const svg = $('.bd-svg'), voiceEl = $('.bd-voice > span:not(.bd-face)');
+
+      /* polish (Nov 11 2026, Kat: "as many visuals, as much animation as possible"): a ripple on the wood under each stone that lands,
+         the lid bumping as captured stones clack in, lamplight breathing over the board's grain and a few motes in it (CSS), the
+         face across the board reacting quietly (.bd-face[data-mood]: a slow nod on a solve, a still look on a miss, his
+         expression swapped), a glow over the board on a solve, the end card's grade set down like a stone. Puzzles, trees and
+         rules untouched. still: none of it; calm (Reduce flashes, .calm): no glows; perf (Performance, .perf): no lamplight motion
+         or motes. */
+      const GS0 = (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {};
+      const calm = !!(o.calm ?? GS0.calm), perf = !!(o.perf ?? GS0.perf);
+      if (calm) el.classList.add('calm');
+      if (perf) el.classList.add('perf');
+      if (!still) { const lamp = document.createElement('i'); lamp.className = 'bd-lamp'; lamp.setAttribute('aria-hidden', 'true'); $('.bd-board').appendChild(lamp); }
+      const ripple = p => {
+        if (still || p < 0) return; const u = svg.querySelector('.bd-marks-under'); if (!u || !u.insertAdjacentHTML) return; const [x, y] = xy(p);
+        const id = ripple.n = (ripple.n || 0) + 1;
+        u.insertAdjacentHTML('beforeend', `<circle class="bd-rip" data-r="${id}" cx="${x}" cy="${y}" r="19"/>${perf ? '' : `<circle class="bd-rip two" data-r="${id}" cx="${x}" cy="${y}" r="19"/>`}`);
+        setTimeout(() => u.querySelectorAll(`[data-r="${id}"]`).forEach(c => c.remove()), 1000);
+      };
+      const face = (m, f) => {
+        const b = $('.bd-face'); if (!b || !b.isConnected) return; const im = b.querySelector('img');
+        if (im && f) { const want = `${base()}assets/femc/portraits/lee-appa/${f}.webp`; if (im.getAttribute('src') !== want) im.setAttribute('src', want); }
+        if (still) return; b.dataset.mood = m; clearTimeout(b._m); b._m = setTimeout(() => { if (b.dataset.mood === m) delete b.dataset.mood; }, 1800);
+      };
 
       /* sound: Web Audio, made here */
       let ac = null, noise = null;
@@ -508,7 +531,7 @@ window.FemcBaduk = (() => {
         const er = el.getBoundingClientRect(), sr = svg.getBoundingClientRect(), lr = el.querySelector(`[data-lid="${which}"] svg`).getBoundingClientRect();
         const k = sr.width / (S9 * (st.n + 1)), size = 37 * k;
         let landed = 0; const inPrac = st.prac;
-        const land = () => { if (inPrac && st.prac !== inPrac) return; landed++; if (which === 'taken') st.taken++; else st.lost++; lidDraw(which); if (landed === 1) SFX.clatter(Math.min(3, caps.length)); };
+        const land = () => { if (inPrac && st.prac !== inPrac) return; landed++; if (which === 'taken') st.taken++; else st.lost++; lidDraw(which); if (!still) { const f = el.querySelector(`[data-lid="${which}"]`); f.classList.remove('bump'); void f.offsetWidth; f.classList.add('bump'); } if (landed === 1) SFX.clatter(Math.min(3, caps.length)); };
         caps.forEach((p, i) => {
           const [x, y] = xy(p), d = document.createElement('i');
           d.className = 'bd-fly ' + (colour === 1 ? 'b' : 'w');
@@ -545,7 +568,7 @@ window.FemcBaduk = (() => {
         $('.bd-goal').innerHTML = `<b>Black to play.</b> ${esc(pz.text)}`;
         $('[data-bd="again"]').hidden = true; $('[data-bd="next"]').hidden = true; $('[data-bd="skip"]').hidden = false;
         el.classList.remove('is-wrong', 'is-solved');
-        drawBase(); draw(); pips();
+        drawBase(); draw(); pips(); face('', 'neutral');
         if (!still) { const b = $('.bd-board'); b.classList.remove('deal'); void b.offsetWidth; b.classList.add('deal'); }
       };
       const reset = () => {
@@ -558,7 +581,7 @@ window.FemcBaduk = (() => {
         if (!mv || mv === 'pass') return;
         const p = E.pt(mv, st.n), q = E.play(st.pos, p, 2);
         if (!q) return;
-        st.pos = q; st.last = p; draw(p); SFX.clack(true); fly(q.caps, 'lost', 1);
+        st.pos = q; st.last = p; draw(p); ripple(p); SFX.clack(true); fly(q.caps, 'lost', 1);
       };
       const firstMoves = () => Object.keys(TREES[st.pz.id].ok || {});
       const miss = () => {
@@ -573,14 +596,14 @@ window.FemcBaduk = (() => {
         if (D.ring && hints && st.misses >= D.ring) st.ring = E.pt(firstMoves()[0], st.n);
         draw();
         say(hints ? st.pz.hints[Math.min(st.misses - 1, st.pz.hints.length - 1)] : pick(VOICE.bare), 'miss');
-        SFX.miss(); el.classList.add('is-wrong');
+        SFX.miss(); el.classList.add('is-wrong'); face('look', st.misses > 1 ? 'sad' : 'serious');
         const b = $('[data-bd="again"]'); b.hidden = false; b.focus({ preventScroll: true });
       };
       const solved = () => {
         st.mode = 'solved';
         const r = st.results[st.i]; r.solved = true; r.first = st.misses === 0;
         say(`${pick(r.first ? VOICE.first : VOICE.later)} ${st.pz.done}`, 'good');
-        SFX.solve(r.first); el.classList.add('is-solved'); pips();
+        SFX.solve(r.first); el.classList.add('is-solved'); pips(); face('nod', r.first ? 'happy' : 'neutral');
         $('[data-bd="skip"]').hidden = true;
         const b = $('[data-bd="next"]'); b.textContent = st.i + 1 < list.length ? 'Next' : 'Finish'; b.hidden = false; b.focus({ preventScroll: true });
       };
@@ -596,7 +619,7 @@ window.FemcBaduk = (() => {
         if (!q) { if (!st.pos.b[p]) { say(p === st.pos.ko ? VOICE.ko : VOICE.suicide); SFX.nope(); } return; }
         const key = E.name(p, n), node = st.node, ok = node.ok && Object.prototype.hasOwnProperty.call(node.ok, key);
         st.pos = q; st.last = p; st.ghost = null; st.armed = null; st.libs = []; st.ring = null;
-        draw(p); SFX.clack(false); fly(q.caps, 'taken', 2);
+        draw(p); ripple(p); SFX.clack(false); fly(q.caps, 'taken', 2);
         const delay = still ? 320 : 560;
         if (ok) {
           const child = node.ok[key];
@@ -625,11 +648,12 @@ window.FemcBaduk = (() => {
         end.hidden = false;
         end.innerHTML = `<p class="bd-end-head">${quit ? 'Left the board.' : 'Set finished.'}</p>
           <b class="mg-grade">${grade}</b>
-          <dl><dt>Solved first try</dt><dd>${firstN} / ${N}</dd><dt>Solved</dt><dd>${solvedN} / ${N}</dd><dt>Misses</dt><dd>${misses}</dd>${skipped ? `<dt>Passed</dt><dd>${skipped}</dd>` : ''}</dl>
+          <dl><dt>Solved first try</dt><dd><span class="bd-tick" data-n="${firstN}">${still ? firstN : 0}</span> / ${N}</dd><dt>Solved</dt><dd>${solvedN} / ${N}</dd><dt>Misses</dt><dd>${misses}</dd>${skipped ? `<dt>Passed</dt><dd>${skipped}</dd>` : ''}</dl>
           <p class="mg-end-say">“${esc(quit ? VOICE.quit : VOICE.end[grade])}”</p>
           <div class="bd-end-art">${BANANA}</div>
           <button type="button">Continue</button>`;
         const btn = end.querySelector('button'); btn.focus({ preventScroll: true });
+        if (!still) end.querySelectorAll('.bd-tick').forEach(t => { const n = +t.dataset.n; for (let k = 1; k <= n; k++) setTimeout(() => { t.textContent = k; if (!o.mute && ac) SFX.lift(0); }, 300 + k * 140); });
         btn.onclick = () => { cleanup(); o.onDone?.(res); done(res); };
       };
 

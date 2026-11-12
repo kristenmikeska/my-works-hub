@@ -151,6 +151,7 @@ window.FemcPlanchette = (() => {
         <path class="pl-heart" d="${PL_PATH}"/>
         <image class="pl-plart" href="${ART('planchette')}" x="-70" y="-80" width="140" height="150"/>
         <circle class="pl-lens" r="22"/>
+        <path class="pl-glint" d="M-15 -8A17 17 0 0 1 -4 -17"/><circle class="pl-glint2" cx="9" cy="-12" r="2.2"/>
         <circle class="pl-ring" r="30" transform="rotate(-90)"/>
         <circle class="pl-dot" r="2.5"/>
       </g>
@@ -216,6 +217,20 @@ window.FemcPlanchette = (() => {
       const $ = s => el.querySelector(s);
       const svg = $('.pl-board'), plG = $('.pl-pl'), ringEl = $('.pl-ring'), burnEl = $('.pl-burn');
       const tokEl = {}; el.querySelectorAll('.pl-tok').forEach(t => { tokEl[t.dataset.k] = t; });
+      /* polish (Nov 11 2026, Kat: "as many visuals, as much animation as possible"), with restraint: letters warm faintly as the
+         glass passes near them (by distance only, so never a tell), the glass catches the candlelight harder as it moves (--spd),
+         the six friends' hands tremble a little more as the night goes (the eighth never does), smoke off every wick and a burst
+         of it when they all go out, an inner core in each flame (CSS). still: no near-glow updates or trembling; perf: no smoke,
+         no near-glow. */
+      const nearOn = new Set();
+      const nearGlow = () => {
+        if (still || perf) return;
+        for (const k in tokEl) {
+          const t = TOK[k]; if (!t) continue;
+          const d = Math.hypot(t.x - st.p.x, t.y - st.p.y), on = d < 120;
+          if (on !== nearOn.has(k)) { on ? nearOn.add(k) : nearOn.delete(k); tokEl[k].classList.toggle('near', on); }
+        }
+      };
       const eighthEl = $('.pl-eighth');
       const capsEl = $('.pl-caps');
       ['.pl-boardart', '.pl-plart'].forEach(s => { const im = $(s); if (im && im.addEventListener) im.addEventListener('error', () => im.remove()); });
@@ -592,6 +607,7 @@ window.FemcPlanchette = (() => {
         el.style.setProperty('--lit', clamp(1 - st.flick * (still ? 0.45 : 0.25) + j * 0.5 - stage() * 0.15, 0.2, 1).toFixed(3));
         el.style.setProperty('--hold', (st.hold / 100).toFixed(3));
         el.style.setProperty('--stage', stage().toFixed(3));
+        el.style.setProperty('--spd', clamp((st.speed || 0) / 400, 0, 1).toFixed(2)); nearGlow();
         // HUD
         const m = $('.pl-meter i'); if (m) m.style.width = `${clamp(st.hold, 0, 100).toFixed(1)}%`;
         const ml = $('.pl-meter small'), itL = stage() >= 0.5 && D.lies;

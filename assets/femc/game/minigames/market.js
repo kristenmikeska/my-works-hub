@@ -317,16 +317,29 @@ window.FemcMarket = (() => {
   }
   // the quay as the morning plays out (viewBox 0 0 600 300): water climbs the ruler on the wall; y 270 = 0 m, 9 m = 126
   const QY = h => 270 - h * 16;
-  const boatSvg = (x, y, big, lab) => `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)})"><path d="M${big ? -70 : -40} -6 L${big ? 70 : 40} -6 L${big ? 58 : 32} 12 L${big ? -62 : -34} 12Z" fill="${big ? '#2a1018' : '#4a2030'}" stroke="#ff9ac8" stroke-width="1.5"/>${big ? '<rect x="-20" y="-30" width="34" height="24" fill="#e8ddd0"/><rect x="-14" y="-24" width="8" height="7" fill="#14070f"/><rect x="0" y="-24" width="8" height="7" fill="#14070f"/><path d="M30 -6 L30 -44 M30 -40 L52 -20" stroke="#e8ddd0" stroke-width="2"/>' : '<rect x="-8" y="-18" width="18" height="12" fill="#e8ddd0"/>'}<text y="28" text-anchor="middle" class="lab">${lab}</text></g>`;
+  const boatSvg = (x, y, big, lab, w = 0) => `<g transform="translate(${x.toFixed(1)} ${(y + (w ? Math.sin(w * (big ? 1.3 : 1.9) + x * 0.01) * (big ? 1.6 : 2.4) : 0)).toFixed(1)}) rotate(${(w ? Math.sin(w * (big ? 1.1 : 1.7) + 1) * (big ? 1.2 : 2.6) : 0).toFixed(2)})"><path d="M${big ? -70 : -40} -6 L${big ? 70 : 40} -6 L${big ? 58 : 32} 12 L${big ? -62 : -34} 12Z" fill="${big ? '#2a1018' : '#4a2030'}" stroke="#ff9ac8" stroke-width="1.5"/>${big ? '<rect x="-20" y="-30" width="34" height="24" fill="#e8ddd0"/><rect x="-14" y="-24" width="8" height="7" fill="#14070f"/><rect x="0" y="-24" width="8" height="7" fill="#14070f"/><path d="M30 -6 L30 -44 M30 -40 L52 -20" stroke="#e8ddd0" stroke-width="2"/>' : '<rect x="-8" y="-18" width="18" height="12" fill="#e8ddd0"/>'}<text y="28" text-anchor="middle" class="lab">${lab}</text></g>`;
   const personSvg = (x, y, col, h = 1) => `<g transform="translate(${x} ${y}) scale(${h})"><circle cy="-30" r="6" fill="${col}"/><path d="M-7 0 L-6 -22 Q0 -26 6 -22 L7 0Z" fill="${col}"/></g>`;
-  function quaySvg(T, t, arrive) {
+  // w: seconds of wall clock for the polish (waves, bobbing boats, gulls, the lamp); 0 = still (Nov 11 2026 polish)
+  const waveD = (y, w, amp, len, ph) => { let d = `M0 ${(y + Math.sin(ph + w) * amp).toFixed(1)}`; for (let x = 20; x <= 600; x += 20) d += ` L${x} ${(y + Math.sin(ph + w * 1.6 + x / len) * amp).toFixed(1)}`; return d + ' L600 300 L0 300Z'; };
+  const gullSvg = (x, y, w, k) => { const f = Math.sin(w * 9 + k) * 5; return `<path d="M${(x - 9).toFixed(1)} ${(y - f * 0.4).toFixed(1)} Q${(x - 4).toFixed(1)} ${(y - 5 - f).toFixed(1)} ${x.toFixed(1)} ${y.toFixed(1)} Q${(x + 4).toFixed(1)} ${(y - 5 - f).toFixed(1)} ${(x + 9).toFixed(1)} ${(y - f * 0.4).toFixed(1)}" stroke="#ffe6f0" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".85"/>`; };
+  function quaySvg(T, t, arrive, w = 0) {
     const y = QY(T.at(t)), small = t >= T.landSmall ? 330 : t >= T.etaSmall ? 520 : 680, big = t >= T.land ? 400 : t >= T.eta ? 540 : 720;
     const buyers = clamp(Math.floor((t - T.land) / 7), 0, 7) + (t > T.landSmall ? 2 : 0);
     const ruler = Array.from({ length: 10 }, (_, h) => `<line x1="236" x2="${h % 3 ? 244 : 252}" y1="${QY(h)}" y2="${QY(h)}" stroke="#e8ddd0" stroke-width="2"/><text x="226" y="${QY(h) + 4}" text-anchor="end" class="lab">${h}</text>`).join('');
-    return `<rect width="600" height="300" fill="url(#mk-sky)"/><rect x="0" y="${y.toFixed(1)}" width="600" height="${(300 - y).toFixed(1)}" fill="url(#mk-sea)"/><path d="M470 ${y - 4} L600 ${y - 10} L600 ${y + 4} L470 ${y + 2}Z" fill="#3a1a26"/>
+    const dawn = clamp((t - 60) / 240, 0, 1);
+    const anim = w ? `<circle cx="${(120 + dawn * 60).toFixed(1)}" cy="${(120 - dawn * 70).toFixed(1)}" r="${(16 + dawn * 4).toFixed(1)}" fill="#ffc2dc" opacity="${(0.25 + dawn * 0.5).toFixed(2)}"/><circle cx="${(120 + dawn * 60).toFixed(1)}" cy="${(120 - dawn * 70).toFixed(1)}" r="${(40 + dawn * 10).toFixed(1)}" fill="#ff9ac8" opacity="${(0.08 + dawn * 0.12).toFixed(2)}"/>`
+      + [0, 1, 2].map(k => gullSvg((((w * (18 + k * 7) + k * 170) % 700) - 50), 40 + k * 18 + Math.sin(w * 0.8 + k) * 8, w, k)).join('') : '';
+    const sea = w ? `<path d="${waveD(y, w, 2.2, 38, 0)}" fill="url(#mk-sea)"/><path d="${waveD(y + 6, w, 1.6, 26, 2)}" fill="rgba(255,154,200,.06)"/><path d="${waveD(y + 1, w, 2.2, 38, 0).split(' L600 300')[0]}" stroke="rgba(255,230,240,.55)" stroke-width="1.4" fill="none"/>`
+      + Array.from({ length: 5 }, (_, k) => `<rect x="${((k * 131 + w * 14) % 620 - 20).toFixed(1)}" y="${(y + 14 + k * 9).toFixed(1)}" width="${18 + k * 4}" height="1.6" rx=".8" fill="rgba(255,209,230,${(0.18 + 0.12 * Math.sin(w * 2 + k)).toFixed(2)})"/>`).join('')
+      : `<rect x="0" y="${y.toFixed(1)}" width="600" height="${(300 - y).toFixed(1)}" fill="url(#mk-sea)"/>`;
+    const lamp = 0.55 + (w ? Math.sin(w * 3.1) * 0.08 + Math.sin(w * 7.3) * 0.04 : 0);
+    return `<rect width="600" height="300" fill="url(#mk-sky)"/>${anim}${sea}<path d="M470 ${y - 4} L600 ${y - 10} L600 ${y + 4} L470 ${y + 2}Z" fill="#3a1a26"/>
       <rect x="0" y="112" width="254" height="200" fill="#2a1820"/><rect x="0" y="104" width="258" height="10" fill="#4a3038"/>${ruler}
+      <path d="M12 104 L12 64 M12 66 L30 66" stroke="#4a3038" stroke-width="3"/><circle cx="30" cy="72" r="5" fill="#ffd1e6" opacity="${lamp.toFixed(2)}"/><circle cx="30" cy="72" r="18" fill="#ff9ac8" opacity="${(lamp * 0.22).toFixed(2)}"/>
+      <path d="M118 104 q10 -14 20 0 q10 -14 20 0 q10 -14 20 0" stroke="#8a6a74" stroke-width="1" fill="rgba(138,106,116,.35)"/><path d="M118 104 L178 104 M128 96 l10 8 M148 96 l10 8 M138 96 l-10 8 M158 96 l-10 8" stroke="#6a4a54" stroke-width=".8"/>
+      <rect x="230" y="${(y - 2).toFixed(1)}" width="28" height="4" fill="#ffe6f0" opacity="${w ? (0.5 + Math.sin(w * 4) * 0.3).toFixed(2) : '.6'}"/>
       <line x1="230" x2="258" y1="${QY(T.draft)}" y2="${QY(T.draft)}" stroke="#ff4f9e" stroke-width="3"/><text x="262" y="${QY(T.draft) + 4}" class="lab pk">Haesong</text>
-      ${boatSvg(small, y - 4, false, 'night boat')}${boatSvg(big, y - 6, true, 'Haesong-ho')}
+      ${boatSvg(small, y - 4, false, 'night boat', w)}${boatSvg(big, y - 6, true, 'Haesong-ho', w)}
       ${Array.from({ length: buyers }, (_, i) => personSvg(30 + i * 22, 104, '#8a6a74', 0.9)).join('')}
       ${t >= arrive ? `${personSvg(206, 104, '#ff4f9e')}<text x="206" y="62" text-anchor="middle" class="lab pk">you</text>${personSvg(186, 104, '#e8ddd0')}` : ''}
       <text x="582" y="34" text-anchor="end" class="clock">${hhmm(t)}</text>`;
@@ -356,6 +369,38 @@ window.FemcMarket = (() => {
       const $ = s => el.querySelector(s), main = $('.mk-main');
       const later = (fn, ms) => setTimeout(() => { if (!R.over || fn.always) fn(); }, ms);
 
+      /* polish (Nov 11 2026, Kat: "as many visuals, as much animation as possible"): gulls and a shimmer over the harbour backdrop,
+         the quay drawn live (waves, rocking boats, gulls, the lamp, the water's foam on the ruler), fish glistening on the ice, the
+         seller's figure breathing and reacting (.mk-fig[data-mood]: huff, hop, turn), the haggle meter's tension (--tense, shakes
+         and pulses as his patience runs out), coins counted out to the seller and the purse ticking down, the end card's stamp and
+         rows. Play is unchanged. still: none of it; calm (Reduce flashes): no flashes / pulses; perf (Performance): the quay stays
+         as it was (no live waves), no backdrop gulls, fewer coins. */
+      const GS0 = (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {};
+      const calm = !!(o.calm ?? GS0.calm), perf = !!(o.perf ?? GS0.perf);
+      if (calm) el.classList.add('calm');
+      if (perf) el.classList.add('perf');
+      { const amb = document.createElement('div'); amb.className = 'mk-amb'; amb.setAttribute('aria-hidden', 'true');
+        amb.innerHTML = '<i class="mk-shim"></i>' + [0, 1, 2, 3].map(k => `<svg class="mk-gull" style="--d:${k * 3.7}s;--y:${8 + k * 7}%;--t:${16 + k * 5}s" viewBox="0 0 30 12"><path d="M1 8Q8 0 15 8Q22 0 29 8"/></svg>`).join('');
+        $('.mk-bg').appendChild(amb); }
+      const fxL = document.createElement('div'); fxL.className = 'mk-fx'; fxL.setAttribute('aria-hidden', 'true'); el.appendChild(fxL);
+      const center = n => { const a = n.getBoundingClientRect(), b = el.getBoundingClientRect(); return { x: a.left - b.left + a.width / 2, y: a.top - b.top + a.height / 2 }; };
+      const mood = m => { const f = $('.mk-fig'); if (!f || still) return; f.dataset.mood = m; clearTimeout(f._m); f._m = setTimeout(() => { if (f.dataset.mood === m) delete f.dataset.mood; }, 1400); };
+      const coinsTo = (price) => {
+        if (still) return; const p = $('.mk-purse'), f = $('.mk-fig'); if (!p || !f) return;
+        const a = center(p), b = center(f), k = perf ? 3 : clamp(Math.round(price / 4000), 4, 10);
+        for (let i = 0; i < k; i++) setTimeout(() => {
+          if (!el.isConnected) return; const c = document.createElement('i'); c.className = 'mk-coin';
+          const x = a.x + (Math.random() - 0.5) * 30, y = a.y + 6; c.style.left = x.toFixed(1) + 'px'; c.style.top = y.toFixed(1) + 'px';
+          c.style.setProperty('--tx', (b.x - x + (Math.random() - 0.5) * 40).toFixed(1) + 'px'); c.style.setProperty('--ty', (b.y - y + 30).toFixed(1) + 'px');
+          fxL.appendChild(c); setTimeout(() => c.remove(), 900); if (i % 2 === 0) K.tick();
+        }, i * 70);
+      };
+      const tickNum = (node, from, to, fmt, ms = 700) => {
+        if (still || from === to) { node.textContent = fmt(to); return; }
+        const n = 14; for (let k = 1; k <= n; k++) setTimeout(() => { node.textContent = fmt(from + (to - from) * k / n); }, k * ms / n);
+        node.classList.remove('tick'); void node.offsetWidth; node.classList.add('tick');
+      };
+
       /* backdrop: Kat's art, else the bg picture, else drawn */
       const setBg = (art, bg) => { const im = $('.mk-bgimg'); im.onerror = () => { if (im.dataset.try === 'art') { im.dataset.try = 'bg'; im.src = BG(bg); } else im.removeAttribute('src'); }; im.dataset.try = 'art'; im.src = ART(art); };
 
@@ -366,7 +411,7 @@ window.FemcMarket = (() => {
         if (!L) { box.classList.remove('on'); return; }
         const [who, f, t] = L, im = box.querySelector('img');
         im.hidden = false; im.onerror = () => { im.hidden = true; }; im.src = FACE(who, f); im.alt = who === 'bang' ? 'Mrs. Bang' : 'Solar';
-        box.className = 'mk-talk on ' + who; box.querySelector('b').textContent = who === 'bang' ? 'Mrs. Bang' : 'Solar'; box.querySelector('span').textContent = t; K.blip();
+        box.className = 'mk-talk on ' + who; void box.offsetWidth; box.classList.add('say'); box.querySelector('b').textContent = who === 'bang' ? 'Mrs. Bang' : 'Solar'; box.querySelector('span').textContent = t; K.blip();
         talkT = setTimeout(showLine, 1500 + t.length * 40);
       };
       const say = (lines, now = true) => { if (!lines || !lines.length) return; if (now) talkQ.length = 0; talkQ.push(...lines); if (now || !$('.mk-talk.on')) showLine(); };
@@ -413,7 +458,7 @@ window.FemcMarket = (() => {
         const step = now => {
           const dt = Math.min(60, now - last); last = now;
           if (!R.paused && !R.over) {
-            t = Math.min(t1, t + (t1 - t0) * dt / dur); q.innerHTML = quaySvg(T, t, R.arrive);
+            t = Math.min(t1, t + (t1 - t0) * dt / dur); q.innerHTML = quaySvg(T, t, R.arrive, still || perf ? 0 : now / 1000);
             if (!small && t >= T.landSmall) { small = true; K.splash(); }
             if (!horned && t >= T.land) { horned = true; K.horn(); }
             if (t >= t1) { quayDone(); return; }
@@ -530,7 +575,8 @@ window.FemcMarket = (() => {
           const pay = box.querySelector('[data-h=pay]'); pay.textContent = `Pay his price ${won(h.price)}`; pay.disabled = h.price > R.purse;
           const bb = box.querySelector('[data-h=bang]'); bb.textContent = `Ask Mrs. Bang (${R.whispers})`; bb.disabled = R.whispers <= 0 || h.showWorth;
           box.querySelector('[data-h=back]').hidden = h.rounds > 0;
-          box.querySelector('.mk-mtr').setAttribute('aria-valuenow', h.offer);
+          const mt = box.querySelector('.mk-mtr'); mt.setAttribute('aria-valuenow', h.offer);
+          mt.style.setProperty('--tense', (1 - h.patience / h.max).toFixed(2)); mt.classList.toggle('tense', h.patience / h.max <= 0.5); mt.classList.toggle('near', h.offer >= h.price * 0.9);
           R.fig();
         };
         R.hpaint = paint;
@@ -557,8 +603,10 @@ window.FemcMarket = (() => {
         const r = respond(h, Math.min(h.offer, R.purse), rng);
         if (r.kind === 'deal') return deal(r.price, false);
         const S = st.S, pickL = arr => arr[Math.floor(rng() * arr.length)];
-        if (r.kind === 'wave') { K.waveoff(); R.sellerSay(S.wave); h.done = true; R.fig(); later(waved, 1300); return; }
+        if (r.kind === 'wave') { K.waveoff(); mood('turn'); R.sellerSay(S.wave); h.done = true; R.fig(); later(waved, 1300); return; }
         K.grunt(); if (r.tier === 'far') K.huff();
+        mood(r.tier === 'far' ? 'huff' : 'grumble');
+        if (!still) { const mt = $('.mk-mtr'); if (mt) { mt.classList.remove('jolt'); void mt.offsetWidth; mt.classList.add('jolt'); } }
         R.sellerSay(`${pickL(S[r.tier])} ${won(r.price)}.`);
         if (r.tier === 'far' && !R.rudeSaid) { R.rudeSaid = true; say(TALK.rude); }
         h.offer = Math.min(h.offer, h.price); R.hpaint();
@@ -566,10 +614,12 @@ window.FemcMarket = (() => {
       function record(b) { R.bought[R.at] = b; list(); }
       function deal(price, paidAsk) {
         const h = R.h, st = R.stall, sp = st.pick, S = st.S; h.done = true;
-        R.purse -= price; K.coin(); later(K.deal, 200);
+        const was = R.purse;
+        R.purse -= price; K.coin(); later(K.deal, 200); mood('hop'); coinsTo(price);
         const extra = S.mood === 'polite';
         R.sellerSay(S.deal);
         record({ id: st.item.id, q: sp.q, paid: price, ask: sp.ask, worth: sp.worth, seller: st.item.seller, rounds: h.rounds, lee: st.lee, wavedOff: false, extra, looked: Object.keys(sp.looked) });
+        tickNum($('.mk-purse'), was, R.purse, won);
         const over = price / sp.worth;
         later(() => { if (paidAsk && h.rounds === 0 && price > sp.worth * 1.2) say(TALK.overpaid); else if (over <= 0.95 && sp.q !== 'bad') say(TALK.bargain); else sayPick(TALK[sp.q]); }, 700);
         nextStall(2600);
@@ -604,9 +654,10 @@ window.FemcMarket = (() => {
         const end = $('.mg-end'); end.hidden = false;
         end.innerHTML = `<span class="mk-stamp"><img src="${ART('stamp-' + grade.toLowerCase())}" alt="Grade ${grade}" onerror="this.remove()"><b class="mg-grade">${grade}</b></span>
           <dl><dt>The tide</dt><dd>${res.timing === 'ontime' ? 'first pick' : res.timing} (${res.tide})</dd><dt>The list</dt><dd>${res.list} / ${res.of}</dd><dt>Quality</dt><dd>${res.quality}</dd>
-            <dt>Spent</dt><dd>${won(res.spent)} of ${won(res.budget)}</dd><dt>Haggled off</dt><dd>${won(res.saved)}</dd><dt>Score</dt><dd>${res.score}</dd></dl>
+            <dt>Spent</dt><dd>${won(res.spent)} of ${won(res.budget)}</dd><dt>Haggled off</dt><dd>${won(res.saved)}</dd><dt>Score</dt><dd class="mk-endscore">${res.score}</dd></dl>
           <p class="mg-end-say">Mrs. Bang: ${esc(TALK.end[grade][0][2])}</p><button type="button">Continue</button>`;
         const b = end.querySelector('button'); b.focus();
+        if (!still) { const sc2 = end.querySelector('.mk-endscore'); tickNum(sc2, 0, res.score, v => String(Math.round(v)), 900); }
         b.onclick = () => { cleanup(); o.onDone?.(res); done(res); };
       };
 

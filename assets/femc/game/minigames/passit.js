@@ -199,7 +199,7 @@ window.FemcPassit = (() => {
       el.setAttribute('role', 'application'); el.setAttribute('aria-label', 'Pass It');
       el.innerHTML = `
         <div class="pi-room"><i class="pi-room-drawn"></i>${img(ART('room'), 'pi-bg pi-bg-art')}${img(BG(o.bg || 'epi-h-jihoon-house'), 'pi-bg')}</div>
-        <div class="pi-smoke"><i></i><i></i><i></i></div>
+        <div class="pi-smoke"><i></i><i></i><i></i></div><div class="pi-ceiling" aria-hidden="true"></div><div class="pi-trot" aria-hidden="true" hidden><span>${SVG_NANA}</span></div>
         <div class="pi-ring">
           <div class="pi-rug"><i class="pi-rug-drawn"></i>${img(ART('rug'), 'pi-rug-art')}</div>
           ${CREW.map((c, i) => { const p = seatPos(i); return `<div class="pi-seat${i === 0 ? ' me' : ''}${p.y < 50 ? ' up' : ''}" data-i="${i}" style="left:${p.x}%;top:${p.y}%">
@@ -242,6 +242,27 @@ window.FemcPassit = (() => {
         b.textContent = text; b.classList.add('on'); clearTimeout(bubT[i]); bubT[i] = later(() => b.classList.remove('on'), ms);
       };
       let popT = 0;
+      /* polish (Nov 11 2026, Kat: "as many visuals, as much animation as possible"): the crew sway between beats and react
+         (.pi-seat.laugh: shoulders shaking, .cough: Solar doubles over with a cloud off her), smoke curls off the joint and whoever
+         holds it, a haze that gathers under the ceiling (--haze), a ring of sound off the rug on every beat, the lighter's flick at
+         the count-in, chips rustling, Nana trotting through now and then (scenery only, no button; never during her
+         interruption or the tutorial), the end card's faces popping in and the vibes ticking up. Rules and timing unchanged.
+         still: none of it moves; calm: no flashes; perf: no curls, ceiling haze or trotting. */
+      const react = (i, cls, ms = 900) => {
+        const s = seats[i]; if (!s || still) return;
+        s.classList.remove(cls); void s.offsetWidth; s.classList.add(cls); later(() => s.classList.remove(cls), ms);
+      };
+      const lighterFlick = () => {
+        if (still) return; const s = seats[1]; if (!s) return;
+        const f = document.createElement('i'); f.className = 'pi-lighter'; f.setAttribute('aria-hidden', 'true'); s.appendChild(f); later(() => f.remove(), 1500);
+      };
+      let trotIn = 28;
+      const trotBeat = () => {
+        if (--trotIn > 0) return; trotIn = 40 + Math.floor(Math.random() * 30);
+        if (still || perf || st.tut || st.nana || st.shell) return;
+        const t = $('.pi-trot'); if (!t) return; t.hidden = false; t.className = 'pi-trot go ' + (Math.random() < 0.5 ? 'ltr' : 'rtl');
+        later(() => { t.hidden = true; t.className = 'pi-trot'; }, 5200);
+      };
       const popUp = (text, kind) => { pop.textContent = text; pop.className = 'pi-pop on ' + (kind || ''); clearTimeout(popT); popT = later(() => pop.classList.remove('on'), 650); };
 
       /* sound: Web Audio, made here (lazily, when the title card goes) */
@@ -359,8 +380,8 @@ window.FemcPassit = (() => {
         const pool = awakeNPC().filter(i => i !== st.lastRoaster);
         const i = prefer > 0 && !st.asleep[prefer] ? prefer : pool.length ? pick(pool) : pick(awakeNPC().length ? awakeNPC() : [1]);
         const R = ROAST[CREW[i].id], lines = (R[type] && Math.random() < 0.7) ? R[type] : R.any;
-        say(i, pick(lines)); setFace(i, 'happy', 1800); S.laugh(CREW[i].laugh);
-        const j = pick(awakeNPC().filter(x => x !== i)); if (j && Math.random() < 0.6) { setFace(j, 'happy', 1500); later(() => S.laugh(CREW[j].laugh, 3), 160); }
+        say(i, pick(lines)); setFace(i, 'happy', 1800); S.laugh(CREW[i].laugh); react(i, 'laugh', 1400);
+        const j = pick(awakeNPC().filter(x => x !== i)); if (j && Math.random() < 0.6) { setFace(j, 'happy', 1500); later(() => S.laugh(CREW[j].laugh, 3), 160); later(() => react(j, 'laugh', 1200), 160); }
         st.k.roasts++; st.roastsBy[i]++; st.lastRoaster = i;
       };
       const miss = (label, type, prefer) => {
@@ -424,7 +445,7 @@ window.FemcPassit = (() => {
       const cough = () => {
         st.press = null; st.ignoreUp = true; $('.pi-lungs').hidden = true; el.classList.remove('holding');
         endTurn(); if (st.j.passOn == null) passNext();
-        S.cough(); st.hazeAdd += 0.03; el.classList.add('coughing'); later(() => el.classList.remove('coughing'), 900);
+        S.cough(); st.hazeAdd += 0.03; el.classList.add('coughing'); later(() => el.classList.remove('coughing'), 900); react(0, 'cough', 1000);
         if (st.tut) { popUp('COUGH!', 'bad'); say(1, 'Let go while it’s in the pink. Not after.', 2400); return; }
         st.k.coughs++; miss('COUGH!', 'cough');
       };
@@ -569,11 +590,12 @@ window.FemcPassit = (() => {
         el.querySelectorAll('.pi-dots i').forEach((d, i) => d.classList.toggle('on', i === b.bar));
         if (b.count) {
           const c = $('.pi-count'); c.textContent = ['3', '2', '1', 'PASS IT'][b.count - 1]; c.className = 'pi-count on c' + b.count;
-          if (b.count === 3) { S.lighter(); say(1, 'Okay, okay. House rules: on the beat.', 1800); }
+          if (b.count === 3) { S.lighter(); lighterFlick(); say(1, 'Okay, okay. House rules: on the beat.', 1800); }
           if (b.count === 4) { st.j.frozen = false; st.j.lit = true; joint.hidden = false; st.j.arr = n; placeJ(); later(() => c.classList.remove('on'), 500); }
           return;
         }
         if (st.shell) shellBeat(n);
+        trotBeat();
         const j = st.j;
         if (!j.frozen && j.lit) {
           if (j.seat === 0) { if (j.passOn != null && n >= j.passOn) moveJ(n); }
@@ -686,10 +708,11 @@ window.FemcPassit = (() => {
             <div class="pi-awake">${CREW.map((c, i) => `<figure class="${st.asleep[i] ? 'asleep' : ''}${i === 0 ? ' me' : ''}"><span class="pi-face"><b class="pi-init">${c.name[0]}</b>${img(FACE(c.id, st.asleep[i] ? 'neutral' : 'happy'), 'pi-fimg')}</span>
               <figcaption><b>${c.name}${st.asleep[i] ? ' <em>asleep</em>' : ''}</b><small>${esc(sup[c.id])}</small></figcaption></figure>`).join('')}</div>
             <b class="mg-grade">${grade}</b>
-            <dl><dt>Vibes</dt><dd>${st.score}</dd><dt>Clean passes</dt><dd>${k.passes + k.sPassed}</dd><dt>Perfect</dt><dd>${k.perfect}</dd><dt>Smooth hits</dt><dd>${k.smooth}</dd>
+            <dl><dt>Vibes</dt><dd class="pi-endvibes">${still ? st.score : 0}</dd><dt>Clean passes</dt><dd>${k.passes + k.sPassed}</dd><dt>Perfect</dt><dd>${k.perfect}</dd><dt>Smooth hits</dt><dd>${k.smooth}</dd>
               <dt>Coughs</dt><dd>${k.coughs}</dd><dt>Roasts taken</dt><dd>${k.roasts}</dd>${ints ? `<dt>Interruptions</dt><dd>${handled} / ${ints}</dd>` : ''}</dl>
             <p class="mg-end-say">${esc(quit ? END_SAY.quit : END_SAY[grade])}</p><button type="button">Continue</button>`;
           const bt = end.querySelector('button'); bt.focus();
+          if (!still) { const v = end.querySelector('.pi-endvibes'), tot = st.score; for (let q = 1; q <= 16; q++) later(() => { if (v) v.textContent = Math.round(tot * q / 16); }, 900 + q * 50); }
           bt.onclick = () => { cleanup(); o.onDone?.(res); done(res); };
         };
         quit ? show() : later(show, 1200);
