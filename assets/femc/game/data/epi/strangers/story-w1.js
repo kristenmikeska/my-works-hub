@@ -1,3 +1,11 @@
+/* Nov 11 2026 (Kat): spice, week 1. Heat added inside existing scenes, marked "// Nov 11 2026 (Kat): spice"; no id, date, gate,
+   choice, flag or outcome changed. epi-s-step: { ifEpiRoute } blocks at the end (route() reads the lean before the 2/23 lock):
+   haechan (her bare feet inside his jacket; "He's still at the gate."), jungwon (the gate after; his breath on her fingers;
+   "Not through a gate."). epi-s-quay: an ifEpiRoute haechan coda in the car at the gate (hearts, Mr. Oh opens the gate on
+   them). epi-s-crossroads: lines inside the Haechan branch (her hands under his sweatshirt; "Ask me after the moon.") and
+   the Jungwon branch (she steps through the gate; forehead to forehead under the lanterns, not a kiss). Week 1 stays near
+   misses on purpose: the epilogue's first kisses are still the annex (2/26) and 'four hands' / the tank. New scenes for the
+   week are in people-spice.js. */
 /* Nov 11 2026 (Kat approved): cover stories for the boys' own absences. epi-s-kitchen: Pyo and Mr. Oh, Haechan 'came back from Busan' (only Appa and Mr. Oh know there was no job). epi-s-step: in private, Haechan's Busan and Jungwon's 'Seoul. My father's idea. Nobody checked.' No flag, gate or choice changed. */
 /* The strangers epilogue, week 1 (Sun 2/17 - Sat 2/23/2013): the story events. Epilogue batch 7, writer A.
    Home and the cover. Stage 0, then 1 from 2/20. The house holds a lie for her (the fever over Seollal) and she learns to hold
@@ -349,6 +357,48 @@
     { s: 'solar', f: 'happy', t: "You go to bed." },
     { s: 'haechan', f: 'happy', t: "I'm in bed. This is my bed. It's a step. I'm very comfortable." },
     { n: "She didn't go to bed. She sat on the step beside him until her socks were wet through, and neither of them said anything about the bell, or the year, or the man with no scent who would be standing in the cold on the other side of the gate until her light went out, she knew, she knew exactly, and the radio sat on the sill behind them, switched off, and she kept watching it anyway, out of the corner of her eye, the way you watch a dog you've been told doesn't bite." },
+    // Nov 11 2026 (Kat): spice. The lean's colour only (route() reads the lean before the lock); no flag, gate or choice.
+    { ifEpiRoute: 'haechan', then: [
+      { n: "Around one he looked down at her boots. The snow had gone in over the tops of them and melted, and she'd stopped being able to feel her toes some time ago and had decided that was the toes' business." },
+      { s: 'haechan', f: 'neutral', t: "Give me your feet." },
+      { s: 'solar', f: 'surprised', t: "What?" },
+      { s: 'haechan', f: 'neutral', t: "Your feet, agasshi. The things at the bottom of you. I'm not asking twice, the Chairman counts those too." },
+      { n: "He didn't wait. He bent and undid her laces, both boots, quick and practised, the way he'd have cut a rope, and pulled them off, and her wet socks after them, and before she could say anything about it he'd unzipped the black jacket and the sweatshirt under it halfway and put her bare feet flat against his stomach, inside, against his skin, and zipped the jacket shut over them." },
+      { n: "He flinched. His whole body did, a hard involuntary jump, the breath going out of him through his teeth, because her feet were like two fish off the ice, and then he held still, and held them there, his hands closed round her ankles over the jacket, and didn't let her take them back." },
+      { n: "She could feel everything. That was the trouble. The heat of him coming up through the soles of her feet like the floor of the kitchen in the morning, his stomach going in and out under them, slower now, and slower, and the place where his heart was, high and to the left, which she could have put her heel on if she'd wanted to, and she wanted to, and didn't, and sat on the cold half of the step with her coat round her knees and her face burning in the dark." },
+      { s: 'solar', f: 'flustered', t: "You'll freeze." },
+      { s: 'haechan', f: 'happy', t: "I'm a very warm man. Famous for it. They used to sit me by the door at Dal's so the customers didn't notice the heating was broken." },
+      { n: "His thumb moved on the bone of her ankle. Once. Over the jacket. He looked at it as if it had done that without asking him." },
+      { n: "She leaned in. She didn't decide to. It was the warmth, she'd tell herself, the warmth coming up from her feet and the dark and the radio switched off and his face very close and not making a joke, and she got as far as the scar through his eyebrow, near enough to see the white line of it in the light from the window, near enough to smell the cinnamon on his breath, and he didn't move away, and he didn't move in." },
+      { s: 'haechan', f: 'serious', t: "He's still at the gate." },
+      { n: "Low. Not unkind. Just true, the way he said the tide was out." },
+      { s: 'haechan', f: 'serious', t: "He'll stand there till your light goes out. I know because I'd do it. So." },
+      { n: "So. He didn't finish it. He didn't have to. He bent his head instead and breathed out, warm, on the tops of her toes where they stuck out of the jacket, once, the way you'd breathe on your own hands in the cold, and every nerve she had went straight up her legs and into her stomach and stayed there." },
+      { n: "Then he took her feet out, and dried them on the inside of his sleeve, and put the wet socks in his own pocket, and put her boots back on her bare feet, and tied them, double, the way you tied the boots of somebody who was going to have to walk up a frozen garden in the dark without looking back." },
+      { s: 'haechan', f: 'neutral', t: "Socks tomorrow. Mrs. Bang'll want to know why they were in my pocket. You can tell her." }
+    ] },
+    // Nov 11 2026 (Kat): spice. The lean's colour only.
+    { ifEpiRoute: 'jungwon', then: [
+      { place: 'Incheon · The Lee House · Gate', time: 'Late Night', soft: true },
+      { n: "When she did go up, she didn't go in. She went round the side of the house in her wet boots, past the onggi jars with their lids of snow, to the gate, and he was there. Of course he was. On the far side of the iron, under the lamp, in the dark coat with the frost on its shoulders, exactly where she'd known he'd be." },
+      { n: "He didn't bow this time. He looked at her through the bars, and at her boots, and back at her face." },
+      { s: 'jungwon', f: 'neutral', t: "Your feet are wet." },
+      { s: 'solar', f: 'surprised', t: "How do you know that?" },
+      { s: 'jungwon', f: 'neutral', t: "You walk differently. Shorter. As if the ground owes you an apology." },
+      { n: "She put her hand through the bars. She didn't know why. To prove she could, maybe. He looked at it, her bare hand hanging in the cold on his side of the gate, and then he took his right glove off, finger by finger, without hurrying, and put the glove in his pocket, and took her hand in his." },
+      { n: "His hand was colder than hers. It shouldn't have been possible. He'd been standing at a gate for an hour in February, and he held her fingers the way he held a cup of tea, by the tips, carefully, and then he lifted them to his mouth and breathed on them. Slowly. Twice. His eyes on hers over their joined hands the whole time, very dark, the lamp in both of them." },
+      { n: "Warm. His breath was warm. It was the only warm thing about him, and he was giving it to her through a gate, one breath at a time, like counting change into a palm, and she stood with her face against the iron and felt it go into her fingers and up her arm and settle somewhere under her breastbone that had nothing to do with fingers." },
+      { s: 'jungwon', f: 'neutral', t: "*Better?*" },
+      { s: 'solar', f: 'neutral', t: "*No.*" },
+      { n: "His mouth moved. Not the dimples. The other thing." },
+      { n: "He came closer. The bars were between them, cold, a hand's width apart, and he put his forehead against the one in front of his face, and she found that hers was against the next one, and there was a gap the width of three fingers between the two bars, and his mouth was on one side of it and hers was on the other, and she could feel his breath on her lips through it, and the iron was so cold it burned." },
+      { n: "He didn't close it. Three fingers. He could have. She watched him decide not to, very precisely, with the whole of his face, the way he'd decided at the board in her father's study to lose by one and a half." },
+      { s: 'jungwon', f: 'neutral', t: "Not through a gate. I'd like to do it properly, when I do." },
+      { s: 'solar', f: 'flustered', t: "When." },
+      { s: 'jungwon', f: 'happy', t: "When. I'm sorry. Was that presumptuous? It was. I'll stand here and be ashamed of it until your light goes out." },
+      { n: "He let go of her hand. He put his glove back on. Down at the bottom of the garden, very small, the annex light was still on, and she knew he could see it from here as well as she could, and he looked at it once over her shoulder, politely, the way you'd acknowledge somebody across a restaurant, and then back at her." },
+      { s: 'jungwon', f: 'neutral', t: "Go in, Solar-ssi. Dry your feet. Please." }
+    ] },
     { flag: 'epi-s-secret' }
   ] },
 
@@ -771,7 +821,23 @@
     { s: 'haechan', f: 'neutral', t: "Tomorrow you tell me the tide before you go anywhere near anything wet. And I'll check it. On the clock. And then the young master can check it on his very expensive watch." },
     { s: 'solar', f: 'surprised', t: "You're going to let Jungwon check my tide." },
     { s: 'haechan', f: 'happy', t: "I'd let the koi check it, agasshi. I'd let Pyo check it." },
-    { n: "He said it lightly. It was the first light thing he'd said in an hour. It came out of him like something he'd had to go and fetch from a long way off, and it didn't reach his eyes, and she looked at his face in the dashboard light and understood that he was going to be frightened of water now, on her behalf, for the rest of his life." }
+    { n: "He said it lightly. It was the first light thing he'd said in an hour. It came out of him like something he'd had to go and fetch from a long way off, and it didn't reach his eyes, and she looked at his face in the dashboard light and understood that he was going to be frightened of water now, on her behalf, for the rest of his life." },
+    // Nov 11 2026 (Kat): spice. The lean's colour only (every route plays the quay).
+    { ifEpiRoute: 'haechan', then: [
+      { n: "She didn't get out either." },
+      { n: "The engine ran. The heater roared. Through the windscreen the gatehouse window was lit, and in it the shape of Mr. Oh's newspaper, not moving. She reached across the gearstick and took his right hand off the wheel, where it was still at ten o'clock, and turned it over, and put it flat on her own chest, over her coat, over her heart, and held it there." },
+      { s: 'haechan', f: 'surprised', t: "Agasshi." },
+      { s: 'solar', f: 'neutral', t: "Still going. See? You can stop counting." },
+      { n: "He didn't take it back. His palm was spread wide, the split knuckles pale, and she felt him feel it, her heart going under the wool and under his hand, and she watched his face in the dashboard light do something it never did, which was nothing, slowly, all the jokes going out of it one at a time like lights in a house." },
+      { n: "Then he turned his hand over and took hers and put it inside his jacket, on his sweatshirt, high on the left, and held it there instead, and his was going so hard she could feel it in her teeth." },
+      { s: 'haechan', f: 'serious', t: "That one's been like that since the steps. Do something about it." },
+      { n: "She leaned across the gearstick. He met her halfway, his free hand coming up to the back of her neck, into the collar he'd hauled her back by, his thumb under her ear, and his forehead came against hers and stayed there, breathing, and his mouth was so close she could taste the cinnamon, and neither of them moved the last of it, because the gate had begun, very slowly, to open." },
+      { n: "Mr. Oh had put the newspaper down. He stood in the gatehouse doorway with one hand on the lever, looking at the car with no expression whatsoever, and the gate went on opening, all the way, with its long iron sigh, and stopped, and he went back inside and picked the newspaper up again." },
+      { n: "Haechan let go of her neck. He put both hands on the wheel. Ten and two." },
+      { s: 'haechan', f: 'flustered', t: "...He saw nothing." },
+      { s: 'solar', f: 'happy', t: "He saw everything." },
+      { s: 'haechan', f: 'flustered', t: "His eyes are terrible, agasshi, he reads that paper at the length of his arm. He saw a car. Very nice car. Get out of it." }
+    ] }
   ] },
 
   // ───────────────────────────── 2/22, daytime: the studio girls ─────────────────────────────
@@ -943,6 +1009,19 @@
         // Nov 11 2026 (Kat): searchers know. He went after her, so not all ten nights were spent on this step.
         { n: "He said it lightly. She thought about the nights he'd had on this step before he came after her, however many there'd been, he'd never said, with the forecast on low, listening to a woman read out the names of every island in the Yellow Sea, checking them off, one by one, all still there, and nobody on the radio to read out the one name he'd actually been listening for, and she didn't say anything, and neither did he." },
         { n: "He didn't argue. He took his jacket off without getting up, one arm and then the other, and put it round her shoulders, and sat there in his sweatshirt in the cold with the radio off on the sill behind them, and neither of them went to bed, and the minute went on for a long time." },
+        // Nov 11 2026 (Kat): spice. Inside the branch; no choice added.
+        { n: "She put her hands under his sweatshirt. Both of them, flat, on his back, where it was warm, because they were freezing and he'd given her his jacket and it was only fair, she'd say, if anybody asked." },
+        { n: "He made a noise like a kicked dog. His whole back went rigid under her palms, every muscle in it, and then, slowly, as her hands warmed, it didn't, it gave, a long shiver going down him from the neck to the belt that she felt the whole length of with her fingers, and he let his breath out into the cold in a white rush." },
+        { s: 'haechan', f: 'flustered', t: "That's assault, agasshi. There are laws. I'll tell the Chairman." },
+        { s: 'solar', f: 'happy', t: "Tell him." },
+        { s: 'haechan', f: 'flustered', t: "...I'm not going to tell him." },
+        { n: "He turned on the step to face her, which put her hands round his ribs, which put his face very close, and he put his forehead down against hers and shut his eyes. His breath on her mouth. His nose cold against hers. The scar through his eyebrow an inch from her eye. She could feel how hard he was holding still. It went through him like current through a wire, his hands on his knees, not on her, very deliberately not on her, knuckles white." },
+        { s: 'solar', f: 'neutral', t: "Donghyuck-ah." },
+        { s: 'haechan', f: 'serious', t: "Not on the step. The whole house has windows. Your father has windows. Mrs. Bang has windows on the back of her head." },
+        { s: 'solar', f: 'serious', t: "Then where." },
+        { n: "He opened his eyes. From two centimeters he looked at her as if she'd asked him the way to somewhere he'd been driving past every night for seven years without once taking the turn." },
+        { s: 'haechan', f: 'neutral', t: "...Ask me after the moon." },
+        { n: "Up at the front of the house, out of sight round the corner, the festival lanterns over the gate were still lit; she could see their red on the wet branches of the persimmon. He saw her see it. He didn't say whose coat was standing under them. He pulled the black jacket tighter round her shoulders instead, right up to her chin, and zipped it, all the way, with her inside it, like a man closing a door." },
         { bond: { haechan: 1 } }
       ] },
 
@@ -986,6 +1065,19 @@
           ] }
         ] },
         { n: "He said it simply, and bowed again, in Korean, in the proper register, as if nothing at all had been said in any other language." },
+        // Nov 11 2026 (Kat): spice. Inside the branch; no choice added.
+        { n: "She stepped through the gap. Onto his side of the gate, onto the street, in her socks inside her boots and her coat over the boat pajamas, under the red lanterns, where anybody's window could see." },
+        { n: "He went very still. She reached up and brushed the frost off the shoulders of his coat, the left and then the right, slowly, the way her mother brushed lint off her father before New Year, and the frost came away under her glove and fell glittering on the stones between their feet, and he didn't breathe the whole time she did it." },
+        { n: "When she'd finished he caught her wrist. Gently. His right hand, bare. He brought her gloved hand up and laid it against his own face, against his cheek, which was as cold as the iron, and turned his head into it, a centimeter, and shut his eyes." },
+        { n: "She'd never seen him shut his eyes. Not in a car, not at a board, not at a dinner where he'd been bored nearly to death and smiled through all of it. He stood in the red light with his face in her palm and his eyes shut like a man standing in the first sun after a long winter, and she felt her own pulse go in her wrist under his fingers and knew he was counting it." },
+        { s: 'jungwon', f: 'neutral', t: "May I—" },
+        { s: 'solar', f: 'neutral', t: "Yes." },
+        { n: "He bent his head. His forehead came down against hers, cold, and stayed, and his breath came out between them in one long white cloud that went up past the lanterns, and his mouth was so near hers that she felt it move when he spoke." },
+        { s: 'jungwon', f: 'neutral', t: "*Not here. Not under your father's lanterns, where the whole street is lit. I'd like the first one, now you're home, to be somewhere nobody has hung anything up.*" },
+        { s: 'solar', f: 'flustered', t: "*You asked me if you could.*" },
+        { s: 'jungwon', f: 'happy', t: "*I asked if I could do this.*" },
+        { n: "And he stayed there. Forehead to forehead, in the cold, under the lanterns, his hand over hers on his cheek, not kissing her, for so long that the not-kissing became its own thing, slow and enormous and deliberate, and she understood that it was the most improper thing Yang Jungwon had ever done in his life, and that he knew it, and that he was doing it on purpose, in the street, with every ending on." },
+        { n: "Somewhere behind her, at the bottom of a garden she couldn't see from the street, a radio was reading out the islands to a step. She thought of it. She felt him feel her think of it, a small change in the hand over hers, and he didn't let go." },
         { s: 'jungwon', f: 'neutral', t: "Please go in. It's cold. I'll stay until you do." },
         { s: 'solar', f: 'neutral', t: "You'll be at Wolmido tomorrow." },
         { s: 'jungwon', f: 'neutral', t: "I'm told there's a moon house. And a laminated plan, which I'm not on." },
