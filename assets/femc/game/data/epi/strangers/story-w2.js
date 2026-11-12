@@ -1,3 +1,8 @@
+/* Nov 11 2026 (Kat): spice, week 2. Lines marked "// Nov 11 2026 (Kat): spice"; no id, date, gate, choice, flag or outcome
+   changed. epi-s-moon: ifEpiRoute codas after the green: haechan (behind the shuttered Viking, "It's after the moon.", "The
+   annex has a bolt."; Jungwon at the railing saw, a hand warmer held out behind him), jungwon (his scarf round her neck;
+   Haechan: "She doesn't like wool on her neck." / "Then she'll tell me."). epi-s-hc-annex: after, the care (her feet, his
+   list, "Mostly not crying."). epi-s-jw-tea: a { later } text the next morning (the centimeter; 我没睡). */
 /* The strangers epilogue, week 2 (2/24-3/1/2013): "wrong". Batch 7, Writer B (2026-10-28).
    Merges into FEMC_EPI_WORLDS.strangers (events); never overwrites. Stage 2 from 2/24 (the floor), 3 on the night of the
    first pull (2/28). The route is locked from the night of 2/23; route colour is { ifEpiRoute } inside the shared scenes.
@@ -262,7 +267,40 @@
     { n: "Down on the shingle the moon house fell in on itself all at once, a great soft collapse of burning straw, and a column of sparks went up into the dark and over the water, and the crowd went *ohhh* together, the way crowds do, and the moon, gold, ordinary, enormous, sat on the roof of the city and pretended it had never been anything else." },
     { s: 'haechan', f: 'happy', t: "Go on, agasshi. Go and eat a fish cake. We're not going anywhere." },
     { n: "*We*. He heard himself say it a half-second after she did. He shut his mouth on it and looked at the sea." },
-    { n: "Jungwon, beside him, very politely, did not say anything about it at all." }
+    { n: "Jungwon, beside him, very politely, did not say anything about it at all." },
+    // Nov 11 2026 (Kat): spice. Route colour after the green; no flag, choice or outcome.
+    { ifEpiRoute: 'haechan', then: [
+      { n: "She didn't get to the fish cakes." },
+      { n: "She got as far as the dark side of the Viking, the big swing boat shuttered for winter at the end of the promenade, its painted dragon's head looking out over the sea with a tarp over its eyes, and his hand closed on the end of her scarf from behind and pulled, gently, the way you'd pull a bell rope, and she went round the side of the ride with it into the shadow where the lanterns didn't reach." },
+      { n: "He had her against the cold flank of the boat. Not hard. His hands on either side of her on the painted wood and his face very close, the moon behind his head making a gold ring of his hair, and his breath going up white between them, quick, and the gum gone, she didn't know where." },
+      { s: 'haechan', f: 'serious', t: "It's after the moon." },
+      { n: "She'd asked him where, on the step, the night before. She'd thought he hadn't been listening. He'd been counting the hours." },
+      { n: "He kissed her. Not the way she'd thought he would, after a week of not; not hungry, not at first. Slowly, his cold mouth on hers, almost careful, almost a question, as if after all this time he needed to check she was real, and she was, and he made a sound into her mouth when he found out, low and wrecked, and then it wasn't careful, his hand in the back of her hair under the hat her mother had laid out, the hat going, his whole weight leaning her into the side of the boat until the old timbers creaked and she could feel the cold of the paint through her coat and the heat of him through everything else." },
+      { n: "Over their heads the sparks from the moon house went up past the dragon's tarp and out over the water, and the crowd on the promenade went *ohhh*, all of them together, and he laughed against her teeth, and she bit his lip for it, and he stopped laughing." },
+      { s: 'haechan', f: 'flustered', t: "Agasshi." },
+      { s: 'solar', f: 'neutral', t: "Where." },
+      { s: 'haechan', f: 'serious', t: "The annex has a bolt." },
+      { n: "He said it against her mouth. Like a fact. Like the tide. And then he pulled back, one centimeter, and looked at her with the green still somewhere in the back of his eyes, and the gold over the top of it, and something under both that was so frightened and so certain at the same time that she had to shut her eyes." },
+      { s: 'haechan', f: 'neutral', t: "Not tonight. Your mother's waiting up with the lantern count. Tuesday. When there's nobody watching the step but me." },
+      { n: "When they came out from behind the Viking her hat was in his pocket and her mouth felt like it belonged to somebody else, and the girls were a knot of scarves at the fish-cake cart forty meters off, and at the railing between, alone, with his back to them and his face to the sea, Jungwon was standing very straight looking at the moon on the water with tremendous interest." },
+      { n: "He didn't turn round. He'd seen. She knew from the angle of his shoulders, which was exactly, perfectly, one degree more correct than it had been before." },
+      { s: 'jungwon', f: 'neutral', t: "The tide's very high tonight, Solar-ssi. You might want to stay back from the edge." },
+      { n: "He said it to the water. Courteously. Then he took one of his hand warmers out of his coat pocket and held it out behind him without looking, at exactly the height of her hand, and she took it, because it would have been crueller not to, and he walked away toward the ferry end with his hands at his sides." },
+      { n: "Haechan watched him go. He didn't make a joke. He took her hat out of his pocket and put it back on her head, crooked, and pulled it down over her ears with both hands, and left his hands there a second longer than a hat needed." }
+    ] },
+    { ifEpiRoute: 'jungwon', then: [
+      { n: "She didn't go to the fish-cake cart. Jungwon did a thing instead that she had never once in her life seen a Yang do in public: he took his scarf off." },
+      { n: "Dark grey cashmere, warm from his neck. He unwound it in the middle of the promenade under a dead lantern, and wound it round hers, twice, over her mother's knitted one, his right hand careful and quick at her throat, and tucked the ends into the front of her coat with two fingers, and his knuckles brushed the underside of her jaw doing it, and stayed, for one second, under her chin, tilting it up a centimeter so that she was looking at him." },
+      { n: "There was no scent on it. There never was. Just warmth, his, all round her neck, and his eyes on hers over it, very dark in the lantern light, very still." },
+      { s: 'jungwon', f: 'neutral', t: "You were cold at the fire. You kept your shoulders up." },
+      { n: "Haechan was watching. She didn't have to look. She could feel it from a meter and a half away, the way you feel a stove you've turned your back on." },
+      { s: 'haechan', f: 'neutral', t: "She doesn't like wool on her neck." },
+      { n: "Flat. Chewing again. To the sea." },
+      { s: 'jungwon', f: 'happy', t: "Then she'll tell me." },
+      { n: "He didn't look at Haechan when he said it. He was still looking at her, his knuckles still under her chin, waiting, with all the time in the world, to be told." },
+      { n: "She didn't tell him. She put her chin down into the cashmere, which was soft and warm and smelled of nothing at all, and kept it there." },
+      { n: "Haechan took the gum out of his mouth, and folded it into its wrapper, and put it in his pocket, and walked off toward the girls without a word, and she watched his back go away through the crowd in the black work jacket and felt something go with it, the way you feel a tide go out under a house, through the floor. It didn't stop her keeping her chin in the scarf. That was the worst thing she found out about herself all winter." }
+    ] }
   ] },
 
   // ───────────────────────────── 2/26 evening, route haechan: the annex ─────────────────────────────
@@ -327,6 +365,19 @@
     { n: "She didn't answer. She couldn't have, not then, and he knew that too, and that was why he'd said it in the dark with his face turned away, so she wouldn't have to." },
     { n: "She took the Discman out of his hand instead, and opened the lid, and looked at the disc inside it, and closed it again, very gently, and put it back on his chest with her hand over it, and his hand over hers." },
     { bond: { haechan: 1 } },
+    // Nov 11 2026 (Kat): spice. After, the care.
+    { n: "Her feet were cold. They were always cold. He found them under the quilt without looking, with his own, and pulled them in between his calves and held them there, and didn't say anything about it, which was the most romantic thing anybody had ever done to her feet in her life." },
+    { n: "Then he pushed the hair off her face. All of it, slowly, with the flat of his hand, off her forehead and her cheek and out of her mouth, and tucked it behind her ear, and looked at what he'd uncovered as if he'd been asked to check it for damage." },
+    { s: 'haechan', f: 'serious', t: "You're alright." },
+    { n: "Not a question, the way he said it. But his eyes were asking it. She'd never seen them do that. They went over her face in the half-dark as if he were reading the coast weather off it, island by island." },
+    { s: 'solar', f: 'happy', t: "Donghyuck-ah." },
+    { s: 'haechan', f: 'flustered', t: "I'm checking. It's my job. I check things. Doors, cars, the Chairman's tea, you. I've got a list." },
+    { s: 'solar', f: 'happy', t: "What's on the list?" },
+    { s: 'haechan', f: 'serious', t: "Warm. Breathing. Not crying. Hair's a disaster, that's fine, that's my fault." },
+    { n: "He kissed her temple. Once, hard, the way you'd stamp a paper. Then, as if that had been too much and not enough, softer, at the corner of her eye, where she hadn't known she was wet." },
+    { s: 'haechan', f: 'serious', t: "...Mostly not crying." },
+    { s: 'solar', f: 'sad', t: "It's not that kind." },
+    { s: 'haechan', f: 'neutral', t: "I know what kind it is, agasshi. I'm not stupid. I've got it too." },
     { n: "On the crate by the bed the thermos had gone cold without either of them touching it. He reached over her for it anyway, and unscrewed the dented lid, and poured, and drank Mrs. Bang's cold barley tea out of the cap like it was the best thing he'd ever been given, and passed it to her, and she drank the rest." },
     { s: 'haechan', f: 'neutral', t: "She knows." },
     { s: 'solar', f: 'neutral', t: "She gave me the thermos, Donghyuck-ah. Of course she knows." },
@@ -402,7 +453,13 @@
     { s: 'mrsbang', f: 'neutral', t: "He warmed the pot." },
     { s: 'solar', f: 'happy', t: "He did." },
     { s: 'mrsbang', f: 'neutral', t: "Hm." },
-    { n: "She switched off the light on her way out. In the dark the two fish turned once in their bucket, and on the table the second cup was still warm when Solar put her hand round it." }
+    { n: "She switched off the light on her way out. In the dark the two fish turned once in their bucket, and on the table the second cup was still warm when Solar put her hand round it." },
+    // Nov 11 2026 (Kat): spice. The morning after the near miss, in the only language the phones can't use.
+    { later: { delay: 1, slot: 'early', thread: 'jungwon', msgs: [
+      { from: 'jungwon', t: "Good morning. Thank you for the tea." },
+      { from: 'jungwon', t: "I've been thinking about the centimeter. Under the table. I'd like it back, if that's acceptable." },
+      { from: 'jungwon', t: "我没睡。" }
+    ] } }
   ] },
 
   // ───────────────────────────── 2/26 evening, route family: trot ─────────────────────────────

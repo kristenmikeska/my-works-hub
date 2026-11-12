@@ -1,3 +1,6 @@
+/* Nov 11 2026 (Kat): spice. epi-s-twenty's route codas, marked "// Nov 11 2026 (Kat): spice": haechan (the koi-step wall,
+   Mrs. Bang at the door for the lid, the coat on inside out), jungwon (at one, outside the gate with Minseok's key; the
+   gatepost; Minseok's television goes off and back on; eight pins). No id, gate, choice, flag or outcome changed. */
 /* The strangers epilogue, story-home.js: three house story events and their texts. The Nov 5-6 2026 expansion pass, writer 1.
    Merges into FEMC_EPI_WORLDS.strangers (events, texts); never overwrites. Route colour is { ifEpiRoute } inside shared scenes.
 
@@ -420,7 +423,20 @@
       { s: 'haechan', f: 'neutral', t: "Go in, agasshi. It's my night." },
       { s: 'solar', f: 'happy', t: "It's not midnight." },
       { s: 'haechan', f: 'neutral', t: "It will be." },
-      { n: "She didn't go in. Not yet. Behind them in the kitchen the dishes went on, and Yunjin went on, and the cloud sat down over the garden like a lid, and somewhere in it the cranes blinked their slow red lights, and she sat on the warm half of the step and chewed his gum and waited to see which of them would say something next. Neither of them did. It got later." }
+      { n: "She didn't go in. Not yet. Behind them in the kitchen the dishes went on, and Yunjin went on, and the cloud sat down over the garden like a lid, and somewhere in it the cranes blinked their slow red lights, and she sat on the warm half of the step and chewed his gum and waited to see which of them would say something next. Neither of them did. It got later." },
+      // Nov 11 2026 (Kat): spice. The koi-step wall, with the party on the other side of the door.
+      { n: "He said it first, in the end. Not with his mouth." },
+      { n: "He stood up, and took her by the wrist, and walked her three steps along the back of the house, out of the bar of light from the kitchen door, into the dark between the koi bucket and the corner, where the wall of the house came down to the step in old grey stone that held the day's cold, and turned her round, and put her back against it." },
+      { n: "The stone was freezing. He wasn't. He kissed her with the kitchen door open a meter away and Yunjin singing at the sink and Minseok telling her to stop, cinnamon and the dry strawberry cake and the cold, his hands flat on the wall on either side of her head and then not on the wall, in her hair, at her jaw, at the back of her neck pulling her in, and she had her fists in the front of his jacket and her heel braced against the koi bucket so it wouldn't go over, and the fish turned under their ice beside her foot, slow, orange and white, unbothered." },
+      { n: "Inside, a plate went down on the draining board. Mrs. Bang's voice: *who's got the lid of the big pot.* Footsteps. Toward the door." },
+      { n: "He didn't stop. He slowed. He kept his mouth on hers and turned them both, a quarter turn, one smooth step, so that his back was to the light and she was behind him in the angle of the wall, all of her, hidden by all of him, the way he'd stand in a doorway between her and a room full of men, and the footsteps came to the door, and stopped." },
+      { n: "She felt him breathe against her mouth. Very slow. Very calm. His heart going under her fists like the Rexton's engine on a cold morning." },
+      { s: 'mrsbang', f: 'neutral', t: "Haechan-ah. The lid." },
+      { s: 'haechan', f: 'neutral', t: "On the step, ajumma. By the koi. I'll bring it." },
+      { n: "His voice was perfect. Easy and bored and a little hoarse from the singing. He said it with his mouth about two centimeters from hers. She bit the inside of her cheek so hard she tasted iron." },
+      { n: "The footsteps went away. The tap ran. Mrs. Bang said, to the sink, not loudly, *and tell her her coat's on inside out,* and went on washing." },
+      { n: "Solar looked down. It was. It had been since the karaoke. He'd been looking at it all night and hadn't said a word, the label at her collar sticking up like a little white flag, and now he put his face in her neck and laughed until his shoulders shook, silently, against the cold stone wall, with her hands still in his jacket and her heel still on the koi bucket and the fish going round and round beside them as if there were nothing in the world but the next lap." },
+      { s: 'haechan', f: 'happy', t: "I told you. Back of her head. She's got windows on the back of her head." }
     ] },
     { ifEpiRoute: 'jungwon', then: [
       { place: 'Incheon · The Lee House · Gate', time: 'Late Night', soft: true },
@@ -445,7 +461,24 @@
       { s: 'jungwon', f: 'happy', t: "Then I'll be at the gate at four minutes to." },
       { n: "She laughed. Not much. In the cold, under the lamp, with her breath going up in it. He watched her do it with his hand on his watch, very still, and didn't say anything else, and didn't need to." },
       { bond: { jungwon: 1 } },
-      { n: "He bowed. Exactly as deep as he'd bowed in the kitchen at seven o'clock, to show that nothing had changed the angle. Then Minseok came out and opened the gate for him, and he went through it, and turned, and stood on the other side of it under the lamp in the dark coat with his hands at his sides, and the gate shut between them. She went back down the path. She didn't look round until the kitchen door. He was still there. He'd be there at four." }
+      { n: "He bowed. Exactly as deep as he'd bowed in the kitchen at seven o'clock, to show that nothing had changed the angle. Then Minseok came out and opened the gate for him, and he went through it, and turned, and stood on the other side of it under the lamp in the dark coat with his hands at his sides, and the gate shut between them. She went back down the path. She didn't look round until the kitchen door. He was still there. He'd be there at four." },
+      // Nov 11 2026 (Kat): spice. His night; the gate between them; then not.
+      { n: "At four minutes to one she came back up the path with the green thermos." },
+      { n: "He was where she'd left him, on the far side of the gate under the lamp, his hands at his sides, facing the road, and he turned when he heard her on the gravel and saw the thermos and his face did the still thing, all of it, before he could stop it." },
+      { n: "She didn't hand it through the bars. She unlocked the side gate with Minseok's key off the hook in the gatehouse, which nobody had said she could take, and went through it, onto his side, onto the street, and the gate swung to behind her on its spring with a soft iron click, and they were both outside it." },
+      { s: 'jungwon', f: 'surprised', t: "Solar-ssi. You're outside the gate." },
+      { s: 'solar', f: 'neutral', t: "So are you." },
+      { s: 'jungwon', f: 'neutral', t: "I'm on watch. I'm meant to be. You're meant to be the thing I'm watching." },
+      { n: "She put the thermos down on the low wall by the lamp post. Then she took the front of his coat in both hands, the good dark wool, and pulled, and he came, one step, the way he did everything, exactly as far as he'd decided to, and then further than that." },
+      { n: "He kissed her against the gatepost, in the ring of fog round the lamp, the iron at her back and the cold coming off it through her coat, and at first it was the way he always kissed her, careful and complete, like a sentence he'd written out first and was reading aloud to her one word at a time; and then, somewhere near the end of the sentence, it wasn't; his right hand flat on the post beside her head, then at her jaw, then in her hair, the pins going, one and another, small and bright on the wet stones at their feet, and his mouth gone soft and urgent and not polite at all, and his watch ticking against her ear through his cuff, fast, she could hear it, faster than a watch should." },
+      { n: "He stopped long enough to say one thing. Not in Korean. Low, against her temple, in Mandarin, and not the schoolroom kind: the kind she'd grown up hearing through kitchen doors in Chinatown, the kind you didn't say to somebody you were only being polite to." },
+      { n: "Then he was kissing her again, and she couldn't have told anybody what it had been, and she would have known it in the dark in any city in the world." },
+      { n: "In the gatehouse window, the television went off." },
+      { n: "They both heard it. They both stopped. Minseok's shape in the little lit window, standing, looking out at the empty side of the gate, at the hook where his key wasn't, and then, very slowly, deliberately, the shape sat back down, and the television came back on, louder than before." },
+      { s: 'jungwon', f: 'flustered', t: "...I'll need to thank him." },
+      { s: 'solar', f: 'happy', t: "Don't. He'll die." },
+      { s: 'jungwon', f: 'flustered', t: "Then I'll lose to him at something. Cards. Anything. He can pick." },
+      { n: "He picked her pins up off the stones, every one, by the light of the lamp, crouched in his good coat, and counted them into her palm, eight, and closed her fingers over them with his, and held her fist shut a moment longer than he needed to, and then sent her back through the gate, and locked it behind her with Minseok's key, and handed the key back through the bars, and stood his watch with his face to the road and his ears red to the tips until four." }
     ] },
     { ifEpiRoute: 'family', then: [
       { place: 'Incheon · The Lee House · Stairs', time: 'Late Night', soft: true },

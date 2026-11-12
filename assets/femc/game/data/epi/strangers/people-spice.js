@@ -4,14 +4,20 @@
    load order; these queue behind each bond's older hangouts in the same slot. Like the book and people-heat.js, every scene
    goes all the way up to the door and cuts there: nothing graphic on the page.
 
-   Week 1 is the starving week on purpose: near misses only. The epilogue's first kisses stay where they were (the annex,
-   2/26, on his route; 'four hands' / the jay-sugar stool / the tank on Jungwon's). Before the 2/23 lock a hangout's `route`
+   Week 1 is the starving week on purpose: near misses only. Week 2 lets go: on Haechan's route the first kiss is behind the
+   Viking at Daeboreum (story-w2 epi-s-moon) and the first night is still the annex (2/26); on Jungwon's the first kiss is
+   'nobody hung it up' (2/24-2/25 late, below), then the tea's near miss (2/26), then the gate (story-home epi-s-twenty). Before the 2/23 lock a hangout's `route`
    can't be read, so week 1's two scenes gate on the year's romance (ifYear) instead.
 
    Hangouts (role 'friend'):
      haechan  epi-s-haechan-pantry 'the storeroom'      2/18-2/22 late, ifYear romance haechan, after epi-s-step (Kitchen);
                                                         after 'the islands' (people-night) in the late queue
      jungwon  epi-s-jungwon-sunroom 'the orchid'        2/18-2/22 late, ifYear romance jungwon, after epi-s-step (Sunroom)
+     jungwon  epi-s-jungwon-persimmon 'nobody hung it up' 2/24-2/25 late, route jungwon, after epi-s-moon (Gate → Garden):
+                                                        the epilogue's first kiss on his route, under the moon; Haechan on
+                                                        the step sees through the bare persimmon
+   Texts (route-gated, the locked route): epi-s-tx-spice-hc-tuesday (2/25 late, haechan: "coast weather says tuesday clear"),
+     epi-s-tx-spice-jw-scarf (2/25 evening, jungwon: the grey scarf, his mother asked).
    Flags set (local, read nowhere else): epi-s-pantry-hand (pantry: her hand over his mouth), epi-s-sunroom-watch (sunroom:
      she took his watch off).
    Texts: { later } lines (core.js laterText) the next morning in both (coded, because the phones are listened to).
@@ -187,4 +193,89 @@
       ] }
     ] }
   ]);
+
+  /* ── Week 2: Jungwon, his route (Nov 11 2026 (Kat): spice) ── */
+  add('jungwon', 'friend', [
+    { id: 'epi-s-jungwon-persimmon', title: 'nobody hung it up', hint: "Past one, after the moon. His scarf is still round your neck, and somebody is still standing at the gate to have it back.",
+      after: '2/24', until: '2/25', slots: LATE, events: ['epi-s-moon'], noFlags: [], route: 'jungwon', noRoute: null,
+      place: 'Incheon · The Lee House · Gate', time: 'Late Night', scene: [
+      { music: 'epi-s-jungwon' },
+      { n: "His scarf was still round her neck at one in the morning. She'd gone to bed in it. She hadn't meant to; she'd sat down on the edge of the bed to take it off, and then she'd been lying down, and then the moon had come round to her window, enormous and gold and ordinary, and she'd lain there with her chin in the dark grey cashmere looking at it and not thinking about anything, very hard, for an hour." },
+      { n: "Then she got up and took it down to the gate to give it back, which was the reason, and she'd have said so to anyone." },
+      { n: "He was there. He'd never left. Mr. Oh had driven the Yang heir home from Wolmido at ten, and the Yang heir had thanked him and gone in at his own gate across the water and, apparently, walked straight back out of it and round the bridge, an hour and forty minutes, and was standing under the Lees' lamp at one in the morning with his bare throat in his collar and his hands at his sides as if he'd been put there with the lamp." },
+      { s: 'solar', f: 'neutral', t: "You'll get sick. You haven't got a scarf." },
+      { s: 'jungwon', f: 'neutral', t: "I know where it is." },
+      { n: "She unlocked the side gate. She didn't give it back. He didn't ask for it. They went down the garden instead, neither of them having said they would, along the path past the onggi jars and the koi bucket, and down the terraces, him a step behind her on the frozen gravel, very quiet, the way he walked in other people's houses." },
+      { place: 'Incheon · The Lee House · Garden', time: 'Late Night', soft: true },
+      { n: "The moon was right overhead now. High water at one, eight point nine meters, her father had read it out; she could hear it under the garden wall, the whole bay pushed up full and brimming against the stone and breathing there, not going anywhere, at the top of itself. Everything was silver. The frost on the terraces, the bare branches, the roofs of the city going down to the water. On the second terrace the persimmon held its arms out over them, empty, every twig of it drawn on the sky in silver ink." },
+      { n: "She stopped under it. He stopped behind her." },
+      { s: 'solar', f: 'neutral', t: "You said somewhere nobody had hung anything up." },
+      { n: "He looked up. Through the bare branches, at the moon. The full one, the first of the year, that the whole city had been out on the seafront to burn a straw house for, that had gone green for one breath and come back. Nobody had hung it up. Nobody could." },
+      { n: "He didn't say anything. He took her face in his hands." },
+      { n: "His right hand, bare, at her jaw, and he turned her face up into the moonlight the way you'd turn a page toward a window to read it, and looked, for a long time, as if he were committing it to something; and she stood in his scarf and let him look, and felt the look go over her mouth like a thumb." },
+      { s: 'jungwon', f: 'neutral', t: "May I." },
+      { s: 'solar', f: 'neutral', t: "You asked me that at the gate." },
+      { s: 'jungwon', f: 'neutral', t: "I'm asking again. I'll ask every time. I'd like you to get very tired of it." },
+      { s: 'solar', f: 'neutral', t: "Yes." },
+      { n: "He kissed her properly." },
+      { n: "That was the only word for it, and it was his word, and he meant it. Slowly, and completely, with his whole attention, as if there were nothing else he was supposed to be doing anywhere in the world and never had been; his mouth cold and then not cold, his breath warm in the cold air between them, his thumb at the hinge of her jaw tipping her face up a degree further, then another, as if he were finding the exact angle of something and would not stop until he had it. He had it. She felt him find it. She felt the moment he knew, because his hand at her jaw shook, once, and then went very steady." },
+      { n: "Her back met the trunk of the persimmon. She didn't know when. The bark was rough and cold through her coat and his body was against the front of her, all of him, the good wool and the shirt under it and the heat under that, which she'd never once felt from him, never in a whole winter, the man who gave off no warmth and no scent, and here it was, coming off him in waves through two coats under a tree in February, and it had been there the whole time." },
+      { n: "He made a sound when she put her hands inside his coat. Low. In his chest. It wasn't polite. It wasn't anything she'd heard a Yang make, and he heard himself make it and didn't stop, and kissed her harder, his hand going from her jaw into her hair, the scarf coming loose between them and sliding down her front into the frost at their feet, and neither of them going after it." },
+      { n: "When he pulled back it was only far enough to breathe. His forehead on hers. His eyes shut. Breathing as if he'd walked the whole hour and forty minutes at a run." },
+      { s: 'jungwon', f: 'neutral', t: "*Solar.*" },
+      { n: "Just her name. No -ssi. No ending on it at all. In Mandarin, the way her name sounded in his mouth in Mandarin, which was a way she'd never heard it sound in anyone's." },
+      { n: "Then he opened his eyes, and looked past her shoulder, down, and his face changed. Not much. A degree. The way it had changed at the railing on the promenade." },
+      { n: "She knew what he was looking at before she turned. The bottom of the garden. The annex. The one small yellow window, and the step under it, and on the step, a shape in a black jacket with its forearms on its knees, looking up the terraces at a persimmon tree that had no leaves on it at all, so that anyone sitting on that step could see straight through every branch of it to whatever was underneath." },
+      { n: "The shape didn't move. It didn't look away either." },
+      { choose: [
+        { t: "(Step out from under the tree.)", stat: { kindness: 1 }, then: [
+          { n: "She stepped out from under the persimmon, onto the open terrace, into the plain moonlight, away from Jungwon, a meter. Not for her. For the step." },
+          { n: "Jungwon let her. He picked his scarf up out of the frost and shook it out and folded it over his arm, and stood very straight beside the tree, and bowed, a small one, down the garden, at the annex, the bow you'd give a man across a room whose evening you had just ruined and were sorry for and would do again." },
+          { n: "On the step, the shape lifted one hand. Just the hand, off the knee, a few centimeters. Then put it back." }
+        ] },
+        { t: "(Stay where you are. Let him see.)", stat: { courage: 1 }, then: [
+          { n: "She didn't move. She stayed against the tree with Jungwon's hands still on her and her hair coming down, in the silver, where anyone could see, and looked down the garden at the step, and let him." },
+          { n: "Jungwon didn't move either. He didn't put his hands away. He didn't hold her tighter. He kept them exactly where they were, as if it would be dishonest to do anything else, and when he spoke it was very quietly, still looking at the annex." },
+          { s: 'jungwon', f: 'neutral', t: "I'd rather he knew. I'm tired of being polite about it. I'm only polite about everything else." },
+          { n: "Down on the step, the shape got up, and went inside, and the steel door shut. Not slammed. Shut, carefully, the way you'd shut a door on a sleeping house. The radio on the sill went off. The light stayed on." },
+          { bond: { jungwon: 1 } }
+        ] }
+      ] },
+      { n: "He put his scarf back round her neck before he went. Twice. Tucked it in. Didn't say it was hers now, and didn't take it." },
+      { s: 'jungwon', f: 'neutral', t: "Goodnight, Solar-ssi. Thank you for the moon." },
+      { s: 'solar', f: 'happy', t: "It's not mine." },
+      { s: 'jungwon', f: 'happy', t: "No. Nobody hung it up. I checked." },
+      { n: "She went up to bed in his scarf and lay looking at the moon until it went off the edge of her window, and she slept, eventually, with her mouth still feeling the exact angle he'd found, and the annex light at the bottom of the garden still on when she closed her eyes, and still on, she would have bet, when she opened them." },
+      { later: { delay: 1, slot: 'early', thread: 'haechan', msgs: [
+        { from: 'haechan', t: "persimmon's got no leaves agasshi" },
+        { from: 'haechan', t: "you can see straight through it from the step" },
+        { from: 'haechan', t: "just so you know. for next time. the onggi jars are taller" },
+        { from: 'haechan', t: "tell him to wear a scarf. he coughed all the way up the garden. i heard it" }
+      ] } }
+    ] }
+  ]);
+
+  /* ── Texts (Nov 11 2026 (Kat): spice): the night before the annex / after the moon, by route ── */
+  const T = (R.texts ||= {});
+  const LEAVE = (then = []) => ({ t: '(Leave it on read.)', silent: true, then });
+  (T.texts ||= []).push(
+    { id: 'epi-s-tx-spice-hc-tuesday', thread: 'haechan', date: '2/25', slot: 'late', events: ['epi-s-moon'], route: 'haechan', msgs: [
+      { from: 'haechan', t: "coast weather says tuesday clear" },
+      { from: 'haechan', t: "light winds. good visibility. tide at 11:50" },
+      { from: 'haechan', t: "thought you should know. for the islands" }
+    ], reply: [
+      { t: "i already knew the tide", then: [{ from: 'haechan', t: "i know you did" }, { from: 'haechan', t: "i wanted to say it to you anyway" }] },
+      { t: "is tuesday a long way", then: [{ from: 'haechan', t: "21 hours" }, { from: 'haechan', t: "not that im counting. go to sleep agasshi" }] },
+      LEAVE([{ from: 'haechan', t: "ok" }, { from: 'haechan', t: "still clear. still tuesday" }])
+    ] },
+    { id: 'epi-s-tx-spice-jw-scarf', thread: 'jungwon', date: '2/25', slot: 'evening', events: ['epi-s-moon'], route: 'jungwon', msgs: [
+      { from: 'jungwon', t: "Good evening. I hope the day was quiet." },
+      { from: 'jungwon', t: "My mother asked where my grey scarf was. I said I'd lent it to someone who was cold." },
+      { from: 'jungwon', t: "She asked who. I said someone who keeps her shoulders up at fires." }
+    ], reply: [
+      { t: "do you want it back", then: [{ from: 'jungwon', t: "No." }, { from: 'jungwon', t: "I'd like to know where it is. That's different." }] },
+      { t: "(Send a photo of the scarf folded on your pillow.)", silent: true, then: [{ from: 'jungwon', t: "..." }, { from: 'jungwon', t: "Thank you. I'll be at the board with your father tomorrow and I'll have to look at him. Please don't do that again before then." }] },
+      LEAVE([{ from: 'jungwon', t: "Goodnight, Solar-ssi." }])
+    ] }
+  );
 })();
