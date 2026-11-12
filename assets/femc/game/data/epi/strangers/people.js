@@ -1,3 +1,5 @@
+/* Nov 11 2026 (Kat): length. appa-1 'seven down' gains Eomma at the study door with citron tea and pears (the two of them in
+   one room, "She's too thin. Tell her."); marked "// Nov 11 2026 (Kat): length"; nothing else changed. */
 /* Nov 11 2026: baduk puzzles (minigame baduk, flags epi-s-mg-baduk-*) are an optional choice near the end of epi-s-appa-2 (Appa's corner problems); hwatu's skip (epi-s-eomma-4) now has a confirm. */
 /* The strangers epilogue (2/17-3/16/2013, Incheon): the home bonds Haechan, Jungwon, Yunjin, Appa and Eomma (R.bonds) and all
    of the act's texts (R.texts). Writer E, epilogue batch 7. Data only; loaded with the world (epilogue.js WORLDS.strangers.files).
@@ -875,6 +877,20 @@
       { s: 'appa', f: 'neutral', t: "Your mother says you're too thin." },
       { s: 'solar', f: 'happy', t: "Eomma says that every day." },
       { s: 'appa', f: 'neutral', t: "She's right every day. Mrs. Bang's made soup. Go and eat some, Sol-ah, and then go to bed." },
+      // Nov 11 2026 (Kat): length. Her mother at the door with the tea; the two of them, for once, in one room.
+      { n: "Her mother came in before she'd reached the door, with a tray. Two cups of citron tea and a small plate of the Naju pears, peeled, cut in eight, fanned on the plate like a hand of cards, and she put the tray on the corner of the desk on top of the finished crossword, because the crossword was finished, because she'd heard it finish from the hall." },
+      { s: 'eomma', f: 'neutral', t: "You'll both eat a pear. Your father because he's had nothing since lunch, and you because your father is going to watch you." },
+      { s: 'appa', f: 'happy', t: "I'm not going to watch her." },
+      { s: 'eomma', f: 'neutral', t: "You watch her the whole time, yeobo. You think you're doing it with the back of your head. You aren't." },
+      { n: "He didn't argue. He took a slice of pear, and so did Solar, and her mother stood between them with her hands folded and watched them both eat, the way she watched the gardener prune the persimmon, ready to say something about the angle." },
+      { s: 'eomma', f: 'neutral', t: "Sari. I heard. I'd have said the noodles." },
+      { s: 'appa', f: 'happy', t: "I told her you would." },
+      { s: 'eomma', f: 'happy', t: "Then you should have asked me. I'd have been quicker. You two would have sat there until midnight being clever at each other." },
+      { n: "It was so ordinary that it hurt. Her father in his cardigan and her mother in her pearl-grey house dress, arguing about noodles over her head, the lamp, the citron tea steaming, Dal's empty chair under her. She'd sat on the arm of that chair through ten thousand evenings like this one and had never once noticed them. She noticed this one so hard she had to look at the pear." },
+      { n: "Her mother put her hand on her head on the way out. Lightly, the way you'd check a loaf. Then she spoke from the door, without turning round." },
+      { s: 'eomma', f: 'neutral', t: "And Taejoon. She's too thin. Tell her." },
+      { s: 'appa', f: 'neutral', t: "I'm going to tell her." },
+      { n: "He didn't tell her for a full minute after the door shut. He sat looking at it, and then at the pears, and she saw something go across his face that she'd only seen on it once before, on the seventh stair, before light, the first morning: a man finding a room exactly as he'd left it, and not trusting it yet." },
       { n: "At the door she looked back. He'd unfolded the paper again, to the back page, where there was a second crossword, the hard one, that he never finished and always started, and he was humming the four bars, and he didn't look up, and she knew from the back of his neck that he'd been listening to her go all the way to the door." }
     ] },
 

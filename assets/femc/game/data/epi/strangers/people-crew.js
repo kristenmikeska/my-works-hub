@@ -1,3 +1,7 @@
+/* Nov 11 2026 (Kat): length ("look for scenes that need length, more dialogue"). Marked "// Nov 11 2026 (Kat): length"; no id,
+   gate, choice, flag or outcome changed. house-1 'pleats' (Haechan's nine-pleat dumpling, Pyo's cat, Mr. Oh's bridge day),
+   mroh-1 'ten and two' (four men at the ferry-terminal lights; the locks; the long way up the hill), sunghoon-1 'the limit'
+   (up the path with Haechan: "One of us is a professional."), niki-1 'the wall' (Yunjin at her window; Minseok bolts the gate). */
 /* The strangers epilogue (2/17-3/16/2013, Incheon): the other home bonds (R.bonds), two hangouts each, and the act's routines
    (R.routines). Writer F, epilogue batch 7 (2026-10-28). Data only; loaded with the world (epilogue.js). Bonds go through add()
    so they merge with people.js (Writer E: haechan, jungwon, yunjin, appa, eomma) in either load order. Role 'friend' for all.
@@ -97,7 +101,19 @@
       { n: "Haechan didn't come off the wall. Sunghoon didn't look at him. They had never once, she was fairly sure, looked at each other in the same second, and it was the only thing in the world the two of them agreed on." },
       { s: 'solar', f: 'neutral', t: "Thank you for the ride, Sunghoon-ssi." },
       { s: 'sunghoon', f: 'neutral', t: "Thank him." },
-      { n: "She got out. The car pulled away at the limit, its tail lights going down the hill in no hurry at all, and Haechan spat his gum into the paper and fell into step beside her without a word, which in him was a whole speech." }
+      { n: "She got out. The car pulled away at the limit, its tail lights going down the hill in no hurry at all, and Haechan spat his gum into the paper and fell into step beside her without a word, which in him was a whole speech." },
+      // Nov 11 2026 (Kat): length. Up the path; the speech, after all.
+      { n: "The speech lasted to the onggi jars. Then it wasn't enough for him." },
+      { s: 'haechan', f: 'neutral', t: "He drives at the limit." },
+      { s: 'solar', f: 'neutral', t: "He's very safe." },
+      { s: 'haechan', f: 'neutral', t: "He drives at the limit so nobody remembers him. I drive so they do. There's a difference, agasshi. One of us is a professional." },
+      { s: 'solar', f: 'happy', t: "Which one?" },
+      { s: 'haechan', f: 'flustered', t: "Don't. I'm being serious. I'm a serious man tonight." },
+      { n: "He took the bag of dumplings out of her hand without asking and looked in it, and counted them, and took one, and ate it in two bites on the path in the cold, and looked at the place at the bottom of the hill where the tail lights had gone." },
+      { s: 'haechan', f: 'serious', t: "Next time the young master wants you driven home, he can ask me. I'll take you. I'll even go at the limit. I'll hate it." },
+      { s: 'solar', f: 'neutral', t: "You were on the wall the whole time." },
+      { s: 'haechan', f: 'neutral', t: "Forty minutes. Mr. Oh rang the gatehouse from the restaurant and said Park was fetching you. I said, Park who. He said, you know Park who." },
+      { n: "He'd known. He'd sat on the wall for forty minutes in the cold watching the bottom of the hill for a car that wasn't his to drive. He gave her back the bag, two dumplings lighter, at the kitchen door, and went back down the garden to the step without looking round, and she stood with the bag against her chest and the door handle cold under her hand, and found that she was counting his footsteps on the terraces, and made herself stop." }
     ] },
 
     { id: 'epi-s-sunghoon-2', title: 'the doorway', hint: "Park Sunghoon is standing in the Lee kitchen doorway, facing the back door. So, unfortunately, is somebody else.",
@@ -298,7 +314,16 @@
         ] }
       ] },
       { n: "When he left, the gate was still open. Both leaves. Minseok came out of the gatehouse to watch. Riki looked at the gate, considered it, took a run of four steps and went over the wall again, three meters to the left of it, and was gone down the hill before the herb bed had finished crunching." },
-      { s: 'minseok', f: 'neutral', t: "Every time." }
+      { s: 'minseok', f: 'neutral', t: "Every time." },
+      // Nov 11 2026 (Kat): length. Next door has a window.
+      { n: "Next door, a window banged up. Yunjin, in the NYU sweatshirt with a face mask on, white, so that she looked like a very angry ghost, leaned out of her bedroom over the wall with a hair dryer still going in her hand." },
+      { s: 'yunjin', f: 'serious', t: "RIKI-YA. THE GATE. IT'S RIGHT THERE. IT'S OPEN. IT HAS BEEN OPEN YOUR WHOLE LIFE." },
+      { n: "From somewhere down the hill, very faint, sprinting, a boy's voice floated back up, polite and breathless." },
+      { s: 'niki', f: 'happy', t: "Hi, noona! Bye, noona!" },
+      { s: 'yunjin', f: 'serious', t: "And he took a jar of my mother's kimchi off our step last week. Over the wall. Sol. Over the *wall*. With a *jar*." },
+      { s: 'solar', f: 'happy', t: "He brought ours back." },
+      { s: 'yunjin', f: 'happy', t: "Ugh. I know. He's so polite it's criminal. Is your face doing the thing? Your face is doing the thing. Come over, I've got two masks and a drama where everybody's secretly a prince." },
+      { n: "Minseok, in the gatehouse door, shut the gate. Both leaves. With great ceremony, and the bolt, and then stood back from it with his can of coffee and looked at it, closed, for a long satisfied moment, like a man who'd won something." }
     ] },
 
     { id: 'epi-s-niki-2', title: 'a message', hint: "Riki has run a message across town in the dust. He hasn't left yet.",
@@ -388,6 +413,18 @@
           { s: 'auntie', f: 'happy', t: "*Good. Fourteen.*" }
         ] }
       ] },
+      // Nov 11 2026 (Kat): length. The rest of the house comes through the flour.
+      { n: "At one the back door banged and let in Haechan, the cold and a smell of diesel, and Mrs. Bang said *boots* without looking up, and Auntie Song said *hands* without looking up, and he stood on the mat between the two orders like a man between two dogs and chose the boots, and was sent to the sink anyway." },
+      { s: 'haechan', f: 'happy', t: "I fold a very good dumpling. Ask anyone. Twenty pleats. Twenty-two on a good day." },
+      { s: 'auntie', f: 'neutral', t: "*Show me.*" },
+      { n: "He showed her. It had nine pleats, and a hole, and the filling coming out of the hole like a tongue, and he held it up to the window the way she held up Solar's, like a jeweler, very solemn, and Auntie Song looked at it for a long time and then put it on the board, at the end, by itself, where it would know what it had done." },
+      { s: 'auntie', f: 'happy', t: "*That one's for the boy. He'll eat it himself. Nobody else will touch it.*" },
+      { s: 'solar', f: 'happy', t: "She says it's beautiful." },
+      { s: 'haechan', f: 'neutral', t: "She doesn't. I know that face. That's the Chairman's face for my parking." },
+      { n: "He stayed. Nobody told him to. He sat at the corner of the table with flour to his elbows and made eleven more, each worse than the last, and argued with Pyo about the ghost (\"it's a cat, Pyo-ya, there's a cat in the wall\" / \"cats don't *sigh*, hyung\"), and once, reaching across her for the filling, put his whole floury hand flat on the small of her back to steady himself, and left it there one second longer than the filling needed, and Mrs. Bang, at the far end, folded a dumpling so hard it burst." },
+      { n: "Mr. Oh came in at two for his coffee, in his good coat, smelling very strongly of menthol, and the whole table went quiet in two languages at once, and he looked at all of them, and at the flour, and at Auntie Song, who was smiling at her rolling pin, and at Mrs. Bang, who wasn't, and took his coffee to the gatehouse without a word." },
+      { s: 'auntie', f: 'happy', t: "*Tuesday. Bridge day.*" },
+      { n: "Solar didn't translate that one. She didn't have to. Mrs. Bang had understood every word, for once, and laughed so suddenly she had to put her forehead on the back of her floury wrist." },
       { n: "Three hundred and six, in the end. Pyo counted. Mrs. Bang made him count again. Auntie Song had already gone back to her chair by the stove, boots up on the fender, eyes shut, pretending to sleep, which in this house meant she was listening to everything." }
     ] },
 
@@ -473,6 +510,12 @@
           { n: "Twenty-three. Every time. Nobody had taken one." }
         ] }
       ] },
+      // Nov 11 2026 (Kat): length. The harbor road at night is still the harbor road.
+      { n: "At the lights by the ferry terminal there were four young men outside a sashimi place with their cigarettes, in good jackets, not from the quay and not from either house, and one of them looked at the car. At the plates. Then through the back window, at her." },
+      { n: "Mr. Oh didn't turn his head. The locks went down, all four, with one small sound, and his right hand came off the wheel and lay along the top of the passenger seat, loose, the way a man rests his arm, and stayed there until the light changed." },
+      { s: 'solar', f: 'neutral', t: "Do you know them?" },
+      { s: 'mroh', f: 'neutral', t: "No." },
+      { n: "That was all. *No*, the way he said *seatbelt*. But he took the long way up the hill, behind the church, the road with no lamps, and watched the mirror the whole way, and she watched him watch it, and neither of them said that this was what the city was now, for a daughter who'd been away with a fever, in the week the houses were counting the Seollal money." },
       { n: "At the foot of the steps he got out and opened her door, as he had done since she was seven, and stood beside it with the cold coming off the harbor, and she got out, and he shut it." },
       { s: 'mroh', f: 'neutral', t: "Home now." }
     ] },

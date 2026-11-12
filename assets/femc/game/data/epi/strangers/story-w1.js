@@ -5,7 +5,9 @@
    them). epi-s-crossroads: lines inside the Haechan branch (her hands under his sweatshirt; "Ask me after the moon.") and
    the Jungwon branch (she steps through the gate; forehead to forehead under the lanterns, not a kiss). Week 1 stays near
    misses on purpose: the epilogue's first kisses are still the annex (2/26) and 'four hands' / the tank. New scenes for the
-   week are in people-spice.js. */
+   week are in people-spice.js.
+   Length (Kat, Nov 11): epi-s-humming gains the kitchen after the song (Mrs. Bang and her rug beater, a choice to tell her or
+   not, no flag; Haechan at the back-door glass; her grandmother's boat song; "Leave the light on"). */
 /* Nov 11 2026 (Kat approved): cover stories for the boys' own absences. epi-s-kitchen: Pyo and Mr. Oh, Haechan 'came back from Busan' (only Appa and Mr. Oh know there was no job). epi-s-step: in private, Haechan's Busan and Jungwon's 'Seoul. My father's idea. Nobody checked.' No flag, gate or choice changed. */
 /* The strangers epilogue, week 1 (Sun 2/17 - Sat 2/23/2013): the story events. Epilogue batch 7, writer A.
    Home and the cover. Stage 0, then 1 from 2/20. The house holds a lie for her (the fever over Seollal) and she learns to hold
@@ -724,6 +726,48 @@
     { n: "The armchair by the stove was empty. The worn cushion with nobody's shape in it. The stove was cold; she put her hand flat on the iron to be sure, and it was cold as the step outside, cold for hours. The kettle cold. The dumpling bowls stacked and dry on the rack where Auntie Song had left them at nine. Nothing moved. The fridge hummed. Through the door of the little room off the kitchen, Mrs. Bang was snoring, steady and enormous, a woman who had not been singing in her life." },
     { n: "Solar stood in the middle of the bright kitchen in her socks with her hair down and her hand still flat on the cold stove, and waited, and nothing happened." },
     { n: "Nothing at all. That was the thing about it. No green. No bell. The clock in the hall ticking on, normally. Just a song, and then not a song, and a chair with nobody in it, and the calendar on its nail saying fifty-two in her father's square black pen." },
+    // Nov 11 2026 (Kat): length. The house wakes up round her; nobody else heard it, and she doesn't say.
+    { n: "The snoring stopped." },
+    { n: "Mrs. Bang came out of the little room in her quilted dressing gown with her hair in its net and her eyes screwed up against the tube light, the rug beater in one hand, held low and businesslike, the way another woman might hold a handbag, and looked at Solar standing in the middle of her kitchen with one hand on her cold stove." },
+    { s: 'mrsbang', f: 'surprised', t: "Aigoo. I thought it was a burglar." },
+    { s: 'solar', f: 'neutral', t: "With the light on?" },
+    { s: 'mrsbang', f: 'neutral', t: "The stupid ones turn the light on. Why's your hand on my stove? It's off. It's been off since nine. Are you cold? You're cold. Look at your feet." },
+    { n: "She put the rug beater down on the table, where it lay among the salt and the soy sauce like a perfectly ordinary kitchen thing, and filled the kettle, and lit the gas under it, and the blue flame came up with its small soft cough, and the kitchen was a kitchen again." },
+    { s: 'solar', f: 'neutral', t: "Mrs. Bang. Did you hear anything? Just now. Before the light." },
+    { s: 'mrsbang', f: 'neutral', t: "I heard you on the seventh stair. You walk like your father on it. Heel first. Why?" },
+    { n: "Solar looked at the armchair. The worn cushion. Nobody's shape in it." },
+    { choose: [
+      { t: "Somebody was singing. In here.", stat: { courage: 1 }, then: [
+        { s: 'solar', f: 'serious', t: "Somebody was singing. In here. Auntie Song's song." },
+        { n: "Mrs. Bang's hands stopped on the tea tin. Only for a second. Then they went on, opening it, spooning the roasted barley into the pot, two, three, a fourth for luck." },
+        { s: 'mrsbang', f: 'neutral', t: "Auntie Song is in Chinatown in her bed with a hot-water bottle and her teeth in a glass. I put her on the bus myself." },
+        { s: 'mrsbang', f: 'serious', t: "Was it loud?" },
+        { s: 'solar', f: 'neutral', t: "No. The Sunday kind." },
+        { s: 'mrsbang', f: 'neutral', t: "Then it was a dream, and you'll drink this, and you'll go up." },
+        { n: "She said it very firmly. She said it the way she'd said *thirty-nine point four* to a whole kitchen on Sunday, to make it so. And then, with her back turned, pouring, so quietly Solar almost missed it, she said *the Sunday kind* again to herself, as if she were checking the weight of it in her hand." }
+      ] },
+      { t: "Nothing. I couldn't sleep.", then: [
+        { s: 'solar', f: 'neutral', t: "Nothing. I couldn't sleep. I came down for water." },
+        { s: 'mrsbang', f: 'neutral', t: "With your hand on the stove." },
+        { s: 'solar', f: 'neutral', t: "It's a good stove." },
+        { s: 'mrsbang', f: 'happy', t: "It's the best stove in Incheon. I've told your father for twenty-six years. Sit down." },
+        { n: "So she had the fever lie and the water lie in her now, both, one on top of the other, and she sat at the table under the long light with both of them and didn't feel either, only the cold coming up from the floor through her socks." }
+      ] }
+    ] },
+    { n: "There was a tap on the glass of the back door." },
+    { n: "Three knuckles, light. A shape in a black jacket on the step, beside the koi bucket, with his collar up and his breath fogging the pane, peering in at the two of them with his hands cupped round his eyes like a boy at a shop window." },
+    { s: 'mrsbang', f: 'neutral', t: "And now the other one." },
+    { n: "She unbolted it. Haechan came in on a wave of cold and cinnamon and stood on the mat with his boots on, very correct, the way he stood in the kitchen at this hour when he hadn't been invited, and looked at the light, and Solar's feet, and the rug beater on the table, and the armchair." },
+    { s: 'haechan', f: 'neutral', t: "The light went on. I thought someone was after the yakgwa." },
+    { s: 'mrsbang', f: 'neutral', t: "Someone always is. Sit. Boots." },
+    { n: "He sat. He took his boots off, toes to the wall, and sat across the corner of the table from Solar in his socks, and Mrs. Bang put a cup of barley tea in front of each of them without asking either, and a saucer between them with two yakgwa on it, and lowered herself into a chair at the end with her own cup, and the three of them sat at the big table at midnight under the long humming tube, like a night shift at the quay office waiting for a boat." },
+    { n: "Haechan didn't ask. He looked at the armchair once, and then at Solar, a quick look, the one he used on doors, and she gave him back nothing at all, and he read the nothing, and drank his tea." },
+    { s: 'mrsbang', f: 'neutral', t: "In my village, when someone couldn't sleep, my grandmother sang them the boat song. Not that Chinese one. Ours. The one with the oars." },
+    { s: 'haechan', f: 'happy', t: "Sing it, ajumma." },
+    { s: 'mrsbang', f: 'neutral', t: "I'll hit you." },
+    { n: "But she sang it. Two lines, low, in a thick old voice that went right down to the bottom of the note and sat there, with her eyes on her cup, the oars going in and out of the water, and stopped, and drank her tea, and said nothing about it, and neither did they." },
+    { n: "It was the opposite of the other song in every way a song could be. Solar understood, sitting there with her hands round the cup, that Mrs. Bang had chosen it for exactly that reason, and had not heard a thing, and had heard enough." },
+    { s: 'mrsbang', f: 'neutral', t: "Leave the light on when you go up. I'll sleep better. Haechan-ah, take the yakgwa, you're going to anyway." },
     { n: "She didn't turn the light off when she went back up. She left it burning over the empty kitchen all night, like a lamp in a window for somebody who'd said they'd be late." },
     { n: "Up in her room, she lay awake with the door open a crack and listened to the house for a long time. It didn't sing again. She found she was listening anyway for the other kind. The loud kind." },
     { n: "It didn't come. Not that night." }
