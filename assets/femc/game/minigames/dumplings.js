@@ -40,7 +40,16 @@
      filling, pleat it, then fry it (into the pan, brown, water to the line, lid); wetting / folding, the prep (chop, stir,
      season) and plating are named on the last card. Practice scores nothing (no R.steps, no tray, no talk) and every practice
      timer is dropped after (R.gen); then the real game starts at the filling. result.tutorial = 'done' | 'skipped' | 'seen'.
-     Pause (Esc) → How to play replays it as a walkthrough over the paused kitchen (Next on every step, nothing to do). */
+     Pause (Esc) → How to play replays it as a walkthrough over the paused kitchen (Next on every step, nothing to do).
+
+   Polish pass (Nov 11 2026, Kat: "every minigame needs as many visuals as possible, as much animation as possible"; looks only,
+   no rule, score or result changed): scallion rounds fly off the knife, the filling swirls, soy drips splash, flour clouds off
+   the pin, the filling plops (squash + splat), water beads on the rim, the fold flops, each pleat pinches with a star, the
+   pan shimmers with heat and spits oil, steam billows, the lid rattles and fogs up with droplets, the plate steams and
+   sparkles with a shine sweep when served; every step title slides in, each score pops its +points beside GREAT / OKAY / OOPS
+   (stars on GREAT), the talkers bounce as they speak, warm light and drifting steam behind the counter, and the end stamp
+   slams with a shockwave and a shake while the score ticks up. o.calm (Reduce flashes) and o.perf (Performance) default to
+   the game's settings: calm = no shine sweeps or flashing sparkles, perf = a third of the particles, no haze or blur. */
 window.FemcDumplings = (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -181,14 +190,17 @@ window.FemcDumplings = (() => {
       const tutOn = {}; const tutHit = k => { const f = tutOn[k]; delete tutOn[k]; f && f(); }; // practice: 'next' = a step finished, 'brown' = all in the pan
       let F = FILLINGS.classic;
       const el = document.createElement('div');
-      el.className = 'mg-dmp' + (reduced.matches ? ' still' : '');
+      const GS0 = (() => { try { return (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {}; } catch (e) { return {}; } })();
+      const CALM = o.calm ?? !!GS0.calm, PERF = o.perf ?? !!GS0.perf;
+      el.className = 'mg-dmp' + (reduced.matches ? ' still' : '') + (CALM ? ' calm' : '') + (PERF ? ' perf' : '');
       el.innerHTML = `
         <div class="dmp-top"><b>12/31 · the kitchen</b><span class="dmp-step"></span><ol class="dmp-tray" aria-label="Dumplings"></ol><ol class="dmp-prog" aria-label="Steps"></ol></div>
         <div class="dmp-talk h"><img alt="Haechan" src="${FACE('h', 'neutral')}"><p aria-live="polite"><b>Haechan</b><span></span></p></div>
         <div class="dmp-talk s"><img alt="Solar" src="${FACE('s', 'neutral')}"><p aria-live="polite"><b>Solar</b><span></span></p></div>
         <div class="dmp-counter"><img class="dmp-counter-art" src="${ART('counter')}" alt="" onerror="this.remove()"><div class="dmp-flour"></div>
           <svg class="dmp-svg" viewBox="0 0 300 200" aria-hidden="true"><g class="defs"></g><g class="art"></g><g class="scene"></g><g class="over"></g></svg><div class="dmp-fx" aria-hidden="true"></div>
-          <div class="dmp-grade" aria-live="polite"></div><div class="dmp-choose" hidden></div></div>
+          <div class="dmp-grade" aria-live="polite"></div><div class="dmp-pts" aria-hidden="true"></div><div class="dmp-choose" hidden></div></div>
+        <div class="dmp-amb" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
         <div class="dmp-ctl"><div class="dmp-meter"><i class="zone"></i><i class="gold"></i><i class="fillbar"></i><i class="mark"></i></div><p class="dmp-tip"></p><button type="button" class="dmp-go" hidden></button></div>
         <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
@@ -203,7 +215,7 @@ window.FemcDumplings = (() => {
           return `<li class="on ${k}" title="${TRAY[k]}"><img src="${ART('icon-' + TRAY[k])}" alt="${TRAY[k]}" onerror="this.remove()"><svg viewBox="0 0 60 40" aria-hidden="true">${dumpling({ cx: 30, cy: 28, w: 24, h: 11, pleats: d.pleats, q: d.quality === 'poor' ? 'poor' : null, brown: R.cooked ? { golden: '#d9a25a', burnt: '#5a3420', pale: null }[R.cook] : null })}</svg></li>`;
         }).join('');
       };
-      const setDefs = () => { $('.defs').innerHTML = defs(F); };
+      const setDefs = () => { $('.defs').innerHTML = defs(F); el.style.setProperty('--fa', F.a); el.style.setProperty('--fb', F.b); };
 
       /* the conversation queue: one bubble at a time, never blocking */
       const talkQ = []; let talkT = null;
@@ -213,7 +225,7 @@ window.FemcDumplings = (() => {
         if (!L) return;
         const [who, f, t] = L, box = $(`.dmp-talk.${who}`), im = box.querySelector('img');
         if (!im.src.endsWith(`/${f}.webp`)) im.src = FACE(who, f);
-        box.querySelector('span').textContent = t; box.classList.add('on'); K.blip();
+        box.querySelector('span').textContent = t; box.classList.add('on'); once(box, 'speak', 500); K.blip();
         talkT = setTimeout(showLine, 1300 + t.length * 38);
       };
       const say = (lines, now = true) => { if (!lines) return; if (now) talkQ.length = 0; talkQ.push(...lines); if (now || !el.querySelector('.dmp-talk.on')) showLine(); };
@@ -229,11 +241,22 @@ window.FemcDumplings = (() => {
       };
       const btn = (label, on) => { const b = $('.dmp-go'); b.hidden = !label; b.textContent = label || ''; b.onclick = null; b.onpointerdown = null; b.onpointerup = null; if (on) Object.assign(b, on); };
       const pt = e => { const r = svgEl.getBoundingClientRect(), s = Math.min(r.width / 300, r.height / 200), ox = r.left + (r.width - 300 * s) / 2, oy = r.top + (r.height - 200 * s) / 2; return { x: (e.clientX - ox) / s, y: (e.clientY - oy) / s }; };
-      const puff = (x, y, cls = 'steam', n = 1) => { if (reduced.matches) return; for (let i = 0; i < n; i++) { const p = document.createElement('i'); p.className = 'dmp-p ' + cls; p.style.left = `${x / 3 + (Math.random() - 0.5) * 6}%`; p.style.top = `${y / 2}%`; p.style.animationDelay = `${i * 0.08}s`; FX.appendChild(p); setTimeout(() => p.remove(), 1600); } };
-      const pop = (txt, kind) => { const g = $('.dmp-grade'); g.textContent = txt; g.className = 'dmp-grade on ' + kind; clearTimeout(pop.t); pop.t = setTimeout(() => g.classList.remove('on'), 1100); };
+      const puff = (x, y, cls = 'steam', n = 1) => {
+        if (reduced.matches) return; if (PERF) { if (n > 1) n = Math.ceil(n / 3); else if (cls !== 'steam' && Math.random() < 0.5) return; }
+        for (let i = 0; i < n; i++) { const p = document.createElement('i'); p.className = 'dmp-p ' + cls; p.style.left = `${x / 3 + (Math.random() - 0.5) * 6}%`; p.style.top = `${y / 2}%`; p.style.animationDelay = `${i * 0.08}s`; p.style.setProperty('--dx', `${Math.round((Math.random() - 0.5) * 60)}px`); p.style.setProperty('--dy', `${Math.round(-18 - Math.random() * 40)}px`); p.style.setProperty('--r', `${Math.round(Math.random() * 360)}deg`); FX.appendChild(p); setTimeout(() => p.remove(), 1600); }
+        while (FX.children.length > 70) FX.children[0].remove();
+      };
+      /* polish: one-shot classes, step titles sliding in, star bursts (looks only) */
+      const once = (node, cls, ms) => { if (!node || reduced.matches) return; node.classList.remove(cls); void node.offsetWidth; node.classList.add(cls); clearTimeout(node['_t' + cls]); node['_t' + cls] = setTimeout(() => node.classList.remove(cls), ms); };
+      const bump = cls => { if (reduced.matches) return; svgEl.classList.remove(cls); void svgEl.getBBox(); svgEl.classList.add(cls); };
+      const stepT = t => { const n = $('.dmp-step'); n.textContent = t; once(n, 'in', 500); };
+      const stars = (x, y, n = 8) => { if (CALM) n = Math.min(n, 3); puff(x, y, 'star', n); };
+      const pop = (txt, kind, pts) => { const g = $('.dmp-grade'); g.textContent = txt; g.className = 'dmp-grade on ' + kind; clearTimeout(pop.t); pop.t = setTimeout(() => g.classList.remove('on'), 1100);
+        const q = $('.dmp-pts'); if (q) { q.textContent = pts == null ? '' : `+${pts}`; q.className = 'dmp-pts ' + kind; if (pts != null) once(q, 'on', 1100); }
+        if (kind === 'great') stars(150, 40, 8); };
       const STEPS = ['pick', 'chop', 'stir', 'season', ...Array.from({ length: N }, (_, i) => `wrap${i + 1}`), 'pan', 'plate'];
       const prog = cur => { $('.dmp-prog').innerHTML = STEPS.map(s => `<li class="${s === cur ? 'now' : R.steps[s] != null || (s.startsWith('wrap') && R.made[+s.slice(4) - 1]) || (s === 'pick' && cur !== 'pick') ? 'done' : ''}"></li>`).join(''); };
-      const score = (id, v) => { if (!R.practice) R.steps[id] = Math.round(clamp(v, 0, 100)); const k = v >= 85 ? 'great' : v >= 55 ? 'fine' : 'poor'; talk(k); pop(k === 'great' ? 'GREAT!' : k === 'fine' ? 'OKAY' : 'OOPS', k); k === 'great' ? (K.ding(), setTimeout(K.sparkle, 100)) : k === 'poor' ? K.boing() : K.pinch(); return k; };
+      const score = (id, v) => { if (!R.practice) R.steps[id] = Math.round(clamp(v, 0, 100)); const k = v >= 85 ? 'great' : v >= 55 ? 'fine' : 'poor'; talk(k); pop(k === 'great' ? 'GREAT!' : k === 'fine' ? 'OKAY' : 'OOPS', k, Math.round(clamp(v, 0, 100))); k === 'great' ? (K.ding(), setTimeout(K.sparkle, 100)) : k === 'poor' ? K.boing() : K.pinch(); return k; };
       let loopFn = null;
       const next = (fn, ms = 1300) => { loopFn = null; const g = R.gen; if (R.practice) return void setTimeout(() => g === R.gen && tutHit('next'), Math.min(ms, 900)); setTimeout(() => !R.over && g === R.gen && fn(), ms); };
       const choose = (title, opts, onPick) => {
@@ -244,7 +267,7 @@ window.FemcDumplings = (() => {
 
       /* ── 0. pick the filling ── */
       function pickFilling() {
-        R.step = 'pick'; prog('pick'); $('.dmp-step').textContent = 'What are we making?'; $('.dmp-tip').textContent = 'Pick a filling.'; btn(null); meter(null);
+        R.step = 'pick'; prog('pick'); stepT('What are we making?'); $('.dmp-tip').textContent = 'Pick a filling.'; btn(null); meter(null);
         setDefs(); G.innerHTML = `${shadow(150, 168, 110, 12)}<ellipse cx="150" cy="120" rx="108" ry="56" fill="url(#dg-bowl)" stroke="#e2c9d6" stroke-width="3"/>`;
         say(TALK.open[0]);
         choose('The filling', FILLINGS, id => { R.filling = id; F = FILLINGS[id]; setDefs(); say(F.say); next(chop, 2600); });
@@ -252,7 +275,7 @@ window.FemcDumplings = (() => {
 
       /* ── 1. chop the scallions ── */
       function chop() {
-        R.step = 'chop'; prog('chop'); talk('chop'); $('.dmp-step').textContent = 'Chop the scallions';
+        R.step = 'chop'; prog('chop'); talk('chop'); stepT('Chop the scallions');
         $('.dmp-tip').textContent = 'Tap (Space or click) as the knife reaches each mark.';
         const MARKS = 8; let cut = 0, x = 40, dir = 1, sp = 70, hits = 0; const piles = [];
         const draw = () => {
@@ -267,6 +290,7 @@ window.FemcDumplings = (() => {
         const hit = () => {
           if (R.step !== 'chop' || R.paused) return;
           const off = Math.abs(x - 50); K.chop(); if (!reduced.matches) { svgEl.classList.remove('thunk'); void svgEl.getBBox(); svgEl.classList.add('thunk'); }
+          puff(60 + cut * 22 + 22, 116, 'chopbit', off < 8 ? 4 : 2); if (off < 8) stars(60 + cut * 22 + 22, 100, 2);
           hits += off < 8 ? 100 : off < 18 ? 70 : 25; cut++; piles.push([60 + cut * 6 + Math.random() * 18, 140 + Math.random() * 10]); sp *= 1.07;
           if (cut >= MARKS) { loopFn = null; R.step = 'wait'; draw(); score('chop', hits / MARKS); next(stir, 1800); }
         };
@@ -278,7 +302,7 @@ window.FemcDumplings = (() => {
 
       /* ── 2. stir ── */
       function stir() {
-        R.step = 'stir'; prog('stir'); talk('stir'); $('.dmp-step').textContent = 'Mix the filling';
+        R.step = 'stir'; prog('stir'); talk('stir'); stepT('Mix the filling');
         $('.dmp-tip').textContent = 'Stir in circles: drag round the bowl (or tap ← → in turn).'; btn(null);
         let turns = 0, last = null, spoonA = 0, lastKey = null, wobble = 0; const GOAL = 3;
         const draw = () => {
@@ -292,7 +316,7 @@ window.FemcDumplings = (() => {
         const turnBy = da => {
           if (R.step !== 'stir' || R.paused) return;
           spoonA += da; turns += Math.abs(da) / (Math.PI * 2); wobble += Math.abs(da);
-          if (wobble > 1.4) { wobble = 0; K.stir(); if (Math.random() < 0.3) K.squelch(); }
+          if (wobble > 1.4) { wobble = 0; K.stir(); puff(150 + Math.cos(spoonA) * 50, 118 + Math.sin(spoonA) * 22, 'swirl', 2); if (Math.random() < 0.3) { K.squelch(); bump('pinch'); } }
           if (turns >= GOAL) { R.step = 'wait'; draw(); score('stir', 80 + Math.random() * 20); next(season, 1800); return; }
           draw();
         };
@@ -303,7 +327,7 @@ window.FemcDumplings = (() => {
 
       /* ── 3. season ── */
       function season() {
-        R.step = 'season'; prog('season'); talk('season'); $('.dmp-step').textContent = 'Season it';
+        R.step = 'season'; prog('season'); talk('season'); stepT('Season it');
         $('.dmp-tip').textContent = 'Hold to tip the soy sauce (Space or the button). Let go at the line.';
         let lvl = 0, holding = false;
         const draw = () => {
@@ -316,11 +340,11 @@ window.FemcDumplings = (() => {
         const set = on => {
           if (R.step !== 'season' || R.paused) return;
           if (on && !holding) { holding = true; K.pourOn(1100); }
-          if (!on && holding) { holding = false; K.pourOff(); R.step = 'wait'; loopFn = null; draw(); score('season', 100 - Math.abs(lvl - 70) * 4); next(roll, 1800); }
+          if (!on && holding) { holding = false; K.pourOff(); R.step = 'wait'; loopFn = null; draw(); puff(150, 126, 'soy', 4); bump('pinch'); score('season', 100 - Math.abs(lvl - 70) * 4); next(roll, 1800); }
           draw();
         };
         btn('Hold to pour', { onpointerdown: e => { e.preventDefault(); set(true); }, onpointerup: () => set(false) });
-        loopFn = dt => { if (holding) { lvl = Math.min(100, lvl + dt * 32); if (Math.random() < dt * 8) K.drip(); draw(); } };
+        loopFn = dt => { if (holding) { lvl = Math.min(100, lvl + dt * 32); if (Math.random() < dt * 8) { K.drip(); puff(152, 124, 'soy', 1); } draw(); } };
         R.onKey = (k, up) => k === ' ' && set(!up); R.onTap = null; R.onDrag = null;
         draw();
       }
@@ -329,7 +353,7 @@ window.FemcDumplings = (() => {
       let D = null;
       function roll() {
         const i = R.made.length; D = { i, roll: 0, fill: 0, wet: 0, pleats: [], q: {} };
-        R.step = 'roll'; prog(`wrap${i + 1}`); talk('roll'); $('.dmp-step').textContent = `Dumpling ${i + 1} of ${N} · Roll`;
+        R.step = 'roll'; prog(`wrap${i + 1}`); talk('roll'); stepT(`Dumpling ${i + 1} of ${N} · Roll`);
         $('.dmp-tip').textContent = 'Drag the rolling pin back and forth (or ← →). Done when the meter is in the pink.';
         let pinX = 0, lastX = null, lastDir = 0;
         const hands = has('hands'); // Kat's hands: the pin at 69% of the picture's height, handles 17-83% of its width
@@ -344,7 +368,7 @@ window.FemcDumplings = (() => {
         const by = dx => {
           if (R.step !== 'roll' || R.paused) return;
           pinX = clamp(pinX + dx * 0.6, -60, 60); const d = Math.sign(dx);
-          if (d && d !== lastDir) { lastDir = d; D.roll = Math.min(140, D.roll + 7 + Math.random() * 3); K.roll(); if (!reduced.matches) { svgEl.classList.remove('squish'); void svgEl.getBBox(); svgEl.classList.add('squish'); } puff(150 + (Math.random() - 0.5) * 100, 150, 'flour', 2); }
+          if (d && d !== lastDir) { lastDir = d; D.roll = Math.min(140, D.roll + 7 + Math.random() * 3); K.roll(); if (!reduced.matches) { svgEl.classList.remove('squish'); void svgEl.getBBox(); svgEl.classList.add('squish'); } puff(150 + (Math.random() - 0.5) * 100, 150, 'flour', 3); }
           draw();
         };
         const doneRoll = () => { if (R.step !== 'roll') return; R.step = 'wait'; OVER.innerHTML = ''; OVER.removeAttribute('transform'); const v = D.roll < 85 ? 40 + D.roll * 0.3 : D.roll > 112 ? 100 - (D.roll - 112) * 3 : 100 - Math.abs(D.roll - 98) * 2; D.q.roll = v; score('roll', v); next(spoon, 1100); };
@@ -354,7 +378,7 @@ window.FemcDumplings = (() => {
         R.onTap = null; loopFn = null; draw();
       }
       function spoon() {
-        R.step = 'spoon'; talk('spoon'); $('.dmp-step').textContent = `Dumpling ${D.i + 1} of ${N} · Filling`;
+        R.step = 'spoon'; talk('spoon'); stepT(`Dumpling ${D.i + 1} of ${N} · Filling`);
         $('.dmp-tip').textContent = 'Hold to spoon on the filling. Let go in the pink.';
         let holding = false;
         const draw = () => {
@@ -367,16 +391,16 @@ window.FemcDumplings = (() => {
         const set = on => {
           if (R.step !== 'spoon' || R.paused) return;
           if (on && !holding) { holding = true; K.scoop(); }
-          if (!on && holding) { holding = false; K.plop(); R.step = 'wait'; loopFn = null; draw(); const v = 100 - Math.abs(D.fill - 68) * 3; D.q.spoon = v; D.overfill = D.fill > 82; score('spoon', v); next(wet, 1100); }
+          if (!on && holding) { holding = false; K.plop(); bump('plop'); puff(150, 132, 'splat', 5); R.step = 'wait'; loopFn = null; draw(); const v = 100 - Math.abs(D.fill - 68) * 3; D.q.spoon = v; D.overfill = D.fill > 82; score('spoon', v); next(wet, 1100); }
           draw();
         };
         btn('Hold to scoop', { onpointerdown: e => { e.preventDefault(); set(true); }, onpointerup: () => set(false) });
-        loopFn = dt => { if (holding) { D.fill = Math.min(100, D.fill + dt * 36); draw(); } };
+        loopFn = dt => { if (holding) { D.fill = Math.min(100, D.fill + dt * 36); if (Math.random() < dt * 4) puff(150, 128, 'splat', 1); draw(); } };
         R.onKey = (k, up) => k === ' ' && set(!up); R.onTap = () => set(true); R.onTapUp = () => set(false); R.onDrag = null;
         draw();
       }
       function wet() {
-        R.step = 'wet'; talk('wet'); $('.dmp-step').textContent = `Dumpling ${D.i + 1} of ${N} · Wet the edge`;
+        R.step = 'wet'; talk('wet'); stepT(`Dumpling ${D.i + 1} of ${N} · Wet the edge`);
         $('.dmp-tip').textContent = 'Trace the rim with your finger (drag round the edge), or hold Space to go round.'; btn(null);
         const SEG = 36, got = new Array(SEG).fill(false); let ang = -Math.PI / 2, hold = false, left = 9, acc = 0;
         const draw = () => {
@@ -387,14 +411,14 @@ window.FemcDumplings = (() => {
           meter({ zone: [90, 100], fill: got.filter(Boolean).length / SEG * 100 });
         };
         const end = c => { if (R.step !== 'wet') return; R.step = 'wait'; loopFn = null; D.q.wet = c * 100; D.wet = c; score('wet', c * 100); next(fold, 1000); };
-        const mark = a => { ang = a; const k = ((Math.floor((a / (Math.PI * 2)) * SEG) % SEG) + SEG) % SEG; if (!got[k]) { got[k] = true; if (Math.random() < 0.3) K.drip(); } if (got.every(Boolean)) end(1); else draw(); };
+        const mark = a => { ang = a; const k = ((Math.floor((a / (Math.PI * 2)) * SEG) % SEG) + SEG) % SEG; if (!got[k]) { got[k] = true; if (Math.random() < 0.3) { K.drip(); puff(150 + Math.cos(a) * 80, 140 + Math.sin(a) * 51, 'bead', 1); } } if (got.every(Boolean)) end(1); else draw(); };
         R.onDrag = (p, ph) => { if (ph === 'up') return; const dx = p.x - 150, dy = (p.y - 140) / 0.64, r = Math.hypot(dx, dy); if (Math.abs(r - 80) < 26) mark(Math.atan2(dy, dx)); };
         R.onKey = (k, up) => { if (k === ' ') hold = !up; };
         loopFn = dt => { if (hold) mark(ang + dt * 2.6); acc += dt; if (acc >= 1) { acc = 0; if (--left <= 0) end(got.filter(Boolean).length / SEG); } };
         R.onTap = null; draw();
       }
       function fold() {
-        R.step = 'fold'; talk('fold'); $('.dmp-step').textContent = `Dumpling ${D.i + 1} of ${N} · Fold`;
+        R.step = 'fold'; talk('fold'); stepT(`Dumpling ${D.i + 1} of ${N} · Fold`);
         $('.dmp-tip').textContent = 'Drag the front edge up and over (or hold ↑). Let go when the edges meet.'; btn(null);
         let f = 0, startY = null, hold = false;
         const draw = () => {
@@ -403,14 +427,14 @@ window.FemcDumplings = (() => {
             ${dumpling({ cx: 150, cy: 150, w: 82, h: Math.max(4, H) })}${t > 1.05 ? '<ellipse cx="150" cy="104" rx="30" ry="6" fill="#e9dccb" opacity=".8"/>' : ''}`;
           meter({ zone: [80 * 0.8, 96 * 0.8], gold: [86 * 0.8, 92 * 0.8], fill: (f / 1.25) * 100 });
         };
-        const doneFold = () => { if (R.step !== 'fold') return; R.step = 'wait'; loopFn = null; K.fold(); const v = f > 1.12 ? 60 : f < 0.95 ? 45 + f * 30 : 100; D.q.fold = v * (0.4 + D.wet * 0.6); score('fold', D.q.fold); next(pleat, 1100); };
+        const doneFold = () => { if (R.step !== 'fold') return; R.step = 'wait'; loopFn = null; K.fold(); bump('flop'); puff(150, 150, 'flour', 4); const v = f > 1.12 ? 60 : f < 0.95 ? 45 + f * 30 : 100; D.q.fold = v * (0.4 + D.wet * 0.6); score('fold', D.q.fold); next(pleat, 1100); };
         R.onDrag = (p, ph) => { if (ph === 'down') startY = p.y; if (ph === 'move' && startY != null) { f = clamp((startY - p.y) / 70, 0, 1.25); draw(); } if (ph === 'up' && startY != null) { startY = null; if (f > 0.3) doneFold(); } };
         R.onKey = (k, up) => { if (k === 'ArrowUp') { hold = !up; if (up && f > 0.3) doneFold(); } };
         loopFn = dt => { if (hold) { f = Math.min(1.25, f + dt * 0.9); draw(); } };
         R.onTap = null; draw();
       }
       function pleat() {
-        R.step = 'pleat'; talk('pleat'); $('.dmp-step').textContent = `Dumpling ${D.i + 1} of ${N} · Pleat`;
+        R.step = 'pleat'; talk('pleat'); stepT(`Dumpling ${D.i + 1} of ${N} · Pleat`);
         $('.dmp-tip').textContent = 'Swipe across each glowing point along the rim, in order (or tap Space on the pulse).'; btn(null);
         const P = 7, W = 82, H = 37; let k = 0, pulse = 0, last = null;
         const pos = j => rim(0.16 + (j / (P - 1)) * 0.68, W, H);
@@ -422,7 +446,7 @@ window.FemcDumplings = (() => {
         const crimp = good => {
           if (R.step !== 'pleat' || R.paused) return;
           let p = good; if (D.q.roll < 50 && p === 1 && Math.random() < 0.3) p = 0;
-          D.pleats.push(p); p ? K.pinch() : K.tear(); if (!reduced.matches) { svgEl.classList.remove('pinch'); void svgEl.getBBox(); svgEl.classList.add('pinch'); }
+          D.pleats.push(p); p ? K.pinch() : K.tear(); { const [px, py] = pos(k); puff(px, py - 4, p === 2 ? 'star' : p ? 'pinchfx' : 'tearfx', p === 2 && !CALM ? 3 : 1); } if (!reduced.matches) { svgEl.classList.remove('pinch'); void svgEl.getBBox(); svgEl.classList.add('pinch'); }
           k++; draw(); if (k >= P) finishPleat();
         };
         const finishPleat = () => {
@@ -431,7 +455,7 @@ window.FemcDumplings = (() => {
           const all = [D.q.roll, D.q.spoon, D.q.fold, pq].reduce((a, b) => a + b, 0) / 4 - (D.overfill ? 15 : 0);
           const k2 = all >= 82 ? 'great' : all >= 55 ? 'fine' : 'poor'; D.quality = k2; if (!R.practice) { R.made.push(D); R.steps[`wrap${D.i + 1}`] = Math.round(clamp(all, 0, 100)); tray(); }
           G.innerHTML = dumpling({ cx: 150, cy: 150, w: W, h: H, pleats: D.pleats, q: k2 });
-          svgEl.classList.add('rev-' + k2); talk(k2); pop(k2 === 'great' ? 'PERFECT!' : k2 === 'fine' ? 'OKAY' : 'A BAG', k2); k2 === 'great' ? (K.ding(), setTimeout(K.sparkle, 100)) : k2 === 'poor' ? K.boing() : K.pinch();
+          svgEl.classList.add('rev-' + k2); if (k2 === 'great') stars(150, 100, 10); talk(k2); pop(k2 === 'great' ? 'PERFECT!' : k2 === 'fine' ? 'OKAY' : 'A BAG', k2); k2 === 'great' ? (K.ding(), setTimeout(K.sparkle, 100)) : k2 === 'poor' ? K.boing() : K.pinch();
           const g = R.gen; if (R.practice) return void setTimeout(() => { svgEl.classList.remove('rev-' + k2); if (g === R.gen) tutHit('next'); }, 1100);
           setTimeout(() => { svgEl.classList.remove('rev-' + k2); svgEl.classList.add('slide'); setTimeout(() => { svgEl.classList.remove('slide'); if (g === R.gen) R.made.length >= N ? pan() : roll(); }, 450); }, 1700);
         };
@@ -449,7 +473,7 @@ window.FemcDumplings = (() => {
 
       /* ── 9-10. the pan ── */
       function pan() {
-        R.step = 'pan'; prog('pan'); talk('pan'); $('.dmp-step').textContent = 'Into the pan';
+        R.step = 'pan'; prog('pan'); talk('pan'); stepT('Into the pan');
         $('.dmp-tip').textContent = 'Drag each dumpling into the pan (or Space).'; btn(null);
         const home = j => ({ x: 34, y: 62 + j * 44 });
         const slots = R.made.map((d, j) => ({ d, ...home(j), in: false, tx: 118 + j * 36, ty: 130 + (j % 2) * 8 }));
@@ -463,23 +487,23 @@ window.FemcDumplings = (() => {
             <ellipse cx="150" cy="122" rx="60" ry="14" fill="url(#dg-oil)" opacity=".8"/>`}${water > 0 ? `<ellipse cx="160" cy="134" rx="${40 + water * 0.55}" ry="${18 + water * 0.26}" fill="rgba(200,230,255,.28)"/>` : ''}
             ${slots.map(s => s.in ? dumpling({ cx: s.tx, cy: s.ty, w: 26, h: 12, pleats: s.d.pleats, brown: brown(), q: s.d.quality === 'poor' ? 'poor' : null }) : '').join('')}
             ${slots.map(s => !s.in ? dumpling({ cx: s.x, cy: s.y, w: 22, h: 10, pleats: s.d.pleats, q: s.d.quality === 'poor' ? 'poor' : null }) : '').join('')}
-            ${lid ? `<g class="lid ${phase === 'steam' ? 'up' : ''}"><ellipse cx="160" cy="${art ? 128 : 122}" rx="104" ry="${art ? 70 : 50}" fill="rgba(220,235,245,.45)" stroke="rgba(255,255,255,.7)" stroke-width="4"/><circle cx="160" cy="98" r="9" fill="#ff4f9e" stroke="#fff" stroke-width="3"/></g>` : ''}`;
+            ${lid ? `<g class="lid ${phase === 'steam' ? 'up' : 'rattle'}"><ellipse cx="160" cy="${art ? 128 : 122}" rx="104" ry="${art ? 70 : 50}" fill="rgba(220,235,245,.45)" stroke="rgba(255,255,255,.7)" stroke-width="4"/><ellipse class="fog" cx="160" cy="${art ? 128 : 122}" rx="98" ry="${art ? 64 : 45}" fill="rgba(255,255,255,.55)"/><g class="beads">${[[118, 112], [196, 120], [140, 140], [182, 98], [128, 92], [204, 140], [160, 150]].map(([x, y], i) => `<circle cx="${x}" cy="${y + (art ? 6 : 0)}" r="${2 + (i % 3)}" fill="rgba(255,255,255,.85)" style="animation-delay:${(0.6 + i * 0.3).toFixed(1)}s"/>`).join('')}</g><ellipse cx="128" cy="${art ? 100 : 98}" rx="30" ry="7" fill="rgba(255,255,255,.5)" transform="rotate(-12 128 100)"/><circle cx="160" cy="98" r="9" fill="#ff4f9e" stroke="#fff" stroke-width="3"/></g>` : ''}`;
           if (phase === 'place') meter(null);
           if (phase === 'brown') meter({ zone: [55, 85], gold: [62, 78], fill: cook * 100 });
           if (phase === 'water') meter({ zone: [55, 80], gold: [62, 72], fill: water });
         };
         const drop = j => {
           const s = slots[j]; if (!s || s.in) return; s.in = true; K.sizzleOn(); K.crackle(); puff(s.tx, s.ty - 10, 'oil', 3);
-          if (slots.every(x => x.in)) { phase = 'brown'; talk('brown'); if (R.practice) tutHit('brown'); $('.dmp-step').textContent = 'Brown the bottoms'; $('.dmp-tip').textContent = 'Wait for golden, then hold Add water (Space).'; btn('Add water', { onpointerdown: e => { e.preventDefault(); startWater(); }, onpointerup: () => stopWater() }); }
+          if (slots.every(x => x.in)) { phase = 'brown'; svgEl.classList.add('sizzle'); talk('brown'); if (R.practice) tutHit('brown'); stepT('Brown the bottoms'); $('.dmp-tip').textContent = 'Wait for golden, then hold Add water (Space).'; btn('Add water', { onpointerdown: e => { e.preventDefault(); startWater(); }, onpointerup: () => stopWater() }); }
           draw();
         };
         const startWater = () => {
-          if (phase === 'brown') { R.steps.brown = Math.round(clamp(cook < 0.55 ? 40 + cook * 60 : cook > 0.85 ? 100 - (cook - 0.85) * 400 : 100 - Math.abs(cook - 0.7) * 120, 0, 100)); R.cook = cook < 0.55 ? 'pale' : cook > 0.85 ? 'burnt' : 'golden'; phase = 'water'; talk('water'); $('.dmp-step').textContent = 'Water and lid'; $('.dmp-tip').textContent = 'Hold to pour. Let go at the line: the lid goes on.'; K.hiss(); puff(160, 120, 'steam', 6); }
+          if (phase === 'brown') { R.steps.brown = Math.round(clamp(cook < 0.55 ? 40 + cook * 60 : cook > 0.85 ? 100 - (cook - 0.85) * 400 : 100 - Math.abs(cook - 0.7) * 120, 0, 100)); R.cook = cook < 0.55 ? 'pale' : cook > 0.85 ? 'burnt' : 'golden'; phase = 'water'; talk('water'); stepT('Water and lid'); $('.dmp-tip').textContent = 'Hold to pour. Let go at the line: the lid goes on.'; K.hiss(); puff(160, 120, 'steam', 6); }
           if (phase === 'water' && !holding) { holding = true; K.pourOn(900); }
         };
         const stopWater = () => {
           if (phase !== 'water' || !holding) return; holding = false; K.pourOff();
-          R.steps.water = Math.round(clamp(100 - Math.abs(water - 67) * 3, 0, 100)); phase = 'lid'; K.lid(); K.sizzleOff(); K.steam(); btn(null); draw();
+          R.steps.water = Math.round(clamp(100 - Math.abs(water - 67) * 3, 0, 100)); phase = 'lid'; K.lid(); K.sizzleOff(); K.steam(); svgEl.classList.remove('sizzle'); puff(160, 110, 'steam', 6); btn(null); draw();
           if (!R.practice) say([['s', 'surprised', 'Is it supposed to be that loud?'], ['h', 'neutral', 'Yes. Don\'t lift it.'], ['s', 'neutral', "I wasn't going to."], ['h', 'neutral', 'You were.']]);
           const g = R.gen;
           setTimeout(() => { if (g !== R.gen) return; phase = 'steam'; puff(160, 90, 'steam', 10); K.bell(); draw(); const v = (R.steps.brown + R.steps.water) / 2; delete R.steps.brown; delete R.steps.water; score('pan', v); R.cooked = true; tray(); next(plate, 1900); }, 3000);
@@ -493,7 +517,7 @@ window.FemcDumplings = (() => {
         R.onKey = (k, up) => { if (k !== ' ') return; if (phase === 'place' && !up) drop(slots.findIndex(s => !s.in)); else if (phase === 'brown' && !up) startWater(); else if (phase === 'water') up ? stopWater() : startWater(); };
         R.onTap = null;
         loopFn = dt => {
-          if (phase === 'brown') { cook = Math.min(1, cook + dt / 9); K.sizzleTone(cook); if ((bubbleAt -= dt) <= 0) { bubbleAt = 0.08 + Math.random() * 0.2; K.crackle(); puff(110 + Math.random() * 110, 120 + Math.random() * 20, 'oil', 1); } if (cook >= 1) startWater(); draw(); }
+          if (phase === 'brown') { cook = Math.min(1, cook + dt / 9); K.sizzleTone(cook); if ((bubbleAt -= dt) <= 0) { bubbleAt = 0.08 + Math.random() * 0.2; K.crackle(); puff(110 + Math.random() * 110, 120 + Math.random() * 20, Math.random() < 0.25 ? 'spit' : 'oil', 1); if (Math.random() < 0.3) puff(120 + Math.random() * 80, 112, 'smoke', 1); } if (cook >= 1) startWater(); draw(); }
           if (phase === 'water' && holding) { water = Math.min(100, water + dt * 34); if (Math.random() < dt * 10) puff(110 + Math.random() * 110, 110, 'steam', 1); draw(); }
         };
         draw();
@@ -501,7 +525,7 @@ window.FemcDumplings = (() => {
 
       /* ── 11. plate it: plate, sauce, garnish, then drizzle and sprinkle ── */
       function plate() {
-        R.step = 'plate'; prog('plate'); talk('plate'); ARTG.innerHTML = ''; $('.dmp-step').textContent = 'Plate it'; btn(null); meter(null);
+        R.step = 'plate'; prog('plate'); talk('plate'); ARTG.innerHTML = ''; stepT('Plate it'); btn(null); meter(null);
         const lines = [], seeds = []; let cur = null;
         const P = () => PLATES[R.plate], S = () => SAUCES[R.sauce], Gn = () => GARNISH[R.garnish];
         const draw = () => {
@@ -517,12 +541,13 @@ window.FemcDumplings = (() => {
           choose('The dipping sauce', SAUCES, sid => { R.sauce = sid; draw(); say([SAUCES[sid].say]);
             choose('The garnish', GARNISH, gid => { R.garnish = gid; decorate(); }); }); });
         const decorate = () => {
-          R.step = 'decorate'; $('.dmp-tip').textContent = `Drag across the plate to drizzle the ${S().name.toLowerCase()}, tap to sprinkle ${Gn().name.toLowerCase()}. Serve when it looks right.`;
+          R.step = 'decorate'; let wisp = 0; loopFn = dt => { if ((wisp -= dt) <= 0) { wisp = 0.5 + Math.random() * 0.4; const j = Math.floor(Math.random() * Math.max(1, R.made.length)); puff(96 + j * 50, 120, 'wisp', 1); } };
+          $('.dmp-tip').textContent = `Drag across the plate to drizzle the ${S().name.toLowerCase()}, tap to sprinkle ${Gn().name.toLowerCase()}. Serve when it looks right.`;
           btn('Serve', { onclick: serve }); draw();
         };
-        const sprinkle = (x, y, n) => { const g = Gn(); for (let i = 0; i < n; i++) seeds.push({ x: x + (Math.random() - 0.5) * 22, y: y + (Math.random() - 0.5) * 12, r: Math.random() * 180, c: g.col, e: g.edge }); K.shake(); };
+        const sprinkle = (x, y, n) => { const g = Gn(); bump('pinch'); for (let i = 0; i < n; i++) seeds.push({ x: x + (Math.random() - 0.5) * 22, y: y + (Math.random() - 0.5) * 12, r: Math.random() * 180, c: g.col, e: g.edge }); K.shake(); };
         const serve = () => {
-          if (R.step !== 'decorate') return; R.step = 'wait'; btn(null);
+          if (R.step !== 'decorate') return; R.step = 'wait'; btn(null); loopFn = null; bump('served'); stars(150, 110, 14); puff(150, 110, 'steam', 5); K.sparkle();
           const ink = lines.reduce((n, l) => n + l.length, 0) / 1.2, sp = seeds.length;
           const v = 100 - Math.abs(ink - 55) * 1.4 - (sp < 6 ? 25 : sp > 60 ? 20 : 0); score('plate', v); setTimeout(finish, 2600);
         };
@@ -540,7 +565,10 @@ window.FemcDumplings = (() => {
         const res = { steps: R.steps, score: Math.round(sc), perfect: q('great'), okay: q('fine'), bags: q('poor'), cook: R.cook || 'pale', filling: R.filling, sauce: R.sauce, garnish: R.garnish, plate: R.plate, grade, quit, tutorial: R.tutRes };
         say(TALK.end[grade]);
         const end = $('.mg-end'); end.hidden = false;
-        end.innerHTML = `<span class="dmp-stamp"><img src="${ART('stamp-' + grade.toLowerCase())}" alt="Grade ${grade}" onerror="this.remove()"><b class="mg-grade">${grade}</b></span><dl><dt>Score</dt><dd>${res.score}</dd><dt>Filling</dt><dd>${esc(FILLINGS[res.filling].name)}</dd><dt>Perfect dumplings</dt><dd>${res.perfect} / ${N}</dd><dt>Bottoms</dt><dd>${res.cook}</dd><dt>Sauce</dt><dd>${esc(SAUCES[res.sauce].name)}</dd></dl><p class="mg-end-say">Haechan: ${esc(TALK.end[grade][0][2])}</p><button type="button">Continue</button>`;
+        el.classList.add('done');
+        end.innerHTML = `<span class="dmp-stamp"><i class="dmp-shock"></i><i class="dmp-ink"></i><img src="${ART('stamp-' + grade.toLowerCase())}" alt="Grade ${grade}" onerror="this.remove()"><b class="mg-grade">${grade}</b></span><dl><dt>Score</dt><dd class="dmp-sc">${res.score}</dd><dt>Filling</dt><dd>${esc(FILLINGS[res.filling].name)}</dd><dt>Perfect dumplings</dt><dd>${res.perfect} / ${N}</dd><dt>Bottoms</dt><dd>${res.cook}</dd><dt>Sauce</dt><dd>${esc(SAUCES[res.sauce].name)}</dd></dl><p class="mg-end-say">Haechan: ${esc(TALK.end[grade][0][2])}</p><button type="button">Continue</button>`;
+        once(el, 'slam', 600);
+        const sd = end.querySelector('.dmp-sc'); if (sd && !reduced.matches && !quit) { const t0 = performance.now() + 450; sd.textContent = '0'; const up = () => { if (!el.isConnected) return; const k = Math.max(0, Math.min(1, (performance.now() - t0) / 1000)); sd.textContent = k >= 1 ? String(res.score) : String(Math.round(res.score * (1 - Math.pow(1 - k, 3)))); if (k < 1) setTimeout(up, 40); }; setTimeout(up, 40); }
         end.querySelector('button').focus();
         end.querySelector('button').onclick = () => { cleanup(); o.onDone?.(res); done(res); };
       };
@@ -572,7 +600,7 @@ window.FemcDumplings = (() => {
       const hc = f => FACE('h', f);
       const tutSteps = replay => {
         const doIt = (k, setup) => replay ? {} : { before: setup, wait: () => new Promise(ok => { tutOn[k] = ok; }) };
-        const tag = t => { if (!replay) $('.dmp-step').textContent = `Practice · ${t}`; };
+        const tag = t => { if (!replay) stepT(`Practice · ${t}`); };
         return [
           { target: '.dmp-counter', face: hc('neutral'), say: "We make them together, one step at a time. Each step has its own little move. Let's practise one dumpling first." },
           { target: '.dmp-counter', pos: 'top', face: hc('neutral'), say: 'Roll: drag the pin back and forth (or <b>← →</b>). When the bar reaches the pink, press <b>Done</b> (or Space).',
@@ -593,13 +621,13 @@ window.FemcDumplings = (() => {
       const unPractice = () => { // drop every practice timer, handler and piece; the kitchen as it was
         R.practice = false; R.gen++; loopFn = null; R.onKey = R.onTap = R.onTapUp = R.onDrag = null; R.step = null;
         for (const k in tutOn) delete tutOn[k];
-        K.sizzleOff(); K.pourOff(); ARTG.innerHTML = ''; OVER.innerHTML = ''; OVER.removeAttribute('transform'); G.innerHTML = '';
+        K.sizzleOff(); K.pourOff(); svgEl.classList.remove('sizzle'); ARTG.innerHTML = ''; OVER.innerHTML = ''; OVER.removeAttribute('transform'); G.innerHTML = '';
         R.made = []; R.steps = {}; R.cooked = false; delete R.cook; D = null; btn(null); meter(null); tray();
       };
       const firstTime = () => tutLib().then(T => {
         if (R.over) return;
         if (!T || !T.should('dumplings', o.tutorial)) return pickFilling();
-        R.practice = true; setDefs(); prog('pick'); $('.dmp-step').textContent = 'Practice'; $('.dmp-tip').textContent = ''; meter(null);
+        R.practice = true; setDefs(); prog('pick'); stepT('Practice'); $('.dmp-tip').textContent = ''; meter(null);
         runTut(T, false).then(r => { R.tutRes = r; unPractice(); if (!R.over) pickFilling(); });
       });
       const howTo = () => tutLib().then(T => {

@@ -21,7 +21,17 @@
      After Start, Haechan guides one practice sound on the real street (the steam grate's hiss): hear it again (▶ / Space),
      hover or tap a glowing thing to hear it quietly, pick the one making his sound (a wrong pick just gets a hint), then the
      notebook. Practice picks count for nothing; the real rounds start after. result.tutorial = 'done' | 'skipped' | 'seen'.
-     Pause (Esc) → How to play replays it as a walkthrough over the paused street (Next on every step, nothing to do). */
+     Pause (Esc) → How to play replays it as a walkthrough over the paused street (Next on every step, nothing to do).
+
+   Polish pass (Nov 11 2026, Kat: "every minigame needs as many visuals as possible, as much animation as possible"; looks only,
+   no rule or result changed, and nothing ever points at the right answer while he plays it): the street's lanterns and tree
+   lights glow and breathe (halos placed on the default street picture), three layers of falling snow, a car's headlights
+   now and then up the wet avenue, shimmer on the reflections; when he plays the sound every light swells and a ripple rings
+   out from him (from him, never from the thing); a thing you hover "sounds" (glow pulse + rings); a right pick bursts
+   sparks and its sticker flies into the notebook, which hops; a wrong one gets a dim thud. Haechan walks (a bob, his breath
+   fogging) and Solar walks beside him on the right (her Runners portrait, reacting: happy / surprised); the end card drops the
+   stickers in one by one, slams the grade and ticks the count. o.calm (Reduce flashes) and o.perf (Performance) default to
+   the game's settings: calm = no flashes or twinkle, perf = one snow layer, no car, no particles. Reduced motion: still. */
 window.FemcListen = (() => {
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const base = () => (window.FemcGame && window.FemcGame.base) || (document.querySelector('script[src*="minigames/listen"]')?.src.split('assets/')[0]) || '';
@@ -76,20 +86,26 @@ window.FemcListen = (() => {
       const PRACTICE = THINGS.find(t => t.id === 'steam'), tutOn = {};
       const tutHit = k => { if (st.tut !== k) return; const f = tutOn[k]; delete tutOn[k]; st.tut = 'wait'; f && f(); };
       const el = document.createElement('div');
-      el.className = 'mg-lis' + (reduced.matches ? ' still' : '');
+      const GS0 = (() => { try { return (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {}; } catch (e) { return {}; } })();
+      const CALM = o.calm ?? !!GS0.calm, PERF = o.perf ?? !!GS0.perf, STILL = reduced.matches;
+      el.className = 'mg-lis' + (STILL ? ' still' : '') + (CALM ? ' calm' : '') + (PERF ? ' perf' : '');
       const B = base();
+      // the street's own lights (on the default picture: wall lanterns, the tree lights, the far lamps, wet reflections)
+      const HALOS = [[6, 33, 9], [24.6, 43, 7], [91, 50, 6], [46, 30, 12, 'tree'], [55, 44, 10, 'tree'], [60, 22, 8, 'tree'], [85, 32, 5, 'win'], [96, 38, 5, 'win']];
       el.innerHTML = `
         <div class="ls-scene">
           <img class="ls-bg" src="${ART('street')}" alt="" onerror="this.onerror=null;this.src='${B}assets/femc/bg/epi-r-nyc-street-night.webp'">
-          <i class="ls-snow" aria-hidden="true"></i><i class="ls-vignette" aria-hidden="true"></i>
+          <div class="ls-glows" aria-hidden="true">${HALOS.map(([x, y, w, k], i) => `<i class="ls-halo ${k || ''}" style="left:${x}%;top:${y}%;width:${w}%;--d:${(i * 0.37) % 2}s"></i>`).join('')}<i class="ls-shine r1"></i><i class="ls-shine r2"></i><i class="ls-car"><b></b><b></b></i></div>
+          <i class="ls-snow" aria-hidden="true"></i><i class="ls-snow s2" aria-hidden="true"></i><i class="ls-snow s3" aria-hidden="true"></i><i class="ls-vignette" aria-hidden="true"></i>
           ${THINGS.map((t, i) => `<button type="button" class="ls-thing" data-i="${i}" style="left:${t.x}%;top:${t.y}%;width:${t.w}%" aria-label="${esc(t.name)}">
-            <img src="${ART('obj-' + t.id)}" alt="" onerror="this.remove()">${SVG[t.id]}<b class="ls-tag">${esc(t.name)}</b><i class="ls-ring"></i><i class="ls-wave"></i></button>`).join('')}
+            <img src="${ART('obj-' + t.id)}" alt="" onerror="this.remove()">${SVG[t.id]}<b class="ls-tag">${esc(t.name)}</b><i class="ls-ring"></i><i class="ls-wave"></i><i class="ls-pulse"></i><i class="ls-burst"></i></button>`).join('')}
         </div>
+        <i class="ls-sonar" aria-hidden="true"><b></b><b></b><b></b></i>
         <div class="ls-top"><b>Fifth Avenue · 2:14 a.m.</b><ol class="ls-book">${order.map((_, i) => `<li data-r="${i}"><span>?</span></li>`).join('')}</ol></div>
         <div class="ls-steps"><span class="ls-step s1"><b>1</b> Listen</span><span class="ls-step s2"><b>2</b> Find what's making it</span></div>
         <div class="ls-talk"><div class="ls-hc"><img src="${ART('haechan')}" alt="" onerror="this.onerror=null;this.src='${B}assets/femc/portraits/haechan-runners/neutral.webp'"></div>
           <p aria-live="polite"><b>Haechan</b><span></span><em class="ls-cap"></em></p>
-          <button type="button" class="ls-again">▶ Hear it again</button></div>
+          <button type="button" class="ls-again">▶ Hear it again</button><div class="ls-sl" aria-hidden="true"><img src="${B}assets/femc/portraits/solar-runners/neutral.webp" alt="" onerror="this.remove()"></div></div>
         <div class="ls-intro"><div><b>Listen</b><p>It's two in the morning and the city is almost silent. Haechan says it never really is.</p><ol><li><b>1</b> He plays you a sound of the street.</li><li><b>2</b> Find the thing in the picture making it. Hover anything to hear it.</li></ol><button type="button" class="ls-start">Start</button></div></div>
         <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
@@ -97,6 +113,24 @@ window.FemcListen = (() => {
       const $ = s => el.querySelector(s), things = [...el.querySelectorAll('.ls-thing')];
       const say = (t, cap = '') => { $('.ls-talk span').textContent = t; $('.ls-cap').textContent = cap; el.classList.remove('talk'); void el.offsetWidth; el.classList.add('talk'); };
       const face = f => { const im = $('.ls-hc img'); if (im.src.includes('/portraits/')) im.src = `${B}assets/femc/portraits/haechan-runners/${f}.webp`; };
+      /* polish (looks only) */
+      const once = (node, cls, ms) => { if (!node) return; node.classList.remove(cls); void node.offsetWidth; node.classList.add(cls); clearTimeout(node['_t' + cls]); node['_t' + cls] = setTimeout(() => node.classList.remove(cls), ms); };
+      const sface = f => { const im = $('.ls-sl img'); if (im) { im.src = `${B}assets/femc/portraits/solar-runners/${f}.webp`; once($('.ls-sl'), 'react', 500); } };
+      const sparks = b => { // a right pick: sparks burst off the thing
+        if (STILL || PERF) return; const box = b.querySelector('.ls-burst'); if (!box) return; let h = '';
+        for (let k = 0; k < 12; k++) h += `<em style="--a:${Math.round(k * 30 + Math.random() * 20)}deg;--d:${Math.round(50 + Math.random() * 50)}px;--c:${k % 3 ? '#ffcf8a' : '#ff9ac8'}"></em>`;
+        box.innerHTML = h; once(box, 'on', 900);
+      };
+      const flySticker = (b, li) => { // the sticker flies from the thing into its notebook slot
+        if (STILL || !b.getBoundingClientRect || !li || !li.getBoundingClientRect) return;
+        try {
+          const a = b.getBoundingClientRect(), z = li.getBoundingClientRect(), f = document.createElement('i'); f.className = 'ls-fly'; f.textContent = STICK[THINGS[things.indexOf(b)].id];
+          f.style.left = `${a.left + a.width / 2}px`; f.style.top = `${a.top + a.height / 2}px`; el.appendChild(f);
+          const dx = z.left + z.width / 2 - (a.left + a.width / 2), dy = z.top + z.height / 2 - (a.top + a.height / 2);
+          if (f.animate) f.animate([{ transform: 'translate(-50%, -50%) scale(.6) rotate(-20deg)', opacity: 0 }, { transform: 'translate(-50%, -80%) scale(1.6) rotate(8deg)', opacity: 1, offset: .25 }, { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(.8) rotate(0)`, opacity: 1 }], { duration: 750, easing: 'cubic-bezier(.4, 0, .3, 1)', fill: 'forwards' });
+          setTimeout(() => { f.remove(); once($('.ls-top .ls-book'), 'hop', 500); }, 760);
+        } catch (e) {}
+      };
 
       /* the sounds: all made in the browser */
       let ac = null, hum = null;
@@ -126,32 +160,32 @@ window.FemcListen = (() => {
 
       /* the rounds */
       const target = () => st.tut ? PRACTICE : order[st.r];
-      const playTarget = () => { if (!target() || st.over) return; sound(target().id, 0.5); el.classList.add('listening'); setTimeout(() => el.classList.remove('listening'), 1600); };
+      const playTarget = () => { if (!target() || st.over) return; sound(target().id, 0.5); el.classList.add('listening'); once($('.ls-sonar'), 'on', 1700); setTimeout(() => el.classList.remove('listening'), 1600); };
       const round = () => {
         st.roundWrong = 0; st.busy = false; things.forEach(b => b.classList.remove('right', 'wrong'));
         el.querySelectorAll('.ls-book li').forEach((li, i) => li.classList.toggle('now', i === st.r));
-        face('neutral'); say(pick(target().ask), o.mute ? `(the sound: ${target().cap})` : '');
+        face('neutral'); sface('neutral'); say(pick(target().ask), o.mute ? `(the sound: ${target().cap})` : '');
         setTimeout(playTarget, 500);
       };
       let hoverT = 0;
-      const preview = i => { if (st.busy || st.over || st.paused) return; if (st.tut === 'hover') setTimeout(() => tutHit('hover'), 700); clearTimeout(hoverT); hoverT = setTimeout(() => sound(THINGS[i].id, 0.18), 120); if (o.mute) things[i].querySelector('.ls-tag').dataset.cap = THINGS[i].cap; };
+      const preview = i => { if (st.busy || st.over || st.paused) return; if (st.tut === 'hover') setTimeout(() => tutHit('hover'), 700); clearTimeout(hoverT); hoverT = setTimeout(() => { sound(THINGS[i].id, 0.18); once(things[i], 'sounding', 1500); }, 120); if (o.mute) things[i].querySelector('.ls-tag').dataset.cap = THINGS[i].cap; };
       const tutChoose = i => { // a practice pick: right lights it up, wrong shakes with his hint; nothing is counted
         const t = THINGS[i], b = things[i];
         if (st.tut === 'hover') return preview(i);
         if (st.tut !== 'pick') return;
-        if (t.id === PRACTICE.id) { b.classList.add('right'); chime(true); sound(t.id, 0.5); face('happy'); say(t.got); tutHit('pick'); }
-        else { b.classList.remove('wrong'); void b.offsetWidth; b.classList.add('wrong'); chime(false); face('serious'); say(`${PRACTICE.miss} Listen again.`, o.mute ? `(the sound: ${PRACTICE.cap})` : ''); }
+        if (t.id === PRACTICE.id) { b.classList.add('right'); chime(true); sound(t.id, 0.5); face('happy'); sface('happy'); sparks(b); once(el, 'found', 900); say(t.got); tutHit('pick'); }
+        else { b.classList.remove('wrong'); void b.offsetWidth; b.classList.add('wrong'); chime(false); face('serious'); once(el, 'thud', 400); say(`${PRACTICE.miss} Listen again.`, o.mute ? `(the sound: ${PRACTICE.cap})` : ''); }
       };
       const choose = i => {
         if (st.tut) return tutChoose(i);
         if (st.busy || st.over || st.paused) return;
         st.tries++; const t = THINGS[i], b = things[i];
         if (t.id === target().id) {
-          st.busy = true; st.found.push(t.id); b.classList.add('right', 'done'); chime(true); sound(t.id, 0.5); face('happy'); say(t.got);
-          const li = el.querySelector(`.ls-book li[data-r="${st.r}"]`); li.classList.add('got'); li.innerHTML = `<img src="${ART('sticker-' + t.id)}" alt="" onerror="this.remove()"><span>${STICK[t.id]}</span><small>${esc(t.name.replace(/^The /, ''))}</small>`;
+          st.busy = true; st.found.push(t.id); b.classList.add('right', 'done'); chime(true); sound(t.id, 0.5); face('happy'); sface('happy'); say(t.got);
+          const li = el.querySelector(`.ls-book li[data-r="${st.r}"]`); sparks(b); once(el, 'found', 900); flySticker(b, li); li.classList.add('got'); li.innerHTML = `<img src="${ART('sticker-' + t.id)}" alt="" onerror="this.remove()"><span>${STICK[t.id]}</span><small>${esc(t.name.replace(/^The /, ''))}</small>`;
           st.r++; setTimeout(() => (st.r >= ROUNDS ? finish() : round()), 2200);
         } else {
-          st.wrongs++; st.roundWrong++; b.classList.remove('wrong'); void b.offsetWidth; b.classList.add('wrong'); chime(false); face('serious');
+          st.wrongs++; st.roundWrong++; b.classList.remove('wrong'); void b.offsetWidth; b.classList.add('wrong'); chime(false); face('serious'); sface('surprised'); once(el, 'thud', 400);
           say(st.roundWrong >= 2 ? `${target().miss} Listen again.` : pick(["No. That's something else.", 'Not that one. Listen.', 'Close your eyes. Then look.']), o.mute ? `(the sound: ${target().cap})` : '');
           if (st.roundWrong >= 2) setTimeout(playTarget, 400);
         }
@@ -161,8 +195,9 @@ window.FemcListen = (() => {
         const g = quit ? 'C' : st.wrongs === 0 ? 'S' : st.wrongs <= 2 ? 'A' : st.wrongs <= 4 ? 'B' : 'C';
         const line = { S: "She'd lived her whole life in this city and never once heard it. Now she couldn't stop.", A: 'It came up out of the quiet the way a picture comes up in a darkroom.', B: 'Some of it came up out of the quiet. Enough.', C: '"It never turns off for you," she said. "Does it."' }[g];
         const res = { found: st.found.length, rounds: ROUNDS, tries: st.tries, wrongs: st.wrongs, grade: g, quit, tutorial: st.tutRes };
-        const end = $('.mg-end'); end.hidden = false; face(g === 'C' ? 'neutral' : 'happy');
-        end.innerHTML = `<b class="mg-grade">${g}</b><ol class="ls-book big">${st.found.map(id => `<li class="got"><img src="${ART('sticker-' + id)}" alt="" onerror="this.remove()"><span>${STICK[id]}</span><small>${esc(THINGS.find(t => t.id === id).name.replace(/^The /, ''))}</small></li>`).join('')}</ol><dl><dt>Sounds found</dt><dd>${st.found.length} / ${ROUNDS}</dd><dt>Wrong guesses</dt><dd>${st.wrongs}</dd></dl><p class="mg-end-say">${esc(line)}</p><button type="button">Continue</button>`;
+        const end = $('.mg-end'); end.hidden = false; face(g === 'C' ? 'neutral' : 'happy'); sface(g === 'C' ? 'sad' : 'happy'); el.classList.add('done');
+        end.innerHTML = `<span class="ls-gradewrap"><i class="ls-shock"></i><b class="mg-grade">${g}</b></span><ol class="ls-book big">${st.found.map((id, k) => `<li class="got" style="--k:${k}"><img src="${ART('sticker-' + id)}" alt="" onerror="this.remove()"><span>${STICK[id]}</span><small>${esc(THINGS.find(t => t.id === id).name.replace(/^The /, ''))}</small></li>`).join('')}</ol><dl><dt>Sounds found</dt><dd class="ls-count">${st.found.length} / ${ROUNDS}</dd><dt>Wrong guesses</dt><dd>${st.wrongs}</dd></dl><p class="mg-end-say">${esc(line)}</p><button type="button">Continue</button>`;
+        const cd = end.querySelector('.ls-count'); if (cd && !STILL && !quit && st.found.length) { let n = 0; cd.textContent = `0 / ${ROUNDS}`; const up = () => { if (!el.isConnected || n >= st.found.length) return; n++; cd.textContent = `${n} / ${ROUNDS}`; once(cd, 'tick', 250); setTimeout(up, 160); }; setTimeout(up, 500); }
         end.querySelector('button').focus();
         end.querySelector('button').onclick = () => { cleanup(); o.onDone?.(res); done(res); };
       };

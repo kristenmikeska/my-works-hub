@@ -106,3 +106,94 @@
 @keyframes dmp-tt-in { from { opacity: 0; transform: scale(1.04); } }
 @keyframes dmp-tt-out { to { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .dmp-title, .dmp-title.out { animation-duration: .01s; } }
+
+/* ---------- polish pass (Nov 11 2026, Kat: as many visuals and as much animation as possible; looks only) ----------
+   .calm = Reduce flashes (no shine sweeps, fewer and steadier sparkles), .perf = Performance (the JS makes a third of the
+   particles; no haze, bokeh or blur here), .still = reduced motion (the rule above stops everything). */
+/* warm kitchen light and drifting steam behind the counter */
+.mg-dmp::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse at 50% 0%, rgba(255, 190, 120, .16), transparent 55%); animation: dmp-flicker 5s ease-in-out infinite alternate; }
+@keyframes dmp-flicker { 30% { opacity: .8; } 55% { opacity: 1; } 70% { opacity: .88; } }
+.dmp-amb { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.dmp-amb i { position: absolute; bottom: -60px; width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 211, 230, .14), transparent 70%); animation: dmp-bokeh 14s linear infinite; }
+.dmp-amb i:nth-child(1) { left: 8%; } .dmp-amb i:nth-child(2) { left: 26%; width: 40px; height: 40px; animation-delay: -4s; animation-duration: 11s; } .dmp-amb i:nth-child(3) { left: 62%; animation-delay: -8s; } .dmp-amb i:nth-child(4) { left: 80%; width: 50px; height: 50px; animation-delay: -2s; animation-duration: 17s; } .dmp-amb i:nth-child(5) { left: 92%; width: 30px; height: 30px; animation-delay: -10s; }
+@keyframes dmp-bokeh { from { transform: translateY(0) translateX(0); opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } to { transform: translateY(-110vh) translateX(40px); opacity: 0; } }
+/* step titles slide in; the talkers bounce as they speak */
+.dmp-step { display: inline-block; }
+.dmp-step.in { animation: dmp-stepin .45s cubic-bezier(.2, .9, .3, 1.2); }
+@keyframes dmp-stepin { from { opacity: 0; transform: translateX(24px) skewX(-14deg); } }
+.dmp-talk.speak img { animation: dmp-speak .45s cubic-bezier(.3, 1.6, .5, 1); }
+@keyframes dmp-speak { 40% { translate: 0 -10px; } }
+.dmp-talk.speak p { animation: dmp-bubble .3s cubic-bezier(.3, 1.6, .5, 1); }
+@keyframes dmp-bubble { from { transform: scale(.85); } }
+/* the +points beside GREAT / OKAY / OOPS */
+.dmp-pts { position: absolute; left: 50%; top: 27%; transform: translateX(-50%); font: italic 900 clamp(18px, 2.4vw, 28px)/1 var(--cond, sans-serif); color: #fff; -webkit-text-stroke: 2px #b8306e; paint-order: stroke; opacity: 0; z-index: 3; pointer-events: none; }
+.dmp-pts.on { animation: dmp-pts 1.1s ease-out forwards; }
+.dmp-pts.great { color: var(--pk3); } .dmp-pts.poor { color: #e7c3d4; -webkit-text-stroke-color: #4a2a3a; }
+@keyframes dmp-pts { 0% { opacity: 0; transform: translate(-50%, 10px) scale(.6); } 20% { opacity: 1; transform: translate(-50%, 0) scale(1.15); } 75% { opacity: 1; transform: translate(-50%, -14px); } 100% { opacity: 0; transform: translate(-50%, -24px); } }
+/* new particles */
+.dmp-p.chopbit { width: 9px; height: 9px; border-radius: 50%; background: radial-gradient(circle, #f2f7e8 0 30%, #8bd27a 34%); box-shadow: 0 0 0 1px #5fa84f; animation: dmp-fly .7s cubic-bezier(.2, .7, .4, 1) forwards; }
+@keyframes dmp-fly { 40% { transform: translate(calc(var(--dx) * .6), var(--dy)) rotate(var(--r)); } to { transform: translate(var(--dx), 30px) rotate(calc(var(--r) * 2)); opacity: 0; } }
+.dmp-p.swirl { width: 8px; height: 8px; background: var(--fa, #e3a08f); box-shadow: 0 0 0 1px var(--fb, #b8695a); animation: dmp-fly .6s ease-out forwards; }
+.dmp-p.soy { width: 7px; height: 9px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: #4a2416; animation: dmp-splash .5s ease-out forwards; }
+@keyframes dmp-splash { 30% { transform: translate(calc(var(--dx) * .4), calc(var(--dy) * .5)) scale(1.1); } to { transform: translate(var(--dx), 12px) scale(.4); opacity: 0; } }
+.dmp-p.splat { width: 12px; height: 10px; background: radial-gradient(circle at 35% 35%, var(--fa, #e3a08f), var(--fb, #b8695a)); animation: dmp-splash .55s ease-out forwards; }
+.dmp-p.bead { width: 7px; height: 7px; background: radial-gradient(circle at 35% 35%, #fff, rgba(190, 225, 255, .8)); animation: dmp-bead .8s ease-out forwards; }
+@keyframes dmp-bead { 20% { transform: scale(1.4); } to { transform: translateY(8px) scale(.6); opacity: 0; } }
+.dmp-p.pinchfx { width: 14px; height: 14px; background: radial-gradient(circle, rgba(255, 255, 255, .95), transparent 70%); animation: dmp-puff .45s ease-out forwards; }
+.dmp-p.tearfx { width: 8px; height: 8px; background: #c9b39a; animation: dmp-fly .5s ease-out forwards; }
+.dmp-p.star { width: 14px; height: 14px; border-radius: 0; background: #fff; clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); filter: drop-shadow(0 0 4px var(--pk)); animation: dmp-star .8s ease-out forwards; }
+.dmp-p.star:nth-child(3n) { background: var(--pk2); } .dmp-p.star:nth-child(3n + 1) { background: var(--pk3); }
+@keyframes dmp-star { from { transform: translate(0, 0) scale(.3) rotate(0); opacity: 1; } 40% { transform: translate(calc(var(--dx) * 1.4), calc(var(--dy) * 1.2)) scale(1.3) rotate(calc(var(--r) * .5)); opacity: 1; } to { transform: translate(calc(var(--dx) * 1.8), calc(var(--dy) * 1.4)) scale(.2) rotate(var(--r)); opacity: 0; } }
+.dmp-p.spit { width: 9px; height: 9px; background: #fff2c0; box-shadow: 0 0 8px #ffcf5a; animation: dmp-spit2 .55s cubic-bezier(.2, .7, .4, 1) forwards; }
+@keyframes dmp-spit2 { 45% { transform: translate(calc(var(--dx) * .6), calc(var(--dy) * 1.3)); } to { transform: translate(var(--dx), 10px) scale(.5); opacity: 0; } }
+.dmp-p.smoke { width: 26px; height: 26px; background: radial-gradient(circle, rgba(255, 240, 230, .35), transparent 70%); animation: dmp-rise 1.4s ease-out forwards; }
+.dmp-p.wisp { width: 14px; height: 40px; border-radius: 50%; background: radial-gradient(ellipse, rgba(255, 255, 255, .55), transparent 70%); animation: dmp-wisp 1.5s ease-out forwards; }
+@keyframes dmp-wisp { from { opacity: 0; transform: translateY(0) scaleY(.6); } 30% { opacity: .9; } to { opacity: 0; transform: translate(10px, -70px) scaleY(1.6) skewX(18deg); } }
+/* squash / plop / flop / served */
+.dmp-svg.plop .scene { animation: dmp-plop .4s cubic-bezier(.3, 1.6, .5, 1); transform-origin: 50% 70%; }
+@keyframes dmp-plop { 30% { transform: scale(1.07, .9); } 65% { transform: scale(.97, 1.04); } }
+.dmp-svg.flop .scene { animation: dmp-flop .45s cubic-bezier(.3, 1.6, .5, 1); transform-origin: 50% 80%; }
+@keyframes dmp-flop { 30% { transform: translateY(-6px) scale(.97, 1.05); } 60% { transform: scale(1.06, .93); } }
+.dmp-svg.served .scene { animation: dmp-serve .7s cubic-bezier(.2, 1.6, .4, 1); transform-origin: 50% 70%; }
+@keyframes dmp-serve { 40% { transform: scale(1.06) translateY(-4px); } }
+.dmp-fx::after { content: ''; position: absolute; inset: 0; opacity: 0; background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, .55) 50%, transparent 65%); background-size: 250% 100%; }
+.dmp-counter:has(.dmp-svg.served) .dmp-fx::after { animation: dmp-shine 1.1s ease-out .15s; }
+@keyframes dmp-shine { 0% { opacity: 1; background-position: 130% 0; } 100% { opacity: 1; background-position: -130% 0; } }
+/* the pan: heat shimmer and a warm glow while it browns */
+.dmp-svg.sizzle .scene { animation: dmp-haze .18s ease-in-out infinite alternate; transform-origin: 53% 66%; }
+@keyframes dmp-haze { from { transform: skewX(-.35deg) scaleY(1.003); } to { transform: skewX(.35deg); } }
+.dmp-counter::after { content: ''; position: absolute; left: 20%; right: 14%; top: 34%; bottom: 14%; border-radius: 50%; pointer-events: none; z-index: 1; opacity: 0; mix-blend-mode: screen; background: radial-gradient(ellipse, rgba(255, 150, 60, .3), transparent 70%); transition: opacity .6s; }
+.dmp-counter:has(.dmp-svg.sizzle)::after { opacity: 1; animation: dmp-heat 1.2s ease-in-out infinite alternate; }
+@keyframes dmp-heat { to { opacity: .55; } }
+/* the lid rattles and fogs up, droplets bead on it */
+.dmp-svg .lid.rattle { animation: dmp-rattle .14s steps(2) infinite; }
+@keyframes dmp-rattle { from { translate: -1px 0; } to { translate: 1px -1.5px; } }
+.dmp-svg .lid .fog { opacity: 0; animation: dmp-fog 2.6s ease-in .2s forwards; }
+@keyframes dmp-fog { to { opacity: .75; } }
+.dmp-svg .lid .beads circle { transform-box: fill-box; transform-origin: center; opacity: 0; animation: dmp-beadin .4s ease-out forwards; }
+@keyframes dmp-beadin { from { opacity: 0; transform: scale(0); } to { opacity: 1; } }
+/* the end: stamp shockwave, an ink splat, the card shakes as it lands */
+.dmp-stamp { position: relative; }
+.dmp-shock { position: absolute; left: 50%; top: 50%; width: 180px; height: 180px; margin: -90px; border-radius: 50%; border: 6px solid var(--pk); opacity: 0; animation: dmp-shock .7s ease-out .32s forwards; }
+@keyframes dmp-shock { from { transform: scale(.4); opacity: 1; } to { transform: scale(2.4); opacity: 0; } }
+.dmp-ink { position: absolute; left: 50%; top: 50%; width: 240px; height: 200px; margin: -100px -120px; z-index: -1; background: radial-gradient(circle at 30% 40%, rgba(255, 79, 158, .45) 0 18%, transparent 19%), radial-gradient(circle at 70% 60%, rgba(255, 79, 158, .35) 0 14%, transparent 15%), radial-gradient(circle at 55% 25%, rgba(255, 154, 200, .35) 0 9%, transparent 10%), radial-gradient(ellipse at 50% 50%, rgba(255, 79, 158, .3) 0 34%, transparent 36%); animation: dmp-ink .5s cubic-bezier(.2, 1.4, .4, 1) .3s both; }
+@keyframes dmp-ink { from { transform: scale(0) rotate(-30deg); opacity: 0; } }
+.mg-dmp.slam .mg-end { animation: dmp-slam .5s ease-out .3s; }
+@keyframes dmp-slam { 15% { transform: translate(-6px, 4px); } 35% { transform: translate(5px, -3px); } 60% { transform: translate(-2px, 1px); } }
+.mg-dmp .mg-end dl, .mg-dmp .mg-end-say, .mg-dmp .mg-end > button { animation: dmp-up .4s ease-out .75s both; }
+@keyframes dmp-up { from { opacity: 0; transform: translateY(10px); } }
+.mg-dmp .mg-end > button { animation-delay: 1.05s; }
+/* Reduce flashes */
+.mg-dmp.calm .dmp-counter:has(.dmp-svg.served) .dmp-fx::after { animation: none; }
+.mg-dmp.calm .dmp-p.star { filter: none; animation-duration: 1.1s; }
+.mg-dmp.calm .dmp-p.spit { box-shadow: none; }
+.mg-dmp.calm::before, .mg-dmp.calm .dmp-counter:has(.dmp-svg.sizzle)::after { animation: none; }
+.mg-dmp.calm.slam .mg-end { animation: none; }
+/* Performance */
+.mg-dmp.perf .dmp-amb, .mg-dmp.perf::before { display: none; }
+.mg-dmp.perf .dmp-svg.sizzle .scene, .mg-dmp.perf .dmp-svg .lid.rattle { animation: none; }
+.mg-dmp.perf .dmp-p.star, .mg-dmp.perf .dmp-p.spit { filter: none; box-shadow: none; }
+/* reduced motion: the pseudo-element layers too */
+.mg-dmp.still::before, .mg-dmp.still .dmp-counter::after, .mg-dmp.still .dmp-fx::after { animation: none !important; }
+.mg-dmp.still .dmp-amb { display: none; }
+.mg-dmp.perf .dmp-counter::after { mix-blend-mode: normal; }

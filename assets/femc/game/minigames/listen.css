@@ -91,3 +91,99 @@
   .ls-steps { top: 104px; } .ls-top { flex-wrap: wrap; } .ls-book li { width: 40px; height: 46px; } .ls-hc { width: 90px; } .ls-again { padding: 10px 12px; font-size: 14px; }
 }
 .mg-lis.still .ls-snow, .mg-lis.still .ls-ring, .mg-lis.still .ls-thing.wrong, .mg-lis.still .ls-book li.now { animation: none !important; }
+
+/* ---------- polish pass (Nov 11 2026, Kat: as many visuals and as much animation as possible; looks only) ----------
+   .calm = Reduce flashes (no twinkle or flash, softer swells), .perf = Performance (one snow layer, no car, sparks, blend),
+   .still = reduced motion (nothing moves). Nothing here ever marks the thing he's playing. */
+.ls-glows { position: absolute; inset: 0; pointer-events: none; }
+.ls-halo { position: absolute; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, rgba(255, 214, 150, .55), rgba(255, 170, 90, .18) 35%, transparent 68%); mix-blend-mode: screen; animation: ls-breathe 3.2s ease-in-out var(--d, 0s) infinite alternate; }
+@keyframes ls-breathe { from { opacity: .55; transform: translate(-50%, -50%) scale(.92); } to { opacity: 1; transform: translate(-50%, -50%) scale(1.06); } }
+.ls-halo.tree { background: radial-gradient(1.5px 1.5px at 30% 40%, #fff2c8 60%, transparent 61%), radial-gradient(1.5px 1.5px at 62% 28%, #fff2c8 60%, transparent 61%), radial-gradient(1.5px 1.5px at 48% 66%, #fff2c8 60%, transparent 61%), radial-gradient(1.5px 1.5px at 72% 58%, #fff2c8 60%, transparent 61%), radial-gradient(circle, rgba(255, 214, 150, .32), transparent 65%); animation: ls-twinkle 1.4s steps(2) var(--d, 0s) infinite; }
+@keyframes ls-twinkle { 50% { opacity: .6; filter: brightness(1.4); } }
+.ls-halo.win { background: radial-gradient(circle, rgba(255, 207, 138, .4), transparent 65%); animation-duration: 5s; }
+.mg-lis.listening .ls-halo { animation: ls-swell 1.6s ease-out; }
+@keyframes ls-swell { 20% { opacity: 1; transform: translate(-50%, -50%) scale(1.35); filter: brightness(1.5); } }
+.ls-shine { position: absolute; height: 2.4%; border-radius: 50%; background: linear-gradient(90deg, transparent, rgba(255, 210, 150, .45), transparent); background-size: 200% 100%; mix-blend-mode: screen; animation: ls-shimmer 4s linear infinite; }
+.ls-shine.r1 { left: 58%; top: 79%; width: 18%; } .ls-shine.r2 { left: 74%; top: 88%; width: 22%; animation-delay: -2s; }
+@keyframes ls-shimmer { from { background-position: 100% 0; } to { background-position: -100% 0; } }
+/* a car's headlights now and then, coming down the avenue */
+.ls-car { position: absolute; left: 73%; top: 58%; width: 5%; height: 2%; opacity: 0; animation: ls-car 17s ease-in 3s infinite; }
+.ls-car b { position: absolute; top: 0; width: 34%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, #fffbe8 0 25%, rgba(255, 244, 200, .55) 40%, transparent 70%); box-shadow: 0 0 18px 6px rgba(255, 240, 200, .35); }
+.ls-car b:last-child { right: 0; }
+@keyframes ls-car { 0%, 78% { opacity: 0; transform: translate(0, 0) scale(.25); } 81% { opacity: 1; } 97% { opacity: .9; transform: translate(520%, 1900%) scale(2.6); } 100% { opacity: 0; transform: translate(620%, 2200%) scale(3); } }
+/* snow in three layers */
+.ls-snow.s2 { background-image: radial-gradient(3px 3px at 20% 30%, #fff 50%, transparent 51%), radial-gradient(2.5px 2.5px at 70% 80%, #fff 50%, transparent 51%), radial-gradient(3px 3px at 45% 55%, #fff 50%, transparent 51%); background-size: 460px 460px; opacity: .7; filter: blur(.6px); animation: ls-snow2 9s linear infinite; }
+@keyframes ls-snow2 { to { background-position: -60px 460px, 40px 460px, -30px 460px; } }
+.ls-snow.s3 { background-image: radial-gradient(1px 1px at 15% 45%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 60% 15%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 85% 65%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 35% 85%, #fff 50%, transparent 51%); background-size: 200px 200px; opacity: .45; animation: ls-snow3 24s linear infinite; }
+@keyframes ls-snow3 { to { background-position: 20px 200px, -15px 200px, 10px 200px, -20px 200px; } }
+/* he plays it: a ripple rings out from him (never from the thing) */
+.ls-sonar { position: absolute; left: clamp(70px, 9vw, 120px); bottom: clamp(120px, 20vh, 220px); width: 0; height: 0; z-index: 1; pointer-events: none; }
+.ls-sonar b { position: absolute; left: -60px; top: -60px; width: 120px; height: 120px; border-radius: 50%; border: 2px solid rgba(255, 154, 200, .7); opacity: 0; }
+.ls-sonar.on b { animation: ls-sonar 1.5s ease-out forwards; }
+.ls-sonar.on b:nth-child(2) { animation-delay: .25s; } .ls-sonar.on b:nth-child(3) { animation-delay: .5s; }
+@keyframes ls-sonar { from { opacity: .9; transform: scale(.3); } to { opacity: 0; transform: scale(6); } }
+/* a thing you hover sounds: its glow pulses and rings */
+.ls-pulse { position: absolute; left: 50%; top: 50%; width: 120%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none; opacity: 0; background: radial-gradient(circle, rgba(255, 154, 200, .35), transparent 65%); }
+.ls-thing.sounding .ls-pulse { animation: ls-sound .5s ease-in-out 3; }
+@keyframes ls-sound { 50% { opacity: 1; transform: translate(-50%, -50%) scale(1.3); } }
+.ls-thing.sounding svg, .ls-thing.sounding img { animation: ls-throb .5s ease-in-out 3; }
+@keyframes ls-throb { 50% { transform: scale(1.06); filter: drop-shadow(0 0 16px var(--pk2)) brightness(1.2); } }
+/* a right pick: sparks; the street warms for a moment; a wrong one: a dim thud */
+.ls-burst { position: absolute; left: 50%; top: 50%; width: 0; height: 0; pointer-events: none; }
+.ls-burst em { position: absolute; left: -4px; top: -4px; width: 8px; height: 8px; background: var(--c); clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); rotate: var(--a); opacity: 0; }
+.ls-burst.on em { animation: ls-spark .8s cubic-bezier(.15, .8, .3, 1) forwards; }
+@keyframes ls-spark { from { opacity: 1; transform: translateY(0) scale(1.6); } to { opacity: 0; transform: translateY(calc(-1 * var(--d))) scale(.4); } }
+.ls-scene::after { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0; background: radial-gradient(ellipse at 50% 60%, rgba(255, 207, 138, .22), transparent 70%); }
+.mg-lis.found .ls-scene::after { animation: ls-warm .9s ease-out; }
+@keyframes ls-warm { 25% { opacity: 1; } }
+.mg-lis.thud .ls-scene { animation: ls-thud .35s ease-out; }
+@keyframes ls-thud { 30% { filter: brightness(.7); transform: translateY(2px); } }
+.ls-fly { position: fixed; z-index: 8; font-size: 34px; line-height: 1; pointer-events: none; transform: translate(-50%, -50%); filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .5)) drop-shadow(0 0 10px rgba(255, 154, 200, .8)); }
+/* the notebook hops when a sticker lands; the open slot has a pencil scribble */
+.ls-book.hop { animation: ls-hop .45s cubic-bezier(.3, 1.6, .5, 1); }
+@keyframes ls-hop { 40% { transform: rotate(1.5deg) translateY(-6px) scale(1.04); } }
+.ls-book li.now::after { content: ''; position: absolute; left: 6px; right: 6px; bottom: 5px; height: 3px; border-radius: 2px; background: var(--pk); transform-origin: 0 50%; animation: ls-scribble 1.4s ease-in-out infinite; }
+@keyframes ls-scribble { 0% { transform: scaleX(0); } 60%, 100% { transform: scaleX(1); opacity: .2; } }
+/* the two of them walking: a bob each, his breath fogging; Solar on the right reacts */
+.ls-hc { position: relative; }
+.ls-hc img, .ls-sl img { animation: ls-walk 1.1s ease-in-out infinite; transform-origin: 50% 100%; }
+@keyframes ls-walk { 0%, 100% { translate: 0 0; rotate: 0deg; } 25% { translate: 0 -4px; rotate: -.6deg; } 50% { translate: 0 0; } 75% { translate: 0 -4px; rotate: .6deg; } }
+.ls-hc::after { content: ''; position: absolute; left: 62%; top: 22%; width: 36px; height: 24px; border-radius: 50%; background: radial-gradient(ellipse, rgba(255, 255, 255, .5), transparent 70%); opacity: 0; animation: ls-breath 4.4s ease-out 1s infinite; pointer-events: none; }
+@keyframes ls-breath { 0% { opacity: 0; transform: scale(.4); } 12% { opacity: .8; } 40% { opacity: 0; transform: translate(26px, -14px) scale(2); } 100% { opacity: 0; } }
+.ls-sl { flex: none; width: clamp(110px, 14vw, 200px); align-self: flex-end; margin-bottom: -18px; }
+.ls-sl img { display: block; width: 100%; height: auto; transform: scaleX(-1); animation-delay: -.55s; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .5)); }
+.ls-sl.react img { animation: ls-react .45s cubic-bezier(.3, 1.6, .5, 1); }
+@keyframes ls-react { 40% { translate: 0 -8px; scale: 1.04; } }
+/* intro card and Start */
+.ls-intro > div { animation: ls-card .5s cubic-bezier(.3, 1.4, .5, 1); }
+@keyframes ls-card { from { opacity: 0; transform: rotate(-6deg) translateY(30px) scale(.9); } }
+.ls-start { animation: ls-pulse2 1.6s ease-in-out infinite; }
+@keyframes ls-pulse2 { 50% { box-shadow: 0 0 0 6px rgba(255, 79, 158, .35); } }
+/* the end: the grade slams, the stickers drop in one by one, the count ticks */
+.mg-lis .mg-end { animation: ls-endin .45s ease-out; }
+@keyframes ls-endin { from { opacity: 0; } }
+.ls-gradewrap { position: relative; display: grid; place-items: center; }
+.mg-lis .ls-gradewrap .mg-grade { animation: ls-slam .55s cubic-bezier(.2, 1.4, .4, 1) .2s both; }
+@keyframes ls-slam { 0% { transform: scale(3) rotate(-14deg); opacity: 0; } 60% { transform: scale(.9) rotate(3deg); opacity: 1; } 100% { transform: none; } }
+.ls-shock { position: absolute; left: 50%; top: 50%; width: 150px; height: 150px; margin: -75px; border-radius: 50%; border: 5px solid var(--pk); opacity: 0; animation: ls-shockw .7s ease-out .5s forwards; }
+@keyframes ls-shockw { from { transform: scale(.4); opacity: 1; } to { transform: scale(2.6); opacity: 0; } }
+.mg-end .ls-book.big { animation: ls-card .5s cubic-bezier(.3, 1.4, .5, 1) .3s both; }
+.mg-end .ls-book.big li.got { animation: ls-stick .45s cubic-bezier(.2, .9, .3, 1.4) calc(.55s + var(--k, 0) * .16s) both; }
+.ls-count.tick { animation: ls-tick .25s ease-out; }
+@keyframes ls-tick { from { transform: scale(1.4); color: #fff; } }
+.mg-lis .mg-end dl, .mg-lis .mg-end-say, .mg-lis .mg-end button { animation: ls-up .4s ease-out 1s both; }
+@keyframes ls-up { from { opacity: 0; transform: translateY(10px); } }
+/* Reduce flashes */
+.mg-lis.calm .ls-halo.tree { animation: ls-breathe 4s ease-in-out var(--d, 0s) infinite alternate; }
+.mg-lis.calm.listening .ls-halo { animation: none; }
+.mg-lis.calm .ls-scene::after, .mg-lis.calm.found .ls-scene::after { display: none; }
+.mg-lis.calm .ls-thing.sounding svg, .mg-lis.calm .ls-thing.sounding img { animation: none; }
+.mg-lis.calm .ls-car b { box-shadow: none; }
+.mg-lis.calm .ls-shock { display: none; }
+/* Performance */
+.mg-lis.perf .ls-snow.s2, .mg-lis.perf .ls-snow.s3, .mg-lis.perf .ls-car, .mg-lis.perf .ls-shine, .mg-lis.perf .ls-hc::after { display: none; }
+.mg-lis.perf .ls-halo { mix-blend-mode: normal; animation: none; opacity: .75; }
+/* reduced motion */
+.mg-lis.still .ls-snow.s2, .mg-lis.still .ls-snow.s3, .mg-lis.still .ls-car, .mg-lis.still .ls-sonar, .mg-lis.still .ls-fly, .mg-lis.still .ls-burst, .mg-lis.still .ls-shock { display: none; }
+.mg-lis.still *, .mg-lis.still *::before, .mg-lis.still *::after { animation: none !important; }
+@media (max-width: 700px) { .ls-sl { display: none; } .ls-sonar { left: 50px; bottom: 90px; } }
