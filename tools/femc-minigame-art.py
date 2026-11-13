@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Kat's minigame art: Regionals (mg-ow-*, FEMC-ART-TODO 43), the dumpling game (cook-*, 44), the booth (sing-*, 45), the listen game (listen-*, 47: street, things sheet, stickers sheet, haechan).
+"""Kat's minigame art: Regionals (mg-ow-*, FEMC-ART-TODO 43), the dumpling game (cook-*, 44), the booth (sing-*, 45), the listen game (listen-*, 47: street, things sheet, stickers sheet, haechan),
+hwatu (hwatu-month-MM, 49), Yeobo's café (cafe-*, 50), The Trip (trip-*, 56).
 
   python3 tools/femc-minigame-art.py        every New Adds/mg-ow-* | cook-* | sing-* (.png .jpg .jpeg .webp) that's there
                                              (re-run any time; it replaces). Kat's files are only read.
@@ -16,12 +17,21 @@ Regionals -> assets/femc/game/art/minigames/ow/<name>.webp (New Adds/mg-ow-<name
   potg-*       the Play of the Game splash: RGB, at most 1920 wide, q88
 Dumplings -> art/minigames/cook/ (New Adds/cook-<name>.*): counter, pan RGB; hands transparent; icons and stamps are sheets.
 The booth -> art/minigames/sing/ (New Adds/sing-<name>.*): booth, haechan-desk, title RGB; the rest transparent; sheets below.
+Hwatu -> art/minigames/hwatu/cards/<MM><type>.webp (New Adds/hwatu-month-MM.*): 4 cards left to right in hwatu.js MONTHS ty order,
+  keyed, trimmed, 240 x 360. HWATU_FILE maps Kat's file number to the deck's month where they differ (her 05 is the peony, 06 the boar).
+Café -> art/minigames/cafe/ (New Adds/cafe-<name>.*): bg-*, title RGB q86; sheets in CAFE_SHEETS; faces (already transparent) cut on an
+  even grid into square 480 px cells (CAFE_FACES; cafe-regular-msbae -> the game's id mrsbae); cafe-downloads is Kat's name for the toppings sheet.
+The Trip -> art/minigames/trip/ (New Adds/trip-<name>.*): ground (RGB, <= 2400 wide), title / sky (RGB 1920) q86; props 2 x 2 (TRIP_SHEETS);
+  playground, blanket alpha; trip-sprite-<id> -> sprite-<id>.webp: 16 frames cut, one scale per sheet, re-laid on an even 4 x 4 grid of
+  256 px cells, feet on a baseline 4% above each cell's bottom.
 Each game loads its pictures by name and falls back to its drawn stand-in when a file isn't there.
 
 Sheets (SHEETS): cut at the emptiest line near each expected grid line (not equal division: Kat's sheets aren't evenly laid
 out, e.g. "Ready?" runs past the first third of the count-in), each piece trimmed, then
   'feet'    all frames on one canvas, feet on the bottom (pose / bop sheets)
   'center'  all frames on one square canvas, centred (arrows, icons, stamps: same size, so the game can rotate / swap them)
+  'base'    all frames on one SQUARE canvas, bottoms aligned (café drinks, cups)
+  'body'    all frames on one square canvas, centred on each frame's biggest piece (hotteok / toast: a burnt one's smoke doesn't shift it)
   None      each frame trimmed to itself (rating and count-in words)
 White backgrounds (JPEGs) are keyed only where the white touches the edge, so white letters (PERFECT!!, Ready?) stay;
 'holes' frames also key enclosed white of at least their size in px (the inside of GOOD's Os, OK's O, the gaps in MISS); 'fill' frames get
@@ -62,10 +72,33 @@ COOK_SHEETS = {
     'stamps': (2, 2, ['stamp-s', 'stamp-a', 'stamp-b', 'stamp-c'], 'center', {}),
 }
 
+CAFE_SHEETS = {  # Yeobo's café (FEMC-ART-TODO 50; cafe.js names), cell order checked by eye on Kat's sheets
+    'drinks': (2, 2, ['drink-cocoa', 'drink-yuzu', 'drink-americano', 'drink-sikhye'], 'base', {}),
+    'cups': (2, 1, ['cup-s', 'cup-l'], 'base', {}),
+    'addins': (3, 3, ['add-cream', 'add-marsh', 'add-cinnamon', 'add-honey', 'add-ginger', 'add-shot', 'add-syrup', 'add-pine', 'add-ice'], 'center', {'white': 251}),  # cream, marshmallow, ice are white on white
+    'hotteok': (2, 2, ['hotteok-raw', 'hotteok-cooking', 'hotteok-done', 'hotteok-burnt'], 'body', {}),
+    'toast': (2, 2, ['toast-raw', 'toast-cooking', 'toast-done', 'toast-burnt'], 'body', {}),
+    'fillings': (4, 2, ['fill-rice', 'fill-egg', 'fill-carrot', 'fill-spinach', 'fill-danmuji', 'fill-ham', 'fill-tuna'], None, {}),
+    'toppings': (3, 2, ['top-seeds', 'top-syrup', 'top-powder', 'top-sugar', 'top-ketchup', 'top-cheese'], 'center', {}),
+    'downloads': (3, 2, ['top-seeds', 'top-syrup', 'top-powder', 'top-sugar', 'top-ketchup', 'top-cheese'], 'center', {}),  # Kat's file name for the toppings
+    'tray': (2, 1, ['tray', 'plate'], None, {}),
+    'tipjar': (2, 1, ['tipjar', 'coin'], None, {'size': {'coin': 128, 'tipjar': 600}}),
+    'stamps': (2, 2, ['stamp-s', 'stamp-a', 'stamp-b', 'stamp-c'], 'center', {}),
+}
+CAFE_ONE = {'ticket': 360, 'stampcard': 480}  # single alpha pictures: max width
+CAFE_FACES = {  # transparent face sheets, even grid -> square cells (cols, rows, prefix, expressions)
+    'sunoo-apron-portraits': (3, 2, 'sunoo-apron', ['neutral', 'happy', 'surprised', 'flustered', 'sad', 'serious']),
+}
+CAFE_REGULAR_ID = {'msbae': 'mrsbae'}  # Kat's file id -> cafe.js REGULARS id
+HWATU_FILE = {5: 6, 6: 7}  # hwatu-month-05 is drawn as the peony (butterflies, blue ribbon), -06 as bush clover (boar): the deck's months 06 and 07
+TRIP_SHEETS = {
+    'props': (2, 2, ['tree', 'willow', 'lamp', 'bench'], None, {}),
+}
 
-def whiteish(px):
+
+def whiteish(px, lo=232):
     d = px[..., :3].min(2).astype(int); sat = px[..., :3].max(2).astype(int) - d
-    return d, (d > 232) & (sat < 16)
+    return d, (d > lo) & (sat < 16)
 
 
 def soft(px, region, d):
@@ -75,11 +108,12 @@ def soft(px, region, d):
     px[..., 3] = np.where(region, 0, np.where(zone, np.minimum(a, np.clip((255 - d) * 12, 0, 255)), a)).astype(np.uint8)
 
 
-def alpha(im):
-    """RGBA; an opaque picture on white gets the white that touches the edge keyed out (enclosed white is kept)"""
+def alpha(im, lo=232):
+    """RGBA; an opaque picture on white gets the white that touches the edge keyed out (enclosed white is kept);
+    lo: how white counts as background (raise it for white things on white: whipped cream, ice, marshmallows)"""
     im = im.convert('RGBA')
     if im.getchannel('A').getextrema()[0] < 255: return im
-    px = np.asarray(im).copy(); d, w = whiteish(px)
+    px = np.asarray(im).copy(); d, w = whiteish(px, lo)
     lab, _ = nd.label(w); edge = np.unique(np.r_[lab[0], lab[-1], lab[:, 0], lab[:, -1]]); edge = edge[edge > 0]
     if not len(edge): return im
     soft(px, np.isin(lab, edge), d)
@@ -125,7 +159,7 @@ def trim(c):
 
 def sheet(src, spec, out):
     cols, rows, names, mode, opt = spec
-    im = alpha(Image.open(src))
+    im = alpha(Image.open(src), opt.get('white', 232))
     if opt.get('solid'): px = np.asarray(im).copy(); px[..., 3] = np.where(px[..., 3] < opt['solid'], 0, px[..., 3]); im = Image.fromarray(px)
     W, H = im.size; a = np.asarray(im.getchannel('A')) > 16
     ys = cuts(a.sum(1), rows); cells = []
@@ -140,12 +174,67 @@ def sheet(src, spec, out):
             cell = trim(cell)
             if cell is not None: cells.append((n, cell))
     cw, ch = max(c.width for _, c in cells), max(c.height for _, c in cells)
-    if mode == 'center': cw = ch = max(cw, ch)
+    if mode in ('center', 'base'): cw = ch = max(cw, ch)
+    if mode == 'body':
+        offs = {n: body_centre(c) for n, c in cells}
+        cw = ch = 2 * max(max(cx, c.width - cx, cy, c.height - cy) for n, c in cells for cx, cy in [offs[n]])
     for n, c in cells:
-        if mode:
+        if mode == 'body':
+            cx, cy = offs[n]; cv = Image.new('RGBA', (cw, ch), (0, 0, 0, 0)); cv.paste(c, (cw // 2 - cx, ch // 2 - cy)); c = cv
+        elif mode:
             cv = Image.new('RGBA', (cw, ch), (0, 0, 0, 0))
-            cv.paste(c, ((cw - c.width) // 2, ch - c.height if mode == 'feet' else (ch - c.height) // 2)); c = cv
-        fit(c, 1400).save(out / f'{n}.webp', 'WEBP', quality=90, alpha_quality=100); print(src.name, '->', n, c.size)
+            cv.paste(c, ((cw - c.width) // 2, ch - c.height if mode in ('feet', 'base') else (ch - c.height) // 2)); c = cv
+        fit(c, opt.get('size', {}).get(n, 1400)).save(out / f'{n}.webp', 'WEBP', quality=90, alpha_quality=100); print(src.name, '->', n, c.size)
+
+
+def body_centre(c):
+    """the centre of a frame's biggest solid piece (so smoke or a stray crumb doesn't move it)"""
+    lab, n = nd.label(np.asarray(c.getchannel('A')) > 128)
+    if not n: return c.width // 2, c.height // 2
+    k = int(np.argmax(nd.sum(lab > 0, lab, range(1, n + 1)))) + 1; ys, xs = np.nonzero(lab == k)
+    return (int(xs.min()) + int(xs.max())) // 2, (int(ys.min()) + int(ys.max())) // 2
+
+
+def opaque_crop(im):
+    """crop an opaque picture on white tight to what isn't the edge white (kimbap seaweed / rice sheets)"""
+    a = np.asarray(alpha(im).getchannel('A')) > 128; ys, xs = np.nonzero(a.any(1))[0], np.nonzero(a.any(0))[0]
+    return im.convert('RGB').crop((int(xs[0]), int(ys[0]), int(xs[-1]) + 1, int(ys[-1]) + 1))
+
+
+def grid_cells(im, cols, rows):
+    """an even grid: [(col, row, cell)]"""
+    cw, ch = im.width / cols, im.height / rows
+    return [(c, r, im.crop((round(c * cw), round(r * ch), round((c + 1) * cw), round((r + 1) * ch)))) for r in range(rows) for c in range(cols)]
+
+
+def sprite_sheet(src, dst, cell=256, base=0.04):
+    """Kat's 4 x 4 walk sheet -> one even 4 x 4 grid: frames cut at the emptiest lines, trimmed, one scale for the sheet,
+    feet on a baseline `base` above each cell's bottom, centred left to right"""
+    im = alpha(Image.open(src)); a = np.asarray(im.getchannel('A')) > 16
+    ys = cuts(a.sum(1), 4); frames = []
+    for r in range(4):
+        xs = cuts(a[ys[r]:ys[r + 1]].sum(0), 4)
+        for c in range(4): frames.append(trim(im.crop((xs[c], ys[r], xs[c + 1], ys[r + 1]))))
+    top = cell * (1 - base) - cell * 0.03
+    k = min(top / max(f.height for f in frames), cell * 0.94 / max(f.width for f in frames))
+    out = Image.new('RGBA', (cell * 4, cell * 4), (0, 0, 0, 0)); foot = round(cell * (1 - base))
+    for i, f in enumerate(frames):
+        f = f.resize((max(1, round(f.width * k)), max(1, round(f.height * k))), Image.LANCZOS)
+        out.alpha_composite(f, ((i % 4) * cell + (cell - f.width) // 2, (i // 4) * cell + foot - f.height))
+    out.save(dst, 'WEBP', quality=90, alpha_quality=100); print(src.name, '->', dst.relative_to(ROOT), 'scale', round(k, 3))
+
+
+def hwatu_month(src, out):
+    """4 cards in a row on white -> cards/<MM><type>.webp in the deck's own type order"""
+    TY = {1: 'b r j1 j2', 2: 'a r j1 j2', 3: 'b r j1 j2', 4: 'a r j1 j2', 5: 'a r j1 j2', 6: 'a r j1 j2', 7: 'a r j1 j2',
+          8: 'b a j1 j2', 9: 'a r j1 j2', 10: 'a r j1 j2', 11: 'b jd j1 j2', 12: 'b a r jd'}
+    n = int(src.stem.split('-')[-1]); m = HWATU_FILE.get(n, n)
+    im = alpha(Image.open(src)); a = np.asarray(im.getchannel('A')) > 16
+    col = a.sum(0); xs = cuts(col, 4)
+    for i, t in enumerate(TY[m].split()):
+        c = trim(im.crop((xs[i], 0, xs[i + 1], im.height)))
+        c.resize((240, 360), Image.LANCZOS).save(out / f'{m:02d}{t}.webp', 'WEBP', quality=90, alpha_quality=100)
+        print(src.name, '->', f'cards/{m:02d}{t}', c.size)
 
 
 def figure(im):
@@ -200,6 +289,36 @@ def main():
         if name == 'street': fit(im.convert('RGB')).save(dst, 'WEBP', quality=86)
         else: fit(alpha(im)).save(dst, 'WEBP', quality=90, alpha_quality=100)
         print(f.name, '->', dst.relative_to(ROOT))
+    CAFE = ART / 'cafe'; CAFE.mkdir(parents=True, exist_ok=True)
+    for f in files('cafe-'):
+        name = f.stem[len('cafe-'):]; im = Image.open(f)
+        if name in CAFE_SHEETS: sheet(f, CAFE_SHEETS[name], CAFE); continue
+        if name.startswith('regular-') or name in CAFE_FACES:
+            if name in CAFE_FACES: cols, rows, pre, ex = CAFE_FACES[name]
+            else: rid = name[len('regular-'):]; cols, rows, pre, ex = 3, 1, 'face-' + CAFE_REGULAR_ID.get(rid, rid), ['neutral', 'happy', 'grumpy']
+            for (c, r, cell), e in zip(grid_cells(im.convert('RGBA'), cols, rows), ex):
+                s = min(cell.size); cell = cell.crop(((cell.width - s) // 2, 0, (cell.width - s) // 2 + s, s))
+                cell.resize((480, 480), Image.LANCZOS).save(CAFE / f'{pre}-{e}.webp', 'WEBP', quality=88, alpha_quality=100); print(f.name, '->', f'{pre}-{e}')
+            continue
+        if name == 'kimbap':
+            (_, _, sw), (_, _, rc), (_, _, roll), (_, _, sl) = grid_cells(im, 2, 2)
+            opaque_crop(sw).save(CAFE / 'kimbap-seaweed.webp', 'WEBP', quality=88); opaque_crop(rc).save(CAFE / 'kimbap-rice.webp', 'WEBP', quality=88)
+            trim(alpha(roll)).save(CAFE / 'kimbap-roll.webp', 'WEBP', quality=90, alpha_quality=100)
+            trim(alpha(sl)).save(CAFE / 'kimbap-sliced.webp', 'WEBP', quality=90, alpha_quality=100); print(f.name, '-> kimbap-seaweed / -rice / -roll / -sliced'); continue
+        if name in CAFE_ONE: fit(trim(alpha(im)), CAFE_ONE[name]).save(CAFE / f'{name}.webp', 'WEBP', quality=90, alpha_quality=100)
+        else: fit(im.convert('RGB')).save(CAFE / f'{name}.webp', 'WEBP', quality=86)  # bg-*, title
+        print(f.name, '->', name)
+    HW = ART / 'hwatu' / 'cards'; HW.mkdir(parents=True, exist_ok=True)
+    for f in files('hwatu-month-'): hwatu_month(f, HW)
+    TRIP = ART / 'trip'; TRIP.mkdir(parents=True, exist_ok=True)
+    for f in files('trip-'):
+        name = f.stem[len('trip-'):]; im = Image.open(f)
+        if name in TRIP_SHEETS: sheet(f, TRIP_SHEETS[name], TRIP); continue
+        if name.startswith('sprite-'): sprite_sheet(f, TRIP / f'{name}.webp'); continue
+        if name == 'ground': fit(im.convert('RGB'), 2400).save(TRIP / 'ground.webp', 'WEBP', quality=86)
+        elif name in ('title', 'sky'): fit(im.convert('RGB')).save(TRIP / f'{name}.webp', 'WEBP', quality=86)
+        else: fit(trim(alpha(im)), 1400).save(TRIP / f'{name}.webp', 'WEBP', quality=90, alpha_quality=100)  # playground, blanket
+        print(f.name, '->', name)
     for f in files('mg-ow-'):
         name = f.stem[len('mg-ow-'):]
         if name in OW_SHEETS: sheet(f, OW_SHEETS[name], OW); continue

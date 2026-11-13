@@ -1302,10 +1302,12 @@
       { s: 'solar', f: 'neutral', t: "I don't know how to play." },
       { s: 'eomma', f: 'neutral', t: "You've been watching me count them since you were six. From under the hall table. You thought I couldn't see your feet." },
       { n: "Her face went warm, which was ridiculous, which was a thing that happened to her in this room and nowhere else. She sat. The cushion was the good silk one from the front room, and the blanket under her knees was exactly as scratchy as she remembered, and her mother picked up the deck and shuffled it, not the way men in the kitchen shuffled, splitting it and bending it, but sliding the cards over and under each other in one hand with a soft dry sound like rain beginning on a roof." },
+      { cg: 'epi-s-hwatu' }, // FEMC-ART-TODO 51G
       { n: "She dealt quickly, one to Solar, one to herself, and laid eight face up on the blanket between them in two short rows, pine and plum and the cherry with its red curtain, the moon over the pampas grass, a little brown boar." },
       { s: 'eomma', f: 'neutral', t: "Match the month. Pine to pine. Plum to plum. The birds are worth more than they look. The rain is worth less. Don't be greedy with the brights." },
       { s: 'solar', f: 'surprised', t: "That's it? That's the rules?" },
       { s: 'eomma', f: 'happy', t: "That's the rules. The rest is people." },
+      { cg: null },
       { choose: [
         { t: "(Play.)", then: [
           // The hwatu minigame (Nov 11 2026; minigames/hwatu.js, flags epi-s-mg-hwatu-*). Eomma deals either way.

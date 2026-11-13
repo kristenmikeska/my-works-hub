@@ -995,6 +995,7 @@
       { s: 'mom', f: 'happy', t: "Your book's upside down." },
       { n: "The door shut for real. Solar put her face in the duvet and screamed into it, very quietly, and Nana put one enormous paw on the back of her head, which he did sometimes, and which nobody had ever taught him." },
       { music: 'epi-h-romance' },
+      { cg: 'epi-h-eve-call' }, // FEMC-ART-TODO 51E
       { n: "Her phone went at 11:41. His minute. Forty-one past, every time, like a train, and this time the voice on the other end sounded like it was coming from the bottom of a well." },
       { s: 'jungwon', f: 'neutral', t: "Hi. Don't be alarmed. I'm in the bathtub." },
       { s: 'solar', f: 'surprised', t: "You're in the *what*?" },
@@ -1021,6 +1022,7 @@
       { s: 'solar', f: 'happy', t: "You *were* running." },
       { s: 'jungwon', f: 'neutral', t: "I was standing very still in a way that was running." },
       { n: "She laughed into her pillow. Nana lifted his head, offended on behalf of the household, and put it down again across her knees with a groan. Down the line Jungwon folded the paper back up, she could hear him do it, along its old creases, carefully, like the notes were something that could be hurt." },
+      { cg: null },
       { s: 'jungwon', f: 'neutral', t: "Sol." },
       { s: 'solar', f: 'neutral', t: "Mm?" },
       { s: 'jungwon', f: 'sad', t: "Nobody's ever told me a time before. To come to their house. *At one.* Like it's a normal thing. Like there's a chair." },
@@ -1392,6 +1394,7 @@
     { s: 'mom', f: 'neutral', t: "Jungwon washes. Jihoon dries. Jihoon knows where everything goes. Solar, put the cake plates out and then stay out of their way." },
     { n: "She said it in the voice she used to seat clients at a dinner so the two who'd sued each other weren't next to each other, and then she went into the living room to wake up her husband, and Solar was left standing between the fridge and the pantry with a stack of cake plates, and the two of them at the sink with their backs to her and their shoulders exactly the same height, which she'd never noticed, which seemed like the kind of thing that would make them both furious if she pointed it out." },
     { n: "She went into the pantry for the cake forks. She stayed in the pantry. It was a narrow cupboard with a light on a string and her mother's jars of plum syrup in rows, and from in there, with the door half shut, she could see a slice of the sink through the gap, and hear all of it." },
+    { cg: 'epi-h-xmas-dishes' }, // FEMC-ART-TODO 51A
     { s: 'jihoon', f: 'neutral', t: "You're doing it wrong." },
     { s: 'jungwon', f: 'neutral', t: "I'm doing it in order. Glasses, then bowls, then pans. The water's cleanest at the start. You use the clean water on the things you drink out of." },
     { s: 'jihoon', f: 'neutral', t: "Her mom does pans first." },
@@ -1421,6 +1424,7 @@
     { n: "The noise it made in the pantry was enormous. When she came out, holding the cake forks like a weapon and her face doing something she couldn't control, they were both facing the sink again, side by side, perfectly still, perfectly pleasant, scrubbing and drying with enormous dedication, like two portraits of boys doing dishes." },
     { s: 'jihoon', f: 'happy', t: "Merry Christmas, Jungwon." },
     { s: 'jungwon', f: 'neutral', t: "Merry Christmas, Jihoon." },
+    { cg: null },
     { n: "Her mother came back in to find them like that, and looked at them, and looked at Solar with the forks, and narrowed her eyes at all three of them, very slowly." },
     { s: 'mom', f: 'serious', t: "Did you two fight?" },
     { s: 'jihoon', f: 'happy', t: "No, Eomeoni." },
@@ -1456,11 +1460,13 @@
       { n: "Then he stopped laughing. He looked at the bottle again, and at her, and his face did the slow, careful thing it did right before he said something he'd checked twice." },
       { s: 'jungwon', f: 'neutral', t: "Nobody's ever written the times down for me. They write down the scores." },
       { n: "She didn't decide to. She took a fistful of the front of his good sweater, the dog hair and all, and pulled, and he came, the bottle still in one hand, and kissed her back like he'd been waiting since the bench last night with the dog on her boot, which he probably had, which he'd probably counted." },
+      { cg: 'epi-h-xmas-desk' }, // FEMC-ART-TODO 51B
       { n: "Her desk was behind her. She found it with the backs of her thighs. His free hand found her waist and then, under the hem of her sweater, the small of her back, his fingers so cold off the sink water that she gasped against his mouth, and he started to pull them away, and she said *don't* into him, and he didn't. He held on. He held on like a boy who'd never once been allowed to hold on to anything he wanted for as long as he wanted it, careful and then not careful, the bottle knocking against the edge of the desk, the textbook sliding, chapter six going over onto the floor, the whole warm length of him leaning her back against the place where she'd done every bit of homework of her life." },
       { n: "Nana came in." },
       { n: "He didn't knock. He never knocked. He shouldered the already-open door so it hit the wall, walked to the exact middle of the rug, sat down, and looked at them, smiling, panting, the half of the red bow swinging off his collar like a medal, with the deep and total interest of a dog who'd been told there was a boy upstairs and had come to check on the boy's progress." },
       { n: "They broke apart. Jungwon's hair was in his eyes. His ears were the colour of the bow. He looked at Nana the way you'd look at a teacher who'd walked into the wrong classroom at the worst possible second." },
       { s: 'jungwon', f: 'flustered', t: "...Hello, Nana." },
+      { cg: null },
       { s: 'mom', f: 'neutral', t: "Solar. The *door.*" },
       { n: "Her mother's voice, from the bottom of the stairs, not raised. It didn't need raising. It came up the stairwell like a draught." },
       { s: 'solar', f: 'flustered', t: "It's OPEN." },
@@ -1646,11 +1652,13 @@
   { id: 'epi-h-xmas-night', date: '12/25', slot: 'late', title: 'christmas night', place: 'Hanlim · Home · Her Room', time: 'Late Night', scene: [
     { music: 'epi-h-late' },
     { n: "At ten o'clock on Christmas night the house had gone quiet the way it only went quiet once a year, her parents asleep downstairs in front of the film they fell asleep in every Christmas, the television still murmuring to nobody, the tree blinking on its timer through the banisters, red, green, red, and Solar sat on her bedroom floor in her pyjamas with everything she'd been given spread out around her on the rug like the contents of a pocket turned out." },
+    { cg: 'epi-h-xmas-presents' }, // FEMC-ART-TODO 51D
     { n: "The planner, dark red, empty. Her father's hat, ear flaps and pom-pom and the sheep he swore was a Samoyed. Cherry's bear, pink, a rainbow on its stomach, with a note round its neck on a ribbon that said *ON YOUR PILLOW OR ELSE* in Cherry's handwriting, which she obeyed, immediately, because she wasn't stupid." },
     { ifEpiRoute: 'jungwon', then: [
       { n: "And the scarf. She hadn't taken it off until her mother had looked at her at dinner, eating galbi in a wool scarf in a heated house, and said nothing in a way that said everything. Now it was folded on her pillow next to the bear, dark green, folded the way he'd folded it, corners right. She'd tried three times to fold it like that again herself and given up." }
     ] },
     { n: "Nana was lying across all the tissue paper, all of it, every sheet, like he'd been assigned to guard it, with the plush croissant between his front paws. Every few minutes he squeaked it, once, and looked at her to see if she'd noticed. She had. She always had." },
+    { cg: null },
     { ifEpiRoute: 'jungwon', then: [
       { music: 'epi-h-romance' },
       { n: "Her phone went at 10:41. His minute. And again, the faint hollow echo of tile." },
@@ -1744,6 +1752,7 @@
         { s: 'jihoon', f: 'neutral', t: "What dorm." },
         { n: "He didn't open his eyes. He said it lightly, pleasantly, the way you'd say *bless you* to a stranger, and the whole room heard what it cost him to keep it that light, and she heard it too, and she let it go, because she always let it go, because that was the oldest deal they had, older than the cocoa." },
         { s: 'jihoon', f: 'neutral', t: "I don't know her. I've never been in a dorm in my life. Go to sleep, Sol." },
+        { cg: 'epi-h-xmas-rug' }, // FEMC-ART-TODO 51C
         { n: "She didn't go to sleep. She let her hand hang off the edge of the bed, in the dark, over the side, not reaching, just there, the way she'd done when they were small and she was scared of whatever was under the bed and he'd been on the floor beside it, and he was the thing under the bed, he'd said, so there was nothing to be scared of." },
         { n: "For a long time nothing happened. Nana snored. The tree blinked downstairs through the gap under the door, red, green, red." },
         { n: "Then his hand came up out of the dark, off the dog, and found hers, and held it. Not tight. Just held it, his fingers still cold from the snowballs, his thumb resting across her knuckles, not moving, the way you'd rest your hand on a railing at the top of some stairs." },
@@ -1763,6 +1772,7 @@
             { s: 'jihoon', f: 'neutral', t: "For not making it weird. Go to sleep." }
           ] }
         ] },
+        { cg: null },
         { n: "At half past eleven he sat up. Nana slid off him onto the tissue paper in one long white avalanche and didn't wake." },
         { s: 'jihoon', f: 'neutral', t: "Okay. I'm going home. Somebody has to sleep in that house. It gets ideas otherwise." },
         ...((R.stolen || {}).xmasKiss || []), // the Jihoon thread (Nov 11 2026): the kiss on her rug (stolen.js)

@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 11, after art batch 151):** **strangers heat** (section 58, new Nov 11: 4 CGs for the new romance scenes) · **the endings: she's gone** (section 57, new Nov 11: 5 CGs, one per epilogue's last moment) · **HOAX: The Trip minigame** (section 56, new Nov 11: 8 walking sprite sheets for Solar, the crew and Nana, the park's ground, props and playground, the blanket, a title card, the finale sky) · **HOAX: Jungwon going out** (section 55, new Nov 11: 2 optional CGs) · **HOAX: the Jihoon thread** (section 54, new Nov 11: 3 optional CGs) · **HOAX: the hearing's hands** (section 53, new Nov 11: 1 optional CG) · **the Yang family for strangers** (section 52: two face sheets, Seojun's photograph, 2 CGs) · **Yeobo's café game** (section 50, new Nov 11: 5 backgrounds, a title card, 13 food / cup / tray / ticket / tip-jar / stamp sheets, Sunoo's apron faces, 6 regulars' faces) · **Solar's HOAX faces remade in Cherry's style** (section 48: 4 sheets + 1 optional) · **7 CGs for today's new scenes** (section 51) · **Hwatu cards** (section 49: 12 month sheets, a back, a blanket, an optional title) · ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (sections 44-45: Haechan's apron faces; 3 booth pieces for his songs: his singing poses, Solar bopping behind the glass, his health-bar icon; section 47: the listen game's street, its six things, their stickers and Haechan) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · **the epilogue scrapbook** (section 46, Nov 10: 110 "Previously" photos, Runners 40 / strangers 35 / HOAX 35, plus 11 covers, paper, dividers, tape and sticker sheets) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
+**To make (updated Nov 12, after art batch 153):** **strangers heat** (section 58, new Nov 11: 1 CG left for the new romance scenes) · **the endings: she's gone** (section 57, new Nov 11: 3 CGs left, Stay's two and the true ending's) · **HOAX: the Jihoon thread** (section 54, new Nov 11: 2 optional CGs) · **Hwatu cards** (section 49: 6 month sheets left, May and August-December, a back, a blanket, an optional title) · ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (sections 44-45: Haechan's apron faces; 3 booth pieces for his songs: his singing poses, Solar bopping behind the glass, his health-bar icon; section 47: the listen game's street, its six things, their stickers and Haechan) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · **the epilogue scrapbook** (section 46, Nov 10: 110 "Previously" photos, Runners 40 / strangers 35 / HOAX 35, plus 11 covers, paper, dividers, tape and sticker sheets) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
 
 ## ⭐ Outfits, HD poses and banners: in `FEMC-SKIN-ART.md` (Nov 7)
 
@@ -146,97 +146,15 @@ A portrait sheet: 3 columns × 2 rows on a plain white background, with clear em
 
 
 ---
-## 48. Solar's HOAX faces, remade (ChatGPT; in Cherry's style; Kat, Nov 11)
-
-Kat's plan: redo all of Solar's HOAX portraits from scratch so she matches Cherry's art style. Attach both pictures for each, **Cherry first** (the style) and **Solar second** (who she is). Each sheet is the same six faces as now, in the usual order. The New Year hanbok one is optional (it's her fifth HOAX look).
-
-**[ ] 48A. Solar: everyday**  
-Attach: `CG - Cherry (HOAX).png`, `CG - Solar (HOAX).png`  
-Save as: `solar-hoax-remake-portraits.png`
-```
-A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. Draw the girl from the SECOND attached image (Solar Kim): keep HER face, eye shape, features and her long dark wavy hair, so she's clearly the same person, but redraw her completely in the art style of the FIRST attached image (Cherry): copy that image's painted rendering, skin, eyes, line, lighting, colour, head-and-shoulders framing and size exactly, so the two girls look like they come from the same game. Do NOT give her Cherry's face. The same person in all six cells, facing the camera. Outfit: her everyday look: a fitted pink-and-black striped long-sleeve top with a dark graphic print, a black choker with a small silver heart, a layered thin silver chain with a tiny cross. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] 48B. Solar: school**  
-Attach: `CG - Cherry (HOAX school).png`, `CG - Solar (HOAX school).png`  
-Save as: `solar-hoax-school-remake-portraits.png`
-```
-A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. Draw the girl from the SECOND attached image (Solar Kim): keep HER face, eye shape, features and her long dark wavy hair, so she's clearly the same person, but redraw her completely in the art style of the FIRST attached image (Cherry): copy that image's painted rendering, skin, eyes, line, lighting, colour, head-and-shoulders framing and size exactly, so the two girls look like they come from the same game. Do NOT give her Cherry's face. The same person in all six cells, facing the camera. Outfit: Hanlim High's winter uniform: a navy blazer with cream piping and a small gold pin on the lapel, a cream knit vest, a white shirt and a red ribbon bow at the collar. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] 48C. Solar: Christmas / holiday**  
-Attach: `CG - Cherry (HOAX christmas).png`, `CG - Solar (HOAX christmas).png`  
-Save as: `solar-hoax-christmas-remake-portraits.png`
-```
-A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. Draw the girl from the SECOND attached image (Solar Kim): keep HER face, eye shape, features and her long dark wavy hair, so she's clearly the same person, but redraw her completely in the art style of the FIRST attached image (Cherry): copy that image's painted rendering, skin, eyes, line, lighting, colour, head-and-shoulders framing and size exactly, so the two girls look like they come from the same game. Do NOT give her Cherry's face. The same person in all six cells, facing the camera. Outfit: a soft pink cable-knit sweater for the holidays, a black choker with a small silver heart. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] 48D. Solar: party**  
-Attach: `CG - Cherry (HOAX party).png`, `CG - Solar (HOAX party).png`  
-Save as: `solar-hoax-party-remake-portraits.png`
-```
-A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. Draw the girl from the SECOND attached image (Solar Kim): keep HER face, eye shape, features and her long dark wavy hair, so she's clearly the same person, but redraw her completely in the art style of the FIRST attached image (Cherry): copy that image's painted rendering, skin, eyes, line, lighting, colour, head-and-shoulders framing and size exactly, so the two girls look like they come from the same game. Do NOT give her Cherry's face. The same person in all six cells, facing the camera. Outfit: a party night: a black corset top under a black leather jacket slipping off her shoulders, layered silver chains, a small silver cross earring, her hair a little messier. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
-**[ ] 48E. Solar: New Year hanbok (optional)**  
-Attach: `CG - Cherry (HOAX new year).png`, `CG - Solar (HOAX new year).png`  
-Save as: `solar-hoax-newyear-remake-portraits.png`
-```
-A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. Draw the girl from the SECOND attached image (Solar Kim): keep HER face, eye shape, features and her long dark wavy hair, so she's clearly the same person, but redraw her completely in the art style of the FIRST attached image (Cherry): copy that image's painted rendering, skin, eyes, line, lighting, colour, head-and-shoulders framing and size exactly, so the two girls look like they come from the same game. Do NOT give her Cherry's face. The same person in all six cells, facing the camera. Outfit: a New Year hanbok: a navy jeogori embroidered with gold flowers, a cream collar and navy ribbon tie, a small gold flower hairpin above one ear. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
-```
-
----
 ## 49. Hwatu (Go-Stop) cards and table (strangers minigame; Kat, Nov 11)
 
 The Hwatu game plays now with drawn stand-in cards; these replace them. **The 12 month sheets are the main thing** (4 cards each, always in the order the prompt lists). The back, the blanket and the title card are small extras. No attachments needed. The players' faces use the strangers portraits already in the game (Solar, her mother, and a Thursday wife), so no portraits here.
 
-**[ ] 49-01. January · Pine**  
-Attach: nothing  
-Save as: `hwatu-month-01.png`
-```
-A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Pine suit. Cards, left to right: (1) BRIGHT: a white crane with a red sun behind it, under pine branches; (2) RIBBON: pine branches with a red poetry ribbon that has writing on it; (3) and (4) JUNK: plain pine branches and hills, no animal or ribbon (make the two slightly different). No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
-```
-
-**[ ] 49-02. February · Plum blossom**  
-Attach: nothing  
-Save as: `hwatu-month-02.png`
-```
-A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Plum blossom suit. Cards, left to right: (1) ANIMAL: a small green bush warbler on a plum branch with red blossoms; (2) RIBBON: plum blossoms with a red poetry ribbon that has writing; (3) and (4) JUNK: plain plum branches with red blossoms. No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
-```
-
-**[ ] 49-03. March · Cherry blossom**  
-Attach: nothing  
-Save as: `hwatu-month-03.png`
-```
-A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Cherry blossom suit. Cards, left to right: (1) BRIGHT: a red-and-white festival curtain under pink cherry blossoms; (2) RIBBON: cherry blossoms with a red poetry ribbon that has writing; (3) and (4) JUNK: plain cherry blossoms. No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
-```
-
-**[ ] 49-04. April · Black bush clover (wisteria)**  
-Attach: nothing  
-Save as: `hwatu-month-04.png`
-```
-A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Black bush clover (wisteria) suit. Cards, left to right: (1) ANIMAL: a cuckoo flying under a dark hanging bush-clover branch, a crescent moon; (2) RIBBON: the dark branches with a plain red ribbon (no writing); (3) and (4) JUNK: plain dark hanging branches. No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
-```
-
 **[ ] 49-05. May · Orchid (iris)**  
 Attach: nothing  
-Save as: `hwatu-month-05.png`
+Save as: `hwatu-month-05.png` (Nov 12: the first file saved under this name was the June peony sheet, now in the game as June; this iris one is still to make)
 ```
 A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Orchid (iris) suit. Cards, left to right: (1) ANIMAL: a wooden eight-plank bridge among purple irises; (2) RIBBON: irises with a plain red ribbon (no writing); (3) and (4) JUNK: plain irises. No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
-```
-
-**[ ] 49-06. June · Peony**  
-Attach: nothing  
-Save as: `hwatu-month-06.png`
-```
-A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Peony suit. Cards, left to right: (1) ANIMAL: two butterflies over red peonies; (2) RIBBON: peonies with a blue ribbon; (3) and (4) JUNK: plain peonies. No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
-```
-
-**[ ] 49-07. July · Red bush clover**  
-Attach: nothing  
-Save as: `hwatu-month-07.png`
-```
-A row of 4 Korean hwatu (Go-Stop) playing cards side by side on a plain white background, evenly spaced with clear white space between them, nothing overlapping, all four the same size: tall rounded rectangles in 2:3 proportion, each with a thin red border, the classic hwatu look (flat printed colours, bold black outlines, red, green, black and white on a cream card), redrawn cleanly and sharply. This is the Red bush clover suit. Cards, left to right: (1) ANIMAL: a wild boar among red bush clover; (2) RIBBON: red bush clover with a plain red ribbon (no writing); (3) and (4) JUNK: plain red bush clover. No numbers, no labels, no text except the writing on any poetry ribbon. No shadows, no table, nothing else in the picture.
 ```
 
 **[ ] 49-08. August · Empty mountain (pampas)**  
@@ -296,304 +214,9 @@ A 16:9 realistic painted still, seen from just above a low table in an elegant K
 ```
 
 ---
-## 51. CGs for the Nov 11 scenes (ChatGPT; each world's own style; Kat, Nov 11)
-
-New moments from today's writing: HOAX's longer Christmas, the Runners piano scene and the strangers flower-card afternoon. The scenes play fine without them; each CG drops in when it exists.
-
-**[ ] 51A. HOAX · Christmas Day: the dishes**  
-Every route, Christmas Day at the Kims' kitchen sink after lunch.  
-Attach: `CG - style (HOAX).png`, `BG - Kim Kitchen (HOAX).png`, `CG - Jungwon (HOAX).png`, `CG - Jihoon (HOAX).png`  
-Save as: `epi-h-xmas-dishes.png`
-```
-A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic warm light, high detail). The setting is the SECOND attached image, the Kims' kitchen in Hanlim on a snowy Christmas afternoon, warm overhead light, the window behind fogged and white with snow. The two boys are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). Side by side at the sink: Yang Jungwon (left) in a cream knit sweater with the sleeves pushed up, washing a plate with serious care, rubber gloves a size too big; Park Jihoon (right, taller) in a dark Christmas sweater, drying a bowl with a dish towel over his shoulder, mid-sentence, looking down at Jungwon with an exaggerated put-upon face. A stack of clean bowls, a dish rack, steam off the water, a Christmas card stuck to the fridge. Unspoken rivalry turning into grudging respect. No text.
-```
-
-**[ ] 51B. HOAX · Christmas Day, her room (Jungwon route)**  
-Jungwon route, Christmas Day in Solar's room with the door open, just before Nana walks in.  
-Attach: `CG - style (HOAX).png`, `BG - Solar's Room (HOAX).png`, `CG - Solar (HOAX christmas).png`, `CG - Jungwon (HOAX).png`, `CG - Nana (HOAX).png`  
-Save as: `epi-h-xmas-desk.png`
-```
-A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic warm light, high detail). The setting is the SECOND attached image, Solar's bedroom in the afternoon, snow light through the window, fairy lights over the bed. The people are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). Solar Kim (soft pink Christmas sweater) half sitting on the edge of her desk, hands in Jungwon's sweater, kissing Yang Jungwon (cream knit sweater) who leans in with one hand flat on the desk beside her, eyes closed. In the foreground the bedroom door stands open and a huge fluffy white Samoyed (the FIFTH attached image, Nana) is shouldering it wider, looking straight at them, unimpressed. Tender, a little funny, nothing explicit. No text.
-```
-
-**[ ] 51C. HOAX · Christmas night, her room (Jihoon route)**  
-Jihoon route, late on Christmas night: he came in the back door and is lying on her rug.  
-Attach: `CG - style (HOAX).png`, `BG - Solar's Room at night (HOAX).png`, `CG - Solar (HOAX christmas).png`, `CG - Jihoon (HOAX).png`  
-Save as: `epi-h-xmas-rug.png`
-```
-A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic warm light, high detail). The setting is the SECOND attached image, Solar's bedroom late at night, only the fairy lights and a desk lamp on, glow-in-the-dark stars on the ceiling, snow outside. The people are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). Park Jihoon (dark hoodie, snow melting in his hair) lying on his back on the rug beside her bed, one arm behind his head, looking up at the ceiling stars with an unguarded, quiet face; Solar Kim lying on her side on the bed above him in pajamas, her hand hanging over the edge of the mattress, his hand reaching up to hold it. His car keys and the contents of his pockets scattered on her desk. Intimate, hushed. No text.
-```
-
-**[ ] 51D. HOAX · Christmas night: presents on the rug**  
-Every route, Christmas night, the presents spread on her floor and Nana in the tissue paper.  
-Attach: `CG - style (HOAX).png`, `BG - Solar's Room at night (HOAX).png`, `CG - Solar (HOAX christmas).png`, `CG - Nana (HOAX).png`  
-Save as: `epi-h-xmas-presents.png`
-```
-A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic warm light, high detail). The setting is the SECOND attached image, Solar's bedroom on Christmas night, warm fairy lights, snow outside. The people are the same as the THIRD and FOURTH attached images. Solar Kim sitting cross-legged on the rug in pajamas and the pink sweater, laughing, among opened presents: a planner, framed photos of a white dog, a knit ear-flap hat with a sheep on it, ribbons and torn wrapping; beside her a huge fluffy white Samoyed (Nana) lying in a nest of tissue paper with a squeaky toy croissant in his mouth, looking very pleased. Cosy and happy. No text.
-```
-
-**[ ] 51E. HOAX · Christmas Eve, the late call (Jungwon route)**  
-Jungwon route, near midnight on Christmas Eve: in bed, on the phone with him.  
-Attach: `CG - style (HOAX).png`, `BG - Solar's Room at night (HOAX).png`, `CG - Solar (HOAX christmas).png`  
-Save as: `epi-h-eve-call.png`
-```
-A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic warm light, high detail). The setting is the SECOND attached image, Solar's bedroom just before midnight, the lights off except the fairy lights, glow-in-the-dark stars on the ceiling, snow falling past the window. The girl is the same as the THIRD attached image (same face, eyes and hair). Solar Kim lying in bed under the duvet in pajamas, phone held to her ear, smiling at the ceiling with her eyes half closed, the phone screen lit with a call timer; a huge white Samoyed asleep across the foot of the bed. Soft, private, sweet. No text.
-```
-
-**[ ] 51F. Runners · the piano at night (Haechan route)**  
-Haechan route, 12/27 evening, the Lee apartment's living room: the piano under the soft pedal.  
-Attach: `CG - style (Runners).png`, `BG - Lee Apartment Living Room (Runners).png`, `Haechan (Runners).png`, `Solar (Runners).png`  
-Save as: `epi-r-piano.png`
-```
-A 16:9 realistic CG in the exact style of the FIRST attached image. The setting is the SECOND attached image, an Upper East Side apartment's living room at night, only one lamp on, city lights in the tall windows, a black grand piano. The people are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). Haechan at the piano in a loose black T-shirt, playing softly, his foot on the left pedal, head tilted toward the girl beside him; Solar on the bench next to him in an oversized sweater, her shoulder against his, her left hand resting on the low keys under his, watching his hands. Hushed, warm, falling in love. No text.
-```
-
-**[ ] 51G. strangers · flower cards with Eomma**  
-Every route, a Thursday afternoon in the sunroom: her mother deals her in at hwatu.  
-Attach: `CG - style (Strangers).png`, `BG - Lee House Sunroom (Strangers).png`, `Miseon (Strangers).png`, `CG - Solar (Strangers).png`  
-Save as: `epi-s-hwatu.png`
-```
-A 16:9 realistic CG in the exact style of the FIRST attached image. The setting is the SECOND attached image, the Lee family's sunroom in Incheon in late winter daylight, orchids on the shelves. The people are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). On a dark green army wool blanket spread on the floor: Solar's mother (cream cardigan, hair done, jade ring) kneeling upright and dealing hwatu cards with quick elegant hands, a faint private smile; Solar (her hair pinned up) sitting across from her with her cards fanned close, studying her mother's face instead of her hand. Small stacks of coins, a cup of barley tea, a few face-up cards: a crane under a red sun, a full moon over a hill. Quiet, warm, a little guarded. No text.
-```
----
-## 50. Yeobo's café game (HOAX minigame; Kat, Nov 11)
-
-For the café game at Yeobo's, Sunoo's grandmother's café (a restaurant game: customers at the counter, a drinks station, a griddle, a build board, then the tasting). Everything here is optional: the game already draws its own stand-ins and swaps each picture in once it exists. **The four station backgrounds and the food sheets matter most**; the faces at the end give the neighbourhood regulars real faces (the HOAX cast already have theirs). Backgrounds are in the realistic HOAX CG style; the item sheets are realistic painted food on white, for cutting.
-
-**[ ] 50A. The counter (Order station background)**  
-Attach: `CG - style (HOAX).png`, `BG - Yeobo's Café.png`  
-Save as: `cafe-bg-order.png`
-```
-A 16:9 realistic background in the exact style of the FIRST attached image, with no people in it. The place is the café in the SECOND attached image (Yeobo's, a small, cosy Korean neighbourhood café run by an old woman, in winter): keep its colours, wood, lighting and details. The view is from behind the counter, looking out at the café: the empty wooden counter top runs along the very bottom of the picture; behind it a small seating area with a few little tables and chairs, the glass front door on the left with a small brass bell above it, a fogged window looking out on a snowy street in late-afternoon light, a radiator under the window, hanging plants and warm pendant lamps, a glass pastry case at the far right edge. Keep the middle of the picture open and uncluttered (customers will stand there), nothing tall in the centre. No people, no text, no signs with writing.
-```
-
-**[ ] 50B. The counter after dark**  
-Attach: `CG - style (HOAX).png`, `BG - Yeobo's Café.png`, `cafe-bg-order.png` (50A, once you've made it)  
-Save as: `cafe-bg-order-night.png`
-```
-A 16:9 realistic background in the exact style of the FIRST attached image, with no people in it: the same view as the THIRD attached image (the café in the SECOND attached image, seen from behind the counter, the empty wooden counter top along the very bottom), but after dark on a winter night. The street outside the fogged window and the glass door is deep blue-black with streetlamps, falling snow and a lit shop sign far away; inside, the pendant lamps glow warm and golden, a candle on one table, the room cosier and a little emptier. Keep everything else in the same place, and keep the middle of the picture open. No people, no text.
-```
-
-**[ ] 50C. The drinks station**  
-Attach: `CG - style (HOAX).png`, `BG - Yeobo's Café.png`  
-Save as: `cafe-bg-drinks.png`
-```
-A 16:9 realistic background in the exact style of the FIRST attached image, with no people in it, inside the café in the SECOND attached image (keep its colours and wood). A close view of the back counter where the drinks are made: a white tiled wall, wooden shelves with stacked ceramic mugs, paper takeaway cups, jars of yuzu marmalade and a tin of cocoa, a small espresso grinder, a pink tea towel on a hook, a window with soft winter light at one side. A warm wooden counter fills the bottom third of the picture. The left third and the centre of the counter are clear and empty (the game puts the kettle and the cup there). No people, no text, no labels with writing.
-```
-
-**[ ] 50D. The griddle station**  
-Attach: `CG - style (HOAX).png`, `BG - Yeobo's Café.png`  
-Save as: `cafe-bg-griddle.png`
-```
-A 16:9 realistic background in the exact style of the FIRST attached image, with no people in it, in the little cooking corner of the café in the SECOND attached image: a cream tiled wall with a brushed-steel backsplash, a steel extractor hood at the top edge, spatulas, tongs and a ladle hanging from a rail, a shelf with bottles of oil and honey, a stack of paper plates and a jar of brown sugar, a little steam in the warm light. A stainless-steel counter fills the bottom third of the picture. The middle of the picture is clear and plain (the game draws the griddle there). No people, no text.
-```
-
-**[ ] 50E. The build board (kimbap and plating)**  
-Attach: `CG - style (HOAX).png`, `BG - Yeobo's Café.png`  
-Save as: `cafe-bg-build.png`
-```
-A 16:9 realistic background in the exact style of the FIRST attached image, with no people in it, in the café in the SECOND attached image: the prep counter where kimbap is rolled and plates are finished, seen from a little above. A warm butcher-block wooden counter fills the bottom half of the picture; along its back edge small ceramic bowls of prepared fillings (yellow egg strips, julienned carrot, spinach, bright yellow pickled radish, pink ham), a small rice cooker, a bottle of sesame oil, a roll of plastic wrap and a stack of small white plates; a tiled wall and a little window behind. The centre of the counter is clear and empty (the game puts the bamboo mat and the plates there). No people, no text.
-```
-
-**[ ] 50F. Title card**  
-Attach: `CG - style (HOAX).png`, `BG - Yeobo's Café.png`, `CG - Sunoo (HOAX).png`  
-Save as: `cafe-title.png`
-```
-A 16:9 realistic key-art still in the exact style of the FIRST attached image: the front of the café in the SECOND attached image at winter dusk, warm golden light through fogged windows, snow on the awning and the window ledge, a little chalkboard easel by the door, steam rising from a takeaway cup on the sill. The young man in the THIRD attached image (Sunoo; keep his face and hair exactly) leans out of the open door in a pink café apron over a cream knit sweater, waving with a big, bright smile. A painted wooden sign above the door reads YEOBO'S in friendly hand-lettered letters, and on a small paper banner under it: a day at the café. Keep the lower third calm. Real-looking proportions; NOT anime and NOT cel shading. No other text.
-```
-
-**[ ] 50G. The four drinks, finished**  
-Attach: nothing  
-Save as: `cafe-drinks.png`
-```
-A sheet of 4 pictures in a 2 × 2 grid on a plain white background, clear white space between them, nothing overlapping, every item the same scale and centred in its cell, seen from the front and a little above. Realistic painted food illustration like a cosy, high-quality café cooking game: soft warm light from above, rich texture, only a faint shadow under each item, clean edges so each can be cut out. In reading order: (1) hot chocolate in a chunky pink ceramic mug, plain, no cream on top; (2) yuzu tea in a clear glass mug, golden with shreds of yuzu peel; (3) an americano in a white takeaway cup with a black lid and a pink cardboard sleeve; (4) sikhye, the Korean sweet rice drink, in a clear glass, pale gold with a few rice grains floating. No text, no logos, nothing else in the picture.
-```
-
-**[ ] 50H. The two empty cups**  
-Attach: nothing  
-Save as: `cafe-cups.png`
-```
-A sheet of 2 pictures side by side on a plain white background, clear white space between them, nothing overlapping, seen straight from the front at the same scale. Realistic painted illustration like a cosy, high-quality café cooking game, clean edges for cutting, only a faint shadow under each. (1) A small, chunky, empty ceramic mug, cream with a pink rim and a round handle. (2) A tall, empty white takeaway cup without a lid. No text, no logos.
-```
-
-**[ ] 50I. The add-ins**  
-Attach: nothing  
-Save as: `cafe-addins.png`
-```
-A sheet of 9 small pictures in a 3 × 3 grid on a plain white background, clear white space between them, nothing overlapping, every item the same scale and centred in its cell. Realistic painted food illustration like a cosy, high-quality café cooking game, soft warm light, clean edges for cutting, only a faint shadow under each. In reading order: (1) a swirl of whipped cream; (2) three pink and white mini marshmallows; (3) a little pile of ground cinnamon with a cinnamon stick; (4) a drip of golden honey from a small wooden honey dipper; (5) three thin slices of fresh ginger; (6) a tiny glass of espresso with crema; (7) a small bottle of vanilla syrup with a pump top; (8) a little pile of pine nuts; (9) three clear ice cubes. No text, no labels.
-```
-
-**[ ] 50J. Hotteok, four stages**  
-Attach: nothing  
-Save as: `cafe-hotteok.png`
-```
-A sheet of 4 pictures in a 2 × 2 grid on a plain white background, clear white space between them, nothing overlapping, all four seen from DIRECTLY ABOVE, the same size and the same round shape, centred in their cells. Realistic painted food illustration like a cosy, high-quality cooking game, soft light, clean edges for cutting, no plate, no shadow. The same hotteok (a Korean sweet filled pancake, flattened round) in four stages, in reading order: (1) RAW: a flat disc of pale, glossy, uncooked dough; (2) COOKING: still pale with the first light golden patches; (3) DONE: evenly golden brown with crisp edges and a little dark sugar syrup peeking out at one edge; (4) BURNT: dark brown to black, dry and cracked, a wisp of smoke. No text.
-```
-
-**[ ] 50K. Street toast, four stages**  
-Attach: nothing  
-Save as: `cafe-toast.png`
-```
-A sheet of 4 pictures in a 2 × 2 grid on a plain white background, clear white space between them, nothing overlapping, all four seen from DIRECTLY ABOVE, the same size and shape, centred in their cells. Realistic painted food illustration like a cosy, high-quality cooking game, soft light, clean edges for cutting, no plate, no shadow. The same Korean street toast (a thick slice of white bread topped with an egg-and-shredded-cabbage omelette patty) in four stages, in reading order: (1) RAW: soft pale bread, a pale, wet-looking patty; (2) COOKING: the bread just starting to toast, the patty setting; (3) DONE: golden toasted bread with buttery edges, a golden patty with green cabbage flecks; (4) BURNT: blackened bread edges and a dark, dry patty, a wisp of smoke. No text.
-```
-
-**[ ] 50L. Kimbap, four stages**  
-Attach: nothing  
-Save as: `cafe-kimbap.png`
-```
-A sheet of 4 pictures in a 2 × 2 grid on a plain white background, clear white space between them, nothing overlapping, centred in their cells. Realistic painted food illustration like a cosy, high-quality cooking game, soft light, clean edges for cutting. In reading order: (1) a single rectangular sheet of dried seaweed (gim), dark green and slightly glossy, seen from DIRECTLY ABOVE, filling most of the cell; (2) the same sheet seen from directly above with a thin, even layer of white rice spread over it, a bare strip of seaweed left along the top edge; (3) one whole rolled kimbap, uncut, lying HORIZONTALLY across the cell, glossy with sesame oil and a few sesame seeds, seen from a little above; (4) the kimbap sliced into round pieces in a neat row on a small white plate, the cut faces showing white rice around yellow egg, orange carrot, green spinach, yellow pickled radish and pink ham. No text.
-```
-
-**[ ] 50M. Kimbap fillings**  
-Attach: nothing  
-Save as: `cafe-fillings.png`
-```
-A sheet of 8 cells in a 4 × 2 grid on a plain white background, clear white space between them, nothing overlapping, every item the same scale, lying HORIZONTALLY and centred in its cell, seen from directly above. Realistic painted food illustration like a cosy, high-quality cooking game, soft light, clean edges for cutting, no bowls, no shadow. In reading order: (1) a small neat mound of white cooked rice; (2) a long thin strip of yellow egg omelette; (3) a long bundle of thin julienned carrot; (4) a long bundle of seasoned spinach; (5) a long strip of bright yellow pickled radish (danmuji); (6) a long thin strip of pink ham; (7) a long strip of tuna mixed with mayonnaise; (8) leave this last cell empty. No text.
-```
-
-**[ ] 50N. Toppings**  
-Attach: nothing  
-Save as: `cafe-toppings.png`
-```
-A sheet of 6 small pictures in a 3 × 2 grid on a plain white background, clear white space between them, nothing overlapping, every item the same scale and centred in its cell, seen from DIRECTLY ABOVE, each a small amount the size of a spoonful, as it would sit on top of a pancake. Realistic painted food illustration like a cosy, high-quality cooking game, soft light, clean edges for cutting, no plate, no shadow. In reading order: (1) a small scatter of sunflower and pumpkin seeds; (2) a glossy little puddle of golden honey syrup; (3) a soft dusting of powdered sugar; (4) a small sprinkle of white sugar crystals; (5) a squiggly zigzag of ketchup; (6) a square slice of yellow cheese just starting to melt at the corners. No text.
-```
-
-**[ ] 50O. The serving tray and a plate**  
-Attach: nothing  
-Save as: `cafe-tray.png`
-```
-A sheet of 2 pictures side by side on a plain white background, clear white space between them, nothing overlapping, both seen from DIRECTLY ABOVE. Realistic painted illustration like a cosy, high-quality café cooking game, soft light, clean edges for cutting, no shadow. (1) An empty rectangular wooden serving tray with low raised edges and two cut-out handles, warm honey-coloured wood, wider than it is tall. (2) An empty small round white ceramic plate with a thin pink rim. Nothing on either, no text.
-```
-
-**[ ] 50P. The order ticket**  
-Attach: nothing  
-Save as: `cafe-ticket.png`
-```
-A single blank café order ticket on a plain white background, seen flat from the front: a tall, narrow strip of warm cream receipt paper with a zigzag torn bottom edge, a small pink rubber-stamp heart at the top centre, a few faint pale-grey printed lines across it, a slight paper texture and a tiny curl at one corner. Otherwise completely blank (the game writes the order on it). Portrait, about 1:1.4. No writing, no numbers, no shadow, nothing else in the picture.
-```
-
-**[ ] 50Q. The tip jar and a coin**  
-Attach: nothing  
-Save as: `cafe-tipjar.png`
-```
-A sheet of 2 pictures side by side on a plain white background, clear white space between them, nothing overlapping. Realistic painted illustration like a cosy, high-quality café cooking game, soft warm light, clean edges for cutting, only a faint shadow under the jar. (1) A clear glass jar with a wide open mouth, seen from the front, a hand-drawn paper label taped to it with a big pink heart and little doodled hearts around it, a few gold coins and folded paper notes inside, about a third full. (2) A single shiny gold coin seen face-on, a simple café token with a small heart embossed in the middle (not real money). No letters or numbers anywhere.
-```
-
-**[ ] 50R. The stamp card**  
-Attach: nothing  
-Save as: `cafe-stampcard.png`
-```
-A single café loyalty stamp card on a plain white background, seen flat from the front: a small cream card with rounded corners, landscape, a row of ten empty circles across it, three of them stamped with pink ink hearts, a tiny drawing of a steaming cup in one corner, a little paper texture. No writing, no numbers, no shadow.
-```
-
-**[ ] 50S. The grade stamps (end of the day)**  
-Attach: nothing  
-Save as: `cafe-stamps.png`
-```
-A sheet of 4 rubber-stamp marks in a 2 × 2 grid on a plain white background, clear white space between them, nothing overlapping, all the same size. Each is a big, bold letter inside a slightly uneven circle, stamped in bright pink ink, slightly rotated, with the rough, uneven, speckled texture of a real rubber stamp on paper. In reading order: S, A, B, C. Nothing else in the picture.
-```
-
-**[ ] 50T. Sunoo in his café apron, six faces**  
-Attach: `CG - style (HOAX).png`, `CG - Sunoo (HOAX).png`  
-Save as: `cafe-sunoo-apron-portraits.png`
-```
-A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. Draw the young man from the SECOND attached image (Sunoo): keep his face, features and soft hair exactly, in the realistic painted style, lighting, head-and-shoulders framing and size of the FIRST attached image. The same person in all six cells, facing the camera. He wears a cream knit sweater with the sleeves pushed up under a pink café apron, a pen tucked behind one ear, a little flour on one sleeve. Cells, in order: neutral (friendly), happy (a big, bright smile), surprised, flustered (laughing and embarrassed), sad (a sympathetic pout), serious (trying very hard to look focused). Realistic, NOT anime, NOT cel shading. No text, no name tag with writing.
-```
-
-**The neighbourhood regulars** (they have only a letter badge now). **Each is a NEW person**: the attached picture is only for the style, size and framing. For every one: a 3 × 1 sheet, faces in order neutral, happy, grumpy. The prompt pattern (the bracket is each item's own line):
-```
-A portrait sheet: 3 columns × 1 row on a plain white background, with clear empty space between every cell, nothing overlapping. A NEW character, NOT the person in the attached image: copy only that image's realistic painted style, lighting, head-and-shoulders framing and size. The same person in all three cells, facing the camera: [WHO]. Cells, in order: neutral, happy (delighted with their order), grumpy (disappointed, frowning). Realistic, NOT anime, NOT cel shading. No text, no logos, no name tags with writing.
-```
-
-**[ ] 50U. Mr. Kang** (the mail carrier)  
-Attach: `CG - Halmeoni (HOAX).png`  
-Save as: `cafe-regular-mrkang.png`  
-[WHO]: a brisk, friendly Korean man in his fifties who delivers the neighbourhood's mail, weathered cheeks red from the cold, a dark postal uniform jacket with a fleece collar, a knit cap, a mail bag strap across his chest
-
-**[ ] 50V. Nurse Lim** (off a night shift)  
-Attach: `CG - Halmeoni (HOAX).png`  
-Save as: `cafe-regular-nurse.png`  
-[WHO]: an exhausted but kind Korean woman in her early thirties coming off a hospital night shift, hair in a messy low bun, light blue scrubs under a long padded coat, tired eyes, a lanyard with a blank badge
-
-**[ ] 50W. The middle schoolers** (two of them, one wallet)  
-Attach: `CG - Junkyu (HOAX).png`  
-Save as: `cafe-regular-kids.png`  
-[WHO]: TWO Korean middle-school kids about thirteen squeezed side by side in each cell, sharing the frame, a boy and a girl in navy school uniforms and puffy winter jackets, rosy cheeks, the girl holding a small wallet, both full of energy
-
-**[ ] 50X. Mr. Choi** (the hardware store)  
-Attach: `CG - Halmeoni (HOAX).png`  
-Save as: `cafe-regular-mrchoi.png`  
-[WHO]: a gruff Korean man in his sixties who runs the hardware store down the street, thick grey eyebrows, short grey hair, reading glasses on a cord, a canvas work vest over a flannel shirt, a pencil behind his ear; his happy face is a reluctant, tiny smile
-
-**[ ] 50Y. Mr. Yoon** (drives the 7 bus)  
-Attach: `CG - Halmeoni (HOAX).png`  
-Save as: `cafe-regular-mryoon.png`  
-[WHO]: a round-faced, warm Korean man in his fifties who drives a city bus, a navy bus-company jacket with a zip-up collar, a thermos-tired smile, neat short hair going grey at the sides
-
-**[ ] 50Z. Mrs. Bae** (the flower shop)  
-Attach: `CG - Halmeoni (HOAX).png`  
-Save as: `cafe-regular-mrsbae.png`  
-[WHO]: an elegant, particular Korean grandmother in her seventies who owns the flower shop next door, silver hair set in soft curls, pearl earrings, a camel wool coat with a brooch, a sprig of baby's breath tucked in her buttonhole; her happy face is a small, approving nod-smile
-
----
-## 52. The Yang family (strangers; Kat, Nov 11)
-
-Jungwon's parents get faces, and his brother gets a photograph. Their scenes play fine without these (the parents' lines show a name only until 52A / 52B are in). The two faces are realistic like the rest of strangers; nobody has an actor face claim, so they're described in words. **Each is a NEW person**: the attached picture is only for the style, size and framing.
-
-**[ ] 52A. Yang Dokyun (Jungwon's father): faces**  
-Attach: `CG - Mrs. Bang (Strangers).png`  
-Save as: `dokyun-strangers-portraits.png`
-```
-A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. A NEW character, NOT the person in the attached image: copy only that image's realistic painted style, lighting, head-and-shoulders framing and size. The same person in all six cells, facing the camera: a big, broad Korean man of 58, a self-made harbor boss, thick neck and heavy shoulders, black hair going grey at the temples and combed back, a wide warm weathered face with deep laugh lines and wet, sentimental eyes, a persimmon-orange knit cardigan over a white shirt open at the collar, a jade ring on one hand; loud, generous, the kind of man who hugs the people he's warning. Cells, in order: neutral, happy (a huge open laugh), sad (openly teary), serious (the warmth gone, eyes hard), surprised, flustered. Realistic, NOT anime, NOT cel shading. No text, no logos, no name tags with writing.
-```
-
-**[ ] 52B. Madam Kang Hyesook (Jungwon's mother): faces**  
-Attach: `CG - Mrs. Bang (Strangers).png`  
-Save as: `madamkang-strangers-portraits.png`
-```
-A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. A NEW character, NOT the person in the attached image: copy only that image's realistic painted style, lighting, head-and-shoulders framing and size. The same person in all six cells, facing the camera: a small, still, beautiful Korean woman of about 55, dressed entirely in mourning black (a plain black wool dress with a high round collar), her black hair with two faint grey streaks pulled back so severely into a low knot that it lifts the corners of her eyes, no jewellery but a thin gold wedding band, sad, kind dark eyes, a face that hardly moves. Cells, in order: neutral, happy (only the faintest smile at one corner of the mouth), sad, serious, surprised (barely: the eyes only), flustered (a hand half raised to her mouth). Realistic, NOT anime, NOT cel shading. No text, no logos, no name tags with writing.
-```
-
-**[ ] 52C. The photograph on the sideboard**  
-Every route, the Yang dinner: a framed photograph of Jungwon's older brother.  
-Attach: `CG - style (Strangers).png`, `BG - Yang House Hall (Strangers).png`  
-Save as: `epi-s-seojun-photo.png`
-```
-A 16:9 realistic CG in the exact style of the FIRST attached image. A close view of a long dark wooden sideboard in the Yang house (the SECOND attached image shows the house: dark wood, black stone, tall windows on a grey sea), evening, lamp-lit. On it, in a plain silver frame, stands one photograph, a real snapshot from a New Year party in 2005: a charming, reckless, golden Korean young man of 21 in a white shirt with his tie pulled loose and his black hair falling in his eyes, head thrown back, laughing open-mouthed at somebody just past the edge of the frame. Beside the frame, a pale green celadon vase and a small jade tree; the dark glass behind reflects the lamp. The photograph is the subject; nobody else is in the picture. Quiet, warm, a little sad. No text.
-```
-
-**[ ] 52D. strangers · dinner at the Yang house**  
-Every route, the Yang dining room at night: the father gives Haechan the best piece of the fish.  
-Attach: `CG - style (Strangers).png`, `BG - Yang House Hall (Strangers).png`, `CG - Solar (Strangers).png`, `CG - Haechan (Strangers).png`, `CG - Jungwon (Strangers).png`  
-Save as: `epi-s-yang-dinner.png`
-```
-A 16:9 realistic CG in the exact style of the FIRST attached image. The setting is a dining room in the house of the SECOND attached image: a long low black wooden table set with many small dishes, silver chopsticks on little porcelain fish rests, a hanging calligraphy scroll, and a wall of black glass behind with the lights of a harbor city across the water; warm lamp light. The three young people are the same as the THIRD, FOURTH and FIFTH attached images (same faces, eyes and hair). At the head of the table a big broad Korean man of 58 with grey temples, in a persimmon-orange cardigan over a white shirt, mid-sentence and laughing, reaches across with his chopsticks and puts a piece of grilled sea bream into Haechan's bowl without looking; Haechan (an ironed black shirt buttoned to the collar) stares down at his bowl, very still. Beside the host, a small, still woman of 55 all in black, hair pulled back severely, folds a white napkin into a paper boat without looking at her hands. Solar (hair pinned up) and Jungwon (a grey sweater, sleeves pushed up) sit across, Solar watching Haechan, Jungwon looking at his father. At the far end of the table an empty place with a full celadon cup of tea, and on a sideboard behind it a small framed photograph. Warm, crowded, aching. No text.
-```
-
-**[ ] 52E. strangers · tea in the garden room**  
-Every route, a dusty March afternoon: Madam Kang teaches Solar to fold a paper boat among the camellias.  
-Attach: `CG - style (Strangers).png`, `CG - Solar (Strangers).png`, `CG - Haechan (Strangers).png`  
-Save as: `epi-s-camellias.png`
-```
-A 16:9 realistic CG in the exact style of the FIRST attached image. A garden room made all of glass (three glass walls and a glass roof, the fourth wall black stone), full of camellias in big glazed pots, red and white and palest pink, all in bloom, one fallen red flower whole on the stone floor. Outside the glass the air is thick yellow spring dust, the light through it the colour of an old photograph. The people are the same as the SECOND and THIRD attached images (same faces, eyes and hair). At a low pale wooden table, kneeling on cushions: a small, still Korean woman of 55 all in black, hair pulled back severely, a thin gold band, holding a half-folded white linen napkin up in the air to show the next fold; across from her Solar (hair pinned up, a dark coat over her knees) copying it, her own lopsided boat in her hands, concentrating. Between them a celadon teapot with cranes, two cups of dark red jujube tea, a plate of dried persimmons, a finished white paper boat. Through the glass, small and blurred by the dust, Haechan in a black jacket stands alone on a little red bridge over a pond, looking down at a big white koi. Hushed, tender. No text.
-```
-
----
-## 53. HOAX stakes pass (Nov 11)
-
-One new CG for the hearing's hardest outcome. The scene plays fine without it; it drops in when it exists.
-
-**[ ] 53A. HOAX · The hearing: hands**  
-The impeachment hearing, the moment the bleachers vote, seen from behind the council table.  
-Attach: `CG - style (HOAX).png`, `BG - Hanlim Gym (Hearing).png`, `CG - Solar (HOAX school).png`, `CG - Jungwon (HOAX).png`  
-Save as: `epi-h-hands.png`
-```
-A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic light, high detail). The setting is the SECOND attached image, a Korean private high school gym set up for a student hearing, warm gold string lights in loops from the rafters, half-deflated blue and silver balloons, a scoreboard clock reading 12:00. The two students are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). Seen from low behind a long council table: Solar Kim (school uniform, blazer, small and very still) standing at the table with an index card in her hand, her back half to us, looking up at the bleachers; beside her Yang Jungwon (school uniform) seated, his hand around her wrist on the table, face pale. Filling the bleachers in front of them, a wall of students with their hands raised, dozens and dozens, some confident, some hesitant, some looking at the floor, phones glowing here and there, one ring light at the front. The lights have a faint, wrong green tint at the edges. Quiet, heavy, the moment a room turns. No text.
-```
-
 ## 54. Jihoon (HOAX)
 
-Three CGs for the Jihoon thread (Nov 11). The scenes play fine without them; each drops in when it exists.
+Two CGs left for the Jihoon thread (Nov 11; 54B is in, Nov 12). The scenes play fine without them; each drops in when it exists.
 
 **[ ] 54A. HOAX · The tunnel lights' last night**  
 Late at night in Jihoon's car, parked in the empty lot by the skating pond, the Christmas light tunnel behind them.  
@@ -603,177 +226,17 @@ Save as: `epi-h-jh-pond.png`
 A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic light, high detail). The setting is the inside of the car in the SECOND attached image, at night, engine running, the windshield half fogged; through the rear window, out of focus, a tunnel of white Christmas lights on hoops like the THIRD attached image, and to the side a flat grey frozen pond under snow. The two people are the same as the FOURTH and FIFTH attached images (same faces, eyes and hair). Solar Kim (winter coat over pajamas, a small nose stud) leaning across the gearstick, kissing Park Jihoon (black leather jacket, black hair with blonde streaks, a matching nose stud), his hand at her jaw, his thumb by her nose stud, both eyes closed. Bars of white light from the tunnel fall across both their faces. Stolen, tender and a little guilty. Nothing explicit. No text.
 ```
 
-**[ ] 54B. HOAX · The closet**  
-Late at night in Solar's room: her mother is in the doorway, and Jihoon is hiding in the closet.  
-Attach: `CG - style (HOAX).png`, `BG - Solar's Room at night (HOAX).png`, `CG - Solar (HOAX).png`, `CG - Jihoon (HOAX).png`, `CG - Nana (HOAX).png`  
-Save as: `epi-h-jh-closet.png`
-```
-A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic light, high detail). The setting is the SECOND attached image, Solar's bedroom late at night, lamp off, a stripe of streetlight across the bed, the door open onto a lit hallway. The people are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). Solar Kim sitting bolt upright in bed with the duvet pulled to her chin, hair everywhere, a frozen innocent face, looking toward the doorway, where the warm hall light falls in across the carpet with the shadow of a woman in a dressing gown and a towel round her hair (only her shadow, not her face). On the right, the sliding closet door is open a crack, and in the dark gap, folded up among winter coats with his boots in his arms and a small pink teddy bear on his head, Park Jihoon (black hoodie, black hair with blonde streaks) peeks out, wide-eyed. At the foot of the bed a huge fluffy white Samoyed (the FIFTH attached image) sits up very straight, ears forward, staring straight at the closet. A black beanie lies on the floor by the bed. Funny and tense at once. No text.
-```
-
 **[ ] 54C. HOAX · Out in the open (Jihoon route)**  
 After school in the main hallway of Hanlim: Jihoon waiting at the council-room door with two melon ice-cream bars, holding out his hand.  
 Attach: `CG - style (HOAX).png`, `BG - Hanlim Hallway.png`, `CG - Solar (HOAX school).png`, `CG - Jihoon (HOAX).png`, `CG - Jungwon (HOAX).png`  
-Save as: `epi-h-jh-hallway.png`
+Save as: `epi-h-jh-hallway.png` (Nov 12: the first file saved under this name was the 54B closet picture, now in the game as the closet; this hallway one is still to make)
 ```
 A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic late-afternoon winter light, high detail). The setting is the SECOND attached image, a Korean private high school hallway after school, lockers along one wall, snow light through the windows. The people are the same as the THIRD, FOURTH and FIFTH attached images (same faces, eyes and hair). In the middle of the hallway Park Jihoon (school uniform, jacket open, black hair with blonde streaks) holds out his open hand, palm up, a green melon ice-cream bar in his other hand; Solar Kim (school uniform, a black leather jacket over it, a melon bar in one hand) reaching to take his hand, a small helpless smile. Behind them, a classroom door with a small window marked with a student council sign, and in the doorway Yang Jungwon (school uniform) holding a key and a coiled power cord, watching them with a quiet, steady, hurt face, not angry. Other students in the hallway turning to look, one holding up a phone. Brave, bittersweet. No text.
-```
-
-## 55. Jungwon (HOAX)
-
-Two CGs for Jungwon going out (Nov 11). The scenes play fine without them; each drops in when it exists.
-
-**[ ] 55A. HOAX · The front door (New Year's night)**  
-Twenty to one in the morning on New Year's: Jungwon at Solar's gate with his tiny dog, who wasn't supposed to be out either.  
-Attach: `CG - style (HOAX).png`, `epi-h-front-step-night.png`, `CG - Solar (HOAX).png`, `CG - Jungwon (HOAX).png`, `CG - Nana (HOAX).png`  
-Save as: `epi-h-jw-door.png`
-```
-A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic light, high detail). The setting is the SECOND attached image, the front path and low gate of a small Korean house at night, fresh snow, a warm porch light behind her. The people are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). At the gate stands Yang Jungwon (a dark school coat buttoned up, a scarf wound to his chin, no hat, snow in his dark hair, ears pink with cold, black school shoes in the snow), holding a leash, his phone in his other hand showing a lit notes screen. On the end of the leash sits a tiny fluffy white dog in a bright orange padded dog coat, like a traffic cone, looking up at the house with an offended face. Solar Kim (a big winter coat over pajamas, boots, hair messy from bed, a small nose stud) has just come down the path and stopped at the gate, one hand over her mouth, laughing and shocked. Behind her in the doorway a huge fluffy white Samoyed (the FIFTH attached image) pokes his head out. Far down the street, round a corner, one small porch light burning on its own. Quiet, funny, brave. No text.
-```
-
-**[ ] 55B. HOAX · The curb**  
-The last night of winter break: the old table on the curb outside the convenience store, and the student council president sitting down with them.  
-Attach: `CG - style (HOAX).png`, `BG - Hanlim Winter Street.png`, `CG - Solar (HOAX).png`, `CG - Jungwon (HOAX).png`, `Hyunsuk (HOAX).png`, `CG - Junkyu (HOAX).png`, `Asahi (HOAX).png`, `CG - Jaehyuk (HOAX).png`, `CG - Cherry (HOAX).png`  
-Save as: `epi-h-jw-curb.png`
-```
-A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic light, high detail). The setting is the SECOND attached image, a snowy Korean town street at night; on the right a small convenience store glowing white, with a row of three lit vending machines outside it, and a low curb in front of them. The people are the same as the attached reference images (same faces, eyes and hair). On the curb, under the vending-machine light, sit Choi Hyunsuk (short, a black puffer jacket, knees up) and, pressed shoulder to shoulder beside him, Yang Jungwon (a dark school coat, collar up, snow in his hair, holding a can of coffee in both hands, not drinking it), with Solar Kim (big winter coat, a small nose stud) on Jungwon's other side, looking at him sideways with a small soft smile. Face down on the wet curb next to Jungwon's shoe, a phone, a thin line of white light showing underneath it from an incoming call. Around them: Junkyu (a knit hat with a huge bobble) grinning, Asahi standing with his hood up and his hands in his pockets, Jaehyuk sitting on his school bag with a ring of flashcards, Cherry Kim (boots, blue eyes) perched on a bin swinging her legs. Breath clouds, falling snow, the warm white light of the machines. Tender, a little awkward, belonging. No text.
-```
-
-## 56. The Trip (HOAX minigame; Kat, Nov 11)
-
-For The Trip, the walk-around-the-park game on a HOAX party night (Solar finds the crew all over Hanlim Park and brings everyone back to the blanket before sunrise). Everything here is optional: the game already draws every character, prop and sky itself and swaps each picture in once it exists. **The eight walking sprite sheets matter most** (they make everyone look like themselves as they walk around); then the park pieces, the blanket, the title card and the finale's sky.
-
-**[ ] 56A. Solar's walking sprite sheet**  
-Solar as a little top-down character who walks around the park.  
-Attach: `CG - Solar (HOAX).png`  
-Save as: `trip-sprite-solar.png`
-```
-A sprite sheet for a cosy top-down 2D game: 16 frames in a 4 × 4 grid on a plain white background, clear even white space between the cells, nothing overlapping, every frame the same size, the character the same size in every frame and centred in its cell, the feet always on the same line near the bottom of the cell and the top of the head near the top. The character is the same young woman as the attached image (keep the face, eye colour, hair colour and cut, and the outfit exactly), drawn as a cute chibi (a big head, a small body, about two and a half heads tall) in a soft painted style with clean dark outlines and gentle shading, seen from a slightly high three-quarter top-down angle like a cosy farming RPG. Row 1: walking toward the viewer (facing down). Row 2: walking to the left (side view). Row 3: walking to the right (side view). Row 4: walking away from the viewer (facing up, the back of the head). In each row, left to right: standing, left foot forward, standing, right foot forward, with the arms swinging a little against the legs. Winter night outfit: long wavy dark-brown hair past her shoulders, green eyes, a black and pink striped long-sleeved top, a black choker and a thin silver chain, black trousers, black shoes. No shadow on the ground, no scenery, no text.
-```
-
-**[ ] 56B. Hyunsuk's walking sprite sheet**  
-Hyunsuk as a little top-down character who walks around the park.  
-Attach: `Hyunsuk (HOAX).png`  
-Save as: `trip-sprite-hyunsuk.png`
-```
-A sprite sheet for a cosy top-down 2D game: 16 frames in a 4 × 4 grid on a plain white background, clear even white space between the cells, nothing overlapping, every frame the same size, the character the same size in every frame and centred in its cell, the feet always on the same line near the bottom of the cell and the top of the head near the top. The character is the same young man as the attached image (keep the face, eye colour, hair colour and cut, and the outfit exactly), drawn as a cute chibi (a big head, a small body, about two and a half heads tall) in a soft painted style with clean dark outlines and gentle shading, seen from a slightly high three-quarter top-down angle like a cosy farming RPG. Row 1: walking toward the viewer (facing down). Row 2: walking to the left (side view). Row 3: walking to the right (side view). Row 4: walking away from the viewer (facing up, the back of the head). In each row, left to right: standing, left foot forward, standing, right foot forward, with the arms swinging a little against the legs. Winter night outfit: short spiky dark-red hair, a silver lip ring, a black denim jacket over a black T-shirt, layered silver chains, black jeans, black shoes. He is the shortest of the boys. No shadow on the ground, no scenery, no text.
-```
-
-**[ ] 56C. Asahi's walking sprite sheet**  
-Asahi as a little top-down character who walks around the park.  
-Attach: `Asahi (HOAX).png`  
-Save as: `trip-sprite-asahi.png`
-```
-A sprite sheet for a cosy top-down 2D game: 16 frames in a 4 × 4 grid on a plain white background, clear even white space between the cells, nothing overlapping, every frame the same size, the character the same size in every frame and centred in its cell, the feet always on the same line near the bottom of the cell and the top of the head near the top. The character is the same young man as the attached image (keep the face, eye colour, hair colour and cut, and the outfit exactly), drawn as a cute chibi (a big head, a small body, about two and a half heads tall) in a soft painted style with clean dark outlines and gentle shading, seen from a slightly high three-quarter top-down angle like a cosy farming RPG. Row 1: walking toward the viewer (facing down). Row 2: walking to the left (side view). Row 3: walking to the right (side view). Row 4: walking away from the viewer (facing up, the back of the head). In each row, left to right: standing, left foot forward, standing, right foot forward, with the arms swinging a little against the legs. Winter night outfit: shaggy black hair falling over his eyes, small black ear gauges, a black choker, a black denim jacket with a safety pin over a black T-shirt, a silver chain, black jeans, black shoes. No shadow on the ground, no scenery, no text.
-```
-
-**[ ] 56D. Jaehyuk's walking sprite sheet**  
-Jaehyuk as a little top-down character who walks around the park.  
-Attach: `CG - Jaehyuk (HOAX).png`  
-Save as: `trip-sprite-jaehyuk.png`
-```
-A sprite sheet for a cosy top-down 2D game: 16 frames in a 4 × 4 grid on a plain white background, clear even white space between the cells, nothing overlapping, every frame the same size, the character the same size in every frame and centred in its cell, the feet always on the same line near the bottom of the cell and the top of the head near the top. The character is the same young man as the attached image (keep the face, eye colour, hair colour and cut, and the outfit exactly), drawn as a cute chibi (a big head, a small body, about two and a half heads tall) in a soft painted style with clean dark outlines and gentle shading, seen from a slightly high three-quarter top-down angle like a cosy farming RPG. Row 1: walking toward the viewer (facing down). Row 2: walking to the left (side view). Row 3: walking to the right (side view). Row 4: walking away from the viewer (facing up, the back of the head). In each row, left to right: standing, left foot forward, standing, right foot forward, with the arms swinging a little against the legs. Winter night outfit: straight black hair with neat bangs, thin round glasses, a black hoodie with white drawstrings, a thin silver chain, black trousers, black shoes. No shadow on the ground, no scenery, no text.
-```
-
-**[ ] 56E. Junkyu's walking sprite sheet**  
-Junkyu as a little top-down character who walks around the park.  
-Attach: `CG - Junkyu (HOAX).png`  
-Save as: `trip-sprite-junkyu.png`
-```
-A sprite sheet for a cosy top-down 2D game: 16 frames in a 4 × 4 grid on a plain white background, clear even white space between the cells, nothing overlapping, every frame the same size, the character the same size in every frame and centred in its cell, the feet always on the same line near the bottom of the cell and the top of the head near the top. The character is the same young man as the attached image (keep the face, eye colour, hair colour and cut, and the outfit exactly), drawn as a cute chibi (a big head, a small body, about two and a half heads tall) in a soft painted style with clean dark outlines and gentle shading, seen from a slightly high three-quarter top-down angle like a cosy farming RPG. Row 1: walking toward the viewer (facing down). Row 2: walking to the left (side view). Row 3: walking to the right (side view). Row 4: walking away from the viewer (facing up, the back of the head). In each row, left to right: standing, left foot forward, standing, right foot forward, with the arms swinging a little against the legs. Winter night outfit: soft black hair with a rounded fringe, a black T-shirt over a black and white striped long-sleeved top (the stripes on his arms), a silver chain with a small tag, black trousers, black shoes. No shadow on the ground, no scenery, no text.
-```
-
-**[ ] 56F. Jihoon's walking sprite sheet**  
-Jihoon as a little top-down character who walks around the park.  
-Attach: `CG - Jihoon (HOAX).png`  
-Save as: `trip-sprite-jihoon.png`
-```
-A sprite sheet for a cosy top-down 2D game: 16 frames in a 4 × 4 grid on a plain white background, clear even white space between the cells, nothing overlapping, every frame the same size, the character the same size in every frame and centred in its cell, the feet always on the same line near the bottom of the cell and the top of the head near the top. The character is the same young man as the attached image (keep the face, eye colour, hair colour and cut, and the outfit exactly), drawn as a cute chibi (a big head, a small body, about two and a half heads tall) in a soft painted style with clean dark outlines and gentle shading, seen from a slightly high three-quarter top-down angle like a cosy farming RPG. Row 1: walking toward the viewer (facing down). Row 2: walking to the left (side view). Row 3: walking to the right (side view). Row 4: walking away from the viewer (facing up, the back of the head). In each row, left to right: standing, left foot forward, standing, right foot forward, with the arms swinging a little against the legs. Winter night outfit: black hair with a long side-swept fringe, small silver earrings, a black choker and layered silver chains, a ripped black denim jacket over a grey top, black jeans, black shoes. He is the tallest of the group. No shadow on the ground, no scenery, no text.
-```
-
-**[ ] 56G. Cherry's walking sprite sheet**  
-Cherry as a little top-down character who walks around the park.  
-Attach: `CG - Cherry (HOAX).png`  
-Save as: `trip-sprite-cherry.png`
-```
-A sprite sheet for a cosy top-down 2D game: 16 frames in a 4 × 4 grid on a plain white background, clear even white space between the cells, nothing overlapping, every frame the same size, the character the same size in every frame and centred in its cell, the feet always on the same line near the bottom of the cell and the top of the head near the top. The character is the same young woman as the attached image (keep the face, eye colour, hair colour and cut, and the outfit exactly), drawn as a cute chibi (a big head, a small body, about two and a half heads tall) in a soft painted style with clean dark outlines and gentle shading, seen from a slightly high three-quarter top-down angle like a cosy farming RPG. Row 1: walking toward the viewer (facing down). Row 2: walking to the left (side view). Row 3: walking to the right (side view). Row 4: walking away from the viewer (facing up, the back of the head). In each row, left to right: standing, left foot forward, standing, right foot forward, with the arms swinging a little against the legs. Winter night outfit: long wavy black hair, blue eyes, a black choker, a shiny black leather jacket over a cream top, black jeans, black boots. No shadow on the ground, no scenery, no text.
-```
-
-**[ ] 56H. Nana's walking sprite sheet**  
-Nana, Solar's huge white Samoyed, trotting after her round the park.  
-Attach: `CG - Nana (HOAX).png`  
-Save as: `trip-sprite-nana.png`
-```
-A sprite sheet for a cosy top-down 2D game: 16 frames in a 4 × 4 grid on a plain white background, clear even white space between the cells, nothing overlapping, every frame the same size, the dog the same size in every frame and centred in its cell, the paws always on the same line near the bottom of the cell. The dog is the same huge, very fluffy white Samoyed as the attached image (keep his face, black eyes and nose, pointed ears and big smile), drawn cute and round in a soft painted style with clean outlines and gentle grey shading in the white fur, seen from a slightly high three-quarter top-down angle like a cosy farming RPG; he is big, almost as long as a person is tall. Row 1: trotting toward the viewer (facing down, tongue out). Row 2: trotting to the left (side view, tail curled over his back). Row 3: trotting to the right (side view, tail curled over his back). Row 4: trotting away from the viewer (facing up, the fluffy curled tail on top). In each row, left to right: standing, front left and back right paws forward, standing, the other two paws forward. No shadow on the ground, no scenery, no text.
-```
-
-**[ ] 56I. The park from above (the ground)**  
-The whole map the game is played on, seen straight down: just the ground, no trees or props.  
-Attach: `BG - Hanlim Park.png`  
-Save as: `trip-ground.png`
-```
-A wide top-down game map seen straight down from above, in a soft painted style like a cosy 2D farming RPG, 16:11, the park in the attached image on a winter night under fresh snow but drawn evenly lit (no dark corners, no lamps or light pools; the game adds the lighting). Only the ground, no trees, benches, lamps or people: smooth snow with soft drifts and a few tufts of grass poking through, a wide oval footpath of trodden, slightly bluish snow looping round the middle of the map with footprints in it, six narrower paths running from the centre out to the edges, a large oval pond in the upper middle frozen at the rim with a ring of snowy stones round it (the water itself dark and plain, the game draws on it), a low rounded snowy hill in the lower right with two sled tracks down it, a playground's rubber mat (soft dusty pink under the snow) with a little sandbox in the left middle, dark snowy hedges and a low wooden fence all round the border. No text.
-```
-
-**[ ] 56J. Park pieces: trees, a lamp, a bench**  
-The props the game stands on the map (each cut out on its own).  
-Attach: `BG - Hanlim Park.png`  
-Save as: `trip-props.png`
-```
-A sheet of 4 game props in a 2 × 2 grid on a plain white background, clear white space between them, nothing overlapping, each centred in its cell, in a soft painted style with clean outlines like a cosy top-down 2D farming RPG, seen from a slightly high three-quarter top-down angle, matching the park in the attached image on a winter night. In reading order: (1) a round snowy pine tree, its layered branches tipped with snow, the trunk showing at the bottom; (2) a big weeping willow with long hanging strands brushing the ground, snow on its crown; (3) an old black iron park streetlamp with a glowing round lantern on top and a little snow on it, tall and thin; (4) a wooden park bench with black iron legs and a line of snow along the seat and the backrest. No shadows on the ground, no text.
-```
-
-**[ ] 56K. The playground**  
-Junkyu's corner of the park, where he plays tag.  
-Attach: `BG - Hanlim Park.png`  
-Save as: `trip-playground.png`
-```
-A small children's playground seen from a slightly high three-quarter top-down angle, in a soft painted style with clean outlines like a cosy top-down 2D farming RPG, on a plain white background, the whole playground in one wide 3:2 picture: a swing set with two swings on the left, a short slide with a little ladder platform in the middle, a round spinning roundabout in bright pink, teal and yellow segments at the front, all with fresh snow on top, on a dusty-pink rubber mat dusted with snow, in the style of the park in the attached image at night. No people, no text.
-```
-
-**[ ] 56L. The blanket**  
-The picnic blanket everyone has to get back to, seen from above.  
-Attach: nothing  
-Save as: `trip-blanket.png`
-```
-A picnic blanket seen straight down from above, in a soft painted style with clean outlines like a cosy top-down 2D game, on a plain white background: a big soft plaid wool blanket, pink and deep magenta checks with thin cream lines, a little rumpled, a fringed edge on the two short sides, a light dusting of snow on one corner, a small black portable speaker with a softly glowing pink light lying near the top right corner. A 3:2 rectangle filling most of the picture. No people, no text.
-```
-
-**[ ] 56M. Title card**  
-The picture behind THE TRIP at the start.  
-Attach: `CG - style (HOAX).png`, `BG - Hanlim Park.png`, `CG - Solar (HOAX).png`, `CG - Jihoon (HOAX).png`, `Hyunsuk (HOAX).png`, `Asahi (HOAX).png`, `CG - Jaehyuk (HOAX).png`, `CG - Junkyu (HOAX).png`, `CG - Cherry (HOAX).png`, `CG - Nana (HOAX).png`  
-Save as: `trip-title.png`
-```
-A 16:9 realistic painted key-art still in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic light, high detail). The park in the SECOND attached image at night in winter, fresh snow, but the night has gone dreamlike and surreal: the trees seem to be breathing, the streetlamps glow in soft shifting pink, teal and violet, the frozen pond reflects the sky like a kaleidoscope, fireflies of colour hang in the air and the falling snow catches the light. On a pink plaid blanket in the snow, seen from above at a gentle angle, seven friends lie on their backs in a circle with their heads together, laughing and looking up: the people in the attached reference images (same faces, eyes and hair): Solar Kim, Park Jihoon, Choi Hyunsuk, Asahi, Jaehyuk, Junkyu and Cherry Kim, in winter coats and scarves, and a huge fluffy white Samoyed (the last attached image) lying across several of their legs. Warm, strange, tender. Keep the middle of the upper third calm and dark for the title. No text.
-```
-
-**[ ] 56N. The finale sky**  
-The sky the game draws its constellations on when everyone's back on the blanket.  
-Attach: `CG - style (HOAX).png`  
-Save as: `trip-sky.png`
-```
-A 16:9 painted night sky in the exact style of the attached image, nothing but sky: deep blue-black at the top fading to dark violet near the bottom, thousands of small stars, a soft wide aurora drifting across the middle in ribbons of pink, teal and violet, a faint glow of dawn pink just beginning along the very bottom edge. No ground, no trees, no moon, no constellations, no people, no text. Keep the stars small and even so lines can be drawn between them.
 ```
 
 ## 57. The endings: she's gone (Kat, Nov 11)
 
 The last picture of each epilogue, after the pull (like Runners' "Holding on"). The scenes play fine without them; each CG drops in when it exists.
-
-**[ ] 57A. strangers · The bottom of the tide, after**  
-The last moment of the strangers epilogue, just before dawn at the bottom of the Lee garden.  
-Attach: `CG - style (Strangers).png`, `BG - Lee House Garden at night.png`, `CG - Haechan (Strangers).png`, `CG - Jungwon (Strangers).png`, `Taejoon (Strangers).png`  
-Save as: `epi-s-gone.png`
-```
-A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cold cinematic light, high detail). The setting is the SECOND attached image, the walled garden of a big old Korean house on the Incheon shore, just before dawn in March: frost melting on the dead flower beds, onggi jars, a bare persimmon tree, a small concrete annex at the bottom of the garden with an old silver radio on its window sill, and beyond the low sea wall the tide coming back in across wide mudflats, silver in the first grey light. The two young men are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). In the foreground they kneel in the mud of the flower bed, a body's width apart, facing the same empty space between them: Haechan (left, black jacket, split knuckles, one silver ring) with his left hand held out and closed on nothing, head bowed; Yang Jungwon (right, a long dark wool coat, a wristwatch) with his right hand held out and closed on nothing, looking at the empty air at the height of a girl's face. Neither looks at the other. The space between them is empty and very slightly brighter, a few last motes of pale green and gold light rising out of it like breath. Up at the house in the background, one lit kitchen window with the silhouette of an older man in glasses standing at it (the FIFTH attached image, small and far). Grief, stillness, the sea returning. No text.
-```
-
-**[ ] 57B. HOAX · The gym, after midnight**  
-The last moment of the HOAX epilogue, the school gym at one minute past midnight.  
-Attach: `CG - style (HOAX).png`, `BG - Hanlim Gym at Midnight.png`, `CG - Jungwon (HOAX).png`  
-Save as: `epi-h-gone.png`
-```
-A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cinematic light, high detail). The setting is the SECOND attached image, a Korean high school gym at night with the lights off: only the green exit signs at either end, faint blue snow-light from the high windows, half-strung string lights and soft deflating blue and silver balloons on the bleachers, a scoreboard clock reading 12:01. Through the high windows snow is falling, ordinary and slow. The boy is the same as the THIRD attached image (same face, eyes and hair). Yang Jungwon kneels alone on the painted free-throw line in the middle of the court, his dark coat half slipped off his shoulders, his arms still closed in an embrace around nothing, his face bowed into the empty space where someone's hair would be. In his right fist, held against the empty space, an unopened pink-and-black energy drink can. A few last motes of green and gold light drifting up from inside his arms toward the high windows. Behind him, out of focus in the dark, shapes of other people kneeling or standing with their hands out. Devastating, quiet, very still. No text.
-```
 
 **[ ] 57C. Stay · The roof, after**  
 The last moment of the Stay epilogue on the dorm roof (the Akihiko and S.E.E.S. routes).  
@@ -801,23 +264,7 @@ A 16:9 realistic painted CG in the style of the FIRST attached image (soft reali
 
 ## 58. strangers heat (Kat, Nov 11)
 
-Four CGs for the new heat in the strangers epilogue. Tension and closeness, everyone dressed. The scenes play fine without them; each one drops in when it exists.
-
-**[ ] 58A. strangers · Behind the Viking (Haechan's route)**  
-Daeboreum night on Wolmido, in the dark behind a shuttered fairground ride.  
-Attach: `CG - style (Strangers).png`, `BG - Wolmido Daeboreum.png`, `CG - Haechan (Strangers).png`, `CG - Solar (Strangers).png`  
-Save as: `epi-s-viking.png`
-```
-A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cold cinematic light, high detail). The setting is the SECOND attached image, the Wolmido seafront in Incheon on the night of the first full moon of the lunar year, but seen from behind a big swing-boat fairground ride shuttered for winter: its painted dragon's head looming above with a tarp tied over its eyes, its wooden flank painted red and gold and scuffed. Beyond its edge, out of focus, the crowded promenade with lanterns, a straw moon house burning on the shingle and a column of orange sparks rising over the black sea, and an enormous gold full moon. The two people are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). In the shadow against the painted flank of the ride, the young man (Haechan: black padded work jacket, a silver ring, a thin scar through his left eyebrow) leans in close over the young woman (Solar: long black hair coming loose from under a knitted winter hat, dark wool coat, a knitted scarf), one hand flat on the painted wood beside her head, the other at the back of her neck under her hair, their foreheads together and their mouths a breath apart, her hands fisted in the front of his jacket, their breath white between them. The moon behind his head rims his hair in gold. Hungry, secret, cold air and warm faces. No text.
-```
-
-**[ ] 58B. strangers · Nobody hung it up (Jungwon's route)**  
-After Daeboreum, past one in the morning, under the bare persimmon in the Lee garden.  
-Attach: `CG - style (Strangers).png`, `BG - Lee House Garden at night.png`, `CG - Jungwon (Strangers).png`, `CG - Solar (Strangers).png`  
-Save as: `epi-s-persimmon.png`
-```
-A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, cold cinematic light, high detail). The setting is the SECOND attached image, the terraced walled garden of a big old Korean house on the Incheon shore at night, but under a huge full moon directly overhead: everything silver, frost on the gravel terraces, onggi jars, and on the middle terrace a bare persimmon tree whose empty branches are drawn on the sky like silver ink. Far below at the bottom of the garden, small, a concrete annex with one lit yellow window and the dark shape of someone sitting on its step. The two people are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). Under the persimmon, her back against its trunk, the young woman (Solar: long black hair half down, dark wool coat, a dark grey cashmere scarf that is too big for her wound twice round her neck) looks up at the young man (Yang Jungwon: long dark wool coat, white shirt, a plain wristwatch), who holds her face tilted up into the moonlight with his right hand at her jaw, his eyes half closed, his mouth almost on hers, careful and certain. Reverent, slow, very quiet, moonlit. No text.
-```
+One CG left for the new heat in the strangers epilogue (58A, 58B and 58D are in, Nov 12). Tension and closeness, everyone dressed. The scenes play fine without them; each one drops in when it exists.
 
 **[ ] 58C. strangers · Soft, please (Jungwon's route)**  
 Grey morning in Solar's room: he fell asleep on top of the covers after his watch.  
@@ -825,14 +272,6 @@ Attach: `CG - style (Strangers).png`, `BG - Solar's Room (Lee House).png`, `CG -
 Save as: `epi-s-soft.png`
 ```
 A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, soft grey morning light, high detail). The setting is the SECOND attached image, a young woman's bedroom in an old Korean house by the sea, at dawn: a pale window over grey water, faintly hazed with yellow dust, a dresser with a neat row of long black hairpins and a man's silk tie laid beside them, a folded dark wool coat over the back of a desk chair. The two people are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). They lie on top of the made bed under one grey wool quilt pulled over them both, faces close on the same pillow: Solar (long black hair spread loose over the pillow and over his arm, cotton pajamas) is just waking and looking at him; Yang Jungwon (a creased white dress shirt open at the collar, a plain wristwatch on the wrist curled by her head, his hair messy at the back) is already awake, looking at her from a few centimeters away, flushed to the ears with enormous embarrassment and tenderness. Intimate, sleepy, sweet, fully clothed. No text.
-```
-
-**[ ] 58D. strangers · His sweatshirt (Haechan's route)**  
-Evening in the annex at the bottom of the garden, the heater on, the window fogged.  
-Attach: `CG - style (Strangers).png`, `BG - Lee House Annex at night.png`, `CG - Haechan (Strangers).png`, `CG - Solar (Strangers).png`  
-Save as: `epi-s-sweatshirt.png`
-```
-A 16:9 realistic painted CG in the exact style of the FIRST attached image (soft realistic painting, natural skin, warm lamplight against cold blue night, high detail). The setting is the SECOND attached image, but inside it: a tiny concrete room with a steel door, a narrow iron bed with a quilt printed with white cranes, a small oil heater glowing in the corner, an old silver radio on the sill of a small window fogged white from the inside, a dented ramyeon pot on a hot plate on an upturned crate, a row of boots by the door. The two people are the same as the THIRD and FOURTH attached images (same faces, eyes and hair). Haechan (a plain dark undershirt, a silver ring, split knuckles, a thin scar through his left eyebrow, messy hair) sits on the edge of the iron bed; Solar sits sideways in his lap in his oversized grey sweatshirt that comes down over her hands, one thumb pushed through a hole in the cuff, her long black hair down. His arms are wrapped round her and his face is pressed into the side of her neck at the sweatshirt's collar, eyes shut, breathing her in; she has one hand in his hair and is looking down at him with a small, helpless smile. Tender, possessive, warm, fully clothed. No text.
 ```
 
 ## 44. Dumpling cooking minigame (Kat, Nov 10)

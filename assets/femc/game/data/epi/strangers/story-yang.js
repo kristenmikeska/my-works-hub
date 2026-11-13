@@ -88,8 +88,10 @@
     // The far chair.
     { n: "There was a sixth place." },
     { n: "At the far end of the table, the foot, where the black wood ran down toward the window and the sea: a cushion, a set of silver chopsticks on a porcelain fish, a bowl turned upside down, and a small celadon cup. Nobody went to it. Nobody looked at it. Mrs. Moon came in with the rice and served round the table from Dokyun to his wife to Solar to Jungwon to Haechan, and stopped, and went back to the kitchen without going to the end, and nobody said anything about that either." },
+    { cg: 'epi-s-seojun-photo' }, // FEMC-ART-TODO 52C
     { n: "On the long sideboard behind it, among the Mokpo celadon and a jade tree and a carriage clock that ticked too loud, there was a photograph in a plain silver frame." },
     { n: "Solar didn't let herself look at it for long. She'd learned that much in this house. A boy of twenty or so in a white shirt at somebody's New Year party, with his tie pulled loose and his hair falling in his eyes, head thrown back, laughing, open-mouthed, completely, at somebody just past the edge of the frame. He looked like the kind of boy who'd been told he was golden so many times he'd stopped hearing it. He looked like Dokyun, round the mouth. He looked like Jungwon nowhere at all, except in the hands." },
+    { cg: null },
     { n: "She knew who he was laughing at. The somebody past the edge of the frame was sitting four places down from it, in an ironed black shirt, eating his rice, not looking up." },
     { n: "Dokyun filled the cups. He did it himself, from a big brown pot of barley tea, leaning over the table, his wife's and Solar's and his son's and Haechan's, talking the whole time, and then he got up off his cushion with a grunt and walked the length of the table in his slippers to the far end, and filled the celadon cup there too, to the brim, carefully, the way you'd fill a cup for an old man whose hands shook, and walked back and sat down and went on with his sentence where he'd left it." },
     { n: "Nobody at the table remarked on it. Nobody ever had. Solar picked up her chopsticks." },
@@ -132,10 +134,12 @@
     ] },
     { n: "He let it go. He went back to the bream." },
     { n: "He turned it over on the plate with his chopsticks, the whole fish, so that the blistered side came up, and worked the tips in under the gill, carefully, still talking about the price of bream at Yeonan, and dug out the cheek. The best piece on the fish. The small sweet round of meat that every family she'd ever eaten with fought over or gave to the eldest or the guest." },
+    { cg: 'epi-s-yang-dinner' }, // FEMC-ART-TODO 52D
     { n: "He put it in Haechan's bowl." },
     { n: "He didn't look while he did it. He didn't break off what he was saying. His chopsticks went across the table and came back, and the cheek was sitting on top of Haechan's rice, white, steaming, and Dokyun was telling his son that the man at Yeonan was a thief and his father had been a thief and his father's father had stolen the boat." },
     { n: "Haechan looked down at it for a long time." },
     { n: "Then he picked it up and ate it. Slowly. As if it were very hot, though it couldn't have been, by then. And when he'd swallowed he said, to his bowl, very low, *thank you*, and Dokyun went on talking about the thief at Yeonan and didn't hear him, or did, and reached over without looking and patted the table twice in front of Haechan's bowl with his big flat hand, the way you'd pat a dog that had done something right." },
+    { cg: null },
 
     // The cup.
     { n: "The barley tea came round again. Mrs. Moon brought a fresh pot, hot, and set it down by Solar's elbow because Solar was the guest and you started with the guest, and went away." },
@@ -417,6 +421,7 @@
     { s: 'solar', f: 'surprised', t: "I don't know how." },
     { s: 'madamkang', f: 'neutral', t: "Everyone in my family can do it. You'll be in my family in five weeks, my husband says. So." },
     { n: "Five weeks. April. Dokyun's word, in his wife's mouth, set down on the table like the boat, without any weight put on it either way. Solar didn't pick it up. Madam Kang didn't wait for her to." },
+    { cg: 'epi-s-camellias' }, // FEMC-ART-TODO 52E
     { n: "She taught her. Across the low table, in the yellow light, slowly, her own small hands doing each fold in the air a second ahead so that Solar could copy it. Corner to corner. Open. The other corners in to the line. Fold the bottom up. Again. Open it out from the middle, which was the part where the whole thing looked like it was ruined, a crumpled mess of linen, and then, if you held your nerve and kept pulling, wasn't." },
     { s: 'madamkang', f: 'neutral', t: "That's where everybody stops. In the middle, when it looks wrong. My younger son cried at that part every time. His brother used to tell him crying wouldn't make it float either, and make him start again." },
     { n: "Her hands stopped in the air." },
@@ -431,6 +436,7 @@
     { s: 'madamkang', f: 'neutral', t: "It's terrible." },
     { s: 'solar', f: 'happy', t: "It floats?" },
     { s: 'madamkang', f: 'neutral', t: "We'll see." },
+    { cg: null },
 
     // The door.
     { n: "When the tea was gone and the light through the glass had gone from yellow to the dull brass of four o'clock, Madam Kang walked her to the garden-room door, and stopped there with her hand on the frame, the way she had once before, months ago, when everything was different and nothing had happened yet." },

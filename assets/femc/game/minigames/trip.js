@@ -107,8 +107,9 @@ window.FemcTrip = (() => {
 
   /* the park (world units) */
   const WW = 3200, WH = 2200, HOME = { x: 1600, y: 1250 }, BLANKET_R = 120, SPEED = 175;
-  const POND = { x: 1600, y: 700, rx: 300, ry: 170 };
-  const RING = { x: HOME.x, y: HOME.y - 150, rx: 820, ry: 560 };
+  // pond and loop path measured off Kat's ground.webp (Nov 12 2026): water x 30-69%, y 19-43%; the loop's centre line x 10-90%, y 12-84%
+  const POND = { x: 1600, y: 690, rx: 610, ry: 255 };
+  const RING = { x: HOME.x, y: 1056, rx: 1280, ry: 790 };
   const ringAt = a => ({ x: RING.x + Math.cos(a) * RING.rx, y: RING.y + Math.sin(a) * RING.ry });
   const inPond = (x, y, m = 0) => ((x - POND.x) / (POND.rx + m)) ** 2 + ((y - POND.y) / (POND.ry + m)) ** 2 < 1;
   const pondQ = (x, y) => Math.sqrt(((x - POND.x) / POND.rx) ** 2 + ((y - POND.y) / POND.ry) ** 2);
@@ -247,7 +248,8 @@ window.FemcTrip = (() => {
   const layout = D => {
     const R = mulberry(20261111);
     const crew = CREW.map((c, i) => {
-      const x = clamp(HOME.x + c.at[0] * D.spread, 140, WW - 140), y = clamp(HOME.y + c.at[1] * D.spread, 140, WH - 140);
+      const x = clamp(HOME.x + c.at[0] * D.spread, 140, WW - 140); let y = clamp(HOME.y + c.at[1] * D.spread, 140, WH - 140);
+      for (let k = 0; k < 40 && inPond(x, y, 60); k++) y = clamp(y + (y < POND.y ? -20 : 20), 140, WH - 140);   // off the pond's stones (Hyunsuk on Easy)
       return { ...c, x, y, hx: x, hy: y, state: 'out', again: false, seat: SEATS[i], order: 0, ph: R() * TAU, dir: 'd', walk: 0, react: null, called: false, puff: R() * 3000 };
     });
     const by = id => crew.find(c => c.id === id);
@@ -257,7 +259,7 @@ window.FemcTrip = (() => {
     const lamps = [{ x: HOME.x + 200, y: HOME.y - 70 }];
     for (let i = 0; i < 13; i++) {
       const a = i / 13 * TAU + .2;
-      lamps.push({ x: HOME.x + Math.cos(a) * 820 * (.88 + R() * .24), y: HOME.y - 150 + Math.sin(a) * 560 * (.88 + R() * .24) });
+      lamps.push({ x: RING.x + Math.cos(a) * RING.rx * (.94 + R() * .12), y: RING.y + Math.sin(a) * RING.ry * (.94 + R() * .12) });
     }
     lamps.forEach((l, i) => {
       let n = 0; while (inPond(l.x, l.y, 70) && n++ < 60) l.y += l.y < POND.y ? -20 : 20;
@@ -294,7 +296,7 @@ window.FemcTrip = (() => {
     });
     const guards = Array.from({ length: D.torches }, (_, i) => {
       const a0 = i ? .55 : -2.65, a1 = i ? 2.55 : -.55;
-      return { i, a0, a1, a: lerp(a0, a1, .3 + i * .4), v: (D.torchV / 700) * (i ? -1 : 1), ph: i * 2.1, pause: 0, on: false, x: 0, y: 0, beam: 0, walk: 0, dir: 'd' };
+      return { i, a0, a1, a: lerp(a0, a1, .3 + i * .4), v: (D.torchV / ((RING.rx + RING.ry) / 2)) * (i ? -1 : 1), ph: i * 2.1, pause: 0, on: false, x: 0, y: 0, beam: 0, walk: 0, dir: 'd' };
     });
     return { crew, lamps, trees, benches, bottles, moments, blobs, flies, guards, hill, play, inPlay };
   };

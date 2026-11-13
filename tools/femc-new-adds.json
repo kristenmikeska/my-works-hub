@@ -42707,6 +42707,1055 @@
    "outputs": {
     "assets/femc/game/art/texts/hoax/gram-cherry-ready.webp": "a87e29fd61a40c2c2606b436c75d50b28f72852222300a86ec8f2d930d7c875d"
    }
+  },
+  {
+   "batch": 153,
+   "source": "epi-h-xmas-dishes.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "4601786a3a7563600d988ff0a8ec6f716af5eb36d7686f5f40431cb957745cac",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-h-xmas-dishes.webp",
+   "conversion": "WebP q86 native",
+   "placement": "hoax/story-w1.js epi-h-christmas, the Kitchen dishes; cgFocus; ALBUM (51A)",
+   "outputs": {
+    "assets/femc/cg/epi-h-xmas-dishes.webp": "80d4a30c083a19cb8bcb4bd329d277ee0eab8827845543ab5afb551f9303973d"
+   }
+  },
+  {
+   "batch": 153,
+   "source": "epi-h-xmas-desk.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "84faf7fa141de87c50d6c6645b0a25dad78bff4fc543f993488af404b59a5cb7",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-h-xmas-desk.webp",
+   "conversion": "WebP q86 native",
+   "placement": "hoax/story-w1.js epi-h-christmas, Her Room, Jungwon route; cgFocus; ALBUM (51B)",
+   "outputs": {
+    "assets/femc/cg/epi-h-xmas-desk.webp": "bcde46eb51388202fdfe146e8bbce66a1fdb4d3bcbd90aad6bd9d99ebdb525d0"
+   }
+  },
+  {
+   "batch": 153,
+   "source": "epi-h-xmas-rug.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "7d6a43ab8c4302cebb463f496276f165144eb8dc714182185c1934b00d171f83",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-h-xmas-rug.webp",
+   "conversion": "WebP q86 native",
+   "placement": "hoax/story-w1.js epi-h-xmas-night, Jihoon branch; cgFocus; ALBUM (51C)",
+   "outputs": {
+    "assets/femc/cg/epi-h-xmas-rug.webp": "320c66b7f38439f44a21a1c30879135ab5af15527c84c457cc230f6cb18c4516"
+   }
+  },
+  {
+   "batch": 153,
+   "source": "epi-h-xmas-presents.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "5feaa19c5a62392b15f60a1e4715214c836806cd370ab3823853ffc48d27a158",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-h-xmas-presents.webp",
+   "conversion": "WebP q86 native",
+   "placement": "hoax/story-w1.js epi-h-xmas-night opening; cgFocus; ALBUM (51D)",
+   "outputs": {
+    "assets/femc/cg/epi-h-xmas-presents.webp": "697cb94e7602e25d8f98f1b984b942bfe4629bcf370785d55ed6ceb37958b45a"
+   }
+  },
+  {
+   "batch": 153,
+   "source": "epi-h-eve-call.png",
+   "size": [
+    1670,
+    942
+   ],
+   "sha256": "4cd6537b6c76b09285bbb1719dec9c5cd855a736f73d70e36d2b077618b3b437",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-h-eve-call.webp",
+   "conversion": "WebP q86 native",
+   "placement": "hoax/story-w1.js epi-h-eve-night, Jungwon branch; cgFocus; ALBUM (51E)",
+   "outputs": {
+    "assets/femc/cg/epi-h-eve-call.webp": "9a1f42002bdc1636ea510b591d20f331d59609772a2bbf1d998b7cc1bff92e58"
+   }
+  },
+  {
+   "batch": 153,
+   "source": "epi-r-piano.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "ba68e0687aff29fe6e024689a7c962b08bf98607c714fb9a60424115325291bb",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-r-piano.webp",
+   "conversion": "WebP q86 native",
+   "placement": "runners/story-nyc2.js epi-r-hc-piano; cgFocus; ALBUM (51F)",
+   "outputs": {
+    "assets/femc/cg/epi-r-piano.webp": "818681d41d63caa8e853893669cb4ae4fd7dea99e31e013babdbd5876683c615"
+   }
+  },
+  {
+   "batch": 153,
+   "source": "epi-s-hwatu.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "83ff5583bd716ac1fab119313bf1615484d8d307b475bfcf081f8400aa69bd4f",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-s-hwatu.webp",
+   "conversion": "WebP q86 native",
+   "placement": "strangers/people.js epi-s-eomma-4 'flower cards', at the deal; cgFocus; ALBUM (51G)",
+   "outputs": {
+    "assets/femc/cg/epi-s-hwatu.webp": "6fce12dc5385ae47db12a4b43b61a85376d14d0510576e8ba85127595a1ae2ff"
+   }
+  },
+  {
+   "batch": 153,
+   "source": "epi-s-seojun-photo.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "ca98842d3ce7ebf349b0ac72ae6646d00df031244b0735ca696830fa96f70d4b",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-s-seojun-photo.webp",
+   "conversion": "WebP q86 native",
+   "placement": "strangers/story-yang.js dinner, the sideboard; cgFocus; ALBUM (52C)",
+   "outputs": {
+    "assets/femc/cg/epi-s-seojun-photo.webp": "9e356258a98340071a09fe93e21a2f3e7edafe1c8b48038ff6d89f343b6b592f"
+   }
+  },
+  {
+   "batch": 153,
+   "source": "epi-s-yang-dinner.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "f6a2076a648bcd798ce2a5314a1b85f461e8090250003c75e615f7a114e311d0",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-s-yang-dinner.webp",
+   "conversion": "WebP q86 native",
+   "placement": "strangers/story-yang.js dinner; cgFocus; ALBUM (52D)",
+   "outputs": {
+    "assets/femc/cg/epi-s-yang-dinner.webp": "ac9bcb3e906f03229a0151e778f820d19b5be393c7f8b51eec06147d03966fe4"
+   }
+  },
+  {
+   "batch": 153,
+   "source": "epi-s-camellias.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "7fcab0a99797efa872c397200f6cdab2095ae8acbaa87092daf7b808fc5f4ab6",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-s-camellias.webp",
+   "conversion": "WebP q86 native",
+   "placement": "strangers/story-yang.js garden room; cgFocus; ALBUM (52E)",
+   "outputs": {
+    "assets/femc/cg/epi-s-camellias.webp": "cb5bc945765e06fee35d4082efa361355687731852fe3b1231073a679ffb5d8a"
+   }
+  },
+  {
+   "batch": 153,
+   "source": "epi-h-hands.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "38e4720fad6f273844b53dd119ca5ec81f566c3c51b5a3c0d172a7d1675e0f65",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-h-hands.webp",
+   "conversion": "WebP q86 native",
+   "placement": "hoax/story-end.js epi-h-hearing, falls outcome; cgFocus; ALBUM (53A)",
+   "outputs": {
+    "assets/femc/cg/epi-h-hands.webp": "be66bde9c32c31e1489d9247f297f37d31b56e003d2c2abc3371a1251b79bb89"
+   }
+  },
+  {
+   "batch": 153,
+   "source": "epi-h-jw-door.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "3d556e8795549e943e6cb763f8b73b547c14e54f04286afc43c260e57bf0a5e9",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-h-jw-door.webp",
+   "conversion": "WebP q86 native",
+   "placement": "hoax/story-jungwon.js epi-h-jw-door; cgFocus; ALBUM (55A)",
+   "outputs": {
+    "assets/femc/cg/epi-h-jw-door.webp": "825d37bf1ef6b3319000cd2a9d3db9bd133f7b129a7ae4695ec372cd1e9a49ac"
+   }
+  },
+  {
+   "batch": 153,
+   "source": "epi-h-jw-curb.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "d74c6eb664100586d52e8562f09099a3211bc629cd0558d29a40c733ad73add3",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-h-jw-curb.webp",
+   "conversion": "WebP q86 native",
+   "placement": "hoax/story-jungwon.js epi-h-jw-curb; cgFocus; ALBUM (55B)",
+   "outputs": {
+    "assets/femc/cg/epi-h-jw-curb.webp": "4e7303abe4a31cb064656b7d54817ef06b5fae9b7455ea5c0ca35ff50dd41003"
+   }
+  },
+  {
+   "batch": 153,
+   "source": "epi-s-gone.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "450410f07bf1c55093b5214d48e4aa55faaffb9852f75dac6562ce4412862bd9",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-s-gone.webp",
+   "conversion": "WebP q86 native",
+   "placement": "strangers/story-end.js epi-s-held (pair already wired); cgFocus; ALBUM (57A)",
+   "outputs": {
+    "assets/femc/cg/epi-s-gone.webp": "680895a1f6b0f4ca1dfc94a20cd3daac1b34b0cb25ca96f28dc8f419d21cb66a"
+   }
+  },
+  {
+   "batch": 153,
+   "source": "epi-h-gone.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "abbedb9c377fce2d6eda5699b9510f1ad22ae230d6cf9ed4d9414ea4a0332251",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-h-gone.webp",
+   "conversion": "WebP q86 native",
+   "placement": "hoax/story-end.js epi-h-gym (pair already wired); cgFocus; ALBUM (57B)",
+   "outputs": {
+    "assets/femc/cg/epi-h-gone.webp": "a3da48f2543cab632cf1f1602e1dd82ee2a947eeb94a4827ac32744f2cc761a6"
+   }
+  },
+  {
+   "batch": 153,
+   "source": "epi-s-viking.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "fad3cf15c916fb84808f86d9c0efdac3ed799f2946de5eb478a73a9c0e2f670b",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-s-viking.webp",
+   "conversion": "WebP q86 native",
+   "placement": "strangers/story-w2.js epi-s-moon (pair already wired); cgFocus; ALBUM (58A)",
+   "outputs": {
+    "assets/femc/cg/epi-s-viking.webp": "ea89d9a7c3e2c5e0b991aa6e4517e47bbb2f686d5baf71af58a4d265d88212b8"
+   }
+  },
+  {
+   "batch": 153,
+   "source": "epi-s-persimmon.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "189e8a1acf1ee8a5e511a02102c25350bd0f51a453957c70d9a2156d23a93341",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-s-persimmon.webp",
+   "conversion": "WebP q86 native",
+   "placement": "strangers/people-spice.js epi-s-jungwon-persimmon (pair already wired); cgFocus; ALBUM (58B)",
+   "outputs": {
+    "assets/femc/cg/epi-s-persimmon.webp": "c55fb93a1133be5f28778b980d65eacc6bdd2b97353b120fe85e96b63fbc054f"
+   }
+  },
+  {
+   "batch": 153,
+   "source": "epi-s-sweatshirt.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "f1679f78b0b04cd1872429c074d0f52e8bda7ed808a586695ef82d835107dbca",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-s-sweatshirt.webp",
+   "conversion": "WebP q86 native",
+   "placement": "strangers/people-spice.js epi-s-haechan-sweatshirt (pair already wired); cgFocus; ALBUM (58D)",
+   "outputs": {
+    "assets/femc/cg/epi-s-sweatshirt.webp": "c0c43719a15981457242e2083ebcf901980e108366537e79b95e1a76fd57a4ef"
+   }
+  },
+  {
+   "batch": 153,
+   "source": "epi-h-jh-hallway.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "5bcac9f29d65b7b04ac35c17863fb1ed6dec3d3cdcd467d4139f443c1a30581c",
+   "status": "integrated",
+   "destination": "assets/femc/cg/epi-h-jh-closet.webp",
+   "conversion": "WebP q86 native",
+   "placement": "saved under the 54C name but drawn as 54B: hoax/stolen.js epi-h-jh-closet; cgFocus; ALBUM (54B)",
+   "outputs": {
+    "assets/femc/cg/epi-h-jh-closet.webp": "c86b13ef989cc247c2c4e9091c782cbd997ab3a4089e319d1a4b29d5d72cc7f0"
+   }
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/dokyun-strangers-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "6005d47e759f97af613e52c346765e2579f19e4050070d836715e71542dc198d",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/dokyun-strangers/",
+   "conversion": "femc-sheet-alpha.py Dokyun-Strangers (default order, checked by eye) + femc-portraits.py --same-scale; scale.js 1.09 (head matched to taesang-strangers)",
+   "placement": "strangers faces for dokyun (world.js faces), FEMC-ART-TODO 52A; face centre in placements-data.js, Kat to place",
+   "outputs": {
+    "assets/femc/portraits/dokyun-strangers/neutral.webp": "f0ea295c321389c95e647fc3ca3152292fd928a9526dbc4f74bad6db8d4b74c6",
+    "assets/femc/portraits/dokyun-strangers/happy.webp": "3c363268dbe4e56c2258033c1056824d4f2dc0443874f0613503f3f6264b001c",
+    "assets/femc/portraits/dokyun-strangers/sad.webp": "fe16c3877234db741c2c7d29084fa5743cc337d4dc31331d79b8c6735e648344",
+    "assets/femc/portraits/dokyun-strangers/serious.webp": "d4f798c89da3949cae8cd80e1585fc2beebdaf6c5e41a2116bd965556131e1e4",
+    "assets/femc/portraits/dokyun-strangers/surprised.webp": "6e141e2d63fdcdd75b242743e489894ffc5a50ed08e8a7e293550ff5dc2626f2",
+    "assets/femc/portraits/dokyun-strangers/flustered.webp": "f026898735d2e72431fdae1a1a30980eedcedc078414b44dbc808741d5684be4"
+   }
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/madamkang-strangers-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "ad4f9205c5798532851dfda1fb853cfe40879d1875a59654a9fd215b7f8771c5",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/madamkang-strangers/",
+   "conversion": "femc-sheet-alpha.py MadamKang-Strangers (default order, checked by eye) + femc-portraits.py --same-scale; scale.js 1.03 (head matched to miyeon-strangers)",
+   "placement": "strangers faces for madamkang (world.js faces), FEMC-ART-TODO 52B; face centre in placements-data.js, Kat to place",
+   "outputs": {
+    "assets/femc/portraits/madamkang-strangers/neutral.webp": "becc9935ca22778dbeefcd8b645d84e933b300dbddf575ee08d816ab762416e4",
+    "assets/femc/portraits/madamkang-strangers/happy.webp": "b4c8cbd31f8e609b3d8ad8a2579909dd304b60ba3c93606fd07fc5e47fd1ee34",
+    "assets/femc/portraits/madamkang-strangers/sad.webp": "95ac65b00a3f54903b73c778ee8cf5814dda79fba6d1ca307f9a0a1ba05cf013",
+    "assets/femc/portraits/madamkang-strangers/serious.webp": "d2b67f074731352c148e8950f09a9558c086d0e5561c51e705b64c8cc181df0c",
+    "assets/femc/portraits/madamkang-strangers/surprised.webp": "ed7b5f69d62a4e506d172b5a8b8aa6d5ecd23f266d110df0174abd50ba1ce153",
+    "assets/femc/portraits/madamkang-strangers/flustered.webp": "c9bf4a2a8a712de41cdde6478c78820d8f04d2133da8ac41b3539bed53e249a2"
+   }
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/solar-hoax-remake-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "6f7aec7856a4d9ab1a04e8eb1cc9f0ff312f47503dec8a1bb8538e159a726a0f",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/solar-hoax/",
+   "conversion": "tools/femc-solar-hoax-faces.py solar-hoax (new drawing onto the old canvas, one scale 0.885 so her head matches the cherry-hoax folder's, neutral face centre on the old one, bust mirrored to the edge, WebP q90); old faces backed up in ~/Documents/FEMC Backups/solar-hoax-faces-2026-11-12/",
+   "placement": "Solar's HOAX scene faces (FEMC-ART-TODO 48, remade in Cherry's style); scale.js and placements unchanged",
+   "outputs": {
+    "assets/femc/portraits/solar-hoax/neutral.webp": "34286f62d5bd2064cb609600e7051780aa4d12f8013dffc18eb6e7ba5bd6ce67",
+    "assets/femc/portraits/solar-hoax/happy.webp": "9c06daba4535314b69f7bf339e1af1f88185eda31a922fa2423090d2b826c66b",
+    "assets/femc/portraits/solar-hoax/sad.webp": "cb2e465971ad0f63015bfca120cdec8088d2e61714b80bf7db6a4d8fa5e01b58",
+    "assets/femc/portraits/solar-hoax/serious.webp": "fc8a907911803d1b901ca804992f0e69ac28e4af72e3fb1c9974ee1223c9b40a",
+    "assets/femc/portraits/solar-hoax/surprised.webp": "ec8dec1b4d731869c1bfb9a3c0fa156ae71d14f163ebfe4f0da2a6ad6aa81cd0",
+    "assets/femc/portraits/solar-hoax/flustered.webp": "903c97ed90e2c9d1c27cb1e91747f3afac0dfa9eb1b788ba7f463b5d63a8467f"
+   }
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/solar-hoax-school-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "8d07ff6d465a3510c673a077b89e7f79dfa647a1bfd8106c26c46cffb1dc6085",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/solar-hoax-school/",
+   "conversion": "tools/femc-solar-hoax-faces.py solar-hoax-school (new drawing onto the old canvas, one scale 0.9 so her head matches the cherry-hoax folder's, neutral face centre on the old one, bust mirrored to the edge, WebP q90); old faces backed up in ~/Documents/FEMC Backups/solar-hoax-faces-2026-11-12/",
+   "placement": "Solar's HOAX scene faces (FEMC-ART-TODO 48, remade in Cherry's style); scale.js and placements unchanged",
+   "outputs": {
+    "assets/femc/portraits/solar-hoax-school/neutral.webp": "c258b5072ebaf8a3a388b9fb6934a5e05dd6de93b1e98bb274f20cd57bfd577c",
+    "assets/femc/portraits/solar-hoax-school/happy.webp": "6dfafe2fd72a99403f1d90dbcaa566403f20048e281280aee2edacf0900465ad",
+    "assets/femc/portraits/solar-hoax-school/sad.webp": "afd18d09321f7a0cc2e53d4c2bf9b83f91e04e3728ab7792c8739953f9c1f16f",
+    "assets/femc/portraits/solar-hoax-school/serious.webp": "6035b93ad906ee6d1304007d506935bb467d3bfcbfd6e506c1a172f9322db3f9",
+    "assets/femc/portraits/solar-hoax-school/surprised.webp": "553b5ada2908fb408e3f747701e2ed23d8bca95dce27e5b37de54e8a19bb4d8c",
+    "assets/femc/portraits/solar-hoax-school/flustered.webp": "cb444298dc6c5ceaa85297b718a37be12b0fbe2df226c1def7fff8c946882d10"
+   }
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/solar-christmas-hoax-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "206fe6264c60e7346d3b5df1c4f9dd1d2d433e1e926b0288901788c6e162bdf9",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/solar-hoax-christmas/",
+   "conversion": "tools/femc-solar-hoax-faces.py solar-hoax-christmas (new drawing onto the old canvas, one scale 1.471 so her head matches the cherry-hoax folder's, neutral face centre on the old one, bust mirrored to the edge, WebP q90); old faces backed up in ~/Documents/FEMC Backups/solar-hoax-faces-2026-11-12/",
+   "placement": "Solar's HOAX scene faces (FEMC-ART-TODO 48, remade in Cherry's style); scale.js and placements unchanged",
+   "outputs": {
+    "assets/femc/portraits/solar-hoax-christmas/neutral.webp": "63180197a144a58c81ae78ac3815c81e13b9af933d721dc025becc30ea669fc2",
+    "assets/femc/portraits/solar-hoax-christmas/happy.webp": "424d47173fb9907dd7fe2d7bee78a9aaf48c27a43153553ea47df9a422856648",
+    "assets/femc/portraits/solar-hoax-christmas/sad.webp": "c15aabb0c4080ec9166b4ab5459ada28830356bf95e89f8f342163bf30ba55b9",
+    "assets/femc/portraits/solar-hoax-christmas/serious.webp": "9ce99d58a3db022f230402cab355bd130952867e0703706239cd59a5bd32469e",
+    "assets/femc/portraits/solar-hoax-christmas/surprised.webp": "a736ee438793849409c8d1c379556131cac034247aa095d2effb07bbe9064604",
+    "assets/femc/portraits/solar-hoax-christmas/flustered.webp": "7e4c3d8d9c7a87de1289cea081779831de05a41080a0f0f06f67922b06492c51"
+   }
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/solar-hoax-party-remake-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "c86c218e4d86169fde064e0832979cebdfc0ec2186301b05be5622ea6ff91479",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/solar-hoax-party/",
+   "conversion": "tools/femc-solar-hoax-faces.py solar-hoax-party (new drawing onto the old canvas, one scale 1.779 so her head matches the cherry-hoax folder's, neutral face centre on the old one, bust mirrored to the edge, WebP q90); old faces backed up in ~/Documents/FEMC Backups/solar-hoax-faces-2026-11-12/",
+   "placement": "Solar's HOAX scene faces (FEMC-ART-TODO 48, remade in Cherry's style); scale.js and placements unchanged",
+   "outputs": {
+    "assets/femc/portraits/solar-hoax-party/neutral.webp": "7a2176e06236421a60587346681348f6fcb225a8a09eed9637cd1d8c9d072e1b",
+    "assets/femc/portraits/solar-hoax-party/happy.webp": "f3611bbd954563f3df8e633c79c8a6b739f87e1bfa5ed58ba746d101d470fcb6",
+    "assets/femc/portraits/solar-hoax-party/sad.webp": "c3ea7794de819bea6368538a3aec844fe2616a33e930b27ac3bc7a4a44c7fac8",
+    "assets/femc/portraits/solar-hoax-party/serious.webp": "649638cc61509d3efcf7d972f58d575dd0934f32f4688618e043e167fe622446",
+    "assets/femc/portraits/solar-hoax-party/surprised.webp": "4efadc641ff1a6f9fa9fd4c8750d79ec70939d9c29d269e83ffebdf97133aeaa",
+    "assets/femc/portraits/solar-hoax-party/flustered.webp": "3824152241e6fb284f0deb6638fe5e89c9d6644ab8fde2c9129b5c2eb637401c"
+   }
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/solar-hoax-hanbok-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "4946a9b1625cd380502ced4d9a946b334945db0fd38223448e0f31bfa1d4b0ab",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/solar-hoax-newyear/",
+   "conversion": "tools/femc-solar-hoax-faces.py solar-hoax-newyear (new drawing onto the old canvas, one scale 1.715 so her head matches the cherry-hoax folder's, neutral face centre on the old one, bust mirrored to the edge, WebP q90); old faces backed up in ~/Documents/FEMC Backups/solar-hoax-faces-2026-11-12/",
+   "placement": "Solar's HOAX scene faces (FEMC-ART-TODO 48, remade in Cherry's style); scale.js and placements unchanged",
+   "outputs": {
+    "assets/femc/portraits/solar-hoax-newyear/neutral.webp": "9b2fef09222209219c1243ac64a0c8d5d7c481946c0d16fb5ff4e4e9e8c0ba63",
+    "assets/femc/portraits/solar-hoax-newyear/happy.webp": "93624c65930018696c38dbbb0f4bff1dc3732ba6dac0d6323975f78ad2170139",
+    "assets/femc/portraits/solar-hoax-newyear/sad.webp": "891eeef16dac40dee029e3829cb622689940fd28d7cc94fdc2db54840beb1117",
+    "assets/femc/portraits/solar-hoax-newyear/serious.webp": "ebdc5becec79e613457caa481aac373e7d8d2c1475c771fc7f1788c90fa13875",
+    "assets/femc/portraits/solar-hoax-newyear/surprised.webp": "d61e53be7f0e7735e88f979b9e5975ebc308a538b24c5c0bb4b274288cc9ded6",
+    "assets/femc/portraits/solar-hoax-newyear/flustered.webp": "12343a97ee24a399e3f2f688503775630da4f9a7a4446d43ff36501202bc4e25"
+   }
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-bg-order.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "3f9e9d9e09383699af92151834b335dc264108c8a7c41e3116015f8a60bd1757",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/bg-order.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB q86",
+   "placement": "cafe.js station background (50)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-bg-order-night.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "598100a9623b56aa1e9f3d2cd2e1cfeeb7edc23c2b296e79f3d898e558147a3b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/bg-order-night.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB q86",
+   "placement": "cafe.js station background (50)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-bg-drinks.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "ee2f33f78847eb702af2e0c4c23132cef99098b2d1f77c3da4bce9cc32d354e3",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/bg-drinks.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB q86",
+   "placement": "cafe.js station background (50)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-bg-griddle.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "56d11f9d9c0fec3a7c1a5d5038d16cd4b476276082bfcae6783da03c952094d2",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/bg-griddle.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB q86",
+   "placement": "cafe.js station background (50)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-bg-build.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "d46fd127d410f1d49db1730a43499cb93ddfe6ed01f584ea9bfda562c8003055",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/bg-build.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB q86",
+   "placement": "cafe.js station background (50)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-title.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "87de2f8f97f67bad4858b113ecc8608281b1b5808d492cc6684e5f74b14f3122",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/title.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB q86",
+   "placement": "cafe.js title card (50F)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-drinks.png",
+   "size": [
+    1312,
+    1199
+   ],
+   "sha256": "e9616f49a83a2d85fd0ef281c1f5a40cf218745cb4ba10dce25e2ed5bee73cda",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/drink-{cocoa,yuzu,americano,sikhye}.webp",
+   "conversion": "tools/femc-minigame-art.py: CAFE_SHEETS 2 x 2, one square canvas, bottoms aligned, q90",
+   "placement": "finished drinks on trays and tickets (50G)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-cups.png",
+   "size": [
+    1774,
+    887
+   ],
+   "sha256": "fcffb95c7b8e4c326b8b6750810a0f43dc17e44e27680e027d6f12399e38e4ba",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/cup-{s,l}.webp",
+   "conversion": "tools/femc-minigame-art.py: CAFE_SHEETS 2 x 1, square canvas, bottoms aligned",
+   "placement": "cup choice buttons (50H)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-addins.png",
+   "size": [
+    1292,
+    1218
+   ],
+   "sha256": "faecf619b91d99b795f0f9951996ece369a6ff0d6fc3d262989148036a30d82c",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/add-{cream,marsh,cinnamon,honey,ginger,shot,syrup,pine,ice}.webp",
+   "conversion": "tools/femc-minigame-art.py: CAFE_SHEETS 3 x 3, keyed at white 251 (white items), square centred",
+   "placement": "add-in buttons and on the liquid (50I)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-hotteok.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "3203ee1d291148dcde92527b5b18a685b3d3d0471c6f3454f6030149f1881ef9",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/hotteok-{raw,cooking,done,burnt}.webp",
+   "conversion": "tools/femc-minigame-art.py: CAFE_SHEETS 2 x 2, one square canvas centred on the food",
+   "placement": "griddle stages, rack, trays (50J)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-toast.png",
+   "size": [
+    1293,
+    1217
+   ],
+   "sha256": "ad1672f17a41b075ed01563b7951de9ce3d4660cddd45bfb43019555a82456e2",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/toast-{raw,cooking,done,burnt}.webp",
+   "conversion": "tools/femc-minigame-art.py: CAFE_SHEETS 2 x 2, one square canvas centred on the food",
+   "placement": "griddle stages, rack, trays (50K)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-kimbap.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "24e34e8be00215612682d564f0d0045e452f120397db95e5af14713933c737a0",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/kimbap-{seaweed,rice,roll,sliced}.webp",
+   "conversion": "tools/femc-minigame-art.py: even 2 x 2; seaweed / rice opaque tight crops, roll / sliced alpha trimmed",
+   "placement": "the build board (50L)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-fillings.png",
+   "size": [
+    1774,
+    887
+   ],
+   "sha256": "5f65a46db0b9d02666301977e1359dbc695bf8ff9633f2458a6c359aab2c721e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/fill-{rice,egg,carrot,spinach,danmuji,ham,tuna}.webp",
+   "conversion": "tools/femc-minigame-art.py: CAFE_SHEETS 4 x 2 (cell 8 empty), each trimmed",
+   "placement": "ingredient buttons and laid stripes (50M)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-downloads.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "474d3bffd93e741751783a1056a2e7ad4d965bf1391aae64ee49fb79a2aaff9f",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/top-{seeds,syrup,powder,sugar,ketchup,cheese}.webp",
+   "conversion": "tools/femc-minigame-art.py: CAFE_SHEETS 3 x 2 (Kat's file name for the toppings sheet), square centred",
+   "placement": "topping buttons and drops (50N)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-tray.png",
+   "size": [
+    1942,
+    809
+   ],
+   "sha256": "d769f451c285bf6e07f2a0e46b6b9206dc8e2128e7696477e4b99b7e63aee4b3",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/{tray,plate}.webp",
+   "conversion": "tools/femc-minigame-art.py: CAFE_SHEETS 2 x 1, each trimmed",
+   "placement": "the pass, the build plate (50O)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-ticket.png",
+   "size": [
+    1060,
+    1484
+   ],
+   "sha256": "8ecf47f1e616476eb4e21ff20689d971b4ed939678faa4c687db66af18e52d83",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/ticket.webp",
+   "conversion": "tools/femc-minigame-art.py: alpha, trimmed, 360 wide",
+   "placement": "rail tickets (50P)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-tipjar.png",
+   "size": [
+    1774,
+    887
+   ],
+   "sha256": "028bd87fc2524a9734eab352dba73b92160f5d4a5c3f9b2f7399151a7251baaf",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/{tipjar,coin}.webp",
+   "conversion": "tools/femc-minigame-art.py: CAFE_SHEETS 2 x 1; tipjar 600 wide, coin 128",
+   "placement": "counter jar, flying coins (50Q)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-stampcard.png",
+   "size": [
+    1774,
+    887
+   ],
+   "sha256": "21ad4e57b65ae079aa655a676f2aa8c15cc9b005e648db4d05bd6a4d6e8d8c6d",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/stampcard.webp",
+   "conversion": "tools/femc-minigame-art.py: alpha, trimmed, 480 wide",
+   "placement": "HUD stamp meter icon (50R)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-stamps.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "039463b0c343b3ad6add183dd1eb05ae89e1b4146fd028c2e2925b757598422f",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/stamp-{s,a,b,c}.webp",
+   "conversion": "tools/femc-minigame-art.py: CAFE_SHEETS 2 x 2, square centred",
+   "placement": "end-of-day grade (50S)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-sunoo-apron-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "0ad1d1d2b9cc9d1487799b710dd72e23f458fc1a91c3eb78fe969979c6a95794",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/sunoo-apron-{neutral,happy,surprised,flustered,sad,serious}.webp",
+   "conversion": "tools/femc-minigame-art.py: CAFE_FACES even 3 x 2, square 480 q88",
+   "placement": "Sunoo in bubbles and the tab bar (50T)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-regular-mrkang.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "b78b19c0f9f043c4c18ea45b4f3b5a163ca2977264e0a6d06dd2df2627c294fa",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/face-mrkang-{neutral,happy,grumpy}.webp",
+   "conversion": "tools/femc-minigame-art.py: even 3 x 1, square 480 q88",
+   "placement": "the regular's face (50U)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-regular-nurse.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "1f98c83c4ca475db9b9e22f3ba5bd6d76bfc59f7f195a37d8c844415c21ebdf3",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/face-nurse-{neutral,happy,grumpy}.webp",
+   "conversion": "tools/femc-minigame-art.py: even 3 x 1, square 480 q88",
+   "placement": "the regular's face (50V)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-regular-kids.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "24e7c24abe8f7e312706fc6b3d23002ddfd07d200901e829aab309730c1b041b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/face-kids-{neutral,happy,grumpy}.webp",
+   "conversion": "tools/femc-minigame-art.py: even 3 x 1, square 480 q88",
+   "placement": "the regular's face (50W)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-regular-mrchoi.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "5604fb1cc39151624901132a742fbc2892a961f940f82ca5f66538bd5a7cf389",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/face-mrchoi-{neutral,happy,grumpy}.webp",
+   "conversion": "tools/femc-minigame-art.py: even 3 x 1, square 480 q88",
+   "placement": "the regular's face (50X)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-regular-mryoon.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "8f02ef6d459cc60d18c7c7420d10f0a95702940e7bec8365cce86cf34a012e0c",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/face-mryoon-{neutral,happy,grumpy}.webp",
+   "conversion": "tools/femc-minigame-art.py: even 3 x 1, square 480 q88",
+   "placement": "the regular's face (50Y)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/cafe-regular-msbae.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "7cd11c5d6774ffd1f5c06fb681f71bdd993d83e162b75b5387f1c67afcb03d33",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/cafe/face-mrsbae-{neutral,happy,grumpy}.webp",
+   "conversion": "tools/femc-minigame-art.py: even 3 x 1, square 480 q88 (file msbae -> cafe.js id mrsbae)",
+   "placement": "the regular's face (50Z)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/hwatu-month-01.png",
+   "size": [
+    1774,
+    887
+   ],
+   "sha256": "222e34844cf8d4d6d71b1abf7c429855e6b97a6a417737ed8a9d2fe3a74bbd1f",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/hwatu/cards/01*.webp",
+   "conversion": "tools/femc-minigame-art.py: 4 cards cut at the white gaps, keyed, trimmed, 240 x 360 q90, MONTHS ty order (HWATU_FILE)",
+   "placement": "hwatu.js card faces, January · Pine (49)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/hwatu-month-02.png",
+   "size": [
+    1774,
+    887
+   ],
+   "sha256": "4c68d869dce6b91045a376951b3e555b6ac39c499fb1d2f0eb31d7de3b22c4fd",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/hwatu/cards/02*.webp",
+   "conversion": "tools/femc-minigame-art.py: 4 cards cut at the white gaps, keyed, trimmed, 240 x 360 q90, MONTHS ty order (HWATU_FILE)",
+   "placement": "hwatu.js card faces, February · Plum (49)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/hwatu-month-03.png",
+   "size": [
+    1448,
+    1086
+   ],
+   "sha256": "be5b89a59d80ff1a9f45ba3f6394b3724812eac64b48c36dda0128db2c72e36e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/hwatu/cards/03*.webp",
+   "conversion": "tools/femc-minigame-art.py: 4 cards cut at the white gaps, keyed, trimmed, 240 x 360 q90, MONTHS ty order (HWATU_FILE)",
+   "placement": "hwatu.js card faces, March · Cherry (49)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/hwatu-month-04.png",
+   "size": [
+    1448,
+    1086
+   ],
+   "sha256": "820339a19690fb760ee5aeccc412a9b5c257ee05b8925fdd0f3d339635dfd4f9",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/hwatu/cards/04*.webp",
+   "conversion": "tools/femc-minigame-art.py: 4 cards cut at the white gaps, keyed, trimmed, 240 x 360 q90, MONTHS ty order (HWATU_FILE)",
+   "placement": "hwatu.js card faces, April · Wisteria (49)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/hwatu-month-05.png",
+   "size": [
+    1448,
+    1086
+   ],
+   "sha256": "7b56af7eb6f8e7e703d0af17350ada087f4640bdc6dd02370e41dbe72efd3910",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/hwatu/cards/06*.webp",
+   "conversion": "tools/femc-minigame-art.py: 4 cards cut at the white gaps, keyed, trimmed, 240 x 360 q90, MONTHS ty order (HWATU_FILE)",
+   "placement": "hwatu.js card faces, June · Peony (Kat's file 05 is drawn as June) (49)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/hwatu-month-06.png",
+   "size": [
+    1448,
+    1086
+   ],
+   "sha256": "01b9020a11e99f21c5fd7475aed4d0c3c2eaa644eac57dc2ee930ad04764fd81",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/hwatu/cards/07*.webp",
+   "conversion": "tools/femc-minigame-art.py: 4 cards cut at the white gaps, keyed, trimmed, 240 x 360 q90, MONTHS ty order (HWATU_FILE)",
+   "placement": "hwatu.js card faces, July · Bush clover (Kat's file 06 is drawn as July) (49)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/trip-sprite-solar.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "98d4b1f6eaa0acfcaae180f28ec56358049074267e836da0710817b0520e9790",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/trip/sprite-solar.webp",
+   "conversion": "tools/femc-minigame-art.py: 16 frames cut, one scale, even 4 x 4 grid of 256 px cells, feet 4% above the cell bottom, q90",
+   "placement": "trip.js walking sprite (56A)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/trip-sprite-hyunsuk.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "b33ad136fda5259a94a2d78ae9f7a7ba5a46752c088bbe54a76575881f2df90a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/trip/sprite-hyunsuk.webp",
+   "conversion": "tools/femc-minigame-art.py: 16 frames cut, one scale, even 4 x 4 grid of 256 px cells, feet 4% above the cell bottom, q90",
+   "placement": "trip.js walking sprite (56B)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/trip-sprite-asahi.png",
+   "size": [
+    1199,
+    1312
+   ],
+   "sha256": "486de6710fa6aef6c8a1d3a15c54fed18c81af60f3aaf89ad5b4b9e774622914",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/trip/sprite-asahi.webp",
+   "conversion": "tools/femc-minigame-art.py: 16 frames cut, one scale, even 4 x 4 grid of 256 px cells, feet 4% above the cell bottom, q90",
+   "placement": "trip.js walking sprite (56C)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/trip-sprite-jaehyuk.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "190ef925b70cf7215c36f68770fa2603bcecffff89eb3d7fbcde12e2a6034adb",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/trip/sprite-jaehyuk.webp",
+   "conversion": "tools/femc-minigame-art.py: 16 frames cut, one scale, even 4 x 4 grid of 256 px cells, feet 4% above the cell bottom, q90",
+   "placement": "trip.js walking sprite (56D)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/trip-sprite-junkyu.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "67b41079f8f69cc8385121ebc354a7dad1f5d842bd8e6d15fbf038b4573f602f",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/trip/sprite-junkyu.webp",
+   "conversion": "tools/femc-minigame-art.py: 16 frames cut, one scale, even 4 x 4 grid of 256 px cells, feet 4% above the cell bottom, q90",
+   "placement": "trip.js walking sprite (56E)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/trip-sprite-jihoon.png",
+   "size": [
+    1086,
+    1448
+   ],
+   "sha256": "23f7e6283681cf60dd802b7e2434311a59f1c85030a6f44276fb0565dd3edc3d",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/trip/sprite-jihoon.webp",
+   "conversion": "tools/femc-minigame-art.py: 16 frames cut, one scale, even 4 x 4 grid of 256 px cells, feet 4% above the cell bottom, q90",
+   "placement": "trip.js walking sprite (56F)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/trip-sprite-cherry.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "2ba13e7e808bd28871d182c251239a7d0be343607024446b878d5ae7fa5da3df",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/trip/sprite-cherry.webp",
+   "conversion": "tools/femc-minigame-art.py: 16 frames cut, one scale, even 4 x 4 grid of 256 px cells, feet 4% above the cell bottom, q90",
+   "placement": "trip.js walking sprite (56G)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/trip-sprite-nana.png",
+   "size": [
+    1262,
+    1246
+   ],
+   "sha256": "3d9fb016b6382319603ac77844940e49806b64c96f7339c054c66a8f52157367",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/trip/sprite-nana.webp",
+   "conversion": "tools/femc-minigame-art.py: 16 frames cut, one scale, even 4 x 4 grid of 256 px cells, feet 4% above the cell bottom, q90",
+   "placement": "trip.js walking sprite (56H)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/trip-ground.png",
+   "size": [
+    1515,
+    1038
+   ],
+   "sha256": "f3932426e946ab882c416c49891431117791019dcc03d32f7e545b9a2322b503",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/trip/ground.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB native q86 (trip.js POND / RING moved to match it)",
+   "placement": "the park ground (56I)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/trip-props.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "3a5fe3bfd9bfdcdc726d16e819d27eb5367d092276f99e207f62274fd786f4e6",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/trip/{tree,willow,lamp,bench}.webp",
+   "conversion": "tools/femc-minigame-art.py: TRIP_SHEETS 2 x 2, each trimmed",
+   "placement": "park props (56J)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/trip-playground.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "d20e3cc832ab49af4fec8b0840e65ff818505c663a14d278014ea6f257424459",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/trip/playground.webp",
+   "conversion": "tools/femc-minigame-art.py: alpha, trimmed",
+   "placement": "the playground (56K)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/trip-blanket.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "64466dfd88600656a0d1c6de874be06daca86c39246fee34744a1972cd192ea4",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/trip/blanket.webp",
+   "conversion": "tools/femc-minigame-art.py: alpha, trimmed",
+   "placement": "the blanket (56L)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/trip-title.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "f5e341fc2f61811815848a3da133facd5d63504c60e590b94af893341262c938",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/trip/title.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB q86",
+   "placement": "title card (56M)"
+  },
+  {
+   "batch": 154,
+   "source": "New Adds/trip-sky.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "60fa19596efe69031a4ad65d6212a0d5664a83194da3fb3f7fe29df62c370b5c",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/trip/sky.webp",
+   "conversion": "tools/femc-minigame-art.py: RGB q86",
+   "placement": "finale sky (56N)"
   }
  ],
  "batch1Validation": {
@@ -44191,5 +45240,10 @@
   "date": "2026-11-10",
   "checks": "jsc checkSyntax regionals.js, dumplings.js, sing.js, cosmetics.js, fitting.js, ready.js; femc-check-scenes; every cut frame looked at on a contact sheet",
   "note": "Nov 10 2026: minigame art for Regionals, the dumpling game and the booth; HD sets for Sophie, Ghost-Spider (17, no shy), Wednesday, Cardcaptor Sakura; Sukajan faces redone. Not recorded here: batches 146-149 (see CLAUDE.md). Left in New Adds untouched: Solar-Sophie-Poses/epi-r-edge-of-light.png and epi-r-dumplings.png (42A / 42B CGs, misfiled; not wired). Low-res: mg-ow-map-busan-1 and -lijiang-2 are 596 x 335 (FEMC-ART-TODO 31)."
+ },
+ "batch153Validation": {
+  "date": "2026-11-12",
+  "checks": "jsc on the 7 scene files, places.js, epilogue.js; femc-check-scenes OK; every CG looked at against its scene",
+  "note": "Nov 12 2026: epilogue CGs 51A-G, 52C-E, 53A, 54B, 55A-B, 57A-B, 58A/B/D. epi-h-jh-hallway.png showed the 54B closet scene (mother's shadow, Jihoon in the closet), so it went in as epi-h-jh-closet; 54C is still to make. epi-r-arrive-boys / -girls / -minji and epi-r-mark-lobby in New Adds are the same files as batch 151 (same sha256), skipped."
  }
 }

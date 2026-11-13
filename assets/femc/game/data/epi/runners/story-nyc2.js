@@ -869,6 +869,7 @@
     { s: 'solar', f: 'neutral', t: "It's an apartment." },
     { s: 'haechan', f: 'neutral', t: "It's a house somebody stacked eleven of. Come here. Don't turn the light on." },
     { music: 'epi-r-romance' },
+    { cg: 'epi-r-piano' }, // FEMC-ART-TODO 51F
     { n: "She didn't. She came across the good floor in her socks and he moved over on the bench without looking, half a foot, exactly as much as she'd need, and she sat down in it with her hip against his, on the same bench neither of them had been doing much sitting on the last time they were in this room together, which she was choosing not to think about, and failing." },
     { n: "It was a different room at night. She'd lived in it eighteen years and never once noticed, never once sat in it with the lights off and just listened: the radiators ticking down under the windows, the refrigerator two rooms away, something in the wall that was the elevator going down to Marco, a cab on Fifth with chains on hissing past, the sound coming up eleven floors late and soft, like it had been through a sleeve." },
     { s: 'haechan', f: 'neutral', t: "Heat's off in the hall. Air's colder out there. Heavier. Everything sits lower at night. Your ceiling's doing about half what it does in the day." },
@@ -917,6 +918,7 @@
         { n: "Four hands, three of them on a piano. She lasted about eleven bars before she lost count entirely, because of the hand on her knee, which wasn't playing anything and was somehow the loudest thing in the room." }
       ] }
     ] },
+    { cg: null },
     { n: "Somewhere down the hall, something clicked. They both froze." },
     { s: 'haechan', f: 'neutral', t: "Radiator. Your brother's door's a half-tone lower." },
     { n: "She laughed, too loud, straight into his shoulder." },

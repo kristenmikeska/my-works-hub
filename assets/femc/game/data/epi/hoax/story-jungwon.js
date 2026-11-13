@@ -82,7 +82,9 @@
         { from: 'jungwon', t: "please don't scream. maeumi doesn't like it." }
       ], contact: 'Won' },
       { n: "She didn't scream. She went down the stairs in her socks with Nana thundering after her, which was the opposite of not screaming, and pulled the curtain back in the front room, and there he was." },
+      { cg: 'epi-h-jw-door' }, // FEMC-ART-TODO 55A
       { n: "Yang Jungwon, at her gate, at twenty to one in the morning on the first day of the year, in his school coat and a scarf done up to his chin and absolutely no hat, holding a leash, and on the end of the leash, sitting in the snow in his little orange coat like a traffic cone somebody had dropped off a truck, Maeumi, looking up at the house like he'd been brought here against his will and wanted it noted." },
+      { cg: null },
       { n: "She got her boots on the wrong feet, realised halfway down the path, and kept going." },
       { s: 'solar', f: 'surprised', t: "Won. *Won.* What are you doing?" },
       { s: 'jungwon', f: 'neutral', t: "Walking my dog." },
@@ -202,9 +204,11 @@
           { n: "He held it in both hands and didn't drink it. Then he sat down where he was, at the edge of the light, and the old table, without anyone saying so, shifted a little, the way water does round a stone, until he wasn't at the edge anymore." }
         ] }
       ] },
+      { cg: 'epi-h-jw-curb' }, // FEMC-ART-TODO 55B
       { n: "He stayed forty minutes. He didn't talk much. He laughed once, properly, the real one, high and surprised, that nobody at the old table had ever heard, when Asahi said something so dry about Jaehyuk's flashcards that Jaehyuk took his glasses off to be offended, and the whole curb turned to look at him laughing like a flock of birds turning at once, and he went red, and stopped, and then didn't quite stop." },
       { n: "When he got up to go his phone had nineteen notifications and he looked at them without opening any and put it in his pocket, and his face did nothing, and she saw what it cost him anyway, because she'd learned his face the way other people learn a language: the little muscle at the corner of his jaw, working, working, and then, on purpose, made to stop." },
       { s: 'asahi', f: 'neutral', t: "Bye, president. No one cares." },
+      { cg: null },
       { s: 'jungwon', f: 'happy', t: "Goodnight, Asahi. Noted." },
       { n: "When he'd gone round the corner, Hyunsuk was still looking at the road where he'd been." },
       { s: 'hyunsuk', f: 'neutral', t: "...He walked here. In those shoes." },

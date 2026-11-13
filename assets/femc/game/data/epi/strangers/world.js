@@ -140,13 +140,14 @@
       girls: 'The girls', house: 'The kitchen', man: 'A man', fisherman: 'A fisherman', aunt: 'Aunt Hyesun', radio: 'The radio',
       fkvoice: 'Fuuka', flounder: 'The flounder woman', ajumma: 'The ajumma', // the last two: the expansion pass
       gong: 'Mrs. Gong', tankman: 'The fish-tank man', wu: 'Auntie Wu', moon: 'Mrs. Moon', watchman: 'The watchman', // the Nov 6 pass
-      dokyun: 'Yang Dokyun', madamkang: 'Madam Kang' // Nov 11 (story-yang.js): name only until FEMC-ART-TODO 52A / 52B, then faces dokyun-strangers / madamkang-strangers
+      dokyun: 'Yang Dokyun', madamkang: 'Madam Kang' // Nov 11 (story-yang.js); faces since Nov 12 (art 52A / 52B)
     },
     // This world's own faces (core.js worldFace): Solar's strangers look, the four's strangers outfits and Solar's parents (FEMC-ART-WIRING).
     faces: { solar: 'solar-strangers', chaewon: 'chaewon-strangers', sakura: 'sakura-strangers', kazuha: 'kazuha-strangers', eunchae: 'eunchae-strangers', appa: 'taesang-strangers', eomma: 'miyeon-strangers', yunjin: 'yunjin-strangers', haechan: 'haechan-strangers', jungwon: 'jungwon-strangers',
       // batch 101: Kat's realistic Strangers set adds the boys and the household (Strangers-only folders).
       jay: 'jay-strangers', niki: 'niki-strangers', sunghoon: 'sunghoon-strangers', mrsbang: 'mrsbang-strangers', mroh: 'mroh-strangers',
-      auntie: 'auntsong-strangers', pyo: 'pyo-strangers', seo: 'seo-strangers', minseok: 'minseok-strangers', aunt: 'hyesun-strangers' },
+      auntie: 'auntsong-strangers', pyo: 'pyo-strangers', seo: 'seo-strangers', minseok: 'minseok-strangers', aunt: 'hyesun-strangers',
+      dokyun: 'dokyun-strangers', madamkang: 'madamkang-strangers' }, // Nov 12: the Yangs (art 52A / 52B)
     // Kat's realistic Daeboreum outfits (batch 103), back from the parked list; Chaewon and Kazuha are new.
     eventFaces: {
       'strangers-daeboreum': { solar: 'solar-strangers-daeboreum', haechan: 'haechan-strangers-daeboreum', jungwon: 'jungwon-strangers-daeboreum',

@@ -542,6 +542,7 @@
       { n: "Chaewon looked at her index cards for a long time. Then she turned one over, and read from the back of it, flatly, the way you read a rule you didn't write and wouldn't have." },
       { s: 'chaewon', t: "Page forty-one. An officer may be removed by a majority of students present at a properly called hearing. This hearing was properly called. I called it." },
       { s: 'chaewon', t: "Hands for the motion." },
+      { cg: 'epi-h-hands' }, // FEMC-ART-TODO 53A
       { n: "They went up like a field of something, all at once and then more, the first-years at the top first, the frightened ones, and then the forum block in the second-years with the A4 printout held up in the other hand, and then just people, ordinary people, kids from her chemistry class, a boy who'd said *good luck Thursday* in the cafeteria, a girl she'd lent a pen to in October. Solar stood at the council table and watched it happen, and she could see through her own hand again for a second, very faintly, and nobody was looking at her hand anymore. They were looking at their own." },
       { s: 'chaewon', t: "Against." },
       { n: "The crew's row. Cherry with both arms up like a hold-up. Junkyu crying already, holding the glitter sign up with one hand and his other hand up too. Jaehyuk. Asahi, with his hood up, one hand in the air like he was asking to be excused." },
@@ -562,6 +563,7 @@
       { n: "Chaewon counted. She did it properly. Row by row, with a pen, out loud, and nobody laughed this time, and nobody drummed, and it took a very long time, and Solar stood there the whole time because nobody had told her to sit down." },
       { s: 'chaewon', t: "A hundred and thirty-one for. Seventy-three against." },
       { s: 'chaewon', t: "The motion carries. Kim Solar is removed from the office of vice president." },
+      { cg: null },
       { flag: 'epi-h-removed' },
       { n: "Nobody cheered. That was the strangest part. She'd thought, if it happened, they would cheer, the way they'd chanted for the tin. But two hundred people had just voted a girl out of a job because they'd watched her go see-through, and nobody in the gym knew what to do with their hands now that they'd put them down." },
       { n: "Beside her, Jungwon stood up." },

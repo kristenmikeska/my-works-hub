@@ -309,6 +309,7 @@
       { s: 'mom', f: 'neutral', t: "You're up." },
       { s: 'solar', f: 'neutral', t: "Can't sleep." },
       { n: "Her mother was in her dressing gown with a towel round her hair, and she didn't come in. She stood in the doorway and looked at the room the way she looked at a spreadsheet somebody had told her was finished: the beanie on the floor by the bed, which Solar saw at the exact same second she did, and the wet patch on the carpet by the door the shape of two boots, and the dog, sitting up very straight at the end of the bed staring at the closet with his ears all the way forward." },
+      { cg: 'epi-h-jh-closet' }, // FEMC-ART-TODO 54B
       { s: 'mom', f: 'serious', t: "Whose car is that on the corner? It's been there since eleven. Engine running. Your father thinks it's a burglar. I think a burglar would turn the engine off." },
       { choose: [
         { t: "Mrs. Oh's son's. He visits on Saturdays.", flag: 'epi-h-sus-jh-car', then: [
@@ -332,6 +333,7 @@
           { s: 'solar', f: 'flustered', t: "That's what I keep telling him." }
         ] }
       ] },
+      { cg: null },
       { s: 'mom', f: 'neutral', t: "Goodnight, Solar. Lamp off by twelve." },
       { n: "She left the door open behind her. She always left it open when she wasn't finished." },
       { n: "Solar got up and shut it, very slowly, the way you'd shut a door on a sleeping baby or a bomb, and stood with her back against it, and after a long count of ten the closet door slid open and Jihoon unfolded out of it with Cherry's pink bear sitting on top of his head where it had fallen off the shelf, and his boots still clutched to his chest like a man rescued from a flood." },

@@ -307,10 +307,12 @@ window.FEMC_PORTRAIT_SCALE = {
   'seoyeon-hoax': 1.1, // Nov 8: Kat's realistic sheet, sized by face height to the cast
   'minho-hoax': 1.16, // Nov 8: Kat's realistic sheet, sized by face height to the cast
   'jwmom-hoax': 1.02, // Nov 8: Kat's realistic sheet, sized by face height to the cast
+  'dokyun-strangers': 1.09, // Nov 12: Kat's realistic sheet, head matched to Appa's (taesang-strangers)
+  'madamkang-strangers': 1.03, // Nov 12: Kat's realistic sheet, head matched to Eomma's (miyeon-strangers)
 };
 
 /* Per-character drop: moves a portrait down by this share of its height, cropping the bottom (Kat, 2026-10-25). */
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 34;
+window.FEMC_PORTRAIT_V = 35;
