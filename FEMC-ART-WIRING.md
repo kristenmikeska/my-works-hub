@@ -516,3 +516,13 @@ Kat's ruling (Nov 11): Solar disappears at the end of every epilogue (Runners' `
 Kat's spice pass (Nov 11). All four CGs are **already wired** as `{ cg: '<id>' }` / `{ cg: null }` pairs; scene.js's missing-CG guard drops each until its file exists. On install: WebP q86 at native size → `assets/femc/cg/<id>.webp`, a cgFocus in `data/places.js`, an `ALBUM.strangers` tile in date order in `epilogue.js`, DATA_V bump.
 - 58C `epi-s-soft`: `people-spice.js` `epi-s-jungwon-soft` (3/3-3/6 late, route jungwon): `{ cg }` after "She woke because something was looking at her.", `{ cg: null }` after "That's so much worse.". ALBUM in date order (early March).
 - Attachments: all already in Place Prompt Attachments (`CG - style (Strangers).png`, `BG - Wolmido Daeboreum.png`, `BG - Lee House Garden at night.png`, `BG - Solar's Room (Lee House).png`, `BG - Lee House Annex at night.png`, `CG - Haechan (Strangers).png`, `CG - Jungwon (Strangers).png`, `CG - Solar (Strangers).png`).
+
+## 59. The seventh stair (Nov 14)
+
+Game: `minigames/stair.js` (header: optional art under `assets/femc/game/art/minigames/stair/`). Convert with `tools/femc-minigame-art.py` or by hand to WebP.
+- **59A** `stair-title.png` → `title.webp`: already wired (the title card's `<img>`, `object-fit: cover`; the drawn title text sits over it).
+- **59C** `stair-sit.png` → `sit.webp`: already wired (`.st-sit img`, the drawn silhouette hides when it loads). Trim to the figure.
+- **59B** `stair-house.png` → `house.webp`: NOT wired yet (Kat: no placeholder features). When it arrives: an `<image>` at the start of the `.st-map` SVG (viewBox 0 0 330 400), class `.art` on the map hiding the drawn bodies (outer rect, wall lines, door / window / radio / koi / radiator / stove / gate / clock bodies, the stairs' fill), keeping every `.st-glow`, `.st-life`, `.st-me`, `.st-prints`, `.st-sitter`, the worn / odd tread marks, the bulb glow and the clock hands. Kat's picture will not match the guide exactly: re-measure each object's spot in her picture and move the overlays (MAP coordinates, `SPOT`, `STX/STY/STW/STH`) to it, then check a full night in the pane, muted. The layout guide (`Place Prompt Attachments/Stair - house layout guide.png`) is drawn from the current MAP coordinates ×4.
+- **59D** `stair-icons.png` (3 × 2) → `icon-radiator / koi / radio / engine / wind / creak.webp`: NOT wired yet. When it arrives: an `<img>` in each caption chip (`SRC` key → icon; `creak` for the uncovered-creak chip), the text kept.
+- **59E** `stair-end-home.png` / `stair-end-heard.png` → `end-home.webp` / `end-heard.webp`: NOT wired yet. When they arrive: behind the `.mg-end` panel for a win / a heard loss (dawn and quit keep the plain screen), dimmed under the text.
+

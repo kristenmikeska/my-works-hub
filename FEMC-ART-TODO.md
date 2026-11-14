@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 13, after art batch 156):** **strangers heat** (section 58, new Nov 11: 1 CG left for the new romance scenes) · **the endings: she's gone** (section 57, new Nov 11: 3 CGs left, Stay's two and the true ending's) · ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (section 44: Haechan's apron faces; section 47: the listen game's street, its six things, their stickers and Haechan) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
+**To make (updated Nov 14, after art batch 157):** **strangers heat** (section 58, new Nov 11: 1 CG left for the new romance scenes) · **the endings: she's gone** (section 57, new Nov 11: 3 CGs left, Stay's two and the true ending's) · ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (section 44: Haechan's apron faces; section 47: the listen game's street, its six things, their stickers and Haechan; section 59: the seventh stair's title card, the house, the figure, sound icons and two endings) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
 
 ## ⭐ Outfits, HD poses and banners: in `FEMC-SKIN-ART.md` (Nov 7)
 
@@ -227,6 +227,47 @@ Attach: `Haechan (Runners).png`
 Save as: `listen-haechan.png`
 ```
 A waist-up figure in the Persona 3: Solstice style: clean anime illustration, soft cel shading, moody winter night, pink and warm gold accents, plain transparent background (or plain white): the young man in the attached image on a snowy street at night in a long black coat with the collar up and a dark scarf, snowflakes in his messy black hair, his head tilted, eyes half closed, one finger raised as if to say "listen", a small private smile. Facing slightly to the right. No text.
+```
+
+---
+
+## 59. The seventh stair: the strangers night game (Kat, Nov 14)
+
+For the horror game on the Lee house stairs (the glass of water at 2 a.m.). The game draws its own versions until these arrive, so every piece is optional. The look is the realistic strangers style, but drained: near-black, bone white and a little pink, no other colours.
+
+**[ ] 59A. Title card**  
+Attach: `CG - style (Strangers).png`, `BG - Lee House Stairs.png`  
+Save as: `stair-title.png`
+```
+A wide 16:9 title card in the style of the FIRST attached image (soft realistic painting, cinematic light), the staircase of the SECOND attached image at two in the morning: looking up a dark wooden staircase in a big old Korean house from the bottom step, the treads worn pale in the middle, one tread halfway up (the seventh from the top) a little more worn than the rest, a thin line of bone-white moonlight from a small window on the landing falling across it, everything else near-black, a faint pink glow from somewhere below. No people. Quiet, cold, holding its breath. Leave the middle third calm and dark (the game writes THE SEVENTH STAIR over it). Colours only near-black, bone white and a little soft pink. No text.
+```
+
+**[ ] 59B. The house, cut away** (the map on the right of the screen)  
+Attach: `Stair - house layout guide.png`, `CG - style (Strangers).png`, `BG - Lee House Stairs.png`, `BG - Lee House Kitchen.png`, `BG - Lee House Gate at night.png`  
+Save as: `stair-house.png`
+```
+A tall portrait picture (about 1320 × 1600) in the style of the SECOND attached image (soft realistic painting), drained to near-black, bone white and a little soft pink: a cut-away cross-section of a big old Korean house at two in the morning, like a dollhouse with its front wall taken off, seen straight on, laid out EXACTLY like the FIRST attached image (the layout guide: keep every room and object in the same place and the same size; the guide's labels and lines are only a guide and must not appear). Upstairs along the top: a closed bedroom door on the left, a small window on the landing beside it with cold moonlight, a second closed door far right. A long wooden staircase of thirteen steps running diagonally from the landing down to the hall floor, as in the THIRD attached image, the seventh tread from the top a little more worn. Bottom left, the kitchen of the FOURTH attached image: an old stove at the far left, a sink with one empty glass, an old wooden radio on a shelf, a plastic bucket of water with two koi in it on the floor, a cast-iron radiator. Bottom right, the hall: a single hanging bulb (off), a round wall clock, and at the far right edge the iron bars of the front gate of the FIFTH attached image. Below the ground floor, plain dark foundations. No people. Every object dim and shadowed so a soft glow can be added on top of it. No labels, no text.
+```
+
+**[ ] 59C. The figure on the stairs**  
+Attach: `CG - style (Strangers).png`  
+Save as: `stair-sit.png`
+```
+A single figure in the style of the attached image (soft realistic painting), on a plain transparent background (or plain white), nothing touching the edges: someone sitting hunched on a stair in the dark, seen from a few steps below, knees drawn up, arms around them, head bowed so no face can be seen at all, hair falling forward, the whole shape almost black with only a thin bone-white edge of moonlight along the head and shoulders. Still, wrong, patient. Not gory, not a monster: only a person-shaped dark who shouldn't be there. No text.
+```
+
+**[ ] 59D. The house's sounds** (small icons beside each caption)  
+Save as: `stair-icons.png`
+```
+A 3 × 2 sheet of six small separate icons, simple and elegant, drawn in thin bone-white lines with a soft pink glow on a near-black background, each centred in its cell with clear space around it: 1 a cast-iron radiator with a little knock spark, 2 a plastic bucket with a koi tail breaking the water, 3 an old wooden radio with two musical notes, 4 two car headlights behind iron gate bars, 5 a small window with a curl of wind, 6 one wooden stair tread with a crack and a small creak line. In reading order. No text.
+```
+
+**[ ] 59E. The two endings** (the end screen)  
+Attach: `CG - style (Strangers).png`, `BG - Lee House Stairs.png`, `CG - Solar (Strangers).png`  
+Save as: `stair-end-home.png`, `stair-end-heard.png` (two pictures, same prompt beginning)
+```
+A wide 16:9 picture in the style of the FIRST attached image (soft realistic painting, cinematic light). HOME: the young woman of the THIRD attached image back in bed in the dark, the covers pulled up to her chin, a full glass of water on the bedside table catching a little moonlight, her eyes still open, the faintest relieved smile; warm, quiet, safe; near-black, bone white and a soft warm pink. No text.
+HEARD: the landing at the top of the staircase of the SECOND attached image, seen from halfway up the stairs: the landing light has just come on, a bare bulb in a pale glass shade glowing bone white, the light switch on the wall beside it, and nobody there at all, the corridor beyond empty and long. Cold, still, the light too bright. Near-black, bone white and a little pink. No people. No text.
 ```
 
 ---
