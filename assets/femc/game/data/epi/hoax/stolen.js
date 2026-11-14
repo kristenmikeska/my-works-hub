@@ -210,8 +210,10 @@
         { s: 'jihoon', f: 'serious', t: "You picked him. That's fine. I'm not asking you to pick me. I'm not stupid. I've seen him look at you, it's disgusting, it's like watching a calculator fall in love." },
         { s: 'jihoon', f: 'sad', t: "I'm asking for the lights. One night of the lights. That's not stealing, Sol. That's— sharing. It's Christmas. It's basically charity." },
         { n: "The tunnel was behind them in the mirror, still blinking, bright, dark. His face was half in it. She looked at him and thought, very clearly, the way you think *I'm going to fall* half a second before you do, that she was going to remember this as his fault, later. That she was going to tell herself he'd moved first." },
+        { cg: 'epi-h-jh-pond' }, // FEMC-ART-TODO 54A
         { n: "He didn't. She did. She leaned across the gearstick and put her mouth on his, and he made a sound like she'd hit him, and then his hand was at her jaw, cold from the wheel, and he was kissing her back like he'd been holding his breath since the ninth grade and had only just been told he was allowed to let it out." },
         { n: "It tasted like the cocoa he always drank and the gum he chewed to cover the other thing. His thumb found the stud on the side of her nose, the one that matched his, and stayed there. The heater roared. The pond did nothing. In her pocket, against her hip, the can was cold and shut, and her phone was next to it, and neither of them made a sound." },
+        { cg: null },
         { n: "He pulled back first. Barely. His forehead stayed against hers." },
         { s: 'jihoon', f: 'neutral', t: "...Okay. That was a mistake." },
         { s: 'solar', f: 'sad', t: "Yeah." },
@@ -723,6 +725,7 @@
         { n: "He was waiting outside the council room. Not hiding round the corner by the stairs, the way he'd waited for her every time this year that he'd waited for her at all. Right outside the door, leaning on the lockers opposite with his ankles crossed and his school jacket open, in full view of the hallway and the window in the council-room door, holding two melon bars, in January, in a heated building, like a boy who'd decided to make a point and was going to make it if it melted." },
         { s: 'jihoon', f: 'happy', t: "Vice President. Your ice cream. As is tradition." },
         { n: "Behind her the door was still open, and behind the door the whole council had gone completely silent, the way a classroom goes silent when a teacher walks in, except nobody had walked in. Somebody had just walked out. Her." },
+        { cg: 'epi-h-jh-hallway' }, // FEMC-ART-TODO 54C (Jungwon's already in the council-room doorway in the picture)
         { n: "Jihoon held out the second melon bar. Then, when she'd taken it, he held out his other hand, empty, palm up, in the middle of the hallway, the way she'd held out hers to him at the party for the bag. And he waited. He looked her in the eye and waited." },
         { choose: [
           { t: "(Take his hand. Walk down the main hall.)", flag: ['epi-h-jh-open', 'epi-h-heat-jh-hall'], then: [
@@ -733,6 +736,7 @@
             { n: "She took it. They went out the back way, by the gym, past the doors where the half-finished decorations were still taped, and nobody saw them but the caretaker and a crow on the bins, and that was fine. That was enough. She hadn't been sure there'd ever be a way she was allowed to walk out of a building holding his hand. It turned out there were two." }
           ] }
         ] },
+        { cg: null },
         { n: "But the council saw. The council had been watching through the window in the door the whole time, seven faces stacked in the little square of glass like a totem pole." },
         { s: 'niki', f: 'happy', t: "LMAOOO." },
         { s: 'jake', f: 'surprised', t: "Wait. Wait. What about jolar? I have a *fan account*. It has *eleven followers*. One of them's a *dog*." },

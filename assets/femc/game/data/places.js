@@ -409,7 +409,7 @@ window.FEMC_GAME_PLACES = {
     // Nov 12 2026 (FEMC-ART-TODO 51, 52C-E, 53A, 54B, 55, 57A-B, 58A/B/D)
     'epi-h-xmas-dishes': '45% 30%', 'epi-h-xmas-desk': '60% 30%', 'epi-h-xmas-rug': '62% 50%', 'epi-h-xmas-presents': '48% 40%', 'epi-h-eve-call': '74% 40%',
     'epi-r-piano': '48% 35%', 'epi-s-hwatu': '48% 45%', 'epi-s-seojun-photo': '60% 45%', 'epi-s-yang-dinner': '55% 35%', 'epi-s-camellias': '55% 40%',
-    'epi-h-hands': '50% 40%', 'epi-h-jh-closet': '72% 40%', 'epi-h-jw-door': '45% 35%', 'epi-h-jw-curb': '55% 45%', 'epi-s-gone': '50% 45%', 'epi-h-gone': '50% 40%',
+    'epi-h-hands': '50% 40%', 'epi-h-jh-closet': '72% 40%', 'epi-h-jh-pond': '50% 40%', 'epi-h-jh-hallway': '50% 35%', 'epi-h-jw-door': '45% 35%', 'epi-h-jw-curb': '55% 45%', 'epi-s-gone': '50% 45%', 'epi-h-gone': '50% 40%',
     'epi-s-viking': '30% 40%', 'epi-s-persimmon': '30% 40%', 'epi-s-sweatshirt': '42% 30%'
   },
   /* Music (assets/femc/music/<file>.mp3) by mood. Scenes pick a mood; screens use the `screens` map.

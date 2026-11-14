@@ -43,7 +43,7 @@
 .gsb-page.flip { grid-template-columns: 1fr 46%; }
 .gsb-page.flip .gsb-polaroid { order: 2; }
 .gsb-polaroid { position: relative; margin: 0; padding: 4% 4% 0; background: #fff; box-shadow: 0 10px 24px rgba(58, 20, 40, .28), 0 1px 2px rgba(0, 0, 0, .2); transform: rotate(var(--tilt, -2deg)); }
-.gsb-photo { aspect-ratio: 1; overflow: hidden; background: #2a1320; }
+.gsb-photo { position: relative; aspect-ratio: 1; overflow: hidden; background: #2a1320; }
 .gsb-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .gsb-nophoto { width: 100%; height: 100%; display: grid; place-items: center; align-content: center; gap: 8px; padding: 10%; text-align: center; background: linear-gradient(160deg, color-mix(in srgb, var(--wc) 55%, #2a1320), #14070f); color: #fff; }
 .gsb-nophoto b { font: italic 900 clamp(18px, 2.4vw, 32px)/1.1 var(--cond, sans-serif); }
@@ -56,6 +56,12 @@ i.gsb-tape.t1 { background: repeating-linear-gradient(45deg, rgba(20, 7, 15, .75
 i.gsb-tape.t2 { background: rgba(255, 220, 235, .8) radial-gradient(circle, rgba(255, 79, 158, .7) 2px, transparent 2.5px) 0 0 / 10px 10px; }
 .gsb-tape.tl { left: -6%; transform: rotate(-24deg); }
 .gsb-tape.tr { right: -6%; transform: rotate(22deg); }
+.gsb-clip { position: absolute; top: -9%; left: 18%; width: 9%; z-index: 2; transform: rotate(-6deg); filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .25)); }
+.gsb-corner { position: absolute; width: 15%; z-index: 2; filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .3)); }
+.gsb-corner.tl { left: 0; top: 0; }
+.gsb-corner.tr { right: 0; top: 0; transform: scaleX(-1); }
+.gsb-corner.bl { left: 0; bottom: 0; transform: scaleY(-1); }
+.gsb-corner.br { right: 0; bottom: 0; transform: scale(-1, -1); }
 .gsb-text small { display: block; font: italic 800 13px/1.2 var(--cond, sans-serif); letter-spacing: .12em; text-transform: uppercase; color: color-mix(in srgb, var(--wc) 70%, #3a1428); }
 .gsb-soon { color: #8a6a7a; letter-spacing: .04em; }
 .gsb-text h2 { margin: 8px 0 14px; font: italic 900 clamp(26px, 3.2vw, 46px)/1.05 var(--cond, sans-serif); color: var(--ink); }
