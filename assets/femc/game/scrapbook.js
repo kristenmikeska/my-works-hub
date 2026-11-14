@@ -11,7 +11,7 @@
    half = next, ← / click the left half = back, C = chapters list, S or Esc = skip to the epilogue. Page turns are a lift and
    slide (a fade under reduced motion); a soft paper sound plays through the game's sfx when it has one. */
 window.FemcScrapbook = (() => {
-  const W = window, V = 1; // classes gsb-* (not gs-*: the dialogue owns those)
+  const W = window, V = 2; // classes gsb-* (not gs-*: the dialogue owns those)
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const base = () => (W.FemcGame && W.FemcGame.base) || (document.querySelector('script[src*="game/scrapbook.js"]')?.src.split('assets/')[0]) || '';
   const NAME = { runners: 'Runners', strangers: 'strangers', hoax: 'HOAX' };

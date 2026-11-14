@@ -43756,6 +43756,734 @@
    "destination": "assets/femc/game/art/minigames/trip/sky.webp",
    "conversion": "tools/femc-minigame-art.py: RGB q86",
    "placement": "finale sky (56N)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/hwatu-back.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "75a1e20606e4b83380770ce2b524731a83dca8e683635fbbde199134ddc6f33f",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/hwatu/back.webp",
+   "conversion": "tools/femc-minigame-art.py",
+   "placement": "hwatu back (49)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/hwatu-felt.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "02119531bd849c79412c42f2650792657c4c326dc269e94201dccd4d61009b4b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/hwatu/felt.webp",
+   "conversion": "tools/femc-minigame-art.py",
+   "placement": "hwatu felt (49)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/hwatu-month-05.png",
+   "size": [
+    1448,
+    1086
+   ],
+   "sha256": "6aef07fee58866179239f2fa07e32110ad3e0066fb7c514d59c2b72b080b81d3",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/hwatu/cards/05*.webp",
+   "conversion": "tools/femc-minigame-art.py: 4 cards, keyed, 240x360",
+   "placement": "hwatu month 05 (49)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/hwatu-month-08.png",
+   "size": [
+    1448,
+    1086
+   ],
+   "sha256": "306d50b9fe909f0eb8f766015305bd5aa8f21c9f54256b9db9e382785f0e9620",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/hwatu/cards/08*.webp",
+   "conversion": "tools/femc-minigame-art.py: 4 cards, keyed, 240x360",
+   "placement": "hwatu month 08 (49)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/hwatu-month-09.png",
+   "size": [
+    1448,
+    1086
+   ],
+   "sha256": "d8fda9f1d77eaadb3dfe28b274d52cb931119836e29301a2497ffec2129f0461",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/hwatu/cards/09*.webp",
+   "conversion": "tools/femc-minigame-art.py: 4 cards, keyed, 240x360",
+   "placement": "hwatu month 09 (49)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/hwatu-month-10.png",
+   "size": [
+    1448,
+    1086
+   ],
+   "sha256": "96233e88ffb0cbed73e0f74c456b98b3daed38cc8dfdaa1a72b4e93a4a03ddc3",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/hwatu/cards/10*.webp",
+   "conversion": "tools/femc-minigame-art.py: 4 cards, keyed, 240x360",
+   "placement": "hwatu month 10 (49)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/hwatu-month-11.png",
+   "size": [
+    1448,
+    1086
+   ],
+   "sha256": "ffa6dbed43bf643909006263ba9d06bdf2855be7d3410fd35fcaff5bc9de8ff6",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/hwatu/cards/11*.webp",
+   "conversion": "tools/femc-minigame-art.py: 4 cards, keyed, 240x360",
+   "placement": "hwatu month 11 (49)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/hwatu-month-12.png",
+   "size": [
+    1448,
+    1086
+   ],
+   "sha256": "339e4a12a0f3c773880890cff68a29e9ac5e98655fe801e160c6dd0b7766beb8",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/hwatu/cards/12*.webp",
+   "conversion": "tools/femc-minigame-art.py: 4 cards, keyed, 240x360",
+   "placement": "hwatu month 12 (49)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/hwatu-title.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "9462f0d2687a5e3f24bebef3634c13341019d0b85f092a2b36454237d0f1d654",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/hwatu/title.webp",
+   "conversion": "tools/femc-minigame-art.py",
+   "placement": "hwatu title (49)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-01-not-harvard.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "1a2c920a28f2c8b63ae0030b5de36e6175b6d1da1f73c3d9d5f1deba53be459a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/01.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 1 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-02-the-tour.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "e1a6be0e1702ff84cf48c4d5657684c51807417f76f53e5742f618ee8fbcc68c",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/02.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 2 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-03-grandmaster-3.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "45b63e8dfe22961550e297348d93056af8a6cf8f3dbde1c5599cd776c0d1e1fa",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/03.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 3 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-04-my-new-support.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "fefb8632014b3283625165a6f9390f255ef86528cd739cfda9fe0c68c4dac358",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/04.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 4 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-05-wrong-door-upstairs.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "8a7ef9f08fbe68aa8da9ace79abb4bd228d5bc8a184a3694929cab74b91f8ba7",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/05.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 5 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-06-moonlight-by-the-pool.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "d8e487b8148d075ec05c7f342cf8989d199d03f596c405727f34553b7d8e1fbc",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/06.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 6 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-07-they-werent-right.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "5f264b2708d7b3861b610282777d7e0eb3d544dea7411ef9c9face7c0472fe2d",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/07.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 7 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-08-the-lee-siblings.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "5a05c8bebabd640c027e158dd9ce32290f579b4577300a276c9d8d531bbad094",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/08.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 8 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-09-this-fits-you-better.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "f3c5371b55054774582ac0a9a0f557389f69a53a66416d1746726354d8c80819",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/09.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 9 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-10-a-year-ago.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "1e25ee3db772f79c197cf3ae08b99933337ff388b8f421af47faa856ff87cfc3",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/10.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 10 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-11-masters-1.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "80f6e46b053bd31565dd4d87b401ce9597a3f4398c93846da07ec4eb071aef43",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/11.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 11 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-12-muse.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "8cd7ff51c36bec2254cb68a3fd253d81f2f0251ee0dfc8e007048d71df1bdc29",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/12.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 12 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-13-bodyguard-mark.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "442efa69e9ac0a90d941fabea35affe5b1f2e9a49d5be498e637c84d117ade5c",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/13.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 13 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-14-watch-who-you-believe.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "37f8d69e722c30c9acc10553a6418f5ef7b52f33eaf6b05e6262797b9a60983a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/14.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 14 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-15-the-rooftop.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "258a49d361321bc0591d0aa78977303c9774b6164590d6015dc97babb509fb32",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/15.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 15 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-16-the-unfinished-track.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "71300490cfdf12b5389e1a56852a82a87a999201b1417c2f2e5d2b4d6d0f1f2b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/16.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 16 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-17-donghyuck.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "167ae677673857a944233487c387803fcbe869a3d3b3d849b29d7dda636a3f72",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/17.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 17 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-18-front-door.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "34d3bc756629604a3e64d1b4b1bc233b46bf71e162a543e923f56ad95976803b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/18.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 18 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-19-you-were-right-mark.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "40f6d8d85ce6e83b8779d77df928fbdc7bd1b8633f8198944c6773ca69bcad5e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/19.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 19 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-20-mvp.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "4681d5a327f23818c8a12af38c339dce0b5406e9179f59287b7d49b81d461765",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/20.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 20 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-21-two-decibels.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "c655a32e52c7a7230acf7c218914bbc5da4cf55f56da910f4506b46b029f3990",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/21.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 21 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-22-the-balcony.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "7419d6953282ed1d10506d399a7fee46996b23a70353a7c115b726cdda395e2a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/22.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 22 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-23-the-treasurer.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "d0ae672d69fe125aba0b1f973e149f02698fa7f716b8de354980f666f7141fef",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/23.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 23 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-24-just-want-an-in.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "2c4e1d5c1089eba129df07c0a23a2a66beceab49e7aef47106efa7486be14af0",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/24.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 24 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-25-was-it-a-game.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "0dd205e4046ed03b06931ba19d8332cb39480f50cdb1a1d63218f01f1812a0e0",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/25.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 25 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-26-august.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "e708f3e5493044398755db22bd686918f8a07465436f0a42bd9e1c97ba58900b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/26.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 26 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-27-voices-at-11pm.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "529dbf80da9bba22bd93fee16fba5d5849994ad1f1010d301ac7650167f176ef",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/27.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 27 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-28-for-a-while.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "c0c71b20c17cbe2c2c68e287016b6f5d31313218159a1bd990dd5506cbac1ce6",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/28.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 28 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-29-full-moon-2am.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "13e6901ba70dcb0e1964cdd25a264a7ccab48642188d925e04a00764b3e35eaa",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/29.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 29 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-30-room-without-witnesses.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "e64a8622a3183a98bce2c5cec91bc83798a08bd1a8163c6daaf882c179b5d442",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/30.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 30 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-31-suns-in-november.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "4a6eabb1c4fd01ada5a89d8e5290ceab73afbe065ed608f28bec9f7c6ca397aa",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/31.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 31 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-32-the-one-that-was-true.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "11c9cbf52585141e5ecf9c4b4d3736405587e8a1c7c2983416da0b6d7cf56f3f",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/32.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 32 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-33-youre-supposed-to-count.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "f0a0c3646d948fa2024781511b7e6ed595c1db10877773f8791580723c916aa6",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/33.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 33 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-34-cold-water.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "ac84e9c457592875b68003a5164ef1449c7fc12ebcdb6e975bddbafc83748fb0",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/34.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 34 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-35-danielle-never-heard-this.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "c20e4e4f6a37c5f2229e8bf26ce95522bde2bfef18191bbbed9d592673ab4efb",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/35.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 35 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-36-sit-down.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "a7f77a696958ae5892637b5348830440b2b36266be559412a19325dc4a33f52d",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/36.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 36 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-37-every-single-one-of-you.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "2ad5f5c13c40215188cfad80def84723b1777e68f068171e103e02771a643e5e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/37.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 37 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-38-the-unsanitized-version.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "eba6b45151a06184cf1edc74063715dc56e579aff53b7e33817789ced482d6c9",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/38.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 38 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-39-thats-worse.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "737d5ba5e67d81864d5b3a5eeda01f36d6f451bd6fb835791ac2ea377bd3b814",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/39.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 39 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-runners-40-the-party-she-chose-to-miss.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "cb7376fd7d7e59e3d8037e4d2803b2e91dfa677c8c318dc0a8b72167b70d433d",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/runners/40.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook runners page 40 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-strangers-01-back-gate.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "0c7dd59976a79fb31e03affca5eef980692cc3f10cb9e8c057864a04dcb2e520",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/strangers/01.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook strangers page 1 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-strangers-02-the-toast.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "0720496f4d7e74e534d3063001e96d3a9b37bf2b1f5cf092ec6f8bb2b1901caa",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/strangers/02.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook strangers page 2 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-strangers-03-the-boy-who-burned-my-son.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "bf5415ff5cd947e22f0bbfa62ff2488fa722e41b9cf197be36aaed29ee02ce72",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/strangers/03.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook strangers page 3 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/scrap-strangers-04-stay-here-solar.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "4cf209f4abd8070ebb5055904d20095463eb85852b88dc74fe7dda8a8a98355a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/scrapbook/strangers/04.webp",
+   "conversion": "tools/femc-scrapbook.py art",
+   "placement": "scrapbook strangers page 4 (46)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/sing-haechan-poses.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "aaddfe1aeacf1c016045c0ee59a7bc338b3c00aa051ece8c74d44a11c1b20491",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/sing/haechan-idle..miss.webp",
+   "conversion": "tools/femc-minigame-art.py",
+   "placement": "the booth, his songs (45K-M)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/sing-icon-haechan.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "e1783b5929798866f01abd17e29c1e46dc4d8bacc049da34a502488ff366fcd2",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/sing/icon-haechan.webp",
+   "conversion": "tools/femc-minigame-art.py",
+   "placement": "the booth, his songs (45K-M)"
+  },
+  {
+   "batch": 155,
+   "source": "New Adds/sing-solar-bop.png",
+   "size": [
+    1774,
+    887
+   ],
+   "sha256": "5625fd0f0581e88a5c0d7f49941dc2f555b3e426b16c202d912e376d5b6bcc8e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/sing/solar-bop-0/1.webp",
+   "conversion": "tools/femc-minigame-art.py",
+   "placement": "the booth, his songs (45K-M)"
   }
  ],
  "batch1Validation": {

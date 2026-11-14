@@ -18,7 +18,8 @@ Regionals -> assets/femc/game/art/minigames/ow/<name>.webp (New Adds/mg-ow-<name
 Dumplings -> art/minigames/cook/ (New Adds/cook-<name>.*): counter, pan RGB; hands transparent; icons and stamps are sheets.
 The booth -> art/minigames/sing/ (New Adds/sing-<name>.*): booth, haechan-desk, title RGB; the rest transparent; sheets below.
 Hwatu -> art/minigames/hwatu/cards/<MM><type>.webp (New Adds/hwatu-month-MM.*): 4 cards left to right in hwatu.js MONTHS ty order,
-  keyed, trimmed, 240 x 360. HWATU_FILE maps Kat's file number to the deck's month where they differ (her 05 is the peony, 06 the boar).
+  keyed, trimmed, 240 x 360. HWATU_FILE maps Kat's file number to the deck's month where they differ (empty since Nov 13).
+  hwatu-back (card back: keyed, trimmed, 240 x 360), hwatu-felt (tile, RGB 768), hwatu-title (RGB 1920) -> art/minigames/hwatu/.
 Café -> art/minigames/cafe/ (New Adds/cafe-<name>.*): bg-*, title RGB q86; sheets in CAFE_SHEETS; faces (already transparent) cut on an
   even grid into square 480 px cells (CAFE_FACES; cafe-regular-msbae -> the game's id mrsbae); cafe-downloads is Kat's name for the toppings sheet.
 The Trip -> art/minigames/trip/ (New Adds/trip-<name>.*): ground (RGB, <= 2400 wide), title / sky (RGB 1920) q86; props 2 x 2 (TRIP_SHEETS);
@@ -90,7 +91,8 @@ CAFE_FACES = {  # transparent face sheets, even grid -> square cells (cols, rows
     'sunoo-apron-portraits': (3, 2, 'sunoo-apron', ['neutral', 'happy', 'surprised', 'flustered', 'sad', 'serious']),
 }
 CAFE_REGULAR_ID = {'msbae': 'mrsbae'}  # Kat's file id -> cafe.js REGULARS id
-HWATU_FILE = {5: 6, 6: 7}  # hwatu-month-05 is drawn as the peony (butterflies, blue ribbon), -06 as bush clover (boar): the deck's months 06 and 07
+HWATU_FILE = {}  # Kat's file number -> deck month where they differ. Nov 13: none now. (Added to Game/hwatu-month-05 / -06 from Nov 12 are June / July:
+#   to re-cut those two, add {5: 6, 6: 7} back for that run only.)
 TRIP_SHEETS = {
     'props': (2, 2, ['tree', 'willow', 'lamp', 'bench'], None, {}),
 }
@@ -310,6 +312,13 @@ def main():
         print(f.name, '->', name)
     HW = ART / 'hwatu' / 'cards'; HW.mkdir(parents=True, exist_ok=True)
     for f in files('hwatu-month-'): hwatu_month(f, HW)
+    for f in files('hwatu-'):
+        name = f.stem[len('hwatu-'):]; im = Image.open(f); dst = ART / 'hwatu' / f'{name}.webp'
+        if name == 'back': trim(alpha(im)).resize((240, 360), Image.LANCZOS).save(dst, 'WEBP', quality=90, alpha_quality=100)
+        elif name == 'felt': im.convert('RGB').resize((768, 768), Image.LANCZOS).save(dst, 'WEBP', quality=86)
+        elif name == 'title': fit(im.convert('RGB')).save(dst, 'WEBP', quality=86)
+        else: continue
+        print(f.name, '->', dst.relative_to(ROOT))
     TRIP = ART / 'trip'; TRIP.mkdir(parents=True, exist_ok=True)
     for f in files('trip-'):
         name = f.stem[len('trip-'):]; im = Image.open(f)

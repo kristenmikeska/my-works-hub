@@ -1,2 +1,2 @@
 /* Which scrapbook pictures exist (tools/femc-scrapbook.py art writes this). */
-window.FEMC_SCRAPBOOK_ART = [];
+window.FEMC_SCRAPBOOK_ART = ["runners/01", "runners/02", "runners/03", "runners/04", "runners/05", "runners/06", "runners/07", "runners/08", "runners/09", "runners/10", "runners/11", "runners/12", "runners/13", "runners/14", "runners/15", "runners/16", "runners/17", "runners/18", "runners/19", "runners/20", "runners/21", "runners/22", "runners/23", "runners/24", "runners/25", "runners/26", "runners/27", "runners/28", "runners/29", "runners/30", "runners/31", "runners/32", "runners/33", "runners/34", "runners/35", "runners/36", "runners/37", "runners/38", "runners/39", "runners/40", "strangers/01", "strangers/02", "strangers/03", "strangers/04"];
