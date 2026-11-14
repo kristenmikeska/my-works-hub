@@ -73,3 +73,13 @@ Save as: `epi-r-nyc-elevator.png` (new; one picture works day and night, since i
 ```
 A wide 16:9 background painting, no people, in the art style of the attached images (semi-realistic digital painting, soft painterly rendering, no outlines or line art). The inside of a small, old, very expensive passenger elevator in a pre-war Fifth Avenue apartment building in New York, seen from just inside the open doors looking toward the back: dark polished wood panelling with thin brass trim, a tall mirror covering the back wall, a narrow built-in bench along one side upholstered in deep green velvet that looks like nobody has ever sat on it, a brass floor-number panel with small round buttons and an old brass dial above the doors, a soft carpet in dark green and gold, a small ceiling light with a warm frosted glass shade. The mirror reflects the empty elevator and a sliver of the marble lobby behind. Warm, hushed, polished until it looks wet, a little claustrophobic. No text, no readable numbers, no logos, no people, and no figure in the mirror.
 ```
+
+**Found Nov 14** (the last Runners picture still in the old outlined style).
+
+**[ ] R29. Bird Library** (the study spot until 12/20)  
+Attach: `Remake - epi-r-bird-library.png` first, then `BG - style 1 (Runners).png`, `BG - style 2 (Runners).png`  
+Save as: `epi-r-bird-library.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: realistic, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources. Keep the layout, the camera angle and every object where they are; only the drawing style changes. Syracuse University's Bird Library in December during finals: long study tables crowded with laptops, books, coats and backpacks, tall windows with snow outside, glass study rooms along one side, warm lamps against the cold blue window light. Leave out all people. No readable text. 16:9, high resolution.
+```
+

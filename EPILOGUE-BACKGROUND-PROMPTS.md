@@ -12,12 +12,14 @@ Kat, Nov 6 2026: the strangers and HOAX epilogues' older backgrounds redrawn in 
 
 New places that still borrow another picture (Jihoon's car, Yeobo's back door) are already on `FEMC-ART-TODO.md` (36G, 36H), so they aren't repeated here. (Front Step at night, Cherry's room, Hyunsuk's car, the tent bar, Sinpo, the dance studio and the harbor by day are in, art batch 143.)
 
-**What's left** (Nov 7): HOAX and strangers are done except the strangers sunroom (S14, low) and the mudflats (S23, S24, added Nov 14). Next is Stay (St1–St10), most-used first: St1 the dorm lounge, then St2, St3, St5.
+**What's left** (Nov 14): Kat found the strangers mudflats still in the old outlined style, and a full check found 13 more strangers pictures and 13 HOAX ones like it (S23-S37, H22-H34, below each world's list), plus the strangers sunroom (S14). Then Stay (St1-St10). Next is Stay (St1–St10), most-used first: St1 the dorm lounge, then St2, St3, St5.
 
 **How to use these**
 - Every prompt is the "describe it" kind (Option 2). Attach **only** the world's two style pictures, then paste the prompt. They're all in `Place Prompt Attachments`:
   - HOAX: `BG - style 1 (HOAX).png` and `BG - style 2 (HOAX).png`
   - strangers: `BG - style 1 (Strangers).png` and `BG - style 2 (Strangers).png`
+  - **New since Nov 14:** the old style pictures themselves have outlines, so the open items now use the newer remakes: `BG - style 3 / 4 (Strangers).png` (the harbor by day, her room) and `BG - style 3 / 4 (HOAX).png` (the hallway, Yeobo's at night). Each item says which.
+  - **Remakes of an old picture:** attach `Remake - <name>.png` FIRST (the old picture, so the layout matches the scenes), then the two style pictures.
   - Stay: each item lists its own attachments.
 - **Night versions:** make the day one first. Then attach **your new day picture first** and the two style pictures after it, and paste the night prompt. It keeps the room the same and changes only the light.
 - **Save as** the name given (PNG is fine) and drop it in New Adds. Claude swaps it in. Names that already exist in the game replace the old picture; a "(new)" name gets wired in as an extra.
@@ -58,6 +60,99 @@ Save as: `epi-h-front-step-day.png` (new)
 Paint the SAME place as the FIRST image by day, in the art style of the SECOND and THIRD images. Keep the house front, the step, the door, the railing and the camera angle exactly as they are; change only the time: a bright grey-white January afternoon, snow on the step and the hedge, the porch light off, soft daylight with gentle shadows, a few Christmas lights still strung along the gutter, unlit.
 ```
 
+**Still in the old outlined style (found Nov 14).** Most-used first. Every one replaces the old picture under the same name.
+
+**[ ] H22. The winter street, night** (outside the convenience store; many scenes)  
+Attach: `Remake - epi-h-winter-street.png` first, then `BG - style 3 (HOAX).png`, `BG - style 4 (HOAX).png`  
+Save as: `epi-h-winter-street.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. A Korean town in late December or early January: snow on the ground, Christmas lights still up. Night, snow falling, the convenience store's warm windows, the row of vending machines glowing, string lights over the street.
+```
+
+**[ ] H23. The winter street, day** (make H22 first)  
+Attach: your new `epi-h-winter-street.png` first, then `BG - style 3 (HOAX).png`, `BG - style 4 (HOAX).png`  
+Save as: `epi-h-winter-street-day.png` (replaces the old one)
+```
+Paint the SAME place as the FIRST image by day, in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials. Keep the place, the layout, the camera angle and every object exactly as they are; change only the time: a grey-white winter afternoon, the vending machines and the store's lights dim in daylight, the string lights unlit, tire tracks in the snow. Leave out all people. No readable text. 16:9, high resolution.
+```
+
+**[ ] H24. Jungwon's street, day** (his block)  
+Attach: `Remake - epi-h-jungwon-street-day.png` first, then `BG - style 3 (HOAX).png`, `BG - style 4 (HOAX).png`  
+Save as: `epi-h-jungwon-street-day.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. A Korean town in late December or early January: snow on the ground, Christmas lights still up. A grey snowy afternoon, quiet houses with walls and gates, a parked car, bare trees, the hills behind.
+```
+
+**[ ] H25. Jungwon's street, night** (make H24 first)  
+Attach: your new `epi-h-jungwon-street-day.png` first, then `BG - style 3 (HOAX).png`, `BG - style 4 (HOAX).png`  
+Save as: `epi-h-jungwon-street.png` (replaces the old one)
+```
+Paint the SAME place as the FIRST image at night, in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object exactly as they are; change only the time. Leave out all people. No readable text. 16:9, high resolution. Deep-blue snowy night, warm lit windows, one streetlamp, footprints in the snow.
+```
+
+**[ ] H26. The car** (the inside of the car at night)  
+Attach: `Remake - epi-h-car.png` first, then `BG - style 3 (HOAX).png`, `BG - style 4 (HOAX).png`  
+Save as: `epi-h-car.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. A Korean town in late December or early January: snow on the ground, Christmas lights still up. Night, snow on the windscreen, the town's lights blurred outside, the dashboard glowing.
+```
+
+**[ ] H27. The Christmas lights** (the light tunnel in the plaza)  
+Attach: `Remake - epi-h-christmas-lights.png` first, then `BG - style 3 (HOAX).png`, `BG - style 4 (HOAX).png`  
+Save as: `epi-h-christmas-lights.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. A Korean town in late December or early January: snow on the ground, Christmas lights still up. Night: the arching tunnel of Christmas lights, the snowman, the light-up deer, a fountain with snow on it.
+```
+
+**[ ] H28. The ice rink** (the outdoor rink)  
+Attach: `Remake - epi-h-ice-rink.png` first, then `BG - style 3 (HOAX).png`, `BG - style 4 (HOAX).png`  
+Save as: `epi-h-ice-rink.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. A Korean town in late December or early January: snow on the ground, Christmas lights still up. Bright white winter daylight, the rink's ice scored with skate marks, the rental counter, the glass wall and the snowy town beyond.
+```
+
+**[ ] H29. The library** (the school library)  
+Attach: `Remake - epi-h-library.png` first, then `BG - style 3 (HOAX).png`, `BG - style 4 (HOAX).png`  
+Save as: `epi-h-library.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. A Korean town in late December or early January: snow on the ground, Christmas lights still up. Grey snow light through tall windows, long study tables with open books, shelves, a radiator, quiet.
+```
+
+**[ ] H30. The school rooftop** (at night)  
+Attach: `Remake - epi-h-rooftop.png` first, then `BG - style 3 (HOAX).png`, `BG - style 4 (HOAX).png`  
+Save as: `epi-h-rooftop.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. A Korean town in late December or early January: snow on the ground, Christmas lights still up. A snowy school rooftop at night behind a high wire fence, the town's lights spread below, the stair door with one lamp.
+```
+
+**[ ] H31. Outside the party** (the house at night)  
+Attach: `Remake - epi-h-party-outside.png` first, then `BG - style 3 (HOAX).png`, `BG - style 4 (HOAX).png`  
+Save as: `epi-h-party-outside.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. A Korean town in late December or early January: snow on the ground, Christmas lights still up. A big house at night with coloured party light in the windows, Christmas lights along the porch, snow on the steps, a streetlamp.
+```
+
+**[ ] H32. The gym, decorated** (the hearing and the dance)  
+Attach: `Remake - epi-h-gym-hearing.png` first, then `BG - style 3 (HOAX).png`, `BG - style 4 (HOAX).png`  
+Save as: `epi-h-gym-hearing.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. A Korean town in late December or early January: snow on the ground, Christmas lights still up. The school gym decorated in blue and silver: balloon arch, ribbons, string lights, rows of folding chairs, a podium.
+```
+
+**[ ] H33. The gym at midnight** (make H32 first)  
+Attach: your new `epi-h-gym-hearing.png` first, then `BG - style 3 (HOAX).png`, `BG - style 4 (HOAX).png`  
+Save as: `epi-h-gym-midnight.png` (replaces the old one)
+```
+Paint the SAME place as the FIRST image at night, in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object exactly as they are; change only the time. Leave out all people. No readable text. 16:9, high resolution. Midnight: the gym dark, the decorations still up, only the green exit signs and blue light from the high windows, a ladder left out, balloons on the floor.
+```
+
+**[ ] H34. The gym (School · Gym)** (the plain gym place; same gym as H32)  
+Attach: `Remake - flashback-hamlim-gym.png` first, then `BG - style 3 (HOAX).png`, `BG - style 4 (HOAX).png`  
+Save as: `flashback-hamlim-gym.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. A Korean town in late December or early January: snow on the ground, Christmas lights still up. The same decorated blue-and-silver gym as H32, by evening light.
+```
+
 ## strangers (Incheon)
 
 All in but the sunroom (art batch 144, Nov 7), plus the mudflats by day and at midnight (S23, S24), added Nov 14.
@@ -65,7 +160,7 @@ All in but the sunroom (art batch 144, Nov 7), plus the mudflats by day and at m
 The Lee house is the family's big old house on a hill in old Incheon, built in the 1970s: a high wall with a gatehouse, a gravel drive up to the front steps, a sunroom, a front room with a piano, a swinging kitchen door, front and back stairs, a garage, and the concrete annex at the edge of the grounds. The prompts keep the look of the pictures you have now (a dark tiled roof, wood and stone, the port below). If you'd rather the house were more of a 1970s Western-style mansion, or more of a hanok, change the house line in S5.
 
 **[ ] S14. The sunroom** (low)  
-Attach: `BG - style 1 (Strangers).png`, `BG - style 2 (Strangers).png`  
+Attach: `Remake - epi-s-sunroom.png` (optional, for the layout), `BG - style 3 (Strangers).png`, `BG - style 4 (Strangers).png`  
 Save as: `epi-s-sunroom.png` (replaces the old one)
 ```
 Paint a background in the art style of the attached images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; warm cinematic lighting from real light sources with glowing highlights and soft deep shadows; like a still from a high-budget animated film that leans toward realism. The attached images only show the style; do not copy their street or car. Leave out all people. No readable text. 16:9, high resolution. Keep everything important away from the edges.
@@ -74,7 +169,7 @@ The place: a glass sunroom built onto an old 1970s Korean house on a hill in Inc
 ```
 
 **[ ] S23. The mudflats, by day** (missed in the Nov 6 audit; Kat spotted it Nov 14: it still has the old inked look)  
-Attach: `BG - style 1 (Strangers).png`, `BG - style 2 (Strangers).png`  
+Attach: `Remake - epi-s-harbor-tide.png` (optional, for the layout), `BG - style 3 (Strangers).png`, `BG - style 4 (Strangers).png`  
 Save as: `epi-s-harbor-tide.png` (replaces the old one)
 ```
 Paint a background in the art style of the attached images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; warm cinematic lighting from real light sources with glowing highlights and soft deep shadows; like a still from a high-budget animated film that leans toward realism. The attached images only show the style; do not copy their street or car. Leave out all people. No readable text. 16:9, high resolution. Keep everything important away from the edges.
@@ -83,10 +178,103 @@ The place: the old harbor in Incheon at low tide on a grey late-winter afternoon
 ```
 
 **[ ] S24. The mudflats at midnight** (make S23 first)  
-Attach: your new `epi-s-harbor-tide.png` first, then `BG - style 1 (Strangers).png`, `BG - style 2 (Strangers).png`  
+Attach: your new `epi-s-harbor-tide.png` first, then `BG - style 3 (Strangers).png`, `BG - style 4 (Strangers).png`  
 Save as: `epi-s-mudflats-midnight.png` (replaces the old one)
 ```
 Paint the SAME place as the FIRST image at midnight, in the art style of the SECOND and THIRD images. Keep the seawall, the steps, the quay, the crane, the boats and the camera angle exactly as they are; change only the time: a clear cold night, a big full moon low over the islands, its light lying silver across the wet mud and the channels, the boats and stakes black against it, a few harbor lamps on the quay, deep blue-black shadows, the far bridge a thin line of small lights.
+```
+
+**Still in the old outlined style (found Nov 14).** Most-used first. Every one replaces the old picture under the same name.
+
+**[ ] S25. Wolmido, by day** (the promenade; several hangouts and the Daeboreum lead-up)  
+Attach: `Remake - epi-s-wolmido.png` first, then `BG - style 3 (Strangers).png`, `BG - style 4 (Strangers).png`  
+Save as: `epi-s-wolmido.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. Late winter 2013 in Incheon: old snow in the corners, grey sea light, nothing newer than 2013. A grey February afternoon by the sea, the shuttered festival stalls under blue tarps, gulls on the railing.
+```
+
+**[ ] S26. Wolmido, night** (make S25 first)  
+Attach: your new `epi-s-wolmido.png` first, then `BG - style 3 (Strangers).png`, `BG - style 4 (Strangers).png`  
+Save as: `epi-s-wolmido-night.png` (replaces the old one)
+```
+Paint the SAME place as the FIRST image at night, in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object exactly as they are; change only the time. Leave out all people. No readable text. 16:9, high resolution. A cold dark night by the sea, a few lamps along the promenade, steam from one open stall, black water.
+```
+
+**[ ] S27. The Daeboreum night on Wolmido** (the full-moon festival)  
+Attach: `Remake - epi-s-daeboreum.png` first, then `BG - style 3 (Strangers).png`, `BG - style 4 (Strangers).png`  
+Save as: `epi-s-daeboreum.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. Late winter 2013 in Incheon: old snow in the corners, grey sea light, nothing newer than 2013. The first full moon of the lunar year: the big straw-and-pine moon house on the beach, lanterns, food stalls with steam, a huge full moon over the sea.
+```
+
+**[ ] S28. Yellow dust** (the dust days in March)  
+Attach: `Remake - epi-s-dust.png` first, then `BG - style 3 (Strangers).png`, `BG - style 4 (Strangers).png`  
+Save as: `epi-s-dust.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. Late winter 2013 in Incheon: old snow in the corners, grey sea light, nothing newer than 2013. A port-side street corner in March under yellow dust: the air thick and ochre, the cranes faint shapes behind it, a green pedestrian light glowing through.
+```
+
+**[ ] S29. The car, by day** (the most-used strangers car shot)  
+Attach: `Remake - epi-s-car.png` first, then `BG - style 3 (Strangers).png`, `BG - style 4 (Strangers).png`  
+Save as: `epi-s-car.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. Late winter 2013 in Incheon: old snow in the corners, grey sea light, nothing newer than 2013. Grey daylight off the harbor through the windscreen.
+```
+
+**[ ] S30. The car, night** (make S29 first)  
+Attach: your new `epi-s-car.png` first, then `BG - style 3 (Strangers).png`, `BG - style 4 (Strangers).png`  
+Save as: `epi-s-car-night.png` (replaces the old one)
+```
+Paint the SAME place as the FIRST image at night, in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object exactly as they are; change only the time. Leave out all people. No readable text. 16:9, high resolution. Night: the dashboard glowing amber, rain or old snow on the glass, harbor lights blurred outside.
+```
+
+**[ ] S31. Jungwon's room** (the Yang house)  
+Attach: `Remake - epi-s-jungwon-room.png` first, then `BG - style 3 (Strangers).png`, `BG - style 4 (Strangers).png`  
+Save as: `epi-s-jungwon-room.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. Late winter 2013 in Incheon: old snow in the corners, grey sea light, nothing newer than 2013. Quiet, ordered, expensive and a little cold; grey light off the sea.
+```
+
+**[ ] S32. Yunjin's room** (the guest room at the Lee house she lives in now)  
+Attach: `Remake - epi-s-yunjin-room.png` first, then `BG - style 3 (Strangers).png`, `BG - style 4 (Strangers).png`  
+Save as: `epi-s-yunjin-room.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. Late winter 2013 in Incheon: old snow in the corners, grey sea light, nothing newer than 2013. Warm lamplight, her things everywhere: puffers on the hooks, makeup on the dresser, the old crane painting on the wall.
+```
+
+**[ ] S33. The bathhouse** (the jjimjilbang outside at night)  
+Attach: `Remake - epi-s-bathhouse.png` first, then `BG - style 3 (Strangers).png`, `BG - style 4 (Strangers).png`  
+Save as: `epi-s-bathhouse.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. Late winter 2013 in Incheon: old snow in the corners, grey sea light, nothing newer than 2013. A cold night street, steam rising from the roof vents, the bathhouse sign glowing (no readable writing), a vending machine's light on the snow.
+```
+
+**[ ] S34. The Incheon Bridge** (the long bridge over the sea at night)  
+Attach: `Remake - epi-s-bridge.png` first, then `BG - style 3 (Strangers).png`, `BG - style 4 (Strangers).png`  
+Save as: `epi-s-bridge.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. Late winter 2013 in Incheon: old snow in the corners, grey sea light, nothing newer than 2013. The real Incheon Bridge at night, its long line of lamps curving away over black water toward the city's lights.
+```
+
+**[ ] S35. Songdo** (the new glass city by day)  
+Attach: `Remake - epi-s-songdo.png` first, then `BG - style 3 (Strangers).png`, `BG - style 4 (Strangers).png`  
+Save as: `epi-s-songdo.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. Late winter 2013 in Incheon: old snow in the corners, grey sea light, nothing newer than 2013. Songdo in 2013: new glass towers, wide empty avenues, young planted trees, a canal, a grey winter sky.
+```
+
+**[ ] S36. The Yang house** (the front hall)  
+Attach: `Remake - epi-s-yang-house.png` first, then `BG - style 3 (Strangers).png`, `BG - style 4 (Strangers).png`  
+Save as: `epi-s-yang-house.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. Late winter 2013 in Incheon: old snow in the corners, grey sea light, nothing newer than 2013. Modern, grey and expensive: stone floor, a staircase, a big window over the sea, an ink painting on the wall.
+```
+
+**[ ] S37. The Yang kitchen** (the big professional kitchen)  
+Attach: `Remake - epi-s-yang-kitchen.png` first, then `BG - style 3 (Strangers).png`, `BG - style 4 (Strangers).png`  
+Save as: `epi-s-yang-kitchen.png` (replaces the old one)
+```
+Repaint the SAME place as the FIRST image in the art style of the SECOND and THIRD images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; cinematic lighting from real light sources with glowing highlights and soft deep shadows. Keep the place, the layout, the camera angle and every object where they are; only the drawing style changes. Leave out all people. No readable text. 16:9, high resolution. Late winter 2013 in Incheon: old snow in the corners, grey sea light, nothing newer than 2013. Steel counters, copper pans, a window over a grey sea, cold clean light.
 ```
 
 ## Stay (Iwatodai)
