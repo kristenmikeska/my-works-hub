@@ -57,7 +57,7 @@ i.gsb-tape.t2 { background: rgba(255, 220, 235, .8) radial-gradient(circle, rgba
 .gsb-tape.tl { left: -6%; transform: rotate(-24deg); }
 .gsb-tape.tr { right: -6%; transform: rotate(22deg); }
 .gsb-clip { position: absolute; top: -9%; left: 18%; width: 9%; z-index: 2; transform: rotate(-6deg); filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .25)); }
-.gsb-corner { position: absolute; width: 15%; z-index: 2; filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .3)); }
+.gsb-photo img.gsb-corner { position: absolute; width: 15%; height: auto; z-index: 2; filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .3)); }
 .gsb-corner.tl { left: 0; top: 0; }
 .gsb-corner.tr { right: 0; top: 0; transform: scaleX(-1); }
 .gsb-corner.bl { left: 0; bottom: 0; transform: scaleY(-1); }
