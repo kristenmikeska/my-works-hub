@@ -12,7 +12,7 @@ Kat, Nov 6 2026: the strangers and HOAX epilogues' older backgrounds redrawn in 
 
 New places that still borrow another picture (Jihoon's car, Yeobo's back door) are already on `FEMC-ART-TODO.md` (36G, 36H), so they aren't repeated here. (Front Step at night, Cherry's room, Hyunsuk's car, the tent bar, Sinpo, the dance studio and the harbor by day are in, art batch 143.)
 
-**What's left** (Nov 7): HOAX and strangers are done except the strangers sunroom (S14, low). Next is Stay (St1–St10), most-used first: St1 the dorm lounge, then St2, St3, St5.
+**What's left** (Nov 7): HOAX and strangers are done except the strangers sunroom (S14, low) and the mudflats (S23, S24, added Nov 14). Next is Stay (St1–St10), most-used first: St1 the dorm lounge, then St2, St3, St5.
 
 **How to use these**
 - Every prompt is the "describe it" kind (Option 2). Attach **only** the world's two style pictures, then paste the prompt. They're all in `Place Prompt Attachments`:
@@ -60,7 +60,7 @@ Paint the SAME place as the FIRST image by day, in the art style of the SECOND a
 
 ## strangers (Incheon)
 
-All in but the sunroom (art batch 144, Nov 7).
+All in but the sunroom (art batch 144, Nov 7), plus the mudflats by day and at midnight (S23, S24), added Nov 14.
 
 The Lee house is the family's big old house on a hill in old Incheon, built in the 1970s: a high wall with a gatehouse, a gravel drive up to the front steps, a sunroom, a front room with a piano, a swinging kitchen door, front and back stairs, a garage, and the concrete annex at the edge of the grounds. The prompts keep the look of the pictures you have now (a dark tiled roof, wood and stone, the port below). If you'd rather the house were more of a 1970s Western-style mansion, or more of a hanok, change the house line in S5.
 
@@ -71,6 +71,22 @@ Save as: `epi-s-sunroom.png` (replaces the old one)
 Paint a background in the art style of the attached images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; warm cinematic lighting from real light sources with glowing highlights and soft deep shadows; like a still from a high-budget animated film that leans toward realism. The attached images only show the style; do not copy their street or car. Leave out all people. No readable text. 16:9, high resolution. Keep everything important away from the edges.
 
 The place: a glass sunroom built onto an old 1970s Korean house on a hill in Incheon, late winter 2013. Glass walls and a glass roof in dark wooden frames, potted orange trees with glossy leaves and no fruit, white and pale pink orchids, a stone floor with a rug, one elegant reading chair turned to face the windows and the gravel drive, a small side table with a black ledger, a fountain pen, reading glasses and a cup of jasmine tea. Outside the glass, the snowy garden, the wall and the grey sky over the sea. Cool white light. Calm and controlled.
+```
+
+**[ ] S23. The mudflats, by day** (missed in the Nov 6 audit; Kat spotted it Nov 14: it still has the old inked look)  
+Attach: `BG - style 1 (Strangers).png`, `BG - style 2 (Strangers).png`  
+Save as: `epi-s-harbor-tide.png` (replaces the old one)
+```
+Paint a background in the art style of the attached images: semi-realistic digital painting, soft painterly rendering with NO ink outlines, NO line art, NO hatching; real-looking proportions and materials; warm cinematic lighting from real light sources with glowing highlights and soft deep shadows; like a still from a high-budget animated film that leans toward realism. The attached images only show the style; do not copy their street or car. Leave out all people. No readable text. 16:9, high resolution. Keep everything important away from the edges.
+
+The place: the old harbor in Incheon at low tide on a grey late-winter afternoon in 2013, seen from the top of a stone seawall. In the foreground on the left, old stone landing steps going down the wall into the mud, a little gravel at the top of the wall. The sea is gone: wet brown mudflats shining all the way out to the horizon, cut through with winding silver channels of water, small fishing boats lying tilted on their sides in the mud waiting for the tide, a line of old wooden fishing stakes running out into nothing, gulls walking on the mud. On the right, a long concrete quay with a rusty red harbor crane and old wooden pilings; on the left in the distance, low warehouses and the edge of the fish market. Far off in the haze, the long Incheon Bridge and dark islands. Old snow in the corners of the wall. Low grey sky, soft cold silver light, a little mist over the flats.
+```
+
+**[ ] S24. The mudflats at midnight** (make S23 first)  
+Attach: your new `epi-s-harbor-tide.png` first, then `BG - style 1 (Strangers).png`, `BG - style 2 (Strangers).png`  
+Save as: `epi-s-mudflats-midnight.png` (replaces the old one)
+```
+Paint the SAME place as the FIRST image at midnight, in the art style of the SECOND and THIRD images. Keep the seawall, the steps, the quay, the crane, the boats and the camera angle exactly as they are; change only the time: a clear cold night, a big full moon low over the islands, its light lying silver across the wet mud and the channels, the boats and stakes black against it, a few harbor lamps on the quay, deep blue-black shadows, the far bridge a thin line of small lights.
 ```
 
 ## Stay (Iwatodai)
