@@ -329,7 +329,9 @@ window.FEMC_GAME_PLACES = {
     'iwotodaidorm-outside': [[3, 'iwotodaidorm-outside'], [12, 'iwatodaidorm-front-winter']],
     // the dorm lounge at night (FEMC-ART-TODO 26, Kat's art Nov 4): the evening screen, its scenes and rules (a night image, so
     // this one is read for evening art too). Spring, the rainy season and summer keep the old picture until theirs come.
-    'iwatodaidorm-livingroom-night': [[3, 'iwatodaidorm-livingroom-night'], [4, 'iwatodaidorm-livingroom-night-spring'], [6, 'iwatodaidorm-livingroom-night-rain'], [7, 'iwatodaidorm-livingroom-night-summer'], [10, 'iwatodaidorm-livingroom-night-autumn'], [12, 'iwatodaidorm-livingroom-night-winter']]
+    // Nov 14 2026 (Kat): the autumn file was a Runners frat lounge saved under the dorm's name; Oct-Nov use the plain night
+    // picture until a real autumn lounge comes (FEMC-ART-TODO 26E).
+    'iwatodaidorm-livingroom-night': [[3, 'iwatodaidorm-livingroom-night'], [4, 'iwatodaidorm-livingroom-night-spring'], [6, 'iwatodaidorm-livingroom-night-rain'], [7, 'iwatodaidorm-livingroom-night-summer'], [10, 'iwatodaidorm-livingroom-night'], [12, 'iwatodaidorm-livingroom-night-winter']]
   },
   /* Today's art: wherever a background is one of these images (a rule's day or evening image, a scene's own bg, Go Out), the
      first entry that fits today swaps it: `dates` ['M/D', ...] and / or `weather` (calendar.js: clear, cloudy, rain, snow,
