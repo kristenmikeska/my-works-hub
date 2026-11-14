@@ -1422,6 +1422,17 @@
       { t: "hi. no comment on ghosts", then: [{ from: 'kazuha', t: "that's what people say when it's yes" }, { from: 'eunchae', t: "FIVE sentences" }] },
       LEAVE([{ from: 'eunchae', t: "read at 23:41. iconic" }, { from: 'yunjin', t: "leave my wife alone" }])
     ] },
+    // Nov 14 2026 (Kat: the girls need build-up): the night before the café.
+    { id: 'epi-s-tx-yunjin-friday', thread: 'yunjin', date: '2/21', slot: 'late', events: ['epi-s-unread'], msgs: [
+      { from: 'yunjin', t: "update from the studio" },
+      { from: 'yunjin', t: "chaewon has sent a SEATING PLAN. for a cafe. with arrows" },
+      { from: 'yunjin', t: "ur between kazuha and eunchae. godspeed" },
+      { from: 'yunjin', t: "eunchae wants to know ur blood type. i said classified" }
+    ], reply: [
+      { t: "tell her A", then: [{ from: 'yunjin', t: "she says A means ur a perfectionist" }, { from: 'yunjin', t: "she says shes scared now" }, { from: 'yunjin', t: "its going great sol" }] },
+      { t: "are you okay about tomorrow", then: [{ from: 'yunjin', t: "no" }, { from: 'yunjin', t: "yes" }, { from: 'yunjin', t: "ask me at 2:05" }] },
+      LEAVE([{ from: 'yunjin', t: "ignoring me the night before my emotional comeback. iconic. goodnight wifey" }])
+    ] },
     { id: 'epi-s-tx-yunjin-sheet', thread: 'yunjin', date: '2/23', slot: 'after', events: ['epi-s-girls'], msgs: [
       { from: 'yunjin', t: "chaewon made a SPREADSHEET for sunday" },
       { from: 'yunjin', t: "theres a column called WISHES. its pre-filled. mine says 'yunjin has fun (mandatory)'" },

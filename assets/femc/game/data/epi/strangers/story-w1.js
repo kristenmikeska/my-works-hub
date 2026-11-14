@@ -19,6 +19,7 @@
      epi-s-step        2/17 late     the step: both boys at the annex, the secret, Mandarin, the radio catches a school bell
      epi-s-eomma       2/18 evening  the right hand: Eomma, the hanbok, the pins; Aunt Hyesun on the phone (consumes)
      epi-s-stair       2/19 late     the seventh stair: barley tea at midnight; he asks about the fever; the tea goes cold
+     epi-s-unread      2/19 evening  unread: Yunjin's room; the studio group chat she hasn't answered since December; she asks Solar to come (consumes; Nov 14)
      epi-s-trio        2/20 after    errands: a plate back to the Yang house; Jay, Riki, Sunghoon, one beat each; Jungwon (consumes)
                                      (Nov 11: Madam Kang in the hall, tomorrow's dinner, story-yang.js; no flag or gate changed)
      epi-s-humming     2/20 late     molihua: somebody singing in the dark kitchen; nobody there
@@ -572,6 +573,92 @@
     { n: "Then he went back down. The seventh stair creaked under him, the long low note, the other way. He always went back down." }
   ] },
 
+  // ───────────────────────────── 2/19, evening: unread (Nov 14 2026, Kat: the girls need build-up) ─────────────────────────────
+  { id: 'epi-s-unread', date: '2/19', slot: 'evening', consumes: true, title: 'unread', place: "Incheon · The Lee House · Yunjin's Room", time: 'Evening', scene: [
+    { music: 'epi-s-yunjin' },
+    { n: "Yunjin's phone had been buzzing since dinner." },
+    { n: "Solar could hear it through the wall. The room next to hers had been a guest room for as long as she could remember, a room nobody slept in, with a good mattress and a bad painting of a crane, and now it had frog pajamas on the radiator and a Yankees hoodie over the chair and a pink makeup bag spilling across the dresser like something that had been shot, and every few minutes, on the other side of the wall, a phone went off against a wooden bedside table like a wasp in a jar." },
+    { n: "It went eleven times in twenty minutes. Solar counted. Then it stopped, and something soft hit it, and it went again, muffled, from under something." },
+    { n: "She knocked on the connecting wall twice with her knuckle, the way they'd done at sleepovers since they were fifteen. Nothing. She went round by the hall." },
+    { n: "Yunjin was lying on her back on the bed in the frog pajamas with her arms crossed over her stomach like a body in a museum. There was a pillow on the bedside table. The pillow was buzzing." },
+    { s: 'yunjin', f: 'neutral', t: "I'm not here. I died. Leave flowers by the door." },
+    { s: 'solar', f: 'neutral', t: "Your pillow's ringing." },
+    { s: 'yunjin', f: 'serious', t: "My pillow's fine. My pillow's minding its own business. Unlike some people." },
+    { n: "The pillow buzzed again. Yunjin closed her eyes. Solar sat on the end of the bed, which dipped and slid her down towards Yunjin's feet, and lifted the pillow off the phone with two fingers like a lid off a pot." },
+    { n: "The leaky glitter case. The screen lit up in her hand with a KakaoTalk banner, and above it, in the little red bubble on the app, a number that she had to read twice." },
+    { n: "Two hundred and fourteen." },
+    { n: "The group was called *STUDIO UNNIES (+ EUNCHAE)*. The picture was five girls in black leotards and pink tights in front of a mirror, about ten years old, arranged by height, one of them very small at the end with her tongue out and one of them, second from the left, with Yunjin's exact face and a missing front tooth." },
+    { s: 'solar', f: 'surprised', t: "Two hundred and fourteen, Jin." },
+    { s: 'yunjin', f: 'sad', t: "It was a hundred and ninety at lunch. They're breeding." },
+
+    // Who they are.
+    { n: "Solar knew about the studio. She'd known about it the way you know about somebody else's country. A dance studio above a bakery in Yeonsu-dong, the one that sold the custard buns, where Yunjin had gone three afternoons a week from the age of nine, ballet and then jazz and then a terrible year of something called lyrical, and quit at fourteen after the recital, the one she'd never once told the story of without laughing so hard she couldn't finish it. Four names that came up over the years in the middle of other stories. *Chaewon says. Sakura beat me at. Kazuha thinks there's a ghost in. Eunchae stole my.* Solar had never put a face on any of them. It had never occurred to her that she could." },
+    { s: 'solar', f: 'neutral', t: "I thought you quit." },
+    { s: 'yunjin', f: 'neutral', t: "I quit dancing. You don't quit *them*. They don't let you. Chaewon has the minutes of every meeting we've had since 2003. She'd find me." },
+    { s: 'solar', f: 'serious', t: "I've never met them. Seven years. You never once brought them round." },
+    { n: "Yunjin opened her eyes and looked at the ceiling, at the old water stain in the corner shaped like a rabbit, for so long that Solar thought she wasn't going to answer." },
+    { s: 'yunjin', f: 'serious', t: "No. I didn't." },
+    { s: 'yunjin', f: 'serious', t: "You were the Lee house, babe. You were Mr. Oh in the car outside and a man at the school gate and your dad on the news once a year shaking hands with a councilman. And my dad was my dad. He did sums at two in the morning. I knew what that was by the time I was twelve." },
+    { s: 'yunjin', f: 'sad', t: "They were the bakery. They were the one thing I had where nobody's dad did anything. So I kept them in a separate drawer. I kept the drawer *really* clean." },
+    { n: "Solar didn't say anything. She looked down at the phone in her hand, at the five little girls arranged by height, and felt something in her chest go tight and then go quiet, the way it did when she understood a thing a beat too late to say the right thing about it." },
+    { s: 'yunjin', f: 'neutral', t: "Don't do the face. It wasn't about you. Okay, it was a little about you. It was mostly about Mr. Oh, he's terrifying, Eunchae would've tried to hug him." },
+
+    // Why she hasn't answered.
+    { n: "The phone buzzed in her hand. Then again. Then three times in a row, fast, a little stutter of it, the rhythm of somebody typing in bursts and hitting send every time she thought of something." },
+    { s: 'solar', f: 'neutral', t: "When did you last answer them?" },
+    { n: "Yunjin rolled over onto her side, away, and put her face in the crook of her elbow." },
+    { s: 'yunjin', f: 'sad', t: "December." },
+    { n: "It came out of the elbow very small." },
+    { s: 'yunjin', f: 'sad', t: "Before. They were sending pictures of Eunchae's Christmas nails. And then it was the hospital, and then it was everything, and I just. Didn't. And their moms all know each other, Sol, Eunchae's mom does Chaewon's mom's hair, so they *know*. They've known since December. And they never once said it in the chat. They just kept sending me stuff. Every day. Stupid stuff. Sakura's high scores. A cat in Kazuha's building. Eunchae's nails. Every day for two months. Like leaving the porch light on." },
+    { s: 'yunjin', f: 'sad', t: "And if I open it they're going to be *nice* to me. All four of them. At once. And then it's real." },
+    { n: "Solar sat with that. Outside, the wind had got up off the harbor and was trying the window, and somewhere below them in the house Mrs. Bang was running water in the kitchen, and the phone went off one more time in her palm, and she looked at the banner without meaning to." },
+    { n: "*Chaewon: Yunjin. We are coming to Songdo on Friday. The café with all the plants. Two o'clock. This is not a question. We will wait until you come. Bring Sol.*" },
+    { n: "And under it, one second later, in capital letters, from a girl whose profile picture was a selfie taken from directly below her own chin: *BRING SOL!!!! WE WANT TO SEE IF SHE'S REAL*" },
+    { s: 'solar', f: 'surprised', t: "...They know my name." },
+    { s: 'yunjin', f: 'flustered', t: "They know *everything* about you. I talk about you constantly. It's embarrassing for me. Eunchae thinks you're a princess who lives in a tower. I didn't correct her, because, look around." },
+
+    // The ask.
+    { n: "Yunjin rolled back over. Her eyes were wet at the edges and she was furious about it, Solar could tell, the way she was always furious at her own face for doing things without permission." },
+    { s: 'yunjin', f: 'serious', t: "Come with me." },
+    { s: 'yunjin', f: 'serious', t: "If you're there I can't cry. You'd never let me live it down. You'd bring it up at my wedding." },
+    { s: 'solar', f: 'neutral', t: "I would bring it up at your wedding." },
+    { s: 'yunjin', f: 'happy', t: "See? That's what I need. A hostile witness." },
+    { n: "It wasn't nothing, what she was asking, and they both knew it. Songdo on a Friday, a café full of windows, four strangers who thought Solar Lee had spent Seollal in bed with a fever, and Solar, who had come home a week ago from somewhere she couldn't name to anyone in this house, sitting in the middle of all of it with a slice of cake, being normal. She hadn't been normal in front of anybody in a long time. She wasn't sure she remembered the steps." },
+    { s: 'yunjin', f: 'neutral', t: "They think you had a fever. That's all they'll ever think. Nobody's going to ask you anything you can't answer. Except Eunchae. Eunchae will ask you everything. Just say *Capricorn* to all of it, it works on her." },
+    { s: 'yunjin', f: 'serious', t: "And Sol. Two of them are Japanese. Sakura and Kazuha. So don't." },
+    { s: 'solar', f: 'neutral', t: "Don't what?" },
+    { s: 'yunjin', f: 'serious', t: "You know what. Don't understand them." },
+    { n: "Solar opened her mouth, and shut it, and Yunjin gave her a long flat look across the frog pajamas that said she'd been there too, she'd heard it too, the whole year of it, and that it went in the box with the rest." },
+    { glitch: { strain: 1 } },
+    { choose: [
+      { t: "Fine. Friday. I'll be your hostile witness.", stat: { kindness: 1 }, then: [
+        { n: "Yunjin sat up so fast the bed threw Solar another inch towards the floor, and took the phone out of her hand, and looked at it, and breathed in through her nose like somebody about to go off a diving board." },
+        { s: 'yunjin', f: 'happy', t: "Okay. Okay. I'm opening it. Don't watch me. Watch me. Don't watch me." }
+      ] },
+      { t: "(Put the phone in her hand and close her fingers round it.)", stat: { charm: 1 }, then: [
+        { n: "She put the phone in Yunjin's hand and folded her fingers over it, one at a time, the way you'd close a child's hand round a coin so they wouldn't drop it on the bus." },
+        { s: 'solar', f: 'neutral', t: "Answer Chaewon. Tell her we're coming. Both of us." },
+        { s: 'yunjin', f: 'surprised', t: "*We.*" },
+        { s: 'solar', f: 'neutral', t: "I want to see the laminating." }
+      ] }
+    ] },
+    { n: "Yunjin opened the chat." },
+    { n: "Solar watched her scroll. Up and up, two months of it going past in a blur under her thumb, nail pictures and high scores and the cat in Kazuha's building, who was ginger and enormous and apparently called Mr. President, and a lot of voice messages nobody had listened to, and the little grey *1*s beside every one of them that meant one person in the group still hadn't read it. Yunjin's thumb stopped at the top, at a date in December, and stayed there a second, and then she flicked all the way back down to the bottom without reading any of it and typed with both thumbs, fast, before she could stop." },
+    { n: "*yunjin: hi. sorry. im ok. friday. bringing sol. she says she wants to see the laminating*" },
+    { n: "She hit send and threw the phone onto the duvet like it was hot. They both looked at it." },
+    { n: "Nothing. Five seconds. Ten. The four grey *1*s beside the message went, one by one, to nothing." },
+    { n: "Then the phone went off like a fire alarm. It didn't stop. It went off and kept going off, buzz on buzz on buzz, so many so fast it walked itself across the duvet towards the edge of the bed, and Yunjin made a sound into both her hands that was half laugh and half something else, and Solar caught the phone before it fell and held it up so they could both see." },
+    { n: "*Eunchae: UNNI*" },
+    { n: "*Eunchae: UNNI UNNI UNNI*" },
+    { n: "*Kazuha: Welcome back. Mr. President says welcome back too.*" },
+    { n: "*Sakura: ok*" },
+    { n: "*Sakura: good*" },
+    { n: "*Chaewon: Received. Sol is on the plan. Two o'clock. Nobody be late. Eunchae.*" },
+    { n: "*Eunchae: why is it always me*" },
+    { n: "Yunjin read every one of them twice, lying on her side with the phone a hand's width from her face and her other hand pressed flat over her mouth, and Solar lay down on the other half of the bed with her head next to hers and read them too, over her shoulder, and didn't say a single word about her face, and the wind went on trying the window, and the phone went on going." },
+    { bond: { yunjin: 1 } }
+  ] },
+
   // ───────────────────────────── 2/20, daytime: errands ─────────────────────────────
   { id: 'epi-s-trio', date: '2/20', slot: 'after', consumes: true, title: 'errands', place: 'Incheon · The Car', time: 'Daytime', scene: [
     { music: 'epi-s-house' },
@@ -892,6 +979,13 @@
     { s: 'yunjin', f: 'happy', t: "Okay. So. Ground rules. They're going to love you. You're going to let them. You're going to be *normal*, Sol, I'm begging you, you're going to be a normal girl who had a normal fever and not look at the door every four seconds like there's a sniper on the roof." },
     { s: 'solar', f: 'serious', t: "I don't do that." },
     { s: 'yunjin', f: 'neutral', t: "Babe. You're doing it now. In my car. There's no door. You're looking at the glovebox." },
+    // Nov 14 2026 (Kat: the girls need build-up): her nerves, after epi-s-unread.
+    { s: 'solar', f: 'neutral', t: "You're the nervous one. You've changed your earrings twice since the gate." },
+    { s: 'yunjin', f: 'flustered', t: "Three times. Shut up. I haven't seen them since before, Sol. Since the funeral. They sent flowers and I didn't even text back to say the flowers came." },
+    { n: "She pulled up at a red light and checked her face in the mirror on the back of the sun visor, the gold sunglasses up on her head, and put the visor back up, and took it down again, and Solar reached over and put it back up for her and held it there." },
+    { s: 'yunjin', f: 'neutral', t: "Okay. Okay. Cheat sheet. Chaewon will have a list, don't argue with the list. Sakura won't look up from her game, it doesn't mean she hates you, it means she likes you enough to sit near you. Kazuha's going to tell you something about ghosts. Eunchae is going to tell you everything she's ever thought." },
+    { s: 'solar', f: 'neutral', t: "And what do I do?" },
+    { s: 'yunjin', f: 'happy', t: "Eat the cake. Be a hostile witness. Hold my hand under the table if I do anything with my face." },
     { n: "The café in Songdo had too many plants and a window wall that looked across the water at the glass city going up, the new towers standing in the mud flats like somebody had planted them, and Yunjin parked half on the kerb and they went in out of the wind, and Solar sat down at the corner table with her back to the wall and her eyes on the door, and Yunjin looked at her and sighed through her nose." },
     { s: 'yunjin', f: 'neutral', t: "Unbelievable. Wifey. Unbelievable." },
 

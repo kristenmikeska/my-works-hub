@@ -103,7 +103,7 @@
         { t: "Not very well. Not since I was small. It's the tide.", stat: { kindness: 1 }, then: [
           { s: 'kazuha', f: 'neutral', t: "The tide?" },
           { s: 'solar', f: 'neutral', t: "When it goes out. I feel it. In my teeth. It wakes me up." },
-          { n: "She'd never said that to anybody but Yunjin. She didn't know why she'd said it in a jjimjilbang in an orange T-shirt to a Japanese girl she'd met on Tuesday. Maybe because of the heat. Maybe because Kazuha asked questions the way you'd hold out your hand to a cat, palm up, not reaching." },
+          { n: "She'd never said that to anybody but Yunjin. She didn't know why she'd said it in a jjimjilbang in an orange T-shirt to a Japanese girl she'd met on Friday. Maybe because of the heat. Maybe because Kazuha asked questions the way you'd hold out your hand to a cat, palm up, not reaching." },
           { s: 'kazuha', f: 'happy', t: "My grandmother is like that with rain. She knows the day before. She says the body is older than the weather report." },
           { s: 'kazuha', f: 'happy', t: "Then tonight is easy for you, Solar-ssi. You'll win. We'll all have white eyebrows and you'll be the only one with black ones." },
           { glitch: { strain: 1 } },
