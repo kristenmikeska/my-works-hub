@@ -99,6 +99,13 @@
         { t: "Koromaru. Come on. Let's go home.", notes: 1, then: [
           { n: "He didn't move. He didn't look at her. His tail went once on the stone, politely, the way you'd nod at someone talking to you on a train, and then was still again." },
           { n: "She sat down. It seemed to be what you did." }
+        ] },
+        // Nov 14 2026 (Kat): stat rank 10 choice
+        { t: "(Fill the old water bowl by the door, then sit with him.)", needs: { kindness: 10 }, hide: true, notes: 3, then: [
+          { n: "There was a dented metal bowl by the little house's step, half hidden behind the broom, dry, with a leaf curled in the bottom. Somebody had filled it every evening for years. She tipped the leaf out, filled it at the stone basin by the gate, and set it back exactly where it had been." },
+          { n: "Koromaru turned his head and watched her do it. Then he got up, walked over, and drank, slowly, the whole bowl, the way you'd finish a meal someone had made for you." },
+          { s: 'koromaru', f: 'happy', t: "Wuff." },
+          { n: "He came back and sat down again, facing the house, but closer to her this time, his shoulder against her arm, and stayed that way." }
         ] }
       ] },
       { n: "They sat there a long time. The cicadas wound down one by one in the trees. Somewhere below them a bicycle bell rang on the street, and a woman called a child in for dinner, and the child didn't come. The sky over the roof of the offering hall went from orange to violet to the deep blue of the inside of a bottle, and Solar, who also didn't know where she'd come from or who she was waiting for, found it easier than she'd expected to sit very still on a stone step with someone who understood that you didn't have to explain it." },

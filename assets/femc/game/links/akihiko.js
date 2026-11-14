@@ -189,6 +189,16 @@
         ] },
         { t: "(Watch Akihiko watching them instead.)", notes: 2, then: [
           { n: "He was leaning forward without knowing it, his shoulders rolling a little with every punch he wasn't allowed to throw, his jaw going tight on the hits that landed wrong. She thought, not for the first time, that he was the least still person she had ever met, and then remembered that she hadn't met very many people, as far as she knew, which took some of the shine off it." }
+        ] },
+        // Nov 14 2026 (Kat): stat rank 10 choice
+        { t: "(Duck under the ropes. Hold your hands up for Kondo.)", needs: { courage: 10 }, hide: true, notes: 3, then: [
+          { n: "She left her blazer on the bench and went through the ropes before anyone could tell her not to, and stood in front of the tall one with her open palms up at head height, like mitts without the mitts." },
+          { s: 'kondo', t: "Senpai? Is she... am I supposed to hit her?" },
+          { s: 'akihiko', f: 'neutral', t: "Hit her hands. If you can." },
+          { n: "He could, the first time. The second time his right hand came back low after the jab and she tapped it, not hard, two fingers on the glove, and he flinched like he'd touched a stove. The third time it came back where it belonged and stayed there." },
+          { s: 'akihiko', f: 'surprised', t: "...Who taught you to stand like that?" },
+          { n: "She didn't know. Her feet had found the stance the way they found the bottom stair in the dark. Akihiko looked at her feet for a long second, and then up at her, with the face of a man adding a line to a list." },
+          { s: 'akihiko', f: 'happy', t: "Kondo. Keep them up, or she keeps doing that." }
         ] }
       ] },
       { s: 'akihiko', f: 'serious', t: "I can't hit anything. I can't run. I can't spar. I can't even hold the mitts, because apparently holding the mitts is \"using your torso.\"" },

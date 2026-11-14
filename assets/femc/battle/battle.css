@@ -2687,3 +2687,14 @@ html.bt-calm .bt-om-flash, .bt-calm .bt-om-flash { display: none; }
   .bt-lfx.en { left: 62%; top: 42%; width: 62vw; }
   .bt-lfx.win { right: 2%; top: 18%; width: 52vw; }
 }
+
+/* The World (XXI, 2026-11-14): Shuffle Time's rare gold card (three Velvet Plumes). Gold is the card's own face, not UI.
+   A shine sweeps it twice when it turns; Reduce flashes (html.bt-calm) softens it, reduced motion drops the sweep. */
+.sh-face.gold b { background: rgba(20, 7, 15, .9); border-color: #e2b04a; color: #fff1c2; }
+.bt-sh-card.world .front { box-shadow: 0 0 0 3px #e2b04a, 0 0 40px rgba(255, 214, 120, .75); }
+.bt-sh-card.world .front::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, transparent 30%, rgba(255, 248, 225, .8) 48%, transparent 64%); transform: translateX(-130%); animation: bt-sh-world calc(1.1s / var(--spd, 1)) .3s ease-out 2 both; }
+@keyframes bt-sh-world { to { transform: translateX(130%); } }
+html.bt-calm .bt-sh-card.world .front { box-shadow: 0 0 0 3px #e2b04a, 0 0 14px rgba(255, 214, 120, .4); }
+html.bt-calm .bt-sh-card.world .front::after { opacity: .35; }
+.bt-shuffle.reduced .bt-sh-card.world .front::after { display: none; }
+@media (prefers-reduced-motion: reduce) { .bt-sh-card.world .front::after { display: none; } }

@@ -41,6 +41,14 @@ window.FEMC_GAME_CLUBS = {
         { t: "Is there a version where I just hit it really hard?", stat: { courage: 1 }, then: [
           { s: 'tsuji', t: "There is. It's called the front courts. We don't go there." },
           { s: 'chiba', t: "Hit it as hard as you like, Solar. Just hit it back here, where it can't hurt anyone's feelings." }
+        ] },
+        // Nov 14 2026 (Kat): stat rank 10 choice
+        { t: "(Feed Nishi with a little backspin, so the ball sits up and waits for her.)", stat: { proficiency: 1 }, needs: { proficiency: 10 }, hide: true, then: [
+          { n: "Solar dropped the ball and brushed under it with the strings as it came up, a small soft chop, and it crossed the net, bounced, and checked, almost stopped, hanging in the air at Nishi's waist like it was being polite." },
+          { n: "Nishi hit it. With her eyes open, mostly by accident. It went over. So did the next one, and the one after, because every ball arrived in the same place at the same lazy height and gave her a whole extra half second to be afraid in and then not be." },
+          { s: 'chiba', t: "...Where did you learn to feed with slice? I've been trying to teach Tsuji that for a year." },
+          { s: 'tsuji', t: "And I've been refusing to learn it for a year. That's commitment." },
+          { s: 'nishi', t: "It waits for you. Sorry. The ball. It waits." }
         ] }
       ] },
       { s: 'tsuji', t: "She's a natural. Chiba-senpai, she's a natural. I can always tell. I said the same thing about Nishi." },
@@ -542,6 +550,14 @@ window.FEMC_GAME_CLUBS = {
         ] },
         { t: "(Put your blazer over sleeping Tamura so he doesn't catch cold.)", stat: { kindness: 1 }, then: [
           { n: "Tamura did not wake up. He sighed, deeply, in the voice of a man who had been understood at last, and pulled the blazer up to his chin, and Hoshino put a hand over her mouth and made a small noise like a teakettle." }
+        ] },
+        // Nov 14 2026 (Kat): stat rank 10 choice
+        { t: "Kuga. Why isn't it just numbers? I really want to know.", stat: { charm: 1 }, needs: { charm: 10 }, hide: true, then: [
+          { n: "Kuga looked at her as if nobody had asked him that in his entire life, which, from Hoshino's face, nobody had. Then he took one pencil from behind his ear and began." },
+          { s: 'kuga', t: "A librarian named Mori Kiyoshi. 1929. Ten classes, and every class splits into ten, and every one of those into ten again. It isn't a list. It's a map of everything anyone has ever thought, folded into three digits." },
+          { n: "She asked the right next question, and then the one after that, and he took the second pencil out too, and drew the whole tree on the back of a returns slip. Hoshino stopped shelving to listen. Ms. Ozawa, at the desk, took her glasses off and left them off." },
+          { s: 'hoshino', t: "Senpai. He's smiling. He's never smiled. I've been here a year." },
+          { s: 'kuga', t: "I'm standing right here. And I'm not smiling. This is my face when the system is explained correctly." }
         ] }
       ] },
       { s: 'ozawa', t: "The book club meets at the big table once the cart is done. You're welcome to stay. Kuga chooses the books. Please don't let him choose them all." },

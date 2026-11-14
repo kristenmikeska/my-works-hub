@@ -32,7 +32,9 @@ window.FemcTips = (() => {
     ['cards', 'Revelation cards', 'Every fighter has six card slots. Cards come from Tartarus and Shuffle Time; Tarot Dust levels them up.', '.g-fm-ov [data-tab=cards].on'],
     ['tartarus', 'Tartarus', 'Choose who climbs with you. Access points save your progress, and you can head home to rest whenever you need.', '.g-tt-ov:not(.out)'],
     ['battle', 'Fighting', 'Hit a weakness or land a critical to knock a Shadow down and act again. Knock them all down for an All-Out Attack.', '.g-results-ov:not(.out)'],
-    ['shuffle', 'Shuffle Time', 'After some fights the cards come out. Pick one: it might be a skill card, a Revelation card or an Echo.', '.g-results-ov:not(.out)'],
+    ['shuffle', 'Shuffle Time', 'After some fights the cards come out. Pick one: it might be a skill card, a Revelation card or an Echo. Very rarely there’s a gold one, The World: three Velvet Plumes.', '.g-results-ov:not(.out)'],
+    ['forge', 'Refining and forging', 'Under a weapon: refine it up to +5 with materials (or a spare copy of the same weapon), then forge it as high as +15 with spare copies. Spares you don’t need salvage into Tarot Dust.', '.g-fm-ov .g-refine'],
+    ['mayoido', 'Mayoido’s trades', 'The dealer trades Moonlit Feathers, Arcana Fragments and odd curios from Tartarus for Velvet Plumes, a few a week.', '.g-shop-ov [data-tab=trade].on'],
     ['theurgy', 'Theurgy', 'Fighting fills each member’s Theurgy gauge. When it’s full, their big move sits at the top of their menu and costs no SP.', '.g-results-ov:not(.out)']
   ];
   const BY = Object.fromEntries(TIPS.map(t => [t[0], t]));

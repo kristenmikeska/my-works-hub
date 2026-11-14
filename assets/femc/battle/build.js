@@ -2,7 +2,7 @@
    and the link perks ("bonds"). Data and rules only, no DOM. Loaded after data.js (it adds to window.FEMC_BATTLE_DATA) and
    before engine.js, in femc-game.html and femc-battle.html. It lives apart from data.js on purpose, so other work on data.js
    (new Shadows, encounters) merges cleanly.
-   Save fields (save.js normalize): cards { list, eq: { mid: { slot: uid } }, uid }, wref { gearId: refine 0-5 },
+   Save fields (save.js normalize): cards { list, eq: { mid: { slot: uid } }, uid }, wref { gearId: refine 0-15 (+6 up is forged) },
    pboost { mid: { st|ma|en|ag|lu: n } } (Persona boosts from Shuffle Time), skillCards { skillId: n }, taught { mid: [skillIds] },
    bonds { linkId: rank } and bondsRev [linkIds] (the life sim's ranks; a reversed link pauses its perks), bondGifts [perk ids].
    window.FemcBuild: naginatas (NAG), cards (stat lines, rolls, level/refine/dismantle, equip, set counts), unitBonus (what
@@ -19,10 +19,43 @@ window.FemcBuild = (() => {
     tarot_dust: { name: 'Tarot Dust', price: 20, icon: 'mat-ash', tint: '#b07bff', build: true, desc: 'Violet grit left behind when a card is shuffled too hard. Levels Revelation cards and refines weapons.' },
     velvet_thread: { name: 'Velvet Thread', price: 240, icon: 'mat-feather', tint: '#6ab0ff', build: true, desc: 'A blue thread from a room with no doors. Refines cards and weapons.' }
   });
+  /* Curios (2026-11-14): rare finds from Tartarus chests, vaults and hidden rooms (story only: battle.js mapPerks for chests,
+     tartarus.js loot for vaults and hidden rooms; odds in CURIO). They live in the battle save's mats with `curio: true`; Mayoido
+     doesn't buy them for yen, it trades them for Velvet Plumes (`plumes` each, MAYOIDO below). Icons: drawn fallbacks for now
+     (FEMC-BATTLE-ART.md has the art item). */
+  Object.assign(D.materials, {
+    music_box: { name: 'Old Music Box', price: 0, curio: true, plumes: 2, icon: 'mat-lacquer', tint: '#8a1830', desc: 'A lacquered box with a dancer who only turns halfway. It plays four notes, then waits, as if it forgot the rest.' },
+    hand_mirror: { name: 'Cracked Hand Mirror', price: 0, curio: true, plumes: 1, icon: 'mat-mirror', tint: '#e8dcc0', desc: 'Silver-backed and split corner to corner. Each half shows a slightly different room.' },
+    pressed_locket: { name: 'Locket with a Pressed Flower', price: 0, curio: true, plumes: 2, icon: 'mat-stone', tint: '#ff8cc0', desc: 'A violet pressed flat behind the glass. It still smells like somebody’s spring.' },
+    stopped_watch: { name: 'Stopped Pocket Watch', price: 0, curio: true, plumes: 2, icon: 'mat-cog', tint: '#c9d0dc', desc: 'Both hands on midnight. Wind it and the second hand shivers, then stays where it is.' },
+    tower_drawing: { name: 'Child’s Drawing of the Tower', price: 0, curio: true, plumes: 1, icon: 'mat-arcana', tint: '#fff4f9', desc: 'Crayon on folded paper: a tall black tower, a yellow moon, and a little figure waving from the top.' }
+  });
+  const CURIOS = Object.keys(D.materials).filter(k => D.materials[k].curio);
+  // How often a curio turns up (story only): a plain chest, a locked chest, a vault, a hidden room.
+  const CURIO = { chest: 0.015, locked: 0.04, vault: 0.06, hidden: 0.15 };
+  const rollCurio = R => pick(R, CURIOS);
+  /* Mayoido's Trade tab (story only; the life sim's shop, ui.js openShop): rare materials and curios for Velvet Plumes, at most
+     MAYOIDO.week plumes a game week from materials (curios don't count) (weeks start on Sunday, core.js weekOf; state S.gacha.mayo { week, n, total }). */
+  const MAYOIDO = { week: 3, mats: { moon_feather: { per: 2, plumes: 1 }, arcana_fragment: { per: 1, plumes: 1 } } }; // Elizabeth's Plume Exchange rates (requests.js); the week cap counts these only, curios trade any time
+  // The trades on offer for a battle save: [{ id, per, plumes, have, can }] (materials first, then curios held).
+  const mayoTrades = save => {
+    const m = (save && save.mats) || {};
+    return Object.entries(MAYOIDO.mats).map(([id, r]) => ({ id, per: r.per, plumes: r.plumes, have: m[id] || 0 }))
+      .concat(CURIOS.filter(id => m[id] > 0).map(id => ({ id, per: 1, plumes: D.materials[id].plumes || 1, have: m[id], curio: true })))
+      .map(t => Object.assign(t, { can: t.have >= t.per }));
+  };
+  // One trade: takes the materials, returns { ok, plumes } (the caller pays the plumes and counts the week).
+  function mayoTrade(save, id, room = Infinity) {
+    const t = mayoTrades(save).find(x => x.id === id);
+    if (!t || !t.can) return { ok: false, why: 'Not enough to trade.' };
+    if (!t.curio && t.plumes > room) return { ok: false, why: room > 0 ? 'That’s more plumes than this week has left.' : 'Mayoido is done trading plumes this week.' };
+    save.mats[id] -= t.per; if (!save.mats[id]) delete save.mats[id];
+    return { ok: true, plumes: t.plumes, per: t.per, curio: !!t.curio };
+  }
 
   /* ══════════ Solar's naginatas (Kat's SolarWeapons.png, cut into art/weapons/) ══════════
      Each is its own weapon with a bonus that matches its look (bonus: the unit-bonus vocabulary below). src: where it comes
-     from. Refining (+1 to +5, wref) raises ATK 6% a step and the bonus 15% a step. */
+     from. Refining (+1 to +5, wref) raises ATK 6% a step and the bonus 15% a step; forging (+6 to +15, duplicates) 5% and 5%. */
   const WART = 'assets/femc/battle/art/weapons/';
   const NAG = [
     // id, art, name, tier, atk, price (0: not sold), bonus, look/desc, sources
@@ -195,7 +228,7 @@ window.FemcBuild = (() => {
   function yenBonus(save, mids) {
     let v = 0;
     (mids || []).forEach(mid => { const eq = Object.assign({}, D.startGear[mid], ((save.gear || {}).eq || {})[mid] || {}), g = D.gear[eq.weapon];
-      if (g && g.bonus && g.bonus.yen && fits(g, mid)) v += g.bonus.yen * (1 + WREF.bonus * wrefOf(save, eq.weapon)); });
+      if (g && g.bonus && g.bonus.yen && fits(g, mid)) v += g.bonus.yen * wrefBonusK(wrefOf(save, eq.weapon)); });
     return v;
   }
 
@@ -212,33 +245,78 @@ window.FemcBuild = (() => {
   const BOSS_WEAPON = { priestess: ['nag_ice', 'jp_bat'], empress: ['mj_bunny', 'ak_belt'], hierophant: ['jw_tortoise', 'mt_queen'], lovers: ['nag_moon', 'yk_heart'],
     chariot: ['hk_disc', 'ag_cannon'], hermit: ['nag_rose', 'sj_chain'], fortune: ['nag_prism', 'jh_treasure'], hanged: ['nag_dragon', 'km_shrine'] };
   const bossWeapons = op => [].concat(BOSS_WEAPON[op] || []);
-  const CHEST_WEAPON = { id: 'nag_mint', chance: 0.06, fromBlock: 1 };
+  const CHEST_WEAPON = { id: 'nag_mint', chance: 0.06, dupChance: 0.012, fromBlock: 1 }; // dupChance: a second copy once she has one (forging)
 
-  /* Weapon refining (any weapon above the starters): +1 … +5 with materials. */
-  const WREF = { max: 5, atk: 0.06, bonus: 0.15, dust: [8, 14, 20, 28, 40], thread: [1, 1, 2, 2, 3], yen: [400, 900, 1800, 3200, 5200], arcana: [0, 0, 0, 1, 1] };
-  const wrefOf = (save, id) => clamp(+((save.wref || {})[id]) || 0, 0, WREF.max);
-  function wrefCost(save, id) {
+  /* Weapon refining (any weapon above the starters): +1 … +5 with materials, or with a duplicate copy of the same weapon in
+     place of the Velvet Thread and three quarters of the Tarot Dust (way 'dupe': half the yen, any Arcana Fragment still).
+     Forging (2026-11-14, P5X-style): +6 … +WREF.max, each step needs spare copies of that weapon (1 copy +6..+10, 2 copies
+     +11..+15) on top of climbing materials and yen. A duplicate is a copy beyond the first owned and beyond what's equipped
+     (`dupes`: the last copy always stays, so the life sim's gear list never disagrees). +1..+5: ATK +6% and the bonus +15% a
+     step (unchanged); +6..+15: ATK +5% and the bonus +5% a step (a +15 weapon: ATK ×1.8, bonus ×2.25). Dust and yen scale with
+     the weapon's tier (k = 1 + tier × 0.15). Salvage: a duplicate breaks down into Tarot Dust (salvageDust). */
+  const WREF = { max: 15, refined: 5, atk: 0.06, bonus: 0.15, forgeAtk: 0.05, forgeBonus: 0.05,
+    dust: [8, 14, 20, 28, 40, 55, 75, 100, 135, 180, 240, 320, 420, 550, 720],
+    thread: [1, 1, 2, 2, 3, 3, 3, 4, 4, 5, 5, 6, 6, 7, 8],
+    yen: [400, 900, 1800, 3200, 5200, 6000, 8000, 11000, 15000, 20000, 26000, 34000, 44000, 56000, 70000],
+    arcana: [0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 4, 5],
+    copies: [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2],
+    dupe: { dust: 0.25, yen: 0.5 },
+    salvage: { base: 5, tier: 5, perRef: 0.1, rare: 1.5 } };
+  const wrefOf = (save, id) => clamp(Math.floor(+((save.wref || {})[id]) || 0), 0, WREF.max);
+  // What a refine level multiplies: the weapon's ATK and its bonus.
+  const wrefAtkK = r => 1 + WREF.atk * Math.min(r, WREF.refined) + WREF.forgeAtk * Math.max(0, r - WREF.refined);
+  const wrefBonusK = r => 1 + WREF.bonus * Math.min(r, WREF.refined) + WREF.forgeBonus * Math.max(0, r - WREF.refined);
+  const forged = r => r > WREF.refined;
+  // Copies of a weapon worn by anyone (save.js eqOf's rule: each member's start gear unless changed).
+  const wornCount = (save, id) => D.party.reduce((n, m) => n + Object.values(Object.assign({}, D.startGear[m.id], ((save.gear || {}).eq || {})[m.id] || {})).filter(x => x === id).length, 0);
+  // Duplicates: owned beyond the one you keep and beyond what's equipped. Tier-0 starters never count.
+  const dupes = (save, id) => { const g = D.gear[id]; if (!g || !(g.tier > 0)) return 0; return Math.max(0, (((save.gear || {}).owned || {})[id] || 0) - Math.max(1, wornCount(save, id))); };
+  /* The ways to pay for the next step: [{ way: 'mats' | 'dupe' | 'forge', cost: { mats…, yen }, copies }]; [] when maxed. */
+  function refineWays(save, id) {
     const g = D.gear[id], r = wrefOf(save, id);
-    if (!g || g.slot !== 'weapon' || !(g.tier > 0) || r >= WREF.max) return null;
+    if (!g || g.slot !== 'weapon' || !(g.tier > 0) || r >= WREF.max) return [];
     const k = 1 + g.tier * 0.15;
-    const c = { tarot_dust: Math.round(WREF.dust[r] * k), velvet_thread: WREF.thread[r], yen: Math.round(WREF.yen[r] * k / 100) * 100 };
-    if (WREF.arcana[r]) c.arcana_fragment = WREF.arcana[r];
-    return c;
+    const dust = Math.round(WREF.dust[r] * k), yen = Math.round(WREF.yen[r] * k / 100) * 100;
+    const withArcana = c => { if (WREF.arcana[r]) c.arcana_fragment = WREF.arcana[r]; return c; };
+    if (r >= WREF.refined) return [{ way: 'forge', copies: WREF.copies[r], cost: withArcana({ tarot_dust: dust, velvet_thread: WREF.thread[r], yen }) }];
+    return [{ way: 'mats', copies: 0, cost: withArcana({ tarot_dust: dust, velvet_thread: WREF.thread[r], yen }) },
+      { way: 'dupe', copies: 1, cost: withArcana({ tarot_dust: Math.round(dust * WREF.dupe.dust), yen: Math.round(yen * WREF.dupe.yen / 100) * 100 }) }];
   }
+  // The plain cost of the next step (the materials way; a forge step's materials). null when maxed.
+  function wrefCost(save, id) { const w = refineWays(save, id); return w.length ? w[0].cost : null; }
   const canPay = (save, cost, yenNow) => Object.entries(cost).every(([k, n]) => (k === 'yen' ? (yenNow != null ? yenNow : save.yen) >= n : (save.mats[k] || 0) >= n));
   const payCost = (save, cost) => Object.entries(cost).forEach(([k, n]) => { if (k === 'yen') return; save.mats[k] -= n; if (!save.mats[k]) delete save.mats[k]; });
-  /* Refine a weapon. yen is paid by the caller when the life sim owns the money (opts.payYen); returns { ok, why, lvl }. */
-  function refineWeapon(save, id, { yenNow = null, payYen = null } = {}) {
-    const c = wrefCost(save, id);
-    if (!c) return { ok: false, why: 'Fully refined.' };
-    if (!canPay(save, c, yenNow)) return { ok: false, why: 'Not enough materials or yen.' };
-    payCost(save, c);
-    if (payYen) payYen(c.yen); else save.yen -= c.yen;
+  const canWay = (save, id, w, yenNow) => !!w && dupes(save, id) >= w.copies && canPay(save, w.cost, yenNow);
+  const useCopies = (save, id, n) => { if (n > 0) save.gear.owned[id] = (save.gear.owned[id] || 0) - n; };
+  /* Refine or forge a weapon. way: 'mats' | 'dupe' | 'forge' (default: the first way that can be paid). yen is paid by the
+     caller when the life sim owns the money (opts.payYen); returns { ok, why, lvl, cost, copies, forged }. */
+  function refineWeapon(save, id, { yenNow = null, payYen = null, way = null } = {}) {
+    const ways = refineWays(save, id);
+    if (!ways.length) return { ok: false, why: `Fully forged (+${WREF.max}).` };
+    const w = way ? ways.find(x => x.way === way) : (ways.find(x => canWay(save, id, x, yenNow)) || ways[0]);
+    if (!w) return { ok: false, why: 'That way isn’t open for this step.' };
+    if (dupes(save, id) < w.copies) return { ok: false, why: w.copies > 1 ? `It needs ${w.copies} spare copies of this weapon.` : 'It needs a spare copy of this weapon.' };
+    if (!canPay(save, w.cost, yenNow)) return { ok: false, why: 'Not enough materials or yen.' };
+    payCost(save, w.cost);
+    if (payYen) payYen(w.cost.yen); else save.yen -= w.cost.yen;
+    useCopies(save, id, w.copies);
     save.wref = save.wref || {};
     save.wref[id] = wrefOf(save, id) + 1;
-    return { ok: true, lvl: save.wref[id], cost: c };
+    return { ok: true, lvl: save.wref[id], cost: w.cost, copies: w.copies, way: w.way, forged: forged(save.wref[id]) };
   }
-  const weaponAtk = (save, id) => { const g = D.gear[id]; return g ? Math.round(g.atk * (1 + WREF.atk * wrefOf(save, id))) : 0; };
+  const weaponAtkAt = (id, r) => { const g = D.gear[id]; return g ? Math.round(g.atk * wrefAtkK(r)) : 0; };
+  const weaponAtk = (save, id) => weaponAtkAt(id, wrefOf(save, id));
+  /* Salvage: a duplicate weapon (any member's) breaks down into Tarot Dust, more for a higher tier, a rare one and the refine
+     that weapon carries. Returns { ok, dust }. */
+  const salvageDust = (save, id) => { const g = D.gear[id]; if (!g || !(g.tier > 0)) return 0; const S = WREF.salvage; return Math.round((S.base + S.tier * g.tier) * (1 + S.perRef * wrefOf(save, id)) * (g.rare ? S.rare : 1)); };
+  const salvageList = save => Object.keys(((save.gear || {}).owned) || {}).filter(id => D.gear[id] && D.gear[id].slot === 'weapon' && dupes(save, id) > 0).sort((a, b) => D.gear[b].tier - D.gear[a].tier);
+  function salvageWeapon(save, id) {
+    if (!(dupes(save, id) > 0)) return { ok: false, why: 'Only a spare copy can be salvaged (the last one stays).' };
+    const dust = salvageDust(save, id);
+    useCopies(save, id, 1);
+    save.mats.tarot_dust = (save.mats.tarot_dust || 0) + dust;
+    return { ok: true, dust };
+  }
 
   /* ══════════ Revelation-style cards (P5X) ══════════
      Six slots by position; each card has a main stat (by slot) and up to four random substats. Two and four cards of one set
@@ -441,7 +519,7 @@ window.FemcBuild = (() => {
     Object.keys(b.el).forEach(e => { b.el[e] = Math.min(EL_CAP, b.el[e]); }); // cards' element total (the weapon's own bonus comes on top)
     // The weapon's own bonus, scaled by its refine.
     const g = weaponId && D.gear[weaponId];
-    if (g && g.bonus) { const k = 1 + WREF.bonus * wrefOf(save, weaponId); const nb = Object.assign({}, g.bonus); delete nb.stats; delete nb.nullAil; addBonus(b, nb, k); (g.bonus.nullAil || []).forEach(a => b.nullAil.push(a)); }
+    if (g && g.bonus) { const k = wrefBonusK(wrefOf(save, weaponId)); const nb = Object.assign({}, g.bonus); delete nb.stats; delete nb.nullAil; addBonus(b, nb, k); (g.bonus.nullAil || []).forEach(a => b.nullAil.push(a)); }
     // Persona boosts (Shuffle Time's Major Arcana).
     Object.entries((save.pboost || {})[mid] || {}).forEach(([s, v]) => { b.flat[s] = (b.flat[s] || 0) + v; });
     return b;
@@ -479,8 +557,8 @@ window.FemcBuild = (() => {
      After a won fight in Tartarus: always after an All-Out finish, a top rating (won in two rounds with no one down), a
      Strong group, the Reaper or a full moon; otherwise a set chance. The cards show face up, flip, shuffle, and you pick one.
      Minor Arcana: Cups heal, Coins give yen, Swords give gear (the high ones Solar's naginatas), Wands give EXP. Major Arcana:
-     Revelation cards, skill cards, Persona boosts, materials, the Sun, and (story only) Echoes for Solar (echoes.js). Rare
-     penalty cards add risk. */
+     Revelation cards, skill cards, Persona boosts, materials, the Sun, and (story only) Echoes for Solar (echoes.js) and The
+     World (three Velvet Plumes, SH.world). Rare penalty cards add risk. */
   const SH = {
     chance: 0.25, strong: 0.25, hand: 4, majorChance: 0.4, penalty: 0.07, penaltyHard: 0.1,
     echoChance: 0.25, // a Major Arcana is an Echo card this often (story only: echoes.js shuffleCard; not one of `majors`)
@@ -497,6 +575,9 @@ window.FemcBuild = (() => {
       { id: 'star', num: 'XVII', name: 'The Star', out: 'card', minR: 4, five: 0.5 }, { id: 'sun', num: 'XIX', name: 'The Sun', out: 'sun' },
       { id: 'hierophant', num: 'V', name: 'The Hierophant', out: 'ticket' }
     ],
+    // The World (XXI, 2026-11-14): a rare gold card worth three Velvet Plumes. Story only (practice has no plumes, nor the
+    // epilogue); about 1 card in 100, 1 in 40 in a full moon's hand; at most one a hand. Not one of `majors` (deal places it).
+    world: { id: 'world', num: 'XXI', name: 'The World', out: 'plumes', plumes: 3, chance: 0.01, boss: 0.025 },
     penalties: [
       { id: 'death', num: 'XIII', name: 'Death', out: 'reaper', text: 'The Reaper is 6 steps closer.' },
       { id: 'tower', num: 'XVI', name: 'The Tower', out: 'tower', text: 'Everyone loses a quarter of their HP.' },
@@ -517,12 +598,15 @@ window.FemcBuild = (() => {
   }
   const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
   /* A hand. ctx: { tier (1-7), extra (Kiriko's Good Fortune), hard, boss } */
-  function deal(R, { tier = 1, extra = 0, hard = false, boss = false, practice = false } = {}) {
+  // lucky (Proficiency 15, story fights; 2026-11-14): minor cards one rank higher, and a better shot at a Major Arcana (+0.1).
+  function deal(R, { tier = 1, extra = 0, hard = false, boss = false, practice = false, plumes = !practice, lucky = false } = {}) {
     const n = SH.hand + extra, hand = [];
-    let pen = 0, majors = 0;
+    let pen = 0, majors = 0, world = 0;
     for (let i = 0; i < n; i++) {
+      // The World: three Velvet Plumes (story nights and full moons; never practice or the epilogue: `plumes` false).
+      if (plumes && !world && R() < (boss ? SH.world.boss : SH.world.chance)) { const w = SH.world; hand.push({ kind: 'major', id: w.id, num: w.num, name: w.name, out: w.out, gold: true }); world++; continue; }
       if (!boss && pen < 1 && R() < (hard ? SH.penaltyHard : SH.penalty)) { const p = pick(R, SH.penalties); hand.push({ kind: 'penalty', id: p.id, num: p.num, name: p.name, out: p.out, text: p.text }); pen++; continue; }
-      if (majors < (boss ? 2 : 1) && R() < (boss ? 0.75 : SH.majorChance)) {
+      if (majors < (boss ? 2 : 1) && R() < (boss ? 0.75 : SH.majorChance + (lucky ? 0.1 : 0))) {
         // An Echo card (echoes.js): the Echo's name on its arcana's tarot. Story only (practice has no Personas tab).
         const ec = !practice && window.FemcEchoes && R() < SH.echoChance ? window.FemcEchoes.shuffleCard(R, tier) : null;
         if (ec) { hand.push(ec); majors++; continue; }
@@ -531,7 +615,7 @@ window.FemcBuild = (() => {
         hand.push({ kind: 'major', id: m.id, num: m.num, name: m.name, out: m.out, stat: m.stat, minR: m.minR, five: m.five }); majors++; continue;
       }
       const suit = pick(R, Object.keys(SH.suits));
-      const rank = clamp(1 + Math.floor(R() * R() * 10) + (boss ? 3 : 0) + Math.floor(tier / 3), 1, 10);
+      const rank = clamp(1 + Math.floor(R() * R() * 10) + (boss ? 3 : 0) + Math.floor(tier / 3) + (lucky ? 1 : 0), 1, 10);
       hand.push({ kind: 'minor', suit, rank, num: ROMAN[rank], name: `${ROMAN[rank]} of ${SH.suits[suit].name}` });
     }
     // Shuffle so the penalty isn't always first.
@@ -544,14 +628,14 @@ window.FemcBuild = (() => {
     if (c.kind === 'minor') {
       if (c.suit === 'cups') return `The party recovers ${10 + c.rank * 5}% HP and SP.`;
       if (c.suit === 'coins') return `Yen, more for a higher card.`;
-      if (c.suit === 'swords') return c.rank >= 8 ? 'A weapon. Maybe one of Solar’s naginatas.' : 'A weapon or armor for the party.';
+      if (c.suit === 'swords') return c.rank >= 8 ? 'A weapon. Maybe one of Solar’s naginatas (or a second copy to forge with).' : 'A weapon or armor for the party.';
       return `+${c.rank * 10}% EXP from this fight.`;
     }
     return { card: c.minR ? `A Revelation card (★${c.minR} or better).` : 'A Revelation card.', skillcard: 'A skill card: teach a Persona a new skill.', boost: `Persona boost: +1 ${String(c.stat).toUpperCase()} to someone in the party.`,
-      mats: 'Velvet Thread and Tarot Dust.', dust: 'A pile of Tarot Dust.', echo: `An Echo answers the card: ${c.name} (${c.arcana || 'Echo'}) joins Solar.`, sun: 'A full heal, and every Theurgy gauge +25.', ticket: 'Capsule Tickets for the machine at Paulownia Mall.' }[c.out] || '';
+      mats: 'Velvet Thread and Tarot Dust.', dust: 'A pile of Tarot Dust.', echo: `An Echo answers the card: ${c.name} (${c.arcana || 'Echo'}) joins Solar.`, sun: 'A full heal, and every Theurgy gauge +25.', plumes: 'Three Velvet Plumes.', ticket: 'Capsule Tickets for the machine at Paulownia Mall.' }[c.out] || '';
   }
   /* Apply a picked card. Changes to the battle save happen here; the rest comes back as effects for the battle page:
-     { heal (fraction HP+SP), expMult, reaper (steps closer), hpLoss (fraction), curse (next fight's Shadows +25% HP), th }.
+     { heal (fraction HP+SP), expMult, reaper (steps closer), hpLoss (fraction), curse (next fight's Shadows +25% HP), th, plumes (The World) }.
      ctx: { R, tier (1-7), party (mids), yen (for the Devil), yenNow (the life sim's money, story fights) }. Returns { lines, fx }. */
   function applyShuffle(save, c, ctx) {
     const R = ctx.R || Math.random, tier = clamp(ctx.tier || 1, 1, 7), lines = [], fx = {};
@@ -572,15 +656,18 @@ window.FemcBuild = (() => {
       if (c.suit === 'swords') {
         const ownNag = id => (save.gear.owned[id] || 0) > 0;
         // Named weapons: Solar's naginatas always; someone's own (Haechan's knives) only while they're in the party.
-        const nagPool = Object.keys(D.gear).filter(id => { const g = D.gear[id]; return g.named && (!g.owner || party.includes(g.owner)) && (g.src || []).some(s => /Shuffle Time/.test(s)) && g.tier <= tier + 1 && !ownNag(id); });
-        let got = null;
+        const named = Object.keys(D.gear).filter(id => { const g = D.gear[id]; return g.named && (!g.owner || party.includes(g.owner)) && (g.src || []).some(s => /Shuffle Time/.test(s)) && g.tier <= tier + 1; });
+        const nagPool = named.filter(id => !ownNag(id)), dupPool = named.filter(ownNag);
+        let got = null, dup = false;
         if (nagPool.length && (c.rank >= 9 || (c.rank >= 7 && R() < 0.4))) got = pick(R, nagPool);
+        // A second copy of a named weapon she already has (forging fuel, 2026-11-14): high Swords only, rarer than a first copy.
+        else if (dupPool.length && c.rank >= 8 && R() < (c.rank >= 10 ? 0.3 : 0.15)) { got = pick(R, dupPool); dup = true; }
         if (!got) {
           const who = pick(R, party), m = D.party.find(x => x.id === who) || D.party[0], t = clamp(tier + (c.rank >= 6 ? 1 : 0), 1, 7);
           const pool = Object.keys(D.gear).filter(id => { const g = D.gear[id]; return !g.rare && g.tier === t && (g.slot === 'armor' || (g.slot === 'weapon' && fits(g, m.id))); });
           got = pool.length ? pick(R, pool) : null;
         }
-        if (got) { save.gear.owned[got] = (save.gear.owned[got] || 0) + 1; fx.gear = got; lines.push(D.gear[got].name + namedTag(got)); }
+        if (got) { save.gear.owned[got] = (save.gear.owned[got] || 0) + 1; fx.gear = got; if (dup) fx.dupe = true; lines.push(D.gear[got].name + (dup ? ' · a second copy, for forging' : namedTag(got))); }
         else { const y = c.rank * 200; save.yen += y; fx.yen = y; lines.push(`+¥${y}`); }
       }
       return { lines, fx };
@@ -608,6 +695,8 @@ window.FemcBuild = (() => {
     if (c.out === 'mats') { addMat('velvet_thread', 1 + (tier >= 4 ? 1 : 0)); addMat('tarot_dust', 8 + tier * 2); }
     if (c.out === 'dust') addMat('tarot_dust', 16 + tier * 4);
     if (c.out === 'sun') { fx.heal = 1; fx.th = 25; lines.push('A full heal; Theurgy +25'); }
+    // The World: three Velvet Plumes (battle.js adds fx.plumes to the night's HS.plumes; core.js applyResult pays them unscaled).
+    if (c.out === 'plumes') { fx.plumes = SH.world.plumes; lines.push(`Velvet Plume ×${SH.world.plumes}`); }
     // An Echo card: the Echo joins Solar (echoes.js add; a full stock still registers it in the Compendium).
     if (c.out === 'echo') {
       const r = window.FemcEchoes && c.echo ? window.FemcEchoes.add(save, c.echo, { via: 'shuffle' }) : null;
@@ -935,11 +1024,12 @@ window.FemcBuild = (() => {
     perk: ['{name}’s here!', 'happy']
   });
   D.glossary.push(
-    { id: 'shuffle', name: 'Shuffle Time', text: 'After some wins (an All-Out finish, a fast clean fight, Strong Shadows, the Reaper, a full moon, or just luck) the cards spin and you pick one. Cups heal, Coins give yen, Swords give gear (the high ones Solar’s naginatas), Wands give EXP. Major Arcana give Revelation cards, skill cards, Persona boosts and materials. An upside-down card is a penalty.' },
+    { id: 'shuffle', name: 'Shuffle Time', text: 'After some wins (an All-Out finish, a fast clean fight, Strong Shadows, the Reaper, a full moon, or just luck) the cards spin and you pick one. Cups heal, Coins give yen, Swords give gear (the high ones Solar’s naginatas), Wands give EXP. Major Arcana give Revelation cards, skill cards, Persona boosts and materials. A high Swords card can bring a second copy of a weapon Solar already has, to forge with. Very rarely a gold card turns up, The World (XXI): three Velvet Plumes (story nights and full moons; a little more often in a full moon’s hand). An upside-down card is a penalty.' },
+    { id: 'forging', name: 'Refining and forging', text: 'Menu → Equipment, under the weapon: refine it from +1 to +5 with Tarot Dust, Velvet Thread and yen (ATK +6% and its bonus +15% a step), or feed it a spare copy of the same weapon instead of the thread and most of the dust. Past +5 it’s forged, up to +15: every forged step needs a spare copy (two from +11) plus more dust, thread, Arcana Fragments and yen (ATK +5% and the bonus +5% a step). Spare weapons you don’t need can be salvaged into Tarot Dust there too; the last copy of a weapon always stays.' },
     { id: 'cards', name: 'Revelation cards', text: 'Each fighter has six card slots (I Crown to VI Fate). A card has a main stat and up to four substats; two or four cards of one set add a set bonus. Level cards with Tarot Dust, refine them with Velvet Thread, lock the ones you love and dismantle the rest for dust. Menu → Cards.' },
     { id: 'bonds', name: 'Bond perks', text: 'Every link earns named perks as it ranks up: Battle perks (fighters in the party), Assists (cut-ins from friends outside the party), Tartarus perks, Daily perks, and a MAX skill or passive. A reversed link pauses its perks. Menu → Bonds.' }
   );
-  D.tips.shuffle = ['shuffle', 'Shuffle Time! Watch the cards, then pick one. Upside-down ones are bad news.'];
+  D.tips.shuffle = ['shuffle', 'Shuffle Time! Watch the cards, then pick one. Upside-down ones are bad news; a gold one is very good news.'];
   D.tips.perk = ['bonds', 'A friend just helped from outside the party! Bond perks are in the menu’s Bonds tab.'];
 
   /* Who each link is, for cut-ins in the battle frame (the life sim's link files aren't loaded there): name, portrait face. */
@@ -1022,7 +1112,7 @@ window.FemcBuild = (() => {
   const TYPE_NAME = { battle: 'Battle', assist: 'Assist', tartarus: 'Tartarus', daily: 'Daily', max: 'MAX' };
 
   return {
-    NAG, HK, JW, JH, MJ, AK, YK, JP, MT, AG, KM, SJ, OWNED, STARTER_SWAP, yenBonus, bossWeapons, fits, namedTag, BOSS_WEAPON, CHEST_WEAPON, WREF, wrefOf, wrefCost, refineWeapon, weaponAtk, bonusText, canPay,
+    NAG, HK, JW, JH, MJ, AK, YK, JP, MT, AG, KM, SJ, OWNED, STARTER_SWAP, yenBonus, bossWeapons, fits, namedTag, BOSS_WEAPON, CHEST_WEAPON, WREF, wrefOf, wrefCost, refineWeapon, weaponAtk, weaponAtkAt, wrefAtkK, wrefBonusK, forged, dupes, refineWays, canWay, salvageDust, salvageList, salvageWeapon, CURIOS, CURIO, rollCurio, MAYOIDO, mayoTrades, mayoTrade, bonusText, canPay,
     STATS, SLOTS, SETS, CARD, rollCard, rarityRoll, mainValue, cardName, statLine, addCard, cardById, wearerOf, equipCard, unequipCard, equippedCards,
     levelCost, refineCost, levelCard, refineCard, dismantleCard, cardBonus, setCounts, ensureCards,
     emptyBonus, addBonus, unitBonus, SKILL_CARDS, teachable, teach,

@@ -2,7 +2,7 @@
 
 *Persona 3: Solstice · split out Nov 7 2026 (Kat's plan): all the battle pieces in one place, to make together at the end, after `FEMC-SKIN-ART.md`. Until a piece exists the fight uses the fighter's usual version, so nothing breaks while these wait. The old design sheet is in `_archive/FEMC-SKINS-BATTLE-DESIGN-old.md`.*
 
-**What's here (updated Nov 14, after art batch 157):** 442 prompts for 72 looks: 65 second pose sheets, 69 Theurgy cut-ins, 95 "1 MORE!" pictures (Solar's looks get two), 71 entrance cards, 70 finish cards, 70 signature effect sheets; plus the foxfire theme sheet and frame (on hold) and two cell-4 clean-ups. Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`.
+**What's here (updated Nov 14, after art batch 157):** 442 prompts for 72 looks: 65 second pose sheets, 69 Theurgy cut-ins, 95 "1 MORE!" pictures (Solar's looks get two), 71 entrance cards, 70 finish cards, 70 signature effect sheets; plus the foxfire theme sheet and frame (on hold), the curio sticker sheet (Nov 14) and two cell-4 clean-ups. Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`.
 
 **How:** pick a look; its pieces are in order. Attach the files on each **Attach** line in that order (all in `Femc Mode Images/`), paste the prompt, save into **New Adds** under its **Save as** name and tell Claude. Collab looks: make their pieces after the outfit is in the game. Each look has a **look bible** (palette, vibe, motifs, light, scene); the prompts follow it.
 
@@ -4125,6 +4125,21 @@ Save as: `skin-sk-yukari-lace-fx.png`
 ```
 A sprite sheet of one video-game spell effect: a 3 × 2 grid of six square frames (3 columns, 2 rows), read left to right, top to bottom, on a pure solid black background (#000000). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty black margin (at least 10%) on every side so nothing touches or crosses into the next frame. Frame 1: one black cross flickers on in the centre. Frame 2: a few rosary beads and ornate crosses appear around it, violet light gathering. Frame 3, the peak: a ring of black lace and rosary beads bursting outward from a white-hot centre. Frame 4: the rosary beads and ornate crosses spreading wider, tumbling and turning. Frame 5: the rosary beads and ornate crosses breaking into small silver glints. Frame 6: a few last tiny rosary beads and ornate crosses and silver glints fading. Style: Persona 3 Reload battle VFX: sharp, stylish, graphic shapes with clean hard edges, white-hot cores, lace black, jet, silver and candle gold, high contrast, readable at small size. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2.
 ```
+
+---
+
+## Item stickers: Mayoido's curios
+
+Five rare finds from Tartarus that Mayoido Antiques trades for Velvet Plumes (added Nov 14). Until the stickers exist the game draws a plain icon, so nothing is waiting on these.
+
+#### Curio sticker sheet
+
+Attach: nothing  
+Save as: `curio-stickers.png`
+```
+A sticker sheet of five small game item icons in one row, evenly spaced with wide empty margins so nothing touches, on a transparent background (PNG with alpha). Each is a single object, seen slightly from above, in the same style as Persona 3 Reload item icons: clean bold outlines, flat cel shading with one soft highlight, readable at small size. Left to right: 1. an old lacquered music box, dark red with gold trim, its lid open and a tiny ballerina inside turned halfway; 2. a silver-backed hand mirror with a crack running corner to corner across the glass; 3. a small gold oval locket, open, a pressed violet flower behind its glass; 4. a silver pocket watch, open, both hands pointing to twelve; 5. a folded sheet of paper with a child's crayon drawing of a tall black tower, a yellow moon and a tiny figure waving at the top. No text, no labels, no numbers, no shadows on the ground, no background colour. Landscape 5:1.
+```
+*Wiring (Claude):* cut the five into `assets/femc/battle/art/items/<id>.webp` (`music_box`, `hand_mirror`, `pressed_locket`, `stopped_watch`, `tower_drawing`), add the ids to `build.js ITEM_ART`, bump `ART_V` and the `build.js ?v=` in both pages.
 
 ---
 

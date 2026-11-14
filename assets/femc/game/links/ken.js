@@ -186,6 +186,14 @@
         { t: "Your mom sounds like she was great.", notes: 1, then: [
           { s: 'ken', f: 'neutral', t: "She was." },
           { n: "That was all. He looked at the fountain. After a while he asked if she wanted to see the figures, and she understood that she'd been politely escorted away from something, and let herself be." }
+        ] },
+        // Nov 14 2026 (Kat): stat rank 10 choice
+        { t: "Episode thirty-one. Yellow reads the map and makes them all wait.", needs: { knowledge: 10 }, hide: true, notes: 3, then: [
+          { n: "She had no idea why she knew it. In June she had waited out a downpour in the bookstore on the strip by reading a Featherman fan guide standing up, cover to cover, and apparently every page of it had moved in and unpacked." },
+          { s: 'ken', f: 'serious', t: "...The mirror base." },
+          { s: 'ken', f: 'serious', t: "Nobody remembers the mirror base. Red runs in, and Yellow stops them at the door for a whole commercial break, and she's right, the floor is a trap." },
+          { s: 'ken', f: 'happy', t: "My mother clapped. At the television. I'd never seen a grown-up clap at a television." },
+          { n: "He said the last part to Solar, not to the bag, and then looked surprised that he had." }
         ] }
       ] },
       { n: "They walked back to the dorm in the long gold light of late afternoon with the bag swinging from Ken's hand, and halfway there he started telling her about Featherman, all of it, the villains and the robots and the episode where Red lost his memory, and he told it in a breathless unbroken stream like water out of a pipe that had been shut off for a long time, and she didn't interrupt once." },
@@ -237,6 +245,14 @@
         { t: "You don't have to do it today.", notes: 1, then: [
           { s: 'ken', f: 'serious', t: "It's due. I don't leave things." },
           { n: "He said it like a rule he'd made for himself a long time ago, and pulled the sheet out from under his elbow and put it squarely in front of him, as if to prove it." }
+        ] },
+        // Nov 14 2026 (Kat): stat rank 10 choice
+        { t: "(Turn over a scrap sheet. Ask what she was like, and write down what he says.)", needs: { kindness: 10 }, hide: true, notes: 3, then: [
+          { n: "Writing it was the hard part. Talking, she thought, might not be. She turned over one of his finished math worksheets, uncapped a pen, and asked him what his mother had been like, and didn't look at him while she asked." },
+          { s: 'ken', f: 'neutral', t: "She was late for everything. She sang in the car, the wrong words on purpose. She hated cilantro. She said it tasted like soap and she'd fight anyone about it." },
+          { n: "He kept going. Solar wrote it down as fast as he said it, in plain short lines, not making anything nicer than he'd made it, and when he ran out she slid the sheet across to him." },
+          { s: 'ken', f: 'neutral', t: "...That's most of a page." },
+          { s: 'ken', f: 'serious', t: "Can I keep this? I'll copy it in my own words. It doesn't count otherwise." }
         ] }
       ] },
       { n: "His school planner was open on the table beside the sheet, a cheap one with a cartoon rocket on the cover, and when he reached past it for his eraser it flipped forward a few pages on its own, the way planners do, and fell open at October." },

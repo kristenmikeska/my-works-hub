@@ -526,3 +526,67 @@ Game: `minigames/stair.js` (header: optional art under `assets/femc/game/art/min
 - **59D** `stair-icons.png` (3 × 2) → `icon-radiator / koi / radio / engine / wind / creak.webp`: NOT wired yet. When it arrives: an `<img>` in each caption chip (`SRC` key → icon; `creak` for the uncovered-creak chip), the text kept.
 - **59E** `stair-end-home.png` / `stair-end-heard.png` → `end-home.webp` / `end-heard.webp`: NOT wired yet. When they arrive: behind the `.mg-end` panel for a win / a heard loss (dawn and quit keep the plain screen), dimmed under the text.
 
+
+## 60. More Shadows for Tartarus (Nov 14)
+
+Kat (Nov 14): "I would like more Shadows that appear… I feel like I only see the same few." 28 new Solstice-only regulars, 3-4 per main block. **Nothing is wired** (Kat's rule: no placeholder features); add each one only when its sheet exists.
+
+**Audit (Nov 14):** distinct regulars in each block's `pool` (data.js `blocks`): Thebel 7 (maya, slime, hand, beetle, snake, table, cupid), Arqa 5 own (venus, magus, twins, papillon, pesce; + cupid / hand carried up), Yabbashah 5, Tziah 5, Harabah 5, Adamah 4 (+ beast carried up; seeker only in `strong`), Empyrean 1 new (seeker) among 11 re-levelled lower-block Shadows, Monad 0 new among 13 re-levelled. All 32 main regulars have their own static art (`art/shadows/<slug>.webp`, 28 of them `small`: upscaled P3 sprites) and none has pose frames. Tinted / borrowed reuse: the 4 golden rares (tartarus.js `rare()`, gilded `cls: golden`), the 10 block guardians (tartarus.js `guard()`, existing art 1.3×), the 4 superbosses (`superb()`, CSS `tint`). NG+: Raqia / Zebul / Araboth have 3 own regulars each (climb.js `kin()`), all borrowing the memory-floor bosses' art at 0.78× (`zb_veil` and `ab_poster` both draw `memory-veil-poster`), plus re-levelled venus / papillon / dancer / cupid / pesce / pot / mother / magus / dice / king; the Zenith reuses them. Thinnest: Empyrean and Monad (no Shadows of their own), then Adamah.
+
+**Cutting each sheet:** Kat's `shadow-<slug>.png` (3 × 2, transparent, 1536 × 1024 expected) goes in `ALPHA_GRIDS` in `tools/femc-shadow-poses.py` exactly like the climb bosses: `{'slug': 'sx-<slug>', 'static': None, 'cols': 3, 'rows': 2, 'opaque': 250/255, 'states': BOSS_STATES}` (drop `opaque` if the bodies come solid). Frames in reading order: 0 idle, 1 wind-up, 2 attack, 3 cast, 4 hurt, 5 down (`BOSS_STATES`: attack [1,2], cast [1,3], hurt [4], down / defeat [5]); `static: None` writes the idle frame as `art/shadows/sx-<slug>.webp`. If a sheet comes on white instead, put it in `BOSSES` (source → slug) and it is keyed. Run `python3 tools/femc-shadow-poses.py shadow-<slug>.png`, check edges with `python3 tools/femc-shadow-poses.py check OUT.png shadow-<slug>.png`. Then bump `ART_V` (battle.js), `data.js` and `shadows/index.js` `?v=` in `femc-battle.html`, record the source in `tools/femc-new-adds.json`, move it to `Added to Game/`. Light check only (jsc parse + one fight in the pane, muted).
+
+**Adding each one:** an entry in data.js `enemies` under its block's comment, built like the Arqa+ regulars: `Object.assign(S(lvl, k), { name, arcana, aff, skills, ai, img, h, idle, svg, drop, note })` (`note` = the one-liner from Kat's list). Then add it to its block's `pool` (and one `strong` group); a floor gets a sliding window of the pool, so put it in two or three groups spread through the list. A ⭐ rarer one goes in only one late `pool` group and one `strong` group.
+
+| Item | id | img | Lv | Arcana | aff | skills | ai | h / idle / svg | drop |
+|---|---|---|---|---|---|---|---|---|---|
+| 60A Coffin Moth (Thebel) | `sx_coffin_moth` | `sx-coffin-moth` | 4 | Moon | fire weak, wind resist, dark resist | bash, e_garu, e_tarunda | random | 190 / float / venus | shadow_ash |
+| 60B Hall Monitor (Thebel) | `sx_hall_monitor` | `sx-hall-monitor` | 5 | Justice | elec weak, strike resist | lunge, e_zio, e_tarukaja | buffer | 250 / sway / hand | shadow_ash |
+| 60C Twelve O’Clock (Thebel) | `sx_twelve` | `sx-twelve-oclock` | 6 | Hermit | wind weak, pierce resist, dark null | lunge, e_bufu, e_tarunda | exploit | 220 / breathe / table | mask_shard |
+| 60D Dawn Wisp ⭐ (Thebel) | `sx_dawn_wisp` | `sx-dawn-wisp` | 7 | Sun | ice weak, fire null, light resist | tremble, e_agi, e_dia | coward | 150 / float / maya | mask_shard |
+| 60E Love Letter Locker (Arqa) | `sx_letter_locker` | `sx-letter-locker` | 10 | Lovers | fire weak, wind resist, strike resist | lunge, e_garu, e_marin_karin | random | 230 / breathe / table | mask_shard |
+| 60F Mirror Compact (Arqa) | `sx_compact` | `sx-mirror-compact` | 11 | Priestess | elec weak, ice resist, light resist | e_bufu, e_mabufu, e_media | healer | 200 / float / maiden | mask_shard |
+| 60G Petal Veil (Arqa) | `sx_petal_veil` | `sx-petal-veil` | 12 | Empress | fire weak, wind drain, pierce resist | e_magaru, e_garula, e_sexy_dance | exploit | 250 / sway / maiden | mask_shard |
+| 60H Detention Desk (Yabbashah) | `sx_detention` | `sx-detention-desk` | 14 | Hierophant | fire weak, strike resist, pierce resist | bash, e_zionga, e_rakukaja, e_tarunda | buffer | 210 / crawl / table | crimson_lacquer |
+| 60I Red Ink Crow (Yabbashah) | `sx_red_ink` | `sx-red-ink-crow` | 16 | Judgement | elec weak, wind resist, dark resist | peck, e_garula, e_ominous | exploit | 200 / float / venus | crimson_lacquer |
+| 60J Vending Oni (Yabbashah) | `sx_vending` | `sx-vending-oni` | 17 | Devil | ice weak, elec null, slash resist | e_power_slash, e_zionga, e_tarunda | random | 240 / breathe / hand | crimson_lacquer |
+| 60K Moonglass Rabbit (Tziah) | `sx_moon_rabbit` | `sx-moonglass-rabbit` | 19 | Moon | strike weak, ice drain, light resist | lunge, e_bufula, e_mabufu | weakest | 220 / breathe / maya | mirror_shard |
+| 60L Static Set (Tziah) | `sx_static_set` | `sx-static-set` | 20 | Hermit | wind weak, elec drain, slash resist | e_zionga, e_mazio, e_ominous | exploit | 220 / crawl / beetle | mirror_shard |
+| 60M Paper Crane Choir (Tziah) | `sx_cranes` | `sx-paper-crane-choir` | 21 | Temperance | fire weak, wind null, pierce resist | e_magaru, e_garula, e_media | healer | 230 / float / venus | mirror_shard |
+| 60N Sleepwalker ⭐ (Tziah) | `sx_sleepwalker` | `sx-sleepwalker` | 22 | Hanged Man | light weak, dark null, ice resist | e_evil_touch, e_marin_karin, e_mudo | random | 240 / float / maiden | mirror_shard |
+| 60O Kendo Husk (Harabah) | `sx_kendo` | `sx-kendo-husk` | 24 | Chariot | pierce weak, slash resist, elec resist | e_power_slash, e_kill_rush, e_tarukaja | weakest | 250 / breathe / hand | rusted_cog |
+| 60P Sodium Lamp (Harabah) | `sx_sodium` | `sx-sodium-lamp` | 26 | Hermit | ice weak, fire drain, light resist | e_agilao, e_maragi, e_rakunda | buffer | 270 / sway / maiden | rusted_cog |
+| 60Q Festival Shishi (Harabah) | `sx_shishi` | `sx-festival-shishi` | 27 | Strength | wind weak, fire resist, strike resist | e_herculean, e_heat_wave, e_evil_smile | weakest | 220 / crawl / beetle | stone_heart |
+| 60R Overtime (Adamah) | `sx_overtime` | `sx-overtime` | 29 | Devil | elec weak, strike resist, dark null | e_power_slash, e_ominous, e_mudo | exploit | 260 / sway / hand | stone_heart |
+| 60S Torii Wyrm (Adamah) | `sx_torii` | `sx-torii-wyrm` | 31 | Hierophant | fire weak, pierce null, wind resist | e_vorpal, e_hama, e_maragion | buffer | 200 / crawl / beetle | moon_feather |
+| 60T Insomnia Aquarium ⭐ (Adamah) | `sx_aquarium` | `sx-insomnia-aquarium` | 32 | Hanged Man | elec weak, ice drain, fire resist | e_bufudyne, e_mabufula, e_marin_karin | random | 240 / breathe / table | moon_feather |
+| 60U Solstice Herald (Empyrean) | `sx_herald` | `sx-solstice-herald` | 34 | Sun | dark weak, light null, fire resist | e_hamaon, e_maragion, e_tarukaja, e_diarama | buffer | 260 / float / maiden | moon_feather |
+| 60V Gilded Sundial (Empyrean) | `sx_sundial` | `sx-gilded-sundial` | 35 | Fortune | wind weak, strike resist, pierce resist, light resist | e_power_slash, e_megido, e_ominous, e_matarunda | random | 230 / breathe / table | moon_feather |
+| 60W Candle Mass (Empyrean) | `sx_candle` | `sx-candle-mass` | 36 | Priestess | ice weak, fire null, light resist | e_agilao, e_mediarama, e_diarama, e_masukunda | healer | 240 / breathe / maiden | moon_feather |
+| 60X Eclipse Moth ⭐ (Empyrean) | `sx_eclipse_moth` | `sx-eclipse-moth` | 37 | Death | ice weak, fire drain, dark null | e_maragion, e_megidola, e_evil_smile | exploit | 240 / float / venus | moon_feather |
+| 60Y Drift Jelly (Monad) | `sx_drift_jelly` | `sx-drift-jelly` | 45 | Moon | elec weak, ice null, wind resist, dark resist | e_bufudyne, e_mabufula, e_marin_karin, e_mediarama | healer | 270 / float / maiden | monad_sand |
+| 60Z Snow Globe (Monad) | `sx_snow_globe` | `sx-snow-globe` | 46 | Hermit | fire weak, ice drain, strike resist | e_mabufula, e_matarunda, e_megidola | exploit | 230 / breathe / maya | monad_sand |
+| 60AA Joya Bell (Monad) | `sx_joya_bell` | `sx-joya-bell` | 48 | Judgement | pierce weak, strike resist, slash resist, dark null | e_herculean, e_megidola, e_marakunda, e_ominous | buffer | 280 / sway / table | monad_sand |
+| 60AB Black Sun ⭐ (Monad) | `sx_black_sun` | `sx-black-sun` | 50 | Sun | light weak, dark null, fire resist, ice resist, elec resist, wind resist | e_megidolaon, e_maragion, e_mudo, e_evil_smile | exploit | 260 / float / maya | monad_sand |
+
+**Ids:** every new id has the `sx_` prefix (bare names like `twelve`, `candle`, `kendo` are taken elsewhere in battle/); slugs are `sx-<name>`.
+
+**Suggested pools** (append to each block's `pool`; levels without `@` use the entry's own and the block ramp):
+- Thebel: `['sx_coffin_moth', 'maya', 'slime']` early, `['sx_hall_monitor', 'hand']`, `['sx_twelve', 'sx_coffin_moth', 'beetle']`, `['sx_hall_monitor', 'sx_twelve', 'snake']` late; ⭐ `['sx_dawn_wisp', 'sx_dawn_wisp']` once near the end; strong `['sx_twelve@8', 'sx_hall_monitor@8', 'cupid']`.
+- Arqa: `['sx_letter_locker', 'venus']`, `['sx_compact', 'papillon', 'sx_letter_locker']`, `['sx_petal_veil', 'sx_compact']`, `['sx_petal_veil', 'twins', 'sx_letter_locker']`; strong `['sx_petal_veil@14', 'sx_compact@13', 'magus@13']`.
+- Yabbashah: `['sx_detention', 'dice']`, `['sx_red_ink', 'sx_detention', 'relic']`, `['sx_vending', 'sx_red_ink']`, `['sx_vending', 'mother', 'sx_detention']`; strong `['sx_vending@19', 'sx_red_ink@19', 'sx_detention@19']`.
+- Tziah: `['sx_moon_rabbit', 'dancer']`, `['sx_static_set', 'sx_moon_rabbit', 'bambino']`, `['sx_cranes', 'sx_static_set']`, `['sx_cranes', 'king', 'sx_moon_rabbit']`; ⭐ `['sx_sleepwalker', 'sx_cranes']` once late; strong `['sx_static_set@24', 'sx_cranes@24', 'sx_moon_rabbit@24']`.
+- Harabah: `['sx_kendo', 'drive']`, `['sx_sodium', 'sx_kendo', 'giant']`, `['sx_shishi', 'sx_sodium']`, `['sx_shishi', 'sx_kendo', 'beast']`; strong `['sx_shishi@29', 'sx_kendo@29', 'sx_sodium@29']`.
+- Adamah: `['sx_overtime', 'knight']`, `['sx_torii', 'sx_overtime', 'machine']`, `['sx_torii', 'castle', 'sx_overtime']`; ⭐ `['sx_aquarium', 'tower']` once late; strong `['sx_torii@34', 'sx_overtime@34']`.
+- Empyrean: replace about half of the re-levelled groups: `['sx_herald', 'knight@35']`, `['sx_sundial', 'sx_herald', 'tower@35']`, `['sx_candle', 'sx_sundial']`, `['sx_candle', 'sx_herald', 'seeker']`; ⭐ `['sx_eclipse_moth', 'sx_candle']` once late; strong `['sx_herald@38', 'sx_sundial@38', 'sx_candle@38']`.
+- Monad: replace about half of the re-levelled groups: `['sx_drift_jelly@45', 'seeker@45']`, `['sx_snow_globe@46', 'sx_drift_jelly@46']`, `['sx_joya_bell@48', 'sx_snow_globe@47', 'castle@47']`, `['sx_joya_bell@50', 'sx_drift_jelly@49', 'seeker@49']`; ⭐ `['sx_black_sun@51']` once in the last third; strong `['sx_joya_bell@52', 'sx_snow_globe@52', 'sx_drift_jelly@51']`. Monad pool entries all carry `@level`.
+- Optional later (ask Kat): a golden rare built from a new one (e.g. a golden Dawn Wisp for `RARE_BY_BLOCK`), and the new ones as NG+ `kin`-style regulars in the Zenith.
+- Attachment: `Shadow - style (The Last Song).png` copied to Place Prompt Attachments on Nov 14 (from `Added to Game/guard-raqia-attack.png`, Kat's transparent 3 × 2 climb-boss sheet; it shows the layout and the finish).
+
+
+## 61. Social stat wallpapers (Nov 14)
+
+Kat's social stats go to rank 15 (data/stats.js, Nov 14); rank 5 of each stat gives a title (already wired: cosmetics.js `tt-stat-<id>`, granted by core.js `statTitles`) and, once this art exists, a wallpaper. **Nothing is wired yet** (Kat's rule: no placeholder features).
+- On install: `wp-stat-<id>.png` (knowledge / courage / proficiency / charm / kindness) → WebP q86, 1920 wide, `assets/femc/game/art/wallpapers/wp-stat-<id>.webp`.
+- cosmetics.js, after the `wp-` wallpapers: `c('wp-stat-knowledge', 'wallpaper', 'Luminary', 'SR', 'Knowledge at rank 5.', { bg: 'assets/femc/game/art/wallpapers/wp-stat-knowledge.webp', pool: false })`, and the same for courage (Unflinching), proficiency (Virtuoso), charm (Main Character), kindness (Heart of Gold). `pool: false`: only the stat gives it.
+- data/stats.js: add `wall: 'wp-stat-<id>'` to each stat beside `title`. core.js `statTitles()`: grant `statDef(k).wall` the same way as `title` (owns / grantItem; it already runs on every save, so saves already at rank 5 get it on load); `statRewardText('title')` / the rank-5 toast in `statTierUp`: "… title and a wallpaper are in your Wardrobe." The Status screen's reward list reads that text, nothing else to change.
+- Bump cosmetics.js, stats.js and core.js `?v=` in femc-game.html (femc-battle.html loads none of them).

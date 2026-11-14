@@ -90,3 +90,12 @@
 .gs-choices.gs-confirm .gs-confirm-q > span { display: inline-block; transform: skewX(14deg); }
 .gs-choices.gs-confirm .gs-confirm-yes { opacity: .9; }
 @media (prefers-reduced-motion: reduce) { .gs-choices.gs-confirm .gs-confirm-q { animation: none; } }
+/* Stat choices (scene.js: an option with needs + hide, shown once the rank is reached, 2026-11-14): the stat's name as a small
+   pink-on-black tag before the words, like P5's stat-tagged options. */
+.gs-choices button .gs-stat-tag { margin-right: 10px; padding: 2px 8px 3px; background: #ff4f9e; color: #14070f; font: 800 12px/1.2 var(--sans); font-variant: small-caps; text-transform: lowercase; letter-spacing: .12em; vertical-align: 2px; box-shadow: 2px 2px 0 #14070f; }
+.gs-choices button:is(:hover, :focus-visible) .gs-stat-tag { background: #14070f; color: #ff4f9e; box-shadow: 2px 2px 0 #ff4f9e; }
+/* Knowledge 12 in class (ui.js classPeriod, G.knowsAnswer): the right answer glows soft pink with a "you know this" tag. */
+.g-quiz-a .g-btn.known { position: relative; box-shadow: 0 0 0 2px #ff4f9e, 0 0 18px rgba(255, 79, 158, .55); animation: g-known 2.4s ease-in-out infinite; }
+.g-quiz-a .g-btn .g-known-tag { margin-left: auto; padding: 2px 8px; background: #ff4f9e; color: #14070f; font: 800 11px/1.2 var(--sans); font-variant: small-caps; text-transform: lowercase; letter-spacing: .1em; white-space: nowrap; }
+@keyframes g-known { 50% { box-shadow: 0 0 0 2px #ff4f9e, 0 0 28px rgba(255, 79, 158, .8); } }
+@media (prefers-reduced-motion: reduce) { .g-quiz-a .g-btn.known { animation: none; } }

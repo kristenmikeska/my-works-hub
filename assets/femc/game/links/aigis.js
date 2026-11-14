@@ -189,6 +189,14 @@
         { t: "He was not doing the butterfly.", notes: 2, then: [
           { s: 'aigis', f: 'neutral', t: "No. I looked it up afterward. He was not doing any recognized stroke." },
           { s: 'aigis', f: 'serious', t: "I did not tell him. I believed it would hurt him. I do not know when I learned to do that." }
+        ] },
+        // Nov 14 2026 (Kat): stat rank 10 choice
+        { t: "(Borrow a rod off the old man by the rail, and rig it for her.)", needs: { proficiency: 10 }, hide: true, notes: 3, then: [
+          { n: "The old man by the rail wasn't using his spare rod, and said so, and watched with growing interest as Solar re-tied his tangled leader with a knot her fingers seemed to have learned somewhere else, seven turns and back through the loop, bit it off clean, and put the rod in Aigis's hands." },
+          { n: "Aigis cast once, to test the weight. The second cast went so far out over the bay that the old man stood up from his bucket." },
+          { s: 'aigis', f: 'surprised', t: "The line is in the water. A part of my equipment is in the water." },
+          { s: 'solar', f: 'neutral', t: "That counts." },
+          { s: 'aigis', f: 'happy', t: "...Yes. I would like it to count." }
         ] }
       ] },
       { n: "They leaned on the rail. Behind them a little boy of maybe four was crying about something, an ice cream or the end of the day or the general injustice of being four, and his father picked him up and swung him up onto his shoulders in one easy movement, and the crying stopped as if somebody had turned a tap." },

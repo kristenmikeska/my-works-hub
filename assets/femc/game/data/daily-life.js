@@ -410,6 +410,13 @@ window.FEMC_GAME_DAILY_LIFE = [
         ] },
         { t: "(Put your hand down. Let someone else try.)", then: [
           { n: "She put it down. Ekoda's eyes passed over her like a lighthouse beam and settled on the sleeping boy, who was woken, and questioned, and did not recover for the rest of the morning." }
+        ] },
+        // Nov 14 2026 (Kat): stat rank 10 choice
+        { t: "Because the blossoms are a thing. The dawn is light changing. Yōyō shiroku nariyuku yamagiwa...", stat: { knowledge: 1 }, needs: { knowledge: 10 }, hide: true, then: [
+          { n: "She said the rest of the line in the old language, the hills going slowly white along their edge, a little light, the thin purple clouds trailing, the way it sat on the page a thousand years ago, and the vowels came out of her as if she'd been reciting it for years." },
+          { n: "The classroom went quiet in a new way. The sleeping boy woke up on his own." },
+          { s: 'ekoda', t: "...Who made you learn that by heart?" },
+          { n: "She didn't know. Mr. Ekoda looked at her over his book for a long moment, then wrote something in the margin of his attendance sheet, and for the rest of the period he read a little more slowly, like a man who'd found out somebody was listening." }
         ] }
       ] }
     ] },
@@ -427,6 +434,13 @@ window.FEMC_GAME_DAILY_LIFE = [
         { t: "(Take the bigger half. Say thank you properly.)", stat: { kindness: 1 }, then: [
           { s: 'yukari', f: 'blushing', t: "It's a melon pan. It's not a kidney. You don't have to look at me like that." },
           { n: "But she sat a little closer for the rest of lunch, close enough that the wind had to go around both of them." }
+        ] },
+        // Nov 14 2026 (Kat): stat rank 10 choice
+        { t: "(Swap ends with her, so you're the one in the wind.)", stat: { kindness: 1 }, needs: { kindness: 10 }, hide: true, then: [
+          { n: "Yukari was holding her skirt down with one hand, her hair out of her mouth with the other, and the melon pan with neither. Solar got up, took her own sandwich, and sat down on the windward end, and the wind hit her instead, and Yukari's hair settled all at once." },
+          { s: 'yukari', f: 'surprised', t: "...Oh. That's the whole problem, isn't it. It's the end of the bench." },
+          { s: 'yukari', f: 'blushing', t: "You didn't have to do that. Here. Bigger half. Don't argue, you're the one freezing." },
+          { n: "They ate the rest of lunch like that, Solar's blazer flapping, Yukari almost warm, and neither of them mentioned the cafeteria again." }
         ] }
       ] }
     ] },

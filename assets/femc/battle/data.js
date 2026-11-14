@@ -655,10 +655,10 @@ window.FEMC_BATTLE_DATA = (() => {
       lines: { hi: ['Welcome! Feeling run down? I’ve got just the thing.', 'Ah, a student. Stocking up for a club trip?'], buy: ['Take care of yourself!', 'Thank you very much!'], poor: 'Ah… that’s a little more than you have.', bye: 'Get some rest, okay?' } },
     bebluev: { name: 'Be Blue V', sub: 'Accessories', who: 'The shop clerk', bg: BG + 'bebluev-outside.webp', color: '#6ab0ff', sells: ['acc'],
       lines: { hi: ['Welcome to Be Blue V! Everything here has a little power in it.', 'Looking for something to wear? These stones are said to protect you.'], buy: ['It suits you!', 'May it bring you luck.'], poor: 'Oh, you’re a bit short…', bye: 'Come back soon!' } },
-    mayoido: { name: 'Mayoido Antiques', sub: 'Rare goods · buys materials', who: 'The antique dealer', bg: BG + 'mayoidoantiques-outside.webp', color: '#ffd36b', sells: ['item', 'rare'],
+    mayoido: { name: 'Mayoido Antiques', sub: 'Rare goods · buys materials · trades for plumes', who: 'The antique dealer', bg: BG + 'mayoidoantiques-outside.webp', color: '#ffd36b', sells: ['item', 'rare'],
       stock: ['tartarus_key', 'traesto_gem', 'dekaja_gem', 'soma', 'sun_naginata', 'thunder_fist', 'gale_bow', 'blaze_blade', 'ice_rapier', 'frost_coat', 'insulated_vest', 'fireproof_suit', 'gale_cloak', 'star_brooch'],
       buys: true,
-      lines: { hi: ['Hm? A customer at this hour… I trade in strange things. And I buy them, too.', 'Those bits you bring back from the dark… they fetch a price here.'], buy: ['A fine eye.', 'That one has a story.'], sold: 'Hmhm. A pleasure.', poor: 'Not enough, I’m afraid.', bye: 'Until next time.' } }
+      lines: { hi: ['Hm? A customer at this hour… I trade in strange things. And I buy them, too.', 'Those bits you bring back from the dark… they fetch a price here.'], buy: ['A fine eye.', 'That one has a story.'], sold: 'Hmhm. A pleasure.', trade: 'Hmhm. I know a collector who pays in feathers. Blue ones.', poor: 'Not enough, I’m afraid.', bye: 'Until next time.' } }
   };
 
   /* Shadows.

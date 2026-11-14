@@ -37,7 +37,8 @@
        (two presses), and the skill cards Shuffle Time gives (teach one to a member). Faces are Kat's set art in a frame drawn in code (cardFace → icons.js revCard).
      - Bonds: every met link's perks (Battle / Assist / Tartarus / Daily / MAX), earned or not, paused (reversed) or waiting on a
        system that isn't built yet. The Links tab shows a link's perks when you pick it.
-     - Equipment: weapon art (Solar's naginatas) and Refine (+1 to +5) on the weapon slot.
+     - Equipment: weapon art (Solar's naginatas) and Refine (+1 to +5, materials or a spare copy) / Forge (+6 to +15, spare
+       copies) on the weapon slot, and Salvage (spare weapons into Tarot Dust, two presses) under it (build.js WREF).
      Money: in the field the life sim's yen (G.addYen); in the Dark Hour the battle save's (the fight reports the change back).
 
    ── COLLECTION (gacha.js draws and wires it): the capsule machine's keychains by set, phone cases (pick one for the phone),
@@ -449,7 +450,7 @@ window.FemcMenu = (() => {
       <div class="g-pv-who">${list.map(x => `<button type="button" class="g-who-mini${x.id === id ? ' on' : ''}" data-eq="${x.id}" title="${esc(x.name)}"><i>${face(x.id, x.faces?.idle || 'serious')}</i><b>${esc(x.name)}<small>Lv ${lvOf(x.id)}</small></b></button>`).join('')}</div>
       <div class="g-eq-main">
         <div class="g-eq-head"><h2>${esc(m.name)}<small>${esc(personaOf(id)?.name || '')}</small></h2>${u ? `<p class="g-pv-stats">${[['HP', u.maxHp], ['SP', u.maxSp], ['ATK', u.atk], ['DEF', u.def], ['St', u.st], ['Ma', u.ma], ['En', u.en], ['Ag', u.ag], ['Lu', u.lu]].map(([k, v]) => `<span><small>${k}</small><b>${Math.round(v)}</b></span>`).join('')}</p>` : ''}</div>
-        <div class="g-eq-slots">${SL.map(([k, label]) => { const g0 = D().gear[eq[k]], wa = k === 'weapon' && g0 && window.FemcCosmetics?.weaponArt(id), g = wa ? Object.assign({}, g0, { art: wa, artWide: false }) : g0, rf = g && BLD() ? BLD().wrefOf(b, eq[k]) : 0; return `<button type="button" class="g-eq-slot${open === k ? ' open' : ''}${g && g.art ? ' art' : ''}" data-slot="${k}"><small>${label}</small>${g && g.art ? `<img class="g-eq-art${g.artWide ? ' wide' : ''}" src="${G.base}${g.art}" alt="">` : `<i>${g ? icon(eq[k]) : ''}</i>`}<b>${g ? esc(g.name) + (rf ? ` +${rf}` : '') : '—'}<span>${g ? esc(BS().gearLine(eq[k], b)) : 'Nothing equipped'}</span>${g && g.look ? `<span class="look">${esc(g.look)}</span>` : ''}</b></button>`; }).join('')}</div>
+        <div class="g-eq-slots">${SL.map(([k, label]) => { const g0 = D().gear[eq[k]], wa = k === 'weapon' && g0 && window.FemcCosmetics?.weaponArt(id), g = wa ? Object.assign({}, g0, { art: wa, artWide: false }) : g0, rf = g && BLD() ? BLD().wrefOf(b, eq[k]) : 0; return `<button type="button" class="g-eq-slot${open === k ? ' open' : ''}${g && g.art ? ' art' : ''}" data-slot="${k}"><small>${label}</small>${g && g.art ? `<img class="g-eq-art${g.artWide ? ' wide' : ''}" src="${G.base}${g.art}" alt="">` : `<i>${g ? icon(eq[k]) : ''}</i>`}<b>${g ? esc(g.name) + (rf ? ` +${rf}` : '') + (rf && BLD().forged && BLD().forged(rf) ? ' <em class="g-forged">Forged</em>' : '') : '—'}<span>${g ? esc(BS().gearLine(eq[k], b)) : 'Nothing equipped'}</span>${g && g.look ? `<span class="look">${esc(g.look)}</span>` : ''}</b></button>`; }).join('')}</div>
         ${refineHtml(b, eq.weapon)}
         ${open ? `<ul class="g-eq-list">${cands.map(x => { const g = x && D().gear[x]; return `<li><button type="button" class="g-eq-item${x === eq[open] ? ' cur' : ''}${g && g.art ? ' art' : ''}" data-pick="${x || ''}">${g && g.art ? `<img class="g-eq-art sm${g.artWide ? ' wide' : ''}" src="${G.base}${g.art}" alt="">` : `<i>${g ? icon(x) : ''}</i>`}<b>${g ? esc(g.name) : 'Remove'}<span>${g ? esc(BS().gearLine(x, b)) : 'Take it off'}</span></b><em>${x === eq[open] ? 'E' : g && g.tier ? `×${BS().spare(b, x)}` : ''}</em></button></li>`; }).join('') || '<li class="g-note">Nothing that fits. Shops are on the Strip and at the Mall.</li>'}</ul>` : '<p class="g-note small">Pick a slot to change it. Gear bought in town goes here.</p>'}
       </div></div>`;
@@ -458,12 +459,25 @@ window.FemcMenu = (() => {
   const yenNow = () => (opts.inBattle ? bsave().yen : S().yen);
   const payYen = n => { if (opts.inBattle) { bsave().yen = Math.max(0, bsave().yen - n); opts.yen = bsave().yen; } else G.addYen(-n); };
   const costHtml = c => Object.entries(c).map(([k, n]) => k === 'yen' ? `<span class="${yenNow() >= n ? '' : 'short'}">¥${n.toLocaleString('en-US')}</span>` : `<span class="${(bsave().mats[k] || 0) >= n ? '' : 'short'}">${esc(D().materials[k].name)} ×${n} <small>(${bsave().mats[k] || 0})</small></span>`).join('');
+  /* Refine (+1..+5: materials, or a spare copy for the thread and most of the dust) and forge (+6..+15: spare copies and
+     more of everything): one row per way to pay (build.js refineWays). Salvage lists every weapon with a spare copy. */
   function refineHtml(b, wid) {
     const g = D().gear[wid], B = BLD();
-    if (!B || !g || !(g.tier > 0)) return '';
-    const r = B.wrefOf(b, wid), c = B.wrefCost(b, wid);
-    return `<div class="g-refine"><p><b>Refine · ${esc(g.name)} ${r ? `+${r}` : ''}</b><small>${c ? `+${r + 1}: ATK ${B.weaponAtk(b, wid)} → ${Math.round(g.atk * (1 + B.WREF.atk * (r + 1)))}${g.bonus ? ', its bonus +15%' : ''}` : 'Fully refined (+5).'}</small></p>
-      ${c ? `<div class="g-cost">${costHtml(c)}</div><button type="button" class="g-btn small pink" data-refine="${esc(wid)}"${B.canPay(b, c, yenNow()) ? '' : ' disabled'}>Refine to +${r + 1}</button>` : ''}</div>`;
+    if (!B || !B.refineWays || !g || !(g.tier > 0)) return salvageHtml(b);
+    const r = B.wrefOf(b, wid), nx = r + 1, sp = B.dupes(b, wid), fg = B.forged(nx);
+    const ways = B.refineWays(b, wid).filter(w => w.way !== 'dupe' || sp > 0);
+    const step = Math.round((fg ? B.WREF.forgeBonus : B.WREF.bonus) * 100);
+    const head = `<p><b>${r >= B.WREF.refined ? 'Forge' : 'Refine'} · ${esc(g.name)} ${r ? `+${r}` : ''}${B.forged(r) ? ' <em class="g-forged">Forged</em>' : ''}</b><small>${ways.length ? `+${nx}${fg ? ' (forged)' : ''}: ATK ${B.weaponAtk(b, wid)} → ${B.weaponAtkAt(wid, nx)}${g.bonus ? `, its bonus +${step}%` : ''}${sp || fg ? ` · spare copies: ${sp}` : ''}` : `Fully forged (+${B.WREF.max}).`}</small></p>`;
+    const label = w => (w.way === 'forge' ? `Forge to +${nx}` : w.way === 'dupe' ? `+${nx} with a spare copy` : `Refine to +${nx}`);
+    const row = w => `<div class="g-refine-way"><div class="g-cost">${w.copies ? `<span class="${sp >= w.copies ? '' : 'short'}">Spare ${esc(g.name)} ×${w.copies} <small>(${sp})</small></span>` : ''}${costHtml(w.cost)}</div><button type="button" class="g-btn small pink" data-refine="${esc(wid)}" data-way="${w.way}"${B.canWay(b, wid, w, yenNow()) ? '' : ' disabled'}>${label(w)}</button></div>`;
+    return `<div class="g-refine${B.forged(r) ? ' forged' : ''}">${head}${ways.map(row).join('')}</div>${salvageHtml(b)}`;
+  }
+  function salvageHtml(b) {
+    const B = BLD(), list = B && B.salvageList ? B.salvageList(b) : [];
+    if (!list.length) return '';
+    return `<details class="g-salvage"${sel.salvageOpen ? ' open' : ''}><summary>Salvage spare weapons <small>(${list.length})</small></summary>
+      <p class="g-note small">A spare copy breaks down into Tarot Dust (more for a higher tier, a rare one or a refined one). The last copy of a weapon always stays. Spare copies also pay for refining and forging.</p>
+      <ul>${list.map(id => `<li><button type="button" class="g-btn small${sel.salvage === id ? ' pink' : ''}" data-salvage="${esc(id)}">${esc(D().gear[id].name)} <small>×${B.dupes(b, id)} spare · ${sel.salvage === id ? 'press again to salvage' : `Tarot Dust ×${B.salvageDust(b, id)}`}</small></button></li>`).join('')}</ul></details>`;
   }
   function wireEquip(el) {
     el.querySelectorAll('[data-eq]').forEach(bt => bt.addEventListener('click', () => { sel.equip = bt.dataset.eq; sel.slot = null; G.sfx('femc-hover'); render(); }));
@@ -473,11 +487,20 @@ window.FemcMenu = (() => {
       BS().equip(b, id, sel.slot, bt.dataset.pick || null);
       sel.slot = null; G.saveQuiet(); G.sfx('femc-rankup'); render();
     }));
-    el.querySelector('[data-refine]')?.addEventListener('click', e => {
-      const wid = e.currentTarget.dataset.refine, r = BLD().refineWeapon(bsave(), wid, { yenNow: yenNow(), payYen });
+    el.querySelectorAll('[data-refine]').forEach(bt => bt.addEventListener('click', e => {
+      const wid = e.currentTarget.dataset.refine, r = BLD().refineWeapon(bsave(), wid, { yenNow: yenNow(), payYen, way: e.currentTarget.dataset.way || null });
       if (!r.ok) { G.toast('note', r.why); G.sfx('femc-hover'); return; }
-      G.toast('note', `${D().gear[wid].name} is now +${r.lvl}.`); G.sfx('femc-rankup'); G.saveQuiet(); render('[data-refine], [data-slot="weapon"]');
-    });
+      G.toast('note', `${D().gear[wid].name} is now +${r.lvl}${r.forged ? ' (forged)' : ''}${r.copies ? `: ${r.copies > 1 ? `${r.copies} spare copies` : 'a spare copy'} went into it` : ''}.`); G.sfx('femc-rankup'); G.saveQuiet(); render('[data-refine], [data-slot="weapon"]');
+    }));
+    el.querySelector('.g-salvage')?.addEventListener('toggle', e => { sel.salvageOpen = e.currentTarget.open; });
+    el.querySelectorAll('[data-salvage]').forEach(bt => bt.addEventListener('click', () => {
+      const id = bt.dataset.salvage;
+      if (sel.salvage !== id) { sel.salvage = id; G.sfx('femc-hover'); render(`[data-salvage="${id}"]`); return; }
+      sel.salvage = null;
+      const r = BLD().salvageWeapon(bsave(), id);
+      if (!r.ok) { G.toast('note', r.why); G.sfx('femc-hover'); render(); return; }
+      G.toast('note', `${D().gear[id].name} salvaged: Tarot Dust +${r.dust}.`); G.sfx('femc-click'); G.saveQuiet(); render('.g-salvage summary');
+    }));
   }
 
   /* ── CARDS (Revelation-style, P5X) ── */
@@ -665,16 +688,21 @@ window.FemcMenu = (() => {
   }
   /* ── Social stats, P5R-style: a radar of every stat (the five make a pentagon) and a
      card per stat with its rank name, rank number in suns, and the meter to the next rank. Everything is read from
-     G.D.stats.stats (name, color, ranks, at), so a stat added there appears here without changes. ── */
+     G.D.stats.stats (name, color, ranks, at), so a stat added there appears here without changes.
+     Fifteen ranks since 2026-11-14: the radar's scale is ranks 1-5 until any stat passes 5, then 1-10, then 1-15 (bands of
+     five), so a first playthrough's chart isn't a dot in the middle. Each card shows its band of five suns, "Rank n / 15", the
+     meter, and the reward ladder (stats.js rewards via G.statRewards), greyed until reached. ── */
   function statsScreen() {
     const list = Object.entries(G.D.stats.stats), n = list.length;
     const sun = cls => (UI().SUN ? UI().SUN(cls) : '☀');
     const pt = (k, r) => { const a = -Math.PI / 2 + (k * 2 * Math.PI) / n; return [100 + Math.cos(a) * r, 100 + Math.sin(a) * r]; };
     const poly = r => list.map((_, k) => pt(k, r).map(v => v.toFixed(1)).join(',')).join(' ');
-    const level = ([k, d]) => { const max = d.ranks.length, r = G.statRank(k); return max > 1 ? Math.min(1, (r - 1 + (r >= max ? 0 : G.statProgress(k))) / (max - 1)) : 1; };
-    const maxR = Math.max(...list.map(([, d]) => d.ranks.length));
+    const maxR = Math.max(...list.map(([, d]) => d.ranks.length)), high = Math.max(1, ...list.map(([k]) => G.statRank(k)));
+    const cap = Math.max(2, Math.min(maxR, Math.max(G.D.stats.rewards?.firstMax || 5, Math.ceil(high / 5) * 5)));
+    const level = ([k, d]) => { const max = d.ranks.length, r = G.statRank(k); return Math.min(1, (r - 1 + (r >= max ? 0 : G.statProgress(k))) / (cap - 1)); };
+    const rings = Math.min(cap - 1, 4);
     const radar = n >= 3 ? `<svg class="g-ss-radar" viewBox="-52 -2 304 206" role="img" aria-label="${esc(list.map(([k, d]) => `${d.name}: ${G.statRankName(k)}`).join(', '))}">
-        ${Array.from({ length: maxR - 1 }, (_, j) => `<polygon class="grid" points="${poly(70 * (j + 1) / (maxR - 1))}"/>`).join('')}
+        ${Array.from({ length: rings }, (_, j) => `<polygon class="grid" points="${poly(70 * (j + 1) / rings)}"/>`).join('')}
         ${list.map((_, k) => { const [x, y] = pt(k, 70); return `<line x1="100" y1="100" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}"/>`; }).join('')}
         <polygon class="val" points="${list.map((st, k) => pt(k, 8 + 62 * level(st)).map(v => v.toFixed(1)).join(',')).join(' ')}"/>
         ${list.map((st, k) => { const [x, y] = pt(k, 8 + 62 * level(st)); return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.5" style="fill:${st[1].color}"/>`; }).join('')}
@@ -682,12 +710,15 @@ window.FemcMenu = (() => {
         <g transform="translate(100 100) scale(.34)" class="g-ss-core">${(UI().SUN ? UI().SUN('') : '').replace(/^<svg[^>]*>|<\/svg>$/g, '')}</g></svg>` : '';
     const card = ([k, d]) => {
       const r = G.statRank(k), max = d.ranks.length, top = r >= max, pr = top ? 1 : G.statProgress(k);
+      const b0 = Math.floor((Math.min(r, max) - 1) / 5) * 5, band = Math.min(5, max - b0); // this band of five ranks
+      const rw = G.statRewards ? G.statRewards(k) : [];
       return `<div class="g-ss-stat" style="--c:${d.color}" data-stat="${k}"><p class="g-ss-name">${esc(d.name)}</p><p class="g-ss-rank">${esc(G.statRankName(k))}</p>
-        <p class="g-ss-suns" aria-label="Rank ${r} of ${max}">${Array.from({ length: max }, (_, j) => sun(j < r ? 'on' : '')).join('')}<small>${top ? 'MAX' : `Rank ${r}`}</small></p>
+        <p class="g-ss-suns" aria-label="Rank ${r} of ${max}">${Array.from({ length: band }, (_, j) => sun(b0 + j < r ? 'on' : '')).join('')}<small>${top ? 'MAX' : `Rank ${r} / ${max}`}</small></p>
         <div class="g-ss-meter" role="progressbar" aria-label="${esc(d.name)} to the next rank" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(pr * 100)}"><i style="width:${Math.round(pr * 100)}%"></i></div>
-        <p class="g-ss-next">${top ? 'Mastered.' : `Next: ${esc(d.ranks[r])}`}</p></div>`;
+        <p class="g-ss-next">${top ? 'Mastered.' : `Next: ${esc(d.ranks[r])}`}</p>
+        ${rw.length ? `<ul class="g-ss-rw" aria-label="${esc(d.name)} rewards">${rw.map(x => `<li class="${x.got ? 'got' : ''}"><b>${x.rank}</b><span>${esc(x.text)}</span></li>`).join('')}</ul>` : ''}</div>`;
     };
-    return `<div class="g-ss"><div class="g-ss-chart">${radar}<p class="g-ss-title">Social stats</p></div><div class="g-st-stats g-ss-list">${list.map(card).join('')}</div></div>`;
+    return `<div class="g-ss"><div class="g-ss-chart">${radar}<p class="g-ss-title">Social stats</p>${cap > (G.D.stats.rewards?.firstMax || 5) ? `<p class="g-ss-scale">Chart: ranks 1–${cap}</p>` : ''}</div><div class="g-st-stats g-ss-list">${list.map(card).join('')}</div></div>`;
   }
   function statusTab() {
     const s = S(), c = G.D.stats.conditions[s.condition], i = G.dayInfo(), b = bsave();

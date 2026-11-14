@@ -28,7 +28,8 @@ window.FemcStamps = (() => {
   }
   const clears = () => { try { return JSON.parse(localStorage.getItem('kg-femc-revamp-clears') || '[]') || []; } catch (e) { return []; } };
   const rank = id => (G.S.links?.[id]?.rank) || 0;
-  const statMax = id => { try { return G.statRank(id) >= G.D.stats.stats[id].ranks.length; } catch (e) { return false; } };
+  // "Max a stat" means rank 5 (stats.js rewards.firstMax), the first playthrough's top, since the ladders went to 15 (2026-11-14).
+  const statMax = id => { try { return G.statRank(id) >= Math.min(G.D.stats.rewards?.firstMax || 5, G.D.stats.stats[id].ranks.length); } catch (e) { return false; } };
   const NAG = () => Object.keys(window.FEMC_BATTLE_DATA?.gear || {}).filter(k => window.FEMC_BATTLE_DATA.gear[k].nag);
   /* The ids whose rules pass for the current save. */
   function earned() {

@@ -234,6 +234,12 @@ window.FemcCosmetics = (() => {
     c('tt-twosuns', 'title', 'Two Suns Title', 'UR', 'Amber and rose, two lights at once. The Solchan Series reward.', { title: ['#ffb84d', '#2a0d14'], pool: false }),
     c('tt-eclipse', 'title', 'Eclipse Title', 'UR', 'A sun and a moon sharing the sky. The Hidden Charms reward.', { title: ['#fff0a8', '#070a1c'], pool: false }),
     c('tt-zenith', 'title', 'Zenith Title', 'UR', 'Noon, straight overhead, and no shadow under anyone. For the top of the tower.', { title: ['#fff6cf', '#7a4a00'], pool: false }),
+    // Social stats at rank 5 (2026-11-14; core.js statTitles grants them, stats.js `title`). Pink and black only (Kat's palette).
+    c('tt-stat-knowledge', 'title', 'Luminary Title', 'SR', 'Ink-black with a pink margin note. For Knowledge at rank 5.', { title: ['#ff8cc0', '#14070f'], pool: false }),
+    c('tt-stat-courage', 'title', 'Unflinching Title', 'SR', 'Hot pink, no hesitation. For Courage at rank 5.', { title: ['#ff4f9e', '#14070f'], pool: false }),
+    c('tt-stat-proficiency', 'title', 'Virtuoso Title', 'SR', 'Clean lines, pale pink, nothing out of place. For Proficiency at rank 5.', { title: ['#ffc2dc', '#14070f'], pool: false }),
+    c('tt-stat-charm', 'title', 'Main Character Title', 'SR', 'Black with a pink spotlight. For Charm at rank 5.', { title: ['#14070f', '#ff4f9e'], pool: false }),
+    c('tt-stat-kindness', 'title', 'Heart of Gold Title', 'SR', 'Soft blush on deep plum-black. For Kindness at rank 5.', { title: ['#ffe3ef', '#2a0a1c'], pool: false }),
     // Code-only: menu wallpapers (place backgrounds and the key art; nothing from the story's CGs).
     c('wp-dorm', 'wallpaper', 'Dorm Lounge', 'R', 'The lounge at night.', { bg: BG('iwatodaidorm-livingroom-night') }),
     c('wp-mall', 'wallpaper', 'Paulownia Mall', 'R', 'The mall after dark.', { bg: BG('paulownia-mall-night') }),

@@ -350,3 +350,22 @@
   .g-fm-ov.is-page .g-fm-tabs { padding-bottom: 4px; }
   .g-fm-ov.is-page .g-fm-tabs > :is(button, a) { padding: 5px 11px 5px 9px; }
 }
+
+/* Weapon forging (2026-11-14, menu.js refineHtml / salvageHtml): one row per way to pay, a pink "Forged" label from +6, the
+   Salvage list under it. Pink and black only. */
+.g-refine > p { grid-column: 1 / -1; }
+.g-refine .g-refine-way { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px; }
+.g-refine .g-refine-way + .g-refine-way { padding-top: 6px; border-top: 1px dashed rgba(255, 79, 158, .35); }
+.g-refine .g-refine-way .g-btn { grid-column: auto; grid-row: auto; }
+.g-forged { display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 3px; background: #14070f; color: #ff8cc0; border: 1px solid #ff4f9e;
+  font: italic 900 11px/1.3 var(--cond); letter-spacing: .08em; text-transform: uppercase; text-shadow: 0 0 6px rgba(255, 79, 158, .9); box-shadow: 0 0 10px rgba(255, 79, 158, .55); vertical-align: middle; }
+.g-refine.forged { box-shadow: 0 0 18px rgba(255, 79, 158, .35); }
+.g-salvage { margin-top: 8px; padding: 6px 12px; border-left: 4px solid #ff4f9e; background: rgba(20, 7, 15, .82); }
+.g-salvage summary { cursor: pointer; font: italic 900 14px/1.3 var(--cond); color: #ff8cc0; }
+.g-salvage summary small { color: var(--muted); }
+.g-salvage ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 2px; padding: 0; list-style: none; }
+.g-salvage .g-btn small { margin-left: 4px; opacity: .85; }
+@media (prefers-reduced-motion: reduce) { .g-forged { text-shadow: none; } }
+/* Mayoido's Trade tab (ui.js openShop): a drawn icon where a material has no sticker yet (curios). */
+.g-shop-ico { display: block; width: 30px; height: 30px; }
+.g-shop-ico svg { display: block; width: 100%; height: 100%; }

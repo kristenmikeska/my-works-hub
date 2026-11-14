@@ -116,6 +116,14 @@ window.FEMC_GAME_JOB_SCENES = {
             { n: "They counted together, ten-yen coin by ten-yen coin, and he lost count twice and blamed her both times, and it came out short, and he went pale, and she found a hundred-yen coin in her own apron pocket and decided out loud that it must have been his all along." },
             { s: 'kid', t: "...Thanks. I'm not saying it again." },
             { stat: { kindness: 1 } }
+          ] },
+          // Nov 14 2026 (Kat): stat rank 10 choice
+          { t: "You're two hundred short. I'll tell you what I'd put back, if I were someone with taste.", needs: { charm: 10 }, hide: true, then: [
+            { n: "She leaned on the counter and walked him through the pile like a sommelier. The lollipop: a classic, but it took forty minutes and turned your hands into glue. The second bag of gummies: the same gummies as the first bag, only sadder. The sour powder: non-negotiable, obviously. She'd never ask a man to give up the sour powder." },
+            { s: 'kid', t: "...The second gummies are kind of sad." },
+            { n: "He put back the gummies, and then, after a long look, the lollipop too, on his own, and paid with twenty yen to spare and the expression of someone who had just made an excellent business decision entirely by himself." },
+            { s: 'clerk', t: "He's never put anything back. Not once. Not in three years." },
+            { stat: { charm: 1 } }
           ] }
         ] },
         { s: 'clerk', t: "He'll be back next Friday. He's been back every Friday since forever. His mom thinks he's at extra math." },
@@ -185,6 +193,14 @@ window.FEMC_GAME_JOB_SCENES = {
             { n: "She showed him the one where you say the word the way it's spelled, out loud and ridiculous, kuh-nig-hut, Wed-nes-day, so your mouth remembers what your eyes won't, and he resisted it for exactly three words before it got him." },
             { s: 'kenta', t: "Kuh-nig-hut. ...That's so stupid. I hate that it works." },
             { stat: { knowledge: 1 } }
+          ] },
+          // Nov 14 2026 (Kat): stat rank 10 choice
+          { t: "The K used to be said out loud. About four hundred years ago, they stopped saying it and kept spelling it.", needs: { knowledge: 10 }, hide: true, then: [
+            { n: "She wrote *cniht* on the corner of his workbook, the old spelling, and told him it had meant a boy, a servant, before it ever meant anyone on a horse, and that the K and the GH had both been sounds once, a throat-clearing sort of sound, until English got lazy and the spelling didn't get the memo." },
+            { s: 'kenta', t: "So it's not fake. It's just... old. And nobody fixed it." },
+            { s: 'kenta', t: "That's worse. That's so much worse. Tell me another one." },
+            { n: "She told him about Wednesday. He wrote it in the margin, under the robot." },
+            { stat: { knowledge: 1 } }
           ] }
         ] },
         { n: "He read the whole passage after that, in an accent that was actually fine, too fast and too quiet and glaring at the page like it owed him money, and when he got to the end he didn't look up." },
@@ -232,6 +248,14 @@ window.FEMC_GAME_JOB_SCENES = {
           ] },
           { t: "Take a walk around the block. The game will still be here.", then: [
             { n: "He opened his mouth to argue, met her eyes, closed it, and went, and came back ten minutes later with the red gone out of his neck and won his next match, and nodded at her on the way to the bathroom like they'd been through a war together." },
+            { stat: { courage: 1 } }
+          ] },
+          // Nov 14 2026 (Kat): stat rank 10 choice
+          { t: "(Lean over his shoulder and tell his team, on his mic, to lay off him.)", needs: { courage: 10 }, hide: true, then: [
+            { n: "She could hear them from behind him, tinny and loud through the slipped headset: three voices taking turns telling a fifteen-year-old exactly how useless he was. She leaned down, pressed the talk key, and told them, evenly, that he had more damage than the three of them put together, that the scoreboard was right there on his screen, and that she'd be happy to read it out to the whole room if they'd like." },
+            { n: "The channel went completely silent. Somebody on it said sorry, ma'am, which was a first for her." },
+            { s: 'regular', t: "...Did the barista just shut down a whole squad?" },
+            { n: "The boy in sixteen didn't say anything. He put his headset back on properly, sat up straight, and played the next round like someone who'd been told he was allowed to be there." },
             { stat: { courage: 1 } }
           ] }
         ] },
@@ -455,6 +479,14 @@ window.FEMC_GAME_JOB_SCENES = {
           { t: "(Shout for the others.)", then: [
             { n: "Her voice cracked across the market like a flare, and every man in rubber boots came running at once, and they had him out in under a minute, and the nephew grinned up at her from the dock, soaked and freezing and very pleased with himself, like she'd thrown him a party instead of a fit." },
             { stat: { kindness: 1 } }
+          ] },
+          // Nov 14 2026 (Kat): stat rank 10 choice
+          { t: "(Tie a loop in the end, drop it over the bollard, then throw.)", needs: { proficiency: 10 }, hide: true, then: [
+            { n: "Her hands did it before she'd finished deciding. A loop, the end up through it, round the standing part and back down, pulled tight: a knot that wouldn't slip and wouldn't jam. She dropped it over the iron bollard at her feet and threw the coil, and it unrolled across the water and landed across his shoulders." },
+            { n: "He didn't need anyone to hold it. The bollard held it. He came up hand over hand with the crate hooked on one arm, and she stood on her painted line the whole time and never once had to step past it." },
+            { s: 'tanabe', t: "...Who taught you a bowline like that?" },
+            { n: "Nobody had, as far as she knew. Tanabe looked at the knot for a long moment, the way he looked at fish, and then left it on the bollard for the others to see." },
+            { stat: { proficiency: 1 } }
           ] }
         ] },
         { s: 'nephew', t: "Got the crate, though!" },

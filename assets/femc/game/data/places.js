@@ -83,7 +83,7 @@ window.FEMC_GAME_PLACES = {
       gain: 'Keychains, phone cases, accessories, items. Super Rare or better at least every 10 turns.', price: '¥500 a turn, or a Capsule Ticket (Tartarus and Shuffle Time give them).' },
     { id: 'velvet', area: 'mall', spot: 'The Velvet Room', name: 'The blue door', about: 'A blue door nobody else seems to notice. Elizabeth deals cards here: skill cards and rare gear.', icon: 'shop', slots: ['after', 'evening'], from: '4/8', shop: 'velvet', gacha: 'velvet',
       gain: 'Skill cards, Revelation cards, Velvet Thread and rare gear. Super Rare or better at least every 5 draws.', price: '¥3,000 or 3 Velvet Plumes a draw (plumes come from Tartarus, full moons and the Compendium).' },
-    { id: 'mayoido', area: 'mall', spot: 'Mayoido Antiques', name: 'Mayoido Antiques', about: 'Antiques, rare goods and sealed cards. It buys the materials Shadows drop.', icon: 'shop', slots: ['after', 'evening'], shop: 'mayoido' },
+    { id: 'mayoido', area: 'mall', spot: 'Mayoido Antiques', name: 'Mayoido Antiques', about: 'Antiques, rare goods and sealed cards. It buys the materials Shadows drop, and trades rare finds for Velvet Plumes.', icon: 'shop', slots: ['after', 'evening'], shop: 'mayoido' },
     // ── Iwatodai Station
     { id: 'vending', area: 'station', spot: 'Vending Machines', name: 'Something from the vending machine', about: 'A row of machines that never have what you want.', icon: 'cup', slots: ['after', 'evening'], cost: 150, stats: { courage: 1 },
       lines: ['She stood in front of the vending machine for a long time looking for something it didn’t have, and bought a canned coffee instead.'] },

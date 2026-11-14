@@ -24,7 +24,7 @@ window.FemcBattleSave = (() => {
   //          its old cost, so nothing is refunded or lost. ptreeFrom: 3 on a save that had party nodes. bonds (up to 15) also
   //          count as link ranks for the trees (engine.js linkRank), for the rank-15 Solar-ray nodes.
   // The building systems (build.js, 2026-10-20; every field defaults, so older saves load as they were):
-  //          cards { list: [card], eq: { mid: { slot: uid } }, uid } (Revelation cards), wref { gearId: 0-5 } (weapon refines),
+  //          cards { list: [card], eq: { mid: { slot: uid } }, uid } (Revelation cards), wref { gearId: 0-15 } (weapon refines; +6 up forged),
   //          pboost { mid: { stat: n } } (Persona boosts), skillCards { skillId: n }, taught { mid: [skillIds] },
   //          bonds { linkId: rank } and bondsRev [linkIds] (the life sim's link ranks, for perks), bondGifts [perk ids],
   //          floorsMapped [floor ids] (Rohan's Sketch the Floor), shuffles (Shuffle Times played).
@@ -96,7 +96,7 @@ window.FemcBattleSave = (() => {
       Object.keys(s.cards.eq[mid]).forEach(slot => { const u = s.cards.eq[mid][slot], c = s.cards.list.find(x => x.u === u); if (!ids.has(u) || used.has(u) || !c || c.slot !== slot) delete s.cards.eq[mid][slot]; else used.add(u); });
     });
     if (!obj(s.wref)) s.wref = {};
-    Object.keys(s.wref).forEach(k => { const v = Math.floor(+s.wref[k]); if (!D.gear[k] || !(v > 0)) delete s.wref[k]; else s.wref[k] = Math.min(5, v); });
+    Object.keys(s.wref).forEach(k => { const v = Math.floor(+s.wref[k]); if (!D.gear[k] || !(v > 0)) delete s.wref[k]; else s.wref[k] = Math.min((B && B.WREF && B.WREF.max) || 15, v); }); // +1..+5 refined, +6..+15 forged (build.js WREF.max)
     if (!obj(s.pboost)) s.pboost = {};
     Object.keys(s.pboost).forEach(mid => { if (!member(mid) || !obj(s.pboost[mid])) { delete s.pboost[mid]; return; } Object.keys(s.pboost[mid]).forEach(k => { const v = Math.floor(+s.pboost[mid][k]); if (!STATKEYS.includes(k) || !(v > 0)) delete s.pboost[mid][k]; else s.pboost[mid][k] = Math.min(10, v); }); });
     if (!obj(s.skillCards)) s.skillCards = {};
@@ -305,7 +305,7 @@ window.FemcBattleSave = (() => {
     const g = D.gear[id]; if (!g) return '';
     const out = [];
     const B = window.FemcBuild, r = s && B ? B.wrefOf(s, id) : 0;
-    if (g.slot === 'weapon') out.push(r ? `ATK ${B.weaponAtk(s, id)} (+${r})` : `ATK ${g.atk}`); if (g.slot === 'armor') out.push(`DEF ${g.def}`);
+    if (g.slot === 'weapon') out.push(r ? `ATK ${B.weaponAtk(s, id)} (+${r}${B.forged && B.forged(r) ? ' forged' : ''})` : `ATK ${g.atk}`); if (g.slot === 'armor') out.push(`DEF ${g.def}`);
     if (g.el) out.push(`${D.elements[g.el].name} attacks`);
     if (g.hits) out.push(`${g.hits[0]} hits`);
     if (g.crit) out.push(`Crit +${g.crit}%`);

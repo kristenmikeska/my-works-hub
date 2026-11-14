@@ -2,9 +2,13 @@
    Scenes are arrays of lines (data files never contain logic):
      { n }                       narration; *word* is italic
      { s, f, t }                 a spoken line: speaker id, portrait face, text ('solar' stands on the right)
-     { choose: [{ t, notes, then, say, flag, tally, stat, needs, reverse, route, ifFlag, when }] }
+     { choose: [{ t, notes, then, say, flag, tally, stat, needs, hide, reverse, route, ifFlag, when }] }
                                  (when: a condition object; the option shows only while it holds)
                                  a choice; "(...)" options aren't spoken; needs: { stat: rank } locks an option
+                                 hide: true (with needs; 2026-11-14, the rank-10 stat choices): not shown at all until
+                                 the rank is reached, then shown with a small stat tag ("Courage", pink on black), like
+                                 P5's stat-tagged options: { t: '…', needs: { courage: 10 }, hide: true, then: [...] }.
+                                 A replay shows it (untagged lock rules as usual).
                                  confirm: '<question>' | true asks first ([Skip it] [Go back]; see confirmChoice)
        { mingle: { pick, min }, choose: [options] }   a party loop: asks the options not yet taken, again and again (at most
                                  pick; an option with leave: true ends it once min are taken); see mingle() below
@@ -351,7 +355,7 @@ window.FemcScene = (() => {
       // An option's `when` (any condition line's test, e.g. { ifRouteOpen: 'haechan' } or { ifBond: { minji: 4 } }) shows it only
       // while that holds; a replay shows every option.
       const whenOk = c => { if (replay) return true; const r = G.branch({ ...c, then: [1], else: [] }); return r === null || r.length > 0; };
-      const shown = options.filter(o => (!o.ifFlag || flagOn(o.ifFlag)) && (!o.when || whenOk(o.when)));
+      const shown = options.filter(o => (!o.ifFlag || flagOn(o.ifFlag)) && (!o.when || whenOk(o.when)) && !(o.hide && o.needs && !replay && G.lacking(o.needs)));
       const offered = shown.flatMap(o => (o.flag && typeof o.flag === 'object' && !Array.isArray(o.flag) ? Object.keys(o.flag) : []).map(k => /^xmas-(.+)$/.exec(k)?.[1]).filter(Boolean));
       const list = shown.flatMap(o => (o.christmasOptions ? (replay ? [] : G.christmasChoices(offered)) : [o]));
       if (replay && !list.length) list.push({ t: '(Carry on.)' });
@@ -360,7 +364,9 @@ window.FemcScene = (() => {
         b.type = 'button';
         b.style.animationDelay = `${i * 0.06}s`;
         const lock = o.needs && G.lacking(o.needs);
-        b.innerHTML = `<span></span>${lock ? `<small>${esc(lock)}</small>` : ''}`;
+        // A stat option (hide + needs) that's open: its stat names as a tag before the words.
+        const tag = o.hide && o.needs && !lock ? Object.keys(o.needs).map(k => G.D?.stats?.stats?.[G.statId ? G.statId(k) : k]?.name).filter(Boolean).join(' · ') : '';
+        b.innerHTML = `${tag ? `<b class="gs-stat-tag">${esc(tag)}</b>` : ''}<span></span>${lock ? `<small>${esc(lock)}</small>` : ''}`;
         b.querySelector('span').textContent = G.sub(o.t);
         if (lock) { b.disabled = true; b.classList.add('locked'); }
         // Nov 14 2026 (Kat: Solar said some choices twice): when the option's own `then` opens with Solar saying the same

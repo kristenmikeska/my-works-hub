@@ -66,7 +66,7 @@ window.FemcEpiSim = (() => {
   function fakeYear(w, pick) {
     return G.noWorld(() => {
       const me = G.S.epi ? (G.S.year1 || {}) : G.S, Y = G.freshState(), end = G.END();
-      const top = Object.fromEntries(Object.entries(G.D.stats.stats || {}).map(([k, v]) => [k, (v.at || [0]).slice(-1)[0]]));
+      const top = Object.fromEntries(Object.entries(G.D.stats.stats || {}).map(([k, v]) => [k, (v.at || [0])[Math.min((v.at || [0]).length, G.D.stats.rewards?.firstMax || 5) - 1]])); // a finished year: rank 5 (not 15) in each
       Object.assign(Y, { started: true, phase: 'play', day: end, slot: 'late', runId: `episim-${w.id}`, ngp: 0, yen: 0, stats: top,
         fragments: [...(me.fragments || [])], registered: [...(me.registered || [])], events: ['end-ending'], battleSave: bestBattle(end), battleAt: Date.now() });
       if (me.gacha) Y.gacha = clone(me.gacha);

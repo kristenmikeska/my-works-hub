@@ -96,7 +96,7 @@
   L('bebluev', 'Be Blue V', 'Paulownia Mall', 'An accessory boutique: pretty things that also help in a fight.', ['did:bebluev', 'at:Paulownia Mall · Be Blue V'], 'bebluev-outside');
   L('escapade', 'Club Escapade', 'Paulownia Mall', 'A nightclub with a temperamental jukebox and somebody usually inside it.', ['at:Paulownia Mall · Club Escapade', 'met:judy'], 'clubescapade');
   L('capsule', 'Capsule Corner', 'Paulownia Mall', 'A row of capsule machines by the escalator: keychains, phone cases and the odd surprise.', ['did:capsule', 'at:Paulownia Mall · Capsule'], 'inside-mall');
-  L('mayoido', 'Mayoido Antiques', 'Paulownia Mall', 'Antiques, rare goods and sealed cards. It buys the materials Shadows drop, and doesn\'t ask where you got them.', ['did:mayoido'], null);
+  L('mayoido', 'Mayoido Antiques', 'Paulownia Mall', 'Antiques, rare goods and sealed cards. It buys the materials Shadows drop, trades rare finds for Velvet Plumes, and doesn\'t ask where you got them.', ['did:mayoido'], null);
   L('flowers', 'The flower stall', 'Paulownia Mall', 'A tiny stall by the fountain. Most customers are buying flowers for somebody else.', ['job:flowers', 'at:Paulownia Mall · Flower Stall'], 'paulownia-flower-shop');
   L('photobooth', 'The photo booth', 'Paulownia Mall', 'By the escalators. Four frames, a curtain, and strips that end up in phone cases.', ['at:Paulownia Mall · Photo Booth', 'at:Iwatodai Station · Photo Booth'], 'paulownia-photo-booth');
   L('station', 'Iwatodai Station', 'The monorail', 'Benches, vending machines, the last train, and people waiting for trains with somewhere to be.', ['at:Iwatodai Station', 'did:vending', 'met:wren'], 'iwatodai-station');
@@ -131,7 +131,7 @@
   T('compendium', 'The Compendium', 'Elizabeth\'s book', 'A record of every Persona registered, so a lost one can be called back. Find it under Records in the menu.', ['met:elizabeth', 'date:4/16']);
   T('links', 'Social Links', 'Bonds', 'Time spent with someone deepens your bond, rank by rank. Each one carries an arcana, and higher ranks bring perks for fights and for daily life.', 'links:1');
   T('arcana', 'Arcana', 'The tarot', 'The cards behind every bond and every Persona, from the Fool to the World, and a few nobody has ever drawn before.', 'links:1');
-  T('stats', 'Social stats', 'Knowledge, Courage, Proficiency, Charm, Kindness', 'Five sides of Solar that grow with what she does with her days. Some people and choices wait until one is high enough.', 'date:4/8');
+  T('stats', 'Social stats', 'Knowledge, Courage, Proficiency, Charm, Kindness', 'Five sides of Solar that grow with what she does with her days. Some people and choices wait until one is high enough. Each climbs to rank 15 over more than one year (New Game+ keeps them), with rewards at ranks 5, 8, 10, 12 and 15: see the Status screen.', 'date:4/8');
   T('fragments', 'Memory fragments', 'The Journal', 'Déjà vu that won\'t let go: a song she knows, a smell, a name on the tip of her tongue. Each one goes in the Journal, and following them changes where her year leads.', 'frag:1');
   T('echoes', 'Echoes', 'A second slot', 'Myths that answer Solar alone: collectible sub-Personas that lend Haenim their skills and cover her weak spots. They grow as you fight with them, and Elizabeth can fuse two into a third.', 'date:4/10');
   T('theurgy', 'Theurgy', 'Battle', 'Fighting fills each member\'s Theurgy gauge. When it\'s full, their big move costs nothing.', 'date:4/10');

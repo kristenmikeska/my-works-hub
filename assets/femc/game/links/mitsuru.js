@@ -145,6 +145,14 @@
         ] },
         { t: "Only if you're enjoying it.", notes: 2, then: [
           { s: 'mitsuru', f: 'neutral', t: "Then I should be making a great deal of noise. I'll work up to it." }
+        ] },
+        // Nov 14 2026 (Kat): stat rank 10 choice
+        { t: "(Get the whole counter to slurp with her.)", needs: { charm: 10 }, hide: true, notes: 3, then: [
+          { n: "Solar leaned back on her stool and said, to the three salarymen and the cook and nobody in particular, that her friend had never been to Hagakure before, and that this was her first bowl, and that it would be a shame if she had to do it alone." },
+          { n: "It took about four seconds. The salarymen looked at each other, and then the oldest one lifted his bowl like a toast, and the cook banged his ladle on the pot, and the whole counter slurped at once, a long, terrible, joyful sound like a bath draining." },
+          { s: 'mitsuru', f: 'surprised', t: "...They did that for me?" },
+          { n: "She tried it, then, under cover of everyone else, and it came out louder than she meant, and the oldest salaryman applauded. Mitsuru turned pink to the ears and bowed to him from her stool, very correctly." },
+          { s: 'mitsuru', f: 'neutral', t: "You could lead an army with that. I'm not certain I'm comfortable knowing it." }
         ] }
       ] },
       { n: "Halfway through the bowl, Mitsuru set her chopsticks down and folded her hands on the counter, which was how she began most sentences that mattered, and looked at the steam on the window instead of at Solar." },
@@ -189,6 +197,14 @@
         { t: "Is he always like that?", notes: 1, then: [
           { s: 'mitsuru', f: 'neutral', t: "Like what? He's a very busy man. He called to congratulate me." },
           { n: "She said it smoothly, a sentence she had clearly said many times before, and it was a good sentence, and it closed like a door." }
+        ] },
+        // Nov 14 2026 (Kat): stat rank 10 choice
+        { t: "He never said well done. I was listening.", needs: { courage: 10 }, hide: true, notes: 3, then: [
+          { n: "Mitsuru's thumb stopped moving on the edge of the phone. For a second the room was just rain." },
+          { s: 'mitsuru', f: 'neutral', t: "That's not a thing people say to me." },
+          { s: 'solar', f: 'neutral', t: "I know. So I said it. Well done. First. Again." },
+          { n: "Mitsuru looked at her as if Solar had put her feet up on the council table. Then she set the phone down, face down, and folded both hands on top of it, and her mouth did something complicated at one corner." },
+          { s: 'mitsuru', f: 'sad', t: "...Thank you. That was very rude of you. Please don't stop." }
         ] }
       ] },
       { n: "They worked. The rain worked too, steadily, against the glass. After a while Mitsuru spoke without looking up from the page in front of her, in the same tone she used for budget figures." },

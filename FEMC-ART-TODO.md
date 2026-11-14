@@ -2,7 +2,7 @@
 
 Cleaned Oct 31 2026, finished sections removed Nov 1: only what's still to make. **Every attachment is in `Femc Mode Images/Place Prompt Attachments/`**, named after its item.
 
-**To make (updated Nov 14, after art batch 157):** **strangers heat** (section 58, new Nov 11: 1 CG left for the new romance scenes) · **the endings: she's gone** (section 57, new Nov 11: 3 CGs left, Stay's two and the true ending's) · ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **the minigames** (section 44: Haechan's apron faces; section 47: the listen game's street, its six things, their stickers and Haechan; section 59: the seventh stair's title card, the house, the figure, sound icons and two endings) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
+**To make (updated Nov 14, after art batch 157; sections 60 and 61 added):** **strangers heat** (section 58, new Nov 11: 1 CG left for the new romance scenes) · **the endings: she's gone** (section 57, new Nov 11: 3 CGs left, Stay's two and the true ending's) · ⭐ **outfits first, in `FEMC-SKIN-ART.md`**: 49 pose sheets and 52 face sheets (the collab partners' halves and Kat's Nov 7 list of 47, plus three faces-only), 89 HD pose sets and 14 Boutique banner pictures (6 new banners, 3 newer ones, 5 remakes; The Searchers on hold) · **battle pieces last, in `FEMC-BATTLE-ART.md`** (468 prompts for 75 looks) · here: **more Shadows for Tartarus** (section 60, new Nov 14: 28 Shadow action sheets, 3–4 for every block) · **the minigames** (section 44: Haechan's apron faces; section 47: the listen game's street, its six things, their stickers and Haechan; section 59: the seventh stair's title card, the house, the figure, sound icons and two endings) · **social stat wallpapers** (section 61, new Nov 14: 5 menu wallpapers, one per stat) · Jaehyun's two optional Christmas faces (section 40) · **faces for 3 strangers side characters** (section 41: Mrs. Gong, Auntie Wu, Mrs. Park) · Stay: 3 optional CGs (section 37) · 8 polaroids for HOAX and Stay (section 39: 3 / 5) · low-res pictures to look over at the very end (section 31) · **Epilogue backgrounds:** strangers' sunroom, the 10 Stay ones and two HOAX ones found playtesting (the Kims' kitchen, the front step by day) in `EPILOGUE-BACKGROUND-PROMPTS.md`; Runners: an optional night café and two Manhattan places found playtesting (the Madison café, the study) in `RUNNERS-BACKGROUND-PROMPTS.md`. **Optional:** 27 epilogue CGs redrawn in their world's style in `FEMC-CG-REMAKES.md`; Evoker close-ups parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; skin redos in `FEMC-SKINS-REMAKES.md`. **Parked:** `FEMC-ART-BACKBURNER.md`. **Sharpness:** no Photoshop upscaling needed; Claude upscales everything on the PC at the end.
 
 ## ⭐ Outfits, HD poses and banners: in `FEMC-SKIN-ART.md` (Nov 7)
 
@@ -268,6 +268,306 @@ Save as: `stair-end-home.png`, `stair-end-heard.png` (two pictures, same prompt 
 ```
 A wide 16:9 picture in the style of the FIRST attached image (soft realistic painting, cinematic light). HOME: the young woman of the THIRD attached image back in bed in the dark, the covers pulled up to her chin, a full glass of water on the bedside table catching a little moonlight, her eyes still open, the faintest relieved smile; warm, quiet, safe; near-black, bone white and a soft warm pink. No text.
 HEARD: the landing at the top of the staircase of the SECOND attached image, seen from halfway up the stairs: the landing light has just come on, a bare bulb in a pale glass shade glowing bone white, the light switch on the wall beside it, and nobody there at all, the corridor beyond empty and long. Cold, still, the light too bright. Near-black, bone white and a little pink. No people. No text.
+```
+
+---
+
+## 60. More Shadows for Tartarus (Kat, Nov 14)
+
+New Shadows made for Solstice, three or four for every block, so the climb stops showing the same few. Each is one action sheet (six poses, like the climb bosses'), on a transparent background. ⭐ marks a rarer one.
+
+### Thebel (2–16F)
+The first block, green and quiet: the school after midnight.
+
+**[ ] 60A. Coffin Moth** (Moon)  
+A moth whose wings are two coffin lids, drawn to the green light of the Dark Hour.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-coffin-moth.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a big moth whose two pairs of wings are tall black coffin lids, edged in sickly Dark Hour green light, a thin black liquid body dripping between them, feathery antennae, and a small blue Persona 3 Shadow mask for a face. Colours: black, sickly green glow, a touch of blood-red on the mask. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, hovering, wings half open. Cell 2: winding up, wings folded back, shivering with green dust. Cell 3: attacking, diving forward wings first, a gust of green dust. Cell 4: casting a spell, surrounded by swirling green wind and dust. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60B. Hall Monitor** (Justice)  
+A lanky Shadow in a school armband and whistle, still on patrol after midnight.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-hall-monitor.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a tall, thin, stooped figure of black liquid in the shape of an empty Japanese school uniform jacket with no one inside, a red-and-white armband on one sleeve, a silver whistle on a cord, a long ruler for a hand, and a blue Persona 3 Shadow mask with a strict, narrow-eyed face. Colours: black, school-navy, red-and-white armband, silver whistle, green Dark Hour rim light. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, standing stiffly at attention. Cell 2: winding up, blowing the whistle, the ruler raised. Cell 3: attacking, striking down with the ruler. Cell 4: casting a spell, surrounded by crackling yellow lightning. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60C. Twelve O’Clock** (Hermit)  
+A classroom clock stopped at midnight, its hands sharpened into blades.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-twelve-oclock.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a round school wall clock as big as a person, its glass cracked, both hands stuck pointing straight up at twelve and sharpened into long blades, black liquid leaking from behind the face onto thin spider legs, a blue Persona 3 Shadow mask set in the centre of the dial. Colours: black, cream clock face, tarnished brass, green Dark Hour glow. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, standing on its spider legs, ticking. Cell 2: winding up, the two blade hands spinning fast. Cell 3: attacking, lunging forward, both blade hands slashing. Cell 4: casting a spell, surrounded by frost and small swirling ice shards. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60D. Dawn Wisp** ⭐ (Sun)  
+A rare little ember of sunrise that got lost in the Dark Hour. It runs.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-dawn-wisp.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a small round spirit of warm sunrise light, a soft golden flame with a little cracked white-and-gold Persona 3 Shadow mask, tiny wisp arms, a trail of pale orange sparks, looking frightened. Colours: warm gold, peach, sunrise orange, a little black at the cracks of the mask. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, floating nervously, glancing around. Cell 2: winding up, puffing up brighter, scared. Cell 3: attacking, bumping forward in a burst of sparks. Cell 4: casting a spell, surrounded by a small ring of warm fire. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+### Arqa (17–36F)
+The pink block: crushes, mirrors and spring.
+
+**[ ] 60E. Love Letter Locker** (Lovers)  
+A school shoe locker stuffed with love letters it never let anyone read.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-letter-locker.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a tall grey metal school shoe locker on stubby black legs, its door hanging open like a jaw, pink sealed love letters spilling out of it like a tongue and fluttering around it like wings, a blue Persona 3 Shadow mask on the door. Colours: grey metal, hot pink and white envelopes, black liquid, pink glow. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, standing with the door half open, letters fluttering. Cell 2: winding up, the door swinging wide, letters gathering. Cell 3: attacking, slamming forward, letters shooting out like blades. Cell 4: casting a spell, surrounded by a pink whirlwind of letters and hearts. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60F. Mirror Compact** (Priestess)  
+A pink makeup compact the size of a shell, with a mask looking back out of the mirror.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-mirror-compact.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a big round pink compact mirror opened like a clam shell, the powder half cracked, the mirror showing a blue Persona 3 Shadow mask that looks out of it, a black liquid body with slender arms rising from the hinge, a powder puff in one hand. Colours: pink, rose gold, pearl white, black liquid, cold blue glints. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, hovering half open, the mirror gleaming. Cell 2: winding up, snapping open wide, light gathering in the mirror. Cell 3: attacking, snapping shut forward like a bite. Cell 4: casting a spell, surrounded by pale ice crystals and soft pink sparkles. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60G. Petal Veil** (Empress)  
+A storm of spring cherry petals in the shape of a dancer. Watch it and you lose the thread.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-petal-veil.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a tall dancer made entirely of swirling cherry blossom petals, a long trailing veil of petals behind her, a black liquid core showing through the gaps, a pale blue Persona 3 Shadow mask with a soft smile, a paper fan in one hand. Colours: pale pink, deep rose, black, a little cold blue on the mask. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, swaying, petals drifting off her. Cell 2: winding up, spinning, the veil lifting. Cell 3: attacking, sweeping the fan forward in a sharp wave of petals. Cell 4: casting a spell, surrounded by swirling green wind full of petals. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+### Yabbashah (37–64F)
+The red block of traps and vaults: rules, red ink and money.
+
+**[ ] 60H. Detention Desk** (Hierophant)  
+A school desk wrapped in chains, keeping everyone after class forever.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-detention-desk.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): an old wooden school desk and chair fused together, wrapped in heavy black chains with a padlock, walking on four bent black legs, ink pooling under it, a blue Persona 3 Shadow mask carved into the desk lid. Colours: dark wood, black iron chains, deep red glow, black ink. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, hunched on its legs, chains rattling. Cell 2: winding up, rearing up, chains lifting into the air. Cell 3: attacking, slamming down, chains whipping forward. Cell 4: casting a spell, surrounded by crackling lightning running along the chains. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60I. Red Ink Crow** (Judgement)  
+A crow made of failed test papers, marking everyone wrong.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-red-ink-crow.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a big crow whose feathers are crumpled sheets of school test paper covered in red ink crosses and circles, a black liquid body, a long red fountain-pen nib for a beak, a blue Persona 3 Shadow mask over its eyes, red ink dripping from its wings. Colours: white paper, red ink, black, blood-red glow. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, flying, wings spread. Cell 2: winding up, wings pulled back, papers ruffling. Cell 3: attacking, diving beak first, red ink spraying. Cell 4: casting a spell, surrounded by a gale of whirling paper and green wind. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60J. Vending Oni** (Devil)  
+A station vending machine with an oni mask. It always takes the coin and never gives the drink.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-vending-oni.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a Japanese street vending machine come alive, its glowing red front lit with rows of cans, two black liquid arms with coins spilling from its fists, a red oni mask with horns and a wide grin over a blue Persona 3 Shadow mask on top. Colours: red, white light, black, gold coins, cold blue mask. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, standing and humming, lights flickering. Cell 2: winding up, arms raised, cans rattling inside. Cell 3: attacking, swinging a heavy fist, coins flying. Cell 4: casting a spell, surrounded by crackling yellow lightning and sparks. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+### Tziah (65–92F)
+The silver-blue block of puzzles and cracked walls: moonlight, dreams and static.
+
+**[ ] 60K. Moonglass Rabbit** (Moon)  
+A rabbit of frosted glass with a mochi mallet, from the moon in the old story.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-moonglass-rabbit.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a tall slender rabbit made of frosted moonlit glass, long ears, a crack running through its chest with black liquid showing inside, a big wooden mochi mallet in its paws, a blue Persona 3 Shadow mask over its face, a pale full moon halo behind its head. Colours: frosted silver-blue glass, white moonlight, black, a little lavender. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, standing on its hind legs, mallet resting. Cell 2: winding up, raising the mallet high overhead. Cell 3: attacking, smashing the mallet down. Cell 4: casting a spell, surrounded by freezing ice and moonlight shards. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60L. Static Set** (Hermit)  
+An old TV on spider legs, all static. Sometimes a mask looks out of the snow.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-static-set.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): an old boxy CRT television on long black spider legs, its screen full of grey-blue static with a blue Persona 3 Shadow mask half visible in the snow, its antenna bent, black cables trailing like a tail. Colours: grey plastic, silver-blue static, black, a little lavender glow. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, crouched on its legs, screen flickering. Cell 2: winding up, antenna crackling, screen brightening. Cell 3: attacking, lunging forward, the screen flashing. Cell 4: casting a spell, surrounded by crackling blue-white lightning and static. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60M. Paper Crane Choir** (Temperance)  
+A thousand folded cranes singing around a mask. It mends the others.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-paper-crane-choir.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a big swirling flock of white and silver folded paper cranes strung on black threads, wrapped in a loose sphere around a single blue Persona 3 Shadow mask, black ink dripping from the threads. Colours: white and silver paper, silver-blue glow, black threads. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, hovering, the cranes slowly circling. Cell 2: winding up, the cranes rising and spreading out. Cell 3: attacking, the cranes shooting forward in a stream. Cell 4: casting a spell, surrounded by soft green wind and healing light. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60N. Sleepwalker** ⭐ (Hanged Man)  
+A rare Shadow in dorm pajamas, floating upside down, still asleep.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-sleepwalker.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a thin black liquid figure in striped pajamas and a long nightcap, floating upside down in the air with its arms hanging, hugging a pillow, a sleepy blue Persona 3 Shadow mask with closed eyes, a faint trail of dream bubbles. Colours: black, silver-blue stripes, white pillow, soft lavender glow. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, drifting upside down, asleep. Cell 2: winding up, turning slowly, the pillow raised. Cell 3: attacking, swinging the pillow down hard. Cell 4: casting a spell, surrounded by dark purple curse mist and floating dream bubbles. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+### Harabah (93–118F)
+The gold block of strong Shadows: clubs, the bridge at night, the summer festival.
+
+**[ ] 60O. Kendo Husk** (Chariot)  
+An empty set of kendo armour from the club room, still practising alone.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-kendo-husk.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): an empty suit of black kendo armour, the helmet grille open on darkness with a blue Persona 3 Shadow mask glowing behind it, gold cords, a bamboo practice sword cracked and bound with black tape, black liquid seeping from the gaps. Colours: black lacquer, gold cords, deep navy, amber glow. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, standing in a kendo stance. Cell 2: winding up, raising the sword overhead. Cell 3: attacking, striking down hard. Cell 4: casting a spell, surrounded by a gold aura of power and heat. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60P. Sodium Lamp** (Hermit)  
+A streetlight from the bridge at night, bent like a heron, burning orange.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-sodium-lamp.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a tall highway streetlamp bent over like a heron, its long metal neck curling down, the lamp head glowing deep orange sodium light with a blue Persona 3 Shadow mask inside the glass, black liquid dripping down its pole onto thin bird legs. Colours: grey steel, deep orange light, black, amber. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, standing on one leg, light humming. Cell 2: winding up, neck raised, the lamp blazing. Cell 3: attacking, jabbing the lamp head forward like a beak. Cell 4: casting a spell, surrounded by swirling orange fire. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60Q. Festival Shishi** (Strength)  
+A summer festival lion-dance head that never stopped dancing.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-festival-shishi.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a red-and-gold Japanese shishimai lion-dance head with a snapping wooden jaw, a long green cloth body with white swirls trailing behind it, black liquid legs underneath, bells and paper streamers, a blue Persona 3 Shadow mask peering out of its mouth. Colours: red lacquer, gold, green cloth, black, warm lantern amber. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, crouching, jaw clacking. Cell 2: winding up, rearing up, bells ringing. Cell 3: attacking, lunging forward, jaw snapping. Cell 4: casting a spell, surrounded by a burst of heat haze and festival sparks. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+### Adamah (119–144F)
+The violet block: the city asleep in its coffins, shrines and dark water.
+
+**[ ] 60R. Overtime** (Devil)  
+An empty office suit that never went home, its briefcase full of teeth.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-overtime.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a tall empty salaryman suit with no body inside, black liquid where the head should be wearing a blue Persona 3 Shadow mask, a long necktie lashing like a whip, a briefcase for one hand that opens like a jaw full of white teeth, papers swirling around it. Colours: charcoal suit, white shirt, violet tie, black, violet glow. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, standing slumped, swaying. Cell 2: winding up, tie lashing, briefcase raised. Cell 3: attacking, swinging the briefcase forward, jaw open. Cell 4: casting a spell, surrounded by dark purple curse energy and swirling papers. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60S. Torii Wyrm** (Hierophant)  
+Shrine gates grown into a centipede, crawling out of the night.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-torii-wyrm.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a long centipede made of a line of small shrine torii gates linked together, black lacquer instead of vermilion, paper streamers for legs, black liquid between the gates, a blue Persona 3 Shadow mask for a head with two antennae of rope. Colours: black lacquer, faded vermilion, white paper, violet glow. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, coiled, raised like a snake. Cell 2: winding up, rearing up high. Cell 3: attacking, striking forward. Cell 4: casting a spell, surrounded by a swirl of white holy light and fire. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60T. Insomnia Aquarium** ⭐ (Hanged Man)  
+A rare fish tank of black water that walks on chair legs. Something blinks inside.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-insomnia-aquarium.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a glass aquarium tank full of black water, standing on four thin wooden chair legs, glowing jellyfish eyes drifting inside, a blue Persona 3 Shadow mask floating behind the glass, a little castle ornament half sunk in the gravel. Colours: black water, violet and cyan glow, clear glass, pale wood. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, standing still, jellyfish drifting. Cell 2: winding up, water sloshing up the glass. Cell 3: attacking, tipping forward, black water pouring out. Cell 4: casting a spell, surrounded by freezing water and ice. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+### Empyrean (145–172F)
+The pale-gold top of the tower: sun, halos and the solstice.
+
+**[ ] 60U. Solstice Herald** (Sun)  
+A gilded angel with a sunburst halo, blowing a trumpet for the longest day.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-solstice-herald.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a slender winged angel of black liquid covered in cracked gold leaf, a large golden sunburst halo behind its head, a long golden trumpet, white wings with golden tips, a white-and-gold Persona 3 Shadow mask. Colours: gold leaf, white, black, cream light. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, hovering, wings spread. Cell 2: winding up, raising the trumpet. Cell 3: attacking, blasting the trumpet, a shockwave of light. Cell 4: casting a spell, surrounded by blinding golden holy light. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60V. Gilded Sundial** (Fortune)  
+A sundial whose shadow points the wrong way. It decides whose time is up.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-gilded-sundial.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a round golden sundial on a stone pedestal, its gnomon a long golden blade, a black shadow on its face pointing the wrong way and reaching up off the dial like a hand, a blue Persona 3 Shadow mask set in its centre. Colours: gold, pale stone, black, cream light. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, standing still, its shadow creeping. Cell 2: winding up, the shadow rising off the dial. Cell 3: attacking, the blade swinging around in an arc. Cell 4: casting a spell, surrounded by white-and-black almighty energy. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60W. Candle Mass** (Priestess)  
+A tower of melted white candles with faces in the wax. It keeps the others burning.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-candle-mass.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a tall tiered mound of melted white church candles, wax running down in thick drips, a few blank mask faces pressed into the wax, a black liquid core showing through, one big blue Persona 3 Shadow mask at the top crowned with small flames. Colours: white wax, warm gold flames, black, cream. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, flickering, wax dripping. Cell 2: winding up, flames rising high. Cell 3: attacking, spitting a gout of flame forward. Cell 4: casting a spell, surrounded by warm fire and soft healing light. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60X. Eclipse Moth** ⭐ (Death)  
+A rare moth with a dark sun in its body and a corona of white fire on its wings.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-eclipse-moth.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a huge black moth with a black disc like an eclipsed sun in its body, a ring of white corona fire around it, wings patterned like solar flares in gold and white, a white-and-gold Persona 3 Shadow mask. Colours: black, white fire, gold, cream. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, hovering, wings slowly beating. Cell 2: winding up, wings spread wide, the corona flaring. Cell 3: attacking, diving forward in a blaze of white fire. Cell 4: casting a spell, surrounded by white fire and golden sparks. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+### Monad (176–254F)
+The hidden blue block above the top: deep winter and the year running out.
+
+**[ ] 60Y. Drift Jelly** (Moon)  
+A huge blue jellyfish drifting through Monad, small masks floating inside its bell.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-drift-jelly.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a huge translucent deep-blue jellyfish, small blue Persona 3 Shadow masks floating inside its glowing bell, long trailing tentacles of black liquid and pale light. Colours: deep blue, cyan glow, black, pale white. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, drifting, tentacles trailing. Cell 2: winding up, bell contracting, glowing brighter. Cell 3: attacking, lashing tentacles forward. Cell 4: casting a spell, surrounded by freezing deep-blue water and ice. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60Z. Snow Globe** (Hermit)  
+A cracked snow globe with three tiny places inside: a snowy campus, a harbour, a school gym.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-snow-globe.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a big glass snow globe on a black base, cracked, snow swirling inside around three tiny places: a snowy university campus, a small harbour with boats, and a school gym; black liquid seeping out through the crack and forming two hands that carry it, a blue Persona 3 Shadow mask on the base. Colours: clear glass, white snow, deep blue, black. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, resting, snow drifting inside. Cell 2: winding up, shaken hard, snow whirling. Cell 3: attacking, swinging the globe forward like a club. Cell 4: casting a spell, surrounded by a blizzard of ice and snow. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60AA. Joya Bell** (Judgement)  
+A temple bell for the last night of the year. Every strike is one of the hundred and eight.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-joya-bell.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a huge green-black bronze Buddhist temple bell hanging from black chains that reach up out of frame, a blue Persona 3 Shadow mask cast into its side, a swinging wooden striking log on ropes beside it, black liquid dripping from its rim. Colours: dark bronze, verdigris green, deep blue, black. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, hanging still, faint humming. Cell 2: winding up, the log swinging back. Cell 3: attacking, the log striking the bell, a shockwave ringing out. Cell 4: casting a spell, surrounded by rings of white-and-black almighty energy. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 60AB. Black Sun** ⭐ (Sun)  
+A rare black sun with a corona of blades. Weak only to light.  
+Attach: `Shadow - style (The Last Song).png`  
+Save as: `shadow-black-sun.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (no white, no checkerboard, no floor shadow), with clear empty space between every pose. Use the attached image only for the format and finish: one Shadow, six poses, the same size in every cell, Persona 3 Reload art. Do not copy its design or colours. Draw a NEW Persona 3 Shadow, a regular Tartarus enemy (smaller and simpler than a boss): a floating black sun, a perfect black sphere with a corona of thin golden blades around it, a white-and-gold Persona 3 Shadow mask in its centre, a slow ring of deep-blue flame circling it. Colours: black, gold, deep blue, a little white. The SAME Shadow in all six cells, same design, colours, size and lighting, nothing overlapping and nothing crossing into another cell. Cell 1: idle, hovering, the corona slowly turning. Cell 2: winding up, the blades spreading wide. Cell 3: attacking, firing the blades forward. Cell 4: casting a spell, surrounded by a blinding burst of white-and-black almighty energy. Cell 5: recoiling from a hit, flinching. Cell 6: knocked down, collapsing. Dark, stylish and a little eerie, no blood or gore. Persona 3 Reload official art style. No text.
+```
+
+---
+
+## 61. Social stat wallpapers (Kat, Nov 14)
+
+One menu wallpaper for each social stat, earned when that stat reaches rank 5 (the stat's title comes with it). Full 16:9, like the other menu wallpapers.
+
+**[ ] 61A. Knowledge · Luminary**  
+The wallpaper she earns for Knowledge at rank 5.  
+Attach: `CG - style.png`, `BG - Dorm Lounge at night.png`, `Solar.png`  
+Save as: `wp-stat-knowledge.png`
+```
+A 16:9 menu wallpaper in the exact style of the FIRST attached image (Persona 3 Reload official art: clean crisp lineart, flat cel shading with hard-edged shadows, rich colour, high detail on faces and hair). The setting is the SECOND attached image, the Iwatodai dorm lounge late at night, the big lamps off, one pink-shaded reading lamp on. Solar (the THIRD attached image: same face, eyes and hair; an oversized cardigan over a pink pajama top, glasses pushed up into her hair) sits cross-legged on the lounge sofa in a small fort of open textbooks, pink sticky notes stuck to every page and to her sleeve, a pen between her teeth, a mug of cocoa gone cold beside her. She has just worked something out: she's looking up from the page with a sharp, delighted grin, and a few hand-written formulas and kanji float up off the pages around her in glowing soft-pink light. Keep the left third of the picture calm and darker (the game's menu sits over it) and put Solar in the right half. Colours lean hot pink #ff4f9e, deep pink-black #14070f and soft blush, with only small touches of anything else. Stylish, a little triumphant, like a Persona 5 Royal stat reward screen. No text, no logos, no UI.
+```
+
+**[ ] 61B. Courage · Unflinching**  
+The wallpaper she earns for Courage at rank 5.  
+Attach: `CG - style.png`, `BG - Dorm Rooftop at night.png`, `Solar.png`  
+Save as: `wp-stat-courage.png`
+```
+A 16:9 menu wallpaper in the exact style of the FIRST attached image (Persona 3 Reload official art: clean crisp lineart, flat cel shading with hard-edged shadows, rich colour, high detail on faces and hair). The setting is the SECOND attached image, the Iwatodai dorm rooftop at midnight during the Dark Hour: a huge low moon, the sky tinted strange, the city below dark and still. Solar (the THIRD attached image: same face, eyes and hair; her Gekkoukan uniform with a red armband, a black coat over it flaring in the wind) stands on the very edge by the railing, one boot up on the ledge, her naginata resting over her shoulder and her Evoker holstered at her hip, looking straight out at the moon without a flicker of fear. Pink light rims her hair and the blade; her coat and hair whip sideways. Keep the left third of the picture calm and darker (the game's menu sits over it) and put Solar in the right half. Colours lean hot pink #ff4f9e, deep pink-black #14070f and soft blush, with only small touches of anything else. Stylish, a little triumphant, like a Persona 5 Royal stat reward screen. No text, no logos, no UI.
+```
+
+**[ ] 61C. Proficiency · Virtuoso**  
+The wallpaper she earns for Proficiency at rank 5.  
+Attach: `CG - style.png`, `BG - Dorm Kitchen at night.png`, `Solar.png`  
+Save as: `wp-stat-proficiency.png`
+```
+A 16:9 menu wallpaper in the exact style of the FIRST attached image (Persona 3 Reload official art: clean crisp lineart, flat cel shading with hard-edged shadows, rich colour, high detail on faces and hair). The setting is the SECOND attached image, the Iwatodai dorm kitchen at night, the under-cabinet lights on. Solar (the THIRD attached image: same face, eyes and hair; a black apron over a pink T-shirt, sleeves rolled up, hair tied up with a pencil through it) is doing three things at once and nailing all of them: flipping a perfect rolled omelette out of a pan in one hand, a little screwdriver held in her teeth, and an opened-up radio she's mid-repair on the counter beside a sewing kit and a half-mended jacket. A cutting board of perfectly even sliced vegetables. Confident, quick, a tiny proud smile, sparks of soft pink light where her hands move. Keep the left third of the picture calm and darker (the game's menu sits over it) and put Solar in the right half. Colours lean hot pink #ff4f9e, deep pink-black #14070f and soft blush, with only small touches of anything else. Stylish, a little triumphant, like a Persona 5 Royal stat reward screen. No text, no logos, no UI.
+```
+
+**[ ] 61D. Charm · Main Character**  
+The wallpaper she earns for Charm at rank 5.  
+Attach: `CG - style.png`, `BG - Iwatodai Strip at night.png`, `Solar.png`  
+Save as: `wp-stat-charm.png`
+```
+A 16:9 menu wallpaper in the exact style of the FIRST attached image (Persona 3 Reload official art: clean crisp lineart, flat cel shading with hard-edged shadows, rich colour, high detail on faces and hair). The setting is the SECOND attached image, the Iwatodai Strip at night, wet pavement reflecting neon signs in pink and white. Solar (the THIRD attached image: same face, eyes and hair; a black going-out dress with a cropped pink jacket, small heels, a little black bag) walks straight toward us down the middle of the Strip like it's a runway, mid-stride, hair moving, looking over her sunglasses at us with a knowing smile. Behind her a few blurred passers-by have stopped to turn and look; a soft spotlight of pink light falls on her alone, as if the whole street is her movie. Keep the left third of the picture calm and darker (the game's menu sits over it) and put Solar in the right half. Colours lean hot pink #ff4f9e, deep pink-black #14070f and soft blush, with only small touches of anything else. Stylish, a little triumphant, like a Persona 5 Royal stat reward screen. No text, no logos, no UI.
+```
+
+**[ ] 61E. Kindness · Heart of Gold**  
+The wallpaper she earns for Kindness at rank 5.  
+Attach: `CG - style.png`, `BG - Naganaki Shrine.png`, `Solar.png`, `Koromaru.png`  
+Save as: `wp-stat-kindness.png`
+```
+A 16:9 menu wallpaper in the exact style of the FIRST attached image (Persona 3 Reload official art: clean crisp lineart, flat cel shading with hard-edged shadows, rich colour, high detail on faces and hair). The setting is the SECOND attached image, Naganaki Shrine at dusk, the sky going rose-pink, paper lanterns just lit along the path. Solar (the THIRD attached image: same face, eyes and hair; her winter Gekkoukan uniform with a soft pink scarf) crouches on the shrine steps sharing a melon bread with Koromaru (the FOURTH attached image, a white Shiba Inu with red eyes), who is leaning his head into her hand; a tiny paper charm tied to his collar, a second melon bread set aside on the step for someone who hasn't arrived yet. Her smile is warm and completely unguarded. Fallen pink petals and a few drifting lantern sparks. Keep the left third of the picture calm and darker (the game's menu sits over it) and put Solar in the right half. Colours lean hot pink #ff4f9e, deep pink-black #14070f and soft blush, with only small touches of anything else. Stylish, a little triumphant, like a Persona 5 Royal stat reward screen. No text, no logos, no UI.
 ```
 
 ---

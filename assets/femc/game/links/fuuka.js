@@ -138,6 +138,14 @@
         { t: "Let me do it.", notes: 1, then: [
           { n: "Fuuka handed her the bowl right away, too fast, the way she handed over everything, and stood back, and her face did something small and closed that Solar caught out of the corner of her eye." },
           { n: "Solar handed it back. Fuuka took it without asking why, and held it a little tighter than she needed to." }
+        ] },
+        // Nov 14 2026 (Kat): stat rank 10 choice
+        { t: "(Weigh a pinch on the kitchen scale. Then show her what golden looks like.)", needs: { proficiency: 10 }, hide: true, notes: 3, then: [
+          { n: "Solar took a pinch of salt between two fingers without thinking about it and dropped it onto the little kitchen scale. Point four grams. She did it twice more. Point four. Point four." },
+          { s: 'fuuka', f: 'surprised', t: "It's the same every time. Senpai, your fingers are calibrated." },
+          { n: "Then she took one of the burnt discs and turned it over and showed her the very edge, where a ring of it had gone the color of toast before the rest went black. That, she said. Stop when the edges are that, and the middle still looks a little underdone. It finishes on the tray." },
+          { n: "Fuuka wrote *pinch = 0.4 g (Senpai's fingers)* on the card, and under it *golden = edges like toast, middle not yet*, and looked at both lines with deep, quiet relief, like someone who'd been handed the missing page of a manual." },
+          { s: 'fuuka', f: 'happy', t: "That's a time. Now it's a time." }
         ] }
       ] },
       { n: "Solar cracked the egg for her, one-handed, against the edge of the bowl, and it opened clean and slid out whole, and both of them looked at her hand afterward like it had done a magic trick. She didn't know where she'd learned it. She didn't say so. She wiped her fingers on a towel and let Fuuka do the rest." },

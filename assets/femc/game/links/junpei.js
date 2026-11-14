@@ -188,6 +188,14 @@
         ] },
         { t: "Just memorize them.", notes: 1, then: [
           { s: 'junpei', f: 'sad', t: "Oh, just memorize them. Why didn't I think of that. Thank you, leader. Very cool. Very helpful." }
+        ] },
+        // Nov 14 2026 (Kat): stat rank 10 choice
+        { t: "(Give him the number puns. All of them.)", needs: { knowledge: 10 }, hide: true, notes: 3, then: [
+          { n: "Every date in the book had a pun hiding in it, if you read the numbers out loud the right way, and Solar knew all of them, the famous ones and the deeply obscure ones, which was a strange thing to find out about yourself over a coffee table full of highlighters." },
+          { s: 'solar', f: 'neutral', t: "Seven ninety-four. Naku yo uguisu, Heian-kyō. The nightingale sings, the capital moves. Eleven ninety-two. Ii kuni tsukurou, Kamakura bakufu. Let's build a good country." },
+          { s: 'junpei', f: 'surprised', t: "Wait wait wait. The numbers are WORDS? Since when are the numbers words?" },
+          { n: "She did twelve more. By the eighth he was saying them with her. By the tenth he had invented one of his own for the Giants' last pennant, which was not on the test and which he said he would be writing on the test anyway." },
+          { s: 'junpei', f: 'happy', t: "Dude. You're like a cheat code. Is there one for chemistry? Don't answer. I can't take it." }
         ] }
       ] },
       { n: "They worked for an hour, which was fifty minutes longer than he usually managed, and then he put his pen down and looked at her sideways, the look of somebody working up to a question he'd been carrying around a while." },

@@ -269,7 +269,7 @@ window.FemcTartarus = (() => {
     return (fresh.length ? pick(R, fresh) : pool.length ? pick(R, pool) : rare.length ? pick(R, rare) : null);
   }
   /* A room's reward. kind: puzzle | vault | guardian | rare | hidden | stash | super (a superboss's first fall) | super2 (a
-     rematch). Returns { yen, items, mats, gear, card, plumes, echo }. Velvet Plumes (story only): a guardian 2 (guaranteed, and
+     rematch). Returns { yen, items, mats (curios too), gear, card, plumes, echo }. Velvet Plumes (story only): a guardian 2 (guaranteed, and
      guardians fall once a playthrough), a superboss 5 the first time; vaults, golden Shadows and hidden rooms sometimes 1. */
   function loot(kind, c, floor) {
     const R = c.rand, bi = floor.bi || 0, T = D.map.chest.items, tier = Math.min(7, bi + 1), out = { yen: 0, items: {}, mats: {}, gear: null, card: null, plumes: 0 };
@@ -307,6 +307,9 @@ window.FemcTartarus = (() => {
     const echoOdds = kind === 'super' && floor.blockId === 'zenith' ? 1 : { rare: 0.3, vault: 0.15, hidden: 0.2, super: 0.5 }[kind];
     if (story && echoOdds && window.FemcEchoes && R() < echoOdds) out.echo = window.FemcEchoes.dropPick(R, c.save);
     if (!out.echo) delete out.echo;
+    // A curio (build.js CURIOS; story only): vaults 6%, hidden rooms 15%. Mayoido trades them for Velvet Plumes.
+    const curioOdds = story && c.BLD && c.BLD.CURIO ? c.BLD.CURIO[kind] : 0;
+    if (curioOdds && R() < curioOdds) mat(c.BLD.rollCurio(R));
     if (!story && out.items.capsule_ticket) { delete out.items.capsule_ticket; out.yen += 500; } // practice has no capsule machine
     if (!out.gear) delete out.gear;
     return out;

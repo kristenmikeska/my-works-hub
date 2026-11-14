@@ -149,6 +149,15 @@
         ] },
         { t: "Is that bad?", notes: 1, then: [
           { s: 'yukari', f: 'neutral', t: "No! No. It's just... efficient. Like, scary efficient." }
+        ] },
+        // Nov 14 2026 (Kat): stat rank 10 choice
+        { t: "(Take the pink blouse off the rack and hold it up under her chin.)", needs: { charm: 10 }, hide: true, notes: 3, then: [
+          { n: "It was the one Yukari had held up and put back three times. Solar held it under her chin and stepped back and looked, and said, in a normal voice that somehow carried, that this one wasn't a costume, this one was just her." },
+          { n: "The shop girl agreed from behind the counter. Two first-years at the next rack agreed. A woman waiting outside the fitting room agreed, and asked where it was from, and Yukari went red from the collar up." },
+          { s: 'yukari', f: 'blushing', t: "Okay, you can't just... everyone's looking at me." },
+          { s: 'solar', f: 'neutral', t: "They're agreeing with me." },
+          { s: 'yukari', f: 'surprised', t: "...How do you even DO that?" },
+          { n: "She bought it. She pretended it was because of the sale." }
         ] }
       ] },
       { n: "Then they got to pajamas, and she stopped." },

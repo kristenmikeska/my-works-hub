@@ -267,6 +267,9 @@
     const d = G.D.stats.stats[t.stat];
     if (!d) return done();
     const to = t.rank || G.statRank(t.stat), from = t.from || Math.max(1, to - 1), max = d.ranks.length;
+    // Fifteen ranks since 2026-11-14: the suns show the current band of five (1-5, 6-10, 11-15), and any reward this rank opens.
+    const b0 = Math.floor((to - 1) / 5) * 5, band = Math.min(5, max - b0);
+    const opened = (G.statRewards ? G.statRewards(t.stat) : []).filter(x => x.rank > from && x.rank <= to);
     const el = document.createElement('div');
     el.className = `g-statup${reduced.matches ? ' calm' : ''}`;
     el.setAttribute('role', 'alertdialog'); el.setAttribute('aria-modal', 'true');
@@ -276,7 +279,7 @@
       <div class="g-su-inner"><div class="g-su-sunbox" aria-hidden="true"><i class="g-su-burst"></i>${SUN('big')}</div>
         <div class="g-su-text"><p class="g-su-kicker">Social stat</p><p class="g-su-name">${esc(d.name)}</p><p class="g-su-up">Rank up!</p>
           <p class="g-su-rank"><s>${esc(d.ranks[from - 1] || '')}</s><span aria-hidden="true">▸</span><b>${esc(d.ranks[to - 1] || '')}</b></p>
-          <p class="g-su-pips" aria-label="Rank ${to} of ${max}">${Array.from({ length: max }, (_, k) => SUN(k < to ? (k >= from ? 'on new' : 'on') : '')).join('')}</p></div></div>
+          <p class="g-su-pips" aria-label="Rank ${to} of ${max}">${Array.from({ length: band }, (_, j) => { const k = b0 + j; return SUN(k < to ? (k >= from ? 'on new' : 'on') : ''); }).join('')}<small class="g-su-of">Rank ${to} / ${max}</small></p>${opened.map(x => `<p class="g-su-perk">✦ ${esc(x.text)}</p>`).join('')}</div></div>
       <p class="g-su-hint">${matchMedia('(hover: none)').matches ? 'Tap' : 'Click'} to continue</p>`;
     document.body.appendChild(el);
     G.sfx('femc-rankup');
@@ -998,9 +1001,11 @@
       const t = T[q.teacher] || { name: 'The teacher', subject: '' };
       // Haechan's Recruitment Pitch: once a day, one wrong answer is crossed out.
       const hint = G.classHint(q);
+      // Knowledge 12 (stats.js rewards.exam, story year only): she just knows it. The right answer glows, tagged.
+      const knows = !!(G.knowsAnswer && G.knowsAnswer());
       // The teacher's face once their portrait exists (portraits/<teacher key>/); the name alone until then.
       const face = G.portrait(q.teacher, 'neutral');
-      const box = segment({ slot, bg: 'gekkoukan-classroom-day', place: t.subject || 'Class', text: `${cap(t.name)} turned from the board and looked straight at her.`, extra: `<div class="g-quiz${face ? ' has-face' : ''}">${face ? `<img class="g-quiz-face" src="${face}" alt="${esc(cap(t.name))}">` : ''}<p class="g-quiz-q"><b>${esc(t.name)}</b>${esc(q.q)}</p><div class="g-quiz-a">${q.a.map((a, i) => `<button type="button" class="g-btn${i === hint ? ' hinted' : ''}" data-a="${i}"${i === hint ? ' disabled' : ''}>${esc(a)}</button>`).join('')}</div>${hint != null ? '<p class="g-quiz-hint">Haechan, under his breath: “Not that one.”</p>' : ''}<p class="g-quiz-r" hidden></p></div>`, button: 'Continue' });
+      const box = segment({ slot, bg: 'gekkoukan-classroom-day', place: t.subject || 'Class', text: `${cap(t.name)} turned from the board and looked straight at her.`, extra: `<div class="g-quiz${face ? ' has-face' : ''}">${face ? `<img class="g-quiz-face" src="${face}" alt="${esc(cap(t.name))}">` : ''}<p class="g-quiz-q"><b>${esc(t.name)}</b>${esc(q.q)}</p><div class="g-quiz-a">${q.a.map((a, i) => `<button type="button" class="g-btn${i === hint ? ' hinted' : ''}${knows && i === q.correct ? ' known' : ''}" data-a="${i}"${i === hint ? ' disabled' : ''}>${esc(a)}${knows && i === q.correct ? '<small class="g-known-tag">✦ you know this</small>' : ''}</button>`).join('')}</div>${hint != null ? '<p class="g-quiz-hint">Haechan, under his breath: “Not that one.”</p>' : ''}<p class="g-quiz-r" hidden></p></div>`, button: 'Continue' });
       const next = box.querySelector('[data-next]'); next.hidden = true;
       box.querySelectorAll('[data-a]').forEach(b => b.addEventListener('click', () => {
         const right = G.answerClass(q, +b.dataset.a);
@@ -2218,20 +2223,41 @@
     const shopData = books ? { name: 'Bookworms', sub: 'Used books', lines: { hi: ['Take your time, dear. The good ones are on the bottom shelf.'] } }
       : gshop ? { name: gshop.name, sub: gshop.sub, lines: { hi: gshop.hi, buy: gshop.buy } } : G.D.battle.shops?.[G.D.places.shops[id].battleShop];
     if (!shopData) { G.toast('note', 'Closed today.'); return done(); }
-    // Mayoido buys materials (they live in the battle save): a Sell tab.
+    // Mayoido buys materials (they live in the battle save): a Sell tab. Curios aren't sold; they're traded (below).
     const buys = !books && !!shopData.buys;
+    // Mayoido's Trade tab (2026-11-14, build.js MAYOIDO / mayoTrades): Moonlit Feathers, Arcana Fragments and curios for Velvet
+    // Plumes, at most MAYOIDO.week plumes a game week (weeks start on Sunday, core.js weekOf). State: S.gacha.mayo { week, n, total }.
+    const BLD = window.FemcBuild, GA = window.FemcGacha;
+    const trades = buys && id === 'mayoido' && !!(BLD && BLD.mayoTrades && GA && GA.gs);
+    const mayo = () => { const g = GA.gs(), wk = Math.floor((S().day + 1) / 7); if (!g.mayo || typeof g.mayo !== 'object') g.mayo = { week: wk, n: 0, total: 0 }; if (g.mayo.week !== wk) { g.mayo.week = wk; g.mayo.n = 0; } return g.mayo; };
+    const mayoLeft = () => Math.max(0, BLD.MAYOIDO.week - mayo().n);
+    const tradeHtml = () => {
+      const b = G.ensureBattleSave(), list = b ? BLD.mayoTrades(b) : [], left = mayoLeft(), M = G.D.battle.materials;
+      const art = k => (M[k].art ? `<img class="g-shop-art icon" src="${G.base}${M[k].art}" alt="">` : window.FemcIcons ? `<i class="g-shop-ico">${window.FemcIcons.of(k)}</i>` : '');
+      return `<p class="g-note small">Plumes from materials this week: <b>${BLD.MAYOIDO.week - left} / ${BLD.MAYOIDO.week}</b> · you have ${GA.gs().plumes}. ${left ? 'The dealer trades a few each week; Sunday starts a new week. Curios trade any time.' : 'That’s all the material trades for this week (curios still trade). Come back after Sunday.'}</p>`
+        + list.map(t => `<button type="button" class="g-act${M[t.id].art || window.FemcIcons ? ' has-art' : ''}" data-trade="${esc(t.id)}"${t.can && (t.curio || t.plumes <= left) ? '' : ' disabled'}>${art(t.id)}<span><b>${esc(M[t.id].name)} ×${t.per}${t.curio ? ' <small>(curio)</small>' : ''}</b><small>${esc(M[t.id].desc || '')} · you have ${t.have}</small></span><em>Velvet Plume${t.plumes > 1 ? `s ×${t.plumes}` : ' ×1'}</em></button>`).join('')
+        + (list.some(t => t.curio) ? '' : '<p class="g-note small">Curios (an old music box, a stopped pocket watch…) turn up now and then in Tartarus chests, vaults and hidden rooms. The dealer trades them for plumes.</p>');
+    };
     let tab = 'buy';
     const render = () => {
-      const mats = buys ? Object.entries((G.ensureBattleSave()?.mats) || {}).filter(([k, n]) => n > 0 && G.D.battle.materials?.[k]) : [];
+      const mats = buys ? Object.entries((G.ensureBattleSave()?.mats) || {}).filter(([k, n]) => n > 0 && G.D.battle.materials?.[k] && !G.D.battle.materials[k].curio) : [];
       const stock = books ? G.D.places.books.filter(b => !S().books.owned.includes(b.id)).map(b => ({ id: b.id, kind: 'book', name: b.name, price: b.price, art: G.bookArt(b), book: true, desc: `${b.nights} nights · ${Object.keys(b.stats).map(k => G.D.stats.stats[k].name).join(', ')}` })) : G.shopStock(id);
       const tabs = o.el.querySelector('.g-shop-tabs');
-      if (tabs) tabs.innerHTML = buys ? `<button type="button" class="g-chip${tab === 'buy' ? ' on' : ''}" data-tab="buy">Buy</button><button type="button" class="g-chip${tab === 'sell' ? ' on' : ''}" data-tab="sell">Sell materials</button>` : '';
-      o.el.querySelector('.g-shop-list').innerHTML = tab === 'sell'
+      if (tabs) tabs.innerHTML = buys ? `<button type="button" class="g-chip${tab === 'buy' ? ' on' : ''}" data-tab="buy">Buy</button><button type="button" class="g-chip${tab === 'sell' ? ' on' : ''}" data-tab="sell">Sell materials</button>${trades ? `<button type="button" class="g-chip${tab === 'trade' ? ' on' : ''}" data-tab="trade">Trade for plumes</button>` : ''}` : '';
+      o.el.querySelector('.g-shop-list').innerHTML = tab === 'trade' && trades ? tradeHtml() : tab === 'sell'
         ? (mats.length ? mats.map(([k, n]) => `<button type="button" class="g-act${G.D.battle.materials[k].art ? ' has-art' : ''}" data-sell="${esc(k)}">${G.D.battle.materials[k].art ? `<img class="g-shop-art icon" src="${G.base}${G.D.battle.materials[k].art}" alt="">` : ''}<span><b>${esc(G.D.battle.materials[k].name)} ×${n}</b><small>${esc(G.D.battle.materials[k].desc || '')}</small></span><em>¥${G.matSellPrice(k).toLocaleString()} each</em></button>`).join('') : '<p class="g-note">Nothing to sell. Shadows drop materials in Tartarus.</p>')
         : stock.length ? stock.map((x, i) => x.kind === 'gift' ? `${!gshop && x === stock.find(y => y.kind === 'gift') ? '<h4 class="g-shop-sub">Gifts</h4>' : ''}${giftRow(x, i)}` : `<button type="button" class="g-act${x.art ? ' has-art' : ''}" data-i="${i}"${S().yen < x.price ? ' disabled' : ''}>${x.art ? `<img class="g-shop-art${x.wide ? ' wide' : ''}${x.icon ? ' icon' : ''}${x.book ? ' book' : ''}" src="${G.base}${x.art}" alt="">` : ''}<span><b>${esc(x.name)}</b><small>${esc(x.desc || '')}${x.who ? ` · for ${esc(x.who)}` : ''}</small></span><em>¥${x.price.toLocaleString()}${!books && x.kind === 'item' && S().inventory[x.id] ? ` · own ${S().inventory[x.id]}` : ''}${!books && !['item', 'cardpack'].includes(x.kind) && S().gear.includes(x.id) ? ' · owned' : ''}</em></button>`).join('') : '<p class="g-note">Nothing for sale right now.</p>';
       o.el.querySelector('.g-shop-yen').textContent = `¥${S().yen.toLocaleString()}`;
       o.el.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => { tab = b.dataset.tab; G.sfx('femc-hover'); render(); }));
       o.el.querySelectorAll('[data-sell]').forEach(b => b.addEventListener('click', () => { if (G.sellMat(b.dataset.sell, 1)) { o.el.querySelector('.g-shop-say').textContent = shopData.lines?.sold || 'A pleasure.'; G.sfx('femc-click'); } render(); }));
+      o.el.querySelectorAll('[data-trade]').forEach(b => b.addEventListener('click', () => {
+        const bs = G.ensureBattleSave(), r = bs ? BLD.mayoTrade(bs, b.dataset.trade, mayoLeft()) : { ok: false, why: 'Nothing to trade.' };
+        if (!r.ok) { G.toast('note', r.why); G.sfx('femc-hover'); render(); return; }
+        const m = mayo(); if (!r.curio) m.n += r.plumes; m.total = (m.total || 0) + r.plumes; GA.gs().plumes += r.plumes;
+        G.toast('perk', `Velvet Plume${r.plumes > 1 ? 's' : ''} +${r.plumes} (Mayoido Antiques)`);
+        o.el.querySelector('.g-shop-say').textContent = shopData.lines?.trade || 'Hmhm. I know someone who collects these.';
+        G.sfx('femc-click'); G.save(); render();
+      }));
       o.el.querySelectorAll('[data-i]').forEach(b => b.addEventListener('click', () => {
         const x = stock[+b.dataset.i];
         if (books) { if (S().yen >= x.price) { G.addYen(-x.price); S().books.owned.push(x.id); G.save(); } }

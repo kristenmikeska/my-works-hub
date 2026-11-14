@@ -40,6 +40,11 @@
     try { const h = BR.handoff(); return h && h.request && ['pending', 'done'].includes(h.status) ? h : null; } catch (e) { return null; }
   })();
   if (BR && !HO) { try { BR.finish(null); } catch (e) {} return; }
+  /* Social stats at rank 15 (2026-11-14; life sim stats.js rewards.battle, handoff social.statPerks): story fights only (practice
+     has no HO). knowledge: skills cost 10% less SP (unit costCut); courage: +5 crit % (critBonus); proficiency: luckier Shuffle
+     Time (build.js deal `lucky`); kindness: 10% HP back after each won Tartarus fight (run.carry). Charm's is the life sim's
+     shop prices (core.js shopDiscount). A fight with rules.noPerks (Velvet Trials) skips them. */
+  const STATP = new Set(HO && HO.request && HO.request.social && Array.isArray(HO.request.social.statPerks) ? HO.request.social.statPerks : []);
   if (HO && HO.status === 'done') { BR.finish(HO.result); return; }
   if (BR) document.documentElement.classList.add('bt-embed');
   const KEY = PROTO_KEY;
@@ -1338,6 +1343,8 @@
       if (f.th) roster().forEach(m => { save.th[m.id] = Math.min(100, (save.th[m.id] || 0) + f.th); });
       if (f.reaper && run && run.map) run.map.steps += f.reaper;
       if (f.curse && run) run.curse = f.curse;
+      // The World: three Velvet Plumes, with the night's other plumes (hoResult `plumes`; core.js applyResult pays them as they are).
+      if (f.plumes && HS) { HS.plumes = (HS.plumes || 0) + f.plumes; notes.push(`Velvet Plume ×${f.plumes} (The World)`); }
     }
     save.yen += rew.yen;
     Object.entries(rew.drops).forEach(([k, n]) => addMat(k, n));
@@ -1391,7 +1398,15 @@
   const shFrame = inner => `<svg viewBox="0 0 120 180" aria-hidden="true"><defs><linearGradient id="shg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b1a5c"/><stop offset="1" stop-color="#0d0c2c"/></linearGradient></defs>
     <rect x="2" y="2" width="116" height="176" rx="7" fill="#d9e4ff" stroke="#14070f" stroke-width="3"/><rect x="9" y="9" width="102" height="162" rx="4" fill="url(#shg)" stroke="#ffd36b" stroke-width="2"/>
     <path d="M14 14l10 0M14 14l0 10M106 14l-10 0M106 14l0 10M14 166l10 0M14 166l0-10M106 166l-10 0M106 166l0-10" stroke="#ffd36b" stroke-width="2"/>${inner}</svg>`;
+  // The World (XXI, build.js SH.world): a gold card drawn here (no tarot art for it), a wreath around a turning globe.
+  const shWorld = () => `<span class="sh-face major gold"><svg viewBox="0 0 120 180" aria-hidden="true"><defs><linearGradient id="shw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1c2"/><stop offset=".45" stop-color="#e2b04a"/><stop offset="1" stop-color="#8a5a12"/></linearGradient><radialGradient id="shwg" cx=".5" cy=".45" r=".6"><stop offset="0" stop-color="#3a2408"/><stop offset="1" stop-color="#14070f"/></radialGradient></defs>
+    <rect x="2" y="2" width="116" height="176" rx="7" fill="url(#shw)" stroke="#14070f" stroke-width="3"/><rect x="9" y="9" width="102" height="162" rx="4" fill="url(#shwg)" stroke="#fff1c2" stroke-width="2"/>
+    <ellipse cx="60" cy="84" rx="34" ry="44" fill="none" stroke="url(#shw)" stroke-width="5" stroke-dasharray="9 4"/>
+    <circle cx="60" cy="84" r="20" fill="none" stroke="#fff1c2" stroke-width="2.5"/><ellipse cx="60" cy="84" rx="8" ry="20" fill="none" stroke="#e2b04a" stroke-width="2"/><path d="M40 84h40M43 74h34M43 94h34" stroke="#e2b04a" stroke-width="1.6"/>
+    <path d="M60 22l3 8 8 .5-6.4 5 2.2 8-6.8-4.6-6.8 4.6 2.2-8-6.4-5 8-.5z" fill="#fff1c2"/>
+    <rect x="30" y="140" width="60" height="22" rx="3" fill="#14070f" stroke="#e2b04a" stroke-width="1.5"/><text x="60" y="157" fill="#fff1c2" font-family="Georgia, serif" font-size="16" font-weight="700" text-anchor="middle">XXI</text></svg><b>The World</b></span>`;
   function shFace(c) {
+    if (c.gold) return shWorld();
     if (c.kind !== 'minor') return `<span class="sh-face major${c.kind === 'penalty' ? ' pen' : ''}"><img src="assets/femc/tarot/${esc(c.id)}.webp?v=${V()}" alt="" draggable="false"><b>${esc(c.name)}</b></span>`;
     const su = D.shuffle.suits[c.suit];
     return `<span class="sh-face minor" style="--c:${su.color}">${shFrame(SUIT_SVG[c.suit](su.color) + `<rect x="30" y="140" width="60" height="22" rx="3" fill="#14070f" stroke="#ffd36b" stroke-width="1.5"/><text x="60" y="157" fill="#fff4f9" font-family="Georgia, serif" font-size="16" font-weight="700" text-anchor="middle">${esc(c.num)}</text>`)}<b>${esc(c.name)}</b></span>`;
@@ -1401,7 +1416,7 @@
   function shuffleTime(why, ctx) {
     return new Promise(async resolve => {
       const tp = TP(), extra = tp.goodFortune ? 1 : 0, reduced = !FX || FX.reduced();
-      const hand = Array.isArray(window.__btShuffleHand) ? window.__btShuffleHand.splice(0) : BLD.deal(rand, { tier: ctx.tier, extra, hard: !!(D.difficulty[ST().difficulty] || {}).tough, boss: why === 'boss', practice: !HO });
+      const hand = Array.isArray(window.__btShuffleHand) ? window.__btShuffleHand.splice(0) : BLD.deal(rand, { tier: ctx.tier, extra, hard: !!(D.difficulty[ST().difficulty] || {}).tough, boss: why === 'boss', practice: !HO, plumes: !!(HO && HS && !HO.request.epi), lucky: STATP.has('proficiency') });
       const auto = rushActive();
       shState = { why, hand, phase: 'show', picked: null, res: null };
       save.shuffles = (save.shuffles || 0) + 1;
@@ -1450,6 +1465,8 @@
         const flare = !reduced && FX && FX.artSrc && FX.artSrc('shuffle-flip');
         if (flare) { el.style.setProperty('--flip', `url('${flare}')`); el.classList.add('has-flip'); mark('fx-art-shuffle-flip'); }
         cardEl.classList.add('up');
+        // The World (XXI): a gold shine on the turned card (battle.css .bt-sh-card.world; still with reduced motion, softer with Reduce flashes).
+        if (c.gold) { el.classList.add('world-up'); cardEl.classList.add('world'); mark('shuffle-world'); }
         const res = BLD.applyShuffle(save, c, { R: rand, tier: ctx.tier, party: roster().map(m => m.id) });
         shState.res = res;
         persist();
@@ -1508,7 +1525,10 @@
   function mapPerks(floor, map) {
     const tp = TP(), N = map.nodes, bi = floor.bi || 0;
     const pickN = list => list[Math.floor(rand() * list.length)];
-    if (BLD && bi >= BLD.CHEST_WEAPON.fromBlock && !(save.gear.owned[BLD.CHEST_WEAPON.id] > 0)) N.filter(n => n.type === 'chest').forEach(n => { if (rand() < BLD.CHEST_WEAPON.chance) n.chest = { gear: BLD.CHEST_WEAPON.id }; });
+    // Mint Blossom: a first copy 6% a chest; once Solar has it, a rare second copy (forging fuel, build.js CHEST_WEAPON.dupChance).
+    if (BLD && bi >= BLD.CHEST_WEAPON.fromBlock) { const cw = BLD.CHEST_WEAPON, odds = save.gear.owned[cw.id] > 0 ? (cw.dupChance || 0) : cw.chance; N.filter(n => n.type === 'chest').forEach(n => { if (rand() < odds) n.chest = { gear: cw.id }; }); }
+    // Curios (build.js CURIOS; story only): now and then a chest holds one too (Mayoido trades them for Velvet Plumes).
+    if (BLD && BLD.CURIO && HO) N.filter(n => (n.type === 'chest' || n.type === 'locked') && n.chest).forEach(n => { if (rand() < BLD.CURIO[n.type]) n.chest = Object.assign({}, n.chest, { curio: BLD.rollCurio(rand) }); });
     if (tp.goodNose) { const e = N.filter(n => n.type === 'empty'); if (e.length) { const n = pickN(e); n.type = 'chest'; n.chest = MAP.rollChest(rand, bi, false); n.perk = 'goodNose'; } }
     if (tp.nightOrchid) { const e = N.filter(n => n.type === 'empty'); if (e.length) pickN(e).type = 'shrine'; }
     if (tp.techSavvy) N.filter(n => n.type === 'locked' && n.chest).forEach(n => { const t = D.map.chest.items; n.chest = Object.assign({}, n.chest, { extra: pickN(t[Math.min(bi + 1, t.length - 1)]) }); });
@@ -1781,9 +1801,10 @@
     if (c.item) rows.push(`<div class="bt-loot">${ICON.of(c.item)}<b>${esc(D.items[c.item].name)}${c.n > 1 ? ` ×${c.n}` : ''}</b><span>${esc(D.items[c.item].desc)}</span></div>`);
     if (c.gear) rows.push(`<div class="bt-loot${D.gear[c.gear].art ? ' art' : ''}">${D.gear[c.gear].art ? `<img${D.gear[c.gear].artWide ? ' class="wide"' : ''} src="${D.gear[c.gear].art}?v=${ART_V}" alt="">` : ICON.of(c.gear)}<b>${esc(D.gear[c.gear].name)}</b><span>${esc(gearLine(c.gear))}</span></div>`);
     if (c.extra) rows.push(`<div class="bt-loot">${ICON.of(c.extra)}<b>${esc(D.items[c.extra].name)}</b><span>Tech Savvy: one more thing inside.</span></div>`);
+    if (c.curio && D.materials[c.curio]) rows.push(`<div class="bt-loot">${ICON.of(c.curio)}<b>${esc(D.materials[c.curio].name)}</b><span>${esc(D.materials[c.curio].desc)} (A curio: Mayoido Antiques trades these for Velvet Plumes.)</span></div>`);
     return rows.join('');
   };
-  const grant = c => { if (c.yen) save.yen += c.yen; if (c.item) addItem(c.item, c.n || 1); if (c.gear) addGear(c.gear); if (c.extra) addItem(c.extra, 1); persist(); };
+  const grant = c => { if (c.yen) save.yen += c.yen; if (c.item) addItem(c.item, c.n || 1); if (c.gear) addGear(c.gear); if (c.extra) addItem(c.extra, 1); if (c.curio && D.materials[c.curio]) addMat(c.curio, 1); persist(); };
   /* Resolve the room the party just walked into. Returns 'up' | 'leave' | 'over' to end the floor, else nothing. */
   async function room(floor, n, say) {
     const T = 'assets/femc/bg/tartarus-treasure.webp', AP = 'assets/femc/bg/tartarus-access-point.webp';
@@ -2022,6 +2043,10 @@
     if (fx.autoAnalyze) kinds.forEach(k => { if (D.enemies[k].gimmick) return; const kn = save.known[k] || (save.known[k] = {}); D.affinityOrder.forEach(el => { kn[el] = true; }); });
     const RL = spec.rules || null;
     const partyUnits = buildParty(run && run.carry);
+    if (STATP.size && !(RL && RL.noPerks)) partyUnits.forEach(u => {
+      if (STATP.has('knowledge')) u.costCut = 1 - (1 - (u.costCut || 0)) * 0.9;
+      if (STATP.has('courage')) u.critBonus = (u.critBonus || 0) + 5;
+    });
     // Bond perks (build.js): story fights only (practice has no links). Third Eye: Shadows fought before start analyzed.
     const perks = BLD && HO && !(RL && RL.noPerks) ? BLD.battlePerks(save, hoAvail()) : {};
     curPerks = perks;
@@ -2105,7 +2130,10 @@
     setActive(null);
     hideMenu();
     B.party().forEach(p => { save.th[p.mid] = Math.round(p.th); });
-    if (run) run.carry = Object.fromEntries(B.party().map(p => [p.mid, { hp: p.dead ? 1 : p.hp, sp: p.sp, th: p.th }]));
+    // Kindness 15 (STATP): after a won fight the party gets 10% of max HP back (not the fallen).
+    const kind = result === 'win' && STATP.has('kindness') && !(curSpec && curSpec.rules && curSpec.rules.noPerks);
+    if (run) run.carry = Object.fromEntries(B.party().map(p => [p.mid, { hp: p.dead ? 1 : kind ? Math.min(p.maxHp, p.hp + Math.ceil(p.maxHp * 0.1)) : p.hp, sp: p.sp, th: p.th }]));
+    if (run && kind) blogAdd('Kindness: everyone catches their breath (+10% HP).', 'sys');
     persist();
     if (result === 'win') {
       nav(spec.reaper ? 'reaperWin' : spec.boss ? 'bossWin' : 'win');
@@ -4940,7 +4968,7 @@
       if (shop.sells.includes('acc')) return Object.keys(D.gear).filter(x => D.gear[x].slot === 'acc' && !D.gear[x].rare && D.gear[x].tier <= t).sort((a, b) => D.gear[a].tier - D.gear[b].tier || D.gear[a].price - D.gear[b].price);
       return [];
     };
-    const sellList = () => Object.keys(save.mats).filter(k => save.mats[k] > 0).concat(Object.keys(save.gear.owned).filter(k => spare(k) > 0 && D.gear[k].tier > 0));
+    const sellList = () => Object.keys(save.mats).filter(k => save.mats[k] > 0 && D.materials[k] && !D.materials[k].curio).concat(Object.keys(save.gear.owned).filter(k => spare(k) > 0 && D.gear[k].tier > 0));
     const sellPrice = x => (D.materials[x] ? D.materials[x].price : Math.round(priceOf(x) * D.progression.sellRate));
     const owned = x => (D.items[x] ? save.items[x] || 0 : D.materials[x] ? save.mats[x] || 0 : (save.gear.owned[x] || 0));
     const render = () => {
@@ -5320,9 +5348,10 @@
     if (HO.kind === 'tartarus') {
       r.fatigue = HS.entered ? (['tired', 'sick'].includes(R.condition) ? 'sick' : 'tired') : (R.condition || 'good');
       r.floorsReached = HS.floor || 0;
-      if (HS.plumes) r.plumes = HS.plumes; // Velvet Plumes from vaults, guardians, rare Shadows and hidden rooms (core.js applyResult)
       if (HS.tally && (HS.tally.kills || HS.tally.rares || Object.keys(HS.tally.weak).length)) r.tally = { kills: HS.tally.kills, weak: Object.assign({}, HS.tally.weak), rares: HS.tally.rares || 0 }; // the night's plumes (gacha.js nightPlumes) and Elizabeth's Requests
     } else if (HO.kind === 'operation' && !HS.scripted && outcome !== 'interrupt') r.fatigue = R.condition === 'sick' ? 'sick' : 'tired';
+    // Velvet Plumes from vaults, guardians, rare Shadows, hidden rooms and The World (Shuffle Time, full moons too) (core.js applyResult).
+    if (HS.plumes && !R.epi) r.plumes = HS.plumes;
     return Object.assign(r, extra);
   }
   function hoFinish(outcome, extra = {}) {

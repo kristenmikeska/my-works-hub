@@ -225,6 +225,15 @@
         { t: "You're not my senpai.", notes: 1, then: [
           { s: 'shinjiro', f: 'neutral', t: "Didn't say I was." },
           { s: 'shinjiro', f: 'neutral', t: "Still not a place for you." }
+        ] },
+        // Nov 14 2026 (Kat): stat rank 10 choice
+        { t: "Neither is it for you. You first.", needs: { courage: 10 }, hide: true, notes: 3, then: [
+          { s: 'shinjiro', f: 'surprised', t: "..." },
+          { n: "He looked at her properly for the first time, not at the vending machine, not at the street. She looked back and didn't move her feet, and the alley was very quiet, and somewhere a long way off a train went over the bridge." },
+          { s: 'shinjiro', f: 'neutral', t: "You don't scare easy." },
+          { s: 'solar', f: 'neutral', t: "I scared about two minutes ago. It's done now." },
+          { s: 'shinjiro', f: 'neutral', t: "...Tch." },
+          { n: "He pushed off the wall. It wasn't agreement. It was, she thought, the closest thing to it that he kept in stock." }
         ] }
       ] },
       { n: "He walked her to the end of the alley anyway, three steps behind, not talking, like a shadow that had decided against its own better judgment to be useful. At the mouth of the street, where the light went bright and ordinary again and a girl on a bike went past ringing her bell at nobody, he stopped." },
@@ -287,6 +296,14 @@
         { t: "Wait. Is this the dog's?", notes: 1, then: [
           { s: 'shinjiro', f: 'neutral', t: "The dog's got his." },
           { s: 'shinjiro', f: 'neutral', t: "Eat." }
+        ] },
+        // Nov 14 2026 (Kat): stat rank 10 choice
+        { t: "(Eat half. Push the rest back to him, with the chopsticks.)", needs: { kindness: 10 }, hide: true, notes: 3, then: [
+          { n: "There had only been the one container in his coat, and one pair of chopsticks, and he hadn't eaten anything since she'd come up the steps. She ate exactly half, neatly, down the middle, and set the chopsticks across the lid and pushed it back the two centimeters he'd pushed it to her." },
+          { s: 'shinjiro', f: 'neutral', t: "I ate." },
+          { s: 'solar', f: 'neutral', t: "You didn't." },
+          { n: "He looked at the container for a while like it had told on him. Then he picked it up, and ate the rest standing, fast, with his back half turned, the way you'd eat something you'd been told was for somebody else." },
+          { s: 'shinjiro', f: 'neutral', t: "...Nosy." }
         ] }
       ] },
       { n: "The light was going. Down below them the lanterns along the path came on one at a time, and Koromaru, finished, licked his container clean in long thoughtful strokes, and then went and sat by the offering box, facing the steps, upright, ears forward, exactly the way you'd sit if somebody had told you to wait right there, they'd be right back." },

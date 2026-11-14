@@ -55,6 +55,9 @@ Until the battle side is wired up, every fight shows a placeholder card ("Battle
     fragmentsOpen: true,         // false before 5/16: no memory fragments may drop yet
     kits: { night_leftovers: 1 },  // Tartarus only, optional: night-only items the life sim packed (Shinjiro's Kitchen Duty); battle.js adds them for the night
     social: { stats: { knowledge: 64, courage: 33, proficiency: 20, charm: 36, kindness: 18 }, ranks: { akihiko: 3, yukari: 3 } },  // link ranks: the party trees' tiers (4, 7) and MAX evolutions (battle save `ranks`); link perks later
+    // social.statPerks (2026-11-14): the social stats at rank 15 (life sim stats.js rewards.battle), e.g. ['courage']. battle.js STATP applies them in
+    // story fights only: knowledge = skills cost 10% less SP, courage = +5 crit %, proficiency = luckier Shuffle Time (build.js deal `lucky`), kindness = +10% HP
+    // after a won Tartarus fight. charm's perk is the life sim's shop prices, so the battle side ignores it. Missing = none.
     difficulty: null             // reserved; the battle side keeps its own setting
   },
 
