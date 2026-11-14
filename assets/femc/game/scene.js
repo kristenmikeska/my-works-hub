@@ -363,12 +363,21 @@ window.FemcScene = (() => {
         b.innerHTML = `<span></span>${lock ? `<small>${esc(lock)}</small>` : ''}`;
         b.querySelector('span').textContent = G.sub(o.t);
         if (lock) { b.disabled = true; b.classList.add('locked'); }
+        // Nov 14 2026 (Kat: Solar said some choices twice): when the option's own `then` opens with Solar saying the same
+        // words (or a longer / shorter take on them), that line is the spoken one; the option isn't spoken again.
+        const echoed = opt => {
+          const norm = x => String(x || '').toLowerCase().replace(/[\u201c\u201d"'\u2018\u2019*\u2026.,!?\u2014\u2013\-\s]+/g, ' ').trim();
+          const first = (opt.then || []).find(l => l && typeof l === 'object' && (l.s || l.n || l.t || l.choose));
+          if (!first || first.s !== 'solar' || !first.t) return false;
+          const a = norm(opt.say || opt.t), b = norm(first.t);
+          return !!a && !!b && (a === b || b.startsWith(a) || a.startsWith(b) || (a.length > 12 && b.includes(a)));
+        };
         const take = () => {
           choices.replaceChildren();
           G.sfx('femc-click');
           if (replay) { if (o.flag) overFlags(o.flag); } // for show: nothing reaches the save
           else { G.applyChoice(o, curLink, opts.event); notes(o.notes || 0); }
-          const spoken = o.say || (o.t.trim().startsWith('(') ? null : o.t);
+          const spoken = echoed(o) ? null : o.say || (o.t.trim().startsWith('(') ? null : o.t);
           queue.unshift(...(spoken ? [{ s: 'solar', t: spoken }] : []), ...(o.christmas ? G.christmasLines(o.christmas) : []), ...(o.then || []));
           next();
         };
