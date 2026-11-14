@@ -45511,6 +45511,370 @@
    "destination": "assets/femc/game/art/scrapbook/ui/tape-1..6, clip-1..3, corner-1..8.webp",
    "conversion": "tools/femc-scrapbook.py art",
    "placement": "the scrapbook (46)"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-arcana-lovers-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "530fd660be919982806964f8f575ec66ca554a6e3e59a5874586f7968ad9d184",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-lovers/solar-entrance.webp",
+   "conversion": "tools/femc-wardrobe.py entrance",
+   "placement": "sk-arcana-lovers in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-arcana-lovers-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "3901365080b8a98f8fab9dd5297db231f4a95a6c498111369075d659c80f98b8",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-lovers/solar-finish.webp",
+   "conversion": "tools/femc-wardrobe.py finish",
+   "placement": "sk-arcana-lovers in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-arcana-lovers-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "31b7ac8d1cad1755b36b8fdacd9fb7d06dfac5256f3841015479ca1f7f943f05",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-lovers/fx.webp",
+   "conversion": "tools/femc-fx.py skin",
+   "placement": "sk-arcana-lovers in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-arcana-lovers-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "1ba3af2b4cc19073b06dcc59c579986f484562428bf1ea68eae11aef478c30b4",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-lovers/solar-onemore-v2.webp",
+   "conversion": "tools/femc-wardrobe.py onemore2",
+   "placement": "sk-arcana-lovers in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-arcana-lovers-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "260246e2532e96f6827922f4b34ed4df0026631602d4157e526e2fed54d9b0f3",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-lovers/solar-onemore.webp",
+   "conversion": "tools/femc-wardrobe.py onemore",
+   "placement": "sk-arcana-lovers in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-arcana-lovers-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "0a70ed63527d9c67a65e018f808bda05b2d0c89acf69afe69f08db868de1a8c1",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-lovers/solar-theurgy.webp",
+   "conversion": "tools/femc-wardrobe.py theurgy",
+   "placement": "sk-arcana-lovers in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-arcana-moon-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "7b46163c61ba51d95faa39b94ad98d668e59355ec9be448b5dfd843621740782",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-moon/solar-entrance.webp",
+   "conversion": "tools/femc-wardrobe.py entrance",
+   "placement": "sk-arcana-moon in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-arcana-moon-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "bd7bc82e412400034f943f38ccd48fa1c2cd94b6878539de9532a9718e6d98db",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-moon/solar-finish.webp",
+   "conversion": "tools/femc-wardrobe.py finish",
+   "placement": "sk-arcana-moon in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-arcana-moon-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "b10ebda6f4766fd7c82a130ae3c5964a51aa74650b00d71746ec0d0efaa04091",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-moon/fx.webp",
+   "conversion": "tools/femc-fx.py skin",
+   "placement": "sk-arcana-moon in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-arcana-moon-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "57c3def0e85401d9c9933607eb75d4c55d8405027186c6a8faa556c3197f6aab",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-moon/solar-onemore-v2.webp",
+   "conversion": "tools/femc-wardrobe.py onemore2",
+   "placement": "sk-arcana-moon in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-arcana-moon-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "d0dcacd18ed93612a220d7ee7942436fa2741dfd1ec2bb9b238d0138f171ea86",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-moon/solar-onemore.webp",
+   "conversion": "tools/femc-wardrobe.py onemore",
+   "placement": "sk-arcana-moon in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-arcana-moon-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "e522bbecd982e2c96f5aeaf3b6eb79f0dfce0295cfb96613e3779d9eb5cf0d71",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-moon/solar-theurgy.webp",
+   "conversion": "tools/femc-wardrobe.py theurgy",
+   "placement": "sk-arcana-moon in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-arcana-star-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "934359e7ebfa033eddb42a19f2532c64f16e2c043190ea9be27b8d0285be64a5",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-star/solar-entrance.webp",
+   "conversion": "tools/femc-wardrobe.py entrance",
+   "placement": "sk-arcana-star in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-arcana-star-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "0ed6be8b3f328e90c7a7e12598d86fd9d5a82e7da850b2110425d415b645d579",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-star/solar-finish.webp",
+   "conversion": "tools/femc-wardrobe.py finish",
+   "placement": "sk-arcana-star in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-arcana-star-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "07804785aba3bb7a19b21fb066524e5bdf6d4a82b9797278e314b9bb67450fe3",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-star/fx.webp",
+   "conversion": "tools/femc-fx.py skin",
+   "placement": "sk-arcana-star in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-arcana-star-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "d86759d67239f107dc035fb880256ddc0a3cbdae4dcc5e1470f154508e596243",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-star/solar-onemore-v2.webp",
+   "conversion": "tools/femc-wardrobe.py onemore2",
+   "placement": "sk-arcana-star in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-arcana-star-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "c98d3d0d76e2d27d3a4523733a5c603c79c1ab5297c941688759fed5d1c18c6e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-star/solar-onemore.webp",
+   "conversion": "tools/femc-wardrobe.py onemore",
+   "placement": "sk-arcana-star in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-arcana-star-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "da5b44f301395162499ada0e28e0c7651ea756fd28f22b70c978efb873f87e3a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-arcana-star/solar-theurgy.webp",
+   "conversion": "tools/femc-wardrobe.py theurgy",
+   "placement": "sk-arcana-star in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-chapel-rose-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "c604b6545ed93e9e62388a02e5c5f2c5e25603dfade8ec08f1f7b94ace6b26cc",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-rose/solar-finish.webp",
+   "conversion": "tools/femc-wardrobe.py finish",
+   "placement": "sk-chapel-rose in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-chapel-rose-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "c8b4de18096a23df8de2a3c937b57dcef831a8dbb1c209d3bfcad35be9dab093",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-rose/fx.webp",
+   "conversion": "tools/femc-fx.py skin",
+   "placement": "sk-chapel-rose in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-chapel-rose-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "b0d9babc8f3422d84bece686e22945d254ec8e4f46a52f640b3b076b918e0b9f",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-rose/solar-onemore-v2.webp",
+   "conversion": "tools/femc-wardrobe.py onemore2",
+   "placement": "sk-chapel-rose in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-chapel-rose-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "07968962b12a0ffc8122ee926ed1cad1e647a441d6777383573d21c23725fcae",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-rose/solar-onemore.webp",
+   "conversion": "tools/femc-wardrobe.py onemore",
+   "placement": "sk-chapel-rose in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-chapel-rose-posesheet-2.png",
+   "size": [
+    1529,
+    1029
+   ],
+   "sha256": "aa0f6e5d61ae8a76a8b4916b5a9b52a792611c122933e1a7f80840ec7170904e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-rose/solar-pose2-0..5.webp",
+   "conversion": "tools/femc-wardrobe.py skin2",
+   "placement": "sk-chapel-rose in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-chapel-rose-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "a7c994aba061f9774b47a0307b607bb5f20cf90c97d82a02e427dd5d338c635e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-rose/solar-theurgy.webp",
+   "conversion": "tools/femc-wardrobe.py theurgy",
+   "placement": "sk-chapel-rose in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-chapel-veil-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "35021b530c8854cb7544d8f01761c80b1dfd20e3272f288bfd8faa81f3a1cb90",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-veil/solar-entrance.webp",
+   "conversion": "tools/femc-wardrobe.py entrance",
+   "placement": "sk-chapel-veil in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-chapel-veil-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "08ad83d9f6349e326dc87b32aa2ae2158dc3a6e9f06811a3948aa1ebd513d741",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-veil/solar-onemore-v2.webp",
+   "conversion": "tools/femc-wardrobe.py onemore2",
+   "placement": "sk-chapel-veil in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-chapel-veil-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "b3ae2597200a3ead906df7c54eaa1eff3de9ad76fbcd02616ab95095c8e3797c",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-veil/solar-onemore.webp",
+   "conversion": "tools/femc-wardrobe.py onemore",
+   "placement": "sk-chapel-veil in battle"
+  },
+  {
+   "batch": 157,
+   "source": "New Adds/skin-sk-chapel-veil-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "a81253c9c3af65342411439a6283a45fe450dd598cf6c2dc971f82f29faad4e6",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-veil/solar-theurgy.webp",
+   "conversion": "tools/femc-wardrobe.py theurgy",
+   "placement": "sk-chapel-veil in battle"
   }
  ],
  "batch1Validation": {

@@ -17,6 +17,33 @@
   ],
   "sha256": "e55c17349f801c6ba2cd7af61ea578aa53ca052fac07e2b9e48249906b655e6c"
  },
+ "assets/femc/game/art/skins/sk-arcana-lovers/solar-onemore-v2.webp": {
+  "eyes": [
+   38.3,
+   69.2,
+   63.7,
+   70.3
+  ],
+  "sha256": "cb5ef91cc9da0aad33bcd14ab141d2842ee2dc38e333643c9590d32039614eaf"
+ },
+ "assets/femc/game/art/skins/sk-arcana-moon/solar-onemore-v2.webp": {
+  "eyes": [
+   40.1,
+   71.4,
+   62.7,
+   71.4
+  ],
+  "sha256": "05baeeabde416c1844d09f4afdf479237b57b4d4f614acb271f5e562b7edce4e"
+ },
+ "assets/femc/game/art/skins/sk-arcana-star/solar-onemore-v2.webp": {
+  "eyes": [
+   37.4,
+   88.3,
+   62.1,
+   88.3
+  ],
+  "sha256": "31a84a51a6266a188aa6c2da041e174f5f4573ca0d217cc4af510afed3ff6035"
+ },
  "assets/femc/game/art/skins/sk-arcana-sun/solar-onemore-v2.webp": {
   "eyes": [
    37.2,
@@ -25,6 +52,24 @@
    62.8
   ],
   "sha256": "61e6baf2b41e2300315d08202748f4c848956e5ab71d3db2b179fd088a509422"
+ },
+ "assets/femc/game/art/skins/sk-chapel-rose/solar-onemore-v2.webp": {
+  "eyes": [
+   39.5,
+   83.9,
+   61.5,
+   83.6
+  ],
+  "sha256": "065a328f166b60069b71dac1346ac862c5fd21aae2b772969e0e085605f226ec"
+ },
+ "assets/femc/game/art/skins/sk-chapel-veil/solar-onemore-v2.webp": {
+  "eyes": [
+   37.3,
+   61.7,
+   63.2,
+   61.7
+  ],
+  "sha256": "c600d817698287ed7a9d84590b001e25849db31c8565ed1002e088fe7e77cf1e"
  },
  "assets/femc/game/art/skins/sk-cp-afterhours/solar-onemore-v2.webp": {
   "eyes": [

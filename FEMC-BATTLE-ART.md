@@ -2,7 +2,7 @@
 
 *Persona 3: Solstice · split out Nov 7 2026 (Kat's plan): all the battle pieces in one place, to make together at the end, after `FEMC-SKIN-ART.md`. Until a piece exists the fight uses the fighter's usual version, so nothing breaks while these wait. The old design sheet is in `_archive/FEMC-SKINS-BATTLE-DESIGN-old.md`.*
 
-**What's here (Nov 7, with Kat's new list):** 468 prompts for 75 looks: 66 second pose sheets, 74 Theurgy cut-ins, 105 "1 MORE!" pictures (Solar's looks get two), 75 entrance cards, 74 finish cards, 74 signature effect sheets; plus the foxfire theme sheet and frame (on hold) and two cell-4 clean-ups. Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`.
+**What's here (updated Nov 14, after art batch 157):** 442 prompts for 72 looks: 65 second pose sheets, 69 Theurgy cut-ins, 95 "1 MORE!" pictures (Solar's looks get two), 71 entrance cards, 70 finish cards, 70 signature effect sheets; plus the foxfire theme sheet and frame (on hold) and two cell-4 clean-ups. Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`.
 
 **How:** pick a look; its pieces are in order. Attach the files on each **Attach** line in that order (all in `Femc Mode Images/`), paste the prompt, save into **New Adds** under its **Save as** name and tell Claude. Collab looks: make their pieces after the outfit is in the game. Each look has a **look bible** (palette, vibe, motifs, light, scene); the prompts follow it.
 
@@ -37,174 +37,7 @@ Finish cards use the fighter's own finish line (listed at the top of each fighte
 
 ### Skin series: Tarot Arcana, Midnight Chapel, Wildflower Cottage
 
-In the game already. Black Rose, Rainy Greenhouse and Harvest Festival still need their second pose sheet; the rest need only the six battle pieces.
-
-### The Moon · `sk-arcana-moon`
-
-Tarot Arcana. A midnight-blue slip dress, a sheer veil and moon-phase jewellery; long loose hair with silver tinsel.
-
-> **Look bible.** Palette: midnight blue, moon silver, pearl white and pale violet. Vibe: the Moon card: dreamlike, quiet, a little uncanny.  
-> Motifs: crescent moons, moon phases, silver mist and tiny falling stars. Light: cool blue moonlight through silver mist. Scene: a still lake at midnight under a huge full moon.
-
-#### 1. Theurgy cut-in
-
-Attach: `Place Prompt Attachments/Theurgy - Solar.png`, then `Place Prompt Attachments/The Moon [sk-arcana-moon] - pose sheet.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-arcana-moon-theurgy.png`
-```
-Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: an ankle-length deep midnight-blue silk slip dress, a sheer silver-flecked veil draped from the crown of her head over her shoulders, a choker of tiny silver moon phases, silver crescent earrings, silver sandals, a thin silver anklet. Hair: her own jet-black hair long and loose to the waist, fine silver tinsel strands threaded through it that catch the light, a silver crescent pin above one ear. Same face as the THIRD attached image. Keep the Persona behind her exactly as in the first image, and keep her face in the same place in the frame. Repaint everything around the figure to this look instead of the first image's colours: the background becomes a still lake at midnight under a huge full moon in midnight blue, moon silver, pearl white and pale violet, the light is cool blue moonlight through silver mist, and crescent moons and moon phases streak through the speed lines; the Persona keeps its own shape and design, lit to match. No text, no letters, no logos.
-```
-
-#### 2. "1 MORE!" eye strip
-
-Attach: `Place Prompt Attachments/The Moon [sk-arcana-moon] - portraits.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-arcana-moon-onemore.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. Her hair: her own jet-black hair long and loose to the waist, fine silver tinsel strands threaded through it that catch the light, a silver crescent pin above one ear, exactly as in the FIRST attached image, strands falling across the frame. Keep these from the look, exactly as in the FIRST attached image, wherever they show in the crop: a sheer silver-flecked veil over her head. Behind the face: bold flat diagonal stripes and speed lines in midnight blue, moon silver, pearl white and pale violet, lit by cool blue moonlight through silver mist, a few tiny crescent moons and moon phases scattered in the stripes. No text, no letters, no logos, no border.
-```
-
-#### 3. "1 MORE!" eye strip, second picture v2
-
-Attach: `Place Prompt Attachments/The Moon [sk-arcana-moon] - portraits.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-arcana-moon-onemore-v2.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking straight at the viewer, eyes wide open and bright as if the sun is in them, a confident, determined expression. Her hair: her own jet-black hair long and loose to the waist, fine silver tinsel strands threaded through it that catch the light, a silver crescent pin above one ear, exactly as in the FIRST attached image, strands falling across the frame. Keep these from the look, exactly as in the FIRST attached image, wherever they show in the crop: a sheer silver-flecked veil over her head. Behind the face: bold flat diagonal stripes and speed lines in midnight blue, moon silver, pearl white and pale violet, lit by cool blue moonlight through silver mist, a few tiny crescent moons and moon phases scattered in the stripes. No text, no letters, no logos, no border.
-```
-
-#### 4. Entrance card
-
-Attach: `Place Prompt Attachments/The Moon [sk-arcana-moon] - pose sheet.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-arcana-moon-entrance.png`
-```
-A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (an ankle-length deep midnight-blue silk slip dress, a sheer silver-flecked veil draped from the crown of her head over her shoulders, a choker of tiny silver moon phases, silver crescent earrings, silver sandals, a thin silver anklet. Hair: her own jet-black hair long and loose to the waist, fine silver tinsel strands threaded through it that catch the light, a silver crescent pin above one ear), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, the naginata swung over one shoulder, her hair and clothes whipping back, a cool, ready look straight at the viewer. Background: a still lake at midnight under a huge full moon, broken into flat graphic shards of midnight blue, moon silver, pearl white and pale violet splitting apart diagonally, a few speed lines, a scatter of crescent moons, moon phases and silver mist, lit by cool blue moonlight through silver mist. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
-```
-
-#### 5. Finish card
-
-Attach: `Place Prompt Attachments/Finish card - Solar.png`, then `Place Prompt Attachments/The Moon [sk-arcana-moon] - pose sheet.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-arcana-moon-finish.png`
-```
-Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image's layout and art style: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows. The character in the same place, size and crop as in the first image, turned toward the viewer with a confident finishing pose and a small knowing smile; huge bold slanted words where the first image has its words; flat graphic background shapes and thin lines behind her. Change her outfit and hair to the look in the SECOND attached image: an ankle-length deep midnight-blue silk slip dress, a sheer silver-flecked veil draped from the crown of her head over her shoulders, a choker of tiny silver moon phases, silver crescent earrings, silver sandals, a thin silver anklet. Hair: her own jet-black hair long and loose to the waist, fine silver tinsel strands threaded through it that catch the light, a silver crescent pin above one ear. Same face as the THIRD attached image. Background: a still lake at midnight under a huge full moon, as flat graphic shapes in midnight blue, moon silver, pearl white and pale violet, crescent moons and moon phases drifting across, lit by cool blue moonlight through silver mist. The words are pearl white with a midnight blue outline. The words read exactly: RISE AND SHINE. No other text, no logos, no watermark.
-```
-
-#### 6. Signature effect sheet (piece N)
-
-Attach: `Place Prompt Attachments/Effect sheet - format.png` (format and spacing only)  
-Save as: `skin-sk-arcana-moon-fx.png`
-```
-A sprite sheet of one video-game spell effect: a 3 × 2 grid of six square frames (3 columns, 2 rows), read left to right, top to bottom, on a pure solid black background (#000000). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty black margin (at least 10%) on every side so nothing touches or crosses into the next frame. Frame 1: one silver crescent moon flickers on in the centre. Frame 2: a few crescent moons and moon phases appear around it, silver light gathering. Frame 3, the peak: a ring of moon phases spinning outward from a pale silver-white centre, a crescent flashing at its heart. Frame 4: the crescent moons and moon phases spreading wider, tumbling and turning. Frame 5: the crescent moons and moon phases breaking into small silver mist. Frame 6: a few last tiny crescent moons and moon phases and silver mist fading. Style: Persona 3 Reload battle VFX: sharp, stylish, graphic shapes with clean hard edges, white-hot cores, midnight blue, moon silver, pearl white and pale violet, high contrast, readable at small size. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2.
-```
-
-### The Star · `sk-arcana-star`
-
-Tarot Arcana. A sheer pale pink layered dress covered in tiny stars, barefoot; a high ponytail with pastel pink and silver streaks.
-
-> **Look bible.** Palette: pale pink, starlight silver, twilight lilac and soft white. Vibe: the Star card: hope, a wish, a quiet glow.  
-> Motifs: tiny stars, shooting stars, starlight sparkles and pink nebula haze. Light: soft silvery starlight with a pink nebula glow. Scene: a twilight hilltop under a sky thick with stars.
-
-#### 1. Theurgy cut-in
-
-Attach: `Place Prompt Attachments/Theurgy - Solar.png`, then `Place Prompt Attachments/The Star [sk-arcana-star] - pose sheet.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-arcana-star-theurgy.png`
-```
-Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: a sheer pale pink layered tulle dress to mid-calf covered in tiny embroidered silver stars, puffed off-shoulder sleeves, barefoot with a silver star anklet, a small star-shaped glass pendant. Hair: her own jet-black hair in a high ponytail with pastel pink and silver streaks, star-shaped silver clips along one side. Same face as the THIRD attached image. Keep the Persona behind her exactly as in the first image, and keep her face in the same place in the frame. Repaint everything around the figure to this look instead of the first image's colours: the background becomes a twilight hilltop under a sky thick with stars in pale pink, starlight silver, twilight lilac and soft white, the light is soft silvery starlight with a pink nebula glow, and shooting stars and tiny stars streak through the speed lines; the Persona keeps its own shape and design, lit to match. No text, no letters, no logos.
-```
-
-#### 2. "1 MORE!" eye strip
-
-Attach: `Place Prompt Attachments/The Star [sk-arcana-star] - portraits.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-arcana-star-onemore.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. Her hair: her own jet-black hair in a high ponytail with pastel pink and silver streaks, star-shaped silver clips along one side, exactly as in the FIRST attached image, strands falling across the frame. Behind the face: bold flat diagonal stripes and speed lines in pale pink, starlight silver, twilight lilac and soft white, lit by soft silvery starlight with a pink nebula glow, a few tiny shooting stars and tiny stars scattered in the stripes. No text, no letters, no logos, no border.
-```
-
-#### 3. "1 MORE!" eye strip, second picture v2
-
-Attach: `Place Prompt Attachments/The Star [sk-arcana-star] - portraits.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-arcana-star-onemore-v2.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking straight at the viewer, eyes wide open and bright as if the sun is in them, a confident, determined expression. Her hair: her own jet-black hair in a high ponytail with pastel pink and silver streaks, star-shaped silver clips along one side, exactly as in the FIRST attached image, strands falling across the frame. Behind the face: bold flat diagonal stripes and speed lines in pale pink, starlight silver, twilight lilac and soft white, lit by soft silvery starlight with a pink nebula glow, a few tiny shooting stars and tiny stars scattered in the stripes. No text, no letters, no logos, no border.
-```
-
-#### 4. Entrance card
-
-Attach: `Place Prompt Attachments/The Star [sk-arcana-star] - pose sheet.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-arcana-star-entrance.png`
-```
-A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (a sheer pale pink layered tulle dress to mid-calf covered in tiny embroidered silver stars, puffed off-shoulder sleeves, barefoot with a silver star anklet, a small star-shaped glass pendant. Hair: her own jet-black hair in a high ponytail with pastel pink and silver streaks, star-shaped silver clips along one side), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, the naginata swung over one shoulder, her hair and clothes whipping back, a cool, ready look straight at the viewer. Background: a twilight hilltop under a sky thick with stars, broken into flat graphic shards of pale pink, starlight silver, twilight lilac and soft white splitting apart diagonally, a few speed lines, a scatter of tiny stars, shooting stars and starlight sparkles, lit by soft silvery starlight with a pink nebula glow. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
-```
-
-#### 5. Finish card
-
-Attach: `Place Prompt Attachments/Finish card - Solar.png`, then `Place Prompt Attachments/The Star [sk-arcana-star] - pose sheet.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-arcana-star-finish.png`
-```
-Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image's layout and art style: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows. The character in the same place, size and crop as in the first image, turned toward the viewer with a confident finishing pose and a small knowing smile; huge bold slanted words where the first image has its words; flat graphic background shapes and thin lines behind her. Change her outfit and hair to the look in the SECOND attached image: a sheer pale pink layered tulle dress to mid-calf covered in tiny embroidered silver stars, puffed off-shoulder sleeves, barefoot with a silver star anklet, a small star-shaped glass pendant. Hair: her own jet-black hair in a high ponytail with pastel pink and silver streaks, star-shaped silver clips along one side. Same face as the THIRD attached image. Background: a twilight hilltop under a sky thick with stars, as flat graphic shapes in pale pink, starlight silver, twilight lilac and soft white, shooting stars and tiny stars drifting across, lit by soft silvery starlight with a pink nebula glow. The words are soft white with a twilight lilac outline. The words read exactly: RISE AND SHINE. No other text, no logos, no watermark.
-```
-
-#### 6. Signature effect sheet (piece N)
-
-Attach: `Place Prompt Attachments/Effect sheet - format.png` (format and spacing only)  
-Save as: `skin-sk-arcana-star-fx.png`
-```
-A sprite sheet of one video-game spell effect: a 3 × 2 grid of six square frames (3 columns, 2 rows), read left to right, top to bottom, on a pure solid black background (#000000). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty black margin (at least 10%) on every side so nothing touches or crosses into the next frame. Frame 1: one tiny silver star flickers on in the centre. Frame 2: a few silver stars and shooting-star trails appear around it, pale pink light gathering. Frame 3, the peak: a starburst of silver stars and shooting-star trails from a white-pink centre. Frame 4: the silver stars and shooting-star trails spreading wider, tumbling and turning. Frame 5: the silver stars and shooting-star trails breaking into small pink and silver star dust. Frame 6: a few last tiny silver stars and shooting-star trails and pink and silver star dust fading. Style: Persona 3 Reload battle VFX: sharp, stylish, graphic shapes with clean hard edges, white-hot cores, pale pink, starlight silver, twilight lilac and soft white, high contrast, readable at small size. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2.
-```
-
-### The Lovers · `sk-arcana-lovers`
-
-Tarot Arcana. A red-and-black corset dress with a heart locket and rose vines; Hollywood waves pinned with a red rose.
-
-> **Look bible.** Palette: rose red, black, gold and blush. Vibe: the Lovers card: a choice, a vow, a little dangerous.  
-> Motifs: red roses, rose petals, gold hearts and climbing rose vines. Light: warm candlelight with a deep red glow. Scene: a rose garden arbour at dusk, roses climbing a black iron arch.
-
-#### 1. Theurgy cut-in
-
-Attach: `Place Prompt Attachments/Theurgy - Solar.png`, then `Place Prompt Attachments/The Lovers [sk-arcana-lovers] - pose sheet.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-arcana-lovers-theurgy.png`
-```
-Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: a red-and-black corset dress with a sweetheart neckline, a full black skirt lined in red, thin rose vines embroidered climbing up one side, a heart-shaped gold locket, black lace gloves, red heels. Hair: her own jet-black hair in soft glossy Hollywood waves pinned to one side with a single red rose, a deep red tint at the ends. Same face as the THIRD attached image. Keep the Persona behind her exactly as in the first image, and keep her face in the same place in the frame. Repaint everything around the figure to this look instead of the first image's colours: the background becomes a rose garden arbour at dusk, roses climbing a black iron arch in rose red, black, gold and blush, the light is warm candlelight with a deep red glow, and rose petals and gold hearts streak through the speed lines; the Persona keeps its own shape and design, lit to match. No text, no letters, no logos.
-```
-
-#### 2. "1 MORE!" eye strip
-
-Attach: `Place Prompt Attachments/The Lovers [sk-arcana-lovers] - portraits.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-arcana-lovers-onemore.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. Her hair: her own jet-black hair in soft glossy Hollywood waves pinned to one side with a single red rose, a deep red tint at the ends, exactly as in the FIRST attached image, strands falling across the frame. Behind the face: bold flat diagonal stripes and speed lines in rose red, black, gold and blush, lit by warm candlelight with a deep red glow, a few tiny rose petals and gold hearts scattered in the stripes. No text, no letters, no logos, no border.
-```
-
-#### 3. "1 MORE!" eye strip, second picture v2
-
-Attach: `Place Prompt Attachments/The Lovers [sk-arcana-lovers] - portraits.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-arcana-lovers-onemore-v2.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking straight at the viewer, eyes wide open and bright as if the sun is in them, a confident, determined expression. Her hair: her own jet-black hair in soft glossy Hollywood waves pinned to one side with a single red rose, a deep red tint at the ends, exactly as in the FIRST attached image, strands falling across the frame. Behind the face: bold flat diagonal stripes and speed lines in rose red, black, gold and blush, lit by warm candlelight with a deep red glow, a few tiny rose petals and gold hearts scattered in the stripes. No text, no letters, no logos, no border.
-```
-
-#### 4. Entrance card
-
-Attach: `Place Prompt Attachments/The Lovers [sk-arcana-lovers] - pose sheet.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-arcana-lovers-entrance.png`
-```
-A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (a red-and-black corset dress with a sweetheart neckline, a full black skirt lined in red, thin rose vines embroidered climbing up one side, a heart-shaped gold locket, black lace gloves, red heels. Hair: her own jet-black hair in soft glossy Hollywood waves pinned to one side with a single red rose, a deep red tint at the ends), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, the naginata swung over one shoulder, her hair and clothes whipping back, a cool, ready look straight at the viewer. Background: a rose garden arbour at dusk, roses climbing a black iron arch, broken into flat graphic shards of rose red, black, gold and blush splitting apart diagonally, a few speed lines, a scatter of red roses, rose petals and gold hearts, lit by warm candlelight with a deep red glow. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
-```
-
-#### 5. Finish card
-
-Attach: `Place Prompt Attachments/Finish card - Solar.png`, then `Place Prompt Attachments/The Lovers [sk-arcana-lovers] - pose sheet.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-arcana-lovers-finish.png`
-```
-Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image's layout and art style: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows. The character in the same place, size and crop as in the first image, turned toward the viewer with a confident finishing pose and a small knowing smile; huge bold slanted words where the first image has its words; flat graphic background shapes and thin lines behind her. Change her outfit and hair to the look in the SECOND attached image: a red-and-black corset dress with a sweetheart neckline, a full black skirt lined in red, thin rose vines embroidered climbing up one side, a heart-shaped gold locket, black lace gloves, red heels. Hair: her own jet-black hair in soft glossy Hollywood waves pinned to one side with a single red rose, a deep red tint at the ends. Same face as the THIRD attached image. Background: a rose garden arbour at dusk, roses climbing a black iron arch, as flat graphic shapes in rose red, black, gold and blush, rose petals and gold hearts drifting across, lit by warm candlelight with a deep red glow. The words are gold with a rose red outline. The words read exactly: RISE AND SHINE. No other text, no logos, no watermark.
-```
-
-#### 6. Signature effect sheet (piece N)
-
-Attach: `Place Prompt Attachments/Effect sheet - format.png` (format and spacing only)  
-Save as: `skin-sk-arcana-lovers-fx.png`
-```
-A sprite sheet of one video-game spell effect: a 3 × 2 grid of six square frames (3 columns, 2 rows), read left to right, top to bottom, on a pure solid black background (#000000). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty black margin (at least 10%) on every side so nothing touches or crosses into the next frame. Frame 1: one red rose bud flickers on in the centre. Frame 2: a few red rose petals and small gold hearts appear around it, deep red light gathering. Frame 3, the peak: a rose blooming open into a burst of red petals and gold hearts from a gold-white centre. Frame 4: the red rose petals and small gold hearts spreading wider, tumbling and turning. Frame 5: the red rose petals and small gold hearts breaking into small red petals and gold sparks. Frame 6: a few last tiny red rose petals and small gold hearts and red petals and gold sparks fading. Style: Persona 3 Reload battle VFX: sharp, stylish, graphic shapes with clean hard edges, white-hot cores, rose red, black, gold and blush, high contrast, readable at small size. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2.
-```
-
-**Midnight Chapel**
+In the game already. The Moon, The Star and The Lovers have all their battle pieces (batch 157); Black Rose still needs its entrance card and Cathedral Veil its finish card and effect sheet. Rainy Greenhouse and Harvest Festival still need their second pose sheet; the rest need only the six battle pieces.
 
 ### Black Rose · `sk-chapel-rose`
 
@@ -212,38 +45,6 @@ Midnight Chapel. A gothic lolita dress with lace, a rose corsage and a tiny top 
 
 > **Look bible.** Palette: black lace, hot pink, bone white and dusty rose. Vibe: a gothic doll: sweet, until it isn't.  
 > Motifs: black roses, lace ribbons, ribbon bows and pink thorns. Light: pink candlelight in a dark chapel. Scene: a gothic chapel at midnight, candles and a rose window.
-
-#### 1. Second pose sheet
-
-Attach: `skin-sk-chapel-rose-posesheet.png` (your finished pose sheet, from `FEMC-SKIN-ART.md`), then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-chapel-rose-posesheet-2.png`
-```
-Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: a black gothic lolita dress with a bell-shaped skirt over layers of black and pink lace petticoat, puffed sleeves, a black rose corsage at the collar, a tiny black top hat with a short lace veil tilted on her head, black-and-pink striped stockings, black platform Mary Janes. Hair: her own jet-black hair in long ringlet pigtails tied with big black bows, a hot-pink streak in each pigtail. A black rose tied at her naginata's collar. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, the naginata held loosely in the other hand. Cell 2: guarding: braced low, the naginata held across her body like a shield, forearm raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, her hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping the naginata. Cell 5: badly hurt: standing but hunched, one hand pressed to her side, breathing hard, the naginata lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, the naginata ready, her hair and clothes streaming back. Persona 3 Reload official art style. No text, no logos.
-```
-
-#### 2. Theurgy cut-in
-
-Attach: `Place Prompt Attachments/Theurgy - Solar.png`, then `Place Prompt Attachments/Black Rose [sk-chapel-rose] - pose sheet.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-chapel-rose-theurgy.png`
-```
-Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: a black gothic lolita dress with a bell-shaped skirt over layers of black and pink lace petticoat, puffed sleeves, a black rose corsage at the collar, a black lace headpiece with a black rose, big black bows in her hair, black-and-pink striped stockings, black platform Mary Janes. Hair: her own jet-black hair in long ringlet pigtails tied with big black bows, a hot-pink streak in each pigtail. Same face as the THIRD attached image. Keep the Persona behind her exactly as in the first image, and keep her face in the same place in the frame. Repaint everything around the figure to this look instead of the first image's colours: the background becomes a gothic chapel at midnight, candles and a rose window in black lace, hot pink, bone white and dusty rose, the light is pink candlelight in a dark chapel, and black roses and lace ribbons streak through the speed lines; the Persona keeps its own shape and design, lit to match. No text, no letters, no logos.
-```
-
-#### 3. "1 MORE!" eye strip
-
-Attach: `Place Prompt Attachments/Black Rose [sk-chapel-rose] - portraits.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-chapel-rose-onemore.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. Her hair: her own jet-black hair in long ringlet pigtails tied with big black bows, a hot-pink streak in each pigtail, exactly as in the FIRST attached image, strands falling across the frame. Keep these from the look, exactly as in the FIRST attached image, wherever they show in the crop: the black lace-and-rose headpiece. Behind the face: bold flat diagonal stripes and speed lines in black lace, hot pink, bone white and dusty rose, lit by pink candlelight in a dark chapel, a few tiny black roses and lace ribbons scattered in the stripes. No text, no letters, no logos, no border.
-```
-
-#### 4. "1 MORE!" eye strip, second picture v2
-
-Attach: `Place Prompt Attachments/Black Rose [sk-chapel-rose] - portraits.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-chapel-rose-onemore-v2.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking straight at the viewer, eyes wide open and bright as if the sun is in them, a confident, determined expression. Her hair: her own jet-black hair in long ringlet pigtails tied with big black bows, a hot-pink streak in each pigtail, exactly as in the FIRST attached image, strands falling across the frame. Keep these from the look, exactly as in the FIRST attached image, wherever they show in the crop: the black lace-and-rose headpiece. Behind the face: bold flat diagonal stripes and speed lines in black lace, hot pink, bone white and dusty rose, lit by pink candlelight in a dark chapel, a few tiny black roses and lace ribbons scattered in the stripes. No text, no letters, no logos, no border.
-```
 
 #### 5. Entrance card
 
@@ -253,60 +54,12 @@ Save as: `skin-sk-chapel-rose-entrance.png`
 A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (a black gothic lolita dress with a bell-shaped skirt over layers of black and pink lace petticoat, puffed sleeves, a black rose corsage at the collar, a black lace headpiece with a black rose, big black bows in her hair, black-and-pink striped stockings, black platform Mary Janes. Hair: her own jet-black hair in long ringlet pigtails tied with big black bows, a hot-pink streak in each pigtail), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, the naginata swung over one shoulder, her hair and clothes whipping back, a cool, ready look straight at the viewer. Background: a gothic chapel at midnight, candles and a rose window, broken into flat graphic shards of black lace, hot pink, bone white and dusty rose splitting apart diagonally, a few speed lines, a scatter of black roses, lace ribbons and pink thorns, lit by pink candlelight in a dark chapel. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
 ```
 
-#### 6. Finish card
-
-Attach: `Place Prompt Attachments/Finish card - Solar.png`, then `Place Prompt Attachments/Black Rose [sk-chapel-rose] - pose sheet.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-chapel-rose-finish.png`
-```
-Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image's layout and art style: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows. The character in the same place, size and crop as in the first image, turned toward the viewer with a confident finishing pose and a small knowing smile; huge bold slanted words where the first image has its words; flat graphic background shapes and thin lines behind her. Change her outfit and hair to the look in the SECOND attached image: a black gothic lolita dress with a bell-shaped skirt over layers of black and pink lace petticoat, puffed sleeves, a black rose corsage at the collar, a black lace headpiece with a black rose, big black bows in her hair, black-and-pink striped stockings, black platform Mary Janes. Hair: her own jet-black hair in long ringlet pigtails tied with big black bows, a hot-pink streak in each pigtail. Same face as the THIRD attached image. Background: a gothic chapel at midnight, candles and a rose window, as flat graphic shapes in black lace, hot pink, bone white and dusty rose, black roses and lace ribbons drifting across, lit by pink candlelight in a dark chapel. The words are hot pink with a black outline. The words read exactly: RISE AND SHINE. No other text, no logos, no watermark.
-```
-
-#### 7. Signature effect sheet (piece N)
-
-Attach: `Place Prompt Attachments/Effect sheet - format.png` (format and spacing only)  
-Save as: `skin-sk-chapel-rose-fx.png`
-```
-A sprite sheet of one video-game spell effect: a 3 × 2 grid of six square frames (3 columns, 2 rows), read left to right, top to bottom, on a pure solid black background (#000000). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty black margin (at least 10%) on every side so nothing touches or crosses into the next frame. Frame 1: one black rose flickers on in the centre. Frame 2: a few black roses and lace ribbons appear around it, hot pink light gathering. Frame 3, the peak: a black rose bursting open in a ring of lace ribbons and pink thorns from a hot-pink centre. Frame 4: the black roses and lace ribbons spreading wider, tumbling and turning. Frame 5: the black roses and lace ribbons breaking into small black petals and pink sparks. Frame 6: a few last tiny black roses and lace ribbons and black petals and pink sparks fading. Style: Persona 3 Reload battle VFX: sharp, stylish, graphic shapes with clean hard edges, white-hot cores, black lace, hot pink, bone white and dusty rose, high contrast, readable at small size. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2.
-```
-
 ### Cathedral Veil · `sk-chapel-veil`
 
 Midnight Chapel. A long black lace gown, a cathedral-length veil and a pink bead belt; a sleek low bun under the veil.
 
 > **Look bible.** Palette: black lace, candle gold, rosary pink and stained-glass violet. Vibe: a vigil in a cathedral: solemn, beautiful, a little haunted.  
 > Motifs: candle flames, lace veils, rosary beads and stained-glass shards. Light: candle gold through violet stained glass. Scene: a vast cathedral nave at night, rows of candles and stained-glass windows.
-
-#### 1. Theurgy cut-in
-
-Attach: `Place Prompt Attachments/Theurgy - Solar.png`, then `Place Prompt Attachments/Cathedral Veil [sk-chapel-veil] - pose sheet.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-chapel-veil-theurgy.png`
-```
-Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: a long black lace gown with a high neck and long sheer sleeves, a cathedral-length black lace veil trailing far behind her, a belt of pink beads and small silver crosses at the waist like a rosary, black pointed boots. Hair: her own jet-black hair in a sleek low bun under the veil, two face-framing strands with pink tips. Same face as the THIRD attached image. Keep the Persona behind her exactly as in the first image, and keep her face in the same place in the frame. Repaint everything around the figure to this look instead of the first image's colours: the background becomes a vast cathedral nave at night, rows of candles and stained-glass windows in black lace, candle gold, rosary pink and stained-glass violet, the light is candle gold through violet stained glass, and candle flames and stained-glass shards streak through the speed lines; the Persona keeps its own shape and design, lit to match. No text, no letters, no logos.
-```
-
-#### 2. "1 MORE!" eye strip
-
-Attach: `Place Prompt Attachments/Cathedral Veil [sk-chapel-veil] - portraits.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-chapel-veil-onemore.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. Her hair: her own jet-black hair in a sleek low bun under the veil, two face-framing strands with pink tips, exactly as in the FIRST attached image, strands falling across the frame. Keep these from the look, exactly as in the FIRST attached image, wherever they show in the crop: a black lace veil over her head. Behind the face: bold flat diagonal stripes and speed lines in black lace, candle gold, rosary pink and stained-glass violet, lit by candle gold through violet stained glass, a few tiny candle flames and stained-glass shards scattered in the stripes. No text, no letters, no logos, no border.
-```
-
-#### 3. "1 MORE!" eye strip, second picture v2
-
-Attach: `Place Prompt Attachments/Cathedral Veil [sk-chapel-veil] - portraits.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-chapel-veil-onemore-v2.png`
-```
-A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking straight at the viewer, eyes wide open and bright as if the sun is in them, a confident, determined expression. Her hair: her own jet-black hair in a sleek low bun under the veil, two face-framing strands with pink tips, exactly as in the FIRST attached image, strands falling across the frame. Keep these from the look, exactly as in the FIRST attached image, wherever they show in the crop: a black lace veil over her head. Behind the face: bold flat diagonal stripes and speed lines in black lace, candle gold, rosary pink and stained-glass violet, lit by candle gold through violet stained glass, a few tiny candle flames and stained-glass shards scattered in the stripes. No text, no letters, no logos, no border.
-```
-
-#### 4. Entrance card
-
-Attach: `Place Prompt Attachments/Cathedral Veil [sk-chapel-veil] - pose sheet.png`, then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-chapel-veil-entrance.png`
-```
-A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (a long black lace gown with a high neck and long sheer sleeves, a cathedral-length black lace veil trailing far behind her, a belt of pink beads and small silver crosses at the waist like a rosary, black pointed boots. Hair: her own jet-black hair in a sleek low bun under the veil, two face-framing strands with pink tips), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, the naginata swung over one shoulder, her hair and clothes whipping back, a cool, ready look straight at the viewer. Background: a vast cathedral nave at night, rows of candles and stained-glass windows, broken into flat graphic shards of black lace, candle gold, rosary pink and stained-glass violet splitting apart diagonally, a few speed lines, a scatter of candle flames, rosary beads and stained-glass shards, lit by candle gold through violet stained glass. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
-```
 
 #### 5. Finish card
 
