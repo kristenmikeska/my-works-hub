@@ -4,7 +4,7 @@
 
 **Order for each outfit:** 1. pose sheet → 2. scene portraits → 3. HD poses (only what's still missing is listed). **Banner art** is at the bottom: make a banner once its outfits exist.
 
-**What's here (Nov 10, after art batch 150):** 49 pose sheets and 52 scene-portrait sheets (the collab outfits, Kat's 47 new outfits, plus faces for Off-Day Hoodie, Beanie & Apron and Gekkoukan Uniform), 89 HD pose sets (11 of Haechan's have their first victory pose in), 14 banner pictures (8 older, 6 for the new banners: Ghoul School, Anime Night, Magical Girls, Wonderland, Live Concert, Pastel Ponies).
+**What's here (Nov 15, after art batch 161: Syaoran, and Tuxedo Mask's and Clawd's victory poses, are in):** 48 pose sheets and 51 scene-portrait sheets (the collab outfits, Kat's 47 new outfits, plus faces for Off-Day Hoodie, Beanie & Apron and Gekkoukan Uniform), 86 HD pose sets (11 of Haechan's have their first victory pose in), 14 banner pictures (8 older, 6 for the new banners: Ghoul School, Anime Night, Magical Girls, Wonderland, Live Concert, Pastel Ponies).
 
 **How:** open a new ChatGPT message, attach the files on the **Attach** line in that order (all in `Femc Mode Images/`, mostly `Place Prompt Attachments/`), paste the prompt, send. Save into **New Adds** under its **Save as** name (HD poses: a folder per outfit) and tell Claude. One picture per message.
 
@@ -47,40 +47,6 @@ Cosplay looks (it's a fan game). The prompts describe the outfits only by how th
 ## Haechan
 
 ### Collab outfits (couple sets with Solar's collab looks)
-
-### Tuxedo Mask · `sk-haechan-collab-tuxedo`
-
-Couple set with Solar's Sailor Moon. A tuxedo with tails, a top hat, a white mask, a red-lined cape and a rose.
-
-> **Look bible.** Palette: tuxedo black, rose red, white and moon silver. Vibe: a masked hero who always arrives at the right moment.  
-> Motifs: red roses, rose petals, a sweeping cape and crescent moons. Light: silver moonlight with a red glow. Scene: a moonlit rooftop over the city.
-
-#### 1. HD poses
-
-Goes with Solar's Sailor Moon; make it after its pose sheet.  
-Attach: `Tuxedo Mask Cosplay [sk-haechan-collab-tuxedo] - pose sheet.png`, then `Haechan.png`  
-Save as: `haechan-tuxedomask-hd-<pose>.png` in a folder `HC-Tuxedo Mask-Victory Poses`  
-Poses (one image each): tipping his top hat, holding out a red rose, arms crossed with the cape swirling, a gallant bow, adjusting his mask, a peace sign
-```
-Cosplay of Tuxedo Mask from Sailor Moon. A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (a black tuxedo with tails, a black top hat, a white domino mask, a long black cape lined in red and a red rose in the lapel). Pose: [the pose], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
-
-### Clawd, Monster High · `sk-haechan-collab-wolf`
-
-Couple set with Solar's Draculaura. The werewolf boyfriend: a fur-collared varsity jacket and wolf ears.
-
-> **Look bible.** Palette: varsity purple, black, tan and moon silver. Vibe: the werewolf boyfriend: loyal, loud and a bit fluffy.  
-> Motifs: claw marks, a full moon, fur tufts and paw prints. Light: big full moonlight with purple shadows. Scene: a high school sports field at night under a full moon.
-
-#### 1. HD poses
-
-Goes with Solar's Draculaura; make it after its pose sheet.  
-Attach: `Clawd Cosplay [sk-haechan-collab-wolf] - pose sheet.png`, then `Haechan.png`  
-Save as: `haechan-clawd-hd-<pose>.png` in a folder `HC-Clawd-Victory Poses`  
-Poses (one image each): a playful claw-hand pose with a grin, arms crossed, a thumbs up, howling at the sky, pointing at the viewer, hands in his jacket pockets
-```
-Cosplay of Clawd from Monster High. A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (a purple-and-black varsity jacket with tan sleeves and a fur collar, a black tee, ripped jeans and a dark brown wolf-ear headband). Pose: [the pose], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
 
 ### Miles, Spider-Verse · `sk-haechan-collab-spider`
 
@@ -241,40 +207,6 @@ A single full-body character illustration, portrait orientation, 2:3, as large a
 ## Jungwon
 
 ### Collab outfits (couple sets with Solar's collab looks)
-
-### Syaoran, Cardcaptor Sakura · `sk-jungwon-collab-cardcaptor`
-
-Couple set with Solar's Cardcaptor Sakura. The green battle robe with gold trim, the cap and a jade compass.
-
-> **Look bible.** Palette: jade green, white, gold and blossom pink. Vibe: a serious young swordsman who would do anything for her.  
-> Motifs: green lightning, gold compass rings, cherry blossom petals and blank paper charms. Light: a green-gold lightning glow at dusk. Scene: a temple courtyard at dusk under cherry blossoms.
-
-#### 1. Pose sheet
-
-Attach: `jungwon-posesheet.png`, then `Place Prompt Attachments/Jungwon.png`  
-Save as: `skin-sk-jungwon-collab-cardcaptor-posesheet.png`
-```
-Cosplay of Syaoran from Cardcaptor Sakura. Character pose sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same size, nothing overlapping. Copy the six poses, the figure size and the framing of the FIRST attached image exactly, including the skill effect in cell 4; change only the outfit and hair to this look: a long-sleeved green-and-white Chinese-style battle robe with a high mandarin collar and gold-trimmed edges, a matching green cap, white trousers, black cloth shoes, a round jade compass charm hanging at the belt. Hair: his own dark brown hair, soft and slightly messy, the fringe falling over his eyes (a look he has really worn). His rapier's guard in gold with a green tassel. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). Cell 1: battle-ready stance. Cell 2: raising the Evoker to the temple. Cell 3: attacking with the weapon. Cell 4: using a skill. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Persona 3 Reload official art style. No text, no logos.
-```
-If it comes back with a background or overlapping poses, say: "Redo it on a plain white background with more space between the poses."
-
-#### 2. Scene portraits
-
-Attach: `Place Prompt Attachments/Jungwon.png`  
-Save as: `skin-sk-jungwon-collab-cardcaptor-portraits.png`
-```
-Cosplay of Syaoran from Cardcaptor Sakura. A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same size and framing in every cell, same art style. Change only the outfit and hair to this look: a green-and-white battle robe with a high mandarin collar and gold trim, a matching green cap, a jade compass charm, soft cherry-blossom light. Hair: his own dark brown hair, soft and slightly messy, the fringe falling over his eyes (a look he has really worn). Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text, no logos.
-```
-
-#### 3. HD poses
-
-Goes with Solar's Cardcaptor Sakura; make it after its pose sheet.  
-Attach: `skin-sk-jungwon-collab-cardcaptor-posesheet.png` (your finished pose sheet above), then `Jungwon.png`  
-Save as: `jungwon-syaoran-hd-<pose>.png` in a folder `JW-Syaoran-Victory Poses`  
-Poses (one image each): his sword held upright with a serious look, a small bow, arms crossed, holding up the jade compass, a shy wave, a peace sign
-```
-Cosplay of Syaoran from Cardcaptor Sakura. A single full-body character illustration, portrait orientation, 2:3, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a plain transparent background (or plain white). The SAME person as the attached images: same face, eyes and hair, in exactly the outfit of the FIRST attached image (a green-and-white battle robe with gold trim and a mandarin collar, a matching green cap, white trousers and a jade compass charm). Pose: [the pose], a victory pose after a won fight, turned slightly to the left as if standing beside a partner. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No text, no background, no other people.
-```
 
 ### Howl, Howl's Moving Castle · `sk-jungwon-collab-castle`
 

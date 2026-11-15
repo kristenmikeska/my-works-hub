@@ -125,6 +125,15 @@
   ],
   "sha256": "260f4d45a16d499485dd2331430ee68ab8ac3dd112a5f5552b35d77e5910c74e"
  },
+ "assets/femc/game/art/skins/sk-collab-spider/solar-onemore-v2.webp": {
+  "eyes": [
+   36.9,
+   70.3,
+   64.5,
+   70.3
+  ],
+  "sha256": "e1c4ea97f1ccfbad70475a83fcd3350e050a1ab605c9e89086e8ee4bd382eac2"
+ },
  "assets/femc/game/art/skins/sk-collab-stella/solar-onemore-v2.webp": {
   "eyes": [
    37.8,

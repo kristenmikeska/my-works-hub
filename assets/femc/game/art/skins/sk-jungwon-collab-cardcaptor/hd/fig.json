@@ -1,0 +1,46 @@
+{
+ "arms-crossed": {
+  "ar": 0.419,
+  "hf": 0.138,
+  "ht": 0.013,
+  "hx": 0.509,
+  "size": [
+   644,
+   1536
+  ],
+  "src": "jungwon-howl-hd-armscrossed.png"
+ },
+ "bow": {
+  "ar": 0.432,
+  "hf": 0.138,
+  "ht": 0.016,
+  "hx": 0.421,
+  "size": [
+   663,
+   1536
+  ],
+  "src": "jungwon-howl-hd-bow.png"
+ },
+ "peace": {
+  "ar": 0.474,
+  "hf": 0.138,
+  "ht": 0.012,
+  "hx": 0.681,
+  "size": [
+   728,
+   1536
+  ],
+  "src": "jungwon-howl-hd-peace.png"
+ },
+ "sword": {
+  "ar": 0.392,
+  "hf": 0.139,
+  "ht": 0.01,
+  "hx": 0.134,
+  "size": [
+   602,
+   1536
+  ],
+  "src": "jungwon-howl-hd-swordinair.png"
+ }
+}

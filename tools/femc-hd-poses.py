@@ -40,7 +40,9 @@ NAMES = {'armscrossed': 'arms-crossed', 'evoker': 'evoker', 'fistpump': 'cheer',
          # Akihiko's and Jungwon's couple victory poses (art batch 143): fist to the sky, boxing stance, hand behind the neck, towel on the
          # shoulder, tie, bow, car keys, two movie tickets, scarf
          'victory': 'victory', 'boxing': 'boxing', 'behindneck': 'neck', 'towel': 'towel', 'adjustingtie': 'tie', 'bow': 'bow',
-         'carkey': 'keys', 'tickets': 'tickets', 'adjustscarf': 'scarf', 'hearts': 'heart'}
+         'carkey': 'keys', 'tickets': 'tickets', 'adjustscarf': 'scarf', 'hearts': 'heart',
+         # art batch 161 (Nov 15): Clawd, Tuxedo Mask and Syaoran victory poses
+         'clawhand': 'claw', 'howling': 'howl', 'thumbs': 'thumbsup', 'adjustmask': 'mask', 'hattip': 'hat', 'rose': 'rose', 'swordinair': 'sword'}
 AIR = {'jump'}
 # Wardrobe looks with an HD set: look id -> (folder in New Adds, file prefix). Kat names a folder after the outfit.
 # A set may be partial (ChatGPT blocked some poses): the game uses only the poses a set has (FEMC-ART-WIRING).
@@ -103,6 +105,10 @@ LOOKS = {'sk-cp-afterhours': ('Solar-After Hours-Menu Poses', 'afterhr-'),
          'sk-collab-spider': ('Solar-Ghost Spider-Poses', 'spider-'),
          'sk-collab-wednesday': ('Solar-Wednesday-Poses', 'wed-'),
          'sk-collab-cardcaptor': ('Solar-Sakura Cardcaptor-Poses', 'card-'),
+         # art batch 161 (Nov 15): couple partners' victory poses, loose in New Adds (Kat's 'jungwon-howl-' files are Syaoran)
+         'sk-haechan-collab-tuxedo': ('HC-Tuxedo Mask-Victory Poses', 'haechan-tuxedomask-'),
+         'sk-haechan-collab-wolf': ('HC-Clawd-Victory Poses', 'haechan-clawd-'),
+         'sk-jungwon-collab-cardcaptor': ('JW-Syaoran-Victory Poses', 'jungwon-howl-'),
          # Haechan's win-screen sets (FEMC-SKIN-ART "Wardrobe looks already in the game"): the list's folder / prefix for the
          # six poses; Kat's first single victory pose per look came loose in New Adds under other names (EXTRA below).
          'sk-haechan-sweater': ('HC-Sweater Date-Victory Poses', 'haechan-sweaterdate-hd-'),

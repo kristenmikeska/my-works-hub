@@ -47688,6 +47688,318 @@
    "status": "integrated",
    "destination": "assets/femc/game/art/skins/sk-haechan-collab-wolf/",
    "placement": "sk-haechan-collab-wolf battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 161,
+   "source": "haechan-clawd-hd-armscrossed.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "253f63a3b6b025324b816f5f5c14f76a3ebea7436663f58d208bada0c0721b37",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-wolf/hd/",
+   "placement": "sk-haechan-collab-wolf HD victory pose (couple col-ghoul)"
+  },
+  {
+   "batch": 161,
+   "source": "haechan-clawd-hd-clawhand.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "7938204efb55d8d39a9a1772c5ffcff5b231e72bb013e051ce5fb9e334310404",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-wolf/hd/",
+   "placement": "sk-haechan-collab-wolf HD victory pose (couple col-ghoul)"
+  },
+  {
+   "batch": 161,
+   "source": "haechan-clawd-hd-handsinpockets.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "822164487772c3992bf2d05c838548083c93e270e70cdafe5fd0f20e033f3f84",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-wolf/hd/",
+   "placement": "sk-haechan-collab-wolf HD victory pose (couple col-ghoul)"
+  },
+  {
+   "batch": 161,
+   "source": "haechan-clawd-hd-howling.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "3cdffe945cafef16cd509450955889ae7b786b4802b9f2355de1a6951e4b20ad",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-wolf/hd/",
+   "placement": "sk-haechan-collab-wolf HD victory pose (couple col-ghoul)"
+  },
+  {
+   "batch": 161,
+   "source": "haechan-clawd-hd-pointing.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "46c12c941ba6c97e86e8c9bcb8e698d3b1daf2397551de7e213c42b713a12e81",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-wolf/hd/",
+   "placement": "sk-haechan-collab-wolf HD victory pose (couple col-ghoul)"
+  },
+  {
+   "batch": 161,
+   "source": "haechan-clawd-hd-thumbs.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "1f4d0ed7df737e778834974b858da09463b4c6345523a4f7b711da0651d072c8",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-wolf/hd/",
+   "placement": "sk-haechan-collab-wolf HD victory pose (couple col-ghoul)"
+  },
+  {
+   "batch": 161,
+   "source": "haechan-tuxedomask-hd-adjust-mask.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "18cec7be9d015c10bc4aed501b2c968421d7e9fb92754d60165e04eb069fbfb1",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-tuxedo/hd/",
+   "placement": "sk-haechan-collab-tuxedo HD victory pose (couple col-moon)"
+  },
+  {
+   "batch": 161,
+   "source": "haechan-tuxedomask-hd-arms-crossed.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "84e24043129eb1bcae0b819905ad657f9103e4827ba3932b7f396cd370d78b51",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-tuxedo/hd/",
+   "placement": "sk-haechan-collab-tuxedo HD victory pose (couple col-moon)"
+  },
+  {
+   "batch": 161,
+   "source": "haechan-tuxedomask-hd-bow.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "fdc6200ab00bee9715f40332ba721c9dca2125735bee4242799106d5043d3f9a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-tuxedo/hd/",
+   "placement": "sk-haechan-collab-tuxedo HD victory pose (couple col-moon)"
+  },
+  {
+   "batch": 161,
+   "source": "haechan-tuxedomask-hd-hat-tip.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "ead7b87e96532c6ebe12a0c3a2a3d41342227fa30750f6e2e90877141491c9ac",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-tuxedo/hd/",
+   "placement": "sk-haechan-collab-tuxedo HD victory pose (couple col-moon)"
+  },
+  {
+   "batch": 161,
+   "source": "haechan-tuxedomask-hd-peace.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "ad700a330a3e21012f86d081f357d848a410d8bf8ec1bdce0d8f03c75b0a7fa3",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-tuxedo/hd/",
+   "placement": "sk-haechan-collab-tuxedo HD victory pose (couple col-moon)"
+  },
+  {
+   "batch": 161,
+   "source": "haechan-tuxedomask-hd-rose.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "86c3fcddf65fa7e432d6a442aa961d10b2b4e7beba3b836c2e258855b436dc67",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-tuxedo/hd/",
+   "placement": "sk-haechan-collab-tuxedo HD victory pose (couple col-moon)"
+  },
+  {
+   "batch": 161,
+   "source": "jungwon-howl-hd-armscrossed.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "0c96eb38282b63eeaab650cf9ac492ff4f546a886cd05f5f90c6cce01f9fe3c4",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-jungwon-collab-cardcaptor/hd/",
+   "placement": "sk-jungwon-collab-cardcaptor HD victory pose (named Howl by Kat; it is Syaoran by looking)"
+  },
+  {
+   "batch": 161,
+   "source": "jungwon-howl-hd-bow.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "fca78f1f5ae269d9076924e985cb2acbbf704710290858a4d64ffe4251ed53f7",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-jungwon-collab-cardcaptor/hd/",
+   "placement": "sk-jungwon-collab-cardcaptor HD victory pose (named Howl by Kat; it is Syaoran by looking)"
+  },
+  {
+   "batch": 161,
+   "source": "jungwon-howl-hd-peace.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "e0c7e905d64845e7fb813928d4aa3c84fcc6dfcd44d129220381e970f640e8a0",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-jungwon-collab-cardcaptor/hd/",
+   "placement": "sk-jungwon-collab-cardcaptor HD victory pose (named Howl by Kat; it is Syaoran by looking)"
+  },
+  {
+   "batch": 161,
+   "source": "jungwon-howl-hd-swordinair.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "66b4b070ed267322be1aeee8c2544d64bdca1a160500d3aef3732870ab6de096",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-jungwon-collab-cardcaptor/hd/",
+   "placement": "sk-jungwon-collab-cardcaptor HD victory pose (named Howl by Kat; it is Syaoran by looking)"
+  },
+  {
+   "batch": 161,
+   "source": "skin-sk-collab-spider-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "690cb7db03e40b94b293e73cfe7dbe18b8e835cf2f721a5703e80a1543144d26",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/",
+   "placement": "sk-collab-spider battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 161,
+   "source": "skin-sk-collab-spider-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "eca4cae780b74e51a7a54660d60d8c0e525ccc712513bfd6cb574e65e466273e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/",
+   "placement": "sk-collab-spider battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 161,
+   "source": "skin-sk-collab-spider-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "9253930e7c95ab574ec384efde488da73805f5affcec0024d0991c92446bea15",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/fx.webp",
+   "placement": "Ghost-Spider signature effect sheet"
+  },
+  {
+   "batch": 161,
+   "source": "skin-sk-collab-spider-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "2891694330985ad49f31d5125e387d5698ce38e8990a3c758d21e7236edf9048",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/",
+   "placement": "sk-collab-spider battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 161,
+   "source": "skin-sk-collab-spider-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "42e158a07b3fac67b1f88593f0154305548b81e180a5fcdb8ac562c51ec90067",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/",
+   "placement": "sk-collab-spider battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 161,
+   "source": "skin-sk-collab-spider-posesheet-2.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "e8ac816578978f5950a9e4d63b50d77cbbed9bdfde112a8b13db5530f7efd1e4",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/",
+   "placement": "sk-collab-spider battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 161,
+   "source": "skin-sk-collab-spider-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "8cd88dc24f7fe69a4e26ec2ed3847d84b447d08ac927a5a62f972e384ac6e6af",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-spider/",
+   "placement": "sk-collab-spider battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 161,
+   "source": "skin-sk-haechan-collab-spider-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "b5a7cd090e17519da7147c661be217101f0689c51365655e484bcb27d3a9d505",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-spider/fx.webp",
+   "placement": "Miles signature effect sheet"
+  },
+  {
+   "batch": 161,
+   "source": "skin-sk-jungwon-collab-castle-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "9a74f11a28802b30f79422f716e3a7b81de70a653178e19b0998a11ecd245adf",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-jungwon-collab-cardcaptor/portraits/jungwon/",
+   "placement": "Syaoran scene faces (named castle/Howl; it is Syaoran)"
+  },
+  {
+   "batch": 161,
+   "source": "skin-sk-jungwon-collab-castle-posesheet.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "59474a2b918e6c49268d3e20385118efd65fa3d92ca6c41d6b6aae1fe8fd2ea8",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-jungwon-collab-cardcaptor/",
+   "placement": "Syaoran pose frames (named castle/Howl; it is Syaoran)"
   }
  ],
  "batch1Validation": {
@@ -49192,5 +49504,10 @@
   "date": "2026-11-14",
   "checks": "jsc (ready.js; battle.js checkSyntax); femc-check-scenes OK; glints checked (cardcaptor hand-set)",
   "note": "37 files: cardcaptor (rest), castle, wednesday, Haechan tuxedo / wolf / spider (no fx). Wednesday fx may show faint haze squares on frames 2-3. Not fight-tested."
+ },
+ "batch161Validation": {
+  "date": "2026-11-15",
+  "checks": "jsc (cosmetics.js, ready.js; battle.js parses); ready.js lists every new piece; outputs viewed",
+  "note": "26 files: Ghost-Spider's battle set (sheet 2, Theurgy, finish, entrance, both strips, fx), Miles fx, HD victory poses for Tuxedo Mask (6), Clawd (6), and Jungwon's Syaoran (4; Kat's files said Howl / castle but show Syaoran), plus Syaoran's pose sheet and faces (new look sk-jungwon-collab-cardcaptor, couple col-cards). Not fight-tested."
  }
 }

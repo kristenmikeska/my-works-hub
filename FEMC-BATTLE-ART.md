@@ -2,7 +2,7 @@
 
 *Persona 3: Solstice · split out Nov 7 2026 (Kat's plan): all the battle pieces in one place, to make together at the end, after `FEMC-SKIN-ART.md`. Until a piece exists the fight uses the fighter's usual version, so nothing breaks while these wait. The old design sheet is in `_archive/FEMC-SKINS-BATTLE-DESIGN-old.md`.*
 
-**What's here (updated Nov 14, after art batch 160: Solar's collab looks are done but Ghost-Spider; Haechan's Tuxedo Mask and Clawd done, Miles needs only his effect sheet):** 335 prompts for 55 looks: 53 second pose sheets, 53 Theurgy cut-ins, 66 "1 MORE!" pictures (Solar's looks get two), 54 entrance cards, 53 finish cards, 54 signature effect sheets; plus the foxfire theme sheet and frame (on hold), the curio sticker sheet (Nov 14) and two cell-4 clean-ups. Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`.
+**What's here (updated Nov 15, after art batch 161: every collab look of Solar's and Haechan's is done; Jungwon's Syaoran is in the game, so his battle pieces are ready to make):** 327 prompts for 53 looks: 52 second pose sheets, 52 Theurgy cut-ins, 64 "1 MORE!" pictures (Solar's looks get two), 53 entrance cards, 52 finish cards, 52 signature effect sheets; plus the foxfire theme sheet and frame (on hold), the curio sticker sheet (Nov 14) and two cell-4 clean-ups. Evoker close-ups are parked in `FEMC-SKINS-EVOKER-PROMPTS.md`; optional redos in `FEMC-SKINS-REMAKES.md`.
 
 **How:** pick a look; its pieces are in order. Attach the files on each **Attach** line in that order (all in `Femc Mode Images/`), paste the prompt, save into **New Adds** under its **Save as** name and tell Claude. Collab looks: make their pieces after the outfit is in the game. Each look has a **look bible** (palette, vibe, motifs, light, scene); the prompts follow it.
 
@@ -33,94 +33,6 @@ Finish cards use the fighter's own finish line (listed at the top of each fighte
 
 ---
 
-## Solar
-
-### Collab outfits
-
-Make these after the outfit is in the game (its pose sheet and scene portraits from `FEMC-SKIN-ART.md`).
-
-### Ghost-Spider, Spider-Verse · `sk-collab-spider`
-
-Couple set with Haechan's Miles. The white hooded spider suit, redone in hot pink and black; a platinum undercut bob.
-
-> **Look bible.** Palette: suit white, hot pink, black and electric teal. Vibe: a punk-ballet superhero: graceful and loud.  
-> Motifs: web strands, comic halftone dots, glitch shards and drum-beat shock waves. Light: pink and teal neon city light. Scene: a comic-book city skyline at night, seen from a rooftop.
-
-#### 1. Second pose sheet
-
-Attach: `Ghost-Spider Cosplay [sk-collab-spider] - pose sheet.png` (your finished pose sheet, from `FEMC-SKIN-ART.md`), then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-collab-spider-posesheet-2.png`
-```
-Cosplay of Ghost-Spider from Spider-Verse. Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: a fitted white superhero bodysuit with a white hood pushed back, hot-pink and black web lines over the hood, the arms and the inner legs, a simple black spider shape on the chest (no letters), black-and-pink ballet-style shoes, a white mask with large white eye lenses hanging from one hand in cell 6. Hair: her own hair cut into a sleek jaw-length bob dyed platinum blonde with jet-black roots, shaved short on one side (an undercut). Pink web strands wrapped around her naginata's haft. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, the naginata held loosely in the other hand. Cell 2: guarding: braced low, the naginata held across her body like a shield, forearm raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, her hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping the naginata. Cell 5: badly hurt: standing but hunched, one hand pressed to her side, breathing hard, the naginata lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, the naginata ready, her hair and clothes streaming back. Persona 3 Reload official art style. No text, no logos.
-```
-
-#### 2. Theurgy cut-in
-
-Attach: `Place Prompt Attachments/Theurgy - Solar.png`, then `Ghost-Spider Cosplay [sk-collab-spider] - pose sheet.png` (your finished pose sheet, from `FEMC-SKIN-ART.md`), then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-collab-spider-theurgy.png`
-```
-Cosplay of Ghost-Spider from Spider-Verse. Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: a fitted white superhero bodysuit with a white hood pushed back, hot-pink and black web lines over the hood, the arms and the inner legs, a simple black spider shape on the chest (no letters), black-and-pink ballet-style shoes. Hair: her own hair cut into a sleek jaw-length bob dyed platinum blonde with jet-black roots, shaved short on one side (an undercut). Same face as the THIRD attached image. Keep the Persona behind her exactly as in the first image, and keep her face in the same place in the frame. Repaint everything around the figure to this look instead of the first image's colours: the background becomes a comic-book city skyline at night, seen from a rooftop in suit white, hot pink, black and electric teal, the light is pink and teal neon city light, and web strands and halftone dots streak through the speed lines; the Persona keeps its own shape and design, lit to match. No text, no letters, no logos.
-```
-
-#### 3. "1 MORE!" eye strip
-
-Attach: `skin-sk-collab-spider-portraits.png` (your finished scene portraits, from `FEMC-SKIN-ART.md`), then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-collab-spider-onemore.png`
-```
-Cosplay of Ghost-Spider from Spider-Verse. A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. Her hair: her own hair cut into a sleek jaw-length bob dyed platinum blonde with jet-black roots, shaved short on one side (an undercut), exactly as in the FIRST attached image, strands falling across the frame. Behind the face: bold flat diagonal stripes and speed lines in suit white, hot pink, black and electric teal, lit by pink and teal neon city light, a few tiny web strands and halftone dots scattered in the stripes. No text, no letters, no logos, no border.
-```
-
-#### 4. "1 MORE!" eye strip, second picture v2
-
-Attach: `skin-sk-collab-spider-portraits.png` (your finished scene portraits, from `FEMC-SKIN-ART.md`), then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-collab-spider-onemore-v2.png`
-```
-Cosplay of Ghost-Spider from Spider-Verse. A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking straight at the viewer, eyes wide open and bright as if the sun is in them, a confident, determined expression. Her hair: her own hair cut into a sleek jaw-length bob dyed platinum blonde with jet-black roots, shaved short on one side (an undercut), exactly as in the FIRST attached image, strands falling across the frame. Behind the face: bold flat diagonal stripes and speed lines in suit white, hot pink, black and electric teal, lit by pink and teal neon city light, a few tiny web strands and halftone dots scattered in the stripes. No text, no letters, no logos, no border.
-```
-
-#### 5. Entrance card
-
-Attach: `Ghost-Spider Cosplay [sk-collab-spider] - pose sheet.png` (your finished pose sheet, from `FEMC-SKIN-ART.md`), then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-collab-spider-entrance.png`
-```
-Cosplay of Ghost-Spider from Spider-Verse. A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (a fitted white superhero bodysuit with a white hood pushed back, hot-pink and black web lines over the hood, the arms and the inner legs, a simple black spider shape on the chest (no letters), black-and-pink ballet-style shoes. Hair: her own hair cut into a sleek jaw-length bob dyed platinum blonde with jet-black roots, shaved short on one side (an undercut)), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, the naginata swung over one shoulder, her hair and clothes whipping back, a cool, ready look straight at the viewer. Background: a comic-book city skyline at night, seen from a rooftop, broken into flat graphic shards of suit white, hot pink, black and electric teal splitting apart diagonally, a few speed lines, a scatter of web strands, halftone dots and glitch shards, lit by pink and teal neon city light. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
-```
-
-#### 6. Finish card
-
-Attach: `Place Prompt Attachments/Finish card - Solar.png`, then `Ghost-Spider Cosplay [sk-collab-spider] - pose sheet.png` (your finished pose sheet, from `FEMC-SKIN-ART.md`), then `Place Prompt Attachments/Solar.png`  
-Save as: `skin-sk-collab-spider-finish.png`
-```
-Cosplay of Ghost-Spider from Spider-Verse. Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image's layout and art style: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows. The character in the same place, size and crop as in the first image, turned toward the viewer with a confident finishing pose and a small knowing smile; huge bold slanted words where the first image has its words; flat graphic background shapes and thin lines behind her. Change her outfit and hair to the look in the SECOND attached image: a fitted white superhero bodysuit with a white hood pushed back, hot-pink and black web lines over the hood, the arms and the inner legs, a simple black spider shape on the chest (no letters), black-and-pink ballet-style shoes. Hair: her own hair cut into a sleek jaw-length bob dyed platinum blonde with jet-black roots, shaved short on one side (an undercut). Same face as the THIRD attached image. Background: a comic-book city skyline at night, seen from a rooftop, as flat graphic shapes in suit white, hot pink, black and electric teal, web strands and halftone dots drifting across, lit by pink and teal neon city light. The words are white with a hot pink outline. The words read exactly: RISE AND SHINE. No other text, no logos, no watermark.
-```
-
-#### 7. Signature effect sheet (piece N)
-
-Attach: `Place Prompt Attachments/Effect sheet - format.png` (format and spacing only)  
-Save as: `skin-sk-collab-spider-fx.png`
-```
-Cosplay of Ghost-Spider from Spider-Verse. A sprite sheet of one video-game spell effect: a 3 × 2 grid of six square frames (3 columns, 2 rows), read left to right, top to bottom, on a pure solid black background (#000000). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty black margin (at least 10%) on every side so nothing touches or crosses into the next frame. Frame 1: one pink web strand flickers on in the centre. Frame 2: a few pink web strands and halftone dots appear around it, hot pink light gathering. Frame 3, the peak: a web bursting outward in pink lines and glitch shards from a white centre. Frame 4: the pink web strands and halftone dots spreading wider, tumbling and turning. Frame 5: the pink web strands and halftone dots breaking into small teal glitch pixels. Frame 6: a few last tiny pink web strands and halftone dots and teal glitch pixels fading. Style: Persona 3 Reload battle VFX: sharp, stylish, graphic shapes with clean hard edges, white-hot cores, suit white, hot pink, black and electric teal, high contrast, readable at small size. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2.
-```
-
-## Haechan
-
-### Collab outfits (couple sets with Solar's collab looks)
-
-### Miles, Spider-Verse · `sk-haechan-collab-spider`
-
-Couple set with Solar's Ghost-Spider. The black-and-red spider suit under an open hoodie, mask pushed up.
-
-> **Look bible.** Palette: suit black, spider red, graffiti purple and electric white. Vibe: a street-art superhero: cool, glitchy and a step ahead.  
-> Motifs: red web strands, electric sparks, graffiti spray and comic halftone dots. Light: red and purple neon street light. Scene: a graffiti-covered rooftop in a comic-book city at night.
-
-#### 1. Signature effect sheet (piece N)
-
-Attach: `Place Prompt Attachments/Effect sheet - format.png` (format and spacing only)  
-Save as: `skin-sk-haechan-collab-spider-fx.png`
-```
-Cosplay of Miles from Spider-Verse. A sprite sheet of one video-game spell effect: a 3 × 2 grid of six square frames (3 columns, 2 rows), read left to right, top to bottom, on a pure solid black background (#000000). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty black margin (at least 10%) on every side so nothing touches or crosses into the next frame. Frame 1: one red electric spark flickers on in the centre. Frame 2: a few red electric sparks and web strands appear around it, spider red light gathering. Frame 3, the peak: a crackling burst of red electricity and web strands from a white-hot centre. Frame 4: the red electric sparks and web strands spreading wider, tumbling and turning. Frame 5: the red electric sparks and web strands breaking into small red glitch pixels. Frame 6: a few last tiny red electric sparks and web strands and red glitch pixels fading. Style: Persona 3 Reload battle VFX: sharp, stylish, graphic shapes with clean hard edges, white-hot cores, suit black, spider red, graffiti purple and electric white, high contrast, readable at small size. Pure light and energy only: no characters, no monster, no ground, no frame borders, no grid lines, no text or numbers, no watermark. Landscape 3:2.
-```
-
 ## Jungwon
 
 ### Collab outfits (couple sets with Solar's collab looks)
@@ -134,7 +46,7 @@ Couple set with Solar's Cardcaptor Sakura. The green battle robe with gold trim,
 
 #### 1. Second pose sheet
 
-Attach: `skin-sk-jungwon-collab-cardcaptor-posesheet.png` (your finished pose sheet, from `FEMC-SKIN-ART.md`), then `Place Prompt Attachments/Jungwon.png`  
+Attach: `Place Prompt Attachments/Syaoran Cosplay [sk-jungwon-collab-cardcaptor] - pose sheet.png`, then `Place Prompt Attachments/Jungwon.png`  
 Save as: `skin-sk-jungwon-collab-cardcaptor-posesheet-2.png`
 ```
 Cosplay of Syaoran from Cardcaptor Sakura. Character pose sheet: 3 columns × 2 rows on a transparent background (PNG with alpha), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. The outfit and hair are exactly as in the first image: a long-sleeved green-and-white Chinese-style battle robe with a high mandarin collar and gold-trimmed edges, a matching green cap, white trousers, black cloth shoes, a round jade compass charm hanging at the belt. Hair: his own dark brown hair, soft and slightly messy, the fringe falling over his eyes (a look he has really worn). His rapier's guard in gold with a green tassel. Keep the red S.E.E.S. armband on the left arm if the first image has one (this is battle art). No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused, the rapier held loosely in the other hand. Cell 2: guarding: braced low, the rapier held up in a fencer's parry, the free arm raised, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, his hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still gripping the rapier. Cell 5: badly hurt: standing but hunched, one hand pressed to his side, breathing hard, the rapier lowered but not dropped, a determined look. Cell 6: dashing in: a full-speed sprint toward the same side the first sheet's attack pose faces, body low and leaning forward, the rapier ready, his hair and clothes streaming back. Persona 3 Reload official art style. No text, no logos.
@@ -142,7 +54,7 @@ Cosplay of Syaoran from Cardcaptor Sakura. Character pose sheet: 3 columns × 2 
 
 #### 2. Theurgy cut-in
 
-Attach: `Place Prompt Attachments/Theurgy - Jungwon.png`, then `skin-sk-jungwon-collab-cardcaptor-posesheet.png` (your finished pose sheet, from `FEMC-SKIN-ART.md`), then `Place Prompt Attachments/Jungwon.png`  
+Attach: `Place Prompt Attachments/Theurgy - Jungwon.png`, then `Place Prompt Attachments/Syaoran Cosplay [sk-jungwon-collab-cardcaptor] - pose sheet.png`, then `Place Prompt Attachments/Jungwon.png`  
 Save as: `skin-sk-jungwon-collab-cardcaptor-theurgy.png`
 ```
 Cosplay of Syaoran from Cardcaptor Sakura. Recreate the FIRST attached image, a full-screen 16:9 ultimate-attack cut-in, keeping its composition, camera angle, pose, Persona, speed lines and energy exactly, in the same Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold diagonal layout. Change only the character's outfit and hair to the look in the SECOND attached image: a long-sleeved green-and-white Chinese-style battle robe with a high mandarin collar and gold-trimmed edges, a matching green cap, white trousers, black cloth shoes, a round jade compass charm hanging at the belt. Hair: his own dark brown hair, soft and slightly messy, the fringe falling over his eyes (a look he has really worn). Same face as the THIRD attached image. Keep the Persona behind him exactly as in the first image, and keep his face in the same place in the frame. Repaint everything around the figure to this look instead of the first image's colours: the background becomes a temple courtyard at dusk under cherry blossoms in jade green, white, gold and blossom pink, the light is a green-gold lightning glow at dusk, and green lightning and blossom petals streak through the speed lines; the Persona keeps its own shape and design, lit to match. No text, no letters, no logos.
@@ -150,7 +62,7 @@ Cosplay of Syaoran from Cardcaptor Sakura. Recreate the FIRST attached image, a 
 
 #### 3. "1 MORE!" eye strip
 
-Attach: `skin-sk-jungwon-collab-cardcaptor-portraits.png` (your finished scene portraits, from `FEMC-SKIN-ART.md`), then `Place Prompt Attachments/Jungwon.png`  
+Attach: `Place Prompt Attachments/Syaoran Cosplay [sk-jungwon-collab-cardcaptor] - portraits.png`, then `Place Prompt Attachments/Jungwon.png`  
 Save as: `skin-sk-jungwon-collab-cardcaptor-onemore.png`
 ```
 Cosplay of Syaoran from Cardcaptor Sakura. A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows. An extreme close-up of the SAME character as the attached images, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right with an intense, confident, determined expression. His hair: his own dark brown hair, soft and slightly messy, the fringe falling over his eyes (a look he has really worn), exactly as in the FIRST attached image, strands falling across the frame. Keep these from the look, exactly as in the FIRST attached image, wherever they show in the crop: a matching green cap. Behind the face: bold flat diagonal stripes and speed lines in jade green, white, gold and blossom pink, lit by a green-gold lightning glow at dusk, a few tiny green lightning and blossom petals scattered in the stripes. No text, no letters, no logos, no border.
@@ -158,7 +70,7 @@ Cosplay of Syaoran from Cardcaptor Sakura. A very wide, very short 6:1 banner im
 
 #### 4. Entrance card
 
-Attach: `skin-sk-jungwon-collab-cardcaptor-posesheet.png` (your finished pose sheet, from `FEMC-SKIN-ART.md`), then `Place Prompt Attachments/Jungwon.png`  
+Attach: `Place Prompt Attachments/Syaoran Cosplay [sk-jungwon-collab-cardcaptor] - pose sheet.png`, then `Place Prompt Attachments/Jungwon.png`  
 Save as: `skin-sk-jungwon-collab-cardcaptor-entrance.png`
 ```
 Cosplay of Syaoran from Cardcaptor Sakura. A 16:9 battle-start splash card in Persona 5 / Persona 3 Reload official art style: clean anime lineart, flat cel shading with hard shadows, a bold slanted layout. The SAME character as the attached images, in exactly the outfit, hair and weapon of the FIRST attached image (a long-sleeved green-and-white Chinese-style battle robe with a high mandarin collar and gold-trimmed edges, a matching green cap, white trousers, black cloth shoes, a round jade compass charm hanging at the belt. Hair: his own dark brown hair, soft and slightly messy, the fringe falling over his eyes (a look he has really worn)), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, the rapier held out low at his side, his hair and clothes whipping back, a cool, ready look straight at the viewer. Background: a temple courtyard at dusk under cherry blossoms, broken into flat graphic shards of jade green, white, gold and blossom pink splitting apart diagonally, a few speed lines, a scatter of gold compass rings, green lightning and blossom petals, lit by a green-gold lightning glow at dusk. The character fills the right two thirds; the left third is clean graphic shapes. No text, no letters, no logos.
@@ -166,7 +78,7 @@ Cosplay of Syaoran from Cardcaptor Sakura. A 16:9 battle-start splash card in Pe
 
 #### 5. Finish card
 
-Attach: `Place Prompt Attachments/Finish card - Jungwon.png`, then `skin-sk-jungwon-collab-cardcaptor-posesheet.png` (your finished pose sheet, from `FEMC-SKIN-ART.md`), then `Place Prompt Attachments/Jungwon.png`  
+Attach: `Place Prompt Attachments/Finish card - Jungwon.png`, then `Place Prompt Attachments/Syaoran Cosplay [sk-jungwon-collab-cardcaptor] - pose sheet.png`, then `Place Prompt Attachments/Jungwon.png`  
 Save as: `skin-sk-jungwon-collab-cardcaptor-finish.png`
 ```
 Cosplay of Syaoran from Cardcaptor Sakura. Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image's layout and art style: Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows. The character in the same place, size and crop as in the first image, turned toward the viewer with a confident finishing pose and a small knowing smile; huge bold slanted words where the first image has its words; flat graphic background shapes and thin lines behind him. Change his outfit and hair to the look in the SECOND attached image: a long-sleeved green-and-white Chinese-style battle robe with a high mandarin collar and gold-trimmed edges, a matching green cap, white trousers, black cloth shoes, a round jade compass charm hanging at the belt. Hair: his own dark brown hair, soft and slightly messy, the fringe falling over his eyes (a look he has really worn). Same face as the THIRD attached image. Background: a temple courtyard at dusk under cherry blossoms, as flat graphic shapes in jade green, white, gold and blossom pink, green lightning and blossom petals drifting across, lit by a green-gold lightning glow at dusk. The words are gold with a jade green outline. The words read exactly: MEETING ADJOURNED. No other text, no logos, no watermark.

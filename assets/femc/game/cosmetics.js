@@ -171,13 +171,15 @@ window.FemcCosmetics = (() => {
     c('sk-collab-sukajan', 'skin', 'Sukajan Kiriko', 'UR', 'Her main again, street style: a fox-embroidered souvenir jacket and cargo pants.', { who: 'solar', art: true }), // series: Collab
     // Art batch 149 (Nov 10; FEMC-ART-WIRING 21): four more of Solar's and Haechan's three. Cardcaptor and Sophie get `couple`
     // ('col-cards', 'col-castle') once Jungwon's Syaoran and Howl are in.
-    c('sk-collab-cardcaptor', 'skin', 'Cardcaptor Sakura Cosplay', 'SR', 'A winged hat, a pink battle dress and a star wand. Release!', { who: 'solar', art: true }), // series: Collab
+    c('sk-collab-cardcaptor', 'skin', 'Cardcaptor Sakura Cosplay', 'SR', 'A winged hat, a pink battle dress and a star wand. Release!', { who: 'solar', art: true, couple: 'col-cards' }), // series: Collab
     c('sk-collab-wednesday', 'skin', 'Wednesday Cosplay', 'SR', 'A black dance dress, a white collar and two braids. She will not be smiling.', { who: 'solar', art: true }), // series: Collab
     c('sk-collab-spider', 'skin', 'Ghost-Spider Cosplay', 'UR', 'A white hooded spider suit in pink and black, and a platinum undercut.', { who: 'solar', art: true, couple: 'col-spider' }), // series: Collab
     c('sk-collab-castle', 'skin', 'Sophie Cosplay', 'SR', 'A sky-blue dress, a straw hat and a braid full of starlight.', { who: 'solar', art: true }), // series: Collab
     c('sk-haechan-collab-tuxedo', 'skin', 'Tuxedo Mask Cosplay', 'UR', 'Top hat, white mask, a rose he will throw at the worst possible moment.', { who: 'haechan', art: true, couple: 'col-moon' }), // series: Collab
     c('sk-haechan-collab-wolf', 'skin', 'Clawd Cosplay', 'SR', 'A fur-collared varsity jacket and wolf ears. He howls on request. Rarely.', { who: 'haechan', art: true, couple: 'col-ghoul' }), // series: Collab
     c('sk-haechan-collab-spider', 'skin', 'Miles Cosplay', 'UR', 'Black and red, an open hoodie and the mask pushed up. Anyone can wear the mask.', { who: 'haechan', art: true, couple: 'col-spider' }), // series: Collab
+    // Art batch 161 (Nov 15): Jungwon's Syaoran (Kat's files were named for Howl; they're Syaoran by looking), couple col-cards with Cardcaptor Sakura.
+    c('sk-jungwon-collab-cardcaptor', 'skin', 'Syaoran Cosplay', 'SR', 'A green battle robe, a jade compass and a very serious face.', { who: 'jungwon', art: true, couple: 'col-cards' }), // series: Collab
     // Weapon skins (art pending: 8C).
     c('wpn-sakura', 'weapon', 'Sakura Naginata', 'SR', 'A pale wood haft wrapped in pink silk, blossoms etched on the blade.', { who: 'solar', art: true }),
     c('wpn-phantom', 'weapon', 'Phantom Naginata', 'UR', 'Black lacquer and a red tassel, to go with the coat.', { who: 'solar', art: true }),
@@ -278,7 +280,7 @@ window.FemcCosmetics = (() => {
       'sk-jungwon-cp-afterhours', 'sk-cp-ringside', 'sk-akihiko-cp-ringside', 'sk-haechan-sweater', 'sk-jungwon-sweater', 'sk-jungwon-angel'],
     sunmoon: ['sk-arcana-moon', 'sk-collab-sailor', 'sk-haechan-collab-tuxedo', 'sk-cp-sunmoon', 'sk-haechan-cp-sunmoon', 'sk-arcana-sun', 'sk-hanbok', 'sk-swim-night', 'sk-cp-festival', 'sk-akihiko-cp-festival'],
     petals: ['sk-cottage-meadow', 'sk-cottage-greenhouse', 'sk-cottage-harvest', 'sk-chapel-picnic', 'sk-yukata', 'sk-alphaphi', 'sk-yukari-kyudo'],
-    stars: ['sk-arcana-star', 'sk-halloween', 'sk-yukari-pink', 'sk-collab-stella', 'sk-collab-cardcaptor'],
+    stars: ['sk-arcana-star', 'sk-halloween', 'sk-yukari-pink', 'sk-collab-stella', 'sk-collab-cardcaptor', 'sk-jungwon-collab-cardcaptor'],
     bubbles: ['sk-swim-lagoon', 'sk-swim-lifeguard', 'sk-haechan-swim', 'sk-jungwon-swim', 'sk-yukari-swim', 'sk-akihiko-swim'],
     notes: ['sk-haechan-stage', 'sk-jungwon-stage', 'sk-haechan-garage', 'sk-haechan-headphones', 'sk-summersession', 'sk-jungwon-soundcheck', 'sk-haechan-runners'],
     glitter: ['sk-idol', 'sk-y2k', 'sk-oops', 'sk-snake', 'sk-limelight', 'sk-haechan-limelight', 'sk-haechan-fairground'],
@@ -318,7 +320,7 @@ window.FemcCosmetics = (() => {
     { id: 'cottage', name: 'Wildflower Cottage', kind: 'Seasonal', months: [5], color: '#ffa8c8', featured: ['sk-cottage-harvest', 'sk-cottage-meadow', 'sk-cottage-bakery', 'sk-cottage-greenhouse'] },
     // Kat's Nov 7 banners (FEMC-SKIN-ART "New outfits"), each added with its first look (art batch 147). The rest of each
     // banner's outfits join its featured list as their art comes in.
-    { id: 'magical', name: 'Magical Girls', kind: 'Collab', months: [4], color: '#ff9ad5', featured: ['sk-collab-sailor', 'sk-haechan-collab-tuxedo', 'sk-collab-stella', 'sk-collab-cardcaptor'] },
+    { id: 'magical', name: 'Magical Girls', kind: 'Collab', months: [4], color: '#ff9ad5', featured: ['sk-collab-sailor', 'sk-haechan-collab-tuxedo', 'sk-collab-stella', 'sk-collab-cardcaptor', 'sk-jungwon-collab-cardcaptor'] },
     { id: 'anime', name: 'Anime Night', kind: 'Collab', months: [9], color: '#ff6f9e', featured: ['sk-collab-sukajan', 'sk-collab-spider', 'sk-haechan-collab-spider', 'sk-collab-castle'] },
     { id: 'ghoul', name: 'Ghoul School', kind: 'Collab', months: [10], color: '#ff4f8b', featured: ['sk-collab-ghoul', 'sk-haechan-collab-wolf', 'sk-collab-wednesday'] },
   ];
