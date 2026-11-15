@@ -47244,6 +47244,450 @@
    "status": "integrated",
    "destination": "assets/femc/game/art/skins/sk-collab-sukajan/",
    "placement": "sk-collab-sukajan battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-cardcaptor-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "5f9be45c3248e6c4d45b97c1fba741ededf9cfab8be656c199ddf86eae6ae6df",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/",
+   "placement": "sk-collab-cardcaptor battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-cardcaptor-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "f9ffe279762a73e0e4f744bc37a9c032f7a47e1e7624fc3d4604d6756fc76445",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/",
+   "placement": "sk-collab-cardcaptor battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-cardcaptor-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "7a5f3a1afcfe69258bc70642403ef35d2a295fc79868b9ac4b3aa9a5b4378ecb",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/",
+   "placement": "sk-collab-cardcaptor battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-cardcaptor-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "f33bb181addc38b4dfeedc43cf852521cdef9b9a0c7fc3533bcf1fc8cf61ec9c",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/",
+   "placement": "sk-collab-cardcaptor battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-cardcaptor-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "d284e2f363c8c66a3e3b4ee8ae71a86270936097a23122c95fab4a1598a321dc",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/",
+   "placement": "sk-collab-cardcaptor battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-cardcaptor-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "9f746badbfa57b434b6903861a5c266a6eb451df2fbd27db9309605b7b3a4218",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/",
+   "placement": "sk-collab-cardcaptor battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-castle-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "0a13cc7641d50251fdee3b3ad2a5e44714e5e9dfc5a0ae5f5dfd2d1b27e9f4f6",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/",
+   "placement": "sk-collab-castle battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-castle-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "244be24794e4cd5e390836e031deb8fb1c2bb8e9968ac77bb46d067077b680c7",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/",
+   "placement": "sk-collab-castle battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-castle-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "a5328e8d0454e8f292c14df4f8abed04c830653f2abdda8c3258bc5fd4883de2",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/",
+   "placement": "sk-collab-castle battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-castle-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "e50867f27a4c13b1d688ceb7fd3a1bbe7048c4ffbadc7adfdc20c248d4a3cd68",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/",
+   "placement": "sk-collab-castle battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-castle-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "794ceac8ad1049203eb16da9089cbc2b422a098ab9e952b01b13bbe43932928c",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/",
+   "placement": "sk-collab-castle battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-castle-posesheet-2.png",
+   "size": [
+    1535,
+    1024
+   ],
+   "sha256": "03b876a92ed4ddcb156a5fdd61b2dc852dc1b42f776deb50a175fce7b5ab7482",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/",
+   "placement": "sk-collab-castle battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-castle-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "8a3bcfd338dbf4f381b7b7667e72bc710c0b8002073f71aa486859d03a71f59b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-castle/",
+   "placement": "sk-collab-castle battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-wednesday-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "4dcede185be8e4156091d7bb3f8ade91950b543937bd2cf88a309b5d94150420",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/",
+   "placement": "sk-collab-wednesday battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-wednesday-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "6ad266283600e5201a80032be6f29b1a4ba3089a977c0fb056971e8a816c18de",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/",
+   "placement": "sk-collab-wednesday battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-wednesday-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "bfb94bee4c153004480066a026db4ee89aff691f745b55fdc4af26a03bdf1978",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/",
+   "placement": "sk-collab-wednesday battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-wednesday-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "ce0c8d8675dc12928c0b624de3c50fa712414d7eee7d4b04207669d5e8f58c45",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/",
+   "placement": "sk-collab-wednesday battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-wednesday-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "f0756c9d0cb2dfead10f790994194d5a0016b880802656c3e330ab486855a4d7",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/",
+   "placement": "sk-collab-wednesday battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-wednesday-posesheet-2.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "77a6033137f722285f7596687ee6fcb6e8996d43c2f25cd8f003b11e73d6b586",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/",
+   "placement": "sk-collab-wednesday battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-collab-wednesday-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "ec458a166c66253188e945ed51613e12cb2f63e5296e37f13cb00b278250ba14",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-wednesday/",
+   "placement": "sk-collab-wednesday battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-haechan-collab-spider-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "a4bc13054c6926eb876cb2b00e4d42b3df6eeae5845a9e5edc721215ab999be2",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-spider/",
+   "placement": "sk-haechan-collab-spider battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-haechan-collab-spider-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "f4d4828076f510ab4ef112fce09f2b7080d31fbec616b9b0ad2a7adb2782b00a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-spider/",
+   "placement": "sk-haechan-collab-spider battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-haechan-collab-spider-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "af5990afdc2d37326014f01d969c4d3522086069acb27909c0a36d214f9ac41c",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-spider/",
+   "placement": "sk-haechan-collab-spider battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-haechan-collab-spider-posesheet-2.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "70f370a0fd4eead81e34d4da9e33853bd2ae0a32a105c9d454f0479fc482ccc1",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-spider/",
+   "placement": "sk-haechan-collab-spider battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-haechan-collab-spider-theurgy.png",
+   "size": [
+    1672,
+    940
+   ],
+   "sha256": "97c25f48a3d0fd6aa29643f0e04ff920a14166e0d48f98a4f80e2e9e823297a3",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-spider/",
+   "placement": "sk-haechan-collab-spider battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-haechan-collab-tuxedo-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "cdd99b6429bf35db8d8a3b8572459b309759f991732bc661cbacc168d4d4ecf6",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-tuxedo/",
+   "placement": "sk-haechan-collab-tuxedo battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-haechan-collab-tuxedo-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "29982924aae8917aaa892b2c334dd9f522b8673540cb200fa062ed9df1cb32c8",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-tuxedo/",
+   "placement": "sk-haechan-collab-tuxedo battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-haechan-collab-tuxedo-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "ad9ccf1f4357cdba57f9b45c99bc4c1262522142ed49e70e0f173cff1cec6279",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-tuxedo/",
+   "placement": "sk-haechan-collab-tuxedo battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-haechan-collab-tuxedo-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "f63e5a8d8c1a03ccfaa1688976a0ea73f07af0a0ad800fcc4e48d6a064f690d8",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-tuxedo/",
+   "placement": "sk-haechan-collab-tuxedo battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-haechan-collab-tuxedo-posesheet-2.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "d193ed53fda493fe7136c1de89f75c21c796d3a14a73ac755e3b245086a4e516",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-tuxedo/",
+   "placement": "sk-haechan-collab-tuxedo battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-haechan-collab-tuxedo-theurgy.png",
+   "size": [
+    1672,
+    940
+   ],
+   "sha256": "b3af3a8c91bb558569d5347f5d260270520f709f0cf08eee2ece323b7536aeca",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-tuxedo/",
+   "placement": "sk-haechan-collab-tuxedo battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-haechan-collab-wolf-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "8381ca1fa72dba7312b64ae56b6cc0ebdd8cad3255a7c1f2cd115f772f713a6d",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-wolf/",
+   "placement": "sk-haechan-collab-wolf battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-haechan-collab-wolf-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "4e4048ab2d3e7847e248f9eb08e4c0867d07997864c12af54866a7afe11e6dc8",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-wolf/",
+   "placement": "sk-haechan-collab-wolf battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-haechan-collab-wolf-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "3ba608addab441134e316ba0e726cfda6fd722ba07d9cf945d7cd27c6e734343",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-wolf/",
+   "placement": "sk-haechan-collab-wolf battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-haechan-collab-wolf-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "d7eff8db781ddabaf2b320ce9155edfd5c5bcd282163f35dbae557d358e6a407",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-wolf/",
+   "placement": "sk-haechan-collab-wolf battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-haechan-collab-wolf-posesheet-2.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "cbd80e0c62e88dec7a0a61a217fa2d6a4531328dd7d68466ffc501900b0b386a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-wolf/",
+   "placement": "sk-haechan-collab-wolf battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 160,
+   "source": "skin-sk-haechan-collab-wolf-theurgy.png",
+   "size": [
+    1672,
+    940
+   ],
+   "sha256": "b13c58f519377bb3def15ddb6d0036ba3d94385b62cf1b1d43b6f895ac393497",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-haechan-collab-wolf/",
+   "placement": "sk-haechan-collab-wolf battle piece (FEMC-BATTLE-ART)"
   }
  ],
  "batch1Validation": {
@@ -48743,5 +49187,10 @@
   "date": "2026-11-14",
   "checks": "jsc on battle.js and ready.js; femc-check-scenes OK; v2 glints checked on marked previews (ghoul, stella, sukajan hand-set)",
   "note": "29 files: all battle pieces for sk-collab-stella / -sailor / -ghoul / -sukajan, sheet 2 for sk-collab-cardcaptor. Not fight-tested."
+ },
+ "batch160Validation": {
+  "date": "2026-11-14",
+  "checks": "jsc (ready.js; battle.js checkSyntax); femc-check-scenes OK; glints checked (cardcaptor hand-set)",
+  "note": "37 files: cardcaptor (rest), castle, wednesday, Haechan tuxedo / wolf / spider (no fx). Wednesday fx may show faint haze squares on frames 2-3. Not fight-tested."
  }
 }
