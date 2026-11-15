@@ -327,3 +327,23 @@
 .g-fm-ov .g-cbox.multi .g-cbox-card.picked::after { content: "✓"; position: absolute; right: 10%; top: 4px; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #14070f; color: #fff; font: 900 13px/1 system-ui, sans-serif; box-shadow: 0 0 0 2px #fff; }
 .g-fm-ov .g-cbox.multi .g-cbox-card.na { opacity: .4; }
 .g-card-multi .g-card-acts { flex-wrap: wrap; }
+
+/* Cards: recommended builds + Auto-equip (Nov 15 2026, Kat) */
+.g-crec { margin: 6px 0 4px; padding: 8px 12px; background: rgba(20, 7, 15, .72); border-left: 3px solid var(--pink, #ff4f9e); display: grid; gap: 5px; }
+.g-crec-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.g-crec-head > small, .g-crec-mains > small { font: italic 900 12px/1 var(--cond); letter-spacing: .12em; text-transform: uppercase; color: var(--pink-2, #ff8cc0); }
+.g-crec-head [data-cauto] { margin-left: auto; }
+.g-crec-sets, .g-crec-mains { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 13px; }
+.g-crec-sets > small { opacity: .8; }
+.g-crec-mains b { color: #fff; }
+
+/* Cards: set chips readable (no inherited blur, the set's colour as a stripe) and the card bonus as grouped tiles (Nov 15 2026, Kat) */
+.g-fm-ov.is-page .g-cards .g-chip.on { text-shadow: none; filter: none; font-style: normal; font-weight: 800; color: #14070f; border-left: 6px solid var(--c, var(--pink)); }
+.g-fm-ov.is-page .g-cards .g-crec-head .g-chip:not(.on) { text-shadow: none; color: #fff4f9; }
+.g-card-bonus { display: flex; flex-wrap: wrap; gap: 8px 14px; margin: 4px 0 8px; }
+.g-cb-group { display: grid; gap: 4px; }
+.g-cb-group > small { font: italic 900 11px/1 var(--cond); letter-spacing: .16em; text-transform: uppercase; color: var(--pink-2, #ff8cc0); }
+.g-cb-group ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px; }
+.g-cb-group li { display: grid; min-width: 62px; padding: 4px 9px 5px; background: rgba(20, 7, 15, .78); border-top: 2px solid var(--pink, #ff4f9e); text-shadow: none; }
+.g-cb-group li span { font: 700 11px/1.1 var(--sans, system-ui); letter-spacing: .06em; text-transform: uppercase; color: rgba(255, 228, 240, .75); }
+.g-cb-group li b { font: italic 900 16px/1.15 var(--cond); color: #fff; }

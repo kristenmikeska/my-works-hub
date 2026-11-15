@@ -389,7 +389,7 @@ window.FemcBuild = (() => {
   const CARD_ART = ['bell', 'stadium', 'headset', 'jade', 'crane', 'needle', 'pin', 'ballot', 'croissant', 'evoker', 'moon', 'butterfly', 'coffin',
     'candle', 'fuse', 'kendo', 'kite', 'lantern', 'shrine', 'prism', 'globe', 'spotlight', 'housekey', 'note'];
   CARD_ART.forEach(id => { SETS[id].img = `assets/femc/battle/art/cards/${id}.webp?v=${CARD_ART_V}`; });
-  const CARD = { maxLvl: { 3: 6, 4: 8, 5: 10 }, growth: 0.15, refineMain: 0.05, maxRef: 3, cap: 160,
+  const CARD = { maxLvl: { 3: 6, 4: 8, 5: 10 }, growth: 0.15, refineMain: 0.05, maxRef: 3, cap: 250, // cap 160 -> 250 (Kat, Nov 15 2026)
     lvlDust: (c) => (4 + c.lvl * 3) * (c.r - 2), lvlYen: (c) => 80 * c.lvl * (c.r - 2),
     refThread: [1, 2, 3], refYen: [500, 1500, 3500], refArcana: [0, 0, 1], dismantle: { 3: 6, 4: 14, 5: 30 } };
   D.cards = { stats: STATS, subs: SUBS, slots: SLOTS, sets: SETS, rules: CARD };
@@ -466,6 +466,74 @@ window.FemcBuild = (() => {
     save.mats.tarot_dust = (save.mats.tarot_dust || 0) + dust;
     if (thread) save.mats.velvet_thread = (save.mats.velvet_thread || 0) + thread;
     return { ok: true, dust, thread };
+  }
+
+  /* ══════════ Recommended builds and Auto-equip (Nov 15 2026, Kat: "recommended sets / builds for each character, like P5X",
+     "an auto equip button that equips what you have and what's best based off the recommended sets") ══════════
+     BUILDS[mid] = [{ name, sets: [four-piece set, two-piece set], mains: { hand, path, mirror, fate }, subs: [best first], why }].
+     Crown (HP) and Heart (SP) have one main stat, so they aren't listed. autoEquip(save, mid, bi) looks only at cards that
+     are free or already on this member (never takes one off someone else), scores each card for the build (rarity, level,
+     refinement, the right main stat, wanted substats) and tries every way of filling the six slots with the four-piece set,
+     the two-piece set or the best card of any set, keeping the highest total (set bonuses counted). Empty slots stay empty. */
+  const BUILDS = {
+    solar: [{ name: 'Daybreak', sets: ['shrine', 'evoker'], mains: { hand: 'maP', path: 'agP', mirror: 'light', fate: 'crit' }, subs: ['ma', 'crit', 'critX', 'sp', 'ag'], why: 'Light magic first: big Light damage and Magic, fast enough to open fights.' },
+      { name: 'Guardian Sun', sets: ['bell', 'croissant'], mains: { hand: 'maP', path: 'spP', mirror: 'heal', fate: 'heal' }, subs: ['ma', 'sp', 'heal', 'hp', 'en'], why: 'Keeps the party standing: stronger heals, cheaper skills, SP back every turn.' }],
+    akihiko: [{ name: 'Lightning Cadenza', sets: ['fuse', 'headset'], mains: { hand: 'stP', path: 'agP', mirror: 'elec', fate: 'crit' }, subs: ['st', 'ag', 'crit', 'critX', 'ma'], why: 'Elec and crits; Theurgy comes back sooner.' },
+      { name: 'Champion', sets: ['kendo', 'needle'], mains: { hand: 'stP', path: 'agP', mirror: 'phys', fate: 'critX' }, subs: ['st', 'critX', 'crit', 'ag', 'hp'], why: 'All-in on punches and critical hits.' }],
+    yukari: [{ name: 'Healer', sets: ['bell', 'croissant'], mains: { hand: 'maP', path: 'spP', mirror: 'heal', fate: 'heal' }, subs: ['ma', 'sp', 'heal', 'ag', 'hp'], why: 'The party’s healer: stronger heals and SP that lasts.' },
+      { name: 'Gale', sets: ['kite', 'evoker'], mains: { hand: 'maP', path: 'agP', mirror: 'wind', fate: 'crit' }, subs: ['ma', 'ag', 'crit', 'sp', 'critX'], why: 'Wind damage when the party already has a healer.' }],
+    junpei: [{ name: 'Slugger', sets: ['kendo', 'crane'], mains: { hand: 'stP', path: 'hpP', mirror: 'phys', fate: 'critX' }, subs: ['st', 'hp', 'critX', 'en', 'crit'], why: 'Hits hard and stays up: physical damage, HP and a second chance.' },
+      { name: 'Hot Streak', sets: ['lantern', 'headset'], mains: { hand: 'stP', path: 'hpP', mirror: 'fire', fate: 'crit' }, subs: ['st', 'ma', 'crit', 'critX', 'hp'], why: 'Fire and crits.' }],
+    mitsuru: [{ name: 'Execution', sets: ['globe', 'ballot'], mains: { hand: 'maP', path: 'luP', mirror: 'ice', fate: 'crit' }, subs: ['ma', 'lu', 'sp', 'ag', 'crit'], why: 'Ice damage with ailments that stick.' },
+      { name: 'Queen', sets: ['jade', 'evoker'], mains: { hand: 'maP', path: 'luP', mirror: 'ice', fate: 'th' }, subs: ['ma', 'lu', 'sp', 'ag', 'th'], why: 'Freezes and binds land more often.' }],
+    aigis: [{ name: 'Orgia', sets: ['kendo', 'headset'], mains: { hand: 'stP', path: 'agP', mirror: 'phys', fate: 'crit' }, subs: ['st', 'crit', 'critX', 'ag', 'lu'], why: 'Pierce damage and crits; Orgia Mode sooner.' },
+      { name: 'Suppression', sets: ['note', 'ballot'], mains: { hand: 'stP', path: 'luP', mirror: 'phys', fate: 'th' }, subs: ['st', 'lu', 'ag', 'crit', 'hp'], why: 'Debuffs that last longer and hurt more.' }],
+    ken: [{ name: 'Kala', sets: ['shrine', 'bell'], mains: { hand: 'maP', path: 'spP', mirror: 'light', fate: 'heal' }, subs: ['ma', 'sp', 'heal', 'en', 'hp'], why: 'Light damage and healing together.' },
+      { name: 'Spear', sets: ['fuse', 'evoker'], mains: { hand: 'maP', path: 'agP', mirror: 'elec', fate: 'crit' }, subs: ['ma', 'ag', 'crit', 'sp', 'st'], why: 'Elec damage first.' }],
+    koromaru: [{ name: 'Hellhound', sets: ['candle', 'stadium'], mains: { hand: 'maP', path: 'agP', mirror: 'dark', fate: 'crit' }, subs: ['ma', 'ag', 'crit', 'lu', 'sp'], why: 'Dark damage and the first move every fight.' },
+      { name: 'Wildfire', sets: ['lantern', 'stadium'], mains: { hand: 'maP', path: 'agP', mirror: 'fire', fate: 'crit' }, subs: ['ma', 'ag', 'crit', 'critX', 'lu'], why: 'Fire damage and speed.' }],
+    shinjiro: [{ name: 'Castor', sets: ['kendo', 'needle'], mains: { hand: 'stP', path: 'hpP', mirror: 'phys', fate: 'critX' }, subs: ['st', 'critX', 'crit', 'hp', 'en'], why: 'The biggest single hits in the party.' },
+      { name: 'Last Stand', sets: ['moon', 'crane'], mains: { hand: 'stP', path: 'hpP', mirror: 'phys', fate: 'hpP' }, subs: ['st', 'hp', 'en', 'critX', 'crit'], why: 'For bosses: extra boss damage and a second chance.' }],
+    jihoon: [{ name: 'Light of Your Life', sets: ['kite', 'pin'], mains: { hand: 'maP', path: 'agP', mirror: 'wind', fate: 'crit' }, subs: ['ma', 'ag', 'st', 'crit', 'sp'], why: 'Wind damage, and the whole party gets a little more.' },
+      { name: 'Hype Man', sets: ['pin', 'butterfly'], mains: { hand: 'stP', path: 'agP', mirror: 'phys', fate: 'th' }, subs: ['ag', 'sp', 'st', 'evade', 'hp'], why: 'Party attack up from turn one; Theurgy starts charged.' }],
+    minji: [{ name: 'Final Cut', sets: ['shrine', 'bell'], mains: { hand: 'maP', path: 'spP', mirror: 'light', fate: 'heal' }, subs: ['ma', 'sp', 'heal', 'ag', 'hp'], why: 'Light damage and healing together.' },
+      { name: 'Director', sets: ['bell', 'croissant'], mains: { hand: 'maP', path: 'spP', mirror: 'heal', fate: 'heal' }, subs: ['ma', 'sp', 'heal', 'hp', 'en'], why: 'A full healer.' }],
+    jungwon: [{ name: 'Perfect Composure', sets: ['globe', 'needle'], mains: { hand: 'maP', path: 'luP', mirror: 'ice', fate: 'crit' }, subs: ['ma', 'crit', 'critX', 'lu', 'ag'], why: 'Ice damage with precise crits.' },
+      { name: 'Minutes', sets: ['note', 'ballot'], mains: { hand: 'maP', path: 'luP', mirror: 'ice', fate: 'th' }, subs: ['ma', 'lu', 'ag', 'sp', 'crit'], why: 'Debuffs that last longer and hurt more.' }],
+    haechan: [{ name: 'Static', sets: ['fuse', 'headset'], mains: { hand: 'stP', path: 'agP', mirror: 'elec', fate: 'crit' }, subs: ['st', 'ma', 'crit', 'critX', 'ag'], why: 'Elec and crits; Theurgy comes back sooner.' },
+      { name: 'After Dark', sets: ['candle', 'needle'], mains: { hand: 'stP', path: 'agP', mirror: 'dark', fate: 'critX' }, subs: ['st', 'critX', 'crit', 'ma', 'ag'], why: 'Dark damage and heavy crits.' }]
+  };
+  const buildsOf = mid => BUILDS[mid] || [{ name: 'Balanced', sets: ['pin', 'crane'], mains: { hand: 'stP', path: 'hpP', mirror: 'phys', fate: 'crit' }, subs: ['st', 'ma', 'hp', 'crit', 'ag'], why: 'A safe all-round build.' }];
+  function cardScore(c, b) {
+    let s = c.r * 10 + c.lvl * 2 + c.ref * 3;
+    const want = b.mains[c.slot];
+    if (!want || c.main === want) s += 40;
+    c.subs.forEach(([k]) => { const i = b.subs.indexOf(k); if (i >= 0) s += i < 2 ? 9 : 5; });
+    return s;
+  }
+  function autoPlan(save, mid, bi = 0) {
+    const b = buildsOf(mid)[bi] || buildsOf(mid)[0], C = ensureCards(save);
+    const free = C.list.filter(c => { const w = wearerOf(save, c.u); return !w || w === mid; });
+    const best = (slot, set) => free.filter(c => c.slot === slot && (!set || c.set === set)).sort((x, y) => cardScore(y, b) - cardScore(x, b))[0] || null;
+    const opts = SLOTS.map(sd => [best(sd.id, b.sets[0]), best(sd.id, b.sets[1]), best(sd.id, null)]);
+    let top = null;
+    const n = Math.pow(3, SLOTS.length);
+    for (let m = 0; m < n; m++) {
+      let k = m, pick = [], total = 0;
+      for (let i = 0; i < SLOTS.length; i++) { const c = opts[i][k % 3]; k = Math.floor(k / 3); if (c) { pick.push(c); total += cardScore(c, b); } }
+      const cnt = {}; pick.forEach(c => { cnt[c.set] = (cnt[c.set] || 0) + 1; });
+      const a = cnt[b.sets[0]] || 0, z = cnt[b.sets[1]] || 0;
+      total += (a >= 4 ? 90 : a >= 2 ? 30 : 0) + (z >= 2 ? 30 : 0);
+      if (!top || total > top.total) top = { total, pick };
+    }
+    return { build: b, cards: top ? top.pick : [] };
+  }
+  function autoEquip(save, mid, bi = 0) {
+    const plan = autoPlan(save, mid, bi), C = ensureCards(save);
+    SLOTS.forEach(sd => { if (!plan.cards.some(c => c.slot === sd.id)) return; unequipCard(save, mid, sd.id); });
+    plan.cards.forEach(c => equipCard(save, mid, c.u));
+    const cnt = setCounts(save, mid);
+    return { ok: plan.cards.length > 0, n: plan.cards.length, build: plan.build, four: (cnt[plan.build.sets[0]] || 0) >= 4, two: (cnt[plan.build.sets[1]] || 0) >= 2, eq: C.eq[mid] };
   }
   /* What one card adds, as unit-bonus entries. */
   function cardBonus(c) {
@@ -1114,7 +1182,7 @@ window.FemcBuild = (() => {
   return {
     NAG, HK, JW, JH, MJ, AK, YK, JP, MT, AG, KM, SJ, OWNED, STARTER_SWAP, yenBonus, bossWeapons, fits, namedTag, BOSS_WEAPON, CHEST_WEAPON, WREF, wrefOf, wrefCost, refineWeapon, weaponAtk, weaponAtkAt, wrefAtkK, wrefBonusK, forged, dupes, refineWays, canWay, salvageDust, salvageList, salvageWeapon, CURIOS, CURIO, rollCurio, MAYOIDO, mayoTrades, mayoTrade, bonusText, canPay,
     STATS, SLOTS, SETS, CARD, rollCard, rarityRoll, mainValue, cardName, statLine, addCard, cardById, wearerOf, equipCard, unequipCard, equippedCards,
-    levelCost, refineCost, levelCard, refineCard, dismantleCard, cardBonus, setCounts, ensureCards,
+    levelCost, refineCost, levelCard, refineCard, dismantleCard, cardBonus, setCounts, ensureCards, BUILDS, buildsOf, cardScore, autoPlan, autoEquip,
     emptyBonus, addBonus, unitBonus, SKILL_CARDS, teachable, teach,
     SH, shuffleDue, deal, cardText, applyShuffle,
     PERKS, perksOf, perkById, perkState, ctxOf, battlePerks, hasPerk, bondSkills, grantGifts, syncBonds, perksAt, TYPE_NAME, fighter, WHO,
