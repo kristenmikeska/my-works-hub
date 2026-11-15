@@ -2,7 +2,7 @@
 
 *Persona 3: Equinox · started Nov 15 2026. The look is picked: **Equilux** (`mockups/equinox-ui/equilux.html`): Solstice's font and shapes, a clock as the signature, in shades of blood red and black.*
 
-**To make (Nov 15):** **the look tests** (section 1: a key art test and a logo test) · **the title and the UI** (section 2: a matching day and night cover, 2 menu backdrops, the clock face, the emblem, 2 loading pictures) · **Solar's Equinox look** (section 3: a pose sheet, a face sheet and her menu pose) · **the Well** (section 4: 8 block backgrounds) · **LE SSERAFIM** (section 5: 4 full-body pictures) · **the parents** (section 6: 6 full-body pictures) · **new fighters' Personas** (section 7: 3 concept sheets) · **the opening** (section 8: 6 backgrounds, Mrs. Oka's faces, 15 CGs) · **56 pictures in all.** More is coming later (section 9: counts only, no prompts yet).
+**To make (Nov 15):** **the look tests** (section 1: a key art test and a logo test) · **the title and the UI** (section 2: a matching day and night cover, 2 menu backdrops, the clock face, the emblem, 2 loading pictures) · **Solar's Equinox look** (section 3: a pose sheet, a face sheet and her menu pose) · **the Well** (section 4: 8 block backgrounds) · **LE SSERAFIM** (section 5: 4 full-body pictures) · **the parents** (section 6: 6 full-body pictures) · **new fighters' Personas** (section 7: 3 concept sheets) · **the opening** (section 8: 8 backgrounds, Mrs. Oka's faces, 17 CGs) · **60 pictures in all.** More is coming later (section 9: counts only, no prompts yet).
 
 ---
 
@@ -483,6 +483,38 @@ Attach: `CG - style (Solstice).png`, `BG - Dorm Kitchen.png`
 Save as: `eqx-mrs-oka.png`
 ```
 A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). A kind-faced Japanese woman in her mid-fifties (greying black hair in a loose bun, soft round face, warm crinkled eyes, cream cardigan, plain linen apron, thin white cotton gloves with flour dusted up the cuffs) standing at a long worn wooden kitchen counter in an old farmhouse kitchen (styled like the SECOND attached image but older and wooden), kneading dough, smiling over her shoulder at the viewer as if you just came in. Beside her a painted tin of rice cakes, its lid off. Steam, afternoon light, a window onto a bare persimmon tree. Warm afternoon light, wood browns, deep red-brown shadows; gold only as a tiny accent; no pink, blue, navy, purple or green-heavy colours. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 8W. Background: the Oka boarding house garden**  
+Visiting the boarding house.  
+Attach: `BG - style (Tartarus).png`, `BG - Iwatodai Neighborhood.png`  
+Save as: `eqx-oka-garden.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: the garden of an old wooden two-storey Japanese house in spring afternoon light, a persimmon tree in new leaf with not one bird in it, an old stone well beside it with a heavy round stone cap furred with moss (four faint parallel scrapes through the moss), stepping stones, a low wooden gate. Warm but too-still afternoon light, wood browns, deep red-brown shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink, blue, navy, purple or green-heavy colours. Any signs are blank. No text.
+```
+
+**[ ] 8X. Background: the boarding house, upstairs**  
+Visiting the boarding house.  
+Attach: `BG - style (Tartarus).png`, `BG - Dorm Hallway.png`  
+Save as: `eqx-oka-upstairs.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: the upstairs corridor of an old wooden Japanese house, dark polished floorboards with no dust at all, a long row of closed paper-and-wood sliding doors down one side, all identical, late afternoon light from one small window at the far end, the corridor a little longer than it should be. Warm but too-still afternoon light, wood browns, deep red-brown shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink, blue, navy, purple or green-heavy colours. No text.
+```
+
+**[ ] 8Y. CG: the button**  
+Visiting Mrs. Oka.  
+Attach: `CG - style (Solstice).png`, `Solar.png`  
+Save as: `eqx-oka-button.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). Close: a kind-faced Japanese woman in her mid-fifties (greying black hair in a loose bun, cream cardigan, plain linen apron, thin white cotton gloves darned at the fingertips) sewing a loose button back onto the school blazer of a girl (the SAME girl as the SECOND attached image) who sits very still on a wooden kitchen stool, the woman leaning in close, the needle and thread catching the light, a window full of persimmon leaves behind them. Tender on the surface; the girl's eyes are a little wary. Warm but too-still afternoon light, wood browns, deep red-brown shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink, blue, navy, purple or green-heavy colours. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 8Z. CG: the threads**  
+The Velvet Room.  
+Attach: `CG - style (Solstice).png`, `Elizabeth.png`, `BG - Velvet Room.png`  
+Save as: `eqx-threads.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). In the room of the THIRD attached image: an old blue leather-bound book lying open across white-gloved hands (the woman in the SECOND attached image, only her hands and blue cuffs visible), its pages fanned so a dozen show at once, and a fine thread of gold sewn through the bottom edge of every page, each thread running off the paper and out of the frame, all pulled the same way, taut. The Velvet Room's own blue light is allowed here; the threads are the one gold thing; no pink, purple or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
 ```
 
 If a CG comes back with the wrong number of people or a person who doesn't match, say: "Same picture, but [fix]. Keep everything else."
