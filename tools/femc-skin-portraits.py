@@ -17,6 +17,19 @@ SRC = sys.argv[1] if Path(sys.argv[1]).exists() else next(str(d / sys.argv[1]) f
 OUT = sys.argv[2]
 WHO = sys.argv[3] if len(sys.argv) > 3 else 'solar'
 ORDER = sys.argv[4].split(',') if len(sys.argv) > 4 else ['neutral', 'happy', 'sad', 'serious', 'surprised', 'flustered']
+def clean_top(A):
+    """Drop stray strips above the head (Nov 15 2026: a neighbour cell's bottom edge sometimes came along as a thin
+    line over the hair): from 35% of the height upward, a row much wider than the row under it loses its pixels outside
+    that row's span (+-6 px)."""
+    m = A[..., 3] > 3; H, W = m.shape
+    for y in range(int(H * .35), -1, -1):
+        r, below = m[y].sum(), m[y + 1]
+        if r == 0 or not below.any() or r < 1.3 * below.sum() + 10: continue
+        xs = np.where(below)[0]; lo, hi = max(0, xs[0] - 6), min(W, xs[-1] + 7)
+        if m[y, :lo].sum() + m[y, hi:].sum() >= 20: A[y, :lo, 3] = 0; A[y, hi:, 3] = 0; m[y] = A[y, :, 3] > 3
+    return A
+
+
 sh = np.asarray(Image.open(SRC).convert('RGBA')).astype(np.float32); H, W = sh.shape[:2]; al = sh[..., 3]
 # rows: emptiest line near the middle
 rs = (al > 15).sum(1); ycut = min(range(int(H * .45), int(H * .55)), key=lambda y: rs[y])
@@ -81,5 +94,6 @@ for k, f in enumerate(ORDER):
         canvas[lastc + 1:] = canvas[lastc][None]
     a = canvas[..., 3:4]; rgb = np.where(a > 0, canvas[..., :3] / np.maximum(a, 1e-3) * 255, 0)
     out = np.dstack([np.clip(rgb, 0, 255), np.clip(a, 0, 255)]).astype(np.uint8)
+    out = clean_top(np.ascontiguousarray(out).copy())
     Image.fromarray(out).save(f'{OUT}/{f}.png')
     print(f, 'final score %.3f' % v, 'origin', round(ox, 1), round(oy, 1), 'bust ends canvas row', lastc)
