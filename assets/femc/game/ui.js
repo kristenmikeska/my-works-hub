@@ -2348,6 +2348,7 @@
       { k: 'rushWhere', label: 'Rush allowed in', opts: [['normal', 'Normal rooms'], ['strong', '+ Strong rooms'], ['all', 'Every fight']], desc: () => 'Where Rush (auto-battle) may run.' },
       { k: 'rushStop', label: 'Rush stops below', opts: [[30, '30% HP'], [50, '50% HP']], desc: v => `Rush hands control back when anyone drops below ${v}% HP, or Solar below 50%.` },
       { k: 'rushPace', label: 'Rush pace', opts: [['fast', 'Fast'], ['normal', 'Normal (Auto)']], desc: v => (v === 'normal' ? 'Rush plays at your battle speed and the tag reads AUTO. Smoother if Rush lags.' : 'Rush doubles your battle speed while it runs.') },
+      { k: 'easySkip', label: 'Skip easy fights', opts: [['off', 'Off'], ['on', 'On']], desc: () => 'Skip a normal Tartarus fight when everyone in the party is 10 or more levels above every Shadow in it: you win at once, with the usual rewards. Strong rooms, rare Shadows, guardians and story fights are always fought.' },
       { k: 'remember', label: 'Remember cursor', opts: ONOFF, desc: () => 'Each member’s battle menu reopens on their last command, skill, item and target.' },
       { k: 'numbers', label: 'Damage numbers', opts: ONOFF, desc: () => 'Damage and healing numbers. WEAK, CRITICAL and the rest still show.' },
       { k: 'tips', label: 'Navigator tips', opts: ONOFF, desc: () => 'A small tip the first time each battle mechanic shows up.' },

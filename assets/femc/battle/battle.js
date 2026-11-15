@@ -259,7 +259,7 @@
   /* Settings: the game's one store. Story fights read it from the life sim; practice reads the same key directly. */
   const readUni = () => { if (BR) { try { return JSON.parse(JSON.stringify(BR.settings() || {})); } catch (e) { return {}; } } try { return JSON.parse(localStorage.getItem(UNI_KEY) || '{}') || {}; } catch (e) { return {}; } };
   // battle setting (save.settings.<k>) → the store's key
-  const UNI = { textSpeed: 'text', sfxVol: 'sfxVol', difficulty: 'difficulty', remember: 'remember', rushWhere: 'rushWhere', rushStop: 'rushStop', rushPace: 'rushPace', shake: 'shake', calm: 'calm', numbers: 'numbers', tips: 'tips', pad: 'pad', showtimes: 'showtimes', skinFaces: 'skinFaces', skinFx: 'skinFx', entrance: 'entrance' };
+  const UNI = { textSpeed: 'text', sfxVol: 'sfxVol', difficulty: 'difficulty', remember: 'remember', rushWhere: 'rushWhere', rushStop: 'rushStop', rushPace: 'rushPace', easySkip: 'easySkip', shake: 'shake', calm: 'calm', numbers: 'numbers', tips: 'tips', pad: 'pad', showtimes: 'showtimes', skinFaces: 'skinFaces', skinFx: 'skinFx', entrance: 'entrance' };
   function pullSettings() {
     const u = readUni(), st = save.settings;
     Object.entries(UNI).forEach(([k, uk]) => {
@@ -725,6 +725,7 @@
     { k: 'rushWhere', label: 'Rush allowed in', opts: [['normal', 'Normal rooms'], ['strong', '+ Strong rooms'], ['all', 'Every fight']], desc: v => RUSH_WHERE[v] },
     { k: 'rushStop', label: 'Rush stops below', opts: [[30, '30% HP'], [50, '50% HP']], desc: v => `Rush hands control back when anyone drops below ${v}% HP, or Solar below 50%.` },
     { k: 'rushPace', label: 'Rush pace', opts: [['fast', 'Fast'], ['normal', 'Normal (Auto)']], desc: v => (v === 'normal' ? 'Rush plays at your battle speed and the tag reads AUTO. Smoother if Rush lags.' : 'Rush doubles your battle speed while it runs.') },
+    { k: 'easySkip', label: 'Skip easy fights', opts: [['off', 'Off'], ['on', 'On']], desc: () => 'Skip a normal Tartarus fight when everyone in the party is 10 or more levels above every Shadow in it: you win at once, with the usual rewards. Strong rooms, rare Shadows, guardians and story fights are always fought.' },
     { k: 'shake', label: 'Screen shake', opts: ON_OFF, desc: () => 'The screen shakes on criticals, weaknesses and All-Out Attacks.' },
     { k: 'calm', label: 'Reduce flashes', opts: OFF_ON, desc: () => 'Softens white flashes and bursts (Evoker, Theurgy, lightning, criticals).' },
     { k: 'numbers', label: 'Damage numbers', opts: ON_OFF, desc: () => 'Damage and healing numbers. WEAK, CRITICAL and the rest still show.' },
@@ -907,12 +908,21 @@
   }
 
   /* ── Rush (auto-battle) ───────────────────────────── */
+  // Nov 15 2026 (Kat): a rare Shadow's fight (its only rule is fleeAt: it runs after a few rounds) no longer turns Rush off.
+  const rushRulesOk = R => !R || Object.keys(R).every(k => k === 'fleeAt');
   function rushAllowed(spec = curSpec) {
-    if (!spec || spec.rules) return false;
+    if (!spec || !rushRulesOk(spec.rules)) return false;
     const w = ST().rushWhere;
     if (spec.boss || spec.reaper) return w === 'all';
     if (spec.strong) return w !== 'normal';
     return true;
+  }
+  function easySkip(spec) {
+    if (ST().easySkip !== 'on' || !run || spec.op || spec.boss || spec.reaper || spec.strong || spec.rules || spec.solo) return false;
+    const party = B.party(), foes = B.foes();
+    if (!party.length || !foes.length) return false;
+    const lo = Math.min(...party.map(p => p.lvl || 0)), hi = Math.max(...foes.map(f => f.lvl || 0));
+    return lo >= hi + 10;
   }
   function rushActive() { return !!(rushOn && B && BT && screen === 'battle' && rushAllowed()); }
   /* Who's too hurt to keep rushing: Solar under 50%, or anyone under the Settings threshold (a KO counts). */
@@ -1493,7 +1503,10 @@
       cards.forEach(c => c.addEventListener('pointerenter', () => { if (shState.phase !== 'pick') return; sel = order().indexOf(c); paint(); }));
       ctl = { kind: 'shuffle', items: hand, move(d) { sel = (sel + (d > 0 ? 1 : -1) + cards.length) % cards.length; sfx('move'); paint(); }, pick() { choose(order()[sel]); }, back() {}, pickValue(v) { const c = cards.find(x => +x.dataset.i === +v); if (c) choose(c); } };
       paint();
-      if (auto) { await sleep(450); const k = window.__btShufflePick != null ? +window.__btShufflePick : Math.floor(Math.random() * cards.length); choose(cards[Math.max(0, Math.min(cards.length - 1, k))]); }
+      if (auto) { await sleep(450); // Nov 15 2026 (Kat): Rush's luck: it never draws a reversed (penalty) card when another is there.
+        const ok = cards.filter(cd => hand[+cd.dataset.i].kind !== 'penalty'), pool = ok.length ? ok : cards;
+        const k = window.__btShufflePick != null ? +window.__btShufflePick : -1;
+        choose(k >= 0 ? cards[Math.max(0, Math.min(cards.length - 1, k))] : pool[Math.floor(Math.random() * pool.length)]); }
     });
   }
   /* Evolutions that are due play one after another. Returns how many played. */
@@ -2070,12 +2083,23 @@
     buildBattle(spec);
     root.classList.add('bt-in-battle');
     music.play(spec.music || 'battle', { restart: true });
-    await stills(theurgyStills());
-    await intro(spec, kinds);
-    await entranceCard(spec);
+    // Skip easy fights (Nov 15 2026, Kat; setting easySkip): a plain Tartarus room where every party member is 10+ levels over
+    // every Shadow is won at once, with the usual rewards (EXP, yen, loot, a possible Shuffle Time). Never strong rooms, rare
+    // Shadows, guardians, full moons, the Reaper or any fight with rules.
+    const easy = easySkip(spec);
+    if (!easy) {
+      await stills(theurgyStills());
+      await intro(spec, kinds);
+      await entranceCard(spec);
+    } else {
+      B.foes().forEach(f => { f.dead = true; f.hp = 0; }); B.S.round = 3;
+      blogAdd('Too easy: the Shadows scatter before the fight starts.', 'sys'); mark('easy-skip');
+      banner('TOO EASY', { sub: 'Fight skipped' });
+      syncAll(); await sleep(900);
+    }
     if (RL && RL.epi) epiOpen(spec);
-    if (fx.openBuff) await play(B.openBuff(fx.openBuff));
-    if (B.start) await play(B.start());
+    if (!easy && fx.openBuff) await play(B.openBuff(fx.openBuff));
+    if (!easy && B.start) await play(B.start());
     nav(spec.nav, spec.navVars || {});
     // A boss on the field: someone in the party says so.
     if (spec.boss || spec.reaper) { const who = B.party().filter(p => !p.dead && p !== B.leader()); bark(who.length ? who[Math.floor(Math.random() * who.length)] : B.leader(), 'boss', {}, { force: true }); }
