@@ -1033,6 +1033,10 @@ window.FemcGame = (() => {
     if (!s || !s.ids.includes(id) || (s.outdoor && !outdoors(FACE_SCENE.bg || ''))) return id;
     return (PORTRAITS()[`${id}-${k}`] || []).length ? `${id}-${k}` : id;
   }
+  /* Another game's own everyday look (FEMC_GAME_CONFIG.faces = { speaker: portrait folder }; Equinox: solar → solar-equinox,
+     art batch 1): after an epilogue world's faces and a worn Wardrobe outfit, in place of the seasonal S.E.E.S. faces; only
+     when that folder has faces. Unset (Solstice): nothing changes. */
+  const gameFace = id => { const f = CFG.faces && CFG.faces[id]; return f && !inWorld() && (PORTRAITS()[f] || []).length ? f : null; };
   function portrait(id, face) {
     id = worldFace(id);
     // A link with no portraits of its own (Equinox's duo / group / couple links, or a face alias): `face` names a portrait
@@ -1043,7 +1047,7 @@ window.FemcGame = (() => {
     // An outfit from the Wardrobe with its own portraits, when "Outfits in scene portraits" is on (cosmetics.js).
     const worn = W.FemcCosmetics && W.FemcCosmetics.portrait(faceId(id), face);
     if (worn) return worn;
-    id = faceId(seasonFace(id));
+    id = faceId(gameFace(id) || seasonFace(id));
     const have = PORTRAITS()[id] || [];
     const b = face && face.replace(/-\d+$/, '');
     const CLOSE = { blushing: ['flustered', 'happy'], flustered: ['blushing', 'happy'], serious: ['sad', 'neutral'], happy: ['neutral'] };
@@ -1052,7 +1056,7 @@ window.FemcGame = (() => {
   }
   const scale = id => {
     const w = worldFace(id), worn = W.FemcCosmetics && W.FemcCosmetics.portrait(faceId(w), 'neutral');
-    return (W.FEMC_PORTRAIT_SCALE || {})[faceId(worn ? w : seasonFace(w))] || 1;
+    return (W.FEMC_PORTRAIT_SCALE || {})[faceId(worn ? w : gameFace(w) || seasonFace(w))] || 1;
   };
   const name = id => CAST[id] || (id ? id[0].toUpperCase() + id.slice(1) : '');
   const castHas = id => id in CAST;

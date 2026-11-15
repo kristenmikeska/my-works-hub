@@ -27,6 +27,28 @@ window.FEMC_GAME_CONFIG = {
   knownFrom: { akihiko: '4/8', mitsuru: '4/8', yukari: '4/8', junpei: '4/8', aigis: '4/8', 'ken-koromaru': '4/8', shinjiro: '4/8',
     haechan: '4/8', hanni: '4/8', hyein: '4/8', yunjin: '4/8', jungwon: '4/8', jihoon: '4/8', cherry: '4/8', minji: '4/8', jaehyun: '4/8',
     elizabeth: '4/8', mrsoka: '4/10' },
+  /* Art batch 1 (Nov 15 2026, Kat's first Equinox pictures; EQUINOX-TECH.md "Art batch 1"):
+     faces     speaker → portrait folder: Solar's Equinox look (core.js gameFace; a worn Wardrobe outfit still wins).
+     homeFig   the menu screen's figure (menu.js homeFig; a worn outfit's HD pose still wins). [ar, ht, hf, hx] as HOME_FIG.
+     linkFig   the Social Link screen's full bodies (menu.js cfgFigure): [file under assets/femc/, width/height, head top,
+               head-to-chin, head centre x]; a couple link lists two (both stand, heads the same size; game.css .pair).
+     loading   the fight loading still (ui.js openBattle): the Well for a night in the Well and the Well's story fights,
+               "in between" for everything else. */
+  faces: { solar: 'solar-equinox' },
+  homeFig: { src: 'assets/femc/equinox/art/solar/arms-crossed.webp?v=1', ar: .424, ht: .02, hf: .14, hx: .47 },
+  linkFig: {
+    chaewon: ['equinox/art/bodies/chaewon.webp?v=1', .4, .033, .1, .41],
+    sakura: ['equinox/art/bodies/sakura.webp?v=1', .4, .015, .115, .45],
+    kazuha: ['equinox/art/bodies/kazuha.webp?v=1', .4, .005, .123, .38],
+    eunchae: ['equinox/art/bodies/eunchae.webp?v=1', .4, .015, .115, .41],
+    'parents-runners': [['equinox/art/bodies/jaesang.webp?v=1', .4, .01, .105, .37], ['equinox/art/bodies/solji.webp?v=1', .4, .01, .12, .46]],
+    'parents-strangers': [['equinox/art/bodies/taejoon.webp?v=1', .4, .013, .122, .46], ['equinox/art/bodies/miseon.webp?v=1', .4, .013, .122, .46]],
+    'parents-hoax': [['equinox/art/bodies/hoax-dad.webp?v=1', .4, .007, .138, .41], ['equinox/art/bodies/hoax-mom.webp?v=1', .4, .003, .132, .42]]
+  },
+  loading(kind, req) {
+    const well = kind === 'tartarus' || /^eqx-well/.test((req && req.script) || '');
+    return `assets/femc/equinox/art/loading-${well ? 'well' : 'between'}.webp?v=1`;
+  },
   titlePage: 'femc-equinox.html',
   startKey: 'kg-femc-equinox-start',
   titleScreen() {

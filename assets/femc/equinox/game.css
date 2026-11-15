@@ -33,3 +33,17 @@
   .gs.gs-darkhour::after, .gs:has(.gs-bg[style*="/darkhour-"])::after, .gs:has(.gs-bg[style*="/tartarus-"])::after, .gs:has(.gs-bg.darkhour)::after { animation: none; }
 }
 .reduced .gs::after { animation: none !important; }
+
+/* ── Art batch 1 (Nov 15 2026): Kat's Equinox pictures in place of Solstice's (EQUINOX-TECH.md "Art batch 1") ── */
+/* Menu backdrops: the field menu, its pages and the Social Link screen (Solstice's rules are in the generated copies). */
+.g-fmh .g-fmh-bg { background-image: url("art/menu-day.webp?v=1") !important; }
+.g-fmh.dark .g-fmh-bg { background-image: url("art/menu-dark.webp?v=1") !important; }
+.g-pg-bg, .g-sl-bg { background-image: url("art/menu-day.webp?v=1"); }
+.g-fm-ov.is-dark .g-pg-bg, .g-sl.dark .g-sl-bg { background-image: url("art/menu-dark.webp?v=1"); }
+/* A couple link's two full bodies (config.js linkFig, menu.js cfgFigure): side by side, the second a step behind. */
+.g-sl-fig img.pair.p0 { translate: -8vw 0; z-index: 1; }
+.g-sl-fig img.pair.p1 { translate: 9vw 0; }
+@media (max-width: 700px), (max-aspect-ratio: 13/10) {
+  .g-sl-fig img.pair.p0 { translate: -12vw 0; }
+  .g-sl-fig img.pair.p1 { translate: 12vw 0; }
+}

@@ -256,6 +256,7 @@ window.FEMC_PORTRAIT_PLACE = {
   "shiori": [0.382, 1, 4.5, 1.26, 1],
   "shota": [0.441, -1.5, 5.5, 1.26, 1],
   "solar": [0.46, -2.5, 3, 1.08, 1],
+  "solar-equinox": [0.46, -2.5, 3, 1.08, 1],
   "solar-hoax": [0.508, 0, 7.5, 1.44, 1],
   "solar-hoax-christmas": [0.521, 0, 7.5, 1.44, 1],
   "solar-hoax-newyear": [0.513, 0, 7.5, 1.44, 1],

@@ -775,7 +775,7 @@ window.FemcMenu = (() => {
   }
   function statusTab() {
     const s = S(), c = G.D.stats.conditions[s.condition], i = G.dayInfo(), b = bsave();
-    return `<div class="g-st-solar"><img src="${G.base}assets/femc/portraits/solar/neutral.webp" alt=""><div>
+    return `<div class="g-st-solar"><img src="${G.base}assets/femc/portraits/${(window.FEMC_GAME_CONFIG || {}).faces?.solar || 'solar'}/neutral.webp" alt=""><div>
         <p class="g-st-name">Solar<small>3rd year · Gekkoukan High${b.lvl ? ` · Lv ${b.lvl}` : ''}</small></p>
         <ul class="g-st-facts"><li><span>Date</span>${esc(i.md)} ${esc(i.day)} · ${esc(G.slotName(s.slot, i))}</li><li><span>Condition</span><b style="color:${c.color}">${esc(c.name)}</b></li><li><span>Yen</span>${yen(s.yen)}</li><li><span>Tartarus</span>${s.tartarus.maxFloor ? `${s.tartarus.maxFloor}F · ${s.tartarus.nights} night${s.tartarus.nights === 1 ? '' : 's'}` : 'Not yet'}</li></ul></div></div>
       ${statsScreen()}
@@ -814,7 +814,16 @@ window.FemcMenu = (() => {
   // [width/height, head top, head-to-chin, head centre x] of portraits/<id>/neutral.webp; anyone else gets the middle values.
   const LINK_BUST = {};
   let linkAt = null; // the chosen card (hover / focus), kept across repaints
+  /* Another game's full-body art (FEMC_GAME_CONFIG.linkFig = { linkId: entry }; Equinox art batch 1), checked first. An entry
+     is LINK_FIG's [file, width/height, head top, head-to-chin, head centre x] (file under assets/femc/), or a list of two
+     such entries for a couple link: both stand side by side, heads the same size (img.pair.p0 / .p1, the game's own CSS). */
+  const cfgFigure = l => {
+    const c = ((window.FEMC_GAME_CONFIG || {}).linkFig || {})[l.id]; if (!c) return '';
+    const list = Array.isArray(c[0]) ? c : [c], two = list.length > 1;
+    return list.map((f, k) => `<img${two ? ` class="pair p${k}"` : ''} src="${G.base}assets/femc/${f[0]}" alt="${k ? '' : esc(l.name)}" style="--ar:${f[1]};--ht:${f[2]};--hf:${f[3]};--hx:${f[4]}">`).join('');
+  };
   function linkFigure(l) {
+    const cf = cfgFigure(l); if (cf) return cf;
     const f = LINK_FIG[l.id];
     if (f) return `<img src="${G.base}assets/femc/${f[0]}" alt="${esc(l.name)}" style="--ar:${f[1]};--ht:${f[2]};--hf:${f[3]};--hx:${f[4]}">`;
     const src = G.portrait(l.id, 'neutral'), b = LINK_BUST[l.id] || [1, .05, .62, .5];
@@ -1328,6 +1337,9 @@ window.FemcMenu = (() => {
     const A = window.FEMC_ART_READY || {}, C = window.FemcCosmetics, fig = m => (m && m.length === 4 ? { ar: m[0], ht: m[1], hf: m[2], hx: m[3] } : {});
     const x = C && C.onIn && (C.portraitsOn ? C.portraitsOn('solar') : C.cs().portraits !== false) ? C.onIn('skin:solar') : null, R = x ? (A.skins || {})[x.id] || {} : {};
     if (x && (R.hd || []).includes('arms-crossed')) return { ...HOME_FIG, ...fig(R.hdfig), src: `assets/femc/game/art/skins/${x.id}/hd/arms-crossed.webp?v=${R.hdv || 1}` };
+    // Another game's own everyday look (FEMC_GAME_CONFIG.homeFig = { src, ar, ht, hf, hx }; Equinox art batch 1), after a worn outfit.
+    const alt = (window.FEMC_GAME_CONFIG || {}).homeFig;
+    if (alt && alt.src) return { ...HOME_FIG, ...alt };
     const own = A.own || {};
     return { ...HOME_FIG, ...fig(own.hdfig), src: `${HOME_FIG.src}?v=${own.hdv || 1}` };
   }

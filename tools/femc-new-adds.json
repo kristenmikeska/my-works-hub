@@ -48000,6 +48000,402 @@
    "status": "integrated",
    "destination": "assets/femc/game/art/skins/sk-jungwon-collab-cardcaptor/",
    "placement": "Syaoran pose frames (named castle/Howl; it is Syaoran)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-well-1.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "ad2a3637d4392d41cd7324d61fc19065220baf122ca74fb1bbaa3e8f01b414a2",
+   "status": "integrated",
+   "destination": "assets/femc/bg/eq-well-1.webp",
+   "placement": "Equinox: the Well, block 1 backdrop (4A; converted, no blocks yet)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-well-2.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "d33b19df40508b8cd4d864e36721546b962ad2f8006e8c2b79923b493dcd5491",
+   "status": "integrated",
+   "destination": "assets/femc/bg/eq-well-2.webp",
+   "placement": "Equinox: the Well, block 2 backdrop (4B; converted, no blocks yet)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-well-3.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "afeb1c7a89982876a69923346d99055502fbb1e3051be4b5e45c9e831049357f",
+   "status": "integrated",
+   "destination": "assets/femc/bg/eq-well-3.webp",
+   "placement": "Equinox: the Well, block 3 backdrop (4C; converted, no blocks yet)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-well-4.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "41eea9c024c4c8d39a49ca91e6d0d83881d8925b56ac8328cdad342c524e270f",
+   "status": "integrated",
+   "destination": "assets/femc/bg/eq-well-4.webp",
+   "placement": "Equinox: the Well, block 4 backdrop (4D; converted, no blocks yet)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-well-5.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "5d9b847c01bbfe41bf63f61d558042ebfbab5f59e60cde5beba2d012270da818",
+   "status": "integrated",
+   "destination": "assets/femc/bg/eq-well-5.webp",
+   "placement": "Equinox: the Well, block 5 backdrop (4E; converted, no blocks yet)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-well-6.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "47a304c92a9408b10d728a4773ceeaf3c86df94e0213eb48b8bec7021dada63e",
+   "status": "integrated",
+   "destination": "assets/femc/bg/eq-well-6.webp",
+   "placement": "Equinox: the Well, block 6 backdrop (4F; converted, no blocks yet)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-well-7.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "89882bbbab8f1841e96054dee1b06ba4ac9a6921291a8d7cd3dc285114d2d723",
+   "status": "integrated",
+   "destination": "assets/femc/bg/eq-well-7.webp",
+   "placement": "Equinox: the Well, block 7 backdrop (4G; converted, no blocks yet)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-well-8.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "8938775213d84a212465080e99a71fe37f3b226fc35c356325e2d9c7b1accbdd",
+   "status": "integrated",
+   "destination": "assets/femc/bg/eq-well-8.webp",
+   "placement": "Equinox: the Well, block 8 backdrop (4H; converted, no blocks yet)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-cover-day.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "adec898463ce5209a9f375b7054125533f388e7b723128d1141dd94c4e1559be",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/cover-day.webp",
+   "placement": "Equinox title: day layer (2A)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-cover-night.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "98e59840bed9fbbc2890a14492b3bae7da9141c519c5335af84806b0da985c39",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/cover-night.webp",
+   "placement": "Equinox title: night layer (2B)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-clockface.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "cb06d7d2e81fee46974d16beba8e182408282174446535a28fb5fb5acbe057d8",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/clockface.webp",
+   "placement": "Equinox title: clock face in .face12 (2E)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-emblem.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "6e0dbd28d79b19fb136f4d822401089de5e0a37b1396952fd0d09881470f4e72",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/emblem.webp",
+   "placement": "Equinox emblem; icon-192/512, favicon.png (2F)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-menu-day.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "9b9f32a8753d4e197e8970e4a80529aa81f08d1f70f6f750e10566e404fc8583",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/menu-day.webp",
+   "placement": "Equinox menu backdrop, day (2C; game.css)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-menu-dark.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "24658ba5a959c5e2e8e2f185a00b2c40468884a216705e02288acb09dd3d07ef",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/menu-dark.webp",
+   "placement": "Equinox menu backdrop, Dark Hour (2D; game.css)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-loading-well.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "8240568f0b34b1bc4967791d8e6b5bee0f53818f45b6ac06a7ba0495b8a29dcd",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/loading-well.webp",
+   "placement": "Equinox fight loading still: the Well (2G; config.js loading)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-loading-between.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "f68bed2c3d108874c1b85a3508668294d4feb8986550544cf2b84711c03236a0",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/loading-between.webp",
+   "placement": "Equinox fight loading still: other fights (2H; config.js loading)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-test-keyart.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "926c1295e189909cc4927fcad8f6b1dbb954d7d2db7187ececec8696ec391b35",
+   "status": "prepared",
+   "destination": "assets/femc/equinox/art/test-keyart.webp",
+   "placement": "Equinox look test, key art (1A; reference)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-test-logo.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "7528f87f3881dced7b1d578ea0ad67f9a2f653502ebfd94e7d635b074f59e14b",
+   "status": "prepared",
+   "destination": "assets/femc/equinox/art/test-logo.webp",
+   "placement": "Equinox look test, logo (1B; reference; title draws the logo live)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-solar-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "d087ce0b5ea577d1e50f16b37912b53c28c544a0ec488a675f68b9a66f48f221",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/solar-equinox/",
+   "placement": "Solar Equinox faces (3B; config.js faces)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-solar-menu.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "ba83e56f9d55e5b71abfd4dd40e64d8638be3891d53e9b947cff08f7ab73b1bc",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/solar/arms-crossed.webp",
+   "placement": "Solar Equinox menu figure (3C; config.js homeFig)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-solar-posesheet.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "6f5b15ff35614cbe2f4895ee403b220f1e6f241aeb9c2ee42f9f0d075f7d8bfe",
+   "status": "prepared",
+   "destination": "assets/femc/equinox/art/solar/posesheet.webp",
+   "placement": "Solar Equinox pose sheet (3A; for the battle-page batch)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-persona-hanni-concept.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "2f064042daa1c2217579b70a982d5b70102de9ddd4d81b1dff009a71cac8cfb7",
+   "status": "prepared",
+   "destination": "assets/femc/equinox/art/personas/hanni-concept.webp",
+   "placement": "Hanni Persona concept (7A; reference)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-persona-yunjin-concept.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "06b10fc548fd582e5cb7960bb8b389f4694732160a538ba99ba7a993e71fd7ee",
+   "status": "prepared",
+   "destination": "assets/femc/equinox/art/personas/yunjin-concept.webp",
+   "placement": "Yunjin Persona concept (7B; reference)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-body-chaewon.png",
+   "size": [
+    793,
+    1983
+   ],
+   "sha256": "21c4cb33a2383091f3eb057b21d68dbf137fbf21ae30bac2a5c91924e7d0802c",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/bodies/chaewon.webp",
+   "placement": "Equinox Social Link full body, link chaewon (config.js linkFig)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-body-sakura.png",
+   "size": [
+    793,
+    1983
+   ],
+   "sha256": "937a4609b7627ed95cd744b51d5d49610d862f88005808e888e14d24b987a07d",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/bodies/sakura.webp",
+   "placement": "Equinox Social Link full body, link sakura (config.js linkFig)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-body-kazuha.png",
+   "size": [
+    793,
+    1983
+   ],
+   "sha256": "4fb01c9af1ca430ac9799629881a5ba04deb1f6251a58013fdad623525eb41eb",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/bodies/kazuha.webp",
+   "placement": "Equinox Social Link full body, link kazuha (config.js linkFig)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-body-eunchae.png",
+   "size": [
+    793,
+    1983
+   ],
+   "sha256": "4566d00beb6eef8ffc9229b7fdfeafc25195a0fd76490b08967ebe39aed5b05d",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/bodies/eunchae.webp",
+   "placement": "Equinox Social Link full body, link eunchae (config.js linkFig)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-body-jaesang.png",
+   "size": [
+    793,
+    1983
+   ],
+   "sha256": "fd071c6c965a04c234f6c6ed80ff381b34ffcd65adfd7ee9658bbbb7d4c30a5b",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/bodies/jaesang.webp",
+   "placement": "Equinox Social Link full body, link parents-runners (config.js linkFig)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-body-solji.png",
+   "size": [
+    793,
+    1983
+   ],
+   "sha256": "bfcbe2b94340aef4cb8da3e139c8964b5ed6de304978a020e7d424ec6bf223f5",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/bodies/solji.webp",
+   "placement": "Equinox Social Link full body, link parents-runners (config.js linkFig)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-body-taejoon.png",
+   "size": [
+    793,
+    1983
+   ],
+   "sha256": "eb25339c301aceced9fa9a1fab022a5368029d46753a16486fc252db6a1838c8",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/bodies/taejoon.webp",
+   "placement": "Equinox Social Link full body, link parents-strangers (config.js linkFig)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-body-miseon.png",
+   "size": [
+    793,
+    1983
+   ],
+   "sha256": "e3894d379ad12c1abdebd26c2baf1b9478e0705030d01ee1759689a3eac42e9b",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/bodies/miseon.webp",
+   "placement": "Equinox Social Link full body, link parents-strangers (config.js linkFig)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-body-hoax-mom.png",
+   "size": [
+    793,
+    1983
+   ],
+   "sha256": "c5a30021c1db26ebef9bca3d281b3c04b78cd5483603508a0d72a1fea551b9be",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/bodies/hoax-mom.webp",
+   "placement": "Equinox Social Link full body, link parents-hoax (config.js linkFig)"
+  },
+  {
+   "batch": 162,
+   "source": "../Equinox/eq-body-hoax-dad.png",
+   "size": [
+    793,
+    1983
+   ],
+   "sha256": "6b21ae35f4b298da23c1054b96b2be94d576b3302c00961bb31d762a52718bbf",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/bodies/hoax-dad.webp",
+   "placement": "Equinox Social Link full body, link parents-hoax (config.js linkFig)"
   }
  ],
  "batch1Validation": {
@@ -49509,5 +49905,10 @@
   "date": "2026-11-15",
   "checks": "jsc (cosmetics.js, ready.js; battle.js parses); ready.js lists every new piece; outputs viewed",
   "note": "26 files: Ghost-Spider's battle set (sheet 2, Theurgy, finish, entrance, both strips, fx), Miles fx, HD victory poses for Tuxedo Mask (6), Clawd (6), and Jungwon's Syaoran (4; Kat's files said Howl / castle but show Syaoran), plus Syaoran's pose sheet and faces (new look sk-jungwon-collab-cardcaptor, couple col-cards). Not fight-tested."
+ },
+ "batch162Validation": {
+  "date": "2026-11-15",
+  "checks": "jsc (core.js, menu.js, ui.js, config.js, title.js, portraits index/scale/place, placements-data.js); config.loading run in jsc; built-in pane: Equinox title (desktop 16:10 and 390x844, day and dusk, ?art=0), a scene with solar-equinox faces, the menu screen, the Social Link screen (couple pair and Chaewon), a Well fight loading still; femc-game.html title, Solstice portrait unchanged, no errors",
+  "note": "Equinox art batch 1: 33 files from Femc Mode Images/Equinox/ (sources stay there, unchanged; source paths are relative to New Adds). Title covers + clock face, menu backdrops, loading stills, Solar Equinox faces and menu figure, LE SSERAFIM and parents full bodies wired; Well backdrops converted (none is the opening 8A/8B); pose sheet, look tests and Persona concepts kept for later."
  }
 }

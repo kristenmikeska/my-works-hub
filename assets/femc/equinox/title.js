@@ -37,7 +37,12 @@
   var f12 = '<svg viewBox="0 0 200 200" aria-hidden="true"><circle class="r1" cx="100" cy="100" r="98"/><circle class="r2" cx="100" cy="100" r="88"/><circle class="dash" cx="100" cy="100" r="70"/>';
   for (var m = 0; m < 60; m++) { var r1 = m % 5 ? 93 : 89; f12 += '<line class="m' + (m % 15 ? '' : ' M') + '" x1="' + (100 + r1 * SIN(m * 6)).toFixed(1) + '" y1="' + (100 - r1 * COS(m * 6)).toFixed(1) + '" x2="' + (100 + 97 * SIN(m * 6)).toFixed(1) + '" y2="' + (100 - 97 * COS(m * 6)).toFixed(1) + '"/>'; }
   f12 += '<text x="100" y="80">XII</text><text x="120" y="100">III</text><text x="100" y="120">VI</text><text x="80" y="100">IX</text></svg>';
-  [].forEach.call(T.querySelectorAll('.face12'), function (f) { f.innerHTML = f12; });
+  /* Art batch 1 (Nov 15 2026): Kat's covers behind the day and night layers and her clock face in the drawn face (title.css
+     .art-covers / .art-clock). ?art=0 (or ART below set false) shows the all-code title as before. */
+  var ART = { covers: true, clock: true };
+  if (/[?&]art=0\b/.test(location.search)) ART = { covers: false, clock: false };
+  T.classList.toggle('art-covers', ART.covers); T.classList.toggle('art-clock', ART.clock);
+  [].forEach.call(T.querySelectorAll('.face12'), function (f) { f.innerHTML = (ART.clock ? '<img class="cf" src="assets/femc/equinox/art/clockface.webp?v=1" alt="" aria-hidden="true">' : '') + f12; });
   var sp = ''; for (var i = 0; i < 14; i++) sp += '<i style="left:' + (4 + i * 7) + 'cqw;animation-delay:' + (-i * .67).toFixed(2) + 's;animation-duration:' + (7 + i % 4 * 1.5) + 's"></i>';
   T.querySelector('.specks').innerHTML = sp;
 

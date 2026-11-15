@@ -194,3 +194,18 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 .eq-empty { padding: 1.2cqw; background: rgba(10, 3, 4, .5); font: italic 600 1.3cqw/1.4 var(--body); color: var(--ash); }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
 @keyframes shimmer { to { background-position: -200% 0; } }
+
+/* ── Art batch 1 (Nov 15 2026): Kat's pictures behind the drawn title (title.js ART; ?art=0 shows the all-code title) ──
+   .art-covers: the day cover in the day layer and the night cover in the night layer, so the ticking conic mask and the dusk
+   radial wipe one picture into the other (they're drawn to line up). The rings and halftone stay, fainter.
+   .art-clock: Kat's clock face in place of the drawn face's rings, ticks and numerals (the spinning dashed ring stays):
+   multiplied into the day, inverted to a black face and screened into the night. */
+.f-title.art-covers .lay.day { background: var(--bone) url("art/cover-day.webp?v=1") center / cover no-repeat; }
+.f-title.art-covers .lay.night { background: var(--ink) url("art/cover-night.webp?v=1") center / cover no-repeat; }
+.f-title.art-covers .lay.day .rings { opacity: .45; }
+.f-title.art-covers .lay.day .tone { opacity: .5; }
+.face12 .cf { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.day .face12 .cf { opacity: .5; mix-blend-mode: multiply; }
+.night .face12 .cf { opacity: .42; mix-blend-mode: screen; filter: invert(1) hue-rotate(180deg); }
+.f-title.art-clock .face12 :is(.r1, .r2, .m, text) { display: none; }
+.face12 svg { position: relative; }
