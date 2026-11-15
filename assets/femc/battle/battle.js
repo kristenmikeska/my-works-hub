@@ -725,7 +725,7 @@
     { k: 'rushWhere', label: 'Rush allowed in', opts: [['normal', 'Normal rooms'], ['strong', '+ Strong rooms'], ['all', 'Every fight']], desc: v => RUSH_WHERE[v] },
     { k: 'rushStop', label: 'Rush stops below', opts: [[30, '30% HP'], [50, '50% HP']], desc: v => `Rush hands control back when anyone drops below ${v}% HP, or Solar below 50%.` },
     { k: 'rushPace', label: 'Rush pace', opts: [['fast', 'Fast'], ['normal', 'Normal (Auto)']], desc: v => (v === 'normal' ? 'Rush plays at your battle speed and the tag reads AUTO. Smoother if Rush lags.' : 'Rush doubles your battle speed while it runs.') },
-    { k: 'easySkip', label: 'Skip easy fights', opts: [['off', 'Off'], ['on', 'On']], desc: () => 'Skip a normal Tartarus fight when everyone in the party is 10 or more levels above every Shadow in it: you win at once, with the usual rewards. Strong rooms, rare Shadows, guardians and story fights are always fought.' },
+    { k: 'easySkip', label: 'Skip easy fights', opts: [['off', 'Off'], ['on', 'On']], desc: () => 'Skip a normal Tartarus fight your party far outlevels (average 8+ levels over its strongest Shadow): you go straight to the results with the usual rewards. Strong rooms, rare Shadows, guardians and story fights are always fought.' },
     { k: 'shake', label: 'Screen shake', opts: ON_OFF, desc: () => 'The screen shakes on criticals, weaknesses and All-Out Attacks.' },
     { k: 'calm', label: 'Reduce flashes', opts: OFF_ON, desc: () => 'Softens white flashes and bursts (Evoker, Theurgy, lightning, criticals).' },
     { k: 'numbers', label: 'Damage numbers', opts: ON_OFF, desc: () => 'Damage and healing numbers. WEAK, CRITICAL and the rest still show.' },
@@ -921,8 +921,10 @@
     if (ST().easySkip !== 'on' || !run || spec.op || spec.boss || spec.reaper || spec.strong || spec.rules || spec.solo) return false;
     const party = B.party(), foes = B.foes();
     if (!party.length || !foes.length) return false;
-    const lo = Math.min(...party.map(p => p.lvl || 0)), hi = Math.max(...foes.map(f => f.lvl || 0));
-    return lo >= hi + 10;
+    // Kat, Nov 15: the first rule (every member 10+ over) never kicked in. Now: the party's average level 8+ over the
+    // strongest Shadow, and nobody under that Shadow's level.
+    const lv = party.map(p => p.lvl || 0), hi = Math.max(...foes.map(f => f.lvl || 0));
+    return lv.reduce((a, v) => a + v, 0) / lv.length >= hi + 8 && Math.min(...lv) >= hi;
   }
   function rushActive() { return !!(rushOn && B && BT && screen === 'battle' && rushAllowed()); }
   /* Who's too hurt to keep rushing: Solar under 50%, or anyone under the Settings threshold (a KO counts). */
@@ -1375,22 +1377,13 @@
     });
     persist();
     if (nowTired.length) tip('fatigue');
-    if (out.skipped) {
-      const g = gainExp(rew.exp); persist(); if (g.any) mark('levelup');
-      quickWin(`+${rew.exp} EXP · ¥${rew.yen.toLocaleString('en-US')}${Object.keys(rew.drops).length ? ' · ' + Object.entries(rew.drops).map(([k, n]) => `${(D.materials[k] || D.items[k] || { name: k }).name} ×${n}`).join(', ') : ''}${g.any ? ' · Level up!' : ''}`);
-    } else await results({ title, out, rew, bonus, nowTired, op, reaper, back, notes, shuffle });
+    if (out.skipped) notes.unshift('Too easy: fight skipped');
+    await results({ title, out, rew, bonus, nowTired, op, reaper, back, notes, shuffle });
     await resolvePending();   // a ninth skill from a level-up: forget which?
     await pendingEvolutions();
     await resolvePending();   // an evolved Persona's new skills
     const forms = checkForms();
     for (const f of forms) await formUnlocked(f);
-  }
-  /* The note for a skipped easy fight (easySkip): over the map, gone in ~2.6 s, never takes focus. */
-  function quickWin(text) {
-    const n = document.createElement('div'); n.className = 'bt-quickwin'; n.setAttribute('role', 'status');
-    n.innerHTML = `<b>TOO EASY</b><span>Fight skipped · ${esc(text)}</span>`;
-    (root || document.body).appendChild(n); sfx('ok');
-    setTimeout(() => { n.classList.add('out'); setTimeout(() => n.remove(), 400); }, 2600);
   }
   /* Tartarus-side bond perks (build.js battlePerks): story nights only; practice has no links. */
   const TP = () => (BLD && HO ? BLD.battlePerks(save, hoAvail()) : {});
@@ -2089,9 +2082,9 @@
     if (RL && RL.epi) epiSetup(spec);
     navSaid = new Set(); summoned = new Set(); thSeen = new Set(); barkN = new Map(); barkAt = 0; barkQ = []; barkRun = 0;
     curSpec = spec; blog = []; lastTgt = {}; focusId = null;
-    // Skip easy fights (Nov 15 2026, Kat; setting easySkip): a plain Tartarus room where every party member is 10+ levels over
-    // every Shadow never opens the battle screen: it's won on the map with the usual EXP, yen and drops (no Shuffle Time,
-    // no results screen; afterWin shows a small note instead). Never strong rooms, rare Shadows, guardians, full moons, the
+    // Skip easy fights (Nov 15 2026, Kat; setting easySkip, on by default): a plain Tartarus room the party far outlevels
+    // (easySkip) never opens the battle screen: it goes straight to the results (EXP) screen with the usual EXP, yen and
+    // drops, noted "Too easy: fight skipped" (no Shuffle Time). Never strong rooms, rare Shadows, guardians, full moons, the
     // Reaper, story fights or any fight with rules.
     if (easySkip(spec)) {
       B.foes().forEach(f => { f.dead = true; f.hp = 0; });

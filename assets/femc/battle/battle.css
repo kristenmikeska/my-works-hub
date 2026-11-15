@@ -2699,9 +2699,3 @@ html.bt-calm .bt-sh-card.world .front::after { opacity: .35; }
 .bt-shuffle.reduced .bt-sh-card.world .front::after { display: none; }
 @media (prefers-reduced-motion: reduce) { .bt-sh-card.world .front::after { display: none; } }
 
-/* A skipped easy fight's note (battle.js quickWin, Nov 15 2026) */
-.bt-quickwin { position: fixed; z-index: 90; left: 50%; top: 14%; translate: -50% 0; display: grid; gap: 2px; padding: 10px 26px 12px; background: #14070f; color: #fff4f9; box-shadow: 5px 5px 0 #ff4f9e; transform: skewX(-12deg); pointer-events: none; animation: bt-qw-in .3s cubic-bezier(.2, 1.3, .4, 1); transition: opacity .35s; text-align: center; }
-.bt-quickwin b { font: italic 900 28px/1 var(--cond, "Avenir Next Condensed", sans-serif); letter-spacing: .02em; color: #ff8cc0; }
-.bt-quickwin span { font: 600 14px/1.3 var(--sans, system-ui, sans-serif); }
-.bt-quickwin.out { opacity: 0; }
-@keyframes bt-qw-in { from { opacity: 0; transform: skewX(-12deg) translateY(-14px) scale(1.15); } }
