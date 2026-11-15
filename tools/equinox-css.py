@@ -28,12 +28,19 @@ EXACT = {'ff4f9e': 'd7102c', 'ff8cc0': 'ff5a5f', 'ffd6e8': 'f6d0d2', 'fff4f9': '
          'b0185e': 'a00d24', '3a1028': '3a0710', '1b0b15': '1b0507', 'ffb3d6': 'ff9a9e'}
 
 
+GREEN = False  # set per rule: inside Dark Hour rules the Dark Hour's green turns red too (Kat, Nov 15: Equinox's Dark Hour is red)
+DH_SEL = re.compile(r'g-dh|gs-tint|darkhour|dark-hour|\.dh\b|g-hud\.dark|is-dark')
+
+
 def shift(r, g, b):
     k = '%02x%02x%02x' % (r, g, b)
     if k in EXACT:
         v = EXACT[k]
         return tuple(int(v[i:i + 2], 16) for i in (0, 2, 4))
     h, l, s = colorsys.rgb_to_hls(r / 255, g / 255, b / 255)
+    if GREEN and s >= 0.08 and 75 / 360 <= h <= 185 / 360:
+        r2, g2, b2 = colorsys.hls_to_rgb(RED, l * 0.78, min(1.0, s * 1.1))
+        return round(r2 * 255), round(g2 * 255), round(b2 * 255)
     if s < 0.08 or not (HUE_FROM <= h <= HUE_TO):
         return None
     s = min(1.0, s * 1.1)
@@ -65,9 +72,22 @@ def url_sub(m):
     return f'url({q}../../game/{u}{q})'
 
 
-def convert(css):
+def colours(css):
     css = re.sub(r'#([0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})\b', hex_sub, css)
     css = re.sub(r'(rgba?)\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)(\s*[,)/])', rgb_sub, css)
+    return css
+
+
+def rule_sub(m):
+    global GREEN
+    GREEN = bool(DH_SEL.search(m.group(1)))
+    out = m.group(1) + '{' + colours(m.group(2)) + '}'
+    GREEN = False
+    return out
+
+
+def convert(css):
+    css = re.sub(r'([^{}]*)\{([^{}]*)\}', rule_sub, css)  # innermost rules (the selector decides the Dark Hour greens)
     css = re.sub(r'url\(\s*([\'"]?)([^\'")]+)\1\s*\)', url_sub, css)
     return css
 

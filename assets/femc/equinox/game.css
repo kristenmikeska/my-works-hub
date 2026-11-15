@@ -1,0 +1,35 @@
+/* Persona 3: Equinox · Equinox-only rules on top of the generated red stylesheets (assets/femc/equinox/css/, made by
+   tools/equinox-css.py; never edit those). Loaded last by femc-equinox-game.html.
+   Kat, Nov 15 2026: Equinox is gloomier and darker than Solstice, with horror and creepiness; its Dark Hour is RED, not green.
+   - Solstice's Dark Hour and Tartarus pictures are painted green: here they're bled to blood red and darker by a filter, so
+     every reused backdrop (darkhour-*, tartarus-*, the 'darkhour' look) reads as Equinox's red night. New Equinox art is
+     painted red already (EQUINOX-ART-TODO), so the filter only touches those file names.
+   - Dark Hour scenes get a breathing oxblood vignette, film grain and a rare flicker. Reduced motion: still vignette, no
+     breathing, no flicker. */
+:root { --eqx-dh-filter: grayscale(1) sepia(1) hue-rotate(-50deg) saturate(4) brightness(.44) contrast(1.28); }
+
+.gs-bg[style*="/darkhour-"], .g-bg[style*="/darkhour-"],
+.gs-bg[style*="/tartarus-"], .g-bg[style*="/tartarus-"],
+.gs-bg.darkhour, .g-bg.darkhour { filter: var(--eqx-dh-filter); }
+/* Any scene set in the Dark Hour (scene.js .gs-darkhour, from its place or time) on an ordinary night picture: drained to
+   red-black, as if the colour has been bled out of the town. */
+.gs.gs-darkhour .gs-bg:not([style*="/darkhour-"]):not([style*="/tartarus-"]):not(.darkhour) { filter: var(--eqx-dh-filter); }
+
+/* The dread layer: while a scene is in the Dark Hour, or a Dark Hour / Tartarus backdrop is up. */
+.gs::after {
+  content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0;
+  background:
+    radial-gradient(ellipse 120% 95% at 50% 45%, transparent 38%, rgba(42, 5, 9, .55) 70%, rgba(7, 2, 3, .92) 100%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, .025) 0 1px, transparent 1px 3px);
+  transition: opacity 1.6s ease;
+}
+.gs.gs-darkhour::after, .gs:has(.gs-bg[style*="/darkhour-"])::after, .gs:has(.gs-bg[style*="/tartarus-"])::after, .gs:has(.gs-bg.darkhour)::after {
+  opacity: 1; animation: eqx-dread 7s ease-in-out infinite, eqx-flicker 23s steps(1) infinite;
+}
+@keyframes eqx-dread { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(.82); } }
+/* A rare stutter, as if the light lost its nerve. */
+@keyframes eqx-flicker { 0%, 61%, 61.6%, 62.4%, 100% { opacity: 1; } 61.3% { opacity: .55; } 62% { opacity: .8; } }
+@media (prefers-reduced-motion: reduce) {
+  .gs.gs-darkhour::after, .gs:has(.gs-bg[style*="/darkhour-"])::after, .gs:has(.gs-bg[style*="/tartarus-"])::after, .gs:has(.gs-bg.darkhour)::after { animation: none; }
+}
+.reduced .gs::after { animation: none !important; }

@@ -19,6 +19,7 @@
      { asLink: 'id' | null }     the lines after it read that link's route/bond (ifRoute, choice reverse/route), until the
                                  next asLink (null = back to the scene's own link)
      { place, time, bg, music, date, soft }   a scene break (soft: no fade to black)
+     { away: true | false }      Solar's portrait off / back on (she isn't in this part: a third-person cutaway)
      { bg } { music } { cg } { cg: null } { dark: true|false }   backdrop changes
      { phone: [{ from, t }], contact }        a text conversation
      { giftAsk: 'linkId' }                    "Give a gift?" when Solar carries one (ui.js playLink adds it; see giftAsk below)
@@ -264,6 +265,7 @@ window.FemcScene = (() => {
 
     function paintVis() {
       el.classList.toggle('gs-velvet', vis.theme === 'velvet' || /^The Velvet Room/.test(vis.place));
+      el.classList.toggle('gs-darkhour', /Dark Hour/.test(`${vis.place} ${vis.time}`)); // a hook only Equinox styles (equinox/game.css)
       el.classList.toggle('gs-dark', !!vis.dark);
       const b = G.background(vis.place, vis.time, vis.bg);
       const bg = $('.gs-bg');
@@ -298,6 +300,7 @@ window.FemcScene = (() => {
     // stands there neutral. `me-on` keeps her shown (wide screens; phones still show her only while she talks, solstice-scene.css).
     const putMe = src => { meEl.style.setProperty('--ps', G.scale('solar')); place(meEl, src); if (meEl.getAttribute('src') !== src) meEl.src = src; meEl.hidden = false; };
     const showMe = face => {
+      if (vis.away) { meEl.hidden = true; el.classList.remove('me-on', 'me-talking'); return; }
       const src = face !== null && G.portrait('solar', face || 'neutral');
       if (src) putMe(src);
       else if (meEl.hidden) { const n = G.portrait('solar', 'neutral'); if (n) putMe(n); }
@@ -667,6 +670,8 @@ window.FemcScene = (() => {
         paintVis(); return next();
       }
       if ('dark' in line) { vis.dark = !!line.dark; paintVis(); return next(); }
+      // { away: true } Solar isn't in this part (third-person cutaways while she's gone): her portrait stays off until { away: false }.
+      if ('away' in line) { vis.away = !!line.away; showMe(null); return next(); }
       if ('faces' in line && Object.keys(line).length === 1) { vis.faces = line.faces || null; G.eventFaces?.(vis.faces); currentFace = null; return next(); }
       if (line.setDate) { if (replay) vis.date = mdLabel(line.setDate); else G.setDate(line.setDate); paintVis(); return next(); }
       if ('asLink' in line) { curLink = line.asLink || opts.link; return next(); }

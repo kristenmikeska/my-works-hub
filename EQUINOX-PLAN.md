@@ -188,6 +188,8 @@ Each batch is tested lightly and reported spoiler-free. Features that need art w
 
 15. **Parents:** one link per couple.
 
+- **The mood (Nov 15, night):** gloomier and darker than Solstice, more horror and creepiness. Equinox's Dark Hour is blood red, not green.
+
 ## Still open
 
 Nothing right now. Next: the look tests (art list section 1).

@@ -459,7 +459,7 @@ button.g-chip:is(:hover, :focus-visible) { outline: none; box-shadow: 3px 3px 0 
 .gs-bg.darkhour { filter: hue-rotate(70deg) saturate(.7) brightness(.7); }
 .gs-cg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; animation: g-in .6s ease both; }
 /* Hidden outright when off: an idle colour-blend layer can mis-composite over a CG in some GPU paths (Kat saw a pink wash). */
-.gs-tint { position: absolute; inset: 0; pointer-events: none; opacity: 0; visibility: hidden; transition: opacity 1.2s ease, visibility 0s linear 1.2s; background: radial-gradient(ellipse at 50% 20%, rgba(120, 255, 160, .28), rgba(10, 60, 30, .45) 70%); mix-blend-mode: color; }
+.gs-tint { position: absolute; inset: 0; pointer-events: none; opacity: 0; visibility: hidden; transition: opacity 1.2s ease, visibility 0s linear 1.2s; background: radial-gradient(ellipse at 50% 20%, rgba(255, 38, 59, .28), rgba(49, 6, 10, .45) 70%); mix-blend-mode: color; }
 .gs.gs-dark .gs-tint { opacity: 1; visibility: visible; transition: opacity 1.2s ease, visibility 0s; }
 .gs-place { position: absolute; top: 18px; left: 22px; z-index: 3; display: flex; align-items: center; gap: 14px; max-width: calc(100vw - 300px); padding: 8px 18px; background: #0a0304; transform: skewX(-14deg); box-shadow: 5px 5px 0 rgba(215, 16, 44, .55); }
 .gs-place > * { transform: skewX(14deg); }
@@ -664,7 +664,7 @@ html.g-in-battle .g-hud, html.g-in-battle .g-toasts { visibility: hidden; }
 .g-dh.live .g-dh-frame { opacity: 1; }
 .g-dh.live .g-dh-fx { opacity: 0; transition: opacity .45s ease; }
 .g-dh-fx { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
-.g-dh-wash { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 30%, rgba(90, 255, 140, .55), rgba(16, 60, 36, .9) 70%), repeating-linear-gradient(-58deg, rgba(90, 255, 140, .08) 0 2px, transparent 2px 26px); mix-blend-mode: screen; opacity: 0; }
+.g-dh-wash { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 30%, rgba(255, 14, 38, .55), rgba(49, 11, 15, .9) 70%), repeating-linear-gradient(-58deg, rgba(255, 14, 38, .08) 0 2px, transparent 2px 26px); mix-blend-mode: screen; opacity: 0; }
 .g-dh.go .g-dh-wash { animation: g-dh-wash 1.1s ease-out both; }
 @keyframes g-dh-wash { 0% { opacity: 0; } 40% { opacity: 1; } 100% { opacity: .55; } }
 .g-dh-black { position: absolute; inset: 0; background: #040208; opacity: 0; }
@@ -676,22 +676,22 @@ html.g-in-battle .g-hud, html.g-in-battle .g-toasts { visibility: hidden; }
 .g-dh.go .g-dh-still { animation: g-dh-still .6s 1.05s ease both; }
 @keyframes g-dh-still { to { opacity: 1; } }
 .g-dh-cracks { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; }
-.g-dh-cracks path { fill: none; stroke: #e9fff2; stroke-width: .35; stroke-linecap: round; stroke-dasharray: 400; stroke-dashoffset: 400; filter: drop-shadow(0 0 1px #7dffc0); }
+.g-dh-cracks path { fill: none; stroke: #ff7e8b; stroke-width: .35; stroke-linecap: round; stroke-dasharray: 400; stroke-dashoffset: 400; filter: drop-shadow(0 0 1px #ff293f); }
 .g-dh.go .g-dh-cracks { animation: g-dh-cracks 2.6s .3s both; }
 .g-dh.go .g-dh-cracks path { animation: g-dh-crack .3s .3s ease-out both; }
 @keyframes g-dh-cracks { 0% { opacity: 0; } 8%, 75% { opacity: 1; } 100% { opacity: 0; } }
 @keyframes g-dh-crack { to { stroke-dashoffset: 0; } }
 .g-dh-glass { position: absolute; inset: 0; }
-.g-dh-glass i { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(190, 255, 215, .55), rgba(60, 200, 120, .25) 40%, rgba(20, 90, 60, .55)); border: 1px solid rgba(220, 255, 235, .5); opacity: 0; }
+.g-dh-glass i { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255, 92, 108, .55), rgba(164, 39, 51, .25) 40%, rgba(73, 13, 19, .55)); border: 1px solid rgba(255, 116, 129, .5); opacity: 0; }
 .g-dh.go .g-dh-glass i { animation: g-dh-shard .9s calc(.62s + var(--d, 0s)) cubic-bezier(.3, .6, .4, 1) both; }
 @keyframes g-dh-shard { 0% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(1.1); } }
 .g-dh-title { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) skewX(-8deg); display: grid; justify-items: center; gap: 8px; text-align: center; opacity: 0; width: min(92vw, 900px); }
 .g-dh.go .g-dh-title { animation: g-dh-title 1.9s .95s ease both; }
 @keyframes g-dh-title { 0% { opacity: 0; transform: translate(-50%, -50%) skewX(-8deg) scale(1.3); letter-spacing: .1em; } 18% { opacity: 1; transform: translate(-50%, -50%) skewX(-8deg) scale(1); } 80% { opacity: 1; } 100% { opacity: 0; } }
-.g-dh-title small { color: #9dffc6; font: italic 800 clamp(12px, 1.6vw, 16px)/1 var(--cond); letter-spacing: .4em; text-transform: uppercase; }
-.g-dh-title b { font: italic 900 clamp(44px, 9vw, 124px)/.9 var(--cond); color: #fff; text-shadow: .05em .05em 0 #1d6b4a, 0 0 40px rgba(90, 255, 140, .5); }
-.g-dh-title span { color: #e8fff0; font: italic 700 clamp(13px, 1.5vw, 17px)/1 var(--cond); letter-spacing: .2em; text-transform: uppercase; }
-.g-dh-wait { position: absolute; left: 50%; bottom: 8vh; z-index: 3; margin: 0; transform: translateX(-50%); color: #9dffc6; font: italic 700 12px/1 var(--cond); letter-spacing: .3em; text-transform: uppercase; pointer-events: none; }
+.g-dh-title small { color: #ff4255; font: italic 800 clamp(12px, 1.6vw, 16px)/1 var(--cond); letter-spacing: .4em; text-transform: uppercase; }
+.g-dh-title b { font: italic 900 clamp(44px, 9vw, 124px)/.9 var(--cond); color: #fff; text-shadow: .05em .05em 0 #57141a, 0 0 40px rgba(255, 14, 38, .5); }
+.g-dh-title span { color: #ff7d8a; font: italic 700 clamp(13px, 1.5vw, 17px)/1 var(--cond); letter-spacing: .2em; text-transform: uppercase; }
+.g-dh-wait { position: absolute; left: 50%; bottom: 8vh; z-index: 3; margin: 0; transform: translateX(-50%); color: #ff4255; font: italic 700 12px/1 var(--cond); letter-spacing: .3em; text-transform: uppercase; pointer-events: none; }
 .g-dh.live .g-dh-wait { display: none; }
 .g-dh.out { transition: opacity .55s ease; opacity: 0; pointer-events: none; }
 .g-dh.out .g-dh-black { animation: none; opacity: 1; transition: opacity .3s; }
