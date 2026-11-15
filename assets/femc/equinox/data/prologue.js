@@ -82,6 +82,7 @@ window.FEMC_GAME_PROLOGUE = {
 
     { away: false },
     { place: 'The Well · The Bottom', time: 'The Dark Hour', bg: 'tartarus-monad', music: 'mystery' },
+    { dateGlitch: true }, // nobody knows what day it is: the date box can't settle until the lounge
     // BG: well-bottom — the bottom of a deep round stone shaft, a ring of wet black stone around still water that reflects a dark red night sky and a huge red moon, a frayed gold rope hanging down out of the dark above.
     // CG: eqx-well-waking — Solar lying on her back on wet stone at the bottom of a well, a reflected night sky in the water around her, a gold rope hanging far above her face.
     { n: "The first thing was the cold, and she knew it." },
@@ -462,6 +463,7 @@ window.FEMC_GAME_PROLOGUE = {
     { place: 'Iwatodai Dorm · Lounge', time: 'Late Night', bg: 'iwatodaidorm-livingroom-night-spring', music: 'tender', date: '4/7' },
     { dark: false },
     // CG: eqx-lounge-full — a crowded dormitory lounge at two in the morning, every couch and armrest and bit of floor taken by young people in pajamas, party clothes and coats, a dog in the middle, Solar in a towel at the center of it.
+    { dateGlitch: false }, // the date box settles: someone said what day it is
     { n: "At two in the morning on the seventh of April, the lounge of the dormitory in Iwatodai had more people in it than it had been built for, and every single one of them was looking at her." },
     { n: "She had a towel round her shoulders that Fuuka had brought and a second towel on her head that Hyein had brought and a third one in her lap that nobody would admit to, and a mug of something hot in her hands that Yukari had made and then stood over her until she drank, and she was sitting in the middle of the big couch because that was where they'd put her, the way you'd put a vase you'd just glued back together in the middle of a table, where you could see it from everywhere." },
     { n: "The red had gone at one. The clock over the television had ticked, and gone on ticking, and the lamps had come back on all at once, yellow and ordinary, and the refrigerator had started humming again in the kitchen like it was embarrassed about having stopped. None of that had made anyone go to bed." },

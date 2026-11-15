@@ -20,6 +20,7 @@
                                  next asLink (null = back to the scene's own link)
      { place, time, bg, music, date, soft }   a scene break (soft: no fade to black)
      { away: true | false }      Solar's portrait off / back on (she isn't in this part: a third-person cutaway)
+     { dateGlitch: true | false } the date box glitches between wrong dates (nobody knows what day it is) / shows the date again
      { bg } { music } { cg } { cg: null } { dark: true|false }   backdrop changes
      { phone: [{ from, t }], contact }        a text conversation
      { giftAsk: 'linkId' }                    "Give a gift?" when Solar carries one (ui.js playLink adds it; see giftAsk below)
@@ -263,6 +264,22 @@ window.FemcScene = (() => {
     let curLink = opts.resume?.vis?.link || opts.link;
     const log = [];
 
+    // The glitching date (vis.dateGlitch): the box flickers between dates from other lives and nothing at all, never the real one.
+    // Reduced motion: a still ??/??.
+    const GLITCH_MD = ['??/??', '12/31', '3/16', '1/9', '3/7', '4/6', '00/00', '3/10', '?/?', '12/24', '13/32'];
+    const GLITCH_DAY = ['???', 'Tue', '—', 'Sun', 'Wed', '???', 'Day'];
+    let glitchT = null;
+    function stopDateGlitch() { if (glitchT) { clearInterval(glitchT); glitchT = null; } }
+    function dateGlitch(box) {
+      const put = () => {
+        if (!box.isConnected) return stopDateGlitch();
+        const r = Math.random(), md = r < 0.35 ? '??/??' : GLITCH_MD[Math.floor(Math.random() * GLITCH_MD.length)];
+        box.innerHTML = `<span class="gs-dg" data-t="${esc(md)}">${esc(md)}</span><small>${esc(GLITCH_DAY[Math.floor(Math.random() * GLITCH_DAY.length)])}</small>`;
+        box.classList.toggle('gs-dg-tear', Math.random() < 0.3);
+      };
+      stopDateGlitch(); put();
+      if (!reduced.matches) glitchT = setInterval(put, 260 + Math.floor(Math.random() * 400));
+    }
     function paintVis() {
       el.classList.toggle('gs-velvet', vis.theme === 'velvet' || /^The Velvet Room/.test(vis.place));
       el.classList.toggle('gs-darkhour', /Dark Hour/.test(`${vis.place} ${vis.time}`)); // a hook only Equinox styles (equinox/game.css)
@@ -276,8 +293,9 @@ window.FemcScene = (() => {
       if (vis.cg) { const src = `${G.base}assets/femc/cg/${vis.cg}.webp`; if (cgEl.getAttribute('src') !== src) cgEl.src = src; cgEl.style.setProperty('--focus', (window.FEMC_GAME_PLACES.cgFocus || {})[vis.cg] || 'center'); cgEl.hidden = false; el.classList.add('gs-cg-on'); }
       else { cgEl.hidden = true; el.classList.remove('gs-cg-on'); }
       const d = vis.date || G.dateLabel();
-      $('.gs-place b').innerHTML = d ? `${esc(d.md)}<small>${esc(d.day)}</small>` : '';
-      $('.gs-place b').hidden = !d;
+      if (vis.dateGlitch) dateGlitch($('.gs-place b'));
+      else { stopDateGlitch(); $('.gs-place b').innerHTML = d ? `${esc(d.md)}<small>${esc(d.day)}</small>` : ''; }
+      $('.gs-place b').hidden = !d && !vis.dateGlitch;
       $('.gs-place span').textContent = [vis.time, vis.place].filter(Boolean).join(' · ');
       // Weather over the backdrop (weather.js): not over a CG, in the Dark Hour, the Velvet Room or a replay.
       window.FemcWeather?.scene(el, { url: b?.url, place: vis.place, time: vis.time, dark: vis.dark, cg: vis.cg, replay, velvet: el.classList.contains('gs-velvet') });
@@ -671,6 +689,8 @@ window.FemcScene = (() => {
       }
       if ('dark' in line) { vis.dark = !!line.dark; paintVis(); return next(); }
       // { away: true } Solar isn't in this part (third-person cutaways while she's gone): her portrait stays off until { away: false }.
+      // { dateGlitch: true } the scene's date box can't settle (nobody knows what day it is: Equinox's first night); false = the real date again.
+      if ('dateGlitch' in line) { vis.dateGlitch = !!line.dateGlitch; paintVis(); return next(); }
       if ('away' in line) { vis.away = !!line.away; showMe(null); return next(); }
       if ('faces' in line && Object.keys(line).length === 1) { vis.faces = line.faces || null; G.eventFaces?.(vis.faces); currentFace = null; return next(); }
       if (line.setDate) { if (replay) vis.date = mdLabel(line.setDate); else G.setDate(line.setDate); paintVis(); return next(); }

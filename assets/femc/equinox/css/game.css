@@ -465,6 +465,11 @@ button.g-chip:is(:hover, :focus-visible) { outline: none; box-shadow: 3px 3px 0 
 .gs-place > * { transform: skewX(14deg); }
 .gs-place b { font: italic 900 24px/1 var(--cond); white-space: nowrap; }
 .gs-place b small { margin-left: 4px; color: var(--pink-2); font-size: 12px; letter-spacing: .08em; }
+.gs-place b .gs-dg { position: relative; display: inline-block; text-shadow: 2px 0 var(--pink), -2px 0 #00e5ff; animation: gs-dg-jit .18s steps(2) infinite; }
+.gs-place b .gs-dg::after { content: attr(data-t); position: absolute; inset: 0; color: var(--pink); clip-path: inset(40% 0 35% 0); transform: translateX(3px); opacity: .8; }
+.gs-place b.gs-dg-tear { transform: skewX(14deg) translateX(-2px); filter: contrast(1.6); }
+@keyframes gs-dg-jit { 0% { transform: translate(0, 0); } 50% { transform: translate(-1px, 1px); } 100% { transform: translate(1px, -1px); } }
+@media (prefers-reduced-motion: reduce) { .gs-place b .gs-dg { animation: none; } }
 .gs-place span { color: var(--pink-2); font: italic 800 12px/1.2 var(--cond); letter-spacing: .12em; text-transform: uppercase; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .gs-portrait { translate: 0 calc(var(--pd, 0) * 100%); position: absolute; z-index: 2; left: max(1vw, 8px); bottom: 0; height: calc(min(80vh, 850px) * var(--ps, 1)); width: auto; max-width: calc(min(40vw, 760px) * var(--ps, 1)); object-fit: cover; object-position: center bottom; filter: drop-shadow(10px 0 0 rgba(215, 16, 44, .35)); -webkit-mask-image: linear-gradient(to right, #000 95%, transparent), linear-gradient(transparent, #000 4%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, #000 95%, transparent), linear-gradient(transparent, #000 4%); mask-composite: intersect; transition: opacity .25s, transform .25s, filter .25s; }
 .gs-portrait.dim { filter: brightness(.55) drop-shadow(10px 0 0 rgba(215, 16, 44, .2)); }
