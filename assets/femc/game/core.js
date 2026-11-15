@@ -1035,6 +1035,10 @@ window.FemcGame = (() => {
   }
   function portrait(id, face) {
     id = worldFace(id);
+    // A link with no portraits of its own (Equinox's duo / group / couple links, or a face alias): `face` names a portrait
+    // folder to borrow, else its first member's. Solstice's links all have their own, so this never fires there.
+    const L0 = LINKS[id];
+    if (L0 && !(PORTRAITS()[id] || []).length && (L0.face || L0.members?.length)) return portrait(L0.face || L0.members[0], face);
     // (Solar's art wears the S.E.E.S. armband; Kat, Nov 1: show it from the first scene anyway, as P3P's FeMC does.)
     // An outfit from the Wardrobe with its own portraits, when "Outfits in scene portraits" is on (cosmetics.js).
     const worn = W.FemcCosmetics && W.FemcCosmetics.portrait(faceId(id), face);
