@@ -3,7 +3,7 @@
      window.EQ_OPTS = { sub: { field: [...] }, faces: true } before this script to add small sub-labels.
    - Navigation: every [data-nav] list is a listbox. ↑↓ (Home / End) move the selection in the screen at the
      middle of the viewport (or the focused list), Enter / Space "pick" it, the pointer selects only when it
-     really moves, a click selects and picks. Events: 'eq:select' and 'eq:pick' on the list (detail { i, li }).
+     really moves (never on a list marked data-nohover, whose rows move themselves), a click selects and picks. Events: 'eq:select' and 'eq:pick' on the list (detail { i, li }).
    - Dialogue: .line[data-type] types itself out when its frame comes into view; click the box to replay.
    Reduced motion: no typing, everything shown at once. */
 (function () {
@@ -76,7 +76,7 @@
       li.setAttribute('role', 'option'); li.id = li.id || ('eq-' + n + '-' + k);
       var px = null, py = null;
       li.addEventListener('pointermove', function (e) {
-        if (e.pointerType === 'touch') return;
+        if (e.pointerType === 'touch' || list.hasAttribute('data-nohover')) return;
         if (px !== null && Math.abs(e.clientX - px) + Math.abs(e.clientY - py) < 2) return;
         px = e.clientX; py = e.clientY;
         if (list._i !== k) select(list, k);
