@@ -70,11 +70,8 @@ Fighters are marked ⚔. Navigators are marked 📡. "Duo" and "group" mean one 
 | Bebe, Maiko, Tanaka, Mutatsu | Side stories | P3's town links. One short chain each. |
 | Bunkichi and Mitsuko | Cameo | The old couple from the bakery. They feed everyone. |
 | Natsuki, Ms. Toriumi, Mr. Ekoda, Mr. Edogawa | Cameos | School life. |
-| Kuromi and My Melody | Duo link | If their exchange year runs on. |
-| Ann, Kasumi and Haru | Side stories | If you want them back. |
-| Kat and Ethan | Side story | The List, part two, and the huskies. |
 | Strega, Ryoji and Ikutsuki | Not in it | Their stories are over, so it's safest to leave them out. |
-| Solstice's game visitors (Kiriko, Mercy, Widowmaker, Sebastian, Aphrodite, Judy, Rohan) | Your call | One cameo night, or not at all. |
+| Solstice's visitors from other games and shows (Kiriko, Mercy, Widowmaker, Sebastian, Aphrodite, Judy, Rohan, Kuromi, My Melody, Ann, Kasumi, Haru), and Kat and Ethan | Not in it | Kat, Nov 15. |
 
 ### Runners
 | Who | Role | Idea |
@@ -125,7 +122,7 @@ Fighters are marked ⚔. Navigators are marked 📡. "Duo" and "group" mean one 
 | Two new people in town | Both are links (one is hidden) |
 
 **Counts:**
-- About 33 links: 17 solo, 6 duos or groups, 3 parent couples, 4 LE SSERAFIM, 2 new, plus Elizabeth.
+- About 32 links: 17 solo, 5 duos or groups, 3 parent couples, 4 LE SSERAFIM, 2 new, plus Elizabeth.
 - 16 fighters: Solar and the 12 from Solstice, plus Hanni, Yunjin and Hyein.
 - 2 navigators.
 
@@ -155,22 +152,31 @@ Here's what I meant, in plain terms.
 **Option 2: all her versions in one.** Each girl is one person who remembers all of her lives, like Haechan and Jungwon remember two. Sakura remembers being the caster, the dance friend and whoever she was in HOAX.
 - More fun: "which one of me are you talking to?" She can be friends with everyone, and it fits "every universe".
 
-**My recommendation: Option 2.** Same rule as the two-world boys. In private with Solar they talk about all their lives. With everyone else it just shows in habits.
-
-**Yunjin** stays the Yunjin from strangers that you know from Solstice. She already has a whole history with Solar, and the other four can meet her as herself.
+**Decided (Kat, Nov 15): Option 2.** "They exist in all the universes for a reason." All five girls, Yunjin included, are one person each who remembers every life she had, the same knowledge level as the multi-world characters. In private with Solar they talk about all their lives. With everyone else it just shows in habits.
 
 ---
 
 ## E. Romance: things to talk through
 
-Once the cast is settled:
+**Kat's answers (Nov 15)** are under each question.
+
 1. Do the canon romances stay the same: Haechan, Jungwon, Jihoon, Minji, Akihiko and Shinjiro?
+   **Yes, the same six.** Anything else would be strange after a Solstice link ending.
 2. Should anyone new be a canon romance? Or a side romance (for example Junpei, as in P3P, or someone from the P3 cast)?
+   **No.** No new canon or side romances.
 3. Every romance starts over, but everyone remembers what they were to Solar. How much should Solstice's romance show up in the first weeks?
+   **A fair amount, arguably a lot.** That's the whole charm. The first weeks lean on what each of them was to Solar.
 4. The same rules as Solstice for dating more than one person (honest and torn, no cheating until both routes are chosen)?
+   **No rules.** Dating more than one person is open, with no gates, to keep it easy for the player.
 5. With the parents in town, how much do they react to who Solar's dating? Three dads at once?
+   **Yes.** The parents react to who she's dating, three dads at once included.
 6. The Akihiko and Haechan rivalry: pick up where Solstice left it, or start a new stage?
+   **A new stage.**
 7. Jungwon is her boyfriend in HOAX and her fiancé in strangers. How should Equinox handle both at once?
+   **The same way as any other two-world case:** he remembers both lives. In private with Solar he talks about both; with everyone else it shows in habits.
 8. Jihoon's HOAX scandal: keep that thread going here?
+   **Kat asked what the scandal is.** It isn't drugs. It's the Jihoon thread you asked for in the HOAX epilogue on Nov 11: she's with Jungwon, and Jihoon is the romance she sneaks around with behind his back (stolen moments, near-misses, guilt), with her rebellious streak coming back out on his route (smoking with him, his jacket over her uniform, skipping meetings). The triangle never closes. **My suggestion:** keep it going in Equinox as the HOAX side of the triangle. It fits "no rules" and "a lot of Solstice in the first weeks." Your call.
 9. Should any romance be able to end with someone staying in the Personaverse with her, or going home with her?
+   **Yes, 100%.** Romance endings can end with them staying in the Personaverse with her or going home with her.
 10. The same spice level and rules as Solstice?
+   **All the spice.** The same rules as Solstice: cut away before anything graphic.

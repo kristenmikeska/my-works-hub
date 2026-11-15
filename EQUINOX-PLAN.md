@@ -52,7 +52,7 @@ Links are marked **link**. Fighters are marked **fights**. Everyone remembers So
 - Shinjiro (link, fights; awake from the start)
 - Elizabeth (Velvet Room)
 - Any Persona 3 character can come back: classmates, town links, Theodore, Igor (see the cast ideas)
-- Persona-world friends from Solstice: Rio, Saori, Kuromi, My Melody, Ann, Kasumi, Haru, Kat & Ethan
+- Persona-world friends from Solstice: Rio and Saori. (No visitors from other games or shows, and no Kat & Ethan: Kat, Nov 15.)
 
 **Runners**
 - Haechan (link, fights; also strangers)
@@ -179,14 +179,14 @@ Each batch is tested lightly and reported spoiler-free. Features that need art w
 5. **New fighters:** Hanni, Yunjin and Hyein. Maybe more.
 6. **Shinjiro:** awake from the start.
 7. **Parents:** links that build on the epilogues. The HOAX parents are Han Soyeon (Mom) and Kim Jaeseok (Dad), the names the HOAX epilogue already uses.
-9. **Cast size:** proposal in the cast ideas (about 33 links).
+9. **Cast:** Kat agrees with the proposal in the cast ideas (about 32 links), minus every visitor from other games and shows and Kat & Ethan.
 10. **Velvet Plumes:** they carry over.
 11. **New Game+:** yes, a deeper climb.
+12. **LE SSERAFIM:** all five girls (Yunjin too) remember every life, like the two-world characters.
+13. **Romance:** the same six canon romances, no new ones; a lot of Solstice in the first weeks; no rules on dating more than one; the parents react (three dads at once); Akihiko and Haechan's rivalry starts a new stage; Jungwon remembers both his lives, like any two-world character; any romance can end staying in the Personaverse or going home with her; all the spice (Solstice's rules). Jihoon's HOAX thread: my suggestion in the cast ideas, waiting on Kat.
 
 ## Still open
 
-1. **Romance rules:** to talk through once the cast is settled (the list is in the cast ideas).
-2. **The cast proposal:** which links, duos, side stories and cameos you like (cast ideas, sections A and B).
-3. **LE SSERAFIM versions:** one version each, or all of them in one (cast ideas, section D; I recommend all of them in one).
-4. **Parents:** one link per couple, or one per parent?
-5. **Solstice's game visitors** (Kiriko, Mercy, Widowmaker, Sebastian, Aphrodite, Judy, Rohan): a cameo night, or not at all?
+1. **Jihoon's HOAX thread:** keep it going (my suggestion, cast ideas E8)?
+2. **Parents:** one link per couple, or one per parent?
+3. **UI direction:** Equilux (direction 5) is waiting for your notes.
