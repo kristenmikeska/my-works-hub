@@ -2,7 +2,7 @@
 
 *Persona 3: Equinox · started Nov 15 2026. The look is picked: **Equilux** (`mockups/equinox-ui/equilux.html`): Solstice's font and shapes, a clock as the signature, in shades of blood red and black.*
 
-**To make (Nov 15):** **the look tests** (section 1: a key art test and a logo test) · **the title and the UI** (section 2: a matching day and night cover, 2 menu backdrops, the clock face, the emblem, 2 loading pictures) · **Solar's Equinox look** (section 3: a pose sheet, a face sheet and her menu pose) · **the Well** (section 4: 8 block backgrounds) · **LE SSERAFIM** (section 5: 4 full-body pictures) · **the parents** (section 6: 6 full-body pictures) · **new fighters' Personas** (section 7: 3 concept sheets) · **the opening** (section 8: 8 backgrounds, Mrs. Oka's faces, 17 CGs) · **60 pictures in all.** **Personaverse faces and Haenim** (section 9: 11 face sheets and her new look) · More is coming later (section 10: counts only, no prompts yet).
+**To make (Nov 15):** **the look tests** (section 1: a key art test and a logo test) · **the title and the UI** (section 2: a matching day and night cover, 2 menu backdrops, the clock face, the emblem, 2 loading pictures) · **Solar's Equinox look** (section 3: a pose sheet, a face sheet and her menu pose) · **the Well** (section 4: 8 block backgrounds) · **LE SSERAFIM** (section 5: 4 full-body pictures) · **the parents** (section 6: 6 full-body pictures) · **new fighters' Personas** (section 7: 3 concept sheets) · **the opening** (section 8: 8 backgrounds, Mrs. Oka's faces, 17 CGs) · **Personaverse faces and Haenim** (section 9: 11 face sheets and her new look) · **72 pictures in all** (before the art you just made is checked off). More is coming later (section 10: counts only, no prompts yet).
 
 ---
 
