@@ -725,7 +725,7 @@
     { k: 'rushWhere', label: 'Rush allowed in', opts: [['normal', 'Normal rooms'], ['strong', '+ Strong rooms'], ['all', 'Every fight']], desc: v => RUSH_WHERE[v] },
     { k: 'rushStop', label: 'Rush stops below', opts: [[30, '30% HP'], [50, '50% HP']], desc: v => `Rush hands control back when anyone drops below ${v}% HP, or Solar below 50%.` },
     { k: 'rushPace', label: 'Rush pace', opts: [['fast', 'Fast'], ['normal', 'Normal (Auto)']], desc: v => (v === 'normal' ? 'Rush plays at your battle speed and the tag reads AUTO. Smoother if Rush lags.' : 'Rush doubles your battle speed while it runs.') },
-    { k: 'easySkip', label: 'Skip easy fights', opts: [['off', 'Off'], ['on', 'On']], desc: () => 'Skip a normal Tartarus fight your party far outlevels (average 8+ levels over its strongest Shadow): you go straight to the results with the usual rewards. Strong rooms, rare Shadows, guardians and story fights are always fought.' },
+    { k: 'easySkip', label: 'Skip easy fights', opts: [['off', 'Off'], ['on', 'On']], desc: () => 'Skip a Tartarus fight your party far outlevels (average 8+ levels over its strongest Shadow; 15+ for a Strong room): you go straight to the results with the usual rewards. Rare Shadows, guardians, superbosses, full moons, the Reaper and story fights are always fought.' },
     { k: 'shake', label: 'Screen shake', opts: ON_OFF, desc: () => 'The screen shakes on criticals, weaknesses and All-Out Attacks.' },
     { k: 'calm', label: 'Reduce flashes', opts: OFF_ON, desc: () => 'Softens white flashes and bursts (Evoker, Theurgy, lightning, criticals).' },
     { k: 'numbers', label: 'Damage numbers', opts: ON_OFF, desc: () => 'Damage and healing numbers. WEAK, CRITICAL and the rest still show.' },
@@ -918,13 +918,16 @@
     return true;
   }
   function easySkip(spec) {
-    if (ST().easySkip !== 'on' || !run || spec.op || spec.boss || spec.reaper || spec.strong || spec.rules || spec.solo) return false;
+    if (ST().easySkip !== 'on' || !run || spec.op || spec.boss || spec.reaper || spec.rules || spec.solo) return false;
     const party = B.party(), foes = B.foes();
     if (!party.length || !foes.length) return false;
+    // Guardians and superbosses come through tartarus.js as strong fights too: never skipped.
+    if (spec.nav === 'guardian' || spec.nav === 'superboss' || foes.some(f => f.boss || f.reaper || /^(guard_|super_|climb-)/.test(f.kind || ''))) return false;
     // Kat, Nov 15: the first rule (every member 10+ over) never kicked in. Now: the party's average level 8+ over the
     // strongest Shadow, and nobody under that Shadow's level.
     const lv = party.map(p => p.lvl || 0), hi = Math.max(...foes.map(f => f.lvl || 0));
-    return lv.reduce((a, v) => a + v, 0) / lv.length >= hi + 8 && Math.min(...lv) >= hi;
+    // Strong rooms skip too once the party is 15+ over (Kat, Nov 15: at Lv 130 on 169F they still made her fight).
+    return lv.reduce((a, v) => a + v, 0) / lv.length >= hi + (spec.strong ? 15 : 8) && Math.min(...lv) >= hi;
   }
   function rushActive() { return !!(rushOn && B && BT && screen === 'battle' && rushAllowed()); }
   /* Who's too hurt to keep rushing: Solar under 50%, or anyone under the Settings threshold (a KO counts). */
@@ -2084,7 +2087,7 @@
     curSpec = spec; blog = []; lastTgt = {}; focusId = null;
     // Skip easy fights (Nov 15 2026, Kat; setting easySkip, on by default): a plain Tartarus room the party far outlevels
     // (easySkip) never opens the battle screen: it goes straight to the results (EXP) screen with the usual EXP, yen and
-    // drops, noted "Too easy: fight skipped" (no Shuffle Time). Never strong rooms, rare Shadows, guardians, full moons, the
+    // drops, noted "Too easy: fight skipped" (no Shuffle Time). Strong rooms need a bigger margin. Never rare Shadows, guardians, full moons, the
     // Reaper, story fights or any fight with rules.
     if (easySkip(spec)) {
       B.foes().forEach(f => { f.dead = true; f.hp = 0; });
