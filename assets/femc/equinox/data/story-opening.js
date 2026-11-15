@@ -79,7 +79,7 @@
     scene: [
     { bg: 'gekkoukanhigh', music: 'school' },
     { n: "The courtyard was full of first-years being nervous in clean uniforms, and cherry blossom coming down over all of it in the slow pink drifts that made everyone take the same photograph, and in the middle of it, where the bench and the vending machine had always been, there was a low ring of old gray stone set into the paving, mossy at the joins, with a rope of some kind coiled on its lip." },
-    { n: "Nobody was looking at it. That was the thing she noticed first. A thousand students crossed that courtyard on the first morning of term and walked round the well the way you walk round a bollard, without breaking stride, without turning their heads, chatting, and the petals fell into it and didn't make a sound. Someone had put a little folding sign beside it that said, in neat characters, *Maintenance. Do not lean.*" },
+    { n: "Nobody was looking at it. That was the thing she noticed first. A thousand students crossed that courtyard on the first morning of term and walked round the well the way you walk round a bollard, without breaking stride, without turning their heads, chatting, and the petals fell into it and didn't make a sound. She watched one go over the lip. It didn't float. It didn't land on anything. It just went on going down, turning, a little pink fleck getting smaller in the dark, until she lost it, and it was still going. Someone had put a little folding sign beside it that said, in neat characters, *Maintenance. Do not lean.*" },
     // BG: gekkoukan-courtyard-well-day — Gekkoukan's sunny courtyard in spring, cherry blossom falling, students in uniform walking past a low ring of old mossy stone set into the paving with a small folding maintenance sign beside it.
     { n: "She stood and looked at it until Yukari took her elbow and walked her on, without a word, the way you'd walk someone past a car accident." },
     { place: 'Gekkoukan High · Classroom', time: 'Morning', bg: 'gekkoukan-classroom-day', soft: true },
@@ -134,7 +134,7 @@
       ] }
     ] },
     { n: "The bell went for first period. Students poured past them in both directions, and nobody looked twice at a girl in a third-year uniform holding a folder in the middle of the hall, which was, she thought, almost the strangest part. Last year she'd been nobody, and everyone had stared. This year she was a question mark in a register, and nobody looked at all." },
-    { n: "In the courtyard below the window, the petals went on falling into the well, and not making a sound." }
+    { n: "In the courtyard below the window, the petals went on falling into the well, and not making a sound, and not stopping anywhere." }
   ] },
 
   { id: 'eqx-bench', date: '4/8', slot: 'after', consumes: true, title: 'every bench', place: 'Iwatodai Station', time: 'After School',
@@ -208,6 +208,7 @@
     { n: "The Kirijo Group had found a boarding house. That was how Mitsuru said it at lunch, over the phone, in the voice she used for sentences she didn't fully believe: *the Group has found a boarding house, for the overflow,* and then, after a pause long enough that Solar checked the line was still there, *I'd like you to come and look at it with me.*" },
     { n: "Yunjin came because nobody could have stopped her. Koromaru came because Yunjin had his lead and didn't know how to say no to him, which was a thing nobody had warned her about dogs." },
     { n: "It was on the river side of Iwatodai, past the shrine, down a street Solar had walked a dozen times last year and would have sworn was all apartment blocks. It wasn't. Between a dry cleaner and a parking lot there was an old two-storey house in dark wood behind a low gate, the kind of house that's been there longer than the street, with a garden, and a persimmon tree with its new leaves out, and beside the tree an old well with a round stone cap on it, gray and heavy and furred with moss at the edges." },
+    { n: "Except at one edge, where the moss had been scraped clean down to the stone in four long parallel lines, side by side, as if something had tried, patiently and more than once, to get its fingers under the lid." },
     { n: "She stopped at the gate and looked at the well for a long time." },
     { s: 'yunjin', f: 'neutral', t: "No. Absolutely not. Nope. Another one?" },
     { s: 'mitsuru', f: 'neutral', t: "It's capped. It's been capped for a very long time, according to the survey." },
@@ -231,11 +232,13 @@
     { place: 'The Oka Boarding House · Kitchen', time: 'After School', bg: 'iwatodaidorm-kitchen', soft: true },
     // BG: oka-boarding-house-kitchen — a warm old-fashioned Japanese farmhouse kitchen with a long wooden counter, steam from a pot, a tin of rice cakes on the counter, a window onto a garden with a persimmon tree.
     { n: "The front door was open before they reached it. Not swung open. Just open, as if it had been left that way for them, and from somewhere inside came warm air, and steam, and the smell of something sweet and toasted, rice and sugar and sesame, and a woman's voice, calling, cheerful, from a room they couldn't see." },
+    { n: "It was warm inside. Very warm, the close, still warmth of a house where the windows haven't been opened in a long time, and quiet in a way that took Solar a moment to place. The river was thirty steps from the gate. In here you couldn't hear it. You couldn't hear the street, or the dry cleaner's steam press, or a single bird in the persimmon tree. Only the pot on the stove, ticking as it heated, and the floor taking their weight." },
     { s: 'mrsoka', f: 'neutral', t: "In the kitchen, children! Shoes off, slippers on the step. I'd come and get you but my hands are all over flour." },
     { n: "The kitchen was at the back, long and low, with a wooden counter worn pale in the middle from a hundred years of hands and a window full of persimmon tree and garden and green April light. There was a pot on the stove. There was a tray of something cooling. And there was a woman at the counter with her sleeves rolled to the elbow, kneading." },
     // CG: eqx-mrs-oka — a kind-faced woman in her fifties in an apron and cotton work gloves standing at a long wooden kitchen counter, kneading dough, smiling over her shoulder, a tin of rice cakes beside her.
     { n: "She was somewhere in her fifties, round-faced and soft-shouldered, with her gray-black hair pinned up in a knot and a dusting of flour on one cheek, and an apron with a faded pattern of little pine trees, and she was wearing gloves. White cotton gloves, the thin kind, the kind for gardening or for good silver. She was kneading dough in them. They were floured to the wrist." },
     { n: "She looked round over her shoulder and smiled at them, and it was a good smile. That was the trouble with it. It was the best smile Solar had been given in Iwatodai by anyone over twenty, warm all the way through, the smile of someone who had been waiting for you to come home and had made too much food on purpose." },
+    { n: "On the counter, already, there were four cups. Already poured, already steaming, set out in a row on a tray. Mitsuru had telephoned to say she was coming. She hadn't said who with." },
     { s: 'mrsoka', f: 'neutral', t: "Oh, look at you. Look at the three of you. Kirijo-san, isn't it? You telephoned. And you've brought your friends. Good. Sit, sit, there's tea in the pot, I've only just made it." },
     { s: 'mitsuru', f: 'neutral', t: "Thank you. You're Mrs. Oka?" },
     { s: 'mrsoka', f: 'neutral', t: "I'm Mrs. Oka. I've been Mrs. Oka for so long I sometimes forget there was ever anything else to call me." },
@@ -269,7 +272,8 @@
       ] }
     ] },
     { n: "Mrs. Oka poured the tea. She asked Mitsuru how she took hers and Mitsuru said black, and she asked Yunjin and Yunjin said with sugar, lots, and she asked Solar, and Solar told her." },
-    { n: "Later, when she poured the second cup, she didn't ask again. She got all three right." },
+    { n: "She'd already made them that way. All three of the cups on the tray, before anyone had answered. Solar looked at hers and didn't drink it for a while." },
+    { n: "When she poured the second round, she didn't ask again. She didn't need to. She never had." },
     { s: 'mrsoka', f: 'neutral', t: "So. Kirijo-san says there might be more of you coming. Children from far away. I said, well, I've got eight rooms upstairs and nobody in any of them, and a kitchen that likes being used. Send them to me. I'll feed them. I'm very good at feeding people." },
     { s: 'yunjin', f: 'neutral', t: "How many more?" },
     { n: "She asked it of Mitsuru, but Mrs. Oka answered, cheerfully, rolling a ball of dough between her gloved palms, round and round." },
@@ -330,7 +334,8 @@
     { s: 'minji', f: 'neutral', t: "Who locks a kitchen?" },
     { s: 'jungwon', f: 'neutral', t: "The Kirijo Group. For our safety. It's on the card." },
     { s: 'jihoon', f: 'neutral', t: "Whose safety. The curry's?" },
-    { n: "Nobody laughed as much as the joke deserved. They'd all been in the green on Tuesday. They all knew what came at midnight now, every night, and that a locked door was a locked door, and that the card by the kitchen didn't say what the Group thought might want in." },
+    { n: "Nobody laughed as much as the joke deserved. They'd all been in the red on Tuesday. They all knew what came at midnight now, every night, and that a locked door was a locked door, and that the card by the kitchen didn't say what the Group thought might want in." },
+    { n: "Jungwon looked at the window. Outside it was ordinary night, the orange of the streetlight on the wet road. Nobody had to say what color it would be at twelve. He drew the curtain anyway, all the way across, and checked the edges, and sat back down." },
     { s: 'jaehyun', f: 'neutral', t: "Someone's walking you back. It's not a question." },
     { s: 'solar', f: 'neutral', t: "It's not even nine-thirty." },
     { s: 'jaehyun', f: 'serious', t: "Hanni told me the rule. I'm not breaking Hanni's rule. I've *met* Hanni." },
@@ -399,6 +404,11 @@
     { n: "Shinjiro looked out of the window. There was a lot of sky out there, April sky, pale and clean, and somewhere under it, across the water, the school, and a well in its courtyard that nobody could see." },
     { s: 'shinjiro', f: 'neutral', t: "...I don't know how I got up there. Okay? I was asleep and then I was standing. And I could feel it. Whatever's out there. Like standing too close to a stove." },
     { s: 'shinjiro', f: 'neutral', t: "Somebody had to watch it. I was the only one up." },
+    { s: 'shinjiro', f: 'neutral', t: "...It's every night now. Twelve o'clock. It goes red, and the whole ward's coffins, and I'm lying here awake in it like an idiot." },
+    { n: "He picked at the blanket with his good hand. He didn't look at either of them." },
+    { s: 'shinjiro', f: 'neutral', t: "Old guy in the next bed. Mr. Hata. Coffin's flat on the mattress, like they always are. Lid to the ceiling." },
+    { s: 'shinjiro', f: 'neutral', t: "Last night it wasn't. Last night it was turned. On its side. Facing the window. Facing *out*." },
+    { n: "Nobody said anything. In the bright clean April afternoon the next bed was empty and made, and Akihiko looked at it, and Solar watched him decide not to ask where Mr. Hata had gone, and decided not to ask either." },
     { n: "Akihiko sat down on the edge of the bed, heavily, the way he'd sat on the edge of this same bed for a year when the boy in it couldn't hear him, and put his hand on the blanket by Shinjiro's bad hand, not on it, beside it, close enough." },
     { s: 'akihiko', f: 'neutral', t: "You're not the only one up anymore." },
     { s: 'shinjiro', f: 'neutral', t: "...Yeah. I can see that. There's like thirty of you. Junpei texted me a picture of breakfast. I counted." },
@@ -432,7 +442,7 @@
     cast: { solar: 'Solar', hanni: 'Hanni', hyein: 'Hyein', yunjin: 'Yunjin' },
     scene: [
     { bg: 'iwatodaidorm-roof-night', music: 'night' },
-    { n: "Hanni's rule had a schedule now. It was on the whiteboard, on the old half, in Hanni's small fast handwriting under Mitsuru's VISITORS: a grid, seven nights, every night's midnight split into who was with who, so that nobody in the dorm, not one person, would be alone when the green came. Mitsuru had looked at it for a long time on Sunday morning and then initialed the bottom corner, which was as close as Mitsuru came to applause." },
+    { n: "Hanni's rule had a schedule now. It was on the whiteboard, on the old half, in Hanni's small fast handwriting under Mitsuru's VISITORS: a grid, seven nights, every night's midnight split into who was with who, so that nobody in the dorm, not one person, would be alone when the red came. Mitsuru had looked at it for a long time on Sunday morning and then initialed the bottom corner, which was as close as Mitsuru came to applause." },
     { n: "Monday night was the roof. Solar, Hanni, Hyein, Yunjin, four folding chairs from the laundry room in a row by the railing, two blankets, a thermos of barley tea Hanni had made too strong, and a bag of the spicy chips and a bag of the not-spicy chips, because Hyein still didn't know which one Solar was going to be." },
     { n: "It was eleven forty. It was cold, the clean cold of April at night, with the bay wind coming up over the railing smelling of salt, and Fuuka's planters lined up by the door. The city lay below them gold all the way to the water. Every window lit. Every car moving. Every ordinary thing doing the ordinary thing it was supposed to do, for twenty more minutes." },
     { s: 'hyein', f: 'neutral', t: "Is it weird that I'm excited? Not *excited*. That's the wrong word. Is there a word for it? When you know something's going to happen and you're scared of it and you've also brought chips?" },
@@ -461,35 +471,39 @@
     { s: 'yunjin', f: 'neutral', t: "Nobody was going to." },
     { dark: true },
     { music: 'mystery' },
-    { n: "Midnight came the way it came now, all at once and without asking. The city went out. Every light, every window, street by street from the bay inward like somebody walking through a house switching them off, and behind the dark the green came up out of nowhere and settled over the roof and the chairs and the chips and the four of them like dust on furniture in a house nobody lived in anymore. The moon swelled in the sky, too big. The wind stopped mid-gust. Somewhere below, a car stood dead in the middle of the road with its headlights out." },
+    { n: "Midnight came the way it came now, all at once and without asking. The city went out. Every light, every window, street by street from the bay inward like somebody walking through a house switching them off, and behind the dark the red came up out of nowhere, slow and thick, a rust-dark, clotted red, and settled over the roof and the chairs and the chips and the four of them like a stain coming up through a sheet. The moon swelled in the sky, too big, the dark red of a yolk gone bad. The wind stopped mid-gust. Somewhere below, a car stood dead in the middle of the road with its headlights out." },
+    { s: 'yunjin', f: 'serious', t: "...I keep waiting for it to be green. Every night. Like it'll remember." },
     { n: "Nobody let go." },
     { n: "Hyein's hand was shaking in hers, a little. Yunjin's wasn't shaking at all; it was very warm, and very hard, the grip of someone holding a rope over a drop. Hanni had her eyes shut." },
     { s: 'hyein', f: 'sad', t: "...It's so quiet." },
     { s: 'yunjin', f: 'neutral', t: "It's always quiet. That's its whole thing." },
-    { n: "They sat in it. It went on. The green hummed, very low, the way it always had, the sound of a building that's alive and doesn't want you to know. Solar listened to it, and to the three of them breathing, and to her own heart, and counted, because she always counted, and was up to two hundred and something when she heard it." },
+    { n: "They sat in it. It went on. The red hummed, very low, the way the green always had, only lower, a note under the note, the sound of a building that's alive and doesn't want you to know, and somewhere under it something else, slower, that could have been the bay and could have been breathing. Solar listened to it, and to the three of them breathing, and to her own heart, and counted, because she always counted, and was up to two hundred and something when she heard it." },
     { n: "Far off. Down in the town, somewhere toward the river, so far it might have been nothing. A knock." },
     { n: "Two knocks. Patient. Polite. Knuckles on wood. The way you'd knock on the door of a house where you knew someone was home." },
     { n: "Then nothing." },
+    { n: "A minute later, it came again. Closer. Two knocks, patient, polite, from somewhere at the bottom of their own street, where there were four houses, and Solar knew every one of those doors, and knew that every person behind them was lying in a black box in their bed tonight and couldn't knock on anything." },
+    { n: "Then nothing, again. Not footsteps. Not a gate. Nothing walking away." },
     { n: "All four of them had heard it. She felt it go through the knot of their hands like current through a wire. Nobody said anything for a long time." },
     { s: 'hyein', f: 'surprised', t: "...Did someone just knock?" },
     { choose: [
       { t: "It's nothing.", then: [
-        { n: "She heard herself say it, smooth, easy, the voice she used to tell people things were fine. It was a good voice. She'd had it in three lives. Hanni turned her head and looked at her in the green, and didn't say anything, and didn't believe a word of it, and squeezed her hand." }
+        { n: "She heard herself say it, smooth, easy, the voice she used to tell people things were fine. It was a good voice. She'd had it in three lives. Hanni turned her head and looked at her in the red, and didn't say anything, and didn't believe a word of it, and squeezed her hand." }
       ] },
       { t: "Yes.", then: [
         { s: 'hanni', f: 'serious', t: "Then nobody's opening anything." },
-        { s: 'hanni', f: 'serious', t: "New rule. Under the old rule. In the green, nobody opens a door. Not for anybody. I don't care who it sounds like." },
+        { s: 'hanni', f: 'serious', t: "New rule. Under the old rule. In the red, nobody opens a door. Not for anybody. I don't care who it sounds like." },
         { s: 'yunjin', f: 'neutral', t: "...Who would it sound like?" },
-        { n: "Hanni didn't answer. She didn't know why she'd said it. Solar could see her not knowing, in the green, on her face." }
+        { n: "Hanni didn't answer. She didn't know why she'd said it. Solar could see her not knowing, in the red, on her face." }
       ] },
       { t: "(Listen for it again.)", then: [
-        { n: "She held her breath and listened. All of them did. The green hummed. The moon hung. Somewhere very far off, a dog barked once at nothing, and stopped, as if it had been told." },
+        { n: "She held her breath and listened. All of them did. The red hummed. The moon hung. Somewhere very far off, a dog barked once at nothing, and stopped, as if it had been told." },
         { n: "It didn't come again. That was almost worse." }
       ] }
     ] },
     { n: "Nobody let go until it was over. It took an hour, the way it always took an hour, and when the lights came back on all at once, street by street, from the river outward, and the wind started again mid-gust and the car below them coughed and drove off like nothing had happened, Hyein let out a breath so long it sounded like a balloon going down, and Yunjin laughed, short and rough, and Hanni opened her eyes." },
     { n: "They packed up the chairs. They took the chips. At the roof door, Hyein stopped and looked back at the town, toward the river, where the knock had come from, and stood there a moment longer than she needed to." },
     { s: 'hyein', f: 'neutral', t: "...It sounded like it was being nice." },
-    { n: "Nobody answered her. Hanni put an arm round her and steered her in, and the door shut behind them, and Solar was last, and checked the latch twice, and didn't know why." }
+    { n: "Nobody answered her. Hanni put an arm round her and steered her in, and the door shut behind them, and Solar was last, and checked the latch twice, and didn't know why." },
+    { n: "Downstairs, on her way past, she saw Koromaru. He was lying across the inside of the front door, the whole length of him pressed against the gap at the bottom, the way you'd push a towel against a door to keep out smoke. He didn't get up when she said his name. He thumped his tail once on the floor, and kept his eyes on the door." }
   ] }
 );
