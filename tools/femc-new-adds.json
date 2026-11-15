@@ -45875,6 +45875,19 @@
    "destination": "assets/femc/game/art/skins/sk-chapel-veil/solar-theurgy.webp",
    "conversion": "tools/femc-wardrobe.py theurgy",
    "placement": "sk-chapel-veil in battle"
+  },
+  {
+   "batch": 158,
+   "source": "Added to Game/iwatodaidorm-livingroom-night-autumn.jpeg",
+   "size": [
+    2752,
+    1536
+   ],
+   "sha256": "05430e9f31869921b44d67fe844d86e1531d655c55a67cf9a7eb5182b0de6ee4",
+   "status": "integrated",
+   "destination": "assets/femc/bg/epi-r-sigma-living-snow.webp",
+   "conversion": "2752 x 1536 WebP q86",
+   "placement": "Runners: the Sigma Chi living room on snow days (Nov 14: Kat's file was saved as the dorm's autumn lounge; it's the Sigma room)"
   }
  ],
  "batch1Validation": {

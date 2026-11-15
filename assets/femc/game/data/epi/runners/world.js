@@ -48,6 +48,9 @@
     lateOpen: ['12/3', '12/8', '12/9', '12/10', '12/11', '12/12', '12/13', '12/15', '12/17',
       '12/22', '12/23', '12/25', '12/26', '12/29', '12/30'], // Manhattan's quiet nights (the Manhattan pass, Nov 5 2026)
     places: {
+      // Today's art (places.js `today` shape): the Sigma living room on snow days (Kat, Nov 14 2026: her greyer, snowed-in
+      // picture, first saved as the dorm's autumn lounge). Every other day keeps the warm one.
+      today: { 'epi-r-sigma-living': [{ weather: ['snow'], img: 'epi-r-sigma-living-snow' }] },
       bg: [
         ['Syracuse · Alpha Phi House · Her Room', 'epi-r-her-room', 'epi-r-her-room-night'],   // batch 77
         ["Syracuse · Alpha Phi House · Hanni and Hyein's Room", 'epi-r-hanni-hyein-room', 'epi-r-hanni-hyein-room'], // batch 77: fairy-lit dusk, both slots
