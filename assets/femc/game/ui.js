@@ -2428,31 +2428,100 @@
 
   /* ── Keys and controllers on the life-sim screens: arrows move between buttons (P3-style), and a controller's A / B / Start
      (pad.js sends them as Enter / Escape / p) press, go back and open Settings. Scenes and panels keep their own keys. ── */
-  const FOCUSABLE = 'button:not(:disabled), [tabindex="0"], summary, a[href], input[type="range"], select';
+  /* Controllers (Nov 15 2026, Kat: the whole game on a DualSense): arrows pick the nearest button that way (spatial, so grids,
+     map pins and side panels all reach; nothing that way → the old next / previous with wrap), a widget that keeps the arrows
+     (the Skills sun, a booth stamp) lets go at its edge or on LT / L2 (Tab) / an unhandled L1 / R1, focus lost to a re-render
+     comes back to the same button (or the nearest one), ✕ presses checkboxes, ←→ / ✕ change a select, ○ in the phone steps
+     back before it closes, △ opens the menu and □ the phone in the field. */
+  const FOCUSABLE = 'button:not(:disabled), [tabindex="0"], summary, a[href], input[type="range"], input[type="checkbox"]:not(:disabled), select';
   function topLayer() {
     const ovs = [...document.querySelectorAll('.g-overlay:not(.out)')];
     if (ovs.length) return ovs[ovs.length - 1];
     return document.querySelector('.g-datecard, .g-actcard, .gs-rank') || null;
   }
+  const PAD_OWN = '.g-sunvp, .g-lib'; // widgets that move their own selection: leaving one skips its other buttons
+  let lastFocus = null; // { el, key, r } the last focused control, to come back to after a re-render
+  const focusKey = el => { for (const a of el.attributes || []) if (a.name.startsWith('data-') && a.name !== 'data-i') return `[${a.name}="${CSS.escape(a.value)}"]`; return el.id ? `#${CSS.escape(el.id)}` : null; };
+  document.addEventListener('focusin', e => { const el = e.target; if (el && el.matches?.(FOCUSABLE)) lastFocus = { el, key: focusKey(el), r: el.getBoundingClientRect() }; });
+  const centre = r => [r.left + r.width / 2, r.top + r.height / 2];
+  function nearest(list, r, dir) {
+    const [cx, cy] = centre(r), [dx, dy] = dir || [0, 0];
+    let best = null, bs = Infinity;
+    list.forEach(b => {
+      const q = b.getBoundingClientRect(), [x, y] = centre(q), ax = x - cx, ay = y - cy;
+      let sc;
+      if (dir) {
+        const along = ax * dx + ay * dy; if (along <= 4) return;
+        // across = the gap between the two boxes on the other axis (0 when they overlap): rows and columns win over diagonals
+        const gap = dx ? Math.max(0, Math.max(q.top, r.top) - Math.min(q.bottom, r.bottom)) : Math.max(0, Math.max(q.left, r.left) - Math.min(q.right, r.right));
+        sc = along + gap * 3 + Math.abs(dx ? ay : ax) * 0.3;
+      } else sc = Math.hypot(ax, ay);
+      if (sc < bs) { bs = sc; best = b; }
+    });
+    return best;
+  }
+  function padStep(host, d) {
+    const all = [...host.querySelectorAll(FOCUSABLE)].filter(x => x.offsetParent !== null && !x.closest('[hidden], .g-toasts'));
+    if (!all.length) return false;
+    const i = all.indexOf(document.activeElement);
+    all[i < 0 ? (d > 0 ? 0 : all.length - 1) : (i + d + all.length) % all.length].focus({ preventScroll: false });
+    G.sfx('femc-hover');
+    return true;
+  }
+  // ○ in the phone: the ‹ first (a thread or a contact card back to its list), then the overlay's own Esc closes it.
+  addEventListener('keydown', e => {
+    if (!e.fromPad || e.key !== 'Escape' || e.defaultPrevented) return;
+    const layer = topLayer(), back = layer?.querySelector?.('.g-ph-back'), ae = document.activeElement;
+    if (ae && ae !== document.body && !layer?.contains(ae)) return; // a viewer over the phone (text photos) closes first
+    if (back && !back.hidden && back.offsetParent !== null) { e.preventDefault(); e.stopPropagation(); back.click(); }
+  }, true);
   function navKeys(e) {
     if (dh && !document.querySelector('.g-overlay.g-over-battle:not(.out)')) return;
     if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.altKey) return;
     const t = e.target, k = e.key;
-    if (t && (t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && t.type !== 'range'))) return;
+    const typing = t && (t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && !['range', 'checkbox'].includes(t.type)));
+    // A pad can't type: its arrows leave a text box (Up / Down; the Index's search box handles its own).
+    if (typing && !(e.fromPad && (k === 'ArrowUp' || k === 'ArrowDown' || k === 'Tab'))) return;
     const layer = topLayer(), scene = document.querySelector('.gs:not(.out)');
     if ((k === 'm' || k === 'M') && !e.fromPad && !layer && !scene && S().phase === 'play' && !hud.hidden) { e.preventDefault(); return openStatus(); }
     if (e.fromPad && (k === 'p' || k === 'P') && !layer && S().phase !== 'title') { e.preventDefault(); return openSettings(); }
-    if (e.fromPad && k === 'Enter' && t && t.matches?.('button, summary, a[href], [role="button"]') && (layer || !scene || t.closest('.gs-choices, .gs-tools'))) { e.preventDefault(); t.click(); return; }
+    // △ menu, □ phone: the HUD's own buttons, so they only work where the HUD offers them.
+    if (e.fromPad && (k === 'y' || k === 'l') && !layer && !scene && !hud.hidden) {
+      const b = hud.querySelector(k === 'y' ? '[data-ui="menu"]' : '[data-ui="phone"]');
+      if (b && b.offsetParent !== null && !b.disabled) { e.preventDefault(); b.click(); }
+      return;
+    }
+    if (e.fromPad && t && t.tagName === 'SELECT' && (k === 'Enter' || k === 'ArrowLeft' || k === 'ArrowRight')) {
+      const n = t.options.length; if (!n) return;
+      e.preventDefault(); t.selectedIndex = (t.selectedIndex + (k === 'ArrowLeft' ? -1 : 1) + n) % n;
+      t.dispatchEvent(new Event('input', { bubbles: true })); t.dispatchEvent(new Event('change', { bubbles: true })); G.sfx('femc-hover');
+      return;
+    }
+    if (e.fromPad && k === 'Enter' && t && t.matches?.('button, summary, a[href], [role="button"], input[type="checkbox"]') && (layer || !scene || t.closest('.gs-choices, .gs-tools'))) { e.preventDefault(); t.click(); return; }
     if (e.fromPad && k === 'Escape' && !layer && !scene) { const back = main.querySelector('[data-back]'); if (back) { e.preventDefault(); back.click(); } return; }
-    if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(k)) return;
     if (scene && !layer) return; // the scene player moves through choices itself
+    // LT / L2 (Tab) and an L1 / R1 nobody used: the next / previous control in page order (out of any widget).
+    if (e.fromPad && (k === 'Tab' || k === '[' || k === ']')) { if (padStep(layer || document, k === '[' || e.shiftKey ? -1 : 1)) e.preventDefault(); return; }
+    if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(k)) return;
     if (t && t.matches?.('input[type="range"], select') && !e.fromPad) return;
     const host = layer || document;
     const all = [...host.querySelectorAll(FOCUSABLE)].filter(x => x.offsetParent !== null && !x.closest('[hidden], .g-toasts'));
     if (!all.length) return;
     e.preventDefault();
-    const i = all.indexOf(document.activeElement), d = k === 'ArrowDown' || k === 'ArrowRight' ? 1 : -1;
-    const n = all[i < 0 ? (d > 0 ? 0 : all.length - 1) : (i + d + all.length) % all.length];
+    let cur = document.activeElement, i = all.indexOf(cur);
+    // Focus lost (the panel re-rendered under it): carry on from the same control, else the one nearest where it was.
+    if (i < 0 && lastFocus && (!cur || cur === document.body || !cur.isConnected || !host.contains(cur))) {
+      const same = lastFocus.el.isConnected ? lastFocus.el : lastFocus.key && all.find(x => x.matches(lastFocus.key));
+      const back = same && all.includes(same) ? same : (host.contains(lastFocus.el) || !lastFocus.el.isConnected) ? nearest(all, lastFocus.r) : null;
+      if (back) { cur = back; i = all.indexOf(back); }
+    }
+    const d = k === 'ArrowDown' || k === 'ArrowRight' ? 1 : -1;
+    let n = null;
+    if (i >= 0) {
+      const own = cur.closest(PAD_OWN), pool = all.filter(x => x !== cur && !(own && own.contains(x)));
+      n = nearest(pool, cur.getBoundingClientRect(), { ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowRight: [1, 0] }[k]);
+    }
+    if (!n) n = all[i < 0 ? (d > 0 ? 0 : all.length - 1) : (i + d + all.length) % all.length];
     n.focus({ preventScroll: false });
     G.sfx('femc-hover');
   }

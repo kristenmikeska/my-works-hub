@@ -70,6 +70,8 @@ window.FemcTips = (() => {
     card.querySelector('[data-tip-off]').addEventListener('click', e => { e.stopPropagation(); G.sfx('femc-back'); set(false); G.toast('note', 'Tips are off. Settings → Tips turns them back on.'); });
     document.body.appendChild(card);
   }
+  // A controller can't reach the card under a menu (it never takes focus): its Create / Share button (pad.js sends 'h') is Got it.
+  document.addEventListener('keydown', e => { if (e.fromPad && e.key === 'h' && card) { e.preventDefault(); e.stopPropagation(); card.querySelector('[data-tip-ok]')?.click(); } }, true);
   function check() {
     timer = 0;
     if (card) { // its screen went away (or a scene came up over it): it goes too

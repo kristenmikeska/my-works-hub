@@ -209,7 +209,7 @@ window.FemcBooth = (() => {
         const s = me.rec.stamps[+st.dataset.st]; if (!s) return;
         const d = { ArrowLeft: [-2, 0], ArrowRight: [2, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] }[e.key];
         if (d) { e.preventDefault(); s.x = clamp(s.x + d[0]); s.y = clamp(s.y + d[1]); st.style.left = s.x + '%'; st.style.top = s.y + '%'; }
-        else if (e.key === 'Delete' || e.key === 'Backspace') { e.preventDefault(); me.rec.stamps.splice(+st.dataset.st, 1); paint(); }
+        else if (e.key === 'Delete' || e.key === 'Backspace' || (e.fromPad && e.key === 'l')) { e.preventDefault(); me.rec.stamps.splice(+st.dataset.st, 1); paint(); } // a controller's □ removes it too (Nov 15 2026)
       }
     };
     window.addEventListener('keydown', me.key, true);

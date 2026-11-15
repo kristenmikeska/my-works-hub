@@ -98,10 +98,19 @@ window.FemcScrapbook = (() => {
         if (!el.isConnected) return;
         e.stopPropagation();
         const k = e.key.toLowerCase();
-        if (!$('.gsb-chapters').hidden) { if (k === 'escape' || k === 'c') { e.preventDefault(); $('.gsb-chapters').hidden = true; } return; }
+        if (!$('.gsb-chapters').hidden) {
+          if (k === 'escape' || k === 'c' || (e.fromPad && k === 'y')) { e.preventDefault(); $('.gsb-chapters').hidden = true; }
+          // ↑↓ walk the chapter list and Enter opens one (a controller has no Tab, and its ✕ doesn't press buttons by itself)
+          else if (k === 'arrowdown' || k === 'arrowup' || k === 'arrowleft' || k === 'arrowright') {
+            e.preventDefault();
+            const bs = [...$('.gsb-chapters').querySelectorAll('button')], i = bs.indexOf(document.activeElement), d = k === 'arrowdown' || k === 'arrowright' ? 1 : -1;
+            bs[(i + d + bs.length) % bs.length]?.focus();
+          } else if ((k === 'enter' || k === ' ') && e.target.closest?.('.gsb-chapters [data-ci]')) { e.preventDefault(); e.target.click(); }
+          return;
+        }
         if (k === 'arrowright' || k === 'enter' || k === ' ' || k === 'd') { e.preventDefault(); next(); }
         else if (k === 'arrowleft' || k === 'a') { e.preventDefault(); back(); }
-        else if (k === 'c') { e.preventDefault(); chapters(); }
+        else if (k === 'c' || (e.fromPad && k === 'y')) { e.preventDefault(); chapters(); }
         else if (k === 's' || k === 'escape') { e.preventDefault(); finish(); }
       };
       const finish = () => { window.removeEventListener('keydown', key, true); el.classList.add('closing'); setTimeout(() => { el.remove(); done(); }, reduced ? 100 : 450); };

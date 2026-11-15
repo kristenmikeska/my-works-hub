@@ -453,6 +453,7 @@ window.FemcScene = (() => {
        (dumplings, listen, studio, support, the booth) count as won unless they failed or were quit (Nov 11: every minigame is
        in the Runners story: support 12/6, the booth 12/9 and the mix 12/10 on the Haechan route, listen 12/29, dumplings 12/31).
        hwatu (Nov 11): strangers people.js epi-s-eomma-4, Thursdays, flags epi-s-mg-hwatu; the id maps to FemcHwatu like the rest. */
+    let mgUp = false;
     function minigame(line) {
       const id = line.minigame, glob = MG_GLOB[id] || 'Femc' + id[0].toUpperCase() + id.slice(1), pre = line.flags || `mg-${id}`;
       if (replay) return next();
@@ -467,8 +468,9 @@ window.FemcScene = (() => {
         if (!M || !M.play) return next();
         const set = G.settings ? G.settings() : {};
         Music.duck(true); // the game has the floor (the booth plays its own song)
+        mgUp = true; // the scene's pad keys (□ log, △ Auto, R2 Skip) stay out of the game's way
         M.play({ mute: set.sfx === false, difficulty: line.difficulty || 'normal', ...(line.opts || {}) }).then(r => {
-          Music.duck(false);
+          Music.duck(false); mgUp = false;
           r = r || {}; const won = r.won ?? !(r.failed || r.quit || r.error);
           const f = { [`${pre}-played`]: true, [`${pre}-${won ? 'won' : 'lost'}`]: true, [`${pre}-grade-${r.grade || 'C'}`]: true };
           if (r.grade === 'S' || r.grade === 'A') f[`${pre}-good`] = true;
@@ -743,6 +745,14 @@ window.FemcScene = (() => {
         G.sfx('femc-hover');
       }
       if ((e.key === 'a' || e.key === 'A') && !e.metaKey && !e.ctrlKey) { e.preventDefault(); autoBtn.click(); }
+      // A controller (Nov 15 2026): □ the log (open / close), △ Auto, R2 Skip; with the log open ↑↓ scroll it and ○ closes it.
+      const logOpen = !$('.gs-log').hidden;
+      if (mgUp && e.fromPad) return;
+      if (e.fromPad && e.key === 'l') { e.preventDefault(); e.stopPropagation(); if (logOpen) $('.gs-log').hidden = true; else $('[data-t="log"]').click(); return; }
+      if (e.fromPad && e.key === 'y' && !logOpen) { e.preventDefault(); e.stopPropagation(); autoBtn.click(); return; }
+      if (e.fromPad && e.key === 'r' && !logOpen && !choices.children.length) { e.preventDefault(); e.stopPropagation(); $('[data-t="skip"]').click(); return; }
+      if (logOpen && !replay && e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); $('.gs-log').hidden = true; return; }
+      if (logOpen && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) { e.preventDefault(); e.stopPropagation(); $('.gs-log-inner').scrollTop += e.key === 'ArrowDown' ? 60 : -60; return; }
       // A replay can be left any time (a controller's B is Escape too). The log closes first if it's open.
       if (replay && e.key === 'Escape' && !document.querySelector('.g-actcard')) { e.preventDefault(); e.stopPropagation(); if (!$('.gs-log').hidden) $('.gs-log').hidden = true; else end(false); }
     };

@@ -351,8 +351,10 @@ window.FemcMenu = (() => {
       if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) return;
       const bs = [...el.querySelectorAll('.g-lib button:not(:disabled)')], i = bs.indexOf(document.activeElement);
       if (i < 0) return;
+      const to = i + (e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? -1 : 1);
+      if (to < 0 || to >= bs.length) return; // past either end: ui.js navKeys moves on out of the list (a pad has no Tab)
       e.preventDefault(); e.stopPropagation();
-      bs[Math.max(0, Math.min(bs.length - 1, i + (e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? -1 : 1)))].focus();
+      bs[to].focus();
     });
     el.querySelectorAll('[data-sk-forget]').forEach(bt => bt.addEventListener('click', () => { sel.forget = bt.dataset.skForget; sel.armed = null; G.sfx('femc-click'); again('[data-forget]'); }));
     el.querySelectorAll('[data-forget]').forEach(bt => bt.addEventListener('click', () => {
@@ -379,9 +381,11 @@ window.FemcMenu = (() => {
     if (vp && window.FemcSun) window.FemcSun.mount(vp, orbit ? sel.pn : sel.hn, orbit || undefined);
     el.querySelector('.g-sunvp')?.addEventListener('keydown', e => {
       if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+      const was = sel.sk === 'solar' ? sel.hn : sel.pn, to = window.FemcSun.move(was, e.key, sel.sk === 'solar' ? undefined : orbit);
+      if (to === was) return; // no node that way: ui.js navKeys steps out of the sun to the buttons beside it (a pad has no Tab)
       e.preventDefault(); e.stopPropagation();
-      if (sel.sk === 'solar') { sel.hn = window.FemcSun.move(sel.hn, e.key); again(`[data-hn="${sel.hn}"]`); }
-      else { sel.pn = window.FemcSun.move(sel.pn, e.key, orbit); again(`[data-hn="${sel.pn}"]`); }
+      if (sel.sk === 'solar') { sel.hn = to; again(`[data-hn="${sel.hn}"]`); }
+      else { sel.pn = to; again(`[data-hn="${sel.pn}"]`); }
       G.sfx('femc-hover');
     });
   }

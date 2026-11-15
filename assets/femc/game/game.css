@@ -1547,3 +1547,16 @@ button.g-st-link:is(:hover, :focus-visible) { outline: none; border-color: #fff;
 .g-ss-rw li b { flex: none; min-width: 22px; padding: 1px 4px; border: 1px solid rgba(255, 79, 158, .35); color: rgba(255, 140, 192, .55); font: italic 900 11px/1.2 var(--cond); text-align: center; }
 .g-ss-rw li.got { color: #fff4f9; }
 .g-ss-rw li.got b { background: #ff4f9e; border-color: #ff4f9e; color: #14070f; }
+
+/* ── Controller (pad.js, Nov 15 2026): the prompt bar on the life sim, and a focus ring while a pad is the last input
+   (pad-driven focus is script focus, so :focus-visible styles don't always light up). Copied from battle.css's bar. ── */
+.bt-padbar { position: fixed; left: 50%; bottom: 6px; z-index: 2147483000; display: flex; gap: 14px; max-width: calc(100vw - 12px); overflow: hidden; padding: 5px 16px; background: rgba(12, 4, 9, .9); color: #fff; font: italic 900 13px/1 var(--cond); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; transform: translateX(-50%) skewX(-12deg); box-shadow: 3px 3px 0 var(--pink); pointer-events: none; }
+.bt-padbar[hidden], html:not(.bt-pad) .bt-padbar { display: none; }
+.bt-padbar > span { display: inline-flex; align-items: center; gap: 5px; transform: skewX(12deg); }
+.bt-padbar .g { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px; background: #444; color: #fff; font: normal 900 11px/1 "Helvetica Neue", Arial, sans-serif; letter-spacing: 0; }
+.bt-padbar .g-a { background: #3fb34f; } .bt-padbar .g-b { background: #d8353a; } .bt-padbar .g-x { background: #2e6fd8; } .bt-padbar .g-y { background: #e8b62a; color: var(--night); }
+.bt-padbar :is(.g-lb, .g-rb, .g-lt, .g-rt, .g-start, .g-select, .g-dpad) { border-radius: 4px; background: #5a4a55; }
+html.bt-pad-ps .bt-padbar :is(.g-a, .g-b, .g-x, .g-y) { background: #1d1d24; font-size: 13px; }
+html.bt-pad-ps .bt-padbar .g-a { color: #8ab4ff; } html.bt-pad-ps .bt-padbar .g-b { color: #ff6b6b; } html.bt-pad-ps .bt-padbar .g-x { color: #ff8cc0; } html.bt-pad-ps .bt-padbar .g-y { color: #5fe0b0; }
+@media (max-width: 620px) { .bt-padbar { gap: 8px; font-size: 11px; padding: 4px 10px; } }
+html.bt-pad :is(button, [tabindex="0"], summary, a[href], input, select):focus:not(.g-fmh-it, .g-title-menu button) { outline: 3px solid #ff4f9e; outline-offset: 2px; }
