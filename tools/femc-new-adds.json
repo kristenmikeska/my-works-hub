@@ -46896,6 +46896,354 @@
    "status": "integrated",
    "destination": "assets/femc/game/art/wallpapers/wp-stat-proficiency.webp",
    "placement": "Social stat rank-5 wallpaper (FEMC-ART-TODO 61)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-cardcaptor-posesheet-2.png",
+   "size": [
+    1535,
+    1024
+   ],
+   "sha256": "d621896f37a9d83708ea5c5c03179e1e33494dec385d83aadc8730ef90e04583",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-cardcaptor/",
+   "placement": "sk-collab-cardcaptor battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-ghoul-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "672afcfe025fe2fe6ece65c1ec9f4ce81b242d6f4088ab3dc785fdb0a1801ca3",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-ghoul/",
+   "placement": "sk-collab-ghoul battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-ghoul-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "4aab71c8b86c6589eeed15a7f892eef17c14d7b1c398d87e514a2ced7b5e4704",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-ghoul/",
+   "placement": "sk-collab-ghoul battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-ghoul-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "72b74debbdd6831bbed2f93750dd7e8aba378f77e2c64a4046d09c5f30035094",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-ghoul/",
+   "placement": "sk-collab-ghoul battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-ghoul-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "2ba161411b11d778da666a28a80a673277f4081f470ace6b9f6cdefb3044667b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-ghoul/",
+   "placement": "sk-collab-ghoul battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-ghoul-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "d15d2183d65a8524d4ed6017c5cc727fc668bb4d7050d2037ddc5f41616f5ff2",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-ghoul/",
+   "placement": "sk-collab-ghoul battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-ghoul-posesheet-2.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "b945fcef5c8a92e072a41e334f4ebdb58d8afbcb7095dc22761656ad6d79ba1e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-ghoul/",
+   "placement": "sk-collab-ghoul battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-ghoul-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "b26ce6024cb95324a4f85845472a1ced54f0f7b2a53ca549346bf10c8edd3526",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-ghoul/",
+   "placement": "sk-collab-ghoul battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-sailor-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "e703ec8678ec672600a38c1729cd75ad0424606a9db7327c4b6f5a9d90c5c2c9",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-sailor/",
+   "placement": "sk-collab-sailor battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-sailor-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "1d36a19cb3f11c8c1aca08993788ac56f904336842fb6bc115cc2dbd64070e17",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-sailor/",
+   "placement": "sk-collab-sailor battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-sailor-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "1f75d554a29e4c02c8df12565be3cb9f2102ad34b4808aa9d91a14b407559576",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-sailor/",
+   "placement": "sk-collab-sailor battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-sailor-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "411603adb2147cb06cfadf7f0411ea83e3e2be596196e37c84b22d4a1be87b6e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-sailor/",
+   "placement": "sk-collab-sailor battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-sailor-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "84d683076881c65027de66102336ebb79f77a0c5496c579769a7be806a73ed73",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-sailor/",
+   "placement": "sk-collab-sailor battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-sailor-posesheet-2.png",
+   "size": [
+    1535,
+    1024
+   ],
+   "sha256": "e2f919ae2c5d1f763636d06d359234ab0265f6fcb0509ba4665c4d466011ffcc",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-sailor/",
+   "placement": "sk-collab-sailor battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-sailor-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "b27de795c771add88b369010df124ee5d47c65b1bbb8ac01491e3c49303315b6",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-sailor/",
+   "placement": "sk-collab-sailor battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-stella-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "9ef72a29dd8b0dcab056aabf7e5b5cf2e1e40e155ca689d86308d74c15f4d9d8",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-stella/",
+   "placement": "sk-collab-stella battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-stella-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "873df0de24532c12a8c267e93d29868f1ea350aa8f6da024048a06547037f9a1",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-stella/",
+   "placement": "sk-collab-stella battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-stella-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "d2c79e33cb365a01608d6601178cadd5d11f123982ecebd71e8d5fcd4c65bda4",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-stella/",
+   "placement": "sk-collab-stella battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-stella-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "f71f164cf7f2acbdc9844030211652c0a6fa0c7cc194ea679b0aac8430345c55",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-stella/",
+   "placement": "sk-collab-stella battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-stella-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "753d2c8653f8a79f721f74c1f483214dac9dbed4272f598a76a0b7ab93c9ad94",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-stella/",
+   "placement": "sk-collab-stella battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-stella-posesheet-2.png",
+   "size": [
+    1535,
+    1024
+   ],
+   "sha256": "32998a242e1b8fee6afdabeb708a42b8aa14577de4cd122d07223676efc0fdcb",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-stella/",
+   "placement": "sk-collab-stella battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-stella-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "c2569dd0fc9ca020746e410e8b98f9700110b30a774d0c5e192ec8a5065aa1eb",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-stella/",
+   "placement": "sk-collab-stella battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-sukajan-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "50ca9b6e5f36907ef41c83986015c0a576a3e791497ae4ea47b550686da2fe3e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-sukajan/",
+   "placement": "sk-collab-sukajan battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-sukajan-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "8687e545ac7b101b142cdccdf600d813139ba0f241d880391fa1e6686190c2b8",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-sukajan/",
+   "placement": "sk-collab-sukajan battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-sukajan-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "ae30c150a367614f8339dd56d79ae95d98ba628ff6496fda0005358ef662e134",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-sukajan/",
+   "placement": "sk-collab-sukajan battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-sukajan-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "8b4ca750c06705b98dcd2b30c8455908e8eaf8ac19d5e0a6e36e32afd9bcb470",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-sukajan/",
+   "placement": "sk-collab-sukajan battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-sukajan-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "b8657ae55efe6b59158ddae09d53ef56054b1fa94a3a544b869b690981b5bc0b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-sukajan/",
+   "placement": "sk-collab-sukajan battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-sukajan-posesheet-2.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "3baf7ca9d3694452a50aa5bab61974caae3a30d557a2103f6dbec63353ae0e15",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-sukajan/",
+   "placement": "sk-collab-sukajan battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 159,
+   "source": "skin-sk-collab-sukajan-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "9d9a68912dbbf0d662f365d471e327710db3656f1b9889211d22e4f170548f0c",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-collab-sukajan/",
+   "placement": "sk-collab-sukajan battle piece (FEMC-BATTLE-ART)"
   }
  ],
  "batch1Validation": {
@@ -48390,5 +48738,10 @@
   "date": "2026-11-14",
   "checks": "jsc on every edited JS; femc-check-scenes OK; one muted pane check of the seventh stair (house, icon, heard ending)",
   "note": "84 files: 28 Shadows (60A-AB), 41 battle pieces for 8 skin-series looks, listen 4, stair 6, stat wallpapers 5 (upscaled 1672 -> 1920). Listen and stair overlays re-measured onto Kat's pictures."
+ },
+ "batch159Validation": {
+  "date": "2026-11-14",
+  "checks": "jsc on battle.js and ready.js; femc-check-scenes OK; v2 glints checked on marked previews (ghoul, stella, sukajan hand-set)",
+  "note": "29 files: all battle pieces for sk-collab-stella / -sailor / -ghoul / -sukajan, sheet 2 for sk-collab-cardcaptor. Not fight-tested."
  }
 }

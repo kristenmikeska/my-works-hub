@@ -89,6 +89,42 @@
   ],
   "sha256": "c600d817698287ed7a9d84590b001e25849db31c8565ed1002e088fe7e77cf1e"
  },
+ "assets/femc/game/art/skins/sk-collab-ghoul/solar-onemore-v2.webp": {
+  "eyes": [
+   35.0,
+   78.0,
+   64.6,
+   76.5
+  ],
+  "sha256": "d7794e006549642c40800bad264238ff0924eeaa0b8a34484642764ab0a37c00"
+ },
+ "assets/femc/game/art/skins/sk-collab-sailor/solar-onemore-v2.webp": {
+  "eyes": [
+   39.8,
+   83.1,
+   62.3,
+   83.1
+  ],
+  "sha256": "260f4d45a16d499485dd2331430ee68ab8ac3dd112a5f5552b35d77e5910c74e"
+ },
+ "assets/femc/game/art/skins/sk-collab-stella/solar-onemore-v2.webp": {
+  "eyes": [
+   37.8,
+   74.0,
+   63.3,
+   74.5
+  ],
+  "sha256": "723e26cc88ccaaa53942ce10d25d7eef1f4c909d2c5c22350d91976e4e201855"
+ },
+ "assets/femc/game/art/skins/sk-collab-sukajan/solar-onemore-v2.webp": {
+  "eyes": [
+   35.8,
+   88.5,
+   63.3,
+   88.9
+  ],
+  "sha256": "8f57b7e721c7242783bc19d24724617cb8ec68c1e0fe97045a058c522fe7e65c"
+ },
  "assets/femc/game/art/skins/sk-cottage-bakery/solar-onemore-v2.webp": {
   "eyes": [
    35.4,
