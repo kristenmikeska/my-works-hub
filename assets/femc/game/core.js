@@ -371,6 +371,9 @@ window.FemcGame = (() => {
     if (typeof st.sfxVol === 'number') settingsRaw.sfxVol = st.sfxVol;
     lsSet(SETTINGS_KEY, JSON.stringify(settingsRaw));
   }
+  // Nov 15 2026 (Kat): Skip easy fights was added switched off and then made on by default; a save that stored the old 'off'
+  // (any settings change writes every default) gets it switched on once. After that her own choice sticks.
+  if (!settingsRaw.easySkipV2) { settingsRaw.easySkip = 'on'; settingsRaw.easySkipV2 = 1; lsSet(SETTINGS_KEY, JSON.stringify(settingsRaw)); }
   let settingsCache = { ...DEFAULTS, ...settingsRaw };
   const settings = () => settingsCache;
   // Performance mode on the life-sim side too (Kat's "lighter graphics", Nov 4): <html class="g-perf"> lets the CSS drop blur
