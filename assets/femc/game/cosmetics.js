@@ -387,7 +387,8 @@ window.FemcCosmetics = (() => {
   const banner = (d, id) => { const a = banners(d), w = id ?? cs().bsel; return a.find(b => b.id === w) || a[0]; };
   function pickBanner(id) { const b = banners().find(x => x.id === id); if (!b) return null; cs().bsel = id; G.save(); return b; }
   // The last day of a banner's run (its last month; the game runs April 2009 – March 2010).
-  const bannerEnd = b => { const m = b.months[b.months.length - 1]; return new Date(m >= 4 ? 2009 : 2010, m, 0); };
+  const calY = () => (window.FemcGame?.D?.cal?.year || 2009); // the calendar's first year (Equinox: 2010)
+  const bannerEnd = b => { const m = b.months[b.months.length - 1]; return new Date(m >= 4 ? calY() : calY() + 1, m, 0); };
   const pool = () => ITEMS.filter(x => x.pool !== false && ready(x) && metOk(x));
   /* Everything is visible from the start (Kat, Nov 7: "all of the outfits in the game should be visible from the beginning
      of the game, you just can't GET some of them yet"). What can be pulled is unchanged (pool, featOf, banners: the month's
@@ -476,7 +477,7 @@ window.FemcCosmetics = (() => {
     const el = document.createElement('style'); el.id = 'g-cos-style'; el.textContent = css; document.head.appendChild(el);
   }
   const wallCss = x => (x.css ? x.css : `url('${G.base}${x.bg}') center / cover no-repeat`);
-  const TITLE_KEY = 'kg-femc-title-theme';
+  const TITLE_KEY = (window.FEMC_GAME_CONFIG || {}).titleKey || 'kg-femc-title-theme';
   function apply() {
     styleSheet();
     const root = document.documentElement, has = !!S();

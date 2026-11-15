@@ -192,4 +192,4 @@ Each batch is tested lightly and reported spoiler-free. Features that need art w
 
 Nothing right now. Next: the look tests (art list section 1).
 
-**Built so far:** Equinox's own page, `localhost:8000/femc-equinox.html`: the blood-red ticking-clock title, New Game, and Import from Solstice (pick a finished save, see what comes over, import it). The year itself isn't built yet, so the page saves your starting point and waits.
+**Built so far:** Equinox's own page, `localhost:8000/femc-equinox.html`: the blood-red ticking-clock title, New Game, and Import from Solstice (pick a finished save, see what comes over, import it). Build batch 2 (Nov 15): Begin starts the real game on its own save, in blood red, and the opening is playable: the prologue and the first week (4/6 to 4/12). After that the days run with school and the town but nothing new happens yet. Links, the Well and the rest of the year are the next batches.

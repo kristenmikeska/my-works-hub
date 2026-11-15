@@ -955,7 +955,7 @@ window.FemcMenu = (() => {
      A Credits row (2026-11-01) holds the end-credits stills already shown (ui.js creditsRoll → S.album.cg; no locked tiles).
      New Game+ keeps all of it (albumCarry → the new S.album: cg, frags, events, doors, ranks, prologue, booth).
      A Photo Booth row (2026-11-01, booth.js albumSection / wireAlbum) draws S.album.booth's strips live from their layers. */
-  const ALB_V = 1, END_ID = 'end-ending', CLEARS_KEY = 'kg-femc-revamp-clears';
+  const ALB_V = 1, END_ID = 'end-ending', CLEARS_KEY = (window.FEMC_GAME_CONFIG || {}).clearsKey || 'kg-femc-revamp-clears';
   const EPI = () => window.FemcEpilogue || null;
   /* The epilogue (batch 9): inside one (S.epi), core.js reads that world's data, so the album shows the year as an "Iwatodai"
      page (the CGs the year saw, kept in year1.album when she went in, plus the memory cards) and the Theater only the world
@@ -1281,7 +1281,7 @@ window.FemcMenu = (() => {
   /* The title screen's Extras: the album and the Theater for the autosave's playthrough, in their own panel. */
   function extras(onClose) {
     let t = 'album';
-    const x = UI().overlay(`<div class="g-fm g-xt"><div class="g-fm-head"><div><p class="g-kicker">Persona 3: Solstice</p><h2>Extras</h2></div><button type="button" class="g-btn small" data-close>Close</button></div>
+    const x = UI().overlay(`<div class="g-fm g-xt"><div class="g-fm-head"><div><p class="g-kicker">${esc((window.FEMC_GAME_CONFIG || {}).title?.name || 'Persona 3: Solstice')}</p><h2>Extras</h2></div><button type="button" class="g-btn small" data-close>Close</button></div>
       <nav class="g-tabs g-fm-tabs" role="tablist"><button type="button" role="tab" data-xt="album">${tabIco('album')}Memories</button><button type="button" role="tab" data-xt="theater">${tabIco('theater')}Theater</button></nav>
       <div class="g-fm-body" tabindex="-1"></div><p class="g-hint g-fm-hint">←→ on the tabs · Esc close</p></div>`, 'g-fm-ov g-xt-ov', () => onClose?.());
     const body = x.el.querySelector('.g-fm-body');
@@ -1363,7 +1363,7 @@ window.FemcMenu = (() => {
     const f = homeFig();
     return `<div class="g-fmh${dark ? ' dark' : ''}${enter ? ' enter' : ''}">
       <div class="g-fmh-bg" aria-hidden="true"></div><div class="g-fmh-rays" aria-hidden="true"></div>
-      <div class="g-fmh-ghost side" aria-hidden="true">${esc(dark ? 'Dark Hour' : when)}</div><div class="g-fmh-ghost back" aria-hidden="true">${dark ? '00:00' : 'Solstice'}</div>
+      <div class="g-fmh-ghost side" aria-hidden="true">${esc(dark ? 'Dark Hour' : when)}</div><div class="g-fmh-ghost back" aria-hidden="true">${dark ? '00:00' : esc((window.FEMC_GAME_CONFIG || {}).title?.ghost || 'Solstice')}</div>
       <div class="g-fmh-art" aria-hidden="true"><div class="g-fmh-fig"><img class="${silhouette ? 'sil' : ''}" src="${G.base}${f.src}" alt="" style="--ar:${f.ar};--ht:${f.ht};--hf:${f.hf};--hx:${f.hx}"></div></div>
       <div class="g-fmh-wallet"><b>${yen(opts.yen ?? s.yen)}</b><small>current wallet</small></div>${boutiqueHtml()}
       <h2 class="g-fmh-h" id="g-fmh-h">Menu</h2>

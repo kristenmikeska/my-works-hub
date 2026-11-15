@@ -5408,6 +5408,7 @@
      A spec can add `join: [ids]` (a searcher who has just awakened is put in the party for that fight). Segment 1 of a
      two-part memory floor ends with 'interrupt' (the scene then plays the awakening) and can't be lost. ── */
   const BGP = 'assets/femc/bg/';
+  const ART_HAS_WELL = false; // flip when Kat's eqx-well-bottom.webp is in assets/femc/bg/
   const TBG = i => D.blocks[Math.min(i, D.blocks.length - 1)].bg;
   const SEG1 = (at, foeHp = 0.5) => ({ protect: true, noEscape: true, interruptAt: at, interruptFoeHp: foeHp, interruptHp: 0.35 });
   // A memory floor: one boss (plus any Shadows at its side: pass an array, boss first), two segments when someone awakens
@@ -5424,6 +5425,13 @@
           rules: { protect: true, noNav: true, noEscape: true, cmds: ['attack', 'skill', 'guard', 'item', 'theurgy'] } }]
       : [{ group: ['maya', 'maya_lost'], bg: BGP + 'tartarus-scene.webp', label: 'Tartarus', block: 'First Floor', solo: true, noResults: true,
           rules: { protect: true, noNav: true, cmds: ['attack', 'guard'], interruptAt: 3, interruptHp: 0.5, interruptOnKill: true } }]),
+    // Persona 3: Equinox's prologue (assets/femc/equinox/data/prologue.js): the bottom of the Well, 4/6. Segment 1: Solar alone,
+    // no Evoker, Attack and Guard, interrupted at round 3 / half HP / a kill. Segment 2: Haechan has climbed down; the two of them.
+    // Backdrop: Tartarus's until the Well's own art exists (EQUINOX-ART-TODO "The Well").
+    'eqx-well-1': () => [{ group: ['maya', 'maya_lost'], bg: BGP + (ART_HAS_WELL ? 'eqx-well-bottom.webp' : 'tartarus-scene.webp'), label: 'The Well', block: 'The Bottom', solo: true, noResults: true, title: 'The Well · The Bottom',
+      rules: { protect: true, noNav: true, noEscape: true, cmds: ['attack', 'guard'], interruptAt: 3, interruptHp: 0.5, interruptOnKill: true } }],
+    'eqx-well-2': () => [{ group: ['maya', 'maya_lost', 'maya'], bg: BGP + (ART_HAS_WELL ? 'eqx-well-bottom.webp' : 'tartarus-scene.webp'), label: 'The Well', block: 'The Bottom', title: 'The Well · The Bottom',
+      join: ['haechan'], rules: { protect: true, noNav: true, noEscape: true, cmds: ['attack', 'skill', 'guard', 'item'] } }],
     // 4/9: the first fight on purpose, on the dorm roof.
     magician: () => [{ group: ['magician'], bg: BGP + 'iwatodaidorm-roof-night.webp', label: 'Full Moon', block: 'Iwatodai Dorm · Roof', boss: true, music: 'boss',
       op: { id: 'magician', name: 'The Magician', arcana: 'I · Magician' }, title: 'Full Moon · The Magician', rules: { noEscape: true } }],

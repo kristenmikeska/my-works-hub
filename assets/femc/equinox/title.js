@@ -2,14 +2,15 @@
    The Equilux title from the approved mockup (mockups/equinox-ui/equilux.html, screen A): a 12-hour clock whose hand ticks
    once a second and splits the bone day from the red-black night; any pointer movement, touch or key brings the night over
    the whole screen (dusk) until six seconds of rest.
-   Menu: New Game · Import from Solstice · Continue · Back to Solstice.
+   Menu: Continue (once an Equinox save exists) · New Game · Import from Solstice · Back to Solstice.
      New Game   → a fresh start (nothing carried over).
      Import     → FemcEquinoxImport.slots() (Solstice's autosave and slots, read only); a finished year can be picked; its
                   preview is FemcEquinoxImport.read(key) (looks, leftover Velvet Plumes, album, finished epilogues).
-     Continue   → the save's starting point, once one is set.
-   Both write the starting point to localStorage 'kg-femc-equinox-start' = { v: 1, at, fresh: true } or
-   { v: 1, at, from: { slot, savedAt }, import: <read() result> }. The engine batch reads it at New Game and calls
-   FemcEquinoxImport.apply(state, start.import) (EQUINOX-TECH.md "Import from Solstice"). Solstice's keys are never written.
+     Continue   → femc-equinox-game.html?go=continue (the Equinox autosave, 'kg-femc-equinox').
+   New Game and Import write the starting point to localStorage 'kg-femc-equinox-start' = { v: 1, at, fresh: true } or
+   { v: 1, at, from: { slot, savedAt }, import: <read() result> }, then open femc-equinox-game.html?go=new, which starts the
+   year from it (config.js: newGame, FemcEquinoxImport.apply, the eqx-from-* flags) and deletes it. Solstice's keys are never
+   written. Starting over when an Equinox autosave exists asks first (the ten slots stay).
    Keys: ↑↓ move, Enter / ✕ press, Esc / ○ back (pad.js turns the controller into these keys and clicks the focused button
    on ✕). Reduced motion: no ticking, no sweep. */
 (function () {
@@ -25,6 +26,9 @@
   function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   function lsSet(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } }
   function start() { try { return JSON.parse(lsGet(START_KEY) || 'null'); } catch (e) { return null; } }
+  // The Equinox autosave (the engine's save: femc-equinox-game.html, config.js key 'kg-femc-equinox').
+  var GAME = 'femc-equinox-game.html', SAVE_KEY = 'kg-femc-equinox';
+  function hasSave() { try { var s = JSON.parse(lsGet(SAVE_KEY) || 'null'); return !!(s && s.started); } catch (e) { return false; } }
 
   /* ── The clock face, logos and drifting specks (drawn in code: no art files) ── */
   [].forEach.call(T.querySelectorAll('[data-logo]'), function (l) {
@@ -56,13 +60,13 @@
 
   /* ── The menu ── */
   var ITEMS = [
+    { id: 'continue', label: 'Continue', hide: function () { return !hasSave(); } },
     { id: 'new', label: 'New Game' },
     { id: 'import', label: 'Import from Solstice' },
-    { id: 'continue', label: 'Continue', off: function () { return !start(); } },
     { id: 'back', label: 'Back to Solstice' }
   ];
   function paintMenu(focusId) {
-    menu.innerHTML = ITEMS.map(function (it, k) {
+    menu.innerHTML = ITEMS.filter(function (it) { return !(it.hide && it.hide()); }).map(function (it, k) {
       var off = it.off && it.off();
       return '<li style="--i:' + k + '" data-i="' + k + '"><button class="it" type="button" data-go="' + it.id + '"' + (off ? ' disabled' : '') + '>' +
         '<i class="sl" aria-hidden="true"></i><i class="ol" aria-hidden="true"></i><i class="fx" aria-hidden="true"></i><span class="tx" data-t="' + esc(it.label) + '">' + esc(it.label) + '</span></button></li>';
@@ -83,7 +87,7 @@
     var go = b.dataset.go;
     if (go === 'new') openNew();
     else if (go === 'import') openImport();
-    else if (go === 'continue') openSummary(start());
+    else if (go === 'continue') location.href = GAME + '?go=continue';
     else if (go === 'back') location.href = 'femc-game.html';
   });
 
@@ -104,6 +108,7 @@
     else if (a === 'slot') previewSlot(b.dataset.key);
     else if (a === 'import-list') openImport();
     else if (a === 'import-go') doImport(b.dataset.key);
+    else if (a === 'begin') location.href = GAME + '?go=new';
   });
 
   var WORLD = { runners: 'Runners', strangers: 'strangers', hoax: 'HOAX', stay: 'Stay', true: 'True' };
@@ -162,8 +167,9 @@
     if (!s) return closePanel();
     var body = s.import ? stats(s.import) + '<p><small>Imported ' + esc(when(s.at)) + '.</small></p>' : '<p>A fresh start: nothing carried over.</p>';
     openPanel('<span class="kick">Your Equinox save</span><h2>Ready</h2>' + body +
-      '<p>The year begins on Tuesday, April 6, 2010. Equinox itself is still being built; your starting point is saved here and will be waiting when it opens.</p>' +
-      '<div class="eq-acts"><button type="button" class="eq-btn main" data-act="close">Done</button>' + (s.import ? '' : '<button type="button" class="eq-btn" data-act="import-list">Import instead</button>') + '</div>');
+      '<p>The year begins on Tuesday, April 6, 2010, at midnight. The opening is ready to play; the rest of the year is still being built.</p>' +
+      (hasSave() ? '<p><small>This starts over: it replaces your Equinox autosave. Your save slots stay.</small></p>' : '') +
+      '<div class="eq-acts"><button type="button" class="eq-btn main" data-act="begin">Begin</button>' + (s.import ? '' : '<button type="button" class="eq-btn" data-act="import-list">Import instead</button>') + '<button type="button" class="eq-btn" data-act="close">Back</button></div>');
   }
 
   /* ── Keys (and the controller, through pad.js): ↑↓ move, Esc / ○ back ── */

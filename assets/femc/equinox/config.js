@@ -1,0 +1,61 @@
+/* Persona 3: Equinox · the engine's settings for femc-equinox-game.html (EQUINOX-TECH.md "Hooks"). Loads before core.js.
+   The Solstice engine (assets/femc/game/core.js, ui.js, menu.js, cosmetics.js) reads window.FEMC_GAME_CONFIG; with it unset
+   (femc-game.html) everything is exactly Solstice's.
+     key / clearsKey / titleKey   Equinox's own save, clears list and title-colour copy (Solstice's are never written).
+     title                        the name on the credits, Extras and the menu screen's ghost word.
+     prologueSlot                 the slot the year starts in after the prologue (Solstice: lunch; Equinox's 4/8 starts early).
+     titleScreen()                ui.js calls this instead of drawing Solstice's title. The title is its own page
+                                  (femc-equinox.html, the Equilux clock), so this:
+                                    ?go=new       starts the year from the starting point the title page left in
+                                                  'kg-femc-equinox-start' (newGame, FemcEquinoxImport.apply, the eqx-from-*
+                                                  flags below), deletes that key and plays the prologue;
+                                    ?go=continue  picks the autosave up where it was;
+                                    anything else (no save, "Title" from the in-game menu) goes back to femc-equinox.html.
+   The eqx-from-* flags (read by the opening's { ifFlag } lines, data/prologue.js): eqx-from-none on a fresh start, or for the
+   most recently finished Solstice epilogue in the import: eqx-from-<world> and eqx-from-<world>-<route> (runners: haechan /
+   minji / cover; strangers: haechan / jungwon / family; hoax: jungwon / jihoon / council; stay: akihiko / shinjiro / sees;
+   true: coda). Nothing past the opening reads them. */
+window.FEMC_GAME_CONFIG = {
+  id: 'equinox',
+  key: 'kg-femc-equinox',
+  clearsKey: 'kg-femc-equinox-clears',
+  titleKey: 'kg-femc-equinox-title-theme',
+  title: { name: 'Persona 3: Equinox', tagline: 'Day Equals Night', ghost: 'Equinox' },
+  prologueSlot: 'early',
+  titlePage: 'femc-equinox.html',
+  startKey: 'kg-femc-equinox-start',
+  titleScreen() {
+    const C = window.FEMC_GAME_CONFIG, G = window.FemcGame, UI = window.FemcGameUI;
+    const go = new URLSearchParams(location.search).get('go');
+    const clean = () => history.replaceState(null, '', location.pathname);
+    let start = null; try { start = JSON.parse(localStorage.getItem(C.startKey) || 'null'); } catch (e) {}
+    if (go === 'new' && start && G && UI) {
+      clean();
+      C.begin(start);
+      try { localStorage.removeItem(C.startKey); } catch (e) {}
+      return UI.run();
+    }
+    if (go === 'continue' && G && UI && G.S.started) {
+      clean();
+      if (G.S.phase === 'title') G.S.phase = 'play';
+      G.save();
+      return UI.run();
+    }
+    location.replace(C.titlePage);
+  },
+  // A new year from the title page's starting point: { fresh: true } or { import: FemcEquinoxImport.read() result }.
+  begin(start) {
+    const G = window.FemcGame;
+    G.newGame();
+    const S = G.S, IM = window.FemcEquinoxImport;
+    if (start && start.import && IM) IM.apply(S, start.import);
+    const eps = (S.solstice && S.solstice.epilogues) || [];
+    const last = eps[eps.length - 1]; // read in the order the save recorded them: the last is the most recent
+    S.flags = S.flags || {};
+    if (last && last.world) {
+      S.flags[`eqx-from-${last.world}`] = true;
+      if (last.route) S.flags[`eqx-from-${last.world}-${last.route}`] = true;
+    } else S.flags['eqx-from-none'] = true;
+    G.save();
+  }
+};

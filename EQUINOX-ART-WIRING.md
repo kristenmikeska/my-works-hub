@@ -53,3 +53,9 @@ mockups/equinox-ui/art/   the style tests
 
 ## 8. Later
 Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and the picked direction; plot-bearing pieces (CGs, bosses, guardians, the two new characters, Haenim's new form, the duo cut-in) must be written visual-only, checked against `DO-NOT-OPEN-equinox-plot.md` for what not to show.
+
+## 8. The opening (Nov 15, build batch 2)
+
+- **Backgrounds 8A–8F** → `assets/femc/bg/<save name>.webp` (q86, native size). In `assets/femc/equinox/data/prologue.js` / `story-opening.js` each place has a `// BG: <slug> — …` comment above the line using its stand-in; swap that line's `bg` to the new name (8A `eqx-well-bottom` ↔ comment `well-bottom`, 8B `eqx-well-shaft` ↔ `well-shaft`, 8C `eqx-courtyard-well-night` ↔ `gekkoukan-courtyard-well-night`, 8D `eqx-courtyard-well-day` ↔ `gekkoukan-courtyard-well-day`, 8E `eqx-oka-gate` ↔ `oka-boarding-house-gate`, 8F `eqx-oka-kitchen` ↔ `oka-boarding-house-kitchen`). 8A also: `battle.js ART_HAS_WELL = true` (the Well fights' backdrop) and bump ART_V.
+- **8G Mrs. Oka's faces** → `tools/femc-sheet-alpha.py` / `femc-portraits.py` into `assets/femc/portraits/mrsoka/` (speaker id `mrsoka`; `oka` is Solstice's "Old Oka" job character, don't reuse it), scale.js + placements as any new face. Cell 6 is `worried` (the scenes use `neutral` only so far).
+- **CGs 8H–8V** → `assets/femc/cg/<save name>.webp`; each has a `// CG: eqx-<slug> — …` comment at its spot: put `{ cg: 'eqx-<slug>' }` there and `{ cg: null }` where the moment ends. Album / Theater listing for Equinox CGs is a later batch.

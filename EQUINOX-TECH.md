@@ -21,7 +21,7 @@ Also shared (fine as they are): `kg-femc-sound`, `kg-femc-music` (scene.js:102, 
 
 ## Hooks needed (hard-coded Solstice assumptions)
 
-Each one: read `window.FEMC_GAME_CONFIG` (call it `CFG`), else today's value. All are one-line changes. **None is made yet.** They are listed for the build batch and are not needed until `femc-equinox.html` exists.
+Each one: read `window.FEMC_GAME_CONFIG` (call it `CFG`), else today's value. All are one-line changes. **Made in build batch 2 (Nov 15): 1, 2, 3, 5/6 (as `CFG.titleScreen`), 8, 9, 11, 12, plus `CFG.prologueSlot` and the prologue's `cast`; battle scripts `eqx-well-1/-2`.** 4, 13, 15 need nothing; 7 isn't reached (Equinox's title is its own page); 10 and 14 wait for the battle-page batch.
 
 | # | Where | Solstice assumption | Smallest change |
 |---|---|---|---|
@@ -73,3 +73,12 @@ Not loaded on `femc-equinox.html`: `epilogue.js`, `episim.js`, `stamps.js`, `scr
 - No engine yet, so nothing of core.js is loaded and none of the hooks above is made. New Game and Import only set the save's **starting point**: localStorage `kg-femc-equinox-start` = `{ v: 1, at, fresh: true }` or `{ v: 1, at, from, import: <FemcEquinoxImport.read() result> }`. The engine batch reads it at New Game, calls `FemcEquinoxImport.apply(G.S, start.import)` and then deletes or keeps it (decide then).
 - Continue shows the starting point (what came over) and says the year itself is still being built.
 - Checked in the built-in pane (1440 × 900): title, New Game → Ready, Import list (unfinished saves greyed), a finished test save's preview and import, Esc back. The pane's test keys were removed afterwards.
+
+## Build batch 2: the engine page and the opening (Nov 15 2026)
+
+- **Two pages.** `femc-equinox.html` is the title (Equilux). Begin (after New Game or Import) opens `femc-equinox-game.html?go=new`; Continue (shown once an Equinox autosave exists) opens `?go=continue`. The game page's "Title" goes back to the title page.
+- **`femc-equinox-game.html`:** the Solstice engine with `assets/femc/equinox/config.js` first (`FEMC_GAME_CONFIG`: save `kg-femc-equinox`, clears `kg-femc-equinox-clears`, title colours `kg-femc-equinox-title-theme`, names, `prologueSlot: 'early'`, `titleScreen()`, `begin(start)`). Data: Equinox's `calendar.js`, `flags.js`, `prologue.js`, `story-opening.js`; the shared town (stats, places, gifts, jobs and job scenes, clubs, class questions, Boutique layout). Not loaded: Solstice's links, living-*, crush-*, spice-*, story acts, texts, daily life, the epilogue, sugram, glitch, stamps, scrapbook, trials, requests, the Index. Links come in batch 3.
+- **`begin(start)`:** `G.newGame()`, `FemcEquinoxImport.apply(S, start.import)`, then flags for the opening's lines: `eqx-from-none`, or `eqx-from-<world>` + `eqx-from-<world>-<route>` for the last epilogue in the import's list. The start key is deleted once the year begins.
+- **Blood red in game:** `tools/equinox-css.py` writes red copies of 17 game stylesheets to `assets/femc/equinox/css/` (Equilux palette for Solstice's main colours, every other pink hue-shifted, `url()`s rewritten). **Re-run it after any change to Solstice's game CSS** and bump the copies' `?v=`. Never edit the copies.
+- **Battle:** `battle.js` SCRIPTS `eqx-well-1` (Solar alone, interrupted) and `eqx-well-2` (Haechan joins). Backdrop `tartarus-scene` until `eqx-well-bottom.webp` exists (`ART_HAS_WELL`).
+- **Solstice is unchanged:** every hook falls back to Solstice's value when `FEMC_GAME_CONFIG` is unset.

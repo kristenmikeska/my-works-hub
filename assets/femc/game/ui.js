@@ -772,6 +772,8 @@
   /* The logo (assets/femc/title/solstice-logo.svg) is inlined so game.css can switch it to its dark variant (class sl-dark)
      and animate its parts: the wipe in, the sun-moon O's shimmer. Fetched once; until it arrives (or if it can't be, as on
      file://) the h1 shows a plain text title. */
+  // The game's name for the credits (FEMC_GAME_CONFIG.title; Solstice when unset).
+  const GAME_NAME = G.CFG.title?.name || 'Persona 3: Solstice', GAME_TAG = G.CFG.title?.tagline || 'Every Universe';
   let logoSvg = null;
   const logoLoad = fetch(`${G.base}assets/femc/title/solstice-logo.svg?v=1`).then(r => r.ok ? r.text() : '').catch(() => '').then(t => (logoSvg = t));
   function putLogo(h) {
@@ -800,6 +802,8 @@
     box.innerHTML = h;
   }
   function titleScreen() {
+    // Another game on this engine may bring its own title (FEMC_GAME_CONFIG.titleScreen: Equinox goes back to its Equilux page).
+    if (typeof G.CFG.titleScreen === 'function') { hud.hidden = true; return G.CFG.titleScreen(); }
     hud.hidden = true;
     setBg(null);
     screenMusic('opening');
@@ -893,7 +897,7 @@
   }
   function endPrologue() {
     const s = S();
-    s.phase = 'play'; s.day = G.dayOf(G.D.cal.firstFree); s.slot = 'lunch'; s.pending = null;
+    s.phase = 'play'; s.day = G.dayOf(G.D.cal.firstFree); s.slot = G.CFG.prologueSlot || 'lunch'; s.pending = null; // Equinox: 'early' (its 4/8 starts in the morning)
     cardDay = s.day;
     G.save();
     run();
@@ -1053,7 +1057,7 @@
     show(`<section class="g-seg g-end"><p class="g-kicker">${esc(G.dayInfo(G.END()).md)} · the last minutes of the last Dark Hour</p>
       <div class="g-seg-box"><p class="g-end-name">ENDING · ${esc(name)}</p>
         <p class="g-seg-sub">${frags} memory fragment${frags === 1 ? '' : 's'} · ${maxed} bond${maxed === 1 ? '' : 's'} at MAX · ${met} people met${S().ngp ? ` · New Game+ ${S().ngp}` : ''}</p>
-        <div class="g-credits"><p><b>Persona 3: Solstice</b> Every Universe</p><p>Created by Katarina Grande</p><p>Based on Persona 3 · ATLUS</p><p>Endings seen · ${seen.map(esc).join(' · ')}</p></div></div>
+        <div class="g-credits"><p><b>${esc(GAME_NAME)}</b> ${esc(GAME_TAG)}</p><p>Created by Katarina Grande</p><p>Based on Persona 3 · ATLUS</p><p>Endings seen · ${seen.map(esc).join(' · ')}</p></div></div>
       <div class="g-row"><button type="button" class="g-btn pink" data-t="ngp">New Game+</button><button type="button" class="g-btn" data-t="title">Back to title</button></div></section>`, 'is-seg');
     // The album and the Theater come along into New Game+ (menu.js albumCarry: everything seen so far, in one list).
     main.querySelector('[data-t=ngp]').addEventListener('click', () => { const keep = window.FemcMenu?.albumCarry?.(); G.newGamePlus(); if (keep) { S().album = keep; G.saveQuiet(); } cardDay = null; run(); });
@@ -1100,9 +1104,9 @@
     roll.className = `g-roll${calm ? ' calm' : ''}`;
     roll.tabIndex = -1; roll.setAttribute('role', 'button'); roll.setAttribute('aria-label', 'Credits. Press to skip.');
     roll.innerHTML = `<div class="g-roll-stills"></div><div class="g-roll-vig"></div><div class="g-roll-scrim"></div>
-      <div class="g-roll-card open"><h2 class="g-roll-logo" aria-label="Persona 3: Solstice"><span class="g-roll-logo-text">Persona 3<b>Solstice</b><i>Every Universe</i></span></h2></div>
+      <div class="g-roll-card open"><h2 class="g-roll-logo" aria-label="${esc(GAME_NAME)}"><span class="g-roll-logo-text">Persona 3<b>${esc(GAME_NAME.replace(/^Persona 3:\s*/, ''))}</b><i>${esc(GAME_TAG)}</i></span></h2></div>
       <div class="g-roll-lines"><div class="g-roll-in">${CREDITS.map(block).join('')}</div></div>
-      <div class="g-roll-card close"><p class="g-roll-tag">Persona 3: Solstice</p><p class="g-roll-thanks">Thank you for playing</p></div>
+      <div class="g-roll-card close"><p class="g-roll-tag">${esc(GAME_NAME)}</p><p class="g-roll-thanks">Thank you for playing</p></div>
       <span class="g-roll-skip">Skip ▸▸</span>`;
     // The title logo, inlined as on the title screen (plain text until it arrives).
     const logo = roll.querySelector('.g-roll-logo');

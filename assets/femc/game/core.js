@@ -26,7 +26,10 @@
      New Game+: stats, half the yen, Compendium and books carry over; S.ngFrom tells the battle game whose levels to copy).
    Debug: femc-game.html?debug=1 keeps the Simulate buttons on fight cards (remembered for the tab's session). */
 window.FemcGame = (() => {
-  const KEY = 'kg-femc-revamp', SETTINGS_KEY = 'kg-femc-revamp-settings', HANDOFF_KEY = 'kg-femc-handoff';
+  /* Another game on this engine (Persona 3: Equinox, femc-equinox-game.html) sets window.FEMC_GAME_CONFIG before this file:
+     { id, key, clearsKey, title: { name, … }, titleScreen, practice }. Unset (Solstice) = every value below as it always was. */
+  const CFG = window.FEMC_GAME_CONFIG || {};
+  const KEY = CFG.key || 'kg-femc-revamp', SETTINGS_KEY = 'kg-femc-revamp-settings', HANDOFF_KEY = 'kg-femc-handoff';
   const LEGACY_BATTLE_KEY = 'kg-femc-revamp-battle', PREMERGE_KEY = 'kg-femc-revamp-premerge', MERGE_V = 2, STATS_V = 2, YEAR_V = 2;
   const SLOT_KEY = n => `${KEY}-slot${n}`;
   const SLOTS = Array.from({ length: 10 }, (_, i) => i + 1); // manual save slots (three until 2026-10-30; Kat asked for more)
@@ -642,6 +645,7 @@ window.FemcGame = (() => {
     (D.crush.moments || []).forEach(e => Object.assign(CAST, e.cast || {})); // crush moments (data/crush*.js)
     Object.values(D.trip).forEach(t => Object.assign(CAST, t.cast || {}));
     D.events.forEach(e => Object.assign(CAST, e.cast || {}));
+    Object.assign(CAST, W.FEMC_GAME_PROLOGUE?.cast || {}); // a prologue may name its speakers (Equinox's)
   }
   const progress = id => (S.links[id] ||= { rank: 0, xp: 0, seen: [], rankDay: {}, hung: 0, push: 0, reversed: false });
   const isMet = id => S.met.includes(id);
@@ -1942,9 +1946,10 @@ window.FemcGame = (() => {
   function jumpToEnd() { S.day = END(); S.slot = 'late'; S.tonight = null; save(); }
   function endingName() {
     const f = S.flags;
+    if (typeof W.FEMC_GAME_FLAGS?.endingName === 'function') return W.FEMC_GAME_FLAGS.endingName(f) || 'here';
     return f['route-bad'] ? 'the last stop' : f['true-final'] ? 'I am thou' : f['route-R'] ? 'where it begins' : f['route-S'] ? 'low tide' : f['route-H'] ? 'the unfated life' : 'here';
   }
-  const CLEARS_KEY = 'kg-femc-revamp-clears';
+  const CLEARS_KEY = CFG.clearsKey || 'kg-femc-revamp-clears';
   function recordClear() {
     let list = []; try { list = JSON.parse(lsGet(CLEARS_KEY) || '[]') || []; } catch (e) {}
     if (!list.some(x => x.run === S.runId)) { list.push({ run: S.runId, ending: endingName(), xmas: S.route.choices.xmas || null, at: Date.now(), ngp: S.ngp || 0 }); lsSet(CLEARS_KEY, JSON.stringify(list)); }
@@ -3074,7 +3079,7 @@ window.FemcGame = (() => {
 
   indexLinks();
   return {
-    KEY, HANDOFF_KEY, base, D, get S() { return S; }, save, saveQuiet, newGame, onChange, settings, setSetting, setSettings, DEFAULTS, textDelay, sfx,
+    KEY, CFG, HANDOFF_KEY, base, D, get S() { return S; }, save, saveQuiet, newGame, onChange, settings, setSetting, setSettings, DEFAULTS, textDelay, sfx,
     dayOf, dateOf, mdOf, dayInfo, seasonal, dressed, slotsFor, slotName, weather, wx, forecast, wxIn, wet, rainSale, moon, END, SLOT_ORDER,
     statRank, statRankName, statProgress, statId, statReward, statRewards, statPerkList, statJobBonus, jobStatOf, examBonus, knowsAnswer, sumStats, gainText, addStat, addStats, lacking, addYen, takeToasts, toast, migrateStats,
     LINKS, progress, isMet, linkStatus, linkScene, finishLink, linksAt, linkPlace, linkName, need, written, areaById, isHome,
