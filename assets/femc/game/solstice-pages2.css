@@ -321,3 +321,9 @@
    out from under a pointer near its edge, lost the hover, slid back, and so on. Hover keeps its colours; only the chosen
    (.on / .sel) or keyboard-focused row moves. */
 .g-fm-ov.is-page :is(.g-pm, .g-eq-slot, .g-eq-item, .g-cslot, .g-cbox-card, .g-wd-item, .g-al-tile, .g-keys li, .g-goods li):hover:not(:focus-visible, .on, .sel) { transform: none; }
+
+/* Cards: multi-select (Nov 15 2026, Kat): picked cards glow pink with a check; locked / worn ones fade while selecting. */
+.g-fm-ov .g-cbox.multi .g-cbox-card.picked { background: var(--pink, #ff4f9e); transform: translateY(-3px); }
+.g-fm-ov .g-cbox.multi .g-cbox-card.picked::after { content: "✓"; position: absolute; right: 10%; top: 4px; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #14070f; color: #fff; font: 900 13px/1 system-ui, sans-serif; box-shadow: 0 0 0 2px #fff; }
+.g-fm-ov .g-cbox.multi .g-cbox-card.na { opacity: .4; }
+.g-card-multi .g-card-acts { flex-wrap: wrap; }

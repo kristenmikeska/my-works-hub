@@ -547,6 +547,22 @@ window.FemcMenu = (() => {
           <div class="g-card-costs">${lc ? `<p><small>Level up</small>${costHtml(lc)}</p>` : ''}${rc ? `<p><small>Refine</small>${costHtml(rc)}</p>` : ''}<p><small>Dismantle</small><span>Tarot Dust ×${B.CARD.dismantle[cur.r] + Math.floor((cur.spent || 0) / 2)}${cur.ref ? ` · Velvet Thread ×${cur.ref}` : ''}</span></p></div>
         </div></div>`;
     }
+    // Multi-select (Nov 15 2026, Kat): pick several cards, then dismantle them in one go. Locked and worn cards can't be picked.
+    const pickable = c => !c.lock && !B.wearerOf(b, c.u);
+    if (sel.cmulti) {
+      const picks = (sel.cpick || []).map(u => B.cardById(b, u)).filter(c => c && pickable(c)); sel.cpick = picks.map(c => c.u);
+      const dust = picks.reduce((n, c) => n + B.CARD.dismantle[c.r] + Math.floor((c.spent || 0) / 2), 0), thread = picks.reduce((n, c) => n + (c.ref || 0), 0);
+      const n3 = box.filter(c => pickable(c) && c.r === 3).length;
+      detail = `<div class="g-card-multi"><p class="g-kicker">Select cards</p><h3 class="g-card-name">${picks.length} selected</h3>
+          <p class="g-note small">Tap cards in the box to pick them. Locked and worn cards are left out.</p>
+          <div class="g-row g-card-acts">
+            <button type="button" class="g-btn small" data-cpick-all>Select all shown</button>
+            <button type="button" class="g-btn small" data-cpick-r3${n3 ? '' : ' disabled'}>Select every ★3</button>
+            <button type="button" class="g-btn small" data-cpick-none${picks.length ? '' : ' disabled'}>Clear</button>
+          </div>
+          <div class="g-row g-card-acts"><button type="button" class="g-btn small${sel.armedMulti ? ' pink' : ''}" data-cdis-many${picks.length ? '' : ' disabled'}>${sel.armedMulti ? `Dismantle ${picks.length}? Press again` : `Dismantle ${picks.length || ''}`.trim()}</button></div>
+          <div class="g-card-costs"><p><small>You get</small><span>Tarot Dust ×${dust}${thread ? ` · Velvet Thread ×${thread}` : ''}</span></p></div></div>`;
+    }
     const sc = Object.entries(b.skillCards || {}).filter(([, n]) => n > 0);
     const skillCards = sc.length ? `<h3>Skill cards</h3><ul class="g-skillcards">${sc.map(([k, n]) => `<li><b>${esc(D().skills[k].name)} ×${n}</b><small>${esc(D().skills[k].desc || '')}</small>${sel.teach === k ? `<span class="g-teach">${list.map(m => { const t = B.teachable(b, m.id, k); return `<button type="button" class="g-btn small" data-teach="${k}" data-to="${m.id}"${t.ok ? '' : ` disabled title="${esc(t.why)}"`}>${esc(m.name)}</button>`; }).join('')}<button type="button" class="g-btn small" data-teach-cancel>Cancel</button></span>` : `<button type="button" class="g-btn small pink" data-teach="${k}">Teach</button>`}</li>`).join('')}</ul>` : '';
     const boosts = Object.entries((b.pboost || {})).filter(([m, o]) => member(m) && Object.keys(o).length);
@@ -558,8 +574,8 @@ window.FemcMenu = (() => {
       <button type="button" class="g-btn small g-cunall" data-cunall${Object.keys(B.ensureCards(b).eq[mid] || {}).length ? '' : ' disabled'}><span>Remove all</span></button>
       <p class="g-card-sum">${sets.length ? sets.map(([set, n]) => `<span class="g-chip on" style="--c:${B.SETS[set].color}">${esc(B.SETS[set].name)} ${n >= 4 ? '4' : '2'}</span>`).join('') : '<span class="g-note small">No set bonus yet: two or four cards of one set.</span>'}${sum.length ? `<small>${esc(sum.join(' · '))}</small>` : ''}</p>
       <div class="g-cards-main">
-        <div class="g-cbox-wrap"><div class="g-cbox-head"><b>Card box</b><small>${C.list.length}/${B.CARD.cap}${slot ? ` · ${esc(B.SLOTS.find(x => x.id === slot).name)} only` : ''}</small>${slot ? '<button type="button" class="g-btn small" data-cslot-all>All slots</button>' : ''}</div>
-          <div class="g-cbox">${box.map(c => `<button type="button" class="g-cbox-card${sel.card === c.u ? ' on' : ''}${B.wearerOf(b, c.u) ? ' worn' : ''}" data-card="${c.u}" title="${esc(B.cardName(c))}">${cardFace(c, 'mini')}${B.wearerOf(b, c.u) ? `<em>${esc((member(B.wearerOf(b, c.u)) || {}).name || '')}</em>` : ''}</button>`).join('') || '<p class="g-note small">No cards yet.</p>'}</div></div>
+        <div class="g-cbox-wrap"><div class="g-cbox-head"><b>Card box</b><small>${C.list.length}/${B.CARD.cap}${slot ? ` · ${esc(B.SLOTS.find(x => x.id === slot).name)} only` : ''}</small>${slot ? '<button type="button" class="g-btn small" data-cslot-all>All slots</button>' : ''}<button type="button" class="g-btn small${sel.cmulti ? ' pink' : ''}" data-cmulti aria-pressed="${sel.cmulti ? 'true' : 'false'}">${sel.cmulti ? 'Done selecting' : 'Select several'}</button></div>
+          <div class="g-cbox${sel.cmulti ? ' multi' : ''}">${box.map(c => `<button type="button" class="g-cbox-card${!sel.cmulti && sel.card === c.u ? ' on' : ''}${B.wearerOf(b, c.u) ? ' worn' : ''}${sel.cmulti && (sel.cpick || []).includes(c.u) ? ' picked' : ''}${sel.cmulti && !pickable(c) ? ' na' : ''}" data-card="${c.u}" title="${esc(B.cardName(c))}">${cardFace(c, 'mini')}${B.wearerOf(b, c.u) ? `<em>${esc((member(B.wearerOf(b, c.u)) || {}).name || '')}</em>` : ''}</button>`).join('') || '<p class="g-note small">No cards yet.</p>'}</div></div>
         <aside class="g-card-side">${detail}</aside></div>
       <p class="g-mats">${mats}</p>${boostHtml}${skillCards}</div>`;
   }
@@ -571,7 +587,21 @@ window.FemcMenu = (() => {
       sel.cslot = sel.cslot === s2 ? null : s2; if (eqd) sel.card = eqd; sel.armedCard = null; G.sfx('femc-hover'); again(`[data-cslot="${s2}"]`);
     }));
     el.querySelector('[data-cslot-all]')?.addEventListener('click', () => { sel.cslot = null; again('[data-cslot]'); });
-    el.querySelectorAll('[data-card]').forEach(bt => bt.addEventListener('click', () => { const u = +bt.dataset.card, c = B.cardById(b, u); if (c && c.isNew) { c.isNew = false; G.saveQuiet(); } sel.card = u; sel.armedCard = null; G.sfx('femc-hover'); again(`[data-card="${u}"]`); }));
+    el.querySelector('[data-cmulti]')?.addEventListener('click', () => { sel.cmulti = !sel.cmulti; sel.cpick = []; sel.armedMulti = false; sel.armedCard = null; G.sfx('femc-click'); again('[data-cmulti]'); });
+    const shown = () => [...el.querySelectorAll('[data-card]')].map(x => B.cardById(b, +x.dataset.card)).filter(c => c && !c.lock && !B.wearerOf(b, c.u));
+    el.querySelector('[data-cpick-all]')?.addEventListener('click', () => { sel.cpick = shown().map(c => c.u); sel.armedMulti = false; G.sfx('femc-hover'); again('[data-cpick-all]'); });
+    el.querySelector('[data-cpick-r3]')?.addEventListener('click', () => { sel.cpick = [...new Set((sel.cpick || []).concat(shown().filter(c => c.r === 3).map(c => c.u)))]; sel.armedMulti = false; G.sfx('femc-hover'); again('[data-cpick-r3]'); });
+    el.querySelector('[data-cpick-none]')?.addEventListener('click', () => { sel.cpick = []; sel.armedMulti = false; G.sfx('femc-hover'); again('[data-cpick-all]'); });
+    el.querySelector('[data-cdis-many]')?.addEventListener('click', () => {
+      if (!sel.armedMulti) { sel.armedMulti = true; G.sfx('femc-hover'); again('[data-cdis-many]'); return; }
+      let dust = 0, thread = 0, n = 0;
+      (sel.cpick || []).forEach(u => { const r = B.dismantleCard(b, u); if (r.ok) { dust += r.dust; thread += r.thread || 0; n++; } });
+      sel.cpick = []; sel.armedMulti = false; sel.card = null;
+      G.toast('note', `Dismantled ${n} card${n === 1 ? '' : 's'}: Tarot Dust ×${dust}${thread ? `, Velvet Thread ×${thread}` : ''}.`); G.sfx('femc-click'); G.saveQuiet(); again('[data-cmulti]');
+    });
+    el.querySelectorAll('[data-card]').forEach(bt => bt.addEventListener('click', () => { const u = +bt.dataset.card, c = B.cardById(b, u); if (c && c.isNew) { c.isNew = false; G.saveQuiet(); }
+      if (sel.cmulti) { if (!c || c.lock || B.wearerOf(b, u)) { G.toast('note', c && c.lock ? 'That card is locked.' : 'That card is being worn.'); G.sfx('femc-hover'); return; } const p = sel.cpick || (sel.cpick = []), i = p.indexOf(u); if (i < 0) p.push(u); else p.splice(i, 1); sel.armedMulti = false; G.sfx('femc-hover'); again(`[data-card="${u}"]`); return; }
+      sel.card = u; sel.armedCard = null; G.sfx('femc-hover'); again(`[data-card="${u}"]`); }));
     el.querySelector('[data-cequip]')?.addEventListener('click', e => { B.equipCard(b, sel.cmember, +e.currentTarget.dataset.cequip); G.saveQuiet(); G.sfx('femc-rankup'); again('[data-cunequip]'); });
     el.querySelector('[data-cunall]')?.addEventListener('click', () => { B.SLOTS.forEach(s2 => B.unequipCard(b, sel.cmember, s2.id)); sel.armedCard = null; G.saveQuiet(); G.sfx('femc-click'); again(`[data-cmember="${sel.cmember}"]`); }); // every card off this member
     el.querySelector('[data-cunequip]')?.addEventListener('click', e => { B.unequipCard(b, sel.cmember, e.currentTarget.dataset.cunequip); G.saveQuiet(); G.sfx('femc-click'); again('[data-cequip]'); });
