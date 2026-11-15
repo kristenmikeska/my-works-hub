@@ -120,14 +120,14 @@ Solar's two are in (Nov 8). Jaehyun's two are optional. These give those two sce
 Attach: `CG - Jaehyun (Runners).png`  
 Save as: `jaehyun-runners-xmas-portraits.png`
 ```
-A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. The SAME young man as the attached image in all six cells: same face, eyes and hair, same realistic painted style, same head-and-shoulders framing and size in every cell, facing the camera. Change only the outfit: a well-cut navy suit over a crisp white shirt open at the collar, no tie, a slim watch. Warm candle and chandelier light. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Realistic, NOT anime, NOT cel shading. No text.
+A portrait sheet: 3 columns × 2 rows on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), with clear empty space between every cell, nothing overlapping. The SAME young man as the attached image in all six cells: same face, eyes and hair, same realistic painted style, same head-and-shoulders framing and size in every cell, facing the camera. Change only the outfit: a well-cut navy suit over a crisp white shirt open at the collar, no tie, a slim watch. Warm candle and chandelier light. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Realistic, NOT anime, NOT cel shading. No text.
 ```
 
 **[ ] 40D. Jaehyun: the reception (optional)**  
 Attach: `CG - Jaehyun (Runners).png`  
 Save as: `jaehyun-runners-reception-portraits.png`
 ```
-A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. The SAME young man as the attached image in all six cells: same face, eyes and hair, same realistic painted style, same head-and-shoulders framing and size in every cell, facing the camera. Change only the outfit: a charcoal suit, white shirt and a dark tie, perfectly knotted, the polished heir at his family foundation's reception. Bright, even daytime event light. Cells, in order: neutral (the annual-report smile), happy, sad, serious, surprised, flustered. Realistic, NOT anime, NOT cel shading. No text.
+A portrait sheet: 3 columns × 2 rows on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), with clear empty space between every cell, nothing overlapping. The SAME young man as the attached image in all six cells: same face, eyes and hair, same realistic painted style, same head-and-shoulders framing and size in every cell, facing the camera. Change only the outfit: a charcoal suit, white shirt and a dark tie, perfectly knotted, the polished heir at his family foundation's reception. Bright, even daytime event light. Cells, in order: neutral (the annual-report smile), happy, sad, serious, surprised, flustered. Realistic, NOT anime, NOT cel shading. No text.
 ```
 
 ## 41. Faces for the epilogues' side characters (ChatGPT; realistic; Kat, Nov 7)
@@ -136,7 +136,7 @@ People who talk in the epilogues but have no face yet (their lines show a name o
 
 **For every one:** 3 × 2 sheet on plain white, head and shoulders, faces in order neutral, happy, sad, serious, surprised, flustered. The prompt pattern (the bracket is each item's own line):
 ```
-A portrait sheet: 3 columns × 2 rows on a plain white background, with clear empty space between every cell, nothing overlapping. A NEW character, NOT the person in the attached image: copy only that image's realistic painted style, lighting, head-and-shoulders framing and size. The same person in all six cells, facing the camera: [WHO]. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Realistic, NOT anime, NOT cel shading. No text, no logos, no name tags with writing.
+A portrait sheet: 3 columns × 2 rows on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), with clear empty space between every cell, nothing overlapping. A NEW character, NOT the person in the attached image: copy only that image's realistic painted style, lighting, head-and-shoulders framing and size. The same person in all six cells, facing the camera: [WHO]. Cells, in order: neutral, happy, sad, serious, surprised, flustered. Realistic, NOT anime, NOT cel shading. No text, no logos, no name tags with writing.
 ```
 
 **strangers** (Incheon, 2013; Attach: `CG - Mrs. Bang (Strangers).png`)
