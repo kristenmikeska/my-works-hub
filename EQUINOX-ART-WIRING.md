@@ -19,18 +19,23 @@ assets/femc/equinox/
 mockups/equinox-ui/art/   the style tests
 ```
 
-## 1. Style tests (1A-1H)
-- `eq-test-<halfway|well|thread|mirror>-keyart.png` / `-logo.png` → `mockups/equinox-ui/art/<dir>-keyart.webp` / `<dir>-logo.webp` (q86), for the four mockups to show beside their UI. Not game art. Once Kat picks a direction, the winning logo test is redrawn as `equinox/title/logo.svg` by hand (as solstice-logo.svg was), keeping the raster only as reference; the key art may become a wallpaper cosmetic like `wp-keyart`.
-- Kat's palette rule (CLAUDE.md, Oct 31) holds for Equinox UI too: no blue / navy / indigo / purple / lilac / green-heavy, gold a tiny accent.
+## 1. The look tests (1A-1B; rewritten Nov 15 after Kat picked Equilux in blood red)
+- `eq-test-keyart.png` / `eq-test-logo.png` → `mockups/equinox-ui/art/keyart.webp` / `logo.webp` (q86), shown beside the Equilux mockup. Not game art. The logo is redrawn by hand as `equinox/title/logo.svg` (as solstice-logo.svg was) once Kat likes it; the game can also keep drawing it as live text (the mockup does, so the dusk flicker and the drop-in animation work per letter). The key art may become a wallpaper cosmetic like `wp-keyart`.
+- The old four-direction tests (Halfway, Well, Red Thread, Mirror) were dropped.
+- Equinox palette (Kat, Nov 15): blood `#d7102c`, light `#ff5a5f`, oxblood / clot darks, bone `#f6efe9`; no pink-heavy, blue, purple, green; gold a speck. Solstice keeps its pink.
 
-## 2. Title (2A-2C)
-- `eq-cover.png` → `equinox/title/cover.webp`; `eq-menu-day.png` → `menu-backdrop-day.webp`; `eq-menu-dark.png` → `menu-backdrop-dark.webp`. 1672 × 941 like Solstice's, or native. Hooks TBD (Solstice: ui.js title, menu.js HOME backdrops by slot).
+## 2. The title and the UI (2A-2H)
+- `eq-cover-day.png` / `eq-cover-night.png` → `equinox/title/cover-day.webp` / `cover-night.webp`, 1672 × 941 or native, **the same size and aligned** (check by overlaying; nudge with a crop if ChatGPT shifted 2B). Title: the day picture goes in the day layer, the night picture in the night layer, so the ticking conic mask and the dusk radial (`equilux.html` `.lay.day` / `.lay.night`) wipe one picture into the other. The drawn clock face, logo and menu plate stay on top.
+- `eq-menu-day.png` / `eq-menu-dark.png` → `menu-backdrop-day.webp` / `menu-backdrop-dark.webp` (Solstice: menu.js HOME backdrops by slot; dark in the late slot and over a fight).
+- `eq-clockface.png` → key out the white (`tools/femc-greens.py`-style flood from the corners, or `femc-sheet-alpha.py`) → `equinox/title/clockface.webp` (transparent, square), drawn behind the logo in both title layers in place of the SVG `face12` (keep the SVG second hand / ticks if they read better on top). No hands in the art: the hand is code.
+- `eq-emblem.png` → key out the white → `equinox/title/emblem.webp`; app icons (192 / 512 / maskable 512, like `tools/femc-app-icons.py`), the favicon, the save-slot badge and a loading spinner (rotating hand over the static emblem).
+- `eq-loading-well.png` / `eq-loading-between.png` → `equinox/title/loading-well.webp` / `loading-between.webp` (Solstice: ui.js `openBattle` picks loading stills; Equinox: the Well's nights vs everything else). The text sits on the right third.
 
-## 3. Solar's Equinox look (3A-3B)
+## 3. Solar's Equinox look (3A-3C)
 - `eq-solar-posesheet.png` → `tools/femc-wardrobe.py` cut (as an own look, or as a look id such as `eq-own`; TBD) → `equinox/battle/poses/solar-0..5.webp` on sheet 1's canvas.
 - `eq-solar-portraits.png` → `tools/femc-skin-portraits.py` (matched to her Solstice faces, same canvas) or `femc-sheet-alpha.py` + `femc-portraits.py` → `equinox/portraits/solar/neutral|happy|sad|serious|surprised|flustered.webp`; scale.js / placements-data.js entries; Kat places it on `mockups/solstice-ui/placements.html`.
-- HD poses for the look later (femc-hd-poses.py `LOOKS`).
-- Hairpin / wrist ribbon are Claude's suggestions; Kat may change them.
+- `eq-solar-menu.png` (3C) → `tools/femc-hd-poses.py` (one figure, native, feet on the bottom edge) → `equinox/profile/solar-poses/arms-crossed.webp`: the field menu's figure (`.solar` in the mockup; Solstice's is menu.js `HOME_FIG`). The rest of her HD set later (femc-hd-poses.py `LOOKS`).
+- Hairpin (now a clock face) / wrist ribbon are Claude's suggestions; Kat may change them.
 
 ## 4. The Well (4A-4H)
 - `eq-well-1..8.png` → `equinox/bg/well-1..8.webp` (q86, native, like Tartarus's block backdrops). Block ids, floor ranges and which block each backdrop belongs to: the private plan §8 (blocks 0-7 there = 1-8 here, top to bottom). Item names in Kat's list are neutral visual names on purpose; keep the plan's block names out of her list.
@@ -38,10 +43,10 @@ mockups/equinox-ui/art/   the style tests
 
 ## 5. LE SSERAFIM full bodies (5A-5D)
 - `eq-body-chaewon|sakura|kazuha|eunchae.png` → `equinox/profile/links/<id>.webp`, measured into Equinox's own `LINK_FIG` ([file, width/height, head top, head-to-chin, head centre x], as menu.js's). Yunjin already has `profile/searchers/yunjin.webp` (Solstice LINK_FIG); reuse or copy it.
-- Face references are their strangers versions (portraits `<name>-strangers`); which world version the game uses is plan question 4. If Kat answers differently, swap the attachment and the dialogue faces, not this art.
+- Face references are their strangers versions (portraits `<name>-strangers`); each girl remembers all her lives (Kat, Nov 15), so the strangers faces are just the reference.
 
 ## 6. Parents (6A-6F)
-- `eq-body-jaesang|solji|appa|eomma|hoax-mom|hoax-dad.png` → `equinox/profile/links/<id>.webp` + LINK_FIG. Faces already in the game: `jaesang-runners`, `solji-runners`, `taesang-strangers`, `miyeon-strangers` (also `lee-appa` / `lee-eomma`, the baduk minigame's), `kim-mom`, `kim-dad`. Link ids TBD; the HOAX parents' first names are still waiting on Kat (plan question 7), so Kat's list says Mom / Dad (HOAX) only.
+- `eq-body-jaesang|solji|appa|eomma|hoax-mom|hoax-dad.png` → `equinox/profile/links/<id>.webp` + LINK_FIG. Faces already in the game: `jaesang-runners`, `solji-runners`, `taesang-strangers`, `miyeon-strangers` (also `lee-appa` / `lee-eomma`, the baduk minigame's), `kim-mom`, `kim-dad`. One link per couple (Kat, Nov 15): three couple links, each with both figures (the Social Link screen shows the pair). HOAX parents: Han Soyeon (Mom) and Kim Jaeseok (Dad); Kat's list says Mom / Dad (HOAX).
 
 ## 7. Persona concepts (7A-7C)
 - `eq-persona-hanni|yunjin|hyein-concept.png` → keep in `Femc Mode Images/Personas/Equinox concepts/` (and optionally `equinox/personas/concepts/`); reference for designing with Kat (plan question 5: which new fighters). The game's Persona art comes later as a single 2:3 figure on black like `Personas/Theia.png` → `battle/art/personas/<name>.webp`. Visual sources: the private plan §10's candidate myths; never name the myth or the Persona in Kat's list until she picks.

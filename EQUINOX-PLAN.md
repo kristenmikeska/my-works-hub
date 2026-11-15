@@ -183,10 +183,11 @@ Each batch is tested lightly and reported spoiler-free. Features that need art w
 10. **Velvet Plumes:** they carry over.
 11. **New Game+:** yes, a deeper climb.
 12. **LE SSERAFIM:** all five girls (Yunjin too) remember every life, like the two-world characters.
-13. **Romance:** the same six canon romances, no new ones; a lot of Solstice in the first weeks; no rules on dating more than one; the parents react (three dads at once); Akihiko and Haechan's rivalry starts a new stage; Jungwon remembers both his lives, like any two-world character; any romance can end staying in the Personaverse or going home with her; all the spice (Solstice's rules). Jihoon's HOAX thread: my suggestion in the cast ideas, waiting on Kat.
+13. **Romance:** the same six canon romances, no new ones; a lot of Solstice in the first weeks; no rules on dating more than one; the parents react (three dads at once); Akihiko and Haechan's rivalry starts a new stage; Jungwon remembers both his lives, like any two-world character; any romance can end staying in the Personaverse or going home with her; all the spice (Solstice's rules). Jihoon's HOAX thread (the secret romance behind Jungwon's back) carries on.
 14. **The look:** Equilux (mockups/equinox-ui/equilux.html, direction 5) in shades of blood red, Solstice's font and shapes. Picked for now (Nov 15).
+
+15. **Parents:** one link per couple.
 
 ## Still open
 
-1. **Jihoon's HOAX thread:** keep it going (my suggestion, cast ideas E8)?
-2. **Parents:** one link per couple, or one per parent?
+Nothing right now. Next: the look tests (art list section 1), then the first build batch when you say go.

@@ -126,7 +126,7 @@ Fighters are marked ⚔. Navigators are marked 📡. "Duo" and "group" mean one 
 - 16 fighters: Solar and the 12 from Solstice, plus Hanni, Yunjin and Hyein.
 - 2 navigators.
 
-**About the parents:** I suggest one link per couple, with ranks that take turns between mom and dad and some scenes with both. That builds on what they had in the epilogues. If you'd rather each parent had their own link, that's six links instead of three.
+**About the parents (decided Nov 15: one link per couple):** I suggested one link per couple, with ranks that take turns between mom and dad and some scenes with both. That builds on what they had in the epilogues. If you'd rather each parent had their own link, that's six links instead of three.
 
 ---
 
@@ -175,7 +175,7 @@ Here's what I meant, in plain terms.
 7. Jungwon is her boyfriend in HOAX and her fiancé in strangers. How should Equinox handle both at once?
    **The same way as any other two-world case:** he remembers both lives. In private with Solar he talks about both; with everyone else it shows in habits.
 8. Jihoon's HOAX scandal: keep that thread going here?
-   **Kat asked what the scandal is.** It isn't drugs. It's the Jihoon thread you asked for in the HOAX epilogue on Nov 11: she's with Jungwon, and Jihoon is the romance she sneaks around with behind his back (stolen moments, near-misses, guilt), with her rebellious streak coming back out on his route (smoking with him, his jacket over her uniform, skipping meetings). The triangle never closes. **My suggestion:** keep it going in Equinox as the HOAX side of the triangle. It fits "no rules" and "a lot of Solstice in the first weeks." Your call.
+   **Kat asked what the scandal is.** It isn't drugs. It's the Jihoon thread you asked for in the HOAX epilogue on Nov 11: she's with Jungwon, and Jihoon is the romance she sneaks around with behind his back (stolen moments, near-misses, guilt), with her rebellious streak coming back out on his route (smoking with him, his jacket over her uniform, skipping meetings). The triangle never closes. **Decided (Kat, Nov 15): it carries on** in Equinox, as the HOAX side of the triangle.
 9. Should any romance be able to end with someone staying in the Personaverse with her, or going home with her?
    **Yes, 100%.** Romance endings can end with them staying in the Personaverse with her or going home with her.
 10. The same spice level and rules as Solstice?
